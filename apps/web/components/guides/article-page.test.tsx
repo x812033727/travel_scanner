@@ -9,6 +9,7 @@ const mocks = vi.hoisted(() => ({
     async () => ({ articles: [], next_cursor: null }),
   ),
   topics: vi.fn(async (): Promise<Record<string, unknown>[]> => []),
+  trending: vi.fn(async () => ({ articles: [] as Record<string, unknown>[], next_cursor: null, available: true })),
   permanentRedirect: vi.fn((url: string) => { throw new Error(`NEXT_REDIRECT ${url}`); }),
   headers: vi.fn(async () => new Headers()),
 }));
@@ -22,6 +23,7 @@ vi.mock("@/lib/guides.server", () => ({
   getGuideArticle: mocks.article, getGuideSeries: mocks.series,
   getGuideList: mocks.list,
   getGuideTopics: mocks.topics,
+  getTrendingGuides: mocks.trending,
 }));
 vi.mock("@/components/codex-learning/hub", () => ({ LearningHub: ({ entries, available }: { entries: LearningEntry[]; available: boolean }) =>
   <section aria-label="Learning directory" data-available={available}>
@@ -93,6 +95,13 @@ describe("Codex articles on the shared page", () => {
     expect(container.querySelector("details.lg\\:hidden")).not.toBeNull();
     expect(container.querySelector("aside nav.sticky")).not.toBeNull();
     expect(container.querySelectorAll('a[href="/en/life/codex-learning-hub"]').length).toBeGreaterThanOrEqual(2);
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    const lessonGraph = graphs.find(item => item["@type"] === "Article");
+    expect(lessonGraph.isPartOf).toEqual({
+      "@type": "CreativeWorkSeries",
+      name: "Codex hub",
+      url: expect.stringContaining("/en/life/codex-learning-hub"),
+    });
   });
   it("does not fetch a series when the hub translation is unpublished", async () => {
     mocks.article.mockResolvedValue({ ...state, status: "unpublished", document: null });
@@ -240,4 +249,146 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
     expect(graphs.map(item => item["@type"])).not.toEqual(expect.arrayContaining(["FAQPage", "DefinedTerm"]));
     expect(graphs.find(item => item["@type"] === "CollectionPage" || item["@type"] === "Article")).not.toHaveProperty("abstract");
   });
+
+  it("emits NewsArticle JSON-LD and renders news_date when the article is a dated news item", async () => {
+    mocks.article.mockResolvedValue({
+      ...state,
+      slug: "claude-code-news-2026-11-12",
+      series: null,
+      news_date: "2026-11-12",
+      topics: [{ slug: "ai-news", label: "AI 新聞" }],
+    });
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" }));
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    expect(graphs.find(item => item["@type"] === "NewsArticle")).toBeTruthy();
+    expect(container.querySelector('time[datetime="2026-11-12"]')?.textContent).toBe("2026-11-12");
+    expect(container.querySelector("details.lg\\:hidden")).not.toBeNull();
+    expect(container.querySelector("aside nav.sticky")).not.toBeNull();
+  });
+
+  it("omits synthetic news-assets placeholder artwork from OpenGraph, Twitter and NewsArticle JSON-LD", async () => {
+    const syntheticHero = {
+      src: "/guides/news-assets/deadbeef1234567890abcdef-hero.webp",
+      alt: "Placeholder",
+      width: 1600,
+      height: 900,
+      credit: { author: "Mokaair", license: "Original editorial artwork", source_url: null },
+    };
+    mocks.article.mockResolvedValue({
+      ...state,
+      slug: "claude-code-news-2026-11-12",
+      series: null,
+      news_date: "2026-11-12",
+      topics: [{ slug: "ai-news", label: "AI 新聞" }],
+      document: { ...document, hero: syntheticHero },
+    });
+    const meta = await guideArticleMetadata({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" });
+    expect(meta.openGraph).toBeUndefined();
+    expect(meta.twitter).toBeUndefined();
+
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" }));
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    const newsGraph = graphs.find(item => item["@type"] === "NewsArticle");
+    expect(newsGraph).not.toHaveProperty("image");
+    expect(container.querySelector("img")).toBeNull();
+  });
+
+  it("emits Discover max-image-preview:large metadata and renders share actions plus right-rail trending recirculation", async () => {
+    mocks.article.mockResolvedValue({
+      ...state,
+      slug: "short-news-20261113",
+      series: null,
+      news_date: "2026-11-13",
+      topics: [{ slug: "ai-news", label: "AI 新聞" }],
+      document: {
+        ...document,
+        blocks: [{ type: "heading", level: 2, text: "重點" }],
+      },
+    });
+    mocks.trending.mockResolvedValueOnce({
+      articles: [
+        {
+          slug: "short-news-20261113",
+          kind: "life",
+          destination_id: null,
+          destination_label: null,
+          topics: [{ slug: "ai-news", label: "AI 新聞" }],
+          title: "Self article should be excluded",
+          description: "D",
+          published_at: "2026-11-13T00:00:00Z",
+          valid_until: null,
+          featured: false,
+        },
+        {
+          slug: "tokyo-esim-pick",
+          kind: "howto",
+          destination_id: "tokyo",
+          destination_label: "東京",
+          topics: [{ slug: "connectivity", label: "網路" }],
+          title: "日本 eSIM 實測比較",
+          description: "D",
+          published_at: "2026-11-13T01:00:00Z",
+          valid_until: null,
+          featured: true,
+        },
+      ],
+      next_cursor: null,
+      available: true,
+    });
+
+    const meta = await guideArticleMetadata({ locale: "en", kind: "life", slug: "short-news-20261113" });
+    expect(meta.robots).toMatchObject({
+      index: true,
+      follow: true,
+      googleBot: { "max-image-preview": "large", "max-snippet": -1 },
+    });
+
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: "short-news-20261113" }));
+    const headerShare = screen.getByRole("group", { name: "分享文章" });
+    expect(within(headerShare).getByRole("button", { name: "複製連結" })).toBeTruthy();
+    expect(within(headerShare).getByRole("link", { name: "LINE 分享" }).getAttribute("href")).toContain("social-plugins.line.me/lineit/share");
+    const footerShare = screen.getByTestId("article-share-footer");
+    expect(within(footerShare).getByText("覺得這篇整理實用嗎？分享給需要的朋友")).toBeTruthy();
+    expect(within(footerShare).getByRole("button", { name: "複製連結" })).toBeTruthy();
+    expect(container.querySelector("div.fixed.inset-x-0.lg\\:hidden")).not.toBeNull();
+    const trendingSection = screen.getByRole("region", { name: "熱門閱讀" });
+    expect(trendingSection.closest("aside")?.className).not.toContain("hidden");
+    expect(within(trendingSection).getByRole("link", { name: "日本 eSIM 實測比較" })).toBeTruthy();
+    expect(within(trendingSection).queryByText("Self article should be excluded")).toBeNull();
+  });
+
+  it("opens a mobile TOC quick-jump bottom sheet once scrolled past 28% on multi-section articles", async () => {
+    const { fireEvent } = await import("@testing-library/react");
+    const { ArticleMobileProgress } = await import("@/components/guides/article-toc-rail");
+
+    Object.defineProperty(window.document.documentElement, "scrollHeight", { configurable: true, value: 2000 });
+    Object.defineProperty(window.document.documentElement, "clientHeight", { configurable: true, value: 800 });
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 600 });
+
+    render(
+      <ArticleMobileProgress
+        backToTopLabel="回到頂部"
+        contentsLabel="本篇目錄"
+        closeLabel="關閉目錄"
+        headings={[
+          { id: "section-1", text: "重點比較" },
+          { id: "section-2", text: "常見問題" },
+        ]}
+      />,
+    );
+    fireEvent.scroll(window);
+
+    const trigger = screen.getByRole("button", { name: "本篇目錄" });
+    fireEvent.click(trigger);
+
+    const dialog = screen.getByRole("dialog", { name: "本篇目錄" });
+    expect(within(dialog).getByText("50%")).toBeTruthy();
+    const firstJump = within(dialog).getByRole("link", { name: /重點比較/ });
+    expect(firstJump.getAttribute("href")).toBe("#section-1");
+    fireEvent.click(firstJump);
+    expect(screen.queryByRole("dialog", { name: "本篇目錄" })).toBeNull();
+
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 0 });
+  });
 });
+

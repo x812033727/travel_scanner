@@ -277,11 +277,112 @@ async def test_a_query_over_the_length_limit_is_422_not_truncated(database) -> N
 def test_parse_query_keeps_a_lone_cjk_character_and_at_most_six_terms() -> None:
     assert search.parse_query("雪") == ["雪"]
     assert search.parse_query("Next.js GPT-4 C++ C#") == ["next.js", "gpt-4", "c++", "c#"]
+    assert search.parse_query("Gemini教學") == ["gemini", "教學"]
+    assert search.parse_query("東京eSIM推薦") == ["東京", "esim", "推薦"]
     assert search.parse_query("一 二 三 四 五 六 七 八") == ["一", "二", "三", "四", "五", "六"]
     assert search.parse_query("東京 東京 tokyo TOKYO") == ["東京", "tokyo"]
     with pytest.raises(AppError) as error:
         search.parse_query("x, y; z")
     assert error.value.code == "guide_search_query_invalid"
+
+
+async def test_mixed_script_cjk_phrase_fallback_and_latest_sort(database, actor) -> None:
+    async with client(make_app(database, actor)) as api:
+        older = await published(
+            api,
+            "ai-slides-compare",
+            prose(
+                "Gemini 與 Gamma：免費 AI 簡報製作工具比較",
+                "整理免費方案額度與匯出限制",
+                "支援中文大綱一鍵轉投影片。",
+            ),
+            kind="life",
+            destination_id=None,
+            topics=["ai"],
+        )
+        newer = await published(
+            api,
+            "gemini-cli-note",
+            prose(
+                "終端機工作流筆記",
+                "日常開發指令整理",
+                "文末順便補充 Gemini 教學資源，也能用免費工具做簡報。",
+            ),
+            kind="life",
+            destination_id=None,
+            topics=["ai"],
+        )
+        del older, newer
+
+        # Unspaced mixed ASCII+CJK query finds both spaced articles; title ranks first by default.
+        assert await slugs(api, "Gemini教學") == ["gemini-cli-note"]
+        assert await slugs(api, "免費簡報工具") == ["ai-slides-compare", "gemini-cli-note"]
+        assert await slugs(api, "免費簡報工具怎麼選") == ["ai-slides-compare", "gemini-cli-note"]
+
+        # sort=latest orders newest publication first even when an older article has a title hit.
+        latest_res = await api.get(
+            "/guides/search",
+            params={"locale": "zh-TW", "q": "免費簡報工具", "sort": "latest"},
+        )
+        assert latest_res.status_code == 200
+        assert [hit["slug"] for hit in latest_res.json()["results"]] == [
+            "gemini-cli-note",
+            "ai-slides-compare",
+        ]
+
+
+async def test_intent_modifiers_and_colloquial_synonyms_fallback_only_on_zero_hits(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        await published(
+            api,
+            "jp-esim",
+            prose(
+                "日本 eSIM 怎麼選",
+                "比較原生線路、流量上限與雙卡設定",
+                "支援 iPhone 與 Android 掃描 QR Code 開通。",
+            ),
+        )
+        await published(
+            api,
+            "jpy-exchange",
+            prose(
+                "日圓現鈔與刷卡匯率整理",
+                "出發前換匯時機與海外回饋試算",
+                "首爾明洞換錢與韓元匯率也可比照雙幣卡原則評估。",
+            ),
+            kind="life",
+            destination_id=None,
+            topics=["ai"],
+        )
+        await published(
+            api,
+            "laptop-pick",
+            prose(
+                "輕薄筆記型電腦選購重點",
+                "螢幕色域、續航與記憶體容量",
+                "適合遠端辦公與日常文書。",
+            ),
+            kind="life",
+            destination_id=None,
+            topics=["ai"],
+        )
+
+        # Generic format/intent words drop when strict AND has zero hits, keeping core entities.
+        assert await slugs(api, "日本 eSIM 推薦") == ["jp-esim"]
+        assert await slugs(api, "日本 eSIM guide") == ["jp-esim"]
+        # Colloquial Taiwan terms expand cleanly to formal terms and report matched tokens.
+        jpy_res = await find(api, "日幣匯率")
+        assert [hit["slug"] for hit in jpy_res["results"]] == ["jpy-exchange"]
+        assert jpy_res["results"][0]["matched"] == ["日圓", "匯率"]
+        assert await slugs(api, "換韓幣") == ["jpy-exchange"]
+        assert await slugs(api, "日本網卡推薦") == ["jp-esim"]
+        assert await slugs(api, "文書筆電推薦") == ["laptop-pick"]
+        # Unrelated multi-term queries still require all core subject terms and return zero hits.
+        assert await slugs(api, "日本 新幹線 推薦") == []
+        # A query consisting solely of an intent word is never stripped to empty.
+        assert search._strip_intent_terms(["推薦"]) is None
 
 
 async def test_the_title_outranks_the_body_and_the_alias_names_the_best_match(

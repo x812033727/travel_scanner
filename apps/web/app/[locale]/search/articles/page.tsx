@@ -6,23 +6,37 @@ import { SearchResults } from "@/components/guides/search-results";
 import { SiteHeader } from "@/components/site-header";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { articleSearchHref, guideHref, guideTopicHref, isGuideSection, type GuideSection, type GuideTopic } from "@/lib/guides";
-import { getGuideSearch, getGuideTopics, getSeriesIndex } from "@/lib/guides.server";
+import {
+  articleSearchHref,
+  guideHref,
+  guideSearchSorts,
+  guideTopicHref,
+  isGuideSearchSort,
+  isGuideSection,
+  type GuideSearchSort,
+  type GuideSection,
+  type GuideTopic,
+} from "@/lib/guides";
+import { getGuideSearch, getGuideTopics, getSeriesIndex, getTrendingGuides } from "@/lib/guides.server";
 
 type Params = { locale: Locale };
-type Search = { q?: string; section?: string; offset?: string };
+type Search = { q?: string; section?: string; topic?: string; sort?: string; offset?: string };
 
 const MAX_OFFSET = 200;
 const SECTIONS: (GuideSection | null)[] = [null, "travel", "life"];
+const TOPIC_SLUG_RE = /^[a-z0-9][a-z0-9-]{0,63}$/;
 
-/** The three query parameters, cleaned: an unknown section is no section, a garbled or
- *  out-of-range offset is the first page. Nothing here can make the API refuse the URL. */
+/** The query parameters, cleaned: an unknown section/topic/sort drops back to the default,
+ *  and a garbled or out-of-range offset falls back to the first page. */
 function route(search: Search) {
   const q = (search.q ?? "").trim().slice(0, 100);
   const section = isGuideSection(search.section) ? search.section : null;
+  const rawTopic = (search.topic ?? "").trim().toLowerCase();
+  const topic = TOPIC_SLUG_RE.test(rawTopic) ? rawTopic : null;
+  const sort: GuideSearchSort = isGuideSearchSort(search.sort) ? search.sort : "relevance";
   const parsed = Number.parseInt(search.offset ?? "", 10);
   const offset = Number.isFinite(parsed) ? Math.min(Math.max(parsed, 0), MAX_OFFSET) : 0;
-  return { q, section, offset };
+  return { q, section, topic, sort, offset };
 }
 
 /**
@@ -44,20 +58,35 @@ export default async function ArticleSearchPage(
   { params, searchParams }: { params: Promise<Params>; searchParams: Promise<Search> },
 ) {
   const [{ locale }, search] = await Promise.all([params, searchParams]);
-  const { q, section, offset } = route(search);
+  const { q, section, topic, sort, offset } = route(search);
   const [result, t] = await Promise.all([
-    q ? getGuideSearch(locale, { q, section: section ?? undefined, offset }) : null,
+    q
+      ? getGuideSearch(locale, {
+          q,
+          section: section ?? undefined,
+          ...(topic ? { topic } : {}),
+          ...(sort !== "relevance" ? { sort } : {}),
+          offset,
+        })
+      : null,
     getTranslations({ locale, namespace: "common" }),
   ]);
   const showBrowse = !result || (result.available && !result.invalid && result.total === 0 && !result.best_match);
-  const [travelTopics, lifeTopics, series] = showBrowse
-    ? await Promise.all([getGuideTopics(locale, "travel"), getGuideTopics(locale, "life"), getSeriesIndex(locale)])
-    : [[], [], []];
-  const browsable = (topics: GuideTopic[]) => topics.filter((topic) => !topic.parent && (topic.count === undefined || topic.count > 0));
+  const [travelTopics, lifeTopics, series, trending] = showBrowse
+    ? await Promise.all([
+        getGuideTopics(locale, "travel"),
+        getGuideTopics(locale, "life"),
+        getSeriesIndex(locale),
+        getTrendingGuides(locale, section ? { section } : {}, 6),
+      ])
+    : [[], [], [], { articles: [], next_cursor: null, available: false }];
+  const browsable = (topics: GuideTopic[]) => topics.filter((item) => !item.parent && (item.count === undefined || item.count > 0));
 
   const cardLabels = { intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life") };
   const sectionLabel = (value: GuideSection | null) =>
     value === "travel" ? t("guides.searchSectionTravel") : value === "life" ? t("guides.searchSectionLife") : t("guides.searchSectionAll");
+  const sortLabel = (value: GuideSearchSort) =>
+    value === "latest" ? t("guides.searchSortLatest") : t("guides.searchSortRelevance");
   const pages = result ? Math.max(1, Math.ceil(Math.min(result.total, MAX_OFFSET + result.limit) / result.limit)) : 1;
   const page = result ? Math.floor(result.offset / result.limit) + 1 : 1;
   const previous = result && result.offset > 0 ? Math.max(0, result.offset - result.limit) : null;
@@ -66,47 +95,80 @@ export default async function ArticleSearchPage(
     <>
       <SiteHeader />
       <main className="mx-auto max-w-5xl px-5 py-10 md:px-8">
-        <h1 className="text-4xl font-bold tracking-tight">{t("guides.searchTitle")}</h1>
-        <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--muted)]">{t("guides.searchLead")}</p>
+        <header className="portal-hero-shell rounded-3xl p-6 md:p-10">
+          <h1 className="text-3xl font-extrabold tracking-tight md:text-5xl">{t("guides.searchTitle")}</h1>
+          <p className="mt-3.5 max-w-2xl text-base leading-7 text-[var(--muted)] md:text-lg md:leading-8">{t("guides.searchLead")}</p>
 
-        <SearchForm
-          action={`/${locale}/search/articles`}
-          q={q}
-          section={section}
-          labels={{ label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") }}
-        />
+          <SearchForm
+            action={`/${locale}/search/articles`}
+            q={q}
+            section={section}
+            topic={topic}
+            sort={sort}
+            labels={{ label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") }}
+          />
+        </header>
 
-        <nav aria-label={t("guides.searchScope")} className="mt-4 flex flex-wrap gap-2">
-          {SECTIONS.map((value) => (
-            <Link
-              key={value ?? "all"}
-              href={articleSearchHref(q, { section: value })}
-              aria-current={value === section ? "page" : undefined}
-              className={`app-filter-chip ${value === section ? "app-filter-chip-active" : ""}`}
-            >
-              {sectionLabel(value)}
-            </Link>
-          ))}
-        </nav>
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+          <nav aria-label={t("guides.searchScope")} className="flex flex-wrap gap-2">
+            {SECTIONS.map((value) => (
+              <Link
+                key={value ?? "all"}
+                href={articleSearchHref(q, {
+                  section: value,
+                  topic: value === section || value === null ? topic : null,
+                  sort,
+                })}
+                aria-current={value === section ? "page" : undefined}
+                className={`app-filter-chip ${value === section ? "app-filter-chip-active" : ""}`}
+              >
+                {sectionLabel(value)}
+              </Link>
+            ))}
+            {topic ? (
+              <Link
+                href={articleSearchHref(q, { section, sort })}
+                className="app-filter-chip app-filter-chip-active"
+              >
+                #{topic} × {t("guides.searchTopicAll")}
+              </Link>
+            ) : null}
+          </nav>
+
+          {q ? (
+            <nav aria-label={t("guides.sortLabel")} className="flex flex-wrap gap-2">
+              {guideSearchSorts.map((value) => (
+                <Link
+                  key={value}
+                  href={articleSearchHref(q, { section, topic, sort: value })}
+                  aria-current={value === sort ? "page" : undefined}
+                  className={`app-filter-chip ${value === sort ? "app-filter-chip-active" : ""}`}
+                >
+                  {sortLabel(value)}
+                </Link>
+              ))}
+            </nav>
+          ) : null}
+        </div>
 
         {result && !result.available ? (
-          <p role="alert" className="mt-6 rounded-2xl border border-[var(--line)] p-5 leading-7">{t("guides.searchUnavailable")}</p>
+          <p role="alert" className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 leading-7 shadow-[var(--shadow-sm)]">{t("guides.searchUnavailable")}</p>
         ) : null}
         {result?.invalid ? (
-          <p role="alert" className="mt-6 rounded-2xl border border-[var(--line)] p-5 leading-7">{t("guides.searchInvalid")}</p>
+          <p role="alert" className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 leading-7 shadow-[var(--shadow-sm)]">{t("guides.searchInvalid")}</p>
         ) : null}
 
         {result && result.available && !result.invalid ? (
           <section aria-live="polite" className="mt-8">
             {result.best_match ? (
               <div className="mb-6">
-                <h2 className="text-sm font-bold uppercase tracking-wide text-[var(--muted)]">{t("guides.searchBestMatch")}</h2>
+                <h2 className="portal-section-heading text-sm font-bold uppercase tracking-wide text-[var(--muted)]">{t("guides.searchBestMatch")}</h2>
                 <ul className="mt-3 grid gap-3 sm:grid-cols-2">
                   <GuideCard article={result.best_match} labels={cardLabels} />
                 </ul>
               </div>
             ) : null}
-            <h2 className="text-xl font-bold tracking-tight">
+            <h2 className="portal-section-heading text-xl font-bold tracking-tight">
               {result.total || result.best_match
                 ? t("guides.searchResults", { query: q })
                 : t("guides.searchNoResults", { query: q })}
@@ -116,15 +178,21 @@ export default async function ArticleSearchPage(
             ) : null}
             <SearchResults hits={result.results} labels={cardLabels} />
             {result.total > result.limit ? (
-              <nav aria-label={t("guides.searchPagination")} className="mt-8 flex flex-wrap items-center gap-4">
+              <nav aria-label={t("guides.searchPagination")} className="mt-8 flex flex-wrap items-center gap-3">
                 {previous !== null ? (
-                  <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={articleSearchHref(q, { section, offset: previous })}>
+                  <Link
+                    className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-1.5 text-sm font-semibold text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+                    href={articleSearchHref(q, { section, topic, sort, offset: previous })}
+                  >
                     {t("guides.searchPrev")}
                   </Link>
                 ) : null}
-                <span className="text-sm text-[var(--muted)]">{t("guides.searchPageOf", { page, pages })}</span>
+                <span className="rounded-full bg-[var(--paper)] px-3 py-1 font-mono text-sm tabular-nums text-[var(--muted)]">{t("guides.searchPageOf", { page, pages })}</span>
                 {result.next_offset !== null ? (
-                  <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={articleSearchHref(q, { section, offset: result.next_offset })}>
+                  <Link
+                    className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-1.5 text-sm font-semibold text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+                    href={articleSearchHref(q, { section, topic, sort, offset: result.next_offset })}
+                  >
                     {t("guides.searchNext")}
                   </Link>
                 ) : null}
@@ -135,18 +203,29 @@ export default async function ArticleSearchPage(
 
         {!result ? <p className="mt-8 leading-7 text-[var(--muted)]">{t("guides.searchHint")}</p> : null}
 
+        {showBrowse && trending.articles.length ? (
+          <section className="mt-10 border-t border-[var(--line)] pt-8" data-testid="search-trending-section">
+            <h2 className="portal-section-heading text-2xl font-bold tracking-tight">{t("guides.trendingHeading")}</h2>
+            <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+              {trending.articles.map((article) => (
+                <GuideCard key={`${article.kind}:${article.slug}`} article={article} labels={cardLabels} />
+              ))}
+            </ul>
+          </section>
+        ) : null}
+
         {showBrowse && (browsable(travelTopics).length || browsable(lifeTopics).length) ? (
           <section className="mt-12 border-t border-[var(--line)] pt-8">
-            <h2 className="text-2xl font-bold tracking-tight">{t("guides.browseTopics")}</h2>
+            <h2 className="portal-section-heading text-2xl font-bold tracking-tight">{t("guides.browseTopics")}</h2>
             {([["travel", travelTopics], ["life", lifeTopics]] as const).map(([value, topics]) =>
               browsable(topics).length ? (
                 <div key={value} className="mt-4">
                   <h3 className="text-sm font-bold uppercase tracking-wide text-[var(--muted)]">{sectionLabel(value)}</h3>
                   <ul className="mt-2 flex flex-wrap gap-2">
-                    {browsable(topics).map((topic) => (
-                      <li key={topic.slug}>
-                        <Link className="app-filter-chip" href={guideTopicHref(value, topic.slug)}>
-                          {topic.label}
+                    {browsable(topics).map((item) => (
+                      <li key={item.slug}>
+                        <Link className="app-filter-chip" href={guideTopicHref(value, item.slug)}>
+                          {item.label}
                         </Link>
                       </li>
                     ))}
@@ -159,11 +238,14 @@ export default async function ArticleSearchPage(
 
         {showBrowse && series.length ? (
           <section className="mt-10">
-            <h2 className="text-2xl font-bold tracking-tight">{t("guides.searchBrowseSeries")}</h2>
-            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+            <h2 className="portal-section-heading text-2xl font-bold tracking-tight">{t("guides.searchBrowseSeries")}</h2>
+            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
               {series.map((item) => (
                 <li key={item.slug}>
-                  <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={guideHref(item.hub.kind, item.hub.slug)}>
+                  <Link
+                    className="portal-card-surface flex min-h-11 items-center rounded-2xl border-l-4 border-l-[var(--teal)] px-4 py-3.5 font-semibold text-[var(--ink)] hover:text-[var(--teal-dark)]"
+                    href={guideHref(item.hub.kind, item.hub.slug)}
+                  >
                     {item.hub.title}
                   </Link>
                 </li>

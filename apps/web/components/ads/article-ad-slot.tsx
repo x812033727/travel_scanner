@@ -66,8 +66,13 @@ export function ArticleAdSlot({ publisherId, slotId, label, cmpEnabled, lazy = f
   }, [cmpEnabled, lazy]);
   if (!tagLoaded || !isAdsensePublisherId(publisherId) || !isAdsenseSlotId(slotId)) return null;
   return (
-    <aside aria-label={label} className="article-ad-slot my-2">
-      <p className="mb-1 text-xs uppercase tracking-wide text-[var(--muted)]">{label}</p>
+    <aside
+      aria-label={label}
+      className="article-ad-slot my-6 rounded-2xl border border-[var(--line)]/80 bg-[var(--paper)]/55 px-3 py-3 sm:px-4"
+    >
+      <p className="mb-2 text-[length:var(--text-xs)] font-semibold uppercase tracking-wider text-[var(--muted)]">
+        {label}
+      </p>
       <div style={{ minHeight: RESERVED_HEIGHT }} className="overflow-hidden">
         <ins
           ref={ref}

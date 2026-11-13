@@ -37,9 +37,9 @@ export type ContentBlockLabels = {
 const DIAGRAM_READABLE_WIDTH = 1180;
 
 const TONE_CLASSES: Record<CalloutTone, string> = {
-  tip: "border-[var(--teal)]",
-  warning: "border-[var(--warning,#b45309)]",
-  info: "border-[var(--muted)]",
+  tip: "border-[var(--teal)] bg-[color-mix(in_srgb,var(--teal-soft)_52%,var(--surface))]",
+  warning: "border-[var(--warning,#b45309)] bg-[color-mix(in_srgb,var(--coral-soft)_52%,var(--surface))]",
+  info: "border-[var(--muted)] bg-[var(--surface)]",
 };
 
 /** Links back into this site open in the same tab; only genuinely external ones open a new one. */
@@ -51,8 +51,8 @@ function sameSite(href: string): boolean {
   }
 }
 
-/** "圖片：Author (CC BY-SA 4.0)", with the author linked to the source page and the licence
- *  to its deed where one exists. Shared with the article hero, so the two credits agree. */
+/** Credit line with the author linked to the source page and the licence to its deed where one
+ *  exists. Shared with the article hero, so the two credits agree. */
 export function ImageCreditLine({ credit, prefix }: { credit: ImageCredit; prefix: string }) {
   const source = credit.source_url ? contentBlockLink(credit.source_url) : null;
   const terms = licenseUrl(credit.license);
@@ -76,8 +76,8 @@ export function ImageCreditLine({ credit, prefix }: { credit: ImageCredit; prefi
 export function SummaryCard({ items, heading, id }: { items: readonly string[]; heading?: string; id?: string }) {
   return (
     <aside id={id} aria-label={heading} className="app-summary-card rounded-2xl p-4 md:p-5">
-      {heading ? <p className="text-xs font-bold uppercase tracking-wide text-[var(--muted)]">{heading}</p> : null}
-      <ul className="mt-2 list-disc space-y-1.5 pl-5">
+      {heading ? <p className="text-[length:var(--text-xs)] font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">{heading}</p> : null}
+      <ul className="mt-2.5 list-disc space-y-2 pl-5 marker:text-[var(--teal)]">
         {items.map((item, index) => <li key={index}>{item}</li>)}
       </ul>
     </aside>
@@ -90,12 +90,12 @@ export function SummaryCard({ items, heading, id }: { items: readonly string[]; 
 export function FaqSection({ items, heading, id }: { items: readonly { question: string; answer: string }[]; heading?: string; id?: string }) {
   return (
     <section id={id} aria-label={heading} className="border-t border-[var(--line)] pt-6">
-      {heading ? <h2 className="text-lg font-semibold">{heading}</h2> : null}
-      <div className="mt-2 divide-y divide-[var(--line)]">
+      {heading ? <h2 className="text-xl font-bold tracking-tight">{heading}</h2> : null}
+      <div className="mt-3 divide-y divide-[var(--line)] rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 shadow-[var(--shadow-sm)]">
         {items.map((item, index) => (
-          <details key={index} className="py-2">
-            <summary className="flex min-h-11 cursor-pointer items-center font-semibold">{item.question}</summary>
-            <p className="mt-2 whitespace-pre-wrap leading-7 text-[var(--muted)]">{item.answer}</p>
+          <details key={index} className="group py-2.5">
+            <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-semibold text-[var(--ink)] transition-colors hover:text-[var(--teal)] after:shrink-0 after:font-mono after:text-base after:text-[var(--muted)] after:content-['+'] group-open:after:content-['−'] [&::-webkit-details-marker]:hidden">{item.question}</summary>
+            <p className="mt-1 pb-2 whitespace-pre-wrap leading-7 text-[var(--muted)]">{item.answer}</p>
           </details>
         ))}
       </div>
@@ -115,7 +115,7 @@ export function FaqSection({ items, heading, id }: { items: readonly { question:
  * legal pages want.
  */
 export function ContentBlocks({
-  blocks, labels, headingStart, subsectionStart = 0, articleLinks = [], locale = "en", termLabels, renderFaq,
+  blocks, labels, headingStart, subsectionStart = 0, articleLinks = [], locale = "en", termLabels, renderFaq, constrainDiagrams = false,
 }: {
   blocks: readonly RichContentBlock[];
   labels?: ContentBlockLabels;
@@ -128,6 +128,9 @@ export function ContentBlocks({
   /** The article keeps FAQ answers beside their authored heading and gives them stable ids.
    *  Without this callback the shared/admin preview retains its own labelled FAQ section. */
   renderFaq?: (block: FaqBlock, index: number) => ReactNode;
+  /** Keeps wide SVG diagrams inside their own horizontal scroller when an article sits in an
+   *  elevated reading sheet or beside a desktop sticky navigation rail. */
+  constrainDiagrams?: boolean;
 }) {
   // Heading ids are decided in one pass before rendering: level-2 headings continue the
   // sequence the caller started, and level-3 headings count within their section
@@ -150,7 +153,7 @@ export function ContentBlocks({
   return <>{blocks.map((block, index) => {
     if (block.type === "code") return <GuideCodeBlock key={index} block={block} labels={labels?.code} />;
     if (block.type === "rich_paragraph") return <p key={index} className="whitespace-pre-wrap leading-8">{block.inlines.map((node, i) => {
-      if (node.type === "code") return <code key={i} className="rounded bg-[var(--paper)] px-1 font-mono text-[0.92em]">{node.text}</code>;
+      if (node.type === "code") return <code key={i} className="rounded-md border border-[var(--line)] bg-[var(--surface-tint)] px-1.5 py-0.5 font-mono text-[0.92em]">{node.text}</code>;
       if (node.type === "article") {
         const target = articleLinks.find(ref => ref.slug === node.slug && ref.kind === node.kind);
         if (!target) return <span key={i}>{node.text}</span>;
@@ -175,8 +178,8 @@ export function ContentBlocks({
     })}</p>;
     if (block.type === "heading") {
       const id = headingIds.get(index);
-      if (block.level === 3) return <h3 key={index} id={id} className="scroll-mt-24 pt-2 text-lg font-semibold">{block.text}</h3>;
-      return <h2 key={index} id={id} className="scroll-mt-24 pt-4 text-xl font-bold">{block.text}</h2>;
+      if (block.level === 3) return <h3 key={index} id={id} className="scroll-mt-24 pt-3 text-lg font-bold tracking-tight">{block.text}</h3>;
+      return <h2 key={index} id={id} className="article-h2 scroll-mt-24 pt-6 text-xl font-extrabold tracking-tight sm:text-2xl">{block.text}</h2>;
     }
     if (block.type === "paragraph") return <p key={index} className="whitespace-pre-wrap leading-8">{block.text}</p>;
     if (block.type === "summary") return <SummaryCard key={index} items={block.items} heading={labels?.summary} />;
@@ -243,7 +246,15 @@ export function ContentBlocks({
             // text before any scrolling; a matching one on the right earns nothing and costs
             // the end of the scroll, which stopped on 20px of blank with the last column's
             // leading edge pushed out of frame.
-            <div tabIndex={0} role="group" className="-mx-5 overflow-x-auto pl-5 xl:-mx-[226px] xl:pl-0">{image}</div>
+            <div
+              tabIndex={0}
+              role="group"
+              className={constrainDiagrams
+                ? "-mx-4 overflow-x-auto pl-4 sm:mx-0 sm:pl-0"
+                : "-mx-5 overflow-x-auto pl-5 xl:-mx-[226px] xl:pl-0"}
+            >
+              {image}
+            </div>
           ) : image}
           {caption || block.credit ? (
             <figcaption className="mt-2 text-sm leading-6 text-[var(--muted)]">
@@ -265,15 +276,15 @@ export function ContentBlocks({
       const caption = block.caption?.trim() ?? "";
       // A wide table scrolls inside its own box; the page must never scroll sideways for it.
       return (
-        <div key={index} className="overflow-x-auto">
+        <div key={index} className="overflow-x-auto rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow-sm)]">
           <table className="w-full border-collapse text-sm [overflow-wrap:normal]">
-            {caption ? <caption className="caption-bottom pt-2 text-left text-[var(--muted)]">{caption}</caption> : null}
-            <thead>
-              <tr>{block.header.map((cell, i) => <th key={i} scope="col" className="min-w-28 border-b-2 border-[var(--line)] px-3 py-2 text-left font-semibold">{cell}</th>)}</tr>
+            {caption ? <caption className="caption-bottom border-t border-[var(--line)] px-4 py-2.5 text-left text-[length:var(--text-xs)] text-[var(--muted)]">{caption}</caption> : null}
+            <thead className="bg-[var(--surface-tint)]">
+              <tr>{block.header.map((cell, i) => <th key={i} scope="col" className="min-w-28 border-b-2 border-[var(--line)] px-4 py-3 text-left font-bold text-[var(--ink)]">{cell}</th>)}</tr>
             </thead>
             <tbody>
               {block.rows.map((row, r) => (
-                <tr key={r}>{row.map((cell, c) => <td key={c} className="min-w-28 border-b border-[var(--line)] px-3 py-2 align-top leading-6">{cell}</td>)}</tr>
+                <tr key={r} className="transition-colors even:bg-[var(--paper)]/45 hover:bg-[var(--teal-soft)]/30">{row.map((cell, c) => <td key={c} className="min-w-28 border-b border-[var(--line)] px-4 py-3 align-top leading-6">{cell}</td>)}</tr>
               ))}
             </tbody>
           </table>
@@ -285,8 +296,8 @@ export function ContentBlocks({
       const tone = labels?.[block.tone] ?? "";
       const heading = [tone, title].filter(Boolean).join(" · ");
       return (
-        <aside key={index} role="note" className={`rounded-2xl border border-l-4 border-[var(--line)] bg-[var(--paper)] px-4 py-3 leading-7 ${TONE_CLASSES[block.tone]}`}>
-          {heading ? <p className="text-sm font-semibold">{heading}</p> : null}
+        <aside key={index} role="note" className={`rounded-2xl border border-l-4 px-4 py-3.5 leading-7 shadow-[var(--shadow-sm)] ${TONE_CLASSES[block.tone]}`}>
+          {heading ? <p className="mb-1 text-sm font-bold text-[var(--ink)]">{heading}</p> : null}
           <p className="whitespace-pre-wrap">{block.text}</p>
         </aside>
       );
@@ -298,6 +309,17 @@ export function ContentBlocks({
     const href = contentBlockLink(block.url);
     if (!href) return null;
     const external = !href.startsWith("mailto:") && !sameSite(href);
-    return <p key={index}><a href={href} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} className="inline-flex min-h-11 items-center text-[var(--teal)] underline">{block.text}</a></p>;
+    return (
+      <p key={index}>
+        <a
+          href={href}
+          target={external ? "_blank" : undefined}
+          rel={external ? "noopener noreferrer" : undefined}
+          className="inline-flex min-h-11 items-center rounded-full border border-[var(--teal)]/40 bg-[var(--teal-soft)]/45 px-4 py-1.5 text-sm font-semibold text-[var(--teal-dark)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]"
+        >
+          {block.text}
+        </a>
+      </p>
+    );
   })}</>;
 }

@@ -23,6 +23,24 @@ export const HREFLANG_DEFAULT: Locale = "en";
  *  `<link rel="alternate">` that advertises it cannot drift apart. */
 export const FEED_PATH = "/feed.xml";
 
+/** Google News sitemap covering dated news and alerts published in the last 48 hours. */
+export const NEWS_SITEMAP_PATH = "/sitemap-news.xml";
+
+/** Explicit large-image preview directives for Google Discover on editorial articles and the home
+ *  portal. Kept off section/topic hubs where `e2e/seo.spec.ts` asserts default indexability emits
+ *  no `<meta name="robots">` tag. */
+export const DISCOVER_ROBOTS: NonNullable<Metadata["robots"]> = {
+  index: true,
+  follow: true,
+  googleBot: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large",
+    "max-snippet": -1,
+    "max-video-preview": -1,
+  },
+};
+
 /**
  * `/zh-TW/foods?city=tokyo` -> `/foods`. `/en` -> `/`. Anything without a known locale prefix,
  * and anything missing, falls back to `/` so the canonical degrades to the locale home page

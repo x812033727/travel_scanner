@@ -24,15 +24,23 @@ beforeEach(() => {
 });
 
 describe("/feed.xml", () => {
-  it("merges both sections newest first", async () => {
+  it("merges both sections newest first and emits Atom author and topic categories", async () => {
     lists.travel.articles = [article({ slug: "older", title: "Older", published_at: "2026-09-01T00:00:00Z" })];
-    lists.life.articles = [article({ slug: "newer", kind: "life", title: "Newer", published_at: "2026-09-18T00:00:00Z" })];
+    lists.life.articles = [article({
+      slug: "newer",
+      kind: "life",
+      title: "Newer",
+      published_at: "2026-09-18T00:00:00Z",
+      topics: [{ slug: "ai-news", label: "AI 快訊" }],
+    })];
 
     const body = await (await GET()).text();
     expect(body.indexOf("Newer")).toBeLessThan(body.indexOf("Older"));
     // Each kind builds its own URL shape.
     expect(body).toContain("/zh-TW/life/newer");
     expect(body).toContain("/zh-TW/guides/howto/older");
+    expect(body).toContain("<author><name>Mokaair</name></author>");
+    expect(body).toContain('<category term="ai-news" label="AI 快訊"/>');
     // The feed's own timestamp is the newest article's, not "now".
     expect(body).toContain("<updated>2026-09-18T00:00:00.000Z</updated>");
   });

@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { splitArticleExtras,
   articleSearchHref, guideHeadings, guideHref, guideListHref, guideSection, highlight, isExpired, isGuideKind,
-  isGuidePartnerLink, isGuideSearchHit, isGuideSearchResult, isGuideSummary, isPublishedGuide, isTravelGuideKind,
-  partnerClickPath, readingMinutes, splitGuideBlocks,
+  isGuidePartnerLink, isGuideSearchHit, isGuideSearchResult, isGuideSearchSort, isGuideSummary, isPublishedGuide,
+  isSyntheticNewsArtwork, isSyntheticNewsBlock, isTravelGuideKind,
+  partnerClickPath, readingMinutes, splitGuideBlocks, visibleGuideHero,
   type GuideBlock,
 } from "./guides";
 
@@ -251,12 +252,17 @@ describe("reading the body", () => {
 });
 
 describe("article search", () => {
-  it("builds the results URL from the query, the section and the offset only", () => {
+  it("builds the results URL from the query, the section, optional topic/sort and the offset only", () => {
     expect(articleSearchHref("")).toBe("/search/articles");
     expect(articleSearchHref(" JR Pass ")).toBe("/search/articles?q=JR+Pass");
     expect(articleSearchHref("機器學習", { section: "life" })).toBe("/search/articles?q=%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92&section=life");
+    expect(articleSearchHref("Gemini", { section: "life", topic: "ai", sort: "latest" })).toBe("/search/articles?q=Gemini&section=life&topic=ai&sort=latest");
+    expect(articleSearchHref("Gemini", { sort: "relevance" })).toBe("/search/articles?q=Gemini");
     expect(articleSearchHref("x", { section: null, offset: 0 })).toBe("/search/articles?q=x");
     expect(articleSearchHref("x", { offset: 20 })).toBe("/search/articles?q=x&offset=20");
+    expect(isGuideSearchSort("relevance")).toBe(true);
+    expect(isGuideSearchSort("latest")).toBe(true);
+    expect(isGuideSearchSort("popular")).toBe(false);
   });
 
   it("guards a hit and a result the way the API shapes them", () => {
@@ -324,3 +330,37 @@ describe("summary and FAQ blocks", () => {
       .toBeGreaterThan(readingMinutes(base));
   });
 });
+
+describe("synthetic news artwork helpers", () => {
+  const realHero = {
+    src: "/guides/narita-to-tokyo/hero.jpg",
+    alt: "Skyliner",
+    width: 1600,
+    height: 900,
+    credit: { author: "Mokaair", license: "© Mokaair", source_url: null },
+  };
+
+  it("suppresses news-assets rasters and Original editorial artwork placeholders while keeping real editorial images", () => {
+    const byPath = { ...realHero, src: "/guides/news-assets/0123456789abcdef-hero.webp" };
+    const byLicense = { ...realHero, credit: { author: "Mokaair", license: "Original editorial artwork", source_url: null } };
+    expect(isSyntheticNewsArtwork(byPath)).toBe(true);
+    expect(isSyntheticNewsArtwork(byLicense)).toBe(true);
+    expect(isSyntheticNewsArtwork(realHero)).toBe(false);
+    expect(isSyntheticNewsArtwork(null)).toBe(false);
+    expect(visibleGuideHero(byPath)).toBeNull();
+    expect(visibleGuideHero(byLicense)).toBeNull();
+    expect(visibleGuideHero(realHero)).toBe(realHero);
+    expect(visibleGuideHero(undefined)).toBeNull();
+  });
+
+  it("identifies synthetic news-assets body image blocks without touching guide maps or paragraphs", () => {
+    expect(isSyntheticNewsBlock({
+      type: "image", src: "/guides/news-assets/0123456789abcdef-diagram.svg", alt: "x", width: 1600, height: 900,
+    })).toBe(true);
+    expect(isSyntheticNewsBlock({
+      type: "image", src: "/guides/narita-to-tokyo/map.svg", alt: "map", width: 1600, height: 900,
+    })).toBe(false);
+    expect(isSyntheticNewsBlock({ type: "paragraph", text: "hi" })).toBe(false);
+  });
+});
+

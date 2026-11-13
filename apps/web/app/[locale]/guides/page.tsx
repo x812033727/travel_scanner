@@ -89,16 +89,19 @@ export default async function GuidesHubPage({ params }: { params: Promise<{ loca
         />
 
         {sections.map((section) => (
-          <section key={section.kind} className="mt-10">
-            <div className="flex flex-wrap items-baseline justify-between gap-3">
-              <h2 className="text-2xl font-bold tracking-tight">{section.heading}</h2>
-              <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={guideListHref(section.kind)}>
+          <section key={section.kind} className="mt-12">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] pb-3">
+              <h2 className="portal-section-heading text-2xl font-extrabold tracking-tight">{section.heading}</h2>
+              <Link
+                className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]"
+                href={guideListHref(section.kind)}
+              >
                 {t("guides.seeAll")}
               </Link>
             </div>
-            <p className="mt-2 max-w-2xl leading-7 text-[var(--muted)]">{section.lead}</p>
+            <p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">{section.lead}</p>
             {section.rows.length ? (
-              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+              <ul className="mt-4 grid gap-4 sm:grid-cols-2">
                 {section.rows.map((article, index) => (
                   <GuideCard
                     key={`${article.kind}:${article.slug}`}
