@@ -15,12 +15,16 @@ scope:
   - apps/api/tests/test_guides_search.py
   - apps/api/app/news_automation/ai.py
   - apps/api/tests/test_news_ai.py
+  - apps/web/app/globals.css
+  - apps/web/app/(ads-public)/[locale]/guides/[kind]/[slug]/page.test.tsx
   - apps/web/app/sitemap-news.xml
   - apps/web/app/feed.xml
   - apps/web/app/llms.txt
   - apps/web/app/[locale]/page.tsx
+  - apps/web/app/[locale]/guides/page.tsx
   - apps/web/app/[locale]/life/page.tsx
   - apps/web/app/[locale]/search/articles
+  - apps/web/components/content-blocks.tsx
   - apps/web/components/home-guides.tsx
   - apps/web/components/home-guides.test.tsx
   - apps/web/components/home-portal-tabs.tsx
@@ -59,16 +63,16 @@ Wave 1 (`#2094`) repositioned Mokaair as an information-publishing and discovery
 - [x] `/sitemap-news.xml` serves valid Google News Sitemap XML for dated news published in the last 48 hours across all 5 locales (`zh-tw`, `zh-cn`, `en`, `ja`, `ko` language codes) and answers `503` with `Retry-After: 600` on upstream failure, without altering `/sitemap.xml` children or `robots.ts` `sitemap`.
 - [x] Published articles (`guideArticleMetadata`) and `/` (`app/[locale]/page.tsx`) emit `googleBot` `max-image-preview: "large"`, `max-snippet: -1`, `max-video-preview: -1` while hub pages keep `<meta name="robots">` count 0 when indexable (`e2e/seo.spec.ts` invariant).
 - [x] `/feed.xml` emits `<author><name>Mokaair</name></author>` and `<category>` tags, and `/llms.txt` lists `/feed.xml` and `/sitemap-news.xml`.
-- [x] Published article pages render a zero-external-script share bar (Copy Canonical Link, LINE share link, progressive Web Share), progressive scroll-spy TOC with reading progress and back-to-top, and a desktop right-rail Trending recirculation card (even for `< 3` heading news articles when trending items exist).
-- [x] Homepage category tabs expand up to 8 articles (lead card featured + matching series hubs) while keeping `"all"` overview compact at 4 per column; `NewsList` supports `showTopic` on `/life` and `showDescription` on news topic hubs.
-- [x] Backend `/guides/search` falls back cleanly on zero hits by stripping CJK/English intent modifiers (`推薦`, `教學`, `攻略`, `比較`, etc.) when core entity terms remain and expanding Taiwan/CJK colloquial synonyms (`日幣`/`日圓`, `韓幣`/`韓元`, `台幣`/`新台幣`, `網卡`/`esim`, `筆電`/`筆記型電腦`), and `SiteSearchDialog` + `/search/articles` surface trending articles and `news_date`.
+- [x] Published article pages render a zero-external-script share bar (Copy Canonical Link, LINE share link, progressive Web Share), progressive scroll-spy TOC + mobile top progress bar / floating back-to-top, elevated mobile/desktop reading sheet, and a desktop + mobile Trending recirculation card.
+- [x] Homepage and hubs apply a cohesive, WCAG-compliant editorial visual system (`.portal-hero-shell`, `.portal-scroll-strip`, `.portal-card-surface`, `.portal-section-heading`, `.article-h2`), compact mobile horizontal sub-lead news cards, ranked `#01–#03` trending badges, expanded category tabs (up to 8 articles + matching series hubs), and `NewsList` `showDescription` on news topic hubs.
+- [x] Backend `/guides/search` falls back cleanly on zero hits by stripping CJK/English intent modifiers (`推薦`, `教學`, `攻略`, `比較`, etc.) when core entity terms remain and expanding Taiwan/CJK colloquial synonyms (`日幣`/`日圓`, `韓幣`/`韓元`, `台幣`/`新台幣`, `網卡`/`esim`, `筆電`/`筆記型電腦`), and `SiteSearchDialog` + `/search/articles` surface trending articles, mobile-safe sizing, and `news_date`.
 
 ## Steps
 
 - [x] Upgrade `apps/api/app/guides/search.py` and `apps/api/app/news_automation/ai.py` with tests in `test_guides_search.py` and `test_news_ai.py`.
 - [x] Add `apps/web/lib/news-sitemap.ts` (+ unit tests), `apps/web/app/sitemap-news.xml/route.ts`, Discover `googleBot` metadata on `/` and published articles, and `/feed.xml` + `/llms.txt` improvements.
-- [x] Add 5-locale UI strings in `common.json` and `navigation.json`, implement `ArticleShareBar`, `ArticleTocRail`, and desktop right-rail Trending recirculation in `article-page.tsx` and `article.tsx`.
-- [x] Upgrade `home-guides.tsx`, `home-portal-tabs.tsx`, `news-list.tsx`, `life/page.tsx`, `topic-hub-page.tsx`, `site-search-dialog.tsx`, `search/articles/page.tsx`, `search-results.tsx`, and `tools/e2e-runtime-api.mjs`.
+- [x] Add 5-locale UI strings in `common.json` and `navigation.json`, implement `ArticleShareBar`, `ArticleTocRail` (`ArticleMobileProgress`), and desktop/mobile Trending recirculation in `article-page.tsx` and `article.tsx`.
+- [x] Polish mobile UX and editorial visual system across `globals.css`, `home-guides.tsx`, `home-portal-tabs.tsx`, `card.tsx`, `hub-hero.tsx`, `topic-hub-page.tsx`, `topic-tiles.tsx`, `search-form.tsx`, `search-results.tsx`, `site-search-dialog.tsx`, `breadcrumb.tsx`, `content-blocks.tsx`, and `tools/e2e-runtime-api.mjs`.
 - [x] Run `check:tasks`, `check:i18n`, `lint:web`, `typecheck:web`, `vitest`, `test:tools`, and API `ruff`/`mypy`/`pytest`.
 
 ## How to verify

@@ -336,10 +336,12 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
       googleBot: { "max-image-preview": "large", "max-snippet": -1 },
     });
 
-    render(await renderGuideArticle({ locale: "en", kind: "life", slug: "short-news-20261113" }));
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: "short-news-20261113" }));
     expect(screen.getByRole("button", { name: "複製連結" })).toBeTruthy();
     expect(screen.getByRole("link", { name: "LINE 分享" }).getAttribute("href")).toContain("social-plugins.line.me/lineit/share");
+    expect(container.querySelector("div.fixed.inset-x-0.lg\\:hidden")).not.toBeNull();
     const trendingSection = screen.getByRole("region", { name: "熱門閱讀" });
+    expect(trendingSection.closest("aside")?.className).not.toContain("hidden");
     expect(within(trendingSection).getByRole("link", { name: "日本 eSIM 實測比較" })).toBeTruthy();
     expect(within(trendingSection).queryByText("Self article should be excluded")).toBeNull();
   });

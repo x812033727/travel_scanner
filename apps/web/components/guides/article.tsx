@@ -208,8 +208,8 @@ export function GuideArticle({
             </Link>
           ) : null}
         </p>
-        <h1 className="mt-3.5 text-3xl font-extrabold leading-[1.2] tracking-tight md:text-4xl">{document.title}</h1>
-        <p className="mt-3.5 text-lg leading-8 text-[var(--muted)]">{document.description}</p>
+        <h1 className="mt-3 text-2xl font-extrabold leading-[1.28] tracking-tight sm:mt-3.5 sm:text-3xl md:text-4xl md:leading-[1.2]">{document.title}</h1>
+        <p className="mt-3 text-base leading-7 text-[var(--muted)] sm:mt-3.5 sm:text-lg sm:leading-8">{document.description}</p>
         {isGeminiHub ? <a href="#series-directory" className="mt-3 inline-flex min-h-11 items-center text-[var(--teal)] underline">{geminiCopy.start}</a> : null}
         {state.news_date || (modified && modified > published) || readingTime ? (
           <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 border-y border-[var(--line)] py-2.5 text-sm text-[var(--muted)]">
@@ -271,13 +271,13 @@ export function GuideArticle({
         </nav>
       ) : null}
       {(sidebarToc || state.series?.current) && headings.length >= CONTENTS_MIN_HEADINGS ? (
-        <details open={!state.series?.current} className="rounded-2xl border border-[var(--line)] bg-[var(--surface-tint)]/55 px-5 py-3 shadow-[var(--shadow-sm)] lg:hidden">
-          <summary className="flex min-h-11 cursor-pointer items-center font-bold text-[var(--teal-dark)]">{labels.contents}</summary>
-          <ol className="mt-2 space-y-2 pb-1 text-sm leading-6">
+        <details open={!state.series?.current} className="group rounded-2xl border border-[var(--line)] bg-[color-mix(in_srgb,var(--teal-soft)_38%,var(--surface))] px-4 py-2.5 shadow-[var(--shadow-sm)] sm:px-5 sm:py-3 lg:hidden">
+          <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 font-bold text-[var(--teal-dark)] after:shrink-0 after:font-mono after:text-base after:text-[var(--muted)] after:content-['+'] group-open:after:content-['−'] [&::-webkit-details-marker]:hidden">{labels.contents}</summary>
+          <ol className="mt-1.5 space-y-1.5 border-t border-[var(--line)] pb-1.5 pt-2.5 text-sm leading-6">
             {headings.map((heading, index) => (
               <li key={heading.id}>
-                <a className="text-[var(--ink)] underline decoration-[var(--line)] underline-offset-4 hover:text-[var(--teal)]" href={`#${heading.id}`}>
-                  {index + 1}. {heading.text}
+                <a className="inline-block py-1 text-[var(--ink)] underline decoration-[var(--line)] underline-offset-4 hover:text-[var(--teal)]" href={`#${heading.id}`}>
+                  <span className="mr-1 font-mono text-[length:var(--text-xs)] font-semibold text-[var(--muted)]">{index + 1}.</span> {heading.text}
                 </a>
               </li>
             ))}

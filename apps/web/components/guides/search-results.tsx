@@ -27,7 +27,7 @@ export function Highlighted({ text, terms }: { text: string; terms: readonly str
 export function SearchResultCard({ hit, labels }: { hit: GuideSearchHit; labels: SearchResultLabels }) {
   const hero = visibleGuideHero(hit.hero);
   return (
-    <li className="group relative flex gap-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--teal)] hover:shadow-[var(--shadow-md)]">
+    <li className="portal-card-surface group relative flex items-start gap-3.5 rounded-2xl p-4 sm:gap-4 sm:p-5">
       {hero ? (
         <GuideImage
           src={hero.src}
@@ -36,7 +36,7 @@ export function SearchResultCard({ hit, labels }: { hit: GuideSearchHit; labels:
           height={hero.height}
           loading="lazy"
           decoding="async"
-          className="hidden aspect-video w-36 flex-none rounded-xl object-cover sm:block"
+          className="hidden h-20 w-24 flex-none rounded-xl object-cover ring-1 ring-black/5 min-[380px]:block sm:aspect-video sm:h-auto sm:w-36"
         />
       ) : null}
       <div className="min-w-0 flex-1">
@@ -50,7 +50,7 @@ export function SearchResultCard({ hit, labels }: { hit: GuideSearchHit; labels:
           {hit.destination_label ? <span>{hit.destination_label}</span> : null}
           {hit.topics.slice(0, 2).map((topic) => <span key={topic.slug}>{topic.label}</span>)}
         </p>
-        <h3 className="mt-2 text-lg font-bold tracking-tight">
+        <h3 className="mt-2 text-[1.0625rem] font-bold leading-snug tracking-tight sm:text-lg">
           <Link
             className="text-[var(--ink)] underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:text-[var(--teal)] group-hover:underline"
             href={guideHref(hit.kind, hit.slug)}
@@ -58,7 +58,7 @@ export function SearchResultCard({ hit, labels }: { hit: GuideSearchHit; labels:
             <Highlighted text={hit.title} terms={hit.matched} />
           </Link>
         </h3>
-        <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
+        <p className="mt-1.5 text-sm leading-6 text-[var(--muted)] sm:mt-2">
           <Highlighted text={hit.snippet || hit.description} terms={hit.matched} />
         </p>
       </div>

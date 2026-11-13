@@ -11,7 +11,7 @@ import { seriesCopy } from "@/lib/guide-series-copy";
 import { getGeminiHubReference, getVisibleGeminiSeries, isGeminiSeriesPage, projectGeminiArticle } from "@/lib/gemini-series.server";
 import { publishedGeminiSeries } from "@/lib/gemini-series-projection";
 import { CONTENTS_MIN_HEADINGS, GuideArticle, type GuideArticleLabels } from "@/components/guides/article";
-import { ArticleTocRail } from "@/components/guides/article-toc-rail";
+import { ArticleMobileProgress, ArticleTocRail } from "@/components/guides/article-toc-rail";
 import type { GuideCardLabels } from "@/components/guides/card";
 import { Breadcrumb } from "@/components/guides/breadcrumb";
 import { Backlinks, RelatedGrid } from "@/components/guides/related-grid";
@@ -342,13 +342,21 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   const isCodexHub = kind === "life" && slug === HUB_SLUG;
   const isHub = isCodexHub || Boolean(state.series && !state.series.current && state.series.hub.slug === slug);
   const useApiDirectory = isHub && !geminiSeries;
-  const [series, trendingResult] = await Promise.all([
+  const fetchRailTrending = async (): Promise<GuideSummary[]> => {
+    if (isHub) return [];
+    try {
+      if (typeof guidesServer.getTrendingGuides !== "function") return [];
+      const result = await guidesServer.getTrendingGuides(locale, {}, 6);
+      return Array.isArray(result?.articles) ? result.articles : [];
+    } catch {
+      return [];
+    }
+  };
+  const [series, trendingArticles] = await Promise.all([
     useApiDirectory ? getGuideSeries(isCodexHub ? "codex" : state.series!.slug, locale) : Promise.resolve(null),
-    !isHub && typeof guidesServer.getTrendingGuides === "function"
-      ? guidesServer.getTrendingGuides(locale, {}, 6)
-      : Promise.resolve({ articles: [] as GuideSummary[], next_cursor: null, available: false }),
+    fetchRailTrending(),
   ]);
-  const railTrending = (Array.isArray(trendingResult?.articles) ? trendingResult.articles : [])
+  const railTrending = trendingArticles
     .filter((item) => `${item.kind}:${item.slug}` !== `${kind}:${slug}`)
     .slice(0, 5);
   if (state.series?.current) trail.push({ name: state.series.hub.title, path: guideHref(state.series.hub.kind, state.series.hub.slug) });
@@ -368,6 +376,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   return (
     <>
       <SiteHeader />
+      {!isHub ? <ArticleMobileProgress backToTopLabel={t("guides.backToTop")} /> : null}
       <StructuredData
         data={[
           breadcrumbs(locale, [...trail, { name: state.document.title, path: guideHref(kind, slug) }]),
@@ -415,12 +424,12 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
           }),
         ]}
       />
-      <main className={`mx-auto px-5 py-8 md:py-12 ${isHub || state.series || hasDesktopRail ? "max-w-6xl" : "max-w-3xl"}`}>
+      <main className={`mx-auto px-5 py-6 sm:py-8 md:py-12 ${isHub || state.series || hasDesktopRail ? "max-w-6xl" : "max-w-3xl"}`}>
         <Breadcrumb trail={trail} current={state.document.title} label={t("guides.breadcrumb")} />
-        <div className={hasDesktopRail ? "grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_17rem] lg:items-start" : ""}>
+        <div className={hasDesktopRail ? "grid min-w-0 gap-6 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:items-start lg:gap-8" : ""}>
           <div
             className={elevateReadingSheet
-              ? "min-w-0 sm:rounded-3xl sm:border sm:border-[var(--line)] sm:bg-[var(--surface)] sm:p-7 sm:shadow-[var(--shadow-sm)] md:p-10"
+              ? "min-w-0 rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-5 shadow-[var(--shadow-sm)] sm:rounded-3xl sm:p-7 md:p-10"
               : "min-w-0"}
           >
             <GuideArticle
@@ -447,7 +456,11 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
             />
           </div>
           {hasDesktopRail ? (
-            <aside className="hidden lg:sticky lg:top-24 lg:block lg:space-y-5">
+            <aside
+              className={railTrending.length > 0
+                ? "min-w-0 space-y-5 lg:sticky lg:top-24"
+                : "hidden lg:sticky lg:top-24 lg:block lg:space-y-5"}
+            >
               {hasDesktopToc ? (
                 <ArticleTocRail
                   headings={headings}
@@ -461,32 +474,45 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
               {railTrending.length > 0 ? (
                 <section
                   aria-label={nav("searchTrending")}
-                  className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]"
+                  className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-sm)] sm:p-5"
                 >
                   <h2 className="border-l-4 border-[var(--teal)] pl-3 text-sm font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">
                     {nav("searchTrending")}
                   </h2>
-                  <ol className="mt-3.5 space-y-3 text-sm leading-6">
-                    {railTrending.map((item, index) => (
-                      <li key={`${item.kind}:${item.slug}`} className="flex items-start gap-2.5">
-                        <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-[var(--teal-soft)] font-mono text-xs font-bold tabular-nums text-[var(--teal-dark)]">
-                          {index + 1}
-                        </span>
-                        <div className="min-w-0">
-                          <Link
-                            href={guideHref(item.kind, item.slug)}
-                            className="line-clamp-2 font-semibold text-[var(--ink)] transition-colors hover:text-[var(--teal)]"
+                  <ol className="mt-3 divide-y divide-[var(--line)] text-sm leading-6">
+                    {railTrending.map((item, index) => {
+                      const rankClass = index === 0
+                        ? "bg-[var(--teal-fill)] text-[var(--primary-text)]"
+                        : index < 3
+                          ? "bg-[var(--coral-soft)] text-[var(--coral)]"
+                          : "border border-[var(--line)] bg-[var(--paper)] text-[var(--muted)]";
+                      return (
+                        <li
+                          key={`${item.kind}:${item.slug}`}
+                          className="group relative -mx-2 flex items-start gap-2.5 rounded-xl px-2 py-2.5 transition-colors hover:bg-[var(--paper)]/70"
+                        >
+                          <span
+                            aria-hidden
+                            className={`mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md font-mono text-xs font-extrabold tabular-nums ${rankClass}`}
                           >
-                            {item.title}
-                          </Link>
-                          {item.topics[0] ? (
-                            <span className="mt-0.5 block text-xs text-[var(--muted)]">
-                              {item.topics[0].label}
-                            </span>
-                          ) : null}
-                        </div>
-                      </li>
-                    ))}
+                            {index + 1}
+                          </span>
+                          <div className="min-w-0">
+                            <Link
+                              href={guideHref(item.kind, item.slug)}
+                              className="line-clamp-2 font-semibold text-[var(--ink)] underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:text-[var(--teal)] group-hover:underline"
+                            >
+                              {item.title}
+                            </Link>
+                            {item.topics[0] ? (
+                              <span className="mt-0.5 block text-xs text-[var(--muted)]">
+                                {item.topics[0].label}
+                              </span>
+                            ) : null}
+                          </div>
+                        </li>
+                      );
+                    })}
                   </ol>
                 </section>
               ) : null}

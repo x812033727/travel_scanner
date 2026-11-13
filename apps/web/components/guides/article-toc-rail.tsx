@@ -8,22 +8,7 @@ export type ArticleTocHeading = {
   text: string;
 };
 
-export function ArticleTocRail({
-  headings,
-  contentsLabel,
-  backToTopLabel,
-  progressLabel,
-  seriesBackHref,
-  seriesBackLabel,
-}: {
-  headings: readonly ArticleTocHeading[];
-  contentsLabel: string;
-  backToTopLabel: string;
-  progressLabel: string;
-  seriesBackHref?: string | null;
-  seriesBackLabel?: string | null;
-}) {
-  const [activeId, setActiveId] = useState<string>(headings[0]?.id ?? "");
+function useScrollProgress(): number {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -42,6 +27,61 @@ export function ArticleTocRail({
     window.addEventListener("scroll", updateProgress, { passive: true });
     return () => window.removeEventListener("scroll", updateProgress);
   }, []);
+
+  return progress;
+}
+
+/**
+ * Mobile/tablet reading progress bar pinned under the viewport top edge plus a floating
+ * back-to-top button that clears the bottom tab bar once the reader is deep into an article.
+ */
+export function ArticleMobileProgress({ backToTopLabel }: { backToTopLabel: string }) {
+  const progress = useScrollProgress();
+
+  return (
+    <>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-x-0 z-40 h-[3px] bg-transparent lg:hidden"
+        style={{ top: "var(--ad-anchor-top, 0px)" }}
+      >
+        <div
+          className="h-full bg-[linear-gradient(90deg,var(--teal)_0%,var(--coral-bright)_100%)] transition-[width] duration-150"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+      {progress >= 28 ? (
+        <button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          style={{ bottom: "calc(5.25rem + env(safe-area-inset-bottom) + var(--ad-anchor-bottom, 0px))" }}
+          className="fixed right-4 z-40 inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--teal)] bg-[var(--surface)] px-3.5 py-2 text-xs font-semibold text-[var(--teal-dark)] shadow-[var(--shadow-md)] transition-transform active:scale-95 lg:hidden"
+        >
+          <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
+          <span>{backToTopLabel}</span>
+        </button>
+      ) : null}
+    </>
+  );
+}
+
+export function ArticleTocRail({
+  headings,
+  contentsLabel,
+  backToTopLabel,
+  progressLabel,
+  seriesBackHref,
+  seriesBackLabel,
+}: {
+  headings: readonly ArticleTocHeading[];
+  contentsLabel: string;
+  backToTopLabel: string;
+  progressLabel: string;
+  seriesBackHref?: string | null;
+  seriesBackLabel?: string | null;
+}) {
+  const [activeId, setActiveId] = useState<string>(headings[0]?.id ?? "");
+  const progress = useScrollProgress();
 
   useEffect(() => {
     if (!headings.length || typeof IntersectionObserver === "undefined") return;
@@ -69,7 +109,7 @@ export function ArticleTocRail({
   return (
     <nav
       aria-label={contentsLabel}
-      className="sticky top-24 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]"
+      className="sticky top-24 hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)] lg:block"
     >
       {seriesBackHref && seriesBackLabel ? (
         <a
@@ -97,7 +137,7 @@ export function ArticleTocRail({
             aria-valuemin={0}
             aria-valuemax={100}
             aria-valuenow={progress}
-            className="mt-2.5 h-1 w-full overflow-hidden rounded-full bg-[var(--line)]"
+            className="mt-2.5 h-1.5 w-full overflow-hidden rounded-full bg-[var(--line)]"
           >
             <div
               className="h-full rounded-full bg-[var(--teal)] transition-[width] duration-150"
@@ -114,9 +154,9 @@ export function ArticleTocRail({
                     href={`#${heading.id}`}
                     aria-current={isActive ? "location" : undefined}
                     onClick={() => setActiveId(heading.id)}
-                    className={`block rounded-lg px-2 py-1.5 transition-colors ${
+                    className={`block rounded-lg px-2.5 py-1.5 transition-colors ${
                       isActive
-                        ? "bg-[var(--teal-soft)]/70 font-semibold text-[var(--teal-dark)]"
+                        ? "bg-[var(--teal-soft)] font-semibold text-[var(--teal-dark)]"
                         : "text-[var(--ink)] hover:bg-[var(--teal-soft)]/55 hover:text-[var(--teal-dark)]"
                     }`}
                   >
@@ -130,11 +170,11 @@ export function ArticleTocRail({
             })}
           </ol>
 
-          <div className="mt-3.5 border-t border-[var(--line)] pt-2.5">
+          <div className="mt-3.5 border-t border-[var(--line)] pt-2">
             <button
               type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="inline-flex min-h-8 items-center gap-1.5 text-xs font-semibold text-[var(--muted)] transition-colors hover:text-[var(--teal-dark)]"
+              className="inline-flex min-h-11 items-center gap-1.5 text-xs font-semibold text-[var(--muted)] transition-colors hover:text-[var(--teal-dark)]"
             >
               <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
               <span>{backToTopLabel}</span>

@@ -101,11 +101,11 @@ export function SiteSearchDialog() {
         role="dialog"
         aria-modal="true"
         aria-label={nav("search")}
-        className="absolute inset-x-0 top-0 mx-auto max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-b-[2rem] bg-[var(--surface)] p-5 shadow-2xl sm:top-16 sm:rounded-[2rem]"
+        className="absolute inset-x-0 top-0 mx-auto max-h-[88dvh] w-full max-w-2xl overflow-y-auto rounded-b-[1.75rem] border-b border-[var(--line)] bg-[var(--surface)] px-4 pb-[calc(1.25rem+env(safe-area-inset-bottom))] pt-4 shadow-2xl sm:top-16 sm:max-h-[85vh] sm:rounded-[2rem] sm:border sm:p-6"
       >
         <div className="mb-3 flex items-center justify-between gap-3">
           <p className="text-sm font-bold text-[var(--muted)]">{nav("search")}</p>
-          <button type="button" aria-label={nav("closeSearch")} onClick={() => setOpen(false)} className="grid h-11 w-11 place-items-center rounded-full border border-[var(--line)]">
+          <button type="button" aria-label={nav("closeSearch")} onClick={() => setOpen(false)} className="grid h-11 w-11 place-items-center rounded-full border border-[var(--line)] bg-[var(--paper)]/60 transition-colors hover:border-[var(--teal)]">
             <X size={18} />
           </button>
         </div>
@@ -119,9 +119,9 @@ export function SiteSearchDialog() {
                   <Link
                     href={guideHref(item.kind, item.slug)}
                     onClick={() => setOpen(false)}
-                    className="flex min-h-10 items-center gap-2.5 rounded-xl px-2.5 py-1.5 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-[var(--paper)] hover:text-[var(--teal)]"
+                    className="flex min-h-11 items-center gap-2.5 rounded-xl px-2.5 py-2 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-[var(--paper)] hover:text-[var(--teal)]"
                   >
-                    <span className="w-5 flex-none font-mono text-xs font-bold tabular-nums text-[var(--teal)]">{index + 1}</span>
+                    <span className="inline-grid h-6 w-6 flex-none place-items-center rounded-md bg-[var(--teal-soft)] font-mono text-xs font-bold tabular-nums text-[var(--teal-dark)]">{index + 1}</span>
                     <span className="line-clamp-1">{item.title}</span>
                   </Link>
                 </li>
@@ -131,13 +131,13 @@ export function SiteSearchDialog() {
         ) : null}
         <div data-testid="search-hot-topics" className="mt-4 border-t border-[var(--line)] pt-3">
           <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">{nav("searchHotTopics")}</p>
-          <div className="mt-2 flex flex-wrap gap-2">
+          <div className="portal-scroll-strip mt-2 flex items-center gap-2 sm:flex-wrap sm:overflow-visible">
             {QUICK_TOPICS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--paper)] px-3.5 text-xs font-semibold text-[var(--ink)] hover:border-[var(--teal)] hover:text-[var(--teal)]"
+                className="inline-flex min-h-11 shrink-0 snap-start items-center whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--paper)] px-3.5 text-xs font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
               >
                 {nav(item.labelKey)}
               </Link>

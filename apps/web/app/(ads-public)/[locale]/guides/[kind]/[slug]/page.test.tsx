@@ -86,7 +86,11 @@ describe("a published article", () => {
     const metadata = await generateMetadata({ params: params() }, emptyParent);
     expect(metadata.title).toBe("成田機場到東京車站怎麼走");
     expect(Object.keys(metadata.alternates!.languages!).sort()).toEqual(["ja", "zh-TW"]);
-    expect(metadata.robots).toBeUndefined();
+    expect(metadata.robots).toMatchObject({
+      index: true,
+      follow: true,
+      googleBot: { "max-image-preview": "large", "max-snippet": -1 },
+    });
   });
 
   it("offers x-default only when the English version exists", async () => {
@@ -271,7 +275,11 @@ describe("an expired notice", () => {
   it("stays indexable, because withdrawing the URL would break existing links", async () => {
     mocks.article.mockResolvedValue(expired);
     const metadata = await generateMetadata({ params: params({ kind: "intel" }) }, emptyParent);
-    expect(metadata.robots).toBeUndefined();
+    expect(metadata.robots).toMatchObject({
+      index: true,
+      follow: true,
+      googleBot: { "max-image-preview": "large", "max-snippet": -1 },
+    });
   });
 });
 

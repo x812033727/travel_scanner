@@ -24,11 +24,11 @@ export function SearchForm({
   labels: SearchFormLabels;
 }) {
   return (
-    <form role="search" method="get" action={action} className="mt-6 flex flex-wrap gap-2">
+    <form role="search" method="get" action={action} className="mt-5 flex flex-wrap gap-2 sm:mt-6">
       <label className="sr-only" htmlFor="article-search-q">{labels.label}</label>
       <input
         id="article-search-q"
-        className="app-field min-w-0 flex-1 basis-64 focus-visible:border-[var(--teal)] focus-visible:outline-none"
+        className="app-field min-h-12 min-w-0 flex-1 basis-48 bg-[var(--surface)] focus-visible:border-[var(--teal)] focus-visible:outline-none"
         type="search"
         name="q"
         defaultValue={q}
@@ -40,7 +40,7 @@ export function SearchForm({
       {section ? <input type="hidden" name="section" value={section} /> : null}
       {topic ? <input type="hidden" name="topic" value={topic} /> : null}
       {sort && sort !== "relevance" ? <input type="hidden" name="sort" value={sort} /> : null}
-      <button type="submit" className="app-primary-button min-h-12 px-5">
+      <button type="submit" className="app-primary-button min-h-12 w-full justify-center px-5 min-[440px]:w-auto">
         <Search size={18} aria-hidden />
         {labels.submit}
       </button>

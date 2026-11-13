@@ -71,7 +71,7 @@ export function ArticleShareBar({
         type="button"
         onClick={handleCopy}
         aria-live="polite"
-        className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--paper)]/75 px-3.5 py-1.5 text-xs font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/60 hover:text-[var(--teal-dark)]"
+        className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--paper)]/80 px-4 py-1.5 text-xs font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/60 hover:text-[var(--teal-dark)]"
       >
         {copied ? (
           <Check className="h-3.5 w-3.5 text-[var(--teal)]" aria-hidden="true" />
@@ -85,7 +85,7 @@ export function ArticleShareBar({
         href={lineShareHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--paper)]/75 px-3.5 py-1.5 text-xs font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/60 hover:text-[var(--teal-dark)]"
+        className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--paper)]/80 px-4 py-1.5 text-xs font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/60 hover:text-[var(--teal-dark)]"
       >
         <span>{labels.shareLine}</span>
       </a>
@@ -94,7 +94,7 @@ export function ArticleShareBar({
         <button
           type="button"
           onClick={handleWebShare}
-          className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--paper)]/75 px-3.5 py-1.5 text-xs font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/60 hover:text-[var(--teal-dark)]"
+          className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--paper)]/80 px-4 py-1.5 text-xs font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/60 hover:text-[var(--teal-dark)]"
         >
           <Share2 className="h-3.5 w-3.5 text-[var(--muted)]" aria-hidden="true" />
           <span>{labels.shareSystem}</span>
