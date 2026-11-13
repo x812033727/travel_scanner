@@ -394,18 +394,35 @@ export function bodyLayout(body) {
 
 export const HASHTAG_COUNT = 3;
 // The series hashtag that closes a description (D13: the first eighteen carried topic words only
-// and no series), by the video's category (schema.mjs VIDEO_CATEGORIES) or its series slug. A
-// category without a row gets no series hashtag.
+// and no series), by the video's series slug, episode slug prefix or category (schema.mjs
+// VIDEO_CATEGORIES). A bare "explainer" category without a series slug or prefix gets none.
 export const SERIES_HASHTAGS = {
   "ai-terms": "#AI名詞十分鐘",
   tutorial: "#AI工具教學",
   "ai-news": "#AI新聞拆解",
+  story: "#品牌故事",
+  curio: "#奇聞檔案局",
+  sothatswhy: "#原來如此事務所",
 };
 
-/** The series hashtag for a video: its series' slug first (a drama), then its category; null without a row. */
-export function seriesHashtag({ category = null, series = null } = {}) {
-  const slug = typeof series === "string" ? series : series?.slug;
-  return (slug && SERIES_HASHTAGS[slug]) ?? (category && SERIES_HASHTAGS[category]) ?? null;
+const SLUG_SERIES_PREFIXES = [
+  ["curio-", "curio"],
+  ["sothatswhy-", "sothatswhy"],
+  ["story-", "story"],
+];
+
+/**
+ * The series hashtag for a video: its series' slug first (a drama or dialogue series), then its
+ * episode slug prefix (curio-*, sothatswhy-*, story-*), then its category; null without a row.
+ */
+export function seriesHashtag({ category = null, series = null, slug = null } = {}) {
+  const seriesSlug = typeof series === "string" ? series : series?.slug;
+  if (seriesSlug && SERIES_HASHTAGS[seriesSlug]) return SERIES_HASHTAGS[seriesSlug];
+  if (typeof slug === "string") {
+    const match = SLUG_SERIES_PREFIXES.find(([prefix]) => slug.startsWith(prefix));
+    if (match) return SERIES_HASHTAGS[match[1]];
+  }
+  return (category && SERIES_HASHTAGS[category]) ?? null;
 }
 
 /**
@@ -428,8 +445,8 @@ export function hashtagsFrom(tags = [], count = HASHTAG_COUNT) {
  * (seriesHashtag) as the third. Without a series row there are two; a tag that already spells
  * the series does not take a topic slot.
  */
-export function descriptionHashtags({ tags = [], category = null, series = null } = {}) {
-  const suffix = seriesHashtag({ category, series });
+export function descriptionHashtags({ tags = [], category = null, series = null, slug = null } = {}) {
+  const suffix = seriesHashtag({ category, series, slug });
   const topics = hashtagsFrom(tags, HASHTAG_COUNT).filter((hashtag) => hashtag.toLowerCase() !== suffix?.toLowerCase()).slice(0, HASHTAG_COUNT - 1);
   return suffix ? [...topics, suffix] : topics;
 }
@@ -485,7 +502,7 @@ export function composeDescription({ body, timeline, chapterTitles = {}, article
   if (listed.length) parts.push(`📚 ${labels.sources}\n${listed.map((source) => `${source.title}${labels.colon}${tagMokaairLinks(source.url, utm)}`).join("\n")}`);
   const credits = pictureCredits(assets, locale);
   if (credits) parts.push(credits);
-  const hashtags = descriptionHashtags({ tags, category, series });
+  const hashtags = descriptionHashtags({ tags, category, series, slug: utm });
   if (hashtags.length) parts.push(hashtags.join(" "));
   return parts.join("\n\n");
 }
