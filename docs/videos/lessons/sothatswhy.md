@@ -78,3 +78,6 @@
   （`mokaair-sothatswhy-bookends-v3-endscreen`，hash 8226326…，intro 357 格、outro 630 格，核對 sha256），
   再用 `node tools/video/cli.mjs branding --series sothatswhy --json` 確認 selection 有東西。新容器開工時跟 `_series`、`_music` 一起還原。
   合成後檢查 `metrics.frames − total_frames = 987`；不是就停下來。已送審未核准的用 `assemble --adopt-branding` 重做（再跑 captions、qa、review-push）；已上傳的工具會拒絕，由站主決定要不要重傳。
+- **2026-11-13（P26）：重用種子編號時會看到舊的 `-trim.jpg`。** 同一個鏡頭第二次用同樣的 `--seed-offset` 重畫，新圖沒有紙邊就不會產生新的
+  `-trim.jpg`，舊一輪留下的 `<景>-21-trim.jpg` 還在；放大檢查若「有 trim 就用 trim」，看到的是舊提示詞的舊圖（P26 三個改成物件的鏡頭被判成
+  「還是所長比手勢」）。挑檔時 trim 比原圖舊就用原圖（mkround 已改成比較修改時間）；釘選前檢查沒有 pin 指向比原圖舊的 trim；每輪換一個沒用過的種子區段更省事。
