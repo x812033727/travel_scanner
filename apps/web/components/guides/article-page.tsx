@@ -11,6 +11,7 @@ import { seriesCopy } from "@/lib/guide-series-copy";
 import { getGeminiHubReference, getVisibleGeminiSeries, isGeminiSeriesPage, projectGeminiArticle } from "@/lib/gemini-series.server";
 import { publishedGeminiSeries } from "@/lib/gemini-series-projection";
 import { CONTENTS_MIN_HEADINGS, GuideArticle, type GuideArticleLabels } from "@/components/guides/article";
+import { ArticleTocRail } from "@/components/guides/article-toc-rail";
 import type { GuideCardLabels } from "@/components/guides/card";
 import { Breadcrumb } from "@/components/guides/breadcrumb";
 import { Backlinks, RelatedGrid } from "@/components/guides/related-grid";
@@ -30,8 +31,9 @@ import { splitArticleExtras, guideTopicHref, guideSection,
   type GuideArticleState, type GuideKind, type GuideSummary, type PublishedGuide,
 } from "@/lib/guides";
 import { getAdsenseSlot } from "@/lib/adsense.server";
+import * as guidesServer from "@/lib/guides.server";
 import { getGuideTopics, getGuideArticle, getGuideList, getGuideSeries } from "@/lib/guides.server";
-import { localeUrl } from "@/lib/seo";
+import { DISCOVER_ROBOTS, localeUrl } from "@/lib/seo";
 import { faqPage, definedTerm, breadcrumbs, guideArticle, type Crumb } from "@/lib/structured-data";
 
 /**
@@ -98,6 +100,7 @@ export async function guideArticleMetadata(
   return {
     title: state.document.title,
     description: state.document.description,
+    robots: DISCOVER_ROBOTS,
     alternates: {
       canonical: localeUrl(locale, path),
       languages: {
@@ -339,11 +342,21 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   const isCodexHub = kind === "life" && slug === HUB_SLUG;
   const isHub = isCodexHub || Boolean(state.series && !state.series.current && state.series.hub.slug === slug);
   const useApiDirectory = isHub && !geminiSeries;
-  const series = useApiDirectory ? await getGuideSeries(isCodexHub ? "codex" : state.series!.slug, locale) : null;
+  const [series, trendingResult] = await Promise.all([
+    useApiDirectory ? getGuideSeries(isCodexHub ? "codex" : state.series!.slug, locale) : Promise.resolve(null),
+    !isHub && typeof guidesServer.getTrendingGuides === "function"
+      ? guidesServer.getTrendingGuides(locale, {}, 6)
+      : Promise.resolve({ articles: [] as GuideSummary[], next_cursor: null, available: false }),
+  ]);
+  const railTrending = (Array.isArray(trendingResult?.articles) ? trendingResult.articles : [])
+    .filter((item) => `${item.kind}:${item.slug}` !== `${kind}:${slug}`)
+    .slice(0, 5);
   if (state.series?.current) trail.push({ name: state.series.hub.title, path: guideHref(state.series.hub.kind, state.series.hub.slug) });
   const headings = guideHeadings(extras.blocks);
   const hasDesktopToc = !isHub && (Boolean(state.series?.current) || headings.length >= CONTENTS_MIN_HEADINGS);
+  const hasDesktopRail = !isHub && (hasDesktopToc || railTrending.length > 0);
   const elevateReadingSheet = !isHub;
+  const canonicalUrl = localeUrl(locale, guideHref(kind, slug));
   const seriesDirectory = isCodexHub
     ? <LearningHub locale={locale} entries={learningEntries(locale, series?.entries ?? [])} available={Boolean(series)} />
     : useApiDirectory
@@ -402,9 +415,9 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
           }),
         ]}
       />
-      <main className={`mx-auto px-5 py-8 md:py-12 ${isHub || state.series || hasDesktopToc ? "max-w-6xl" : "max-w-3xl"}`}>
+      <main className={`mx-auto px-5 py-8 md:py-12 ${isHub || state.series || hasDesktopRail ? "max-w-6xl" : "max-w-3xl"}`}>
         <Breadcrumb trail={trail} current={state.document.title} label={t("guides.breadcrumb")} />
-        <div className={hasDesktopToc ? "grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_17rem] lg:items-start" : ""}>
+        <div className={hasDesktopRail ? "grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_17rem] lg:items-start" : ""}>
           <div
             className={elevateReadingSheet
               ? "min-w-0 sm:rounded-3xl sm:border sm:border-[var(--line)] sm:bg-[var(--surface)] sm:p-7 sm:shadow-[var(--shadow-sm)] md:p-10"
@@ -420,46 +433,63 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
               adsense={adsense}
               seriesHub={seriesDirectory}
               sidebarToc={hasDesktopToc}
-              constrainDiagrams={elevateReadingSheet || hasDesktopToc}
+              constrainDiagrams={elevateReadingSheet || hasDesktopRail}
+              share={!isHub ? {
+                url: canonicalUrl,
+                labels: {
+                  shareLabel: t("guides.shareLabel"),
+                  copyLink: t("guides.copyLink"),
+                  linkCopied: t("guides.linkCopied"),
+                  shareLine: t("guides.shareLine"),
+                  shareSystem: t("guides.shareSystem"),
+                },
+              } : undefined}
             />
           </div>
-          {hasDesktopToc ? (
-            <aside className="hidden lg:block">
-              <nav
-                aria-label={labels.contents}
-                className="sticky top-24 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]"
-              >
-                {state.series?.current ? (
-                  <a
-                    href={`/${locale}${guideHref(state.series.hub.kind, state.series.hub.slug)}`}
-                    className="mb-3 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--teal)] underline underline-offset-4"
-                  >
-                    {copy.back}
-                  </a>
-                ) : null}
-                {headings.length > 0 ? (
-                  <>
-                    <h2 className="border-l-4 border-[var(--teal)] pl-3 text-sm font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">
-                      {labels.contents}
-                    </h2>
-                    <ol className="mt-3.5 space-y-1.5 text-sm leading-6">
-                      {headings.map((heading, index) => (
-                        <li key={heading.id}>
-                          <a
-                            href={`#${heading.id}`}
-                            className="block rounded-lg px-2 py-1.5 text-[var(--ink)] transition-colors hover:bg-[var(--teal-soft)]/55 hover:text-[var(--teal-dark)]"
+          {hasDesktopRail ? (
+            <aside className="hidden lg:sticky lg:top-24 lg:block lg:space-y-5">
+              {hasDesktopToc ? (
+                <ArticleTocRail
+                  headings={headings}
+                  contentsLabel={labels.contents}
+                  backToTopLabel={t("guides.backToTop")}
+                  progressLabel={t("guides.readingProgress")}
+                  seriesBackHref={state.series?.current ? `/${locale}${guideHref(state.series.hub.kind, state.series.hub.slug)}` : null}
+                  seriesBackLabel={state.series?.current ? copy.back : null}
+                />
+              ) : null}
+              {railTrending.length > 0 ? (
+                <section
+                  aria-label={nav("searchTrending")}
+                  className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]"
+                >
+                  <h2 className="border-l-4 border-[var(--teal)] pl-3 text-sm font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">
+                    {nav("searchTrending")}
+                  </h2>
+                  <ol className="mt-3.5 space-y-3 text-sm leading-6">
+                    {railTrending.map((item, index) => (
+                      <li key={`${item.kind}:${item.slug}`} className="flex items-start gap-2.5">
+                        <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-[var(--teal-soft)] font-mono text-xs font-bold tabular-nums text-[var(--teal-dark)]">
+                          {index + 1}
+                        </span>
+                        <div className="min-w-0">
+                          <Link
+                            href={guideHref(item.kind, item.slug)}
+                            className="line-clamp-2 font-semibold text-[var(--ink)] transition-colors hover:text-[var(--teal)]"
                           >
-                            <span className="mr-1.5 font-mono text-[length:var(--text-xs)] font-semibold text-[var(--muted)]">
-                              {index + 1}.
+                            {item.title}
+                          </Link>
+                          {item.topics[0] ? (
+                            <span className="mt-0.5 block text-xs text-[var(--muted)]">
+                              {item.topics[0].label}
                             </span>
-                            {heading.text}
-                          </a>
-                        </li>
-                      ))}
-                    </ol>
-                  </>
-                ) : null}
-              </nav>
+                          ) : null}
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </section>
+              ) : null}
             </aside>
           ) : null}
         </div>

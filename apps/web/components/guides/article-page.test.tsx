@@ -9,6 +9,7 @@ const mocks = vi.hoisted(() => ({
     async () => ({ articles: [], next_cursor: null }),
   ),
   topics: vi.fn(async (): Promise<Record<string, unknown>[]> => []),
+  trending: vi.fn(async () => ({ articles: [] as Record<string, unknown>[], next_cursor: null, available: true })),
   permanentRedirect: vi.fn((url: string) => { throw new Error(`NEXT_REDIRECT ${url}`); }),
   headers: vi.fn(async () => new Headers()),
 }));
@@ -22,6 +23,7 @@ vi.mock("@/lib/guides.server", () => ({
   getGuideArticle: mocks.article, getGuideSeries: mocks.series,
   getGuideList: mocks.list,
   getGuideTopics: mocks.topics,
+  getTrendingGuides: mocks.trending,
 }));
 vi.mock("@/components/codex-learning/hub", () => ({ LearningHub: ({ entries, available }: { entries: LearningEntry[]; available: boolean }) =>
   <section aria-label="Learning directory" data-available={available}>
@@ -282,6 +284,64 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
     const newsGraph = graphs.find(item => item["@type"] === "NewsArticle");
     expect(newsGraph).not.toHaveProperty("image");
     expect(container.querySelector("img")).toBeNull();
+  });
+
+  it("emits Discover max-image-preview:large metadata and renders share actions plus right-rail trending recirculation", async () => {
+    mocks.article.mockResolvedValue({
+      ...state,
+      slug: "short-news-20261113",
+      series: null,
+      news_date: "2026-11-13",
+      topics: [{ slug: "ai-news", label: "AI 新聞" }],
+      document: {
+        ...document,
+        blocks: [{ type: "heading", level: 2, text: "重點" }],
+      },
+    });
+    mocks.trending.mockResolvedValueOnce({
+      articles: [
+        {
+          slug: "short-news-20261113",
+          kind: "life",
+          destination_id: null,
+          destination_label: null,
+          topics: [{ slug: "ai-news", label: "AI 新聞" }],
+          title: "Self article should be excluded",
+          description: "D",
+          published_at: "2026-11-13T00:00:00Z",
+          valid_until: null,
+          featured: false,
+        },
+        {
+          slug: "tokyo-esim-pick",
+          kind: "howto",
+          destination_id: "tokyo",
+          destination_label: "東京",
+          topics: [{ slug: "connectivity", label: "網路" }],
+          title: "日本 eSIM 實測比較",
+          description: "D",
+          published_at: "2026-11-13T01:00:00Z",
+          valid_until: null,
+          featured: true,
+        },
+      ],
+      next_cursor: null,
+      available: true,
+    });
+
+    const meta = await guideArticleMetadata({ locale: "en", kind: "life", slug: "short-news-20261113" });
+    expect(meta.robots).toMatchObject({
+      index: true,
+      follow: true,
+      googleBot: { "max-image-preview": "large", "max-snippet": -1 },
+    });
+
+    render(await renderGuideArticle({ locale: "en", kind: "life", slug: "short-news-20261113" }));
+    expect(screen.getByRole("button", { name: "複製連結" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "LINE 分享" }).getAttribute("href")).toContain("social-plugins.line.me/lineit/share");
+    const trendingSection = screen.getByRole("region", { name: "熱門閱讀" });
+    expect(within(trendingSection).getByRole("link", { name: "日本 eSIM 實測比較" })).toBeTruthy();
+    expect(within(trendingSection).queryByText("Self article should be excluded")).toBeNull();
   });
 });
 

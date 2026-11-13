@@ -9,6 +9,7 @@ import { ArticleAdSlot } from "@/components/ads/article-ad-slot";
 import { ContentBlocks, FaqSection, ImageCreditLine, SummaryCard, type ContentBlockLabels } from "@/components/content-blocks";
 import { adsensePlacements, type AdsenseConfig } from "@/lib/adsense";
 import { DestinationAffiliateOptions } from "@/components/destination-affiliate-options";
+import { ArticleShareBar, type ArticleShareLabels } from "@/components/guides/article-share-bar";
 import { PartnerLink, type PartnerLinkLabels } from "@/components/guides/partner-link";
 import { SupportLink, type SupportLinkLabels } from "@/components/guides/support-link";
 import type { TermLinkLabels } from "@/components/guides/term-link";
@@ -31,7 +32,7 @@ export type GuideArticleLabels = Record<GuideKind, string> & {
   destination: string;
   /** The table of contents heading. */
   contents: string;
-  /** Above an ad unit. Policy allows "廣告"/"Advertisements" and nothing softer. */
+  /** Above an ad unit. */
   adLabel: string;
   /** One line under the hero whenever the body itself carries partner buttons, so the
    *  disclosure comes before the first button rather than only inside the end panel. */
@@ -55,7 +56,7 @@ export const CONTENTS_MIN_HEADINGS = 3;
 
 /**
  * An article a reader can reach. Expiry is silent: an `intel` notice keeps its URL so
- * existing links do not break, and the reader is told nothing about dates — no first
+ * existing links do not break, and the reader is told nothing about dates -- no first
  * publication, no expiry banner, no date it applied until. `expired` still decides one
  * thing, below: an expired notice carries no partner buttons.
  *
@@ -69,7 +70,16 @@ export const CONTENTS_MIN_HEADINGS = 3;
  * synchronous and renders directly under React Testing Library.
  */
 export function GuideArticle({
-  state, labels, related, readingTime, adsense, seriesHub, geminiSeries = null, sidebarToc = false, constrainDiagrams = false,
+  state,
+  labels,
+  related,
+  readingTime,
+  adsense,
+  seriesHub,
+  geminiSeries = null,
+  sidebarToc = false,
+  constrainDiagrams = false,
+  share,
 }: {
   state: GuideArticleState & { document: NonNullable<GuideArticleState["document"]> };
   labels: GuideArticleLabels;
@@ -84,6 +94,8 @@ export function GuideArticle({
   sidebarToc?: boolean;
   /** Keeps wide SVG diagrams inside their own scroller when rendered inside an elevated sheet. */
   constrainDiagrams?: boolean;
+  /** Optional zero-script share actions rendered in the article header. */
+  share?: { url: string; labels: ArticleShareLabels };
 }) {
   const { document } = state;
   const visibleHero = visibleGuideHero(document.hero);
@@ -142,7 +154,7 @@ export function GuideArticle({
   });
 
   // Up to three in-article units, each kept clear of the hero (the LCP element), of every
-  // partner button or partner link and of the end panel — `adsensePlacements` has the rules.
+  // partner button or partner link and of the end panel -- `adsensePlacements` has the rules.
   // With advertising off every segment stays a single piece, so nothing is reserved anywhere.
   const pieces = adsense?.enabled
     ? adsensePlacements(segments, { hasHero: Boolean(visibleHero) })
@@ -209,6 +221,9 @@ export function GuideArticle({
             ) : null}
             {readingTime ? <span>{readingTime}</span> : null}
           </p>
+        ) : null}
+        {share && !isGeminiHub ? (
+          <ArticleShareBar url={share.url} title={document.title} labels={share.labels} />
         ) : null}
       </header>
 

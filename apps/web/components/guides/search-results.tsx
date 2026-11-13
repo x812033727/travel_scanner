@@ -42,6 +42,11 @@ export function SearchResultCard({ hit, labels }: { hit: GuideSearchHit; labels:
       <div className="min-w-0 flex-1">
         <p className="flex flex-wrap items-center gap-2 text-[length:var(--text-xs)] font-semibold uppercase tracking-wide text-[var(--muted)]">
           <span className="rounded-full bg-[var(--teal-soft)] px-2.5 py-0.5 text-[var(--teal-dark)]">{labels[hit.kind]}</span>
+          {hit.news_date ? (
+            <time dateTime={hit.news_date} className="font-mono tabular-nums">
+              {hit.news_date}
+            </time>
+          ) : null}
           {hit.destination_label ? <span>{hit.destination_label}</span> : null}
           {hit.topics.slice(0, 2).map((topic) => <span key={topic.slug}>{topic.label}</span>)}
         </p>

@@ -20,9 +20,15 @@ import { StructuredData } from "@/components/structured-data";
 import { organization, webSite } from "@/lib/structured-data";
 import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { discoveryFeedPath, getInitialDiscoveryFeed } from "@/lib/discovery.server";
+import type { Metadata } from "next";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import { featureEnabled } from "@/lib/site-features";
+import { DISCOVER_ROBOTS } from "@/lib/seo";
 import { HomeGuides, loadHomeGuides } from "@/components/home-guides";
+
+export const metadata: Metadata = {
+  robots: DISCOVER_ROBOTS,
+};
 
 export default async function Home() {
   const [locale, t, tc, discovery, visibility] = await Promise.all([

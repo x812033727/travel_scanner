@@ -217,7 +217,7 @@ export async function renderTopicHub(
 
         {list.articles.length ? (
           news ? (
-            <NewsList articles={list.articles} className="mt-6" />
+            <NewsList articles={list.articles} className="mt-6" showDescription />
           ) : (
             <ul className="mt-6 grid gap-4 sm:grid-cols-2">
               {list.articles.map((article) => (

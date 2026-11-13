@@ -392,40 +392,114 @@ export function HomePortalTabs({
               <ArrowRight size={15} className="shrink-0" aria-hidden />
             </Link>
           </div>
-          <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {software.map((article) => (
-              <GuideCard key={article.slug} article={article} labels={labels.cardLabels} />
-            ))}
-          </ul>
+          {currentTab === "all" ? (
+            <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {software.slice(0, 4).map((article) => (
+                <GuideCard key={article.slug} article={article} labels={labels.cardLabels} />
+              ))}
+            </ul>
+          ) : (
+            <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {software.map((article, index) => (
+                <GuideCard
+                  key={article.slug}
+                  article={article}
+                  labels={labels.cardLabels}
+                  variant={index === 0 && software.length >= 3 ? "featured" : "default"}
+                />
+              ))}
+            </ul>
+          )}
         </div>
       ) : null}
 
       {visibleBlocks.length > 0 ? (
         <div className={`grid gap-6 ${currentTab === "all" ? "lg:grid-cols-3" : ""}`}>
-          {visibleBlocks.map((block) => (
-            <div key={block.key} className="min-w-0" data-testid={`home-guides-${block.key}`}>
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] pb-2.5">
-                <h3 className="flex items-center gap-2.5 text-xl font-extrabold tracking-tight">
-                  <span aria-hidden className="h-5 w-1 shrink-0 rounded-full bg-[var(--teal)]" />
-                  {labels.blockTitles[block.key]}
-                </h3>
-                <Link
-                  href={block.href}
-                  className="inline-flex min-h-11 items-center gap-1 rounded-full px-3 text-sm font-semibold text-[var(--teal)] transition-colors hover:bg-[var(--teal-soft)]"
-                >
-                  {labels.seeAll}
-                  <ArrowRight size={15} className="shrink-0" aria-hidden />
-                </Link>
+          {visibleBlocks.map((block) => {
+            const shownArticles = currentTab === "all" ? block.articles.slice(0, 4) : block.articles;
+            return (
+              <div key={block.key} className="min-w-0" data-testid={`home-guides-${block.key}`}>
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] pb-2.5">
+                  <h3 className="flex items-center gap-2.5 text-xl font-extrabold tracking-tight">
+                    <span aria-hidden className="h-5 w-1 shrink-0 rounded-full bg-[var(--teal)]" />
+                    {labels.blockTitles[block.key]}
+                  </h3>
+                  <Link
+                    href={block.href}
+                    className="inline-flex min-h-11 items-center gap-1 rounded-full px-3 text-sm font-semibold text-[var(--teal)] transition-colors hover:bg-[var(--teal-soft)]"
+                  >
+                    {labels.seeAll}
+                    <ArrowRight size={15} className="shrink-0" aria-hidden />
+                  </Link>
+                </div>
+                {currentTab === "all" ? (
+                  <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                    {shownArticles.map((article) => (
+                      <GuideCard key={article.slug} article={article} labels={labels.cardLabels} variant="compact" />
+                    ))}
+                  </ul>
+                ) : (
+                  <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {shownArticles.map((article, index) => (
+                      <GuideCard
+                        key={article.slug}
+                        article={article}
+                        labels={labels.cardLabels}
+                        variant={index === 0 && shownArticles.length >= 3 ? "featured" : "default"}
+                      />
+                    ))}
+                  </ul>
+                )}
               </div>
-              <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                {block.articles.map((article) => (
-                  <GuideCard key={article.slug} article={article} labels={labels.cardLabels} variant="compact" />
-                ))}
-              </ul>
-            </div>
-          ))}
+            );
+          })}
         </div>
       ) : null}
+
+      {currentTab !== "all" && currentTab !== "news" ? (() => {
+        const categorySeries = series.filter((item) => {
+          if (currentTab === "travel") return item.section === "travel";
+          if (currentTab === "ai") {
+            return item.section === "life" && (
+              item.topic?.startsWith("ai")
+              || item.slug === "claude-code"
+              || item.slug === "codex"
+              || item.slug === "gemini"
+            );
+          }
+          if (currentTab === "software") return item.section === "life" && item.topic === "software";
+          if (currentTab === "money") return item.section === "life" && item.topic === "finance";
+          return false;
+        });
+        if (!categorySeries.length) return null;
+        return (
+          <section
+            aria-label={labels.seriesTitle}
+            data-testid="portal-category-series"
+            className="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]"
+          >
+            <h3 className="flex items-center gap-2 text-lg font-extrabold tracking-tight">
+              <span className="inline-grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-[var(--teal-soft)] text-[var(--teal-dark)]">
+                <Layers size={16} aria-hidden />
+              </span>
+              {labels.seriesTitle}
+            </h3>
+            <ul className="mt-3.5 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+              {categorySeries.map((item) => (
+                <li key={item.slug}>
+                  <Link
+                    href={guideHref(item.hub.kind, item.hub.slug)}
+                    className="flex min-h-11 items-center justify-between gap-2 rounded-xl border border-[var(--line)] bg-[var(--paper)]/55 px-3.5 py-2.5 text-sm font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/50 hover:text-[var(--teal-dark)]"
+                  >
+                    <span className="min-w-0">{item.hub.title}</span>
+                    <ArrowUpRight size={15} className="shrink-0 text-[var(--teal)]" aria-hidden />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        );
+      })() : null}
     </div>
   );
 }

@@ -17,7 +17,7 @@ import {
   type GuideSection,
   type GuideTopic,
 } from "@/lib/guides";
-import { getGuideSearch, getGuideTopics, getSeriesIndex } from "@/lib/guides.server";
+import { getGuideSearch, getGuideTopics, getSeriesIndex, getTrendingGuides } from "@/lib/guides.server";
 
 type Params = { locale: Locale };
 type Search = { q?: string; section?: string; topic?: string; sort?: string; offset?: string };
@@ -72,9 +72,14 @@ export default async function ArticleSearchPage(
     getTranslations({ locale, namespace: "common" }),
   ]);
   const showBrowse = !result || (result.available && !result.invalid && result.total === 0 && !result.best_match);
-  const [travelTopics, lifeTopics, series] = showBrowse
-    ? await Promise.all([getGuideTopics(locale, "travel"), getGuideTopics(locale, "life"), getSeriesIndex(locale)])
-    : [[], [], []];
+  const [travelTopics, lifeTopics, series, trending] = showBrowse
+    ? await Promise.all([
+        getGuideTopics(locale, "travel"),
+        getGuideTopics(locale, "life"),
+        getSeriesIndex(locale),
+        getTrendingGuides(locale, section ? { section } : {}, 6),
+      ])
+    : [[], [], [], { articles: [], next_cursor: null, available: false }];
   const browsable = (topics: GuideTopic[]) => topics.filter((item) => !item.parent && (item.count === undefined || item.count > 0));
 
   const cardLabels = { intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life") };
@@ -197,6 +202,17 @@ export default async function ArticleSearchPage(
         ) : null}
 
         {!result ? <p className="mt-8 leading-7 text-[var(--muted)]">{t("guides.searchHint")}</p> : null}
+
+        {showBrowse && trending.articles.length ? (
+          <section className="mt-10 border-t border-[var(--line)] pt-8" data-testid="search-trending-section">
+            <h2 className="text-2xl font-bold tracking-tight">{t("guides.trendingHeading")}</h2>
+            <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+              {trending.articles.map((article) => (
+                <GuideCard key={`${article.kind}:${article.slug}`} article={article} labels={cardLabels} />
+              ))}
+            </ul>
+          </section>
+        ) : null}
 
         {showBrowse && (browsable(travelTopics).length || browsable(lifeTopics).length) ? (
           <section className="mt-12 border-t border-[var(--line)] pt-8">

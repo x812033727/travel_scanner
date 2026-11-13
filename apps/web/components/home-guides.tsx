@@ -10,12 +10,13 @@ import { getFrontendFlowCopy } from "@/lib/frontend-flow-copy";
 
 export type { HomeGuideBlock };
 
-const PER_BLOCK = 4;
+const OVERVIEW_PER_BLOCK = 4;
+const FETCH_PER_BLOCK = 8;
 const NEWS_PER_TOPIC = 10;
 const NEWS_DESK_LIMIT = 11;
 const TRENDING_FETCH_LIMIT = 18;
 const TRENDING_LIMIT = 6;
-const SERIES_LIMIT = 4;
+const SERIES_LIMIT = 6;
 
 export type HomePortalData = {
   blocks: HomeGuideBlock[];
@@ -35,15 +36,15 @@ const articleKey = (article: Pick<GuideSummary, "kind" | "slug">) => `${article.
  */
 export async function loadHomeGuides(locale: Locale): Promise<HomePortalData> {
   const [tech, travel, money, rawNews, rawSoftware, rawTrending, rawSeries] = await Promise.all([
-    guidesServer.getGuideList(locale, { kind: "life", topic: "ai", sort: "curated" }, PER_BLOCK),
-    guidesServer.getGuideList(locale, { kind: "howto", sort: "curated" }, PER_BLOCK),
-    guidesServer.getGuideList(locale, { kind: "life", topic: "finance", sort: "curated" }, PER_BLOCK),
+    guidesServer.getGuideList(locale, { kind: "life", topic: "ai", sort: "curated" }, FETCH_PER_BLOCK),
+    guidesServer.getGuideList(locale, { kind: "howto", sort: "curated" }, FETCH_PER_BLOCK),
+    guidesServer.getGuideList(locale, { kind: "life", topic: "finance", sort: "curated" }, FETCH_PER_BLOCK),
     Promise.all(
       NEWS_TOPICS.map((topic) =>
         guidesServer.getGuideList(locale, { kind: "life", topic, sort: "news" }, NEWS_PER_TOPIC),
       ),
     ),
-    guidesServer.getGuideList(locale, { kind: "life", topic: "software", sort: "curated" }, PER_BLOCK),
+    guidesServer.getGuideList(locale, { kind: "life", topic: "software", sort: "curated" }, FETCH_PER_BLOCK),
     typeof guidesServer.getTrendingGuides === "function"
       ? guidesServer.getTrendingGuides(locale, {}, TRENDING_FETCH_LIMIT)
       : Promise.resolve({ articles: [], next_cursor: null, available: false }),
@@ -58,7 +59,11 @@ export async function loadHomeGuides(locale: Locale): Promise<HomePortalData> {
     { key: "money", href: guideTopicHref("life", "finance"), articles: money.articles },
   ];
 
-  const shown = new Set<string>(blocks.flatMap((block) => block.articles.map(articleKey)));
+  // Seed deduplication with the overview slice shown on the default "all" tab so items 5..8
+  // reserved for dedicated category tabs do not suppress trending or software picks.
+  const shown = new Set<string>(
+    blocks.flatMap((block) => block.articles.slice(0, OVERVIEW_PER_BLOCK).map(articleKey)),
+  );
 
   const newsByKey = new Map<string, GuideSummary>();
   for (const group of rawNews) {
@@ -75,8 +80,8 @@ export async function loadHomeGuides(locale: Locale): Promise<HomePortalData> {
   const software: GuideSummary[] = [];
   for (const item of rawSoftware.articles) {
     const key = articleKey(item);
-    if (!shown.has(key) && software.length < PER_BLOCK) {
-      shown.add(key);
+    if (!shown.has(key) && software.length < FETCH_PER_BLOCK) {
+      if (software.length < OVERVIEW_PER_BLOCK) shown.add(key);
       software.push(item);
     }
   }

@@ -1,10 +1,12 @@
 "use client";
 
 import { X } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link, usePathname } from "@/i18n/navigation";
+import { api } from "@/lib/api";
+import { guideHref, type GuideSummary } from "@/lib/guides";
 import { useModalSheet } from "@/lib/modal-sheet";
 import { SiteSearch } from "./site-search";
 
@@ -38,13 +40,17 @@ function isSearchShortcut(event: KeyboardEvent): boolean {
  */
 export function SiteSearchDialog() {
   const nav = useTranslations("navigation");
+  const locale = useLocale();
   const pathname = usePathname();
   // Open *for this path*, like the menu sheet: navigating away closes it by making the
   // stored path stale, with no effect that has to notice the change.
   const [openPath, setOpenPath] = useState<string | null>(null);
+  const [trending, setTrending] = useState<GuideSummary[]>([]);
   const open = openPath === pathname;
   const setOpen = (value: boolean) => setOpenPath(value ? pathname : null);
   const input = useRef<HTMLInputElement>(null);
+  const inflightLocale = useRef<string | null>(null);
+  const loadedLocale = useRef<string | null>(null);
   const sheetRef = useModalSheet<HTMLDivElement>(open, () => setOpenPath(null));
 
   useEffect(() => {
@@ -65,6 +71,28 @@ export function SiteSearchDialog() {
   // After the sheet's own focus pass (a layout effect that picks the close button).
   useEffect(() => { if (open) input.current?.focus(); }, [open]);
 
+  useEffect(() => {
+    if (!open || loadedLocale.current === locale || inflightLocale.current === locale) return;
+    inflightLocale.current = locale;
+    let cancelled = false;
+    Promise.resolve(
+      api<{ articles?: GuideSummary[] }>(`/guides/trending?locale=${encodeURIComponent(locale)}&limit=5`),
+    )
+      .then((result) => {
+        inflightLocale.current = null;
+        if (cancelled || !result || !Array.isArray(result.articles)) return;
+        loadedLocale.current = locale;
+        setTrending(result.articles);
+      })
+      .catch(() => {
+        inflightLocale.current = null;
+      });
+    return () => {
+      cancelled = true;
+      inflightLocale.current = null;
+    };
+  }, [open, locale]);
+
   if (!open) return null;
   return createPortal(
     <div role="presentation" className="fixed inset-0 z-[90] bg-slate-950/45 backdrop-blur-sm" onMouseDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}>
@@ -82,6 +110,25 @@ export function SiteSearchDialog() {
           </button>
         </div>
         <SiteSearch variant="dialog" inputRef={input} onNavigate={() => setOpen(false)} />
+        {trending.length > 0 ? (
+          <div data-testid="search-trending" className="mt-4 border-t border-[var(--line)] pt-3">
+            <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">{nav("searchTrending")}</p>
+            <ol className="mt-2 grid gap-1">
+              {trending.map((item, index) => (
+                <li key={`${item.kind}:${item.slug}`}>
+                  <Link
+                    href={guideHref(item.kind, item.slug)}
+                    onClick={() => setOpen(false)}
+                    className="flex min-h-10 items-center gap-2.5 rounded-xl px-2.5 py-1.5 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-[var(--paper)] hover:text-[var(--teal)]"
+                  >
+                    <span className="w-5 flex-none font-mono text-xs font-bold tabular-nums text-[var(--teal)]">{index + 1}</span>
+                    <span className="line-clamp-1">{item.title}</span>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </div>
+        ) : null}
         <div data-testid="search-hot-topics" className="mt-4 border-t border-[var(--line)] pt-3">
           <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">{nav("searchHotTopics")}</p>
           <div className="mt-2 flex flex-wrap gap-2">

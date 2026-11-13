@@ -185,7 +185,7 @@ export default async function LifeHubPage(
                 ))}
               </div>
             </div>
-            <NewsList articles={news} />
+            <NewsList articles={news} showTopic />
           </section>
         ) : null}
 
