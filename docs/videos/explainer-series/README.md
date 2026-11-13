@@ -33,8 +33,11 @@ AI 劇（種田、祖媽）的同類文件在 [`../drama/`](../drama/)（PR #204
 | 刪工作目錄的條件 | 站主確認完成、語言關卡已送審、逐檔核對 | 逐檔核對雜湊後才刪 | 三件都要：站主確認這支完成（三個後台關卡都決定了）、逐檔核對 0 不符、**另一個沒參與製作的代理**到 GitHub 核對涵蓋 0 漏 |
 | 插圖放大檢查 | 獨立代理把每張切四格 2 倍看字、臉、人、Ada 一致 | 獨立代理逐張放大看眼睛 | 兩邊合併：每張全圖＋四格 2 倍，看字、記號、貓、無人景的臉與人、角色一致（含眼睛）、3D、夜晚、圖文矛盾；檢查的代理沒畫過這些圖 |
 | 評審被推翻時 | W03：重畫、改提示詞，三次不過換成物件畫面 | 不准用 `--accept-best`；三個 take 都不過的鏡頭由沒畫過圖的代理放大逐張挑，挑中的用 `repin.py` 固定成 `accepted_with_problems`；每次重跑 `keyframes` 都用累積的 `pins.json` 再固定一次 | 評審是第一道，放大檢查是第二道；兩道結果衝突以放大檢查為準。兩邊都不用 `--accept-best`。挑中的圖：奇聞用 `keyframes import --provider external`，原來如此用 `repin.py`；**任何一次 `keyframes` 重跑都要再固定一次**。同一景三次不過：換成同章已過的圖或物件畫面，旁白不變，不改成卡片 |
-| 縮圖 | `thumbnail.data.layout: "e"`＋`focus`（左字右圖，#2044、#2045、#2046） | `thumbnail.data.subject: "right"`（插圖縮到右側 38%）；P15 在畫完圖後改縮圖，整份 manifest 失效要重跑＋repin＋重核分鏡 | 各用自己系列的版型，規則統一：**主體不被字擋**、**縮圖的圖、文字、`subject` 在畫關鍵影格之前定好**（只有奇聞的 `layout: "e"`、`focus`、`brand` 事後可改，#2046）；八語縮圖逐張看過才打包 |
+| 縮圖 | `thumbnail.data.layout: "e"`＋`focus`（左字右圖，#2044、#2045、#2046） | `thumbnail.data.subject: "right"`（插圖縮到右側 38%）；P15 在畫完圖後改縮圖，整份 manifest 失效要重跑＋repin＋重核分鏡 | 各用自己系列的版型，規則統一：**主體不被字擋**、**大字與副標嚴禁直接破梗因果答案**（只寫反常識衝突或硬數字）、**右圖必有誇張清楚表情或強烈視覺反差**（禁止選闔上的空白書本、空房間、單一靜態死物）、**縮圖的圖、文字、`subject` 在畫關鍵影格之前定好**（只有奇聞的 `layout: "e"`、`focus`、`brand` 事後可改，#2046）；八語縮圖逐張看過才打包 |
 | 八語縮圖 | 做上架包時看 | `i18n-merge` 後一定跑 `render --thumbnails-only` | `i18n-merge` 後一定 `render --thumbnails-only`，八張逐張看過才 `package` |
+| 八語標題後綴 | 偶爾漏翻系列名 | 同左 | `i18n/<locale>.json` 的外語標題一律保留 [`../packaging-refresh-20261111/README.md`](../packaging-refresh-20261111/README.md) §譯名的定版系列後綴（`…｜Curio Archive`、`…｜So That's Why` 等）；字幕尾巴由工具補 |
+| 語速、停頓與分鏡（對話做片） | S42 漏寫 `pauses`／`still_motion`、92 句拆 73 景 | P23 50 景單句、語速 3.8 字／秒 | 配對影音權杖在對話裡做片不經主機 `settle()`，`video.json` **必明寫** `"pauses": {"line_ms": 0, "scene_ms": 150}`、`"still_motion": "beat"`；`voice.style` 寫「一秒五個字以上，句與句緊接、不拖長尾音」，實測語速 **≥ 4.4 字／秒**（不足時加 `voice.tempo` 微加速）；同角色同節拍 **2–3 句併進同一個 `scene.lines[]`**，禁止全集一句一景 |
+| 說明欄、清單與置頂留言 | 查核算式與「不畫誰的臉」寫進說明欄 | 縮圖與說明欄先講完答案 | 說明欄前兩行鉤子＋受眾不破梗；內部查核算式與入畫限制留 `claims.md`，禁止塞進 `youtube.description`；最末由工具自動附 `#奇聞檔案局`／`#原來如此事務所`；交付必附**低門檻二選一置頂留言草稿**與加入系列播放清單提醒 |
 | 第一次品管前 | — | 先 `review-push --report-only`（否則「有示範」被當教學片） | 兩邊都照做 |
 | 上架包自檢 | 用 `package/check.mjs` 的 `readPackageReport(workdir)`，不直接呼叫 `checkPackage` | — | 兩邊都照做 |
 | 配音片頭片尾 | 讓 `dub` 工具自己加；各語字幕跟著片頭往後移 | 時間軸一動就 `dub` 八語重跑（沿用快取） | 兩條都照做 |
