@@ -71,3 +71,10 @@
   - 模型畫不出指定的數量、傾斜或方向（三根手指、天平傾一邊、箭頭指哪裡）；換成不靠那個動作也對得上台詞的畫面（P26 的「三倍」改成圓洞兩側擠滿藍線）。
   - MiniMax 額度用完有兩種訊息：`answered 2067`，以及結束碼 4 的 `rejected the key or balance (The Token Plan usage limit…)`；都看 `minimax-quota` 的 `remains_time` 等下一窗，不必問站主。
   - 本系列選用 judge 退件的 take 是寫 `pins.json` 再跑 repin.py（每次 `keyframes` 之後都要重跑），不用 `keyframes import`；若改用 import，先改提示詞、跑 keyframes，最後才 import，中間不再改提示詞，否則 manifest 會被重建、匯入的圖全丟。
+- **2026-11-13，P06／P21／P13／P29／P04／P01／P20：雲端容器合成的成片沒有片頭片尾。** 新容器沒有 `_branding/`，`assemble` 照做不擋，
+  成片長度等於旁白（`checks.json` 的 `metrics.frames` 等於 `timeline.json` 的 `total_frames`；有包的話多 357＋630＝987 格）。
+  站主上架後才發現。`branding --pull --series sothatswhy` 目前回「工人還沒安裝或 API 沒掛工作區」，所以改從雲端硬碟還原：
+  `rclone copy "videobackup:AI劇/原來如此事務所/_共用/製作檔/sothatswhy-shared-archive/branding/" /root/mokaair-work/videos/_branding/`
+  （`mokaair-sothatswhy-bookends-v3-endscreen`，hash 8226326…，intro 357 格、outro 630 格，核對 sha256），
+  再用 `node tools/video/cli.mjs branding --series sothatswhy --json` 確認 selection 有東西。新容器開工時跟 `_series`、`_music` 一起還原。
+  合成後檢查 `metrics.frames − total_frames = 987`；不是就停下來。已送審未核准的用 `assemble --adopt-branding` 重做（再跑 captions、qa、review-push）；已上傳的工具會拒絕，由站主決定要不要重傳。
