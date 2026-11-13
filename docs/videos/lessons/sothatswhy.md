@@ -52,3 +52,17 @@
   silencedetect 算成最長空檔，不是台詞之間的空檔，看時間點再判斷。
 
 - 2026-11-13（P26）：MiniMax M Plan 是 5 小時一窗（UTC 00、05、10、15、20 點起算）加每週一窗。一集 90 景 × 3 張的關鍵畫面在 04:41 用完當窗（回 2067 Token Plan usage limit），05:00 換窗後就恢復。長的 keyframes 或八語配音之前先跑 `node tools/video/cli.mjs minimax-quota`，看 `general` 的 `current_interval_remaining_percent` 與 `end_time`；不夠就把剩下的鏡頭排到下一窗，不要升級方案或買點數（站主決定）。
+- **2026-11-12～13，sothatswhy-p20-microwave-metal、sothatswhy-p26-plane-window：製圖的教訓。**
+  - **角色描述照設定圖寫，連檢查的人也一樣。** P20 的放大檢查 brief 抄了舊描述「所長灰挑染」，四個代理照著放行，分鏡評分才抓到「角色一致 4」。
+    所長是一色黑髮低馬尾、圓框眼鏡、耳後黃鉛筆；灰挑染、耳環、口紅、像小孩都算走樣。小問是黑色齊下巴鮑伯頭；棕髮、馬尾、丸子頭、雙辮、運動服都算走樣。
+    `CHARACTERS` 的 appearance 字串不能改（設定圖用它當鍵），所以要在每個鏡頭的提示詞與檢查 brief 裡寫對。REWRITE 裡別留 "grey streak"。
+  - **有效的尾句。** 所長：`glossy hair in one even jet-black colour tied in a low ponytail at the nape, small bare earlobes, natural lips, round black glasses centred over her eyes`；
+    小問：開頭寫 `Flat 2D cartoon illustration … chibi cartoon girl`，髮型寫 `short straight bob ending evenly at her jaw all the way round`（擋馬尾與丸子頭，也擋照片風）。
+  - **同一個鏡頭所長三輪都走樣，就改成物件特寫。** P20 的 chief-stop 改成鐵絲提把特寫、P26 的 kid-tank-q 改成方窗角裂縫特寫，第一張就過；
+    把 `chief(`／`kid(` 換成 `obj(`、拿掉 REWRITE，台詞不動，劇本與旁白的核准都還在。
+  - **兩個東西並排對照畫不出來。** 「方洞紙條裂、圓洞紙條沒事」畫了四輪都反或缺一邊；改成單一條紙「方洞的角裂到紙邊」才成。對照放到兩個相鄰鏡頭各畫一個。
+  - **道具要跟台詞同一個。** 小問講自己的紙捲飛機時，圖模型會換成玩具客機，評分扣「圖文相符」；提示詞每次都寫出同一句道具描述（P26 的 `TUBE`），不要寫 toy airliner。
+  - **抽象的「力」用具體的東西代。** 水流繞石頭、迴紋針、氣球、銅棒玻璃棒都畫得好；「應力擠在角上」可以用幾條短藍線擠在尖角，但不要畫箭頭或色圖。
+  - **禁字會藏在別的字裡。** `paperclip` 含 paper、`notch` 含 no、`clamps` 含 lamp；setrw.py 的 BANNED 用 `\b` 抓不到，代理要改寫成 `wire office clip`、`V-shaped groove`。
+  - **`--seed-offset` 上限 30**；一個鏡頭重畫第三輪起用 20 以上，避免撞到舊種子。站台 502 或容器重開時，從 log 找出還沒畫的鏡頭只重跑那些，別整批重來（浪費 MiniMax 額度）。
+  - **放大檢查 brief 要寫清楚多輪後的標準**：第三輪起只有走樣、假字、重複角色、手臉壞、與台詞相反才算 bad，其餘給 ok 並註明，不然會一直重畫小瑕疵。
