@@ -1,0 +1,47 @@
+# 雲端硬碟備份紀錄：題庫與各集總表
+
+每一次把題庫、研究原稿或總表傳上雲端硬碟，都在這裡記一列：什麼時候、傳了什麼、從哪個 commit、放在哪裡、
+`todrive.sh` 的核對結果。之後要重做一集、重開題庫或查以前的決定，先從這裡找到位置，再看
+[`../explainer-series/CATALOG.md`](../explainer-series/CATALOG.md)（各集總表）。
+
+雲端路徑都從 `AI/備份/` 算起（`videobackup:` remote 的起點），站主電腦上是 `G:\我的雲端硬碟\AI\備份\`。
+怎麼傳、怎麼核對見 [`../AI-DRAMA-DRIVE.md`](../AI-DRAMA-DRIVE.md)。
+
+## 放在哪裡
+
+| 東西 | 原件 | 雲端備份 |
+| --- | --- | --- |
+| 奇聞檔案局題庫 | repo `docs/videos/history-curiosity/pool`（工具 `tools/video/curio/pool`） | `AI劇/奇聞檔案局/_共用/製作檔/題庫-奇聞檔案局-<日期>/`（`pool/`、`tools/`、`README.md` 寫 commit） |
+| 原來如此事務所題庫 | repo `docs/videos/so-thats-why/pool`（工具 `tools/video/so-thats-why/pool`） | `AI劇/原來如此事務所/_共用/製作檔/題庫-原來如此事務所-<日期>/` |
+| 題庫研究原稿（子代理的題案、審稿、下載的來源原檔、整合腳本） | 只在做研究的 session 的 scratchpad，session 結束就沒了 | 奇聞：`AI劇/奇聞檔案局/_共用/製作檔/題庫研究-<session>/`；原來如此：`AI劇/原來如此事務所/_共用/製作檔/題庫研究-<session>/`；名稱看不出系列的：`AI劇/奇聞檔案局/_共用/製作檔/題庫研究-雜項-<session>/` |
+| 各集總表 | repo `docs/videos/explainer-series/CATALOG.md`、`catalog.json`，由 `catalog.py` 產生 | `AI劇/<系列>/_總表/`（唯讀副本，連同這份紀錄） |
+| 奇聞檔案局各集備份 | 主機上架包、session `製作檔/`、`rules-sync` 的 `教訓/` | `AI劇/奇聞檔案局/<9 類：H-歷史懸案 等>/<代碼>/`（舊 `B01–B03` 歸入 `W-商業與品牌奇聞`） |
+| 原來如此事務所各集備份 | 同上 | `AI劇/原來如此事務所/<7 類：物理化學與日常材料 等>/<Pxx 或題案代碼>/`（舊 `第006集～第029集` 已與 `P06～P29` 無損整併為單一 `Pxx`） |
+
+repo 是題庫與總表的原件；雲端的快照是唯讀備份，不要在雲端改。要還原題庫：把快照的 `pool/` 放回原位，跑
+`node tools/video/<curio|so-thats-why>/pool/cli.mjs check`。
+
+## 紀錄
+
+| 日期（UTC） | 內容 | 來源 | 雲端位置 | 核對 |
+| --- | --- | --- | --- | --- |
+| 2026-11-13 | 奇聞檔案局題庫快照（wave47 收尾後，入選 1,412） | main `f7090658`（PR #2090 合併；題庫內容與分支 commit `c3b2897d` 相同） | `AI劇/奇聞檔案局/_共用/製作檔/題庫-奇聞檔案局-20261113/` | `todrive: 155 files, 0 differences` |
+| 2026-11-13 | 原來如此事務所題庫快照（第二十七輪後，入選 4,860、可成題長題 88） | 同上 | `AI劇/原來如此事務所/_共用/製作檔/題庫-原來如此事務所-20261113/` | `todrive: 1318 files, 0 differences` |
+| 2026-11-13 | 奇聞題庫研究原稿（`curio26`–`curio48`、`curio38int` 整合腳本） | session `017c4Q` 的 scratchpad | `AI劇/奇聞檔案局/_共用/製作檔/題庫研究-session017c4Q/` | `todrive: 8263 files, 0 differences` |
+| 2026-11-13 | 原來如此題庫研究原稿（`stw6`–`stw27`、`stwNNint` 整合腳本，第 6–27 輪） | 同上 | `AI劇/原來如此事務所/_共用/製作檔/題庫研究-session017c4Q/` | `todrive: 6438 files, 0 differences` |
+| 2026-11-13 | 兩個題庫未標系列的子代理工作資料夾（`r*`、`v*`、`f*`、`*dl`、`*tools` 等） | 同上 | `AI劇/奇聞檔案局/_共用/製作檔/題庫研究-雜項-session017c4Q/` | `todrive: 5151 files, 0 differences` |
+| 2026-11-13 | 各集總表第一版（81 列）、`catalog.py` 與這份紀錄 | `catalog.py` | `AI劇/奇聞檔案局/_總表/`、`AI劇/原來如此事務所/_總表/` | 兩處各 `todrive: 5 files, 0 differences` |
+| 2026-11-13 | 雲端硬碟集數分類搬移與雙資料夾無損整併（奇聞 56 集歸入 9 類；原來如此 29 個資料夾含 12 對 `第0xx集+Pxx` 整併為 7 類下 17 集 `Pxx`，空殼封存於 `AI劇/_舊版-搬家/20261113-*`，零刪除；PR #2093 合併至 `main` 後主機 `rules-sync` 即直寫 `<分類>/<代碼>/教訓/`） | PR #2093（`claude/pool-expansion-20261113`） | `AI劇/奇聞檔案局/<9 類>/`、`AI劇/原來如此事務所/<7 類>/`、`AI劇/_舊版-搬家/` | `gdrive ls` 核對 56＋17 集分類就位、0 遺失 |
+| 2026-11-13 | 各集總表分類版（82 列：奇聞 62 列＋原來如此 20 列，含歸位後 `S-歷史人物與名場面/S10`）、`catalog.py` 與這份紀錄就地更新 | `catalog.py`（PR #2093） | `AI劇/奇聞檔案局/_總表/`、`AI劇/原來如此事務所/_總表/` | `gdrive mutate update` 兩處各 4 檔就地更新成功 |
+| 2026-11-13 | 奇聞檔案局題庫快照更新（9 大分類＋wave48–51 後，入選 1,492；舊檔移入 `_舊版/`） | PR #2093（`claude/pool-expansion-20261113`） | `AI劇/奇聞檔案局/_共用/製作檔/題庫-奇聞檔案局-20261113/` | `135 files, 0 differences` |
+| 2026-11-13 | 原來如此事務所題庫快照更新（7 大分類＋第 28–31 輪 `G630–G644` 後，入選 5,069、可成題長題 103；舊檔移入 `_舊版/`） | PR #2093（`claude/pool-expansion-20261113`） | `AI劇/原來如此事務所/_共用/製作檔/題庫-原來如此事務所-20261113/` | `1350 files, 0 differences` |
+| 2026-11-13 | 奇聞題庫研究與審稿原稿（`curio48-finish`、`curio49`–`curio51`＋分類搬移收據，含完整快取封裝） | session `240faf7e` 的 scratchpad | `AI劇/奇聞檔案局/_共用/製作檔/題庫研究-session240faf7e/` | `48 files（含 1,914 個原始檔壓縮包與 SHA256）, 0 differences` |
+| 2026-11-13 | 原來如此題庫研究與審稿原稿（`stw28`–`stw31` 第 28–31 輪＋合著審計與全文快取封裝） | session `240faf7e` 的 scratchpad | `AI劇/原來如此事務所/_共用/製作檔/題庫研究-session240faf7e/` | `86 files（含 5,758 個原始檔壓縮包與 SHA256）, 0 differences` |
+
+比上面更早的研究原稿（奇聞 `curio26` 以前、原來如此 `stw6` 以前）沒有傳過雲端：做那些的 scratchpad 已經收掉，
+只剩 repo 裡的批次檔（`batches/`）、審稿紀錄（`reviews/`）與 `SOURCES.md`。
+
+## 下一次要做的事
+
+- 題庫每跑完一輪（或一波），在推 PR 的同時把快照與該輪的研究資料夾傳上去，在上面加一列。
+- 有集數上架、重做或換配音後，重跑 `python3 docs/videos/ai-drama-drive/catalog.py`，把總表與雲端 `_總表/` 一起更新。

@@ -119,6 +119,24 @@ export function splitLocator(text, localIds) {
 
 export const EPISODE_STATES = ['episode_dir', 'remake_dir', 'branch_draft', 'planned_w_axis', 'bank_scripted'];
 
+export const CATEGORIES = Object.freeze({
+  H: 'H-歷史懸案',
+  S: 'S-歷史人物與名場面',
+  M: 'M-奇異現象與自然',
+  F: 'F-童話神話與怪談原版',
+  L: 'L-都市傳說與消失地名',
+  G: 'G-靈異與超自然公案',
+  P: 'P-預言與末日',
+  U: 'U-外星太空與未知訊號',
+  W: 'W-商業與品牌奇聞',
+});
+export const CATEGORY_LIST = Object.freeze(Object.values(CATEGORIES));
+export const categoryCodeForAxis = (axis) => (axis === 'B' ? 'W' : axis);
+export const categoryForAxis = (axis) => {
+  const code = categoryCodeForAxis(axis);
+  return CATEGORIES[code] ?? `${code}-${axis}`;
+};
+
 function episodeDirs(root) {
   const base = path.join(root, 'docs/videos');
   if (!existsSync(base)) return [];
@@ -506,7 +524,7 @@ export function assemble(input, decisions = {}, selection = null) {
     const eligible = !main.locked && !disposition && members.some((record) => record.eligible);
     const status = main.locked ? 'produced' : disposition ? (disposition.disposition === 'shorts' ? 'shorts' : 'excluded') : selectedIds.has(id) ? 'selected' : eligible ? 'held' : 'reserve';
     return {
-      ...main, id, eligible, selected: status === 'selected', pool_status: status,
+      ...main, id, category_code: categoryCodeForAxis(main.axis), category: categoryForAxis(main.axis), eligible, selected: status === 'selected', pool_status: status,
       aliases: members.map((record) => record.id).filter((member) => member !== id),
       question_variants: members.filter((record) => record.id !== id).map((record) => ({ id: record.id, question: record.question, answer_target: record.answer_target, scope: record.scope })),
       source_refs: [...new Map(members.flatMap((record) => record.source_refs).map((ref) => [`${ref.source_id}:${ref.origin}:${ref.locator}`, ref])).values()],
@@ -549,9 +567,14 @@ export function assemble(input, decisions = {}, selection = null) {
   }
   const selected = candidates.filter((row) => row.selected);
   const count = (status) => candidates.filter((row) => row.pool_status === status).length;
+  const byCategory = Object.fromEntries(CATEGORY_LIST.map((cat) => [cat, {
+    canonical: candidates.filter((row) => row.category === cat).length,
+    selected: selected.filter((row) => row.category === cat).length,
+    produced: candidates.filter((row) => row.category === cat && row.pool_status === 'produced').length,
+  }]));
   return {
     schema_version: 1, series: '奇聞檔案局', revision: selection?.revision ?? 'unversioned-draft', status: selection ? 'CURATED_CANDIDATE_POOL_NOT_PRODUCTION' : 'DRAFT_INTAKE',
-    axes: input.axes,
+    axes: input.axes, categories: CATEGORIES,
     counts: {
       raw_records: input.records.length, canonical_cores: candidates.length, alias_records: input.records.length - candidates.length,
       produced_cores: count('produced'), selected_candidates: selected.length, held_candidates: count('held'), reserve_candidates: count('reserve'), shorts_candidates: count('shorts'), excluded_cores: count('excluded'),
@@ -559,6 +582,7 @@ export function assemble(input, decisions = {}, selection = null) {
       source_urls: input.sources.length, current_research_source_urls: input.sources.filter((source) => source.readings.some((reading) => !reading.origin.startsWith('legacy:'))).length,
       selected_source_urls: new Set(selected.flatMap((row) => row.source_refs.map((ref) => ref.source_id))).size,
       new_suggestions_not_added: input.not_added?.length ?? 0, high_similarity_pending: pending.length, cross_series_pending: crossPending.length, approved_scripts: 0,
+      by_category: byCategory,
     },
     inputs: input.inputs, sources: input.sources, candidates, raw_records: input.records,
     dedup: { aliases, merges: links, distinct: decisions.distinct ?? [], dispositions: decisions.dispositions ?? [], cross_series: decisions.cross_series ?? [], potential_pairs: pairs, required_pending: pending, cross_series_pairs: cross, cross_series_pending: crossPending, method: 'exact normalized questions + authored core-answer merges + lexical candidate pairs (title, finding, case key) reviewed by an editor; cross-series lexical pairs against the so-thats-why pool; no claim of exhaustive semantic equivalence' },

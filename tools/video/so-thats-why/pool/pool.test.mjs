@@ -3,10 +3,10 @@ import test from 'node:test';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { assemble, normalizeUrl, urlsIn, readPool, similarityPairs, validateEditorial, DIR, ROOT } from './core.mjs';
+import { assemble, normalizeUrl, urlsIn, readPool, similarityPairs, validateEditorial, CATEGORIES, classifyCandidate, DIR, ROOT } from './core.mjs';
 import { readBaseline, compareBaseline, validateBaseline, validateCheckpoints, sourceImpact } from './history.mjs';
 import { openStore, ingest, assertSnapshot, search, lookup } from './store.mjs';
-import { validateThemes, renderHtml, readingsForCandidate } from './render.mjs';
+import { validateThemes, renderHtml, renderProducible, readingsForCandidate } from './render.mjs';
 
 const source = (id) => ({ id, url: `https://example.org/${id}`, readings: [{ origin: 'fixture', title: id, publisher: 'fixture', accessed_on: '2026-11-01', reading_scope: 'test fixture' }] });
 const record = (id, question, target = 'different mechanism') => ({ id, origin: 'fixture', question, domain: 'test', mechanism_key: id, answer_target: target, scope: 'fixture scope', source_refs: [{ source_id: id, locator: `section ${id}` }], premise_status: 'screened', eligible: true, notes: '', local_references: [] });
@@ -366,6 +366,29 @@ test('source-only refreshes reach their intended canonical topic without leaking
   assert.deepEqual(readingsForCandidate({ ...shared, id: 'unreferenced-source' }, row), []);
 });
 
+test('excluded_source_refs removes an inherited off-scope source reference with a reason while preserving raw records', () => {
+  const rows = [record('core', '核心問題'), record('alias', '合併進核心的別名', '同核心不同寫法')];
+  const mergeOnly = { ...empty(), merges: [{ duplicate_id: 'alias', canonical_id: 'core', reason: 'Same core question' }] };
+  const decisions = {
+    ...mergeOnly,
+    excluded_source_refs: [{ candidate_id: 'core', source_id: 'alias', reason: 'Alias source covers an unrelated subtopic not claimed by core' }],
+  };
+  const pool = assemble(input(rows), decisions, choose(['core']));
+  assert.deepEqual(pool.candidates[0].source_refs.map((ref) => ref.source_id), ['core']);
+  assert.deepEqual(pool.raw_records.find((row) => row.id === 'alias').source_refs.map((ref) => ref.source_id), ['alias']);
+  assert.equal(pool.counts.selected_source_urls, 1);
+  assert.throws(() => assemble(input(rows), { ...mergeOnly, excluded_source_refs: [{ candidate_id: 'alias', source_id: 'alias', reason: 'not canonical' }] }), /Invalid excluded_source_refs/);
+  assert.throws(() => assemble(input(rows), { ...mergeOnly, excluded_source_refs: [{ candidate_id: 'core', source_id: 'alias', reason: ' ' }] }), /Invalid excluded_source_refs/);
+  assert.throws(() => assemble(input(rows), { ...mergeOnly, excluded_source_refs: [{ candidate_id: 'core', source_id: 'core', origin: 'wrong-origin', reason: 'unmatched filter' }] }), /Stale excluded_source_refs/);
+  assert.throws(() => assemble(input(rows), {
+    ...mergeOnly,
+    excluded_source_refs: [
+      { candidate_id: 'core', source_id: 'core', reason: 'drop first' },
+      { candidate_id: 'core', source_id: 'alias', reason: 'drop last' },
+    ],
+  }), /cannot remove every source reference/);
+});
+
 test('themes cannot reference excluded records or masquerade as approved scripts; HTML contains inert escaped data', () => {
   const pool = assemble(input([record('a', '</script><script>alert(1)</script>')]), empty(), choose(['a']));
   const theme = { id: 'G01', title: 'fixture', core_question: 'fixture', connection: 'fixture', boredom_risk: 'fixture', drop_if: 'fixture', evidence_gaps: 'fixture', production_ready: false, status: 'EDITORIAL_THEME_NOT_SCRIPT', candidate_ids: ['a'], target_minutes: 10, range_minutes: [9, 11], chapters: Array.from({ length: 4 }, () => ({ title: 'fixture', new_information: 'fixture', candidate_ids: ['a'], seconds: 150 })) };
@@ -388,4 +411,18 @@ test('themes cannot reference excluded records or masquerade as approved scripts
   assert.throws(() => validateThemes({ episodes: [{ ...theme, material: { ...review, verdict: 'reserve', est_minutes: 7.2 } }] }, pool), /says what is missing/);
   assert.throws(() => validateThemes({ episodes: [{ ...theme, material: { ...review, verdict: 'merge', est_minutes: 7.2, missing: 'x' } }] }, pool), /names what it merges with/);
   assert.throws(() => validateThemes({ episodes: [{ ...theme, material: { ...review, verdict: 'maybe', est_minutes: 9 } }] }, pool), /needs a verdict/);
+  assert.throws(() => validateThemes({ episodes: [{ ...theme, category: '不存在的分類' }] }, pool), /unknown category/);
+  assert.ok(!renderProducible(pool, { episodes: [theme] }).includes('</script><script>alert(1)</script>'));
+});
+
+test('every committed candidate and theme carries one of the 7 Drive categories', () => {
+  assert.equal(CATEGORIES.length, 7);
+  assert.equal(classifyCandidate({ id: 'LEG-S46', domain: 'science', question: '為什麼煮義大利麵要在水裡加鹽？' }), '飲食與廚房科學');
+  assert.equal(classifyCandidate({ id: 'L60-001', domain: '動物社會資訊與群體決策', question: '文化學習' }), '生物動物與植物');
+  assert.equal(classifyCandidate({ id: 'S52-001', domain: '量測與地圖', question: '海拔高度' }), '地球天氣與太空');
+  const pool = readPool();
+  assert.ok(pool.candidates.every((row) => CATEGORIES.includes(row.category)));
+  const themes = JSON.parse(fs.readFileSync(path.join(ROOT, DIR, 'themes.json'), 'utf8'));
+  assert.ok(themes.episodes.every((episode) => CATEGORIES.includes(episode.category)));
+  validateThemes(themes, pool);
 });
