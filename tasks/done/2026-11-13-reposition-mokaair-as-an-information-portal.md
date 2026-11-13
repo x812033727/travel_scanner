@@ -1,13 +1,13 @@
 ---
 id: 2026-11-13-reposition-mokaair-as-an-information-portal
 title: Reposition Mokaair as an information portal with SEO, CJK search, trending rail, Atom feeds and upgraded daily news pipeline
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: antigravity
 claimed_at: 2026-11-13T02:13:21Z
 created_at: 2026-11-13T02:13:01Z
-completed_at:
+completed_at: 2026-11-13T05:44:46Z
 branch: claude/portal-seo-news-upgrade
 depends_on: []
 scope:
