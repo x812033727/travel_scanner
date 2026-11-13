@@ -1,0 +1,537 @@
+"""Generate video.json for sothatswhy-p26-plane-window (原來如此事務所 對話版 P26).
+
+Run `python3 build_scenes.py` from anywhere: it rewrites video.json next to this file and freezes
+every shot's camera move in cameras.json (a shot keeps the camera it was first given, so deleting
+a shot never shifts the others: the camera is in the keyframe cache key).
+Edit lines and prompts here, never in video.json.
+Started from a copy of sothatswhy-p20-microwave-metal/build_scenes.py (series constants, helpers,
+BANNED, assembly and self-checks unchanged; EXTRA and REWRITE start empty because P20's entries were picture
+fixes for P20 only; SAY is empty because no line carries a Latin term); the content is new.
+Every chief shot uses CHIEFFIX_DESC (uniform glossy jet-black hair, P20's wording); the base chief description
+with the grey streak is no longer used in any prompt. CHARACTERS keeps the series appearance strings unchanged,
+because the approved series sheets are keyed by them (series-sheets/README.md): changing them redraws the sheets.
+2026-11-11 rules applied (dialogue-pilot README §4, §9, §10.6): the faster voice style for both characters,
+`pauses: {line_ms: 0, scene_ms: 150}` and `still_motion: "beat"`, no `pause_after_ms` on lines except a
+BEAT_MS beat on the line right before each `P:` payoff in the same scene, and only an upper bound on length.
+Line caps here count punctuation (chief <= 25, kid <= 15), as in P01 and P20.
+`script.md` is written by `node tools/video/cli.mjs script --slug sothatswhy-p26-plane-window` after this runs.
+"""
+import hashlib, itertools, json, os, re, sys, unicodedata
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+SLUG = "sothatswhy-p26-plane-window"
+CHECKED = "2026-11-13"
+BEAT_MS = 500   # 答案揭曉前的一拍（README §10.6）
+
+# ---------- series constants (identical to P20, P04 and P01) ----------
+VOICE = {"provider": "gemini", "name": "Sulafat",
+         "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速偏快、輕快，像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。"}
+SHEET = "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+CHARACTERS = [
+    {"id": "chief", "name": "所長",
+     "appearance": "a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear",
+     "voice": dict(VOICE), "sheet_prompt": SHEET},
+    {"id": "kid", "name": "小問",
+     "appearance": "a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, both hands free",
+     "voice": {"provider": "gemini", "name": "Leda", "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快，一秒五個字以上，不拖尾音"},
+     "sheet_prompt": SHEET},
+]
+
+# Identity goes LAST in every prompt (P02: putting it first drifted some frames to photo or 3D).
+KIDDESC = "the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood"
+WALL = "a plain pale wall behind her"
+DAY = "bright daylight"
+# Prompt words that P02/P05 taught us to keep out (README §3.1).
+BANNED = re.compile(r"\b(no|not|without|text|blank|lamp|night|notebook|sign|signs|paper|poster|screen|book|calendar|whiteboard|thermometer|remote|label|magnet|microscope|arrow|arrows)\b", re.I)
+
+CAMS = itertools.cycle(["push in", "pan left", "pull out", "drift", "tilt up", "pan right", "push in", "tilt down", "pull out", "drift"])
+CAM_FILE = os.path.join(HERE, "cameras.json")
+FROZEN = json.load(open(CAM_FILE, encoding="utf-8")) if os.path.exists(CAM_FILE) else {}
+
+S = []
+KIDFIX = set()
+CHIEFFIX2 = set()  # every chief shot (P07/P14 round 5, P20): one uniform jet-black description
+CHIEFFIX_DESC = "the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines"
+KIDFIX_TAIL = ', exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines'
+EXTRA = {
+}
+REWRITE = {
+}
+def _shot(id, prompt, chars, lines, chapter):
+    prompt = REWRITE.get(id, prompt + EXTRA.get(id, ""))
+    assert not BANNED.search(prompt), (id, BANNED.search(prompt).group(0))
+    assert id not in {s["id"] for s in S}, id
+    assert len(prompt) <= 840, (id, len(prompt))  # MiniMax prompt budget (HANDOFF: about 840 characters)
+    cam = FROZEN.get(id) or next(CAMS)
+    S.append(dict(id=id, chapter=chapter, template="shot", data=dict(prompt=prompt, camera=cam, visual="still", characters=list(chars)), lines=list(lines)))
+def kid(id, prompt, *lines, chapter=None):
+    """The kid doing one simple thing, facing the camera, waist-up or head-and-shoulders."""
+    KIDFIX.add(id)
+    _shot(id, prompt.rstrip(". ") + ", " + KIDDESC + KIDFIX_TAIL, ["kid"], lines, chapter)
+def chief(id, prompt, *lines, chapter=None):
+    """The chief, always waist-up or head-and-shoulders, in front of a plain wall in daylight."""
+    assert prompt.startswith(("Waist-up", "Head-and-shoulders")), id
+    CHIEFFIX2.add(id)
+    _shot(id, prompt.rstrip(". ") + ", " + CHIEFFIX_DESC, ["chief"], lines, chapter)
+def scene(id, prompt, *lines, chapter=None):
+    """No character: an object, a place or a mechanism drawn as a picture."""
+    _shot(id, prompt, [], lines, chapter)
+    S[-1]["data"]["nobody"] = True  # PR #2028: no person or face in an object-only shot
+def k(t, e=None, tag=None): return ("kid", t, e, tag)
+def c(t, e=None, tag=None): return ("chief", t, e, tag)
+
+def C(action, close=False):
+    return ("Head-and-shoulders close-up" if close else "Waist-up medium shot") + " of the chief " + action + ", " + WALL + ", " + DAY
+def K(action, close=False, where=None):
+    return ("Head-and-shoulders close-up" if close else "Waist-up medium shot") + " of the girl " + (where + " " if where else "") + action + ", " + DAY
+
+
+# One drawing language for the whole episode (README §10.5: the image model cannot draw forces, stress, pressure,
+# fields, diagrams, labels, arrows, counts or directions; plan visual rule: no generated stress-colour pictures
+# pretending to be simulations). The main thread is ONE afternoon: 小問 flies to see her grandma tomorrow, so she
+# built a little airliner body for fun from a rolled tube of thin white card with square windows cut in it, and it
+# tore from a window corner. She brings it to the office and asks why real plane windows have round corners. The
+# chief shows her two strips of card (square hole, round hole) to pull, a paperclip to bend, a balloon, and finally
+# two notched rods (copper and glass, from the UNSW teaching page); she leaves planning to sit by the window.
+# The one analogy carried from start to end is THE STREAM AROUND A STONE: water slides smoothly round a round
+# stone but bunches up at the corners of a square block. The FAA lessons-learned page on the Comet describes the
+# load in the skin in the same words ("the stress flows freely around the curved edges ... cannot smoothly flow
+# around the abrupt corners"). Limits in claims.md C22. The paperclip is a demonstration of "many small pushes add
+# up", with its limit said aloud (a plane's skin is pushed far less each flight, claims.md C12).
+# No crash, wreckage, victims or real airline liveries anywhere; the Comet is an unpainted old silver jet on a
+# sunny airfield and a fuselage in a water tank, both illustrations.
+OFFICE = "in a bright cartoon office,"
+STYLE = ", simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours"
+TUBE = "a toy plane body rolled from thin white card with little square window holes"
+TUBET = TUBE + ", a short tear running from one window corner"
+WINDOW = "an airliner cabin window seen from the seat beside it, a soft oval window with smoothly rounded corners set in a pale cream plastic wall, blue sky and white clouds outside"
+STRIPS = "two long strips of thin white card, one with a small square hole cut in its middle and one with a small round hole cut in its middle"
+CLIP = "a shiny silver metal paperclip"
+PLANE = "a plain white cartoon airliner with a row of small rounded windows and plain unpainted tail"
+ROUNDSTONE = "a clear shallow stream flowing around one smooth round grey stone, the water sliding round it in gentle even curves"
+SQUAREBLOCK = "a clear shallow stream flowing around one square grey concrete block with sharp corners, the water bunching up into little white foamy swirls right at its two front corners"
+COPPER = "a short copper rod with a small notch cut into its middle"
+GLASS = "a short clear glass rod with a small notch cut into its middle"
+OLDJET = "an old-fashioned 1950s jet airliner in plain unpainted silver metal with small squarish windows, four engines tucked into its wing roots, parked on a sunny green airfield"
+def obj(id, prompt, *lines, chapter=None):
+    """An everyday-object frame with nobody in it, always in the flat cartoon style."""
+    scene(id, prompt + STYLE + ", clean empty corners", *lines, chapter=chapter)
+
+# ---------- 開場（系列片頭之後直接進場景，不做濃縮；結果都不先講）----------
+obj("tube-tear", "Close-up of " + TUBET + ", lying on a light wooden desk",
+    k("所長！我做的飛機裂開了！", "急著報案的語氣"),
+    k("明天要坐飛機，我先做一架。", "委屈"), chapter="紙做的機身，從窗角裂開")
+# Thumbnail shot (fixed before keyframes): the kid big and centred, the torn card plane in hand.
+kid("kid-main-q", K("holding up " + TUBE + " in both hands at her chest, wide curious eyes on the viewer, in the exact centre of the picture", where=OFFICE),
+    k("你看，從窗戶的角裂開的。", "指給所長看", "S:tear"),
+    c("你剪的窗戶，是方方的？", "接住上一句"),
+    k("對啊，跟我家的窗戶一樣。"))
+obj("cabin-window", "Close-up of " + WINDOW,
+    c("那你明天坐飛機，看看座位旁邊的窗戶。"),
+    c("它的四個角，都是圓圓的。"))
+chief("chief-strips", C("holding up " + STRIPS + " side by side with a playful mysterious smile"),
+    c("我這裡有兩條硬紙，一條剪方洞，一條剪圓洞。", "賣關子"),
+    c("兩條一起用力拉，你猜，哪一條先破？", "賣關子", "S:pull"))
+obj("clip-desk", "Close-up of " + CLIP + " lying on a light wooden desk, catching a bright glint",
+    c("還有這根迴紋針。彎一下，它沒事。"),
+    c("那彎很多很多次呢？", "賣關子", "S:clip"))
+chief("chief-outside", C("pointing up towards the sky with one finger and a curious smile"),
+    c("還有，飛機飛高以後，窗戶外面跟裡面，", "賣關子"),
+    c("有一個很大的不同。", "賣關子", "S:outside"))
+kid("kid-guess-q", K("holding a small plain white toy airliner up in front of her with a puzzled face", where=OFFICE),
+    k("什麼不同？跟圓角有關嗎？", "句尾上揚"),
+    c("有關。飛機的窗戶，為什麼要做成圓角？", "轉向觀眾", "S:main"))
+kid("kid-guess", K("rubbing one finger along a rounded tabletop corner with a very confident grin", where=OFFICE),
+    k("我知道！圓的才不會刮到手！", "篤定的錯猜", "S:scratch"))
+
+# ---------- 第一章：明天的飛機，被空氣撐著 ----------
+chief("chief-skin", C("smiling kindly and holding up one finger", close=True),
+    c("不刮手是好事，可是答案在窗戶旁邊的機身。", "接住上一句", "P:scratch"),
+    k("機身是什麼？", "句尾上揚"), chapter="明天的飛機，被空氣撐著")
+obj("plane-side", "Wide side view of " + PLANE + " parked on a sunny airfield, its long smooth silver-white body shining",
+    c("就是飛機那一整條長長的身體，外面包著金屬。"))
+obj("plane-sky", "Wide shot of " + PLANE + " cruising high above a fluffy sea of white clouds under a deep blue sky",
+    c("美國管飛航安全的聯邦航空總署，有一本手冊說，"),
+    c("飛得高比較省油，還能飛在暴風雨上面。"))
+kid("kid-air-q", K("looking up at the sky through a big office window with a curious face", where=OFFICE),
+    k("那麼高，外面的空氣呢？", "句尾上揚"))
+chief("chief-thin", C("spreading her fingers wide apart in the air with a gentle smile"),
+    c("很稀。手冊說，在大約八千五百公尺高，", "接住上一句"),
+    c("空氣的壓力只剩地面的三分之一左右。", None, "P:outside"))
+kid("kid-breathe", K("holding her breath with puffed cheeks and wide worried eyes", close=True, where=OFFICE),
+    k("那我在飛機上，", "擔心"), k("會喘不過氣嗎？", "擔心"))
+chief("chief-sealed", C("shaking her head gently with a reassuring smile", close=True),
+    c("不會。客機的機艙是封起來的，"),
+    c("裡面一直打進空氣，比外面多，這叫加壓。"))
+obj("cabin-aisle", "Wide shot inside a bright cartoon airliner cabin, rows of soft blue seats, oval windows with rounded corners along both walls, sunlight coming in",
+    c("手冊說，通常讓機艙裡的空氣，"),
+    c("像在大約兩千四百公尺的山上，人待著比較舒服。"))
+kid("kid-push-q", K("pressing both palms together hard in front of her chest with a thinking frown", close=True, where=OFFICE),
+    k("裡面空氣比外面多，", "想不通"), k("那會怎樣？", "句尾上揚", "S:push"))
+chief("chief-balloon", C("holding up a round red balloon blown up big and tight"),
+    c("你吹過氣球吧？裡面空氣多，氣球就被撐開。", "接住上一句"))
+obj("balloon-big", "Close-up of a round red balloon blown up big and tight, its skin stretched shiny and smooth, tied with a short white string, floating over a light wooden desk",
+    c("機艙也一樣：裡面的空氣，把機身往外推。", None, "P:push"),
+    c("裡外推力的差，叫做壓差。"))
+kid("kid-pop", K("covering her ears with both hands and squeezing her eyes shut as two happy curved lines, a big round red balloon floating beside her", where=OFFICE),
+    k("氣球吹太多，會破掉！", "想起來"),
+    c("對。所以機艙不會加到跟地面一樣。"))
+chief("chief-limit", C("holding one flat hand up high like a ceiling with a careful smile", close=True),
+    c("手冊說，機身設計時就定好，最多撐多大的壓差，"),
+    c("加壓不能超過它。"))
+kid("kid-every-q", K("holding the small plain white toy airliner up high as if it were flying, with a curious face", where=OFFICE),
+    k("每次飛都會推嗎？", "句尾上揚", "S:every"))
+chief("chief-cycle", C("opening both hands wide and then bringing them close again with a calm smile"),
+    c("會。飛上去加壓，機身被撐一下；", "接住上一句"),
+    c("落地前把壓放掉，又鬆回來。"),
+    c("所以飛一趟，就是撐一下、再鬆一下。", None, "P:every"))
+kid("kid-pane-q", K("pressing one fingertip against a window pane with a curious face", close=True, where=OFFICE),
+    k("那窗戶也被推嗎？", "句尾上揚", "S:pane"))
+obj("window-layers", "Extreme close-up of the edge of an airliner cabin window showing three clear acrylic panes stacked one behind another with thin gaps between them, a tiny round hole near the bottom of the middle pane, soft blue sky beyond",
+    c("會。一位機長寫的文章，問過做飛機窗戶的公司：", "接住上一句"),
+    c("客機的窗戶通常有三層。"),
+    k("中間那層，有個小洞耶！", "發現"))
+chief("chief-backup", C("holding up three fingers and then tapping the middle one with a knowing smile", close=True),
+    c("小洞讓夾縫裡的氣壓，跟機艙一樣，", "接住上一句"),
+    c("所以平常是最外層，撐住裡外的壓差。", None, "P:pane"))
+kid("kid-outer-q", K("tapping a window pane gently with one fingertip and a worried frown", where=OFFICE),
+    k("那外層壞掉了呢？", "擔心"),
+    c("中間那層也撐得住，它會來接手。"))
+chief("chief-doors", C("tracing a big rectangle in the air with one finger and a thoughtful face"),
+    c("航空總署的手冊還說，機身能撐多大的壓差，"),
+    c("要看它多強，也常要看窗戶和門這些地方。"))
+kid("kid-doors-q", K("looking at the side of the toy airliner in her hands with a thinking face", close=True, where=OFFICE),
+    k("窗戶跟門，有什麼特別？", "章尾停住，句尾上揚"))
+
+# ---------- 第二章：拉一拉，方洞和圓洞 ----------
+chief("chief-hole", C("making a round hole with her thumb and finger and looking through it with a playful smile", close=True),
+    c("它們都是在機身上，開的一個洞。", "接住上一句"),
+    c("洞那裡沒有金屬，推力只好繞過去。"), chapter="拉一拉，方洞和圓洞")
+kid("kid-around-q", K("tilting her head with a puzzled face, one finger on her cheek", close=True, where=OFFICE),
+    k("繞過去？怎麼繞？", "句尾上揚", "S:around"))
+obj("stream-round", "Close-up from above of " + ROUNDSTONE + ", pebbles on the sunny stream bed",
+    c("想像一條小溪，中間有一顆圓圓的石頭。"),
+    c("水碰到它，順著圓邊，滑滑地流過去。"))
+obj("stream-square", "Close-up from above of " + SQUAREBLOCK + ", pebbles on the sunny stream bed",
+    c("換成一塊方方的水泥塊呢？"),
+    k("水在角那裡，擠成一團！", "驚訝"))
+chief("chief-flow", C("drawing a smooth curve in the air with one hand and then a sharp corner with the other, a bright smile"),
+    c("航空總署說，機身裡的力，也有點像這樣。"),
+    c("圓角的窗戶，力順著彎彎的邊走，不太會堆起來。"),
+    k("那方方的窗戶呢？", "追問"))
+obj("square-corner", "Close-up of one corner of an old-fashioned squarish airplane window with a tight small-radius corner, set in a riveted silver metal wall",
+    c("方窗戶的尖角，力轉不過去，就擠在角上。", "接住上一句", "P:around"))
+kid("kid-crowd-q", K("squeezing her two fists together with a curious frown", close=True, where=OFFICE),
+    k("擠在角上，會怎樣？", "句尾上揚", "S:crowd"))
+chief("chief-stress", C("pressing one fingertip onto her other palm with a serious but kind face", close=True),
+    c("角上那一小塊金屬，要撐的力比旁邊多很多。", "接住上一句"),
+    c("工程師把這個叫做應力集中。", None, "P:crowd"))
+kid("kid-stress-q", K("scrunching her nose with a puzzled face", close=True, where=OFFICE),
+    k("應力是什麼？", "句尾上揚"),
+    c("就是金屬裡面，每一小塊撐著的力。"))
+kid("kid-round-q", K("holding up a strip of thin white card with a small round hole in it and peering through the hole", where=OFFICE),
+    k("那圓洞就不會擠嗎？", "句尾上揚", "S:roundhole"))
+chief("chief-three", C("holding up three fingers with a calm smile"),
+    c("也會。一份大學的講義說，一大片被拉的薄板開個圓洞，", "接住上一句"),
+    c("洞邊的應力，大約是遠處的三倍。", None, "P:roundhole"))
+kid("kid-sharp-q", K("pointing at the corner of a square card hole with a wide-eyed face", close=True, where=OFFICE),
+    k("那尖尖的角呢？", "追問", "S:sharp"))
+chief("chief-sharp", C("pinching the air with two fingers to show a tiny sharp point, a focused smile", close=True),
+    c("劍橋大學的教材說，裂縫越尖，尖端的應力就大得多。"),
+    c("角越尖，力就擠得越厲害。", None, "P:sharp"))
+kid("kid-places-q", K("looking around the office with a curious face, one finger raised", where=OFFICE),
+    k("只有窗戶會這樣嗎？", "句尾上揚", "S:places"),
+    c("剛剛那份講義說，洞、轉角、溝槽、裂縫旁邊，", "接住上一句"),
+    c("常常都會這樣。"))
+obj("strips-pull", "Close-up of " + STRIPS + " held at both ends and pulled tight across a light wooden desk, the square-hole strip tearing in a short jagged line from one corner of its hole, the round-hole strip still whole",
+    c("現在，來拉這兩條紙。"),
+    k("方洞那條，從角裂開了！", "驚訝", "P:pull"))
+kid("kid-same", K("holding up " + TUBET + " next to her face with a delighted surprised grin", where=OFFICE),
+    k("跟我的飛機一樣！", "恍然"),
+    c("對。你剪的方角，就是力最擠的地方。", None, "P:tear"))
+kid("kid-metal-q", K("knocking on a shiny metal desk leg with her knuckles and a doubtful face", where=OFFICE),
+    k("可是真的飛機是金屬，", "不服氣"), k("金屬也會被撐壞嗎？", "章尾停住，句尾上揚"))
+
+# ---------- 第三章：迴紋針，彎了好多次 ----------
+chief("chief-clip", C("holding up " + CLIP + " between two fingers with a knowing smile", close=True),
+    c("撐一次不會。還記得這根迴紋針嗎？", "接住上一句"), chapter="迴紋針，彎了好多次")
+obj("clip-bend", "Close-up of a straightened silver paperclip held between two fingertips and bent back and forth, a small bright kink at the bend, a light wooden desk below",
+    c("把它扳過去，再扳回來，一次、兩次……"),
+    k("彎好多次，就斷掉了！", "驚訝", "P:clip"))
+chief("chief-fatigue", C("holding the two broken halves of a silver paperclip in her palm with a thoughtful face"),
+    c("金屬被一次又一次地拉，就算每次都不大，"),
+    c("最後也可能裂開。這叫做金屬疲勞。"))
+kid("kid-tired", K("yawning with her arms stretched up, eyes closed as two happy curved lines", where=OFFICE),
+    k("金屬也會累喔？", "好奇"),
+    c("那是比喻。澳洲一所大學的材料教材說，"))
+chief("chief-steps", C("tapping one fingertip along her other forearm in small steps with a focused smile", close=True),
+    c("裂縫常常先從表面冒出一點點，"),
+    c("每拉一次，就往前長一點。"))
+chief("chief-gentle", C("pinching a paperclip very gently between two fingers with a calm smile", close=True),
+    c("機身每次被撐，不會像迴紋針那樣被扳彎。"),
+    k("可是飛機要飛好多趟！", "想到了"),
+    c("對。還記得嗎？飛一趟，就是撐一下、再鬆一下。"))
+kid("kid-where-q", K("holding the toy airliner close to her face and studying its little windows with a frown", close=True, where=OFFICE),
+    k("那裂縫會從哪裡開始？", "句尾上揚", "S:where"),
+    c("你說呢？哪裡的力最擠？"))
+kid("kid-corner", "Wide shot of the girl standing at a light wooden desk in a bright cartoon office, pointing at the corner of one square window hole on a toy plane body rolled from thin white card lying on the desk, a proud grin, " + DAY,
+    k("窗戶的角！", "篤定"),
+    c("對。教材說，疲勞的裂縫，從應力集中的地方長起來。", None, "P:where"))
+kid("kid-grow-q", K("holding up one finger and moving it slowly forward with a worried face", close=True, where=OFFICE),
+    k("小裂縫會一直長嗎？", "擔心", "S:grow"))
+chief("chief-critical", C("holding her two hands a short distance apart and slowly widening the gap, a serious but kind face"),
+    c("教材說，裂縫還短的時候，材料撐得住。", "接住上一句"),
+    c("長到某個長度，它會突然很快地裂過去。", None, "P:grow"))
+kid("kid-fast-q", K("holding up a strip of thin white card with a short tear in it and frowning at it", where=OFFICE),
+    k("那什麼時候會快裂？", "追問"),
+    c("要看裂縫多長，還有拉得多用力。"))
+kid("kid-real-q", K("looking up with wide serious eyes and both hands holding the toy airliner", where=OFFICE),
+    k("真的有飛機這樣過嗎？", "小聲", "S:comet"))
+obj("old-jet", "Wide side view of " + OLDJET + ", soft morning light",
+    c("有。航空總署整理過一個例子，叫彗星號。", "接住上一句"),
+    c("它是世界上第一種載客的加壓噴射客機。"))
+chief("chief-comet", C("holding a thin plain grey folder closed against her chest with a calm serious face", close=True),
+    c("一九五四年，有兩架在飛行中出事。"),
+    c("調查的人，想找出機身是怎麼壞的。"))
+obj("water-tank", "Wide shot of the long silver body of an old airliner sitting inside a giant open rectangular water tank in a big bright hangar, the tank filled with calm blue water up to the windows, two small cranes beside it",
+    c("他們把另一架放進大水槽，往機艙裡灌水加壓，"),
+    c("一次又一次，就像一趟又一趟的飛行。"))
+kid("kid-tank-q", K("leaning forward with both hands on a desk and a very curious face", where=OFFICE),
+    k("結果呢？", "追問"),
+    c("加上它以前真的飛過的，一共三千多次，"),
+    c("機身從一個方方的艙口窗的角裂開了。", None, "P:comet"))
+chief("chief-adf", C("holding a small plain silver model airliner and pointing at the top of its body with one finger", close=True),
+    c("海裡撈回的那架，最先裂的地方，"),
+    c("在機頂兩個方方的天線窗那裡。"),
+    c("這一架的結論是：加壓機艙因金屬疲勞壞掉。"))
+kid("kid-test-q", K("scratching her head with a puzzled frown", close=True, where=OFFICE),
+    k("造飛機時，沒有先測嗎？", "不解"),
+    c("有。航空總署說，做飛機的公司拿一個機身，", "接住上一句"))
+chief("chief-test", C("holding a small plain silver model airliner in both hands and turning it slowly with a serious face"),
+    c("測過一萬六千次。可是它之前被加過兩倍的壓力，"),
+    c("角上的金屬因此變了，測出來的次數太樂觀。"))
+kid("kid-blame", K("folding her arms with a very sure frown", close=True, where=OFFICE),
+    k("所以都是方窗害的！", "篤定的錯猜", "S:only"))
+chief("chief-rivet", C("holding up a tiny shiny silver rivet between two fingers with a careful face", close=True),
+    c("沒那麼簡單。後來一位英國學者研究，", "接住上一句"),
+    c("裂縫都從開口旁邊的鉚釘孔、螺栓孔長出來。"))
+kid("kid-rivet-q", K("squinting at a tiny shiny silver rivet held between her fingers", close=True, where=OFFICE),
+    k("鉚釘是什麼？", "句尾上揚"),
+    c("把兩片金屬釘在一起的小金屬釘。"),
+    k("釘的孔，也是洞耶！", "想起來"),
+    c("對，剛剛那份講義說的洞，力也會擠在旁邊。", None, "P:places"))
+chief("chief-withey", C("holding two small flat metal plates together with one hand and a thoughtful face"),
+    c("那位學者認為，窗戶怎麼固定，可能比形狀還要緊。"),
+    c("形狀、孔和做法，是連在一起的。", None, "P:only"))
+kid("kid-why-round-q", K("tapping the rounded window of the toy airliner with a puzzled frown", close=True, where=OFFICE),
+    k("那幹嘛還要做圓角？", "章尾停住，句尾上揚"))
+
+# ---------- 第四章：銅棒和玻璃棒，誰先斷 ----------
+chief("chief-why-round", C("drawing a soft rounded corner in the air with one finger and a warm smile", close=True),
+    c("因為角圓了，力不那麼擠，裂縫比較難冒出來。", "接住上一句"),
+    c("可是航空總署的教訓是：要顧的不只形狀。"), chapter="銅棒和玻璃棒，誰先斷")
+chief("chief-list", C("counting on the fingers of one hand with a thoughtful smile"),
+    c("材料、厚度、形狀、受力多大、怎麼保養，"),
+    c("每一樣都要仔細顧到。", "轉向觀眾"))
+kid("kid-material-q", K("holding up two small shiny rods, one copper-coloured and one clear, with a curious frown", where=OFFICE),
+    k("材料也有差嗎？", "句尾上揚", "S:material"))
+chief("chief-rods", C("holding " + COPPER + " in one hand and " + GLASS + " in the other with a curious smile"),
+    c("有。剛剛那份澳洲大學的教材，比過兩根棒子：", "接住上一句"),
+    c("一根銅棒，一根玻璃棒，都刻了一個小缺口。"))
+obj("glass-rod", "Close-up of " + GLASS + " lying on a light wooden desk, broken cleanly into two pieces right at the notch",
+    c("玻璃棒有了缺口，很小的力就斷了，"),
+    c("裂口就從缺口那裡開始。"),
+    k("玻璃好脆喔！", "驚訝"))
+obj("copper-rod", "Close-up of " + COPPER + " lying on a light wooden desk, bent into a smooth gentle U-curve at the notch and still in one piece",
+    c("銅棒有缺口，卻先彎下去，沒有比較容易斷。"),
+    k("銅會彎，所以不怕缺口？", "恍然"))
+chief("chief-energy", C("pressing her palms together and then opening them softly with a calm smile", close=True),
+    c("教材說，銅斷之前會先變形，吸收很多力氣。", None, "P:material"),
+    c("這只是這兩根的比較，不是所有金屬和玻璃。"))
+kid("kid-fix-q", K("holding up the toy airliner with a hopeful questioning face", where=OFFICE),
+    k("那彗星號後來怎麼改？", "句尾上揚", "S:fix"))
+chief("chief-fix", C("holding up a small silver model airliner with oval windows and a pleased smile"),
+    c("那位學者整理過：窗戶周圍的金屬加厚，"),
+    c("後來的新型號，換了窗戶的設計，少打鉚釘。"))
+obj("oval-window", "Close-up of one oval airplane window with smoothly rounded ends set in a polished silver metal wall, a neat ring of small rivets around it, blue sky reflected in the glass",
+    c("航空總署也說，有一款改良型，窗戶改成橢圓形。", None, "P:fix"))
+kid("kid-anyway-q", K("biting her lip with a worried face", close=True, where=OFFICE),
+    k("要是還是有裂縫呢？", "擔心", "S:anyway"))
+chief("chief-failsafe", C("holding up both hands as if steering something gently aside, a calm reassuring smile"),
+    c("現在的設計，會先想好萬一裂了怎麼辦。", "接住上一句"),
+    c("航空總署說，要讓力有別條路可以走，"))
+kid("kid-branch", K("drawing two branching lines in the air with one finger and an excited face", close=True, where=OFFICE),
+    k("像小溪分成好幾條？", "聯想"),
+    c("有點像。還要讓裂縫能停下來，或轉個方向。", None, "P:anyway"))
+obj("inspector", "Wide shot of an aircraft mechanic in a plain navy overall standing on a low platform beside the silver-white side of an airliner in a bright hangar, shining a small flashlight closely on the smooth metal skin around a rounded cabin window",
+    k("那誰知道有沒有裂縫？", "句尾上揚", "S:inspect"),
+    c("美國的法規要求，造飛機的人要證明：", "接住上一句"))
+chief("chief-rule", C("holding a thin plain grey folder open in both hands with a focused smile", close=True),
+    c("在飛機能用的年限裡，不會因為疲勞出大事。"),
+    c("連製造時的瑕疵，也要算進去。"))
+chief("chief-check", C("holding up a small flashlight with a warm confident smile", close=True),
+    c("還要訂好該做的檢查，讓維修的人照著做。", None, "P:inspect"),
+    k("像定期去看牙醫！", "聯想"),
+    c("有點像，只是檢查的是飛機的金屬。"))
+chief("chief-your-window", C("holding up the small toy airliner beside her face and smiling at the viewer", close=True),
+    c("所以你看到的圓角窗，是很多設計裡的一個。", "轉向觀眾"))
+kid("kid-tube-q", K("holding up " + TUBET + " in both hands with a hopeful face", where=OFFICE),
+    k("那我的紙飛機呢？", "章尾停住，句尾上揚"))
+
+# ---------- 收尾 ----------
+chief("chief-ask", C("holding a small pair of round-tipped craft scissors and smiling encouragingly", close=True),
+    c("你說呢？要怎麼剪？", "笑"), chapter="明天，靠窗坐")
+kid("kid-got-it", K("holding up a new card tube airliner with a neat row of little round-cornered windows and a big confident grin", where=OFFICE),
+    k("原來如此！", "恍然大悟"), k("窗戶的角剪圓圓的，", "篤定"),
+    k("力就不會擠在角上！", "篤定", "P:main"),
+    k("真的飛機，還要常常檢查！", "篤定"))
+chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
+    c("說得好。我覺得最妙的是：", "笑"),
+    c("一個小小的圓角，背後是一整套設計和檢查。"))
+# The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
+kid("outro", "Waist-up medium shot of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
+    k("明天我要坐窗邊，看圓角！", "開心大聲"))
+chief("outro-chief", "Waist-up medium shot of the chief holding up a small plain white toy airliner with a curious smile, filling the frame, a plain pale wall behind her, bright morning light",
+      c("你坐飛機時，窗戶是什麼形狀？", "問句上揚，像聊天"), c("留言告訴我們。"))
+chief("outro-wave", "Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light",
+      c("想一起找生活裡的為什麼，就訂閱原來如此事務所。", "誠懇"))
+
+# ---------- assemble ----------
+WHAT = {"tear": "小問的紙飛機為什麼從窗戶的角裂開", "pull": "方洞和圓洞的紙條一起拉，哪一條先破",
+        "clip": "迴紋針彎很多很多次會怎樣", "outside": "飛機飛高以後，窗戶外面跟裡面有什麼不同",
+        "main": "飛機的窗戶為什麼要做成圓角", "scratch": "圓角是不是為了不刮到手",
+        "push": "機艙裡空氣比外面多會怎樣", "every": "每次飛都會把機身往外推嗎",
+        "pane": "窗戶也會被推嗎", "around": "力怎麼繞過機身上的洞",
+        "crowd": "力擠在角上會怎樣", "roundhole": "圓洞是不是就不會擠",
+        "sharp": "尖尖的角會怎樣", "where": "裂縫會從哪裡開始",
+        "grow": "小裂縫會不會一直長", "comet": "真的有飛機這樣過嗎",
+        "only": "彗星號是不是都是方窗害的", "material": "材料有沒有差",
+        "fix": "彗星號後來怎麼改", "anyway": "要是還是有裂縫怎麼辦",
+        "inspect": "誰知道機身有沒有裂縫", "places": "只有窗戶會有應力集中嗎"}
+# Latin terms the Mandarin voice must spell letter by letter (P13 GPS, P29 HTTPS/TLS). No line carries one:
+# the FAA is said as 聯邦航空總署, the Comet as 彗星號, and no brand or airline is named.
+SAY = []
+scenes, loops_s, loops_p, n, beats = [], {}, {}, 0, 0
+for sc in S:
+    lines = []
+    for sp, text, emo, tag in sc["lines"]:
+        n += 1; lid = f"p{n:03d}"
+        line = {"id": lid, "speaker": sp, "text": text}
+        spoken = text
+        for term, spell in SAY:
+            spoken = spoken.replace(term, spell)
+        if spoken != text:
+            line["say"] = spoken
+            line["say_for"] = hashlib.sha256(unicodedata.normalize("NFC", text).encode("utf-8")).hexdigest()[:12]
+        assert not re.search(r"[A-Za-z]{2,}", spoken), (lid, "a Latin term needs a SAY entry (spelled letter by letter)")
+        if emo: line["emotion"] = emo
+        if tag and tag.startswith("P:") and lines:
+            lines[-1]["pause_after_ms"] = BEAT_MS   # 同一景裡答案的前一句（README §10.6）
+            beats += 1
+        lines.append(line)
+        if tag:
+            kind, key = tag.split(":")
+            (loops_s if kind == "S" else loops_p)[key] = lid
+    out = {"id": sc["id"]}
+    if sc["chapter"]: out["chapter"] = sc["chapter"]
+    out["template"] = sc["template"]; out["data"] = dict(sc["data"]); out["lines"] = lines
+    scenes.append(out)
+assert set(loops_s) == set(loops_p) == set(WHAT), set(loops_s) ^ set(loops_p) ^ set(WHAT)
+assert all(loops_s[key] < loops_p[key] for key in WHAT), [key for key in WHAT if loops_s[key] >= loops_p[key]]
+loops = [{"setup": loops_s[key], "payoff": loops_p[key], "what": WHAT[key]} for key in sorted(WHAT, key=lambda key: loops_s[key])]
+
+
+doc = {
+    "schema_version": 1, "slug": SLUG, "format": "drama", "category": "explainer", "narration_locale": "zh-TW",
+    "target_minutes": [9, 11], "voice": VOICE, "subtitles": {"burn_in": False}, "theme": "paper", "look": {"preset": "cute-cartoon"},
+    # The series tag: the approved character sheets live in the series store and every episode reuses them (docs/videos/SERIES.md).
+    "series": {"slug": "sothatswhy", "episode": 26, "chapter": 1},
+    # 2026-11-11 (README §9 停頓, §10.6): no fixed pause between lines, a short gap between scenes, beat-timed stills.
+    "pauses": {"line_ms": 0, "scene_ms": 150},
+    "still_motion": "beat",
+    # The series bed from P15 on (explainer-series/README.md, PR #2048): sothatswhy-bed-r2.m4a, remade from P02's paid take.
+    "music": {"track": "sothatswhy-bed-r2.m4a", "sha256": "9bb4ba6fd16feb4a7f352144b2d89e9648acbbbbaa2173c27a7eefbdb70f28c6", "gain_db": -20, "duck_db": -10},
+    "characters": CHARACTERS, "loops": loops,
+    "youtube": {
+        "category_id": 27, "made_for_kids": False, "default_language": "zh-TW",
+        "title": "飛機窗戶的圓角，怎麼改變機身受力？｜原來如此事務所",
+        "description": "小問明天要坐飛機去找外婆，先用硬紙捲了一架小飛機，剪了一排方方的窗戶，結果紙從窗戶的角裂開了。真的飛機窗戶，為什麼四個角都是圓的？\n\n"
+                       "這一集，所長先帶小問看飛機飛高以後發生什麼事：外面的空氣很稀，機艙加壓，裡面的空氣每一趟都把機身往外撐一下、落地前再鬆回來。"
+                       "機身上開了窗戶，力只好繞過那個洞；所長用小溪繞過石頭來比：圓圓的邊，力順著走；方方的尖角，力就擠在角上，工程師叫它應力集中。"
+                       "一次又一次的拉，就算每次都不大，金屬也可能從最擠的地方冒出小裂縫，慢慢長大，這叫金屬疲勞。"
+                       "美國聯邦航空總署整理的彗星號例子裡，調查的結論是加壓機艙因為金屬疲勞而壞掉；後來的學者也指出，裂縫是從開口旁邊的鉚釘孔、螺栓孔長出來的，窗戶怎麼固定也很要緊，不能只怪窗角。"
+                       "所以圓角只是其中一個：材料、厚度、怎麼做、萬一有裂縫怎麼擋住，還有定期檢查，都要一起顧到。\n\n"
+                       "片中的飛機、窗戶、水槽和小溪都是 AI 生成的示意插圖，不是照片，也不是應力分析的結果。彗星號只引用調查與研究資料，沒有畫事故畫面。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
+        "tags": ["飛機", "飛機窗戶", "圓角", "應力集中", "金屬疲勞", "加壓", "彗星號", "科普", "原來如此事務所"]},
+    "thumbnail": {"template": "thumb", "data": {"headline": "飛機窗戶\n**為何圓角？**", "sub": "方角會讓力擠在一起", "shot": "kid-main-q", "subject": "right"}},
+    "sources": [
+        {"title": "FAA, Pilot's Handbook of Aeronautical Knowledge (FAA-H-8083-25), Chapter 7 Aircraft Systems: Pressurized Aircraft", "url": "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf", "checked_on": CHECKED},
+        {"title": "FAA Lessons Learned from Transport Airplane Accidents, de Havilland DH-106 Comet 1", "url": "https://www.faa.gov/lessons_learned/transport_airplane/accidents/G-ALYV", "checked_on": CHECKED},
+        {"title": "M. E. Tuttle, University of Washington, Stress Concentrations (lecture notes)", "url": "https://courses.washington.edu/mengr556/StressConcentrations.pdf", "checked_on": CHECKED},
+        {"title": "DoITPoMS, University of Cambridge, Brittle Fracture: Inglis and the crack tip stress idea", "url": "https://www.doitpoms.ac.uk/tlplib/brittle_fracture/crack_tip_stress.php", "checked_on": CHECKED},
+        {"title": "UNSW Sydney School of Materials Science and Engineering, Crack theory: Introduction", "url": "https://www.unsw.edu.au/science/our-schools/materials/engage-with-us/high-school-students-and-teachers/online-tutorials/crack-theory/introduction", "checked_on": CHECKED},
+        {"title": "UNSW Sydney, Fatigue failure", "url": "https://www.unsw.edu.au/science/our-schools/materials/engage-with-us/high-school-students-and-teachers/online-tutorials/crack-theory/fatigue-failure", "checked_on": CHECKED},
+        {"title": "UNSW Sydney, Fracture mechanics", "url": "https://www.unsw.edu.au/science/our-schools/materials/engage-with-us/high-school-students-and-teachers/online-tutorials/crack-theory/fracture-mechanics", "checked_on": CHECKED},
+        {"title": "UNSW Sydney, Fracture toughness", "url": "https://www.unsw.edu.au/science/our-schools/materials/engage-with-us/high-school-students-and-teachers/online-tutorials/crack-theory/fracture-mechanics/fracture-toughness", "checked_on": CHECKED},
+        {"title": "UNSW Sydney, Brittle fracture (glass rod)", "url": "https://www.unsw.edu.au/science/our-schools/materials/engage-with-us/high-school-students-and-teachers/online-tutorials/crack-theory/introduction/brittle-facture", "checked_on": CHECKED},
+        {"title": "UNSW Sydney, Ductile fracture (copper rod)", "url": "https://www.unsw.edu.au/science/our-schools/materials/engage-with-us/high-school-students-and-teachers/online-tutorials/crack-theory/introduction/ductile-fracture", "checked_on": CHECKED},
+        {"title": "P. A. Withey, Fatigue failure of the de Havilland Comet I, Engineering Failure Analysis (1997)", "url": "https://ae.iitm.ac.in/~nidish/courses/as3020/files/mod2/dehavcomet.pdf", "checked_on": CHECKED},
+        {"title": "P. A. Withey, The de Havilland Comet (RAeS Hamburg lecture, 2019-01-24)", "url": "https://www.fzt.haw-hamburg.de/pers/Scholz/dglr/hh/text_2019_01_24_Comet.pdf", "checked_on": CHECKED},
+        {"title": "14 CFR 25.571 Damage-tolerance and fatigue evaluation of structure (eCFR)", "url": "https://www.ecfr.gov/current/title-14/section-25.571", "checked_on": CHECKED},
+        {"title": "Mark Vanhoenacker, Slate: Why are there holes in airplane windows? (2015-05)", "url": "https://slate.com/human-interest/2015/05/whats-that-thing-why-are-there-holes-in-airplane-windows.html", "checked_on": CHECKED},
+    ],
+    "assets": [],
+    "scenes": scenes,
+}
+json.dump(doc, open(os.path.join(HERE, "video.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+FROZEN.update({s["id"]: s["data"]["camera"] for s in scenes if s["template"] == "shot" and s["id"] not in FROZEN})
+json.dump(FROZEN, open(CAM_FILE, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+# ---------- self-checks (the series rules lint does not cover for a sothatswhy- slug) ----------
+RATE = 4.4
+def length(t): return sum(1 for ch in t if ch not in "，。、：；！？「」『』（）…—,.!?: ")
+def han(t): return sum(1 for ch in t if "一" <= ch <= "鿿")
+assert all(s["template"] == "shot" for s in scenes), "this series uses no cards"
+assert not any("pause_after_ms" in l and l["pause_after_ms"] != BEAT_MS for s in scenes for l in s["lines"]), "lines carry no pause except the beat"
+assert not any(re.search(r"grey streak|streak of grey|earring|lipstick", s["data"]["prompt"], re.I) for s in scenes), "the chief's hair is uniform jet-black (P20 lesson)"
+outro_ids = {"outro", "outro-chief", "outro-wave"}
+body = [s for s in scenes if s["id"] not in outro_ids]
+chars = sum(length(l["text"]) for s in scenes for l in s["lines"])
+body_chars = sum(length(l["text"]) for s in body for l in s["lines"])
+body_han = sum(han(l["text"]) for s in body for l in s["lines"])
+kidc = sum(length(l["text"]) for s in scenes for l in s["lines"] if l["speaker"] == "kid")
+lines_all = [l for s in scenes for l in s["lines"]]
+est = chars / RATE + 0.15 * (len(scenes) - 1) + BEAT_MS / 1000 * beats
+per_shot = sorted(len(s["lines"]) for s in scenes)
+shot_secs = sorted(sum(length(l["text"]) for l in s["lines"]) / RATE for s in scenes)
+print(f"scenes {len(scenes)} shots {len(scenes)} lines {n} chars {chars} (body {body_chars}, body Han {body_han}) kid {kidc / chars:.0%} of chars, "
+      f"{sum(l['speaker'] == 'kid' for l in lines_all) / n:.0%} of lines; est {est / 60:.1f} min at {RATE}/s "
+      f"(+{len(scenes) - 1} scene gaps, {beats} beats, before the 11.9 s intro); loops {len(loops)}; "
+      f"median lines a shot {per_shot[len(per_shot) // 2]}, median shot {shot_secs[len(shot_secs) // 2]:.1f} s", file=sys.stderr)
+chap_t, chap = {}, None
+for s in scenes:
+    chap = s.get("chapter", chap)
+    chap_t[chap] = chap_t.get(chap, 0) + sum(length(l["text"]) for l in s["lines"]) / RATE + 0.15
+for ch, secs in chap_t.items(): print(f"  chapter {ch}: {secs:.0f} s", file=sys.stderr)
+for s in scenes:
+    secs = sum(length(l["text"]) for l in s["lines"]) / RATE
+    if secs > 12: print(f"  shot over 12 s: {s['id']} {secs:.1f}", file=sys.stderr)
+# Line caps count punctuation (P01 brief: chief <= 25, kid <= 15 characters, punctuation counted).
+long_lines = [l for l in lines_all if len(l["text"]) > (15 if l["speaker"] == "kid" else 25)]
+for l in long_lines: print(f"  long {l['speaker']} line {l['id']} ({len(l['text'])}): {l['text']}", file=sys.stderr)
+assert not long_lines, "a line over its cap (punctuation counted)"
+# a hook (a question, or a loop being planted) at least every 45 s
+hooks, t, last, setups, gaps = [], 0.0, 0.0, set(loops_s.values()), []
+for s in body:
+    for l in s["lines"]:
+        t += length(l["text"]) / RATE
+        if l["text"].endswith("？") or l["id"] in setups:
+            if t - last > 45: gaps.append(f"{t - last:.0f} s before {l['id']}")
+            last = t
+for g in gaps: print(f"  hook gap {g}", file=sys.stderr)
+assert not gaps, "a stretch longer than 45 s without a question or a planted loop"
+assert len(loops) >= 11, "the plan asks for at least 11 loops, every one paid off"
+assert body_chars <= 3000, f"body {body_chars} characters: keep under 3,000"
+assert all(s["data"]["camera"] for s in scenes)
+cams = [s["data"]["camera"] for s in scenes]
+assert all(not (a == b == c_) for a, b, c_ in zip(cams, cams[1:], cams[2:])), "three shots in a row with the same camera"
