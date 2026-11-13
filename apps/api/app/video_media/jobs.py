@@ -32,6 +32,7 @@ from redis.asyncio import Redis
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.ai import minimax_pool
 from app.config import Settings
 from app.models import VideoProject
 from app.video_automation.models import (
@@ -49,6 +50,7 @@ from app.video_media.providers import (
     MediaProvider,
     MediaRequest,
     MediaUpstreamError,
+    Polled,
     ReferenceImage,
     Submitted,
     raise_for_status,
@@ -129,7 +131,8 @@ def key_for(runtime: Settings, vendor: str) -> str | None:
     if vendor == "gemini":
         return runtime.hotspot_guide_gemini_api_key or None
     if vendor == "minimax":
-        return runtime.minimax_api_key or None
+        keys = minimax_pool.pool_keys(runtime)
+        return keys[0] if keys else None
     return None
 
 
@@ -150,6 +153,131 @@ def provider_for(runtime: Settings, vendor: str, kind: str) -> MediaProvider:
     if kind == "clip":
         return MiniMaxVideo(base, key)
     return MiniMaxMusic(base, key)
+
+
+# How long a pool lease (app.ai.minimax_pool) holds a key: a picture or a track is made inside
+# the submit call; a clip's task runs on until a poll sees it end, which a day bounds.
+POOL_SYNC_LEASE_SECONDS = 600
+POOL_CLIP_LEASE_SECONDS = 2 * 3600
+# The fields a pooled MiniMax job keeps in its request: which key made it (a fingerprint) and
+# its lease. A clip's task belongs to the account that made it, so its polls use that key.
+POOL_KEY_FIELD = "minimax_key"
+POOL_LEASE_FIELD = "minimax_lease"
+
+
+class PooledMiniMax:
+    """The MiniMax provider of one job when the site has several M Plan keys.
+
+    ``submit`` asks the pool for the key least busy and least used (the ``video`` bucket for a
+    clip), holding a lease on it, and keeps the key's fingerprint in the job's request. A key
+    MiniMax refuses for its plan or balance (``key``) rests until its window resets and the next
+    key is tried; one it calls busy rests a minute and the next is tried too, except for a pilot
+    film, whose busy answer is not proof that nothing was charged. ``poll`` and ``fetch`` use the
+    key the job was made with, and the lease is returned when the vendor's work ends.
+    """
+
+    name = "minimax"
+
+    def __init__(self, ctx: MediaContext, job: VideoMediaJob) -> None:
+        self.ctx = ctx
+        self.job = job
+        self.bucket = "video" if job.kind == "clip" else "general"
+
+    def _build(self, key: str) -> MediaProvider:
+        base = self.ctx.runtime.minimax_api_base_url
+        if self.job.kind == "image":
+            return MiniMaxImages(base, key)
+        if self.job.kind == "clip":
+            return MiniMaxVideo(base, key)
+        return MiniMaxMusic(base, key)
+
+    def _pinned(self) -> MediaProvider:
+        fp = self.job.request.get(POOL_KEY_FIELD)
+        key = (
+            minimax_pool.key_by_fingerprint(self.ctx.runtime, fp)
+            if isinstance(fp, str)
+            else self.ctx.runtime.minimax_api_key
+        )
+        if not key:
+            raise MediaUpstreamError(
+                502,
+                "the MiniMax key this job was made with is no longer among the site's keys",
+                "key",
+            )
+        return self._build(key)
+
+    async def _release(self) -> None:
+        fp = self.job.request.get(POOL_KEY_FIELD)
+        lease = self.job.request.get(POOL_LEASE_FIELD)
+        if isinstance(fp, str) and isinstance(lease, str):
+            await minimax_pool.release(self.ctx.redis, fp, lease)
+            self.job.request = {k: v for k, v in self.job.request.items() if k != POOL_LEASE_FIELD}
+
+    async def submit(self, request: MediaRequest, client: httpx.AsyncClient) -> Submitted:
+        runtime, redis = self.ctx.runtime, self.ctx.redis
+        lease_seconds = (
+            POOL_CLIP_LEASE_SECONDS if self.job.kind == "clip" else POOL_SYNC_LEASE_SECONDS
+        )
+        tried: set[str] = set()
+        while True:
+            choice = await minimax_pool.choose(
+                redis,
+                runtime,
+                self.bucket,
+                lease_seconds=lease_seconds,
+                wait_for_quota=True,
+                exclude=frozenset(tried),
+            )
+            if choice is None:
+                raise MediaUpstreamError(503, "the site has no MiniMax key", "key")
+            self.job.request = {
+                **self.job.request,
+                POOL_KEY_FIELD: choice.fp,
+                POOL_LEASE_FIELD: choice.lease,
+            }
+            try:
+                submitted = await self._build(choice.key).submit(request, client)
+            except MediaUpstreamError as error:
+                await self._release()
+                rotate = error.kind == "key" or (
+                    error.kind == "busy" and not is_pilot(self.job.slug)
+                )
+                if not rotate:
+                    raise
+                await minimax_pool.rest(
+                    redis, runtime, choice.fp, used_up=error.kind == "key", bucket=self.bucket
+                )
+                tried.add(choice.fp)
+                if len(tried) >= len(minimax_pool.pool_keys(runtime)):
+                    raise
+                continue
+            except BaseException:
+                await self._release()
+                raise
+            if submitted.vendor_ref is None:
+                await self._release()
+            return submitted
+
+    async def poll(self, vendor_ref: str, client: httpx.AsyncClient) -> Polled:
+        try:
+            polled = await self._pinned().poll(vendor_ref, client)
+        except MediaUpstreamError as error:
+            if error.kind != "busy":
+                await self._release()
+            raise
+        if polled.state != "running":
+            await self._release()
+        return polled
+
+    def fetch(self, download: Download) -> tuple[str, dict[str, str]]:
+        return self._pinned().fetch(download)
+
+
+def job_provider(ctx: MediaContext, job: VideoMediaJob) -> MediaProvider:
+    """The provider that advances ``job``: the pool's when the site has several MiniMax keys."""
+    if job.provider == "minimax" and len(minimax_pool.pool_keys(ctx.runtime)) > 1:
+        return PooledMiniMax(ctx, job)
+    return provider_for(ctx.runtime, job.provider, job.kind)
 
 
 async def series_image_model(session: AsyncSession, slug: str) -> str | None:
@@ -483,7 +611,7 @@ async def advance_job(ctx: MediaContext, job: VideoMediaJob) -> VideoMediaJob:
         job.retry_after_seconds = LOCK_RETRY_SECONDS  # type: ignore[attr-defined]
         return job
     try:
-        provider = provider_for(ctx.runtime, job.provider, job.kind)
+        provider = job_provider(ctx, job)
         if job.status == "queued":
             await _submit(ctx, job, provider)
         elif job.status == "submitted":

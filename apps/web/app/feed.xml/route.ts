@@ -46,6 +46,9 @@ const iso = (value: string) => {
 function entry(article: GuideSummary): string {
   const url = localeUrl(defaultLocale, guideHref(article.kind, article.slug));
   const updated = iso(article.published_at) ?? new Date().toISOString();
+  const categories = article.topics.map(
+    (topic) => `    <category term="${escape(topic.slug)}" label="${escape(topic.label)}"/>`,
+  );
   return [
     "  <entry>",
     `    <title>${escape(article.title)}</title>`,
@@ -54,6 +57,7 @@ function entry(article: GuideSummary): string {
     `    <id>${escape(url)}</id>`,
     `    <updated>${updated}</updated>`,
     `    <published>${updated}</published>`,
+    ...categories,
     article.description ? `    <summary>${escape(article.description)}</summary>` : "",
     "  </entry>",
   ].filter(Boolean).join("\n");
@@ -90,6 +94,7 @@ export async function GET(): Promise<NextResponse> {
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<feed xmlns="http://www.w3.org/2005/Atom">',
     "  <title>Mokaair</title>",
+    "  <author><name>Mokaair</name></author>",
     `  <id>${escape(`${siteUrl}/`)}</id>`,
     `  <link rel="self" href="${escape(`${siteUrl}${FEED_PATH}`)}"/>`,
     `  <link href="${escape(localeUrl(defaultLocale, "/"))}"/>`,

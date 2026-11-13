@@ -1,0 +1,286 @@
+{
+  "batch_id": "wave68-physics-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第十八輪：替後備組題 C10-01 冰為什麼滑補非 Bonn、非 Sazaki 研究群的冰摩擦研究（作者 F31，覆核 V34），仍後備。",
+  "sources": [
+    {
+      "id": "P68-S001",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/70A7890E796D559A26AC478524705252/S0022143000207107a.pdf/div-class-title-ice-friction-the-effect-of-thermal-conductivity-div.pdf",
+      "canonical_url": "https://doi.org/10.3189/002214310792447752",
+      "title": "Ice friction: the effect of thermal conductivity",
+      "publisher": "Anne-Marie Kietzig、Savvas G. Hatzikiriakos、Peter Englezos（加拿大英屬哥倫比亞大學化工系）／Journal of Glaciology 56(197):473–479，2010（Cambridge University Press 代國際冰河學會出版）",
+      "version": "期刊正式排版 PDF（出版社網站免費閱讀；頁面標 Copyright © International Glaciological Society 2010，isOpenAccess 為否，非 CC 授權）",
+      "read_via": "WebSearch（Kietzig thermal conductivity ice friction）結果列出 cambridge.org 文章頁；curl 工具預設標頭 200，取頁面 meta citation_pdf_url 下載 PDF（200、application/pdf），pdftotext 轉文字",
+      "reading_scope": "全文（摘要、前言、方法與材料、Table 1、結果與討論各節、Summary and conclusion）；圖 2–6 只讀圖說，數值只取正文",
+      "locator": "Abstract；Methods and materials（Table 1 熱導率、3 N 法向力、20–60 s 平均）；Results：Thermal insulation of the slider with fiberglass（−1.5、−4、−7、−10 °C，0.0036–1.45 m/s；Stellite 6B 約 −4 °C 有最小值、約 1 m/s 以上因毛細橋升高）；The effect of thermal conductivity（P20 對 Ti-6-4、P20 對 Stellite 6B；v = 0.361 m/s 以前相關性遞減）；Summary and conclusion",
+      "summary": "用流變儀讓 14 種金屬環形滑塊在冰上轉動（法向力 3 N，冰與環境溫度一致到 ±0.1 °C），溫度 −1.5 到 −10 °C、速度 0.0036–1.45 m/s。在滑塊和鋁製夾具間墊 3 mm 玻璃纖維隔熱後，慢速時摩擦大幅降低、最低點移到更低的速度；作者解讀為摩擦熱被留在介面、融出較厚的水膜。在 −7 °C 最慢的三個速度，熱導率約為 Ti-6-4 四倍的 P20 鋼摩擦係數高 65–85%；熱導率約為 Stellite 6B 兩倍的 P20 高 15–25%。熱導率與摩擦的正相關隨速度增加而減弱，到 0.361 m/s（多數材料出現摩擦最低點的速度）附近消失，之後表面潤濕性更重要。作者也寫熱導率對最低點位置和高度的影響不單純，潤濕性、硬度也有份。",
+      "limitations": "與池中 P65-NA005（Kietzig 2009 J Appl Phys，未讀）同一研究群、不同論文。量的是 3 N、公分級環形滑塊的流變儀摩擦，數值不能和 Liefferink 等（P64-009，每秒 1 微米）或 Scherge（F31-S002，每秒數公尺）並列或相減；65–85% 是作者自己比較的相對差。研究由溫哥華冬奧 Own The Podium 計畫資助。片中不得延伸成選材、打蠟或運動裝備建議。 覆核 V34（2026-11-12）：version 改為「期刊正式排版 PDF；Cambridge 出版社官方文章頁免費閱讀，頁面標 Copyright © International Glaciological Society 2010，頁面資料 hasAccess 為真、isOpenAccess 為假；不是 CC 也不是 OA，只做連結與原創摘要」。summary 的『到 0.361 m/s 附近消失』改為『正文寫相關性隨速度一路減弱到 0.361 m/s；Fig. 5 的 0.361 m/s 趨勢線近乎持平（讀圖）』；補『同節：AISI M2 隔熱後摩擦反而較高；隔熱造成較厚水層，在最低點附近可能因毛細拖曳升高摩擦』。locator 補『pdftotext 把 −7 °C 印成 –78C，影像確認』。",
+      "author_cache": {
+        "file": "f31src/camb_kietzig2010.pdf（文字 f31src/camb_kietzig2010.txt、kietzig_raw.txt；文章頁 f31src/camb_kietzig2010.html）",
+        "sha256_prefix": "a7061dbab2642091",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-11",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "P68-S002",
+      "url": "https://publica.fraunhofer.de/bitstreams/ea7ae6b6-a1d9-461d-a125-bb0cad16f63e/download",
+      "canonical_url": "https://doi.org/10.5402/2013/703202",
+      "title": "High-Speed Ice Friction Experiments under Lab Conditions: On the Influence of Speed and Normal Force",
+      "publisher": "Matthias Scherge、Roman Böttcher、Mike Richter、Udo Gurgel（德國 Fraunhofer IWM 微摩擦學中心、Ingenieurbüro Gurgel und Partner）／ISRN Tribology 2013, Article ID 703202（Hindawi）",
+      "version": "期刊正式排版 PDF，存於 Fraunhofer Publica 機構典藏；首頁標 CC BY（Creative Commons Attribution License）",
+      "read_via": "WebSearch（Scherge high-speed ice friction）結果列出 publica.fraunhofer.de 紀錄頁 handle/publica/231907；頁面上的 bitstream download 連結 curl 200（application/pdf）。doi.org 轉 hindawi.com 為 Cloudflare 403，未繞過。PDF 文字層的數字字型無法抽取（pdftotext、pypdf 都缺數字），改以 pdftoppm 轉成頁面影像（f31img/scherge2013-1～6.png）逐頁讀正文",
+      "reading_scope": "全文 6 頁（摘要、前言、實驗、結果、討論、結論）；數值取自正文與摘要，不讀圖上的點",
+      "locator": "Abstract；§2.1 Test cell（3.8 m 轉鼓、室溫維持 −5 °C）；§2.2 Runners（F.I.B.T. 鋼、截面半徑 4／8 mm、搖擺半徑 3.8 m）；§3.1 Friction as function of speed（2.8–28 m/s、500 N；2.8 m/s 時 0.015–0.016，最高速 0.005–0.008）；§3.2 load（14 m/s，100–500 N）；§3.3 Ice fracture；§4.1（最高速平均 0.007、外插 33 m/s 約 0.005；與他組資料的 master curve、約 3 m/s 以下降最多）；§5 Conclusions",
+      "summary": "在 −5 °C 的冷房裡，把有舵雪橇（bobsled）規格的鋼刃壓在 3.8 公尺轉鼓內面的冰上，速度 2.8–28 m/s（10–100 km/h）、法向力 500 N：摩擦係數隨速度近乎直線下降，2.8 m/s 時 0.015–0.016，最高速時 0.005–0.008、平均 0.007；超過約 20 m/s 後低於 0.01。把他組低速資料（Niven 除外）與本研究併成一條曲線：約 3 m/s 以前下降最多，再快只小幅下降；作者推測可能是摩擦產生更多自由水的能力在高速時趨於飽和，並明說證明它超出本文範圍。在 14 m/s 加大法向力 100→300 N 時摩擦下降，之後大致不變（約 0.011），冰面出現磨痕與冰屑；作者以赫茲接觸算出約 40 MPa 時冰開始破裂。",
+      "limitations": "單一實驗室、單一溫度（室溫 −5 °C）、鋼刃；摩擦降低的機制（水膜）是作者推測與引用，不是量到的。和其他組的數值『併成一條曲線』是作者自己做的整理，片中不再另外合併或相減。PDF 文字層數字缺失，數值是讀頁面影像上的正文（非讀圖表點）；覆核可從 f31img 影像或同一 PDF 核對。原文有增加壓艙重量的運動建議，片中不得轉述。 覆核 V34（2026-11-12）：read_via 補「Publica 紀錄頁（WebSearch 結果）以 <link rel=item type=application/pdf> 與檔案下載連結提供此 bitstream，並標 Open Access；PDF 首頁印 Hindawi 的 CC BY 聲明，與 DOI 指向的 ISRN Tribology 刊本相同；doi.org→hindawi.com Cloudflare 403 未繞過」。limitations 補「§1 與 Fig. 7 併入 Itagaki 等（F31-S005）的資料，兩者不完全獨立；影像是排版正文，不是 OCR 舊掃描」。",
+      "author_cache": {
+        "file": "f31src/publica_231907_download.pdf（頁面影像 f31img/scherge2013-1～6.png；紀錄頁 f31src/publica_231907.html）",
+        "sha256_prefix": "a39c8e697a3fba53",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-11",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "P68-S003",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/BA93FF3B7A4C51829AB743F81C6B505B/S0022143000209465a.pdf/div-class-title-ice-friction-wear-features-and-their-dependence-on-sliding-velocity-and-temperature-div.pdf",
+      "canonical_url": "https://doi.org/10.3189/172756505781829304",
+      "title": "Ice friction, wear features and their dependence on sliding velocity and temperature",
+      "publisher": "Brett A. Marmo、Jane R. Blackford、Chris E. Jeffree（英國愛丁堡大學）／Journal of Glaciology 51(174):391–398，2005（Cambridge University Press）",
+      "version": "期刊正式排版 PDF（出版社網站免費閱讀；非 CC 授權）",
+      "read_via": "WebSearch（Maeno Arakawa ice friction）結果列出 cambridge.org 文章頁；curl 工具預設標頭 200，取 meta citation_pdf_url 下載 PDF（200），pdftotext 轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、結論）；SEM 照片只讀圖說",
+      "locator": "Abstract；Methodology（冰半球在鋼板上、−27 到 −0.5 °C、0.008–0.37 m/s、負載 2.10／4.20 N、低溫掃描電鏡 LT-SEM）；Conclusion",
+      "summary": "把冰半球在鋼軌上來回滑，再用低溫掃描電鏡看磨耗面與碎屑。摩擦低（μ < 0.1）的兩種組合——較暖慢速（−3.4 °C、0.02 m/s）和很冷但較快（−25.1 °C、0.30 m/s）——磨痕溝裡有殘留液體，尾端碎屑結成一團、有清楚晶界和球形氣泡，作者讀成液態水沉積後再結凍、潤滑了介面；摩擦高（μ > 0.15）的又冷又慢組合（−24.5 °C、0.03 m/s）表面被刮擦、尾端堆著一片片鬆散的固體碎屑，作者讀成潤滑不足、冰脆裂與塑性變形。",
+      "limitations": "滑的是冰、被滑的是粗化過的鋼板，負載只有幾牛頓；『有水』是從碎屑形態推論。不與 Lever 等真溜冰場的冰粒觀察（P64-018）相減或判輸贏，兩者條件不同。 覆核 V34（2026-11-12）：version 補「Copyright © International Glaciological Society 2005；出版社頁免費閱讀、isOpenAccess 為假」。summary 改為逐樣本：A（−3.4 °C、0.02 m/s、μ 0.06）溝裡有像殘留水的細脊、尾端碎屑分段堆積；B（−25.1 °C、0.30 m/s、μ 0.07）溝裡沒有那些細脊（原文明寫 absent）、尾端碎屑結成一整塊、作者讀成較厚的水被掃到尾端一次結凍；C（−24.5 °C、0.03 m/s、μ 0.16）刮擦與鬆散片狀碎屑。limitations 補「每種條件一個代表樣本；水膜厚度以 Stiffler 1986 解析解推算；高摩擦組摘要寫塑性變形、結論寫脆裂」。",
+      "author_cache": {
+        "file": "f31src/camb_marmo2005.pdf（文字 f31src/marmo_raw.txt）",
+        "sha256_prefix": "bafd79e8c787dc70",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-11",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "P68-S004",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/1D873F1A79EC3000BEFEC92B0639E606/S0022143000029300a.pdf/div-class-title-friction-of-a-steel-ball-on-a-single-crystal-of-ice-div.pdf",
+      "canonical_url": "https://doi.org/10.3189/S0022143000029300",
+      "title": "Friction of a Steel Ball on a Single Crystal of Ice",
+      "publisher": "Katutosi Tusima（對馬勝年，北海道大學低溫科學研究所）／Journal of Glaciology 19(81):225–235，1977（Cambridge University Press）",
+      "version": "期刊掃描版 PDF（出版社網站免費閱讀，OCR 文字層；非 CC 授權）",
+      "read_via": "WebSearch（Tusima 1977 steel ball single crystal ice）結果列出 cambridge.org 文章頁；curl 工具預設標頭 200，取 meta citation_pdf_url 下載 PDF（200），pdftotext 轉 OCR 文字",
+      "reading_scope": "全文（英文摘要、前言、實驗、結果各小節、Discussion、Table 1、討論紀錄）；OCR 有雜字，數值以摘要與 Discussion 正文為準",
+      "locator": "Abstract；Experimental（Mendenhall 冰河單晶、基面與柱面並排的雙晶樣品、−0.5 到 −30 °C、球徑 1.6–12.7 mm）；Results (1) friction curve（柱面約為基面兩倍）、(4) temperature dependence（一例在 −7 °C、7.4×10⁻⁵ m/s、4.8 N 時最低）；Discussion（摩擦升溫最多約 0.3 度、不足以融冰；黏著理論 s/p，冰約 10 bar／10³ bar → μ 約 0.01；Table 1）",
+      "summary": "用鋼珠在阿拉斯加 Mendenhall 冰河取來的單晶冰上極慢地滑（1.5×10⁻⁷ 到 1.8×10⁻³ m/s），摩擦係數仍只有 0.005–0.2（討論段寫 0.005–0.16）；同樣條件下，在晶體柱面上滑的摩擦約是基面的兩倍；速度越慢摩擦越大，作者歸因於接觸區冰的潛變；接近 0 °C 摩擦急升，一例在 −7 °C 最低。作者用公式算出這些條件下摩擦升溫最多只有約 0.3 度、不足以融冰，壓力也只有在高溫時能融出水，因此認為壓力融化與摩擦融化都解釋不了，改用黏著理論：摩擦係數約等於『黏結處的剪切強度÷硬度』，冰的硬度和銅同級、剪切強度卻極小，代入 −10 °C 的典型值（約 10 bar 與 10³ bar）得 μ 約 0.01，與實驗同一量級。",
+      "limitations": "1977 年單一作者、單一實驗室；與 Sazaki 研究群同屬北大低溫研但年代與題目不同，非同一研究群。黏著理論是作者的解釋；s、p 是引用他人量測的典型值。−7 °C 最低只是一例，不和 P64-012／P64-014 的 −7 °C 並列成『三個研究都說 −7 °C』。OCR 文字有雜字。 覆核 V34（2026-11-12）：summary 的『壓力也只有在高溫時能融出水』保留原文用詞（except at high temperatures），proposal 不得改寫成『接近 0 °C』；limitations 補「速度範圍原文前後不一：英文摘要 1.5×10⁻⁷–1.8×10⁻³ m/s、Discussion 10⁻⁷–1.8×10⁻³、法文摘要上限 7.4×10⁻³；μ 上限摘要 0.2、Discussion 0.16；0.3 度是作者以 Bowden–Tabor 公式估算」。版權 © IGS 1977、出版社頁免費閱讀。",
+      "author_cache": {
+        "file": "f31src/camb_tusima1977.pdf（OCR 文字 f31src/tusima_raw.txt；文章頁 f31src/camb_tusima1977.html）",
+        "sha256_prefix": "b6288ba59e5d06c0",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-11",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "P68-S005",
+      "url": "https://hal.science/jpa-00226288/file/ajp-jphyscol198748C142.pdf",
+      "canonical_url": "https://doi.org/10.1051/jphyscol:1987142",
+      "title": "Preliminary study of friction between ice and sled runners",
+      "publisher": "K. Itagaki、G. E. Lemieux、N. P. Huber（美國陸軍寒區研究與工程實驗室 CRREL、Dartmouth College）／Journal de Physique Colloques 48(C1):C1-297–C1-301，1987（HAL 典藏 jpa-00226288）",
+      "version": "會議論文集正式排版 PDF（HAL 典藏，HAL Authorization 授權）",
+      "read_via": "HAL 公開搜尋 API（api.archives-ouvertes.fr/search，title 含 ice 與 friction、有檔案）回傳 files_s 欄位；curl 200（application/pdf），pdftotext 轉文字",
+      "reading_scope": "全文 5 頁（摘要、前言、實驗、結果三小節、參考文獻）；Fig. 2 只讀正文描述",
+      "locator": "Abstract；2. Experimental（60 kg 模型雪橇、1.5 m/s、三種鋼材熱導率 68／17／10 W/mK、Table 1）；3. Results：Effect of runner temperature、Effect of runner surface、Effect of runner material",
+      "summary": "CRREL 讓 60 公斤的模型雪橇以約 1.5 m/s 在冷房冰面上自由滑行超過 700 趟，用光閘量減速算摩擦。光滑刃在約 −1 °C 比約 −10 °C 滑（如預期），刃加熱後越熱越滑；粗糙刃幾乎看不出溫度影響，甚至相反。依摩擦融化理論，導熱差的材料應留住較多熱、較滑；但導熱最差的 MP35N（10 W/mK）在一般拋光與粗糙時摩擦反而最高；只有高度拋光時，三種鋼才照『導熱越差越滑』排序，全研究最低摩擦出現在 −3 °C 的高度拋光 MP35N。作者推測刃面粗糙度與硬度（被冰中磨料磨平的程度）影響很大。",
+      "limitations": "作者自稱初步研究，條件難以完全一致（刃面在測試中被磨耗），數值多在圖上、本紀錄只用正文的定性結論；Kietzig 2010 把它引為『導熱越高摩擦越高』的佐證，只對高度拋光那組成立，片中照本紀錄講條件。不得延伸成雪橇、冰刀材質或拋光建議。 覆核 V34（2026-11-12）：summary 補「作者推測先前研究看到的導熱效應可能是刃面狀態造成（The effects of the thermal conductivity observed are probably caused by such surface conditions）」；limitations 補「其資料被 Scherge 2013（F31-S002）Fig. 7 併用」。",
+      "author_cache": {
+        "file": "f31src/ajp-jphyscol198748C142.pdf（文字 f31src/ajp-jphyscol198748C142.txt；HAL API 回應 f31src/hal_icefric.json）",
+        "sha256_prefix": "7530650fa7eb1136",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-11",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P68-001",
+      "question": "摩擦生熱說是不是已經被推翻了？把滑塊包上隔熱，冰會不會變得比較滑？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_slider_thermal_insulation_conductivity",
+      "answer_target": "在這組實驗的慢速端會。加拿大英屬哥倫比亞大學 2010 年用流變儀讓 14 種金屬環形滑塊在冰上轉（−1.5 到 −10 °C、每秒約 4 毫米到 1.45 公尺）：在滑塊後面墊一層玻璃纖維隔熱，慢速時摩擦大幅下降，研究者的解讀是摩擦熱被留在介面、融出更多水來潤滑；但在摩擦最低點附近，有的金屬隔熱後反而更不滑，他們認為是水變多、多了毛細拖曳。換不同金屬也看得到：在 −7 °C 最慢的三個速度，熱導率約四倍的鋼，摩擦係數比鈦合金高 65% 到 85%。這個關係隨速度加快一路減弱，到每秒約 0.36 公尺、多數材料摩擦最低的速度時，論文圖上的趨勢線已經接近持平；再快，表面親不親水更重要。研究者也說熱導率不是唯一因素，潤濕性和硬度都有份。",
+      "scope": "只講這台流變儀、3 N、公分級環形滑塊；『持平』是讀 Fig. 5 的趨勢線，不說成『完全消失』。不和 P64-009（每秒 1 微米、導熱差兩個數量級滑度相近）相減或判誰對，並列為不同速度範圍、不同裝置；與 P64-008（Bowden 與 Hughes 金屬雪板比木雪板摩擦高）同方向，片中先講 P64-008、再用本核心補『隔熱實驗』與『隨速度減弱』。65–85% 是同一研究內的相對差。不給冰刀、雪橇材質、打蠟建議，冬奧資助背景不轉述。",
+      "source_ids": [
+        "P68-S001"
+      ],
+      "source_locator": "F31-S001 Abstract；Results 兩節（Thermal insulation…、The effect of thermal conductivity…）；Summary and conclusion",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：非 Bonn、非 Sazaki 的系統性原研究，全文已讀；但『導熱好的金屬摩擦較高』已在 P64-008（Bowden 與 Hughes，專文轉述）出現，新增的只有隔熱實驗與『效果隨速度減弱』兩件事；『到 0.36 m/s 看不出』要靠讀圖。上限 0.75。 原提案 F31-001（目標 C10-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；數字與原文相符、來源取得合規、雜湊相同；但說『差距消失』、只講隔熱更滑、速度寫成『幾公分』都說過頭或不準，且導熱方向與 P64-008 重疊，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『慢也會滑』沒有把摩擦熱趕出場：在每秒幾毫米到十幾公分，把熱留住，冰就更滑；快到摩擦最低點，差別就看不出來了。",
+        "visual": "兩個一樣的金屬環在冰上轉，一個背後墊了黃色隔熱棉；旁邊的摩擦曲線在慢速那端分開，越往快越靠攏。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P68-002",
+      "question": "冰是不是滑得越快越滑？雪車鋼刃在實驗室滑到每秒 28 公尺，量到什麼？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_high_speed_runner_speed_load",
+      "answer_target": "在這個實驗的速度範圍裡是。德國 Fraunhofer 研究所 2013 年把有舵雪橇規格的鋼刃壓在直徑 3.8 公尺轉鼓內面的冰上，冷房維持 −5 °C：每秒 2.8 公尺時摩擦係數 0.015 到 0.016，加速到每秒 28 公尺（時速約 100 公里）降到 0.005 到 0.008、平均 0.007，大約每秒 20 公尺以上就低於 0.01。研究者把別組的低速資料和自己的畫成同一條曲線：每秒約 3 公尺以前降得最多，再快只小幅下降；他們推測是摩擦能多融出的水在高速時趨於飽和，但也寫明要另做研究才能證明。另外，在每秒 14 公尺時把刃壓得更重，摩擦先下降、到某個負載後大致持平，冰面同時出現磨痕和碎冰。",
+      "scope": "單一實驗室、單一溫度（−5 °C）、鋼刃；『越快越滑』只限 2.8–28 m/s 與這台裝置；水膜是作者推測，不說成量到；作者整理的跨研究曲線不拆開、不與 F31-005 的數字並列（它已被併進那條曲線）；不和 P64-016（膜厚幾乎不隨速度變）判輸贏；原文加配重的建議不轉述；不給滑雪、溜冰、雪橇或駕駛建議。",
+      "source_ids": [
+        "P68-S002"
+      ],
+      "source_locator": "F31-S002 Abstract；§2.1–2.2；§3.1–3.3；§4.1；§5 Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：CC BY 全文、非 Bonn 的高速實驗，數字確認在正文；但單一溫度、單一裝置，機制是推測，負載那段與題目距離較遠；速度與負載合計一條打折。 原提案 F31-002（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；數字逐句對上、授權與取得合規；只把計數照『單一條件、機制推測』下修為 0.5，並補上與 F31-005 不獨立、不拆曲線的限制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "慢到每秒 1 微米也滑，快到時速 100 公里更滑：同一塊冰，在不同速度可能靠不同的東西在滑。",
+        "visual": "轉鼓剖面動畫：冰貼在大鼓內壁旋轉，雪車刃被液壓缸壓上去；右側一條隨速度往下的線。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P68-003",
+      "question": "冰滑過之後留下的碎屑，看得出當時刀底下有沒有水嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_wear_debris_meltwater_morphology",
+      "answer_target": "愛丁堡大學 2005 年讓冰半球在粗化過的鋼板上來回滑，再用低溫掃描電鏡看磨耗面。摩擦低（係數小於 0.1）的兩個樣本：較暖又慢的（−3.4 °C、每秒 0.02 公尺），磨痕溝裡有一條條像殘留水的細脊，尾端碎屑一段段堆積；很冷但快十倍的（−25.1 °C、每秒 0.30 公尺），溝裡沒有那些細脊，但尾端碎屑結成一整塊、有清楚的晶界和圓形氣泡，研究者讀成水被掃到後面、一次結凍的痕跡。摩擦高（係數 0.16）的又冷又慢樣本（−24.5 °C、每秒 0.03 公尺），表面像被刮過，尾端堆著一片片鬆散的固體碎屑，研究者讀成潤滑不足、冰被擠裂。也就是說，同樣冷到約零下 25 度，滑快十倍的那次留下了像水結凍過的痕跡。",
+      "scope": "冰半球對粗化鋼板、負載幾牛頓、每種條件一個代表樣本；『有水』是從碎屑形態推論、水膜厚度是用解析模型推算；不和 P64-018（真溜冰場看到冰粒、不是水滴）判輸贏，並列為不同條件下的觀察。不給任何溫度或速度的運動建議。",
+      "source_ids": [
+        "P68-S003"
+      ],
+      "source_locator": "F31-S003 Abstract；Methodology；Conclusion",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：非 Bonn、非 Sazaki 的原研究，全文已讀；但每種條件一個樣本、『有水』是形態推論，水膜靠解析模型；『很冷但快就有水』與 F31-002 的推測同方向。 原提案 F31-003（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；摘要層的描述對，但答案把只屬於樣本 A 的『溝裡殘留水』套到樣本 B，原文明寫 B 沒有；改正後保留，計數下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不用猜：冰滑過後留下的碎屑，有的像結凍的水，有的像壓碎的粉。",
+        "visual": "兩張示意的電鏡畫面並排：左邊碎屑結成一塊、裡面有圓氣泡；右邊一片片鬆散的冰屑。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P68-004",
+      "question": "慢到幾乎不動、熱也融不了冰的時候，冰為什麼還是滑？有沒有不需要水的解釋？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_single_crystal_adhesion_shear_hardness",
+      "answer_target": "1977 年北海道大學的對馬勝年提過一個：冰本來就『黏不牢』。他讓鋼珠在阿拉斯加冰河取來的單晶冰上，以每秒約 0.15 微米到 1.8 毫米極慢地滑，摩擦係數仍只有 0.005 到 0.2；在晶體的柱面上滑，摩擦約是基面的兩倍；越慢反而越難滑，他推測是接觸處的冰在慢慢變形。他用公式估算，這些條件下摩擦升溫最多只有約 0.3 度、融不了冰，壓力也只有在較高溫時才融得出水，所以認為壓力融化、摩擦融化都解釋不了，改用黏著理論：摩擦係數約等於『黏結處的剪切強度除以硬度』，冰的硬度和銅同一級，剪切強度卻極小，代入 −10 °C 的典型值算出約 0.01，和實驗同一量級。",
+      "scope": "1977 年單一研究、單晶冰與鋼珠的極慢滑動、OCR 掃描版；升溫 0.3 度是作者用公式估算、黏著理論是作者的解釋，片中講成『另一派說法』，不說成定論，也不說它推翻了水膜說；−7 °C 的最低點只是一例，不和 P64-012／P64-014 並列；不轉述成走路防滑建議。",
+      "source_ids": [
+        "P68-S004"
+      ],
+      "source_locator": "F31-S004 Abstract；Results (1)、(4)；Discussion 與 Table 1",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：OCR 舊掃描、單一作者、黏著說與 0.3 度都是作者自己的解釋與估算；『慢也很滑』與 P64-009 同方向不重算；新增只有柱面約為基面兩倍與『不靠水』的黏著說。 原提案 F31-004（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；主要句子都在原文上，但『接近 0 °C』是作者自加；照 OCR 舊掃描、作者自己的解釋兩項折扣下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第四種答案：冰滑也許不是因為有水，而是因為冰『硬卻黏不牢』。",
+        "visual": "鋼珠在一塊透明單晶冰上慢慢推過，冰被切成兩半、一半標『基面』一半標『柱面』，留下一寬一窄的軌跡。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P68-005",
+      "question": "照摩擦生熱的說法，導熱差的雪橇刃應該比較滑，實際上是這樣嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_sled_runner_finish_vs_conductivity",
+      "answer_target": "不一定。美國陸軍寒區研究與工程實驗室 1987 年一份自稱初步的研究，讓 60 公斤的模型雪橇以每秒約 1.5 公尺在冷房冰面上滑了 700 多趟。照摩擦融化理論，導熱差的金屬留得住熱、應該較滑；但導熱最差的那種合金，在一般拋光和粗糙時摩擦反而最高，只有把刃面高度拋光時，三種金屬才照『導熱越差越滑』排序。研究者推測，先前看到的導熱效應，可能有一部分其實是刃面狀態造成的。",
+      "scope": "作者自稱初步研究，刃面在測試中被磨，數值多在圖上，只用正文的定性結論；只放在 F31-001 那一章當一句旁證，不單獨成章；不給材質或拋光建議。",
+      "source_ids": [
+        "P68-S005"
+      ],
+      "source_locator": "F31-S005 Abstract；3. Results：Effect of runner temperature／surface／material",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：初步研究、只有定性結果、與 F31-001 同題；它的資料又被 F31-002 的跨研究曲線用過。保留成 F31-001 章裡的一句條件說明（導熱效應要看刃面），不加分。 原提案 F31-005（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；內容對上，但初步研究、定性、與 F31-001 同題，照保守算法計 0；補上作者『導熱效應可能是刃面狀態造成』的推測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理論說導熱差就會比較滑，真的雪橇刃還要看磨得多亮。",
+        "visual": "三條不同顏色的金屬刃，一組粗糙、一組鏡面，排序在兩組之間對調。",
+        "seconds": [
+          20,
+          30
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P68-NA001",
+      "question": "冰在冰上低速滑動時表面會裂開、再結晶嗎？（Montagnat & Schulson 2003）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "HAL 典藏全文已讀（f31src/Montagnat2003_FrictionIceLabExp-JOG.pdf，sha256 前 16 碼 0e8d4a6249b53ae8，CC BY 4.0）；內容是海冰力學用的冰對冰極慢滑動（5×10⁻⁶ 到 10⁻² m/s、−10 °C），主旨是摩擦造成的表面裂紋與再結晶，與『冰為什麼滑』的問題距離遠，放進來只會多一個學派清單項目。 原提案 F31-NA001。",
+      "reentry_condition": "若之後另組『冰會不會被磨碎』或海冰摩擦題可用。",
+      "reading_status": "已讀全文，未提"
+    },
+    {
+      "id": "P68-NA002",
+      "question": "輪胎橡膠在冰上的摩擦，熱與黏彈性哪個重要？（Hemette 等 2021）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "HAL 作者稿已讀（f31src/1-s2.0-S0301679X21002772-main.pdf，sha256 前 16 碼 35c96c22819761a3）；是橡膠對冰、以輪胎與鞋底為背景，容易被聽成行車或走路安全建議，本題不收。 原提案 F31-NA002。",
+      "reentry_condition": "不建議回本題。",
+      "reading_status": "已讀摘要與前言，未提"
+    },
+    {
+      "id": "P68-NA003",
+      "question": "冰對冰低速摩擦的黏著剪切加燒結理論（Maeno & Arakawa 2004）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "HUSCAP 機構典藏的出版社 PDF 已讀開頭（f31src/huscap_5869_JAP95-1.pdf，sha256 前 16 碼 31b5c4fad86e60a2，© AIP）；是冰對冰的理論模型，實驗是同群先前報告的整理，不算新原研究；方向與 F31-004 相同。 原提案 F31-NA003。",
+      "reentry_condition": "讀到同群原始冰對冰量測論文的開放全文時再評估。",
+      "reading_status": "已讀摘要與前言，未提"
+    },
+    {
+      "id": "P68-NA004",
+      "question": "消費者在家冷凍的冷凍庫種類與切塊大小，會影響牛肉品質嗎？（Dahunsi 等 2025）",
+      "existing_ids": [
+        "K67-004"
+      ],
+      "source_ids": [],
+      "reason": "MMB 全文已讀（f31src/mmb_19030.pdf，sha256 前 16 碼 fada5d76d57b30b8，CC BY）；所有組都凍過兩次、沒有鮮肉對照，主題是冷凍庫類型與切塊大小，屬冷凍方法比較，違反本題不給冷凍方法建議的規則。 原提案 F31-NA004。",
+      "reentry_condition": "不建議回本題。",
+      "reading_status": "已讀摘要與方法，未提"
+    },
+    {
+      "id": "P68-NA005",
+      "question": "冷凍速率與冰晶形成、肌水動態，以及解凍時肌原纖維蛋白回復（Qian 等 2022 Food Chem 兩篇、Li 2023 列日博士論文、Qian 等 2022 Int J Refrig）",
+      "existing_ids": [
+        "K67-003"
+      ],
+      "source_ids": [],
+      "reason": "ORBi 紀錄頁（2268/295797、295799、298474）都只有作者稿『Request a copy』按鈕，不申請；Europe PMC 標非開放。只讀到摘要，不計。 原提案 F31-NA005。",
+      "reentry_condition": "作者稿在 ORBi 改為公開或出現在開放期刊時，可補第三研究群的冰晶與蛋白質變性，約 0.5 條。",
+      "reading_status": "只讀摘要（ORBi、AGRIS 紀錄頁）"
+    },
+    {
+      "id": "P68-NA006",
+      "question": "冷凍牛肉裡冰晶位置與大小（Martino & Zaritzky 1986 Food Structure；Mulot 等 2019 J Food Eng 微型 CT）",
+      "existing_ids": [
+        "K67-001"
+      ],
+      "source_ids": [],
+      "reason": "Martino & Zaritzky 的 USU Digital Commons 紀錄頁今日 200，但頁面 citation_pdf_url 回 Cloudflare『Just a moment』403；CORE 下載網址（搜尋結果列出）403；未繞過。Mulot 2019 在 HAL（hal-02618602）只有書目、openAccess 為否。 原提案 F31-NA006。",
+      "reentry_condition": "USU 或 CORE 可讀時補 Martino & Zaritzky，約 0.5 條。",
+      "reading_status": "只讀紀錄頁中繼資料"
+    }
+  ]
+}

@@ -88,6 +88,10 @@ class MiniMaxQuotaOut(BaseModel):
     # MiniMax's own answer without base_resp, bounded (app/video_speech/minimax.py ``bounded``):
     # no official page names its fields, so they are passed on as MiniMax wrote them.
     quota: dict[str, Any]
+    # Every M Plan key the site shares calls out among (app.ai.minimax_pool), the first one
+    # first: its place in the list, the last four characters of its fingerprint, and its answer
+    # or why there is none. ``quota`` above stays the first key's.
+    accounts: list[dict[str, Any]] = Field(default_factory=list)
 
 
 class VideoToolTokenCreate(BaseModel):

@@ -1,0 +1,1178 @@
+{
+  "reviewed_on": "2026-11-12",
+  "round": 12,
+  "previous_round": "docs/videos/so-thats-why/pool/reviews/material-20261111-round18.json",
+  "owner_instruction": [
+    "繼續擴充"
+  ],
+  "bar": "同前八輪：可成題要有至少 8.5 分鐘素材與兩個改變結論的轉折；只算有可讀紀錄的外部來源；只讀到摘要或簡報的不計；來源必須循公開連結取得。",
+  "method": "延續第十七輪，補讀其次接近門檻的後備組題：作者 F31 補 C10-01 冰為什麼滑與 C12-01 冷凍肉，作者 F32 補 C13-01 鳥蛋與 C13-02 蝸牛，都只找與池中不同研究群的開放原研究。兩位沒參與撰寫的覆核者（V34 覆核 F31、V35 覆核 F32）核對快取雜湊、重抓來源、逐筆讀作者的工具紀錄、逐核心判定並重算分鐘；覆核結論優先。",
+  "policies": {
+    "source_access": "兩位作者都沒有拼湊網址；F32 把參考文獻裡的期刊卷號組成 DOI 字串放進 Europe PMC 搜尋當查詢字（文件記載的 API 參數，不是抓網址），覆核另用題名作者查到同一筆，改正 read_via。Cambridge 出版社頁免費閱讀的三篇（Kietzig、Marmo、Tusima）不是 CC 也不是 OA，只做連結與原創摘要。",
+    "C10-01": "五個新核心全取上限也只有 8.43 分，結論穩定為後備；結論守在「各派並列、機制仍不確定」，不含安全建議。",
+    "C12-01": "Rehman 2024 是平衡不完全區集，不是同一頭牛左右對照；Li 2022 只凍 48 小時、容易被聽成越冷越好，移出本題；不得有食品安全、解凍或冷凍方法建議。",
+    "C13-01": "Fernández 2013 的蛋群地層只寫 Santonian，「七千萬年前」原文沒有；Hentati-Sundberg 2021 的「七倍」是摘要寫法，用結果段的原數字。",
+    "C13-02": "Truchado-García 2023 與 Grande 是同一人延續研究，合併計；Dietl 2006 的修補疤是攻擊失敗留下的；CRISPR 做出可遺傳左旋只讀到團隊自己的綜述。"
+  },
+  "counts": {
+    "research_proposals": 14,
+    "research_proposals_by_author": {
+      "F31": 7,
+      "F32": 7
+    },
+    "research_sources_read": 18,
+    "cores_added": 14,
+    "cores_rejected": 0,
+    "verdicts": {
+      "ADOPT_WITH_CHANGES": 14
+    },
+    "not_added_records": 15,
+    "targets_ready": [],
+    "targets_reserve": [
+      "C10-01",
+      "C12-01",
+      "C13-01",
+      "C13-02"
+    ],
+    "ready_long_themes_before_after": [
+      86,
+      86
+    ],
+    "pool_selected_before_after": [
+      4089,
+      4103
+    ],
+    "raw_records_before_after": [
+      4479,
+      4493
+    ],
+    "source_urls_before_after": [
+      5355,
+      5373
+    ],
+    "not_added_before_after": [
+      2489,
+      2504
+    ],
+    "themes_before_after": [
+      627,
+      627
+    ],
+    "distinct_decisions_added": 31
+  },
+  "core_id_mapping": {
+    "F31-001": "P68-001",
+    "F31-002": "P68-002",
+    "F31-003": "P68-003",
+    "F31-004": "P68-004",
+    "F31-005": "P68-005",
+    "F31-006": "K68-001",
+    "F31-007": "K68-002",
+    "F32-001": "L68-001",
+    "F32-002": "L68-002",
+    "F32-003": "L68-003",
+    "F32-004": "L68-004",
+    "F32-005": "L68-005",
+    "F32-006": "L68-006",
+    "F32-007": "L68-007"
+  },
+  "rejected_core_mapping": {},
+  "source_id_mapping": {
+    "F31-S001": [
+      "P68-S001"
+    ],
+    "F31-S002": [
+      "P68-S002"
+    ],
+    "F31-S003": [
+      "P68-S003"
+    ],
+    "F31-S004": [
+      "P68-S004"
+    ],
+    "F31-S005": [
+      "P68-S005"
+    ],
+    "F31-S006": [
+      "K68-S001"
+    ],
+    "F31-S007": [
+      "K68-S002"
+    ],
+    "F32-S001": [
+      "L68-S001"
+    ],
+    "F32-S002": [
+      "L68-S002"
+    ],
+    "F32-S003": [
+      "L68-S003"
+    ],
+    "F32-S004": [
+      "L68-S004"
+    ],
+    "F32-S005": [
+      "L68-S005"
+    ],
+    "F32-S006": [
+      "L68-S006"
+    ],
+    "F32-S007": [
+      "L68-S007"
+    ],
+    "F32-S008": [
+      "L68-S008"
+    ],
+    "F32-S009": [
+      "L68-S009"
+    ],
+    "F32-S010": [
+      "L68-S010"
+    ],
+    "F32-S011": [
+      "L68-S011"
+    ]
+  },
+  "not_added_mapping": {
+    "F31-NA001": "P68-NA001",
+    "F31-NA002": "P68-NA002",
+    "F31-NA003": "P68-NA003",
+    "F31-NA004": "P68-NA004",
+    "F31-NA005": "P68-NA005",
+    "F31-NA006": "P68-NA006",
+    "F32-NA001": "L68-NA001",
+    "F32-NA002": "L68-NA002",
+    "F32-NA003": "L68-NA003",
+    "F32-NA004": "L68-NA004",
+    "F32-NA005": "L68-NA005",
+    "F32-NA006": "L68-NA006",
+    "F32-NA007": "L68-NA007",
+    "F32-NA008": "L68-NA008",
+    "F32-NA009": "L68-NA009"
+  },
+  "new_themes": [],
+  "reserve_records": {
+    "C10-01": {
+      "target": "C10-01",
+      "theme_id": null,
+      "title": "冰為什麼這麼滑？是被壓化的嗎？",
+      "reviewer": "V34",
+      "author": "F31",
+      "author_verdict": "ready",
+      "author_est_minutes": 8.69,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "P64-006",
+        "P64-007",
+        "P64-008",
+        "P64-009",
+        "P68-001",
+        "P68-005",
+        "P68-002",
+        "P68-003",
+        "P64-010",
+        "P64-011",
+        "P65-002",
+        "P65-003",
+        "P64-020",
+        "P64-012",
+        "P64-014",
+        "P68-004",
+        "P64-013",
+        "P64-015",
+        "P64-016",
+        "P64-017",
+        "P65-005",
+        "P65-004",
+        "P64-018",
+        "P64-019"
+      ],
+      "recount_facts": "10.5 條（作者 11.75）。底數照 V28 9.0 條（19 個舊核心不變）。新增：P68-001 0.5（作者 0.75；導熱方向已在 P64-008，只算隔熱實驗與隨速度減弱）；P68-002 0.5（作者 0.75；單一溫度、單一裝置、機制是推測）；P68-003 0.25（作者 0.5；每種條件一個樣本、形態推論，且作者把 A 的殘留水套到 B）；P68-004 0.25（作者 0.5；1977 年 OCR 舊掃描、黏著說與 0.3 度是作者自己的解釋與估算）；P68-005 0（作者 0.25；自稱初步研究、定性、與 P68-001 同題，資料又被 P68-002 併用）。新增合計 1.5。（10.5×140＋700）÷270＝8.04 分。即使五個新核心都取上限（0.75、0.5、0.5、0.25、0.25，共 2.25），也只有 11.25 條、8.43 分，仍不到 8.5。",
+      "recount_fact_count": 10.5,
+      "recount_minutes": 8.04,
+      "planned_minutes": null,
+      "cuts": "不刪舊核心。P68-005 計 0，只當 P68-001 章裡一句條件說明，不單獨成章。P68-003 的『溝裡殘留水』只限暖慢那個樣本。P68-002 原文的配重建議、P68-001 的冬奧資助背景不轉述；P68-002 的跨研究曲線不拆開、不和 P68-005 並列數字。P64-011 與 P65-002 的『各方法厚度差很多』只講一次；P68-004 的 −7 °C 最低點不與 P64-012／P64-014 並列。",
+      "turns": [
+        "成立（照 V27／V28，要守條件）：以為『冰刀把冰壓化』——每 MPa 只降約 0.074 °C、−30 °C 仍能溜；最滑在約 −7 °C，太冷像乾摩擦、太暖被犁開（P64-006、P64-007、P64-012、P64-014）。不得說壓力融化『完全錯』。",
+        "成立（新，要守速度範圍）：以為摩擦生熱已經被『慢也會滑』推翻——每秒 1 微米、導熱差兩個數量級滑度相近（P64-009），但在每秒幾毫米到十幾公分，替滑塊隔熱就更滑、熱導率約四倍的鋼摩擦高 65–85%，這個關係隨速度一路減弱，到每秒約 0.36 公尺時圖上已近乎持平（P68-001；P68-005 提醒導熱效應會被刃面狀態混淆）；每秒 2.8 到 28 公尺越快越滑，水變多只是研究者推測（P68-002）；很冷但快十倍的樣本留下像水結凍過的碎屑（P68-003）。各研究速度、裝置不同，不合併、不判輸贏：熱在某些速度範圍仍有份。",
+        "成立（照 V28，不得說過頭）：以為『冰面本來就有一層水在潤滑』——直接拍到的是很接近 0 °C 且水氣不平衡時才出現的液滴與薄層（P65-002、P64-020），『比水黏 200 倍』原研究量的是比值（P65-003），那層膜是黏是稀實驗與模擬說法不同（P64-016、P65-005、P65-004），還有 1977 年不靠水的黏著說（P68-004，作者自己的解釋）。結論守在『各派並列、機制仍不確定』（P64-019）。"
+      ],
+      "chapter_outline": [],
+      "core_question": "冰為什麼滑？大家熟的「被壓化」「磨熱融化」「表面本來有水」各自卡在哪裡，在不同速度下各自還剩多少份量，現在研究到哪一步？",
+      "connection": "（後備，暫不排章。）壓力融化的帳（P64-006、007）→ 摩擦生熱與慢也滑（008、009）→ 熱還沒出局：隔熱更滑、越快越滑、但要看速度與刃面（P68-001、P68-005、P68-002）→ 碎屑裡的水痕（P68-003）→ 表面本來有層東西？（010、011）→ 直接拍到的液滴與薄層、黏度其實是比值（P65-002、P65-003、P64-020）→ 溫度甜蜜點與犁溝（012、014）→ 不靠水的黏著說（P68-004）→ 表面分子與局部壓力（013、015）→ 實驗：膜很黏（016、017）→ 模擬：一奈米就夠／搓一搓就亂（P65-005、P65-004）→ 溜冰場實拍（018）→ 各派並列（019）。",
+      "boredom_risk": "中偏高：學派清單更長了（熱、壓力、表面層、黏著、搓亂），實驗裝置從奈米模擬、鋼珠、流變儀、轉鼓到真冰場，每章都要先講『什麼裝置、多快、多冷』，否則觀眾會把不同研究的數字混在一起；速度軸（每秒 1 微米 → 幾公分 → 28 公尺）是新加的串法。",
+      "drop_if": "出現『壓力融化完全錯』『摩擦生熱被推翻』或『被證實』『水膜說被推翻』『科學家終於解開』『冰滑跟水無關』『準液層比水黏 200 倍』；把隔熱、熱導率、拋光、速度、配重或任何溫度說成溜冰、雪橇、走路、開車或打蠟建議；把不同研究的摩擦係數、溫度、厚度、黏度相減、平均或合併（含把 Scherge 的跨研究曲線拆開與 Itagaki 並列）。",
+      "evidence_gaps": "Bonn 研究群（含 Sazaki 共同撰寫的綜述）仍佔大宗；歷史段全靠 2005 年專文轉述；新增的五份各只有一個實驗室、多為單一溫度或少數樣本，Itagaki 自稱初步、Tusima 是 OCR 舊掃描，Scherge 與 Itagaki 資料不完全獨立；真溜冰場只有 Lever 一組。",
+      "still_missing": "差 1.0 條（10.5 條、8.04 分；需 11.5 條才到 8.56 分）。只循公開連結：（1）de Koning 1992 速滑實測原文（真冰場、非 Bonn，約 0.5）；（2）Kietzig 2009 J Appl Phys 或 UBC 博士論文的合法全文（同群上限內，最多讓 P68-001 升到 0.75，約 +0.25）；（3）Bowden & Hughes 1939 原文（royalsocietypublishing 403），讓 P64-008 由轉述升級、約 +0.25；（4）另一獨立研究群在真冰刀或雪橇刃上同時量溫度與摩擦的開放原研究，約 0.5。Scherge 等 2018 Lubricants（MDPI 403、Publica 無檔案）與 P68-002 同群，最多 +0.25。不靠放寬 P68-003、P68-004、P68-005 的計數過線。",
+      "reason": "七份來源都以同一公開連結重抓，sha256 前綴全部相同；工具紀錄裡每個網址都先出現在搜尋結果、頁面連結、HAL API 或 Europe PMC REST，沒有拼湊。數字逐句對上，但作者把 Marmo 樣本 A 的殘留水套到樣本 B、把 Kietzig『一路減弱到 0.361 m/s』說成『消失』且漏掉隔熱在最低點附近反而升高、把速度範圍寫成『幾公分』；計數偏寬：Kietzig 的導熱方向已在 P64-008，Tusima 是 OCR 舊掃描加作者自己的解釋，Itagaki 自稱初步。重算 10.5 條、8.04 分，三個轉折成立但片長不夠，改判 reserve。最終核心都不在 themes.json 任何 ready 題，也都不在 POOL_SUPPORT。"
+    },
+    "C12-01": {
+      "target": "C12-01",
+      "theme_id": null,
+      "title": "冷凍肉解凍後那一灘水，是冰晶把細胞刺破流出來的嗎？",
+      "reviewer": "V34",
+      "author": "F31",
+      "author_verdict": "reserve",
+      "author_est_minutes": 8.3,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "K66-001",
+        "K66-002",
+        "K66-003",
+        "K67-001",
+        "K67-002",
+        "K66-004",
+        "K67-003",
+        "K66-008",
+        "X34-005",
+        "K66-005",
+        "K66-009",
+        "K66-010",
+        "K66-011",
+        "D2022",
+        "K66-012",
+        "K66-013",
+        "K66-006",
+        "K66-007",
+        "K67-004",
+        "K68-001",
+        "K67-005"
+      ],
+      "recount_facts": "10.5 條（作者 11.0）。底數照 V32 10.25 條（20 個舊核心不變，K67-005 仍計 0）。新增：K68-001 0.25（作者 0.5；同一 Kim 研究群、與 K67-004 同方向、沒凍組熟成較久且不是左右配對、研究者自己說消費者分辨力有限）；K68-002 0 並移出本題（只凍 48 小時，照 K67-005 先例；與 K66-011 同結論型）。新增合計 0.25。（10.5×140＋700）÷270＝8.04 分。",
+      "recount_fact_count": 10.5,
+      "recount_minutes": 8.04,
+      "planned_minutes": null,
+      "cuts": "K68-002 移出本題（收進池中但不在本題用），避免四個遞減的解凍損失數字被聽成『越冷越好』。K67-005 仍只留一句『只凍 48 小時』的旁證。若再縮：先刪 D2022，再刪 K66-013。",
+      "turns": [
+        "成立（照 V32）：以為「凍得越快冰晶越小、出水越少」——切片看到慢凍冰晶多在細胞外、快凍多在細胞內（K67-001，重現既有觀察），但同一批牛排先熟成再凍時，快凍、慢凍和沒凍的失重分不開（K67-002）；加上 K66-002 的門檻與 K66-001 的鮮肉自滴。",
+        "成立（標明是模型）：以為「那灘水就是冰晶刺破細胞」——赫爾辛基研究指向蛋白質變性（K67-003，博士論文綜合篇、慢凍多約三成是相對值）。",
+        "成立：以為「凍過的肉一吃就知道」——受訓評審嚐得出多汁差（K66-006、K67-004），一般消費者盲測沒挑出來（K67-004，冷凍組與鮮肉組來自不同屠宰日）；普渡同一批 30 頭牛、先熟成再凍 1–5 週的盲測也沒有差異，但沒凍組熟成較久、研究者自己說消費者分辨力有限（K68-001，與 K67-001／002 同一研究群）。"
+      ],
+      "chapter_outline": [],
+      "core_question": "解凍那灘水裡，有多少是肉本來就會滴的、多少是冰晶造成的、多少是蛋白質被凍壞，而一般人又吃不吃得出來？",
+      "connection": "（後備，暫不排章。）鮮肉自滴（K66-001）→ 冰晶大小與門檻（K66-002、K66-003）→ 冰長在哪（K67-001）→ 位置差很多、失重不一定差（K67-002）→ 破壞和出水不是一對一（K66-004）→ 蛋白質那一筆（K67-003）→ 汁裡的酵素（K66-008、X34-005）→ 解凍少、展示多（K66-005）→ 凍融與溫度波動（K66-009、K66-010）→ 溫度與時間：研究不一致（K66-011、D2022、K66-012、K66-013）→ 受訓舌頭與一般舌頭（K66-006、K66-007、K67-004、K68-001、K67-005）。",
+      "boredom_risk": "中高：十幾個研究輪流上場、多是百分比；消費者盲測一章現在有三個研究，容易變成『大家都吃不出來』的重複，要靠各自的條件（屠宰日不同、熟成天數不同、只凍 48 小時）拉開。",
+      "drop_if": "把不同研究的百分比相減或並排比大小、把「多約三成」說成肉重的三成、把蛋白質模型說成定論、說成一般人都嚐不出冷凍過的肉或『冷凍不影響品質』、說「越冷越好」或推薦冷凍庫溫度、冷凍方式、熟成週數、包裝或產品、引用保存天數、給任何解凍、冷藏或食品安全建議，該段刪。",
+      "evidence_gaps": "冰晶位置只有一篇小樣本定性切片；蛋白質變性一筆只讀到博士論文綜合篇，Paper II、III 原始數字沒讀到；消費者盲測三篇都有混淆（不同屠宰日、熟成天數不同、只凍 48 小時），其中兩篇在 Kim 群或同方向；溫度與時間一章仍是各物種各包裝並列。",
+      "still_missing": "差 1.0 條（10.5 條、8.04 分；需 11.5 條才到 8.56 分）。只循公開連結：（1）Zhang & Ertbjerg 2019（Paper II）或 Zhang 等（Paper III）的合法全文（core.ac.uk 403、Europe PMC 非開放），約 +0.25；（2）第三研究群以切片、冷凍電鏡或微型 CT 量化肉類冰晶位置的開放原研究（Martino & Zaritzky 1986 的 USU／CORE 都 403；Qian／Li 群在 ORBi 只有 Request a copy），約 0.5；（3）不屬已用研究群、真空包裝下 −18 °C 與更低溫『長期』儲存比較的獨立研究，約 0.5；（4）非 Kim 研究群、同一頭牛左右配對且冷凍數週以上、熟成天數相同的消費者盲測，約 0.5。不靠放寬 K67-001、K67-004、K67-005、K68-001、K68-002 的計數過線。",
+      "reason": "F31-S006、F31-S007 以同一公開連結重抓，sha256 前綴相同（iastatedigitalpress 本次沒有驗證頁）；網址分別出自 WebSearch 結果與 Europe PMC REST 搜尋。數字逐格對上，但 K68-001 的題目把平衡不完全區集說成同一頭牛左右配對、把剪力值範圍說成差距，研究者自己的『分辨力有限』也漏寫；K68-002 只凍 48 小時、與 K66-011 同結論型，方法與表的重複數不一致。重算 10.5 條、8.04 分，三個轉折成立但片長不夠，維持 reserve。最終核心除 X34-005（G331 短題、material 無 verdict）外都不在 themes.json 任何題，也都不在 POOL_SUPPORT。"
+    },
+    "C13-01": {
+      "target": "C13-01",
+      "theme_id": null,
+      "title": "鳥蛋為什麼一頭尖一頭鈍？海鴉的蛋尖是為了不滾下懸崖嗎？",
+      "reviewer": "V35",
+      "author": "F32",
+      "author_verdict": "reserve",
+      "author_est_minutes": 7.91,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "L66-008",
+        "L66-011",
+        "L66-012",
+        "L68-002",
+        "L66-013",
+        "L66-010",
+        "L68-001",
+        "L66-009",
+        "L67-001",
+        "L66-014",
+        "L67-002",
+        "L67-003",
+        "L66-015",
+        "L66-016",
+        "L67-004",
+        "L67-005",
+        "L66-017",
+        "L66-018",
+        "L66-019"
+      ],
+      "recount_facts": "9.75 條（作者 10.25）。舊核心照 V33 共 9.0（L67-005 為 0）。新增：L68-001 0.5（作者 0.75；Fernández 2013 0.5，Hogan & Varricchio 2023 是綜述轉述 Varricchio 自己團隊 1999 年的原論文、且 Fernández 已寫『與傷齒龍類相似』，計 0）、L68-002 0.25（作者 0.5；沒有任何蛋形資料，屬與蛋形距離遠的旁證）。Hays 2018 碩士論文只有摘要、Chou 等 2025 只有新聞稿，都不計。（9.75×140＋700）÷270＝7.65 分，距 8.5 分（約 11.4 條）差約 1.65 條。",
+      "recount_fact_count": 9.75,
+      "recount_minutes": 7.65,
+      "planned_minutes": null,
+      "cuts": "不刪舊核心。L67-005 照 V33 只留一句或刪；L68-002 只當開場鉤子一句（30–40 秒內），不放進轉折一的證據；L68-001 的綜述部分只用來並列反面讀法。",
+      "turns": [
+        "成立（照 V31／V33）：以為海鴉蛋尖是為了滾小圈不掉下懸崖——體積只解釋尖度 0.5%／2.7%（L66-011），好處改成斜坡上放得穩（L66-012）。L68-002 只在前面說明『蛋確實會掉，時機是親鳥被嚇走』，不支持也不反駁蛋形說，不算轉折證據。",
+        "成立（照 V33 的方向）：以為『找到答案了，蛋形就跟著飛行走』——全鳥類能解釋的只有一小部分，長與尖要分開問、逐科常反過來（L66-014、L67-002），兩派自己也說尺度不同（L67-003）。L68-001 只是一個章節畫面，不改變任何轉折；它本身的『現生鳥只有塚雉』已被同核心第二來源推翻，不能當轉折。"
+      ],
+      "chapter_outline": [],
+      "core_question": "鳥蛋為什麼一頭尖一頭鈍？是為了不滾走、為了飛、為了孵，還是要看哪一群鳥？",
+      "connection": "（後備，暫不排章。）懸崖上的蛋什麼時候會掉（L68-002，鉤子）→ 雞蛋不是標準形（L66-008）→ 海鴉防滾說檢驗不過、改成斜坡放得穩（L66-011～013）→ 形狀在殼之前定、恐龍已有尖蛋、古鳥把尖頭插進沙裡（L66-010、L68-001、L66-009）→ 尖頭讓鈍端與氣室朝上（L67-001）→ 飛行、孵法、氣候：長與尖分開問、看哪一群鳥（L66-014、L67-002、L67-003、L66-015、L66-016）→ 圓蛋與梨形蛋的溫度帳（L66-017、L66-018）→ 同種內也不一樣（L67-004、L66-019）。",
+      "boredom_risk": "中：轉折二仍是四份統計研究加一篇觀點文；L68-001 的化石畫面與 L68-002 的監視器畫面能提供前半段的具體場景，但不能拿來撐轉折。",
+      "drop_if": "說『七千萬年前』或『更早的傷齒龍』；說『現生鳥只有塚雉這樣放』而不提鴴的轉述；把 Comahue 蛋的『半埋孵蛋』說成定論而不提『埋了就走』的讀法；說『驚飛多了七倍』（次數）；把海鴉蛋掉落接成蛋形的證據；以及 V33 已列的各項（4% 當比分、飛行說被推翻、13 度說成野外巢等）。",
+      "evidence_gaps": "Hays & Hauber 2018（JEB 403、CUNY 論文 PDF Cloudflare 403）；Chou、Tuanmu、Hung 2025 Proc B（royalsocietypublishing 403、Europe PMC 非開放）；Shatkovska 2018 無開放全文；Varricchio 等 1999 傷齒龍巢原文未讀；Maclean 1974（鴴類覆蓋蛋）原文未讀；斜面實驗沒有第二個研究群重做。",
+      "still_missing": "差約 1.65 條（需約 11.4 條）。只循公開連結：（1）Hays & Hauber 2018 JEB 或 CUNY 碩士論文的可讀全文（現 403），非 Birkhead 群的滾動實驗，約 0.75；（2）Chou、Tuanmu、Hung 2025 Proc B 的開放版本（蛋重與巢牆、3D 列印蛋滾出試驗），約 0.5；（3）Shatkovska 等 2018 J Morphol 開放全文，約 0.5；（4）直接量現生地面營巢鳥蛋擺放方向（尖端朝下或朝內）的原研究，例如 Maclean 1974 Ostrich〈Egg-covering in the Charadrii〉若有合法全文，約 0.25–0.5；（5）第二個研究群重做斜面放蛋實驗，約 0.75。（1）＋（2）＋（3）約 11.5 條才剛過線；不放寬 Birkhead、Stoddard 封頂，不把 4% 計分，L68-002 不升級。",
+      "reason": "作者的 reserve 成立，分鐘也與作者自己的保守估計一致（9.75 條、7.65 分），但條數的分配不同：L68-001 的 Hogan 部分屬綜述轉述自己團隊原論文、L68-002 與蛋形無關，各下修 0.25。更要緊的是內容錯誤：L68-001 的『現生鳥只有塚雉』被同一核心的第二份來源推翻、『更早的傷齒龍類』與『七千萬年前』原文無，並漏掉綜述對同一批蛋的反面讀法；L68-002 的『驚飛多了約七倍』只有摘要這樣寫，結果段次數不到三倍。最終核心都不在 themes.json 任何題的 candidate_ids（627 題、86 題 ready），也不在 POOL_SUPPORT。"
+    },
+    "C13-02": {
+      "target": "C13-02",
+      "theme_id": null,
+      "title": "蝸牛殼為什麼大多往右轉？左旋的蝸牛活得下去嗎？",
+      "reviewer": "V35",
+      "author": "F32",
+      "author_verdict": "reserve",
+      "author_est_minutes": 7.65,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "L66-020",
+        "L68-007",
+        "L66-021",
+        "L66-022",
+        "L68-004",
+        "L68-003",
+        "L66-023",
+        "L66-024",
+        "L66-025",
+        "L68-005",
+        "L66-026",
+        "L66-027",
+        "L66-028",
+        "L68-006",
+        "L66-029"
+      ],
+      "recount_facts": "8.5 條（作者 9.75；作者自己的保守算法 8.75）。舊核心照 V31 共 6.0（網絡 A 封頂 3.0、網絡 B 2.25、獨立 0.75）。新增：L68-003 1.0（Grande & Patel 2009 兩件事各 0.5；Truchado-García 2023 是 Grande 自己的延續研究，同研究網絡合併、與『沒有 Nodal 就不盤旋』同一發現，計 0）、L68-004 0.5（黑田團隊綜述轉述自己的 CRISPR 原論文，撥轉鏡像在 L66-021 已有）、L68-005 0.5（獨立研究群，但與 L66-024／025 同方向）、L68-006 0.25（Schilthuizen 歸網絡 B，2.25→2.5；志願者量測是方法論）、L68-007 0.25（祖先狀態是引前人，苔蘚蟲只 11 個胚胎）。（8.5×140＋700）÷270＝7.00 分，距 8.5 分（約 11.4 條）差約 2.9 條。敏感度：A、B 網絡合併封頂時 L68-006 為 0、舊核心 3.75，合計 6.0 條、5.70 分；照作者全部條數也只有 9.75 條、7.65 分，任何算法都到不了 8.5。",
+      "recount_fact_count": 8.5,
+      "recount_minutes": 7.0,
+      "planned_minutes": null,
+      "cuts": "不刪舊核心。L66-020 只當一句旁證；L68-006 若 A、B 網絡合併封頂可整段刪；L68-007 只當開場後的鋪墊與收尾留言問題。",
+      "turns": [
+        "成立（照 V31，有新證據）：以為『左旋蝸牛找不到對象，注定被淘汰』——岩崎氏鈍頭蛇讓左旋存活 87.5%、右旋 0%（兩個不同物種，L66-024），蛇區內左旋屬較多（邊際，L66-025）；L68-005 補上不同研究群、不同捕食者的化石證據（11 對中 10 對右旋那種帶螃蟹疤比例較高；作者也說不出左旋為何仍稀少）。不得合成『捕食者都偏右』。",
+        "成立（照 V31）：以為『左右相反就不能交配，一個基因就造出新種』——Amphidromus 左右互配多於隨機、Euhadra 有基因流（L66-028、L66-029）。",
+        "候選第三轉折，判定：內容成立、證據只到綜述層級。以為『旋向基因只是相關，做不出左旋蝸牛』——2016 年兩組都沒有證明（L68-004 引原文）、藥物只讓第三次分裂像左旋、後續仍右扭（L66-022）；黑田團隊用 CRISPR 剪掉 Lsdia1 兩個等位基因，右旋品系一代代生出左旋（L68-004）。它確實改變觀眾結論，但只來自同團隊的綜述，原論文 Abe & Kuroda 2019 未讀；本題已有兩個轉折，這一個不是成題的必要條件，讀到原文前片中要標明『該團隊說』。"
+      ],
+      "chapter_outline": [],
+      "core_question": "蝸牛為什麼幾乎都右旋？旋向怎麼決定、左旋的少數又怎麼在某些地方贏？",
+      "connection": "（後備，暫不排章。）左旋有多少（L66-020）→ 偏右比蝸牛還古老（L68-007）→ 旋向看媽媽、撥得動胚胎改不了遺傳（L66-021）→ 那個基因：藥做不到、CRISPR 做到（L66-022、L68-004）→ 訊號站到哪一邊、擋掉就不捲（L68-003）→ 例外與多次反轉（L66-023）→ 右撇子的蛇與螃蟹讓左旋存活（L66-024、L66-025、L68-005、L66-026、L66-027）→ 反向也能配、鏡像也不完全一樣、一個基因不夠造新種（L66-028、L68-006、L66-029）。",
+      "boredom_risk": "中偏高：前半段多了 nodal 與 CRISPR 兩段分子機制，開場三分鐘都是基因名；要把蛇與螃蟹的段落提前到第二章當鉤子，機制段落用『撥得動、剪得掉、擋了就不捲』三個動作串起來。",
+      "drop_if": "說擋住 nodal 能讓蝸牛變左旋、或說 nodal 決定方向；把 Truchado 寫成另一個研究群或把 43%、92%、80.4% 並列成同一實驗；說『黑田團隊證明了、英國團隊錯了』；把 Lsdia1『兩個等位基因』說成『那一對基因』；說螃蟹疤『幾乎都在右旋』或『左旋較少被攻擊』；說左旋殼明顯比較胖；以及 V31 已列的各項（87.5% 說成同一種、每三四百萬年說成所有蝸牛、藥物養出左旋等）。",
+      "evidence_gaps": "Abe & Kuroda 2019 Development 原文未讀（L68-004 只到綜述）；Kuroda 2009 Nature 原文未讀；Lewis 等 2026（Euhadra 的 myosin I）只有摘要，bioRxiv 429、Curr Biol 訂閱；Koch 等 2017（門螺雜交帶，獨立研究群）無開放全文；Chirat 等 2021 PNAS 無開放版本；Utsuno 2011 屬已封頂網絡；Hoso 2007、Davison 2009／2020 原文 REST 500。",
+      "still_missing": "差約 2.9 條（需約 11.4 條）。只循公開連結：（1）Koch 等 2017 Mol Ecol（Hausdorf 研究室，獨立）開放全文，約 1.0；（2）Chirat、Goriely、Moulton 2021 PNAS 的開放版本，並與 B2128 合併成『殼的左右與螺旋』，約 0.75–1.0；（3）Abe & Kuroda 2019 Development 原文，L68-004 升 0.75（+0.25）；（4）Lewis 等 2026 全文（網絡 B 現 2.5，最多再 0.5）；（5）另一個非 Asami、非 Dietl 的左右偏好捕食或發育代價研究，約 0.5。全部到手約 11.25–11.75 條，仍只是在線上；比較實際的路是與 B2128 合併重評，或維持後備。Hoso、Asami、Gittenberger、Davison、Chiba 的新論文都落在封頂內，不加條。",
+      "reason": "作者的 reserve 成立；重算 8.5 條、7.00 分，比作者自己的保守估計再低 0.25 條（L68-006 的志願者部分是方法論）。內容上抓到：L68-003 把 Grande 自己的延續研究寫成『另一個研究群』並省掉最早給藥無效的條件；L68-004 研究群單位錯（中部大學，不是東京理科大學）、『兩個拷貝』會被聽成那一對基因；L68-005 把修補疤的意義說反、payoff 的『疤幾乎都在右旋』原文無；L68-007 的『第一刀』與『沒有殼的小蟲』不準。候選第三轉折（CRISPR 做出可遺傳左旋）內容成立但只到綜述層級。最終核心都不在 themes.json 任何題的 candidate_ids，也不在 POOL_SUPPORT。"
+    }
+  },
+  "considered_and_dropped": [],
+  "source_fixes": [
+    {
+      "proposal_source": "F31-S001",
+      "change": "version 改為「期刊正式排版 PDF；Cambridge 出版社官方文章頁免費閱讀，頁面標 Copyright © International Glaciological Society 2010，頁面資料 hasAccess 為真、isOpenAccess 為假；不是 CC 也不是 OA，只做連結與原創摘要」。summary 的『到 0.361 m/s 附近消失』改為『正文寫相關性隨速度一路減弱到 0.361 m/s；Fig. 5 的 0.361 m/s 趨勢線近乎持平（讀圖）』；補『同節：AISI M2 隔熱後摩擦反而較高；隔熱造成較厚水層，在最低點附近可能因毛細拖曳升高摩擦』。locator 補『pdftotext 把 −7 °C 印成 –78C，影像確認』。",
+      "why": "『消失』是讀圖、隔熱並非一律更滑；授權狀態要寫明。",
+      "requested_by": "V34"
+    },
+    {
+      "proposal_source": "F31-S002",
+      "change": "read_via 補「Publica 紀錄頁（WebSearch 結果）以 <link rel=item type=application/pdf> 與檔案下載連結提供此 bitstream，並標 Open Access；PDF 首頁印 Hindawi 的 CC BY 聲明，與 DOI 指向的 ISRN Tribology 刊本相同；doi.org→hindawi.com Cloudflare 403 未繞過」。limitations 補「§1 與 Fig. 7 併入 Itagaki 等（F31-S005）的資料，兩者不完全獨立；影像是排版正文，不是 OCR 舊掃描」。",
+      "why": "確認改讀機構典藏合規，並標出與 F31-S005 的資料重疊。",
+      "requested_by": "V34"
+    },
+    {
+      "proposal_source": "F31-S003",
+      "change": "version 補「Copyright © International Glaciological Society 2005；出版社頁免費閱讀、isOpenAccess 為假」。summary 改為逐樣本：A（−3.4 °C、0.02 m/s、μ 0.06）溝裡有像殘留水的細脊、尾端碎屑分段堆積；B（−25.1 °C、0.30 m/s、μ 0.07）溝裡沒有那些細脊（原文明寫 absent）、尾端碎屑結成一整塊、作者讀成較厚的水被掃到尾端一次結凍；C（−24.5 °C、0.03 m/s、μ 0.16）刮擦與鬆散片狀碎屑。limitations 補「每種條件一個代表樣本；水膜厚度以 Stiffler 1986 解析解推算；高摩擦組摘要寫塑性變形、結論寫脆裂」。",
+      "why": "作者把只屬於樣本 A 的殘留水套到 B。",
+      "requested_by": "V34"
+    },
+    {
+      "proposal_source": "F31-S004",
+      "change": "summary 的『壓力也只有在高溫時能融出水』保留原文用詞（except at high temperatures），proposal 不得改寫成『接近 0 °C』；limitations 補「速度範圍原文前後不一：英文摘要 1.5×10⁻⁷–1.8×10⁻³ m/s、Discussion 10⁻⁷–1.8×10⁻³、法文摘要上限 7.4×10⁻³；μ 上限摘要 0.2、Discussion 0.16；0.3 度是作者以 Bowden–Tabor 公式估算」。版權 © IGS 1977、出版社頁免費閱讀。",
+      "why": "數字範圍不一致要寫明，避免片中念錯。",
+      "requested_by": "V34"
+    },
+    {
+      "proposal_source": "F31-S005",
+      "change": "summary 補「作者推測先前研究看到的導熱效應可能是刃面狀態造成（The effects of the thermal conductivity observed are probably caused by such surface conditions）」；limitations 補「其資料被 Scherge 2013（F31-S002）Fig. 7 併用」。",
+      "why": "作者的推測比『粗糙度與硬度影響很大』更強，且與 F31-S002 有資料重疊。",
+      "requested_by": "V34"
+    },
+    {
+      "proposal_source": "F31-S006",
+      "change": "summary 改正設計：「每兩頭牛的成對腰脊依平衡不完全區集分到 4 個熟成期；沒凍對照（A5F0T）取自熟成 4 週那段腰脊的後段、再熟成一週；只有 A4F1T 與 A5F0T 同一段腰脊」；『儀器量的嫩度差距（23–33 N）』改為『各組剪力值落在 23–33 N（多在原文引用分級的 very tender 附近），研究者認為消費者分辨力有限，所以沒反映在評分上』；補『每場 6 位、紅光下品嚐』。",
+      "why": "作者把設計寫成同一頭牛左右配對、把數值範圍寫成差距。",
+      "requested_by": "V34"
+    },
+    {
+      "proposal_source": "F31-S007",
+      "change": "limitations 補「方法寫每組 9 個生物重複，Table 1 註 n = 6，前後不一；鮮肉組沒有解凍損失可比」。",
+      "why": "重複數不一致；避免把鮮肉當 0% 比較。",
+      "requested_by": "V34"
+    },
+    {
+      "proposal_source": "F32-S001",
+      "change": "read_via 改為：Hogan & Varricchio 2023 參考文獻 39 只列『PLoS ONE 8, e61030』（沒有 DOI）；研究代理把它寫成 DOI 當 Europe PMC search 的查詢字串（第 40 次呼叫），回 PMC3629076；覆核另以題名＋作者在 Europe PMC search 查得同一筆（同時回 DOI），再用 fullTextXML 取全文。limitations 補：『地層為 Middle-Upper Santonian，全文沒有年代數字』；『Hogan & Varricchio 2023 把同一批阿根廷單顆、尖端朝下的蛋讀成可能只是埋了就走，與本篇「半埋、露出氣室端」讀法不同』；『「現生鳥只有塚雉」是本篇的說法，Hogan 2023 轉述阿拉伯半島東方環頸鴴也尖端朝下半埋』；『反鳥類歸屬依前人對胚胎骨骼的判斷』。",
+      "why": "原說『參考文獻 39 列出此篇與 DOI』不實；那次查詢是文件記載 API 的搜尋參數、不是抓取網址，結果的 PMCID 也已用題名搜尋獨立重得，判不構成拼湊網址，但紀錄要照實寫。其餘幾點是同兩篇全文裡作者漏掉、會讓答案說過頭的句子。",
+      "requested_by": "V35"
+    },
+    {
+      "proposal_source": "F32-S002",
+      "change": "summary 補：『§2 也寫：阿根廷與蒙古有些蛋單顆、尖端朝下，可能只是埋在土裡就離開（引 Fernández 2013 等），類似部分在洞穴營巢的塚雉』；『窃蛋龍類與傷齒龍類的半埋巢看來也排除了翻蛋』。limitations 補：『傷齒龍擺放引自 Varricchio 等 1999，Varricchio 即本綜述作者，屬綜述轉述自己團隊的原論文』；『傷齒龍類是親緣上較基群，不代表年代更早』。",
+      "why": "作者引用本篇時只取支持直立擺放的句子，漏掉同一節的反面讀法；計數規則要求標明綜述轉述自己團隊的原論文。",
+      "requested_by": "V35"
+    },
+    {
+      "proposal_source": "F32-S003",
+      "change": "summary 的『白尾海鵰出現與造成的集體驚飛都增加約七倍』改為：『摘要寫海鵰與驚飛都約增七倍；結果段：海鵰每月最多記錄數平均 2010–2019 年 2.25、2020 年 19.25；驚飛次數 2019 年每天 5.7、2020 年 15.3，驚飛總時間每天 72→602 分鐘』。limitations 補：『26% 只指 Västerberget 每年監測的岩架（繁殖嘗試少 6.8%、孵化成功率低 21%）；產蛋晚 10 天；Stornasar 子群 2020 年零成功；研究者自己的出現可能保護了最大子群』。",
+      "why": "『驚飛約七倍』只有摘要這樣寫，次數的實際增加不到三倍，片中若說『驚飛多了七倍』會被當成次數；照規定不自行換算，改用原文數字。",
+      "requested_by": "V35"
+    },
+    {
+      "proposal_source": "F32-S006",
+      "change": "limitations 補：『最早窗口（2 細胞期 7 hpf 起到 48 hpf）的 RHAct-A 處理沒有任何對稱幼體；48 hpf 給 5 μM 只有 8.8%』；『Grande 是本篇通訊作者，也是 F32-S005 第一作者——同一研究者的延續研究，片中不得稱「另一個研究群」』。",
+      "why": "L68-003 的答案把它寫成另一個研究群，並省略有效窗口的條件。",
+      "requested_by": "V35"
+    },
+    {
+      "proposal_source": "F32-S007",
+      "change": "title 後的研究群改為『中部大學 Frontier Research Institute 黑田玲子研究群（日本）』，刪『東京理科大學』；summary 的『兩個拷貝』改為『兩個等位基因（biallelic）』；補一句原文『2016 年兩組都沒有證明該基因就是旋向決定基因（Neither study proved…）』。",
+      "why": "本文作者單位只列中部大學；『兩個拷貝』會與串聯重複的 Lsdia1／Lsdia2 混淆。",
+      "requested_by": "V35"
+    },
+    {
+      "proposal_source": "F32-S008",
+      "change": "summary 的『左旋的殼較少遭到螃蟹攻擊（或攻擊較常失敗）』改為『右旋那一種帶修補疤的比例較高；作者解讀為右撇子螃蟹難以把左旋殼擺到下手位置，常在造成殼傷之前就放棄（三隻 85–95 mm 箱蟹對 43–48 mm 左旋海螺的初步觀察）』；補註：PMC 網頁 HTML 每次抓取雜湊不同，覆核以 <article> 文字比對（20,711 字元相同）。",
+      "why": "疤是失敗攻擊的痕跡，原寫法會讓片中說反；HTML 動態欄位使雜湊無法直接比對。",
+      "requested_by": "V35"
+    },
+    {
+      "proposal_source": "F32-S009",
+      "change": "limitations 由『覆核可能把它歸入 Davison／Chiba 網絡』改為『已歸入 Davison／Chiba 網絡（本文參考文獻有 Schilthuizen M, Davison A 合著；L66-028 的 Schilthuizen 2007 亦同網絡）』；summary 的『旋向由媽媽的一個基因決定』註明是原文對左右旋並存種的一般敘述。",
+      "why": "照本輪指示合併計算研究網絡；母系遺傳不是本研究對此物種的實測。",
+      "requested_by": "V35"
+    }
+  ],
+  "batches": [
+    "batches/wave68-physics.json",
+    "batches/wave68-human.json",
+    "batches/wave68-tech.json",
+    "batches/wave68-earth.json",
+    "batches/wave68-life.json"
+  ],
+  "checkpoint": {
+    "file": "checkpoint-4089.json",
+    "note": "第十八輪開工前的素材池快照（4,089 個入選）。"
+  },
+  "core_reviews": [
+    {
+      "reviewer": "V34",
+      "duplicate_of": null,
+      "overlaps": [
+        {
+          "existing_id": "P64-008",
+          "note": "同方向：金屬雪板摩擦比木雪板高、歸因於導熱（專文轉述 1939 年實驗）。本核心只算隔熱實驗與隨速度減弱。"
+        },
+        {
+          "existing_id": "P64-009",
+          "note": "不同速度範圍：P64-009 是每秒 1 微米、導熱差兩個數量級滑度相近；兩者並列，不判誰對、不相減。"
+        },
+        {
+          "existing_id": "P64-012",
+          "note": "Stellite 6B 約 −4 °C 的最低點與 P64-012 的 −7 °C 不並列成『都在 −7 °C』。"
+        }
+      ],
+      "proposal_id": "P68-001",
+      "question": "摩擦生熱說是不是已經被推翻了？把滑塊包上隔熱，冰會不會變得比較滑？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "v34src/kietzig2010.pdf（同一 Cambridge citation_pdf_url 重抓，sha256 前綴 a7061dbab2642091 相同）；pdftotext 全文逐句讀 Abstract、Methods、兩節 Results、Summary；pdfimages 抽出 Fig. 5（v34src/kimg/k-001.png）核對趨勢線。",
+      "reopen_result": "逐字對上：0.0036–1.4500 m/s、−1.5／−4／−7／−10 °C、3 N、3 mm 玻璃纖維（k = 0.04 W/mK）；「the fiberglass insulation greatly reduces the ice friction coefficient for low sliding velocities」；「the thermal conductivity of P20 is four times that of Ti-6-4. Taking the three slowest velocities at –7°C … 65–85% higher」、P20 對 Stellite 6B 15–25%；「this dependency decreases until v = 0.361 m s–1, which is the velocity where many materials display a minimum」；Summary「thermal conductivity loses its influence on ice friction with increasing sliding velocity, while surface wettability gains importance」「…not straightforward, as … surface wettability and material hardness, also play a significant role」。三處要改：（1）原文寫相關性『一路減弱到 0.361 m/s』，『到那裡看不到』是 Fig. 5 的趨勢線（0.361 m/s 那條近乎持平、略向下）讀出來的，要說成圖上看到；（2）同一節寫 AISI M2 隔熱後摩擦反而較高，且隔熱造成較厚水層、在最低點附近可能因毛細拖曳升高摩擦——答案只講『隔熱更滑』會說過頭；（3）速度範圍是每秒 3.6 毫米到 1.45 公尺，65–85% 指 −7 °C 最慢三個速度（Fig. 5 的 0.004、0.036、0.108 m/s，約每秒 4 毫米到 11 公分）；作者在 targets 轉折裡寫『每秒幾公分到一公尺多』、payoff 寫『每秒幾公分到幾十公分』都不準。pdftotext 把 −7 °C 印成「–78C」（度符號字型），影像確認是 −7 °C。來源是出版社頁免費閱讀、Copyright © IGS 2010，非 CC。",
+      "changes_applied": {
+        "answer_target": "在這組實驗的慢速端會。加拿大英屬哥倫比亞大學 2010 年用流變儀讓 14 種金屬環形滑塊在冰上轉（−1.5 到 −10 °C、每秒約 4 毫米到 1.45 公尺）：在滑塊後面墊一層玻璃纖維隔熱，慢速時摩擦大幅下降，研究者的解讀是摩擦熱被留在介面、融出更多水來潤滑；但在摩擦最低點附近，有的金屬隔熱後反而更不滑，他們認為是水變多、多了毛細拖曳。換不同金屬也看得到：在 −7 °C 最慢的三個速度，熱導率約四倍的鋼，摩擦係數比鈦合金高 65% 到 85%。這個關係隨速度加快一路減弱，到每秒約 0.36 公尺、多數材料摩擦最低的速度時，論文圖上的趨勢線已經接近持平；再快，表面親不親水更重要。研究者也說熱導率不是唯一因素，潤濕性和硬度都有份。",
+        "scope": "只講這台流變儀、3 N、公分級環形滑塊；『持平』是讀 Fig. 5 的趨勢線，不說成『完全消失』。不和 P64-009（每秒 1 微米、導熱差兩個數量級滑度相近）相減或判誰對，並列為不同速度範圍、不同裝置；與 P64-008（Bowden 與 Hughes 金屬雪板比木雪板摩擦高）同方向，片中先講 P64-008、再用本核心補『隔熱實驗』與『隨速度減弱』。65–85% 是同一研究內的相對差。不給冰刀、雪橇材質、打蠟建議，冬奧資助背景不轉述。",
+        "editorial": {
+          "role": "turn",
+          "payoff": "『慢也會滑』沒有把摩擦熱趕出場：在每秒幾毫米到十幾公分，把熱留住，冰就更滑；快到摩擦最低點，差別就看不出來了。",
+          "visual": "兩個一樣的金屬環在冰上轉，一個背後墊了黃色隔熱棉；旁邊的摩擦曲線在慢速那端分開，越往快越靠攏。",
+          "seconds": [
+            40,
+            50
+          ]
+        },
+        "facts": 0.5,
+        "notes": "算 0.5（作者 0.75）：非 Bonn、非 Sazaki 的系統性原研究，全文已讀；但『導熱好的金屬摩擦較高』已在 P64-008（Bowden 與 Hughes，專文轉述）出現，新增的只有隔熱實驗與『效果隨速度減弱』兩件事；『到 0.36 m/s 看不出』要靠讀圖。上限 0.75。"
+      },
+      "reason": "數字與原文相符、來源取得合規、雜湊相同；但說『差距消失』、只講隔熱更滑、速度寫成『幾公分』都說過頭或不準，且導熱方向與 P64-008 重疊，下修為 0.5。",
+      "final_id": "P68-001",
+      "batch": "batches/wave68-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "reviewer": "V34",
+      "duplicate_of": null,
+      "overlaps": [
+        {
+          "existing_id": "P64-007",
+          "note": "Colbeck 刀底溫度隨速度上升，與本核心的『越快越滑』方向一致，但是不同量測，不合併。"
+        },
+        {
+          "existing_id": "P64-016",
+          "note": "Canale 等的膜厚幾乎不隨速度變；本核心的『高速多出水』只是作者推測，兩者並列為不同裝置、不同說法。"
+        }
+      ],
+      "proposal_id": "P68-002",
+      "question": "冰是不是滑得越快越滑？雪車鋼刃在實驗室滑到每秒 28 公尺，量到什麼？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "v34src/scherge2013.pdf（同一 Publica bitstream 下載連結重抓，sha256 前綴 a39c8e697a3fba53 相同）；PDF 文字層數字字型缺失，逐頁讀 f31img/scherge2013-1～5.png（由同一雜湊的 PDF 轉出）的正文。",
+      "reopen_result": "影像正文逐字對上：首頁「Copyright © 2013 Matthias Scherge et al. This is an open access article distributed under the Creative Commons Attribution License」；摘要「Between 2.8 m/s and 28 m/s (equal to 10 km/h and 100 km/h) … linear decrease」「less than 0.01 after exceeding a sliding speed of about 20 m/s. At maximum speed of 28 m/s, the average coefficient of friction was 0.007」「largest decrease in friction up to a sliding speed of about 3 m/s」；§2.1 3.8 m 轉鼓、溫度維持 −5 °C；§3.1「At a speed of 2.8 m/s friction showed values between 0.015 and 0.016. At highest speed friction ranged between 0.005 and 0.008」；§3.2 14 m/s、100–300 N 顯著下降、之後約 0.011；§4.1「It can be speculated that the ability to generate more free water … saturates … to prove this would go beyond the scope of this paper」；§4.2 約 40 MPa 冰開始破裂。數字都在正文，作者沒有讀圖表點，影像是排版正文、不是 OCR 舊掃描，不必因此打折。另見：§1 與 §4.1 寫 Fig. 7 併入了 Itagaki 等的資料（P68-005 的來源），兩者不完全獨立。結論 (iii) 有加配重的建議，不轉述。",
+      "changes_applied": {
+        "answer_target": "在這個實驗的速度範圍裡是。德國 Fraunhofer 研究所 2013 年把有舵雪橇規格的鋼刃壓在直徑 3.8 公尺轉鼓內面的冰上，冷房維持 −5 °C：每秒 2.8 公尺時摩擦係數 0.015 到 0.016，加速到每秒 28 公尺（時速約 100 公里）降到 0.005 到 0.008、平均 0.007，大約每秒 20 公尺以上就低於 0.01。研究者把別組的低速資料和自己的畫成同一條曲線：每秒約 3 公尺以前降得最多，再快只小幅下降；他們推測是摩擦能多融出的水在高速時趨於飽和，但也寫明要另做研究才能證明。另外，在每秒 14 公尺時把刃壓得更重，摩擦先下降、到某個負載後大致持平，冰面同時出現磨痕和碎冰。",
+        "scope": "單一實驗室、單一溫度（−5 °C）、鋼刃；『越快越滑』只限 2.8–28 m/s 與這台裝置；水膜是作者推測，不說成量到；作者整理的跨研究曲線不拆開、不與 P68-005 的數字並列（它已被併進那條曲線）；不和 P64-016（膜厚幾乎不隨速度變）判輸贏；原文加配重的建議不轉述；不給滑雪、溜冰、雪橇或駕駛建議。",
+        "facts": 0.5,
+        "notes": "算 0.5（作者 0.75）：CC BY 全文、非 Bonn 的高速實驗，數字確認在正文；但單一溫度、單一裝置，機制是推測，負載那段與題目距離較遠；速度與負載合計一條打折。"
+      },
+      "reason": "數字逐句對上、授權與取得合規；只把計數照『單一條件、機制推測』下修為 0.5，並補上與 P68-005 不獨立、不拆曲線的限制。",
+      "final_id": "P68-002",
+      "batch": "batches/wave68-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "reviewer": "V34",
+      "duplicate_of": null,
+      "overlaps": [
+        {
+          "existing_id": "P64-018",
+          "note": "Lever 等真溜冰場：刀旁噴出冰粒、不支持整片融水；條件完全不同，片中並列，不判輸贏。"
+        }
+      ],
+      "proposal_id": "P68-003",
+      "question": "冰滑過之後留下的碎屑，看得出當時刀底下有沒有水嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "v34src/marmo2005.pdf（同一 Cambridge citation_pdf_url 重抓，sha256 前綴 bafd79e8c787dc70 相同）；pdftotext 全文逐句讀 Abstract、Methodology、Results 三個樣本段、Discussion 與 Table 1、Conclusion。",
+      "reopen_result": "摘要逐字對上：−27 到 −0.5 °C、0.008–0.37 m/s；低摩擦（μ < 0.1）的 −3.4 °C／0.02 m/s 與 −25.1 °C／0.30 m/s「due to the presence of liquid water」；「residual liquid in wear grooves」「consolidated mass of debris … distinct grain boundaries and spheroidal air bubbles」；高摩擦（μ > 0.15）−24.5 °C／0.03 m/s「scuffing」「sheets of unconsolidated debris」。但結果段逐樣本寫：樣本 A（−3.4 °C、0.02 m/s、μ = 0.06）溝裡有「fine, rounded interconnecting ridges that appear to be the remnants of liquid water」；樣本 B（−25.1 °C、0.30 m/s、μ = 0.07）明寫「The fine interconnected ridges observed in sample A are also absent from the wear grooves in sample B」，B 的證據是尾端一整塊碎屑，作者讀成較厚的水膜被掃到尾端『一次就結凍』；樣本 C μ = 0.16。作者答案寫兩種低摩擦都『溝裡有殘留液體』，把 B 說錯了。水膜厚度是用 Stiffler 1986 的解析解推算，不是量到。每種條件呈現的是一個代表樣本。Discussion 說高摩擦那組可能是冰脆裂（brittle failure），摘要寫塑性變形，兩處用詞不同。來源出版社頁免費閱讀、Copyright © IGS 2005，非 CC。",
+      "changes_applied": {
+        "answer_target": "愛丁堡大學 2005 年讓冰半球在粗化過的鋼板上來回滑，再用低溫掃描電鏡看磨耗面。摩擦低（係數小於 0.1）的兩個樣本：較暖又慢的（−3.4 °C、每秒 0.02 公尺），磨痕溝裡有一條條像殘留水的細脊，尾端碎屑一段段堆積；很冷但快十倍的（−25.1 °C、每秒 0.30 公尺），溝裡沒有那些細脊，但尾端碎屑結成一整塊、有清楚的晶界和圓形氣泡，研究者讀成水被掃到後面、一次結凍的痕跡。摩擦高（係數 0.16）的又冷又慢樣本（−24.5 °C、每秒 0.03 公尺），表面像被刮過，尾端堆著一片片鬆散的固體碎屑，研究者讀成潤滑不足、冰被擠裂。也就是說，同樣冷到約零下 25 度，滑快十倍的那次留下了像水結凍過的痕跡。",
+        "scope": "冰半球對粗化鋼板、負載幾牛頓、每種條件一個代表樣本；『有水』是從碎屑形態推論、水膜厚度是用解析模型推算；不和 P64-018（真溜冰場看到冰粒、不是水滴）判輸贏，並列為不同條件下的觀察。不給任何溫度或速度的運動建議。",
+        "facts": 0.25,
+        "notes": "算 0.25（作者 0.5）：非 Bonn、非 Sazaki 的原研究，全文已讀；但每種條件一個樣本、『有水』是形態推論，水膜靠解析模型；『很冷但快就有水』與 P68-002 的推測同方向。"
+      },
+      "reason": "摘要層的描述對，但答案把只屬於樣本 A 的『溝裡殘留水』套到樣本 B，原文明寫 B 沒有；改正後保留，計數下修為 0.25。",
+      "final_id": "P68-003",
+      "batch": "batches/wave68-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "reviewer": "V34",
+      "duplicate_of": null,
+      "overlaps": [
+        {
+          "existing_id": "P64-009",
+          "note": "同方向：極慢也滑；本核心不重算這一點。"
+        },
+        {
+          "existing_id": "P64-015",
+          "note": "P64-015 講局部接觸壓力使剪應力上升（Liefferink 等）；與黏著說的『剪切強度÷硬度』相關但不同研究，不合成一個機制。"
+        },
+        {
+          "existing_id": "P64-012",
+          "note": "−7 °C 最低點不並列。"
+        }
+      ],
+      "proposal_id": "P68-004",
+      "question": "慢到幾乎不動、熱也融不了冰的時候，冰為什麼還是滑？有沒有不需要水的解釋？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "v34src/tusima1977.pdf（同一 Cambridge citation_pdf_url 重抓，sha256 前綴 b6288ba59e5d06c0 相同）；pdftotext 讀 OCR 文字層的英文摘要、Results (1)(3)(4)、Discussion、Table 1。",
+      "reopen_result": "對上：摘要「even when the velocity was very small (1.5 × 10⁻⁷ to 1.8 × 10⁻³ m/s), the coefficient of friction was very small ranging from 0.005 to 0.2, although friction on the prismatic plane was twice as large as that on the basal plane」「increased with decreasing velocity, which may result from the creep」「neither by the classic pressure-melting theory nor by the friction-melting theory, but only by adhesion theory」；Discussion「The maximum temperature rise ΔT … is only 0.3 deg even when the maximum values of load W and friction velocity V … and the maximum value of friction coefficient 0.2 were substituted」「melt water cannot be produced at the contact surface by pressure except at high temperatures」「For ice, the value of p is of the order of those of copper, but the value of s is extremely small」「10 bar … and 10³ bar … at −10 °C … μ of ice is 0.01」；(4)「in one instance, −7 °C … 7.4 × 10⁻⁵ m/s … 4.8 N」。要改：作者寫『壓力只有接近 0 °C 時才融得出水』，原文是『except at high temperatures』，沒寫接近 0 °C；原文速度範圍前後不一（英文摘要 1.5×10⁻⁷–1.8×10⁻³、Discussion 10⁻⁷–1.8×10⁻³、法文摘要上限 7.4×10⁻³ m/s），摩擦係數上限摘要 0.2、Discussion 0.16；『每秒十億分之一百五十公尺』念起來難懂，改『每秒約 0.15 微米』。OCR 雜字多，但上述句子都可辨讀。",
+      "changes_applied": {
+        "answer_target": "1977 年北海道大學的對馬勝年提過一個：冰本來就『黏不牢』。他讓鋼珠在阿拉斯加冰河取來的單晶冰上，以每秒約 0.15 微米到 1.8 毫米極慢地滑，摩擦係數仍只有 0.005 到 0.2；在晶體的柱面上滑，摩擦約是基面的兩倍；越慢反而越難滑，他推測是接觸處的冰在慢慢變形。他用公式估算，這些條件下摩擦升溫最多只有約 0.3 度、融不了冰，壓力也只有在較高溫時才融得出水，所以認為壓力融化、摩擦融化都解釋不了，改用黏著理論：摩擦係數約等於『黏結處的剪切強度除以硬度』，冰的硬度和銅同一級，剪切強度卻極小，代入 −10 °C 的典型值算出約 0.01，和實驗同一量級。",
+        "scope": "1977 年單一研究、單晶冰與鋼珠的極慢滑動、OCR 掃描版；升溫 0.3 度是作者用公式估算、黏著理論是作者的解釋，片中講成『另一派說法』，不說成定論，也不說它推翻了水膜說；−7 °C 的最低點只是一例，不和 P64-012／P64-014 並列；不轉述成走路防滑建議。",
+        "facts": 0.25,
+        "notes": "算 0.25（作者 0.5）：OCR 舊掃描、單一作者、黏著說與 0.3 度都是作者自己的解釋與估算；『慢也很滑』與 P64-009 同方向不重算；新增只有柱面約為基面兩倍與『不靠水』的黏著說。"
+      },
+      "reason": "主要句子都在原文上，但『接近 0 °C』是作者自加；照 OCR 舊掃描、作者自己的解釋兩項折扣下修為 0.25。",
+      "final_id": "P68-004",
+      "batch": "batches/wave68-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "reviewer": "V34",
+      "duplicate_of": null,
+      "overlaps": [
+        {
+          "existing_id": "P68-001",
+          "note": "同題（熱導率），本核心只當條件說明。"
+        },
+        {
+          "existing_id": "P64-008",
+          "note": "P64-008 的金屬比木頭摩擦高，本核心提醒這類比較會被刃面狀態混淆。"
+        }
+      ],
+      "proposal_id": "P68-005",
+      "question": "照摩擦生熱的說法，導熱差的雪橇刃應該比較滑，實際上是這樣嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "v34src/itagaki1987.pdf（同一 HAL files_s 連結重抓，sha256 前綴 7530650fa7eb1136 相同）；pdftotext 全文讀摘要、2. Experimental、Table 1、3. Results 三小節。",
+      "reopen_result": "對上：60 kg、1.5 m/s、「more than 700 times」、Table 1 三種材料 68／17／10 W/mK 與硬度 51／58／71；「Contrary to these expectations, MP35N, which had the lowest thermal conductivity … generally showed the highest friction when polished as usual (S) and when roughened (R). However, when the runners were highly polished (HP), those with lower thermal conductivity glided better, both at −10 °C and at −3 °C」；全研究最低摩擦在 −3 °C 高度拋光 MP35N。要補：作者在同段推測『The effects of the thermal conductivity observed are probably caused by such surface conditions』，意思是過去看到的導熱效應可能其實是刃面狀態造成的，比『粗糙度與硬度影響很大』更強；作者也寫刃面在測試中被冰裡的磨料磨平或磨粗，條件難一致。題名自稱 Preliminary study。Scherge 2013 把 Itagaki 的資料併進 Fig. 7，兩者不完全獨立。",
+      "changes_applied": {
+        "answer_target": "不一定。美國陸軍寒區研究與工程實驗室 1987 年一份自稱初步的研究，讓 60 公斤的模型雪橇以每秒約 1.5 公尺在冷房冰面上滑了 700 多趟。照摩擦融化理論，導熱差的金屬留得住熱、應該較滑；但導熱最差的那種合金，在一般拋光和粗糙時摩擦反而最高，只有把刃面高度拋光時，三種金屬才照『導熱越差越滑』排序。研究者推測，先前看到的導熱效應，可能有一部分其實是刃面狀態造成的。",
+        "scope": "作者自稱初步研究，刃面在測試中被磨，數值多在圖上，只用正文的定性結論；只放在 P68-001 那一章當一句旁證，不單獨成章；不給材質或拋光建議。",
+        "facts": 0,
+        "notes": "算 0（作者 0.25）：初步研究、只有定性結果、與 P68-001 同題；它的資料又被 P68-002 的跨研究曲線用過。保留成 P68-001 章裡的一句條件說明（導熱效應要看刃面），不加分。"
+      },
+      "reason": "內容對上，但初步研究、定性、與 P68-001 同題，照保守算法計 0；補上作者『導熱效應可能是刃面狀態造成』的推測。",
+      "final_id": "P68-005",
+      "batch": "batches/wave68-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "reviewer": "V34",
+      "duplicate_of": null,
+      "overlaps": [
+        {
+          "existing_id": "K67-004",
+          "note": "同方向：一般消費者沒挑出冷凍過的牛排；K67-004 冷凍組與鮮肉組來自不同屠宰日，本核心同一批牛但熟成天數混在一起，各講各的條件，不合成『兩個研究都證明』。"
+        },
+        {
+          "existing_id": "K67-001",
+          "note": "同一 Kim 研究群（普渡），不同實驗。"
+        },
+        {
+          "existing_id": "K67-002",
+          "note": "同一 Kim 研究群；K67-002 也是『先熟成再凍』與沒凍分不開，本核心是感官、K67-002 是失重。"
+        },
+        {
+          "existing_id": "K67-005",
+          "note": "山羊肉只凍 48 小時的盲測（計 0），同方向。"
+        }
+      ],
+      "proposal_id": "K68-001",
+      "question": "同一頭牛的兩條腰脊，有的凍了幾週、有的完全沒凍，一般人吃得出來嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "v34src/rehman2024.pdf（同一 iastatedigitalpress galley 網址重抓，sha256 前綴 c6f4d07035006ed2 相同，本次無驗證頁）；pdftotext 讀摘要、Raw material and sample processing、Consumer panel sensory evaluation、Table 2、Discussion 與結論。",
+      "reopen_result": "對上：30 頭牛共 60 條腰脊、熟成 0／2／3／4 週後 −20 °C 真空冷凍 5／3／2／1 週、2 °C 解凍 36 小時；消費者 n = 90、15 場、4 位數代碼隨機順序；Table 2 整體喜好 67.11、70.49、69.60、72.51、68.71（P = 0.35），嫩度、風味、多汁也都 P > 0.05；CC BY 4.0。要改三處：（1）設計是「Pairs of loins from every 2 carcasses were assigned to 4 aging periods (0, 2, 3, and 4 weeks) as a balanced incomplete block design」，沒凍的 A5F0T 是「Two additional steaks … cut from 4-weeks-aged loin portion and aged for one more week」——只有 A4F1T 和 A5F0T 來自同一段腰脊，其他組與沒凍組不是同一頭牛的左右配對；作者的題目『同一頭牛的兩條腰脊，有的凍、有的沒凍』與原文不符。（2）「the observed differences (23 N to 33 N) in instrumental tenderness」是各組剪力值落在 23–33 N（都在原文引用分級的『very tender』<32.96 N 附近），不是『差距 23–33 N』；研究者自己寫沒反映在消費者評分上「likely due to the limited discriminating ability of the panel within too close tenderness classifications」。（3）每場 6 位、在紅光下品嚐；消費者是普渡教職員生。與 K67-001／K67-002 同屬 Kim 研究群。",
+      "changes_applied": {
+        "question": "同一批牛的腰脊，先熟成再凍了 1 到 5 週，和熟成 5 週完全沒凍的比，一般人吃得出來嗎？",
+        "answer_target": "在普渡大學 2024 年這個實驗裡沒吃出差別。他們把 30 頭牛的腰脊排成總長都是 5 週的組合：先熟成 0、2、3 或 4 週，再在 −20 °C 真空冷凍 5、3、2 或 1 週；沒凍的對照是從熟成 4 週那段腰脊的後段切下、再多熟成一週。90 位校內消費者分 15 場、在紅光下吃以代碼隨機上桌的牛排塊，嫩度、風味、多汁和整體喜好五組都沒有顯著差異（整體喜好約 67 到 73 分，沒凍那組約 69 分，滿分 100）。研究者也提醒：各組儀器量到的嫩度都落在很嫩的範圍，消費者可能本來就分不出這麼接近的差別。",
+        "scope": "比的是同樣總天數下『熟成加冷凍』的組合，沒凍那組熟成最久，不是單純『凍與不凍』；不是同一頭牛的左右配對；消費者是校園招募；研究者自己指出分辨力有限；與 K67-004 同方向、與 K67-001／002 同一研究群；不得說成『冷凍不影響品質』『一般人都吃不出來』，不給熟成、冷凍、解凍或保存建議，也不轉述作者對產業的建議。另有凍兩次的組別與色澤、氧化結果，片中不用。",
+        "facts": 0.25,
+        "notes": "算 0.25（作者 0.5）：同一 Kim 研究群（K67-001／002 已計 0.75）、方向與 K67-004 相同，沒凍組與冷凍組熟成天數不同、並非左右配對，研究者自己說消費者分辨力有限；只部分回應 still_missing（4）『同一批動物、冷凍數週以上』。"
+      },
+      "reason": "數字逐格對上，但題目把設計說成同一頭牛左右配對、把剪力值範圍說成差距，均改正；照同研究群與混淆因素下修為 0.25。",
+      "final_id": "K68-001",
+      "batch": "batches/wave68-food.json",
+      "disposition": "candidate"
+    },
+    {
+      "reviewer": "V34",
+      "duplicate_of": null,
+      "overlaps": [
+        {
+          "existing_id": "K66-011",
+          "note": "同一結論型：較冷的出水較少，但不是一路越冷越好、相鄰溫度分不開；K66-011 是六個月儲存。"
+        },
+        {
+          "existing_id": "K66-002",
+          "note": "冷凍速率門檻；本核心的溫度同時改變速率，不並列數字。"
+        },
+        {
+          "existing_id": "K67-005",
+          "note": "同樣只凍 48 小時，V32 計 0。"
+        }
+      ],
+      "proposal_id": "K68-002",
+      "question": "同一條牛背肌切成好幾塊，放在不同溫度凍，解凍掉的水一樣嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "v34src/PMC9222788.xml（同一 Europe PMC REST fullTextXML 重抓，sha256 前綴 69a9425a67d3957e 相同）；去標籤讀 2.1、2.2、3.1 與 Table 1、Discussion 對解凍損失的段落、4. Conclusions。",
+      "reopen_result": "對上：9 頭 Simmental × 秦川公牛左側背最長肌、每條切 15 塊、鮮肉組與 −12／−18／−38／−80 °C、中心到溫後維持 48 小時、解凍到中心 4 °C；Table 1 解凍損失 10.50 ± 0.84 a、8.83 ± 0.75 b、7.67 ± 0.52 bc、7.17 ± 0.7 c；正文「The thawing loss of the −12 °C sample was significantly higher … most likely due to the significant breakdown of the muscle fiber architecture and protein denaturation」；CC BY 4.0。要補：方法寫「each group contained nine biological replicates」，Table 1 註「n = 6」，前後不一；鮮肉組沒有解凍損失可比（表上是「–」）；溫度同時改變冷凍速度。10.50→7.17 是單調往下的數列，觀眾很容易聽成『越冷越好』——統計上只分得出 −12 °C 最高、−18 與 −80 °C 有差，相鄰兩級都分不開。",
+      "changes_applied": {
+        "answer_target": "不一樣，但不是一階一階整齊拉開。中國農業科學院與比利時列日大學 2022 年把 9 頭公牛的背最長肌各切成 15 塊，分在 −12、−18、−38、−80 °C 凍到中心溫度後再放 48 小時、解凍：解凍損失依序是 10.50%、8.83%、7.67%、7.17%。統計上只分得出 −12 °C 那組最多，以及 −18 和 −80 °C 有差；−18 和 −38 °C、−38 和 −80 °C 之間都分不開。研究者推測 −12 °C 那組是肌纖維結構和蛋白質受損較多，但這篇沒有直接量蛋白質變性。",
+        "scope": "只凍 48 小時、不是長期儲存；冷凍溫度同時改變冷凍速度；方法寫每組 9 個重複、表註 n = 6；不和 K66-002、K66-011 的數字並列或相減；不得說『越冷越好』、不推薦冷凍溫度或冷凍方式，片中不念『凍得最冷還是掉約 7%』這類比大小的句子。",
+        "facts": 0,
+        "notes": "算 0（作者 0.25）：只凍 48 小時，照 V32 對 K67-005 的先例計 0；結論型（較冷較少、但相鄰溫度分不開）與 K66-011 相同。收進池中，但不放進 C12-01 的最終核心，避免四個遞減數字被聽成『越冷越好』。"
+      },
+      "reason": "數字逐格對上；照『單一溫度條件只凍 48 小時』與 K66-011 同結論型計 0，並補上重複數前後不一，移出 C12-01。",
+      "final_id": "K68-002",
+      "batch": "batches/wave68-food.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L68-001",
+      "reviewer": "V35",
+      "question": "一頭尖的蛋，以前的鳥是怎麼放的？會不會把尖頭插進土裡？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "F32-S001（PMC3629076）：先以 Europe PMC REST search 以題名＋作者查得 PMC3629076（同時回 DOI 10.1371/journal.pone.0061030），再以 fullTextXML 重抓，sha256 前綴 ea8827cd976011ee，與作者快取相同（v35src/PMC3629076.xml）。F32-S002（PMC10331910）同法重抓，5c8f7714df111479，相同。",
+      "reopen_result": "Fernández 2013：摘要 'We mapped and collected 65 complete, near-complete, and broken eggs across an area of more than 55 m2'、'all but one of the Comahue eggs were half-buried upright in the sand with their pointed end downwards … precluded egg turning'、'not seen in living birds, with the exception of the basal galliform megapodes'；結果 'The majority were buried vertically … polar region pointing downwards; only in a few rare cases … horizontally'；Fig 2 圖說只畫一顆長軸平躺的蛋——摘要與結果措辭確實不一致，片中說「絕大多數」正確。地層是 Bajo de la Carpa Formation『Middle-Upper Santonian』，全文沒有任何『百萬年』數字。'Its eggs are not asymmetrical' 指塚雉，對。『We speculate … abandoned』是推測，對。Hogan & Varricchio 2023：'Oviraptorosaur and troodontid eggs are markedly elongated … 2:1 to greater than 3:1'、'Egg asymmetry is only pronounced among troodontids'、'Troodontid clutches consist of 10–24 Prismatoolithus eggs steeply inclined to nearly upright … pointed end down'，對。但作者漏掉同一篇的兩句：(a) '[Charadrius] alexandrinus nesting on the Arabian Peninsula consistently orient their eggs sharp end downwards and partially bury them [46,51]'——現生鳥也有尖端朝下半埋的轉述，與答案『現生鳥裡只有塚雉』衝突；(b) 'In Argentina and Mongolia, some egg types occur singly with the acute end downwards … suggesting that these eggs may have simply been buried in substrates and left [38,39]'——綜述把同一批阿根廷蛋（ref 39 即 Fernández 2013）讀成可能只是埋了就走，與原作者的『半埋、露出氣室端』解讀不同。另外：傷齒龍類是『親緣上較基群』（Fernández：phylogenetically more basal troodontid），不是『更早』；Troodon 的巢並沒有比 Santonian 的 Comahue 蛋更古老的證據，答案的『更早的傷齒龍類』錯。editorial 的『七千萬年前』原文沒有。Hogan 的傷齒龍擺放引自 Varricchio 等 1999（Varricchio 是本綜述作者），屬綜述轉述自己團隊的原論文。",
+      "changes_applied": {
+        "question": "一頭尖的蛋，古代的鳥是怎麼放的？會把尖頭插進沙裡嗎？",
+        "answer_target": "至少有一處化石這樣顯示。阿根廷內烏肯的大學校園裡，一處晚白堊紀地層保存了一大片鳥蛋，研究者在 55 平方公尺以上的範圍測繪了 65 顆（從蛋裡的胚胎骨頭看，很可能是已滅絕的反鳥類）：沒有巢的痕跡，絕大多數直立、尖端朝下、半埋在沙裡，只有少數橫躺。研究者說，這樣放會讓含氣室的鈍端露在外面，親鳥也沒辦法翻蛋；他們推測這種不能翻的下法後來被會翻蛋的孵法取代，但明說是推測。另一群近鳥恐龍——傷齒龍類——的一窩 10 到 24 顆一頭尖的長蛋，也是陡斜到近乎直立、尖端朝下插在沉積物裡。現生鳥呢？2013 年的研究者說只有塚雉把蛋直立埋起來，而塚雉的蛋並不是一頭尖；不過 2023 年一篇綜述轉述舊觀察，阿拉伯半島的東方環頸鴴也會把蛋尖端朝下半埋。那篇綜述也提出另一種讀法：這些單顆、尖端朝下的化石蛋，可能只是埋好就離開。",
+        "scope": "化石單一地點；『反鳥類』是依前人對胚胎骨骼的判斷（most likely enantiornithines）；地層為 Santonian，原文沒有年代數字，不得說『七千萬年前』；摘要說除一顆外直立、結果段說大多數，只說『絕大多數』；傷齒龍類是親緣上較基群，不得說『更早』；『被翻蛋孵法取代』是推測；綜述對同一批蛋另有『埋了就走』的讀法，要並列；鴴的半埋是綜述轉述 1954 年的書與 1974 年的論文，只能說『有轉述』；不得說尖蛋『是為了』插進沙裡演化出來；不得提家雞不翻蛋死亡率；不給任何孵蛋或飼養建議。",
+        "facts": 0.5,
+        "notes": "算 0.5（作者 0.75）：Fernández 2013 的直立尖端朝下擺放 0.5（獨立研究群、開放全文、池中無）；Hogan & Varricchio 2023 的傷齒龍擺放是綜述轉述 Varricchio 自己團隊 1999 年的原論文，且 Fernández 原文已寫『與某些傷齒龍類直立放蛋相似』，計 0；它在本核心的用處是補上反面讀法與現生鴴的轉述，讓答案不說過頭。與 L67-001（鵪鶉蛋尖端略朝下、氣室在上）方向一致但不同物種、不同證據，片中不得合成『所以尖頭是為了朝下』。與 G482（S44-005、S44-006 談孔隙與砂巢傳熱）同屬恐龍巢、不同答案。",
+        "editorial": {
+          "role": "segment",
+          "payoff": "晚白堊紀的一片鳥類繁殖地裡，蛋像插秧一樣尖頭朝下插在沙裡——但它們是被顧著，還是埋了就走，兩派讀法不一樣",
+          "visual": "沙地剖面：一排直立半埋的蛋、鈍端露出；旁邊一窩斜插成圈的傷齒龍長蛋；角落一隻鴴蹲在半埋的蛋上",
+          "seconds": [
+            45,
+            60
+          ]
+        }
+      },
+      "duplicate_of": null,
+      "reason": "數字逐字相符，但答案三處說過頭：『現生鳥裡只有塚雉』被同核心第二份來源的鴴轉述推翻；『更早的傷齒龍類』沒有根據；payoff 的『七千萬年前』原文無。並補回綜述對同一批蛋的反面讀法。Hogan 部分屬綜述轉述自己團隊的原論文，計 0；本核心 0.5。",
+      "overlaps": [
+        {
+          "existing_id": "L66-010",
+          "note": "L66-010 談不對稱蛋何時出現；本核心談蛋在巢裡的擺放，不重算"
+        },
+        {
+          "existing_id": "L67-001",
+          "note": "同方向（尖端朝下、氣室端朝上），不同物種與證據，不得合成因果"
+        },
+        {
+          "existing_id": "S44-006",
+          "note": "G482 短題的砂巢傳熱模型，同屬恐龍半埋蛋背景，答案不同"
+        }
+      ],
+      "final_id": "L68-001",
+      "batch": "batches/wave68-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L68-002",
+      "reviewer": "V35",
+      "question": "海鴉的蛋真的常從懸崖上掉下去嗎？什麼時候最危險？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "F32-S003（PMC9187360）：Europe PMC REST fullTextXML 重抓（PMCID 先出現在研究代理第 44 次工具呼叫的 Europe PMC search 結果），sha256 前綴 59e9403a87a173cb，與作者快取相同（v35src/PMC9187360.xml）。",
+      "reopen_result": "摘要 'a sevenfold increase in presence of white-tailed eagles …, a sevenfold increase in their disturbance … causing 26% lower murre productivity than the long-term average'。但結果段的實際數字是：海鵰每月最多記錄數平均 2010–2019 年 2.25、2020 年 19.25（'an increase by 760%'）；驚飛總時間每天 72 分鐘→602 分鐘，驚飛『次數』每天 5.7→15.3 次（比較的是 2019 對 2020，不是十年平均）。作者答案寫『集體驚飛多了大約七倍』，會被聽成次數七倍，而次數其實不到三倍、時間才是八倍多——要改成原文數字，不自行換算倍數。人類出現少 92%（對前三年）、'No murres were observed being caught by eagles'、'unattended eggs being predated by herring gulls … and hooded crows'、'eggs were also observed falling out off from the ledges during the disturbances (Video 4)'、26% 指 Västerberget 每年監測的岩架、由繁殖嘗試少 6.8% 與孵化成功率低 21% 組成——都相符。作者漏了：產蛋晚 10 天；另一子群 Stornasar 2020 年零成功；研究者自己的出現可能保護了最大子群。",
+      "changes_applied": {
+        "answer_target": "最危險的是親鳥被嚇走、蛋沒人顧的那段時間。瑞典 Stora Karlsö 島的海鴉繁殖地，研究者用監視器拍岩架。2020 年疫情封島，島上的人比前三年少了 92%，白尾海鵰卻多了很多（作者摘要寫約七倍）；從 2019 到 2020 年，岩架上集體驚飛的次數從每天約 6 次變成約 15 次，驚飛的總時間從每天 72 分鐘變成 602 分鐘。海鵰沒有抓到海鴉，但牠一飛過，岩架上的親鳥就一起離開：沒人顧的蛋被銀鷗和冠小嘴烏鴉吃掉，影片也拍到蛋在驚飛時從岩架掉下去。那一年，每年監測的那段岩架繁殖表現比 2010 到 2019 年的平均低 26%，孵化成功率低 21%。",
+        "scope": "單一繁殖群、單一年份對長期平均；驚飛次數與時間是 2019 對 2020；蛋掉落只有影片觀察、沒有數量，不能說掉落占損失幾成；26% 只指 Västerberget 每年監測的岩架；沒有量蛋形，不能說『尖蛋沒用』，只能說野外的大風險發生在親鳥離蛋時；不自行換算倍數；不給賞鳥、保育或觀光操作建議。",
+        "facts": 0.25,
+        "notes": "算 0.25（作者 0.5）：獨立研究群、開放全文、池中無；但這篇沒有任何蛋形資料，是『與蛋形距離遠的旁證』，只當開場或轉折一前的一句現場：蛋確實會掉，但時機是親鳥被嚇走。",
+        "editorial": {
+          "role": "hook",
+          "payoff": "懸崖上的蛋不是自己滾下去的：一隻海鵰飛過，整排親鳥同時跳開的那幾分鐘，才是蛋最危險的時候",
+          "visual": "監視器畫面風格的插圖：一排海鴉同時起飛，留下幾顆梨形蛋，一隻海鷗靠近",
+          "seconds": [
+            30,
+            40
+          ]
+        }
+      },
+      "duplicate_of": null,
+      "reason": "『集體驚飛多了約七倍』只有摘要這樣寫，結果段的次數不到三倍、時間八倍多，改用原文數字；補上比較年份與 26% 的範圍。與蛋形無關，下修為 0.25、只作開場鉤子。",
+      "overlaps": [
+        {
+          "existing_id": "L66-011",
+          "note": "L66-011 檢驗的是蛋形防滾；本核心只說野外蛋掉落與被吃發生在親鳥離蛋時，不支持也不反駁蛋形說"
+        },
+        {
+          "existing_id": "L66-012",
+          "note": "不得把『蛋會掉』接成『所以斜坡放得穩是為了這個』"
+        }
+      ],
+      "final_id": "L68-002",
+      "batch": "batches/wave68-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L68-003",
+      "reviewer": "V35",
+      "question": "蝸牛還是胚胎的時候，身體怎麼知道殼要往哪邊捲？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "F32-S005（PMC2661027）與 F32-S006（PMC9907556）：Europe PMC REST fullTextXML 重抓（PMCID 先出現在研究代理第 49 次 Europe PMC search 結果），sha256 前綴 b25cae6832ec1faa、0c89a11b0a24d72f，皆與作者快取相同。",
+      "reopen_result": "Grande & Patel 2009：'both genes are expressed on the right side … in the dextral … Lottia gigantea and on the left side in the sinistral … Biomphalaria glabrata'、'nodal transcripts were first detected at the 32-cell stage'、'At 5μM … 8% of the animals that managed to complete gastrulation, but at 10μM … 43%'、'Only by applying the drug prior to the blastula stage could we obtain animals with coiling defects'——相符；補：早期給藥最常見的結果是胚胎根本完成不了原腸化。Truchado-García 2023：'At the highest injection concentration, 92% of embryos were symmetrical (table 1)'（Table 1：25 個中 23 個）；RHAct-A 於 32 hpf 給藥 51 個中 41 個（80.4%）對稱，48、61 hpf 約 60%——相符；但作者漏了最早的窗口 'RHAct-A treatments administered to two-cell stage embryos (7 hpf) to 48 hpf did not show symmetrical larvae'，以及 48 hpf 給 5 μM 只有 8.8%。最重要的錯：答案寫『另一個研究群在拖鞋螺做反向操作』，但 Truchado-García 2023 的通訊作者就是 Grande（2009 年的第一作者），是同一位研究者的延續研究，不是另一個研究群。",
+      "changes_applied": {
+        "answer_target": "有一組訊號會站到胚胎的某一邊。柏克萊的研究者在兩種螺找到脊椎動物也用來分左右的 nodal 基因：右旋的帽貝，nodal 和它下游的 Pitx 出現在胚胎右側；左旋的扁蜷則出現在左側——訊號在哪一邊，跟身體往哪邊旋一致。用藥擋住這條訊號，早期給藥的扁蜷胚胎大多連原腸化都完成不了；完成的個體中，5 微莫耳時有 8%、10 微莫耳時有 43% 長成沒有盤旋的直管殼，而且只有在囊胚期之前給藥才會這樣。同一位研究者後來在拖鞋螺做了兩個方向的實驗：注射過量 nodal，最高劑量下 92% 的胚胎長成左右對稱；在囊胚早期擋住這條路徑，約八成變對稱（更早或更晚給藥就少得多）。也就是說，這條訊號沒了或亂了，殼就不捲；它是旋向的『執行者』，不是決定往哪邊的那一個。",
+        "scope": "藥物抑制與過量表現，不是基因剔除；結果是『不捲／對稱』而不是『反向捲』，不得說擋住 nodal 能讓蝸牛變左旋；兩篇是同一研究者（Grande）的不同物種、不同處理，不得把 43% 與 92%、80.4% 並列成同一實驗；方向由更早的母系基因決定（L66-021、L66-022），片中不得說 nodal 決定方向；『執行者』是解說用語，原文只說 Nodal 參與左右不對稱。",
+        "facts": 1.0,
+        "notes": "算 1.0（作者 1.25）：Grande & Patel 2009（Patel 實驗室，獨立於 A、B 兩網絡）兩件事：nodal／Pitx 位置隨旋向鏡像 0.5、抑制後長成直管殼 0.5；Truchado-García 2023 是 Grande 自己的延續研究，照同研究網絡合併，與『沒有 Nodal 就不盤旋』同一發現，計 0。池中無 nodal、Pitx、PMC2661027、PMC9907556。",
+        "editorial": {
+          "role": "segment",
+          "payoff": "把一條訊號擋掉，螺殼就長成一根直管子——但它管的是『捲不捲』，不是『往哪邊捲』",
+          "visual": "三個小胚胎並排：右旋帽貝右側亮、左旋扁蜷左側亮，最後一顆長成直管殼",
+          "seconds": [
+            50,
+            60
+          ]
+        }
+      },
+      "duplicate_of": null,
+      "reason": "數字相符，但把同一研究者的延續研究寫成『另一個研究群』，並省掉最早給藥窗口沒有效果的條件。Truchado 照同研究網絡合併計 0，本核心 1.0。",
+      "overlaps": [
+        {
+          "existing_id": "L66-022",
+          "note": "formin 在最早幾次分裂決定方向；nodal 在 32 細胞期之後，是下游，不重算、不得混說"
+        },
+        {
+          "existing_id": "L68-007",
+          "note": "同領域、不同研究群（Hejnol），L68-007 不談 nodal 的實驗"
+        }
+      ],
+      "final_id": "L68-003",
+      "batch": "batches/wave68-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L68-004",
+      "reviewer": "V35",
+      "question": "如果把決定左右的那個基因剪掉，右旋蝸牛會生出左旋寶寶嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "F32-S007（PMC7716593）：Europe PMC REST fullTextXML 重抓（PMCID 先出現在研究代理第 57 次 Europe PMC search 結果），sha256 前綴 427d3c490f940643，與作者快取相同。",
+      "reopen_result": "'98% right-handed (dextral) and 2% left-handed'；'mechanical micro-manipulation of embryos at the third cleavage … resulted in the expression sites of the nodal/Pitx genes at the mirror-imaged positions and produced healthy mirror-imaged animals'、'Their self-crossed offspring reverted naturally to the original handedness'；'Biallelic frameshift mutations introduced into the gene produced sinistrally coiled offspring generation after generation in the otherwise totally dextral genetic background'；'sought for nearly a century'；2016 年 Davison 'associated'、Kuroda 'the strongest candidate'，'Neither study proved that the gene is in fact the handedness-determining gene'；命名 Lsdia1/Lsdia2 對應 Davison 的 Ldia2/Ldia1，序列 'different in key aspects'——都相符。兩處錯：(1) 作者稱『東京理科大學黑田玲子研究群』，本文作者單位是中部大學（Chubu University）Frontier Research Institute；(2) 答案『把 Lsdia1 基因兩個拷貝都剪壞』會與『一對串聯重複的 Lsdia1／Lsdia2』混淆，原文是 biallelic，即同一個基因的兩個等位基因。CRISPR 原始資料在 Abe & Kuroda 2019 Development（Europe PMC 非開放，未讀），本篇是同團隊綜述。",
+      "changes_applied": {
+        "answer_target": "會，而且一代傳一代。椎實螺在野外約 98% 右旋、2% 左旋。日本黑田玲子團隊說，他們在胚胎第三次分裂時用細針把細胞往反方向撥，nodal 和 Pitx 的位置跟著變成鏡像，長出健康的鏡像蝸牛，但牠們自交的下一代又轉回原來的方向——撥得動身體，改不了遺傳。2016 年，他們和英國另一個團隊各自把旋向基因縮小到同一對基因，但兩邊都沒有證明就是它，命名還正好相反。之後黑田團隊用基因剪刀 CRISPR，在全是右旋的品系裡把 Lsdia1 這個基因的兩份（爸媽各給的一份）都剪壞，得到左旋的後代，而且一代接一代都是左旋。他們認為這終於確認了找了將近一百年的旋向基因。",
+        "scope": "資料來自黑田團隊為自己研究寫的綜述，CRISPR 原始數據的論文（Abe & Kuroda 2019）未讀；98%／2% 只指椎實螺；『確認』是該團隊的說法；與英國團隊的命名與序列分歧只陳述『兩邊命名相反』，不評誰對；與 L66-022 的藥物實驗（只讓第三次分裂像左旋、後續仍右扭）是不同手法，片中要分開說；不給任何飼養或實驗操作建議。",
+        "facts": 0.5,
+        "notes": "算 0.5（作者 0.75）：黑田研究群獨立於 A、B 網絡（第十六輪 Kuroda 2016 已計 0.25）。CRISPR 剔除得可遺傳左旋 0.5——但這是綜述轉述自己團隊的原論文，所以不給原研究的 0.75；撥轉鏡像、自交回復在 L66-021 已有，nodal／Pitx 鏡像只是補一句，計 0；98%／2% 與命名爭議不計。若讀到 Abe & Kuroda 2019 原文可升 0.75。",
+        "editorial": {
+          "role": "turn",
+          "payoff": "撥得動胚胎、改不了遺傳；藥也做不到——直接剪掉一個基因，右旋的家族才一代代生出左旋寶寶",
+          "visual": "家譜式插圖：上排全右旋，剪刀圖示後下排全左旋，連續三代",
+          "seconds": [
+            50,
+            60
+          ]
+        }
+      },
+      "duplicate_of": null,
+      "reason": "引文相符，改正單位（中部大學）與『兩個拷貝』的誤導寫法，補上原文『兩組都沒有證明』這句，讓轉折更清楚。綜述層級，下修為 0.5。",
+      "overlaps": [
+        {
+          "existing_id": "L66-021",
+          "note": "L66-021 已有撥轉得鏡像、下一代轉回（轉述）；本核心只補 nodal／Pitx 鏡像，計 0"
+        },
+        {
+          "existing_id": "L66-022",
+          "note": "L66-022 已有兩團隊定位到同一對基因與藥物沒養出左旋；本核心新增的是 CRISPR 可遺傳左旋"
+        }
+      ],
+      "final_id": "L68-004",
+      "batch": "batches/wave68-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L68-005",
+      "reviewer": "V35",
+      "question": "除了蛇，還有誰會讓左旋的螺比較吃香？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "F32-S008（PMC1686199）：研究代理第 64 次 WebSearch 列出 pmc.ncbi.nlm.nih.gov/articles/PMC1686199；同一連結以 curl 預設標頭重抓（200，無 reCAPTCHA），HTML 雜湊因動態頁面不同（06cc130e5f57fa96 對作者 4532b5f5d9a6c8ab），但抽出的 <article> 文字 20,711 字元逐字相同（v35src/pmc1686199.html）。",
+      "reopen_result": "'five whelk and six cone species pairs (totalling 1772 specimens)'、'only one of 11 samples showed the opposite pattern'、binomial p<0.05、'Three crabs (85–95 mm in carapace width) were observed to pick up individuals of the left-handed S. sinistrum (43–48 mm shell length) and abandon them prior to inflicting shell damage … right-handed B. carica of similar size were readily opened'、'why is left-handedness then so rare, especially in tropical seas … We do not have an answer'——相符。兩處說錯：(1) 答案『左旋的殼比較少被螃蟹攻擊得手』與原文邏輯相反——疤是『失敗的攻擊』，作者的解讀是螃蟹拿到左旋殼較難擺到下手位置、常在弄傷殼之前就放棄，所以左旋的修補疤較少；(2) payoff『螃蟹留下的疤幾乎都在右旋的那一種』錯，原文是逐對比較帶疤比例，11 對中 10 對右旋較高，不是疤幾乎都在右旋；『三百萬年前』原文只說左旋種約在上新世出現、樣本是上新世到更新世。",
+      "changes_applied": {
+        "answer_target": "海裡的螃蟹，至少化石這樣顯示。耶魯與康乃爾的研究者比較美國東南部上新世到更新世的化石：5 對海螺、6 對芋螺，每對都是外形相近、一右旋一左旋的兩個物種，共 1,772 個殼，數有多少殼帶著被螃蟹攻擊後修補的疤。11 對裡有 10 對，是右旋那一種帶疤的比例較高。作者的解讀是：剝殼的螃蟹大多右螯大，拿到左旋殼很難擺到下手的位置；他們初步看到三隻箱蟹撿起左旋海螺，還沒弄傷殼就放下，同樣大小的右旋海螺卻被打開。作者也老實說：既然左旋有好處，為什麼在螃蟹很多的熱帶海裡，左旋還是那麼少，他們答不出來。",
+        "scope": "化石間接證據：疤是失敗攻擊的痕跡，帶疤少不等於被攻擊少，作者以兩型殼防禦構造相似為由排除『左旋一被攻擊就死』，但沒有直接證明；箱蟹只是三隻的初步觀察；與 L66-024（陸生蝸牛與鈍頭蛇）不同捕食者、不同研究群，不得合成『捕食者都偏右』的通則或合併數字；不說『三百萬年前』的精確年代。",
+        "facts": 0.5,
+        "notes": "算 0.5（作者 0.75）：完全獨立的研究群（Dietl、Hendricks），開放全文，池中無；但結論與 L66-024、L66-025『捕食者讓左旋占便宜』同方向，照 V33 規則同方向只給 0.5；箱蟹初步觀察與『答不出來』不另計。它讓轉折一不再只靠 Asami 網絡。",
+        "editorial": {
+          "role": "segment",
+          "payoff": "11 對化石海螺裡有 10 對，帶著螃蟹疤的比例是右旋那一種比較高——左旋的，螃蟹常常連下手都難",
+          "visual": "兩個化石海螺殼並排，右旋的殼口邊緣有鋸齒狀修補疤；一隻右大螯螃蟹拿著左旋殼不知從哪下手",
+          "seconds": [
+            45,
+            55
+          ]
+        }
+      },
+      "duplicate_of": null,
+      "reason": "數字相符，但答案把『較少被攻擊得手』說反了疤的意義、payoff 的『疤幾乎都在右旋』原文無。同方向證據，下修為 0.5。",
+      "overlaps": [
+        {
+          "existing_id": "L66-024",
+          "note": "同方向（捕食者讓左旋占便宜），不同捕食者、不同研究群，不得合併數字"
+        },
+        {
+          "existing_id": "L66-025",
+          "note": "同方向的分布關聯，不重算"
+        }
+      ],
+      "final_id": "L68-005",
+      "batch": "batches/wave68-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L68-006",
+      "reviewer": "V35",
+      "question": "左旋和右旋的蝸牛殼，真的是一模一樣的鏡像嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "F32-S009（PMC3020325）：Europe PMC REST fullTextXML 重抓（PMCID 先出現在研究代理第 49 次 search 結果），sha256 前綴 e6097385f83e1745，與作者快取相同。",
+      "reopen_result": "'50 dextral and 50 sinistral individuals of Amphidromus inversus'、'Four out of 18 volunteers who measured the shells with Vernier calipers found that sinistrals are stouter'、'one out of five volunteers who measured the shells from photographs'、'do not allow distinguishing between real shape differences and a handling bias'、'slight but significant widening and twisting of the shell near the palatal and parietal apertural areas'、'selection … either very weak or constrained by … pleiotropic effects … very early in development only'——相符。答案『旋向看媽媽的基因』原文是對所有左右旋並存種的一般敘述，不是本研究對 A. inversus 的實測，改成一般說法。參考文獻列有 Schilthuizen M, Davison A 合著，第一作者屬 Davison／Chiba 網絡（L66-028 的 Schilthuizen 2007 也在此網絡）。",
+      "changes_applied": {
+        "answer_target": "不完全是，但差得很少，而且很難量。東南亞的樹蝸牛 Amphidromus inversus 左右旋並存；在這類蝸牛，旋向一般由媽媽的一個基因決定，所以照理兩型應是完美鏡像。研究者拿 50 個右旋、50 個左旋殼請志願者量：18 位用游標卡尺的志願者中有 4 位量出左旋『顯著比較胖』，量照片的 5 位中只有 1 位；這分不出是真的差別，還是人拿左旋殼的手勢不同造成的偏差。改用電腦做幾何形態分析後，確認左旋殼在殼口附近有輕微但顯著的變寬與扭曲。研究者說這出乎意料，推測對這點差異的選擇很弱，或旋向基因的副作用只在很早期的發育才重要。",
+        "scope": "單一物種、博物館殼；差異『輕微』，不得說左旋殼明顯比較胖或比較差；志願者偏差要講清楚是『分不出』；與 L66-028（同屬的互配）不同問題。",
+        "facts": 0.25,
+        "notes": "算 0.25（作者 0.5）：Schilthuizen 屬 Davison／Chiba 網絡（照 V31 敏感度與本輪指示合併計），網絡 B 由 2.25 加到 2.5，仍在 3.0 封頂內；但卡尺與照片的志願者實驗是方法論（方法不算事實），只有幾何形態結果算一件事，0.25。若再把 A、B 網絡合併封頂，計 0。",
+        "editorial": {
+          "role": "segment",
+          "payoff": "連『量殼』這件事，人手拿左旋殼都可能量歪；換電腦量，才看到殼口真的有一點點不一樣",
+          "visual": "一左一右兩個殼疊成鏡像，殼口處用半透明色塊標出微小差異；旁邊一隻手拿卡尺",
+          "seconds": [
+            30,
+            40
+          ]
+        }
+      },
+      "duplicate_of": null,
+      "reason": "引文相符；把母系遺傳改成一般敘述、補上研究者的第二種解釋；網絡歸屬與方法論下修為 0.25。",
+      "overlaps": [
+        {
+          "existing_id": "L66-028",
+          "note": "同屬（Amphidromus）、同研究網絡（Schilthuizen），不同問題；片中可接在 L66-028 後"
+        }
+      ],
+      "final_id": "L68-006",
+      "batch": "batches/wave68-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L68-007",
+      "reviewer": "V35",
+      "question": "「偏向右邊」是蝸牛自己才有的嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "F32-S010（PMC5104510）：Europe PMC REST fullTextXML 重抓（PMCID 先出現在研究代理第 73 次 search 結果），sha256 前綴 8e6919cae36737ff，與作者快取相同。",
+      "reopen_result": "'The dextral chirality is more common and genetically dominant, often the only conformation of a spiralian embryo and thought to be ancestral [22,24,25]'（引前人）；苔蘚蟲 'number of observations: 9 of 11 embryos' 與 '2 of 11 embryos'；'right-handed form being more common than the left-handed, as is also observed in molluscs'；'It remains paradoxical … not translated into morphological asymmetries in most of the adult and larval forms'——相符。單位：Sars International Centre for Marine Molecular Biology, University of Bergen，對。payoff『連沒有殼的小蟲，胚胎第一刀就切得偏右』兩處不妥：螺旋卵裂的左右錯開不是『第一刀』就看得出的典型說法（原文只說『最初幾次分裂』）；Membranipora 是有鈣質骨架的群體苔蘚蟲，『沒有殼的小蟲』不準。",
+      "changes_applied": {
+        "answer_target": "不是，這個偏好可能比蝸牛還古老。蝸牛屬於『螺旋卵裂動物』，這一大群還包括環節動物、紐形動物、腕足動物和苔蘚蟲；牠們的胚胎在最初幾次分裂時，細胞就會往右或往左錯開。研究者整理前人的觀察：右手型比較常見、在遺傳上是顯性，常常是唯一的型，一般認為是祖先的狀態。挪威卑爾根大學的團隊追蹤一種已經不做典型螺旋卵裂、成體也沒有明顯左右的苔蘚蟲，11 個胚胎中 9 個是右手型、2 個是鏡像的左手型。為什麼偏右？他們沒有答案，反而說：胚胎早期的左右差別，在多數成體身上卻看不出來，本身就是個謎。",
+        "facts": 0.25,
+        "notes": "算 0.25（作者 0.5）：Hejnol 研究群獨立；但『右手型是祖先狀態』是引前人推論、不計；苔蘚蟲 9／11 是新資料但只有 11 個胚胎、與蝸牛旋向的連結是旁證，0.25。只作開場後的鋪墊與收尾留言問題。",
+        "editorial": {
+          "role": "hook",
+          "payoff": "偏右不是蝸牛發明的：一大群動物的胚胎在最初幾次分裂就有左右手，而且多半是右手",
+          "visual": "四細胞到八細胞胚胎俯視圖，上層小細胞往順時針錯開；旁邊環節動物、苔蘚蟲群體剪影",
+          "seconds": [
+            30,
+            40
+          ]
+        }
+      },
+      "duplicate_of": null,
+      "reason": "引文相符；payoff 改掉『第一刀』與『沒有殼的小蟲』；祖先狀態是引前人，下修為 0.25。",
+      "overlaps": [
+        {
+          "existing_id": "L66-020",
+          "note": "L66-020 是名錄裡左旋有多少；本核心把問題往前推到胚胎層次，不重算"
+        }
+      ],
+      "final_id": "L68-007",
+      "batch": "batches/wave68-life.json",
+      "disposition": "candidate"
+    }
+  ],
+  "non_author_reviews": [
+    {
+      "target": "C10-01",
+      "theme_id": null,
+      "title": "冰為什麼這麼滑？是被壓化的嗎？",
+      "reviewer": "V34",
+      "author": "F31",
+      "author_verdict": "ready",
+      "author_est_minutes": 8.69,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "P64-006",
+        "P64-007",
+        "P64-008",
+        "P64-009",
+        "P68-001",
+        "P68-005",
+        "P68-002",
+        "P68-003",
+        "P64-010",
+        "P64-011",
+        "P65-002",
+        "P65-003",
+        "P64-020",
+        "P64-012",
+        "P64-014",
+        "P68-004",
+        "P64-013",
+        "P64-015",
+        "P64-016",
+        "P64-017",
+        "P65-005",
+        "P65-004",
+        "P64-018",
+        "P64-019"
+      ],
+      "recount_facts": "10.5 條（作者 11.75）。底數照 V28 9.0 條（19 個舊核心不變）。新增：P68-001 0.5（作者 0.75；導熱方向已在 P64-008，只算隔熱實驗與隨速度減弱）；P68-002 0.5（作者 0.75；單一溫度、單一裝置、機制是推測）；P68-003 0.25（作者 0.5；每種條件一個樣本、形態推論，且作者把 A 的殘留水套到 B）；P68-004 0.25（作者 0.5；1977 年 OCR 舊掃描、黏著說與 0.3 度是作者自己的解釋與估算）；P68-005 0（作者 0.25；自稱初步研究、定性、與 P68-001 同題，資料又被 P68-002 併用）。新增合計 1.5。（10.5×140＋700）÷270＝8.04 分。即使五個新核心都取上限（0.75、0.5、0.5、0.25、0.25，共 2.25），也只有 11.25 條、8.43 分，仍不到 8.5。",
+      "recount_fact_count": 10.5,
+      "recount_minutes": 8.04,
+      "planned_minutes": null,
+      "cuts": "不刪舊核心。P68-005 計 0，只當 P68-001 章裡一句條件說明，不單獨成章。P68-003 的『溝裡殘留水』只限暖慢那個樣本。P68-002 原文的配重建議、P68-001 的冬奧資助背景不轉述；P68-002 的跨研究曲線不拆開、不和 P68-005 並列數字。P64-011 與 P65-002 的『各方法厚度差很多』只講一次；P68-004 的 −7 °C 最低點不與 P64-012／P64-014 並列。",
+      "turns": [
+        "成立（照 V27／V28，要守條件）：以為『冰刀把冰壓化』——每 MPa 只降約 0.074 °C、−30 °C 仍能溜；最滑在約 −7 °C，太冷像乾摩擦、太暖被犁開（P64-006、P64-007、P64-012、P64-014）。不得說壓力融化『完全錯』。",
+        "成立（新，要守速度範圍）：以為摩擦生熱已經被『慢也會滑』推翻——每秒 1 微米、導熱差兩個數量級滑度相近（P64-009），但在每秒幾毫米到十幾公分，替滑塊隔熱就更滑、熱導率約四倍的鋼摩擦高 65–85%，這個關係隨速度一路減弱，到每秒約 0.36 公尺時圖上已近乎持平（P68-001；P68-005 提醒導熱效應會被刃面狀態混淆）；每秒 2.8 到 28 公尺越快越滑，水變多只是研究者推測（P68-002）；很冷但快十倍的樣本留下像水結凍過的碎屑（P68-003）。各研究速度、裝置不同，不合併、不判輸贏：熱在某些速度範圍仍有份。",
+        "成立（照 V28，不得說過頭）：以為『冰面本來就有一層水在潤滑』——直接拍到的是很接近 0 °C 且水氣不平衡時才出現的液滴與薄層（P65-002、P64-020），『比水黏 200 倍』原研究量的是比值（P65-003），那層膜是黏是稀實驗與模擬說法不同（P64-016、P65-005、P65-004），還有 1977 年不靠水的黏著說（P68-004，作者自己的解釋）。結論守在『各派並列、機制仍不確定』（P64-019）。"
+      ],
+      "chapter_outline": [],
+      "core_question": "冰為什麼滑？大家熟的「被壓化」「磨熱融化」「表面本來有水」各自卡在哪裡，在不同速度下各自還剩多少份量，現在研究到哪一步？",
+      "connection": "（後備，暫不排章。）壓力融化的帳（P64-006、007）→ 摩擦生熱與慢也滑（008、009）→ 熱還沒出局：隔熱更滑、越快越滑、但要看速度與刃面（P68-001、P68-005、P68-002）→ 碎屑裡的水痕（P68-003）→ 表面本來有層東西？（010、011）→ 直接拍到的液滴與薄層、黏度其實是比值（P65-002、P65-003、P64-020）→ 溫度甜蜜點與犁溝（012、014）→ 不靠水的黏著說（P68-004）→ 表面分子與局部壓力（013、015）→ 實驗：膜很黏（016、017）→ 模擬：一奈米就夠／搓一搓就亂（P65-005、P65-004）→ 溜冰場實拍（018）→ 各派並列（019）。",
+      "boredom_risk": "中偏高：學派清單更長了（熱、壓力、表面層、黏著、搓亂），實驗裝置從奈米模擬、鋼珠、流變儀、轉鼓到真冰場，每章都要先講『什麼裝置、多快、多冷』，否則觀眾會把不同研究的數字混在一起；速度軸（每秒 1 微米 → 幾公分 → 28 公尺）是新加的串法。",
+      "drop_if": "出現『壓力融化完全錯』『摩擦生熱被推翻』或『被證實』『水膜說被推翻』『科學家終於解開』『冰滑跟水無關』『準液層比水黏 200 倍』；把隔熱、熱導率、拋光、速度、配重或任何溫度說成溜冰、雪橇、走路、開車或打蠟建議；把不同研究的摩擦係數、溫度、厚度、黏度相減、平均或合併（含把 Scherge 的跨研究曲線拆開與 Itagaki 並列）。",
+      "evidence_gaps": "Bonn 研究群（含 Sazaki 共同撰寫的綜述）仍佔大宗；歷史段全靠 2005 年專文轉述；新增的五份各只有一個實驗室、多為單一溫度或少數樣本，Itagaki 自稱初步、Tusima 是 OCR 舊掃描，Scherge 與 Itagaki 資料不完全獨立；真溜冰場只有 Lever 一組。",
+      "still_missing": "差 1.0 條（10.5 條、8.04 分；需 11.5 條才到 8.56 分）。只循公開連結：（1）de Koning 1992 速滑實測原文（真冰場、非 Bonn，約 0.5）；（2）Kietzig 2009 J Appl Phys 或 UBC 博士論文的合法全文（同群上限內，最多讓 P68-001 升到 0.75，約 +0.25）；（3）Bowden & Hughes 1939 原文（royalsocietypublishing 403），讓 P64-008 由轉述升級、約 +0.25；（4）另一獨立研究群在真冰刀或雪橇刃上同時量溫度與摩擦的開放原研究，約 0.5。Scherge 等 2018 Lubricants（MDPI 403、Publica 無檔案）與 P68-002 同群，最多 +0.25。不靠放寬 P68-003、P68-004、P68-005 的計數過線。",
+      "reason": "七份來源都以同一公開連結重抓，sha256 前綴全部相同；工具紀錄裡每個網址都先出現在搜尋結果、頁面連結、HAL API 或 Europe PMC REST，沒有拼湊。數字逐句對上，但作者把 Marmo 樣本 A 的殘留水套到樣本 B、把 Kietzig『一路減弱到 0.361 m/s』說成『消失』且漏掉隔熱在最低點附近反而升高、把速度範圍寫成『幾公分』；計數偏寬：Kietzig 的導熱方向已在 P64-008，Tusima 是 OCR 舊掃描加作者自己的解釋，Itagaki 自稱初步。重算 10.5 條、8.04 分，三個轉折成立但片長不夠，改判 reserve。最終核心都不在 themes.json 任何 ready 題，也都不在 POOL_SUPPORT。"
+    },
+    {
+      "target": "C12-01",
+      "theme_id": null,
+      "title": "冷凍肉解凍後那一灘水，是冰晶把細胞刺破流出來的嗎？",
+      "reviewer": "V34",
+      "author": "F31",
+      "author_verdict": "reserve",
+      "author_est_minutes": 8.3,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "K66-001",
+        "K66-002",
+        "K66-003",
+        "K67-001",
+        "K67-002",
+        "K66-004",
+        "K67-003",
+        "K66-008",
+        "X34-005",
+        "K66-005",
+        "K66-009",
+        "K66-010",
+        "K66-011",
+        "D2022",
+        "K66-012",
+        "K66-013",
+        "K66-006",
+        "K66-007",
+        "K67-004",
+        "K68-001",
+        "K67-005"
+      ],
+      "recount_facts": "10.5 條（作者 11.0）。底數照 V32 10.25 條（20 個舊核心不變，K67-005 仍計 0）。新增：K68-001 0.25（作者 0.5；同一 Kim 研究群、與 K67-004 同方向、沒凍組熟成較久且不是左右配對、研究者自己說消費者分辨力有限）；K68-002 0 並移出本題（只凍 48 小時，照 K67-005 先例；與 K66-011 同結論型）。新增合計 0.25。（10.5×140＋700）÷270＝8.04 分。",
+      "recount_fact_count": 10.5,
+      "recount_minutes": 8.04,
+      "planned_minutes": null,
+      "cuts": "K68-002 移出本題（收進池中但不在本題用），避免四個遞減的解凍損失數字被聽成『越冷越好』。K67-005 仍只留一句『只凍 48 小時』的旁證。若再縮：先刪 D2022，再刪 K66-013。",
+      "turns": [
+        "成立（照 V32）：以為「凍得越快冰晶越小、出水越少」——切片看到慢凍冰晶多在細胞外、快凍多在細胞內（K67-001，重現既有觀察），但同一批牛排先熟成再凍時，快凍、慢凍和沒凍的失重分不開（K67-002）；加上 K66-002 的門檻與 K66-001 的鮮肉自滴。",
+        "成立（標明是模型）：以為「那灘水就是冰晶刺破細胞」——赫爾辛基研究指向蛋白質變性（K67-003，博士論文綜合篇、慢凍多約三成是相對值）。",
+        "成立：以為「凍過的肉一吃就知道」——受訓評審嚐得出多汁差（K66-006、K67-004），一般消費者盲測沒挑出來（K67-004，冷凍組與鮮肉組來自不同屠宰日）；普渡同一批 30 頭牛、先熟成再凍 1–5 週的盲測也沒有差異，但沒凍組熟成較久、研究者自己說消費者分辨力有限（K68-001，與 K67-001／002 同一研究群）。"
+      ],
+      "chapter_outline": [],
+      "core_question": "解凍那灘水裡，有多少是肉本來就會滴的、多少是冰晶造成的、多少是蛋白質被凍壞，而一般人又吃不吃得出來？",
+      "connection": "（後備，暫不排章。）鮮肉自滴（K66-001）→ 冰晶大小與門檻（K66-002、K66-003）→ 冰長在哪（K67-001）→ 位置差很多、失重不一定差（K67-002）→ 破壞和出水不是一對一（K66-004）→ 蛋白質那一筆（K67-003）→ 汁裡的酵素（K66-008、X34-005）→ 解凍少、展示多（K66-005）→ 凍融與溫度波動（K66-009、K66-010）→ 溫度與時間：研究不一致（K66-011、D2022、K66-012、K66-013）→ 受訓舌頭與一般舌頭（K66-006、K66-007、K67-004、K68-001、K67-005）。",
+      "boredom_risk": "中高：十幾個研究輪流上場、多是百分比；消費者盲測一章現在有三個研究，容易變成『大家都吃不出來』的重複，要靠各自的條件（屠宰日不同、熟成天數不同、只凍 48 小時）拉開。",
+      "drop_if": "把不同研究的百分比相減或並排比大小、把「多約三成」說成肉重的三成、把蛋白質模型說成定論、說成一般人都嚐不出冷凍過的肉或『冷凍不影響品質』、說「越冷越好」或推薦冷凍庫溫度、冷凍方式、熟成週數、包裝或產品、引用保存天數、給任何解凍、冷藏或食品安全建議，該段刪。",
+      "evidence_gaps": "冰晶位置只有一篇小樣本定性切片；蛋白質變性一筆只讀到博士論文綜合篇，Paper II、III 原始數字沒讀到；消費者盲測三篇都有混淆（不同屠宰日、熟成天數不同、只凍 48 小時），其中兩篇在 Kim 群或同方向；溫度與時間一章仍是各物種各包裝並列。",
+      "still_missing": "差 1.0 條（10.5 條、8.04 分；需 11.5 條才到 8.56 分）。只循公開連結：（1）Zhang & Ertbjerg 2019（Paper II）或 Zhang 等（Paper III）的合法全文（core.ac.uk 403、Europe PMC 非開放），約 +0.25；（2）第三研究群以切片、冷凍電鏡或微型 CT 量化肉類冰晶位置的開放原研究（Martino & Zaritzky 1986 的 USU／CORE 都 403；Qian／Li 群在 ORBi 只有 Request a copy），約 0.5；（3）不屬已用研究群、真空包裝下 −18 °C 與更低溫『長期』儲存比較的獨立研究，約 0.5；（4）非 Kim 研究群、同一頭牛左右配對且冷凍數週以上、熟成天數相同的消費者盲測，約 0.5。不靠放寬 K67-001、K67-004、K67-005、K68-001、K68-002 的計數過線。",
+      "reason": "F31-S006、F31-S007 以同一公開連結重抓，sha256 前綴相同（iastatedigitalpress 本次沒有驗證頁）；網址分別出自 WebSearch 結果與 Europe PMC REST 搜尋。數字逐格對上，但 K68-001 的題目把平衡不完全區集說成同一頭牛左右配對、把剪力值範圍說成差距，研究者自己的『分辨力有限』也漏寫；K68-002 只凍 48 小時、與 K66-011 同結論型，方法與表的重複數不一致。重算 10.5 條、8.04 分，三個轉折成立但片長不夠，維持 reserve。最終核心除 X34-005（G331 短題、material 無 verdict）外都不在 themes.json 任何題，也都不在 POOL_SUPPORT。"
+    },
+    {
+      "target": "C13-01",
+      "theme_id": null,
+      "title": "鳥蛋為什麼一頭尖一頭鈍？海鴉的蛋尖是為了不滾下懸崖嗎？",
+      "reviewer": "V35",
+      "author": "F32",
+      "author_verdict": "reserve",
+      "author_est_minutes": 7.91,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "L66-008",
+        "L66-011",
+        "L66-012",
+        "L68-002",
+        "L66-013",
+        "L66-010",
+        "L68-001",
+        "L66-009",
+        "L67-001",
+        "L66-014",
+        "L67-002",
+        "L67-003",
+        "L66-015",
+        "L66-016",
+        "L67-004",
+        "L67-005",
+        "L66-017",
+        "L66-018",
+        "L66-019"
+      ],
+      "recount_facts": "9.75 條（作者 10.25）。舊核心照 V33 共 9.0（L67-005 為 0）。新增：L68-001 0.5（作者 0.75；Fernández 2013 0.5，Hogan & Varricchio 2023 是綜述轉述 Varricchio 自己團隊 1999 年的原論文、且 Fernández 已寫『與傷齒龍類相似』，計 0）、L68-002 0.25（作者 0.5；沒有任何蛋形資料，屬與蛋形距離遠的旁證）。Hays 2018 碩士論文只有摘要、Chou 等 2025 只有新聞稿，都不計。（9.75×140＋700）÷270＝7.65 分，距 8.5 分（約 11.4 條）差約 1.65 條。",
+      "recount_fact_count": 9.75,
+      "recount_minutes": 7.65,
+      "planned_minutes": null,
+      "cuts": "不刪舊核心。L67-005 照 V33 只留一句或刪；L68-002 只當開場鉤子一句（30–40 秒內），不放進轉折一的證據；L68-001 的綜述部分只用來並列反面讀法。",
+      "turns": [
+        "成立（照 V31／V33）：以為海鴉蛋尖是為了滾小圈不掉下懸崖——體積只解釋尖度 0.5%／2.7%（L66-011），好處改成斜坡上放得穩（L66-012）。L68-002 只在前面說明『蛋確實會掉，時機是親鳥被嚇走』，不支持也不反駁蛋形說，不算轉折證據。",
+        "成立（照 V33 的方向）：以為『找到答案了，蛋形就跟著飛行走』——全鳥類能解釋的只有一小部分，長與尖要分開問、逐科常反過來（L66-014、L67-002），兩派自己也說尺度不同（L67-003）。L68-001 只是一個章節畫面，不改變任何轉折；它本身的『現生鳥只有塚雉』已被同核心第二來源推翻，不能當轉折。"
+      ],
+      "chapter_outline": [],
+      "core_question": "鳥蛋為什麼一頭尖一頭鈍？是為了不滾走、為了飛、為了孵，還是要看哪一群鳥？",
+      "connection": "（後備，暫不排章。）懸崖上的蛋什麼時候會掉（L68-002，鉤子）→ 雞蛋不是標準形（L66-008）→ 海鴉防滾說檢驗不過、改成斜坡放得穩（L66-011～013）→ 形狀在殼之前定、恐龍已有尖蛋、古鳥把尖頭插進沙裡（L66-010、L68-001、L66-009）→ 尖頭讓鈍端與氣室朝上（L67-001）→ 飛行、孵法、氣候：長與尖分開問、看哪一群鳥（L66-014、L67-002、L67-003、L66-015、L66-016）→ 圓蛋與梨形蛋的溫度帳（L66-017、L66-018）→ 同種內也不一樣（L67-004、L66-019）。",
+      "boredom_risk": "中：轉折二仍是四份統計研究加一篇觀點文；L68-001 的化石畫面與 L68-002 的監視器畫面能提供前半段的具體場景，但不能拿來撐轉折。",
+      "drop_if": "說『七千萬年前』或『更早的傷齒龍』；說『現生鳥只有塚雉這樣放』而不提鴴的轉述；把 Comahue 蛋的『半埋孵蛋』說成定論而不提『埋了就走』的讀法；說『驚飛多了七倍』（次數）；把海鴉蛋掉落接成蛋形的證據；以及 V33 已列的各項（4% 當比分、飛行說被推翻、13 度說成野外巢等）。",
+      "evidence_gaps": "Hays & Hauber 2018（JEB 403、CUNY 論文 PDF Cloudflare 403）；Chou、Tuanmu、Hung 2025 Proc B（royalsocietypublishing 403、Europe PMC 非開放）；Shatkovska 2018 無開放全文；Varricchio 等 1999 傷齒龍巢原文未讀；Maclean 1974（鴴類覆蓋蛋）原文未讀；斜面實驗沒有第二個研究群重做。",
+      "still_missing": "差約 1.65 條（需約 11.4 條）。只循公開連結：（1）Hays & Hauber 2018 JEB 或 CUNY 碩士論文的可讀全文（現 403），非 Birkhead 群的滾動實驗，約 0.75；（2）Chou、Tuanmu、Hung 2025 Proc B 的開放版本（蛋重與巢牆、3D 列印蛋滾出試驗），約 0.5；（3）Shatkovska 等 2018 J Morphol 開放全文，約 0.5；（4）直接量現生地面營巢鳥蛋擺放方向（尖端朝下或朝內）的原研究，例如 Maclean 1974 Ostrich〈Egg-covering in the Charadrii〉若有合法全文，約 0.25–0.5；（5）第二個研究群重做斜面放蛋實驗，約 0.75。（1）＋（2）＋（3）約 11.5 條才剛過線；不放寬 Birkhead、Stoddard 封頂，不把 4% 計分，L68-002 不升級。",
+      "reason": "作者的 reserve 成立，分鐘也與作者自己的保守估計一致（9.75 條、7.65 分），但條數的分配不同：L68-001 的 Hogan 部分屬綜述轉述自己團隊原論文、L68-002 與蛋形無關，各下修 0.25。更要緊的是內容錯誤：L68-001 的『現生鳥只有塚雉』被同一核心的第二份來源推翻、『更早的傷齒龍類』與『七千萬年前』原文無，並漏掉綜述對同一批蛋的反面讀法；L68-002 的『驚飛多了約七倍』只有摘要這樣寫，結果段次數不到三倍。最終核心都不在 themes.json 任何題的 candidate_ids（627 題、86 題 ready），也不在 POOL_SUPPORT。"
+    },
+    {
+      "target": "C13-02",
+      "theme_id": null,
+      "title": "蝸牛殼為什麼大多往右轉？左旋的蝸牛活得下去嗎？",
+      "reviewer": "V35",
+      "author": "F32",
+      "author_verdict": "reserve",
+      "author_est_minutes": 7.65,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "L66-020",
+        "L68-007",
+        "L66-021",
+        "L66-022",
+        "L68-004",
+        "L68-003",
+        "L66-023",
+        "L66-024",
+        "L66-025",
+        "L68-005",
+        "L66-026",
+        "L66-027",
+        "L66-028",
+        "L68-006",
+        "L66-029"
+      ],
+      "recount_facts": "8.5 條（作者 9.75；作者自己的保守算法 8.75）。舊核心照 V31 共 6.0（網絡 A 封頂 3.0、網絡 B 2.25、獨立 0.75）。新增：L68-003 1.0（Grande & Patel 2009 兩件事各 0.5；Truchado-García 2023 是 Grande 自己的延續研究，同研究網絡合併、與『沒有 Nodal 就不盤旋』同一發現，計 0）、L68-004 0.5（黑田團隊綜述轉述自己的 CRISPR 原論文，撥轉鏡像在 L66-021 已有）、L68-005 0.5（獨立研究群，但與 L66-024／025 同方向）、L68-006 0.25（Schilthuizen 歸網絡 B，2.25→2.5；志願者量測是方法論）、L68-007 0.25（祖先狀態是引前人，苔蘚蟲只 11 個胚胎）。（8.5×140＋700）÷270＝7.00 分，距 8.5 分（約 11.4 條）差約 2.9 條。敏感度：A、B 網絡合併封頂時 L68-006 為 0、舊核心 3.75，合計 6.0 條、5.70 分；照作者全部條數也只有 9.75 條、7.65 分，任何算法都到不了 8.5。",
+      "recount_fact_count": 8.5,
+      "recount_minutes": 7.0,
+      "planned_minutes": null,
+      "cuts": "不刪舊核心。L66-020 只當一句旁證；L68-006 若 A、B 網絡合併封頂可整段刪；L68-007 只當開場後的鋪墊與收尾留言問題。",
+      "turns": [
+        "成立（照 V31，有新證據）：以為『左旋蝸牛找不到對象，注定被淘汰』——岩崎氏鈍頭蛇讓左旋存活 87.5%、右旋 0%（兩個不同物種，L66-024），蛇區內左旋屬較多（邊際，L66-025）；L68-005 補上不同研究群、不同捕食者的化石證據（11 對中 10 對右旋那種帶螃蟹疤比例較高；作者也說不出左旋為何仍稀少）。不得合成『捕食者都偏右』。",
+        "成立（照 V31）：以為『左右相反就不能交配，一個基因就造出新種』——Amphidromus 左右互配多於隨機、Euhadra 有基因流（L66-028、L66-029）。",
+        "候選第三轉折，判定：內容成立、證據只到綜述層級。以為『旋向基因只是相關，做不出左旋蝸牛』——2016 年兩組都沒有證明（L68-004 引原文）、藥物只讓第三次分裂像左旋、後續仍右扭（L66-022）；黑田團隊用 CRISPR 剪掉 Lsdia1 兩個等位基因，右旋品系一代代生出左旋（L68-004）。它確實改變觀眾結論，但只來自同團隊的綜述，原論文 Abe & Kuroda 2019 未讀；本題已有兩個轉折，這一個不是成題的必要條件，讀到原文前片中要標明『該團隊說』。"
+      ],
+      "chapter_outline": [],
+      "core_question": "蝸牛為什麼幾乎都右旋？旋向怎麼決定、左旋的少數又怎麼在某些地方贏？",
+      "connection": "（後備，暫不排章。）左旋有多少（L66-020）→ 偏右比蝸牛還古老（L68-007）→ 旋向看媽媽、撥得動胚胎改不了遺傳（L66-021）→ 那個基因：藥做不到、CRISPR 做到（L66-022、L68-004）→ 訊號站到哪一邊、擋掉就不捲（L68-003）→ 例外與多次反轉（L66-023）→ 右撇子的蛇與螃蟹讓左旋存活（L66-024、L66-025、L68-005、L66-026、L66-027）→ 反向也能配、鏡像也不完全一樣、一個基因不夠造新種（L66-028、L68-006、L66-029）。",
+      "boredom_risk": "中偏高：前半段多了 nodal 與 CRISPR 兩段分子機制，開場三分鐘都是基因名；要把蛇與螃蟹的段落提前到第二章當鉤子，機制段落用『撥得動、剪得掉、擋了就不捲』三個動作串起來。",
+      "drop_if": "說擋住 nodal 能讓蝸牛變左旋、或說 nodal 決定方向；把 Truchado 寫成另一個研究群或把 43%、92%、80.4% 並列成同一實驗；說『黑田團隊證明了、英國團隊錯了』；把 Lsdia1『兩個等位基因』說成『那一對基因』；說螃蟹疤『幾乎都在右旋』或『左旋較少被攻擊』；說左旋殼明顯比較胖；以及 V31 已列的各項（87.5% 說成同一種、每三四百萬年說成所有蝸牛、藥物養出左旋等）。",
+      "evidence_gaps": "Abe & Kuroda 2019 Development 原文未讀（L68-004 只到綜述）；Kuroda 2009 Nature 原文未讀；Lewis 等 2026（Euhadra 的 myosin I）只有摘要，bioRxiv 429、Curr Biol 訂閱；Koch 等 2017（門螺雜交帶，獨立研究群）無開放全文；Chirat 等 2021 PNAS 無開放版本；Utsuno 2011 屬已封頂網絡；Hoso 2007、Davison 2009／2020 原文 REST 500。",
+      "still_missing": "差約 2.9 條（需約 11.4 條）。只循公開連結：（1）Koch 等 2017 Mol Ecol（Hausdorf 研究室，獨立）開放全文，約 1.0；（2）Chirat、Goriely、Moulton 2021 PNAS 的開放版本，並與 B2128 合併成『殼的左右與螺旋』，約 0.75–1.0；（3）Abe & Kuroda 2019 Development 原文，L68-004 升 0.75（+0.25）；（4）Lewis 等 2026 全文（網絡 B 現 2.5，最多再 0.5）；（5）另一個非 Asami、非 Dietl 的左右偏好捕食或發育代價研究，約 0.5。全部到手約 11.25–11.75 條，仍只是在線上；比較實際的路是與 B2128 合併重評，或維持後備。Hoso、Asami、Gittenberger、Davison、Chiba 的新論文都落在封頂內，不加條。",
+      "reason": "作者的 reserve 成立；重算 8.5 條、7.00 分，比作者自己的保守估計再低 0.25 條（L68-006 的志願者部分是方法論）。內容上抓到：L68-003 把 Grande 自己的延續研究寫成『另一個研究群』並省掉最早給藥無效的條件；L68-004 研究群單位錯（中部大學，不是東京理科大學）、『兩個拷貝』會被聽成那一對基因；L68-005 把修補疤的意義說反、payoff 的『疤幾乎都在右旋』原文無；L68-007 的『第一刀』與『沒有殼的小蟲』不準。候選第三轉折（CRISPR 做出可遺傳左旋）內容成立但只到綜述層級。最終核心都不在 themes.json 任何題的 candidate_ids，也不在 POOL_SUPPORT。"
+    }
+  ],
+  "reviewer_notes": {
+    "V34": "C10-01 reserve：10.5 條、8.04 分（作者 11.75 條、8.69 分 ready）；C12-01 reserve：10.5 條、8.04 分（作者 11.0 條、8.30 分）。兩題的轉折都成立，但照 V22–V33 的保守算法片長都不到 8.5 分。即使 C10-01 每個新核心都取我給的上限（F31-001 0.75、F31-002 0.5、F31-003 0.5、F31-004 0.25、F31-005 0.25），也只有 11.25 條、8.43 分，結論不受計數細節影響。最重要的改正：（1）F31-006 的題目「同一頭牛的兩條腰脊，有的凍、有的完全沒凍」與原文設計不符——是平衡不完全區集，每兩頭牛的成對腰脊分到 4 個熟成期，沒凍的對照只取自熟成 4 週那段腰脊的後段，再多放一週；作者寫的「23–33 N 的嫩度差距」其實是剪力值的範圍（都在『非常嫩』級距），研究者自己把消費者沒分出差別歸因於『分辨能力有限』。（2）F31-003 說兩種低摩擦條件的溝裡都有殘留液體，原文只有暖慢那組（A）有像殘留水的細脊，冷快那組（B）明寫沒有，B 的證據是尾端一整塊結凍碎屑。（3）F31-001「到 0.36 m/s 差距消失」原文是相關性一路減弱到 0.361 m/s，持平是 Fig. 5 趨勢線讀出的；隔熱在摩擦最低點附近對 AISI M2 反而升高（毛細拖曳），答案只講慢速更滑會說過頭；速度範圍是每秒幾毫米到 1.45 公尺，不是作者轉折裡的『幾公分』。（4）F31-007 只凍 48 小時、與 K66-011 同一結論型（較冷較少、相鄰溫度分不開），照 V32 對 K67-005 的先例計 0，並移出 C12-01，避免被聽成『越冷越好』；另原文方法寫每組 9 個生物重複、Table 1 註 n = 6，前後不一。（5）Itagaki 1987 是作者自稱的初步研究、只有定性結果，計 0；而且它的資料被 Scherge 2013 Fig. 7 併進跨研究曲線，兩者不完全獨立。授權：Kietzig 2010、Marmo 2005、Tusima 1977 是 Cambridge 出版社官方文章頁免費閱讀（頁面標 Copyright © International Glaciological Society；頁面資料 hasAccess 為真、isOpenAccess 為假），不是 CC 也不是 OA，只做連結與原創摘要，可當來源但要寫明；Scherge 2013 改讀 Fraunhofer Publica 紀錄頁上的下載連結合規：紀錄頁出自搜尋結果、頁面本身提供檔案連結並標 Open Access，PDF 首頁印 Hindawi 的 CC BY 聲明，與 DOI 指向的期刊版是同一刊本；doi.org→hindawi.com 的 Cloudflare 403 沒有繞過。兩題全文沒有安全、裝備、打蠟、配重建議，也沒有食品安全、解凍或冷凍方法建議。",
+    "V35": "兩題都維持後備：C13-01 9.75 條、7.65 分；C13-02 8.5 條、7.00 分。最重要的改正：（1）F32-001『現生鳥只有塚雉直立埋蛋』被同一核心的 Hogan 2023（轉述阿拉伯半島東方環頸鴴尖端朝下半埋）推翻，並補上綜述對同一批阿根廷蛋『可能埋了就走』的反面讀法；『更早的傷齒龍類』『七千萬年前』原文無。（2）F32-002『集體驚飛多了約七倍』只是摘要措辭，結果段驚飛次數每天 5.7→15.3、時間 72→602 分鐘，改用原文數字。（3）F32-003 的 Truchado-García 2023 是 Grande 自己的延續研究，不是『另一個研究群』，計 0；且最早給藥窗口沒有效果。（4）F32-004 單位是中部大學；『兩個拷貝』改『兩個等位基因』；補原文『2016 年兩組都沒有證明』。（5）F32-005 修補疤的意義說反、『疤幾乎都在右旋』原文無。候選第三轉折（CRISPR）內容成立、但只到綜述層級。沒有飼養或操作建議；在世研究者只當作者。",
+    "V34_method": "先完整讀 REVIEW-BRIEF.md、BRIEF.md、round15（C10-01，V28）與 round17（C12-01，V32）兩題原紀錄、round17.md 與 stw17/V32.json 格式。以 Python 從研究代理工具紀錄（agent-adc94e95275467377.jsonl）抽出 105 次工具呼叫：12 次 WebSearch、1 次 WebFetch（Leiden 典藏，出自第 57 次搜尋結果）、84 次 Bash；把每一個 curl 網址逐字比對它之前的工具結果——core.ac.uk 兩個下載網址、USU 紀錄頁、ORBi 三個紀錄頁、AGRIS、iastatedigitalpress 四個 galley、oradea、HUSCAP、mdpi、Publica 兩個 handle、三個 cambridge.org 文章頁都先逐字出現在較早的 WebSearch 結果；USU viewcontent、三個 Cambridge PDF 取自文章頁 meta citation_pdf_url；Publica bitstream 下載網址出自紀錄頁（<link rel=item type=application/pdf> 與檔案下載連結）；HAL 三個 PDF 取自 HAL 搜尋 API 的 files_s；PMC 全文用 Europe PMC REST（PMCID 先出現在 REST search 結果）；doi.org 只用 DOI。沒有發現猜測或拼湊的網址。以同一公開連結（curl 工具預設標頭）重抓 7 份來源與 2 個 Cambridge 文章頁到 stw18/v34src/，sha256 前 16 碼全部與作者紀錄相同。逐核心開全文逐句核對：Kietzig 2010 讀 pdftotext 全文並抽出 Fig. 5 影像核對 0.361 m/s 的趨勢線；Scherge 2013 讀 f31img 第 1–5 頁影像（與重抓 PDF 雜湊相同）；Marmo 2005、Tusima 1977（OCR）、Itagaki 1987、Rehman 2024（含 Table 2 與方法段）、Li 2022（Table 1 與 2.1）逐段讀。去重：cli.mjs search 前景 timeout 150 回「Index is stale」，依指示未重建，改以 Python 讀 pool.json（4,318 個候選、來源網址、mechanism_key）與 themes.json（627 題，86 題 ready）查作者名、DOI、網址、隔熱／導熱／柱面／基面／盲測／解凍損失等字，並查兩題最終核心是否在 material.verdict==\"ready\" 題的 candidate_ids 與 episode-plan.mjs 的 POOL_SUPPORT。",
+    "V35_method": "完整讀 REVIEW-BRIEF.md、BRIEF.md、round17（C13-01）與 round16（C13-02）的 reserve_records 和 stw17/V33.json 格式。用 Python 從研究代理工具紀錄（agent JSONL，239 行、84 次工具呼叫）抽出所有呼叫與結果，逐一比對每個抓取用的網址與 PMCID 是否先出現在更早的工具結果：CUNY 紀錄頁（第 16 次 WebSearch）、viewcontent PDF（第 19 次紀錄頁 citation_pdf_url）、中研院新聞頁與 rspb DOI（第 27 次 WebSearch）、biorxiv DOI 與 PPR1250643（第 49–50 次 Europe PMC search）、PMC1686199 網頁（第 64 次 WebSearch）；全部 18 個 PMCID 都先出現在 Europe PMC search 或 WebSearch 結果，fullTextXML 是文件記載的 API。唯一不合紀錄的是 PMC3629076：Hogan 2023 參考文獻 39 沒有 DOI，研究代理把『PLoS ONE 8, e61030』寫成 DOI 當 Europe PMC search 的查詢字串（第 40 次）——那是搜尋參數、不是抓取網址，我另以題名＋作者查得同一筆，判不構成拼湊網址，但改正 read_via。我自己只用 Europe PMC search（文件記載的 API）與作者紀錄裡的公開連結重抓：8 份 fullTextXML 雜湊全同（存 v35src/）；PMC1686199 網頁 200、無 reCAPTCHA，HTML 雜湊因動態欄位不同，<article> 文字逐字相同；CUNY 紀錄頁 200，摘要段相同；沒有重試被擋的網站。逐句對作者快取全文核對。去重：cli.mjs search 回『Index is stale』，未重建，改 grep pool.json、batches/*.json、themes.json（627 題、86 題 ready）與 episode-plan.mjs 的 POOL_SUPPORT。計數照 V22–V33：綜述轉述自己團隊的原論文下修、與題目距離遠的旁證 0.25、同研究網絡合併封頂（Grande＝Truchado；Schilthuizen 歸 Davison／Chiba）、與既有核心同方向 0.5 或 0、方法與條件不算事實。"
+  },
+  "research_blocked": [
+    "F31：F31：core.ac.uk/download/77518978.pdf（Martino & Zaritzky 1986，WebSearch 列出）：403，未繞過。",
+    "F31：F31：digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1144&context=foodmicrostructure（同篇，取自 USU 紀錄頁 vol5/iss1/3 的 citation_pdf_url；紀錄頁本身今日 200）：Cloudflare『Just a moment』403，未繞過。",
+    "F31：F31：core.ac.uk/download/491391523.pdf（Zhang & Ertbjerg 相關，WebSearch 列出）：403；core.ac.uk/download/328854342.pdf 沿前兩輪紀錄未重試。",
+    "F31：F31：orbi.uliege.be 2268/295797、2268/295799、2268/298474（Qian 2022 Food Chem、Qian 2022 Int J Refrig、Li 2023 博士論文，WebSearch 列出）：紀錄頁 200，檔案只有『Request a copy』，不申請、未下載。",
+    "F31：F31：mdpi.com/2075-4442/6/1/26（Scherge 等 2018 Lubricants，WebSearch 列出）：403；publica.fraunhofer.de/handle/publica/255204 紀錄頁 200 但沒有檔案連結。",
+    "F31：F31：doi.org/10.5402/2013/703202 → hindawi.com：Cloudflare 403；改讀 Fraunhofer Publica 紀錄頁上的 bitstream 連結（同一刊本，CC BY）。",
+    "F31：F31：zenodo.org/record/1233739（Bluhm 2000，WebSearch 列出）：沿第十五輪判定，第三方批次上傳的出版社刊本、授權不明，未下載。",
+    "F31：F31：orbi 與 HAL：Mulot 等 2019 J Food Eng（hal-02618602，HAL API openAccess 為否、無檔案）只讀到書目。",
+    "F31：F31：素材池 CLI：cli.mjs show 逐一執行時前景超過工具 120 秒被移到背景，已立即停止；之後未再使用 CLI，去重改以 python 讀 pool.json（candidates 的 question／answer_target／mechanism_key、sources 的 url、not_added）並 grep 作者名與網址。",
+    "F31：F31：所有網址都來自 WebSearch 結果、頁面上的連結（含 meta citation_pdf_url、DSpace bitstream 下載連結）、HAL 公開搜尋 API 的 files_s 欄位或 Europe PMC REST（search 與 fullTextXML）；沒有試相鄰檔名、改路徑或拼湊網址。",
+    "V34：cli.mjs search（前景 timeout 150）回「Index is stale」，依指示未重建，改讀 pool.json／themes.json。",
+    "V34：doi.org/10.5402/2013/703202 → hindawi.com：作者紀錄為 Cloudflare 403；本覆核未重試、未繞過，改核 Publica 紀錄頁上的下載連結（同一刊本、CC BY）。",
+    "V34：未另行搜尋或開啟作者 blocked 清單中的 core.ac.uk、USU viewcontent、ORBi Request a copy、mdpi.com 頁面。",
+    "F32：academicworks.cuny.edu/cgi/viewcontent.cgi?article=1281&context=hc_sas_etds（Hays 2018 碩士論文 PDF，紀錄頁 meta citation_pdf_url 列出）：Cloudflare『Just a moment』403，未繞過；紀錄頁本身 200，只讀摘要。",
+    "F32：royalsocietypublishing.org（doi.org/10.1098/rspb.2025.1445 轉址，中研院研究新聞頁上的連結）：403，未繞過；Chou、Tuanmu、Hung 2025 Proc B 未讀。",
+    "F32：www.biorxiv.org（doi.org/10.64898/2026.06.09.731057 轉址，Europe PMC 列為 Free doi）：429，Cloudflare error code 1015，未重試；Lewis 等 2026 預印本只讀到 Europe PMC 摘要。",
+    "F32：Europe PMC REST fullTextXML 回 500：PPR1250643（Lewis 2026 預印本）、PMC1686199（Dietl & Hendricks 2006；改讀 WebSearch 列出的 pmc.ncbi.nlm.nih.gov 頁，200、無驗證頁）。",
+    "F32：Europe PMC 非開放、未找到合法開放版：Koch 等 2017 Mol Ecol、Kuroda 等 2009 Nature、Abe & Kuroda 2019 Development、Utsuno 等 2011 Evolution、Chirat 等 2021 PNAS、Shatkovska 2018 J Morphol、Chou 等 2025 Proc B。",
+    "F32：沿第十七輪紀錄未重試：journals.biologists.com（JEB）403、bioone.org Incapsula、dash.harvard.edu 429、core.ac.uk 403。",
+    "F32：素材池 CLI：cli.mjs show 連跑 17 個 id 超過 120 秒被移到背景，已停止；之後未再用 CLI，去重改以 python 讀 pool.json（candidates 的 question／answer_target／mechanism_key、sources 的 url、not_added）並 grep batches/*.json 比對 PMCID 與關鍵字。",
+    "F32：所有網址都來自 WebSearch 結果、頁面上的連結（含 meta citation_pdf_url、研究新聞頁的 DOI）、論文參考文獻列出的 DOI，或 Europe PMC REST（search 與 fullTextXML，文件記載的 API）；沒有試相鄰檔名、改路徑或拼湊網址。",
+    "V35：沒有重試作者紀錄中被擋的網站（academicworks.cuny.edu PDF Cloudflare 403、royalsocietypublishing.org 403、www.biorxiv.org 429、Europe PMC REST 500 的 PPR1250643 與 PMC1686199、journals.biologists.com、bioone、dash.harvard、core.ac.uk），未繞過。",
+    "V35：PMC1686199 的 PMC 網頁 HTML 每次抓取雜湊不同（動態欄位），改以 <article> 文字比對，相同。",
+    "V35：cli.mjs search 回『Index is stale』，未重建，改讀 pool.json／themes.json。"
+  ],
+  "limits": "估時依事實數紙上估算，不是試讀。本輪四題都留後備，沒有新長題；所有核心仍是選題候選，寫稿前要逐主張查核。本輪沒有改企劃。"
+}

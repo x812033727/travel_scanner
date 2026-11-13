@@ -1,0 +1,544 @@
+{
+  "batch": "batches/wave30-20261112.json",
+  "reviewed_on": "2026-11-12",
+  "method": "四位沒有參與研究的覆核代理（R301：W1；R302：W2；R303：W3；R304：W4）逐題至少重開一個關鍵來源、每個關鍵字跑一次素材池搜尋並 grep 批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位，覆核新讀的來源編入該研究代理的來源序號。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 22
+  },
+  "source_renames": {
+    "R301-S001": "W1-S020",
+    "R301-S002": "W1-S021",
+    "R301-S003": "W1-S022",
+    "R301-S004": "W1-S023",
+    "R302-S001": "W2-S019",
+    "R302-S002": "W2-S020",
+    "R302-S003": "W2-S021",
+    "R302-S004": "W2-S022",
+    "R302-S005": "W2-S023",
+    "R302-S006": "W2-S024",
+    "R302-S007": "W2-S025",
+    "R302-S008": "W2-S026",
+    "R302-S009": "W2-S027",
+    "R302-S010": "W2-S028",
+    "R303-S001": "W3-S024",
+    "R303-S002": "W3-S025",
+    "R303-S003": "W3-S026",
+    "R303-S004": "W3-S027",
+    "R303-S005": "W3-S028",
+    "R304-S001": "W4-S032",
+    "R304-S002": "W4-S033",
+    "R304-S003": "W4-S034",
+    "R304-S004": "W4-S035",
+    "R304-S005": "W4-S036",
+    "R304-S006": "W4-S037",
+    "R304-S007": "W4-S038",
+    "R304-S008": "W4-S039",
+    "R304-S009": "W4-S040"
+  },
+  "verdicts": [
+    {
+      "id": "N3121",
+      "agent": "W1",
+      "reviewer": "R301",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W1-S001 https://files.ncas.org/condon/text/case46.htm（全文逐字）；W1-S005 s3chap02；W1-S002 debunker.com trent1969；W1-S003 debunker.com BSMtrentPJK；新讀 W1-S020（archive.org《Life》1950-06-26 OCR 全文）。嘗試 chroniclingamerica.loc.gov（Cloudflare 機器驗證頁）與 oregonnews.uoregon.edu（TLS 憑證鏈錯誤）找《Telephone Register》，都沒有繞過；ufology.patrickgross.org/htm/trent.htm 只有書目沒有原文",
+      "reopen_result": "Condon：Time『7:45 p.m. PST (1,2); 7:30 p.m. (3)』；Weather『Dull with an overcast at about 5,000 ft.』；三份資料說她『calling to him and running into the house』，一份說『both... saw it at the same time』；『Witness I ran into the house to call her mother-in-law, got no answer』；『found the negatives \"on the floor under a davenport where the Witnesses' children had been playing with them\"』；編者按『Expert photographers declared there has been no tampering with the negatives』；『one could argue that the photos were taken on a dull, sunlit day at, say, 10 a.m.』緊接『But accepting the UFO makes scarcely less sense than arguing that the witnesses staged a hoax at 10 a.m.』；『about 8% further away…about 10%. These tests do not rule out the possibility that the object was a small model suspended from the nearby wire by an unresolved thread』；『r = 1.3 ± 0.4 km』；鋁派盤模型『difficult to defend』；結論『one of the few UFO reports in which all factors investigated…appear to be consistent…It cannot be said that the evidence positively rules out a fabrication』。總論章 Table 2『Clearly either a fabrication or an extraordinary object』與『survived analysis』。Sheaffer：『at 6:00 and 7:00 PM, both show perfectly clear skies』『about 8:20 AM, Pacific Daylight Time』、凡士林三組試拍。Life p. 40：『Somebody told Trent he ought to show the two flying saucer pictures to the editor of the weekly McMinnville Telephone Register』、圖說『NONE OF TRENT'S NEIGHBORS SAW SAUCER, BUT HIS WIFE DID』『20 TO 30 FEET IN DIAMETER』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立，材料厚、兩方都有一手量測。改掉的事實：（1）鉤子把『沙發下的底片』渲染成『孩子拿它當玩具玩完就扔』，而且當期《Life》寫的是『有人叫他拿給編輯看』——照片怎麼到報社本身就有兩種說法，改用《Life》自己的話當鉤子、兩說並列；（2）『可以主張是上午 10 點』被當成分析者的疑點，原文下一句就是他的反駁，補上；（3）補 Condon 記下的『她打電話給婆婆沒人接』，對照後來『公婆都看到』；（4）《Life》『鄰居都沒看到』改為直接讀到的當期圖說；（5）Telephone Register 的字句不只 Klass 一份，Condon 也引了同一段。Sheaffer 的天氣仍是他自己的轉述，scope 已要求旁白標明。1950 年報紙原版面讀不到（機器驗證、憑證錯誤），但關鍵字句有兩處獨立引用，不降成 NEEDS_CHECK。"
+    },
+    {
+      "id": "N3122",
+      "agent": "W1",
+      "reviewer": "R301",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W1-S007 https://files.ncas.org/condon/text/case52.htm（全文逐字）；W1-S005 s3chap02 [[122]]–[[123]]；W1-S008 http://www.nicap.org/reports/Goodbye_Rex_Heflin.pdf（PDF 文字層全文）；新讀 W1-S023 rr0.org Heflin 條目。搜尋獨立訃聞沒有找到可讀的公開頁",
+      "reopen_result": "Condon：『Approx. 12:37 p.m. PDT (Early reports give the time as 11:30 a.m. PDT. This was later corrected to 12:30…) The observer had no watch』；『showed his supervisor only the first three photographs, not the \"smoke ring\"』『Another person states that the witness took him aside to show him the fourth photo, which he had left in the truck…\"three were enough for one day\"』；Life『too controversial』；NORAD 公關『We can find no one in our organization who contacted [the witness]』；空軍記錄『a man in civilian clothing…flashed an identification card』；『On 15 January 1968, the witness insisted that there had been two men』；『all I.D. cards carried photographs at this time』；9 月 25 日信『ACE IN THE HOLE. A fourth picture』；『On 5 June 1967…advised by NICAP to withhold information』，1968『denied that he had fabricated any of the testimony…He did not remember any passing vehicle』；『a 9\" in diameter vaporizing tray…surprising similarity』；Quintanilla『classified it as a photographic hoax』；Poe『We have not classified the photograph as a hoax』；結論『The strongest arguments against the case are the clouds in photo four and the inconsistent early records regarding the \"NORAD\" visitors…The case must remain inconclusive』。Druffel：『On October 19, 2005 I received the sad news』；1993 年『A woman's voice asked, \"Have you checked your mailbox lately?\"…found it empty. About a half-hour later the same unidentified woman called again…a plain 9 by 12-inch manila envelope with no postage or other marks』。RR0：生於 1927、『Il meurt mercredi 5』（2005 年 10 月），引 Druffel 2006 MUFON Journal。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立，Condon 25 頁的時序是很好的骨架。改掉的事實：（1）『第四張過了七週才拿出來』錯：他當天就私下給一位同事看過，9 月 25 日只是第一次寫進 NICAP 書面；（2）NORAD 訪客補上隔天空軍與 NICAP 兩份紀錄都寫一個人；（3）補 1968 年他否認編造；（4）1993 年信封只有支持派 Druffel 一個來源，鉤子原稿沒標出處、又把兩通電話壓成一通，改寫並標『據他朋友的悼文』；『退休』原文沒有，刪；（5）卒年 2005 年有兩處讀到，但 RR0 的 10 月 5 日與悼文的時序對不上，兩處都只追到 Druffel，旁白只說 2005 年。片長重數為 10–12 分鐘：事實多但不少是細節，13 分鐘要靠鋪陳。"
+    },
+    {
+      "id": "N3123",
+      "agent": "W1",
+      "reviewer": "R301",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "新讀 W1-S021（NASA 歷史辦公室〈Mission Transcripts〉頁連出的 gt04-tec.pdf，GT-4 空地與艙內通話逐字稿）；W1-S010 https://files.ncas.org/condon/text/s3chap06.htm §8；W1-S011 CFI 存檔的 Oberg 1978 PDF 全文",
+      "reopen_result": "通話（C＝McDivitt）：29:52:17『I just saw something else up here with me, but just as I was getting close enough to it to take a good picture, the sun got in the way and I lost it.』；29:57:12『It had big arms sticking out of it, it looked like. I only had it for just a minute. I got a couple of pictures with a movie camera and one with the Hasselblad; but I was in free drift…』；48:57:27『I took a picture of it but the sun came across the window right after I saw it.』；48:58:19 CC『the only satellite it could be would be Pegasus』、C『That's what I thought it might be, too.』；49:00:57『I'd say 10 miles or so…That's just a guess』；49:01:44 CC『Pegasus was about 1200 miles away』、C『No, it wasn't quite that close—that far away.』Roach：『One still picture was taken plus some movie exposures on black and white film』『the film was sent from the carrier to land and was not seen again by McDivitt for four days』『the pictures released were definitely not of the object he had seen』、Pegasus B『1/20 minute of arc at a distance of 2000 km』。Oberg：本文『tried to take a few photos which did not turn out. A still from the movie camera (which McDivitt insists he never touched during the sighting)』，圖說『he never even touched the movie camera…\"four best UFO photos ever taken\"』、『the year is wrong—it should be 1965』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立，補上第一手通話後不再偏薄。最重要的改正：原稿把 Oberg 的『他根本沒碰那台電影攝影機』當事實寫進問題與答案，可是任務當時的通話裡 McDivitt 自己說『用電影攝影機拍了幾格、Hasselblad 拍了一張』，Roach 1967 年的摘要也一樣——改成並列的轉折（他說拍了，也說發出去的不是他看到的）。鉤子『四天後他回到地面』錯（四天是降落後才看到膠片），『第一句話是』沒有出處，改寫。補地面當時就提 Pegasus、他回『沒那麼遠』，與 Roach 的計算並列。『四張最好的照片』在 Oberg 圖說裡確實有，保留。"
+    },
+    {
+      "id": "N3124",
+      "agent": "W1",
+      "reviewer": "R301",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W1-S012 https://www.govinfo.gov/content/pkg/CHRG-89hhrg50066O/pdf/CHRG-89hhrg50066O.pdf（重新下載，讀空軍聲明、SAB 報告建議、Hynek 證詞、Ford 的信與 Detroit News 剪報）；W1-S014 patrickgross 的 Hillsdale Daily News 轉錄；新讀 W1-S022（Hynek 1966《Saturday Evening Post》轉錄）。archive.org 上《The UFO Experience》只有借閱本與一份來路不明的上傳，沒有用；1966 年該期雜誌原刊在 archive.org 找不到",
+      "reopen_result": "聽證會紀錄確實讀到：封面『[No. 55]…APRIL 5, 1966』；空軍聲明『photographs released yesterday through the press was taken on March 17 just before sunrise near Milan…rising crescent moon and the planet Venus』『no closer than 500 yards』『The swampy location is most significant』『It has been pointed out to the investigating personnel by other scientists in this area that in swamps the formation of H2S and CH4 from rotting vegetation is common』；SAB『(a) Contracts be negotiated with a few selected universities』（2 月 3 日開會）；Hynek 證詞『my press conference in Detroit the week before last was the largest in the history of the Detroit Press Club』『the Dexter and Hillsdale incidents, although of little scientific significance, have attracted national interest』；Ford 1966-03-28 信『he dismissed all of them as the product of college student pranks or swamp gas or an impression created by the rising crescent moon and the planet Venus』；剪報『Fitzpatrick…observed from about 4 a.m. to 7 a.m., March 16』。Hillsdale Daily News：『Friday morning at 11:05 Mr. Van Horn predicted…will-o-the-wisp St. Elmo's fire or marsh gas…2 - That it was a phenomenon caused by the reflection of some unknown light ray』『approximately 30 minutes』『the 17 girls at the dormitory witnessing a descending lighted object』。SEP：『I was to have a press conference, ready or not』『a phone call from a botanist at the University of Michigan』『a \"possible\" explanation』『cartoons that I greatly enjoy』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立，聽證會紀錄確實讀過，而且比原稿用到的多。改正：（1）『前一晚跟 Ann Arbor 不具名學者談到深夜』原本只有 Skeptoid 轉引；Hynek 1966 年自己寫的是『空軍要他不管準備好沒有就開記者會』『一位密大植物學家的電話』『再問其他密西根科學家』『說的是可能』，兩種寫法並列；空軍聲明本身也寫『這一帶的其他科學家指出』，是一手佐證；（2）『1972 年才後悔、收集漫畫』改用 1966 年的原話；（3）補紀錄裡 Ford 的信把『兩起』寫成『全部』、Hynek 的證詞、2 月 SAB 的大學簽約建議（不講因果，不評價 Ford）；（4）鉤子『打給報社』改為『對報社』，預言補上另兩個選項；（5）『至少兩起』改『兩起，可能』。報紙仍是愛好者網站轉錄，scope 已要求說出處。"
+    },
+    {
+      "id": "N3125",
+      "agent": "W1",
+      "reviewer": "R301",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W1-S016 https://files.ncas.org/condon/text/case48.htm（全文逐字）；W1-S005 s3chap02 [[120]]–[[121]]；W1-S017 與 W1-S018 patrickgross 轉錄全文；W1-S019 Gazeta do Povo 全文（articleBody）；讀了池中 N981 全條。memoria.bn.gov.br 仍回 403，沒有繞過",
+      "reopen_result": "Condon Case 48：『7 May 1952』『one a press photographer and the other a reporter of O Cruzeiro』『got five pictures in about 60 seconds』『Mr. Cleto stated that he had been \"authorized\"…\"the absolute impossibility of a hoax\"』『photographs of a hand-thrown wooden model (later confusing the case because of resulting local rumors…)』『no satisfactory justification is given for the distances』『the information is third-hand』『Menzel and Boyd…flatly label the case as a hoax』『two broken leaves…does not account for the additional clumps of foliage』。總論章『the disk in the fourth photograph (Plate 30) clearly illuminated from the left…a palm tree…illuminated from the right』。DNA 1952-05-10 p. 2：『There is not the slightest doubt about the authenticity of the photos published by the reporter from \"O Cruzeiro\"』、三個特徵、火星武器、『will be sent today』。Bourgogne Républicaine 1952-06-10：開頭『The \"Diario Noite\" published this morning, in a special edition, two snapshots…taken yesterday afternoon』，後文仍是『The five photos, which are extremely clear』。Gazeta：Fantástico 讀了『documentos antigos…no Arquivo Nacional em Brasília』，接著『O caso número um do Brasil trata de cinco fotos…Ed Kéffel…Circularam em uma edição extra』，Covo『Para ter esse tipo de iluminação é preciso estar dentro dágua』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提站得住（Condon 直接讀到），但材料只夠一章。改正：（1）原稿說外電『可以整段搬到另一張照片上』，6 月那篇開頭說兩張、後文仍說五張，比較像同一則電文晚一個月換開頭再登，改寫問題、鉤子與 payoff；（2）2010 年報導沒說 Barra 的檔案在國家檔案館，改寫；（3）補 Hartmann 自承資料三手。判定：當 N981 前面的一章（4–5 分鐘），合為一集見 theme_suggestions；不轉 Shorts（光影矛盾要看照片才懂，原照不能放）；若 N981 要單獨成集，本題放回待配章節。"
+    },
+    {
+      "id": "N3141",
+      "agent": "W2",
+      "reviewer": "R302",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W2-S001 https://zh.wikisource.org/wiki/%E5%BE%8C%E6%BC%A2%E6%9B%B8/%E5%8D%B781；W2-S002 喻世明言第16卷；W2-S003 劉苑如 2008 PDF（第一次連線被重置，重試成功）；新讀 W2-S019 曾婧芳 2013。嘗試尋找秋成原文：搜尋未得青空文庫、ja.wikisource 或 NDL 可讀全文；toyo.repo.nii.ac.jp、soar-ir.repo.nii.ac.jp 系統維護；ir.lib.hiroshima-u.ac.jp 舊網址 404（已移轉），都沒有繞過；大阪大學 tekusuto_006.pdf 只有幾行 OCR",
+      "reopen_result": "范式傳：『後二年當還，將過拜尊親』『二年之別，千里結言，爾何相信之審邪』『至其日，巨卿果到，升堂拜飲，盡歡而別』『山陽范巨卿，所謂死友也』『式忽夢見元伯玄冕垂纓屣履』『柩不肯進』『素車白馬，號哭而來』，後段陳平子『可以託死』。話本：『方知是重陽佳節』『來年今日』『當設雞黍以待』『溺身商賈中』『近被蠅利所牽，忘其日期』『今早鄰右送茱萸英酒至』『人不能行千里，魂能日行千里』『魂駕陰風，特來赴雞黍之約』『囚人夢赦，渴人夢漿』『非夢也』『掣佩刀自刎而死』。劉苑如：『明和五年（1768）到正式出版的永安五年（1776）』；謝承佚文 470『范式與張劭剋秋為期，守信赴約事』、472 陳平子；『故事標題的明確化始於元、宮天挺』『全部都是「九月十五」』『並不易遽爾論斷，但……應是雜劇為先』；對照表『為堂兄丹治監禁』『故斬之而逃』『尼子感其兄弟情深意重，不予追究』；『將五處「雞黍」的關鍵字全部刪改』。曾婧芳：轉引新註本『吾父母に離れまいらせていとも久し。賢弟が老母は即吾母なれば』、左門『生は浮きたる漚のごとく』，引中田妙葉『期日を忘れることは人格上信頼を欠くとみて、宗右衛門を幽閉する』。",
+      "changed_fields": [
+        "axis",
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立，三個轉折都有一手文字與兩篇學者論文支持。改掉：鉤子『日本最有名的鬼故事之一』與『一千六百年前』是研究者自己的評價與換算，刪；謝承佚文裡范張赴約本來就在（另有陳平子一條），W2 的轉述不精確，照論文原文改；畫面『老母殺雞』與兩份原文都不合（史書是母親醞酒，話本是張劭殺雞）。秋成日文原文仍只有學者轉引，scope 已要求寫稿前讀刊本才直接引日文；中文轉述有兩篇學者論文互證，不降成 NEEDS_CHECK。軸別改 F。"
+    },
+    {
+      "id": "N3142",
+      "agent": "W2",
+      "reviewer": "R302",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W2-S005 https://zh.wikisource.org/wiki/%E5%A4%AA%E5%B9%B3%E5%BB%A3%E8%A8%98/%E5%8D%B7%E7%AC%AC358；W2-S006 迷青瑣倩女離魂；新讀 W2-S024 維基文庫《幽明錄》、W2-S025 鄭光祖作者頁。找張鎰考證：soar-ir（維護）、proxy.scu.edu.tw（TLS 錯誤），未繞過",
+      "reopen_result": "卷目『神魂一』首條龐阿，末註『出《幽明錄》』：『中路，遂化為煙氣而滅』『見女與母共作，何得在此』『向所縛者，奮然滅焉』『自爾彷彿，即夢詣阿』『既而女誓心不嫁。經年，阿妻忽得邪病，醫藥無徵，阿乃授幣石氏女為妻』。王宙條：『天授三年，清河張鎰因官家於衡州』『後有賓僚之選者求之，鎰許焉』『徒行跣足而至』『凡五年，生兩子』『倩娘病在閨中數年，何其詭說也』『翕然而合為一體，其衣裳皆重』『其家以事不正，秘之』『後四十年間，夫妻皆喪，二男並孝廉擢第，至丞尉』『玄祐少常聞此說，而多異同，或謂其虛』。雜劇：『曾與王同知家指腹成親』『俺家三輩兒不招白衣秀士』〔魂旦〕『我背著母親，一徑的趕將你來』〔魂旦附正旦體科〕【水仙子】『便一似生個身外身……母親，則這是倩女離魂』，夫人『天下有如此異事』『五花官誥』。《幽明錄》頁：『作者：劉義慶　南北朝』。",
+      "changed_fields": [
+        "axis",
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立，引文全部對得上。改掉一個與原文矛盾的轉折：W2 寫最早的龐阿『沒有愛情的圓滿』、payoff『越早越不浪漫』，原文明寫龐阿最後娶了石女，改成『每一版阻擋的人不同』；『五世紀』可讀頁面上沒有，改成南北朝劉義慶。張鎰年代矛盾仍無學者考證可讀，照舊不用。素材偏薄，下修為 8–9 分鐘。鉤子『五年來一直病在床上』原文是『病在閨中數年』，改成『這幾年』。軸別改 F。"
+    },
+    {
+      "id": "N3143",
+      "agent": "W2",
+      "reviewer": "R302",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W2-S007 https://zh.wikisource.org/wiki/%E6%BC%A2%E6%9B%B8/%E5%8D%B7071；W2-S004；W2-S009；W2-S008；新讀 W2-S020 李惠綿 2006（臺大文史哲學報 64）、W2-S028《論衡》目錄頁。libap.nhu.edu.tw 論文 PDF 連線被重置，未繞過",
+      "reopen_result": "《漢書》：『姑自經死，姑女告吏：「婦殺我母」』『孝婦自誣服』『于公以為此婦養姑十餘年，以孝聞，必不殺也』『乃抱其具獄，哭於府上，因辭疾去』『郡中枯旱三年』『卜筮其故』『天立大雨，歲孰』。《搜神記》：『拷掠毒治』『長老傳云：孝婦名周青……青若枉死，血當逆流』『其血青黃緣旛竹而上，极標，又緣旛而下云』。《論衡》：『傳書言：鄒衍無罪，見拘於燕，當夏五月，仰天而嘆，天為隕霜』『言天為之雨霜，虛也』『嘆時霜適自下』；目錄頁『王充　東漢』。劇本：『丈二白練，掛在旗槍上』『天降三尺瑞雪』『楚州亢旱三年』『豈不聞飛霜六月因鄒衍』『也只為東海曾經孝婦冤』『門神戶尉不放我進去』『後于公治獄，彷彿見孝婦抱卷哭於廳前，于公將文卷改正』。李惠綿：《古名家》《元曲選》《酹江集》『嚴格說來都不是關漢卿原著的刊本，都是經過編選者刪改更動』『《元曲選》……賓白添改尤多，不過重要關目情節大同小異』；《元曲選》序作於萬曆 43、44 年；『取材自《漢書．于定國傳》和東晉干寶《搜神記》』。",
+      "changed_fields": [
+        "axis",
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立，四份一手文字都對得上。最重要的改正：W2 把維基文庫的《元曲選》本當成關漢卿原文，畫面還寫『元刊雜劇』；學者說現存三本都經明人刪改、《元曲選》賓白改得最多，而轉折四（于公變成鬼魂抱卷）正是賓白，所以改成『今天通行的劇本這樣寫』，不歸給關漢卿。另：『一世紀』改成頁面上有的『東漢』；鄒衍是霜、竇娥是雪，旁白要分清。行刑題材的畫面界線照 W2 的寫法可守住，再補周青血旛不畫血。軸別改 F。"
+    },
+    {
+      "id": "N3144",
+      "agent": "W2",
+      "reviewer": "R302",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W2-S010 https://de.wikisource.org/wiki/Lenore_(B%C3%BCrger)；W2-S011；W2-S012；W2-S013；新讀 W2-S021（同站連入的 1817 年版 Leonore）、W2-S022（搜尋結果連到的 archive.org Birlinger/Crecelius 1876 新版 Wunderhorn 第二卷 OCR）、W2-S026、W2-S027。Wunderhorn 1808 原刊掃描與 Bürger 致 Boie 信本輪沒找到可讀本",
+      "reopen_result": "1778 版：『Er war mit König Friedrichs Macht / Gezogen in die Prager Schlacht』；第 134 行『Wir und die Todten reiten schnell.』，第 158、190、214 行『Hurrah! die Todten reiten schnell!』，第 223 行『Die Todten reiten schnelle!』；1817 版同五處。Dracula：『One of my companions whispered to another the line from Burger’s “Lenore”:-- “Denn die Todten reiten schnell”-- (“For the dead travel fast.”)』。Steig：頁 85『von Frau Auguste Pattberg eingeliefert』；頁 86 Hippel『Der Mond scheint hell, Der Tod reit’t schnell!』、標題與附記『Bürger hörte dieses Lied Nachts in einem Nebenzimmer』是編者加的；頁 87 Monthly Magazine 1796、1723 年集子『bis heute nie ans Licht getreten』、Wieland『altes niedersächsisches Volkslied』；頁 88『in der Göttingischen Poetischen Blumenlese auf das Jahr 1774 gedruckten Leonore』、Althof 1802『im Mondscheine ein Bauernmädchen singen hören』、『Was sie aber Thatsächliches anzuführen hatten, wich von einander ab』；頁 89 Brentano『mit eigener Hand auf dem Originalmanuskript』改第一（與第九）段；頁 89–90 Heinrich Voss 1808 年 6 月致 Goethe『Frau von Plattberg in Neckargemünd』；頁 66『Am 4. Juli 1850』。1876 新版頁 263：附記照錄，Erk：『Dieses Lied hat Bürger gewiß nicht singen hören』，原稿在 Arnim 遺稿，『Es stehen die Sternlein am Himmel』。Gutenberg：『Stoker, Bram, 1847-1912』；Brentano『† 28. Juli 1842』；Arnim『† 21. Januar 1831』。",
+      "changed_fields": [
+        "axis",
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立而且有趣，但改掉四個事實錯誤：（1）原詩不是『兩處叠句』，是五處，1817 年版也一樣；（2）『Bürger 生前講過三種說法』其實是三位朋友各自轉述；（3）手稿與印本不同不是 1896 年才發現，1876 年新版已引 Erk 指出；Steig 的貢獻是查出寄稿人 Pattberg 與 Brentano 的改稿筆跡；（4）Brentano 改了兩段不是一行。補齊五位人物卒年（都在 1956 年前，可入畫）。關鍵事實仍以 Steig 為主，但已有 1876 年的獨立旁證，維持可收。軸別改 F。"
+    },
+    {
+      "id": "N3145",
+      "agent": "W2",
+      "reviewer": "R302",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W2-S015 https://zh.wikisource.org/wiki/%E7%89%A1%E4%B8%B9%E4%BA%AD；W2-S016；W2-S017；W2-S018；新讀 W2-S023 尤麗雯 2014（清華中文學報 12）、W2-S025 湯顯祖作者頁",
+      "reopen_result": "題詞：『傳杜太守事者，彷彿晉武都守李仲文、廣州守馮孝將兒女事。予稍為更而演之。至於杜守收拷柳生，亦如漢睢陽王收考談生也』，署『萬暦戊戌秋淸遠道人題』。徐玄方女：『為鬼所枉殺。案生錄，當八十餘』『牀前地頭髮，正與地平』『以丹雄雞一隻，黍飯一盤，清酒一升』『掘棺出；開視，女身體貌全如故』『二百日中，持杖起行』『生二兒一女』。李仲文女：『見此女一隻履在子長牀下，取之啼泣，呼言發塚』『女體已生肉，姿顏如故，右腳有履，左腳無也』『我比得生。今為所發，自爾之後，遂死，肉爛，不得生矣』。談生：『勿以火照我也。三年之後，方可照』『腰上已生肉如人，腰下但有枯骨』『是我女袍，此必發墓。乃取拷之』『以為主婿』（出《列異傳》）。〈回生〉『(衆蹲向鬼門，開棺介)』『幽姿如故』；〈硬拷〉『呀，見贓了。這是我女孩兒春容』『原來劫墳賊便是你』『開棺劫財者斬』。尤麗雯註 53：徐朔方、孫楷第認為藍本是話本〈杜麗娘慕色還魂〉即《寶文堂書目》的《杜麗娘記》；劉輝認為話本晚於《牡丹亭》；向志柱據萬曆二十二年刻本《粺家粹編》主張文言《杜麗娘記》；伏滌修等反駁。湯顯祖作者頁『1550年—1616年』。",
+      "changed_fields": [
+        "axis",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立，引文全部對得上，性與遺體的句子都可以不念而不傷主線。改：『他讓杜麗娘走了成功那條路』是研究者推論，標明；新讀到的學者論文補上『傳杜太守事者』的藍本爭議，當第四個轉折（只並列學者主張，不引沒讀到的話本情節）；湯顯祖卒年 1616 已確認，作者可入畫。軸別改 F。"
+    },
+    {
+      "id": "N3161",
+      "agent": "W3",
+      "reviewer": "R303",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W3-S001 https://archive.org/details/bub_gb_eiHRNoN1q88C（經條目頁的全文連結讀 OCR，原書頁 7–18）；W3-S002（Martineau 1853，序與頁 187–188）；W3-S003（Zenodo PDF 全文）；W3-S004（ADS PDF，頁 90–91 與第 22 節頁 100）；W3-S005（AIP 全頁）",
+      "reopen_result": "頁 8：『Toute recherche qui n'est point finalement réductible à de simples observations visuelles nous est donc nécessairement interdite au sujet des astres…nous ne saurions jamais étudier par aucun moyen leur composition chimique, ou leur structure minéralogique, et, à plus forte raison, la nature des corps organisés qui vivent à leur surface』。頁 9–10：『Il serait certainement téméraire…car, en s'engageant dans le détail, on les placerait presque inévitablement ou trop près ou trop loin』，接著『il n'en est pas moins indispensable, ce me semble, de poser à cet égard des limites générales』。頁 10–11 大氣與金星、頁 11–12『tôt ou tard accessible』『suspendre notre jugement』、頁 12–13 溫度與 1680 彗星、頁 15『ces distances ne tarderont pas à être évaluées』、頁 17『suivant une grande vraisemblance…sont effectivement habitées』。Martineau：序署 1853；『Of all objects, the planets are those…we can never know anything of their chemical or mineralogical structure』，但前一句『only one of the three perceives the stars』、後一句『with regard to the stars』；téméraire 段與金星例都沒有。Kirchhoff：『Aus d. Monatsbericht…October 1859』、『der Atmosphäre der Sonne und vielleicht auch der helleren Fixsterne』、D 線與鈉、鋰。Hearnshaw 第 22 節：『a significant blunder…an excusable error』『no observed parallax was published until 1838』『he did not conceive of making measurements at a distance using the message in the light』。AIP：『14 years later』，英譯漏了 distances。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，一手原書可讀。改掉的事實：（1）téméraire 段的後半句是『但仍必須劃出大致界線』，原稿只引前半，把它做成『他警告別劃，然後自己劃了』的反諷，不忠於原文；（2）有人居住在頁 17，不是『同一頁』；（3）Martineau 只有那一句寫 planets，前後仍寫 stars，『最通行』無出處；（4）『光譜正是視覺觀察』是研究者推論，改用 Hearnshaw 第 22 節原話；（5）補上 1838 年第一個視差（Hearnshaw），『說對了』一拍有了年份。8–10 分鐘成立。"
+    },
+    {
+      "id": "N3162",
+      "agent": "W3",
+      "reviewer": "R303",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W3-S006 https://archive.org/details/historyofsteamna00kennuoft（OCR 第十二章頁 67–73）；W3-S007 https://archive.org/details/steamenginesteam00larduoft（序、§199–§212）；另搜尋 1835 年原報：搜尋結果只指向 Kennedy 與一份 dippam.ac.uk 的 Cork 刊物（連線被重設、503，未讀）",
+      "reopen_result": "Kennedy 頁 67–70：『It appears from the following extract from the “Liverpool Albion” of the 14th December, 1835…The extract is valuable also as containing Dr. Lardner's famous dictum』；引文以『Dr. Lardner then proceeded to observe』開頭——沒有演講地點與日期；『one of the grandest projects which had ever occupied the human mind』、Valentia、1,900 哩、亞速群島、『perfectly chimerical…to the moon』、400 噸煤、15 天、170 哩、『2,550 miles; but even that could not be reckoned upon』；頁 70『In justice to the memory of Dr. Lardner…pp. 294-309』。頁 71–73：Sirius 與 Great Western 4 月 23 日同日抵達；Great Western 去程『203 knots』、655 噸，回程 213 浬、392 噸。Lardner 1851：序『refutation of those absurd reports…imputing to the author opinions as to the impossibility of the Atlantic voyage』；§201『a physical impossibility!』；§203–204 Bristol 1837 與《Times》8 月 27 日；§204 結尾把被指控的場合定在 Bristol 那場；§208『one great continuous steam highway between the capitals of the New and the Old World』；§209 八艘船；§210 Cunard 6 萬→10 萬→14.5 萬鎊；§212『This prediction, like the others, has been fulfilled to the letter』指回程票價。全書檢索 moon、Valentia、chimerical 都沒有。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立，兩本書互相對得上。改掉的事實：（1）轉錄沒有寫演講在哪裡、哪天，『利物浦的演說』『同一場演說』是研究者補的，改成『報導』；另有一份未讀到的 Cork 刊物把同句放在 1836 年，列為待查；（2）『fulfilled to the letter』被接到補貼上，原書是講票價；（3）655 噸對 400 噸的比較與『兩邊都對了一半』是研究者推論，刪；（4）203 是浬。關鍵句仍只有 1903 年轉錄，scope 已要求旁白標轉錄並在寫稿前再找原報，所以不降成 NEEDS_CHECK。"
+    },
+    {
+      "id": "N3163",
+      "agent": "W3",
+      "reviewer": "R303",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W3-S009 https://patrickmn.com/space/in-1920-the-new-york-times-didnt-understand-vacuums/（全文轉錄）；W3-S010（1969 更正轉錄）；W3-S012（textfiles.com 刪節版）；W3-S008（打字稿 OCR 稿頁 66–69）；新讀 W3-S024（SMC 第 71 卷目次）。找第二份全文：Motherboard（連不上）、spacedaily（只有摘述）、BHL（機器驗證，未繞過）",
+      "reopen_result": "轉錄：標題『A Severe Strain on Credulity』；『is a practicable, and therefore promising device』；『neither accelerated nor maintained by the explosion of the charges』；『That Professor Goddard…—to say that would be absurd. Of course he only seems to lack the knowledge ladled out daily in high schools. But there are such things as intentional mistakes or oversights…』，Verne 一段結尾『its like is not so easily explained when made by a savant who isn't writing a novel of adventure』；最後『it may reach the moon』『that will be believed when it is done』。1969：全句含『to say that would be absurd』與『The Times regrets the error』。textfiles：沒有『That』與『to say that would be absurd』。打字稿：『The only reliable procedure…dark surface of the moon when in conjunction』、3–10 cm 汞柱、2.24 哩、0.0029 克（OCR 讀成 0.00B9）可見、0.015 克 strikingly visible、2.67／15.82 磅、『8 or 10 tons』、『not of obvious scientific importance』；摘要『does not depend upon the presence of air for propulsion』。SMC 71 目次：『December, 1919. 69 pp., 10 pls. (Publ. no. 2540.)』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立。最大的問題是詮釋：研究稿把被剪掉的半句講成『社論只說他看起來不懂』，鉤子更暗示原文替他說話；轉錄下一段明說學者犯這種錯『not so easily explained』，那半句是反話的鋪陳，已改。補上印本出版月份與編號、原稿摘要那句。開頭與結尾仍只有一份網誌轉錄（關鍵半句有 1969 年報社更正佐證），scope 要求寫稿前對原版面。"
+    },
+    {
+      "id": "N3164",
+      "agent": "W3",
+      "reviewer": "R303",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W3-S014 https://archive.org/details/CAT31113690007（OCR 首頁到頁 6 與簽名）；W3-S015 Sass PDF 全文；W3-S016 Quote Investigator 全文與註；另在 archive.org 檢索 Punch 1899 年年曆（只找到含 1898 年年曆的第 114–115 卷合訂本）",
+      "reopen_result": "1843 年報：『28th Congress, 1st Session. Doc. No. 177』『February 16, 1844. Referred to the Committee on Patents』『Patent Office, January 31, 1844』『Five hundred and thirty-one patents have been issued during the year 1843』；『the papers…marked E and F, are full of encouragement and gratification to the American people. / The advancement of the arts from year to year taxes our credulity, and seems to presage the arrival of that period when human improvement must end.』下一段：保存審查官經驗、薪水『an inadequate compensation』；署名 H. L. Ellsworth。Sass：Jeffery 1940、1845 辭職信、1979 Saturday Review（與 Napoleon／Fulton 並排）、1985 秋 TRW 廣告（六個人，含 Cleveland、Millikan）、Morgan 與 Langford『the average dim-witted official…the director of the U.S. Patent Office』且同書收了走樣的 Ellsworth 句、Duell 1899 年報引 McKinley 與『Fifty-sixth Congress』、435→25,527、《The Experts Speak》註『p. 64』、問 Navasky 無回音。QI：『Henry L. Ellsworth was the first Commissioner』、Punch 註為『Punch's Almanack For 1899, Section: December, The Coming Century』、Duell『Commissioner…between 1898 and 1901』、1901 年的話出自 1901-12-28《Dayton Daily News》Waldon Fawcett〈Great Prizes For Inventors〉、結論 apocryphal。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "P31 裁定：P31 是名言清單而被 drop，重新收錄條件是『挑一句有完整一手追查鏈的名言另提』；本題只追一句話，主線是一手年報加兩位查證者的流傳鏈，符合條件，不是 P31 復活——前提是 scope 已禁止帶出其他名言（含 Sass 文中的 Napoleon 與 TRW 廣告其他人）。改掉的：鉤子原押在只經 QI 轉錄的 Punch 小弟，改用 Sass 讀過的 Duell 年報；『首任』補 QI 出處；Duell 1901 年的話是記者文章引的；補 531 件、交付日期、Morgan 與 Langford 同書也收了 Ellsworth 句；刪『四十年黑鍋』換算。Punch 原件仍未讀到，scope 要求旁白標轉錄。"
+    },
+    {
+      "id": "N3165",
+      "agent": "W3",
+      "reviewer": "R303",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W3-S017 https://archive.org/details/sim_independent_1903-10-22_55_2864（OCR 全文）；W3-S019 https://archive.org/details/sidelightsonastr00newcrich（序與第 XXI 章全文），兩版逐段比對；新讀 W3-S025（NPS 摺頁）、W3-S026、W3-S027",
+      "reopen_result": "1903：『which seems to have come to an abortive issue last week』；『May not our mechanicians…never cope…? / I do not claim that this is a necessary conclusion from any past experience. But I do think that success must await progress of a different kind from that of invention』；『Quite likely the twentieth century is destined to see…』；『Were there any hopeful possibility of making any flying machine whatever』；『Once he stops he falls a dead mass』；『This is quite true』；兩百呎飛船。1906：序『mainly from The New York Independent, but in part from McClure's Magazine』『WASHINGTON, June, 1906』；『abortive issue for the time』；化圓為方的反問之後直接接『The fact is that invention and discovery…』——『I do not claim』整句不見（全書檢索無）；『Still, considering mere possibilities, it is not impossible that the twentieth century may be destined to make known natural forces…』；『two sets of sails whirling in opposite directions…Were there any possibility of making a flying-machine』；『apply only to the flying-machine properly so-called, and not to the dirigible balloon or airship』；結語『As an almost universal rule…as complete as it is possible for the demonstration of any physical fact to be…then we may have a flying-machine』；章內提到 Maxim『seemingly successful experiment』，無 Wright。NPS：1903-12-17、四次、第一次 12 秒、最後 852 呎 59 秒。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立，三個版本都在可讀掃描上，研究者說的改動都在頁面上。改掉與補上的：（1）研究稿漏了 1906 年刪掉『I do not claim that this is a necessary conclusion』，這是『越改越確定』最直接的證據，已補；（2）『流傳版本把 1906 的話當 1903』沒有出處，刪；（3）萊特兄弟 12 月 17 日改用 NPS 摺頁為來源，『不到兩個月』有流傳版本的出處，可用在題目；（4）補萊特兄弟、Bell 卒年（都在 1956 年前）。"
+    },
+    {
+      "id": "N3181",
+      "agent": "W4",
+      "reviewer": "R304",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W4-S001 https://zh.wikisource.org/wiki/論衡/16（curl 直讀，逐字核對整段）；W4-S002 〈七發〉；W4-S003 《六臣註文選》卷三十四（四部叢刊本）；W4-S004 Gutenberg #25131 純文字；W4-S005 《補筆談》",
+      "reopen_result": "《論衡》：『傳書言：吳王夫差殺伍子胥，煮之於鑊，乃以鴟夷橐投之於江。子胥恚恨，驅水為濤，以溺殺人』『屈原懷恨，自投湘江，湘江不為濤；申徒狄蹈河而死，河水不為濤』『在鑊中之時，其神安居？』『浙江、山陰江、上虞江皆有濤，三江有濤，豈分橐中之體，散置三江中乎？』『今吳國已滅，夫差無類』『怨恚吳王、發怒越江，違失道理，無神之驗也』『廣陵曲江有濤，文人賦之……吳殺其身，為濤廣陵，子胥之神，竟無知也』『濤之起也，隨月盛衰，小大滿損不齊同。如子胥為濤，子胥之怒，以月為節也』全部逐字相符。〈七發〉：『將以八月之望，與諸侯遠方交游兄弟，並往觀濤乎廣陵之曲江』『如素車白馬帷蓋之張』『遇者死，當者壞』『弭節伍子之山，通厲骨母之場。凌赤岸，篲扶桑』『此天下怪異詭觀也』『僕病，未能也』『涊然汗出，霍然病已』相符。李善注：『廣陵之曲江』下『善曰漢書廣陵國屬吳也』；『赤岸』下『善曰赤岸蓋地名也……山謙之南徐州記曰京江禹貢北江春秋分朔輙有大濤至江乘此激赤岸更迅猛然並以赤岸在廣陵而此文勢似在遠方非廣陵也』——存疑對象是赤岸。《吳越春秋》：『遂伏劍而死．吳王乃取子胥屍，盛以鴟夷之器，投之於江中』『子胥因隨流揚波，依潮來往，蕩激崩岸』『故前潮水潘候者，伍子胥也，後重水者，大夫種也』。《補筆談》：『盧肇論海潮，以謂「日出沒所激而成」，此極無理……每至月正臨子、午，則潮生，候之萬萬無差』，頁上沒寫盧肇的朝代。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "引文全數對得上，但研究稿把李善對『赤岸』的存疑擴大成『〈七發〉觀濤地點在注家筆下已不確定』，前提轉折三因此改寫；加上《吳越春秋》『伏劍』與『傳書』『煮之於鑊』的死法差異作為新轉折；刪去來源頁沒有的年代換算；廣陵曲江的比較標『本稿並排』。素材夠 8–10 分鐘。去重：錢塘只命中 N903（翠翹投水，無關），伍子胥只命中 N2745（端午，不同核心）；搜尋『錢塘潮』『伍子胥』與原來如此事務所池都無同題。"
+    },
+    {
+      "id": "N3182",
+      "agent": "W4",
+      "reviewer": "R304",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W4-S006 https://jimclifford.ca/philosophical-transactions-ocr-1665-1869/articles/jstor-101905/（OCR 全文）；W4-S007 jstor-101037；W4-S008 jstor-101173；W4-S009 Acta Carsologica 33/2 PDF 全文；新讀 W4-S032、W4-S033（Valvasor 生卒）",
+      "reopen_result": "Valvasor 1687：標題『by Mr. John Weichard Valvasor, R. Soc. S.』（檔案頁元資料標 Year 1686、Vol. 16）；『so as not to observe any certain time……as in the Year 1685, it was dry in January……this present Year 1687, it has been thrice empty』；『a Horse can hardly keep pace with it』；Seedorff 執事敲鐘、全村『stark naked』捕魚；捕完魚後施洗約翰小教堂敲鐘、『Carthusian Monks』勸阻無效；『Anno 1685, I heard with my own Ears』；『October 1685』帶『two old experienced Fishermen』騎馬過湖、翻船、Sekadulze 噴水『three or four Fathoms, as if it were forced by a Fire-Engine』與『several blind Ducks』；剖鴨：『in others green stuff like Grass or Herbs……I never found any green thing growing in any of our Subterraneous Grottoes』；盲鴨『generated in the Lake, under the Mountain Javornic』『in 14 days time they get Feathers』；理論段『one or more Lakes under the Mountain Jarnornik……whose surface is higher』。Brown 1669：『so much spoken of, and written on by so few』『in the Month of June it sinketh under ground』『springs out of the ground to the height of a pike』『upon restoring of the waters all have liberty to Fish』。1674 問答第 7 條：『I affirm, not that they take the Fish when the water ascends, but when it descends』。Shaw：1687 年 12 月宣讀；『basically correct』；1689 年『at least six siphons』『more complex and less correct』；『He can never have examined the original papers he refers to』指的是 Reisp；Južnič 2002『article that won his election into the Royal Society』。W4-S032：1641-05-20 至 1693-09-19，1687 年入皇家學會；W4-S033：1641–1693，1687 年入會。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.payoff",
+        "editorial.visual",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，素材夠 8–10 分鐘。改正：Shaw 批評『從沒看過原文』的是 Reisp 一人，不是泛指；『馬都追不上』『署名後有 R. Soc. S.』『胃裡有綠草』都改回原文；新增 Brown 1674 年的回答與他 1669 年原文相反的轉折；生卒與入會年改由可讀頁面支撐。裸身捕魚：旁白不提、畫面不畫。去重：Valvasor 只命中 wave22 not_added 的 Jure Grando（同書不同題）；原來如此事務所有『地下水是不是都藏在地下的大湖裡』，一般水文題，不同核心。"
+    },
+    {
+      "id": "N3183",
+      "agent": "W4",
+      "reviewer": "R304",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W4-S010 https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Strabo/6B*.html（6.2.4 全文）；W4-S011 Perseus Pausanias 5.7.3（curl 直讀；WebFetch 只取到導覽）；W4-S013 Gutenberg #76392 第 3 卷第 26 章、第 6 卷第 8 章",
+      "reopen_result": "Strabo：『People tell the mythical story that the river Arethusa is the Alpheius』『a certain cup, they think, was thrown out into the river at Olympia and was discharged into the fountain』『the mouth of the river empties into the sea in full view』『the thing is absolutely impossible. For the water of Arethusa bears testimony against it, since it is potable』『the citing of the story of the cup only magnifies the falsehood』『many rivers……flow under­ground, but not for such a distance』。Pausanias 5.7.3：首句殘缺（『This account of Alpheius ... to Ortygia.』），譯者註 1：『This sentence, obviously corrupt, seems to show a lacuna……The meaning probably would be to the effect that the story was an invention』；接著『I cannot disbelieve, as I know that the god at Delphi confirms the story』與神諭『where the mouth of Alpheius bubbles / Mingling with the springs of broad Arethusa』；『because the water of the Alpheius mingles with the Arethusa, I am convinced that the legend arose of the river's love-affair』。Seneca 3.26：『Thence comes the belief that the Alpheus makes its way right from Achaia to Sicily……the dung of the victims……turns up in quantity away in Sicily』，並說 Lucilius 與維吉爾都寫過；6.8：『see the Alpheus……sink in Achaia and, having crossed beneath the sea, pour forth in Sicily the pleasant fountain Arethuse』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。改正：Pausanias『不信愛情故事』那句原文殘缺，是英譯者的推測，必須標明；刪去來源頁沒有的『一百多年後』『西元前後』；Seneca 兩處都照單全收，不是『兩頭用』。只有 5–6 分鐘，與 N3187 配成一集（見 theme_suggestions）。去重：Alpheus、Arethusa、Ortygia 在 pool.json、批次檔、W1–W3 與原來如此事務所都沒有。"
+    },
+    {
+      "id": "N3184",
+      "agent": "W4",
+      "reviewer": "R304",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W4-S015 Gutenberg #18571（導言版本說明與 1492-09-17～10-03、1493-01、02-02 各條逐字）；W4-S014 The Latin Library Ora Maritima 第 90–130、370–410 行；W4-S016 Gutenberg #2488 第 12945–12995 行；W4-S017 Gutenberg #9906 第 2150–2210 行；W4-S018 Gutenberg #75759 第 19 章；新讀 W4-S034（Fernando 傳記，Kerr 第 3 卷）、W4-S040",
+      "reopen_result": "日誌導言：今存敘事是 Las Casas 的節錄，Navarrete 1825 刊出，『The translation given here is that of Sir Clements R. Markham with some slight revisions』。9/17『They saw much very fine grass and herbs from rocks, which came from the west. They, therefore, considered that they were near land』；9/21『so much weed that the sea appeared to be covered with it』；9/22『my people were much excited at the thought that in these seas no wind ever blew in the direction of Spain』；9/23『the wind would never blow so that they could return to Spain』；2/2『if they had not known about it before, they would have been fearful of sunken rocks』。Firestone：『for three weeks he traversed it』『His journal speaks little of the apprehensions of the sailors, but his son Fernando recites these--their fears that the weeds……would halt them altogether』；Himilco『On his voyage to Britain』。W4-S034 Fernando（Churchill 1704 譯、Kerr 修訂）9/21：『the weeds were so thick as in some measure to impede the progress of the vessels, and to occasion terror lest what is fabulously reported of St Amaro, in the frozen sea, might happen to them……unable to move backwards or forwards; wherefore they steered away from those shoals of weeds』。Verne：『slowed them down to a halt; and they wasted three long weeks』；版本頁『published in Paris by J. Hetzel et Cie. over the period 1869-71』。Janvier：『I seemed to see a vast ruinous congregation of wrecks……as though all the wrecked ships in the world were lying huddled together there』，後文說是在『delirium』中。Avienus：第 117–124 行『sic nulla late flabra propellunt ratem……plurimum inter gurgites extare fucum et saepe virgulti vice retinere puppim』在 Oestrumnides、Hierni、Albion 的脈絡；第 375–406 行往西的大洋『nullus haec adiit freta』，也有『exuperat autem gurgitem fucus frequens』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.payoff",
+        "editorial.visual",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "研究稿的核心轉折『把船困在海草裡的是凡爾納』不成立：哥倫布之子 Fernando 的傳記已寫船員怕被海草纏住、動彈不得，船隊因此繞開（W4-S034，研究稿只經 Firestone 轉述而且自相矛盾）。改成『日誌節錄本（希望與風）→ Fernando（怕被纏住、繞開）→ 凡爾納（拖到停下、三週）→ Janvier（墳場）』，前提仍成立且多一層轉折。日誌版本確認是 Las Casas 節錄、Markham 英譯。三週也見於 Firestone，不歸給凡爾納。哥倫布的評價仍不碰。去重：Sargasso、馬尾藻、Avienus、Janvier 在兩個池都沒有；哥倫布相關既有題（地平說、立蛋、預言書、七城島、伊莎貝拉珠寶、月食）都不同核心。"
+    },
+    {
+      "id": "N3185",
+      "agent": "W4",
+      "reviewer": "R304",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W4-S020 https://mathcs.clarku.edu/huxley/UnColl/Nature/Letters/Notes-Chal.html（全文）；W4-S019 bathy.html；W4-S021 DeepSea.html；W4-S022 Dolan 2020（全文）；W4-S023 Wallich 1860 PDF；新讀 W4-S035～S007（四人生卒）",
+      "reopen_result": "1875：『a letter dated Yeddo, June 9, 1875』『failed to discover Bathybius in a fresh state……little more than sulphate of lime, precipitated in a flocculent state from the sea-water by the strong alcohol』『scarcely to be distinguished from precipitated albumen……colouring irregularly but very fully with carmine……comporting itself like an organic thing』『since I am mainly responsible for the mistake, if it be one……I shall err on the right side in attaching even greater weight than he does』。1868：『In the year 1857, H.M.S. ‘Cyclops,’ under the command of Captain Dayman』『placed in spirits in 1857』『magnifying power of 1200 diameters』『deep-sea ‘Urschleim,’ which must, I think, be regarded as a new form……described by Haeckel』『B. Haeckelii』。1873：『beyond 300 fathoms, life disappeared altogether』『Forbes' conclusion has been completely negatived』。Wallich：『animal life cannot, by any possibility, be maintained at a depth exceeding 500 fathoms』；『not quite mid-way between Cape Farewell and Rockall, in 1260 fathoms』海星附著在最後 50 噚繩上、『for upwards of a quarter of an hour afterwards』還在動。Dolan：黑底白線的第一張是 Haeckel 1870 年第 2 版《Natürliche Schöpfungsgeschichte》；Thomson 1873 年版『very often reprinted』；Buchanan『had found that adding alcohol to seawater produced Bathybius』；第 2–7 版（1870–1879）有圖、1889 年第 8 版起沒有；『godchild』信。生卒：Huxley 1825-05-04～1895-06-29；Haeckel 1834–1919；Thomson 1830-03-05～1882-03-10；Buchanan 1844-02-20～1925-10-16。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial.payoff",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提與引文成立，9–11 分鐘可信。改正：黑底圖由 Haeckel 首創、Thomson 的版本最常轉載（研究稿寫反）；『立體』『在他之前十幾年』刪；Wallich 地點改回原文；四位入畫人物卒年已在可讀頁面核對，都在 1956 年前。創造論的使用：維持中立，只講事件本身。去重：Bathybius、Huxley 與原來如此事務所都沒有同核心；最近的是 N202（海雪，不同核心）。"
+    },
+    {
+      "id": "N3186",
+      "agent": "W4",
+      "reviewer": "R304",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W4-S024 https://archive.org/stream/sim_nature-uk_1879-07-24_20_508/sim_nature-uk_1879-07-24_20_508_djvu.txt（全文）；W4-S025 Gutenberg #22472 第 11760–11830、12040–12100 行；W4-S026 Naus 2014 PDF（摘要、第 3 章、4.3.2 光學解釋）；新讀 W4-S039",
+      "reopen_result": "Nature：『H.M.S. Vulture, Bahrein, May 17, 1879』『at about 9.40 P.M. on May 15, when in lat. 26° 26' N. and long. 53° 11' E.』『On looking towards the east, the appearance was that of a revolving wheel……looking towards the west a similar wheel appeared to be revolving, but in the opposite direction. I then went to the mizen top (fifty feet above water) with the first lieutenant, and saw that the luminous waves or pulsations were really travelling parallel to each other』『twenty-five feet broad, with dark intervals of about seventy-five……period was seventy-four to seventy-five per minute, giving a speed roughly of eighty-four English miles an hour』『lasting some thirty-five minutes』『During the last five minutes concentric waves appeared to emanate from a spot about 200 yards east』『A bucket of water was drawn, but was unfortunately capsized before daylight』；『oily-looking fish』後 OCR 缺字。Fort：『It is Commander Pringle's opinion that the shafts constituted one wheel, and that doubling was an illusion. He judges the shafts to have been about 25 feet broad, and the spaces about 100』；Patna 號投書刊《Knowledge》1883-12-28，事在 1880 年 5 月，Avern 船長與三副 Manning 也看到，回信者 A. Mc. D. 說該署名『The Modern Ezekiel』，投書者以 J. W. Robertson 回覆，Proctor 致歉；Fort 說海面下有『vast luminous wheels, each the size of a village』。Naus：『Of these reports, 121 indicate a frequency between 0.5 s−1 and 3 s−1, with 96 of those between 1 s−1 and 2 s−1, the frequency range of the engine revolution in most vessels. This is the frequency with which the individual spokes pass by the ships』；4.3.2 光學解釋由 Tydeman（1911、1921）提出、Verploegh（1968）擴充；『On at least one occasion……go up the mizzen's top……(Corliss, 1977) This is a strong indication』。Fort 1874–1932（W4-S039）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "editorial.payoff",
+        "editorial.visual",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立：Fort 確實把 Pringle 的『平行光波看起來像轉輪』改成『兩個輪子其實是一個』。改正：鉤子『他沒有叫人來看、自己爬上桅頂』與原文不合（帶著大副上後桅樓）；『引擎轉速』是 Naus 自己的話，『engine speeds』的說法已在讀過的頁面上，但它指的是光帶掠過的頻率，payoff 已改成這個意思；Fort 的出版年仍沒有可讀出處，旁白不說年份；Fort 卒年改由可讀頁面支撐。片長：只靠研究稿的料約 7 分鐘；補上 Naus 4.3.2 的透視解釋與最後五分鐘的同心圓光波後，誠實估 8–9 分鐘，可當單集，但沒有餘裕。去重：光輪、Pringle、Vulture、Book of the Damned 在兩個池都沒有；Fort 只在 N2686 出現（新加坡魚雨，不同案）；乳白海已在 wave25 判給原來如此事務所，這題核心不同。"
+    },
+    {
+      "id": "N3187",
+      "agent": "W4",
+      "reviewer": "R304",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "W4-S028 https://www.zobodat.at/pdf/Neues-Jb-Min-Geol-Palae_1878_0350-0363.pdf（pp. 350–363 全文）；W4-S029 LGRBwissen 案例頁（printpdf 轉址到 https://lgrbwissen.lgrb-bw.de/hydrogeologie/regionalbeschreibung-westalb-hegaualb-klettgaualb/fallbeispiel，全文）",
+      "reopen_result": "Knop：1875 年的初步調查已得出『dass etwa die Hälfte der in der Aachquelle auftretenden Wassermenge nicht direct von der Donau geliefert werde. Ob die andere Hälfte Donauwasser sei? das wäre zu beweisen』；答案是『von dem Grossherzoglich Badischen Handelsministerium gefordert』，為了『Verhandlungen……auf dem Gebiete des Wasserrechtes』；『Schon vor Jahresfrist war der Versuch mit Kochsalz vorgesehen』但水位不允許；ten Brink『Spinnerei- und Webereibesitzer zu Arien und Völkershausen an der Aach……scheute keine Mühe und Mittel』（OCR；地名應即 Arlen 與 Volkertshausen）；9/22 下午 4 點 12 Centner Glasgow-Schieferöl；泉邊『Tag und Nacht』守候；9/25『6 Uhr gegen Morgens……kreosotartigen Geschmack』；9/24 鹽『unter den Augen der Steuerbehörde』、海關人員、『Rechtsanwalts Villinger von Tuttlingen』、鎮長們，11 點 45 分，55 分鐘；185,3 Centner；『die gesammte Menge Kehrsalz……wieder zum Vorschein gekommen sei』；10/9 螢光素『den schönen, wenn auch kostspieligen Versuch』10 kg、10/12 破曉、36 小時；結論 2『etwa die Hälfte……Die andere Hälfte stammt demnach nicht von der Donau』；結論 7：裂隙會越來越寬、吞掉更多多瑙河水。LGRB：1705、1719、1874、1877、1928；『Bereits zu Beginn des 19. Jahrhunderts gaben konkurrierende Nutzungsansprüche……Anlass zu gerichtlichen Auseinandersetzungen』『Da bereits damals der Zusammenhang……bekannt war』；1884–2005 平均 129 天、1973–2002 平均 115 天；『Der überwiegende Anteil an der Aachtopfschüttung stammt aus der Donauversinkung (mindestens 60 bis 70 % nach Interreg IIIA, 2008; 65 bis 80 % nach Selg, 2010)』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，兩個來源都是逐字讀到的（一手報告＋官方案例頁）。改正：研究稿說『結論的一半常被省略』沒有任何來源，而且『一半』本來就是 Knop 1875 年已提出、1877 年要回答的問題，改寫成轉折一；補上同一官方頁就有、研究稿漏掉的今日估計（六到八成來自多瑙河）、19 世紀初的訴訟與『當時已知』；『自費』『對方律師』改回原文用字；Centner 照原單位，不換算。只有 5–6.5 分鐘，與 N3183 配成一集。去重：Donau、Aach、Knop、Immendingen 在兩個池都沒有；原來如此事務所的 sinkhole 題講的是地面塌陷，不同核心。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "N3125",
+        "N981"
+      ],
+      "title_suggestion": "巴西兩組最有名的飛碟照片，『官方背書』到底是誰說的？——1952 年的一則外電，和 1958 年的一份武官報告",
+      "shared_question": "1950 年代巴西兩組被說成『有軍方背書』的飛碟照片，背書是誰、在哪一份紀錄裡、用什麼字說的？",
+      "chapter_order": [
+        "N3125（1952 Barra da Tijuca，4–5 分鐘）",
+        "N981（1958 Trindade，7.5–8 分鐘）"
+      ],
+      "why_it_flows": "兩章回答同一個問題、用同一種拆法：把『官方說是真的』拆回一句一句的紀錄。第一章的『背書』是一則法國報紙登的里約電，沒有名字、一個月後換了開頭又登一次，而真正讓它站不住的是 Condon 報告指出的光影；第二章的『官方』是一份海軍部聲明寫『不足以證明』、一位美國海軍武官判斷『最可能是噱頭』。兩章都有一位美國武官，判斷剛好相反，轉場一句就夠：『六年後，同一個國家，又有一組照片、又有一位美國武官——這一次，他留下了一份可以讀的報告。』時間順序也自然（1952 → 1958），第一章結在『沒有一手紀錄』，第二章正好以讀得到的武官報告接上。片長：N3125 取 4–5 分鐘，N981 從 8–11 收到約 7.5–8 分鐘（拿掉 2015 年資訊公開答覆的細節），合計 11.5–13 分鐘，在上限內但沒有餘裕。兩題都是 U 軸；N981 已是 selected 但沒有製作紀錄，要站主同意把它改成兩章的後一章；不同意的話，N3125 放回待配章節，不單獨做。"
+    },
+    {
+      "ids": [
+        "N3161",
+        "N3165"
+      ],
+      "shared_question": "科學家寫下『永遠不可能』的那一頁，原文自己留了多少餘地，後人又剪掉了多少？",
+      "why_it_flows": "兩題都是一位學者對『不可知／做不到』的斷言，都要回原頁看他自己的保留（Comte 的 téméraire 段、Newcomb 1903 年的『不是必然結論』）；Newcomb 1901 年《McClure's》正好拿『天文學家已能從光看出遠方天體的氣體』當作被說成不可能、後來做到的例子，可以當兩集的接點，不必補料。"
+    },
+    {
+      "ids": [
+        "N3183",
+        "N3187"
+      ],
+      "title_suggestion": "河水鑽進地底，怎麼證明它從哪裡冒出來？——一隻杯子和兩百袋鹽",
+      "shared_question": "一條河消失在地底下，要怎麼證明它從別處冒出來，而且冒出來的水有幾成是它？",
+      "chapter_order": [
+        "N3183（5–6 分鐘）",
+        "N3187（5–6.5 分鐘）"
+      ],
+      "why_it_flows": "兩章回答同一個問題，而且第一章的反駁正好是第二章的方法：古人的『證據』是丟進奧林匹亞河裡的杯子與祭牲糞便會在西西里冒出來，Strabo 說杯子不可能自己跟著水漂那麼遠、泉水又是淡的；1877 年的人就改用能溶在水裡、能驗、能秤的東西——頁岩油的味道、兩百袋鹽與硝酸銀、螢光素——還真的去算回收了多少鹽。兩章也都收在『有幾成是那條河的水』：Strabo 拿淡水推翻穿海，Knop 算出最乾時只有一半，今天的估計是六到八成。轉場一句就夠：『古人只能丟一隻杯子下去等；1877 年，有人把兩百袋鹽倒進了地洞。』片長 10–12.5 分鐘，在上限內，兩章都不能再加料。不建議把任一章接到 N3182（Cerknica）：N3182 本身就是 8–10 分鐘的單集，問的是『湖為什麼會消失又回來』，再接一章會超過 13 分鐘。軸別都是 M。"
+    }
+  ]
+}

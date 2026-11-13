@@ -23,16 +23,19 @@ from uuid import UUID, uuid4
 import httpx
 from fastapi import APIRouter, Depends, Header, Request, Response
 from fastapi.responses import JSONResponse
+from redis.asyncio import Redis
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.ai import minimax_pool
 from app.ai.jev import (
     VENDOR_MAX_REQUEST_TOKENS,
     JevError,
     JevOutcomeUncertain,
     JevRequestInvalid,
 )
+from app.ai.minimax_pool import fingerprint
 from app.auth.service import AdminUser
 from app.config import Settings
 from app.db import get_session
@@ -226,8 +229,12 @@ def gemini_usage_cost(
     thoughts = usage.get("thoughtsTokenCount", 0)
     total = usage.get("totalTokenCount")
     if (
-        type(prompt) is not int or type(candidates) is not int or type(thoughts) is not int
-        or prompt <= 0 or candidates < 0 or thoughts < 0
+        type(prompt) is not int
+        or type(candidates) is not int
+        or type(thoughts) is not int
+        or prompt <= 0
+        or candidates < 0
+        or thoughts < 0
     ):
         return None
     output = candidates + thoughts
@@ -236,13 +243,13 @@ def gemini_usage_cost(
     if output <= 0 or prompt > maximum_input or output > maximum_output:
         return None
     if model == PILOT_GEMINI_TTS_MODEL:
-        return (
-            Decimal(prompt) * Decimal("0.50") + Decimal(output) * Decimal("9")
-        ) / Decimal(1_000_000)
+        return (Decimal(prompt) * Decimal("0.50") + Decimal(output) * Decimal("9")) / Decimal(
+            1_000_000
+        )
     if model == PILOT_TRANSCRIBE_MODEL:
-        return (
-            Decimal(prompt) * Decimal("0.75") + Decimal(output) * Decimal("3.75")
-        ) / Decimal(1_000_000)
+        return (Decimal(prompt) * Decimal("0.75") + Decimal(output) * Decimal("3.75")) / Decimal(
+            1_000_000
+        )
     return None
 
 
@@ -544,7 +551,10 @@ def answer_lost(detail: str) -> AppError:
 
 
 async def _synthesize_with_gemini(
-    payload: SpeechRequest, voice: str, segments: tuple[Segment, ...], settings: Settings,
+    payload: SpeechRequest,
+    voice: str,
+    segments: tuple[Segment, ...],
+    settings: Settings,
     session: AsyncSession,
 ) -> Response:
     """The same contract as Azure's path: WAV back, characters counted against a month."""
@@ -661,6 +671,43 @@ async def _synthesize_with_gemini(
     )
 
 
+async def _minimax_synthesize_pooled(
+    redis: Redis, settings: Settings, text: str, voice: str, model: str, speed: float
+) -> bytes:
+    """Synthesize on the M Plan key the pool picks (app.ai.minimax_pool), holding a lease on it
+    for the call. A key MiniMax refuses for its plan's window or balance (429 or 402) rests and
+    the next key is tried; the last refusal is the one raised. A lost answer is never retried."""
+    tried: set[str] = set()
+    while True:
+        choice = await minimax_pool.choose(
+            redis,
+            settings,
+            lease_seconds=int(settings.video_speech_minimax_timeout_seconds) + 30,
+            wait_for_quota=True,
+            exclude=frozenset(tried),
+        )
+        if choice is None:
+            raise SpeechUpstreamError(401, "MiniMax has no key")
+        speech = MiniMaxSpeech(
+            base_url=settings.minimax_api_base_url,
+            key=choice.key,
+            timeout_seconds=settings.video_speech_minimax_timeout_seconds,
+        )
+        try:
+            return await speech.synthesize(text, voice, model, speed)
+        except SpeechAnswerLost:
+            raise
+        except SpeechUpstreamError as error:
+            if error.status not in (402, 429):
+                raise
+            await minimax_pool.rest(redis, settings, choice.fp, used_up=error.status == 402)
+            tried.add(choice.fp)
+            if len(tried) >= len(minimax_pool.pool_keys(settings)):
+                raise
+        finally:
+            await minimax_pool.release(redis, choice.fp, choice.lease)
+
+
 async def _synthesize_with_minimax(
     payload: SpeechRequest,
     voice: str,
@@ -714,13 +761,10 @@ async def _synthesize_with_minimax(
             f"本月的 MiniMax 語音字數預算（{limit} 字）不夠這次的 {characters} 字；"
             "可調高 VIDEO_SPEECH_MINIMAX_MONTHLY_CHARACTER_LIMIT，或等下個月",
         )
-    speech = MiniMaxSpeech(
-        base_url=settings.minimax_api_base_url,
-        key=key,
-        timeout_seconds=settings.video_speech_minimax_timeout_seconds,
-    )
     try:
-        audio = await speech.synthesize(text, voice, model, speed_from_rate(payload.rate))
+        audio = await _minimax_synthesize_pooled(
+            redis, settings, text, voice, model, speed_from_rate(payload.rate)
+        )
     except SpeechAnswerLost as error:
         # MiniMax may have narrated, and charged, this text, so its characters stay counted.
         raise answer_lost(
@@ -820,7 +864,24 @@ async def minimax_quota(tool: VideoTool, session: Session) -> MiniMaxQuotaOut:
         raise AppError(
             502, "video_speech_upstream_failed", "MiniMax 額度暫時查不到，請稍後重試"
         ) from error
-    return MiniMaxQuotaOut(checked_at=datetime.now(UTC), host=httpx.URL(url).host, quota=remains)
+    accounts: list[dict[str, Any]] = [{"index": 1, "key": fingerprint(key)[-4:], "quota": remains}]
+    for index, other in enumerate(minimax_pool.pool_keys(settings)[1:], start=2):
+        entry: dict[str, Any] = {"index": index, "key": fingerprint(other)[-4:]}
+        try:
+            entry["quota"] = await MiniMaxQuota(
+                base_url=settings.minimax_api_base_url,
+                key=other,
+                timeout_seconds=settings.video_speech_minimax_timeout_seconds,
+            ).remains()
+        except SpeechUpstreamError as error:
+            entry["error"] = f"HTTP {error.status}"
+        accounts.append(entry)
+    return MiniMaxQuotaOut(
+        checked_at=datetime.now(UTC),
+        host=httpx.URL(url).host,
+        quota=remains,
+        accounts=accounts,
+    )
 
 
 @speech_router.post("/speech")
@@ -958,7 +1019,8 @@ async def transcribe_narration(
         provider="gemini",
         model=settings.gemini_model,
         max_usd=PILOT_TRANSCRIBE_MAX_USD
-        if settings.gemini_model == PILOT_TRANSCRIBE_MODEL else None,
+        if settings.gemini_model == PILOT_TRANSCRIBE_MODEL
+        else None,
     )
     usage: dict[str, Any] = {}
     try:
@@ -972,9 +1034,7 @@ async def transcribe_narration(
                 usage_out=usage,
             )
         else:
-            text = await transcribe(
-                settings, wav, terms=payload.terms, language=payload.language
-            )
+            text = await transcribe(settings, wav, terms=payload.terms, language=payload.language)
     except CheckUnavailable as error:
         if reserved:
             await finish_pilot_call(session, payload, no_charge_reason="transcriber_unconfigured")

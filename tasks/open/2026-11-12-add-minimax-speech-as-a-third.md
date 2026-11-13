@@ -1,7 +1,7 @@
 ---
 id: 2026-11-12-add-minimax-speech-as-a-third
 title: Add MiniMax speech as a third narration voice provider
-status: review
+status: in-progress
 priority: P2
 area: api
 owner: claude-opus-5.5-minimax-speech
@@ -122,3 +122,15 @@ npm run test:tools && npm run test:web
   already reads as "go to /speech".
 - Superseded on 2026-11-12: main's #2083 pins "today" for the fixture trips, so after merging main
   this branch takes main's `trip-editor.test.tsx` and `test_trip_creation.py` unchanged.
+- 2026-11-12, after #2081: verified on production with a paired token. The site's key is an M Plan
+  key on `www.minimax.io`; `minimax-quota` answers `model_remains` entries named `general`
+  (5-hour and weekly windows, `current_interval_remaining_percent`, `current_weekly_remaining_percent`,
+  counts 0) and `video` (3 per interval, 21 a week; `current_*_usage_count` 0 at 100 % remaining,
+  so it reads as the count used). ~4,000 synthesized characters moved `general` from 47 % to 46 %.
+- Voice trials (owner's ear): the Mandarin system voices are not usable for 奇聞 or 原來如此 (no
+  Taiwan accent, no written style, no child voice). Dub trials in eight languages: English,
+  Indonesian, Thai and Portuguese/Spanish SereneWoman read correctly at 87-109 % of Gemini's
+  length; Korean 160 %+ (sped up, it starts misreading); Japanese read 同じ as Chinese and
+  Vietnamese trailed into noise, both traced to `language_boost` fixed at "Chinese". Fixed in the
+  follow-up PR: the boost follows the voice id's language (`language_boost`), "auto" otherwise.
+

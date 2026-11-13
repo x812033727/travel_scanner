@@ -30,11 +30,10 @@ describe("webSite", () => {
   });
 
   it("points the search action at a URL that really filters", () => {
-    // /hotspots reads `q` and passes it to the ranking query, so this is an endpoint a reader
-    // can land on rather than a shape invented to earn a sitelinks search box.
+    // /search/articles reads `q` and searches published articles across travel, AI, tech and life.
     const action = parse(webSite("en")).potentialAction;
     expect(action["@type"]).toBe("SearchAction");
-    expect(action.target.urlTemplate).toBe(`${siteUrl}/en/hotspots?q={search_term_string}`);
+    expect(action.target.urlTemplate).toBe(`${siteUrl}/en/search/articles?q={search_term_string}`);
     expect(action["query-input"]).toBe("required name=search_term_string");
   });
 });
@@ -251,6 +250,32 @@ describe("guideArticle", () => {
     const data = parse(guideArticle("zh-TW", { ...article, collection: true, entries: null }));
     expect(data["@type"]).toBe("CollectionPage");
     expect(data).not.toHaveProperty("mainEntity");
+  });
+
+  it("emits NewsArticle for dated news stories while keeping evergreen guides as Article", () => {
+    const news = parse(guideArticle("zh-TW", { ...article, path: "/life/openai-update", newsDate: "2026-11-12" }));
+    expect(news["@type"]).toBe("NewsArticle");
+    const evergreen = parse(guideArticle("zh-TW", { ...article, newsDate: null }));
+    expect(evergreen["@type"]).toBe("Article");
+  });
+
+  it("links a series member lesson back to its CreativeWorkSeries hub without claiming isPartOf on the hub itself", () => {
+    const lesson = parse(guideArticle("zh-TW", {
+      ...article,
+      path: "/life/codex-agents-md",
+      partOfSeries: { name: "Codex 學習中心", path: "/life/codex-learning-hub" },
+    }));
+    expect(lesson.isPartOf).toEqual({
+      "@type": "CreativeWorkSeries",
+      name: "Codex 學習中心",
+      url: `${siteUrl}/zh-TW/life/codex-learning-hub`,
+    });
+    const hub = parse(guideArticle("zh-TW", {
+      ...article,
+      collection: true,
+      partOfSeries: { name: "Codex 學習中心", path: "/life/codex-learning-hub" },
+    }));
+    expect(hub).not.toHaveProperty("isPartOf");
   });
 });
 

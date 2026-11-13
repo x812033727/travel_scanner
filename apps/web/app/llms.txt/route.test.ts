@@ -78,9 +78,11 @@ describe("llms.txt", () => {
     expect(lines[2].startsWith("> ")).toBe(true);
   });
 
-  it("points at the sitemap as the complete list rather than claiming to be one", async () => {
+  it("points at the sitemap, Google News sitemap, Atom feed, and robots.txt", async () => {
     const text = await body();
     expect(text).toContain(`${siteUrl}/sitemap.xml`);
+    expect(text).toContain(`${siteUrl}/sitemap-news.xml`);
+    expect(text).toContain(`${siteUrl}/feed.xml`);
     expect(text).toContain(`${siteUrl}/robots.txt`);
   });
 

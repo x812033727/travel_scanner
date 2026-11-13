@@ -1,0 +1,438 @@
+{
+  "batch": "batches/wave32-20261112.json",
+  "reviewed_on": "2026-11-12",
+  "method": "四位沒有參與研究的覆核代理（R321：Y1；R322：Y2；R323：Y3；R324：Y4）逐題至少重開一個關鍵來源、每個關鍵字跑一次素材池搜尋並 grep 批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位，覆核新讀的來源編入該研究代理的來源序號。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 14,
+    "NEEDS_CHECK": 3
+  },
+  "source_renames": {
+    "R321-S001": "Y1-S018",
+    "R322-S001": "Y2-S026",
+    "R322-S002": "Y2-S027",
+    "R323-S001": "Y3-S027",
+    "R323-S002": "Y3-S028",
+    "R323-S003": "Y3-S029",
+    "R324-S001": "Y4-S026",
+    "R324-S002": "Y4-S027",
+    "R324-S003": "Y4-S028",
+    "R324-S004": "Y4-S029",
+    "R324-S005": "Y4-S030"
+  },
+  "verdicts": [
+    {
+      "id": "N3281",
+      "agent": "Y1",
+      "reviewer": "R321",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Y1-S001 https://archive.org/stream/Desert-Magazine-1961-05/Desert-Magazine-1961-05_djvu.txt（item 頁上的連結）；Y1-S002 http://www.talkorigins.org/faqs/coso.html；Y1-S003 https://skepticalinquirer.org/2019/03/corso-artifact-decisively-identifiedand-its-hardly-ancient/",
+      "reopen_result": "Maxey 信逐字對上：『In the opinion of one trained geologist, it has taken at least 500.000 years…』、外殼『hardened clay containing pebbles and fossil shell fragments』、『two non-magnetic metal objects resembling a nail and a washer』、『carved-out (while it was still wood) in a hexagonal shape』、2 mm 金屬芯只有它吸磁鐵。Stromberg：1961-02-13；INFO Journal 1969 春季號是主要來源，Paul J. Willis 猜火星塞、兄弟寫『I was thunderstruck… all the parts seemed to fit』；Lane 開價 $25,000；1999-09-09 Windham 來電，懷疑寄信者是同好在惡作劇，『I knew what it was the moment I saw the x-rays』、『There's no question about it』，1920s Champion；Bond、Healy、Bartheld 各自同意；Bond 被問 1999 年值多少：『A couple o' bucks. Max.』；2018-05-16 檢查：160 g、三英寸、7/8\"-18 六角螺帽『fit perfectly』、貫穿切面的鋸痕、頂帽外露與螺紋吻合、結論把『nail』『washer』認定為頂帽與中心軸；UNR 地質學者是家屬轉述、無文件。SI 43:2 公開段落：Chittick『internal combustion engines or even jet engines way back then』、Heinrich 與華大地質學者都找不到貝殼。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立、來源都逐字對上，但有三處要改：（1）『頂多兩塊錢』是 1999 年收藏市場對一支舊火星塞的估價（Bond 的『A couple o' bucks. Max.』），研究稿寫成『這種火星塞當時頂多值兩塊錢』是錯置年代；（2）題目『四位收藏家一看 X 光就笑了』頁面上沒有，原文是 Windham 以為寄信者在惡作劇，改寫；（3）『最早研究它的人自己就猜是火星塞』不精確——Calais 更早拍 X 光，猜火星塞的是 1969 年 INFO Journal 編者 Paul Willis；『信裡的墊圈就是頂帽』改為 Stromberg 的認定；UNR 地質學者標為家屬說法。Y1-S001 的 URL 寫成 /download/…_djvu.txt 並說『頁上的』，item 頁上實際連的是 /stream/…_djvu.txt（/download/ 目錄頁也有連結，不算猜網址，但出處標示要改為頁上那條）。畫面三位發現者改為遠景小身影，不當主角。"
+    },
+    {
+      "id": "N3282",
+      "agent": "Y1",
+      "reviewer": "R321",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Y1-S004 Comptes rendus 103（item 頁 /stream/ 文字層）pp. 702–703；Y1-S005 Nature 35:889 文字層；Y1-S006、Y1-S007 opac.geologie.ac.at 兩份 PDF（pdftotext）；Y1-S008 Gutenberg #22472 頁上的 /ebooks/22472.txt.utf-8",
+      "reopen_result": "CR：Riedl、Isidore Braun fils 工廠、67×62×47 mm、785 g、cupules、『pellicule d'oxyde magnétique… finement ridée』、clivage cubique、Daubrée 再問、1200 ouvriers、350000 tonnes、三層中的中層 4 m、『répète M. Gurlt』都對上。Nature：『fossil meteorite found in a block of Tertiary coal, and now in the Salzburg Museum』、『a manufactory in Lower Austria』、意見三分、『almost a cube』、67×67×47、比重 7.75、『as hard as steel』——沒有寫 1885。Brezina 1887：六月中在 Braun 兄弟處看到、借回、稀酸易蝕『sprechen durchaus gegen』隕石。Brezina 1888：『als Kunstproduct zu deuten』、褐鐵礦非磁鐵礦皮、無解理、Gurlt 的凹坑推論『ganz unzulässig』、Pirchl『ich weiss mir darüber keinen Vers zu machen』、Much『zweifellos Artefact』、『werdende Axt』、Knoppereisen、『beruht augenscheinlich auf einem Irrthume』。Fort：『A block of metal found in coal, in Austria, 1885. It is now in the Salsburg museum』、『It's a cube』、『our own acceptance that it was a steel object that had fallen from the sky… We offer ours as the only synthetic expression』，引 L'Astronomie 1887-114、CR 103-702、Science Gossip 1887-58。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "引文全部對上，但題目把流傳版本自擬成『精密加工的鋼立方體——薩爾斯堡立方體』，沒有可讀出處，違反『流傳版本要有可讀出處』；改用 Fort 1919 原文當流傳版本。補上：《Nature》寫『下奧地利』（法文報告是上奧地利 Wolfsegg）、『1885』只出現在 Fort 的轉述、Brezina 對凹坑推論的反駁、Much 的『正在成形的斧頭』。長度：不重複事實約 17–18 條，8–9 分可撐；與 N3283 同出 Fort 第 9 章，但這題答的是『這塊鐵是什麼、真的在煤裡嗎』，N3283 答的是『Fort 怎麼抄三份紀錄』，核心不同，不降 chapter、不合併，建議連播。"
+    },
+    {
+      "id": "N3283",
+      "agent": "Y1",
+      "reviewer": "R321",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Y1-S009 BAAS Report 1844（reportofbritisha44brit 文字層）Transactions p. 51；Y1-S010 Layard 1853 文字層 pp. 197–198 腳註；Y1-S011 Scientific American 1852-06-05 文字層 p. 298；Y1-S008 Fort 第 9 章",
+      "reopen_result": "BAAS：Buist 整理、Brewster 提交；釘尖約半英寸『quite eaten with rust』伸進 till、靠釘頭一英寸埋進石裡；『There is no evidence beyond the condition of the stone to prove what part of the quarry this block may have come from』；東採石場約二十年、西採石場『as many as 500 men』；『turned over and handled at least four or five times in its journey to Inchyra』，在 Inchyra 發現——全對上；頁碼 Transactions p. 51。Layard：NW palace of Nimroud、『earliest specimen of a magnifying and burning-glass』；Brewster 腳註『fashioned on a lapidary's wheel, or by some method equally rude』、『could not have been intended as an ornament… for magnifying, or for concentrating the rays of the sun, which it does, however, very imperfectly』。SA 7:298（1852-06-05）：『A few days ago』、Meeting House Hill、fifteen feet、Kettell、請 Agassiz、編者按『perhaps made by Tubal Cain, the first inhabitant of Dorchester』。Fort：Kingoodie 段寫『as to what part of the quarry it had come from, there is no evidence—except that it could not have been from the surface』、『no discussion at the meeting』；Dorchester『about the first of June, 1851』；透鏡『treasure-house at Nineveh』、『Never occurred to him—someone a million miles or so up in the air—looking through his telescope—lens drops out』（him = Carpenter）；『visitors from other worlds』一語在本章是講蘇格蘭煤中鐵器，本章總括句是『things that fell from the sky, or that were left behind by extra-mundane visitors to this earth』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "主要錯誤：（1）Brewster 的『very imperfectly』是說它聚太陽光聚得很不完美，研究稿譯成『它做得很不完美』，題目、payoff、answer 都改；（2）鉤子『從沒人想到』原文是『Never occurred to him』，指 Carpenter；（3）『它可能是外世界來的訪客留下的』在本章是針對蘇格蘭煤中鐵器，改引本章總括三件的那句；（4）新增一個轉折：Fort 引 Kingoodie 時多寫了報告裡沒有的『只知道不可能來自地表』，又把透鏡出土地寫成『尼尼微寶庫』；（5）Fort 誤記 Dorchester 為 1851 年已確認（該期是 1852-06-05、文中說『幾天前』）；（6）『Tubal Cain』是玩笑屬於判讀，改標為覆核者補註（Tubal Cain 是《創世記》裡的銅鐵匠，編者是在挖苦 Transcript 去問 Agassiz）。『Fort 是最早』維持『目前讀到最早』，書中更早的章節也已用過『visitors from other worlds』，不寫成發明者。Fort 引的 Annals 1853『Brewster 在 1853 年會上宣布』仍未核到，旁白照研究稿只說 Fort 這樣引。"
+    },
+    {
+      "id": "N3284",
+      "agent": "Y1",
+      "reviewer": "R321",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "Y1-S012 Lhote 1959 英譯本（in.gov.ignca.10353 頁上的 /stream/ 文字層）；Y1-S013 Inference（curl 連線被重設，改用 WebFetch 摘要型工具）",
+      "reopen_result": "Lhote 英譯本（Hutchinson，Brodrick 譯，Internet Archive 標 1959）：Jabbaren『Giants』、約十八英尺、『the whole thing is very like the pictures we sometimes see of \"Martians\". \"Martians\"—that would make a good heading for a sensational newspaper article, but it would have to tail off into an anticlimax… among the oldest in the Tassili!』、圖版說明『The \"Great Martian God\"』都對上。另在〈Did we discover Atlantis?〉一章（pp. 191–193）讀到：考察期間的來信中『Several of our correspondents would have that our \"Martians\" were really \"Jupiterrestrials\"』、神智學派、說他們讓亞特蘭提斯復活；Lhote『never said or wrote anything of the kind』、『Antinea』只是 Benoit 小說引起的浪漫念頭。Inference 註 11 經摘要工具兩次得到同一句『Lhote jokingly nicknamed these figures \"martians,\" a name that some readers unfortunately took seriously.』，但非逐字自讀；年代數字兩次摘要不一致。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.role",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立且鉤子逐字對上；同書找到讀者把『火星人』當『木星人』的來信，補成新轉折（Y1-S018）。但 Le Quellec 仍只能經摘要工具讀到（Almogaren 1999 PDF 403，沒繞過），後來把它寫成太空人的 Agrest／Däniken 原文也沒讀到，維持 needs_check。素材誠實估 6–8 分，改 chapter，接 N142。不碰阿爾及利亞政治；臨摹者只畫遠景剪影。"
+    },
+    {
+      "id": "N3285",
+      "agent": "Y1",
+      "reviewer": "R321",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "Y1-S014 Mariette Dendérah Vol6（item 頁上的 /stream/…Vol6-sml_djvu.txt）pp. 233–234、251–252；Y1-S015 Lockyer 1894 文字層 pp. 180–181；Y1-S016 Kolbe 1908 文字層 p. 131 與附錄 14",
+      "reopen_result": "Mariette：Pl. III, 44『Les textes décrivent la scène, mais n'en donnent pas le sens… un serpent couché, est l'image d'Hor-sam-ta-ui, l'esprit qui s'élève du lotus dans la barque Ma-at』；Pl. III, 45『sortant du lotus comme âme vivante… Un Tat soulève son corps splendide… Toute cette phraséologie vide ne nous apprend malheureusement rien』；Pl. III, 9 是另一幅（國王獻大金徽），列出應放置的八尊雕像，含『Un serpent sortant d'une fleur de lotus, debout dans une barque; c'est une forme d'Hor-sam-ta-ui』與以 palmes、coudée 計的高度。Lockyer：在 Edfu 段，『doubtless all the inscriptions in the deepest tombs were made by means of reflected sunlight, for in all freshly-opened tombs there are no traces whatever of any kind of combustion… my friend M. Bouriant, while we were discussing this matter at Thebes, laughingly suggested the possibility that the electric light was known to the ancient Egyptians』。Kolbe p. 131：『usually attributed to Franklin; but it appears to have been known to ancient civilised races… copper-covered masts and upright obelisks… can scarcely be anything else than simple lightning conductors』；附錄 14：『to break the stones coming from on high』（Dümichen 1877）。",
+      "changed_fields": [
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.payoff",
+        "editorial.role",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "三處事實錯誤已改：（1）Lockyer 說的是『最深的墓／新開的墓』沒有燃燒痕跡，底比斯是兩人討論的地點，不是『底比斯的深墓』；Bouriant 的話確實不是講丹德拉；（2）研究稿斷定英文本把『風暴』『印成了 stones』，沒讀 Dümichen 原書，德文也可能指冰雹，刪掉；（3）answer 把 Pl. III, 9 的神像清單說成『浮雕旁的文字』，清單在另一幅浮雕，改寫。仍缺：流傳的『燈泡』說的任何原文（只有 1992 年書目）、Mariette 圖版與今天三組浮雕的逐圖核對、Waitkus 譯文——維持 needs_check。素材約 11 條，誠實估 6–8 分，改 chapter，接 M27（巴格達電池，同屬『古代有電嗎』，答案不同，不算重複）。"
+    },
+    {
+      "id": "N3301",
+      "agent": "Y2",
+      "reviewer": "R322",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Y2-S002 https://zh.wikisource.org/wiki/閱微草堂筆記/卷5（搜尋結果）；另重開 Y2-S001 卷4、Y2-S003 卷7（搜尋結果）、Y2-S004 卷14 與卷13（目錄頁連結）、Y2-S005 顏氏家訓/卷第2（顏氏家訓目錄連結）、Y2-S006／S007 太平廣記/卷第318、卷第366（太平廣記目錄連結）、Y2-S008 稽神錄/補遺（搜尋結果）、Y2-S009 幽明錄（Author:劉義慶 連結）、Y2-S010／S011 子不語/卷1、卷9（Author:袁枚→子不語目錄連結）、Y2-S014 東海館刊 PDF（搜尋結果）、Y2-S012 盧秀滿摘要 ericdata.com/tw/detail.aspx?no=80036（搜尋結果）",
+      "reopen_result": "頁面上確實寫了：卷五『表叔王碧伯妻喪，術者言某日子刻回煞，全家皆避出。有盜偽為煞神……彼此以為真煞神，皆悸而失魂，對仆於地。黎明家人哭入，突見之，大駭，諦視乃知為盜，以薑湯灌蘇，即以鬼裝縛送官。沿路聚觀，莫不絕倒。據此一事，回煞之說當妄矣。然回煞形跡，余實屢目睹之。鬼神茫昧，究不知其如何也。』緊接在前一條結尾是『始知魂歸受祭，確有其事』。卷四白煙『出於灶突之中，冉冉向西南而沒』、布灰『手跡足跡，宛然與生時無二』、『其中必有理焉，但人不能知耳』都在。卷七『家奴孫文舉、宋文皆通是術』（研究稿誤作『宋文通此術』）、『詭詞取財而已』、『斬殃，尤為荒誕』、『然家奴宋遇婦死，遇召巫斬殃……似又不盡誣矣』、『不必曲為之詞，亦不必力攻其說』；卷十三記宋遇『繼妻本不肯服石，吾痛捶使咽盡，歿後懼為厲，又賄巫斬殃』。卷十四『又癸巳春，余乞假養痾北倉……豈其回煞耶？……然則爾不如我多矣。』至今深愧此訓也』，頁上無『乾隆』。《顏氏家訓》卷第二『偏傍之書，死有歸殺……乃儒雅之罪人，彈議所當加也』。《廣記》卷318 彭虎子條末『出《稽神錄》，明抄本作出《幽明錄》』，結尾也有『相率而去』；卷366 鄭生『曰「殺」』『出《宣室志》』。《稽神錄》補遺按語『今人李劍國考證明鈔本《廣記》註出《幽明錄》當從之』。《幽明錄》輯本收彭虎子（『殃殺當還』）；Author:劉義慶 403年—444年，南朝宋。《子不語》卷一『民間人死七日，則有迎煞之舉』、卷九『人死二七……名曰「回煞」』。東海館刊：紀昀 1724–1805、『紀昀堅信有鬼神精怪的存在』、註21『親見回煞之事（〈灤陽消夏錄〉卷四）』、姚安公『儒者論無鬼，迂論也，亦強詞也』。盧秀滿摘要『最遲於三國時期即已形成』『毫無統一性可言』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep pool.json、batches/*.json（含 not_added）與 reviews 的 回煞、煞神、歸殺、回魂、彭虎子、顏氏家訓、履園、錢泳 都沒有命中；『頭七』只有 N2122（朝鮮還魂信，答案不同）；紀昀／閱微只命中 N3222、N3223 與 wave31 一條 not_added（臺灣鬼怪，不同）；扶乩只有 G14（已排除，本題不碰扶乩）；N3221 是藍鼎元借鬼審案，不同；CLI search『回煞』回 []，『紀昀』只回 N3222 等；Y1、Y3 檔 grep 無重疊。前提成立，四個轉折都在原文。改掉的事實錯：《幽明錄》（劉義慶 403–444）早於顏之推，原稿『更早，北齊的顏之推』年代倒置；『一千兩百年』是研究者換算；『乾隆年間的癸巳』頁上沒寫乾隆；『故事比紀昀引的多一句』誤導；題目『被家人扶起來』原文沒有。守則：回煞是今天仍在的喪俗，但本題只講歷代文字、不判真假、不教步驟，scope 已寫明，與 N583、N821 前例同；不涉現存宗教教義（不碰扶乩與宮廟）。排除內容：原稿保留的卷七宋遇斬殃一段，卷十三揭露是宋遇打妻逼服石粉致死後怕她作祟才斬殃，且有誘污前妻情節，屬命案與性，整段拿掉。片長：拿掉宋遇後仍約 18–19 條不重複事實，加上卷五前一條，誠實估 8.5–10 分鐘，有『揭穿後說親見』與『父親坐等一夜無見』兩個翻轉結論的轉折，維持 episode_core。規則 1 記錄：研究代理自承《子不語》《履園叢話》《顏氏家訓》《太平廣記》等維基文庫書名頂層網址曾自己打過一次，之後才以搜尋重跑得到同一頁。依 REVIEW-BRIEF 規則 1 那次讀取不算來源（猜到也不算）。Y2-S005、S006、S007、S009、S010、S021 的 url 欄寫『搜尋結果頁』，但 R322 本輪的搜尋結果並沒有直接出現這幾頁，只出現同站的鄰頁或作者頁；R322 改以搜尋結果裡的頁面（履園叢話/14、顏氏家訓/卷第6、太平廣記/卷第432、Author:袁枚、Author:劉義慶、閱微草堂筆記 目錄）上的連結，循目錄連結自己重讀這六頁，內容與研究稿摘要逐字相符，所以本題內容不依賴那次自打網址的讀取；建議把這六個來源的出處改記為『由目錄頁連結（R322 重開）』。R322 本身沒有輸入任何非來自搜尋結果或頁面連結的網址。"
+    },
+    {
+      "id": "N3302",
+      "agent": "Y2",
+      "reviewer": "R322",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Y2-S016 https://zh.wikisource.org/wiki/閱微草堂筆記/卷3（搜尋結果）；另重開 Y2-S003 卷7、Y2-S017 卷8、Y2-S018 卷10、Y2-S022 卷15（搜尋結果）、Y2-S019 卷17（閱微目錄連結）、Y2-S020 子不語/卷24（子不語目錄連結）、Y2-S021 履園叢話/15（由搜尋結果 履園叢話/14 頁上的連結）",
+      "reopen_result": "頁面上確實寫了：卷三淮鎮『嬲歲餘不止，禱禳亦無驗，乃買宅遷居。有賃居者嬲如故……有老儒不信其事，以賤賈得之……始知宅之變異，皆老儒賄盜夜為之，非真魅也』與姚安公『即謂之真魅可矣』。卷七南士『見其纖削如春蔥，瑟縮而止。穴紙竊窺，乃一青面羅剎鬼……久乃知為某公家奴偽作鬼狀所取』『其運意亦殊周密』。卷十『是女為餌，竊貲遠遁，偽為狐也……人而為狐，不更黠乎哉？余居京師五六十年，見此類者不勝數，此其一耳』。卷十五『余謂此怨毒未平，造作訛言耳』。卷十七『李福又嘗於月黑之夜……俄磷火四起，皆嗚嗚來赴……此以類相召也』；李氏婦條原文『懼遭強暴，又避入廟後破屋』。卷八崔莊『意為宅中小婢於此幽期，遽捉其臂，欲有所挾』與獾『則有魅也亦宜』『魅皆不驅自去矣』。《子不語》卷二十四『潘素不信鬼神……署中二客詐為鬼狀，私往嚇之……兩客見黑氣一條繞燈而入……燈籠內有死野鴨一隻，鴨大籠小』。《履園叢話》叢話十五〈人而鬼〉『視之，則人也。蓋慣以此法奪人財物者……嗚呼，人而鬼，獨是人也哉！』",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep pool、batches（含 not_added）與 reviews 的 假鬼、扮鬼、裝鬼、淮鎮、宿遷、履園、錢泳：只有 N203、N1045、N1161、N2581 等單案調查與各地 not_added，答案不同；N3221 藍鼎元借鬼審案不同；CLI search『假鬼』研究代理回 []。引文都對得上，但有三個問題：（1）與 N3301 共用核心答案——兩題都在答『紀昀揭穿假鬼卻仍信鬼，因為姚安公的庭訓與神道設教』，且共用卷五、Y2-S014、Y2-S015；（2）守則：李氏婦條的動機是『懼遭強暴』、崔莊無面女子是『欲有所挾』的脅迫，碰性侵／脅迫排除線，研究稿只是淡化字眼，覆核整條拿掉；（3）拿掉重疊與排除條目後只剩約 13 條事實、一個轉折（揭穿後補一個真的），誠實估 5–7 分鐘，不到長題 8.5 分鐘與兩個翻轉轉折的門檻。所以不另做長片，改為接在 N3301 之後的 chapter（不建議直接併進 N3301 的答案，以免把 N3301 拉成 13 分鐘以上的集錦；製作時可擇二、三條併入 N3301 的轉折一）。也改『原屋主賤價脫手』（原文無）。規則 1 記錄：研究代理自承《子不語》《履園叢話》《顏氏家訓》《太平廣記》等維基文庫書名頂層網址曾自己打過一次，之後才以搜尋重跑得到同一頁。依 REVIEW-BRIEF 規則 1 那次讀取不算來源（猜到也不算）。Y2-S005、S006、S007、S009、S010、S021 的 url 欄寫『搜尋結果頁』，但 R322 本輪的搜尋結果並沒有直接出現這幾頁，只出現同站的鄰頁或作者頁；R322 改以搜尋結果裡的頁面（履園叢話/14、顏氏家訓/卷第6、太平廣記/卷第432、Author:袁枚、Author:劉義慶、閱微草堂筆記 目錄）上的連結，循目錄連結自己重讀這六頁，內容與研究稿摘要逐字相符，所以本題內容不依賴那次自打網址的讀取；建議把這六個來源的出處改記為『由目錄頁連結（R322 重開）』。R322 本身沒有輸入任何非來自搜尋結果或頁面連結的網址。"
+    },
+    {
+      "id": "N3321",
+      "agent": "Y3",
+      "reviewer": "R323",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Y3-S002 arXiv 2006.16766 全文 PDF（pdftotext）；Y3-S001《明史》卷三十一（維基文庫搜尋 API「光啟法驗 餘皆疏」→ 頁名，action=raw）；Y3-S003 JSTOR Daily 原頁",
+      "reopen_result": "Y3-S002 p.329 逐字引 Boorstin：「The Imperial Astronomers predicted that the eclipse would occur at 10:30 and would last for two hours. The Jesuits forecast that the eclipse would not come until 11:30 and would last only two minutes …」；引 Lü 2007：「Checked against the observation results, the error of the magnitude, maximum phase and last contact of the Western method is also much larger than that of the Datong li, while only the error of the first contact is slightly smaller … the results of the prediction provided by the Datong li were very bad, but those of the Western methods were even worse.」並說 Lü 表的「Theoretical Results」一列「not clear where the data … come from」（Lü 沒有用 NASA）。p.330 Table 1：西法 10h47m／11h36m／12h06m／0.2／1h19m；觀測 11h15m／—／12h45m／0.3／1h30m；NASA 11h01.3m／11h45.4m／12h30.0m／0.168／1h28.7m；方法段「assumed that Xu Guangqi has used the Western division of the day in 96 units … instead of … 100 ke … which is assumed in LL07」。p.331：「ended as 3-2 in football terms」；1610-12-15 日食「correctly predicted by Sabatino de Ursis, while it had not been foretold by Chinese astronomers」；「the difference of about 15 minutes between the observed eclipse times … and those of the NASA reconstruction」，推測儀器「misaligned by a few degrees」；「two minutes is clearly wrong … lasted almost one hour and a half … predicted a duration of one hour and 19 minutes」。《明史》：「承用二百七十餘年，未嘗改憲」「已而光啟法驗，餘皆疏。帝切責監官」「於是禮部奏開局修改」「九月癸卯開曆局」「然曆法疏密，莫顯於交食」（萬曆三十八年條，建議者為五官正周子愚，禮部附議，「疏入，留中」）「陰雲不見，無可徵驗」「紛若聚訟焉」「但魏文魁等多方陰撓，內官實左右之。以故帝意不能決」「惟天經為密」「中曆必不可盡廢，西曆必不可專行」「十一年正月，乃詔仍行《大統曆》」「迨十六年三月乙丑朔日食，測又獨驗。八月，詔西法果密，即改為《大統曆法》，通行天下。未幾國變，竟未施行。本朝用為憲曆」。JSTOR Daily：「the standard error of the Western method was about 13 minutes, while the stand error of the Datong li was about 24 minutes」「interesting exceptions」「the prediction provided by the Datong li was very bad, but those made by the Western method even worse」。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立，兩組一手轉折（明史的「光啟法驗」對照兩篇論文、贏了一場卻又「仍行大統曆」）都逐字讀到；片長 8–10 分鐘誠實。改掉的事實：（1）鉤子說《明史》「只用了十個字收尾」：那三句是 14 個字，而且後面還有戈豐年的辯解與開局，不是結尾；改用同一卷的「仍行《大統曆》」做反差。（2）題目說 2007 與 2020「兩篇比對 NASA 重建」：Lü 比的是當天觀測紀錄與一列來源不明的理論值，只有 2020 那篇用 NASA。（3）「96／100 刻是答案不同的原因之一」是研究者的推論；論文只說兩邊的假設不同、「算外」處理解決了 Lü 表的異常，改寫成這樣。（4）萬曆三十八年請譯西法的是五官正周子愚，禮部附議，不是禮部一方提議。（5）補上更強的轉折：Lü 用的就是當天的觀測紀錄，結論是西法在三項較差；2020 那篇則發現觀測本身晚了約 15 分鐘（作者推測儀器沒對準）——「誰算準」取決於拿什麼當標準答案。另補 1610 年熊三拔預報與《明史》萬曆條的對應。《治曆緣起》原文與 Lü 2007 原文仍只經轉述，已在 answer_target 標轉引；Ming–Qing 宮廷史，不涉今日爭議；耶穌會士只寫職務，不評宗教。去重：pool.json、batches/*.json（含 not_added）grep 徐光啟、崇禎、湯若望、Schall、欽天監、時憲、Jesuit、耶穌會，so-thats-why pool grep 日食預報，Y1／Y2／Y4 檔：都沒有同案；欽天監只在 N2401。"
+    },
+    {
+      "id": "N3322",
+      "agent": "Y3",
+      "reviewer": "R323",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Y3-S009 Cullen（NRI Working Papers 4）PDF 全文（連結經 WebSearch 取得）；Y3-S008 Jami 2015（HAL 頁面上的 PDF 連結）；Y3-S004《清史稿》卷二七二、Y3-S026 卷四十五（維基文庫搜尋 API → action=raw）；Y3-S006《庭訓格言》四庫本原始碼",
+      "reopen_result": "Cullen 導言：「the 14 year old Kangxi emperor」；「Schall von Bell (1591-1666)」；「where cross-checking with other sources is possible, they do not contradict Magalhães」；原信已佚、ARSI 抄本有 Luis da Gama 1669-03-08 簽注。譯文 p.15：「how we could know which was true mathematics, and which false? … Let there be assigned to the Adversary, to the Moor and also to me … a gnomon … let us all predict and say before the experiment is made, the length of the shadow … he who errs the most shall be judged to have the most mistaken mathematics」「They replied that they understood, and that they accepted it」；p.16–17 康熙令 Mahu 傳話：「Today I ordered you, and everybody else, to forget all contentions and dislikes … only to concern yourselves with determining a rule of true mathematics」。p.19（27 日）：「He equivocated, without ever wanting to say whether he understood or not. They asked the Moor, who said roundly that he did not know how to do such measurements」，官員請示後「whether he would have Father Verbiest do it? The King answered yes」；p.20「the Father fixed the gnomon, which was twisted」；注 35：中文紀錄「歪斜不合法」，「on 11 July 1665 Yang Guangxian had complained of the use of a misaligned (xie 斜) instrument by Schall for timing an eclipse」；注 37：楊、吳主張影子比預測的 16.66 尺長 9 分與 6 分（XCDA 1a-3a，轉引韓琦、吳旻 2006）；p.22–24：28 日宮中「two cubits and two tenths」的表「could not admit the width of a hair」，29 日原銅表「just as if the Father had held it in his hand and cut it with scissors」。Jami p.461–462：「eight officials … including Schall and five Christians, should be put to death by dismembering. The next day, a strong earthquake」「He and the three other Jesuits … were to remain in house detention in Beijing … the five Christian astronomers … were beheaded」「predictions of the length of the shadow of a gnomon on three consecutive days verified by officials」；注 1「the term liyu 曆獄 is not found in primary sources … since the 1990s」；p.473「the comet, which had in fact been visible for more than four months at the time the sentence was issued」；p.470 祝平一「Verbiest’s victory in fact lay in his gaining the emperor’s agreement to the tests Verbiest himself had proposed」。《清史稿》卷四十五：「乞屆期遣官測驗」「請易新名，頒行天下」「宜名『時憲』」「八月丙辰朔午時，日食二分四十八秒……惟新法一一脗合，大統、回回二曆俱差時刻」；順治二年「至期天陰雨，推驗事遂輟」；康熙三年十二月「依西洋新法」改「奏準」；「敕湯若望從寬免死，時憲科李祖白等五人俱處斬」；八年二月「南懷仁所言皆合，吳明烜所言皆謬」。卷二七二：「上命內大臣愛星阿及各部院大臣登觀像台測驗水星不見……律絞，援赦得免」；定罪六項；「時湯若望已前卒，复通微教師封號，視原品賜卹」；但把叩閽寫成「康熙五年」。《庭訓格言》：「朕幼時，欽天監漢官與西洋人不睦，互相㕘劾，幾至大辟。楊光先、湯若望於午門外九卿前當面賭測日影，奈九卿中無一知其法者。朕思已不知，焉能斷人之是非，因自憤而學焉。」",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立、來源厚（清史稿兩卷、實錄、庭訓格言、當場信件、Jami 綜述），10–12 分鐘誠實。改掉的事實：（1）1668 年不是「讓南懷仁和對手比賽」：楊、吳 26 日在皇帝面前答應，27 日一個含糊其詞、一個說不會，官員請示後由南懷仁一人預測，三天都只有他的數字；對手的參與只剩事後主張「實際影子長了 9 分、6 分」。題目、鉤子後的敘述與 payoff 都改。（2）「康熙晚年把對手記錯了人」是研究者的結論：《庭訓格言》說「幾至大辟」，把回憶放在湯若望受審那幾年；讀到的紀錄裡有日影測驗的是 1668 年南懷仁那次，但 1664–65 是否另有測影本輪沒讀到，改成「對不上讀到的紀錄」，不下「記錯」的結論。（3）湯若望生年 Jami 寫 1592、Cullen 寫 1591，risk 並列。（4）《清史稿》卷二七二把楊光先叩閽記成康熙五年，與 Jami 不合，片中只說康熙初年。補上：順治二年那次日食「至期天陰雨，推驗事遂輟」（考試沒考成）、注 35 的反諷（楊光先 1665 年也指控湯若望用歪斜儀器定日食時刻）、湯若望死後復通微教師號。處刑維持一句旁白、不畫；楊光先 26 日攻擊教義的話不念不轉述。熙朝定案中文原書仍未讀，楊、吳的主張只經 Cullen 注轉引，已標出。去重：湯若望、Schall、楊光先、南懷仁、Verbiest、曆獄、時憲、午門、晷、Magalh 在 pool.json 與 batches/*.json 都沒有同案（Schall 只在安徒生題、Magalhães 是麥哲倫題）。"
+    },
+    {
+      "id": "N3323",
+      "agent": "Y3",
+      "reviewer": "R323",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Halley 事前版地圖影像（archive.org ECCO 掃描 bim_eighteenth-century_a-description-of-the-pas_halley-edmund_1715_0，id 取自 archive.org advancedsearch，檔名 itemimage.png 取自 metadata API，5992×9072 灰階，逐段放大讀）；事後版地圖影像（劍橋大學典藏庫 handle 1810/221308 頁上的 JPEG 下載連結）；Y3-S010 Phil. Trans. OCR（metadata API 列出的 djvu.txt）；Y3-S011 Steel 第 7 章原頁；Y3-S012 van Gent PDF；Y3-S016 Pasachoff 摘要",
+      "reopen_result": "事前版地圖下方：「The like Eclipse having not for many Ages been seen in the Southern Parts of Great Britain, I thought it not improper to give the Publick an Account thereof, that the suddain darkness, wherein the Starrs will be visible about the Sun, may give no surprize to the People, who would, if unadvertized, be apt to look upon it as Ominous, and to Interpret it as portending evill to our Sovereign Lord King George and his Government, which God preserve. Hereby they will see that there is nothing in it more than Natural, and no more than the necessary result of the Motions of the Sun and Moon; And how well those are understood will appear by this Eclipse.」「we conclude ye Center of ye Moon’s shade will be very near ye Lizard point, when it is about 5 min: past Nine at London」「At London we Compute the Middle to fall at 13 min: past 9 in ye Morning, when tis dubious whether it will be a Total Eclips or no, London being so near ye Southern limit. The first beginning will be there at 7 min: past Eight, and ye end at 24 min: past Ten」「NB. The Curious are desired to Observe it, and especially the duration of Total Darkness … we may be enabled to Predict the like Appearances for ye future, to a greater degree of certainty than can be pretended to at present」，署名 Edmund Halley。事後版：「whereby it will appear that tho’ our Numbers pretend not to be altogether perfect, yet the correction they need is very small」「At London the Eclipse was carefully Observed to begin at 8h. 6′ mane, and to become Total at 9h. 9′. It continued Total 3′. 23″, and ended at 10h. 20′」「The Southern limit past over Cranbrook in Kent」「The greater diameter of ye Shade having been 170 Geog: Miles or Minutes, and ye lesser 110」，並附 1724 年 5 月 11 日日食路徑。書商轉錄的凶兆句與原圖相符。Phil. Trans.：「since the 20th of March, Anno Christi 1140, I cannot find that there has been such a thing as a Total Eclipse of the Sun seen at London」「caused a small Map of England … to be dispersed all over the Kingdom」「in this our Astronomy has lost no Credit」「Having computed that the Eclipse would begin at 8h 7′ … exactly at 8h. 6′ 00″ correct Time」；Norton-Court（Stephen Gray）「Total Darkness continued but about one Minute or rather less」；Cranbrook「the Sun to be extinguished but for a Moment」；「of the forty Counties … only the five most Northerly have not had the Sun wholly hid」；「full four Minutes … no Account how they measured this Time」。Steel：「inaccurate, by only 3 miles for the northerly limit, but by 20 miles for the southerly … about 183 miles wide, 23 more than his prior estimate」「A pamphlet that was widely disseminated at the time, showing such a map, was entitled The Black Day …」「“too great Company”」「Flamsteed, refused to allow Halley direct access to the Greenwich data, which were never published」。van Gent：「usually attributed to … Halley」「The earliest eclipse map appears to have been published in 1700 by … Cassini」「The earliest predictive eclipse map (solar eclipse of 11 May 1706) … from a Dutch booklet published in 1705」。Pasachoff：「perhaps the first to present eclipse maps to the public in their common current form」。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "研究代理要覆核做的事已做：兩張地圖都找到可讀的公開影像，書商轉錄的凶兆一句與原圖逐字相符（只差拼法），所以前提成立。改的是讓題目更貼原件：（1）鉤子原本只引凶兆半句，原圖緊接著就是「這些運行被理解得多好，這次日食就會證明」——這正是「公開考試」的原話，加進鉤子與題目。（2）補上原圖寫的「倫敦離南界太近、是否全食還說不準」與預計時刻 8:07／9:13／10:24，事後版說「需要的修正很小」——Halley 自己的評語，和 Steel 算出的「南界偏 20 英里」可以並陳。（3）Steel 說《The Black Day》是「附有這樣地圖」的小冊，補上「附圖」。（4）Flamsteed 是「不讓 Halley 直接取用」資料，原稿說「不肯把資料給」稍強，照原文改。新讀的兩張地圖影像編為 Y3-S027、Y3-S028。片長 8–10 分鐘誠實（事前事後兩張圖的對照、全國回報、凶兆、更早的地圖）。去重：Halley、哈雷、1715、eclipse map、日食地圖、Crane-Court 在 pool.json、batches/*.json 與 so-thats-why pool 都沒有同案（Halley 只出現在 1910 彗星、潮汐、Psalmanazar、空心地球；so-thats-why 的 S56-013、N251 是全食帶寬度的原理題，核心不同）。"
+    },
+    {
+      "id": "N3324",
+      "agent": "Y3",
+      "reviewer": "R323",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Y3-S017 Gassendi 1632（archive.org id 經 advancedsearch 取得；OCR 與 PDF 依 metadata API 所列檔名下載；第 6、7 頁以 500 dpi 轉成影像逐字讀）；Y3-S018 Cambridge blog 原頁；Y3-S019 BAA 原頁；Y3-S020 IMCCE PDF",
+      "reopen_result": "原書第 6 頁影像：「Accedēte autem hora 9. cùm Sol nonnihil inclaresceret, pingeretúrque in circulo, quidpiam subnigrum deprehendi … Hoc tamen crasse subnotavi: siquidem lōgè aberam, ut suspicarer Mercurium tantillam proijcere umbram … Rebar potius Maculam esse, quae tametsi die praecedente notata in Sole non fuisset, nihilominus ex eo tempore subnasci perinde potuisset」；「Redeunte Sole sub horam 9. … Comperi ergo illam distantiam particularum sexdecim … ampliorem factam particulis quatuor. Tunc conturbatus cogitare coepi Maculam vulgarem non esse」。第 7 頁影像：「sed persuaderi vix poteram ipsum esse Mercurium; adeò me exspectatio amplioris magnitudinis detinebat praeoccupatum … (jam enim erant viginti duae) tum demùm sum ratus bonis avibus adesse Mercurium. Itaque statim pede pulsare … sed Meus ille nescio quò, aut quid acturus diverterat. Inclamatum, ac bona sorte satis tempori ante finem revocatum」。OCR：「Ad Annum MDCXXXI & Diem vij. Novembris, Stylo N. Mane, Parisiis」；「ac cum maturius ingressus est, quam sui spem nobis fecisset」；「diameter Mercurij non major parte nonagesima diametri Solaris est visa」；「excessisse e limbo Solis praedicta Die vij. Mane. Hora x. min. xxviij.」；「Spiravit Kepplerus eam apparituram diametro septem minutorum … ego sperare vix audeo diametrum Veneream unius integri minuti」；「Hinc Kepplerus optimo jure canat jam palinodiam de viso alias, seu a se, seu ab alijs, in Sole, Mercurio」；Averroes 與「Kepplerus re cognita … Maculam demum fuisse agnovit」。BAA：「1631 Nov 07 (date old style)」「his assistant … had left the building! … Fortunately the assistant eventually returned」。Timberlake：「roughly one tenth … much closer to one hundredth」「The unexpectedly tiny size of Mercury doomed observers who were using pinhole cameras」「only one, Pierre Gassendi in Paris, published his observations」「he continued to observe for several hours」。IMCCE：「il était entré plutôt qu’on ne s’y attendait」。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "關鍵拉丁句覆核已對原頁影像，前提成立。改掉的事實：（1）鉤子把「我倒以為那是黑子」和「對更大尺寸的期待把我先占住了」用「因為」接成一句；原書裡第一句的理由是「我根本沒想過水星會投下這麼小的影子」，第二句是他量了三次、已看出黑點移動太快之後，還「幾乎說服不了自己」的原因，改成兩句分開引。研究代理問的「I took it for a sunspot」：原文是「Rebar potius Maculam esse」（我倒以為那是一個黑子），可以這樣譯。（2）助手不是「找不到」就結束：原書說叫了回來，好運趕在結束前；BAA 也說助手後來回來了，補上。（3）Timberlake 說 Gassendi「繼續看了幾小時」，原書是約 9 點看到、10 時 28 分離開，不用「幾小時」。（4）舊曆／新曆：原書明寫「Stylo N.」，BAA 寫「old style」是錯的，研究稿處理正確，保留為小插曲；覆核不自己換算儒略日期。補上 Kepler 預期金星直徑 7 分角、Gassendi 說 Kepler 早已承認自己那次「水星」是黑子、Averroes 的兩個黑點。片長 8–9 分鐘偏緊但素材夠（預言、天氣、三次量距、助手、大小、離開時刻、翻案詩、金星沒出現、Horrocks 收尾），維持 episode_core。去重：Gassendi、水星、Mercury、transit、凌日、1631、Horrocks、Kepler 在 pool.json、batches/*.json 與 so-thats-why pool 都沒有同案（凌日題都是 18–19 世紀金星凌日或系外行星原理題）。覆核過程的一次違規見 process_notes。"
+    },
+    {
+      "id": "N3325",
+      "agent": "Y3",
+      "reviewer": "R323",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Y3-S024 Khalisi arXiv 2006.04674v2 全文 PDF；Y3-S021《尚書‧胤征》、Y3-S022《史記》卷二、Y3-S023《春秋左氏傳‧昭公》（維基文庫搜尋 API → action=raw）；Y3-S025 Astronomy 原頁；新讀 Y3-S029 閻若璩《尚書古文疏證》卷六上（頁名出現在維基文庫搜尋 API「光啟法驗 餘皆疏」的結果列表）",
+      "reopen_result": "Khalisi §2.1：「It is said to have consisted of 28 or 29 out of the original 100 chapters, but there was no mention of an eclipse … a ruler in the 4th century AD ordered to restore the book … Some citations were gathered from other books … We might call it a forgery」；「Most scholars of the 19th century put forward … The lapse of the astronomers He and Ho did not consist of the missing prediction of an eclipse but the disregard of their duty … rites」；§4：「A “decapitation”, as widely depicted, is not stated … even not informed whether the punishment was actually inflicted」；「the date of 22 October 2137 BCE is mentioned most often, as suggested by Whiston … Popular science repeats this date constantly without elucidating the origin … not total but annular, and the magnitude in Anyi was about 0.875. A complete darkness was never achieved」；§5：「In 1734 Whiston pointed out the small quantity of obscuration (<1/12th) of Gaubil’s proposal, which would ill agree with the capital punishment of two astronomers for not taken notice of so small an eclipse」；Table 3 自 Yi Xing（≈700）到 Henriksson（2008），範圍 2165–1876 BCE。《史記》：「帝中康時，羲、和湎淫，廢時亂日。胤往征之，作胤征。」《胤征》書序：「羲和湎淫，廢時亂日，胤往征之。作《胤征》。」正文「乃季秋月朔，「辰弗集于房，瞽奏鼓，嗇夫馳，庶人走。」……政典曰：「先時者殺無赦，不及時者殺無赦。」」（頁首 notes「（僞）」、作者題梅賾）。《左傳》昭公十七年：「故夏書曰．辰不集于房．瞽奏鼓．嗇夫馳．庶人走．此月朔之謂也．當夏四月．是謂孟夏」。閻若璩第八十一條：「仲康始即位之歲，乃五月丁亥朔日食，非季秋月朔也。食在東井，非房宿也」「以《授時》《時憲》二曆推算」「論以曆法，則不合於天文；以典禮，則不合於夏製」；按語：「杜《注》曰：房，舍也。日月不安其舍則食。若此，於房宿絕無交涉……而偽作古文者，似錯認為房宿……故冠以「乃季秋月朔」五字」「太史公固受逸《書》二十四篇，內有《胤征》篇者」「則瞽奏鼓等禮的在十一年閏四月朔無疑矣……予笑其智不及此」。Astronomy（2026-10-22）：「the only eclipse that could have been seen from the capital city was on Oct. 22, 2137 B.C.E.」「a long-standing tale — which may be true but very probably isn’t」「they reportedly were killed」。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立。改掉的事實與寫法：（1）題目開頭的引號句是研究代理自擬的「流傳版」，並說「流傳了三百年」（研究者的推論）；brief 要求流傳版要有可讀出處，改用 Astronomy 雜誌 2026 年專欄的實際寫法。（2）「寫著日食的那一篇被認為是四世紀才出現的偽作」：《胤征》這個篇名早在《書序》與《史記》裡就有（閻若璩還說司馬遷受過含《胤征》的逸書），偽的是今天讀到的古文正文；照研究代理要求改成「學者多認為四世紀前後重編、後人補寫」，出處是 Khalisi 的綜述與閻若璩。（3）鉤子「這一句，司馬遷沒有抄」暗示他看過這句，改成「《史記》那一段裡沒有這一句」。（4）研究代理說閻若璩沒讀：覆核經搜尋 API 讀到《尚書古文疏證》卷六上第八十一條，正是用授時、時憲曆推仲康日食、說《胤征》不合，還指出「房」本義是「舍」、偽作者錯認成房宿才加上「季秋」，並自挑一日——這成了新的一層轉折，編為 Y3-S029，也和 N3322 的時憲曆接上。（5）Khalisi 寫 Whiston 1734 年挑日期時，嫌 Gaubil 那次遮得太少、跟「兩位天文官被處死」對不上：處罰故事反過來影響了日期，補進轉折。「至少 20 種推定」改成照 Khalisi 表的範圍說，不數數。夏朝存否、斷代工程只一句不下結論。片長 8–10 分鐘誠實。去重：羲和、仲康、胤征、Hsi and Ho、Xi and He、Shujing、2137 在 pool.json、batches/*.json 都沒有同案（2137 只出現在無關的書目與 S59）；最近的是 P24 泰利斯日食、N1661 朝鮮日食受杖，答案不同。Y3-S022 的違規已照指示記錄：研究代理最初自拼頁名抓過，後經搜尋 API 重讀；覆核另外獨立用搜尋 API 得到同一頁重讀，沒有任何內容依賴那次自拼的抓取，S022 保留。"
+    },
+    {
+      "id": "N3341",
+      "agent": "Y4",
+      "reviewer": "R324",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Y4-S001 https://archive.org/download/tragedypeleanar00varigoog/tragedypeleanar00varigoog_djvu.txt（檔名取自 archive.org metadata API）pp. 74–81、216–218；另重開 Y4-S002 Heilprin _djvu.txt pp. 111–120、329；Y4-S003／S004／S005 三份 LoC 報紙（resource 頁 fo=json 的 fulltext_file；1908 年 p. 36 取自 p. 35 的 pagination.next）",
+      "reopen_result": "Kennan：『we had finally come to regard him as the product of some newspaper man's imagination』；『He heard no noise, saw no fire, and smelled nothing except 「what he thought was his own body, burning.」』；『His face... had escaped injury, and his hair had not even been scorched』；『Several American correspondents... wrote their papers that the wild tale of the rescued prisoner was wholly imaginary』與紐約社論『has been proved to be a fake』；他約 25 歲；扶著走 6 公里到 Morne Rouge；造訪日是抵島後某個星期天（5 月 21 日前後抵達，書中 5 月 26 日已在 Vive），即 5 月底。p. 217『a woman in a cellar who died shortly after being taken out, and a negro prisoner』，p. 218 倖存者清單與『thirty thousand people lay dead』。Heilprin p. 112『history generally recites but a single survivor of the conflagration — the prisoner Ciparis』、官方估計 26,000／30,000；pp. 118–120 Compère-Léandre 約 28 歲、鞋匠、八點坐在門階、一小時後跑到 Fonds-Saint-Denis；注 7『Ciparis (or Cilbarice) and Compere-Leandre』。Portland Daily Press（N. Y. Times）：『Joseph Sibarace』、Fontabelle 號統艙、約 27 歲、『I thought it was thunder... terrible shrieks』、稻草著火光腳踩熄、燙傷『shoulders and arms and face』。Waterbury：『Ludga Sylbaris, a negro advertised by a circus performing here as the sole survivor』（未寫馬戲團名）。LA Herald 1908：『Joseph Ciparis, known as 「Sonson」』、『has never been heard from since his second departure』、閃光、禱告、撕袖、p. 36『His hair was nearly all burned off』、大錘、『The Abbe Marie... was the first to enter the cell』、『carried to Morne Rouge』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches/*.json（含 not_added）、reviews 與 Y1–Y3 grep 不到 Pelée／Pelee／Ciparis／Sylbaris／Martinique 的同題（『馬提尼克』只在 zombi 題，wave15 review 的命中是 appelées）；CLI search『Pelée』[]；原來如此事務所池無。主幹成立且兩個轉折都硬（最早訪談很安靜、1903 年書就有第二倖存者）。改正：鉤子『1902 年夏天』錯，Kennan 在 5 月底就見到他；『最早訪問他的人』改為『目前讀到最早的訪談』；『一年後』改『不到一年』；Ludger 拼法只見網頁；補頭髮前後矛盾與『此後再無音訊』。排除線：死亡人數只當背景，燒傷與遺體描寫全數排除，畫面只有遠景與空景，不算血腥題；選舉說法留在 scope 的不碰清單，題目與答案沒有殘留。Kennan 1924、Heilprin 1907 卒，可入畫。約 20 條事實，8–10 分鐘。"
+    },
+    {
+      "id": "N3342",
+      "agent": "Y4",
+      "reviewer": "R324",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "Y4-S010 https://archive.org/download/ita-bnc-mag-00001400-001/ita-bnc-mag-00001400-001_djvu.txt（Borelli 1670 pp. 15–16）；另重開 Y4-S009 distantreader A66615.txt（Winchilsea 全文）、Y4-S008 philtrans04724965 _djvu.txt、Y4-S011 Ferrara p. 108、Y4-S012 Lyell 1830 pp. 365–366、Y4-S013 民防部頁",
+      "reopen_result": "Borelli：『D. Didacus Pappalardus equestris ordinis Hierosolimitani Praesbyter』『omnium primo D. Pappalardus prope Malpassum incredibili ausu perforavit torrentem saxeum versus eius [OCR: Originem] occidentalem infra novam voraginem』，工人『pellibus tegerentur』輪班，『nisi operarij impediti, ac prohibiti fuissent, ne ulterius torrentem ignitum diverterent』；越牆後以瓦礫石堤導向海、堆出周長一英里的岬；『die 11 Iulij』停止；『mense Maio anni 1670 quo ego illuc accessi』。Winchilsea：落款『Naples the 27 of April』、題頭『His Majesties late Ambassador at Constantinople』、『no Pen can express how terrible it is, nor can all the Art and Industry of the world quench, or divert that which is burning』、27,000、20,000→3,000、城門砌死；附錄 4 月 18 日主教率教士遊行到 Monte di St. Sofia；全文無鑿熔岩改道。Phil. Trans.：『its fury ceased the 4. of May』於本篤會修道院，石牆混石灰、『great weight... and not its burning』。Ferrara p. 108：『principalmente da D. Diego Pappalardo... con 50 dalla Pidara coverti di pelli, con mazze, uncini e pali di ferro ruppero il fianco... presso Belpasso... ma occoraero anaali [OCR] gli abitanti della città di Paternò... e ne impedirono la operazione』，p. 101 說歷史細節依 Tedeschi 1669。Lyell：『A gentleman of Catania, named Pappalardo... took up arms』，腳注 Ferrara p. 108。民防部：『the first rudimental attempt』『close to Nicolosi... towards east』『revolted』、1983。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 與批次檔沒有獨立字的 Etna／Aetna／Catania／Pappalardo（Etna 命中都是 Vietnam 等字串）；CLI search『Etna』只回 N542（越南還劍湖，無關）；原來如此事務所池的埃特納只有雷達干涉題。引文全部對得上，但最強的轉折（Paternò 與『武器』何時進入紀錄）仍取決於沒讀到的 Tedeschi 1669 年報告，且 Ferrara 那一字 OCR 看不清，維持 needs_check。改正：『英國大使』改為卸任大使並寫明信的日期地點、Borelli 方位標為 OCR、補 Malpasso→Belpasso→Nicolosi 的地名漂移、『目前讀到最早的人工改道』改成『民防部稱第一次』。片長約 16–17 條事實，7–9 分鐘，勉強撐 8 分鐘，不建議降為 chapter（池中沒有同核心的熔岩改道兄弟題；N3345 同在 Etna 但核心不同）。補到 Tedeschi 或一份 1669 年義大利文報告後可轉 screened。"
+    },
+    {
+      "id": "N3343",
+      "agent": "Y4",
+      "reviewer": "R324",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Y4-S014 https://www.bousai.go.jp/kyoiku/kyokun/kyoukunnokeishou/rep/1783_tenmei_asamayama_funka/pdf/1783-tenmei-asamayamaFUNKA_06_chap2.pdf（連結取自報告書頁 index.html）pp. 45–50、84、專欄 2；另重開 chap1（p. 16）、chap3（pp. 164–165）與《広報ぼうさい》84 號",
+      "reopen_result": "p. 45：『犠牲者は477人、生存者93人』、供養碑也 477、總人口約 570。p. 46–47：『これまで120段あるいは150段とされてきた』、沿石段方向『約11ｍ離れた位置を中心に掘り下げた』、巨石基礎與尖頭角柱、水平 12 公尺、奧行 24 公分、『石段の総数は50段』『下部35段が埋没し、上部15段が埋まらずに残った』『災害の規模についてこれまでの考えを大きく見直すこととなった』；下から 2 段目與 1 段目兩具、背負與被背、皆女性。p. 50：地元稱『熱泥流』、建材與生活用品『全く焦げたり焼けたりしていなかった』、『「常温の乾燥した物体」であることが判明』。p. 84 ⑥：『一部に木材を炭化させるような高温部分を含むが、概ね常温に近い状態の土石』『災害伝承は年月を経ることで脚色を帯びてくる可能性』。專欄 2『日本のポンペイ』。chap1 p. 16：『真っ黒な柱状のもの』與根岸九郎左衛門『山頂か山腹のどちらから噴出したのか判然としない』。chap3：炭焼き時土中冒煙、1979–80 調査、1815 年碑『浅間山火石泥砂押出於当村四百七十七人流死』、1982 碑文『観音堂に避難した者など93人』。広報 84：『熱い溶岩』、466、15 段＋35 段、無血緣、媳婦背婆婆的推測、91 人。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、批次檔的『淺間』只在山田長政題的淺間神社，鎌原／浅間／Asama 無命中；CLI search『淺間山』[]；最近的 N2064 磐梯山、N1085 寶永富士都是不同答案。數字與 466/91 vs 477/93 都核對無誤。最大的錯是研究者自己的推論『傳說把石階說長、埋的深度反而被低估』：報告沒說方向，若傳說的 120／150 段是總數，傳說反而把埋的深度說深了——刪除並改寫 payoff。補上 p. 50 更直接的『常溫的乾燥物體』與『熱泥流』出處；無血緣只出自 2016 普及頁。遺體鑑定與頭髮證據不用。約 16 條事實，8–9 分鐘。"
+    },
+    {
+      "id": "N3344",
+      "agent": "Y4",
+      "reviewer": "R324",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Y4-S019 https://pompeiisites.org/wp-content/uploads/27_E-Journal_La-data-della-distruzione-di-Pompei_2.pdf（連結取自文章頁 https://pompeiisites.org/e-journal-degli-scavi-di-pompei/la-data-della-distruzione-di-pompei-premesse-per-un-dibattito-aperto/，覆核自己重抓文章頁確認頁上只有這個 _2.pdf 連結）；另重開 Y4-S022 MeteoWeb、Y4-S020 nunc.ch",
+      "reopen_result": "PDF 32 頁、12.12.24。p. 2：『trova tra i primi risultati quella del 24 ottobre 79 d.C.』『Foss 2022, p. 132: 「[…] has zero evidentiary basis」』『riportano unanimemente 「nono」 o 「nonum kal. Septembres」』『alcuni testi presentano però una lacuna al posto del mese』『「novum, novu」 o 「nov/nou」』→『1° novembre』；『Nel 1929, Giovanni Battista Alfano e Immanuel Friedlaender... mantengono 「non.」 per il 「nono giorno delle calende」 aggiungendo come mese nov(embres), anche se nov. e non. sono semplicemente due letture (una delle quali errate) della stessa parola』；Rosini 1797『23 novembre』；『Plinio il Giovane potrebbe essersi sbagliato』。p. 3：秋天 8 月 8 日開始、錢幣『non dirimente』（Abdy 2013）。p. 4：Osanna 2019 p. 150『questo è un argomento non determinante, il carboncino in teoria si sarebbe potuto conservare per un anno』，同處又以中庭施工主張不可能留過十個月，2023a『mezzo scrittorio di per sé effimero』。pp. 5–8：2023-10-17 用橡木炭寫『XVI K NOV 2023』，至 2024-08-24『condizione conservativa essenzialmente inalterata』『perfettamente leggibile... potrebbe sembrare anche più recente』。pp. 16–17：沒有在用的工地材料、『cucine in attività』。pp. 23–24 結論：問題應是『abbiamo attualmente sufficienti elementi archeologici per mettere in dubbio la data del 24 agosto?』，炭筆字是『fuorigioco』，可能寫於 78 年 10 月。MeteoWeb：『Non possiamo al momento escludere che l'eruzione sia avvenuta il 24 agosto, come scrisse Plinio』『non vuole essere un punto finale』。nunc：陸龜 2022 年 6 月、死於噴發前；ÁTROPOS 2025-12-03、14 具、『not a decisive element』；95%。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：龐貝相關既有題只有 S37（小普林尼沒上船怎麼寫船上的事；curio-s37/research.md 明寫月日爭議未重開、旁白不講月日）與 N3042（Fontana 水道），答案都不同；XVI K／Osanna／Zuchtriegel grep 無；CLI search『龐貝 日期』[]。主幹全部對得上。改正：Osanna 的讓步與『施工』論證在 2019 同一篇，不是先承認後改口；結論改回論文的『換個問法』；陸龜刪除（整理文說牠死在噴發前，關係說不清）；1929 兩位學者不入畫（Friedlaender 1948 卒，但 Alfano 卒年查不到）；Osanna、Zuchtriegel、Foss 在世只念名字。約 17 條事實，9–10 分鐘。可排在 S37 後當續集。"
+    },
+    {
+      "id": "N3345",
+      "agent": "Y4",
+      "reviewer": "R324",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Y4-S023 https://en.wikisource.org/w/index.php?title=Lives_of_the_Eminent_Philosophers/Book_VIII&action=raw（§§ 67–75 與 Hicks 注）；Y4-S024 改讀同一 archive.org 項目 metadata 所列的 _djvu.txt（Loeb 6.2.8 英文頁仍缺），並以 Y4-S026 Gutenberg #44884（Hamilton & Falconer）逐字核 6.2.8 與 6.2.10",
+      "reopen_result": "§§ 67–68 Heraclides：宴後散睡、天亮只他不見、『an exceedingly loud voice calling Empedocles』、天上的光、Pausanias 說他已成神。§ 69 Hippobotus：走向 Etna、『plunged into the fiery craters... to confirm the report that he had become a god. Afterwards the truth was known, because one of his slippers was thrown up in the flames; it had been his custom to wear slippers of bronze. To this story Pausanias is made (by Heraclides) to take exception.』；Hicks 注：D. L. 從 Heraclides 對話錄 Περὶ τῆς ἄπνου 大段摘錄，『a resume from Hippobotus of the very passage in the dialogue』。§ 70 Diodorus of Ephesus：Selinus 引河止疫後『he leapt into the fire』。§§ 71–72 Timaeus：去伯羅奔尼撒不回、『How came he to leap into the craters, which he had never once mentioned』、Heraclides『a man dropped down to earth from the moon』。§ 73 Favorinus：紫袍金帶、銅鞋、德爾菲桂冠；墜車斷腿、77 歲、墓在 Megara。§ 74 Aristotle 說 60 歲、他人說 109；Demetrius 上吊、Telauges 落海。§ 75 Diogenes 兩首短詩（墓在 Megara）。Strabo（Hamilton & Falconer）：20 stadia 平地、灰牆、灰丘與直立雲柱、沙燙且深折返；『They were, however, of opinion... that much exaggeration pervades the accounts... especially the tale about Empedocles... one of the brazen sandals which he wore, it being found outside at a short distance from the lip of the crater... for neither is the place approachable nor even visible』；6.2.10『if we are to credit this, we may as well attend to what has been reported concerning Empedocles』。",
+      "changed_fields": [
+        "axis",
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Empedocles／恩培多克勒／銅鞋在 pool.json、批次檔、Y1–Y3 與事務所池都 grep 不到，CLI search『Empedocles』[]。歸屬錯兩處：（1）原稿說 Heraclides 版沒有火山、是 Hippobotus 把成神接上 Etna，但 § 69 末句與 Hicks 注說 Hippobotus 摘要的正是 Heraclides 對話錄的同一段、書中 Pausanias 已在反駁跳火山——改寫轉折一並掛『Hicks 認為』；（2）6.2.8『很多說法誇大』是登頂者的看法，不是 Strabo 本人。另外現存文字裡 Strabo 比 Diogenes 早約兩百年，銅鞋『目前讀到最早』改成 Strabo。鉤子只講了 Heraclides 一說，改寫。主題是人物死法的版本而非噴發目擊，軸改 S。約 15 條事實，7–9 分鐘，勉強 8 分鐘；不建議與 N3342 併（同在 Etna，但一個問誰擋了改道、一個問哲學家怎麼死）。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "N3282",
+        "N3283"
+      ],
+      "shared_question": "1919 年 Charles Fort 在《The Book of the Damned》第 9 章列的那些『煤裡、石裡的人造物』，原始紀錄到底寫了什麼？他抄的時候改了哪些字？",
+      "why_it_flows": "兩題同出 Fort 第 9 章、同一個方法（把 Fort 的引文逐條放回原刊）：N3282 用一件物品走完 1886 報告→1887–88 博物館檢查→1919 Fort 的『鋼立方體』；N3283 接著看同一章另外三件，Fort 多寫半句、少寫半句、錯一年。都已有逐字讀到的一手來源，不必補料，連播約 17–20 分鐘。"
+    },
+    {
+      "ids": [
+        "N3301",
+        "N3302"
+      ],
+      "shared_question": "清代最會考據的筆記作者抓到了扮鬼的人，為什麼還是不肯說世上沒有鬼？",
+      "why_it_flows": "N3301 用回煞一案把紀昀的立場講完（假煞神→親見回煞→父親坐等一夜無見），N3302 接著用淮鎮鬼宅、偷玉的家奴、錢泳的『人而鬼』與李福、宿遷兩個『揭穿後又來真的』補足同一個答案；不需補料，合計約 13–16 分鐘，或 N3301 單做 8.5–10 分鐘、N3302 擇二三條併入其轉折一。也可與 wave31 的 N3223（郁永河『知其燐也』，懷疑者改口）排同一播放清單，但不同答案、不合併。"
+    },
+    {
+      "ids": [
+        "N3321",
+        "N3322"
+      ],
+      "title_suggestion": "日食考試真的決定了中國改用西洋曆嗎？——1629 到 1669 年的五場天象考試（上下集）",
+      "shared_question": "明清朝廷用日食、水星與正午日影「考」天文官，這些考試真的決定了要不要用西洋新法嗎？",
+      "chapter_order": [
+        "N3321（上集，1629–1643：一場三家都不準的日食、十四年的比賽、崇禎點頭時明朝已到盡頭，8–10 分鐘）",
+        "N3322（下集，1644–1669：名字先定再考的日食、一顆沒出現的水星、對手退出的日影測驗、康熙對不上紀錄的回憶，10–12 分鐘）"
+      ],
+      "why_it_flows": "兩題回答同一個核心問題，而且是同一條時間線的前後兩半：上集結尾《清史稿》「當時格而不行，乃為新朝改憲之資」正好接下集開頭 1644 年的定名與測驗；湯若望在兩集都出現（1630 年入局、1644 年主持測驗）。兩題各自都撐得起 8 分鐘以上，合併會超過 18 分鐘，建議排成上下集，不合併。下集可以用《庭訓格言》那段回憶開場，上集用《明史》「已而光啟法驗」與「仍行大統曆」的反差開場。"
+    }
+  ],
+  "rule1_record": [
+    "Y3（研究）：自承照其他卷命名自行拼出一個維基文庫網址，之後經搜尋 API 找到同頁重讀，只用重讀的內容（Y3-S022）。",
+    "Y2（研究）：自承自行輸入子不語、履園叢話、顏氏家訓、太平廣記等書的維基文庫書名頁網址；R322 從目錄頁連結重開六頁（Y2-S005、S006、S007、S009、S010、S021），逐字相符，出處改記。",
+    "R323（覆核）：自己拼過一個 archive.org OCR 檔名（404，未使用），之後改用 metadata API 列出的檔名（Y3-S017）。",
+    "Y1、Y4：覆核 R321、R324 沒有發現違規；Y1-S001 的 /download/ 目錄連結改記 item 頁上的 /stream/ 版。"
+  ],
+  "reviewer_notes": {
+    "R321": {
+      "dedupe_notes": "grep pool.json 與 batches/*.json（含 not_added）：Coso（只命中 Trancoso）、spark plug、火星塞、Olancha、Wolfsegg、Salzburg、薩爾斯堡、Gurlt、Kingoodie、Nimrud、Nimroud、Layard、Dorchester、Tubal、Tassili、Jabbaren、Dendera、丹德拉、Hathor 均無；Lhote 只命中同姓不同人；Book of the Damned 只命中 N3186（答案不同）；既有相關 H20、H25、M27、N526、N783、N108、M09、N142、N2965 均為不同案。原來如此事務所 pool.json 無 Coso、Wolfsegg、Kingoodie、Nimrud、Dorchester、Tassili、Dendera、避雷針。Y2、Y3 檔無這些關鍵字。素材池搜尋 CLI 沒跑，去重以 grep 為主。研究代理的 not_added（H25、N526、N783、N108、M09、H20）比對正確。",
+      "blocked_sites": [
+        "inference-review.com（curl 連線被重設；只能用摘要型工具）",
+        "mdc.ulpgc.es（Le Quellec 1999 Almogaren PDF 回 403，沒繞過）"
+      ]
+    },
+    "R323": {
+      "process_notes": [
+        "覆核自己的一次違規（照實記錄）：讀 Y3-S017 時，覆核在查 metadata 之前，照 archive.org 常見命名自己拼了一個 OCR 檔名（bub_gb_Q4aCiB54KUMC_djvu.txt）去抓，回 404；隨即改用 metadata API 列出的檔名（gb_Q4aCiB54KUMC_djvu.txt 與 gb_Q4aCiB54KUMC.pdf）重抓。本覆核沒有任何內容依賴那次 404 的抓取。",
+        "Y3-S006《庭訓格言》的頁名：覆核的搜尋 API 查詢（「賭測日影」）只回到《故前欽天監監正歙縣楊公神道表》（其中引《庭訓格言》此條）；《庭訓格言 (四庫全書本)》頁名取自研究代理檔中的連結，原始碼逐字核對無誤。",
+        "Y3-S022：照指示記錄研究代理曾自拼頁名抓取；覆核以搜尋 API 獨立取得同一頁重讀，S022 保留，沒有任何主張依賴那次自拼的抓取。",
+        "素材池搜尋 CLI 沒有使用，去重以 grep pool.json、batches/*.json（含 not_added）、case_key、so-thats-why pool.json 與 Y1、Y2、Y4、R322 檔為主。"
+      ],
+      "series_order_suggestion": {
+        "order": [
+          "N3325",
+          "N3321",
+          "N3322",
+          "N3324",
+          "N3323"
+        ],
+        "note": "五題同主題（天象考試）但核心問題不同，只有 N3321＋N3322 回答同一個問題（見 theme_suggestions）；其餘不合併。建議播放順序：N3325（最古老的「天文官被處死」原型，也最好當系列開場）→ N3321 → N3322（上下集）→ N3324（1631 年歐洲第一次照預言看見行星凌日）→ N3323（1715 年把預報交給全國檢驗）。N3325 的閻若璩用的正是 N3322 的時憲曆，可在 N3322 結尾或 N3325 說明欄互相提及；N3324 與 N3323 都是歐洲「預言—公開檢驗」，可連排但答案不同。也可接池中既有的 N1661（1422 年朝鮮日食預報早一刻受杖）、N1581（1763 年寶暦暦漏報日食）、N1781（貞享改暦）組成「東亞日食考試」播放清單，與 P24（泰利斯日食）相鄰。"
+      },
+      "blocked_sites": [
+        "zh.wikisource.org 搜尋 API 間歇回非 JSON（疑似限流），等候後重試成功，沒有改標頭",
+        "wellcomecollection.org 的 Halley 地圖紀錄（works/z359mavy）回 410 Gone，改用劍橋典藏庫與 archive.org 影像",
+        "collections.whipplemuseum.cam.ac.uk 只有 209×283 的縮圖，不能讀字（只用了它的目錄文字核對書名與 Senex 署名，未列為來源）"
+      ]
+    },
+    "R324": {
+      "rule1_audit": "檢查研究代理暫存檔：y4dl/ej27.html（文章頁）確實連到 27_E-Journal_La-data-della-distruzione-di-Pompei_2.pdf，文章頁本身由 ejc.html 上的連結取得；覆核另自行重抓文章頁，頁上只有 _2.pdf。la1908.json 的 pagination.next 確為 ...?fo=json&sp=36，la1908b.json 即該頁；locpage.sh 只在搜尋結果網址上加 fo=json（BRIEF 第 3 條允許的格式參數）。Strabo _text.pdf 出現在覆核自己的搜尋結果，且列在該項目的 metadata 檔案清單。bousai 各章 PDF 都列在報告書頁。舊 _E-Journal…Pompei.pdf（404）研究代理稱來自搜尋結果，無法再現但也沒有拼湊跡象。結論：未發現違反規則 1。",
+      "blocked_sites": [
+        "dewiki.de 以外的 Alfano 卒年來源：搜尋結果沒有可讀頁面（不是封鎖，記為查不到）",
+        "collections.dartmouth.edu Encyclopedia Arctica（503，沒有重試繞過）",
+        "atlas.perseus.tufts.edu（只回空殼頁，改讀 Gutenberg）"
+      ]
+    }
+  }
+}

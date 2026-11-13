@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { Rss } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
@@ -102,6 +103,15 @@ export async function topicHubMetadata(route: TopicHubRoute): Promise<Metadata> 
             },
           }
         : {}),
+      ...(isNewsTopic(route.section, route.topic) && !route.cursor && !route.sort
+        ? {
+            types: {
+              "application/atom+xml": [
+                { url: localeUrl(route.locale, `${path}/feed.xml`), title: t("topicHubTitle", { topic: label }) },
+              ],
+            },
+          }
+        : {}),
     },
     ...(noindex ? { robots: { index: false, follow: true } } : {}),
   };
@@ -157,20 +167,33 @@ export async function renderTopicHub(
           itemList(locale, list.articles.map((article) => ({ name: article.title, path: guideHref(article.kind, article.slug) }))),
         ]}
       />
-      <main className="mx-auto max-w-5xl px-5 py-10 md:px-8">
+      <main className="mx-auto max-w-5xl px-5 py-6 sm:py-10 md:px-8">
         <nav aria-label={t("guides.breadcrumb")} className="text-[length:var(--text-meta)] text-[var(--muted)]">
-          <ol className="flex flex-wrap items-center gap-1">
+          <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
             {trail.slice(0, -1).map((crumb) => (
-              <li key={crumb.path} className="flex items-center gap-1">
-                <Link className="inline-flex min-h-11 items-center underline underline-offset-4" href={crumb.path}>{crumb.name}</Link>
+              <li key={crumb.path} className="flex items-center gap-1.5">
+                <Link className="inline-flex min-h-11 items-center underline decoration-[var(--line)] underline-offset-4 transition-colors hover:text-[var(--teal)] hover:decoration-[var(--teal)]" href={crumb.path}>{crumb.name}</Link>
                 <span aria-hidden>›</span>
               </li>
             ))}
-            <li aria-current="page" className="inline-flex min-h-11 items-center">{label}</li>
+            <li aria-current="page" className="line-clamp-1 py-1.5 font-medium text-[var(--ink)] sm:line-clamp-none">{label}</li>
           </ol>
         </nav>
-        <h1 className="text-4xl font-bold tracking-tight">{label}</h1>
-        <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--muted)]">{lead}</p>
+        <header className="portal-hero-shell mt-2 rounded-3xl p-5 sm:p-7 md:p-8">
+          <h1 className="text-2xl font-extrabold leading-[1.26] tracking-tight sm:text-3xl md:text-4xl">{label}</h1>
+          <p className="mt-2.5 max-w-2xl text-sm leading-6 text-[var(--muted)] sm:mt-3 sm:text-base sm:leading-7 md:text-lg md:leading-8">{lead}</p>
+          {news ? (
+            <p className="mt-4">
+              <a
+                href={`/${locale}${path}/feed.xml`}
+                className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--surface)] px-3.5 text-sm font-semibold text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+              >
+                <Rss size={15} aria-hidden />
+                {t("guides.rssSubscribe")}
+              </a>
+            </p>
+          ) : null}
+        </header>
 
         {!vocabulary.available ? (
           <p className="mt-6 leading-7 text-[var(--muted)]">{t("guides.topicUnavailable")}</p>
@@ -194,9 +217,9 @@ export async function renderTopicHub(
 
         {list.articles.length ? (
           news ? (
-            <NewsList articles={list.articles} className="mt-6" />
+            <NewsList articles={list.articles} className="mt-6" showDescription />
           ) : (
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            <ul className="mt-6 grid gap-4 sm:grid-cols-2">
               {list.articles.map((article) => (
                 <GuideCard key={`${article.kind}:${article.slug}`} article={article} labels={cardLabels} />
               ))}
@@ -212,7 +235,7 @@ export async function renderTopicHub(
 
         {list.next_cursor ? (
           <p className="mt-8">
-            <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={`${next}${encodeURIComponent(list.next_cursor)}`}>
+            <Link className="inline-flex min-h-11 items-center rounded-full border border-[var(--teal)] bg-[var(--surface)] px-5 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-colors hover:bg-[var(--teal-soft)]" href={`${next}${encodeURIComponent(list.next_cursor)}`}>
               {t("guides.more")}
             </Link>
           </p>

@@ -40,13 +40,13 @@ export function webSite(locale: Locale, searchEnabled = true): object {
     name: BRAND,
     url: localeUrl(locale, "/"),
     inLanguage: locale,
-    // /hotspots really does take `q` and filter on it, so this is a search endpoint a reader can
-    // land on, not a shape invented to earn a sitelinks search box.
+    // /search/articles takes `q` and searches published travel guides and lifestyle/news articles,
+    // so this is a real public search endpoint a reader can land on in every locale.
     ...(searchEnabled ? { potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${localeUrl(locale, "/hotspots")}?q={search_term_string}`,
+        urlTemplate: `${localeUrl(locale, "/search/articles")}?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     } } : {}),
@@ -157,6 +157,8 @@ export function guideArticle(
     publishedAt: string;
     /** Moves on republication where `publishedAt` does not; absent on an older API. */
     modifiedAt?: string | null;
+    /** Set (`YYYY-MM-DD`) on dated news stories; switches the graph from Article to NewsArticle. */
+    newsDate?: string | null;
     hero?: { src: string; width: number; height: number } | null;
     /** The listing the reader returns to, named as the breadcrumb names it. */
     section: string;
@@ -171,6 +173,8 @@ export function guideArticle(
     collection?: boolean;
     /** The hub's members, when the series listing resolved. */
     entries?: readonly Crumb[] | null;
+    /** Parent series hub when this article is a member lesson of a series. */
+    partOfSeries?: Crumb | null;
     /** The editor's summary block: the answer in two to five sentences. Becomes `abstract`,
      *  and the card that shows it (`#article-summary`) becomes the speakable passage. */
     abstract?: readonly string[] | null;
@@ -186,7 +190,7 @@ export function guideArticle(
   const lastReviewed = checked.length ? checked.reduce((left, right) => (right > left ? right : left)) : null;
   return {
     "@context": CONTEXT,
-    "@type": input.collection ? "CollectionPage" : "Article",
+    "@type": input.collection ? "CollectionPage" : input.newsDate ? "NewsArticle" : "Article",
     headline: input.title,
     name: input.title,
     description: input.description,
@@ -208,6 +212,15 @@ export function guideArticle(
       ? {
           abstract: input.abstract.join(" "),
           speakable: { "@type": "SpeakableSpecification", cssSelector: ["#article-summary"] },
+        }
+      : {}),
+    ...(input.partOfSeries && !input.collection
+      ? {
+          isPartOf: {
+            "@type": "CreativeWorkSeries",
+            name: input.partOfSeries.name,
+            url: localeUrl(locale, input.partOfSeries.path),
+          },
         }
       : {}),
     isAccessibleForFree: true,

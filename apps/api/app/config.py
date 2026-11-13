@@ -264,6 +264,9 @@ class Settings(BaseSettings):
     # this is the model the planner and the trip parser use.
     gemini_model: str = "gemini-3.8-flash"
     minimax_api_key: str | None = None
+    # More M Plan keys besides minimax_api_key, separated by commas or white space: every MiniMax
+    # call picks among all of them by how busy and how used each is (app.ai.minimax_pool).
+    minimax_api_keys_extra: str | None = None
     # Jev is TypeSafe's System One model. It decides -- choice, score, noul -- and never
     # generates text, so it is not an AI_PLANNER_PRIORITY vendor and never a planner
     # fallback; it lives here only because its key belongs on the same encrypted card.

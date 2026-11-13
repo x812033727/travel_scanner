@@ -1,0 +1,207 @@
+{
+  "batch_id": "wave58-human-20261111",
+  "created_on": "2026-11-12",
+  "scope": "冷房建築牆內受潮的現場調查與模擬；清水嚐起來會甜的實測：替長題 G42 補來源（作者 F11，覆核 V14）與組題 C4-06 補核心（作者 F12，覆核 V15）。",
+  "sources": [
+    {
+      "id": "H58-S001",
+      "url": "https://www.energy.gov/sites/prod/files/2016/06/f32/Moisture_Problems_in_Manufactured_Housing.pdf",
+      "canonical_url": "https://www.energy.gov/sites/prod/files/2016/06/f32/Moisture_Problems_in_Manufactured_Housing.pdf",
+      "title": "Moisture Problems in Manufactured Housing（Neil Moyer，Florida Solar Energy Center）",
+      "publisher": "Home Energy 雜誌 2002 年 3／4 月號，pp.24–29；美國能源部 energy.gov 存檔（Building America Industrialized Housing Partnership）",
+      "version": "2002 年 3／4 月",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+      "reading_scope": "全文 6 頁讀完（含兩個邊欄）",
+      "locator": "p.24–25 六項成因與 Table 1；p.27 Vapor retarder in the wrong location；p.28 Testing Equipment and Procedures；p.29 Solving Moisture Problems",
+      "summary": "佛羅里達太陽能中心（FSEC）在美國東南部檢查 25 棟有受潮問題的工廠預製住宅。逐項比例：室內溫度低於室外露點 100%、外殼兩側負壓 100%（量級只有 1–3 帕，用解析度 0.1 帕的數位壓力計量）、風管漏氣與回風路徑不足 100%、地板擴散 100%、防潮層位置錯 100%、除濕不足約 80%、排風扇 8%。夏天室外露點常在 75 °F 以上。負壓多半來自地板下送風管漏氣；所有牆板損壞的房子用的都是貼乙烯基面的石膏板，業界測得 3/8 吋石膏板貼 4 mil 乙烯基是 0.42 perm；聯邦 HUD 規範要求外牆在居室側設 1 perm 以下的防潮層，作者註明這在北方是暖側、在南方是冷側。4 號屋風機常開、持續 −1 帕，外牆室內板第一年全部換過、換完又壞。改善建議實施後，一家廠商回報 2000 年以後出廠送往東南部的房子沒有再出現這類問題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是 FSEC 研究員寫在業界雜誌上的專文，不是技術報告全文（fsec.ucf.edu 的報告上一輪 TLS 憑證失敗，本輪未重試）；25 棟是「有問題才被找去」的樣本，不代表一般住宅的比例；沒有牆內溫濕度時間序列；房子是美國輕構造預製屋，不是 RC 或磚牆。改善成效是廠商口頭回報，作者自己寫「初步」。與 Lstiburek／Building Science Corporation 無關。 覆核 V14（2026-11-12）：summary 改：「外殼兩側負壓 100%」是文章把它列為成因的比例，同一篇記有一棟（回風管脫落，後文 9 號屋）是正壓；乙烯基面石膏板是廠商通行做法；25 棟出自四家廠商；量的是壓差與風管漏氣量。limitations 補：FSEC 的 BAIHP 與 BSC 同屬能源部 Building America 計畫下的不同團隊，作者與 Lstiburek 無隸屬，文章沒有參考文獻。",
+      "author_cache": {
+        "file": "scratchpad/stw8/f11src/doe-mh-moisture.pdf",
+        "sha256_prefix": "a93393f3661b7193",
+        "note": "文字檔 doe-mh-moisture.txt（版面）與 doe-mh-moisture-raw.txt（逐欄） 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H58-S002",
+      "url": "https://iibec.org/publication-post/air-infiltration-and-its-consequences-for-building-enclosures-in-hot-humid-climate-zones",
+      "canonical_url": "https://iibec.org/publication-post/air-infiltration-and-its-consequences-for-building-enclosures-in-hot-humid-climate-zones",
+      "title": "Air Infiltration and Its Consequences for Building Enclosures in Hot/Humid Climate Zones（David Finley & Manfred Kehrer，Wiss, Janney, Elstner Associates）",
+      "publisher": "IIBEC Interface（International Institute of Building Enclosure Consultants 技術期刊），2022 年 11 月號 pp.28–33；原發表於 2022 IIBEC 年會",
+      "version": "2022 年 11 月",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機 HTML 快取，去標籤後讀正文全文（另以 WebFetch 讀過一次摘要，結論一致）",
+      "reading_scope": "正文全文；圖 3–8 與附錄圖 A.1–A.6 是色塊圖，數值只在圖上，沒有讀到數字",
+      "locator": "Hygrothermal Modeling、Results、Conclusion 三節",
+      "summary": "兩位 WJE 顧問用 WUFI Pro 6（一維熱濕耦合）模擬休士頓（氣候區 2）朝南的磚飾面木構架牆（外側 0.1 perm 的防水透氣層、R-20 棉、室內紙面石膏板），加上自訂的外氣滲入模型（由煙囪效應壓差與鼓風門量到的整棟漏氣率推算），跑 10 年、500 多種組合：室內 65–72 °F、相對濕度 50% 與 60%、75 帕下漏氣率 0–1 cfm/ft²、室內面漆 7 perm、1 perm 乳膠漆與乙烯基壁紙，以 ASHRAE 160-2016 的黴菌生長指數（3 以上不合格）判讀室內石膏板外側。結果：漏氣越少、室內溫度越高，長黴風險越低；室內側用 1 perm 以下的防潮層（Class I／II）在所有組合裡風險都明顯高於 1 perm 以上的漆；要符合 ASHRAE 160，氣密至少要到規範值（75 帕下 0.4 cfm/ft²）。作者結論：照能源法規蓋不保證不結露、不長黴。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "期刊是專業協會刊物；作者自己寫明外氣滲入模型「尚未驗證」；只模擬一個城市、一種牆（木構架，不是 RC 或磚承重牆）；具體數值只在色塊圖上，正文是定性敘述，片中不可報數字。原文 Results 一句把「較高風險」寫成 higher airtightness levels，與上下文矛盾，應是筆誤。參考文獻 8 引了 Lstiburek 的 BSD-104 當氣密標準出處，但模擬與結論是作者自己的。 覆核 V14（2026-11-12）：author_cache 註明：頁面 HTML 位元組會變（今日重抓 sha256 前綴 5c1e07a0702fb39a，與快取 f5b645f8801bb128 不同），去標籤後 635 行文字逐行相同。",
+      "author_cache": {
+        "file": "scratchpad/stw8/f11src/iibec-finley-kehrer-2022.html",
+        "sha256_prefix": "f5b645f8801bb128",
+        "note": "去標籤文字檔 iibec-finley-kehrer-2022.txt；PDF 版（iibec.org/wp-content/uploads/2017-04-Linster.pdf 是搜尋結果給的錯網址）轉址迴圈，未取得 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H58-S003",
+      "url": "https://ph01.tci-thaijo.org/index.php/nakhara/article/download/264187/176219/1083759",
+      "canonical_url": "https://ph01.tci-thaijo.org/index.php/nakhara/article/download/264187/176219/1083759",
+      "title": "Computational Hygrothermal Analysis of External Wall Behavior in Naturally Ventilated and Air-conditioned Historical Buildings in Thailand（Pinich & Sreshthaputra，朱拉隆功大學建築學院）",
+      "publisher": "Nakhara: Journal of Environmental Design and Planning 25(3), Article 618（開放取用，ThaiJO）",
+      "version": "2026；DOI 10.54028/NJ202625618；2026-04-30 接受",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+      "reading_scope": "摘要、Case Study、Simulation Inputs and Settings、結果第一節（冷氣對自然通風）與結論逐句讀；材料參數表與切牆工法細節略讀",
+      "locator": "摘要；Case Study；Simulation Inputs and Settings；Comparison of Water Content…一節；Conclusion",
+      "summary": "以曼谷玫瑰聖母堂（1891–1897 年建）的外牆為例：0.60 公尺實心黏土磚加石灰粉刷，沒有防潮層，地下水沿牆上升。用 WUFI 以曼谷氣象站資料模擬 2019–2024 六年；自然通風情境的室內條件取自 2016 年在教堂內的實測，冷氣情境設 25 °C、24 小時運轉（作者稱最壞情況）。結果：牆上段頂部兩種情境都是 21.48 kg/m³；中段自然通風 39.66、冷氣 36.83；下段 210.76 對 205.63（該種磚的自由飽和含水量是 230 kg/m³）；最底部兩者相同（299.89、299.49）。作者解釋是冷氣讓室內空氣較乾、牆面蒸發變多、上升潮氣爬得較低。但把牆切斷、擋掉地下水之後，冷氣情境的上段各處反而比自然通風高約 2 kg/m³，作者歸因於室外側水汽壓較高、把水汽往有冷氣的室內推。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "純模擬，沒有以這面牆的含水量實測驗證；差值很小（2.83、5.13、約 2 kg/m³），摘要把 2.83 與 5.13 說成含水量減少，內文同一組數字說的是年波動的差，兩處說法不完全一致，片中只能說「略乾一點」；對象是百年磚造教堂，不是現代 RC 住宅；沒有模擬空氣滲入。 覆核 V14（2026-11-12）：limitations 補：內文寫模擬 2019–2024 六年，表格標題寫 5-year Period；牆最底部約 299 kg/m³ 高於同文所給磚的自由飽和含水量 230 kg/m³，原文未解釋；切牆後的成因是 could be；冷氣情境的室內相對濕度本覆核沒有找到明文。summary 的「上段各處反而比自然通風高約 2 kg/m³」維持，刪去任何「整面牆」的說法。",
+      "author_cache": {
+        "file": "scratchpad/stw8/f11src/nakhara-264187.pdf",
+        "sha256_prefix": "29dff442f5a6e5c5",
+        "note": "文字檔 nakhara-264187.txt（版面）與 nakhara-raw.txt（逐欄） 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H58-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5507258/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0180787",
+      "title": "Differential modulation of the lactisole ‘Sweet Water Taste’ by sweeteners",
+      "publisher": "Alvarado、Nachtigal、Slack、Green／PLoS ONE 12(7): e0180787",
+      "version": "2017，10.1371/journal.pone.0180787，PMC5507258（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 預設標頭取得 Europe PMC 全文 XML，去標籤後閱讀",
+      "reading_scope": "摘要、引言、方法、實驗一至三結果、討論前半；圖只讀圖說",
+      "locator": "Results Experiment 1（圖 1a–1e 說明）；Experiment 2（圖 2）；Experiment 3（圖 4『requires flowing water rinses』、圖 5–6）；Discussion 談實驗三段",
+      "summary": "人先含甜味抑制劑 lactisole 再含清水，水會有甜味（sweet water taste）：甜感在第一、第二口水之間還在變強，之後逐口減弱；lactisole 之後先含蔗糖，接下來的水就完全不甜；只沾舌尖時，靜止的水不出現這種甜、流動的水才有；高效甜味劑（蔗糖素、NHDC）混著 lactisole 給，第一口水反而更甜。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受試者共 105 人、分三個實驗，都是實驗室裡的純溶液，不是食物；lactisole 濃度（8、20 mM）作者說明高於 2006 年原研究；受器層次的解釋是作者的推論，本研究沒有做細胞實驗。池中 R42008 的來源（Galindo-Cuspinera 等 2006）本篇只在引言轉述，不算讀過原文。",
+      "author_cache": {
+        "file": "PMC5507258.xml（去標籤文字檔 PMC5507258.txt，sha256 前 16 碼 5270504159777631）",
+        "sha256_prefix": "9f9750f2c93cde39",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H58-001",
+      "question": "一位調查員在美國東南部看了 25 棟牆板發霉變軟的預製住宅，他把哪些事列為每一棟都有的成因？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.fsec_25_homes_negative_pressure_vinyl_wallboard",
+      "answer_target": "室內比室外的露點還冷、外殼兩側有負壓、風管漏氣，以及防潮層放錯邊。佛羅里達太陽能中心（FSEC）的研究工程師檢查了四家廠商 25 棟出了受潮問題的工廠預製住宅，文章把這幾項都標為「25 棟全部都有」的受潮來源。他特別強調負壓的量級很小，只有 1 到 3 帕（他們用解析度 0.1 帕的數位壓力計量），但長期下來足以造成嚴重損壞；同一篇也記了例外，有一棟因為回風管脫落反而是正壓。負壓的一大來源是地板下的送風管漏氣：冷氣送出的空氣漏到屋外，屋裡就得從各處縫隙補進室外或閣樓的空氣，而當地夏天室外露點常在華氏 75 度以上。牆板壞掉的房子用的全是貼乙烯基面的石膏板（業界團體測得 0.42 perm），不過文章也說這本來就是廠商的通行做法；當時的聯邦 HUD 規範要求外牆在居室側設 1 perm 以下的防潮層，作者註明那在北方是暖側、到了南方卻是冷側。其中一棟恆溫器故障、風機常開，持續負 1 帕，外牆的室內板第一年全部換新，修的人找不到原因，換完又壞。",
+      "scope": "美國東南部濕熱氣候的輕構造預製住宅，2002 年的業界雜誌專文（Home Energy），不是技術報告；樣本是出了問題才被檢查的 25 棟，沒有沒出問題的對照組，所以「全部都有負壓」不能說成負壓是出問題的房子才有；因果是調查者的判斷（Negative pressure is the driver）；沒有牆內溫濕度的連續紀錄，量的是壓差與風管漏氣量，不是進入牆內的水量。改善後不再發生是廠商口頭回報、作者自稱初步，而且是六項建議一起實施。",
+      "source_ids": [
+        "H58-S001"
+      ],
+      "source_locator": "p.24–25 六項成因與 Table 1；p.27；p.28 邊欄",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：25 棟、負壓列為共同成因、量級 1–3 帕與一棟反例 1 條；乙烯基面板 0.42 perm 與 HUD 規範把防潮層放在南方的冷側 0.5 條。 原提案 F11-005（目標 G42，原角色 turn；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；這是上一輪 still_missing（1）點名的東西，而且確實獨立於 Lstiburek。但作者把標題的「100%」寫成「每一棟都量到室內比室外氣壓低」，原文自己就有一棟正壓，必須改；乙烯基面板是通行做法這一句也要補，否則觀眾會以為有對照。改字後收，算 1.5 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一兩帕的負壓聽起來微不足道，卻讓整個夏天的濕空氣都往牆裡走。",
+        "visual": "一棟房子的剖面：地板下風管漏出藍色冷氣，牆縫與插座孔被吸進橘色濕空氣，停在乙烯基壁板背面結成水珠；旁邊一支壓力計顯示 −1.0 Pa。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "H58-002",
+      "question": "冷氣設得比較冷、房子比較漏氣，牆裡長黴的風險會跟著變嗎？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.houston_wufi_air_infiltration_setpoint_mold_index",
+      "answer_target": "模擬的結果是會，三個方向都一致。兩位工程顧問用熱濕模擬軟體 WUFI，把休士頓一面朝南的磚飾面木構架牆跑了十年、五百多種組合：室內溫度華氏 65 到 72 度、相對濕度 50% 或 60%、不同的整棟漏氣率、三種室內面材（7 perm 與 1 perm 的乳膠漆、乙烯基壁紙），再用 ASHRAE 160 的黴菌生長指數判讀室內石膏板的背面。趨勢是：室外空氣滲進牆裡越少、室內設得越暖，指數越低；室內側用 1 perm 以下的面材，在所有組合裡風險都明顯高於 1 perm 以上的漆。作者的結論是氣密至少要做到規範值，而且「照能源法規蓋」不保證不結露、不長黴。要注意的是，外氣滲入那一部分的算法是作者自訂的，文章自己寫明還沒有驗證。",
+      "scope": "單一城市（休士頓，美國氣候區 2）、單一牆型（木構架加磚飾面）的一維模擬，沒有實測對照；外氣滲入模型作者自己註明尚未驗證，所以「漏氣越多越糟」這一條只能說是模擬的趨勢；具體數值只在色塊圖上、沒有讀到，片中不可報任何數字，也不可說「差很多」；若重繪那張圖要標「重繪示意，原圖為模擬結果」。專業協會刊物（IIBEC Interface）上的年會論文。華氏 65–72 度約攝氏 18–22 度是單位換算，寫稿時核對。",
+      "source_ids": [
+        "H58-S002"
+      ],
+      "source_locator": "Hygrothermal Modeling、Results、Conclusion",
+      "premise_status": "screened",
+      "notes": "算 1 條（三個趨勢出自同一組模擬）。 原提案 F11-006（目標 G42，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；正文與作者摘要一致，獨立性成立。改題目與答案裡暗示有幅度的字眼：這份文章的正文只有方向、沒有數值。室內側低透濕面材那一條用的是 WUFI 既有的水汽擴散計算，可以支持轉折一；漏氣那一條靠的是未驗證的自訂模型，只能當佐證。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冷氣設得越低，等於把牆的室內面變成更冷的杯壁；濕空氣只要進得來，就在那裡出事。",
+        "visual": "一張橫軸漏氣率、縱軸室內溫度的格子圖，左上（漏、冷）紅、右下（密、暖）綠；標「重繪示意，原圖為模擬結果」。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H58-003",
+      "question": "熱帶的老磚牆牆腳一直潮，裝了冷氣之後牆會更濕嗎？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.bangkok_brick_wall_ac_drier_rising_damp",
+      "answer_target": "這份模擬算出來是略乾一點；把地下的水切斷之後，才反過來略濕一點。朱拉隆功大學的研究者拿曼谷一座 1890 年代的磚造教堂當例子：外牆是 60 公分實心黏土磚加石灰粉刷、沒有防潮層，地下水沿著牆往上爬。他們用曼谷的氣象資料跑了 2019 到 2024 年的熱濕模擬，比較自然通風（室內條件取自 2016 年在教堂裡的實測）和冷氣 25 度、全天運轉兩種情形。牆上段的中間，含水量是每立方公尺 39.66 公斤對 36.83 公斤；上段的底部是 210.76 對 205.63；牆的最底部兩者相同。作者的解釋是冷氣讓室內空氣變乾，牆面蒸發變多，上升的潮氣就爬得矮一點。把牆橫向切斷、擋掉地下水之後，上段各處降到每立方公尺二十公斤上下，這時有冷氣的那一側反而高出約 2 公斤；作者推測是室外水汽壓較高，把水汽往有冷氣的室內推。",
+      "scope": "純模擬，沒有以這面牆的含水量實測驗證；差值很小（幾個百分點到一成），片中只能說「略乾」「略濕」，不要當成量測；百年磚造承重牆，不是現代 RC 住宅；沒有模擬空氣滲入與雨水滲漏；冷氣情境是 25 °C 全天運轉的假設。原文模擬六年、表格標題寫五年平均，兩處不一致；牆最底部的數值（約 299）高於同文給的磚飽和含水量（230），片中不引這兩個數。切牆後的原因是作者推測（could be）。",
+      "source_ids": [
+        "H58-S003"
+      ],
+      "source_locator": "摘要；Simulation Inputs and Settings；結果第一節；Conclusion",
+      "premise_status": "screened",
+      "notes": "算 0.5 條：單一未驗證模擬裡的小差值，只能當一句誠實的但書；作者算 1 條。 原提案 F11-007（目標 G42，原角色 turn；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；數字相符，但把它列為 turn 並算 1 條太高：差值只有每立方公尺 2 到 5 公斤，來自沒有實測驗證的模擬，原文自己還有兩處不一致。它的用處是給全片一句但書（水的來源要先分清），以及補上「亞洲、磚牆」的入口；不能當成冷氣對磚牆影響的量測。改字後收，算 0.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冷氣不是一律讓牆變潮：要看牆裡的水是從地下爬上來的，還是從外面的空氣滲進來的。",
+        "visual": "同一面磚牆的兩張剖面：左邊牆腳深藍往上漸淡，冷氣那一張藍色矮一截；把牆腳切一刀後，兩張都變淡，但冷氣那張整片略深一點。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H58-004",
+      "question": "先含過甜味抑制劑，下一口清水為什麼會甜？只要嘴裡有水就會嗎？",
+      "domain": "風味從哪裡來",
+      "mechanism_key": "flavor.sweet_water_needs_flow",
+      "answer_target": "要水把抑制劑沖走才會，而且再來一口糖水就把它消掉。耶魯 John B. Pierce 實驗室讓受試者先含甜味抑制劑 lactisole 再連含幾口清水：水有甜味，第二口比第一口還甜，之後逐口變淡。如果在 lactisole 之後先含一口蔗糖水，接下來的清水就完全不甜。只用舌尖沾時，沾靜止的水沒有這種甜，舌尖放進流動的水才有。作者的解釋是抑制劑要被水帶離受器，甜的訊號才冒出來。",
+      "scope": "實驗室裡的純溶液與特定抑制劑（lactisole，8 mM，作者說明高於 2006 年原研究的濃度），不是任何食物之後喝水都會甜；「逐口變化」與「糖水消除」是全口含漱的實驗一，「靜水不甜、流水才甜」是只用舌尖的實驗三，片中分開說。受器層次的說法是作者推論，本研究沒有做細胞實驗。高效甜味劑（蔗糖素、NHDC、neotame）的結果方向不同，片中不展開。池中 R42008（2006 年 Nature，只讀摘要）的細胞結果不能由本篇引言轉述來補。",
+      "source_ids": [
+        "H58-S004"
+      ],
+      "source_locator": "Results Experiment 1（圖 1a、1d）；Experiment 3（圖 4）與 Discussion 談流動的一段",
+      "premise_status": "screened",
+      "notes": "算 2 條：水的甜感隨沖洗先升後降、蔗糖可完全消除（1 條）；靜水不甜、流水才甜（1 條）。池中 R42008（Galindo-Cuspinera 等 2006，只讀摘要）講的是同一現象的首次受器研究；本核心是另一組人、另一篇全文研究的實測，答案新增『要流動』『可被蔗糖消除』兩點，不重複 R42008 的細胞結果。 原提案 F12-006（目標 C4-06，原角色 segment；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；與 R42008 是同一個現象，但 R42008 的池內紀錄只有摘要、照規則計 0；本核心是另一組人的開放全文實測，等於替這個現象補上第一份讀過全文的來源，所以收，不判重複。算 1.5 條（甜水感與逐口時程 1——這 1 條就是第四輪說「R42008 讀到全文才能計」的那一條，現在由本核心承擔；要流動、糖水可消除合計 0.5），不是作者的 2 條。用了本核心的題案就不要再把 R42008 列為計分核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒有糖的甜，是受器被放開的那一下。",
+        "visual": "舌尖伸進兩個小槽：靜止的水（甜度條不動）與流動的水（甜度條升起）；另一格先糖水後清水，甜度條歸零。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "H58-NA001",
+      "question": "FSEC 25 棟住宅之後的改善成效",
+      "existing_ids": [],
+      "source_ids": [
+        "H58-S001"
+      ],
+      "reason": "原文只有一段廠商口頭回報（某廠 2000 年後出廠送往東南部的房子沒有再出現這類問題），作者自己寫「初步結果」，不夠獨立成核心；已併在 F11-005 的 notes 與來源摘要裡當限制說明。 原提案 F11-NA008。",
+      "reentry_condition": "讀到 FSEC 的後續技術報告（fsec.ucf.edu，TLS 憑證問題）有改善前後的量測時再立。",
+      "reading_status": "全文已讀"
+    },
+    {
+      "id": "H58-NA002",
+      "question": "上一口先壓住甜味，下一口清水為什麼有甜的餘味？（R42008 的全文）",
+      "existing_ids": [
+        "R42008"
+      ],
+      "source_ids": [
+        "H58-S004"
+      ],
+      "reason": "Galindo-Cuspinera 等 2006（Nature，10.1038/nature04765）付費，OpenAlex 無開放版本。改讀另一組人 2017 年開放全文的實測（F12-006）；2006 年原文的細胞實驗仍只有摘要與 F12-S005 引言的轉述，不計事實。 原提案 F12-NA002。",
+      "reentry_condition": "取得 Nature 原文，讀細胞鈣訊號圖與受試者評分。",
+      "reading_status": "原文未讀；只讀到他篇引言的轉述"
+    }
+  ]
+}

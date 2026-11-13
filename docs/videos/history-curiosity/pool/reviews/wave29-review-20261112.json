@@ -1,0 +1,633 @@
+{
+  "batch": "batches/wave29-20261112.json",
+  "reviewed_on": "2026-11-12",
+  "method": "四位沒有參與研究的覆核代理（R291：J1；R292：J2；R293：J3；R294：J4）逐題至少重開一個關鍵來源、每個關鍵字跑一次素材池搜尋並 grep 批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位，覆核新讀的來源編入該研究代理的來源序號。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 24,
+    "NEEDS_CHECK": 2
+  },
+  "source_renames": {
+    "R291-S001": "J1-S021",
+    "R291-S002": "J1-S022",
+    "R291-S003": "J1-S023",
+    "R291-S004": "J1-S024",
+    "R291-S005": "J1-S025",
+    "R291-S006": "J1-S026",
+    "R291-S007": "J1-S027",
+    "R291-S008": "J1-S028",
+    "R291-S009": "J1-S029",
+    "R292-S001": "J2-S029",
+    "R292-S002": "J2-S030",
+    "R292-S003": "J2-S031",
+    "R292-S004": "J2-S032",
+    "R292-S005": "J2-S033",
+    "R292-S006": "J2-S034",
+    "R292-S007": "J2-S035",
+    "R293-S001": "J3-S034",
+    "R293-S002": "J3-S035",
+    "R293-S003": "J3-S036",
+    "R293-S004": "J3-S037",
+    "R293-S005": "J3-S038",
+    "R293-S006": "J3-S039",
+    "R293-S007": "J3-S040",
+    "R293-S008": "J3-S041",
+    "R293-S009": "J3-S042",
+    "R294-S001": "J4-S029",
+    "R294-S002": "J4-S030",
+    "R294-S003": "J4-S031",
+    "R294-S004": "J4-S032",
+    "R294-S005": "J4-S033",
+    "R294-S006": "J4-S034",
+    "R294-S007": "J4-S035",
+    "R294-S008": "J4-S036",
+    "R294-S009": "J4-S037",
+    "R294-S010": "J4-S038",
+    "R294-S011": "J4-S039",
+    "R294-S012": "J4-S040",
+    "R294-S013": "J4-S041"
+  },
+  "verdicts": [
+    {
+      "id": "N3041",
+      "agent": "J1",
+      "reviewer": "R291",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J1-S001 https://archive.org/download/IAPSOP-neue_wissenschaft_v1_1950_oct/IAPSOP-neue_wissenschaft_v1_1950_oct_djvu.txt；J1-S002（archive.org 全文）；J1-S003；J1-S004；新讀 J1-S022（Flammarion 1924 pp. 332–335）。嘗試 e-newspaperarchives.ch（403 機器驗證頁）與 digiPress（檢索頁無結果可取），都沒有繞過",
+      "reopen_result": "《Neue Wissenschaft》重印的小冊：自序『Abgesagter Feind solcher Mystik, stand ich seit 20 Jahren…und hielt strenge darauf, solche Erzählungen von meinem Hause fernzuhalten』；8 月 25 日任命『Dreierkommission』（OCR：Zeiger、Würsch、Jenn），『mit aller Entschiedenheit, Vollmacht und dem nötigen Kredit』，當天『ohne dass irgend welche Anstalten』；8 月 27 日『erst am Abend spät, nachdem man keine Unruhe mehr verspürt hatte』才開始，『es mochte um 8 Uhr sein, ward mir befohlen…unverzüglich das Haus zu verlassen』，四件隔天要開庭的案子；9 月 1 日『Es sei der Untersuch dermalen geschlossen und ad acta zu legen』，補償費用；聲音『schon seit Mittwoch nachmittag 2.50 Uhr nicht mehr』。1951 討論欄：『Berichterstatter des Nidwaldener „Eidgenossen“: „Es liegen die handgreiflichsten Beweise vor, dass die natürlichsten Hände, Stoss- und Schlagwerkzeuge zu dem Rumor verwendet wurden“』、Elektrisiermaschine、女僕、太太、『durch Kreditoren gefährdeten Besitz…wohlfeil in der Verwandtschaft』、委員會『fast ausnahmslos aus Gegnern Jollers』、全家『freiwillig』住進 Gasthof Engel。HLS：1857 當選、『1860 aber abgewählt』、1851–1852 劇團團長、報紙十三期被禁。Ruffles：五天、債務與詐欺指控、演員、檔案館長、Vogel、1798／2010 都在；他寫的是『The family was obliged to leave while the commission investigated and the phenomena promptly stopped』。Flammarion：Der Eidgenoss『rapping instruments had been found…inducing its owner to sell it for a song』、Der Bund 9 月 4 日、Allgemeine Zeitung 9 月 28 日『Mr. Joller's son, aged eighteen』、Joller 10 月 2 日信『contain not a word of truth』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立：當事人的小冊（德文重印與 SPR 英譯兩個傳本互相對得上）加 HLS 傳記與整理者長文，三個轉折都有出處。改掉的事實：（1）鉤子『辦過報紙反對迷信』查無，刪；（2）『全家不在聲音就停，Joller 自己寫了』不對——他寫的是聲音 27 日下午 2:50 先停、委員會傍晚才來、八點才命離屋，改成兩種寫法並列；（3）『報紙說屋裡找到工具』仍沒有當年版面，改成『照兩條後人的轉述』並指出兩條措辭不同、其中一條裡 Joller 是被設計賤賣的屋主；補上新讀到的 Der Bund 答覆、『十八歲的兒子』與 Joller 的回信；（4）補 1860 年落選。當年報紙原版面仍缺（e-newspaperarchives.ch 被機器驗證擋住），scope 已要求旁白一律說『照後來的轉述』，所以不降成 NEEDS_CHECK。"
+    },
+    {
+      "id": "N3042",
+      "agent": "J1",
+      "reviewer": "R291",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J1-S005 https://www.share.usi.ch/arc/fontana.pdf（pp. 213–227 全文與註）；J1-S006（archive.org OCR §22）；J1-S007；J1-S008 部落格；新讀 J1-S023（Capaccio 1607 原書 p. 467 掃描 OCR）與 J1-S024（Treccani）",
+      "reopen_result": "論文：『Il canale venne realizzato tra il 1592 ed il 1600』、『21.100 metri, di cui 1600 sotto l’antica Pompei, dei quali ora 1340 in galleria』、Capaccio 引文、註 4『ad Pompeios…si riferisce…a Torre Annunziata』、Fontana 兩段長引文（『fu mal intesa da chi ne ebbe la cura』『più de palmi 100』『mille cinquecento tumoli di grano in vintiquattro hore』；伯爵的回答是『saria stata cosa difficile, poichè saria bisognato passare per alcune possessioni di particolari…molto potenti』）、『molto probabilmente, non assistette affatto』、『superiori ai 16 m』、Menandro 之家『ha inoltre troncato in due un’antica cisterna』、1631／1654／1693、註 6 引 Murano 1895『alla chetichella…consegnato all’industria come nuovo』、註 7 SARINV 與『la costruzione dei pozzi di aerazione…intercettò sempre i livelli archeologici』、結語『ha portato alla scoperta dell’antica Pompei』。Murano 1894：『Riguardo al Fontana è da notare che non volle saperne della Pompeja, memore dei fasti del Santo Uffizio, come si rileva a pagina 137 e seguenti del libro già citato』『Era la città maledetta』，引 Fiorelli『l'altra sacra alla Venere fisica Pompejana』。Capaccio 原書 p. 467：『Alveum effodientes, per quem Sarnus fluvius deductus est ad Pompeios ad molas frumentarias exercendas, inter aedificiorum vestigia lapidem in quadam porta collocatum invenere』，碑文『M. LVCRETIVS. L.F. DEC. D. RVFVS. DEC. DEC.』與『IMPERIO. VENERIS. FISICAE. IOVI. O.M. / ANTISTIA. METHE / ANTISTI. PRIMIGENI / EX. D. D.』，『Neronis quoque nummum cum alata Victoria』——沒有 Pompei 字樣、沒有壁畫。官網：『without realising the true value…』，但把磨坊寫成『his pasta factories』。部落格三句逐字相符（年份寫 1599）。Treccani：『morì a Napoli il 28 giugno 1607』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立，核心（1607 年只有兩塊刻石一枚錢幣、Fontana 1604 年自己的說法、『怕宗教裁判所』目前讀到最早在 1894 年）都對得上，而且現在讀到 Capaccio 原書那一頁。最重要的改正：原稿說其中一塊碑『名字就刻在石頭上』『刻著龐貝的維納斯』——原書抄的是『VENERIS FISICAE』，沒有 Pompeiana，另一塊也沒有地名；『Pompejana』是 Fiorelli 的叫法。其他：Murano 其實指了一本『前引書頁 137 以下』（沒認出是哪本），不能說他『沒有給任何出處』；『修舊當新』Murano 1895 已經寫了，不是 2003 年才有；鉤子『抱怨了整整一頁』改掉；補豎井打穿考古層與 Fontana 卒年。『壁畫』『情色』何時進入故事仍不知道，scope 寫明不替它編出處。"
+    },
+    {
+      "id": "N3043",
+      "agent": "J1",
+      "reviewer": "R291",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J1-S009、J1-S010（weburn.kb.se 兩份 PDF 重新下載逐段讀）；用 data.riksdagen.se 文件檢索找到並新讀 J1-S025（1937 年下院第 32 號，5 月 18 日部長答覆）與 J1-S026（第 4 號，1 月 20 日 Hagberg）",
+      "reopen_result": "1934 第 8 號：首相『Att flygningar av den art…verkligen förekommit, har ännu icke kunnat tillfullo konstateras』『I vissa fall har iakttagaren bevisligen misstagit sig』『Resultatet har även här blivit negativt』『den 30 januari fyra flygplan beordrats till Boden』；Kilbom『tandläkarens i Leksand skämtlynne…en hel brandbomb av silkespapper』；Hagberg『en medarbetare från högertidningen Umeåbladet』『satt jag och spekulerade ut en historia…ryska flygare』『Västerbottens-Kuriren』『masspsykos』。1937 第 10 號：『I början av juli månad 1936 meddelades genom försvarsdepartementet, att generalstabschefen generalmajor Nygren avlämnat rapport』、『det måste anses konstaterat…』、『baserade på fartyg utanför norska kusten』、『relativt ringa』；Oesch『vi ha varken kunnat konstatera, att några flygningar ägt rum, eller kunnat finna något rimligt motiv』『Därmed är det ju ingalunda bevisat, att spökflygningar icke skulle ha ägt rum』、電話線、『vanliga slädspår』、『imitera spökflygare…Maskinerna ha omedelbart observerats』。1937 第 32 號（新）：『skrivelse från chefen för generalstaben…dagtecknad den 8 juli 1935』『Antalet svenska rapporter som förelågo utgjorde 96. Härav ansågos blott 12 vara fullt trovärdiga…sammanlagda antalet »trovärdiga rapporter» uppgick till 46』；部長認為重查『icke bör komma i fråga』、『givetvis kunna olika bedömare…komma till skilda slutsatser』；1936／37 年 Boden 一波與 2 月 9 日函；『Skulle återigen uppgifter…börja inströmma, är jag däremot beredd att omedelbart igångsätta en undersökning av den mångsidigare läggning』；Lindberg：『Det första meddelandet i pressen om spökflygning förekom i en tidning i Umeå den 12 december 1933』、kronojägare、Guvertefjället、Venus、Gunnerfeldt、1 月 2 日 Sorsele 書報亭。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立，而且研究者缺的結局找到了：國防部長 1937 年 5 月 18 日的答覆在瑞典國會公開資料裡讀得到。改掉的事實：（1）首相第一句原稿譯反了（原文是『是否真的發生過，還不能完全確認』，不是『確實發生過』）；（2）『沒有結局』不成立——部長答覆不重查，並給出 96／12／46 這組數字；（3）報告落款 1935 年 7 月 8 日，原稿只寫 1936 年 7 月公布，鉤子的『兩年後』不準，改成『後來』並分開交代；（4）『第一則報導是記者編的』仍只有 Hagberg 一人（1934 與 1937 兩次都是他），另一位議員 Lindberg 給了不同的起點，兩說並列；（5）題目的『在暴風雪裡照樣飛』不在讀到的頁面上，改掉。參謀總長報告原件仍沒讀到，scope 已限定旁白說『議事錄裡引的報告』。人物卒年都沒讀到，維持全部不入畫。"
+    },
+    {
+      "id": "N3044",
+      "agent": "J1",
+      "reviewer": "R291",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J1-S012 https://archive.org/download/in.ernet.dli.2015.71077/2015.71077.Archaeological-Journal-Vol8_djvu.txt（p. 90 與索引）；J1-S013；用 archive.org 全文檢索新讀 J1-S027（PRIA 第 32 卷，Wilde 目錄 p. 310）與 J1-S028（1865 年都柏林國際展覽紀錄 pp. 283–285）",
+      "reopen_result": "考古學會期刊：『Mr. Waterhouse, of Dublin, communicated a notice of an unique fibula, discovered near Drogheda』『It had been called in Ireland the “Royal Tara Brooch,” but there is, in fact, no evidence as to the place of its discovery. It had been brought by a poor woman into Drogheda, and sold for a few shillings to a silversmith: every attempt to ascertain where it had been found proved fruitless.』索引『Tara brooch, royal, so called. 90』；前一個日期標題是『January 3, 1851』（OCR 作 ISol）。Wilde 目錄第 63 號：『found with no. 96 and nos. 64-70 in the excavation for the harbour wall at the mouth of the river Boyne, near Drogheda, in an oak box, and along with them the brooch called that of Tara』；編者按：『The editor has not been able to find any confirmation of this assertion, and previously the Tara brooch has been said to have been found in 1850 on the strand at Betaghstown, near Drogheda』『none appear to be Irish』。1865 展覽紀錄：『On the 24th of August, 1850, a poor woman, who stated that her children had picked it up on the sea shore, offered it for sale to the proprietor of an old iron shop, in Drogheda, who refused to purchase so light and insignificant an article…for nearly as many pounds sterling as he had given pence for it; however, it has since been valued at £500』；『a copy of a gilt bronze found near Drogheda』；Petrie 報告『read before the Royal Irish Academy, on the 8th of December, 1850』。部落格的引文與這兩份印本相符。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "premise_status",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "研究者標 needs_check 的原因（Waterhouse 的說法與 Wilde 目錄只經部落格轉引）已解決：兩份都在 archive.org 讀到印本，premise_status 改為 screened。改掉的事實：（1）『海邊撿到』在 Waterhouse 一方的文字裡是『婦人自己說的』，沒有 Bettystown、沒有盒子；（2）原稿說兩個版本的共同點是『一個盒子』，不成立，刪；（3）Wilde 的『河口橡木盒』說，1915 年的編者已註明找不到佐證、同出的東西不像愛爾蘭的，成了新的轉折；（4）『名字一年內就有』改『幾個月內』。『內陸出土、為避地主』仍無出處（Whitfield 1974 沒讀到），scope 限成最多一句或不講。片長 5–6.5 分鐘，不到 8 分鐘，維持 chapter；研究者建議的主體都是 9–12 分鐘的單集，接不上，所以是『待配章節』或 Shorts，不單獨成集。"
+    },
+    {
+      "id": "N3045",
+      "agent": "J1",
+      "reviewer": "R291",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J1-S014（archive.org gri_33125010870141 OCR pp. 135–136）；J1-S015（Gutenberg #23564 序）；J1-S016（Gutenberg #53112）；J1-S017（archive.org 小冊 OCR 全文 3,248 行，多組關鍵詞檢索）；新讀 J1-S029（1888 年雜誌轉錄的 Defoe 文字）。Defoe 1724 年文字的現代重印本在 archive.org 回 401（只供借閱），沒有繞過",
+      "reopen_result": "Defoe 1742：『a famous Robbery was committed in or about the Year 1676』『robb’d by one Nicks on a Bay Mare』『came to York the same Afternoon』『a Quarter before, or a Quarter after Eight at Night』『on a bare Supposition, that it was impossible the Man could be at two Places so remote, on one and the same Day』；OCR 地名作『Fenny Stratford』。Rookwood 序：『The Ride to York was completed in one day and one night…a hundred ordinary novel pages in less than twenty-four hours…at “The Elms,” a house I then occupied at Kilburn…the bell of York Minster toll forth the knell of poor Black Bess』。Harper：『who never owned a “Black Bess,” and who never did anything of the kind』、1668 年 12 月與 1669 年 11 月 18 日、Barnet、『several remounts…unthinkable that one horse』、£200、Welton 1737 年 10 月、Palmer、『shot one of his neighbour's fowls』、『black mare, blind of the near eye, off Heckington Common』、歌謠全文（『His black mare Bess』『Full eighty miles in one dark night』『To swear an Alibi』）、『he certainly did not invent Black Bess』、『the fatal April 17th』。小冊：書名頁『on Saturday the 7th of April, 1739』（內文行 663、2939 同）、『shooting a Game-Cock』、『a Black Mare, blind of the near Eye』、『Smith a Writing-Master』、Smith 證詞『Happening to be at the Post-Office where I saw a Letter…』；以 rode／ride／riding／Bess／from London 檢索，沒有倫敦到約克的騎行。1888 年轉錄：『in the year 1676』『lays some odd bet with him concerning the bowls』『such as I do not take upon me to affirm; namely, that King Charles II.…gave him the name or title of Swift Nicks』，投稿人：『the merit…must be denied to Nevison as well as Turpin. The name of the highwayman was Nicks.』",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題成立，三段文字史（Defoe 的 Nicks → 1825 年歌謠 → 1834 年小說）每一步都有可讀文字，小冊裡雞、信、筆跡三點都直接讀得到。改掉的事實：（1）『查理二世賜名只在 Harper 讀到』不對——Defoe 的文字本身就有，而且他自己聲明不擔保（1888 年轉錄，版次不明），寫成新的轉折；（2）『OCR 把 Fenny Stanton 誤成 Fenny Stratford』是研究者沒有對過影像的推測，改成不講這一站；（3）處決日期以小冊三處的 4 月 7 日為準，Harper 的 4 月 17 日是他的錯；（4）『Nicks 就是 Nevison』不是定論，1888 年已有人反對，補上；（5）鉤子的『指給遊客看』『書桌前』改成原文有的字。『小冊裡沒有騎行』仍是檢索結果而非通讀，scope 保留這個界線。內容守則：真實罪犯，歌謠的殺人段落不念不畫。"
+    },
+    {
+      "id": "N3046",
+      "agent": "J1",
+      "reviewer": "R291",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J1-S018 https://www.gutenberg.org/cache/epub/46976/pg46976.txt（卷二第 3 章與 Arrian 序）；J1-S019 LacusCurtius 的 Plutarch 18 與 Curtius 3.1；新讀 J1-S021（Justin 11.7 英譯與拉丁）",
+      "reopen_result": "Arrian：『It is said by some that when Alexander could find out no way to loosen the cord and yet was unwilling to allow it to remain unloosened, lest it should exercise some disturbing influence upon the multitude, he struck the cord with his sword and cut it through, saying that it had been untied by him. But Aristobulus says that he pulled out the pin of the wagon-pole…How Alexander performed the feat in connection with this cord, I cannot affirm with confidence.』雷電與隔日獻祭都在；序：『Aristobulus, because he served under king Alexander in his expedition』。Plutarch 18.2–4：『most writers say…But Aristobulus says that he undid it very easily, by simply taking out the so-called \"hestor,\" or pin』。Curtius 3.1.14–18：『Iovis templum intrat』『illa expectatione suspensa, haec sollicita ex temeraria regis fiducia』『ne in omen verteretur irritum inceptum』『Nihil interest, quomodo solvantur: gladioque ruptis omnibus loris oraculi sortem vel elusit vel inplevit』。Justin 11.7：『aves eum omnis generis circumvolare coeperunt』『Obvius illis Gordius fuit, statimque eum regem consalutant』『violentius oraculo usus gladio loramenta caedit』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "引文全部對得上，是這一包裡最乾淨的一題；改動是補料與一處譯錯。（1）Curtius 一句原稿譯成『擔心國王的輕率會變成凶兆』，原文是擔心失敗被看成凶兆，已改；（2）研究者說沒讀到的 Justin 11.7 讀到了：只有劍、帶一句『violentius oraculo usus』，而且車的來歷與 Arrian 不同（Gordius 本人被立為王），多一個轉折；（3）『Aristobulus 隨軍』其實在同一份檔案的 Arrian 序裡，補上出處；（4）題目『快刀斬亂麻的原型』改成『西方版本』。片長 6–7.5 分鐘，不到 8 分鐘，維持 chapter；與 held 的 N2964 可以排成一集，見 theme_suggestions。"
+    },
+    {
+      "id": "N3061",
+      "agent": "J2",
+      "reviewer": "R292",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J2-S001 https://en.wikisource.org/wiki/Popular_Science_Monthly/Volume_51/June_1897/The_Silent_City_of_the_Muir_Glacier（直接重取）；J2-S002、J2-S003 的 archive.org OCR 全文逐段對讀；新讀 J2-S029（Richmond Dispatch 1889-07-11）與 J2-S030（Salt Lake Herald 1889-08-03，並對 Helena Independent 同日同則）",
+      "reopen_result": "Jordan 1897：『In June, 1888, according to his statement』『leafless branches of tall elm trees』『R. G. Willoughby's Silent City (seventy-five cents each)』『bought by me in Sitka in 1896』『It was on the longest day of June, 1888』『as Montreal』『I am told that in 1896 a company of people encamped for some time on the glacier』『An affidavit in Juneau costs but a drink of whisky』、Gilbert 一段（三個月、祕方）、『Prof. William H. Hudson … recognizes the picture as a view of that city from Brandon Hill … some twenty years ago』『A more transparent fraud could hardly be devised, but its very imbecility assures its success』都在，署名下印『PRESIDENT OF LELAND STANFORD JUNIOR UNIVERSITY』。Badlam 1890 頁 127–129：『the city of Bristol, England, has been photographed on the top of the Muir Glacier』『is selling a picture which has been recognized as the city of Bristol in England』『some humorist … run this in as a glacial joke』『I have implicit confidence in the integrity of the Professor』『He has never seen a locomotive』、『Bartlett Bay Cannery, Aug. 22, 1889』聲明（Robert Christie and Robert Patterson）都在；水銀盤那則寫的是『on the Fourth of July last』。Rickard 1909 頁 63–68：『This is the story of a scientific fake』、1885、June 1889、Omaha Bee、『they went like hot cakes』、『where he was found next day』、150 excursionists 與 single spruce tree、『sold the original negative for $500』、8 by 10 inches、portrait lens、『in 1887 … Victoria』『bought by Willoughby for $10』、領事、『This fact was not generally known』、J. C. Hurle、『completed in 1888』『probably in the winter of 1886』都在。新讀的 1889 年報紙：7 月 11 日轉登的舊金山專電描述照片並猜『Victoria, B. [C.], Halifax, or Montreal—most likely the latter』，沒有提布里斯托；8 月 2 日 Omaha 電訊說 Bruce『For three days he was lost』且期間看見了 Silent City。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "研究稿的引文與數字逐項對得上，錯在幾句概括：題目『同一年的報紙』（Badlam 轉載的兩則是 1889 年的事）、『一般說 1897 年被揭穿』與『三份當年的書都一致』（Jordan 是文章、Rickard 是 1909 年）是研究者自己的話，改寫。研究者標的最弱處是當年報紙一份都沒讀：覆核在國會圖書館報紙庫讀到兩份 1889 年的電訊，補進正文——照片見報那個月的猜測是蒙特婁等地；Bruce 失蹤是三天、而且自己成了目擊者，與 Rickard 二十年後的『隔天找到』不同。『誰先認出布里斯托』的當年報導仍沒有找到，三種說法繼續並列。片長 8.5–10.5 分鐘成立。"
+    },
+    {
+      "id": "N3062",
+      "agent": "J2",
+      "reviewer": "R292",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J2-S006、J2-S010、J2-S011、J2-S008、J2-S009 的 archive.org OCR 全文逐段對讀；archive.org 全文檢索重跑並加三組字句；founders.archives.gov 的 Salmon 信頁與 API 再試；新讀 J2-S031（1911 年版《大英百科》Silliman 條）",
+      "reopen_result": "1874 年演講：『It was read, March 4, 1808, before the American Philosophical Society, and appeared in the Transactions of that Society (vi. pp. 423-443, 1809)』『Thomas Jefferson, then president of the American Philosophical Society, is reported to have said on this occasion, in the well-known language of David Hume regarding miracles, \" that it was easier to believe that two Yankee Professors could lie than to admit that stones could fall from heaven\"』逐字相符。Lipscomb–Bergh 第 11 卷頁 440–442：『TO DANIEL SALMON. Washington, February 15, 1808. Sir,—I have duly received your letter of the 8th instant, on the subject of the stone in your possession, supposed meteoric』『We certainly are not to deny whatever we cannot account for』『their verity needs proofs proportioned to their difficulty』『But is it easier to explain how it got into the clouds from whence it is supposed to have fallen? The actual fact however is the thing to be established』逐字相符。Mitchill 1826：『My correspondents, Holley and Brunson』『I was then at Washington city attending the session of Congress, and received the intelligence, with the article, a day sooner than any person』『J. said he could answer it in five words … it is all a lie』『a trick by a shower of stones』逐字相符；他沒有寫晚餐日期，也沒有提 Silliman 與 Kingsley。1897 Clarke 與 1900 Farrington 的字句相符。檢索：『Yankee professors』『professors could lie』等在 1874 年以前沒有命中。founders.archives.gov 仍回 202、零位元組。《大英百科》：老 Silliman 1779–1864，『His son, Benjamin Silliman (1816–1885)』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "引文都對，改的是推論與沒有出處的身分：（1）題目與正文說 1826 年那則軼事發生時『教授的報告還沒寫出來』——Mitchill 沒寫晚餐日期，這是研究者拿 3 月 4 日宣讀日推的，刪去並寫明不能這樣說；（2）『當過參議員的 Mitchill』讀到的頁面沒有，改成『當年在華盛頓開國會』；（3）1874 年講者是兒子，研究者自己標了沒核，覆核補上可讀出處；（4）『二十世紀的隕石書幾乎本本都有』沒有依據，改；（5）鉤子改成信裡的原句。『最早是 1874 年』照研究者的寫法維持『目前讀到最早』，覆核加查三組字句仍沒有更早的。傑佛遜的信只讀到 1903–05 年印本，founders 仍讀不到，scope 已限制說法。片長 8–9.5 分鐘成立。"
+    },
+    {
+      "id": "N3063",
+      "agent": "J2",
+      "reviewer": "R292",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J2-S013 https://aty.sdsu.edu/bibliog/bibliog.html（直接重取，2.8 MB）；J2-S014 對 fr.wikisource《Le Rayon vert》第三章；新讀兩份小說以外的原文：J2-S032（Swan，Nature 1883-11-22）與 J2-S033（Kelvin，Nature 1899-08-31）",
+      "reopen_result": "Young 書目：2002 年通信集條目寫『The true origin of the \"old Scottish legend\" revealed in letter 535 from Hetzel to Verne (pp. 139-143). Olivier Dumas, Piero Gondolo della Riva & Volker Dehs, the editors … have uncovered the actual facts: Hetzel invented the \"legend\", and Verne adopted almost the exact wording that Hetzel proposed.』；1882 年小說條目寫『For the origin of the \"legend\", see the 2002 publication … and its actual inventor』；W. H. 1829、Back 1838、Winstanley 1873（五十多次、半秒到兩秒半）、Froude（『the creation I suppose of my own eyes』）、Abbate 1894（『seems really to be the FIRST to believe the Verne \"LEGEND\"』）、Rudaux 1925（『une pleine confirmation de la réalité du phénomène』）、Blanc 1932（『A GENUINE LEGEND at last !!』）各條都在。小說第三章：『ce Rayon-Vert se rapportait à une vieille légende … légende inexpliquée entre tant d'autres, nées au pays des Highlands … celui qui l'a vu ne peut plus se tromper dans les choses de sentiment』逐字相符。Swan 原信：1865 年 9 月 13 日 Rigi 山頂日出，『of a superb emerald green colour』，『In my case I do not doubt the phenomenon was purely subjective, for before sunrise the sky was all lit up of a magnificent crimson hue』。Kelvin 原信：署 8 月 27 日，『I saw a blue light against the sky on the southern profile of Mont Blanc; which, in less than the one-twentieth of a second became dazzlingly white』。Hetzel 第 535 號信本身仍沒有讀到；另行搜尋沒有找到第二個轉述它的可讀來源。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "可收，但原稿把最大的轉折寫得比來源硬：鉤子直接說『傳說是巴黎一位出版商在信裡寫給小說家的』，而這一點只有 Young 一人轉述通信集編者、原信沒人讀到。Young 是這個題目公認的專家、條目給了信號與頁碼，覆核判斷足以用『據 Young 引錄』的方式講，但不足以當鉤子；鉤子改成第一手讀得到的事實（最早出處是 1882 年小說第三章），題目與正文都加上轉述標記，scope 寫明開寫前必須借到通信集、借不到時怎麼縮。另刪一句研究者自己的推論（『日出的綠光讓錯覺說站不住』——覆核讀的 Swan 原信正好相反：他看的就是日出，仍說是主觀的）。補讀兩份原文後，小說以外的紀錄不再全靠摘錄。片長略下修為 8–9.5 分鐘。"
+    },
+    {
+      "id": "N3064",
+      "agent": "J2",
+      "reviewer": "R292",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "新讀 J2-S034（1810 年第 4 版《大英百科》第 12 卷頁 341–342〈MAELSTROM〉，archive.org 掃描）——研究者沒有核的那一端；J2-S016 https://www.eapoe.org/works/mabbott/tom2t044.htm 與 J2-S019 https://snl.no/Moskstraumen 直接重取；J2-S017 的 OCR 對讀",
+      "reopen_result": "《大英百科》1810：條目從『MAELSTROM, a very dangerous whirlpool on the coast of Norway, in the 68th degree of latitude』起，含『which short interval is the only time the fishermen can venture in』『makes strongly against Kircher and others … the gulf of Bothnia. But after the most exact researches which the circumstances will admit, this is but a conjecture without foundation』『against a ridge of rocks and shelves, which confine the water so that it precipitates itself like a cataract』，再引『Mr. Jonas Ramus』到『In the year 1645, early in the morning of Sexagesima Sunday』，島名印『Otterholm, Flimen, Sanflesen, Stockholm』；沒有註明出處。Pontoppidan 1755 的 OCR 同一段作『Flimen, Sandflesen, Skarholm』，並有『it is totally erroneous』（談 Herbin）一句。Mabbott：『All Poe's texts follow the Britannica article in the flagrantly erroneous listing of \"Stockholm\" for Skarholm』；腳註說百科條目『was lifted almost verbatim, without acknowledgment, from The Natural History of Norway (London, 1755)』、百科為『3rd-6th editions, 1797-1836』；小說正文裡引 Ramus 的是開頭的敘事者（『The ordinary accounts of this vortex had by no means prepared me for what I saw. That of Jonas Ramus …』），不是老漁夫；『the real Maelstrom does not form a funnel』是 Mabbott 轉述 Frank Jordan。snl.no：『vel fire kilometer bred og 40 til 60 meter dyp』『opptil 40 centimeter』『opptil seks knop』『Herjeskallen … under ti meter』『i atskillig grad har overdrevet』與讀者更正留言都在。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "鏈條成立，而且比研究稿寫的更完整：覆核讀了《大英百科》原條目，確認它近乎逐句抄自主教的書、『Stockholm』之誤出在百科，並發現百科連主教否定 Kircher 深淵說的那句與潮水解釋也一併抄了——所以『最誇張的部分，來源自己就否定了』對兩層來源都成立，補進正文。改掉的錯：鉤子說『老漁夫講的那一段是抄來的』，小說裡引 Ramus 的是敘事者；題目『連抄錯的島名都跟著錯』把錯算到主教頭上，改；『今天量到的』其實只是百科條目的數字，改。片長 8–9.5 分鐘成立。"
+    },
+    {
+      "id": "N3065",
+      "agent": "J2",
+      "reviewer": "R292",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J2-S020（Hughes 1910）與 J2-S022（Glasgow Naturalist 2014）的 archive.org OCR 全文逐段對讀；新讀 J2-S035（Baylis，Nature 1926-10-16 頁 552）——研究者標明沒讀到的關鍵證據",
+      "reopen_result": "Hughes 1910：『In my boyhood I often lived on the coast of Pembrokeshire』『very like a mass of frog's spawn without the eggs in it』『They called it \"pwdre ser,\" the rot of the stars』、Hindson 一段（『He did not say that it was luminous』）、Huxley 與 nostoc、Merrett 拉丁文（『Sed Regiae Societati palam ostendi solummodo oriri ex intestinis ranarum a corvis in unum locum congestis』）、Morton 1712（火烤、『above thirty several lumps』）、Boyle、Pennant、『there does not appear to be any evidence that anybody ever saw any luminosity in the jelly』、Gaping Ghyl 與破瓶子、『a mass of bacteria』『I confess I am not satisfied』『Has anyone ever seen it luminous?』都在。2014 年短文：『over 350 postings from October 2008 to February 2009 with 132 sightings of star jelly from Britain (including 47 from Scotland)』；2009 年樣本『examined by Hans Sluiman, an algae expert … and DNA testing was undertaken by Andy Taylor … the DNA results were inconclusive』；Rouken Glen 2011 年 10 月 9 日約 120 ml 與 5 ml；『most sightings probably derive from either frogs or toads』；『satisfactory natural explanations … have been available for a long time』；『How jelly deposits became associated with shooting stars in the Middle Ages is unclear』。Baylis 1926 原文：Dartmoor 樣本帶『portions of both oviducts … with part of the ovaries, containing the characteristic black eggs, resembling shot』；染色切片與已知青蛙輸卵管壁比對，『both Mr. Parker and myself were able to satisfy ourselves completely that the tissues were of the same kind』；引 Melsheimer 1908 的實驗；『at least in some instances, the correct one』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "可收；原來如此事務所池沒有同答案的題（只有一題樹蛙卵孵化，無關），謎面是流星傳說、不算動物題。最重要的改正：研究者沒讀到 Baylis 1926，只照 2014 年短文帶一句；原文顯示 1926 年就做了組織切片比對、還引了 1908 年的實驗，所以原稿的結語『三百多年裡缺的是有人把膠凍和卵放在一起看』不成立，改寫，並把 1926 年提升為獨立的轉折。另改兩處說過頭的話：『2009 年兩間研究機構驗 DNA』（一位是看樣本的藻類專家、一間做 DNA）；鉤子『從來沒有一個人親眼看見它發光』（Hughes 寫的是『看來沒有證據顯示』）。片長 8–9.5 分鐘成立。"
+    },
+    {
+      "id": "N3066",
+      "agent": "J2",
+      "reviewer": "R292",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J2-S023（村網站新址 https://widecombe-in-the-moor.com/?p=722）、J2-S024（?p=726）、J2-S025（?p=702）直接重取；pool.json 的 M05 與 N682 全文",
+      "reopen_result": "第 25 篇上：Dymond 導言寫 Prince 的敘述『is itself but a condensed abstract of one furnished in a contemporary tract in The Harleian Miscellany』，又說『The Bishop of Exeter (Joseph Hall) traces a proof of such agency in his allusion to the startling news which spread over the country from Widecombe』，並引 Prince『he may permit evil spirits, who have undoubtedly a great power in the air』與學校笑話；小冊標題『A second and most exact relation … ON SUNDAY, THE 21ST OF OCTOBER LAST, 1638』『Imprimatur Thomas Wyke, R. P. Episc. Lond. Cap. Domest.』『Printed at London by G. M. for R. Harford … 1638』；『some said they saw at first a great fiery ball come in at the window, and pass through the church』；補述『at least three hundred persons』『Master Lyde, with many persons in the church, did see, presently after the darkness, as it were, a great ball of fire, and most terrible lightning come in at the window』『to the number of 50 or 60』；Rowse 與 Lyde 的對話都在。小冊印『warrener unto Sir Richard Reynolds』，編者註『Sir Richd. Reynell of Ford』。在兩頁轉錄裡搜尋 devil／Satan／spirit：只出現在 1876 年的導言與歸在 Lyde 名下的詩，小冊正文沒有。第 25 篇下：『attributed to the Rev. George Lyde, in whose trunk they were found』『Nor was the devil idle all the season, / The prince that ruffles in the airy region』『That it was God who gave the devil leave』『Amongst others dead, in number four in all』都在。第 15 篇：『the legend, current on \"the Dartmoors,\"』『I learnt from a MS. which I lighted upon by accident a few years ago, in a dreary old farm-house』『a horseman rode up to the door of the inn at Poundsgate』『The liquor hissed』『tied his horse to one of the four pinnacles』都在，沒有賭徒名字與撲克牌。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "只當章節收，接 N682（見 theme_suggestions），不單獨成集、不轉 Shorts。事實面研究稿大致準確，覆核補四點：小冊文字其實隔了三手（1638 → Harleian Miscellany → 1876 → 網站）；『四人死亡』不是小冊的數字；1876 年的編者還提到當時的 Exeter 主教也把這件事歸給空中的惡靈，『魔鬼不是完全後加的』這一層因此更實；寫信人自己說傳說是當地流傳的。血腥守則：小冊對傷亡寫得很直接，研究稿沒有引用那些段落，scope 的『不引、不畫』維持；可用畫面有限，片長下修為 5–6.5 分鐘。騎士故事的更早出處覆核再搜一次仍沒有，維持『目前讀到最早是 1876 年』。"
+    },
+    {
+      "id": "N3081",
+      "agent": "J3",
+      "reviewer": "R293",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J3-S001 https://archive.org/download/india.history.resource.90622/90622_djvu.txt（Brewer 1859，Appendix I, Cap. IV，頁 532–533 與書信 explicit）；J3-S002 1993 年重排本全文與 archive.org 條目 metadata；J3-S003 Thorndike 卷二頁 654–655；J3-S004 與新讀 J3-S041（文章頁）；J3-S005",
+      "reopen_result": "拉丁文逐字在：『in quibus nihil magicum est; ut videatur quod omnis magica potestas sit inferior his operibus』『ut aestimamus currus falcati fuisse, quibus antiquitus pugnabatur』『Nam Alexander magnus his usus est, ut secreta maris videret, secundum quod Ethicus narrat astronomus. Haec autem facta sunt antiquitus, et nostris temporibus facta sunt, ut certum est; nisi sit instrumentum volandi, quod non vidi, nec hominem qui vidisset cognovi; sed sapientem qui hoc artificium excogitavit explere cognosco』；explicit 作『ad Gulielmum Parisiensem conscripta』（OCR 讀成 Gulielnum）。1993 年重排本：『Such Engines as these were of old, and are made even in our dayes. These all of them (excepting only that instrument of flying, which I never saw or know any, who…』、書名頁『Faithfully translated out of Dr Dees own Copy, by T.M. and never before in English』『1659』；小器械尺寸英譯作『three fingers high, and four broad』，拉丁文是高寬各三指。條目簡介確有『predicting powered ships, automobiles, flying machines, and scuba gear』，自注『Supplied by The Internet Sacred Text Archive』。Thorndike：『It cannot be shown that Roger Bacon actually anticipated any of our modern inventions』與『we may also doubt if steamboats and automobiles had \"certainly been made\" in his day』都在。Popular Science Monthly：作者 James J. Walsh，1911 年 5 月號，『represents a prophecy marvelously surprising in its fulfilment』逐字。MPIWG：『Roger Bacon (b. 1214/1220, d. ca. 1292)』『These speculative technologies』。1659 年原印本的 EEBO-TCP 轉錄（quod.lib.umich.edu）回 403，沒有對到原印本。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，引文全部對得上，是這一批最紮實的一題。只補與收斂：1911 年那篇的作者與月份補上；『誰最早說成預言』仍沒查到，scope 加註 Thorndike 1923 年的措辭顯示這個讀法當時已通行；英譯只讀到 1993 年重排本，關鍵句以拉丁文為準並標明。片長 8–10 分鐘照原估。"
+    },
+    {
+      "id": "N3082",
+      "agent": "J3",
+      "reviewer": "R293",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J3-S006 https://theappendix.net/issues/2014/7/perchance-to-dream-science-and-the-future；J3-S007 https://archive.org/download/boyleworks01/boyleworks01_djvu.txt；J3-S010；新讀 J3-S034（Telegraph 2010-06-03，HNN 轉載）、J3-S035；J3-S008、J3-S009、J3-S042 再試仍只有摘要",
+      "reopen_result": "Roos：24 條轉寫逐字相符（『The Cure of Wounds at a Distance.』『The Cure of Diseases at a distance or at least by Transplantation.』『The practicable and certain way of finding Longitudes.』『The use of Pendulums at Sea and in Journeys, and the Application of it to watches.』）；Keller 引文是『markers for what humankind might achieve together… serving to expand the horizon of possibility』。但 Roos 首段寫的是『left in his papers a twenty-four-item list of predictions of the future』，並說多條『have been achieved in the form of airplanes, scuba diving, and scratch-and-sniff』——原稿把她寫成『不是預言』的一方，不對。Boyle 文集卷一：『those, which chymists call, either magnetism, or transplantation: such as are the cures reported to be performed by the weapon-salve and sympathetick powder』『I confess I am as yet in doubt』『Robert Fludd's having transplanted the gout of one of his patients, by making him often sleep with a dog』『had the swelling transplanted to himself』都在；陶匠兒子一段在方括號內（『since I begun this chapter』，提到 1660 年）。皇家學會新聞稿：curl 回 403，摘要工具拒絕逐字重現——仍然沒有逐字讀到。改讀到《Telegraph》2010-06-03 報導的轉載全文：『Aeroplanes, organ transplants and even scratch and sniff paper are among a \"remarkable\" set of predictions』『all but a few of the 24 have come true』、Ashmore 的『cure of diseases by transplantation… inherent features of contemporary medicine… predictions he was making over 300 years ago』、『Boyle also predicted Kevlar body armour』。Nautilus 兩句相符。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "可收，但原稿三處要改：(1) 流傳版本原本靠摘要讀到的新聞稿承載，『GPS』『Kevlar』的原話無從核對——改由逐字讀到的《Telegraph》報導承載，question 不再寫『新聞稿說』，『GPS』改成報導的說法（海上導航／轉貼表的 satellite navigation）；(2) Roos 自己就把清單叫『predictions of the future』，『它是待辦事項，不是預言』不能掛在她名下；(3) 鉤子把『清單上的移植＝把痛風移給狗』寫成事實，而這是研究者拿 Boyle 的書去讀清單——查了 Hunter、Keller 與學會部落格，沒有學者替『Transplantation』這一條作註（2022 年學會部落格只把『隔空治傷』連到交感療法，且只有摘要），全篇改成『同一個字在他書裡的用法』的對照口吻。片長 8–9.5 分鐘可以成立。"
+    },
+    {
+      "id": "N3083",
+      "agent": "J3",
+      "reviewer": "R293",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J3-S012 https://apollojournals.org/afj/ap11fj/25day8-reentry-stowage.html；J3-S011 https://www.gutenberg.org/cache/epub/83/pg83.txt；J3-S013、J3-S014",
+      "reopen_result": "Apollo Flight Journal 頁首：『It is the last full day of the Apollo 11 mission, 23 July 1969』；『177:32:24 Armstrong: Good evening. This is the Commander of Apollo 11. A hundred years ago, Jules Verne wrote a book about a voyage to the Moon. His spaceship, Columbia, took off from Florida and landed in the Pacific Ocean after completing a trip to the Moon. … as the modern-day Columbia completes its rendezvous with the planet Earth and the same Pacific Ocean tomorrow.』逐字相符。Gutenberg #83：『between 0° and 28° of latitude』『Now Texas possesses eleven towns within the prescribed conditions… while Florida has only one. I go in, therefore, for Florida and Tampa Town.』『I shall go inside. Shall arrive by steamer Atlanta.』『subscribe a single farthing』『$5,446,675』『19,250 pounds』『27° 7′ N. lat.』『seventeen minutes past one in the morning』『upon the bowsprit, which it smashed close to the stem』『it is ‘they’ come back again!』都在。Futility Closet（2008-10-26）寫的是『a crew of three being launched from the United States on a trip around the moon』，並自註『Verne's craft was shot from a cannon called the Columbiad』『only 136 miles』；Toth 頁寫『just a few miles』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，小說引文與轉播逐字稿都對得上。改一處會誤導的寫法：原稿說『「登月」沒有』，像是清單或 Armstrong 說小說人物登上了月球——Armstrong 說的是『completing a trip to the Moon』，清單寫『a trip around the moon』，兩者都沒說降落；改成『只繞月、沒有降落，流傳清單寫的也是繞月』。流傳清單其實自己註明了 Columbiad 是砲，混成船名的只有 Armstrong 那句（標為本稿對照）。Verne 卒年 1905 已用國會圖書館權威檔確認。誰編清單、失重一條都沒有可講的來源，片長下修為 8–10 分鐘。太空人不入畫，照原稿。"
+    },
+    {
+      "id": "N3084",
+      "agent": "J3",
+      "reviewer": "R293",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J3-S016 https://ja.wikisource.org/wiki/二十世紀の豫言（action=raw 全文）；J3-S015 https://earlyradiohistory.us/1900next.htm（全文）；J3-S017（把 PDF 頁 14–15 當影像重讀）；J3-S018、J3-S019；新讀 J3-S036（国立国会図書館展示目錄）與レファレンス協同データベース事例 1000185867",
+      "reopen_result": "兩份文本逐條重比，原稿列的對應都成立，最硬的兩條：報知『十九世紀末に發明せられし葉巻煙草形の機關車…速力は通常一分時に二哩急行ならば一時間百五十哩以上…今日四日半を要する紐育桑港間は一晝夜にて通ずべし…給水の爲に停車すること無かるべし』對 Watkins『Trains will run two miles a minute, normally; express trains one hundred and fifty miles an hour. To go from New York to San Francisco will take a day and a night… cigar-shaped electric locomotives… no stops for water』；報知『歐洲の天に戰雲暗澹たることあらん時…其寫眞は天然色を現象すべし』對『If there be a battle in China a hundred years hence… Photographs will reproduce all of Nature's colors』。不合的細節：報知豌豆是『橙大』，Watkins 是『as Large as Beets』；身高一條兩邊都有。Watkins 首段『These opinions I have carefully transcribed』、『Even to-day photographs are being telegraphed over short distances』在。Post：『John Elfreth Watkins, Jr., a Post writer』『Where he was wrong, he was very, very wrong』『47.8 years』在。Paleo-Future：德文譯本刊在『Milwaukee Herold und Seebote, 1900』——美國的德文報。JAIST 文頁 14 確實寫『1988年には、週刊誌『This is 読売』では…小松左京氏は…』與『半数以上の項目は実現に至っている』；但國會圖書館展示目錄記《This is 読売》『1998・1号』、特集〈21 世紀大予言〉。日文與英文檢索三輪（報知＋Ladies' Home Journal／ワトキンス／元ネタ／翻訳）沒有找到任何指出兩篇關係的研究；參考事例只指向橫田順彌《百年前の二十世紀》（1995）與《明治ニュース事典》，都沒讀到。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "可收，條件是全題改用『本稿並排比較』的口吻。覆核重做對照後，重合是真的（鐵道與戰場照片兩條連數字、比喻、句序都一樣），但沒有任何學者或館方指出過，也沒有版面影像——所以 question、hook、payoff 都不能寫成既定結論：『連句子都對得上』改成列出對得上的句子、『有一大半句子』（研究者自己的統計）改成『有好幾條』。另改四個事實：豌豆的比喻兩邊不同；『身高六尺』不是報知獨有；德文譯本是美國密爾瓦基的報紙；《This is 読売》回顧的年份 J3-S017 與國會圖書館目錄相差十年。寫稿前必讀橫田順彌的書，若他已指出出處就改引。片長 9–11 分鐘照原估。"
+    },
+    {
+      "id": "N3085",
+      "agent": "J3",
+      "reviewer": "R293",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J3-S021 https://zh.wikisource.org/wiki/新中國（目錄頁與 /01、/02、/03 的 action=raw）；J3-S022（action=raw）；J3-S023、J3-S024；新讀 J3-S037（《中國藝術報》2010-05-21）",
+      "reopen_result": "第一回：『大清宣統四十三年正月十五日，西曆一千九百五十一年二月二十七號，禮拜日』『話說宣統二年正月初一日』逐字在（同回另有『今年是宣統四十三年——庚寅歲』）。第三回：『足有二十年光景了。宣統二十年，開辦萬⑥國博覽會，為了上海沒處可以建築會場，特在浦東辟地造屋。那時，上海人因往來不便，才提議建造這橋的。』『行駛電車，往往有碰撞行人車輛等事』『空行不及隧行的便』『都扯著黃龍旗號』逐字在；注號⑥的注文仍然沒有。目錄頁標『又名《立憲四十年後之中國》』、列十二回，但 /04、/12 回 404。梁啟超：『茲編之作，專欲發表區區政見』『雖有管葛，亦不能以今年料明年之事，況於數十年後乎』『竟把偌大一個上海，連江北，連吳淞口，連崇明縣，都變作博覽會場了』逐字在。外交部網站那篇：『一場盛大的「博覽會」正在上海浦東舉行』『並非他有未卜先知的能力』『他出生於 1878 年，去世於 1944 年』在。澎湃：張偉『並非「空中閣樓」』『狂熱盼望』『處處以世博會為標杆』在。新讀到的 2010 年出處：《中國藝術報》2010-05-21 寫論壇上介紹這本小說『虛構了 100 年後在上海浦東舉辦萬國博覽會的情景』、『書中 20 餘種預言已被應驗』、陸士諤（1878－1944）。2010 年 10 月 31 日世博高峰論壇講話全文（外交部網站）查過，沒有提這本小說。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，前三回與梁啟超的引文逐字相符。補上原稿最大的缺口——2010 年當時的可讀流傳出處——並把『2010 年以後常這樣講』改成『世博前後的報導這樣講』。講話原文沒讀到，只能『據報導轉述』、不加引號、不寫日期；講者是在世政治人物，不入畫、不評論。結尾夢醒的對話三個二手出處字句不同，仍只能說『據轉述』。『萬國』二字的注號與第四回以後的全本仍缺，寫稿前要補。題材是晚清人的未來想像，不是今天的爭議，守住『只講文本』即可。片長 8–9.5 分鐘照原估。"
+    },
+    {
+      "id": "N3086",
+      "agent": "J3",
+      "reviewer": "R293",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J3-S025 http://www.tfcbooks.com/tesla/1926-01-30.htm；J3-S026 https://teslauniverse.com/nikola-tesla/articles/future-wireless-art；新讀 J3-S038（kottke.org 2018）、J3-S039（Snopes）",
+      "reopen_result": "1926 年訪問：標題『WHEN WOMAN IS BOSS』、『Colliers, January 30, 1926』、題下『The life of the bee will be the life of our race, says Nikola Tesla』、導語『A NEW sex order is coming--with the female as superior. You will communicate instantly by simple vest-pocket equipment.』、『AT SIXTY-EIGHT years of age』、『When wireless is perfectly applied the whole earth will be converted into a huge brain』、『When the wireless transmission of power is made commercial』、『choke the maternal instinct… the perfect civilization of the bee』、結尾 Wisconsin 的絕育法與 eugenics 都在。1908 年：『As soon as completed, it will be possible for a business man in New York to dictate instructions… He will be able to call up, from his desk, and talk to any telephone subscriber on the globe… An inexpensive instrument, not bigger than a watch, will enable its bearer to hear anywhere, on sea or land, music or song…』在（Underhill 與 Massie，Wireless Telegraphy and Telephony，1908）。流傳出處：kottke.org 2018 年 4 月標題即『Nikola Tesla Predicted the Smartphone in 1926』，但它同時引了『new sex order』與『civilization of the bee』並評『goes a little off the rails』；Snopes 判這句引文與年份屬實，也引了題下導語。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.role",
+        "editorial.minutes",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "事實都對，但撐不起一集：改列 chapter。原稿缺的流傳出處補到了，卻同時削弱了第一個轉折——被當成『沒人引』的蜂巢與性別一段，2018 年那篇標題寫著『預言了智慧型手機』的網誌自己就引了，『今天沒有人引』與事實不符，已改；剩下會改變觀眾結論的只有『前提是無線輸電』與『1908 年就說過』兩點，誠實估 5–6.5 分鐘。1908 年那段原稿寫成『單向播送』，漏了同段『從辦公桌打給任何電話用戶』一句，已補。Tesla 卒年 1943 已確認，可畫。與 N3087 合成一集兩章（見 theme_suggestions）；N3087 若不做，這題留池等兄弟題。"
+    },
+    {
+      "id": "N3087",
+      "agent": "J3",
+      "reviewer": "R293",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J3-S027 https://www.gutenberg.org/cache/epub/3251/pg3251.txt；J3-S028 https://twainsgeography.com/node/21124 與 node/21108；J3-S029",
+      "reopen_result": "Gutenberg #3251：『Chicago, April 1, 1904.』『Date, one o'clock in the morning, March 31, 1898』『young Szczepanik;(1) Mr. K., his financial backer』『the invention was not taken seriously by any one except its inventor』『a two years' exclusive lease of it to a syndicate, whose intent was to exploit it at the Paris World's Fair』『Give me Yedo』『I put my eye to that strange instrument, and there was Peking and the Czar's procession!』『By the decision of the French courts in the Dreyfus matter… the decisions of courts are permanent and cannot be revised』『But Szczepanik is still alive.』『So is Dreyfus.』『All America is vocal with scorn of 'French justice'』都在。Twain's Geography：4 月 2 日致 Gilder 的信有『I am mailing to you a little tale entitled \"From the London Times.\"』『the photograph of Szczepanik』『He comes & drinks beer with me every now & then, & talks till midnight… He is going to be the European Edison, I suppose』；『25 years old, black hair…』與『Mr. Kleinberg』出自 3 月 20 日的筆記，不是這封信；專利一事是『March 18, 1898. On the 15th I heard by accident… the American patents on Szczepanik's designing-machine were not yet sold… an interview for next night—16th』；另一封信有『raise the capital & introduce it in America』；首刊『Nov. 1898 issue of Century』；同頁寫『Jan Szczepanik (1872-1926)』。Open Culture（2014）標題與引文相符，寫『That sounds a lot like social media』，文末有附註說角色名字取自波蘭發明家 Jan Szczepanik、並提 1898 年《New York Times》一則報導。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "editorial.role",
+        "editorial.minutes",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "事實大體對，但撐不起一集：改列 chapter。改掉的錯：『25 歲』與金主 Kleinberg 出自筆記而非那封信；筆記是 3 月 18 日寫的（記 15 日的事）；行刑時機器裡看到的是『Peking and the Czar's procession』，原稿寫成『北京加冕遊行』；鉤子『每隔幾天』原文是『every now & then』；『寫這篇的同一個月』不準（3 月中的事、4 月 2 日寄出）。流傳樣本自己在文末交代了 Szczepanik 是真人，『憑空想出』的落差比原稿寫的小；哈雷彗星尾聲只有 Paine 一人轉述，不能拿來補片長（wave26 的判斷不變）。誠實估 6–7.5 分鐘。Szczepanik 1872–1926 已在來源頁與國會圖書館權威檔確認，可畫。與 N3086 合成一集兩章，這一章在前。"
+    },
+    {
+      "id": "N3088",
+      "agent": "J3",
+      "reviewer": "R293",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "J3-S030 https://www.gutenberg.org/cache/epub/1059/pg1059.txt；J3-S031 https://ans.org/news/article-1424/…；試讀 archive.org『leoszilardhisver0000spen』（Szilard《His Version of the Facts》）與 Google Patents GB630726A",
+      "reopen_result": "Gutenberg #1059：題獻『To Frederick Soddy's 'Interpretation Of Radium' This Story, Which Owes Long Passages To The Eleventh Chapter Of That Book, Acknowledges And Inscribes Itself』、序『was written in 1913 and published early in 1914』『it is put off until the year 1956』『he has always been inclined to be rather a slow prophet』『to allow the chemist to get well forward with his discovery of the release of atomic energy』、『a black sphere two feet in diameter. Between its handles was a little celluloid stud』『bit the stud, and hoisted the bomb over』、『its half period was seventeen days… never entirely exhausted, and to this day the battle-fields and bomb fields… are sprinkled with radiant matter』、1933／1953／1956 都逐字在。美國核學會文章：『Szilard claimed that he considered that story as mere fiction and did not credit it as any part of his inspiration』『On March 12, 1934, Szilard applied for a patent』『moonshine』在。Szilard 本人的回憶：archive.org 的書是限制借閱（全文 401，書內檢索回『Item not available』）；專利頁回 503；一般檢索只找到二手轉述。『I knew… because I had read H. G. Wells』與『didn't regard it as anything but fiction』兩句都沒有逐字讀到。",
+      "changed_fields": [
+        "scope",
+        "source_ids",
+        "editorial.role",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "維持 needs_check，不收進可用題。小說一半紮實；但這題的第二個重心（Szilard 自己怎麼說）覆核同樣讀不到一手文字。缺的來源：Weart 與 G. W. Szilard 編《Leo Szilard: His Version of the Facts》（MIT Press 1978）開頭的回憶段落，以及英國專利 630,726 的文字；另 Soddy《Interpretation of Radium》第十一章也還沒讀。二戰邊界：系列明文不收的是『二戰的暴行』，這題停在 1934 年的專利、不講研發與使用，守得住，所以不因此直接 REJECT；但流傳說法本身是拿後來的武器來對，旁白最多一句帶過，製作時守不住就改列未收。補到來源之前只有小說本身約 5–6 分鐘，不單獨成集。Soddy 1956 年過世，不入畫；Wells 1946 可畫。"
+    },
+    {
+      "id": "N3101",
+      "agent": "J4",
+      "reviewer": "R294",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J4-S001 Clark 2002（PDF 重新下載，pdftotext）；J4-S002 Gomme（Gutenberg 重新下載）；J4-S003 Laing（Gutenberg 重新下載）；J4-S004 Hagland & Watson 頁 330–331；新讀 J4-S029（Morris 與 Magnússon 1894）、J4-S030（Laing 1844 年初版第二卷）、J4-S031（Namby Pamby 1725）、J4-S032（Iona Opie 2004）、J4-S033（Lumsden 版 Tommy Thumb's Song-Book）、J4-S034（Lean's Collectanea 引 London Chanticleers）",
+      "reopen_result": "Gomme (d) 段、加爾各答 1872、『bespattered with the blood of little children』、1823 年來信全文、引 Laing 的詩與『it is curious, that the first line of the game-rhyme appears』都逐字相符；Clark 的 Jackson 引文、Ashdown『a spirited and exceedingly free rendering』、DNB『more vigorous than accurate』、Simpson 1964、結論句都在。Laing 1844 年初版頁 10–11 印的就是『London Bridge is broken down,— / Gold is won, and bright renown… Odin makes our Olaf win!』。但 Hagland 頁 330 的『Enn brauzt bryggjur Lundúna…』前面寫明是『rewritten in the syntax of ordinary prose』，不是原詩的開頭；Clark 說原詩 bryggjur 在第 2 行、Lunduna 在第 4 行。Hagland 同頁另給第三行讀成『gold』的讀法，kenning 裡有 Yggr＝Odin。Morris 1894 譯本倫敦橋在第三行。1725 年《Namby Pamby》原件有『London-Bridge is broken down: / Now he courts the gay Ladee, / Dancing o'er the Lady-Lee』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立、來源紮實，但有兩處事實錯：把 2005 年論文改排的散文語序當成『原詩開頭』，以及說原詩『沒有黃金、沒有奧丁』。改寫後鉤子改靠覆核讀到的兩個譯本（1844 與 1894）；研究者標為最弱的『約 1744 年最早印出』仍沒有原件，改用逐字讀到的 1725 年諷刺詩當『目前讀到最早』，維基的 1657 與『Newbery』兩個說法不採。Thomas 1930 的書裡沒有這首歌，無從加強。片長 8–10 分鐘可成集。"
+    },
+    {
+      "id": "N3102",
+      "agent": "J4",
+      "reviewer": "R294",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J4-S007 Grose 1785（重新下載 djvu 全文）；J4-S006 Eckenstein（Gutenberg 重新下載）；J4-S009 Independent 訃聞；J4-S010 Gloucestershire History PDF；J4-S011 Phrase Finder 貼文；新讀 J4-S032（Iona Opie 2004）、J4-S035（Thomas 1930 全文重新下載）",
+      "reopen_result": "Grose：『Humpty [d]umpty, a little humpty dumpty man or woman, a short clumsey person of either sex, also ale boiled with brandy』在。Eckenstein 三版與年份（1810 p. 36、1842 p. 113、1846 p. 209）、薩克森謎語都在；但『all the king's horses』只在井的謎語，煙的謎語是『all the king's soldiers』。訃聞那句、Palmer『merely a jeu d'esprit contrived in 1956 by Dennis Daube… popularised subsequently by Richard Rodney Bennett』、旅遊局貼文全文都逐字相符。Iona Opie 2004 頁 277 寫明『a theory Professor David Daube put forward in The Oxford Magazine of 16 February 1956』、『Dr Chillingworth's tortoise-like siege machines… siege of Gloucester in 1643』、『ingenuity for ingenuity's sake』。Thomas 1930 頁 38–40 確實把這首歌套給理查三世（『when those lines were directed at the Usurper, he lay slain upon Bosworth Field』）——研究者說搜不到，是本機轉檔漏了。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。研究者標的弱點補上兩個：Daube 文章的日期與內容有了 Iona Opie 自己的逐字轉述（原文仍未讀），理查三世版有了 1930 年的印本出處。Colchester 版何時出現、1797 年印本仍只有維基，scope 已限制不講。片長 8–9.5 分鐘可成集。"
+    },
+    {
+      "id": "N3103",
+      "agent": "J4",
+      "reviewer": "R294",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "J4-S014 祝淳翔〈年獸傳說探源〉（澎湃，重新下載全文逐段核對）；另試搜尋 1933 年《金剛鑽》原文、朱介凡 1973、李天飛 2018、孫玉聲卒年",
+      "reopen_result": "祝文裡的每一段引文、日期、署名都與原稿相符：1980-02-16《人民日報》、婁子匡 1967、1959 年《新民晚報》、1949-01-28《大公報》、1947-04-01《大家》、1939-12-31《申報》、1937-02-16《鐵報》（同版另有一篇『獨角怪獸』）、1935-02-01 與 1933-01-17《金剛鑽》；『筆者推斷孫玉聲幼時的耳食之談，便是年獸傳說的源頭』是作者自己標明的推斷。民國報刊原版面、第二位學者的獨立引錄、孫玉聲卒年，本輪都沒有讀到（搜尋只回到祝文與轉述它的百科；豆瓣 403、百度百科連線被重設；付費的《全國報刊索引》沒有繞）。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "premise_status",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "題目好、轉折足（8.5–11 分鐘），研究稿對祝文的轉述沒有錯；但主幹仍只有一篇報紙專欄形式的二手考證，所有民國原件都是經它引錄，照系列規則不能當成已證實。缺：任一則 1933／1935《金剛鑽》或 1939《申報》的原版面，或另一位研究者獨立的引錄；孫玉聲卒年的可讀出處。補到其中一項即可改判可收。"
+    },
+    {
+      "id": "N3104",
+      "agent": "J4",
+      "reviewer": "R294",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J4-S017 Snopes（重新下載全文）；J4-S018、S019、S020 Phrase Finder 三頁（重新下載）；新讀 J4-S036（Wilton 2004 第 2 章）、J4-S037（Vester 專利原件 PDF）、J4-S038（1884-01-03《Mineral Argus》第 4 版，國會圖書館報紙庫）",
+      "reopen_result": "Snopes：『began its Internet life in April 1999』、郵件尾段、Murner 1512、trench mouth 1918、Coontz 的 26 歲、『only came into fashion in the 19th century』都逐字在。Phrase Finder：專利號、1893／1882／1888／1897 四則引文與年份如原稿。專利原件：『Franz Vester, of Newark, New Jersey. Improved Burial-Case… Letters Patent No. 81,437, dated August 25, 1868』，裝置是伸出地面的方管、管內梯子、手中繩子、管頂的鈴與玻璃門。Wilton 2004 的年份全都比 Phrase Finder 晚（graveyard shift 1907、saved by the bell 1954 辭典、dead ringer 1891）。國會圖書館報紙庫 1884-01-03 蒙大拿《Mineral Argus》：『The mixologist on the graveyard shift at The Bullion, had better beware of the P. I.』——比原稿寫的 1897 年早十三年。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。軸別維持 L（主體是 1999 年的連鎖信，屬當代傳說；N824、N166 這類片語與童謠的假出處也在 L）。研究者標的弱點——最早用例全靠一個網站、專利沒讀——補了專利原件、第二本辭源書與一則覆核自己讀到的更早用例；題目裡『鹽湖城警察的排班表』因此改掉，三個『最早』一律改成『目前讀到最早／某人找到的最早』。活埋題材照 scope 只畫專利圖。片長 8–10 分鐘可成集。"
+    },
+    {
+      "id": "N3105",
+      "agent": "J4",
+      "reviewer": "R294",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J4-S022 ADS-L 2013-09（重新下載）；J4-S023 Yale Alumni Magazine（重新下載）；新讀 J4-S039（ADS-L 2015-04-27〈Major Discovery〉原信與三封回覆）、J4-S040（1912-05-17《Mount Vernon Signal》第 1 版，國會圖書館報紙庫）、J4-S036（Wilton 2004 第 1 章）",
+      "reopen_result": "2013 年貼文的編年清單、『largely out the window』、Taylor-Blake 對兩份報紙各出自一人的猜測都在；Yale 專欄的 1962、1956-07、1921-05-07、1912 兩則與『seems to be disproven』都在。1912-05-17 原版面 OCR：『…they will tell the whole six yar,ds』。2015 年的〈Major Discovery〉：1850-12-04 密蘇里《Democratic Banner》頁 1，『Your last \"nine yards\" would be unworthy of notice… through your \"nine yards\" in all its serpentine windings』；Shapiro：『likely… a surprisingly early precursor』，六碼原形說『now seems questionable』，布料說比水泥車與機槍彈鏈可信但『no strong evidence』。Wilton 2004：『The earliest known use… is only from 1966』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "研究者自己標明沒讀的 2015 年後續確實改變結論：九碼的說法 1850 年已經有，『六碼漲成九碼』連提出的人都收回了；題目、轉折、結語照此重寫，鉤子（1912 年是六碼）覆核在原版面上讀到，保留。單獨 6.5–8 分鐘，維持 chapter，與 N3106 合成一集（見 theme_suggestions）。"
+    },
+    {
+      "id": "N3106",
+      "agent": "J4",
+      "reviewer": "R294",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "J4-S025 World Wide Words（重新下載全文）；J4-S026 Phrase Finder、J4-S027 Snopes（重新下載）；新讀 J4-S036（Wilton 2004 頁 100–101）、J4-S041（Diary of a Nobody，Gutenberg）",
+      "reopen_result": "Quinion：『P&O flatly denies any such term existed』、1830、Montagu Williams 1892『the thing to get the posh』、1918 年 9 月《Punch》、『unprovable because slang is so rarely written down』都在。Phrase Finder：『P&O say they have never issued such tickets and, although many tickets from that era still exist, no \"POSH\" ones have been found』。Snopes：『didn't surface until 1935』『around 1914』，都沒有出處。Wilton：『October 17, 1935, in the London Times Literary Supplement, in which it is claimed to be of American origin. The earliest association with the P&O steam line comes two years later』；『earliest unambiguous use… September 25, 1918… Punch』；dandy 義『at least 1867』。《Diary of a Nobody》原文有『named Murray Posh, adding he was quite a swell』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立但單獨只有 4–5.5 分鐘，維持 chapter，接 N3105。原鉤子替船公司擬了一句話，改成來源寫明的事實；『1935 年』補上日期、刊名與『當時說是美國來的』；最早用例改用有出處的 1918-09-25，不用 Snopes 的 1914。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "N3046",
+        "N2964"
+      ],
+      "title_suggestion": "亞歷山大的兩個名場面，古書上到底怎麼寫？——一把劍、一根木栓，和找不到出處的飛盾",
+      "shared_question": "大家都看過的亞歷山大名場面，翻開現存的古代作者，上面到底寫了什麼——是寫了兩個版本、作者自己說不確定，還是根本沒有人寫過？",
+      "chapter_order": [
+        "N3046（6–6.5 分鐘）",
+        "N2964（5.5–6.5 分鐘）"
+      ],
+      "why_it_flows": "覆核讀了 held 的 N2964：它的答案是『兩則飛盾都找不到古代作者，源頭是 1959 與 1966 年的現代文字，最接近的古文是 Curtius 卷四寫泰爾守軍倒下燒紅的青銅盾』。N3046 的答案是『古書有寫，但並排寫了兩個版本，Arrian 自己說不敢斷言』。兩章一個是『有原文、比課本多一半』，一個是『沒有原文、被後人補上』，對照自然；而且共用同一批作者，不靠補料：第一章先讓觀眾認識 Arrian 在序裡說他信誰（跟著出征的 Ptolemy 與 Aristobulus）以及 Curtius 怎麼寫（3.1 的繩結），第二章回到同一個 Curtius（4.3 的泰爾圍城）去找『飛盾』，找到的是守城的熱沙。轉場一句就夠：『既然知道了亞歷山大的事是哪幾位作者留下來的，那另一個更離奇的畫面，他們有沒有寫？』順序上繩結在前（家喻戶曉、先建立『去對古書』的做法），飛盾在後（泰爾圍城，收在『連古書都沒有』）。片長：N3046 取 6–6.5 分鐘（車的來歷兩句帶過，Justin 的異文留一句），N2964 取 5.5–6.5 分鐘（坎尼一段上一批已拿掉），合計 11.5–13 分鐘，在上限內但沒有餘裕，兩章都不能再加料。這個組合取代 wave28 覆核提的 N2682＋N2964（那一組估 14–17 分鐘、N2682 得從單集壓到 8.5 分鐘）；N2682 照舊當單集。要改的只有 N2964 的 scope 第一句（『當章節接 N2682』改成接 N3046）；軸別一個 S、一個 U，整集掛 S。若站主仍想讓 N2964 等 N2682，N3046 就是待配章節，不單獨成集。"
+    },
+    {
+      "ids": [
+        "N682",
+        "N3066"
+      ],
+      "shared_question": "雷雨打進正在做禮拜的教堂之後，當年在倫敦印的小冊到底寫了什麼——今天大家記得的那隻黑狗、那個騎馬的魔鬼，是什麼時候才進到故事裡的？",
+      "why_it_flows": "兩題是同一種事（1577 年 Bungay、1638 年 Widecombe，都是禮拜中落雷、有人死傷、塔樓受損）、同一種史料（事後幾週內在倫敦印的小冊，把事情講成神的警告）、同一種查法（拿當年的小冊對後來的傳說），答案也同型：Black Shuck 這個名字 1850 年才出現，Widecombe 的騎士目前最早只讀到 1876 年。N682 當主體（8–11 分鐘），N3066 當第二章（5–6.5 分鐘），合計約 14–17 分鐘；第二章不必重講『小冊是什麼』，直接進到『火球在第一份敘述裡只是有些人說』與三層文字。兩章都不畫傷亡。不靠補料；M05（球狀閃電的光譜）是物理答案，核心問題不同，不放進這一組，最多在片尾用一句話指過去。"
+    },
+    {
+      "ids": [
+        "N3065",
+        "N123"
+      ],
+      "shared_question": "『從天上掉下來』的怪東西被人撿起來送去化驗之後，化驗的人說了什麼？",
+      "why_it_flows": "兩題的轉折幾乎是同一串：先有人說是念珠藻（N123 的 Brandeis、N3065 裡 Huxley 的回答），再有人在顯微鏡下看出動物組織（N123 的肺與軟骨、N3065 的蛙輸卵管），最後的解釋都落在鳥或掠食者（禿鷹嘔吐、鵟或烏鴉留下的內臟），而且都留著『沒有人親眼看見那一刻』的缺口。N3065 當主體（8–9.5 分鐘），N123 當第二章（5–7 分鐘）。兩題各自的來源已經夠，不靠補料；排片時兩章都不畫捕食與內臟。"
+    },
+    {
+      "ids": [
+        "N3087",
+        "N3086"
+      ],
+      "title": "1898 年的『網路』、1926 年的『手機』：兩段被當成預言的文字，放回原文是在說什麼？",
+      "shared_question": "被剪下來當成『預言了網路／手機』的那幾句，放回原來那一篇，是誰在替什麼東西說話？",
+      "chapter_order": [
+        "N3087（Twain 1898，6–7 分鐘）",
+        "N3086（Tesla 1908／1926，5–6 分鐘）"
+      ],
+      "why_it_flows": "兩章回答同一個問題、查法也一樣：把流傳的那幾句放回整篇。照年代排：第一章 1898 年，Twain 故事裡的機器是他朋友 Szczepanik 對外宣稱的發明，接上當時已有的電話網，Twain 自己還想替這位朋友的另一項發明找美國資金，整篇收在挖苦法院的一句；第二章 1908 與 1926 年，Tesla 的『錶大小的儀器』『背心口袋』是他無線輸電系統的配件，他先替長島的電廠說過一次，十八年後再說一次。兩章的共同答案：說話的人都不是旁觀的預言者，而是把眼前已有的電話與無線電往前推、而且自己押了注的人。轉場用年份與『從聽到看』一句即可，不靠補料：哈雷彗星、Wardenclyffe 的結局、Szczepanik 機器的真偽都沒有可講的來源，不放。兩章合計 11–13 分鐘，上限 13 分鐘；超過就先刪 Tesla 訪問後半的蜂巢描寫（只留標題與題下一句）。若只做得出一章，另一章留池，不單獨成集。"
+    },
+    {
+      "ids": [
+        "N3105",
+        "N3106"
+      ],
+      "shared_question": "一個人人都講得出來的片語來源故事，要怎麼驗？——去找最早印著那個字的那張紙，看故事和字誰先出現。",
+      "why_it_flows": "兩題的流行說法都是『聽起來很具體的實物』（機槍彈鏈、蓋了章的船票），查法也一樣：把最早用例一張一張往回推。N3105 當主體（壓在 7.5 分鐘內：1966 → 1956 → 1921／1912 的六碼 → 1907 → 1850 加引號的 nine yards），N3106 當第二章（4–5 分鐘：沒有船票、1918 年的《Punch》、1935 年才出現的縮寫說、街頭的『錢』），合計約 11–12.5 分鐘，不超過 13 分鐘；結尾可以共用一句：兩個故事都比它要解釋的那個字晚。不靠補料。N3104 自己已經 8–10 分鐘、核心是一封信，不併進來；池中 N824（white elephant，chapter）可當 N3106 的替代或備案，但三題同放會超長；N2743（rule of thumb）題材是家暴法律，不混。"
+    }
+  ]
+}

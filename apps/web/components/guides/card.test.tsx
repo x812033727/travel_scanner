@@ -35,5 +35,20 @@ describe("a guide card", () => {
     expect(card.className).toContain("sm:col-span-2");
     expect(screen.getByRole("img", { name: "成田機場" }).getAttribute("loading")).toBe("eager");
     expect(card.querySelector("h3")?.className).toContain("text-2xl");
+    expect(card.querySelector("time")).toBeNull();
+  });
+
+  it("renders news_date as a <time> element only for dated news items", () => {
+    const { container } = render(
+      <ul>
+        <GuideCard
+          article={{ ...article, kind: "life", news_date: "2026-11-12" }}
+          labels={labels}
+        />
+      </ul>,
+    );
+    const time = container.querySelector("time");
+    expect(time?.getAttribute("datetime")).toBe("2026-11-12");
+    expect(time?.textContent).toBe("2026-11-12");
   });
 });
