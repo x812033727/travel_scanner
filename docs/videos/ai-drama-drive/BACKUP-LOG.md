@@ -25,10 +25,10 @@ repo 是題庫與總表的原件；雲端的快照是唯讀備份，不要在雲
 | --- | --- | --- | --- | --- |
 | 2026-11-13 | 奇聞檔案局題庫快照（wave47 收尾後，入選 1,412） | main `f7090658`（PR #2090 合併；題庫內容與分支 commit `c3b2897d` 相同） | `AI劇/奇聞檔案局/_共用/製作檔/題庫-奇聞檔案局-20261113/` | `todrive: 155 files, 0 differences` |
 | 2026-11-13 | 原來如此事務所題庫快照（第二十七輪後，入選 4,860、可成題長題 88） | 同上 | `AI劇/原來如此事務所/_共用/製作檔/題庫-原來如此事務所-20261113/` | `todrive: 1318 files, 0 differences` |
-| 2026-11-13 | 奇聞題庫研究原稿（`curio26`–`curio48`、`curio38int` 整合腳本） | session `017c4Q` 的 scratchpad | `AI劇/奇聞檔案局/_共用/製作檔/題庫研究-session017c4Q/` | 傳送中 |
-| 2026-11-13 | 原來如此題庫研究原稿（`stw6`–`stw27`、`stwNNint` 整合腳本，第 6–27 輪） | 同上 | `AI劇/原來如此事務所/_共用/製作檔/題庫研究-session017c4Q/` | 傳送中 |
+| 2026-11-13 | 奇聞題庫研究原稿（`curio26`–`curio48`、`curio38int` 整合腳本） | session `017c4Q` 的 scratchpad | `AI劇/奇聞檔案局/_共用/製作檔/題庫研究-session017c4Q/` | `todrive: 8263 files, 0 differences` |
+| 2026-11-13 | 原來如此題庫研究原稿（`stw6`–`stw27`、`stwNNint` 整合腳本，第 6–27 輪） | 同上 | `AI劇/原來如此事務所/_共用/製作檔/題庫研究-session017c4Q/` | `todrive: 6438 files, 0 differences` |
 | 2026-11-13 | 兩個題庫未標系列的子代理工作資料夾（`r*`、`v*`、`f*`、`*dl`、`*tools` 等） | 同上 | `AI劇/奇聞檔案局/_共用/製作檔/題庫研究-雜項-session017c4Q/` | `todrive: 5151 files, 0 differences` |
-| 2026-11-13 | 各集總表第一版（93 列）與這份紀錄 | `catalog.py` | `AI劇/奇聞檔案局/_總表/`、`AI劇/原來如此事務所/_總表/` | 傳送中 |
+| 2026-11-13 | 各集總表第一版（81 列）、`catalog.py` 與這份紀錄 | `catalog.py` | `AI劇/奇聞檔案局/_總表/`、`AI劇/原來如此事務所/_總表/` | 兩處各 `todrive: 5 files, 0 differences` |
 
 比上面更早的研究原稿（奇聞 `curio26` 以前、原來如此 `stw6` 以前）沒有傳過雲端：做那些的 scratchpad 已經收掉，
 只剩 repo 裡的批次檔（`batches/`）、審稿紀錄（`reviews/`）與 `SOURCES.md`。
