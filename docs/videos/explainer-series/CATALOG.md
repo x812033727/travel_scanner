@@ -1,6 +1,6 @@
 # 奇聞檔案局與原來如此事務所：各集總表
 
-由 `docs/videos/ai-drama-drive/catalog.py` 產生（2026-11-13 18:40 UTC），不要手改；要更新就重跑：
+由 `docs/videos/ai-drama-drive/catalog.py` 產生（2026-11-13 21:22 UTC），不要手改；要更新就重跑：
 
 ```bash
 python3 docs/videos/ai-drama-drive/catalog.py   # 自動選用 rclone (videobackup:AI劇) 或 gdrive CLI
@@ -49,7 +49,7 @@ python3 docs/videos/ai-drama-drive/catalog.py   # 自動選用 rclone (videoback
 | S-歷史人物與名場面 | `S-歷史人物與名場面/S07` |  |  | 只有製作檔或教訓 |  |  |  | cute-mystery（新版） | e（預設） | Gemini Sulafat |  |  |  | 教訓 |  | `docs/videos/curio-s07` | 張飛長坂橋一聲吼，真相只有 65 個字？｜奇聞檔案局 |
 | S-歷史人物與名場面 | `S-歷史人物與名場面/S08` | `curio-s08-v2` | v2 | 已上傳 YouTube | [IvogKaRemk8](https://youtu.be/IvogKaRemk8) |  | private |  |  |  | Gemini 8 語 | 39d34ab0d563 | 2026-11-03 | final.mp4、主機檔 |  |  | 木牛流馬真的會自己走？古文寫著「一腳四足」，卻沒附一張圖｜奇聞檔案局｜CC字幕 |
 | S-歷史人物與名場面 | `S-歷史人物與名場面/S09` | `curio-s09-v2` | v2 | 已上傳 YouTube | [S-HraLI6z2g](https://youtu.be/S-HraLI6z2g) |  | private | cute-mystery（新版） | e（預設） | Gemini Sulafat | Gemini 8 語 | 39d34ab0d563 | 2026-11-03 | final.mp4、主機檔、教訓 |  | `docs/videos/curio-s09` | 桶狹間兩千打兩萬五千，信長的繞路奇襲是誰加的？｜奇聞檔案局｜CC字幕 |
-| S-歷史人物與名場面 | `S-歷史人物與名場面/S10`、`S10` | `curio-s10-v2` | v2 | 已上傳 YouTube | [ta-elJsT6Mg](https://youtu.be/ta-elJsT6Mg) |  | private | cute-mystery（新版） | e（預設） | Gemini Sulafat | Gemini 8 語 | 416c8768d4d2 | 2026-11-11 | S10/教訓、S10/製作檔、final.mp4、keyframes、recordings、timeline.json、教訓、製作檔 | 2 | `docs/videos/curio-s10` | 敵在本能寺，光秀真的喊過？一句名言被改寫了 245 年｜奇聞檔案局｜CC字幕 |
+| S-歷史人物與名場面 | `S-歷史人物與名場面/S10` | `curio-s10-v2` | v2 | 已上傳 YouTube | [ta-elJsT6Mg](https://youtu.be/ta-elJsT6Mg) |  | private | cute-mystery（新版） | e（預設） | Gemini Sulafat | Gemini 8 語 | 416c8768d4d2 | 2026-11-11 | final.mp4、keyframes、recordings、timeline.json、教訓、製作檔 | 2 | `docs/videos/curio-s10` | 敵在本能寺，光秀真的喊過？一句名言被改寫了 245 年｜奇聞檔案局｜CC字幕 |
 | S-歷史人物與名場面 | `S-歷史人物與名場面/S11` | `curio-s11-v2` | v2 | 已上傳 YouTube | [OzUv1Dd2XBk](https://youtu.be/OzUv1Dd2XBk) |  | private | cute-mystery（新版） | e（預設） | Gemini Sulafat | Gemini 8 語 | 39d34ab0d563 | 2026-11-03 | final.mp4、主機檔、教訓 |  | `docs/videos/curio-s11` | 長篠三段擊真的有？三千挺鐵砲是誰一筆一筆加上去的｜奇聞檔案局｜CC字幕 |
 | S-歷史人物與名場面 | `S-歷史人物與名場面/S12` |  |  | 只有製作檔或教訓 |  |  |  | cute-mystery（新版） | e（預設） | Gemini Sulafat |  |  |  | 教訓 |  | `docs/videos/curio-s12` | 關原之戰，家康真的開槍逼小早川倒戈？｜奇聞檔案局 |
 | S-歷史人物與名場面 | `S-歷史人物與名場面/S13` | `curio-s13-v2` | v2 | 已上傳 YouTube | [QHMl7jN0lUE](https://youtu.be/QHMl7jN0lUE) |  | private | cute-mystery（新版） | e（預設） | Gemini Sulafat | Gemini 8 語 | 416c8768d4d2 | 2026-11-11 | final.mp4、keyframes、recordings、timeline.json、教訓、製作檔 | 2 | `docs/videos/curio-s13` | 真田幸村從沒叫過「幸村」？4 封親筆信，簽的都不是這兩個字｜奇聞檔案局｜CC字幕 |
