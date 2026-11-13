@@ -11,7 +11,7 @@
  "voice": {
   "provider": "gemini",
   "name": "Sulafat",
-  "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速像平常聊天，一秒四到五個字，句與句之間不拖。"
+  "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速偏快、輕快，像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。"
  },
  "subtitles": {
   "burn_in": false
@@ -25,6 +25,11 @@
   "episode": 6,
   "chapter": 1
  },
+ "pauses": {
+  "line_ms": 0,
+  "scene_ms": 150
+ },
+ "still_motion": "beat",
  "music": {
   "track": "sothatswhy-bed-r2.m4a",
   "sha256": "9bb4ba6fd16feb4a7f352144b2d89e9648acbbbbaa2173c27a7eefbdb70f28c6",
@@ -39,7 +44,7 @@
    "voice": {
     "provider": "gemini",
     "name": "Sulafat",
-    "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速像平常聊天，一秒四到五個字，句與句之間不拖。"
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速偏快、輕快，像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。"
    },
    "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
   },
@@ -50,7 +55,7 @@
    "voice": {
     "provider": "gemini",
     "name": "Leda",
-    "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快"
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快，一秒五個字以上，不拖尾音"
    },
    "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
   }
@@ -238,7 +243,6 @@
      "id": "p001",
      "speaker": "kid",
      "text": "所長！我剛在陽台彎了方框，",
-     "pause_after_ms": 100,
      "emotion": "委屈又興奮，跑進來報案的語氣"
     }
    ]
@@ -258,7 +262,6 @@
      "id": "p002",
      "speaker": "kid",
      "text": "吹出來的泡泡還是圓的！",
-     "pause_after_ms": 100,
      "emotion": "不服氣"
     }
    ]
@@ -278,7 +281,6 @@
      "id": "p003",
      "speaker": "kid",
      "text": "而且它身上的顏色一直轉，",
-     "pause_after_ms": 100,
      "emotion": "比手畫腳"
     }
    ]
@@ -298,7 +300,6 @@
      "id": "p004",
      "speaker": "kid",
      "text": "最後頭頂變黑，就破了！",
-     "pause_after_ms": 100,
      "emotion": "可惜"
     }
    ]
@@ -319,7 +320,6 @@
      "id": "p005",
      "speaker": "kid",
      "text": "就是這支跟這瓶！",
-     "pause_after_ms": 100,
      "emotion": "舉起來"
     }
    ]
@@ -340,14 +340,12 @@
      "id": "p006",
      "speaker": "chief",
      "text": "給我看看。很平常的方框和泡泡水嘛。",
-     "pause_after_ms": 100,
      "emotion": "接住上一句"
     },
     {
      "id": "p007",
      "speaker": "chief",
-     "text": "可是你剛剛說的，每一句都很怪。",
-     "pause_after_ms": 100
+     "text": "可是你剛剛說的，每一句都很怪。"
     }
    ]
   },
@@ -367,7 +365,6 @@
      "id": "p008",
      "speaker": "kid",
      "text": "哪裡怪？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -387,14 +384,12 @@
     {
      "id": "p009",
      "speaker": "chief",
-     "text": "框是方的，泡泡卻是圓的。",
-     "pause_after_ms": 100
+     "text": "框是方的，泡泡卻是圓的。"
     },
     {
      "id": "p010",
      "speaker": "chief",
-     "text": "泡泡水沒有顏色，泡泡卻有。",
-     "pause_after_ms": 100
+     "text": "泡泡水沒有顏色，泡泡卻有。"
     }
    ]
   },
@@ -414,7 +409,6 @@
      "id": "p011",
      "speaker": "kid",
      "text": "對耶，這瓶明明是透明的！",
-     "pause_after_ms": 100,
      "emotion": "發現"
     }
    ]
@@ -435,14 +429,12 @@
      "id": "p012",
      "speaker": "chief",
      "text": "還有更怪的：兩顆泡泡黏在一起時，",
-     "pause_after_ms": 100,
      "emotion": "賣關子"
     },
     {
      "id": "p013",
      "speaker": "chief",
-     "text": "中間那片牆會往哪邊彎？等一下你就知道。",
-     "pause_after_ms": 100
+     "text": "中間那片牆會往哪邊彎？等一下你就知道。"
     }
    ]
   },
@@ -461,7 +453,6 @@
      "id": "p014",
      "speaker": "chief",
      "text": "頂上變黑也不是隨便黑的，它在跟你說一件事。",
-     "pause_after_ms": 100,
      "emotion": "賣關子"
     }
    ]
@@ -482,14 +473,12 @@
      "id": "p015",
      "speaker": "chief",
      "text": "你每次吹泡泡，這些事都在你眼前發生，",
-     "pause_after_ms": 100,
      "emotion": "轉向觀眾"
     },
     {
      "id": "p016",
      "speaker": "chief",
-     "text": "今天就用你這支方框跟這瓶，把它們全部找出來。",
-     "pause_after_ms": 100
+     "text": "今天就用你這支方框跟這瓶，把它們全部找出來。"
     }
    ]
   },
@@ -509,14 +498,12 @@
      "id": "p017",
      "speaker": "kid",
      "text": "全部？",
-     "pause_after_ms": 100,
      "emotion": "想不通"
     },
     {
      "id": "p018",
      "speaker": "kid",
      "text": "一支方框就夠？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -538,7 +525,6 @@
      "id": "p019",
      "speaker": "chief",
      "text": "夠。來，你是怎麼吹的？吹給我看看。",
-     "pause_after_ms": 100,
      "emotion": "接住上一句"
     }
    ]
@@ -559,14 +545,12 @@
      "id": "p020",
      "speaker": "kid",
      "text": "沾一下泡泡水，",
-     "pause_after_ms": 100,
      "emotion": "示範"
     },
     {
      "id": "p021",
      "speaker": "kid",
-     "text": "框裡就有一片薄薄的皮！",
-     "pause_after_ms": 100
+     "text": "框裡就有一片薄薄的皮！"
     }
    ]
   },
@@ -584,14 +568,12 @@
     {
      "id": "p022",
      "speaker": "chief",
-     "text": "對，框上那片皮是平平的。",
-     "pause_after_ms": 100
+     "text": "對，框上那片皮是平平的。"
     },
     {
      "id": "p023",
      "speaker": "chief",
-     "text": "你一吹，它就被撐大，包住一團空氣。",
-     "pause_after_ms": 100
+     "text": "你一吹，它就被撐大，包住一團空氣。"
     }
    ]
   },
@@ -611,7 +593,6 @@
      "id": "p024",
      "speaker": "kid",
      "text": "這層皮是什麼做的？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -631,14 +612,12 @@
     {
      "id": "p025",
      "speaker": "chief",
-     "text": "就是你這瓶泡泡水：很多水，加上一點肥皂。",
-     "pause_after_ms": 100
+     "text": "就是你這瓶泡泡水：很多水，加上一點肥皂。"
     },
     {
      "id": "p026",
      "speaker": "chief",
-     "text": "肥皂夾在兩面，水夾在中間，像一片很薄的三明治。",
-     "pause_after_ms": 100
+     "text": "肥皂夾在兩面，水夾在中間，像一片很薄的三明治。"
     }
    ]
   },
@@ -658,14 +637,12 @@
      "id": "p027",
      "speaker": "kid",
      "text": "可是框是方的耶，",
-     "pause_after_ms": 100,
      "emotion": "不解"
     },
     {
      "id": "p028",
      "speaker": "kid",
      "text": "為什麼不吹出方的？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -685,8 +662,7 @@
     {
      "id": "p029",
      "speaker": "chief",
-     "text": "我的想法是：這層皮，一直想把自己縮小。",
-     "pause_after_ms": 100
+     "text": "我的想法是：這層皮，一直想把自己縮小。"
     }
    ]
   },
@@ -706,7 +682,6 @@
      "id": "p030",
      "speaker": "kid",
      "text": "皮會自己縮？",
-     "pause_after_ms": 100,
      "emotion": "懷疑"
     }
    ]
@@ -726,14 +701,12 @@
      "id": "p031",
      "speaker": "chief",
      "text": "你吹過氣球吧？吹大的氣球皮，是被撐開的。",
-     "pause_after_ms": 100,
      "emotion": "轉向觀眾"
     },
     {
      "id": "p032",
      "speaker": "chief",
-     "text": "一放手，皮就把空氣擠出來。",
-     "pause_after_ms": 100
+     "text": "一放手，皮就把空氣擠出來。"
     }
    ]
   },
@@ -753,7 +726,6 @@
      "id": "p033",
      "speaker": "kid",
      "text": "對，它會咻咻亂飛！",
-     "pause_after_ms": 100,
      "emotion": "笑"
     }
    ]
@@ -774,14 +746,12 @@
      "id": "p034",
      "speaker": "chief",
      "text": "那我們來試：泡泡吹到一半，你停下來不吹，",
-     "pause_after_ms": 100,
      "emotion": "接住上一句"
     },
     {
      "id": "p035",
      "speaker": "chief",
      "text": "你猜會怎樣？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -802,7 +772,6 @@
      "id": "p036",
      "speaker": "kid",
      "text": "我猜它會一直留著！",
-     "pause_after_ms": 100,
      "emotion": "很有把握的錯猜"
     }
    ]
@@ -822,13 +791,12 @@
      "id": "p037",
      "speaker": "chief",
      "text": "你試試看。泡泡會慢慢縮回去，",
-     "pause_after_ms": 100
+     "pause_after_ms": 500
     },
     {
      "id": "p038",
      "speaker": "chief",
-     "text": "最後在框裡，又變回一片平平的皮。",
-     "pause_after_ms": 100
+     "text": "最後在框裡，又變回一片平平的皮。"
     }
    ]
   },
@@ -848,14 +816,12 @@
      "id": "p039",
      "speaker": "kid",
      "text": "真的縮回去了！",
-     "pause_after_ms": 100,
      "emotion": "驚喜"
     },
     {
      "id": "p040",
      "speaker": "kid",
-     "text": "它跟氣球一樣會擠！",
-     "pause_after_ms": 100
+     "text": "它跟氣球一樣會擠！"
     }
    ]
   },
@@ -875,13 +841,12 @@
      "id": "p041",
      "speaker": "chief",
      "text": "對，這種一直往內拉、想縮小的力氣，",
-     "pause_after_ms": 100
+     "pause_after_ms": 500
     },
     {
      "id": "p042",
      "speaker": "chief",
-     "text": "科學家叫它表面張力。",
-     "pause_after_ms": 100
+     "text": "科學家叫它表面張力。"
     }
    ]
   },
@@ -901,7 +866,6 @@
      "id": "p043",
      "speaker": "kid",
      "text": "那它為什麼要縮成圓的？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -920,14 +884,12 @@
     {
      "id": "p044",
      "speaker": "chief",
-     "text": "泡泡一離開框，那團空氣就被關在裡面了。",
-     "pause_after_ms": 100
+     "text": "泡泡一離開框，那團空氣就被關在裡面了。"
     },
     {
      "id": "p045",
      "speaker": "chief",
-     "text": "空氣一樣多，皮卻想用最少的面積把它包住。",
-     "pause_after_ms": 100
+     "text": "空氣一樣多，皮卻想用最少的面積把它包住。"
     }
    ]
   },
@@ -947,14 +909,12 @@
      "id": "p046",
      "speaker": "kid",
      "text": "包成方盒子，",
-     "pause_after_ms": 100,
      "emotion": "追問"
     },
     {
      "id": "p047",
      "speaker": "kid",
      "text": "不行嗎？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -974,13 +934,12 @@
      "id": "p048",
      "speaker": "chief",
      "text": "不划算。包一樣多的空氣，方盒子要的皮，",
-     "pause_after_ms": 100
+     "pause_after_ms": 500
     },
     {
      "id": "p049",
      "speaker": "chief",
      "text": "比圓球多了兩成多。",
-     "pause_after_ms": 100,
      "emotion": "數字放慢"
     }
    ]
@@ -1000,8 +959,7 @@
     {
      "id": "p050",
      "speaker": "chief",
-     "text": "所有形狀裡，用的皮最少的，就是圓球。",
-     "pause_after_ms": 100
+     "text": "所有形狀裡，用的皮最少的，就是圓球。"
     }
    ]
   },
@@ -1021,14 +979,12 @@
      "id": "p051",
      "speaker": "kid",
      "text": "才多兩成，",
-     "pause_after_ms": 100,
      "emotion": "調皮"
     },
     {
      "id": "p052",
      "speaker": "kid",
      "text": "泡泡也要省？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -1049,7 +1005,6 @@
      "id": "p053",
      "speaker": "chief",
      "text": "對泡泡皮來說，能縮就縮，多一點都不肯。",
-     "pause_after_ms": 100,
      "emotion": "笑"
     }
    ]
@@ -1068,8 +1023,7 @@
     {
      "id": "p054",
      "speaker": "chief",
-     "text": "所以你的方框，只管得住框裡那一片皮。",
-     "pause_after_ms": 100
+     "text": "所以你的方框，只管得住框裡那一片皮。"
     }
    ]
   },
@@ -1088,14 +1042,12 @@
     {
      "id": "p055",
      "speaker": "chief",
-     "text": "先說清楚，氣球皮只是比喻。氣球放完氣，皮會鬆掉；",
-     "pause_after_ms": 100
+     "text": "先說清楚，氣球皮只是比喻。氣球放完氣，皮會鬆掉；"
     },
     {
      "id": "p056",
      "speaker": "chief",
-     "text": "泡泡皮不管縮得多小，都一直在拉。",
-     "pause_after_ms": 100
+     "text": "泡泡皮不管縮得多小，都一直在拉。"
     }
    ]
   },
@@ -1115,14 +1067,12 @@
      "id": "p057",
      "speaker": "kid",
      "text": "那泡泡，",
-     "pause_after_ms": 100,
      "emotion": "追問"
     },
     {
      "id": "p058",
      "speaker": "kid",
      "text": "永遠都是圓的嗎？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -1143,14 +1093,12 @@
      "id": "p059",
      "speaker": "chief",
      "text": "不一定。我說的是飄在空中、只有一顆的泡泡。",
-     "pause_after_ms": 100,
      "emotion": "接住上一句"
     },
     {
      "id": "p060",
      "speaker": "chief",
-     "text": "停在濕濕的盤子上，就會變成半顆圓頂。",
-     "pause_after_ms": 100
+     "text": "停在濕濕的盤子上，就會變成半顆圓頂。"
     }
    ]
   },
@@ -1170,14 +1118,12 @@
      "id": "p061",
      "speaker": "kid",
      "text": "那兩顆黏在一起呢？",
-     "pause_after_ms": 100,
      "emotion": "追問"
     },
     {
      "id": "p062",
      "speaker": "kid",
      "text": "還會是圓的嗎？",
-     "pause_after_ms": 100,
      "emotion": "章尾停住，句尾上揚"
     }
    ]
@@ -1199,14 +1145,12 @@
      "id": "p063",
      "speaker": "chief",
      "text": "這就是剛剛那個想法的考試。",
-     "pause_after_ms": 100,
      "emotion": "接住上一句"
     },
     {
      "id": "p064",
      "speaker": "chief",
-     "text": "你從同一瓶，吹兩顆一樣大的泡泡，讓它們碰一下。",
-     "pause_after_ms": 100
+     "text": "你從同一瓶，吹兩顆一樣大的泡泡，讓它們碰一下。"
     }
    ]
   },
@@ -1226,7 +1170,6 @@
      "id": "p065",
      "speaker": "kid",
      "text": "我猜一碰就破掉！",
-     "pause_after_ms": 100,
      "emotion": "很有把握的錯猜"
     }
    ]
@@ -1246,13 +1189,12 @@
      "id": "p066",
      "speaker": "chief",
      "text": "常常不會破，它們會黏成一對。",
-     "pause_after_ms": 100
+     "pause_after_ms": 500
     },
     {
      "id": "p067",
      "speaker": "chief",
-     "text": "中間多了一片兩顆一起用的牆，而且是平的。",
-     "pause_after_ms": 100
+     "text": "中間多了一片兩顆一起用的牆，而且是平的。"
     }
    ]
   },
@@ -1272,14 +1214,12 @@
      "id": "p068",
      "speaker": "kid",
      "text": "我還以為，",
-     "pause_after_ms": 100,
      "emotion": "驚訝"
     },
     {
      "id": "p069",
      "speaker": "kid",
-     "text": "只會碰到一個點！",
-     "pause_after_ms": 100
+     "text": "只會碰到一個點！"
     }
    ]
   },
@@ -1298,14 +1238,12 @@
     {
      "id": "p070",
      "speaker": "chief",
-     "text": "那樣各包各的，皮用得比較多。",
-     "pause_after_ms": 100
+     "text": "那樣各包各的，皮用得比較多。"
     },
     {
      "id": "p071",
      "speaker": "chief",
-     "text": "還是想省皮：兩顆合用一片牆，比較省。",
-     "pause_after_ms": 100
+     "text": "還是想省皮：兩顆合用一片牆，比較省。"
     }
    ]
   },
@@ -1325,7 +1263,6 @@
      "id": "p072",
      "speaker": "kid",
      "text": "那為什麼是平的？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -1345,8 +1282,7 @@
     {
      "id": "p073",
      "speaker": "chief",
-     "text": "兩邊一樣大，誰也推不動誰，牆就平平的。",
-     "pause_after_ms": 100
+     "text": "兩邊一樣大，誰也推不動誰，牆就平平的。"
     }
    ]
   },
@@ -1366,14 +1302,12 @@
      "id": "p074",
      "speaker": "kid",
      "text": "那一大一小呢？",
-     "pause_after_ms": 100,
      "emotion": "追問"
     },
     {
      "id": "p075",
      "speaker": "kid",
      "text": "大的一定把小的壓扁！",
-     "pause_after_ms": 100,
      "emotion": "很有把握的錯猜"
     }
    ]
@@ -1394,7 +1328,6 @@
      "id": "p076",
      "speaker": "chief",
      "text": "還記得我問，中間那片牆會往哪邊彎嗎？",
-     "pause_after_ms": 100,
      "emotion": "點名回呼"
     }
    ]
@@ -1413,8 +1346,7 @@
     {
      "id": "p077",
      "speaker": "chief",
-     "text": "你看，中間那片牆，是往大泡泡那邊凸過去的。",
-     "pause_after_ms": 100
+     "text": "你看，中間那片牆，是往大泡泡那邊凸過去的。"
     }
    ]
   },
@@ -1434,7 +1366,6 @@
      "id": "p078",
      "speaker": "kid",
      "text": "小泡泡比較用力？",
-     "pause_after_ms": 100,
      "emotion": "不敢相信"
     }
    ]
@@ -1454,14 +1385,12 @@
     {
      "id": "p079",
      "speaker": "chief",
-     "text": "你可以這樣想：同一瓶泡泡水，皮拉的力氣都差不多。",
-     "pause_after_ms": 100
+     "text": "你可以這樣想：同一瓶泡泡水，皮拉的力氣都差不多。"
     },
     {
      "id": "p080",
      "speaker": "chief",
-     "text": "可是小泡泡彎得比較厲害，",
-     "pause_after_ms": 100
+     "text": "可是小泡泡彎得比較厲害，"
     }
    ]
   },
@@ -1480,8 +1409,7 @@
     {
      "id": "p081",
      "speaker": "chief",
-     "text": "所以小泡泡的皮，把裡面的空氣壓得比較緊，",
-     "pause_after_ms": 100
+     "text": "所以小泡泡的皮，把裡面的空氣壓得比較緊，"
     }
    ]
   },
@@ -1500,8 +1428,7 @@
     {
      "id": "p082",
      "speaker": "chief",
-     "text": "所以是小的往大的那邊推。",
-     "pause_after_ms": 100
+     "text": "所以是小的往大的那邊推。"
     }
    ]
   },
@@ -1521,7 +1448,6 @@
      "id": "p083",
      "speaker": "kid",
      "text": "小的反而贏了！",
-     "pause_after_ms": 100,
      "emotion": "驚訝"
     }
    ]
@@ -1542,21 +1468,18 @@
      "id": "p084",
      "speaker": "kid",
      "text": "形狀我懂了。",
-     "pause_after_ms": 100,
      "emotion": "想一想"
     },
     {
      "id": "p085",
      "speaker": "kid",
      "text": "可是你說泡泡水沒顏色，",
-     "pause_after_ms": 100,
      "emotion": "不解"
     },
     {
      "id": "p086",
      "speaker": "kid",
      "text": "顏色從哪來？",
-     "pause_after_ms": 100,
      "emotion": "章尾停住，句尾上揚"
     }
    ]
@@ -1578,7 +1501,6 @@
      "id": "p087",
      "speaker": "chief",
      "text": "好問題。顏料是沒有，那泡泡身上除了這層皮，還有什麼？",
-     "pause_after_ms": 100,
      "emotion": "接住上一句"
     }
    ]
@@ -1599,21 +1521,18 @@
      "id": "p088",
      "speaker": "kid",
      "text": "只有皮啊！",
-     "pause_after_ms": 100,
      "emotion": "很有把握"
     },
     {
      "id": "p089",
      "speaker": "kid",
      "text": "是皮拉得太緊，",
-     "pause_after_ms": 100,
      "emotion": "很有把握的錯猜"
     },
     {
      "id": "p090",
      "speaker": "kid",
      "text": "才變彩色的？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -1633,14 +1552,12 @@
     {
      "id": "p091",
      "speaker": "chief",
-     "text": "很多人會這樣猜。可是這股往內拉的力氣，管的是形狀，",
-     "pause_after_ms": 100
+     "text": "很多人會這樣猜。可是這股往內拉的力氣，管的是形狀，"
     },
     {
      "id": "p092",
      "speaker": "chief",
-     "text": "顏色要找另一個角色：光。",
-     "pause_after_ms": 100
+     "text": "顏色要找另一個角色：光。"
     }
    ]
   },
@@ -1660,7 +1577,6 @@
      "id": "p093",
      "speaker": "kid",
      "text": "光不是白白的嗎？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -1680,14 +1596,12 @@
     {
      "id": "p094",
      "speaker": "chief",
-     "text": "白光其實是很多種顏色混在一起。",
-     "pause_after_ms": 100
+     "text": "白光其實是很多種顏色混在一起。"
     },
     {
      "id": "p095",
      "speaker": "chief",
-     "text": "要是從裡面拿掉一種，剩下的，就會帶著顏色。",
-     "pause_after_ms": 100
+     "text": "要是從裡面拿掉一種，剩下的，就會帶著顏色。"
     }
    ]
   },
@@ -1707,7 +1621,6 @@
      "id": "p096",
      "speaker": "kid",
      "text": "拿掉一種？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -1727,8 +1640,7 @@
     {
      "id": "p097",
      "speaker": "chief",
-     "text": "比方說，從白光裡拿掉藍色，剩下的看起來就偏黃。",
-     "pause_after_ms": 100
+     "text": "比方說，從白光裡拿掉藍色，剩下的看起來就偏黃。"
     }
    ]
   },
@@ -1748,7 +1660,6 @@
      "id": "p098",
      "speaker": "kid",
      "text": "誰把顏色拿走？",
-     "pause_after_ms": 100,
      "emotion": "追問"
     }
    ]
@@ -1768,14 +1679,12 @@
     {
      "id": "p099",
      "speaker": "chief",
-     "text": "這層皮有外面和裡面兩個面。",
-     "pause_after_ms": 100
+     "text": "這層皮有外面和裡面兩個面。"
     },
     {
      "id": "p100",
      "speaker": "chief",
-     "text": "光照過來，兩個面都會把一點光，彈回你的眼睛。",
-     "pause_after_ms": 100
+     "text": "光照過來，兩個面都會把一點光，彈回你的眼睛。"
     }
    ]
   },
@@ -1795,14 +1704,12 @@
      "id": "p101",
      "speaker": "kid",
      "text": "一顆泡泡，",
-     "pause_after_ms": 100,
      "emotion": "驚訝"
     },
     {
      "id": "p102",
      "speaker": "kid",
-     "text": "彈回來兩道光？",
-     "pause_after_ms": 100
+     "text": "彈回來兩道光？"
     }
    ]
   },
@@ -1821,14 +1728,12 @@
     {
      "id": "p103",
      "speaker": "chief",
-     "text": "對。裡面那道，要在皮裡走一個來回，",
-     "pause_after_ms": 100
+     "text": "對。裡面那道，要在皮裡走一個來回，"
     },
     {
      "id": "p104",
      "speaker": "chief",
-     "text": "走的路，比外面那道長一點點。",
-     "pause_after_ms": 100
+     "text": "走的路，比外面那道長一點點。"
     }
    ]
   },
@@ -1848,14 +1753,12 @@
      "id": "p105",
      "speaker": "kid",
      "text": "長一點點，",
-     "pause_after_ms": 100,
      "emotion": "不解"
     },
     {
      "id": "p106",
      "speaker": "kid",
      "text": "又怎樣？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -1876,7 +1779,6 @@
      "id": "p107",
      "speaker": "chief",
      "text": "我們用水波來想。你往池塘裡，同時丟兩顆小石頭。",
-     "pause_after_ms": 100,
      "emotion": "轉向觀眾"
     }
    ]
@@ -1895,14 +1797,12 @@
     {
      "id": "p108",
      "speaker": "chief",
-     "text": "兩圈水波碰在一起：高的碰到高的，就變得更高；",
-     "pause_after_ms": 100
+     "text": "兩圈水波碰在一起：高的碰到高的，就變得更高；"
     },
     {
      "id": "p109",
      "speaker": "chief",
-     "text": "高的碰到低的，就互相抵掉，水面平平的。",
-     "pause_after_ms": 100
+     "text": "高的碰到低的，就互相抵掉，水面平平的。"
     }
    ]
   },
@@ -1922,14 +1822,12 @@
      "id": "p110",
      "speaker": "kid",
      "text": "我在公園看過！",
-     "pause_after_ms": 100,
      "emotion": "想起來"
     },
     {
      "id": "p111",
      "speaker": "kid",
-     "text": "有的地方特別平！",
-     "pause_after_ms": 100
+     "text": "有的地方特別平！"
     }
    ]
   },
@@ -1948,8 +1846,7 @@
     {
      "id": "p112",
      "speaker": "chief",
-     "text": "對，那就是兩圈水波，互相抵掉的地方。",
-     "pause_after_ms": 100
+     "text": "對，那就是兩圈水波，互相抵掉的地方。"
     }
    ]
   },
@@ -1969,13 +1866,12 @@
      "id": "p113",
      "speaker": "chief",
      "text": "光也可以想成一種波。兩道光一碰，",
-     "pause_after_ms": 100
+     "pause_after_ms": 500
     },
     {
      "id": "p114",
      "speaker": "chief",
-     "text": "有的顏色被加強，有的顏色被抵掉。",
-     "pause_after_ms": 100
+     "text": "有的顏色被加強，有的顏色被抵掉。"
     }
    ]
   },
@@ -1995,7 +1891,6 @@
      "id": "p115",
      "speaker": "kid",
      "text": "哪一種會被抵掉？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -2015,14 +1910,12 @@
     {
      "id": "p116",
      "speaker": "chief",
-     "text": "我的想法是：要看這層皮有多厚。",
-     "pause_after_ms": 100
+     "text": "我的想法是：要看這層皮有多厚。"
     },
     {
      "id": "p117",
      "speaker": "chief",
-     "text": "厚薄一變，裡面那道光多走的路就跟著變，",
-     "pause_after_ms": 100
+     "text": "厚薄一變，裡面那道光多走的路就跟著變，"
     }
    ]
   },
@@ -2040,14 +1933,12 @@
     {
      "id": "p118",
      "speaker": "chief",
-     "text": "被抵掉的顏色就換一種，你看到的顏色也跟著換。",
-     "pause_after_ms": 100
+     "text": "被抵掉的顏色就換一種，你看到的顏色也跟著換。"
     },
     {
      "id": "p119",
      "speaker": "chief",
-     "text": "比方說，紅色被抵掉，剩下的就偏藍綠。",
-     "pause_after_ms": 100
+     "text": "比方說，紅色被抵掉，剩下的就偏藍綠。"
     }
    ]
   },
@@ -2067,14 +1958,12 @@
      "id": "p120",
      "speaker": "kid",
      "text": "要怎麼知道，",
-     "pause_after_ms": 100,
      "emotion": "追問"
     },
     {
      "id": "p121",
      "speaker": "kid",
      "text": "你猜得對不對？",
-     "pause_after_ms": 100,
      "emotion": "章尾停住，句尾上揚"
     }
    ]
@@ -2096,14 +1985,12 @@
      "id": "p122",
      "speaker": "chief",
      "text": "拿你那一瓶來試。把泡泡吹在框上，先別讓它飛走，",
-     "pause_after_ms": 100,
      "emotion": "接住上一句"
     },
     {
      "id": "p123",
      "speaker": "chief",
      "text": "頭不要動，盯著它看。",
-     "pause_after_ms": 100,
      "emotion": "轉向觀眾"
     }
    ]
@@ -2124,14 +2011,12 @@
      "id": "p124",
      "speaker": "kid",
      "text": "顏色變成一條一條的，",
-     "pause_after_ms": 100,
      "emotion": "驚訝"
     },
     {
      "id": "p125",
      "speaker": "kid",
-     "text": "一條一條橫的！",
-     "pause_after_ms": 100
+     "text": "一條一條橫的！"
     }
    ]
   },
@@ -2149,14 +2034,12 @@
     {
      "id": "p126",
      "speaker": "chief",
-     "text": "對。泡泡水會被地球往下拉，慢慢往下流，",
-     "pause_after_ms": 100
+     "text": "對。泡泡水會被地球往下拉，慢慢往下流，"
     },
     {
      "id": "p127",
      "speaker": "chief",
-     "text": "底下比較厚，頂上越來越薄，顏色就排成一條一條。",
-     "pause_after_ms": 100
+     "text": "底下比較厚，頂上越來越薄，顏色就排成一條一條。"
     }
    ]
   },
@@ -2176,7 +2059,6 @@
      "id": "p128",
      "speaker": "kid",
      "text": "而且它們一直往下跑！",
-     "pause_after_ms": 100,
      "emotion": "發現"
     }
    ]
@@ -2197,13 +2079,12 @@
      "id": "p129",
      "speaker": "chief",
      "text": "時間一過，皮一直變薄，顏色就一條一條往下換。",
-     "pause_after_ms": 100
+     "pause_after_ms": 500
     },
     {
      "id": "p130",
      "speaker": "chief",
-     "text": "還記得我的想法嗎？它過關了。",
-     "pause_after_ms": 100
+     "text": "還記得我的想法嗎？它過關了。"
     }
    ]
   },
@@ -2223,14 +2104,12 @@
      "id": "p131",
      "speaker": "kid",
      "text": "那一開始，",
-     "pause_after_ms": 100,
      "emotion": "想起來"
     },
     {
      "id": "p132",
      "speaker": "kid",
      "text": "顏色為什麼會打轉？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -2250,13 +2129,12 @@
      "id": "p133",
      "speaker": "chief",
      "text": "風一吹，泡泡水就在皮裡流來流去，",
-     "pause_after_ms": 100
+     "pause_after_ms": 500
     },
     {
      "id": "p134",
      "speaker": "chief",
-     "text": "厚的薄的換了位置，顏色就跟著打轉。",
-     "pause_after_ms": 100
+     "text": "厚的薄的換了位置，顏色就跟著打轉。"
     }
    ]
   },
@@ -2276,7 +2154,6 @@
      "id": "p135",
      "speaker": "chief",
      "text": "還記得我說，頂上變黑，是它在跟你說一件事嗎？",
-     "pause_after_ms": 100,
      "emotion": "點名回呼"
     }
    ]
@@ -2297,7 +2174,6 @@
      "id": "p136",
      "speaker": "kid",
      "text": "記得！為什麼會變黑？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -2317,13 +2193,12 @@
      "id": "p137",
      "speaker": "chief",
      "text": "頂上的皮比光的波還薄很多，兩道光不管是什麼顏色，",
-     "pause_after_ms": 100
+     "pause_after_ms": 500
     },
     {
      "id": "p138",
      "speaker": "chief",
-     "text": "都剛好互相抵掉。",
-     "pause_after_ms": 100
+     "text": "都剛好互相抵掉。"
     }
    ]
   },
@@ -2342,8 +2217,7 @@
     {
      "id": "p139",
      "speaker": "chief",
-     "text": "沒有光彈回你的眼睛，看起來就黑了。",
-     "pause_after_ms": 100
+     "text": "沒有光彈回你的眼睛，看起來就黑了。"
     }
    ]
   },
@@ -2363,14 +2237,12 @@
      "id": "p140",
      "speaker": "kid",
      "text": "所以變黑，",
-     "pause_after_ms": 100,
      "emotion": "緊張"
     },
     {
      "id": "p141",
      "speaker": "kid",
      "text": "就是快破了？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -2390,14 +2262,12 @@
     {
      "id": "p142",
      "speaker": "chief",
-     "text": "它在說：我已經薄到快撐不住了。",
-     "pause_after_ms": 100
+     "text": "它在說：我已經薄到快撐不住了。"
     },
     {
      "id": "p143",
      "speaker": "chief",
-     "text": "美國舊金山一間科學博物館說，這時候頂上的皮，",
-     "pause_after_ms": 100
+     "text": "美國舊金山一間科學博物館說，這時候頂上的皮，"
     }
    ]
   },
@@ -2416,14 +2286,12 @@
     {
      "id": "p144",
      "speaker": "chief",
-     "text": "大約只有一毫米的四萬分之一。",
-     "pause_after_ms": 100
+     "text": "大約只有一毫米的四萬分之一。"
     },
     {
      "id": "p145",
      "speaker": "chief",
-     "text": "不過不是一黑就馬上破，常常還會撐一下下。",
-     "pause_after_ms": 100
+     "text": "不過不是一黑就馬上破，常常還會撐一下下。"
     }
    ]
   },
@@ -2443,7 +2311,6 @@
      "id": "p146",
      "speaker": "kid",
      "text": "那我要看快一點！",
-     "pause_after_ms": 100,
      "emotion": "笑"
     }
    ]
@@ -2464,20 +2331,17 @@
      "id": "p147",
      "speaker": "kid",
      "text": "可是所長，",
-     "pause_after_ms": 100,
      "emotion": "發現"
     },
     {
      "id": "p148",
      "speaker": "kid",
-     "text": "我一歪頭，",
-     "pause_after_ms": 100
+     "text": "我一歪頭，"
     },
     {
      "id": "p149",
      "speaker": "kid",
-     "text": "顏色也變了耶！",
-     "pause_after_ms": 100
+     "text": "顏色也變了耶！"
     }
    ]
   },
@@ -2497,7 +2361,6 @@
      "id": "p150",
      "speaker": "chief",
      "text": "好觀察。那你覺得，是皮在你歪頭那一下變薄了嗎？",
-     "pause_after_ms": 100,
      "emotion": "接住上一句"
     }
    ]
@@ -2518,14 +2381,12 @@
      "id": "p151",
      "speaker": "kid",
      "text": "應該……",
-     "pause_after_ms": 100,
      "emotion": "猶豫"
     },
     {
      "id": "p152",
      "speaker": "kid",
-     "text": "沒有那麼巧吧？",
-     "pause_after_ms": 100
+     "text": "沒有那麼巧吧？"
     }
    ]
   },
@@ -2544,14 +2405,12 @@
     {
      "id": "p153",
      "speaker": "chief",
-     "text": "對，沒有那麼巧。皮的厚薄沒變，",
-     "pause_after_ms": 100
+     "text": "對，沒有那麼巧。皮的厚薄沒變，"
     },
     {
      "id": "p154",
      "speaker": "chief",
-     "text": "變的是光進來、彈到你眼睛的方向。",
-     "pause_after_ms": 100
+     "text": "變的是光進來、彈到你眼睛的方向。"
     }
    ]
   },
@@ -2571,13 +2430,12 @@
      "id": "p155",
      "speaker": "chief",
      "text": "光斜斜地穿過皮，裡面那道光多走的路，",
-     "pause_after_ms": 100
+     "pause_after_ms": 500
     },
     {
      "id": "p156",
      "speaker": "chief",
-     "text": "就跟直直穿過的時候不一樣長。",
-     "pause_after_ms": 100
+     "text": "就跟直直穿過的時候不一樣長。"
     }
    ]
   },
@@ -2597,7 +2455,6 @@
      "id": "p157",
      "speaker": "kid",
      "text": "又是多走的路！",
-     "pause_after_ms": 100,
      "emotion": "恍然"
     }
    ]
@@ -2617,14 +2474,12 @@
     {
      "id": "p158",
      "speaker": "chief",
-     "text": "對，這下又多了一條線索。我原本只猜到厚薄，",
-     "pause_after_ms": 100
+     "text": "對，這下又多了一條線索。我原本只猜到厚薄，"
     },
     {
      "id": "p159",
      "speaker": "chief",
-     "text": "沒想到你歪個頭，就把我的想法補齊了。",
-     "pause_after_ms": 100
+     "text": "沒想到你歪個頭，就把我的想法補齊了。"
     }
    ]
   },
@@ -2644,14 +2499,12 @@
      "id": "p160",
      "speaker": "kid",
      "text": "那我怎麼分得出來，",
-     "pause_after_ms": 100,
      "emotion": "追問"
     },
     {
      "id": "p161",
      "speaker": "kid",
      "text": "是哪一種在變？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -2672,13 +2525,12 @@
      "id": "p162",
      "speaker": "chief",
      "text": "還記得往下流的顏色嗎？那是皮在變薄；",
-     "pause_after_ms": 100
+     "pause_after_ms": 500
     },
     {
      "id": "p163",
      "speaker": "chief",
-     "text": "泡泡不動，你一歪頭顏色就跳，是方向在變。",
-     "pause_after_ms": 100
+     "text": "泡泡不動，你一歪頭顏色就跳，是方向在變。"
     }
    ]
   },
@@ -2697,14 +2549,12 @@
     {
      "id": "p164",
      "speaker": "chief",
-     "text": "還有一件事要老實說：",
-     "pause_after_ms": 100
+     "text": "還有一件事要老實說："
     },
     {
      "id": "p165",
      "speaker": "chief",
-     "text": "光看顏色，沒辦法準準地量出皮有多厚。",
-     "pause_after_ms": 100
+     "text": "光看顏色，沒辦法準準地量出皮有多厚。"
     }
    ]
   },
@@ -2724,7 +2574,6 @@
      "id": "p166",
      "speaker": "kid",
      "text": "為什麼不行？",
-     "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
    ]
@@ -2744,14 +2593,12 @@
     {
      "id": "p167",
      "speaker": "chief",
-     "text": "因為皮越變越薄的時候，同一種顏色會出現好幾次，",
-     "pause_after_ms": 100
+     "text": "因為皮越變越薄的時候，同一種顏色會出現好幾次，"
     },
     {
      "id": "p168",
      "speaker": "chief",
-     "text": "光看顏色，分不出是哪一次。",
-     "pause_after_ms": 100
+     "text": "光看顏色，分不出是哪一次。"
     }
    ]
   },
@@ -2771,7 +2618,6 @@
      "id": "p169",
      "speaker": "kid",
      "text": "像在繞圈圈！",
-     "pause_after_ms": 100,
      "emotion": "發現"
     }
    ]
@@ -2791,8 +2637,7 @@
     {
      "id": "p170",
      "speaker": "chief",
-     "text": "對，所以顏色只能當線索，不能當尺。",
-     "pause_after_ms": 100
+     "text": "對，所以顏色只能當線索，不能當尺。"
     }
    ]
   },
@@ -2812,14 +2657,12 @@
      "id": "p171",
      "speaker": "kid",
      "text": "那形狀跟顏色，",
-     "pause_after_ms": 100,
      "emotion": "推理"
     },
     {
      "id": "p172",
      "speaker": "kid",
      "text": "到底有沒有關係？",
-     "pause_after_ms": 100,
      "emotion": "章尾停住，句尾上揚"
     }
    ]
@@ -2841,7 +2684,6 @@
      "id": "p173",
      "speaker": "chief",
      "text": "有。你自己找找看：方框跟變黑，哪裡一樣？",
-     "pause_after_ms": 100,
      "emotion": "笑"
     }
    ]
@@ -2862,28 +2704,26 @@
      "id": "p174",
      "speaker": "kid",
      "text": "原來如此！",
-     "pause_after_ms": 100,
-     "emotion": "恍然大悟"
+     "emotion": "恍然大悟",
+     "pause_after_ms": 500
     },
     {
      "id": "p175",
      "speaker": "kid",
      "text": "全是同一層皮：",
-     "pause_after_ms": 100,
      "emotion": "篤定"
     },
     {
      "id": "p176",
      "speaker": "kid",
      "text": "就像你說的，",
-     "pause_after_ms": 100,
-     "emotion": "篤定"
+     "emotion": "篤定",
+     "pause_after_ms": 500
     },
     {
      "id": "p177",
      "speaker": "kid",
      "text": "縮小變圓，變薄換色！",
-     "pause_after_ms": 100,
      "emotion": "篤定"
     }
    ]
@@ -2904,7 +2744,6 @@
      "id": "p178",
      "speaker": "chief",
      "text": "說得好，形狀跟顏色，被你接起來了。",
-     "pause_after_ms": 100,
      "emotion": "笑"
     }
    ]
@@ -2923,8 +2762,7 @@
     {
      "id": "p179",
      "speaker": "chief",
-     "text": "我覺得最好玩的是：你天天吹的泡泡，藏了這麼多事。",
-     "pause_after_ms": 100
+     "text": "我覺得最好玩的是：你天天吹的泡泡，藏了這麼多事。"
     }
    ]
   },
@@ -2944,7 +2782,6 @@
      "id": "p180",
      "speaker": "kid",
      "text": "我要再吹一顆！",
-     "pause_after_ms": 100,
      "emotion": "興奮"
     }
    ]
@@ -2965,14 +2802,12 @@
      "id": "p181",
      "speaker": "chief",
      "text": "好啊。這次把泡泡留在框上，背後找一面深色的牆，",
-     "pause_after_ms": 100,
      "emotion": "轉向觀眾"
     },
     {
      "id": "p182",
      "speaker": "chief",
-     "text": "看看頂上變黑之前，最後一個顏色是什麼。",
-     "pause_after_ms": 100
+     "text": "看看頂上變黑之前，最後一個顏色是什麼。"
     }
    ]
   },
@@ -2992,7 +2827,6 @@
      "id": "p183",
      "speaker": "kid",
      "text": "好，我去吹！",
-     "pause_after_ms": 100,
      "emotion": "開心大聲"
     }
    ]
@@ -3013,14 +2847,12 @@
      "id": "p184",
      "speaker": "chief",
      "text": "你的泡泡變黑之前，最後是什麼顏色？",
-     "pause_after_ms": 100,
      "emotion": "問句上揚，像聊天"
     },
     {
      "id": "p185",
      "speaker": "chief",
-     "text": "留言告訴我們。",
-     "pause_after_ms": 100
+     "text": "留言告訴我們。"
     }
    ]
   },
@@ -3040,7 +2872,6 @@
      "id": "p186",
      "speaker": "chief",
      "text": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
-     "pause_after_ms": 100,
      "emotion": "誠懇"
     }
    ]

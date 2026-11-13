@@ -19,7 +19,7 @@ CHECKED = "2026-11-10"
 # Both characters are identical to P07/P14/P08 (approved series sheets reused through the `series` tag):
 # the chief as in P02/P05/P14, the kid in her notebook-free look (series README §3.2).
 VOICE = {"provider": "gemini", "name": "Sulafat",
-         "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速像平常聊天，一秒四到五個字，句與句之間不拖。"}
+         "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速偏快、輕快，像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。"}
 SHEET = "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
 CHARACTERS = [
     {"id": "chief", "name": "所長",
@@ -27,7 +27,7 @@ CHARACTERS = [
      "voice": dict(VOICE), "sheet_prompt": SHEET},
     {"id": "kid", "name": "小問",
      "appearance": "a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, both hands free",
-     "voice": {"provider": "gemini", "name": "Leda", "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快"},
+     "voice": {"provider": "gemini", "name": "Leda", "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快，一秒五個字以上，不拖尾音"},
      "sheet_prompt": SHEET},
 ]
 
@@ -386,13 +386,16 @@ WHAT = {"main": "方框吹出圓泡泡、顏色轉、頭頂變黑，一支方框
         "thick": "哪一種顏色會被抵掉", "test": "怎麼知道「看厚薄」這個猜法對不對",
         "tilt": "一歪頭顏色也變，是皮變薄了嗎", "tell": "怎麼分出是厚薄在變還是方向在變",
         "two": "形狀跟顏色，到底有沒有關係", "swirl": "泡泡身上的顏色為什麼一直轉"}
+BEAT_MS = 500   # 答案揭曉前的一拍（README §10.6）
 scenes, loops_s, loops_p, n = [], {}, {}, 0
 for sc in S:
     lines = []
     for sp, text, emo, tag in sc["lines"]:
         n += 1; lid = f"p{n:03d}"
-        line = {"id": lid, "speaker": sp, "text": text, "pause_after_ms": 100}
+        line = {"id": lid, "speaker": sp, "text": text}
         if emo: line["emotion"] = emo
+        if tag and tag.startswith("P:") and lines:
+            lines[-1]["pause_after_ms"] = BEAT_MS   # 2026-11-13 remake: beat before the payoff only (README §10.6)
         lines.append(line)
         if tag:
             kind, key = tag.split(":")
@@ -412,6 +415,9 @@ doc = {
     # The series tag: the approved character sheets live in the series store and every episode reuses them (docs/videos/SERIES.md).
     "series": {"slug": "sothatswhy", "episode": 6, "chapter": 1},
     # The series bed from P15 on (explainer-series/README.md, PR #2048): sothatswhy-bed-r2.m4a, remade from P02's paid take.
+    # 2026-11-13 remake (owner: P06 follows the 11-11 pace and pause rules): no fixed pause between lines, beat-timed stills.
+    "pauses": {"line_ms": 0, "scene_ms": 150},
+    "still_motion": "beat",
     "music": {"track": "sothatswhy-bed-r2.m4a", "sha256": "9bb4ba6fd16feb4a7f352144b2d89e9648acbbbbaa2173c27a7eefbdb70f28c6", "gain_db": -20, "duck_db": -10},
     "characters": CHARACTERS, "loops": loops,
     "youtube": {
