@@ -256,7 +256,7 @@ export function GuideArticle({
         </nav>
       ) : null}
       {(sidebarToc || state.series?.current) && headings.length >= CONTENTS_MIN_HEADINGS ? (
-        <details className="rounded-2xl border border-[var(--line)] bg-[var(--surface-tint)]/55 px-5 py-3 shadow-[var(--shadow-sm)] lg:hidden">
+        <details open={!state.series?.current} className="rounded-2xl border border-[var(--line)] bg-[var(--surface-tint)]/55 px-5 py-3 shadow-[var(--shadow-sm)] lg:hidden">
           <summary className="flex min-h-11 cursor-pointer items-center font-bold text-[var(--teal-dark)]">{labels.contents}</summary>
           <ol className="mt-2 space-y-2 pb-1 text-sm leading-6">
             {headings.map((heading, index) => (

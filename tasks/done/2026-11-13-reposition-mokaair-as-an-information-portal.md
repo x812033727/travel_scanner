@@ -26,6 +26,7 @@ scope:
   - apps/web/components/home-portal-tabs.tsx
   - apps/web/components/guides
   - apps/web/components/site-search
+  - apps/web/e2e/guides-adsense.spec.ts
   - apps/web/lib/nav-links.ts
   - apps/web/lib/guides.ts
   - apps/web/lib/guides.test.ts
