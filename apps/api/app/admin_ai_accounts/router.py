@@ -125,6 +125,25 @@ async def put_default(
     return result
 
 
+@router.post("/colab/{slot}/lease/break", response_model=ColabReleaseResult)
+async def post_break_colab_lease(slot: Slot, user: Owner, session: Session) -> ColabReleaseResult:
+    """The owner ends an agent's lease on a Colab account, e.g. one a crashed agent left.
+
+    The agent's next renewal takes it again if the account is still free, so this is for an
+    agent that is gone; the audit row names whose lease it was.
+    """
+    broken = await colab_leases.break_lease(slot)
+    if broken is not None:
+        await service.audit(
+            session,
+            user,
+            "ai_account.colab_lease_broken",
+            f"ai-account:colab-{slot}",
+            {"holder": broken.holder, "token": broken.token},
+        )
+    return ColabReleaseResult(slot=slot, released=broken is not None)
+
+
 # What a paired cloud session calls with its video tool token, through the web route
 # apps/web/app/api/video/colab-credentials (nginx exposes only the web app). No browser session
 # reaches it: the dependency takes a bearer token and nothing else.

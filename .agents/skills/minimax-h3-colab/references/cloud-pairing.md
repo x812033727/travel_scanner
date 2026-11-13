@@ -41,6 +41,7 @@ bash .agents/skills/minimax-h3-colab/scripts/bootstrap.sh            # token 這
 - **auto**：已租的就續租同一個（一個 holder 不會拿到兩個帳號），不然挑已登入、沒人租、運算單元最多的；`--min-balance` 跳過餘額不夠的。都沒有就 409 `colab_no_free_account`，訊息列出誰在用哪個。
 - **續租**：`h3_detached.py` 在有 `COLAB_ACCOUNT_SLOT` 與 `COLAB_ACCOUNT_HOLDER` 時每 30 分鐘自己續一次（失敗只記一行，不中斷生成）；其他長工作自己跑 `accounts.py renew`。
 - **歸還**：`accounts.py release` 交回租約並刪掉本機的 token。忘了也沒關係，到期就空出來，但在那之前別的 agent 拿不到。
+- **站主看得到、收得回**：`/admin/ai-accounts` 的 Colab 卡片寫著哪個 holder 在用、權杖開頭與租約到期時間；「收回帳號」確認後直接結束那份租約（審計 `ai_account.colab_lease_broken`）。只用在已經停掉的 agent：還在跑的 `h3_detached.py` 下次續租時，帳號空著就會再拿回去。
 
 ```bash
 bash .agents/skills/minimax-h3-colab/scripts/bootstrap.sh install

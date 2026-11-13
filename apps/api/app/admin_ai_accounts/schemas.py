@@ -73,6 +73,21 @@ class AgentOverview(_AgentModel):
     allowlist_configured: bool
 
 
+# Who holds a Colab account: a name the agent picks for itself, shown to the other agents and
+# written into the audit log. No spaces or quotes, so it reads the same in a shell and a log.
+HOLDER_PATTERN = r"^[A-Za-z0-9][A-Za-z0-9._:@-]{0,79}$"
+SLOTS: tuple[Slot, ...] = ("a", "b", "c", "d", "e")
+
+
+class ColabLease(BaseModel):
+    slot: Slot
+    holder: str = Field(pattern=HOLDER_PATTERN)
+    # The video tool token that took it, by its prefix (what the audit log records too).
+    token: str = Field(max_length=32)
+    acquired_at: int
+    expires_at: int
+
+
 class AiAccountsOverview(BaseModel):
     enabled: bool
     agent_reachable: bool
@@ -80,6 +95,9 @@ class AiAccountsOverview(BaseModel):
     slots: list[AiAccountSlot] = Field(default_factory=list)
     defaults: dict[Tool, Slot] = Field(default_factory=dict)
     allowlist_configured: bool = False
+    # Which agent leases which Colab account (colab_leases.py), for the owner's cards.
+    colab_leases: dict[Slot, ColabLease] = Field(default_factory=dict)
+    colab_leases_error: str | None = None
 
 
 class AiLoginCodeRequest(BaseModel):
@@ -113,21 +131,6 @@ class ColabCredentials(_AgentModel):
     tool: Literal["colab"]
     slot: Slot
     credentials: dict[str, Any]
-
-
-# Who holds a Colab account: a name the agent picks for itself, shown to the other agents and
-# written into the audit log. No spaces or quotes, so it reads the same in a shell and a log.
-HOLDER_PATTERN = r"^[A-Za-z0-9][A-Za-z0-9._:@-]{0,79}$"
-SLOTS: tuple[Slot, ...] = ("a", "b", "c", "d", "e")
-
-
-class ColabLease(BaseModel):
-    slot: Slot
-    holder: str = Field(pattern=HOLDER_PATTERN)
-    # The video tool token that took it, by its prefix (what the audit log records too).
-    token: str = Field(max_length=32)
-    acquired_at: int
-    expires_at: int
 
 
 class ColabLeaseRequest(BaseModel):

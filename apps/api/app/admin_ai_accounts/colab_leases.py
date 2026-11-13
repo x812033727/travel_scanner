@@ -159,6 +159,27 @@ async def release(slot: Slot, holder: str, *, redis: Redis | None = None) -> boo
     raise AppError(409, "colab_lease_contended", "同時有其他 agent 在搶這個帳號，請稍後再試")
 
 
+async def break_lease(slot: Slot, *, redis: Redis | None = None) -> ColabLease | None:
+    """The owner takes an account back whoever holds it; returns the lease that was there."""
+    client = redis or get_redis()
+    key = _key(slot)
+    try:
+        for _ in range(ATTEMPTS):
+            async with client.pipeline(transaction=True) as pipe:
+                try:
+                    await pipe.watch(key)
+                    existing = _parse(slot, await pipe.get(key), int(time.time()))
+                    pipe.multi()  # type: ignore[no-untyped-call]
+                    pipe.delete(key)
+                    await pipe.execute()
+                    return existing
+                except WatchError:
+                    continue
+    except RedisError as exc:
+        raise _unavailable() from exc
+    raise AppError(409, "colab_lease_contended", "同時有其他 agent 在搶這個帳號，請稍後再試")
+
+
 def accounts_view(
     slots: list[AiAccountSlot],
     defaults: Mapping[Tool, Slot],

@@ -6,6 +6,7 @@ import time
 from typing import Any
 
 import pytest
+from redis.exceptions import RedisError
 
 import app.admin_ai_accounts.colab_leases as leases_module
 from app.main import app
@@ -15,6 +16,7 @@ from tests.test_ai_accounts_admin import _client, _token, ai_app, slot
 __all__ = ["ai_app"]
 
 ACCOUNTS = "/api/v1/video/colab-accounts"
+ADMIN = "/api/v1/admin/ai-accounts"
 CREDENTIALS = "/api/v1/video/colab-credentials"
 TOKEN_FILE = {"token": "ya29.x", "refresh_token": "1//r", "client_id": "c", "client_secret": "s"}
 
@@ -195,3 +197,46 @@ async def test_lease_routes_need_colab_access_and_a_clean_holder(
                 "video_tool_token_no_colab",
             )
     assert await leases["redis"].keys("colab-lease:*") == []
+
+
+@pytest.mark.asyncio
+async def test_the_owner_sees_who_leases_each_account_and_can_take_one_back(
+    leases: dict[str, Any],
+) -> None:
+    async with _client() as client:
+        await client.post(f"{ACCOUNTS}/b/lease", json={"holder": "crashed-agent"})
+        overview = (await client.get(ADMIN)).json()
+        assert overview["colab_leases"]["b"]["holder"] == "crashed-agent"
+        assert overview["colab_leases"]["b"]["token"] == "mkv_abcdef"
+        assert overview["colab_leases_error"] is None
+        broken = await client.post(f"{ADMIN}/colab/b/lease/break")
+        assert broken.json() == {"slot": "b", "released": True}
+        again = await client.post(f"{ADMIN}/colab/b/lease/break")
+        assert again.json() == {"slot": "b", "released": False}
+        assert (await client.get(ADMIN)).json()["colab_leases"] == {}
+        # Free again: another agent can take it.
+        taken = await client.post(f"{ACCOUNTS}/b/lease", json={"holder": "agent-two"})
+        assert taken.status_code == 200
+    rows = [row for row in leases["session"].audits() if row.action.endswith("broken")]
+    assert [(row.target, row.metadata_json) for row in rows] == [
+        ("ai-account:colab-b", {"holder": "crashed-agent", "token": "mkv_abcdef"})
+    ]
+    assert rows[0].actor_user_id == leases["actor"].id
+
+
+@pytest.mark.asyncio
+async def test_the_cards_still_render_when_the_leases_cannot_be_read(
+    leases: dict[str, Any], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    class Down:
+        async def mget(self, *_: Any) -> None:
+            raise RedisError("down")
+
+    monkeypatch.setattr(leases_module, "get_redis", lambda: Down())
+    async with _client() as client:
+        overview = await client.get(ADMIN)
+    assert overview.status_code == 200
+    body = overview.json()
+    assert body["agent_reachable"] is True
+    assert body["colab_leases"] == {}
+    assert body["colab_leases_error"] == "Colab 帳號租用服務暫時無法使用"
