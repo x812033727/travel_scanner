@@ -4,11 +4,20 @@ import { X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { usePathname } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { useModalSheet } from "@/lib/modal-sheet";
 import { SiteSearch } from "./site-search";
 
 export const OPEN_SEARCH_EVENT = "mokaair:open-search";
+
+const QUICK_TOPICS: ReadonlyArray<{ labelKey: string; href: string }> = [
+  { labelKey: "ai", href: "/ai" },
+  { labelKey: "item_aiNews", href: "/life/topics/ai-news" },
+  { labelKey: "item_techNews", href: "/life/topics/tech-news" },
+  { labelKey: "item_software", href: "/life/topics/software" },
+  { labelKey: "guides", href: "/guides" },
+  { labelKey: "item_finance", href: "/life/topics/finance" },
+];
 
 /** Opens the search dialog from anywhere: the phone header's icon lives in a different
  *  component tree from the dialog, and a window event is lighter than a provider for a
@@ -22,7 +31,7 @@ function isSearchShortcut(event: KeyboardEvent): boolean {
 }
 
 /**
- * The full-width search sheet: ⌘K / Ctrl+K on a keyboard, the magnifier in the phone
+ * The full-width search sheet: Cmd+K / Ctrl+K on a keyboard, the magnifier in the phone
  * header, or `openSiteSearch()` from anywhere. `useModalSheet` gives it Escape, a Tab trap
  * and the scroll lock; the one thing it does differently from the menu sheet is where
  * focus lands -- in the input, since typing is the whole point of opening it.
@@ -73,6 +82,21 @@ export function SiteSearchDialog() {
           </button>
         </div>
         <SiteSearch variant="dialog" inputRef={input} onNavigate={() => setOpen(false)} />
+        <div data-testid="search-hot-topics" className="mt-4 border-t border-[var(--line)] pt-3">
+          <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">{nav("searchHotTopics")}</p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {QUICK_TOPICS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--paper)] px-3.5 text-xs font-semibold text-[var(--ink)] hover:border-[var(--teal)] hover:text-[var(--teal)]"
+              >
+                {nav(item.labelKey)}
+              </Link>
+            ))}
+          </div>
+        </div>
         <p className="mt-3 hidden text-xs text-[var(--muted)] lg:block">{nav("searchShortcut", { keys: "⌘K / Ctrl+K" })}</p>
       </div>
     </div>,

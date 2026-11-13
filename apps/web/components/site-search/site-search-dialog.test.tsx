@@ -1,10 +1,17 @@
+import type { AnchorHTMLAttributes } from "react";
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { SiteSearchDialog, openSiteSearch } from "./site-search-dialog";
 
 const mock = vi.hoisted(() => ({ api: vi.fn(), push: vi.fn() }));
 vi.mock("@/lib/api", async (original) => ({ ...await original<typeof import("@/lib/api")>(), api: mock.api }));
-vi.mock("@/i18n/navigation", () => ({ useRouter: () => ({ push: mock.push }), usePathname: () => "/" }));
+vi.mock("@/i18n/navigation", () => ({
+  Link: ({ href, children, ...props }: AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => (
+    <a href={href} {...props}>{children}</a>
+  ),
+  useRouter: () => ({ push: mock.push }),
+  usePathname: () => "/",
+}));
 
 beforeEach(() => vi.clearAllMocks());
 afterEach(cleanup);
@@ -36,10 +43,15 @@ describe("SiteSearchDialog", () => {
     expect(document.activeElement).toBe(opener);
   });
 
-  it("opens from the shared verb the phone header calls, and closes from its own button", () => {
+  it("opens from the shared verb the phone header calls, offers hot-topic shortcuts, and closes when clicked", () => {
     render(<SiteSearchDialog />);
     act(() => openSiteSearch());
     expect(screen.getByRole("dialog")).toBeTruthy();
+    const techNews = screen.getByRole("link", { name: "科技新聞" });
+    expect(techNews.getAttribute("href")).toBe("/life/topics/tech-news");
+    fireEvent.click(techNews);
+    expect(screen.queryByRole("dialog")).toBeNull();
+    act(() => openSiteSearch());
     fireEvent.click(screen.getByRole("button", { name: "關閉搜尋" }));
     expect(screen.queryByRole("dialog")).toBeNull();
   });

@@ -16,14 +16,15 @@ import { Link } from "@/i18n/navigation";
 import { contentBlockLink } from "@/lib/content-blocks";
 import { guideAffiliateDestination, guideAffiliateModules, guideAffiliatePlacement } from "@/lib/guide-affiliate";
 import {
-  guideHeadings, guideListHref, partnerClickPath, splitGuideBlocks,
+  guideHeadings, guideListHref, isSyntheticNewsBlock, partnerClickPath, splitGuideBlocks,
   type GuideArticleState, type GuideKind,
-  splitArticleExtras,
+  splitArticleExtras, visibleGuideHero,
 } from "@/lib/guides";
 
 /** One label per kind (the badge above the title) plus the update-date word, sources and
  *  the parts of the body the renderer cannot name itself. */
 export type GuideArticleLabels = Record<GuideKind, string> & {
+  publishedOn?: string;
   updated: string;
   sources: string;
   checkedOn: string;
@@ -68,7 +69,7 @@ export const CONTENTS_MIN_HEADINGS = 3;
  * synchronous and renders directly under React Testing Library.
  */
 export function GuideArticle({
-  state, labels, related, readingTime, adsense, seriesHub, geminiSeries = null,
+  state, labels, related, readingTime, adsense, seriesHub, geminiSeries = null, sidebarToc = false, constrainDiagrams = false,
 }: {
   state: GuideArticleState & { document: NonNullable<GuideArticleState["document"]> };
   labels: GuideArticleLabels;
@@ -79,8 +80,14 @@ export function GuideArticle({
   readingTime?: string | null;
   /** Disabled, or absent, means no slot AND no reserved space anywhere in the body. */
   adsense?: AdsenseConfig;
+  /** Set when the surrounding page provides a sticky desktop TOC rail, folding the mobile TOC. */
+  sidebarToc?: boolean;
+  /** Keeps wide SVG diagrams inside their own scroller when rendered inside an elevated sheet. */
+  constrainDiagrams?: boolean;
 }) {
   const { document } = state;
+  const visibleHero = visibleGuideHero(document.hero);
+  const authoredBlocks = document.blocks.filter((block) => !isSyntheticNewsBlock(block));
   const geminiMember = geminiSeries ? visibleGeminiMember(geminiSeries, state.slug, state.locale, state.kind) : undefined;
   const isGeminiHub = geminiSeries && state.kind === "life" && state.locale === geminiSeries.locale && state.slug === geminiSeries.hubSlug;
   // First publication is never drawn; it is only the date "updated" has to beat before it
@@ -90,7 +97,7 @@ export function GuideArticle({
   const placement = guideAffiliatePlacement(state.kind);
   // The summary goes under the description. FAQ answers stay in the author's body order;
   // hoisting them used to leave an empty heading and a misleading contents link behind.
-  const extras = splitArticleExtras(document.blocks);
+  const extras = splitArticleExtras(authoredBlocks);
   const segments = splitGuideBlocks(extras.blocks);
   const headings = guideHeadings(extras.blocks);
   const faqSections = new Map<number, { id: string; heading?: string }>();
@@ -138,7 +145,7 @@ export function GuideArticle({
   // partner button or partner link and of the end panel — `adsensePlacements` has the rules.
   // With advertising off every segment stays a single piece, so nothing is reserved anywhere.
   const pieces = adsense?.enabled
-    ? adsensePlacements(segments, { hasHero: Boolean(document.hero) })
+    ? adsensePlacements(segments, { hasHero: Boolean(visibleHero) })
     : segments.map((segment) => [{ blocks: segment.blocks, headingStart: segment.headingStart }]);
   // The page-wide number of the first unit in each segment: every piece after a segment's
   // first is preceded by one.
@@ -179,23 +186,26 @@ export function GuideArticle({
     <article className="space-y-6 break-words [overflow-wrap:anywhere]">
       {geminiMember && geminiSeries ? <GeminiNavigation series={geminiSeries} number={geminiMember.number} position="top" /> : null}
       <header>
-        <p className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
-          <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--ink)]">
+        <p className="flex flex-wrap items-center gap-2 text-[length:var(--text-xs)] font-semibold uppercase tracking-wide text-[var(--muted)]">
+          <span className="rounded-full bg-[var(--teal-soft)] px-2.5 py-0.5 text-[var(--teal-dark)]">
             {labels[state.kind]}
           </span>
           {state.destination_label ? (
-            <Link className="underline" href={`/destinations/${state.destination_id}`}>
+            <Link className="underline underline-offset-4 hover:text-[var(--teal)]" href={`/destinations/${state.destination_id}`}>
               {state.destination_label}
             </Link>
           ) : null}
         </p>
-        <h1 className="mt-3 text-3xl font-bold">{document.title}</h1>
-        <p className="mt-3 leading-7 text-[var(--muted)]">{document.description}</p>
+        <h1 className="mt-3.5 text-3xl font-extrabold leading-[1.2] tracking-tight md:text-4xl">{document.title}</h1>
+        <p className="mt-3.5 text-lg leading-8 text-[var(--muted)]">{document.description}</p>
         {isGeminiHub ? <a href="#series-directory" className="mt-3 inline-flex min-h-11 items-center text-[var(--teal)] underline">{geminiCopy.start}</a> : null}
-        {(modified && modified > published) || readingTime ? (
-          <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-[var(--muted)]">
+        {state.news_date || (modified && modified > published) || readingTime ? (
+          <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 border-y border-[var(--line)] py-2.5 text-sm text-[var(--muted)]">
+            {state.news_date ? (
+              <span>{labels.publishedOn ? `${labels.publishedOn}: ` : ""}<time dateTime={state.news_date} className="font-mono tabular-nums">{state.news_date}</time></span>
+            ) : null}
             {modified && modified > published ? (
-              <span>{labels.updated}: <time dateTime={modified}>{modified}</time></span>
+              <span>{labels.updated}: <time dateTime={modified} className="font-mono tabular-nums">{modified}</time></span>
             ) : null}
             {readingTime ? <span>{readingTime}</span> : null}
           </p>
@@ -204,21 +214,21 @@ export function GuideArticle({
 
       {extras.summary ? <SummaryCard id="article-summary" items={extras.summary.items} heading={labels.summary} /> : null}
 
-      {document.hero ? (
+      {visibleHero ? (
         <figure>
           <GuideImage
-            src={document.hero.src}
-            alt={document.hero.alt}
-            width={document.hero.width}
-            height={document.hero.height}
+            src={visibleHero.src}
+            alt={visibleHero.alt}
+            width={visibleHero.width}
+            height={visibleHero.height}
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="h-auto w-full rounded-2xl"
+            className="h-auto w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow-sm)]"
           />
-          {document.hero.credit ? (
+          {visibleHero.credit ? (
             <figcaption className="mt-2 text-sm leading-6 text-[var(--muted)]">
-              <ImageCreditLine credit={document.hero.credit} prefix={labels.blocks.imageCredit} />
+              <ImageCreditLine credit={visibleHero.credit} prefix={labels.blocks.imageCredit} />
             </figcaption>
           ) : null}
         </figure>
@@ -233,22 +243,32 @@ export function GuideArticle({
       {state.series?.current && !geminiMember ? <SeriesStart series={state.series} locale={state.locale} /> : null}
       {seriesHub}
       {isGeminiHub && geminiSeries ? <GeminiSeriesIndex series={geminiSeries} /> : null}
-      {headings.length >= CONTENTS_MIN_HEADINGS && !state.series ? (
-        <nav aria-label={labels.contents} className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] px-4 py-3">
-          <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">{labels.contents}</p>
-          <ol className="mt-2 space-y-1 leading-7">
+      {!sidebarToc && headings.length >= CONTENTS_MIN_HEADINGS && !state.series ? (
+        <nav aria-label={labels.contents} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-5 py-4 shadow-[var(--shadow-sm)]">
+          <p className="text-[length:var(--text-xs)] font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">{labels.contents}</p>
+          <ol className="mt-2.5 space-y-1.5 leading-7">
             {headings.map((heading, index) => (
               <li key={heading.id}>
-                <a href={`#${heading.id}`} className="underline">{index + 1}. {heading.text}</a>
+                <a href={`#${heading.id}`} className="text-[var(--ink)] underline decoration-[var(--line)] underline-offset-4 transition-colors hover:text-[var(--teal)] hover:decoration-[var(--teal)]">{index + 1}. {heading.text}</a>
               </li>
             ))}
           </ol>
         </nav>
       ) : null}
-      {state.series?.current && headings.length >= CONTENTS_MIN_HEADINGS ? <details className="rounded-2xl border border-[var(--line)] p-4 lg:hidden">
-        <summary className="min-h-11 cursor-pointer font-semibold">{labels.contents}</summary>
-        <ol className="space-y-2">{headings.map(heading => <li key={heading.id}><a className="underline" href={`#${heading.id}`}>{heading.text}</a></li>)}</ol>
-      </details> : null}
+      {(sidebarToc || state.series?.current) && headings.length >= CONTENTS_MIN_HEADINGS ? (
+        <details className="rounded-2xl border border-[var(--line)] bg-[var(--surface-tint)]/55 px-5 py-3 shadow-[var(--shadow-sm)] lg:hidden">
+          <summary className="flex min-h-11 cursor-pointer items-center font-bold text-[var(--teal-dark)]">{labels.contents}</summary>
+          <ol className="mt-2 space-y-2 pb-1 text-sm leading-6">
+            {headings.map((heading, index) => (
+              <li key={heading.id}>
+                <a className="text-[var(--ink)] underline decoration-[var(--line)] underline-offset-4 hover:text-[var(--teal)]" href={`#${heading.id}`}>
+                  {index + 1}. {heading.text}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </details>
+      ) : null}
 
       {segments.map((segment, index) => {
         const island = islands.find((entry) => entry.segment === segment);
@@ -276,6 +296,7 @@ export function GuideArticle({
                       blocks={piece.blocks} labels={labels.blocks} headingStart={piece.headingStart}
                       subsectionStart={subsectionStarts[index][pieceIndex]}
                       articleLinks={state.article_links} locale={state.locale} termLabels={labels.term}
+                      constrainDiagrams={constrainDiagrams}
                       renderFaq={(block, blockIndex) => <FaqSection items={block.items} {...faqSections.get(offset + blockIndex)} />}
                     />
                   ) : null}
@@ -328,7 +349,7 @@ export function GuideArticle({
           {state.topics.map((topic) => (
             <li key={topic.slug}>
               <Link
-                className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] px-3 py-1 text-sm text-[var(--muted)]"
+                className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-3.5 py-1 text-sm font-medium text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
                 href={guideListHref(state.kind, topic.slug)}
               >
                 {topic.label}
@@ -340,24 +361,26 @@ export function GuideArticle({
 
       {document.sources.length ? (
         <section className="border-t border-[var(--line)] pt-6">
-          <h2 className="text-lg font-semibold">{labels.sources}</h2>
-          <ul className="mt-3 space-y-2">
-            {document.sources.map((source, index) => {
-              const href = contentBlockLink(source.url);
-              return href ? (
-                <li key={index} className="text-sm leading-6">
-                  <a className="text-[var(--teal)] underline" href={href} target="_blank" rel="noopener noreferrer">
-                    {source.title}
-                  </a>
-                  {source.checked_on ? (
-                    <span className="text-[var(--muted)]">
-                      {" "}· {labels.checkedOn}: <time dateTime={source.checked_on}>{source.checked_on}</time>
-                    </span>
-                  ) : null}
-                </li>
-              ) : null;
-            })}
-          </ul>
+          <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface-tint)]/45 p-4 md:p-5">
+            <h2 className="text-base font-bold tracking-tight text-[var(--ink)]">{labels.sources}</h2>
+            <ul className="mt-2.5 divide-y divide-[var(--line)]">
+              {document.sources.map((source, index) => {
+                const href = contentBlockLink(source.url);
+                return href ? (
+                  <li key={index} className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-2 text-sm leading-6 first:pt-0 last:pb-0">
+                    <a className="font-medium text-[var(--teal)] underline underline-offset-4 hover:text-[var(--teal-dark)]" href={href} target="_blank" rel="noopener noreferrer">
+                      {source.title}
+                    </a>
+                    {source.checked_on ? (
+                      <span className="font-mono text-[length:var(--text-xs)] tabular-nums text-[var(--muted)]">
+                        {labels.checkedOn}: <time dateTime={source.checked_on}>{source.checked_on}</time>
+                      </span>
+                    ) : null}
+                  </li>
+                ) : null;
+              })}
+            </ul>
+          </div>
         </section>
       ) : null}
 

@@ -17,16 +17,19 @@ import { guideHref, type GuideSummary } from "@/lib/guides";
 export function NewsList({ articles, className = "mt-4" }: { articles: readonly GuideSummary[]; className?: string }) {
   if (!articles.length) return null;
   return (
-    <ol className={`${className} divide-y divide-[var(--line)] border-y border-[var(--line)]`} data-testid="news-list">
+    <ol
+      className={`${className} divide-y divide-[var(--line)] rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-1.5 shadow-[var(--shadow-sm)]`}
+      data-testid="news-list"
+    >
       {articles.map((article) => (
         <li
           key={`${article.kind}:${article.slug}`}
-          className="grid gap-x-4 py-1.5 sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:items-baseline"
+          className="-mx-2 grid gap-x-4 rounded-xl px-2 py-1.5 transition-colors hover:bg-[var(--paper)]/75 sm:grid-cols-[7rem_minmax(0,1fr)] sm:items-baseline"
         >
           {article.news_date ? (
             <time
               dateTime={article.news_date}
-              className="pt-1 text-[length:var(--text-meta)] tabular-nums text-[var(--muted)] sm:pt-0"
+              className="pt-1 font-mono text-[length:var(--text-meta)] font-medium tabular-nums text-[var(--muted)] sm:pt-0"
             >
               {article.news_date}
             </time>
@@ -35,7 +38,7 @@ export function NewsList({ articles, className = "mt-4" }: { articles: readonly 
           )}
           <Link
             href={guideHref(article.kind, article.slug)}
-            className="inline-flex min-h-11 min-w-0 items-center leading-7 text-[var(--teal)] underline-offset-4 [overflow-wrap:anywhere] hover:underline"
+            className="inline-flex min-h-11 min-w-0 items-center font-medium leading-7 text-[var(--ink)] underline-offset-4 [overflow-wrap:anywhere] hover:text-[var(--teal)] hover:underline"
           >
             {article.title}
           </Link>
