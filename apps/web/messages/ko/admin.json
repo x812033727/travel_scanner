@@ -1010,6 +1010,12 @@
     "computeUnits": "{units} 컴퓨팅 유닛 남음",
     "computeRate": "시간당 {rate}",
     "computeActive": "실행 중인 런타임 {count}개",
+    "leaseHolder": "{holder} 사용 중",
+    "leaseDetail": "토큰 {token} · {time}까지 임대",
+    "leaseBreak": "계정 회수",
+    "leaseConfirmBreak": "회수 확인",
+    "leaseBreakHint": "멈춘 에이전트에만 사용하세요. 실행 중인 에이전트는 임대를 갱신하고, 계정이 비어 있으면 다시 가져갑니다.",
+    "leasesUnavailable": "어떤 에이전트가 Colab 계정을 쓰는지 읽을 수 없습니다: {detail}",
     "snapshotMissing": "이 계정의 사용량이 아직 없습니다. 호스트가 자동으로 읽어 오며, 새로 고침을 눌러도 됩니다.",
     "recorderMissing": "이 계정의 상태 표시줄이 사용량 기록기에 연결되어 있지 않습니다. 다시 로그인하거나 호스트 에이전트를 재시작하면 고쳐집니다.",
     "usageUnavailable": "사용량을 읽을 수 없습니다: {detail}",
@@ -1490,6 +1496,10 @@
     "minimax_api_key": {
       "label": "MiniMax API Key",
       "help": "MiniMax Responses API에 사용합니다."
+    },
+    "minimax_api_keys_extra": {
+      "label": "추가 MiniMax M Plan 키",
+      "help": "여러 개를 쉼표나 줄바꿈으로 구분해 입력합니다. MiniMax를 호출할 때마다 위의 키와 이 키들 중에서 처리 중인 작업 수와 남은 사용량을 기준으로 하나를 고르며, 사용량을 다 쓴 키는 초기화될 때까지 쉬게 합니다."
     },
     "jev_api_key": {
       "label": "Jev API 키",

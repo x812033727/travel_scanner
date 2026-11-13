@@ -1,0 +1,823 @@
+{
+  "batch_id": "wave71-earth-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第二十一輪補讀第二十輪覆核點名的原文：天空偏振（C14-01，作者 F42，覆核 V45）、夜光雲（C14-02，F45／V48）、海中發光（C19-02，F47／V50）、海色（C19-01，F51／V54），都留後備。",
+  "sources": [
+    {
+      "id": "E71-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3778937/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.atmosres.2010.07.010",
+      "title": "Measuring the influence of aerosols and albedo on sky polarization",
+      "publisher": "Atmospheric Research 98:363–367（2010）；Kreuter、Emde、Blumthaler（因斯布魯克醫科大學／慕尼黑大學氣象研究所）",
+      "version": "Elsevier 開放取用版（CC BY-NC-ND 3.0），PMC 收錄之 JATS 全文",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文；python 去標籤轉文字",
+      "reading_scope": "全文（摘要、1 前言、2 方法、3 結果、4 討論、5 結論；圖只讀圖說）",
+      "locator": "摘要；3 Results 第 4 段（AOD 0.1–0.5 時 П90 由 0.7 降到近 0.4）；4 Discussion 第 2 段（反照率 0.75 時 П90 0.42）；2 Method（魚眼相機＋旋轉偏光片、450 nm 藍色通道、與光譜輻射計比對差 0.03 內）",
+      "summary": "奧地利因斯布魯克與維也納三年、加上斯瓦巴的全天空偏振相機量測。只取無雲、太陽天頂角 55–60°、450 nm、主平面上散射角 90° 的偏振度（П90）：氣膠光學厚度從 0.1 到 0.5，П90 從約 0.7 顯著降到將近 0.4；在 AOD 0.1 下，地面反照率越高偏振度越低，全雪地（反照率約 0.75）時 П90 為 0.42。量測與輻射傳輸模式在統計誤差內一致。前言：氣膠散射與地面（及雲）反射會增加天空亮度、降低偏振度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有晴天、固定太陽高度（天頂角 55–60°）、單一波段與單一方位（主平面 90°），不是雲量研究；南極 0.40 是引用 Beaglehole & Carter 1992，不算本研究量測。研究群（Innsbruck／LMU）與池中 Horváth 群、Serres 群、愛丁堡群都不同。池中無同一來源。 覆核 V45（2026-11-12）：publisher 補『加州大學柏克萊』（Kreuter 雙重所屬）；summary 刪『霾』，寫明 AOD>0.4 資料為撒哈拉沙塵事件、雪地比較固定 AOD 0.1",
+      "author_cache": {
+        "file": "f42src/PMC3778937.txt（原始 f42src/PMC3778937.xml）",
+        "sha256_prefix": "47c838dbece006d3",
+        "xml_sha256_prefix": "d2cd1d835b4fccfd",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4435192/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/s150305895",
+      "title": "An Evaluation of Skylight Polarization Patterns for Navigation",
+      "publisher": "Sensors 15:5895–5913（2015）；Ma、Hu、Zhang 等（中國國防科技大學機電工程與自動化學院）",
+      "version": "出版社開放取用版（CC BY 4.0），PMC 收錄之 JATS 全文",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文；python 去標籤轉文字",
+      "reading_scope": "全文（摘要、1 前言、2 方法、3 模擬、4 實驗結果、5 討論、6 結論；圖只讀圖說）",
+      "locator": "1 Introduction 第 2–3 段（雲使偏振度大降、偏振角扭曲；低偏振度常伴隨偏振角偏差）；4.1 第 1 段（長沙，2014-07-08／07-10，太陽高度 2.27°、6.87°、2.81°）、第 5 段（偏差 <4° 的比例 84%／49%／64%，<2° 的 60%／27%／38%）、第 7–8 段（偏振度越高越貼近理論）；4.2 Table 3（太陽子午線誤差 0.27°／0.38°／0.41°）；5 Discussion",
+      "summary": "用魚眼相機加手轉偏光片量一個晴天、兩個部分雲天（太陽都很低）的全天空偏振，與單次散射瑞利模型比對：雲讓偏振度大幅降低並使偏振角扭曲，最偏離理論的區域集中在太陽、反太陽、中性點附近與雲下方，這些地方偏振度都很低；但偏振角與理論差不到 4° 的天空在晴天占 84%，兩個雲天仍占 49% 與 64%。只取偏振度高於 5% 的區域找太陽子午線，以慣性導航為基準的誤差在晴天 0.27°、雲天 0.38° 與 0.41°。作者結論：雲天仍可用偏振角定向，偏振度是判斷偏振角準不準的指標。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有三次靜態量測、都在日落前太陽高度 7° 以下、單一地點；雲量沒有量化；子午線誤差是相機在原地的靜態估計，不是行進中的導航。與池中 P70-001（愛丁堡，機器人實測）是不同研究群，但同屬「機器讀雲天偏振」，片中要放在同一段、不重複講。池中無同一來源。 覆核 V45（2026-11-12）：locator 4.1 補『中性點』；4.2 補『只取天頂附近半徑 100 像素、參考方向來自慣性導航、不做 5% 前處理時為 0.27°／0.38°／1.86°』；波段為 470 ± 30 nm",
+      "author_cache": {
+        "file": "f42src/PMC4435192.txt（原始 f42src/PMC4435192.xml）",
+        "sha256_prefix": "c4f557a42c47c830",
+        "xml_sha256_prefix": "0850781f427c9e01",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S003",
+      "url": "https://acp.copernicus.org/articles/25/12701/2025/acp-25-12701-2025.pdf",
+      "canonical_url": "https://doi.org/10.5194/acp-25-12701-2025",
+      "title": "Altitude-dependent formation of polar mesospheric clouds: charged nucleation and in situ ice growth on zonal and daily scales",
+      "publisher": "Atmos. Chem. Phys. 25:12701–12719（2025）；Liang Zhang、Zhongfang Liu（同濟大學）、Brian Tinsley（德州大學達拉斯分校）；CC BY 4.0",
+      "version": "出版版 PDF（2025-10-10 出版）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 下載 PDF（PDF 連結取自搜尋結果的 ACP 文章頁），pdftotext 轉文字",
+      "reading_scope": "摘要、第 1 節前言、第 2 節資料與方法、表 1、第 3.1–3.5 節結果全文、第 4 節開頭（CMN 假說的兩個前提）；第 4.2 節以後的討論與結論只瀏覽未逐句讀",
+      "locator": "表 1（SOFIE 約 70° N/S，2007–2014 核心季節平均）；第 3.1 節（CIPS 緯度梯度）；第 3.2 節（南半球雲頂雲底每天約下降 0.04 km）；第 3.3 節（南半球 12 月與 1 月剖面比較）",
+      "summary": "用 AIM 衛星 SOFIE（太陽掩星，直接量冰晶濃度與半徑、溫度、水氣）與 CIPS 資料：約 70° 的夜光雲柱平均冰晶半徑南 25.2、北 27.0 nm，濃度約 296、317 個/cm³，冰含量北 57.5、南 28.5 µg/m²；南半球雲層平均高約 1 km（84.5 對 83.7 km），而且季節中雲頂雲底一起每天約下降 0.04 km，北半球穩定。南半球 1 月比 12 月上升流較強，80 km 附近冷約 4 K、水氣多 0.5 ppmv，冰含量 33.6 對 21.6 µg/m²。作者另提出帶電流星煙成核（CMN）的新假說。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "非 Stevens／DeLand、非 Dalin、非 IAP 研究群（前言引用 DeLand & Thomas 2019，但作者不重疊）。CMN 成核假說是作者自己的新提案、與主流的成長沉降（GS）框架不同，本池只收觀測數字，不收假說。SOFIE 只到約 70°，且觀測緯度在季節中漂移約 9°（作者做了敏感度測試）。 覆核 V48（2026-11-12）：limitations 加：『SOFIE 季內觀測緯度約 65°→74°；12 月與 1 月比較的取樣緯度差 3.1°；1 月上升氣流較強是作者的解讀，不是量測；論文主旨 CMN 假說不收。』",
+      "author_cache": {
+        "file": "f45src/acp-25-12701-2025.pdf（文字 f45src/acp-25-12701-2025.txt）",
+        "sha256_prefix": "ed4083e6ee01dda8",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S004",
+      "url": "https://acp.copernicus.org/articles/24/14029/2024/acp-24-14029-2024.pdf",
+      "canonical_url": "https://doi.org/10.5194/acp-24-14029-2024",
+      "title": "Lidar measurements of noctilucent clouds at Río Grande, Tierra del Fuego, Argentina",
+      "publisher": "Atmos. Chem. Phys. 24:14029–14044（2024）；N. Kaifler、B. Kaifler、M. Rapp（DLR 大氣物理所）、G. Liu、D. Janches（NASA GSFC）、G. Baumgarten（IAP）、J.-L. Hormaechea；CC BY 4.0",
+      "version": "出版版 PDF（2024-12-17 出版）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 下載 PDF（連結取自搜尋結果的 ACP 文章頁），pdftotext 轉文字",
+      "reading_scope": "摘要、第 1 節前言、第 2.1 節、第 3.1 節開頭、第 3.3 節溫度、第 4.1 節開頭、第 4.3 節出現率與表 4、太陽與火箭討論、第 5 節結論開頭；第 3.2 節相機、第 4.2 節風場與潮汐只瀏覽",
+      "locator": "摘要；第 3.3 節末段（無雲夜平均溫度高於 170 K、比成冰所需高 20 K 以上）；表 4（七季 523.7 h 觀測、33.8 h 有雲、6%）；第 4.3 節火箭段；第 5 節",
+      "summary": "南緯 53.8° 阿根廷火地島 Río Grande 的 CORAL 光達 2017 年起七個夏季：19 次夜光雲共 33.8 小時、平均高 83.3 km，出現率約 6%（表 4，s=4 門檻；摘要寫 7%），與北半球同緯度相當。無雲夜 82–85 km 平均溫度一般高於 170 K，比成冰所需高 20 K 以上，作者結論在地條件一般不利成雲；以半日潮的經向風把南極緯度的冰晶往北送解釋，並把火箭排氣列為可能但待證的因素。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "DLR 大氣物理所（Kaifler）研究群；共同作者 Baumgarten 屬 IAP，N. Kaifler 也曾是池中 E70-S007（IAP ALOMAR）的共同作者，與 IAP 研究網部分重疊。與 F45-S004 同一第一作者群，兩篇合計封頂 1.0 條。火箭排氣只是時間上接近、作者明說需要模式確認，不得說成火箭造成。 覆核 V48（2026-11-12）：limitations 加：『摘要出現率 7%、表 4 為 6%，原文未說明差異（刪除作者自加的「門檻不同」）；摘要與結論把「輸送」與「高空水氣增加（含太空交通、東加火山）」並列為可能解釋；Baumgarten（IAP）提供相機影像，列入 IAP 研究網封頂。』",
+      "author_cache": {
+        "file": "f45src/acp-24-14029-2024.pdf（文字 f45src/acp-24-14029-2024.txt）",
+        "sha256_prefix": "3492241842fac78f",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S005",
+      "url": "https://acp.copernicus.org/articles/25/383/2025/acp-25-383-2025.pdf",
+      "canonical_url": "https://doi.org/10.5194/acp-25-383-2025",
+      "title": "Measurement report: Rocket-borne measurements of large ions in the mesosphere and lower thermosphere – detection of meteor smoke particles",
+      "publisher": "Atmos. Chem. Phys. 25:383–396（2025）；J. Stude、H. Aufmhoff、H. Schlager、M. Rapp、C. Baumann（DLR）、F. Arnold（MPIK）、B. Strelnikov（IAP）；CC BY 4.0",
+      "version": "出版版 PDF（2025-01-13 出版）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 下載 PDF（連結取自搜尋結果），pdftotext 轉文字",
+      "reading_scope": "摘要、第 1 節前言與表 1（兩次飛行）；儀器與逐高度質譜結果段落未逐句讀",
+      "locator": "摘要；表 1（PMWE1F 2018-04-13、PMWE2F 2021-10-01，Andøya）",
+      "summary": "DLR 的 ROMARA 離子質譜儀兩次搭探空火箭（2018 年 4 月與 2021 年 10 月，挪威 Andøya）直接量中氣層的大離子：85 km 以下看到帶負電、達數千原子質量單位的粒子（第二次飛行到約 m/z 5500），85 km 以上看到可能是剛燒蝕出來的小建材；80.8 km 有一種質量約在 225、450、900、1800 成倍增加的訊號。成分與磁鐵礦、鐵橄欖石、鎂橄欖石相符，但無法排除其他化合物。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "春秋季飛行、不是夜光雲季節，證明的是流星煙粒子在大氣中存在並帶電，不證明它們就是冰的成核種子；種子角色仍是 E70-008 的實驗室推論。DLR 大氣物理所（Rapp）與 F45-S002／S004 同機構但不同團隊（質譜 vs 光達），IAP 的 Strelnikov 為共同作者。只讀摘要與前言，算 0.5 條封頂。 覆核 V48（2026-11-12）：reading_scope 改為『摘要、第 1 節前言、表 1（覆核另讀第 5 節首句）；儀器、逐高度質譜與討論未讀——摘要層級，不算全文』；limitations 加『PMWE 活動由 IAP 發起協調，Strelnikov 為計畫主持人；作者自述兩次飛行整體結果模糊、第二次質量無法明確辨認』。",
+      "author_cache": {
+        "file": "f45src/acp-25-383-2025.pdf（文字 f45src/acp-25-383-2025.txt）",
+        "sha256_prefix": "70ea9c9543e08e8b",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S006",
+      "url": "https://elib.dlr.de/125225/1/16239522accepted.pdf",
+      "canonical_url": "https://doi.org/10.1029/2018JD029717",
+      "title": "Mesospheric temperature during the extreme mid-latitude noctilucent cloud event on 18/19 July 2016",
+      "publisher": "J. Geophys. Res. Atmos.（2018）；N. Kaifler、B. Kaifler、H. Wilms、M. Rapp（DLR）、G. Stober（IAP）、C. Jacobi（萊比錫大學）；DLR elib 典藏的作者接受稿",
+      "version": "作者接受稿（accepted manuscript，未經排版；AGU 2018）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 下載 DLR elib 典藏頁（搜尋結果 elib.dlr.de/125225，伺服器自行轉到結尾斜線）上列出的 PDF，pdftotext 轉文字",
+      "reading_scope": "摘要與重點、第 1 節前言（含中緯度夜光雲文獻段）、第 3 節 NLC 層高度段、第 5 節風場（每日風速段）、第 6 節與 SABER 氣候值比較段、第 7 節結論開頭；CARMA 模式段只瀏覽",
+      "locator": "摘要；第 1 節（最低緯紀錄 42°N 的文獻段）；NLC 層 79.5–82.8 km 段；82 km 平均風速 ≈22 m/s 南向段；溫度最低值比 SABER 7 月平均低近 30 K、低 6 km 段；第 7 節",
+      "summary": "2016 年 7 月 18/19 日，DLR 的 CORAL 光達在德國南部 48.8°N 量到罕見的明亮夜光雲，雲層在 79.5–82.8 km、位在低於 150 K 的冷區上部。準兩日行星波讓 82 km 的風平均約 22 m/s 朝南吹，把極區的冷空氣帶到中緯度；當晚溫度最低處比 SABER 的 7 月平均冷近 30 K、低 6 km，而這裡的氣候平均溫度在 170 K 以上。作者結論冰晶不是在當地成核，而是經向輸送過來、被大的垂直溫度梯度與弱亂流關在薄層裡。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者接受稿，由第一作者機構典藏；正式版在 AGU（未讀）。與 F45-S002 同第一作者群，兩篇合計封頂 1.0 條；共同作者 Stober 屬 IAP。前言引用的「最低緯 42°N」（Wickwar 2002）、「37.2°N 看到 42.7°N 的雲」（Russell 2014）是轉述，不算本篇事實。 覆核 V48（2026-11-12）：summary 的『冰晶不是在當地成核』後補『當地當晚因極區冷空氣流入而異常冷，冰晶在當地可以存活、成長（CARMA），但沒有讓冰晶生成的高度結構』。",
+      "author_cache": {
+        "file": "f45src/kaifler2018_accepted.pdf（文字 f45src/kaifler2018_accepted.txt）",
+        "sha256_prefix": "892e9d7057bf5e11",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S007",
+      "url": "https://www.int-res.com/articles/ab2022/31/b031p039.pdf",
+      "canonical_url": "https://doi.org/10.3354/ab00751",
+      "title": "Detection of bioluminescent dinoflagellates based on luciferase genes during the ‘blue tears’ season around the Matsu archipelago",
+      "publisher": "Aquatic Biology 31:39–47（2022）；Shih、Tsai、Wang、Hwang、Kang（國立臺灣海洋大學等），Inter-Research",
+      "version": "出版社開放取用版 PDF（CC BY，2022-06-09 出版）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果 int-res.com/abstracts/ab/v31/p39-47，伺服器自行轉址到 www.int-res.com/journals/ab/articles/ab00751；該頁的 PDF 連結（/articles/ab2022/31/b031p039.pdf）以 curl 預設標頭下載，pdftotext -layout 轉文字",
+      "reading_scope": "全文 9 頁（摘要、前言、方法、結果 3.1–3.4、表 1–2、圖 1–3 圖說、討論；參考文獻只掃過）",
+      "locator": "摘要；1 前言第 1–3 段（藍眼淚 4–8 月、夜光藻 16–27°C 為引用 Tsai 2018）；3.2 metatranscriptome（Noctiluca reads 最多、組出含完整 lbp 的近全長 lcf，MZ645834）；3.4 與表 2；4 討論末兩段（5–7 月夜光藻為主、8–9 月換成其他種、方法非定量）",
+      "summary": "海大團隊 2016-06 至 2017-07 在馬祖南竿周邊六個航次採浮游生物，用螢光酶（lcf）基因定序與 metatranscriptome 找出是誰在發光：多種渦鞭毛藻的 lcf 都有表現，夜光藻的讀數最多，並從現場樣本組出夜光藻幾乎完整、連同完整 lbp 的 lcf 基因；依 lcf 選殖組成，5 月與 7 月以夜光藻為主，2016 年 8–9 月被其他發光渦鞭毛藻（如 Alexandrium affine、Ceratium fusus）取代；採樣期間沒有得到已知有毒發光種的 lcf。作者結論：夜光藻不是馬祖周邊唯一會發光的渦鞭毛藻。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "lcf 選殖比例是基因組成，不是細胞數或亮度；作者明言方法不適合定量，不能說『8 月的藍光是 Ceratium 發的』，只能說『那時抓到的發光基因多半來自別的藻』。只有一個地點、一年多。藍眼淚季節與水溫範圍在前言引用 Tsai 2018，不是本研究量測。第二作者 Tsai 也是 Lee 等 2021、Tsai 等 2018 的作者，海大同一研究網絡。不得延伸為觀賞季節或地點建議。 覆核 V50（2026-11-12）：limitations 加：『metatranscriptome 只做了 2016 年 6、7 月；季節變化來自 5 個航次的 lcf 選殖組成。前言關於 7 月後藍光未確定來源的句子沒有附出處，只是研究動機。lcf 與 lbp 在同一個基因是前言引 Liu & Hastings 2007，不是本研究結果。』research_group 記『NTOU Shih／Tsai／Kang 群，合計封頂 1.0』。",
+      "author_cache": {
+        "file": "f47src/shih2022_ab.txt（原始 shih2022_ab.pdf；入口頁 shih2022_intres.html）",
+        "sha256_prefix": "b2ed180ed52bd609",
+        "pdf_sha256_prefix": "6f62a082cad82a89",
+        "html_sha256_prefix": "bdf767a4a9197ca8",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S008",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2225772/fullTextXML",
+      "canonical_url": "https://doi.org/10.1085/jgp.50.9.2211",
+      "title": "The Wave Form of Luminescence Emitted by Noctiluca",
+      "publisher": "Journal of General Physiology 50(9):2211–2237（1967）；Roger Eckert（Syracuse University、Woods Hole MBL），Rockefeller University Press",
+      "version": "PMC 收錄的掃描全文（JATS 內含 OCR 文字；CC BY-NC-SA 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 得 PMCID，再取 /webservices/rest/PMC2225772/fullTextXML；python 去標籤轉文字。OCR 有錯字（例如 msec 寫成 reset、10 寫成 I0），數字只採上下文能確認的",
+      "reading_scope": "全文 OCR 文字逐段讀：摘要、前言、方法（General Procedures）、Experimental 的 Wave Form、Stimulus Repetition Rate、Factors Which Influence Shape and Duration 各節；附錄類比電腦模擬只略讀；圖 5 的光子數因 OCR 指數不清未採用",
+      "locator": "摘要；前言第 1 段（光來自細胞質中的微光源 microsources）；方法『One flashed over 1,300 times without large (> 25 %) decline』；Experimental 第 1 段（Imax 在最早可見發光後 14 msec、指數衰減約 50 msec）；Stimulus Repetition Rate 兩段（≥10 sec 間隔幅度穩定、1 sec 間隔疲乏、回到 10 sec 恢復）；Factors… 段（傳導的動作電位繞過半個細胞周長要 5–10 msec）",
+      "summary": "把單一個夜光藻細胞吸在玻璃吸管口、用電流刺激、以光電倍增管記錄每一閃的形狀：光來自細胞質裡大量的小發光胞器（微光源），由一個在細胞上傳開的動作電位觸發；一閃從開始到最亮約 14 毫秒（示例紀錄），之後的指數衰減段持續約 50 毫秒；動作電位繞過半個細胞要 5–10 毫秒，所以由傳導電位觸發的閃光比同步觸發的慢。每 10 秒以上刺激一次，閃光幅度幾乎不變；間隔縮到 1 秒，一閃比一閃弱（疲乏），恢復 10 秒間隔後又回升；有一個細胞閃了 1,300 多次，亮度下降不到 25%。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "1967 年實驗室研究：單細胞固定在吸管、電刺激而非水流、20–24°C；論文的物種名是 Noctiluca miliaris，本來源沒有寫它與 N. scintillans 的關係，片中只說『夜光藻屬』，不要說成馬祖那一種的量測。14 毫秒是單一示例紀錄；『1,300 次』是單一個體、作者說各個體活力差異很大。與 E70-033（Lingulodinium 只能連閃 1–4 次，引用）是不同物種、不同刺激方式，數字不能並列比較。掃描 OCR 本，數字已逐一對上下文。 覆核 V50（2026-11-12）：summary 改：14 毫秒是用液泡內電極『同步觸發』、23°C 的一筆紀錄；5–10 毫秒是傳導觸發時電訊號繞過半個細胞的時間，兩者不是同一閃的前後段；50 毫秒的指數衰減之後還有較慢的第二段衰減；10 秒以上間隔幅度相對穩定但有長期緩慢下降。limitations 加：『微光源的數量（1–5 萬個）出自 Eckert & Reynolds 1967 摘要，本來源沒有。』",
+      "author_cache": {
+        "file": "f47src/PMC2225772.txt（原始 PMC2225772.xml）",
+        "sha256_prefix": "06586a823a6b4bd5",
+        "xml_sha256_prefix": "c1da379a7aef5cbc",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S009",
+      "url": "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2021.704398/pdf",
+      "canonical_url": "https://doi.org/10.3389/fmars.2021.704398",
+      "title": "Sexual Reproduction in Dinoflagellates—The Case of Noctiluca scintillans and Its Ecological Implications",
+      "publisher": "Frontiers in Marine Science 8:704398（2021）；Lee、Chiang、Tsai（國立臺灣海洋大學）",
+      "version": "出版社開放取用版 PDF（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果的 frontiersin.org …/full 頁（curl），該頁『Download PDF』連結下載 PDF，pdftotext 轉文字",
+      "reading_scope": "摘要、前言、方法（採樣與培養）全讀；結果與討論只掃過",
+      "locator": "摘要；前言第 2 段（細胞 400–1,000 μm、受震動發藍光不到 0.1 秒為引用；藍眼淚名稱引用 Tsai 2018）；方法 Sampling and Culture（藻株取自南竿介壽澳港）",
+      "summary": "用馬祖南竿分離的夜光藻做培養實驗：只有獵物濃度大幅下降（約低於 400 cells/mL）時，轉為有性生殖的母細胞才從 1% 以下升到近 10%；作者推論有性生殖是藻華結束、食物耗盡後的另一種存活方式。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "主題是藻華結束後的生殖，不是發光；發光的句子都是前言引用。只列為未收紀錄的來源，不提核心。 覆核 V50（2026-11-12）：不變；不被任何核心引用，只留未收紀錄。",
+      "author_cache": {
+        "file": "f47src/lee2021.txt（原始 lee2021.pdf）",
+        "sha256_prefix": "ea2789983619228d",
+        "pdf_sha256_prefix": "75d45f95965daba1",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S010",
+      "url": "https://ecp.iopan.pl/oceanologia/Olszew.pdf",
+      "canonical_url": "https://ecp.iopan.pl/oceanologia/Olszew.pdf",
+      "title": "Sky glint correction in measurements of upward radiance above the sea surface（Olszewski & Kowalczuk；Oceanologia 42(2):251–262, 2000）",
+      "publisher": "Institute of Oceanology, Polish Academy of Sciences（Oceanologia 期刊官方站）",
+      "version": "期刊出版版 PDF（10 頁）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 ecp.iopan.pl PDF；curl 預設標頭 200 application/pdf；pdftotext -layout",
+      "reading_scope": "全文 10 頁：摘要、引言、方法（Fig. 1 儀器傾角 15°、Table 1 測站）、結果（Fig. 5–8）、結論（Fig. 9）；參考文獻略讀",
+      "locator": "Abstract；Methods（tilt angle 15°、channels 412–710 nm）；Table 1（10 September 1999，A–D 太陽天頂角 50–59°、海況 0–2 Beaufort）；Results 第 3 節末與 p.260『ratio investigated (in the green band) rises from 40% at point A to above 60% at other points』；Conclusions 與 Fig. 9（與 1993–97 南波羅的海 in situ 平均大致相符）",
+      "summary": "波蘭科學院海洋所 1999 年 9 月 10 日在波羅的海開闊海域，從行進中的船頭同時量往上的總輻射（水面以上、離鉛直 15° 往下看）和對應方向的天空輻射，用菲涅耳反射算出水面反射的天光，再求『水裡出來的光 Luw』占『感測器看到的總往上光 Lu』的比例。綠光波段這個比例在 A 點約 40%，其他三點超過 60%；作者歸因於各點水質不同，且結果與 1993–97 年南波羅的海用水下儀器量的平均光譜大致相符。換句話說，在這片海、這種看法下，往下看到的綠光有約四成到六成是水面反射，不是水裡出來的。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有一天、四個點、一片偏綠的陸緣海（波羅的海），不是清澈藍色大洋；視角近鉛直（15°）、太陽天頂角 50–59°、晴天偶有薄霧；數字只在原文給了綠光波段（40% 與『above 60%』），其他波段只在 Fig. 8–9 圖上，不能自己讀圖給數；『反射占 40–60%』是 1 減去原文比例的說法，片中應直接講原文『水裡出來的只占四成到六成多』；作者自承儀器指向與波面水平度是主要誤差來源；行進中與定點量測不同時同地，原文說只是『roughly』相符。 覆核 V54（2026-11-12）：locator 與 summary 改為『Luw/Lu 光譜的最大值（在綠光波段）從 A 點 40% 升到其他點 60% 以上』；刪 summary 最後一句『往下看到的綠光有約四成到六成是水面反射』，改為『A 點綠光一半以上來自反射，其他三點反射不到四成』；limitations 補『Luw 是總光減去以菲涅耳反射算出的天光反射所得，非直接量；所報為眾數』。",
+      "author_cache": {
+        "file": "iopan_Olszew.pdf（txt：iopan_Olszew.txt b10339222286863f）",
+        "sha256_prefix": "16622ee9c1cf5092",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S011",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5795334/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/s18010256",
+      "title": "The HydroColor App: Above Water Measurements of Remote Sensing Reflectance and Turbidity Using a Smartphone Camera（Leeuw & Boss；Sensors 18(1):256, 2018）",
+      "publisher": "MDPI（Europe PMC 全文 XML，CC BY 4.0）",
+      "version": "出版版全文 XML",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（surface-reflected AND above-water AND OPEN_ACCESS）列出 PMC5795334；curl fullTextXML；去標籤成文字",
+      "reading_scope": "全文：摘要、Materials and Methods（式 1、ρ 與 40°／135° 幾何、影像擷取）、Results（與 WISP 比較的中位誤差）、Discussion 與 Conclusions",
+      "locator": "Section 2（Eq. 1 Rrs=(Lt−ρLs)/(πLc/Rref)；『should be measured at an azimuth angle 135° from the sun and 40° from nadir. Under ideal conditions, the value of ρ is approximately 0.028』；『Even though the surface reflection cannot be eliminated, it can be significantly reduced』）；Abstract（within 26% of a precision radiometer）；Results（median percent error 18%、16%、26% for red, green, blue vs WISP）",
+      "summary": "手機 app HydroColor 拍三張照片（18% 灰卡、天空、水面）算水的遙測反射率。水面那張一定要在離太陽方位 135°、離鉛直 40° 拍，因為水面反射的天光『無法消除，只能大幅減少』；在理想晴天、這個角度下，水面把天空亮度反射回來的係數約 0.028。2013 年在哥倫比亞河口、緬因與喬治亞海岸等近岸水和專業輻射計並拍，手機的反射率在紅、綠、藍分別有 18%、16%、26% 的中位誤差（摘要寫 26% 以內）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "ρ≈0.028 是作者引用 Mobley 模式、理想晴天的值，不是本文量測，只能說『這個角度下約 0.028』；它是『反射天空亮度的比例』，不是『倒影占你看到的光的比例』，兩者不可混用；量測地點是近岸二類水，不是大洋；第二作者 Boss 也是池中 E70-S017（Ocean Optics Web Book: Water）的作者，若覆核把兩者算同群，本核心可下修。 覆核 V54（2026-11-12）：limitations 補：ρ≈0.028 是 HydroLight 模式值，假設晴朗無雲、風速 < 約 5 m/s；與 WISP 的中位誤差比的是同一扣反射方法下的兩台儀器，不是反射扣除的驗證；ρ 出自 Mobley 網書體系，與 E70-S017（Boss）、E70-S018 併同一網絡。",
+      "author_cache": {
+        "file": "PMC5795334.xml（txt：PMC5795334.txt）",
+        "sha256_prefix": "9eeaa86bb2484060",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S012",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11290243/fullTextXML",
+      "canonical_url": "https://doi.org/10.1093/plankt/fbae027",
+      "title": "Ocean-colour anomalies quantified by the human eye（Brewin & Dall'Olmo；J Plankton Res 46(4):380–382, 2024）",
+      "publisher": "Oxford University Press（Europe PMC 全文 XML，CC BY 4.0）",
+      "version": "出版版全文 XML",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（\"Forel-Ule\" AND satellite AND OPEN_ACCESS）列出 PMC11290243；curl fullTextXML",
+      "reading_scope": "全文（短報，約 3 頁）：摘要、引言、方法、結果、Fig. 1 圖說、結論",
+      "locator": "Method（三個大西洋航次與一個威德爾海航次、30 cm 白盤、在半個 Secchi 深度處比 Forel-Ule 色階、多位參與者平均）；Results『For the same colour, the Secchi depth was around 37% shallower in the Weddell Sea than in the Atlantic Ocean』；Fig. 1（大西洋 N=102、威德爾海 N=36）；引言（Hudson 等航海者記下冰山附近海水較藍，引 Wernand & Gieskes 2011）",
+      "summary": "英國 Exeter 大學與義大利 OGS 的研究者在三趟大西洋航次（低緯）和一趟南極威德爾海航次，用 19 世紀的兩件工具量海：30 公分白色透明度盤看它在幾公尺深消失，再對著盤上方的水比 Forel-Ule 21 色階。結果：同樣的色號，威德爾海的透明度盤深度比大西洋淺約 37%——南大洋的水『看起來更藍，卻沒有那麼清』。作者說這反映兩地水中顆粒與溶解物質的組成不同，因此不能用同一套『看顏色推浮游植物量』的方法解讀兩地。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "短報，一張圖一個主結果；37% 是在兩條回歸線上比較的『around』值，不能外推到資料範圍外；是人眼比色，不是儀器光譜；Hudson 冰山較藍一句是引言轉述 Wernand & Gieskes 2011，不另計；與池中 Wernand／Zielinski 群（E70-S019、E70-S020）是不同研究群，但用的 Forel-Ule 色階版本是 Novoa 等 2014（同一荷蘭群設計），只算工具來源不算同群。",
+      "author_cache": {
+        "file": "PMC11290243.xml（txt：PMC11290243.txt）",
+        "sha256_prefix": "aa6faf4c7ee8ecf6",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S013",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7079054/fullTextXML",
+      "canonical_url": "https://doi.org/10.1111/gcb.14891",
+      "title": "Afforestation driving long-term surface water browning（Škerlep, Steiner, Axelsson, Kritzberg；Global Change Biology 26(3):1390–1399, 2020）",
+      "publisher": "John Wiley & Sons（Europe PMC 全文 XML，CC BY 4.0）",
+      "version": "出版版全文 XML",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（TITLE:brownification OR TITLE:browning AND lake AND OPEN_ACCESS）列出 PMC7079054；curl fullTextXML",
+      "reading_scope": "摘要、引言、2.1 Lyckeby River 測站與資料、3.1–3.2 長期趨勢段、討論前段；模型統計細節略讀",
+      "locator": "Abstract（1940–2016、約每月 20 次、四類因子合計解釋 75% 長期變異、挪威雲杉材積貢獻最大）；2.1（Lyckeby 河約 100 km、集水區 810 km²、森林 82%、自 1940 年每個工作日量色度，用六氯鉑酸鹽比色器、單位 mg Pt/L）；Results（月均色度 27 mg Pt/L〔1955 年 1 月〕到 346 mg Pt/L〔2011 年 10 月〕、全期平均 115）；3.2『water color increased by 84%, corresponding to 1.14 mg Pt/L per year』",
+      "summary": "瑞典隆德大學團隊用瑞典東南部 Lyckeby 河自來水廠 1940–2016 年、幾乎每個工作日的水色紀錄（用鉑鈷比色器比對，單位 mg Pt/L）：河水的顏色 77 年來加深 84%，每年約 1.14 mg Pt/L，1980 年後特別明顯；月平均從最淡的 27（1955 年 1 月）到最深的 346（2011 年 10 月）。變褐來自溶解有機碳與鐵增加；長期變化最能解釋的是集水區挪威雲杉材積大增（造林讓有機土層累積），其次是大氣硫沉降減少；降水、氣溫、硫沉降與造林合計解釋 75% 的長期變異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "一條河、一個測站；水色是比色器單位 mg Pt/L，不是光譜；『84%』是原文對 1940–2016 全期的數字，不要換算成倍數；原因是統計模型的解釋力，不是實驗證明；原文有氣候變遷關鍵詞，片中只講『造林與酸雨減少讓水變褐』，不延伸到氣候政策；河水是飲用水源，片中不得給任何飲水或水質安全建議。 覆核 V54（2026-11-12）：locator／summary 的『自 1940 年每個工作日』改為『1940–2015 每個工作日、2015 年後每週兩次（約每月 20 次）』；summary 的『變褐來自溶解有機碳與鐵增加』標為引言引用背景；limitations 補『模型抓不到資料末期的高值』『全文不涉及海』。",
+      "author_cache": {
+        "file": "PMC7079054.xml（txt：PMC7079054.txt 673ae1e54a7e5162）",
+        "sha256_prefix": "fad12ca36c94bb8d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S014",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11064451/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.heliyon.2024.e30100",
+      "title": "Calibration and validation of the HydroColor and Citclops smartphone applications for water quality monitoring（Mahama & Salama；Heliyon 10(9):e30100, 2024）",
+      "publisher": "Elsevier（Europe PMC 全文 XML，CC BY-NC-ND 4.0）",
+      "version": "出版版全文 XML",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search TITLE:\"Citclops\" 列出 PMC11064451；curl fullTextXML",
+      "reading_scope": "摘要、2.1 研究區、Methods 儀器段、Results 中 Citclops 色相角與 FUI 段（Fig. 15–16）；HydroColor 濁度段略讀",
+      "locator": "Abstract（Citclops R² 0.7 for colour）；2.1（荷蘭三個湖與一處人工濕地）；Results（FUI：R² 0.70、RMSE 1.32；hue angle：R² 0.63、RMSE 17.20°）",
+      "summary": "Twente 大學 ITC 的碩士級研究：在荷蘭三個湖和一處人工濕地，用手機照片（Citclops／EyeOnWater 演算法）算 Forel-Ule 色號，對照 TriOS RAMSES 高光譜輻射計：色號的 R² 為 0.70、均方根誤差 1.32 個色號；色相角 R² 0.63、誤差 17.2°。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有內陸湖與濕地、樣本少；與衛星無直接對照；未用於提案，見 F51-NA001。",
+      "author_cache": {
+        "file": "PMC11064451.xml（txt：PMC11064451.txt）",
+        "sha256_prefix": "091e0292778b2f24",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S015",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7098649/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0230084",
+      "title": "Citclops: A next-generation sensor system for the monitoring of natural waters and a citizens' observatory for the assessment of ecosystems' status（Ceccaroni, Piera, Wernand, Zielinski, Busch 等；PLoS ONE 15(3):e0230084, 2020）",
+      "publisher": "PLOS（Europe PMC 全文 XML）",
+      "version": "出版版全文 XML",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search TITLE:\"Citclops\" 列出 PMC7098649；curl fullTextXML",
+      "reading_scope": "摘要與 Methods 的 Colour、Satellite observations 段（以 MERIS／satellite 關鍵字前後段落為主），非全文精讀",
+      "locator": "Methods: Colour（app 用 Wernand 等的方法從照片算 FU）；Satellite observations（引 Van der Woerd & Wernand 與 Busch 等的衛星對照）",
+      "summary": "Citclops 計畫的系統總覽：手機 app 從照片算 Forel-Ule 色號，衛星對照的結果都是引用同群（Wernand、Van der Woerd、Busch）的其他論文，本文未給新的衛星對照數字。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池中 E70-S019、E70-S020 同一 Wernand／Zielinski 研究群；衛星對照是引用；只讀關鍵段；未用於提案，見 F51-NA002。",
+      "author_cache": {
+        "file": "PMC7098649.xml（txt：PMC7098649.txt）",
+        "sha256_prefix": "bc317214d43a77fe",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S016",
+      "url": "https://www.frontiersin.org/journals/remote-sensing/articles/10.3389/frsen.2023.1307976/pdf",
+      "canonical_url": "https://doi.org/10.3389/frsen.2023.1307976",
+      "title": "Apparent surface-to-sky radiance ratio of natural waters including polarization and aerosol effects: implications for above-water radiometry（Harmel；Front. Remote Sens. 4:1307976, 2023）",
+      "publisher": "Frontiers",
+      "version": "出版版 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 frontiersin.org PDF；curl 預設標頭 200 application/pdf；pdftotext -layout",
+      "reading_scope": "摘要與引言（前兩頁）；結果段以 % 關鍵字前後檢查",
+      "locator": "Introduction（『water-leaving radiance which constitutes a small part of the total signal often dominated by the atmosphere and surface-reflected light』，指衛星訊號）",
+      "summary": "模擬研究：計算水面反射天光的有效反射係數隨偏振、氣膠、風速與幾何的變化；引言說對衛星而言，水裡出來的光只占總訊號的一小部分，常被大氣與水面反射光主導。沒有給出『人站在海邊往下看時，倒影占多少』的實測比例。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "模式計算；引言那句講的是衛星大氣頂訊號（含大氣），不能挪用到人眼看海；未用於提案，見 F51-NA003。",
+      "author_cache": {
+        "file": "harmel2023.pdf（txt：harmel2023.txt）",
+        "sha256_prefix": "540c48fb39d1a4ae",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E71-S017",
+      "url": "https://repository.library.noaa.gov/view/noaa/55899/noaa_55899_DS1.pdf",
+      "canonical_url": "https://doi.org/10.1364/OE.486981",
+      "title": "Revised spectral optimization approach to remove surface-reflected radiance for the estimation of remote-sensing reflectance from the above-water method（Lin, Lee, Tilstone, Liu, Wei, Ondrusek, Groom；Optics Express 31(14):22964, 2023）",
+      "publisher": "NOAA Institutional Repository（出版版 PDF 存放）",
+      "version": "出版版 PDF（18 頁）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 NOAA 典藏 PDF；curl 預設標頭 200 application/pdf；pdftotext -layout",
+      "reading_scope": "摘要、引言（式 1–6）、方法開頭；全文以 surface-reflected／skylight／Lr 關鍵字檢查",
+      "locator": "Introduction Eq. (2) Lt=Lr+Lw；Eq. (3) Lr=ρLs",
+      "summary": "說明水面上量到的總光 Lt＝水面反射的天光 Lr＋水裡出來的光 Lw，並改良估 ρ 的方法；文中沒有直接寫出 Lr 占 Lt 的比例數字。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "方法論文，無可直接引用的『倒影占比』；未用於提案，見 F51-NA003。",
+      "author_cache": {
+        "file": "noaa_55899_DS1.pdf（txt：noaa_55899_DS1.txt）",
+        "sha256_prefix": "caf96263cebcbb36",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "E71-001",
+      "question": "萬里無雲的藍天，偏振一定一樣強嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "sky.aerosol_snow_albedo_lower_clear_sky_dop",
+      "answer_target": "不一定。因斯布魯克醫科大學等研究者用魚眼相機加旋轉偏光片，在因斯布魯克、維也納三年間（另加北極斯瓦巴）拍無雲的天空，只看太陽所在鉛直面上離太陽 90°、偏振最強的那一點（藍光、太陽天頂角 55–60°）：空氣中懸浮微粒少（氣膠光學厚度 0.1）時偏振度約 0.7，光學厚度升到 0.5 時降到將近 0.4，其中 0.4 以上的資料是撒哈拉沙塵事件時拍的；在同樣乾淨的空氣下，地面全被雪覆蓋（反照率約 0.75）時也只剩 0.42。研究者在前言說，氣膠多出來的散射和地面反射會讓天空變亮、偏振度降低。",
+      "scope": "只限無雲、太陽天頂角 55–60°、450 nm、主平面上離太陽 90° 那一點；0.4 對應 AOD 約 0.5（含撒哈拉沙塵）；雪地 0.42 是 AOD 0.1 下的值；南極 0.40 是引用他人，不用；不說『霾』『偏振更亂』。",
+      "source_ids": [
+        "E71-S001"
+      ],
+      "source_locator": "摘要；3 Results 第 4 段；4 Discussion 第 2 段；1 Introduction 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：E70-001 已有『雲或霾散射後通常低很多』的定性，本條只新增一組量測數字（氣膠與雪地兩個條件合計）。研究群（Innsbruck／LMU）新。 原提案 F42-001（目標 C14-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V45（2026-11-12）改字後收；數字、單位、條件都在原文；改掉原文沒有的『霾』、『多散射一次』、『偏振更亂』，補上 0.4 是沙塵事件時的值與雪地比較是固定 AOD 0.1；因與 E70-001 的定性重疊，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "弱的偏振不只出現在陰天：霾和雪地就能把晴天的偏振砍掉將近一半。",
+        "visual": "同一角度天空的兩張偏振度色圖：乾淨晴天與沙塵日／雪地並排，標 0.7 與 0.4。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E71-002",
+      "question": "雲把天空偏振變弱了，偏振指出的「方向」也跟著全亂掉嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "sky.cloud_lowers_dop_but_aop_mostly_rayleigh",
+      "answer_target": "沒有全亂。國防科技大學的研究者在長沙用魚眼偏振相機拍了一個晴天和兩個部分有雲的天空（太陽都在地平線上 7° 以內），和單次散射理論的偏振圖比對：雲讓偏振度變得很低，偏振角也被扭曲，偏得最多的地方在太陽、反太陽、中性點附近和雲的下方，而這些地方的偏振度都很低。整片天空裡，偏振角和理論差不到 4° 的部分，晴天占 84%，兩個雲天占 49% 和 64%；偏振度越高的地方越貼近理論。用天頂附近的偏振角找太陽所在的那條子午線，和慣性導航的參考相比，誤差晴天 0.27°、雲天 0.38° 和 0.41°；把偏振度低於 5% 的點去掉，讓其中一個雲天從 1.86° 降到 0.41°。",
+      "scope": "只有三次靜態量測、單一地點、太陽高度 2.27°～6.87°；雲量沒有量化；子午線誤差是原地靜態估計、只用天頂附近半徑 100 像素的資料，不是行進導航；不說『大半沒亂』『厚雲全陰也可以』；不與 P70-001 的結論重複講。",
+      "source_ids": [
+        "E71-S002"
+      ],
+      "source_locator": "1 Introduction 第 2–3 段；4.1 第 5、7–8 段；4.2 Table 3；6 Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 1.0）：三次量測的同一研究；新增的是『偏振度降、偏振角大致仍照理論，偏差集中在低偏振處』這一點與 49%／64% 的比例；子午線誤差『薄雲下機器仍讀得準』的結論 P70-001 已有，不另算。研究群（NUDT）新。 原提案 F42-002（目標 C14-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V45（2026-11-12）改字後收；數字都在原文，但『大半沒有亂』與雲天 I 的 49% 矛盾，已改為『沒有全亂』；補中性點、天頂附近資料、慣性導航參考；更正 5% 篩選的作用（只在雲天 II 有差）。樣本只有三次、太陽很低，且與 P70-001 結論部分重疊，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲把偏振『調小聲』，但沒把『箭頭』轉歪：挑還夠亮的那幾塊天空，方向誤差不到半度。",
+        "visual": "雲天魚眼照片 → 偏振度圖（大片變暗）→ 偏振角偏差圖（大半仍是綠色 <4°），最後疊上找出的太陽子午線。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "E71-003",
+      "question": "夜光雲的冰晶到底多大、多密？有沒有人直接量過？",
+      "domain": "weather_sky",
+      "mechanism_key": "sky.sofie_pmc_ice_radius_concentration_hemispheres",
+      "answer_target": "量過，用衛星看日出日落的陽光穿過雲層（太陽掩星）來反推。NASA AIM 衛星的 SOFIE 儀器 2007–2014 年在約南北緯 70° 的夏季核心期平均：夜光雲的冰晶柱平均半徑只有約 25–27 奈米，每立方公分平均約三百顆（南 296、北 317），而且季內起伏很大。",
+      "scope": "只用表 1 的季節平均與第 2 節的儀器說明；雲高與南北冰含量對比移到 F45-002，不在本條重複；不提 CMN 成核假說；『柱平均』要講明，與 E70-007 的 20–80 奈米範圍並列不衝突；不說『直接拍到冰晶』。",
+      "source_ids": [
+        "E71-S003"
+      ],
+      "source_locator": "F45-S001 表 1；第 2 節 SOFIE 儀器說明",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：一張表的季節平均合計一條的一半；南北冰含量 0.25 移到 F45-002 一併計。Zhang／Liu／Tinsley 同一篇與 F45-002 合計 1.0（作者 1.25）。非 Stevens／DeLand、非 Dalin、非 IAP，是本題唯一完全不在既有研究網的新來源。 原提案 F45-001（目標 C14-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V48（2026-11-12）改字後收；數字相符；刪掉與 F45-002 重複的雲高與南北冰含量，補『柱平均、季內起伏大』的條件，計數降為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "半徑只有二十幾奈米的冰晶，一立方公分約三百顆，卻能讓整片天空發亮。",
+        "visual": "衛星穿過地平線大氣看日出的示意；一顆 25 奈米冰晶旁放同尺度比例尺。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E71-004",
+      "question": "南半球的夜光雲和北半球一樣嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "sky.pmc_southern_hemisphere_higher_descending_season",
+      "answer_target": "不一樣。同一顆衛星在約南北緯 70° 量到：南半球夜光雲的平均高度 84.5 公里，比北半球的 83.7 公里高約 1 公里；冰含量卻只有北半球的一半左右（28.5 對 57.5 微克每平方公尺，並列原文數字）。整個夏季，南半球的雲頂和雲底一起每天往下掉約 0.04 公里，北半球大致不動；南半球各項數值的起伏也都比較大，研究者推測反映南極上空較強的大氣動力影響。南半球 1 月比 12 月，80 公里附近冷約 4 K、水氣多 0.5 ppmv，冰含量從 21.6 增加到 33.6 微克每平方公尺；研究者把這歸因於 1 月較強的上升氣流。",
+      "scope": "只收觀測數字；『動力影響』『上升氣流較強』都寫成研究者的解讀，不寫成量到的；12／1 月是 2007–2014 多年月平均，取樣緯度差 3.1°；季內下降另有南半球光達與其他衛星佐證，但 SOFIE 觀測緯度季內漂移，不延伸成年際趨勢；『一半左右』只能配原文兩個數字出現，不寫成精確倍數。",
+      "source_ids": [
+        "E71-S003"
+      ],
+      "source_locator": "F45-S001 表 1 與其後段落；第 3.2 節；第 3.3 節第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.5）：南北雲高、冰含量、季內下降與 12／1 月比較合計。與 F45-001 同篇合計 1.0（作者 1.25）：單一論文、單一研究群，且論文主旨是作者自己的新成核假說，觀測部分是重新整理 SOFIE 資料，不給到 still_missing 第 1、2 項合計的 1.75。E70-014 是 SBUV 的南北『長期趨勢』差異，本條是雲高與季內演變，不重疊。 原提案 F45-002（目標 C14-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V48（2026-11-12）改字後收；數字相符；把『上升氣流較強』改回研究者的解讀，補取樣緯度條件，並把 F45-001 的雲高與冰含量對比併進來。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一種雲，到了地球另一端就長得更高、更善變。",
+        "visual": "南北兩個極區並排的高度剖面，南半球的雲層隨日曆一格格下降。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "E71-005",
+      "question": "南半球中緯度有人看過夜光雲嗎？那裡夠冷嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "sky.southern_midlatitude_nlc_rio_grande_transport",
+      "answer_target": "有，但那裡其實不夠冷。阿根廷火地島 Río Grande（南緯 53.8°）的光達從 2017 年起七個夏天，在 523.7 小時的觀測裡有 33.8 小時看到夜光雲，共 19 次，平均高 83.3 公里，出現率約 6%（表 4；摘要寫 7%），與北半球同緯度相當；這是南極以外，南半球第一批用光達量到的夜光雲。可是沒有雲的夜晚，82–85 公里的平均溫度一般在 170 K 以上，比成冰需要的高 20 K 以上，研究者認為當地一般不利成冰。他們的解釋是半日潮的南北向風把冰晶從南極緯度往北送；另一個可能是高空水氣變多（包括越來越多的火箭發射），但跟火箭有沒有直接關係，作者說要等模式研究確認。",
+      "scope": "出現率以表 4 的 6% 為主、註明摘要寫 7%，不自行解釋差異；輸送與水氣增加兩種解釋並列，火箭只寫『可能、待證』，不說火箭造成；不把一站七季推成南半球中緯度通則。",
+      "source_ids": [
+        "E71-S004"
+      ],
+      "source_locator": "F45-S002 摘要；第 3.3 節末段；表 4；第 4.3 節火箭段；第 5 節第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.5）：同一站七季的觀測合計。IAP 研究網（Baumgarten 共同作者）封頂內，見 non_author_reviews 的分組。 原提案 F45-003（目標 C14-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V48（2026-11-12）改字後收；數字相符；刪掉作者自加的『門檻不同』，補回原文與輸送並列的水氣解釋，避免把輸送說成唯一原因。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在不可能結冰的高空看到冰雲——答案是冰是風從南極吹來的。",
+        "visual": "南美洲尖端地圖，Río Grande 標點，南方南極冷區箭頭隨潮汐往北推。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "E71-006",
+      "question": "夜光雲能跑到多南（北半球）？德國南部看到的那次是怎麼回事？",
+      "domain": "weather_sky",
+      "mechanism_key": "sky.midlatitude_nlc_planetary_wave_advection_germany",
+      "answer_target": "靠風送過去，而且那晚當地也異常冷。2016 年 7 月 18/19 日，德國南部北緯 48.8° 的光達量到一片明亮的夜光雲，位在 79.5–82.8 公里、低於 150 K 的冷區上部。當天一個約兩天週期的行星波讓 82 公里高的風平均約每秒 22 公尺、主要往南吹，把極區的冷空氣帶到中緯度；當晚最冷處比衛星量的 7 月平均冷了近 30 K、低了 6 公里，而這裡平常的溫度在 170 K 以上。研究者結論：冰晶不是在當地生成，而是從北方被風送來，在這片冷區裡還能存活、長大，並被困在一層薄薄的高度裡。",
+      "scope": "單一個案；不寫成中緯度夜光雲增加的證據；前言轉述的 42° N 最低紀錄不收；『冷空氣南下讓當地異常冷』與『冰晶是輸送來的』兩件事都要說，不說『不是當地變冷』；讀的是作者接受稿。",
+      "source_ids": [
+        "E71-S006"
+      ],
+      "source_locator": "F45-S004 摘要；第 3 節 NLC 層段；第 5 節每日風速段；第 6 節 SABER 比較段；第 7 節",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：單一個案，結論『輸送而非在地生成』與 F45-003 重複；IAP 研究網（共同作者 Stober）合計封頂 2.0 已用滿（E70-009 0.5＋E70-010 0.5＋F45-003 0.5＋本條 0.25＋F45-005 0.25）。 原提案 F45-004（目標 C14-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V48（2026-11-12）改字後收；數字相符；改正『不是那裡變冷』的反向說法（原文是極區冷空氣流入、當地異常冷，但沒有讓冰晶生成的高度結構）；因同群封頂與結論和 F45-003 重複，計數降為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "中緯度看到夜光雲：那晚那裡真的冷得異常，但冰晶本身是從北方被風帶來的。",
+        "visual": "歐洲地圖，北海上空雲帶沿箭頭南移到巴伐利亞；溫度剖面一條比平均低 30 K 的凹口。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "E71-007",
+      "question": "流星煙真的在高空裡嗎？有沒有直接抓到過？",
+      "domain": "weather_sky",
+      "mechanism_key": "sky.rocket_mass_spectrometer_meteor_smoke_particles",
+      "answer_target": "有人用火箭去量過，但結果還很模糊。德國研究者在 2018 年 4 月和 2021 年 10 月，於挪威 Andøya 的冬季高空回波研究活動中發射探空火箭，帶質譜儀量中氣層的帶電大粒子：85 公里以下抓到帶負電、達數千原子質量單位的粒子，85 公里以上則是可能剛從流星燒蝕出來的小建材；80.8 公里還有一種訊號，質荷比約 225、450、900、1800 一路成倍。成分和磁鐵礦、鐵橄欖石、鎂橄欖石相符，但研究者說質量無法明確辨認、不能排除其他物質，兩次飛行的整體結果也不明確。",
+      "scope": "春秋季飛行、不是夜光雲季節（前言說那時中氣層頂太暖、不會結冰），只說流星煙粒子存在、帶電；不說它們就是夜光雲冰晶的種子（種子仍只用 E70-008 的實驗室說法）；不說這是第一次在大氣中抓到流星煙；只依摘要、前言、表 1 與第 5 節首句。",
+      "source_ids": [
+        "E71-S005"
+      ],
+      "source_locator": "F45-S003 摘要；表 1",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：作者只讀摘要、前言與表 1，照 E70-013 只讀摘要的先例封頂 0.25；PMWE 活動由 IAP 發起協調、IAP 的 Strelnikov 是計畫主持人與共同作者，列入 IAP 研究網封頂。 原提案 F45-005（目標 C14-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V48（2026-11-12）改字後收；數字相符；補『質量無法明確辨認、整體結果模糊』與飛行季節不結冰的條件，不能說成冰的種子；只讀摘要層級，計數降為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "流星燒剩的灰真的飄在 85 公里高，火箭把它抓了下來。",
+        "visual": "探空火箭剖面，質譜圖上幾個成倍排列的峰。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "E71-008",
+      "question": "馬祖的「藍眼淚」季節，海裡會發光的只有夜光藻嗎？",
+      "domain": "海洋",
+      "mechanism_key": "ocean_glow.matsu_blue_tears_luciferase_genes_not_only_noctiluca",
+      "answer_target": "不只。海洋大學團隊 2016 年 6 月到 2017 年 7 月在馬祖南竿周邊出了六個航次，不靠顯微鏡認形狀，而是去找發光要用的那個酵素——螢光酶——的基因。2016 年 6、7 月的樣本裡，好幾種渦鞭毛藻都在表現這個基因，讀數最多的是夜光藻。照螢光酶基因的組成，2016 年 7 月和 2017 年 5、7 月以夜光藻為主；2016 年 8、9 月夜光藻的比例大幅下降，換成其他帶有發光基因的渦鞭毛藻，例如 Alexandrium affine、Ceratium fusus。作者的結論只到『夜光藻不是馬祖周邊唯一會發光的渦鞭毛藻』；他們也寫明這個方法不能定量，每種藻有多少、跟藍眼淚有什麼關係，還要再研究。",
+      "scope": "只講『同一片海、不同月份，帶著發光基因的藻換了誰』；不說哪一晚、哪一片藍光是哪種藻發的，不說誰比較亮或比較多（基因組成不是細胞數，也不是亮度）。不講觀賞季節、地點、下水或安全。不講『夜光藻的螢光酶和結合蛋白在同一個基因』（那是前言引用）。前言的藍眼淚 4–8 月、夜光藻 16–27°C、『7 月後的藍光不知道是誰發的』都不是本研究量測，不入片。",
+      "source_ids": [
+        "E71-S007"
+      ],
+      "source_locator": "F47-S001 摘要；3.2；3.4 與表 2；4 討論末兩段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 1.0）：單一研究、單一地點、一年多，作者明言方法不能定量；『多種藻都在表現 lcf、夜光藻讀數最多』與『夏末換成別的藻』是同一個方法的同一個結論，合計 0.5，和上一輪 E70-030、E70-032 等單一原研究主結果的給法一致。作者另算的 0.25（螢光酶與結合蛋白同一基因）是前言引用，不算；組出近全長 lcf 只是技術結果，對觀眾沒有新結論，不算。研究群：Shih／Tsai／Kang（國立臺灣海洋大學）目前池中沒有其他來源（pool 的 Ke／Tsai 2020 是發光菇，不同群）；日後補 Tsai 等 2018 MPB、Lee 等 2021 這一群，含本條合計封頂 1.0。 原提案 F47-001（目標 C19-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V50（2026-11-12）改字後收；數字、月份與物種名都在原文；把前言引用從結果中拿掉，『不一定』改成原文能撐住的『不只』加上『還不能定量』，題目從『全都是夜光藻嗎』改成不暗示能分出每晚光源的問法；計數 1.0→0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "台灣人熟悉的藍眼淚，那片海裡會發光的不只夜光藻；夏末帶著發光基因的換成別的藻。但誰發了多少光，科學家還沒算出來。",
+        "visual": "馬祖南竿位置與採樣點示意；橫向月份條（2016-07、08、09、2017-05、07），夜光藻與『其他發光藻』兩種色塊的相對比例只畫高低，不畫數字；角落常駐字『基因組成，不是亮度』。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "E71-009",
+      "question": "一顆夜光藻細胞的一閃有多快？可以一直閃嗎？",
+      "domain": "海洋",
+      "mechanism_key": "ocean_glow.noctiluca_flash_action_potential_ms_timecourse_fatigue",
+      "answer_target": "以毫秒計，而且閃太密會累。1967 年，Eckert 在 Woods Hole 把單一顆夜光藻（論文寫 Noctiluca miliaris）吸在玻璃吸管口、用電流刺激、記錄每一閃的形狀：光來自細胞質裡許多微小的發光胞器，由細胞裡的電訊號（動作電位）觸發。用電極讓整顆細胞同時觸發時，一閃從剛看得到到最亮約 14 毫秒，接著是一段約 50 毫秒的快速衰減，之後還拖著一段暗得多、慢得多的餘光；如果是讓電訊號從一點傳開，它繞過半個細胞就要 5–10 毫秒，整閃也跟著變慢。每 10 秒以上刺激一次，一閃一閃的亮度差不多，只是長時間會慢慢變弱；間隔縮成 1 秒，就一閃比一閃暗，改回 10 秒又亮回來。各顆細胞的耐力差很多：有一顆閃了 1,300 多次，亮度都沒有掉超過 25%。",
+      "scope": "1967 年實驗室研究：單細胞、電流刺激（不是水流或浪）、20–24°C，14 毫秒是 23°C 同步觸發的一筆示例紀錄；1,300 次是單一個體。物種寫『一種夜光藻（論文寫 Noctiluca miliaris）』，不說成馬祖或台灣的那一群。不說細胞裡有『上萬個』發光胞器。不和 E70-033 的 Lingulodinium『只能連閃 1–4 次』並列比較（不同物種、不同刺激、後者是引用）。不把這裡的微光源說成 E70-029 的 scintillon（本來源沒這樣寫）。",
+      "source_ids": [
+        "E71-S008"
+      ],
+      "source_locator": "F47-S002 摘要；前言第 1 段；方法 General Procedures；Experimental 第 1 段；Stimulus Repetition Rate；Factors Which Influence Shape and Duration of the Flash",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：同一個 1967 年實驗。『發光是電訊號觸發的』已在 E70-030（液泡膜去極化開啟質子通道），『連閃會累、要等恢復』的概念已在 E70-033，本條新增的只有毫秒級時程與刺激間隔的影響，合計 0.5。研究群：Eckert（Syracuse／MBL）池中無其他來源；日後補 Eckert & Reynolds 1967、Eckert & Sibaoka 1968 全文，含本條合計封頂 1.0。 原提案 F47-002（目標 C19-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V50（2026-11-12）改字後收；OCR 數字逐一對上上下文，皆正確；改正同步／傳導觸發被接成同一條時間線、『細胞表面』、『每閃一樣亮』與『上萬個小燈』；物種照原文寫 N. miliaris；計數 0.75→0.5（電觸發與疲乏概念池中已有）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "浪花裡的一點藍光，是一顆細胞在百分之一秒左右亮起又暗下；閃太密它會累，休息幾秒又能再亮。",
+        "visual": "細胞剖面示意：電訊號從刺激點沿細胞擴散、小光點依序亮起；下方時間軸只標 14 ms 與約 50 ms；兩列閃光條示意 10 秒與 1 秒間隔的亮度變化。不畫具體光點數量。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "E71-010",
+      "question": "站在船上往下看海，看到的光有多少是水面反射的天空？",
+      "domain": "海洋",
+      "mechanism_key": "ocean_color.above_water_sky_reflection_share_baltic",
+      "answer_target": "不一定，但不少。波蘭科學院海洋所 1999 年 9 月 10 日在波羅的海開闊海域，把兩支感測器裝在船頭、離鉛直 15° 一支朝天一支朝海，邊開船邊量；再用菲涅耳反射算出水面反射的天光，從總光裡扣掉，求『水裡出來的光』占『往下看到的總光』多少。結果四個點裡，這個比例的最高點落在綠光：一個點約 40%，另外三個點超過 60%。也就是說，連水最占上風的綠光，在一個點仍有一半以上來自水面反射，其他點也還有一部分；作者認為差別來自各點水質不同。",
+      "scope": "只講這一次波羅的海、一天、四點、近鉛直視角、晴偶薄霧的結果；40% 與 60% 以上是『水裡出來的光』占比光譜的最高值（在綠光），不給其他波段的數字；不說『反射占四到六成』；不推到藍色大洋、不同天空或斜看；不說『海的藍大部分是倒影』也不說『不是倒影』；不得與 F51-002 的 0.028 放在同一句互相推算。",
+      "source_ids": [
+        "E71-S010"
+      ],
+      "source_locator": "F51-S001 Methods（tilt 15°）、Table 1、p.260『rises from 40% at point A to above 60% at other points』、Conclusions／Fig. 9",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：單一研究、一天、一個主數字；Fig. 9 與歷年平均『大致相符』是同篇佐證，不另加 0.25。轉折一用它只能到『兩邊都有份』。 原提案 F51-001（目標 C19-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V54（2026-11-12）改字後收；40%／>60% 是原文直接寫的數字，但它是 Luw/Lu 的光譜最大值（在綠光），作者漏了『最大值』，又把 1 減比例寫成『四成到六成是反射』，與原文三點反射不到四成不符；一天一片陸緣海，0.75 高估，降為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "倒影不是沒有份：在這片海，往下看到的綠有一半上下來自水面",
+        "visual": "船頭吊架上兩支感測器一上一下（15°）；畫面把往上的光拆成兩條：水面反射（天空色）與水裡出來（海色），綠光處長條各占約一半",
+        "seconds": [
+          50,
+          70
+        ]
+      }
+    },
+    {
+      "id": "E71-011",
+      "question": "想拍到海『自己』的顏色，為什麼要避開太陽方向、斜斜往下拍？",
+      "domain": "海洋",
+      "mechanism_key": "ocean_color.phone_rrs_view_angle_minimizes_glint",
+      "answer_target": "因為水面的倒影拿不掉，只能減少。手機 app HydroColor 的作者規定：拍水面要對著離太陽方位 135°、離鉛直 40° 的方向，為的是把水面反射壓到最小；作者用模式算出，在晴朗無雲、風速低於約每秒 5 公尺時，這個角度下水面把天空亮度反射回來的係數約 0.028，app 再另拍一張天空、按這個係數扣掉。",
+      "scope": "0.028 是作者採用的模式值（HydroLight），只能說『晴朗無雲、微風、這個角度下約 0.028』；它是『天空亮度被反射的比例』，不能說成『倒影占你看到的光的 2.8%』；不與 F51-001 的 40%／60% 放在同一句互相推算；手機對輻射計的 18%／16%／26% 中位誤差不進片（那是儀器一致性，不是海色）；不給任何拍攝以外的建議。",
+      "source_ids": [
+        "E71-S011"
+      ],
+      "source_locator": "F51-S002 Section 2（Eq. 1；135°／40°；ρ≈0.028；『surface reflection cannot be eliminated, it can be significantly reduced』）；Results（median percent error 18/16/26%）",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：留下的只有方法規定與引用的模式值；Boss 與 E70-S017 同人、ρ 來自 Mobley 網書體系，與 E70-019／E70-021 的網書背景併成同一網絡，三者合計 0.75。 原提案 F51-002（目標 C19-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V54（2026-11-12）改字後收；引文數字都對；但中位誤差是手機對同法儀器的一致性，離題，刪；ρ 的條件（無雲、風速 < 5 m/s、模式值）補上；Boss 與 E70-S017 同群（照呼叫方點名併群），降為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "倒影拿不掉，只能用角度把它壓小再扣掉",
+        "visual": "手機螢幕上的指引：先拍灰卡、再朝天、再朝水，太陽方位與 135°、40° 的扇形示意",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "E71-012",
+      "question": "一樣藍的海，就一樣清嗎？",
+      "domain": "海洋",
+      "mechanism_key": "ocean_color.same_forel_ule_colour_different_clarity_weddell",
+      "answer_target": "不一定。英國 Exeter 大學與義大利 OGS 的研究者在三趟大西洋航次和一趟南極威德爾海航次，用兩種 19 世紀發明的工具量海：把 30 公分白盤放下去看它在多深消失，再在約一半深度處對著盤上方的水比 21 色的 Forel-Ule 色階。結果同一個色號，威德爾海的白盤消失深度比大西洋淺約 37%——南極的海一樣藍，卻沒那麼透。作者說這反映兩地水裡的顆粒與溶解物的組成不同，所以用同一套『看顏色推浮游植物』的方法解讀兩地要很小心。",
+      "scope": "37% 是原文『around 37%』，只在兩條迴歸線的資料範圍內；人眼比色不是儀器；不推論任何海域的水質好壞或健康；Hudson 航海者一句是引言轉述，不另計。",
+      "source_ids": [
+        "E71-S012"
+      ],
+      "source_locator": "F51-S003 Method；Results（around 37% shallower）；Fig. 1（N=102、N=36）",
+      "premise_status": "screened",
+      "notes": "算 0.5：短報一個主結果。補 still_missing（5）『另一個研究群用 Forel-Ule 在現場量水色』；它直接加強轉折二（越藍不等於越乾淨、越清）：同色不同清。與 E70-024（Garaba 等：色號與透明度盤強相關）互補而不重複——那篇講同一地區內的相關，本篇講不同海區同色不同清。pool.json grep Secchi／Weddell：只有 E70-024，答案不同。 原提案 F51-003（目標 C19-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V54（2026-11-12）改字後收；數字、條件、主詞都對；把『不能』改回原文的『要小心』，補比色深度。0.5 維持。它也修正 E70-020 的讀法：最藍＝浮游植物最少只在同一海區內成立。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣的藍，南極的水比大西洋淺了三分之一多就看不到白盤",
+        "visual": "兩艘船並排：左大西洋、右威德爾海，同一個色號卡，白盤在右邊較淺處就消失",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "E71-013",
+      "question": "瑞典一條河的水七十多年來越變越褐，是什麼造成的？",
+      "domain": "地球與水",
+      "mechanism_key": "freshwater_color.boreal_river_browning_84pct_since_1940",
+      "answer_target": "研究者認為最主要是集水區種滿了雲杉。瑞典東南部 Lyckeby 河是飲用水源，自來水廠從 1940 年起每個工作日（2015 年後每週兩次）用比色器記河水顏色：1940 到 2016 年河水顏色加深了 84%，1980 年左右以後特別明顯；月平均最淡是 1955 年 1 月的 27，最深是 2011 年 10 月的 346（mg Pt/L）。統計模型裡，長期變化最能被集水區挪威雲杉材積大增解釋（代表有機土層累積），其次是酸雨的硫沉降減少；加上降水和氣溫，四者合計解釋 75%。這類『褐化』一般認為來自水中溶解有機碳與鐵增加（文中引前人研究）。",
+      "scope": "一條河一個測站；84% 不換算成倍數；原因是模型解釋力，不說『證明』，且模型抓不到最末期的高值；DOC 與鐵是引用背景；不延伸到氣候政策；不給任何飲水、游泳或水質安全建議。不算進 C19-01（海色題），見 reason。",
+      "source_ids": [
+        "E71-S013"
+      ],
+      "source_locator": "F51-S004 Abstract；2.1；Results（27–346 mg Pt/L、平均 115）；3.2（increased by 84%, 1.14 mg Pt/L per year）",
+      "premise_status": "screened",
+      "notes": "作為獨立核心 0.75（尚無題可用）；在 C19-01 算 0。 原提案 F51-004（目標 C19-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V54（2026-11-12）改字後收；內容正確（漏 2015 後頻率已補），可收成淡水褐化的獨立核心；但它回答的是『一條河的顏色為何隨時間變深、跟造林的關係』，不是『海為什麼是藍／綠／白／褐』。全文不提海；與海色唯一的接點『褐來自溶解有機物』是引言背景，且 E70-024 已涵蓋。離題，不算進 C19-01（雖然是上一輪 still_missing（4）點名的類型，點名的是『北方湖泊或波羅的海褐化』來撐『褐』這一色，本篇的主結果卻是造林歸因）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "顏色就是成分表：七十多年的河水色號，記下了森林長大",
+        "visual": "自來水廠一排比色管從 1940 到 2016 漸深；旁邊集水區的雲杉林逐年變密",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "E71-NA001",
+      "question": "月光下蜣螂把月亮本身遮住、只留月光偏振，還走得直嗎？（Dacke 等 2003 Nature；2004 Proc R Soc B）",
+      "existing_ids": [
+        "L70-005",
+        "L70-006"
+      ],
+      "source_ids": [],
+      "reason": "Europe PMC 列出的 2004 年免費 PDF 連結（europepmc.org/articles/PMC1691606?pdf=render）回 Cloudflare 機器驗證頁（403），未繞過、未改抓同一資料庫其他主機；JATS fullTextXML 回 500（掃描本）。2003 年 Nature 那篇 Unpaywall 列的 PDF 連結轉到出版社文章頁，只有付費取閱選項。只讀到 Europe PMC 的 2004 年摘要：遮住月盤或移動月亮位置大多不影響定向，有效線索是月亮周圍的偏振圖案；背緣區兩種感光細胞偏振敏感比 7.7 與 12.9。摘要不算全文。 原提案 F42-NA001。",
+      "reentry_condition": "Europe PMC 的頁面不再要求機器驗證，或作者機構典藏有公開全文時；Dacke 群已有 1.25 條，加入後同群合計不超過 1.75。",
+      "reading_status": "只讀到摘要"
+    },
+    {
+      "id": "E71-NA002",
+      "question": "鳥會用天空偏振當羅盤嗎？（Muheim 等 2016 PNAS：斑胸草雀十字迷宮）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 只列 doi 與 europepmc PDF；doi.org/10.1073/pnas.1513391113 轉 pnas.org 回機器驗證頁（403），未繞過；Europe PMC 同站 PDF 連結先前已回機器驗證，不再試。只讀到摘要：斑胸草雀在迷宮裡沒有用頭頂附近的偏振光當天空羅盤，偏振光反而影響了磁羅盤定向。摘要不算全文。Europe PMC 檢索（標題含 bird／songbird／pigeon 加 polarized／skylight、限開放取用）沒有其他鳥類行為實驗。 原提案 F42-NA002。",
+      "reentry_condition": "有開放全文的鳥類天空偏振行為實驗時，約 +0.5；Muheim 2016 的結論是『沒用頭頂偏振當羅盤』，可作反例。",
+      "reading_status": "只讀到摘要"
+    },
+    {
+      "id": "E71-NA003",
+      "question": "1592 年奧爾德尼沉船的方解石能當太陽石實物嗎？（Le Floch 等 2013 Proc R Soc A）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 無此 DOI；搜尋結果只有新聞轉述與 openpolar.no 的目錄紀錄（連線 TLS 憑證驗證失敗，未停用驗證、未換客戶端重送）；上一輪記錄出版社 403。沒有讀到原文。 原提案 F42-NA003。",
+      "reentry_condition": "出版社頁或作者機構典藏（如 HAL）在搜尋結果中出現可讀全文時，約 +0.5。",
+      "reading_status": "未讀到原文"
+    },
+    {
+      "id": "E71-NA004",
+      "question": "人在真實天空下靠海丁格刷找被遮住的太陽，實測準到幾度？",
+      "existing_ids": [
+        "L70-009",
+        "E70-002",
+        "E70-003"
+      ],
+      "source_ids": [],
+      "reason": "兩次 WebSearch 與 Europe PMC 檢索（TITLE:Haidinger；Haidinger AND sky／navigation）只找到 Horváth 群的天空量測與模擬（池中已有 E70-002、E70-003，且該群已達兩條上限）、Temple 2015 實驗室門檻（L70-009 已用）與 2026 年實驗室門檻研究，沒有任何真實天空下的觀察者實測。 原提案 F42-NA004。",
+      "reentry_condition": "出現非模擬、真實天空下受試者用海丁格刷估太陽方位的開放研究時，約 +0.75，轉折二才能從『前提允許』升級。",
+      "reading_status": "未找到"
+    },
+    {
+      "id": "E71-NA005",
+      "question": "DeLand & Thomas 2019 JGR〈Evaluation of Space Traffic Effects in SBUV Polar Mesospheric Cloud Data〉合法全文",
+      "existing_ids": [
+        "E70-013"
+      ],
+      "source_ids": [],
+      "reason": "Europe PMC REST fullTextXML（PMC7362299）回 500，沒有全文；未改抓 NCBI PMC 或出版社（同一資料庫換主機、上一輪已 403），E70-013 維持只讀摘要 0.25。 原提案 F45-NA001。",
+      "reentry_condition": "Europe PMC REST 對 PMC7362299 回得出 fullTextXML，或作者機構典藏出現公開 PDF 連結。",
+      "reading_status": "未讀到全文"
+    },
+    {
+      "id": "E71-NA006",
+      "question": "AIM／CIPS 新演算法在 2019 年 6 月看到北緯 37–42° 的夜光雲（Stevens 等）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "屬 Stevens 研究群（still_missing 要求優先非 Stevens），且搜尋結果給的 scholar.colorado.edu 下載連結回 403、aim.hamptonu.edu 新聞頁 TLS 憑證不符，皆未繞過。 原提案 F45-NA002。",
+      "reentry_condition": "有合法開放全文，且 Stevens／DeLand 群仍有封頂餘額（目前 2.25／3.0）。",
+      "reading_status": "未讀"
+    },
+    {
+      "id": "E71-NA007",
+      "question": "Taylor 等 2002〈Mesospheric cloud observations at unusually low latitudes〉（1999 年 6 月猶他州 Logan 約 42°N）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "USU 機構典藏頁只有摘要，PDF 指向 Elsevier；只讀到摘要，不算全文、不收。 原提案 F45-NA003。",
+      "reentry_condition": "出現開放全文。",
+      "reading_status": "只讀摘要"
+    },
+    {
+      "id": "E71-NA008",
+      "question": "美國西岸的夜光藻為什麼不會發光？",
+      "existing_ids": [
+        "E70-NA009"
+      ],
+      "source_ids": [],
+      "reason": "Valiadi 等 2019：Wiley pdfdirect 403、Europe PMC REST 500、pdf=render 403、Southampton ePrints 作者稿機器驗證。只讀到 Europe PMC 摘要（基因沉默、缺螢光素、細胞小 43%），只讀摘要不計。 原提案 F47-NA001。",
+      "reentry_condition": "日後 Europe PMC REST 或作者典藏能正常讀取全文時，約 0.75，可當『藍眼淚不是每個地方都有』。",
+      "reading_status": "只讀摘要"
+    },
+    {
+      "id": "E71-NA009",
+      "question": "渦鞭毛藻發光真的像『防盜警報』，是在叫掠食者的掠食者來嗎？",
+      "existing_ids": [
+        "E70-NA008"
+      ],
+      "source_ids": [],
+      "reason": "Huang 等 2024 Wiley 403；Prevett 等 2019 只到 Elsevier JavaScript 轉址頁，不拼網址。兩篇都只讀到 Europe PMC 摘要，不計。Prevett 屬 Selander 群，讀到也受同群封頂。 原提案 F47-NA002。",
+      "reentry_condition": "讀到 Huang 2024 合法全文（DTU 典藏若上傳作者稿）約 0.75。",
+      "reading_status": "只讀摘要"
+    },
+    {
+      "id": "E71-NA010",
+      "question": "單一個發光藻細胞要被多大的力碰到才會亮？",
+      "existing_ids": [
+        "E70-032",
+        "E70-033"
+      ],
+      "source_ids": [],
+      "reason": "Tesson & Latz 2015（Pyrocystis lunula，AFM）只讀到摘要；JEB 2004／2008 無可讀全文。 原提案 F47-NA003。",
+      "reentry_condition": "讀到 Latz 群任一篇全文時，約 0.5–0.75，讓 E70-032／E70-033 的門檻由引用升為原研究。",
+      "reading_status": "只讀摘要"
+    },
+    {
+      "id": "E71-NA011",
+      "question": "為什麼這些藻白天比較不亮？是光讓它們熄燈嗎？",
+      "existing_ids": [
+        "E70-031"
+      ],
+      "source_ids": [],
+      "reason": "Sweeney／Haxo／Hastings 1959、Morse 等 1989、Johnson 等 1985、Biggley 等 1969（日夜可刺激發光比可達 950:1）都只讀到摘要，PDF 403。 原提案 F47-NA004。",
+      "reentry_condition": "讀到任一篇 Hastings 群日夜量測全文時約 0.5；Biggley 1969 是 Seliger 群，另計。",
+      "reading_status": "只讀摘要"
+    },
+    {
+      "id": "E71-NA012",
+      "question": "藍眼淚季過了，夜光藻去哪裡？",
+      "existing_ids": [],
+      "source_ids": [
+        "E71-S009"
+      ],
+      "reason": "Lee 等 2021 是馬祖藻株的培養實驗，主題是食物變少時轉為有性生殖，與『海為什麼會發光』這個核心問題無關；發光句子全是前言引用。依『不為片長硬湊』不提。 原提案 F47-NA005。",
+      "reentry_condition": "若站主改題為『藍眼淚的一生』才考慮，約 0.5。",
+      "reading_status": "摘要、前言、方法全讀；結果討論略讀"
+    },
+    {
+      "id": "E71-NA013",
+      "question": "手機拍照能讀出水的 Forel-Ule 色號嗎？準不準？",
+      "existing_ids": [],
+      "source_ids": [
+        "E71-S014"
+      ],
+      "reason": "Mahama & Salama 2024 的確給了數字（照片色號對輻射計 R² 0.70、誤差 1.32 色號），但只在荷蘭三個湖與一處濕地、樣本少、沒有和衛星對照，觀眾收穫低；與 F51-002（手機 app 減倒影）擺在一起會變成兩段 app 評測，屬於為片長硬湊，故不提。 原提案 F51-NA001。",
+      "reentry_condition": "若此題改成以『人與手機怎麼量水色』為主線，或另有海上手機對衛星的開放全文時再用。",
+      "reading_status": "全文 XML 已讀摘要、研究區與 Citclops 結果段"
+    },
+    {
+      "id": "E71-NA014",
+      "question": "Citclops／EyeOnWater 的手機水色和衛星對得上嗎？",
+      "existing_ids": [
+        "E70-022",
+        "E70-024"
+      ],
+      "source_ids": [
+        "E71-S015"
+      ],
+      "reason": "Citclops 2020 是系統總覽，衛星對照的數字全是引用同群（Wernand、Van der Woerd、Busch）的其他論文；作者群與池中 E70-S019、E70-S020 相同，新事實接近 0。 原提案 F51-NA002。",
+      "reentry_condition": "讀到 Busch 等的 Ebro 三角洲衛星對照原文全文時。",
+      "reading_status": "只讀摘要與關鍵段，非全文"
+    },
+    {
+      "id": "E71-NA015",
+      "question": "水面反射的天光在一般情況下占總訊號多少？（大洋、不同天空與視角）",
+      "existing_ids": [
+        "E70-021"
+      ],
+      "source_ids": [
+        "E71-S016",
+        "E71-S017"
+      ],
+      "reason": "兩份可讀全文都沒有『倒影占比』的實測數字：Harmel 2023 是模式，引言那句『水裡的光只占一小部分』指的是衛星訊號（含大氣），不能挪到人眼看海；Lin 等 2023 只有 Lt＝Lr＋Lw 的式子。可能有數字的 Lee 等 2010（Optics Express）DOI 頁出現 Radware 機器驗證、Garaba & Zielinski 2013（JEOS）PDF 404 且摘要頁 403、DTIC AD1096849 403、CORE 346216189 403，均未繞過。依指示不用其他數字自行推算比例。 原提案 F51-NA003。",
+      "reentry_condition": "取得任一篇在藍色大洋、不同天空或視角下報告 Lr／Lt 或 Lw／Lt 的開放原研究全文。",
+      "reading_status": "Harmel 讀前兩頁＋關鍵字；Lin 讀引言＋關鍵字"
+    }
+  ]
+}

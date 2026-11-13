@@ -1,0 +1,272 @@
+{
+  "batch_id": "wave59-physics-20261111",
+  "created_on": "2026-11-12",
+  "scope": "行人的受控實驗；雨滴撞擊葉面、羽毛與土壤：替後備組題 C4-02（作者 F13，覆核 V16）與 C5-02（作者 F14，覆核 V17）補核心，兩組仍後備。",
+  "sources": [
+    {
+      "id": "P59-S001",
+      "url": "https://arxiv.org/pdf/physics/0506170v2",
+      "canonical_url": "https://arxiv.org/abs/physics/0506170",
+      "title": "The Fundamental Diagram of Pedestrian Movement Revisited（Seyfried、Steffen、Klingsch、Boltes）",
+      "publisher": "arXiv:physics/0506170v2（刊於 J. Stat. Mech. 2005, P10002）；德國于利希研究中心與伍珀塔爾大學",
+      "version": "2005-10-05（v2）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+      "reading_scope": "全文 13 頁讀完（圖只讀圖說與表）",
+      "locator": "Abstract；§2；§3.1–3.3；表（N、ρ、v）；Fig. 7；§5",
+      "summary": "在 17.3 公尺長、通道寬 0.8 公尺（不能超車）的環形走道裡，讓 1、15、20、25、30、34 人排成單列走，指示不要趕、不要超前。一個人獨走平均每秒 1.24 公尺；15 人時（每公尺約 0.87 人）每秒 0.90 公尺；34 人時（每公尺約 1.97 人）每秒 0.17 公尺——很慢，但還在走。每個人需要的前後長度與速度成直線關係（d＝0.36＋1.06 v，公尺與公尺每秒），連每秒 0.5 公尺以下也成立；作者觀察到密度高時前後的人會同步踏步（lock-step）。換算後，單列的速度—密度關係與平面上的文獻資料在每平方公尺 1–5 人之間意外地相符。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "arXiv 版，未對照刊本。受試者是學生與職員，被要求放鬆地走，作者自己說真實情境會更快、更擠。最高只到每公尺約 2 人，沒有做到停住；自動追蹤系統在高密度失準，結果用人工逐格判讀。 覆核 V16（2026-11-12）：limitations 的「沒有做到停住」改為「全文沒有談到停不停；量測段最高密度是每公尺 1.76 人（名目 1.97）；同一研究群後來的單列實驗在高密度出現 stop waves（見 F13-S018 §4.1 的轉述）」。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/arxiv-physics-0506170v2.pdf",
+        "sha256_prefix": "750bcce455643abe",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P59-S002",
+      "url": "https://arxiv.org/pdf/physics/0702004v2",
+      "canonical_url": "https://arxiv.org/abs/physics/0702004",
+      "title": "New insights into pedestrian flow through bottlenecks（Seyfried、Rupprecht、Passon、Steffen、Klingsch、Boltes）",
+      "publisher": "arXiv:physics/0702004v2（刊於 Transportation Science 43:395–406, 2009）；于利希研究中心與伍珀塔爾大學",
+      "version": "2007-12-03（v2）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+      "reading_scope": "摘要、§1–3.1、§4.3、§5 讀完；§3.2–4.2 定點讀",
+      "locator": "Abstract；§2 Experimental setup；Table 2；§4.3 The criteria for jam occurrence；§5 Summary",
+      "summary": "讓 20、40、60 人從起始密度每平方公尺 3.3 人的等候區走過一段 2.8 公尺長的窄道，寬度由 0.8 到 1.2 公尺、每次加 0.1 公尺，指示不要推、照平常速度。流量隨寬度近似線性增加（每公尺寬每秒約 1.6–2.3 人），沒有看到早先研究說的階梯式增加。窄道前排起隊時，隊伍裡的密度在每平方公尺 4–6 人之間起伏，窄道裡面卻穩定在約 1.8 人；作者據此指出，排隊在流入量還低於基本圖最大值所定的『容量』時就發生了，和多數規劃準則的假設相反。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "arXiv 版，未對照刊本。年輕受試者、實驗室、不准推；『低於容量就塞』是拿本實驗的密度去對照別人的基本圖得出的推論，作者列了三個可能原因但沒有檢驗。門前密度是作者所稱的初步分析。 覆核 V16（2026-11-12）：limitations 加「§4.3 原文先指出窄道內的 1.8 m⁻² 正是 SFPE 手冊與 Weidmann 基本圖的流量最大處、『看起來支持通行的判準』；作者的相反結論依賴『假設』單向流最大值在更高密度。同一研究群 2011 年走廊實驗（F13-S018 圖 6、7）單向比流量在約 1.5–2 m⁻² 最高」。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/arxiv-physics-0702004v2.pdf",
+        "sha256_prefix": "d01a83837d5d9644",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P59-S003",
+      "url": "https://arxiv.org/pdf/1102.4766v2",
+      "canonical_url": "https://arxiv.org/abs/1102.4766",
+      "title": "Transitions in pedestrian fundamental diagrams of straight corridors and T-junctions（Zhang、Klingsch、Schadschneider、Seyfried）",
+      "publisher": "arXiv:1102.4766v2（刊於 J. Stat. Mech. 2011, P06004）；伍珀塔爾大學、科隆大學、于利希研究中心",
+      "version": "2011-06-20（v2）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+      "reading_scope": "摘要、§1–2、§4.1–4.3、§5 讀完；量測方法的數學定義略讀",
+      "locator": "Abstract；§1；§2；§4.2–4.3；§5 Summary",
+      "summary": "最多 350 人參加的走廊（寬 1.8、2.4、3.0 公尺，28 次）與 T 形路口（7 次）實驗，用影像自動追蹤每個人的軌跡。不同寬度的走廊，換成每公尺寬的流量後在每平方公尺 3.5 人以下可合成同一條曲線。要做到高密度，只能把出口縮窄；而出口一縮，量測區（離出口 4 公尺）的流量—密度關係在每平方公尺約 2 人處出現不連續，作者解釋為出口限制流出造成的相變。T 形路口與直走廊的基本圖不能互相套用。文首整理文獻：各研究裡『擠到走不動』的密度從每平方公尺 3.8 人到 10 人都有，流量最大的密度從 1.75 到 7 人都有。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "arXiv 版，未對照刊本。實驗最高密度約每平方公尺 4 人，沒有到推擠或停住。文獻的 3.8–10 是作者引用別人的比較，不是本實驗量的。 覆核 V16（2026-11-12）：reading_scope 加「圖 6、7 由覆核 V16 轉圖檔目讀」；limitations 加「文獻比較另有流量最大的密度 1.75–7 m⁻²」。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/arxiv-1102.4766v2.pdf",
+        "sha256_prefix": "626edfa2c007a396",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P59-S004",
+      "url": "https://www.vfdb.de/media/doc/sonstiges/forschung/eva/tb_13_01_crowd_densities.pdf",
+      "canonical_url": "https://www.vfdb.de/media/doc/sonstiges/forschung/eva/tb_13_01_crowd_densities.pdf",
+      "title": "Static and Dynamic Crowd Densities at Major Public Events（Technical Report vfdb TB 13-01；Oberhagemann）",
+      "publisher": "德國消防協會（vfdb）技術科學諮詢委員會，技術報告英譯本",
+      "version": "2012 年 3 月第 1 版（48 頁）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+      "reading_scope": "第 3 節開頭到 3.2、4.1 開頭定點讀；其餘未讀",
+      "locator": "§3 Static densities and their potential hazard（p.6–9）；§4.1",
+      "summary": "德國有兩個法定的人群密度：集會場所的建築法規以每平方公尺 2 人作為疏散要求的基準；交通法規容許公車立位每平方公尺 8 人——報告說後者『在科學上站不住腳』。報告把動態擠壓過程的臨界密度定在每平方公尺約 6 人：超過之後，人幾乎無法再靠挪步吸收外來的力。每平方公尺 8 人以上只有在外力壓迫、無處可避時才會出現。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "協會的技術報告，不是主管機關的法規本文；法規條號沒有在讀到的段落列出。英譯本。報告舉了一場德國活動的車站量測值作例子，本題不引用個案。台灣主管機關的人潮密度基準仍未讀到。 覆核 V16（2026-11-12）：F13-019 的 notes 刪去關於英國運動場館安全局（SGSA）算例的一句；快取檔 sgsa-worked-example-b-cricket.pdf／.txt 不列為來源、不入池。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/vfdb-tb-13-01-crowd-densities.pdf",
+        "sha256_prefix": "52005c968ae4cc67",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P59-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7322030/fullTextXML",
+      "canonical_url": "https://doi.org/10.1073/pnas.2002924117",
+      "title": "How a raindrop gets shattered on biological surfaces",
+      "publisher": "PNAS 117(25):13901–13907（Kim、Wu、Esmaili、Dombroskie、Jung，康乃爾大學）",
+      "version": "2020 年刊本，開放取用（CC BY-NC-ND）；Europe PMC 全文 XML（PMC7322030）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200 取得 Europe PMC fullTextXML，python 去標籤成文字後逐段閱讀",
+      "reading_scope": "主文全文：Significance、Abstract、引言、Results 各小節（含 Fig.1–5 圖說與 Table 1）、Discussion、Materials and Methods 前四小節；SI Appendix 與影片未讀，原圖未目讀。",
+      "locator": "Results「Experiments」「Drop Impact on Biological Surfaces」「Drop Impact on Artificial Surfaces」「Decrease in Contact Time」；Table 1；Discussion 第 1–2 段",
+      "summary": "水滴以接近雨滴的速度落在羽毛、昆蟲翅與葉片等超疏水表面時，微米級凸起在攤開的水膜上引出 V 形波紋並使水膜破洞，水滴碎成小滴，接觸時間最多減少約七成。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "標本是館藏羽毛、昆蟲翅與摘下的葉；體溫與飛行穩定的好處是作者引用他人研究的推論，本文未量；帶孢子的碎滴只在 SI 提到，未讀。池中沒有同一網址或 DOI。 覆核 V17（2026-11-12）：summary 改：「接觸時間最多減少約七成」後加「（相對理論毛細接觸時間；定量在人工超疏水表面上，Fig.5 為人工表面 I、半徑 2 mm）」；補 Table 1 的凸起高度範圍 8–60 微米；羽毛取自史密森尼博物館提供的北方鰹鳥遺體；水滴半徑正文寫 1.1–2.0 mm、方法段寫 1.2–2.0 mm。",
+      "author_cache": {
+        "file": "f14src/kim2020-PMC7322030.xml",
+        "sha256_prefix": "8ad121272abd4d55",
+        "text_file": "f14src/kim2020.txt",
+        "text_sha256_prefix": "407d6f31814eef2b",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P59-S006",
+      "url": "https://www.nature.com/articles/ncomms7083",
+      "canonical_url": "https://doi.org/10.1038/ncomms7083",
+      "title": "Aerosol generation by raindrop impact on soil",
+      "publisher": "Nature Communications 6:6083（Joung 與 Buie，麻省理工學院）",
+      "version": "2015 年刊本，開放取用",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）存期刊 HTML，python 去標籤成文字後逐段閱讀",
+      "reading_scope": "主文全文：Abstract、Introduction、Results 七個小節（含 Fig.1–4 圖說）、Discussion；Methods 與 Table 1 數值未逐項讀，補充影片未看。",
+      "locator": "Results「Aerosol generation from droplets hitting soils」「Delivery of materials…」「Aerosol-generation process」「Effect of porous structures…」「Characterization of aerosol generation」；Discussion 第 4–5 段",
+      "summary": "水滴打在會吸水的多孔表面時，底下困住的空氣形成氣泡、升到頂面破裂射出細水柱而成氣膠；約 600 次實驗畫出發生範圍：小雨到中雨、黏土類土壤會發生，砂土與大雨條件不發生。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池中 SRC-ba0ca00542395953 同一頁（舊集 S56 的來源清單，池內紀錄註明當時未表示讀過外站）。實驗室單滴；大尺度環境效應作者明說未驗證；未量細菌或氣味分子。 覆核 V17（2026-11-12）：author_cache 註明：nature.com 頁面重抓的 sha256 會變（今日為 e50d70d130847f34），以文字檔雜湊與關鍵句為準。summary 補：染料試驗用薄層層析板（TLC-C）在風管裡做；重複滴落是「10 秒週期時第二滴之後不再觀察到、5 分鐘週期每滴都有」，未寫表面種類；土樣噴濕後在 50 °C 烘三天；小雨與大雨的落速界線是每秒 4 與 7 公尺（引用文獻）。併入時與池中 SRC-ba0ca00542395953 合為同一來源，補上本次全文閱讀。",
+      "author_cache": {
+        "file": "f14src/joung2015.html",
+        "sha256_prefix": "e30651ec3c19209f",
+        "text_file": "f14src/joung2015.txt",
+        "text_sha256_prefix": "f45a430c5adb133d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P59-001",
+      "question": "人越排越密的時候，每個人會慢到什麼程度？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.single_file_required_length_linear_with_speed",
+      "answer_target": "在于利希研究中心的單列實驗裡，平均慢到每秒不到 0.2 公尺。研究者用椅子和繩子圍出一條 17.3 公尺長的環形走道，窄到不能超前，讓 1、15、20、25、30、34 個人排成一列走，並要求不要趕。一個人獨走平均每秒 1.24 公尺；15 人時每秒 0.90 公尺；34 人時（量測段裡每公尺約 1.8 人）每秒 0.17 公尺。把每個人前後佔的長度對速度作圖，在每秒 0.1 到 1 公尺之間是一條直線：速度每增加每秒 1 公尺要多約 1.06 公尺，截距約 0.36 公尺——連走得很慢時也成立，這一點出乎作者意料。作者從錄影看到的原因之一是：擠的時候前後的人會自己對上腳步，像行軍一樣同步踏步，有人把腳踩到隊伍中線的左右兩側，把空隙用到最滿。",
+      "scope": "受試者是學生與職員、被要求放鬆走，作者自己說一個人獨走的速度因此偏低。最高只做到量測段每公尺約 1.8 人；這篇沒有說人會不會停，旁白不得寫「擠成這樣也沒有停」——同一研究群後來的單列實驗在更高密度看到一停一走的波。0.36 公尺是直線的截距，不是量到的「站著不動所需長度」。arXiv 版未對照刊本。不得把單列的數字直接換算成每平方公尺幾人（原文的換算含一個假設的修正項）。",
+      "source_ids": [
+        "P59-S001"
+      ],
+      "source_locator": "§3.1–3.3；表；Fig. 7；§5",
+      "premise_status": "screened",
+      "notes": "算 1 條。C4-02 路線（甲）的第一份受控實驗全文，答『密度升高時速度怎麼變、會不會停』。去重：查『單列』『Seyfried』『基本圖』無同答案核心；X35 各核心講條紋、成行與門口，沒有密度—速度關係。 原提案 F13-016（目標 C4-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；C4-02 路線（甲）的第一份受控實驗全文。數字逐列相符，但作者答案的結論句「沒有停」原文沒有，而且與同一研究群後來的結果相反，刪掉並改問題；密度改用量測值。算 1 條（各人數下的速度 0.5、所需長度對速度的直線與同步踏步 0.5），同意作者的條數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人群不像車流會留安全距離然後停住：越擠就越小步、對上腳步，一直挪。",
+        "visual": "俯視的環形走道，人數由 15 加到 34，點與點的間距縮短、速度條變短；右邊一條直線圖。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "P59-002",
+      "question": "門口排起隊的時候，門裡面也一樣擠嗎？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.bottleneck_jam_forms_below_nominal_capacity",
+      "answer_target": "實驗裡不是：隊伍擠在門前，門裡面反而鬆。于利希與伍珀塔爾的研究者讓 20、40、60 人從同樣密度的等候區走過一段 2.8 公尺長的窄道，寬度由 0.8 公尺一次加 0.1 公尺到 1.2 公尺，要求不推、照平常速度。通過的流量隨寬度近似直線增加，每公尺寬每秒約 1.6 到 2.3 人，沒有出現早先研究說的「多一排人才跳一級」。窄道前排起了隊，初步分析是每平方公尺 4 到 6 人；窄道裡面卻穩定在每平方公尺約 1.8 人。作者由此認為真正卡住的是「進門那一下」：從鬆散的等候區或隊伍裡隨機起步，排不成窄道裡全速通過所需的整齊隊形。至於這算不算「還沒到容量就塞」，要看採信哪一張流量對密度的圖：手冊常用的兩張正好把最大流量放在每平方公尺 1.8 人，作者則依另外幾份研究主張最大值在更高的密度。",
+      "scope": "年輕受試者、不准推的實驗室情境。「低於容量就塞」是作者拿本實驗的密度對照別人的基本圖得出的主張，不是量到的，而且同一研究群 2011 年的走廊實驗（F13-018 的來源，圖 6、7）單向比流量在每平方公尺 1.5 到 2 人附近最高，並不支持「最大值在高得多的密度」；片中不得把「沒超過容量就會塞」當成結論。門前 4 到 6 人是作者所稱的初步分析。三個可能原因作者沒有檢驗。arXiv 版未對照刊本。P58-007 是准推的另一個實驗，不得混成同一組數字。",
+      "source_ids": [
+        "P59-S002"
+      ],
+      "source_locator": "Abstract；§2；Table 2；§4.3；§5",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：流量對寬度線性 0.5、門前 4–6 人對門內 1.8 人與『低於容量就塞』1。C4-02 路線（甲）的第二份受控實驗全文，也是不用事故案例時的第二個轉折。去重：查『瓶頸』『容量』『窄道』無同答案核心；X35-004 講門前柱子、P58-007 講推擠規則。 原提案 F13-017（目標 C4-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；數字相符，但作者把它當成 C4-02 不用事故案例時的第二個轉折，轉折句（「還沒到流量最大的密度就塞了」）恰好是這篇最站不住的一句：原文自己先承認手冊的基本圖支持通行的判準，結論靠一個假設；同一研究群四年後的實驗又不支持那個假設。改問題與答案，只留量到的事（流量對寬度線性、門前擠門內鬆、作者對入口的解釋）。算 1 條（流量對寬度 0.5、門前與門內的密度對比 0.5），作者算 1.5 條；角色由 turn 改為 segment。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "塞住不需要誰做錯事，也不需要人多到『超過設計』：窄口前的人自己就會疊起來，而窄口裡面其實還有餘裕。",
+        "visual": "同一張俯視圖：窄道前的點擠成深色一團，窄道內的點稀疏；旁邊一條流量曲線，標出『門內在這裡』『最大值在右邊』。",
+        "seconds": [
+          70,
+          90
+        ]
+      }
+    },
+    {
+      "id": "P59-003",
+      "question": "研究者想在實驗室做出很擠的人群，為什麼光是多找人還不夠？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.corridor_density_needs_exit_narrowing_transition",
+      "answer_target": "因為人會走掉，得把出口縮小才擠得起來——而出口一縮，量到的規律也跟著變。同一個德國研究群找了最多 350 人，在三種寬度的走廊做了 28 次、在一個 T 形路口做了 7 次實驗，用影像自動追蹤每個人的軌跡。不同寬度的走廊換算成每公尺寬的流量後，在每平方公尺 3.5 人以下可以合成同一條曲線。但要把密度往上推，只能縮窄出口；出口一縮，離出口 4 公尺遠的量測區裡，流量和密度的關係在每平方公尺約 2 人的地方斷開成兩段，作者解釋為出口限制了流出所造成的轉變。T 形路口量到的曲線也不能拿直走廊的來套。論文開頭整理的文獻顯示這個領域的分歧有多大：不同研究裡，人擠到走不動的密度從每平方公尺 3.8 人到 10 人都有，流量最大的密度也從 1.75 人到 7 人都有。",
+      "scope": "實驗最高只到每平方公尺約 4 人，沒有推擠；3.8 到 10 與 1.75 到 7 是作者引用的文獻比較，不是本實驗量的。「比流量在每平方公尺 1.5 到 2 人附近最高」是覆核目讀圖 6、7 得到的，寫稿若要用須再看圖並說明較高的密度是縮窄出口做出來的。arXiv 版未對照刊本。這個核心說的是受控實驗的極限，不得拿來暗示任何真實事故。",
+      "source_ids": [
+        "P59-S003"
+      ],
+      "source_locator": "Abstract；§1；§2；§4.2–4.3；§5",
+      "premise_status": "screened",
+      "notes": "算 1 條。C4-02 路線（甲）的第三份；它同時誠實交代不用事故案例的代價：受控實驗到不了『擠到極限』的密度。去重：無同答案核心。 原提案 F13-018（目標 C4-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；逐句相符。答案補上文獻裡「流量最大的密度 1.75 到 7」這一半——它正是 F13-017 那個主張懸而未決的原因，片中應該一起交代。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『每平方公尺幾人會出事』沒有一個實驗室量出來的數字——能安全做的實驗，到四人上下就是極限。",
+        "visual": "一條走廊，出口的門一格格縮窄，走廊裡的點變密；曲線在 2 的地方斷成兩段。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P59-004",
+      "question": "『每平方公尺幾個人』算擠？有沒有寫進規定的數字可以對照？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.density_reference_values_two_six_eight_per_square_metre",
+      "answer_target": "德國消防協會 2012 年的技術報告整理了三個數字。法規上有兩個：集會場所的建築規定用每平方公尺 2 人當作規劃疏散的基準；交通法規容許公車的立位到每平方公尺 8 人——報告直說後者在科學上站不住腳。報告自己提出的臨界值是每平方公尺約 6 人：到了這個密度，人幾乎沒有空間靠挪一步來化解旁人傳來的力。每平方公尺 8 人以上，只有在外力擠壓、無處可避時才會出現。",
+      "scope": "協會的技術報告（英譯本），不是法規本文，條號沒有讀到；是德國的數字。台灣主管機關的人潮密度基準仍沒有讀到。報告裡的個案量測不引用。不得寫成自保口訣或『幾人以下就安全』。",
+      "source_ids": [
+        "P59-S004"
+      ],
+      "source_locator": "§3（p.6–9）；§4.1 開頭",
+      "premise_status": "screened",
+      "notes": "算 1 條。上一輪要求兩條路都補的「主管機關或研究單位的人潮密度基準」；補到的是研究單位（德國消防協會）的整理，不是主管機關本文，也不是台灣的。去重：無同答案核心。（刪去原 notes 裡關於英國運動場館安全局算例的一句：那份算例沒有來源紀錄，「平地站席每平方公尺 4.0 人」是算例中管理者自選的值，不帶任何主張，不當來源。） 原提案 F13-019（目標 C4-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；逐句相符，答案與 scope 不改。算 1 條（法規上的 2 與 8 及報告對 8 的評語 0.5、報告自己的臨界值約 6 與理由 0.5）。作者 notes 裡提到的英國算例既沒有來源紀錄、也不進答案，照任務說明二擇一：刪去那一句；快取裡的 sgsa-worked-example-b-cricket.pdf 不算來源。片中用這個核心時不得變成「幾人以下就安全」的口訣。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "實驗做到 4、規劃用 2、危險從 6 開始——三個數字放在一起，觀眾才知道前面那些實驗站在哪裡。",
+        "visual": "一平方公尺的方格依序站進 2、4、6、8 個人的俯視剪影，各標上出處。",
+        "seconds": [
+          35,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P59-005",
+      "question": "雨滴打在羽毛、蝶翅和葉面上，為什麼常常不是整顆彈走，而是當場碎掉？",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "mechanism_key": "rain.microbump_shock_wave_shatter_contact_time",
+      "answer_target": "這些表面很不沾水，上面還有微米級的小凸起（文中量到的高度由連香樹葉的約 8 微米到蜻蜓翅的約 60 微米）。康乃爾大學的實驗讓半徑 1.1 到 2.0 毫米的水滴以每秒 0.7 到 6.6 公尺落在北方鰹鳥的羽毛、蜻蜓與蝶蛾的翅、連香樹葉上：高速時，攤開的水膜在每個小凸起後面拉出 V 形波紋，水膜破洞、洞長大相連，水滴碎成許多小滴。在人工的不沾水表面上可以定量：慢的時候水滴攤開、縮回、整顆彈起，接觸時間約 18 毫秒，和理論值 19 毫秒相近；速度超過一個門檻，接觸時間開始下降，和理論值相比最多少約七成。門檻速度隨凸起高度而定（凸起越高門檻越低），模型預測它與水滴大小無關。",
+      "scope": "標本是博物館提供的鳥遺體上的羽毛、館藏昆蟲的翅與摘下的葉，不是活的動物。接觸時間的定量是在人工塗層與微結構表面上做的（Fig.5 圖說：人工表面 I、半徑 2 毫米）；18 與 19 毫秒是半徑 1.7 毫米水滴的例子；「最多少七成」是相對理論接觸時間，片中不得寫成「羽毛上少了七成」。「減少熱量與動量傳遞，鳥比較不失溫、昆蟲比較不失穩」是作者引用其他研究所作的推論，本文沒有量體溫、受力或飛行。作者稱波紋為「類震波」，並說明它不是壓縮流體的真震波。補充資料與原圖未讀。",
+      "source_ids": [
+        "P59-S005"
+      ],
+      "source_locator": "Results 各小節、Table 1、Fig.1–2、5 圖說；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：高速下在生物表面碎裂的現象與成因 1 條；接觸時間下降與門檻看凸起高度 0.5 條（人工表面上的量測）。 原提案 F14-004（目標 C5-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；現象與數字對得上，改的是歸屬：作者的句子讀起來像七成是在羽毛蝶翅上量到的，原文的定量在人工表面；「幾十微米」對連香樹葉不成立。動量傳遞減少是推論、不是量測——這一點決定它在 C5-02 裡撐不撐得起轉折一，見該題。池中 I12013（薄餅狀彈跳）、I12002（撞擊後黏住）是別的研究與現象，網址與 DOI 池中皆無。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "挨雨的一方不只是被動承受：表面的小凸起把水滴弄碎，讓它更早離開。",
+        "visual": "由下往上看的水滴攤開示意：平滑不沾水面上整片縮回彈起；有小凸起的面上先出現一道道 V 形紋，再破洞、碎開。兩格下方各一條接觸時間的長短條。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P59-006",
+      "question": "雨滴打在乾土上，土裡的東西是怎麼跑進空氣的？雨越大噴得越多嗎？",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "mechanism_key": "rain.porous_soil_trapped_bubble_aerosol_window",
+      "answer_target": "靠的是水滴裡的小氣泡，而且雨太大反而不噴。麻省理工的高速攝影顯示：水滴打在會吸水的多孔表面，攤開得比水滲進去還快，底下困住的空氣變成一顆顆小氣泡；氣泡升到水滴頂面破掉，射出直徑幾十微米的細水柱，再斷成懸在空中的小滴。把螢光染料先滲進多孔的薄層板再晾乾，飛出去的小滴帶著染料。約 600 次實驗（16 種土壤、幾種多孔板與不同液體）畫出的範圍是：相當於小雨到中雨的落速、吸水性像黏土與砂質黏土的表面會噴；砂不噴，相當於大雨的條件也不噴。每 10 秒滴一滴，第二滴之後就看不到了；改成每 5 分鐘滴一滴，每一滴都噴——孔隙裡要先有空氣。",
+      "scope": "實驗室單滴試驗，土樣是烘乾的。染料試驗用的是薄層層析板，不是土；重複滴落那一組原文沒有寫是哪一種表面。作者自己列了限制：後來的雨滴會把氣膠洗掉、幾十微米的小滴沉降不慢，野外與大尺度的效應沒有量；也沒有量細菌或氣味分子，「下雨的味道」只在引言當動機提到。粉末與鬆散顆粒層上沒有看到氣泡，原因作者只作推測。「大雨不噴」是相當於大雨落速的單滴條件，不是在大雨裡量的。",
+      "source_ids": [
+        "P59-S006"
+      ],
+      "source_locator": "Results「Aerosol generation from droplets hitting soils」「Delivery of materials…」「Aerosol-generation process」「Effect of porous structures…」「Characterization…」；Discussion 第 4–5 段",
+      "premise_status": "screened",
+      "notes": "算 1 條：舊集 S56（池中 LEG-S56）已用一句話講過「小雨打在乾土上會噴出微小氣溶膠」，本核心只算新增的部分——氣泡怎麼來，以及大雨、砂、孔隙已濕都不噴的範圍。來源與 LEG-S56 所列的 SRC-ba0ca00542395953 是同一篇論文，那筆紀錄註明當時未讀外站；採用時把本次全文閱讀併入同一來源。 原提案 F14-005（目標 C5-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；機制與範圍都在原文上。兩句說過頭：染料「放在孔隙裡」會被讀成土壤，實際是層析板；「10 秒內再滴一滴就不噴了」原句是連續滴的第二滴之後。與已製作的 S56 重疊一句，作者已扣，算 1 條合理：S56 的池中紀錄沒有讀過這篇論文，這個核心等於把那一句補成有全文閱讀的核心，但不能再當成新話題的鉤子。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "被雨帶上天的東西不是被「打飛」的，是從水滴裡的氣泡噴出去的；所以雨更大、土更濕，反而沒有。",
+        "visual": "水滴剖面示意：底下一排小氣泡往上浮、頂面破掉射出細絲；旁邊一張「落速 × 土的吸水快慢」的格子圖，只有中間一塊亮起。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    }
+  ],
+  "not_added": []
+}

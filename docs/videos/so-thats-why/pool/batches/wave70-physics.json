@@ -1,0 +1,1804 @@
+{
+  "batch_id": "wave70-physics-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第二十輪從零研究的新長題：摩擦起電誰正誰負（C16-01）、撕膠帶的吱吱聲（C16-02）（作者 F38，覆核 V40）；史特拉第瓦里名琴（C17-01，作者 F39，覆核 V42），都留後備；另含 F36 的人眼偏振核心。",
+  "sources": [
+    {
+      "id": "P70-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10955862/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s44172-023-00132-w",
+      "title": "Celestial compass sensor mimics the insect eye for navigation under cloudy and occluded skies",
+      "publisher": "Commun Eng 2:82（2023）；Gkanias、Mitchell、Stankiewicz、Khan、Mitra、Webb（愛丁堡大學）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論）",
+      "locator": "摘要；Results「Cloudy skies」第 45 段（薄雲、碎雲影響不大，厚而均勻雲變差）；「Alternative compass models」第 55–57 段（太陽完全被遮時偏振羅盤比結合模型更準；最佳情況 0.59° RMSE）；Methods 第 78 段（薩丁尼亞、南非實測）",
+      "summary": "仿昆蟲背緣區做的八對光電二極體天空羅盤，在義大利與南非實測：薄雲或破碎雲層下估太陽方位影響不大，厚而均勻的雲層下變差；太陽完全被雲或樹冠遮住時，只用偏振的羅盤比加入亮度的模型更準。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "工程原型，不是動物；0.59° 是 36 組分析器、近晴天、局部參考的最佳情況，不可代表一般表現。 覆核 V39（2026-11-12）：limitations「0.59° 是 36 組分析器、近晴天的最佳情況」補「而且是 local reference（追蹤固定方向）的 RMSE，不是八組硬體估太陽方位」；片中不引。",
+      "author_cache": {
+        "file": "f36src/PMC10955862.txt（原始 PMC10955862.xml）",
+        "sha256_prefix": "51a99f001561a199",
+        "xml_sha256_prefix": "6405bf9d4601b9b9",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10374162/fullTextXML",
+      "canonical_url": "https://doi.org/10.1073/pnas.2304847120",
+      "title": "SkyPole—A method for locating the north celestial pole from skylight polarization patterns",
+      "publisher": "PNAS 120:e2304847120（2023）；Kronland-Martinet、Poughon、Pasquinelli、Duché、Serres、Viollet（艾克斯—馬賽大學）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論）",
+      "locator": "摘要；Discussion 第 25–26 段（不需時間、日期；需數小時觀測；用晴天或僅稍有雲的資料）",
+      "summary": "用偏振相機在馬賽屋頂拍天空偏振度影像，比較不同時刻的圖案隨太陽轉動，找出天北極位置，從而得到正北方向與觀測者緯度；不需要時間、日期或星曆，但每次估計需數小時觀測，且只用了晴天或僅稍有雲的資料。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "準確度數字只在圖 3，文字未給，本題不引用數值。",
+      "author_cache": {
+        "file": "f36src/PMC10374162.txt（原始 PMC10374162.xml）",
+        "sha256_prefix": "de9c02304cf714c0",
+        "xml_sha256_prefix": "8d6d3545a9e1ad4a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S003",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6441076/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41467-019-09461-x",
+      "title": "Quantifying the triboelectric series",
+      "publisher": "Haiyang Zou、Ying Zhang、Litong Guo 等，Zhong Lin Wang 研究群（喬治亞理工）／Nature Communications 10:1427（2019）",
+      "version": "期刊正式全文（PMC6441076，CC BY 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Zou Wang Quantifying the triboelectric series）結果列出 pmc.ncbi.nlm.nih.gov/articles/PMC6441076；Europe PMC REST（文件記載的 search 與 /{PMCID}/fullTextXML 端點）取全文 XML，python 去標籤成文字",
+      "reading_scope": "全文（引言、方法、表 1；未讀補充資料）",
+      "locator": "引言第 3 段（Wilcke 約十種、各家順序對不上）；方法末段（手套箱 20 ± 1 °C、1 atm、0.43% RH、超高純氮）；表 1（Viton −148.20、PTFE −113.06、Pigskin −30.10、Cast nylon 6 −18.35、Copy paper −18.35、Wood −14.05、buna-N/vinyl +2.95 µC/m²）",
+      "summary": "作者引述 1757 年 Wilcke 排出的第一張摩擦起電序列約有十種材料，並說因濕度、粗糙度、溫度、受力等不同，各家研究者排出的順序彼此對不上。他們讓每種材料在充超高純氮的手套箱（20 ± 1 °C、1 大氣壓、相對濕度 0.43%）裡反覆和液態汞接觸再分開，量轉移電荷密度，排成約 50 種材料的數字序列（表 1）。最負的是 Viton 氟橡膠 −148.20 µC/m²，PTFE −113.06（作為歸一化基準），豬皮 −30.10，尼龍 6 鑄件與影印紙都是 −18.35，船用夾板 −14.05；表尾的耐油丁腈／乙烯橡膠是 +2.95，接近零。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "數值只對「液態汞、乾燥氮氣」這個參考條件成立，不能拿去和傳統序列表比大小，也不能推成「尼龍一定帶負」；表 1 筆數是我解析 XML 得約 50 列，寫稿時以原表為準；Zhong Lin Wang 研究群合計封頂（見 F38-NA004）。 覆核 V40（2026-11-12）：summary 刪「1757 年」（Zou 原文無年份，1757 出自 F38-S002 的 Whilke）；「表尾的耐油丁腈／乙烯橡膠是 +2.95」改「表尾兩種為正：耐油丁腈橡膠 +2.49、食品級耐油丁腈／乙烯橡膠 +2.95」；「約 50 種」改「50 種」（表 1 解析 50 列）。",
+      "author_cache": {
+        "file": "stw20/f38src/zou2019.xml",
+        "sha256_prefix": "de56a6e61a6f4b18",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S004",
+      "url": "https://arxiv.org/pdf/2011.09338",
+      "canonical_url": "https://arxiv.org/abs/2011.09338",
+      "title": "Robust triboelectric charging of identical balloons of different radii",
+      "publisher": "Francisco Vera、Rodrigo Rivera、Manuel Ortiz（智利瓦爾帕萊索天主教大學物理所）、Francisco Antonio Horta-Rangel（墨西哥瓜納華托大學）／arXiv 預印本 physics.ed-ph",
+      "version": "arXiv:2011.09338v1（2020-11-18），2 頁；未找到期刊版",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Lacks Shinbrot Long-standing … pdf）結果列出 arxiv.org/pdf/2011.09338；curl 工具預設標頭 200，pdftotext",
+      "reading_scope": "全文（2 頁）",
+      "locator": "第 1 頁右欄末段至第 2 頁（直徑 10、20、25 公分；較大者帶負；三顆先擦頭髮後兩兩互擦）",
+      "summary": "教學研究者把同品牌、同材質的橡膠氣球吹成不同大小（實驗室常用直徑 10、20、25 公分）互相摩擦，結果吹得比較大、拉得比較緊的那顆帶負電；換過幾個品牌、也用小水球，極性都照這個規則。三顆氣球先在頭髮上摩擦全都帶負電後再兩兩互擦，也是大的那顆帶負。作者把這和更早「拉伸會改變起電」的研究連在一起。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "教學類預印本、未經同儕審查；只有極性、沒有電量或次數統計，只能當「同一種材料也有固定正負」的開場示範，計 0.5；文中 1910、1926 年的歷史實驗是轉述，不計。 覆核 V40（2026-11-12）：limitations 補「1757 的 Whilke 年份只在本篇，不得掛到 F38-S001」；計數改 0.25。",
+      "author_cache": {
+        "file": "stw20/f38src/balloons2020.pdf",
+        "sha256_prefix": "84451a6d4148d357",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S005",
+      "url": "https://repository.bilkent.edu.tr/bitstreams/1402e274-82f9-4057-9fdb-fe19900af020/download",
+      "canonical_url": "https://doi.org/10.1103/PhysRevMaterials.1.035605",
+      "title": "Dependence of triboelectric charging behavior on material microstructure",
+      "publisher": "Andrew E. Wang、Phwey S. Gil、Moses Holonga、Zelal Yavuz、H. Tarik Baytekin、R. Mohan Sankaran、Daniel J. Lacks（凱斯西儲大學 Lacks／Sankaran 研究群與土耳其 Bilkent 大學）／Physical Review Materials 1:035605（2017）",
+      "version": "期刊正式排版 PDF，Bilkent 大學機構典藏",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Wang Zhang Sankaran Lacks 2017 Physical Review Materials strained PTFE）結果列出 repository.bilkent.edu.tr 典藏頁 /full，頁上連結 bitstreams/…/download；curl 200，pdftotext",
+      "reading_scope": "全文（7 頁）",
+      "locator": "摘要；§III.B 與 Fig. 3（40、40、80 次實驗與平均電荷）；§III.C–D（XRD、micro-Raman 無差、孔洞與銀紋）",
+      "summary": "兩片同一批 PTFE：都不拉伸時互相接觸 40 次，每次一正一負、方向隨機，靜止片平均 +0.11 ± 0.19 nC、移動片 +0.13 ± 0.18 nC，都和零分不開；兩片都拉到 100% 應變時也一樣隨機。拿未拉伸對上拉伸 100% 的做 80 次，未拉伸片平均 −1.2 ± 0.11 nC、拉伸片 +1.2 ± 0.099 nC，原文說每一次都落在同一象限，與誰動誰不動無關。XRD 與 micro-Raman 看不出分子層級差別，唯一看得到的是拉伸後表面從奈米到微米的孔洞與銀紋。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "凱斯西儲大學新聞稿說「不是百分之百一致」，與論文 Fig. 3(c) 說法不同，寫稿照論文並註明；只測 PTFE；孔洞「主導」起電是研究者的推論。 覆核 V40（2026-11-12）：summary 補兩片都拉 100% 的平均 +0.048 ± 0.091 與 −0.065 ± 0.093 nC；「拉到 100% 應變」不得寫成「原長兩倍」；註明肉眼可見孔洞照片是 250–417% 應變。",
+      "author_cache": {
+        "file": "stw20/f38src/wang2017.pdf",
+        "sha256_prefix": "71b900ea6c909a57",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11839458/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41586-024-08530-6",
+      "title": "Spontaneous ordering of identical materials into a triboelectric series",
+      "publisher": "Juan Carlos Sobarzo、Felix Pertl、…、Scott Waitukaitis（奧地利科學技術研究所 ISTA，Waitukaitis 研究群；TU Wien、Max Planck 合作）／Nature 638:664–669（2025）",
+      "version": "期刊正式全文（PMC11839458，CC BY 4.0）；2025-10-29 更正只增列通訊作者",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（arXiv Sobarzo Waitukaitis identical materials）→ ISTA research-explorer 紀錄頁給 PubMed ID 39972227 → Europe PMC search 得 PMC11839458 → Europe PMC REST（文件記載的 search 與 /{PMCID}/fullTextXML 端點）取全文 XML，python 去標籤成文字",
+      "reading_scope": "正文、圖說、Methods、Extended Data 圖說全文；未讀 Supplementary Information",
+      "locator": "Fig. 1 圖說與正文第 2–4 段（8 塊、45 kPa、30 ± 2% RH、第五次左右成完美序列、2–10 次）；Fig. 2 與 Methods「Contact bias」（48 塊、一半先碰 100 次、碰過的總是帶負）；Fig. 3c–d 與 Methods「Series-forcing algorithm」；Fig. 4 與 Extended Data 8–9（XPS、LEIS、Raman、HD-SFG 無差；AFM 細部變平；粗約 1 µm 對 1 nm 的帶正）；結論段（heuristic, but not much more；mirage）",
+      "summary": "從同一大片 PDMS 切出 8 塊（1 × 1 × 0.3 公分），每次量測前都放電，在 30 ± 2% RH、22 °C、約 45 kPa 下兩兩接觸 5 次取平均。第一輪 28 對的結果幾乎隨機，排不成序列；同一組樣品在接下來幾天重做，隨機性逐日消退，通常第五次左右排成完美序列（最少 2 次、最多 10 次），每組新樣品排出的順序都不同。另取 48 塊、一半先互碰 100 次，碰過的對上沒碰過的總是帶負；照這個「接觸偏差」安排先後次數，能讓 8 塊排成研究者事先指定的字母順序。XPS、LEIS、Raman、HD-SFG 都找不到化學差異，只在 AFM 看到碰越多次、越細的高低起伏被磨平；刻意做粗（約 1 µm）的樣品對光滑（約 1 nm）的帶正。作者結論：考慮接觸歷史，摩擦起電序列可能是「有用的經驗法則，僅此而已」。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只測 PDMS 一種彈性體；作者推測其他高分子也常見，但明說需要更多實驗，對氧化物等不推論；與 F38-S006（Waitukaitis 為第一作者）同一人，兩者合計封頂 2.5；數字用原文的 ΔQ5 定義，不另換算。 覆核 V40（2026-11-12）：summary「能讓 8 塊排成研究者事先指定的字母順序」改「能讓 8 塊在量測時呈現指定順序的表象（appearance），改回一般順序重測就留不住（Extended Data Fig. 5）」；補潔淨室 46 ± 1% RH 重做也成序列；AFM 影像本身看不出差、要算 PSD；粗糙偏差原文為「tend to」；limitations 同人封頂由 2.5 改 2.0。",
+      "author_cache": {
+        "file": "stw20/f38src/sobarzo2025.xml",
+        "sha256_prefix": "05bc75f34fd6af22",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S007",
+      "url": "https://ora.ox.ac.uk/objects/uuid:18669258-350e-4c3c-9722-435986efce09/files/rx059c992d",
+      "canonical_url": "https://doi.org/10.1038/s43246-026-01228-4",
+      "title": "The role of adhesion in triboelectrification trends of charge polarity and magnitude",
+      "publisher": "Līva Ģērmane、Linards Lapčinskis、…、Jin-Chong Tan、Andris Šutka（拉脫維亞里加工業大學 Šutka 研究群與牛津大學 Tan 研究室）／Communications Materials（2026，Article in Press）",
+      "version": "已接受未編輯稿（Article in Press，CC BY-NC-ND 4.0），牛津大學 ORA 典藏",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Verners Sutka Smooth polymers charge negatively）結果列出 ora.ox.ac.uk 檔案連結；curl 200，pdftotext",
+      "reading_scope": "全文（30 頁，含 Fig. 4–5 與方法）",
+      "locator": "摘要；Fig. 4 段（分離力 11.15 ± 0.22 → 13.75 ± 0.20 N、電荷密度 −0.18 → −0.47 nC cm⁻²、接觸面積 2.11 倍）；Fig. 5 段（同配比 0.002、5:1 對 15:1 為 0.06 nC cm⁻²，是同配比 30 倍、5:1 對 10:1 的 6 倍）",
+      "summary": "把同一種 PDMS 的主劑與硬化劑配成 5:1、10:1、15:1，化學結構不變、只改交聯與黏性。對 ITO 接觸分離時三種都帶負，分離力由 11.15 ± 0.22 N 增到 13.75 ± 0.20 N，電荷密度由 −0.18 變成 −0.47 nC/cm²（越黏越負）。兩片同配比 PDMS 互碰幾乎不帶電（0.002 nC/cm²）；5:1 對 15:1 量到 0.06 nC/cm²，是同配比的 30 倍、5:1 對 10:1 的 6 倍；摘要說兩片黏性不同時，較黏的一片帶負。作者把原因歸於分離時化學鍵斷裂、帶電碎片轉移（引文獻），並用接觸力學算出 5:1 與 15:1 的真實接觸面積差 2.11 倍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "尚在 Article in Press，頁碼與數字可能在定稿時改動；作者的機制解釋多為引用前人，不計；Šutka 研究群另有 Verners 2022（只讀到摘要，未計）合計封頂；與 Sobarzo 都用 PDMS，但不能把兩研究的數字並列或相減。 覆核 V40（2026-11-12）：summary 補「對 ITO 是名義負載 10 N；接觸面積推算 2.11 倍、實測電荷 2.61 倍」；計數依 Article in Press 降。",
+      "author_cache": {
+        "file": "stw20/f38src/ora_sherrell.pdf",
+        "sha256_prefix": "b1a3ad701919eb38",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S008",
+      "url": "https://arxiv.org/pdf/1309.2578",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.112.218001",
+      "title": "Size-dependent same-material tribocharging in insulating grains",
+      "publisher": "Scott R. Waitukaitis、Victor Lee、James M. Pierson、Steven L. Forman、Heinrich M. Jaeger（芝加哥大學 Jaeger 研究群、伊利諾大學芝加哥分校）／Physical Review Letters 112:218001（2014）",
+      "version": "arXiv:1309.2578v2（2014-08-07 修訂）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Waitukaitis Jaeger Size-dependent same-material）結果列出 arxiv.org/pdf/1309.2578；curl 200，pdftotext",
+      "reading_scope": "全文（5 頁）",
+      "locator": "摘要；第 1–2 頁（ZrO2:SiO2、326 與 251 µm、流化 30 分鐘、真空自由落下）；第 2 頁（大 +1.8 × 10⁶ e、小 −2.3 × 10⁶ e、σ > 15、> 90 µm⁻²）；第 3 頁（熱釋光上限約 1 × 10⁻⁴ µm⁻²，低五個數量級）",
+      "summary": "同一工廠批次的氧化鋯—二氧化矽顆粒篩成大（平均 326 µm）、小（251 µm）兩群，用空氣流化混合約 30 分鐘後，讓顆粒在真空中自由落過兩片帶電銅板之間，用跟著落下的高速攝影機追每顆的偏移：大顆平均 +1.8 × 10⁶ 個基本電荷，小顆 −2.3 × 10⁶，總電荷守恆、比混合前多兩個數量級。若要用「被困住的電子」解釋，表面至少要有每平方微米 15（較實際的估計 90）個；用熱釋光量到的上限約每平方微米 1 × 10⁻⁴ 個，低了五個數量級，所以研究者說被困電子不是同材料起電的必要條件。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F38-S004 同一位第一作者，雖在不同機構，覆核可能併計同群上限，作者已把兩者合計封頂 2.5；只測一種陶瓷顆粒、一組大小比。 覆核 V40（2026-11-12）：limitations 封頂改「與 F38-S004 合計 2.0」；勿把結果外推到沙塵、火山灰。",
+      "author_cache": {
+        "file": "stw20/f38src/waitukaitis2014.pdf",
+        "sha256_prefix": "930dfd8b3badc5eb",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S009",
+      "url": "https://export.arxiv.org/pdf/0711.1341",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.100.014501",
+      "title": "Electrostatics in wind-blown sand",
+      "publisher": "Jasper F. Kok、Nilton O. Renno（密西根大學）／Physical Review Letters 100:014501（2008）",
+      "version": "arXiv:0711.1341 投稿版（30 頁雙倍行距）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Kok Renno Electrostatics in wind-blown sand arXiv）結果列出 export.arxiv.org/abs/0711.1341，頁上 /pdf/0711.1341 連結；curl 200，pdftotext",
+      "reading_scope": "全文",
+      "locator": "摘要；第 2–3 頁（Schmidt 等量到約 160 kV/m、小顆帶負大顆帶正、地面向上電場）；結果段（電力讓躍移顆粒濃度增加、飛得較低，與量測相符；>約 80 kV/m 顯著影響）",
+      "summary": "作者引述野外量測：中等風速的風吹沙中電場可達約 160 kV/m，且電場向上，表示跳躍的沙粒對地面帶負。他們把起電放進以物理為基礎的躍移模型，算出電力讓躍移沙粒濃度增加、飛得更貼近地面，與幾組近年量測相符，而傳統理論對不上。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "是模型論文，電場數字為引用他人量測；只計「研究者據此認為起電會改變風沙的高度」0.5。",
+      "author_cache": {
+        "file": "stw20/f38src/kok2008.pdf",
+        "sha256_prefix": "227d76870a4856d7",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S010",
+      "url": "https://www.arxiv.org/pdf/1501.03255",
+      "canonical_url": "https://doi.org/10.1103/PhysRevX.5.011002",
+      "title": "Electric Field and Humidity Trigger Contact Electrification",
+      "publisher": "Yanzhen Zhang、Thomas Pähtz、Yonghong Liu 等（中國石油大學〔華東〕、浙江大學海洋學院）／Physical Review X 5:011002（2015）",
+      "version": "arXiv:1501.03255v1（2015-01-14）；PRX 為開放期刊，未另比對正式版",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Electric field and humidity trigger contact electrification）結果列出 www.arxiv.org/pdf/1501.03255；curl 200，pdftotext",
+      "reading_scope": "全文（9 頁，含附錄）",
+      "locator": "§II 實驗 1–4（矽油中 r = 1 mm 玻璃珠、E = 2.5 kV/cm、烘乾不彈跳）；§III（潮濕氮氣同樣結果）；§V 與 Fig. 5（PE、PS、PTFE 不彈跳；PTFE 水膜 1–2 層；改質後接觸角 120° → 15° 會彈跳）；§I 與 §VI（Kamra 1971 石膏沙丘）",
+      "summary": "把半徑 1 毫米的玻璃珠放進充滿矽油、兩片帶電金屬板之間（E = 2.5 kV/cm），兩顆一樣的玻璃珠碰撞時交換大量電荷、總量守恆；先烘烤數小時去掉表面水分的玻璃珠就不再來回彈跳，換成潮濕氮氣處理也一樣會彈。疏水的 PE、PS、PTFE 不彈跳，PTFE 表面水膜不論濕度都只有一到兩層分子；把 PTFE 表面改成親水（接觸角約 120° 降到 15°）後就會彈跳。研究者據此認為：表面吸附的水裡的氫離子與氫氧根被外加電場推到兩端，接觸時在小水橋裡中和，分開後兩顆各留一種電荷；並用來解釋 1971 年 Kamra 只在雷雨接近時才看到沙丘冒火花的觀察（引述）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "離子身分是「研究者認為」；矽油中的實驗不等於空氣中摩擦；Kamra 的觀察是轉述不計；需要外加電場，不能推成「一般摩擦起電都靠水」。 覆核 V40（2026-11-12）：summary「先烘烤數小時去掉表面水分的玻璃珠就不再來回彈跳」補「（在兩電極間；論文沒有烘乾兩珠互碰的量測）」；E = 2.5 kV/cm 註明是實驗 4（垂直接觸面）與圖 1–3 的值。",
+      "author_cache": {
+        "file": "stw20/f38src/zhang2015prx.pdf",
+        "sha256_prefix": "f6a7f63d7c42d87c",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S011",
+      "url": "https://arxiv.org/pdf/1609.04639",
+      "canonical_url": "https://doi.org/10.1039/c6sm02041k",
+      "title": "Influence of humidity on the tribo-electric charging and segregation in shaken granular media",
+      "publisher": "André Schella、Stephan Herminghaus（Max Planck 動力學與自組織研究所，哥廷根）、Matthias Schröter（埃朗根）／Soft Matter 13:394–401（2017）",
+      "version": "arXiv:1609.04639v3（2016-12-13）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Schella Herminghaus Schröter humidity tribo-electric）結果列出 arxiv.org/pdf/1609.04639；curl 200，pdftotext",
+      "reading_scope": "全文",
+      "locator": "摘要；§II 方法（5–100 %RH、約 2000 顆、不鏽鋼容器）；§III 結果（<30 %RH 高度帶電、>80 %RH 幾乎不帶電；PS 在 50–70 %RH 降二十倍）；表 II 與 Fig. 4（符號與接觸角）",
+      "summary": "約 2000 顆高分子球在不鏽鋼容器裡上下搖，濕度可從 5% 調到 100%，搖完直接倒進法拉第杯量電荷：濕度低於約 30% 時強烈帶電，高於 80% 幾乎不帶電；轉折在哪個濕度、帶正或帶負都依材料而定，只有非常親水的顆粒會帶正。研究者也用這個濕度依賴去控制兩種顆粒搖晃後分層或混合。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池中濕沙題的 Herminghaus 研究群同一人，但不同主題；是顆粒對金屬容器，不是同材料互碰；PS 的「二十倍」只限 50 到 70 %RH 區間。 覆核 V40（2026-11-12）：刪 locator 與 limitations 的「PS 在 50–70 %RH 降二十倍」——那是引用 Nemeth 等的表面電阻資料，不是本研究的電荷；summary 補觀察 III「疏水 PS、PTFE 在 > 80 %RH 仍帶數十 nC」；帶正的是 PA、POM。",
+      "author_cache": {
+        "file": "stw20/f38src/schella2017.pdf",
+        "sha256_prefix": "e7953f8f0b72e309",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S012",
+      "url": "https://www.arxiv.org/pdf/1908.04204",
+      "canonical_url": "https://arxiv.org/abs/1908.04204",
+      "title": "Microphysical effects of water content and temperature on the triboelectrification of volcanic ash on long timescales",
+      "publisher": "Joshua Méndez Harper（Emory）、Leah Courtland、Josef Dufek、Julian McAdams（奧勒岡大學）／arXiv 預印本（第 2 版標題，2020-02-04）",
+      "version": "arXiv:1908.04204v2；期刊版未查證",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Méndez Harper Dufek triboelectrification volcanic ash）結果列出 www.arxiv.org/abs/1908.04204，頁上 /pdf 連結；curl 200，pdftotext",
+      "reading_scope": "全文",
+      "locator": "Key Points 與摘要；結果段（25 °C 下相對濕度增加 50% 平均電荷密度降近一個數量級；20–30 %RH 陡降）；討論（煙柱上方起電效率低）",
+      "summary": "在可控濕度與溫度的箱子裡讓微米級火山灰低能量碰撞：少量水就能讓火山灰帶的電少到約十分之一；25 °C 時相對濕度增加 50%，平均電荷密度降近一個數量級，20 到 30% 之間下降最陡；固定濕度下升溫也讓電荷變少。研究者據此認為，在煙柱上方濕潤、碰撞慢的地方，摩擦起電效率不高，可能解釋某些火山閃電的停歇。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "預印本第 2 版，期刊版是否改數字未查；是低能量長時間碰撞的實驗，不代表噴發口附近。 覆核 V40（2026-11-12）：summary「25 °C 時相對濕度增加 50%」補「變濕度實驗範圍 0–50% RH；表 1 列 20 °C、正文寫 25 °C，原文不一致」。",
+      "author_cache": {
+        "file": "stw20/f38src/mendezharper2020.pdf",
+        "sha256_prefix": "04ed95cfb00d1bca",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S013",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8153716/fullTextXML",
+      "canonical_url": "https://doi.org/10.1126/sciadv.abg7595",
+      "title": "Dynamics of contact electrification",
+      "publisher": "Mirco Kaponig、Andre Mölleken、Hermann Nienhaus、Rolf Möller（德國杜伊斯堡—埃森大學）／Science Advances 7:eabg7595（2021）",
+      "version": "期刊正式全文（PMC8153716，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Kaponig … Dynamics of contact electrification）結果列出 PMC8153716；Europe PMC REST（文件記載的 search 與 /{PMCID}/fullTextXML 端點）取全文 XML，python 去標籤成文字",
+      "reading_scope": "全文（未讀補充 note S1–S4）",
+      "locator": "摘要；引言末段（接觸數微秒內降到零點幾伏，斷開瞬間 1 µs 內到 3 V，40 mm 落下可到 10 V；隨撞擊速度增加；速度趨零回到 Harper／Lowell 預測）；Results（1 mm 金球、銅板、2 × 10⁻⁷ mbar；不論初始電荷都帶負）",
+      "summary": "直徑 1 毫米的金球在真空（2 × 10⁻⁷ mbar）中掉進平行板電容、在接地銅板上彈跳十幾次，時間解析度優於 1 微秒。接觸持續約 6 到 8 微秒，期間電位被拉到只有零點幾伏的接觸電位；但電接觸斷開的那一瞬間，不到 1 微秒就升到最多約 3 伏，從 40 毫米高落下的球最後可到約 10 伏。不論球進來時帶正、帶負或不帶電，第一次碰撞後都帶負，對先前電荷沒有記憶；電荷隨撞擊速度增加，速度趨近零時才回到教科書以功函數差算出的值。研究者認為是接觸區變形讓斷開瞬間的電容變大。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有金對銅一組金屬；「變形增加電容」是研究者解釋；說明連金屬接觸都不只照功函數，不推到絕緣體。 覆核 V40（2026-11-12）：「彈跳十幾次」改「超過 15 次」；補「金帶負、電位負零點幾伏，與金功函數高於銅的預期方向一致」。",
+      "author_cache": {
+        "file": "stw20/f38src/kaponig2021.xml",
+        "sha256_prefix": "486e873b534f5a0c",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S014",
+      "url": "https://www.numis.northwestern.edu/Research/Articles/2019/2019-Mizzi-Lin-PhysRevLett.pdf",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.123.116103",
+      "title": "Does Flexoelectricity Drive Triboelectricity?",
+      "publisher": "C. A. Mizzi、A. Y. W. Lin、L. D. Marks（西北大學材料系 Marks 研究群）／Physical Review Letters 123:116103（2019）",
+      "version": "期刊正式排版 PDF，作者研究群網站（numis.northwestern.edu）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Mizzi Lin Marks Does flexoelectricity drive triboelectricity）結果列出此 PDF；arXiv（pdf.arxiv.org/pdf/1904.10383）回 500、APS accepted 稿 403；curl 200，pdftotext",
+      "reading_scope": "全文（7 頁）",
+      "locator": "摘要；第 1 頁引言（電子、離子、帶電分子碎片三說）；模型段（單一凸點壓入與拉開時 ±1–10 V）",
+      "summary": "研究者提出假說：兩個表面的奈米凸點在壓入、拉開時彎曲不均勻，撓曲電效應會在凸點上產生 1 到 10 伏甚至更大的電位差，推動電荷分離；他們的單一凸點彈性模型算出這個量級，並說可以一併解釋黏滑時正負交替、電荷呈斑塊、同材料互碰也起電等觀察。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "純模型與假說，計 0.5，寫稿要用「研究者提出」；作者研究群網站上的正式版，不是第三方轉存，但 APS 本站 403 未能比對。 覆核 V40（2026-11-12）：limitations 補「numis.northwestern.edu 為通訊作者 Marks 研究群網站，算作者本人張貼，可接受」；計數降 0.25。",
+      "author_cache": {
+        "file": "stw20/f38src/mizzi2019.pdf",
+        "sha256_prefix": "ec2f4c3eb1a20f7a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S015",
+      "url": "https://arxiv.org/pdf/2106.01081v1",
+      "canonical_url": "https://arxiv.org/abs/2106.01081",
+      "title": "Observation of bottom-up formation for charged grain aggregates related to pre-planetary evolution beyond the bouncing barrier",
+      "publisher": "Felix Jungmann、Gerhard Wurm（德國杜伊斯堡—埃森大學 Wurm 研究群）／Astronomy & Astrophysics 650:A77（2021）",
+      "version": "arXiv:2106.01081v1",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Steinpilz Wurm Electrical charging overcomes the bouncing barrier arXiv）結果列出 arxiv.org/abs/2106.01081v1，頁上 /pdf 連結；curl 200，pdftotext",
+      "reading_scope": "全文",
+      "locator": "摘要；§2（不來梅落塔約 9 秒微重力、玄武岩球、容器內壁塗玄武岩球）；§4 討論（典型碰撞 2 cm/s、最快超過 4 cm/s、全部黏住；中性顆粒理論黏著速度約 1 mm/s）",
+      "summary": "在不來梅落塔約 9 秒的微重力裡，觀察次毫米玄武岩球（容器內壁也塗同樣的玄武岩球）互相碰撞帶電後的運動：顆粒互相吸引、碰撞、黏住，由下而上長成不規則小團；數百次碰撞沒有一次彈開。實測碰撞速度典型每秒 2 公分、最快超過 4 公分，全部黏住；摘要寫帶電顆粒在約每秒 10 公分仍會黏，而不帶電的顆粒理論上只有低於約每秒 1 毫米才黏得住。研究者認為這是行星形成早期越過「彈跳障礙」的一條路。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 Kaponig（F38-S011）同校不同研究群（天文物理 Wurm vs 表面物理 Möller）；「每秒 10 公分」與正文實測範圍不同，寫稿以正文為準；行星形成的推論不計。 覆核 V40（2026-11-12）：summary 補「玄武岩球直徑 500–600 µm，發射前搖 15 分鐘帶電；追蹤 13 團、59 次黏住的碰撞」；limitations「每秒 10 公分與正文實測範圍不同」改「每秒 10 公分是研究者修正二維速度低估後的估計」。",
+      "author_cache": {
+        "file": "stw20/f38src/jungmann2021.pdf",
+        "sha256_prefix": "74c2787ab2b376a1",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S016",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6645551/fullTextXML",
+      "canonical_url": "https://doi.org/10.1021/acsomega.7b01010",
+      "title": "Electricity on Rubber Surfaces: A New Energy Conversion Effect",
+      "publisher": "Thiago A. L. Burgo、Bruno C. Batista、Fernando Galembeck（巴西聖瑪利亞聯邦大學、坎皮納斯大學）／ACS Omega 2:8940–8947（2017）",
+      "version": "期刊正式全文（PMC6645551，ACS AuthorChoice）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Sow Lacks Sankaran strain-induced reversal … full text）結果列出 pmc.ncbi.nlm.nih.gov/articles/PMC6645551；Europe PMC REST（文件記載的 search 與 /{PMCID}/fullTextXML 端點）取全文 XML，python 去標籤成文字",
+      "reading_scope": "摘要與引言、結果前段",
+      "locator": "摘要",
+      "summary": "反覆拉伸、放鬆橡膠管，表面電位隨長度週期變化：矽膠拉長時失去電荷、放鬆時強烈帶負，天然橡膠拉長時帶正、放鬆時帶負；相對濕度由 65% 降到 27% 時振幅變小。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "沒有兩個表面的接觸，作者也說不符合摩擦起電特徵；只列 not_added。",
+      "author_cache": {
+        "file": "stw20/f38src/burgo2017.xml",
+        "sha256_prefix": "2ded76285b190f79",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S017",
+      "url": "https://arxiv.org/pdf/0706.3564",
+      "canonical_url": "https://arxiv.org/abs/0706.3564",
+      "title": "Imaging the stick-slip peeling of an adhesive tape under a constant load",
+      "publisher": "Pierre-Philippe Cortet、Matteo Ciccotti、Loïc Vanel（法國里昂高等師範學院物理實驗室、蒙彼利埃第二大學）／arXiv 預印本（期刊版未查證）",
+      "version": "arXiv:0706.3564v1（2007-06-25）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（adhesive tape peeling stick-slip arXiv Ciccotti Santucci Vanel）結果列出 arxiv.org/pdf/0706.3564；curl 200，pdftotext",
+      "reading_scope": "全文",
+      "locator": "摘要；§3 方法（8000 或 16000 fps）；§7.1 與結論（定負載下黏滑只是暫態；高平均速度時滑相比黏相長）",
+      "summary": "用每秒最多 16000 格的高速攝影機第一次直接拍到膠帶剝離點在黏滑時的運動：在固定掛重（定力）下，黏滑只是暫時出現的現象；黏與滑兩相的時間長度相近，平均剝離速度高時滑相反而比黏相長；黏滑之間的速度切換依平均速度可急可緩。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "期刊版未比對；與 F38-S016–S018 同屬里昂／蒙彼利埃 Ciccotti–Vanel–Santucci 研究群，合計封頂 2.25。",
+      "author_cache": {
+        "file": "stw20/f38src/cortet2007.pdf",
+        "sha256_prefix": "ac52b6fbaf14c479",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S018",
+      "url": "https://arxiv.org/pdf/1509.02799",
+      "canonical_url": "https://arxiv.org/abs/1509.02799",
+      "title": "Multi-scale stick-slip dynamics of adhesive tape peeling",
+      "publisher": "Marie-Julie Dalbe、Pierre-Philippe Cortet、Matteo Ciccotti、Loïc Vanel、Stéphane Santucci（里昂高師、里昂一大、巴黎南大學 FAST、ESPCI）／arXiv 預印本（搜尋結果說已刊於 PRL 2015，期刊卷頁未在全文核對）",
+      "version": "arXiv:1509.02799v1（2015-09-09）",
+      "accessed_on": "2026-11-12",
+      "read_via": "同 F38-S015 的搜尋結果列出 arxiv.org/pdf/1509.02799；curl 200，pdftotext",
+      "reading_scope": "全文（含圖說）",
+      "locator": "摘要；第 1 頁（斷裂能隨速度減小時出現不穩定）；第 2 頁（3M Scotch 600、θ ≈ 90°、300 000–525 000 fps；Va = 0.35 ± 0.05 m/s、Vd = 5.6 ± 1.4 m/s）；結果（微黏滑振幅與週期不隨 L 變；彎曲能釋放）",
+      "summary": "研究者說：當撕開膠帶所需的斷裂能隨撕開速度變快而變小（越快越省力），剝離前緣就會不穩定、忽快忽慢。他們以每秒 30 萬到 52.5 萬格拍 3M Scotch 600 以約 90° 撕開：拉速超過約每秒 0.35 公尺、也就是斷裂能開始隨速度下降的地方，黏滑出現；超過約每秒 5.6 公尺，毫秒尺度上又變平穩。大的黏滑由整段被撕起膠帶的拉伸能週期釋放驅動；滑相裡還有高頻的「微黏滑」，對應 Thoroddsen 等發現的橫向裂縫，來自剝離前緣附近膠帶彎曲能的週期釋放，它的振幅與週期和被撕起的長度無關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "期刊版與卷頁未比對，canonical 只用 arXiv；與 F38-S015 同群封頂。 覆核 V40（2026-11-12）：summary 補「研究者估計橫向裂縫速度 650–900 m/s（不得與 KAUST 的數字合併）」與「從貼了同款膠帶的玻片上撕」。",
+      "author_cache": {
+        "file": "stw20/f38src/dalbe2015.pdf",
+        "sha256_prefix": "94649d8dd00bfcb8",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S019",
+      "url": "https://arxiv.org/pdf/1812.11394",
+      "canonical_url": "https://arxiv.org/abs/1812.11394",
+      "title": "Bending to kinetic energy transfer in adhesive peel front micro-instability",
+      "publisher": "V. De Zotti、K. Rapina、P.-P. Cortet、L. Vanel、S. Santucci（里昂高師等）／arXiv 預印本",
+      "version": "arXiv:1812.11394v1（2018-12-29）；期刊版未查",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Thoroddsen … Stick-slip substructure in rapid tape peeling）結果列出 arxiv.org/pdf/1812.11394；curl 200，pdftotext",
+      "reading_scope": "摘要與第 1 頁",
+      "locator": "摘要",
+      "summary": "微黏滑的振幅與週期的三分之一次方成正比，比例係數隨剝離角略變、隨膠帶背襯的彎曲模數系統性增加；研究者用能量收支說明彎曲能轉成動能。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "預印本；同群封頂，只計 0.25。",
+      "author_cache": {
+        "file": "stw20/f38src/dezotti2018.pdf",
+        "sha256_prefix": "c31b304a2a5b18d6",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S020",
+      "url": "https://hal.science/hal-01436805v1/file/Dalbe.pdf",
+      "canonical_url": "https://doi.org/10.1039/C6SM00119J",
+      "title": "Inertial and stick-slip regimes of unstable adhesive tape peeling",
+      "publisher": "Marie-Julie Dalbe、Richard Villey、Matteo Ciccotti、Stéphane Santucci、Pierre-Philippe Cortet、Loïc Vanel／Soft Matter 12:4537–4548（2016）",
+      "version": "HAL 典藏作者稿（hal-01436805v1，2021-04-04 上傳）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Dalbe Santucci peeling angle stick-slip … Soft Matter）結果列出 hal.archives-ouvertes.fr/hal-01436805，頁上 file/Dalbe.pdf 連結；curl 200，pdftotext",
+      "reading_scope": "摘要與引言",
+      "locator": "摘要",
+      "summary": "控制剝離角與被撕起長度、以定速撕膠帶：拉速或剝離角增加時，前緣的振盪從「長黏、極短滑」的典型黏滑，逐漸變成速度振幅約為剝離速度兩倍的正弦振盪；研究者用加速、減速被撕起膠帶所需、與角度有關的動能來解釋這個「慣性」區。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "同群封頂，只計 0.25；只讀摘要與引言，正文數字未用。",
+      "author_cache": {
+        "file": "stw20/f38src/dalbe2016.pdf",
+        "sha256_prefix": "8a9f291b83c81e47",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S021",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3961747/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep04326",
+      "title": "Generation of ultra-sound during tape peeling",
+      "publisher": "Jeremy O. Marston、Paul W. Riker、Sigurdur T. Thoroddsen（沙烏地阿拉伯阿卜杜拉國王科技大學 KAUST）／Scientific Reports 4:4326（2014）",
+      "version": "期刊正式全文（PMC3961747，CC BY 3.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Thoroddsen peeling tape … Scientific Reports open access）結果列出 ncbi.nlm.nih.gov/pmc/articles/PMC3961747；Europe PMC REST（文件記載的 search 與 /{PMCID}/fullTextXML 端點）取全文 XML，python 去標籤成文字",
+      "reading_scope": "全文",
+      "locator": "Experimental details（3–15 m/s、四種膠帶、48 000 fps、192 kHz）；Observations（帶距 120–200 µm、最高約 500 m/s）；Audio（12 條帶約 540 µs → 22 kHz；約 50 kHz；連續剝離 7.2 m/s ÷ 150 µm = 48 kHz）；最後一段（超音波能量占比 13–40%、46–79%）",
+      "summary": "同步高速攝影（每秒 48000 格）與 192 kHz 錄音，以每秒 3 到 15 公尺快速撕四種市售透明膠帶。每一次「滑」裡都有一條條橫向裂開的帶子，間距依品牌約 120 到 200 微米、同品牌固定，橫越膠帶寬度的速度最高約每秒 500 公尺。錄音裡每個滑相的尖峰數正好等於帶子數：例如一次滑相約 540 微秒出現 12 條，對應約 22 kHz 的主頻。另有約 50 kHz 的超音波，連續剝離時（例如每秒 7.2 公尺 ÷ 150 微米 = 48 kHz）最明顯；用 20 kHz 分頻估計，黏滑剝離有 13–40% 的聲能在人耳聽不到的範圍，連續剝離多數是 46–79%。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F38-S020 同屬 Thoroddsen 研究群，合計封頂 2.0；麥克風只到 96 kHz。 覆核 V40（2026-11-12）：summary「橫越膠帶寬度的速度最高約每秒 500 公尺」改「引言引述 Thoroddsen 等 2010（每秒百萬格拍攝）裂縫最快約 500 m/s，本研究未量」；補剝離角 30–45°。",
+      "author_cache": {
+        "file": "stw20/f38src/marston2014.xml",
+        "sha256_prefix": "b8fcf41322c70dd0",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S022",
+      "url": "https://res.cloudinary.com/apsphysics/image/upload/v1770940112/EE12528_gjdrhx.pdf",
+      "canonical_url": "https://doi.org/10.1103/p19h-9ysx",
+      "title": "Screeching sound of peeling tape",
+      "publisher": "Er Qiang Li、Paul W. Riker、Sriram Rengarajan、Zi Qiang Yang、Kenneth R. Langley、Ravi Samtaney、Sigurdur T. Thoroddsen（KAUST 等）／Physical Review E（2026）",
+      "version": "美國物理學會 CDN 上的排版校樣（頁碼為 00, 005500 佔位；頁面註明 CC BY 4.0、KAUST 付費開放）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Thoroddsen peeling tape … Scientific Reports open access）結果列出此 res.cloudinary.com/apsphysics PDF；journals.aps.org 本站 PDF 403；curl 200，pdftotext",
+      "reading_scope": "全文（5 頁）",
+      "locator": "摘要；§III（靠裂縫終點那支麥克風先收到、rms 1.9 倍；schlieren 355 ± 2 m/s、Mach 1.04；裂縫 250–600 m/s；約 220 µm 寬；滑相約 0.5 ms）；Fig. 2、4",
+      "summary": "用兩台同步高速攝影機（一台從玻璃底下看膠水裡的裂縫、一台用紋影法拍空氣裡的壓力波）加上膠帶兩側各一支麥克風：每次滑相由幾十條約 220 微米寬的橫向裂縫組成，裂縫以每秒 250 到 600 公尺橫越膠帶；原本以為聲音從快速前進的裂縫尖端發出，結果相反，是裂縫跑到膠帶邊緣的那一刻才發出一個聲脈衝，靠近終點那側的麥克風先收到、均方根強度大 1.9 倍。紋影畫面裡看到一串彼此分開的微弱震波，從膠帶邊緣出發，速度每秒 355 ± 2 公尺，約 1.04 馬赫。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "校樣非最終頁面，正式版數字以期刊為準；與 F38-S019 同群封頂；「超音速」是相對空氣而言，相對膠水的雷利波仍是亞音速（原文）。 覆核 V40（2026-11-12）：summary 補「裂縫 250–600 m/s 原文換算為空氣中 Ma 0.7–1.8」「手拉、45° ± 2°」「滑相約 0.5 ms」「邊緣發聲機制（局部真空塌陷）是研究者解釋，細節待研究」；引言「Thoroddsen 等 2010 曾推測聲源是撕起膠帶上的彈性波」可作轉折二的對照。",
+      "author_cache": {
+        "file": "stw20/f38src/li2026_apsproof.pdf",
+        "sha256_prefix": "0234aa8882750c5f",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S023",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3520841/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0051369",
+      "title": "Rhesus monkeys (Macaca mulatta) detect rhythmic groups in music, but not the beat（Honing, Merchant, Háden, Prado, Bartolo；PLoS ONE 7(12): e51369, 2012）",
+      "publisher": "PLOS ONE（CC BY）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文",
+      "locator": "Abstract；Introduction（vocal learning 假說）；Methods（2 隻獼猴、頭皮電極）；Results 實驗 1–3；Discussion",
+      "summary": "阿姆斯特丹 Honing 與墨西哥 UNAM Merchant 合作：兩隻獼猴聽連續聲音時，對音高偏離與隨機位置的空檔都有類似人類失配負波的腦電反應；但對『每小節第一拍（強拍）被省略』沒有區辨反應——同一套刺激與作法，人類成人與新生兒都有反應。作者解讀為獼猴偵測不到音樂的拍子，支持拍子知覺有物種特異性。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 2 隻猴；兩隻反應極性不同；『偵測不到』是沒有測到差異，不等於證明沒有。與 F39-S005、F39-S006 同屬 Merchant／Honing 合作群，合計封頂。 覆核 V42（2026-11-12）：summary 改：「省略強拍的 D 型樣引起較明顯的負向波（猴 Y 為主），但沒有省略的 S1 型樣反應與 D 相同，研究者據此認為猴子偵測的是節奏群組開頭而非拍子」；不得寫『對省略強拍沒有反應』。",
+      "author_cache": {
+        "file": "f39src/PMC3520841.xml",
+        "sha256_prefix": "367f66fa6b8ce4f1",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S024",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6054994/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fnins.2018.00475",
+      "title": "Rhesus Monkeys (Macaca mulatta) Sense Isochrony in Rhythm, but Not the Beat（Honing, Bouwer, Prado, Merchant；Front Neurosci 12:475, 2018）",
+      "publisher": "Frontiers in Neuroscience（CC BY）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文",
+      "locator": "Abstract；Results（等時與抖動版本的 MMN、節拍位置×等時交互作用不顯著）；Discussion（GAE 假說）",
+      "summary": "同一合作群以等時（帶強弱、像進行曲）與隨機抖動兩種版本測兩隻獼猴：等時版本的失配負波較大，表示猴子腦對『間隔規律』敏感；但節拍位置與等時沒有交互作用，找不到拍子（強弱拍結構）知覺的證據。作者以『漸進聽覺—運動演化』（GAE）假說解釋：拍子計時在人類最強、在其他靈長類弱或沒有。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 2 隻猴；同研究群延續 F39-S004，合計封頂。",
+      "author_cache": {
+        "file": "f39src/PMC6054994.xml",
+        "sha256_prefix": "031c0424a8fc3aa0",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S025",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6472824/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pbio.3000054",
+      "title": "The amplitude in periodic neural state trajectories underlies the tempo of rhythmic tapping（Gámez, Mendoza, Prado, Betancourt, Merchant；PLoS Biol 17(4): e3000054, 2019）",
+      "publisher": "PLOS Biology（CC BY）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文中與行為有關的段落（神經族群動態部分只略讀）",
+      "locator": "Results 第 1 段（兩隻公獼猴 M01、M02；SCT、ST、SRTT）；行為結果（ST 不同步量 263±37 ms 對 SRTT 反應時間 381±46 ms）；Discussion（『猴子能預測性同步於等時節拍器』『偏好視覺節拍器』『沒有人類的跨速度與拍型彈性』）",
+      "summary": "UNAM Merchant 研究群：兩隻經訓練的獼猴跟著視覺節拍器按鍵，按鍵與節拍的時間差（約 263 毫秒）明顯短於同樣刺激但無法預測時的反應時間（約 381 毫秒），作者據此說猴子能預測性地同步於等時節拍；但猴子偏好視覺而非聽覺節拍器，也沒有人類跨速度與拍型的彈性。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "行為數字取自以神經資料為主的論文；只有 2 隻、長期訓練；視覺節拍器。與 F39-S004、S005 同研究群合作網，合計封頂。 覆核 V42（2026-11-12）：limitations 補「ST／SRTT（263／381 ms）只有 M01 一隻；『偏好視覺節拍器』『缺乏跨速度與拍型的彈性』是 Discussion 引用文獻 [16]、[6]」。",
+      "author_cache": {
+        "file": "f39src/PMC6472824.xml",
+        "sha256_prefix": "1b909f1f709e4b91",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S026",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9651867/fullTextXML",
+      "canonical_url": "https://doi.org/10.1126/sciadv.abo7019",
+      "title": "Spontaneous beat synchronization in rats: Neural dynamics and motor entrainment（Ito, Shiramatsu, Ishida, Oshima, Magami, Takahashi；Sci Adv 8:eabo7019, 2022）",
+      "publisher": "Science Advances（CC BY-NC）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文",
+      "locator": "Introduction（身體說與大腦說兩種假說）；Results〈behavior〉（10 隻、莫札特 K.448、99/132/264/528 BPM；顯著者 6、5、3、1 隻；132 BPM 一致性最高、第 2 天衰減；5/10 隻鼠與 12/12 人）；〈neural〉（聽覺皮質拍點對比在原速最高、點擊序列約 120 BPM 最高）；〈model〉（約 250 ms 適應）；Discussion（大鼠較被動反應、頭部 jerk 為人的 10 倍）",
+      "summary": "東京大學 Takahashi 研究群：10 隻大鼠頭上裝無線加速度計聽莫札特〈雙鋼琴奏鳴曲〉的四種速度，頭部動作與拍子同步顯著的鼠數依序為 6、5、3、1（75%、100%、200%、400% 速度），個體間一致性在原速 132 BPM 最高；人類受試者趨勢相似。聽覺皮質對拍點的反應在約 120–140 BPM 最強，可用約 250 毫秒的短期適應模型解釋。作者據此認為最佳拍速取決於腦的時間常數、而非體型（大鼠動作快得多卻偏好相近速度）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "大鼠的同步較偏『反應式』，比人類晚；第二天就衰減，作者說可能有部分是驚嚇反應；只有一首曲子；『原生、未經訓練的同步』是作者表述。與 F39-S011 研究群不同。",
+      "author_cache": {
+        "file": "f39src/PMC9651867.xml",
+        "sha256_prefix": "316d6ea34d359dcd",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S027",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13341111/fullTextXML",
+      "canonical_url": "https://doi.org/10.7554/eLife.107088",
+      "title": "Development of auditory and spontaneous movement responses to music over the first postnatal year（Nguyen 等；eLife 2026）",
+      "publisher": "eLife（CC BY）",
+      "version": "出版版全文（Europe PMC 開放子集 XML；eLife reviewed preprint 模式）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文中摘要、eLife digest、Results 的動作分析與 Discussion",
+      "locator": "Abstract；eLife digest；Methods（79 名 3、6、12 個月嬰兒；刺激 21 s、135 BPM、C 大調）；Results〈EEG〉（各年齡音樂＞打亂）；〈kinematics〉（只有 12 個月動得較多；沒有任何年齡組對拍）",
+      "summary": "義大利理工學院（IIT）與維也納大學等合作群：79 名 3、6、12 個月大的嬰兒聽兒歌與打亂版，同時量腦波與全身動作。所有年齡的腦波都對真音樂反應較強，表示腦很早就編碼音樂結構；但只有 12 個月大的嬰兒對真音樂動得比打亂版多（前後搖、左右擺、像拍手），而且沒有任何年齡組的動作與音樂拍子在時間上協調。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只到 12 個月；刺激都是 135 BPM，看不出隨速度調整；與池中其他研究群無重疊。",
+      "author_cache": {
+        "file": "f39src/PMC13341111.xml",
+        "sha256_prefix": "3866eb65c9a17cfa",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S028",
+      "url": "https://www.dalembert.upmc.fr/lelam/Membres/Fritz/HomePage/Indianapolis_paper.html",
+      "canonical_url": "https://doi.org/10.1073/pnas.1114999109",
+      "title": "Player preferences among new and old violins（Fritz, Curtin, Poitevineau, Morrel-Samuels, Tao；PNAS 109(3):760–763, 2012）",
+      "publisher": "第一作者 Claudia Fritz（CNRS／d’Alembert 研究所）個人網頁上的全文 HTML",
+      "version": "作者張貼版（網頁標『PNAS paper + photos』；與期刊排版版可能有字句差異）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出作者頁 Indianapolis_paper.html；curl 預設標頭。PNAS 與 Europe PMC 渲染頁本環境 Cloudflare 403",
+      "reading_scope": "全文（Introduction、Materials and methods、Results and discussion、Conclusion；圖只見圖說）",
+      "locator": "Materials and methods 第 1–3 段（3 新 3 舊、約 1,000 萬美元約 100 倍、21 人、焊工護目鏡、香味）；Results（Part 1 平均 3.7、CI 2.8–4.5；重測 11/21；Part 2：N2 帶回家 8 次、O1 最不喜歡 6 次；8/21 選舊琴、CI 18–62%；新琴在 playability 與 response 較高 p<.02；projection p=.62、tone colors p=.08；猜流派 17 人：3 對、7 錯、7 不知道）；Conclusion",
+      "summary": "巴黎 Fritz 研究群：2010 年印第安納波利斯國際小提琴大賽期間，21 位有經驗的小提琴家戴焊工護目鏡、在暗房裡試拉 3 把新琴與 3 把古琴（2 把史特拉第瓦里、1 把瓜奈里，合計約為新琴 100 倍價值）。最想帶回家的是一把新琴（N2，8 次），最不受歡迎的是一把約 1700 年的史特拉第瓦里（O1）；只有 8/21 選古琴；回答帶回家那把是哪一派的 17 人中只 3 人猜對、7 人猜錯。每把琴都至少被一人選為某項最好、也被選為最差，個人口味差異大於新舊差異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "人數與琴數少；只在乾燥的飯店房間、演奏者耳邊判斷；作者自承古琴未調整、弦未統一；作者頁版本非期刊排版版；共同作者 Curtin 是當代製琴師、Tao 任職於琴弦公司。與 F39-S014 同研究群，合計封頂。",
+      "author_cache": {
+        "file": "f39src/fritz2012_Indianapolis_paper.html",
+        "sha256_prefix": "035c5733869424a8",
+        "note": "另存去標籤文字檔 fritz2012.txt；HTML 為 latin-1 編碼 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S029",
+      "url": "https://hal.sorbonne-universite.fr/hal-01521152v1/document",
+      "canonical_url": "https://doi.org/10.1073/pnas.1619443114",
+      "title": "Listener evaluations of new and Old Italian violins（Fritz, Curtin, Poitevineau, Tao；PNAS 114(21):5395–5400, 2017）",
+      "publisher": "HAL（Sorbonne Université 開放典藏，作者存放）",
+      "version": "作者接受稿（HAL 版，標 Published in PNAS, May 2017）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 hal.sorbonne-universite.fr/hal-01521152v1/document；curl 預設標頭",
+      "reading_scope": "全文（含表 1–4）",
+      "locator": "Abstract；Introduction（Strad『耳邊小聲、遠處傳得開』的說法）；Materials and Methods（巴黎 300 座、紐約 860 座；55 與 82 名聽眾）；Results〈Paris〉（有無樂團差 −0.002；新琴投射多 0.19，CI 0.16–0.21）；〈soloist vs listener〉（表 2、3）；〈Part 3〉（122/273＝44.7%）；〈New York〉（投射 0.27、偏好 0.27）",
+      "summary": "同研究群把問題搬到音樂廳：巴黎（55 名有經驗聽眾，有無管弦樂團伴奏）與紐約（82 名聽眾）兩場雙盲聽測，各用 3 把史特拉第瓦里對 3 把新琴。結果新琴被判『傳得較遠』（0–1 量尺上平均多 0.19 與 0.27），有沒有樂團幾乎一樣；紐約聽眾也較偏好新琴（多 0.27）。巴黎聽眾猜七把獨奏者自用琴新舊，只有 44.7% 猜對。演奏者在耳邊覺得較大聲的琴，在廳裡也傳得較遠——與『古琴耳邊小聲、到遠處才開』的說法相反。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 6 把測試琴；投射是主觀量尺；演奏者效果與選曲無法分開；HAL 版為接受稿。Tai 研究群（F39-S019）質疑現場聽測的記憶衰退與響度未匹配問題。同研究群合計封頂。 覆核 V42（2026-11-12）：summary 補「巴黎聽眾 15 名製琴師、19 名小提琴家、21 名其他；Part 3 為七位獨奏者各拉自己的琴，46 人中 39 人填完整、共 273 次猜測」。",
+      "author_cache": {
+        "file": "f39src/hal-01521152.pdf",
+        "sha256_prefix": "939a7d56fb5639d5",
+        "note": "另存 pdftotext 文字檔 hal-01521152.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S030",
+      "url": "https://research.unipd.it/retrieve/9e598ff6-3668-40d8-9464-3cd8d7872739/Rozzi%20et%20al%202021.pdf",
+      "canonical_url": "https://doi.org/10.1121/10.0009320",
+      "title": "A listening experiment comparing the timbre of two Stradivari with other violins（Rozzi, Voltini, Antonacci, Nucci, Grassi；J Acoust Soc Am 151:443–450, 2022）",
+      "publisher": "Journal of the Acoustical Society of America（CC BY 4.0）；帕多瓦大學 IRIS 典藏",
+      "version": "出版版 PDF（帕多瓦大學機構典藏）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 research.unipd.it 的 PDF；curl 預設標頭",
+      "reading_scope": "全文（9 頁，含圖 1、圖 2）",
+      "locator": "Abstract；Introduction（Fritz 三篇的整理與侷限）；II.A（70 人：36 學生、34 製琴師，約克雷莫納製琴師的四分之一）；II.B（Arvedi 音樂廳、A 1988 新琴約 2 萬歐、C 1917 約 10 萬歐、B 與 X 為史特拉第瓦里、D 約 300 歐工廠琴）；III.A（55 人可靠；pleasantness F(3,162)=75.19；B＞C＞A＞D；43/55 給 B 最高分）；III.B（頻率響應：B 在 A0 與約 500 Hz 最強；D 集中 0.8–1.4 kHz）；Abstract 最後的推測",
+      "summary": "義大利研究群（CNR、克雷莫納製琴學校、米蘭理工、帕多瓦大學）：70 名克雷莫納製琴師與學生在音樂廳隔著幕聽同一位演奏者拉音階，拿四把測試琴與一把史特拉第瓦里參考琴比較。55 名可靠聽者一致把另一把『黃金時期末』的史特拉第瓦里（B）評為最悅耳，43 人給它最高分；1917 年的新式琴（C）與參考的史特拉第瓦里幾乎聽不出差；工廠琴最差。量測上 B 在低頻（A0 空腔共鳴與約 500 Hz 的琴體模態）反應最強。作者推測：少數音色出眾的史特拉第瓦里可能把整體名聲拉高。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "演奏者沒有矇眼（作者說聽者看不到琴）；只用音階、不揉音；只有 2 把史特拉第瓦里且其一為參考；聽者是當地製琴社群；『名聲被少數好琴帶高』是作者推測。共同作者 Antonacci 也在 F39-S021，兩篇合計封頂。 覆核 V42（2026-11-12）：summary 改「55 名可靠聽者中 43 人給 B 最高悅耳分、19 人給 1917 年現代琴 C（每人可給多把最高分）；X 與 C 四個音色向度評分相近」；刪『一致』『幾乎聽不出差』；『新式琴』改『1917 年的現代琴（約 10 萬歐元）』。",
+      "author_cache": {
+        "file": "f39src/rozzi2021.pdf",
+        "sha256_prefix": "072cf81480bc78d1",
+        "note": "另存 pdftotext 文字檔 rozzi2021.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S031",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2438473/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0002554",
+      "title": "A comparison of wood density between classical Cremonese and modern violins（Stoel & Borman；PLoS ONE 3(7): e2554, 2008）",
+      "publisher": "PLOS ONE（CC BY）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文",
+      "locator": "Abstract；Table 1（5 把古琴、8 把當代琴）；Results〈Median density〉（無顯著差）；〈Density differentials〉（頂板 274 對 183 g/L、背板 128 對 115，p=0.028、0.008；一片來源不明可能處理過的現代面板）；Materials and Methods〈Validation〉（誤差 1.8%、4.8%）；Conclusions",
+      "summary": "萊頓大學醫學中心 Stoel 與製琴師 Borman：用醫院電腦斷層掃 5 把克雷莫納古琴（3 瓜奈里、2 史特拉第瓦里）與 8 把當代琴。整體木材密度中位數兩組沒有顯著差；但早材與晚材的密度差，古琴明顯較小：雲杉頂板平均 183 對 274 g/L、楓木背板 115 對 128 g/L。作者推測這可能影響振動效率或阻尼，但原因只能猜。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 5 把古琴；CT 解析度看不到單一年輪，用第 10 與 90 百分位代替；共同作者是現代琴製作者、8 把現代琴中 3 把是他做的；Su 等 2021（F39-S018）認為差異可能是金屬鹽被早材吸收、造成 X 光吸收偏高的假象。 覆核 V42（2026-11-12）：limitations「8 把現代琴中 3 把是他做的」改「8 件當代樂器中 4 件是 Borman 做的（3 把小提琴、1 把中提琴）」。",
+      "author_cache": {
+        "file": "f39src/PMC2438473.xml",
+        "sha256_prefix": "f2cc448645bab910",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S032",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2621340/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0004245",
+      "title": "Mineral preservatives in the wood of Stradivari and Guarneri（Nagyvary, Guillemette, Spiegelman；PLoS ONE 4(1): e4245, 2009）",
+      "publisher": "PLOS ONE（CC BY）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文",
+      "locator": "Abstract；Materials（取樣：修裂時刮下的背板內層）；Results（BSE、WDS 圖；硼只在兩把史特拉第瓦里與早期瓜奈里；晚期瓜奈里有 CaF2；Strad 小提琴 Na2O 為波士尼亞平均 11 倍、Cl 52 倍）；判別分析；Discussion（限制、作者自 1975 年起做約 200 把處理過木材的琴）",
+      "summary": "德州農工大學 Nagyvary 研究群：分析 1 把史特拉第瓦里小提琴、1 把史特拉第瓦里大提琴、2 把瓜奈里小提琴的楓木背板刨屑灰分，對照法、英古琴與多種商業楓木。四件克雷莫納樂器都含天然木材不會有的物質（硫酸鋇、氟化鈣、硼酸鹽、鋯矽酸鹽），常見礦物比例也不同；判別分析只有克雷莫納樣本與所有商業木材分得開。作者推論木材曾經化學處理，可能是防腐。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "每件只有約一平方英寸的刨屑；只有楓木、沒有雲杉；作者自己的研究室長期製作化學處理木材的提琴，有利益關聯；Nagyvary 也是 F39-S018 共同作者，與 Tai 研究群合計封頂。 覆核 V42（2026-11-12）：limitations 刪「作者自己的研究室長期製作化學處理木材的提琴，有利益關聯」，改「本文宣告無利益衝突、無外部資助；作者另有製琴活動之說未見於本文，片中不提」；補「樣本為 1 把史特拉第瓦里小提琴、1 把史特拉第瓦里大提琴、2 把瓜奈里的楓木」。",
+      "author_cache": {
+        "file": "f39src/PMC2621340.xml",
+        "sha256_prefix": "c7efbd890e166934",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S033",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8457145/fullTextXML",
+      "canonical_url": "https://doi.org/10.1002/anie.202105252",
+      "title": "Materials Engineering of Violin Soundboards by Stradivari and Guarneri（Su 等，通訊作者 Tai H-C；Angew Chem Int Ed 60:19144–19154, 2021）",
+      "publisher": "Angewandte Chemie International Edition（CC BY 4.0）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文（補充資料未讀）",
+      "locator": "Introduction 第 2–3 段（現場聽測受質疑、面板厚度 Strad 2.0–2.8 mm 對現代約 3.0 mm）；Results（XRD 結晶度無差、ICP-MS：Amati、Strad Al <50 ppm、Guarneri 1200 與 2900 ppm；Strad SC4 Na 13,000 ppm；SHG 減弱）；Discussion（CT 密度差可能是金屬鹽假象；耳機振膜加 1000 ppm Al 楊氏模數 +14%、500 Hz 以下增強）；結語",
+      "summary": "臺灣大學 Tai 研究群（與 Nagyvary 等合作）：分析阿瑪蒂、史特拉第瓦里、瓜奈里三大家族的雲杉面板與楓木樣本，對照現代木材、同時代普通古琴、古建築木料與古琴。克雷莫納面板的細胞構造與現代雲杉相同、纖維素結晶度也沒差，但元素組成不自然：阿瑪蒂已有少量硼砂與金屬硫酸鹽，瓜奈里鋁含量 1200 與 2900 ppm（阿瑪蒂、史特拉第瓦里低於 50），部分史特拉第瓦里鈉高達 13,000 ppm；處理最重的樣本纖維素結構改變。作者推論是防腐或調音用的化學處理，並指 Stoel 的密度差可能是金屬鹽造成的假象；但木片太小無法量聲學，只在耳機振膜上加鋁看到模數上升 14%。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "樣本 30–300 mg；『調音目的』與『被時間削弱的楓木半衰期』是推論；聲學效果未在提琴上驗證；通訊作者研究群主張錄音盲測對 Strad 有利（引用，不另計）。與 F39-S017、F39-S019 合計封頂。 覆核 V42（2026-11-12）：summary 補樣本組成（阿瑪蒂中提琴、史特拉第瓦里大提琴與小提琴、瓜奈里 del Gesù 小提琴的雲杉與楓木）；『鈉 13,000 ppm』標為 SC4（約 1720 年史特拉第瓦里大提琴雲杉）、11,000 ppm 為 MC3（約 1717 年史特拉第瓦里小提琴楓木）；瓜奈里鋁 1,200／2,900 ppm 為雲杉／楓木各一；補「一般老琴接觸區 K、Na、Cl 偏高，研究者歸因汗水」。",
+      "author_cache": {
+        "file": "f39src/PMC8457145.xml",
+        "sha256_prefix": "f3a7cf2bf5b736e5",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S034",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6003308/fullTextXML",
+      "canonical_url": "https://doi.org/10.1073/pnas.1800666115",
+      "title": "Acoustic evolution of old Italian violins from Amati to Stradivari（Tai, Shen, Lin, Chung；PNAS 115(23):5926–5931, 2018）",
+      "publisher": "PNAS（CC BY-NC-ND 4.0）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文",
+      "locator": "Significance；Results（15 把古琴、8 男 8 女歌者；Amati F1–F4＝503/1,583/2,602/3,731 Hz、VTL 16.71 cm；Strad 對非 Strad VTL 16.15 對 17.02 cm，P=0.006；男女歌者 16.44 對 15.74 cm）；Discussion（現代配置、只看穩態）",
+      "summary": "同一臺大研究群（與奇美博物館）：用語音分析的線性預測法分析 15 把古義大利提琴與 16 位歌者唱同一個八度的音階。最早的阿瑪蒂與達薩洛琴的共振峰像男低音／男中音；6 把史特拉第瓦里家族琴的前幾個共振峰顯著較高，換算的『聲道長度』16.15 cm 對其他古琴 17.02 cm，差距與本研究男女歌者相當，接近男高音／女低音。作者認為這可能解釋 Strad 的明亮感。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "比的是古琴之間，不是古琴對新琴；只看穩態頻譜、現代弦與配置；『模仿人聲是設計目標』是推論；奇美博物館琴為主。與 F39-S017、S018 同群合計封頂。 覆核 V42（2026-11-12）：summary 補「6 把史特拉第瓦里含 Omobono Stradivari 1740；最早一把是 1560 年 Bertolotti」。",
+      "author_cache": {
+        "file": "f39src/PMC6003308.xml",
+        "sha256_prefix": "6e434128cebbd9a7",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S035",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11605094/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-024-79497-7",
+      "title": "Model based ranking of the influence of geometry and materials on the dynamical behavior of the violin（Viala, Placet, Foltête, Cogan；Sci Rep 14, 2024）",
+      "publisher": "Scientific Reports（CC BY）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文（方法細節略讀）",
+      "locator": "Abstract；Results（Morris 篩選；B1− 模態面板厚度 33%、其次密度；f 孔長度是厚度外最有影響的幾何參數）；Discussion 與結論（木材選擇是次要效應）",
+      "summary": "法國 FEMTO-ST（貝桑松）研究群：以一把完整小提琴的有限元素模型做篩選分析，同時改動幾何（面板、背板厚度、f 孔形狀等）與木材性質（8 個彈性與密度參數）。結果琴的振動行為主要取決於幾何選擇，木材性質在正常範圍內的變異是次要效應；例如 B1− 模態最受面板厚度影響（33%）。作者據此說可以用較低等級的木材。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "純模型、非實測；木材參數只在一般木材變異範圍內，沒有模擬化學處理；結論是振動而非聽感。",
+      "author_cache": {
+        "file": "f39src/PMC11605094.xml",
+        "sha256_prefix": "86d1e0f9c7e636a6",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P70-S036",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9349190/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-022-17596-z",
+      "title": "The impact of alkaline treatments on elasticity in spruce tonewood（Malvermi 等；Sci Rep 12, 2022）",
+      "publisher": "Scientific Reports（CC BY）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文中結果與結論段（公式段略讀）",
+      "locator": "Abstract；Methods（9 片雲杉板、2 種前處理 × 3 種膠底）；Results（前處理單獨變化 ≤10%；兔皮膠加高嶺土使橫紋方向剛性上升至約 20%）；Conclusions",
+      "summary": "米蘭理工研究群（Antonacci 等）：按文獻所載克雷莫納製琴師的打底配方，在 9 片雲杉板上做兩種鹼性前處理與三種膠底組合，比較處理前後的振動性質。單做前處理的變化在 10% 以內，但前處理會讓膠底滲得更深，兔皮膠加高嶺土的組合使橫紋方向剛性最多增加約 20%。作者結論：上漆前的處理不只改外觀，也改振動性質。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "平板試片、非整把琴；沒有聽測；與 F39-S015 共同作者重疊，兩篇合計封頂。canonical DOI 取自全文 XML 的 article-id。",
+      "author_cache": {
+        "file": "f39src/PMC9349190.xml",
+        "sha256_prefix": "e1f437836b530cf1",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P70-001",
+      "question": "模仿昆蟲眼睛做的天空羅盤，碰到雲和樹蔭會怎樣？",
+      "domain": "生活光學",
+      "mechanism_key": "sky.insect_inspired_compass_cloud_occlusion_performance",
+      "answer_target": "薄雲不怕，厚雲會變差。愛丁堡大學 2023 年做了一個仿昆蟲背緣區、八組偏振感測器排成一圈的天空羅盤，裝在機器人上到義大利與南非實測：薄雲或碎雲下估太陽方位影響不大，厚而均勻的雲層下變差；在大部分條件下，結合亮度與偏振的算法最準，但太陽被雲或樹冠完全遮住時，只用偏振的算法反而更準。",
+      "scope": "工程原型；不引 0.59°（那是 36 組分析器追蹤固定方向的最佳情況）。",
+      "source_ids": [
+        "P70-S001"
+      ],
+      "source_locator": "Abstract；Results 第 45、55–57 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 1.0）：刪掉誤植的數字後只剩定性結論。 原提案 F36-013（目標 C14-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V39（2026-11-12）改字後收；刪除套錯條件的 0.59°。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "太陽完全不見時，偏振反而比亮度更可靠——但雲太厚就都不行。",
+        "visual": "小圓盤感測器放在屋頂，天空從晴到薄雲到厚雲，指針誤差扇形變寬。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P70-002",
+      "question": "只看白天天空的偏振，能找出北方和自己在哪個緯度嗎？",
+      "domain": "生活光學",
+      "mechanism_key": "sky.skypole_celestial_pole_from_polarization_rotation",
+      "answer_target": "原理上可以，但要等。2023 年馬賽的研究者用偏振相機拍天空的偏振度影像，比較不同時刻圖案隨太陽怎麼轉，找出天北極，進而得到正北方向與當地緯度，不需要時間、日期或星曆；但每次估計要觀測好幾小時，而且只用了晴天或稍有雲的資料。",
+      "scope": "準確度數值只在圖上，不引用。",
+      "source_ids": [
+        "P70-S002"
+      ],
+      "source_locator": "Abstract；Discussion 第 25–26 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：圖上才有數值的不算，只剩方法可行一句。 原提案 F36-014（目標 C14-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V39（2026-11-12）照原稿收；相符；只降計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "天空的方向圖會繞著天極轉，看久了就能找出天極。",
+        "visual": "延時攝影的偏振度天空圖，疊出不動的旋轉中心。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P70-003",
+      "question": "摩擦起電「誰帶正、誰帶負」的排行榜，現在已經能量成數字了嗎？",
+      "domain": "靜電與材料",
+      "mechanism_key": "electrostatics.triboelectric_series_quantified_vs_liquid_mercury",
+      "answer_target": "有人試過，但量出來的數字只對一個很特別的對手成立。喬治亞理工 Zhong Lin Wang 研究群 2019 年在充滿超高純氮氣的手套箱裡（20 ± 1 °C、相對濕度約 0.43%），讓每種材料反覆碰觸液態汞再分開，量每平方公尺帶走多少電荷，排成 50 種材料的數字表：最負的是 Viton 氟橡膠，每平方公尺 −148.20 微庫侖；鐵氟龍 −113.06；連尼龍 6 鑄件和影印紙都是 −18.35、船用夾板 −14.05，對汞也帶負；表上只有最後兩種丁腈橡膠是正的（+2.49、+2.95）。作者說要這樣做，是因為從 Wilcke 排出第一張約十種材料的序列以來，各家因為濕度、粗糙度、溫度、受力不同，排出的順序彼此對不上。",
+      "scope": "數值只對液態汞、乾燥氮氣成立；不得與傳統序列表或其他研究的數值比較、換算；Wilcke 不給年份（Zou 原文無年份，1757 出自另一篇教學預印本）。",
+      "source_ids": [
+        "P70-S003"
+      ],
+      "source_locator": "S001 引言第 3 段；方法末段；表 1",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：一個研究、一張表，片中只用「量得出來，但對手是汞、環境極乾」這一件事；端點數字是同一實驗。 原提案 F38-001（目標 C16-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；數字相符，但「1757」不在此來源、「只有一種帶正」錯（兩種）；計數降為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "排行榜是存在的，但要把世界弄得非常乾、對手換成汞才排得出來——這已經埋下「它不是材料的固定屬性」的伏筆。",
+        "visual": "一條由負到正的長尺，Viton、鐵氟龍擠在最負端，尼龍、影印紙、木頭也在負半邊，正半邊幾乎空著；旁邊標「對手：液態汞、濕度 0.43%」。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P70-004",
+      "question": "兩顆一模一樣的氣球互相摩擦，會分出誰帶正電、誰帶負電嗎？",
+      "domain": "靜電與材料",
+      "mechanism_key": "electrostatics.identical_balloons_larger_radius_charges_negative",
+      "answer_target": "會，而且不是亂分。智利瓦爾帕萊索天主教大學的物理教學研究者把同品牌、同材質的氣球吹成不同大小（實驗室常用直徑 10、20、25 公分）互相摩擦，用演示用的極性偵測器看：吹得比較大、拉得比較緊的那顆帶負電；換過幾個牌子、改用小水球，極性都照這個規則。三顆先在頭髮上擦到全都帶負，再兩兩互擦，還是大的那顆變負。",
+      "scope": "兩頁的教學預印本，只有極性、沒有電量與次數統計；不得說「所有橡膠」或給拉伸門檻；只當開場示範。",
+      "source_ids": [
+        "P70-S004"
+      ],
+      "source_locator": "S002 第 1 頁右欄末段至第 2 頁",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：教學短文、無數據、未經審查，照保守算法與「只讀摘要」同級。 原提案 F38-002（目標 C16-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；原文相符；計數降為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一種材料，只要一顆拉得比較緊，正負就固定了——排行榜上沒有「拉多緊」這一欄。",
+        "visual": "兩顆同色氣球一大一小互擦，小的冒出「＋」、大的冒出「－」。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P70-005",
+      "question": "同一捲鐵氟龍，拉長過的和沒拉過的互相碰，誰會帶正電？",
+      "domain": "靜電與材料",
+      "mechanism_key": "electrostatics.strained_ptfe_voids_systematic_charge_direction",
+      "answer_target": "拉長過的那片帶正。凱斯西儲大學 Lacks 研究群和土耳其 Bilkent 大學 2017 年做了三組：兩片都沒拉過互碰 40 次、兩片都拉長 100%（應變 100%）互碰 40 次，每次都一正一負，但方向隨機，平均都和零分不開；拿沒拉過的對上拉過的碰 80 次，沒拉過的平均 −1.2 奈庫侖、拉過的 +1.2 奈庫侖，論文說每一次都落在這個方向，和哪一片在動無關。X 光繞射和拉曼光譜看不出分子結構有差，看得到的差別是拉過的表面多了從奈米到微米的孔洞和銀紋；研究者據此認為是這些微結構左右了起電。",
+      "scope": "只有 PTFE；孔洞「決定」方向是研究者推論（原文 can govern）；肉眼可見的孔洞照片是 250% 以上應變，不得配在 100% 的段落；新聞稿說法不採。",
+      "source_ids": [
+        "P70-S005"
+      ],
+      "source_locator": "S003 摘要；§III.B 與 Fig. 3；§III.C–D",
+      "premise_status": "screened",
+      "notes": "算 1：三組對照與化學無差、只差微結構，同一實驗的多個數字合計一條。 原提案 F38-003（目標 C16-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；數字、條件全符；改掉自行換算的「原長兩倍」，補研究者推論的語氣。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "化學成分一模一樣，只差「被拉過」，就像換了一種材料——轉折一的第一個實驗證據。",
+        "visual": "兩片白色薄膜，一片表面放大看到細小孔洞；80 個點全落在同一象限的散點圖。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P70-006",
+      "question": "從同一塊材料切下來的幾小塊互相碰，一開始亂帶電，後來會不會排出順序？",
+      "domain": "靜電與材料",
+      "mechanism_key": "electrostatics.identical_pdms_random_then_series_with_repetition",
+      "answer_target": "會，而且是自己排出來的。奧地利 ISTA 的 Waitukaitis 研究群 2025 年從同一大片矽膠（PDMS）切出 8 小塊，每次量之前都先放電，在 30% 濕度、22 °C 下兩兩按壓接觸。第一輪 28 組配對的結果幾乎隨機，怎麼排都排不成「上面的碰下面的一定帶正」的序列；同一組樣品在接下來幾天重做，隨機一天天消退，通常第五次左右排出完美的序列（最快 2 次、最慢 10 次）。每換一組全新樣品，排出的順序都不一樣。",
+      "scope": "只測 PDMS；不推到所有高分子或氧化物。",
+      "source_ids": [
+        "P70-S006"
+      ],
+      "source_locator": "S004 Fig. 1 圖說與正文第 2–4 段",
+      "premise_status": "screened",
+      "notes": "算 1：同一實驗的隨機→有序算一條。與 F38-005、F38-007 同人封頂合計 2.5。 原提案 F38-004（目標 C16-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）照原稿收；原文逐句相符；計 1.0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "序列不是材料出生就帶著的，是碰出來的。",
+        "visual": "8 × 8 的格子圖，第一天紅藍亂點，第五天整齊分成對角線兩半。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P70-007",
+      "question": "為什麼同一種矽膠，碰過越多次的那塊越容易帶負電？研究者能指定它們的順序嗎？",
+      "domain": "靜電與材料",
+      "mechanism_key": "electrostatics.contact_history_bias_forced_series_nanoscale_smoothing",
+      "answer_target": "碰的次數本身就是原因，而且可以拿來「做出」一個順序。同一組研究者另做 48 塊，一半先互碰 100 次再放電，拿去對沒碰過的，碰過的總是帶負；照這個規則安排每塊的接觸次數和先後，他們讓 8 塊在量測時呈現事先指定的字母順序——但同一組樣品改回一般的輪流順序重測，那個順序就留不住。用 X 光光電子能譜、低能離子散射、拉曼、和頻光譜去找表面化學變化，都找不到；要算原子力顯微鏡影像的功率譜才看出：碰越多次，越細的高低起伏越平；刻意做粗（約 1 微米）的樣品對光滑（約 1 奈米）的則傾向帶正。作者寫，這強烈暗示細部變平就是偏差的來源；考慮接觸歷史，摩擦起電序列「是有用的經驗法則，僅此而已」。",
+      "scope": "只有 PDMS；強制出來的是量測時的「表象」，不是永久排序；因果是作者「strongly suggest」；不與 F38-006 的 PDMS 數字並列。",
+      "source_ids": [
+        "P70-S006"
+      ],
+      "source_locator": "S004 Fig. 2、Methods「Contact bias」「Series-forcing algorithm」、Fig. 4 與 Extended Data 8–9、結論段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：與 F38-004 同一篇，同一論文合計 1.5；與 F38-007（Waitukaitis 第一作者）合計 2.0 封頂。 原提案 F38-005（目標 C16-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；漏了「appearance」與 Extended Data Fig. 5 的「留不住」，已補；計數降為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「排行榜」可以被安排出來——追著一個固定順序，就像追海市蜃樓（作者語）。",
+        "visual": "兩疊卡片，一疊蓋上「碰過 100 次」印章，對上另一疊時全部亮藍色負號；AFM 表面圖由毛到平。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P70-008",
+      "question": "化學成分不變、只把矽膠調得更黏，它帶的電會變嗎？",
+      "domain": "靜電與材料",
+      "mechanism_key": "electrostatics.pdms_adhesion_more_negative_same_chemistry",
+      "answer_target": "會，越黏越負。拉脫維亞里加工業大學 Šutka 研究群和牛津大學 2026 年把同一種矽膠的主劑和硬化劑配成 5:1、10:1、15:1，化學結構不變、只改軟硬和黏性。拿去碰透明導電玻璃（ITO），三種都帶負；分開時要的力從 11.15 牛頓增加到 13.75 牛頓，帶電量從每平方公分 −0.18 變成 −0.47 奈庫侖。兩片同配比的互碰幾乎不帶電（0.002 奈庫侖／平方公分），最硬的 5:1 對最黏的 15:1 卻有 0.06，是同配比的 30 倍；摘要說黏性不同的兩片互碰時，較黏的那片帶負。",
+      "scope": "Article in Press 未編輯稿，數字可能在定稿時調整；對 ITO 的數字是名義負載 10 N；機制（斷鍵、帶電碎片轉移）是作者引前人，不計；不與 Sobarzo 的 PDMS 數字並列或相減。",
+      "source_ids": [
+        "P70-S007"
+      ],
+      "source_locator": "S005 摘要；Fig. 4 段；Fig. 5 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：未定稿的 Article in Press，兩組量測合計；Šutka 群封頂內。 原提案 F38-006（目標 C16-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；數字全符；因 Article in Press 計數降為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黏性也是「歷史」的一種——同一種膠，調配不同就分出正負。",
+        "visual": "三杯透明矽膠，越往右越黏；拉開時的力條和帶電條一起變長。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P70-009",
+      "question": "同一批陶瓷顆粒互相碰撞，大顆和小顆會帶不同的電嗎？是被困住的電子跑過去嗎？",
+      "domain": "靜電與材料",
+      "mechanism_key": "electrostatics.same_material_grains_size_charging_not_trapped_electrons",
+      "answer_target": "大顆帶正、小顆帶負，但被困電子數量差太遠，解釋不了。芝加哥大學 Jaeger 研究群 2014 年把同一工廠批次的陶瓷顆粒篩成大（平均 326 微米）、小（251 微米）兩群，用氣流混合約 30 分鐘，再讓它們在真空裡自由落過帶電銅板之間、用跟著掉的高速攝影機看每顆往哪偏：大顆平均帶 +180 萬個基本電荷，小顆 −230 萬，總和守恆。若要靠被困在表面的電子跑過去，表面每平方微米至少要有 15 個（較實際的估計是 90 個）；用熱釋光量到的上限只有每平方微米約萬分之一個，少了五個數量級。",
+      "scope": "只有一種陶瓷顆粒、一組大小比；與 Sobarzo 同一位第一作者，覆核可能併計。",
+      "source_ids": [
+        "P70-S008"
+      ],
+      "source_locator": "S006 摘要；第 1–3 頁",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：與 Sobarzo 2025（Waitukaitis 為通訊作者）合併封頂 2.0；「沙塵、火山灰都靠同材料大小不同起電」的 payoff 原文沒有，刪。 原提案 F38-007（目標 C16-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；數字全符；題目的「砂粒」改「陶瓷顆粒」，刪原文沒有的沙塵、火山灰外推；同人封頂後計 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一種材料只差大小，就分出正負；最常被拿來解釋的「被困電子」，數量差了五個數量級。",
+        "visual": "大小兩種顆粒一起往下掉，經過帶電板時大的往一邊、小的往另一邊偏。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P70-010",
+      "question": "風吹沙的時候，沙粒帶的電會改變沙子飛多高嗎？",
+      "domain": "靜電與材料",
+      "mechanism_key": "electrostatics.saltation_electrification_lowers_and_concentrates_sand",
+      "answer_target": "研究者算出來會。密西根大學 Kok 和 Renno 2008 年引述野外量測：中等風速的風沙裡電場可達每公尺約 16 萬伏，方向向上，表示跳著走的沙粒對地面帶負。他們把起電放進風沙躍移模型，算出電力讓躍移的沙粒更多、飛得更貼近地面，與幾組量測相符，不加電力的傳統理論則對不上。",
+      "scope": "模型論文，電場數字是引述；只說「研究者據此認為」。",
+      "source_ids": [
+        "P70-S009"
+      ],
+      "source_locator": "S007 摘要；第 2–3 頁；結果段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：模型結論，量測是引述。與本題「誰帶正」無直接關係，V40 不列入最終核心。 原提案 F38-008（目標 C16-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；原文相符；刪「地面附近」；模型降為 0.25，題外。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "靜電不只是頭髮豎起來的小把戲，也可能改變沙丘上的風沙。",
+        "visual": "沙丘剖面，貼地跳躍的沙粒帶「－」，地面帶「＋」，電力線向上。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P70-011",
+      "question": "兩顆一樣的玻璃珠互碰會交換電荷，要是把它們烤乾呢？",
+      "domain": "靜電與材料",
+      "mechanism_key": "electrostatics.adsorbed_water_ions_field_driven_same_material_charging",
+      "answer_target": "烤乾就不行了——至少在這個實驗裡。中國石油大學與浙江大學 2015 年把半徑 1 毫米的玻璃珠放進充滿矽油、兩片帶電金屬板之間：兩顆一樣的玻璃珠碰撞時交換大量電荷、總量大致守恆；兩顆貼在一起的珠子，要加上垂直於接觸面、每公分 2.5 千伏的電場才會分開帶電。先烘烤幾小時去掉表面水分的玻璃珠，在兩片板子之間就不再來回彈跳，研究者據此說表面的水是起電所必需。疏水的聚乙烯、聚苯乙烯、鐵氟龍珠也不彈，鐵氟龍表面的水不論濕度都只有一到兩層分子；把鐵氟龍表面處理成親水（接觸角從約 120 度降到 15 度）之後就會彈。研究者認為：表面吸附的水裡的離子被外加電場推到兩側，碰的那一下在小水橋裡中和，分開後一顆留正、一顆留負。",
+      "scope": "矽油中、要有外加電場；烤乾實驗看的是珠子在電極間不再彈跳，論文沒有烤乾兩珠互碰的量測；離子身分是研究者認為；Kamra 1971 沙丘火花為引述，不計；不得推成一般空氣中摩擦起電都靠水。",
+      "source_ids": [
+        "P70-S010"
+      ],
+      "source_locator": "S008 §II 實驗 1–4；§III；§V 與 Fig. 5",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：同一論文的烘乾、疏水與改質對照合計；烘乾結論的對象改正。 原提案 F38-009（目標 C16-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；烘乾實驗的對象寫錯（是電極間不再彈跳，不是兩珠互碰不分電），已改；計 0.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水在這裡是搬運電荷的幫手——沒有水，同材料就分不出正負。",
+        "visual": "兩顆玻璃珠在兩片板子間來回彈；旁邊一顆被「烘乾」的珠子黏在原地不動。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P70-012",
+      "question": "空氣越潮濕，搖晃的塑膠珠子就越不會帶靜電嗎？",
+      "domain": "靜電與材料",
+      "mechanism_key": "electrostatics.polymer_beads_charge_vanishes_above_80rh",
+      "answer_target": "多數是，但不是全部，轉折點和正負都看材料。哥廷根 Max Planck 研究所 2017 年把約 2000 顆塑膠球放在不鏽鋼容器裡上下搖，濕度可從 5% 調到 100%：低於約 30% 時強烈帶電，高於 80% 時多數幾乎不帶電，但疏水的聚苯乙烯和鐵氟龍珠在 80% 以上仍帶數十奈庫侖。從哪個濕度開始掉、帶正還是帶負，都依材料而定，只有最親水的兩種（尼龍、聚甲醛）帶正。研究者還用這個濕度依賴，去控制兩種珠子搖完是分層還是混在一起。",
+      "scope": "珠子在不鏽鋼容器裡搖，量的是整批珠子的淨電荷，不是同材料互碰的正負；各材料轉折不同，不給單一門檻；「表面電阻在 50–70% 降二十倍」是引用 Nemeth 等的電阻資料，不得寫成本研究的電荷。",
+      "source_ids": [
+        "P70-S011"
+      ],
+      "source_locator": "S009 摘要；§III；表 II、Fig. 4",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：一個實驗、一條濕度曲線。 原提案 F38-010（目標 C16-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；補上正文「疏水珠在高濕仍帶數十 nC」，刪掉「全部不帶電」的印象；計 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣是水，在這裡變成漏電的通道。",
+        "visual": "濕度計從 10% 轉到 90%，下方一堆珠子身上的「－」一個個消失。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P70-013",
+      "question": "火山灰在濕空氣裡，還帶得了那麼多電嗎？",
+      "domain": "靜電與材料",
+      "mechanism_key": "electrostatics.volcanic_ash_humidity_order_magnitude_charge_drop",
+      "answer_target": "少很多。Emory 與奧勒岡大學的研究者在可控濕度與溫度的箱子裡讓微米級火山灰低能量、低頻率地互撞：少量的水就能讓火山灰帶的電少到最多約十分之一；變濕度那組實驗的相對濕度從約 0 調到 50%，原文寫「濕度增加 50%，平均電荷密度降了將近一個數量級」，20% 到 30% 之間掉得最陡；濕度不變、溫度升高也讓電變少。研究者據此認為，在煙柱高處濕潤、碰撞又慢的地方，摩擦起電可能沒什麼效率。",
+      "scope": "預印本第 2 版；變濕度實驗的溫度原文表列 20 °C、正文寫 25 °C，片中不說溫度；低能量長時間碰撞，不代表火山口附近；火山閃電停歇的解釋只用「研究者認為」。",
+      "source_ids": [
+        "P70-S012"
+      ],
+      "source_locator": "S010 Key Points、摘要、結果段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：預印本、一個結果。 原提案 F38-011（目標 C16-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；「50 個百分點」改照原文並註範圍；指出原文 20／25 °C 不一致；計 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "玻璃珠要水才能起電，火山灰卻被水澆熄——轉折二：水是幫手還是漏電，看材料和情境。",
+        "visual": "火山煙柱分兩段：下段閃電密集，上段濕雲裡閃電稀疏。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P70-014",
+      "question": "兩塊金屬碰一下，帶的電就是課本上「功函數差」算出來的那麼多嗎？",
+      "domain": "靜電與材料",
+      "mechanism_key": "electrostatics.metal_sphere_bounce_excess_charge_on_separation",
+      "answer_target": "方向照課本，電量不照。德國杜伊斯堡—埃森大學 2021 年讓直徑 1 毫米的金球在真空中掉到接地銅板上彈跳超過 15 次，時間解析度不到 1 微秒：接觸約 6 到 8 微秒，期間電位被拉到只有零點幾伏，金帶負，正是功函數差預期的方向；但電接觸斷開的那一瞬間，不到 1 微秒就升到最多約 3 伏，從 40 毫米高落下的球可到約 10 伏。不論球原本帶正、帶負或不帶電，碰一次之後都帶負，對先前的電荷沒有記憶；電荷隨撞擊速度增加，只有速度趨近零時才回到課本算法。研究者認為是接觸區變形，讓斷開瞬間的電容變大。",
+      "scope": "只有金對銅；極性與功函數預期一致，只有電量隨撞擊速度變；變形增加電容是研究者推論；不推到絕緣體，不得當成「誰帶正誰帶負」的反例。",
+      "source_ids": [
+        "P70-S013"
+      ],
+      "source_locator": "S011 摘要；引言末段；Results",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：一個實驗，與本題的極性主軸只間接相關。 原提案 F38-012（目標 C16-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；數字全符；補「極性仍照功函數」，不能當翻轉正負的例子，改 segment；計 0.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "金屬的正負照課本，但電量跟怎麼撞有關——連最乾淨的接觸，答案也不只寫在材料表上。",
+        "visual": "慢動作：金球落下、彈起；電壓計在離開的瞬間跳高。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P70-015",
+      "question": "既然誰帶正誰帶負這麼難預測，有沒有人提出統一的原因？",
+      "domain": "靜電與材料",
+      "mechanism_key": "electrostatics.flexoelectric_asperity_hypothesis_1_10_volts",
+      "answer_target": "有人提出假說，還沒定論。美國西北大學 Marks 研究群 2019 年認為：兩個表面接觸時，奈米大小的凸點被壓、被拉得彎曲不均勻，「撓曲電」效應會在凸點上產生電位差；他們的單一凸點模型算出壓入和拉開時約 1 到 10 伏，甚至更大，並說這可以一併解釋黏滑時正負交替、表面電荷成一塊一塊、同材料互碰也會起電等觀察。",
+      "scope": "純模型假說，用「研究者提出」；不得說已證實。",
+      "source_ids": [
+        "P70-S014"
+      ],
+      "source_locator": "S012 摘要；第 1 頁；模型段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：純模型假說，照保守算法降。 原提案 F38-013（目標 C16-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；原文相符；假說降為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把「碰過、拉過、黏不黏」串起來的候選答案之一：變形本身就會生電。",
+        "visual": "放大鏡下的凸點被壓彎，一側亮正號、一側亮負號。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P70-016",
+      "question": "在沒有重力的太空裡，碰撞帶電能讓小顆粒黏成團嗎？",
+      "domain": "靜電與材料",
+      "mechanism_key": "electrostatics.microgravity_charged_basalt_grains_aggregate_no_bounce",
+      "answer_target": "在落塔實驗裡可以。杜伊斯堡—埃森大學 Wurm 研究群 2021 年先把直徑 500 到 600 微米的玄武岩球放在內壁塗了同樣玄武岩球的容器裡搖 15 分鐘帶電，再在德國不來梅落塔約 9 秒的微重力裡看它們怎麼動：顆粒互相吸引、碰撞、黏住，由下而上長成不規則小團，觀察到的碰撞沒有一次彈開。量到的碰撞速度典型每秒 2 公分、最快超過 4 公分，全部黏住；不帶電的同樣顆粒，理論上要慢到每秒約 1 毫米以下才黏得住。",
+      "scope": "研究者估計真實黏著速度可能到每秒 10 公分以上，是修正二維量測後的估計；行星形成的意義是研究者推論。",
+      "source_ids": [
+        "P70-S015"
+      ],
+      "source_locator": "S013 摘要；§2；§4",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）。與本題「誰帶正誰帶負」無關，V40 不列入最終核心。 原提案 F38-014（目標 C16-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；補帶電方式與顆粒尺寸；10 cm/s 改為研究者修正後的估計；題外，不列最終核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同材料互碰帶的電，可能也是太空中塵粒長大的一步。",
+        "visual": "黑底上一群小石球慢慢互相靠近、黏成一串葡萄。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P70-017",
+      "question": "撕膠帶為什麼會一頓一頓，而不是平順地撕開？",
+      "domain": "黏接與設計",
+      "mechanism_key": "adhesion.tape_peel_fracture_energy_decreases_with_speed_instability",
+      "answer_target": "因為撕得越快反而越省力。里昂高等師範學院 Santucci、Vanel 研究群 2015 年說明：當撕開所需的斷裂能隨速度變快而減小，剝離的前緣就會不穩定，一下卡住、一下猛衝。他們以約 90 度撕 3M Scotch 600，每秒拍 30 萬到 52.5 萬格：拉速超過約每秒 0.35 公尺——正是斷裂能開始隨速度下降的地方——黏滑出現；超過約每秒 5.6 公尺，在毫秒尺度上又變得平穩。",
+      "scope": "單一膠帶（3M Scotch 600 從同款膠帶背面撕開）與約 90 度；速度門檻不得推到所有膠帶或從捲上直接撕。",
+      "source_ids": [
+        "P70-S018"
+      ],
+      "source_locator": "S016 第 1 頁；第 2 頁（Va、Vd）",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：與 F38-017 同一篇，同篇合計 1.0；里昂群合計 2.0。 原提案 F38-015（目標 C16-02，原角色 hook；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；原文相符；補撕的基板條件；同篇合計降為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「越快越好撕」聽起來是好事，正是它讓膠帶一頓一頓。",
+        "visual": "慢動作的膠帶剝離線：停、衝、停、衝；旁邊一條斷裂能隨速度下降的曲線。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P70-018",
+      "question": "把膠帶掛上固定重物讓它自己往下撕，也會一直一黏一滑嗎？",
+      "domain": "黏接與設計",
+      "mechanism_key": "adhesion.constant_load_peel_stick_slip_transient",
+      "answer_target": "不會一直。里昂與蒙彼利埃的研究者 2007 年用每秒最多 16000 格的高速攝影機，第一次直接拍到剝離點在黏滑時怎麼動：在固定掛重下，黏滑只是暫時出現；黏與滑兩段的時間差不多長，平均速度高時，滑的那段反而比黏的長。",
+      "scope": "定力剝離；不與定速剝離的數字混用。",
+      "source_ids": [
+        "P70-S017"
+      ],
+      "source_locator": "S015 摘要；§7.1；結論",
+      "premise_status": "screened",
+      "notes": "算 0.5；里昂群封頂內。 原提案 F38-016（目標 C16-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）照原稿收；相符；計 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「黏得久、滑得快」的直覺圖像，在高速攝影下並不準。",
+        "visual": "膠帶下掛一個砝碼，剝離點的位置—時間圖像台階逐漸變平。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P70-019",
+      "question": "膠帶「滑」的那一下，裡面是一口氣撕開的嗎？",
+      "domain": "黏接與設計",
+      "mechanism_key": "adhesion.tape_micro_stick_slip_bending_energy_near_front",
+      "answer_target": "不是，滑裡面還有更小的黏滑。同一研究群 2015 年發現：大的黏滑是整段被撕起膠帶的拉伸能一次次釋放；但在「滑」的那段裡，前緣還以更高的頻率一頓一頓前進，對應 KAUST 的 Thoroddsen 等先前拍到的一條條橫向裂縫，研究者估計這些裂縫以每秒 650 到 900 公尺橫越膠帶；來源是剝離前緣附近膠帶的彎曲能週期釋放——這種微黏滑的振幅和週期，和被撕起的膠帶有多長無關。",
+      "scope": "研究者的能量解釋與速度估計；650–900 m/s 只屬本研究，不與 KAUST 的數字合併；不給頻率數字。",
+      "source_ids": [
+        "P70-S018"
+      ],
+      "source_locator": "S016 摘要；結果段",
+      "premise_status": "screened",
+      "notes": "算 0.5；里昂群封頂內。 原提案 F38-017（目標 C16-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；補里昂自己的裂縫速度估計，並寫明不與 KAUST 合併；計 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉折一：吱吱聲不是「一黏一滑」那麼簡單，滑裡面還藏著幾十次小撕裂。",
+        "visual": "放大的剝離前緣：大鋸齒裡每個斜邊再放大，又是一排小鋸齒。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P70-020",
+      "question": "膠帶背襯越硬，那些小小的頓挫會跟著變大嗎？",
+      "domain": "黏接與設計",
+      "mechanism_key": "adhesion.micro_stick_slip_amplitude_period_cube_root_bending_modulus",
+      "answer_target": "會。里昂研究群 2018 年的預印本量到：微黏滑的振幅和週期的三分之一次方成正比，比例係數隨剝離角略變，隨膠帶背襯的彎曲模數系統性增加；研究者用「彎曲能轉成動能」的能量收支解釋這個規律。",
+      "scope": "預印本；只讀摘要與第 1 頁。",
+      "source_ids": [
+        "P70-S019"
+      ],
+      "source_locator": "S017 摘要",
+      "premise_status": "screened",
+      "notes": "算 0.25：只讀摘要、預印本；內容偏技術，寫稿時最先可刪（無聊風險高）。 原提案 F38-018（目標 C16-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）照原稿收；相符；0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "膠帶有多硬，決定它「抖」得多大。",
+        "visual": "兩條不同厚度的膠帶並排，前緣小鋸齒一大一小。",
+        "seconds": [
+          30,
+          30
+        ]
+      }
+    },
+    {
+      "id": "P70-021",
+      "question": "撕膠帶的角度和速度改變，黏滑會變成別的樣子嗎？",
+      "domain": "黏接與設計",
+      "mechanism_key": "adhesion.tape_peel_angle_speed_transition_to_inertial_oscillation",
+      "answer_target": "會。里昂研究群 2016 年控制剝離角與被撕起的長度、用定速撕：拉速或角度增加時，前緣的振盪從「長時間卡住、極短時間滑走」，逐漸變成速度振幅約為剝離速度兩倍的平滑正弦擺動；他們用加速、減速被撕起那段膠帶所需、與角度有關的動能來解釋，稱為「慣性」區。",
+      "scope": "只讀摘要與引言；不給角度門檻。",
+      "source_ids": [
+        "P70-S020"
+      ],
+      "source_locator": "S018 摘要",
+      "premise_status": "screened",
+      "notes": "算 0.25：同群封頂。 原提案 F38-019（目標 C16-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）照原稿收；相符；0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "換個撕法，膠帶的節奏就換了。",
+        "visual": "同一條膠帶以 45 度與 135 度撕，速度曲線一個是鋸齒、一個是正弦。",
+        "seconds": [
+          30,
+          30
+        ]
+      }
+    },
+    {
+      "id": "P70-022",
+      "question": "撕膠帶的吱吱聲，到底是從哪裡來的？",
+      "domain": "黏接與設計",
+      "mechanism_key": "adhesion.tape_screech_pulses_match_transverse_fracture_bands",
+      "answer_target": "從一條條橫越膠帶的小裂縫來。沙烏地阿拉伯 KAUST 的 Thoroddsen 研究群 2014 年以每秒 48000 格高速攝影同步 192 kHz 錄音，以每秒 3 到 15 公尺撕四種市售透明膠帶：每次「滑」裡都有一條條橫向裂開的帶子，間距依品牌約 120 到 200 微米、同品牌固定（他們引述更早用每秒百萬格拍到的研究：這些裂縫橫越膠帶最快約每秒 500 公尺）。錄音裡每個滑相的尖峰數，正好等於帶子數；例如一次滑相約 540 微秒裡有 12 條，對應的聲音約 22 kHz。",
+      "scope": "四種膠帶、同一裝置、剝離角 30–45°；500 m/s 是引述 2010 年研究，不計、不得說成本研究量到；頻率依速度與帶距而變，不給固定音高。",
+      "source_ids": [
+        "P70-S021"
+      ],
+      "source_locator": "S019 Observations；Audio",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：同一實驗的帶距與尖峰對應合計；KAUST 群合計 1.5。 原提案 F38-020（目標 C16-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；「最高約 500 m/s」是引述別篇，改為引述並不計；計 0.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每一聲吱，對應一條橫向小裂縫。",
+        "visual": "慢動作畫面上一條條細黑線從膠帶一側掃到另一側，下方波形每一個尖峰對齊一條線。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P70-023",
+      "question": "撕膠帶的聲音，有一部分是人耳聽不到的嗎？",
+      "domain": "黏接與設計",
+      "mechanism_key": "adhesion.tape_peel_ultrasound_share_by_regime",
+      "answer_target": "有，而且不少。同一研究群量到另一個約 50 kHz 的超音波峰，在連續快速剝離時最明顯（例如每秒 7.2 公尺除以 150 微米的帶距，約 48 kHz）；用 20 kHz 分頻估算，一黏一滑的剝離有 13% 到 40% 的聲能在人耳聽不到的範圍，連續剝離多數是 46% 到 79%。",
+      "scope": "麥克風上限 96 kHz；百分比是估算範圍。",
+      "source_ids": [
+        "P70-S021"
+      ],
+      "source_locator": "S019 Audio 後段；最後一段",
+      "premise_status": "screened",
+      "notes": "算 0.25：同論文第二個結果，KAUST 群封頂內。 原提案 F38-021（目標 C16-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）照原稿收；相符；0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "你聽到的吱吱聲，只是它發出的一部分。",
+        "visual": "聲譜圖上 20 kHz 畫一條線，線上方仍有一大塊亮區。",
+        "seconds": [
+          30,
+          30
+        ]
+      }
+    },
+    {
+      "id": "P70-024",
+      "question": "吱吱聲是裂縫尖端劃過空氣時發出來的嗎？",
+      "domain": "黏接與設計",
+      "mechanism_key": "adhesion.tape_screech_weak_shocks_at_tape_edge",
+      "answer_target": "不是尖端，是裂縫跑到膠帶邊緣的那一刻。KAUST 研究群 2026 年用兩台同步高速攝影機（一台從玻璃底下看膠水裡的裂縫、一台用紋影法拍空氣中的壓力波）加上膠帶兩側各一支麥克風，手拉膠帶、角度約 45 度：每段約 0.5 毫秒的滑相由幾十條約 220 微米寬的裂縫組成，每條以每秒 250 到 600 公尺橫越膠帶。研究者原本以為聲音從裂縫起點那側先傳出，結果相反：聲脈衝只出現在靠近裂縫終點那側的麥克風，均方根強度大 1.9 倍；紋影畫面看到一串彼此分開的微弱震波，從膠帶邊緣出發，速度每秒 355 ± 2 公尺，約 1.04 馬赫。",
+      "scope": "期刊校樣，正式版數字以期刊為準；裂縫速度換算成空氣中約 0.7–1.8 馬赫（原文），不得說每條裂縫都超音速；相對膠水的雷利波仍是亞音速；邊緣發聲的機制是研究者的解釋。",
+      "source_ids": [
+        "P70-S022"
+      ],
+      "source_locator": "S020 摘要；§III；Fig. 2、4",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：未定稿校樣；KAUST 群合計 1.5。 原提案 F38-022（目標 C16-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V40（2026-11-12）改字後收；數字全符；補馬赫範圍、手拉條件與機制語氣；校樣降為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉折二：聲音不是「抖」出來的，是一串小小的音爆，從邊緣一個個射出來。",
+        "visual": "紋影畫面：膠帶右側一圈圈弧形震波，左側一片安靜。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P70-025",
+      "question": "跟人比較近的猴子，腦子聽得出音樂裡的拍子嗎？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "rhythm.rhesus_mmn_detects_pitch_gaps_not_downbeat_omission",
+      "answer_target": "在這套測法下找不到。研究者給兩隻獼猴戴頭皮電極聽鼓聲節奏：牠們對突然的音高變化、隨機出現的空檔都有類似人類『察覺異常』的腦波；強拍被省略時腦波也有變化，但一段沒省略任何音的節奏引起的反應跟它一樣，所以看不出牠們是因為『少了強拍』才反應——研究者認為牠們抓到的是一組聲音的開頭，不是拍子。同一套作法，人類成人和新生兒先前都測得到強拍反應。同研究群後來再測：猴腦對『間隔是否規律』敏感，但仍找不到強弱拍結構的證據。",
+      "scope": "每篇只有 2 隻猴（2012 年為 2 歲與 5 歲雄猴）；『沒測到』不等於證明沒有；不得說『猴子對省略強拍沒有反應』；人類結果是引用先前研究。",
+      "source_ids": [
+        "P70-S023",
+        "P70-S024"
+      ],
+      "source_locator": "F39-S004 Abstract、Results 實驗 1–3；F39-S005 Abstract、Results",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：兩篇各 2 隻、同研究群；與 F39-006、F39-012 併入 Merchant／Honing 合作網（合計 1.5）。 原提案 F39-005（目標 C17-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；核心結論（找不到拍子知覺的證據）成立，但推理被作者寫反，已依原文改寫。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第二個轉折的支點：親緣最近不代表最會聽拍子，接著問『那關鍵是什麼』。",
+        "visual": "兩條腦波曲線：音高變化有凹陷、強拍省略沒有",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P70-026",
+      "question": "猴子聽不出拍子，那牠們練過之後能跟著節拍器按鍵嗎？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "rhythm.rhesus_trained_predictive_tapping_visual_bias",
+      "answer_target": "能跟上簡單的等速節拍，但有條件。另一篇研究裡，經訓練的獼猴跟著『閃光』節拍器按鍵；其中一隻同時做了可預測與不可預測兩種版本：跟節拍器時按鍵比閃光晚約 263 毫秒，不可預測時的反應時間約 381 毫秒，短了一截，表示牠不是單純看到才按。研究者並引用先前研究指出，猴子偏好看的節拍器勝過聽的，也沒有人類那種在各種速度與拍型間切換的彈性。",
+      "scope": "263／381 毫秒只來自一隻猴（M01）；視覺節拍器；『偏好視覺』『缺乏彈性』是研究者引用的先前研究。行為數字取自以神經資料為主的論文。",
+      "source_ids": [
+        "P70-S025"
+      ],
+      "source_locator": "F39-S006 Results 第 1 段（ST 263±37 ms、SRTT 381±46 ms）；Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：一隻猴、同合作網。 原提案 F39-006（目標 C17-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；數字相符但主詞錯（一隻非兩隻），改正；引用論點標明。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把『聽拍子』和『按拍子』分開：猴子能預測節奏，但偏向眼睛而不是耳朵。",
+        "visual": "猴子按鍵的時間點比反應時間早一截的示意",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P70-027",
+      "question": "大鼠動作比人快得多，為什麼偏好的拍速卻和人差不多？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "rhythm.rat_auditory_cortex_adaptation_sets_120_140_bpm_tuning",
+      "answer_target": "研究者認為由腦決定，不是由身體大小決定。大鼠聽覺皮質對拍點的反應在約 120–140 BPM 最強，用約 250 毫秒的短期適應模型就能解釋；若最佳拍速取決於身體動作的節奏，體型小、步伐快的大鼠應該偏好快得多的速度，但結果沒有。",
+      "scope": "模型解釋的是聽覺皮質反應，研究者自己說不是完整的拍子處理機制。",
+      "source_ids": [
+        "P70-S026"
+      ],
+      "source_locator": "F39-S010 Introduction（兩種假說）；Results〈neural〉〈model〉；Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.25（照作者）：與 F39-010 同篇。 原提案 F39-011（目標 C17-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）照原稿收；相符；只是模型解釋，作者 scope 已寫。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "解釋為什麼音樂常落在每分鐘一百多拍：可能和聽覺系統的時間常數有關（只說研究者認為）。",
+        "visual": "人與大鼠步頻差很多、但兩條腦反應曲線都在 120–140 拍達頂",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P70-028",
+      "question": "剛滿一歲的寶寶聽到兒歌會手舞足蹈，那是在跟拍子嗎？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "rhythm.infant_music_movement_increases_by_12_months_without_beat_sync",
+      "answer_target": "還不是。研究者讓 79 名 3、6、12 個月大的嬰兒聽兒歌與打亂版，同時量腦波與全身動作。所有年齡的腦波都對真音樂反應較強；但只有 12 個月大的嬰兒對真音樂動得比打亂版多（前後搖、左右擺、像拍手），而且沒有任何年齡組的動作在時間上和音樂拍子協調。",
+      "scope": "只到 12 個月；刺激都是 135 BPM；不得說嬰兒『聽不懂』音樂。",
+      "source_ids": [
+        "P70-S027"
+      ],
+      "source_locator": "F39-S012 Abstract、eLife digest、Results〈kinematics〉",
+      "premise_status": "screened",
+      "notes": "算 1.0（照作者）。 原提案 F39-013（目標 C17-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）照原稿收；逐字相符。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "收在人類自己：寶寶也是先會被音樂帶動、之後才學會對準——和鸚鵡、海獅的故事合起來。",
+        "visual": "嬰兒骨架追蹤動畫，旁邊兩條線：腦波有反應、動作與拍點沒對上",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P70-029",
+      "question": "史特拉第瓦里名琴價值上百倍，小提琴家戴上眼罩試拉，真的會選它嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "violin.blind_player_preference_new_over_old_italian",
+      "answer_target": "在一次雙盲試拉中多半沒有。21 位有經驗的小提琴家戴著改裝的焊工護目鏡、在調暗燈光的飯店房間試拉 3 把新琴與 3 把古琴（2 把史特拉第瓦里、1 把瓜奈里，古琴合計約為新琴 100 倍價值）：最多人想帶回家的是一把新琴，最不受歡迎的是一把約 1700 年的史特拉第瓦里；21 人中只有 8 人選古琴帶回家。被問到自己挑的琴是哪一派時，17 人回答：3 人猜對、7 人猜錯、7 人說不知道。",
+      "scope": "人數與琴數少、只在乾燥的飯店房間、演奏者耳邊判斷；古琴未調整、弦未統一；快速配對測試裡新琴勝出主要靠一把特別不受喜愛的史特拉第瓦里。不得說所有史特拉第瓦里都不如新琴。研究群利益：共同作者 Curtin 是當代製琴師、Tao 任職於琴弦公司；片中不提任何製琴師或品牌名。",
+      "source_ids": [
+        "P70-S028"
+      ],
+      "source_locator": "F39-S013 Materials and methods 第 1–3 段；Results and discussion（Part 2、making-school 猜測）",
+      "premise_status": "screened",
+      "notes": "算 1.0（照作者）。Fritz 群（101～104）合計 2.5。 原提案 F39-101（目標 C17-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；數字逐字相符；補『7 人不知道』與 O1 拉低整體的限制、利益關聯。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "開場的反差：天價名琴在看不見的時候沒被選出來。",
+        "visual": "黑暗中戴護目鏡的演奏者、6 把琴排在床上",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P70-030",
+      "question": "盲測小提琴時，大家喜歡的會是同一把嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "violin.blind_test_individual_taste_outweighs_age_category",
+      "answer_target": "不是。同一次試拉中，幾乎每把琴都至少被一人選為某一項最好、也被另一人選為最差；同一對琴測兩次，21 人只有 11 人兩次選得一樣。新琴在『好拉』與『反應』兩項得分較高，『傳得遠』與『音色變化』兩項新舊沒有顯著差。研究者結論：個人口味與單把琴的差異，比新舊之分更重要。",
+      "scope": "同 F39-101 的實驗與限制。",
+      "source_ids": [
+        "P70-S028"
+      ],
+      "source_locator": "F39-S013 Results and discussion（重測 11/21；Figure 1–2 說明；p<.02、p=.62、p=.08）",
+      "premise_status": "screened",
+      "notes": "算 0.25（照作者）：同研究群、同一實驗。 原提案 F39-102（目標 C17-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）照原稿收；相符。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把問題從『新還是舊』拉到『哪一把、誰在拉』。",
+        "visual": "評分表：每把琴同時有人打勾最好、有人打叉最差",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P70-031",
+      "question": "坐在音樂廳後排的聽眾，聽得出哪把琴傳得比較遠嗎？是古琴嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "violin.hall_listeners_new_violins_project_better_than_strad",
+      "answer_target": "在兩場雙盲聽測中，新琴被判傳得較遠。巴黎 55 名聽眾（製琴師、小提琴家與其他）在有、無管弦樂團伴奏下，紐約 82 名聽眾在無伴奏下，比較 3 把史特拉第瓦里與 3 把新琴：在 0 到 1 的量尺上，新琴的『投射』平均多 0.19 與 0.27，有沒有樂團幾乎一樣；紐約聽眾也較偏好新琴（多 0.27）。",
+      "scope": "只有 6 把測試琴；投射是主觀評分；演奏者效果與選曲分不開。",
+      "source_ids": [
+        "P70-S029"
+      ],
+      "source_locator": "F39-S014 Results〈Paris〉（−0.002、0.19、CI 0.16–0.21）；〈New York〉（0.27、0.27）",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：主觀量尺、6 把琴、演奏者與選曲分不開。 原提案 F39-103（目標 C17-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；數字相符；改聽眾描述。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第一個轉折：連古琴最被稱道的『在大廳傳得遠』，盲測下也沒成立。",
+        "visual": "音樂廳剖面，聽眾在後排，簾幕後輪流拉兩把琴",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P70-032",
+      "question": "聽眾能不能聽出台上那把是古琴還是新琴？演奏者覺得『耳邊小聲』的琴，真的傳得遠嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "violin.listeners_chance_old_new_and_under_ear_loudness_tracks_projection",
+      "answer_target": "聽不太出來，而且『耳邊小聲、遠處才開』的說法沒得到支持。巴黎場的聽眾聽七位獨奏者各拉自己的琴，猜新舊，39 人共 273 次只有 122 次（44.7%）猜對。另外，演奏者在耳邊覺得較大聲的琴，在廳裡也較常被判傳得遠；研究者說，演奏者可能高估了自己喜歡、但耳邊較小聲的琴的投射。",
+      "scope": "樣本小；演奏者評分只有少數琴有五人以上評過。",
+      "source_ids": [
+        "P70-S029"
+      ],
+      "source_locator": "F39-S014 Results〈Part 3〉（122/273）；〈soloist vs listener〉表 2、表 3",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.25）：猜新舊是同篇另一部分的獨立結果（不同琴、不同設計），上修到 0.5；Fritz 群合計 2.5，未到 3.0 封頂。 原提案 F39-104（目標 C17-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；相符；補分母來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "拆一個常被引用的『古琴特性』。",
+        "visual": "七個問號：觀眾猜古琴新琴的票數分布",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P70-033",
+      "question": "那所有史特拉第瓦里都一樣好嗎？有沒有盲聽時特別出眾的一把？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "violin.cremona_makers_blind_timbre_one_strad_clearly_preferred",
+      "answer_target": "不一樣，有一把特別出眾。義大利另一個研究群請 70 名克雷莫納地區的製琴師與學生，隔著幕聽同一位演奏者拉音階，拿四把琴各與一把史特拉第瓦里參考琴比：在 55 名判斷前後一致的聽者中，43 人給另一把『黃金時期末』的史特拉第瓦里最高的悅耳分（每人可給多把最高分，也有 19 人給了一把 1917 年的現代琴）；那把 1917 年的琴在四個音色向度上與參考琴評分相近；約 300 歐元的工廠琴最差。研究者推測，少數音色出眾的史特拉第瓦里可能把整體名聲拉高。",
+      "scope": "演奏者沒矇眼；只用不揉音的音階；只有 2 把史特拉第瓦里且其一是參考琴、沒被評分；聽者是當地製琴社群；『名聲被少數好琴帶高』是研究者推測。不得把它說成『盲聽證明史特拉第瓦里比較好』，也不得與 Fritz 的分數並列相減。",
+      "source_ids": [
+        "P70-S030"
+      ],
+      "source_locator": "F39-S015 II.A–B；III.A（F(3,162)=75.19、43/55）；Abstract 末段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：一場、5 把琴、演奏者未矇眼。Rozzi／Antonacci 群（105、106、114）合計 1.25。 原提案 F39-105（目標 C17-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；數字相符；刪『一致』、改『新式琴』與『聽不出差』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第二個轉折的前半：盲測不是說名琴都是神話，而是『琴與琴之間差很多』，好的那把可以很好。",
+        "visual": "五把琴的悅耳度箱形圖，B 那一把明顯高",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P70-034",
+      "question": "被評為最悅耳的那把史特拉第瓦里，量起來哪裡不同？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "violin.preferred_strad_strongest_low_frequency_response",
+      "answer_target": "在低音區反應最強。研究者用小槌敲琴橋、量各琴的頻率響應：最受喜愛的史特拉第瓦里在琴身空氣共鳴與約 500 Hz 的琴體振動範圍反應最強，讓低音區特別飽滿；最不受喜愛的工廠琴反應集中在 0.8–1.4 kHz。",
+      "scope": "只量 5 把；量測與悅耳度只是並列，不能說低音強就是原因。",
+      "source_ids": [
+        "P70-S030"
+      ],
+      "source_locator": "F39-S015 III.B 與 Fig 2",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：5 把琴的敲擊頻響、與 F39-105 同一批琴。 原提案 F39-106（目標 C17-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）照原稿收；相符；只是並列，作者 scope 已寫。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把『好聽』連到一個看得到的量測。",
+        "visual": "兩條頻率響應曲線，在 300 與 500 Hz 附近一高一低",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P70-035",
+      "question": "古義大利提琴的聲音像人聲嗎？史特拉第瓦里跟更早的琴差在哪？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "violin.strad_formants_higher_like_shorter_vocal_tract",
+      "answer_target": "研究者認為像，而且史特拉第瓦里的共振峰較高。臺灣研究群用語音分析法分析 15 把古義大利提琴與 16 位歌者：阿瑪蒂 1570 年那把的前四個共振峰相當於男中音；6 把史特拉第瓦里父子的琴共振峰顯著較高，換算成『聲道長度』平均 16.15 公分，其他 9 把古琴 17.02 公分，差距和同一批男女歌者相當（16.44 對 15.74 公分）。研究者認為這可能是它聲音明亮的來源。",
+      "scope": "比的是古琴之間，不是古琴對新琴；只看拉音階的穩態頻譜、現代弦與配置；『模仿人聲是設計目標』『明亮的來源』是推論。不得與 F39-106 的『低音區飽滿』串成同一把琴的解釋。",
+      "source_ids": [
+        "P70-S034"
+      ],
+      "source_locator": "F39-S019 Results（Table 1、Fig 4；P=0.006、0.018）",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：推論成分高、古琴對古琴。Tai／Nagyvary 合作群（107、109～112）合計 2.5。 原提案 F39-107（目標 C17-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；數字相符；補比較組數目、限制跨研究串接。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "承認史特拉第瓦里在量測上確實有自己的特徵，但這是『不同』，不等於『盲測勝出』。",
+        "visual": "提琴與歌者的共振峰點落在同一張母音圖上",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P70-036",
+      "question": "史特拉第瓦里用的木頭比較特別嗎？用醫院的斷層掃描看得出來嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "violin.ct_density_differential_smaller_in_cremonese_plates",
+      "answer_target": "整體密度沒差，但年輪內的密度落差較小。研究者用醫院電腦斷層掃 5 把克雷莫納古琴（3 瓜奈里、2 史特拉第瓦里）與 8 把當代琴：木材密度中位數兩組沒有顯著差；但早材與晚材的密度差古琴明顯較小，雲杉頂板平均 183 對 274 g/L、楓木背板 115 對 128 g/L。研究者推測可能影響振動，但原因只能猜。",
+      "scope": "古琴只有 5 把；CT 看不到單一年輪，用第 10 與 90 百分位代替；共同作者 Borman 是當代製琴師，8 把當代琴中 4 把是他做的（含 1 把中提琴）；另一研究群認為差異可能是金屬鹽造成的掃描假象（F39-109）。片中不提製琴師名字。",
+      "source_ids": [
+        "P70-S031"
+      ],
+      "source_locator": "F39-S016 Abstract；Results〈Median density〉〈Density differentials〉",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：5 把古琴、原因只能推測。獨立研究群（萊頓大學醫學中心）。 原提案 F39-108（目標 C17-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；數字相符；改正利益關聯的數目。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "木材有可量的差別，接著問差別從哪來。",
+        "visual": "兩片面板的密度色圖，古琴的條紋對比較淡",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P70-037",
+      "question": "古琴木頭年輪裡密度差比較小，是木頭本來就不同，還是掃描被騙了？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "violin.ct_density_differential_possible_metal_salt_artifact",
+      "answer_target": "還有爭議。另一個研究群分析克雷莫納面板的化學成分後認為，斷層掃描量到的年輪密度差偏小，可能是金屬鹽優先被較疏鬆的早材吸收、讓 X 光吸收變高，造成密度被高估的假象，而不是木頭天生如此。",
+      "scope": "這是第二研究群的解讀，沒有重新掃描驗證；兩邊並列。",
+      "source_ids": [
+        "P70-S033",
+        "P70-S031"
+      ],
+      "source_locator": "F39-S018 Discussion（CT 密度差段落）",
+      "premise_status": "screened",
+      "notes": "算 0.25（照作者）。 原提案 F39-109（目標 C17-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）照原稿收；相符，為解讀並列。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "示範兩個研究群對同一筆量測給不同解釋，接到化學處理。",
+        "visual": "同一張掃描，一邊標『木頭不同』、一邊標『鹽讓 X 光變亮』",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P70-038",
+      "question": "史特拉第瓦里的楓木裡，找得到天然木頭不會有的礦物嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "violin.cremonese_maple_ash_contains_borate_fluoride_barium_sulfate",
+      "answer_target": "找得到。研究者分析 2 件史特拉第瓦里、2 把瓜奈里楓木背板刨屑的灰分：四件都含天然木材不會有的物質，例如硫酸鋇、氟化鈣、硼酸鹽、鋯矽酸鹽；史特拉第瓦里小提琴的氧化鈉是波士尼亞楓木平均的 11 倍、氯是 52 倍；統計上只有克雷莫納樣本與所有商業木材分得開。研究者推論木材曾經化學處理，可能為了防腐。",
+      "scope": "每件只有一小片刨屑、只有楓木（含一把大提琴）；『防腐』是推論；本文宣告無利益衝突，作者另有製琴活動之說未見於本文，片中不提。Nagyvary 也是 F39-S018 共同作者。",
+      "source_ids": [
+        "P70-S032"
+      ],
+      "source_locator": "F39-S017 Abstract；Results（硼、CaF2、Na2O 11 倍、Cl 52 倍）；判別分析；Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：4 件刨屑；與 F39-111 同一合作群、同方向。 原提案 F39-110（目標 C17-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；數字相符；刪除未經來源支持的利益關聯敘述，改為如實標示。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "名琴的『秘密』可能在化學，而不是在神秘的造型。",
+        "visual": "灰分顯微影像上標出硼、氟、鋇的分布點",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P70-039",
+      "question": "史特拉第瓦里的木頭也泡過化學藥劑嗎？三大製琴家族的配方一樣嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "violin.cremonese_spruce_soundboards_family_specific_mineral_recipes",
+      "answer_target": "研究者認為處理過，而且各家不同。臺灣研究群分析阿瑪蒂、史特拉第瓦里、瓜奈里家族樂器（包括小提琴、中提琴與大提琴）修復時取下的雲杉與楓木刨屑，對照現代木材與普通古琴：細胞構造與現代木材相同、纖維素結晶度也沒差，但元素組成不自然——阿瑪蒂已有少量硼與金屬；瓜奈里的兩件鋁含量 1,200 與 2,900 ppm，阿瑪蒂與史特拉第瓦里共十件都低於 50 ppm；一件史特拉第瓦里大提琴面板鈉高達 13,000 ppm，它的纖維素結構也改變了。",
+      "scope": "樣本僅 30–300 毫克、多種樂器混合；『各家配方』『功能』是推論；一般老琴的接觸區也有汗水造成的鈉、鉀、氯偏高，研究者已以對照扣除但只說高鈉『不能排除』影響；不得說化學處理就是好聲音的原因。",
+      "source_ids": [
+        "P70-S033"
+      ],
+      "source_locator": "F39-S018 Results（XRD、ICP-MS、SHG）；Table 1",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：同一合作群。 原提案 F39-111（目標 C17-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；數字相符但樣本描述與數值歸屬錯，已改。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第二個轉折的後半：材料確實被『工程化』過，但這和盲測輸贏是兩個問題。",
+        "visual": "三個家族的元素長條：硼、鋁、鈉",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P70-040",
+      "question": "木頭被化學處理，就一定會讓提琴更好聽嗎？有人在提琴上驗證過嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "violin.wood_treatment_acoustic_effect_untested_on_instruments",
+      "answer_target": "還沒有。提出化學處理的研究群自己說，克雷莫納木片太小、無法量力學或聲學性質；他們只在耳機紙振膜上加入 1,000 ppm 鋁，看到楊氏模數上升 14%、500 Hz 以下的低音增強，並說需要在整把琴上實驗才能知道聲學效果。",
+      "scope": "耳機振膜不是提琴；作者也提到史特拉第瓦里面板偏薄（2.0–2.8 mm 對現代約 3.0 mm）可能有關，但薄是否因後人刮薄未定。",
+      "source_ids": [
+        "P70-S033"
+      ],
+      "source_locator": "F39-S018 Discussion（耳機振膜 +14%；『Further experimentation… will be required』）；Introduction（厚度）",
+      "premise_status": "screened",
+      "notes": "算 0.25（照作者）。 原提案 F39-112（目標 C17-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）照原稿收；相符。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把『有差』和『有用』切開，避免觀眾帶走錯誤結論。",
+        "visual": "一張耳機振膜與一把提琴之間畫上問號",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P70-041",
+      "question": "做一把提琴，木頭好壞和造型尺寸，哪個影響振動比較大？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "violin.fe_screening_geometry_outweighs_tonewood_variability",
+      "answer_target": "在一個電腦模型裡，造型尺寸影響大得多。法國研究群用整把小提琴的有限元素模型，同時改動面板背板厚度、f 孔形狀等幾何，與 8 個木材彈性與密度參數：琴的振動行為主要取決於幾何選擇，正常範圍內的木材差異是次要效應；例如一個主要琴體模態最受面板厚度影響（33%）。研究者據此說可以用等級較低的木材。",
+      "scope": "純模型、非實測；木材參數只在一般木材變異範圍內，沒有模擬化學處理；結論是振動而非聽感；不得說成『木頭不重要』或建議用便宜木料。",
+      "source_ids": [
+        "P70-S035"
+      ],
+      "source_locator": "F39-S020 Abstract；Results（B1− 33%、f 孔長度）；Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.75）：純數學模型。獨立研究群（FEMTO-ST）。 原提案 F39-113（目標 C17-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；相符；照 V22–V29 的純數學模型計 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "提醒觀眾：就算木頭不同，手藝與尺寸的影響也可能更大。",
+        "visual": "有限元素模型的振型動畫，標出厚度與 f 孔",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P70-042",
+      "question": "上漆前塗的那層打底，會改變木頭的振動嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "violin.primer_alkaline_pretreatment_and_size_stiffen_spruce_crossgrain",
+      "answer_target": "會。研究者照文獻所載的古法打底，在 9 片雲杉板上試兩種鹼性前處理與三種膠底：只做前處理的變化在 10% 以內，但前處理讓膠底滲得更深，兔皮膠加高嶺土的組合使橫紋方向剛性最多增加約 20%。研究者結論：上漆前的處理不只改外觀，也改振動性質。",
+      "scope": "平板試片、非整把琴、沒有聽測；配方是文獻所載古法，不是從任何史特拉第瓦里樂器分析出來的。只當一句旁註。",
+      "source_ids": [
+        "P70-S036"
+      ],
+      "source_locator": "F39-S021 Abstract；Results；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：間接相關。 原提案 F39-114（目標 C17-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；相符；與主問題間接，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "提供『處理確實改變木材』的直接實驗，但仍停在材料層次。",
+        "visual": "兩片雲杉板，一片塗膠土，振動測試的頻率往上移",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P70-NA001",
+      "question": "兩本書一頁頁交錯疊在一起，為什麼拉不開？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "池中無同答案（X5001 紗線捻轉摩擦放大、P44-001 疊片彎曲耗散都不同）；只找到 Alarcón 等 2016 PRL（arXiv:1508.03290）一個研究群，未讀全文、未提核心，不足以成長題。 原提案 F38-NA001。",
+      "reentry_condition": "找到第二個研究群的交錯薄片摩擦放大開放原研究時，可與 X5001 合併成「摩擦怎麼被放大」再評。",
+      "reading_status": "只見搜尋摘要，未讀"
+    },
+    {
+      "id": "P70-NA002",
+      "question": "老教堂的窗玻璃下面比較厚，是玻璃幾百年來慢慢往下流嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "池中無（P214、H3024、P56-007 只談非晶與玻璃轉移）。關鍵原研究讀不到：Welch 等 2013 PRL（physics.aps.org Cloudflare 403）、Vannoni 等 2010 Optics Express（opg.optica.org Radware 機器驗證）、Zhao 等 2013 Nat Commun 琥珀（未開放）、Gulbiten & Mauro 2017 JACerS（付費）；Zanotto 1998 只有比薩大學第三方轉存，不用；能讀到的只有 Bauchy 群 2015 模擬預印本（arXiv:1503.07242）。 原提案 F38-NA002。",
+      "reentry_condition": "上述任兩篇有合法開放全文（作者機構典藏）時重開。",
+      "reading_status": "Bauchy 2015 全文已讀（3 頁，未計）；其餘被擋"
+    },
+    {
+      "id": "P70-NA003",
+      "question": "反覆拉長、放鬆橡膠管，不接觸任何東西，表面也會帶電嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P70-S016"
+      ],
+      "reason": "沒有兩個表面的接觸，作者自己說不符合摩擦起電特徵；放進摩擦起電題會混淆主線。 原提案 F38-NA003。",
+      "reentry_condition": "若另立「橡膠與電」題再用。",
+      "reading_status": "摘要與引言、結果前段已讀"
+    },
+    {
+      "id": "P70-NA004",
+      "question": "把橡膠膜單向拉長，轉不同角度再接觸，帶電量會跟著角度變嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Chen 等 arXiv:1912.05966（喬治亞理工，與 F38-S001 同屬 Wang 研究群）只讀摘要與引言；同群封頂，且只給定性橢圓模型。 原提案 F38-NA004。",
+      "reentry_condition": "期刊版可讀且需要第二個拉伸實驗時。",
+      "reading_status": "只讀摘要（本機快取 strain2019.pdf，sha256 前 16 碼 c1f2eebf7c845b2f）"
+    },
+    {
+      "id": "P70-NA005",
+      "question": "在真空裡撕膠帶，真的會放出 X 光嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Camara 等 2008 Nature 付費；搜尋到的 uc.edu 課程網站 PDF 是第三方轉存，不用；同群 2010 Applied Physics B 的 eScholarship 頁回 202 驗證頁；Constable 等 2010 APL 的 ro.uow.edu.au 也回 202。這是 C16-02 最需要的第三轉折。 原提案 F38-NA005。",
+      "reentry_condition": "eScholarship 或 Wollongong 典藏能正常開啟時，讀 Camara 2010 或 Constable 2010 全文。",
+      "reading_status": "未讀（被擋）"
+    },
+    {
+      "id": "P70-NA006",
+      "question": "摩擦後的表面是不是整片同一種電荷？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Baytekin 等 2011 Science「電荷馬賽克」：Edinburgh 典藏 PDF 403，CORE 鏡像不用（前幾輪 core.ac.uk 也 403）；只能從 Kaponig 與 Ģērmane 的引言轉述，不計。 原提案 F38-NA006。",
+      "reentry_condition": "Edinburgh Research Explorer 可下載時，可在 C16-01 加一章「同一面上正負交錯」，約 0.75。",
+      "reading_status": "未讀（403）"
+    },
+    {
+      "id": "P70-NA007",
+      "question": "YouTube 上上千支動物影片，只有會模仿聲音的物種會跟拍嗎？（Schachner 等 2009）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "WebSearch 列出 MIT DSpace 典藏（handle 1721.1/96194），PDF 下載連結兩次回 429（Retry-After 900 秒），隔一段時間（未滿 900 秒）重試仍 429；未讀到。 原提案 F39-NA002。",
+      "reentry_condition": "MIT DSpace 可下載時讀全文；可成 C17-02 的獨立研究群核心（約 0.75–1.0），也是『模仿發聲假說』最直接的支持證據。",
+      "reading_status": "blocked"
+    },
+    {
+      "id": "P70-NA008",
+      "question": "小提琴獨奏家在音樂廳挑琴：6 把古琴對 6 把新琴（Fritz 等 2014 PNAS）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "PNAS 與 Europe PMC 渲染頁 Cloudflare 403；HAL 記錄（hal-01461742）沒有全文檔。只經 F39-S014、F39-S015 轉述，不另立。 原提案 F39-NA004。",
+      "reentry_condition": "讀到全文後可在 Fritz 群封頂內強化 F39-102，但封頂下最多 +0.25。",
+      "reading_status": "blocked"
+    },
+    {
+      "id": "P70-NA009",
+      "question": "史特拉第瓦里的清漆真的有秘方嗎？（Echard 等 2010 Angew Chem）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "HAL 記錄 hal-01665937 無全文檔；Wiley 付費；EPFL Moodle 上的副本屬第三方轉存，不用。 原提案 F39-NA005。",
+      "reentry_condition": "合法全文可讀時，可成 C17-01 獨立研究群核心（約 0.75），也能替『秘方』迷思補第三個轉折。",
+      "reading_status": "blocked"
+    },
+    {
+      "id": "P70-NA010",
+      "question": "錄音盲測時史特拉第瓦里會勝出嗎？（Tai 群所引用的錄音 A/B 測試）",
+      "existing_ids": [],
+      "source_ids": [
+        "P70-S033"
+      ],
+      "reason": "只在 F39-S018 Introduction 以一句引用帶過（文獻 6、8），未讀到原研究；是 C17-01 最重要的反方證據，不能憑引用立核心。 原提案 F39-NA006。",
+      "reentry_condition": "讀到 Tai 群的錄音盲測原文（開放全文）後，可成一個約 0.75 的反方核心，並讓轉折一更公平。",
+      "reading_status": "not_read"
+    },
+    {
+      "id": "P70-NA011",
+      "question": "小提琴家評琴時，耳朵和手上的振動各占多少？（Wollman、Fritz 等 2014 PLoS ONE）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "已下載全文（f39src/PMC4256376.xml，sha256 前 16 碼 47d72110612e2e7b），但屬 Fritz 研究群，該群已達封頂 2.5，加入不增加事實數；未逐段核對，不列入 sources。 原提案 F39-NA007。",
+      "reentry_condition": "若覆核把 Fritz 群封頂調高，或要拆出『演奏者評琴』章節時再用。",
+      "reading_status": "full_text_cached_not_used"
+    }
+  ]
+}

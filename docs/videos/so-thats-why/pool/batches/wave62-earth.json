@@ -1,0 +1,53 @@
+{
+  "batch_id": "wave62-earth-20261111",
+  "created_on": "2026-11-12",
+  "scope": "海上暖雲從生成到第一次下雨要多久（RICO 雷達觀測）：替後備組題 C6-02 補原研究（作者 F19，非作者覆核 V22）。",
+  "sources": [
+    {
+      "id": "S62-S001",
+      "url": "https://downloads.psl.noaa.gov/BLO/Air-Sea/ATOMIC/References/minor_ricoSband_2010jas3675.1.pdf",
+      "canonical_url": "https://doi.org/10.1175/2010JAS3675.1",
+      "title": "Trade Wind Cloud Evolution Observed by Polarization Radar: Relationship to Giant Condensation Nuclei Concentrations and Cloud Organization（Minor、Rauber、Göke、Di Girolamo）",
+      "publisher": "Journal of the Atmospheric Sciences 68:1075–1096（2011，AMS）",
+      "version": "出版社排版刊本，存於 NOAA PSL ATOMIC 計畫參考文獻目錄（WebSearch 結果連結）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl 預設標頭下載 PDF，pdftotext 轉文字",
+      "reading_scope": "摘要、§1 前言、§2 Analysis procedures（雲的選取、characteristic time 定義）、§3a–b 結果、§4 結論 key findings 1–3 與末段",
+      "locator": "p1075 摘要；p1076 前言（約 20 分鐘的常見說法）；p1084 characteristic time 定義；p1087〈b. Characteristic time versus height〉第 1–2 段；p1088–1089 GCN 比較；p1092–1093 key findings",
+      "summary": "RICO（2004–05 年冬，加勒比海巴布達島外的開放大西洋）用 S 波段偏極化雷達，從最早的回波一路追 76 朵信風積雲到雨下完，六天涵蓋觀測期間巨大凝結核（海鹽）濃度的全範圍。從雲生成到最大回波首次到 10 dBZ（大致代表雲裡第一次出現雨）最快約 12 分鐘、到 30 dBZ（較大的雨）最快約 22 分鐘，但也有雲要到約 170 分鐘；同一天的雲也很分散。起雨時間與高度和環境的巨大凝結核濃度無關，反而跟中尺度組織有關：長在邊界層滾渦上的雲維持 170 分鐘才到 10 dBZ，同樣海鹽濃度、長在弧狀外流邊界的雲最快 20 分鐘就到。巨大凝結核只影響雨滴大小分布（大 ZDR 只在高海鹽日出現）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "非出版社網站的刊本副本（AMS 版權）；「雲生成」定義為雷達第一次看到雲的前一個體積掃描（3–4 分鐘），10 dBZ 是作者代表第一次出現雨的門檻；只有 76 朵、六天，都是雲頂低於結冰高度的淺積雲；組織與起雨的關係是作者的解讀，不是控制實驗。 覆核 V22（2026-11-12）：title／作者欄確認第一作者為 Hilary A. Minor（Minor、Rauber、Göke、Di Girolamo 2011）；limitations 加：「樣本只收最後回波至少到 15 dBZ、孤立、在雷達 60 公里內的雲；從沒下雨的雲不在樣本裡」。 覆核 V22（2026-11-12）：read_via 補：「V22 2026-11-12 重跑 WebSearch，結果仍列出 downloads.psl.noaa.gov 的同一 PDF；重抓 sha256 2dc9237ba478b29e 相同」。",
+      "author_cache": {
+        "file": "f19src/minor2011_rico.pdf + f19src/minor2011_rico.txt",
+        "sha256_prefix": "2dc9237ba478b29e / 6b4fa63a149eb01a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "S62-001",
+      "question": "海上的小積雲從冒出來到第一次下雨要多久？快慢是海裡吹上來的大鹽粒決定的嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.trade_cumulus_radar_rain_onset_time_organization",
+      "answer_target": "差很多，而且看起來不是鹽粒決定的。RICO 計畫在加勒比海巴布達島旁的開放大西洋，用偏極化雷達把 76 朵雲頂沒到結冰高度、後來都有下雨的信風積雲，從最早的回波一路追到雨下完。從雲生成到雲裡第一次出現雨（研究者以最大回波到 10 dBZ 為準），最快約 12 分鐘；較大的雨（30 dBZ）最快約 22 分鐘；但也有雲要到約 170 分鐘，同一天的雲就很分散。研究者挑的六天涵蓋整個計畫量到的大鹽粒濃度範圍，起雨的早晚和高度卻和大鹽粒多寡對不起來：鹽粒濃度相近的日子，長在弧狀外流邊界上的雲最快約 20 分鐘就到，長在邊界層滾渦上的雲卻維持 170 分鐘才到。大鹽粒多的日子，改變的是雨滴大小的分布。研究者的解讀是，雲怎麼排、背後的上升氣流，看起來比鹽粒更決定快慢。",
+      "scope": "RICO 六天、76 朵孤立的信風淺積雲（暖雲），樣本只收最後回波至少到 15 dBZ 的雲，從沒下雨的雲不在內；「雲生成」是雷達第一次看到雲的前一個掃描（3–4 分鐘），10 dBZ 是作者定義的起雨門檻；組織與起雨的關係是相關與作者解讀，不是控制實驗。不得說大鹽粒對下雨沒有作用（它改變滴譜），不得和 S60-003 的撒鹽實驗說成互相矛盾（那是層積雲的毛毛雨、撒播後量雨率）；不得把 12 分鐘說成一般雲的時間；不得與 S61-002 課本推算的 25 分鐘並列、相減或比倍數（不同的時間段）。第一作者 Minor，旁白若提研究者，寫「美國伊利諾大學的研究團隊」。",
+      "source_ids": [
+        "S62-S001"
+      ],
+      "source_locator": "F19-S003 摘要；p1076 前言；p1084 CT 定義；p1087 §3b 第 1–2 段；p1088–1089；p1092–1093 key findings 1–3",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，同意作者：實測起雨時間分布（12／22／170 分鐘）0.5；起雨快慢與大鹽粒濃度對不上、與雲的組織相關 0.5。這正是 V20 still_missing 第（2）項（非 Rosenfeld 研究群、不在亞馬遜、RICO 自己量的雲生成到第一個雷達回波），也是池中 P61-NA002 的 reentry_condition。去重：pool.json 無 2010JAS3675、Minor、characteristic time；RICO 只出現在 P61-S003 概述與 P61-NA002。 原提案 F19-001（目標 C6-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V22（2026-11-12）改字後收；來源合規（WebSearch 結果連結，今日重跑仍在結果中）、雜湊相同、數字逐句對上。收；改掉 payoff 裡與課本 25 分鐘的錯誤並列（不同時間段），補上「只收後來有下雨的雲」的選樣條件，更正第一作者。計 1.0 條，補到 C6-02 缺的 0.5 條以上。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真的拿雷達盯著海上的雲，從冒出來到第一次下雨，快的十幾分鐘、慢的將近三小時；鹽粒差不多的日子，雲排成弧狀的快、排在滾渦上的慢。",
+        "visual": "76 朵雲的起雨時間示意（只標 12、22、170 分鐘三個原文數字，註明「後來有下雨的雲」）；滾渦雲街與弧狀外流兩種雲排列的俯視示意。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    }
+  ],
+  "not_added": []
+}

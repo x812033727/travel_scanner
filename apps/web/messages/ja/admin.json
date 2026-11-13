@@ -1010,6 +1010,12 @@
     "computeUnits": "残り {units} コンピューティングユニット",
     "computeRate": "1 時間あたり {rate}",
     "computeActive": "実行中のランタイム {count} 件",
+    "leaseHolder": "{holder} が使用中",
+    "leaseDetail": "トークン {token} · {time} までリース",
+    "leaseBreak": "アカウントを取り戻す",
+    "leaseConfirmBreak": "取り戻す",
+    "leaseBreakHint": "停止したエージェントにだけ使います。動いているエージェントはリースを更新し、アカウントが空いていれば再び取ります。",
+    "leasesUnavailable": "どのエージェントが Colab アカウントを使っているか読み取れません：{detail}",
     "snapshotMissing": "このアカウントの利用枠はまだありません。ホストが自動で読み取ります。「再読み込み」でも取得できます。",
     "recorderMissing": "このアカウントのステータスラインが利用枠の記録につながっていません。再ログインするか、ホストのエージェントを再起動すると直ります。",
     "usageUnavailable": "利用枠を読み取れません：{detail}",
@@ -1490,6 +1496,10 @@
     "minimax_api_key": {
       "label": "MiniMax API Key",
       "help": "MiniMax Responses API に使います。"
+    },
+    "minimax_api_keys_extra": {
+      "label": "追加の MiniMax M Plan キー",
+      "help": "複数入力できます（カンマまたは改行で区切り）。MiniMax を呼び出すたびに、上のキーとこれらの中から、処理中の件数と残りの利用枠をもとに 1 つを選びます。枠を使い切ったキーはリセットまで休ませます。"
     },
     "jev_api_key": {
       "label": "Jev API キー",

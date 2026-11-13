@@ -1010,6 +1010,12 @@
     "computeUnits": "{units} compute units left",
     "computeRate": "{rate} per hour",
     "computeActive": "{count} runtimes running",
+    "leaseHolder": "In use by {holder}",
+    "leaseDetail": "Token {token} · lease ends {time}",
+    "leaseBreak": "Take the account back",
+    "leaseConfirmBreak": "Confirm take back",
+    "leaseBreakHint": "Only for an agent that has stopped: one still running renews its lease and takes the account again if it is free.",
+    "leasesUnavailable": "Could not read which agents are using the Colab accounts: {detail}",
     "snapshotMissing": "No quota for this account yet; the host reads it on its own, or press Refresh.",
     "recorderMissing": "This account's status line is not connected to the quota recorder; signing in again or restarting the host agent fixes it.",
     "usageUnavailable": "Quota could not be read: {detail}",
@@ -1490,6 +1496,10 @@
     "minimax_api_key": {
       "label": "MiniMax API Key",
       "help": "Used for the MiniMax Responses API."
+    },
+    "minimax_api_keys_extra": {
+      "label": "More MiniMax M Plan keys",
+      "help": "Any number, separated by commas or line breaks. Every MiniMax call picks among these and the key above by how many calls each is handling and how much of its plan is left; a key whose plan is used up rests until it resets."
     },
     "jev_api_key": {
       "label": "Jev API Key",

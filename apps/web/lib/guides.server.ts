@@ -14,6 +14,7 @@ import {
   topicLocales,
   type DestinationFacet,
   type GuideSearchResult,
+  type GuideSearchSort,
   type GuideArticleState,
   type GuideKind,
   type GuideList,
@@ -116,6 +117,26 @@ export async function loadGuideList(
 }
 
 /**
+ * Published articles ranked by real non-bot reader views over a rolling window, backfilled by
+ * curated picks when traffic is sparse. Never fabricates view counts.
+ */
+export async function loadTrendingGuides(
+  locale: Locale,
+  filters: Pick<GuideFilters, "kind" | "section" | "topic"> = {},
+  limit = 6,
+): Promise<GuideListResult> {
+  const row = await fetchJson(`/guides/trending?${query(locale, filters, limit)}`, locale);
+  const body = row as Record<string, unknown> | null;
+  if (!body || !Array.isArray(body.articles)) return { articles: [], next_cursor: null, available: false };
+  return {
+    articles: body.articles.filter(isGuideSummary),
+    next_cursor: null,
+    available: true,
+  };
+}
+export const getTrendingGuides = cache(loadTrendingGuides);
+
+/**
  * Whether a hub is known to have nothing to show, which is the only case that may be
  * `noindex`. Every listing behind the hub has to have answered: `/guides` covers two kinds,
  * and one failed read there would otherwise hide a language that does have articles.
@@ -169,6 +190,7 @@ export type GuideSearchFilters = {
   topic?: string;
   destination?: string;
   country?: string;
+  sort?: GuideSearchSort;
   offset?: number;
 };
 
@@ -193,6 +215,7 @@ export async function loadGuideSearch(
   if (filters.topic) params.set("topic", filters.topic);
   if (filters.destination) params.set("destination", filters.destination);
   if (filters.country) params.set("country", filters.country);
+  if (filters.sort && filters.sort !== "relevance") params.set("sort", filters.sort);
   const answer = await fetchJsonWithStatus(`/guides/search?${params.toString()}`, locale);
   if (!answer) return emptySearch(filters.q, offset, limit, { available: false, invalid: false });
   if (answer.status === 422) return emptySearch(filters.q, offset, limit, { available: true, invalid: true });
@@ -238,14 +261,14 @@ export async function loadGuideArticle(
 ): Promise<GuideArticleState> {
   const unavailable: GuideArticleState = {
     slug, kind, locale, status: "unavailable", destination_id: null, destination_label: null,
-    topics: [], valid_until: null, expired: false, document: null, published_locales: [],
+    topics: [], valid_until: null, news_date: null, expired: false, document: null, published_locales: [],
   };
   const row = await fetchJson(
     `/guides/${kind}/${encodeURIComponent(slug)}?locale=${encodeURIComponent(locale)}`, locale,
   );
   const body = row as Record<string, unknown> | null;
   // `body.kind !== kind` is the one-article-one-URL insurance: the API looks an article up
-  // by slug, so a response for a `life` article must never render under `/guides/howto/…`
+  // by slug, so a response for a `life` article must never render under `/guides/howto/...`
   // (or the reverse) if a route ever forwards the wrong kind.
   if (!body || body.slug !== slug || body.locale !== locale || !isGuideKind(body.kind) || body.kind !== kind) {
     return unavailable;
@@ -259,6 +282,7 @@ export async function loadGuideArticle(
     destination_label: typeof body.destination_label === "string" ? body.destination_label : null,
     topics: Array.isArray(body.topics) ? (body.topics as GuideTopic[]) : [],
     valid_until: typeof body.valid_until === "string" ? body.valid_until : null,
+    news_date: typeof body.news_date === "string" ? body.news_date : null,
     expired: body.expired === true,
     published_locales: published,
   };

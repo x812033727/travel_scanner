@@ -57,11 +57,11 @@ export default async function Home() {
   const seeded = discovery.enabled && Boolean(feed);
   // Seed the gate, rather than bypassing it, so SSR and client recovery both work.
   const body = (
-      <main className="mx-auto min-h-screen max-w-6xl px-5 pb-20 md:px-8">
+      <main className="mx-auto min-h-screen max-w-6xl border-t border-[var(--line)] px-5 pb-20 md:px-8">
         {/* Keep the planning form compact on phones: a short hero, the
             workbench, and the three trust lines underneath.
             On desktop the lines keep their place beside the form. */}
-        <section className="grid gap-6 pb-6 pt-5 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-8 lg:py-14">
+        <section className="grid gap-6 pb-6 pt-8 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-8 lg:py-14">
           <div className="lg:pr-4 xl:pr-8">
             <p className="mb-3 flex items-center gap-2 text-sm font-semibold text-[var(--teal)] lg:mb-4">
               <Sparkles size={16} />
@@ -80,7 +80,7 @@ export default async function Home() {
               {benefits.map(({ key, icon: Icon, text }) => (
                 <p
                   key={key}
-                  className="flex items-center gap-3 rounded-2xl border border-[var(--line)] bg-white/70 px-4 py-3"
+                  className="flex items-center gap-3 rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-3 shadow-[var(--shadow-sm)]"
                 >
                   <Icon size={18} className="text-[var(--teal)]" />
                   {text}
@@ -98,7 +98,7 @@ export default async function Home() {
               {benefits.map(({ key, icon: Icon, text }) => (
                 <li
                   key={key}
-                  className="flex items-center gap-2.5 rounded-2xl border border-[var(--line)] bg-white/70 px-3.5 py-2.5 text-sm font-medium leading-6"
+                  className="flex items-center gap-2.5 rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-3.5 py-2.5 text-sm font-medium leading-6 shadow-[var(--shadow-sm)]"
                 >
                   <Icon size={17} className="shrink-0 text-[var(--teal)]" />
                   {text}
@@ -151,7 +151,7 @@ export default async function Home() {
         <CommunityHome />
         <section
           aria-labelledby="asia-focus-title"
-          className="rounded-[2rem] border border-[var(--line)] bg-white/70 p-6 md:p-8"
+          className="rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[var(--shadow-sm)] md:p-8"
         >
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
@@ -213,7 +213,7 @@ export default async function Home() {
       <StructuredData data={[organization(), webSite(locale, hotspotsEnabled)]} />
       {/* Keep the site context and article entrances ahead of the discovery feed in both
           the server response and the client's later switch resolution. */}
-      <HomeGuides blocks={guides} />
+      <HomeGuides {...guides} hotspotsEnabled={hotspotsEnabled} />
       <DiscoveryHomeGate initialEnabled={seeded} initialFeed={feed}>{body}</DiscoveryHomeGate>
     </>
   );

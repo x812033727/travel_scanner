@@ -60,10 +60,13 @@ export const TEMPLATES = [
   "outro",
 ];
 export const THUMBNAIL_TEMPLATES = ["thumb"];
-export const VOICE_PROVIDERS = ["azure", "gemini"];
+export const VOICE_PROVIDERS = ["azure", "gemini", "minimax"];
 // Mirrors the model list and the voice-name pattern in apps/api/app/video_speech/gemini.py.
 export const GEMINI_MODELS = ["gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts"];
 const GEMINI_VOICE = /^[A-Za-z][A-Za-z0-9_-]{1,79}$/;
+// Mirrors MINIMAX_TTS_MODELS and the voice-id pattern in apps/api/app/video_speech/minimax.py.
+export const MINIMAX_MODELS = ["speech-2.8-hd", "speech-2.8-turbo"];
+const MINIMAX_VOICE = /^[A-Za-z][A-Za-z0-9 ()_.-]{1,81}$/;
 const STYLE_MAX = 400;
 export const MAX_PAUSE_MS = 5000;
 // The defaults `pauses` may only tighten: timeline.mjs DEFAULT_PAUSE_MS and SCENE_GAP_MS (a test
@@ -208,8 +211,16 @@ export function validateVoice(voice, errors, where = "voice", locale = NARRATION
     if (voice.model !== undefined && !GEMINI_MODELS.includes(voice.model)) {
       errors.push({ path: `${where}.model`, message: `must be one of ${GEMINI_MODELS.join(", ")}` });
     }
+  } else if (voice.provider === "minimax") {
+    if (isText(voice.name) && !(MINIMAX_VOICE.test(voice.name) && voice.name === voice.name.trim())) {
+      errors.push({ path: `${where}.name`, message: "a MiniMax voice is a voice id like Chinese (Mandarin)_News_Anchor, without the minimax: prefix" });
+    }
+    if (voice.style !== undefined) errors.push({ path: `${where}.style`, message: "MiniMax takes no written style; set its pace with rate" });
+    if (voice.model !== undefined && !MINIMAX_MODELS.includes(voice.model)) {
+      errors.push({ path: `${where}.model`, message: `must be one of ${MINIMAX_MODELS.join(", ")}` });
+    }
   } else if (voice.style !== undefined || voice.model !== undefined) {
-    errors.push({ path: where, message: "style and model are for Gemini voices only" });
+    errors.push({ path: where, message: "style is for Gemini voices only, and model for Gemini or MiniMax voices" });
   }
   if (voice.style !== undefined && !(isText(voice.style) && voice.style.length <= STYLE_MAX)) {
     errors.push({ path: `${where}.style`, message: `must be text of at most ${STYLE_MAX} characters` });

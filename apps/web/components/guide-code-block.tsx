@@ -16,14 +16,14 @@ export function GuideCodeBlock({ block, labels = defaults }: { block: CodeBlock;
       setStatus("copied");
     } catch { setStatus("failed"); }
   }
-  return <figure className="min-w-0 max-w-full overflow-hidden rounded-2xl border border-[var(--line)]">
-    <figcaption className="flex flex-wrap items-center justify-between gap-2 bg-[var(--paper)] px-4 py-2 text-sm">
-      <span>{block.label} <span className="text-[var(--muted)]">· {block.language}</span></span>
-      <button type="button" disabled={!ready} onClick={() => void copy()} className="min-h-11 rounded-lg border border-[var(--line)] px-3 font-semibold disabled:opacity-50">
+  return <figure className="min-w-0 max-w-full overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow-sm)]">
+    <figcaption className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--line)] bg-[var(--surface-tint)] px-4 py-2 text-sm">
+      <span className="font-medium text-[var(--ink)]">{block.label} <span className="font-mono text-[var(--muted)]">· {block.language}</span></span>
+      <button type="button" disabled={!ready} onClick={() => void copy()} className="min-h-11 rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3.5 font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:text-[var(--teal)] disabled:opacity-50">
         {labels.copy}
       </button>
     </figcaption>
-    <pre tabIndex={0} aria-label={block.label} className="max-w-full overflow-x-auto bg-[var(--surface)] p-4 text-sm leading-7 [overflow-wrap:normal] [tab-size:2]"><code>{block.code}</code></pre>
-    {status !== "idle" ? <p role="status" className="px-4 pb-3 text-sm">{status === "copied" ? labels.copied : labels.copyFailed}</p> : null}
+    <pre tabIndex={0} aria-label={block.label} className="max-w-full overflow-x-auto bg-[var(--paper)]/55 p-4 text-sm leading-7 [overflow-wrap:normal] [tab-size:2]"><code>{block.code}</code></pre>
+    {status !== "idle" ? <p role="status" className="border-t border-[var(--line)] px-4 py-2 text-sm text-[var(--teal-dark)]">{status === "copied" ? labels.copied : labels.copyFailed}</p> : null}
   </figure>;
 }

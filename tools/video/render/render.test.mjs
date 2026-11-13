@@ -356,7 +356,8 @@ test("a drama's shots are clips the plan leaves to the media stages; its cards a
   const keyframe = { file: "keyframes/sea-storm-ab12.png", sha256: "1".repeat(64) };
   const drawn = renderPlan(doc, "t", null, { keyframes: { "sea-storm": keyframe } });
   assert.deepEqual(drawn.thumbnail.keyframe, keyframe);
-  assert.match(drawn.thumbnail.html, /<div class="thumb-subject layout-[abc] tone-[a-z]+ from-shot"><img src="https:\/\/video\.local\/work\/keyframes\/sea-storm-ab12\.png" alt=""><\/div><div class="thumb column/);
+  // An AI drama wears the drama layout (2026-11-11): the keyframe over the frame, the drama's strip in its colour.
+  assert.match(drawn.thumbnail.html, /<div class="thumb-subject layout-f tone-[a-z]+ from-shot"><img src="https:\/\/video\.local\/work\/keyframes\/sea-storm-ab12\.png" alt=""><\/div><div class="thumb column layout-f tone-[a-z]+" style="--drama:#[0-9a-f]{6}">/);
   assert.doesNotMatch(drawn.thumbnail.html, /thumb-art|thumb-bg|thumb-scrim/);
   assert.doesNotMatch(drawn.thumbnail.text, /thumb-subject|from-shot|object-fit/, "the markup is not text the fonts must cover");
   assert.equal(drawn.thumbnail.capture, undefined, "a shot subject: no capture fields");

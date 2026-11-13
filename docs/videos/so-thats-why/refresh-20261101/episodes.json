@@ -7,7 +7,7 @@
   "source_catalog_sha256": "035f21f294997cf878522af06adfe3be33f1a3d8626ebaf5683eb6510afd5590",
   "definition": {
     "file": "tools/video/so-thats-why/episode-plan.mjs",
-    "sha256": "17ea649b3f65bc54b9008d67a0931bddcc4ab417ab5dd431fba75fd4fe7ac8a2"
+    "sha256": "1578de408d1215a90b6f583ac005539415f228f75023f7b4a2ddc0ddda2208d6"
   },
   "counts": {
     "source_pool": 100,
@@ -212,10 +212,17 @@
       "material": {
         "verdict": "ready",
         "est_minutes": 9.4,
-        "missing": "缺應用程式回報「完成」與作業系統實際寫入（快取刷新）之間差別的一般性官方來源，現有只有 Windows 移除政策與 Apple 退出說明；NIST SP 800-88 Rev. 2、Windows／macOS TRIM 預設需撰稿當日重查",
+        "missing": "應用程式回報「完成」與實際寫入的差別，一般性來源由素材池 I3002（SQLite〈Atomic Commit〉：寫入可能停在作業系統快取，同步才送往持久儲存）補上，但它是資料庫文件，主例的 Windows／macOS 寫入快取仍要各自的官方說明；NIST SP 800-88 Rev. 2、Windows／macOS TRIM 預設需撰稿當日重查",
         "reviewed_on": "2026-11-11",
         "review": "docs/videos/so-thats-why/material-20261111/review.json"
       },
+      "pool_support": [
+        {
+          "id": "I3002",
+          "chapter": "進度條到終點了",
+          "use": "寫入呼叫成功不等於資料已在持久儲存：寫入可能停在作業系統快取，同步才依序送出（SQLite〈Atomic Commit〉第 2、3.2–3.7 節）；補素材審視列的一般性來源缺口，但主例系統仍要自己的官方說明。"
+        }
+      ],
       "target_body_seconds": 780,
       "planning_range_seconds": [
         720,
@@ -234,10 +241,10 @@
         "S80",
         "S48"
       ],
-      "minutes": 15,
+      "minutes": 11,
       "range": [
-        14,
-        16
+        10,
+        12
       ],
       "tier": "pilot",
       "question": "軌道上仍有重力，熟悉的上下為什麼卻變得不同？",
@@ -250,22 +257,22 @@
         },
         {
           "title": "不是飛到沒有重力",
-          "seconds": 190,
+          "seconds": 125,
           "new_information": "以軌道與地面落體對照重力和支撐感"
         },
         {
           "title": "一直掉，怎麼不撞上",
-          "seconds": 210,
+          "seconds": 150,
           "new_information": "用側向速度與軌道幾何補完漂浮答案"
         },
         {
           "title": "把一團火帶入同樣條件",
-          "seconds": 215,
+          "seconds": 155,
           "new_information": "比較地面浮力對流與微重力條件"
         },
         {
           "title": "火焰變了能告訴你什麼",
-          "seconds": 205,
+          "seconds": 150,
           "new_information": "看實驗影像與適用條件，分清微重力和完全無重力"
         },
         {
@@ -281,22 +288,39 @@
       "status": "EPISODE_PLAN_NOT_SCRIPT",
       "production_ready": false,
       "material": {
-        "verdict": "reserve",
-        "est_minutes": 8.3,
-        "missing": "S80 只有 NASA〈What is microgravity〉一頁的題級閱讀，無逐主張查核；缺第二個有條件說明的微重力燃燒實驗（例如太空站燃燒研究的具體結果）；缺軌道高度重力仍約九成等數值的當期核對",
+        "verdict": "ready",
+        "est_minutes": 10.6,
+        "missing": "第二輪（2026-11-11）由素材池 P52-008～010 補上（NASA 微重力頁逐主張讀過、太空站 FLEX 液滴實驗的「冷焰」）；企劃從 15 分縮成約 11 分；仍缺一句有來源的「為什麼冷焰只在微重力下看得到」，補不到就把那章收短；NASA 頁的軌道高度是 2012 年的數字，撰稿時用 NASA 原句不自算",
         "reviewed_on": "2026-11-11",
         "review": "docs/videos/so-thats-why/material-20261111/review.json"
       },
-      "target_body_seconds": 900,
+      "pool_support": [
+        {
+          "id": "P52-008",
+          "chapter": "不是飛到沒有重力",
+          "use": "太空站高度的重力仍約地面九成（NASA〈What is microgravity〉，與 S80 同一頁的逐主張閱讀）；不另算新事實，只把 S80 的題級閱讀補成逐主張。"
+        },
+        {
+          "id": "P52-009",
+          "chapter": "把一團火帶入同樣條件",
+          "use": "NASA 太空站事實頁的軌道與實驗條件；交代火焰實驗在什麼條件下做。"
+        },
+        {
+          "id": "P52-010",
+          "chapter": "火焰變了能告訴你什麼",
+          "use": "太空站 FLEX 液滴實驗：看得見的火焰熄滅後，看不見的「冷焰」繼續燒，氧與氦的比例改變結局（NASA 技術報告）；是素材審視要求的第二個有條件說明的燃燒結果。"
+        }
+      ],
+      "target_body_seconds": 660,
       "planning_range_seconds": [
-        840,
-        960
+        600,
+        720
       ],
       "estimated_spoken_characters": [
-        3808,
-        4038
+        2792,
+        2962
       ],
-      "minimum_loops": 13
+      "minimum_loops": 10
     },
     {
       "id": "P05",
@@ -615,6 +639,18 @@
         "reviewed_on": "2026-11-11",
         "review": "docs/videos/so-thats-why/material-20261111/review.json"
       },
+      "pool_support": [
+        {
+          "id": "I8006",
+          "chapter": "最慢的一段怎麼拖住全程",
+          "use": "路由器怎麼分辨正常突發與一直塞住的隊列（RFC 8289 CoDel 觀察一段時間內的最低排隊延遲）；給緩衝模型一個有標準文件的例子，不給設定或速度承諾。"
+        },
+        {
+          "id": "I8007",
+          "chapter": "最慢的一段怎麼拖住全程",
+          "use": "大檔與短訊息分隊輪流送，短流不必排在大流積壓之後（RFC 8290）；只講機制，不保證每個使用者公平。不補 CDN 缺口。"
+        }
+      ],
       "target_body_seconds": 900,
       "planning_range_seconds": [
         840,
@@ -682,10 +718,22 @@
       "material": {
         "verdict": "ready",
         "est_minutes": 10.6,
-        "missing": "捲簾快門與螢幕或燈光頻閃條紋的來源；A50 只有一篇摩爾紋研究，缺手機實拍成功／失敗對照的真實紀錄",
+        "missing": "捲簾快門逐行曝光的來源由素材池 P20006（Axis 全域與捲簾快門白皮書）補上，燈光或螢幕頻閃條紋要從它推論，仍需一份直接講頻閃條紋的來源；A50 只有一篇摩爾紋研究，缺手機實拍成功／失敗對照的真實紀錄",
         "reviewed_on": "2026-11-11",
         "review": "docs/videos/so-thats-why/material-20261111/review.json"
       },
+      "pool_support": [
+        {
+          "id": "P20006",
+          "chapter": "哪些東西是相機重建的",
+          "use": "逐行曝光讓短閃光只照到部分列（Axis 白皮書）；是捲簾快門與條紋的機制來源，燈光或螢幕頻閃仍要直接來源。"
+        },
+        {
+          "id": "P20001",
+          "chapter": "哪些東西是相機重建的",
+          "use": "Bayer 陣列各點只量一種顏色，邊緣補值會冒出原本沒有的彩邊（Microsoft Research 去馬賽克論文）；把「相機重建」講具體，不把摩爾紋歸到這個原因。"
+        }
+      ],
       "target_body_seconds": 900,
       "planning_range_seconds": [
         840,
@@ -766,10 +814,10 @@
       "topics": [
         "A36"
       ],
-      "minutes": 13,
+      "minutes": 9,
       "range": [
-        12,
-        14
+        9,
+        10
       ],
       "tier": "next",
       "question": "它怎麼先找到方向，再從損傷裡讀回訊息？",
@@ -782,22 +830,22 @@
         },
         {
           "title": "先找到哪一塊是碼",
-          "seconds": 150,
+          "seconds": 90,
           "new_information": "定位、方向與取樣先於內容"
         },
         {
-          "title": "黑白格如何承載訊息",
-          "seconds": 185,
-          "new_information": "以短訊息示例介紹編碼與額外資訊"
+          "title": "訊息裝在哪裡",
+          "seconds": 125,
+          "new_information": "只用公開說明講資料區與 8 位元碼字，不講沒有公開全文的遮罩與格式資訊"
         },
         {
           "title": "缺了為什麼能補",
-          "seconds": 180,
+          "seconds": 120,
           "new_information": "用小型可驗算示例理解冗餘與糾錯"
         },
         {
           "title": "同樣遮一塊，結果為何不同",
-          "seconds": 185,
+          "seconds": 125,
           "new_information": "區分損傷位置、等級與定位失敗"
         },
         {
@@ -806,29 +854,41 @@
           "new_information": "回答片頭問題，回收已埋伏筆，留一個相關觀察題；不再開新支線。"
         }
       ],
-      "visual": "真正生成的 QR 與解碼結果；手畫概念碼須明標非有效 QR。",
+      "visual": "真正生成的 QR 與解碼結果；手畫概念碼須明標非有效 QR。自製的遮擋測試只能標「本片自製示範」，不當成研究結果引用。",
       "risk": "把糾錯比例當任何遮擋都成功的保證。",
       "cut": "不教行銷與支付詐騙清單；缺少成功及失敗對照就退回 treatment。",
       "evidence": "查標準制定方的公開說明；實測需記錄編碼等級、資料量與遮擋位置。",
       "status": "EPISODE_PLAN_NOT_SCRIPT",
       "production_ready": false,
       "material": {
-        "verdict": "reserve",
-        "est_minutes": 7.8,
-        "missing": "qrcode.com 上結構（定位、校正、時序圖形、靜區、遮罩、格式資訊）的逐主張查核；自製 QR 碼在不同等級與遮擋位置的實測紀錄（含失敗例）",
+        "verdict": "ready",
+        "est_minutes": 9.3,
+        "missing": "第二輪（2026-11-11）由素材池 T52-005、T52-006 補上（qrcode.com 逐主張讀過的定位比例、校正圖形、4 格靜區，以及糾錯適合集中的「突發」損傷）；時序圖形、格式資訊與遮罩沒有公開全文（ISO 要付費），企劃從 13 分縮成約 9 分、第二章只講資料區；自製遮擋測試只能當示範，不算來源",
         "reviewed_on": "2026-11-11",
         "review": "docs/videos/so-thats-why/material-20261111/review.json"
       },
-      "target_body_seconds": 780,
+      "pool_support": [
+        {
+          "id": "T52-005",
+          "chapter": "先找到哪一塊是碼",
+          "use": "定位圖形 1:1:3:1:1 的比例是調查印刷品後選的、校正圖形、4 格靜區（qrcode.com 逐主張閱讀）。"
+        },
+        {
+          "id": "T52-006",
+          "chapter": "同樣遮一塊，結果為何不同",
+          "use": "糾錯以碼字為單位，適合集中的「突發」損傷，散開的損傷更傷（qrcode.com）；自製遮擋測試只當「本片自製示範」，不當研究結果。"
+        }
+      ],
+      "target_body_seconds": 540,
       "planning_range_seconds": [
-        720,
-        840
+        540,
+        600
       ],
       "estimated_spoken_characters": [
-        3300,
-        3500
+        2285,
+        2423
       ],
-      "minimum_loops": 11
+      "minimum_loops": 8
     },
     {
       "id": "P13",
@@ -836,10 +896,10 @@
       "topics": [
         "A38"
       ],
-      "minutes": 14,
+      "minutes": 11,
       "range": [
-        12,
-        15
+        10,
+        12
       ],
       "tier": "next",
       "question": "手機怎麼把收到訊號的時間，變成地圖上的位置？",
@@ -852,22 +912,22 @@
         },
         {
           "title": "一顆衛星還不能找到你",
-          "seconds": 170,
+          "seconds": 125,
           "new_information": "由傳播時間形成一組可能位置"
         },
         {
           "title": "多加訊號怎麼縮小答案",
-          "seconds": 190,
+          "seconds": 150,
           "new_information": "把位置幾何與時鐘未知量放到同一圖中"
         },
         {
           "title": "時間和路徑如何帶偏位置",
-          "seconds": 195,
+          "seconds": 155,
           "new_information": "比較授時誤差與多路徑等不同問題"
         },
         {
           "title": "為什麼有時定位慢或飄",
-          "seconds": 205,
+          "seconds": 150,
           "new_information": "回到裝置環境，分清定位與網路輔助"
         },
         {
@@ -883,22 +943,64 @@
       "status": "EPISODE_PLAN_NOT_SCRIPT",
       "production_ready": false,
       "material": {
-        "verdict": "reserve",
-        "est_minutes": 7.4,
-        "missing": "GPS 定位幾何、接收機時鐘偏差與第四顆衛星的官方來源（gps.gov 或 USCG NAVCEN）；多路徑、電離層等誤差來源的官方說明；輔助 GPS／網路輔助定位的來源",
+        "verdict": "ready",
+        "est_minutes": 11.4,
+        "missing": "第三輪（2026-11-11）由素材池 T53-012～019 補上（FAA 與 ESA Navipedia 的第四顆衛星解接收機時鐘、GPS SPS 性能標準 2020 的精度約等於測距誤差乘 DOP、gps.gov 精度頁、Blay 等 2021 年的 A-GPS）；企劃從 14 分縮成約 11 分，相對論那章縮到約 90 秒；手機約 4.9 公尺是 gps.gov 引 ION 的數字（原文沒讀），每秒時間誤差約 800 公尺是 Blay 引 van Diggelen 2009；衛星集中誤差放大要畫成示意，不說是標準原文",
         "reviewed_on": "2026-11-11",
         "review": "docs/videos/so-thats-why/material-20261111/review.json"
       },
-      "target_body_seconds": 840,
+      "pool_support": [
+        {
+          "id": "T53-012",
+          "chapter": "一顆衛星還不能找到你",
+          "use": "第四顆衛星用來解接收機時鐘（FAA、ESA Navipedia）；把「三顆就夠」的直覺改掉。"
+        },
+        {
+          "id": "T53-013",
+          "chapter": "多加訊號怎麼縮小答案",
+          "use": "精度約等於測距誤差乘上幾何因子 DOP（GPS SPS 性能標準 2020）；衛星集中時誤差放大只畫成示意。"
+        },
+        {
+          "id": "T53-014",
+          "chapter": "時間和路徑如何帶偏位置",
+          "use": "衛星訊號誤差（URE）不等於使用者精度；手機約 4.9 公尺是 gps.gov 引 ION 的數字。"
+        },
+        {
+          "id": "T53-015",
+          "chapter": "時間和路徑如何帶偏位置",
+          "use": "多路徑：訊號被建築反射後走了更長的路（ESA Navipedia）。"
+        },
+        {
+          "id": "T53-016",
+          "chapter": "時間和路徑如何帶偏位置",
+          "use": "電離層延遲本身可達數十公尺、單頻接收機用 Klobuchar 模型修正（Navipedia）；不說修正後還剩數十公尺。"
+        },
+        {
+          "id": "T53-017",
+          "chapter": "為什麼有時定位慢或飄",
+          "use": "導航電文每秒 50 位元、一幀 30 秒（SPS 性能標準），解釋冷開機為什麼慢。"
+        },
+        {
+          "id": "T53-018",
+          "chapter": "為什麼有時定位慢或飄",
+          "use": "A-GPS：網路先給星曆；一秒時間誤差約 800 公尺，所以要第五顆衛星（Blay 等 2021 引 van Diggelen 2009）。"
+        },
+        {
+          "id": "T53-019",
+          "chapter": "為什麼有時定位慢或飄",
+          "use": "很多「定位錯」其實是地圖錯（gps.gov）；分清定位與地圖。"
+        }
+      ],
+      "target_body_seconds": 660,
       "planning_range_seconds": [
-        720,
-        900
+        600,
+        720
       ],
       "estimated_spoken_characters": [
-        3554,
-        3769
+        2792,
+        2962
       ],
-      "minimum_loops": 12
+      "minimum_loops": 10
     },
     {
       "id": "P14",
@@ -1764,6 +1866,18 @@
         "reviewed_on": "2026-11-11",
         "review": "docs/videos/so-thats-why/material-20261111/review.json"
       },
+      "pool_support": [
+        {
+          "id": "H3060",
+          "chapter": "邊角與反覆載入遇在一起",
+          "use": "裂長、外加應力與材料斷裂韌性一起決定裂紋何時快速擴大（UNSW 材料學院教材）；接在應力集中之後，回答「已經有裂紋時何時失控」。不引用公式，不由外觀判斷實物安全。"
+        },
+        {
+          "id": "H3061",
+          "chapter": "圓角是不是萬能答案",
+          "use": "同樣有缺口，銅先塑性變形、玻璃直接裂（UNSW 教材的銅棒與玻璃棒對照）；把材料放回工程邊界，只作這組對照，不把所有金屬或陶瓷一概分類。"
+        }
+      ],
       "target_body_seconds": 720,
       "planning_range_seconds": [
         660,
@@ -1921,10 +2035,10 @@
       "topics": [
         "A55"
       ],
-      "minutes": 13,
+      "minutes": 12,
       "range": [
-        12,
-        14
+        11,
+        13
       ],
       "tier": "conditional",
       "question": "你怎麼把訊息交給對方，又不讓路上的人直接讀到？",
@@ -1937,22 +2051,22 @@
         },
         {
           "title": "資料要經過別人的設備",
-          "seconds": 150,
+          "seconds": 140,
           "new_information": "先畫清威脅位置，不用駭客電影情境"
         },
         {
           "title": "怎麼知道正在和誰說話",
-          "seconds": 185,
+          "seconds": 165,
           "new_information": "引入憑證與信任，不把鎖頭當商家可信保證"
         },
         {
           "title": "雙方怎麼建立保護",
-          "seconds": 180,
+          "seconds": 170,
           "new_information": "只說足以理解握手、加密與完整性的模型"
         },
         {
           "title": "保護在哪裡結束",
-          "seconds": 185,
+          "seconds": 165,
           "new_information": "回到端點、網站內容與詐騙的不同問題"
         },
         {
@@ -1968,20 +2082,77 @@
       "status": "EPISODE_PLAN_NOT_SCRIPT",
       "production_ready": false,
       "material": {
-        "verdict": "reserve",
-        "est_minutes": 6.9,
-        "missing": "TLS 1.3 握手、金鑰交換與完整性的可讀教材來源；憑證機構與信任鏈的官方說明；HTTPS 仍會露出的資訊（網域名稱、SNI）查核",
+        "verdict": "ready",
+        "est_minutes": 12.4,
+        "missing": "第三輪（2026-11-11）由素材池 T53-001～011 補上（RFC 8446 的握手、序號與 nonce、close_notify、0-RTT 重放例外，RFC 5280 信任鏈，Let's Encrypt 網域驗證，憑證透明度，RFC 9849 ECH）；企劃從 13 分縮成約 12 分，close_notify 縮成一句、憑證透明度約 20 秒；A55 的舊來源（Chromium 2018／2023、Let's Encrypt 2015、Google 2025）撰稿前重讀；缺目前瀏覽器怎麼顯示憑證錯誤的文件與 ECH 普及率；G38 的 libsodium 題由 T53 的 TLS 題取代，不合併",
         "reviewed_on": "2026-11-11",
         "review": "docs/videos/so-thats-why/material-20261111/review.json"
       },
-      "target_body_seconds": 780,
+      "pool_support": [
+        {
+          "id": "T53-001",
+          "chapter": "雙方怎麼建立保護",
+          "use": "TLS 1.3 握手的最小模型：金鑰交換、CertificateVerify 與 Finished（RFC 8446）。"
+        },
+        {
+          "id": "T53-002",
+          "chapter": "怎麼知道正在和誰說話",
+          "use": "憑證把公開金鑰綁到網域名稱，不是綁到「可信的商家」（RFC 5280）。"
+        },
+        {
+          "id": "T53-003",
+          "chapter": "怎麼知道正在和誰說話",
+          "use": "憑證機構只驗證你控制這個網域（Let's Encrypt）：詐騙網站一樣拿得到鎖頭。"
+        },
+        {
+          "id": "T53-004",
+          "chapter": "怎麼知道正在和誰說話",
+          "use": "信任鏈從網站憑證一路到瀏覽器內建的根憑證（RFC 5280 §6.1、Let's Encrypt）。"
+        },
+        {
+          "id": "T53-005",
+          "chapter": "怎麼知道正在和誰說話",
+          "use": "要讓 Chrome、Safari 接受，憑證得登記在公開的透明度日誌（certificate.transparency.dev）；約 20 秒。"
+        },
+        {
+          "id": "T53-006",
+          "chapter": "雙方怎麼建立保護",
+          "use": "每筆紀錄有序號，序號混進 nonce，被重排或重放就驗不過（RFC 8446）。"
+        },
+        {
+          "id": "T53-007",
+          "chapter": "雙方怎麼建立保護",
+          "use": "紀錄標頭當作附加資料一起驗證；但長度不隱藏（RFC 8446）。"
+        },
+        {
+          "id": "T53-008",
+          "chapter": "保護在哪裡結束",
+          "use": "流量大小與時間仍看得到（RFC 8446 的限制說明）；篇幅不夠就刪。"
+        },
+        {
+          "id": "T53-009",
+          "chapter": "雙方怎麼建立保護",
+          "use": "close_notify 讓對方知道是正常結束、不是被截斷（RFC 8446）；縮成一句。"
+        },
+        {
+          "id": "T53-010",
+          "chapter": "雙方怎麼建立保護",
+          "use": "0-RTT 是規格自己承認的重放例外（RFC 8446）。"
+        },
+        {
+          "id": "T53-011",
+          "chapter": "保護在哪裡結束",
+          "use": "SNI 裡的網域名稱仍是明文，ECH 才把它藏起來；DNS 與 IP 仍可能露出（RFC 8446、RFC 9849）。"
+        }
+      ],
+      "target_body_seconds": 720,
       "planning_range_seconds": [
-        720,
-        840
+        660,
+        780
       ],
       "estimated_spoken_characters": [
-        3300,
-        3500
+        3046,
+        3231
       ],
       "minimum_loops": 11
     },

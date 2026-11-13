@@ -277,11 +277,58 @@ async def test_a_query_over_the_length_limit_is_422_not_truncated(database) -> N
 def test_parse_query_keeps_a_lone_cjk_character_and_at_most_six_terms() -> None:
     assert search.parse_query("雪") == ["雪"]
     assert search.parse_query("Next.js GPT-4 C++ C#") == ["next.js", "gpt-4", "c++", "c#"]
+    assert search.parse_query("Gemini教學") == ["gemini", "教學"]
+    assert search.parse_query("東京eSIM推薦") == ["東京", "esim", "推薦"]
     assert search.parse_query("一 二 三 四 五 六 七 八") == ["一", "二", "三", "四", "五", "六"]
     assert search.parse_query("東京 東京 tokyo TOKYO") == ["東京", "tokyo"]
     with pytest.raises(AppError) as error:
         search.parse_query("x, y; z")
     assert error.value.code == "guide_search_query_invalid"
+
+
+async def test_mixed_script_cjk_phrase_fallback_and_latest_sort(database, actor) -> None:
+    async with client(make_app(database, actor)) as api:
+        older = await published(
+            api,
+            "ai-slides-compare",
+            prose(
+                "Gemini 與 Gamma：免費 AI 簡報製作工具比較",
+                "整理免費方案額度與匯出限制",
+                "支援中文大綱一鍵轉投影片。",
+            ),
+            kind="life",
+            destination_id=None,
+            topics=["ai"],
+        )
+        newer = await published(
+            api,
+            "gemini-cli-note",
+            prose(
+                "終端機工作流筆記",
+                "日常開發指令整理",
+                "文末順便補充 Gemini 教學資源，也能用免費工具做簡報。",
+            ),
+            kind="life",
+            destination_id=None,
+            topics=["ai"],
+        )
+        del older, newer
+
+        # Unspaced mixed ASCII+CJK query finds both spaced articles; title ranks first by default.
+        assert await slugs(api, "Gemini教學") == ["gemini-cli-note"]
+        assert await slugs(api, "免費簡報工具") == ["ai-slides-compare", "gemini-cli-note"]
+        assert await slugs(api, "免費簡報工具怎麼選") == ["ai-slides-compare", "gemini-cli-note"]
+
+        # sort=latest orders newest publication first even when an older article has a title hit.
+        latest_res = await api.get(
+            "/guides/search",
+            params={"locale": "zh-TW", "q": "免費簡報工具", "sort": "latest"},
+        )
+        assert latest_res.status_code == 200
+        assert [hit["slug"] for hit in latest_res.json()["results"]] == [
+            "gemini-cli-note",
+            "ai-slides-compare",
+        ]
 
 
 async def test_the_title_outranks_the_body_and_the_alias_names_the_best_match(

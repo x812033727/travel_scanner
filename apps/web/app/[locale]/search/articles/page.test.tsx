@@ -135,4 +135,23 @@ describe("/search/articles", () => {
     expect(screen.getByText("輸入關鍵字開始搜尋，或先從主題與系列瀏覽。")).toBeTruthy();
     expect(screen.getAllByRole("link", { name: /^AI/ }).length).toBeGreaterThan(0);
   });
+
+  it("passes optional topic and sort=latest to the search API and preserves them on sort/pagination links", async () => {
+    mocks.search.mockResolvedValue(answer({ total: 25, offset: 0, next_offset: 10 }));
+    render(await page({ q: "Gemini教學", section: "life", topic: "ai-news", sort: "latest" }));
+    expect(mocks.search).toHaveBeenCalledWith("zh-TW", {
+      q: "Gemini教學",
+      section: "life",
+      topic: "ai-news",
+      sort: "latest",
+      offset: 0,
+    });
+    const sortNav = screen.getByRole("navigation", { name: "排序" });
+    expect(within(sortNav).getByRole("link", { name: "最新發布" }).getAttribute("aria-current")).toBe("page");
+    expect(within(sortNav).getByRole("link", { name: "關聯度優先" }).getAttribute("href"))
+      .toBe("/search/articles?q=Gemini%E6%95%99%E5%AD%B8&section=life&topic=ai-news");
+    const pagination = screen.getByRole("navigation", { name: "結果分頁" });
+    expect(within(pagination).getByRole("link", { name: "下一頁" }).getAttribute("href"))
+      .toBe("/search/articles?q=Gemini%E6%95%99%E5%AD%B8&section=life&topic=ai-news&sort=latest&offset=10");
+  });
 });

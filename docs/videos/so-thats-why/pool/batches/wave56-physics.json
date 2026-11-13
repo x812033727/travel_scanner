@@ -1,0 +1,525 @@
+{
+  "batch_id": "wave56-physics-20261111",
+  "created_on": "2026-11-11",
+  "scope": "角動量守恆下的能量帳、花式滑冰量測與太空船消旋；塑膠的玻璃轉移、熔點、塑化與應力鬆弛：替長題 G11、G30 補教材推導、任務文件與 NIST 評估資料（作者 F8，非作者覆核 V11）；G30 仍後備。",
+  "sources": [
+    {
+      "id": "P56-S001",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/11-3-conservation-of-angular-momentum",
+      "canonical_url": "https://openstax.org/books/university-physics-volume-1/pages/11-3-conservation-of-angular-momentum",
+      "title": "University Physics Volume 1 §11.3 Conservation of Angular Momentum",
+      "publisher": "OpenStax（Rice University）",
+      "version": "University Physics Volume 1 網頁版（2026-11-11 擷取）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "§11.3 全節逐段：守恆條件、滑冰者與轉動動能推導、太陽系、Example 11.7 飛輪耦合、Example 11.8 體操下槓、Example 11.9 子彈嵌入圓盤",
+      "locator": "滑冰者段與 Figure 11.14 圖說；K′Rot＝KRot(I/I′) 推導段；Example 11.7；Example 11.8",
+      "summary": "沒有淨外力矩時系統角動量守恆。滑冰者收手後 I′<I，轉動動能 K′＝K×(I/I′) 變大；多出的動能來自把手臂向內拉所做的功，手臂走的是向內的螺旋不是正圓；無摩擦時把手再伸出去，轉速與動能都回到原值。例題：無摩擦飛輪每分鐘 600 轉，疊上一個轉動慣量三倍的靜止飛輪後共同轉速每分鐘 150 轉，四分之三的初始動能在耦合中損失。例題：80 公斤體操選手以 1.8 公尺長桿近似，展開 21.6、抱膝 5.4 kg·m²，每秒 1.0 轉變 4.0 轉，從 3.0 公尺落到 1.8 公尺的 0.5 秒內可轉兩圈。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "教材的理想化例題（無摩擦、桿模型），數字是設定值不是實測。 覆核 V11（2026-11-11）：F8-019 退回後，F8-S012 仍由 F8-016、F8-017 引用；F8-S014（UCSB 示範頁）只有定性說明，留作轉椅示範確有其事的出處，不支撐任何數字。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/openstax_up_11_3.html",
+        "sha256_prefix": "42e2b828645ece73",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P56-S002",
+      "url": "https://openstax.org/books/college-physics-2e/pages/10-5-angular-momentum-and-its-conservation",
+      "canonical_url": "https://openstax.org/books/college-physics-2e/pages/10-5-angular-momentum-and-its-conservation",
+      "title": "College Physics 2e §10.5 Angular Momentum and Its Conservation",
+      "publisher": "OpenStax（Rice University）",
+      "version": "College Physics 2e 網頁版（2026-11-11 擷取）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "§10.5 全節；本輪逐段重讀 Example 10.14 滑冰者角速度與轉動動能",
+      "locator": "Figure 10.21 圖說；Example 10.14 Strategy、Solution、Discussion",
+      "summary": "例題：滑冰者伸臂時每秒 0.800 轉、轉動慣量 2.34 kg·m²，收臂後 0.363 kg·m²（依 60.0 公斤滑冰者的合理假設），角速度變每秒 5.16 轉；轉動動能由 29.6 J 增為 191 J。增加的轉動動能來自收臂所做的功，這是內功，消耗她的食物能量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池中 SRC-b1d348badab37f20 同一頁（P027–P030 的來源）；本輪補讀的是例題的能量段。數字是教材假設值，不是量測。 覆核 V11（2026-11-11）：不另立來源；以 2026-11-11 的新閱讀紀錄（§10.5 全節，Example 10.14 能量段）掛回池中 SRC-b1d348badab37f20。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/openstax_cp_10_5.html",
+        "sha256_prefix": "0d936c33c55bf4a8",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P56-S003",
+      "url": "https://web.physics.ucsb.edu/~lecturedemonstrations/Composer/Pages/28.45.html",
+      "canonical_url": "https://web.physics.ucsb.edu/~lecturedemonstrations/Composer/Pages/28.45.html",
+      "title": "28.45 -- Rotatable stool, dumbbells",
+      "publisher": "加州大學聖塔芭芭拉分校物理系課堂示範",
+      "version": "網頁現行版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "全文",
+      "locator": "末段 Note that while the angular momentum…",
+      "summary": "轉椅加啞鈴示範的說明：伸手轉慢、收手轉快；角動量 Iω 不變，動能 ½Iω² 會變；動能的變化來自移動啞鈴所做的功，向外是負功、向內是正功。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有定性說明，沒有任何實測轉速、質量或半徑。 覆核 V11（2026-11-11）：F8-019 退回後，F8-S012 仍由 F8-016、F8-017 引用；F8-S014（UCSB 示範頁）只有定性說明，留作轉椅示範確有其事的出處，不支撐任何數字。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/ucsb_2845.html",
+        "sha256_prefix": "1826123544b8ef61",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P56-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12426178/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fspor.2025.1597598",
+      "title": "Comparisons of angular momentum at takeoff in six types of jumps in women's figure skating（Yamaguchi & Sakurai，Frontiers in Sports and Active Living 2025）",
+      "publisher": "Frontiers Media（CC BY；PMC12426178）",
+      "version": "刊本全文；doi:10.3389/fspor.2025.1597598",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST fullTextXML（curl GET 200），去標籤後閱讀",
+      "reading_scope": "全文：摘要、§1–§5、Table 2、Table 3 圖說與 §4.3 限制",
+      "locator": "§2.1–2.3；Table 2；§3.2；§4.1；§4.3",
+      "summary": "7 名日本女子選手（平均 46.9 公斤）在冰上做六種兩周跳，39 個反光點、500 Hz 動作捕捉。滯空時間 0.419–0.493 秒；空中轉速 Axel 以外的五種約每秒 1,013–1,109 度，兩周半的 Axel 轉 700.6±34.0 度、每秒 1,422.6±61.8 度。起跳瞬間全身對垂直軸的角動量在六種跳躍間相近，Axel 並沒有顯著較大。作者說明：空中沒有外力矩、角動量固定，轉動慣量可靠收攏四肢降低；但本研究只量角動量，轉速與身體動作的關係是依前人研究的推測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 7 人、只做兩周跳；沒有直接量轉動慣量；作者自列為推測的部分不能寫成實測。 覆核 V11（2026-11-11）：summary／limitations 補：全身角動量在 Axel 與 Flip 之間有顯著差異（p＝0.043），Axel 平均值最高；角動量已除以體重與身高。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/pmc12426178.xml",
+        "sha256_prefix": "8ccb0d652a925387",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P56-S005",
+      "url": "https://www.jpl.nasa.gov/news/press_kits/dawn-launch.pdf",
+      "canonical_url": "https://www.jpl.nasa.gov/news/press_kits/dawn-launch.pdf",
+      "title": "Dawn Launch: Mission to Vesta and Ceres — Press Kit（2007 年 9 月）",
+      "publisher": "NASA／JPL",
+      "version": "新聞資料袋 PDF，26 頁",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 下載 PDF，pdftotext -layout 轉文字後閱讀",
+      "reading_scope": "Launch Vehicle／Launch Sequence 與 Spacecraft（Attitude Control）兩節；其餘略讀",
+      "locator": "第 10–11 頁發射流程；Attitude Control 段",
+      "summary": "Delta II 第二段燃燒結束後，曙光號與 Star 48 第三段被轉到每分鐘約 50 轉；第三段燒完約 4.7 分鐘後，溜溜球消旋系統把轉速從約 50 rpm 降到零，再變成反方向約 3 rpm。分離後船體轉得慢了，但艙內的氙燃料還在轉，太空船要等 8 分 20 秒才開始用推進器停掉剩下的轉動。平時姿態由反作用輪控制，十二個 0.9 牛頓的聯氨推進器為備援。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "發射前的任務說明，是計畫值不是飛行後量測；沒有寫配重質量與纜長。 覆核 V11（2026-11-11）：title 保留；limitations 改寫為「2007 年 9 月發射前的計畫敘述（未來式），不是飛行後量測」。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/jpl_dawn_launch.pdf",
+        "sha256_prefix": "2d96d7a80d7f72e0",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P56-S006",
+      "url": "https://ntrs.nasa.gov/api/citations/19680018324/downloads/19680018324.pdf",
+      "canonical_url": "https://ntrs.nasa.gov/citations/19680018324",
+      "title": "Yo-Yo Despin Mechanisms（Kenneth S. Bush，第二屆航太機構研討會，1967）",
+      "publisher": "NASA Langley Research Center／NASA 技術報告伺服器（NTRS 19680018324）",
+      "version": "會議論文掃描 PDF",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 下載 PDF，pdftotext -layout 轉文字後閱讀",
+      "reading_scope": "I. Introduction、II. Fundamental Principle、IV. Typical Despin Systems 前兩例（III 的推導略讀；掃描文字層有斷字）",
+      "locator": "I 第 2 段；II 第 1–3 段；IV.A 與 IV.B 設計條件",
+      "summary": "溜溜球消旋系統最早由 JPL 提出，是兩條末端掛配重的纜線；配重與纜線從自旋的太空船上放開，帶走足夠的動量把轉速降到要的值。轉動動能在配重展開的過程轉移到配重與纜線，放開時一併丟棄；動作一旦開始就自行完成。蘭利的實例：單段式把酬載與固體火箭組合由約每分鐘 270 轉降到零（±6 rpm）；兩段式第一段由約 600 降到 60 rpm。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "1967 年的掃描件，OCR 斷字，數字以可辨認的句子為準；方程式未逐式核對。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/ntrs_19680018324.pdf",
+        "sha256_prefix": "eea12720eb05d97b",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P56-S007",
+      "url": "https://ntrs.nasa.gov/api/citations/19940025142/downloads/19940025142.pdf",
+      "canonical_url": "https://ntrs.nasa.gov/citations/19940025142",
+      "title": "The Solar Anomalous and Magnetospheric Particle Explorer (SAMPEX) yo-yo despin and solar array deployment mechanism（第 28 屆航太機構研討會，1994）",
+      "publisher": "NASA Goddard Space Flight Center／NTRS 19940025142",
+      "version": "會議論文 PDF",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 下載 PDF，pdftotext -layout 轉文字後閱讀",
+      "reading_scope": "Introduction、Yo-Yo Despin Mechanism（設計需求、參數表、流體影響）、Testing 的消旋測試段；太陽能板展開段略讀",
+      "locator": "設計需求條列；參數表；Testing：Wallops 四次測試與 1992 年 4 月蘭利真空槽測試",
+      "summary": "SAMPEX 重 157 公斤，由 Scout 火箭發射（1992 年 7 月 3 日）。第四段分離後要從每分鐘 141±10 轉降到 3 rpm 以內。溜溜球是一對配重加纜線繞在船身上，爆炸插銷放開後纜線展開，展到與船身成徑向時飛離。設計參數：太空船轉動慣量 9.79 kg·m²、半徑 0.38 公尺、兩顆配重合計 154.15 公克、纜長 4.7 公尺、纜線每公尺 21.9 公克；整套消旋系統 1.8 公斤。大氣中的幾次測試只有一次達到 ±3 rpm（作者歸因於空氣阻力），1992 年 4 月在蘭利 16 公尺真空槽的最後一次測試降到恰好零 rpm。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "機構設計與地面測試報告，沒有寫飛行中實際消旋後的轉速。 覆核 V11（2026-11-11）：limitations 補：消旋測試用工程測試機（ETU），飛行件沒做；戶外四次只有一次落在 3 rpm 內；「Total Mass of Tip Weight 154.15 g」未說明單顆或合計；纜線每公尺 21.9 公克。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/ntrs_19940025142.pdf",
+        "sha256_prefix": "9de0af69361dd7eb",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P56-S008",
+      "url": "https://srd.nist.gov/jpcrdreprint/1.555636.pdf",
+      "canonical_url": "https://doi.org/10.1063/1.555636",
+      "title": "Heat Capacity and Other Thermodynamic Properties of Linear Macromolecules. II. Polyethylene（Gaur & Wunderlich，J. Phys. Chem. Ref. Data 10, 119, 1981）",
+      "publisher": "AIP／美國國家標準暨技術研究院（NIST 標準參考資料重印本）",
+      "version": "期刊刊本重印 PDF；doi:10.1063/1.555636",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 下載 PDF，pdftotext -layout 轉文字後閱讀",
+      "reading_scope": "§1 Introduction（兩相模型、熔融與玻璃轉移）與 §5 Conclusions；熱容量各表未逐列讀",
+      "locator": "§1 末三段（equilibrium melting temperature…；The glass transition temperature of polyethylene continues…）；§5",
+      "summary": "聚乙烯的平衡熔點定為 414.6±0.5 K，平衡晶體熔化熱 4.1±0.2 kJ/mol。聚乙烯的玻璃轉移溫度「仍有爭議」，各研究給過 140 到 250 K 的值；本文與先前的熱容量研究只與 237 K 相符，而且玻璃轉移的低溫端延伸到相當低的溫度。半結晶樣品是兩相結構，同時有玻璃轉移溫度與熔點；兩者之間，非晶相是液態、晶相是固態。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "1981 年的評估資料；平衡熔點是外推的完美晶體值，商用聚乙烯實際熔融溫度較低且隨支鏈與結晶度而變；Tg 至今仍有不同說法。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/nist_jpcrd_pe.pdf",
+        "sha256_prefix": "dda32da64a403b60",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P56-S009",
+      "url": "https://srd.nist.gov/jpcrdreprint/1.555663.pdf",
+      "canonical_url": "https://doi.org/10.1063/1.555663",
+      "title": "Heat Capacity and Other Thermodynamic Properties of Linear Macromolecules. V. Polystyrene（Gaur & Wunderlich，J. Phys. Chem. Ref. Data 11, 313, 1982）",
+      "publisher": "AIP／NIST 標準參考資料重印本",
+      "version": "期刊刊本重印 PDF；doi:10.1063/1.555663",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 下載 PDF，pdftotext -layout 轉文字後閱讀",
+      "reading_scope": "§1 Introduction 與 §2.1–2.2；熱容量各表未逐列讀",
+      "locator": "§1 第 2–4 段與式 (1)",
+      "summary": "商用聚苯乙烯多為雜排（atactic）、幾乎不結晶；整排（isotactic）聚苯乙烯可結晶，平衡熔點 516 K。聚苯乙烯的玻璃轉移隨分子量而變：1/Tg＝1/373＋0.864/M，分子量很大時趨近 373 K。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "1982 年評估資料；式 (1) 引自他人，適用的分子量範圍未在本段說明。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/nist_jpcrd_ps.pdf",
+        "sha256_prefix": "091ce347d344d387",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P56-S010",
+      "url": "https://srd.nist.gov/jpcrdreprint/1.555678.pdf",
+      "canonical_url": "https://doi.org/10.1063/1.555678",
+      "title": "Heat Capacity and Other Thermodynamic Properties of Linear Macromolecules. VIII. Polyesters and Polyamides（Gaur 等，J. Phys. Chem. Ref. Data 12, 65, 1983）",
+      "publisher": "AIP／NIST 標準參考資料重印本",
+      "version": "期刊刊本重印 PDF；doi:10.1063/1.555678",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 下載 PDF，pdftotext -layout 轉文字後閱讀",
+      "reading_scope": "§1–§2.1 與 Table 1 聚酯列；PET 熱容量段略讀；聚醯胺部分只看 Table 列",
+      "locator": "§2.1 末段（The glass transition is reasonably well established at 342 K）；Table 1 PET 列",
+      "summary": "聚對苯二甲酸乙二酯（PET）的玻璃轉移「相當確定」在 342 K；Table 1 列平衡熔點 553 K、熔化熱 26.9 kJ/mol。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "1983 年評估資料；553 K 是平衡熔點，瓶用 PET 的實際熔融峰較低；Table 1 的文字層有 OCR 雜訊，數字與正文 342 K 互相對得上。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/nist_jpcrd_polyester.pdf",
+        "sha256_prefix": "38c2d28e2953d198",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P56-S011",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8158838/fullTextXML",
+      "canonical_url": "https://doi.org/10.1021/acsomega.1c01006",
+      "title": "Biobased Plasticizers from Tartaric Acid: Synthesis and Effect of Alkyl Chain Length on the Properties of Poly(vinyl chloride)（Zhu 等，ACS Omega 2021）",
+      "publisher": "American Chemical Society（開放取用；PMC8158838）",
+      "version": "刊本全文；doi:10.1021/acsomega.1c01006",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST fullTextXML（curl GET 200），去標籤後閱讀",
+      "reading_scope": "§2.3 DMA、§2.5 拉伸（Table 2）、§4.4 薄膜製備（Table 3）；合成與遷移段略讀",
+      "locator": "§2.3 第 1–2 段；Table 2；§4.4 第 1 段",
+      "summary": "溶液澆鑄的 PVC 薄膜，塑化劑一律每百份樹脂 30 份（30 phr）。動態機械分析：純 PVC 薄膜 Tg 89.16°C，加 30 phr 鄰苯二甲酸二辛酯（DOP）的對照組 61.31°C。拉伸：純 PVC 抗拉強度 35.2±0.9 MPa、模數 1427.8±34.0 MPa、斷裂伸長率 25.0±15.6%；加 DOP 後 30.1±0.8 MPa、396.7±16.5 MPa、272.2±8.6%。文中分類：塑化劑 0–30 phr 為硬質、30–70 phr 軟質、80 phr 以上為糊狀 PVC。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "研究主題是酒石酸酯新塑化劑，DOP 只是對照組；溶液澆鑄薄膜，Tg 取自 DMA 峰值，與 DSC 的數值不能直接比；只有 30 phr 一個添加量。 覆核 V11（2026-11-11）：limitations 補：30 phr DOP 的 DMA Tg 為 61.31°C，仍高於室溫；純 PVC 伸長率 25.0±15.6%；phr 分級沒有引文。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/PMC8158838.xml",
+        "sha256_prefix": "63e84aab3d5b2674",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P56-S012",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9781170/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/polym14245374",
+      "title": "Analysis of Stress Relaxation in Bulk and Porous Ultra-High Molecular Weight Polyethylene (UHMWPE)（Statnik 等，Polymers 2022, 14, 5374）",
+      "publisher": "MDPI（CC BY；PMC9781170）",
+      "version": "刊本全文；doi:10.3390/polym14245374",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST fullTextXML（curl GET 200），去標籤後閱讀",
+      "reading_scope": "摘要、§1、§2.1、§2.3、§2.6、§3.3（Table 2）；斷層掃描與 SAXS 段略讀",
+      "locator": "摘要；§2.3 壓縮程序；§2.6；Table 2；§3.3 末段",
+      "summary": "超高分子量聚乙烯（GUR 4120，平均分子量 4.7×10⁶ g/mol）的實心與多孔試片，在掃描電鏡內分段壓縮：每壓 2 毫米就停住、固定位移 5 分鐘，同時記錄力。力隨時間下降，可用兩項指數（Prony 級數）描述：實心試片的短時間常數 22–24 秒、長時間常數 178–189 秒；孔隙率 25–40% 的試片為 16–25 秒與 142–162 秒，統計上與孔隙率、壓縮量幾乎無關。作者並指出聚合物一般還有長於 10⁴ 秒的鬆弛成分。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只觀察 5 分鐘，兩個時間常數是這段時間窗內的擬合結果；試驗溫度未在讀到的段落明寫（電鏡腔內，未加熱）；單一材料。 覆核 V11（2026-11-11）：limitations 補：實心試片每次壓 0.5 毫米；孔隙率在方法（60–80%）與 Table 2（25–40%）前後不一；摘要把兩個時間常數分屬分子與結構兩種過程。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/PMC9781170.xml",
+        "sha256_prefix": "f4760575f2680f88",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P56-001",
+      "question": "收手後多出來的轉動動能，算得出來是多少、從哪裡來的嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "rotation.kinetic_energy_ratio_inertia_internal_work_reversible",
+      "answer_target": "算得出來。沒有外力矩時 Iω 不變，所以收手後的轉動動能是原來的 I/I′ 倍：轉動慣量縮成幾分之一，動能就變成幾倍。OpenStax 的滑冰者例題（設定值）：伸臂時每秒 0.800 轉、轉動慣量 2.34 kg·m²，收臂後 0.363 kg·m²，轉速變成每秒 5.16 轉，轉動動能從 29.6 焦耳變成 191 焦耳。教材說，多出來的能量是她把手臂往內拉所做的功：手臂走的不是正圓而是向內的螺旋，這是消耗食物能量的內功。在沒有摩擦的理想情況下，把手伸回原位，轉速和動能都回到原來的值。",
+      "scope": "教材例題的設定值（依 60 公斤滑冰者的合理假設），不是實測，也不是轉椅的數字；片中轉椅示範只做定性，數字出現時要標「教材例題、滑冰者、假設值」。理想無摩擦。",
+      "source_ids": [
+        "P56-S001",
+        "P56-S002",
+        "P56-S003"
+      ],
+      "source_locator": "S012 滑冰者段與 K′＝K(I/I′) 推導段；S013 Example 10.14；S014 末段",
+      "premise_status": "screened",
+      "notes": "補 P029 自己列的「能量推導要先讀」。P029 已有「可做內功」一句；新增 K′/K＝I/I′、例題數字、螺旋路徑、伸手為負功且可逆。算 2 條。 原提案 F8-016（目標 G11，原角色 segment；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；刪掉兩處教材沒有的說法。P029 已有「角動量守恆不等於動能守恆、可做內功」；本核心只算 K′/K＝I/I′ 與例題數字 1 條、螺旋路徑與可逆半條，共 1.5 條（作者算 2）。F8-S013 與池中 SRC-b1d348badab37f20 是同一頁，掛回原來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒有免費的能量：多出來的動能是手臂付的。",
+        "visual": "轉椅俯視：手的軌跡畫成向內的螺旋；旁邊兩根能量條 29.6 J 與 191 J，差額標「手臂做的功」。",
+        "seconds": [
+          75,
+          95
+        ]
+      }
+    },
+    {
+      "id": "P56-002",
+      "question": "角動量一點都沒少，能量有可能反而不見嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "rotation.flywheel_coupling_momentum_kept_energy_lost",
+      "answer_target": "會。OpenStax 的例題：一個無摩擦的飛輪每分鐘轉 600 圈，把另一個轉動慣量是它三倍、原本靜止的飛輪疊上去，兩個輪面靠摩擦很快變成同速。摩擦是系統內部的力矩，不改變總角動量，所以合體後每分鐘 150 轉；但轉動動能只剩原來的四分之一，四分之三在耦合時損失掉了。和收手正好相反：收手是內部做正功，動能增加；摩擦耦合是內部耗散，動能減少。兩種情況角動量都沒變。",
+      "scope": "理想化例題；損失的能量去向（發熱）教材未展開。",
+      "source_ids": [
+        "P56-S001"
+      ],
+      "source_locator": "Example 11.7 全題與 Significance",
+      "premise_status": "screened",
+      "notes": "轉折一：角動量守恆和能量守恆是兩本帳，動能可增可減。算 1.5 條。 原提案 F8-017（目標 G11，原角色 turn；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）照原稿收；照原稿收。單一理想化例題加一句對照，算 1 條（作者算 1.5）。片中不要自己補「變成熱」當成來源說的話。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "守恆的是角動量；動能要看內部是在出力還是在磨。",
+        "visual": "兩個飛輪疊合：轉速錶 600→150，能量條瞬間掉到四分之一。",
+        "seconds": [
+          55,
+          70
+        ]
+      }
+    },
+    {
+      "id": "P56-003",
+      "question": "花式滑冰多轉半圈的跳躍，是起跳時就帶了比較多的「轉」嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "rotation.figure_skating_double_jumps_takeoff_momentum_similar",
+      "answer_target": "實測差得不多。日本研究者讓 7 名女子選手在冰上做六種兩周跳，用每秒 500 格的動作捕捉算出起跳瞬間全身的角動量：要轉兩周半的 Axel 平均值最高，但只和其中一種跳躍（Flip）有統計上的顯著差異，作者的結論是六種大致同一個量級。空中的表現卻差很多：其他五種跳躍滯空約 0.42 到 0.48 秒、每秒轉約 1,013 到 1,109 度；Axel 滯空 0.493 秒、轉了約 700 度、每秒 1,422.6 度。離開冰面後沒有外力矩，角動量已經固定；作者的解釋是選手在空中把四肢收向軀幹、降低轉動慣量來提高轉速，但他們自己寫明這是依前人研究的推測，這份研究沒有量空中的動作與轉動慣量。",
+      "scope": "7 人、只做兩周跳；角動量是除以體重與身高後的值；轉動慣量未直接量測；「收攏四肢所以轉得快」是論文作者的推測，片中要照實說是推測。不由兩組平均值自行算出轉動慣量的比例。",
+      "source_ids": [
+        "P56-S004"
+      ],
+      "source_locator": "§2.1–2.3；Table 2；§3.2；§4.1；§4.3",
+      "premise_status": "screened",
+      "notes": "補 G11 缺的真實案例量測。新增起跳角動量相近、各跳躍的滯空時間與轉速。算 2.5 條。 原提案 F8-018（目標 G11，原角色 segment；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；補上 Axel 與 Flip 的顯著差異與「平均值最高」，不讓「沒有比較多」說過頭。起跳角動量的比較 1 條、滯空與轉速 1 條，共 2 條（作者算 2.5）。這是 G11 唯一的人體實測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "離地以後就沒有地板可以借力了，能改的只剩身體的形狀。",
+        "visual": "六種跳躍的起跳角動量長條幾乎等高；下方轉速長條只有 Axel 高出一截。",
+        "seconds": [
+          70,
+          90
+        ]
+      }
+    },
+    {
+      "id": "P56-004",
+      "question": "太空船發射時被轉到每分鐘 50 圈，沒有地面可以踩，要怎麼停下來？",
+      "domain": "生活力學",
+      "mechanism_key": "rotation.dawn_yoyo_despin_50_rpm_reverse_3_xenon_wait",
+      "answer_target": "把轉動丟給會離開的東西。火箭的末段常靠自旋來穩住指向（NASA 蘭利中心 1967 年的說明）。NASA 的曙光號（Dawn）2007 年發射前的任務說明寫著：太空船和第三段先被轉到每分鐘約 50 轉；第三段燒完約 4.7 分鐘後，溜溜球消旋系統把轉速從約 50 rpm 降到零，還稍微過頭、變成反方向約 3 rpm，幾秒後太空船與第三段分離。但還沒完：船體慢下來了，艙內的氙燃料卻還在轉，所以太空船要再等 8 分 20 秒，才開始用推進器把剩下的轉動停掉。",
+      "scope": "全部是發射前新聞資料袋的計畫值，片中要說「發射前的計畫是」；沒有配重與纜長數字，也沒有飛行後的實測。自旋穩定的用途出自 1967 年的一般說明，不是針對曙光號。",
+      "source_ids": [
+        "P56-S005",
+        "P56-S006"
+      ],
+      "source_locator": "S016 Launch Sequence 段（第 10–11 頁）；S017 I 第 1 段",
+      "premise_status": "screened",
+      "notes": "轉折二的任務實例：要改變總角動量，得交給外面。新增 50→0→反向 3 rpm 與氙燃料還在轉。算 2 條。氙那一段正好是「系統內交換」的實例，可回扣 P314。 原提案 F8-020（目標 G11，原角色 turn；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；數字照錄，把時態改成計畫。50→0→反向 3 rpm 一條、氙燃料還在轉半條，共 1.5 條（作者算 2）；自旋穩定那句是背景不另計。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在轉椅上你只能換姿勢；想真的停下來，得把「轉」送給別的東西。",
+        "visual": "太空船俯視：兩條纜線甩開、船體轉速錶歸零後微微反轉；艙內一團氙氣還在慢慢轉。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "P56-005",
+      "question": "每分鐘轉 141 圈、157 公斤的衛星，靠兩條纜線和末端的小配重怎麼停下來？",
+      "domain": "生活力學",
+      "mechanism_key": "rotation.sampex_yoyo_154_gram_weights_4_7_m_cable",
+      "answer_target": "靠把轉動轉給配重和纜線、再把它們丟掉。NASA 蘭利中心的說明：溜溜球消旋是兩條末端掛配重的纜線繞在船身上，放開後配重向外甩、纜線一圈圈展開；船體的轉動動能和動量在這過程轉移到配重與纜線，纜線展到徑向時脫鉤飛走，把這些動量一起丟掉。1992 年發射的 SAMPEX 衛星重 157 公斤、轉動慣量 9.79 kg·m²、半徑 0.38 公尺，分離時設計轉速每分鐘 141 圈，要降到 3 rpm 以內；設計表列的末端配重質量是 154.15 公克、纜線長 4.7 公尺，整套系統 1.8 公斤。用測試機在戶外做的四次消旋，只有一次落在 3 rpm 以內，設計者歸因於空氣阻力；搬進直徑 16 公尺的真空槽後，一次就降到零。",
+      "scope": "設計參數與測試機（非飛行件）的地面測試；飛行中實際的殘餘轉速文中未報。154.15 公克照原文寫「末端配重質量」，原文沒說是單顆還是兩顆合計，不寫「兩顆加起來」，也不拿它和衛星質量算倍數。配重很輕卻有效與纜長有關，但來源沒有白話解釋，寫稿時只照來源的轉移說法，不自行推導；與「伸手變慢」的類比只能當旁白的比方，不當來源的說法。",
+      "source_ids": [
+        "P56-S006",
+        "P56-S007"
+      ],
+      "source_locator": "S017 I 第 2 段、II 第 1–3 段；S018 設計需求、參數表、Testing 消旋測試段",
+      "premise_status": "screened",
+      "notes": "新增原理（動量與動能轉移後丟棄）、SAMPEX 的質量／轉動慣量／配重／纜長、空氣中測不準而真空槽歸零。算 3 條。與池中 R21001（反作用輪要靠外力矩卸載）同一原則的不同手段，不重複。 原提案 F8-021（目標 G11，原角色 segment；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；改掉料號式的自行解讀（配重質量）與測試經過。原理半條（「丟給會離開的東西」F8-020 已算）、SAMPEX 的設計數字 1 條、空氣中與真空的測試 1 條，共 2.5 條（作者算 3）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一百多公克，放到 4.7 公尺外，就拿得走整艘船的轉。",
+        "visual": "衛星俯視分鏡：配重貼身→甩開→纜線拉直→脫鉤；轉速錶 141→0。",
+        "seconds": [
+          70,
+          90
+        ]
+      }
+    },
+    {
+      "id": "P56-006",
+      "question": "聚乙烯、聚苯乙烯、PET，各自在幾度過玻璃轉移、幾度才熔化？",
+      "domain": "化學與材料",
+      "mechanism_key": "polymer.tg_tm_pairs_pe_ps_pet_jpcrd",
+      "answer_target": "每種塑膠有兩個不同的溫度。美國標準參考資料期刊 1981 到 1983 年的評估值：聚乙烯玻璃轉移約 237 K、平衡熔點 414.6±0.5 K；PET 玻璃轉移 342 K、平衡熔點 553 K；聚苯乙烯玻璃轉移在分子量很大時趨近 373 K，雜排的聚苯乙烯沒有結晶，能結晶的整排聚苯乙烯平衡熔點 516 K。原文的定義：半結晶樣品是兩相結構，玻璃轉移以下兩相都是固體；高於玻璃轉移、低於熔點時，一相是固體（晶體），另一相是液體。照這些數字，室溫落在聚乙烯的兩個溫度之間，卻低於 PET 和聚苯乙烯的玻璃轉移。",
+      "scope": "1981–1983 年的評估資料；熔點是平衡晶體的外推值，商品的實際熔融溫度較低；聚乙烯的 237 K 仍有爭議（見 F8-023）。來源沒有說塑膠袋、保麗龍杯、寶特瓶是哪種塑膠，也沒有說誰「撐住形狀」；片中若要對應到日常用品，要另補來源並標材料。溫度以原文的 K 為準，攝氏換算在寫稿時做並標「約」；末句與室溫的比較是依數字排大小，原文沒有這句。",
+      "source_ids": [
+        "P56-S008",
+        "P56-S009",
+        "P56-S010"
+      ],
+      "source_locator": "S019 §1 末三段；S020 §1 與式 (1)；S021 §2.1 末段與 Table 1",
+      "premise_status": "screened",
+      "notes": "補 G30 缺的有條件 Tg／Tm 資料；轉折一（塑膠袋在室溫早就「軟過」了）。H3024 只有定性區別與 PMMA 例子；新增三種塑膠各兩個溫度與室溫的相對位置。算 3 條。 原提案 F8-022（目標 G30，原角色 turn；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；刪掉三處來源沒有的說法。三種塑膠各兩個溫度算 1.5 條；兩相定義 H3024 已有，與室溫比大小是作者的比較，都不計（作者算 3）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣在室溫，有的塑膠還沒到第一道門檻，有的早就過了。",
+        "visual": "一條溫度軸：三種塑膠各兩個刻度（Tg、Tm），室溫一條直線切過去，落在 PE 的兩刻度之間、PS 與 PET 的 Tg 之下。",
+        "seconds": [
+          85,
+          105
+        ]
+      }
+    },
+    {
+      "id": "P56-007",
+      "question": "玻璃轉移溫度是像熔點那樣刻在材料上的一個固定數字嗎？",
+      "domain": "化學與材料",
+      "mechanism_key": "polymer.tg_not_fixed_molecular_weight_and_disputed_pe",
+      "answer_target": "不是。評估聚乙烯資料的作者直說它的玻璃轉移溫度「仍有爭議」，各研究給過 140 到 250 K；他們的熱容量分析只與 237 K 相符，而且轉移的低溫端拖得很長。聚苯乙烯的玻璃轉移會隨分子量改變，評估資料用 1/Tg＝1/373＋0.864/M 表示：分子量 M 很大時才趨近 373 K。熔融是晶體消失，要吸收熔化熱（聚乙烯平衡晶體約每莫耳 4.1 千焦）；玻璃轉移則是熱容量往上跳一階，沒有這筆熔化熱。",
+      "scope": "同上評估資料；式中 M 的適用範圍原文未說明，只引用式子，不代數字算個別分子量的 Tg。量法與升溫速率對讀數的影響本輪沒有來源，不寫。",
+      "source_ids": [
+        "P56-S008",
+        "P56-S009"
+      ],
+      "source_locator": "S019 §1 末段與 §5；S020 式 (1)",
+      "premise_status": "screened",
+      "notes": "新增 Tg 的範圍爭議與分子量依賴、熔融有潛熱而玻璃轉移是一段範圍。算 1.5 條。 原提案 F8-023（目標 G30，原角色 segment；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；把作者從式子讀出的話收斂成原文有的。Tg 的範圍爭議半條、分子量依賴半條；熔化熱對台階與 H3024 的區別重疊，不另計，共 1 條（作者算 1.5）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "熔點是一個點，玻璃轉移比較像一段坡。",
+        "visual": "兩條曲線：熔融是一根尖峰，玻璃轉移是一個緩緩的台階；台階位置隨鏈長左右移。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P56-008",
+      "question": "同一種 PVC，加了塑化劑之後到底變了多少？",
+      "domain": "化學與材料",
+      "mechanism_key": "polymer.pvc_30phr_dop_tg_modulus_elongation",
+      "answer_target": "一份薄膜研究的對照組給了整組數字：每一百份 PVC 樹脂加 30 份塑化劑 DOP（鄰苯二甲酸二辛酯），以動態機械分析量到的玻璃轉移溫度從純 PVC 的 89.16°C 降到 61.31°C；拉伸模數從 1,427.8 MPa 降到 396.7 MPa；拉斷前能伸長的比例從 25.0% 變成 272.2%，抗拉強度則只從 35.2 降到 30.1 MPa。也就是沒有加熱，材料就從硬而拉不長變成可以大幅拉長。該文提到的分法是：0 到 30 份算硬質，30 到 70 份算軟質，80 份以上是糊狀 PVC。",
+      "scope": "溶液澆鑄薄膜、單一添加量（30 phr）、DOP 為對照組；Tg 取自 DMA（1 Hz），量到的 61°C 仍高於室溫，片中不得說「塑化劑把玻璃轉移降到室溫以下」，只能說降了多少、材料變得多軟。純 PVC 的伸長率 25.0% 標準差 15.6%。phr 分級是該文的一句說法、未附引文。不能與別份研究的 DSC 值相減或連成曲線；不另算倍數；只講塑化機制，不延伸健康或法規。",
+      "source_ids": [
+        "P56-S011"
+      ],
+      "source_locator": "§2.3 第 1–2 段；Table 2；§4.4 第 1 段",
+      "premise_status": "screened",
+      "notes": "補 G30 缺的具體塑化劑案例（PVC＋鄰苯二甲酸酯、添加量對 Tg）。H3025 只有機制一句；新增 30 phr 下 Tg、模數、伸長率的前後值與 phr 分級。算 2.5 條。不另算倍數。 原提案 F8-024（目標 G30，原角色 turn；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；數字都對；補上「Tg 仍高於室溫」這個會讓整章說法出錯的條件。Tg 前後值半條、模數與伸長率 1 條、分級半條，共 2 條（作者算 2.5）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不加熱也能變軟：把玻璃轉移溫度往下搬。",
+        "visual": "兩條應力–應變曲線：純 PVC 又陡又短，加 DOP 的又緩又長；旁邊 Tg 刻度從 89 滑到 61。",
+        "seconds": [
+          70,
+          90
+        ]
+      }
+    },
+    {
+      "id": "P56-009",
+      "question": "把一塊塑膠壓住不動，它頂回來的力多快開始變小？",
+      "domain": "高分子材料",
+      "mechanism_key": "polymer.uhmwpe_stress_relaxation_two_time_constants",
+      "answer_target": "幾十秒內就看得到。一項研究把超高分子量聚乙烯（原料粉末平均分子量 4.7×10⁶）試片分段壓縮：每壓一段就停住、固定位置 5 分鐘，同時記錄力。位移沒有變，力卻一路往下掉；曲線要用兩個時間常數才描述得好：實心試片是約 22 到 24 秒的快過程，加上約 178 到 189 秒的慢過程。作者把慢的歸為分子層級、快的歸為結構層級的鬆弛。做成發泡材之後，兩個時間落在 16 到 25 秒與 142 到 162 秒，和實心的略有差異，但不同孔隙率之間取不出統計上顯著的差別。作者還提醒，聚合物一般另有長於一萬秒的鬆弛成分，5 分鐘的試驗看不到。",
+      "scope": "單一材料、5 分鐘時間窗的擬合值；試驗在電鏡腔內、溫度未寫。發泡試片每次壓 2 毫米、實心試片每次 0.5 毫米；論文對孔隙率的說法前後不一（方法寫 60–80%，表列 25–40%），片中不報孔隙率數字。不是設計壽命資料。",
+      "source_ids": [
+        "P56-S012"
+      ],
+      "source_locator": "摘要；§2.3；§2.6；Table 2；§3.3 末段",
+      "premise_status": "screened",
+      "notes": "補 G30 缺的有條件應力鬆弛量測。H3090 只有機制敘述；新增試驗程序、兩個時間常數、與孔隙率無關、另有更長成分。算 2 條。 原提案 F8-026（目標 G30，原角色 segment；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；改正被混成一個的兩個時間尺度與試驗程序。試驗程序半條、兩個時間常數 1 條；「另有更長成分」H3090 的時間依賴已含，不另計，共 1.5 條（作者算 2）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒有加熱、沒有加料，只是等，塑膠也會「鬆」。",
+        "visual": "力–時間曲線：位移是一條平線，力先快掉再慢掉，兩段各標 23 秒與 180 秒左右。",
+        "seconds": [
+          65,
+          85
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P56-NA001",
+      "question": "體操選手下槓，為什麼要抱成一團才轉得完？",
+      "existing_ids": [
+        "P027"
+      ],
+      "source_ids": [],
+      "reason": "非作者覆核 V11（2026-11-11）退回：轉動慣量變小所以轉得快——與 P027 同一個答案的另一個例子，而且同樣是教材設定值，不是新事實。不進池；若要用，只在滑冰章尾當一句「教材把體操下槓也當同一題」的話，不算條數。 原提案 F8-019。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回"
+    },
+    {
+      "id": "P56-NA002",
+      "question": "塑化劑加到一半重量，PVC 的玻璃轉移溫度能掉到室溫以下嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "非作者覆核 V11（2026-11-11）退回：照作者自己的建議退回：單位寫錯、配方讀不出來、單一添加量，而且答案末句「門檻被搬到室溫底下」是作者依這一筆數字做的解讀，原文沒有。它正好是 G30 第二個轉折最需要的一句，所以更不能靠這筆。等找到同一研究、同一量法、多個添加量的資料再寫（見 F8-NA010）。 原提案 F8-025。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回"
+    },
+    {
+      "id": "P56-NA003",
+      "question": "轉椅示範的實測數值（人加椅的轉動慣量、啞鈴質量與半徑、收手前後轉速）",
+      "existing_ids": [
+        "P027",
+        "P029"
+      ],
+      "source_ids": [
+        "P56-S003"
+      ],
+      "reason": "查了 UCSB、UCSC、IMSc 等課堂示範頁，都只有定性說明或公式，沒有任何量測值；The Physics Teacher 的相關文章（Maloney 1990、Bryant 2000）在付費牆後，未讀；arXiv 檢索沒有轉椅實測。能量段改用 OpenStax 例題的設定值（F8-016），並以花式滑冰的動作捕捉研究（F8-018）作為真實量測。 原提案 F8-NA007。",
+      "reentry_condition": "找到附原始數據的開放實驗報告或教學期刊全文時新增；或製作時以「本片自製示範」量測並明確標示。",
+      "reading_status": "未找到可讀來源"
+    },
+    {
+      "id": "P56-NA004",
+      "question": "反作用輪存滿了要靠外力矩卸載",
+      "existing_ids": [
+        "R21001"
+      ],
+      "source_ids": [
+        "P56-S005"
+      ],
+      "reason": "池中 R21001 已有同一答案（G223）。曙光號新聞資料袋只有一句反作用輪與推進器備援的描述，不足以另立核心；G11 直接沿用 R21001 當一章。 原提案 F8-NA008。",
+      "reentry_condition": "無",
+      "reading_status": "已讀（資料袋相關段）"
+    },
+    {
+      "id": "P56-NA005",
+      "question": "PVC 的玻璃轉移溫度隨塑化劑添加量逐步下降的整條曲線",
+      "existing_ids": [
+        "H3025"
+      ],
+      "source_ids": [
+        "P56-S011"
+      ],
+      "reason": "找到的兩份開放全文各只有一個添加量（30 phr 的 DMA、50 份的 DSC），量法不同不能連成一條線；另一份電纜用 PVC 研究（PMC13516786）只有熱重分析、沒有 Tg；redalyc 的一份 PDF 403。 原提案 F8-NA010。",
+      "reentry_condition": "找到同一研究、同一量法、多個添加量的開放資料時新增，並取代 F8-025。",
+      "reading_status": "部分讀到（兩個單點）"
+    }
+  ]
+}

@@ -1,0 +1,316 @@
+{
+  "batch_id": "wave58-earth-20261111",
+  "created_on": "2026-11-12",
+  "scope": "流速計動床偏差的巴西河川比對；1989、2022、2024 年三場太空天氣事件：替長題 G35（仍後備）與組題 C4-07（後備）補核心（作者 F11／F12，覆核 V14／V15）。",
+  "sources": [
+    {
+      "id": "S58-S001",
+      "url": "https://files.abrhidro.org.br/Eventos/Trabalhos/66/SBRH2013__PAP013253.pdf",
+      "canonical_url": "https://files.abrhidro.org.br/Eventos/Trabalhos/66/SBRH2013__PAP013253.pdf",
+      "title": "Investigação do Efeito de Fundo Móvel em Medições de Vazão no Sub-Médio São Francisco（Cidreira、Fontes、Genz、Furtunato）",
+      "publisher": "巴西水資源協會（ABRHidro）第 20 屆巴西水資源研討會（XX SBRH，2013）論文；作者任職巴西地質調查局（CPRM）薩爾瓦多分局、UFBA、UFRB",
+      "version": "2013（量測在 2012 年 1–2 月）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+      "reading_scope": "全文 8 頁讀完（葡萄牙文，附英文摘要）",
+      "locator": "Resumo；Metodologia；Tabela 2；Resultados 第 3–6 段；Conclusões",
+      "summary": "巴西聖法蘭西斯科河中游 2012 年 1 月洪水期，在七個水文站同一天、同一斷面（兩站例外，相距 300–400 公尺）用三種方法量流量：傳統流速儀（Gurley 杯式，每垂線 0.2、0.8 水深兩點）、SonTek M9 聲學剖面儀以 RTK 差分 GPS 為參考、同一台儀器以底追蹤為參考（兩種參考同時記錄）。主河五站流速都超過每秒 1 公尺、河床為黏土／砂質：GPS 參考與流速儀最多只差 2.12%（Gameleira 站），底追蹤卻一律偏低——Bom Jesus da Lapa 低 13%（流速儀 6,842、GPS 6,831、底追蹤 5,995 m³/s）、Gameleira 9%、Ibotirama 與 Morpará 約 7%、Paratinga 5%。支流格蘭德河與普雷圖河兩站流速約每秒 0.65 公尺、含沙較少，三種方法相近（底追蹤差 3% 與 1.8%）。三種方法的斷面積、河寬、水深相近，作者判斷差在水速被低估。作者仍建議不要丟掉底追蹤資料，因為 GPS 訊號品質沒有保證。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "研討會論文，非期刊同儕審查；單一洪水期、每站一次；作者沒有做動床測試（迴圈或定點），是由三法比較推斷動床效應；Gameleira 與 Boqueirão 兩站聲學與流速儀不在同一斷面。百分比是作者文中寫的，不要自己用表 2 重算。與 USGS 無隸屬關係，但方法引用 USGS 文獻。 覆核 V14（2026-11-12）：limitations 補：各站量測日期不同（2012-01-24 至 02-03），同一天指每站各自；表 2 的 Bom Jesus da Lapa 一列，底追蹤的斷面積（5,470 m²）與河寬（822.3 m）也小於另兩法；Gameleira 一列的平均流速與流量對不上（BT 列流速較高、流量較低）。",
+      "author_cache": {
+        "file": "scratchpad/stw8/f11src/sbrh2013-pap013253.pdf",
+        "sha256_prefix": "bba2af91cb1c5a94",
+        "note": "文字檔 sbrh2013-pap013253.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S58-S002",
+      "url": "https://rigeo.sgb.gov.br/bitstream/doc/17381/1/livro_importancia_integragracao_equipamentos.pdf",
+      "canonical_url": "https://rigeo.sgb.gov.br/bitstream/doc/17381/1/livro_importancia_integragracao_equipamentos.pdf",
+      "title": "Importância da Integração de Equipamentos para Medição de Vazão em Rios com Grande Concentração de Sedimentos em Suspensão（Barbosa、Buffon、Bonotto、Pinheiro、Castro）",
+      "publisher": "巴西地質調查局（SGB／CPRM）機構典藏 RIGeo；第 12 屆全國泥沙工程會議（XII ENES）論文",
+      "version": "2016（量測在 2014-03-20、2015-02-05、2016-03-03）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+      "reading_scope": "全文 8 頁讀完（葡萄牙文，英文摘要）",
+      "locator": "§3.1；§4.1 與 Tabela 1–3；§5",
+      "summary": "亞馬遜最大支流馬德拉河 Abunã 水文站，CPRM 的水文工程師用 600 kHz 的 ADCP 加差分 GPS／RTK（後來再加單音束測深儀）在洪水期量了三次，同一趟航跡分別以底追蹤（BT）、GGA、VTG 三種參考算流量。2014 年 3 月 20 日（該河歷史大洪水，局部流速約每秒 4.5 公尺）：總流量 BT 44,569、GGA 54,370、VTG 54,142 m³/s，作者以 BT 為基準算出相對誤差 22%，斷面圖上有一大片讀不到的空白。2015 年 2 月 5 日加了測深儀：32,424 對 35,124，誤差 8%；航跡圖上 BT 與 GPS 兩條線分開，作者說這就是動床的特徵。2016 年 3 月 3 日：BT 只在兩岸附近記得到資料，總流量 14,139 對 30,644，誤差 117%；作者說若現場只帶聲學儀器，這次量測就丟了，並推測與河床大幅變動、懸浮泥沙增加有關。結語仍提醒 GPS 訊號品質也有自己的影響因素。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "研討會論文；相對誤差以 BT 為分母，不是「BT 少了百分之幾」，片中要照原文說法或直接報兩個流量；2014 與 2016 兩次的差距混了「讀不到河底」與動床兩件事，作者沒有拆開，2016 年的原因是推測（pode ter condicionado）；沒有與流速儀等獨立方法比對；沒有做迴圈測試。 覆核 V14（2026-11-12）：summary 補：2014 年表 1 的實測部分（Qmedida）本身就是 36,317 對 44,383；2016 年流速約 3.5 m/s，作者說單憑流速不足以解釋；「世界上輸沙量最大的河」是該文作者的說法。",
+      "author_cache": {
+        "file": "scratchpad/stw8/f11src/sgb-livro-17381.pdf",
+        "sha256_prefix": "821bd0d4f3c5774f",
+        "note": "文字檔 sgb-livro-17381.txt；rigeo.cprm.gov.br 舊網域 TLS 憑證名稱不符（curl 60），改由 rigeo.sgb.gov.br 同一路徑取得 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S58-S003",
+      "url": "https://rigeo.sgb.gov.br/bitstream/doc/25770/1/manual_adcp_2025.pdf",
+      "canonical_url": "https://rigeo.sgb.gov.br/bitstream/doc/25770/1/manual_adcp_2025.pdf",
+      "title": "Manual: Técnicas e Procedimentos para Medição de Descarga Líquida com Perfilador Acústico Doppler (ADCP)",
+      "publisher": "巴西國家水與基本衛生署（ANA）與巴西地質調查局（SGB／CPRM），國家水文氣象網（RHN）作業手冊",
+      "version": "2025（Brasília，94 頁）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+      "reading_scope": "§5.1.9 Teste de fundo móvel、§5.1.10 Método Loop、§5.1.11 Método estacionário 逐句讀；§5.1.12 與表 2 略讀；其餘章節沒有讀",
+      "locator": "§5.1.9–5.1.11（pp.32–35）",
+      "summary": "巴西國家水文網的現行規範：河底輸沙多時底追蹤會把河床的移動讀成船往上游走，流量出現負偏差；會不會偵測到動床不只看河，同樣條件下不同儀器或不同設定（頻率、單元大小）可能一台偵測到、一台沒有，所以某斷面過去沒有動床紀錄不能保證以後沒有。GPS 也有多路徑、HDOP 升高等操作者控制不了、事後處理才看得出的問題，因此每一次 ADCP 流量量測都必須附至少一次有效的動床測試。判定門檻：動床速度大於每秒 0.012 公尺，或達平均水速的 1%。優先用迴圈法；偵測到動床時船跡應改用 GNSS，GNSS 不堪用才用動床測試結果修正，手冊說這樣精度較差。迴圈法原本要求船速低於每秒 0.7 公尺，但手冊准許亞馬遜流域的大河超過：ANA、SGB 與 USGS 在當地的經驗是羅盤誤差通常遠小於 1 度，原因包括地磁傾角小、磁場干擾少、航向變化小，以及當地量測常用的木造船。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "機關作業手冊，方法本身承襲 USGS（Mueller、Wagner）的文獻，亞馬遜的經驗也有 USGS 人員參與（Mueller & East 2018），所以不是完全獨立於 USGS 的驗證，只是另一個國家機關的採用與在地修訂。只讀了三小節。 覆核 V14（2026-11-12）：summary 改：0.7 m/s 是對河寬超過 55 公尺的河；偵測到動床時「應考慮」以 GNSS 取得船跡。",
+      "author_cache": {
+        "file": "scratchpad/stw8/f11src/sgb-manual-adcp-2025.pdf",
+        "sha256_prefix": "9c224482bb31f235",
+        "note": "文字檔 sgb-manual-adcp-2025.txt（版面，雙欄交錯）與 sgb-manual-adcp-2025-raw.txt（逐欄，較好讀） 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S58-S004",
+      "url": "https://www.hydroquebec.com/learning/notions-de-base/tempete-mars-1989.html",
+      "canonical_url": "https://www.hydroquebec.com/learning/notions-de-base/tempete-mars-1989.html",
+      "title": "Understanding Electricity｜March 1989 Blackout",
+      "publisher": "Hydro-Québec（魁北克省營電力公司）教育頁",
+      "version": "無版本日期；2026-11-12 取得的頁面",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 預設標頭取得網頁，去標籤後全文閱讀",
+      "reading_scope": "整頁正文（約 2,500 字元）",
+      "locator": "全頁：事件經過段、〈Hydro-Québec strengthens its grid〉四項措施、易受害原因段",
+      "summary": "1989 年 3 月 10 日太陽風離開太陽，12 日輸電網出現電壓波動，13 日凌晨 2:44 地磁劇烈變動、保護系統跳脫，不到一分鐘全網停電，全省停電九個多小時。事後重設保護系統並調高跳脫門檻、建即時警報、改運轉程序、加裝串聯補償。該公司說自己特別脆弱是因為位在阻擋電流入地的大片岩盾上，而且輸電線很長。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "是電力公司自己的教育頁，不是事故調查報告，沒有電流、電壓數值與受影響人數；『強烈的風離開太陽』是頁面的通俗說法。寫稿前宜補 NERC 或 Boteler 2019 的技術回顧。 覆核 V15（2026-11-12）：limitations 加一句：頁面沒有「感應電流」一詞，也沒有說設備有無受損。",
+      "author_cache": {
+        "file": "hq-1989.html",
+        "sha256_prefix": "200ab74586913c83",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S58-S005",
+      "url": "https://arxiv.org/pdf/2303.02330",
+      "canonical_url": "https://arxiv.org/pdf/2303.02330",
+      "title": "The Solar Cause of the 2022 February 3 Geomagnetic Storm that Led to the Demise of the Starlink Satellites",
+      "publisher": "Gopalswamy、Xie、Yashiro、Akiyama（NASA Goddard Space Flight Center）／arXiv",
+      "version": "arXiv:2303.02330v1，2022-12-30 投稿",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 預設標頭取得 arXiv PDF，pdftotext 轉文字；讀摘要、引言與討論中關於衛星的段落，太陽源區分析只略讀",
+      "reading_scope": "摘要、第 1 節引言、第 2 節開頭、討論中『The launch of the Starlink satellites…』段",
+      "locator": "摘要；Introduction 第一段；第 9 頁『The launch of the Starlink satellites occurred during the recovery phase…』",
+      "summary": "2022 年 2 月 3 日 SpaceX 發射的 49 顆星鏈衛星中 38 顆提早墜回；當時的磁暴只是中等強度（最小 Dst 約 -66 nT），發射時磁暴已在恢復期，但高層大氣密度仍偏高，2 月 4 日又來一次最小 Dst -61 nT 的磁暴再推高密度。磁暴來自 1 月 29 日一次中等速度的日冕物質拋射，約三天後到地球。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "預印本，未核對是否已刊出；摘要寫 39 顆、引言寫 49 顆中 38 顆，本紀錄採引言的說法並註明不一致；密度升高的幅度與衛星高度本篇沒有給數字，只引 Lin 等、Zhang 等、Fang 等 2022（Fang 等的 Wiley 頁回 403，未讀）。本篇主題是太陽源區，不是衛星阻力。",
+      "author_cache": {
+        "file": "gopalswamy2023-arxiv-2303.02330.pdf（文字檔 gopalswamy2023.txt，sha256 前 16 碼 ad915fdd1be72704）",
+        "sha256_prefix": "7ffc0733c72cd941",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S58-S006",
+      "url": "https://www.swpc.noaa.gov/news/geomagnetic-storm-conditions-likely-2-3-february-2022",
+      "canonical_url": "https://www.swpc.noaa.gov/news/geomagnetic-storm-conditions-likely-2-3-february-2022",
+      "title": "Geomagnetic Storm Conditions Likely 2 - 3 February, 2022",
+      "publisher": "NOAA／NWS Space Weather Prediction Center 公告",
+      "version": "2022-01-31 23:50 UTC 發布",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 預設標頭取得網頁，去標籤後全文閱讀",
+      "reading_scope": "整則公告（約 1,300 字元）",
+      "locator": "全文",
+      "summary": "事前公告：2 月 2 日發布 G2（中等）磁暴守視，3 日為 G1（輕微）守視；來源是 1 月 29 日 M1 閃焰伴隨的全暈日冕物質拋射，預報員估速約每秒 662 公里。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "是事前預報，不是事後檢討；沒有提到衛星。只用來交代『官方事前給的等級是 G2／G1』。 覆核 V15（2026-11-12）：limitations 加一句：這是 2022-01-31 23:50 UTC 的單一則預報，之後有沒有更新或升級，本輪沒有查。",
+      "author_cache": {
+        "file": "swpc-starlink-2022.html",
+        "sha256_prefix": "6e758e40a7760fd4",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S58-S007",
+      "url": "https://science.nasa.gov/science-research/heliophysics/how-nasa-tracked-the-most-intense-solar-storm-in-decades/",
+      "canonical_url": "https://science.nasa.gov/science-research/heliophysics/how-nasa-tracked-the-most-intense-solar-storm-in-decades/",
+      "title": "How NASA Tracked the Most Intense Solar Storm in Decades",
+      "publisher": "NASA Science（NASA Goddard Space Flight Center 撰稿）",
+      "version": "2024-05 發布；2026-11-12 取得的頁面",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 預設標頭取得網頁，去標籤後閱讀正文",
+      "reading_scope": "正文全文（去掉導覽列後約 6,000 字元）",
+      "locator": "正文：G5 與 2003 年段；極光與 26 度磁緯段；SWPC 事前通知與 ICESat-2 段",
+      "summary": "2024 年 5 月 10 日起多個日冕物質拋射幾乎同時到達地球，磁暴達 G5，是 2003 年以來首次；極光低到約 26 度磁緯都有人回報；NOAA 太空天氣預報中心事前通知電網與商用衛星業者，部分 NASA 任務預先關閉儀器或系統，ICESat-2 進入安全模式，NASA 說可能是磁暴使阻力增加。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "NASA 的新聞式說明頁，不是原研究；『26 度磁緯』『可能因阻力』都是頁面引述、尚待評估的說法；沒有電網端的事後統計。寫稿前宜補 NOAA 或 NERC 的事後檢討。 覆核 V15（2026-11-12）：author_cache 加註：2026-11-12 覆核重抓的整頁雜湊（1f13277a63fed7cf）與作者快取（1afde498519c95ba）不同，原因是頁首動態區塊；正文五處引用句逐字相同。",
+      "author_cache": {
+        "file": "nasa-may2024-storm.html（去標籤文字檔 nasa-may2024-storm.txt，sha256 前 16 碼 2064d432854d336e）",
+        "sha256_prefix": "1afde498519c95ba",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "S58-001",
+      "question": "把同一條河同一天用三種方法各量一次，底追蹤的流量少了多少？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.sao_francisco_bt_vs_dgps_vs_current_meter",
+      "answer_target": "在巴西聖法蘭西斯科河 2012 年 1 月的洪水期，少了 5% 到 13%。巴西地質調查局的水文人員到七個水文站，每一站都在同一天先用傳統的轉杯式流速儀量，再用同一台聲學剖面儀同時記錄兩種參考：差分 GPS 與底追蹤。主河的五個站流速都超過每秒 1 公尺、河床是黏土與砂：GPS 參考的結果和流速儀最多只差 2.12%，底追蹤卻每一站都偏低，依作者文中的說法是 13%、9%、約 7%、約 7%、5%。以 Ibotirama 站為例，三個數字是每秒 6,391、6,318、5,945 立方公尺，三種方法的斷面積與河寬幾乎一樣，差在底追蹤算出的平均流速較低。兩條流速只有每秒 0.65 公尺上下、含沙較少的支流，三種方法就差不多（底追蹤差 3% 與 1.8%）。作者由此判斷主河有動床、水速被低估，但他們沒有做迴圈或定點的動床測試。",
+      "scope": "2012 年 1–2 月單一洪水期、每站一次的研討會論文（非期刊同儕審查，葡萄牙文）；各站量測日期不同，「同一天」指每站各自的同一天；動床是由三法比較推斷的（原文 pode indicar），沒有動床測試；Gameleira 與 Boqueirão 兩站聲學斷面與流速儀斷面相距 300–400 公尺。百分比照作者文中寫的，不用表 2 重算。示範站不用 Bom Jesus da Lapa（該站底追蹤的斷面積與河寬也比另兩法小，13% 不全是流速造成的），也不用 Gameleira（表列流速與流量對不上）。",
+      "source_ids": [
+        "S58-S001"
+      ],
+      "source_locator": "Tabela 2；Resultados 第 3–6 段；Conclusões",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：主河五站偏低而 GPS 與流速儀相符 1 條；支流兩站三法相近 0.5 條。 原提案 F11-011（目標 G35，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；這是本輪最紮實的新核心：USGS 以外、全文可讀、而且多一個完全不靠聲學的第三種方法。百分比都在原文。改兩處：把「同一天」說清楚；示範站由 Bom Jesus da Lapa 換成 Ibotirama，因為前者在同一張表上面積與河寬也不同，接上「差在水速」會被看表的人抓到。算 1.5 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "GPS 和老式流速儀互相對得上，只有把河床當成岸的那個讀數少了一截——偏差不是儀器壞了，是參考在動。",
+        "visual": "一個站三根柱子：流速儀、GPS、底追蹤，前兩根等高、第三根矮一截；換到支流的站，三根等高。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S58-002",
+      "question": "河床動得太厲害、水又太濁的時候，底追蹤只是少算一點嗎？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.madeira_flood_bottom_track_fails",
+      "answer_target": "不只，有時是整次量測幾乎作廢。亞馬遜最大的支流馬德拉河輸沙量極高，巴西地質調查局在 Abunã 站洪水期量了三次，同一趟航跡分別用底追蹤和 GPS 兩種參考算。2014 年 3 月歷史大洪水那次，局部流速約每秒 4.5 公尺，總流量是底追蹤 44,569 對 GPS 54,370 立方公尺每秒，斷面上還有一大片讀不到。2015 年加了一台單音束測深儀幫忙找河底，兩者是 32,424 對 35,124，航跡圖上底追蹤與 GPS 的線分了岔，作者說這就是動床的樣子。2016 年 3 月那次，底追蹤只在兩岸附近記得到資料，總流量 14,139 對 30,644；作者說單憑流速解釋不了，推測是河床大幅變動、懸浮泥沙變多讓儀器讀不到河底，並寫道如果當時船上只有聲學儀器，這次量測就丟了。他們的結語同時提醒：GPS 的訊號品質也有自己的問題。",
+      "scope": "馬德拉河 Abunã 站三次洪水期量測的研討會論文（葡萄牙文）；原文的相對誤差（22%、8%、117%）以底追蹤為分母，片中直接報兩個流量、不報百分比，也不可說「少了一半」；2014、2016 兩次的差距混了「讀不到河底」與動床兩件事，作者沒有拆開，2016 年的原因是作者推測；沒有流速儀等獨立方法對照，GPS 參考的數值本身沒有被驗證；沒有做迴圈測試。「世界上輸沙量最大的河」是該文作者的說法。",
+      "source_ids": [
+        "S58-S002"
+      ],
+      "source_locator": "§4.1 與 Tabela 1–3；§5",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：三次量測兩種參考的對照 1 條；2016 年底追蹤只在岸邊有資料、量測會丟 0.5 條。 原提案 F11-012（目標 G35，原角色 turn；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；數字與敘述都在原文，作者自己把最大的限制（混了讀不到河底與動床）寫得很清楚。收，算 1.5 條。但角色由 turn 改 segment：這個個案裡出問題的是底追蹤、救場的是 GPS，和觀眾在前幾章已經得到的結論（河床不可靠就換 GPS）同方向，是更大的偏差加上另一種失效（聽不到河底），沒有推翻任何結論。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "修正公式的前提是儀器還聽得到河底；在世界上含沙最多的河之一，連這個前提都會沒有。",
+        "visual": "河的斷面圖：GPS 參考那張填滿顏色，底追蹤那張中間一大片空白，只有兩岸有資料。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "S58-003",
+      "question": "某個斷面量了好幾年都沒出現動床，以後就可以不用測了嗎？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.brazil_manual_mandatory_moving_bed_test_amazon_loop",
+      "answer_target": "巴西的國家規範說不行，每一次都要測。巴西國家水署與地質調查局 2025 年的作業手冊寫：會不會偵測到動床不只看河，還看儀器——同樣的水流條件下，頻率或單元大小不同的儀器，可能一台偵測到、一台沒有；所以某斷面過去沒有紀錄，不保證下次沒有。GPS 那一邊也有操作者控制不了、事後處理才看得出的訊號問題。因此每一次流量量測都必須附至少一次有效的動床測試，門檻是動床速度超過每秒 0.012 公尺或達平均水速的 1%；偵測到動床時應考慮改用 GPS 取得船跡，GPS 資料不堪用才拿測試結果去修正，手冊明說那樣精度較差。手冊還為亞馬遜流域開了一個例外：河寬超過 55 公尺時，繞一圈的船速原本要低於每秒 0.7 公尺，亞馬遜的大河做不到可以超過，理由是當地的羅盤誤差通常遠小於 1 度——地磁傾角小、干擾少、航向變化小，而且當地量測常用的是木造船。",
+      "scope": "巴西國家水文網 2025 年的作業規範，是規定與理由，不是量測；方法與門檻承襲 USGS 文獻（Mueller、Wagner），亞馬遜的依據是 USGS 人員參與的 Mueller & East 2018，所以不是獨立於 USGS 的驗證。「不同儀器可能一台有一台沒有」手冊沒有附數據。只讀了三小節。",
+      "source_ids": [
+        "S58-S003"
+      ],
+      "source_locator": "§5.1.9–5.1.11（pp.32–35）",
+      "premise_status": "screened",
+      "notes": "算 0.5 條。 原提案 F11-013（目標 G35，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；條文都在原文，小修兩處措辭。算 0.5 條，同意作者：多半是規定與條件，只有「偵測與否也取決於儀器」與亞馬遜木造船的例外算新事實，而且兩者手冊都沒有附數據。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "動床不是河的固定屬性，是「這條河、這一刻、這台儀器」的組合。",
+        "visual": "兩台不同頻率的儀器並排停在同一點：一台的船跡往上游漂，另一台停在原地。",
+        "seconds": [
+          30,
+          45
+        ]
+      }
+    },
+    {
+      "id": "S58-004",
+      "question": "1989 年魁北克大停電，保護系統一動作，到全網沒電花了多久？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.quebec_1989_trip",
+      "answer_target": "不到一分鐘。照魁北克水電公司的說明，3 月 12 日輸電網已出現電壓波動，調度中心盡力維持穩定；13 日凌晨 2:44 地磁劇烈變動，電網的保護系統被觸發，不到一分鐘就全網停電，全省黑了九個多小時。公司說自己特別容易受害有兩個原因：魁北克坐落在一大片讓電流不易入地的岩盾上，電流改走阻力較小的輸電線；而它的輸電線又特別長。事後的對策是重新校定保護系統並調高跳脫門檻、建即時警報、磁暴時降低線路與直流聯絡線的輸送量並暫停大型切換操作，並在線路上加裝串聯補償。",
+      "scope": "電力公司自己的教育頁，不是事故調查報告；沒有電流大小、受影響人數，也沒有說設備有無受損，片中不補數字、不說「設備沒壞」。「保護系統被觸發」是頁面的說法，哪一類設備先動作要另查技術回顧（NERC 報告或 Boteler 2019）。頁面沒有寫「感應電流」，機制句要引 N269 的來源。",
+      "source_ids": [
+        "S58-S004"
+      ],
+      "source_locator": "全頁：事件經過、四項措施、易受害原因",
+      "premise_status": "screened",
+      "notes": "算 2 條：時間經過（2:44、不到一分鐘、九個多小時）1 條；為什麼是魁北克（岩盾、長線）與事後措施 1 條。池中 N269 只有『長導線感應電流、變壓器飽和、保護設備連鎖』的一句機制，沒有任何事件；搜尋『魁北克、停電、Quebec』無核心。 原提案 F12-007（目標 C4-07，原角色 hook；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；事實都在頁面上，但問題的主詞與 payoff 都寫得比頁面多，已改。算 1.5 條（時間經過 1；易受害的兩個原因與事後措施合計 0.5，因為是公司自述、沒有數值），不是作者的 2 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "從保護系統動作到全網沒電，不到一分鐘；公司事後做的第一件事是調高跳脫門檻。",
+        "visual": "一條時間軸：3/10 太陽、3/12 電壓波動、3/13 02:44 跳脫、之後九小時全黑；地圖上岩盾與長輸電線示意。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "S58-005",
+      "question": "2022 年 2 月讓 38 顆星鏈衛星提早墜回的那場磁暴，有多強？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.starlink_2022_moderate_storm",
+      "answer_target": "只是中等。NASA 戈達德中心的研究者整理：2 月 3 日 SpaceX 發射的 49 顆衛星裡有 38 顆提早墜回大氣。當時的磁暴最小 Dst 約 -66 nT，屬中等強度，而且發射時磁暴已進入恢復期；但恢復期裡高層大氣的密度仍明顯偏高（他們引用別的衛星的量測），2 月 4 日又來一次強度相近（最小 Dst -61 nT）的磁暴，把密度再往上推，阻力持續了好一段時間。NOAA 太空天氣預報中心 1 月 31 日發的公告，給的是 2 月 2 日 G2（中等）、3 日 G1（輕微）的守視。",
+      "scope": "衛星數在同一篇預印本裡摘要寫 39、引言寫 49 顆中 38 顆，本核心採引言，片中避開精確到個位的對比。這篇的主題是太陽源區，衛星只在引言與討論帶到：密度升高多少、衛星在多高，本篇沒有數字，片中不得寫「因為衛星很低」。SWPC 的資料只有 1 月 31 日那一則預報，不代表事件期間沒有更新。不說成「磁暴等級不可信」。預印本，未核對是否已刊出。",
+      "source_ids": [
+        "S58-S005",
+        "S58-S006"
+      ],
+      "source_locator": "F12-S007 摘要、Introduction 第一段、第 9 頁『The launch of the Starlink satellites…』段；F12-S008 全文",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：38／49 與中等磁暴、恢復期發射（1 條）；第二場磁暴再推高密度、事前只有 G2／G1 守視（0.5 條）。池中 N266 只有『太陽活動改變衛星高度的大氣密度』一句；搜尋『星鏈、Starlink、衛星阻力』無事件核心。 原提案 F12-008（目標 C4-07，原角色 turn；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；數字都在原文，但「衛星位置很低」沒有來源，已從 payoff 拿掉並寫進範圍。算 1.5 條，與作者相同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "損失 38 顆衛星的那一次，磁暴只有中等，而且發射時已經在消退。",
+        "visual": "Dst 曲線上兩個不深的谷（-66、-61），下方一排 49 顆剛入軌的小衛星，38 顆變灰下墜。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "S58-006",
+      "question": "2024 年 5 月那場磁暴有多強？事前誰收到了通知？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.may_2024_g5_prepared",
+      "answer_target": "照 NASA 的說明，這場磁暴由幾個日冕物質拋射幾乎同時到達造成，達到最高的 G5 級，是 2003 年以來第一次；有人回報在低到約 26 度磁緯的地方看見極光，科學家還在評估它在歷史紀錄裡排第幾。事前，NOAA 太空天氣預報中心通知了電網與商用衛星的營運者，NASA 有些任務預先關掉部分儀器或系統；量測極區冰層的 ICESat-2 仍進入安全模式，NASA 說可能是磁暴使阻力增加。",
+      "scope": "NASA 的新聞式說明頁；「26 度磁緯」是回報、排名尚待評估，「可能因阻力」也是頁面的推測。電網端有沒有受損、做了哪些操作，這一頁沒有資料：片中不得說「沒有停電」或「因為有通知所以沒事」，那需要 NOAA 或 NERC 的事後檢討。",
+      "source_ids": [
+        "S58-S007"
+      ],
+      "source_locator": "正文：G5／2003 年段、極光 26 度磁緯段、SWPC 通知與 ICESat-2 段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：G5、2003 年以來首次、26 度磁緯（1 條）；事前通知與 ICESat-2 安全模式（0.5 條）。池中 N268 只有『強磁暴時極光橢圓向低緯延伸』一句；本核心補事件。因果（通知→沒停電）來源不支持，已寫進 scope。 原提案 F12-009（目標 C4-07，原角色 segment；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；頁面上的事實都對，但作者的問題預設了來源沒有的前提（沒有變成大停電），改成來源答得出來的問題。算 1 條（G5、2003 年以來首次、26 度磁緯 0.5；事前通知與 ICESat-2 0.5），不是作者的 1.5 條：N268 已有「強磁暴時極光往低緯延伸」，這裡只新增這一次到多低。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "二十多年來最強的一次：極光低到約 26 度磁緯，電網與衛星業者事前收到通知。",
+        "visual": "世界地圖上極光回報點一路往低緯延伸到 26 度線；旁邊一張『事前通知』的清單與進入安全模式的衛星圖示。",
+        "seconds": [
+          50,
+          85
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "S58-NA001",
+      "question": "星鏈衛星那次，高層大氣密度到底升高了多少、衛星在多高？",
+      "existing_ids": [
+        "N266"
+      ],
+      "source_ids": [
+        "S58-S005"
+      ],
+      "reason": "Fang 等 2022（Space Weather，10.1029/2022SW003193）的 Wiley 頁回 403，未讀；Gopalswamy 等只引用、沒有數字。F12-008 因此不寫密度增幅與高度。 原提案 F12-NA004。",
+      "reentry_condition": "讀到 Fang 等或 Dang 等 2022 的開放全文。",
+      "reading_status": "403，未讀"
+    },
+    {
+      "id": "S58-NA002",
+      "question": "1989 年磁暴在電網上量到多大的電流、影響多少人？",
+      "existing_ids": [
+        "N269"
+      ],
+      "source_ids": [
+        "S58-S004"
+      ],
+      "reason": "想讀 NASA、USGS、加拿大自然資源部的說明頁：舊網址都 404，USGS 回 403。只讀到魁北克水電公司的教育頁，沒有數值，所以 F12-007 不寫人數與電流。 原提案 F12-NA005。",
+      "reentry_condition": "讀到 NERC 1989 報告或 Boteler 2019（Space Weather）全文。",
+      "reading_status": "404／403，未讀"
+    }
+  ]
+}

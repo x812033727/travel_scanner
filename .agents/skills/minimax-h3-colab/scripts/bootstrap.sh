@@ -25,6 +25,11 @@
 #      or ~/.mokaair/video-tool.json, and MOKAAIR_SITE (default https://mokaair.com);
 #      COLAB_ACCOUNT_SLOT picks the account (a-e, default: the admin's default Colab account)
 #   3. a token already at ~/.config/colab-cli/token.json
+#
+# One account per agent, several agents at once: set COLAB_ACCOUNT_HOLDER (the agent's name) and
+# COLAB_ACCOUNT_SLOT (a-e or auto). `token` then leases the account on the site and writes its
+# token into a home of its own (scripts/accounts.py claim), `verify` checks that account, and the
+# agent runs h3.sh with the `export` line it printed.
 set -Eeuo pipefail
 
 UPSTREAM_REPO="${MINIMAX_H3_UPSTREAM_REPO:-https://github.com/killkli/minimax-h3-colab-skill.git}"
@@ -128,6 +133,8 @@ fetch_from_site() {
   slot="${COLAB_ACCOUNT_SLOT:-default}"
   [[ "$slot" =~ ^([a-e]|default)$ ]] || die "COLAB_ACCOUNT_SLOT must be a-e or default" 2
   url="$site/api/video/colab-credentials?slot=$slot"
+  # A leased account goes only to its holder (scripts/accounts.py); name it when there is one.
+  [[ -n "${COLAB_ACCOUNT_HOLDER:-}" ]] && url="$url&holder=$COLAB_ACCOUNT_HOLDER"
   body="$(curl -sS -m 30 -H "Authorization: Bearer $token" -H "Accept: application/json" -w '\n%{http_code}' "$url")" || { say "cannot reach $site" >&2; return 1; }
   status="${body##*$'\n'}"
   body="${body%$'\n'*}"
@@ -199,13 +206,32 @@ verify() {
   die "colab usage neither printed a balance nor asked to sign in (network, proxy or revoked token?)" 4
 }
 
+per_account() {
+  # COLAB_ACCOUNT_HOLDER plus a slot (a-e or auto): the leased, one-account-per-agent mode.
+  [[ -n "${COLAB_ACCOUNT_HOLDER:-}" && "${COLAB_ACCOUNT_SLOT:-}" =~ ^([a-e]|auto)$ ]]
+}
+
+claim_account() {
+  local line
+  line="$(python3 -I "$(dirname "$0")/accounts.py" claim --slot "$COLAB_ACCOUNT_SLOT" --holder "$COLAB_ACCOUNT_HOLDER")" || die "could not lease a Colab account (see above)" "$?"
+  say "leased; run every later h3.sh / h3_detached.py call with: $line"
+  printf '%s\n' "$line"
+}
+
+verify_account() {
+  local slot="${COLAB_ACCOUNT_SLOT,,}"
+  local bin="${COLAB_ACCOUNTS_ROOT:-$HOME/.cache/minimax-h3-colab/accounts}/$slot/bin"
+  [[ "$slot" =~ ^[a-e]$ && -x "$bin/colab" ]] || die "account ${slot^^} is not set up here; run: bootstrap.sh token with COLAB_ACCOUNT_HOLDER set" 4
+  PATH="$bin:$PATH" verify
+}
+
 step="${1:-all}"
 case "$step" in
   install) install_cli; install_upstream ;;
-  token) write_token ;;
-  verify) verify ;;
+  token) if per_account; then claim_account; else write_token; fi ;;
+  verify) if per_account && [[ "${COLAB_ACCOUNT_SLOT}" != auto ]]; then verify_account; else verify; fi ;;
   patch) patch_notebook ;;
-  all) install_cli; install_upstream; write_token; verify ;;
-  -h|--help) sed -n '2,17p' "$0" ;;
+  all) install_cli; install_upstream; if per_account; then claim_account; else write_token; verify; fi ;;
+  -h|--help) sed -n '2,33p' "$0" ;;
   *) die "unknown step: $step (install | token | verify | patch | all)" 2 ;;
 esac

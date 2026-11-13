@@ -45,15 +45,6 @@ export type NavGroup = {
  */
 export const navGroups: readonly NavGroup[] = [
   {
-    key: "guides", href: "/guides", items: [
-      { key: "howto", href: "/guides/howto" },
-      { key: "intel", href: "/guides/intel" },
-      { key: "destinations", href: "/destinations" },
-      { key: "hotspots", href: "/hotspots", feature: "hotspots" },
-      { key: "foods", href: "/foods" },
-    ],
-  },
-  {
     key: "ai", href: "/ai", items: [
       { key: "aiNews", href: "/life/topics/ai-news" },
       { key: "aiPlans", href: "/life/topics/ai-plans" },
@@ -67,6 +58,7 @@ export const navGroups: readonly NavGroup[] = [
   },
   {
     key: "life", href: "/life", items: [
+      { key: "techNews", href: "/life/topics/tech-news" },
       { key: "software", href: "/life/topics/software" },
       { key: "website", href: "/life/topics/website" },
       { key: "marketing", href: "/life/topics/marketing" },
@@ -76,6 +68,16 @@ export const navGroups: readonly NavGroup[] = [
     ],
   },
   {
+    key: "guides", href: "/guides", items: [
+      { key: "howto", href: "/guides/howto" },
+      { key: "intel", href: "/guides/intel" },
+      { key: "destinations", href: "/destinations" },
+      { key: "hotspots", href: "/hotspots", feature: "hotspots" },
+      { key: "foods", href: "/foods" },
+    ],
+  },
+  { key: "videos", href: "/videos", items: [] },
+  {
     key: "tools", href: null, travelToolsOnly: true, items: [
       { key: "trips", href: "/trips", feature: "trips" },
       { key: "alerts", href: "/alerts", feature: "alerts" },
@@ -84,7 +86,6 @@ export const navGroups: readonly NavGroup[] = [
       { key: "pricing", href: "/pricing", feature: "pricing" },
     ],
   },
-  { key: "videos", href: "/videos", items: [] },
 ];
 
 /** The item's label key in `navigation`. The travel tools reuse the keys they always had. */

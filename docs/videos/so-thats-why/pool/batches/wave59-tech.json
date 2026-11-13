@@ -1,0 +1,53 @@
+{
+  "batch_id": "wave59-tech-20261111",
+  "created_on": "2026-11-12",
+  "scope": "Signal 2017 年的聯絡人探索說明：替長題 G38 補一條（作者 F13，覆核 V16）。",
+  "sources": [
+    {
+      "id": "T59-S001",
+      "url": "https://signal.org/blog/private-contact-discovery/",
+      "canonical_url": "https://signal.org/blog/private-contact-discovery/",
+      "title": "Technology preview: Private contact discovery for Signal（moxie0）",
+      "publisher": "Signal 官方部落格",
+      "version": "2017-09-26",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀（HTML）",
+      "reading_scope": "全文讀完",
+      "locator": "Background；Contact discovery；Trust but verify；SGX contact discovery；Building a secure SGX service；Oblivious limitations",
+      "summary": "Signal 說明找出通訊錄裡誰也在用 Signal 的做法與它的弱點：原本是把每個電話號碼的截短 SHA-256 雜湊傳給伺服器比對；但電話號碼的可能值太少，雜湊幾乎一定能反推。伺服器照公開的原始碼跑就不留紀錄，可是使用者無從確認伺服器真的在跑那份程式。新設計把比對放進伺服器處理器的隔離區（SGX enclave），用遠端證明讓用戶端確認裡面跑的是公開的程式碼；又因為主機作業系統雖看不到隔離區的記憶體內容、仍看得到存取了哪些位址，所以每次查詢都把全部註冊用戶掃一遍、雜湊表也用每格都寫一次的方式建立。文末自己列出殘餘的洩漏。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Signal 自己的文件，是設計說明不是外部稽核；標題寫明是技術預覽，文末說『接下來幾個月』才部署，之後的實作已有更動，本文不涵蓋。SGX 後來被公開過多種攻擊，本文沒有提。與池中 P57-NA014 是同一頁（當時只讀開頭）。 覆核 V16（2026-11-12）：author_cache 補記：HTML 有動態片段，重抓的 sha256 會不同（今日 3188d960023f40ef，大小相同），去標籤後文字相同；limitations 加「現行做法未讀」。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/signal-private-contact-discovery.html",
+        "sha256_prefix": "745fe21793746ef9",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "T59-001",
+      "question": "通訊軟體要知道我通訊錄裡誰也在用它，就得把通訊錄交給伺服器嗎？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.contact_discovery_hashed_numbers_invertible_enclave_scan",
+      "answer_target": "照 Signal 自己 2017 年的說明，舊做法等於交了：手機把每個電話號碼的雜湊值傳給伺服器比對，但電話號碼的可能值太少，雜湊幾乎一定能反推回號碼。伺服器照公開的程式碼跑就不會留下紀錄，可是使用者沒有辦法確認它真的在跑那一份。它提出的新做法是把比對放進伺服器處理器的隔離區，由處理器向用戶端證明裡面跑的是哪一份程式，主機的作業系統看不到隔離區裡的記憶體內容。文章接著自己指出這還不夠：作業系統雖然看不到內容，卻看得到程式碰了哪些記憶體位址，光看位址就能推回查的是誰；所以每一批查詢都得把全部註冊用戶從頭掃一遍，建表時每一格都寫一次，讓存取的樣子和查什麼無關。",
+      "scope": "Signal 自己的設計說明，不是外部稽核；2017 年的技術預覽，文末說之後幾個月才部署，現行做法沒有讀，旁白要標年份並說「Signal 當時提出」。處理器隔離區後來被公開過多種攻擊，本文沒有提，不得寫成「因此伺服器看不到」。片中只有前半（雜湊可以反推、只能信它照公開的程式碼跑）當成已知事實；後半（隔離區與全表掃描）只能當「它提出的做法與它自己指出的漏洞」。不得由此推論其他服務的做法。",
+      "source_ids": [
+        "T59-S001"
+      ],
+      "source_locator": "Contact discovery；Trust but verify；SGX contact discovery；Building a secure SGX service",
+      "premise_status": "screened",
+      "notes": "算 1 條。這不是覆核點名的那一塊：Albrecht、Dowling、Jones 的論文全文仍讀不到（見 blocked），『伺服器能改成員名單』仍沒有來源；這個核心是覆核 still_missing 第（2）項（P57-NA014／F10-NA008），用來把 G38 的餘裕由 0.3 分拉開，放在『對面是誰』之後、群組之前，回答『伺服器還知道什麼』裡的通訊錄。來源仍是 Signal 自己的文件，獨立性沒有改善。去重：查『聯絡人探索』『SGX』『通訊錄』無同答案核心。 原提案 F13-014（目標 G38，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；不是上一輪點名的那一塊（獨立學者的全文仍讀不到），是上一輪 still_missing 第（2）項。逐句相符，答案不改，scope 收緊。從嚴只算 0.5 條：前半（舊做法的雜湊可反推、使用者無從確認伺服器跑的是哪一份程式）是 Signal 對自己的不利陳述，可算；後半是一份 2017 年預覽的設計，部署後的實況沒有讀、獨立性沒有改善，可以講但不計。作者算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "內容鎖住之後，伺服器還可能從『你問了誰』和『程式碰了哪一格記憶體』知道你的朋友是誰。",
+        "visual": "一本通訊錄變成一串雜湊值再被一一對回號碼；換成一個黑盒子，外面的人只看到它每次都把整排抽屜全部拉開一遍。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    }
+  ],
+  "not_added": []
+}
