@@ -19,6 +19,7 @@ import pytest
 from pydantic import ValidationError
 from sqlalchemy.dialects import postgresql
 
+from app.ai import minimax_pool
 from app.config import Settings
 from app.video_automation.models import DEFAULT_DRAMA, DEFAULT_SLIDES, VideoAutomationSettings
 from app.video_budget.service import Reservation
@@ -951,3 +952,87 @@ def test_providers_are_built_from_the_site_keys(monkeypatch: pytest.MonkeyPatch)
         service.provider_for(Settings(minimax_api_key=None), "minimax", "music")
     assert no_music_key.value.code == "video_media_not_configured"
     _ = (AsyncMock, MagicMock)
+
+
+class KeyedProvider(FakeProvider):
+    """A fake that records which key each call used; ``refuse`` names keys MiniMax turns away."""
+
+    def __init__(self, key: str, log: list[tuple[str, str]], refuse: dict[str, str]) -> None:
+        super().__init__()
+        self.key, self.log, self.refuse = key, log, refuse
+
+    async def submit(self, request: MediaRequest, client: httpx.AsyncClient) -> Submitted:
+        self.log.append(("submit", self.key))
+        if self.key in self.refuse:
+            raise MediaUpstreamError(502, "refused", self.refuse[self.key])  # type: ignore[arg-type]
+        if request.kind == "clip":
+            return Submitted(vendor_ref=f"task-{self.key}")
+        return Submitted(inline=PNG, content_type="image/png")
+
+    async def poll(self, vendor_ref: str, client: httpx.AsyncClient) -> Polled:
+        self.log.append(("poll", self.key))
+        return Polled(state="running", retry_after=10)
+
+
+def _pooled(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, refuse: dict[str, str], **row: Any
+) -> tuple[MediaContext, list[tuple[str, str]]]:
+    log: list[tuple[str, str]] = []
+    monkeypatch.setattr(
+        service.PooledMiniMax, "_build", lambda self, key: KeyedProvider(key, log, refuse)
+    )
+
+    async def unknown(settings: Settings, key: str) -> dict[str, Any]:
+        return {}
+
+    monkeypatch.setattr(minimax_pool, "_default_reader", unknown)
+    ctx = _context(tmp_path, FakeProvider(), row=_row(**row))
+    ctx.runtime = Settings(minimax_api_key="ka", minimax_api_keys_extra="kb")
+    return ctx, log
+
+
+@pytest.mark.asyncio
+async def test_a_used_up_minimax_key_hands_the_picture_to_the_next_one(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    ctx, log = _pooled(
+        tmp_path, monkeypatch, {"ka": "key"}, image_provider="minimax", image_model="image-01"
+    )
+    first, _created = await submit_job(ctx, "image", _image())
+    assert first.status == "ready"
+    assert ("submit", "kb") in log
+    assert first.request[service.POOL_KEY_FIELD] == minimax_pool.fingerprint("kb")
+    assert service.POOL_LEASE_FIELD not in first.request, "a picture's lease ends with it"
+    rested = await ctx.redis.exists(f"mmpool:rest:{minimax_pool.fingerprint('ka')}")
+    assert rested, "the used-up key rests"
+    log.clear()
+    second, _created = await submit_job(ctx, "image", _image(prompt="another"))
+    assert second.status == "ready" and log == [("submit", "kb")], "the resting key is skipped"
+
+
+@pytest.mark.asyncio
+async def test_a_minimax_clip_is_polled_on_the_key_it_was_made_with(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    ctx, log = _pooled(
+        tmp_path,
+        monkeypatch,
+        {},
+        clip_provider="minimax",
+        clip_model="MiniMax-H3",
+        clip_resolution="768p",
+    )
+    frame = _sheet(ctx.store)
+    clip = {"slug": "v", "shot_id": "s1", "prompt": "push in", "first_frame": frame, "seconds": 5}
+    one, _created = await submit_job(ctx, "clip", ClipJobIn.model_validate(clip))
+    two, _created = await submit_job(
+        ctx, "clip", ClipJobIn.model_validate({**clip, "shot_id": "s2"})
+    )
+    assert one.status == two.status == "submitted"
+    made = [key for step, key in log if step == "submit"]
+    assert sorted(made) == ["ka", "kb"], "two clips at once go to two keys"
+    assert one.request.get(service.POOL_LEASE_FIELD), "the lease lasts while the task runs"
+    log.clear()
+    await advance_job(ctx, one)
+    await advance_job(ctx, two)
+    assert log == [("poll", made[0]), ("poll", made[1])]

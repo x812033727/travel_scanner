@@ -1497,6 +1497,10 @@
       "label": "MiniMax API Key",
       "help": "用于 MiniMax Responses API。"
     },
+    "minimax_api_keys_extra": {
+      "label": "其他 MiniMax M Plan 密钥",
+      "help": "可填多把，用逗号或换行分隔。每次调用 MiniMax 时，会在这些密钥与上面那把之间，按正在处理的任务数与剩余额度挑一把；额度用完的密钥会休息到额度重置。"
+    },
     "jev_api_key": {
       "label": "Jev API Key",
       "help": "TypeSafe System One。只返回 choice／score／noul 判断与置信度，不会生成文字，因此不会出现在行程规划或文章搜索的供应商菜单；仅在服务器端加密保存。"
