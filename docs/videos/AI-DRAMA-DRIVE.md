@@ -3,7 +3,8 @@
 站主 2026-11-10 重新規劃的備份規則，管四個系列：種田娶妻打天下（3D 原版與真人版）、恁祖媽今年18、
 原來如此事務所、奇聞檔案局。之後新開的劇也照這份。
 
-主機的影片備份怎麼複製上架包，在 [`BACKUP.md`](BACKUP.md)。這份管的是**整個製作過程的所有檔案**：
+主機的影片備份怎麼複製上架包，在 [`BACKUP.md`](BACKUP.md)。奇聞檔案局與原來如此事務所的題庫快照、研究原稿與各集總表（雲端位置、YouTube ID、版本、畫風、旁白與配音聲音）
+記在 [`ai-drama-drive/BACKUP-LOG.md`](ai-drama-drive/BACKUP-LOG.md) 與 [`explainer-series/CATALOG.md`](explainer-series/CATALOG.md)。這份管的是**整個製作過程的所有檔案**：
 誰負責傳、放在哪裡、怎麼核對，還有舊的 `transfer/*` 分支怎麼收進來。
 
 ## 給製作影片的 session：先讀這段
