@@ -19,7 +19,7 @@ import { ALIGNED_MAX_CHARACTERS, alignedCharacters } from "./cli.mjs";
 import { listSpeechJournal } from "./speech-journal.mjs";
 import { plausibleSplit, silenceRuns, splitAtSilences, trimSilence } from "./split.mjs";
 import { buildNarration, flaggedLines, synthesizeRequest } from "./synthesis.mjs";
-import { ToolMissing } from "../assemble/ffmpeg.mjs";
+import { locateFfmpeg, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { staleTakes } from "./takes.mjs";
 import { concatSamples, encodeWav, parseWav, requireNarrationFormat, WavError } from "./wav.mjs";
 
@@ -1122,7 +1122,7 @@ test("login explains a site that does not offer pairing yet", async () => {
   assert.match(old.out.stderr, /--paste/);
 });
 
-test("voice.tempo speeds synthesized clips up with ffmpeg without sending tempo to the server, re-stretches cached 1x takes for free, scales aligned timings, and prints chars/s", async () => {
+test("voice.tempo speeds synthesized clips up with ffmpeg without sending tempo to the server, re-stretches cached 1x takes for free, scales aligned timings, and prints chars/s", async (t) => {
   const box = sandbox();
   const file = path.join(box.dir, "video.json");
   const baseDoc = JSON.parse(readFileSync(file, "utf8"));
@@ -1134,13 +1134,45 @@ test("voice.tempo speeds synthesized clips up with ffmpeg without sending tempo 
   const env = { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
   const run = (overrides = {}) => capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl, ...overrides });
 
-  // First run at 1x: synthesizes over HTTP and prints measured chars/s.
+  // First run at 1x: synthesizes over HTTP and prints measured chars/s (no ffmpeg required).
   const first = run();
   assert.equal(await main(["tts", "--slug", box.slug], first.ctx), EXIT.ok, first.out.stderr);
   const basePace = /\((\d+\.\d+) chars\/s\)/.exec(first.out.stdout);
   assert.ok(basePace, first.out.stdout);
   const baseTimeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
   const initialCalls = paidRoutes(server);
+
+  // Missing ffmpeg fails closed before any status or paid speech call, and --tempo bounds are checked up front.
+  const freshBox = sandbox("fixture-tempo-fresh");
+  const freshFile = path.join(freshBox.dir, "video.json");
+  writeFileSync(freshFile, `${JSON.stringify({ ...JSON.parse(readFileSync(freshFile, "utf8")), voice: { provider: "azure", name: "zh-TW-HsiaoChenNeural", tempo: 1.2 } }, null, 2)}\n`);
+  const freshServer = fakeServer();
+  const freshEnv = { VIDEO_WORKDIR: freshBox.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
+  const noFfmpeg = capture({
+    root: freshBox.root,
+    env: freshEnv,
+    home: freshBox.base,
+    fetch: freshServer.fetchImpl,
+    ffmpeg: { locate: async () => { throw new ToolMissing("ffmpeg missing in test"); }, run: async () => {} },
+  });
+  assert.equal(await main(["tts", "--slug", freshBox.slug], noFfmpeg.ctx), EXIT.missing);
+  assert.equal(freshServer.calls.length, 0, "missing ffmpeg stops before any status or paid speech call");
+
+  const sample = path.join(box.base, "tempo-sample.txt");
+  writeFileSync(sample, "這是一段試聽微加速效果的測試句子。");
+  const badAudition = run();
+  assert.equal(await main(["audition", "--text-file", sample, "--tempo", "0.9"], badAudition.ctx), EXIT.usage);
+  assert.match(badAudition.out.stderr, /--tempo must be a number from 1 to 1\.5/);
+
+  try {
+    await locateFfmpeg();
+  } catch (error) {
+    if (error instanceof ToolMissing) {
+      t.skip(error.message);
+      return;
+    }
+    throw error;
+  }
 
   // Adding tempo: 1.25 promotes the 1x takes to .raw.wav and stretches locally with 0 paid calls.
   const spedDoc = structuredClone(baseDoc);
@@ -1182,32 +1214,13 @@ test("voice.tempo speeds synthesized clips up with ffmpeg without sending tempo 
     baseTimeline.lines.map((line) => [line.id, line.audio_samples, line.timing]),
   );
 
-  // A fresh project starting with tempo > 1 checks ffmpeg before making any paid speech request,
-  // and never leaks `tempo` into the HTTP request body.
-  const freshBox = sandbox("fixture-tempo-fresh");
-  const freshFile = path.join(freshBox.dir, "video.json");
-  writeFileSync(freshFile, `${JSON.stringify({ ...JSON.parse(readFileSync(freshFile, "utf8")), voice: { provider: "azure", name: "zh-TW-HsiaoChenNeural", tempo: 1.2 } }, null, 2)}\n`);
-  const freshServer = fakeServer();
-  const freshEnv = { VIDEO_WORKDIR: freshBox.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
-  const noFfmpeg = capture({
-    root: freshBox.root,
-    env: freshEnv,
-    home: freshBox.base,
-    fetch: freshServer.fetchImpl,
-    ffmpeg: { locate: async () => { throw new ToolMissing("ffmpeg missing in test"); }, run: async () => {} },
-  });
-  assert.equal(await main(["tts", "--slug", freshBox.slug], noFfmpeg.ctx), EXIT.missing);
-  assert.equal(freshServer.calls.length, 0, "missing ffmpeg stops before any status or paid speech call");
-
   const freshRun = capture({ root: freshBox.root, env: freshEnv, home: freshBox.base, fetch: freshServer.fetchImpl });
   assert.equal(await main(["tts", "--slug", freshBox.slug], freshRun.ctx), EXIT.ok, freshRun.out.stderr);
   const sentBodies = freshServer.calls.filter((call) => call.url.endsWith("/api/video/speech")).map((call) => JSON.parse(call.init.body));
   assert.equal(sentBodies.length, 3);
   assert.ok(sentBodies.every((body) => !("tempo" in body)));
 
-  // audition --tempo speeds up sample WAVs and validates its numeric bounds.
-  const sample = path.join(box.base, "tempo-sample.txt");
-  writeFileSync(sample, "這是一段試聽微加速效果的測試句子。");
+  // audition --tempo speeds up sample WAVs.
   const plainAudition = run();
   assert.equal(await main(["audition", "--text-file", sample, "--voices", "zh-TW-HsiaoChenNeural"], plainAudition.ctx), EXIT.ok, plainAudition.out.stderr);
   const plainWav = parseWav(readFileSync(/zh-TW-HsiaoChenNeural: (.+\.wav)/.exec(plainAudition.out.stdout)[1])).samples.length;
@@ -1216,10 +1229,6 @@ test("voice.tempo speeds synthesized clips up with ffmpeg without sending tempo 
   assert.equal(await main(["audition", "--text-file", sample, "--voices", "zh-TW-HsiaoChenNeural", "--tempo", "1.25"], fastAudition.ctx), EXIT.ok, fastAudition.out.stderr);
   const fastWav = parseWav(readFileSync(/zh-TW-HsiaoChenNeural: (.+\.wav)/.exec(fastAudition.out.stdout)[1])).samples.length;
   assert.ok(fastWav / plainWav > 0.75 && fastWav / plainWav < 0.85, `${fastWav} / ${plainWav}`);
-
-  const badAudition = run();
-  assert.equal(await main(["audition", "--text-file", sample, "--tempo", "0.9"], badAudition.ctx), EXIT.usage);
-  assert.match(badAudition.out.stderr, /--tempo must be a number from 1 to 1\.5/);
 });
 
 test("planRequests splits drama speakers when voice.tempo differs and requires audio_ref to match tempo", () => {
