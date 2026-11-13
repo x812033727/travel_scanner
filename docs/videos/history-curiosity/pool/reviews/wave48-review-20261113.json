@@ -1,0 +1,400 @@
+{
+  "batch": "batches/wave48-20261113.json",
+  "reviewed_on": "2026-11-13",
+  "method": "四位沒有參與研究的獨立覆核代理（R481–R484 依序覆核 ZD1–ZD4）逐題至少重開一個關鍵一手／機構來源、讀研究代理的工具與任務紀錄逐筆核對網址出處與雜湊、grep 全池與跨系列核心去重、對照系列不收清單與 1956 真人視覺規範及 8 分鐘門檻；修改直接寫進批次的題目與來源欄位，覆核補讀的來源編入該研究代理的來源序號。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 20
+  },
+  "source_renames": {
+    "R482-S001": "ZD2-S030",
+    "R482-S002": "ZD2-S031",
+    "R484-S001": "ZD4-S032"
+  },
+  "verdicts": [
+    {
+      "id": "N5421",
+      "agent": "ZD1",
+      "reviewer": "R481",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZD1-S001 https://archive.org/download/historyoftaxatio03doweuoft/historyoftaxatio03doweuoft_djvu.txt（R481 獨立重抓，核對 OCR 第 7500–7891 行）；另獨立重抓 ZD1-S003（1916《Hobson's Choice》_djvu.txt）、ZD1-S004（World Wide Words），並逐字核對快取 ZD1-S002、ZD1-S005",
+      "reopen_result": "頁面上確實寫了：Dowell Vol. III pp. 168–177 記 1696 年（7 & 8 Will. III c. 18）開徵窗戶稅以籌措剪邊銀幣重鑄並取代進屋數灶的 Hearth-Money（1662–1688），初制固定 2s.、10–19 扇加 4s.、20 扇以上加 8s.；屋主查前堵窗、查後重開；1747 年（20 Geo. II c. 3）改制，規定『In the case of two or more windows or lights fixed in one frame, if the partition between them was twelve or more inches broad, the window on each side of the partition was to be charged as a distinct window』（p. 170，第 7599–7603 行）、私自重開罰 20s.、第 30 條授權查稅員『to pass through any house』去查後院窗戶；Spencer Perceval's Consolidation Act（48 Geo. III c. 55，未印出 1808 年字樣）180 扇課 £93 2s. 6d.；四宗判例：射煤孔（Case 1444）、後地窖牆洞（Case 1479）、點蠟燭才看得見的鐵柵地窖口（Case 1546），以及『a mr. Williams, who, under advice from a distinguished sanitary reformer, placed in the wall of his house four perforated zinc plates, with the object of ventilating his pantry... was held to have, in effect, opened four additional windows』（Case 1894，p. 176，第 7836–7841 行）；愛丁堡整排住宅臥室層無窗；1850 年僅差 3 票，『The yield, in 1850, was 1,708,504l.』（p. 177，第 7888 行），1851 年（14 & 15 Vict. c. 36）廢除。Dowell Vol. IV pp. 223–224：1784 Commutation Act 茶稅約 119% 降至 12.5%、60 萬鎊轉嫁窗稅，進口茶葉從 4,948,983 磅增至 13,218,665 磅、Galloway 走私客稱為『the burning and starving Act』。《Hobson's Choice》（1916）：pp. 12, 41 載 Ada Figgins 是 Willie 房東的女兒（landlady's daughter）提盆送午餐，p. 43 Maggie 說『Willie, you wed me』，Ada 喊『It's daylight robbery!』。Quinion（2006-01-28）：回 BBC Radio 4《Midweek》（Victoria Coren），當時 OED 最早例證為 1949 年，Quinion 自己往前追到 1916《Hobson's Choice》，語構同 highway robbery，全文未提『議會辯論』。Martin：引 1804 年 9 月《Monthly Review》『mid-night murders and day-light robberies』、1863 年 9 月《Temple Bar》『it would be a bull worthy of an Irishman to call 1s. 6d. for \"bougies\" a \"daylight robbery\"』（未提旅館帳單，笑點是夜間蠟燭超收卻叫白晝搶劫），並提現代多塞特郡 Poundbury 依『English architectural folk memory』蓋假封窗（未提喬治亞立面對稱）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查 pool.json、batches/*.json、reviews/*.json、external/so-thats-why-cores.json 與同波 ZD2–ZD4，均無英國窗戶稅或 daylight robbery。前提成立、史料紮實，覆核直接修正七處細節誤差：（1）研究稿把 1747 年雙窗條款寫反成『間隔不足 12 吋算兩扇』，Dowell 原文是窗框隔板寬達『12 吋以上』（twelve or more inches broad）才分算兩扇，已修正並同步改掉 visual『兩扇靠太近的窗子』；（2）Williams 先生的四片打孔鋅板是裝在『自家外牆』（in the wall of his house）替食物儲藏室通風，不是釘在『食物櫃門上』，已修正 question、hook、answer_target、payoff 與 visual；（3）£1,708,504 是 1850 年稅收而非 1851 年，且 48 Geo. III c. 55 在 Dowell 頁上未印『1808 年』，改照原文寫法案名稱；（4）《Hobson's Choice》的 Ada Figgins 是房東的女兒而非鞋店女工，並刪去研究代理自行減算的『廢除 65 年後』；（5）Quinion 全文未提議會辯論，刪去 scope 中無據的『議會辯論偶見此類比喻』；（6）Martin 引 1863 年《Temple Bar》並無『旅館帳單』字樣（原句是拿夜間蠟燭 bougies 收 1s. 6d. 卻叫白晝搶劫當愛爾蘭式矛盾笑話），且 Martin 只提現代 Poundbury 的『建築民間記憶』假封窗、未提喬治亞立面對稱，均改照原文；（7）risk 明確收緊為所讀頁面未印出卒年者及 Quinion、Martin、Coren 等現代人物一律不在畫面畫出真人面孔或姓名。具體事實約 19 條，8.5–10 分鐘維持。"
+    },
+    {
+      "id": "N5422",
+      "agent": "ZD1",
+      "reviewer": "R481",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZD1-S006 https://www.british-history.ac.uk/no-series/acts-ordinances-interregnum/p580、ZD1-S007 .../p954、ZD1-S008 https://www.british-history.ac.uk/commons-jrnl/vol5/pp410-411、ZD1-S009 https://cromwellmuseum.org/did-oliver-cromwell-ban-christmas/（四篇皆由 R481 獨立重抓全文）；並逐字核對快取 ZD1-S010（Canterbury Christ Church University 專文）",
+      "reopen_result": "頁面上確實寫了：1644-12-19 法令（p. 580）因當年 12 月 25 日落在每月最後一個週三公開禁食日（Monthly Fast），下令比以往更莊嚴守禁食，全文無 mince pie。1647-06-08《廢除節慶法令》（p. 954）廢除 Nativity（俗稱 Christmas）、Easter、Whitsuntide 及一切聖日，另規定學童、學徒與僕役在雇主同意下於『every second Tuesday in the moneth』享有合理休假康樂時間，爭執由治安法官裁決——全文完全沒有『早上 8 點到晚上 8 點』字樣！1647-12-30 下議院議事錄（Vol. 5 pp. 410–411）宣讀肯特郡『great Riot in Canterbury』與密德薩克斯郡『Riot at Elyng』來信，命委員會起草附罰則的補充法令『for suppressing the Observation of Christmas, and other Festivals』，並將 St. Martin's in the Fields 教區執事 Mr. Harris 等人交付警衛官拘留（未寫冬青與關店字樣）。Cromwell Museum（ZD1-S009）：蘇格蘭長老派 1640 年禁聖誕；1642 年 1 月 Charles I 簽署每月最後一個週三禁食法；1644 年 12 月 Cromwell 在場但忙於《自抑法》；1647 年 6 月『Cromwell himself was absent from Parliament when this was passed, under threat of arrest by the House of Commons for supporting the army in their protests over pay』（未寫『趕赴軍中』）；現存演說書信未提禁聖誕；百果餡餅含真肉末、婚禮也吃，從未被專法查禁；1652 年強制商店聖誕開門，1656 年議員抱怨隔壁徹夜開聖誕派對；1660 年復辟後法令失效。Kydd（ZD1-S010）：坎特伯里市長 William Bridge 命商販營業，推擠中被撞倒，『market stalls overturned, and goods destroyed』，接著有人拿出足球引發類似 Haxey Hood 的街頭混戰與『Plum Pudding Riots』（未寫『清教徒市長』『砸窗』或『高呼查理國王』）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查 pool.json、batches/*.json、reviews/*.json、external/so-thats-why-cores.json 與同波 ZD2–ZD4，均無英國 1644／1647 禁聖誕法令或百果餡餅違法迷思。前提成立、三份英國國會一手史料極佳，覆核修正四處超出來源的細節：（1）研究稿寫 1647 年 6 月 8 日法令規定每月第二個週二『早上 8 點到晚上 8 點』休假，但 p. 954 原文並無鐘點（早八晚八是後來另一道補充法令的條文，本輪未讀），已刪除並寫入 scope 防呆；（2）1647-12-30 下議院議事錄（pp. 410–411）只記宣讀坎特伯里與 Elyng 暴動來信、命起草罰則法令與拘留執事 Harris，並未寫『裝飾冬青與關店』（強制開店見於 ZD1-S009 記 1652 年立法與 ZD1-S010 坎特伯里市長命令），已精確分開歸屬；（3）ZD1-S009 只寫 1647 年 6 月 Cromwell 因支持軍隊欠餉抗議、面臨下議院逮捕威脅而『缺席國會』（absent from Parliament），未寫『早已離開倫敦趕赴軍中』，已改照原文並把 visual『往軍營疾馳的騎士』改為議事廳裡的空座位，同時補上 1644 年 12 月他雖在場但正忙於《自抑法》的對比；（4）刪去 ZD1-S010 原文沒有的『清教徒市長』『砸窗』『高呼擁護查理國王』與『未獲國王御准』，改照原文寫掀翻攤位與街頭足球混戰，並在 risk 補列在世學者 Jake Monk Kydd 不入畫。嚴守宗教中立紅線，具體事實逾 16 條，8.5–10 分鐘維持。"
+    },
+    {
+      "id": "N5423",
+      "agent": "ZD1",
+      "reviewer": "R481",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZD1-S011 https://archive.org/download/diaryofaustrians01korbuoft/diaryofaustrians01korbuoft_djvu.txt（R481 獨立重抓，核對 Vol. I pp. 154–160，OCR 第 5363–5552 行）與 ZD1-S012 https://archive.org/download/petergreatempero01schu/petergreatempero01schu_djvu.txt（R481 獨立重抓，核對 Vol. I pp. 337–342，OCR 第 13970–14230 行）；並逐字核對快取 ZD1-S013（Schuyler Vol. II）",
+      "reopen_result": "頁面上確實寫了：Korb Vol. I pp. 154–160（OCR 實際行號為第 5363–5552 行，非研究稿所標 4135–4295）：格里曆 1698 年 9 月 4 日傍晚彼得返抵莫斯科，9 月 5 日（俄曆 8 月 26 日）於 Bebraschentsko 行宮剃群臣鬍鬚，陸軍總司令 Schahin（Schein）首剃，僅牧首、年邁的 Prince Lehugowicz Tzerkasky（Schuyler 作 Michael Tcherkasky）與皇子監護人 Tikhon Stresnow 三人獲免；六天後的格里曆 9 月 11 日（俄曆 9 月 1 日新年）在 Schahin 府邸宴會，每次敬酒鳴炮 25 響，替眾臣刮臉的剃刀手是『enacting the part of jester by appointment at the Czar's court』，不情願者挨耳光。Schuyler Vol. I p. 339（第 14059–14073 行）原文寫：『all except the clergy — who were exempted — were allowed to wear their beards on paying a yearly tax, fixed at a kopek (two cents) for the peasantry, and varying from thirty to a hundred rubles (from $60 to $200...) for the other classes, the merchants... paying the highest sum. On the payment of this duty they received a bronze token, which they were obliged always to wear about their necks, and to renew yearly』——原文寫的是『農民固定每年繳 1 戈比年費、青銅牌須掛在脖子上每年換新』，完全沒有『鄉下免費、每次進城門繳 1 戈比通行費』！同頁並引 Captain John Perry 記 Voronezh 老木匠把剃下的鬍子藏進懷裡留著放棺材見聖尼古拉，且『all his fellow-workmen who had been shaved that day had done the same』；pp. 341–342 記 1700-01-14 城門掛短袍樣板。Schuyler Vol. II pp. 138–139：1705 年尋稅官 Kurbatov 加重鬍鬚與八字鬍稅，並徵澡堂稅、蜂箱稅與修道院按原價四倍專賣的橡木棺材；pp. 146–147 都主教 Dimitri 解釋聖像在靈魂與 Stekolnoe（玻璃城）掉包謠言；pp. 151–158 阿斯特拉罕叛亂、市集謠傳俄國男子七年禁婚且姑娘將嫁給從喀山來的德國人（未寫『不刮鬍子不配娶』）、1705-08-09 週日趕辦百場婚禮、搜出『wooden blocks for perukes』當成異教木頭偶像；pp. 509–510 記彼得於 1725 年 2 月初病逝。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查 pool.json、batches/*.json、reviews/*.json、external/so-thats-why-cores.json 與同波 ZD2–ZD4，均無彼得大帝鬍鬚稅、鬍鬚牌或阿斯特拉罕假髮座烏龍。前提成立、細節極精采，覆核抓出並修正一處關鍵外部記憶混入與三處細節：（1）研究稿在 question、hook、answer_target、source_locator、visual 都寫『農民在鄉下免費、每次過城門繳 1 戈比通行費』，但重讀 Schuyler Vol. I p. 339 原文，頁上明明白白寫的是『農民固定每年繳 1 戈比年費（a yearly tax, fixed at a kopek for the peasantry）』，且完稅青銅牌『必須隨時掛在脖子上（wear about their necks）』——『過城門繳 1 戈比』是後來 1705 年法令的常見通俗說法，並不在本輪讀到的三份來源內，已全面改照 Schuyler 原文並在 scope 明確標註；（2）Korb 日記採格里曆，9 月 5 日行宮剪鬚到 9 月 11 日（俄曆 9 月 1 日新年）宴會相隔『六天』而非『五天』，並修正 ZD1-S011 的 OCR 行號（5363–5552）；（3）補上 Perry 原文『當天全廠被剃鬚的木匠工友全都把鬍子藏進懷裡』以及 1705 年修道院『四倍價格專賣橡木棺材』的生動一手細節，並刪去阿斯特拉罕謠言裡研究代理自添的『不刮鬍子不配娶』；（4）確認彼得大帝卒年（1725 年 2 月）印於 ZD1-S013 pp. 509–510，其餘人物未印卒年一律不在畫面畫出真人面孔或姓名。具體事實約 17 條，8.5–10 分鐘維持。"
+    },
+    {
+      "id": "N5424",
+      "agent": "ZD1",
+      "reviewer": "R481",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZD1-S014 https://www.law.cornell.edu/supremecourt/text/499/340 與 ZD1-S018 https://www.ordnancesurvey.co.uk/governance/public-information/search-information-responses/aa-copyright-breach-settlement-foi231143（兩篇皆由 R481 獨立重抓全文）；並逐字核對快取 ZD1-S015（Kelly v. Morris 1866 判例）、ZD1-S016（Macgillivray 1902）、ZD1-S017（Samuelson 1994 PDF）、ZD1-S019（Guardian 2001）",
+      "reopen_result": "頁面上確實寫了：Feist（499 U.S. 340）：Rural 拒絕授權白頁，Feist 印出 46,878 筆中有 1,309 筆與 Rural 相同，含『four fictitious listings that Rural had inserted into its directory to detect copying』；地院（663 F. Supp. 214）與第十巡迴（916 F.2d 718）判 Rural 勝訴，最高法院 9:0 逆轉（O'Connor 主筆），推翻源自 1922 Jeweler's Circular 與英國名錄案的『sweat of the brow』，認定『Not all copying, however, is copyright infringement』。《Kelly v. Morris》（L. R. 1 Eq. 697–703）：Kelly《Post-office London Directory》（不含廣告 2,483 頁）舉證 Morris 1866《Imperial Directory》照印 1865 年 1 月版拼字縮寫錯誤及 1865 年 1 月後因街道改名、搬遷、大選（the general election）或死亡而變動的住戶；p. 698 記『倫敦地圖切成約 60 區』是 Morris 先前編 1862《Business Directory》的做法，編 1866《Imperial Directory》（p. 699）則是摘錄既有名錄約 40,000 筆人名、發 48,000 份回函表再派調查員核對，並推給已開除的『one of the canvassers / some of the canvassers』；副大法官 Page Wood 立下數里程碑與重新三角測量原則，1866-03-08 Morris 接受除工商篇外之永久禁制令。Samuelson（1994）：p. 394 n.4 英國獨留 sweat of the brow；p. 399 & n.39、p. 403 & n.65 引《Nester's Map & Guide Corp. v. Hagstrom Map Co.》（796 F. Supp. 729, 733 [E.D.N.Y. 1992]，紐約計程車指南案）：『To treat \"false\" facts interspersed among actual facts and copied by another as fiction would mean that no one could ever reproduce or copy actual facts without risk of reproducing a false fact and thereby violating a copyright』（論文內文未明言原告是否蓄意預埋該批假事實）。OS FOI231143（2023-05-24）與《衛報》（2001-03-06）：1996-10-08 訴前警告信，2001 年 AA（Centrica 旗下）就逾 500 種、逾 3 億份地圖賠償 2,000 萬英鎊（OS 當年利潤 1,270 萬英鎊），OS 澄清『fingerprinting』是道路寬度比例等『unique cartographic styling』，並聲明『Some publishers include deliberate errors in mapping, we don't — it misleads our customers』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中 N3261（Appletons' 假傳記）與 N3264（Agloe、dord、Mountweazel、esquivalience）講的是陷阱名詞本身，本題聚焦『版權陷阱抓到抄襲鬧上法院後的法理大逆轉（Feist 9:0 廢除額頭流汗原則、Nester's Map 判假事實不得當虛構保護、Ordnance Survey 官方解密 2,000 萬英鎊案靠製圖風格而非陷阱街）』，全池與同波 ZD2–ZD4 皆無重複。前提成立、法源一手完整，覆核精修三處細節：（1）《Kelly v. Morris》原報告裡『把倫敦地圖切成 60 區』是 Morris 編 1862 年工商名錄的做法，編涉案 1866 年《帝國名錄》則是摘出 40,000 筆舊名單寄 48,000 份回函表，且過時住戶還包含『大選變動』，已在 answer_target、scope 與來源摘要精確區分；（2）Samuelson 1994 論文談 1992 年《Nester's Map》時只寫對手抄到夾雜在真實資訊裡的『假事實（\"false\" facts）』，並未在該頁斷言原告當年是故意預埋（Justia 判決原文 403 未讀），故把 question、answer_target 與 scope 收緊為論文原意，不超譯；（3）risk 補齊現當代人物與未載卒年歷史人物一律不在畫面畫出真人面孔或姓名。具體事實約 18 條，8.5–10 分鐘維持。"
+    },
+    {
+      "id": "N5425",
+      "agent": "ZD1",
+      "reviewer": "R481",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZD1-S020 https://referenceworks.brill.com/display/entries/NPOG/e128870.xml?language=en、ZD1-S021 https://www.palladion.hu/en/in-a-sporting-mood/、ZD1-S022 https://www.spiegel.de/wissenschaft/loriot-laus-im-lexikon-a-7e40510e-0002-0001-0000-000013516515（三篇皆由 R481 獨立重抓全文）；並逐字核對快取 ZD1-S023（Spiegel 39/1997）、ZD1-S024（Spiegel 2010-03-07）、ZD1-S025（SRF 2012-11-26）、ZD1-S026（SRF 2024-05-01）",
+      "reopen_result": "頁面上確實寫了：Brill（ZD1-S020）：Mischa Meier (Bielefeld),〈Apopudobalia〉, 151 words, First Published Online: 01 Oct 2006, DOI: 10.1163/1574-9347_dnp_e128870。《The Palladion》（ZD1-S021）：實際作者為『Szikora Pati』、發表日期為『2022. January 14.』（更新於 2023. July 4.，研究稿誤寫成 Ádám Szabó, 26 June 2021！）；內文收錄 1996《Der Neue Pauly》第一卷詞條英譯，稱其為『a sporting discipline which resembles modern football』、『probably to Britain via the Roman legions』，引假文獻 Achilles Tacticus fr. 3、偽西塞羅 3,2、Tert. De spectaculis 31ff.、『A. Pila, Fs. M. Sammer, 1994, 322–348』與『B. Pedes, Zschr. für Ant. und Sport 4, 1995, 1–19』（頁上未拆解 una pila／bini pedes 雙關、未提 Matthias Sammer 全名或 Tertullian 只有 30 章）。《明鏡》51/1985（ZD1-S022）：《Pschyrembel》第 255 版（1,880 頁、64 馬克、印 1986）收錄 Loriot 虛構的『Steinlaus（Petrophaga lorioti）』，雌 0.3 mm、雄 0.2 mm、Lapivora 科、1983 年起有圖、結石變種與野放柏林圍牆（未寫 1976 年短劇）。《明鏡》39/1997（ZD1-S023）：1993 年改版（未印『第 257 版』）以『mangels klinischer Relevanz』刪除，讀者抗議後於 1997 年第 258 版（1,768 頁、69.80 馬克）以 31 行復出並探討參與 1989 柏林圍牆倒塌。《明鏡》2010（ZD1-S024）：Brockhaus 發言人 Haschke 談防抄襲起源與 1999 第 20 版 p. 481『Ixodes fiscalis』；De Gruyter 主編 Bach 談吃 Feinstaub、2007 第 261 版『石蝨接吻病（ICD-10）』與長笑紋的『Lausotoxin』、『Steinlaus-Phobie』及同事偷塞『Kurschatten』；哲學家 Jürgen Mittelstraß 談 2004 哲學百科每卷藏 3–4 篇假詞條（如『Unzufriedenheitssatz』）；圖賓根大學（Universität Tübingen，非研究稿所寫奧格斯堡大學！）教授 Mischa Meier 回憶 1990 年代替教授寫詞條時『spontaner Einfall』（未寫與同事在茶水間、未印 J. B. Metzler 名號），印於 p. 895，義大利學者挑希臘文構詞錯，出版社威脅整卷化漿並向 Meier 求償。SRF 2012（ZD1-S025）：實際作者『Pascal Biber』、日期『26.11.2012』（研究稿誤寫 12 December 2012！）；記醫師 Dornblüth 1894 創編、醫師 Willibald Pschyrembel 自 1931 至 1982 主編五十年（未寫神經科、機械工程師或 1987 年卒）；2012 第 264 版（2,320 頁）寫希臘『儘管有全面保育措施（effektive Steinlaus-Fertilitätsprotektion，efSF-Rettungsschirm），提振心情的石蝨仍幾乎滅絕，令國際氣氛明顯低迷』（研究稿寫反成『成功防止其擴散』！）。SRF 2024（ZD1-S026）：實際作者『Ana Matijasevic』、日期『01.05.2024』（研究稿誤寫 Jonathan Progin, 1 April 2024！，且全文未載 Loriot 生卒年 1923–2011）；記 2005《Historisches Wörterbuch der Rhetorik》（未寫圖賓根大學編）依約前 500 年 Douris 陶瓶編出古希臘筆電『Rhetograph』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查 pool.json、batches/*.json、reviews/*.json、external/so-thats-why-cores.json 與同波 ZD2–ZD4，均無 Steinlaus、Pschyrembel、Apopudobalia、Der Neue Pauly 或 Nihilartikel（與 N3264 英語世界幽靈字／Agloe 故事與機制完全不同）。前提成立、雙主線極精彩，但研究稿夾帶了多處外部記憶與三筆書目作者／日期誤植，覆核逐字清查後全數修正：（1）修正 reviewed_sources 三筆書目錯植：ZD1-S021 實為 Szikora Pati（2022-01-14，非 Ádám Szabó 2021-06-26）、ZD1-S025 實為 Pascal Biber（2012-11-26，非 2012-12-12）、ZD1-S026 實為 Ana Matijasevic（2024-05-01，非 Jonathan Progin 2024-04-01）；（2）修正 ZD1-S025 的 2012 年第 264 版歐債笑話——原文是希臘『儘管有 efSF-Rettungsschirm 保育傘，提振心情的石蝨仍幾乎滅絕』，研究稿寫反成『防止石蝨擴散』，並補入 ZD1-S024 的第 261 版『石蝨接吻病／笑紋毒素』與 Mittelstraß 哲學百科假詞條、ZD1-S026 的古希臘筆電『Rhetograph』；（3）全面剔除研究代理從外部知識塞入、但所讀七份頁面完全沒有的字句：『1976 年短劇』『第 257 版』『神經科醫師』『機械工程師與婦產科醫師』『1987 年卒』『Loriot 1923–2011』『奧格斯堡大學（原文是圖賓根大學）』『茶水間與同事』『J. B. Metzler』『Tertullian 只到第 30 章』『Matthias Sammer 全名與足球國腳』『una pila／bini pedes 拉丁文拆解』；（4）risk 改為依實際頁面狀態聲明所有相關人物均為 1956 年後人物或頁面未載卒年，全片不在畫面畫出真人面孔或姓名、不臨摹 Loriot 原畫、不做任何醫療宣稱。具體事實約 17 條，8.5–10 分鐘維持。"
+    },
+    {
+      "id": "N5441",
+      "agent": "ZD2",
+      "reviewer": "R482",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZD2-S002 https://archive.org/download/comptes-rendus-lacademie-des-sciences-vie-academique_1846-02-16_22_7/comptes-rendus-lacademie-des-sciences-vie-academique_1846-02-16_22_7_djvu.txt（Tome XXII p. 306）與 ZD2-S003 https://archive.org/download/comptes-rendus-lacademie-des-sciences-vie-academique_1846-03-09_22_10/comptes-rendus-lacademie-des-sciences-vie-academique_1846-03-09_22_10_djvu.txt（Tome XXII pp. 415–416）；另重抓並逐字核對 ZD2-S001（Kerlouégan OpenEdition 專章）、ZD2-S004（Arago《Œuvres》Tome IV pp. 453–458）、ZD2-S005（Crowe 1848 Vol. II pp. 260–262）、ZD2-S006（Rogers 1853 pp. 52–60）與 ZD2-S016（Crowe 生卒年）",
+      "reopen_result": "頁面上確實寫了：1846 年 2 月 16 日《Comptes rendus》t. 22 p. 306 記 M. Cholet 與 M. Tanchou 通報『une jeune fille âgée de treize ans, Angélique Cottin, ouvrière en gants de filet』，Arago 說明前一天在天文台與三位同事觀察數分鐘，椅子猛烈晃動，但圍裙對木製 guéridon 的作用不明確、對磁針『aucun effet』，指派『MM. Arago, Becquerel, Isidore Geoffroy-Saint-Hilaire, Babinet, Rayer, Pariset』六名委員。3 月 9 日 t. 22 pp. 415–416 報告記在植物園測試『âgée de quatorze ans』：衣服排斥 guéridon『aucun effet appréciable』、磁針『ne s'est pas déplacée une seule fois』、分辨磁鐵南北極失敗；當委員『sans détour』宣布要檢查『la part que certaines manœuvres habiles et cachées des pieds ou des mains, pouvaient avoir eues dans le fait observé』，對方宣稱她失去能力卻仍每天去沙龍表演，遂決議將兩份通報視為『comme non avenues』。Arago《Œuvres》t. IV pp. 453–458 改題〈Sur une prétendue jeune fille électrique〉，寫『de treize à quatorze ans』『par suite d'irréflexion』，並附 Ellicott 相距 60 公分雙擺實驗。Crowe p. 261 寫『a stone covered with cork』與『10th April』停止；Rogers pp. 52–60 在 1853 年仍引《Courrier des États-Unis》（Arago、Laugier、Goujon，六十磅重桌、心跳 120 下）當真實物理案例。Kerlouégan 專章書目欄載明『LISAA éditeur, 2026』『pp. 401–414』『DOI: 10.4000/15s42』，註 2 載 Tanchou（1791–1855），註 17 載 1846-05-09 皇宮劇院《La Femme électrique》（Angélique Frotin），註 18 逐字引 Babinet 1854 年《Revue des Deux Mondes》（t. VI, p. 517）：『par un mouvement convulsif du genou』『au-dessus du genou une forte contusion』，§§ 14–15 記 1898 年 Louatron 訪問與 1913 年 80 歲去世。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches/wave1–47、reviews 與同波 ZD1／ZD3／ZD4 均查無 Cottin、fille électrique 或 Tanchou。前提完全成立，修正四處：一、ZD2-S001 OpenEdition 書目欄實為 2026 年出版（DOI 10.4000/15s42），更正研究稿誤寫的 2022 年；二、年齡在原始文獻有 13 歲（2 月 16 日紀錄、Kerlouégan）與 14 歲（3 月 9 日報告、Crowe、Rogers；Arago 全集寫 13 至 14 歲）之別，改為並列說明而非單選；三、將 ZD2-S016（Catherine Crowe 1790–1876 卒年核實）補入本題 source_ids 與 source_locator，落實 1956 年前人物查證；四、確保對未成年貧困女工語氣溫和尊重，在 scope 明定不引 Babinet 帶時代歧視的字眼、在 risk 禁止畫少女正臉與腿部瘀傷，並將 editorial.visual 改為純插畫無字卡無文字描述。可核實事實逾 18 條，8.5–10 分鐘 episode_core 成立。"
+    },
+    {
+      "id": "N5442",
+      "agent": "ZD2",
+      "reviewer": "R482",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZD2-S007 https://winnipegpolicemuseum.ca/wp-content/uploads/2021/03/St-Johns-frogs.pdf（溫尼伯警察博物館影像 PDF 第 22–24 頁逐頁目視核讀）與 ZD2-S008 https://archive.org/download/cu31924018086292/cu31924018086292_djvu.txt（cols. 1112–1114）；另重抓並核對 ZD2-S009（W. B. Wood 1942 CBR PDF）、ZD2-S010（Salmond on Torts pp. 569–570）、ZD2-S011 與 ZD2-S012（Cherney 兩篇地方報史）",
+      "reopen_result": "頁面上確實寫了：ZD2-S007 pp. 22–24 載明 George Gaspard Nagy 於 1904 年 7 月 2 日去世，遺孀 Rachael Gomez Nagy 出售 7 St. Johns Avenue 空屋；1905 年 10 月 21 日凌晨 12:30 警員 John Street（1903-11-25 入警、1936-07-31 退休）在《Occurrence Book》寫『Second house east of Main, on St. John's avenue, is believed by some people to be haunted at night between 11 and 12 midnight...』；《Manitoba Free Press》改寫成『There is a ghost in the north end of the city that is causing a lot of trouble to the inhabitants...』（全文兩段完全無任何兇殺或命案字眼）；1906 年 12 月 14 日一審法官 D. A. MacDonald（1937 年去世）判稱『in this enlightened age and generation and in this modern city of Winnipeg to find that such an article is a slander would be a calumny upon its people』；1907 年 4 月 8 日上訴法院改判賠 1,000 加元與訴訟費，Richards 寫『as educated men [we] should, assume that there are no such things as ghosts, and that therefore the statement is necessarily false』；1907 年 11 月 5 日最高法院維持原判（律師引伊索寓言 Boys and Frogs；Idington 批報社把『colourless』紀錄改成肯定聳動句）。ZD2-S008 cols. 1112–1114 載明《16 M.R. 619》《39 S.C.R. 340》《13 Edw. I, c. 24》與 Perdue J.A. 不同意見（『if it was so repugnant to common sense and common knowledge that no proof of its untruth would be necessary, it is difficult to see how any one could have been deceived by it』）。ZD2-S009 署名為 Osgoode Hall 法學院 W. B. Wood（pp. 430–447）。ZD2-S010 pp. 569–570 記同年英國《Barrett v. Associated Newspapers, Ltd.》(1907) 23 T.L.R. 666（《Daily Mail》寫『by a little old man creeping about the house』）因無法證明特別損害敗訴，但該 IA 掃描本實際由 R. F. V. Heuston 編於 1960 年代（引到 1952 年誹謗法與 1964 年判例），館藏 metadata 誤標為 1928 年第 7 版。ZD2-S011／S012 補出 10 月 23 日早晚版與 25 日週刊版連登三次、250 人持木柴棒聚集、上訴 2–1、最高法院 4–1、Richards 自請上訴與 1907-08-13〈Freak Libel Decisions〉社論。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中 N2987 是 1991 年美國紐約買方退訂案（《Stambovsky v. Ackley》），本題是 1905–1907 年加拿大溫尼伯屋主告報社財產誹謗／品質貶損獲賠案（並對照同年英國《Barrett》案），當事人、法理與結論皆不重疊。修正四處：一、核實六份可讀來源（ZD2-S007 至 S012）所載 1905 年報紙原文全無任何『命案傳聞』，在 scope 嚴格寫明不得憑空加入命案情節（縱使日後查判決書全文見其他段落，亦須標明純屬報紙捏造謠言且零犯罪細節）；二、查明 ZD2-S010《Salmond on Torts》IA 館藏誤標為 1928 年第 7 版，內文實為 1960 年代 Heuston 編本（且把 1952 年誹謗法第 3 條 OCR 誤識為第 8 條），更正書目與權限為 LINK_AND_ORIGINAL_SUMMARY_ONLY 並在 scope 避開錯誤條號；三、補齊 ZD2-S009 作者署名 W. B. Wood，並標明報紙刊出日期在 ZD2-S007（概稱隔天）與 ZD2-S011（10 月 23、25 日三版）的細微差異；四、嚴格核對卒年，確認僅 Macdonald（1937 卒）與亡夫 George Nagy（1904 卒）在可讀頁確認早於 1956 年（警員 Street 僅載 1936 退休），其餘人物一律禁畫個人肖像。事實逾 20 條，穩撐 8–9.5 分鐘。"
+    },
+    {
+      "id": "N5443",
+      "agent": "ZD2",
+      "reviewer": "R482",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZD2-S005 https://archive.org/download/nightsideofnatur02crowiala/nightsideofnatur02crowiala_djvu.txt（Vol. II pp. 292–295）、ZD2-S013 https://archive.org/download/footfallsonbound00owen/footfallsonbound00owen_djvu.txt（pp. 253–255）與 ZD2-S014 https://www.gutenberg.org/files/12674/12674-h/12674-h.htm（Lang pp. 269, 271–272）；另重抓並核對 ZD2-S015（EsoterX 2021）、ZD2-S016 與 ZD2-S017（Crowe、Owen 生卒年）",
+      "reopen_result": "頁面上確實寫了：Crowe 1848 Vol. II pp. 292–295 記原告律師『Mr. M. L.』提供之 1835 年 5 或 6 月愛丁堡 Trinity 租屋案，Captain Molesworth 撬地板、鑿穿隔壁房東 Mr. Webster 共用牆、朝護牆板開槍（『lifting the boards, breaking the walls, and firing at the wainscot』），Webster 向法院控告他毀損房屋並使房子染上鬧鬼惡名（malafama）害其他房客不租；12–13 歲病女 Jane 被懷疑裝袋測試無效後病逝，後任房客再無怪聲。Owen 1860（費城初版）pp. 253–255 寫『from an Edinburgh friend I have ascertained that it was Mr. Maurice Lothian, a Scottish solicitor, now Procurator Fiscal of the county of Edinburgh』，Lothian 當庭花數小時訊問軍官等證人（此 1860 年版並未寫 Owen 親閱 Lothian 卷宗筆記）。Lang 1896 p. 269 寫訴訟於 1835–37 年在愛丁堡郡長法院審理，『But we are unable to discover the official records, or extracts of evidence from them』；pp. 271–272 對比 16 世紀法國 Le Loyer 的 Tours 租屋案（Bolacre 退租，Bouchel《Louage》載上級法院推翻退租判決）與愛丁堡案（Molesworth 不退租反拆屋，Webster 提告制止）。EsoterX 2021 除引上述書目外，另寫『British Royal Regiment of Artillery』『Leith Fort』『Around March 1835』與『concluding on August 7, 1837, the courts ruled in favor of the plaintiff, Mr. Webster』，但未附原始檔案出處。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches/wave1–47、reviews 與同波其他代理均無 Molesworth、Trinity 或 Maurice Lothian；與 N2987（買家退訂）及 N5442（屋主告報社）法理方向完全相反（房客抓鬼拆屋、房東告房客毀損兼汙損屋譽）。重要修正三處：一、核實本次快取的 Owen 1860 年費城版（ZD2-S013）原文只寫『透過一位愛丁堡友人查明律師是 Maurice Lothian』，沒有 1861 年倫敦增訂版才有的愛丁堡訪查語句，嚴格照 1860 年可讀文本改寫；二、把僅見於 EsoterX 部落格（ZD2-S015）而無一手出處的四項細節（皇家砲兵團、Leith Fort、1835 年 3 月調任、1837 年 8 月 7 日判房東勝訴）在 answer_target 與 scope 明確標註為『僅見現代二手整理、官方卷宗在 19 世紀末已佚失』，絕不寫成一手定論；三、對病童 Jane 遭裝袋測試保持極度克制同情，並在 scope 與 risk 明令禁止描寫細節或入畫。事實約 16 條，加進 Lang 的 16 世紀法國 Tours 翻案對照與卷宗佚失考證後，穩撐 8–9 分鐘。"
+    },
+    {
+      "id": "N5444",
+      "agent": "ZD2",
+      "reviewer": "R482",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZD2-S018 https://archive.org/download/lamuzehistorique01loreuoft/lamuzehistorique01loreuoft_djvu.txt（Lettre XXXI pp. 526–527、Lettre XXXII pp. 529–530）與 ZD2-S020 https://gal-studies.museogalileo.it/index.php/galilaeana/article/download/93/75（Slizh 2026 Galilæana pp. 357–373）；另重抓並逐字核對 ZD2-S019（penseesdepascal.fr Gassendi 1654 原文與 Bernier、Huygens、Pascal 引文）",
+      "reopen_result": "頁面上確實寫了：Loret《La Muze historique》（1857 校本 Tome I）1654 年 8 月 8 日 Lettre XXXI（pp. 526–527, vv. 69–114）寫騎士 La Roche 當他『presque hérétique』，他引『monsieur Gassendy』說日食『N'est qu'un cours réglé de nature / Dans le cercle zodiacal, / Qui n'opère ny bien ny mal』，並嘲笑自稱讀過 Cardan 與 Lipse 的拉丁哲學家在巴黎『Y vend de l'onguent pour l'éclipse』；8 月 15 日 Lettre XXXII（pp. 529–530, vv. 55–96）寫『les pronostics d'Anbréas』引發熱警報，人們吞『tériaque』、買『orviétan』、『Se cachèrent au fond des caves』、爬閣樓『Pour voir le soleil de plus prés』，以及押韻誇飾句『Cent mille gens se confessèrent, / Et trente mille autres dansèrent, / Ayans humé de grand matin / Chacun, du moins, un pot de vin』。ZD2-S019 逐字收錄 Gassendi 署『De Paris, ce 20 juillet, 1654』的 16 頁小冊《Sentiments sur l'éclipse...》：揭穿冒名者『se tenant caché derrière la tapisserie, il a le plaisir de rire』，用五點對比黑夜與日食（地球本影全遮、冬夜 16 小時 vs 日食不到 2 小時 45 分、地球遮日快約 15 倍、每 24 小時一次、地球厚約 3 倍），並舉『un lingot d'or』與『un pain』比喻罕見不等於威力大；同頁引 Bernier 致 Chapelain 信與 Constantin Huygens『trois jours entiers』信，但注意該頁解說首句寫『qui n'a été publié que trois ans plus tard』與同頁書目『Paris, Vitré, 1654』自相矛盾。ZD2-S020（Slizh 2026）核對 Andrea Argoli（1570–1657）1652 年拉丁文《Dissertatio in Eclipsim Solis 12. Augusti 1654》：獅子座 19°32′，只預測兩年戰爭政治危險（『hazardous, though not world-ending』, p. 363），末日說出自 1653–1654 冒名偽書；克拉科夫教授 Stryjewicz（1621–1681）1653 年《Krotki Respons》與維爾紐斯 1654 年《Błędy jednego prognostyku》即時反駁。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：全池與 wave1–47 及同波 ZD1／ZD3／ZD4 均無 1654 年日食、Argoli、Gassendi 或 Loret。前提完全成立，修正三處：一、揪出 ZD2-S019 網頁內部的出版年自相矛盾（解說首句寫 Gassendi 小冊三年後才出版，同頁書目卻列 1654 年巴黎 Vitré 印本），在 ZD2-S019 limitations 與候選題 scope 明確標出，片中只說 Gassendi 於 1654 年 7 月 20 日寫成反駁且 Loret 8 月 8 日已引述其觀點，不妄斷印本發售日；二、明確標註 Loret 的『十萬人告解、三萬人喝酒跳舞』為韻文週報的押韻誇飾筆法，不當人口統計；三、嚴格核對卒年，僅將頁面上有明文卒年（≤1956）的 Gassendi、Argoli、Stryjewicz 等列為可畫歷史人物，Loret、Pascal 等未在快取頁標卒年者改以年代剪影處理，並確保教堂告解與教士闢謠僅作歷史敘述、零教義評價。事實約 19 條，穩撐 8.5–10 分鐘。"
+    },
+    {
+      "id": "N5445",
+      "agent": "ZD2",
+      "reviewer": "R482",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZD2-S021 至 ZD2-S025（MDZ bsb10946850 IIIF manifest 與 1780 年《Prophezeyhung》第 4、5、6、8 頁 hOCR）及 ZD2-S026 https://archive.org/download/vermischteschrif04lichuoft/vermischteschrif04lichuoft_djvu.txt（Lichtenberg《Vermischte Schriften》Bd. IV, 1802, pp. 215–255）；覆核另由同一 IIIF manifest 新抓補齊缺漏的第 3 頁（R482-S001 → ZD2-S030）與第 7 頁（R482-S002 → ZD2-S031），並核對 ZD2-S027（RosDok VD18 90794389）、ZD2-S028 與 ZD2-S029",
+      "reopen_result": "頁面上確實寫了：MDZ 1780 年本完整第 3–8 頁（ZD2-S030、S022–S024、S031、S025）：p. 3 震源『tief in der Erde, gerade unter den Alpen, in der Gegend des St. Gotthardsberges』；p. 4 毀滅『Einige tausend』城鎮、最晚期限『Ostern im Jahr 1786』並願『eidlich zu erhärten』；p. 5 窄窗『vom 17ten bis 28ten Febr. des 1786ten Jahrs』，鎖定『der 22ste Februar ... da die Kapelle oben auf den Alpen, und zwar über dem St. Gotthardsberg, durch den Meridian geht, ungefähr 7 Uhr Abends』，建議『genaue Stellung der Stadtuhren nach den Sonnenuhren』與出門『diese Viertelstunde unter freyem Himmel zuzubringen』；p. 6 哈茨山是『Hypomochlion』、裂淵穿過『Bodensee』吞萊茵河、荷蘭『Südersee gänzlich austrocke-』；p. 7（覆核新讀補齊）接『nen wird. Die Flotten und andre Schiffe im brittischen Kanale werden auf den Grund zu sitzen kommen』與彗星『unendliche Direktionslinie』比喻；p. 8 結尾『so habe ich geirret, und ich bin alsdann der erste, der sie zurücknimmt』（1779-12-20 Zellerfeld）。Lichtenberg Bd. IV（書名頁為 1802 年）pp. 215–255：p. 218『ein zinnerner Teller, den man auf einer Gabelspitze schlecht balancirt』；pp. 219–222 鉛垂線地平與歲差（天狼星 Sirius 反證南德上升、下中天反證）；pp. 224–227 萊茵小震如樂透中『Ambe』、『redlicher Schwärmer, kein Betrüger, wie Schröpfer』、威脅『7000 Ortschaften』；p. 235 懸賞『50 Ducaten』沒人見過《Buch Chevilla》；pp. 244–247 哥廷根學者拿 1780 秋西印度大颶風圓場；pp. 249–255 評 Prévost 用五車二每年南移 1/5 角秒反駁是給太多榮譽，妙喻北極光『Widerschein von den Häringen in der See』（『Härings-System』）配 Volta 驗電器。RosDok（ZD2-S027）證實 1784 年 72 頁附《Buch Chevilla》附錄版。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：全池與 wave1–47 及同波其他代理均無 Ziehen、Chevilla 或 Lichtenberg 此案。前提完全成立，重要補強與修正四處：一、研究稿只抓了 MDZ 1780 年本第 4、5、6、8 頁，漏掉開頭第 3 頁（聖哥達山震源）且讓第 6 頁末斷在半個字『austrocke-』，覆核由同一 IIIF manifest 新抓第 3 頁（R482-S001 → ZD2-S030）與第 7 頁（R482-S002 → ZD2-S031），補齊英吉利海峽艦隊擱淺與彗星軌道比喻，使 pp. 3–8 完整無缺；二、更正 ZD2-S026 第 4 卷出版年為 1802 年（IA metadata 1800 為首卷年份），並校讀 p. 253 哥特體 OCR 將『4 4/5』誤識為『34』之處；三、嚴格隔離維基來源（ZD2-S028、S029），把『5 月 27 日斑疹傷寒過世、遺孀付印、1785/86 講義評語』在 scope 明定不直述為既定史實；四、嚴守零宗教教義評論，全程聚焦五車二歲差與物理反駁。事實逾 20 條，穩撐 8.5–10 分鐘。"
+    },
+    {
+      "id": "N5461",
+      "agent": "ZD3",
+      "reviewer": "R483",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZD3-S002 https://archive.org/download/biostor-94190/biostor-94190_djvu.txt（R483 獨立重抓，SHA-256 完全吻合，精讀 pp. 185–186 全文）與 ZD3-S001 https://archive.org/download/ueberfeuermeteo01schrgoog/ueberfeuermeteo01schrgoog_djvu.txt（R483 獨立重抓，SHA-256 完全吻合，核對 § 21 pp. 62–63、OCR 第 3744–3775 行與第六部 pp. 368–369、OCR 第 18832–18894 行）；另補抓 https://archive.org/metadata/mobot31753002152152 驗證 ZD3-S003 檔案清單，並逐字核對快取 ZD3-S003（Whewell 1839）、ZD3-S004（Marvin 1996 PDF）、ZD3-S005–S007（生卒年傳記頁）",
+      "reopen_result": "頁面上確實寫了：Chladni 1819（ZD3-S001）§ 21 pp. 62–63 指出多數『Schwefelregen』實為『Wacholdersträucher』或『pulvis lycopodii』花粉，而 1582 毛髮、1665 藍絲與 1686 黑紙『haben nicht das Gepräge von Lügenberichten』；pp. 368–369 標『? 1686, den 31. Januar』，引 Hartmann 與 Krüger 載於《Miscell. Ac. Nat. Cur.》1688 附錄：『im Ambotschen bey dem Gute Rauden』（注意原文是地區用語 im Ambotschen，無『教區』字樣）、『Ein großer Platz an einem Teiche』（池塘旁一大片地面，無『低窪地帶』字樣）、『von der Größe eines Tisches』『fingerhoch』、『Seemist, oder Fucus』、『Löschpapier』、『Es hatten sich von der Stelle, wo sie gelegen hatten, Grashalme angehängt』（黏著躺過處的草莖，無『底面草葉』字樣）、『fiebrige Häutchen』、『Zunder』、泡『verdünnter Salpetersäure』變紅、泡鹼液更黑。Ehrenberg 1839（ZD3-S002 pp. 185–186）：標題印『1686』、文末印『preserved 152 years』（內文首句誤植『1687』）；記農工午飯後於飯前空無一物處拾獲；『After the chemical analysis of Theodor von Grotthuss, this substance was again considered to be of meteoric origin; but as Berzelius could not discover the nickel which had been stated to be contained in it, von Grotthuss revoked his opinion』（全文未提兩人爭論『十幾年』）；Nees von Esenbeck 列入『aerophytes』；鏡檢柏林博物館與 Chladni 舊藏標本，由『Conferva crispata』緊密交織，含微量『Nostoc』、『about twenty-nine well-preserved species of Infusoria』（8 種矽質殼含罕見『Bacillariae』、21 種軟身或膜質殼，僅 3 種未見於其大書但隨後在柏林近郊尋獲活體）、『shells of the common Daphnia Pulex』、種子與樹葉，原生地極可能在東普魯士或庫爾蘭。Whewell 1839（ZD3-S003 pp. 118–119）：僅有一句『an account of meteoric paper which fell from the sky in Courland in 1686, and is found to be composed of Confervae and Infusoria』，並無研究稿摘要與引註所塞的『Conferva crispata』『29 種』『水蚤』或『化學分析外星起源』。生卒年核實：Chladni 1756–1827（ZD3-S004 p. 545，pp. 564–566 確認 Howard 1802 驗鎳判準）、Grotthuss 1785–1822（ZD3-S005）、Berzelius 1779–1848（ZD3-S006）、Ehrenberg 1795–1876（ZD3-S007）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json、batches/*.json、reviews/*.json、external/so-thats-why-cores.json、《原來如此事務所》pool.json／themes.json 及同波 ZD1、ZD2、ZD4，均無 1686 庫爾蘭『Meteorpapier／隕石紙』或 Ehrenberg 1838 鏡檢案（與 N3065 星凍、N123 肯塔基肉雨完全不同）。前提成立、一手證據鏈紮實，覆核直接修正五處細節：（1）刪去 hook 中兩份來源皆未記載的『吵了十幾年』（Ehrenberg 只轉述 Grotthuss 化驗認定隕石、Berzelius 驗不出鎳後 Grotthuss 撤回，未載年數），並在 scope 加註防呆；（2）question 補回 Ehrenberg 原文的『約 29 種』（about twenty-nine）；（3）Chladni 1819（ZD3-S001 p. 368）德文原句精確還原：『im Ambotschen』改為『Ambotschen 一帶』（非『教區』）、『Ein großer Platz an einem Teiche』改為『池塘旁一大片地面』（非『低窪地帶』）、『Grashalme angehängt』改為『黏著躺過處的草莖』（非『底面黏著草葉』）；（4）修正 ZD3-S003（Whewell 1839）的過度歸屬——Whewell 頒發 Wollaston 獎章演說只用一句話提 1686 庫爾蘭隕石紙由 Confervae 與 Infusoria 組成，並未提 Conferva crispata、29 種或水蚤，已在 answer_target、source_locator 與 reviewed_sources 拆開歸屬；（5）risk 補列頁面未載卒年的 William Whewell 與 Carl Ehrenberg 不入畫，現代學者 Ursula B. Marvin 嚴禁入畫。具體可核事實約 18 條，8–9.5 分鐘維持。"
+    },
+    {
+      "id": "N5462",
+      "agent": "ZD3",
+      "reviewer": "R483",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZD3-S011 https://archive.org/download/jstor-106490/106490_djvu.txt（Schwediawer 1783）、ZD3-S008 https://archive.org/download/philtrans04271050/04271050_djvu.txt（Dudley 1725）、ZD3-S009 https://archive.org/download/paper-doi-10_1098_rstl_1733_0055/paper-doi-10_1098_rstl_1733_0055_djvu.txt（Neumann 1734）（三篇皇家學會一手論文皆由 R483 獨立重抓，SHA-256 完全吻合）；並逐字核對快取 ZD3-S010（Neumann／Lewis 1759）、ZD3-S012（Clarke 2006 LAJAM PDF）、ZD3-S013（ADB 1891）",
+      "reopen_result": "頁面上確實寫了：Dudley 1725（ZD3-S008）p. 261 記抹香鯨吃『Squid Fish』，龍涎香內含『small Pieces of the Bills of these Squids ... glistering like little Pieces of broken Shells』；pp. 266–269 引 Boyle 轉述荷蘭商人海邊樹根樹脂與種樹產香說，並引波士頓捕鯨人 Mr. Atkins 稱僅約三分之一公鯨在陰莖根部有長 3–4 呎、寬 2–3 呎裝深橘色惡臭油液的『Bag or Bladder』，單袋最多四顆、曾見 21 磅，牧師 Mr. Prince 疑為膀胱。Neumann 1734（ZD3-S009）駁斥囊袋即『vesica urinaria Ceti』、硬塊為『calculi vesicae Ceti』，p. 384 提過文獻有『ad 6 pedes magnitudine』大塊，p. 401（OCR 第 1300–1306 行）詳記 1693 年 VOC 向 Tidore 國王以『11000 Imperialibus』購得 182 磅龜形巨塊：『crassitie 5 pedes & 8 pollices, longitudine vero 2 pedes & 2 pollices adaequavit』——注意拉丁原文寫的是『厚／周圍 5 呎 8 吋、長 2 呎 2 吋』，研究稿誤把 Lewis 1759 節譯的『five foot eight inches by two foot two』當成『長 5 呎 8 吋、近六呎長』！乾餾 1 dram 析出油 2.5 scruples、酸水 5 gr.、結晶酸鹽約 2 gr.（與 Succinum 同性），判為礦物瀝青（原文作『pro Minerali ... pro Bitumine』『pix marina』，Lewis 1759 作『marine Bitumen』，無『Bitumen marinum』連詞）。Schwediawer 1783（ZD3-S011）：倫敦價每盎司 £1、Antigua 130 磅售 £500；比對 Banks 標本確認黑斑全為『Sepia Octopodia』喙嘴（註記鯨口曾拉出近 27 呎觸腕）；訪談捕鯨船長稱瘦弱鼓脹病鯨（雌雄皆有）在距肛門 2–7 呎『intestinum caecum』結硬糞，印證 Kaempfer『Kusura no fuu』（鯨糞）；引 Scheele 與 Bergman 膀胱結石為酸、自餾『Cochlearia』『Nasturtium』出揮發鹼推翻 Neumann。關鍵抓錯：Clarke 2006（ZD3-S012）p. 7 摘要與 p. 14 正文明白寫道：『Ambergris occurs in the rectum of the whale but neither causes nor betrays disease. The rectum is not damaged by squid beaks』，且 1947、1949、1953 年由生物學家客觀檢驗的三頭含龍涎香抹香鯨『were in good condition, had thick blubber and their stomachs contained food』！研究稿在 question、hook 與 visual 把十八世紀捕鯨人的『病鯨排不出糞』當成現代事實，與 Clarke 2006 直接衝突！",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞與《原來如此事務所》全部池檔及同波 ZD1、ZD2、ZD4，均無龍涎香（ambergris）、Neumann 或 Schwediawer。前提成立且多出第四層翻轉，覆核直接修正四處錯誤：（1）修正重大科學史與事實歸屬錯誤——Clarke 2006（ZD3-S012 pp. 7, 14）明言龍涎香『既不致病也不代表生病』，實地檢驗的三頭含香抹香鯨全都體況良好、脂層豐厚、液態糞便照常從光滑糞石旁通過；研究稿在 question、hook 與 visual 把十八世紀捕鯨人說的『生病抹香鯨排不出糞／捂肚子皺眉』寫成定論，現已將『病鯨說』嚴格歸給 1783 年捕鯨人證詞，並把 Clarke 平反『含香鯨其實頭好壯壯』補作結尾第四重翻轉，同時將 visual 改為健康抹香鯨悠游噴水；（2）修正 1693 年 Tidore 182 磅巨塊尺寸——Neumann 1734 拉丁原文（ZD3-S009 p. 401）明寫『crassitie 5 pedes & 8 pollices, longitudine vero 2 pedes & 2 pollices』（厚／周圍 5 呎 8 吋、長 2 呎 2 吋），修正研究稿誤譯的『長 5 呎 8 吋／近六呎長』；（3）修正拉丁括號『Bitumen marinum』（ZD3-S009 原文作 Bitumen／pix marina，ZD3-S010 作 marine Bitumen）及 ZD3-S008 的 read_via 來源路徑描述；（4）risk 補齊 Boyle、Lewis、Kaempfer、Scheele、Bergman、Crell 等本題未附生卒頁者不入畫，現代學者 Robert Clarke 嚴禁入畫，全程零血腥、零藥效宣稱。具體事實約 21 條，8.5–10 分鐘維持。"
+    },
+    {
+      "id": "N5463",
+      "agent": "ZD3",
+      "reviewer": "R483",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZD3-S019 https://archive.org/download/natuerlykehisto00ruus/natuerlykehisto00ruus_djvu.txt（Ruusscher 1729 荷法雙語原書，R483 獨立重抓，SHA-256 完全吻合，核對 pp. 3–19、pp. 40–45，OCR 第 1720–2060 行）、ZD3-S017 https://archive.org/download/jstor-102942/102942_djvu.txt（Leeuwenhoek 1704 Phil. Trans.，R483 獨立重抓，SHA-256 完全吻合，精讀 pp. 1614–1628 全文）、ZD3-S015 https://www.lensonleeuwenhoek.net/content/wrote-letter-194-of-1687-11-28-members-royal-society（R483 獨立重抓全文）；並逐字核對快取 ZD3-S014（1668 Phil. Trans.）、ZD3-S016（L-417）、ZD3-S018（L-420）、ZD3-S020（Rutty 1730 Phil. Trans.）、ZD3-S025（EB1911 Boyle）",
+      "reopen_result": "頁面上確實寫了：1668 Phil. Trans.（ZD3-S014 pp. 796–797）：當時普遍相信胭脂紅出自『Prickle-pear』紅果內部，提議將英國漿果或染木煎汁裝罐埋入陰溝濕葉堆發酵孵蟲。Lens L-194（ZD3-S015）：1685 年 Heinsius 轉達 Boyle 委託，Leeuwenhoek（1632–1723）初判為含碎種子的乾樹果，Boyle 異議後雇台夫特孩童抓蕁麻叢金花蟲拔頭足翅烘乾比對，1687-11-28 改判為昆蟲軀幹。Lens L-417（ZD3-S016）與 Leeuwenhoek 1704（ZD3-S017）：阿姆斯特丹商人 Siewert Centen 實秤 2 大、8 中、20 小粒重 1 ase，每磅『102400』粒、一船隊『200000 pounds』逾兩百億隻；Leeuwenhoek 泡雨水 24 小時在單隻母蟲腹內數出逾 200 卵，剝開卵膜畫出六足胚胎與身長五分之一的吸管，並在木盒底粉塵搜出三節帶爪蟲腿與鋸齒仙人掌刺。關鍵抓錯一：Leeuwenhoek 1704（ZD3-S017 p. 1619 OCR 第 315–320 行、p. 1627 OCR 第 674–700 行）雖然類比萊姆樹與醋栗樹的孤雌生殖蚜蟲推斷沒有雄蟲，但他明確寫道『these, when they are full grown get Wings』『indeed it is necessary they should have Wings as soon as they are full grown』（僅否定甲蟲硬鞘翅 Shields or Vagina，並以為薄翅在乾製時與頭足一同脫落）——研究稿寫『推斷商品全為無翅雌蟲』把原文寫反了！關鍵抓錯二：Rutty 1730（ZD3-S020 p. 267 OCR 第 182–188 行）描述三種殺蟲乾燥法時寫道：『The first renders them of a brown Red; the hot Water making them lose the white Colour with which they are covered when alive. The second [temascales] makes them of an ash Colour, and marbled... both because of the natural white, with which they are cover'd, and the red transparent Colour』——熱水燙曬會『洗去』活蟲白粉呈棕紅色，研究稿誤寫成『棕紅帶白粉』！Ruusscher 1729（ZD3-S019 pp. 40–45）：四位仲裁人（Muilman、de Roy、de Mortier、ten Kate）確於『by de eerste Byeenkomst / à la première Comparution』（第一次開庭）一致請雙方口頭同意將賭約作廢（『de Weddenschap als Weddenschap ... als vernietigt / la Gageure entant que Gageure, comme nulle』），隨後鏡檢友人植物樣本與泡醋軟化的胭脂紅，書面裁定為『Leevendige Beestjes』（活的小動物），pp. 44–45 另記泡醋並以稀硝酸（verzwakt Sterkwater）褪成淺紅後鏡下可見一至三隻帶爪細腿與吸吻（Zuyg-snuytje）。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞與《原來如此事務所》全部池檔及同波 ZD1、ZD2、ZD4，均無胭脂蟲／胭脂紅真身公案、Centen 或 Ruusscher。前提完全成立（Ruusscher 1729 原書 pp. 40–43 確實推翻通俗『贏走全部家產再退還』傳說），覆核直接修正三處原文細節誤差：（1）修正 Leeuwenhoek 1704（ZD3-S017 pp. 1619, 1627）的翅膀推論——Leeuwenhoek 雖推斷全為孤雌雌蟲且無甲蟲鞘翅，但誤以為成熟雌蟲會像成體蚜蟲一樣長出薄翅並在乾燥時脫落（而非研究稿所寫『推斷全為無翅雌蟲』；無翅母蟲與如小蝴蝶之微小飛蟲見於 ZD3-S020 墨西哥證詞），已在 answer_target、scope 與 reviewed_sources 修正；（2）修正 Rutty 1730（ZD3-S020 p. 267）熱水殺蟲外觀——原文寫熱水會使活蟲『失去身上的白色粉末（lose the white Colour）』而呈棕紅色，研究稿寫反成『棕紅帶白粉』，已改照原文；（3）精確區分 Ruusscher 1729（ZD3-S019）pp. 42–43 四位仲裁人鏡檢泡醋胭脂紅裁定為『活的小動物』與 pp. 44–45 以稀硝酸褪色觀察殘存一至三隻帶爪細腿與吸吻，並在 visual 與 risk 同步收緊（補列 Antoni Heinsius 不入畫、現代編者 Douglas Anderson 嚴禁入畫）。具體事實約 20 條，8.5–10 分鐘維持。"
+    },
+    {
+      "id": "N5464",
+      "agent": "ZD3",
+      "reviewer": "R483",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZD3-S023 https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5993855/fullTextXML（Hollerbach 2018 開放取用全文 XML）、ZD3-S021 https://archive.org/download/hin-wel-all-00002960-001/hin-wel-all-00002960-001_djvu.txt（Santorio 1614 威尼斯初版）、ZD3-S024 https://www.mpiwg-berlin.mpg.de/feature-story/sanctorius-sanctorius-beginning-self-quantification（MPIWG 2018 專題頁）（三篇皆由 R483 獨立重抓核對）；並逐字核對快取 ZD3-S022（Santorio 1660《Opera omnia》所收《Commentaria》拉丁原文 OCR 第 51970–52000 行）",
+      "reopen_result": "頁面上確實寫了：Santorio 1614 初版（ZD3-S021）：〈Ad lectorem〉稱『triginta annorum experientia』，第一章 Aph. IV–VIII 記鏡面呼氣一日約半磅、8 磅飲食無感排汗約 5 磅、排泄前後秤重相減，全書確無『sella』『statera』或秤椅圖說。關鍵抓錯一：Santorio《Commentaria》拉丁原文——不論是 1660 年全集本（ZD3-S022 OCR 第 51975–51982 行）還是 Hollerbach 註 5 逐字轉錄的 1625 年初版（p. 557），原句都是：『ad tigna supra caenaculum [cenaculum] in loco abdito est appensa propter proceres, quia cubiculi gratiam tollit, ac propter indoctos, quibus omnia insolita videntur ridicula』！研究稿在 answer_target、source_locator 與來源摘要引用的拉丁文『supra trabeas coenaculi』與『propter nobiles』並非原文用字（原文實為『ad tigna supra caenaculum』與『propter proceres』）！關鍵抓錯二：Hollerbach 2018（ZD3-S023 pp. 136–137）明寫：『We used a beam with a length of 1.5 meters and defined a maximum load of 100 kg ... with a 20 kg counterweight ... On the basis of the original illustration of the Sanctorian chair, we can assume that Sanctorius used a beam with a length of around 3 m—twice as long as the beam in our reconstruction』！約 3 公尺是推算 Santorio 1625 年原圖桿秤的長度，2018 年柏林團隊實際打造的移動式復刻椅使用的是『1.5 公尺鋼樑（配 20 公斤秤錘）』，研究稿誤寫成柏林團隊打造出『近三公尺長桿秤的實體復刻椅』！MPIWG（ZD3-S024）引 1711《The Spectator》（Vol. 1, p. 106）：『lived in a Pair of Scales』『lose five Ounces and four Scruples』『Study away three Ounces more』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞與《原來如此事務所》全部池檔及同波 ZD1、ZD2、ZD4，均無 Santorio／Sanctorius 秤椅案。前提成立且嚴守純科學儀器史定位，覆核直接修正四處細節：（1）修正兩處拉丁引文錯字——對照 1660 原印本（ZD3-S022）與 1625 初版引文（ZD3-S023 註 5），將研究稿自造同義詞『supra trabeas coenaculi』『propter nobiles』改回原文『ad tigna supra caenaculum』（餐廳上方屋樑）與『propter proceres』（為了權貴顯要）；（2）修正 2018 年復刻桿秤尺寸混淆——區分原圖推算 Santorio 本人使用約 3 公尺長桿秤，而 2018 年 MPIWG／柏林工大團隊是以『1.5 公尺鋼製橫桿與 20 公斤秤錘』打造復刻吊椅實測；（3）徹底剔除任何可能擦邊養生減重的字眼——把『今天該吃的健康份量』改回拉丁原文中立機械表述『預先設定的進食重量（debitum pondus, & mensuram antea praescriptam）』，把《The Spectator》引文『靠讀書瘦掉 3 盎司』改為字面『散掉 3 盎司重量（Study away three Ounces more）』，確保全題 100% 聚焦十七世紀吊椅傳說與天花板桿秤機械矛盾，零醫療健康宣稱；（4）risk 補列本題來源未印卒年的 Galileo Galilei 與 Nicolò Contarini 不入畫，當代學者 Teresa Hollerbach 及柏林復刻團隊嚴禁入畫。具體事實約 18 條，8.5–10 分鐘維持。"
+    },
+    {
+      "id": "N5465",
+      "agent": "ZD3",
+      "reviewer": "R483",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZD3-S027 https://archive.org/download/b30327696/b30327696_djvu.txt（Van Helmont 1662《Oriatrike》，R483 獨立重抓，SHA-256 完全吻合，核對 p. 106 §§ 13–14、OCR 第 10615–10630 行與 p. 109 §§ 29–35、OCR 第 10773–10838 行）、ZD3-S029 https://archive.org/download/jstor-102622/102622_djvu.txt（Woodward 1699 Phil. Trans.，R483 獨立重抓，SHA-256 完全吻合，精讀 pp. 193–227 全文）、ZD3-S028 https://www.gutenberg.org/files/22914/22914-h/22914-h.htm（Boyle 1661《The Sceptical Chymist》，R483 獨立重抓，SHA-256 完全吻合，核對 Part II pp. 107–121）；並逐字核對快取 ZD3-S026（1648《Ortus medicinae》pp. 106–109，OCR 第 16360–17020 行）、ZD3-S030（Ducheyne 2006 PDF 全文）、ZD3-S031–S032（EB1911 生卒年）",
+      "reopen_result": "頁面上確實寫了：1648《Ortus medicinae》（ZD3-S026）同章〈Complexionum atque mistionum elementalium figmentum〉p. 106（OCR 第 16381–16406 行）記『ex 62 lb carbonis querni; una libra cineris ... reliquae ergo 61 librae sunt spiritus silvester ... Hunc spiritum, incognitum hactenus, novo nomine Gas voco』（1662 英譯本 ZD3-S027 亦載於同章 p. 106 §§ 13–14『I call by a new Name, Gas』！）；緊接著 pp. 108–109（ZD3-S027 p. 109 §§ 29–31）：§ 29 寫橡木炭與溶劑化水、『Ergo Gas carbonis ... simul cum suo cinere non sunt nisi mera aqua materialiter』，§ 30 緊接『Omnia vero vegetabilia immediate, & materialiter, ex solo aquae elemento prodire hac mechanica didici』：陶盆裝『200 lb』爐乾土、種『5 lb』柳幹、以鍍錫多孔鐵板（『lamina ferrea, stanno obducta, multoque foramine pervia』）蓋口防塵，只澆雨水或蒸餾水，五年後樹重『169 lb & circiter uncias tres』（四秋落葉未計），重烘土仍『200 lb』僅少約『duabus circiter unciis』，推論『164 lb』木皮根生自水，§ 31 立刻推回木炭在泉中化為石頭與魚脂肥皂蒸餾皆純水。Boyle 1661（ZD3-S028 Part II pp. 107–117）：5 月中至 10 月中種 Squash 重『three pound wanting a quarter』（2 磅 12 盎司），烤麵包後再進爐烤兩次土幾無減損；夏種黃瓜兩條重『ten Pound and a Halfe』加藤根『four Pounds wanting two Ounces』，分裝『several small Earthen Dishes』重烤少『a Pound and a halfe』，園丁信稱處理時化為『Dust』散失；臥室泉水瓶插一吋 Spearmint 乾餾出液、酸精、焦油與炭渣；p. 113 指 Helmont《Magnetick Cure of Wounds》失信故自任『Compurgator』。Woodward 1699（ZD3-S029）：p. 194 批駁 200 磅土兩次同乾度不可能及水含腐植礦物微粒（綠雲『Nubeculae』）；1691（77 天）與 1692（56 天）同窗封羊皮紙瓶與木棒空白對照瓶 F、G（零蒸發）：A 泉水耗 2,558 gr. 增 15 gr.、B 雨水耗 3,004 gr. 增 17.5 gr.、C 泰晤士河水耗 2,493 gr. 增 26 gr.；H／I 導管水增 128／139 gr. 對 L 加 1.5 oz 園土增 284 gr.；M 蒸餾水耗 8,803 gr. 增 41 gr. 對 N 混濁帶紅殘液耗 4,344 gr. 增 94 gr.；耗水為增重的『46 10/47』倍至『714 4/7』倍（約 97.8%–99.8%，p. 209 稱多數『not a fiftieth Part』留在植株內）。關鍵抓錯：Ducheyne 2006（ZD3-S030）全篇只在 p. 306 註 4（『Herbert M. Howe has pointed out that the experiment had already been suggested by Nicholas of Cusa in his Idiota de staticis experimentis (1450), and also by the author of the pseudo-Clementine Recognitiones (1504)』）與 p. 316 註 60（『in Nicholas of Cusa's presentation of the \"experiment,\" in his Idiota de staticis experimentis, such screening-off procedures are accentuated less』）提到 Cusa——全文完全沒有研究稿寫的『一模一樣「先秤百磅泥土、種下植物長大後再秤土與灰燼」』！那是研究代理在未讀 Cusa 原文下混入的外部記憶！",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞與《原來如此事務所》全部池檔及同波 ZD1、ZD2、ZD4，均無 Van Helmont 五年柳樹實驗、Woodward 1699 對照瓶或同章造詞 Gas 反諷。前提成立且原典同章反差極精采（R483 親核 1648 拉丁本與 1662 英譯本確認 62 磅橡木炭造詞 Gas 與柳樹實驗確在同一章相隔三頁），覆核直接修正三處細節：（1）剔除外部記憶混入——Ducheyne 2006（ZD3-S030 註 4、註 60）只寫 Cusa 1450《Idiota de staticis experimentis》已提出該植物實驗構想（另有偽克萊門特《Recognitiones》先例）且對隔絕干擾變數著墨較少，並未寫『一模一樣』或『先秤百磅泥土、再秤土與灰燼』，已全面刪去未讀原文的『百磅泥土與灰燼』並同步調整 scope、visual（刪去 Cusa 指花盆）與 reviewed_sources；（2）補齊 ZD3-S027（1662 英譯本《Oriatrike》）p. 106 §§ 13–14 的橡木炭造詞 Gas 英譯定位，使拉丁本與英譯本頁碼完全對應；（3）精確化 Woodward 1699（ZD3-S029）蒸散比例——最小倍數組 N 為 46 10/47 倍（蒸散約 97.8%）、最大倍數組 E 為 714 4/7 倍（蒸散約 99.86%，p. 209 指多數連五十分之一都沒留下），故由『超過 98%–99%』精修為『約 97.8% 至 99.8%（耗水 46 至 714 倍，多數連五十分之一都沒留下）』，並在 risk 補齊 Francis Bacon、J. Chandler 與當代學者群不入畫。具體事實約 22 條，8.5–10 分鐘維持。"
+    },
+    {
+      "id": "N5481",
+      "agent": "ZD4",
+      "reviewer": "R484",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "實網重抓 ZD4-S002（https://andersen.sdu.dk/vaerk/register/info_e.html?vid=8）、ZD4-S003（https://hcandersen.dk/vaerker/bemaerkninger-1863/）、ZD4-S005（https://de.wikisource.org/wiki/Die_Erbsenprobe_(1843)）；並逐字核讀 ZD4 cache 內 ZD4-S001 丹麥文全文、ZD4-S004 Kalliope 生卒頁、ZD4-S005 raw 頁碼模板、ZD4-S006 Bolte & Polívka Bd. III pp. 330–332、ZD4-S007 Hyltén-Cavallius 1844 Nr. 12 pp. 180–194、ZD4-S008 Tawney/Penzer《Ocean of Story》Vol. VI pp. 217–221 與 pp. 289–292",
+      "reopen_result": "頁面上確實寫了：ZD4-S001『en rigtig Prindsesse』『en Ært paa Bunden af Sengen』『tyve Matrasser』『tyve Ædderduuns-Dyner』『bruun og blaa over min hele Krop』『Kunstkammeret』『See, det var en rigtig Historie!』；ZD4-S002 首印日『8 May 1835』與冊名《Eventyr, fortalte for Børn. Første Samling. Første Hefte. 1835》；ZD4-S003『dem havde jeg selv som Barn hørt i Spindestuen og ved Humleplukningen』；ZD4-S004 安徒生『1805–1875』。但對照原文揪出六處細節出入：一、ZD4-S005（及 ZD4-S006 p. 331 重印文）寫的是『Als die Matratze herbeigebracht war, legte sie drei Erbsen darauf, eine oben hin, eine in die Mitte und eine unten hin, dann wurden noch sechs weiche Matratzen darüber gebreitet』——三顆豌豆是放在第一張床墊上、再往上加鋪『另外六張軟床墊』（共七張床墊），不是放在床底鋪六張；前來應徵者是在追問『Geburt und Abstammung』（出身與家世）時露餡被請回，沒寫『乘華麗馬車被王子嫌棄』；少女隔天原話是『hart vom Kopf bis zu den Füßen; es war als wenn ich auf lauter Erbsen läge』，沒有『把我壓傷了』；維基文庫標明原書頁碼為 Band 2, S. 433–435（研究稿誤寫 445–447）。二、ZD4-S007 第 12 則〈Slottet, som stod på guld-stolpar〉標題下明載採自『Från Westmanland』（異文採自 Upland，另有引自 Westergötland 小狗版），不是研究稿寫的『南斯莫蘭 Södra Småland』；主角父母並非『雙亡』，而是為誰刮粥鍋吵架跑進樹林沒回來，哥哥分走母牛、妹妹分到貓；貓先叫少女脫去破衣爬上王宮旁高樹，謊稱強盜搶劫 Kattenborg 公主；第一晚放的是『en böna under lakanet』（一顆豆子，無 stor／大蠶豆字樣），且少女因疲累睡著（『visst har jag sofvit』），照貓串供才抱怨像睡在大山、大石頭與大樹上。三、ZD4-S006 p. 332 與 ZD4-S008 p. 291 的找豌豆小子（Erbsenfinder）漏了關鍵前因『窮小子撿到一顆豌豆卻向國王借一千個麻袋（tausend Säcke），國王才鋪稻草床試探他是不是富貴人家』，且研究稿把『特蘭西瓦尼亞』混入日文片假名印成『特蘭シル瓦尼亞』。四、ZD4-S008 pp. 217–221《故事海》第 82 章裡，婆羅門 Vishnusvamin 的三個兒子都沒有名字（研究稿寫成『Viśruta』是張冠李戴），房間只寫『a splendid room』與『seven mattresses placed upon a bedstead』（不是『七樓』），紅痕印在『on his side』（側身，不是背上），侍衛掀開全部七層床墊在床架正中央找到一根毛髮（『a hair in the middle of the bedstead underneath them all』，原文是彎曲紅痕，沒寫國王事先偷塞彎毛）。五、ZD4-S008 p. 290 寫 4 skilling 約合『fourpence-halfpenny』（4½ 便士，研究稿誤寫 2¼ 便士）；Georg Christensen 1906《Danske Studier》頁碼在 ZD4-S006 p. 331 作『169–174』、ZD4-S008 p. 292 作『p. 169 et seq.』（研究稿誤寫 pp. 108–109）。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep pool.json、batches/*.json、reviews/*.json、external/so-thats-why-cores.json、原來如此池與本批 ZD1–ZD3，均無〈豌豆公主〉／Prindsessen paa Ærten／Die Erbsenprobe／Kattenborg／Erbsenfinder；池中安徒生既有題（F08 小美人魚、F09 冰雪女王、F10 紅舞鞋、N3662 國王的新衣、N4562 賣火柴的小女孩）與《故事海》既有題（N2485 機器木人、N5202 換頭故事）全數在 notes 補齊對照，核心完全不同。前提成立，把上述六處細節出入（格林第一張床墊上放三顆豌豆再加六張床墊與 S. 433–435、瑞典 Westmanland 產地與父母吵架入林及『一顆豆子』、找豌豆小子借一千個麻袋與修正片假名錯字、刪《故事海》誤植人名 Viśruta 與『七樓』並改為側身紅痕與床架中央毛髮、4½ 便士與 Christensen pp. 169–174 二手轉引標註）全部直接改進題目欄位；人物入畫嚴守僅安徒生（1805–1875）與 11 世紀 Somadeva 已核卒年，格林、Hyltén-Cavallius、Bolte、Polívka、Penzer、Christensen 一律不畫臉孔。可核實事實約 19 條，8.5–10 分鐘長片核心穩健。"
+    },
+    {
+      "id": "N5482",
+      "agent": "ZD4",
+      "reviewer": "R484",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "實網重抓 ZD4-S010（http://www.mythfolklore.net/aesopica/townsend/13.htm）、ZD4-S012（https://fr.wikisource.org/wiki/Fables_de_La_Fontaine_(%C3%A9d._Barbin)/1/La_Cigale_et_la_Fourmi）、ZD4-S014（https://fr.wikisource.org/wiki/Souvenirs_entomologiques/S%C3%A9rie_5/Chapitre_13）；並逐字核讀 ZD4 cache 內 ZD4-S009（Perry 112）、ZD4-S011（Vernon Jones 202）、ZD4-S013（拉封丹生卒頁）、ZD4-S015（法布爾生卒頁）",
+      "reopen_result": "頁面上確實寫了：ZD4-S009 Perry 112〈The Ant and the Dung Beetle〉夏天螞蟻收小麥與大麥、糞金龜嘲笑，冬天大雨沖走糞便後糞金龜來求『share a little bit of his food』；ZD4-S010 Townsend No. 13〈The Ants and the Grasshopper〉（頁尾標 Perry 373）晴朗冬日螞蟻曬受潮穀粒、蚱蜢唱整夏挨餓、螞蟻叫牠『dance the winter away』；ZD4-S012 拉封丹〈La Cigale & la Fourmy〉『Pas un seul petit morceau / De mouche ou de vermisseau』『Avant l'Oust, foy d'animal, / Interest & principal』『La Fourmy n'est pas presteuse; / C'est là son moindre défaut』『Eh bien ! dansez maintenant』；ZD4-S013 拉封丹『1621–1695』、《Fables》『1668–1694』；ZD4-S014 法布爾第五卷第十三章全章（橄欖樹北界、Grandville 插畫、冬天無成蟲蟬、吸管口器不吃麥粒蒼蠅小蟲、七月酷暑午後鑿樹汁井、螞蟻咬腳尖扯翅爬背並『saisir le suçoir, s'efforçant de l'extraire』、蟬噴『un jet de son urine』飛走、夏末搬蟬屍）；ZD4-S015 法布爾『1823–1915』。揪出四處需修正處：一、ZD4-S011（vernonjones/202.htm）頁面上只印『202. THE ANT』『Ants were once men... Jupiter was so angry...』，整頁完全沒有印『Perry 166』字樣，不能把頁面未載的『第 166 則／Perry 166』寫成該頁直出；二、ZD4-S009 糞金龜是求『分一點食物』而非指名『討麥子』；三、ZD4-S014 原文說的是拉封丹沒見過真蟬、心裡想的是蚱蜢，巴黎人（『à Paris, la moderne Athènes』）也拿蚱蜢（Sauterelle）頂替蟬，Grandville 更把歌手畫成戴大遮陽篷帽（『grand chapeau en cabriolet』，非軟帽）、裙子被北風吹貼小腿、腋下夾吉他的蚱蜢——法布爾原文並沒有講『北方譯者』，英語世界譯成 Grasshopper 是我們對照 Townsend 英譯頁（ZD4-S010）看到的事實，兩者必須分開歸屬，不能塞進法布爾嘴裡；四、法布爾門前兩棵大懸鈴木（deux grands platanes）是數百隻蟬鳴叫的觀察地，而七月午後蟬刺穿光滑樹皮鑿樹汁井的對象是灌木枝條（rameau d'arbuste，特別是他花園裡的紫丁香 les lilas de mon jardin），敘述時把『懸鈴木下聽蟬、紫丁香灌木枝上盯樹汁井』分清。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep 奇聞池 pool.json、batches/*.json、reviews/*.json、external/so-thats-why-cores.json、原來如此池 pool.json／themes.json 與本批 ZD1–ZD3，均無〈螞蟻與蚱蜢〉／〈蟬與螞蟻〉／La Cigale et la Fourmi／法布爾樹汁井（原來如此池僅有火蟻救生筏與殭屍蟻真菌題，奇聞池僅有 N2516 伊索傳奇、N3530 狐狸與葡萄、N4567 拉封丹熊與園丁，完全無重疊）。前提成立，修正上述四處（拿掉 ZD4-S011 未印的 Perry 166 編號改稱 Vernon Jones 1912 英譯第 202 則、糞金龜改為乞討存糧、把法布爾講巴黎人與 Grandville 遮陽篷帽插畫跟英語譯本譯成 Grasshopper 分開歸屬、分清門前懸鈴木與花園紫丁香灌木枝上的樹汁井），同時把夏末搬運自然死亡蟬屍的『大卸八塊』改為溫和寫法，確保符合可愛解說調性。拉封丹（1621–1695）與法布爾（1823–1915）卒年已核，Grandville 不畫本人。可核實事實約 18 條，8.5–10 分鐘長片核心成立。"
+    },
+    {
+      "id": "N5483",
+      "agent": "ZD4",
+      "reviewer": "R484",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "實網重抓 ZD4-S017（https://archive.org/download/lesfabulisteslat04hervuoft/lesfabulisteslat04hervuoft_djvu.txt）、ZD4-S020（https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Angus,_Earls_of）；並逐字核讀 ZD4 cache 內 ZD4-S016（Milo Winter 1919 No. 6）、ZD4-S018（Piers Plowman B-Prologue ll. 146–209）、ZD4-S019（Skeat 1886 Vol. II Intro & Notes pp. 16–19）、ZD4-S021（拉封丹 Conseil tenu par les Rats）及 ZD4 同輪抓取之 Jacobs 1889《Fables of Aesop》Vol. I",
+      "reopen_result": "頁面上確實寫了：ZD4-S016 第 6 則〈Belling the Cat〉頁尾印『Illustrations by Milo Winter (1886-1956)』；ZD4-S017 序言 p. vii『Les fables d'Eudes de Cheriton n'ont été que très rarement empruntées à Phèdre ou à ses imitateurs ; aussi me paraissent-elles devoir être classées parmi les œuvres des auteurs originaux』、導論 p. 19 巴黎國圖兩手稿載講道集完稿於『MCCXIX（1219）』、pp. 225–226 第 LIVa 則『Ligetur campanella in collo Cati』『Certe non ego』『clerici, monachi insurgunt contra episcopum, priorem, uel abbatem... Et sic minores permittunt maiores uiuere et preesse』、p. 260 Nicholas Bozon 第 VIII 則『tenentes parliamentum suum』與『Clym! Clam! the Catte lepe over the damme』；ZD4-S018 B-Prologue ll. 146–209『a cat of a courte』『in þe cite of london』『biȝes ful briȝte... colers of crafty werk』『þe belle was ybouȝt and on þe beiȝe hanged』『Þere þe catte is a kitoun · þe courte is ful elyng』『Ve terre vbi puer rex est』；ZD4-S019 pp. xxxii–xxxiii 與 pp. 17–19 詳載 1362 年 A 本原本沒有這段寓言（『not in a.』），是 1376 年 6 月 8 日黑太子去世、年幼理查成為王儲後，Langland 在 1377 年初擴寫 B 本時新加進去的，並解讀大鼠＝下議院城市代表（burgesses）、倫敦精工項圈＝郡長金鍊、老貓＝愛德華三世、小奶貓＝王儲理查，以及愛德華六世朝 Robert Crowley 重印本拉丁邊註『Omnium doctissimorum suffragio, dicuntur hec de lassiuis, fatuis aut ineptis principibus, non de etate tenellis』與蘇格蘭 Lord Gray／Archibald Bell-the-Cat 典故；ZD4-S020 載第五代 Angus 伯爵 Archibald Douglas（c. 1450–c. 1514）於 1482 年 Lauder 密謀時『offering to bell the cat』並扯下寵臣 Cochrane 金鍊；ZD4-S021 拉封丹結尾『Chapitres, non de Rats, mais Chapitres de Moines, / Voire Chapitres de Chanoines』。修正三處精確度：一、研究稿把《農夫皮爾斯》寫成『西敏寺政治諷刺』，但 B-Prologue 第 160 行明寫『in þe cite of london』、Skeat 註解頁也沒提西敏寺，改為『倫敦政壇與議會諷刺』，並補上 Skeat 考證最精彩的一刀——1362 年初版 A 本根本沒有這段，是 1376 年黑太子驟逝後 1377 年 B 本特地插進去的時事暗號；二、『古希臘伊索沒有這一篇』精確掛回實讀的 Hervieux（不借自古典 Phaedrus 的中世紀原創作者）與 Wright／Skeat（出自中世紀拉丁與法文寓言手稿）名下，不在未讀遍希臘全集下說過頭；三、確認 answer_target 與 editorial 完全零絞刑／零血腥（Lauder 橋後續處決與 Malvern 吊貓木雕均不寫入正文與畫面），修道院段落純敘中世紀上下級行政抱怨，絕不涉宗教教義。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep pool.json、batches/*.json、reviews/*.json、external/so-thats-why-cores.json、原來如此池與本批 ZD1–ZD3，均無〈給貓掛鈴鐺〉／Belling the Cat／Odo of Cheriton／Nicholas Bozon／Piers Plowman／Rodilardus／Archibald Bell-the-Cat；not_added 第 6 條因 Marquette 大學 PDF 回 403 當場停手不提 1376 年 Brinton 主教講道詞，完全合規且誠實。前提極扎實，修正『西敏寺』為倫敦政壇與議會、補上 1362 年 A 本無此段而 1377 年 B 本因黑太子去世新插入的關鍵時間證據、將古典來源考證精確歸屬 Hervieux 與 Skeat，並在 risk 明列 Langland、Crowley、Skeat、Hervieux 不畫具名肖像（愛德華三世與理查二世僅以戴王冠老貓與小奶貓入畫）。可核實事實約 19 條，8.5–10 分鐘長片核心成立。"
+    },
+    {
+      "id": "N5484",
+      "agent": "ZD4",
+      "reviewer": "R484",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "實網重抓 ZD4-S022（https://archive.org/download/thehistoricalworksofgerva1/thehistoricalworksofgerva1_djvu.txt）、ZD4-S023（http://www.psrd.hawaii.edu/Feb10/GiordanoBrunoCrater.html）、ZD4-S024（https://pmc.ncbi.nlm.nih.gov/articles/PMC9287037/）；並逐字核讀 ZD4 cache 內 ZD4-S025（義大利 Gruppo Astrofili Polesani 綜述頁與 11 條書目註腳）",
+      "reopen_result": "頁面上確實寫了：ZD4-S022 Stubbs 導言（Gervase 生約 1141 年、1163 年 2 月 16 日受戒、編年史止於 1210 年 10 月）與卷一 p. 276 拉丁原文『Hoc anno, die Dominica ante Nativitatem Sancti Johannis Baptistae, post solis occasum, luna primo visa, mirabile signum apparuit quinque vel eo amplius viris ex adverso sedentibus... superius cornu in duo divisum est. De medio vero divisionis illius fax ardens emicuit, flammam [A、B 稿作 flamina], carbones et scintillas longius proiciens. Corpus interim lunae... quasi anxiebatur, et, ut eorum verbis utar, qui hoc michi retulerunt et oculis viderunt propriis, ut percussus coluber luna palpitabat... vicibus duodecies et eo amplius repetiit... tota a cornu usque in cornu facta est seminigra』及立誓語，p. 277 同年 9 月肯特郡日偏食紀錄；ZD4-S024 摘要與導論（D = 22 km，年齡 <10 Ma，調查 1,323 km² 內 >10 m 小坑，熔融高岩石豐度區 <25 m 小坑密度顯著偏低）；ZD4-S025（1178-06-18 坎特伯里日落 20:19、新月仰角 3 度、照明度 2.5%，若指 6 月 19 日則照明度 7.7%，引 Meeus 1990／Schaefer 1990、Nininger & Huss 1977 的十二次重複難題、Gasper & Tanner 2020《Endeavour》杜倫大學冶煉爐煙囪熱氣流與火星假說）。修正三處：一、ZD4-S023 原文寫的是近坑緣年輕射紋噴發物『OMAT values (~0.28 to 0.22 near the rim)』且附近缺乏比它更年輕的大型撞擊坑（ZD4-S024 稱『one of the youngest sizable impact craters』），研究稿寫成『OMAT 約 0.27、全月背最年輕』不夠精確，改回近坑緣 OMAT 約 0.22–0.28、月球最年輕的大型明亮射紋坑之一；二、Hartung (1976)、Nininger & Huss (1977)、Withers (2001)、Morota 等 (2009) 與 Plescia 等 (2010) 原論文未直接抓取，係經夏威夷大學 PSRD（ZD4-S023）與 Williams 等 2022（ZD4-S024）轉引，而 20:19 日落模擬、Meeus／Schaefer (1990) 及 Gasper & Tanner (2020) 係經義大利天文學會綜述（ZD4-S025）轉述，在 answer_target 與 scope 逐一誠實標明二手出處；三、notes 補入池中另一則 Gervase 題 N4463（1195 年泰晤士河球狀閃電）與 not_added 已驗既有題 N4386（1866 年 Linné 坑），確認無重疊。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep pool.json、batches/*.json、reviews/*.json、external/so-thats-why-cores.json、原來如此池與本批 ZD1–ZD3，均無 1178 年坎特伯里月裂或 Giordano Bruno 撞擊坑；池中 Gervase 僅出現於 N4463（1195 年泰晤士河黑雲火球／球狀閃電），月球異常僅有 N4386（1866 年 Linné 坑）與 N2646（1835 年大月亮騙局），年代與機制完全不同。前提成立，修正近坑緣 OMAT 為約 0.22–0.28 並拿掉『全月背最年輕』絕對化字眼、將所有未直讀的 1976–2020 論文在正文與 scope 明確掛回夏威夷大學 PSRD／Williams 2022／Astrofili Polesani 轉引名下、在 risk 把 Stubbs 與所有近現代學者一併列為禁畫人物，且嚴格維持純中世紀天象與行星科學紀錄，零宗教教義內容。可核實事實約 18 條，8.5–10 分鐘長片核心成立。"
+    },
+    {
+      "id": "N5485",
+      "agent": "ZD4",
+      "reviewer": "R484",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "實網重抓 ZD4-S029（https://archive.org/download/scaleofuniverse00shap/scaleofuniverse00shap_djvu.txt）、ZD4-S030（https://heasarc.gsfc.nasa.gov/docs/heasarc/headates/1800.html）、ZD4-S031（https://pmc.ncbi.nlm.nih.gov/articles/PMC4321299/），並實網重抓補入遺漏來源 R484-S001 → ZD4-S032（https://science.nasa.gov/apod/the-great-debate-what-really-happened/）；同時逐字核讀 ZD4 cache 內 ZD4-S026（Nature 1885-09-17）、ZD4-S027（MNRAS 1885-11）與 ZD4-S028（Agnes Clerke 1885 初版全文 OCR）",
+      "reopen_result": "頁面上確實寫了：ZD4-S026 pp. 465–466 編者按『probably of no very great mass, and therefore not so very remote』、Lord Rosse 1848–1877 紀錄與 9 月橘色新星觀測及 Huggins 光譜；ZD4-S027 pp. 19–21 牛津星等表（9 月 7 日 8.25 等降至 10 月中旬近 10 等）與格林威治 Maunder『The spectrum of the star resembled that of the nebula precisely, except of course that it was brighter』；ZD4-S029 p. 180 Shapley『would demand impossibly great luminosities for the novae that have appeared in spirals』、pp. 211–216 Curtis 引 16 顆仙女座 +17 等暗新星（50 萬光年對應約 -4 等、銀河新星約 -3 等，S Andromedae 亮至少 10 等即一萬倍）、p. 215『A division into two magnitude classes is not impossible』與每 520 年才撞一顆星的反算；ZD4-S030 NASA HEASARC『21 Aug 1885』約 6 等高峰、Hartwig／Gully／Ward 與『subluminous Type Ia』；ZD4-S031 Burrows 2015《PNAS》（112(5): 1241–1242）載 Baade 與 Zwicky 於 1933 年冬史丹佛 APS 會議預告、1934 年在《PNAS》第 20 卷第 5 期連發兩篇論文首創『super-novae』把 S Andromedae 與 1572 第谷新星獨立出來，並預言『neutron star』與宇宙射線，以及 Ia 型白矮星熱核爆炸不留中子星的反諷。但查出四處關鍵訛誤並逐一修正：一、ZD4-S028（Agnes Clerke 1885 初版）第 438 頁其實在講北斗七星恆星漂移（star-drift）！仙女座新星真正所在的頁碼是第 424 頁（反對把星雲當『remote galaxies／remote worlds of stars』的總結在第 435–436 頁）；而且 1885 年初版 p. 424 原文只寫 Ward 於 8 月 19 日初見、光譜紅端截斷與星雲相同、使『連續光譜星雲是由太陽般天體聚集而成』的不可能性大大加深（『has been vastly enhanced by the recent outburst of a new star in the midst of the great Andromeda nebula』），並沒有寫出『island universe』一詞或『單顆星亮到匹敵幾千萬顆太陽』（那是 Clerke 後期增訂版與 1920 年代論戰的語言，研究稿混進了 1885 年初版）！二、研究稿寫『1920 年 4 月 26 日』辯論日期並不在 ZD4-S029（1921 論文僅印 May 1921），而是出自研究代理抓過卻漏列進 sources 的 NASA／Hoskin 專頁，覆核實網重抓補編為 ZD4-S032（R484-S001），同時支撐 Curtis 1920 年現場表（50 萬光年 -3.9 等對銀河新星 -3.4 等）。三、ZD4-S031 寫的是『PNAS 20(5):254–259, 259–263 (1934)』與『winter of 1933』，沒有印『5 月（May）』，研究稿自行把第 5 期推算成『1934 年 5 月』，改回『1933 年冬會議預告、1934 年《PNAS》第 20 卷第 5 期』。四、risk 原文寫出的 Baade（1960）、Zwicky（1974）卒年不在任何已讀頁面上，Shapley（1972）與 Curtis（1942）卒年也只見於 archive.org metadata JSON 而不在正文，刪去未經正文核驗的卒年數字，直接規定全片所有 1885–2015 真實科學家與觀測者一律嚴禁入畫。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep pool.json、batches/*.json、reviews/*.json、external/so-thats-why-cores.json、原來如此池與本批 ZD1–ZD3，均無 S Andromedae／SN 1885／1885 仙女座新星／Shapley–Curtis 世紀大辯論（池中超新星相關僅客星 185、1054 蟹狀星雲、第谷與克卜勒新星舊題，以及 wave47 N5342 星雲素 nebulium 光譜題，核心完全不同）。前提成立，修正 Clerke 1885 初版真正頁碼（p. 424 與 pp. 435–436）並嚴格還原 1885 初版原話（不把後期版『島宇宙／幾千萬顆太陽』塞進 1885 初版，將『島宇宙』與亮度破萬倍悖論精確歸回 1920–1921 Shapley & Curtis）、補入新讀來源 R484-S001 → ZD4-S032 支撐 1920 年 4 月 26 日日期與 -3.9 等表格、刪去研究稿自行換算的『1934 年 5 月』、清理 risk 內未經正文核實的卒年並全面禁畫真實科學家。可核實事實約 20 條，8.5–10 分鐘長片核心極強。"
+    }
+  ]
+}
