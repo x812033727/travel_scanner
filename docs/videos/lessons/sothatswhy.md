@@ -66,3 +66,8 @@
   - **禁字會藏在別的字裡。** `paperclip` 含 paper、`notch` 含 no、`clamps` 含 lamp；setrw.py 的 BANNED 用 `\b` 抓不到，代理要改寫成 `wire office clip`、`V-shaped groove`。
   - **`--seed-offset` 上限 30**；一個鏡頭重畫第三輪起用 20 以上，避免撞到舊種子。站台 502 或容器重開時，從 log 找出還沒畫的鏡頭只重跑那些，別整批重來（浪費 MiniMax 額度）。
   - **放大檢查 brief 要寫清楚多輪後的標準**：第三輪起只有走樣、假字、重複角色、手臉壞、與台詞相反才算 bad，其餘給 ok 並註明，不然會一直重畫小瑕疵。
+- **2026-11-13，從奇聞檔案局 c14 的教訓（PR 2068，shared.md／curio.md）借來、本系列也適用的：**
+  - 只畫手的鏡頭容易冒出整張臉；說明書頁、錶面、刻度會長出字或數字。本系列的「手拿剪刀修圓角」「手指指裂縫」這類鏡頭，放大檢查時特別看有沒有多出臉；書和手冊寫成闔上的。
+  - 模型畫不出指定的數量、傾斜或方向（三根手指、天平傾一邊、箭頭指哪裡）；換成不靠那個動作也對得上台詞的畫面（P26 的「三倍」改成圓洞兩側擠滿藍線）。
+  - MiniMax 額度用完有兩種訊息：`answered 2067`，以及結束碼 4 的 `rejected the key or balance (The Token Plan usage limit…)`；都看 `minimax-quota` 的 `remains_time` 等下一窗，不必問站主。
+  - 本系列選用 judge 退件的 take 是寫 `pins.json` 再跑 repin.py（每次 `keyframes` 之後都要重跑），不用 `keyframes import`；若改用 import，先改提示詞、跑 keyframes，最後才 import，中間不再改提示詞，否則 manifest 會被重建、匯入的圖全丟。
