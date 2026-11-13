@@ -208,6 +208,7 @@ ${compilation ? `\n${compilationSection(metadata, compilation)}\n` : ""}
 5. 目標觀眾：選「否，這不是為兒童打造的內容」${metadata.made_for_kids ? "（注意：video.json 標為兒童內容，請確認）" : ""}。
 6. 標籤：貼上 \`metadata.json\` 的 \`tags\`。類別：科學與技術（${metadata.category_id}）。影片語言：中文（台灣）。
 7. 「變造或合成內容」：${synthetic ? "勾「是」" : "不用勾"}。\`metadata.json\` 的 \`contains_synthetic_media\` 是 \`${synthetic}\`（${reason}）。
+8. 播放清單：勾選對應系列的播放清單（奇聞檔案局／原來如此事務所／品牌故事／對應劇集），讓觀眾看完自動連播同系列下一支。
 
 ## 2. 字幕
 
@@ -222,5 +223,7 @@ ${dubSteps(dubs, skippedDubs)}
 ${thumbnailSection}## ${thumbnailSection ? 5 : 4}. 上傳之後
 
 回到 /admin/videos 這支影片的「可以上架」卡片貼上 YouTube 網址，並選上架時間；影片 ID 會寫進 \`video.json\`，影片就算完成。不要自己按公開：公開由站主選的時間決定。
+
+影片公開後，在留言區貼上一則**低門檻二選一互動題**（例如「你覺得是 1 還是 2？留言選一個」）並按「置頂」，接住前 24 小時的留言互動。
 `;
 }
