@@ -286,3 +286,19 @@ for sc in S:
 - 只在 `P:` 前留拍，一集大約十幾處；想在其他地方停（例如小問恍然大悟前），在那一句前一句明寫 `pause_after_ms`，不要回到每句都寫。
 - 停頓變短，同一份稿子估出來的片長會變短：每句少 0.1 秒、每景少 0.55 秒（P06：186 句、116 景，約少 82 秒）。§9「長度」那列的每秒 3.2 字是舊停頓量出來的，第一集照新寫法做完要重量一次。不要多寫內容或拉長停頓補時間；撐不到 8 分鐘的題目照 §9「長度」放後備。
 - 語速（≥ 4.5 字／秒）不在這裡處理，見票 `2026-11-11-warn-when-narration-is-slower-than-4-5`。
+
+### 10.7 每一集都要符合的規則與檢查（2026-11-13，站主：「P06要重製 之後的都要符合」「要記得都要符合規則」）
+
+- **語速與停頓**：照 §4（語速 style 結尾「一秒五個字以上」、`tts` 實測 ≥ 4.3 字／秒）與 §10.6（`pauses: {line_ms: 0, scene_ms: 150}`、
+  `still_motion: "beat"`、只在 `P:` 前一句寫 `pause_after_ms: 500`）。不符合的舊集要重傳時一起照新規則重錄（P06 2026-11-13 重製）。
+- **片頭片尾**：成片一定要有系列片頭（357 格）與片尾（630 格）。雲端容器沒有素材包，開工時先還原
+  （`docs/videos/lessons/sothatswhy.md` 2026-11-13 那條），合成後 `checks.json` 的 `metrics.frames` 要比 `timeline.json` 的 `total_frames` 多 987 格。
+- **八語配音**：P29 之後的集數（含 P06 重錄）用 MiniMax 各語言聲音（PR #2085；`dub` 在站台有 MiniMax 時自動選），zh-TW 旁白維持 Gemini；
+  P29 與之前沒重錄旁白的集數保留 Gemini 配音，重包時加 `--provider gemini`。
+- **檢查指令**：送審前、重傳前都跑一次，全部 OK 才送：
+
+```bash
+python3 docs/videos/so-thats-why/dialogue-pilot-20261103/tools/rules_check.py sothatswhy-<slug> [...]
+```
+
+  它查語速 style、停頓設定、只有答案前的停頓、實測語速 ≥ 4.3、片頭片尾格數差 987。另外照 §9 量 `silent_share` ≤ 3%、最長空檔 < 1.5 秒。
