@@ -8,6 +8,14 @@
 這份會自動同步到雲端硬碟 `AI劇/奇聞檔案局/_規則與教訓/教訓/教訓.md`（docs/videos/rules-sync）。
 之前的教訓：`.agents/skills/curio-episode/references/w03-lessons.md`。
 
+## 2026-11-13 · curio-s10／s13／s14／s23–s26-v2 · 站主發現、Claude 量
+設定都是新版，實測語速卻都不到 4.4：停頓（0／150 毫秒）與 beat 都對，聲音指示也寫了「一秒四到五個字」，七集實測只有 4.08–4.33 字／秒。站主定 4.4 為下限，不符合的全部重做，八語改用 MiniMax 重錄。
+- **怎麼量**：timeline.json 每句 `audio_samples` 加總 ÷ 48000 是純講話秒數；字數用稿子去掉空白與標點。全片長度除會把換景停頓算進去，偏低。
+- **為什麼慢**：Gemini 會把聲音指示裡的速度打折扣，要寫比目標快的速度（原來如此寫「一秒五個字以上」才念到 4.4）。
+- **下次怎麼做**：錄完旁白先量語速，到 4.4 才送審；check-audio 過了不代表語速對。
+- **重錄的限制**：同一集正在跑 `keyframes` 時，`tts` 會被鎖（「the project is held by keyframes」）什麼都不送；換聲音指示的重錄排在關鍵影格畫完之後。
+- 已升為規則：`.agents/skills/curio-episode/SKILL.md` §系列定案〈語速與停頓〉〈八語〉。
+
 ## 2026-11-13 · curio-s23-v2／s24-v2／s25-v2 · Claude（c14 重做）
 image-01 插圖過了 judge 還不夠，獨立放大檢查每集都抓出約一半要重畫。三集都反覆出現下面這些問題，都是 judge 放過、放大看才看到的：
 - **錶面、刻度、書頁會長出字或數字**：寫「closed」「face down」都沒用。改成闔上的木製錶盒、闔上的書、綁繩的卷軸、捆起來的紙束。錶盒的黃銅扣片會被看成眼睛或字，寫 `a plain wooden box tied with a simple cord`。
