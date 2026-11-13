@@ -1,0 +1,710 @@
+{
+  "batch_id": "wave79-physics-20261113",
+  "created_on": "2026-11-13",
+  "scope": "第二十九輪：從零研究萊頓弗羅斯特效應蒸氣墊凹袋、鋸齒逆向迷宮與三重氣膜（F146／V166，可成題 G636）。動筆前先以 Europe PMC／Crossref／OpenAlex 逐對確認 12 個研究網互不合著，再由非作者覆核重抓來源與重算分鐘。",
+  "sources": [
+    {
+      "id": "P79-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11634904/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-024-61222-z",
+      "title": "A non-invasive capacitive sensor to investigate the Leidenfrost phenomenon: a proof of concept study",
+      "publisher": "Scientific Reports 14:10565（2024）；Purandare AS、Rijs J、Sagar P、Vanapalli S（荷蘭屯特大學 University of Twente、印度科欽科技大學 CUSAT）",
+      "version": "出版社開放取用版（CC BY 4.0，Europe PMC 收錄 JATS XML 全文）",
+      "accessed_on": "2026-11-13",
+      "read_via": "Europe PMC REST 搜尋（OPEN_ACCESS:Y）取得 PMCID 後以 /webservices/rest/PMC11634904/fullTextXML 下載（HTTP 200，159762 位元組）",
+      "reading_scope": "Abstract、Introduction、Methods（Sensor fabrication、Setup to characterize sensor output、Setup to investigate the Leidenfrost phenomenon）、Results and discussion（Sensor design、Sensor characterization、Proof of concept）與 Conclusion 全文及圖 1–8 說明全讀；補充影片未讀。",
+      "locator": "Methods〈Sensor fabrication〉與〈Setup to characterize sensor output〉（200 μm 玻璃蓋板、200 μm 電極間距、20 kHz LCR-6200、誤差約 0.004 pF）；Methods〈Setup to investigate the Leidenfrost phenomenon〉（直徑 10 mm、厚 5 mm、約 390 mg 乾冰圓錠，鋁座 293–333 K）；Results and discussion〈Proof of concept〉與 Figures 6–8（ΔC 隨氣墊變厚遞減、δ0* ∝ ε*^(1/4) 與 OCT 差距約 18%、實測壽命長於等溫常徑理論）",
+      "summary": "在 200 微米厚硼矽酸玻璃下方蝕刻雙梳狀指叉銅電極（指距 200 微米），以 20 kHz 精密 LCR 電錶（量測誤差約 0.004 pF）非侵入式感測上方懸浮物與基底間的蒸氣墊厚度，無須透明基底即可量測。先以鐵氟龍圓柱搭配千分尺標定電容隨間隙指數衰減關係 ΔC = A exp(−Bδ)，再放上 −78.5 °C 昇華的圓盤狀固態二氧化碳乾冰錠（初始直徑 10 公釐、厚 5 公釐、質量約 390 毫克），於溫控鋁座 293 至 333 K（每 10 K 一階）下追蹤完整懸浮生命週期：隨乾冰錠變輕，重力壓縮減弱使二氧化碳氣墊逐漸變厚，電容訊號單調下降；換算無因次氣膜厚度滿足潤滑尺度律 δ0* ∝ (ε*)^(1/4)，與藍寶石基底光學同調斷層掃描（OCT）實測值差距在約 18% 以內。同時發現乾冰錠實測存活時間系統性長於等溫且假設直徑不變的理論曲線，主因是昇華冷氣流持續帶走基底熱量，且末段乾冰錠直徑明顯縮小。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "概念驗證對象為昇華型固態二氧化碳乾冰錠而非液態水滴（液態水介電常數更高但需另行標定幾何形變）；實驗末段乾冰耗盡前後空氣中水氣在冷表面凝結結霜，會使電容基線短暫飆升；將電容換算為絕對氣墊厚度時仍借用 313 K 與 323 K 兩點 OCT 厚度作比例標定。研究群：N01_VANAPALLI 獨立網（4 位作者經 OpenAlex、Europe PMC、Crossref 三庫交叉比對與其餘 11 網及池內 P51-001／002 零直接合著）。 覆核 V166（2026-11-13）：全文數據與定位逐行核對相符（且經 V166 即時重抓 100% byte-for-byte 雜湊一致）。",
+      "author_cache": {
+        "file": "F146/cache/PMC11634904_purandare2024.xml",
+        "sha256_prefix": "59ea3a823dd302be",
+        "note": "作者快取在 2026-11-13 工作階段的持續目錄，未進 repo；且經 V166 即時重抓 100% byte-for-byte 雜湊一致（前 16 碼 59ea3a823dd302be）。"
+      }
+    },
+    {
+      "id": "P79-S002",
+      "url": "https://arxiv.org/pdf/1202.2157",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.109.074301",
+      "title": "Geometry of the Vapor Layer Under a Leidenfrost Drop",
+      "publisher": "Physical Review Letters 109(7):074301（2012）；Burton JC、Sharpe AL、van der Veen RCA、Franco A、Nagel SR（美國芝加哥大學 James Franck Institute 與物理系）",
+      "version": "arXiv 公開作者定稿版（arXiv:1202.2157v3，與 PRL 正式版內容對應，共 5 頁含圖 1–4）",
+      "accessed_on": "2026-11-13",
+      "read_via": "OpenAlex 開放取用紀錄（oa_url）指向 arXiv PDF（https://arxiv.org/pdf/1202.2157），以 curl Mokaair-editorial/1.0 標頭下載（HTTP 200，10166975 位元組），pdftotext 轉文字全讀",
+      "reading_scope": "全文全讀（PRL 不分節格式，p. 1–5 全文與 Figures 1–4 圖說全讀）。",
+      "locator": "p. 1–2 與 Figure 1（去離子水毛細長度 λc = 2.5 mm、內部熱敏電阻 99 ± 0.5 °C、熔融石英稜鏡 TL ≈ 160 °C 測至 Ts = 370 °C、632 nm 氦氖雷射干涉每條紋 λl/4 = 158 nm）；p. 2–3 與 Figures 2–3（外圍環狀頸部 h_neck = 5–100 μm、角向起伏約 20%、小滴 r_neck ≈ 0.82 r_max^2 / λc；中央凹陷蒸氣袋曲率與 Δh = h_center − h_neck 橫跨三個數量級幾乎只由 r_max 決定而與 Ts 無關）；p. 4（r_max ≥ 3.95 λc 浮力失穩約每秒冒一次中央氣泡）",
+      "summary": "將去離子水滴（沸點處毛細長度 λc = 2.5 公釐，微型熱敏電阻實測液滴內部維持 99 ± 0.5 °C，可存活數分鐘）放在加熱熔融石英稜鏡上（懸浮門檻 TL ≈ 160 °C，測試最高 Ts = 370 °C），由下方打入 632 奈米氦氖雷射做全內反射干涉成像（每條明暗紋對應 λl/4 = 158 奈米高度差），並以白光繞射決定邊緣絕對間隙。干涉條紋直接推翻『平坦均勻蒸氣墊』假設：液滴底部其實是外圍一圈最薄的環狀『頸部』（h_neck 隨溫度與尺寸落在 5 到 100 微米，沿圓周還有約 20% 起伏；小水滴滿足 r_neck ≈ 0.82 r_max^2 / λc），包住中央向上凹陷的『蒸氣袋』。更出乎意料的是，跨越三個數量級的中央凹袋幾何（r_neck、袋頂曲率與袋深 Δh = h_center − h_neck）幾乎完全由水滴半徑 r_max 單獨決定，對熱板溫度 Ts 幾乎不敏感（升溫主要墊高整體頸部厚度 h_neck）。當液滴大於 r_max ≈ 3.95 λc（約 9.9 公釐）時，中央蒸氣袋因浮力失穩向上頂穿液滴，約每 1 秒冒出一顆蒸氣泡。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "讀的是作者 arXiv v3 定稿預印本；干涉條紋直接給出精確相對高度差 Δh，外圍頸部絕對厚度 h_neck 則靠側面窄縫白光繞射估算；小於毛細長度的極小微滴未在此干涉範圍內。研究群：與 P79-S003（同通訊作者 Burton JC）合併為 N02_BURTON 網（1.00＋1.00＝2.00 剛好封頂）。 覆核 V166（2026-11-13）：全文數據與定位逐行核對相符（經 V166 獨立重算本機快取 SHA-256 100% 一致）。",
+      "author_cache": {
+        "file": "F146/cache/arxiv_1202.2157_burton2012.pdf",
+        "sha256_prefix": "60aea29785ea0428",
+        "note": "作者快取在 2026-11-13 工作階段的持續目錄，未進 repo；經 V166 獨立重算本機快取 SHA-256 100% 一致（前 16 碼 60aea29785ea0428）。"
+      }
+    },
+    {
+      "id": "P79-S003",
+      "url": "https://arxiv.org/pdf/1802.06136",
+      "canonical_url": "https://doi.org/10.1017/jfm.2018.294",
+      "title": "Self-organized oscillations of Leidenfrost drops",
+      "publisher": "Journal of Fluid Mechanics 846:263–291（2018）；Ma X、Burton JC（美國艾默里大學 Emory University 物理系）",
+      "version": "arXiv 公開作者定稿版（arXiv:1802.06136v2，對應 JFM 846:263–291，共 29 頁含圖 1–15 與表 1）",
+      "accessed_on": "2026-11-13",
+      "read_via": "OpenAlex 開放取用紀錄（oa_url）指向 arXiv PDF（https://arxiv.org/pdf/1802.06136），以 curl Mokaair-editorial/1.0 標頭下載（HTTP 200，14352903 位元組），pdftotext 轉文字全讀",
+      "reading_scope": "全文全讀：Abstract、Section 1 Introduction、Section 2 Experiment、Section 3 Results and discussions（3.1–3.7 全節）、Section 4 Conclusion and outlook、Table 1 與 Figures 1–15 圖說。",
+      "locator": "Section 2（微凹鋁碗 lc/Rs ≈ 0.03 抑制冒泡至 R ≈ 11 lc；碗心直徑 1 mm 測壓孔接 2 mV/Pa 壓力感測器、500–1000 Hz 取樣；水 Ts = 623 K，丙酮／甲醇／乙醇／異丙醇 523 K，液態氮室溫碗）；Section 3.3–3.5 與 Figures 4–9（水 n = 2..13 星形模態、異丙醇僅 n = 9, 10，n_min ~ 2600 Re_l^−1；波長有機液約 0.9 cm、液態氮約 0.6 cm，頻率 fd ≈ 14 Hz［液態氮 17 Hz］幾乎不隨 Ts 變；壓力以 fp ≈ 2 fd ≈ 26–28 Hz、振幅約 10 Pa 振盪）；Section 3.6–3.7 與 Figures 11–15（底部毛細波 λc ≈ 3–4 lc、fc ≈ 24–27 Hz 由 1–2 m/s 徑向蒸氣剪流激發；鋁箔包覆使上方氣溫由 367 K 升至 623 K 仍不改星形模態，排除熱對流主導）",
+      "summary": "以微凹球面鋁碗（曲率比 lc/Rs ≈ 0.03，把中央冒泡失穩壓制到半徑 R ≈ 11 lc）承載六種揮發液體（水於 623 K，丙酮、甲醇、乙醇、異丙醇於 523 K，液態氮於室溫碗），並在碗心開直徑 1 公釐小孔連接高靈敏度壓力感測器（500–1000 Hz）。沒有任何外加振動時，較大懸浮液滴會自發長出規律的星形駐波邊緣（水出現 n = 2 到 13 個星芒；黏度較高的異丙醇只剩 n = 9、10，最低模態數受液體黏滯阻尼限制 n_min ~ 2600 Re_l^−1）。星芒波長（有機液約 0.9 公分、液態氮約 0.6 公分，按毛細長度 lc 歸一化後重合）與振盪頻率 fd（水與有機液約 14 Hz、液態氮約 17 Hz）幾乎不隨基底溫度 Ts 改變；即使以鋁箔包住上方把空氣溫度從 367 K 拉高到 623 K 壓扁液滴內溫差，星形模態依舊不變，排除表面張力溫差對流為主因。碗心壓力感測器抓到關鍵證據：無論液滴處於 n = 2 到 13 哪一階星形模態，下方蒸氣層壓力都以約兩倍頻率 fp ≈ 2 fd（約 26–28 Hz，壓力起伏約 10 Pa）做倍頻振盪，形成參數共振；加熱凹面熔融石英下方高速造影進一步拍到，以 1–2 m/s 向外噴逃的蒸氣剪流在液滴底面激起波長 λc ≈ 3–4 lc（頻率約 24–27 Hz）的行進毛細波，正是推動兩倍頻壓力起伏的引擎。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "讀的是作者 arXiv v2 定稿版；底面毛細波的直接光學影像係透過加熱凹面熔融石英對丙酮與乙醇（n = 8, 11, 12）拍得，水滴因所需溫度更高則以壓力頻譜與色散關係對應；微凹碗用於穩定大滴置中。研究群：與 P79-S002 合併為 N02_BURTON 網（合計 2.00 封頂）。 覆核 V166（2026-11-13）：全文數據與定位逐行核對相符（經 V166 獨立重算本機快取 SHA-256 100% 一致）。",
+      "author_cache": {
+        "file": "F146/cache/arxiv_1802.06136_ma2018.pdf",
+        "sha256_prefix": "b54eee26d48c80c0",
+        "note": "作者快取在 2026-11-13 工作階段的持續目錄，未進 repo；經 V166 獨立重算本機快取 SHA-256 100% 一致（前 16 碼 b54eee26d48c80c0）。"
+      }
+    },
+    {
+      "id": "P79-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6598769/fullTextXML",
+      "canonical_url": "https://doi.org/10.1126/sciadv.aaw0304",
+      "title": "The cold Leidenfrost regime",
+      "publisher": "Science Advances 5(6):eaaw0304（2019）；Bourrianne P、Lv C（呂存景）、Quéré D（法國巴黎高等物理化工學院 ESPCI Paris／PSL／巴黎綜合理工學院 LadHyX、中國清華大學工程力學系）",
+      "version": "出版社開放取用版（CC BY-NC 4.0，Europe PMC 收錄 JATS XML 全文）",
+      "accessed_on": "2026-11-13",
+      "read_via": "Europe PMC REST 搜尋（OPEN_ACCESS:Y）取得 PMCID 後以 /webservices/rest/PMC6598769/fullTextXML 下載（HTTP 200，64818 位元組）",
+      "reading_scope": "Abstract、INTRODUCTION（含三個結果小節：The Leidenfrost transition、Adhesion measurements、The different regimes of adhesion）、DISCUSSION、MATERIALS AND METHODS 全文與 Figures 1–4 圖說全讀；補充影片未讀。",
+      "locator": "〈The Leidenfrost transition〉與 Figure 1（親水矽／鋁 TL ≈ 210 °C vs 疏水奈米二氧化矽珠塗層 Glaco［前進角 165±2°、後退角 160±2°］上核態沸騰完全消失、20 μl 壽命平滑遞減）；〈Adhesion measurements〉與 Figure 2（3.9–9.2 μl 滾落角 α：室溫至約 70 °C 先暴增約 3 倍，過 70 °C 回落，至 T* ≈ 130 °C 降為零）；〈The different regimes of adhesion〉與 Figures 3–4（高 115 nm、間距 52 nm 疏水矽奈米錐完全消除 70 °C 增黏峰；藍寶石底視 475 nm 顯微拍到 θv ≈ 2° 超親氣扁平蒸氣斑［同為 30 pl 覆蓋面積比 90° 氣泡大 20 倍］在 75 °C 占約 40% 接觸區，至約 130 °C 連成完整氣膜）",
+      "summary": "比較水滴在一般親水矽晶圓／鋁板（懸浮點 TL ≈ 210 °C）與塗覆次微米疏水二氧化矽奈米珠塗層（Glaco，前進接觸角 165 ± 2°、後退角 160 ± 2°）上的熱行為。在超疏水塗層上，100 °C 以上的劇烈核態沸騰完全消失，20 微升水滴的蒸發壽命隨溫度平滑下降，看不出傳統 210 °C 壽命暴增跳躍。但改用傾斜板滾落角 α（3.9–9.2 微升水滴）量測黏附力，卻抓到三段反直覺轉折：（1）從室溫加熱到約 70 °C，滾落角不但沒變小，反而暴增約 3 倍——因為溫水蒸氣鑽進奈米珠之間的次微米孔隙冷凝成微小液橋，把水滴釘住；一旦換成高 115 奈米、頂端間距 52 奈米的規則疏水矽奈米錐，幾何錐形會把冷凝核往外擠出，70 °C 的增黏高峰就徹底消失；（2）超過 70 °C 後，透過加熱藍寶石倒置顯微鏡（475 奈米單色光干涉）直接拍到，疏水結構對水蒸氣呈『超親氣性』（蒸氣表觀接觸角 θv ≈ 2°，同樣 30 皮升體積攤開的面積比 90° 氣泡大 20 倍），扁平蒸氣斑在 75 °C 已占據約四成接觸面；（3）到 T* ≈ 130 °C 時蒸氣斑連成完整氣膜（ϕv → 1），滾落角歸零，把萊頓弗羅斯特懸浮門檻一口氣壓低約 80 °C，並由突變轉為連續相變。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實驗針對輕放或低速接觸的準靜態水滴（3.9–20 微升），作者明言高速撞擊液滴因動壓刺穿氣膜需要更高溫度；Glaco 塗層在極高溫長期使用受限於有機矽烷改質層熱穩定性。研究群：因共同作者呂存景（Cunjing Lv）亦列名於 P79-S005，與 P79-S005 合併為 N03_QUERE_LV 網（1.00＋1.00＝2.00 剛好封頂；Bourrianne P、Lv C、Quéré D 經三庫核對與其餘 11 網零合著）。 覆核 V166（2026-11-13）：全文數據與定位逐行核對相符（且經 V166 即時重抓 100% byte-for-byte 雜湊一致）。",
+      "author_cache": {
+        "file": "F146/cache/PMC6598769_bourrianne2019.xml",
+        "sha256_prefix": "2b668c7798df74c7",
+        "note": "作者快取在 2026-11-13 工作階段的持續目錄，未進 repo；且經 V166 即時重抓 100% byte-for-byte 雜湊一致（前 16 碼 2b668c7798df74c7）。"
+      }
+    },
+    {
+      "id": "P79-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9170727/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41467-022-30837-z",
+      "title": "Steerable drops on heated concentric microgroove arrays",
+      "publisher": "Nature Communications 13:3141（2022）；Liu C、Lu C、Yuan Z、Lv C（呂存景）、Liu Y（劉亞華）（大連理工大學機械工程學院、清華大學工程力學系）",
+      "version": "出版社開放取用版（CC BY 4.0，Europe PMC 收錄 JATS XML 全文）",
+      "accessed_on": "2026-11-13",
+      "read_via": "Europe PMC REST 搜尋（OPEN_ACCESS:Y）取得 PMCID 後以 /webservices/rest/PMC9170727/fullTextXML 下載（HTTP 200，93781 位元組）",
+      "reading_scope": "Abstract、Introduction、Results（Bidirectional drop transport at different boiling states、Mechanism of drop transport at transition boiling state、Mechanism of drop transport at film boiling state、Cooling abilities and drop sieving）、Discussion、Methods 全文與 Figures 1–5 圖說全讀；補充影片未讀。",
+      "locator": "Results〈Bidirectional drop transport at different boiling states〉與 Figure 1–2（直徑 d = 2 cm 矽晶圓刻寬 W = 40 μm、間距 S = 40 μm、深 H = 20 μm 同心圓微溝；R = 1.18 mm 水滴 We = 16.9 落於 r = d/4：200 °C 接觸沸騰 102.1 ms 蒸乾；215–295 °C 過渡沸騰［如 250 °C］向圓心內跳 ΔlL = 1.84 mm；>315 °C 膜態沸騰［如 350 °C］背離圓心外跳 ΔlR = 1.76 mm）；〈Mechanism...〉兩節與 Figures 3–4（250 °C 沿溝攤開與徑向較快回縮呈彎豆形，曲率差產生向心拉普拉斯淨力；350 °C 氣墊維持圓形但局部液面壓入溝內約 10 μm，弧形溝壁不對稱反作用力推向外側）；〈Cooling abilities and drop sieving〉與 Figure 5c（固定 160 °C、We = 10.5 自動把乙醇導向內側、正己烷導向外側）",
+      "summary": "在直徑 2 公分矽晶圓蝕刻同心圓微溝陣列（標準溝寬 40 微米、脊寬 40 微米、溝深 20 微米，並測試 7 組幾何對照），以每秒 10,000 格雙高速攝影機拍攝偏離圓心（r = d/4）落下的水滴（半徑 1.18 公釐，韋伯數 We = 16.9）。完全相同的同心圓紋路，只改基板溫度就出現相反跳躍方向：低於 215 °C（如 200 °C）水滴貼底接觸沸騰，102.1 毫秒原地蒸乾；進入 215–295 °C 過渡沸騰區（如 250 °C），液膜沿圓弧溝槽優先攤開，而徑向跨越溝脊的邊緣回縮較快，在 9.8 毫秒拉出『彎豆形』輪廓，內外緣楊格—拉普拉斯曲率差產生朝向圓心的淨回彈力，讓水滴往圓心內跳（偏移 ΔlL = 1.84 公釐）；一旦升溫跨過 315 °C 進入萊頓弗羅斯特膜態沸騰（如 350 °C），連續蒸氣墊讓攤開的水滴保持圓形，但撞擊動壓把局部液面壓入溝內約 10 微米，彎曲同心溝兩側溝壁對弧形液面的法向反作用力內外不對稱，反過來把水滴往外推離圓心（偏移 ΔlR = 1.76 公釐）。利用不同液體沸點與懸浮門檻不同，把基板固定在同一個 160 °C（We = 10.5），落下的乙醇（處於過渡沸騰）會自動往圓心跳，而正己烷（已進入膜態沸騰）則自動往外圍跳，無須任何活動零件即完成雙液滴分篩。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實驗在親水氧化矽／矽表面、中低撞擊韋伯數（We = 0.8–16.9）下進行；295–315 °C 之間屬於隨機混合反彈過渡帶；不透明矽微溝內約 10 微米液面下陷係由力學尺度與幾何模型推導，未能直接穿透溝壁光學成像。研究群：與 P79-S004 合併為 N03_QUERE_LV 網（合計 2.00 封頂）。 覆核 V166（2026-11-13）：即時重抓 PMC9170727 全文核對，修正作者將圖號誤植為『Figures 1–6／Figure 6c』（原文共 5 圖，160 °C 雙液滴分篩實為 Figure 5c）。",
+      "author_cache": {
+        "file": "F146/cache/PMC9170727_liu2022.xml",
+        "sha256_prefix": "8b6ab23ea8b38ad4",
+        "note": "作者快取在 2026-11-13 工作階段的持續目錄，未進 repo；且經 V166 即時重抓 100% byte-for-byte 雜湊一致（前 16 碼 8b6ab23ea8b38ad4）。"
+      }
+    },
+    {
+      "id": "P79-S006",
+      "url": "https://arxiv.org/pdf/physics/0512246",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.96.154502",
+      "title": "Self-Propelled Leidenfrost Droplets",
+      "publisher": "Physical Review Letters 96(15):154502（2006）；Linke H、Alemán BJ、Melling LD、Taormina MJ、Francis MJ、Dow-Hygelund CC、Narayanan V、Taylor RP、Stout A（美國奧勒岡大學、奧勒岡州立大學、澳洲新南威爾斯大學）",
+      "version": "arXiv 公開作者原稿版（arXiv:physics/0512246，對應 PRL 96:154502，共 10 頁含圖 1–4 與註釋 17 亮粉氣流驗證）",
+      "accessed_on": "2026-11-13",
+      "read_via": "OpenAlex 開放取用紀錄（oa_url）指向 arXiv PDF（https://arxiv.org/pdf/physics/0512246），以 curl Mokaair-editorial/1.0 標頭下載（HTTP 200，905775 位元組），pdftotext 轉文字全讀",
+      "reading_scope": "全文全讀（p. 1–10 正文、參考註釋 Note 17 氣流方向顯影與 Figures 1–4 圖說全讀）。",
+      "locator": "p. 1–3 與 Figures 1–2（鋸齒週期 s = 1–3 mm、齒深 d = 0.1–0.3 mm；液態氮 −196 °C、冷媒 R134a −26.1 °C、丙酮、甲醇、乙醇、水至十六烷 +151 °C 皆朝緩坡下降方向自推進；加速度 1–2 m/s^2、終端速度約 5 cm/s、行進逾 1 m、逆向拋出仍煞車折返且能爬坡；液滴半徑 r < 0.3–0.5 s 不動）；p. 5–7、Note 17 與 Figures 3–4（TR = 460 °C、s = 1.5 mm 側視：齒頂凹液面 RA = −2.2 mm 對齒谷凸液面 RB = +0.6 mm 造成約 10^2 Pa/mm 拉普拉斯壓力梯度，跨 h ≈ 10.2 μm 氣膜驅動朝前進方向之泊肅葉黏滯剪流；撒亮粉微粒實測淨氣流與液滴同向，排除向後噴氣火箭反作用力假說）",
+      "summary": "在無任何水平溫差的車削黃銅或鋁製不對稱鋸齒板（棘輪週期 s = 1–3 公釐、齒深 d = 0.1–0.3 公釐）上，沸點橫跨 −196 °C 到 +151 °C 的七類液體（液態氮、冷媒 R134a、丙酮、甲醇、乙醇、水、十六烷）一旦進入萊頓弗羅斯特懸浮態，毫米級液滴就會自動朝『每一齒緩坡向下、陡壁向上』的方向加速（加速度達 1–2 m/s^2），即使故意反方向拋出也會自己煞車掉頭，還能逆重力爬上斜坡，以約每秒 5 公分穩定巡航長達 1 公尺（小於 0.3–0.5 倍齒距的微小液滴則推不動）。團隊以高速側視攝影（460 °C、齒距 1.5 公釐）量出液滴跨過齒頂時底面呈凹曲率（RA = −2.2 公釐，拉普拉斯壓力較高）、跨過齒谷時呈凸曲率（RB = +0.6 公釐），在約 10.2 微米薄氣膜內建立每公釐約上百帕的壓力梯度，驅動蒸氣順著緩坡往前流並靠泊肅葉黏滯剪應力拖著液滴前進，往後的蒸氣則轉彎從橫向齒溝逸散；作者並在註釋 17 撒入亮粉微粒追蹤氣流，實測淨蒸氣流確實與液滴同向，直接推翻『蒸氣往後噴推著水滴走』的火箭反作用力直覺。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "讀的是作者 arXiv 原稿；文末圓形接觸面積簡化模型在大於 3 公釐拉長液滴上會低估接觸幾何變化；剛越過懸浮點 20–50 °C 的低溫區（Regime L）夾雜齒尖間歇接觸沸騰雜訊，更高溫區（Regime H）才是純氣膜穩定滑行。研究群：N04_LINKE 獨立網（9 位作者經三庫交叉比對與其餘 11 網及池內 P51-001／002 零直接合著）。 覆核 V166（2026-11-13）：全文數據與定位逐行核對相符（經 V166 獨立重算本機快取 SHA-256 100% 一致）。",
+      "author_cache": {
+        "file": "F146/cache/arxiv_0512246_linke2006.pdf",
+        "sha256_prefix": "96d6f6fdafd9b10a",
+        "note": "作者快取在 2026-11-13 工作階段的持續目錄，未進 repo；經 V166 獨立重算本機快取 SHA-256 100% 一致（前 16 碼 96d6f6fdafd9b10a）。"
+      }
+    },
+    {
+      "id": "P79-S007",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3467560/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep00720",
+      "title": "Enhanced Droplet Control by Transition Boiling",
+      "publisher": "Scientific Reports 2:720（2012）；Grounds A、Still R、Takashina K（英國巴斯大學 University of Bath 物理系）",
+      "version": "出版社開放取用版（CC BY-NC-SA 3.0，Europe PMC 收錄 JATS XML 全文）",
+      "accessed_on": "2026-11-13",
+      "read_via": "Europe PMC REST 搜尋（OPEN_ACCESS:Y）取得 PMCID 後以 /webservices/rest/PMC3467560/fullTextXML 下載（HTTP 200，39815 位元組）",
+      "reading_scope": "Abstract、Results（Droplets climbing uphill、Substructure and directional control）、Discussion、Methods 全文與 Figures 1–5 圖說全讀；補充影片未讀。",
+      "locator": "Results〈Droplets climbing uphill〉與 Figures 1–3（三塊 5×20 cm 黃銅鋸齒板、約 3.6 mm 水滴、上方 16 cm 麥克風量沸騰聲均方根振幅：平滑黃銅 225–230 °C 驟然靜音，細銳齒 Block 3［齒距 0.24 mm］要到約 290 °C 才漸趨安靜，且隨溫度升高氣膜變厚最大爬坡角 θC 反而下降，過渡沸騰局部接觸時爬最陡）；〈Substructure and directional control〉與 Figures 4–5（Block 2 帶斜向銑削次級刀紋：212 °C 吵雜局部接觸態向右爬，約 240–241 °C 穿越停滯谷底，262 °C 以上安靜膜態沸騰轉為向左跑）",
+      "summary": "以三塊不同齒形的 5 × 20 公分黃銅鋸齒板測試約 3.6 公釐水滴的最大爬坡仰角 θC，並在上方 16 公分架設麥克風同步量測沸騰聲響均方根值以判讀是否刺穿蒸氣墊：平滑黃銅板在 225–230 °C 跨入膜態沸騰時沸騰聲瞬間歸零，但帶細密尖齒的棘輪板（Block 3，齒距僅 0.24 公釐）尖齒會刺穿蒸氣層維持局部過渡沸騰，聲響一路延續到約 290 °C 才逐漸安靜。實驗推翻『越完全懸浮越好爬坡』的假設：溫度越高、蒸氣墊越厚，水滴雖然滑得越順卻失去抓地推進力，最大爬坡仰角反而一路下滑；反而在尖齒刺入氣膜、發出沸騰聲的過渡沸騰區，水滴能爬上最陡的斜坡。更奇妙的是在齒面留有斜向刀刃銑削微溝的第二塊鋸齒板（Block 2，主齒距 1 公釐、傾角 30°）上，完全不改幾何結構、單靠調高溫度就能讓水滴掉頭 180°：212 °C 吵雜過渡沸騰時水滴穩定往右跑，升到約 240–241 °C 推進力抵銷歸零，262 °C 以上進入安靜膜態沸騰後，蒸氣流改由較深的斜向銑削微溝導引，水滴全面反轉往左跑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者坦言 212 °C 低溫過渡沸騰態下局部濕潤、沸騰振動與蒸氣流耦合過於複雜，尚無精確解析公式能定量算出該區的向右推進力，屬實驗實證現象；尖齒在長期高溫下可能受氧化或積垢影響表面粗糙度。研究群：N05_TAKASHINA 獨立網（3 位作者經三庫核對與其餘 11 網零合著）。 覆核 V166（2026-11-13）：全文數據與定位逐行核對相符（經 V166 獨立重算本機快取 SHA-256 100% 一致）。",
+      "author_cache": {
+        "file": "F146/cache/PMC3467560_grounds2012.xml",
+        "sha256_prefix": "9326155701cedf54",
+        "note": "作者快取在 2026-11-13 工作階段的持續目錄，未進 repo；經 V166 獨立重算本機快取 SHA-256 100% 一致（前 16 碼 9326155701cedf54）。"
+      }
+    },
+    {
+      "id": "P79-S008",
+      "url": "https://arxiv.org/pdf/1401.7452",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.107.164502",
+      "title": "Leidenfrost Gas Ratchets Driven by Thermal Creep",
+      "publisher": "Physical Review Letters 107(16):164502（2011）；Würger A（法國波爾多大學 Université de Bordeaux／CNRS LOMA）",
+      "version": "arXiv 公開作者定稿版（arXiv:1401.7452，對應 PRL 107:164502，共 4 頁含圖 1–4）",
+      "accessed_on": "2026-11-13",
+      "read_via": "OpenAlex 開放取用紀錄（oa_url）指向 arXiv PDF（https://arxiv.org/pdf/1401.7452），以 curl Mokaair-editorial/1.0 標頭下載（HTTP 200，329058 位元組），pdftotext 轉文字全讀",
+      "reading_scope": "全文全讀（PRL 4 頁理論推導、保角映射與既有實驗數據對照及 Figures 1–4 圖說全讀）。",
+      "locator": "p. 1–2 與 Figures 1–2（齒高 D = 200 nm 遠小於氣膜厚 h0 = 10–100 μm 時液面無法隨齒彎曲且齒區雷諾數極小，固態乾冰亦不會變形，既有曲率／慣性整流模型失效；蒸氣熱導率約為黃銅的 10^−4 倍，使等溫線在尖銳齒峰劇烈擠壓達數十 K/μm）；p. 2–4 與 Figures 3–4（300 °C 水蒸氣分子平均自由程 ℓ ≈ 130 nm 內切向溫差驅動馬克士威熱蠕流 vC = (3/4) ν ∇_|| T / T，保角映射解出終端速度約 10 cm/s 隨齒高縮小呈對數上升、推進力 F ∝ R^1.2）",
+      "summary": "針對兩個讓傳統鋸齒蒸氣流模型卡關的實驗謎題建立解析流體力學理論：（1）當鋸齒高度從毫米級縮小五千倍到 D = 200 奈米（遠小於 10–100 微米蒸氣墊厚度，液滴底面根本無法隨鋸齒彎曲，齒間局部雷諾數也遠小於 1），液滴速度非但沒消失反而高達每秒數十公分；（2）把鋸齒刻在剛性固態乾冰底部放在平滑熱板上，沒有任何液面曲率變化卻照樣自推進。作者以保角映射求解拉普拉斯熱傳與史托克斯流場指出：水蒸氣熱導率只有黃銅基底的約萬分之一，使等溫線在每個不對稱鋸齒尖峰處劇烈擠壓（局部溫度梯度達每微米數十 K），在距固體表面一個氣體分子平均自由程（300 °C 水蒸氣 ℓ ≈ 130 奈米）的克努森邊界層內產生強烈切向溫差，直接驅動馬克士威熱蠕流（Maxwell thermal creep），即使整層氣墊比自由程厚上一百倍，仍能拖動上方液滴達每秒約 10 公分量級，並重現推進力隨液滴半徑呈 R^1.2 的實驗尺度律。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "純解析理論模型（讀的是作者 arXiv 定稿預印本），文中所比對之 200 奈米微齒與固態乾冰推進數據係引用前人已發表實驗（Ok 等 2011、Lagubeau 等 2011、Linke 等 2006），本篇未做新實驗，故保守與 P79-S006 合併出題並只計 0.50 條理論補充。研究群：N06_WURGER 單一作者獨立網（經三庫核對與其餘 11 網零合著）。 覆核 V166（2026-11-13）：全文數據與定位逐行核對相符（經 V166 獨立重算本機快取 SHA-256 100% 一致）。",
+      "author_cache": {
+        "file": "F146/cache/arxiv_1401.7452_wurger2011.pdf",
+        "sha256_prefix": "3b9f01fae52ab8c3",
+        "note": "作者快取在 2026-11-13 工作階段的持續目錄，未進 repo；經 V166 獨立重算本機快取 SHA-256 100% 一致（前 16 碼 3b9f01fae52ab8c3）。"
+      }
+    },
+    {
+      "id": "P79-S009",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4366496/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/ncomms7390",
+      "title": "A sublimation heat engine",
+      "publisher": "Nature Communications 6:6390（2015）；Wells GG、Ledesma-Aguilar R、McHale G、Sefiane K（英國諾森比亞大學 Northumbria University、愛丁堡大學、日本九州大學 WPI-I2CNER）",
+      "version": "出版社開放取用版（CC BY 4.0，Europe PMC 收錄 JATS XML 全文）",
+      "accessed_on": "2026-11-13",
+      "read_via": "Europe PMC REST 搜尋（OPEN_ACCESS:Y）取得 PMCID 後以 /webservices/rest/PMC4366496/fullTextXML 下載（HTTP 200，63615 位元組）",
+      "reading_scope": "Abstract、Results（Heat engine concept、Experimental、Model of a turbine surface and Leidenfrost rotor）、Discussion、Methods 全文與 Figures 1–5 圖說全讀；補充影片未讀。",
+      "locator": "Results〈Experimental〉與 Figures 2–3（半徑 R = 2 cm、N = 20 不對稱齒鋁渦輪盤，Th = 350–500 °C，每組溫差重複 60 次：−78 °C 乾冰圓盤昇華變輕跨過臨界質量 mc ∝ ΔT(R/H)^4 後自發起轉，實測力矩 Γ 橫跨兩個數量級與潤滑理論誤差在 20% 內）；〈Model...〉與 Discussion（理想最大轉換效率 ε ≈ 0.67，但實機轉動功率 Prot ≈ 2×10^−5 W、實測效率約 10^−6，因約 Plev ≈ 4.2 W 全用來對抗大氣壓力與轉子重量維持氣墊懸浮；頂置 8 顆釹鐵硼磁鐵對 8 組 4,000 匝線圈成功發出交流感應電壓，且水滴背負親水金屬圓片亦能同法旋轉）",
+      "summary": "把直線鋸齒棘輪彎成一圈具有 N = 20 個不對稱斜齒的車削鋁製渦輪盤（半徑 2 公分），加熱至 350–500 °C（每組條件重複 60 次）：放上 −78 °C 固態二氧化碳乾冰圓盤（或讓膜態沸騰水滴頂住一片親水金屬薄圓盤），起初若轉子太重會壓穿氣膜卡在齒上，一旦昇華減輕跨過臨界負載質量 mc ∝ ΔT(R/H)^4，整塊圓盤便在無機械軸承接觸下沿緩坡方向持續加速旋轉，實測黏滯力矩橫跨兩個數量級與薄氣膜潤滑理論吻合（誤差 20% 內）。團隊進一步在乾冰轉子上方裝上 8 顆釹鐵硼磁鐵，對準上方 8 組各 4,000 匝銅線圈，直接量到隨轉速倍增的交流發電電壓。但能量帳本揭曉一個極具啟發性的反差：雖然單看水平推進與壓差功的理想熱機上限達 ε ≈ 0.67，實機輸出的機械轉動功率卻只有約 2 × 10^−5 瓦（總熱電轉換效率約百萬分之一），因為高達約 4.2 瓦的相變功率都花在『頂住一大氣壓與轉子自重、撐起那層零摩擦氣墊軸承』上（若搬到無大氣壓的太空低壓環境即可省去大氣壓項）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "概念驗證機在地球一大氣壓下實測機械效率僅約 10^−6（4.2 W 耗於懸浮對抗大氣壓，僅 2×10^−5 W 轉為軸功）；太空微重力／低壓高效運作屬作者在討論中提出的理論外推情境，尚未在低壓艙實測發電效率。研究群：與 P79-S010 保守同列 N07_WELLS_VELLA 群組管理（1.00＋1.00＝2.00 封頂內；兩篇作者經三庫核對與其餘 11 網零合著）。 覆核 V166（2026-11-13）：全文數據與定位逐行核對相符（且經 V166 即時重抓 100% byte-for-byte 雜湊一致）。",
+      "author_cache": {
+        "file": "F146/cache/PMC4366496_wells2015.xml",
+        "sha256_prefix": "30f4894105417b1d",
+        "note": "作者快取在 2026-11-13 工作階段的持續目錄，未進 repo；且經 V166 即時重抓 100% byte-for-byte 雜湊一致（前 16 碼 30f4894105417b1d）。"
+      }
+    },
+    {
+      "id": "P79-S010",
+      "url": "https://ora.ox.ac.uk/objects/uuid:51c91fda-2686-4330-8cdd-0b9a9fa9c15a/files/m6631a2f5958e3f2ea13743f73bc471ee",
+      "canonical_url": "https://doi.org/10.1021/acs.langmuir.6b00574",
+      "title": "Inverse Leidenfrost Effect: Levitating Drops on Liquid Nitrogen",
+      "publisher": "Langmuir 32(17):4179–4188（2016）；Adda-Bedia M、Kumar S、Lechenault F、Moulinet S、Schillaci M、Vella D（法國巴黎高等師範學院 ENS LPS／CNRS、英國牛津大學數學研究所）",
+      "version": "牛津大學機構典藏庫（Oxford University Research Archive, ORA）公開作者接受稿 PDF（共 27 頁含正文與圖 1–8）",
+      "accessed_on": "2026-11-13",
+      "read_via": "OpenAlex 開放取用紀錄（oa_url）指向牛津大學官方機構典藏庫 ORA 檔案連結，以 curl Mokaair-editorial/1.0 標頭下載（HTTP 200，1862934 位元組），pdftotext 轉文字全讀",
+      "reading_scope": "全文全讀：Abstract、Introduction（僅讀逆萊頓弗羅斯特流體物理背景，嚴格排除參考文獻中任何細胞冷凍保存應用）、Experimental Methods and Observations、Experimental Results（Levitation Time、Floating vs Sinking Condition）、Modelling approaches、Discussion and Conclusions 與 Figures 1–8 圖說。",
+      "locator": "Experimental Methods and Observations（雙層液態氮浴消除內杯沸騰擾動，77.36 K、液態氮密度 ρN = 807 kg/m3；聚鎢酸鈉 LST FastFloat 水溶液調配密度 ρd = 1.02–2.8 g/cm3、半徑 R = 0.5–3 mm）；Experimental Results〈Levitation Time〉與 Figures 3–4（懸浮時間約 5–28 s 隨半徑近線性成長 tL ~ R^(5/4) 而非 R^2，且跨 2.7 倍密度幾乎不隨 ρd 改變）；〈Floating vs Sinking Condition〉與 Figures 2 & 5（高達液態氮 3.5 倍重［2.8 g/cm3］的小滴在 R < Rc(ρd) 時仍靠毛細變形托住並結成圓球冰珠；R > Rc 則立刻沉底由下往上結成尖頂梨形冰珠）；Modelling approaches Eq. (19) 與 Appendix A（液態降溫：結冰潛熱：固態冰珠冷卻至氮萊頓弗羅斯特點約 126 K 三階段時間比約 1 : 2 : 3；高密度鹽莫耳分率僅約 10^−2 使單位體積熱容 ρd cp ≈ 4.2 MJ/(K·m3) 與體積潛熱 ρd Lf 由水主導而幾近不變，且氣膜厚 h ~ (μ ΔT R / ρ* g)^(1/4) 對密度僅呈 −1/4 次方弱依賴）",
+      "summary": "不用任何燒燙金屬板，反過來把室溫水溶液液滴（半徑 0.5–3 公釐，以聚鎢酸鈉把液滴密度從 1.02 一路調高到 2.8 g/cm^3）輕放在雙層隔熱鎮靜的 −196 °C（77.36 K，密度僅 0.807 g/cm^3）液態氮表面。此時『熱源』變成常溫水滴本身：水滴質量全程不減，改由下方液態氮劇烈汽化撐起氮氣墊，把水滴托在液面上滑行數十秒，直到水滴走完『液態降溫→釋放潛熱結冰→固態冰珠繼續冷卻到氮的懸浮門檻約 126 K』（三階段耗時比約 1 : 2 : 3）才刺穿氣膜沉沒。實驗揭露兩個反直覺定律：（1）懸浮壽命（約 5–28 秒）不照固體熱傳直覺隨半徑平方 R^2 成長，而是近乎線性的 R^(5/4)，且把液滴密度加重 2.7 倍時懸浮時間幾乎不變——因為聚鎢酸鈉在 2.8 g/cm^3 原液中濃度約 0.6 mol/L（莫耳分率僅約 10^−2），單位體積熱容（約 4.2 MJ/(K·m^3)）與單位體積結冰潛熱仍由水分子主導而幾乎不隨密度改變，同時氮氣墊厚度 h ∝ (ρ* g)^(−1/4) 對密度僅呈極微弱的負四分之一次方依賴（跨 2.7 倍密度理論變動約兩成，小於實驗離散度）；（2）即使液滴密度高達液態氮的 3.5 倍（2.8 g/cm^3），只要半徑小於非濕潤毛細浮力極限 Rc(ρd)，液態氮表面張力凹陷就能像吊床一樣托住它並在空中凍成圓球冰珠；一旦半徑超過 Rc 直接沉底，底部先結冰把上方未凍液體往上擠，最後凍成帶尖頂的『梨形冰珠』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "讀的是牛津大學 ORA 公開作者接受稿；小畢奧數（small-Biot）均勻氣膜厚度潤滑模型在零擬合參數下會略高估絕對懸浮秒數（因未計入大滴底部凹陷與內部冰殼溫度梯度）；滴管有限釋放高度帶來的微小初速使實測沉沒半徑略低於靜態毛細理論上限 Rc。前言引文曾順帶提及玻璃化冷凍文獻，本題嚴格排除任何細胞／生物樣本保存內容。研究群：列於 N07_WELLS_VELLA 群組（合計 2.00 封頂）。 覆核 V166（2026-11-13）：即時重抓牛津 ORA PDF 逐頁核對 Eq. (19) 與 Appendix A，更正作者將密度不變性誤寫成『氣墊壓薄加速冷卻抵銷體積熱容』之物理機制誤讀（實為低莫耳分率下單位體積熱容與體積潛熱本身幾近常數，且氣膜厚度僅隨密度呈 −1/4 次方弱變化），另查明 OpenAlex 將 ENS 同名共同作者 S. Kumar 誤綁至明尼蘇達大學 Satish Kumar（A5019349227），兩者與其餘 11 網皆零合著。",
+      "author_cache": {
+        "file": "F146/cache/ora_ox_addabedia2016.pdf",
+        "sha256_prefix": "69e795c239c43054",
+        "note": "作者快取在 2026-11-13 工作階段的持續目錄，未進 repo；且經 V166 即時重抓 100% byte-for-byte 雜湊一致（前 16 碼 69e795c239c43054）。"
+      }
+    },
+    {
+      "id": "P79-S011",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7979863/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41467-021-21981-z",
+      "title": "Leidenfrost droplet trampolining",
+      "publisher": "Nature Communications 12:1727（2021）；Graeber G、Regulagadda K、Hodel P、Küttel C、Landolf D、Schutzius TM、Poulikakos D（瑞士蘇黎世聯邦理工學院 ETH Zurich 熱工實驗室）",
+      "version": "出版社開放取用版（CC BY 4.0，Europe PMC 收錄 JATS XML 全文）",
+      "accessed_on": "2026-11-13",
+      "read_via": "Europe PMC REST 搜尋（OPEN_ACCESS:Y）取得 PMCID 後以 /webservices/rest/PMC7979863/fullTextXML 下載（HTTP 200，92363 位元組）",
+      "reading_scope": "Abstract、Introduction、Results and discussion（Vertical self-propulsion、Droplet bond number、Trampolining mechanism、Liquid viscosity）、Methods 全文與 Figures 1–5 圖說全讀；補充影片未讀。",
+      "locator": "Results and discussion〈Vertical self-propulsion〉與 Figure 1（215 次獨立實驗中 90% 發生自發彈跳，橫跨水、丙酮、乙醇、異丙醇、液態氮與矽／藍寶石／鋁／微柱面，TS = 251–390 °C；輕放 ri = 1.1–1.4 mm 水滴由靜態氣膜 d0 ≈ 0.02 mm 自發放大至最高跳離 dmax = 0.5 mm，校準彈簧阻尼模型峰值壓力推進比 Fp/mg > 50）；〈Droplet bond number〉與 Figure 2（嚴格落在邦德數 0.04 ≤ Bo ≤ 0.5 視窗：Bo > 0.5 大滴先多模態晃動逾 30 s，蒸發縮至 Bo ≈ 0.5 自動起跳約 50 s，縮過 Bo < 0.04［r ≈ 0.5 mm］變剛性圓球即停跳）；〈Trampolining mechanism〉與〈Liquid viscosity〉及 Figures 3–5（405 nm 藍寶石干涉拍到單一圓頂氣袋與排氣剪流 Ca* ~ r^2.75 激發約 5 μm 底面波紋，每次觸底使非線性潤滑壓力 ΔP ~ d^−4 暴增 3.2 倍灌入能量；加甘油提高黏度即抑制波紋與彈跳）",
+      "summary": "在完全靜止堅硬的平滑或微凹高溫矽晶圓、藍寶石、鋁板與微柱陣列上（251–390 °C，共 215 次獨立實驗、高達 90% 重現，涵蓋水、乙醇、丙酮、異丙醇與液態氮），把毫米級水滴（初始半徑 1.1–1.4 公釐）零初速輕放於約 0.02 公釐厚的靜態蒸氣墊上，水滴竟會違反準靜態懸浮平衡，自己越跳越高、一路跳到離地 dmax = 0.5 公釐的穩定彈跳高度，像自己踩彈簧床一樣持續跳上數十秒。跨液體歸一化揭曉嚴格的尺寸開關——重力對表面張力比值『邦德數』必須落在 0.04 ≤ Bo ≤ 0.5：起初太大的扁平水滴（Bo > 0.5）只會在原地晃動超過 30 秒，等蒸發瘦身進入 Bo ≈ 0.5 就自動起跳；405 奈米藍寶石高速干涉儀拍到，此時底面形成單一圓頂蒸氣袋，向外排出的蒸氣剪流（毛細數 Ca* 隨半徑 2.75 次方增強）在液滴底面掀起約 5 微米波紋，每次下壓讓極度非線性的薄氣膜潤滑壓力（ΔP ∝ d^−4）瞬間放大 3.2 倍（模型換算瞬時推重比 Fp/mg 逾 50），把熱能轉成垂直動能；等水滴繼續蒸發縮小到 Bo < 0.04（水滴半徑約 0.5 公釐），表面張力把它鎖成壓不扁的剛性小圓球、底面波紋消失，彈跳便戛然而止（混入甘油提高黏度也會阻尼掉波紋而停跳）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "瞬時峰值推重比 Fp/mg > 50 係由擬合實測質心高度與最低點軌跡之雙質量彈簧阻尼力學模型反推，非直接壓電測力計讀數；高黏度液體（高甘油比例水溶液）因黏滯耗散過強不會自發彈跳。研究群：N08_POULIKAKOS 獨立網（7 位作者經三庫核對與其餘 11 網零合著）。 覆核 V166（2026-11-13）：全文數據與定位逐行核對相符（且經 V166 即時重抓 100% byte-for-byte 雜湊一致）。",
+      "author_cache": {
+        "file": "F146/cache/PMC7979863_graeber2021.xml",
+        "sha256_prefix": "2ab70ae516c95977",
+        "note": "作者快取在 2026-11-13 工作階段的持續目錄，未進 repo；且經 V166 即時重抓 100% byte-for-byte 雜湊一致（前 16 碼 2ab70ae516c95977）。"
+      }
+    },
+    {
+      "id": "P79-S012",
+      "url": "https://arxiv.org/pdf/2002.09768",
+      "canonical_url": "https://doi.org/10.1103/PhysRevFluids.5.113604",
+      "title": "Sounds of Leidenfrost drops",
+      "publisher": "Physical Review Fluids 5(11):113604（2020）；Singla T、Rivera M（墨西哥莫雷洛斯州立自治大學 UAEM、蒙特雷科技大學 Tecnológico de Monterrey）",
+      "version": "arXiv 公開作者定稿版（arXiv:2002.09768v2，對應 Phys. Rev. Fluids 5:113604，共 9 頁含圖 1–7）",
+      "accessed_on": "2026-11-13",
+      "read_via": "OpenAlex 開放取用紀錄（oa_url）指向 arXiv PDF（https://arxiv.org/pdf/2002.09768），以 curl Mokaair-editorial/1.0 標頭下載（HTTP 200，720422 位元組），pdftotext 轉文字全讀",
+      "reading_scope": "全文全讀（p. 1–9 正文、頻譜與短時傅立葉分析及 Figures 1–7 圖說全讀）。",
+      "locator": "p. 2–4 與 Figures 1–4（曲率半徑 Rs = 8 cm 微凹鋁座、Ts = 400–500 °C、48 kHz 麥克風配 240 fps 攝影：星形水滴發出週期拍頻聲包絡 fb ≈ 2 fd ≈ 23 Hz，鎖定參數共振之兩倍頻氣壓振盪）；p. 4–7 與 Figures 5–7（拍頻內部載波音調 fs 隨水滴蒸發縮小由大滴 rd ≈ 1.8 cm 約 100 Hz 一路升高到 rd = 0.61–0.33 cm 逾 500–1000 Hz，在 400–500 °C 間幾乎不隨 Ts 改變；縮至無星形小滴 rd ≈ 1.5 mm 時切換為約 180 Hz 快速垂直彈跳拍頻、音調約 1 kHz）",
+      "summary": "在 400–500 °C 微凹鋁座（曲率半徑 8 公分）上方架設 48 kHz 取樣麥克風與每秒 240 格高速攝影機，同步記錄單顆萊頓弗羅斯特水滴從大滴一路蒸發縮小的聲音頻譜。跨過無沸騰接觸門檻後，懸浮水滴並非完全無聲，而是變成一件會隨尺寸自動變調的微型管樂器：當大水滴處於星形駐波振盪時，麥克風錄到每秒約 23 次的清晰『拍頻節拍』（fb ≈ 2 fd ≈ 23 Hz），精確鎖定星形水滴每半個週期把底部蒸氣往外擠壓一次的兩倍頻壓力脈動；而每一拍裡面的高頻載波音調 fs，則由底部外圍狹窄氣隙噴出的蒸氣流決定——隨水滴從半徑約 1.8 公分蒸發縮小到 0.61–0.33 公分，排氣狹縫變窄、流速改變，哨音頻率從約 100 Hz 一路往上飆破 500–1000 Hz（且在 400–500 °C 範圍內對板溫 Ts 不敏感）。等水滴縮到約 1.5 公釐、星形模態消失後，聲音立刻切換成每秒約 180 下（音調約 1 kHz）的快速上下彈跳節拍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "讀的是作者 arXiv v2 定稿版；拍頻內載波高頻音調 fs 隨氣膜厚度與水滴半徑變化的聲學發聲公式屬現象學尺度推導，未直接同步量測微米級氣隙出口紊流聲源場。研究群：N09_SINGLA 獨立網（2 位作者經三庫核對與其餘 11 網［含同國不同校之 N10_PACHECO］零合著）。 覆核 V166（2026-11-13）：全文數據與定位逐行核對相符（且經 V166 即時重抓 100% byte-for-byte 雜湊一致）。",
+      "author_cache": {
+        "file": "F146/cache/arxiv_2002.09768_singla2020.pdf",
+        "sha256_prefix": "e00d0dfe15eb1cc9",
+        "note": "作者快取在 2026-11-13 工作階段的持續目錄，未進 repo；且經 V166 即時重抓 100% byte-for-byte 雜湊一致（前 16 碼 e00d0dfe15eb1cc9）。"
+      }
+    },
+    {
+      "id": "P79-S013",
+      "url": "https://arxiv.org/pdf/2107.00438",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.127.204501",
+      "title": "Triple Leidenfrost Effect: Preventing Coalescence of Drops on a Hot Plate",
+      "publisher": "Physical Review Letters 127(20):204501（2021）；Pacheco-Vázquez F、Ledesma-Alonso R、Palacio-Rangel JL、Moreau F（墨西哥普埃布拉自治大學 BUAP、美洲大學 UDLAP、法國普瓦捷大學 Institut Pprime／CNRS）",
+      "version": "arXiv 公開作者定稿版（arXiv:2107.00438，對應 PRL 127:204501，共 6 頁含圖 1–5 與表 I）",
+      "accessed_on": "2026-11-13",
+      "read_via": "OpenAlex 開放取用紀錄（oa_url）指向 arXiv PDF（https://arxiv.org/pdf/2107.00438），以 curl Mokaair-editorial/1.0 標頭下載（HTTP 200，776271 位元組），pdftotext 轉文字全讀",
+      "reading_scope": "全文全讀：開場段落、Experimental procedure、One droplet evaporation、Collision of two drops、結論段落、Table I（11 種液體物性與海拔 2200 公尺沸點）與 Figures 1–5 圖說全讀。",
+      "locator": "〈Experimental procedure〉與 Table I（2° 微凹鋁盤標準板溫 Ts = 250 °C、測試橫跨 220–450 °C、圖 5b 側面攝影於 350 °C 進行；海拔約 2200 m 水沸點 93 °C，11 種液體中央滴 500–1500 μl、撞擊滴 100–700 μl 以約 22 cm/s 相撞）；〈Collision of two drops〉與 Figures 2–5（同種液體或沸點相近醇類毫秒內融合；互溶液體只要沸點差 ΔTB ≥ 15 °C［如水＋乙醇、水＋乙腈，甚至純水＋≥33% 乙醇水溶液］即反覆彈開數十秒［乙腈逾 90 s］；500 fps 側面直擊 190 °C 乙二醇與 54 °C 氯仿之間夾著第三層蒸氣膜 L3 構成『三重萊頓弗羅斯特效應』；待低沸點液滴線性蒸發縮至毛細長度 Dc ≈ λc ≈ 1–2 mm 變圓球使 L3 排空才融合，溫差極大時瞬間引發聚併爆裂 coalescing explosion）",
+      "summary": "在 220–450 °C 的 2° 微凹鋁盤上（標準測試 250 °C，側面高速攝影於 350 °C）（實驗室位於海拔約 2,200 公尺，當地水沸點 93 °C），讓 11 種不同液體的懸浮液滴（中央滴 500–1,500 微升、撞擊滴 100–700 微升）以約每秒 22 公分滾向中心相撞。若是兩顆水滴或沸點接近的乙醇與異丙醇，幾毫秒就融合成一顆；但哪怕在室溫下 100% 互溶的兩滴液體（如水配乙醇、水配乙腈，甚至純水撞上乙醇濃度 ≥ 33% 的水溶液），只要兩者沸點差 ΔTB 超過約 15 °C，在熱板上竟然會像撞球一樣反覆彈開長達數十秒（水與乙腈彈跳超過 90 秒）！每秒 500 格側面高速攝影拍下『三重萊頓弗羅斯特效應』的直接證據：兩顆液滴各自以蒸氣墊 L1、L2 浮在熱板上，而高沸點液滴本身溫度（接近自身沸點，如乙二醇約 190 °C）遠高於低沸點液滴（如氯仿 54 °C），直接當起『第二塊移動熱板』，在兩滴液體撞擊面之間蒸發出第三層隔離蒸氣膜 L3！直到低沸點液滴隨蒸發縮小到接近自身毛細長度 Dc ≈ λc（約 1–2 公釐，與初始體積 100–700 微升及板溫無關）、從扁餅變成小圓球讓 L3 氣膜排乾，兩滴才會突然接觸融合；若兩滴溫差極大（如乙二醇撞氯仿），接觸瞬間便引爆劇烈的『聚併爆裂』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "讀的是作者 arXiv 原稿；表中沸點測於海拔約 2,200 公尺低氣壓環境（水沸點 93 °C，比海平面低約 5–7 °C）；作者在註釋 36 指出唯一例外是二甲基甲醯胺（DMF）撞水（沸點差雖達 53 °C 仍直接融合），因為水的汽化潛熱高達 2,256 kJ/kg，短暫撞擊瞬間來不及蒸發出足夠厚的第三層水蒸氣膜。研究群：N10_PACHECO 獨立網（4 位作者經三庫核對與其餘 11 網零合著）。 原文 Table I 首欄誤植為『Formamide（TB = 146 °C）』，對照正文 p. 4 與註釋 36 確認實為二甲基甲醯胺（dimethylformamide, DMF，海拔 2,200 m 沸點 146 °C）。覆核 V166（2026-11-13）：即時重抓 arXiv PDF 全文核對通過，補精確板溫與雙滴體積範圍。",
+      "author_cache": {
+        "file": "F146/cache/arxiv_2107.00438_pacheco2021.pdf",
+        "sha256_prefix": "19222cd4ce795358",
+        "note": "作者快取在 2026-11-13 工作階段的持續目錄，未進 repo；且經 V166 即時重抓 100% byte-for-byte 雜湊一致（前 16 碼 19222cd4ce795358）。"
+      }
+    },
+    {
+      "id": "P79-S014",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12748645/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41467-025-66379-3",
+      "title": "Aerogel-based Leidenfrost vapor percolator for ultra-fast thermal cooling",
+      "publisher": "Nature Communications 16:11573（2025）；Wang H、Xu Y、Li P、Liu Q、Cheng L、Yu J（俞建勇）、Si Y（斯陽）（中國上海東華大學紡織科技創新中心／纖維材料改性國家重點實驗室）",
+      "version": "出版社開放取用版（CC BY 4.0，Europe PMC 收錄 JATS XML 全文）",
+      "accessed_on": "2026-11-13",
+      "read_via": "Europe PMC REST 搜尋（OPEN_ACCESS:Y）取得 PMCID 後以 /webservices/rest/PMC12748645/fullTextXML 下載（HTTP 200，153498 位元組）",
+      "reading_scope": "Abstract、Introduction、Results（Design and principle...、Formation of the HCNFs、Fabrication of NAVPs、Mechanical property of the NAVP material、Thermal cooling applications of the NAVP material）、Discussion、Methods 全文與 Figures 1–5 圖說全讀；補充影片未讀。",
+      "locator": "Results〈Design and principle...〉與 Figure 1（SUS 304 不鏽鋼上約 16 μL 水滴壽命由 100 °C 50.2 s 降至 200 °C 1.64 s［熱通量 40.024 W/cm2］，250 °C 跳升至 71.92 s、300 °C 熱通量暴跌至 3.037 W/cm2、1000 °C 仍懸浮 41 s；換成密度 D = 7 mg/cm3 中空二氧化矽奈米纖維蜂巢氣凝膠 NAVP［粗糙度 Sa = 17.58 μm］，1000 °C 下水滴壽命縮短 98 倍至 0.417 s；密度 <7 mg/cm3 撞擊開裂，>9 mg/cm3［10–12 mg/cm3］孔隙堵塞氣膜復活使壽命回升至 2.53 s）；〈Thermal cooling applications...〉與 Figure 5c–g（300–1000 °C 超臨界高溫區平均熱通量 72.22 W/cm2、峰值 110.43 W/cm2，9.5 mL/min 多股注水 30 秒內由 1000 °C 急冷至 240 °C［降溫 760 °C］，液態氮於 1100 °C 亦在 <1 秒內攤開蒸發）",
+      "summary": "展示如何用超輕多孔材料徹底瓦解 1,000 °C 高溫下的萊頓弗羅斯特蒸氣護盾。在一般 304 不鏽鋼表面，約 16 微升水滴在 200 °C 只需 1.64 秒蒸乾（熱通量 40.024 W/cm^2），但升到 250 °C 氣墊成形後壽命暴增為 71.92 秒，300 °C 熱通量暴跌超過九成至 3.037 W/cm^2，即使燒到 1,000 °C 水滴仍隔著逾 500 微米蒸氣層懸浮 41 秒。研究團隊將中空二氧化矽奈米纖維定向冷凍組裝成密度僅 7 mg/cm^3 的蜂巢狀氣凝膠『蒸氣滲流器（NAVP）』：親水毛細力把液滴吸進微米蜂巢孔道維持固液接觸，同時蜂巢壁與中空奈米纖維內部管道替暴增的水蒸氣打開低阻力徑向與內部排氣通道，成功在 100–1,000 °C 全溫區消除懸浮——在 1,000 °C 下水滴 0.417 秒瞬間攤平汽化（比金屬快 98 倍，連液態氮在 1,100 °C 也不到 1 秒攤平），在 300–1,000 °C 超臨界區維持平均 72.22 W/cm^2（峰值 110.43 W/cm^2）高熱通量，以每分鐘 9.5 毫升注水 30 秒就把 1,000 °C 表面急冷 760 °C 降到 240 °C。更關鍵的是材料密度存在狹窄甜蜜點：低於 7 mg/cm^3（4–6 mg/cm^3）結構太脆弱會被液滴撞裂；高於 9 mg/cm^3（10–12 mg/cm^3）纖維堆太密反而堵死排氣通道，蒸氣墊立刻捲土重來（壽命回升 6 倍至 2.53 秒）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "必須嚴格區分模擬動機與實驗量測：圖 5a–b 中太空船重返大氣層 3,000 °C／1,900 °C 電漿熱流只是流體力學模擬背景，實驗室感應加熱水滴與射流冷卻實測溫度上限為 1,000 °C（液態氮測試為 1,100 °C），片中絕對只報 1,000–1,100 °C 實測值；極低密度氣凝膠機械強度較金屬弱，需鑲嵌或複合支撐。研究群：N11_DONGHUA 獨立網（7 位作者經三庫核對與其餘 11 網零合著）。 覆核 V166（2026-11-13）：全文數據與定位逐行核對相符（且經 V166 即時重抓 100% byte-for-byte 雜湊一致）。",
+      "author_cache": {
+        "file": "F146/cache/PMC12748645_wang_h2025.xml",
+        "sha256_prefix": "8e33c512db8139d6",
+        "note": "作者快取在 2026-11-13 工作階段的持續目錄，未進 repo；且經 V166 即時重抓 100% byte-for-byte 雜湊一致（前 16 碼 8e33c512db8139d6）。"
+      }
+    },
+    {
+      "id": "P79-S015",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12102151/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-025-02940-w",
+      "title": "On the ultra-rapid mixing in two colliding Leidenfrost drops",
+      "publisher": "Scientific Reports 15:18038（2025）；Chiu Y-T、Hsiao Y-L、Morita Y、Ohmura N、Sun C-l（孫珍理）（國立臺灣大學機械工程學系、日本神戶大學化學工學專攻）",
+      "version": "出版社開放取用版（CC BY-NC-ND 4.0，Europe PMC 收錄 JATS XML 全文）",
+      "accessed_on": "2026-11-13",
+      "read_via": "Europe PMC REST 搜尋（OPEN_ACCESS:Y）取得 PMCID 後以 /webservices/rest/PMC12102151/fullTextXML 下載（HTTP 200，125144 位元組）",
+      "reading_scope": "Abstract、Introduction、Methods、Results and discussion（Collision of identical Leidenfrost drops、Collision of non-identical Leidenfrost drops、Oscillation frequency）、Conclusion 全文與 Tables 1–2 及 Figures 1–8 圖說全讀；補充影片未讀。",
+      "locator": "Methods 與 Table 2（280 °C 黃銅同心向心鋸齒陷阱［齒高 0.3 mm、齒距 0.5 mm；註明 >300 °C 底面曲率反轉會改向外推］，2,600 fps 高速攝影搭配微粒子影像測速 μPIV 與螢光素鈉 UV 定量混合效率 ME，不確定度 ±6.7%）；Results〈Collision of identical Leidenfrost drops〉與 Figures 3–5（兩顆 10 μl 水滴以相對速度 237.7 mm/s 迎頭相撞，約 45 Hz 振盪不到兩週期於 t = 99.57 ms 達 ME ≥ 95% 完全混合，比超音波懸浮液滴碰撞約 2 秒快約 20 倍）；〈Collision of non-identical Leidenfrost drops〉與 Figures 6–7（10 μl 乙醇撞 30 μl 水因表面張力差拉長第一階段至約 100 ms，63–105 ms 界面爆出核態沸騰微氣泡加選擇性蒸發，完全混合拖慢 8.5 倍至 845 ms；對調為 10 μl 水撞 30 μl 乙醇還會在 31–42 ms 扯斷彈出一顆小衛星滴）",
+      "summary": "利用車削同心圓向心鋸齒黃銅盤（控制在 280 °C 使液滴自動往中心匯聚；作者亦實測超過 300 °C 時液滴底面曲率反轉會變成往外推），結合每秒 2,600 格高速攝影、微粒子影像測速（μPIV）與紫外光螢光素影像，定量追蹤兩顆無固壁摩擦的萊頓弗羅斯特液滴迎頭相撞混合。當兩顆同為 10 微升的純水滴以每秒 237.7 公釐相對速度正面撞擊融合時，撞擊動能與表面能轉換激發約 45 Hz 大振幅形狀振盪與內部混沌渦流，只花 99.57 毫秒（不到 0.1 秒、約兩個振盪週期）就達到 95% 以上完全均勻混合，比常見超音波懸浮液滴碰撞混合（約 2 秒）快上約 20 倍。然而一旦改成不同液體相撞（10 微升乙醇撞 30 微升水；因體積較小且條件與 F146-S013 大滴不同，兩滴直接接觸融合而非長時彈開），乙醇較低的表面張力先把液橋擴張階段拉長到約 100 毫秒，接著較熱的水在 63–105 毫秒把接觸面乙醇加熱到劇烈界面核態沸騰、冒出大量微氣泡並伴隨乙醇優先揮發，反而打亂後續收縮振盪渦流，使完全混合時間暴增 8.5 倍拖慢到 845 毫秒；若把大小滴互換成 10 微升水撞 30 微升乙醇，劇烈拉扯甚至會在 31–42 毫秒夾斷甩出一顆彈開的衛星小液滴。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "螢光定量未做雙液體折射率匹配（整體混合指標 ME 量測不確定度為 ±6.7%），且水與乙醇相撞在 63–150 毫秒間冒出的界面沸騰微氣泡會短暫散射螢光使曲線出現局部波動；超音波懸浮約 2 秒數據係引用文獻對照而非同機實測。注意通訊作者為國立臺灣大學孫珍理（Chen-li Sun, A5057144791），與池內 P51-001 清華大學孫超（Chao Sun）為不同學者。研究群：N12_NTU_SUN 獨立網（5 位作者經三庫核對與其餘 11 網及 P51-001／002 零合著）。 覆核 V166（2026-11-13）：全文數據與定位逐行核對相符（經 V166 獨立重算本機快取 SHA-256 100% 一致）。",
+      "author_cache": {
+        "file": "F146/cache/PMC12102151_chiu2025.xml",
+        "sha256_prefix": "d5a9501e46e453c5",
+        "note": "作者快取在 2026-11-13 工作階段的持續目錄，未進 repo；經 V166 獨立重算本機快取 SHA-256 100% 一致（前 16 碼 d5a9501e46e453c5）。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P79-001",
+      "question": "超過兩百度的熱面上水滴能懸浮好幾分鐘，從透明稜鏡底下打雷射進去，那層蒸氣墊真的是平平一片嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "leidenfrost.interferometry_concave_vapor_pocket_annular_neck_geometry",
+      "answer_target": "不是平坦氣墊，而是外圍一圈極薄『頸部』包住中央向上凹陷的『蒸氣袋』。18 世紀德國醫師萊頓弗羅斯特（Johann Gottlob Leidenfrost，1794 年逝世）早就記錄過燒紅鐵匙上的水珠能活特別久；現代美國芝加哥大學團隊把維持 99 ± 0.5 °C 的去離子水滴放在 160 到 370 °C 的熔融石英稜鏡上，從正下方打入 632 奈米雷射做全內反射干涉（每條明暗紋對應 158 奈米高度差）。干涉圖拍出蒸氣要往外逃時，會把水滴邊緣壓出一圈最薄的環狀頸部（厚度隨溫度與尺寸落在 5 到 100 微米，圓周上還有約兩成起伏），中央反而鼓成向上凹的蒸氣袋。更反直覺的是，跨越三個數量級的凹袋半徑、曲率與袋深幾乎只由水滴大小決定、跟底板多燙幾乎無關（升溫主要墊高外圍頸部）；一旦水滴半徑超過毛細長度的 3.95 倍（約 9.9 公釐），浮力就會頂穿凹袋，約每秒從正中央冒出一顆蒸氣泡。",
+      "scope": "熔融石英稜鏡表面（懸浮門檻約 160 °C，測試至 370 °C）、去離子水（毛細長度 2.5 公釐）；干涉條紋直接量相對高度差，頸部絕對厚度由側面窄縫白光繞射估算；不延伸任何日常加熱器皿測試或生活安全建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水滴底下不是一塊平平的空氣床，而是外圈卡著幾十微米窄頸、中間鼓起大氣袋——而且氣袋形狀只看水滴多大，幾乎不管底板多燙。",
+        "visual": "剖面加底視雙畫面：左邊雷射從石英稜鏡下方打向懸浮水滴，浮現一圈圈同心干涉條紋；右邊剖面標出外圈 5–100 微米窄頸與中央凹陷蒸氣袋，水滴長大超過 9.9 公釐時中央每隔一秒往上冒出一顆氣泡。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_ids": [
+        "P79-S002"
+      ],
+      "source_locator": "p. 1–3 與 Figures 1–3（632 nm 干涉每紋 158 nm、h_neck = 5–100 μm、r_neck ≈ 0.82 r_max^2/λc、凹袋曲率與 Δh 僅隨 r_max 變而對 Ts 不敏感）；p. 4（r_max ≥ 3.95 λc 約每秒中央冒泡）",
+      "notes": "算 1.00（N02_BURTON 網 1/2，與 F146-003 合計 2.00 封頂）：632 nm 干涉揭曉『外圈窄頸＋中央凹袋』推翻平坦氣墊直覺 0.50；凹袋幾何由水滴半徑單獨決定（對板溫不敏感）及 3.95 λc 浮力冒泡上限 0.50。與池內 P51-001（單滴蒸發末期雜質殼爆開 vs 微滴起飛）問題與機制完全不同。 原提案 F146-001（目標 F146-T1，角色 segment）。非作者覆核 V166（2026-11-13）核對 arXiv:1202.2157 全文通過，維持 1.00。"
+    },
+    {
+      "id": "P79-002",
+      "question": "完全不經過液態的固態乾冰也能踩著自己的氣墊懸浮嗎？換成不透明金屬板看不見底下時，怎麼量氣墊有多厚？",
+      "domain": "熱與流體界面",
+      "mechanism_key": "leidenfrost.sublimating_dry_ice_capacitive_comb_sensor_vapor_thickness",
+      "answer_target": "可以，連一滴液體都不必有，靠固體直接昇華噴出的氣體就能撐起萊頓弗羅斯特氣墊。為了在不透明表面也能連續追蹤這層薄氣膜，荷蘭屯特大學與印度科欽科技大學團隊在 200 微米薄玻璃下蝕刻間距 200 微米的雙梳狀指叉銅電極，接上 20 kHz 精密電錶（誤差約 0.004 皮法拉），把上方物體離地的高度變化轉成電容衰減訊號。把 −78.5 °C 昇華的圓盤狀乾冰錠（直徑 10 公釐、厚 5 公釐、約 390 毫克）放上 293 到 333 K 的溫控鋁座：隨著乾冰昇華變輕，重力壓縮減弱，電容訊號清楚拍到下方二氧化碳氣墊一路變厚，換算無因次氣膜厚度符合四分之一次方潤滑尺度律，與光學斷層掃描實測誤差在 18% 內；同時乾冰實際存活時間比等溫常徑理論更久，因為冰冷昇華氣流替底板降了溫，末段乾冰錠直徑也明顯縮小。",
+      "scope": "概念驗證對象為昇華型固態二氧化碳乾冰圓錠（非液態水滴）；換算絕對厚度時仍需兩點光學斷層掃描基準值校正；乾冰耗盡末段空氣水氣結霜會使電容短暫跳升；僅限實驗室受控溫控鋁座量測，不涉及任何人體接觸情境。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不必有液體沸騰，−78.5 °C 的乾冰靠昇華就能自己鋪氣墊；不用透光鏡頭，底下一排指叉銅電極就能隔空讀出氣膜越變越厚。",
+        "visual": "不透明溫控鋁座上方貼著指叉梳狀銅電極薄層，一顆白色乾冰圓錠浮在二氧化碳薄氣墊上慢慢變薄縮小；旁邊電容曲線隨氣墊增厚平滑往下降。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_ids": [
+        "P79-S001"
+      ],
+      "source_locator": "Methods（200 μm 指距雙梳電極、20 kHz LCR、10×5 mm 約 390 mg 乾冰錠、293–333 K）；Results and discussion〈Proof of concept〉與 Figures 6–8（氣墊隨質量減輕增厚、δ0* ∝ ε*^(1/4) 與 OCT 差約 18%、冷卻效應延長壽命）",
+      "notes": "算 0.75（N01_VANAPALLI 獨立網）：固態昇華型萊頓弗羅斯特懸浮與雙梳指叉電容非光學連續測厚驗證（誤差約 18%）0.50；實測壽命長於等溫常徑理論之氣流冷卻與縮徑機制 0.25。 原提案 F146-002（目標 F146-T1，角色 segment）。非作者覆核 V166（2026-11-13）即時重抓 PMC11634904 全文核對通過，維持 0.75。"
+    },
+    {
+      "id": "P79-003",
+      "question": "明明沒有人去搖盤子，為什麼較大的懸浮水滴會自己長出二到十三個尖角的『星形波浪』？",
+      "domain": "流體物理",
+      "mechanism_key": "leidenfrost.star_shaped_azimuthal_waves_vapor_shear_parametric_resonance",
+      "answer_target": "是底下高速逃逸的蒸氣剪流在液滴肚皮激起毛細波，再透過『兩倍頻壓力脈動』把邊緣推成星形參數共振。美國艾默里大學團隊在微凹熱碗測試水、丙酮、乙醇與液態氮等六種液體，並在碗心開直徑 1 公釐小孔接高速壓力感測器：水滴在 623 K 下會自發長出 2 到 13 個星芒（黏度較高的異丙醇被黏滯阻尼壓到只剩 9 與 10 角星），水與醇類的星芒頻率都固定在約 14 Hz（液態氮約 17 Hz），波長則正比於液體毛細長度（醇類與丙酮約 0.9 公分、液態氮約 0.6 公分，毛細長度更大的水滴波長也成比例放大），就算用鋁箔包住上方把空氣烤到跟底板同溫 623 K 也不變，排除了液滴內溫差對流。真正關鍵在碗心壓力讀數：不管外圈是幾角星，下方蒸氣壓力一律以精確的『兩倍頻率』（約 26–28 Hz、起伏約 10 帕）上下跳動！原來每秒 1 到 2 公尺往外猛衝的蒸氣流在液滴底面刮出波長約 3 到 4 倍毛細長度的行進毛細波，每半個星形週期改變一次排氣阻力，像盪鞦韆每半圈推一把那樣鎖定星形駐波。",
+      "scope": "微凹球面碗（lc/Rs ≈ 0.03，用來防止大液滴中央冒泡亂飄）承載六種揮發液體；底面行進毛細波的直接透視影像係在加熱凹面石英上對丙酮與乙醇拍得，水滴以碗心壓力頻譜與色散關係對應。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒人晃動底盤，水滴卻自己跳起五角星、八角星、十三角星——兇手是底下每秒兩公尺衝出去的蒸氣，用兩倍節拍在肚皮底下打拍子。",
+        "visual": "俯視大水滴邊緣依序切換 5 角、8 角、13 角星形駐波（14 Hz）；切開剖面顯示底下 1–2 m/s 蒸氣流刮出底面波紋，碗心壓力計波形以兩倍快的 28 Hz 同步跳動。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "P79-S003"
+      ],
+      "source_locator": "Section 2（1 mm 碗心測壓孔）；Section 3.3–3.5 與 Figures 4–9（水 n = 2..13、異丙醇 n = 9, 10；fd ≈ 14 Hz［液態氮 17 Hz］、有機液波長約 0.9 cm／液態氮約 0.6 cm 且 λd/lc 歸一化重合；壓力 fp ≈ 2 fd ≈ 26–28 Hz 參數共振）；Section 3.6–3.7 與 Figures 11–15（1–2 m/s 蒸氣剪流激發 λc ≈ 3–4 lc 底面毛細波；鋁箔加熱頂部空氣至 623 K 排除溫差對流）",
+      "notes": "算 1.00（N02_BURTON 網 2/2，與 F146-001 合計 2.00 剛好封頂）：碗心壓力計實測 fp = 2 fd 兩倍頻參數共振與黏度決定最低星芒數 0.50；鋁箔等溫包覆排除熱馬蘭哥尼對流並由凹面石英拍到底面蒸氣剪流毛細波 0.50。 原提案 F146-003（目標 F146-T1，角色 segment）。非作者覆核 V166（2026-11-13）核對 arXiv:1802.06136 §3.5 與圖 9b，修正作者把有機液體星芒波長約 0.9 cm 直接套在水滴身上的小瑕疵（改依原文寫明醇類與丙酮約 0.9 cm、液態氮約 0.6 cm，跨液體波長與毛細長度成正比），並將 payoff『鍋子』改為實驗室『底盤』，維持 1.00。"
+    },
+    {
+      "id": "P79-004",
+      "question": "已經浮在蒸氣墊上完全沒碰到熱板的水滴，為什麼還會發出越變越尖的哨音和固定節拍？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "leidenfrost.star_oscillation_23hz_acoustic_beats_shrinking_wind_whistle",
+      "answer_target": "因為懸浮水滴把底下那圈狹窄排氣縫變成了『會自動縮小的微型管樂器』。墨西哥莫雷洛斯州立自治大學與蒙特雷科技大學團隊在 400 到 500 °C 微凹鋁座上方架設 48 kHz 麥克風配高速攝影機：當水滴已經完全懸浮、沒有任何接觸沸騰的滋滋聲時，星形振盪的大水滴仍會發出每秒約 23 下的規律『拍頻節拍』，剛好對準星形水滴每半週期擠壓一次蒸氣層的兩倍頻脈動。更妙的是把每一拍放大看裡面的載波音調：當水滴半徑約 1.8 公分時音調約 100 Hz，隨著水滴慢慢蒸發縮小到 0.61 至 0.33 公分，蒸氣噴出外圍窄縫的條件改變，音調一路往上飆破 500 到 1,000 Hz（而且在 400 到 500 °C 間幾乎不受底板溫度影響）；等縮到約 1.5 公釐失去星形波後，又切換成每秒約 180 下的快速彈跳節拍聲。",
+      "scope": "400–500 °C 微凹鋁座（曲率半徑 8 公分）單顆水滴實驗；拍頻與星形兩倍頻鎖定為同步實測，載波音調隨氣隙變化的聲學關係屬尺度推導，未直接拍微米級出口聲場。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒碰到熱板就沒有滋滋沸騰聲，但水滴每長一圈星芒就每秒打 23 下節拍，還邊縮小邊把哨音從 100 Hz 吹上 1,000 Hz。",
+        "visual": "懸浮星形水滴旁浮現時頻聲譜圖：下方一排整齊的 23 Hz 節拍脈衝，隨著水滴半徑從 1.8 公分縮到 0.33 公分，頻譜亮帶像滑音笛一樣從 100 Hz 一路往右上方爬升破千赫。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_ids": [
+        "P79-S012"
+      ],
+      "source_locator": "p. 2–4 與 Figures 1–4（400–500 °C、48 kHz 麥克風＋240 fps 攝影、星形拍頻 fb ≈ 2 fd ≈ 23 Hz）；p. 4–7 與 Figures 5–7（載波音調 fs 由 rd ≈ 1.8 cm 約 100 Hz 升至 rd = 0.61–0.33 cm 逾 500–1000 Hz 且對 Ts 不敏感；小滴 rd ≈ 1.5 mm 轉為約 180 Hz 彈跳拍頻）",
+      "notes": "算 0.75（N09_SINGLA 獨立網）：星形懸浮水滴 23 Hz 聲學拍頻鎖定兩倍頻氣壓脈動 0.50；載波音調隨蒸發縮徑由 ~100 Hz 爬升至 >500–1000 Hz 並在小滴切換為 ~180 Hz 彈跳音 0.25。 原提案 F146-004（目標 F146-T1，角色 segment）。非作者覆核 V166（2026-11-13）即時重抓 arXiv:2002.09768 全文核對通過，將 payoff『鍋底』改為『熱板』，維持 0.75。"
+    },
+    {
+      "id": "P79-005",
+      "question": "把水滴輕輕放在堅硬平整的高溫矽晶圓上，為什麼它會自己越跳越高像踩彈簧床，縮得太小又突然停住？",
+      "domain": "流體物理",
+      "mechanism_key": "leidenfrost.droplet_trampolining_bond_number_window_vapor_ripple_pressure_spike",
+      "answer_target": "因為在剛剛好的尺寸區間裡，水滴底面的微米波紋會在每次壓低時把蒸氣壓力瞬間放大三倍多。瑞士蘇黎世聯邦理工學院團隊在 251 到 390 °C 的堅硬矽晶圓、藍寶石與鋁板上做了 215 次實驗（九成重現，水、乙醇、丙酮與液態氮皆然）：零初速輕放的水滴原本靜靜浮在約 0.02 公釐氣膜上，卻自發放大垂直振盪，一路跳到 0.5 公釐高並持續跳數十秒。關鍵開關是重力對表面張力的比值『邦德數（Bo）』必須落在 0.04 到 0.5 之間：太大的水滴（Bo > 0.5）只會原地晃動三十幾秒，等蒸發瘦身進到 0.5 就自動起跳；405 奈米藍寶石高速干涉儀拍到，此時底面單一圓頂氣袋排氣時刮出約 5 微米波紋，每次觸底把與間隙四次方成反比的潤滑氣壓瞬間拉高 3.2 倍，不斷把熱能灌成彈跳動能；等繼續蒸發縮到 Bo < 0.04（水滴半徑約 0.5 公釐），表面張力把它鎖成壓不扁的剛性小圓球、波紋消失，彈跳立刻停擺。",
+      "scope": "堅硬高溫基板（251–390 °C）低黏度液體實驗；加入甘油提高黏度會阻尼底面波紋使彈跳消失；模型換算之瞬時推重比逾 50 倍係由彈簧阻尼力學模型擬合軌跡反推。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "硬梆梆的矽晶圓一動也沒動，水滴卻等瘦身到黃金尺寸就自己連跳五十秒，縮成半公釐硬圓球又準時收工。",
+        "visual": "時間軸三格對比：左格大扁水滴（Bo > 0.5）原地晃動；中格瘦身進 0.04–0.5 區間，底視干涉拍到 5 微米波紋使氣壓暴增 3.2 倍、水滴連跳 0.5 公釐高；右格縮成小硬球（Bo < 0.04）波紋消失停回地面。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "P79-S011"
+      ],
+      "source_locator": "Results and discussion〈Vertical self-propulsion〉、〈Droplet bond number〉、〈Trampolining mechanism〉、〈Liquid viscosity〉與 Figures 1–5（215 次 90% 彈跳、d0 ≈ 0.02 mm → dmax = 0.5 mm、0.04 ≤ Bo ≤ 0.5、405 nm 干涉 5 μm 波紋使壓力放大 3.2 倍、加甘油停跳）",
+      "notes": "算 1.00（N08_POULIKAKOS 獨立網）：215 次跨液體實證靜態輕放水滴自發放大彈跳至 0.5 mm 與嚴格 0.04 ≤ Bo ≤ 0.5 尺寸開關 0.50；405 nm 干涉直擊底面 5 μm 波紋使非線性潤滑氣壓放大 3.2 倍及高黏度阻尼對照 0.50。 原提案 F146-005（目標 F146-T1，角色 segment）。非作者覆核 V166（2026-11-13）即時重抓 PMC7979863 全文核對通過，維持 1.00。"
+    },
+    {
+      "id": "P79-006",
+      "question": "在燙金屬板上刻一排不對稱鋸齒，水滴就會自己逆坡爬樓梯——它是靠蒸氣『往後噴』當火箭推上去的嗎？如果鋸齒縮小到兩百奈米呢？",
+      "domain": "流體物理",
+      "mechanism_key": "leidenfrost.asymmetric_ratchet_viscous_drag_vs_submicron_thermal_creep",
+      "answer_target": "蒸氣不但沒有往後噴，淨氣流反而跟水滴『同方向往前跑』！美國奧勒岡大學與澳洲新南威爾斯大學團隊在齒距 1 到 3 公釐、齒深 0.1 到 0.3 公釐的等溫鋸齒板上測試液態氮到十六烷七種液體：液滴自動朝『緩坡向下、陡壁向上』的方向以 1–2 m/s^2 加速（就算故意反推也會煞車折返），以每秒約 5 公分爬坡巡航達 1 公尺。撒入亮粉追蹤氣流直接推翻火箭反作用力假說：因為液滴跨在齒頂時底面凹陷（曲率半徑 −2.2 公釐，拉普拉斯壓力高）、齒谷處凸出（+0.6 公釐），在約 10.2 微米氣膜內建立每公釐上百帕壓差，推著蒸氣順緩坡往前流並靠黏滯剪力『拖』著水滴走，往後的蒸氣則轉彎從橫向齒溝溜走。但當後人把鋸齒縮到 200 奈米高或改放不會彎曲的固態乾冰時仍能飆速，法國波爾多大學的解析流體理論補上第二把引擎：蒸氣熱導率只有黃銅的萬分之一，等溫線擠在尖銳齒峰產生每微米數十度溫差，在距表面約 130 奈米的分子平均自由程內驅動『馬克士威熱蠕流』照樣推著氣墊跑。",
+      "scope": "公釐級鋸齒實驗（F146-S006，液滴半徑小於 0.3–0.5 倍齒距時推不動）與次微米齒／固態乾冰之史托克斯流加保角映射解析理論（F146-S008，本身無新實驗，引用前人 200 奈米齒與乾冰實測對照）。與池內 P51-002（左右完全對稱平行細脊上 >9 mm 長水滴自發破缺）幾何前提完全不同。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "直覺以為水滴像火箭往後噴蒸氣才爬得上樓梯，撒亮粉一看蒸氣竟然往前跑——是氣流拖著水滴走；就算鋸齒縮到兩百奈米，齒尖擠壓的等溫線還能靠熱蠕流接手。",
+        "visual": "左半公釐級鋸齒剖面：齒頂凹液面高壓推著發亮微粒順緩坡往前流、拖動水滴爬坡，反向氣流從側溝排出；右半放大到 200 奈米微齒：密集等溫線擠在齒尖，貼壁 130 奈米分子層順溫差往前滑動。",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "source_ids": [
+        "P79-S006",
+        "P79-S008"
+      ],
+      "source_locator": "P79-S006 p. 1–7、Note 17 與 Figures 1–4（s = 1–3 mm、七種液體、約 5 cm/s 爬坡逾 1 m、RA = −2.2 mm vs RB = +0.6 mm 壓差與亮粉同向氣流）；P79-S008 p. 1–4 與 Figures 1–4（200 nm 齒與剛性乾冰、熱導率比 10^−4 齒尖等溫線擠壓、ℓ ≈ 130 nm 馬克士威熱蠕流 vC 與 F ∝ R^1.2）",
+      "notes": "算 1.50（跨兩獨立網：N04_LINKE 實測 1.00 ＋ N06_WURGER 純理論解析 0.50）：公釐鋸齒跨七種液體逆坡自推進、齒頂／齒谷拉普拉斯曲率壓差與亮粉顯影直接否定火箭反噴假說計 1.00；次微米 200 nm 齒與剛性乾冰無液面彎曲下之齒尖等溫線擠壓馬克士威熱蠕流解析理論計 0.50（回應舊退題 P22-NA010『需取得原研究正文控制比較』之重入條件）。 原提案 F146-006（目標 F146-T1，角色 segment）。非作者覆核 V166（2026-11-13）核對 arXiv:physics/0512246 與 arXiv:1401.7452 兩篇全文通過，維持 1.50（N04_LINKE 1.00＋N06_WURGER 0.50）。"
+    },
+    {
+      "id": "P79-007",
+      "question": "把鋸齒彎成一圈做成沒有軸承的『萊頓弗羅斯特渦輪熱機』真的能發電嗎？為什麼九成九以上的能量都沒變成轉動？",
+      "domain": "熱與能量",
+      "mechanism_key": "leidenfrost.sublimation_turbine_heat_engine_atmospheric_levitation_power_budget",
+      "answer_target": "真的能持續旋轉發電，但在地球表面幾乎所有功率都拿去『扛大氣壓力』了。英國諾森比亞大學與愛丁堡大學等團隊把 20 個不對稱斜齒車成半徑 2 公分的鋁渦輪盤（加熱到 350–500 °C，每組條件重複 60 次）：放上 −78 °C 乾冰圓盤（或讓沸騰水滴背著親水金屬薄片），只要昇華減輕跨過臨界質量門檻，轉子就在零固體接觸下沿緩坡方向越轉越快；在轉子上裝 8 顆磁鐵對準上方 8 組各 4,000 匝銅線圈，直接量到交流發電電壓。但一算能量帳本卻大吃一驚：雖然單看水平氣流推進的理想效率上限達 67%，實機輸出的轉動機械功率卻只有約 2 × 10^−5 瓦（效率約百萬分之一），因為高達 4.2 瓦的相變功率全花在頂住頭頂那一大氣壓與轉子重量、撐起那層無摩擦氣墊軸承！",
+      "scope": "一大氣壓實驗室概念驗證機（350–500 °C 鋁渦輪盤配乾冰圓盤或水滴載盤）；作者指出若移至無大氣壓的太空低壓環境可大幅提高效率，但該低壓高效率情境尚未實測。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "20 齒熱渦輪真的讓乾冰帶著磁鐵發出了交流電，但 4.2 瓦相變功幾乎全拿去扛頭頂的大氣壓，分給轉軸的只剩五萬分之一瓦。",
+        "visual": "半徑 2 公分 20 齒鋁渦輪盤上，乾冰圓盤頂著 8 顆磁鐵在線圈下無接觸旋轉點亮微弱電壓波形；旁邊能量圓餅圖對比『4.2 瓦：撐住大氣壓與自重』對極細一條『0.00002 瓦：旋轉輸出』。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "P79-S009"
+      ],
+      "source_locator": "Results〈Experimental〉、〈Model of a turbine surface and Leidenfrost rotor〉與 Discussion 及 Figures 2–5（R = 2 cm、N = 20 齒、350–500 °C、60 次重複、mc ∝ ΔT(R/H)^4、8 磁鐵×8 組 4,000 匝線圈發電、Plev ≈ 4.2 W 對 Prot ≈ 2×10^−5 W）",
+      "notes": "算 1.00（N07_WELLS_VELLA 群 1/2，與 F146-014 合計 2.00 封頂）：20 齒圓形渦輪臨界負載起轉定律與無軸承電磁感應發電實證 0.50；4.2 W 懸浮抗大氣壓對 2×10^−5 W 軸功之定量能量帳本反差 0.50。 原提案 F146-007（目標 F146-T1，角色 segment）。非作者覆核 V166（2026-11-13）即時重抓 PMC4366496 全文核對通過，維持 1.00。"
+    },
+    {
+      "id": "P79-008",
+      "question": "想讓水滴爬上更陡的鋸齒斜坡，把金屬板燒得越燙越懸浮越好嗎？為什麼只調溫度就能讓同一塊鋸齒板上的水滴掉頭反走？",
+      "domain": "流體物理",
+      "mechanism_key": "leidenfrost.ratchet_transition_boiling_steep_climb_and_temperature_reversal",
+      "answer_target": "剛好相反：燒得越燙、蒸氣墊越厚，水滴反而越『打滑』爬不上陡坡！英國巴斯大學團隊在三塊 5 × 20 公分黃銅鋸齒板上測試約 3.6 公釐水滴的最大爬坡仰角，並用上方 16 公分麥克風聽沸騰聲判讀接觸狀態：平滑黃銅過 225–230 °C 就瞬間安靜懸浮，但齒距 0.24 公釐的細銳尖齒板會刺穿蒸氣層維持局部『過渡沸騰』，滋滋聲延續到約 290 °C——水滴能爬上最陡斜坡的時刻，正發生在尖齒刺進氣膜抓地的吵雜過渡沸騰區，繼續升溫進入完全安靜懸浮後最大爬坡角反而一路下跌。更神的是在齒面留有斜向銑削次級刀紋的鋸齒板上，完全不改紋路、只改溫度就能 180 度倒車：212 °C 吵雜局部接觸時水滴穩定往右跑，升到約 240 °C 停在原地拉鋸，跨過 262 °C 進入安靜全懸浮後，較深的斜向刀紋接管蒸氣導流，水滴全面掉頭往左跑。",
+      "scope": "5 × 20 公分銑削黃銅鋸齒板與約 3.6 公釐水滴實驗；作者明言 212 °C 低溫過渡沸騰態下濕潤、沸騰振動與氣流耦合尚無精確解析公式，屬實測力學與聲學對照結果。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "氣墊太厚就像輪胎浮在水膜上打滑，帶點滋滋聲的過渡沸騰才爬得上最陡的坡；在雙尺度刀紋板上扭一下溫控旋鈕，水滴還會在 240 °C 煞車、262 °C 倒車往反方向跑。",
+        "visual": "上半圖細尖齒斜坡配麥克風音量表：有滋滋聲的過渡沸騰爬上最陡角度，高溫靜音全懸浮反而滑下來；下半圖同一塊帶斜刀紋鋸齒板：212 °C 箭頭向右，240 °C 歸零，262 °C 箭頭反轉向左。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "P79-S007"
+      ],
+      "source_locator": "Results〈Droplets climbing uphill〉與 Figures 1–3（麥克風沸騰聲 RMS、細尖齒 0.24 mm 延續至約 290 °C 爬最陡坡、高溫全懸浮 θC 下滑）；〈Substructure and directional control〉與 Figures 4–5（212 °C 向右 → ~240–241 °C 穿越零點 → ≥262 °C 向左反轉）",
+      "notes": "算 1.00（N05_TAKASHINA 獨立網）：麥克風聲學同步實證過渡沸騰尖齒抓地比純膜態沸騰爬更陡坡（越燙越打滑）0.50；同一塊帶斜向銑削次結構鋸齒板隨溫度跨過 ~240 °C 發生 180° 方向反轉 0.50。 原提案 F146-008（目標 F146-T1，角色 segment）。非作者覆核 V166（2026-11-13）核對 PMC3467560 全文通過，維持 1.00。"
+    },
+    {
+      "id": "P79-009",
+      "question": "把水滴偏心丟進刻滿同心圓微溝的熱矽片，為什麼 250 °C 往圓心內跳、350 °C 卻往外跳，還能用同一個溫度自動把兩種液體分邊？",
+      "domain": "流體物理",
+      "mechanism_key": "leidenfrost.concentric_microgrooves_bean_recoil_vs_meniscus_outward_sieving",
+      "answer_target": "因為同心圓彎曲微溝在『過渡沸騰』和『膜態沸騰』啟動了方向相反的兩種力。大連理工大學與清華大學團隊在直徑 2 公分矽晶圓刻出溝寬與脊寬各 40 微米、深 20 微米的同心圓微溝，用每秒一萬格雙高速攝影機拍半徑 1.18 公釐水滴落在偏心處（r = d/4）：200 °C 時水滴貼底沸騰，102.1 毫秒原地蒸乾；升到 250 °C（215–295 °C 過渡沸騰區），水滴順著圓弧溝槽拉長、徑向回縮更快，在 9.8 毫秒縮成『彎豆形』，內外緣曲率差產生朝向圓心的拉普拉斯淨回彈力，讓水滴往圓心內跳 1.84 公釐；一旦超過 315 °C 進入萊頓弗羅斯特膜態沸騰（如 350 °C），氣墊讓水滴維持圓形，但撞擊動壓把局部液面壓入溝內約 10 微米，彎曲溝壁兩側不對稱反作用力反過來把水滴往外推開 1.76 公釐！利用不同液體沸點不同，把晶圓固定在 160 °C，落下的乙醇自動往圓心跳、正己烷自動往外圍跳，直接完成無閥分篩。",
+      "scope": "親水氧化矽同心微溝陣列、中低撞擊韋伯數（We = 0.8–16.9）；295–315 °C 為混合過渡區；溝內約 10 微米液面下陷由力學模型推得，未穿透不透明矽溝壁直拍。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連不對稱鋸齒都不用，一整圈同心圓微溝就能靠溫度當雙向道岔：250 °C 縮成彎豆往裡跳，350 °C 踩著溝壁往外跳，定在 160 °C 還能把乙醇跟正己烷自動分流。",
+        "visual": "俯視同心圓微溝矽晶圓：左半 250 °C 偏心水滴縮成彎豆形彈向圓心（+1.84 mm），右半 350 °C 水滴保持圓形彈向外緣（−1.76 mm）；下方 160 °C 晶圓上乙醇跳進內圈、正己烷跳出外圈。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "P79-S005"
+      ],
+      "source_locator": "Results 全四節與 Figures 1–5（含 Figure 5c 雙液分篩）（W=S=40 μm、H=20 μm；200 °C 102.1 ms 蒸乾；250 °C 彎豆形向內跳 ΔlL = 1.84 mm；350 °C 液面壓入溝內約 10 μm 溝壁反力向外跳 ΔlR = 1.76 mm；固定 160 °C We = 10.5 乙醇向內、正己烷向外自動分篩）",
+      "notes": "算 1.00（N03_QUERE_LV 網 1/2，與 F146-013 合計 2.00 封頂）：萬格高速攝影揭曉同心微溝 250 °C 彎豆形向心拉普拉斯回彈 vs 350 °C 膜態沸騰溝壁離心反彈雙向切換 0.75；固定 160 °C 自動分篩乙醇與正己烷驗證 0.25。 原提案 F146-009（目標 F146-T1，角色 segment）。非作者覆核 V166（2026-11-13）即時重抓 PMC9170727 全文核對，修正定位圖號 Figures 1–6 → Figures 1–5（Figure 5c）並補齊脊寬 40 微米，維持 1.00。"
+    },
+    {
+      "id": "P79-010",
+      "question": "讓兩顆懸浮水滴在熱盤中心迎頭相撞，不到 0.1 秒就能徹底混勻；為什麼把其中一顆換成乙醇，混合反而慢了八倍半？",
+      "domain": "流體物理",
+      "mechanism_key": "leidenfrost.head_on_colliding_drops_100ms_mixing_vs_interfacial_boiling_delay",
+      "answer_target": "因為沒有固體牆面摩擦拖慢流速時，同種水滴相撞不到兩個振盪週期就攪勻，但不同沸點液體相撞會在交界面爆出『內部沸騰氣泡』搗亂渦流。國立臺灣大學與日本神戶大學團隊用 280 °C 黃銅向心鋸齒盤（超過 300 °C 底面曲率反轉會變成往外推），讓兩顆 10 微升水滴以每秒 237.7 公釐迎頭相撞，搭配每秒 2,600 格微粒子測速與螢光定量：水滴以約 45 Hz 大幅振盪，僅 99.57 毫秒就達到 95% 以上完全混合，比超音波懸浮液滴碰撞（約 2 秒）快約 20 倍！但改成 10 微升乙醇撞 30 微升水時，表面張力落差先把液橋拉伸期拖長到約 100 毫秒，接著較燙的水在 63–105 毫秒使交界面乙醇激發出劇烈界面沸騰微氣泡並優先揮發，打斷後續收縮振盪渦流，把完全混合拖慢 8.5 倍到 845 毫秒；若對調成 10 微升水撞 30 微升乙醇，31–42 毫秒還會扯斷甩出一顆彈開的小衛星滴。",
+      "scope": "280 °C 黃銅同心鋸齒陷阱、10–30 微升小液滴迎頭碰撞；螢光混合指標未做折射率匹配（誤差 ±6.7%，63–150 毫秒微氣泡會短暫散射光線）；超音波懸浮約 2 秒為文獻對照值。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩顆純水珠無摩擦對撞，不到十分之一秒就攪得一乾二淨；換成乙醇撞熱水珠，交界面自己冒泡泡，混勻時間反而暴增八倍半。",
+        "visual": "雙格紫外螢光高速慢動作：左格兩顆 10 微升水珠迎頭撞擊，渦流捲動在 99.57 毫秒整顆變均勻亮綠；右格乙醇珠撞水珠，63–105 毫秒交界面炸出密密麻麻微氣泡，拖到 845 毫秒才混勻。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "P79-S015"
+      ],
+      "source_locator": "Methods 與 Table 2（280 °C 向心鋸齒盤、>300 °C 反轉外推、2,600 fps μPIV＋螢光 ME ±6.7%）；Results〈Collision of identical Leidenfrost drops〉與〈Collision of non-identical Leidenfrost drops〉及 Figures 3–7（10+10 μl 水 99.57 ms 混勻 vs 10 μl 乙醇+30 μl 水界面沸騰拖至 845 ms；10 μl 水+30 μl 乙醇 31–42 ms 甩出衛星滴）",
+      "notes": "算 0.75（N12_NTU_SUN 獨立網）：兩顆 10 μl 懸浮水滴迎頭碰撞 99.57 ms 超快混勻（μPIV 渦流與螢光實測）0.50；換成乙醇撞水觸發界面微氣泡沸騰使混勻拖慢 8.5 倍至 845 ms（反向配比甩出衛星滴）0.25。 原提案 F146-010（目標 F146-T1，角色 segment）。非作者覆核 V166（2026-11-13）核對 PMC12102151 全文通過（確認臺大孫珍理 Chen-li Sun 與 P51-001 清華孫超 Chao Sun 為不同學者），維持 0.75。"
+    },
+    {
+      "id": "P79-011",
+      "question": "水和酒精在常溫下一碰就溶在一起，為什麼放大成幾百微升在熱盤上相撞，竟會像撞球彈開好幾十秒、最後突然炸開？",
+      "domain": "熱與流體界面",
+      "mechanism_key": "leidenfrost.triple_vapor_layer_bouncing_and_capillary_coalescing_explosion",
+      "answer_target": "因為兩顆液滴之間長出了『第三層萊頓弗羅斯特蒸氣膜』！墨西哥普埃布拉自治大學、美洲大學與法國普瓦捷大學團隊在 220–450 °C 微凹鋁盤（標準板溫 250 °C，側面高速攝影於 350 °C）上測試 11 種液體的大液滴（中央滴 500–1,500 微升、撞擊滴 100–700 微升，每秒約 22 公分相撞）：同種液體幾毫秒就融合，但只要兩滴液體沸點相差 15 °C 以上——就算室溫完全互溶的水配乙醇、水配乙腈，甚至純水撞上酒精濃度 33% 以上的水溶液——竟會反覆彈開長達數十秒（水與乙腈彈跳超過 90 秒）。每秒 500 格側面攝影直接拍到：除了兩滴各自對熱板的兩層氣墊（L1、L2），高沸點液滴本身溫度（如約 190 °C 乙二醇）遠高於低沸點液滴（如 54 °C 氯仿），直接充當移動熱板在兩滴夾縫蒸發出第三層氣膜 L3，構成『三重萊頓弗羅斯特效應』！直到低沸點液滴蒸發縮到接近毛細長度（約 1–2 公釐）變成小圓球、排乾 L3，兩滴才瞬間融合；溫差夠大時當場引爆劇烈的『聚併爆裂』。",
+      "scope": "海拔約 2,200 公尺實驗室（水沸點 93 °C）、中央滴 500–1,500 微升與撞擊滴 100–700 微升雙液滴碰撞；唯一例外為二甲基甲醯胺（DMF，原文 Table I 簡印為 Formamide）撞水，因水汽化潛熱高達 2,256 kJ/kg，短暫接觸來不及生出夠厚第三層水蒸氣膜而直接融合；只討論實驗室受控毫米級液滴碰撞，不延伸任何日常高溫液體情境。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "熱盤不只墊起兩顆液滴，比較燙的那顆液滴自己又當起『第二塊熱板』，在兩滴中間吹出第三層蒸氣盾牌擋上九十秒——直到小滴縮成一兩公釐才破盾炸開。",
+        "visual": "側面高速特寫：左邊高溫大液滴與右邊低沸點液滴各自浮在 L1、L2 氣墊上，兩滴相撞瞬間夾縫亮起第三層氣膜 L3 反覆彈開；倒數計時後小滴縮成 1–2 公釐圓球，L3 消失瞬間爆開飛濺。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_ids": [
+        "P79-S013"
+      ],
+      "source_locator": "〈Experimental procedure〉、Table I 與〈Collision of two drops〉及 Figures 2–5（220–450 °C［標準 250 °C、圖 5b 為 350 °C］、11 種液體中央滴 500–1500 μl＋撞擊滴 100–700 μl、ΔTB ≥ 15 °C 彈跳數十秒［乙腈 >90 s，≥33% 乙醇水溶液亦彈開］、500 fps 直拍 190 °C 乙二醇與 54 °C 氯仿間第三層氣膜 L3、縮至 Dc ≈ λc ≈ 1–2 mm 融合與聚併爆裂；註 36 DMF 撞水高潛熱例外）",
+      "notes": "單獨算 1.00（作者原算 1.25；N10_PACHECO 獨立網計 1.00）：跨 11 種液體確立 ΔTB ≥ 15 °C 互溶液滴反覆彈開數十秒門檻與 500 fps 直接拍到兩滴間第三層氣膜 L3（三重萊頓弗羅斯特效應）0.50；蒸發縮至毛細長度 Dc ≈ λc（與初始體積及板溫無關）才破膜聚併爆裂及 DMF 撞水高潛熱例外邊界 0.50。 原提案 F146-011（目標 F146-T1，角色 segment）。非作者覆核 V166（2026-11-13）即時重抓 arXiv:2107.00438 全文核對：補齊第三合作機構美洲大學（UDLAP）、板溫 220–450 °C（標準 250 °C、圖 5b 350 °C）與雙滴體積範圍，並依同批單篇 6 頁 PRL 高速攝影加尺度模型一致性標準，將權重由 1.25 從嚴下修為 1.00（−0.25）。"
+    },
+    {
+      "id": "P79-012",
+      "question": "金屬燒到 1,000 °C 時水滴會被厚蒸氣盾擋在外面撐 41 秒，為什麼換成一塊超輕中空陶瓷氣凝膠就能在半秒內破盾急冷，但把氣凝膠做『更密實』反而又失效？",
+      "domain": "物質與材料",
+      "mechanism_key": "leidenfrost.hollow_ceramic_nanofiber_aerogel_vapor_percolator_1000c_quenching",
+      "answer_target": "要破除千度蒸氣盾，必須同時做到『毛細吸水貼底』跟『替暴增的水蒸氣開專用逃生隧道』。上海東華大學團隊實測：304 不鏽鋼從 200 °C 升到 300 °C 時，約 16 微升水滴被蒸氣膜架空，熱通量從 40.024 W/cm^2 暴跌超過九成剩 3.037 W/cm^2，燒到 1,000 °C 水滴仍懸浮 41 秒。團隊把中空二氧化矽奈米纖維做成密度僅 7 mg/cm^3 的蜂巢狀氣凝膠『蒸氣滲流器』：親水微米蜂巢孔道把水吸進去貼緊固體，同時定向蜂巢壁與中空奈米纖維內腔讓大量水蒸氣從側面和纖維管內分流排走——在 1,000 °C 下水滴壽命縮短 98 倍剩 0.417 秒（連液態氮在 1,100 °C 也不到 1 秒攤平），在 300–1,000 °C 超臨界高溫區維持平均 72.22 W/cm^2（峰值 110.43 W/cm^2）高熱通量，30 秒內就把 1,000 °C 表面急冷 760 °C 降到 240 °C！有趣的是密度不能亂加：低於 7 mg/cm^3 太脆會被水滴撞裂，但高於 9 mg/cm^3（10–12 mg/cm^3）纖維擠太密反而堵死排氣孔，蒸氣墊立刻復活讓壽命回升 6 倍。",
+      "scope": "只講實驗室感應加熱 100–1,000 °C 水滴／射流實測與 1,100 °C 液態氮實測（原文圖 5a–b 的 3,000 °C 重返大氣層僅為動機流場模擬，絕不說成已實測 3,000 °C）。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "1,000 °C 不鏽鋼上的水珠撐 41 秒散不了熱，7 毫克超輕中空纖維氣凝膠替蒸氣開了地下排水道，0.417 秒瞬間吸乾——但做太密堵住排氣孔，蒸氣盾馬上復活。",
+        "visual": "左右對照：左邊 1,000 °C 不鏽鋼被厚蒸氣層隔開，水珠滾動 41 秒；右邊 7 mg/cm3 蜂巢中空奈米纖維剖面，藍箭頭吸水向下、白箭頭蒸氣從中空管壁向兩側排空，0.417 秒瞬乾並把溫度計從 1,000 °C 拉到 240 °C。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_ids": [
+        "P79-S014"
+      ],
+      "source_locator": "Results〈Design and principle...〉與〈Thermal cooling applications...〉及 Figures 1 & 5c–g（不鏽鋼 200 °C 1.64 s／40.024 W/cm2 → 300 °C 3.037 W/cm2、1000 °C 41 s；7 mg/cm3 NAVP 於 1000 °C 壽命 0.417 s［快 98 倍］、300–1000 °C 超臨界區平均 72.22／峰值 110.43 W/cm2、9.5 mL/min 30 秒降溫 760 °C；<7 mg/cm3 開裂、>9 mg/cm3 堵孔回升至 2.53 s）",
+      "notes": "算 1.00（N11_DONGHUA 獨立網）：7 mg/cm3 中空奈米纖維氣凝膠於 1,000 °C 將水滴壽命由 41 s 壓至 0.417 s（30 秒急冷 760 °C）0.75；低密度開裂 vs 高密度（>9 mg/cm3）堵孔使蒸氣膜復活之非單調密度窗口 0.25。 原提案 F146-012（目標 F146-T1，角色 segment）。非作者覆核 V166（2026-11-13）即時重抓 PMC12748645 全文核對通過，補明平均 72.22 W/cm^2 為 300–1,000 °C 超臨界區均值並嚴格排除 3,000 °C 模擬背景，維持 1.00。"
+    },
+    {
+      "id": "P79-013",
+      "question": "反過來想讓水滴更早懸浮，塗上超疏水奈米珠真的能做出 130 °C『冷萊頓弗羅斯特』嗎？為什麼加熱到 70 °C 時水滴反而先變三倍黏？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "leidenfrost.cold_130c_superhydrophobic_onset_vs_70c_nanopore_condensation_pinning",
+      "answer_target": "真的能把懸浮門檻從約 210 °C 壓低到 130 °C，但半路 70 °C 會先踩進一個『冷凝增黏陷阱』！法國巴黎高等物理化工學院與中國清華大學團隊在塗滿疏水二氧化矽奈米珠的表面（接觸角逾 160°）測試發現，100 °C 以上的劇烈核態沸騰完全消失。但傾斜板滾落角卻量出三段大轉折：從室溫加熱到約 70 °C，水滴不但沒變滑，滾落角反而暴增約 3 倍——因為溫水蒸氣鑽進奈米珠之間的次微米死角冷凝成小液橋，反過來抓死水滴！一旦換成高 115 奈米、間距 52 奈米的疏水矽奈米錐，錐形幾何把冷凝水珠往外擠走，70 °C 的增黏尖峰就完全消失。跨過 70 °C 後，藍寶石倒置顯微干涉拍到疏水層對水蒸氣呈『超親氣性』（蒸氣接觸角僅約 2°，攤開面積比 90° 氣泡大 20 倍），扁平蒸氣斑越連越大，到約 130 °C 就鋪滿整個接觸面讓滾落角歸零。",
+      "scope": "3.9–20 微升準靜態輕放水滴實驗；高速撞擊水滴因動壓刺穿氣膜需更高溫度；嚴守回應舊退題 P51-NA001『表面紋理改變懸浮門檻之實讀原研究對照』。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "超疏水塗層真的能讓水滴在 130 °C 就提前起飛，但奈米圓珠在 70 °C 會先偷藏冷凝水把水滴黏緊三倍——換成奈米尖錐把冷凝水擠出來才一路順暢。",
+        "visual": "滾落角對溫度曲線配微觀剖面：奈米圓珠塗層在 70 °C 拱出三倍高增黏峰（縫隙塞滿冷凝小水橋），過 70 °C 扁平 2° 蒸氣斑擴張、130 °C 滾落角歸零；對照組 115 奈米矽尖錐把冷凝珠彈出，70 °C 尖峰直接抹平。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "P79-S004"
+      ],
+      "source_locator": "〈The Leidenfrost transition〉、〈Adhesion measurements〉、〈The different regimes of adhesion〉與 Figures 1–4（Glaco vs 親水 210 °C；70 °C 滾落角暴增約 3 倍；115 nm 高／52 nm 間距矽奈米錐消除增黏峰；475 nm 干涉 θv ≈ 2° 蒸氣斑於 T* ≈ 130 °C 連成完整氣膜使滾落角歸零）",
+      "notes": "算 1.00（N03_QUERE_LV 網 2/2，與 F146-009 合計 2.00 剛好封頂）：超疏水表面 70 °C 孔隙冷凝增黏 3 倍 vs 115 nm 矽奈米錐幾何排核消除增黏峰之雙結構對照 0.50；475 nm 干涉實測 θv ≈ 2° 超親氣蒸氣斑連續擴張使懸浮門檻降至約 130 °C 0.50。 原提案 F146-013（目標 F146-T1，角色 segment）。非作者覆核 V166（2026-11-13）即時重抓 PMC6598769 全文核對通過，維持 1.00。"
+    },
+    {
+      "id": "P79-014",
+      "question": "完全不用高溫熱板，把常溫水滴丟進 −196 °C 液態氮池也會懸浮嗎？為什麼比液態氮重三倍半的液滴還浮得住、最後凍成圓球還是梨子形？",
+      "domain": "熱與流體界面",
+      "mechanism_key": "leidenfrost.inverse_liquid_nitrogen_bath_density_invariance_sphere_vs_pear_freezing",
+      "answer_target": "會，這叫『逆萊頓弗羅斯特效應』——這次換常溫水滴當『高溫熱源』使底下的液態氮劇烈汽化！法國巴黎高等師範學院與英國牛津大學團隊在雙層鎮靜液態氮池（77.36 K，密度僅 0.807 g/cm^3）放入半徑 0.5–3 公釐的水溶液滴，並用聚鎢酸鈉把液滴密度從 1.02 調高到 2.8 g/cm^3：水滴自己毫髮無損不蒸發，靠下方液態氮汽化撐起氮氣墊滑行 5 到 28 秒，依 1 比 2 比 3 的時間走完『液態降溫、結冰、冰珠凍到約 126 K』才沉沒。實驗揭開兩個驚奇：第一，懸浮壽命隨半徑呈近線性的 5/4 次方（而非平方），且液滴密度加重 2.7 倍時壽命幾乎不變——因為高密度聚鎢酸鈉鹽類莫耳分率極低（僅約 1%），單位體積熱容（約 4.2 MJ/(K·m^3)）與體積結冰潛熱仍由水分子主導而幾近常數，加上氮氣墊厚度對密度僅呈極微弱的負四分之一次方變化；第二，就算液滴比液態氮重 3.5 倍（2.8 g/cm^3），只要小於毛細浮力極限半徑就能像睡吊床一樣浮在液面凍成『圓球冰珠』，一旦太大直接沉底，底部先結冰把上方液體往上擠，就會凍成尖頂『梨形冰珠』！",
+      "scope": "純實驗室受控流體物理與相變結冰幾何量測（77.36 K 液態氮浴與聚鎢酸鈉水溶液）；僅討論毫米級液滴懸浮時間與結冰形狀，不涉及任何生物樣本、人體接觸或醫療應用。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不用高溫金屬板，常溫水珠對 −196 °C 液態氮來說就是一顆小火球——連重達 3.5 倍的液珠都能踩著氮氣墊凍成圓球，太大沉底才會擠成尖頂小梨子。",
+        "visual": "鎮靜液態氮液面雙對照：左邊小顆高密度液滴（2.8 g/cm3）壓出彎月面吊床與薄氮氣墊，滑行結成圓球冰珠後沉下；右邊超限大滴直接沉入杯底，由下往上結冰擠出尖頂梨形冰珠。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_ids": [
+        "P79-S010"
+      ],
+      "source_locator": "Experimental Methods & Experimental Results〈Levitation Time〉、〈Floating vs Sinking Condition〉、Modelling approaches Eq. (19) 與 Appendix A 及 Figures 2–5（77.36 K 液態氮 ρN = 807 kg/m3、液滴 ρd = 1.02–2.8 g/cm3、tL ~ R^(5/4) 對密度不敏感［低莫耳分率下 ρd cp ≈ 4.2 MJ/(K·m3) 與 ρd Lf 由水主導且 h ∝ (ρ* g)^−1/4］、三階段 1:2:3 冷卻至約 126 K、R < Rc 浮面凍成圓球 vs R > Rc 沉底凍成尖頂梨形）",
+      "notes": "算 1.00（N07_WELLS_VELLA 群 2/2，與 F146-007 合計 2.00 剛好封頂）：無熱板逆萊頓弗羅斯特懸浮時間近線性 R^(5/4) 與跨 2.7 倍密度不變律（低莫耳分率下單位體積熱容／潛熱幾近不變＋氣墊厚度 −1/4 次方弱依賴）0.50；3.5 倍重液滴之毛細浮力半徑門檻與『浮面圓球 vs 沉底尖頂梨形』結冰幾何對照 0.50。 原提案 F146-014（目標 F146-T1，角色 segment）。非作者覆核 V166（2026-11-13）即時重抓牛津 ORA PDF 核對 Eq. (19) 與 Appendix A，更正作者將密度不變原因誤寫為『氣墊壓薄加速冷卻抵銷熱容』之機制誤讀，並移除『熱鍋／鐵鍋』字眼，維持 1.00。"
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P79-NA001",
+      "question": "同一塊熱板上懸浮的單顆液滴，為什麼大顆的蒸發到最後會「啪」一聲炸開，極小顆的卻自己往上飄走？（Lyu 等 2019 Sci Adv 10.1126/sciadv.aav8081）",
+      "existing_ids": [
+        "P51-001"
+      ],
+      "reentry_condition": "池內已收為 P51-001（短題 G564），不重複立題亦不借用既有 ID。",
+      "reading_status": "池內既有題去重排除",
+      "reason": "Lyu S, Mathai V, Wang Y, Sobac B, Colinet P, Lohse D & Sun C (2019) Science Advances 5:eaav8081（單顆萊頓弗羅斯特液滴蒸發末期微量雜質濃縮成殼觸板爆開 vs 縮至約 15 μm 隨蒸氣流起飛）已完整收錄於 pool.json 的 P51-001（並用於短題 G564）；本長題 F146-T1 嚴格零撞題，轉折二改取『兩顆不同沸點互溶液滴碰撞之三重萊頓弗羅斯特彈跳與聚併爆裂』（P79-011，Pacheco-Vázquez 等 2021），不碰單滴雜質殼終局。 原提案 F146-NA001。"
+    },
+    {
+      "id": "P79-NA002",
+      "question": "熱板上的平行細脊左右完全對稱，為什麼長於 9 公釐的水滴還會自己挑一邊一路衝？（Shi 等 2025 Sci Adv 10.1126/sciadv.adt6677）",
+      "existing_ids": [
+        "P51-002"
+      ],
+      "reentry_condition": "池內已收為 P51-002（短題 G565），不重複立題亦不借用既有 ID。",
+      "reading_status": "池內既有題去重排除",
+      "reason": "Shi X 等 (2025) Science Advances 11:eadt6677（350 °C 左右對稱平行細脊上長條水滴自發對稱破缺推進）已收錄於 pool.json 的 P51-002（短題 G565），且該卡註記明寫『鋸齒只作一句背景、不回答棘輪機制』。本長題 F146-T1 完全避開對稱平行脊，專攻不對稱鋸齒棘輪之同向黏滯氣流與次微米熱蠕流（P79-006）及過渡沸騰爬坡與溫度反轉（P79-008）。 原提案 F146-NA002。"
+    },
+    {
+      "id": "P79-NA003",
+      "question": "水滴落在很燙的鍋子上，為什麼反而比在剛過沸點的鍋子上更慢蒸乾？（純教科書前提卡）",
+      "existing_ids": [
+        "P51-001",
+        "F146-001"
+      ],
+      "reentry_condition": "已由 F146-001（632 nm 干涉拍出凹陷蒸氣袋與環狀頸部）、F146-012（1000 °C 氣凝膠破盾）與 F146-013（130 °C 超疏水冷懸浮）以完整原研究控制實驗取代，不單獨設教科書前提卡。",
+      "reading_status": "併入原研究機制卡開場背景",
+      "reason": "舊退題 P51-NA001 已指出單純『水滴在熱鍋撐比較久』屬教科書背景前提；本題依其重入條件，直接以芝加哥大學雷射干涉蒸氣袋幾何（P79-001）、東華大學 1000 °C 蒸氣滲流氣凝膠（P79-012）與巴黎高物化院 130 °C 超疏水冷懸浮（P79-013）三組原研究控制實驗立卡，不以空泛常識充數。 原提案 F146-NA003。"
+    },
+    {
+      "id": "P79-NA004",
+      "question": "沒有鋸齒的平滑熱板上，為什麼小顆球形懸浮水滴內部會自發捲出單向滾動渦流自己亂跑？（Bouillant 等 2018 Nat Phys / 2021 PNAS PMC8256046）",
+      "existing_ids": [],
+      "reentry_condition": "日後若取得 Bouillant 等公開授權全文且不超過 N03_QUERE_LV 研究網 2.0 上限時再議。",
+      "reading_status": "2018 篇閉源未抓；2021 篇 Europe PMC REST fullTextXML 首次回 HTTP 500 立即停手",
+      "reason": "Bouillant A, Cohen C, Clanet C & Quéré D (2021) PNAS 118:e2021691118（PMC8256046，Europe PMC 標記 isOpenAccess=N）：首次請求 /webservices/rest/PMC8256046/fullTextXML 即回 HTTP 500（150 bytes，2026-11-13T07:51:50Z），依嚴格規定零重試、零換主機立即停手；同組 2018 Nature Physics 亦非開放取用，且 Quéré 網（N03_QUERE_LV）已由 P79-S004 與 P79-S005 達 2.00 封頂，計 0 條。 原提案 F146-NA004。"
+    },
+    {
+      "id": "P79-NA005",
+      "question": "以微米柱加隔熱膜與吸液通道組成的『結構化熱裝甲』如何把萊頓弗羅斯特點推過 1,150 °C？（Jiang 等 2022 Nature / Wang JX 等 2025 Nat Commun）",
+      "existing_ids": [
+        "F146-012"
+      ],
+      "reentry_condition": "已由獨立研究網 N11_DONGHUA 之 7 mg/cm3 中空奈米纖維氣凝膠（F146-012）完整覆蓋千度破盾機制，不重複堆疊同類高溫散熱材料卡。",
+      "reading_status": "Jiang 2022 閉源未抓；Wang JX 2025 僅查 OpenAlex 書目排除",
+      "reason": "Jiang M, Wang Y, Liu F 等 (2022) Nature 601:568–572 為閉源付費論文（is_oa=false）依規不碰；同合作脈絡之 Wang JX 等 (2025) Nat Commun 16:6931（DOI 10.1038/s41467-025-62120-2）聚焦高超音速楔形發汗冷卻，且本題已有完全互不合著之東華大學 7 mg/cm3 中空陶瓷氣凝膠（P79-012）清晰展示 1,000 °C 破盾與密度甜蜜點，為避免高溫材料清單感不另收。 原提案 F146-NA005。"
+    },
+    {
+      "id": "P79-NA006",
+      "question": "微米級毛細小水滴在微鋸齒熱板上為什麼會卡住或反轉方向？（Marín 等 2012 Physics of Fluids 10.1063/1.4768813）",
+      "existing_ids": [
+        "F146-008",
+        "F146-009"
+      ],
+      "reentry_condition": "無須重入；溫度與幾何反轉已由 F146-008 與 F146-009 兩篇開放全文覆蓋，且避開與 P51-001 共同作者 Detlef Lohse 重疊。",
+      "reading_status": "僅查 OpenAlex 書目與作者網排除，未抓全文",
+      "reason": "OpenAlex 作者查核顯示末位作者 Detlef Lohse 為流體物理大型樞紐學者（亦為池內 P51-001 共同作者），且鋸齒／微溝上隨溫度與沸騰態改變而 180° 掉頭反走的機制已由完全獨立的巴斯大學團隊（P79-008）與大連理工／清華團隊（P79-009）實證，不抓全文、計 0 條。 原提案 F146-NA006。"
+    },
+    {
+      "id": "P79-NA007",
+      "question": "懸浮液滴冷卻崩潰瞬間的 X 光高速透視（Jones 等 2019 Sci Rep）與加熱甘油池上的自推進液滴（Matsumoto 等 2021 Sci Rep）",
+      "existing_ids": [],
+      "reentry_condition": "日後若另立液池界面自推進專題可讀 Matsumoto 2021；本題經 V166 重算已達 13.75 條（9.72 分），不為湊片長硬塞支線。",
+      "reading_status": "僅查 OpenAlex 書目，未抓全文",
+      "reason": "初期 OpenAlex 盤點曾列出 DOI 10.1038/s41598-018-36603-w 與 10.1038/s41598-021-83517-1；因 F146-T1 12 個獨立研究網 15 篇開放全文已構成嚴密雙轉折共 13.75 條（9.72 分，作者原估 14.00 條／9.85 分），依『不為片長硬湊支線清單』原則未抓全文、計 0 條。 原提案 F146-NA007。"
+    },
+    {
+      "id": "P79-NA008",
+      "question": "不鏽鋼平底鍋怎麼靠『水珠滾動測試』判斷預熱到不沾鍋溫度？手指沾水快速伸進液態氮或熔鉛為什麼沒燙傷？液態氮冷凍除疣怎麼做？",
+      "existing_ids": [],
+      "reentry_condition": "永久禁止收錄（違反節目禁教烹飪步驟、禁危險人體實測示範與禁醫療／冷凍治療規定）。",
+      "reading_status": "依編輯禁令直接排除",
+      "reason": "嚴格遵守任務禁令：全片與全數候選卡 100% 聚焦實驗室受控流體力學、聲學與材料相變量測，零烹飪教學、零廚房安全宣導、零危險徒手觸摸極端溫度液體示範、零燒燙傷處理或皮膚冷凍治療醫療宣稱。 原提案 F146-NA008。"
+    }
+  ]
+}
