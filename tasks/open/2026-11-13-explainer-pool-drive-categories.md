@@ -38,18 +38,18 @@ scope:
 
 ## Definition of done
 
-- [ ] 奇聞檔案局與原來如此事務所素材池的所有單核與題案皆具備正規分類（9 類／7 類，不改動歷史 `raw_records`），檢視頁（`QUESTIONS.md`、`THEMES.md`、`index.html`、`PRODUCIBLE.html`）支援依分類瀏覽與篩選。
-- [ ] `apps/api/app/video_backup/target.py`、`docs/videos/rules-sync/sync.mjs`、`docs/videos/ai-drama-drive/catalog.py`、`BACKUP.md`、`AI-DRAMA-DRIVE.md` 對齊 `AI劇/<系列>/<分類>/<代碼>/`，且既有備份路徑透過 `moved_from` 自動指向新分類資料夾。
-- [ ] 雲端硬碟 `AI/備份/AI劇/奇聞檔案局/`（56 集）與 `AI/備份/AI劇/原來如此事務所/`（29 個資料夾整併為 17 集 `Pxx`）完成無損分類搬移；重產 `CATALOG.md` / `catalog.json` 並更新雲端 `_總表/` 與題庫快照，核對 0 差異。
-- [ ] PR #2092 併入 PR #2093 並說明關閉。
+- [x] 奇聞檔案局與原來如此事務所素材池的所有單核與題案皆具備正規分類（9 類／7 類，不改動歷史 `raw_records`），檢視頁（`QUESTIONS.md`、`THEMES.md`、`index.html`、`PRODUCIBLE.html`）支援依分類瀏覽與篩選。
+- [x] `apps/api/app/video_backup/target.py`、`docs/videos/rules-sync/sync.mjs`、`docs/videos/ai-drama-drive/catalog.py`、`BACKUP.md`、`AI-DRAMA-DRIVE.md` 對齊 `AI劇/<系列>/<分類>/<代碼>/`，且既有備份路徑透過 `moved_from` 自動指向新分類資料夾。
+- [x] 雲端硬碟 `AI/備份/AI劇/奇聞檔案局/`（56 集）與 `AI/備份/AI劇/原來如此事務所/`（29 個資料夾整併為 17 集 `Pxx`）完成無損分類搬移；重產 `CATALOG.md` / `catalog.json` 並更新雲端 `_總表/` 與題庫快照，核對 0 差異。
+- [x] PR #2092 併入 PR #2093 並說明關閉。
 - [ ] 完成下一輪同步擴充（奇聞 `wave51` ＋ 原來如此第 31 輪 `wave81`），通過雙池 `build`/`check`/`index`/單元測試與後端 `pytest`、`ruff`、`mypy`、`check:tasks`。
 
 ## Steps
 
-- [ ] 併入 `origin/main` 與 PR #2092 變更至 `claude/pool-expansion-20261113`。
-- [ ] 建立雙系列分類對照與工具更新（`tools/video/curio/pool`、`tools/video/so-thats-why/pool`、兩邊 `themes.json` 與輸出視圖）。
-- [ ] 更新雲端備份與同步路徑（`target.py`、`test_video_backup.py`、`sync.mjs`、`sync.test.mjs`、`catalog.py`、`AI-DRAMA-DRIVE.md`、`BACKUP.md`）。
-- [ ] 在 Google Drive 無損建立分類資料夾、整併 `Pxx`／`第0xx集`、搬移全部集數，重跑總表與快照備份。
+- [x] 併入 `origin/main` 與 PR #2092 變更至 `claude/pool-expansion-20261113`。
+- [x] 建立雙系列分類對照與工具更新（`tools/video/curio/pool`、`tools/video/so-thats-why/pool`、兩邊 `themes.json` 與輸出視圖）。
+- [x] 更新雲端備份與同步路徑（`target.py`、`test_video_backup.py`、`sync.mjs`、`sync.test.mjs`、`catalog.py`、`AI-DRAMA-DRIVE.md`、`BACKUP.md`）。
+- [x] 在 Google Drive 無損建立分類資料夾、整併 `Pxx`／`第0xx集`、搬移全部集數，重跑總表與快照備份。
 - [ ] 執行下一輪雙池同步擴充（奇聞 `wave51` ＋ 原來如此第 31 輪 `wave81`）並完成全套驗證。
 
 ## How to verify

@@ -1,6 +1,6 @@
 // 奇聞檔案局素材池的題案檢查與輸出頁；照原來如此事務所素材池的 render.mjs。
 // 題案（themes.json）照這個池的片長規則：長片 8–13 分鐘，看內容決定，不為了片長硬湊。
-import { LONG_MIN, LONG_MAX } from './core.mjs';
+import { LONG_MIN, LONG_MAX, CATEGORIES, CATEGORY_LIST, categoryForAxis } from './core.mjs';
 
 const cell = (value) => String(value ?? '').replaceAll('|', '／').replaceAll('\n', ' ');
 const STATUS = { selected: '入選', held: '暫緩', reserve: '候補（待研究）', produced: '已製作／製作中', shorts: '轉 Shorts', excluded: '淘汰／轉出' };
@@ -16,6 +16,19 @@ const NOT_SCOPED_LABEL = '範圍未界定';
 const notScoped = (row) => row.scope_status === 'not_yet_scoped';
 const sourceLabel = (source, reading) => reading.origin.startsWith('legacy:') ? `${new URL(source.url).hostname}${new URL(source.url).pathname}`.slice(0, 90) : reading.title;
 const mmss = (seconds) => `${Math.floor(seconds / 60)}:${String(Math.round(seconds % 60)).padStart(2, '0')}`;
+const rowCategory = (row) => row?.category ?? categoryForAxis(row?.axis ?? 'H');
+
+export function themeCategory(episode, byId) {
+  if (episode.category) return episode.category;
+  const tally = new Map();
+  for (const id of episode.candidate_ids ?? []) {
+    const cat = rowCategory(byId.get(id));
+    if (cat) tally.set(cat, (tally.get(cat) ?? 0) + 1);
+  }
+  let best = null; let bestCount = -1;
+  for (const [cat, count] of tally) if (count > bestCount) { best = cat; bestCount = count; }
+  return best ?? CATEGORY_LIST[0];
+}
 
 export function validateThemes(themes, pool) {
   if (!Array.isArray(themes.episodes) || !themes.episodes.length) throw new Error('Theme list is empty');
@@ -24,6 +37,7 @@ export function validateThemes(themes, pool) {
   const used = new Map();
   for (const episode of themes.episodes) {
     for (const key of ['id', 'title', 'core_question', 'connection', 'boredom_risk', 'drop_if', 'evidence_gaps']) if (!episode[key]) throw new Error(`${episode.id}: missing ${key}`);
+    if (episode.category !== undefined && !CATEGORY_LIST.includes(episode.category)) throw new Error(`${episode.id}: unknown category ${episode.category}`);
     if (episode.production_ready !== false || episode.status !== 'EDITORIAL_THEME_NOT_SCRIPT') throw new Error('A theme cannot grant production approval');
     if (episode.material !== undefined) {
       const material = episode.material;
@@ -75,13 +89,14 @@ export function renderSources(pool) {
 
 export function renderQuestions(pool) {
   const rows = pool.candidates;
-  const lines = [`# 奇聞檔案局素材池：${rows.length} 個核心題`, '', `入選 ${pool.counts.selected_candidates}、暫緩 ${pool.counts.held_candidates}、候補 ${pool.counts.reserve_candidates}、轉 Shorts ${pool.counts.shorts_candidates}、淘汰或轉出 ${pool.counts.excluded_cores}、已製作或製作中 ${pool.counts.produced_cores}。合併進別題的 ${pool.counts.alias_records} 筆原始紀錄列在主題的「合併原題」。`, '', '「入選」是有可追溯來源、可以排進題案的題，不是已核准的劇本；「候補」是題目卡還沒查、要先研究的題；「已製作」只當去重對象。', '', '[可搜尋清單](index.html) · [影片題案與片長](THEMES.md) · [去重紀錄](DEDUP.md) · [來源索引](SOURCES.md)', ''];
+  const lines = [`# 奇聞檔案局素材池：${rows.length} 個核心題`, '', `入選 ${pool.counts.selected_candidates}、暫緩 ${pool.counts.held_candidates}、候補 ${pool.counts.reserve_candidates}、轉 Shorts ${pool.counts.shorts_candidates}、淘汰或轉出 ${pool.counts.excluded_cores}、已製作或製作中 ${pool.counts.produced_cores}。合併進別題的 ${pool.counts.alias_records} 筆原始紀錄列在主題的「合併原題」。全池依 9 個分類歸檔（與雲端硬碟 \`AI/備份/AI劇/奇聞檔案局/<分類>/\` 一致）。`, '', '「入選」是有可追溯來源、可以排進題案的題，不是已核准的劇本；「候補」是題目卡還沒查、要先研究的題；「已製作」只當去重對象。', '', '[可成片清單](PRODUCIBLE.html) · [可搜尋清單](index.html) · [影片題案與片長](THEMES.md) · [去重紀錄](DEDUP.md) · [來源索引](SOURCES.md)', ''];
   const unscoped = rows.filter(notScoped).length;
   if (unscoped) lines.push(`「${NOT_SCOPED_LABEL}」的 ${unscoped} 題是還沒有查核檔寫下哪些話不能講的舊題，製作前要先查核並寫下限制。`, '');
-  for (const axis of Object.keys(pool.axes)) {
-    const group = rows.filter((row) => row.axis === axis).sort((a, b) => STATUS_ORDER.indexOf(a.pool_status) - STATUS_ORDER.indexOf(b.pool_status) || a.id.localeCompare(b.id, 'en', { numeric: true }));
+  const categories = [...CATEGORY_LIST, ...new Set(rows.map(rowCategory).filter((cat) => !CATEGORY_LIST.includes(cat)))];
+  for (const cat of categories) {
+    const group = rows.filter((row) => rowCategory(row) === cat).sort((a, b) => STATUS_ORDER.indexOf(a.pool_status) - STATUS_ORDER.indexOf(b.pool_status) || a.id.localeCompare(b.id, 'en', { numeric: true }));
     if (!group.length) continue;
-    lines.push(`## ${axis} ${pool.axes[axis]}（${group.length}）`, '', '| ID | 狀態 | 題目 | 合併原題 | 素材估計 | 來源數 |', '| --- | --- | --- | --- | --- | --- |');
+    lines.push(`## ${cat}（${group.length}）`, '', '| ID | 狀態 | 題目 | 合併原題 | 素材估計 | 來源數 |', '| --- | --- | --- | --- | --- | --- |');
     for (const row of group) lines.push(`| [${row.id}](index.html#${row.id}) | ${STATUS[row.pool_status]}${notScoped(row) ? `<br>${NOT_SCOPED_LABEL}` : ''} | ${cell(row.question)} | ${row.aliases.join('、')} | ${row.editorial ? `${row.editorial.minutes.join('–')} 分` : ''} | ${new Set(row.source_refs.map((ref) => ref.source_id)).size} |`);
     lines.push('');
   }
@@ -113,15 +128,17 @@ export function renderDedup(pool) {
 
 export function renderThemes(themes, pool) {
   const byId = new Map(pool.candidates.map((row) => [row.id, row]));
-  const lines = ['# 從素材池排出的影片題案', '', `${themes.episodes.length} 組編輯候選。每一組都是同一個核心問題的兄弟題，接起來比各自單做更完整；不是點閱率預測，也不是已核准的影片。`, '', `**片長規則：** 長片 ${LONG_MIN}–${LONG_MAX} 分鐘，看素材決定。章節秒數是正文預估，還沒試讀；每章要再拆成 30–45 秒一個新資訊或懸念。撐不住就剪短、合併或撤案，不用重述、停頓或慢唸補時間。估不到 ${LONG_MIN} 分鐘的轉 Shorts 或留在後備。`, '', '「來源待補」的題案裡有還沒研究的候補題：要先查核、改成入選，才能寫企劃。', '', '**素材審視（2026-11-11）：** 「待合併」與「後備」的題案素材撐不起 8 分鐘不重複的旁白，先不成題；缺什麼寫在各題的審視欄（[reviews/material-20261111.md](reviews/material-20261111.md)）。結尾章 30–60 秒，只講答案與留言問題，不用回顧填時間。', '', '| ID | 題案 | 正文估計 | 核心題數 | 來源 | 素材審視 |', '| --- | --- | --- | --- | --- | --- |'];
+  const lines = ['# 從素材池排出的影片題案', '', `${themes.episodes.length} 組編輯候選。每一組都是同一個核心問題的兄弟題，接起來比各自單做更完整；不是點閱率預測，也不是已核准的影片。`, '', `**片長規則：** 長片 ${LONG_MIN}–${LONG_MAX} 分鐘，看素材決定。章節秒數是正文預估，還沒試讀；每章要再拆成 30–45 秒一個新資訊或懸念。撐不住就剪短、合併或撤案，不用重述、停頓或慢唸補時間。估不到 ${LONG_MIN} 分鐘的轉 Shorts 或留在後備。`, '', '「來源待補」的題案裡有還沒研究的候補題：要先查核、改成入選，才能寫企劃。', '', '**素材審視（2026-11-11）：** 「待合併」與「後備」的題案素材撐不起 8 分鐘不重複的旁白，先不成題；缺什麼寫在各題的審視欄（[reviews/material-20261111.md](reviews/material-20261111.md)）。結尾章 30–60 秒，只講答案與留言問題，不用回顧填時間。', '', '| ID | 分類 | 題案 | 正文估計 | 核心題數 | 來源 | 素材審視 |', '| --- | --- | --- | --- | --- | --- | --- |'];
   for (const episode of themes.episodes) {
     const readiness = themeReadiness(episode, pool);
-    lines.push(`| ${episode.id} | ${cell(episode.title)} | ${mmss(episode.target_minutes * 60)}（範圍 ${mmss(episode.range_minutes[0] * 60)}–${mmss(episode.range_minutes[1] * 60)}；未試讀） | ${episode.candidate_ids.length} | ${readiness.ready ? '已有可追溯來源' : `來源待補：${readiness.unsourced.join('、')}`} | ${episode.material ? MATERIAL_VERDICTS[episode.material.verdict] : '未審'} |`);
+    const cat = themeCategory(episode, byId);
+    lines.push(`| ${episode.id} | ${cat} | ${cell(episode.title)} | ${mmss(episode.target_minutes * 60)}（範圍 ${mmss(episode.range_minutes[0] * 60)}–${mmss(episode.range_minutes[1] * 60)}；未試讀） | ${episode.candidate_ids.length} | ${readiness.ready ? '已有可追溯來源' : `來源待補：${readiness.unsourced.join('、')}`} | ${episode.material ? MATERIAL_VERDICTS[episode.material.verdict] : '未審'} |`);
   }
   for (const episode of themes.episodes) {
+    const cat = themeCategory(episode, byId);
     const material = episode.material;
     const verdict = material ? [`**素材審視：** ${MATERIAL_VERDICTS[material.verdict]}`, material.missing ? `；缺：${cell(material.missing)}` : '', material.merge_with?.length ? `；合併對象：${material.merge_with.join('、')}` : ''].join('') : '';
-    lines.push('', `## ${episode.id} ${episode.title}`, ...(verdict ? ['', verdict] : []), '', `**追問：** ${episode.core_question}`, '', `**為什麼接成一集：** ${episode.connection}`, '', '| 章 | 秒數 | 新增理解 | 用到的題 | 刪段條件 |', '| --- | --- | --- | --- | --- |');
+    lines.push('', `## ${episode.id} ${episode.title}`, '', `**分類：** ${cat}`, ...(verdict ? ['', verdict] : []), '', `**追問：** ${episode.core_question}`, '', `**為什麼接成一集：** ${episode.connection}`, '', '| 章 | 秒數 | 新增理解 | 用到的題 | 刪段條件 |', '| --- | --- | --- | --- | --- |');
     for (const chapter of episode.chapters) lines.push(`| ${cell(chapter.title)} | ${chapter.seconds} | ${cell(chapter.new_information)} | ${chapter.candidate_ids.join('、')} | ${cell(chapter.cut_if ?? '')} |`);
     lines.push('', '**用到的題與來源：**', '');
     for (const id of episode.candidate_ids) {
@@ -139,26 +156,27 @@ export function renderThemes(themes, pool) {
 }
 
 export function renderHtml(pool, themes) {
+  const byId = new Map(pool.candidates.map((row) => [row.id, row]));
   const shown = pool.candidates.filter((row) => row.pool_status !== 'excluded');
   const sourceIds = new Set(shown.flatMap((row) => row.source_refs.map((ref) => ref.source_id)));
-  const slim = (row) => ({ id: row.id, axis: row.axis, domain: row.domain, question: row.question, hook: row.hook, answer_target: row.answer_target, scope: row.scope, scope_status: row.scope_status ?? null, notes: row.notes, pool_status: row.pool_status, status_label: STATUS[row.pool_status], aliases: row.question_variants.map((variant) => ({ id: variant.id, question: variant.question })), editorial: row.editorial ?? null, disposition: row.disposition, production: row.production.locators.slice(0, 3), source_refs: row.source_refs.map((ref) => ({ source_id: ref.source_id, origin: ref.origin, locator: ref.locator })) });
-  const payload = JSON.stringify({ candidates: shown.map(slim), sources: pool.sources.filter((source) => sourceIds.has(source.id)).map((source) => ({ id: source.id, url: source.url, readings: source.readings.map((reading) => ({ origin: reading.origin, title: reading.title, publisher: reading.publisher, accessed_on: reading.accessed_on, locator: reading.locator, limitations: reading.limitations ?? '' })) })), themes: themes.episodes.map((episode) => ({ id: episode.id, title: episode.title, candidate_ids: episode.candidate_ids })), axes: pool.axes, statuses: STATUS }).replaceAll('<', '\\u003c');
+  const slim = (row) => ({ id: row.id, axis: row.axis, category_code: row.category_code, category: rowCategory(row), domain: row.domain, question: row.question, hook: row.hook, answer_target: row.answer_target, scope: row.scope, scope_status: row.scope_status ?? null, notes: row.notes, pool_status: row.pool_status, status_label: STATUS[row.pool_status], aliases: row.question_variants.map((variant) => ({ id: variant.id, question: variant.question })), editorial: row.editorial ?? null, disposition: row.disposition, production: row.production.locators.slice(0, 3), source_refs: row.source_refs.map((ref) => ({ source_id: ref.source_id, origin: ref.origin, locator: ref.locator })) });
+  const payload = JSON.stringify({ candidates: shown.map(slim), sources: pool.sources.filter((source) => sourceIds.has(source.id)).map((source) => ({ id: source.id, url: source.url, readings: source.readings.map((reading) => ({ origin: reading.origin, title: reading.title, publisher: reading.publisher, accessed_on: reading.accessed_on, locator: reading.locator, limitations: reading.limitations ?? '' })) })), themes: themes.episodes.map((episode) => ({ id: episode.id, category: themeCategory(episode, byId), title: episode.title, candidate_ids: episode.candidate_ids })), categories: pool.categories ?? CATEGORIES, axes: pool.axes, statuses: STATUS }).replaceAll('<', '\\u003c');
   return `<!doctype html>
 <html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>奇聞檔案局素材池</title>
 <style>:root{--bg:#f6f1e7;--card:#fffdf8;--ink:#2a2233;--muted:#6a5f72;--line:#ddd2c2;--accent:#7a3e8e;--tag:#efe2f3;--warn:#b5651d}@media (prefers-color-scheme:dark){:root{--bg:#1b1720;--card:#252030;--ink:#efe9f4;--muted:#b4a9bf;--line:#3d3548;--accent:#d29be6;--tag:#3a2d45;--warn:#e7a35f}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,"Noto Sans TC",sans-serif}main{max-width:1120px;margin:auto;padding:32px 22px}h1{font-size:30px;margin:4px 0 8px}h2{font-size:19px;margin:8px 0}p{max-width:900px}.eyebrow{color:var(--accent);font-weight:700}.stats{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.stat{background:var(--card);border:1px solid var(--line);padding:10px 18px;border-radius:12px}.stat b{font-size:24px;display:block}.controls{display:flex;gap:10px;flex-wrap:wrap;position:sticky;top:0;background:var(--bg);padding:12px 0;z-index:1}input,select,button{font:inherit;padding:9px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}input{flex:1;min-width:220px}button{cursor:pointer;background:var(--accent);color:var(--bg);border:0}a{color:var(--accent)}article{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:12px 0;overflow-wrap:anywhere}summary{cursor:pointer;font-weight:700}small,.muted{color:var(--muted)}.tag{font-size:13px;padding:2px 8px;background:var(--tag);border-radius:5px;margin-right:6px;display:inline-block}.detail{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}.sources li{margin:6px 0}.warning{border-left:4px solid var(--warn);padding-left:12px}#count{font-weight:600}@media(max-width:600px){h1{font-size:24px}main{padding:20px 16px}.controls{position:static}input,select{min-width:0;width:100%}}</style>
-<main><div class="eyebrow">奇聞檔案局 · 素材池 ${pool.revision}</div><h1>${pool.counts.canonical_cores} 個核心題，先找值得開的檔案</h1><p>題庫、已製作的集數、分支上的草稿與新研究的題，依核心答案去重後放在一起。每筆保留原 ID、合併的原題、來源與定位。</p><p class="warning">這是選題用的素材池，不是查核過的劇本。「入選」只代表有可追溯來源；「候補」的題目卡還沒查；舊查核檔的網址本輪沒有重讀。</p>
+<main><div class="eyebrow">奇聞檔案局 · 素材池 ${pool.revision}</div><h1>${pool.counts.canonical_cores} 個核心題，先找值得開的檔案</h1><p>題庫、已製作的集數、分支上的草稿與新研究的題，依核心答案去重並分成 9 大類放在一起。每筆保留原 ID、合併的原題、來源與定位。</p><p class="warning">這是選題用的素材池，不是查核過的劇本。「入選」只代表有可追溯來源；「候補」的題目卡還沒查；舊查核檔的網址本輪沒有重讀。</p>
 <div class="stats"><div class="stat"><b>${pool.counts.selected_candidates}</b>入選</div><div class="stat"><b>${pool.counts.reserve_candidates}</b>候補（待研究）</div><div class="stat"><b>${pool.counts.produced_cores}</b>已製作／製作中</div><div class="stat"><b>${pool.counts.alias_records}</b>併入別題</div><div class="stat"><b>${pool.counts.excluded_cores + pool.counts.shorts_candidates}</b>淘汰／轉出／轉 Shorts</div><div class="stat"><b>${themes.episodes.length}</b>影片題案</div></div>
-<p><a href="THEMES.md">影片題案與片長</a> · <a href="DEDUP.md">去重與淘汰紀錄</a> · <a href="SOURCES.md">來源索引</a> · <a href="QUESTIONS.md">全部題目</a> · <a href="README.md">這個池怎麼建</a></p>
-<label for="q">找題目</label><div class="controls"><input id="q" type="search" placeholder="例如：1947、燈塔、預言、格林" aria-label="搜尋題目"><select id="axis" aria-label="軸"><option value="">全部軸</option></select><select id="status" aria-label="狀態"><option value="">全部狀態</option></select><select id="theme" aria-label="影片題案"><option value="">全部題目</option></select></div><p id="count" aria-live="polite"></p><section id="results"></section><button id="more">再顯示 50 筆</button></main>
+<p><a href="PRODUCIBLE.html">可成片清單</a> · <a href="THEMES.md">影片題案與片長</a> · <a href="DEDUP.md">去重與淘汰紀錄</a> · <a href="SOURCES.md">來源索引</a> · <a href="QUESTIONS.md">全部題目</a> · <a href="README.md">這個池怎麼建</a></p>
+<label for="q">找題目</label><div class="controls"><input id="q" type="search" placeholder="例如：1947、燈塔、預言、格林" aria-label="搜尋題目"><select id="axis" aria-label="分類"><option value="">全部分類（9 類）</option></select><select id="status" aria-label="狀態"><option value="">全部狀態</option></select><select id="theme" aria-label="影片題案"><option value="">全部題目</option></select></div><p id="count" aria-live="polite"></p><section id="results"></section><button id="more">再顯示 50 筆</button></main>
 <script type="application/json" id="data">${payload}</script>
 <script>
 const data=JSON.parse(document.getElementById('data').textContent),sources=new Map(data.sources.map(x=>[x.id,x]));
 const q=document.getElementById('q'),axis=document.getElementById('axis'),status=document.getElementById('status'),theme=document.getElementById('theme'),results=document.getElementById('results'),more=document.getElementById('more');let limit=50;
-for(const [k,v] of Object.entries(data.axes)){const o=document.createElement('option');o.value=k;o.textContent=k+' '+v;axis.append(o)}
+for(const v of Object.values(data.categories)){const o=document.createElement('option');o.value=v;o.textContent=v;axis.append(o)}
 for(const [k,v] of Object.entries(data.statuses)){if(k==='excluded')continue;const o=document.createElement('option');o.value=k;o.textContent=v;status.append(o)}
-for(const t of data.themes){const o=document.createElement('option');o.value=t.id;o.textContent=t.id+' '+t.title;theme.append(o)}
+for(const t of data.themes){const o=document.createElement('option');o.value=t.id;o.textContent=t.id+' ['+t.category+'] '+t.title;theme.append(o)}
 function el(tag,text,cls){const e=document.createElement(tag);e.textContent=text;if(cls)e.className=cls;return e}
-function render(){const term=q.value.trim().toLocaleLowerCase();const t=data.themes.find(x=>x.id===theme.value);const rows=data.candidates.filter(x=>(!axis.value||x.axis===axis.value)&&(!status.value||x.pool_status===status.value)&&(!t||t.candidate_ids.includes(x.id))&&(!term||(x.id+' '+x.question+' '+x.hook+' '+x.answer_target+' '+JSON.stringify(x.aliases)).toLocaleLowerCase().includes(term)));results.replaceChildren();document.getElementById('count').textContent='找到 '+rows.length+' 筆 · 顯示 '+Math.min(rows.length,limit)+' 筆';for(const row of rows.slice(0,limit)){const card=el('article','');card.id=row.id;card.append(el('span',row.id,'tag'),el('span',row.domain,'tag'),el('span',row.status_label,'tag'),el('h2',row.question));if(row.hook)card.append(el('p',row.hook));if(row.editorial)card.append(el('p','素材估計：'+row.editorial.minutes.join('–')+' 分鐘（'+(row.editorial.role==='chapter'?'撐不起單集，要跟兄弟題併':'可當一集的主幹')+'；未試讀）','muted'));if(row.disposition)card.append(el('p','處置：'+row.disposition.reason,'muted'));if(row.scope_status==='not_yet_scoped')card.append(el('span','範圍未界定','tag'));const detail=el('details','');detail.append(el('summary','紀錄怎麼說、合併的原題與來源'));const body=el('div','','detail');if(row.answer_target)body.append(el('p','紀錄：'+row.answer_target));body.append(row.scope_status==='not_yet_scoped'?el('p','範圍未界定：'+row.scope,'warning'):el('p','範圍：'+row.scope,'muted'));if(row.notes)body.append(el('p',row.notes,'muted'));for(const a of row.aliases)body.append(el('p','合併原題 '+a.id+'：'+a.question,'muted'));for(const p of row.production)body.append(el('p','製作位置：'+p,'muted'));const ul=el('ul','','sources');for(const id of [...new Set(row.source_refs.map(x=>x.source_id))]){const s=sources.get(id);const refs=row.source_refs.filter(x=>x.source_id===id);const reading=s.readings.find(x=>refs.some(r=>r.origin===x.origin))||s.readings[0];const li=el('li','');const a=el('a',reading.origin.startsWith('legacy:')?(new URL(s.url).hostname+new URL(s.url).pathname).slice(0,80):reading.title);a.href=s.url;a.target='_blank';a.rel='noopener noreferrer';li.append(a,el('small',' — '+reading.publisher+' · '+(reading.accessed_on||'歷史引用，本輪未讀')));for(const ref of refs)li.append(el('div','定位：'+ref.locator,'muted'));if(reading.limitations)li.append(el('div','限制：'+reading.limitations,'muted'));ul.append(li)}if(!row.source_refs.length)body.append(el('p','還沒有可追溯來源。','muted'));body.append(ul);detail.append(body);card.append(detail);results.append(card)}more.hidden=rows.length<=limit}
+function render(){const term=q.value.trim().toLocaleLowerCase();const t=data.themes.find(x=>x.id===theme.value);const rows=data.candidates.filter(x=>(!axis.value||x.category===axis.value)&&(!status.value||x.pool_status===status.value)&&(!t||t.candidate_ids.includes(x.id))&&(!term||(x.id+' '+x.category+' '+x.question+' '+x.hook+' '+x.answer_target+' '+JSON.stringify(x.aliases)).toLocaleLowerCase().includes(term)));results.replaceChildren();document.getElementById('count').textContent='找到 '+rows.length+' 筆 · 顯示 '+Math.min(rows.length,limit)+' 筆';for(const row of rows.slice(0,limit)){const card=el('article','');card.id=row.id;card.append(el('span',row.id,'tag'),el('span',row.category,'tag'),el('span',row.status_label,'tag'),el('h2',row.question));if(row.hook)card.append(el('p',row.hook));if(row.editorial)card.append(el('p','素材估計：'+row.editorial.minutes.join('–')+' 分鐘（'+(row.editorial.role==='chapter'?'撐不起單集，要跟兄弟題併':'可當一集的主幹')+'；未試讀）','muted'));if(row.disposition)card.append(el('p','處置：'+row.disposition.reason,'muted'));if(row.scope_status==='not_yet_scoped')card.append(el('span','範圍未界定','tag'));const detail=el('details','');detail.append(el('summary','紀錄怎麼說、合併的原題與來源'));const body=el('div','','detail');if(row.answer_target)body.append(el('p','紀錄：'+row.answer_target));body.append(row.scope_status==='not_yet_scoped'?el('p','範圍未界定：'+row.scope,'warning'):el('p','範圍：'+row.scope,'muted'));if(row.notes)body.append(el('p',row.notes,'muted'));for(const a of row.aliases)body.append(el('p','合併原題 '+a.id+'：'+a.question,'muted'));for(const p of row.production)body.append(el('p','製作位置：'+p,'muted'));const ul=el('ul','','sources');for(const id of [...new Set(row.source_refs.map(x=>x.source_id))]){const s=sources.get(id);const refs=row.source_refs.filter(x=>x.source_id===id);const reading=s.readings.find(x=>refs.some(r=>r.origin===x.origin))||s.readings[0];const li=el('li','');const a=el('a',reading.origin.startsWith('legacy:')?(new URL(s.url).hostname+new URL(s.url).pathname).slice(0,80):reading.title);a.href=s.url;a.target='_blank';a.rel='noopener noreferrer';li.append(a,el('small',' — '+reading.publisher+' · '+(reading.accessed_on||'歷史引用，本輪未讀')));for(const ref of refs)li.append(el('div','定位：'+ref.locator,'muted'));if(reading.limitations)li.append(el('div','限制：'+reading.limitations,'muted'));ul.append(li)}if(!row.source_refs.length)body.append(el('p','還沒有可追溯來源。','muted'));body.append(ul);detail.append(body);card.append(detail);results.append(card)}more.hidden=rows.length<=limit}
 for(const control of [q,axis,status,theme])control.addEventListener('input',()=>{limit=50;render()});more.addEventListener('click',()=>{limit+=50;render()});if(location.hash){try{q.value=decodeURIComponent(location.hash.slice(1))}catch{q.value=''}}render();
 </script></html>
 `;
@@ -171,9 +189,9 @@ export function producibleData(pool, themes) {
   const short = (text, n) => { const value = (text ?? '').trim(); return value.length <= n ? value : `${value.slice(0, n)}…`; };
   const ready = themes.episodes.filter((episode) => materialReady(episode) && episode.candidate_ids.every((id) => byId.get(id)?.selected));
   return {
-    revision: pool.revision, axes: pool.axes,
-    themes: ready.map((episode) => ({ id: episode.id, title: episode.title, minutes: episode.target_minutes, q: episode.core_question, chapters: episode.chapters.length, cores: episode.candidate_ids.map((id) => ({ id, axis: byId.get(id).axis, q: byId.get(id).question })) })),
-    solo: pool.candidates.filter((row) => row.selected && !used.has(row.id)).map((row) => ({ id: row.id, axis: row.axis, q: row.question, hook: short(row.hook, 110), min: row.editorial ? row.editorial.minutes : null, src: new Set(row.source_refs.map((ref) => ref.source_id)).size, kind: row.id.startsWith('N') ? 'new' : row.screened_in ? 'screened' : 'checked' })),
+    revision: pool.revision, axes: pool.axes, categories: CATEGORY_LIST,
+    themes: ready.map((episode) => ({ id: episode.id, category: themeCategory(episode, byId), title: episode.title, minutes: episode.target_minutes, q: episode.core_question, chapters: episode.chapters.length, cores: episode.candidate_ids.map((id) => ({ id, axis: byId.get(id).axis, category: rowCategory(byId.get(id)), q: byId.get(id).question })) })),
+    solo: pool.candidates.filter((row) => row.selected && !used.has(row.id)).map((row) => ({ id: row.id, axis: row.axis, category: rowCategory(row), q: row.question, hook: short(row.hook, 110), min: row.editorial ? row.editorial.minutes : null, src: new Set(row.source_refs.map((ref) => ref.source_id)).size, kind: row.id.startsWith('N') ? 'new' : row.screened_in ? 'screened' : 'checked' })),
   };
 }
 
@@ -184,7 +202,7 @@ export function renderProducible(pool, themes) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: a case-file register — summary strip, then two drawers (multi-topic episodes, single episodes) filtered by axis. */
+/* Layout: a case-file register — summary strip, then two drawers (multi-topic episodes, single episodes) filtered by category. */
 :root{
   --bg:#f1f2ee; --paper:#fbfbf8; --ink:#1f2433; --muted:#5d6271; --line:#d9dbd3;
   --accent:#6b3fa0; --accent-soft:#ece4f6; --tab:#e6e7e0; --ok:#2f7d5b;
@@ -234,7 +252,7 @@ footer a{color:var(--accent)}
   <header>
     <div class="eyebrow">奇聞檔案局 · 素材池 ${pool.revision}</div>
     <h1>現在就能排製作的題目</h1>
-    <p class="lede">每一題的核心前提都有兩個以上可讀來源，也經過非作者覆核。分兩種：幾題併成一集的題案，與單獨成一集的題。寫企劃前仍要照系列流程逐條查核。</p>
+    <p class="lede">每一題的核心前提都有兩個以上可讀來源，也經過非作者覆核。分兩種：幾題併成一集的題案，與單獨成一集的題；依 9 個系列分類篩選。寫企劃前仍要照系列流程逐條查核。</p>
   </header>
   <div class="strip" id="strip"></div>
   <p class="note">由 <code>tools/video/curio/pool</code> 的 build 產生，素材池更新時跟著更新。片長規則：每集 8–13 分鐘，看素材決定。</p>
@@ -243,7 +261,7 @@ footer a{color:var(--accent)}
       <button role="tab" id="tab-themes" aria-selected="true">多題一集</button>
       <button role="tab" id="tab-solo" aria-selected="false">單題一集</button>
     </div>
-    <select id="axis" aria-label="軸"><option value="">全部軸</option></select>
+    <select id="axis" aria-label="分類"><option value="">全部分類</option></select>
     <input id="q" type="search" placeholder="搜尋：年份、人物、地名" aria-label="搜尋">
   </div>
   <p id="count" aria-live="polite"></p>
@@ -258,8 +276,8 @@ const el=(t,c,txt)=>{const e=document.createElement(t);if(c)e.className=c;if(txt
 let mode='themes';
 try{const m=localStorage.getItem('curio-mode');if(m==='solo'||m==='themes')mode=m}catch(e){}
 const KIND={new:'新題',screened:'舊卡篩選',checked:'完整查核'};
-const axesUsed=new Set([...D.themes.flatMap(t=>t.cores.map(c=>c.axis)),...D.solo.map(s=>s.axis)]);
-for(const [k,v] of Object.entries(D.axes)){if(!axesUsed.has(k))continue;const o=el('option',null,k+' '+v);o.value=k;$('axis').append(o)}
+const catsUsed=new Set([...D.themes.map(t=>t.category),...D.themes.flatMap(t=>t.cores.map(c=>c.category)),...D.solo.map(s=>s.category)]);
+for(const cat of D.categories){if(!catsUsed.has(cat))continue;const o=el('option',null,cat);o.value=cat;$('axis').append(o)}
 const coreTotal=D.themes.reduce((n,t)=>n+t.cores.length,0);
 for(const [n,l] of [[D.themes.length,'組多題題案（共 '+coreTotal+' 題）'],[D.solo.length,'題單獨成集'],[D.themes.length+D.solo.length,'集可以排']]){const s=el('div','stat');s.append(el('b',null,String(n)),el('span',null,l));$('strip').append(s)}
 function setMode(m){mode=m;$('tab-themes').setAttribute('aria-selected',m==='themes');$('tab-solo').setAttribute('aria-selected',m==='solo');try{localStorage.setItem('curio-mode',m)}catch(e){}render()}
@@ -270,25 +288,25 @@ function render(){
   let n=0;
   if(mode==='themes'){
     for(const t of D.themes){
-      if(ax&&!t.cores.some(c=>c.axis===ax))continue;
-      const hay=(t.id+t.title+t.q+t.cores.map(c=>c.id+c.q).join('')).toLowerCase();
+      if(ax&&t.category!==ax&&!t.cores.some(c=>c.category===ax))continue;
+      const hay=(t.id+t.category+t.title+t.q+t.cores.map(c=>c.id+c.q).join('')).toLowerCase();
       if(term&&!hay.includes(term))continue;n++;
       const c=el('article','card');const m=el('div','meta');
-      m.append(el('span','id',t.id),el('span','pill min',t.minutes+' 分鐘'),el('span','pill',t.cores.length+' 題 · '+t.chapters+' 章'));
+      m.append(el('span','id',t.id),el('span','pill',t.category),el('span','pill min',t.minutes+' 分鐘'),el('span','pill min',t.cores.length+' 題 · '+t.chapters+' 章'));
       const ul=el('ul','cores');for(const k of t.cores){const li=el('li');li.append(el('span','id',k.id),el('span',null,k.q));ul.append(li)}
       c.append(m,el('h2',null,t.title),el('p',null,t.q),ul);list.append(c);
     }
   }else{
     for(const s of D.solo){
-      if(ax&&s.axis!==ax)continue;
-      if(term&&!(s.id+s.q+s.hook).toLowerCase().includes(term))continue;n++;
+      if(ax&&s.category!==ax)continue;
+      if(term&&!(s.id+s.category+s.q+s.hook).toLowerCase().includes(term))continue;n++;
       const c=el('article','card');const m=el('div','meta');
-      m.append(el('span','id',s.id),el('span','pill',(D.axes[s.axis]||s.axis)),el('span','pill min',s.min?('素材 '+s.min.join('–')+' 分'):'片長待企劃'),el('span','pill min',KIND[s.kind]+' · '+s.src+' 來源'));
+      m.append(el('span','id',s.id),el('span','pill',s.category),el('span','pill min',s.min?('素材 '+s.min.join('–')+' 分'):'片長待企劃'),el('span','pill min',KIND[s.kind]+' · '+s.src+' 來源'));
       c.append(m,el('h2',null,s.q));if(s.hook)c.append(el('p',null,s.hook));list.append(c);
     }
   }
   $('count').textContent=(mode==='themes'?'多題一集':'單題一集')+'：顯示 '+n+' 筆';
-  if(!n)list.append(el('p','empty','沒有符合條件的題目，換個關鍵字或軸看看。'));
+  if(!n)list.append(el('p','empty','沒有符合條件的題目，換個關鍵字或分類看看。'));
 }
 setMode(mode);
 </script>

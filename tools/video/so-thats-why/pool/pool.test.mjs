@@ -3,10 +3,10 @@ import test from 'node:test';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { assemble, normalizeUrl, urlsIn, readPool, similarityPairs, validateEditorial, DIR, ROOT } from './core.mjs';
+import { assemble, normalizeUrl, urlsIn, readPool, similarityPairs, validateEditorial, CATEGORIES, classifyCandidate, DIR, ROOT } from './core.mjs';
 import { readBaseline, compareBaseline, validateBaseline, validateCheckpoints, sourceImpact } from './history.mjs';
 import { openStore, ingest, assertSnapshot, search, lookup } from './store.mjs';
-import { validateThemes, renderHtml, readingsForCandidate } from './render.mjs';
+import { validateThemes, renderHtml, renderProducible, readingsForCandidate } from './render.mjs';
 
 const source = (id) => ({ id, url: `https://example.org/${id}`, readings: [{ origin: 'fixture', title: id, publisher: 'fixture', accessed_on: '2026-11-01', reading_scope: 'test fixture' }] });
 const record = (id, question, target = 'different mechanism') => ({ id, origin: 'fixture', question, domain: 'test', mechanism_key: id, answer_target: target, scope: 'fixture scope', source_refs: [{ source_id: id, locator: `section ${id}` }], premise_status: 'screened', eligible: true, notes: '', local_references: [] });
@@ -411,4 +411,18 @@ test('themes cannot reference excluded records or masquerade as approved scripts
   assert.throws(() => validateThemes({ episodes: [{ ...theme, material: { ...review, verdict: 'reserve', est_minutes: 7.2 } }] }, pool), /says what is missing/);
   assert.throws(() => validateThemes({ episodes: [{ ...theme, material: { ...review, verdict: 'merge', est_minutes: 7.2, missing: 'x' } }] }, pool), /names what it merges with/);
   assert.throws(() => validateThemes({ episodes: [{ ...theme, material: { ...review, verdict: 'maybe', est_minutes: 9 } }] }, pool), /needs a verdict/);
+  assert.throws(() => validateThemes({ episodes: [{ ...theme, category: '不存在的分類' }] }, pool), /unknown category/);
+  assert.ok(!renderProducible(pool, { episodes: [theme] }).includes('</script><script>alert(1)</script>'));
+});
+
+test('every committed candidate and theme carries one of the 7 Drive categories', () => {
+  assert.equal(CATEGORIES.length, 7);
+  assert.equal(classifyCandidate({ id: 'LEG-S46', domain: 'science', question: '為什麼煮義大利麵要在水裡加鹽？' }), '飲食與廚房科學');
+  assert.equal(classifyCandidate({ id: 'L60-001', domain: '動物社會資訊與群體決策', question: '文化學習' }), '生物動物與植物');
+  assert.equal(classifyCandidate({ id: 'S52-001', domain: '量測與地圖', question: '海拔高度' }), '地球天氣與太空');
+  const pool = readPool();
+  assert.ok(pool.candidates.every((row) => CATEGORIES.includes(row.category)));
+  const themes = JSON.parse(fs.readFileSync(path.join(ROOT, DIR, 'themes.json'), 'utf8'));
+  assert.ok(themes.episodes.every((episode) => CATEGORIES.includes(episode.category)));
+  validateThemes(themes, pool);
 });

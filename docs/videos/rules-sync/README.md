@@ -22,7 +22,7 @@ AI劇/
   種田娶妻打天下/_規則與教訓/          ← 第 1 層：設定、大綱、分鏡規則、第一季檢討…
   種田娶妻打天下（真人版）/_規則與教訓/ ← 第 1 層：r2 角色與場景設定、原作設定
   恁祖媽今年18/_規則與教訓/            ← 第 1 層：設定、各季、試鏡決定
-  <劇>/<集數>/教訓/<slug>-NOTES.md    ← 第 2 層：單集的製作紀錄（NOTES、PRODUCTION-NOTES、production-record、lessons）
+  <劇>/<集數>/教訓/<slug>-NOTES.md    ← 第 2 層：單集的製作紀錄（奇聞與原來如此為 <系列>/<分類>/<代碼>/教訓/）
 ```
 
 做一集時讀：`_共用規則/`、該劇的 `_規則與教訓/`、上一集的 `教訓/`。
@@ -52,7 +52,7 @@ node docs/videos/rules-sync/sync.mjs --docker-image travel-scanner-video-worker:
 ```
 
 - 讀 `origin/main`（先 fetch），不看工作目錄在哪個分支；也可以 `--ref` 指定。
-- `rclone sync` 只動它管的資料夾：`AI劇/_共用規則/`、`AI劇/*/_規則與教訓/`、`AI劇/*/*/教訓/`。其他地方（成片、製作檔）一律不碰。
+- `rclone sync` 只動它管的資料夾：`AI劇/_共用規則/`、`AI劇/*/_規則與教訓/`、`AI劇/*/*/教訓/`、`AI劇/*/*/*/教訓/`。其他地方（成片、製作檔）一律不碰。
   這三種資料夾是同步專用的，不要手動放東西進去；放了會在下一次同步被移到 `_舊版`。
 - 被換掉或 repo 已刪除的檔，移到 `AI劇/_舊版-規則同步/<UTC 時間>/`，不會真的刪。
 - 同步後 `rclone check --one-way` 逐檔核對，印出 `rules-sync: N files, M copies at <commit>, D differences`；D 不是 0 就以非 0 結束。

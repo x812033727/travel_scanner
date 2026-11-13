@@ -19,6 +19,186 @@ export function normalizeUrl(value) {
   return url.href;
 }
 
+export const CATEGORIES = Object.freeze([
+  '物理化學與日常材料',
+  '生物動物與植物',
+  '地球天氣與太空',
+  '數位科技與通訊工程',
+  '飲食與廚房科學',
+  '人體感官與日常行為',
+  '建築交通與商業制度',
+]);
+
+const LEGACY_CATEGORY_OVERRIDES = Object.freeze({
+  'LEG-S01': '建築交通與商業制度',
+  'LEG-S02': '地球天氣與太空',
+  'LEG-S03': '飲食與廚房科學',
+  'LEG-S04': '生物動物與植物',
+  'LEG-S05': '人體感官與日常行為',
+  'LEG-S06': '人體感官與日常行為',
+  'LEG-S07': '物理化學與日常材料',
+  'LEG-S08': '飲食與廚房科學',
+  'LEG-S09': '飲食與廚房科學',
+  'LEG-S10': '人體感官與日常行為',
+  'LEG-S11': '數位科技與通訊工程',
+  'LEG-S12': '地球天氣與太空',
+  'LEG-S13': '物理化學與日常材料',
+  'LEG-S14': '人體感官與日常行為',
+  'LEG-S15': '物理化學與日常材料',
+  'LEG-S16': '建築交通與商業制度',
+  'LEG-S17': '數位科技與通訊工程',
+  'LEG-S18': '地球天氣與太空',
+  'LEG-S19': '飲食與廚房科學',
+  'LEG-S20': '人體感官與日常行為',
+  'LEG-S21': '地球天氣與太空',
+  'LEG-S22': '建築交通與商業制度',
+  'LEG-S23': '地球天氣與太空',
+  'LEG-S24': '人體感官與日常行為',
+  'LEG-S25': '人體感官與日常行為',
+  'LEG-S26': '人體感官與日常行為',
+  'LEG-S27': '物理化學與日常材料',
+  'LEG-S28': '地球天氣與太空',
+  'LEG-S29': '地球天氣與太空',
+  'LEG-S30': '飲食與廚房科學',
+  'LEG-S31': '飲食與廚房科學',
+  'LEG-S32': '地球天氣與太空',
+  'LEG-S33': '物理化學與日常材料',
+  'LEG-S34': '生物動物與植物',
+  'LEG-S35': '生物動物與植物',
+  'LEG-S36': '物理化學與日常材料',
+  'LEG-S37': '人體感官與日常行為',
+  'LEG-S38': '人體感官與日常行為',
+  'LEG-S39': '人體感官與日常行為',
+  'LEG-S40': '人體感官與日常行為',
+  'LEG-S41': '生物動物與植物',
+  'LEG-S42': '地球天氣與太空',
+  'LEG-S43': '地球天氣與太空',
+  'LEG-S44': '物理化學與日常材料',
+  'LEG-S45': '人體感官與日常行為',
+  'LEG-S46': '飲食與廚房科學',
+  'LEG-S47': '生物動物與植物',
+  'LEG-S48': '地球天氣與太空',
+  'LEG-S49': '物理化學與日常材料',
+  'LEG-S50': '飲食與廚房科學',
+  'LEG-S51': '人體感官與日常行為',
+  'LEG-S52': '人體感官與日常行為',
+  'LEG-S53': '物理化學與日常材料',
+  'LEG-S54': '飲食與廚房科學',
+  'LEG-S55': '飲食與廚房科學',
+  'LEG-S56': '地球天氣與太空',
+  'LEG-S57': '地球天氣與太空',
+  'LEG-S58': '地球天氣與太空',
+  'LEG-S59': '生物動物與植物',
+  'LEG-S60': '生物動物與植物',
+  'LEG-S61': '生物動物與植物',
+  'LEG-S62': '生物動物與植物',
+  'LEG-S63': '生物動物與植物',
+  'LEG-S64': '人體感官與日常行為',
+  'LEG-S65': '人體感官與日常行為',
+  'LEG-S66': '人體感官與日常行為',
+  'LEG-S67': '人體感官與日常行為',
+  'LEG-S68': '物理化學與日常材料',
+  'LEG-S69': '物理化學與日常材料',
+  'LEG-S70': '物理化學與日常材料',
+  'LEG-S71': '飲食與廚房科學',
+  'LEG-S72': '物理化學與日常材料',
+  'LEG-S73': '飲食與廚房科學',
+  'LEG-S74': '人體感官與日常行為',
+  'LEG-S75': '人體感官與日常行為',
+  'LEG-S76': '物理化學與日常材料',
+  'LEG-S77': '物理化學與日常材料',
+  'LEG-S78': '物理化學與日常材料',
+  'LEG-S79': '飲食與廚房科學',
+  'LEG-S80': '地球天氣與太空',
+  'LEG-S81': '物理化學與日常材料',
+  'LEG-S82': '地球天氣與太空',
+  'LEG-S83': '地球天氣與太空',
+  'LEG-S84': '地球天氣與太空',
+  'LEG-S85': '物理化學與日常材料',
+  'LEG-S86': '數位科技與通訊工程',
+  'LEG-S87': '物理化學與日常材料',
+  'LEG-S88': '物理化學與日常材料',
+  'P52-008': '地球天氣與太空',
+  'P52-009': '地球天氣與太空',
+  'P52-010': '地球天氣與太空',
+});
+
+export function classifyCandidate(row) {
+  if (row.category && CATEGORIES.includes(row.category)) return row.category;
+  if (LEGACY_CATEGORY_OVERRIDES[row.id]) return LEGACY_CATEGORY_OVERRIDES[row.id];
+  const d = (row.domain || '').toLowerCase();
+  const q = row.question || '';
+  const o = (row.origin || '').toLowerCase();
+
+  if (d === 'business') return '建築交通與商業制度';
+  if (d === 'travel') return /時差|暈機/.test(q) ? '人體感官與日常行為' : '建築交通與商業制度';
+  if (d === 'tech') {
+    if (/電動車.*一檔|遊戲主機.*賠錢|搜尋.*免費/.test(q)) return '建築交通與商業制度';
+    return '數位科技與通訊工程';
+  }
+  if (d === 'weather_sky') return '地球天氣與太空';
+
+  if (
+    /食物|食品|廚房|烹調|烹飪|料理|烘焙|發酵|乳品|乳脂|乳酪|起司|咖啡|茶葉|釀造|酒|巧克力|糖晶|澱粉|麵團|麵筋|烤肉|梅納|焦糖|鍋巴|食材|蔬果保鮮|冷藏蔬果|冷凍肉|冷傷|調味料|味覺與飲食|飲食|保鮮|罐頭|醃漬|油炸|煮沸|爆米花|風味從哪裡來/.test(d) ||
+    o.includes('-food-')
+  ) {
+    if (d === '食物網') return '生物動物與植物';
+    return '飲食與廚房科學';
+  }
+
+  if (
+    /動物|植物|生物|昆蟲|鳥類|魚類|海洋生物|哺乳|爬蟲|兩棲|無脊椎|真菌|微生物|細菌|病毒|細胞|基因|dna|遺傳|演化|物種|族群|生態|種子|果實|花|樹|葉|根|光合作用|授粉|寄生|共生|捕食|冬眠|隱生|水熊蟲|蜘蛛|黏菌|蟻|蜂|珊瑚|化石與古生物|古足跡|足跡與化石|週期蟬/.test(d) ||
+    o.includes('-animal') || o.includes('-plant') || o.includes('-bio') || o.includes('-microb') || o.includes('-seeds') || o.includes('-whale') || o.includes('-flowe') || o.includes('-wood-') || o.includes('-tracks')
+  ) {
+    if (o.includes('-wood-') && /木材|家具|木板/.test(q) && !/樹幹|導管|活樹/.test(q)) return '物理化學與日常材料';
+    if (o.includes('-rings') || /年輪裡的歷史/.test(d)) return '地球天氣與太空';
+    if (/人體|人類視覺|人腦|說話|閱讀/.test(d)) return '人體感官與日常行為';
+    return '生物動物與植物';
+  }
+
+  if (
+    /交通|城市|建築|土木|橋梁|隧道|道路|街道|鐵路|鐵軌|高鐵|列車|飛機|航空|船舶|車輛|汽車|輪胎|號誌|黃燈|紅綠燈|塞車|車流|用水與污水|水處理|電網調度|商業|價格|定價|拍賣|市場|金融|支付|保險|制度|法律|標準|檢驗|抽樣|排隊|物流|供應鏈|住家建築|室內環境|古蹟|考古器物/.test(d) ||
+    o.includes('-transp') || o.includes('-arch-') || o.includes('-struc')
+  ) {
+    return '建築交通與商業制度';
+  }
+
+  if (
+    /資訊|數位|網路|網頁|電腦|半導體|晶片|密碼|加密|通訊|雷達觀測|衛星定位|gps|電子|電路|電源|電池|感測器|影像壓縮|音訊編碼|光電|檔案系統|記憶體|演算法|軟體|ai|機器學習|無線|藍牙|wi-fi|光纖|編碼|條碼|qr|時間同步|伺服器/.test(d) ||
+    o.includes('-tech') || o.includes('-digit') || o.includes('-inform') || o.includes('-networ') || o.includes('-electr') || o.includes('-imagi') || o.includes('-image')
+  ) {
+    if (/靜電|磁學/.test(d)) return '物理化學與日常材料';
+    if (/天氣|氣象|大氣|海洋|地質|冰河|太陽風暴|太空天氣|小天體|行星|黑洞|地圖/.test(d)) return '地球天氣與太空';
+    if (/光學、成像與量測|量測與資料判讀/.test(d)) {
+      return /電腦|數位|感測|相機|像素|快門|壓縮|演算法/.test(q) ? '數位科技與通訊工程' : '物理化學與日常材料';
+    }
+    return '數位科技與通訊工程';
+  }
+
+  if (
+    /天文|宇宙|太空|行星|恆星|月球|太陽|黑洞|小行星|小天體|彗星|隕石|軌道|天氣|氣象|大氣|雲|雨滴|雷電|颱風|風暴|海洋|海浪|潮汐|海嘯|深海熱泉|海水|地質|地震|火山|斷層|岩石|礦物|地形|地圖|冰河|冰雪|凍土|地下水|河流|海岸|板塊|地球|古氣候|冰芯|海底/.test(d) ||
+    o.includes('-earth') || o.includes('-astro') || o.includes('-space') || o.includes('-weathe') || o.includes('-landf') || o.includes('-lande') || o.includes('-rings') || o.includes('-seafl')
+  ) {
+    if (/雨滴碰撞/.test(d) && !/雷達|氣象|土壤侵蝕/.test(q)) return '物理化學與日常材料';
+    return '地球天氣與太空';
+  }
+
+  if (
+    /知覺|記憶|身體|感官|視覺|聽覺|觸覺|嗅覺|味覺|前庭|大腦|神經|睡眠|生理|呼吸|心跳|血液|體溫|流汗|皮膚|肌肉|骨骼|步行|運動生理|疼痛|痛覺|錯覺|注意力|認知|行為與學習|決策心理|選擇偏誤|說話|語音知覺|讀一行字|閱讀|用手觸碰|聲音知覺/.test(d) ||
+    o.includes('-cognit') || o.includes('-body-') || o.includes('-sensi') || o.includes('-perce') || o.includes('-speec') || o.includes('-touch') || o.includes('-readi') || o.includes('-choic')
+  ) {
+    return '人體感官與日常行為';
+  }
+
+  if (o.includes('-life')) return '生物動物與植物';
+  if (o.includes('-human')) {
+    if (/價格|拍賣|排隊|車流|紅綠燈|黃燈|號誌|制度|檢驗|抽樣|稅|商業|交通|建築/.test(`${q} ${d}`)) return '建築交通與商業制度';
+    return '人體感官與日常行為';
+  }
+
+  return '物理化學與日常材料';
+}
+
 export function checkpointFiles(root = ROOT) {
   const registry = parse(root, `${DIR}/checkpoints.json`);
   if (!Array.isArray(registry.checkpoints) || !registry.checkpoints.length || new Set(registry.checkpoints).size !== registry.checkpoints.length || registry.checkpoints.some((file) => !/^checkpoint-\d+\.json$/.test(file))) throw new Error('Invalid required checkpoint registry');
@@ -27,6 +207,7 @@ export function checkpointFiles(root = ROOT) {
 }
 
 export function validateEditorial(row, { required = true } = {}) {
+  if (row.category !== undefined && !CATEGORIES.includes(row.category)) throw new Error(`${row.id}: invalid category ${row.category}`);
   if (row.editorial === undefined && !required) return; // Only frozen historical IDs are exempt.
   const value = row.editorial;
   if (!value || !['segment', 'theme_seed'].includes(value.role) || typeof value.payoff !== 'string' || !value.payoff.trim() || typeof value.visual !== 'string' || !value.visual.trim()) throw new Error(`${row.id}: invalid editorial role, payoff or visual`);
@@ -276,7 +457,7 @@ export function assemble(input, decisions = { merges: [], distinct: [], excluded
     });
     if (eligible && rules.length && !sourceRefs.length) throw new Error(`${id}: excluded_source_refs cannot remove every source reference from an eligible candidate`);
     return {
-      ...main, id, eligible, selected: false,
+      ...main, id, category: classifyCandidate(main), eligible, selected: false,
       aliases: members.map((record) => record.id).filter((member) => member !== id),
       question_variants: members.filter((record) => record.id !== id).map((record) => ({ id: record.id, question: record.question, answer_target: record.answer_target, scope: record.scope })),
       source_refs: sourceRefs,
@@ -304,9 +485,14 @@ export function assemble(input, decisions = { merges: [], distinct: [], excluded
     if (selected.length !== selection.target_count) throw new Error('Selected count does not match reviewed target');
     if (pending.length) throw new Error(`${pending.length} high-similarity pairs still need editorial decisions`);
   }
+  const byCategory = Object.fromEntries(CATEGORIES.map((cat) => [cat, {
+    canonical: candidates.filter((row) => row.category === cat).length,
+    selected: selected.filter((row) => row.category === cat).length,
+  }]));
   return {
     schema_version: 1, revision: selection?.revision ?? 'unversioned-draft', status: selection ? 'CURATED_CANDIDATE_POOL_NOT_PRODUCTION' : 'DRAFT_INTAKE',
-    counts: { raw_records: input.records.length, canonical_questions: candidates.length, eligible_candidates: candidates.filter((candidate) => candidate.eligible).length, selected_candidates: selected.length, alias_records: input.records.length - candidates.length, historical_records: input.records.filter((record) => record.origin === 'legacy').length, source_urls: input.sources.length, current_research_source_urls: input.sources.filter((source) => source.readings.some((reading) => !reading.origin.startsWith('legacy:'))).length, selected_source_urls: new Set(selected.flatMap((row) => row.source_refs.map((ref) => ref.source_id))).size, new_suggestions_not_added: input.not_added?.length ?? 0, high_similarity_pending: pending.length, approved_scripts: 0 },
+    categories: CATEGORIES,
+    counts: { raw_records: input.records.length, canonical_questions: candidates.length, eligible_candidates: candidates.filter((candidate) => candidate.eligible).length, selected_candidates: selected.length, alias_records: input.records.length - candidates.length, historical_records: input.records.filter((record) => record.origin === 'legacy').length, source_urls: input.sources.length, current_research_source_urls: input.sources.filter((source) => source.readings.some((reading) => !reading.origin.startsWith('legacy:'))).length, selected_source_urls: new Set(selected.flatMap((row) => row.source_refs.map((ref) => ref.source_id))).size, new_suggestions_not_added: input.not_added?.length ?? 0, high_similarity_pending: pending.length, approved_scripts: 0, by_category: byCategory },
     inputs: input.inputs, sources: input.sources, candidates, raw_records: input.records,
     dedup: { aliases, merges: links, distinct: decisions.distinct ?? [], excluded: decisions.excluded ?? [], ...(excludedSourceRefs.length ? { excluded_source_refs: excludedSourceRefs } : {}), potential_pairs: pairs, required_pending: pending, method: 'exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence' },
     selection: selection ?? null, not_added: input.not_added ?? [],
