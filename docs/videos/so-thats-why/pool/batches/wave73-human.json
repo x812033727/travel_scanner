@@ -1,0 +1,78 @@
+{
+  "batch_id": "wave73-human-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第二十三輪補讀：迷路的人會不會繞圈（C11-01，F69，無提案），留後備；只有未收紀錄。",
+  "sources": [
+    {
+      "id": "H73-S001",
+      "url": "https://acta.sze.hu/index.php/acta/article/download/404/395",
+      "canonical_url": "https://acta.sze.hu/index.php/acta/article/download/404/395",
+      "title": "Comparative Evaluation of Sighted and Visually Impaired Subjects using a Mobile Application for Reducing Veering during Blindfolded Walking",
+      "publisher": "Acta Technica Jaurinensis（Széchenyi István University）",
+      "version": "Vol. 9, No. 2, pp. 140–157, 2016；DOI 10.14513/actatechjaur.v9.n2.404",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果原樣網址，curl 預設標頭，200 application/pdf，pdftotext -layout",
+      "reading_scope": "摘要、1. Introduction、1.1 Former Results、2. Measurement setup 開頭（pdf 第 140–143 頁）；並以關鍵字掃全文的距離與 GPS 段落",
+      "locator": "Abstract；§1.1（120 名蒙眼明眼受試者走 40 公尺直線、GPS 記錄）；§2 起的實驗路線長度",
+      "summary": "Wersényi 群（匈牙利 Győr）的手機導航 app 研究：蒙眼明眼受試者走 40 公尺路線，比較有無羅盤式聲音／震動回饋；前作為 120 人走 40 公尺、有無揚聲器聲標。不符 still_missing（3）的『第三研究群、超過 50 公尺』：距離只有 40 公尺，且與池中 H69-001（acta.sze.hu article 132）屬同一研究群；內容是輔具回饋，不是自然蒙眼偏移。未入提案。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 H69-001 的 SRC-30c01d0033636263 同一期刊、同一研究群（Wersényi），非第三研究群；路線 40 公尺，未達 50 公尺；屬輔具與回饋操弄。",
+      "author_cache": {
+        "file": "f69src/sze404.pdf（文字 f69src/sze404.txt）",
+        "sha256_prefix": "608926274b3fb99c",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H73-S002",
+      "url": "https://www.dare.uva.nl/id/ec4d5a2e-b241-4415-9829-4f833bf5e142",
+      "canonical_url": "https://www.dare.uva.nl/id/ec4d5a2e-b241-4415-9829-4f833bf5e142",
+      "title": "Sun, age and test location affect spatial orientation in human foragers in rainforests",
+      "publisher": "UvA-DARE（阿姆斯特丹大學典藏）；原刊 Proceedings of the Royal Society B，DOI 10.1098/rspb.2019.0934",
+      "version": "典藏紀錄頁",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果原樣網址，curl 預設標頭，200 text/html",
+      "reading_scope": "只讀典藏頁上的摘要；全文未讀（頁上只有 DOI 連結，未循 DOI 取全文）",
+      "locator": "Abstract",
+      "summary": "剛果雨林 Mbendjele BaYaka 人 54 名（6–76 歲）的指向測驗：太陽可見時年輕受試者指向較準；作者稱為人類使用太陽羅盤的第一個行為證據。這是指向而非行走，太陽可見與否是自然變化而非受控操弄，不符 still_missing（2）『以太陽等遠方參考為操弄變因的人類受控行走實驗』。未入提案。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要，不算全文；任務是指向不是走直；不計條數。",
+      "author_cache": {
+        "file": "f69src/jang_dare.html",
+        "sha256_prefix": "c630c83ad0409cff",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [],
+  "not_added": [
+    {
+      "id": "H73-NA001",
+      "question": "看得到太陽或遠山，人就比較能走直嗎？有沒有把『遠方參考』當操弄變因的人類受控行走實驗？（still_missing（2））",
+      "existing_ids": [
+        "H65-001"
+      ],
+      "source_ids": [
+        "H73-S002"
+      ],
+      "reason": "四次 WebSearch（太陽羅盤、遠方地標、VR 遠方地標、Souman 後續）都沒找到以太陽、遠山等非目標遠方參考為操弄變因、量走直偏移的人類受控行走實驗。最接近的：Jang 等 2019（F69-S002）是雨林指向測驗、太陽為自然變化，只讀摘要；Qi & Mou 2023（ualberta.scholaris.ca 典藏，f69src/qimou_item.html，sha256 436e4d5f109adfc0）是 Psychonomics 海報、量的是遠近地標旋轉下的方向估計，不是走直，也不是同儕審查全文；Souman 團隊說要做的分離地標後續研究，搜尋未見結果。 原提案 F69-NA001。",
+      "reentry_condition": "出現開放全文的人類受控實驗，以遠方參考（太陽、遠山、遠方地標或其 VR 對應）有無或位置為操弄變因，量測走直的偏移或繞圈；約 0.75。",
+      "reading_status": "F69-S002 只讀摘要；Qi & Mou 只讀典藏紀錄的中繼資料（海報，不計）"
+    },
+    {
+      "id": "H73-NA002",
+      "question": "第三個研究群在超過 50 公尺的蒙眼行走中，也看到同樣的偏移或繞圈嗎？（still_missing（3））",
+      "existing_ids": [
+        "H65-001",
+        "H65-003",
+        "H65-008"
+      ],
+      "source_ids": [
+        "H73-S001"
+      ],
+      "reason": "Europe PMC REST（OPEN_ACCESS:y，兩組查詢共 407 筆，列前 60 筆）與四次 WebSearch：開放全文的蒙眼行走研究都已在池中（Bestaven PMC3434216、Holanda SciELO／redalyc、Machowska PMC6766364、Scherer PMC13057318、Legge 群），或距離未達 50 公尺（Wersényi 群 40 公尺 F69-S001，且與 H69-001 同群；Commins 等 2013 Maynooth 典藏 5–20 公尺，f69src/cand_6a1977ba；Xing 等 2026 PMC13121442 距離估計、有牆限制方向），或不是走直（PMC3485438 曲線路徑整合、PMC6936248 回聲定位）。Science News 轉述 Rieser（Vanderbilt）群『蒙眼走到 100 公尺會偏但不繞圈』，搜尋找不到原文；Kadowaki 2024、Uematsu 2011、Jetzschke 2016 無公開全文；core.ac.uk 一筆 403、廣島大學典藏一筆 404，皆停手。 原提案 F69-NA002。",
+      "reentry_condition": "Rieser 群或其他第三研究群 >50 公尺蒙眼行走的開放全文（PMC、機構典藏）出現；約 0.5。",
+      "reading_status": "F69-S001 讀摘要、引言、前作段與方法開頭；其餘只看標題／中繼資料或關鍵字段落，未讀全文"
+    }
+  ]
+}

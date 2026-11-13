@@ -1,0 +1,794 @@
+{
+  "batch_id": "wave72-life-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第二十二輪補讀：鳥蛋（C13-01，F56／V59）、蝸牛旋向（C13-02，F57／V60）、鴿子點頭（C11-02，F60／V63）、冷藏蔬果（C12-02，F61／V64），都留後備；另含芒果、辣椒的獨立核心。",
+  "sources": [
+    {
+      "id": "L72-S001",
+      "url": "https://eprints.lancs.ac.uk/id/eprint/139428/1/Nests_and_eggs_final.pdf",
+      "canonical_url": "https://eprints.lancs.ac.uk/id/eprint/139428",
+      "title": "Correlated evolution of nest and egg characteristics in birds（Nagy, Hauber, Hartley, Mainwaring；Animal Behaviour 158: 211–225, 2019）",
+      "publisher": "Lancaster University EPrints（作者接受稿；DC.rights 標 CC BY-NC-ND 4.0）",
+      "version": "Accepted manuscript（未排版，行號版）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 列出典藏紀錄頁 https://eprints.lancs.ac.uk/id/eprint/139428 → 頁上 PDF 連結 → curl（工具預設標頭）→ pdftotext -layout",
+      "reading_scope": "摘要（行 23–37）、Methods 中蛋形定義與二分（行 165–175、215–225）、Results 中巢型與蛋形的轉移率段與路徑分析段（行 287–320）、Discussion〈Determinants of egg shape and volume〉與〈Nest design and egg characteristics〉兩節（行 372–427）。表 3、表 4 與補充表未逐格讀。",
+      "locator": "Abstract；Methods（egg shape = width/length，中位數 0.73 二分）；Results 行 287–291、303–320；Discussion 行 372–384、406–427",
+      "summary": "855 種、90 科鳥類的系統發生比較。蛋形只用寬／長比，按中位數 0.73 分成 elliptic 與 round 兩類。祖先狀態是開放巢中的 elliptic 或 round（兩者機率相近）；開放巢有高的 round→elliptic 轉移率，封閉巢中兩個方向都高；作者寫『也支持蛋形獨立於巢型演化、形狀之間頻繁轉換』。路徑分析：親鳥體重、窩卵數與巢址影響蛋形（雙向），蛋形不直接影響巢型；蛋的體積則直接影響巢型。討論承認與 Stoddard 2017、Birkhead 2018/2019、Hays & Hauber 2018 的發現衝突，呼籲更廣的系統發生研究。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "非 Birkhead、非 Stoddard 研究群（Mainwaring／Hartley 主導；Hauber 為共同作者，與 Hays & Hauber 2018 同一人，但該篇未計分）。只量伸長（寬／長），且二分，沒有任何尖度（不對稱）資料。討論段內部不一致：先說蛋『大概在封閉巢』變得越來越圓，接著又說『與 Duursma 等發現封閉巢的蛋比較不圓一致』，方向自相矛盾，片中不能用方向。只讀接受稿，正式版頁碼以典藏紀錄為準。池中無同一頁。 覆核 V59（2026-11-12）：summary 與 limitations 補：蛋形祖先重建 588 種、路徑分析 556 種（855 種是整個資料集）；方向矛盾出現在摘要（行 32–33）、結果（288–289）、討論（379–384）、結論（455–457）四處，且主切點表 3 判 independent、作者結論卻是『egg shape is determined by nest characteristics』；路徑分析影響蛋形的是 nest site，不是 nest design。",
+      "author_cache": {
+        "file": "nagy2019.pdf（文字版 nagy2019.txt sha256 前 16 碼 f4d6f19ce4b87f15）",
+        "sha256_prefix": "8cbe3356212ee56d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L72-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3373528/fullTextXML",
+      "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3373528",
+      "title": "Eggs in the Freezer: Energetic Consequences of Nest Site and Nest Design in Arctic Breeding Shorebirds（Tulp, Schekkerman, de Leeuw；PLoS ONE 7(6): e38041, 2012）",
+      "publisher": "PLOS（Europe PMC REST）",
+      "version": "出版版全文 XML",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 列出 pmc.ncbi.nlm.nih.gov/articles/PMC3373528 → Europe PMC 公開 REST fullTextXML → curl",
+      "reading_scope": "只讀 Introduction 第 2 段（蛋的擺放方向一句）與以 point／orient 關鍵字找到的句子；其餘未讀。",
+      "locator": "Introduction 第 2 段",
+      "summary": "前言一句：鴴鷸類一般下尖蛋，蛋的尖端朝中心、朝下擺放，可減少巢所需空間並提高親鳥到蛋的傳熱效率。此句無引文、也不是本研究的量測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只是前言的背景敘述，沒有引用、沒有資料；本篇量的是巢址與巢材的熱損失，不是蛋形或擺放。不計分，只記入 not_added。",
+      "author_cache": {
+        "file": "PMC3373528.xml",
+        "sha256_prefix": "b4a856d26fa648ed",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L72-S003",
+      "url": "https://people.maths.ox.ac.uk/moulton/Papers/Mollusk_Coiling-main.pdf",
+      "canonical_url": "https://doi.org/10.1073/pnas.2109210118",
+      "title": "The physical basis of mollusk shell chiral coiling（Chirat、Goriely、Moulton；PNAS 118(48), 2021）",
+      "publisher": "PNAS（作者 Derek Moulton 於牛津大學數學研究所個人頁自存）",
+      "version": "作者自存稿 PDF（LaTeX 編譯日 2021-12-04，含行號、12 頁；頁首仍為 pnas.XXXXXXXXXX 佔位 DOI）；未與 PNAS 出版版逐字比對，SI 未讀",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（query: ora.ox.ac.uk \"mollusk shell chiral coiling\" Goriely）結果列出此 PDF；curl 預設標頭 200 application/pdf；pdftotext 轉文字。期刊 DOI 由 Europe PMC 搜尋 API 取得（PMC8651239，REST 全文 500）",
+      "reading_scope": "摘要、Significance、§1 Background（A. How snails got their handedness；B. Ammonites took a weird turn，含 Didymoceras 左右比例段）、§3 討論中 Mariella 與『two components』段、§4 How snails coil their shell（帽貝、殼肌、A. Modeling gastropod form、Fig. 6、Fig. 7 圖說）全文讀過；§2 力學模型的數學推導與菊石 meandering 形態段只瀏覽，未逐式核對",
+      "locator": "Abstract；§1A（more than 90% … dextral；only six specimens of sinistral Cerion）；§1B 後段（about 1500 specimens of Didymoceras … D. stevensoni n=264 47/53、D. nebrascense n=882 49/51、D. cheyennense n=338 52/48；randomly determined and non-heritable）；討論段（Mariella … Albian 50/50、all Cenomanian species are sinistral；Mechanical forces … may equiprobably produce dextral or sinistral forms；cardiac … random handedness）；§4（limpets show a dextral cleavage pattern, a right expression of nodal … shell is cone-shaped and bilaterally symmetric；torsion … limpets also experience such a rotation；shell-muscle system is helically coiled around … the axial columella … three-quarters to two whorls back；horseshoe-shaped muscle scar；convergently evolved in … four other gastropod orders；this hypothesis remains to be tested experimentally）；§4A 與 Fig. 6（in every single case, the helicospiral shell is the energy minimizer）",
+      "summary": "里昂與牛津的研究者把軟體與硬殼在生長時的力學交互寫成數學模型。菊石身體左右對稱、約 99% 的屬是平面捲或直殼；少數異形菊石中段長成螺旋，而 Didymoceras 三個種約 1,500 個標本中右旋與左旋大約各半（47/53、49/51、52/48），其他幾科也有類似的約五五比，作者認為這種旋向是隨機決定、不遺傳的；Mariella 在阿爾布期的種左右各半，到森諾曼期的種全是左旋。作者主張力學可以把殼扭成螺旋、但左右機率相同，固定偏向一邊需要另一個機制。蝸牛方面：帽貝胚胎右旋卵裂、nodal 在右、身體解剖也是右手型，殼卻是左右對稱的圓錐；幼體那次 180° 的『扭轉』帽貝也有，所以不能直接拿來解釋螺旋殼。比較解剖顯示，螺旋殼的種，殼肌螺旋繞在殼軸（殼軸柱）上、附著在離殼口四分之三到兩圈的地方；帽貝的殼肌則是左右對稱的馬蹄形，而且在另外四個目裡獨立演化出的帽貝形殼都伴隨這種肌肉改變。作者據此假設不對稱的殼肌讓身體帶有內在扭轉，模型中只要身體有內在扭轉，在掃過的所有參數組合裡螺旋殼都是能量最低的形狀；作者明說這個假設尚未以實驗檢驗。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "數學模型與比較解剖推論，作者自承殼肌造成內在扭轉的假設未經實驗；菊石左右比例是作者整理他人標本研究（ref 34–38、69），不是自己數的；『超過 90% 的蝸牛右旋』與 Cerion 六個左旋標本是引前人（ref 15、16），不另計；作者稿未與出版版逐字比對。池中 L68-NA007 曾記此篇無開放版本，本輪由作者頁取得。與 B2128（內臟扭轉不等於殼的盤旋）部分重疊：帽貝也有扭轉那一句不另計。研究群（Chirat、Goriely、Moulton）不屬 Asami、Davison、Hoso、Gittenberger、Chiba、Dietl 任何網絡。 覆核 V60（2026-11-12）：limitations 補：『Didymoceras 約 1,500 個標本是引用另一項研究（ref 34），其他科與 Mariella 引 ref 35–38、69；菊石身體左右對稱原文是 probably。覆核 V60 依作者 Europe PMC search 回應所列 europepmc.org/articles/PMC8651239?pdf=render 試一次，403 Cloudflare，出版版仍未比對；SI 未讀。Chirat 全篇計數封頂 0.75。』read_via 補：作者先以 pdftotext -layout 轉出、後改無 -layout 覆寫，快取文字是後者。",
+      "author_cache": {
+        "file": "f57src/chirat2021_moulton.pdf",
+        "sha256_prefix": "01579870e6b71882",
+        "note": "pdftotext（無 -layout）文字另存 f57src/chirat2021_moulton.txt，sha256 前 16 碼 7f5a0dfe1dc02eb1 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L72-S004",
+      "url": "https://repository.naturalis.nl/pub/588035/VM13_Sipman.pdf",
+      "canonical_url": "https://repository.naturalis.nl/pub/588035",
+      "title": "Predation by Gecarcoidea lalandii (Crustacea, Gecarcinidae) on dextral and sinistral Amphidromus inversus (Gastropoda, Pulmonata, Camaenidae)（Sipman；Vita Malacologica 13: 57–61, 2015）",
+      "publisher": "Vita Malacologica（荷蘭；Naturalis 生物多樣性中心機構典藏）",
+      "version": "出版版 PDF（典藏頁標 Free Full Text, Final Version）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出典藏頁 repository.naturalis.nl/pub/588035；curl 預設標頭 200，頁面上的 Free Full Text 連結即此 PDF（200 application/pdf）；pdftotext 轉文字",
+      "reading_scope": "全文（5 頁：摘要、前言、方法、結果、討論、參考文獻）",
+      "locator": "Abstract；Introduction（Kapas 島左旋約 65%、右旋約 35%；other asymmetrical crabs … advantage when opening a dextral snail shell，引 Ng & Tan 1985、Shigemiya 2003）；Results（地面殼：左旋 37 破 88 完、右旋 17 破 35 完，N=178，χ²=0.15886，p=0.6902；17 隻蟹中 9 隻左螯大、2 隻右螯大、6 隻看不出；4 隻公蟹共打破 5 個右旋、2 個左旋）；Discussion（A. inversus 不是偏好的獵物；破殼方式三種；no reason to assume … influence on the chiral proportions）；Acknowledgements（指導者 Menno Schilthuizen）",
+      "summary": "馬來西亞 Kapas 島上的 Amphidromus inversus 樹蝸牛左右旋並存（左旋約 65%）。作者想知道陸蟹 Gecarcoidea lalandii 會不會偏好吃某一旋向。在海岸林地面撿到的 178 個殼中，左旋 125 個（37 個破）、右旋 53 個（17 個破），兩型破殼比例沒有差別（p=0.69）。17 隻捕來的蟹各關五晚、各給三隻左旋三隻右旋的活蝸牛：目視 9 隻左螯較大、2 隻右螯較大、6 隻分不出；只有 4 隻公蟹吃了蝸牛，一共打破 5 個右旋、2 個左旋殼，破法有敲掉殼頂、剝殼側、整個壓碎三種。作者結論：這種蟹會吃這種蝸牛但不是偏好的獵物，目前沒有理由認為牠的捕食偏某一旋向、或影響當地左右比例；主要捕食者可能仍是鼠類。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "小型研究：實驗只有 7 個破殼事件，作者未對蟹實驗做統計檢定；螯的大小只靠目視；地面殼的破損無法分辨是鼠還是蟹造成。作者在 Naturalis 由 Schilthuizen 指導，研究地點與 L66-028（Schilthuizen 等 2007）同島，屬網絡 B（Davison／Schilthuizen）。只能說『這一種陸蟹』沒有偏好，不得推成『螃蟹都不挑』，也不得與 L68-005（化石箱蟹）的數字並列成同一比較。 覆核 V60（2026-11-12）：limitations 補：『Kapas 左旋約 65% 引自 Schilthuizen 等 2014；同島鼠類不挑旋向已在池中 SRC-379123d56fa0dba5（Schilthuizen 2007，L66-028），本篇只增加蟹實驗；吃了蝸牛的 4 隻公蟹螯向未報告。』",
+      "author_cache": {
+        "file": "f57src/sipman2015.pdf",
+        "sha256_prefix": "6c3466c49bd5aaf4",
+        "note": "文字 f57src/sipman2015.txt（41f086fe9c88f796）；典藏頁 f57src/naturalis588035.html（729e9ac8307884dd） 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L72-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4569182/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0136980",
+      "title": "Selfies of Imperial Cormorants (Phalacrocorax atriceps): What Is Happening Underwater?",
+      "publisher": "PLOS ONE 10(9):e0136980（2015）；Gómez-Laich、Yoda、Zavalaga、Quintana；CESIMAR-CONICET（阿根廷 Puerto Madryn）與名古屋大學",
+      "version": "期刊開放全文（PMC 收錄的出版社版）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（查詢 head-bobbing/head bobbing＋walking/swimming＋鳥類＋OPEN_ACCESS:y）列出 PMCID PMC4569182，再以官方文件記載的 REST fullTextXML 端點下載全文（curl 預設標頭）",
+      "reading_scope": "全文 XML：摘要、Methods（裝置與佩戴）、Results（Underwater behavior、habitat 兩段）、Discussion 中 head-bobbing 一段；Table 1 只讀欄位與總和，未逐列核對",
+      "locator": "Abstract；Results『Video images showed that birds did not necessarily keep their body horizontal…majority of the dives (76.3%)…』與 Fig 2A–C 圖說；Results 底質一段『During the bottom phase of dives to gravel and grasslike substrates…』；Discussion『While foraging along the seafloor, cormorants were frequently observed to move their head constantly forward and backward…』",
+      "summary": "33 隻繁殖中的雄性帝鸕鷀背上貼朝前（朝頭）的攝影機，12 隻拍到覓食，共 49 次潛水、8.1 小時。頭在影片中都看得到：76.3% 的潛水裡，牠們沿海底前進時頭不停地伸縮、一前一後；在碎石與草狀底質時身體微微朝下、頭一直前後動，在岩礁則身體水平、把頭頸伸進岩縫；7.3% 的潛水幾乎水平游、頭頸多半伸直。討論把這種動作稱為 head-bobbing，引用他文說停住期穩定影像、前衝期取得深度資訊，並說可能有助穩定水下視覺；同時指出許多潛水光線很暗，鸕鷀可能還用視覺以外的感官找獵物。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只是影片的行為描述：沒有量頭在空間中是否真的停住、停多久、頻率多少，『點頭』是作者的歸類；頭動的視覺功能是作者引他文推論，本文沒有實驗。帝鸕鷀不屬 Troje、Lentink、Necker、Fujita 任何研究群。Necker 綜述（L69-S002）把鵜鶘鸕鷀列為走路通常不點頭，那是陸上走路的清單，與本文的水下覓食不同情境，片中不得說成『推翻』該清單。池中無同一頁（grep pool.json 無 PMC4569182、無 cormorant）。 覆核 V63（2026-11-12）：limitations 加：『76.3% 原文未寫明分母，對照 Table 1、2 應是 38 次 U 形底棲潛水中的比例，不是 49 次全部潛水；討論裡點頭的視覺功能引自 [57] Gunji、Fujita、Higuchi 2013（小鸊鷉），屬 Fujita 共同作者研究；全文沒有談腳／划水與頭動的關係，鸕鷀水下靠腳推進，不能用來說點頭與腳無關。』",
+      "author_cache": {
+        "file": "f60src/PMC4569182.xml（文字：f60src/PMC4569182.txt）",
+        "sha256_prefix": "448791a939c8b1a7",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L72-S006",
+      "url": "https://digitalcommons.unl.edu/nacwgproc/27/",
+      "canonical_url": "https://digitalcommons.unl.edu/nacwgproc/27/",
+      "title": "Head Stabilization in Whooping Cranes",
+      "publisher": "Proceedings of the Ninth North American Crane Workshop（North American Crane Working Group, 2005）p.251；Kinloch（Glenelg High School）、Cronin（UMBC）、Olsen（USGS Patuxent）；典藏於內布拉斯加大學林肯分校 DigitalCommons",
+      "version": "大學典藏紀錄頁（頁上載有完整摘要；註明 Reproduced by permission of the NACWG）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Cronin Kinloch Olsen 2005 whooping crane）列出此典藏頁，curl 預設標頭存檔；頁上的 viewcontent.cgi PDF 連結 curl 回 403，未重送、未換客戶端",
+      "reading_scope": "只讀到典藏頁上的摘要全段（原件在研討會論文集只占 p.251 一頁，可能本身就是摘要型刊登，但 PDF 403 未能確認；照規定按『只讀到摘要』處理）",
+      "locator": "典藏頁 Abstract 全段：『Four whooping cranes (1 male and 3 females)…』『The speed of the birds in analyzed segments ranged from 0.30 m/s to 2.64 m/s, and the proportion of time the head was stabilized ranged from 79% to 0%, respectively. The speed at which the proportion reached 0% was 1.83 m/s.』『…they walk at a speed that permits them to keep their heads still and visual field immobile at least half the time.』",
+      "summary": "在帕圖森野生動物研究中心錄 4 隻美洲鶴（1 公 3 母）用獎勵食物引導走或跑，逐格以電腦簡化模型疊圖分析：分析片段的速度 0.30–2.64 m/s，頭穩住的時間比例對應從 79% 到 0%；比例降到 0% 的速度是 1.83 m/s；頭穩住的比例隨速度增加而下降；所有情況鳥都能順利啄到目標。作者結論：鶴邊走邊找食物時，走的速度讓頭與視野至少一半時間不動。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "研討會摘要，非期刊全文、未見審查程序；只有 4 隻；79% 與 0% 是範圍兩端，沒有中間值或個體差異。與池中 L69-S003（Cronin、Kinloch、Olsen 2007）同一研究群、同批圈養鶴，應與 L69-S003、L69-005 的鶴資料合計同群上限。『越快停越短』與 L65-004（鴿子）同方向，只當跨物種呼應，不可把鶴的速度門檻套到鴿子。池中無同一頁（grep 無 nacwgproc、無 Kinloch 2005）。 覆核 V63（2026-11-12）：accessed／cache 註記：2026-11-12 覆核重抓典藏頁 200（sha256 e41afd40…，與作者 95e85c19… 只差 Cloudflare ray 一行）；viewcontent PDF 再試一次仍 403。limitations 的『應與 L69-S003、L69-005 合計同群上限』保留，並補『只讀到摘要，計 0』。",
+      "author_cache": {
+        "file": "f60src/unl_nacwg27.html（文字：f60src/unl_nacwg27.txt）",
+        "sha256_prefix": "95e85c199497c20c",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L72-S007",
+      "url": "https://esj.ne.jp/meeting/abst/59/P1-237A.html",
+      "canonical_url": "https://esj.ne.jp/meeting/abst/59/P1-237A.html",
+      "title": "Foraging behavior of the diving bird: Little grebes change their chasing behavior according to the prey",
+      "publisher": "日本生態學會第 59 回全國大會（2012 年 3 月，大津）講演要旨 P1-237A；Gunji（東京大學）、Fujita（沖繩縣立博物館）、Higuchi（東京大學）",
+      "version": "學會官方網站上的海報摘要",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Gunji Fujita Higuchi 2013 head-bobbing diving little grebes）列出此頁，curl 預設標頭存檔",
+      "reading_scope": "海報摘要全文（一段）",
+      "locator": "摘要全段：『It was found that little grebes have two styles of dive; with or without head bobbing. A rapid-swimming prey triggered non-bobbing dives…』",
+      "summary": "在水族箱餵一隻小鸊鷉四種逃跑速度與方式不同的獵物，從側面做 2D 動作分析：潛水有點頭與不點頭兩種；游得快的獵物引發不點頭的潛水，兩種游得慢的獵物引發點頭的潛水；點頭由頭伸出與固定組成，獵物轉向越多，頭固定的時間越長。作者推測潛水鳥依辨認難度調整『看』的時間。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只是研討會海報摘要、只有 1 隻鳥、沒有數字；期刊版 Gunji 等 2013（J Comp Physiol A 199:703）為 Springer 付費，未讀。與 L65-S006（Fujita 野外研究）共同作者 Fujita 重疊。未採用，只列在 not_added。 覆核 V63（2026-11-12）：無改動（未採用，只在 not_added）。重抓 sha256 d12d5ade0c77ed49 與作者相同。",
+      "author_cache": {
+        "file": "f60src/esj59_P1-237A.html（文字：f60src/esj59_P1-237A.txt）",
+        "sha256_prefix": "d12d5ade0c77ed49",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L72-S008",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4579789/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s11947-015-1504-1",
+      "title": "Chilling-Induced Changes in Aroma Volatile Profiles in Tomato",
+      "publisher": "Food Bioprocess Technol 8:1442–1454（2015）；Farneti、Woltering 等（瓦赫寧根大學園藝供應鏈組、奈梅亨大學）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文（摘要、材料與方法、結果與討論各節、結論）",
+      "locator": "Abstract；Fruit Sampling and Storage Treatments；VOC Changes During Storage Assessed by SPME/GC-MS（5 天幾乎完全恢復、10 與 15 天部分）；VOCs Derived from Lipid Metabolism（1-penten-3-one）；VOC Changes … PTR-MS and Chewing Device（5–6 h 達穩定、Henry 定律、乙醛乙醇近兩倍）；Conclusion",
+      "summary": "兩個紅熟番茄品種（Cappricia RZ 圓形、約 80 g；Amoroso RZ 雞尾酒型、約 30 g）分存 4°C 與 16°C 20 天，或 4°C 與 22°C 12 天，用 SPME/GC-MS 與「咀嚼裝置＋PTR-MS」量香氣。從 22°C 移到 4°C 後，香氣釋放跟著果溫下降，5–6 小時內兩者都到穩定的低值；回到 22°C 後又跟著果溫回升。作者解釋為酵素活性下降加上低溫揮發變少（Henry 定律，低溫溶解度較高）。4°C 存 5 天再回 16°C 幾乎完全恢復，10 與 15 天只部分恢復，冷藏越久恢復越少；冷過再回溫的果實香氣組成不同，被視為異味的甲醇、乙醛、乙醇、丙酮較多，Amoroso 冷藏 12 天後乙醛與乙醇約為一直放 22°C 的兩倍；Cappricia 冷過回溫後 1-penten-3-one（常被視為異味）較高。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "兩個品種、每點 3–5 顆果；沒有人類感官評審（咀嚼裝置只是模擬）；Henry 定律與酵素是作者解釋，非本研究分開量測。與 Klee 群（L66-S001）不同研究群。 覆核 V64（2026-11-12）：summary 末加：「摘要：回溫後多數香氣再上升，但通常回不到原水準；異味增加主要在 Amoroso，Cappricia 較穩定。」",
+      "author_cache": {
+        "file": "f61src/PMC4579789.txt（原始 PMC4579789.xml sha256 前 16 碼 18fc2ecbcbb93bcf）",
+        "sha256_prefix": "93e2ac664f92ca8c",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L72-S009",
+      "url": "https://edepot.wur.nl/444870",
+      "canonical_url": "https://edepot.wur.nl/444870",
+      "title": "Cold storage of tomato: the good, the bad, and the ugly（海報）",
+      "publisher": "Wageningen University & Research 機構典藏 edepot；Rosales López、Tikunov、Hanenberg、Verkerke、Bovy（WUR 植物育種與溫室園藝）",
+      "version": "機構典藏的海報 PDF（PDF 建立日期 2018-03-23；未標會議名稱）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果給出 edepot.wur.nl/444870，curl 預設標頭下載 PDF，pdftotext -layout 轉文字",
+      "reading_scope": "全文（單頁海報：Background、Methods、Results、Table 1、Figure 2、Conclusions）",
+      "locator": "Methods（T0、15°C 7 天、5°C 7 天＋20°C 24 h、消費者 n≈50）；Results 的 Fruit quality、Aroma profile、Consumer panel；Conclusions 最後一點",
+      "summary": "三個商業番茄品種（低風味 Merlice、中 Brioso、高 Axiany），紅熟果分別存 15°C 7 天或 5°C 7 天，再放 20°C 24 小時。5°C 組的糖度、酸度、硬度與未儲存果相近。脂質來源的香氣在 5°C 7 天組沒有顯著下降，受影響最大的是胺基酸與酚類來源的香氣。約 50 人的消費者評比：只有低風味的 Merlice 冷過後比新鮮與 15°C 的不受喜愛；Axiany 沒有差異；Brioso 是新鮮果比 15°C 儲存的受喜愛。作者結論：冷害造成的代謝變化，只在風味差的品種轉成消費者喜好的顯著差異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "海報，未經同儕審查；各組果數與統計細節不全；與 F61-S001 同機構（瓦赫寧根）但不同研究群；消費者喜好只有圖、沒有表列數值。 覆核 V64（2026-11-12）：limitations 加：「海報 Background 首句為 12°C 保存建議、Conclusions 首點為冷藏較能維持酸度與硬度，兩句皆不得進片；喜好結果只有圖上字母，Brioso 冷藏組與新鮮組無顯著差。」",
+      "author_cache": {
+        "file": "f61src/wur_444870.txt（原始 wur_444870.pdf sha256 前 16 碼 6d7d689a1d322376）",
+        "sha256_prefix": "e21ec4d6c75f4793",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L72-S010",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13341063/fullTextXML",
+      "canonical_url": "https://doi.org/10.1002/jsfa.70681",
+      "title": "Black flesh disorder in mango: a chilling injury symptom increased by early harvest and low storage temperature and reduced by 1-methylcyclopropene",
+      "publisher": "J Sci Food Agric 106:6508–6522（2026）；de Carvalho Pires、Brecht、de Freitas 等（巴西 Embrapa 半乾旱熱帶中心、佛羅里達大學）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "摘要、前言、Materials and Methods 的 Experiment 1、Results 的 Experiment 1 與 Experiment 2 前段；其餘 1-MCP 生理段只略讀",
+      "locator": "Abstract；Plant material and experimental design、Experiment 1（每品種 600 顆、兩個成熟度、8／10／12.5°C）；Results: Experiment 1（Fig. 2 各數字）",
+      "summary": "三個芒果品種（Tommy Atkins、Kent、Palmer）各 600 顆，分早採（生理成熟、未開始後熟）與樹上較熟兩級，存 8、10、12.5°C 30 天再放 20°C 7 天，看果肉近種子處的「黑肉」。早採果：Tommy Atkins 8°C 70%、10°C 67%；Kent 80%、78%；Palmer 8°C 89%、10°C 33%。較熟採收的較低（Tommy Atkins 22%、11%；Kent 兩溫度都 33%；Palmer 22%、32%）。三個品種兩種成熟度在 12.5°C 都沒有出現黑肉。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "每格果數依方法推算為 100 顆，原文只給總數；黑肉是否為冷害是本研究提出並檢驗的假說；1-MCP 是處理方法，片中不用。 覆核 V64（2026-11-12）：limitations 加：「討論『12.5 °C may represent a safe threshold』與結論『storage at 12.5 °C completely prevents the disorder』是保存溫度建議，不得進片；Palmer 10°C 早採 33% 與較熟 32% 幾乎相同。」",
+      "author_cache": {
+        "file": "f61src/PMC13341063.txt（原始 PMC13341063.xml sha256 前 16 碼 01c348464402f1ab）",
+        "sha256_prefix": "a46c849756d6d1c8",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L72-S011",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12026267/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/foods14081319",
+      "title": "Comparative Analysis of Chilling Injury in Banana Fruit During Storage: Physicochemical and Microstructural Changes, and Early Optical-Based Nondestructive Identification",
+      "publisher": "Foods 14:1319（2025）；Ma、Lan、Pan 等（南京農業大學食品科技學院）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "摘要、前言、2.1–2.2 方法、3.1 與 3.2 結果討論；3.3 以後的高光譜分類只讀摘要層級",
+      "locator": "Abstract；2.1 Materials（7°C 對 13°C、85% RH、0–10 天）；2.2.1 CI index；3.1 Changes in Physicochemical Properties；3.2 Changes in Microstructural Properties（Fig. 3 SEM）",
+      "summary": "商業成熟（七到八成熟）的香蕉分存 7°C（冷害組）與 13°C（對照）0–10 天：13°C 組全程沒有冷害症狀；7°C 組冷害指數逐步上升、失重較多，果皮變暗不轉黃（L* 與 b* 下降）；7°C 組果肉軟化較慢、果肉含水下降，13°C 組果肉含水略升。電子顯微鏡下，13°C 果肉到第 10 天澱粉完全轉化，7°C 果肉仍有大量澱粉粒，並出現細胞溶解與細胞間空腔；果皮細胞膜破裂。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "症狀數字只有圖、沒有表列數值，片中只講方向；每組冷害指數 12 根；只有一個 7°C 與一個 13°C，不是溫度梯度；高光譜辨識部分與本題無關。與 L66-S006（華中農大）不同研究群。",
+      "author_cache": {
+        "file": "f61src/PMC12026267.txt（原始 PMC12026267.xml sha256 前 16 碼 adab98e359c91b46）",
+        "sha256_prefix": "8544409d830925a2",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L72-S012",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7577993/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-020-75055-z",
+      "title": "Jasmonic acid and ERF family genes are involved in chilling sensitivity and seed browning of pepper fruit after harvest",
+      "publisher": "Sci Rep 10:17949（2020）；Lee、Yi、Seo、Kang、Choi、Lee（首爾大學、韓國食品研究院）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "Results 第一節（36 個基因型的種子褐變率）與第二節前段（代謝物）、Figure 1 說明；方法的植株與冷藏段；後段基因表現只略讀",
+      "locator": "Results: Seed browning rates of 36 pepper genotypes（含 Supplementary Table S1 的轉述數字）；Figure 1",
+      "summary": "36 個辣椒（Capsicum annuum）基因型在 2°C 存 3 週：種子褐變是主要冷害症狀，果皮凹斑與果萼變色可忽略。種子褐變率從 0%（不怕冷）到 60% 以上：怕冷的 C00562 為 63.86%，不怕冷的 UZB-GJG-1999-51 為 0.00%；Takanotsume 0.00%、Hungarian Wax 4.31%、Chili bangi 30.88%、Gyeonggiyangpyeong 41.01%。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 2°C 一個溫度；種類包含辣椒與甜椒同種的不同栽培型，不能直接說成「甜椒」；後段基因與茉莉酸是機制推論。 覆核 V64（2026-11-12）：limitations 加：「各品系數字取自正文對補充表 S1 的轉述，補充表未讀；Takanotsume 也是 0%。」",
+      "author_cache": {
+        "file": "f61src/PMC7577993.txt（原始 PMC7577993.xml sha256 前 16 碼 aac94bceff908162）",
+        "sha256_prefix": "c20ef09c4453f48a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L72-S013",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12737150/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/plants14243848",
+      "title": "Fatty Acid Metabolism in Shading-Induced Tolerance of Star Ruby Grapefruit to Postharvest Chilling Injury",
+      "publisher": "Plants 14:3848（2025）；Lozano-Omeñaca、Rodrigo、Zacarías（西班牙 CSIC 農業化學與食品技術研究所 IATA）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "摘要、前言（膜相變假說段）、2.1–2.3 結果（含 Table 1 前段）、3. Discussion 前半",
+      "locator": "Introduction 第三段（膜由液態轉凝膠、離子滲漏的主流假說）；2.1 Chilling Injury of Covered and Non-Covered…（Fig. 1）；2.3 Fatty Acid Content（Table 1）；Discussion（UFA/SFA 與雙鍵指數不變、「apparent contradiction」、冷藏 8 週總脂肪酸與不飽和脂肪酸都增 48%）",
+      "summary": "葡萄柚 Star Ruby 在樹上套袋遮光的果皮累積茄紅素、變紅，冷藏 2°C 8 週冷害指數一直低於 1；沒套袋的黃色果第一週就出現冷害，8 週後幾乎 100% 嚴重受害。量果皮脂肪酸：採收時兩組主要都是亞油酸（44–48%）；怕冷的不套袋果亞油酸含量在採收時與整個冷藏期都較高；遮光讓總脂肪酸少 24%、不飽和少 25%、飽和少 20%，但不飽和對飽和的比例與雙鍵指數沒有改變；冷藏 8 週兩組總脂肪酸與不飽和脂肪酸都增加約 48%。作者稱「怕冷的果實不飽和程度反而較高」為表面矛盾，推測與田間已受冷、已啟動調適及脂質過氧化較多有關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只量脂肪酸組成與基因表現，沒有直接量膜相變溫度或離子滲漏；只有一個品種、兩種樹上處理；耐冷差異來自遮光與茄紅素，不是兩個物種的天生差異。 覆核 V64（2026-11-12）：summary 與 limitations 改：「怕冷組亞油酸與不飽和脂肪酸『含量』較高，但不飽和對飽和比例與雙鍵指數兩組相同；量的是外果皮總脂肪酸，不是膜脂。」",
+      "author_cache": {
+        "file": "f61src/PMC12737150.txt（原始 PMC12737150.xml sha256 前 16 碼 177231f1c2e3e3e9）",
+        "sha256_prefix": "dba05954186a1afa",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L72-S014",
+      "url": "https://crisosto.ucdavis.edu/sites/g/files/dgvnsk6166/files/inline-files/091-05-Peach-Nect-Chilling-injury-in-peach-and-nectarine.pdf",
+      "canonical_url": "https://doi.org/10.1016/j.postharvbio.2005.04.012",
+      "title": "Chilling injury in peach and nectarine（Review）",
+      "publisher": "Postharvest Biology and Technology 37:195–208（2005）；Susan Lurie（以色列 Volcani 中心）、Carlos H. Crisosto（加州大學戴維斯分校）；PDF 置於 Crisosto 實驗室網站",
+      "version": "作者實驗室網站上的期刊排版 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果給出 crisosto.ucdavis.edu 的 PDF 連結，curl 預設標頭下載，pdftotext -layout 轉文字",
+      "reading_scope": "第 1 節 Introduction 與第 2 節 Chilling injury (CI) symptoms（頁 196–198）；其餘章節未讀",
+      "locator": "頁 196 右欄（killing temperature zone 2.2–7.6°C，引 Harding & Haller 1934、Smith 1934、Crisosto et al. 1999a）；頁 197 第 2 節第一段（2–5°C 1–2 週、0°C 3 週以上；成熟後才出現、到消費者手上才被發現）；Fig. 1",
+      "summary": "Crisosto 合著的綜述：廣泛報告指出，易受害的桃與油桃存在 2.2 到 7.6°C 之間（作者稱「殺傷溫度區」）時，果肉褐變等冷害症狀比存在 0°C 或以下（冰點以上）出現得更快、更嚴重；存 2–5°C 時 1 到 2 週就出現肉眼症狀，0°C 則要 3 週以上。症狀主要在冷藏後的後熟期間出現，常到消費者手上才被發現；冷害受遺傳影響，表現為乾粉、綿、無汁、果肉或果核腔褐變、果肉流紅。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "綜述，不是原始實驗；殺傷區數字是作者綜合前人（含 Crisosto 1999a）的說法；綜述中的儲存溫度建議片中不用。L66-S005 前言轉述的 Crisosto & Valero 2008 本身仍未讀到。 覆核 V64（2026-11-12）：limitations 加：「頁 196『fruit maximum storage life can be achieved near or below 0 °C』是保存建議，不得進片。」",
+      "author_cache": {
+        "file": "f61src/lurie_crisosto_2005.txt（原始 lurie_crisosto_2005.pdf sha256 前 16 碼 a2496ad22541e4bf）",
+        "sha256_prefix": "8294aa34f0908010",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "L72-001",
+      "question": "會捲成螺旋的殼，一定會偏向往右轉嗎？",
+      "domain": "動物演化",
+      "mechanism_key": "paleo.heteromorph_ammonite_random_coil_handedness",
+      "answer_target": "不一定，滅絕的菊石就是反例。菊石屬於頭足類，研究者認為牠們的身體很可能是左右對稱的；約 99% 的屬，殼是平面捲或直的。少數『異形菊石』長到一半會扭成一段螺旋。里昂與牛津的研究者在論文裡引用了一項針對約 1,500 個 Didymoceras 標本的研究：三個種的右旋比左旋分別是 47 比 53、49 比 51、52 比 48，大約一半一半；其他幾科的異形菊石也有人報告過類似的五五比，所以他們認為這些菊石往哪邊轉是隨機的、不會遺傳。可是 Mariella 這一屬，較早的阿爾布期各種左右各半，較晚的森諾曼期各種卻全是左旋。研究者的解讀是：在他們的模型裡，力學扭轉往左往右耗的能量一樣，所以會捲不代表會選邊；要固定偏向一邊，得另外有一個機制，而 Mariella 的那個機制，他們說恐怕永遠無從得知。",
+      "scope": "菊石數字全是 Chirat 等引用他人的標本研究（Didymoceras 引 ref 34；其他科與 Mariella 引 ref 35–38、69），片中說『有研究統計』，不說成本篇自己數的；菊石身體左右對稱是『很可能』；『力學扭轉左右機率相同』是模型前提與推論；不說菊石沒有任何左右偏好、不說 Mariella 的左旋與蝸牛同一套基因有關、不說菊石是蝸牛的祖先。要接回蝸牛時，『蝸牛的旋向由母親的基因決定』只能引 L66-021，作旁白連接，不寫成 Chirat 對菊石的解讀。",
+      "source_ids": [
+        "L72-S003"
+      ],
+      "source_locator": "F57-S001 §1B 後段（about 1500 specimens of Didymoceras … 47/53、49/51、52/48；randomly determined and non-heritable）；討論段（Mariella … Albian 50/50、Cenomanian all sinistral；Mechanical forces … equiprobably produce dextral or sinistral forms；two components process）",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：池中沒有菊石旋向資料（grep 菊石／ammonite 只有 wave29、wave44 的拖痕與地質題），題材新；但三個種的比例、其他科、Mariella 全是本篇引用他人，屬二手轉述，照 L68-007 的先例下修；Chirat 全篇與 F57-002 合計封頂 0.75。 原提案 F57-001（目標 C13-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V60（2026-11-12）改字後收；數字相符，但把引用的研究寫成本篇整理、漏 probably，並把 §1A 的蝸牛母系遺傳與討論段的 Mariella 接成作者沒有說過的一條因果；改字並下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣是捲成螺旋的殼，菊石往左往右幾乎一半一半——會捲，不代表會選邊",
+        "visual": "一排 Didymoceras 化石左右鏡像並排，下方三條接近 50% 的比例條；接著 Mariella 從左右各半變成全部左旋的時間軸",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L72-002",
+      "question": "帽貝的身體也是右旋型，殼為什麼卻是左右對稱的圓錐？",
+      "domain": "動物演化",
+      "mechanism_key": "snail.columellar_muscle_intrinsic_twist_helicospiral_model",
+      "answer_target": "研究者懷疑，關鍵在把身體拉進殼裡的那條肌肉。帽貝的胚胎是右旋卵裂、nodal 訊號在右邊，身體解剖也是右手型，可是不論胚胎殼還是長大的殼，都是左右對稱的圓錐；蝸牛幼體那次把內臟轉 180 度的『扭轉』帽貝也有，所以那次扭轉說明不了螺旋殼。比較解剖顯示：螺旋殼的螺類，殼肌是一條螺旋繞在殼中軸上、固定在離殼口四分之三到兩圈處的肌肉；帽貝的殼肌則是左右對稱的馬蹄形。帽貝形的殼在另外四個以螺旋殼為主的目裡各自演化出來，每一次都伴隨殼肌從單側螺旋變成對稱馬蹄形。里昂與牛津的研究者因此推測：不對稱的殼肌讓身體帶著一股內在的扭轉。在他們的數學模型裡，固定一組典型的捲曲參數，只要身體帶有這股扭轉，不論扭轉強弱、身體被壓縮或拉長、硬度比怎麼設，能量最低的都是螺旋殼。研究者明說，殼肌造成扭轉這一點還沒有實驗檢驗。",
+      "scope": "模型與比較解剖的推論，不是實驗結果；片中說『研究者推測』；殼肌比較解剖是本篇引前人（ref 81–84）；模型解釋的是為什麼捲成螺旋，不是往左或往右，不得說『殼肌決定殼往右轉』；Fig. 6 只限一組固定的捲曲參數，換別的參數、身體被拉長時平面捲殼也可能最省能量（SI 未讀）；帽貝 nodal 在右與 L68-003 重疊、扭轉不等於盤旋與 B2128 重疊，都不另計；作者稿未與出版版逐字比對。",
+      "source_ids": [
+        "L72-S003"
+      ],
+      "source_locator": "F57-S001 §4 How snails coil their shell（limpets … dextral cleavage … right expression of nodal … bilaterally symmetric；torsion … limpets also experience such a rotation；shell-muscle system … columella … three-quarters to two whorls back；horseshoe-shaped muscle scar；four other gastropod orders；remains to be tested experimentally）；§4A 與 Fig. 6 圖說（in every single case, the helicospiral shell is the energy minimizer）；§4A 後段（planispiral … only in cases of a stretched body）",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：帽貝形殼多次趨同都伴隨殼肌改變、加上本篇自己的模型結果，是池中沒有的新事實；但假設未經實驗、比較解剖是引前人。與 F57-001 同篇，Chirat 全篇合計 0.75 封頂（第十八輪預估 0.75–1.0 的下緣，因作者稿未比對出版版、SI 未讀、菊石資料是二手）。 原提案 F57-002（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V60（2026-11-12）改字後收；引文逐字相符；補上 Fig. 6 是固定捲曲參數、殼肌假設的『推測』語氣，計數維持 0.5，但與 F57-001 合計封頂 0.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "帽貝的身體一樣是右旋型，殼卻是對稱的斗笠——差別可能在那條把身體拉進殼裡的肌肉",
+        "visual": "蝸牛殼剖面，紅色殼肌沿殼軸螺旋往上繞；旁邊帽貝殼內面，左右對稱的馬蹄形肌肉疤；最後是模型裡同一身體加上扭轉後長出螺旋殼的動畫",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L72-003",
+      "question": "大螯長在一邊的螃蟹，吃蝸牛時一定會挑旋向嗎？",
+      "domain": "動物捕食",
+      "mechanism_key": "snail.land_crab_no_chiral_predation_bias_amphidromus",
+      "answer_target": "至少馬來西亞 Kapas 島上的這種陸蟹看不出來。那裡的 Amphidromus inversus 樹蝸牛左旋約占六成五。研究者把 17 隻夜行的 Gecarcoidea lalandii 陸蟹各關五晚，每隻只給三隻左旋、三隻右旋、大小相近的活蝸牛；目視有 9 隻左螯較大、2 隻右螯較大、6 隻分不出。結果只有 4 隻公蟹吃了，一共打破 5 個右旋、2 個左旋，破法有敲掉殼頂、剝開殼側、整個壓碎三種。她同時在海岸林地上撿了 178 個殼，左旋 125 個裡 37 個破、右旋 53 個裡 17 個破，兩型破殼比例沒有差別——但這些破殼分不出是鼠還是蟹咬的。研究者的結論是：這種蟹會吃這種蝸牛，但不是牠偏好的食物，目前沒有理由認為牠偏吃哪一旋向、或左右了當地的左右比例。",
+      "scope": "只限這一種陸蟹與這一個島；蟹實驗只有 7 個破殼事件、沒有統計檢定、螯的大小只靠目視、吃了蝸牛的 4 隻公蟹螯向未報告，不得把 5 比 2 講成『比較愛吃右旋』，也不得說『左螯大的蟹不挑』；地面殼破損分不出鼠或蟹；同島鼠類不挑旋向已在 L66-028，片中不重講；不得推成『螃蟹都不挑旋向』，不得與 L68-005 化石箱蟹的疤痕比例並列成同一比較。",
+      "source_ids": [
+        "L72-S004"
+      ],
+      "source_locator": "F57-S002 Introduction（65% vs 35%；Ng & Tan 1985、Shigemiya 2003 的右大螯蟹）；Methods（17 隻、五晚、三左三右、大小相配）；Results（37/88、17/35，N=178，p=0.6902；9 左、2 右、6 不明；4 隻公蟹、5 右 2 左；三種破法）；Discussion 末段",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者，但理由改）：同島鼠類不挑旋向已在 L66-028，『不是每個捕食者都幫左旋』的但書池中已有；新增的只有『螯不對稱的陸蟹在小實驗裡也看不出偏好』與地面殼的另一次計數，樣本極小。網絡 B（Schilthuizen 指導、同島）由 2.5 到 2.75，仍在第十八輪的 3.0 上限內。若片長吃緊，這條第一個刪，縮成 L68-005 後的一句但書。 原提案 F57-003（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V60（2026-11-12）改字後收；數字全對；把地面殼破損『分不出鼠或蟹』補進答案、刪掉原文沒有的『大螯長在左邊的陸蟹一樣隨便』，並註明與 L66-028 同島同結論的重疊。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "螯長得不對稱的陸蟹，在小實驗裡也看不出挑哪一旋向——有左右的捕食者，不一定幫左旋",
+        "visual": "夜間海岸林，一隻紫黑色陸蟹舉著一大一小的螯；箱子裡三左三右的蝸牛，最後只有少數被打開",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L72-004",
+      "question": "鸕鷀潛到海底找東西時，頭也會一伸一縮嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "bird.headbob_cormorant_underwater_seafloor_search",
+      "answer_target": "會，至少看起來是一伸一縮。阿根廷與日本的研究者把小攝影機貼在帝鸕鷀背上、鏡頭朝向頭部，拍到 12 隻鳥共 49 次潛水，其中 38 次潛到海底覓食。研究者寫，在大多數潛水（76.3%）裡，鳥沿著海底前進時不停地伸縮脖子、頭一前一後；在碎石或草狀的海底，牠們身體微微朝下、頭一直前後動；到了岩礁，則身體水平、把頭頸伸進岩縫找。研究者把這個動作稱為點頭，並引用另一項小鸊鷉研究，認為它可能幫助在水下看得穩；但他們沒有量頭是否真的停在水中，也說很多潛水是在很暗的地方，鸕鷀怎麼找到獵物還是個問題。",
+      "scope": "只說『沿海底前進時伸縮脖子、頭一前一後，作者稱為點頭』；76.3% 不得說成『49 次中的 76.3%』，只說『大多數潛水（76.3%）』；不得說量到停住期、頻率或頭在水中靜止；視覺功能是作者引 Gunji 等 2013（Fujita 共同作者）的推論，本文沒有實驗；鸕鷀在水下靠腳划水，本文沒談腳與頭的關係，不得說『跟腳無關』。不得說推翻 Necker 綜述的『鵜鶘鸕鷀通常不點頭』（那是陸上走路的清單）。不給任何捕捉或在鳥身上裝置的建議。",
+      "source_ids": [
+        "L72-S005"
+      ],
+      "source_locator": "F60-S001 Abstract；Results（76.3% 一段、Fig 2A–C 圖說、底質一段）；Discussion head-bobbing 一段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：一手但只是覓食生態研究裡的影片行為描述，沒有任何頭部運動量測，不是 still_missing（6）點名的『點頭量測』，鳥種也不在點名之列；它對結論的貢獻（離開地面也一伸一縮）與池中 L69-004 骨頂雞游泳點頭同方向、同一章；視覺功能的解讀借自 Fujita 共同作者的 Gunji 2013。因是獨立研究群（CONICET／名古屋大學）的開放原研究、新情境（水下海底），保留 0.25，不退回。 原提案 F60-001（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V63（2026-11-12）改字後收；數字與底質描述相符；改正 76.3% 被寫成 49 次潛水比例的暗示、補上視覺功能是引 Gunji/Fujita 研究、刪掉原文無據的『不是跟著腳』（鸕鷀靠腳划水）；只是描述沒有量測，且結論與 L69-004 同方向，計 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不只走路：鸕鷀潛到海底找食物時，頭也一伸一縮——研究者猜是為了在水下看穩，但還沒量過。",
+        "visual": "示意圖：鸕鷀身體微微朝下貼海底前進，脖子一伸一縮的箭頭；岩礁段改成水平、頭伸進岩縫。標『背上攝影機影片的描述，沒量停住』。",
+        "seconds": [
+          20,
+          30
+        ]
+      }
+    },
+    {
+      "id": "L72-005",
+      "question": "鶴走得越快，頭能停住的時間會怎麼變？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "bird.headbob_whooping_crane_speed_hold_fraction",
+      "answer_target": "越快停得越少。美國的研究者錄了 4 隻圈養的美洲鶴，用食物引牠們走或跑：分析的片段裡，速度從每秒 0.30 公尺到 2.64 公尺，頭能穩住的時間比例對應從 79% 降到 0%；這 4 隻鶴在每秒 1.83 公尺時就降到 0%。作者的結論是：鶴邊走邊找食物時，走的速度讓頭和視野至少一半時間不動。這份我們只讀到研討會論文集的摘要。",
+      "scope": "畫面標『研討會摘要』；只有 4 隻、只有範圍兩端與歸零點，不得補中間值或畫成曲線；1.83 m/s 只是這 4 隻鶴，不可套到鴿子或說成所有鶴的門檻；與 L65-004（鴿子越快停越短）只當跨物種呼應。與 L69-005 同一研究群（Cronin、Kinloch、Olsen），片中放在同一段，數字要註明出自本摘要而不是 L69-005 的 Cronin 2007 摘要。",
+      "source_ids": [
+        "L72-S006"
+      ],
+      "source_locator": "F60-S002 典藏頁 Abstract 全段",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：只讀到摘要（PDF 403，重試一次仍 403），照『只讀到摘要不計』；且『越快停越短』在 L65-004 已有、Cronin 2005 的同一結論在 L69-005 已判 0。與 L69-S003 同群：Cronin／Kinloch／Olsen 群目前合計只有 L69-005 的 0.25（那 0.25 是 Necker 綜述作者的觀察，不是此群），本群有效計數 0。日後 Cronin 2005 Curr Biol 或本篇 PDF 可讀時，本群合計最多約 +0.5。 原提案 F60-002（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V63（2026-11-12）改字後收；內容與摘要逐字相符，可作同段補充，但只讀到摘要且結論與 L65-004 重複，照上輪規則改計 0；與 L69-S003 同群。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不只鴿子：4 隻美洲鶴也是越快、頭能停的時間越少（摘要）。",
+        "visual": "橫軸速度、縱軸『頭穩住的時間比例』，只標 0.30 m/s–79%、1.83 m/s–0% 兩點與 2.64 m/s，不連曲線，標『研討會摘要，只給兩端』。",
+        "seconds": [
+          15,
+          20
+        ]
+      }
+    },
+    {
+      "id": "L72-006",
+      "question": "番茄一放進冰箱，香氣是馬上就變少，還是要冰好幾天才會？",
+      "domain": "植物",
+      "mechanism_key": "plant.tomato_volatile_emission_tracks_fruit_temperature_hours",
+      "answer_target": "馬上就變少，而且跟著果實的溫度走。瓦赫寧根大學的團隊用模擬咀嚼的裝置接上質譜儀，量兩個紅熟番茄品種咬碎時放出的香氣：從 22°C 移到 4°C 後，香氣釋放跟著果溫往下掉，稍微慢一點；5 到 6 小時內，果溫和香氣都降到穩定的低值。冷了 6 天再移回 22°C，香氣又跟著果溫回升，但作者在摘要寫明，大多數香氣通常回不到原來的水準（接 F61-002）。作者的解釋是：低溫讓做香氣的酵素變慢，香氣分子在冷的果肉裡也比較溶得住、不容易揮發出來（亨利定律）。所以冰的番茄香氣少，有一部分是當下被冷「壓住」；但這只是第一層，接著要講 L66-002 的基因變慢與 F61-002 的回不來。",
+      "scope": "兩個品種（約 80 g 圓番茄、約 30 g 雞尾酒番茄）、每點 3 顆；是儀器模擬咀嚼，不是真人試吃；酵素與亨利定律是作者解釋，本研究沒有分開量。不能說「回溫就完全恢復」或「冷藏完全不傷番茄」。",
+      "source_ids": [
+        "L72-S008"
+      ],
+      "source_locator": "VOC Changes During Storage Assessed by PTR-MS and Chewing Device 第一、二段；Fig. 5",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：與 F61-002 同一研究，Farneti／Woltering 群合計 1.0。與 L66-002 的說法要並陳成兩層（當下的溫度效應＋數天的基因變慢），不寫成互相否定。 原提案 F61-001（目標 C12-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字與條件正確；補回摘要「generally not to the original levels」，刪掉「回溫就回來」；role 由 turn 改 segment（轉折一仍由 L66-001／002 撐，本條是轉折一的第一層）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰的當下，香氣幾小時內就跟著果溫掉；回溫會回升，但多半回不到原樣。",
+        "visual": "番茄剖面的溫度色塊從紅變藍，旁邊香氣粒子的箭頭同步變少；咀嚼裝置示意。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "L72-007",
+      "question": "番茄冰越久，回溫後還能恢復原本的香氣嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.tomato_cold_duration_limits_aroma_recovery_offflavor",
+      "answer_target": "冰越久，越回不來，組成也變了。同一個瓦赫寧根團隊把番茄放 4°C，每隔 5 天拿一批回 16°C：冷 5 天的，回溫後香氣幾乎完全恢復；冷 10 天、15 天的只恢復一部分。另一次實驗用咀嚼裝置量，冷過再回溫的番茄，常被歸為異味的甲醇、乙醛、乙醇、丙酮比較突出，冷藏越久，回溫後這些越多；其中雞尾酒番茄 Amoroso 冷 12 天後，乙醛和乙醇大約是一直放 22°C 的兩倍，圓番茄 Cappricia 在這方面比較穩定。Cappricia 冷過再回溫，常被當成異味的 1-戊烯-3-酮則明顯偏高。作者在摘要說，除了香氣總量，組成的改變可能也是冷藏番茄風味變差的部分原因。",
+      "scope": "兩個品種、兩次實驗（回 16°C 的天數實驗與 4°C 對 22°C 的咀嚼裝置實驗），數字不跨實驗混用；「異味」是文獻歸類，本研究沒有人試吃；兩倍只限 Amoroso 的乙醛與乙醇、冷 12 天。",
+      "source_ids": [
+        "L72-S008"
+      ],
+      "source_locator": "VOC Changes During Storage Assessed by SPME/GC-MS 末段；VOCs Derived from Lipid Metabolism 末兩段；PTR-MS 段末（Figs. 6–8）；Conclusion",
+      "premise_status": "screened",
+      "notes": "算 0.5：與 F61-001 同一研究（合計 1.0）。與 L66-002「回溫一天部分回升」方向一致，新增的是「冷藏天數與恢復程度」和異味兩點；不與 L66-001 的 65% 相減或合併。 原提案 F61-002（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字正確；改正 payoff 的「兩週以上回不來」，補 Cappricia 異味較穩定、兩個實驗分開講。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰 5 天還救得回來，冰 10 天、15 天只回來一部分，還多了常被當成怪味的成分。",
+        "visual": "時間軸：5、10、15 天三個回溫點，香氣柱一次比一次矮；旁邊冒出「乙醛、乙醇」的小泡泡（標明只在雞尾酒番茄）。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "L72-008",
+      "question": "冰過的番茄，一般人真的吃得出來嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.tomato_chill_consumer_liking_depends_on_cultivar",
+      "answer_target": "在這份海報裡，要看品種。瓦赫寧根大學另一個研究群挑了三個商業品種：風味評價低的 Merlice、中等的 Brioso、高的 Axiany，紅熟果放 5°C 7 天再放 20°C 一天，請約 50 位消費者和前一天採的番茄比。只有風味最淡的 Merlice，冰過的比新鮮的和放 15°C 的不受喜愛；Brioso 冰過的和新鮮的沒有顯著差別；Axiany 三組都沒有差別。三個品種冰過的糖度、酸度、硬度都和未儲存的相近。作者的結論是：冷藏造成的代謝變化，只在風味差的品種變成消費者喜好上的顯著差別。這是會議海報，沒有經過同儕審查。",
+      "scope": "機構典藏的海報，未經同儕審查；約 50 人、一次評比，喜好只有圖、沒有數值；只有 5°C 7 天一種條件。不能說「好番茄就可以冰」，不引用海報背景段的保存溫度。",
+      "source_ids": [
+        "L72-S009"
+      ],
+      "source_locator": "Methods；Results: Fruit quality（Table 1）、Consumer panel（Figure 2）；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：未經審查的海報、喜好只見圖，只當 L66-001 試吃結果的補充，不能單獨撐一個轉折。與 F61-001／002 不同研究群（無共同作者），不併 Farneti 封頂；瓦赫寧根兩組合計 1.25。 原提案 F61-003（目標 C12-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字與條件正確；補 Brioso、標明海報身分；降為 0.25，role 由 turn 改 segment——一張未審海報不能當改變結論的轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣冰一週，風味濃的番茄這群消費者吃不出差別，風味淡的才被嫌（海報初步結果）。",
+        "visual": "三顆番茄排排站，旁邊三個評分條：淡的那顆分數掉、其他兩顆不動。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    },
+    {
+      "id": "L72-009",
+      "question": "芒果放 12.5°C 和放 8°C，差那幾度有差嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.mango_black_flesh_storage_temperature_threshold",
+      "answer_target": "在這個研究裡差很多。巴西農業研究公司 Embrapa 與佛羅里達大學把三個芒果品種各 600 顆，分早採與較熟採，存 8°C、10°C、12.5°C 30 天，再放 20°C 7 天，切開看種子周圍果肉有沒有變褐變黑（「黑肉」）。早採的 Tommy Atkins 在 8°C 有 70%、10°C 有 67%，Kent 是 80% 和 78%，Palmer 是 89% 和 33%；較熟才採的多半較低，但 Palmer 在 10°C 早採與較熟幾乎一樣（33% 對 32%）。三個品種、兩種成熟度，在 12.5°C 都沒有出現黑肉。黑肉是長在果肉裡面的毛病，作者用溫度與成熟度的反應支持它是一種冷害。",
+      "scope": "一個產區、三個品種、商業出口的 30 天運儲；黑肉是否為冷害是本研究提出並檢驗的假說；不給任何儲存溫度建議、不引用「12.5°C 安全門檻」、不提 1-MCP。",
+      "source_ids": [
+        "L72-S010"
+      ],
+      "source_locator": "Abstract；Experiment 1 方法；Results: Experiment 1（Fig. 2）",
+      "premise_status": "screened",
+      "notes": "作為獨立核心算 0.75（一個實驗的多組數字）；但不算進 C12-02：芒果商業運儲不是「番茄、桃子放冰箱」，加入會讓題目散成水果清單。可留給日後「冷藏與冷凍」長題或熱帶水果冷害題。 原提案 F61-004（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字正確；改 payoff 與「較熟較低」的例外、刪無出處的「外表看不出來」、排除保存門檻句。收為獨立核心，但離題，不計入 C12-02。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣 30 天，8 和 10 度有一到九成的芒果果肉發黑，12.5 度一顆都沒有。",
+        "visual": "三排芒果剖面：8、10、12.5°C，前兩排種子周圍一片黑，第三排乾淨。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L72-010",
+      "question": "冰過的香蕉皮黑了、肉卻還硬，是因為冰得比較新鮮嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.banana_7c_vs_13c_starch_unconverted_membrane_damage",
+      "answer_target": "不是新鮮，是熟不了。南京農業大學把同一批七八成熟的香蕉分放 7°C 和 13°C 10 天：13°C 那組全程沒有冷害，果皮變亮變黃；7°C 那組冷害指數一路上升，果皮變暗、不轉黃，失重較多，果肉含水反而下降。7°C 的果肉軟化比較慢，電子顯微鏡下看得到原因之一：13°C 的果肉到第 10 天澱粉已完全轉化，7°C 的果肉還留著大量澱粉粒，細胞之間出現空洞，果皮細胞膜大片破裂。作者說，冷讓澱粉轉糖的代謝停住，慢軟看起來像好事，最後可能讓品質受損、熟得不均。",
+      "scope": "只有 7 與 13°C 兩點、10 天；數值只見於圖，片中只講方向；本研究沒量糖度；不給冷藏建議。",
+      "source_ids": [
+        "L72-S011"
+      ],
+      "source_locator": "2.1 Materials；3.1 第一、四段；3.2 SEM 段（Fig. 3）",
+      "premise_status": "screened",
+      "notes": "作為獨立核心算 0.5；計入 C12-02 只算 0.25：round16 題案已有香蕉一章（LEG-S55 只用一句低溫傷害、L66-007），本條只補「7 對 13°C、熟不下去」的方向性結果，併入同一章不另開章。 原提案 F61-005（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；結果正確；修掉「品質一起壞掉」的斷言與無量測的「沒變成糖」。題內只算 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰過的香蕉「硬」不是新鮮，是澱粉卡住、熟不下去。",
+        "visual": "左右兩張電子顯微鏡圖：13°C 果肉澱粉已轉化、7°C 塞滿圓圓的澱粉粒；上方兩根香蕉一黃一暗。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    },
+    {
+      "id": "L72-011",
+      "question": "辣椒冰太久，壞在哪裡？",
+      "domain": "植物",
+      "mechanism_key": "plant.pepper_chilling_seed_browning_genotype_range",
+      "answer_target": "壞在看不到的裡面。首爾大學把 36 個辣椒（Capsicum annuum，同種也包括甜椒）基因型放 2°C 3 週，主要的冷害症狀是種子變褐，果皮凹斑和果萼變色可以忽略。種子褐變的比例從 0% 到 60% 以上：怕冷的 C00562 是 63.86%，不怕冷的 UZB-GJG-1999-51 和 Takanotsume 都是 0%，Hungarian Wax 4.31%、Chili bangi 30.88%。",
+      "scope": "只有 2°C 3 週一個條件；品系多為研究用材料；不能直接推到市售甜椒；完整數字在補充表，未讀。",
+      "source_ids": [
+        "L72-S012"
+      ],
+      "source_locator": "Results: Seed browning rates of 36 pepper genotypes；Figure 1",
+      "premise_status": "screened",
+      "notes": "作為獨立核心算 0.5；不算進 C12-02：辣椒種子褐變與「番茄、桃子放冰箱為什麼不好吃」無關，round16 的 still_missing（4）雖點名蔬菜冷害，但加進來只會讓片子變成作物清單。 原提案 F61-006（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字正確；補 Takanotsume 同為 0%、標明補充表未讀。收為獨立核心，不計入 C12-02。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "辣椒外皮好好的，切開種子一片褐；同樣 2°C，有的品系一顆都沒事。",
+        "visual": "兩個辣椒剖面並排：一個種子奶白、一個整排褐色。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L72-012",
+      "question": "課本說冷害是「細胞膜冷到變硬」，耐冷的果實真的是靠膜裡不飽和脂肪酸比較多嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.grapefruit_chilling_sensitive_peel_more_unsaturated_fatty_acids",
+      "answer_target": "至少在這個葡萄柚例子裡看不出來。主流假說是：低溫讓細胞膜從流動的液態轉成凝膠態，膜變得會漏，引發冷害；膜脂的不飽和脂肪酸雙鍵多，比較能保持流動。西班牙 IATA 研究所用同一品種的葡萄柚對照：在樹上套袋遮光的果皮變紅、累積茄紅素，冷藏 2°C 8 週冷害指數一直低於 1；沒套袋的黃色果第一週就出現冷害，8 週後幾乎全部嚴重受害。量整個果皮的脂肪酸：兩組不飽和對飽和的比例、雙鍵指數都一樣；怕冷那組的亞油酸含量反而較高，但那是因為它的脂肪酸總量也較多。作者自己稱怕冷果「不飽和反而多」是表面的矛盾，推測怕冷果在採收前已啟動低溫反應，耐冷果靠的可能是茄紅素等抗氧化。這個研究沒有直接量膜的相變或滲漏。",
+      "scope": "只量外果皮總脂肪酸組成與基因表現，沒有量膜相變溫度或離子滲漏；一個品種、一個產區、樹上遮光處理，不是天生耐冷品種的比較；不能說成「課本錯了」或「套袋就不怕冷」，也不能推到番茄、桃子。",
+      "source_ids": [
+        "L72-S013"
+      ],
+      "source_locator": "Introduction 第三段；2.1（Fig. 1）；2.3（Table 1）；Discussion 第二至四段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.75）：不是 still_missing（1）要的膜相變或離子滲漏直接量測；「不飽和較多」是含量不是比例，作者答案把比例相同與含量較高混成一個反證。可在機制章當一句「膜假說不是全部」的提醒，不當轉折。 原提案 F61-007（目標 C12-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字正確，但推論錯位：比例與雙鍵指數相同，「怕冷果不飽和反而多」只是含量；改寫答案與題目、降為 0.25，不能撐轉折三。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "耐冷與怕冷的葡萄柚，果皮脂肪酸的不飽和程度一樣，差別可能在茄紅素。",
+        "visual": "細胞膜示意：直鏈與彎鏈脂肪酸由流動變整齊；旁邊一紅一黃兩顆葡萄柚切開對照，兩個相同高度的「不飽和比例」柱。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L72-013",
+      "question": "桃子的「殺傷區」是誰說的？差幾度、差幾週？",
+      "domain": "植物",
+      "mechanism_key": "plant.peach_killing_zone_onset_weeks_review",
+      "answer_target": "Crisosto 與以色列 Volcani 中心的 Lurie 在 2005 年的綜述裡整理：許多報告指出，易受害的桃與油桃存在 2.2 到 7.6°C 之間（他們稱「殺傷溫度區」）時，果肉褐變等冷害比存在 0°C 左右（冰點以上）出現得更快、更重；存 2–5°C 時 1 到 2 週就看得到症狀，0°C 則要 3 週以上。他們也寫，症狀主要在出冷庫後的後熟期間出現，問題常到消費者手上才被發現。這是綜述整理前人研究，不是新的實驗。",
+      "scope": "綜述，不是原始實驗；數字是作者綜合前人研究；只講現象，不引用綜述中「接近 0°C 儲存壽命最長」的建議，片中不給任何保存溫度。",
+      "source_ids": [
+        "L72-S014"
+      ],
+      "source_locator": "頁 196 右欄；頁 197 第 2 節第一段",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）：只新增「發病週數」；殺傷區已在 L66-006（前言轉述），「出庫才現形」已在 L66-005，不重算。仍未取得 Crisosto 1999 原始實驗。 原提案 F61-008（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字正確；標明綜述、排除保存建議句。0.25 維持。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是越冷越快壞：在 2 到 7 度之間，桃子一兩週就出事，0 度要三週以上（綜述整理）。",
+        "visual": "溫度計刻度上 2.2–7.6°C 標成紅色區帶，旁邊兩個時鐘：1–2 週對 3 週以上。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "L72-NA001",
+      "question": "換一個研究群、看 855 種鳥：巢有沒有屋頂，決定得了蛋的長短嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "非作者覆核 V59（2026-11-12）退回：不是 round18 still_missing 點名的原文（點名的是 Hays & Hauber、Chou 等、Shatkovska、Maclean、第二研究群斜面實驗；round17 曾點名的『獨立研究群的巢型與蛋尖度研究』也要求尖度），依規定嚴查：不回答本題主問的尖度；與 L66-016（Duursma，310 種，長寬比與圓頂巢）同一問題、同一指標，能新增的只剩『巢型與長短不是一對一』，而這一點原文自己在摘要、結果、討論、結論間方向不一，作者的結論又是相反的『巢決定蛋形』；提案還把 588 種寫成 855 種、用反方向的路徑結果回答問題。改寫成可用的版本只能是『有一篇研究的主分析看不出巢型與長短綁在一起，但作者自己的文字前後矛盾』，0 條、對轉折無貢獻，不入池。0.25 條不合理，改為 0。 原提案 F56-001。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回"
+    },
+    {
+      "id": "L72-NA002",
+      "question": "鴴鷸類的四顆蛋為什麼尖端都朝中心、朝下？",
+      "existing_ids": [],
+      "source_ids": [
+        "L72-S002"
+      ],
+      "reason": "只在 Tulp 等 2012 PLoS ONE 前言讀到一句無引文的背景敘述（尖端朝中心朝下可省巢空間、提高傳熱），不是量測；still_missing（4）要的是直接量現生地面巢蛋擺放方向的原研究（如 Maclean 1974），原文找不到合法全文。不計。 原提案 F56-NA001。",
+      "reentry_condition": "讀到直接量蛋在巢中擺放方向與傳熱或孵化效率的原研究全文（Maclean 1974 或其他）。",
+      "reading_status": "只讀到他文前言一句"
+    },
+    {
+      "id": "L72-NA003",
+      "question": "3D 列印的蛋在斜坡上，哪一種形狀最不會滾走？（Hays & Hauber 2018）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "CUNY 論文 PDF 與 JEB 期刊版依原連結各再試一次，仍是 Cloudflare 403；未繞過。WebSearch 摘要稱錐度在傾角大於 2 度時抑制位移、伸長反而滾更遠，但只是搜尋摘要與新聞稿，不計。 原提案 F56-NA002。",
+      "reentry_condition": "CUNY Academic Works 或 JEB 可正常取得，或出現其他公開典藏連結。",
+      "reading_status": "只有摘要與新聞稿"
+    },
+    {
+      "id": "L72-NA004",
+      "question": "蛋太輕的鳥，是不是比較需要有牆的巢？（Chou、Tuanmu、Hung 2025）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "DOI 403、Europe PMC REST 500、europepmc.org 403；只讀到研究新聞稿，不計。 原提案 F56-NA003。",
+      "reentry_condition": "PMC12440621 全文可經公開連結取得。",
+      "reading_status": "只讀到研究新聞稿"
+    },
+    {
+      "id": "L72-NA005",
+      "question": "剪掉 Lsdia1 生出左旋蝸牛的原論文怎麼說？（Abe & Kuroda 2019 Development）",
+      "existing_ids": [
+        "L68-004"
+      ],
+      "source_ids": [],
+      "reason": "Europe PMC 搜尋 API 列出的 Free pdf（dev.biologists.org）回 Cloudflare 403，停；WebSearch 另列 cob.silverchair.com 同出版社 PDF，依規定不改抓同一資料庫的另一主機。L68-004 維持綜述層級，不升級。 原提案 F57-NA001。",
+      "reentry_condition": "PMC 或作者機構典藏出現此文的開放全文，或出版社頁面在無機器驗證時可直接取得。",
+      "reading_status": "未讀（403）"
+    },
+    {
+      "id": "L72-NA006",
+      "question": "日本 Euhadra 蝸牛的左右旋是哪個基因決定的？（Lewis 等 2026）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "照第十八輪的原 DOI 再試一次，bioRxiv 仍回 429；期刊版 Curr Biol 訂閱。屬網絡 B，即使讀到最多 +0.5。 原提案 F57-NA002。",
+      "reentry_condition": "bioRxiv 限流解除後用同一 DOI 正常下載一次，或 Europe PMC／PMC 出現開放全文。",
+      "reading_status": "只有摘要（第十八輪）"
+    },
+    {
+      "id": "L72-NA007",
+      "question": "左旋與右旋的門螺在雜交帶相遇，會不會混成一群？（Koch 等 2017 Mol Ecol）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 標為訂閱、無 PMC；WebSearch 只見書目與摘要頁（zendy、BVS、agris），沒有作者典藏或開放全文。WebSearch 摘要提到羅馬尼亞 Bucegi 山區右旋 Alopia livida 與左旋 A. straminicollis 的兩個雜交帶、多數個體基因組混合，但只來自搜尋摘要，不寫成核心、不計。 原提案 F57-NA003。",
+      "reentry_condition": "作者（Hausdorf 研究室，漢堡）機構典藏或開放版本出現。",
+      "reading_status": "只見書目與搜尋摘要"
+    },
+    {
+      "id": "L72-NA008",
+      "question": "Frost 1978（JEB 74:187）與 Davies & Green 1988（JEB 138:71）原文",
+      "existing_ids": [
+        "L65-003",
+        "L69-006"
+      ],
+      "source_ids": [],
+      "reason": "照規定只用原本的公開連結各再試一次：doi.org/10.1242/jeb.74.1.187 轉 journals.biologists.com 回 403；搜尋列出的 cob.silverchair.com/jeb/article-pdf/2639033/jexbio_138_1_71.pdf 回 403。未換客戶端、未改抓其他主機。 原提案 F60-NA001。",
+      "reentry_condition": "期刊頁可正常取得時重讀；L65-003 約 +0.5，L69-006 約 +0.5。",
+      "reading_status": "未讀到（403）"
+    },
+    {
+      "id": "L72-NA009",
+      "question": "Friedman 1975 Nature、Fujita 2002（J Zool，鴿子重心）、Green, Davies & Thorpe 1994（J Comp Physiol A，降落點頭）、Bangert 1960、Necker 等 2000 合法全文",
+      "existing_ids": [
+        "L65-003",
+        "L69-002",
+        "L69-003",
+        "L69-006"
+      ],
+      "source_ids": [],
+      "reason": "Friedman 上輪已確認付費預覽，未重試；Fujita 2002 搜尋只列 cambridge.org 付費頁；Green 1994 搜尋只列 Springer 與第三方轉存 elogim.com（不用）、另列 cob.silverchair.com/jeb/article-pdf/3412323/jexbio_180_1_85.pdf 試一次回 403；Necker 2000 搜尋找不到題名與期刊；Bangert 1960 無結果。 原提案 F60-NA002。",
+      "reentry_condition": "任一篇有合法開放全文時，對應核心由轉述升級，各約 +0.25。",
+      "reading_status": "未讀到（付費、403 或找不到）"
+    },
+    {
+      "id": "L72-NA010",
+      "question": "Cronin 等 2005 Current Biology（美洲鶴覓食點頭）合法全文",
+      "existing_ids": [
+        "L69-005"
+      ],
+      "source_ids": [
+        "L72-S006"
+      ],
+      "reason": "搜尋列出的 mdsoar.org/items/e2a24378-…/full 再試一次仍回 400；ScienceDirect／cell.com 上兩輪 403，未重試其他主機。改以同組同批鶴的研討會摘要（F60-S002）補成 F60-002，只計 0.25。 原提案 F60-NA003。",
+      "reentry_condition": "期刊全文可讀時，L69-005 與 F60-002 合計約 +0.25–0.5（同群上限內）。",
+      "reading_status": "未讀到（400）"
+    },
+    {
+      "id": "L72-NA011",
+      "question": "小鸊鷉追快的獵物不點頭、追慢的獵物才點頭？（Gunji、Fujita、Higuchi）",
+      "existing_ids": [
+        "L69-004"
+      ],
+      "source_ids": [
+        "L72-S007"
+      ],
+      "reason": "只讀到 2012 年學會海報摘要：只有 1 隻鳥、沒有數字；期刊版 2013 J Comp Physiol A 為 Springer 付費。內容很適合當『點頭為了看』的旁證，但證據太薄，不成核心。 原提案 F60-NA004。",
+      "reentry_condition": "期刊版合法全文可讀時，可成『水下點頭隨獵物難度變』一個核心，約 0.5（Fujita 共同作者，與 L65-008 的研究群要一併看上限）。",
+      "reading_status": "只讀到研討會摘要"
+    },
+    {
+      "id": "L72-NA012",
+      "question": "非 Troje 群的前衝期視覺實驗（still_missing（5））",
+      "existing_ids": [
+        "L69-001"
+      ],
+      "source_ids": [],
+      "reason": "Europe PMC 開放全文查詢（head-bobbing＋鳥類）與兩次網路搜尋都沒有找到 Troje 群以外、直接測前衝期看不看得見的實驗；Kano 等 2022（Sci Rep，Konstanz，PMC9646700）只在方法中因引用 Jiménez Ortega 2009 而不排除前衝期，本身沒有測；Bhagavatula 等 2011（虎皮鸚鵡降落）不是點頭。 原提案 F60-NA005。",
+      "reentry_condition": "找到非 Troje 群的前衝期辨形或動態偵測實驗原文時，約 +0.75。",
+      "reading_status": "未找到"
+    },
+    {
+      "id": "L72-NA013",
+      "question": "其他順手看過但不採用的來源",
+      "existing_ids": [
+        "L65-009",
+        "L65-010"
+      ],
+      "source_ids": [],
+      "reason": "Frontiers fvets.2025.1554240 就是池中 L65-S007（PMC12162510，鵝）；Frontiers conf.fnbeh.2012.27.00351 是 Troje 等的會議摘要（Troje 群已封頂）；Ros & Biewener 2017 就是池中 L65-S009；Notornis 18(3) Storer 1971 紐西蘭小鸊鷉只有一句『頭像骨頂雞一樣前後點』，不成核心；canadianfieldnaturalist.ca 的下載連結回 301，未跟隨（上輪已判為 Lisney & Troje，屬封頂群）。快取已刪。 原提案 F60-NA006。",
+      "reentry_condition": "無。",
+      "reading_status": "略讀或未讀"
+    },
+    {
+      "id": "L72-NA014",
+      "question": "冷害敏感與耐冷組織的粒線體在 10°C 附近出現轉折（Lyons & Raison 1970）原文",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 書目顯示非開放；WebSearch 給出 pmc.ncbi.nlm.nih.gov/articles/PMC396419（未確認即此文），curl 預設標頭取得 reCAPTCHA 驗證頁，依規定停止、不換客戶端。 原提案 F61-NA001。",
+      "reentry_condition": "有合法開放全文時，可為機制章加約 0.5（敏感與耐冷組織的實測對照）。",
+      "reading_status": "未讀（只見搜尋摘要）"
+    },
+    {
+      "id": "L72-NA015",
+      "question": "Crisosto、Mitchell、Ju 1999 HortScience 桃、油桃、李在 0 與 5°C 的冷害分類原文",
+      "existing_ids": [
+        "L66-006"
+      ],
+      "source_ids": [
+        "L72-S014"
+      ],
+      "reason": "搜尋結果只有 ACNP、IIF-IIR 書目與 postharvest.ucdavis.edu/node/5726；後者 curl 回 Cloudflare 403，未繞過。沒找到 journals.ashs.org 的公開連結。 原提案 F61-NA002。",
+      "reentry_condition": "取得合法全文後，可把殺傷區由綜述升為原始實驗，約 +0.25。",
+      "reading_status": "只見他站摘要轉述"
+    },
+    {
+      "id": "L72-NA016",
+      "question": "Maul 等 2000 J Food Sci 受訓評審：5°C 4 天番茄熟香與甜度評分下降",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "搜尋只得 AGRIS／ACNP 書目，未見開放全文連結；未嘗試其他網址。 原提案 F61-NA003。",
+      "reentry_condition": "有開放全文時可加約 0.5（受訓評審、非 Klee 群），但需與 F61-003 合計封頂。",
+      "reading_status": "未讀"
+    },
+    {
+      "id": "L72-NA017",
+      "question": "個別收縮膜包裝讓櫛瓜冷藏不凹斑（Megías 等 2015 PLoS One）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "已讀摘要與結果中段（f61src/PMC4503597.txt，sha256 前 16 碼 ae39f1668b1022e0）；主旨是包裝處理方法，放進片中等同保存建議，違反本題 drop_if。 原提案 F61-NA004。",
+      "reentry_condition": "不再進本題；若另開「包裝科學」題可議。",
+      "reading_status": "摘要與部分結果"
+    },
+    {
+      "id": "L72-NA018",
+      "question": "辣椒 F2 群體的種子褐變與 JAR1、ERF11 表現相關（Lee 等 2022 Sci Rep，PMC8873250）",
+      "existing_ids": [],
+      "source_ids": [
+        "L72-S012"
+      ],
+      "reason": "與 F61-S005 同研究群、同一對親本，主要是基因相關係數，對觀眾結論沒有新改變。 原提案 F61-NA005。",
+      "reentry_condition": "無。",
+      "reading_status": "摘要與方法（f61src/PMC8873250.txt，sha256 前 16 碼 9cdf6f3a94072b5a）"
+    },
+    {
+      "id": "L72-NA019",
+      "question": "番茄不同發育期耐冷的分子與生化差異（Camalle 等 2024 Mol Hortic，PMC11375913）",
+      "existing_ids": [
+        "L66-004"
+      ],
+      "source_ids": [],
+      "reason": "已下載（f61src/PMC11375913.txt，sha256 前 16 碼 18e42c6bd6055849）但未讀；作者群含 Volcani 的 Lers，與 L66-S003 同研究群，加入會超過同群封頂。 原提案 F61-NA006。",
+      "reentry_condition": "覆核放寬同群封頂時再讀其電解質滲漏量測。",
+      "reading_status": "未讀"
+    }
+  ]
+}

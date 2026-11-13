@@ -1,0 +1,530 @@
+{
+  "batch": "batches/wave35-20261112.json",
+  "reviewed_on": "2026-11-12",
+  "method": "四位沒有參與研究的覆核代理（R351：B1；R352：B2；R353：B3；R354：B4）逐題至少重開一個關鍵來源、每個關鍵字跑一次素材池搜尋並 grep 批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位，覆核新讀的來源編入該研究代理的來源序號。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 15,
+    "NEEDS_CHECK": 6
+  },
+  "source_renames": {
+    "R351-S001": "B1-S019",
+    "R351-S002": "B1-S020",
+    "R352-S001": "B2-S018",
+    "R352-S002": "B2-S019",
+    "R353-S001": "B3-S022",
+    "R353-S002": "B3-S023",
+    "R354-S001": "B4-S016",
+    "R354-S002": "B4-S017",
+    "R354-S003": "B4-S018",
+    "R354-S004": "B4-S019",
+    "R354-S005": "B4-S020"
+  },
+  "verdicts": [
+    {
+      "id": "N3521",
+      "agent": "B1",
+      "reviewer": "R351",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B1-S010 https://nationalgallery.org.uk/paintings/NG739（Overview、In-depth、Details、Provenance）；另重開 B1-S001 https://magonia.com/wp-content/uploads/2016/01/art-and-ufo-part-1.pdf（Crivelli 一節）、B1-S008 https://cdn.centerforinquiry.org/wp-content/uploads/sites/29/2005/05/22164635/p22.pdf、B1-S011 https://ufologie.patrickgross.org/htm/picanc.htm（1486 條）",
+      "reopen_result": "館方頁面確實寫：『Ascoli was ruled by the pope but was granted a degree of self government in 1482. The news arrived on 25 March, the feast of the Annunciation』；遊行上山到 Observant Friars 修院；紋章與『LIBERTAS ECCLESIASTICA』是詔書名稱；『the flash which carries the dove of the Holy Ghost down from heaven, through a convenient golden hole in the wall』；橋上讀信『perhaps the news of the papal bull… delivered by the carrier pigeon in the cage beside them – a witty analogy of the Annunciation itself』；1484 年瘟疫、遊行取消、與 Fermo 開戰；Crivelli about 1430/5–about 1494；來歷 1724、1811 Brera、1820 de Sivry、1847 Solly 拍賣、1864 Lord Taunton。館方頁面完全沒有提到小天使圈或 UFO——『雲圈裡兩圈小天使』只在 Cuoghi（Part 1：『formed by a circle of clouds inside which there are two circles of small angels』）與 Polidoro 轉述（『a vortex of angels in the clouds』）。『The UFOs of Crivelli』網站原句還寫了『It may be either the sun circle… or an object really seen』，研究稿只留了後半。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立、來源足（國家美術館頁＋Gross 直接讀到的流傳版本＋Cuoghi、Polidoro）。改掉鉤子裡頁面沒有的『等了很久』『山城』與研究者換算的『五百多年後』；補回 UFO 網站自己提的另一種讀法；標明天使圈只出自 Cuoghi；Doré 插圖的歌數兩來源不一，不報。片長下修 6–7 分，與 N3522 合計 10–13 分。宗教界線 scope 已寫明（只講圖像史、不判斷真假、不談教義）。"
+    },
+    {
+      "id": "N3522",
+      "agent": "B1",
+      "reviewer": "R351",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B1-S009 https://www.cantab.net/users/michael.behrend/repubs/j_geomancy/v2n2/pages/screeton_de_gelder.html（{29}–{32} 全文與 2015 註）；另重開 B1-S011 https://ufologie.patrickgross.org/htm/picanc.htm（1710 條）、B1-S003（Cuoghi Part 3，經 https://www.sprezzatura.it/Arte/Arte_UFO_5_eng.htm 頁上的連結 Arte_UFO_3.htm 開啟）、B1-S008",
+      "reopen_result": "Screeton 1978 年 1 月（vol.2 no.2）確實寫『A whispered “Paul must see the flying saucer picture” whist staying in Cambridge』『could well be placed in the UFO phenomenon context』；Castle：『High in the sky above hovers a greenish disk at the centre of which is a tiny dove with outstretched wings. From that disk emanate four narrow rays』；Screeton：『Central beneath the disk is a dove』，並稱『Was-God-an-Astronaut?』類平裝書『tiresomely tedious』、點名 von Däniken；生卒 1645.10.26–1727.8.28、1665–1667 師從 Rembrandt、19″×14⅝″、c1710、Alford→Compton 1905 都對。研究稿漏掉文末結論：『I regard the painting as being an astonishing depiction of the inexplicable』——他看見鴿子仍說不可思議，payoff『自己寫下了答案』過度。Cuoghi Part 3 的 Fitzwilliam 目錄引文『The two figures are brilliantly lit by rays from the Dove high above, against general darkness...』與 Edicolaweb 引文都對。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "有一手原文（Screeton）＋Gross 兩個可讀的流傳出處，前提成立。改掉鉤子裡研究者換算的『不到半公尺高』與沒有出處的『1970 年代』，補 Screeton 的結論，修 payoff 與『第一個』用語。單獨 4–6 分不到 8 分，與 N3521 回答同一個核心問題，合計 10–13 分。"
+    },
+    {
+      "id": "N3523",
+      "agent": "B1",
+      "reviewer": "R351",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "B1-S013：經 archive.org advancedsearch（title:tapisseries du roy）→ https://archive.org/metadata/tapisseriesduroy00kraus 的檔案清單 → https://archive.org/download/tapisseriesduroy00kraus/tapisseriesduroy00kraus_djvu.txt；另重開 B1-S007（Cuoghi Part 8，經 Part 5 頁上的連結 Arte_UFO_8.htm）",
+      "reopen_result": "Krauss 本 OCR 確實寫『Il y a quatre Devises aux quatre coins de la bordure… la PIETE, la MAGNANIMITE, la BONTE, & la VALEUR』、『les festones… composez de… des armes à feu, des fusées volantes, des encensoirs, des brasiers』、『POUR LA MAGNANIMITE, DANS LA PIECE DE L'ELEMENT DU FEU. Une Fusée Volante, avec ces Paroles, SPLENDET ET ASCENDIT. Pour faire entendre que la Gloire [OCR: Glorie] de Sa Majesté est toûjours éclatante, & va toûjours en s'élevant』、第三枚燈塔『IN PUBLICA COMMODA FULGET』；metadata：Kraus 依 Le Clerc 刻、設計出自 Le Brun、徽章依 J. Bailly 細密畫、原文 Félibien、archive.org 定 1690。Cuoghi Part 8 的 Lissoni、Giordano、Pattera 引文都對，但三人原文與年份都沒有；覆核以義、英文另搜，找不到任何可讀的 UFO 方頁面。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "premise_status",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "答案一方（Félibien 說明）紮實，但流傳版本只有 Cuoghi 一人轉引，不符每題兩個可讀出處，依指示改 needs_check。問題裡『宮廷自己出版的說明書』改成實讀到的奧格斯堡重刊本；Dotremond 一句照 Cuoghi 原意改寫。缺：至少一個可讀的 UFO 方出處（Giordano 的〈Do UFOs exists in the History of Arts?〉或 Pattera〈UFO e alieni nella storia dell'uomo〉原文）。"
+    },
+    {
+      "id": "N3524",
+      "agent": "B1",
+      "reviewer": "R351",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B1-S014 https://pop.culture.gouv.fr/notice/palissy/IM21008298；另重開 B1-S007（Cuoghi Part 8 Beaune 一節）、B1-S012 https://ufologie.patrickgross.org/htm/picanc2.htm（14TH CENTURY 條），並新讀 B1-S019",
+      "reopen_result": "POP 確實寫『cette tappisserie fut faite lan de grace mil V. C』、『Année de création 1500』、『4e quart 15e siècle』、『Le chanoine Hugues Le Coq est représenté en donateur sur les 2e et 5e pièces』、1474 年與 Pierre Spicre 訂『les patrons des histoires de Nostre Dame』並畫上樞機 Jean Rolin、『On ne sait si la tapisserie offerte par l'archidiacre Hugues Le Coq 25 ans plus tard…』、Lieu de création『Belgique (?)』、1852 修復、1891 年列級；紀錄沒有談天空物體。Gross：『created in the 14th century… The one on the left was created in 1330… I am told these are hats.』Cuoghi 引 Humbert『le chapeau du cardinal Jean Rolin』與 Figuet（LDLN 1987 年 1–2 月）結論、綠帽疑問都對。Ancient Origins 也寫『Magnificat, created in 1330』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "『1330 vs 織著 1500』的轉折有官方紀錄與兩個可讀的流傳出處（Gross、新加的 Ancient Origins），前提成立。改正問題裡『最早寫文章說是帽子的是 UFO 研究者』——Humbert 的書年份沒讀到，不能排先後；帽子的解釋只經 Cuoghi 一條線，scope 已標。宗教界線：聖母生平只當掛毯畫面，不談教義。單獨 4–6 分，原定接 N3523，但 N3523 目前 needs_check——排題前若 N3523 升不上，本題暫無同核心兄弟題。"
+    },
+    {
+      "id": "N3525",
+      "agent": "B1",
+      "reviewer": "R351",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "B1-S016 https://mail.wildwinds.com/coins/ric/pertinax/i.html（www 版連線被重設，改用搜尋結果裡的 mail 子網域）；另重開 B1-S015 https://www.livius.org/sources/content/herodian-s-roman-history/herodian-1.14、B1-S018（2.5，經 1.14 頁上的連結）、B1-S006（Cuoghi Part 7）",
+      "reopen_result": "Wildwinds 確實寫 RIC 10a『Jan to March 193 AD… PROVID DEOR COS II, Providentia standing left, raising both hands toward a star』、『MODERN FORGERY RIC 11 Two identical examples of a modern Bulgarian forgery』、RIC 21『raising hands to a star above』、RIC 22『right hand raised towards radiate globe』、『FAKE RIC 22… Modern fake』。Herodian 1.14.1 邊註 [191]：『Stars remained visible during the day; other stars, extending to an enormous length, seemed to be hanging in the middle of the sky』；2.5.2 邊註 [28 March 193]。Cuoghi Part 7：Cappelli 1960 年『segnalato per la prima volta』、描述『un disco schiacciato… quattro appendici dissimmetriche』——說『衛星天線』的是 Kolosimo 不是 Cappelli；『i cataloghi di numismatica definiscono il particolare come 「globo radiato」 o stella』；Struffolino 的 Herodian 連結與保留都對。覆核另搜找不到任何可讀的 UFO 方頁面。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "scope",
+        "premise_status",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "錢幣與 Herodian 一方紮實，但流傳版本（Cappelli、Kolosimo、Di Blasi）與 Struffolino 全經 Cuoghi 一人轉引，改 needs_check。問題把 Cappelli 的描述與 Kolosimo 的『衛星』混成『1960 年起有人說是衛星』，已拆開；鉤子刪掉頁面沒有的『老』；被殺只用剪影、切黑，scope 已寫。片長誠實估 5–7 分。接 N2682 不可行：N2682 本身 8.5–10 分，合計超過 13 分，而且 N2682 講文字兆象、本題講錢幣圖像，答案不同；最多取 1–2 分鐘當尾聲。"
+    },
+    {
+      "id": "N3526",
+      "agent": "B1",
+      "reviewer": "R351",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "B1-S017 https://iiif.biblissima.fr/collections/manifest/f90ab804d4962854205405d377d95350ccfb287a 及其頁上所列 https://api.irht.cnrs.fr/ark:/63955/fk0yy8l1odmq/manifest.json；另重開 B1-S006（Cuoghi Part 7 Legrand 一節）、B1-S012（picanc2 15TH CENTURY 條），並新讀 B1-S020",
+      "reopen_result": "Biblissima：Shelfmark『Ms. 297』、Date『15e s.』、『JACQUES LEGRAND, Livre des bonnes moeurs』、Legrand『(1360?-1425?)』；Arca manifest：Cote『France, Chantilly, fonds principal, 0297 (1338)』、15e s.、225 x 170、166 張影像。兩者都沒有說明 1338 是什麼，『是目錄號不是年份』出自 Cuoghi。Cuoghi：Planète n.15 1964〈France exoterique〉圖說原文對；Servier 在《Art》『numero di febbraio 1964』；Planète 1965 年 5–6 月回應全文引句對；但 Cuoghi 說的『為什麼圖總是被裁』正是 Servier 對 Planète 的質問——研究稿『雜誌寫明了，後來的轉載才裁掉』不成立。B1-S020：Planète #15 是 March-April 1964，與 Servier 2 月文章的日期矛盾仍在。Gross 寫 Legrand 1360–1415、『The Fortune is actually the lady on the left』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "Planète、Servier 原文沒讀到，日期矛盾未解，插圖頁碼未核，維持 needs_check。已改：問題裡的『最早』、『後來轉載才裁掉』的錯誤框架、『1338 是舊編號』的推論。單獨 4–5 分，補料後與 N3523 同屬『當年的文字自己就說了是什麼』，但現在兩題都待查，不列 theme。"
+    },
+    {
+      "id": "N3541",
+      "agent": "B2",
+      "reviewer": "R352",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B2-S013 https://archive.org/details/jeannedarcmaidof00murruoft、B2-S014 https://archive.org/details/cu31924028162513、B2-S015 https://archive.org/details/gri_33125001291513（三本都由覆核以 archive.org advancedsearch 命中 identifier，單獨呼叫 metadata 看到檔案清單，再下載清單所列的 _djvu.txt）",
+      "reopen_result": "Murray 1902：盧昂審判答問逐字是『When I came before the King, several people asked me if there were not in my country a wood, called the Oak-wood, because there were prophecies which said that from the neighbourhood of this wood would come a maid who should do marvellous things. I put no faith in that.』；注 1 說紙條『at the beginning of Jeanne's career』送到 Suffolk 手上、Isabeau『might certainly be said to have fulfilled the first half』（編者自己的評語）；Catherine Leroyer『remained stupefied』；Migier 那句在『Third Examination, December 16th, 1455』之下；Dunois：『Fifteen days after the Earl of Suffolk had been made prisoner at the taking of Jargeau, a writing was sent to him containing four lines… a Maid should come from the Oak-wood who would ride on the backs of the archers and against them』，注 2 引 MS. 7301『Descendit virgo dorsum sagittari et flores virgineos obscultabit』。Giles 1848：『a damsel shall be sent from the city of the forest of Canute to administer a cure… She shall be killed by a hart with ten branches, four of which shall bear golden diadems』；星座段『The scales of Libra shall hang obliquely… The tail of Scorpio shall produce lightning, and Cancer quarrel with the Sun. Virgo shall mount upon the back of Sagittarius, and darken her virgin flowers.』Lang 1909：Bréhal 說林子舊名 Nemus Canutum（Bois Chenu）、Geoffrey『(1140)』、『really it was in Britain』、Marie d'Avignon 的盔甲夢、『We have no evidence that she had heard of the Merlin prophecy… till 1428-1429』；附錄 A『ruined by a woman, the wife of the insane King, people said』、『certainly used it to persuade Katherine Royer』、Bede 預言『is not in Bede's works… a chronogram… composed after Jeanne raised her standard』。研究稿的『Canutum／Chenu 字形接近』與『一筆改成 Chenu』在 Lang 書裡沒有，是推論。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立、三本一手或近一手書都對得上，8–11 分鐘可單獨成集。改正：刪掉研究者推論的『字形接近』與相應畫面；『當時的人指 Isabeau』分成 Lang（people said）與 1902 年編者自己的評語；補上 Dunois 證詞的後半句、Migier 的作證年月、兩種紙條時間說法；星座句對應改標為本題的整理；scope 第一句寫明天主教聖人的宗教界線（只講預言文本史，不判斷異象、神蹟、封聖）。最近的既有題 N466 已在 T51，不排。"
+    },
+    {
+      "id": "N3542",
+      "agent": "B2",
+      "reviewer": "R352",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B2-S010 https://attackingthedevil.co.uk/pmg/steamer.php（覆核 WebSearch 結果，curl 全文）；B2-S011 https://archive.org/details/FromTheOldWorldToTheNewOrAChristmasStoryOfTheChicagoExhibition（advancedsearch → metadata 清單 → 清單所列 _djvu.txt 與 .pdf，PDF 第 73 頁 110 dpi 目視）",
+      "reopen_result": "1886 篇：『we had shipped 560 passengers in all at Liverpool』『342 passengers at Queenstown』『we might accommodate 390 people. We were carrying 916 altogether』『a big barque was standing right across our bows』、帆船先沉、『The bulkhead’s gone』、文末『[NOTE.— This is exactly what might take place and what will take place if the liners are sent to sea short of boats.—ED.]』，全文沒有冰山。1892 篇：『on the Majestic, of the White Star Line』；教授『There never was a storm brewed in heaven or earth that could wreck the Majestic, if she had sea room enough and no fog』；船醫『about four are lost every year in that way But even if we did strike an iceberg, we probably should not sink. The Arizona once went full speed into an iceberg…』；書頁 43 插圖標題『THE CAPTAIN OF THE \"MAJESTIC.\"』，頁腳星號註（接在正文『said the captain,*』）：『I need not say that the whole of this story is purely imaginary. Although I illustrate the account of the voyage with a portrait of the real captain of the Majestic, he must not be in any way identified with the captain of this story.』——註在頁腳，不在照片底下。B2-S012（?p=679）覆核沒有重開（不在覆核自己的搜尋結果裡）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "引文都對得上，前提成立。改正：鉤子『照片底下一行小字』改成同頁頁腳；補 560／342 人數與船醫原句；Walter Lord 卒年不在任何讀到的頁面上，改成一律不入畫。片長 5–7 分鐘：N706 是 8–11 分鐘單集，接上會超過 13 分鐘；N467（3–5 分鐘，reserve、needs_check、不在任何題案）接上是 8–12 分鐘，建議成題案，前提是 N467 先補到 1898 年初版；補不到就暫緩本題。"
+    },
+    {
+      "id": "N3543",
+      "agent": "B2",
+      "reviewer": "R352",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B2-S016 https://archive.org/details/eurekaprosepoem00poeerich（advancedsearch → metadata 清單 → _djvu.txt 與 .pdf，PDF 第 106 頁目視）；B2-S017 https://arxiv.org/pdf/1506.05218（覆核 WebSearch 結果）；新讀 B2-S018 https://articles.adsabs.harvard.edu/pdf/2011IAUS..260..315C（覆核 WebSearch 結果）",
+      "reopen_result": "初版序言逐字『let us say as a Romance ; or, if I be not urging too lofty a claim, as a Poem』『Nevertheless it is as a Poem only that I wish this work to be judged after I am dead.』；書頁 100（PDF 第 106 頁）在正文，從『No astronomical fallacy is more untenable…』到『That this may be so, who shall venture to deny? I maintain, simply, that we have not even the shadow of a reason for believing that it is so.』（段首只有讀者的鉛筆記號）。Molaro & Cappi：『Tickets 50 cents』『not more than sixty persons』『two hours and a half』『nobody understood』『Around 11th of July… 500 copies』『fifty thousand copies』『Departing from Olbers's solution, which was adopted by Von Humboldt…』（引文停在『would not exist a star』）、『irradiated by a sort of flash』『inverse Big Bang model』『We do not know of any scientist who openly found inspiration』『leave these speculations to the reader』。Cappi 2011 明寫『as noted by Harrison (1987), the first correct solution of the Olbers’ paradox for an infinite universe』，引文停在『reach us at all』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "原稿只有兩個來源，而且『流傳的說法』沒有出處；覆核找到 Cappi 2011，它就是『Poe 第一個正確解了 Olbers 佯謬』的可讀出處，而它的引文正好停在 Poe 自己說『沒有理由相信』的前一句——這成為轉折二的後半，題目更有力。三個來源、8–10 分鐘可成集。另改：刪掉沒有在讀到頁面上確認的 Lemaître 卒年；B2-S017 的會議名是 INSAP，不是 INASP。原來如此事務所池沒有 Olbers／夜空為什麼黑的題。"
+    },
+    {
+      "id": "N3544",
+      "agent": "B2",
+      "reviewer": "R352",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "B2-S006 https://archive.org/details/divinecomedydant02dant（advancedsearch → metadata 清單 → _djvu.txt）；B2-S005 https://arxiv.org/pdf/2604.11826（覆核 WebSearch 結果）；B2-S004 https://mostre.museogalileo.it/dante/en/the-terrestrial-world/47-the-southern-sky.html（研究代理與覆核的搜尋結果都列出）",
+      "reopen_result": "Longfellow 注 23 逐字『The stars of the Southern Cross. Figuratively the four cardinal virtues, Justice, Prudence, Fortitude, and Temperance. See Canto XXXI. 106: — \"We here are Nymphs, and in the Heaven are stars.\"』；注 24：Barlow『the early races which inhabited Europe and Asia』、Humboldt『The Southern Cross began to become invisible in 52° 30' north latitude 2900 years before our era, since, according to Galle, this constellation might previously have reached an altitude of more than 10°』。Neri：Vespucci（1454–1512）；『[A] A letter in Italian sent from Seville in July 1500』；『lost sleep many times at night』『less than 10 degrees away from the pole』（引 1984a: 59）；『four stars arranged in an “almond shape” (Vespucci, 1984a: 60), which he connects with some verses by Dante』；『hypothesizes that the four almond-shaped stars, which likely correspond to the Southern Cross (Crux), could be those imagined by Dante』；Montalboddo 1507、Ramusio 1550『may have prevented a correct interpretation of the original text for a long time』。Museo Galileo：『four stars that Amerigo Vespucci later identified as the constellation now known as the Southern Cross』『When Vespucci crossed the Equator along the coast of Brazil in 1499… the Poet’s words guided him』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "引文對得上，但：（1）Vespucci 信中提到但丁那幾句的原文仍沒讀到，只有 Neri 的英文轉述；（2）展覽沒有說『預言』，『流傳的說法』改成注釋與展覽把四顆星直接寫成南十字；（3）『好幾百年』是誇大（原文 for a long time）；（4）研究稿去重漏了 N1445／N1443（都講南十字，在題案 T81）。片長 5–7 分鐘，N2703 接上超過 13 分鐘、T81 已 11 分鐘，沒有可接的兄弟題，建議暫緩。"
+    },
+    {
+      "id": "N3545",
+      "agent": "B2",
+      "reviewer": "R352",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B2-S001 https://dl.tufts.edu/concern/pdfs/5x21tt349（覆核 WebSearch 結果，頁面上的 /downloads/c247f458c?filename=5x21tt349.pdf 連結；PDF 第 19、21 頁 250 dpi 目視）；B2-S002 https://www.almanac.com/content/predicting-snow-summer-1816（覆核 WebSearch 結果）；新讀 B2-S019 https://newengland.com/?p=73157（覆核 WebSearch 結果）",
+      "reopen_result": "Tufts 本 7 月天氣欄：1–4 日 Rather dull hazy weather；5 日『Now』、7 日『expect』、8 日『good hay weather』、10 日『for some』、11 日『days.』；12 日『Changes to』、13 日『dull.』；16–17 日『Fine again.』；19–20 日『Some showers』；21–24 日『Rather catching hay weather.』；27–31 日『A storm is not far distant.』。8 月頁：『Cooler with fine serene sky.』『Sultry with thunder showers.』『High winds at N.W.』『Very agreeable weather for some days.』『More dull with the appearance of a storm.』『Cooler.』『Good weather for the season.』——都沒有雪。官網：『According to an apocryphal story dating back to as early as 1846… We’ve long looked for copies of the 1816 edition… The copy that we have simply says…』，署名 Michael Steinberg。Hale 2014：『I’ve found several copies—but none had a snow prediction for that summer.』",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "premise_status",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "『13 日那格寫 Changes to dull.』不精確：是 12、13 兩格連讀，13 日只有『dull.』，已改；官網引的『Sultry with thundershowers』在 8 月頁。覆核補讀 8 月頁與年曆編輯 Hale 2014（找到好幾本都沒有雪），premise 改為 screened。片長 3–5 分鐘：N2844 已在 T121（13 分鐘滿檔），M17 是另一核心的 legacy 單集；唯一可行的是與 N1103（土撥鼠，5–7 分鐘，現為 Shorts）成題，否則轉 Shorts。"
+    },
+    {
+      "id": "N3561",
+      "agent": "B3",
+      "reviewer": "R353",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B3-S002 https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Herodotus/2B*.html（2.134–135）；B3-S001 https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Strabo/17A3*.html（17.1.33 與註 176–178）；B3-S003 archive.org aelian-various-history（13.33 與書末註）；B3-S004 PW、B3-S005 Kirkus 書評",
+      "reopen_result": "Herodotus：『Some Greeks say that it was built by Rhodopis, the courtesan, but they are in error』，理由是她付不起一座金字塔，且『flourished in the reign of Amasis, not of Mycerinus』；她是 Iadmon 的奴隸、『fellow-slave of Aesopus the story-writer』，Xanthes 帶她到埃及，Charaxus 贖身，鐵烤肉叉『lie in a heap to this day』，Herodotus 拿鐵叉證明她沒那麼有錢；沒有鞋。Strabo：第三座金字塔叫『Tomb of the Courtesan』，Sappho 叫她 Doricha、『others give her the name Rhodopis』；『They tell the fabulous story』老鷹從侍女手裡叼走涼鞋丟進露天審案的國王懷裡，國王無名，在 Naucratis 找到她娶為妻。Aelian（Stanley 1665）：『Psammetichus was sitting in Judgement』；整理者註：與 Herodotus 的 Rhodopis 差約半世紀。PW：『there was indeed a Greek slave girl named Rhodopis who married the Pharaoh Amasis』、三個女僕、主人送鞋、隼；Kirkus 轉述作者註只寫『married a pharaoh in the sixth century B.C.』、『recorded 500 years later by a Roman historian』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立、不重複（池中與批次檔無 Rhodopis、Doricha、Psammetichus；灰姑娘只有 F01、N908、N1462 等不同答案）。改正：鉤子把『伊索的奴隸同伴』當成 Herodotus 反駁的理由，原文理由是財力與年代；『Amasis』只在 PW 書評，Kirkus 轉述的作者註只說『a pharaoh』，流傳版本改成兩篇書評的實際說法並標明沒讀原書（兩篇獨立書評足夠當流傳版本的出處，但旁白要說『書評說』）；『導遊傳說』標為覆核解讀。名妓的 scope 加上不畫沐浴場面，足夠。素材約 18–20 條不重複事實，8–10 分鐘。"
+    },
+    {
+      "id": "N3562",
+      "agent": "B3",
+      "reviewer": "R353",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B3-S007 https://cts.perseids.org/read/latinLit/phi1254/phi001/perseus-eng1/5.14-5.15（Gellius 5.14）；B3-S010 https://archive.org/download/fablesofaesopasf02aesouoft/fablesofaesopasf02aesouoft_djvu.txt（Caxton 1484 第三卷第一則全文）；B3-S008 attalus.org hn8a（8.56–58）；B3-S009 Jacobs 1894 第 23 篇與註 XXIII",
+      "reopen_result": "Gellius：Apion『in his account of what he professes either to have heard or read he is perhaps too verbose ... a great self-advertiser in parading his learning; but this incident ... he declares that he neither heard nor read, but saw himself』；Great Circus、前執政官的奴隸 Androclus、Gaius Caesar、主人『governing Africa with proconsular authority』、『a huge splinter』、三年同洞、曬乾獵物、走了將近三天被捉；『at the request of all Androclus was freed, acquitted and presented with the lion by vote of the people』，牽細繩繞店鋪、給錢撒花與那兩句話。Caxton：獅子向牧羊人求醫、拔刺清爛肉塗藥，獅子被送到羅馬，牧人『commysed a crymynous dede』被判餵野獸，獅子認出並護著他，羅馬人知道原因後『gaf leue to the sheepherd to goo home and sente ageyne the lyon in to the forest』。Pliny：Mentor 拔刺與 Syracuse 的畫、Elpis 拔骨頭與張口的戴奧尼索斯神廟。Jacobs：獅子『let loose to his native forest』，註『Quoted by Appian, Aulus Gellius, and Seneca. Probably Oriental. Was dropped out of Æsop』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複（池中與批次檔無 Androcl、安德魯克里斯；Apion 只在 wave4 無關題）。最大錯誤：研究稿說放回森林是『19 世紀的善良結局』，但 Caxton 1484 結尾就是把獅子送回森林——翻轉改成『童書版的結局來自中世紀寓言，原版是牽著獅子逛街』。另外 Gellius 的 self-advertiser 是對照句，不能講成轉述者替故事打折；『Appian』維持標註。競技場 scope 已擋撲人與血，加上不畫清爛肉。8–10 分鐘。"
+    },
+    {
+      "id": "N3563",
+      "agent": "B3",
+      "reviewer": "R353",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B3-S013 https://archive.org/download/kalilahdimnahorf00bdpkuoft/kalilahdimnahorf00bdpkuoft_djvu.txt（pp.xiv、xxi–xxiv、xliii–xlv 舊敘利亞文本一節）；B3-S012 Warner《Shahnama》vol. VII pp.382–383、423–430；B3-S014 Knatchbull 1819 目錄與 pp.33–34",
+      "reopen_result": "Keith-Falconer：取書故事『has been embellished with much pleasing fiction』；De Sacy 第二章『is not represented in the later Syriac version, and of course not in the old Syriac』；希伯來本與古西班牙本的形式『agrees with Firdausi's account』（山上草木、試一年、智者說是寓言），Benfey 推論 Firdausi 從手上的抄本讀到，且此形式較 De Sacy 本更早、原是巴列維本的序，另一版是讀者嫌『too large a part was played by chance』而改寫；舊敘利亞文本『contains none of the introductory chapters ... nor the biography of Barzoye』，但作者說缺開場章『proves nothing』，Benfey 也承認傳記『may have been lost by accident』或教士不願照抄。Warner：草『strew upon the body of one dead, the corpse, Good sooth, forthwith will speak』、『three hundred camel-loads』、『spread them on the dead, but none revived』、賢者的比喻、只准當面讀、每天『Sent privily a chapter』、『give account of me in Chapter One』、Berozias、Anestres Castri、『seems to be admitted generally, though of course we need not accept all the details of Firdausi's version』。Knatchbull：國王『got information of a book preserved in India』、兩萬袋每袋一萬第納爾，目錄 Chap. IV〈The History of Barzouyeh the Physician〉。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複（Kalila 只有 N3423，答案是擠奶女寓言鏈；池中無 Burzoy/Barzouyeh/Borzuya）。研究稿只靠 Keith-Falconer 轉述 Benfey，這點屬實，但漏了關鍵保留：舊敘利亞文本缺開場章『proves nothing』，不能當成『這故事在最早譯本不存在』的翻轉結論；改成帶保留的轉折，並補上 Benfey『草的版本較早、取書版是嫌靠運氣而改寫』，題目反而更有轉折。鉤子改為『《列王紀》說』。8–10 分鐘。宗教相關（本生經、自傳章的懷疑）scope 已排除。"
+    },
+    {
+      "id": "N3564",
+      "agent": "B3",
+      "reviewer": "R353",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B3-S017 https://wwwuser.gwdguser.de/~umarzol/files/34Marzolph_Re-Locating-the-AN.pdf（pp.155–162 全文）；B3-S015 archive.org lesprairiesdor04masuuoft（tome IV pp.89–90）；B3-S016 ISAC oip75.pdf（版權頁、前言、結論段）",
+      "reopen_result": "Marzolph：文本史只能確定追到 14 世紀；Vulgate 是 18 世紀末因應 Galland 引起的完整版需求才做的；Abbott 1949 年『dated paper fragment of the late ninth century rendering the introductory passage of the framing narrative』；『Alf laila wa-laila』最早文件是開羅猶太書商約 1150 年的筆記，1958 年發現；Galland 抄本 14 或 15 世紀、三冊、『nights 1-281/282』；梵蒂岡抄本紀年 1001/1592–93，『Is this just a coincidence or simply a fake?』；Maillet 抄本 17 世紀後半、nights 1–905、『maybe even a first attempt』湊成 1001 夜；另有 17 世紀或 18 世紀初的巴黎抄本 823–1000 夜、Kayseri 抄本可能最早含結尾；Ibn al-Nadīm 或許見過『complete』本；完整版是『to prepare what is asked for, even though it did not exist when being requested』。al-Mas'ūdī 法譯：savants 認為這類記載是『inventés à plaisir par des conteurs admis auprès des rois』，『Tel est le livre intitulé Hézar efsaneh ou les Mille Contes ... connu dans le public sous le nom de Mille et une nuits ... d'un roi, de son vizir, de sa fille et de son esclave, Chirazad et Dinazad』；同頁阿拉伯原文 OCR 無法讀。Abbott：1947 年購入 331 件紙草與 6 件早期紙文書，1949 年『A ninth-century fragment of the “Thousand Nights”』『a literary find in a class by itself』；結論說 Hazar afsanah 的第一個阿拉伯文版本在 8 世紀；版權頁 Published 1957。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "與 F31（阿拉丁的原稿）、N2486（ghoul 的墳場特徵）不同核心答案：本題答『1001 這個數字與書名從哪來』，阿拉丁、Sabbagh 只一句帶過，讓給 F31；wave23 not_added 的辛巴達題也不衝突。al-Mas'ūdī 法譯『Mille et une nuits』與 Marzolph 1150 年說法的矛盾：維持研究稿的處理（旁白只講 Hezār Afsāneh，原文製作前核對）。Abbott 1949 原文在付費牆，紙片年份以 Marzolph 為準可接受。改正：Dinazad『女奴』轉折刪除；『最古老的完整抄本』改『最古老的抄本』；『湊滿是 Galland 之後』軟化，補上 Maillet『first attempt』與梵蒂岡 1001 年紀年抄本兩個可讀細節；Abbott 專書年份 1957。8–10 分鐘。建議系列排序 N3564→F31→N2486（三題各自成集，合起來超過 13 分鐘，不提題案）。"
+    },
+    {
+      "id": "N3565",
+      "agent": "B3",
+      "reviewer": "R353",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B3-S019 https://archive.org/download/akanashantifolkt0000ratt/akanashantifolkt0000ratt_djvu.txt（序言與第 17 篇英譯全文）；B3-S018 https://archive.org/download/westafricanfolkt00bark_0/westafricanfolkt00bark_0_djvu.txt（第一篇）；B3-S020 Simon & Schuster 書頁；B3-S021 Exodus Books 書評",
+      "reopen_result": "Rattray：天神說 Kokofu、Bekwai、Asumengya 都買不起、『you who are but a mere masterless man』；價錢 Onini、Osebo、Mmoatia、Mmoboro；Ananse『I'll add my old woman, Nsia (The Sixth-child), to the lot』並回家告訴母親；『the Spider consulted his wife Aso』——蟒蛇（棕櫚枝與藤）、黃蜂（葫蘆裝水、香蕉葉）、豹（挖坑）三次都是 Aso 出主意，精靈則是『The Spider came, and he carved an Akua's child』自己做的；結尾『we shall call them Spider-stories』；序言 Anansesem『whether the spider appeared in the tale or not』、註 Nyankonsem『the words of the Sky-god』。Barker 1917：Nyankupon、一罐活蜜蜂、boa-constrictor、a tiger，縫自己一隻眼騙 tiger。S&S：Atheneum 1970 年 2 月 1 日、Caldecott Medal、『spun a web up to the sky』、三樣；書介沒寫妻子。Exodus：同三樣。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複（池中與批次檔無 Anansi、Ananse、Rattray）。改正：精靈的樹膠娃娃是 Ananse 自己做的，不是 Aso；1970 年繪本只讀書介，『妻子不見了、一個人搞定』無法確認，刪；『非洲沒有的老虎』是研究者評論，刪；卒年改從搜尋結果連到的頁面確認（Rattray 英文維基、Barker 的 Project Gutenberg 書目頁）。Haley 只提不畫。三版本對照約 8–9 分鐘，剛好撐得起。"
+    },
+    {
+      "id": "N3581",
+      "agent": "B4",
+      "reviewer": "R354",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B4-S001 https://archive.org/download/transactionsofno8190norf/transactionsofno8190norf_djvu.txt（先叫 metadata 檔案清單）；另重開 B4-S002 https://archive.org/download/per_the-zoologist_the-zoologist_1908-04_12_802/per_the-zoologist_the-zoologist_1908-04_12_802_djvu.txt、B4-S003 https://archive.org/download/sim_knowledge-a-monthly-record-of-science_1913-09_10/sim_knowledge-a-monthly-record-of-science_1913-09_10_djvu.txt、B4-S004 https://neonvagabond.xyz/mirrors/sacred-texts/fort/lo/lo10.htm（從該鏡像 index.htm 的連結），並直接讀 https://www.owlpages.com/owls/articles.php?a=18 與其第 2、5 頁連結",
+      "reopen_result": "Purdy pp.547–552：『two birds — almost certainly Owls』、『insinuations have been made that the whole thing is a practical joke』；2 月 3 日 Twyford Hill『slightly reddish in the centre, and resembled a carriage lamp』；12 月 1 日『lamp of a motor bicycle』、10:30 等它出樹叢，『before I could cover it with my telescope』；12 月 19 日與 Dr. Herbert 父子『literally lighted up the branches of the trees』、半小時後『a companion bird hardly so bright』；1 月 16 日 W. Palmer 的兒子『two intensely bright spots on its head』『chuck chuck』；證人含 schoolmaster、stationmaster、p.c.、G.E.R. signalman、Rev. Hewetson、chemist 之妻與三十來人名單；他引《Times》12-26『Country Teacher』與《EDP》1-16 Fred. Rolfe 的信為旁證；附記最後一筆 May 3rd。Gurney：『received at first with incredulity… soon proved to be an attested reality』、『some years ago Frederick Rolfe, a gamekeeper now retired… at West Bilney… subsequently shot it』、Long 的菌絲、Pycraft 的羽毛真菌、『a great pity to shoot these Owls』；年表 2 月 3 日條『resemble a distant carriage-lamp』、Pigott 在《Times》。Sibour：『According to Sir Digby Piggott… near Twiford… in February, 1907, by a gamekeeper, who, having killed one』、『Mr. B. J. Purdy and Mr. Spencer』10 月、『pale yellow glow』、『in 1909 they ceased』、真菌說較可信。Fort pp.625–627：『No gamekeeper shot a luminous owl, at this time, in North Norfolk』、Cannell 的鳥『still luminous』、標本師『I have seen nothing luminous about it』、May 3, 1908。Silcock：『Bioluminescence in birds… has never been proven to exist』，作者自己主張倉鴞可能自身發光。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches/*.json（含 not_added）、原來如此事務所池與 B1 檔 grep luminous owl、Barn-Owl、Foulsham、Purdy（只撞到 1840 年航路書的 John Purdy）都沒有同案；倉鴞命中的是 N144 Flatwoods（外星怪物的答案是倉鴞，不同核心）；Norfolk 命中 N682 Black Shuck。CLI search 回『Index is stale』，依說明以 grep 為主。前提成立，轉折都對得上原文。改正：Purdy 自己只說『幾乎可以確定是貓頭鷹』；Gurney 的 Rolfe 正是 Purdy 引作旁證的同一人，讓『結局被轉述成主案』更清楚；B4-S005 原為摘要型讀法，覆核直接讀到全文，但作者是『自身發光』說的主張者，不能當中立的『最常見解釋』整理，改引他承認『從未被證實』那句。Fort 鏡像：Fort 卒於 1932（archive.org 中繼資料），文本已是公有領域，鏡像來自搜尋結果、原站有 Cloudflare 驗證未繞過，不屬非授權副本，只當 Fort 的讀法。事實約 16 條，8–10 分鐘維持。"
+    },
+    {
+      "id": "N3582",
+      "agent": "B4",
+      "reviewer": "R354",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B4-S008 https://archive.org/download/lastatuevocaled00chamgoog/lastatuevocaled00chamgoog_djvu.txt（先叫 metadata）；另重開 B4-S006 https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Strabo/17A3*.html、B4-S007 https://cts.perseids.org/read/greekLit/tlg0525/tlg001/perseus-eng2/1.41.7-1.42.3",
+      "reopen_result": "Letronne p.10：『Trente-cinq seulement ont des dates. La plus ancienne est du règne de Néron ; la plus récente, de Septime Sévère… il y en a vingt-sept du seul règne d'Adrien』。pp.34–35：§IV 標題『Le Colosse a été rétabli sous le règne et par les ordres de Septime Sévère』，下一句『Il n'y a donc réellement aucun texte ancien qui fixe l'époque à laquelle la restauration du colosse a pu avoir lieu』，『M. de Heeren conjecture』Severus；p.36『sans être appuyé d'aucun témoignage positif, réunit tant de probabilités, qu'il en résulte une certitude historique』，注 2『M. Jacobs attribue à Probus, sous Aurélien』（依 Vopiscus）；Severus 名字不在腿上也不在座上，『dans l'hypothèse où Memnon aura gardé le silence le jour où l'empereur le visita』，並舉 Sabina 要改天再來。pp.47–48：銘文停在 Severus 與 Caracalla 同時在位，『la voix s'est éteinte à peu près à l'époque où la statue a été restaurée』。Section V：『La voix de Memnon étoit un phénomène naturel, et non le produit d'une fraude』。Strabo：兩尊巨像在 Memnonium 一帶，『fell when an earthquake took place, so it is said』、『a noise, as of a slight blow』、與『Ælius Gallus and his crowd of associates』在場、『whether the noise was made on purpose by one of the men…』，頁上沒有 Gallus 的官職，也沒有把巨像稱為 Memnon。Pausanias 1.42.3：『The Thebans, however, say that it is a statue, not of Memnon, but of a native named Phamenoph… Sesostris』、『broken in two by Cambyses』、『a harp or lyre when a string has been broken』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Memnon、Colossi、門農在 pool.json 與批次檔只撞到阿伽門農面具（Agamemnon 字串），原來如此事務所沒有；最近的 N124 鳴沙答案不同。前提成立。改正：『第一個寫下親耳聽到』改成『目前讀到最早』；Strabo 沒自稱它 Memnon、頁上沒有『埃及長官』，刪掉；Letronne 的 §IV 標題直接把 Severus 修像寫成定論，下一句承認沒有古代文字——比研究稿的寫法更準，也是更強的轉折，已改進題目與 payoff；研究稿說 Letronne 卒年見於這本書的 archive.org 中繼資料，不實（該項 creator 沒有年份），覆核從另一筆中繼資料確認 1787–1848。事實約 15 條，8–10 分鐘維持。"
+    },
+    {
+      "id": "N3583",
+      "agent": "B4",
+      "reviewer": "R354",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Halley 與 Blagden 改從 archive.org 的 JSTOR Early Journal Content 典藏本重讀：https://archive.org/download/jstor-103352/103352_djvu.txt、https://archive.org/download/jstor-106587/106587_djvu.txt（advancedsearch 以題名檢索 → metadata 檔案清單）；另重開 B4-S011 https://ntrs.nasa.gov/api/citations/19930009995/downloads/19930009995.pdf、B4-S012 https://arxiv.org/pdf/astroph/0211203",
+      "reopen_result": "Halley：『many were the effect of pure Fancy; such as the hearing it hiss as it went along, as if it had been very near at hand… But what is certain, and no way to be disputed, is the wonderful Noise that follow'd its Explosion』；Sloane『I did not hear any Noise it made』；Halley 沒有寫『聲音不可能瞬間傳到』的理由。Blagden（Read February 19, 1784）：『That sound should be conveyed to us in an instant from a body above 50 miles distant, appears so irreconcilable…』、『an affrighted imagination, or an illusion produced by the fancied analogy of fireworks』、『I cannot venture to reject it… leave it as a point to be cleared up by future observers』；後段『If there be really any hissing noise… streams of electric matter issuing from them』，注引 Chester Weekly Courant 1783-08-26；附註 Gmelin 的西伯利亞極光聲。Keay：引 Halley 為『pure Fantasy』，說 Halley『one of the first to distinguish』；引 Blagden 只有前半；Udden 1917『ether waves』；Denning 1907、Wylie 1932 認為純屬心理；『As recently as 1979』；1978-04-07、−16 等、36 份中 8 份、另 2 人先聽到；實驗『hair styles or wearing glasses』、『household items, and plant foliage』；日本『Watanabe, Okada and Suzuki 1988』拍到英仙座火流星與無線電紀錄。GEFS 摘要與引言如研究稿，另有『the first instrumental recording of the electrophonic sounds combined with a video and VLF observations during the 1998 Leonids showed that none of the existing theories can explain the data』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：electrophonic 在 pool.json 只出現在 M20 的來源；wave29 not_added 的『1783 年大流星』是流星本身、因缺轉折沒收，不同核心；原來如此事務所的流星題（N052–N058）都不談聲音。與 M20：同一個電場假說、不同現象，M20 已在 T41（M05＋M20＋M21，8–11 分鐘），再加這題會超過 13 分鐘，不合併。來源授權：jimclifford.ca 是 JSTOR Early Journal Content 的 OCR 整理，EJC 本身聲明允許非商業轉載，不算非授權副本，但覆核在 archive.org 找到 EJC 典藏本（也有 Royal Society DOI 鏡像項），改引典藏本。事實錯誤：原題把『聲音不可能瞬間傳到』的推理放在 Halley 身上，原文沒有，是 Blagden 的；『松針』在讀到的來源裡沒有；『1988 年日本團隊拍到』的 1988 是發表年；『後人引他只引前半句』只對 Keay 成立，GEFS 引言其實提到早年就懷疑與 electric matter 有關，已收窄。補 Udden 1917 與 1998 獅子座儀器紀錄兩條，事實約 16 條，8–10 分鐘維持。Blagden 卒年 1748–1820 已在 archive.org 中繼資料確認，可入畫。"
+    },
+    {
+      "id": "N3584",
+      "agent": "B4",
+      "reviewer": "R354",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "B4-S013 https://archive.org/download/historyofblockis00live/historyofblockis00live_djvu.txt（先叫 metadata）；另讀 B4-S019 https://www.gutenberg.org/files/9584/9584.txt（搜尋結果連結）與 B4-S020 RIHS 書目頁（搜尋結果連結）",
+      "reopen_result": "Livermore pp.112–126：Whittier 1876-10-21 信『I did not intend to misrepresent the facts of history. I wrote it after receiving a letter from Mr. Hazard, of Rhode Island, from which I certainly inferred that the ship was pillaged by the Islanders… cut his hand off with a sword. It is very possible that my correspondent followed the current tradition on the main-land』；另一封說線索來自『James Hazard of Newport』。Livermore 說島上惡名來自 18 世紀初盤據的『Pirates from abroad』。Charles E. Perry 備忘錄：Sandy Point、Breach Cove、一名婦人不肯下船、1836 年 96 歲過世推得『about the year 1752』；『The ship was undoubtedly burned, with the woman left on board』。Mueller（阿姆斯特丹，1870-07-04）查 1602–1799 海關與 1700–1786 荷蘭貿易公司，只有 1784-07-14 孟加拉灣的 Palatine；Shutz（鹿特丹，1870-11-08）查 1736–1766，『those from 1738 to 1743 were missing』。Sprague（88 歲）沒聽過燒船，『All they pretend that is known about a burning Palatine is contained in their notions of the Palatine Light』；Livermore 結論『she was never burned at all, but was wrecked in the Bay of Bengal, in July, 1784』，同一段又說『about 130 years ago』。Willey 1811-12-10：『nothing different from a blaze of fire』、『no more analogy to the ignis fatuus than it does to the aurora borealis』、『expanding to the highness of a ship with all her canvas spread』、『strangers suppose it to be a vessel on fire』、1810 年 2 月與 12 月 20 日、『fantastic and distempered imaginations figure masts, ropes, and flowing sails』。Whittier 小引：『A mutiny on board, followed by an inhuman desertion on the part of the crew… Tradition says that wreckers on shore, after rescuing all but one of the survivors, set fire to the vessel』；詩末署 1867。RIHS：『the 1738 wreck of the German immigrant ship also known as the Palatine』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Block Island、Princess Augusta、Willey 在兩個池與所有批次檔都沒有，Palatine 只撞到 wave9 無關字串。研究稿有三處不準：Whittier 信裡是『Rhode Island 的 Hazard』，Newport 的 James Hazard 出自另一封；Willey 自己就用『張滿帆的船』比光的大小，原 payoff『桅杆和帆是別人加上去的』要收窄成『看見桅杆、繩索和帆』；『1738–1743 年紀錄剛好缺失』暗示了沒讀到的 1738 年。覆核補到兩個更強的轉折（Whittier 後來的小引改說是船員叛變、岸上的人先救人；老島民沒聽過燒船，燒船只在『光』的說法裡），並補讀 Whittier 的詩作為第二來源。仍判 NEEDS_CHECK：現代把船認作 1738 年 Princess Augusta 的證據（1939 年幹部證詞、Farinelli 專書、Edwards 1999）都沒讀到，只有 RIHS 書目附註；不補，結尾會把『1870 年找不到』講成答案，可能誤導。Livermore 對 Kattern 的歧視性標籤寫進 scope。事實約 17 條，若補到證詞可做 8–10 分鐘。"
+    },
+    {
+      "id": "N3585",
+      "agent": "B4",
+      "reviewer": "R354",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "B4-S014 https://archive.org/download/ceylonaccountofi02tenn/ceylonaccountofi02tenn_djvu.txt（先叫 metadata）；另重開 B4-S015 https://lib.esn.ac.lk/sites/default/files/2025-12/v1i1-02_1.pdf",
+      "reopen_result": "Tennent vol.2 pp.468–470：『another visit… to Batticaloa, in September, 1848』、natives『supposed to proceed from some fish peculiar to the locality』、『faint sweet notes of an Æolian harp』、fishermen『only during the dry season』、『the \"crying shell\"』、『littorina and cerithium』；『I distinctly heard the sounds in question』、『the faint vibrations of a wine-glass when its rim is rubbed by a wet finger』、『the sweetest treble mingling with the lowest bass』、『this agrees with the statement of the natives, that they are produced by mollusca, and not by fish』、Bombay 與 Caldera、『the mystery remains unsolved, whether those at Batticaloa are given forth by fishes or by molluscs』、circumstances『unfavourable to the conjecture』。章首提要寫『THE \"MUSICAL FISH.\"』（加引號），頁眉是 THE MUSICAL FISH。2025 論文 p.14：『\"the sweetest trouble mingling with the lowest bass\" and \"the twang of the G string on a violin\" (Lang, 1954)』，參考文獻 Lange, J. (1954) JCBRAS 3(1): 12–24；Stoker 2002、Topsail Catfish、Priyatharshini & Premakumar 2013 如研究稿。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Batticaloa、singing fish、musical fish、Tennent 在兩個池與所有批次檔都沒有。改正：Tennent 的章首提要本來就把『MUSICAL FISH』加了引號，研究稿『標題用 The Musical Fish、與他的結論相反』說得太重，改成『他是加引號寫這個名字的』；2025 論文寫的是『many have described as』加括號（Lang, 1954），trouble 是在 1954 還是 2025 才抄錯不知道，只說論文裡的樣子。長度：只有 4–6 分鐘；N124 鳴沙是已入選、不在題案裡的 8–11 分鐘單集，接上去 12–17 分鐘，不可行；接 N3582 也超過 13 分鐘且核心不同。維持 needs_check（缺 Lange 1954 原文），建議暫緩，或轉 Shorts。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "N3521",
+        "N3522"
+      ],
+      "shared_question": "宗教畫天上那個射出光線的圓，為什麼會被讀成飛碟？畫家當年畫的是什麼？",
+      "why_it_flows": "兩題都是『神臨在的光圈』被讀成 UFO：N3521 的答案在委託史與館方描述（自治詔書、信鴿、雲圈裡的小天使），N3522 的答案在目前讀到最早的 UFO 文章自己那一頁（圓盤中央的鴿子）。前者講圖像怎麼被誤讀，後者講第一個誤讀者看見了答案仍然選擇神祕；同一個方法、不必補料，合計 10–13 分鐘。"
+    },
+    {
+      "ids": [
+        "N467",
+        "N3542"
+      ],
+      "shared_question": "鐵達尼號之前那兩三篇『沉船小說』，原文寫的到底是什麼？",
+      "why_it_flows": "N467（《Futility》1898：船往東開、先撞沉帆船再撞冰山，流傳的是 1912 年修訂版）與 N3542（Stead 1886：撞帆船、要求加救生艇；1892：沉的是帆船、Majestic 去救人、頁腳寫純屬虛構）回答同一個問題，時間順著接，各自的答案都在『把原文翻出來』；合計 8–12 分鐘，≤13。前提：N467 是 needs_check，必須先讀到 1898 年初版；N706 已是單集，不放進來。"
+    },
+    {
+      "ids": [
+        "N1103",
+        "N3545"
+      ],
+      "shared_question": "被說成神準的天氣預報，紀錄從哪一年才開始？",
+      "why_it_flows": "N1103（土撥鼠 Phil『從 1887 年起』，俱樂部年表 1889–1899 九年沒有紀錄、1899 年才成立）與 N3545（1816 年年曆『預報 7 月下雪』，讀得到的本子沒有，故事最早只追到 1846 年）都是『傳說的開始年份比紀錄早』，合計 8–12 分鐘。N1103 目前轉 Shorts，要站主決定是否拉回；否則 N3545 也轉 Shorts。"
+    }
+  ],
+  "rule1_record": [
+    "B1、B2、B3、B4（研究）：覆核 R351–R354 逐筆讀工具紀錄（約 260、171、150、131 次呼叫），沒有發現猜測、拼湊或改參數的網址；archive.org 都先單獨叫 metadata 看到檔案清單才下載。",
+    "出處寫得不精確（不算違規）：B3-S008 的搜尋結果其實也給了另一個網址、B3-S016 出版年漏填（補 1957）、B4-S008 的卒年其實來自另一筆 metadata。",
+    "授權：B4 原用的 jimclifford.ca 是 JSTOR Early Journal Content 的 OCR 整理（允許非商業轉載），覆核改引 archive.org 典藏本；Fort《Lo!》的鏡像站是公有領域文本，保留只當「Fort 怎麼讀」。",
+    "這是第一批四位研究代理都沒有違規。覆核者本身也沒有拼網址。"
+  ],
+  "reviewer_notes": {
+    "R351": {
+      "rule1_record": [
+        "B1（研究）：覆核用程式逐筆比對工具紀錄（a7360bf0b22c7fff0，約 260 次呼叫，17 次 WebSearch、1 次 WebFetch、約 30 次 curl），每個開啟的網址都能對回較早的搜尋結果或頁面連結：magonia PDF、cantab.net、Polidoro PDF、Patrick Gross 兩頁、NG739、Livius 1.14、Wildwinds、POP、sigecweb、Biblissima 兩個 manifest、Initiale 都在 WebSearch 結果裡；web.archive.org 的 http 連結取自 Cuoghi PDF 內嵌的連結（egress 擋 http，未自行改成 https）；Fitzwilliam webapps 網址取自 Screeton 頁的外部連結，data.fitzmuseum 的 ?format=txt 網址原樣出現在搜尋結果；sprezzatura.it Part 2 的 https 網址出自搜尋結果，Part 3–8 與 Arte_UFO_eng 出自 Part 2 頁上的相對連結；IRHT Arca manifest 取自 Biblissima 頁；archive.org 走 advancedsearch→metadata（獨立一次呼叫，看到檔案清單）→_djvu.txt；大英博物館 4 個物件網址取自搜尋結果；Livius 2.4、2.5 取自 1.14 頁上的目錄連結。各來源的 read_via 與出處說明和紀錄相符。沒有發現違規。",
+        "R351（覆核）：沒有拼網址。所開網址都來自覆核自己的 WebSearch 結果（NG739、cantab.net、POP、Wildwinds 兩個子網域、Livius 1.14、Polidoro PDF、magonia PDF、patrickgross picanc、sprezzatura Part 5、Ancient Origins、hackliberty〔代理 502，未讀〕、authorwars、Biblissima 兩個 manifest〔56d9… 回 404〕）或頁面連結（picanc2 取自 picanc 頁、Part 3／7／8 取自 Part 5 頁、Livius 2.5 取自 1.14 頁、Arca manifest 取自 Biblissima 頁），以及 archive.org 的搜尋與 metadata API 列出的檔名（metadata 先單獨呼叫，再下載清單中的 _djvu.txt）。卒年只用頁面上讀到的（NG739：Crivelli about 1430/5–about 1494；Screeton 頁：de Gelder 1645–1727；archive.org metadata：Le Brun 1619–1690 等；Biblissima：Legrand 1360?–1425?）。"
+      ],
+      "dedup_record": "grep pool.json 與 batches/*.json（含 not_added）：Crivelli、Annunciation、de Gelder／Gelder、Baptism、Gobelin、tapestry、tapisserie、Beaune、Pertinax、Providentia、Cuoghi、Screeton、Fitzwilliam、Splendet、Félibien、Triumph of Summer 都 0 筆；『天使報喜』只命中 1755 里斯本地震題的來源說明、『Emidius』只命中 emidius.eu 地震目錄網址、『Legrand』只命中越法辭典 Legrand 1868、『Planète／Planete』只命中 Flammarion《La Planète Mars》與 1186 行星會合、『Le Brun』只命中順化京城的法國工程師、『掛毯』只命中 Amleth 與里斯本飛船題的畫面、『Kolosimo』只在 N2682 的來源說明、coin／錢幣／硬幣都是其他題的來源文字——沒有同案。比對既有題：U24（1561 紐倫堡傳單）、N2682（羅馬兆象表）、N2683（776 Sigiburg）、N3284（Tassili）、N3285（Dendera）、N142（Palenque）都是不同作品、不同答案。原來如此事務所 pool.json 只命中論文作者 Gelderblom、De Gelder B.，不相干。同批 B3、B4 檔沒有這些作品。cli.mjs search（timeout 150、前景）回『Index is stale』，依說明未重建，改以 grep 為準。",
+      "blocked_sites": [
+        "www.wildwinds.com（curl 連線被重設；改用搜尋結果中的 mail.wildwinds.com 同頁）",
+        "git.hackliberty.org（代理 CONNECT 502）",
+        "iiif.biblissima.fr/collections/manifest/56d96f3f38bb5dc0a2bbe56d5cdb9a566b3d6dce（404，搜尋結果中的另一筆 Ms. 297 紀錄）"
+      ]
+    },
+    "R352": {
+      "rule1_record": [
+        "B2（研究）：覆核用 python 抽出工具紀錄（agent-a509202dcc4a86301.jsonl，171 次工具呼叫：21 次 WebSearch、3 次 WebFetch，其餘多為 curl），逐筆把每個請求網址對回較早的工具結果。沒有發現拼網址：almanac.com、Tufts 書目頁、Straight Dope、Museo Galileo、Brown 圖書館、arXiv 2604.11826、cisge.it、rosa.uniroma1.it、fupress、edizionicafoscari、uncu、Toscana 議會 PDF、it.wikisource 作者頁、zh.wikisource《元史》卷051 與《輟耕錄》卷22、attackingthedevil 三頁、paperspast 與 dynamic-rsnz、Gutenberg 1002（搜尋結果另列有 https://gutenberg.org/files/1002/1002-h/1002-h.htm 這個原樣網址）、umich 與 utah 報紙、bigthink、ADS 摘要頁、ctext guo-yu 都原樣出現在 WebSearch 結果；Tufts PDF 的 /downloads/c247f458c?filename=5x21tt349.pdf 取自書目頁 HTML 的 href；arXiv 1506.05218 的 /pdf/ 取自摘要頁 href（abs 頁也原樣在搜尋結果）；loc.gov 的 item 04037129、resource sn86091128/1912-04-18?sp=6、sn89053729/1912-06-06?sp=3 都取自 loc.gov 搜尋 API 結果，tile.loc.gov 全文網址取自該頁 fo=json 的回應；archive.org 九個 item 都走 advancedsearch → 單獨一次 metadata 呼叫列出檔名 → 下載清單中的 _djvu.txt（Stead 的 .pdf 也先在 metadata 清單看到）。另用了 Gallica SRU 與 zh.wikisource 的 MediaWiki 搜尋 API（公開文件記載的檢索介面，過去批次也有用 SRU 的先例；只用在 not_added 的點子）。sources 欄的 archive.org/details/<id> 是從 API 回傳的 identifier 寫成的典藏頁網址，沒有拿來抓取，read_via 照實寫了 API 路徑。各來源的 read_via 與紀錄相符。",
+        "R352（覆核）：沒有拼網址。所開網址：archive.org advancedsearch 與 metadata API（每個 item 先單獨呼叫 metadata 看到檔案清單，再下載清單中的 _djvu.txt；Eureka 與 Stead 的 .pdf 也是先在 metadata 清單看到）；覆核自己 WebSearch 結果列出的 https://arxiv.org/pdf/1506.05218、https://articles.adsabs.harvard.edu/pdf/2011IAUS..260..315C、https://attackingthedevil.co.uk/pmg/steamer.php、https://attackingthedevil.co.uk/w-t-stead-and-the-titanic/story-mr-stead-could-have-told/（讀了，與預言無關，未採用）、https://arxiv.org/pdf/2604.11826、https://www.almanac.com/content/predicting-snow-summer-1816、https://newengland.com/?p=73157、https://dl.tufts.edu/concern/pdfs/5x21tt349 及該頁 href 所列的下載連結；Museo Galileo 頁出現在研究代理與覆核兩次搜尋結果中。卒年只用讀到頁面上的：archive.org metadata（Lang 1844–1912、Stead 1849–1912、Poe 1809–1849、Dante 1265–1321、Longfellow 1807–1882、Geoffrey 1100?–1154）、Neri 論文（Vespucci 1454–1512）、Tufts 書目（Thomas 1766–1846）；Walter Lord、Lemaître、Judson Hale 的卒年沒有在讀到的頁面上確認，一律不入畫。"
+      ],
+      "dedup_record": "grep pool.json 與 batches/*.json（含 not_added，逐筆比對 case_key）：Merlin／梅林 → N466（case.prophetiae_merlini，已在 T51）、N961、N2405 與 wave27 not_added（重複 N466 的 Geoffrey 政治再利用），沒有貞德與梅林預言題；Joan／Jeanne／貞德 → F12（藍鬍子）、wave22 not_added（火刑遺物）、N307（女教宗）等不相干；Stead → N706（Cheiro）、N2545、N2404（字串命中），wave26 not_added（Futility＋Cheiro，重複 N467、N706）；Titanic／鐵達尼 → G12、N467、N706、N2502、S51、N2703、N3083；Mail Steamer／Old World to the New／Majestic 0 筆；Eureka → S24、N3401（阿基米德）；Olbers 只在 N2802、N3481、N805 的人名或內文；Poe／愛倫坡 → N130（下棋機器）等，無 Eureka 題；Dante／但丁 → N365；Southern Cross／南十字／Cadamosto → N1443、N1445（都在 T81）、N1869、N1902、N1905、N2584（研究稿漏報 N1445）；Vespucci → N1445、N2783；Old Farmer／Farmer's Almanac／Year Without a Summer 0 筆；1816／沒有夏天 → M17、N2321、wave29 not_added（1816 細節交給 M17）、wave34 N3485（太陽熄滅謠言，已退回）、wave26 not_added（1816 年 7 月 18 日末日）；N2844 在 T121（13 分鐘）；N3084、P26（在 T26）與本批不同核心。素材池 cli 對『貞德』『Stead』『Eureka』『南十字』『1816 年曆』都回『Index is stale』，沒有重建，改以 grep 為準。原來如此事務所 pool 目錄 grep Olbers／奧伯斯／夜空黑／南十字 0 筆。同批 B1、B3、B4 grep 以上關鍵字 0 筆。"
+    },
+    "R353": {
+      "rule1_record": [
+        "B3（研究）：逐筆讀工具紀錄（149 次呼叫，其中約 50 次網路抓取），沒有發現違規。每個抓取網址都先出現在更早的搜尋結果、頁面連結或 metadata 檔案清單：Strabo 17A2→17A3 取自頁面『next』連結、Herodotus 2B* 取自 Strabo 註 178、attalus hn8a 先抓搜尋結果給的無 www 網址（TLS 失敗）再用 hn8b 頁的『Previous』連結；isac 舊網址來自搜尋結果、轉址頁給出版品頁、PDF 連結取自出版品頁；surlalune 的 oldsite 網址也在搜尋結果裡；所有 archive.org 的 _djvu.txt 都在前一個指令的 metadata 檔案清單裡出現後才下載；沒有改 User-Agent，沒有用素材池 CLI。",
+        "小瑕疵（不算違規）：B3-S008 的出處寫『搜尋結果給的是 hn8b.html』，其實搜尋結果也給了無 www 的 hn8a（TLS 失敗），本頁最後確實取自 hn8b 的連結；B3-S016 出版年寫『未核對』，覆核從版權頁補為 1957。",
+        "R353（覆核）本身：只重開 B3 已列來源的網址與 archive.org metadata（先看檔案清單再下載）；卒年用 WebSearch 結果連到的英文維基與 Project Gutenberg 頁確認；Nature PDF 回驗證頁沒有繞過；沒有拼網址。素材池 CLI 回『Index is stale』，去重改用 grep pool.json 與 batches/*.json（含 not_added）及同目錄 B1、B4。"
+      ],
+      "reviewer_notes": "去重：grep pool.json、batches/*.json（含 not_added）與 curio35 的 B1、B4：Rhodopis、Doricha、Psammetich、Androcl、安德魯克里斯、Burzoy/Borzuy/Barzo、Anansi/Ananse、Rattray 全無；Cinderella/灰姑娘只命中 F01、N908、N1462、N2621、N2622（不同答案）；Kalila 只命中 N3423；Galland/一千零一夜只命中 F31、N2486、N2661 與 wave23/24 的 not_added（辛巴達、黃銅城、大鵬），都與 N3564 的核心答案不同；F35（伊索，已轉 Shorts）與 N3561、N3562 只共用『伊索』一詞。素材池 CLI 回『Index is stale』，依說明沒有重建。系列排序建議（不合併）：N3564→F31→N2486；N3563 排在 N3423 前。",
+      "blocked_sites": [
+        "www.nature.com 的 1938 年 Rattray 訃聞 PDF（curl 回 JavaScript 驗證頁，沒有繞過）",
+        "al-Mas'ūdī 法譯本同頁的阿拉伯原文 OCR 無法讀，沒有核對"
+      ]
+    },
+    "R354": {
+      "rule1_record": [
+        "B4（研究）：覆核逐筆讀了工具紀錄（131 次呼叫：Bash 102、WebSearch 17、WebFetch 10、ToolSearch 與回報各 1），沒有發現拼網址或改參數。逐筆對照：每個 archive.org 的 _djvu.txt 下載前都先在獨立的指令裡叫了 metadata 檔案清單、清單裡有那個檔名（transactionsofno8190norf、Zoologist 兩期、Knowledge 1913、Letronne、Tennent、Livermore 與 americanmedicalp11810newy；Medical Repository 兩期與 contents 項是在同一指令裡用 metadata 回傳的檔名變數下載，不是照樣式拼）；identifier 都先出現在 advancedsearch 結果；jimclifford.ca 的 jstor-103352、103367、106587，neonvagabond 與 sacred-texts 的 lo10、owlpages、cts.perseids、NTRS、arXiv、lib.esn.ac.lk、Sunday Observer 兩頁、RIHS、opac.hsp.org（Description 與 Holdings 兩個網址都出現在搜尋結果）、seewesterly、oceannavigator、heidelberg mariette、bazhum、OUP、zh.wikisource 卷066 與 Gutenberg 7313／7316 都在之前的搜尋結果裡；Gutenberg 7315 與 7315.txt.utf-8 出自作者頁與書目頁的連結；Strabo 的 17A3*.html 是目錄頁的相對連結依頁面 <BASE HREF> 解析，合法。",
+        "B4 出處欄有一處不實（不屬規則 1 違規）：B4-S008 寫『archive.org 中繼資料記作者 1787–1848』，但 lastatuevocaled00chamgoog 的 creator 欄沒有年份；覆核經 advancedsearch 從 oeuvrescomplte11rolluoft 的中繼資料確認同樣的年份。",
+        "來源授權（覆核判斷，不屬規則 1 違規）：jimclifford.ca 是 JSTOR Early Journal Content 的 OCR 整理，EJC 允許非商業轉載，不是非授權副本，但改引 archive.org 的 EJC 典藏本（R354-S001、S002）；Fort《Lo!》的 neonvagabond 鏡像是 sacred-texts 文本的第三方鏡像，Fort 卒於 1932（archive.org 中繼資料 newlands00fort），文本是公有領域，保留但只當 Fort 的讀法；archive.org 上另有的《Lo!》一項是借閱限定、另一項是讀者自行上傳的合輯，都沒用。",
+        "R354（覆核）：沒有拼網址。archive.org 的檔名都先看到 metadata 清單（jstor-103352、jstor-106587 由 advancedsearch 題名檢索得到）；Owl Pages 第 2、5 頁循第 1 頁的分頁連結；鏡像的 lo10.htm 循該鏡像 index.htm 的連結（index 出自搜尋結果）；sacred-texts 的 index.htm 出自搜尋結果，回 403 機器驗證，未繞過；Gutenberg 9584 與 RIHS 頁出自搜尋結果；卒年全部在 advancedsearch 找到的 archive.org 中繼資料頁確認（Gurney cu31924001235203、Whittier inwartimeotherpo00whit、Halley nouveauvoyageaut00damp、Blagden diegesetzederue00blaggoog、Tennent wildelephantmeth00tenn、Letronne oeuvrescomplte11rolluoft、Fort newlands00fort），查不到的 Purdy、Willey、Sibour、Silcock 判不入畫。"
+      ],
+      "source_replacements": [
+        {
+          "old": "B4-S009",
+          "new": "R354-S001",
+          "why": "同文改引 archive.org 的 JSTOR Early Journal Content 典藏本；jimclifford.ca 為 EJC 的 OCR 整理，EJC 允許非商業轉載，不是非授權副本，但不是典藏機構"
+        },
+        {
+          "old": "B4-S010",
+          "new": "R354-S002",
+          "why": "同上"
+        },
+        {
+          "old": "B4-S005",
+          "new": "R354-S003",
+          "why": "研究代理只經摘要工具讀到；覆核直接讀全文（第 1、2、5 頁），補上原刊出處與作者立場"
+        }
+      ],
+      "series_order_suggestions": [
+        "T41（M05＋M20＋M21）→ N3583：M20 的極光聲與 N3583 的火流星同步聲是同一個『電場讓地面物體發聲』假說，Blagden 1784 年同一篇就把兩者並列；兩集前後排，不合併（合計超過 13 分鐘）。",
+        "N3582 與 N124：都是『會發聲的自然物』，但一個核心是『誰修的像』的推論史、一個是沙粒物理，只建議同一季前後排。"
+      ],
+      "reviewer_notes": "去重：grep pool.json、batches/*.json（含 not_added）、原來如此事務所 pool.json 與同批 B1 檔，關鍵字 Norfolk、owl、Barn-Owl、倉鴞、貓頭鷹、Purdy、Foulsham、Memnon、Colossi、門農、Letronne、electrophonic、fireball、火流星、Halley、Blagden、Block Island、Palatine、Whittier、Princess Augusta、Batticaloa、singing fish、musical fish、Tennent，並對照 N122、N124、M10、M20、M35、L15 的 answer_target；cli.mjs search（timeout 150、前景）五個關鍵字都回『Index is stale』，依說明不重建。B4 的 not_added 13 筆抽看無誤（Seneca 湖砲、mistpouffers → N122；鳴沙 → N124；Montague → M05／N3066 等）。",
+      "blocked_sites": [
+        "sacred-texts.com（Cloudflare 機器驗證，未繞過；改讀搜尋結果列出的鏡像，Fort 文本已是公有領域）",
+        "archive.org lo0000char（Fort《Lo!》1941 年版，借閱限定，未讀）"
+      ]
+    }
+  }
+}

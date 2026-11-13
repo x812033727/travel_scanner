@@ -1,0 +1,446 @@
+{
+  "batch_id": "wave65-life-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第十五輪從零研究的新長題：鴿子走路為什麼點頭（C11-02，作者 F26，覆核 V29），後備。",
+  "sources": [
+    {
+      "id": "L65-S001",
+      "url": "https://www.biomotionlab.ca/Text/TrojeFrost00.pdf",
+      "canonical_url": "https://doi.org/10.1242/jeb.203.5.935",
+      "title": "Head-bobbing in pigeons: how stable is the hold phase?",
+      "publisher": "Nikolaus F. Troje、Barrie J. Frost（加拿大皇后大學）／Journal of Experimental Biology 203, 935–940, 2000",
+      "version": "期刊排版 PDF，放在第一作者 Troje 的 BioMotion Lab 網站",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果直接列出此 PDF；curl 200。期刊 DOI 頁（journals.biologists.com）回 Cloudflare 403，未繞過。",
+      "reading_scope": "全文（6 頁）",
+      "locator": "Summary；Introduction 第 1–2 段（Dunlap & Mowrer 1930、Frost 1978 跑步機與被動移動、Davies & Green 1988 >70 cm/s 無 hold 的轉述）；Results 第 1 段（3.46／4.25 Hz、hold 54%／59%、156／139 ms、thrust 132／96 ms）與 Table 1（hold／thrust 標準差）；Results 後段（hold 期滑移 3.15 mm/s、6.17 mm/s）；Discussion（Frost 跑步機軼事 3.6 mm/s；nBOR 0.5°/s）",
+      "summary": "兩組各 5 隻家鴿：求偶直走的側面錄影與轉身的俯視錄影。平均點頭頻率 3.46 Hz（求偶）與 4.25 Hz（轉身）；hold 期占 54% 與 59% 時間，平均 156 與 139 ms，thrust 期 132 與 96 ms。hold 期頭在前後方向的位置標準差只有 0.34 mm（thrust 27.60 mm），上下位置、俯仰與左右轉角在 hold 期也幾乎不動。hold 期仍有小而一致的往前滑移（側面約 3.15 mm/s），作者認為是讓穩像系統有誤差訊號；Frost 1978 曾意外看到跑步機極慢時鴿子脖子越伸越長直到失去平衡，量到約 3.6 mm/s。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者網站上的期刊檔（JEB 允許作者自存與否未查證）；n=5+5；Frost 1978、Davies & Green 1988 只是本文轉述。 覆核 V29（2026-11-12）：version 補「第一作者 Troje 的 BioMotionLab 網站（同站 /Text/ 目錄有多份 Troje 論文），屬作者本人張貼」；limitations 補「Table 1 前後方向 0.34 mm 與俯視路徑 0.70 mm 是 hold 期定義的結果（原文 as a direct consequence of the way that the hold and thrust phases were defined），不可當發現；可用的是上下 0.94 mm、俯仰 0.97°、左右轉 0.61°」。",
+      "author_cache": {
+        "file": "stw15/f26src/trojefrost2000.pdf",
+        "sha256_prefix": "4a754f04ae471203",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L65-S002",
+      "url": "https://queensu.scholaris.ca/server/api/core/bitstreams/53ab7511-c521-4a47-8bc6-46f1e37660c3/content",
+      "canonical_url": "https://queensu.scholaris.ca/server/api/core/bitstreams/53ab7511-c521-4a47-8bc6-46f1e37660c3/content",
+      "title": "Investigations into the Biomechanics of Head-Bobbing Pigeons",
+      "publisher": "Andrés Mauricio Kroker（皇后大學生物系碩士論文，指導 Nikolaus Troje），2013",
+      "version": "學位論文全文（大學機構典藏）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果直接列出典藏檔；curl 200。",
+      "reading_scope": "摘要、第 3 章結果（3.1–3.4）、第 4 章討論部分",
+      "locator": "Abstract；§3.3（thrust 期時長不隨速度變、hold 期隨速度非線性縮短；頭在 thrust 期移動距離等於步長）；§3.4（hold 比例隨速度線性下降至零即不再點頭；最大點頭頻率平均 7.64 Hz、SD 0.95；轉換時只達最大步長的 76.18%）",
+      "summary": "皇后大學用動作捕捉與測力板量走路的鴿子：hold 期總在步態週期的固定時點開始，與速度無關；thrust 期的時長每隻鳥固定、不隨速度改變，頭在 thrust 期往前移的距離就等於一步；走得越快，hold 期越短，快到 hold 期縮成零時就不再點頭。各鳥最大點頭頻率平均 7.64 Hz，轉換速度由各鳥最大步長決定，點頭參數是個體化的。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "碩士論文，未經期刊審查；與 F26-S010、F26-S012 同屬 Troje 研究群，三份合計封頂。 覆核 V29（2026-11-12）：locator／summary：7.64 Hz 改寫為「由 thrust 時長倒數推算的最大點頭頻率」；論文說的是 fast walking without head-bobbing，不是跑。",
+      "author_cache": {
+        "file": "stw15/f26src/queens_thesis.pdf",
+        "sha256_prefix": "2e258e9dc7dad9eb",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L65-S003",
+      "url": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2017.00551/pdf",
+      "canonical_url": "https://doi.org/10.3389/fnins.2017.00551",
+      "title": "Head Stabilization in the Pigeon: Role of Vision to Correct for Translational and Rotational Disturbances",
+      "publisher": "Leslie M. Theunissen、Nikolaus F. Troje（皇后大學 BioMotion Lab）／Frontiers in Neuroscience 11:551, 2017",
+      "version": "期刊 PDF（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果直接列出；curl 200，pdftotext。",
+      "reading_scope": "全文",
+      "locator": "Abstract；Results「Translational」段（平移時頭部穩定幾乎不存在）與「Accurate Head Stabilization in Response to Rotational Perturbation」段（旋轉時增益接近 1、相位接近 0）；Conclusions",
+      "summary": "10 隻鴿子站在會正弦晃動的平台上（平移 0.25–4 Hz、旋轉 0.25–2 Hz），亮與暗各測。平台平移時，頭大致跟著平台走，穩定幾乎不存在；平台旋轉時，頭幾乎完全保持不轉，增益接近 1。視覺回饋只讓平移時的穩定稍好，對旋轉沒有幫助。作者認為這麼精準的旋轉穩定，光靠視覺和前庭回饋太慢，可能還有前饋機制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "站立而非走路；與 F26-S010、F26-S011 同研究群。",
+      "author_cache": {
+        "file": "stw15/f26src/theunissen2017.pdf",
+        "sha256_prefix": "6ebdfd16a841fee6",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L65-S004",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3987125/",
+      "canonical_url": "https://doi.org/10.1186/1742-9994-11-27",
+      "title": "On vision in birds: coordination of head-bobbing and gait stabilises vertical head position in quail",
+      "publisher": "John A. Nyakatura、Emanuel Andrada（德國耶拿大學）／Frontiers in Zoology 11:27, 2014",
+      "version": "期刊全文（CC BY，BioMed Central）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 PMC 頁；curl 200（HTML，本機抽文字）。",
+      "reading_scope": "全文",
+      "locator": "Abstract；Results 第 1 段（vaulting 試次 thrust 起點與雙腳支撐重疊、bouncing 試次在支撐中段）；Results「Vertical head displacement」與 Table 2（實際點頭 vs 模擬不點頭、時序顛倒）；Figure 5 說明；Discussion 第 1–2 段（跑步機與蒙眼不點頭的轉述）",
+      "summary": "耶拿大學用 X 光高速攝影看鵪鶉走與跑：步態像「撐竿」（走）時，頭往前衝的起點和雙腳著地期重疊；像「彈跳」（跑）時則落在單腳支撐中段。把同一組資料改成不點頭或時序顛倒來模擬，鵪鶉實際的時序讓頭的上下起伏最小（跑步型尤其明顯；時序顛倒時起伏顯著變大）。作者認為點頭時機是在化解「身體上下晃」與「眼睛要穩」的衝突。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "鵪鶉、少量個體與模擬比較；走路型試次中「實際 vs 不點頭」差異不顯著，只有跑步型顯著，片中要分開講。 覆核 V29（2026-11-12）：read_via 補：ncbi PMC 網址今日回 reCAPTCHA，覆核改以 Europe PMC REST fullTextXML PMC3987125 重讀（PMCID 見作者 Europe PMC 搜尋結果），內容一致。",
+      "author_cache": {
+        "file": "stw15/f26src/quail_pmc.html",
+        "sha256_prefix": "ae342ed2808627db",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L65-S005",
+      "url": "https://people.ohio.edu/stevensn/documents/Hancock%20et%20al%202014.pdf",
+      "canonical_url": "https://people.ohio.edu/stevensn/documents/Hancock%20et%20al%202014.pdf",
+      "title": "Elegant-crested Tinamous Eudromia elegans do not synchronize head and leg movements during head-bobbing",
+      "publisher": "Jennifer A. Hancock、Nancy J. Stevens、Audrone R. Biknevicius（Marietta College、俄亥俄大學）／Ibis 156, 198–208, 2014",
+      "version": "期刊排版 PDF，放在共同作者 Stevens 的俄亥俄大學網頁",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果直接列出；curl 200。",
+      "reading_scope": "全文",
+      "locator": "Abstract；引言第 2–3 段（跑步機與蒙眼不點頭、降落時腿收起仍點頭、海鷗與鷺只在覓食時點頭的轉述）；Results（頭與腿事件時序分離、有 hold 期的步支撐時間較長）；Discussion 第 1 段",
+      "summary": "在實驗室用高速攝影加測力板量冠羽鴂（tinamou）在各速度下走：頭的點與腳的落地、離地時序是分離的，不像過去說的固定同步；但頭頸動作確實影響支撐時間、地面反作用力與身體俯仰。作者結論：點頭不是被走路機制綁住的，視覺需求才是主因，反過來是走路配合穩像與深度知覺。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "共同作者個人網頁上的 Wiley 排版檔，授權可能不在自存範圍；若覆核不接受，改為只讀到摘要（0.25）。本機檔未印 DOI，canonical_url 暫記作者頁網址，未自行推 DOI。 覆核 V29（2026-11-12）：version 補「由共同作者 Stevens 的 people.ohio.edu/stevensn/publications.html 直接連結，屬作者本人張貼」；鳥名「冠羽鴂」改「鳳頭䳍（tinamou）」。",
+      "author_cache": {
+        "file": "stw15/f26src/hancock2014.pdf",
+        "sha256_prefix": "f079a2c9ee4d4b1a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L65-S006",
+      "url": "https://www.jstage.jst.go.jp/article/osj/2/1/2_1_59/_pdf/-char/en",
+      "canonical_url": "https://doi.org/10.2326/osj.2.59",
+      "title": "Head-bobbing patterns, while walking, of Black-winged Stilts Himantopus himantopus and various herons",
+      "publisher": "Masaki Fujita（東京大學）、Kazuto Kawakami（森林總研多摩森林科學園）／Ornithological Science 2: 59–63, 2003",
+      "version": "期刊 PDF（J-STAGE）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 列出 J-STAGE 文章頁，依頁上 _pdf 連結取得；curl 200。",
+      "reading_scope": "全文（5 頁）",
+      "locator": "Abstract；Results 與 Table 1（九種：一步一點最常見；紫鷺、黑冠鳽、栗頭鳽緩行時兩步一點；高蹺鴴一次一步兩點；蒼鷺在乾沙地非覓食時不點頭 42／60 步，栗頭鳽快走覓食時不點頭）",
+      "summary": "野外拍攝八種鷺科與黑翅高蹺鴴走路：其中幾種過去被列為「不點頭」，但九種平常都會點頭，最常見的是一步點一次；有三種鷺在慢慢走找獵物時變成兩步點一次，高蹺鴴出現過一次一步點兩次。不點頭的走法出現在：蒼鷺在乾沙地上不找食物時（不論快慢），以及栗頭鳽（Japanese Night Heron）覓食但走得較快時。作者推論點頭受走路速度與是否在覓食影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "野外觀察、樣本步數各種不一；只描述行為，不談機制。 覆核 V29（2026-11-12）：summary 補「不覓食時不點頭的是蒼鷺與岩鷺兩種；且九種在覓食與不覓食時都觀察到點頭」。",
+      "author_cache": {
+        "file": "stw15/f26src/fujita2003.pdf",
+        "sha256_prefix": "e7c152d255e63ff5",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L65-S007",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12162510/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fvets.2025.1554240",
+      "title": "Study on the characteristics of head and neck movements of geese walking in a straight line at different speeds",
+      "publisher": "Jiajia Wang 等（吉林農業大學、吉林大學仿生教育部重點實驗室）／Frontiers in Veterinary Science 12:1554240, 2025",
+      "version": "期刊全文（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（公開文件記載的 API；PMCID 取自 Europe PMC search API 結果）；curl 工具預設標頭 200。Europe PMC 搜尋（head-bobbing AND bird）列出 PMC12162510。",
+      "reading_scope": "摘要、結果主要段落",
+      "locator": "Abstract「Result」段（鵝也有 thrust 與 hold；一個週期中 thrust 顯著長於 hold；越靠近軀幹的頸關節角度變化越大；頭水平方向穩定、垂直起伏隨速度增加而減小）；Results 表 2",
+      "summary": "吉林的研究團隊用高速攝影看家鵝慢走、正常走、快走：鵝也有 thrust 與 hold 兩期，但一個週期裡 thrust 期顯著比 hold 期長（與鴿子 hold 約占一半不同）；點頭主要靠下段頸椎關節；頭在水平方向穩定，上下起伏隨速度變快而變小。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "家禽、樣本數未在本機摘錄；與鴿子的比較是不同研究，只並列不換算。",
+      "author_cache": {
+        "file": "stw15/f26src/PMC12162510.xml",
+        "sha256_prefix": "091a41b9c29040bd",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L65-S008",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4481315/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0129287",
+      "title": "How Lovebirds Maneuver Rapidly Using Super-Fast Head Saccades and Image Feature Stabilization",
+      "publisher": "Daniel Kress、Evelien van Bokhorst、David Lentink（史丹佛大學）／PLoS ONE 10(6): e0129287, 2015",
+      "version": "期刊全文（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 PMC4481315；Europe PMC REST fullTextXML curl 200。",
+      "reading_scope": "全文",
+      "locator": "Abstract；Methods「Birds and training」（5 隻桃面愛情鳥、47–56 g）；Results 頭部掃視段（中位數 1290°/s、最高 2700°/s；掃視占轉彎時頭轉向的 76%）；Discussion 第 1 段（平均 930°/s、最高 2690°/s；掃視與下拍同步）",
+      "summary": "史丹佛訓練 5 隻桃面愛情鳥從棲木起飛、原地迴轉再飛回。轉彎時頭不是平順轉，而是「定住—猛轉—定住」：頭部掃視大多超過 1000°/s（中位數 1290°/s，最高約 2700°/s），占轉彎時頭部轉向的 76%；掃視之間視線方向保持不變；掃視和翅膀下拍同步，正是翅膀擋住側面視野的時候。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "飛行而非走路；摘要寫 2700、討論寫 2690°/s，片中說「約每秒兩千七百度」。",
+      "author_cache": {
+        "file": "stw15/f26src/kress2015.xml",
+        "sha256_prefix": "83e761f7780b5b0a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L65-S009",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5717024/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fnins.2017.00655",
+      "title": "Pigeons (C. livia) Follow Their Head during Turning Flight: Head Stabilization Underlies the Visual Control of Flight",
+      "publisher": "Ivo G. Ros、Andrew A. Biewener（哈佛大學）／Frontiers in Neuroscience 11:655, 2017",
+      "version": "期刊全文（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（公開文件記載的 API；PMCID 取自 Europe PMC search API 結果）；curl 工具預設標頭 200。Europe PMC 搜尋（head-bobbing AND bird）列出 PMC5717024。",
+      "reading_scope": "摘要、方法、結果前段",
+      "locator": "Abstract；Results 第 1 段（3 隻鴿子 90° 轉彎 5.5±0.5 次拍翅、0.63±0.06 s）；補充影片 S2 說明（頭的角度穩定與短促掃視交替）",
+      "summary": "哈佛讓 3 隻鴿子飛過一個 90° 轉角的網道：轉彎約 0.63 秒、5.5 次拍翅。轉彎中頭的角度一段段保持穩定，中間夾著短促的頭部掃視；頭的控制與一直在轉的身體脫鉤，掃視推得的視覺線索與飛行路線變化相關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "3 隻鳥；與 F26-S017 同為飛行中的「掃視—停住」，兩者合計。",
+      "author_cache": {
+        "file": "stw15/f26src/PMC5717024.xml",
+        "sha256_prefix": "205ff074c9312872",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "L65-001",
+      "question": "鴿子走路時頭一前一後，牠的頭真的有往後縮嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "bird.headbob_hold_phase_locked_in_space",
+      "answer_target": "沒有，那是錯覺。頭的動作分成兩段：「停住期」頭在空間裡停著，身體繼續往前走，所以看起來像頭往後縮；接著「前衝期」頭快速往前追過身體。加拿大皇后大學錄下兩組各 5 隻鴿子走路與轉身，每秒點約 3.5 到 4 次，停住期占一半多一點的時間，每次約 0.14 到 0.16 秒。研究者想確認的是：停住時頭是不是在其他方向也穩住？結果頭的上下位置平均只晃約 1 毫米（前衝期約 9 毫米），抬低頭和左右轉的角度都不到 1 度（前衝期 5 到 6 度）。",
+      "scope": "數字限該研究的兩種行為情境；不得把前後方向 0.34 mm 當發現（那是停住期的定義）；不擴及所有鳥。",
+      "source_ids": [
+        "L65-S001"
+      ],
+      "source_locator": "F26-S010 Summary；Introduction 第 1 段；Results 第 1 段；Table 1",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：Troje 2000 一篇（012、013）合計 1.0。 原提案 F26-012（目標 C11-02，原角色 hook；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；關鍵數字取錯：0.34 mm 是定義出來的，改用上下位移與角度。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鴿子不是在點頭，是把頭「釘」在空中，讓身體自己走過去。",
+        "visual": "側面慢動作：頭的輪廓在背景格線上停住，身體滑過，再一下子衝到前面。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L65-002",
+      "question": "鴿子的頭「停住」時，真的完全不動嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "bird.headbob_hold_phase_slip_error_signal",
+      "answer_target": "幾乎，但不是零。同一研究發現停住期裡頭仍緩緩往前滑，側面量約每秒 3 毫米、俯視量約每秒 6 毫米；作者認為這點滑動正好提供「影像有沒有在動」的誤差訊號。他們還轉述了合著者 Frost 早年的一次意外：跑步機沒有完全關掉，以實驗者察覺不到的極慢速度在轉，站在上面的鴿子脖子越伸越長，最後失去平衡倒下；他從僅有的錄影量到的滑移約每秒 3.6 毫米。",
+      "scope": "跑步機那段是單次意外觀察（轉述）。",
+      "source_ids": [
+        "L65-S001"
+      ],
+      "source_locator": "F26-S010 Results 後段；Discussion 第 2 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）。 原提案 F26-013（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；成立；補俯視數字、標明軼事為轉述。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鴿子的頭不是靜止，而是用一點點滑動來「量」世界有沒有在動。",
+        "visual": "慢速跑步機上，鴿子脖子一格格往前伸，最後一個踉蹌。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L65-003",
+      "question": "點頭是走路時被腳帶動的嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "bird.headbob_visual_not_leg_driven_treadmill",
+      "answer_target": "看來主要不是。這一段我們只讀到後來論文的轉述：研究者 Frost 1978 年讓鴿子在跑步機上走，步速剛好抵銷皮帶、周圍景物相對牠不動時，牠就不點頭；反過來把鴿子被動往前移、腳沒在走，頭卻照樣點。另有研究報告蒙住眼睛的鳥走路不點頭，降落時腳收著也會點頭。這些都指向：點頭跟著眼睛看到的景物移動走，而不是被腳拖著。",
+      "scope": "三項都是後來論文的轉述（原文 JEB 1978 與其他原刊讀不到）。",
+      "source_ids": [
+        "L65-S001",
+        "L65-S004",
+        "L65-S005"
+      ],
+      "source_locator": "F26-S010 Introduction 第 2 段；F26-S013 Discussion 第 1 段；F26-S014 引言第 3 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：三份轉述指向同一批原研究，轉述只當入口；但它是轉折二的樑柱，見 still_missing。 原提案 F26-014（目標 C11-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；轉述一致但全是二手，照規定下修；畫面必須標「轉述」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "讓景物不動，鴿子就不點頭；讓景物動，牠不走也點。",
+        "visual": "跑步機示意：皮帶與鴿子同速往後，背景不動，頭也不動；換成整台推車往前推，頭開始點。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L65-004",
+      "question": "鴿子走得越快，點頭會怎麼變？走到多快就不點了？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "bird.headbob_speed_hold_shrinks_thrust_constant",
+      "answer_target": "皇后大學一篇碩士論文用動作捕捉量的結果是：每隻鴿子前衝期的時間固定，不隨速度改變，頭每次往前衝的距離就等於一步；走得越快，停住期越短，點得越快；快到停住期縮成零時就不再點頭，變成不點頭的快走。依這個模型推算，各隻點頭的上限平均約每秒 7.6 次；從點頭變成不點頭的速度，由各自的步長決定，所以每隻鴿子都不一樣。",
+      "scope": "碩士論文、單一實驗室；7.6 Hz 是推算上限；不說「跑步」。",
+      "source_ids": [
+        "L65-S002"
+      ],
+      "source_locator": "F26-S011 Abstract；§3.3；§3.4",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：Troje 研究群（S010–S012）合計 2.0。 原提案 F26-015（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；成立；改正推算值與「跑」的用詞。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "點頭的節奏其實就是步伐的節奏，跑起來停住期沒了，頭也就不點了。",
+        "visual": "三段速度的頭部軌跡：慢走時有長長的平台，快走時平台縮短，跑步時平台消失成斜線。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "L65-005",
+      "question": "鴿子站著不動時，被晃一下，頭也能穩住嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "bird.head_stabilization_rotation_vs_translation",
+      "answer_target": "要看怎麼晃。皇后大學讓 10 隻鴿子站在會來回晃動的平台上：平台旋轉時，鴿子的頭幾乎完全不跟著轉；平台平移時，頭大致跟著平台走，穩不住。開燈讓牠看得到，只讓平移時穩一點，對旋轉沒有幫助。作者認為眼睛的回饋太慢、內耳只能事後修正，這麼準的旋轉穩定，可能還靠某種預先補償。",
+      "scope": "站立實驗，不是走路；不推到其他鳥種。",
+      "source_ids": [
+        "L65-S003"
+      ],
+      "source_locator": "F26-S012 Abstract；Results 平移與旋轉段；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：站立實驗，與走路點頭是側面關聯；Troje 研究群合計 2.0。 原提案 F26-016（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；成立；同群組合計下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉頭靠「本能」就穩得住，前後平移卻得靠走路時的點頭來處理。",
+        "visual": "鴿子站在晃動平台上：平台轉，頭像雲台一樣不動；平台平移，頭跟著跑。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "L65-006",
+      "question": "點頭的時機，跟鳥是走還是跑有關嗎？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "bird.headbob_timing_gait_minimizes_vertical_head",
+      "answer_target": "有。德國耶拿大學用 X 光高速攝影看鵪鶉：像人在「走」的步態時，頭往前衝的時機和雙腳同時著地的時候重疊；像「跑」的步態時，則落在單腳支撐的中段。研究者把同一份資料改成時序顛倒來模擬，頭的上下起伏顯著變大；在跑步型的步態裡，就連完全不點頭的模擬，起伏都比實際大。換句話說，點頭的時機剛好讓眼睛的高度最平穩。",
+      "scope": "鵪鶉、模擬比較；走路型「實際 vs 不點頭」差異不顯著，只說跑步型；不擴大為所有鳥。",
+      "source_ids": [
+        "L65-S004"
+      ],
+      "source_locator": "F26-S013 Results 第 1 段；Vertical head displacement 段與 Table 2；Figure 5 說明；Discussion 第 2 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：走路型實際與不點頭沒有差，只有跑步型成立；模擬比較。 原提案 F26-017（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；數字成立；只有一半步態成立，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "點頭不只顧前後，還順便把上下晃也抵掉。",
+        "visual": "X 光剪影的鵪鶉，身體上下起伏的曲線與頭部平穩的直線對照。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L65-007",
+      "question": "鳥的點頭和腳步一定同步嗎？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "bird.headbob_tinamou_head_leg_dissociated",
+      "answer_target": "不一定。俄亥俄的研究用高速攝影加測力板，量一種南美走地鳥鳳頭䳍（tinamou）在不同速度下走：頭點的時機和腳落地、離地的時機彼此分開，不像過去以為的那樣固定同步；不過頭頸的動作確實會改變腳踩在地上的時間、地面受力和身體前後傾。作者據此認為，點頭不是被走路機制綁死的動作，而是視覺需求在先，走路配合它。",
+      "scope": "單一鳥種；與鵪鶉的「時機與步態相關」不矛盾（量的是不同東西），片中不讓兩者對打。",
+      "source_ids": [
+        "L65-S005"
+      ],
+      "source_locator": "F26-S014 Abstract；Results；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：單一鳥種、與 017 同屬「頭腳時序」。 原提案 F26-018（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；成立；鳥名用字錯，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "頭和腳不是同一條繩子拉著的。",
+        "visual": "雙軌時間軸：上排頭部前衝期、下排腳的落地點，兩排刻度對不齊。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "L65-008",
+      "question": "是不是所有鳥走路都會點頭？鷺鷥也點嗎？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "bird.headbob_herons_foraging_speed_patterns",
+      "answer_target": "東京大學在野外拍了八種鷺科和黑翅高蹺鴴：其中幾種過去被列為「不點頭」，但九種平常走路都會點頭，最常見的是一步點一次；有三種鷺在慢慢走、找獵物時，變成兩步才點一次；高蹺鴴則出現過一步點兩次。也有不點頭的時候：蒼鷺和岩鷺在沒找食物時偶爾不點，蒼鷺不點時都是走在乾沙地上；栗頭鳽反而是在覓食、走得比較快時不點。研究者推論，點不點頭受走路速度和「有沒有在找東西」影響。",
+      "scope": "九種在覓食與不覓食時都觀察到點頭，不得說「不覓食就不點」；野外觀察、步數各種不一。",
+      "source_ids": [
+        "L65-S006"
+      ],
+      "source_locator": "F26-S015 Abstract；Results；Table 1",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：原文數據，是轉折二唯一的一手證據之一，但結論要收窄。 原提案 F26-019（目標 C11-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；漏了岩鷺，並把「偶爾不點」講成規則，改。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "點頭不是走路的必然，而是「我正在看」的開關。",
+        "visual": "三格：鷺鷥覓食時一步一點、慢慢潛行兩步一點、走在乾沙上脖子直挺不點。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L65-009",
+      "question": "鵝走路也點頭嗎？跟鴿子一樣嗎？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "bird.headbob_goose_thrust_longer_than_hold",
+      "answer_target": "也點，但比例不同。吉林的研究團隊用高速攝影看家鵝慢走、正常走、快走：鵝同樣有往前衝和停住兩段，但一個週期裡往前衝的時間顯著比停住長；點頭主要靠靠近軀幹的下段頸椎；頭在水平方向大致穩定，上下起伏則隨走得越快而越小。",
+      "scope": "與鴿子的比例只並列，不換算或相減。",
+      "source_ids": [
+        "L65-S007"
+      ],
+      "source_locator": "F26-S016 Abstract「Result」段；Results 表 2",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：主機制與 012 同，只新增「各種鳥停住比例不同」；片長不足時先刪。 原提案 F26-020（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；成立；新增量少。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大個子的鵝也照做，只是「停」得比較短。",
+        "visual": "鴿子與鵝的週期條並排，停住段一長一短（只並列不比數字）。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L65-010",
+      "question": "鳥在飛的時候，也會用「停住—猛轉」來看東西嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "bird.flight_head_saccades_downstroke_lovebird",
+      "answer_target": "會。史丹佛讓 5 隻桃面愛情鳥起飛、原地迴轉再飛回：轉彎時頭不是平順地轉，而是定住、猛轉、再定住。這些頭部掃視大多超過每秒 1000 度，最快約每秒 2700 度，占轉彎時頭部轉向的 76%；掃視之間視線方向保持不變。而且掃視和翅膀往下拍同步——正是翅膀擋住側面視野的時候。哈佛對鴿子 90 度轉彎的量測也看到類似的「角度穩住、短促掃視」交替。",
+      "scope": "飛行與走路是不同情境，只說是同一種「穩住—快換」策略；不說點頭等於掃視。",
+      "source_ids": [
+        "L65-S008",
+        "L65-S009"
+      ],
+      "source_locator": "F26-S017 Abstract；Results 掃視速度段；Discussion 第 1 段；F26-S018 Abstract、Results 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.5）：飛行與走路點頭是不同情境，只作延伸；Kress 0.75、Ros 0.25（3 隻、同機制）。 原提案 F26-021（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；成立；側面延伸下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在空中，鳥把「轉頭」塞進自己反正看不見的那一瞬間。",
+        "visual": "愛情鳥慢動作：翅膀往下一拍遮住側面，頭在那一格猛轉，其餘時間像被釘住。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "L65-NA001",
+      "question": "Frost 1978「鴿子點頭的視動基礎」與 Davies & Green 1988（JEB）原文",
+      "existing_ids": [],
+      "source_ids": [
+        "L65-S001"
+      ],
+      "reason": "journals.biologists.com 與 cob.silverchair.com 都回 Cloudflare 403（Just a moment），未繞過；內容只經 F26-S010、S013、S014 轉述，併入 F26-014。 原提案 F26-NA002。",
+      "reentry_condition": "期刊頁可正常取得時重讀，F26-014 可由轉述升為原文（約 +0.5），並可加 Davies & Green 的跑、飛、降落資料。",
+      "reading_status": "只讀到他文轉述"
+    },
+    {
+      "id": "L65-NA002",
+      "question": "鴿子在前衝期也看得清形狀嗎？（Jiménez Ortega 等 2009 Exp Brain Res）",
+      "existing_ids": [],
+      "source_ids": [
+        "L65-S004"
+      ],
+      "reason": "Springer 原刊非開放；搜尋結果另列的 elogim.com 是第三方轉存，不用。只有 F26-S013 Discussion 的轉述（前衝期形狀辨識與停住期一樣好），不足以單獨成核心。 原提案 F26-NA004。",
+      "reentry_condition": "讀到合法全文，可成為「前衝期不是瞎的」轉折候選（約 0.75–1.0）。",
+      "reading_status": "只讀到他文轉述"
+    }
+  ]
+}

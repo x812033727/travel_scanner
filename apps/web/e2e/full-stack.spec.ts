@@ -32,19 +32,19 @@ test("manual insertion and single-stop cross-day move persist through the real A
   await page.getByRole("button", { name: "建立免費帳號" }).click();
   // Do not match the register URL's ?next=/trips suffix before sign-in finishes.
   await expect(page).toHaveURL((url) => url.pathname === "/zh-TW/trips", { timeout: 15_000 });
-  // Days relative to today: the API refuses a trip that starts in the past, so the fixed
-  // 2026-11-11 start failed this test with 422 once that day had gone by.
+  // Use the same-origin session established by the real browser sign-in flow.
+  // Dates relative to today: the real API refuses a trip that started more than a day ago,
+  // so a fixed 2026-11-11 start broke this test with a 422 once 2026-11-13 arrived.
   const firstDay = isoDaysFromToday(30);
   const secondDay = isoDaysFromToday(31);
-  // Use the same-origin session established by the real browser sign-in flow.
-  const created = await page.evaluate(async ({ start, end }) => {
+  const created = await page.evaluate(async ([startDate, endDate]) => {
     const response = await fetch("/api/travel/trips", {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ source: "blank", planning_mode: "manual_blank", name: "直覺排序驗證",
-        destination_name: "日本東京", start_date: start, end_date: end }),
+        destination_name: "日本東京", start_date: startDate, end_date: endDate }),
     });
     return { status: response.status, body: await response.json() };
-  }, { start: firstDay, end: secondDay });
+  }, [firstDay, secondDay]);
   expect(created.status, JSON.stringify(created.body)).toBe(201);
   const trip = created.body;
   const readTrip = () => page.evaluate(async (id: string) => {
@@ -53,8 +53,8 @@ test("manual insertion and single-stop cross-day move persist through the real A
     return response.json();
   }, trip.id);
   const nextLunch = trip.items.find((item: { day_date: string; system_role: string }) => item.day_date === secondDay && item.system_role === "lunch").id;
-  // The trip starts 30 days out; pin the browser clock (after sign-in) to now so "DAY 2" is never relabelled "今天" during the run.
-  await page.clock.setFixedTime(new Date());
+  // Pin the browser clock (after sign-in) a day before the trip so "DAY 2" is never relabelled "今天".
+  await page.clock.setFixedTime(new Date(`${isoDaysFromToday(29)}T03:00:00Z`));
   await page.goto(`/zh-TW/trips/${trip.id}`);
   await page.getByRole("button", { name: "加入第一個地點", exact: true }).click();
   const picker = page.getByRole("dialog", { name: "下一站想去哪裡？" });

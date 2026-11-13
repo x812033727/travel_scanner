@@ -1,0 +1,265 @@
+{
+  "batch_id": "wave59-human-20261111",
+  "created_on": "2026-11-12",
+  "scope": "義式咖啡的研磨與萃取率、沖泡條件與感官評分；食品驗真的指標與實例：替組題 C4-08（作者 F13，覆核 V16）與後備組題 C5-01（作者 F14，覆核 V17）補核心。",
+  "sources": [
+    {
+      "id": "H59-S001",
+      "url": "https://www.osti.gov/servlets/purl/1973594",
+      "canonical_url": "https://doi.org/10.1016/j.matt.2019.12.019",
+      "title": "Systematically Improving Espresso: Insights from Mathematical Modeling and Experiment（Cameron 等）",
+      "publisher": "Matter 2(3):631–648（Cell Press，2020）；美國能源部 OSTI 典藏的全文 PDF（20 頁）",
+      "version": "2020（OSTI 典藏稿，版面為刊本）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+      "reading_scope": "正文全文讀完；Supplemental Information 未讀；圖 4、5 只讀圖說與座標標籤，未讀點值",
+      "locator": "Summary；Introduction；Tuning the Model to Espresso Extraction Data；Figure 4–5 圖說；Partially Clogged Flow Regime；Implementation and Outlook",
+      "summary": "以 20 克粉、40 克出液、6 巴水壓、98 牛頓填壓的濃縮咖啡，改變 EK 43 磨豆機刻度（1.1–2.3）：出液時間隨刻度變細而拉長，但萃取率不是一路升高，而是在刻度約 1.7 附近最高，更細反而下降（圖 4B 縱軸約 20%–23%）。假設水流均勻的模型預測越細越高；作者把落差歸給細粉太多造成的局部堵塞與不均勻流動。同一沖煮比例下，刻度 1.3 與 2.0 都能得到 22% 的萃取率。9 巴時細刻度會堵，實驗改用 6 巴。作者明寫風味差異『有注意到但沒有量化』。尤金一家咖啡館把每杯粉量減 25%，一年 27,850 杯、每杯省 0.13 美元。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池中 SRC-1dc7a0a002f869b2（作者頁 PDF）是同一篇論文，本次讀的是 OSTI 的全文。沒有任何感官評分；『乾區』比例（13.1%、6.1%、2.6%）是極端假設下模型與實驗的差，作者自己說不能當量測。單一磨豆機、單一咖啡。補充資料未讀。咖啡館數字是作者引用店家的營收資料。 覆核 V16（2026-11-12）：limitations 加「『Flavor differences… were noted but not quantified』一句的上下文是不同填壓力道（與降壓），不是不同研磨刻度」。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/cameron2020-osti-1973594.pdf",
+        "sha256_prefix": "0fa006c50429cab7",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H59-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11335879/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-024-69867-6",
+      "title": "Sensory analysis of the flavor profile of full immersion hot, room temperature, and cold brewed coffee over time（Liang、Batali、Routt、Ristenpart、Guinard）",
+      "publisher": "Scientific Reports 14:19298（2024，CC BY）；加州大學戴維斯分校",
+      "version": "2024",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）Europe PMC fullTextXML；本機 XML 快取，去標籤後讀",
+      "reading_scope": "摘要、方法（設計、評審）、結論讀完；結果各節與附表只定點讀，補充表未讀",
+      "locator": "Abstract；Experimental design；Descriptive analysis；Conclusions",
+      "summary": "浸泡式沖煮的 2×3×5 設計：一款中美洲配方豆烘成淺、深兩種，在 4、22、92 °C 各泡到五個萃取階段，共 30 個樣本；14 位受過訓練的評審（10 女 4 男）做描述性分析，並量總溶解固體（TDS）、可滴定酸與 pH。28 個感官屬性裡 25 個在樣本間有顯著差異。影響感官輪廓最大的是烘焙度，其次是水溫；沖泡時間——尤其 TDS 進入平台之後——影響比預期小，4 與 22 °C 泡過 8 小時後幾乎沒有顯著變化。甜感強度與 TDS 負相關，另有 19 個屬性與 TDS 正相關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "浸泡式，不是濾杯或濃縮；單一配方豆；沒有改變研磨。相關是樣本間的相關，不是因果。結果章的逐屬性數值與補充表沒有讀，核心只用摘要與結論明寫的句子。DOI 10.1038/s41598-024-69867-6。 覆核 V16（2026-11-12）：reading_scope 改為「摘要、方法、結果、討論、結論全文（結果與討論由覆核 V16 補讀）；補充表與圖未讀」；limitations 加「濃縮液（粉水比 1:5）稀釋一倍、冷藏隔夜後冷飲；甜感最高的是第一個時間點（rinse）；作者解讀甜為苦酸較少時的印象」。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/europepmc-PMC11335879-fulltext.xml",
+        "sha256_prefix": "04582f53fe52f659",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H59-S003",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2799451/fullTextXML",
+      "canonical_url": "https://doi.org/10.1289/ehp.0900949",
+      "title": "The Melamine Incident: Implications for International Food and Feed Safety",
+      "publisher": "Environmental Health Perspectives 117(12):1803–1808（Gossner 等，作者群任職世界衛生組織食品安全部門）",
+      "version": "2009 年刊本；Europe PMC 全文 XML（PMC2799451）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）取得 Europe PMC fullTextXML，python 去標籤成文字後逐段閱讀",
+      "reading_scope": "全文：Background、Unfolding of the Global Event、Health impact（含 Table 3）、Toxicology、Discussion（Delay of reporting、International consequences）；Table 1、2 只看欄位與範圍，未逐列核對。",
+      "locator": "Background 第 1 段（Commonly used methods for protein analysis do not distinguish…）；Unfolding 第 1–2 段；Health impact 第 1 段與 Table 3",
+      "summary": "世衛人員對 2008 年奶製品三聚氰胺事件的回顧：摻假的動機是墊高以氮推算的蛋白質讀數，事件的時間線、各國檢出情形、病例通報數與毒理評估。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "評論／回顧文章，不是原始調查；病例數引自中國衛生部 2008 年 12 月通報；沒有寫出蛋白質檢驗法的名稱，也沒有摻入量與讀數的對應。池中沒有同一網址或同一 DOI。 覆核 V17（2026-11-12）：limitations 補：原文第 20–21、118 段點名了一家企業並寫了延遲通報的經過，本池核心不取用；Table 3 的分母是 2,240 萬名受檢者；2004（韓國）、2007（美國）的寵物事件是加進「寵物食品原料」。",
+      "author_cache": {
+        "file": "f14src/gossner2009-PMC2799451.xml",
+        "sha256_prefix": "4c5a670b11844a75",
+        "text_file": "f14src/gossner2009.txt",
+        "text_sha256_prefix": "2f368f948b8d3391",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H59-S004",
+      "url": "https://publications.jrc.ec.europa.eu/repository/bitstream/JRC130227/JRC130227_01.pdf",
+      "canonical_url": "https://doi.org/10.2760/184511",
+      "title": "EU Coordinated action to deter certain fraudulent practices in the honey sector – Analytical testing results of imported honey",
+      "publisher": "歐盟執委會聯合研究中心（JRC）技術報告 EUR 31461 EN（Ždiniaková 等）",
+      "version": "2023；JRC130227",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（1,657,146 bytes，application/pdf），pdftotext -layout 全文",
+      "reading_scope": "Abstract、第 1–2 節（背景與目的）、第 5 節檢驗方法與 Table 1、第 6 節結果、第 7 節結論；Annex 1 只讀判定規則標題與前幾行；圖 4、5 未目讀。",
+      "locator": "Abstract；§1（進口蜜與米糖漿單價）；§5.1 Table 1；§5.2；§6；§7",
+      "summary": "2021 年 10 月至 2022 年 2 月歐盟協同行動：17 國抽 320 批進口蜂蜜，147 批（46%）至少驗出一種外加糖漿標記而列為可疑；過去常用的整體碳同位素法在這批樣本上沒有效果，報告判讀為糖漿已由玉米、甘蔗改成米、小麥、甜菜。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "「可疑」不是確認摻假；方法只給有無標記、估不出摻量；報告自己寫明只代表抽樣期間、不得外推；國別比例的樣本數懸殊。池中沒有同一網址；它的 Table 1 引用了池中 X34-001 所據的同一篇論文（Elflein 與 Raezke 2008）。 覆核 V17（2026-11-12）：summary 補：320 批來自 20 個出口國，84% 在邊境管制站取樣，JRC 收樣日期 2021-10-28 至 2022-02-11；進口蜜均價 2.32 歐元不含紐西蘭蜜；報告沒有給 EA-IRMS 單獨判出幾批的數字，「糖漿換了種類」是報告的解讀。",
+      "author_cache": {
+        "file": "f14src/jrc130227-honey-2023.pdf",
+        "sha256_prefix": "301a3a76f5e78802",
+        "text_file": "f14src/jrc130227-honey-2023.txt",
+        "text_sha256_prefix": "9d0168a5c474a6c1",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H59-S005",
+      "url": "https://www.gov.uk/government/news/processed-beef-products-and-horse-meat",
+      "canonical_url": "https://www.gov.uk/government/news/processed-beef-products-and-horse-meat",
+      "title": "Processed beef products and horse meat",
+      "publisher": "英國環境、食品暨鄉村事務部（Defra），GOV.UK",
+      "version": "2013-02-09 發布，2013-05-02 最後更新",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）存整頁 HTML，python 去標籤成文字後閱讀",
+      "reading_scope": "整頁正文：摘要、Food labelling and food safety、Who is responsible?、Testing、Controls on imports、Background；更新連結清單只看標題。",
+      "locator": "Testing 第 1–2 段；Background 末段（On 15 January the Food Safety Authority of Ireland…）",
+      "summary": "英國政府對 2013 年馬肉事件的說明頁：轉述愛爾蘭食品安全局 1 月 15 日公布的漢堡排 DNA 調查結果，之後英國要求業者做真實性檢驗、歐盟同意各國全面檢驗。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "是英國政府轉述，不是愛爾蘭食品安全局的調查報告原件（原新聞稿頁本輪已被導回首頁，讀不到）；沒有檢驗方法與定量細節；頁面沒有說事件之前是否驗過馬。池中沒有同一網址。 覆核 V17（2026-11-12）：author_cache 註明：GOV.UK 頁面重抓的 sha256 會變（今日為 e64d4aa3cb025abe，大小相同），以文字檔雜湊與關鍵句為準。limitations 補：原文在 29% 那一句點名零售商，另有北愛爾蘭冷藏庫 12 件中 2 件約 80% 的紀錄，本池不取用。",
+      "author_cache": {
+        "file": "f14src/govuk-horsemeat-2013.html",
+        "sha256_prefix": "da2426cf3dcbcbe5",
+        "text_file": "f14src/govuk-horsemeat-2013.txt",
+        "text_sha256_prefix": "a12191e8ee2b8e18",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H59-001",
+      "question": "把濃縮咖啡的粉越磨越細，萃取率會一路升高嗎？",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "mechanism_key": "coffee.espresso_extraction_yield_peak_vs_grind_setting",
+      "answer_target": "不會，會先升後降。奧勒岡大學等團隊用 20 克粉、40 克出液、6 巴水壓、固定 98 牛頓的填壓，只改磨豆機刻度：刻度越細，出液時間越長，這如預期；但萃取率在刻度約 1.7 附近最高，再磨細反而下降。他們的模型假設水均勻流過整個粉床，預測應該越細越高；實測在細的一端掉下來，作者解釋為細粉太多、結團或粉床密度不均，水不再均勻流過整個粉床。同樣的粉水比例，刻度 1.3 和 2.0 都量得到 22% 的萃取率——作者說這兩杯的化學組成不可能一樣，所以單看萃取率分不出一杯咖啡。實驗原本用 9 巴，細刻度會堵，才降到 6 巴。這篇論文沒有任何感官評分。",
+      "scope": "單一磨豆機（EK 43）、單一咖啡、6 巴；刻度數字是那台機器的，不是通用的粗細單位。沒有感官資料，不得寫成「比較好喝」；文中「風味差異有注意到但沒有量化」一句說的是不同填壓力道，不是不同刻度，不引用。「一部分過萃、一部分沒萃到」是作者的推想，旁白要說是研究者的解釋。「乾區」的百分比是極端假設下的推算，不引用。不給沖煮建議。圖 4、5 的點值未目讀，寫稿前要看圖確認峰值位置。",
+      "source_ids": [
+        "H59-S001"
+      ],
+      "source_locator": "Summary；Tuning the Model…；Fig. 4–5 圖說；Partially Clogged Flow Regime",
+      "premise_status": "screened",
+      "notes": "算 1 條（F4030 已有『可能下降』的一句 0.5 條，這裡新增實驗條件、峰值位置、同為 22% 的兩個刻度與作者自承沒有感官資料）。補 C4-08 缺口（1）。與 F4030 同一篇論文（池中 SRC-1dc7a0a002f869b2），建議合併進 F4030 或取代它，片中只算一個核心。 原提案 F13-004（目標 C4-08，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補上上一輪點名的缺口（1）：讀 Cameron 等 2020 全文，把只有一句的 F4030 補成有實驗條件與數字的核心。與池中 F4030 是同一篇論文（SRC-1dc7a0a002f869b2），入池時併進 F4030 或取代它，片中只算一個核心；新增 1 條（實驗條件與峰值 0.5、同為 22% 的兩個刻度 0.5），加上 F4030 原有 0.5，這篇合計 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『萃取率 22%』不是一杯咖啡的身分證：同一個數字可以來自兩種完全不同的粉床。",
+        "visual": "橫軸刻度、縱軸萃取率的一條拱形曲線，峰在 1.7；在 1.3 與 2.0 各點一個等高的點，下面畫兩個粉床：一個水均勻流過，一個只走幾條通道。",
+        "seconds": [
+          75,
+          95
+        ]
+      }
+    },
+    {
+      "id": "H59-002",
+      "question": "咖啡泡得越濃，喝起來每一種味道都跟著變強嗎？",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "mechanism_key": "coffee.immersion_brew_sweetness_negative_with_tds_panel",
+      "answer_target": "多數是，甜是例外。加州大學戴維斯分校把同一款配方豆烘成淺、深兩種，在 4、22、92 °C 三種水溫各泡到五個階段，做出 30 種咖啡，同時量杯裡溶了多少東西（總溶解固體），並請 14 位受過訓練的評審逐項評分。28 個感官項目裡有 25 個在樣本之間有顯著差異；其中 19 項的強度隨濃度升高而變強，8 項看不出關係，只有甜感是越濃越低——最甜的是水才淋過、幾乎還沒泡的那一杯。作者的解讀是：那比較像苦和酸還少時留下的甜的印象，不是杯裡真的多了甜。影響整體風味輪廓最大的是烘焙度，其次是水溫；泡多久的影響比研究者預期的小，4 和 22 °C 的冷泡過了 8 小時、濃度進入平台之後，統計上顯著的變化就很少。",
+      "scope": "浸泡式沖煮，不是濾杯也不是濃縮；單一配方豆；研磨固定沒有改變；泡的是粉水比 1:5 的濃縮液，稀釋一倍、冷藏隔夜後冷著喝，作者自己說這可能削弱了時間的影響。是樣本之間的相關，不是「加濃就不甜」的因果實驗；甜感是評審的評分，不是糖的含量。8 小時之後仍有個別項目（澀、黏稠、淺焙的酸）顯著變化，旁白說「變化很少」不說「分不出」。水溫的結論涵蓋 4 到 92 °C，與 X36-005（87–93 °C、調齊濃度）的範圍不同，兩者不得寫成互相矛盾或互相證明。補充表未讀，不報逐項相關係數。",
+      "source_ids": [
+        "H59-S002"
+      ],
+      "source_locator": "Abstract；Experimental design；Descriptive analysis；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：濃度與 19＋1 個屬性的方向 1、烘焙度＞水溫＞時間與 8 小時 0.5。補 C4-08 缺口（2）：把萃取量接到感官評分的原研究全文，而且是覆核點名的戴維斯咖啡中心；同時補上『沒有烘焙度對味道的研究』。與 X36-005（同一研究群 2020 年的滴濾、調齊濃度比水溫）不同實驗、不同問題；與 X36-006（分段接取後段較甜而糖量不夠解釋）方向一致，可並排但不得說成同一個實驗。Guinard 等 2023（沖煮控制圖）Wiley 回 403，未讀。 原提案 F13-005（目標 C4-08，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補上上一輪點名的缺口（2）：把萃取量接到感官評分的原研究全文，出自上一輪舉例的戴維斯咖啡中心（上一輪寫的是「例如沖煮控制圖系列」，不是指定非那一篇不可）。作者只讀摘要、方法與結論；覆核把結果與討論讀完，摘要的三個結論在正文都有對應的統計敘述，所以照全文計。算 1.5 條（濃度與 19＋8＋1 個項目的方向及作者對甜的解讀 1、烘焙度＞水溫＞時間 0.5），同意作者；但答案補上三個條件（稀釋後冷飲、甜集中在第一個時間點、作者的解讀），原本的寫法會讓人以為「泡濃就不甜」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "濃度把大部分味道一起往上推，甜卻往反方向走——所以『後段比較淡卻比較甜』不需要後段多出糖。",
+        "visual": "30 個點的散布：橫軸濃度；十九條細線往右上，一條標『甜』的線往右下。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "H59-003",
+      "question": "牛奶被加水稀釋了，蛋白質檢驗為什麼還會過關？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food_auth.nitrogen_proxy_melamine",
+      "answer_target": "因為常用的蛋白質檢驗量的是氮，分不出氮是來自蛋白質還是別的東西。世界衛生組織食品安全部門的人員 2009 年的回顧寫明：三聚氰胺是含氮量高的分子，加進去，蛋白質讀數就偏高；它便宜又容易取得，所以有摻假的經濟誘因。這件事先出現在寵物食品——2004 年（韓國）與 2007 年（美國）有人把它加進寵物食品的原料，造成寵物腎衰竭；2008 年則是有人把它加進稀釋過的生乳，墊高表面上的蛋白質含量，後來的調查發現 22 家嬰兒配方奶粉業者的產品含有三聚氰胺，造成大量嬰幼兒腎臟與泌尿道傷害。",
+      "scope": "世衛人員寫的事件回顧（Environmental Health Perspectives 的評論文章），不是原始調查；原文沒有寫檢驗法名稱，本核心不寫「凱氏定氮」，也沒有摻入量與讀數的對應。原文 Table 3 引中國衛生部截至 2008 年 12 月 1 日的通報（2,240 萬名受檢者中 294,000 例、其中 51,900 例住院、6 例死亡確認）：這組數字只留在本紀錄備查，片中不報住院與死亡數；若站主同意交代規模，全片只用一句「官方通報約三十萬名嬰幼兒受影響」並註明出處。片中限制：不點名任何企業或品牌、不用任何事件影像或病童畫面、不談延遲通報與究責、不評論任何國家的食品——事件只用來說明「檢驗量的是氮」，並與 2004、2007 年的寵物食品事件並列，說明這是檢驗方法的弱點，不是某一地的問題。站主若不同意在片中提 2008 年事件，本核心改為只講寵物食品兩例與「量的是氮」，算 1 條。",
+      "source_ids": [
+        "H59-S003"
+      ],
+      "source_locator": "Background 第 1 段；Unfolding of the Global Event 第 1–2 段；Health impact 第 1 段與 Table 3",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：檢驗量的是氮、分不出來源 1 條；同一手法先後出現在寵物食品原料與稀釋生乳 0.5 條。病例數不計為事實。 原提案 F14-001（目標 C5-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；數字與主詞全部對得上，機制句是原文明寫的。改動在敏感處理：作者把 294,000、51,900、6 三個數字寫進答案，片中用不到——要說明的只是「量的是氮」，受害規模不是這一題的論點，數字移到 scope 備查並寫明片中限制。另補一句作者略去、但對語氣有幫助的事實：同一手法更早用在韓國與美國的寵物食品原料上，這讓這一章講的是檢驗的弱點，不是哪一國的事。池中搜尋 三聚氰胺、melamine、蛋白質含量、氮：沒有同答案核心，DOI 與網址池中皆無。這個核心牽涉嬰幼兒大量受害的事件，是否在片中使用請站主確認。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "檢驗量的不是蛋白質本身，而是它的替身——氮；造假的人照著替身下手。",
+        "visual": "一台只會數氮的儀器示意圖：左邊倒進蛋白質、右邊倒進另一種含氮粉末，指針一樣高。不用任何事件照片。",
+        "seconds": [
+          50,
+          70
+        ]
+      }
+    },
+    {
+      "id": "H59-004",
+      "question": "以前抓得到摻糖蜂蜜的碳同位素檢驗，現在還抓得到嗎？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food_auth.honey_method_shift_eu_2023",
+      "answer_target": "在歐盟 2021–22 年抽的這一批進口蜜上，沒有用了。歐盟聯合研究中心 2023 年的技術報告：2021 年 10 月到 2022 年 2 月，15 個歐盟國家加上瑞士、挪威隨機抽了 320 批進口蜂蜜（多數在邊境管制站取樣）送驗，147 批（46%）被判為「可疑」——至少驗出一種外加糖漿的標記。過去常用來抓玉米、甘蔗糖漿的整體碳同位素法，在這批樣本上找不出可疑蜜；報告把這一點解讀為這類糖漿已不再用來摻蜜，改成米、小麥或甜菜做的糖漿。最常亮起來的標記是寡糖、多醣與甘露糖。報告也寫了誘因：2021 年歐盟進口蜂蜜平均每公斤 2.32 歐元（不含紐西蘭蜜），米糖漿約 0.40 到 0.60 歐元。",
+      "scope": "「可疑」是報告用字，不是確認摻假；所用方法只給有無標記，估不出摻了多少。報告自己寫明結果只代表抽樣期間，不得外推；2015–17 年那次的 14% 用的是另一套方法，兩個數字不能說成「變多了」。「糖漿換了種類」是報告由舊法無效作出的解讀，沒有直接驗出糖漿的種類比例；報告也沒有給舊法單獨判出幾批的數字，片中不得說「舊法一批都沒抓到」。報告列有各出口國的比例，各國樣本數懸殊，本核心不採、片中不列國名排行。",
+      "source_ids": [
+        "H59-S004"
+      ],
+      "source_locator": "Abstract；§1；§5.1 Table 1；§5.2；§6；§7",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：320 批中 147 批靠新標記列為可疑 1 條；舊法在這批樣本上無效與價差 0.5 條（「米糖漿的整體碳比例落在真蜜範圍」的機制已在 X34-001，不重計）。 原提案 F14-002（目標 C5-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；數字全部相符，限制作者寫得完整。兩處改字：答案第一句「抓不太到了」是通論，原文只說在這批樣本上無效而且明文不得外推，改成限定在這次抽驗；補上「不含紐西蘭蜜」與取樣地點。事實數維持 1.5，但把重疊講清楚：舊法為什麼對米糖漿不靈是 X34-001 的事實，這裡只算「官方抽驗裡真的失效」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "檢驗法公開之後，摻進去的東西就跟著換；一個方法「驗不出來」和「沒有摻」是兩回事。",
+        "visual": "同一排 320 個小瓶：舊檢驗下幾乎全綠，換上新標記後將近一半轉成「可疑」的橘色；畫面註明「可疑，不是確認」。",
+        "seconds": [
+          50,
+          70
+        ]
+      }
+    },
+    {
+      "id": "H59-005",
+      "question": "牛肉漢堡排裡的馬肉，是怎麼被發現的？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food_auth.undeclared_species_horse_2013",
+      "answer_target": "靠的是一次針對物種的 DNA 調查。英國政府的事件說明頁記載：愛爾蘭食品安全局 2013 年 1 月 15 日公布，27 款牛肉漢堡排裡有 10 款（37%）驗出馬的 DNA、23 款（85%）驗出豬的 DNA；10 款中 9 款含量很低，但有一款的馬 DNA 量顯示馬肉約占總肉量的 29%。同一頁寫著，英國主管機關這時要求業者對漢堡排、肉丸、千層麵這類加工牛肉製品做真實性檢驗並交出結果，歐盟也同意在各國檢驗供應鏈裡有沒有馬肉；而英國主管機關原本每年例行做九萬多項食品安全與詐欺檢驗，採風險導向。",
+      "scope": "來源是英國政府的說明頁轉述愛爾蘭的調查，不是調查報告原件（原件網址今日仍導回新聞列表）。頁面沒有檢驗方法，也沒有說事件之前有沒有人驗過馬：片中只能陳述先後（先有這次調查，之後才要求全面檢驗），不得寫成「以前從來沒人驗」或「例行檢驗漏掉了」。驗出的是 DNA；低含量是否來自交叉污染，頁面沒有判定。29% 是由 DNA 量推得的比例。原文點名了零售商，片中不點名零售商、工廠與品牌，圖示不畫包裝。",
+      "source_ids": [
+        "H59-S005"
+      ],
+      "source_locator": "Testing 第 1–2 段；Background 末段",
+      "premise_status": "screened",
+      "notes": "算 1 條：27 款中 10 款、其中一款 29%，以及之後才擴大檢驗，合為一條；九萬多項例行檢驗是背景，不另計。 原提案 F14-003（目標 C5-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；數字與先後次序相符，作者的限制寫得對。小改：「約占肉量」照原文改為「總肉量」；把「之後」改成照頁面的寫法（頁面是 2013 年 2 月起持續更新的說明頁，寫的是當時正在要求）。這個核心的弱點不在字句，在來源層級：它答不了「為什麼去驗馬」，所以在長題裡只能當例子、不能當轉折的承擔者。沒有台灣的對應案例。池中搜尋 馬肉、horse、漢堡：無。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "驗什麼，才看得到什麼；清單之外的東西不會自己亮燈。",
+        "visual": "27 個漢堡排圖示，10 個標上馬的記號、其中一個特別深；不出現任何品牌包裝。",
+        "seconds": [
+          35,
+          50
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "H59-NA001",
+      "question": "冷泡咖啡磨粗一點、泡短一點，評審給的分數會比較低嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "非作者覆核 V16（2026-11-12）退回：不收。這個核心的問題與答案都落在「評審給幾分」，而評審只有三人，撐不起任何關於味道的句子；它另一個結果（粗研磨的萃取率反而較高）作者沒有檢驗原因，也和一般預期相反。作者自己寫「可刪」。記入 not_added；重評條件：讀到 Guinard 等 2023 或同類有足夠評審人數、而且改變研磨的感官研究全文。 原提案 F13-006。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回"
+    },
+    {
+      "id": "H59-NA002",
+      "question": "滴濾咖啡的『沖煮控制圖』：濃度、萃取率各往哪邊走，哪些味道跟著變？",
+      "existing_ids": [
+        "X36-005"
+      ],
+      "source_ids": [
+        "H59-S002"
+      ],
+      "reason": "Guinard 等 2023（J. Food Science，10.1111/1750-3841.16531，hybrid OA）Wiley 回 403；Frost 等 2020、Cotter 等 2021 為付費。改讀同一研究群 2024 年的開放全文（F13-005，浸泡式）。 原提案 F13-NA003。",
+      "reentry_condition": "讀到 Guinard 等 2023 全文（滴濾、含消費者喜好）。",
+      "reading_status": "403，未讀"
+    },
+    {
+      "id": "H59-NA003",
+      "question": "愛爾蘭那次漢堡排調查，當初為什麼會去驗馬？用的是什麼方法、驗了哪些產品？",
+      "existing_ids": [],
+      "source_ids": [
+        "H59-S005"
+      ],
+      "reason": "愛爾蘭食品安全局 2013 年 1 月 15 日的新聞稿與調查報告原頁，舊網址都被導回該局的新聞首頁，讀不到；F14-003 因此只能用英國政府的轉述，回答不了「為什麼驗馬」。 原提案 F14-NA002。",
+      "reentry_condition": "讀到愛爾蘭食品安全局的調查報告原件，或英國 Elliott Review（2014）的正文後，可把 F14-003 補成有方法與動機的核心，多 0.5–1 條。",
+      "reading_status": "原件未讀到；只讀了英國政府的說明頁。"
+    }
+  ]
+}

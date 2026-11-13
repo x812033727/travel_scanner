@@ -1,0 +1,1712 @@
+{
+  "batch_id": "wave77-physics-20261111",
+  "created_on": "2026-11-13",
+  "scope": "第二十七輪從零研究的新長題（球類、冰、結構）：曲球（F127／V147）、姆潘巴效應（F131／V151，與 season2 S49 撞題、不另立長題）、橋的晃動（F132／V152），都留後備。",
+  "sources": [
+    {
+      "id": "P77-S001",
+      "url": "https://arxiv.org/pdf/physics/0605041",
+      "canonical_url": "https://arxiv.org/abs/physics/0605041",
+      "title": "The Effect of Spin on the Flight of a Baseball",
+      "publisher": "arXiv physics/0605041（2006，投 ISEA 2006 會議的縮短版）；Nathan AM、Hopkins J、Chong L、Kaczmarski H（伊利諾大學香檳分校）",
+      "version": "arXiv v1 預印本（作者版）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果所列 arXiv PDF 連結，curl 預設標頭 200（180779 位元組），pdftotext 轉 nathan_spin_arxiv0605041.txt",
+      "reading_scope": "全文逐段讀完（第 1–5 節、圖 1–5 說明、參考文獻）；圖中各點的數值只能目讀，未取用",
+      "locator": "摘要；第 3 節（22 球、皆二縫朝向、只用一個反光點、轉軸假設水平）；第 4.1 節（S=0.15–0.30 的 CL 集中在約 0.20、支持 SHS 不支持 RKA）；第 5 節結論",
+      "summary": "用投球機把棒球近乎水平射出、上旋或倒旋，10 台動作捕捉相機追蹤約 5 公尺，速度 50–110 mph、轉速 1500–4500 rpm（S=0.1–0.6），擬合出升力與阻力係數。結果：S<0.3 的升力係數與 Sawicki 等（SHS）的參數式相符，S=0.15–0.30 時 CL 集中在約 0.20、隨速度變化不大；不支持 Adair（RKA）較小的升力。阻力係數散布大，作者自稱只能當推測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 22 球、二縫朝向、投球機而非真人投手；轉軸沒有量，假設水平；正式刊本（Am J Phys 或 ISEA 論文集）未讀，以 arXiv 版為準。引言裡『最佳擊出的曲球比快速球多飛約 12 呎』是 SHS 2003 的結果，不是本篇，不寫入。圖 1『100 mph 時兩種參數式升力差約三倍』是比較前人參數式的計算，不算本篇事實。研究網 N1（Nathan 與 Bahill 經 McBeath 等 2008 合著併網）。 覆核 V147（2026-11-13）：limitations 加：倒旋／上旋造成下墜比 g 慢或快是方法前提；『CL 對速度依賴弱』原文是 seems to suggest、只限 S=0.15–0.30。",
+      "author_cache": {
+        "file": "stw27/f127src/nathan_spin_arxiv0605041.pdf",
+        "sha256_prefix": "4edfafc720f1bcac",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S002",
+      "url": "https://sabr.org/journal/article/the-vertical-illusions-of-batters/",
+      "canonical_url": "https://sabr.org/journal/article/the-vertical-illusions-of-batters/",
+      "title": "The Vertical Illusions of Batters",
+      "publisher": "Baseball Research Journal 32（2003，SABR）；Bahill AT（亞利桑那大學系統工程）、Baldwin DG",
+      "version": "SABR 網站公開全文（HTML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果所列 SABR 期刊頁，curl 預設標頭 200，本機去標籤成 sabr_journal_article_the-vertical-illusions-of-batters.txt",
+      "reading_scope": "全文逐段讀完（含作者介紹與參考文獻）；表 1、表 2 與圖 1、2 在 HTML 中沒有影像，數字只取正文",
+      "locator": "〈Batters’ Predictions and the Rising Fastball〉第 3–5 段（90／95 mph 模擬、3 吋上跳）；〈Batters’ Predictions and The Breaking Pitch〉全節（3.8、6.2、8.3、10.3 吋；2.4、7.7、12.7、17.5 吋；最後 150 ms 落 25 吋、以為 80 mph 則預期 21 吋、看成下折 4 吋）；〈Experimental Assessment of the Model〉（450 球、7 人、50 mph 偶夾 55 mph，快球時揮在球下方）",
+      "summary": "作者以含重力、升力、阻力的模擬說明：90 mph 快速球每 100 ms 依序落下 3.8、6.2、8.3、10.3 吋，75 mph 的下墜曲球在 100–200 ms 落 2.4 吋、之後三段依序 7.7、12.7、17.5 吋——越後面落得越多，但仍是一條平滑拋物線，不是急折。他們提出：打者若把 75 mph 曲球誤判成 80 mph，會預期最後 150 ms 只落 21 吋、實際落 25 吋，若此時視線離開球、等球到擊球點才再看到，就會覺得球『往下折了 4 吋』；上飄快速球則是低估球速的反向錯覺。投球機實驗（450 球、7 人）中，夾在 50 mph 之間的 55 mph 快球，打者多揮在球下方。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是作者群在社團期刊上整理自己先前研究的文章：模擬來自 Karnavas、Bahill、Regan 1990，實驗來自 Bahill & Karnavas 1993（JEP:HPP，付費，未讀）；本文只給摘要式描述，受試者含 4 名 9–13 歲男孩、球速只有 50／55 mph。片中只能說『作者用模擬與一個投球機實驗支持他們的解釋』，不得說證明。非同儕審查的正規期刊，覆核可能降級；本作者已把整篇壓在 1.0。研究網 N1（Bahill、Baldwin 與 Nathan 在 McBeath, Nathan, Bahill, Baldwin 2008 Am J Phys〈Paradoxical pop-ups〉合著，併網封頂 2.0）。 覆核 V147（2026-11-13）：limitations 改為：投球機實驗是本文對 Bahill & Karnavas 1993（付費、未讀）的轉述，測的是低估球速（快速球）方向；文內〈Pitchers’ Tactics〉是投球戰術，不得引用；『折』的解釋原文限 some pitches／might。",
+      "author_cache": {
+        "file": "stw27/f127src/sabr_journal_article_the-vertical-illusions-of-batters.html",
+        "sha256_prefix": "ede066d33c4f2ece",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S003",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2954145/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0013296",
+      "title": "Transitions between Central and Peripheral Vision Create Spatial/Temporal Distortions: A Hypothesis Concerning the Perceived Break of the Curveball",
+      "publisher": "PLoS ONE 5(10):e13296（2010）；Shapiro A（American U）、Lu ZL、Huang CB（USC）、Knight E（Mayo Clinic）、Ennis R（SUNY Optometry）",
+      "version": "出版社開放取用版（CC BY，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC2954145/fullTextXML，curl 預設標頭，200；本機去標籤成 PMC2954145.txt",
+      "reading_scope": "全文逐段讀完：摘要、Introduction、Methods（觀察者、刺激、程序）、Results、Motion Energy 一節（略讀公式）、Relevance to the perceived path of the curveball 全節、Discussion、補充圖 S1 說明；圖 2、4 只讀說明文字",
+      "locator": "Methods〈Observers〉〈Stimuli〉；Results 第一段（0.41–0.66×偏心度、30° 偏心時約 20°、轉換視線時的『折』）；〈Relevance…〉第 3–6 段（擬合 Bahill & Baldwin 2004 表 10.2 的軌跡、10° 偏心、最多 1.25 呎）；Discussion 第 3 段",
+      "summary": "螢幕上一個垂直下落的圓盤，內部條紋橫向移動（模擬旋轉）。直視時看到垂直下落；放在周邊視野時，圓盤看起來斜著落下，偏離角約為偏心度的 0.41–0.66 倍（條紋越快越大），在 30° 偏心、條紋 20°/s 時看起來斜約 20°；若中途把視線從周邊移回中央（或反之），下落方向會突然『折』一下。作者把結果套到前人量到的曲球軌跡，假設打者在球離本壘 20 呎時把視線移到預期擊球點，算出最多可看到約 1.25 呎的『折』，並提出曲球的『突然轉折』是中央與周邊視覺轉換造成的錯覺假說；摘要也明講曲球在物理上是平滑的拋物線。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實驗只有 5 位觀察者（含一位作者）、是螢幕上的圓盤，不是真球、也不是打者；1.25 呎是把實驗係數套到別人表列軌跡的計算，作者自稱 hypothesis。曲球軌跡資料出自 Bahill & Baldwin 2004（前人），不是本篇量的。上飄快速球、二縫四縫的段落只是作者推測，不寫成發現。研究網 N2。 覆核 V147（2026-11-13）：summary 改為：1.25 呎是以 0.66 係數、偏心 5–20°、在球離本壘 5–20 呎時移開視線的各條件中的上限，『折』在重新以中央視野看球時出現。",
+      "author_cache": {
+        "file": "stw27/f127src/PMC2954145.xml",
+        "sha256_prefix": "a675fd0206ed5803",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7739578/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fspor.2020.00003",
+      "title": "Eye and Head Movements of Elite Baseball Players in Real Batting",
+      "publisher": "Frontiers in Sports and Active Living 2:3（2020）；Kishita Y、Ueda H、Kashino M（NTT 通訊科學基礎研究所）",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC7739578/fullTextXML，curl 預設標頭，200；本機去標籤成 PMC7739578.txt",
+      "reading_scope": "摘要、Introduction 首段、Results 全文、Discussion 前五段讀完；Methods 只讀受試者與條件（6 名現役職業打者、對前職業投手、已知快速球／未知快速球／未知曲球）；圖只讀說明",
+      "locator": "摘要；Results 第 1、3、4 段（每球幾乎都有預測性跳視、首次跳視在擊球前約 80–220 ms、二軍較早、未知快速球比已知早）；Discussion 第 1–3 段（一軍約擊球前 120 ms 才跳；曲球與快速球的跳視時間無顯著差）",
+      "summary": "六名日本職業打者面對前職業投手、在接近實戰（事先不告知球種）的情境下打擊，以穿戴式眼動儀與動作捕捉記錄。打者先用頭轉動追球，之後幾乎每一球都做一次『預測性跳視』，把視線先跳到球將要到的位置；首次跳視落在擊球前約 80–220 ms。三名一軍打者跳得比三名二軍打者晚（約擊球前 120 ms），注視與球的誤差也傾向較小；事先知道是快速球時跳得比不知道時晚；未知快速球與未知曲球之間跳視時間沒有顯著差異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 6 人、各 3 人分一軍二軍，組間差異 p 值多在邊緣；只量水平方向；『一軍比較會晚跳是較佳策略』是作者解讀。片中不得變成訓練建議。研究網 N3（Kashino 群）。 覆核 V147（2026-11-13）：summary 加投手球速（快速球約 105–129 km/h、曲球約 95–105 km/h）、已知條件只有快速球；limitations 加：Discussion 明寫與 Higuchi 2018『主要靠轉頭』的結果不同。",
+      "author_cache": {
+        "file": "stw27/f127src/PMC7739578.xml",
+        "sha256_prefix": "f3bcca09a4c6c91d",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7739824/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fspor.2020.00064",
+      "title": "Temporally Coupled Coordination of Eye and Body Movements in Baseball Batting for a Wide Range of Ball Speeds",
+      "publisher": "Frontiers in Sports and Active Living 2:64（2020）；Kishita Y、Ueda H、Kashino M",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC7739824/fullTextXML，curl 預設標頭，200；本機去標籤成 PMC7739824.txt",
+      "reading_scope": "只讀摘要（逐字）；正文未逐段讀，不寫『全文』",
+      "locator": "Abstract 全段",
+      "summary": "九名大學球員打投球機四種球速（80、100、120、140 km/h）。球飛行前段，慢速兩檔是頭轉過頭再用眼睛補償，快速兩檔只靠頭轉；之後都在球的角速度急增前做預測性跳視與快速轉頭。不論球速，跳視與快速轉頭的起點都與擊球時刻和髖部轉動（揮棒）對齊，而與球出手後經過的時間或球的位置無關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要，依規則記為摘要層級；與 F127-S004 同群。投球機、大學球員。 覆核 V147（2026-11-13）：reading_scope 維持『作者只讀摘要』；加『覆核 V147 另讀本機快取全文的表 1 與 Discussion 第一段』。",
+      "author_cache": {
+        "file": "stw27/f127src/PMC7739824.xml",
+        "sha256_prefix": "064cb52b60215b5e",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4743964/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0148498",
+      "title": "Contribution of Visual Information about Ball Trajectory to Baseball Hitting Accuracy",
+      "publisher": "PLoS ONE 11(2):e0148498（2016）；Higuchi T、Nagami T、Nakata H、Watanabe M、Isaka T、Kanosue K（早稻田等）",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC4743964/fullTextXML，curl 預設標頭，200；本機去標籤成 PMC4743964.txt",
+      "reading_scope": "摘要、Introduction、Methods（受試者、器材、程序、資料分析）、Results 前半（球速、飛行時間、系統誤差）、Discussion 首段與結論段讀完；Results 後半的變異度統計只讀到結論句與圖 4 說明",
+      "locator": "Methods〈Procedure〉（R+150、A-150、NO 三種遮蔽，31.9 與 40.3 m/s，各 12 球）；Results〈Ball flight duration〉（548.0、453.3 ms）；摘要與 Conclusion 段（遮蔽不影響平均擊球位置；從 R+150 加看到 A-150 與 NO 只讓棒身短軸方向變異變小）",
+      "summary": "十名大學野手打投球機（倒旋、模擬快速球，球速 31.9 與 40.3 m/s），戴液晶遮蔽眼鏡：出手後 150 ms 起遮、預期到本壘前 150 ms 起遮、不遮。三種條件下擊球點的平均位置都沒有差別；能多看一段（從 R+150 到 A-150 或不遮）只讓擊球點在棒身短軸（上下）方向的變異變小，A-150 與不遮之間沒有改善。作者結論：能用來提高準確度的視覺資訊，限於球飛行的較早部分，最後約 150 ms 看到的派不上用場，可能是視覺—動作延遲所致。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "用聚氨酯練習球、只投外角高度隨機、無變化球；『最後 150 ms 用不上』是本實驗條件下的結果與作者推論，不能外推到所有打者。研究網 N4（Higuchi／Nagami／Kanosue 群）。查到 Nakamoto H, Higuchi T, Mann DL 2021 一篇，但該 Higuchi T 單位為 Department of Health Promotion Science（東京都立大學的另一位 Higuchi），判為同名不同人；覆核若不同意，N4 與 N5 併網後合計 2.25 → 封頂 2.0（少 0.25）。 覆核 V147（2026-11-13）：summary 的『只投外角高度隨機』改為『只投本壘板外側半邊上方的好球帶、高度每球隨機』；『上下方向』改為『棒身短軸方向』。",
+      "author_cache": {
+        "file": "stw27/f127src/PMC4743964.xml",
+        "sha256_prefix": "6eb0bc459e12a6a1",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S007",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6049917/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0200443",
+      "title": "Head-eye movement of collegiate baseball batters during fastball hitting",
+      "publisher": "PLoS ONE 13(7):e0200443（2018）；Higuchi T、Nagami T、Nakata H、Kanosue K",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC6049917/fullTextXML，curl 預設標頭，200；本機去標籤成 PMC6049917.txt",
+      "reading_scope": "摘要與 Results 第一段、表 1 讀完；其餘只略讀",
+      "locator": "Abstract；Results 第一段（543.0 與 451.3 ms、六人全部擊中、三人在擊球前停止轉頭、三人持續轉頭）",
+      "summary": "六名大學球員打投球機快速球（31.9 與 40.3 m/s），以高速攝影量頭、眼電圖量眼。把飛行時間分成四段比較：頭的水平角速度在後段（61–80%）比前段快，眼睛的追蹤角速度在各段之間沒有變化——越接近打者，追球越靠頭轉加快，而不是眼睛轉得更快。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 6 人、只量水平方向；摘要末句對『傳統視覺訓練』的評論屬作者延伸，不寫入（本題不給訓練建議）。與 F127-S006 同群。 覆核 V147（2026-11-13）：summary 的『越接近打者，追球越靠頭轉加快』改為：頭的水平轉速只在 61–80% 段顯著快於前段，最後一段六人中三人在擊球前停止轉頭。",
+      "author_cache": {
+        "file": "stw27/f127src/PMC6049917.xml",
+        "sha256_prefix": "4a07128a952b096a",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S008",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9744931/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fspor.2022.930295",
+      "title": "Optimal integration of kinematic and ball-flight information when perceiving the speed of a moving ball",
+      "publisher": "Frontiers in Sports and Active Living 4:930295（2022）；Nakamoto H、Fukuhara K、Torii T、Takamido R、Mann DL",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC9744931/fullTextXML，curl 預設標頭，200；本機去標籤成 PMC9744931.txt",
+      "reading_scope": "摘要、Results 全節、Discussion 前兩段讀完；Methods 只讀虛擬實境作業設計",
+      "locator": "Results 第一、二段（投球動作速度主效應、與球速交互作用、145 km/h 影響較大）；Exploratory analysis 段；Discussion 第 2 段（Takamido 等先前已示範，本篇在 VR 重現）",
+      "summary": "十三名大學打者在虛擬實境比較兩球誰快：兩球實際球速相同，只把投手動作放快或放慢。投手動作越快，打者越覺得球快，反之亦然；這個影響在 145 km/h 條件比 125 km/h 大（作者解讀為球速越快、球飛行資訊越不可靠，越倚重投手動作）。探索性分析顯示較常先發的打者較會依兩種資訊的可靠度來整合。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "投手動作影響球速判斷的現象，Takamido 等（同一網）先前已在影片作業示範，本篇新的是 VR 重現與 125／145 km/h 的差異；技能分組是探索性分析。VR 不是實戰。研究網 N5（Nakamoto／Mann 群，含 Takamido、Fukuhara）。",
+      "author_cache": {
+        "file": "stw27/f127src/PMC9744931.xml",
+        "sha256_prefix": "b9ab3afea6f45994",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S009",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11843826/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/vision9010008",
+      "title": "Ball-Flight Viewing Duration and Estimates of Passing Height in Baseball",
+      "publisher": "Vision 9(1):8（2025，MDPI）；Benson E、Toole AJ、Fogt N（俄亥俄州立大學驗光學院）",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC11843826/fullTextXML，curl 預設標頭，200；本機去標籤成 PMC11843826.txt",
+      "reading_scope": "摘要、Introduction 1.1 節開頭、Results 3.1–3.2 全文（表 2）、Discussion 4.1 節前段讀完；Methods 只讀受試者與作業",
+      "locator": "Abstract；Results 3.1 末段（250 ms 一律比 100 ms 低、較準）；3.2 與表 2（77 mph：31.0%／54.0%；61 mph：4.0%／18.0%；53 mph：0.5%／1.5%）；4.1 節第 1–2 段",
+      "summary": "二十名高中、大學棒壘球員站在 12.19 公尺外，氣動投球機以三種速度（53、61、77 mph）、固定小仰角射網球，出手後 100 或 250 ms 遮住視線，請受試者指出球會在多高通過。看得越久，估計越好；但只有最快（77 mph）且看 250 ms 的組合平均估得準；落在實測範圍內的比例在 77 mph 為 31.0%（100 ms）與 54.0%（250 ms），61 mph 為 4.0% 與 18.0%，53 mph 只有 0.5% 與 1.5%——越慢、落得越多的球越難從前段飛行判斷高度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "用網球、距離 40 呎、仰角固定且無投手動作，與真實棒球打擊條件差很多；『越慢越難』是本實驗設定下的結果，作者也提出可能是線性外插或閾下的視覺線索。研究網 N6（Fogt 群）。",
+      "author_cache": {
+        "file": "stw27/f127src/PMC11843826.xml",
+        "sha256_prefix": "a703f2ede8bc365a",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S010",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10113627/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fspor.2023.1092520",
+      "title": "Estimating flight trajectories of breaking balls from four-seam fastballs",
+      "publisher": "Frontiers in Sports and Active Living 5:1092520（2023）；Kimura A、Nakashima H、Kuroyanagi S、Ando Y、Liao P、Sakurai S（中京大學等）",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC10113627/fullTextXML，curl 預設標頭，200；本機去標籤成 PMC10113627.txt",
+      "reading_scope": "全文逐段讀完（Introduction、Methods、Results、表 1、Discussion、Limitations、Conclusion）；圖只讀說明",
+      "locator": "Methods 2.3–2.4（高速攝影量出手瞬間角速度並分解為倒旋／上旋、陀螺旋、側旋；升力式 Fl ∝ ω×V）；Results 表 1（四縫 ωx 150.7、曲球 −137.2、滑球 −48.9 rad/s；陀螺旋 ωy 100.2、111.3、190.6 rad/s）；Discussion 4.1、Limitations 第三點",
+      "summary": "四十三名業餘投手在牛棚投球，以 1000 fps 攝影量出手瞬間球的轉速向量，拆成倒旋／上旋、陀螺旋（轉軸朝前進方向）與側旋三分量，再代入含升力、阻力、轉速衰減的運動方程算到本壘的偏移。四縫快速球以倒旋為主（平均 150.7 rad/s），曲球是上旋（平均 −137.2 rad/s），滑球的陀螺旋分量最大（平均 190.6 rad/s），上下旋平均只有 −48.9 rad/s。模型裡升力方向由轉軸與速度的外積決定，轉軸與前進方向平行的陀螺旋不產生升力；結果四縫球偏向三壘與上方、曲球偏向一壘與下方，滑球上下方向可正可負。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "偏移量是模型算出，不是量到的軌跡；模型不含縫線方向與球面材質（作者 Limitations 第三點）；每人每球種只分析一球、業餘投手。『陀螺旋不產生升力』是本篇模型的前提（標準物理），不是本篇發現；本篇的事實是三種球的轉速分量與模型偏移方向。研究網 N7（Sakurai 群）。 覆核 V147（2026-11-13）：summary 加各球種人數（四縫 43、曲球 32、滑球 33）與投手組成（高中 18、大學 21、社會人 4）。",
+      "author_cache": {
+        "file": "stw27/f127src/PMC10113627.xml",
+        "sha256_prefix": "dc4b136ea0c5a193",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S011",
+      "url": "http://www.baseballprospectus.com/article.php?articleid=15919",
+      "canonical_url": "https://www.baseballprospectus.com/news/article/15919/baseball-proguestus-the-knuckleball-mystique-using-pitchfx-to-distinguish-perception-from-reality/",
+      "title": "The Knuckleball Mystique: Using PITCHf/x to distinguish perception from reality",
+      "publisher": "Baseball Prospectus（2012-01-31，免費文章）；Nathan AM",
+      "version": "網站文章（非同儕審查）；正式論文為 Procedia Engineering 34:116–121（2012），DOI 10.1016/j.proeng.2012.04.021，ScienceDirect 403 未讀",
+      "accessed_on": "2026-11-12",
+      "read_via": "SABR 頁（WebSearch 結果）內文所列連結，伺服器 301 轉到 baseballprospectus.com/news/article/15919/…，curl 預設標頭 200",
+      "reading_scope": "全文讀完（正文與文末讀者回應前段）",
+      "locator": "正文第 4–9 段（2011 年 4 場比賽原始追蹤資料、8 月 29 日一場 278 球中 77 球蝴蝶球；擬合 rms；蝴蝶球偏離平滑最多約 0.15 吋；追蹤精度約 0.3 吋）與結語段",
+      "summary": "Nathan 取得 2011 年四場有蝴蝶球投手（Dickey、Wakefield）的 PITCHf/x 原始追蹤點，把每一球擬合成平滑曲線並比較殘差：在追蹤精度（約 0.3 吋）內，蝴蝶球的軌跡和一般球一樣平滑，偏離平滑頂多約 0.15 吋；蝴蝶球難打難接，是因為每一球的位移大小與方向近乎隨機、無法預期，而不是飛行中『之字形亂飄』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "非同儕審查的網站文章，依本輪規則不算來源條數；同一研究的正式版（Procedia Engineering）在 ScienceDirect 回 403，依規不改抓。只當入口與未收紀錄（F127-NA001）。研究網 N1。",
+      "author_cache": {
+        "file": "stw27/f127src/bp_knuckle_15919.html",
+        "sha256_prefix": "3181c142b415b008",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S012",
+      "url": "https://www.jstage.jst.go.jp/article/jsmeshd/2022/0/2022_A-6-2/_article/-char/ja",
+      "canonical_url": "https://doi.org/10.1299/jsmeshd.2022.A-6-2",
+      "title": "ジャイロ回転する野球ボールのスパコンによる空力解析",
+      "publisher": "日本機械学会 スポーツ工学・ヒューマンダイナミクス2022 講演論文集 A-6-2；尹昱炜、青木尊之（東京工業大學）、渡辺勢也（九州大學）、丹羽政善、小林宏充（慶應義塾大學）",
+      "version": "J-STAGE 書誌頁（只有英文摘要；PDF 需購讀認證）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果所列 J-STAGE 頁，第一次 502、依 5xx 規則同連結重試一次 200；PDF 連結回『購読者認証』頁，未讀",
+      "reading_scope": "只讀摘要",
+      "locator": "抄録（英文摘要全段）",
+      "summary": "以格子波茲曼法 LES 模擬依 MLB 實際投球設定的陀螺旋球（二縫、四縫）與倒旋球：倒旋球因馬格努斯效應有縱向升力；陀螺旋球的升力隨時間週期變化、時間平均幾乎為零；縫線方向對空力與軌跡影響很大。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有摘要，不算條數；只用來在 not_added 記錄『陀螺旋時間平均升力近零』有獨立的數值研究可補。 覆核 V147（2026-11-13）：改為：WebFetch 一次 502 → curl 同網址兩次（502、200）；同一連結共試三次（重試兩次）。",
+      "author_cache": {
+        "file": "stw27/f127src/jstage_jsmeshd2022_A-6-2.html",
+        "sha256_prefix": "4918f797c52ccbe6",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S013",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5121640/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep37665",
+      "title": "Questioning the Mpemba effect: hot water does not cool more quickly than cold",
+      "publisher": "Scientific Reports 6:37665（2016）；Burridge HC、Linden PF（劍橋 DAMTP／帝國理工）",
+      "version": "出版社開放取用版（CC BY 4.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）fullTextXML，curl 預設標頭（200，97076 位元組），去標籤成 burridge2016.txt",
+      "reading_scope": "全文逐段讀完：摘要、引言、三段歷史文獻、近期研究回顧、Results 兩節、Discussion and Conclusions、Methods（兩種實驗、他人資料假設）、圖 1–3 說明、表 1；公式在 XML 中為圖檔未讀。",
+      "locator": "Methods『Experiments』第二段（400 g、21.8/57.3/84.7 °C、t0 = 6397/9504/10812 s）；Results『Analysis of the occurrence…』第二段與圖 3b 說明（高度誤差 1 cm）；Discussion 第一、二段（Vynnycky & Kimura 區間、Mpemba & Osborne 90 °C 30 分 vs 20 °C 100 分、47 年無人重現）；引言『Three widely cited historical references』",
+      "summary": "作者把姆潘巴效應限定為『冷到 0 °C 平均溫度』：自做的三杯（同為 400 g、煮過）放進 −18 °C 冰櫃，越熱的越晚到 0 °C；第二種實驗不讓結冰。把他人資料全畫在一張圖，大多落在『沒有效應』那側，少數『有效應』的點都只略高於線，而他們自己的資料只要溫度計高度記錯 1 cm 就會落進同一區；唯一遠離線的是 Mpemba & Osborne 1969（90 °C 30 分鐘到冰點、20 °C 100 分鐘），47 年來無人重現，作者判為不可靠。結論：以冷到 0 °C 定義不存在；含結冰過程也沒有任何研究能重複觀察到。另引亞里斯多德、培根、笛卡兒原文與 Mpemba 冰淇淋故事。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池中 SRC-85078aa2c1e83fec 同一網址（LEG-S49 的歷史查核來源，當時未讀頁），覆核可改記為該來源新增一筆 reading。作者自訂定義（只算冷到 0 °C）；Katz 2017 回覆（F131-S007）正是質疑此定義。Mpemba & Osborne、Vynnycky & Kimura 的數字是本篇轉述與重讀他人圖，不是本篇量測。研究群：Burridge 群（Burridge、Linden），封頂 2.0。 覆核 V151（2026-11-13）：limitations 補：同一篇另有池中 SRC-e89e1d4ab753e3d9（PMC 頁）、SRC-f9293bffdd046cf8（PubMed 27883034）、SRC-afe9201bc06accf9（網址黏接錯誤的舊紀錄），不只 SRC-85078aa2c1e83fec；並註明 docs/videos/so-thats-why/season2/S49.md 已用本篇做成六章 480 秒的文字製作包（PASS／TEXT_ONLY），講『冷到 0 °C 與結冰是不同終點、量測高度』。 覆核 V151（2026-11-13）：limitations 補：引言寫 Katz 的凍結前緣模型『unable to predict the effect』。",
+      "author_cache": {
+        "file": "stw27/f131src/burridge2016.xml",
+        "sha256_prefix": "388e80de5c3f9f5c",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S014",
+      "url": "https://arxiv.org/pdf/1003.3185v1",
+      "canonical_url": "https://arxiv.org/abs/1003.3185v1",
+      "title": "A search for the Mpemba effect: When hot water freezes faster then cold water",
+      "publisher": "arXiv:1003.3185v1（2010）；Brownridge JD（賓漢頓大學）；正式版為 Am. J. Phys. 79:78（2011，本輪未讀）",
+      "version": "arXiv 預印本 v1（作者稿）",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API 搜尋結果（all:mpemba AND all:water）→ abs 頁上的 /pdf 連結，curl 預設標頭（200），pdftotext 轉文字",
+      "reading_scope": "全文逐段讀完（第 1–15 頁正文、Experiment 1–9、結論、參考文獻）；附錄 Supplemental Information（第 16–25 頁）只略讀圖說。",
+      "locator": "Experiment 2（138 次、−11.80 ± 0.17 °C）；Experiment 3（冰櫃霜、圖 9–10）；Experiment 4（銅塊四孔、約 50%）；Experiment 8（28/28、約 5.5 °C）；XIII Conclusions",
+      "summary": "同一支封在玻璃管裡的 1 mL 蒸餾去離子水，隨機加熱到約 8–103 °C 再冷卻，共 138 次，平均自發結冰溫度 −11.80 ± 0.17 °C，越熱的越晚結冰，沒有姆潘巴效應（自來水另一組也沒有）。放在結霜冰櫃地板上，熱杯融掉底下的霜、接觸變好而先結冰；墊上隔熱板後改成冷的先結冰。四杯放在同一銅塊上，溫度一拉平就以同速降到 0 °C。挑兩支『自發結冰溫度』相差約 5.5 °C 的管子，讓結冰溫度較高的那支加熱到約 100 °C，連續 28 次都比冷的那支先結冰。結論：只有在兩邊都過冷、而且冷的那杯結冰溫度低好幾度時，熱水才會先結冰；加熱可能讓結冰溫度變高、變低或不變。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "預印本，正式期刊版未比對；28/28 是作者刻意挑選結冰溫度不同的兩管，不代表一般情況；『結冰』定義為潛熱開始釋出。研究群：Brownridge 群（併 F131-S003 的 Zinet、Sotta、Ganachaud），封頂 2.0。 覆核 V151（2026-11-13）：summary 補 Experiment 8 的試管是 10 mL 融雪水（Experiment 7 加過生物冰核），Experiment 2 才是 1 mL。",
+      "author_cache": {
+        "file": "stw27/f131src/1003.3185v1.pdf",
+        "sha256_prefix": "f61772bc9ff53d06",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S015",
+      "url": "https://arxiv.org/pdf/2503.18820v2",
+      "canonical_url": "https://arxiv.org/abs/2503.18820v2",
+      "title": "Unraveling Specific Conditions for a Repeatable Mpemba Effect",
+      "publisher": "arXiv:2503.18820v2（2025）；Brownridge JD、Zinet M、Sotta P、Ganachaud F（賓漢頓大學／INSA 里昂 IMP）；Europe PMC 列為 J Phys Chem B（2025，PMID 41370669，非開放，本輪未讀）",
+      "version": "arXiv 預印本 v2（作者稿）",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API 搜尋結果 → abs 頁 /pdf 連結，curl 預設標頭（200），pdftotext",
+      "reading_scope": "正文逐段讀完：摘要、引言、Experimental section、Results（裝置與重現性、資料、熱傳評估）、Simulation 全節、Discussion、Conclusion；補充資料（Figure S1–S7、Table S1–S5）未讀。",
+      "locator": "Results『Experimental setup and robustness』第二段（53 g → 46.7／49.4 g）；『Data buildup』；『Heat transfer assessment』第二段（十四烷 76.4 ± 3.0 vs 81.8 ± 2.0 分鐘）；Simulation『Simulated data buildup』（60 °C 差約快 13 分鐘、起凍延後最多 34.25 分鐘）；Discussion 末段（排除氫鍵假說）",
+      "summary": "在冰櫃頂上開孔放液態氮杯，讓室內水氣在杯子周圍形成大量冰晶，消除過冷；兩杯懸空、溫度計固定在水面正下方中央。結果：熱杯『開始結冰』一定比較晚，但『從開始結冰到結完』這段比較短，初溫差越大越明顯；空白對照兩杯同溫時結冰時間相同；熱杯與室溫杯的蒸發損失接近（53 g 降到 46.7 與 49.4 g），作者據此排除蒸發。換成非極性的十四烷也一樣：80 °C 杯 76.4 分鐘、室溫杯 81.8 分鐘（各 8 次）。模擬顯示原因是兩杯錯開放熱：熱杯晚開始結冰時，冷杯已結完、周圍空氣更冷，熱杯散熱更快；作者因此認為與水的氫鍵無關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "預印本、與正式版未比對；『結冰時間』只指起凍到結完（不含冷到 0 °C 的時間），熱杯總時間不一定較短，不得說成『熱水比較早變成冰』；模擬是 2D 假想幾何。與 F131-S002 同一 Brownridge 群，合計封頂 2.0。 覆核 V151（2026-11-13）：summary 改『冷杯已結完』為『冷杯已降到約 0 °C、放熱變少，周圍空氣也較冷』；『蒸發損失接近』改為『作者認為兩杯損失相近（53 g→熱杯 46.7 g、室溫杯 49.4 g）而排除蒸發』；補 60 °C 以上偶有 −0.5 到 −1 °C 輕微過冷；補摘要『confirms the original study of Mpemba and Osborne』是作者主張；locator 補 Europe PMC PMID 41370669。",
+      "author_cache": {
+        "file": "stw27/f131src/2503.18820v2.pdf",
+        "sha256_prefix": "1e34f00a0ea30c8e",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S016",
+      "url": "https://arxiv.org/pdf/2508.05607v1",
+      "canonical_url": "https://arxiv.org/abs/2508.05607v1",
+      "title": "The Mpemba Effect in Pure Water Has a Stochastic Origin. Experimental and Theoretical Resolution of the Paradox",
+      "publisher": "arXiv:2508.05607v1（2025）；Klimov AA、Finkelstein AV（俄羅斯科學院蛋白質研究所，Pushchino）",
+      "version": "arXiv 預印本 v1（未經同儕審查；Europe PMC 另列 preprints.org 2026 版本，未讀）",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API 搜尋結果 → abs 頁 /pdf 連結，curl 預設標頭（200），pdftotext",
+      "reading_scope": "全文逐段讀完（正文、公式推導、圖 1–4 說明、Methods、致謝與參考文獻前段）。",
+      "locator": "正文第 2 段（−7 °C 以上約三分之一、−8 °C 以下從未）；Eq. 6 後一段（minutes／weeks／ages）；圖 4 說明（落後 500–1000 秒）；Methods（2 mL 管、4 熱 70 °C／4 冷 20 °C 交錯排列、Sylgard 塗層）",
+      "summary": "四管 70 °C 與四管 20 °C 的蒸餾水交錯掛在同一個冰櫃內箱。冰櫃設在 −7 °C 以上時，各管開始結冰的時間散得很開，熱管冷卻的落後（約 500–1000 秒）常被蓋過，約三分之一的配對出現熱水先結冰；冰櫃低於 −8 °C 時散布很小，從未出現。理論估算：約 1 mL 的水在牆邊冒出第一個冰核所需時間，在 −7 °C 是幾分鐘、−6 °C 是幾週、−5 °C 是永遠，等待時間的散布隨溫度接近 0 °C 指數變大。作者結論：純水的姆潘巴效應來自結冰起點的隨機性；但不否認其他系統的姆潘巴效應。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "未經審查的預印本；『結冰』指開始結冰；理論是作者估算（N、τ、T* 取值），不得說成量測。P. syringae 一段是作者推測，不寫入。研究群：Finkelstein 群，封頂 2.0（本題用 1.0）。 覆核 V151（2026-11-13）：limitations 補：Europe PMC 列同作者 2026 年 preprints.org 新稿（PPR1345565，DOI 10.20944/preprints202610.1842.v1，標題 Accidental Origin…Reversals in the Freezing Order are Stochastic）與 Finkelstein 單著 PPR1357919，未讀；『−7 °C』在 Eq. 6 是水溫、在實驗是冰櫃溫度。",
+      "author_cache": {
+        "file": "stw27/f131src/2508.05607v1.pdf",
+        "sha256_prefix": "c069f51c19452112",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S017",
+      "url": "https://arxiv.org/pdf/2008.02373v1",
+      "canonical_url": "https://doi.org/10.1038/s41586-020-2560-x",
+      "title": "Exponentially faster cooling in a colloidal system",
+      "publisher": "Nature 584:64–68（2020）；Kumar A、Bechhoefer J（西門菲沙大學）；本筆讀 arXiv:2008.02373v1 作者稿",
+      "version": "arXiv 預印本 v1（arXiv 標記 journal_ref 為 Nature 584, 64-68）",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API 搜尋結果 → abs 頁 /pdf 連結，curl 預設標頭（200），pdftotext",
+      "reading_scope": "正文逐段讀完（摘要、定義、實驗方法、圖 1–5 說明、eigenfunction 分析、Strong Mpemba effect、Discussion）；Methods 讀到 Setup 與位能參數（Ebarrier = 2、ΔE = 1.3、xm = 40 nm），其後的統計推導略讀。",
+      "locator": "『Definition of the Mpemba effect』；『Observation of the Mpemba effect in asymmetric domains』（α = 1、3、9）；圖 2 說明（Th = 1000、Tw = 12、Tc = 1、N = 1000）；『Strong Mpemba effect』（α = 3、pr0 ≈ 0.7、Kramers 因子約 7）；Discussion 第二段",
+      "summary": "一顆 1.5 μm 的矽珠在水中，以光鉗回饋做出傾斜雙井位能（兩井相距 80 nm）；『初溫』是讓珠子起始位置照較高溫度的波茲曼分布抽樣，之後一律泡在室溫水中。每種初溫重複 1000 次。結果：位能放在對稱盒子（α = 1）時越熱越慢；盒子不對稱時，『熱』（1000 倍浴溫）比『溫』（12 倍）先到平衡；在 α = 3 時最慢的那個衰減模態完全不被激發，冷卻快了指數級（強姆潘巴效應）。物理圖像：熱的起點近乎均勻分布，若落在深井那側的比例剛好等於平衡時的比例（約 0.7），粒子一滾進各自的井就已平衡，不必再慢慢翻越位障。作者強調系統沒有相變。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "『溫度』是起始分布的參數，不是把水加熱；與冰無關，只在片中當『姆潘巴效應在定義清楚時是真的』的證據。研究群：Bechhoefer 網（Bechhoefer 與 Raz、Lasanta、Vucelja、Teza 合著 2025 綜論，並併 F131-S006），封頂 2.0。 覆核 V151（2026-11-13）：limitations 補：與池中 SRC-394b5f96558a104e（https://pubmed.ncbi.nlm.nih.gov/32760048/，LEG-S49 舊查核包）是同一篇論文；summary 的『位能放在對稱盒子』要寫成『雙井位能不變、粒子活動範圍（盒子）對稱』。",
+      "author_cache": {
+        "file": "stw27/f131src/2008.02373v1.pdf",
+        "sha256_prefix": "d479ca229ce95e8f",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S018",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8812517/fullTextXML",
+      "canonical_url": "https://doi.org/10.1073/pnas.2118484119",
+      "title": "Anomalous heating in a colloidal system",
+      "publisher": "PNAS 119(5):e2118484119（2022）；Kumar A、Chétrite R、Bechhoefer J",
+      "version": "出版社開放取用版（CC BY-NC-ND 4.0，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML，curl 預設標頭（200，145132 位元組），去標籤",
+      "reading_scope": "讀完 Significance、摘要、引言、Experimental Setup、Experimental Protocol、Inverse Mpemba Effect in an Asymmetric Potential；High–Bath Temperature Limit 之後的解析推導與 Discussion 略讀。",
+      "locator": "Significance；『Inverse Mpemba Effect in an Asymmetric Potential』第二段（10−3 > T0/Tb > 4×10−5）；Experimental Protocol（N = 5000、60 ms）",
+      "summary": "同一套光鉗膠體系統反過來做『加熱』：起始溫度遠低於浴溫時，在 10−3 > T0/Tb > 4×10−5 這段，越冷的起點越快熱到平衡（反向姆潘巴效應）；更冷或更溫都恢復正常；每個起點重複 5000 次。作者說熵的效應讓反向效應一般比冷卻版更弱、更難觀察，並看到熱快了指數級的強版本。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F131-S005 同一 Bechhoefer 網，合計封頂 2.0；『溫度』同樣是起始分布的參數。",
+      "author_cache": {
+        "file": "stw27/f131src/kumar2022.xml",
+        "sha256_prefix": "d3fbb00068cdc178",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S019",
+      "url": "https://arxiv.org/pdf/physics/0604224v1",
+      "canonical_url": "https://doi.org/10.1119/1.2996187",
+      "title": "When hot water freezes before cold（及 Reply to Burridge & Linden: Hot water may freeze sooner than cold, arXiv:1701.03219v2）",
+      "publisher": "Am. J. Phys. 77:27–29（2009）作者稿 arXiv:physics/0604224v1；回覆稿 arXiv:1701.03219v2（2017，未見正式刊出紀錄）；Katz JI（聖路易華盛頓大學）",
+      "version": "arXiv 預印本（兩篇）",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API 搜尋結果 → 各自 abs 頁 /pdf 連結，curl 預設標頭（200），pdftotext；回覆稿快取 1701.03219v2.pdf（sha256 0baae6ee0085a447）",
+      "reading_scope": "兩篇全文逐段讀完（2006 稿 7 頁含計算；2017 回覆 4 頁）。",
+      "locator": "2006 稿：硬水段落（Ca(HCO3)2、100 ppm、5 mmolar → 凍結變慢 10%）、末段可檢驗預測；2017 回覆：摘要與 Discussion（B&L 樣品都先煮過）",
+      "summary": "Katz 的假說：多數天然水是硬水，含碳酸氫鈣；加熱會讓它析出成水垢，水變軟。沒加熱過的水在結冰時，溶質被推擠堆在冰前緣，壓低冰前緣的凝固點、減少熱流，使結冰變慢；他估算 5 mmolar 離子濃度約讓凍結速率慢 10%，並預測只有硬水才有姆潘巴效應。2017 年他回覆 Burridge & Linden：姆潘巴效應講的是結冰不是冷卻，而且對方的水都先煮過，照他的假說本來就看不到；預測仍待實驗。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是理論假說與作者自己的估算，不是量測；Brownridge 2010（F131-S002 Experiment 5）以煮過與沒煮過的硬井水比較，只量到冷到 0 °C 的速率沒差、0 °C 以下的差異與初溫無關，並未直接檢驗凍結速率，兩者不可寫成『已被推翻』。研究群：Katz（獨著），封頂 2.0。",
+      "author_cache": {
+        "file": "stw27/f131src/physics_0604224v1.pdf",
+        "sha256_prefix": "253fab40c982f6bd",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S020",
+      "url": "https://arxiv.org/pdf/2609.08535v1",
+      "canonical_url": "https://doi.org/10.1063/5.0325199",
+      "title": "Memory Control of Ice Growth During Non-Equilibrium Freezing of Water",
+      "publisher": "J. Chem. Phys. 164(21):214302（2026）；Hazarika A、Punnathanam SN、Bagchi B、Maiti PK（印度科學研究院）；本筆讀 arXiv:2609.08535v1",
+      "version": "arXiv 預印本 v1（arXiv 標記 journal_ref 為 J. Chem. Phys. 2026）",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API 搜尋結果 → abs 頁 /pdf 連結，curl 預設標頭（200），pdftotext",
+      "reading_scope": "讀完摘要、引言、Methods 2.1–2.4、Results 3.1、3.2（含與 TMD 的討論）；3.3 之後的環結構交叉相關與 Conclusion 只略讀關鍵字前後。",
+      "locator": "2.2 Heating and quenching protocol（淬冷到 250 K、180 ns）；3.1（Ti = 275–360 K 各 20 次；單次例 280/300/320 K = 113/123/119 ns；平均在 300 K 最慢）；3.2 末段（TIP4P/Ice 的最大密度溫度約 295 K）",
+      "summary": "分子動力學模擬：一塊冰與液態水接觸，先把水調到 275–360 K 不同初溫，再瞬間降到 250 K 讓冰長滿，每個初溫跑 20 次。完全結凍所需時間隨初溫不單調：在 300 K 最久、往更冷或更熱都變短，所以模擬中較熱的水可以比較冷的水先凍好。作者用水的氫鍵五元環當作『動力學陷阱』與記憶核分析解釋，並指出此模型的最大密度溫度約 295 K、接近最慢點。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "奈秒級、約 3000 個分子、已有冰種的長冰模擬，不含成核、也不是杯子實驗，不能直接對應冰箱裡的時間；作者說趨勢與 Mpemba 原報告『定性一致』。研究群：IISc（Maiti／Bagchi），封頂 2.0。",
+      "author_cache": {
+        "file": "stw27/f131src/2609.08535v1.pdf",
+        "sha256_prefix": "2d8ab2d448990005",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S021",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8664840/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41467-021-27568-y",
+      "title": "Emergence of the London Millennium Bridge instability without synchronisation",
+      "publisher": "Nature Communications 12:7223（2021）；Belykh I、Bocian M、Champneys AR、Daley K、Jeter R、Macdonald JHG、McRobie A（喬治亞州立大學、弗羅茨瓦夫理工、萊斯特、布里斯托、劍橋）",
+      "version": "出版社開放取用版（CC BY 4.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC8664840/fullTextXML，curl 預設標頭，200；本機去標籤稿 PMC8664840.txt；另存去 LaTeX 稿 PMC8664840.clean.txt",
+      "reading_scope": "讀完 Introduction、表 1 與表 2、Results 全部小節（Review of observational and experimental evidence、Analytical prediction、Simulation results、Frequency dependence、The role of foot placement strategies）、圖 1–6 說明、Discussion 全文。Methods 的模型方程與 Supplementary Information 未讀。",
+      "locator": "Introduction 第 1–3 段；表 1（Toda Park Bridge 列、Clifton 列）；Results『Review of observational…』第 1–2、4、7 段；『Analytical prediction』與圖 1 說明；『Simulation results』末兩段；『Frequency dependence』Ncrit 段；Discussion 第 1–3 段",
+      "summary": "作者回顧約 30 座曾被行人晃動的橋與實驗、加上三種行人模型的模擬，主張千禧橋開幕日的側向不穩定是行人為了保持平衡、平均起來對橋施加『負阻尼』造成；腳步同步是晃起來之後的結果，不是原因。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "回顧加模擬的論文，不是新的實測；各橋的觀測（表 1、表 2）是引用他人報告，片中說『這篇回顧整理』；表 1 把『≤20% 同步』放在 Toda Park 列（引 ref 40），但 Introduction 說『最確定的研究估計只有 20%』時引 ref 25，而正文把 ref 25 標給 Maple Valley 橋，兩處對不上，片中只照表 1 寫『戶田公園橋的錄影估計最多兩成』，並註明出自本篇整理；表 2 有傷亡數字的事件一律不用；Josephson 的引述（在世人物）不用。研究網 A（與 F132-S002、Strogatz 2005 同網）。 覆核 V152（2026-11-13）：limitations 補：引言『almost 30 bridges』與正文『at least 30』並存，片中說『約 30 座』；表 1 Maple Valley 標 ref 66、正文標 ref 25，『最確定的研究兩成』與表 1『Toda ≤20%』出處矛盾。",
+      "author_cache": {
+        "file": "f132src/PMC8664840.xml",
+        "sha256_prefix": "523d8e53cba41160",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S022",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5180595/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.engstruct.2015.09.043",
+      "title": "Experimental identification of the behaviour of and lateral forces from freely-walking pedestrians on laterally oscillating structures in a virtual reality environment",
+      "publisher": "Engineering Structures 105:62 起（2015）；Bocian M、Macdonald JHG、Burn JF、Redmill D（布里斯托大學）",
+      "version": "出版社開放取用版（CC BY，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC5180595/fullTextXML，curl 預設標頭，200；本機去標籤稿 PMC5180595.txt",
+      "reading_scope": "讀摘要、Introduction 第 1 段、Conclusions 全文；Methods 與 Results 的數值表只略讀關鍵字附近，未逐段讀。",
+      "locator": "Abstract；Conclusions 第 2、4 段",
+      "summary": "布里斯托團隊讓受試者在會左右晃的跑步機上自由走路（跑帶速度跟著人走、配合虛擬實境看見一座橋），確認人在晃動地面上主要靠調整步寬維持平衡；看見『橋』的畫面時，人施加在地面的自激力與只看實驗室時有顯著差別。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀結論層級，不寫具體力量數值；與 F132-S001 同一研究網 A（Bocian、Macdonald 為共同作者），合計封頂 2.0。 覆核 V152（2026-11-13）：limitations 補：Conclusions 同段寫 ground motion＋VR 時 gait cycle duration、stride length、walking velocity 有顯著差異；Results 的『walking frequency little affected』作者未讀。",
+      "author_cache": {
+        "file": "f132src/PMC5180595.xml",
+        "sha256_prefix": "7bef11bbdb52b7f9",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S023",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5843762/fullTextXML",
+      "canonical_url": "https://doi.org/10.2183/pjab.94.008",
+      "title": "Vibration-based monitoring for performance evaluation of flexible civil structures in Japan",
+      "publisher": "Proceedings of the Japan Academy, Ser. B 94(2):98 起（2018）；Fujino Y（橫濱國立大學）",
+      "version": "PMC 收錄全文（期刊開放取用）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC5843762/fullTextXML，curl 預設標頭，200；本機去標籤稿 PMC5843762.txt",
+      "reading_scope": "讀摘要、第 1 節，第 4.1 節『Case 1: Pedestrian-induced vibration』全文（含圖 34、35 說明）；其餘風振、地震章節只略讀標題。",
+      "locator": "§4.1 第 1–5 段；圖 34 說明",
+      "summary": "藤野陽三回顧自己團隊在戶田公園橋的觀測：賽艇散場時兩、三萬名觀眾在短時間內過橋，橋面花幾分鐘慢慢晃起來、約 1 Hz；裝攝影機分析個別行人的步伐後，認為人的步伐會與橋的側晃同步，晃得越大、同步的人越多。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者回顧自己 1990 年代的研究，原始論文（Fujino 等 1993）未讀；本文採『同步是原因』的看法，與 F132-S001 相反，片中兩說並陳；日本的人行橋設計規定（垂直頻率避開 1.7–2.5 Hz）只當背景，不評價。研究網 B。 覆核 V152（2026-11-13）：limitations 補：原文『it is believed that this force cannot excite bridges to significant amplitudes』沒有『除非 1 Hz』的條件；原文沒有『第一次』。",
+      "author_cache": {
+        "file": "f132src/PMC5843762.xml",
+        "sha256_prefix": "87e45dddca2bdc17",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S024",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11054870/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/s24082517",
+      "title": "Experimental Evaluation of Pedestrian-Induced Multiaxial Gait Loads on Footbridges: Effects of the Structure-to-Human Interaction by Lateral Vibrating Platforms",
+      "publisher": "Sensors 24(8):2517（2024）；Castillo B、Marulanda J、Thomson P（哥倫比亞山谷大學）",
+      "version": "出版社開放取用版（CC BY 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC11054870/fullTextXML，curl 預設標頭，200；本機去標籤稿 PMC11054870.txt",
+      "reading_scope": "讀摘要、Introduction 全文、§2.1–2.2、§3 支撐期與擺動期段（含與前人比較段）、Conclusions 全文；載重迴歸的圖表數值未逐一讀。",
+      "locator": "Abstract；§3 Tsu／Tsw 段（『decreases of up to 96.53% and 58.15%』）；Conclusions 第 2–3 點",
+      "summary": "七名男性受試者在左右晃動（5–50 mm、0.70–1.30 Hz）的跑步機上走路：與硬地相比，腳著地（支撐）與擺動的時間最多分別縮短 96.53% 與 58.15%；側向力隨晃動頻率線性增加，晃得越大斜率越大。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "樣本 7 人、全為男性；『最多』是個別受試者在某些組合的極端值，不是平均；Introduction 對千禧橋的描述採同步說，是引用前人，不算本篇結果。研究網 C（與 F132-S005 同群）。 覆核 V152（2026-11-13）：limitations 補：96.53%／58.15% 是個別受試者在某些組合相對自身硬地平均的最大降幅；本題不再引用（F132-006 刪）。",
+      "author_cache": {
+        "file": "f132src/PMC11054870.xml",
+        "sha256_prefix": "7179d22ba7aafa60",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S025",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13469480/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/s26154780",
+      "title": "Experimental Assessment of Human-Structure Interaction in an Urban Pedestrian Footbridge with Multiaxial Dynamic Sensitivity",
+      "publisher": "Sensors 26(15):4780（2026）；Castillo B、Arango AL、Marulanda J、Caprani C、Thomson P（山谷大學、蒙納許大學）",
+      "version": "出版社開放取用版（CC BY 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC13469480/fullTextXML，curl 預設標頭，200；本機去標籤稿 PMC13469480.txt",
+      "reading_scope": "讀 Highlights、摘要、橋的描述（§2 前段）、步行試驗設計段與表 3、Results 中阻尼與加速度兩段、Conclusions 全文。模態識別方法與有限元素模型段只略讀。",
+      "locator": "Abstract；§2 橋梁描述段（84.0 m、主跨 70.0 m）；『Gait Tests on Premier Footbridge』段；Conclusions 第 2–4 段",
+      "summary": "在哥倫比亞卡利一座仍在使用的人行橋（Premier，側向 1.07 Hz、垂直 1.98 Hz）上做 25 組步行試驗，最高密度每平方公尺 0.358 人：橋的阻尼比隨人數增加（最高密度時同步組 +78.6%、自由走 +70.0%），但振動仍隨人數變大；用節拍器讓人以約 2 Hz 齊步時，密度超過 0.10 人／m² 後側向加速度呈非線性上升，自由走與亂走大致線性。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "『同步』是實驗者用節拍器強制的，不是人群自發同步；密度只到低至中等（≤0.358 人／m²），遠低於千禧橋開幕日；阻尼增加的趨勢來自非線性擬合。與 F132-S004 同一研究網 C，合計封頂 2.0。 覆核 V152（2026-11-13）：limitations 補：同步組違反 OMA 白雜訊假設，阻尼為『apparent』；擬合趨勢『indicative』；0.256 人／m² 以下兩組阻尼相近；結果（阻尼增加、節拍器同步組加速度急升）與 F132-S001 的負阻尼說不一致。",
+      "author_cache": {
+        "file": "f132src/PMC13469480.xml",
+        "sha256_prefix": "1eb88e9875c55294",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S026",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5242471/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0169924",
+      "title": "Walking on a Vertically Oscillating Treadmill: Phase Synchronization and Gait Kinematics",
+      "publisher": "PLoS ONE 12(1):e0169924（2017）；Nessler JA、Heredia S、Bélair J、Milton J（加州州立大學聖馬可斯、蒙特婁大學、克萊蒙特）",
+      "version": "出版社開放取用版（CC BY 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC5242471/fullTextXML，curl 預設標頭，200；本機去標籤稿 PMC5242471.txt",
+      "reading_scope": "讀摘要、Methods 的受試者與流程段、Results 前三段、Discussion 全文；Weibull 擬合細節只略讀。",
+      "locator": "Abstract；Methods『Subjects』；Results 第 1 段（laminar phase 定義）；Discussion 第 1–2 段",
+      "summary": "31 名受試者在上下晃動的跑步機上走路：當晃動頻率等於自己的步幅或步伐頻率時，人會不自覺地跟著同步，但只是一陣一陣的（間歇鎖相）；同步時間占比最高 78.6±8.3%，高於作者先前報告的並肩走路資料 59.2±17.4%；每段鎖相平均 11.85 步對 5.18 步。2:1 的鎖相比 1:1 撐得久。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "晃動是上下、不是左右，與千禧橋的側晃不同；並肩走路的比較數字是作者先前的資料；結論段的臨床應用不寫。研究網 D。",
+      "author_cache": {
+        "file": "f132src/PMC5242471.xml",
+        "sha256_prefix": "5c72e71fe6faaa4a",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S027",
+      "url": "https://arxiv.org/pdf/physics/0408101v1",
+      "canonical_url": "https://arxiv.org/abs/physics/0408101",
+      "title": "Tacoma Bridge Failure – a Physical Model",
+      "publisher": "arXiv physics/0408101（2004）；Green D、Unruh WG（英屬哥倫比亞大學）",
+      "version": "arXiv 預印本 v1",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API（文件記載）查詢結果列出的 PDF 連結，curl 預設標頭 200；pdftotext 轉文字",
+      "reading_scope": "讀 I. Introduction、II. Historical misconceptions、III. Vortices again? 全文；後面的模型推導與數值結果未讀。",
+      "locator": "第 1–4 頁（§I–§III）",
+      "summary": "作者指出塔科馬海峽橋常被課本說成『共振』，但在 42 mph 風速下，橋的渦流脫落（Strouhal）頻率約 1 Hz，遠離當天觀測到的約 0.2 Hz 扭轉，渦街不可能造成共振；當天上午約 10 點，橋從已晃了數小時的上下波動突然轉成劇烈扭轉，風速變化不大；1941 年調查報告已量到風造成的阻尼在臨界風速由正轉負。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "預印本，未查是否正式出版；1941 報告與 Billah & Scanlan 的內容是本篇引用，片中掛回 F132-S015 原文；約 13 英尺扭幅、11:10 斷裂等時間點與 WSDOT 頁（10:30 落下一塊橋面）不完全一致，片中不報幾點幾分。研究網 E。",
+      "author_cache": {
+        "file": "f132src/arxiv_physics_0408101v1.pdf",
+        "sha256_prefix": "e1fc8d4b1a247aeb",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S028",
+      "url": "https://arxiv.org/pdf/1508.03200v1",
+      "canonical_url": "https://arxiv.org/abs/1508.03200",
+      "title": "Torsional instability in suspension bridges: the Tacoma Narrows Bridge case",
+      "publisher": "arXiv 1508.03200（2015）；Arioli G、Gazzola F（米蘭理工）",
+      "version": "arXiv 預印本 v1",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API 查詢結果列出的 PDF 連結，curl 預設標頭 200；pdftotext 轉文字",
+      "reading_scope": "讀摘要、§1 Introduction 全文、§2.1；§3–4 的數學推導未讀，§5 結論只讀 Introduction 的預告段。",
+      "locator": "Abstract；§1 第 1–5 段",
+      "summary": "作者整理各種氣動彈性解釋（渦流、參數共振、顫振）互相批評、沒有一種被一致接受，並提出另一種說法：扭轉不穩定可以純由結構的非線性產生——當天觀測到的 8–9 個節點、約 4 m 的上下波動，在他們的模型裡就容易轉成扭轉。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是數學模型、忽略了氣動力與阻尼（作者自承），只能當『至今仍有爭議』的一方，不當定論；1 Hz 對 0.2 Hz 是引用 Scanlan，不重算。研究網 F。 覆核 V152（2026-11-13）：limitations 補：『amplitudes of about 4m』與 F132-S007 的『1.5 feet or so』相差近十倍，定義（§3–5）未讀，片中不用。",
+      "author_cache": {
+        "file": "f132src/arxiv_1508.03200v1.pdf",
+        "sha256_prefix": "ceeb42bc2c9d85ad",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S029",
+      "url": "https://arxiv.org/pdf/1109.6640v4",
+      "canonical_url": "https://arxiv.org/abs/1109.6640",
+      "title": "Self-oscillation",
+      "publisher": "arXiv 1109.6640v4（2012 年 12 月修訂版；期刊版未查）；Jenkins A（佛羅里達州立大學）",
+      "version": "arXiv 預印本 v4",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API 查詢結果列出的 PDF 連結，curl 預設標頭 200；pdftotext 轉文字（xref 警告，文字可讀）",
+      "reading_scope": "讀摘要、§I、§III.A–C（強迫共振、對振子做功、流致不穩定，含塔科馬與千禧橋兩段與註 16）；其餘章節未讀。",
+      "locator": "Abstract；§III.C『Flow-induced instabilities』塔科馬與千禧橋兩段",
+      "summary": "回顧文章：自激振盪是驅動力由振動本身控制、與速度同相、等於負阻尼，不需要外力的節奏剛好對上共振頻率；塔科馬與千禧橋都被作者歸為自激振盪，鐘擺鐘、拉弓的樂器也是。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "回顧，橋的內容引用 Billah & Scanlan 與 Green & Unruh；只算『自激振盪』這個概念的定義，0.25；註 16 有動物死亡細節，不用。研究網 G。",
+      "author_cache": {
+        "file": "f132src/arxiv_1109.6640v4.pdf",
+        "sha256_prefix": "0263f11a9f086f1e",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S030",
+      "url": "https://wsdot.wa.gov/TNBhistory/bridges-failure.htm",
+      "canonical_url": "https://wsdot.wa.gov/TNBhistory/bridges-failure.htm",
+      "title": "Tacoma Narrows Bridge history - Bridge - Lessons from failure",
+      "publisher": "華盛頓州交通廳（WSDOT）",
+      "version": "機構網頁（未標更新日期）",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果原網址，curl 預設標頭 200；本機存 htm 與去標籤稿",
+      "reading_scope": "整頁讀完。",
+      "locator": "『First investigations』『Blind spot』『Suspension bridge design since 1940』『Why did Galloping Gertie collapse?』各段",
+      "summary": "州交通廳說明：1941 年 3 月聯邦調查委員會把原因歸於『亂流的隨機作用』、指出橋過度柔軟，關鍵轉折是北側主纜中央的索夾滑動；主流解釋是『扭轉顫振』——渦流脫落先鎖上橋的扭動，再轉入自我激發的顫振；通常渦流脫落發生在每小時 25–35 英里、扭轉顫振要到約 100 英里，這座橋兩者都在低風速出現；確切成因至今沒有一致結論；現在用聯邦經費蓋的橋，初步設計須先做三維模型風洞試驗。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "機構通俗頁；第 1 點寫『depth-to-width ratio 1 to 72』，與同站 1940-bridge 頁『主跨對寬度 1:72』不一致，片中只用後者；Farquharson 的『共振』說法是當年觀點，片中標明。研究網 H（與 F132-S011、S012 同為 WSDOT）。 覆核 V152（2026-11-13）：limitations 補：WSDOT 的扭轉顫振解釋含『vortex lock-on』一步，與 F132-S014 第 130 頁『與交替渦流共振非常不可能』有張力，片中並陳。",
+      "author_cache": {
+        "file": "f132src/wsdot_bridges-failure.htm",
+        "sha256_prefix": "37e4c7421186fd59",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S031",
+      "url": "https://wsdot.wa.gov/tnbhistory/tale-of-three-bridges-1940.htm",
+      "canonical_url": "https://wsdot.wa.gov/tnbhistory/tale-of-three-bridges-1940.htm",
+      "title": "Tacoma Narrows Bridge history - Tale of three Bridge - 1940",
+      "publisher": "華盛頓州交通廳（WSDOT）",
+      "version": "機構網頁",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果原網址，curl 預設標頭 200",
+      "reading_scope": "整頁讀完。",
+      "locator": "『Opening day, July 1, 1940』『Thursday, November 7, 1940』兩段",
+      "summary": "第一座塔科馬海峽橋 1940 年 7 月 1 日通車，當時是世界第三大懸索橋；四個月後在每小時約 40 英里的風中撕裂。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "內容部分改寫自 Gig Harbor 博物館展覽（頁面自述）；時間點與 F132-S007 略有出入，不報幾點。研究網 H。",
+      "author_cache": {
+        "file": "f132src/wsdot_tale-of-three-bridges-1940.htm",
+        "sha256_prefix": "1faeff20799d0307",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S032",
+      "url": "https://wsdot.wa.gov/TNBhistory/1940-bridge.htm",
+      "canonical_url": "https://wsdot.wa.gov/TNBhistory/1940-bridge.htm",
+      "title": "Tacoma Narrows Bridge history - Bridge - The machine",
+      "publisher": "華盛頓州交通廳（WSDOT）",
+      "version": "機構網頁",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果原網址，curl 預設標頭 200",
+      "reading_scope": "讀設計變更與施工兩段（Moisseiff's design 至 Building the 1940 Narrows Bridge），其餘施工細節略讀。",
+      "locator": "『Moisseiff's design』段",
+      "summary": "原設計是 25 英尺深的桁架，改成 8 英尺的實腹板梁；主跨 2,800 英尺，主跨對橋寬 1:72，遠超過金門大橋的 1:47，成為更輕、更柔的橋。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "研究網 H；設計者與經費細節不寫，不評價個人。",
+      "author_cache": {
+        "file": "f132src/wsdot_1940-bridge.htm",
+        "sha256_prefix": "99a7ab2e679d618f",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S033",
+      "url": "https://www.taylordevices.com/wp-content/uploads/66-Damper-Retrofit-of-London.pdf",
+      "canonical_url": "https://www.taylordevices.com/wp-content/uploads/66-Damper-Retrofit-of-London.pdf",
+      "title": "Damper Retrofit of the London Millennium Footbridge – A Case Study in Biodynamic Design",
+      "publisher": "Taylor Devices, Inc.；Taylor DP（阻尼器製造商總裁）",
+      "version": "廠商技術論文 PDF（未標日期，內文止於 2002 年 2 月重新開放）",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果原網址，curl 預設標頭 200；pdftotext 轉文字",
+      "reading_scope": "全文讀完（約 3,500 字）。",
+      "locator": "Abstract；『Bridge opening – June 10, 2000』；『The problem』；『Potential solutions』；『Bridge testing』；Conclusions",
+      "summary": "千禧橋 2000 年 6 月 10 日開放，第一天近 10 萬人走過；滿載約 2,000 人（每平方公尺約 1.5 人）時在 0.5–1.1 Hz 側晃、最大 0.25 g、多達五個振態，6 月 12 日封橋。原結構阻尼約 0.5% 臨界，改造加裝 37 支流體阻尼器（7 型）到約 20%；2002 年 1 月 30 日 2,000 人實測，最大加速度由 0.25 g 降到 0.006 g，2 月 22 日重新開放。文中也提到 1860 年前後尼加拉瀑布鐵路吊橋貼出『勿齊步走』告示。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "廠商自述，有商業立場；機制段採『同步側向踏步』說法（與 F132-S001 相反），片中標為當年工程團隊與廠商的說法；Arup 原始報告（Dallard 等 2001）付費未讀。研究網 I。 覆核 V152（2026-11-13）：limitations 補：成效數字是製造商對自家產品的自述，研究網 I 封頂改為 1.25；0.25 g（開幕日）與 0.006 g（改造後試驗）不是同一種測試。",
+      "author_cache": {
+        "file": "f132src/taylor_damper_retrofit.pdf",
+        "sha256_prefix": "b0d948c8f86d3038",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S034",
+      "url": "https://authors.library.caltech.edu/records/q1ehq-5e206/files/The_Failure_of_the_Tacoma_Narrows_Bridge.pdf?preview=0",
+      "canonical_url": "https://authors.library.caltech.edu/records/q1ehq-5e206",
+      "title": "The Failure of the Tacoma Narrows Bridge（Report to the Federal Works Agency）",
+      "publisher": "Ammann OH、von Kármán T、Woodruff GB（聯邦工程署調查委員會，1941 年 3 月 28 日）；加州理工學院作者典藏",
+      "version": "典藏掃描 PDF（OCR 文字層）",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果的典藏預覽頁（/preview/…pdf，回傳 pdf.js 檢視頁 HTML）頁面上列出的檔案連結，curl 預設標頭 200（71.6 MB）；pdftotext 轉文字",
+      "reading_scope": "讀 Summary of Conclusions 第 1–10 點，與第 128–131 頁（報告編頁）討論氣動不穩定的三點結論；其餘章節與附錄未讀。",
+      "locator": "Summary of Conclusions 第 1、2、3、5 點；報告第 128–131 頁第 1–3 點",
+      "summary": "1941 年調查報告：橋足以承受靜力（含風），失敗來自風造成的過度振動；極大的柔性與很小的吸收動力能力使之成為可能；上下振動可用亂流的隨機作用（強迫振動）解釋；幾乎任何懸吊橋在扭轉時，超過某個風速就會出現負的氣動阻尼，窄橋的臨界風速較低；與交替渦流共振『非常不可能』，更正確的說法是渦流的形成與頻率由結構的振動決定；第一個破壞『相當確定』是北側主纜索夾滑動，可能觸發了扭轉。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "OCR 掃描，引文照原文核對；報告對上下振動採『強迫振動』、對扭轉採負阻尼，兩者分開講，不可合成一句『全是自激』。研究網 K。 覆核 V152（2026-11-13）：limitations 補：第 122 頁對上下振幅保留『negative dynamic damping which may or may not have been present, or…resonance effect produced by the semi-periodic character of the turbulent wind』；Summary 第 3 點是 probably。",
+      "author_cache": {
+        "file": "f132src/caltech_tnb_1941.pdf",
+        "sha256_prefix": "227dd931284567a6",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P77-S035",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6373955/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0212207",
+      "title": "Dynamic stability and stepping strategies of young healthy adults walking on an oscillating treadmill",
+      "publisher": "PLoS ONE 14(2):e0212207（2019）；Onushko T、Boerger T、Van Dehy J、Schmit BD（馬奎特大學）",
+      "version": "出版社開放取用版（CC BY 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC6373955/fullTextXML，curl 預設標頭，200；本機去標籤稿 PMC6373955.txt",
+      "reading_scope": "讀摘要與 Discussion 前四段。",
+      "locator": "Abstract；Discussion 第 1–2 段",
+      "summary": "15 名年輕人在六軸平台上的跑步機走路，平台左右晃時人會加寬步伐、縮短步長。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "以跌倒風險為框架，本題不收（見 F132-NA001）；與 F132-S002 的『調整步寬』重複。研究網 J。",
+      "author_cache": {
+        "file": "f132src/PMC6373955.xml",
+        "sha256_prefix": "04da7511c3c54729",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P77-001",
+      "question": "旋轉的棒球，空氣真的推得動它嗎？推力量得到嗎？",
+      "domain": "球具、撞擊與水上運動",
+      "mechanism_key": "sport.baseball.spin_lift_coefficient_motion_capture",
+      "answer_target": "推得動，而且量得到。伊利諾大學的 Nathan 等人用雙輪投球機把棒球近乎水平射出，帶倒旋或上旋，球速每小時 50–110 英里、轉速每分鐘 1500–4500 轉，用十台動作捕捉相機追蹤約 5 公尺的飛行，從軌跡的彎曲擬合出升力係數（方法上利用的是：帶倒旋的球往下掉得比只有重力時慢，帶上旋的掉得比較快）。在自旋參數（球面轉速與球速的比值）0.15–0.30 之間，升力係數都擠在約 0.20；球速從 50 到 110 英里，這個值看起來變化不大——作者用的是『似乎』，而且只限這個範圍。他們的結論是：資料支持前人較大的升力估計，不支持認為旋轉影響小得多的另一套算法。",
+      "scope": "只說『轉動產生的升力量得到、大小約多少』；量的是上下方向（倒旋／上旋），不說『往旁邊推』、不說側旋；22 球、二縫朝向、投球機、轉軸未量（假設水平）；『與球速關係不大』照作者的『似乎』、只限 S=0.15–0.30；不提引言的『曲球多飛 12 呎』與圖 1 的『三倍』（都是前人或前人參數式）；阻力結果作者自稱推測，不寫。",
+      "source_ids": [
+        "P77-S001"
+      ],
+      "source_locator": "摘要；第 3 節；第 4.1 節；第 5 節",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者）：同一實驗的升力係數結果。改掉題目的『往旁邊推』，把『倒旋掉得慢、上旋掉得快』標為方法前提，把『幾乎不隨球速改變』改回作者的『似乎』。N1 與 002 合計 1.75。 原提案 F127-001（目標 F127-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V147（2026-11-13）改字後收；數字、單位、條件都在原文；題目『往旁邊推』與實驗（上下方向升力）不符，『幾乎不隨球速』比原文的 seems to suggest 強，改寫後採用。池中無棒球升力量測核心（grep 馬格努斯／Magnus／curveball／曲球 皆 0）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "曲球會彎是真的：空氣確實在推它，而且推力可以量到小數點後兩位。",
+        "visual": "投球機射出帶倒旋與上旋的兩顆球，旁邊畫只有重力的虛線；倒旋那顆在虛線上方、上旋那顆在下方；角落一張小圖：S 從 0.15 到 0.30，CL 點都擠在 0.2 附近。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P77-002",
+      "question": "曲球真的會在最後『從桌邊掉下去』嗎？每一小段落下多少？",
+      "domain": "球具、撞擊與水上運動",
+      "mechanism_key": "sport.baseball.curve_drop_smooth_parabola_speed_misjudgment",
+      "answer_target": "照物理算，不會突然掉。系統工程學者 Bahill 與前大聯盟投手 Baldwin 2003 年在美國棒球研究學會（SABR）的期刊上整理他們的模型：在含重力、升力、阻力的模擬裡，一顆每小時 75 英里、純上旋的下墜曲球，出手後 100–200 毫秒落 2.4 吋，接下來三個 100 毫秒依序落 7.7、12.7、17.5 吋——越後面落得越多，但仍是一條平滑的拋物線，不是急折。他們提出一個解釋：某些球看起來的『折』，可能是打者高估了球速——若把它當成 80 英里的球，會以為最後 150 毫秒只落 21 吋，實際卻落 25 吋；要是打者在預計擊球前 150 毫秒視線離開球、等球到擊球點才又看到，就會以為球往下折了 4 吋。",
+      "scope": "說成『他們用模擬示範』『他們提出（可能）』，限『某些球』；不寫投球機實驗（只是本文轉述 1993 付費論文，受試含 4 名 9–13 歲男孩、50／55 mph，而且測的是低估球速的上飄快速球方向，不能當曲球證據）；不寫〈Pitchers’ Tactics〉段與任何投球、打擊建議；社團期刊的整理文，不說『證明』。",
+      "source_ids": [
+        "P77-S002"
+      ],
+      "source_locator": "〈Batters’ Predictions and The Breaking Pitch〉全節；〈Experimental Assessment of the Model〉；〈Batters’ Predictions and the Rising Fastball〉第 3–5 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：模擬分段落差 0.5＋高估球速造成『折 4 吋』的模型 0.25；投球機實驗是二手轉述，不計。N1：001 1.0＋002 0.75＝1.75（未到 2.0 封頂）。 原提案 F127-002（目標 F127-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V147（2026-11-13）改字後收；數字都在原文；但作者把二手轉述、測的是快速球方向的實驗當成這條的支持，並漏了原文『some pitches』『might』的限定。刪實驗句、補限定、下修 0.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "你以為曲球在最後一刻折下去；其實它每一段都在加速往下掉，『一折』是腦子拿錯了球速。",
+        "visual": "一條曲球軌跡切成四段 100 ms，每段標落差 2.4／7.7／12.7／17.5 吋，連起來是平滑弧線；旁邊疊一條『以為是 80 mph』的預測線，最後 150 ms 兩線差出 4 吋。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P77-003",
+      "question": "直直落下的轉動圓盤，換用眼角看，怎麼會看起來斜著掉？這跟曲球的『折』有什麼關係？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.curveball_break_foveal_peripheral_transition",
+      "answer_target": "視覺研究者 Shapiro 等人在螢幕上做了一個『曲球錯覺』：圓盤筆直往下落，盤內條紋橫向移動、模擬球在轉。五位觀察者直接看著它時，看到的是垂直下落；把它放到視野周邊，圓盤就看起來斜著落下，偏的角度約是偏離中心角度的 0.41–0.66 倍，條紋越快偏越多——在偏 30°、條紋每秒 20° 時，看起來斜約 20°。若在圓盤落下途中把視線從周邊移回中央（或反過來），落下方向會突然『跳』一下。作者把這個係數套到前人表列的一條真實曲球軌跡上，假設打者在球離本壘 5 到 20 呎之間把視線從球移到預期擊球點、讓球落到 5–20° 的周邊視野，等重新用中央視野看到球時，最多可感覺到約 1.25 呎的『折』（看偏多少、何時移開而定）。他們因此提出假說：曲球在物理上平滑地彎，『突然一折』可能來自球在中央與周邊視覺之間轉換。",
+      "scope": "5 位觀察者（含一位作者）看螢幕圓盤，不是真球、不是打者；1.25 呎是把實驗係數（取最大的 0.66）套到別人表列軌跡的計算，是各條件下的上限，片中說『他們推算最多』；『折』出現在重新用中央視野看球的那一刻，不寫成『移開視線那一刻』；作者自稱假說，不說已證明；上飄快速球、縫線的推測不寫。",
+      "source_ids": [
+        "P77-S003"
+      ],
+      "source_locator": "Methods；Results 第一段；〈Relevance…〉第 3–6 段；Discussion 第 3 段",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.25）：實驗結果（係數、30° 時 20°、轉換視線的『跳』）0.75＋套到真實軌跡的上限推算 0.25。N2 合計 1.0。 原提案 F127-003（目標 F127-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V147（2026-11-13）改字後收；數字都在原文；作者把『折』的出現時機寫成移視線當下，且只寫 20 呎一種條件，改成原文的『重新以中央視野看球時、各條件上限 1.25 呎』。實驗只有 5 人含作者，下修 1.0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一顆球、同一條路，換眼睛哪一塊來看，路就歪了；視線一換，球就『折』了。",
+        "visual": "圓盤垂直落下，畫面右側一個注視點；觀眾先盯圓盤、再盯右邊的點，圓盤路徑從直線變斜線；最後疊回打者視角的曲球。",
+        "seconds": [
+          60,
+          70
+        ]
+      }
+    },
+    {
+      "id": "P77-004",
+      "question": "職業打者真的『盯著球直到打到』嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.batting.pro_predictive_saccade_before_contact",
+      "answer_target": "不是一路用眼睛盯到底。NTT 的 Kishita 等人讓六名日本職業打者面對前職業投手（快速球約每小時 105–129 公里、曲球約 95–105 公里），在不先告知球種的情境下打擊，用穿戴式眼動儀記錄。打者一開始主要靠轉頭跟球，之後幾乎每一球都會做一次『預測性跳視』：眼睛一下子跳到球預計會經過的軌跡附近，第一次跳視落在擊球前約 80–220 毫秒。三名一軍打者跳得比三名二軍打者晚（約擊球前 120 毫秒）；事先被告知是快速球時也跳得比較晚；面對未知的快速球與未知的曲球，跳的時間沒有顯著差別。",
+      "scope": "6 人（一軍、二軍各 3）、只量水平方向、前職業投手的球速低於實戰；一軍晚跳只說『這 6 人裡』，不說因果、不說『晚跳比較會打』；不寫『眼睛先到位等球』；不給打擊或視覺訓練建議；與 F127-003 只能說『這正是 Shapiro 假說需要的那種視線轉換』，本篇沒有量錯覺。",
+      "source_ids": [
+        "P77-S004"
+      ],
+      "source_locator": "摘要；Results 第 1、3、4 段；Discussion 第 1–3 段",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.25）：跳視幾乎每球都有＋80–220 ms 0.75；一軍晚於二軍、已知晚於未知、曲球與快速球無差 0.25（3 對 3、p=0.03 屬邊緣）。N3：004 1.0＋005 0.5＝1.5。 原提案 F127-004（目標 F127-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V147（2026-11-13）改字後收；數字、條件都在原文；補上投手球速（不是實戰球速）、刪掉原文沒有的『等它』、下修 1.0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "打者最後那一下根本沒在看球，他的眼睛早一步跳到『球應該會去的地方』等著。",
+        "visual": "打者第一人稱視角：球從投手手上飛來，眼睛追一段後視點忽然跳到本壘前方一點；時間軸標出擊球前 80–220 ms 的跳視區間，一軍與二軍兩條時間線比較。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "P77-005",
+      "question": "打者什麼時候把眼睛跳到前面，是看球飛到哪裡決定的嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.batting.saccade_onset_locked_to_swing_not_ball",
+      "answer_target": "看起來不是。同一個研究群讓九名大學球員打投球機的四種球速（每小時 80、100、120、140 公里）。眼睛跳得最快的那一刻，從出手算起差很多（慢球約 642 毫秒、快球約 316 毫秒），從擊球往回算卻都在約 104–108 毫秒前；不論球速，預測性跳視與快速轉頭的開始都跟擊球時刻和髖部轉動（揮棒）對齊，而跟球出手後經過多久、球在哪裡沒有關係。作者的解讀是：打擊時視線怎麼動，不只是被球的位置或速度牽著走，也和身體的揮棒動作綁在一起。",
+      "scope": "投球機、大學生；『和揮棒綁在一起』照作者措辭，不說『由身體決定』或『與視覺無關』；不給訓練建議；與 F127-004 同群，不當獨立證據。",
+      "source_ids": [
+        "P77-S005"
+      ],
+      "source_locator": "Abstract",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：作者只讀摘要不得稱全文；覆核讀到表 1 與 Discussion 支持同一結論，所以照計 0.5，不加。N3 合計 1.5。 原提案 F127-005（目標 F127-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V147（2026-11-13）改字後收；摘要句正確；作者的 reading_scope 照實寫『只讀摘要』，覆核補讀表 1 後把具體時間寫進答案。只算『跳視時間對齊揮棒、不對齊球』一句。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "眼睛什麼時候跳，看的不是球，是自己的揮棒時鐘。",
+        "visual": "四條不同球速的時間線，球的位置點各不相同，但『跳視』與『髖部轉動』的標記全部對齊在擊球前同一處。",
+        "seconds": [
+          30,
+          35
+        ]
+      }
+    },
+    {
+      "id": "P77-006",
+      "question": "擊球前最後 150 毫秒看不到球，會打不準嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.batting.late_occlusion_150ms_no_accuracy_loss",
+      "answer_target": "在這個實驗裡沒有測到差別。早稻田大學等的 Higuchi 等人讓十名大學野手戴液晶遮蔽眼鏡，打投球機射出的倒旋球（模擬快速球，每秒 31.9 與 40.3 公尺，飛行約 548 與 453 毫秒），分三種：出手後 150 毫秒就遮住、預計到本壘前 150 毫秒才遮住、完全不遮。三種情況下，擊球點的平均位置都沒有差別；多看一段（從早遮到晚遮或不遮），只讓擊球點在棒身短軸方向（打高打低的方向）的分散變小，而『最後 150 毫秒才遮』與『完全不遮』之間沒有顯著差別。作者認為，球飛行最後那一段的視覺資訊對提高準度幫助有限，可能是因為從看到到動作有延遲。",
+      "scope": "只說『在這個實驗條件下』：聚氨酯練習球、只投本壘板外側半邊的好球帶（高度每球隨機）、只有模擬快速球、無變化球；『沒有顯著差別』不寫成『完全沒影響』；不得變成『不必看球』之類建議；與 F127-004、005 並列只說方向一致，不說互相證明。",
+      "source_ids": [
+        "P77-S006"
+      ],
+      "source_locator": "Methods〈Procedure〉；Results〈Ball flight duration〉；摘要與結論段",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者）：同一實驗的平均位置不變＋早段資訊只改善短軸分散＋最後 150 ms 無顯著差，合計一條。N4：006 1.0＋007 0.25＝1.25。 原提案 F127-006（目標 F127-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V147（2026-11-13）改字後收；數字條件都在原文；改掉原文沒有的『外角上方』『上下方向』，把『沒有差別』改成『沒有顯著差別』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "球飛來的最後一段，就算看見了，手也來不及用。",
+        "visual": "球路時間軸分三格：遮前段、遮最後 150 ms、全看；三格擊球點的散布圖，前兩格上下散開程度不同、後兩格幾乎一樣。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P77-007",
+      "question": "大學打者打投球機快速球時，追球比較靠眼睛還是靠頭？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.batting.head_speeds_up_late_eyes_constant",
+      "answer_target": "在這個實驗裡主要靠頭。同一個研究群讓六名大學球員打投球機的快速球，用高速攝影量頭、用眼電圖量眼，把球的飛行時間切成幾段比較：頭的水平轉速在飛行的 61–80% 那段，比前段（慢球時比 21–40%，快球時比 21–40% 與 41–60%）明顯快，眼睛追蹤的角速度在各段之間則沒有變化。不過到了最後一段，六人裡有三人在擊球前就停止轉頭。",
+      "scope": "6 人、只量水平方向、投球機快速球；不寫『最後一段靠轉頭』『越靠近越靠頭』（最後 81–100% 段沒有報告更快，且一半人停止轉頭）；摘要末句的視覺訓練評論不寫；與 F127-004 並列時要說明職業打者那篇明說結果與本篇不同（眼動貢獻因人 20% 到 100% 以上），不能拼成一個『先頭後眼』的故事。",
+      "source_ids": [
+        "P77-S007"
+      ],
+      "source_locator": "Abstract；Results 第一段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：6 人、只有一個中段的顯著差，且與 F127-004 的結論有出入。是清單感最高的一條，見 drop_if。 原提案 F127-007（目標 F127-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V147（2026-11-13）改字後收；使用者要求核對的『最後一段靠轉頭』原文不支持：顯著的是 61–80% 段，最後一段一半受試停止轉頭；而且 F127-004 的原文明說與本篇不同。改寫、下修 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "追最後一段球的不是眼珠，是脖子。",
+        "visual": "打者頭部俯視圖，頭與眼的方向各一支箭頭；隨球靠近，頭的箭頭轉得越來越快、眼的箭頭角速度不變。",
+        "seconds": [
+          30,
+          35
+        ]
+      }
+    },
+    {
+      "id": "P77-008",
+      "question": "兩顆一樣快的球，只把投手動作放快，打者會覺得球比較快嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.batting.pitcher_motion_speed_biases_ball_speed",
+      "answer_target": "會。鹿屋體育大學的 Nakamoto 等人讓十三名大學打者在虛擬實境裡比較兩球誰快：兩顆球實際一樣快，只把其中一次的投手動作播得快一點或慢一點。投手動作越快，打者越覺得球快，反之亦然；而且在每小時 145 公里的條件下，這個影響比 125 公里時更大——作者的解讀是：球越快，球本身的飛行資訊越不可靠，判斷就越倚重投手的動作。",
+      "scope": "VR、大學生；現象同網 Takamido 等先前已在影片作業示範，本篇新的是 VR 重現與 125／145 km/h 的差別；技能分組是探索性分析不寫；只說球速判斷會被投手動作影響，不說曲球的『折』因此而來（本篇沒有曲球）；不給打擊或投球建議。",
+      "source_ids": [
+        "P77-S008"
+      ],
+      "source_locator": "Results 第一、二段；Discussion 第 2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：一個 VR 判斷作業的一個效果加一個交互作用；與片子核心（曲球的折）只透過 Bahill『誤判球速』的假說間接相連。 原提案 F127-008（目標 F127-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V147（2026-11-13）改字後收；原文支持；但與核心問題只間接相關，下修 0.5，列入 drop_if。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "打者的『球速計』一半裝在投手的手臂上。",
+        "visual": "並排兩段 VR 畫面：同一顆 145 km/h 的球，左邊投手動作慢放、右邊快放；中間一條『你覺得哪顆快？』的投票條偏向右邊。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P77-009",
+      "question": "只看球飛出去的前一段，猜得出它會從多高經過嗎？越慢的球越好猜嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.batting.passing_height_slow_balls_poorly_judged",
+      "answer_target": "不太猜得準，而且在這個設定下慢球更難。俄亥俄州立大學的 Benson 等人讓二十名高中、大學棒壘球員站在約 12 公尺外，氣動投球機以三種速度、固定的小仰角射出網球，出手後 100 或 250 毫秒就遮住視線，請他們指出球會在多高通過。看久一點估得較好，但只有最快（每小時 77 英里）而且看 250 毫秒時平均估得準；估計落在實測範圍內的比例，77 英里時是 31.0%（看 100 毫秒）與 54.0%（250 毫秒），61 英里時是 4.0% 與 18.0%，53 英里時只有 0.5% 與 1.5%。",
+      "scope": "網球、40 呎、仰角固定、沒有投手動作，與真實打擊差很多；不說『曲球因此難打』；作者對原因的幾種解釋只說『可能』。",
+      "source_ids": [
+        "P77-S009"
+      ],
+      "source_locator": "Abstract；Results 3.1 末段；3.2 與表 2；4.1 節第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：一個實驗的一組比例；與核心問題的連結是『落得多的慢球光看前段難判高度』，只是背景。 原提案 F127-009（目標 F127-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V147（2026-11-13）改字後收；數字正確；與核心問題間接，下修 0.5，列入 drop_if。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "球越慢、掉得越多，光看前段就越猜不到它最後在哪。",
+        "visual": "三條不同球速的拋物線，前段亮、後段暗（被遮住）；右側三個長條：54%、18%、1.5%。",
+        "seconds": [
+          40,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P77-010",
+      "question": "滑球和曲球一樣在轉，為什麼不一定往下掉？",
+      "domain": "球具、撞擊與水上運動",
+      "mechanism_key": "sport.baseball.release_spin_components_gyro_slider",
+      "answer_target": "因為轉的方向不一樣。中京大學、日本運動科學中心等的 Kimura 等人用每秒 1000 格的攝影機，在牛棚拍下四十三名業餘投手（高中、大學與社會人）出手瞬間的球，把轉動拆成三份：讓球上下偏的倒旋或上旋、讓球左右偏的側旋，以及轉軸對著前進方向、像子彈一樣轉的『陀螺旋』。四縫快速球以倒旋為主（43 人平均每秒 150.7 弧度），曲球是上旋（32 人平均約 −137 弧度），滑球的陀螺旋最大（33 人平均 190.6 弧度）、上下旋平均只有約 −49。在他們的模型裡，升力方向由轉軸與前進方向決定，陀螺旋那一份不推球；算出來四縫球偏向上方、曲球偏向下方，滑球上下方向可正可負。",
+      "scope": "偏移是模型算出、不是量到的軌跡；模型不含縫線方向（作者自述限制）；每人每球種一球、業餘投手；『陀螺旋不產生升力』是模型前提，不說本篇發現；不給投球建議。",
+      "source_ids": [
+        "P77-S010"
+      ],
+      "source_locator": "Methods 2.3–2.4；Results 表 1；Discussion 4.1；Limitations 第三點",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：三種球的轉速分量實測與模型偏移方向。補上各球種人數。 原提案 F127-010（目標 F127-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V147（2026-11-13）改字後收；數字正確；補上曲球 32 人、滑球 33 人與投手組成。與『一折』的關係是說明曲球往下的來源（上旋），可留在物理章，但屬可刪。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣轉得很快，轉軸一對準前進方向，空氣就幾乎推不動它。",
+        "visual": "三顆球並排，各畫一支轉軸箭頭：四縫橫向、曲球反向、滑球幾乎朝前；旁邊三個長條分別是倒／上旋、陀螺旋、側旋的平均值。",
+        "seconds": [
+          40,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P77-011",
+      "question": "「熱水比較快結冰」是 1960 年代一個中學生發現的嗎？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.mpemba.historical_claims_aristotle_descartes",
+      "answer_target": "不是第一次。劍橋研究者在 2016 年的論文裡整理過：亞里斯多德在《氣象學》寫，先加熱過的水結冰比較快，本都斯（黑海南岸）的人在冰上紮營釣魚時，會在釣竿周圍倒溫水讓它快點凍住；培根說微溫的水比完全冷的水更容易結冰；笛卡兒說久熱過的水結冰最快。現在的名字來自坦尚尼亞中學生姆潘巴：做冰淇淋時他怕冰箱位置被搶，把煮滾的牛奶加糖混合物直接放進去，同學的沒煮就放；一個半小時後他的先凍住、同學的還沒有。他後來和來訪的 Osborne 博士合寫論文。",
+      "scope": "只講主張的歷史，引文是 Burridge & Linden 轉錄的英譯；不說古人或姆潘巴『證明』了什麼。姆潘巴本人不入畫、不當主角；不提年份 1963（未查證）；不鼓勵觀眾把熱水放進冷凍庫試。",
+      "source_ids": [
+        "P77-S013"
+      ],
+      "source_locator": "引言『Three widely cited historical references』與『More recent scientific investigations』第一段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：LEG-S49 的舊查核包（topic-checks/s2-S39-S50.md#S49，同一篇 PMC5121640）已列『學生做冰淇淋時發現』『亞里斯多德也寫過』，新增的只有本都斯釣竿、培根、笛卡兒三段引文細節。Burridge 群內。 原提案 F131-001（目標 F131-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V151（2026-11-13）改字後收；原文支持；改『奶糖』為『牛奶加糖混合物』、補上同學沒煮；與 LEG-S49 舊查核包重疊，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩千多年來，很多人都『看過』熱水先結冰——問題是他們看到的是什麼。",
+        "visual": "古希臘人在冰洞旁往釣竿澆溫水；1960 年代學校冰箱裡兩碗冰淇淋料。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P77-012",
+      "question": "小心控制條件，熱水冷到 0 °C 會比冷水快嗎？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.mpemba.controlled_cooling_to_zero_hotter_slower",
+      "answer_target": "不會。劍橋團隊把三杯同為 400 公克、都先煮過的水，分別在 21.8、57.3、84.7 °C 同時放進設在 −18 °C 的冰櫃（實際在 −18 到 −15 °C 之間循環），中心的溫度計降到 0 °C 分別花 6397、9504、10812 秒，越熱的越晚。另一位研究者把 1 毫升封在玻璃管裡的水，隨機加熱到約 8 到 103 °C 再冷卻，同一管做了 138 次：越熱的越晚冷到 0 °C、也越晚結冰，而它開始結冰的溫度一直落在 −11.2 到 −12.8 °C 之間、平均約 −11.8 °C。",
+      "scope": "兩組數字分開講（不同研究、不同終點），不相減、不換算倍數、不併成同一個例子；冰櫃溫度要寫循環範圍。",
+      "source_ids": [
+        "P77-S013",
+        "P77-S014"
+      ],
+      "source_locator": "S001 Methods『Experiments』第二段；S002 Experiment 2",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.25）：S001 三杯 0.5（同一實驗三個數字，只回答一句『越熱越晚』）＋S002 138 次 0.5。 原提案 F131-002（目標 F131-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V151（2026-11-13）改字後收；原文支持；補冰櫃循環範圍與結冰溫度範圍；三杯只算 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水不會跳過溫度：熱水必須先變成溫水，才能再變冷。",
+        "visual": "三杯水的降溫曲線，三條線依序抵達 0 °C；另一張是同一支試管 138 個點散布。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P77-013",
+      "question": "那為什麼那麼多人『看到』熱水先結冰？溫度計放的高度有差嗎？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.mpemba.thermocouple_height_error_false_positive",
+      "answer_target": "差很多。劍橋團隊把歷年『看到姆潘巴效應』的資料畫在同一張圖上：多數根本沒越線，越線的大多只高出一點點，而且常是兩杯初溫只差一點的比較。他們另做一組刻意不讓水結冰的水槽實驗，發現只要把溫度計的高度記錯 1 公分以內，自己的資料就會落進那一整塊『看起來有效應』的區域。唯一遠遠超出的是 1969 年姆潘巴與 Osborne 的原始論文——依劍橋團隊的轉述，原文寫 90 °C 的水 30 分鐘就冷到冰點、20 °C 的水卻要 100 分鐘；他們說 47 年來沒有人做出這種規模的結果，判定那組資料應視為錯誤。",
+      "scope": "不說原作者造假；『1 公分』是劍橋團隊用自己不結冰的水槽資料示範的敏感度，不得說成他人實驗的確切錯誤；1969 年的 90／20 °C 數字只經 Burridge & Linden 轉述，必須標『依劍橋團隊轉述』。",
+      "source_ids": [
+        "P77-S013"
+      ],
+      "source_locator": "Results『Analysis of the occurrence…』第二段、圖 3b 說明；Discussion 第一、二段",
+      "premise_status": "screened",
+      "notes": "算 0.75（同作者）：高度誤差 0.5＋原始資料無法重現 0.25。Burridge 群合計 001 0.25＋002 中 0.5＋003 0.75＝1.5，未達封頂。 原提案 F131-003（目標 F131-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V151（2026-11-13）改字後收；原文支持；補『1 公分』出自不結冰的水槽實驗、1969 數字只經轉述、『多數沒越線』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在水裡，上下差一公分就差好幾度——量哪裡，比量多準更重要。",
+        "visual": "一杯水的剖面溫度分層，兩支溫度計一高一低，同一刻讀數不同。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P77-014",
+      "question": "冰箱裡的熱杯子，會不會是把底下的霜融掉才凍得比較快？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.mpemba.freezer_frost_contact_conductance",
+      "answer_target": "會。研究者把兩個 125 公克的銅杯各裝 50 公克的水，一熱一冷，放在積了約 5 毫米霜的冰櫃地板上：熱杯把底下的霜融成水、很快又凍住，杯子和冰櫃底部的接觸因此變好、散熱變快，這次示範中熱的先結冰；兩杯改放在隔熱板上，就換成冷的先結冰。作者說這不算姆潘巴效應，因為是熱水自己改變了實驗條件。",
+      "scope": "只講這一組示範，作者自己說 (a) 的結果因條件改變而無法下結論；不說所有家庭觀察都是霜造成；不鼓勵觀眾在家試。",
+      "source_ids": [
+        "P77-S014"
+      ],
+      "source_locator": "Experiment 3、圖 9–10 說明；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）。Brownridge 群。 原提案 F131-004（目標 F131-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V151（2026-11-13）改字後收；原文支持；補銅杯重量、『這次示範中』與作者自稱 inconclusive。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是熱水比較會結冰，是熱杯子替自己換了一張更好的『床』。",
+        "visual": "冰櫃底部的霜被熱杯壓出一圈融痕，旁邊冷杯底下仍是白霜。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P77-015",
+      "question": "熱水要怎樣才能每次都比冷水先結冰？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.mpemba.supercooling_nucleation_temperature_selection",
+      "answer_target": "靠過冷，而且要挑過管子。靜止的乾淨水常常降到 0 °C 以下好幾度才突然結冰，而每一管水『自己會在幾度開始結冰』都不太一樣。研究者挑了兩支 10 毫升、平均自發結冰溫度相差約 5.5 °C 的封口試管，讓結冰溫度較高的那支在沸水裡加熱到約 100 °C、另一支維持在 25 °C 以下，同時放進冰櫃，九天裡連續 28 次都是熱的先結冰。他的結論是：熱水先結冰，只發生在冷的那杯過冷、而且它的結冰溫度低了好幾度的時候；加熱本身可能讓結冰溫度變高、變低或不變。",
+      "scope": "28／28 是刻意挑管子做出來的，要講清楚；不說加熱會提高結冰溫度；畫面不要寫原文沒有的溫度數字（作者 visual 的 −6 °C、−11 °C 刪除）；『結冰』指潛熱開始釋出。",
+      "source_ids": [
+        "P77-S014"
+      ],
+      "source_locator": "Experiment 8、圖 21–22；XIII Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。Brownridge 群。 原提案 F131-005（目標 F131-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V151（2026-11-13）改字後收；原文支持；補 10 毫升、九天、刪 visual 中自編的溫度數字；問題改成不暗示『每次都會』的普遍性。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "決定誰先結冰的，常常不是起點的溫度，而是水在幾度『肯』結冰。",
+        "visual": "兩支試管的溫度曲線：熱的那支降得晚，卻在 −6 °C 左右先跳回 0 °C；冷的那支一路降到 −11 °C 才跳。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P77-016",
+      "question": "冰箱溫度設得不同，熱水先結冰的機率會變嗎？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.mpemba.stochastic_nucleation_freezer_temperature_window",
+      "answer_target": "會。俄羅斯科學院的兩位研究者把四小管 70 °C、四小管 20 °C 的蒸餾水交錯掛在同一個冰櫃裡：冰櫃在 −7 °C 以上時，各管開始結冰的時間散得非常開，熱水冷卻多花的 500 到 1000 秒常被蓋過，大約三分之一的情況是熱水先開始結冰；冰櫃低於 −8 °C 時，結冰時間很集中，一次都沒出現。他們估算，約 1 毫升的水過冷到 −7 °C，等第一個冰核出現要幾分鐘，−6 °C 要幾週，−5 °C 幾乎永遠等不到——越接近 0 °C，『什麼時候開始結冰』越像擲骰子。",
+      "scope": "未經審查的預印本；分鐘／週是作者的理論估算，要標『估算』；『−7 °C』在估算裡是水溫、在實驗裡是冰櫃溫度，兩者不可混；不說『姆潘巴效應是假的』，作者原話是純水的那種來自隨機，且不否認其他系統的效應；寫稿前要先讀同作者 2026 新稿確認結論沒改。",
+      "source_ids": [
+        "P77-S016"
+      ],
+      "source_locator": "正文第 2 段；Eq. 6 後一段；圖 4 說明；Methods",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：未審查預印本，實驗只有『三分之一／從未』一組結果 0.5＋等待時間估算 0.25。Finkelstein 群。 原提案 F131-006（目標 F131-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V151（2026-11-13）改字後收；原文支持；『配對』改『情況』、區分水溫與冰櫃溫度；預印本下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "熱水不是跑得比較快，是在一場等很久的抽籤裡偶爾抽中。",
+        "visual": "兩排試管的開始結冰時間點，暖冰櫃時紅藍點混在一起，冷冰櫃時分成兩堆。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P77-017",
+      "question": "把過冷消掉以後，熱水還會凍得比較快嗎？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.mpemba.no_supercooling_staggered_heat_release_tetradecane",
+      "answer_target": "看你算哪一段。2025 年的一組實驗在冰櫃頂上放液態氮杯，讓室內水氣凝成大量冰晶落進兩個懸空的杯子，水大致一到 0 °C 就開始結冰（熱杯偶爾仍有約 −0.5 到 −1 °C 的輕微過冷）。結果熱杯『開始結冰』一定比較晚，但『從開始結冰到結完』那一段比較短，初溫差越大越明顯。作者也量了蒸發：從 53 公克起，熱杯剩 46.7、室溫杯剩 49.4 公克，他們認為兩杯相近、因此排除蒸發。換成不是水的十四烷也一樣：80 °C 杯那一段平均 76.4 分鐘、室溫杯 81.8 分鐘（各八次）。模擬給的解釋是兩杯錯開放熱：熱杯晚開始結冰時，冷杯已降到 0 °C 左右、放出的熱變少，周圍空氣也比較冷，熱杯就散熱得比較快。作者據此認為跟水的氫鍵無關，並說這證實了 1969 年的原始報告。",
+      "scope": "『結冰時間』只算起凍到結完，熱杯從放進去到全部變冰的總時間原文沒有說比較短，片中不得說『熱水比較早變成冰』；『證實 1969 原始報告』是作者的說法，要掛名；預印本，JPCB 正式版未讀；蒸發數字照原文報、不自行換算差距。",
+      "source_ids": [
+        "P77-S015"
+      ],
+      "source_locator": "Results『robustness』第二段、『Data buildup』、『Heat transfer assessment』；Simulation；Discussion 末段",
+      "premise_status": "screened",
+      "notes": "算 0.75（同作者）：結冰段較短 0.5＋十四烷與錯開放熱 0.25。Brownridge 群合計 002 中 0.5＋004 0.25＋005 0.5＋007 0.75＝2.0，封頂。 原提案 F131-007（目標 F131-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V151（2026-11-13）改字後收；改正作者寫錯的機制（『冷杯已經凍完』→原文『冷杯已降到約 0 °C』）；把『蒸發兩杯差不多』改成掛名的作者判斷並報原數字；補輕微過冷；把『證實原始報告』列為作者主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真正被縮短的是『結冰那一段』，而且連不是水的液體也會——功臣是兩杯錯開排隊散熱。",
+        "visual": "兩杯並排的時間軸：冷杯先進入結冰段、熱杯晚進場但段落較短；第二列換成十四烷同樣的圖形。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P77-018",
+      "question": "除了過冷，還有人怎麼解釋熱水先結冰？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.mpemba.hard_water_bicarbonate_solute_hypothesis",
+      "answer_target": "有，但還在吵。物理學家 Katz 認為關鍵是硬水：天然水常含碳酸氫鈣，加熱會讓它析出成水垢；沒加熱過的水結冰時，溶質被擠到冰的前緣，壓低那裡的凝固點、讓結冰變慢，他估算約 5 毫莫耳濃度的離子就會讓結冰速率慢 10%。他回覆劍橋團隊：姆潘巴效應講的是結冰不是冷卻，而且對方的水都先煮過，照他的說法本來就看不到；他也承認這個預測仍待實驗。劍橋團隊則認為他的凍結前緣模型預測不出這個效應。",
+      "scope": "是理論假說與作者估算，不說已被證實或推翻；兩邊說法都要掛名；Brownridge 2010 的硬井水比較沒有直接測凍結速率，不寫成反證。",
+      "source_ids": [
+        "P77-S019"
+      ],
+      "source_locator": "2006 稿硬水段與末段；2017 回覆 Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。Katz 獨著。 原提案 F131-008（目標 F131-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V151（2026-11-13）改字後收；原問題『水是不是天生有記憶』與答案（硬水溶質）不符，改問題；補 Burridge & Linden 對 Katz 模型的評價，避免單方說法。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "吵架的一半，其實是在吵『什麼叫先結冰』。",
+        "visual": "一壺水煮出水垢；冰前緣前方堆積的小點（溶質）。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P77-019",
+      "question": "在分子層級的模擬裡，熱過的水長冰會比較快嗎？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.mpemba.md_ring_memory_nonmonotonic_growth_time",
+      "answer_target": "在一種模擬裡會。印度科學研究院用分子動力學，讓一塊冰和約兩千六百個液態水分子接觸，先把水調到 275 到 360 K 的不同溫度，再瞬間降到 250 K 讓冰長滿，每個溫度跑 20 次：凍好所需時間在初溫 300 K 時最長，往更冷或更熱都變短。研究者認為水分子圍成的五元環像陷阱，會把先前的溫度『記住』一段時間；他們也說這只和姆潘巴的原始說法『定性一致』。",
+      "scope": "奈秒級、幾千個分子、已有冰種、不含成核；不得說成冰箱裡的水也這樣；與 F131-007（作者以十四烷排除氫鍵）是互相拉扯的兩種說法，片中要並列、不下結論。",
+      "source_ids": [
+        "P77-S020"
+      ],
+      "source_locator": "2.2；3.1；3.2 末段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。IISc 群。清單感來源之一，列 drop_if。 原提案 F131-009（目標 F131-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V151（2026-11-13）改字後收；原文支持；補分子數與『定性一致』；標明與 F131-007 的張力。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在分子尺度上，水確實會記得一點過去——只是那是十億分之一秒的事。",
+        "visual": "模擬盒子：左邊冰、右邊水，六角環一格格往右推進；三條不同初溫的進度條。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P77-020",
+      "question": "有沒有哪個系統，真的是『越熱冷得越快』？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.mpemba.colloid_double_well_strong_effect",
+      "answer_target": "有，但要換一種『溫度』。加拿大西門菲沙大學的研究者用光鉗讓水裡一顆 1.5 微米的二氧化矽珠走在一個傾斜的雙井『地形』上；所謂『初溫』，是讓珠子的起始位置照某個溫度的分布去擺，之後一律泡在同溫的水裡，每種起點重複 1000 次。珠子能跑的範圍左右對稱時，越熱越慢；把範圍往一邊放長，起點『熱』（設定成浴溫的 1000 倍）反而比『溫』（12 倍）先平衡；放到剛好的比例時，最慢的那條鬆弛路線完全不被激發，冷卻快了指數級。原因是熱的起點幾乎均勻散開，若剛好約七成落在深井那側——正是平衡時該有的比例——粒子一滾進井裡就平衡了，不必再慢慢翻過中間的小山。",
+      "scope": "『溫度』是起始分布的設定，不是把東西加熱；系統沒有相變、沒有冰，只能說明『姆潘巴效應在定義清楚的系統裡可以是真的』，不能拿來證明熱水先結冰；domain 建議改『熱與能量』（與冰無關）。",
+      "source_ids": [
+        "P77-S017"
+      ],
+      "source_locator": "『Observation…asymmetric domains』；圖 2 說明；『Strong Mpemba effect』",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.5）：對本題的問題（熱水是否先結冰）只是旁證——膠體的『溫度』是初始分布參數、與冰無關；效應觀察 0.5＋七成比例機制 0.25。Bechhoefer 網。 原提案 F131-010（目標 F131-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V151（2026-11-13）改字後收；原文支持；改『地形對稱』為『活動範圍對稱』、『玻璃珠』為二氧化矽珠；偏離題目，計數下修一半。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "姆潘巴效應不是迷信，只是它需要一條捷徑：熱的起點剛好站在離終點近的位置。",
+        "visual": "雙井地形上撒滿珠子，熱分布一滾就七三分到兩井；溫分布卡在淺井，排隊翻山。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "P77-021",
+      "question": "反過來，越冷的東西會不會熱得越快？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.mpemba.colloid_inverse_anomalous_heating",
+      "answer_target": "也觀察到了，只是更難。同一個團隊讓珠子從遠比浴溫低的分布出發、在較熱的水裡熱回平衡，每種起點重複 5000 次：起始『溫度』落在浴溫的千分之一到十萬分之四之間時，越冷的起點越快熱到平衡；在十萬分之四那一點，加熱快了指數級。他們說高溫與低溫兩端的細微差別，讓這種『反向姆潘巴效應』通常比冷卻版更弱、更難看到。",
+      "scope": "同 F131-010，溫度是起始分布設定；與結冰無關。",
+      "source_ids": [
+        "P77-S018"
+      ],
+      "source_locator": "Significance；『Inverse Mpemba Effect…』第二段；Protocol",
+      "premise_status": "screened",
+      "notes": "入池算 0.25（作者 0.5）；不放進 F131-T1 最終核心（離題、加重清單感）。domain 建議改『熱與能量』。 原提案 F131-011（目標 F131-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V151（2026-11-13）改字後收；原文支持，可入池；但對本題是第二層旁證，從長題刪除。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "捷徑是雙向的：冷得剛好的東西也能抄近路變熱。",
+        "visual": "同一張雙井地形，反過來從谷底擠成一團的分布出發，向外擴散。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P77-022",
+      "question": "千禧橋開幕那天，橋上的人感覺到什麼？為什麼兩天後就封橋？",
+      "domain": "土木結構",
+      "mechanism_key": "structure.footbridge_millennium_opening_lateral_sway_closure",
+      "answer_target": "倫敦千禧橋 2000 年 6 月 10 日開放，阻尼器廠商的技術報告記載，第一天就有將近 10 萬人走過。橋面最擠時約 2,000 人、每平方公尺約 1.5 人，橋開始左右晃，頻率落在 0.5–1.1 Hz，側向加速度最高約 0.25 g，被激起的振態多達五個，很多人得扶著欄杆。隔天限制人數仍不時再晃，6 月 12 日封橋。過去大家擔心的是有人齊步走——報告提到，1860 年前後尼加拉瀑布的鐵路吊橋就貼過『行人勿齊步走』的告示——但報告也說，千禧橋上行人的步伐看起來完全是隨機的。",
+      "scope": "數字全出自阻尼器廠商總裁 Taylor 的技術論文，片中說『阻尼器廠商的技術報告』；不用原文 hazardous 一詞、不談安全；機制段不在這條講；尼加拉只講有告示。",
+      "source_ids": [
+        "P77-S033"
+      ],
+      "source_locator": "Abstract；『Bridge opening – June 10, 2000』；『The problem』第 1 段",
+      "premise_status": "screened",
+      "notes": "維持 0.75（研究網 I）。『只是各走各的』改為照原文『看起來是隨機的』，因同一份報告隨後主張這些人『漸漸同步』。 原提案 F132-013（目標 F132-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V152（2026-11-13）改字後收；數字、日期、條件都在原文。改兩處：『千禧橋上的人只是各走各的』是作者的定論語氣，原文是『appeared to be purely random』，而且同一份報告接著主張後來同步；加註廠商出處。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一座沒有人齊步走的橋，卻被走路的人晃到封橋。",
+        "visual": "開幕日人潮的示意插畫、欄杆旁扶著的人、加速度計曲線一路拉高。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P77-023",
+      "question": "人走路對地面的推力，上下和左右的節奏一樣嗎？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "gait.walking_vertical_2hz_lateral_1hz_force_split",
+      "answer_target": "不一樣。人每秒大約走兩步，壓在地上的上下力約 2 Hz；左右的推力要左右腳各踩一次才完成一個來回，頻率只有一半、約 1 Hz，而且只占一小部分。日本的人行橋設計規範要求垂直振動頻率避開 1.7–2.5 Hz，避免上下共振。至於左右的力，藤野陽三寫道：橋的側向頻率接近 1 Hz 時它有可能激起側晃，但它非常小，過去一般認為推不出明顯的振幅。",
+      "scope": "日本規範只當背景，不評價、不提臺灣；不講安全建議；不加『除非』。",
+      "source_ids": [
+        "P77-S023",
+        "P77-S021"
+      ],
+      "source_locator": "F132-S003 §4.1 第 1 段；F132-S001 Results『Review…』第 1 段",
+      "premise_status": "screened",
+      "notes": "維持 0.5（研究網 B）。 原提案 F132-004（目標 F132-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V152（2026-11-13）改字後收；數字對，但『除非 1 Hz 附近』是作者把兩句接成條件句；改為照原文的兩句並列。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "左右那一下推力只有一半的節奏，正好卡在很多長橋最容易晃的頻率上。",
+        "visual": "腳印左右交替的俯視動畫，上方畫兩條節拍線：一條 2 Hz、一條 1 Hz。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P77-024",
+      "question": "塔科馬海峽橋為什麼比別的吊橋容易晃？",
+      "domain": "土木結構",
+      "mechanism_key": "structure.suspension_bridge_tacoma_slender_plate_girder_ratio",
+      "answer_target": "第一座塔科馬海峽橋 1940 年 7 月 1 日通車，是當時世界第三大的懸索橋。原本的設計用 25 英尺深的桁架撐住橋面，後來改成只有 8 英尺高的實心板梁；主跨 2,800 英尺，主跨長度對橋寬是 1 比 72，遠比金門大橋的 1 比 47 細長，做出一座更輕、更柔的橋。它只撐了四個月，在每小時約 40 英里的風中撕裂。",
+      "scope": "不評價設計者個人、不談經費爭議；1:72 照 1940-bridge 頁『主跨對寬度』，不照 failure 頁誤寫的 depth-to-width；不報倒塌幾點幾分（各來源不一）；不提任何傷亡或動物。",
+      "source_ids": [
+        "P77-S032",
+        "P77-S031"
+      ],
+      "source_locator": "F132-S012『Moisseiff's design』段；F132-S011 開幕與 11 月 7 日兩段",
+      "premise_status": "screened",
+      "notes": "算 0.5：板梁取代桁架、1:72 對 1:47、通車與撐四個月合一條。研究網 H（與 F132-010 同網，合計 1.25）。 原提案 F132-012（目標 F132-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V152（2026-11-13）照原稿收；逐句相符，計 0.5 合理（研究網 H）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "它不是被特別大的風吹倒，而是一座特別細、特別軟的橋，在中等的風裡越扭越大。",
+        "visual": "兩張剖面並排：25 英尺深的桁架 vs 8 英尺板梁；橋面長寬比的細長條示意。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P77-025",
+      "question": "課本說塔科馬橋是被風『共振』吹垮，頻率對得上嗎？",
+      "domain": "土木結構",
+      "mechanism_key": "structure.suspension_bridge_tacoma_strouhal_mismatch",
+      "answer_target": "對不上。物理學家 Green 與 Unruh（引 Billah 與 Scanlan 的批評）指出，很多物理課本把塔科馬橋寫成共振的例子，但在當天約每小時 42 英里的風下，橋後方渦流規律脫落的頻率約 1 Hz，而觀測到的扭轉只有約 0.2 Hz，差了好幾倍，渦街不可能讓它共振。還有一個怪處：那天清晨六點左右起，橋已經上下波動了幾個小時（振幅約一英尺半），十點左右卻幾乎在一瞬間轉成劇烈扭轉，風速則沒有明顯改變。",
+      "scope": "1 Hz 對 0.2 Hz 是作者陳述（Arioli & Gazzola 亦引 Scanlan），只說『差了好幾倍』；『突然轉扭』出自 Arkin 的目擊描述，原文原本是用來討論非線性共振模型，片中只當觀察，不說它支持哪一派；不提橋上的車與狗。",
+      "source_ids": [
+        "P77-S027"
+      ],
+      "source_locator": "§I 第 4–5 段；§II 第 1、5–6 段",
+      "premise_status": "screened",
+      "notes": "維持 0.5（研究網 E）。補上振幅一英尺半，讓 F132-016 不可再寫『約 4 公尺』。 原提案 F132-009（目標 F132-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V152（2026-11-13）改字後收；數字對；補『課本』是 Billah & Scanlan 的批評、『突然轉扭』原本在原文的脈絡；補上振幅以免與 F132-016 矛盾。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "風沒有照著橋的節拍推它，所以這不是盪鞦韆式的共振。",
+        "visual": "左邊畫 1 Hz 的渦流小圈一顆顆脫落，右邊橋面慢慢扭一下，節拍明顯對不上。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P77-026",
+      "question": "塔科馬橋倒塌後，1941 年的調查報告怎麼解釋？",
+      "domain": "土木結構",
+      "mechanism_key": "structure.suspension_bridge_tacoma_1941_board_negative_aero_damping",
+      "answer_target": "1941 年聯邦工程署的調查委員會（Ammann、von Kármán、Woodruff）認為：橋足以承受包括風在內的靜力，失敗來自風造成的過度振動，而極大的柔性和很小的吸收動力能力讓它成為可能。上下的振動，『大概』是亂流造成的，可以用亂流隨機推擠的強迫振動來解釋；扭轉則不同——委員會在振動試驗裡找到『令人信服的證據』：幾乎任何懸吊橋扭動時，風速超過某個值，空氣給的阻尼就會變成負的，窄橋的臨界風速比較低。至於與交替渦流共振，報告說『非常不可能』在懸吊橋的振動裡扮演重要角色，更正確的說法是渦流的形成和頻率由結構的振動決定。委員會也認為，第一個壞掉的『相當確定』是北側主纜中央的索夾滑動，『大概』就是它引發了扭轉。",
+      "scope": "上下振動是強迫振動、扭轉是負阻尼，分開講；報告對上下振動也提到可能有半週期性的共振效應，故不說『報告否定一切共振』，只說否定『與渦流共振』；保留 probably；不評價委員會成員。",
+      "source_ids": [
+        "P77-S034"
+      ],
+      "source_locator": "Summary of Conclusions 第 1、2、3、5 點；報告第 128–131 頁第 1–3 點",
+      "premise_status": "screened",
+      "notes": "維持 1.25（研究網 K）。 原提案 F132-015（目標 F132-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V152（2026-11-13）改字後收；引文逐句對上。改正：作者寫『上下的振動，用亂流的隨機推擠就能解釋』，原文是 probably，且第 122 頁對上下振幅保留『共振效應』的可能；所以轉折一只能說『不是渦流共振』，不能說『報告說不是共振』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是風對準了橋的節拍，而是橋一扭，自己把風變成推它的力。",
+        "visual": "風洞裡的小橋段模型，扭一下、風的箭頭跟著轉向；旁邊打上『阻尼：正 → 負』。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "P77-027",
+      "question": "『自激振盪』跟一般的共振差在哪？",
+      "domain": "流體物理",
+      "mechanism_key": "oscillation.self_excited_vs_forced_resonance_definition",
+      "answer_target": "強迫共振需要一個外來的節奏剛好對上物體的固有頻率；自激振盪則不需要：推力是由振動本身控制的，剛好和運動速度同向，等於給了一個『負的阻尼』，把穩定的能量來源（例如一直吹的風、一直拉的弓）變成越來越大的振動。拉小提琴、會走的鐘擺鐘都是這一類，作者也把塔科馬橋和千禧橋歸在這裡。",
+      "scope": "只講概念定義；塔科馬與千禧橋的歸類是作者的整理、引用他人，不當新證據；不提注腳裡的動物。",
+      "source_ids": [
+        "P77-S029"
+      ],
+      "source_locator": "Abstract；§III.C 塔科馬與千禧橋兩段",
+      "premise_status": "screened",
+      "notes": "算 0.25：概念句，讓兩座橋在片中接成同一個問題。研究網 G。 原提案 F132-011（目標 F132-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V152（2026-11-13）照原稿收；概念句 0.25 合理（研究網 G）；『強迫共振需外來節奏對上』一半與 P112 相近，但本條算的是自激振盪的定義，不重算。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "共振是有人照節拍推你；自激是你一動，推力就自己跟上來。",
+        "visual": "並排兩個鞦韆：一個有人照節拍推，一個坐在風扇前自己越盪越高。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    },
+    {
+      "id": "P77-028",
+      "question": "現在的工程師怎麼描述塔科馬橋最後那段扭轉？吵完了嗎？",
+      "domain": "土木結構",
+      "mechanism_key": "structure.suspension_bridge_tacoma_torsional_flutter_unsettled",
+      "answer_target": "華盛頓州交通廳的說明是：主流解釋叫『扭轉顫振』。先是風繞過 8 英尺高的實心板梁形成渦流，和橋的扭動鎖在一起；接著橋的扭動反過來控制渦流，變成自己餵自己的『自激』運動，越扭越大。一般來說渦流脫落在每小時 25–35 英里的風就會發生，扭轉顫振要到約 100 英里；這座橋的抗扭能力太弱，兩種不穩定都在低風速出現。不過交通廳也寫明：專家在部分環節仍有分歧，確切成因至今沒有一致結論。從那以後，用聯邦經費蓋的橋，初步設計都要先拿三維模型做風洞試驗。",
+      "scope": "『至今沒有一致結論』照原文；交通廳的解釋含『渦流鎖定』這一步，與 1941 報告『與渦流共振非常不可能』有張力，片中照實並陳、不調和；風洞規定只說是美國聯邦經費的要求，不延伸、不評價；不重述索夾滑動。",
+      "source_ids": [
+        "P77-S030"
+      ],
+      "source_locator": "『Why did Galloping Gertie collapse?』第 1–3 段與 1–5 點；『Suspension bridge design since 1940』第 3 段",
+      "premise_status": "screened",
+      "notes": "維持 0.75（研究網 H，與 F132-012 合計 1.25）。 原提案 F132-010（目標 F132-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V152（2026-11-13）改字後收；逐句相符；補 scope：WSDOT 的『lock-on』與 1941 報告的說法不同，不能剪成同一個解釋。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連官方都說還沒吵完；但每座新橋都先進風洞，就是這次學到的。",
+        "visual": "時間軸：上下波動 → 渦流鎖定 → 扭轉顫振，最後接到今天風洞裡的三維模型。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P77-029",
+      "question": "塔科馬橋的扭轉，一定要靠風來解釋嗎？",
+      "domain": "土木結構",
+      "mechanism_key": "structure.suspension_bridge_tacoma_structural_nonlinear_torsion_hypothesis",
+      "answer_target": "不一定，這正是仍在爭論的地方。米蘭理工的數學家 Arioli 與 Gazzola 整理指出，渦流、參數共振、顫振等氣動解釋都被批評過，沒有一個被一致接受；他們另外提出：扭轉可以純粹來自橋本身的非線性——在他們的數值模型裡，當天那種帶 8 到 9 個節點的上下波動，振幅夠大時就容易轉成扭轉。",
+      "scope": "刪去『約 4 公尺』（與 F132-009 的一英尺半矛盾、定義未讀）；這是忽略氣動力與阻尼的模型，只當『另一派的說法』；不說誰對。",
+      "source_ids": [
+        "P77-S028"
+      ],
+      "source_locator": "Abstract；§1 第 1–5 段",
+      "premise_status": "screened",
+      "notes": "維持 0.5（研究網 F）。 原提案 F132-016（目標 F132-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V152（2026-11-13）改字後收；刪『振幅約 4 公尺』：與同片 F132-009 的來源（約 1.5 英尺）互相矛盾，作者也沒讀到定義那節。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "八十多年後，連『是不是風』都還有人在算。",
+        "visual": "同一段橋面兩種解讀的分割畫面：左邊風在推、右邊只有纜索和橋面自己在交換能量。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    },
+    {
+      "id": "P77-030",
+      "question": "戶田公園橋的錄影裡，研究者看到了什麼？",
+      "domain": "土木結構",
+      "mechanism_key": "structure.footbridge_toda_park_crowd_lateral_video",
+      "answer_target": "1989 年，日本戶田公園橋（斜張橋）在賽艇散場時，兩、三萬名觀眾在很短時間內過橋，橋面出現奇怪的左右晃動。裝上加速度計後發現，晃動要花好幾分鐘才慢慢長大，頻率約 1 Hz，幾乎就是橋的第一個側向頻率。幾個月後研究團隊在旁邊建築物裝攝影機、把行人的步伐數位化，藤野陽三的回顧寫道：人的步伐有跟著橋面同步的傾向，橋晃得越大，跟上的人越多；當時橋上約 2,000 人，每個人的力量很小，但幾百人加起來就足以推出幾公分的振幅。這座橋後來在箱梁裡裝了調諧液體阻尼器。",
+      "scope": "藤野對自己團隊研究的回顧，原始 1993 年論文未讀；不說『第一次』；代表『同步是原因』一派。",
+      "source_ids": [
+        "P77-S023"
+      ],
+      "source_locator": "§4.1 第 2–4 段；圖 34 說明",
+      "premise_status": "screened",
+      "notes": "1.0→0.75：只讀到一段回顧，2,000 人、幾百人、幾公分都是回顧中的概數；液體阻尼器是附帶。研究網 B 合計 1.25。 原提案 F132-005（目標 F132-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V152（2026-11-13）改字後收；問題句的『第一次』原文沒有，且與 Belykh（1972 年已有）矛盾，改題；回顧性質下修 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "錄影裡真的有人跟著橋的節奏走——問題是，誰先誰後？",
+        "visual": "俯視的行人小點陣，一部分慢慢變色、跟著橋面左右擺。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P77-031",
+      "question": "千禧橋晃起來，真的是因為大家走成同一步嗎？",
+      "domain": "土木結構",
+      "mechanism_key": "structure.footbridge_lateral_instability_sync_as_consequence",
+      "answer_target": "Belykh、Macdonald 等人 2021 年的回顧整理約 30 座被行人晃動過的橋，主張同步是結果、不是原因。他們指出：開幕日廣為流傳的影片裡，一群人一起左右搖，看到的是頭和上半身，作者表示不知道有任何影片能證明腳步真的同步；回顧表中多數的橋找不到行人同步的證據，表裡把戶田公園橋記為『錄影估計同步的行人不超過兩成』；布里斯托的克利夫頓吊橋在熱氣球節散場人潮下，同時被激起兩個側向振態，兩個都沒有對上平均步頻。作者的結論是：把千禧橋說成人群同步的教科書範例『非常不準確』，同步通常是在橋晃起來之後才出現的。",
+      "scope": "『約 30 座』（原文 almost 30／at least 30 兩種說法並存）；兩成照表 1 Toda Park 列，片中說『這篇回顧的表格』，不說『最確定的研究』；與 F132-005 對照時要說明兩成是本篇對戶田錄影的整理，不是藤野的說法；表 2 傷亡事件不用；不引在世人物評論。",
+      "source_ids": [
+        "P77-S021"
+      ],
+      "source_locator": "Introduction 第 2–3 段；表 1；Results『Review of observational…』第 2、4、7 段；Discussion 第 1、3 段",
+      "premise_status": "screened",
+      "notes": "維持 0.75（研究網 A 封頂內）。 原提案 F132-001（目標 F132-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V152（2026-11-13）改字後收；相符；『至少 30』改『約 30』（原文兩種說法都有）；兩成的出處矛盾作者已處理，再加註它與藤野回顧的關係。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大家看到的是一起搖的上半身，不是一起踩下的腳。",
+        "visual": "開幕日影片的示意：鏡頭從上半身往下移到腳，腳步各自錯開。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P77-032",
+      "question": "如果大家不同步，左右亂踩的力不是會互相抵消嗎？",
+      "domain": "土木結構",
+      "mechanism_key": "structure.footbridge_pedestrian_negative_damping_critical_number",
+      "answer_target": "不會完全抵消。想像兩個人同時踩下、左右對稱：橋不動時兩股側向力剛好抵銷；但只要橋往一邊移一點，一個人的腿變得更斜、另一個人的腿變得更直，兩股力就不再相等，平均起來多出一份順著橋移動方向的力——等於替橋加上『負阻尼』。每多一個人，負阻尼就多一點；人數到某個臨界值，它蓋過橋本身的阻尼，晃動就開始指數成長。三種模型的模擬裡，臨界人數最小的時候不是步頻剛好等於橋頻，而是橋頻比平均步頻高一些（比值約 1.1–1.3）。作者還指出：照同步說，0.4 Hz 左右的低頻橋不該被人群晃起來，因為人不太可能把步伐放慢 2.5 倍去配合；但他們的模型顯示這類橋同樣可能被激起。",
+      "scope": "機制圖出自原文圖 1；臨界人數與頻率比是模擬結果；刪去『避開步頻並不保險』這類設計或安全語氣，只轉述模型結果。",
+      "source_ids": [
+        "P77-S021"
+      ],
+      "source_locator": "Results『Analytical prediction』與圖 1 說明；『Simulation results』末兩段；『Frequency dependence』Ncrit 段；Discussion 第 2 段",
+      "premise_status": "screened",
+      "notes": "維持 0.75（研究網 A 封頂內）。 原提案 F132-002（目標 F132-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V152（2026-11-13）改字後收；數字與機制相符；刪掉作者自加的安全／設計語氣。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不用約好，一群各走各的人也能一起把橋推起來。",
+        "visual": "兩個火柴人左右對稱站在橋面上，橋一移，兩條腿的斜度不同，合力箭頭冒出來。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P77-033",
+      "question": "在會晃的地面上走路，人到底改了什麼？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "gait.lateral_oscillating_ground_step_width_vr_bridge",
+      "answer_target": "布里斯托團隊讓受試者在會左右晃的跑步機上自由走路——跑帶速度會跟著人調整，眼前還有虛擬實境的橋。結論確認，人主要靠調整步伐寬度來維持平衡；而且看見『橋』的畫面時，人施加在地面、跟著晃動而來的力，和只看見實驗室時有顯著差別。",
+      "scope": "只講結論層級，不寫力量數值；不說『人不改節奏』（同一結論段寫步態週期也有顯著改變）；不說『VR 證明了負阻尼』。",
+      "source_ids": [
+        "P77-S022"
+      ],
+      "source_locator": "Abstract；Conclusions 第 2、4 段",
+      "premise_status": "screened",
+      "notes": "維持 0.5（研究網 A 封頂內）。只讀摘要與結論，算『結論層級』。 原提案 F132-003（目標 F132-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V152（2026-11-13）改字後收；answer_target 本身相符；payoff 的『不是改節奏』與原文結論段矛盾，改掉。清單感：本條在片中與 F132-002 的『調整步寬造成負阻尼』呼應，留下。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人在晃的橋上會改腳放的寬度，而且眼睛看到的東西也會改變人推給橋的力。",
+        "visual": "受試者戴頭盔走在晃動跑步機上，腳印間距忽寬忽窄。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    },
+    {
+      "id": "P77-034",
+      "question": "地面一晃，人會不自覺地跟上它的節奏嗎？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "gait.vertical_oscillating_treadmill_intermittent_phase_locking",
+      "answer_target": "會，但只是一陣一陣的。Nessler 等人讓 31 人在上下晃動的跑步機上走：當晃動頻率等於自己的步幅或步伐頻率時，人會不自覺地鎖上節奏，同步時間占比最高 78.6±8.3%，高於他們先前量的兩人並肩走（59.2±17.4%），每段鎖上的平均長度 11.85 步對 5.18 步；但所有人都是鎖一陣、掉一陣。兩步一拍的鎖法比一步一拍撐得更久。",
+      "scope": "上下晃、不是左右晃，片中明說；並肩走路是作者先前資料；不提臨床；只當『人會被地面帶著走，但斷斷續續』的旁證。",
+      "source_ids": [
+        "P77-S026"
+      ],
+      "source_locator": "Abstract；Results 第 1 段；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "0.5→0.25：上下晃動的跑步機、復健框架，對『橋為什麼越晃越大』只是間接旁證，只算『間歇鎖相』一點。研究網 D。 原提案 F132-008（目標 F132-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V152（2026-11-13）改字後收；數字相符，但與核心問題距離遠（垂直晃動、復健用途），下修為 0.25，列入 drop_if。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人確實會被地面帶著走，但抓得不牢——這正是兩派吵不完的原因。",
+        "visual": "兩條節拍線，一條地面、一條腳步，一段重合、一段滑開，反覆出現。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    },
+    {
+      "id": "P77-035",
+      "question": "人越多，橋一定越容易晃嗎？人會不會反而幫橋減震？",
+      "domain": "土木結構",
+      "mechanism_key": "structure.footbridge_premier_density_damping_increase",
+      "answer_target": "在哥倫比亞卡利一座仍在使用的人行橋（Premier 橋，側向頻率 1.07 Hz）上，研究者做了 25 組步行試驗，密度最高每平方公尺 0.358 人。結果有點反直覺：人越多，從振動資料估出來的橋阻尼反而越高——最高密度時，用節拍器齊步走的組增加 78.6%、自由走的組增加 70.0%；但振動仍然隨人數變大，作者解讀為人帶來的推力長得比多出來的阻尼快。用節拍器讓大家約每秒兩步齊走時，密度超過每平方公尺 0.10 人後側向加速度急遽上升；自由走和亂走大致是線性的。",
+      "scope": "阻尼是『視在』值（同步組違反估計方法的白雜訊假設，作者自承），趨勢線是擬合、只算指示性；密度只到低至中等，不外推到千禧橋；『齊步』是節拍器強制；這組實橋量到的是阻尼增加，與 F132-002『每個行人平均給負阻尼』在這個密度範圍對不上，片中要明說兩者沒有互相印證，不得剪成『人既是阻尼器也是馬達』來調和；不談舒適度規範。",
+      "source_ids": [
+        "P77-S025"
+      ],
+      "source_locator": "Abstract；§2 橋梁描述段；『Gait Tests on Premier Footbridge』段；Conclusions 第 2–3 段",
+      "premise_status": "screened",
+      "notes": "1.0→0.75：阻尼為視在估計、擬合趨勢只算指示性；三點仍屬同一次試驗。研究網 C 合計 0.75（F132-006 已刪）。 原提案 F132-007（目標 F132-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V152（2026-11-13）改字後收；數字相符。改正：作者把它包裝成『人既是阻尼器也是馬達』，實際上這個實橋結果（阻尼增加）與 Belykh 的負阻尼說不一致，而且節拍器同步組的加速度急升反倒是支持『同步會放大』的證據；必須照實並陳。阻尼量測有方法上的保留，下修 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真的橋上量到的，跟模型預測的不一樣：人多了，估出的阻尼反而變高，但橋還是晃得更大。",
+        "visual": "密度刻度往右推，一條阻尼曲線往上、一條加速度曲線也往上，但後者更陡。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P77-036",
+      "question": "千禧橋後來是怎麼停下來的？",
+      "domain": "土木結構",
+      "mechanism_key": "structure.footbridge_millennium_viscous_damper_retrofit",
+      "answer_target": "工程團隊評估過幾種辦法：把橋加勁到側向頻率從 0.5 Hz 拉到 1 Hz 以上，需要大量改造、會毀掉橋的造型；限制人數業主不接受；主動控制只能壓一兩個振態。最後選擇加阻尼：原本橋的阻尼約只有臨界的 0.5%，加裝 37 支、7 種流體阻尼器後提高到約 20%。2002 年 1 月 30 日找了 2,000 人實測，最大加速度從 0.25 g 降到 0.006 g，各振態的反應至少降到四十分之一，2 月 22 日重新開放。",
+      "scope": "廠商自述自家產品成效，片中說『阻尼器廠商的技術報告』；0.25 g 是開幕日的值、0.006 g 是改造後的測試值，兩者不是同一種測試，片中照原文說『報告記載』；不評價設計方；Arup 原始報告未讀；不推論其他橋。",
+      "source_ids": [
+        "P77-S033"
+      ],
+      "source_locator": "『Potential solutions』；『Millennium bridge dampers』表；『Bridge testing』末段；Conclusions",
+      "premise_status": "screened",
+      "notes": "0.75→0.5：成效數字（0.006 g、四十分之一）是製造商對自家產品的自述，沒有獨立來源；研究網 I 合計 1.25。 原提案 F132-014（目標 F132-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V152（2026-11-13）改字後收；數字相符；廠商評估自家產品，沒有獨立佐證，下修 0.25；補註 0.25 g 與 0.006 g 不是同一種測試。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不必讓人別走，也不必讓橋變硬，只要讓多出來的能量有地方去。",
+        "visual": "橋下 V 形阻尼器的示意，2,000 人走過，加速度曲線幾乎貼平。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P77-NA001",
+      "question": "蝴蝶球真的會在飛行中之字形亂飄嗎？",
+      "existing_ids": [
+        "P30002",
+        "X41-006"
+      ],
+      "source_ids": [
+        "P77-S011"
+      ],
+      "reason": "Nathan 用 2011 年 PITCHf/x 原始追蹤點擬合，蝴蝶球在約 0.3 吋的追蹤精度內與一般球一樣平滑、偏離平滑最多約 0.15 吋，難打是因位移大小方向近乎隨機——這是本題最好的第三個轉折，但讀到的是 Baseball Prospectus 網站文章（非同儕審查，不在本輪可計來源類型）；同研究的 Procedia Engineering 34:116–121（2012）正式版在 ScienceDirect 回 403，依規不改抓。足球飄球（P30002／G298）與不轉棒球的縫線分離（X41-006）已在池中，本條只差正式版。 原提案 F127-NA001。",
+      "reentry_condition": "能循公開連結合法讀到 Procedia Engineering 正式版（DOI 10.1016/j.proeng.2012.04.021）全文，或 Nathan 的機構典藏版；可計約 0.75，但與 F127-001、002 同屬 N1，N1 已滿 2.0，要計入須先把 F127-002 降到 0.25–0.5。",
+      "reading_status": "網站文章全文已讀並快取；正式論文 403 未讀。"
+    },
+    {
+      "id": "P77-NA002",
+      "question": "陀螺旋的球為什麼幾乎不會被空氣推？",
+      "existing_ids": [],
+      "source_ids": [
+        "P77-S012"
+      ],
+      "reason": "尹等 2022 以格子波茲曼 LES 模擬：陀螺旋球升力隨時間週期變化、時間平均幾乎為零，縫線方向影響大。只有 J-STAGE 英文摘要，PDF 需購讀認證，不算條數。 原提案 F127-NA002。",
+      "reentry_condition": "有合法開放全文（例如作者機構典藏版）時，可補 F127-010 的物理一章約 0.5–0.75（新研究網，需先查與 Sakurai 群無合著）。",
+      "reading_status": "只讀摘要。"
+    },
+    {
+      "id": "P77-NA003",
+      "question": "棒球縫線不靠旋轉也能讓球偏（seam-shifted wake）？轉動時會加強還是抵銷馬格努斯力？",
+      "existing_ids": [
+        "X41-006"
+      ],
+      "source_ids": [],
+      "reason": "Smith 等（猶他州立大學）的縫線移位尾流：池中 X41-006 已收不轉球的分離位置；轉動球『縫線可加強或抵銷馬格努斯力』只讀到 USU 資料集頁的描述（Garrett & Smith 2022，digitalcommons.usu.edu/all_datasets/191），不是論文；A. W. Smith 2020 碩士論文的 CORE PDF 兩次都是 Cloudflare 驗證頁（403），UCLA 2025 學位論文（eScholarship）回 AWS WAF challenge（202 空頁），都不繞過。 原提案 F127-NA003。",
+      "reentry_condition": "能合法讀到 Smith & Smith 2021（Proc IMechE P）、Garrett 2022 碩論或 UCLA 學位論文全文；屬 Smith 群（與 X41-006 同網），對本題最多約 0.75。",
+      "reading_status": "資料集描述頁已讀並快取（usu_dataset191.html，ea954a342441986c）；論文本體被驗證頁擋下。"
+    },
+    {
+      "id": "P77-NA004",
+      "question": "球的轉速在飛行中會掉多少？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Nathan〈The Spin Decay of a Baseball〉（baseball.physics.illinois.edu/spindown-rev1.pdf，已讀全文並快取 nathan_spindown_rev1.pdf，2995ab790b555f7b）只是用高爾夫球資料做尺度推估（1/e 時間約 20–25 秒），沒有棒球量測，且 N1 已滿；對本題的轉折無貢獻，計 0。 原提案 F127-NA004。",
+      "reentry_condition": "有棒球的實測轉速衰減原研究時再議。",
+      "reading_status": "全文已讀。"
+    },
+    {
+      "id": "P77-NA005",
+      "question": "打者的視線在最後幾呎還追得上球嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Clutter & Fogt 2026（Vision 10(3):51，PMC13517529，已下載並讀摘要、Study 1 方法、Study 2 結果與討論）：網子擋在 8 呎前時，判斷『不連動揮棒』與『連動揮棒』兩種作業的快速視線移動比例 53.0% 對 39.7%；但受試者的高度判斷明顯被球撞網位置帶走，設計受混淆，且與 F127-009 同屬 Fogt 群。為免把同主題實驗排成清單，不收。 原提案 F127-NA005。",
+      "reentry_condition": "若 F127-009 被刪、需要 Fogt 群另一條，可改寫為 0.25 的『視線多在網前停下』；不得用來反駁 F127-006。",
+      "reading_status": "摘要與部分正文已讀；PMC13517529.xml 已快取（fb3839cc61b8a2b7）。"
+    },
+    {
+      "id": "P77-NA006",
+      "question": "周邊視野把局部轉動與整體移動『加在一起』，在別的刺激也成立嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Shapiro, Knight, Lu 2011 PLoS ONE（PMC3084698，已下載未逐段讀）是同一網延伸到一般周邊運動錯覺的分析，與棒球無直接關係，N2 若要加也只約 0.25。不收。 原提案 F127-NA006。",
+      "reentry_condition": "寫稿時需要說明錯覺機制的普遍性才補讀。",
+      "reading_status": "已下載（PMC3084698.xml，8ef8b699a0658b01），只看標題與摘要。"
+    },
+    {
+      "id": "P77-NA007",
+      "question": "頂尖打者是先預測、還是邊看邊修正？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Jang 2026（Front Psychol，PMC12999555）與 Page, Fogt JS, Fogt N 2026（PMC13021538）已下載，未逐段讀；時間不足且多半與 F127-004、F127-009 同一問題，不硬湊。 原提案 F127-NA007。",
+      "reentry_condition": "若覆核刪掉 N3 或 N6 的條目，Jang（新研究網，Europe PMC 對其他各群命中皆為同名縮寫碰撞（Jang H、Jang DP、Jang DO），判無合著）可補約 0.5。",
+      "reading_status": "只下載，未讀正文（PMC12999555.xml 545ce918064cb1f1；PMC13021538.xml fcb964aef7c9b2f0）。"
+    },
+    {
+      "id": "P77-NA008",
+      "question": "熱水滴放在冷板上，會比室溫水滴先凍好嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Balbuena Ortega、Hernández-Figueroa、del Río 2024（Rev. Mex. Fís.，arXiv:2404.11684v1，已快取 2404.11684v1.pdf sha256 7e4e1868b353a169，全文讀完）：熱滴與室溫滴在定功率 Peltier 上，熱滴『從冷卻到凍好』平均較短、初溫差至少 20 °C 才明顯；但結果只在圖上、沒有數值表，冷卻條件是定功率而非定溫環境，『分子記憶』只是推測。品質不足以獨立成核心，本題不計。 原提案 F131-NA001。",
+      "reentry_condition": "若需要一個『滴』尺度的例子且覆核認可其方法，可作 0.25 的旁證，限說『在這套設備上』。",
+      "reading_status": "全文已讀（arXiv 版）"
+    },
+    {
+      "id": "P77-NA009",
+      "question": "自然對流加上過冷，能解釋姆潘巴效應嗎？（Vynnycky & Kimura 2015）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "只讀到利默里克大學典藏頁（WebSearch 結果 https://pure.ul.ie/en/publications/can-natural-convection-alone-explain-the-mpemba-effect-2/ ，快取 ul_vk.html sha256 9edc6dc9b4921a1b）的摘要，頁上無全文檔；Elsevier 原文非開放。只讀摘要不算。 原提案 F131-NA002。",
+      "reentry_condition": "典藏頁出現作者稿檔案連結時正常讀一次；新研究群約 0.75。",
+      "reading_status": "只讀摘要"
+    },
+    {
+      "id": "P77-NA010",
+      "question": "在單一離子這種量子系統裡，也有『強姆潘巴效應』嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Zhang 等 2025 Nat Commun（PMC11704179，Europe PMC fullTextXML 已快取 zhang2025.xml sha256 05c0be47017af791，讀完正文）：40Ca+ 離子備妥與最慢衰減模態零重疊的初態，鬆弛快了指數級，並在 Liouvillian 例外點處消失。離冰太遠；而且作者 Li W（諾丁漢）與 Lesanovsky 同校長期合作，Lesanovsky 又與 Lasanta（Bechhoefer 網）合著 2021 PRL（Europe PMC 查得 Lesanovsky I＋Li W 14 筆、＋Lasanta A 1 筆），保守併入 Bechhoefer 網，對本題加 0。 原提案 F131-NA003。",
+      "reentry_condition": "題目改為『姆潘巴效應的一般原理』時才考慮；仍受 Bechhoefer 網封頂。",
+      "reading_status": "全文已讀（JATS）"
+    },
+    {
+      "id": "P77-NA011",
+      "question": "錳氧化物磁性材料裡，離平衡較遠的狀態會『超車』嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Chaddah 等 2010（arXiv:1011.3598v1，快取 sha256 c6e0820a0f210664，讀完）：La0.5Ca0.5MnO3 不同冷卻磁場造成的非平衡分率，在 40.5 K、56 K 等溫度下交叉超車。『遠離平衡』不是『較熱』，與冰無關，收進來會變成同類實驗清單。 原提案 F131-NA004。",
+      "reentry_condition": "不建議。",
+      "reading_status": "全文已讀"
+    },
+    {
+      "id": "P77-NA012",
+      "question": "姆潘巴效應的教學故事（Balážovič & Tomášik 2012）與 Jeng 2006 綜論",
+      "existing_ids": [
+        "LEG-S49"
+      ],
+      "source_ids": [],
+      "reason": "arXiv:1205.3858v1（sha256 84e5a946e9d929d8）是教學文章、無新資料；Jeng 2006（arXiv:physics/0512262v1，sha256 a15af3f3ec2c222a，未逐段讀完，只看開頭與目錄）是綜論，內容多轉述他人。Elton & Spencer 2020（arXiv:2010.07287v1，sha256 16e7e280d957c429，只讀摘要與姆潘巴一節前後）是評論。皆不計。 原提案 F131-NA005。",
+      "reentry_condition": "寫稿需要補充史料時當入口，逐條回到原文。",
+      "reading_status": "部分閱讀"
+    },
+    {
+      "id": "P77-NA013",
+      "question": "姆潘巴效應是水的氫鍵『記憶』與表皮超固態造成的嗎？（Sun CQ 群）",
+      "existing_ids": [],
+      "source_ids": [
+        "P77-S013"
+      ],
+      "reason": "Zhang、Huang、Ma、Sun 等 2014 PCCP 與 arXiv:1310.6514 未下載讀取；Burridge & Linden 已轉述其模型（表皮 10% 體積、熱擴散差約 50%）並指出需要水的性質有遲滯才成立；Brownridge 2025 以十四烷反駁。本輪未讀原文，不計。 原提案 F131-NA006。",
+      "reentry_condition": "讀 arXiv:1310.6514 全文後，可作『被提出的假說』0.25–0.5（Sun 群）。",
+      "reading_status": "未讀原文"
+    },
+    {
+      "id": "P77-NA014",
+      "question": "地面左右晃的時候，人的腳在地上停多久會變嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "非作者覆核 V152（2026-11-13）退回：不回答片子的問題：支撐期縮短與側向力隨平台頻率增加，既不檢驗『同步』也不檢驗『負阻尼』，是同主題的實驗清單；頭條數字 96.53% 是個別受試者在某些組合的極端值（支撐時間幾乎歸零），放進片中會誤導；研究網 C 改由 F132-007 代表。 原提案 F132-006。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回"
+    },
+    {
+      "id": "P77-NA015",
+      "question": "地面左右晃時，人會把步伐加寬、步長縮短嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P77-S035"
+      ],
+      "reason": "Onushko 等 2019 原文有（15 人、六軸平台），但與 F132-003（Bocian 2015 調整步寬）答案重疊，且原文以跌倒風險為框架，容易滑向安全建議；本題不靠它湊數。 原提案 F132-NA001。",
+      "reentry_condition": "需要第二個獨立研究群佐證『調整步寬』且能只寫步態、不寫跌倒風險時，可改寫為 0.25 併入 F132-003 章。",
+      "reading_status": "摘要與 Discussion 前四段已讀。"
+    },
+    {
+      "id": "P77-NA016",
+      "question": "不同步、但很穩的行人，也能把千禧橋晃起來嗎？（Joshi & Srinivasan 2018）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Biol Lett 14:20180564 是轉折二最好的獨立第三方（俄亥俄州立大學，與研究網 A 無共同作者），但 Europe PMC REST fullTextXML 回 500（重試兩次仍 500），搜尋結果列出的 royalsocietypublishing.org PDF 為 Cloudflare 403，europepmc.org PDF 連結亦 403；照規定不再換路。 原提案 F132-NA002。",
+      "reentry_condition": "同一個 Europe PMC REST 連結恢復 200，或搜尋結果出現其他資料庫的合法全文時，約 0.75（新研究網）。",
+      "reading_status": "未讀到全文；只看過 Europe PMC 搜尋結果的題名與作者。"
+    },
+    {
+      "id": "P77-NA017",
+      "question": "在樓梯上撤離的人群，會自己踩成同一步嗎？",
+      "existing_ids": [
+        "G619"
+      ],
+      "source_ids": [],
+      "reason": "Zhang 等 2024 Sci Rep（樓梯單列撤離同步）全文已下載，但主題是撤離與踩踏防範，屬安全題，且與橋的振動無關；快取已刪。 原提案 F132-NA003。",
+      "reentry_condition": "不回收。",
+      "reading_status": "摘要與結論已讀。"
+    }
+  ]
+}

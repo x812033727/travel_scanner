@@ -1,0 +1,116 @@
+{
+  "batch_id": "wave61-physics-20261111",
+  "created_on": "2026-11-12",
+  "scope": "田間自然降雨下的噴濺傳播：替後備組題 C5-02 補原研究（作者 F17，非作者覆核 V20）。",
+  "sources": [
+    {
+      "id": "P61-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10985140/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fpls.2024.1370495",
+      "title": "Rain splash-mediated dispersal of Escherichia coli from fecal deposits to field-grown lettuce in the mid- and south Atlantic U.S. regions is affected by mulch type（Hopper、Hudson、Klair、Ding、Gao、Jha、Bryan、Tikekar、Coolong、Dunn、Micallef）",
+      "publisher": "Frontiers in Plant Science 15:1370495（2024，CC BY）；馬里蘭大學、喬治亞大學",
+      "version": "刊本全文 XML（Europe PMC，PMC10985140）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST 搜尋（rain splash 開放全文）列出 PMC10985140，再以與池中 P60-001／P60-002 相同的 fullTextXML 端點 curl GET 200（工具預設標頭）；去標籤後全文閱讀",
+      "reading_scope": "全文（Abstract、Methods 全部、Results 全部、Discussion 前八段；圖只讀圖說）",
+      "locator": "Table 1（各試驗是自然或模擬降雨：Trial 1B 自然 6 mm、Trial 3 自然 11 mm）；Results〈Splash-mediated E. coli transfer from fresh and stale feces…〉第二、三段；〈…under different mulches〉第一至四段；〈Modelling E. coli decline…〉第一、二段與 Figure 5 圖說；Discussion 第四、五段（塑膠布「ricochet」的解釋）與限制段",
+      "summary": "在馬里蘭與喬治亞的露天田區，把摻了約 8 log CFU/g 大腸桿菌的兔糞放在萵苣畦中間，等一場雨（自然雨或在乾燥日用背包噴霧器模擬），雨後 1 天沿兩條 1.5 公尺的樣線在 0.1、0.3、0.6、0.9、1.2、1.5 公尺取萵苣。所有試驗都是離糞越遠越少；馬里蘭 Trial 1A／1B，1.5 公尺處陽性 0%，最大的下降在 0.3 到 0.6 公尺之間（幼葉 1.9 log、自然雨 6 mm 的成株 3.3 log）。Trial 3（馬里蘭，自然雨 11 mm）比較覆蓋：生物可分解塑膠布與稻草差約 2 log；陽性樣本稻草 50.6%、塑膠布 85.7%（原文只寫 plastic，未指明黑色或生物可分解）。用 Trial 3 的資料配 Weibull 模型，預測大腸桿菌比糞便少 7 個 log 所需的距離：稻草 0.4 m、裸土 0.7 m、生物可分解塑膠布 1.4 m、黑塑膠布 1.2 m（正文數字；摘要寫 1.2–1.4、0.75、0.43 m）。作者推測：不透水、光滑的塑膠布讓水滴反覆彈跳（ricochet），稻草與裸土把水吸住或困住。雨後第 3 天在 0.3 m 處比第 1 天少。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "汙染物是摻入兔糞的非致病大腸桿菌，不是植物病害；用的是「落到葉上的菌量」而不是病斑。自然雨只有兩場（Trial 1B 6 mm、Trial 3 11 mm），其餘是背包噴霧器模擬雨；Weibull 預測只用 Trial 3 一場自然雨的資料。塑膠布讓水滴彈跳是作者的推測，本文沒有量水滴。摘要與正文的 7-log 距離數字略有出入，引用以正文 Results 為準。喬治亞的白塑膠布差異很小（0.2 log）。 覆核 V20（2026-11-12）：limitations 補：（1）糞便放在畦面中間、兩行萵苣之間，塑膠布畦的糞便在塑膠布上面，覆蓋物沒有蓋住汙染源；（2）7-log 距離只有稻草對兩種塑膠布（p<0.01）、生物可分解塑膠布對裸土（p<0.05）顯著，黑塑膠布對裸土未報顯著，稻草與裸土、兩種塑膠布之間 3–7 log 都沒有差別；（3）85.7% 原文只寫 plastic、是全部距離合計；（4）「1.5 m 處 0%」原文是 Trial 1A 與 1B 各自的整體結果，Trial 1B 的成株 3.3 log 下降是新鮮糞便那一組（Table 2 記 Trial 1B 雨量 0/6，6 mm 屬新鮮糞便）；（5）Discussion 的 1.52 m 緩衝區、「裸土看來最好」與採收間隔是食品安全建議，不採用。read_via 補：V20 今日照作者查詢字串重跑 Europe PMC search，結果仍列 PMC10985140。",
+      "author_cache": {
+        "file": "f17src/PMC10985140.xml（去標籤文字 f17src/PMC10985140.txt）",
+        "sha256_prefix": "82d20ae8de5f2b92",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P61-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4274098/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0115757",
+      "title": "Direct Splash Dispersal Prevails over Indirect and Subsequent Spread during Rains in Colletotrichum gloeosporioides Infecting Yams（Penet、Guyader、Pétro、Salles、Bussière）",
+      "publisher": "PLOS ONE 9(12): e115757（2014，CC BY）；INRA 瓜地洛普",
+      "version": "刊本全文 XML（Europe PMC）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST 搜尋結果列出 PMC4274098，fullTextXML curl GET 200（工具預設標頭）",
+      "reading_scope": "Abstract、Introduction、Methods 全部；Results 未逐段讀",
+      "locator": "Abstract；Methods〈Dispersal experiment〉（降雨模擬器、2.5 m 噴頭、24–45 cm 載玻片）",
+      "summary": "降雨模擬器下，山藥炭疽病菌孢子從病葉來源濺到 50 公分，隨距離指數下降；從被汙染的地面再濺一次的孢子很少，但所占比例隨距離增加；前一場雨留在地上的汙染沒有帶到下一場。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "人工降雨（不補「田間自然降雨」的缺口）；只讀到方法與摘要層級，未當核心，見 not_added。 覆核 V20（2026-11-12）：read_via 補：V20 今日以 Europe PMC REST search（TITLE:\"splash dispersal\" AND OPEN_ACCESS:y）重跑，結果列出 PMC4274098（doi 10.1371/journal.pone.0115757），確認 PMCID 來自搜尋結果；作者快取裡沒有該次搜尋的回應檔，建議補存。",
+      "author_cache": {
+        "file": "f17src/PMC4274098.xml（文字 f17src/PMC4274098.txt）",
+        "sha256_prefix": "602177cf4412236b",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P61-S003",
+      "url": "https://cdn.knmi.nl/system/data_center_publications/files/000/067/788/original/stevens_siebesma.pdf",
+      "canonical_url": "https://doi.org/10.1175/BAMS-88-12-1912",
+      "title": "Rain in Shallow Cumulus over the Ocean: The RICO Campaign（Rauber、Stevens、Ochs 等）",
+      "publisher": "Bull. Amer. Meteor. Soc. 88: 1912–1928（2007）；KNMI 出版頁上的 PDF（AMS 允許典藏）",
+      "version": "刊本 PDF",
+      "accessed_on": "2026-11-11",
+      "read_via": "WebSearch 結果列出的 KNMI PDF 連結，curl GET 200（工具預設標頭）；EOL/UCAR 的同一份 PDF 因 TLS 憑證錯誤讀不到",
+      "reading_scope": "開頭兩頁與〈Questions and measurements: Rain initiation〉一段",
+      "locator": "p.1912 開頭段；p.1918〈RAIN INITIATION〉",
+      "summary": "開頭引用 Byers 與 Hall 1955、Saunders 1965、Squires 1958：海上淺積雲雲頂到約 2 公里開始出現雨、3.5 公里時普遍；從碎積雲發展到雲頂 3.5 公里約 25–35 分鐘；雲頂超過 2500 公尺「通常半小時內下雨」。本文是計畫概述，問題段說擴散成長理論解釋不了觀測到的滴譜寬度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "起雨時間的數字都是引用 1950–60 年代研究，不是 RICO 自己的量測；本文是計畫概述。未當核心，見 not_added。",
+      "author_cache": {
+        "file": "f17src/knmi_stevens_siebesma.pdf（文字 f17src/rico.txt）",
+        "sha256_prefix": "f5be1cac63c645a8",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P61-001",
+      "question": "糞便落在鋪了塑膠布的菜畦上，跟落在稻草或泥土上比，下一場雨會把它濺到更遠的菜上嗎？",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "mechanism_key": "rain.field_mulch_splash_transfer_distance",
+      "answer_target": "會，而且差得不少——要看東西落在什麼上面。美國馬里蘭與喬治亞的露天萵苣田，研究者把摻了實驗用大腸桿菌的兔糞直接放在菜畦中間的畦面上，等一場雨，隔天在離糞 0.1 到 1.5 公尺之間取菜來驗。每一場都是離糞越近驗到越多。馬里蘭一場 6 毫米的自然雨（畦面鋪黑塑膠布、成株萵苣），最陡的下降在 0.3 到 0.6 公尺之間；這一場和另一場模擬雨，1.5 公尺處都沒有一個樣本驗到。另一場 11 毫米的自然雨比較四種畦面：全部距離合計，塑膠布畦驗到的樣本比例 85.7%，稻草畦 50.6%；用這場資料配模型推算，菌量降到糞便裡的千萬分之一（少 7 個 log）的距離，稻草 0.4 公尺、裸土 0.7 公尺、黑塑膠布 1.2 公尺、生物可分解塑膠布 1.4 公尺。統計上確定的是稻草比兩種塑膠布短、裸土比生物可分解塑膠布短；稻草與裸土之間沒有差別。作者推測：不透水又光滑的塑膠布讓水滴一再彈跳，稻草與泥土把水吸住或困住——這篇沒有量水滴。",
+      "scope": "實驗用的非致病大腸桿菌、研究者放的兔糞點源（放在覆蓋物上面，不是被蓋住）、萵苣；兩場自然雨（6 mm、11 mm），其餘是背包噴霧器模擬雨；7-log 距離是單場（Trial 3、雨後 24 小時）資料配 Weibull 模型的預測；85.7% 原文只寫 plastic，未指明哪一種；黑塑膠布對裸土的 7-log 距離差異未達顯著；彈跳是作者推測。片中不提不採收緩衝區、採收間隔或「哪種覆蓋最安全」。",
+      "source_ids": [
+        "P61-S001"
+      ],
+      "source_locator": "F17-S001：Table 1；Results 各段；Figure 5 圖說；Discussion 第四、五段與限制段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：（a）自然雨下的田間距離分佈（0.3–0.6 m 陡降、1.5 m 驗不到）0.5 條，補 V18 點名的「全是人工降雨」缺口；（b）覆蓋物改變落在上面的東西被帶多遠（陽性比例、7-log 距離、2 log 差同一組試驗，合 1.0 條）。同一篇兩組試驗合 1.5，在「同一實驗 1–2 條」之內。 原提案 F17-001（目標 C5-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V20（2026-11-12）改字後收；來源合規、雜湊相同、主要數字都在正文。收，但改掉三件事：問題與轉折的「蓋住就隔開」不是這個實驗測的（汙染源放在覆蓋物上面）；7-log 距離要附上哪幾組顯著；85.7% 的 plastic 沒指明哪一種。食品安全建議一律不進片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為把地蓋起來就隔開了；實際下雨時，不透水的塑膠布讓地上的東西濺得更遠，稻草反而擋住。",
+        "visual": "一條 1.5 公尺的菜畦剖面，中間一坨糞，四種覆蓋並排；每 30 公分一個點標上驗到與否，塑膠布那條亮點延伸最遠。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P61-NA001",
+      "question": "雨把地上被汙染的泥土再濺一次，病菌會被帶得更遠嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P61-S002"
+      ],
+      "reason": "山藥炭疽病的降雨模擬器實驗：再濺的孢子很少、但所占比例隨距離增加，前一場雨的地面汙染沒有帶到下一場。仍是人工降雨，補不了 V18 點名的「自然降雨」缺口；C5-02 加了 F17-001 已過門檻，不為片長再塞一章；Results 也沒逐段讀完。 原提案 F17-NA001。",
+      "reentry_condition": "若覆核把 F17-001 下修到 1.0 以下，或 P60-001 的章節要換，再讀完 Results 與表格，可補 0.5 條在「怎麼離開」那章（地面再濺）。",
+      "reading_status": "Abstract、Introduction、Methods 全文讀；Results 未逐段讀"
+    },
+    {
+      "id": "P61-NA002",
+      "question": "海上的淺積雲從冒出來到下雨要多久？",
+      "existing_ids": [],
+      "source_ids": [
+        "P61-S003"
+      ],
+      "reason": "RICO 概述只在開頭引用 1950–60 年代研究（雲頂約 2 公里開始有雨、雲頂 2500 公尺以上通常半小時內下、25–35 分鐘長到 3.5 公里）；不是 RICO 自己的量測，照規則引用不算事實。 原提案 F17-NA002。",
+      "reentry_condition": "讀到 RICO 的原研究全文（例如以雷達追蹤單一雲從生成到第一個回波的時間）或 Saunders 1965 原文的公開版本，可補 0.5–1 條，接在 F17-003 的「25 分鐘」之後。",
+      "reading_status": "概述 PDF 讀開頭兩頁與 RAIN INITIATION 一段"
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+ "_note": "《恁祖媽今年18》第 7 集剪接表（post/assemble-v4.mjs），2026-11-10 照種田拍法的 29 鏡分鏡，首格路線 Colab H3（1312×736，不精修）。沿用站主定的：不放片名卡、集數、人名條，畫面不放字；不裁切放大；慢放不超過 1.1 倍；CC 軟字幕；看得到嘴的台詞用模型原聲（voice.json）。拿掉 c25（片段多出第二個月棠；c24 的心裡話延到 c26，c26 從 0 秒起用、前 2.5 秒林美鳳嘴閉著接住）。配樂一場一首：公車 comedy、校門口 tension、巷子與院子 suspense；公車用低頻底噪當引擎聲（underwater），其他場用 room。已知瑕疵交站主看片：c01 月棠只在前門露出、c12 何曉陽有瀏海且書包是黑提袋、c13 何曉陽後段臉變幼、c15 杯子沒停在書包口上方、c21 沒站起來且書包是乾的、c28 後段臉變成熟、c26／c29 前景月棠戴珍珠耳環、c06／c08 句中嘴動無聲（c08 約 1.5 秒）、c04／c20 剪在開始笑之前。 重拍（hero）後：c07、c22、c18 用重拍；c16 拿掉（兩次都把書包正面畫成透明的窗，而且書包跟 c18 不是同一個；c18 的濕書包與 c21 撿起濕書包交代得到）。c17 的心裡話改成 spill 延到 c18 開頭（書包落地、何曉陽開口前約 2.3 秒）。c18 何曉陽原聲小 3 dB，line_gain +3。 成片審片後：c01 從 2.2 秒起（避開裙子沒過膝的 1.2 秒）、c02 剪成 2.5 秒、c03 加進 spill 讓 spill_lead 生效、c18 從 0 秒起（看得到書包的奶茶痕）、c10 在小滿擋住鏡頭前剪掉、c14 剪成 3 秒、c20 跑步聲四聲；開場公車底噪被動態 loudnorm 拉高後又壓低，改用 mix_gain（固定增益）。c23 句中約 1.4 秒嘴動無聲、c15 句中約 1 秒、校門口兩側背景不一致（何曉陽那側米白牆、月棠那側紅磚鐵門）、林導與林美鳳在不同鏡長相略不同，交站主看片。 複審後：c18 落地悶響對到原聲的撞擊（1.55 秒）並調小、c20 跑步聲加大、司機 −3 dB；字幕第 4、12 句照實際開口改（c06、c18 的人聲偵測被底噪與落地聲騙了）。",
+ "tempo": 1.07,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "punch": false,
+ "grades": {
+  "lift": [
+   "c12",
+   "c13",
+   "c14",
+   "c15",
+   "c16",
+   "c17",
+   "c18",
+   "c19",
+   "c20",
+   "c21",
+   "c22",
+   "c23"
+  ]
+ },
+ "default_grade": "indoor",
+ "finish": "vignette=angle=PI/5,noise=alls=3:allf=t,format=yuv420p",
+ "names": {},
+ "min": {},
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/tai-nainai/sfx"
+ ],
+ "music": [
+  {
+   "cue": "comedy",
+   "from": "c01",
+   "to": "c11",
+   "offset": 0,
+   "gain": -19,
+   "fade_in": 0.8,
+   "tail": 0.8,
+   "fade_out": 1.0
+  },
+  {
+   "cue": "tension",
+   "from": "c12",
+   "to": "c23",
+   "offset": 0,
+   "gain": -18,
+   "from_off": -0.4,
+   "fade_in": 0.8,
+   "tail": 0.8,
+   "fade_out": 1.0
+  },
+  {
+   "cue": "suspense",
+   "from": "c24",
+   "to": "c29",
+   "offset": 0,
+   "gain": -18,
+   "from_off": -0.4,
+   "fade_in": 1.2,
+   "tail": 1.0,
+   "fade_out": 1.0
+  }
+ ],
+ "sfx": [
+  {
+   "synth": "underwater",
+   "at": "c01",
+   "off": 0,
+   "to": "c11",
+   "gain": -14,
+   "fade": 0.5
+  },
+  {
+   "synth": "room",
+   "at": "c12",
+   "off": 0,
+   "to": "c23",
+   "gain": -17,
+   "fade": 0.4
+  },
+  {
+   "synth": "room",
+   "at": "c24",
+   "off": 0,
+   "to": "c29",
+   "gain": -17,
+   "fade": 0.4
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "c01",
+   "off": 0.5,
+   "gain": -24
+  },
+  {
+   "file": "handleCoins",
+   "at": "c04",
+   "off": 0.4,
+   "gain": -24
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "c05",
+   "off": 1.0,
+   "gain": -28
+  },
+  {
+   "file": "handleCoins",
+   "at": "c07",
+   "off": 0.1,
+   "gain": -26
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "c07",
+   "off": 0.25,
+   "gain": -28
+  },
+  {
+   "file": "baoxinling-shake",
+   "at": "c13",
+   "off": 0.3,
+   "gain": -16
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "c18",
+   "off": 1.55,
+   "gain": -20
+  },
+  {
+   "file": "baoxinling-muffled",
+   "at": "c18",
+   "off": 1.6,
+   "gain": -16
+  },
+  {
+   "file": "baoxinling",
+   "at": "c21",
+   "off": 1.5,
+   "gain": -18
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "c24",
+   "off": 0.4,
+   "gain": -24
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "c24",
+   "off": 1.4,
+   "gain": -25
+  },
+  {
+   "file": "cloth1",
+   "at": "c27",
+   "off": 0.3,
+   "gain": -20
+  },
+  {
+   "file": "cloth2",
+   "at": "c29",
+   "off": 0.3,
+   "gain": -20
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "c20",
+   "off": 0.9,
+   "gain": -20
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "c20",
+   "off": 1.2,
+   "gain": -21
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "c20",
+   "off": 1.5,
+   "gain": -23
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "c20",
+   "off": 1.8,
+   "gain": -25
+  }
+ ],
+ "own_voice": "docs/videos/tai-nainai-e007/voice.json",
+ "frame_round": true,
+ "min_is_cut": true,
+ "skip": [
+  "c16",
+  "c25"
+ ],
+ "spill": [
+  "c03",
+  "c10",
+  "c17",
+  "c24"
+ ],
+ "spill_lead": {
+  "c03": 2.0
+ },
+ "speaker_gain": {
+  "yuetang-18": -3.5,
+  "siji": -3
+ },
+ "line_gain": {
+  "t007012": 3
+ },
+ "line_far": [],
+ "end_black": 1.2,
+ "mix_gain": 4.9
+}
