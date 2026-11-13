@@ -1,13 +1,13 @@
 ---
 id: 2026-11-13-explainer-pool-backup-and-catalog
 title: 奇聞與原來如此：題庫備份雲端、備份紀錄與各集總表
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-stw-round27
 claimed_at: 2026-11-13T00:46:30Z
 created_at: 2026-11-13T00:45:44Z
-completed_at:
+completed_at: 2026-11-13T02:04:54Z
 branch: claude/sleepy-rubin-3jpyl9
 depends_on: []
 scope:
@@ -26,10 +26,10 @@ backup.json、metadata.json 與 repo 的 video.json，沒有一張表。
 ## Definition of done
 
 - [x] 兩個題庫的快照在雲端硬碟，逐檔核對 0 差異。
-- [ ] 這個 session 的題庫研究原稿在雲端硬碟，逐檔核對 0 差異。
+- [x] 這個 session 的題庫研究原稿在雲端硬碟，逐檔核對 0 差異（8263＋6438＋5151 檔）。
 - [x] `docs/videos/ai-drama-drive/BACKUP-LOG.md` 記下每一次傳了什麼、在哪裡、核對結果。
 - [x] `docs/videos/explainer-series/CATALOG.md`／`catalog.json`：每集的雲端位置、slug、YouTube ID、版本、畫風、縮圖版型、旁白與外語配音聲音、片頭片尾、repo 文件，可用 `catalog.py` 重產。
-- [ ] 總表與紀錄的唯讀副本在雲端 `AI劇/<系列>/_總表/`。
+- [x] 總表與紀錄的唯讀副本在雲端 `AI劇/<系列>/_總表/`（兩處各 5 檔 0 差異）。
 
 ## How to verify
 
