@@ -12,6 +12,10 @@ fixes for P13 only; the SAY list for Latin terms is P29's); the content is new.
 BEAT_MS beat on the line right before each `P:` payoff in the same scene, and only an upper bound on length.
 Shot pacing (P21 storyboard score: median 3.9 s a picture against the series' 6-12 s): a short reaction line
 gets its own shot only when the picture changes something, so most shots carry two to four lines.
+2026-11-13 rules (README §2, §10.6; lessons/sothatswhy.md 一般觀眾視角檢討): 小問's share cut from 24.6% to about 19%
+of the Han characters by deleting her pure reactions and shortening her lead-in lines (no loop tag moved), the opening
+greeting dropped so the round-versus-pointed flame question lands in the first lines, and the thumbnail sub and the
+description's first two lines pose the contradiction instead of the cause. Scenes and prompts unchanged.
 `script.md` is written by `node tools/video/cli.mjs script --slug sothatswhy-p04-microgravity-flame` after this runs.
 """
 import hashlib, itertools, json, os, re, sys, unicodedata
@@ -163,16 +167,15 @@ def obj(id, prompt, *lines, chapter=None):
 
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；答案都不先講）----------
 obj("tablet-flame", "Close-up of a child's two small hands holding " + TABLET + ", a plain pale cream wall behind",
-    k("所長，所長！我在學校看影片！", "急著報案的語氣"),
-    k("太空人在太空站裡，飄來飄去！", "興奮"), chapter="影片裡，火圓圓的")
+    k("太空人飄來飄去！", "興奮"), chapter="影片裡，火圓圓的")
 # Thumbnail shot (fixed before keyframes, explainer-series/README.md): the kid big and centred, the tablet in hand.
 kid("kid-main-q", K("holding a small tablet up in front of her chest with both hands and looking at the viewer with wide amazed eyes, in the exact centre of the picture", where=OFFICE),
-    k("旁邊還有一團小小的火，", "比手畫腳"), k("圓圓的，像一顆球！", None, "S:round"))
+    k("旁邊有一團小火，", "比手畫腳"), k("圓圓的，像一顆球！", None, "S:round"))
 chief("chief-listen", C("leaning forward with a curious smile, one hand on her chin", close=True),
     c("跟家裡蠟燭的火，不太一樣吧？", "接住上一句"),
-    k("對！蠟燭的火是尖尖的！"))
+    k("蠟燭的火是尖尖的！"))
 kid("kid-guess", K("raising one finger with a very confident grin", where=OFFICE),
-    k("一定是太空沒有重力！", "篤定的錯猜", "S:nograv"), k("東西才會飄，火才會變圓！"))
+    k("一定是太空沒有重力！", "篤定的錯猜", "S:nograv"))
 chief("chief-tease", C("holding up one finger with a playful knowing smile"),
     c("很多人都這樣猜。可是我跟你說，", "賣關子"),
     c("那些太空人，其實一直在往下掉。", "放慢", "S:falling"))
@@ -182,28 +185,26 @@ chief("chief-hooks", C("counting on her fingers with a playful mysterious smile"
 chief("chief-promise", C("tilting her head with an inviting smile, one open hand towards the viewer", close=True),
     c("你也猜猜看：人一直在掉，火為什麼也跟著變了？", "轉向觀眾", "S:main"))
 kid("kid-not-falling", K("crossing her arms with a doubtful pout", where=OFFICE),
-    k("等一下！他們明明是飄著的！", "不服氣"))
+    k("他們明明是飄著的！", "不服氣"))
 
 # ---------- 第一章：破洞的杯子一拋，水不漏了 ----------
 chief("chief-cup", C("holding up " + CUP + " with a cheerful smile"),
     c("飄著跟往下掉，可以同時發生。", "接住上一句"),
     c("我們到後院，拿這個杯子試試。它底下有一個小洞。"), chapter="破洞的杯子一拋，水不漏了")
 obj("cup-leak", "Close-up of " + CUP + " full of water held above " + BASIN + ", one thin stream of water pouring from the tiny hole into the basin, sunny back yard",
-    c("裝滿水拿著，水就從小洞一直流出來。"),
-    k("當然啊，水會往下流。", "理所當然"))
+    c("裝滿水拿著，水就從小洞一直流出來。"))
 chief("chief-toss", C("holding the small white cup in one hand as if about to toss it gently, a playful smile"),
     c("現在，我把這杯水，輕輕拋進大水盆裡。"),
     k("那一路上，水都會灑出來吧？", "篤定的錯猜", "S:leak"))
 obj("cup-fly", "Wide shot of " + CUP + " full of water flying through the air in a gentle curve over " + BASIN + ", the water staying inside the cup, sunny back yard",
-    c("你仔細看。杯子在空中的時候，小洞不漏水。", None, "P:leak"),
-    k("咦？水怎麼不流了？", "驚訝"))
+    c("你仔細看。杯子在空中的時候，小洞不漏水。", None, "P:leak"))
 kid("kid-gone-q", K("scratching her head with a puzzled frown", where=YARD),
     k("是不是一拋出去，", "猜"), k("重力就不見了？", "句尾上揚", "S:gone"))
 chief("chief-guide", C("holding the small white cup up beside her face with a knowing smile", close=True),
     c("沒有不見喔。重力還在，杯子和水一起往下掉。", "接住上一句", "P:gone"))
 obj("cup-drip", "Close-up of " + CUP + " in mid-air above " + BASIN + ", the water inside calm and still, the tiny hole dry, sunny back yard",
     c("水跟杯子掉得一樣快，就不會從小洞擠出去。"),
-    k("那太空站裡，也是這樣？", "追問"))
+    k("太空站裡也是這樣？", "追問"))
 obj("ladder-sky", "Wide shot of a very tall wooden ladder rising from a green hill up through white clouds into a deep blue sky, " + STATION + " small and far away at the top",
     c("對。美國太空總署說，在太空站那個高度，", "接住上一句"),
     c("地球的重力，還有地面的九成左右。", "數字放慢", "P:nograv"))
@@ -211,20 +212,19 @@ chief("chief-ladder", C("holding one hand high above her head as if at the top o
     c("要是有一把梯子通到那裡，在地上量體重是一百，"),
     c("爬到梯子頂端，還有九十左右。"))
 kid("kid-float-q", K("puffing out her cheeks with a confused face, both palms up", close=True, where=YARD),
-    k("那太空人還很重啊！", "不解"), k("怎麼會飄起來？", "句尾上揚", "S:float"))
+    k("怎麼會飄起來？", "句尾上揚", "S:float"))
 obj("apple-cabin", "Wide shot " + CABIN + ", one shiny red apple floating in the middle of the cabin, soft daylight from the round windows",
     c("還記得我說太空人一直在掉嗎？整座太空站都在掉。", "接住上一句", "P:falling"),
     c("太空人放開一顆蘋果，蘋果也在掉，"))
 chief("chief-apple", C("holding a shiny red apple in her open palm with a gentle smile", close=True),
-    c("只是人、蘋果、太空站掉得一樣快，看起來就像飄著。", None, "P:float"),
-    k("跟剛剛的杯子和水一樣！", "恍然"))
+    c("只是人、蘋果、太空站掉得一樣快，看起來就像飄著。", None, "P:float"))
 kid("kid-scale-q", K("looking down at her feet with a curious frown, hands on her hips", where=YARD),
-    k("那太空人在太空站裡，", "追問"), k("站上體重計會是多少？", "句尾上揚", "S:scale"))
+    k("那太空人，", "追問"), k("站上體重計會是多少？", "句尾上揚", "S:scale"))
 obj("scale-cabin", "Wide shot " + CABIN + ", one round bathroom scale with a smooth plain white top floating gently in the middle of the cabin",
     c("美國太空總署說，一直在掉的時候，體重計會顯示零。", None, "P:scale"),
     c("可是他的身體一點都沒變少，只是量不出重量。"))
 kid("kid-scale-zero", K("holding both hands far apart then close together with wide surprised eyes", close=True, where=YARD),
-    k("體重計也跟著一起掉了！", "驚訝"))
+    k("體重計也在掉！", "驚訝"))
 obj("drop-ride", "Wide shot of a tall bright amusement park drop tower ride with a ring of empty cartoon seats high near the top, a sunny blue sky, colourful flags around the base",
     c("對。遊樂園的自由落體也一樣："),
     c("往下衝的時候，你放開手裡的東西，它會飄在你面前。"))
@@ -235,7 +235,7 @@ chief("chief-zero-q", C("drawing a big round circle in the air with one finger a
     k("那可以叫零重力嗎？", "句尾上揚", "S:zero"),
     c("很多人這樣叫。對不對，等一下你自己判斷。", "笑"))
 kid("kid-crash-q", K("pointing down at the grass with a worried frown", where=YARD),
-    k("可是一直往下掉，", "擔心"), k("太空站怎麼沒撞到地球？", "章尾停住，句尾上揚", "S:crash"))
+    k("一直往下掉，", "擔心"), k("太空站怎麼沒撞到地球？", "章尾停住，句尾上揚", "S:crash"))
 
 # ---------- 第二章：杯子拋得越快，落得越遠 ----------
 chief("chief-sideways", C("sweeping one flat hand quickly sideways in front of her with a bright smile"),
@@ -261,8 +261,7 @@ obj("station-orbit", "Wide shot of " + STATION + " floating above " + EARTH,
 kid("kid-speed-q", K("leaning forward with sparkling curious eyes", close=True, where=YARD),
     k("那太空站要跑多快？", "句尾上揚", "S:speed"))
 chief("chief-speed", C("holding up eight fingers with a big amazed smile"),
-    c("美國太空總署說，一秒大約跑八公里。", "數字放慢", "P:speed"),
-    k("一秒八公里！", "驚訝"))
+    c("美國太空總署說，一秒大約跑八公里。", "數字放慢", "P:speed"))
 obj("sunrise-curve", "Wide shot of a bright golden sunrise glowing along the curved edge of a big round blue planet, seen from high above in deep blue space, " + STATION + " small in the corner",
     c("大約九十分鐘，就繞地球一圈。"))
 chief("chief-same-speed", C("nodding with a warm smile, both hands open", close=True),
@@ -275,8 +274,7 @@ chief("chief-plane", C("tracing a big gentle hump in the air with one finger, a 
     c("美國太空總署給老師的手冊說，往上飛那段水也不漏。"))
 chief("chief-coaster", C("bouncing lightly on her toes with a playful grin, both hands up"),
     c("你坐雲霄飛車衝過小山丘，或是跳彈簧床，"),
-    c("也會有一小下，覺得自己飄起來。", None, "P:ground"),
-    k("原來我跳彈簧床，也在掉！", "驚喜"))
+    c("也會有一小下，覺得自己飄起來。", None, "P:ground"))
 kid("kid-fire-q", K("holding the small tablet up and pointing at it with a curious frown", where=YARD),
     k("那火呢？", "想起來"), k("火跟著一起掉，也會變嗎？", "章尾停住，句尾上揚", "S:firefall"))
 
@@ -302,7 +300,7 @@ obj("candle-air", "Close-up of " + CANDLE + " with a tall yellow teardrop-shaped
     c("重力把比較重的冷空氣，拉到火的底下，"),
     c("熱空氣就被推上去，火也被拉成尖尖的。", None, "P:up"))
 kid("kid-cup-link", K("holding the small white cup up and looking at its tiny hole with a thinking face", close=True, where=YARD),
-    k("就像杯子裡的水，", "聯想"), k("往下從小洞擠出去？"))
+    k("就像杯子的水，從小洞擠出去？", "聯想"))
 chief("chief-convect", C("giving a small thumbs-up with a pleased smile"),
     c("很像，都是比較重的往下擠。"),
     c("這種熱的往上、冷的補進來的流動，叫做對流。"))
@@ -314,10 +312,9 @@ chief("chief-cup-again", C("holding the small white cup up with a knowing smile"
     c("還記得那個杯子嗎？掉的時候，大家掉得一樣快，"),
     c("冷空氣不再往下擠，熱空氣也不再往上跑。"))
 obj("round-flame", "Close-up of " + CANDLE + " with a small round soft glowing blue flame ball around the wick, a plain pale cream wall behind",
-    c("沒有對流往上拉，氧氣只能從四面八方慢慢靠過來。", None, "P:whyround"),
-    k("跟我在影片裡看到的一樣！", "興奮"))
+    c("沒有對流往上拉，氧氣只能從四面八方慢慢靠過來。", None, "P:whyround"))
 obj("cabin-flame", "Wide shot " + CABIN + ", one tiny round soft blue flame glowing in the middle of the cabin inside a clear round glass globe",
-    c("對。在太空站上，沒被吹著的小火也常這樣。"))
+    c("在太空站上，沒被吹著的小火也常這樣。"))
 kid("kid-blue-q", K("pointing at the small tablet with a curious face", close=True, where=YARD),
     k("我看到的火，還是藍色的！", "句尾上揚", "S:blue"))
 chief("chief-candle-two", C("holding up a short white candle in one hand with a thoughtful smile"),
@@ -332,7 +329,7 @@ obj("half-ball", "Close-up of " + CANDLE + " with a small soft blue flame shaped
     c("也不一定。那本手冊說，蠟燭頂端會把熱吸走，", "接住上一句"),
     c("火的底部就熄掉一塊，只看得到球的一部分。", None, "P:ball"))
 kid("kid-last-q", K("hugging her knees and gazing at the small tablet with a dreamy face", close=True, where=YARD),
-    k("那太空裡的火，", "好奇"), k("會一直燒下去嗎？", "句尾上揚", "S:last"))
+    k("太空的火，", "好奇"), k("會一直燒下去嗎？", "句尾上揚", "S:last"))
 chief("chief-diffuse", C("moving one hand very slowly through the air with a calm smile", close=True),
     c("不一定。剛剛說氧氣來得慢，火就燒得沒那麼旺，", "接住上一句"),
     c("溫度會慢慢降下來。"))
@@ -351,7 +348,7 @@ obj("drop-glow", "Close-up of " + DROP + ", a bright soft orange glowing flame b
     c("有一次，一滴大約四公釐的燃料，先燒出看得見的火，"),
     c("燒了大約十五秒，那團火忽然熄了。"))
 kid("kid-done", K("shrugging with both palms up and a bored pout", where=YARD),
-    k("火都滅了，還有什麼好看的？", "不以為意"))
+    k("火都滅了，還有什麼好看？", "不以為意"))
 obj("drop-dark", "Close-up of " + DROP + ", the glow gone, the dim chamber quiet around the drop",
     c("相機拍不到火了。可是，", "賣關子"),
     c("量熱的儀器發現，那一滴燃料還在發熱。", None, "P:out"))
@@ -367,7 +364,7 @@ obj("drop-small", "Close-up of " + DROP + ", the drop much smaller now, the dim 
     c("最後，那一滴縮到某個大小時，冷焰突然停了，"),
     c("剩下的那一滴，只是慢慢蒸發掉。"))
 kid("kid-why-q", K("looking up at the sky with a puzzled face", where=YARD),
-    k("可是為什麼要跑到太空，", "追問"), k("才看得清楚？", "句尾上揚", "S:why"))
+    k("為什麼要到太空，", "追問"), k("才看得清楚？", "句尾上揚", "S:why"))
 chief("chief-why", C("nodding with a thoughtful honest smile", close=True),
     c("美國太空總署說，在地上做出的冷焰，很快就熄了；", "接住上一句"),
     c("在微重力裡燒得比較久，科學家才有機會研究。", None, "P:why"))
@@ -375,34 +372,34 @@ chief("chief-quiet", C("holding both hands still in front of her with a calm con
     c("那本老師手冊也說，地上的對流，會把火的一些事蓋住。"),
     c("拿掉對流，火比較安靜，科學家更容易看懂它。"))
 kid("kid-same-q", K("holding the small tablet with a thinking face", where=YARD),
-    k("那太空裡的火，", "追問"), k("是不是都會這樣？", "句尾上揚", "S:same"))
+    k("太空的火，", "追問"), k("是不是都會這樣？", "句尾上揚", "S:same"))
 chief("chief-gas", C("holding up one finger with a careful smile", close=True),
     c("不是。同一組實驗，換掉周圍的氣體，結局就變了。", "接住上一句"))
 obj("drop-pop", "Close-up of " + DROP + ", a fierce bright orange flame hugging the drop closely, the tiny drop bursting into a few even tinier droplets",
     c("像是氧氣多一點，液滴燒到很小時，會自己爆開。"))
 kid("kid-depends", K("clapping her hands together with a bright realising grin", close=True, where=YARD),
-    k("所以火會變成什麼樣子，", "恍然"), k("還要看旁邊是什麼氣體！", None, "P:same"))
+    k("所以火的樣子，", "恍然"), k("還要看旁邊是什麼氣體！", None, "P:same"))
 chief("chief-zero-ask", C("tilting her head with a playful questioning smile, one open hand towards the girl"),
     c("對。那還記得零重力嗎？你自己判斷呢？", "接住上一句"))
 kid("kid-zero", K("raising one finger with a proud confident grin", close=True, where=YARD),
-    k("我也知道了：不能叫零重力！", "得意"), k("還記得那九成嗎？重力一直在！"))
+    k("不能叫零重力！", "得意"), k("重力一直在！"))
 chief("chief-zero", C("giving a warm thumbs-up with a proud smile", close=True),
     c("對。美國太空總署也說，叫零重力會讓人誤會。", None, "P:zero"))
 kid("kid-final-q", K("looking down at the small tablet with a thinking face", where=YARD),
-    k("那太空人一直在掉，", "推理"), k("那團火為什麼也變了？", "章尾停住，句尾上揚"))
+    k("太空人在掉，", "推理"), k("那團火為什麼也變了？", "章尾停住，句尾上揚"))
 
 # ---------- 收尾 ----------
 chief("chief-your-turn", C("leaning forward with an inviting grin, one hand open towards the viewer"),
     c("杯子、蠟燭你都看過了，你說呢？", "笑"), chapter="回到那段影片，小問想通了")
 kid("kid-got-it", K("holding the small white cup up high with a big confident grin", where=YARD),
     k("原來如此！", "恍然大悟"), k("火和旁邊的空氣，一起在掉，", "篤定"),
-    k("就像井裡那根蠟燭，", "篤定"), k("火就不會被拉成尖尖的！", "篤定", "P:main"))
+    k("火就不會被拉成尖尖的！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
     c("說得好。我覺得最妙的是：", "笑"),
     c("讓杯子不漏水的那件事，也讓火變了樣子。", None, "P:round"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
 kid("outro", "Waist-up medium shot of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
-    k("我要拋破洞杯子給媽媽看！", "開心大聲"))
+    k("我要拋杯子給媽媽看！", "開心大聲"))
 chief("outro-chief", "Waist-up medium shot of the chief holding up a small plain white cup with a curious smile, filling the frame, a plain pale wall behind her, bright morning light",
       c("你在哪裡覺得自己飄了一下？", "問句上揚，像聊天"), c("留言告訴我們。"))
 chief("outro-wave", "Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light",
@@ -471,14 +468,15 @@ doc = {
     "youtube": {
         "category_id": 27, "made_for_kids": False, "default_language": "zh-TW",
         "title": "太空人一直在掉，火焰為什麼也變了？｜原來如此事務所",
-        "description": "小問在學校看到太空站的影片：太空人飄來飄去，旁邊還有一團圓圓的小火。她說「一定是太空沒有重力」，所長卻說：太空人其實一直在往下掉。人在掉，火為什麼也跟著變了？\n\n"
+        "description": "太空站的影片裡，太空人飄來飄去，旁邊一團小火圓圓的，像一顆球；家裡蠟燭的火，卻是尖尖的。\n"
+                       "小問說「一定是太空沒有重力」，可是太空站那個高度，重力還有地面的九成左右。那太空人為什麼會飄？火又為什麼變了樣子？\n\n"
                        "這一集，所長和小問在後院拿一個底下有小洞的杯子來想：拿著時水會從洞裡流出來，輕輕拋出去，杯子和水一起往下掉，水就不漏了。"
                        "太空站那麼高的地方，地球的重力還有地面的九成左右，太空人會飄，是因為人、東西和太空站一起在掉；它同時往旁邊跑得非常快，所以一直繞著地球掉，卻掉不到地上。"
                        "在地上，火把空氣燒熱，比較重的冷空氣被拉到火的底下，把熱空氣往上推，火就被拉成尖尖的；大家一起掉的時候，這股對流停了，火就可能變圓。"
                        "最後看太空站上的液滴燃燒實驗：看得見的火熄了以後，還有幾乎看不見的「冷焰」繼續燒；換掉周圍的氣體，結局也跟著變。所以太空裡的火不是都長一個樣子，微重力也不是零重力。\n\n"
                        "片中的杯子、蠟燭、井、太空站與液滴都是 AI 生成的示意插圖，不是實驗的照片或實際的器材；火很危險，請不要自己在家做燃燒的實驗。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["微重力", "太空站", "自由落體", "火焰", "蠟燭", "對流", "冷焰", "軌道", "科普", "原來如此事務所"]},
-    "thumbnail": {"template": "thumb", "data": {"headline": "太空的火\n**變圓了？**", "sub": "不是沒有重力，是一直在掉", "shot": "kid-main-q", "subject": "right"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "太空的火\n**變圓了？**", "sub": "重力明明還有九成", "shot": "kid-main-q", "subject": "right"}},
     "sources": [
         {"title": "NASA STEM, What Is Microgravity? (Grades 5-8)", "url": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-is-microgravity-grades-5-8/", "checked_on": CHECKED},
         {"title": "NASA Glenn Research Center, What is Microgravity?", "url": "https://www.nasa.gov/centers-and-facilities/glenn/what-is-microgravity/", "checked_on": CHECKED},

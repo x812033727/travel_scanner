@@ -10,7 +10,7 @@ HyperPhysics 只有 http 能開（https 憑證不符），`build_scenes.py` 的 
 
 ## C01 框上一片平平的皮，一吹就撐大，包住一團空氣
 
-- **可用說法**：小問「沾一下泡泡水，框裡就有一片薄薄的皮！」（p020–p021）所長「對，框上那片皮是平平的。你一吹，它就被撐大，包住一團空氣。」（p022–p023）
+- **可用說法**：小問「框裡就有一片薄薄的皮！」（p021；p020「沾一下泡泡水，」2026-11-13 刪）所長「對，框上那片皮是平平的。你一吹，它就被撐大，包住一團空氣。」（p022–p023）
 - **來源**：[1]
 - **可信度／注意**：高。Exploratorium [1]：「A bubble, like a balloon, is a very thin skin surrounding a volume of air.」「…it pushes the air out of the bubble, leaving a flat circle of soap in the bubble wand.」
   來源說的是圓框留下「flat circle」；方框上那片皮是平的，是同一件事套到方框（日常可見），**撰稿推論**。

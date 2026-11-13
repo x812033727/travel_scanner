@@ -10,6 +10,9 @@ because P06's entries were picture fixes for P06 only); the content is new.
 2026-11-11 rules applied (dialogue-pilot README §4, §9, §10.6): the faster voice style for both characters,
 `pauses: {line_ms: 0, scene_ms: 150}` and `still_motion: "beat"`, no `pause_after_ms` on lines except a
 BEAT_MS beat on the line right before each `P:` payoff in the same scene, and only an upper bound on length.
+2026-11-13 rules applied (README §2, §10.6; lessons/sothatswhy.md 一般觀眾視角檢討): the kid's filler and restating
+lines cut to bring her share of Han characters from 22% to under 20% (no scene, prompt or loop tag changed), the opening
+starts on the problem, and the thumbnail sub and the description pose the contradiction instead of giving the cause.
 `script.md` is written by `node tools/video/cli.mjs script --slug sothatswhy-p21-car-sickness` after this runs.
 """
 import itertools, json, os, re, sys
@@ -127,7 +130,7 @@ def obj(id, prompt, *lines, chapter=None):
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；答案都不先講）----------
 # The first picture is the problem itself: the family car on the winding mountain road to grandma's.
 obj("car-mountain", "Wide shot of a small rounded family car driving along a winding green mountain road on a sunny morning, tea bushes and blue sky around it",
-    k("所長，我跟你說喔！", "委屈又急，跑進來報案的語氣"), k("我坐車去阿嬤家，", "委屈"), chapter="去阿嬤家的山路")
+    k("我坐車去阿嬤家，", "委屈又急，跑進來報案的語氣"), chapter="去阿嬤家的山路")
 # Thumbnail shot (fixed before keyframes, explainer-series/README.md): the kid big and centred, the comic in hand.
 kid("kid-reading-open", K("giggling at " + COMIC + " held close to her face", close=True, where=CAR),
     k("看漫畫看到一半，", "難受"))
@@ -156,11 +159,11 @@ chief("chief-opposite", C("shaking her head gently with a kind smile, one hand r
 chief("chief-almost-all", C("opening both arms wide towards the viewer with a reassuring smile"),
       c("耳朵裡面好好的人，幾乎每一個都可能暈。"))
 kid("kid-working", K("touching her own ear with one finger and a surprised delighted face", close=True, where=HOME),
-    k("所以我會暈，", "驚訝"), k("是耳朵有在認真？"))
+    k("所以耳朵有在認真？", "驚訝"))
 chief("chief-working", C("nodding with a warm amused smile", close=True),
       c("可以這麼說：會暈，代表它一直在工作。", "笑"))
 kid("kid-ear-q", K("tilting her head with one hand on her ear and a curious face", where=HOME),
-    k("那耳朵裡面，", "追問"), k("到底在做什麼？", "句尾上揚", "S:ear"))
+    k("到底在做什麼？", "追問，句尾上揚", "S:ear"))
 chief("chief-inside", C("holding her thumb and finger a tiny gap apart beside her ear, a curious smile", close=True),
       c("你耳朵很深的地方，有幾條很細的小管子和小袋子，"), c("裡面裝著液體。"))
 chief("chief-cup", C("holding up a clear plastic cup of water in one hand with a friendly smile"),
@@ -174,7 +177,7 @@ chief("chief-brain-reads", C("pretending to steer a car with both hands, then br
 chief("chief-limit", C("putting a clear plastic cup of water down on a small table with an honest serious smile"),
       c("先說清楚，杯子只是比喻。真的耳朵裡面很小很小，"), c("而且管轉彎的地方，跟管加速的地方，是分開的。"))
 kid("kid-eyes-q", K("pointing at her own eyes with two fingers and a curious face", close=True, where=HOME),
-    k("那眼睛呢？", "追問"), k("眼睛也會告訴大腦嗎？", "句尾上揚", "S:eyes"))
+    k("眼睛也會告訴大腦嗎？", "追問，句尾上揚", "S:eyes"))
 chief("chief-eyes", C("pointing at her own eye with one finger and a friendly smile", close=True),
       c("會。眼睛看外面的東西怎麼跑，也在告訴大腦你在動。"), c("腳底跟肌肉，也會告訴大腦。"))
 kid("kid-walk-q", K("walking forward in mid-step along a sunny park path with a curious face", where="in a sunny park"),
@@ -198,7 +201,7 @@ kid("kid-two-reports", K("holding up one finger on each hand with a surprised re
 chief("chief-mismatch", C("holding her two hands apart at different heights with a calm smile", close=True),
       c("對，兩邊的報告對不上。"))
 kid("kid-close-guess", K("squeezing her eyes shut tight with a confident grin", where=CAR),
-    k("那我閉上眼睛，", "很有把握"), k("眼睛不講話，"), k("就不會吵了吧？", "很有把握的錯猜", "S:close"))
+    k("那我閉上眼睛，", "很有把握"), k("就不會吵了吧？", "很有把握的錯猜", "S:close"))
 chief("chief-recall-blind", C("holding up one finger with a playful knowing smile", close=True),
       c("還記得我說，遮住眼睛的乘客照樣會暈嗎？", "點名回呼"))
 kid("kid-blindfold", K("wearing a soft pastel sleep mask over her eyes, sitting calmly with her hands on her lap", where=CAR),
@@ -206,7 +209,7 @@ kid("kid-blindfold", K("wearing a soft pastel sleep mask over her eyes, sitting 
 chief("chief-close", C("closing her eyes gently with a calm thoughtful smile", close=True),
       c("所以閉上眼睛，也不一定能讓大腦安靜。", None, "P:close"))
 kid("kid-who-q", K("lifting a sleep mask up onto her forehead with a puzzled frown", where=CAR),
-    k("眼睛都閉起來了，", "不解"), k("還在跟誰吵？", "句尾上揚", "S:who"))
+    k("還在跟誰吵？", "不解，句尾上揚", "S:who"))
 chief("chief-guess-brain", C("tapping her temple with one finger and a thoughtful smile"),
       c("這就是重點。大腦不只聽報告，它自己還會先猜。"))
 chief("chief-predict", C("holding a clear plastic cup of water out level in front of her and watching it closely, a curious smile", close=True),
@@ -216,17 +219,17 @@ chief("chief-conflict", C("bringing her two fists together knuckle to knuckle wi
 chief("chief-label", C("holding one finger up with an honest careful smile", close=True),
       c("這叫感覺衝突，是目前研究暈車最多人接受的解釋。"), c("不過它是一個解釋，還不是全部的答案。"))
 kid("kid-window-q", K("pressing her nose close to the side window of the car with a hopeful face", where=CAR),
-    k("那看窗外呢？", "追問"), k("看窗外會比較好嗎？", "句尾上揚", "S:window"))
+    k("看窗外會比較好嗎？", "追問，句尾上揚", "S:window"))
 obj("coach-road", "Wide shot of a big friendly round-nosed tour coach driving along a sunny green coastal road, blue sea and hills around it",
     c("研究的人真的去問過。英國問了三千多位遊覽車乘客，"), c("完全看不到前面路的人，覺得不舒服的，"))
 obj("road-ahead", "Wide view from the middle of the back seat of a small family car looking forward through the windshield at a long sunny mountain road and the far horizon, the two front headrests at the bottom edges",
-    c("大約是看得很清楚的人的三倍。", "數字放慢"), k("三倍！", "驚訝"))
+    c("大約是看得很清楚的人的三倍。", "數字放慢"))
 obj("side-window", "Medium view out of the side window of a small family car, green trees and roadside bushes streaking past in soft motion blur, a sunny sky above",
     c("剛剛那個遮眼睛的小客車實驗也發現：只看得到旁邊的窗，"), c("跟看不到前面差不多。"))
 chief("chief-forward", C("pointing straight forward past the viewer with one arm and a bright smile"),
       c("看得到前面的路，才比較不暈。", None, "P:window"))
 kid("kid-front-q", K("pointing forward between the two front seats with a surprised face", where=CAR),
-    k("所以重點是前面，", "發現"), k("不是窗戶？", "句尾上揚"))
+    k("不是窗戶？", "發現，句尾上揚"))
 chief("chief-seat", C("nodding with a calm smile, one open hand forward", close=True),
       c("對。那個實驗裡，坐哪個位子，反而沒有明顯差別。"))
 chief("chief-my-guess", C("drawing a gentle curve in the air with one fingertip, a curious smile"),
@@ -236,7 +239,7 @@ chief("chief-holland", C("holding a small plain tablet up at eye level with both
 obj("display-high", "Close-up of a small plain tablet held up high at eye level in front of a car windshield, showing a simple picture of colourful shapes, a sunny road and green hills visible all around it",
     c("螢幕擺在前窗那麼高、看得到外面，比擺在低處比較不暈。"))
 kid("kid-dad-q", K("peeking forward between the front seats with a curious frown", where=CAR),
-    k("那爸爸呢？", "追問"), k("他也在看前面，"), k("就因為這樣不暈嗎？", "句尾上揚"))
+    k("那爸爸呢？", "追問"), k("就因為這樣不暈嗎？", "句尾上揚"))
 chief("chief-driver", C("holding an imaginary steering wheel with both hands and a playful smile"),
       c("看前面只是一部分。司機很少暈車，研究的人也注意到了。", "接住上一句"))
 obj("swivel-chair", "Close-up of a single sturdy padded swivel chair standing in the middle of a bright plain empty room, soft curved motion lines around its base, sunny window light",
@@ -256,7 +259,7 @@ kid("kid-dad-says", K("cupping both hands around her mouth and calling out with 
 chief("chief-cue-limit", C("raising one hand with a gentle honest smile", close=True),
       c("有點像。不過那個實驗是在軌道上滑的車，不是山路。"))
 kid("kid-reverse-q", K("holding " + COMIC + " upside down and staring at it with a thinking face", where=CAR),
-    k("那如果反過來，", "推理"), k("眼睛說在動，"), k("身體說沒動呢？", "章尾停住，句尾上揚", "S:reverse"))
+    k("眼睛說在動，", "推理"), k("身體說沒動呢？", "章尾停住，句尾上揚", "S:reverse"))
 
 # ---------- 第三章：換成螢幕在動 ----------
 chief("chief-sofa", C("sitting on a sofa holding a game controller and smiling", close=True),
@@ -300,7 +303,7 @@ kid("kid-game-guess", K("holding a game controller up proudly with a confident g
 chief("chief-game", C("giving a small thumbs-up with a pleased smile", close=True),
       c("猜對了，自己開的人比較少說會暈。", None, "P:game"), c("就算車子只在螢幕裡，能控制還是有差。"))
 kid("kid-carscreen-q", K("holding up a small plain tablet in the back seat and pointing at it with a bright idea face", where=CAR),
-    k("那在車上，", "靈機一動"), k("用螢幕播前面的路呢？", "句尾上揚", "S:carscreen"), k("不就看得到前面了？"))
+    k("那在車上，", "靈機一動"), k("用螢幕播前面的路呢？", "句尾上揚", "S:carscreen"))
 chief("chief-carscreen", C("holding up one finger with a curious smile", close=True),
       c("那個遮眼睛的英國實驗，真的試過。"))
 obj("tablet-road", "Close-up of a small plain tablet mounted on the back of a car's front seat, showing a live picture of the sunny mountain road ahead, soft car interior around it",
@@ -326,25 +329,25 @@ chief("chief-age", C("holding one hand low and then raising it with a friendly s
 obj("kids-shoes-row", "Close-up of a neat row of children's shoes on a sunny doorstep, from tiny baby shoes to bigger school sneakers to grown-up walking shoes",
     c("之後越來越容易，七到十二歲最容易，再慢慢變少。"))
 kid("kid-eight", K("holding up eight fingers with a surprised realising face", where=HOME),
-    k("我八歲耶！", "恍然"), k("剛好在最會暈的時候！"))
+    k("我八歲耶！", "恍然"))
 chief("chief-women", C("nodding with a gentle smile, one hand open", close=True),
       c("對，你剛好在那個年紀。"))
 obj("twin-shoes", "Close-up of two identical pairs of small yellow children's sneakers standing side by side on a sunny doorstep",
     c("雙胞胎研究還發現，誰比較會暈，很大一部分跟遺傳有關。"))
 kid("kid-which-part", K("tapping her own head with one finger and a curious frown", close=True, where=HOME),
-    k("所以會不會暈，", "追問"), k("有一部分是天生的？", "句尾上揚"))
+    k("有一部分是天生的？", "追問，句尾上揚"))
 chief("chief-dunno", C("shaking her head slowly with an honest kind smile", close=True),
       c("有一部分是。可是到底差在哪裡，研究還不清楚。", None, "P:differ"))
 obj("coach-again", "Wide shot of a big friendly round-nosed tour coach parked at a sunny rest stop beside green hills, its door open",
     c("那份遊覽車調查也看到：年紀越大、越常坐車的人，越少暈。"))
 kid("kid-vomit-q", K("holding both hands over her tummy with a queasy face", where=CAR),
-    k("可是對不上，", "追問"), k("為什麼偏偏是想吐？", "句尾上揚", "S:vomit"))
+    k("為什麼偏偏是想吐？", "追問，句尾上揚", "S:vomit"))
 chief("chief-second-unknown", C("holding up two fingers with a serious kind smile", close=True),
       c("老實說，還沒有人知道。說得出它怎麼被引起，"), c("卻說不出，身體為什麼要用想吐來反應。"))
 chief("chief-poison", C("holding up a small green leaf between two fingers and studying it with a thoughtful smile"),
       c("有人提過一個猜法：有些毒會讓感覺亂掉，"), c("身體乾脆吐掉比較保險，暈車是不小心被晃動觸發了。"))
 kid("kid-ate-wrong", K("covering her mouth with both hands and wide surprised eyes", close=True, where=HOME),
-    k("所以大腦以為，", "驚訝"), k("我吃壞東西了？", "句尾上揚"))
+    k("我吃壞東西了？", "驚訝，句尾上揚"))
 chief("chief-poison-limit", C("raising one hand with an honest careful smile", close=True),
       c("這只是一個猜法。有證據支持它，也有證據跟它對不上，"), c("所以為什麼偏偏是想吐，答案還是：不知道。", None, "P:vomit"))
 kid("kid-neuron-q", K("pointing at her own forehead with a curious face", close=True, where=HOME),
@@ -423,12 +426,11 @@ doc = {
         "category_id": 27, "made_for_kids": False, "default_language": "zh-TW",
         "title": "坐車看書，為什麼容易暈？｜原來如此事務所",
         "description": "小問在去阿嬤家的山路上看漫畫，看到一半頭暈暈、肚子怪怪的；可是在前面開車的爸爸，一點事都沒有。同一台車、同一條路，為什麼只有她在暈？\n\n"
-                       "這一集，所長和小問跟著同一趟車走：先用一杯水的比喻，看耳朵深處的平衡器官怎麼感覺轉彎和煞車，眼睛又報告了什麼；"
-                       "再看看書時哪一邊的報告變了、為什麼遮住眼睛的乘客照樣會暈，以及研究暈車最多人接受的解釋「感覺衝突」——報告跟大腦的預想對不上。"
-                       "接著反過來，坐在沙發上看賽車畫面也有人會暈；最後老實交代，這個解釋還回答不了的事：為什麼每個人差這麼多、為什麼偏偏是想吐。\n\n"
+                       "這一集，所長和小問跟著同一趟車走，手上只有一杯水當線索：看漫畫的時候，到底是誰在說謊？遮住眼睛坐車，會不會就不暈？"
+                       "坐在沙發上一動也不動、只看賽車畫面，為什麼也有人會暈？最後也老實交代，科學到現在還回答不了的事：為什麼每個人差這麼多、為什麼偏偏是想吐。\n\n"
                        "本集只介紹研究看到的現象與目前的解釋，不是醫療建議；插圖由 AI 生成，是示意，不是人體構造圖。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["暈車", "暈動症", "內耳", "平衡", "感覺衝突", "科普", "原來如此事務所"]},
-    "thumbnail": {"template": "thumb", "data": {"headline": "看漫畫\n**就暈車？**", "sub": "眼睛跟耳朵吵架了", "shot": "kid-comic-sick", "subject": "right"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "看漫畫\n**就暈車？**", "sub": "開車的爸爸卻沒事？", "shot": "kid-comic-sick", "subject": "right"}},
     "sources": [
         {"title": "CDC Yellow Book 2026, Motion Sickness (John F. Golding; updated 2025-04-23)", "url": "https://www.cdc.gov/yellow-book/hcp/travel-air-sea/motion-sickness.html", "checked_on": CHECKED},
         {"title": "NHS, Motion sickness (reviewed 2023-06-19)", "url": "https://www.nhs.uk/conditions/motion-sickness/", "checked_on": CHECKED},

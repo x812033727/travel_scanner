@@ -144,11 +144,10 @@ def obj(id, prompt, *lines, chapter=None):
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；答案都不先講）----------
 # The first picture is the problem itself: the password about to be typed on the café's network.
 obj("cafe-tablet", "Close-up of a child's two small hands holding " + TABLET + " on a sunny café table beside a mug of cocoa, a big bright window behind",
-    k("所長，我在咖啡店！", "急著報案的語氣"), k("我要用平板連免費網路，登入遊戲。"),
+    k("媽媽說，網址開頭要是 HTTPS，", "認真轉述"), k("才能打遊戲密碼。"),
     chapter="咖啡店裡，網址多一個 S")
 # Thumbnail shot (fixed before keyframes, explainer-series/README.md): the kid big and centred, the tablet in hand.
 kid("kid-cafe-q", K("holding a small tablet up in front of her chest with both hands and frowning at it in puzzlement, in the exact centre of the picture", where=CAFE),
-    k("媽媽叫我先看網址，", "認真轉述"), k("開頭要是 HTTPS，才能打密碼。"),
     k("可是不就多一個 S？", "不服氣"))
 chief("chief-listen", C("leaning forward with a curious smile, one hand on her chin", close=True),
       c("你覺得多一個 S，沒差多少？", "接住上一句"),
@@ -162,7 +161,7 @@ kid("kid-main-q", K("looking down at a small tablet in her hands with a thinking
 
 # ---------- 第一章：密碼要經過好多人的手 ----------
 kid("kid-direct-guess", K("pointing out through the glass door at the busy sunny street outside with a confident grin", close=True, where="standing by the glass door of a cosy café with a tall potted plant,"),
-    k("是路上不一樣？", "想了一下"), k("密碼不是直接飛到遊戲公司嗎？", "很有把握的錯猜", "S:direct"), chapter="密碼要經過好多人的手")
+    k("密碼不是直接飛到遊戲公司嗎？", "很有把握的錯猜", "S:direct"), chapter="密碼要經過好多人的手")
 obj("router-shelf", "Close-up of a small plain white wireless router with two short antennas and tiny green lights on a wooden café shelf beside a potted plant",
     c("不是喔。它先到咖啡店的無線網路機器，", "接住上一句", "P:direct"),
     c("再交給網路公司，一站轉一站，"),
@@ -181,7 +180,7 @@ chief("chief-chrome-help", C("holding a small phone up beside her face with a se
       c("Chrome 瀏覽器說明寫：沒有私人連線的網站，"),
       c("別人可能看到、也可能改掉你傳的東西。", None, "P:see"))
 kid("kid-nice", K("crossing her arms with a doubtful pout", where=CLASS),
-    k("可是我的同學", "不服氣"), k("人都很好啊！"))
+    k("可是同學都很好啊！", "不服氣"))
 chief("chief-assume", C("nodding with a kind smile, both palms open", close=True),
       c("大部分是。可是你沒辦法挑，誰來幫你傳。"))
 chief("chief-tls", C("holding up " + LETTER + " and pointing at its red seal with a serious smile"),
@@ -227,7 +226,7 @@ chief("chief-control", C("shaking her head with a calm honest smile", close=True
       c("沒有。它查的是，你管不管得了這個網址；", None, "P:good"),
       c("不是網站的人好不好、內容能不能信。"))
 kid("kid-gem", K("gasping with wide surprised eyes and one hand over her open mouth, a small tablet in her other hand", close=True, where=CAFE),
-    k("啊！同學剛剛傳給我一個連結，", "突然想起"),
+    k("同學剛剛傳給我一個連結，", "突然想起"),
     k("說點進去送免費寶石！"),
     k("它也是 HTTPS 耶！", "句尾上揚", "S:gem"))
 chief("chief-phishing", C("raising her eyebrows with a careful warning smile, one finger raised"),
@@ -237,8 +236,7 @@ chief("chief-phish-def", C("pretending to cast a tiny fishing rod with one hand 
       c("釣魚網站，就是假裝成別人、騙你打密碼的網站。"),
       c("騙子替名字很像的假網站，一樣領得到證件。"))
 obj("tablet-lock", "Close-up of " + TABLET + " lying on a sunny café table",
-    c("瀏覽器很早就在網址旁邊畫一個小鎖頭，代表連線有加密。"),
-    k("我看到的，", "指著平板"), k("就是這個鎖頭！"))
+    c("瀏覽器很早就在網址旁邊畫一個小鎖頭，代表連線有加密。"))
 chief("chief-tune", C("holding a small tablet up beside her face with a thoughtful smile", close=True),
       c("他們的研究發現，"),
       c("只有百分之十一的受試者，真的懂這個鎖頭的意思。", None, "P:lock"))
@@ -253,7 +251,7 @@ chief("chief-root", C("holding both hands together in front of her chest with a 
       c("你的瀏覽器或手機系統，一開始就內建一組根憑證，", None, "P:chain"),
       c("像你本來就認得校長，看到校長的章就放心。"))
 kid("kid-mistake-q", K("biting her lip with a worried frown, both hands holding a small tablet", where=CAFE),
-    k("要是機構不小心，", "擔心"), k("發錯了證件呢？", "句尾上揚", "S:ct"))
+    k("要是機構發錯證件呢？", "擔心", "S:ct"))
 obj("glass-case", "Wide shot of a tall glass display cabinet in a bright school hallway, filled with neat rows of identical plain cream cards standing on glass shelves, sunlight through a window",
     c("現在 Chrome、Safari 這些瀏覽器要求，"),
     c("憑證要登記在公開的帳本上。"),
@@ -267,7 +265,6 @@ chief("chief-warning", C("holding up one flat palm like a polite stop gesture, a
       c("像 Chrome，會整頁跳出警告：你的連線不是私人連線。", None, "P:fail"),
       c("它的說明寫，問題可能出在網站、網路，或你的裝置。"))
 kid("kid-carry-q", K("holding a small sealed cream envelope up with a thinking frown", close=True, where=CLASS),
-    k("好，找對人了。", "點頭"),
     k("那信要怎麼封，", "追問"), k("才不會被同學拆開？", "章尾停住，句尾上揚", "S:carry"))
 
 # ---------- 第三章：先調顏色，再封信 ----------
@@ -287,7 +284,7 @@ obj("two-cups", "Close-up of two identical small round paint cups filled with th
     c("第一步就是交換這種資料，之後的往來全部封起來，"),
     c("連剛剛那張證件，也是封好才送。"))
 kid("kid-record-q", K("holding a small toy cassette recorder up beside her ear with a sly grin", where=CLASS),
-    k("要是有人先把整段錄下來，", "想到壞點子"), k("以後再慢慢解呢？", "句尾上揚", "S:record"))
+    k("要是先錄下來，", "想到壞點子"), k("以後再解呢？", "句尾上揚", "S:record"))
 chief("chief-erase", C("brushing her two palms against each other as if wiping them clean, a confident smile", close=True),
       c("這次調出的顏色，用完就丟。", "接住上一句"),
       c("規格寫：就算以後網站的印章被偷，"),
@@ -298,7 +295,7 @@ chief("chief-stamp", C("pressing an imaginary stamp down onto her open palm with
       c("可以。所以光給證件不夠，網站還要當場蓋章。", "接住上一句"),
       c("影印的人，沒有那顆印章。", None, "P:copy"))
 kid("kid-swap-q", K("pretending to secretly swap two small paint cups on a desk with a mischievous grin", where=CLASS),
-    k("要是傳信的同學，", "追問"), k("偷偷把顏色換掉呢？", "句尾上揚", "S:swap"))
+    k("要是同學偷偷", "追問"), k("把顏色換掉呢？", "句尾上揚", "S:swap"))
 chief("chief-stamp-all", C("sweeping one hand slowly from left to right in front of her with a calm explaining smile", close=True),
       c("網站的印章，是蓋在剛剛整段來回上，包括顏色。"),
       c("瀏覽器拿證件上的圖樣來對；"),
@@ -319,8 +316,7 @@ chief("chief-numbers", C("counting on her fingers with a thoughtful smile", clos
       c("編號不寫在外面，是混進封條裡。"))
 obj("letter-row", "Wide shot of a neat row of six small cream envelopes each closed with a round red wax seal, lined up along a sunny wooden windowsill",
     c("以前的舊信再送一次，或是順序被調換，", "接住上一句"),
-    c("編號就對不上，打不開。", None, "P:replay"),
-    k("所以每一封，", "開心"), k("都不能重寄！"))
+    c("編號就對不上，打不開。", None, "P:replay"))
 chief("chief-exception", C("holding up one finger with an honest careful smile"),
       c("有一個例外，規格自己用「重要提醒」標了出來。"),
       k("什麼例外？", "句尾上揚", "S:early"))
@@ -331,13 +327,11 @@ chief("chief-early", C("frowning slightly with a thoughtful serious face, one ha
       c("規格說，這封搶先的信，不保證不會被重送；"),
       c("有人抄下來再寄，可能讓買東西這種事發生兩次。", None, "P:early"))
 kid("kid-hole", K("pointing one finger at a small sealed envelope on a desk with a shocked frown", close=True, where=CLASS),
-    k("那不就是一個洞？", "吃驚"),
-    c("對。所以規格另外寫了幾種方法，讓網站自己擋。"))
+    c("所以規格另外寫了幾種方法，讓網站自己擋。"))
 chief("chief-close", C("waving one hand in a small goodbye gesture with a warm smile", close=True),
       c("還有，寄完的時候，最後一封會說：我講完了。"),
       c("信半路被剪斷，對方才分得出來。"))
 kid("kid-nothing-q", K("hugging a small sealed envelope to her chest with a proud satisfied grin", where=CLASS),
-    k("封條、編號都有了，", "得意"),
     k("路上的人，", "很有把握"), k("什麼都看不到了吧？", "章尾停住，句尾上揚", "S:nothing"))
 
 # ---------- 第四章：封條管不到的地方 ----------
@@ -373,7 +367,7 @@ obj("street-ask-2", "Wide shot of a sunny crossroads with small shops and green 
     c("還記得出發前，問「這個網址在哪裡」那一問嗎？"),
     c("那一問要是沒封，也會露出名字。"))
 kid("kid-gem-back", K("looking down at a small tablet with an uneasy frown, one finger hovering above it", where=CAFE),
-    k("那剛剛那個", "不安"), k("送寶石的連結……"))
+    k("那送寶石的連結……", "不安"))
 chief("chief-endpoint", C("holding one hand flat over her heart with a serious caring face", close=True),
       c("這是最要緊的一點：封條只管路上。", None, "P:limits"),
       c("信到了對方手上，對方全部讀得到。"))
@@ -384,7 +378,7 @@ chief("chief-check-name", C("pointing at a small tablet she holds with an encour
       c("Chrome 的說明也提醒：就算是安全的連線，"),
       c("也要看清楚網址列上的名字，是不是你要去的網站。", None, "P:tell"))
 kid("kid-spot", K("pointing at a small tablet in her other hand with wide eyes and an excited open-mouthed grin", where=CAFE),
-    k("我看到了！", "驚訝"), k("名字多了一個字母！", None, "P:gem"))
+    k("名字多了一個字母！", "驚訝", "P:gem"))
 
 # ---------- 收尾 ----------
 chief("chief-your-turn", C("leaning forward with an inviting grin, one hand open towards the viewer"),
@@ -468,11 +462,10 @@ doc = {
         "category_id": 27, "made_for_kids": False, "default_language": "zh-TW",
         "title": "網址多一個 S，資料在路上差了什麼？｜原來如此事務所",
         "description": "小問在咖啡店用免費網路登入遊戲，媽媽叫她先看網址開頭是不是 https。可是不就多一個 S 嗎？密碼還不是一樣要傳出去？\n\n"
-                       "這一集，所長和小問用「上課傳信」來想：信要經過好幾個同學的手，就像你的資料要經過咖啡店的機器和網路公司。"
-                       "先看怎麼確定對面真的是那個網站（網站的證件、免費發證件的機構只查你管不管得了網址、一路簽到瀏覽器內建的根憑證、公開的登記帳本），"
-                       "再看兩邊怎麼在大家眼前調出只有彼此知道的秘密、怎麼把每封信封好又編上號，以及規格自己承認的例外；"
-                       "最後看封條管不到的地方：信有多厚、寄給哪個網站，還有最重要的——HTTPS 只保護路上，不保證網站是好人，詐騙網站一樣有。\n\n"
-                       "調顏料只是比喻，真正的做法是數學；插圖由 AI 生成，是示意。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
+                       "這一集，所長和小問用「上課傳信」來想：你的密碼要經過好幾個同學的手，才到得了網站。"
+                       "路上的人看不看得到？你怎麼知道，對面真的是那個網站？網址旁邊的小鎖頭，又代表什麼？"
+                       "還有，有些事這個 S 根本不管——是哪些事？\n\n"
+                       "插圖由 AI 生成，是示意。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["HTTPS", "TLS", "網路安全", "憑證", "加密", "釣魚網站", "科普", "原來如此事務所"]},
     "thumbnail": {"template": "thumb", "data": {"headline": "多一個 S\n**差在哪？**", "sub": "密碼在路上，誰看得到", "shot": "kid-cafe-q", "subject": "right"}},
     "sources": [

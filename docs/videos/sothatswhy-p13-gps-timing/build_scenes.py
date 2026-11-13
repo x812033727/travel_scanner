@@ -131,7 +131,7 @@ def obj(id, prompt, *lines, chapter=None):
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；答案都不先講）----------
 # The first picture is the problem itself: the phone with the blue dot, between the tall buildings.
 obj("phone-dot", "Close-up of a child's small hand holding " + PHONE + " on a sunny city sidewalk, tall plain glass buildings with smooth unmarked walls rising behind",
-    k("所長，我跟你說！", "急著報案的語氣"), k("我走路去公園找同學，"),
+    k("我走路去公園找同學，"),
     k("地圖上的藍點，", "不可思議"), k("突然跳到對面那條街！", None, "S:jump"), chapter="大樓中間，藍點跳到對街")
 # Thumbnail shot (fixed before keyframes, explainer-series/README.md): the kid big and centred, the phone in hand.
 kid("kid-dot-puzzled", K("holding a small phone up in front of her chest with both hands and frowning at it in puzzlement, in the exact centre of the picture", where=STREET),
@@ -176,13 +176,12 @@ kid("kid-travel-q", K("shading her eyes with one hand and gazing up at the sky w
     k("衛星那麼遠，", "好奇"), k("訊號要走多久？", "句尾上揚", "S:travel"))
 obj("satellite-high", "Wide shot of " + SAT + ", a tiny sunny city with tall glass buildings far below under the clouds",
     c("衛星大約在兩萬公里高。訊號從衛星跑到你手上，"),
-    c("通常只要六十到九十毫秒，一毫秒是千分之一秒。", "數字放慢", "P:travel"),
-    k("一眨眼都不到！", "驚訝"))
+    c("通常只要六十到九十毫秒，一毫秒是千分之一秒。", "數字放慢", "P:travel"))
 chief("chief-light", C("sweeping one flat hand quickly past her face with a bright amazed smile"),
       c("因為它跟光跑得一樣快，一秒大約三十萬公里。"),
       c("所以剛剛那百萬分之一秒，"), c("光就跑了大約三百公尺，不是一兩公尺。", None, "P:micro"))
 kid("kid-rel-q", K("holding " + WATCH + " up to her ear with a curious face", close=True, where=PARK),
-    k("差一點點都不行！", "驚訝"), k("那衛星的錶，", "追問"), k("真的那麼準嗎？", "句尾上揚", "S:relativity"))
+    k("那衛星的錶，", "追問"), k("真的那麼準嗎？", "句尾上揚", "S:relativity"))
 chief("chief-rel", C("holding a small golden pocket watch with a smooth plain face up beside her face, a curious smile"),
       c("原子鐘很準，可是還有一件事要修。"),
       c("從地面看，它走得比較快，原因很有名：相對論。"))
@@ -356,10 +355,9 @@ chief("chief-cost", C("raising one hand with an honest careful smile", close=Tru
       c("衛星一直在動，時間錯一點，算出的衛星位置就錯。"))
 chief("chief-800", C("spreading her arms wide apart with a serious amazed face"),
       c("一篇導航期刊的論文，引用這個方法發明人的估算："),
-      c("時間每差一秒，算出的距離就錯大約八百公尺。"),
-    k("又是時間！", "驚訝"))
+      c("時間每差一秒，算出的距離就錯大約八百公尺。"))
 chief("chief-fifth", C("counting on her fingers with an encouraging smile", close=True),
-      c("對。所以有些手機把現在是哪一刻，也當成要算的答案。"),
+      c("所以有些手機把現在是哪一刻，也當成要算的答案。"),
       c("這是第五個不知道的數，要至少五顆衛星。", None, "P:cost"))
 obj("corner-phone", "Close-up of a child's small hand holding " + PHONE + " at a sunny street corner, tall smooth glass towers rising behind",
     c("你在街角一打開就看到的藍點，可能就是這樣算出來的。"),
@@ -445,7 +443,7 @@ doc = {
                        "最後是剛開地圖時為什麼要等，以及手機怎麼靠網路省下等待，有些手機卻得多找一顆衛星。\n\n"
                        "畫圓圈找交點只是示意，真正的接收機是把位置和時間一起估算出來；插圖由 AI 生成，是示意，不是實際的衛星位置。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["GPS", "衛星定位", "手機地圖", "原子鐘", "多路徑", "電離層", "相對論", "科普", "原來如此事務所"]},
-    "thumbnail": {"template": "thumb", "data": {"headline": "藍點\n**跳到對街？**", "sub": "差百萬分之一秒，差三百公尺", "shot": "kid-main-q", "subject": "right"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "藍點\n**跳到對街？**", "sub": "差百萬分之一秒，差多遠？", "shot": "kid-main-q", "subject": "right"}},
     "sources": [
         {"title": "GPS.gov, GPS Accuracy (FAQ, current page)", "url": "https://www.gps.gov/node/70", "checked_on": CHECKED},
         {"title": "GPS.gov, Frequently Asked Questions (satellites are one-way beacons)", "url": "https://www.gps.gov/faq", "checked_on": CHECKED},

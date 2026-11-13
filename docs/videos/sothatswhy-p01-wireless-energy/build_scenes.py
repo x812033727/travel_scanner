@@ -141,25 +141,22 @@ def obj(id, prompt, *lines, chapter=None):
 
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；結果都不先講）----------
 obj("gate-tap", "Close-up of a child's small hand holding " + CARD + " flat against " + GATE + ", a soft glow around the pad",
-    k("所長！我搭捷運來的！", "急著報案的語氣"),
-    k("卡片在閘門上一貼，就嗶一聲。", "興奮"), chapter="一路沒插線，鍋子先滾了")
+    k("卡片在閘門上一貼，就嗶一聲。", "興奮"),
+    k("沒插線，電怎麼跑過去的？", "句尾上揚", "S:jump"), chapter="一路沒插線，鍋子先滾了")
 chief("chief-cook", C("stirring a pot with long chopsticks with a cheerful smile, " + KITCHEN.rstrip(",")),
-    c("歡迎。我用電磁爐煮麵，快好了。", "笑"),
-    k("媽媽的手機快沒電了。"))
+    c("歡迎。我用電磁爐煮麵，快好了。", "笑"))
 # Thumbnail shot (fixed before keyframes): the kid big and centred, the card in hand.
 kid("kid-main-q", K("holding up " + CARD + " in one hand beside her face and looking at the viewer with wide curious eyes, in the exact centre of the picture", where=OFFICE),
-    k("可以放你的充電板嗎？", "句尾上揚"),
+    k("媽媽的手機能放充電板嗎？", "句尾上揚"),
     c("可以，放上去就好。"))
 obj("phone-pad", "Close-up of " + PHONE + " lying face up on " + PAD + ", a tiny soft green glow on the edge of the pad",
-    k("咦？它沒插線，也在充電耶！", "驚訝"))
+    k("它沒插線，也在充電！", "驚訝"))
 obj("pot-boil", "Close-up of " + POT + " on " + HOB + ", the noodle soup bubbling, the glass around the pot clean and shiny",
-    k("你的鍋子也滾了！", "指著"),
     c("我把手靠近鍋子旁邊的爐面玻璃，不覺得燙。"),
     c("你先別碰，等一下告訴你為什麼。", "叮嚀", "S:coolglass"))
 kid("kid-puzzle", K("counting on her fingers with a puzzled frown", where=OFFICE),
     k("卡片、手機、鍋子都沒插線，", "想不通"),
-    k("電怎麼跑過去的？", "句尾上揚", "S:jump"),
-    k("而且只有鍋子變熱？", "句尾上揚", "S:heat"))
+    k("為什麼只有鍋子變熱？", "句尾上揚", "S:heat"))
 chief("chief-energy", C("holding up three fingers with a bright smile"),
     c("這三樣東西，都是隔空收到了能量。"),
     k("能量是什麼？", "句尾上揚"),
@@ -175,7 +172,7 @@ chief("chief-hooks", C("counting on her fingers with a playful mysterious smile"
 chief("chief-not-fly", C("shaking her head gently with a kind smile, one palm raised", close=True),
     c("不是像球那樣飛過去喔。", "接住上一句"),
     c("你剛剛嗶的那張卡片，裡面有電池嗎？"),
-    k("一定有！不然哪來的電？", "篤定的錯猜", "S:battery"), chapter="卡片貼上閘門那一下")
+    k("一定有！", "篤定的錯猜", "S:battery"), chapter="卡片貼上閘門那一下")
 obj("card-xray", "Close-up of " + XCARD + ", on a plain pale cream background",
     c("一家做感應卡晶片的廠商說，它不需要電池。", None, "P:battery"),
     c("卡片裡藏著一圈一圈的細線，接著一顆小晶片。"))
@@ -193,15 +190,13 @@ chief("chief-field2", C("cupping both hands around an empty space as if holding 
     c("磁鐵旁邊那圈看不見、能吸住鐵的範圍，就是磁場。"),
     c("這類感應卡用的磁場，一秒鐘來回變一千三百多萬次。", "數字放慢"))
 obj("card-near", "Close-up of " + XCARD + " held just above " + GATE + ", soft pale blue rings of light passing through the card",
-    k("好快！", "驚訝"), k("可是跟卡片有什麼關係？", "句尾上揚"),
+    k("跟卡片有什麼關係？", "句尾上揚"),
     c("一直在變的磁場，穿過卡片那圈細線，"),
     c("就會推著線裡的電，跑起來。", None, "P:where"))
 chief("chief-basin", C("standing " + SINK + " with a cheerful smile, one hand resting on the rim of the basin"),
-    k("看不見，我想不出來。", "苦惱"),
     c("那我們到洗手台。這盆水的那一頭，放一個小水車。"),
     c("我的手在這一頭，一前一後一直晃。"))
 obj("wheel-turn", "Wide shot of " + BASIN + " seen from above, gentle round ripples moving across the water towards " + WHEEL + " at the far end, the wheel turning",
-    k("水一晃過去，水車就轉了！", "驚喜"),
     c("我的手，就像閘門那圈線；晃的水，像一直變的磁場。"))
 chief("chief-map", C("swaying one hand back and forth over a big blue plastic basin of water with a pleased smile"),
     c("小水車，就是卡片裡那圈細線。"),
@@ -212,18 +207,18 @@ obj("wheel-stop", "Wide shot of " + BASIN + " seen from above, the water flat an
 chief("chief-chip-wake", C("giving a small thumbs-up with a pleased smile"),
     c("卡片收到這一點電，晶片就醒過來，"),
     c("跟進站的閘門交換資料，它才嗶一聲讓你過。"),
-    k("沒有電池，卡片怎麼回答？", "句尾上揚", "S:talk"))
+    k("卡片怎麼回答？", "句尾上揚", "S:talk"))
 obj("card-talk", "Close-up of " + XCARD + " held just above " + GATE + ", the soft pale blue rings of light gently pulsing brighter and dimmer",
     c("它不用自己發出訊號，只是讓閘門的磁場，", "接住上一句"),
     c("被它一下多拿一點、一下少拿一點。"))
 chief("chief-talk", C("tapping one ear lightly with a knowing smile", close=True),
     c("閘門感覺到這些變化，就讀懂卡片的回答。", None, "P:talk"),
-    k("那卡片離開閘門以後呢？", "句尾上揚", "S:after"))
+    k("卡片離開以後呢？", "句尾上揚", "S:after"))
 chief("chief-after", C("holding " + CARD + " far out to one side at arm's length with a gentle smile"),
     c("還記得它沒有電池嗎？離開那個磁場，就沒電可用了。", None, "P:after"),
     c("它不存電，收到的電，當下就用掉。"))
 kid("kid-store-q", K("looking at " + PHONE + " in her hand with a curious frown", where=OFFICE),
-    k("那媽媽的手機呢？", "追問"), k("也是收到就用掉嗎？", "章尾停住，句尾上揚", "S:store"))
+    k("手機也是收到就用掉嗎？", "章尾停住，句尾上揚", "S:store"))
 
 # ---------- 第二章：把媽媽的手機放上充電板 ----------
 obj("pad-coils", "Close-up of " + PHONE + " lying face up on " + PAD + ", seen from the side, a soft pale blue glow between the phone and the pad",
@@ -231,10 +226,9 @@ obj("pad-coils", "Close-up of " + PHONE + " lying face up on " + PAD + ", seen f
     c("充電板裡有一圈線，手機背面裡面也有一圈。"), chapter="把媽媽的手機放上充電板")
 chief("chief-same", C("pointing at a round plain white charging pad on the desk beside her with a bright smile"),
     c("還記得卡片嗎？充電板的磁場也一直在變，"),
-    c("推著手機那圈線裡的電跑起來。"),
-    k("就像那個小水車！", "開心"))
+    c("推著手機那圈線裡的電跑起來。"))
 chief("chief-back-forth", C("moving one hand left and right like a pendulum with a thoughtful smile", close=True),
-    c("對。可是推出來的電，一下往這邊、一下往那邊。"),
+    c("可是推出來的電，一下往這邊、一下往那邊。"),
     k("那樣不能充電嗎？", "句尾上揚", "S:rect"))
 chief("chief-rect", C("holding up one finger with a careful smile"),
     c("電池要的，是一直往同一邊走的電。"),
@@ -254,13 +248,13 @@ obj("wheel-pump", "Wide shot of " + BASIN + " seen from above, " + WHEEL + " at 
     k("那瓶子滿了怎麼辦？", "句尾上揚", "S:full"))
 chief("chief-full", C("holding a plain dark-grey smartphone up beside her face with a knowing smile", close=True),
     c("手機會傳話給充電板：電池滿了，可以停了。", None, "P:full"),
-    k("我的卡片也放上去充電！", "興奮", "S:cardpad"))
+    k("卡片也放上去充電！", "興奮", "S:cardpad"))
 chief("chief-no", C("holding up one hand like a gentle stop with a kind but firm smile", close=True),
     c("不行喔。做手機的公司在說明裡寫，中間別夾東西。", "認真"),
     c("卡片夾在中間，裡面的晶片可能會壞掉。", None, "P:cardpad"))
 chief("chief-no2", C("shaking her head gently with a soft smile"),
     c("還記得嗎？卡片沒有電池，本來就不用充電。"),
-    k("好吧。那手機會變熱嗎？", "句尾上揚", "S:phonewarm"))
+    k("那手機會變熱嗎？", "句尾上揚", "S:phonewarm"))
 obj("phone-warm", "Close-up of " + PHONE + " lying face up on " + PAD + ", faint soft wavy shimmer of warm air above the phone",
     c("會一點點。說明也寫，充電時手機可能稍微變暖。", None, "P:phonewarm"),
     c("線圈和整流器在整理電的時候，有一點會變成熱。"))
@@ -299,10 +293,9 @@ chief("chief-glasspot", C("holding up " + GPOT + " in both hands with a playful 
     c("所以剛放過鍋子的地方，千萬別摸。", "叮嚀"),
     c("還記得我說要換一口玻璃鍋嗎？你看。"))
 obj("glasspot-hob", "Close-up of " + GPOT + " sitting on " + HOB + ", the water perfectly calm and clear",
-    c("一樣的爐子，玻璃鍋裡的水，就是熱不起來。", None, "P:glass"),
-    k("跟剛剛那塊玻璃一樣！", "搶答"))
+    c("一樣的爐子，玻璃鍋裡的水，就是熱不起來。", None, "P:glass"))
 chief("chief-metal", C("tapping the side of a shiny steel pot with one finger and a bright smile"),
-    c("對。鍋子要是金屬，電流才繞得起來。"),
+    c("鍋子要是金屬，電流才繞得起來。"),
     k("那金屬鍋都可以嗎？", "句尾上揚", "S:metal"))
 obj("pots-row", "Wide shot of three empty cooking pots side by side on a wooden table, a dark iron pot, a shiny steel pot and a pale silver pot, a plain pale cream wall behind",
     c("也不是。教科書說，鍋底要是鐵或鋼這類材料。"),
@@ -315,12 +308,12 @@ kid("kid-try-mag", K("bouncing on her toes with an excited grin, both fists clen
     k("我回家拿磁鐵試！", "興奮"),
     c("可以，但要等鍋子冷了、拿下爐子再試。", "叮嚀"))
 kid("kid-cardcool-q", K("holding " + CARD + " up beside her cheek with a thinking face", close=True, where=KITCHEN),
-    k("那卡片的細線也有電在跑，", "想不通"), k("為什麼卡片不會燙？", "句尾上揚", "S:cardcool"))
+    k("那卡片為什麼不會燙？", "句尾上揚", "S:cardcool"))
 chief("chief-cardcool", C("holding out both hands like a balance with a thoughtful smile"),
     c("因為卡片收到的電，只有一點點。"),
     c("電磁爐卻是專門把能量灌進鍋底，讓它變成熱。", None, "P:cardcool"))
 obj("phone-slid", "Close-up of " + PHONE + " lying face up half off the edge of " + PAD + ", slightly crooked",
-    k("咦？媽媽的手機剛剛震了一下，", "發現"), k("好像沒在充了！", "章尾停住", "S:stopped"))
+    k("手機震了一下，沒在充了！", "章尾停住", "S:stopped"))
 
 # ---------- 第四章：手機往旁邊挪一點點 ----------
 chief("chief-slid", C("bending forward and looking down at the desk with a curious smile", close=True),
@@ -328,10 +321,8 @@ chief("chief-slid", C("bending forward and looking down at the desk with a curio
     c("手機的說明真的寫著：震動可能讓手機移位，"), chapter="手機往旁邊挪一點點")
 chief("chief-move-wheel", C("standing " + SINK + " and gently pushing a small yellow toy water wheel towards one corner of the basin"),
     c("充電板就可能停止供電。", None, "P:stopped"),
-    k("只挪一點點耶！", "不敢相信"),
     c("還記得水盆嗎？我把小水車，挪到角落去。"))
 obj("wheel-corner", "Wide shot of " + BASIN + " seen from above, gentle ripples crossing the middle, " + WHEEL + " pushed into one far corner, turning only a little",
-    k("它轉得好慢！", "驚訝"),
     c("兩圈線對得越正，穿過去的磁場就越多；"))
 chief("chief-crooked", C("tilting one flat hand sideways with a thoughtful smile", close=True),
     c("一歪掉，能接到的就少了。", None, "P:shift"),
@@ -363,7 +354,7 @@ obj("pad-watch", "Close-up of " + PHONE + " lying neatly in the middle of " + PA
     k("那我拿硬幣試試看！", "興奮"))
 chief("chief-coin-no", C("holding up one hand like a gentle stop with a kind but firm smile", close=True),
     c("不行喔。金屬會變燙，硬幣、鋁箔都別放上去。", "認真"),
-    k("好啦。那電怎麼隔空過去？", "章尾停住，句尾上揚"))
+    k("那電怎麼隔空過去？", "章尾停住，句尾上揚"))
 
 # ---------- 收尾 ----------
 chief("chief-your-turn", C("leaning forward with an inviting grin, one hand open towards the viewer"),
@@ -447,9 +438,8 @@ doc = {
         "category_id": 27, "made_for_kids": False, "default_language": "zh-TW",
         "title": "卡片不燙、鍋子卻熱：電怎麼隔空過去？｜原來如此事務所",
         "description": "小問搭捷運來事務所：交通卡在閘門上一貼就嗶一聲，媽媽的手機放上充電板就開始充電，所長的鍋子在電磁爐上煮滾了，旁邊的玻璃卻不燙。三樣東西都沒有插線，電怎麼跑過去的？為什麼只有鍋子變熱？\n\n"
-                       "這一集，所長拿一盆水和一個小水車來想：手在這一頭一直晃，那一頭的水車就轉；手一停，水車也停。閘門、充電板和電磁爐的線圈裡，電一下往這邊、一下往那邊跑，旁邊就有一個一直在變的磁場，穿過附近的線圈或金屬，推著裡面的電跑起來。"
-                       "收到以後，三樣東西做的事不一樣：感應卡沒有電池，靠這一點電讓晶片醒來回答閘門；手機用整流器把電整理好，存進電池；鍋子自己就是接收的那一端，電流在鍋底繞圈圈，變成熱。"
-                       "對歪了、離遠了，能接到的就變少，所以手機要放在充電板中間、卡片要貼近閘門、鍋子要放在爐子中間。\n\n"
+                       "這一集，所長拿一盆水和一個小水車來想：手在這一頭一直晃，那一頭的水車為什麼會轉？手一停下來，又會怎樣？"
+                       "沒有電池的卡片，怎麼回答閘門？手機只往旁邊挪一點點，為什麼就不充了？換一口玻璃鍋放上電磁爐，水熱得起來嗎？\n\n"
                        "片中的閘門、卡片、手機、充電板、電磁爐與水盆都是 AI 生成的示意插圖，不是實際的產品或結構圖。請不要把卡片、硬幣、鋁箔或其他金屬放在充電板或電磁爐上試；剛放過鍋子的爐面會燙。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["無線充電", "電磁爐", "感應卡", "交通卡", "磁場", "電磁感應", "渦電流", "科普", "原來如此事務所"]},
     "thumbnail": {"template": "thumb", "data": {"headline": "卡片不燙\n**鍋子卻熱？**", "sub": "電怎麼隔空跑過去", "shot": "kid-main-q", "subject": "right"}},
