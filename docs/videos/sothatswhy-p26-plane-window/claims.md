@@ -8,7 +8,7 @@
 
 ## 先看這裡：找不到來源、因此沒講或小心講的事
 
-- **素材審視點名的兩個缺口都補了**：(1) 客艙加壓與壓差——美國聯邦航空總署（FAA）《Pilot's Handbook of Aeronautical Knowledge》第 7 章〈Pressurized Aircraft〉（[1]），含壓力換算表與壓差定義；(2) 彗星號以外的現代設計與檢查——FAA 事故教材的 fail-safe／damage tolerance 段落（[2]）、美國聯邦法規 14 CFR 25.571（[13]，設計、製造瑕疵與檢查），以及 Slate 專欄（作者是航空公司機長）引窗戶製造商 GKN Aerospace 技術總監的三層窗說明（[14]）。
+- **素材審視點名的兩個缺口都補了**：(1) 客艙加壓與壓差——美國聯邦航空總署（FAA）《Pilot's Handbook of Aeronautical Knowledge》第 7 章〈Pressurized Aircraft〉（[1]），含壓力換算表與壓差定義；(2) 彗星號以外的現代設計與檢查——FAA 事故教材的 fail-safe／damage tolerance 段落（[2]）、美國聯邦法規 14 CFR 25.571（[13]，設計、製造瑕疵與檢查），以及 Slate 專欄（作者是民航機飛行員）引窗戶製造商 GKN Aerospace 技術總監的三層窗說明（[14]）。
 - **「方角比圓角集中幾倍」沒有數字**：只有「被拉的大薄板上開圓洞，洞邊約是遠處的三倍」（[3]，Kirsch 解）有來源；方角、尖角只說「大得多」「越尖越厲害」（[2]、[4]），不給倍數，也不畫應力色圖（企劃的畫面規則）。
 - **紙條拉一拉（p075–p076）沒有實測**：是撰稿的桌上示範，照 [4]、[9]「缺口／裂縫尖端應力集中、玻璃棒從缺口斷」寫成「方洞那條從角裂開」。第二版照 verify-1 F05 在 p009 寫明兩個洞**一樣寬**（兩條紙也一樣寬），免得剩下的紙比較窄的那條先破。插圖是示意。開拍前照這個條件實拉幾次並記錄；結果不同就改 p075–p078 與 `strips-pull`。
 - **迴紋針（p082–p083）是常識示範**，而且所長在 p090 說明它和機身不一樣：機身每次被撐，不會像迴紋針那樣被扳彎（[6]：疲勞發生在低於降伏強度的反覆應力）。
@@ -36,7 +36,7 @@
 - [11] P. A. Withey, *Fatigue failure of the de Havilland Comet I*（Failure Analysis Case Studies II／Engineering Failure Analysis, 1997）：200（199,329 bytes），讀結論段。
 - [12] P. A. Withey, *The de Havilland Comet*（RAeS Hamburg Branch 演講投影片，2019-01-24，HAW Hamburg 網站）：200（3,489,479 bytes），讀 Comet I 改裝、Modern Analysis、Comet 4。
 - [13] 14 CFR 25.571 Damage-tolerance and fatigue evaluation of structure（eCFR renderer API）：200（18,314 bytes），讀 (a)。
-- [14] Mark Vanhoenacker（航空公司機長），Slate〈What's That Thing: Why are there holes in airplane windows?〉（2015-05）：200（240,515 bytes），讀全文。
+- [14] Mark Vanhoenacker（民航機飛行員），Slate〈What's That Thing: Why are there holes in airplane windows?〉（2015-05）：200（240,515 bytes），讀全文。
 - 素材池 H3060（[7]、[8]、[5]）與 H3061（[9]、[10]）在 2026-11-13 重開讀過；舊查核 `so-thats-why/week4/T07.md` 只當線索。
 
 ---
@@ -227,7 +227,7 @@
 
 ## C27 美國法規：要證明在使用年限內不會因疲勞出大事，製造瑕疵也算，還要訂好檢查讓維修的人照著做【法規】
 
-- **可用說法**：p151–p157、p164（小問的總結，第二版改成「還有剛剛說的，要定期檢查！」具名回呼）
+- **可用說法**：p151–p157、p164（小問的總結，第二版改成「還記得嗎？真的飛機要定期檢查！」具名回呼）
 - **來源**：[13] §25.571(a)
 - **原文**：「An evaluation of the strength, detail design, and fabrication must show that catastrophic failure due to fatigue, corrosion, manufacturing defects, or accidental damage, will be avoided throughout the operational life of the airplane.」「Based on the evaluations required by this section, inspections or other procedures must be established, as necessary, to prevent catastrophic failure, and must be included in the Airworthiness Limitations section of the Instructions for Continued Airworthiness」
 - **注意**：這是美國運輸類飛機（Part 25）的適航規定，片中說「美國的法規」；「讓維修的人照著做」＝ Instructions for Continued Airworthiness 的白話。看牙醫是小問的比喻，所長答「有點像」。插圖 `inspector` 是示意，不是某家公司的實際檢查程序。
