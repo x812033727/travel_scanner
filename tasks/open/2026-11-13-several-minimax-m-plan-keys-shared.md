@@ -25,6 +25,8 @@ scope:
   - apps/web/messages/ko/admin.json
   - apps/web/messages/zh-CN/admin.json
   - apps/web/messages/zh-TW/admin.json
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Several MiniMax M Plan keys shared out by busy and quota
@@ -70,4 +72,6 @@ npm run check:i18n
   left and turn-taking only; a key MiniMax refuses for a text call is not rested until the next
   quota read shows it used up.
 - Extra keys need the first key set; a site with only extra keys reads as not configured.
+- The five admin.json are bound by the duration review (docs/videos/long-form): an independent
+  reviewer agent rebound them (PASS, DURATION_ONLY) after the new copy turned web-checks red.
 - Whether MiniMax's terms allow one person several M Plan accounts was not checked.
