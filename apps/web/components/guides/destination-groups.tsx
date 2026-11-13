@@ -37,14 +37,14 @@ export function DestinationGroups({
   const listing = guideListHref(kind);
   return (
     <section className="mt-12 border-t border-[var(--line)] pt-8" data-testid="destination-groups">
-      <h2 className="text-2xl font-bold tracking-tight">{labels.heading}</h2>
+      <h2 className="text-2xl font-extrabold tracking-tight">{labels.heading}</h2>
       <p className="mt-2 max-w-2xl leading-7 text-[var(--muted)]">{labels.lead}</p>
       <ul className="mt-4 grid gap-4 sm:grid-cols-2">
         {groups.map((group) => (
-          <li key={group.country} className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4">
-            <h3 className="text-lg font-semibold">
+          <li key={group.country} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]">
+            <h3 className="text-lg font-bold tracking-tight">
               <Link
-                className="inline-flex min-h-11 items-center gap-2 text-[var(--teal)] underline underline-offset-4"
+                className="inline-flex min-h-11 items-center gap-2 text-[var(--teal)] underline underline-offset-4 hover:text-[var(--teal-dark)]"
                 href={`${listing}?country=${encodeURIComponent(group.country)}`}
               >
                 {labels.countryAll.replace("{country}", group.label)}

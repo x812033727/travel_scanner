@@ -246,11 +246,14 @@ describe("the lifestyle listing", () => {
 });
 
 describe("what the lifestyle listing tells search engines", () => {
-  it("names the topic hub as canonical for a ?topic= view, and nothing otherwise", async () => {
+  it("names the topic hub as canonical for a ?topic= view, and advertises its Atom feed alongside canonical/hreflang on the plain view", async () => {
     const filtered = await generateMetadata({ params, searchParams: search({ topic: "ai" }) });
     expect(filtered.alternates).toEqual({ canonical: "http://localhost:3000/zh-TW/ai" });
     const plain = await generateMetadata({ params, searchParams: search() });
-    expect(plain.alternates).toBeUndefined();
+    expect(plain.alternates?.canonical).toBe("http://localhost:3000/zh-TW/life");
+    expect(plain.alternates?.types?.["application/atom+xml"]).toEqual([
+      { url: "http://localhost:3000/zh-TW/life/feed.xml", title: expect.any(String) },
+    ]);
   });
 
   it("is indexable unfiltered", async () => {

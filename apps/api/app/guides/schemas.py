@@ -49,6 +49,7 @@ SECTION_KINDS: dict[Section, tuple[Kind, ...]] = {"travel": ("intel", "howto"), 
 # the day the news happened, newest first, undated rows last -- what a news list wants,
 # since a batch import gives a week of stories the same publication time.
 ListSort = Literal["latest", "curated", "news"]
+SearchSort = Literal["relevance", "latest"]
 RevisionAction = Literal["created", "draft_saved", "published", "unpublished", "restored"]
 
 

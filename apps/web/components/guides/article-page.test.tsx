@@ -240,4 +240,48 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
     expect(graphs.map(item => item["@type"])).not.toEqual(expect.arrayContaining(["FAQPage", "DefinedTerm"]));
     expect(graphs.find(item => item["@type"] === "CollectionPage" || item["@type"] === "Article")).not.toHaveProperty("abstract");
   });
+
+  it("emits NewsArticle JSON-LD and renders news_date when the article is a dated news item", async () => {
+    mocks.article.mockResolvedValue({
+      ...state,
+      slug: "claude-code-news-2026-11-12",
+      series: null,
+      news_date: "2026-11-12",
+      topics: [{ slug: "ai-news", label: "AI 新聞" }],
+    });
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" }));
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    expect(graphs.find(item => item["@type"] === "NewsArticle")).toBeTruthy();
+    expect(container.querySelector('time[datetime="2026-11-12"]')?.textContent).toBe("2026-11-12");
+    expect(container.querySelector("details.lg\\:hidden")).not.toBeNull();
+    expect(container.querySelector("aside nav.sticky")).not.toBeNull();
+  });
+
+  it("omits synthetic news-assets placeholder artwork from OpenGraph, Twitter and NewsArticle JSON-LD", async () => {
+    const syntheticHero = {
+      src: "/guides/news-assets/deadbeef1234567890abcdef-hero.webp",
+      alt: "Placeholder",
+      width: 1600,
+      height: 900,
+      credit: { author: "Mokaair", license: "Original editorial artwork", source_url: null },
+    };
+    mocks.article.mockResolvedValue({
+      ...state,
+      slug: "claude-code-news-2026-11-12",
+      series: null,
+      news_date: "2026-11-12",
+      topics: [{ slug: "ai-news", label: "AI 新聞" }],
+      document: { ...document, hero: syntheticHero },
+    });
+    const meta = await guideArticleMetadata({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" });
+    expect(meta.openGraph).toBeUndefined();
+    expect(meta.twitter).toBeUndefined();
+
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" }));
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    const newsGraph = graphs.find(item => item["@type"] === "NewsArticle");
+    expect(newsGraph).not.toHaveProperty("image");
+    expect(container.querySelector("img")).toBeNull();
+  });
 });
+

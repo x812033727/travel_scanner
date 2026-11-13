@@ -388,6 +388,10 @@ body {
     background-color 0.18s,
     color 0.18s;
 }
+.app-filter-chip:hover {
+  border-color: color-mix(in srgb, var(--teal) 45%, var(--line));
+  color: var(--ink);
+}
 .app-filter-chip:active {
   transform: scale(0.96);
 }
@@ -605,9 +609,10 @@ body {
 .site-header {
   /* Unlayered, so this wins over the component's sticky `top-0` utility. */
   top: var(--ad-anchor-top, 0px);
-  border-bottom: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
-  backdrop-filter: blur(20px) saturate(1.2);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 88%, transparent);
+  background: color-mix(in srgb, var(--surface) 88%, var(--paper));
+  box-shadow: 0 4px 20px rgba(16, 42, 43, 0.04);
+  backdrop-filter: blur(20px) saturate(1.25);
 }
 .app-bottom-nav {
   position: fixed;
@@ -3594,8 +3599,10 @@ body:has(.planner-overlay) .premium-mobile-bar { display:none; }
   box-shadow: 0 12px 32px color-mix(in srgb, var(--teal) 18%, transparent);
 }
 .app-summary-card {
-  border: 1px solid color-mix(in srgb, var(--teal) 55%, var(--line));
-  background: var(--teal-soft);
+  border: 1px solid color-mix(in srgb, var(--teal) 42%, var(--line));
+  border-left: 4px solid var(--teal);
+  background: color-mix(in srgb, var(--teal-soft) 52%, var(--surface));
+  box-shadow: var(--shadow-sm);
   font-size: 1.0625rem;
   line-height: 1.8;
 }

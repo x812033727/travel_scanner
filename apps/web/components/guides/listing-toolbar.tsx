@@ -38,7 +38,7 @@ export function ListingToolbar({
   const sortLabel = (value: ToggleSort) => (value === "curated" ? labels.sortCurated : labels.sortLatest);
   return (
     <div
-      className="app-listing-toolbar -mx-5 mt-6 border-b border-[var(--line)] bg-[var(--surface)] px-5 py-3 md:-mx-8 md:px-8"
+      className="app-listing-toolbar -mx-5 mt-6 border-b border-[var(--line)] bg-[var(--surface)]/95 px-5 py-3.5 backdrop-blur-md md:-mx-8 md:rounded-2xl md:border md:px-6 md:shadow-[var(--shadow-sm)]"
       data-testid="listing-toolbar"
     >
       <TopicChips section={section} topics={topics} active={active} allHref={allHref} labels={labels} className="grid gap-2" />
@@ -70,8 +70,8 @@ export type ListingEmptyLabels = SearchFormLabels & { empty: string; hint: strin
  */
 export function ListingEmpty({ section, action, labels }: { section: GuideSection; action: string; labels: ListingEmptyLabels }) {
   return (
-    <div className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-6" data-testid="listing-empty">
-      <p className="leading-7">{labels.empty}</p>
+    <div className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[var(--shadow-sm)]" data-testid="listing-empty">
+      <p className="font-medium leading-7">{labels.empty}</p>
       <p className="mt-1 text-[var(--muted)]">{labels.hint}</p>
       <SearchForm action={action} q="" section={section} labels={labels} />
     </div>

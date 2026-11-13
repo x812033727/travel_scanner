@@ -272,6 +272,37 @@ describe("GuideArticle artwork, dates and contents", () => {
     expect(screen.getByRole("link", { name: "Someone" }).getAttribute("href")).toBe(hero.credit.source_url);
   });
 
+  it("suppresses synthetic automated news placeholder heroes and body diagrams while keeping real images", () => {
+    const syntheticHero = {
+      src: "/guides/news-assets/deadbeef1234567890abcdef-hero.webp",
+      alt: "Placeholder artwork",
+      width: 1600,
+      height: 900,
+      credit: { author: "Mokaair", license: "Original editorial artwork", source_url: null },
+    };
+    const { container } = draw({
+      kind: "life",
+      news_date: "2026-11-12",
+      document: {
+        ...document,
+        hero: syntheticHero,
+        blocks: [
+          ...document.blocks,
+          {
+            type: "image" as const,
+            src: "/guides/news-assets/deadbeef1234567890abcdef-diagram.svg",
+            alt: "Synthetic diagram",
+            width: 1600,
+            height: 900,
+            credit: { author: "Mokaair", license: "Original editorial artwork", source_url: null },
+          },
+        ],
+      },
+    });
+    expect(container.querySelector("img")).toBeNull();
+    expect(screen.queryByText(/Original editorial artwork/)).toBeNull();
+  });
+
   it("dates nothing by itself: no first publication, and no date an expired notice applied until", () => {
     const fresh = draw();
     expect(screen.queryByText(/2026-09-10/)).toBeNull();
@@ -293,6 +324,13 @@ describe("GuideArticle artwork, dates and contents", () => {
   it("shows the reading time the page worded", () => {
     draw({}, { readingTime: "閱讀時間約 4 分鐘" });
     expect(screen.getByText("閱讀時間約 4 分鐘")).toBeTruthy();
+  });
+
+  it("shows news_date on dated news items while keeping evergreen guides undated", () => {
+    const dated = draw({ kind: "life", news_date: "2026-11-12" });
+    const time = dated.container.querySelector("time");
+    expect(time?.getAttribute("datetime")).toBe("2026-11-12");
+    expect(time?.textContent).toBe("2026-11-12");
   });
 
   it("offers a table of contents once there are three sections, pointing at the renderer's ids", () => {
