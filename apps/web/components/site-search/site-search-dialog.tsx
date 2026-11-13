@@ -112,7 +112,7 @@ export function SiteSearchDialog() {
         <SiteSearch variant="dialog" inputRef={input} onNavigate={() => setOpen(false)} />
         {trending.length > 0 ? (
           <div data-testid="search-trending" className="mt-4 border-t border-[var(--line)] pt-3">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">{nav("searchTrending")}</p>
+            <p className="text-[length:var(--text-xs)] font-semibold uppercase tracking-wide text-[var(--muted)]">{nav("searchTrending")}</p>
             <ol className="mt-2 grid gap-1">
               {trending.map((item, index) => (
                 <li key={`${item.kind}:${item.slug}`}>
@@ -121,7 +121,7 @@ export function SiteSearchDialog() {
                     onClick={() => setOpen(false)}
                     className="flex min-h-11 items-center gap-2.5 rounded-xl px-2.5 py-2 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-[var(--paper)] hover:text-[var(--teal)]"
                   >
-                    <span className="inline-grid h-6 w-6 flex-none place-items-center rounded-md bg-[var(--teal-soft)] font-mono text-xs font-bold tabular-nums text-[var(--teal-dark)]">{index + 1}</span>
+                    <span className="inline-grid h-6 w-6 flex-none place-items-center rounded-md bg-[var(--teal-soft)] font-mono text-[length:var(--text-xs)] font-bold tabular-nums text-[var(--teal-dark)]">{index + 1}</span>
                     <span className="line-clamp-1">{item.title}</span>
                   </Link>
                 </li>
@@ -130,21 +130,21 @@ export function SiteSearchDialog() {
           </div>
         ) : null}
         <div data-testid="search-hot-topics" className="mt-4 border-t border-[var(--line)] pt-3">
-          <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">{nav("searchHotTopics")}</p>
+          <p className="text-[length:var(--text-xs)] font-semibold uppercase tracking-wide text-[var(--muted)]">{nav("searchHotTopics")}</p>
           <div className="portal-scroll-strip mt-2 flex items-center gap-2 sm:flex-wrap sm:overflow-visible">
             {QUICK_TOPICS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="inline-flex min-h-11 shrink-0 snap-start items-center whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--paper)] px-3.5 text-xs font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+                className="inline-flex min-h-11 shrink-0 snap-start items-center whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--paper)] px-3.5 text-[length:var(--text-xs)] font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
               >
                 {nav(item.labelKey)}
               </Link>
             ))}
           </div>
         </div>
-        <p className="mt-3 hidden text-xs text-[var(--muted)] lg:block">{nav("searchShortcut", { keys: "⌘K / Ctrl+K" })}</p>
+        <p className="mt-3 hidden text-[length:var(--text-xs)] text-[var(--muted)] lg:block">{nav("searchShortcut", { keys: "⌘K / Ctrl+K" })}</p>
       </div>
     </div>,
     document.body,

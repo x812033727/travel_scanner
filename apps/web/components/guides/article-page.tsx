@@ -108,7 +108,12 @@ export async function guideArticleMetadata(
         ...(state.published_locales.includes("en") ? { "x-default": localeUrl("en", path) } : {}),
       },
     },
-    ...(await socialCard(state.document, parent)),
+    ...(await socialCard(
+      state.document,
+      listingOf(kind, t).name,
+      state.topics.map((topic) => topic.label),
+      parent,
+    )),
   };
 }
 
@@ -122,10 +127,14 @@ export async function guideArticleMetadata(
  * keys are left alone and the site card inherits.
  */
 async function socialCard(
-  document: PublishedGuide, parent?: ResolvingMetadata,
+  document: PublishedGuide,
+  sectionName: string,
+  tags: readonly string[],
+  parent?: ResolvingMetadata,
 ): Promise<Pick<Metadata, "openGraph" | "twitter">> {
   const hero = visibleGuideHero(document.hero);
   if (!hero) return {};
+  const cleanTags = tags.filter(Boolean);
   const inherited = parent ? (await parent).openGraph : null;
   return {
     openGraph: {
@@ -133,6 +142,8 @@ async function socialCard(
       ...(inherited?.locale ? { locale: inherited.locale } : {}),
       ...(inherited?.alternateLocale ? { alternateLocale: inherited.alternateLocale } : {}),
       type: "article",
+      section: sectionName,
+      ...(cleanTags.length ? { tags: [...cleanTags] } : {}),
       publishedTime: document.published_at,
       modifiedTime: document.modified_at ?? document.published_at,
       images: [{ url: hero.src, width: hero.width, height: hero.height, alt: hero.alt }],
@@ -320,7 +331,9 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     ...kindLabels,
     publishedOn: t("guides.publishedOn"),
     updated: t("guides.updated"),
-    sources: t("guides.sources"), checkedOn: t("guides.checkedOn"),
+    sources: t("guides.sources"),
+    checkedOn: t("guides.checkedOn"),
+    sourcesProvenance: t("guides.sourcesProvenance"),
     destination: t("guides.destination"),
     contents: state.series?.current ? seriesCopy(locale).contents : t("guides.contents"),
     adLabel: t("guides.adLabel"),
@@ -428,6 +441,9 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
             abstract: extras.summary?.items ?? null,
             collection: isHub,
             entries: series?.entries.map((item) => ({ name: item.title, path: guideHref(item.kind, item.slug) })),
+            partOfSeries: state.series?.current
+              ? { name: state.series.hub.title, path: guideHref(state.series.hub.kind, state.series.hub.slug) }
+              : null,
           }),
         ]}
       />
@@ -501,7 +517,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
                         >
                           <span
                             aria-hidden
-                            className={`mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md font-mono text-xs font-extrabold tabular-nums ${rankClass}`}
+                            className={`mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md font-mono text-[length:var(--text-xs)] font-extrabold tabular-nums ${rankClass}`}
                           >
                             {index + 1}
                           </span>
@@ -513,7 +529,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
                               {item.title}
                             </Link>
                             {item.topics[0] ? (
-                              <span className="mt-0.5 block text-xs text-[var(--muted)]">
+                              <span className="mt-0.5 block text-[length:var(--text-xs)] text-[var(--muted)]">
                                 {item.topics[0].label}
                               </span>
                             ) : null}

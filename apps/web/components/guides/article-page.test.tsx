@@ -95,6 +95,13 @@ describe("Codex articles on the shared page", () => {
     expect(container.querySelector("details.lg\\:hidden")).not.toBeNull();
     expect(container.querySelector("aside nav.sticky")).not.toBeNull();
     expect(container.querySelectorAll('a[href="/en/life/codex-learning-hub"]').length).toBeGreaterThanOrEqual(2);
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    const lessonGraph = graphs.find(item => item["@type"] === "Article");
+    expect(lessonGraph.isPartOf).toEqual({
+      "@type": "CreativeWorkSeries",
+      name: "Codex hub",
+      url: expect.stringContaining("/en/life/codex-learning-hub"),
+    });
   });
   it("does not fetch a series when the hub translation is unpublished", async () => {
     mocks.article.mockResolvedValue({ ...state, status: "unpublished", document: null });

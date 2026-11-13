@@ -30,6 +30,7 @@ export type GuideArticleLabels = Record<GuideKind, string> & {
   updated: string;
   sources: string;
   checkedOn: string;
+  sourcesProvenance?: string;
   destination: string;
   /** The table of contents heading. */
   contents: string;
@@ -411,6 +412,11 @@ export function GuideArticle({
                 ) : null;
               })}
             </ul>
+            {labels.sourcesProvenance ? (
+              <p className="mt-3 border-t border-[var(--line)] pt-2.5 text-[length:var(--text-xs)] leading-6 text-[var(--muted)]">
+                {labels.sourcesProvenance}
+              </p>
+            ) : null}
           </div>
         </section>
       ) : null}

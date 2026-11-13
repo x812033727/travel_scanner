@@ -76,6 +76,7 @@ describe("a published article", () => {
     expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("成田機場到東京車站怎麼走");
     expect(screen.getByText("Skyliner 最快。")).toBeTruthy();
     expect(screen.getByRole("link", { name: "京成電鐵時刻表" }).getAttribute("href")).toBe("https://www.keisei.co.jp/");
+    expect(screen.getByText(/依據上方所列參考來源與標示之核對日期整理/)).toBeTruthy();
     // The topic chip under the body, and the breadcrumb's topic crumb above it.
     expect(screen.getAllByRole("link", { name: "交通" }).map((link) => link.getAttribute("href"))).toEqual([
       "/guides/topics/transport", "/guides/howto?topic=transport",
@@ -137,6 +138,8 @@ describe("an article with a hero", () => {
     const metadata = await generateMetadata({ params: params() }, parent);
     expect(metadata.openGraph).toMatchObject({
       type: "article",
+      section: "旅遊攻略",
+      tags: ["交通"],
       siteName: "Mokaair",
       locale: "zh_TW",
       alternateLocale: ["en_US", "ja_JP"],

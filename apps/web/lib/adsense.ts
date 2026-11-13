@@ -52,6 +52,34 @@ export function isAdsenseOrigin(value: string): boolean {
   } catch { return false; }
 }
 
+const PRIVATE_VERIFICATION_PREFIXES = [
+  "/admin",
+  "/trips",
+  "/account",
+  "/my",
+  "/alerts",
+  "/login",
+  "/register",
+  "/share",
+  "/share-target",
+  "/line",
+  "/out",
+] as const;
+
+/**
+ * Public locale-stripped paths (`routePathFromRequest`) that may carry the static
+ * `<meta name="google-adsense-account">` verification tag. The meta tag loads no script and
+ * sets no cookies, so Google's site-review crawler can verify ownership on `/` and hubs
+ * without mounting `adsbygoogle.js` outside `(ads-public)`.
+ */
+export function isPublicAdsenseVerificationPath(routePath: string): boolean {
+  const normalized = (routePath || "/").split("?")[0].split("#")[0];
+  if (!normalized.startsWith("/")) return false;
+  return !PRIVATE_VERIFICATION_PREFIXES.some(
+    (prefix) => normalized === prefix || normalized.startsWith(`${prefix}/`),
+  );
+}
+
 /**
  * The only two page shapes that may carry an ad: a travel guide article and a life article.
  *

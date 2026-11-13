@@ -3,8 +3,9 @@ import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   AD_CLEARANCE_BLOCKS, adsenseArticleRoute, adsensePlacements, adsenseRequestGate, BLOCKS_PER_AD,
-  isAdsenseArticlePath, isAdsenseOrigin, isAdsensePublisherId, isAdsenseSlotId, MAX_ADS,
-  MIN_BLOCKS_AFTER, MIN_BLOCKS_BEFORE_WITHOUT_HERO, MIN_BLOCKS_BETWEEN, validAdsenseConfig,
+  isAdsenseArticlePath, isAdsenseOrigin, isAdsensePublisherId, isAdsenseSlotId,
+  isPublicAdsenseVerificationPath, MAX_ADS, MIN_BLOCKS_AFTER, MIN_BLOCKS_BEFORE_WITHOUT_HERO,
+  MIN_BLOCKS_BETWEEN, validAdsenseConfig,
 } from "./adsense";
 import { splitGuideBlocks, type GuideBlock } from "./guides";
 
@@ -45,6 +46,15 @@ describe("which pages may carry an ad", () => {
     ["/zh-TW/guides/intel/a/b", "deeper than an article"],
   ])("refuses %s (%s)", (path) => {
     expect(isAdsenseArticlePath(path)).toBe(false);
+  });
+
+  it("allows static google-adsense-account verification meta on public routes while excluding private/auth/token routes", () => {
+    for (const allowed of ["/", "/guides", "/life", "/life/ai-notes", "/destinations/tokyo", "/about", "/privacy"]) {
+      expect(isPublicAdsenseVerificationPath(allowed)).toBe(true);
+    }
+    for (const blocked of ["/admin", "/admin/settings", "/trips", "/trips/123", "/account", "/share/9f8e7d", "/login", "/register", "/out/guides/x"]) {
+      expect(isPublicAdsenseVerificationPath(blocked)).toBe(false);
+    }
   });
 });
 

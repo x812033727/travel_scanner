@@ -115,7 +115,7 @@ export function ArticleMobileProgress({
               type="button"
               aria-expanded={sheetOpen}
               onClick={() => setSheetOpen((open) => !open)}
-              className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--surface)]/95 px-3.5 py-2 text-xs font-semibold text-[var(--ink)] shadow-[var(--shadow-md)] backdrop-blur-md transition-transform active:scale-95"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--surface)]/95 px-3.5 py-2 text-[length:var(--text-xs)] font-semibold text-[var(--ink)] shadow-[var(--shadow-md)] backdrop-blur-md transition-transform active:scale-95"
             >
               <List className="h-3.5 w-3.5 text-[var(--teal)]" aria-hidden="true" />
               <span>{contentsLabel}</span>
@@ -124,7 +124,7 @@ export function ArticleMobileProgress({
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--teal)] bg-[var(--surface)]/95 px-3.5 py-2 text-xs font-semibold text-[var(--teal-dark)] shadow-[var(--shadow-md)] backdrop-blur-md transition-transform active:scale-95"
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--teal)] bg-[var(--surface)]/95 px-3.5 py-2 text-[length:var(--text-xs)] font-semibold text-[var(--teal-dark)] shadow-[var(--shadow-md)] backdrop-blur-md transition-transform active:scale-95"
           >
             <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
             <span>{backToTopLabel}</span>
@@ -284,7 +284,7 @@ export function ArticleTocRail({
             <button
               type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="inline-flex min-h-11 items-center gap-1.5 text-xs font-semibold text-[var(--muted)] transition-colors hover:text-[var(--teal-dark)]"
+              className="inline-flex min-h-11 items-center gap-1.5 text-[length:var(--text-xs)] font-semibold text-[var(--muted)] transition-colors hover:text-[var(--teal-dark)]"
             >
               <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
               <span>{backToTopLabel}</span>

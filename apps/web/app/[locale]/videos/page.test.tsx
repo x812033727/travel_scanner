@@ -58,10 +58,18 @@ describe("/videos", () => {
     await expect(open({ cursor: "old", kind: "long" })).rejects.toThrow("NEXT_REDIRECT /zh-TW/videos?kind=long");
   });
 
-  it("keeps filtered views out of the index", async () => {
+  it("keeps filtered views and genuinely empty locales out of the index, while leaving API outages indexable", async () => {
     const plain = await generateMetadata({ params: Promise.resolve({ locale: "zh-TW" as const }), searchParams: Promise.resolve({}) });
     expect(plain.robots).toBeUndefined();
     const filtered = await generateMetadata({ params: Promise.resolve({ locale: "zh-TW" as const }), searchParams: Promise.resolve({ kind: "shorts" }) });
     expect(filtered.robots).toEqual({ index: false, follow: true });
+
+    mocks.videos.mockResolvedValueOnce(page({ videos: [], available: true }));
+    const emptyLocale = await generateMetadata({ params: Promise.resolve({ locale: "en" as const }), searchParams: Promise.resolve({}) });
+    expect(emptyLocale.robots).toEqual({ index: false, follow: true });
+
+    mocks.videos.mockResolvedValueOnce(page({ videos: [], available: false }));
+    const outage = await generateMetadata({ params: Promise.resolve({ locale: "en" as const }), searchParams: Promise.resolve({}) });
+    expect(outage.robots).toBeUndefined();
   });
 });

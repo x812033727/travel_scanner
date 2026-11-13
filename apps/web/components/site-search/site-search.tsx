@@ -135,13 +135,13 @@ export function SiteSearch({
             onKeyDown={onKeyDown}
             style={{ paddingInlineStart: inline ? "2.25rem" : "2.75rem" }}
             className={inline
-              ? "app-field min-h-11 w-56 pr-12 text-sm xl:w-72"
+              ? "app-field min-h-11 w-56 pr-14 text-sm xl:w-72"
               : "app-field min-h-14 w-full pr-3 text-base"}
           />
           {inline && !query ? (
             <kbd
               aria-hidden="true"
-              className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 rounded-md border border-[var(--line)] bg-[var(--paper)] px-1.5 py-0.5 font-mono text-[10px] font-medium text-[var(--muted)]"
+              className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 rounded-md border border-[var(--line)] bg-[var(--paper)] px-1.5 py-0.5 font-mono text-[length:var(--text-xs)] font-medium leading-none text-[var(--muted)]"
             >
               ⌘K
             </kbd>
@@ -172,7 +172,7 @@ export function SiteSearch({
             <span className="min-w-0 truncate">{option.title}</span>
             {option.tag ? (
               <span
-                className={`flex-none rounded-full px-2 py-0.5 text-xs ${
+                className={`flex-none rounded-full px-2 py-0.5 text-[length:var(--text-xs)] ${
                   option.kind === "best"
                     ? "bg-[var(--teal-soft)] font-semibold text-[var(--teal-dark)]"
                     : "border border-[var(--line)] bg-[var(--paper)] text-[var(--muted)]"

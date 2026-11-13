@@ -63,7 +63,7 @@ export function ArticleShareBar({
   }
 
   const lineShareHref = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}`;
-  const pillBase = "inline-flex min-h-11 items-center gap-1.5 rounded-full border px-4 py-1.5 text-xs font-semibold transition-colors";
+  const pillBase = "inline-flex min-h-11 items-center gap-1.5 rounded-full border px-4 py-1.5 text-[length:var(--text-xs)] font-semibold transition-colors";
 
   const controls = (
     <div className="flex flex-wrap items-center gap-2">
