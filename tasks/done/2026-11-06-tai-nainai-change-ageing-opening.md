@@ -1,13 +1,13 @@
 ---
 id: 2026-11-06-tai-nainai-change-ageing-opening
 title: 恁祖媽今年18 變更單：老化記號放大＋插鏡、第 1 集開場四鏡
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5
 claimed_at: 2026-11-06T17:15:41Z
 created_at: 2026-11-06T17:15:40Z
-completed_at:
+completed_at: 2026-11-12T16:49:37Z
 branch: claude/intelligent-gates-9n92xm
 depends_on: []
 scope:
@@ -112,3 +112,5 @@ python3 -I docs/videos/series-plans/zhong-tian-qu-qi/production/colab/runs/_scri
 
 - 決策單原本說開場加鏡「用 source 切同一支片段、不多買」是錯的：同一支片段切開是同一個構圖，是跳接；已在 decisions.md 更正。
 - 決策單原本說 B 要每集加一鏡，也錯了：分鏡本來就有。
+
+- 2026-11-12 站主同意結案（claude-opus-5-5-elegant-ritchie 代結）：這張票的工作早在 #2032、#2035 合進 main，認領已過期六天；第 1–8 集新版分鏡與第 9–60 集重寫（#2087）也已延續這些改動。

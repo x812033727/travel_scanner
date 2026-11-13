@@ -30,6 +30,30 @@ bash .agents/skills/minimax-h3-colab/scripts/bootstrap.sh            # token 這
 
 後台那邊：`/admin/ai-accounts`（AI 設定 → 訂閱帳號）多了「Google Colab」區，登入走同一種貼授權碼的流程，卡片直接顯示 `colab usage` 的餘額、每小時耗用與執行中的 runtime；站台每次交出憑證都寫一筆審計（`ai_account.colab_credentials_fetched`，記權杖開頭，不記憑證）。沒有 Colab 權限的影片工具權杖拿到 403 `video_tool_token_no_colab`：重新 `login --colab`，或站主在卡上建權杖時勾「可取得 Colab 帳號憑證」。主機端的安裝與信任邊界在 `ops/ai-accounts/README.md`。
 
+## 2b. 幾個 agent 同時做：一個 agent 一個帳號（2026-11-12）
+
+站主在後台登入幾個 Colab 帳號，就能有幾個 agent 同時生片段，各用各的運算單元，互不搶 GPU。做法是**在站台租帳號**：
+
+- **租約在站台**（`/api/video/colab-accounts`，Redis，每個帳號最多一個 holder，預設 4 小時、最長 24 小時，到期自己失效）。不同容器的 agent 只能靠站台協調，所以不放在本機檔案。
+- **holder 是 agent 自己的名字**：用認領任務票的那個（`claude-opus-5-5-zt-e033`、`codex-story-7`），英數字與 `. _ : @ -`，最多 80 字。後台的審計紀錄記 `ai_account.colab_leased`／`colab_lease_renewed`／`colab_lease_released`，連同 holder 與權杖開頭。
+- **別人租走的帳號站台不給憑證**：`colab-credentials` 對有租約的帳號只交給 `holder` 相符的請求，其餘是 409 `colab_account_leased`，訊息寫誰在用、幾分鐘後到期。不要換 holder 名字去拿：兩個 agent 開在同一個帳號上，會互搶 GPU 與同時 runtime 的名額。
+- **每個帳號在本機有自己的 HOME**：Colab CLI 0.7.5 的 `token.json` 與 `sessions.json` 寫死在 `~/.config/colab-cli/`，沒有參數能改，所以 `accounts.py claim` 把 token 放進 `~/.cache/minimax-h3-colab/accounts/<槽位>/.config/colab-cli/`（`COLAB_ACCOUNTS_ROOT` 可改），再寫一個 `bin/colab` 小腳本，只對 CLI 換 HOME。`h3.sh`、`h3_detached.py`、`images.py`、`colab_detached.py`（以及經由它們的 `refine.py`、`upscale.py`）看到 `COLAB_ACCOUNT_SLOT=a-e` 就把那個帳號的 `bin` 放到 PATH 最前面；沒 claim 過的槽位直接以 2 停下，不會退回 agent 自己 HOME 裡的別的帳號。同一台機器上的兩個 agent 因此看不到彼此的 token 與 Colab session 清單。
+- **auto**：已租的就續租同一個（一個 holder 不會拿到兩個帳號），不然挑已登入、沒人租、運算單元最多的；`--min-balance` 跳過餘額不夠的。都沒有就 409 `colab_no_free_account`，訊息列出誰在用哪個。
+- **續租**：`h3_detached.py` 在有 `COLAB_ACCOUNT_SLOT` 與 `COLAB_ACCOUNT_HOLDER` 時每 30 分鐘自己續一次（失敗只記一行，不中斷生成）；其他長工作自己跑 `accounts.py renew`。
+- **歸還**：`accounts.py release` 交回租約並刪掉本機的 token。忘了也沒關係，到期就空出來，但在那之前別的 agent 拿不到。
+- **站主看得到、收得回**：`/admin/ai-accounts` 的 Colab 卡片寫著哪個 holder 在用、權杖開頭與租約到期時間；「收回帳號」確認後直接結束那份租約（審計 `ai_account.colab_lease_broken`）。只用在已經停掉的 agent：還在跑的 `h3_detached.py` 下次續租時，帳號空著就會再拿回去。
+
+```bash
+bash .agents/skills/minimax-h3-colab/scripts/bootstrap.sh install
+python3 -I .agents/skills/minimax-h3-colab/scripts/accounts.py list
+python3 -I .agents/skills/minimax-h3-colab/scripts/accounts.py claim --holder claude-zt-e033 [--slot b|auto] [--min-balance 30]
+#  → stdout 一行：export COLAB_ACCOUNT_SLOT=b COLAB_ACCOUNT_HOLDER=claude-zt-e033（每次呼叫都帶上；雲端 session 的 shell 狀態不會留到下一個指令）
+COLAB_ACCOUNT_SLOT=b COLAB_ACCOUNT_HOLDER=claude-zt-e033 bash .agents/skills/minimax-h3-colab/scripts/h3.sh usage
+python3 -I .agents/skills/minimax-h3-colab/scripts/accounts.py release --holder claude-zt-e033 --slot b
+```
+
+`bootstrap.sh` 也走得到：`COLAB_ACCOUNT_HOLDER` 有值且 `COLAB_ACCOUNT_SLOT` 是 `a-e` 或 `auto` 時，`token` 這一步改成 `accounts.py claim`，不碰共用的 `~/.config/colab-cli/token.json`。沒設 holder 時一切照舊（預設帳號、單一 token），只是別人租走的帳號會被站台拒絕。`accounts.py` 的結束碼：3 站台拒絕（被租走、沒登入、沒有空的）、4 帳號回不了 `colab usage`（會自動歸還）、5 連不到站台或沒有影片工具權杖。
+
 ## 2a. 路線 A／B：為什麼雲端 session 要「權杖配對」而不是每次登入
 
 Claude Code 雲端 session 的容器每次新開都是乾淨的，`~/.config` 不會留下來；環境設定裡的 **setup script 讀不到環境的 secret**，所以還原權杖這一步要在 session 裡做（`bootstrap.sh token` 讀環境變數）。做法：

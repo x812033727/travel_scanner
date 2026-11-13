@@ -25,6 +25,7 @@ from app.video_speech.minimax import (
     MiniMaxSpeech,
     audio_from,
     bounded,
+    language_boost,
     minimax_voice,
     quota_from,
     quota_url,
@@ -81,6 +82,28 @@ def test_the_request_asks_for_mono_pcm_at_a_rate_the_tool_can_resample() -> None
     assert body["language_boost"] == "Chinese" and body["output_format"] == "hex"
     assert body["stream"] is False
     assert 48_000 % body["audio_setting"]["sample_rate"] == 0
+
+
+@pytest.mark.parametrize(
+    ("voice", "boost"),
+    [
+        ("Chinese (Mandarin)_News_Anchor", "Chinese"),
+        ("Japanese_KindLady", "Japanese"),
+        ("Korean_CaringWoman", "Korean"),
+        ("English_expressive_narrator", "English"),
+        ("Vietnamese_kindhearted_girl", "Vietnamese"),
+        ("Thai_female_1_sample1", "Thai"),
+        ("Portuguese_SereneWoman", "Portuguese"),
+        ("Cantonese_GentleLady", "Chinese,Yue"),
+        ("moss_audio_ce44fc67-7ce3-11f0", "auto"),
+        ("Klingon_Warrior", "auto"),
+        ("narrator", "auto"),
+    ],
+)
+def test_the_language_boost_follows_the_voice(voice: str, boost: str) -> None:
+    # Until 2026-11-12 every request said Chinese, and a Japanese voice read 同じ as Chinese.
+    assert language_boost(voice) == boost
+    assert request_body("x", voice, "speech-2.8-hd")["language_boost"] == boost
 
 
 def test_rates_become_speeds_inside_the_api_range() -> None:

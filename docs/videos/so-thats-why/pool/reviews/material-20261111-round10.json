@@ -1,0 +1,1603 @@
+{
+  "reviewed_on": "2026-11-12",
+  "round": 10,
+  "previous_round": "docs/videos/so-thats-why/pool/reviews/material-20261111-round9.json",
+  "owner_instruction": [
+    "繼續擴充"
+  ],
+  "bar": "同前八輪：可成題要有至少 8.5 分鐘素材與兩個改變結論的轉折；只算有可讀紀錄的外部來源；只讀到摘要或簡報的不計；來源必須循公開連結取得。",
+  "method": "這一輪只補讀，不派新組長題。作者 F15 照上一輪覆核開的條件替後備組題 C5-01、C5-02、C5-03 補來源；作者 F16 替 C4-02（不用事故案例的路線）與上一輪覆核點名最有機會翻案的兩組（C6-01 自己造成的感覺、C6-02 雲滴變雨）補來源。兩位沒參與撰寫的覆核者（V18 覆核 F15、V19 覆核 F16）核對快取雜湊、重抓來源、逐核心判定並重算分鐘；覆核結論優先。",
+  "policies": {
+    "source_access": "說明檔加了「來源只能循公開連結取得，不得猜測網址」。本輪覆核 V19 自己曾由快取檔名推了一個網址試抓（404，未當來源），已記錄；下一輪把這條放到說明檔開頭。",
+    "C4-02": "第二個轉折改由德國于利希單列實驗的原文承擔（同一密度下有人停、有人走，停波往後傳），大綱不用 2006 年的事故案例，所以不再需要站主對那個案例的裁示；措辭不給安全建議、不寫密度門檻、不並列真實事故。",
+    "C5-01": "2008 年三聚氰胺事件仍只當「檢驗量的是氮」的例子，限制寫在 drop_if；站主不同意時這題仍有 9.1 分。",
+    "C6-01": "只過線 0.06 分：任何一處再下修半條或刪掉思覺失調症研究那一章就轉後備；那一章只說研究組、不當診斷方法、不畫患者。"
+  },
+  "counts": {
+    "research_proposals": 22,
+    "research_proposals_by_author": {
+      "F15": 7,
+      "F16": 15
+    },
+    "research_sources_read": 23,
+    "cores_added": 22,
+    "cores_rejected": 0,
+    "verdicts": {
+      "ADOPT_WITH_CHANGES": 19,
+      "ADOPT": 3
+    },
+    "not_added_records": 6,
+    "targets_ready": [
+      "G617",
+      "G618",
+      "G619",
+      "G620"
+    ],
+    "targets_reserve": [
+      "C5-02",
+      "C6-02"
+    ],
+    "ready_long_themes_before_after": [
+      75,
+      79
+    ],
+    "pool_selected_before_after": [
+      3885,
+      3907
+    ],
+    "raw_records_before_after": [
+      4275,
+      4297
+    ],
+    "source_urls_before_after": [
+      5178,
+      5201
+    ],
+    "not_added_before_after": [
+      2396,
+      2402
+    ],
+    "themes_before_after": [
+      616,
+      620
+    ],
+    "distinct_decisions_added": 35
+  },
+  "core_id_mapping": {
+    "F15-001": "H60-001",
+    "F15-002": "H60-002",
+    "F15-003": "H60-003",
+    "F15-004": "P60-001",
+    "F15-005": "P60-002",
+    "F15-006": "L60-001",
+    "F15-007": "L60-002",
+    "F16-001": "P60-003",
+    "F16-002": "P60-004",
+    "F16-003": "P60-005",
+    "F16-004": "P60-006",
+    "F16-005": "H60-004",
+    "F16-006": "H60-005",
+    "F16-007": "H60-006",
+    "F16-008": "L60-003",
+    "F16-009": "H60-007",
+    "F16-010": "S60-001",
+    "F16-011": "S60-002",
+    "F16-012": "S60-003",
+    "F16-013": "S60-004",
+    "F16-014": "S60-005",
+    "F16-015": "S60-006"
+  },
+  "rejected_core_mapping": {},
+  "source_id_mapping": {
+    "F15-S001": [
+      "H60-S001"
+    ],
+    "F15-S002": [
+      "H60-S002"
+    ],
+    "F15-S003": [
+      "H60-S003"
+    ],
+    "F15-S004": [
+      "L60-S001"
+    ],
+    "F15-S005": [
+      "L60-S002"
+    ],
+    "F15-S006": [
+      "P60-S001"
+    ],
+    "F15-S007": [
+      "P60-S002"
+    ],
+    "F15-S008": [
+      "H60-S004"
+    ],
+    "F16-S001": [
+      "P60-S003"
+    ],
+    "F16-S002": [
+      "P60-S004"
+    ],
+    "F16-S003": [
+      "P60-S005"
+    ],
+    "F16-S004": [
+      "P60-S006"
+    ],
+    "F16-S005": [
+      "H60-S005"
+    ],
+    "F16-S006": [
+      "H60-S006"
+    ],
+    "F16-S007": [
+      "H60-S007"
+    ],
+    "F16-S008": [
+      "L60-S003"
+    ],
+    "F16-S009": [
+      "H60-S008"
+    ],
+    "F16-S010": [
+      "S60-S001"
+    ],
+    "F16-S011": [
+      "S60-S002"
+    ],
+    "F16-S012": [
+      "S60-S003"
+    ],
+    "F16-S013": [
+      "S60-S004"
+    ],
+    "F16-S014": [
+      "S60-S005"
+    ],
+    "F16-S015": [
+      "S60-S006"
+    ]
+  },
+  "not_added_mapping": {
+    "F15-NA001": "H60-NA001",
+    "F15-NA002": "H60-NA002",
+    "F15-NA003": "H60-NA003",
+    "F15-NA004": "H60-NA004",
+    "F16-NA001": "P60-NA001",
+    "F16-NA002": "P60-NA002"
+  },
+  "new_themes": [
+    {
+      "id": "G617",
+      "proposal_id": "C5-01",
+      "title": "驗過了、合格了，檢驗到底驗了什麼？",
+      "target_minutes": 9.0,
+      "est_minutes": 9.3
+    },
+    {
+      "id": "G618",
+      "proposal_id": "C5-03",
+      "title": "動物也有「我們這裡都這樣做」嗎？怎麼證明那是跟同伴學來的？",
+      "target_minutes": 9.0,
+      "est_minutes": 9.3
+    },
+    {
+      "id": "G619",
+      "proposal_id": "C4-02",
+      "title": "沒有人指揮，一群人走路的秩序是怎麼來的，又是怎麼壞的？",
+      "target_minutes": 9.5,
+      "est_minutes": 9.59
+    },
+    {
+      "id": "G620",
+      "proposal_id": "C6-01",
+      "title": "這個感覺是自己造成的還是外面來的，大腦怎麼分？",
+      "target_minutes": 8.5,
+      "est_minutes": 8.56
+    }
+  ],
+  "reserve_records": {
+    "C5-02": {
+      "target": "C5-02",
+      "theme_id": null,
+      "title": "一滴雨打下來，被它帶走的是被它打中的東西嗎？",
+      "reviewer": "V18",
+      "author": "F15",
+      "author_verdict": "ready",
+      "author_est_minutes": 9.3,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "X38-002",
+        "X38-003",
+        "X38-004",
+        "P59-006",
+        "P60-002",
+        "P60-001",
+        "A25001",
+        "L44-006"
+      ],
+      "recount_facts": "11.0 條。舊核心照 V17：X38-002 2、X38-003 1.5、X38-004 1.5、P59-006 1、A25001 1.5、L44-006 1，合計 8.5；P59-005 刪（0，見 cuts）。新核心：P60-002 1（玉米不規則 0.5、行間與葉緣下 0.5；有作物比裸地少、雨大噴得多是預期中的，不另計）；P60-001 1.5（改寫答案後：梯度相反且第一排病斑由葉位與葉面積解釋、孢子通量不顯著 1；冠層攔截與後排無病徵 0.5）。（11.0×140＋700）÷270＝8.3 分。作者算 13.0 條、9.3 分；作者自己的「刪 P59-005 後 11.5 條、8.6 分」再扣 P60-002 的 0.5 就落到門檻下。",
+      "recount_fact_count": 11.0,
+      "recount_minutes": 8.3,
+      "planned_minutes": null,
+      "cuts": "刪 P59-005（雨滴在羽毛、蝶翅上碎開）：主軸改成「雨怎麼把東西帶走、放到哪裡」之後，它答的是水滴自己怎麼離開不沾水的表面，沒有帶走任何東西；作者也只把它當「鋪墊」，鋪墊不算事實，也不該佔一章。X38-001、X38-006 照 V17 不放回來，X38-005、X38-007、X38-008 不用。",
+      "turns": [
+        "成立：以為雨搬東西是把它打飛——葉子回彈時沒被碰到的水珠也被甩走（X38-003）；水滴推出的空氣渦環捲起沒沾水的乾孢子（X38-004）；土裡的東西是氣泡破掉時噴出（P59-006）。開場反例：沒有支撐的輕目標跟著水滴走（X38-002）。三個都是實驗室單滴。",
+        "半成立：以為遮住了就不會被帶走、噴到最多的地方就是出事的地方。玉米的噴濺不隨葉面積規則下降，噴濺跑到行間與葉緣下（P60-002）；孢子落得最多的低處不是最容易出事的頂端葉子，第一排的病斑由葉位與葉面積解釋、不由接到的孢子量解釋（P60-001）。作者原本的第三個「以為」（雨越大帶走越多）要刪：P60-002 自己量到雨強加倍剝離率是二到五倍。兩篇都是人工降雨，P60-001 是單一事件、24 個觀測的模型。"
+      ],
+      "chapter_outline": [],
+      "core_question": "雨滴打下來，被帶走的是被它打中的東西嗎？被帶到哪裡，那裡就是出事的地方嗎？",
+      "connection": "（後備，暫不排章。）改成「雨怎麼把東西帶走、放到哪裡」之後，八個核心已經是一個問題：怎麼離開（葉子回彈、渦環、氣泡）→ 冠層把雨重新分配（行間、葉緣下）→ 落點與後果不一致（孢子與病斑）→ 生物反過來借這股力（豬籠草蓋、果杯）。不再是領域清單；缺的是份量。",
+      "boredom_risk": "前半仍是「一滴水、慢動作」的高速攝影，後半兩篇的畫面是曲線與田間剖面，對比反而好用。P59-006 說大雨落速不噴、P60-002 說雨大剝離多，旁白若不說清楚量的是不同東西，觀眾會覺得自相矛盾。",
+      "drop_if": "不得把 P59-005、X38-001、X38-006 放回來補片長；不得把 P60-001 寫成「病斑多在旗葉」；不得用 P60-002 說「被遮住的那塊反而被帶走」或「雨越大不一定帶走越多」。X38-002 若重讀撐不住「只交出一小部分動量」，開場改成純觀察。",
+      "evidence_gaps": "沒有自然降雨或田間尺度的量測（兩篇新來源都是人工降雨）；P60-001 的病斑結果是單一噴濺事件；沒有台灣的雨（雨滴譜）可當入口；X38 各核心的池內閱讀是指定段落。",
+      "still_missing": "差 0.5 條以上才到 11.5 條、8.6 分，建議補 1–1.5 條，要落在「雨把東西帶到哪裡、和後果差多少」上：（1）一份田間自然降雨下雨濺傳病的原研究全文（病斑或孢子隨離病源距離的分佈），1–1.5 條，同時補掉「全是人工降雨」的缺口；或（2）一份噴濺土粒或水滴飛行距離隨雨滴大小變化的原研究全文，1 條。補到後先重算，並重寫轉折二的三個「以為」。台灣雨滴譜觀測的已讀來源仍是加分項。",
+      "reason": "作者照 V17 的路線（乙）改了主軸，這一步是對的：題目現在是一個問題，兩篇新來源也都是開放全文、不在高速攝影棚裡。但重讀之後兩篇都有作者自己接出來的結論：P60-001 的「病斑大多在旗葉」原文沒有（改用表 3 才撐得住同一個轉折），P60-002 把大豆 2% 歸錯變項、把行間寫成「被遮住的那塊」，而它的雨強結果與轉折二「雨越大不一定越多」相反。P59-005 在新主軸下不帶走任何東西，刪。重算 11.0 條、8.3 分，判後備，差一份田間或飛行距離的讀物。最終核心逐一 grep themes.json（616 題）：都不在任何 material.verdict 為 ready 的題的 candidate_ids 裡（只出現在短題 G328–G330、G366、G367、G258、G471、G393，material 皆非 ready），也不在 POOL_SUPPORT（tools/video/so-thats-why/episode-plan.mjs 第 338 行起），三題之間沒有共用核心；同輪 F16 的目標 C4-02 也沒有用到這些核心。",
+      "also_considered": "G611（物體入水的衝擊，可成題）沒有共用核心，但開場型態相近，日後若都成題不要相鄰排片。G582（種子飛得越遠就越成功嗎）用 L44-005，與 L44-006 不同篇。已製作的 S56（下雨的味道）與 P59-006 重疊一句。"
+    },
+    "C6-02": {
+      "target": "C6-02",
+      "theme_id": null,
+      "title": "雲裡的小水滴，為什麼不馬上變成雨掉下來？",
+      "reviewer": "V19",
+      "author": "F16",
+      "author_verdict": "ready",
+      "author_est_minutes": 8.81,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "K6001",
+        "K6002",
+        "K6003",
+        "S60-002",
+        "S60-003",
+        "S60-001",
+        "K6004",
+        "S60-004",
+        "K6005",
+        "S60-005",
+        "S60-006",
+        "K6024"
+      ],
+      "recount_facts": "9.0 條。七個 K6 核心今天逐頁重抓（PSU METEO 300 node/676、678、679、781，NWS 路易斯維爾 winter-precip，NASA Earth Observatory aerosols，NASA Glenn 1_1_2_5），每一頁都還支持它那一句（K6003 頁甚至直接寫「not possible for cloud drops to grow into rain drops by vapor deposition alone」），各 0.5 條；但 K6012（同水分成更多小滴更亮）答的是雲的反照率，不是起雨，刪；留下六個＝3.0。X38-001（單一大滴袋狀破裂）答的是雨滴長到多大會碎，是雨已經形成之後的事，不在「為什麼不馬上下」這個問題上，而且池內紀錄沒有本機原 PDF，刪（作者算 1.5）。新核心：S60-001 1.5、S60-002 1.0（作者 1.5；同一組量測的兩種讀法，起雨深度還有一部分是外推）、S60-003 1.0、S60-004 0.5（作者 1.0；原文自己承認低溫液態雲多在重力波裡、紊流雲三地相近）、S60-005 1.0、S60-006 1.0＝6.0。（9.0×140＋700）÷270＝7.26 分。作者算 12.0 條、8.81 分。",
+      "recount_fact_count": 9.0,
+      "recount_minutes": 7.26,
+      "planned_minutes": null,
+      "cuts": "刪 X38-001（雨滴破裂，不在問題上）與 K6012（雲的亮度，不在問題上）。同意作者刪 K6023、K6013。K6024 留但它的章名問的是「能不能斷定上面有暖層」，寫稿時要改問「零度以下，小水滴還能靠碰併長大嗎」才接得上本題。",
+      "turns": [
+        "成立（改字後）：以為空氣裡能讓水凝結的粒子越多越容易下雨；亞馬遜燒林季的飛機量測顯示煙霧裡的雲估計要長到 4 公里以上才開始下暖雨，乾淨的雲 1 到 2 公里就下（S60-002，污染雲的起雨深度部分是外推）；反過來，極少數的大鹽粒讓一片只有微弱毛毛雨的層積雲雨率約變成四倍（S60-003，作者原寫「讓不下的雲開始下」與原文不符，已改）。",
+        "成立（改字後）：以為雨就是小水滴碰在一起變大（舊集 S42 講的暖雨那條路）；衛星統計顯示陸地上正在下雨的雲，暖雨只占 1%（南北緯 30 度以外）到 8%（熱帶），大多數雲頂含冰（S60-001）。作者把「乾淨的南半球雲在零下 16 度以下仍有四成全是液態」接在這個轉折裡；原文說這些雲多半在山地重力波裡，紊流充分的雲三地含冰比例相近，所以這半句不能當轉折的一部分，只能當「冰要起頭」那一章的條件說明。"
+      ],
+      "chapter_outline": [],
+      "core_question": "雲裡明明充滿水，為什麼大多數時候不下？從一顆雲滴長成雨滴，卡在哪裡；粒子多一點、冷一點，是幫忙還是拖累？",
+      "connection": "（後備，暫不排章。）前段是小水滴為什麼長不大（曲率、門檻、凝結越長越慢），中段用兩份飛機量測翻掉「粒子越多越容易下」，後段用衛星統計翻掉「雨就是水滴碰成的」，再看冰從哪裡來、一點冰怎麼變很多冰、加冰時雪沿著撒的線掉下。兩個轉折都在，缺的是量。",
+      "boredom_risk": "前段三個 K6 核心都是教材一句話；兩個撒播實驗（鹽粒、碘化銀）放在同一集，容易讓人以為在講人工增雨，兩章之間要隔開並每章明說「這是物理實驗」。S60-005 是最技術的一章。",
+      "drop_if": "補不到下面 still_missing 的量就維持後備；不得拿 X38-001、K6012 或別的降水落下後的核心湊片長。S60-003、S60-006 不得寫成人工增雨可行、有效或值得推廣；S42 不得被說成「講錯了」。",
+      "evidence_gaps": "七個 K6 核心今天重抓都還支持原句，但都是課程網頁的一句話（各 0.5）。F16-S011 只有一季一地，污染雲的起雨深度部分是外推；F16-S012、F16-S014、F16-S015 都是個案；F16-S013 的含冰差異受重力波混淆，冰核濃度是推估；F16-S010 統計的是頻率不是雨量。DeMott 2010（冰核全球分布）讀不到（作者記為 PNAS 403、PMC reCAPTCHA）；Freud 與 Rosenfeld 2012、Rosenfeld 1999 讀不到。",
+      "still_missing": "差約 1.5 條（到 10.5 條、8.04 分還不夠；要 11.5 條、8.56 分），而且要落在「從雲滴到雨滴卡在哪裡」上，依可得性排序：（1）一份量到暖雨起始的原研究全文（例如以雷達第一回波或飛機量測看雲滴有效半徑門檻的研究，如 Freud 與 Rosenfeld 2012 的公開版本，或 Rosenfeld 與 Gutman 1994 一類），1–1.5 條，能讓 S60-002 的 24 微米門檻不只靠一篇；（2）一份碰撞合併效率的實驗室或風洞量測全文（小滴為什麼很難撞上、紊流怎麼加快），1 條，直接回答「卡在哪裡」；（3）一份陸海暖雨對比的第二份全文（Lau 與 Wu 2003 或 Lebsock 與 L'Ecuyer 2011，Mülmenstädt 2015 自己引用的），0.5–1 條；（4）中央氣象署或台灣大學的雲物理教材一頁，0.5 條，兼作在地入口。補到（1）（2）約 11.5 條、8.56 分，兩個轉折不變，可以改判。另：S60-004 照本輪改字；寫稿前 F16-S010 Figure 1、F16-S011 Fig. 9 轉圖目讀。",
+      "reason": "任務問：七個 K6 核心各 0.5 條的頁面還在不在、X38-001 是否在題上、新來源算幾條？裁定：維持後備，7.26 分。K6 頁面今天全部重抓到、原句都還在，0.5 條照算；但 K6012 與 X38-001 不在這一題的問題上（一個講雲的亮度、一個講雨滴形成之後怎麼碎），作者在大綱裡也只是把它們放在別的章旁邊或一章 30 秒，刪去 2.0 條。六個新來源今天都重抓得到、雜湊相同，數字逐句核過，抓到四處作者寫錯或漏寫：S60-002 的煙霧雲起雨深度有一部分是原文外推（作者沒寫）；S60-003 撒鹽前已有 0.04–0.09 mm/h 的毛毛雨，不是「不下雨的雲開始下」；S60-004 原文說低溫液態雲多在重力波裡、紊流雲三地含冰比例相近，作者只報「四成全是液態」並歸因冰核；S60-006 的「三到四倍」比的是自然降雪的起伏，不是自然降水量。兩個轉折改字後都還成立，問題只在量。撒播的兩章已加上不得推廣人工增雨的規則；S42 只當入口、不說它錯。最終核心都不在 themes.json 中 material.verdict 為 ready 的題（K6002–K6004 只在舊短題 G67），不在 POOL_SUPPORT，也不與 C4-02、C6-01 共用（逐一 grep 過）。",
+      "also_considered": "K6023（雨蒸發冷卻讓雪線下降）、K6013（吸光氣膠讓雲滴蒸發）同意作者刪；X38-001、K6012 本輪刪。上一輪 V16 在 considered_and_dropped 已說同一組 K6 加 X38-001 約 6 條、要另讀四篇以上有量測的來源；這一輪讀了六篇，但兩篇在本題只算 0.5–1 條，仍差約 1.5 條。"
+    }
+  },
+  "considered_and_dropped": [],
+  "source_fixes": [
+    {
+      "proposal_source": "F15-S001",
+      "change": "read_via 補記入口查證：PublishResearch.aspx 每一頁的分頁列都連到下一頁（第 1 頁連 pn=2 與末頁 pn=87；今日末頁是 87，作者記的 pn=1..95 要改成「逐頁翻分頁連結」），第 41 頁有本篇的 GetFile 連結，V18 今日重抓同頁仍在。summary 把「無法分辨甜菜糖、菊苣糖或米轉化糖漿」標為前言引用文獻 10（Elflein 等），加標試驗只用 C3 果糖。",
+      "why": "取得路徑合規，但要寫成循網站分頁連結，而不是自行枚舉參數；引用句與本研究實驗要分開，否則片中會說成實驗證明。",
+      "requested_by": "V18"
+    },
+    {
+      "proposal_source": "F15-S002",
+      "change": "url 與 canonical_url 改為 https://www.fao.org/4/Y5022E/y5022e03.htm（原網址今日 301 轉到此處，內容雜湊相同 2867ad4fe359376a）。limitations 補原文：「非蛋白氮比例高的食品，總氮通常很少」，主要蛋白質來源的係數範圍窄得多。",
+      "why": "網址已遷移；漏掉的那句會讓片子把 13–19% 講成一般食品的標示誤差。",
+      "requested_by": "V18"
+    },
+    {
+      "proposal_source": "F15-S003",
+      "change": "summary 的過敏例子照原文改為「牛奶混入山羊或綿羊奶、乳酪」；補原文對 1% 的評價「sensible, pragmatic decision」。",
+      "why": "原文的例子是特定的混入情形，不是一般的牛奶蛋白過敏；評價語氣要照原文。",
+      "requested_by": "V18"
+    },
+    {
+      "proposal_source": "F15-S005",
+      "change": "version 改為「KOPS 典藏的作者稿：檔首自述 Accepted version，但每頁頁首為 Submitted Manuscript: Confidential，OpenAlex 標 submittedVersion」；read_via 補 OpenAlex best_oa_location 的 landing_page（nbn-resolving.de 的 URN，轉到 KOPS 條目頁，頁內有該位元流）。limitations 補：中心性那一句的統計值原文不一致（t78=1.07, p=0.001），不引用。",
+      "why": "版本標示互相矛盾，要照實記；入口要記到典藏條目頁，證明不是直連猜到的位元流。",
+      "requested_by": "V18"
+    },
+    {
+      "proposal_source": "F15-S006",
+      "change": "reading_scope 改為：表 1–3 在 Europe PMC XML 內可讀（V18 已讀），不是被移除；summary 刪去「病徵大多出現在最高、最感病的旗葉」，改為「最感病的頂端葉子接到的孢子比下面的葉子少得多；第一排病斑總面積由葉位與葉面積解釋（表 3 簡化模型 R²=0.65），平均孢子通量不顯著」。補：結果段只寫第二排無病徵，摘要寫第二與第三排。",
+      "why": "原文沒有「病斑多在旗葉」的結果；旗葉最感病來自另一場刷菌液試驗（表 1）。",
+      "requested_by": "V18"
+    },
+    {
+      "proposal_source": "F15-S007",
+      "change": "summary 把「大豆在高雨強下抑制能力隨生長反而略降（平均降 2%）」改為「大豆的抑制能力隨雨強增加平均降 2%」；limitations 的「原文沒有給各位置的具體數值比」改為「玉米行間噴濺量是冠層正下方 0–20 公分帶的 2.05 倍（40 mm/h）與 1.67 倍（80 mm/h），行間占冠層下總噴濺一半以上」；補摘要原句「抑制作用隨作物生長而增加」，不規則只限玉米。",
+      "why": "2% 歸錯變項；位置的數值比原文其實有。",
+      "requested_by": "V18"
+    },
+    {
+      "proposal_source": "F15-S004",
+      "change": "不改內容；read_via 已正確記下 ORA 典藏頁列有檔案連結（V18 今日重抓典藏頁 200、3 處連結、PDF 雜湊相同）。limitations 補：「49(33-71)%」括號的性質原文未說明。",
+      "why": "確認取得合規；避免片中把範圍說成信賴區間。",
+      "requested_by": "V18"
+    },
+    {
+      "proposal_source": "F16-S006",
+      "change": "author_cache 補第二次取得：2026-11-12 覆核 V19 由同一 PMC 文章頁重抓 HTTP 200，原始 HTML sha256 前綴 cf044aaba41a47a5（作者 cdb3bff93e7c317e），差異只在頁面的 ncbi_phid 與 csrfmiddlewaretoken；以同一抽取程式取 main-article-body 正文、去標籤與空白正規化後，兩份都是 69,335 字元、sha256 前綴 9317be7ebd986017。另兩條路徑：Europe PMC fullTextXML 今日仍回 500；NCBI E-utilities efetch（db=pmc&id=5547616）回 200 但註明出版者不允許下載正文，只有書目。limitations 改寫為「只有 PMC 文章頁一條可讀路徑；兩次抓取正文一致」。",
+      "why": "作者要求第二個取得路徑比對雜湊；動態頁的原始雜湊本來就會變，比對正文才有意義。",
+      "requested_by": "V19"
+    },
+    {
+      "proposal_source": "F16-S008",
+      "change": "同上：重抓原始 HTML sha256 前綴 c7ddfb592d0ca739（作者 cd0c40b09e333205），差在 ncbi_phid 與 csrf token；正文正規化後兩份都是 48,187 字元、sha256 前綴 f2bb6129f8136a59。Europe PMC XML 500、efetch 只給書目。另補書目：J Neurosci 23(11):4717–4725（2003），doi 10.1523/JNEUROSCI.23-11-04717.2003，由頁面 citation 欄位確認。",
+      "why": "同 F16-S006。",
+      "requested_by": "V19"
+    },
+    {
+      "proposal_source": "F16-S015",
+      "change": "version 與 limitations 改：PAR 檔是 PNAS 117(10):5190–5195 的刊本版面（頁首頁碼、「Published under the PNAS license」），不是只有接受稿；刪去「刊本未對照」。",
+      "why": "檔案內容本身是刊本，紀錄寫錯版本。",
+      "requested_by": "V19"
+    },
+    {
+      "proposal_source": "F16-S011",
+      "change": "limitations 補：「污染、過渡與火積雲的量測沒有飛到 DL 達 24 µm 的高度，Z24 是線性擬合外推（§3 Fig. 9 說明後段）」。",
+      "why": "這是起雨深度數字的主要限制，作者紀錄沒寫。",
+      "requested_by": "V19"
+    },
+    {
+      "proposal_source": "F16-S013",
+      "change": "summary 與 limitations 補：低於 −18 °C 的液態雲多嵌在山地重力波中（§3.2.3）；只看紊流充分的雲時三地含冰比例相近、蓬塔阿雷納斯只略低；「liquid-only」的定義是 ice virga 出現時間少於 5%。",
+      "why": "作者摘要只留下有利於冰核解釋的數字。",
+      "requested_by": "V19"
+    },
+    {
+      "proposal_source": "F16-S009",
+      "change": "rights 與 limitations 補：期刊（Am J Psychiatry 162:2384–2386）出版的 PDF，放在共同作者 Bays 實驗室網站，經該站著作頁（publications.php?label=sensory_prediction，快取 bayslab-pubs-sp.html）的公開連結取得；不是開放期刊，只連結、只寫原創摘要。",
+      "why": "取得路徑合規，但版權狀態要寫清楚。",
+      "requested_by": "V19"
+    },
+    {
+      "proposal_source": "F16-S002",
+      "change": "version 補：TGF'15（Traffic and Granular Flow 2015）會議稿，arXiv:1602.03053v1。",
+      "why": "由 arXiv 摘要頁 comments 欄確認。",
+      "requested_by": "V19"
+    }
+  ],
+  "batches": [
+    "batches/wave60-physics.json",
+    "batches/wave60-human.json",
+    "batches/wave60-tech.json",
+    "batches/wave60-earth.json",
+    "batches/wave60-life.json"
+  ],
+  "checkpoint": {
+    "file": "checkpoint-3885.json",
+    "note": "第十輪開工前的素材池快照（3,885 個入選、4,275 筆原題）。"
+  },
+  "core_reviews": [
+    {
+      "proposal_id": "H60-001",
+      "reviewer": "V18",
+      "question": "台灣自己驗蜂蜜，驗的是哪一件事？驗過了就等於是純蜜嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f15src/yu2018_honey_c4_fda.pdf 與 .txt（摘要第 25–31 行、前言第 115–130 行、結果四第 510–524 行、結果七第 1262–1277 行、結果八第 1284–1522 行、結論第 1905–1908 行）。今日重抓 GetFile.ashx?id=f636812670113442010：HTTP 200，sha256 前綴 05f351f532323a5e 與快取相同。入口查證：PublishResearch.aspx 第 1 頁的分頁列連到 pn=2 與末頁 pn=87，每一頁的分頁列都連到下一頁（快取 p40.html 連到 pn=41）；今日重抓 pn=41，頁內確有該條目「以元素分析儀串聯同位素比值質譜儀進行蜂蜜C4糖之檢驗(pdf下載)」的 GetFile 連結。這是照網站自己的分頁連結逐頁翻，不是猜網址，取得合規。",
+      "reopen_result": "數字全部對得上：7% 門檻（AOAC 998.12）、加 10% C4 果糖測得 12.92%、加 C3 果糖 δ13CH 皆小於 -24‰ 且 C4 糖測值皆小於 7%；211 件中 194 件（91.9%）初判純蜜、2 件（0.9%）含 C4 糖、C4 糖>7% 者 9 件（4.3%），按產地卻寫「此 10 件」；83 件中 59 件（71.1%）純蜜、8 件（9.6%）含 C4 糖，摘要另記 19 件 δ13CH>-24‰ 且 C4 糖>7%；疑似者「已分別進一步以行政稽查方式釐清」。要改的有兩處：（1）「分不出甜菜糖、菊苣糖或米轉化糖漿」是前言引用文獻 10（Elflein 等）的說法，本研究自己做的加標只用了「C3 果糖」，兩者不能寫成同一個實驗；（2）這個核心的機制句（全蜜對同瓶蛋白比碳、對某些 C3 糖漿不靈）池中 X34-001 已有。",
+      "changes_applied": {
+        "answer_target": "驗的是「糖有沒有 C4 植物的碳訊號」，不是「這罐裡有多少蜂蜜」。食藥署研究檢驗組照 AOAC 998.12 量全蜜與蜜中蛋白質的碳同位素比值、算出 C4 糖百分比，大於 7% 視為含 C4 糖。他們自己做的加標試驗：真蜜加 10% 的 C4 果糖，測得 C4 糖 12.92%，可以判定；加 C3 果糖，δ13C 都還在 -24‰ 以下、C4 糖測值都小於 7%，這個方法看不出來。報告前言也引用文獻寫明，這個方法分不出摻入的 C3 植物糖漿（例如甜菜糖、菊苣糖或米轉化糖漿）。實際檢體：台灣養蜂協會提供的 211 件中，194 件（91.9%）初步判為純蜂蜜、C4 糖大於 7% 者 9 件（4.3%）；北區管理中心的 83 件市售蜜中，59 件（71.1%）判為純蜂蜜、8 件（9.6%）判為含 C4 糖。報告說疑似者後續以行政稽查釐清。",
+        "scope": "照作者原文，另加：加標試驗只用 C3 果糖；甜菜、菊苣、米糖漿那一句是前言引用他人研究，片中說「報告也引用研究指出」，不得說成「實驗證明加米糖漿看不出來」。「初步判為純蜂蜜」是在這一項訊號上沒有異常，不得改寫成「驗證為純蜜」。83 件的 19 件（摘要）與 8 件（正文）判定界線不同，片中只用正文 59 件／8 件；211 件只用 9 件（4.3%），不提 10 件與產地。",
+        "facts": 1.0,
+        "editorial.visual": "一罐蜜旁邊兩條路：左邊倒進 C4 來源的果糖，儀器指針越過 7% 的紅線；右邊倒進 C3 來源的果糖，指針不動。（不畫米、甜菜，那是引用句。）",
+        "notes": "覆核算 1 條：加標試驗（10% C4 可判、C3 果糖看不出）0.5；台灣兩批檢體的判定結果 0.5。「全蜜對同瓶蛋白比碳、7% 換算、對某些 C3 糖漿不靈」這一層池中 X34-001 已有（V17 計 1 條），不重算。"
+      },
+      "duplicate_of": null,
+      "reason": "採用、改字。這是 C5-01 上一輪點名缺的台灣主管機關全文，取得路徑合規，數字逐句對得上。但它的機制句與 X34-001 同一事實，新的只有台灣自己做的加標與兩批檢體結果，所以由作者的 1.5 條降為 1 條。原文內部 9 件／10 件、19 件／8 件兩處不一致，作者已自行避開，照辦。",
+      "overlaps": [
+        {
+          "existing_id": "X34-001",
+          "note": "同一機制（整體碳比與蛋白內標、對 C3 糖漿不靈）；H60-001 只新增台灣的加標與檢體結果。兩者在同一章，X34-001 講分糖後才看得出來。"
+        },
+        {
+          "existing_id": "H59-004",
+          "note": "不同事實：H59-004 是歐盟 320 批的抽驗結果；兩者可互相印證「舊法對 C3 糖漿無效」，但不得把台灣與歐盟的比例放在一起比。"
+        }
+      ],
+      "final_id": "H60-001",
+      "batch": "batches/wave60-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H60-002",
+      "reviewer": "V18",
+      "question": "包裝上的蛋白質含量，是怎麼量出來的？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f15src/fao_y5022e03.txt 第 19–57 行與第 141–150 行（2.1.1、表 2.1、2.1.2）。今日重抓 https://www.fao.org/3/Y5022E/y5022e03.htm：先 301 轉到 https://www.fao.org/4/Y5022E/y5022e03.htm，最終 HTTP 200，sha256 前綴 2867ad4fe359376a 與快取相同。",
+      "reopen_result": "逐句相符：以總氮計蛋白質、測氮用 Kjeldahl 或類似方法（AOAC, 2000）；蛋白質平均含氮約 16%，所以 N×6.25（1/0.16）；非蛋白氮（游離胺基酸、核苷酸、肌酸、膽鹼）只有一小部分可用；蛋白質實際含氮約 13 到 19%，對應係數 5.26（1/0.19）到 7.69（1/0.13）；Jones 係數 5.18（堅果、種子）到 6.38（牛奶）。作者漏掉一句會影響片中語氣的原文：「非蛋白氮比例高的食品，總氮通常很少」，所以主要蛋白質來源的係數範圍其實窄得多，6.25 與 Jones 係數的差距在混合膳食上約 1%。",
+      "changes_applied": {
+        "scope": "照作者原文，另加：報告同時寫明非蛋白氮比例高的食品總氮通常很少，6.25 與各食品專屬係數的差距在混合膳食上約 1%；片中講到 13–19% 時必須同句交代這一點，不得暗示一般食品的蛋白質標示誤差很大。「這個替身被人照著做」只能由 H59-003 說，本核心不碰任何摻假。",
+        "facts": 0.5,
+        "notes": "覆核算 0.5 條：「蛋白質本身含氮 13–19%、食品裡另有非蛋白氮，所以單一係數只是近似」。「量的是氮」H59-003 已計 1 條；凱氏法的名稱與 6.25 的來歷是方法說明，不另計。"
+      },
+      "duplicate_of": null,
+      "reason": "採用、改字。它補的是上一輪點名的第（3）項：H59-003 的「量的是氮」現在有一份寫出方法名稱與非蛋白氮的官方文件撐著。但核心的第一半與 H59-003 同一事實，新增的只有「替身本來就不精確」這一層，算 0.5 條；作者算 1 條。",
+      "overlaps": [
+        {
+          "existing_id": "H59-003",
+          "note": "同一事實「蛋白質檢驗量的是氮」；H60-002 只新增非蛋白氮與 13–19% 的範圍。兩者同章，H59-003 承擔「被照著做」。"
+        }
+      ],
+      "final_id": "H60-002",
+      "batch": "batches/wave60-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H60-003",
+      "reviewer": "V18",
+      "question": "馬肉那次之後，大家說要「加強檢驗」——在那之前，誰在驗、驗了多少？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f15src/elliott2014.txt 第 1290–1302 行（5.9）、第 3640–3700 行（Annex H 的信）；FSAI 出版頁今日重抓 HTTP 200，Background 段 PCR 一句與 27 款／10 款（37%）原文在。Elliott Review PDF 今日重抓 HTTP 200，sha256 前綴 16c5ba456f1f4edf 與快取相同；GOV.UK 出版頁今日 200，頁內兩處連到同一資產。",
+      "reopen_result": "三句都在原文上：「Routine sampling and analysis has been decreasing for many years. There was no national survey for food authenticity from 2008 until after the horse meat incident.」（5.9）；「There is no EU-RL for food authenticity.」；「During the horsemeat incident a cut off level for substitution of 1% was set by the FSA and Defra and adopted across the EU.」，以及檢出能力進步後越難分辨詐欺與意外。要改一處：過敏那一句原文的例子是「牛奶混入山羊或綿羊奶、乳酪」時門檻要更低，作者寫成「像牛奶蛋白這種會引起過敏的情形」，要照原文的例子。另外原文說 1% 這個決定「sensible, pragmatic」，片中不得把它講成草率。",
+      "changes_applied": {
+        "question": "「多少才算摻」這條線是誰訂的？馬肉事件之前，又有誰在驗？",
+        "answer_target": "英國政府委託的獨立檢討（Elliott Review，2014）寫明：英國的例行取樣與分析多年遞減，從 2008 年起到馬肉事件之後才有全國性的食品真實性調查；真實性檢驗沒有歐盟參考實驗室，方法沒有統一。事件期間英國主管機關訂下 1% 的替代（交叉污染）取締門檻，為歐盟各國採用——報告認為這是務實的決定，理由是 1% 以下取得不了實質經濟利益，又讓同一條產線能處理多種肉；但報告也說，檢出能力越進步，越難判斷多少比例是詐欺、多少是意外，而像牛奶混進山羊或綿羊奶這種會引起過敏的情形，門檻必須更低。",
+        "facts": 1.0,
+        "notes": "覆核算 1 條：1% 取締門檻與它的理由、檢出能力進步後越難訂 0.5；2008 年後到事件後才有全國真實性調查、沒有歐盟參考實驗室 0.5。FSAI 頁的件數是 H59-005 的同一事實，不計。"
+      },
+      "duplicate_of": null,
+      "reason": "採用、改題與改字。它沒有補到「當初為什麼驗馬」（愛爾蘭原件仍不公開，作者已誠實記下），補的是「合格那條線是誰訂、驗的人有多少」。1% 那一段直接回答本題「合格是什麼意思」，是這個核心真正的份量；抽驗停了幾年與沒有參考實驗室是背景。三段各算 0.5 太多，算 1 條。",
+      "overlaps": [
+        {
+          "existing_id": "H59-005",
+          "note": "FSAI 頁的 27 款／10 款（37%）是 H59-005 的同一事實；F15-S008 只用來把出處補成愛爾蘭主管機關自己的頁面與 PCR 一句。"
+        }
+      ],
+      "final_id": "H60-003",
+      "batch": "batches/wave60-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P60-001",
+      "reviewer": "V18",
+      "question": "雨滴把葉子上的病菌噴到哪裡去？噴到最多的地方，就是後來出事的地方嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f15src/PMC5687742.xml（摘要、Methods、Results 的 Plant characteristics 與 Disease distribution、Discussion 的 Cultivar characteristics），並由 XML 直接讀出作者說「去標籤時被移除」的表 1–3。今日重抓 Europe PMC fullTextXML：HTTP 200，sha256 前綴 58d4a533115e6c9a 與快取相同。",
+      "reopen_result": "多數數字相符：水滴平均直徑 2.09 與 2.47 毫米；接種源高 20 公分；最高通量在源上 10 公分內、源上 30 公分以上幾乎捕不到；「Most susceptible top leaves therefore received far fewer spores than bottom leaves」；冠層內通量「reduced by up to 10」；抗病品種攔 93%、感病品種 80%；混植第二、三排感病株無病徵（摘要；結果段只寫第二排）；2,391 片葉中 113 片有病徵。**作者答案的核心句不在原文上**：「後來長病斑的，大多在最高的那片旗葉」——原文說的是旗葉「最感病」（表 1 是另一場刷菌液的感病性試驗），以及「孢子通量與感病性的梯度相反，這改變了垂直的病害型態」；全文與三個表都沒有寫噴濺試驗後病斑大多長在旗葉。原文真正能撐住「噴到最多的地方不等於出事的地方」的是表 3：在第一排，病斑總面積的變異由葉位與葉面積解釋（簡化模型 R²=0.65），葉片接到的平均孢子通量不顯著（NS）。",
+      "changes_applied": {
+        "answer_target": "不一定。法國的降雨塔實驗把校正過的水滴打在一條小麥葉枯病菌的菌液淺盤上，當成固定的噴濺來源，放在小麥冠層旁離地 20 公分，再用一層層載玻片數孢子。噴濺送出的孢子隨高度急降：最多的在來源上方十公分以內，超過三十公分幾乎抓不到——所以最容易被感染的頂端葉子，接到的孢子反而比下面的葉子少得多，作者說這兩個方向相反的梯度改變了病害在植株上的分佈。在靠近來源的第一排，病斑總面積的差異主要由葉位與葉面積解釋，葉片接到的平均孢子量在模型裡並不顯著。冠層本身也把路擋掉：較密的品種估計攔下 93% 的入射孢子、較疏的攔下 80%，混植裡第二、三排的感病株沒有出現病斑。",
+        "scope": "照作者原文，另加：不得說「病斑大多長在旗葉」——原文沒有這個結果；旗葉最感病來自另一場刷菌液的感病性試驗。「孢子量不顯著」是第一排、24 個觀測的變異數分析，不得寫成「孢子多少沒關係」。結果段寫第二排無病徵、摘要寫第二與第三排，片中說「後面幾排」。",
+        "facts": 1.5,
+        "editorial.payoff": "孢子落得最多的那一層，不是最容易出事的那一層；決定病斑多少的，是哪一片葉、多大一片，不只是它接到多少。",
+        "editorial.visual": "一側是高度對孢子數的柱狀圖，最高一柱貼在來源上方十公分；另一側同一棵麥子，最上面那片葉子塗成最容易感染的顏色，兩個箭頭方向相反。不畫病斑落在哪一片。",
+        "notes": "覆核算 1.5 條：孢子通量與感病性的垂直梯度相反、第一排病斑面積由葉位與葉面積解釋而非孢子通量（表 3）1；冠層攔截 93%／80%、後面幾排無病徵 0.5。作者的 1.5 條建立在一句原文沒有的話上；改用表 3 後份量相同。"
+      },
+      "duplicate_of": null,
+      "reason": "採用、改寫答案。題目與份量都站得住，但作者的關鍵句「病斑大多在旗葉」是從「旗葉最感病」加「梯度相反」自行接成的結論，原文沒有；表 3 其實就在 XML 裡，作者沒讀。照表 3 改寫後，「噴到最多的地方不等於出事的地方」有了原文支撐。仍是受控降雨塔、單一事件。",
+      "overlaps": [
+        {
+          "existing_id": "X38-004",
+          "note": "不同答案：X38-004 講乾孢子怎麼被渦環捲離葉面；P60-001 講離開之後落在哪裡、與病害的關係。"
+        }
+      ],
+      "final_id": "P60-001",
+      "batch": "batches/wave60-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P60-002",
+      "reviewer": "V18",
+      "question": "地面被葉子遮住了，雨還會把土帶走嗎？遮得越密就越少嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f15src/PMC4084632.txt（摘要、Results 的 Influence of the crops on splash detachment rate 與 Spatial distribution of splash erosion、引言引用 Armstrong 與 Mitchell 處）。今日重抓 Europe PMC fullTextXML：HTTP 200，sha256 前綴 e479f5ed29433453 與快取相同。",
+      "reopen_result": "相符：390.12 g/m²·h、比裸地低 67.81%；玉米 380.43（68.32%）、大豆 489.56（60.76%）、小米 627.84（17.94%）、冬小麥 62.66（94.75%）；80 mm/h 是 40 mm/h 的二到五倍（大豆 4.67、冬小麥 2.03）；玉米 VT 期（LAI 4.31）的噴濺「very close to」V4 期（LAI 0.31），80 mm/h 下 VT 比 V4 低 30%，「no regularity」；摘要「splash erosion occurring mainly between the rows and in the region directly under the leaf margin」。**一處讀錯**：大豆的「decreased by 2% on average」是「抑制能力隨雨強增加而降 2%」，作者寫成「隨生長反而平均降 2%」。**一處限制寫錯**：作者說原文沒有給各位置的數值比，其實正文有（玉米行間的噴濺量是冠層正下方 0–20 公分帶的 2.05 倍與 1.67 倍，行間占冠層下總噴濺量一半以上）。另外摘要明寫「抑制作用隨作物生長而增加」，「不是單調」只限玉米。",
+      "changes_applied": {
+        "answer_target": "還會，而且遮得多不等於一路變少。黃土高原的人工降雨試驗量四種作物冠層下的噴濺剝離率：四種平均比裸地低 67.81%，但差很大，冬小麥低 94.75%、小米只低 17.94%。整體來說抑制作用隨作物長大而增加，可是玉米不照這個規律：40 mm/h 下，抽雄期（葉面積指數 4.31）的噴濺量和葉面積指數只有 0.31 的早期幾乎一樣，作者直接寫玉米的抑制作用「沒有規律」。位置也變了：作物長大後噴濺分佈越來越不均，主要發生在行間與葉緣正下方；在玉米田，行間的噴濺量占冠層下總量一半以上，抽雄期的大水滴從葉緣與葉尖落下。",
+        "scope": "照作者原文，刪去「大豆在高雨強下抑制能力隨生長反而降 2%」（原文是隨雨強，不是隨生長），另加：雨強加倍時剝離率是二到五倍，這一點與直覺一致，不得用本核心說「雨越大不一定帶走越多」；與 P59-006（相當於大雨的落速反而不噴氣膠）是兩件不同的事，片中要分開講。不得把「被帶走的常常正是被遮住的那一塊」當結論——行間是遮得最少的地方。",
+        "facts": 1.0,
+        "editorial.payoff": "葉子不是傘：它把雨重新分配，噴濺跑到行間與葉緣正下方，而且葉子多了也不保證少。",
+        "notes": "覆核算 1 條：玉米抑制作用隨葉面積不規則（抽雄期≈早期）0.5；噴濺集中在行間與葉緣下、行間過半 0.5。「有作物比裸地少、雨大噴得多」符合預期，不改變觀眾結論，不另計。作者算 1.5 條。"
+      },
+      "duplicate_of": null,
+      "reason": "採用、改字。是一份不在高速攝影棚裡的開放全文原研究，補到上一輪路線（乙）的第一項。但作者把大豆的 2% 歸錯變項，又把「行間與葉緣下」寫成「被遮住的那一塊」，兩處都會讓片子說出原文沒有的話；另外它自己的雨強結果與作者轉折二的「雨越大不一定帶走越多」相反。照預期的部分不算，降為 1 條。",
+      "overlaps": [
+        {
+          "existing_id": "P59-006",
+          "note": "不同答案：P59-006 是單滴、孔隙氣泡噴出氣膠；P60-002 是冠層下土粒剝離的質量速率。兩者對「雨大」的結論方向不同，片中要說清楚量的是不同東西。"
+        }
+      ],
+      "final_id": "P60-002",
+      "batch": "batches/wave60-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L60-001",
+      "reviewer": "V18",
+      "question": "一群鳥都照同一種做法以後，要是這個做法變得不划算了，牠們會換嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f15src/aplin2017_ora_flow.txt（摘要第 61–63 行；Condition 1–3 第 125–161、215–232 行；Analysis of learning mechanisms 第 370–382 行；模擬第 584 行）。今日重抓 ORA 典藏頁 https://ora.ox.ac.uk/objects/uuid:7f263ffc-0f6f-485e-8b29-3a52f50fba2a：HTTP 200，頁內 3 處連到檔案 m6667e5a67f0d68c807170d000b323a4e；循該連結重抓 PDF：HTTP 200，sha256 前綴 b4f2da0303fbd2dc 與快取相同。取得路徑合規。",
+      "reopen_result": "逐句相符：條件 1 各次族群 87–98%；條件 2 兩天 Welch 檢定 P 皆不顯著（T1 P=0.42、T2 P=0.87…），作者說「at least over two days」鳥沒有因報酬變差改變取樣；條件 3 的 14 天後「49(33-71)%」原本有偏好的個體換邊、8(2-16)% 的個體偏好不變；分群 48%、係數 -0.27±0.02 與 -0.13±0.02；年輕個體較可能在第 1 群（z140=-2.94, P=0.003）；沒有個體的報酬偏向抄襲參數高於 0.1；摘要「without significant asocial exploration and without any evidence for pay-off biased copying」；模擬 λ=5 最快穩定。要改兩處：（1）33–71% 原文未說明是信賴區間，片中只說「各次族群之間大約三成到七成」或不報區間；（2）作者 payoff 寫「換掉舊做法的不是哪隻特別聰明的鳥」，原文沒有這個比較，刪。",
+      "changes_applied": {
+        "scope": "照作者原文，另加：49%（33–71%）的括號原文沒有寫是信賴區間還是各次族群的範圍，片中不說「信賴區間」。條件 2 只有兩天，作者自己寫「至少在兩天內」，不得說成「報酬變差時鳥不會換」。",
+        "editorial.payoff": "「大家都這樣做」沒有把牠們鎖死：換邊的鳥還是會看多數，但也記得自己剛剛吃到什麼。",
+        "facts": 1.5,
+        "notes": "覆核算 1.5 條，同作者：兩天不變、十四天後 49% 換邊且年輕的換得快 1；換邊幾乎不靠照報酬抄別隻、也不靠自己亂試，從眾仍在（模型估計）0.5。與 L40-004（Aplin 2015）是不同論文、不同條件，不重複。"
+      },
+      "duplicate_of": null,
+      "reason": "採用、改字。正是上一輪點名的第（1）項，終於循 OpenAlex→ORA 典藏頁的公開連結讀到作者接受稿，數字全部對得上。它是同一群鳥、同一套食盒的續作，接在 L40-004 之後回答「傳下去會不會被從眾鎖死」，在題目裡有位置。",
+      "overlaps": [
+        {
+          "existing_id": "L40-004",
+          "note": "同一群野外大山雀、同一套食盒的前作（報酬相同時地方偏好怎麼建立）；L60-001 答報酬改變後會不會換，不同答案。"
+        }
+      ],
+      "final_id": "L60-001",
+      "batch": "batches/wave60-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L60-002",
+      "reviewer": "V18",
+      "question": "城市裡的鳥學會翻開垃圾桶蓋，怎麼證明這是一隻傳一隻，而不是每一隻都自己想到的？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f15src/klump2021_kops.txt（摘要第 61–62 行；正文第 129–232 行；補充說明第 555、648–651、885–889、962 行）。今日重抓 KOPS 位元流：HTTP 200，sha256 前綴 b57a9417db30b310 與快取相同。入口查證：OpenAlex 對 DOI 10.1126/science.abe7808 的 best_oa_location 給 pdf_url 為同一 KOPS 位元流、landing_page 為 nbn-resolving.de 的 URN；循 URN 今日轉到 kops.uni-konstanz.de/entities/publication/223906e0-…，頁內有該位元流 id。取得路徑合規。",
+      "reopen_result": "逐句相符：1396 筆回報、1322 人、478 個郊區，338 筆、44 個郊區描述開蓋；93.3% 多隻在場、88.8% 一般垃圾桶；七個時段；含社會傳播的模型 Σwi>0.99；最佳模型估計傳到 93.9%（95% CI 86.5–97.3%）的郊區；Narraweena 2018 年底的第二次創新；160 段成功開蓋、五階段；Partial Mantel r=0.16, p<0.001 與 r=0.21, p=0.002，「suggesting the formation of local sub-cultures」；Stanwell Park 標記九成以上，114 隻可辨識個體中 9 隻成功（112 段）、27 隻嘗試未成功（94 段）；年齡 χ2=0.86, p=0.35。兩點提醒：（1）中心性那一句原文統計值互相矛盾（「t78=1.07, p=0.001」），片中不報、只說「傾向」；（2）檔首寫 Accepted version，但每頁頁首是「Submitted Manuscript: Confidential」，OpenAlex 也標 submittedVersion，版本要照實寫。9／114 是一個熱點（Stanwell Park），不是「各熱點」。",
+      "changes_applied": {
+        "scope": "照作者原文，另加：開蓋者在結伴網路中心性較高只說「有這個傾向」，不報統計值（原文數值不一致）。114 隻中 9 隻成功只限 Stanwell Park 一個熱點。版本寫「機構典藏的作者稿（檔首自述接受稿）」。",
+        "facts": 1.5,
+        "notes": "覆核算 1.5 條，同作者：地圖加時間序列的擴散分析支持社會傳播、估計 93.9% 的郊區、另有一次獨立創新 1；同一隻鳥手法彼此更像、距離越遠越不像（地方次文化）0.5。114 隻中 9 隻是旁證，不另計。"
+      },
+      "duplicate_of": null,
+      "reason": "採用、改字。上一輪點名的 Allen 2013、van de Waal 2013 確實找不到開放全文（OpenAlex 標 closed，我未再試付費頁），改用這一篇是正確的替代：它同樣直接回答「怎麼證明是學來的」，又和 L59-007（以觀看關係為網路）用的是不同的證明方式（以地理距離為網路）。",
+      "overlaps": [
+        {
+          "existing_id": "L59-007",
+          "note": "同一類證明（網路擴散分析），不同網路與尺度：L59-007 是單一族群六天、誰看過誰；L60-002 是 44 個郊區、七個時段、地理距離。不重複，但片中要說清楚兩種網路的差別。"
+        }
+      ],
+      "final_id": "L60-002",
+      "batch": "batches/wave60-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P60-003",
+      "reviewer": "V19",
+      "question": "排成一列擠到每公尺兩人左右，是大家一起越走越慢嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f16src/arxiv-1003.5446.txt〈Stop-and-Go Waves〉全段與 Fig. 3 說明；今日由 https://arxiv.org/pdf/1003.5446 重抓 HTTP 200，sha256 前綴 a300a8517f6d1a89 與快取相同。",
+      "reopen_result": "逐字相符：「Stopping is first observed during the runs with 45 pedestrians, at 70 pedestrians they can hardly move forward. Stop-and-go phases occur simultaneously. Some pedestrians stop, but elsewhere pedestrians could walk slowly.」「These two phases, separated in space and time, are also observable at a fixed density.」「Regular stops occur at densities higher than 1.5 pedestrians per meter」「from 1.8 to 2.6 … single peak near v = 0.15, to two peaks, to a single peak near v = 0 … For a density between 2.0 and 2.2 pedestrians per meter both peaks coexist」；右峰是走的人、左峰是停的人（原文）。停走波「propagating opposite to the movement direction」。學生 17.3 m、士兵約 26 m、最多 70 人皆在 §實驗段。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "收。上一輪轉折失敗的原因是「不會停」出自作者推論；這次「同一個密度下有人停、有人走」是原文自己寫的兩句（同時存在、固定密度下也觀察得到）加上速度分布雙峰的圖說，不是作者推論。45 人的那幾次只可能是士兵組（學生組最多 34 人），作者寫「士兵那一組」合理。雙峰原因作者只列可能，scope 已限制。數字 0.15 原文未寫單位（全文用 m/s），旁白可說「每秒約 0.15 公尺」。算 1.5 條（停走波的出現與往後傳 1、固定密度下雙峰並存 0.5），同意作者。",
+      "overlaps": [
+        {
+          "existing_id": "P59-001",
+          "note": "同一研究群 2005 學生實驗的直線關係是本核心的前半；P60-003 用的學生資料只拿來證明兩組落在同一曲線，不重算。"
+        },
+        {
+          "existing_id": "P58-006",
+          "note": "事故錄影的走走停停，不用、不並列。"
+        },
+        {
+          "existing_id": "X35-001",
+          "note": "車流環道，屬別題，不重講。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "P60-003",
+      "batch": "batches/wave60-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P60-004",
+      "reviewer": "V19",
+      "question": "一列人裡停下來的那一段，會往哪裡跑、跑多快？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f16src/arxiv-1602.03053.txt §2、§3.2、§3.3、§4；今日由 https://arxiv.org/pdf/1602.03053 重抓 HTTP 200，sha256 前綴 bab59d697b8bc032 相同。",
+      "reopen_result": "相符：C≈26.5 m、N = 15, 30, 47, 55, 52, 59、0.57–2.27 Ped/m、vstop = 0.05 m/s（作者說別的實驗可能要別的值）、「With 15 pedestrians … no stopping occurs whereas 52, 55 or 59 pedestrians generate stop-and-go waves」「In the run N = 52, all stop waves have nearly the same speed around −0.5 m/s. The run N = 59 has lower speeds of stop waves around −0.32 m/s」「The duration of the experiment run was too short to judge whether … stable state」。負號在本篇只是座標方向；往後傳的方向由 P60-003 的原文支持。原文沒有寫「每次一分多鐘」，只有 Fig. 7 畫一分鐘。",
+      "changes_applied": {
+        "answer_target": "往後跑，速度在每秒半公尺上下。2013 年德國 BaSiGo 計畫在周長約 26.5 公尺的環形走道做了六次單列實驗（15 到 59 人，平均每公尺 0.57 到 2.27 人），用頭頂攝影機追蹤整圈每一個人，把每秒不到 0.05 公尺算成「停」。15 人時沒有人停；52、55、59 人都出現停走波。52 人那次各個停波都以每秒約 0.5 公尺、和前進相反的方向移動，59 人那次約每秒 0.32 公尺。作者另寫人越多、一個停波裡最多停住的人越多，但停波平均長度變短——這是會議稿的初步描述，作者說量化分析留待之後。",
+        "scope": "停的門檻是作者自訂；作者說實驗時間太短，不能判斷是不是穩定狀態（原文沒有寫每次走多久，旁白不寫「一分多鐘」）。受試者多為學生。會議論文稿（TGF'15）arXiv v1。這是另一組實驗（2013），不得和 P60-003 的 2006 年士兵實驗寫成同一個例子或同一組數字。不重講 X35-001 的車流環道。不得寫成任何人數或密度的門檻。"
+      },
+      "duplicate_of": null,
+      "reason": "收，改字。數字逐句相符；改兩處：刪去原文沒有的「一分多鐘」；把停波長度的趨勢標成初步描述。作者在 C4-02 轉折句把本篇的「每秒約半公尺」和 P60-003 的「同一密度下有人停有人走」寫成同一句，兩者是不同年份、不同受試者的兩組實驗，轉折句已改寫。算 0.5 條，不是 1 條：停波存在與往後傳在 P60-003 已算；新增的只有停波速度（兩次實驗各一個值，合一條的一半）；長度趨勢是作者自己說尚未量化的描述，不計。",
+      "overlaps": [
+        {
+          "existing_id": "P60-003",
+          "note": "同一研究群、同一現象（停走波）；本核心只新增速度。"
+        }
+      ],
+      "reviewer_facts": 0.5,
+      "final_id": "P60-004",
+      "batch": "batches/wave60-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P60-005",
+      "reviewer": "V19",
+      "question": "跟在前面的人後面走，前面空出的距離和速度，是一條直線的關係嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f16src/arxiv-1111.5708.txt §II、§III B、§IV A–B、表 II、表 III；今日由 https://arxiv.org/pdf/1111.5708 重抓 HTTP 200，sha256 前綴 93f7952da21af54b 相同。",
+      "reopen_result": "相符：28 人（20 男 8 女）、內圈 15.08 m、外圈 25.76 m、120 frames/s、三段交界 1.1 m 與 3 m、「greater than 0.9 ped/m」、「crossover … around 0.8 m/s」、「Surprisingly … same linear law even when the velocity comes very close to zero」、表 II 13.7／5.32／0.74 s 與「numerical value is not meaningful」。表 III：法國截距 0.45 m、斜率 0.75 s（作者用表 II 的 0.74，兩表的擬合方式不同）；德國「0.37 (0.36)」——0.37 是 Jelić 重新擬合，括號 0.36 才是原發表值（即 P59-001 的數字）。§III B 另寫「when the global density becomes quite high, stop-and-go waves are produced」與「even at densities as large as 3 ped/m, the velocity does not vanish」（平均值）。",
+      "changes_applied": {
+        "answer_target": "不是一條，是三段，而且換段很突然。法國雷恩的研究用動作捕捉追蹤最多 28 名志願者在環形走道排成一列走（內圈路徑 15.08 公尺、外圈 25.76 公尺），每秒 120 格。前面空出 3 公尺以上時，大家照自己的速度走，幾乎不受影響；1.1 到 3 公尺之間，速度只隨距離稍微變；不到 1.1 公尺時，速度隨距離急遽變慢——這一段的直線一直延伸到速度幾乎為零，作者自己說出乎意料。弱受限和強受限的交界大約在每秒 0.8 公尺。三段的斜率約 13.7、5.32、0.74 秒，作者說第一段的數字沒有意義、只表示速度已經飽和。作者拿前一章德國單列實驗的資料重新擬合，最擠那一段一樣是直線；法國人截距約 0.45 公尺，比德國人大，作者說文化差異很弱。",
+        "scope": "28 人的小實驗，全場平均密度最高每公尺 1.86 人；文化比較資料有限，作者強調差異很弱。旁白不報德國的 0.37（那是本篇重新擬合的值，P59-001 已報原發表的 0.36，兩個數字並列會讓觀眾以為有矛盾）。作者另寫「平均速度到每公尺 3 人也沒有降到零」——那是平均值，同時混了停與走，不得寫成「沒有人停」；同篇也寫了密度高時會出現停走波。截距只說「可看成最小個人空間」。arXiv 版，PRE 85, 036111 刊本未對照。不得寫成任何距離或密度的安全建議。"
+      },
+      "duplicate_of": null,
+      "reason": "收，改字。數字逐句相符；改的是德國截距：0.37 是本篇對同一批德國資料的重新擬合，括號裡的 0.36 才是 P59-001 已用的原發表值，兩章各報一個會像互相矛盾，所以只留法國 0.45 並說明「比德國人大」。算 1 條，同意作者（新增三段與換段位置；強受限段的直線本身是 P59-001）。與 P60-006 是同一場實驗（雷恩 28 人），兩核心合計 1.5 條，見 P60-006。",
+      "overlaps": [
+        {
+          "existing_id": "P59-001",
+          "note": "德國單列的直線（截距 0.36、斜率 1.06）是本核心的強受限段；不重算。"
+        },
+        {
+          "existing_id": "P60-006",
+          "note": "同一場雷恩實驗的另一篇分析。"
+        }
+      ],
+      "reviewer_facts": 1.0,
+      "final_id": "P60-005",
+      "batch": "batches/wave60-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P60-006",
+      "reviewer": "V19",
+      "question": "擠到只能慢慢走時，人是把步子變小，還是把腳步放慢？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f16src/arxiv-1207.0832.txt §III–§IV 式 (1) 與其後各段；今日由 https://arxiv.org/pdf/1207.0832 重抓 HTTP 200，sha256 前綴 2f18fc421937dad2 相同。",
+      "reopen_result": "相符：52 次、每次約 1 分鐘、ls = 0.065m + 0.724v（0.2–1.1 m/s）、>0.6 m/s 時步伐時間約 0.8 s；作者解釋（預期很快能再走快、維持節奏以便快速起步）與「continue to sway and shift their body weight」都在原文。不符一處：原文是「the variations in the step duration are only of 30%, to be compared with the 100% variation in the velocity」——速度變化 100% 是從每秒 0.6 公尺降到接近零，不是作者寫的「速度變了一倍」。",
+      "changes_applied": {
+        "answer_target": "主要是步子變小，節奏幾乎不變。同一個雷恩實驗做了 52 次、每次約 1 分鐘，研究者從肩上標記的左右擺動算出每一步。步長和速度成正比，一直到速度接近零：每秒 0.2 到 1.1 公尺之間，步長約等於 0.065 公尺加上 0.724 乘以速度。速度在每秒 0.6 公尺以上時，一步的時間幾乎固定在 0.8 秒左右；更慢時，速度從每秒 0.6 公尺一路降到接近零，一步的時間只變約 30%。這和單獨一個人刻意放慢的步態研究不同。作者的解釋是：被前面擋住的人預期馬上又能走快，所以維持節奏、縮小步子，方便隨時起步；速度幾乎為零時，人還在原地左右換腳。"
+      },
+      "duplicate_of": null,
+      "reason": "收，改字（「速度變了一倍」改回原文的對照）。這一章在 C4-02 的作用是替停走波補一個「人隨時準備再走」的畫面，可刪。算 0.5 條，不是 1 條：與 P60-005 是同一場 28 人實驗（雷恩），依「同一實驗的多個結果合計 1–2 條」，兩核心合計 1.5；步長正比於速度是本核心新增的量測，解釋部分是作者推論。",
+      "overlaps": [
+        {
+          "existing_id": "P59-001",
+          "note": "P59-001 已有「擠時前後同步踏步」；本核心不講同步。"
+        },
+        {
+          "existing_id": "P60-005",
+          "note": "同一場實驗。"
+        }
+      ],
+      "reviewer_facts": 0.5,
+      "final_id": "P60-006",
+      "batch": "batches/wave60-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H60-004",
+      "reviewer": "V19",
+      "question": "手指以為會碰到、其實沒碰到，另一隻手被敲的那一下，還會覺得比較輕嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f16src/epmc-PMC1334241.txt（Results、Discussion、Materials and Methods）；今日 Europe PMC fullTextXML HTTP 200，sha256 前綴 3d9df5cf190e9851 與快取相同。",
+      "reopen_result": "逐字相符：測試敲擊 2.7 N；contact「mean 0.71, SE 0.08」、delay「mean 0.95, SE 0.04」；no-contact「mean 0.73, SE 0.05 … did not differ significantly from that seen in contact trials」；A 組 10 人中 7 人至少減 10%；「in group B the difference … was less than 10% in every participant」；20 名 18–40 歲右撇子；電魚對照「not identical to that in electric fish … prediction of a specific event—contact—rather than arbitrary predictable stimuli」。PLoS Biol 2006。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "收，不改。這是 C6-01 第二個轉折的核心，原文直接寫出「預期碰觸時，無論有沒有真的碰到，打折程度一樣」，不是作者推論。算 1.5 條：沒碰到也照樣打折 1；從沒碰過的 B 組做同樣動作不打折 0.5（不同受試者、結論不同：光是動作與敲擊固定配對不夠）。電魚對照是作者詮釋，不另計。寫稿時開場不要先把答案說成「大腦先預測」，否則這個轉折會變成重述 S74。",
+      "overlaps": [
+        {
+          "existing_id": "LEG-S74",
+          "note": "舊集只說「大腦預測後調弱」與小腦影像；本核心新增「沒碰到也打折」的量測。入口一句帶過、不計。"
+        },
+        {
+          "existing_id": "R44009",
+          "note": "延遲訓練；不同答案。"
+        },
+        {
+          "existing_id": "S10001",
+          "note": "電魚負像；本核心原文拿電魚對照，兩章可互相指涉但不重講。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "H60-004",
+      "batch": "batches/wave60-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H60-005",
+      "reviewer": "V19",
+      "question": "按下去的是一隻假手，大腦也會把觸感打折嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f16src/pmc-PMC5547616.html（Results 實驗一、二，Table S2、S3）；今日重抓同頁 HTTP 200，原始 HTML 雜湊不同（cf044aaba41a47a5，差在頁面的 ncbi_phid 與 csrfmiddlewaretoken），抽出的正文正規化後雜湊兩次都是 9317be7ebd986017、長度 69,335 字元，內容相同；第二條路徑見 source_fixes。",
+      "reopen_result": "相符：1–3.5 N（表內 1, 1.5 … 3.5 N）、25 cm、假手 0° 對 180°；實驗一 n=23：rubber0° > rubber180°（P=0.039）、rubber0° > real25cm（P=0.008）、rubber0° 與 real0cm 無顯著差（P=0.092，作者自己寫「statistical trend」）；實驗二 n=20：rubber25cm 比 real0cm 按得輕（P=0.038，less attenuation），但 rubber25cm 仍比 real25cm 重（P=0.018）——打折變少、沒有消失。歸屬感越強打折越多的相關在兩個實驗都有。",
+      "changes_applied": {
+        "answer_target": "如果你覺得那隻假手是自己的，會。卡羅林斯卡學院用力量配對量打折：馬達先在左手食指壓 1 到 3.5 牛頓，受試者再用右手食指按感測器把同樣的力重現出來。兩手上下對齊、像自己碰自己時，大家會按過頭；兩手相距 25 公分時就不太會。第一個實驗把真的右手放在 25 公分外，但在左手食指正上方放一隻跟著右指同步動作的假手：假手擺正、讓人覺得「這是我的手」時，按得明顯比假手倒轉 180 度或沒有假手時重，和真的自己碰自己沒有顯著差別；越覺得假手是自己的，打折越多。第二個實驗反過來：真手對齊，卻讓人覺得 25 公分外那隻假手才是自己的手——打折變少了，但沒有消失。",
+        "scope": "分析人數 23 與 20；量的是力量配對，不是搔癢；「和真的自己碰自己沒有顯著差別」的 P 值為 0.092，作者自己說有趨勢，旁白不得說成「完全一樣」；第二個實驗打折只是變少，仍比兩手真的分開時多，不得說「關掉」。旁白只說「明顯」「沒有顯著差別」，不給倍數。與池中 R44011（假手錯覺下指位漂移不等於歸屬感）答案不同，可互相呼應但不重講。"
+      },
+      "duplicate_of": null,
+      "reason": "收，改字。作者在 C6-01 的轉折與章名寫「假手能打開或關掉打折」，第二個實驗原文是打折變少、仍高於兩手真的分開（P=0.018），不是關掉，改成「打開或調弱」。算 1 條（同一論文兩個方向相反的實驗合算），同意作者。",
+      "overlaps": [
+        {
+          "existing_id": "R44011",
+          "note": "假手錯覺的指位漂移；不同答案，不重講。"
+        },
+        {
+          "existing_id": "R44009",
+          "note": "同一研究群（Kilteni、Ehrsson）另一篇；不同答案。"
+        }
+      ],
+      "reviewer_facts": 1.0,
+      "final_id": "H60-005",
+      "batch": "batches/wave60-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H60-006",
+      "reviewer": "V19",
+      "question": "自己按自己會按過頭，是少數人才這樣，還是幾乎人人都會？跟年紀有關嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f16src/epmc-PMC5063954.txt（Abstract、Results〈Sensory attenuation with ageing〉〈Mechanism for differences〉）；今日 Europe PMC fullTextXML HTTP 200，sha256 前綴 70ec62243a259c25 相同。",
+      "reopen_result": "逐字相符：n=325、18–88 歲；Direct 平均過頭 1.198 N（s.d. 0.890）、Slider 0.052 N；「315/322 (98%) participants showing sensory attenuation」；三組 18–39／40–64／65+，年長者 Direct 過頭多於年輕者（Bonferroni 校正 P=6.92e-04），Slider 年長與中年反而較少；Slider 斜率變平與 Direct 截距上升相關（ρ=−0.368，控制年齡後仍在）。作者說這表示感覺精度下降時更倚重預測——是作者的解讀。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "收，不改。算 1 條：98% 的普遍度與年齡效應（含「不是單純比較用力」的滑桿對照）；直接 vs 遙控本身是 R44010，不計。橫斷面、腦區結果不用，scope 已寫。",
+      "overlaps": [
+        {
+          "existing_id": "R44010",
+          "note": "直接按會過頭、遙控不會；本核心只新增普遍度與年齡。"
+        }
+      ],
+      "reviewer_facts": 1.0,
+      "final_id": "H60-006",
+      "batch": "batches/wave60-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L60-003",
+      "reviewer": "V19",
+      "question": "蟋蟀叫的時候，牠往腦送的聽覺訊號怎麼不被自己的叫聲淹掉？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f16src/pmc-PMC6740803.html（Abstract、Results 無聲與虛擬鳴叫、Fig. 11 段、Discussion 第一段）；今日重抓同頁 HTTP 200，原始 HTML 雜湊不同（c7ddfb592d0ca739，差在 ncbi_phid 與 csrf token），正文正規化後兩次都是 f2bb6129f8136a59、48,187 字元。頁面 citation 欄：J Neurosci 23(11):4717，2003，doi 10.1523/JNEUROSCI.23-11-04717.2003。",
+      "reopen_result": "數字相符：100 dB SPL、4.5 kHz、AN1／AN2、無聲（單翅）與虛擬（分離神經系統）鳴叫時仍有過極化、最大抑制與自己聲音的時刻同相、30% 的記錄另有翅膀動作造成的興奮、80 dB 測試聲前先給仿叫聲則放電少 21%、100–200 ms 恢復。耳朵照常是引用作者 2001 年的研究（Discussion 第一句），本篇未量。但作者的答案「聽得到」不是本篇的結果：原文是「The spiking response of AN1 and AN2 to acoustic stimuli was inhibited during silent and fictive chirps」——叫的那一刻，往腦送的路徑對外來聲音的反應也一起被壓下；蟋蟀叫時仍能回應外界聲音是 Discussion 引用的行為研究（Heiligenberg 1969 等），本輪沒讀。",
+      "changes_applied": {
+        "question": "蟋蟀叫的時候，牠往腦送的聽覺訊號怎麼不被自己的叫聲淹掉？",
+        "answer_target": "每叫一聲，腦裡的運動指令就先把往上送的聽覺路徑壓一下。劍橋大學記錄雙斑蟋蟀把聲音往腦送的兩種聽覺神經元。蟋蟀叫聲約 100 分貝、4.5 千赫。用藥物讓蟋蟀鳴叫，讓牠只用一邊翅膀「無聲地叫」，甚至把神經系統分離出來、完全沒有翅膀動作和感覺回饋時，這兩種神經元在每一聲叫的時候仍出現抑制，對外來聲音的反應也一起被壓下；抑制最強的時刻，正好對上真的鳴叫時自己聲音傳來的時刻。所以這個抑制不是耳朵關掉（作者先前的研究顯示鳴叫時耳朵照常反應），而是中樞自己發出的。另一項量測：先聽模擬叫聲的 100 分貝聲音，其中一種神經元對接下來 80 分貝聲音的放電少了 21%，要 100 到 200 毫秒才恢復；作者推論，叫的當下先壓住，可以減少叫聲過後被弄鈍。",
+        "scope": "解剖下的細胞內記錄、藥物誘發鳴叫；三成記錄另有翅膀動作造成的興奮；抑制從哪個神經元來，本篇沒有鑑定。叫的那一刻外來聲音也被壓下，旁白不得說「叫的同時照樣聽得到別隻」；「叫聲間隙仍保有反應」只說到作者的推論為止。耳朵照常是引用作者 2001 年研究，不是本篇量的。不寫成蟋蟀「聽不到自己」。",
+        "editorial_payoff": "不是把耳朵關掉，而是在知道自己要出聲的那一瞬間，先把往腦送的那一段壓下，免得被自己的叫聲震鈍。"
+      },
+      "duplicate_of": null,
+      "reason": "收，改問題與答案。原答案的結論句「聽得到，因為…」與本篇量到的相反：叫的那一刻兩種神經元對外來聲音的反應也被壓下；「仍聽得到別隻」出自本篇引用的行為研究，本輪沒讀。改成本篇真正量到的事（中樞抑制、與自身聲音時刻對準、可減少之後的弄鈍）。算 1 條，同意作者。",
+      "overlaps": [
+        {
+          "existing_id": "S10001",
+          "note": "電魚負像：不同動物、不同感官；本核心是抑制而非學到的負像。"
+        },
+        {
+          "existing_id": "S10003",
+          "note": "獼猴前庭：同類「命令加回饋」機制，不同答案。"
+        }
+      ],
+      "reviewer_facts": 1.0,
+      "final_id": "L60-003",
+      "batch": "batches/wave60-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H60-007",
+      "reviewer": "V19",
+      "question": "自己按自己會按過頭，在思覺失調症患者的研究組裡也一樣嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f16src/bayslab-SheSamBay05.txt（Am J Psychiatry 162:2384–2386，2005，Brief Report）；今日由 https://bayslab.org/pdf/SheSamBay05.pdf 重抓 HTTP 200，sha256 前綴 608f080dfd4dd394 相同；該檔在作者實驗室著作頁（f16src/bayslab-pubs-sp.html）有公開連結。",
+      "reopen_result": "相符：各 20 人、年齡性別相近；每組剔除 1 人後各 19 人；0.5–2.75 N、80 次；直接按：患者 27.5%、健康者 43.5%；搖桿兩組無差（F=0.16, p=0.69）；交互作用 F=4.88, p<0.04。另：除一人外都在服抗精神病藥物、症狀中度、16 人在猜疑或幻覺相關項目有 4 分以上；作者自己說之後要分辨這是狀態還是特質、並找同樣服藥的雙極性疾患患者對照以確認專一性——服藥可能是混淆因素，原文沒有排除。",
+      "changes_applied": {
+        "question": "自己按自己會按過頭，在思覺失調症患者的研究組裡也一樣嗎？",
+        "answer_target": "在一份 2005 年的研究裡，患者組也會按過頭，但過頭得比較少。倫敦的研究讓 20 位思覺失調症患者和 20 位年齡、性別相近的健康者做力量配對（目標 0.5 到 2.75 牛頓，80 次）。直接用手指重現時，兩組都按過頭，但患者組過頭 27.5%、健康組 43.5%——患者組反而比較接近目標；改用搖桿遙控馬達時，兩組都很準、沒有差別。作者據此提出：患者預測自己動作後果的機制可能有所不同，並把它和部分患者經驗到「自己的動作像是外來的」這類症狀連在一起；這是作者的假說，本研究沒有檢驗兩者的因果。",
+        "scope": "每組剔除 1 人後 19 人；患者除一人外都在服藥、症狀中度，作者說服藥的影響與「狀態還是特質」都還要再查；是簡短報告。片中只說「研究中的患者組」，用「思覺失調症」這個名稱，不用舊稱或任何貶抑、驚悚的用語；不得推論個別患者、不得當成診斷或自我檢測方法、不得暗示患者危險或「分不清現實」；症狀連結只能說成作者的假說。畫面不畫患者形象，只畫兩組長條。",
+        "editorial_payoff": "打折少一點，看起來比較準，研究者卻把它當成預測機制不一樣的線索；這是一個研究組的平均，不是看人的方法。"
+      },
+      "duplicate_of": null,
+      "reason": "收，改問題、答案與 payoff。原 payoff「打折太少不是比較好：會把自己的動作當成外來的」把作者的假說寫成因果，原問題「如果大腦的預測不靈」先把結論當前提。數字逐句相符；scope 補上服藥與狀態／特質兩個作者自己承認的限制、用語規則與畫面規則。算 1 條，同意作者。",
+      "overlaps": [
+        {
+          "existing_id": "R44010",
+          "note": "健康者的直接 vs 遙控（Shergill 2003，同一研究群）；本核心新增患者組打折較少。"
+        },
+        {
+          "existing_id": "H60-006",
+          "note": "同一範式；H60-006 是健康群體的普遍度。"
+        }
+      ],
+      "reviewer_facts": 1.0,
+      "final_id": "H60-007",
+      "batch": "batches/wave60-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S60-001",
+      "reviewer": "V19",
+      "question": "雨大多是小水滴互相碰撞、合併變成的嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f16src/hal-mulmenstadt2015.txt §1、§3、§4；今日由 HAL 同一網址重抓 HTTP 200，sha256 前綴 849fda018c1a295e 相同。",
+      "reopen_result": "逐字相符：CloudSat–CALIPSO 2006–2011、約 5000 萬個下雨剖面；熱帶與副熱帶 ITCZ 外的海上暖雨「close to 100% over wide areas」；「warm-rain phase fraction over land is only 1% in the extratropics (poleward of 30°) and 8% in the tropics … ocean is 15% … and 44%」；陸地冰相 67%／71%；液態雲下雨機率「typically ≥ 20% over ocean but < 2% over land」；陸地上會下雨的暖雲有效半徑較大、雲頂較高；無法分辨是氣膠還是上升氣流。相態指「最低一層雲頂」的相態；雪、霰、冰雹不在統計內（作者假設固體降水都經冰）；統計的是發生頻率，不是雨量。",
+      "changes_applied": {
+        "scope": "統計的是下雨的頻率（雲柱比例），不是雨量；毛毛雨可能漏測；相態依最低一層的雲頂判斷，「冰相的雨」指雨形成時雲頂有冰，不代表落地是雪，也不代表過程中沒有碰撞合併（冰相路徑裡常有凇附與融化後的碰併）。不推論台灣個別天氣。舊集 S42 講的是暖雨這一條路，旁白不得說「S42 講錯了」，只說「那是其中一條路，在陸地上更常見的是另一條」。"
+      },
+      "duplicate_of": null,
+      "reason": "收，scope 補兩句：冰相不等於沒有碰併；S42 的處理方式。這是 C6-02 第二個轉折的支點，數字逐句相符、不是作者推論。算 1.5 條：陸海暖雨比例 1、液態雲下雨機率 0.5（同一資料，但回答的是另一件事：為什麼陸上暖雨少）。",
+      "overlaps": [
+        {
+          "existing_id": "LEG-S42",
+          "note": "舊集的暖雨說法只當入口，不計；本核心補上「陸地上大多經冰」。"
+        },
+        {
+          "existing_id": "K6024",
+          "note": "凍毛毛雨可經碰併；不同答案。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "S60-001",
+      "batch": "batches/wave60-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S60-002",
+      "reviewer": "V19",
+      "question": "空氣裡的煙塵多了，雲要長到多厚才會下暖雨？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f16src/acp-8-1661-2008.txt Abstract、§1、§3 與 Fig. 9 圖說；今日由 ACP 同一網址重抓 HTTP 200，sha256 前綴 c0038bb88f64c529 相同。",
+      "reopen_result": "相符：2002 年 9 月 23 日至 10 月 18 日；「until they acquire a vertical development of at least 4 km, compared to only 1–2 km in clean clouds」；「increased by ∼350 m for each additional 100 cloud condensation nuclei per cm3 at a super-saturation of 0.5%」；DL「grows much slower with cloud depth (at least by a factor of ∼2)」；「did not observe this effect to reach saturation at 3000 or more accumulation mode particles per cm3」；24 µm 門檻與機上雷達回波、擋風玻璃雨滴同時出現。作者沒寫的限制：「Because the measurements in the Transition regime, Polluted regime and Pyroclouds did not extend high enough to reach this threshold, we have extrapolated the (good) linear fit」——煙霧雲的起雨深度（「至少 4 公里」）是外推值，不是飛機量到下雨的高度。§3 另寫污染雲加上雲底高度後已在冰點以上很高處，碰併出來的雨滴會凍成霰與冰雹。",
+      "changes_applied": {
+        "question": "空氣裡的煙塵多了，雲要長到多厚才會下暖雨？",
+        "scope": "單一季節、單一地區的飛機量測；起雨門檻（DL 到 24 微米）是作者定義的；污染雲與火積雲的量測沒有飛到那麼高，起雨深度是把量到的直線往上外推的估計，旁白要說「估計要長到 4 公里以上」，不說「量到 4 公里才下」。只講 0 °C 層以下暖雨的起點，不代表總雨量變少；作者自己寫，這麼厚的污染雲到了高處，雨滴會凍成霰與冰雹。不與 S60-004 的數字比較或相減；不寫成空污「讓台灣不下雨」之類的推論。"
+      },
+      "duplicate_of": null,
+      "reason": "收，改問題用字（高→厚，原文是雲的垂直發展深度）與 scope：補上作者自己寫的外推限制。算 1 條，不是 1.5：起雨深度的對比與每 100 CCN 多 350 公尺是同一組量測的兩種讀法；滴徑長得慢一倍是同一機制的中間量；「沒有飽和」是條件說明。",
+      "overlaps": [
+        {
+          "existing_id": "K6002",
+          "note": "Köhler 門檻（理論）；本核心是量到的起雨深度。"
+        },
+        {
+          "existing_id": "K6012",
+          "note": "同水分成更多小滴更亮（反照率），不是起雨；K6012 已從 C6-02 刪去。"
+        }
+      ],
+      "reviewer_facts": 1.0,
+      "final_id": "S60-002",
+      "batch": "batches/wave60-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S60-003",
+      "reviewer": "V19",
+      "question": "往只下一點毛毛雨的層積雲裡撒少量大鹽粒，雨會變多嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f16src/acp-15-5645-2015.txt Abstract、§1、§2、§4 個案段、結論；今日由 ACP 同一網址重抓 HTTP 200，sha256 前綴 91bb9890d566b72e 相同。",
+      "reopen_result": "數字相符：2011-08-03 加州中部外海、雲頂附近撒 1–10 µm 鹽粉、30–60 分鐘後取樣、毛毛雨率約 0.05→0.20 mm/h、LWP 約 52→43 g m⁻²、鹽粒估計 10⁻²–10⁻⁴ cm⁻³ 對一般 CCN 約 10² cm⁻³、雲底雨率「four-fold increase」、8 月 10 日已在下雨的雲效果不顯著。不符一處：作者寫「原本不下雨的層積雲開始下毛毛雨」，原文撒播前「Precipitation rates … were less than 0.1 mm h−1 (0.04–0.09 mm h−1) before seeding」——是已有很弱的毛毛雨（液水剖面像「non-precipitating」的雲，但雨率不是零），撒播後變強。",
+      "changes_applied": {
+        "question": "往只下一點毛毛雨的層積雲裡撒少量大鹽粒，雨會變多嗎？",
+        "answer_target": "這一次的實驗裡變多了。2011 年 8 月 3 日在加州中部外海，飛機在一片平整的層積雲頂附近撒下 1 到 10 微米的鹽粉，30 到 60 分鐘後回到下風處量：平均雲滴變大、數量變少，直徑超過 10 微米的大滴變多；原本每小時不到 0.1 毫米的毛毛雨，平均約從每小時 0.05 毫米升到 0.20 毫米，雲裡的液態水從每平方公尺約 52 克降到 43 克。估計撒進去的鹽粒每立方公分只有 0.01 到 0.0001 個，一般雲凝結核則有約 100 個——極少數的大顆粒，雲底雨率估計約變成四倍。另一天（8 月 10 日）雲本來就在下毛毛雨，再撒效果不顯著。",
+        "scope": "兩個個案，沒有同時的未撒播對照雲，追蹤被撒播的氣團靠風速推估（作者自己說單架飛機很難追準）；量的是很弱的毛毛雨。這是用來看「大顆粒能不能帶頭碰併」的物理實驗，不是增雨作業：旁白不得說人工增雨可行、有效、可推廣或能解決缺水，也不給撒播方法細節。"
+      },
+      "duplicate_of": null,
+      "reason": "收，改問題、答案與 scope。原句「原本不下雨的雲開始下」與原文撒播前已有 0.04–0.09 mm/h 不符，C6-02 轉折一的措辭跟著改。算 1 條，同意作者。",
+      "overlaps": [
+        {
+          "existing_id": "S60-002",
+          "note": "方向相反（少數大顆粒促雨、大量小顆粒抑雨），兩者數字不合併、不相減。"
+        }
+      ],
+      "reviewer_facts": 1.0,
+      "final_id": "S60-003",
+      "batch": "batches/wave60-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S60-004",
+      "reviewer": "V19",
+      "question": "雲頂已經零下十幾度，雲裡就一定有冰嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f16src/acp-21-17969-2021.txt Abstract、§3.1–3.2.3、§5；今日由 ACP 同一網址重抓 HTTP 200，sha256 前綴 94c0f98aa30b328a 相同。",
+      "reopen_result": "數字相符：萊比錫、利馬索爾低於 −16 °C 的雲「nearly all … contained ice」，蓬塔阿雷納斯「0.4 ± 0.1 … classified as liquid-only」；液態雲在蓬塔阿雷納斯到 −38 °C 仍可見；扣除邊界層與重力波後，−24 到 −8 °C 含冰比例少 0.1–0.4；冰核濃度估計差 1–4 個數量級，作者用「potentially」。作者沒寫的關鍵兩句：§3.2.3「the stratiform liquid-only cloud layers observed over Punta Arenas at temperatures below −18 °C are embedded in orographic gravity waves」；去掉重力波影響後，「clouds with fully developed turbulence show similar ice-formation frequencies, independent of the location, with indications for a still slightly reduced ice-formation efficiency over Punta Arenas」。也就是「四成全是液態」大部分是山地重力波裡的雲，不是冰核差異的直接證據。「liquid-only」的定義是觀測期間沒有看到冰從液態層落下（ice virga 少於 5% 時間），不是直接量到雲裡沒有冰。",
+      "changes_applied": {
+        "answer_target": "不一定。萊布尼茲對流層研究所用雷達和光達，在德國萊比錫（污染）、賽普勒斯利馬索爾（沙塵多）和智利蓬塔阿雷納斯（乾淨的南半球中緯度海洋）長期觀測薄薄一層的過冷層狀雲。萊比錫和利馬索爾，雲頂低於零下 16 度的雲幾乎都看得到冰從雲底落下；蓬塔阿雷納斯同樣溫度下，約四成（0.4±0.1）被歸為只有液態，甚至到零下 38 度都還看到。但這些低溫的液態雲很多是山地造成的重力波裡的雲；把邊界層和重力波的影響扣掉後，蓬塔阿雷納斯在零下 24 到零下 8 度之間含冰雲的比例仍少 0.1 到 0.4，只看紊流充分發展的雲，三地已經相近、蓬塔阿雷納斯只略少。作者由空氣的光學性質估計兩地能結冰的粒子濃度差 1 到 4 個數量級，說差異「可能」由此而來。",
+        "scope": "地面單站遙測，只限淺層層狀雲；「只有液態」是沒看到冰從雲底落下，不是直接量到雲裡沒有冰；冰核濃度是推估；原因作者寫為「可能」，而且空氣的上下運動（重力波、紊流）影響很大。旁白不得把「四成」單獨當成冰核差異的證據。不與 S60-002 的煙霧數字比較。"
+      },
+      "duplicate_of": null,
+      "reason": "收，改答案與 scope：原答案只報「四成全液態」與冰核差異，漏掉原文自己承認的重力波混淆與「紊流雲三地相近」。改後這一章能說的是「零下不等於有冰，起頭的冰要看粒子，也要看空氣怎麼動」，不能說成冰核一個原因。算 0.5 條，不是 1 條：可靠的部分（過冷液態雲在零下十幾度到三十幾度都存在，比例因地而異）是教科書常識的實測版，歸因部分作者自己保留。",
+      "overlaps": [
+        {
+          "existing_id": "K6004",
+          "note": "冰出現後怎麼搶水汽；本核心講冰出不出現。"
+        },
+        {
+          "existing_id": "S60-002",
+          "note": "不比較、不相減。"
+        }
+      ],
+      "reviewer_facts": 0.5,
+      "final_id": "S60-004",
+      "batch": "batches/wave60-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S60-005",
+      "reviewer": "V19",
+      "question": "雲頂才零下七度、能結冰的粒子又很少，雲裡怎麼量到每公升上百個冰晶？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f16src/acp-12-4963-2012.txt Abstract、§4.1、§5.2、§6、§7；今日由 ACP 同一網址重抓 HTTP 200，sha256 前綴 985a2290d8314149 相同。",
+      "reopen_result": "相符：2009-01-22 英國南部約 100 km 的淺積雲、雲頂高於 −8 °C（近雲頂 −7.5 °C）、沒有冰從上方落入、柱狀冰晶 100–200 L⁻¹（約 −6 °C 段）、其他段多在 20 L⁻¹ 以下；摘要「up to 100 L−1 could be produced by secondary ice particle production providing the observed small amount of primary ice (about 0.01 L−1) was present」；「A key step … was the process of collision and coalescence of rain drops, which once formed fell rapidly through the cloud, collecting ice particles which caused them to freeze and form instant large riming particles」。需修正的細節：ACPIM 的對照組用的是依量測設定的氣膠，冰停在初始的 1×10⁻² L⁻¹；放大出現在把氣膠減為 1/1.5 的低氣膠組（或改用紊流加強的碰撞核）——不是作者寫的「把氣膠調多」的單向敘述，而且說明模式結果對設定很敏感。另：除 100 倍冰核的組外，所有 ACPIM 組的降水都走暖雨路徑；WRF 結論不同，作者說它雲頂太冷。",
+      "changes_applied": {
+        "answer_target": "研究者的解釋是「冰生冰」，而且得先有暖雨幫忙。2009 年 1 月 22 日英國南部一條約 100 公里長的淺積雲，雲頂高於零下 8 度（近雲頂約零下 7.5 度）。飛機確認沒有冰從上方掉進來；但雲裡約零下 6 度的一段量到柱狀冰晶每公升 100 到 200 個，其他段多在每公升 20 個以下。現行的冰核估算給的起頭冰很少，作者估計初始冰約每公升 0.01 個。氣塊模式顯示：只要有約每公升 0.01 個初始冰，凇附時碎裂出冰屑的過程就能放大到每公升 100 個；關鍵一步是雨滴先靠碰撞合併長大，落下時撈到冰粒、凍成大的凇附粒子。模式裡長不出大雨滴的設定，冰就停在起頭的數量。",
+        "scope": "單一個案；放大機制由模式與簡算推論，不是直接拍到碎裂；模式結果對氣膠數量與碰撞核的設定很敏感（依量測氣膠的對照組本身沒有放大），另一個模式（WRF）結論不同，作者說它的雲頂太冷。K6005 已有「凇附碎裂」的入口，本核心只算新增的量測對照與「先要有大雨滴」。"
+      },
+      "duplicate_of": null,
+      "reason": "收，改字：起頭冰的來源寫清楚（作者的估計），模式敏感度補進 scope，刪去方向不準確的「把氣膠調多」。算 1 條，同意作者；但它是 C6-02 裡最技術的一章，量到的只有冰晶數，「暖雨是火種」是模式推論。",
+      "overlaps": [
+        {
+          "existing_id": "K6005",
+          "note": "凇附碎裂的教材入口；本核心新增量測對照與暖雨前提。"
+        }
+      ],
+      "reviewer_facts": 1.0,
+      "final_id": "S60-005",
+      "batch": "batches/wave60-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S60-006",
+      "reviewer": "V19",
+      "question": "往過冷的雲裡撒能結冰的粒子，看得到雪從那裡掉下來嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f16src/par-10195303.txt Abstract、Introduction、19 Jan 個案段；今日由 https://par.nsf.gov/servlets/purl/10195303 重抓 HTTP 200，sha256 前綴 507e06ee174e826a 相同。",
+      "reopen_result": "相符：2017 年 1 月 19、20、31 日愛達荷 Payette 流域、飛機釋放碘化銀、只取自然降水 <1 mm/h 的時段、雪量計增加 0.05–0.3 mm（結論 0.05–0.28）、三案水量 1.2×10⁵ m³（20 分鐘）、2.4×10⁵（86 分鐘）、3.4×10⁵（24 分鐘）。不符一處：作者寫「某一站 5 分鐘內記到 0.2 毫米，作者說約為當時自然降水的三到四倍」。原文：5 分鐘累積 0.2 mm，扣掉前後的自然降雪率 1 mm/h 後，約 0.1 mm（1.2 mm/h）歸因於撒播；「the increase due to seeding is three to four times greater than the apparent natural variability」——三到四倍比的是自然降雪的起伏（標準差 0.3–0.4 mm/h），不是自然降水量。另：PAR 檔是 PNAS 刊本版面（117:5190–5195，「Published under the PNAS license」），不只是接受稿。",
+      "changes_applied": {
+        "answer_target": "看得到。2017 年美國愛達荷的 SNOWIE 計畫，飛機在冬季山區的過冷雲裡釋放碘化銀，研究者只挑自然降雪很弱（每小時不到 1 毫米）的時段來分析。地面雷達上出現和撒播路線一致、順著風移動的「撒播線」回波；撒播線經過時，雪量計多記到 0.05 到 0.3 毫米。例如某一站 5 分鐘內記到 0.2 毫米，扣掉當時的自然降雪後約 0.1 毫米歸因於撒播，這個增量是自然降雪起伏的三到四倍。三次個案估計撒播產生的水量：撒 20 分鐘約 12 萬立方公尺、86 分鐘約 24 萬、24 分鐘約 34 萬。",
+        "scope": "三個刻意挑選的個案，水量由雷達與雪量計推估；作者說這只是量化撒播效果的一步，過去的統計評估多半沒有定論。這一章只用來看「過冷雲缺的是起頭的冰」，不是增雨效益評估：旁白不得說人工增雨可靠、划算、可當水源或值得推廣，不給撒播作業細節。PAR 檔為 PNAS 刊本版面。"
+      },
+      "duplicate_of": null,
+      "reason": "收，改字：三到四倍比的是自然降雪的起伏，不是自然降水量（作者的寫法會讓觀眾以為撒播讓雪變成四倍）。算 1 條，同意作者。",
+      "overlaps": [
+        {
+          "existing_id": "K6004",
+          "note": "冰在過冷雲裡搶水汽長大；本核心是在真實雲裡加冰後看見降雪。"
+        },
+        {
+          "existing_id": "S60-003",
+          "note": "同為撒播實驗；兩章合用時旁白要明說是物理實驗，不是增雨推廣。"
+        }
+      ],
+      "reviewer_facts": 1.0,
+      "final_id": "S60-006",
+      "batch": "batches/wave60-earth.json",
+      "disposition": "candidate"
+    }
+  ],
+  "non_author_reviews": [
+    {
+      "target": "C5-01",
+      "theme_id": "G617",
+      "title": "驗過了、合格了，檢驗到底驗了什麼？",
+      "reviewer": "V18",
+      "author": "F15",
+      "author_verdict": "ready",
+      "author_est_minutes": 10.1,
+      "verdict": "ready",
+      "final_core_ids": [
+        "H60-001",
+        "X34-001",
+        "H59-004",
+        "H60-002",
+        "H59-003",
+        "X34-002",
+        "X34-004",
+        "H59-005",
+        "X34-003",
+        "H60-003"
+      ],
+      "recount_facts": "13.0 條。舊核心照 V17：X34-001 2、H59-003 1.5、H59-004 1.5、X34-002 1.5、X34-004 1.5、H59-005 1、X34-003 1.5，合計 10.5。新核心：H60-001 1（機制句與 X34-001 同一事實不重算，只算台灣的加標與兩批檢體）；H60-002 0.5（「量的是氮」H59-003 已有，只算非蛋白氮與 13–19%）；H60-003 1（1% 取締線 0.5、抽驗中斷與無歐盟參考實驗室 0.5）。（13.0×140＋700）÷270＝9.3 分。作者算 14.5 條、10.1 分，差在 H60-001、H60-002、H60-003 各多算 0.5。站主若不同意提 2008 年事件，H59-003 降為 1 條：12.5 條、9.1 分，仍過門檻（作者寫 14.0 條、9.9 分，那是建立在他自己的 14.5 上；算術本身 （14.0×140＋700）÷270＝9.85 無誤）。",
+      "recount_fact_count": 13.0,
+      "recount_minutes": 9.3,
+      "planned_minutes": 9.0,
+      "cuts": "不刪舊核心，維持 V17 的七個；X34-005、X34-006 不放回來。H59-005 由作者放在最後一章改回 V17 的位置：鮪魚那一章的市場例子，只陳述先後，不當轉折承擔者。H60-003 留下，但題目改成「多少才算摻是誰訂的」，因為它沒有答到「當初為什麼驗馬」。",
+      "turns": [
+        "成立：以為檢驗量的就是標示上那件事，其實量的是替身，而且做假的人照著替身下手。蛋白質量的是總氮乘係數，食品裡的氮不全在蛋白質裡（H60-002），便宜的高含氮物就被加進寵物食品原料與稀釋生乳（H59-003，照 V17 的限制與站主裁示）；台灣的蜂蜜方法量的是糖有沒有 C4 碳訊號，加 10% C4 果糖測得 12.92%、可判，加 C3 果糖看不出來（H60-001），分糖才露出米糖漿的線索（X34-001）；歐盟 320 批上舊法已找不出可疑蜜（H59-004）。成立的寫法：甜菜、米糖漿那句是報告引用他人研究；台灣檢體照正文件數、「初步判為純蜂蜜」不等於驗證為純；46% 是「可疑」。",
+        "成立：以為驗出不該有的訊號就是摻了、沒驗出就是沒事。純阿拉比卡自己也有那個峰（X34-002）；定向檢驗不替名單外的魚亮燈（X34-004），漢堡排裡的馬是一次針對物種的調查才找到（H59-005，只當例子），加工魚只讀得到短段（X34-003）。收在「合格那條線」：1% 的取締線是事件當下訂的務實決定，檢出能力越強越難分辨詐欺與意外（H60-003）。"
+      ],
+      "chapter_outline": [
+        {
+          "title": "開場：「初步判為純蜂蜜」，是驗了哪一件事？",
+          "seconds": 50,
+          "core_ids": [
+            "H60-001"
+          ],
+          "new_information": "台灣養蜂協會的 211 件蜜裡，194 件被初步判為純蜂蜜——先不說判的是什麼，只問：這個「純」是量了什麼得到的？"
+        },
+        {
+          "title": "蛋白質量的是氮：替身從哪裡來，又被誰照著做",
+          "seconds": 90,
+          "core_ids": [
+            "H60-002",
+            "H59-003"
+          ],
+          "new_information": "蛋白質是量總氮再乘 6.25，因為蛋白質平均含氮約 16%；食品裡另有非蛋白氮，蛋白質本身含氮 13–19%（日常膳食上差距約 1%）。接著：便宜的高含氮物被加進寵物食品原料與稀釋生乳（照 H59-003 的片中限制）。"
+        },
+        {
+          "title": "台灣的蜂蜜驗的是什麼：7% 的線與看不見的那種糖",
+          "seconds": 100,
+          "core_ids": [
+            "H60-001",
+            "X34-001"
+          ],
+          "new_information": "驗的是糖有沒有 C4 植物的碳訊號：加 10% C4 果糖測得 12.92%、可判；加 C3 果糖測值都低於 7%、看不出來。分糖以後才看得到米糖漿的線索（X34-001）。兩批檢體的結果照正文 59／8、194／9 分開講。"
+        },
+        {
+          "title": "320 批進口蜜：舊方法不再亮燈",
+          "seconds": 65,
+          "core_ids": [
+            "H59-004"
+          ],
+          "new_information": "歐盟 2021–22 年的 320 批裡，147 批（46%）靠新標記列為「可疑」，舊的整體碳比法在這批樣本上找不出可疑蜜；報告解讀為糖漿換了種類。"
+        },
+        {
+          "title": "咖啡：純的那一邊也有那個峰",
+          "seconds": 60,
+          "core_ids": [
+            "X34-002"
+          ],
+          "new_information": "當作摻羅布斯塔線索的峰，濃縮後在來源確定的純阿拉比卡上也出現，換全新磨豆機還在。"
+        },
+        {
+          "title": "鮪魚罐頭、漢堡排與加工魚：名單之外與讀不到的片段",
+          "seconds": 85,
+          "core_ids": [
+            "X34-004",
+            "H59-005",
+            "X34-003"
+          ],
+          "new_information": "針對三種鮪魚的定向檢驗不會替名單外的魚亮燈；漢堡排裡的馬是一次針對物種的 DNA 調查才找到的（只陳述先後）；加工魚只讀得到短段 DNA。"
+        },
+        {
+          "title": "「多少才算摻」是誰訂的",
+          "seconds": 50,
+          "core_ids": [
+            "H60-003"
+          ],
+          "new_information": "馬肉事件期間主管機關訂 1% 的取締線，為歐盟採用；檢出能力越進步越難分辨詐欺與意外；英國從 2008 年起到事件後才有全國性真實性調查，真實性檢驗也沒有歐盟參考實驗室。"
+        },
+        {
+          "title": "收尾：下次看到「檢驗合格」，先問它問了哪一題",
+          "seconds": 40,
+          "core_ids": [
+            "H60-001",
+            "H60-003"
+          ],
+          "new_information": "回答開場：「純」是在 C4 碳訊號這一題上沒有異常；「合格」是某一條線以下。留言題：你最想知道哪一種食物的檢驗量的是什麼？"
+        }
+      ],
+      "core_question": "食物的標示靠檢驗把關，但檢驗量的是一個替身（總氮、C4 碳訊號、某個特徵峰、名單上的幾種 DNA），合格看的是一條人訂的線：替身和標示上那件事差在哪裡？「合格」與「驗出」各自證明到哪一步？",
+      "connection": "一個問題的三步推進：替身是什麼、被照著做（氮、台灣蜂蜜、歐盟抽驗）→ 把替身拆細以後連真貨也亮燈、名單外的不亮燈（咖啡、鮪魚、馬、加工魚）→ 合格那條線本身是人訂的（1%）。台灣的蜂蜜檢驗當開場與第三章，給了上一輪缺的在地入口。",
+      "boredom_risk": "縮寫多（EA-IRMS、δ13C、PCR）；全片固定用「一張標籤、一個替身指標」的同一個畫面，不講儀器原理。蜂蜜佔兩章（台灣與歐盟），中間要明說一個是方法研究、一個是邊境抽驗。事件章各限一分鐘。",
+      "drop_if": "（1）H59-003 照 V17 drop_if 第一項的限制使用，站主不同意就只講寵物食品兩例（全題 12.5 條、9.1 分，仍可排 9.0 分）。（2）寫稿重讀 X34-002 的峰面積段若撐不住「純豆自己也有」，轉折二只剩鮪魚、馬與 DNA 片段，再減 1.5 條（11.0 條、8.3 分），退回後備。（3）片中若把 H60-001 說成「政府抽驗發現幾成摻假」、把甜菜米糖漿說成本研究的實驗、或把 13–19% 說成標示誤差，該句刪除。（4）不得把 X34-005、X34-006 放回來補片長。",
+      "evidence_gaps": "H60-001 是方法研究，不是全國抽驗；表四、五、七在轉文字後欄位錯位，件數只取正文。愛爾蘭 2013 年調查報告原件仍不公開，H59-005 只能當例子。H59-003 仍是回顧文章。H60-003 是英國的政策檢討，沒有方法與樣品數據。",
+      "still_missing": "可成題；寫稿前：（1）站主對 2008 年事件的答覆；（2）重讀 X34-002 峰面積段、X34-004 的 Table 2、H60-001 的表五與表七（目讀 PDF）；（3）旁白把 83 件只講正文的 59／8，不提摘要的 19 件。",
+      "reason": "上一輪說「補到（1）或（2）加（3）約 12 條、8.8 分就可以改判」，本輪補到（1）台灣食藥署全文與（3）FAO 的方法與非蛋白氮，（2）只補到 Elliott Review 而非愛爾蘭原件。三個新核心都循公開連結取得、數字逐句對得上，但作者三處都把與舊核心重疊的事實再算了一次：重算 13.0 條、9.3 分，站主不同意時 12.5 條、9.1 分，兩種情況都過 8.5 分，兩個轉折都改變結論，仍是一個問題的推進，判可成題，排 9.0 分。最重要的改正：H60-001 把「C3 果糖的加標」與「前言引用的甜菜米糖漿」寫成一件事，已拆開。最終核心逐一 grep themes.json（616 題）：都不在任何 material.verdict 為 ready 的題的 candidate_ids 裡（只出現在短題 G328–G330、G366、G367、G258、G471、G393，material 皆非 ready），也不在 POOL_SUPPORT（tools/video/so-thats-why/episode-plan.mjs 第 338 行起），三題之間沒有共用核心；同輪 F16 的目標 C4-02 也沒有用到這些核心。",
+      "also_considered": "G328–G330 是 X34 舊核心原本的短題，被本題吸收；G331（X34-005）不吸收。池中一般同位素教材核心（P193、H3066）與 G586、G597 的考古材料核心不加入。"
+    },
+    {
+      "target": "C5-02",
+      "theme_id": null,
+      "title": "一滴雨打下來，被它帶走的是被它打中的東西嗎？",
+      "reviewer": "V18",
+      "author": "F15",
+      "author_verdict": "ready",
+      "author_est_minutes": 9.3,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "X38-002",
+        "X38-003",
+        "X38-004",
+        "P59-006",
+        "P60-002",
+        "P60-001",
+        "A25001",
+        "L44-006"
+      ],
+      "recount_facts": "11.0 條。舊核心照 V17：X38-002 2、X38-003 1.5、X38-004 1.5、P59-006 1、A25001 1.5、L44-006 1，合計 8.5；P59-005 刪（0，見 cuts）。新核心：P60-002 1（玉米不規則 0.5、行間與葉緣下 0.5；有作物比裸地少、雨大噴得多是預期中的，不另計）；P60-001 1.5（改寫答案後：梯度相反且第一排病斑由葉位與葉面積解釋、孢子通量不顯著 1；冠層攔截與後排無病徵 0.5）。（11.0×140＋700）÷270＝8.3 分。作者算 13.0 條、9.3 分；作者自己的「刪 P59-005 後 11.5 條、8.6 分」再扣 P60-002 的 0.5 就落到門檻下。",
+      "recount_fact_count": 11.0,
+      "recount_minutes": 8.3,
+      "planned_minutes": null,
+      "cuts": "刪 P59-005（雨滴在羽毛、蝶翅上碎開）：主軸改成「雨怎麼把東西帶走、放到哪裡」之後，它答的是水滴自己怎麼離開不沾水的表面，沒有帶走任何東西；作者也只把它當「鋪墊」，鋪墊不算事實，也不該佔一章。X38-001、X38-006 照 V17 不放回來，X38-005、X38-007、X38-008 不用。",
+      "turns": [
+        "成立：以為雨搬東西是把它打飛——葉子回彈時沒被碰到的水珠也被甩走（X38-003）；水滴推出的空氣渦環捲起沒沾水的乾孢子（X38-004）；土裡的東西是氣泡破掉時噴出（P59-006）。開場反例：沒有支撐的輕目標跟著水滴走（X38-002）。三個都是實驗室單滴。",
+        "半成立：以為遮住了就不會被帶走、噴到最多的地方就是出事的地方。玉米的噴濺不隨葉面積規則下降，噴濺跑到行間與葉緣下（P60-002）；孢子落得最多的低處不是最容易出事的頂端葉子，第一排的病斑由葉位與葉面積解釋、不由接到的孢子量解釋（P60-001）。作者原本的第三個「以為」（雨越大帶走越多）要刪：P60-002 自己量到雨強加倍剝離率是二到五倍。兩篇都是人工降雨，P60-001 是單一事件、24 個觀測的模型。"
+      ],
+      "chapter_outline": [],
+      "core_question": "雨滴打下來，被帶走的是被它打中的東西嗎？被帶到哪裡，那裡就是出事的地方嗎？",
+      "connection": "（後備，暫不排章。）改成「雨怎麼把東西帶走、放到哪裡」之後，八個核心已經是一個問題：怎麼離開（葉子回彈、渦環、氣泡）→ 冠層把雨重新分配（行間、葉緣下）→ 落點與後果不一致（孢子與病斑）→ 生物反過來借這股力（豬籠草蓋、果杯）。不再是領域清單；缺的是份量。",
+      "boredom_risk": "前半仍是「一滴水、慢動作」的高速攝影，後半兩篇的畫面是曲線與田間剖面，對比反而好用。P59-006 說大雨落速不噴、P60-002 說雨大剝離多，旁白若不說清楚量的是不同東西，觀眾會覺得自相矛盾。",
+      "drop_if": "不得把 P59-005、X38-001、X38-006 放回來補片長；不得把 P60-001 寫成「病斑多在旗葉」；不得用 P60-002 說「被遮住的那塊反而被帶走」或「雨越大不一定帶走越多」。X38-002 若重讀撐不住「只交出一小部分動量」，開場改成純觀察。",
+      "evidence_gaps": "沒有自然降雨或田間尺度的量測（兩篇新來源都是人工降雨）；P60-001 的病斑結果是單一噴濺事件；沒有台灣的雨（雨滴譜）可當入口；X38 各核心的池內閱讀是指定段落。",
+      "still_missing": "差 0.5 條以上才到 11.5 條、8.6 分，建議補 1–1.5 條，要落在「雨把東西帶到哪裡、和後果差多少」上：（1）一份田間自然降雨下雨濺傳病的原研究全文（病斑或孢子隨離病源距離的分佈），1–1.5 條，同時補掉「全是人工降雨」的缺口；或（2）一份噴濺土粒或水滴飛行距離隨雨滴大小變化的原研究全文，1 條。補到後先重算，並重寫轉折二的三個「以為」。台灣雨滴譜觀測的已讀來源仍是加分項。",
+      "reason": "作者照 V17 的路線（乙）改了主軸，這一步是對的：題目現在是一個問題，兩篇新來源也都是開放全文、不在高速攝影棚裡。但重讀之後兩篇都有作者自己接出來的結論：P60-001 的「病斑大多在旗葉」原文沒有（改用表 3 才撐得住同一個轉折），P60-002 把大豆 2% 歸錯變項、把行間寫成「被遮住的那塊」，而它的雨強結果與轉折二「雨越大不一定越多」相反。P59-005 在新主軸下不帶走任何東西，刪。重算 11.0 條、8.3 分，判後備，差一份田間或飛行距離的讀物。最終核心逐一 grep themes.json（616 題）：都不在任何 material.verdict 為 ready 的題的 candidate_ids 裡（只出現在短題 G328–G330、G366、G367、G258、G471、G393，material 皆非 ready），也不在 POOL_SUPPORT（tools/video/so-thats-why/episode-plan.mjs 第 338 行起），三題之間沒有共用核心；同輪 F16 的目標 C4-02 也沒有用到這些核心。",
+      "also_considered": "G611（物體入水的衝擊，可成題）沒有共用核心，但開場型態相近，日後若都成題不要相鄰排片。G582（種子飛得越遠就越成功嗎）用 L44-005，與 L44-006 不同篇。已製作的 S56（下雨的味道）與 P59-006 重疊一句。"
+    },
+    {
+      "target": "C5-03",
+      "theme_id": "G618",
+      "title": "動物也有「我們這裡都這樣做」嗎？怎麼證明那是跟同伴學來的？",
+      "reviewer": "V18",
+      "author": "F15",
+      "author_verdict": "ready",
+      "author_est_minutes": 9.3,
+      "verdict": "ready",
+      "final_core_ids": [
+        "L40-004",
+        "L40-001",
+        "L59-007",
+        "L60-002",
+        "L59-005",
+        "L59-006",
+        "B2247",
+        "L40-005",
+        "L60-001"
+      ],
+      "recount_facts": "13.0 條。舊核心照 V17：L40-004 2、L40-001 1.5、L59-007 1.5、L59-005 2、B2247＋L59-006 同一篇合計 1.5、L40-005 1.5，合計 10.0。新核心：L60-001 1.5、L60-002 1.5（兩篇都逐句核過，同一實驗的多個數字各合計 1.5）。（13.0×140＋700）÷270＝9.3 分，與作者相同。L40-001 若寫稿時接不上，11.5 條、8.6 分，仍過門檻。",
+      "recount_fact_count": 13.0,
+      "recount_minutes": 9.3,
+      "planned_minutes": 9.0,
+      "cuts": "照 V17：B17005、R35009 不放回來（教學的問題），L40-006、L40-008、L45-008 不用。B2247 與 L59-006 只算一次。順序與作者不同：L60-001 移到倒數第二章當收束，因為它回答的是「傳下去以後會不會被從眾鎖死」，放在證明與昆蟲兩段之後才接得上。",
+      "turns": [
+        "成立：以為一群動物做法一樣，是因為環境一樣或各自摸出來——報酬相同的門，各地卻各推一邊（L40-004）；黑猩猩的苔蘚海綿沿「誰看過誰」擴散，撿舊海綿那個找不到這樣的證據（L59-007）；雪梨的鳳頭鸚鵡開垃圾桶蓋，地圖加時間序列的擴散分析估計 93.9%（86.5–97.3%）的郊區是學來的，而且離得越遠手法越不一樣（L60-002）。成立的寫法：93.9% 是模型估計、輸入是公民科學回報；次文化是作者用「suggesting」寫的相關結果。",
+        "成立：以為跟著別人學就是盲從——要嘛得先看懂，要嘛學不到自己想不到的，要嘛一旦大家都這樣就改不了。熊蜂學到的只是位置，也夠傳下去（L59-005）；自己打不開的兩步機關跟著示範就學會（L59-006）；做法變得不划算時，49% 原本有偏好的山雀在 14 天內換邊，模型找不到照報酬抄別隻或自己亂試的證據，從眾仍在（L60-001）。鴿子（L40-005）是延伸。成立的寫法：L60-001 的報酬差異是研究者設定的，條件 2 只有兩天。"
+      ],
+      "chapter_outline": [
+        {
+          "title": "開場：什麼才算「我們這裡都這樣做」",
+          "seconds": 45,
+          "core_ids": [
+            "L40-004"
+          ],
+          "new_information": "先定義：只指跟同伴學來、在群體裡持續的做法；同一扇食盒門，兩處的山雀各推一邊——先不說為什麼。"
+        },
+        {
+          "title": "兩種做法一樣好，各地卻各推一邊",
+          "seconds": 60,
+          "core_ids": [
+            "L40-004"
+          ],
+          "new_information": "報酬相同、各地教不同邊後，新學會的鳥跟著當地；兩種做法都有鳥試過，地方偏好仍持續——環境一樣，排除了「環境不同」。"
+        },
+        {
+          "title": "牠們真的會拿同伴的資訊來用嗎",
+          "seconds": 45,
+          "core_ids": [
+            "L40-001"
+          ],
+          "new_information": "九刺魚隔一天仍回自己的老地方，隔七天改跟同伴；三天、五天沒有明顯偏向。"
+        },
+        {
+          "title": "野外：新做法沿著「誰看過誰」傳",
+          "seconds": 65,
+          "core_ids": [
+            "L59-007"
+          ],
+          "new_information": "黑猩猩六天內冒出兩個新做法，苔蘚海綿沿觀看關係擴散（約 15 倍，區間 4.7–88.2），撿舊海綿那個找不到這樣的證據。"
+        },
+        {
+          "title": "城市裡的垃圾桶蓋：地圖、順序和地方手法",
+          "seconds": 75,
+          "core_ids": [
+            "L60-002"
+          ],
+          "new_information": "雪梨 44 個郊區、七個時段的擴散分析支持社會傳播，估計 93.9%（86.5–97.3%）的郊區是學來的，另有一次獨立創新；同一個五階段動作，離得越遠手法越不一樣。"
+        },
+        {
+          "title": "熊蜂：學到的只是該去哪裡，也夠傳下去",
+          "seconds": 55,
+          "core_ids": [
+            "L59-005"
+          ],
+          "new_information": "看熟手拉繩的新手學到的是位置，繩子一盤起來就全數失敗；這樣已足夠讓做法一批傳一批。"
+        },
+        {
+          "title": "自己打不開的兩步機關，跟著學就會",
+          "seconds": 50,
+          "core_ids": [
+            "L59-006",
+            "B2247"
+          ],
+          "new_information": "兩步機關放 36 到 72 小時沒有一個被打開，跟著示範蜂卻有三分之一學會（同一篇研究，只算一次）。"
+        },
+        {
+          "title": "一批換一批，路線會不會變好",
+          "seconds": 40,
+          "core_ids": [
+            "L40-005"
+          ],
+          "new_information": "鴿群成員一批批輪替後，路線變得更有效率（「世代」是輪替）。"
+        },
+        {
+          "title": "報酬變了：從眾有沒有把牠們鎖死",
+          "seconds": 70,
+          "core_ids": [
+            "L60-001"
+          ],
+          "new_information": "回到開場那群山雀：兩邊都變差的兩天裡做法沒變；改成只有罕見那一邊有麵包蟲的 14 天後，49% 原本有偏好的鳥換邊，年輕的換得快；模型找不到照報酬抄別隻或自己亂試的證據，從眾仍在。"
+        },
+        {
+          "title": "收尾：證據不在有幾隻會，在牠們按什麼順序學會",
+          "seconds": 35,
+          "core_ids": [
+            "L60-002",
+            "L60-001"
+          ],
+          "new_information": "回答標題：證明靠的是順序與網路，而跟著多數也不等於改不了。留言題：你看過哪種動物「我們這裡都這樣做」？"
+        }
+      ],
+      "core_question": "一群動物做法相同，可能是環境相同、天生如此或各自摸出來：要怎麼證明一個做法是從同伴那裡學來、在群體裡傳下去？跟著多數學，是不是就改不了？",
+      "connection": "同一個證明的先後步驟：排除環境（山雀）→ 確認會用同伴的資訊（九刺魚）→ 野外沿觀看關係傳（黑猩猩）與沿地圖傳、還長出地方手法（鳳頭鸚鵡）→ 昆蟲上拆開學到的是什麼、能不能學到自己想不到的（熊蜂兩篇）→ 傳下去會不會變好（鴿子）、會不會被從眾鎖死（回到同一群山雀）。開場與倒數第二章是同一群鳥，首尾接得起來。",
+      "boredom_risk": "物種輪替（鳥、魚、猩猩、鸚鵡、蜂、鴿）容易變成動物趣聞集；每章開頭先說上一章還沒排除什麼。黑猩猩與鸚鵡兩章都是「擴散分析」，要用一句話說清楚一個以觀看關係、一個以地理距離當網路，否則像同一章講兩次。",
+      "drop_if": "不得把 B17005、R35009 放回來；B2247 與 L59-006 只算一次。L40-001 接不上就刪（11.5 條、8.6 分，大綱把那 45 秒併入第 2、4 章）。L60-001 的 33–71% 不得說成信賴區間；L60-002 的中心性不報統計值。重讀 L40-004、L40-005 的圖與隻數若撐不住，各減 0.5–1 條，低於 11.5 條就退回後備。",
+      "evidence_gaps": "L60-001 與 L60-002 讀的都是典藏作者稿，圖上點值與補充資料（表 S1–S4）未核；L60-002 的版本標示矛盾（檔首接受稿、頁首投稿稿）。L60-001 的報酬變化是人為設定，沒有野外自然發生的例子。沒有台灣或東亞的物種。Allen 2013、van de Waal 2013 沒有開放全文。",
+      "still_missing": "可成題；寫稿前：（1）B2247 與 L59-006 入池時整併成一筆；（2）重讀 L40-004、L40-005 的圖與隻數，以及 L60-001 的圖 1–3 與 L60-002 的表 S1；（3）片中先定義「文化」；鸚鵡與山雀兩章都要說是模型估計與相關分析。",
+      "reason": "上一輪說「補到 Aplin 2017 與一份野外擴散研究，約 12.5 條、9.1 分，可以改判」。兩份都補到了：Aplin 2017 循 OpenAlex→牛津 ORA 典藏頁（頁內列有檔案連結，我今日重抓確認）讀到作者稿；Allen 2013、van de Waal 2013 確實沒有開放全文，改用 Klump 2021（OpenAlex→KOPS 典藏條目）是合規而且切題的替代。兩篇的數字逐句對得上，只改了範圍的說法、中心性統計值與版本標示。重算 13.0 條、9.3 分，兩個轉折都改變結論，判可成題，排 9.0 分。最終核心逐一 grep themes.json（616 題）：都不在任何 material.verdict 為 ready 的題的 candidate_ids 裡（只出現在短題 G328–G330、G366、G367、G258、G471、G393，material 皆非 ready），也不在 POOL_SUPPORT（tools/video/so-thats-why/episode-plan.mjs 第 338 行起），三題之間沒有共用核心；同輪 F16 的目標 C4-02 也沒有用到這些核心。",
+      "also_considered": "G601（集體協調，可成題）、G20（清潔魚合作，可成題）、G599（石器用途，可成題）沒有共用核心。G393 是 L40-004、L40-005 原本的短題，被本題吸收；G188（狐獴）、G336（釣白蟻工具）不吸收。池中 R35007（戈芬氏鳳頭鸚鵡搬工具組）是另一種鳥、另一個問題，不重疊。"
+    },
+    {
+      "target": "C4-02",
+      "theme_id": "G619",
+      "title": "沒有人指揮，一群人走路的秩序是怎麼來的，又是怎麼壞的？",
+      "reviewer": "V19",
+      "author": "F16",
+      "author_verdict": "ready",
+      "author_est_minutes": 10.6,
+      "verdict": "ready",
+      "final_core_ids": [
+        "X35-003",
+        "X35-002",
+        "X35-006",
+        "P58-007",
+        "X35-004",
+        "P59-002",
+        "P59-001",
+        "P60-005",
+        "P60-003",
+        "P60-004",
+        "P60-006",
+        "P59-003"
+      ],
+      "recount_facts": "13.5 條，不用事故案例。舊核心照上一輪 V16 的 12.0 條起算，刪 P59-004（−1.0，同意作者），並照作者自己寫的「P58-007 只用行人段」把羊群的 0.5 拿掉（P58-007 由 1.5 改 1.0），X35-002 由 2 改 1.5（同一場兩隊對走實驗，慢走對照未達顯著，不另算）：X35-003 1.5、X35-002 1.5、X35-006 1.5、X35-004 1.5、P58-007 1.0、P59-001 1、P59-002 1、P59-003 1＝10.0。新核心：P60-003 1.5、P60-004 0.5（停走波的方向已在 P60-003，只新增速度）、P60-005 1.0、P60-006 0.5（與 P60-005 同一場雷恩 28 人實驗，合計 1.5）＝3.5。（13.5×140＋700）÷270＝9.59 分。作者算 15.5 條、10.6 分。",
+      "recount_fact_count": 13.5,
+      "recount_minutes": 9.59,
+      "planned_minutes": 9.5,
+      "cuts": "同意不用 P58-005、P58-006（事故錄影），同意刪 X35-005、P59-004（德國消防協會的密度數字最容易被寫成安全口訣）。不用螞蟻、羊（P58-007 只用行人段）、車流核心。P60-006（步長）若片長吃緊仍是第一個可刪（−0.5 條，13.0 條、9.33 分，仍過線，但要把收尾或轉折二縮回 9.0 分以下的配置）。",
+      "turns": [
+        "成立（上一輪已成立）：以為每個人都更用力，整群人就出得更快；越准推擠，門口的長停頓越常出現（P58-007），門前加柱子則有人變快、有人更慢（X35-004）。",
+        "成立（本輪）：前兩章（P59-001 的直線、P60-005 的三段）讓觀眾以為越擠只是整列一起越走越慢；Portz 與 Seyfried 的原文直接寫「Stop-and-go phases occur simultaneously. Some pedestrians stop, but elsewhere pedestrians could walk slowly」，並寫這兩種狀態「also observable at a fixed density」，每公尺 2.0 到 2.2 人時速度分布的走峰與停峰同時存在，停走波往前進的反方向傳（P60-003）。這是原文量到並寫出的結果，不是作者推論；上一輪失敗的「不會停」已經不用。另一組 2013 年的實驗量到停波往後傳的速度約每秒 0.5 與 0.32 公尺（P60-004）——兩組實驗分開講，不寫成同一句、同一個例子。"
+      ],
+      "chapter_outline": [
+        {
+          "title": "開場：沒人指揮，俯視的人群卻排出斜紋",
+          "seconds": 45,
+          "core_ids": [
+            "X35-003"
+          ],
+          "new_information": "只給現象與全片問題：秩序從哪來、又在哪裡壞掉。"
+        },
+        {
+          "title": "兩群人直角相穿，條紋為什麼是斜的",
+          "seconds": 40,
+          "core_ids": [
+            "X35-003"
+          ],
+          "new_information": "條帶方向不等於個人方向；兩窄門時沿彎曲帶分布。"
+        },
+        {
+          "title": "迎面成行：前排三人看手機就晚了",
+          "seconds": 50,
+          "core_ids": [
+            "X35-002"
+          ],
+          "new_information": "前排分心讓成行變晚；刻意慢走沒有同樣的延遲。"
+        },
+        {
+          "title": "三個朋友並肩，中間那位落後半步",
+          "seconds": 35,
+          "core_ids": [
+            "X35-006"
+          ],
+          "new_information": "較密的場地裡三人隊形彎成弧，模型要兼顧看得見同伴。"
+        },
+        {
+          "title": "轉折一：越准推擠，門口的長停頓越多",
+          "seconds": 50,
+          "core_ids": [
+            "P58-007"
+          ],
+          "new_information": "行人三級規則（不碰、輕碰、輕推）：平均間隔只小幅變，長停頓明顯變多。只用行人段。"
+        },
+        {
+          "title": "門前一根柱子，誰快了誰更慢",
+          "seconds": 35,
+          "core_ids": [
+            "X35-004"
+          ],
+          "new_information": "柱子把通過時間重新分配，有人得益有人多等，不是總量變多。"
+        },
+        {
+          "title": "門前擠、門裡鬆：卡在進門那一下",
+          "seconds": 35,
+          "core_ids": [
+            "P59-002"
+          ],
+          "new_information": "流量隨寬度近似直線；門前 4–6 人／m²（初步）對門內約 1.8 人／m²；不說「沒到容量就塞」。"
+        },
+        {
+          "title": "排成一列：越擠越慢，慢成一條直線",
+          "seconds": 40,
+          "core_ids": [
+            "P59-001"
+          ],
+          "new_information": "獨走 1.24、15 人 0.90、34 人 0.17 m/s；所需長度對速度的直線。不說會不會停。"
+        },
+        {
+          "title": "其實是三段：前面空多少，人才在乎",
+          "seconds": 35,
+          "core_ids": [
+            "P60-005"
+          ],
+          "new_information": "3 m 以上自由、1.1–3 m 弱受限、1.1 m 以下強受限；最擠那段的直線就是上一章那條。"
+        },
+        {
+          "title": "轉折二：同樣擠，有人在走、有人停著",
+          "seconds": 65,
+          "core_ids": [
+            "P60-003"
+          ],
+          "new_information": "士兵組 45 人起開始有人停、70 人幾乎不動；停走波往後傳；每公尺 2.0–2.2 人時速度分布兩個峰同時存在。"
+        },
+        {
+          "title": "停的那一段往後跑多快",
+          "seconds": 35,
+          "core_ids": [
+            "P60-004"
+          ],
+          "new_information": "另一組 2013 年實驗：52 人時停波約每秒 0.5 公尺、59 人約 0.32 公尺，方向與前進相反。"
+        },
+        {
+          "title": "慢的不是腳步，是步子",
+          "seconds": 30,
+          "core_ids": [
+            "P60-006"
+          ],
+          "new_information": "步長正比於速度、節奏幾乎不變；人隨時準備再走。片長吃緊時第一個刪。"
+        },
+        {
+          "title": "實驗室做不到更擠：人會走掉，出口一縮規律就變",
+          "seconds": 30,
+          "core_ids": [
+            "P59-003"
+          ],
+          "new_information": "受控實驗的極限與文獻的分歧；不暗示任何真實事故。"
+        },
+        {
+          "title": "收尾：秩序和卡住是同一套互動；留言問題",
+          "seconds": 45,
+          "core_ids": [
+            "P60-003"
+          ],
+          "new_information": "只回答核心問題，留一個留言問題（你排隊時有沒有發現自己一停一走）；不給任何安全建議或密度門檻。"
+        }
+      ],
+      "core_question": "人群裡每個人只顧自己的路，條紋、行列和門口的快慢是怎麼冒出來的？人越多、越急，哪一步會讓它從有秩序變成卡住？",
+      "connection": "前半是秩序自己出現（斜條紋、成行、結伴隊形），中段同一套互動在門口反過來拖慢所有人（推擠、柱子、進門那一下），後半把門拿掉、只看一列人：越擠越慢、其實分三段，到某個密度隊伍自己分成停的一段和走的一段，停的那一段往後傳。每一章用同一個俯視點陣畫面，只改一個條件。",
+      "boredom_risk": "後半連續四章都是單列環形走道，容易變成「又一個實驗」；轉折二要用同一張點陣動畫直接接在 P60-005 後面，讓觀眾先看到整列慢下來，再看到紅點一段段停住往後跑。P60-006 只有 30 秒，是可刪的一章。",
+      "drop_if": "寫稿前重讀 X35 各核心時任一核心降到 1 條以下而總數低於 12.0 條（8.8 分）；或旁白把任何密度數字寫成「幾人以上就會停／危險」的門檻、把結果拿去比任何真實事故。P60-003 的雙峰原因不得說成定論。",
+      "evidence_gaps": "三篇于利希論文（F16-S001、F16-S002，加上 P59 各篇）與兩篇雷恩論文讀的都是 arXiv 版，沒有對照刊本（PED 2010 論文集、TGF'15、PRE 85／86）；F16-S002 是會議稿，作者說量化分析留待之後；士兵實驗的原始報告（Seyfried 等 2010，PED 2008）沒有讀到，70 人、26 公尺只經 F16-S001 轉述；各圖（F16-S001 Fig. 2–3、F16-S002 Fig. 6–7）沒有轉圖目讀，雙峰與停波斜率只依內文描述。受控實驗最高只到每平方公尺約 4 人。",
+      "still_missing": "寫稿前：（1）F16-S001 Fig. 2、3 與 F16-S002 Fig. 7 轉成圖檔目讀，確認雙峰與停波往後傳的樣子（動畫照圖畫，不照想像）；（2）三篇 arXiv 版各對照一次刊本或至少確認無勘誤；（3）找 Seyfried 等 2010 的公開全文核對士兵實驗設定，找不到就在旁白只說「同一研究群的另一組受試者」；（4）X35 各核心照前幾輪要求逐段重讀。不需要主管機關的密度基準（已刪 P59-004）。",
+      "reason": "任務問：上一輪第二個轉折因為「不會停」是作者推論而失敗，這一輪換成停走波，算不算改變結論、是不是原文？裁定：成立，判可成題。四個新來源今天都重抓得到、雜湊與快取相同，逐句核過：45 人起停、70 人幾乎不動、每公尺 2.0–2.2 人雙峰並存、停波每秒 0.5／0.32 公尺都是原文數字；「同一個密度下有人停、有人走」是 Portz 與 Seyfried 自己寫的兩句加上雙峰圖說，不是作者推論。改正四處：作者的轉折句把 2006 年士兵實驗與 2013 年 BaSiGo 實驗寫成同一句，已拆開；P60-004 刪去原文沒有的「一分多鐘」並算 0.5 條；P60-005 不報德國重新擬合的 0.37（會和 P59-001 的 0.36 打架）；P60-006「速度變了一倍」改回原文「速度變化 100%、步伐時間只變 30%」，並與 P60-005 合計 1.5 條。重算 13.5 條、9.59 分，排 9.5 分。P58-005、P58-006（2006 年事故錄影）不在大綱、不在最終核心；這一題已經不需要站主對 2006 年事故案例的裁示——路線（甲）成立，路線（乙）可以放下。措辭規則：不給任何自保建議、不把密度寫成門檻、不並列真實事故。最終核心都不在 themes.json 中 material.verdict 為 ready 的題的 candidate_ids（X35-003、X35-002、X35-004 只在舊短題 G338、G339），不在 tools/video/so-thats-why/episode-plan.mjs 的 POOL_SUPPORT，也不與 C6-01、C6-02 共用（逐一 grep 過）。",
+      "also_considered": "P59-004（密度基準）刪；X35-005 刪；P58-005、P58-006 不用；F16-NA001（低密度的同步／反同步）同意不另立核心。C2-06 類車流長題已用 X35-001，不重講環道車流；G605 沙漏已講拱與堵塞，P58-007 不講料斗。"
+    },
+    {
+      "target": "C6-01",
+      "theme_id": "G620",
+      "title": "這個感覺是自己造成的還是外面來的，大腦怎麼分？",
+      "reviewer": "V19",
+      "author": "F16",
+      "author_verdict": "ready",
+      "author_est_minutes": 9.07,
+      "verdict": "ready",
+      "final_core_ids": [
+        "R44010",
+        "H60-006",
+        "H60-004",
+        "H60-005",
+        "R44009",
+        "A21001",
+        "S10001",
+        "S10002",
+        "L60-003",
+        "S10003",
+        "H60-007"
+      ],
+      "recount_facts": "11.5 條。舊核心六個，作者算 7.0，覆核算 6.0：R44010 1.5（同一篇的兩個實驗：互按升級、直接 vs 搖桿）、R44009 1、A21001 1、S10001 1、S10002 0.5（低到高速的泛化是量到的，其餘是模型）、S10003 1。上一輪 V16 對同一組加 Z7006 估「約 8 條」，扣 Z7006 後與作者的 7.0 相近；本輪逐筆看池內答案與來源範圍後下修 1 條。新核心：H60-004 1.5、H60-005 1、H60-006 1、L60-003 1、H60-007 1＝5.5，同意作者。（11.5×140＋700）÷270＝8.56 分，過 8.5 分只有 0.06 分。作者算 12.5 條、9.07 分。",
+      "recount_fact_count": 11.5,
+      "recount_minutes": 8.56,
+      "planned_minutes": 8.5,
+      "cuts": "同意不用 Z7006（流體形狀，不是大腦預測）、R44011（避免兩章都講假手）、S10004（維持狀態而非扣除感覺）。入口「自己搔自己不癢」在舊集 S74，只用一句帶過、不計。沒有可刪的核心：刪任何一個都會掉到 8.5 分以下。",
+      "turns": [
+        "成立（舊核心）：以為被打折的永遠是「動作當下」那一下；反覆晚十分之一秒碰到之後，被打折的變成預測中晚到的那一下（R44009），按了才亮的燈也可被感覺成先亮（A21001）——打折與時間判斷都是學來的預測，不是固定的反射。",
+        "成立（本輪新增）：以為大腦是比對「真的碰到了」才把自己的感覺調弱；Bays 等 2006 原文寫「The level of attenuation observed when contact was expected was the same whether or not the contact actually occurred」——揮空、根本沒碰到，被敲的那一下照樣打折（0.73 對碰到 0.71、延遲 0.95），而從沒碰到過東西的一組做同樣動作卻不打折（H60-004）；一隻覺得是自己的假手能讓打折出現，把假手當自己的手時真的自己碰自己打折反而變少（H60-005）。要成立，開場不能先把答案說成「大腦先預測」，否則這個轉折只是重述 S74。"
+      ],
+      "chapter_outline": [
+        {
+          "title": "開場：兩個人照實按回去，怎麼一輪比一輪重",
+          "seconds": 45,
+          "core_ids": [
+            "R44010"
+          ],
+          "new_information": "只給現象（互按升級）；一句帶過舊集 S74「自己搔自己不癢」，不先說「大腦預測」。"
+        },
+        {
+          "title": "自己按自己為什麼會過頭",
+          "seconds": 40,
+          "core_ids": [
+            "R44010"
+          ],
+          "new_information": "直接用手指按會過頭、改用搖桿遙控馬達就準。"
+        },
+        {
+          "title": "不是怪癖：98% 的人都會，年紀越大越多",
+          "seconds": 40,
+          "core_ids": [
+            "H60-006"
+          ],
+          "new_information": "325 人、315/322 有打折；年長者直接按過頭較多、滑桿反而較少。"
+        },
+        {
+          "title": "轉折二：手指揮空了，另一手還是覺得比較輕",
+          "seconds": 65,
+          "core_ids": [
+            "H60-004"
+          ],
+          "new_information": "0.71（碰到）／0.73（揮空）／0.95（延遲）；從未碰過的一組不打折；打折是事先算好的、而且算的是「預期中的碰觸」。"
+        },
+        {
+          "title": "一隻假手也能打開或調弱打折",
+          "seconds": 45,
+          "core_ids": [
+            "H60-005"
+          ],
+          "new_information": "假手錯覺下 25 公分外也打折；真手對齊卻把假手當自己的，打折變少但沒有消失。"
+        },
+        {
+          "title": "轉折一：晚一拍碰到，練久了被打折的換成哪一下",
+          "seconds": 50,
+          "core_ids": [
+            "R44009"
+          ],
+          "new_information": "反覆加 100 毫秒延遲後，被打折的變成延遲到達的那一下。"
+        },
+        {
+          "title": "按了才亮的燈，怎麼會感覺先亮",
+          "seconds": 40,
+          "core_ids": [
+            "A21001"
+          ],
+          "new_information": "習慣延遲後突然縮短，短間隔會被判成燈先亮；實際順序沒變。"
+        },
+        {
+          "title": "電魚：學會自己放電的負像",
+          "seconds": 45,
+          "core_ids": [
+            "S10001",
+            "S10002"
+          ],
+          "new_information": "配對才學到負像、獵物訊號沒被整體關掉；加快放電時還接得上（泛化是量到的，機制是模型）。"
+        },
+        {
+          "title": "蟋蟀：叫的那一刻，往腦的聽覺先被壓下",
+          "seconds": 40,
+          "core_ids": [
+            "L60-003"
+          ],
+          "new_information": "無聲與虛擬鳴叫仍抑制、時間對準自己的聲音；耳朵照常（引用先前研究）；21% 的弄鈍與 100–200 毫秒恢復。不說「叫時照樣聽得到別隻」。"
+        },
+        {
+          "title": "獼猴轉頭：命令不夠，還要核對脖子",
+          "seconds": 30,
+          "core_ids": [
+            "S10003"
+          ],
+          "new_information": "預期與實際頸部回饋相符才抑制自生頭動訊號。"
+        },
+        {
+          "title": "一個研究組看到的差別",
+          "seconds": 35,
+          "core_ids": [
+            "H60-007"
+          ],
+          "new_information": "研究中的思覺失調症患者組過頭 27.5%、健康組 43.5%，遙控無差別；作者的假說，不是診斷方法。"
+        },
+        {
+          "title": "收尾：大腦先猜自己，再聽外面；留言問題",
+          "seconds": 35,
+          "core_ids": [
+            "H60-004"
+          ],
+          "new_information": "只回答核心問題，留一個留言問題（你有沒有被自己的回音嚇到過）。"
+        }
+      ],
+      "core_question": "同樣一下碰觸、一聲響、一道光，自己造成的為什麼感覺不一樣？大腦是怎麼在感覺回來之前就先把自己的那一份扣掉，扣的時間和對象又是怎麼學來的？",
+      "connection": "從互按升級（自己按自己會過頭）開始，先證明人人都這樣（98%、年紀越大越多），再用兩個實驗翻掉「大腦是事後比對」的直覺：沒碰到也打折、假手也算；接著看預測可以被訓練到別的時間點（延遲、燈），換到電魚、蟋蟀、獼猴看同一招的三種做法，最後只用一個研究組的平均，說明這套預測在不同人身上可能不一樣。",
+      "boredom_risk": "前五章有四章是同一個力量配對範式，後段動物三例容易變成「另一種動物也會」的清單；每章用同一個畫面語言（預測的波形與實際的波形相減），動物章各明說和人的差別（電魚學負像、蟋蟀壓下往腦的路徑而耳朵照常、獼猴要核對脖子）。",
+      "drop_if": "寫稿前重讀 R44010、R44009、A21001、S10001–S10003 的原文時任一核心再下修 0.5 條（會跌到 8.3 分）；或任何新核心改判；或站主認為與舊集 S74 太近。H60-007 若寫成能診斷、把作者的假說說成因果、或用了貶抑用語，就刪該章，刪後 10.5 條、8.04 分，整題改回後備。",
+      "evidence_gaps": "F16-S006、F16-S008 只讀到 PMC 文章頁（Europe PMC 全文 XML 今日仍 500；NCBI efetch 因出版者不允許只給書目，不含正文）；兩次抓取的正文正規化後雜湊相同。F16-S009 是作者實驗室網站上的期刊 PDF（著作頁有連結），每組 19 人、患者幾乎都在服藥。F16-S007 是橫斷面相關。F16-S008 的「耳朵照常」引用作者 2001 年研究、蟋蟀叫時仍能回應外界聲音引用行為研究，本輪都沒讀。舊核心六個本輪沒有重讀原文。",
+      "still_missing": "寫稿前：（1）重讀 R44010（bayslab.org 的 SheBayFri03.pdf）、R44009（PMC6860990）、A21001、S10001–S10003 的指定段落，確認每個至少 1 條（S10002 0.5）；（2）F16-S005 Figure 1、F16-S006 Fig. 2 與 Fig. 4 轉圖目讀；（3）若要把餘裕拉到半分鐘以上，再讀一篇 1–1.5 條的原研究全文，例如 Poulet 與 Hedwig 2002（Nature，伴隨放電維持聽覺敏感度）或 Bays、Wolpert、Flanagan 2005（Curr Biol，打折的時間調諧，但要先確認與 S74 的 Blakemore 1999 延遲結果答案不同）。",
+      "reason": "任務問：舊核心是不是真有 7.0 條、與 S74 的重疊怎麼處理、Shergill 2005 的用語、是不是一個問題兩個轉折？裁定：可成題，但只過線 0.06 分。舊核心六個逐筆看池內答案與閱讀範圍後算 6.0 條（S10002 的機制是模型、只算 0.5；R44010 有兩個實驗算 1.5），不是 7.0。五個新核心今天都重抓或核對過：Bays 2006、Wolpe 2016、Shergill 2005 雜湊與快取相同；Kilteni 2017、Poulet 2003 的 PMC 頁原始 HTML 因頁面 token 不同而雜湊不同，正文抽出後雜湊相同。改正三處：L60-003 原答案「聽得到」與本篇相反（叫的那一刻兩種神經元對外來聲音也被壓下），改成本篇量到的中樞抑制；H60-005「關掉打折」改成「打折變少但沒有消失」（P=0.018）；H60-007 改問題、答案與 payoff，把症狀連結標成作者的假說、補上服藥與狀態／特質兩個限制，並寫明用語與畫面規則（用「思覺失調症」、只說研究組、不當診斷、不畫患者）。是一個問題：每一章都在回答「大腦怎麼把自己造成的那一份先扣掉」；兩個轉折都改變結論，第二個轉折是 Bays 等原文直接寫的結果，不是作者推論。與 S74 的重疊只在開場一句，S74 的核心不計；但開場不得先說出「大腦預測」這個答案，否則轉折二會變成重述。最終核心都不在 themes.json 中 material.verdict 為 ready 的題（R44009、A21001、S10001、S10003 只在舊短題 G469、G220、G105），不在 POOL_SUPPORT，也不與 C4-02、C6-02 共用（逐一 grep 過）。",
+      "also_considered": "R44011、Z7006、S10004 不收（理由同作者）。LEG-S74 只當入口。R44003、R44004（交叉手臂把先後說反）池內只讀到摘要與勘誤，計 0，不收。"
+    },
+    {
+      "target": "C6-02",
+      "theme_id": null,
+      "title": "雲裡的小水滴，為什麼不馬上變成雨掉下來？",
+      "reviewer": "V19",
+      "author": "F16",
+      "author_verdict": "ready",
+      "author_est_minutes": 8.81,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "K6001",
+        "K6002",
+        "K6003",
+        "S60-002",
+        "S60-003",
+        "S60-001",
+        "K6004",
+        "S60-004",
+        "K6005",
+        "S60-005",
+        "S60-006",
+        "K6024"
+      ],
+      "recount_facts": "9.0 條。七個 K6 核心今天逐頁重抓（PSU METEO 300 node/676、678、679、781，NWS 路易斯維爾 winter-precip，NASA Earth Observatory aerosols，NASA Glenn 1_1_2_5），每一頁都還支持它那一句（K6003 頁甚至直接寫「not possible for cloud drops to grow into rain drops by vapor deposition alone」），各 0.5 條；但 K6012（同水分成更多小滴更亮）答的是雲的反照率，不是起雨，刪；留下六個＝3.0。X38-001（單一大滴袋狀破裂）答的是雨滴長到多大會碎，是雨已經形成之後的事，不在「為什麼不馬上下」這個問題上，而且池內紀錄沒有本機原 PDF，刪（作者算 1.5）。新核心：S60-001 1.5、S60-002 1.0（作者 1.5；同一組量測的兩種讀法，起雨深度還有一部分是外推）、S60-003 1.0、S60-004 0.5（作者 1.0；原文自己承認低溫液態雲多在重力波裡、紊流雲三地相近）、S60-005 1.0、S60-006 1.0＝6.0。（9.0×140＋700）÷270＝7.26 分。作者算 12.0 條、8.81 分。",
+      "recount_fact_count": 9.0,
+      "recount_minutes": 7.26,
+      "planned_minutes": null,
+      "cuts": "刪 X38-001（雨滴破裂，不在問題上）與 K6012（雲的亮度，不在問題上）。同意作者刪 K6023、K6013。K6024 留但它的章名問的是「能不能斷定上面有暖層」，寫稿時要改問「零度以下，小水滴還能靠碰併長大嗎」才接得上本題。",
+      "turns": [
+        "成立（改字後）：以為空氣裡能讓水凝結的粒子越多越容易下雨；亞馬遜燒林季的飛機量測顯示煙霧裡的雲估計要長到 4 公里以上才開始下暖雨，乾淨的雲 1 到 2 公里就下（S60-002，污染雲的起雨深度部分是外推）；反過來，極少數的大鹽粒讓一片只有微弱毛毛雨的層積雲雨率約變成四倍（S60-003，作者原寫「讓不下的雲開始下」與原文不符，已改）。",
+        "成立（改字後）：以為雨就是小水滴碰在一起變大（舊集 S42 講的暖雨那條路）；衛星統計顯示陸地上正在下雨的雲，暖雨只占 1%（南北緯 30 度以外）到 8%（熱帶），大多數雲頂含冰（S60-001）。作者把「乾淨的南半球雲在零下 16 度以下仍有四成全是液態」接在這個轉折裡；原文說這些雲多半在山地重力波裡，紊流充分的雲三地含冰比例相近，所以這半句不能當轉折的一部分，只能當「冰要起頭」那一章的條件說明。"
+      ],
+      "chapter_outline": [],
+      "core_question": "雲裡明明充滿水，為什麼大多數時候不下？從一顆雲滴長成雨滴，卡在哪裡；粒子多一點、冷一點，是幫忙還是拖累？",
+      "connection": "（後備，暫不排章。）前段是小水滴為什麼長不大（曲率、門檻、凝結越長越慢），中段用兩份飛機量測翻掉「粒子越多越容易下」，後段用衛星統計翻掉「雨就是水滴碰成的」，再看冰從哪裡來、一點冰怎麼變很多冰、加冰時雪沿著撒的線掉下。兩個轉折都在，缺的是量。",
+      "boredom_risk": "前段三個 K6 核心都是教材一句話；兩個撒播實驗（鹽粒、碘化銀）放在同一集，容易讓人以為在講人工增雨，兩章之間要隔開並每章明說「這是物理實驗」。S60-005 是最技術的一章。",
+      "drop_if": "補不到下面 still_missing 的量就維持後備；不得拿 X38-001、K6012 或別的降水落下後的核心湊片長。S60-003、S60-006 不得寫成人工增雨可行、有效或值得推廣；S42 不得被說成「講錯了」。",
+      "evidence_gaps": "七個 K6 核心今天重抓都還支持原句，但都是課程網頁的一句話（各 0.5）。F16-S011 只有一季一地，污染雲的起雨深度部分是外推；F16-S012、F16-S014、F16-S015 都是個案；F16-S013 的含冰差異受重力波混淆，冰核濃度是推估；F16-S010 統計的是頻率不是雨量。DeMott 2010（冰核全球分布）讀不到（作者記為 PNAS 403、PMC reCAPTCHA）；Freud 與 Rosenfeld 2012、Rosenfeld 1999 讀不到。",
+      "still_missing": "差約 1.5 條（到 10.5 條、8.04 分還不夠；要 11.5 條、8.56 分），而且要落在「從雲滴到雨滴卡在哪裡」上，依可得性排序：（1）一份量到暖雨起始的原研究全文（例如以雷達第一回波或飛機量測看雲滴有效半徑門檻的研究，如 Freud 與 Rosenfeld 2012 的公開版本，或 Rosenfeld 與 Gutman 1994 一類），1–1.5 條，能讓 S60-002 的 24 微米門檻不只靠一篇；（2）一份碰撞合併效率的實驗室或風洞量測全文（小滴為什麼很難撞上、紊流怎麼加快），1 條，直接回答「卡在哪裡」；（3）一份陸海暖雨對比的第二份全文（Lau 與 Wu 2003 或 Lebsock 與 L'Ecuyer 2011，Mülmenstädt 2015 自己引用的），0.5–1 條；（4）中央氣象署或台灣大學的雲物理教材一頁，0.5 條，兼作在地入口。補到（1）（2）約 11.5 條、8.56 分，兩個轉折不變，可以改判。另：S60-004 照本輪改字；寫稿前 F16-S010 Figure 1、F16-S011 Fig. 9 轉圖目讀。",
+      "reason": "任務問：七個 K6 核心各 0.5 條的頁面還在不在、X38-001 是否在題上、新來源算幾條？裁定：維持後備，7.26 分。K6 頁面今天全部重抓到、原句都還在，0.5 條照算；但 K6012 與 X38-001 不在這一題的問題上（一個講雲的亮度、一個講雨滴形成之後怎麼碎），作者在大綱裡也只是把它們放在別的章旁邊或一章 30 秒，刪去 2.0 條。六個新來源今天都重抓得到、雜湊相同，數字逐句核過，抓到四處作者寫錯或漏寫：S60-002 的煙霧雲起雨深度有一部分是原文外推（作者沒寫）；S60-003 撒鹽前已有 0.04–0.09 mm/h 的毛毛雨，不是「不下雨的雲開始下」；S60-004 原文說低溫液態雲多在重力波裡、紊流雲三地含冰比例相近，作者只報「四成全是液態」並歸因冰核；S60-006 的「三到四倍」比的是自然降雪的起伏，不是自然降水量。兩個轉折改字後都還成立，問題只在量。撒播的兩章已加上不得推廣人工增雨的規則；S42 只當入口、不說它錯。最終核心都不在 themes.json 中 material.verdict 為 ready 的題（K6002–K6004 只在舊短題 G67），不在 POOL_SUPPORT，也不與 C4-02、C6-01 共用（逐一 grep 過）。",
+      "also_considered": "K6023（雨蒸發冷卻讓雪線下降）、K6013（吸光氣膠讓雲滴蒸發）同意作者刪；X38-001、K6012 本輪刪。上一輪 V16 在 considered_and_dropped 已說同一組 K6 加 X38-001 約 6 條、要另讀四篇以上有量測的來源；這一輪讀了六篇，但兩篇在本題只算 0.5–1 條，仍差約 1.5 條。"
+    }
+  ],
+  "reviewer_notes": {
+    "V18": "F15-001 1（作者 1.5，機制句與 X34-001 重複）；F15-002 0.5（作者 1，量氮與 H59-003 重複）；F15-003 1（作者 1.5）；F15-004 1.5（作者 1.5，但答案的關鍵句原文沒有，已改寫）；F15-005 1（作者 1.5，2% 歸錯變項、預期結果不計）；F15-006 1.5；F15-007 1.5。C5-01 13.0 條／9.3 分 ready；C5-02 11.0 條／8.3 分 reserve；C5-03 13.0 條／9.3 分 ready。",
+    "V19": "結論：C4-02 可成題（13.5 條、9.59 分，排 9.5 分），不再需要站主對 2006 年事故案例的裁示；C6-01 可成題但只過線 0.06 分（11.5 條、8.56 分，排 8.5 分）；C6-02 後備（9.0 條、7.26 分）。十五個新核心全收（3 個不改（F16-001、F16-005、F16-007）、12 個改字），沒有退件。最重要的改正：F16-008 的答案與來源相反；F16-012「不下雨的雲開始下」與撒播前已有毛毛雨不符；F16-013 漏掉原文自己承認的重力波混淆；F16-015 把「自然降雪起伏的三到四倍」寫成「自然降水的三到四倍」；F16-011 漏寫外推；C4-02 轉折句把兩組不同年份的實驗寫成一句。所有來源都經作者紀錄裡的公開連結取得。覆核自己的一處失誤要記明：為確認 Shergill 2005 的著作頁連結，曾由快取檔名推測一個網址（bayslab.org/pubs-sp.html）試抓一次，回 404；這不是公開連結，不算來源、不影響任何結論，連結以作者快取的著作頁內容為準。第二條取得路徑用的 NCBI E-utilities efetch 是 NCBI 公開文件記載的 API。",
+    "V18_method": "先讀 REVIEW-BRIEF、BRIEF、round9 的 C5-01–C5-03 覆核紀錄（V17 的最終核心與重算），再逐一打開 f15src 的快取全文核對每個數字、單位與條件；所有快取的 sha256 前 16 碼與作者紀錄相同。每個來源都以工具預設標頭重抓：食藥署 PDF、FAO（301 轉到 /4/，雜湊相同）、Elliott Review、FSAI 出版頁、ORA 典藏頁與 PDF、KOPS 位元流、兩篇 Europe PMC XML 全部 HTTP 200、雜湊相同。三個點名的入口都查證過：食藥署清單的分頁連結逐頁可達、第 41 頁今日仍有該條目；ORA 典藏頁列有檔案連結（3 處）；KOPS 由 OpenAlex 的 best_oa_location 與 URN 落地頁可達。去重以 grep pool.json（4,114 筆）與 themes.json（616 題）完成，未用 cli.mjs search（作者回報單一關鍵字逾時）。Vidal 2017 的表 1–3 由 XML 直接讀出（作者以為被移除）。事實數照上一輪覆核的算法：舊核心已有的事實不重算、同一實驗合計 1–2 條、方法與條件不算、預期中的結果不算。",
+    "V19_method": "逐核心從作者快取全文找到支撐句逐字核對數字、單位、條件與主詞；15 份來源今日全部以 curl（工具預設標頭）由原網址重抓並比對 sha256 前綴：13 份相同，兩份 PMC 頁原始 HTML 因頁面 token 不同，改比正文正規化雜湊（相同）。C6-02 的七個 K6 課程頁全部重抓並逐句找回原句。池內核心一律讀 pool.json（未用 cli.mjs show）；去重以 pool.json 全文正則搜尋（停走、煙霧抑雨、暖雨、鹽粉、碘化銀、冰核、伴隨放電、力量配對、假手、蟋蟀等中英寫法）；最終核心逐一比對 themes.json 中 material.verdict 為 ready 的題、episode-plan.mjs 的 POOL_SUPPORT、與 reviews/ 各輪 ready 長題的 final_core_ids，並確認三個目標互不共用。片長（事實數×140＋700）÷270；只有一句答案的舊核心 0.5–1.5、同一實驗的多個結果合計 1–2、方法與條件不計。"
+  },
+  "research_blocked": [
+    "F15：PNAS 本家與 PMC：https://pmc.ncbi.nlm.nih.gov/articles/PMC5544276/ 回 200 但內容是 Google reCAPTCHA 挑戰頁；https://doi.org/10.1073/pnas.1621067114 回 403（Cloudflare「Just a moment...」）；https://europepmc.org/articles/PMC5544276?pdf=render 回 403；Europe PMC fullTextXML（PMC5544276）仍是 HTTP 500。都不繞過。Aplin 2017 最後是循 OpenAlex 的開放版位置連結，在牛津 ORA 的典藏頁（https://ora.ox.ac.uk/objects/uuid:7f263ffc-0f6f-485e-8b29-3a52f50fba2a）取得作者接受稿 PDF，典藏頁自己列有該檔連結（grep 到 3 處），不是猜檔名。",
+    "F15：馬克斯普朗克學會典藏 https://pure.mpg.de/pubman/item/item_2472152_4 回 403；牛津 ORA 的第三方鏡像 https://libmast.utm.my/... curl 連線被重設、WebFetch 回 503。",
+    "F15：Allen 等 2013（Science 340:485，座頭鯨拍尾捕食）與 van de Waal 等 2013（Science 340:483，長尾黑顎猴）：兩篇都確實存在（Europe PMC 有書目、Klump 2021 的參考文獻第 10 條引了 Allen 2013），但循公開連結查不到任何開放全文——Allen 2013 在 OpenAlex 標為 closed，St Andrews 研究入口（research-portal.st-andrews.ac.uk）該筆紀錄沒有檔案連結，只連 DOI 與 sciencemag 摘要；van de Waal 2013 在 OpenAlex 與 Europe PMC 都標為 closed。沒有付費牆可繞，也不猜網址，因此改用另一份開放的野外擴散研究（Klump 等 2021 的機構典藏接受稿）。",
+    "F15：愛爾蘭食品安全局 2013 年調查報告原件：fsai.ie 的出版頁（https://www.fsai.ie/publications/fsai-horse-meat-incident-survey-2013）只掛一個 PDF（FSAI_Horse_Meat_Incident_Survey_2013.pdf，已讀全文、已存快取），但那是 Behaviour & Attitudes 替 FSAI 做的**消費者行為調查**投影片（2013 年 5 月 16–30 日電訪 1,003 人），不是 DNA 檢驗調查報告；該頁正文本身載有 27 款漢堡排 10 款（37%）驗出馬 DNA 與「以 PCR 擴增特定 DNA 片段」一句，但沒有方法細節、沒有各樣品數值。檢驗報告原件在 fsai.ie 的公開連結裡找不到，不另猜網址。",
+    "F15：OpenAlex 無金鑰的共用每日額度在工作中用盡（回「Insufficient budget」），之後改用 Europe PMC 檢索 API 與一般搜尋找開放版位置。",
+    "F15：素材池 cli.mjs 可用（未出現 Pool drift／Index is stale）；但 `search 摻偽 --all` 一次超過 120 秒被移到背景且最後回「No matches found」，該關鍵字的去重改以 grep pool.json 完成。",
+    "V18：未重試 PNAS 本家、PMC5544276 與 Europe PMC 的 Aplin 2017 全文（作者已記 reCAPTCHA／403／500；本覆核用 ORA 典藏版，不需要也不繞過）。",
+    "V18：未重試 Allen 2013、van de Waal 2013 的付費頁；OpenAlex 標 closed，不猜網址。",
+    "V18：未用 cli.mjs search（作者回報 `search 摻偽 --all` 超過 120 秒）；去重全部以 grep pool.json 與 themes.json 完成。",
+    "F16：jneurosci.org（經 doi.org/10.1523/JNEUROSCI.23-11-04717.2003）：Cloudflare 403，未繞過；改讀同一論文的 PMC 公開頁。",
+    "F16：agupubs.onlinelibrary.wiley.com（Freud 與 Rosenfeld 2012 JGR，doi 10.1029/2011JD016457）：Cloudflare 403，未讀；同一研究群的 2008 ACP 開放論文改用。Rosenfeld 1999 GRL（TRMM 煙霧抑雨）找不到公開全文，未讀。",
+    "F16：pnas.org（DeMott 等 2010，doi 10.1073/pnas.0910818107）：Cloudflare 403；PMC2895116 回 reCAPTCHA；Europe PMC 全文 XML 回 500、?pdf=render 回 403。未讀，冰核的全球分布不列為來源。",
+    "F16：Europe PMC REST 全文 XML：PMC5547616、PMC6740803 當日回 500（改讀 PMC 文章頁，該兩頁未遇驗證）。",
+    "F16：Seyfried 等 2010〈Enhanced empirical data for the fundamental diagram and the flow through bottlenecks〉（PED 2008 論文集）：本輪未找到公開全文連結，未讀；士兵實驗的設定只經 F16-S001 轉述。Portz 與 Seyfried 2010（arXiv:1001.3283）已下載但未讀完，未列來源。",
+    "V19：Europe PMC REST fullTextXML：PMC5547616、PMC6740803 今日仍回 HTTP 500（未重試其他非公開路徑）。",
+    "V19：NCBI E-utilities efetch（PMC5547616、PMC6740803）：回 200 但註明出版者不允許下載正文，只有書目，不能當第二條全文路徑。",
+    "V19：覆核失誤（不是封鎖）：曾由快取檔名推測 bayslab.org/pubs-sp.html 試抓一次，回 404；推測網址不算來源，已停止，本檔的公開連結以作者快取的著作頁（bayslab-pubs-sp.html，內含 pdf/SheSamBay05.pdf 連結）為準。"
+  ],
+  "limits": "估時依事實數紙上估算，不是試讀；G620 餘裕只有約 0.06 分。所有核心仍是選題候選，寫稿前要逐主張查核。本輪沒有改企劃。"
+}

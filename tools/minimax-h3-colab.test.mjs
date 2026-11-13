@@ -773,6 +773,10 @@ test("h3_refine.ipynb and seedvr2_upscale.ipynb: valid notebooks whose cells com
   const upscale = JSON.parse(readFileSync(UPSCALE_NOTEBOOK, "utf8")).cells.filter((c) => c.cell_type === "code").map((c) => c.source.join("")).join("\n");
   const emptied = upscale.indexOf('for old in [*SRC.glob("*.mp4"), *DST.glob("*.mp4")]:');
   assert.ok(emptied > 0 && emptied < upscale.indexOf('for uploaded in Path("/content").glob("s3in__*.mp4"):'), "seedvr2_upscale.ipynb empties s3_in and s3_out before moving the uploads in");
+  // Vertical 9:16 dramas (Till the Verdict, 2026-11-10): a taller-than-wide clip is fitted to 1080x1920, not cropped to 1920x1080.
+  assert.match(upscale, /if height > width/);
+  assert.match(upscale, /scale=1080:-2:flags=lanczos,crop=1080:1920/);
+  assert.match(upscale, /scale=-2:1080:flags=lanczos,crop=1920:1080/);
 });
 
 test("refine.py --check: a sound manifest passes; every error that would waste a session is named, and nothing is uploaded", { skip: !POSIX }, () => {
@@ -897,4 +901,157 @@ test("h3.sh upscale: uploads to /content (no folders), passes the model and batc
   assert.match(calls, /upload --session kept \S+s21-st2\.mp4 \/content\/s3in__s21-st2\.mp4/);
   assert.match(calls, /--env S3_DIT_MODEL=seedvr2_ema_7b_fp16\.safetensors --env S3_BATCH_SIZE=81/);
   for (const name of ["s21-st2_1080.mp4", "s34-st2_1080.mp4"]) assert.ok(existsSync(path.join(dir, "final", name)), name);
+});
+
+// --- One Colab account per agent (scripts/accounts.py) -------------------------------------------
+
+const ACCOUNTS = path.join(SCRIPTS, "accounts.py");
+
+// The site's lease routes as the API answers them: a lease per slot, `auto` takes the free signed-in
+// account with the most units (or the one the holder has), credentials only for the holder.
+function leaseSite() {
+  const state = {
+    accounts: [
+      { slot: "a", is_default: true, signed_in: true, compute_units: { balance: 120 }, lease: null },
+      { slot: "b", is_default: false, signed_in: true, compute_units: { balance: 410.5 }, lease: null },
+      { slot: "c", is_default: false, signed_in: false, compute_units: null, lease: null },
+    ],
+    requests: [],
+  };
+  const answer = (response, status, body) => {
+    response.writeHead(status, { "Content-Type": "application/json" });
+    response.end(JSON.stringify(body));
+  };
+  const server = createServer((request, response) => {
+    let raw = "";
+    request.on("data", (chunk) => { raw += chunk; });
+    request.on("end", () => {
+      const url = new URL(request.url, "http://site");
+      state.requests.push(`${request.method} ${url.pathname}${url.search}`);
+      if (request.headers.authorization !== "Bearer mkv_paired") return answer(response, 401, { code: "video_tool_token_invalid", detail: "bad token" });
+      const body = raw ? JSON.parse(raw) : {};
+      const find = (slot) => state.accounts.find((item) => item.slot === slot);
+      if (request.method === "GET" && url.pathname === "/api/video/colab-accounts") return answer(response, 200, { accounts: state.accounts, default: "a" });
+      let match = url.pathname.match(/^\/api\/video\/colab-accounts\/([a-e]|auto)\/lease$/);
+      if (request.method === "POST" && match) {
+        let account;
+        if (match[1] === "auto") {
+          account = state.accounts.find((item) => item.lease?.holder === body.holder)
+            ?? state.accounts.filter((item) => item.signed_in && !item.lease).sort((x, y) => y.compute_units.balance - x.compute_units.balance)[0];
+          if (!account) return answer(response, 409, { code: "colab_no_free_account", detail: "沒有空著的帳號" });
+        } else {
+          account = find(match[1]);
+          if (!account?.signed_in) return answer(response, 409, { code: "colab_not_signed_in", detail: "not signed in" });
+        }
+        if (account.lease && account.lease.holder !== body.holder) return answer(response, 409, { code: "colab_account_leased", detail: `正由「${account.lease.holder}」使用` });
+        account.lease = { slot: account.slot, holder: body.holder, token: "mkv_paired", acquired_at: 1, expires_at: 4102444800 };
+        return answer(response, 200, account.lease);
+      }
+      match = url.pathname.match(/^\/api\/video\/colab-accounts\/([a-e])\/lease\/release$/);
+      if (request.method === "POST" && match) {
+        const account = find(match[1]);
+        const released = account.lease?.holder === body.holder;
+        if (released) account.lease = null;
+        return answer(response, 200, { slot: match[1], released });
+      }
+      if (request.method === "GET" && url.pathname === "/api/video/colab-credentials") {
+        const account = find(url.searchParams.get("slot"));
+        if (account.lease && account.lease.holder !== url.searchParams.get("holder")) return answer(response, 409, { code: "colab_account_leased", detail: "taken" });
+        return answer(response, 200, { tool: "colab", slot: account.slot, credentials: { ...TOKEN, token: `account-${account.slot}` } });
+      }
+      return answer(response, 404, { code: "not_found", detail: request.url });
+    });
+  });
+  return { server, state };
+}
+
+test("accounts.py: two agents on one machine each lease their own account and run the CLI in its own home", { skip: !POSIX }, async () => {
+  const { home, env } = sandbox();
+  const { server, state } = leaseSite();
+  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+  // A colab that says which HOME (so which account's token) it runs with.
+  const bin = path.join(home, "bin");
+  writeFileSync(path.join(bin, "colab"), `${FAKE_COLAB.replace('  *version*)', '  *whoami*) echo "home=$HOME token=$(cat "$HOME/.config/colab-cli/token.json")" ;;\n  *version*)')}`);
+  const upstream = path.join(home, "upstream");
+  mkdirSync(path.join(upstream, "scripts"), { recursive: true });
+  writeFileSync(path.join(upstream, "scripts", "runner.py"), "import subprocess\nsubprocess.run(['colab', 'whoami'])\n");
+  const site = { ...env, MOKAAIR_SITE: `http://127.0.0.1:${server.address().port}`, MOKAAIR_VIDEO_TOKEN: "mkv_paired", MINIMAX_H3_COLAB_HOME: upstream };
+  const root = path.join(home, ".cache", "minimax-h3-colab", "accounts");
+  try {
+    const one = await runAsync(PYTHON, ["-I", ACCOUNTS, "claim", "--holder", "agent-one"], site);
+    assert.equal(one.code, 0, one.err);
+    assert.equal(one.out.trim(), "export COLAB_ACCOUNT_SLOT=b COLAB_ACCOUNT_HOLDER=agent-one", "auto takes the most compute units");
+    assert.match(one.err, /Current balance/);
+    const two = await runAsync(PYTHON, ["-I", ACCOUNTS, "claim", "--holder", "agent-two"], site);
+    assert.equal(two.out.trim(), "export COLAB_ACCOUNT_SLOT=a COLAB_ACCOUNT_HOLDER=agent-two");
+    for (const slot of ["a", "b"]) {
+      const token = path.join(root, slot, ".config", "colab-cli", "token.json");
+      assert.equal(JSON.parse(readFileSync(token, "utf8")).token, `account-${slot}`);
+      assert.equal(statSync(token).mode & 0o777, 0o600);
+    }
+    assert.ok(!existsSync(path.join(home, ".config", "colab-cli", "token.json")), "the agent's own HOME gets no token");
+
+    // h3.sh picks the account by COLAB_ACCOUNT_SLOT: the CLI runs with that account's HOME.
+    const asB = run("bash", [H3, "usage"], { ...site, COLAB_ACCOUNT_SLOT: "b" });
+    assert.equal(asB.code, 0, asB.err);
+    assert.match(asB.out, new RegExp(`home=${path.join(root, "b")} token=.*account-b`));
+    const asA = run("bash", [H3, "usage"], { ...site, COLAB_ACCOUNT_SLOT: "A" });
+    assert.match(asA.out, /account-a/);
+    const unclaimed = run("bash", [H3, "usage"], { ...site, COLAB_ACCOUNT_SLOT: "c" });
+    assert.equal(unclaimed.code, 2);
+    assert.match(unclaimed.err, /not set up on this machine/);
+    // The Python scripts select it the same way (h3_detached.py, images.py, colab_detached.py).
+    const activated = run(PYTHON, ["-I", "-c", `import sys; sys.path.insert(0, ${JSON.stringify(SCRIPTS)}); import accounts, shutil; print(accounts.activate(), shutil.which('colab'))`], { ...site, COLAB_ACCOUNT_SLOT: "b" });
+    assert.equal(activated.out.trim(), `b ${path.join(root, "b", "bin", "colab")}`);
+
+    // A third agent finds nothing free (c is not signed in), and nobody takes a held account.
+    const three = await runAsync(PYTHON, ["-I", ACCOUNTS, "claim", "--holder", "agent-three"], site);
+    assert.equal(three.code, 3);
+    assert.match(three.err, /colab_no_free_account/);
+    const steal = await runAsync(PYTHON, ["-I", ACCOUNTS, "claim", "--holder", "agent-three", "--slot", "b"], site);
+    assert.equal(steal.code, 3);
+    assert.match(steal.err, /agent-one/);
+    const listed = await runAsync(PYTHON, ["-I", ACCOUNTS, "list"], site);
+    assert.match(listed.out, /^B\s+yes\s+410\.5\s+agent-one/m);
+    assert.match(listed.out, /^C\s+no/m);
+
+    // Release gives it back and removes the local token; then the third agent gets it.
+    const released = await runAsync(PYTHON, ["-I", ACCOUNTS, "release", "--holder", "agent-one", "--slot", "b"], site);
+    assert.equal(released.code, 0, released.err);
+    assert.ok(!existsSync(path.join(root, "b", ".config", "colab-cli", "token.json")));
+    const after = await runAsync(PYTHON, ["-I", ACCOUNTS, "claim", "--holder", "agent-three"], site);
+    assert.equal(after.out.trim(), "export COLAB_ACCOUNT_SLOT=b COLAB_ACCOUNT_HOLDER=agent-three");
+    assert.ok(state.requests.includes("GET /api/video/colab-credentials?slot=b&holder=agent-one"));
+
+    const badHolder = run(PYTHON, ["-I", ACCOUNTS, "claim", "--holder", "two words"], site);
+    assert.equal(badHolder.code, 1);
+    assert.match(badHolder.err, /--holder/);
+  } finally {
+    server.close();
+    rmSync(home, { recursive: true, force: true });
+  }
+});
+
+test("bootstrap.sh token: with COLAB_ACCOUNT_HOLDER it leases an account instead of overwriting the shared token", { skip: !POSIX }, async () => {
+  const { home, env, token } = sandbox();
+  const { server, state } = leaseSite();
+  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+  const site = { ...env, MOKAAIR_SITE: `http://127.0.0.1:${server.address().port}`, MOKAAIR_VIDEO_TOKEN: "mkv_paired" };
+  try {
+    const leased = await runAsync("bash", [BOOTSTRAP, "token"], { ...site, COLAB_ACCOUNT_SLOT: "auto", COLAB_ACCOUNT_HOLDER: "codex-7" });
+    assert.equal(leased.code, 0, leased.err);
+    assert.match(leased.out, /export COLAB_ACCOUNT_SLOT=b COLAB_ACCOUNT_HOLDER=codex-7/);
+    assert.ok(!existsSync(token), "the shared ~/.config token is left alone");
+    const verified = await runAsync("bash", [BOOTSTRAP, "verify"], { ...site, COLAB_ACCOUNT_SLOT: "b", COLAB_ACCOUNT_HOLDER: "codex-7" });
+    assert.equal(verified.code, 0, verified.err);
+    assert.match(verified.out, /Current balance/);
+    // Without a holder, a slot someone leased is refused by the site and nothing is written.
+    const plain = await runAsync("bash", [BOOTSTRAP, "token"], { ...site, COLAB_ACCOUNT_SLOT: "b" });
+    assert.match(plain.err, /HTTP 409/);
+    assert.ok(!existsSync(token));
+    assert.ok(state.requests.includes("GET /api/video/colab-credentials?slot=b"));
+  } finally {
+    server.close();
+    rmSync(home, { recursive: true, force: true });
+  }
 });

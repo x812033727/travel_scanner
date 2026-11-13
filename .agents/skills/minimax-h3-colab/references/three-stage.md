@@ -44,6 +44,7 @@ H3 的 video flow shift 是 12（ComfyUI `supported_models`：shift 12.0、audio
 | 「從第 10 步接著算」把動作改掉 | shift 12，第 10 步 σ≈0.92 | 用 `sigma_start`（第二節） |
 | SeedVR2 輸出多 4 格（158 → 162） | `--prepend_frames 4` 的倒放格 CLI 沒移除 | `seedvr2_upscale.ipynb` 剪掉並核對幀數，不符就停 |
 | SeedVR2 短邊 1080 時寬是 1925 | 1312×736 不是精確 16:9 | 置中裁 1920×1080 |
+| 直式（9:16）片段放大後被裁壞 | 筆記本原本一律「高度 1080、裁 1920×1080」 | 2026-11-10 起依片段方向：高大於寬就「寬度 1080、裁 1080×1920」；三段畫布用 544×960 → 736×1312 → 1080×1920 |
 | `colab upload … /content/dir/x.mp4` 回 500 | upload 不會建資料夾 | 傳到 `/content/s3in__x.mp4`，notebook 再搬 |
 | notebook 載的不是 BF16 | 上游選 `fl2va_pruned_int8_convrot`（CUDA 13）與 `qwen3vl_32b … nvfp4_awq` | 數字都以這組量化權重為準；BF16 沒量過 |
 

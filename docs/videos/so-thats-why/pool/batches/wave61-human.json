@@ -1,0 +1,388 @@
+{
+  "batch_id": "wave61-human-20261111",
+  "created_on": "2026-11-12",
+  "scope": "觸覺定位與先後順序：交叉手臂、皮膚兔錯覺、先天盲與晚獲視覺者的研究：替上一輪淘汰的組題 C7-01 補原研究（作者 F18，覆核 V21），仍後備。",
+  "sources": [
+    {
+      "id": "H61-S001",
+      "url": "https://www.jstage.jst.go.jp/article/psychono/23/1/23_KJ00004414517/_article/-char/ja/",
+      "canonical_url": "https://doi.org/10.14947/psychono.KJ00004414517",
+      "title": "触覚の生じる場所：時間順序判断からの示唆",
+      "publisher": "北澤茂（Kitazawa S）／基礎心理学研究 23(1):51–55（日本基礎心理學會，J-STAGE 開放）",
+      "version": "2004 年刊出版 PDF（研討會論文，作者即 Yamamoto & Kitazawa 2001a/2001b 的通訊作者）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果的 J-STAGE 文章頁 → 頁上「PDF」連結；curl 存 PDF，pdftotext 轉文字（掃描 OCR，日文有斷字）",
+      "reading_scope": "全文 pp51–55：英文摘要、§2 交叉手臂的時間順序逆轉（Fig2）、§3 單手三指刺激（Fig3）、§4 交叉棒子（Fig4）、§5 討論。",
+      "locator": "p51 英文摘要；p52 §2 與 Fig2；p53 §3 與 Fig3；p54 §4 與 Fig4",
+      "summary": "作者本人對 2001a、2001b 與 Shibuya 等 2004 的完整敘述：不交叉時雙手刺激差 0.1 秒就幾乎全對；交叉時差超過約 1 秒仍對，但 0.3 秒以內反過來，典型受試者曲線成 N 字；摘要說四分之一受試者在 100–300 毫秒明顯倒轉，1.5 秒等長間隔又答對，單刺一手時從不弄錯哪隻手。手不交叉、只交叉手上的棒子，棒尖刺激的先後也會倒轉。單手食中無名三指依序刺激，偏好的順序在手翻成掌心朝上後跟著空間走、不跟手指走（6 人中顯著較多）。作者結論：觸覺刺激先被放到空間位置，才排時間先後。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "是綜述／研討會論文，不是 2001a（Nature Neuroscience，付費牆）或 2001b 原刊；Fig2、Fig4 為單一典型受試者資料。Shibuya 等 2004 當時為摘要「in press」，原研究未讀。OCR 文字有缺字，數字已對照英文摘要。R44003 原刊與 R44004（J Neurophysiol 2005）全文仍未讀到。 覆核 V21（2026-11-12）：改成 R44003 的追加來源（不另立 F18-001）：R44003 加 source_ref F18-S001，locator「p51 英文摘要；p52–53 §2 與 Fig.2（一位典型受試者）」；R44003 答案改為：「雙手各先後被碰一下。手不交叉時，相隔 0.1 秒就能確實答對；交叉後，相隔 1 秒以上仍幾乎答對，但相隔 0.3 秒以內，作者文中的典型受試者幾乎整個答反，判斷曲線成 N 字；作者摘要說約四分之一受試者在 100–300 毫秒明顯倒轉、拉長到 1.5 秒又答對。只碰一隻手時從不弄錯是哪隻手，所以不是單純把手搞混。」R44003 由 0 改計 1 條。version 改為「基礎心理学研究 23(1):51–55（2004），以作者講演為底的文章（題名註明改自講演題目）」，不是研討會論文集。limitations 補：Fig.2、Fig.3 的百分比、Fig.4 都是單一受試者；組別層級只有摘要一句。",
+      "author_cache": {
+        "file": "f18src/kitazawa2004_psychono.pdf",
+        "sha256_prefix": "1f6df535457dc364",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H61-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8152922/",
+      "canonical_url": "https://doi.org/10.1093/texcom/tgab025",
+      "title": "What Underlies a Greater Reversal in Tactile Temporal Order Judgment When the Hands Are Crossed? A Structural MRI Study",
+      "publisher": "Moharramipour A, Kitazawa S／Cerebral Cortex Communications 2:tgab025（2021，CC BY）",
+      "version": "PMC 全文 XML",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（curl，工具預設標頭），經 Europe PMC 搜尋 API 以 DOI／PMCID 找到",
+      "reading_scope": "摘要、Introduction、Methods（SOA 12 種、reversal value 定義）、Results 行為段與 Fig2 圖說。未逐一核 68 區皮質指標的統計。",
+      "locator": "Abstract；Introduction 第2段；Results 首段；Fig2 圖說",
+      "summary": "42 名受試者做交叉手時間順序判斷，再做結構 MRI。不交叉時 SOA 超過 100 毫秒大多答對；交叉時有人即使超過 200 毫秒仍判反，曲線呈 N 字或幾乎完全倒置，也有人很少判反（reversal value 0 到 1 都有）。女性平均較高但不顯著（P=0.23）。倒轉較小的人在 10 個腦區皮質較薄、面積較大、皺褶較多（相關）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "腦結構只與倒轉程度相關，不是因果；Introduction 中 300–400 毫秒內「從錯的手重新對到正確的手」是 Kitazawa 等 2008 的理論說法，不是本研究量到。",
+      "author_cache": {
+        "file": "f18src/PMC8152922.xml",
+        "sha256_prefix": "9b307d6bde95497b",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H61-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3925972/",
+      "canonical_url": "https://doi.org/10.3389/fpsyg.2014.00076",
+      "title": "Using time to investigate space: a review of tactile temporal order judgments as a window onto spatial processing in touch",
+      "publisher": "Heed T, Azañón E／Frontiers in Psychology 5:76（2014，開放）",
+      "version": "PMC 全文 XML（綜述）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（curl，工具預設標頭），經 Europe PMC 搜尋 API 以 DOI／PMCID 找到",
+      "reading_scope": "全文中「交叉效應」與「非同源肢體」「盲人發展」段落；圖2、圖4 圖說。",
+      "locator": "Section on crossing effects (Yamamoto & Kitazawa 2001a; Shore 2002)；non-homologous limbs (Schicke & Röder 2006, Fig2)；Developmental aspects: blind individuals (Fig4)",
+      "summary": "綜述：不交叉時約 30–70 毫秒就能分先後，交叉時要約 120–300 毫秒；交叉一手與對側腳（手臂跨過腿）也出現同樣的交叉代價；在黑暗中或矇眼時觸覺仍會被重新對到外部空間。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "同行評審綜述，數字與手腳交叉結果引自 Shore 2002、Schicke & Röder 2006 等原研究，原研究本輪未讀；只計 0.5 條。 覆核 V21（2026-11-12）：summary 改寫：手與對側腳交叉的結果是用來排除「左右初級體感皮質同源區經胼胝體干擾」；排除當下視覺的是「黑暗或矇眼仍會重新對位」一句。limitations 補：同一段也整理了 Röder 2004（先天盲不受交叉影響、後天盲與一般人同）與 Ley 2013（2 歲開刀的白內障個案），與 F18-008、F18-009 同方向，不另計。",
+      "author_cache": {
+        "file": "f18src/PMC3925972.xml",
+        "sha256_prefix": "038ea77895fee283",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H61-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13731914/",
+      "canonical_url": "https://doi.org/10.1111/desc.70300",
+      "title": "A Sensitive Period for Automaticity Rather than Ability: Automatic Visuospatial Coding of Touch Requires Visual Experience in Early Life",
+      "publisher": "Badde S, Sourav S, Pitchaimuthu K, Kolli B, Khan W, Kekunnaya R, Röder B／Developmental Science 30(1):e70300（2026 線上，CC BY）",
+      "version": "PMC 全文 XML（Wiley 開放版）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（curl，工具預設標頭），經 Europe PMC 搜尋 API 以 DOI／PMCID 找到",
+      "reading_scope": "摘要、Introduction、Methods 2.1–2.4（受試者、設備、兩個實驗的刺激組合與 SOA）。Results 數值段以摘要與 Fig1 圖說為準，未逐項核混合模型係數。",
+      "locator": "Abstract；§1 第2–5段；§2.1 Participants；§2.3 Procedure；Fig1",
+      "summary": "19 名先天雙眼緻密白內障、出生後 2 到 252 個月（平均 57 個月）才手術恢復視力的人，與 13 名兒童期才得白內障的人、同齡視力正常者比較。雙手各震一下，用腳踏板報哪一邊先。只有觸覺配對時（實驗1），先天白內障組不出現交叉手的代價，像先天盲人；把觸覺配對混在聲音與聲音-觸覺配對中（實驗2），交叉手明顯讓他們出錯，表現接近視力正常者。兒童期白內障組兩種情境都和正常組一樣。作者結論：要早年視覺的是「自動」把觸覺放進視覺空間，不是這個能力本身。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "小樣本、多數在印度受測，視力正常組年幼者在漢堡受測；兩實驗受試者只部分重疊。Introduction 中先天盲人、後天盲人、嬰兒的結果引自他人研究。 覆核 V21（2026-11-12）：publisher 的卷期年改為「Developmental Science 30(1):e70300，線上 2026-11-03、紙本 2027 年 1 月（CC BY）」。limitations 補：19 名先天組中 7 人兩實驗都做、5 人只做實驗 1、7 人只做實驗 2；13 名發展性組 6 人兩者都做；4 人改用舉手作答。",
+      "author_cache": {
+        "file": "f18src/PMC13731914.xml",
+        "sha256_prefix": "3fe47dc342eceb97",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H61-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5430802/",
+      "canonical_url": "https://doi.org/10.1038/s41598-017-01158-9",
+      "title": "How visual experience impacts the internal and external spatial mapping of sensorimotor functions",
+      "publisher": "Crollen V, Albouy G, Lepore F, Collignon O／Scientific Reports 7:1022（2017，開放）",
+      "version": "PMC 全文 XML",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（curl，工具預設標頭），經 Europe PMC 搜尋 API 以 DOI／PMCID 找到",
+      "reading_scope": "摘要、Participants、TOJ 方法（640 試次）、Results 的 TOJ 段；動作序列實驗只讀摘要層級。",
+      "locator": "Abstract；Methods Participants；Results: Temporal order judgment task",
+      "summary": "11 名早盲（9 名先天）與 11 名配對視力正常者做雙手時間順序判斷。交叉手讓視力正常者明顯變差，早盲者不受影響；整體斜率早盲 0.90、視力正常 0.59。部分視力正常者交叉時斜率甚至為負，常答成另一隻手先。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "早盲組含 2 名非先天（2 個月、3 歲失明）；第二個動作序列實驗兩組都能轉移，本題不採。 覆核 V21（2026-11-12）：limitations 補：已循 Europe PMC 搜尋讀到勘誤 PMC5715084（DOI 10.1038/s41598-017-16992-0），只更正作者所屬機構與作者貢獻聲明，不影響數據。summary 可加交叉前後斜率：視力正常 0.88→0.29、早盲 0.91→0.88。",
+      "author_cache": {
+        "file": "f18src/PMC5430802.xml",
+        "sha256_prefix": "46cff351d361041e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H61-S006",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1382015/",
+      "canonical_url": "https://doi.org/10.1371/journal.pbio.0040069",
+      "title": "The Cutaneous Rabbit Illusion Affects Human Primary Sensory Cortex Somatotopically",
+      "publisher": "Blankenburg F, Ruff CC, Deichmann R, Rees G, Driver J／PLoS Biology 4(3):e69（2006，開放）",
+      "version": "PMC 全文 XML",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（curl，工具預設標頭），經 Europe PMC 搜尋 API 以 DOI／PMCID 找到",
+      "reading_scope": "摘要、Introduction、Results 行為段與 fMRI 主要比較、Materials and Methods 受試者段。",
+      "locator": "Abstract；Results 第1段（90%／93%／87%）；Methods participants",
+      "summary": "在前臂腕部與近肘處快速依序刺激，受試者覺得中間沒被碰的位置也被碰了一下（皮膚兔）。掃描中錯覺試次有 90% 報告中間被碰，真的碰中間的試次是 93%；同樣三個位置換順序的對照試次 87% 正確說沒有。錯覺序列讓對側初級體感皮質在「錯覺位置」對應的區域活化，強度與真的碰到那裡相當。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "fMRI 活化與知覺相關；13 人參加、部分排除。中間皮膚麻醉仍有錯覺是引用舊研究，非本研究。 覆核 V21（2026-11-12）：limitations 改為：「13 人參加，2 人因沒有穩定感到錯覺被排除、1 人掃描技術問題，分析 10 人；前臂電刺激、脈衝間隔 50 ms；fMRI 活化與知覺相關。」",
+      "author_cache": {
+        "file": "f18src/PMC1382015.xml",
+        "sha256_prefix": "c28dbf3bb4df3ef4",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H61-S007",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1828626/",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0000333",
+      "title": "A Bayesian Perceptual Model Replicates the Cutaneous Rabbit and Other Tactile Spatiotemporal Illusions",
+      "publisher": "Goldreich D／PLoS ONE 2(3):e333（2007，開放）",
+      "version": "PMC 全文 XML",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（curl，工具預設標頭），經 Europe PMC 搜尋 API 以 DOI／PMCID 找到",
+      "reading_scope": "Introduction（錯覺清單與 Fig1）、Results 開頭的模型說明。未逐式核方程。",
+      "locator": "Introduction 第3–5段；Fig1 圖說；Results 第1段",
+      "summary": "同樣的兩段距離，走得快的那段感覺較短（tau 效應）；極快連續兩下會被感覺成同一點。作者的貝氏觀察者只假設「碰皮膚的東西通常動得慢」，就重現皮膚兔、tau、kappa 等錯覺：刺激來得快，腦就把距離縮短、把時間拉長。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "是模型與文獻整理；模型吻合不等於證明腦就是這樣算。 覆核 V21（2026-11-12）：limitations 補：tau 效應、兩下合點、kappa 效應在本篇是前言整理的他人研究（文獻 15–21），本篇自己的是模型。",
+      "author_cache": {
+        "file": "f18src/PMC1828626.xml",
+        "sha256_prefix": "9751322a11b9f2b9",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H61-001",
+      "question": "手沒交叉、只把手裡兩根棒子交叉，棒尖被敲的先後也會說反嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.stick_crossing_order_review",
+      "answer_target": "會有倒轉的傾向。手不交叉、只把握著的兩根棒子交叉，敲棒尖的先後判斷就出現倒轉傾向，最明顯的受試者也畫出 N 字曲線（文中附的是一位受試者的資料）。作者據此解釋：觸覺訊號先被連到棒尖所在的空間位置，才給時間順序，而不只是連到受器所在的手。",
+      "scope": "依北澤 2004 對 Yamamoto & Kitazawa 2001b 的敘述；只說「傾向」與一位受試者的圖，不說多數人都倒轉。R44004（L 形棒）原刊只讀到摘要，片中不引用其結果。",
+      "source_ids": [
+        "H61-S001"
+      ],
+      "source_locator": "F18-S001 p54 §4、Fig4",
+      "premise_status": "screened",
+      "notes": "覆核算 0.5 條。與 R44003（經 F18-S001）、F18-003 同一份文件，三者合計 2.0。 原提案 F18-002（目標 C7-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、改字：把「先後排在被碰的地方」從事實句改成作者解釋，並加上單一受試者的限定。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "排先後之前，腦先決定碰在空間哪裡",
+        "visual": "手不動、只把棒子交叉，被敲的是棒尖",
+        "seconds": [
+          25,
+          40
+        ]
+      }
+    },
+    {
+      "id": "H61-002",
+      "question": "同一隻手三根手指依序被碰，翻成掌心朝上，覺得順的方向會跟著變嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.one_hand_finger_order_external_space",
+      "answer_target": "單手食指、中指、無名指以 100 毫秒間隔依序被碰。文中的典型受試者掌心朝下時，某個方向的順序答對約九成、反方向約四成；手翻成掌心朝上後，答得好的換成手指上的相反順序（約 85%、原本那個降到 50%），也就是在空間裡仍是同一個方向。作者報告 6 名受試者中，這種跟著空間走的情形顯著較多。",
+      "scope": "轉述 Shibuya 等 2004（當時為學會摘要）的作者敘述；百分比是一位典型受試者；不說所有人都如此。",
+      "source_ids": [
+        "H61-S001"
+      ],
+      "source_locator": "F18-S001 p53 §3、Fig3",
+      "premise_status": "screened",
+      "notes": "覆核同意 0.5 條（同一份文件合計 2.0）。 原提案 F18-003（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用；把百分比補成原文的典型受試者數字，避免旁白說成「多數人答對九成」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連同一隻手，先後也排在空間裡",
+        "visual": "三指依序亮起；手翻面後指序反向、空間方向不變",
+        "seconds": [
+          25,
+          40
+        ]
+      }
+    },
+    {
+      "id": "H61-003",
+      "question": "同樣交叉雙手，為什麼有人幾乎全部說反，有人幾乎不受影響？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.crossed_reversal_individual_variability",
+      "answer_target": "42 人的研究中，手不交叉時間隔超過 100 毫秒大多答對；交叉時有人超過 200 毫秒仍判反，有人整條曲線倒過來，也有人幾乎不受影響，倒轉值從 0 到 1 都有，而且同一個人隔一段時間重測結果很接近。倒轉較小的人，在頂葉、中央後回等 10 個腦區的皮質結構不同（較薄、面積較大、較皺），但這只是相關。",
+      "scope": "個別差異穩定、腦結構只是相關；不說腦結構決定、不分男女（差異不顯著）、不說哪一種人比較聰明。",
+      "source_ids": [
+        "H61-S002"
+      ],
+      "source_locator": "F18-S002 Abstract；Results 首段；Fig2",
+      "premise_status": "screened",
+      "notes": "覆核算 1 條：個別差異（含重測穩定）0.5、腦結構相關 0.5。交叉時倒轉、N 字這一層已在 R44003（經 F18-S001）計過，不重算。 原提案 F18-004（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5：行為現象與 R44003 同一件事。這是本題唯一以多人原始資料量到倒轉現象的來源，寫稿時開場的「真的有人整個說反」應以本篇的分布圖為準，而不是北澤文中的單一受試者圖。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "倒轉是常態現象，但人差很多",
+        "visual": "42 個人的倒轉值從 0 到 1 排一排",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H61-004",
+      "question": "是不是左右腦的手區互相干擾，或是眼睛看到手交叉才搞錯？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.crossing_hand_foot_blindfold_review",
+      "answer_target": "綜述整理：一手和對側的腳各被碰一下，把手臂跨過那條腿時，也出現和雙手交叉相似的代價，而手和腳在左右腦的感覺區並沒有像兩隻手那樣直接相連，所以不是兩邊手區互相干擾；在黑暗中或矇眼時，觸覺也照樣會被對到外部空間，所以也不是當下用眼睛看到手的位置才出錯。",
+      "scope": "綜述轉述 Schicke & Röder 2006、Kóbor 2006 等原研究，本輪未讀原文；片中說「研究整理指出」。",
+      "source_ids": [
+        "H61-S003"
+      ],
+      "source_locator": "F18-S003 non-homologous limbs 段與 Fig2；Developmental aspects 首句",
+      "premise_status": "screened",
+      "notes": "覆核同意 0.5 條（綜述）。綜述裡盲人與白內障者的段落不另計，避免與 F18-008、F18-009 重複。 原提案 F18-005（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、改問與改答：兩個證據各排除一種解釋，不能合成一個。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是當下眼睛看的問題",
+        "visual": "手臂跨過對側大腿的示意",
+        "seconds": [
+          25,
+          40
+        ]
+      }
+    },
+    {
+      "id": "H61-005",
+      "question": "手臂上明明沒被碰的位置，為什麼腦裡的身體地圖也亮了？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.saltation_si_illusory_location",
+      "answer_target": "研究者在前臂近手腕與近手肘處用電脈衝快速依序刺激（腕、腕、肘），受試者覺得中間沒被碰的位置也被碰了一下。掃描中，錯覺試次有 90% 回報中間被碰，真的碰中間是 93%；同樣三個位置換成不會產生錯覺的順序，87% 正確說中間沒有。fMRI 顯示初級體感皮質裡對應「中間那一點」的區域活化，強度與真的碰到相當。研究者稱這是「事後才定位」的例子：後面的刺激改寫了前面刺激被感覺到的位置。",
+      "scope": "fMRI 是相關；13 人參加，2 人因沒有穩定感到錯覺被排除、1 人技術問題，分析 10 人；電刺激、50 毫秒間隔。片中不可說「人人都會」。",
+      "source_ids": [
+        "H61-S006"
+      ],
+      "source_locator": "F18-S006 Abstract；Results 第1段",
+      "premise_status": "screened",
+      "notes": "覆核算 1.5 條：體感皮質在錯覺位置活化 1；行為比例 0.5（皮膚兔現象本身已由 G578（可成題）的 R44005 在棒身版本講過，觀眾會覺得看過）。 原提案 F18-006（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5、補限制。答案與 R44005 確實不同（R44005 是兩指托棒時觸感被放到棒身；本篇是皮膚上的錯覺位置在初級體感皮質上看得到，且屬於「後來的刺激改寫前面的位置」），可以同時存在；但 G578 已排定的第四章就有「兩指托鋁條、觸感被放在沒被敲的棒身中段」，本題不能用「沒被碰的地方也有感覺」當驚奇點，要直接從「哪裡要等下一下來才決定」切入。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「哪裡」要等下一下來才決定",
+        "visual": "腕到肘三點，只有兩點真的被碰，第三點在腦圖上亮起",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "H61-006",
+      "question": "兩下來得越快，為什麼感覺距離越近？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.slow_motion_prior_length_contraction",
+      "answer_target": "早年的研究發現，同樣兩段距離，走得快的那段感覺較短，極快的兩下甚至會合成一點。一篇模型研究只假設「碰到皮膚的東西通常動得慢」，就能重現這些錯覺：刺激來得太快，模型就把距離縮短、把時間拉長，讓速度看起來合理。",
+      "scope": "tau、合點是前言整理的他人研究；模型吻合，不證明腦的實作。",
+      "source_ids": [
+        "H61-S007"
+      ],
+      "source_locator": "F18-S007 Introduction 第3–5段；Fig1；Results 第1段",
+      "premise_status": "screened",
+      "notes": "覆核算 0.5 條：模型 0.5（照第十輪 S10002 的先例，機制只是模型時算 0.5）；前言的 tau、合點是整理他人研究，併在這 0.5 內不另計。 原提案 F18-007（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5。它在本題的角色是替 F18-006 補一句「為什麼後一下會改寫前一下」，不能單獨撐一章。另外 tau 效應答的是「感覺距離多遠」，與作者自己以「答的是距離大小、會讓題目分岔」為由移出的 R44007 同類，只能一句帶過。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "時間與位置互相拉扯",
+        "visual": "兩條等長線段，快的那段被壓短",
+        "seconds": [
+          30,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H61-007",
+      "question": "天生看不見、後來開刀重見光明的人，交叉手還會把先後說反嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.cataract_reversal_crossing_automaticity",
+      "answer_target": "一項 2026 年的研究找來 19 名先天雙眼緻密白內障、出生後 2 到 252 個月才開刀的人（部分人只做其中一個實驗）。只有觸覺配對時（實驗 1，12 人），交叉手不讓他們出錯，像先天盲人；把觸覺配對混在聲音與聲音－觸覺配對裡時（實驗 2，14 人），交叉手就明顯讓他們出錯，和視力正常的同齡者沒有顯著差別。兒童期才得白內障的人兩種情況都和一般人一樣。作者的結論：早年的視覺經驗決定的是會不會「自動」把觸覺放進外部空間，而不是有沒有這個能力。",
+      "scope": "小樣本、多數在印度受測；兩個實驗只有 7 人重疊；不說盲人沒有空間感，也不說開刀太晚就永遠做不到。",
+      "source_ids": [
+        "H61-S004"
+      ],
+      "source_locator": "F18-S004 Abstract；§2.1；§2.3；Fig1",
+      "premise_status": "screened",
+      "notes": "覆核算 1.5 條：「重見光明者在純觸覺時像先天盲人」0.5（方向與 F18-009 的先天盲人結果相同）；「混入聲音後交叉代價出現」1。 原提案 F18-008（目標 C7-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5、改樣本描述。這是轉折二真正改變結論的那一半（能力還在，缺的是自動化），也是本題最新、最好的來源；已正式刊出（epub 2026-11-03），公開全文可讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "早年視覺教會腦「自動」查外部地圖",
+        "visual": "同一組人兩種情境：只有震動 vs 混了喇叭聲",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "H61-008",
+      "question": "先天失明的人做交叉手測驗，為什麼反而比看得見的人準？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.early_blind_no_crossing_cost_tactile_order",
+      "answer_target": "11 名早盲者（9 名先天）與 11 名配對的視力正常者比較：視力正常者交叉手後表現大幅下降（判斷曲線的斜率從 0.88 掉到 0.29），有些人甚至常答成另一隻手先；早盲者交叉與不交叉幾乎一樣（0.91 對 0.88）。研究者說這複製了 2004 年先天盲人的結果。",
+      "scope": "早盲組含 2 名非先天（2 個月、3 歲）；第二個動作序列實驗本題不採。",
+      "source_ids": [
+        "H61-S005"
+      ],
+      "source_locator": "F18-S005 Abstract；Results: TOJ",
+      "premise_status": "screened",
+      "notes": "覆核同意 1 條。 原提案 F18-009（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用；改用兩組各自交叉前後的斜率，避免「整體比較準」被誤解成盲人觸覺普遍較好。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "少了自動查地圖，反而不被交叉騙",
+        "visual": "兩組長條：正常組交叉時掉、早盲組持平",
+        "seconds": [
+          30,
+          45
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "H61-NA001",
+      "question": "雙手交叉後，兩下觸碰的先後為什麼會整個倒過來，間隔拉長又答對？",
+      "existing_ids": [
+        "R44003"
+      ],
+      "source_ids": [],
+      "reason": "非作者覆核 V21（2026-11-12）退回：同答案：R44003 問的就是這一題，答案也相同，只是池中只讀到摘要與勘誤而計 0。正確的處理是把 F18-S001 當成 R44003 的可讀來源（見 source_fixes），R44003 的答案補上單手對照與「典型受試者」的限定，計 1 條；不另立新核心。北澤 2004 是通訊作者本人以講演為底的 5 頁文章，敘述 2001a、2001b 與 Shibuya 2004 三項研究，每一項只附一位典型受試者的圖、沒有組別統計（2001a 的組別說法只有摘要一句「四分之一」）。作者把這份文件算 2.5 條，我改為 2.0 條：R44003（經 F18-S001）1、F18-002 0.5、F18-003 0.5。 原提案 F18-001。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回"
+    },
+    {
+      "id": "H61-NA002",
+      "question": "換了夜裡照花的光，天蛾還認得原先受訓的顏色嗎？（R37008 補讀）",
+      "existing_ids": [
+        "R37008"
+      ],
+      "source_ids": [],
+      "reason": "Kelber 等 2002 Nature 原刊付費、Lund 典藏（LUP record 131382）無附檔；作者 2003 ICB 綜述在 bioone（Incapsula）與 OUP（Cloudflare）被擋；2004 J Exp Biol 色恆常原研究在 journals.biologists.com 被 Cloudflare 擋。PMC9441236（昆蟲色恆常綜述）Europe PMC 全文 XML 回 500。 原提案 F18-NA001。",
+      "reentry_condition": "能從公開連結讀到 Kelber 2002 或 2004 JEB 全文時，可作 C7-02 第五章的第二個暗光例子（約 +1 條）。",
+      "reading_status": "abstract_only"
+    },
+    {
+      "id": "H61-NA003",
+      "question": "扇貝眼底的方形鳥嘌呤晶片怎麼拼成成像鏡（R37009 補讀）",
+      "existing_ids": [
+        "R37009"
+      ],
+      "source_ids": [],
+      "reason": "WebSearch 找到的 Weizmann 研究室頁 PDF（weizmann.ac.il）curl 回空回應、WebFetch 回 503；未讀到全文。改用 F18-011、F18-012 兩篇開放原研究承擔扇貝章節。 原提案 F18-NA002。",
+      "reentry_condition": "讀到 Palmer 2017 全文後，可補晶片形狀與鏡面多層結構（約 +1 條），但與 F18-011 物種不同，要分開講。",
+      "reading_status": "abstract_only"
+    },
+    {
+      "id": "H61-NA004",
+      "question": "嚴重視障的嬰兒，觸覺定位會受手的擺放影響嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Gori 等 2021 Curr Biol（PMC8612739）只讀摘要；答案與 F18-008、F18-009 同方向（早年視覺影響觸覺的外部座標），放進來會讓第七章變成同結論的清單。 原提案 F18-NA003。",
+      "reentry_condition": "若要把 C7-01 拉長或替換 F18-009，讀其 Results 後可作嬰兒版本。",
+      "reading_status": "abstract_only"
+    },
+    {
+      "id": "H61-NA005",
+      "question": "手臂交叉讓先後倒轉的 L 形棒版本（R44004 補讀）",
+      "existing_ids": [
+        "R44004"
+      ],
+      "source_ids": [],
+      "reason": "J Neurophysiol 2005 經 DOI 轉到 journals.physiology.org，回 Cloudflare 403；未繞過。typeset.io 上有第三方 PDF，授權不明，未使用。 原提案 F18-NA004。",
+      "reentry_condition": "能從出版社或作者典藏的公開連結讀到全文時，R44004 可從 0 升到約 1 條，C7-01 餘裕增加。",
+      "reading_status": "abstract_only"
+    }
+  ]
+}

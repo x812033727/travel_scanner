@@ -3,8 +3,8 @@
   "slug": "tai-nainai-e003",
   "format": "drama",
   "target_minutes": [
-    1.7,
-    3.2
+    2.0,
+    3.5
   ],
   "voice": {
     "provider": "gemini",
@@ -22,7 +22,7 @@
     {
       "id": "fubo",
       "name": "福伯",
-      "appearance": "East Asian old man of eighty-eight, thin and very upright, very short white hair, a lean lined face with respectful steady eyes, a neatly ironed grey Chinese-style jacket with fabric frog buttons, black trousers, black cloth shoes, the silver chain of an old pocket watch running from a button to his jacket pocket",
+      "appearance": "East Asian old man of eighty-eight, thin and very upright, very short white hair, a lean lined face with respectful steady eyes, a neatly ironed light blue-grey Chinese-style jacket with fabric frog buttons (always this same light blue-grey, never charcoal or navy), black trousers, black cloth shoes, the silver chain of an old pocket watch running from a button to his jacket pocket",
       "voice": {
         "provider": "gemini",
         "name": "Enceladus",
@@ -41,7 +41,7 @@
       "shot_looks": [
         {
           "id": "shouyi",
-          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder, wearing a loose plain off-white cotton burial robe with a high stand-up collar and fabric frog buttons fastened to the throat, long sleeves to the wrists and loose trousers to the ankles, white cloth shoes, the thick old silver ring on her left ring finger with the seal face toward the palm, back very straight, hands folded in front of her waist"
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder, wearing a long loose plain off-white cotton burial robe that falls to mid-calf, with a high stand-up collar and fabric frog buttons fastened to the throat and long sleeves to the wrists, matching loose off-white trousers showing below it at the ankles, no cape, no shawl, no shoulder flap, nothing over the robe, white cloth shoes, the thick old silver ring on her left ring finger with the seal face toward the palm, back very straight, hands folded in front of her waist"
         },
         {
           "id": "wrinkle",
@@ -81,7 +81,7 @@
         },
         {
           "id": "damp",
-          "appearance": "East Asian high-school girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, her bangs and the shoulders of her navy blazer damp and water marks on her cheeks, the blazer one size too big and buttoned over a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, dry and fully covering, white socks and black school shoes, no badge or lettering"
+          "appearance": "East Asian high-school girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, her bangs and the shoulders of her navy blazer damp, her face clean and dry, the blazer one size too big and buttoned over a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, dry and fully covering, white socks and black school shoes, no badge or lettering"
         }
       ]
     }
@@ -112,12 +112,41 @@
     "data": {
       "headline": "阿福\n跪下了",
       "tag": "恁祖媽今年18",
-      "shot": "c13"
+      "shot": "c15"
     }
   },
   "scenes": [
     {
       "id": "c01",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night, angled from the cabinet side toward the lattice doors on the right half of the frame; a straw cushion corner in the lower-left foreground. Exactly one person in the whole frame: Fu Bo, black cloth shoes, three-quarters from behind, in the first frame one hand on each half-open door, only the dark courtyard visible in the gap between them, the paper panels dark. On the doors an old-fashioned palm-length brass slide bolt lock mounted at the centre of the pair of lattice doors, its body passing through the gap between the doors, a keyhole on each side, plain surface with no lettering; the small old brass key, as long as a finger, with a plain round bow stands in its inner keyhole. From the first second he swings both doors shut, leaving no gap, and his right hand goes straight to the key. Warm red candlelight from off screen on the side of his face: brows squeezed together, eyes red, lower lip trembling, no smile at any moment, not",
+        "camera": "Medium shot, slow push in",
+        "characters": [
+          "fubo"
+        ],
+        "motion": "Fu Bo swings both lattice doors shut and reaches for the key in the inner lock."
+      },
+      "chapter": "三十個抽屜",
+      "action_seconds": 2
+    },
+    {
+      "id": "c02",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night. From the first frame to the last the frame is filled by an old-fashioned palm-length brass slide bolt lock mounted at the centre of the pair of lattice doors, its body passing through the gap between the doors, a keyhole on each side, plain surface with no lettering, seen from inside, and an old man's right hand in a light blue-grey Chinese-jacket cuff, its fingers on the small old brass key, as long as a finger, with a plain round bow, standing in the inner keyhole; around it the dark door panels. Warm red candlelight from out of frame. In the first second the fingers turn the key once, pull it out and close round it into a tight fist, knuckles whitening; the fist trembles once. Only this one hand is in the frame. End: the key held hidden inside the trembling fist.",
+        "camera": "Insert, locked",
+        "characters": [
+          "fubo"
+        ],
+        "motion": "Fu Bo's hand turns the key in the brass lock, pulls it out and clenches it in a trembling fist."
+      },
+      "action_seconds": 2
+    },
+    {
+      "id": "c03",
       "template": "shot",
       "lines": [
         {
@@ -128,52 +157,72 @@
         }
       ],
       "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night, looking from inside toward the doorway: Fu Bo in his grey Chinese jacket stands facing the two lattice doors, an old finger-long brass key with no markings already in the keyhole of the plain brass bolt lock on their inner side; beyond the paper panels only the dark of the courtyard; warm red candlelight from off screen falls on his face. He is the only person in the frame, not smiling. He pulls the two doors shut with both hands, turns the key once in the inner keyhole, pulls it out and holds it in his right hand, and turns around to face the hall. Fu Bo speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, his voice trembling.",
-        "camera": "medium close-up, slow push-in",
-        "characters": [
-          "fubo"
-        ]
-      },
-      "chapter": "三十個抽屜"
-    },
-    {
-      "id": "c01b",
-      "template": "shot",
-      "lines": [],
-      "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night: the first frame is tight on an old man's right hand in a grey Tang-jacket cuff, an old bronze-coloured spare key just pulled from the lock pinched in his palm. Behind the hand the closed lattice doors are out of focus, the paper panels dark with the night courtyard outside; warm red-candle light falls on the hand from out of frame, and the oil lamp is not in the frame. The fingers tighten on the key until the knuckles whiten, and the hand trembles once. Only the hand is in the frame; no face, no mouth.",
-        "camera": "insert, extreme close-up on the hand, locked",
+        "prompt": "Inside the ancestral hall of the old Shen house at night; behind him only the closed lattice doors, their paper panels dark. Exactly one person in the whole frame: Fu Bo, framed from the chest up, his right fist clenched round the key at his chest. From the first second he turns round from the doors toward the young woman off screen left and settles in three-quarter profile, eyes on her. Brows pulled up and together, eyes red and wet, jaw tight, lips trembling between words, no smile at any moment, not even at the end of the shot. Fu Bo speaks a short Mandarin line, 「您要是她，就讓我看一樣。」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, his voice shaking, his lips, jaw and cheeks moving clearly with every syllable. Both lattice doors stay shut; no open doorway anywhere. End: turned toward screen left, the fist at his chest.",
+        "camera": "Close-up, slow push in",
         "characters": [
           "fubo"
         ],
-        "motion": "The fingers tighten on the key until the knuckles whiten, and the hand trembles once."
-      },
-      "action_seconds": 1
+        "motion": "Fu Bo turns round from the doors toward the woman off screen left and speaks."
+      }
     },
     {
-      "id": "c02",
+      "id": "c04",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night, high and wide from inside the closed doors, looking north. Exactly two people in the whole frame. Right foreground: Fu Bo's back, face unseen, and a strip of door frame. On screen left Shen Yuetang, in the mid-calf off-white burial robe and white cloth shoes, stands before the large old dark red-brown wooden medicine cabinet, about 180 cm wide and 150 cm tall, a little taller than her shoulders, its small unlabeled drawers with brass ring pulls, edges worn smooth on the left wall, several drawers pulled out about half a palm, uneven. A straw cushion mid-floor. At the back the altar, the brass oil lamp in the middle, two half-burnt red candles. Back right, in shadow, a round bronze mirror on a wooden stand, reflecting no one, only a little warm glow, and the one old reclining chair (a dark wooden frame, a long woven cane seat, a tall woven cane backrest and flat wooden armrests), empty. The warm light of the lamp and candles on t",
+        "camera": "Wide shot, high angle, slow push in",
+        "characters": [
+          "yuetang-18",
+          "fubo"
+        ],
+        "motion": "Shen Yuetang steps out from the medicine cabinet toward the old man and folds her hands.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
+      },
+      "action_seconds": 3
+    },
+    {
+      "id": "c05",
       "template": "shot",
       "lines": [
         {
           "id": "t003002",
           "speaker": "yuetang-18",
           "text": "阿福，你剛才為什麼替我擋阿凱？",
-          "emotion": "shouyi，平靜"
+          "emotion": "平靜"
         }
       ],
       "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night, seen from the doorway looking north, a round straw cushion on the floor in the foreground: Shen Yuetang in the off-white burial robe and white cloth shoes, her thick black braid over her right shoulder, stands on screen left in front of the large old dark red-brown medicine cabinet of thirty drawers, hands folded in front of her waist; behind, on the altar, the brass oil lamp burns with a warm orange-gold flame; on screen right the round bronze mirror and the empty reclining chair are in shadow. She is the only person in the frame, not smiling. She turns slowly to face the doorway, back straight, looking first into someone's eyes there and then at the key in his hand. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, calm.",
-        "camera": "medium shot, slow push-in",
+        "prompt": "Inside the ancestral hall of the old Shen house at night. Exactly two people in the whole frame. Over Fu Bo's left shoulder: his light blue-grey shoulder and white hair soft at the right frame edge, face unseen. On screen left Shen Yuetang, hands folded at her waist; behind her only the drawers and brass rings of the medicine cabinet. In the first second she takes half a step toward him; her eyes go to his eyes, narrow slightly as they drop to his fist with the key, and come back up. Brows drawn in, chin raised, a slow breath through the nose. Shen Yuetang, turned to Fu Bo at screen right in three-quarter profile, speaks a short Mandarin line, 「阿福，你剛才為什麼替我擋阿凱？」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, quietly, her lips, jaw and cheeks moving clearly with every syllable. Fu Bo's lips stay closed. Both lattice doors stay shut; no open doorway anywhere. End: her eyes holding his.",
+        "camera": "Over-the-shoulder close-up, slow push in",
         "characters": [
-          "yuetang-18"
+          "yuetang-18",
+          "fubo"
         ],
+        "motion": "Shen Yuetang steps half a step toward the old man and asks him a question.",
         "character_looks": {
           "yuetang-18": "shouyi"
         }
       }
     },
     {
-      "id": "c03",
+      "id": "c06",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night; behind him only the closed lattice doors, their paper panels dark. Exactly one person in the whole frame: Fu Bo; the first frame is already tight on his face and shoulders. In the first half second his shoulders jolt; he takes one small step forward and stops, the fist with the key rising to his chest; in three-quarter profile, eyes on her off screen left, never looking at the camera. Brows shoot up, eyes widen and fill with tears, mouth falls slightly open, he swallows hard, no smile at any moment, not even at the end of the shot. He makes no words. Both lattice doors stay shut; no open doorway anywhere. End: one step nearer, the fist at his chest.",
+        "camera": "Close-up, locked",
+        "characters": [
+          "fubo"
+        ],
+        "motion": "Fu Bo jolts at his old name and takes one small step forward."
+      },
+      "action_seconds": 2
+    },
+    {
+      "id": "c07",
       "template": "shot",
       "lines": [
         {
@@ -184,73 +233,140 @@
         }
       ],
       "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night, looking toward the doorway: Fu Bo in his grey Chinese jacket, the old brass key pinched in his right hand; behind him only the closed lattice doors. He is the only person in the frame, not smiling, his eyes red. Hearing her call him by his old name, his shoulders jolt; he takes one step forward and stops, the hand holding the key trembling. Fu Bo speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, his voice trembling.",
-        "camera": "close-up, slow push from chest to face",
+        "prompt": "Inside the ancestral hall of the old Shen house at night. Exactly two people in the whole frame. Over Shen Yuetang's right shoulder: her off-white collar and black braid soft at the left frame edge, face unseen. On screen right Fu Bo, his right fist with the key trembling at his chest; behind him only the closed lattice doors, their paper panels dark. Brows pulled up and together, eyes red and brimming, lips trembling between words, quick shallow breath, no smile at any moment, not even at the end of the shot. Fu Bo, turned to Shen Yuetang at screen left, speaks a short Mandarin line, 「我鎖門的時候，老太太在裡面；開門出來的，卻是妳。」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, his voice shaking, his lips, jaw and cheeks moving clearly with every syllable; his head leaning forward on the last words; after the line he gasps once. Her lips stay closed. Both lattice doors stay shut; no open doorway anywhere. End: the fist ",
+        "camera": "Over-the-shoulder close-up, slow push in",
         "characters": [
+          "yuetang-18",
           "fubo"
-        ]
+        ],
+        "motion": "Fu Bo leans toward her, his fist shaking, as he answers her.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
       }
     },
     {
-      "id": "c04",
+      "id": "c08",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night. Exactly one person in the whole frame: Shen Yuetang; behind her only the drawers and brass rings of the medicine cabinet. In three-quarter profile, eyes on him off screen right, never looking at the camera. In the very first second she draws one deep breath and steps straight back until her back meets the medicine cabinet, her face still toward him. Brows tightening, nostrils flaring with the breath, lips pressed together. Her lips stay closed. Both lattice doors stay shut; no open doorway anywhere. End: her back against the cabinet.",
+        "camera": "Close-up, locked",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "Shen Yuetang steps straight back until her back meets the cabinet, her face still on the old man.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
+      },
+      "action_seconds": 2
+    },
+    {
+      "id": "c09",
       "template": "shot",
       "lines": [
         {
           "id": "t003004",
           "speaker": "yuetang-18",
           "text": "這櫃子是我親手打的，手比眼睛記得牢。",
-          "emotion": "shouyi，平靜"
+          "emotion": "平靜"
         }
       ],
       "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night: from behind Fu Bo's left shoulder, his shoulder and the back of his very short white hair soft in the foreground at the right of the frame; on screen left Shen Yuetang in the off-white burial robe stands in front of the old medicine cabinet of thirty drawers with brass ring pulls and no labels. Two people. Without turning round she steps half a step back until her back is almost against the cabinet, reaches her right hand behind her, and her fingertips touch the brass ring of the top-left drawer; her eyes never leave him. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, calm. Fu Bo keeps his mouth closed.",
-        "camera": "over-the-shoulder medium shot, slow push-in",
+        "prompt": "Inside the ancestral hall of the old Shen house at night. Exactly two people in the whole frame. Over Fu Bo's left shoulder: his light blue-grey shoulder and white hair soft at the right frame edge, face unseen. On screen left Shen Yuetang stands with her back against the old medicine cabinet, about 180 cm wide and 150 cm tall, a little taller than her shoulders, facing him, both hands behind her back against the drawers; several drawers around her pulled out about half a palm, uneven. From the first second, head unturned, the fingertips of her hands behind her find the brass rings of the drawers at her back. Eyes on his face the whole shot, brows gathered, jaw lifted, a small nod on the last words. Shen Yuetang, turned to Fu Bo at screen right, speaks a short Mandarin line, 「這櫃子是我親手打的，手比眼睛記得牢。」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, her lips, jaw and cheeks moving clearly with every syllabl",
+        "camera": "Over-the-shoulder medium shot, low angle, slow push in",
         "characters": [
           "yuetang-18",
           "fubo"
         ],
+        "motion": "Shen Yuetang, her back to the cabinet, finds the drawer rings behind her without looking.",
         "character_looks": {
           "yuetang-18": "shouyi"
         }
       }
     },
     {
-      "id": "c05",
+      "id": "c10",
       "template": "shot",
       "lines": [],
       "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night: the first frame is tight on the front of the old dark red-brown medicine cabinet, brass ring pulls, no labels on any drawer, and a young right hand in an off-white burial-robe cuff, reaching backwards, on the brass ring of the top-left drawer; warm orange-gold lamplight from screen right. The hand pulls each drawer out half an inch and pushes it back, one after another, six along the row, then down to the next row and the next, faster and faster without missing one, the wood knocking like a drumbeat. At the bottom two rows she squats slowly and steadily: only the hem of the robe and the trouser legs drop into the frame; the hand keeps pulling and pushing. Her face stays out of the frame. No mouth in the frame.",
-        "camera": "close-up on the drawers, tracking sideways and down with the hand",
+        "prompt": "Inside the ancestral hall of the old Shen house at night. The first frame is already tight, at waist height, on a young woman's two hands held behind her back against the front of the old dark red-brown medicine cabinet, its small unlabeled drawers with brass ring pulls; off-white burial-robe cuffs, an old silver ring on the left ring finger, the right hand bare with no ring; the back of her robe soft at the top edge. Warm red candlelight from the altar off screen right lights every drawer and brass ring clearly. From the very first second both hands slide sideways along the drawers behind her, the fingers hooking each drawer that sticks out and pushing it flush as they pass, faster and faster. The camera moves slowly sideways with the hands. Only her hands and the drawers are in the frame. End: the drawers the hands have passed all flush.",
+        "camera": "Insert, slow sideways move with the hands",
         "characters": [
           "yuetang-18"
         ],
-        "motion": "Reaching backwards, the hand pulls each drawer out half an inch and pushes it back, row after row, faster and faster, the camera following it sideways and down.",
+        "motion": "Her two hands behind her back slide along the cabinet, pushing each protruding drawer flush.",
         "character_looks": {
           "yuetang-18": "shouyi"
         }
       },
-      "action_seconds": 6
+      "action_seconds": 3
     },
     {
-      "id": "c06",
+      "id": "c11",
       "template": "shot",
       "lines": [],
       "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night, seen low from the door side looking north, a round straw cushion on the floor in the foreground. Two people: on screen left Shen Yuetang in the off-white burial robe squats with her back to the old medicine cabinet, her right hand reaching back to push in the rightmost drawer of the bottom row; in the foreground on screen right Fu Bo seen from behind in his grey Chinese jacket, standing just inside the door; on the altar behind, the brass lamp's warm orange-gold flame. The last drawer clicks shut and all thirty drawers stand perfectly flush. She rises slowly and steadily, draws her hand back and folds both hands in front of her waist. Fu Bo freezes; the key in his right hand nearly slips from his fingers. Everyone's mouth is closed.",
-        "camera": "low-angle wide shot, slow push-in",
+        "prompt": "Inside the ancestral hall of the old Shen house at night, seen from waist height on the old man's side; the edge of the straw cushion in the lower-right foreground. Exactly one person in the whole frame: Shen Yuetang stands with her back against the medicine cabinet, both hands behind her on the drawers; the drawers at her shoulder height already flush, some lower ones still pulled out about half a palm. From the first second, back straight against the cabinet, she crouches slowly, knees together, the robe hem gathered on her knees, her hands behind her pushing the lower drawers flush on the way down. In three-quarter profile, eyes on the old man off screen right the whole time, never on the drawers; brows gathered, lips pressed, nostrils flaring with each breath. Both lattice doors stay shut; no open doorway anywhere. Candlelight from the altar off screen right lights every drawer and brass ring clearly. End: crouched low, hands still behind her.",
+        "camera": "Medium shot, low angle, tilt down",
         "characters": [
-          "yuetang-18",
-          "fubo"
+          "yuetang-18"
         ],
-        "motion": "The last drawer clicks shut, all thirty flush; she rises slowly and folds her hands while the old man freezes.",
+        "motion": "Shen Yuetang crouches with her back to the cabinet, her hands behind her pushing the lower drawers flush.",
         "character_looks": {
           "yuetang-18": "shouyi"
         }
       },
-      "action_seconds": 4
+      "action_seconds": 3
     },
     {
-      "id": "c07",
+      "id": "c12",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night; behind him only the closed lattice doors, their paper panels dark. Exactly one person in the whole frame: Fu Bo, in three-quarter profile from the shoulders up, his right fist with the key just below his chin; eyes on her low off screen left, never looking at the camera. In the first second he freezes, and his right fist round the key clenches tighter and tighter, knuckles whitening, the whole fist trembling. Eyes wide open, brows high and pulled together, forehead creased, mouth hanging open with the corners pulled down, breath held, not smiling. He makes no words. Both lattice doors stay shut; no open doorway anywhere. End: the fist clenched and trembling.",
+        "camera": "Close-up, locked",
+        "characters": [
+          "fubo"
+        ],
+        "motion": "Fu Bo freezes, his fist round the key clenching tighter and trembling."
+      },
+      "action_seconds": 2
+    },
+    {
+      "id": "c13",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night, low, looking west at the old medicine cabinet. The first frame is tight on one drawer in the bottom row of the large old dark red-brown wooden medicine cabinet, sticking out about half a palm, with its brass ring pull, and a young woman's fingertips pressed on its front from behind her back; warm red candlelight from the altar off screen right lights the drawer fronts and brass rings clearly. In the first second the fingers push it in with a click and it sits flush. Then the camera pulls back: the whole front of the medicine cabinet, about 180 cm wide and 150 cm tall, its unlabeled drawers with brass ring pulls all flush in one flat plane, and Shen Yuetang in the mid-calf off-white burial robe and white cloth shoes crouching with her back against it. She is the only person in the frame. In three-quarter profile her eyes are lifted to the old man beyond the right edge of the frame, never on the drawers; brows easing, lips closed,",
+        "camera": "Close-up pulling back to a wide shot, low angle",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "One bottom drawer clicks flush, the camera pulls back to the whole flush cabinet, and she begins to rise.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
+      },
+      "action_seconds": 3
+    },
+    {
+      "id": "c14",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night, seen from floor height; the straw cushion in the left foreground; behind him only the closed lattice doors, their paper panels dark. Exactly one person in the whole frame: Fu Bo, black cloth shoes, standing on open floorboards beside the cushion, nothing in front of him, his right fist round the key. In the first second his knees give way; he sinks and drops onto both knees on the wooden floor with a thud, his left palm flat on the boards and his right fist, still clenched round the key, pressed on the boards. Brows knotted up, tears welling over, mouth corners pulled down, chin trembling. His lips stay closed. Both lattice doors stay shut; no open doorway anywhere. End: kneeling on both knees, hands on the floor.",
+        "camera": "Medium shot, low angle, tilt down",
+        "characters": [
+          "fubo"
+        ],
+        "motion": "Fu Bo drops onto both knees, his left palm flat and his right fist on the floorboards."
+      },
+      "action_seconds": 2
+    },
+    {
+      "id": "c15",
       "template": "shot",
       "lines": [
         {
@@ -261,240 +377,62 @@
         }
       ],
       "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night, seen from floor level: Fu Bo in his grey Chinese jacket, the old brass key in his right hand; behind him the closed lattice doors. He is the only person in the frame, not smiling, tears running down his face. His knees give way and he sinks slowly to kneel on the wooden floor, both hands pressing the floor, the key still in his right fist, and lifts his face to look up toward screen left. Fu Bo speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, choked with tears.",
-        "camera": "low-angle medium shot from floor level, slow push-in",
+        "prompt": "Inside the ancestral hall of the old Shen house at night, seen from just above the floor; behind him only the closed lattice doors, their paper panels dark. Exactly one person in the whole frame: Fu Bo, kneeling on both knees on the open floorboards beside the straw cushion, his left palm flat on the boards and his right fist with the key pressed on the boards. From the first second he lifts his face toward the young woman standing off screen upper left, in three-quarter profile, eyes on her. Tears run down his lined cheeks, brows squeezed up together, lips trembling, a sharp sobbing breath, no smile at any moment, not even at the end of the shot. Fu Bo speaks a short Mandarin line, 「老太太……真的是您。阿福不敢認啊。」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, choked with tears, his lips, jaw and cheeks moving clearly with every syllable; on the last words his head bows down again. Both lattice doors stay shut;",
+        "camera": "Medium close-up, low angle, slow push in",
         "characters": [
           "fubo"
-        ]
-      }
-    },
-    {
-      "id": "c08",
-      "template": "shot",
-      "lines": [],
-      "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night: the first frame is tight on the brass oil lamp on the altar: a small brass oil cup under a clear glass chimney on a plain square dark red-brown wooden base. The flame is knuckle-high and warm orange-gold. It grows steadily half a step taller, to about one and a half knuckles, and its warm orange-gold light spreads off the altar to the left, toward the brass ring pulls of the medicine cabinet's lowest row of drawers. No glow halo, no sparks. Nobody in the frame.",
-        "camera": "extreme close-up on the lamp, locked",
-        "characters": [],
-        "motion": "The warm orange-gold flame grows steadily half a step taller and its light spreads to the left."
-      },
-      "action_seconds": 4
-    },
-    {
-      "id": "c09",
-      "template": "shot",
-      "lines": [
-        {
-          "id": "t003006",
-          "speaker": "yuetang-18",
-          "text": "阿福，起來。你八十八了，跪不得。",
-          "emotion": "shouyi，低、慢，像老人家"
-        }
-      ],
-      "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night: looking down from behind Shen Yuetang's right shoulder, her shoulder, her thick black braid and her folded hands in the off-white burial robe soft in the foreground at the left of the frame; at the lower right Fu Bo in his grey Chinese jacket kneels on the floor, looking up at her; warm orange-gold lamplight. Two people. She looks down at him, steps forward once, bends and reaches out her right hand to hold him under the elbow; his hand holding the key trembles. Shen Yuetang speaks a Mandarin line with her back to the camera, low and slow, like an old lady speaking to a younger man. Fu Bo keeps his mouth closed.",
-        "camera": "high-angle over-the-shoulder close-up, slow push-in",
-        "characters": [
-          "yuetang-18",
-          "fubo"
         ],
-        "character_looks": {
-          "yuetang-18": "shouyi"
-        }
-      }
-    },
-    {
-      "id": "c10",
-      "template": "shot",
-      "lines": [
-        {
-          "id": "t003007",
-          "speaker": "fubo",
-          "text": "那老太太的身子在哪？我得給先生一個交代。",
-          "emotion": "擦淚，壓低"
-        }
-      ],
-      "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night, the altar and the brass lamp's warm orange-gold flame behind them. Two people: on screen left Shen Yuetang in the off-white burial robe holds Fu Bo under the elbow; on screen right Fu Bo in his grey Chinese jacket rises slowly from his knees. Leaning on her hand he stands up straight, wipes his eyes with his sleeve, glances toward the reclining chair off screen right, and looks back at her. Fu Bo speaks a Mandarin line, his lips moving clearly, wiping his tears, his voice low. Yuetang keeps her mouth closed.",
-        "camera": "medium two-shot, slow push-in",
-        "characters": [
-          "fubo",
-          "yuetang-18"
-        ],
-        "character_looks": {
-          "yuetang-18": "shouyi"
-        }
-      },
-      "chapter": "三十個抽屜（下）"
-    },
-    {
-      "id": "c11",
-      "template": "shot",
-      "lines": [
-        {
-          "id": "t003008",
-          "speaker": "yuetang-18",
-          "text": "在這裡。老太太的身子，就是我。",
-          "emotion": "shouyi，平靜"
-        }
-      ],
-      "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night: Shen Yuetang in the off-white burial robe, her thick black braid over her right shoulder; behind her only a corner of the old medicine cabinet; warm orange-gold lamplight. She is the only person in the frame, not smiling. She lays her right palm flat on her chest just below the stand-up collar, fingers together, looks first into someone's eyes off screen right, and speaks slowly. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, calm.",
-        "camera": "close-up, slow push-in",
-        "characters": [
-          "yuetang-18"
-        ],
-        "character_looks": {
-          "yuetang-18": "shouyi"
-        }
-      }
-    },
-    {
-      "id": "c12",
-      "template": "shot",
-      "lines": [],
-      "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night, seen from behind the old wooden reclining chair: its cane-woven back fills the foreground, the chair empty, no one and no clothes on it. Two people: further back, side by side in front of the altar, Shen Yuetang in the off-white burial robe and Fu Bo in his grey Chinese jacket; warm orange-gold lamplight. Both turn their heads at the same moment and look at the empty chair in the foreground; Fu Bo steps half a step back. Everyone's mouth is closed.",
-        "camera": "medium shot, slow push-in",
-        "characters": [
-          "yuetang-18",
-          "fubo"
-        ],
-        "motion": "Both turn their heads at once toward the empty reclining chair; the old man steps half a step back.",
-        "character_looks": {
-          "yuetang-18": "shouyi"
-        }
-      },
-      "action_seconds": 4
-    },
-    {
-      "id": "c13",
-      "template": "shot",
-      "lines": [
-        {
-          "id": "t003009",
-          "speaker": "yuetang-18",
-          "text": "阿福，你怎麼一眼就認出我是誰？",
-          "emotion": "shouyi，輕"
-        }
-      ],
-      "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night: Shen Yuetang in the off-white burial robe, behind her only a corner of the altar and the warm orange-gold lamplight. She is the only person in the frame, not smiling. She turns her head back from the reclining chair and looks at someone off screen right. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, soft.",
-        "camera": "close-up, slow push-in",
-        "characters": [
-          "yuetang-18"
-        ],
-        "character_looks": {
-          "yuetang-18": "shouyi"
-        }
-      }
-    },
-    {
-      "id": "c14",
-      "template": "shot",
-      "lines": [
-        {
-          "id": "t003010",
-          "speaker": "fubo",
-          "text": "七十年前我進門那天，您十八歲的照片剛掛上牆。",
-          "emotion": "慢，一句一句"
-        },
-        {
-          "id": "t003011",
-          "speaker": "fubo",
-          "text": "那張照片，我天天擦，看了七十年。",
-          "emotion": "聲音發啞"
-        }
-      ],
-      "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night: Fu Bo in his grey Chinese jacket, the old brass key pinched in his right hand, the fingertips of his left hand on the silver chain of his pocket watch; behind him only a corner of the altar and the plain ancestral tablets out of focus. He is the only person in the frame, not smiling. He straightens up, touches the watch chain with his left hand out of habit, and looks at her face off screen left as he speaks, one sentence at a time. Fu Bo speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, slow, then hoarse.",
-        "camera": "close-up, slow push from chest to face",
-        "characters": [
-          "fubo"
-        ]
-      }
-    },
-    {
-      "id": "c15",
-      "template": "shot",
-      "lines": [
-        {
-          "id": "t003012",
-          "speaker": "yuetang-18",
-          "text": "這事先別說。就說我是遠房親戚的孩子，來當保母。",
-          "emotion": "shouyi，低聲"
-        }
-      ],
-      "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night: Shen Yuetang in the off-white burial robe, hands folded in front of her waist; behind her only a corner of the old medicine cabinet; warm orange-gold lamplight. She is the only person in the frame, not smiling. She goes still; her folded hands tighten once; her eyes drop, then lift again to someone off screen right. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, low.",
-        "camera": "close-up, slow push-in",
-        "characters": [
-          "yuetang-18"
-        ],
-        "character_looks": {
-          "yuetang-18": "shouyi"
-        }
+        "motion": "Fu Bo lifts his tear-streaked face to her from his knees and speaks."
       }
     },
     {
       "id": "c16",
       "template": "shot",
-      "lines": [
-        {
-          "id": "t003013",
-          "speaker": "fubo",
-          "text": "二房不會收。二太太今晚才喊您是賊。",
-          "emotion": "搖頭，為難"
-        }
-      ],
+      "lines": [],
       "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night: Fu Bo in his grey Chinese jacket, the old brass key in his right hand; behind him only the closed lattice doors. He is the only person in the frame, not smiling, troubled. He shakes his head, glances toward the doors and the house beyond them, and looks back at her off screen left. Fu Bo speaks a Mandarin line, his lips moving clearly, shaking his head, uneasy.",
-        "camera": "medium close-up, slow push-in",
-        "characters": [
-          "fubo"
-        ]
-      }
+        "prompt": "Inside the ancestral hall of the old Shen house at night. The first frame is already tight on the brass oil lamp in the middle of the altar: the flame and wick inside a tall slim clear glass chimney over a round brass oil font on a slender brass stem, standing on a plain square dark red-brown wooden base, about 30 cm tall in all; two red candles burnt partway down, out of focus on either side. The flame starts knuckle-high and warm orange-gold. From the first second the flame grows steadily one step taller, to about one and a half knuckles, and turns warmer. Only the flame changes; a clean glow, no sparks. End: the taller flame.",
+        "camera": "Insert of the lamp, locked",
+        "characters": [],
+        "motion": "The lamp flame grows steadily one step taller and warmer."
+      },
+      "action_seconds": 3
     },
     {
       "id": "c17",
       "template": "shot",
-      "lines": [
-        {
-          "id": "t003014",
-          "speaker": "yuetang-18",
-          "text": "那就讓建邦收。他是這個家的家主。",
-          "emotion": "shouyi，淡淡的"
-        }
-      ],
+      "lines": [],
       "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night: Shen Yuetang in the off-white burial robe, hands folded in front of her waist; behind her only a corner of the old medicine cabinet; warm orange-gold lamplight. She is the only person in the frame. She lifts her chin slightly; the corners of her mouth curve into a faint smile; her gaze is steady. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, light and unhurried.",
-        "camera": "close-up, slow push-in",
+        "prompt": "Inside the ancestral hall of the old Shen house at night. Exactly one person in the whole frame: Shen Yuetang, standing upright, hands folded at her waist; behind her only the medicine cabinet, all thirty drawers flush. In the first second, behind her, the bottom row of brass rings catches warm orange-gold light. In three-quarter profile, eyes on him kneeling off screen lower right, never looking at the camera. She unfolds her hands and steps toward screen right. Eyes glistening, brows drawing together, lips parting and pressing shut again, throat moving as she swallows. Her lips stay closed. Both lattice doors stay shut; no open doorway anywhere. End: halfway through the step.",
+        "camera": "Medium close-up, slow push in",
         "characters": [
           "yuetang-18"
         ],
+        "motion": "Shen Yuetang unfolds her hands and steps toward the kneeling old man.",
         "character_looks": {
           "yuetang-18": "shouyi"
         }
-      }
+      },
+      "action_seconds": 2
     },
     {
       "id": "c18",
       "template": "shot",
       "lines": [
         {
-          "id": "t003015",
-          "speaker": "fubo",
-          "text": "是。明早我就跟先生說，今晚我守在門外。",
-          "emotion": "彎腰"
+          "id": "t003006",
+          "speaker": "yuetang-18",
+          "text": "阿福，起來。你八十八了，跪不得。",
+          "emotion": "低、慢，像老人家"
         }
       ],
       "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night. Two people: at the back in the middle Fu Bo in his grey Chinese jacket walks up to the altar; on screen left Shen Yuetang in the off-white burial robe stands in front of the old medicine cabinet watching him. He lifts one corner of the lamp's plain square wooden base a finger's width with his left hand, slides the old brass key back underneath it with his right without tipping the base over, sets it down flat, then turns and bows deeply to her. Fu Bo speaks a Mandarin line, his lips moving clearly, bowing. Yuetang keeps her mouth closed.",
-        "camera": "medium shot, slow push-in",
+        "prompt": "Inside the ancestral hall of the old Shen house at night, from the kneeling man's height looking up. Exactly two people in the whole frame. Lower right foreground: Fu Bo's left shoulder and white hair, soft, face unseen. In the middle Shen Yuetang, bends down toward him, her bare right hand, with no ring, reaching down toward his left elbow; behind her the dark roof beams and the top edge of the medicine cabinet; warm orange-gold light from the altar at screen left on her face. Brows lifted gently in the middle, eyes wet and bright on him, mouth corners softened downward, slow breath. Shen Yuetang, turned to Fu Bo below at screen right in three-quarter profile, speaks a short Mandarin line, 「阿福，起來。你八十八了，跪不得。」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, low and slow like an old lady to a junior, her lips, jaw and cheeks moving clearly with every syllable. Fu Bo's lips stay closed. Both lattice doo",
+        "camera": "Close-up, low angle, slow push in",
         "characters": [
-          "fubo",
-          "yuetang-18"
+          "yuetang-18",
+          "fubo"
         ],
+        "motion": "Shen Yuetang bends down to the kneeling man and reaches for his left elbow.",
         "character_looks": {
           "yuetang-18": "shouyi"
         }
@@ -505,36 +443,411 @@
       "template": "shot",
       "lines": [],
       "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night, one red candle at the corner of the altar in the foreground. Two people: on screen right Shen Yuetang in the off-white burial robe on the old wooden reclining chair with its cane seat; at the doorway Fu Bo in his grey Chinese jacket. She lies back slowly, folds her hands in front of her waist and closes her eyes, her chest rising and falling gently in the warm lamplight; she is resting, alive. Fu Bo bows deeply at the doorway, steps back out over the threshold and pulls the two lattice doors closed; on the paper panels his shadow sits down on the stone step outside. Everyone's mouth is closed.",
-        "camera": "wide shot, slow push-in",
+        "prompt": "Inside the ancestral hall of the old Shen house at night. The first frame is already tight on a young woman's bare right hand, with no ring, in an off-white burial-robe cuff cupped under an old man's left elbow in a light blue-grey jacket sleeve; beside it his right fist, clenched round the small old brass key, as long as a finger, with a plain round bow, trembles against the floorboards beside the edge of the straw cushion. In the first second her hand lifts, his left elbow rises with it, and his right fist pushes off the floor once and comes up. Only these hands and arms are in the frame. End: the fist off the floor, rising.",
+        "camera": "Insert, tilt up",
         "characters": [
           "yuetang-18",
           "fubo"
         ],
-        "motion": "She lies back and closes her eyes, breathing gently; the old man bows, steps out and closes the doors, his shadow sitting down outside.",
+        "motion": "Her hand lifts the old man's left elbow and his right fist pushes off the floor.",
         "character_looks": {
           "yuetang-18": "shouyi"
         }
       },
-      "action_seconds": 5
+      "action_seconds": 2
     },
     {
       "id": "c20",
       "template": "shot",
       "lines": [],
       "data": {
-        "prompt": "Inside the ancestral hall of the old Shen house at night: the first frame is tight on the altar: two brand-new full-length red candles, one at each end, and the brass oil lamp between them. A young right hand in a moon-white cotton cuff holds a lit match to the wick of the second new candle; the wick catches, the hand shakes the match out, and the candle flame slowly stands up straight. Only the hand is in the frame; no face.",
-        "camera": "close-up on the candles, slow push-in",
+        "prompt": "Inside the ancestral hall of the old Shen house at night, side-on from the south; a corner of the medicine cabinet in the left foreground; at the back the altar with the brass oil lamp, small and out of focus. Exactly two people in the whole frame, face to face in profile: on screen left Shen Yuetang in white cloth shoes, turned to the right, her right hand under his left elbow; on screen right Fu Bo in black cloth shoes, turned to the left, in the first frame already half risen from his knees, one foot planted and one knee still on the floor, rising on her hand. From the first second he straightens up and wipes his eyes with his right sleeve, the key still in that fist; she draws her hand back and folds both hands at her waist. Her brows easing, eyes on him, lips softly pressed; his tears still running, brows knotted up, mouth corners quivering down, no smile at any moment, not even at the end of the shot. Both lattice doors stay shut; no open doorway anywhere. End: his sleeve lowerin",
+        "camera": "Two-shot, locked",
         "characters": [
-          "yuetang-18"
+          "yuetang-18",
+          "fubo"
         ],
-        "motion": "The hand lights the second new red candle with a match and shakes the match out; the new flame slowly stands up."
+        "motion": "Fu Bo rises to his feet on her hand and wipes his eyes with his sleeve.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
       },
-      "chapter": "垃圾桶裡的鈴",
-      "action_seconds": 4
+      "action_seconds": 3,
+      "chapter": "三十個抽屜（下）"
     },
     {
       "id": "c21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t003007",
+          "speaker": "fubo",
+          "text": "那老太太的身子在哪？我得給建邦先生一個交代。",
+          "emotion": "擦淚，壓低"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night. Exactly two people in the whole frame. Over Shen Yuetang's right shoulder: her off-white collar and black braid soft at the left frame edge, face unseen. On screen right Fu Bo, the key in his right fist; behind him only the closed lattice doors, their paper panels dark. In the first second he glances toward the reclining chair at the back right, then turns back to her. Eyes red and swollen, brows locked together, lips trembling as he keeps his voice low, jaw tight, no smile at any moment, not even at the end of the shot. Fu Bo, turned to Shen Yuetang at screen left in three-quarter profile, speaks a short Mandarin line, 「那老太太的身子在哪？我得給建邦先生一個交代。」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, low, his lips, jaw and cheeks moving clearly with every syllable; then swallows. Her lips stay closed. Both lattice doors stay shut; no open doorway anywh",
+        "camera": "Over-the-shoulder close-up, slow push in",
+        "characters": [
+          "yuetang-18",
+          "fubo"
+        ],
+        "motion": "Fu Bo glances toward the chair, turns back to her and asks in a low voice.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
+      }
+    },
+    {
+      "id": "c22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t003008",
+          "speaker": "yuetang-18",
+          "text": "在這裡。老太太的身子，就是我。",
+          "emotion": "平靜"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night. Exactly two people in the whole frame. Over Fu Bo's left shoulder: his light blue-grey shoulder and white hair soft at the right frame edge, face unseen. On screen left Shen Yuetang; behind her only the medicine cabinet. From the first second she lifts her bare right hand, with no ring, and lays the palm flat on her chest just below the collar, fingers together; her left hand, the one with the ring, stays at her waist below the frame. A slow blink, brows lifting slightly, a small nod on the last words, her eyes holding his, lips pressed between phrases, jaw firm. Shen Yuetang, turned to Fu Bo at screen right in three-quarter profile, speaks a short Mandarin line, 「在這裡。老太太的身子，就是我。」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, quietly, her lips, jaw and cheeks moving clearly with every syllable. Fu Bo's lips stay closed. Both lattice doors st",
+        "camera": "Over-the-shoulder close-up, slow push in",
+        "characters": [
+          "yuetang-18",
+          "fubo"
+        ],
+        "motion": "Shen Yuetang lays her right palm flat on her chest as she answers.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
+      }
+    },
+    {
+      "id": "c23",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night, seen side-on from the south; a corner of the medicine cabinet in the left foreground, as before; at the back the altar with the brass oil lamp, small. Exactly two people in the whole frame, face to face: on screen left Shen Yuetang in white cloth shoes, her right palm still on her chest; on screen right Fu Bo in black cloth shoes. In the first second both turn their heads at the same moment toward the back right of the hall, where the reclining chair stands; Fu Bo steps half a step back. Her brows slightly drawn, eyes moving to the chair; his eyes wide, mouth a little open, jaw slack, breath caught. Everyone's lips stay closed. Both lattice doors stay shut; no open doorway anywhere. End: both looking toward the back right.",
+        "camera": "Two-shot, locked",
+        "characters": [
+          "yuetang-18",
+          "fubo"
+        ],
+        "motion": "Both turn their heads toward the reclining chair and Fu Bo steps half a step back.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
+      },
+      "action_seconds": 3
+    },
+    {
+      "id": "c24",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night, looking east along the floorboards: the one old reclining chair (a dark wooden frame, a long woven cane seat, a tall woven cane backrest and flat wooden armrests), bare and empty; beside it the round bronze mirror on its wooden stand, about head height, reflecting no one, only a little warm glow. Warm orange-gold light from the lamp and candles off screen left lights the chair's wooden frame, cane seat, armrests and the mirror stand clearly in amber; the east wall dark. From the first second the view moves slowly closer to the empty chair; the amber light lies on the cane seat. Nobody is in the frame. Both lattice doors stay shut; no open doorway anywhere. End: the empty chair filling the frame.",
+        "camera": "POV medium shot, slow push in",
+        "characters": [],
+        "motion": "The empty reclining chair comes slowly closer."
+      },
+      "action_seconds": 2
+    },
+    {
+      "id": "c25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t003009",
+          "speaker": "yuetang-18",
+          "text": "阿福，你怎麼一眼就認出我是誰？",
+          "emotion": "輕"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night. Exactly one person in the whole frame: Shen Yuetang, hands folded at her waist; behind her only the medicine cabinet. From the first second she turns her head back from the chair toward the old man off screen right and takes one small step toward him. Eyes settling on his face, brows lifting slightly, head tilting a little, a soft breath before she speaks. Shen Yuetang, turned to the old man off screen right in three-quarter profile, speaks a short Mandarin line, 「阿福，你怎麼一眼就認出我是誰？」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, gently, her lips, jaw and cheeks moving clearly with every syllable. Both lattice doors stay shut; no open doorway anywhere. End: one step nearer, waiting.",
+        "camera": "Medium close-up, slow push in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "Shen Yuetang turns back from the chair and steps toward the old man to ask.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
+      }
+    },
+    {
+      "id": "c26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t003010",
+          "speaker": "fubo",
+          "text": "七十年前我進門那天，您十八歲的照片剛掛上牆。",
+          "emotion": "慢，一句一句"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night. Exactly two people in the whole frame. Over Shen Yuetang's right shoulder: her off-white collar and black braid soft at the left frame edge, face unseen. On screen right Fu Bo, the key in his right fist, his left hand empty at his side; behind him only the closed lattice doors, their paper panels dark. From the first second he straightens, and the thumb of his empty left hand rubs slowly back and forth along his forefinger. Eyes wet on her, brows knotted, mouth corners down, no smile at any moment, not even at the end of the shot. Fu Bo, turned to Shen Yuetang at screen left in three-quarter profile, speaks a short Mandarin line, 「七十年前我進門那天，您十八歲的照片剛掛上牆。」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, slowly, phrase by phrase, his lips, jaw and cheeks moving clearly with every syllable. Her lips stay closed. Both lattice doors stay shut; no op",
+        "camera": "Over-the-shoulder close-up, slow push in",
+        "characters": [
+          "yuetang-18",
+          "fubo"
+        ],
+        "motion": "Fu Bo rubs his thumb slowly along his forefinger as he answers slowly.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
+      }
+    },
+    {
+      "id": "c27",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night. Exactly one person in the whole frame: Shen Yuetang; the first frame is already tight on her face and shoulders; behind her only the medicine cabinet. In three-quarter profile, eyes on him off screen right, never looking at the camera. In the first half second her folded hands squeeze tight and her shoulders draw in; eyes widening a little, brows lifting, lips parting, breath stopping for a beat. Her lips make no words. Both lattice doors stay shut; no open doorway anywhere. End: still, eyes on him.",
+        "camera": "Close-up, locked",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "Shen Yuetang's folded hands squeeze tight as her breath stops.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
+      },
+      "action_seconds": 2
+    },
+    {
+      "id": "c28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t003011",
+          "speaker": "fubo",
+          "text": "那張照片，我天天擦，看了七十年。",
+          "emotion": "聲音發啞"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night; behind him only the closed lattice doors, their paper panels dark. Exactly one person in the whole frame: Fu Bo; the first frame is already tight on his face and his empty left hand raised at his chest. From the first second the thumb of that empty hand rubs twice, slowly, along his forefinger, like wiping a photograph. Tears caught at the corners of his eyes, brows knotted up, lips trembling, jaw tight, no smile at any moment, not even at the end of the shot. Fu Bo, turned to the young woman off screen left in three-quarter profile, speaks a short Mandarin line, 「那張照片，我天天擦，看了七十年。」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, his voice hoarse, his lips, jaw and cheeks moving clearly with every syllable; after the line he wipes the corner of one eye with his sleeve. Both lattice doors stay shut; no open doorway anywhere. End: the sleeve at h",
+        "camera": "Close-up, slow push in",
+        "characters": [
+          "fubo"
+        ],
+        "motion": "Fu Bo rubs his thumb along his forefinger as he speaks, then wipes his eye with his sleeve."
+      }
+    },
+    {
+      "id": "c29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t003012",
+          "speaker": "yuetang-18",
+          "text": "這事先別說。就說我是遠房親戚的孩子，來當保母。",
+          "emotion": "低聲"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night. Exactly one person in the whole frame: Shen Yuetang, hands folded at her waist; behind her only the medicine cabinet. From the first second she takes one step toward the old man off screen right and leans in a little, lowering her voice. Eyes dropping and lifting to him again, brows tightening, lips pressing once before she speaks. Shen Yuetang, turned to the old man off screen right in three-quarter profile, speaks a short Mandarin line, 「這事先別說。就說我是遠房親戚的孩子，來當保母。」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, low, her lips, jaw and cheeks moving clearly with every syllable. Both lattice doors stay shut; no open doorway anywhere. End: leaning toward him.",
+        "camera": "Medium close-up, drift",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "Shen Yuetang steps closer to the old man and leans in to speak low.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
+      }
+    },
+    {
+      "id": "c30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t003013",
+          "speaker": "fubo",
+          "text": "二房不會收。二太太今晚才喊您是賊。",
+          "emotion": "搖頭，為難"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night. Exactly two people in the whole frame. Over Shen Yuetang's right shoulder: her off-white collar and black braid soft at the left frame edge, face unseen. On screen right Fu Bo, the key in his right fist; behind him only the closed lattice doors, their paper panels dark. From the first second he shakes his head, glances back over his shoulder at the closed doors, and turns back to her. Brows knotted, eyes on her, mouth corners pulled down, a troubled intake of breath, no smile at any moment, not even at the end of the shot. Fu Bo, turned to Shen Yuetang at screen left in three-quarter profile, speaks a short Mandarin line, 「二房不會收。二太太今晚才喊您是賊。」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, troubled, his lips, jaw and cheeks moving clearly with every syllable. Her lips stay closed. Both lattice doors stay shut; no open doorway anywhere. End: fac",
+        "camera": "Over-the-shoulder close-up, slow push in",
+        "characters": [
+          "yuetang-18",
+          "fubo"
+        ],
+        "motion": "Fu Bo shakes his head and glances back at the doors before he answers.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
+      }
+    },
+    {
+      "id": "c31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t003014",
+          "speaker": "yuetang-18",
+          "text": "那就讓建邦收。他是這個家的家主。",
+          "emotion": "淡淡的"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night. Exactly one person in the whole frame: Shen Yuetang, hands folded at her waist; behind her only the medicine cabinet. From the first second her head tilts toward the back right, toward the altar, and turns back to the old man off screen right; her chin lifts. The corners of her mouth soften into a faint, gentle smile, eyes warm and certain, brows smooth. Shen Yuetang, turned to the old man off screen right in three-quarter profile, speaks a short Mandarin line, 「那就讓建邦收。他是這個家的家主。」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, lightly, her lips, jaw and cheeks moving clearly with every syllable. Both lattice doors stay shut; no open doorway anywhere. End: chin raised, eyes on him.",
+        "camera": "Medium close-up, slow push in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "Shen Yuetang turns her head toward the altar and back, lifting her chin as she answers.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
+      }
+    },
+    {
+      "id": "c32",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night, wide; a corner of the medicine cabinet in the left foreground; the straw cushion on the floor; at the back the altar with the brass oil lamp in the middle and the red candles. Exactly one person in the whole frame: Fu Bo, black cloth shoes, the key in his right fist. In the first second he nods once, turns and walks toward the altar. Brows easing, lips pressed into a line, eyes settled. His lips stay closed. Both lattice doors stay shut; no open doorway anywhere. End: halfway to the altar, mid-stride.",
+        "camera": "Wide shot, pan left",
+        "characters": [
+          "fubo"
+        ],
+        "motion": "Fu Bo nods, turns and walks toward the altar."
+      },
+      "action_seconds": 2
+    },
+    {
+      "id": "c32b",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night, seen from the side of the altar; plain blank tablets far out of focus behind. Exactly one person in the whole frame: Fu Bo, the key in his right fist, the brass oil lamp on the altar in front of him. In the first second he takes the last step, stops before the lamp and reaches his left hand to its square wooden base. Brows eased, eyes on the lamp, lips pressed together. Both lattice doors stay shut; no open doorway anywhere. End: his fingers touching the base.",
+        "camera": "Medium shot, slow push in",
+        "characters": [
+          "fubo"
+        ],
+        "motion": "Fu Bo takes the last step to the altar and reaches for the lamp base."
+      },
+      "action_seconds": 2
+    },
+    {
+      "id": "c33",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night. The first frame is already tight, at table level, and low on the plain square dark red-brown wooden base of the altar oil lamp and the foot of its slender brass stem, the glass chimney and the flame above the top edge of the frame, and on an old man's two hands in light blue-grey jacket cuffs, the small old brass key, as long as a finger, with a plain round bow in the right hand. In the first second the left hand lifts one corner of the base a finger's width, the right hand slides the key under it, and the base is set down flat; the lamp stays upright and does not wobble. Both hands draw back, empty. Only these two hands are in the frame. End: the base flat, the hands gone.",
+        "camera": "Insert, table level, locked",
+        "characters": [
+          "fubo"
+        ],
+        "motion": "Fu Bo's left hand lifts the lamp base a finger's width and his right slides the key under it."
+      },
+      "action_seconds": 3
+    },
+    {
+      "id": "c34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t003015",
+          "speaker": "fubo",
+          "text": "是。明早我就跟建邦先生說，今晚我守在門外。",
+          "emotion": "彎腰"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night. Exactly two people in the whole frame. Over Shen Yuetang's right shoulder: her off-white collar and black braid soft at the left frame edge, face unseen. In the middle Fu Bo stands before the altar, the brass oil lamp beside him, both hands empty. From the first frame he has already turned from the altar to face her at screen left. Eyes wet, brows settled, mouth corners firm, respectful. Fu Bo, turned to Shen Yuetang at screen left in three-quarter profile, speaks a short Mandarin line, 「是。明早我就跟建邦先生說，今晚我守在門外。」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, his lips, jaw and cheeks moving clearly with every syllable; after the line he presses his hands to his sides and lowers his head in a small bow. Her lips stay closed. Both lattice doors stay shut; no open doorway anywhere. End: starting the small bow.",
+        "camera": "Medium shot, slow push in",
+        "characters": [
+          "yuetang-18",
+          "fubo"
+        ],
+        "motion": "Fu Bo, already facing her, answers and lowers his head in a small bow.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
+      }
+    },
+    {
+      "id": "c35",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night; behind her only the round bronze mirror on its wooden stand, about head height, its face angled away so it shows no reflection of her, only a dull warm sheen, and the dark east wall; warm orange-gold light from screen left lights her, the chair and the mirror stand. Exactly one person in the whole frame: Shen Yuetang in white cloth shoes; in the first frame she already sits on the edge of the one old reclining chair (a dark wooden frame, a long woven cane seat, a tall woven cane backrest and flat wooden armrests). In the first second she lies back; her right hand rests on the armrest, her left hand on her waist; her eyes close and her chest rises and falls, asleep and breathing. Eyelids lowering, brows smoothing, lips softly closed, breath lengthening. Both lattice doors stay shut; no open doorway anywhere. End: lying on the chair, eyes closed, breathing.",
+        "camera": "Medium shot, slow push in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "Shen Yuetang lies back on the reclining chair, one hand on the armrest, and closes her eyes.",
+        "character_looks": {
+          "yuetang-18": "shouyi"
+        }
+      },
+      "action_seconds": 3
+    },
+    {
+      "id": "c36",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night, seen from the cabinet side at an angle toward the two lattice doors. Exactly one person in the whole frame: Fu Bo in black cloth shoes. In the first frame the palm-long brass bolt lock at the centre of the doors already hangs unlocked, its bolt drawn back; the two doors stand half open outward, and Fu Bo already stands just outside on the threshold, facing in, his key ring (an iron ring holding three plain brass keys) hanging from the fingers of his right hand; the dark courtyard behind him. In the first second he lowers his head in a short bow toward screen left, then draws both doors toward himself until they meet. Eyes toward screen left, brows eased, mouth corners held, eyes still red, not smiling. The doors are left unlocked. End: the two doors meeting.",
+        "camera": "Wide shot, locked",
+        "characters": [
+          "fubo"
+        ],
+        "motion": "Fu Bo, outside the half-open doors with his key ring in hand, bows briefly and draws the doors shut."
+      },
+      "action_seconds": 3
+    },
+    {
+      "id": "c36b",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the dark ancestral hall of the old Shen house, deep in the night. The first frame is already on the two closed lattice doors from inside: on their paper panels, glowing a pale cool blue-grey with faint moonlight from outside, the dark side-on silhouette, sharp and clearly readable, of an old man sitting on the stone step. Inside, the hall stays dark; only a little warm light from off screen touches the bottom of the door frame. From the first frame to the last the silhouette sits still, hands resting on its knees, only its shoulders rising and falling slightly with breath; no arm moves. The doors stay shut. End: the seated silhouette still.",
+        "camera": "Medium shot, locked",
+        "characters": [],
+        "motion": "The old man's seated silhouette on the paper door sits still, keeping watch."
+      },
+      "action_seconds": 2
+    },
+    {
+      "id": "c37",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night. The first frame is already on the altar table at table level: two brand-new full-length red candles at its two ends, the brass oil lamp in the middle, and two short burnt-down old candle stubs lying at one corner of the table. A young woman's bare right hand, with no ring, in a narrow moon-white cotton cuff holds a lit match; a strip of navy cotton skirt shows at the bottom edge; her face is out of the frame. From the first second the match touches the wick of the second new candle and lights it; a flick of the wrist puts the match out; the new flame rises slowly. End: both new candles burning.",
+        "camera": "Medium close-up, table level, slow push in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "Her hand lights the second new red candle with a match and flicks the match out."
+      },
+      "chapter": "垃圾桶裡的鈴",
+      "action_seconds": 3
+    },
+    {
+      "id": "c38",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "The east covered corridor of the old Shen house at night, seen from the courtyard side looking east; a red-brown wooden pillar in the foreground; warm paper-shaded lamps; the stone courtyard dark. Exactly two people in the whole frame: Shen Yuetang in her moon-white frog-button shirt, ankle-length navy skirt and black cloth shoes, seated on the long bench midway along, hands folded; and Fu Bo, walking in from screen right. Far right the kitchen door and a lidded green metal trash bin; far left a closed bedroom door, dark. In the first second he walks up to the bench, stops at her left-hand side on screen right and starts to bend toward her; she lifts her eyes to him. Her brows slightly drawn, lips closed; his brows low, mouth corners down, eyes on her. Everyone's lips stay closed. End: halfway into his bow.",
+        "camera": "Wide shot, pan left",
+        "characters": [
+          "yuetang-18",
+          "fubo"
+        ],
+        "motion": "Fu Bo walks along the corridor to the bench and bends toward her."
+      },
+      "action_seconds": 3
+    },
+    {
+      "id": "c39",
       "template": "shot",
       "lines": [
         {
@@ -545,35 +858,63 @@
         }
       ],
       "data": {
-        "prompt": "The east covered corridor of the old Shen house at night under warm paper-shaded lamps, a red-brown wooden pillar in the foreground. Two people: Shen Yuetang in her moon-white high-collared cotton shirt and navy ankle-length skirt sits on the long wooden bench facing the camera, hands folded in front of her waist; Fu Bo in his grey Chinese jacket stands on her left, on screen right, bending slightly toward her. Far off on screen right the kitchen door with a lidded green metal trash bin outside it; far off on screen left a closed bedroom door with no light behind it. Fu Bo bends and speaks quietly, then straightens up; Yuetang nods once. Fu Bo speaks a Mandarin line, his lips moving clearly, low. Yuetang keeps her mouth closed.",
-        "camera": "medium shot, slow push-in",
+        "prompt": "The east covered corridor of the old Shen house at night. Exactly two people in the whole frame. Over Shen Yuetang's right shoulder: her moon-white shoulder and black braid soft at the left frame edge, face unseen. The end of the long bench in the lower left foreground. On screen right Fu Bo, bending toward her; behind him only a paper-shaded lamp and a wooden pillar. Brows drawn in, eyes on her, mouth corners tight, keeping his voice low. From the first frame he is already bent close to her; Fu Bo, turned to Shen Yuetang low at screen left in three-quarter profile, speaks a short Mandarin line, 「阿凱下午做完老太太走失的筆錄，先生也點頭讓您當保母。」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, low, his lips, jaw and cheeks moving clearly with every syllable; he stays bent close the whole shot. Her lips stay closed. End: still bent close beside the bench.",
+        "camera": "Over-the-shoulder medium close-up, slow push in",
         "characters": [
           "yuetang-18",
           "fubo"
-        ]
+        ],
+        "motion": "Fu Bo, bent close beside the bench, tells her the day's news."
       }
     },
     {
-      "id": "c22",
+      "id": "c40",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "The east covered corridor of the old Shen house at night; behind her a wooden pillar and the closed bedroom doors along the wall. Exactly one person in the whole frame: Shen Yuetang in her moon-white frog-button shirt, ankle-length navy skirt and black cloth shoes, seated on the bench, hands folded at her waist, half-lit by the nearer paper lantern. In three-quarter profile, eyes on him off screen right, never looking at the camera. In the first second she nods once to him, brows easing; then her brows tighten and she turns her head toward screen left, the far end of the corridor. Eyes moving left, lips closed. End: halfway into the turn.",
+        "camera": "Close-up, locked",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "Shen Yuetang nods to the old man and turns her head toward the far end of the corridor."
+      },
+      "action_seconds": 2
+    },
+    {
+      "id": "c41",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "The east covered corridor of the old Shen house at night, looking north along the corridor; a wooden pillar in the left foreground; the bedroom doors along the wall on the right. At the far end the last bedroom door, closed and dark, a black gap under it; the warm lantern light reaches the floor in front of it, so the door is clearly visible in the fading light; the courtyard dark. From the first second the view moves slowly closer to the dark door; the door stays shut. Nobody is in the frame. End: the dark door nearer.",
+        "camera": "POV medium shot, slow push in",
+        "characters": [],
+        "motion": "The dark bedroom door at the end of the corridor comes slowly closer."
+      },
+      "action_seconds": 2
+    },
+    {
+      "id": "c42",
       "template": "shot",
       "lines": [
         {
           "id": "t003017",
           "speaker": "yuetang-18",
           "text": "小滿這麼晚還沒回來，學校出了什麼事？",
-          "emotion": "基本款，輕"
+          "emotion": "輕"
         }
       ],
       "data": {
-        "prompt": "The east covered corridor of the old Shen house at night: Shen Yuetang in her moon-white high-collared cotton shirt, her thick black braid tied with a dark blue cord over her right shoulder; behind her only a wooden pillar and the dark courtyard. She is the only person in the frame, not smiling, worried. She turns her head to look at the unlit bedroom door off screen left, then turns back to someone off screen right. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, soft and concerned.",
-        "camera": "close-up, slow push-in",
+        "prompt": "The east covered corridor of the old Shen house at night; behind her a wooden pillar and the closed bedroom doors along the wall; a soft light blue-grey sleeve at the right frame edge. Exactly one face in the frame: Shen Yuetang in her moon-white high-collared shirt, black braid over her right shoulder, seated on the bench, half-lit by the nearer paper lantern. From the first second she turns her head back from screen left, lifts her eyes to the old man standing off screen right and leans a little toward him. Brows knitted, eyes worried, mouth corners down, breath soft. Shen Yuetang, turned to the old man off screen right in three-quarter profile, speaks a short Mandarin line, 「小滿這麼晚還沒回來，學校出了什麼事？」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, gently, her lips, jaw and cheeks moving clearly with every syllable. End: leaning toward him, waiting.",
+        "camera": "Medium close-up, slow push in",
         "characters": [
           "yuetang-18"
-        ]
+        ],
+        "motion": "Shen Yuetang turns back from the dark door and leans toward the old man to ask."
       }
     },
     {
-      "id": "c23",
+      "id": "c43",
       "template": "shot",
       "lines": [
         {
@@ -584,60 +925,109 @@
         }
       ],
       "data": {
-        "prompt": "The east covered corridor of the old Shen house at night: Fu Bo in his grey Chinese jacket, behind him only a warm paper-shaded lamp. He is the only person in the frame, not smiling. He sighs and shakes his head; when he finishes speaking he bows to take his leave and turns to walk away toward screen right. Fu Bo speaks a Mandarin line, his lips moving clearly, sighing. The cut lands halfway through his turn.",
-        "camera": "medium close-up, slow push-in",
+        "prompt": "The east covered corridor of the old Shen house at night; behind him only a paper-shaded lamp and a wooden pillar. Exactly one person in the whole frame: Fu Bo, standing beside the bench, its end in the lower left foreground. From the first second he sighs and shakes his head. Brows sagging, mouth corners down, eyes dropping and lifting to her. Fu Bo, turned to the young woman seated off screen lower left in three-quarter profile, speaks a short Mandarin line, 「晚自習。這孩子最近回家都不說話，我也問不出來。」, turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera, sighing, his lips, jaw and cheeks moving clearly with every syllable; after the line he bows slightly to take his leave. End: halfway into the small bow.",
+        "camera": "Medium close-up, slow push in",
         "characters": [
           "fubo"
-        ]
+        ],
+        "motion": "Fu Bo sighs, shakes his head, answers and bows to take his leave."
       }
     },
     {
-      "id": "c24",
+      "id": "c44",
       "template": "shot",
       "lines": [],
       "data": {
-        "prompt": "The east covered corridor of the old Shen house at night, seen low, the armrest of the long bench in the foreground. Two people: Shen Xiaoman comes in fast from the south end on screen right, her bangs and the shoulders of her navy blazer damp, her navy pleated skirt below the knee and dry, a navy schoolbag in her right hand dripping water all the way, three brass bells on its front zip; on the bench in the foreground, in the lamp's shadow, only the folded hands on the knees and the navy skirt hem of a seated young woman. The girl does not see her. She stops at the lidded green metal trash bin outside the kitchen door, lifts the lid, stuffs the dripping bag inside, puts the lid back and walks on with her head down toward screen left. Everyone's mouth is closed.",
-        "camera": "low-angle wide shot, tracking with the girl from right to left",
+        "prompt": "The east covered corridor of the old Shen house at night, seen low from the courtyard side; the armrest of the bench in the left foreground. On the bench in the shadow between lamps only a seated young woman's folded hands on her knees, a moon-white cuff and a navy skirt hem; her face out of the frame. Exactly one face in the frame: Shen Xiaoman, her blunt bangs and the shoulders of her navy blazer damp, her navy pleated skirt below the knee and dry, white socks and black school shoes, her face clean and dry, a dripping navy school backpack in her right hand. From the first second she walks in fast from screen right, head down, the bag dripping, and stops at the lidded green metal trash bin outside the kitchen door, her left hand reaching for the lid; she never looks toward the bench. Eyes red and lowered, lips pressed tight, chin trembling, no smile at any moment, not even at the end of the shot. Her lips stay closed. End: her hand on the lid.",
+        "camera": "Wide shot, low angle, locked",
         "characters": [
-          "xiaoman",
-          "yuetang-18"
+          "xiaoman"
         ],
-        "motion": "The girl walks in, lifts the bin lid, stuffs the dripping schoolbag inside, closes the lid and walks off to the left with her head down.",
+        "motion": "Shen Xiaoman hurries in with her head down and stops at the trash bin, reaching for the lid.",
         "character_looks": {
           "xiaoman": "damp"
         }
       },
-      "action_seconds": 5
+      "action_seconds": 3
     },
     {
-      "id": "c25",
+      "id": "c45",
       "template": "shot",
       "lines": [],
       "data": {
-        "prompt": "The east covered corridor of the old Shen house at night: the first frame is tight on the lidded green metal trash bin outside the kitchen door, a puddle of water on the floor beside it; far off on screen left, out of focus, a bedroom door. From inside the bin comes one muffled ring; the lid is still rocking gently; far off the bedroom door swings shut. Nobody in the frame.",
-        "camera": "close-up on the trash bin, locked",
-        "characters": [],
-        "motion": "The lid of the green bin rocks gently after a muffled ring inside; far off a bedroom door swings shut."
+        "prompt": "The east covered corridor of the old Shen house at night. The first frame is already tight on the front pocket of a soaked, dripping navy school backpack with no lettering: on its zipper pull a small brass ring holds three old brass bells on a faded red cotton cord, the middle bell a little bigger. A girl's left hand in a damp navy blazer cuff holds up the lid of the green metal trash bin; her right hand pushes the bag in. In the first second the bag drops into the bin, the three bells swing once, and the lid falls shut with a clang. Only her hands are in the frame. End: the lid shut.",
+        "camera": "Insert, locked",
+        "characters": [
+          "xiaoman"
+        ],
+        "motion": "The girl's hand stuffs the dripping backpack with its three brass bells into the bin and the lid falls shut.",
+        "character_looks": {
+          "xiaoman": "damp"
+        }
       },
-      "action_seconds": 4
+      "action_seconds": 2
     },
     {
-      "id": "c26",
+      "id": "c46",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "The east covered corridor of the old Shen house at night, seen from the courtyard side; the only foreground is, at the lower left edge, a seated young woman's folded hands and navy skirt hem on the bench, her face out of the frame; the green trash bin far right. Exactly one face in the frame: Shen Xiaoman, her bangs and blazer shoulders damp, skirt below the knee and dry, her face clean and dry, hands now empty. From the first second she walks off toward screen left, head down, past the front of the bench without turning her head, and out of the frame at screen left. Eyes lowered to the floorboards, brows pinched, lips pressed, a sniff. Her lips stay closed. End: she is gone at screen left.",
+        "camera": "Medium shot, pan left",
+        "characters": [
+          "xiaoman"
+        ],
+        "motion": "Shen Xiaoman walks off past the bench with her head down and leaves the frame at screen left.",
+        "character_looks": {
+          "xiaoman": "damp"
+        }
+      },
+      "action_seconds": 3
+    },
+    {
+      "id": "c47",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "The east covered corridor of the old Shen house at night. From the first frame to the last the frame is tight on the lidded green metal trash bin outside the kitchen door, a puddle of water on the floor beside it; far off at screen left, out of focus, a bedroom door. In the first second that far door swings shut; a moment later something inside the bin gives one muffled ring and the lid rocks gently. Nobody is in the frame. End: the lid still rocking.",
+        "camera": "Insert of the trash bin, locked",
+        "characters": [],
+        "motion": "The far bedroom door swings shut and the bin lid rocks after a muffled ring inside."
+      },
+      "action_seconds": 2
+    },
+    {
+      "id": "c48",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "The east covered corridor of the old Shen house at night, seen from the courtyard side; a wooden pillar in the left foreground; behind her the pillars and the closed bedroom doors along the wall. Exactly one person in the whole frame: Shen Yuetang in her moon-white frog-button shirt, ankle-length navy skirt and black cloth shoes, seated on the bench, half-lit by the nearer paper lantern. In the first second her head turns sharply toward the trash bin off screen right; she presses her hands on her knees once and, back straight, rises slowly. Eyes suddenly wide, brows tightening, lips pressed shut. End: halfway up.",
+        "camera": "Medium shot, tilt up",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "Shen Yuetang turns toward the bin and rises slowly from the bench."
+      },
+      "action_seconds": 2
+    },
+    {
+      "id": "c49",
       "template": "shot",
       "lines": [
         {
           "id": "t003019",
           "speaker": "yuetang-18",
           "text": "鈴鐺在垃圾桶裡響……這孩子，有事不敢說。",
-          "emotion": "基本款"
+          "emotion": "輕、近"
         }
       ],
       "data": {
-        "prompt": "The east covered corridor of the old Shen house at night under a warm paper-shaded lamp: Shen Yuetang in her moon-white high-collared cotton shirt, her thick black braid over her right shoulder; behind her only a wooden pillar and the dark courtyard. She is the only person in the frame, not smiling. She rises slowly and steadily from the bench into the frame, folds both hands in front of her waist, and turns her head to look toward the kitchen door off screen right. Her mouth stays closed; the line is her inner voice.",
-        "camera": "close-up, slow push from chest to face",
+        "prompt": "The east covered corridor of the old Shen house at night; behind her a wooden pillar and the closed bedroom doors along the wall. Exactly one person in the whole frame: Shen Yuetang in her moon-white frog-button shirt, ankle-length navy skirt and black cloth shoes, standing before the bench, half-lit by the nearer paper lantern, framed from the chest up from the first frame to the last. From the first second she straightens, folds both hands at her waist and turns her face toward the kitchen door off screen right, taking half a step that way and stopping. Brows drawn tight, eyes fixed off screen right, mouth corners down, nostrils flaring with one breath. Her lips stay together the whole shot; the line is her inner voice. End: standing still, looking off screen right.",
+        "camera": "Close-up, slow push in",
         "characters": [
           "yuetang-18"
-        ]
+        ],
+        "motion": "Shen Yuetang takes half a step toward the bin and stops, her hands folded."
       }
     }
   ]

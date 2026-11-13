@@ -39,6 +39,22 @@ export COLAB_AUTH="${COLAB_AUTH:-oauth2}"
 export COLAB_GPU="${COLAB_GPU:-A100}"
 export COLAB_EXEC_TIMEOUT="${COLAB_EXEC_TIMEOUT:-3600}"
 
+# One Colab account per agent (scripts/accounts.py claim): COLAB_ACCOUNT_SLOT=a-e puts that
+# account's `colab` shim first on PATH, so the CLI runs with the account's own HOME (its token and
+# its session list). Unset or `default`: the token in this user's ~/.config/colab-cli, as before.
+account_slot="${COLAB_ACCOUNT_SLOT:-}"
+account_slot="${account_slot,,}"
+case "${1:-}" in
+  "" | -h | --help | check | images-check | cuts | test) ;;
+  *)
+    if [[ -n "$account_slot" && "$account_slot" != "default" ]]; then
+      [[ "$account_slot" =~ ^[a-e]$ ]] || { echo "[minimax-h3-colab] COLAB_ACCOUNT_SLOT must be a-e or default" >&2; exit 2; }
+      account_bin="${COLAB_ACCOUNTS_ROOT:-$HOME/.cache/minimax-h3-colab/accounts}/$account_slot/bin"
+      [[ -x "$account_bin/colab" ]] || { echo "[minimax-h3-colab] account ${account_slot^^} is not set up on this machine; run: accounts.py claim --slot $account_slot --holder <name>" >&2; exit 2; }
+      export PATH="$account_bin:$PATH"
+    fi ;;
+esac
+
 case "${1:-}" in
   "" | -h | --help) sed -n '2,25p' "$0"; exit 0 ;;
   check)

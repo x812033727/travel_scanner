@@ -1,0 +1,484 @@
+{
+  "batch_id": "wave62-tech-20261111",
+  "created_on": "2026-11-12",
+  "scope": "黃燈秒數的設計依據、行為與事故研究（新組題 C8-01，作者 F20，覆核 V23），後備。",
+  "sources": [
+    {
+      "id": "T62-S001",
+      "url": "https://rosap.ntl.bts.gov/view/dot/72449/dot_72449_DS1.pdf",
+      "canonical_url": "https://rosap.ntl.bts.gov/view/dot/72449",
+      "title": "Traffic Signal Change and Clearance Interval Pooled Fund Study: Synthesis Report (FHWA-HOP-23-037)",
+      "publisher": "美國聯邦公路總署（FHWA），2023 年 3 月；作者含 Bonneson 等",
+      "version": "定稿 PDF（ROSA P 典藏）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 ROSA P 連結；curl GET 200（工具預設標頭），pdftotext -layout 轉文字",
+      "reading_scope": "全文：Executive Summary、Chapter 1–3 全部逐段讀（含 Table 1–10、Figure 圖說）；Chapter 4–5（研究計畫、資料蒐集）只瀏覽",
+      "locator": "Executive Summary p.15–17；Ch.2〈Overview of Calculation Methods〉p.23–24、〈Overview of Vehicle Codes〉p.25、〈MUTCD〉p.26–27、〈Automated Enforcement〉p.27–28；Ch.3 Table 1 p.31–32、〈Methods Based on Behavioral Studies〉p.33–35、Table 2–3 p.37–38、〈ITE 2020 extended kinematic〉p.41–43、〈Yellow Change Interval / Performance Change〉p.53–54、Table 8–9 p.60–62、Zimmerman & Bonneson 63 起事故 p.62、Table 10 p.64",
+      "summary": "FHWA 委託的綜整：黃燈（change interval）與全紅（red clearance）70 年來沒有共識。多數機關用源自 Gazis、Herman、Maradudin（1960）的運動學公式（ITE 自 1965 年採用），也有「速限 mph÷10」經驗法、統一秒數、停車機率法。行為研究：Chang 等（1985，維吉尼亞與德州 7 路口）95% 選擇通過的車在不到約 4.5 秒內抵達停止線、與接近速度無關；Wortman & Fox（1986，亞利桑那 30/40/50 mph）約 95% 最後通過的車在黃燈起亮時距路口 4 秒以內；亞利桑那 5 路口只有約 30% 停車者近似等減速。NCHRP 731 量到平均煞車反應 1.0 秒（85 百分位 1.33）、平均減速度 10.08 ft/s²（85 百分位 12.89）。MUTCD 建議黃燈 3–6 秒。美國 39 州為允許式黃燈法、11 州限制式（西維吉尼亞全限制）。黃燈每加 1 秒：Bonneson & Zimmerman 德州 10 路口前後比較，違規至少減 50%（黃燈不超過 5.5 秒）；Retting 等賓州 2 路口減 36%。事故面：Persaud 等（2012）黃燈加 1.0 秒的 5 個路口追撞 −6.6%、直角撞 +7.6%，均不顯著；Souleyrette 等明尼亞波利斯加設全紅的 22 路口，目標事故約 +30%；單獨加長全紅平均 1.1 秒的 14 路口總事故 −20.2%（顯著）。63 起闖紅燈事故照片：對向左轉事故多在紅燈頭幾秒，直角撞除一起外都在紅燈 5 秒後。Tarnoff：8 時相、v/c 0.9 時全紅由 0.5 秒拉到 5.0 秒，平均延滯由 30.0 增至 45.6 秒／車。ITE 2020 採用 Järlström 的延伸運動學公式處理轉彎車，可能算出超過 MUTCD 上限的黃燈。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "綜整報告，多數數字是轉述原研究（Chang 1985、Wortman & Fox 1986、Persaud 2012、Souleyrette 2007、Tarnoff 2004 等原文未讀）；引用時要寫「FHWA 綜整轉述」。美國法規與英制單位；不是台灣規範。Persaud 研究未說明每路口改了幾個時相。 覆核 V23（2026-11-12）：limitations 補：（1）p.60 轉述 Bonneson & Zimmerman（2006）模型：黃燈加 1.0 秒對應致死受傷闖紅燈事故約減 40%（預測值），F20-008 必須同列；（2）p.62 的 63 起事故照片與 F20-S006 Figure 5-4 是同一批（亞利桑那兩城市），不得當兩個來源；（3）p.34『may pose risks for lower speed approaches』是 FHWA 對 Wortman & Fox 的推測語，p.16、p.137 另寫統一秒數也可能有風險、p.17 寫找不到檢驗縮短黃燈的研究；（4）Järlström 原文寫的是 self published、not peer-reviewed，未稱工程師；（5）NCHRP Table 3 分母 217。",
+      "author_cache": {
+        "file": "f20src/dot_72449_DS1.txt",
+        "sha256_prefix": "16962171124bb25d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T62-S002",
+      "url": "https://onlinepubs.trb.org/onlinepubs/nchrp/docs/NCHRP03-95_FR.pdf",
+      "canonical_url": "https://onlinepubs.trb.org/onlinepubs/nchrp/docs/NCHRP03-95_FR.pdf",
+      "title": "Guidelines for Timing Yellow and Red Intervals at Signalized Intersections — Final Report, NCHRP Project 03-95",
+      "publisher": "Transportation Research Board／NCHRP（McGee 等；後出版為 NCHRP Report 731，2012）",
+      "version": "研究團隊最終報告 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 onlinepubs.trb.org 連結；curl GET 200，pdftotext 轉文字",
+      "reading_scope": "Abstract、Executive Summary、Chapter 1〈The Dilemma Zone〉、Chapter 2 State of Practice 調查結果、Chapter 3 資料蒐集與〈Establishment of Dilemma Zone Boundaries〉逐段讀；後段統計模型只讀結論",
+      "locator": "Abstract p.viii；Executive Summary p.1–2；〈The Dilemma Zone〉p.6–7；調查重點與 Table 3–4 p.22–23；Table 11 p.36–37",
+      "summary": "現場調查 5 州 83 個路口進口道、超過 320 小時錄影、約 7,500 輛車：確認反應時間 1.0 秒、減速度 10 ft/s²；直行車 85 百分位接近速度≈速限＋7 mph，左轉≈速限−5 mph，全紅計算左轉用 20 mph。第一類兩難區（Gazis 等）：太近停不下、太遠過不去；第二類（1974 年 ITE 南區委員會）：駕駛人猶豫區，停車機率 10%–90%，多數研究落在距停止線 2.5–5.5 秒；不論黃燈多長，每次黃燈都會存在。本研究 Table 11：黃燈起亮時距停止線 2.5 秒者 7.9% 停車、5.5 秒者 93.1% 停車。北美 267 個回覆機關中 161 個（60%）沒有正式黃燈時制政策；39% 用運動學公式、18% 用依速度查表、6% 全部統一值；72% 的最短黃燈為 3 秒；最長黃燈 3–7 秒，38% 定 5 秒。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "是研究團隊的最終報告，不是 NCHRP 731 刊本本身（內容對應）；英制單位。調查是 2010 年前後美國、加拿大機關自填。",
+      "author_cache": {
+        "file": "f20src/NCHRP03-95_FR.txt",
+        "sha256_prefix": "85b8c21663ff913c",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T62-S003",
+      "url": "https://law.moj.gov.tw/LawClass/LawGetFile.ashx?FileId=0000372609&lan=C",
+      "canonical_url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=K0040014&flno=231",
+      "title": "道路交通標誌標線號誌設置規則 第 231 條（完整條文檔，含黃燈表與全紅公式）",
+      "publisher": "交通部、內政部（全國法規資料庫）",
+      "version": "現行條文（第 231 條單條頁與其連結的完整條文 PDF；同站台北市法規查詢系統匯出版標示修正日期民國 115 年 3 月 11 日）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（限 law.moj.gov.tw）列出單條頁；單條頁註明「條文排版無法完整呈現，請詳閱完整條文」並連到 LawGetFile.ashx 的 PDF，curl GET 200，pdftotext 轉文字；臺北市法規查詢系統 FL012456 匯出 PDF（搜尋結果連結）只用來核對其餘條文",
+      "reading_scope": "第 231 條全文（一至八款）與第 232、233 條；完整條文 PDF 3 頁全讀",
+      "locator": "第 231 條第一款表（行車速限 50 以下：黃燈 3 秒；51–60：4 秒；61 以上：5 秒）；第二款與備註（全紅一秒以上，(W+L)/V 為原則、最短不得小於 (W+L)/2V，L 得用 6 公尺、V 得用行車速限）；第 232 條（啟動與斷電重開先全紅 3 秒）；第 233 條（週期 30–200 秒為原則）",
+      "summary": "台灣的黃燈時間「得」依速限分三段：50 公里以下 3 秒、51–60 公里 4 秒、61 公里以上 5 秒；黃燈後應有 1 秒以上全紅，直行全紅宜依 (W+L)/V 計（W：近端停止線至遠端路段起點距離；L：平均車長得採 6 公尺；V：平均車速得採速限，單位公尺／秒），以此為原則、最短不小於 (W+L)/2V；有行人時以 P（至遠端行人穿越道）取代 W。號誌啟動或斷電重開先全紅 3 秒。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "法條用「得依下表」「宜依公式」，不是逐路口實測；本來源沒有說明表格背後的推導（沒有反應時間或減速度參數）。單條網頁版表格無法顯示，以官方連結的 PDF 為準。與池中 SRC-9108b78ad39079b3／SRC-f4ee5ee56c2f4aeb 不同法規（那兩筆是道路交通安全規則）。 覆核 V23（2026-11-12）：summary 補：W 定義為『交岔路口近端停止線至遠端路段起點之距離』；條文沒有寫黃燈或全紅的目的，也沒有推導。",
+      "author_cache": {
+        "file": "f20src/moj_K0040014_231_full.txt",
+        "sha256_prefix": "6d7a7bfd0fb70cf9",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T62-S004",
+      "url": "https://igchicago.org/?p=6215",
+      "canonical_url": "https://igchicago.org/?p=6215",
+      "title": "Inspector General's Statement to City Council Committee on Pedestrian and Traffic Safety（紅燈照相計畫審查）",
+      "publisher": "City of Chicago Office of Inspector General（芝加哥市監察長辦公室）",
+      "version": "網頁聲明（2014 年 10 月 28 日發布）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 igchicago.org 連結；curl GET 200，去標籤後全文閱讀",
+      "reading_scope": "全文",
+      "locator": "〈Suggestions〉段（2014 年初接受 2.9 秒黃燈、恢復 3.0 秒硬下限）；〈Specific Anomalies〉段（排除縮短黃燈等四種原因；119th & Halsted 1,618 張、Kimball-Lincoln-McCormick 45,444 筆未記錄、Halsted-Fullerton-Lincoln 33 筆）",
+      "summary": "監察長指出：2014 年初芝加哥開始接受記錄黃燈只有 2.9 秒的違規，與公開的 3.0 秒標準不一致，引起民眾與行政聽證處的混亂和疑慮；建議恢復拒收 3.0 秒以下，CDOT 已確認永久恢復 3 秒硬下限。針對論壇報點名的「暴增」路口，現有紀錄與訪談不支持市府為了多開單而縮短黃燈；同一路口不同車道的黃燈差異符合標準。另找到三個原因：一處觸發速度設太低近兩個月多開 1,618 張；一處感應線圈長期故障，估計 45,444 筆違規沒被記錄。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "市府監察機關的國會聲明，不是完整審查報告；常見新聞說的「多開約 7.7 萬張」不在此頁，片中不用。",
+      "author_cache": {
+        "file": "f20src/igchicago_6215.html",
+        "sha256_prefix": "f74f4f1a57eab70a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T62-S005",
+      "url": "https://rosap.ntl.bts.gov/view/dot/83118/dot_83118_DS1.pdf",
+      "canonical_url": "https://rosap.ntl.bts.gov/view/dot/83118",
+      "title": "Evaluation of Intersection Safety and Capacity Relevant to Signal Timing on Arizona's State Highway System (SPR-763)",
+      "publisher": "Arizona Department of Transportation Research Center／FHWA，2024–2025",
+      "version": "定稿 PDF（ROSA P）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 ROSA P 連結；curl GET 200，pdftotext 轉文字",
+      "reading_scope": "Abstract、Introduction、Pilot Study（Table 7、Naïve Approach、Flow and Cycle Length Correction、Regression Modeling、Conclusion）逐段讀；附錄未讀",
+      "locator": "Technical Report Documentation Page Abstract；p.21–25（Table 7 與 Pilot Study Before-and-after Comparison、Conclusion）",
+      "summary": "亞利桑那州公路的試辦：依現場資料重算黃燈與全紅後上線，兩個月後再蒐集（11 個左轉、7 個直行動線）。左轉黃燈平均加長 18.11%、全紅縮短 3.81%：紅燈進入減 18.3%。迴歸結果：左轉動線的全紅加長（−1.7 到 1.7 秒範圍內）與全紅期間進入路口的車變多相關（b1＝0.11，顯著）；直行全紅加長 0–0.9 秒則沒有顯著增加紅燈進入。結論列為：左轉全紅加長傾向增加紅燈進入。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "試辦樣本小（11＋7 動線），有一處前後觀察時長不同且前期在疫情車流下，作者自己列為離群；只有違規與進入次數，沒有事故結果。 覆核 V23（2026-11-12）：summary 改：『紅燈進入』是全紅期間前軸越過停止線的車數，全紅變長、計數窗也變長；左轉黃燈加長 18.11% 同時黃燈進入 +61%；迴歸 b0＝0.64 表示其他因素就讓左轉紅燈進入率降 36%；報告沒有任何駕駛人適應的說法。",
+      "author_cache": {
+        "file": "f20src/dot_83118_DS1.txt",
+        "sha256_prefix": "4ea8a33f3853f812",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T62-S006",
+      "url": "https://rosap.ntl.bts.gov/view/dot/87484/dot_87484_DS1.pdf",
+      "canonical_url": "https://rosap.ntl.bts.gov/view/dot/87484",
+      "title": "Development of Guidelines for Identifying and Treating Locations with a Red-Light-Running Problem (FHWA/TX-05/0-4196-2)",
+      "publisher": "Texas Transportation Institute（Bonneson、Zimmerman 等）／TxDOT，2004 年 9 月",
+      "version": "定稿 PDF（ROSA P）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 ROSA P 連結（library.ctr.utexas.edu 同份 TLS 驗證失敗，未繞過）；curl GET 200，pdftotext 轉文字",
+      "reading_scope": "Chapter 4 違規頻率模型各節（含 Figure 4-3、4-12 說明）與 Chapter 5 Time-Into-Red 一節逐段讀；其餘章節以關鍵字定位",
+      "locator": "Chapter 4〈Yellow Interval Duration〉p.4-9 與 Figure 4-12 說明；Chapter 5 Figure 5-4／5-5 與其後兩段 p.5-15–5-16",
+      "summary": "德州資料（275 小時觀測）：違規隨黃燈加長而減少，黃燈短於 3.5 秒時違規顯著增加。依其模型，黃燈加長 1.0 秒對應違規修正係數 0.4（約減 60%），適用 3.0–5.5 秒黃燈。闖紅燈事故按「進入紅燈幾秒」分佈：前 5 秒最多，之後下降，20 秒後維持小而固定；直角撞在紅燈 5–15 秒偏多，因為橫向排隊車正放行。作者推論：加長全紅只能減少紅燈頭幾秒的那一小部分直角撞。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "模型預測值，與 F20-S001 轉述的 Bonneson & Son 模型（加 1 秒約減 53%）不是同一個模型，兩數字不可混用；只取方向與「3.5 秒以下明顯增加」。 覆核 V23（2026-11-12）：reading_scope 補讀第 2 章：Figure 2-4（181 個進口道，黃燈越長事故越少）與 Figure 2-8（加 1.0 秒、嚴重闖紅燈事故 MF 約 0.6、約減 40%）；Figure 5-4 資料來源是亞利桑那兩城市照相執法（左轉 22、直角 41 起）。",
+      "author_cache": {
+        "file": "f20src/dot_87484_DS1.txt",
+        "sha256_prefix": "b374664859c08fac",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T62-S007",
+      "url": "https://crashstats.nhtsa.dot.gov/Api/Public/Publication/811617",
+      "canonical_url": "https://crashstats.nhtsa.dot.gov/Api/Public/Publication/811617",
+      "title": "Tire-Related Factors in the Pre-Crash Phase (DOT HS 811 617)",
+      "publisher": "NHTSA National Center for Statistics and Analysis（Eun-Ha Choi），2012 年 4 月",
+      "version": "定稿 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 crashstats 連結；curl GET 200，pdftotext 轉文字",
+      "reading_scope": "Executive Summary 與 6.3〈Tire tread depth〉",
+      "locator": "Executive Summary 要點；§6.3 與 Figure 5",
+      "summary": "NMVCCS 2005–2007 輕型車事故：胎紋 0–2/32 吋的輪胎約 26% 裝在事故前出過輪胎問題的車上，3–4/32 吋只有 8%；0–2/32 吋的車在事故前出輪胎問題的比例是 3–4/32 吋的 3 倍。NHTSA 建議胎紋 2/32 吋時更換（FMVSS 139 磨耗指示）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "「輪胎問題」含爆胎、漏氣等，不專指水漂；只列入 not_added 參考。",
+      "author_cache": {
+        "file": "f20src/nhtsa_811617.txt",
+        "sha256_prefix": "bd13af2c84ffe712",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "T62-001",
+      "question": "台灣的路口，黃燈為什麼有的 3 秒、有的 4 秒？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.taiwan_yellow_speed_band_allred_formula",
+      "answer_target": "台灣的條文是看那條路的行車速限。《道路交通標誌標線號誌設置規則》第 231 條第一款：黃燈時間「得依下表」——速限每小時 50 公里以下 3 秒、51 到 60 公里 4 秒、61 公里以上 5 秒。第二款規定黃燈結束後「應有一秒以上之全紅時間」，直行交通的全紅時間「宜依」公式（W＋L）÷V 計算：W 是路口近端停止線到遠端路段起點的距離，L 是平均車長、得用 6 公尺，V 是平均車速、得用行車速限（公尺／秒）；以這個值為原則，最短不得小於（W＋L）÷2V。條文只給表與公式，沒有寫這張表是怎麼定出來的。",
+      "scope": "現行條文用「得」「宜」；條文不說明表的推導，也不說明黃燈與全紅各自的目的（全紅的目的另見池中 T4005，不在本核心重講）。不談闖紅燈罰則與認定，不評論這張表合不合適。",
+      "source_ids": [
+        "T62-S003"
+      ],
+      "source_locator": "F20-S003：第 231 條第一、二款表與備註",
+      "premise_status": "screened",
+      "notes": "算 1.0 條（原始法規，兩款合一）。刪掉作者對黃燈／全紅分工的解讀句，避免與 T4005 重複並避免把解讀當條文。 原提案 F20-001（目標 C8-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；來源合規、PDF 雜湊相同、數字逐字對上；刪掉不在條文上的分工句、改正 W 的定義。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為黃燈秒數是隨便設的；其實台灣是照速限分三段，紅燈前那一秒全紅另有公式。",
+        "visual": "台灣路口俯視，三種速限標誌各配一條黃燈秒數條；黃燈後插一格全紅，公式 (W+L)/V 浮在路口上。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T62-002",
+      "question": "黃燈的秒數，最早是根據什麼算出來的？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.kinematic_yellow_type1_dilemma_origin",
+      "answer_target": "FHWA 2023 年的綜整報告寫：多數美國機關用的是 Gazis、Herman、Maradudin 三人 1960 年提出的運動學模型的某種版本，美國運輸工程師學會（ITE）的建議做法從 1965 年起就以它為本；報告也寫，原作者的目的是提供洞見，不是替機關訂準則，而且模型只考慮直行車。想法是：黃燈亮起時，離路口夠遠的車要能以可接受的減速度停下，夠近的車要能開過去；黃燈太短，中間就會出現「停不下、也過不去」的一段，NCHRP 報告稱為第一類兩難區。算式用反應時間、接近速度、減速度、坡度。美國號誌手冊（MUTCD）只給指引：黃燈最短 3 秒、最長 6 秒，較長的留給高速進口道；也有工程師用「速限（英里／時）除以 10」的經驗法。",
+      "scope": "美國的歷史與準則，Gazis 1960 原文未讀（付費），以 FHWA 綜整轉述；不說台灣第 231 條的表由此推得（沒有來源）。",
+      "source_ids": [
+        "T62-S001",
+        "T62-S002"
+      ],
+      "source_locator": "F20-S001：p.23–24、p.26–27、Table 1 p.31–32；F20-S002：〈The Dilemma Zone〉p.6–7",
+      "premise_status": "screened",
+      "notes": "算 0.75 條：模型來源與第一類兩難區 0.5（轉述）＋MUTCD 原文引句 0.25；mph÷10 是方法，不算事實。 原提案 F20-002（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；內容對得上，但幾乎全是綜整轉述，下修到 0.75；補上 FHWA 自己寫的『原作目的不是準則、只考慮直行車』，讓後面的轉折有根據。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黃燈不是提醒你「快變紅了」那麼簡單，它的長度是為了消滅一段停不下又過不去的死區。",
+        "visual": "俯視路口前的道路，畫出『能停下』與『能通過』兩條界線；黃燈太短時兩線之間出現紅色空白帶。",
+        "seconds": [
+          55,
+          70
+        ]
+      }
+    },
+    {
+      "id": "T62-003",
+      "question": "公式裡假設駕駛人反應 1 秒、減速度固定，這些數字是誰量出來的？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.nchrp_field_prt_decel_approach_speed",
+      "answer_target": "美國 NCHRP 03-95 研究在 5 個州 80 多個路口進口道架起 20 呎高的攝影桿，錄了 320 小時以上、抽出約 7,500 輛車。只看黃燈亮後第一輛停車的車：煞車反應平均 1.00 秒（85% 在 1.33 秒內，約 2,400 輛），減速度平均每秒平方 10.08 英尺（85 百分位 12.89）。報告因此「確認」公式可沿用反應 1.0 秒、減速度 10 ft/s²。速度則不宜直接用速限：直行車的 85 百分位接近速度大約是速限再加 7 英里／時，左轉車約是速限減 5 英里／時。",
+      "scope": "英制原值，片中換算公制要標「換算」；反應時間與減速度只描述第一輛停車的車；美國 2009–2010 年資料。",
+      "source_ids": [
+        "T62-S002",
+        "T62-S001"
+      ],
+      "source_locator": "F20-S002：Executive Summary p.1–2；F20-S001：Table 2–4 p.37–39",
+      "premise_status": "screened",
+      "notes": "算 1.25 條：同一研究的反應時間與減速度 1.0；85 百分位速度≈速限＋7 mph 0.25（同一研究另一個數）。 原提案 F20-003（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字逐一對上；同一研究多個數字按嚴格標準合計 1.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "公式裡的「1 秒」不是拍腦袋，是幾千輛車錄影量出來的平均——但平均就代表有一半的人比較慢。",
+        "visual": "攝影桿在路邊錄影；畫面上一台車的煞車燈亮起，計時器停在 1.0 秒，旁邊分布曲線標出 1.33 秒。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T62-004",
+      "question": "照公式，速度越慢的路黃燈越短；真的開車的人也是這樣決定停或走嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.behavioral_go_vehicles_speed_independent",
+      "answer_target": "FHWA 2023 年綜整轉述的兩組 1980 年代美國觀察說不太是。Chang 等人在維吉尼亞與德州 7 個路口看到：決定通過的車，有 95% 在不到約 4.5 秒內抵達停止線，而且跟接近速度無關；FHWA 寫，這個發現與『速度低就給短黃燈』的運動學算法相矛盾。Wortman 與 Fox 在亞利桑那 30、40、50 英里時速的路口也看到，約 95% 最後通過的車在黃燈亮時離路口 4 秒以內。另一組亞利桑那 5 個路口的觀察：停車的人只有約三成接近公式假設的等減速。FHWA 同時提醒：各研究路口需要的黃燈並不一樣，大多落在 4 到 5 秒，直接改成統一秒數也可能有風險，還需要更多研究；它也找不到任何研究檢驗過縮短黃燈的安全效果。",
+      "scope": "全為 FHWA 綜整轉述，原研究未讀；美國 1980 年代資料。FHWA『現行算法在 40 mph 以下可能有風險』一句是 FHWA 的推測語（suggest、may），只能放在本筆 scope 供撰稿者知道，片中不念、不上字卡，也不得與台灣第 231 條的 3 秒並列、不得把 50 公里換算成英里拿來對照；不得說或暗示台灣的秒數太短。",
+      "source_ids": [
+        "T62-S001"
+      ],
+      "source_locator": "F20-S001：〈Methods Based on Behavioral Studies〉p.33–35；Executive Summary p.16",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：兩組轉述研究同一結論 0.75；三成等減速 0.25。 原提案 F20-004（目標 C8-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；轉折有據、『矛盾』是 FHWA 原字；但『低速短黃燈可能有風險』雖是 FHWA 原句，卻是推測語，放進以台灣 3 秒開場的片子會變成對台灣的評價，片中不用。補上 FHWA 的反向提醒與『沒有縮短黃燈的研究』。全是轉述，下修 1.0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為「速限低→黃燈短」很合理；實地看，駕駛人決定通過的時間差不多都是 4 秒左右，不管開多快。",
+        "visual": "三條速度不同的道路並排，每條上的「通過車」點雲都擠在離停止線 4 秒以內的同一條線前。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "T62-005",
+      "question": "黃燈調得剛剛好，是不是就不會有人在路口前猶豫？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.type2_option_zone_persists_any_yellow",
+      "answer_target": "不會。另一種兩難區叫「選擇區」或第二類兩難區，是駕駛人自己猶豫停或走的那一段：1974 年 ITE 南區委員會把它定義成停車機率在 10% 到 90% 之間的距離，多數研究落在黃燈亮時距停止線 2.5 到 5.5 秒。NCHRP 的錄影也一樣：離停止線約 2.5 秒的駕駛人只有 7.9% 停車，約 5.5 秒的有 93.1% 停車。報告寫明：不論黃燈多長，每一次黃燈都會有這段猶豫區，因為不同的人對黃燈的反應本來就不同。",
+      "scope": "停車比例是 NCHRP 83 個路口的混合資料。",
+      "source_ids": [
+        "T62-S002"
+      ],
+      "source_locator": "F20-S002：p.7–8；Table 11 p.36–37",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：定義與本研究量測同一主題合 1.0。 原提案 F20-005（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）照原稿收；逐句對上，無須改字。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黃燈能消滅「停不下又過不去」，但消滅不了「要不要停」的猶豫。",
+        "visual": "以秒為刻度的道路軸，2.5 到 5.5 秒間一段漸層色帶，色帶上方百分比從 7.9% 爬到 93.1%。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T62-006",
+      "question": "既然有公式，為什麼不同城市的黃燈還是不一樣長？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.agency_practice_variation_permissive_restrictive",
+      "answer_target": "因為公式只是做法之一，法律對黃燈的定義也不同。NCHRP 調查北美機關：267 個回覆中 161 個（60%）說自己沒有正式的黃燈時制政策；在 217 份說明做法的回覆裡，39% 用運動學公式、18% 用依速度的查表、19% 用統一值但條件需要時例外、6% 全部同一個值。72% 的機關最短黃燈定 3 秒；最長黃燈從 3 到 7 秒都有，最多的是 5 秒（38%）。FHWA 綜整：美國 39 州是『允許式』——黃燈時進入路口、紅燈時人還在路口裡都合法；11 州是限制式，其中西維吉尼亞要求黃燈內就得能開出路口。FHWA 寫，在限制式黃燈的地方，黃燈本身也應把全紅那段算進去。",
+      "scope": "美國與加拿大 2010 年前後自填調查；台灣的認定方式不在來源，片中不推論台灣屬哪一類，也不拿台灣的速限表和美國查表作比較。",
+      "source_ids": [
+        "T62-S002",
+        "T62-S001"
+      ],
+      "source_locator": "F20-S002：p.22–23 Table 3–4；F20-S001：〈Overview of Vehicle Codes〉p.25、Figure 7 前後 p.41–42",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：機關做法分布 0.5、黃燈法律兩類 0.5。 原提案 F20-006（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字大致對，改正分母、補 19%、刪掉與台灣不精確的類比。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黃燈長短不只是物理問題，也是行政與法律選擇；台灣用的「依速限查表」在美國也是兩成機關的做法。",
+        "visual": "美國地圖分三色（允許／部分限制／全限制）；旁邊圓餅圖：公式 39%、查表 18%、統一值 6%、其他。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T62-007",
+      "question": "把黃燈拉長一秒，闖紅燈的人真的會變少嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.yellow_extension_reduces_violations",
+      "answer_target": "違規會少。FHWA 綜整轉述兩組前後比較：Bonneson 與 Zimmerman 在德州 10 個路口把黃燈加長 1.0 秒（加長後不超過 5.5 秒），闖紅燈至少少一半；Retting 等人在賓州 2 個路口加 1 秒，少 36%。德州另一份報告的觀測也寫：黃燈短於 3.5 秒時，闖紅燈明顯增加。至於『駕駛人摸熟了長黃燈就會把它當綠燈的延長』，FHWA 說這是交通工程師之間的經驗說法，文獻沒有定論。",
+      "scope": "違規是替代指標，不是事故；兩個百分比分屬不同研究，分開講，不合成一個範圍，也不與 S006 模型的 60% 或 Bonneson & Son 的 53% 混用。『3.5 秒』是美國德州路口資料，不得與台灣 3 秒並列評論。",
+      "source_ids": [
+        "T62-S001",
+        "T62-S006"
+      ],
+      "source_locator": "F20-S001：p.53–54；F20-S006：Chapter 4 p.4-9（3.5 秒）",
+      "premise_status": "screened",
+      "notes": "算 1.25 條：兩組轉述的前後研究方向一致 0.75；3.5 秒以下違規上升（原文讀到）0.5。 原提案 F20-007（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字對；改掉不在原文的機構名、把兩個百分比分開，並加上不得與台灣 3 秒並列的限制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "多一秒黃燈，闖紅燈就可以少三成到一半以上。",
+        "visual": "同一路口兩段縮時：黃燈 3 秒與 4 秒，紅燈亮後還衝進路口的車用紅框標出，數量對比。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T62-008",
+      "question": "闖紅燈變少了，路口的車禍也跟著變少嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.interval_change_crash_evidence_mixed",
+      "answer_target": "證據並不一致。德州的 Bonneson 與 Zimmerman 用路口資料建的模型預測：黃燈加長 1.0 秒，闖紅燈造成的死傷事故約少 40%。可是實際改過時制的路口比較並沒有這麼整齊：FHWA 綜整轉述 Persaud 等人比較 31 個改過時制與 135 個沒改的路口，黃燈加 1.0 秒的 5 個路口，追撞少 6.6%、直角撞多 7.6%，全都不顯著；黃燈與全紅一起加長的 11 個路口，追撞多 11.7%、直角撞少 3.9%，也不顯著；只有單獨把全紅平均加長 1.1 秒的 14 個路口，總事故少 20.2%、達顯著。明尼亞波利斯一項研究，加設全紅的 22 個路口和沒設的 47 個比，目標事故反而多約 30%。FHWA 的結論是：黃燈長短對事故的影響資料有限，哪些事故類型會變、變多少，文獻並不一致。",
+      "scope": "全部是 FHWA 綜整轉述（Persaud、Souleyrette 原文未讀）＋S006 原文模型；Persaud 研究未說明每路口改了幾個時相；都是相關不是因果。片中不說『全紅會增加事故』，也不說『加長黃燈沒用』；−40% 是模型預測值。",
+      "source_ids": [
+        "T62-S001"
+      ],
+      "source_locator": "F20-S001：Table 8 p.60、Souleyrette 段 p.61–62、Table 9 p.62；Executive Summary p.17",
+      "premise_status": "screened",
+      "notes": "算 1.25 條：Persaud 同一研究多數字 0.5（轉述）；明尼亞波利斯 0.25（轉述）；B&Z 模型 −40%（S006 原文讀到）0.5。 原提案 F20-008（目標 C8-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字都對，但只挑了不利的研究；補上作者自己來源裡的 −40% 模型後，轉折仍成立（違規明確下降、事故證據不一致），而且不再是單向的。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為「黃燈長＝闖紅燈少＝車禍少」是一條直線；事故資料卻沒有乖乖跟著違規一起降。",
+        "visual": "兩根柱：違規量大幅下降；旁邊事故量的柱子上上下下、標著「不顯著」，一根全紅的柱子反而變高。",
+        "seconds": [
+          60,
+          75
+        ]
+      }
+    },
+    {
+      "id": "T62-009",
+      "question": "紅燈後那一秒全紅，到底擋掉了哪一種車禍？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.red_light_crash_time_into_red_distribution",
+      "answer_target": "德州交通研究院的研究者拿亞利桑那兩個城市照相執法拍到的 63 起闖紅燈事故，看每一起發生在紅燈第幾秒：事故最多落在紅燈的前 5 秒，之後下降，20 秒以後小而穩定。22 起對向左轉事故多在紅燈頭幾秒；41 起直角撞除了一起，都發生在紅燈 5 秒以後，5 到 15 秒最多——研究者解釋，那時橫向排隊的車正在放行。他們因此推論：加長全紅可能減少紅燈頭幾秒那一小部分直角撞，但這類事故本來就少，直角撞的總數不一定會明顯下降。",
+      "scope": "單一資料集（63 起、亞利桑那兩城市），FHWA 綜整轉述的是同一批，不得當兩個來源；時間是照片時間戳記。",
+      "source_ids": [
+        "T62-S006",
+        "T62-S001"
+      ],
+      "source_locator": "F20-S006：Figure 5-4 說明 p.5-15–5-16；F20-S001：p.62 Figure 22 說明",
+      "premise_status": "screened",
+      "notes": "算 0.75 條：一組小樣本資料的分佈與作者推論。 原提案 F20-009（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；把同一批 63 起事故寫成兩個獨立來源，改正並下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最危險的不是剛變紅的那一瞬間，而是橫向車已經起步之後還衝進去的人——全紅保護不到他們。",
+        "visual": "時間軸從紅燈 0 秒往右，事故點散佈：左轉事故擠在前幾秒，直角撞多在 5 秒後；全紅只罩住最前面一小格。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T62-010",
+      "question": "亞利桑那重算黃燈和全紅之後，在紅燈期間進路口的車變多還是變少？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.arizona_pilot_retimed_intervals_entries",
+      "answer_target": "亞利桑那州交通局依現場資料重算黃燈與全紅，上線兩個月後再觀測 11 個左轉、7 個直行動線。左轉動線平均黃燈加長約 18%、全紅縮短約 4%：黃燈期間進入的車多了 61%，紅燈期間進入的少了 18.3%。迴歸分析裡，左轉動線的全紅加長（−1.7 到 1.7 秒範圍內）與『全紅期間越過停止線的車數』增加相關、統計顯著；直行全紅加長 0 到 0.9 秒則沒有顯著增加。報告只說相關，沒有說原因；它計算的是全紅這段時間內進入的車，全紅變長，計數的時間也跟著變長。",
+      "scope": "試辦樣本小（11＋7 動線），一處路口被列為離群；只有進入次數，沒有事故；不得寫成駕駛人『更敢闖』或『適應了安全餘裕』，不得用來暗示全紅有害。",
+      "source_ids": [
+        "T62-S005"
+      ],
+      "source_locator": "F20-S005：Table 7 p.22；p.23–25（Naïve Approach、Regression Modeling、Conclusion）",
+      "premise_status": "screened",
+      "notes": "算 0.5 條：單一小樣本試辦的方向性結果，含計數窗變長的限制。 原提案 F20-010（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；報告沒有支持『駕駛人會用掉安全餘裕』；改寫成報告實際量到的東西並下修。C8-01 不用本核心（它談進入次數、不談事故，也不能撐轉折二），留池備用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "安全餘裕被看見之後，可能被駕駛人用掉一部分。",
+        "visual": "左轉車道示意：全紅格子變長，紅燈後仍壓線轉進來的車點跟著變多。",
+        "seconds": [
+          35,
+          50
+        ]
+      }
+    },
+    {
+      "id": "T62-011",
+      "question": "黃燈和全紅都設長一點不就好了？代價是什麼？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.change_interval_lost_time_delay",
+      "answer_target": "代價是整個路口的時間。FHWA 綜整引用美國公路容量手冊：在預設條件下，每個時相的損失時間就等於黃燈加全紅，損失時間越多、延滯越大。它轉述 Tarnoff 的計算：八時相路口、車流接近容量（v/c 0.9）時，全紅從 0.5 秒拉到 5.0 秒，每輛車的平均延滯從 30.0 秒變成 45.6 秒；車流低到中等（v/c 0.5）時只多 0.6 到 1.9 秒。報告開頭也寫：太短可能不足以安全結束時相，太長會降低容量、造成高延滯。",
+      "scope": "延滯是公式計算，不是實測；轉述。",
+      "source_ids": [
+        "T62-S001"
+      ],
+      "source_locator": "F20-S001：Figure 23 說明 p.63–64；Table 10 p.64；Executive Summary p.15",
+      "premise_status": "screened",
+      "notes": "算 0.5 條：Tarnoff 計算結果（轉述）；損失時間式是方法不算。 原提案 F20-011（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；內容對；方法不算事實、計算值轉述，下修 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每一秒黃燈和全紅，都是所有方向一起不能走的時間，路口越忙越貴。",
+        "visual": "四向路口計時圓盤，每個時相之間的黃與紅切片被放大；旁邊延滯數字由 30.0 跳到 45.6。",
+        "seconds": [
+          35,
+          50
+        ]
+      }
+    },
+    {
+      "id": "T62-012",
+      "question": "黃燈差 0.1 秒，真的會有差嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.chicago_2_9s_yellow_citation_threshold",
+      "answer_target": "在芝加哥差了一整個信任問題。市監察長 2014 年向市議會報告：當年初，市府開始接受紀錄黃燈只有 2.9 秒的照相違規，與自己公開的 3.0 秒標準不一致，造成民眾與行政聽證處的混亂和疑慮；監察長建議恢復拒收 3.0 秒以下，交通局已確認永久恢復 3 秒硬下限。同一份聲明也說：針對媒體點名違規暴增的路口，紀錄與訪談不支持市府為多開單而縮短黃燈；找到的原因反而是設備——一處觸發速度設太低、多開了 1,618 張，一處感應線圈長期故障、估計 45,444 筆違規沒被記錄。",
+      "scope": "市府監察機關聲明；新聞常見的「多開約 7.7 萬張」不在本來源，不用。",
+      "source_ids": [
+        "T62-S004"
+      ],
+      "source_locator": "F20-S004：〈Suggestions〉段、〈Specific Anomalies〉段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條（原始官方聲明）；聲明日期 2014-10-28 寫進稿。 原提案 F20-012（目標 C8-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）照原稿收；逐句對上；與題目的關聯較弱（是執法門檻與信任問題），在片中只占一章的一半。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黃燈秒數一旦拿來開罰單，0.1 秒就變成公共信任問題；而真正讓數字亂掉的，是壞掉的感應器。",
+        "visual": "碼錶特寫在 2.9 與 3.0 之間跳動；切到一張罰單上的黃燈秒數欄。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T62-013",
+      "question": "左轉車要先減速再轉，黃燈是不是該給得比直行長？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.ite2020_extended_equation_turning_controversy",
+      "answer_target": "美國運輸工程師學會（ITE）2020 年的建議做法認為要另算：它依據 Järlström 自行發表、未經同儕審查的文章，採用『延伸運動學公式』，把轉彎車進路口前要先減到轉彎速度算進去；接近速度等於進入速度時（多數直行車），新式就退回舊式。FHWA 綜整列出的疑慮：新式算出的左轉黃燈有時超過部分機關可接受的上限，也可能與美國號誌手冊 3 到 6 秒的範圍衝突；它假設轉彎車在反應時間內維持原速，但實務者的經驗是轉彎車在黃燈亮前就已經在減速，因此可能高估。FHWA 為此與州和地方機關發起合作研究，2023 年的第一階段報告列的是待補的研究缺口。",
+      "scope": "只講 ITE 2020 與其爭議；不稱 Järlström 為工程師，不提他與奧勒岡技師委員會的訴訟（判決頁讀不到）。",
+      "source_ids": [
+        "T62-S001"
+      ],
+      "source_locator": "F20-S001：Executive Summary p.15–17；p.41–43（extended kinematic equation 與疑慮清單）",
+      "premise_status": "screened",
+      "notes": "算 0.5 條（轉述）。 原提案 F20-013（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；改掉來源沒有、且正好是爭議點的『工程師』稱呼。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連公式本身都還在被改，而改它的人一開始不是交通局的人。",
+        "visual": "直行車與左轉車兩條軌跡，左轉軌跡在路口前先畫出減速段；兩個算出來的黃燈長度並排，一個超出 6 秒刻度。",
+        "seconds": [
+          30,
+          45
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "T62-NA001",
+      "question": "胎紋只剩 2/32 吋的車，事故前出輪胎問題的機率比較高嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "T62-S007"
+      ],
+      "reason": "NHTSA 的「輪胎問題」包含爆胎、漏氣、胎面分離，不專指水漂；放進 C8-02 會把題目拉離「為什麼會飄」，也容易滑向換胎建議。 原提案 F20-NA001。",
+      "reentry_condition": "若另開「輪胎磨耗與事故」題，可作 0.5–1 條。",
+      "reading_status": "Executive Summary 與 §6.3 全讀"
+    },
+    {
+      "id": "T62-NA002",
+      "question": "芝加哥縮短黃燈多開了 7.7 萬張罰單？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "數字只見於新聞；監察長聲明頁沒有此數字，且其調查不支持「市府縮短黃燈」。只用 F20-012 的官方內容。 原提案 F20-NA002。",
+      "reentry_condition": "讀到監察長完整報告原文且有此數字與定義時。",
+      "reading_status": "只讀到新聞摘要（搜尋結果），不算來源"
+    },
+    {
+      "id": "T62-NA003",
+      "question": "提出新黃燈公式的工程師，真的被州政府罰款？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Järlström v. Aldridge 判決在 CourtListener，網頁回 AWS WAF 機器驗證（202 challenge），依規不繞過；其餘只有倡議團體與新聞稿。 原提案 F20-NA003。",
+      "reentry_condition": "能從其他公開法院典藏（如 govinfo）讀到判決全文時，可補成 F20-013 的 0.5 條。",
+      "reading_status": "未讀到原文"
+    }
+  ]
+}
