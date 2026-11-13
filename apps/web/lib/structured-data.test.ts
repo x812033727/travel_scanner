@@ -258,6 +258,25 @@ describe("guideArticle", () => {
     const evergreen = parse(guideArticle("zh-TW", { ...article, newsDate: null }));
     expect(evergreen["@type"]).toBe("Article");
   });
+
+  it("links a series member lesson back to its CreativeWorkSeries hub without claiming isPartOf on the hub itself", () => {
+    const lesson = parse(guideArticle("zh-TW", {
+      ...article,
+      path: "/life/codex-agents-md",
+      partOfSeries: { name: "Codex 學習中心", path: "/life/codex-learning-hub" },
+    }));
+    expect(lesson.isPartOf).toEqual({
+      "@type": "CreativeWorkSeries",
+      name: "Codex 學習中心",
+      url: `${siteUrl}/zh-TW/life/codex-learning-hub`,
+    });
+    const hub = parse(guideArticle("zh-TW", {
+      ...article,
+      collection: true,
+      partOfSeries: { name: "Codex 學習中心", path: "/life/codex-learning-hub" },
+    }));
+    expect(hub).not.toHaveProperty("isPartOf");
+  });
 });
 
 describe("faqPage", () => {

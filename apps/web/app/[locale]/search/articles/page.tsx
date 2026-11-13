@@ -17,7 +17,7 @@ import {
   type GuideSection,
   type GuideTopic,
 } from "@/lib/guides";
-import { getGuideSearch, getGuideTopics, getSeriesIndex } from "@/lib/guides.server";
+import { getGuideSearch, getGuideTopics, getSeriesIndex, getTrendingGuides } from "@/lib/guides.server";
 
 type Params = { locale: Locale };
 type Search = { q?: string; section?: string; topic?: string; sort?: string; offset?: string };
@@ -72,9 +72,14 @@ export default async function ArticleSearchPage(
     getTranslations({ locale, namespace: "common" }),
   ]);
   const showBrowse = !result || (result.available && !result.invalid && result.total === 0 && !result.best_match);
-  const [travelTopics, lifeTopics, series] = showBrowse
-    ? await Promise.all([getGuideTopics(locale, "travel"), getGuideTopics(locale, "life"), getSeriesIndex(locale)])
-    : [[], [], []];
+  const [travelTopics, lifeTopics, series, trending] = showBrowse
+    ? await Promise.all([
+        getGuideTopics(locale, "travel"),
+        getGuideTopics(locale, "life"),
+        getSeriesIndex(locale),
+        getTrendingGuides(locale, section ? { section } : {}, 6),
+      ])
+    : [[], [], [], { articles: [], next_cursor: null, available: false }];
   const browsable = (topics: GuideTopic[]) => topics.filter((item) => !item.parent && (item.count === undefined || item.count > 0));
 
   const cardLabels = { intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life") };
@@ -90,7 +95,7 @@ export default async function ArticleSearchPage(
     <>
       <SiteHeader />
       <main className="mx-auto max-w-5xl px-5 py-10 md:px-8">
-        <header className="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[var(--shadow-sm)] md:p-10">
+        <header className="portal-hero-shell rounded-3xl p-6 md:p-10">
           <h1 className="text-3xl font-extrabold tracking-tight md:text-5xl">{t("guides.searchTitle")}</h1>
           <p className="mt-3.5 max-w-2xl text-base leading-7 text-[var(--muted)] md:text-lg md:leading-8">{t("guides.searchLead")}</p>
 
@@ -147,23 +152,23 @@ export default async function ArticleSearchPage(
         </div>
 
         {result && !result.available ? (
-          <p role="alert" className="mt-6 rounded-2xl border border-[var(--line)] p-5 leading-7">{t("guides.searchUnavailable")}</p>
+          <p role="alert" className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 leading-7 shadow-[var(--shadow-sm)]">{t("guides.searchUnavailable")}</p>
         ) : null}
         {result?.invalid ? (
-          <p role="alert" className="mt-6 rounded-2xl border border-[var(--line)] p-5 leading-7">{t("guides.searchInvalid")}</p>
+          <p role="alert" className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 leading-7 shadow-[var(--shadow-sm)]">{t("guides.searchInvalid")}</p>
         ) : null}
 
         {result && result.available && !result.invalid ? (
           <section aria-live="polite" className="mt-8">
             {result.best_match ? (
               <div className="mb-6">
-                <h2 className="text-sm font-bold uppercase tracking-wide text-[var(--muted)]">{t("guides.searchBestMatch")}</h2>
+                <h2 className="portal-section-heading text-sm font-bold uppercase tracking-wide text-[var(--muted)]">{t("guides.searchBestMatch")}</h2>
                 <ul className="mt-3 grid gap-3 sm:grid-cols-2">
                   <GuideCard article={result.best_match} labels={cardLabels} />
                 </ul>
               </div>
             ) : null}
-            <h2 className="text-xl font-bold tracking-tight">
+            <h2 className="portal-section-heading text-xl font-bold tracking-tight">
               {result.total || result.best_match
                 ? t("guides.searchResults", { query: q })
                 : t("guides.searchNoResults", { query: q })}
@@ -173,19 +178,19 @@ export default async function ArticleSearchPage(
             ) : null}
             <SearchResults hits={result.results} labels={cardLabels} />
             {result.total > result.limit ? (
-              <nav aria-label={t("guides.searchPagination")} className="mt-8 flex flex-wrap items-center gap-4">
+              <nav aria-label={t("guides.searchPagination")} className="mt-8 flex flex-wrap items-center gap-3">
                 {previous !== null ? (
                   <Link
-                    className="inline-flex min-h-11 items-center text-[var(--teal)] underline"
+                    className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-1.5 text-sm font-semibold text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
                     href={articleSearchHref(q, { section, topic, sort, offset: previous })}
                   >
                     {t("guides.searchPrev")}
                   </Link>
                 ) : null}
-                <span className="text-sm text-[var(--muted)]">{t("guides.searchPageOf", { page, pages })}</span>
+                <span className="rounded-full bg-[var(--paper)] px-3 py-1 font-mono text-sm tabular-nums text-[var(--muted)]">{t("guides.searchPageOf", { page, pages })}</span>
                 {result.next_offset !== null ? (
                   <Link
-                    className="inline-flex min-h-11 items-center text-[var(--teal)] underline"
+                    className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-1.5 text-sm font-semibold text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
                     href={articleSearchHref(q, { section, topic, sort, offset: result.next_offset })}
                   >
                     {t("guides.searchNext")}
@@ -198,9 +203,20 @@ export default async function ArticleSearchPage(
 
         {!result ? <p className="mt-8 leading-7 text-[var(--muted)]">{t("guides.searchHint")}</p> : null}
 
+        {showBrowse && trending.articles.length ? (
+          <section className="mt-10 border-t border-[var(--line)] pt-8" data-testid="search-trending-section">
+            <h2 className="portal-section-heading text-2xl font-bold tracking-tight">{t("guides.trendingHeading")}</h2>
+            <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+              {trending.articles.map((article) => (
+                <GuideCard key={`${article.kind}:${article.slug}`} article={article} labels={cardLabels} />
+              ))}
+            </ul>
+          </section>
+        ) : null}
+
         {showBrowse && (browsable(travelTopics).length || browsable(lifeTopics).length) ? (
           <section className="mt-12 border-t border-[var(--line)] pt-8">
-            <h2 className="text-2xl font-bold tracking-tight">{t("guides.browseTopics")}</h2>
+            <h2 className="portal-section-heading text-2xl font-bold tracking-tight">{t("guides.browseTopics")}</h2>
             {([["travel", travelTopics], ["life", lifeTopics]] as const).map(([value, topics]) =>
               browsable(topics).length ? (
                 <div key={value} className="mt-4">
@@ -222,12 +238,12 @@ export default async function ArticleSearchPage(
 
         {showBrowse && series.length ? (
           <section className="mt-10">
-            <h2 className="text-2xl font-bold tracking-tight">{t("guides.searchBrowseSeries")}</h2>
+            <h2 className="portal-section-heading text-2xl font-bold tracking-tight">{t("guides.searchBrowseSeries")}</h2>
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
               {series.map((item) => (
                 <li key={item.slug}>
                   <Link
-                    className="flex min-h-11 items-center rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-3 font-semibold text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/50 hover:text-[var(--teal-dark)]"
+                    className="portal-card-surface flex min-h-11 items-center rounded-2xl border-l-4 border-l-[var(--teal)] px-4 py-3.5 font-semibold text-[var(--ink)] hover:text-[var(--teal-dark)]"
                     href={guideHref(item.hub.kind, item.hub.slug)}
                   >
                     {item.hub.title}

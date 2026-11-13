@@ -195,8 +195,10 @@ async def test_verification_still_receives_and_rejects_a_real_unsupported_claim(
 def test_editorial_instructions_require_search_intent_triage_and_honest_evidence() -> None:
     assert "search intent" in ai.WRITER_INSTRUCTIONS
     assert "Opening triage paragraph" in ai.WRITER_INSTRUCTIONS
+    assert "exact rollout stage stated by the source" in ai.WRITER_INSTRUCTIONS
     assert "never claim first-person hands-on testing" in ai.WRITER_INSTRUCTIONS
     assert "scannable comparison table" in ai.WRITER_INSTRUCTIONS
+    assert "exact rollout stage" in ai.EDITOR_INSTRUCTIONS
     assert "never invent first-person testing claims" in ai.EDITOR_INSTRUCTIONS
     assert "software, cybersecurity" in ai.JUDGE_REVIEW_INSTRUCTIONS
 

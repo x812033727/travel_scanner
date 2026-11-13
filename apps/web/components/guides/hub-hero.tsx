@@ -23,9 +23,9 @@ export function HubHero({
   labels: SearchFormLabels;
 }) {
   return (
-    <header className="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[var(--shadow-sm)] md:p-10">
-      <h1 className="text-3xl font-extrabold tracking-tight md:text-5xl">{title}</h1>
-      <p className="mt-3.5 max-w-2xl text-base leading-7 text-[var(--muted)] md:text-lg md:leading-8">{intro}</p>
+    <header className="portal-hero-shell rounded-3xl p-5 sm:p-7 md:p-10">
+      <h1 className="text-2xl font-extrabold leading-[1.24] tracking-tight sm:text-3xl md:text-5xl md:leading-[1.14]">{title}</h1>
+      <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--muted)] sm:mt-3.5 sm:text-base sm:leading-7 md:text-lg md:leading-8">{intro}</p>
       <SearchForm action={action} q="" section={section} labels={labels} />
     </header>
   );

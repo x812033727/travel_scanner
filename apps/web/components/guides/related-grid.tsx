@@ -22,12 +22,12 @@ export function RelatedGrid({
   if (!shown.length) return null;
   return (
     <section data-testid="related-grid" aria-labelledby="related-grid-heading" className="border-t border-[var(--line)] pt-8">
-      <h2 id="related-grid-heading" className="text-xl font-extrabold tracking-tight">{heading}</h2>
+      <h2 id="related-grid-heading" className="portal-section-heading text-xl font-extrabold tracking-tight">{heading}</h2>
       <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {shown.map((item) => (
           <li
             key={`${item.kind}:${item.slug}`}
-            className="group relative flex flex-col justify-between rounded-2xl border border-[var(--line)] bg-[var(--paper)]/45 p-4 shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--teal)] hover:bg-[var(--surface)] hover:shadow-[var(--shadow-md)]"
+            className="portal-card-surface group relative flex flex-col justify-between rounded-2xl p-4"
           >
             <div>
               <p className="text-[length:var(--text-xs)] font-semibold uppercase tracking-wide text-[var(--muted)]">
@@ -55,7 +55,7 @@ export function Backlinks({ heading, items }: { heading: string; items: readonly
   if (!items.length) return null;
   return (
     <section data-testid="backlinks" aria-labelledby="backlinks-heading" className="border-t border-[var(--line)] pt-8">
-      <h2 id="backlinks-heading" className="text-xl font-extrabold tracking-tight">{heading}</h2>
+      <h2 id="backlinks-heading" className="portal-section-heading text-xl font-extrabold tracking-tight">{heading}</h2>
       <ul className="mt-3.5 flex flex-wrap gap-2">
         {items.map((item) => (
           <li key={`${item.kind}:${item.slug}`}>

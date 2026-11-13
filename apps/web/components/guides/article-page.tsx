@@ -11,6 +11,7 @@ import { seriesCopy } from "@/lib/guide-series-copy";
 import { getGeminiHubReference, getVisibleGeminiSeries, isGeminiSeriesPage, projectGeminiArticle } from "@/lib/gemini-series.server";
 import { publishedGeminiSeries } from "@/lib/gemini-series-projection";
 import { CONTENTS_MIN_HEADINGS, GuideArticle, type GuideArticleLabels } from "@/components/guides/article";
+import { ArticleMobileProgress, ArticleTocRail } from "@/components/guides/article-toc-rail";
 import type { GuideCardLabels } from "@/components/guides/card";
 import { Breadcrumb } from "@/components/guides/breadcrumb";
 import { Backlinks, RelatedGrid } from "@/components/guides/related-grid";
@@ -30,8 +31,9 @@ import { splitArticleExtras, guideTopicHref, guideSection,
   type GuideArticleState, type GuideKind, type GuideSummary, type PublishedGuide,
 } from "@/lib/guides";
 import { getAdsenseSlot } from "@/lib/adsense.server";
+import * as guidesServer from "@/lib/guides.server";
 import { getGuideTopics, getGuideArticle, getGuideList, getGuideSeries } from "@/lib/guides.server";
-import { localeUrl } from "@/lib/seo";
+import { DISCOVER_ROBOTS, localeUrl } from "@/lib/seo";
 import { faqPage, definedTerm, breadcrumbs, guideArticle, type Crumb } from "@/lib/structured-data";
 
 /**
@@ -98,6 +100,7 @@ export async function guideArticleMetadata(
   return {
     title: state.document.title,
     description: state.document.description,
+    robots: DISCOVER_ROBOTS,
     alternates: {
       canonical: localeUrl(locale, path),
       languages: {
@@ -105,7 +108,12 @@ export async function guideArticleMetadata(
         ...(state.published_locales.includes("en") ? { "x-default": localeUrl("en", path) } : {}),
       },
     },
-    ...(await socialCard(state.document, parent)),
+    ...(await socialCard(
+      state.document,
+      listingOf(kind, t).name,
+      state.topics.map((topic) => topic.label),
+      parent,
+    )),
   };
 }
 
@@ -119,10 +127,14 @@ export async function guideArticleMetadata(
  * keys are left alone and the site card inherits.
  */
 async function socialCard(
-  document: PublishedGuide, parent?: ResolvingMetadata,
+  document: PublishedGuide,
+  sectionName: string,
+  tags: readonly string[],
+  parent?: ResolvingMetadata,
 ): Promise<Pick<Metadata, "openGraph" | "twitter">> {
   const hero = visibleGuideHero(document.hero);
   if (!hero) return {};
+  const cleanTags = tags.filter(Boolean);
   const inherited = parent ? (await parent).openGraph : null;
   return {
     openGraph: {
@@ -130,6 +142,8 @@ async function socialCard(
       ...(inherited?.locale ? { locale: inherited.locale } : {}),
       ...(inherited?.alternateLocale ? { alternateLocale: inherited.alternateLocale } : {}),
       type: "article",
+      section: sectionName,
+      ...(cleanTags.length ? { tags: [...cleanTags] } : {}),
       publishedTime: document.published_at,
       modifiedTime: document.modified_at ?? document.published_at,
       images: [{ url: hero.src, width: hero.width, height: hero.height, alt: hero.alt }],
@@ -317,7 +331,9 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     ...kindLabels,
     publishedOn: t("guides.publishedOn"),
     updated: t("guides.updated"),
-    sources: t("guides.sources"), checkedOn: t("guides.checkedOn"),
+    sources: t("guides.sources"),
+    checkedOn: t("guides.checkedOn"),
+    sourcesProvenance: t("guides.sourcesProvenance"),
     destination: t("guides.destination"),
     contents: state.series?.current ? seriesCopy(locale).contents : t("guides.contents"),
     adLabel: t("guides.adLabel"),
@@ -339,11 +355,29 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   const isCodexHub = kind === "life" && slug === HUB_SLUG;
   const isHub = isCodexHub || Boolean(state.series && !state.series.current && state.series.hub.slug === slug);
   const useApiDirectory = isHub && !geminiSeries;
-  const series = useApiDirectory ? await getGuideSeries(isCodexHub ? "codex" : state.series!.slug, locale) : null;
+  const fetchRailTrending = async (): Promise<GuideSummary[]> => {
+    if (isHub) return [];
+    try {
+      if (typeof guidesServer.getTrendingGuides !== "function") return [];
+      const result = await guidesServer.getTrendingGuides(locale, {}, 6);
+      return Array.isArray(result?.articles) ? result.articles : [];
+    } catch {
+      return [];
+    }
+  };
+  const [series, trendingArticles] = await Promise.all([
+    useApiDirectory ? getGuideSeries(isCodexHub ? "codex" : state.series!.slug, locale) : Promise.resolve(null),
+    fetchRailTrending(),
+  ]);
+  const railTrending = trendingArticles
+    .filter((item) => `${item.kind}:${item.slug}` !== `${kind}:${slug}`)
+    .slice(0, 5);
   if (state.series?.current) trail.push({ name: state.series.hub.title, path: guideHref(state.series.hub.kind, state.series.hub.slug) });
   const headings = guideHeadings(extras.blocks);
   const hasDesktopToc = !isHub && (Boolean(state.series?.current) || headings.length >= CONTENTS_MIN_HEADINGS);
+  const hasDesktopRail = !isHub && (hasDesktopToc || railTrending.length > 0);
   const elevateReadingSheet = !isHub;
+  const canonicalUrl = localeUrl(locale, guideHref(kind, slug));
   const seriesDirectory = isCodexHub
     ? <LearningHub locale={locale} entries={learningEntries(locale, series?.entries ?? [])} available={Boolean(series)} />
     : useApiDirectory
@@ -355,6 +389,14 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   return (
     <>
       <SiteHeader />
+      {!isHub ? (
+        <ArticleMobileProgress
+          backToTopLabel={t("guides.backToTop")}
+          headings={headings.length >= CONTENTS_MIN_HEADINGS ? headings : undefined}
+          contentsLabel={labels.contents}
+          closeLabel={t("guides.closeContents")}
+        />
+      ) : null}
       <StructuredData
         data={[
           breadcrumbs(locale, [...trail, { name: state.document.title, path: guideHref(kind, slug) }]),
@@ -399,15 +441,18 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
             abstract: extras.summary?.items ?? null,
             collection: isHub,
             entries: series?.entries.map((item) => ({ name: item.title, path: guideHref(item.kind, item.slug) })),
+            partOfSeries: state.series?.current
+              ? { name: state.series.hub.title, path: guideHref(state.series.hub.kind, state.series.hub.slug) }
+              : null,
           }),
         ]}
       />
-      <main className={`mx-auto px-5 py-8 md:py-12 ${isHub || state.series || hasDesktopToc ? "max-w-6xl" : "max-w-3xl"}`}>
+      <main className={`mx-auto px-5 py-6 sm:py-8 md:py-12 ${isHub || state.series || hasDesktopRail ? "max-w-6xl" : "max-w-3xl"}`}>
         <Breadcrumb trail={trail} current={state.document.title} label={t("guides.breadcrumb")} />
-        <div className={hasDesktopToc ? "grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_17rem] lg:items-start" : ""}>
+        <div className={hasDesktopRail ? "grid min-w-0 gap-6 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:items-start lg:gap-8" : ""}>
           <div
             className={elevateReadingSheet
-              ? "min-w-0 sm:rounded-3xl sm:border sm:border-[var(--line)] sm:bg-[var(--surface)] sm:p-7 sm:shadow-[var(--shadow-sm)] md:p-10"
+              ? "min-w-0 rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-5 shadow-[var(--shadow-sm)] sm:rounded-3xl sm:p-7 md:p-10"
               : "min-w-0"}
           >
             <GuideArticle
@@ -420,46 +465,81 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
               adsense={adsense}
               seriesHub={seriesDirectory}
               sidebarToc={hasDesktopToc}
-              constrainDiagrams={elevateReadingSheet || hasDesktopToc}
+              constrainDiagrams={elevateReadingSheet || hasDesktopRail}
+              share={!isHub ? {
+                url: canonicalUrl,
+                labels: {
+                  shareLabel: t("guides.shareLabel"),
+                  copyLink: t("guides.copyLink"),
+                  linkCopied: t("guides.linkCopied"),
+                  shareLine: t("guides.shareLine"),
+                  shareSystem: t("guides.shareSystem"),
+                  sharePrompt: t("guides.sharePrompt"),
+                },
+              } : undefined}
             />
           </div>
-          {hasDesktopToc ? (
-            <aside className="hidden lg:block">
-              <nav
-                aria-label={labels.contents}
-                className="sticky top-24 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]"
-              >
-                {state.series?.current ? (
-                  <a
-                    href={`/${locale}${guideHref(state.series.hub.kind, state.series.hub.slug)}`}
-                    className="mb-3 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--teal)] underline underline-offset-4"
-                  >
-                    {copy.back}
-                  </a>
-                ) : null}
-                {headings.length > 0 ? (
-                  <>
-                    <h2 className="border-l-4 border-[var(--teal)] pl-3 text-sm font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">
-                      {labels.contents}
-                    </h2>
-                    <ol className="mt-3.5 space-y-1.5 text-sm leading-6">
-                      {headings.map((heading, index) => (
-                        <li key={heading.id}>
-                          <a
-                            href={`#${heading.id}`}
-                            className="block rounded-lg px-2 py-1.5 text-[var(--ink)] transition-colors hover:bg-[var(--teal-soft)]/55 hover:text-[var(--teal-dark)]"
+          {hasDesktopRail ? (
+            <aside
+              className={railTrending.length > 0
+                ? "min-w-0 space-y-5 lg:sticky lg:top-24"
+                : "hidden lg:sticky lg:top-24 lg:block lg:space-y-5"}
+            >
+              {hasDesktopToc ? (
+                <ArticleTocRail
+                  headings={headings}
+                  contentsLabel={labels.contents}
+                  backToTopLabel={t("guides.backToTop")}
+                  progressLabel={t("guides.readingProgress")}
+                  seriesBackHref={state.series?.current ? `/${locale}${guideHref(state.series.hub.kind, state.series.hub.slug)}` : null}
+                  seriesBackLabel={state.series?.current ? copy.back : null}
+                />
+              ) : null}
+              {railTrending.length > 0 ? (
+                <section
+                  aria-label={nav("searchTrending")}
+                  className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-sm)] sm:p-5"
+                >
+                  <h2 className="portal-section-heading text-sm font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">
+                    {nav("searchTrending")}
+                  </h2>
+                  <ol className="mt-3 divide-y divide-[var(--line)] text-sm leading-6">
+                    {railTrending.map((item, index) => {
+                      const rankClass = index === 0
+                        ? "bg-[var(--teal-fill)] text-[var(--primary-text)]"
+                        : index < 3
+                          ? "bg-[var(--coral-soft)] text-[var(--coral)]"
+                          : "border border-[var(--line)] bg-[var(--paper)] text-[var(--muted)]";
+                      return (
+                        <li
+                          key={`${item.kind}:${item.slug}`}
+                          className="group relative -mx-2 flex items-start gap-2.5 rounded-xl px-2 py-2.5 transition-colors hover:bg-[var(--paper)]/70"
+                        >
+                          <span
+                            aria-hidden
+                            className={`mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md font-mono text-[length:var(--text-xs)] font-extrabold tabular-nums ${rankClass}`}
                           >
-                            <span className="mr-1.5 font-mono text-[length:var(--text-xs)] font-semibold text-[var(--muted)]">
-                              {index + 1}.
-                            </span>
-                            {heading.text}
-                          </a>
+                            {index + 1}
+                          </span>
+                          <div className="min-w-0">
+                            <Link
+                              href={guideHref(item.kind, item.slug)}
+                              className="line-clamp-2 font-semibold text-[var(--ink)] underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:text-[var(--teal)] group-hover:underline"
+                            >
+                              {item.title}
+                            </Link>
+                            {item.topics[0] ? (
+                              <span className="mt-0.5 block text-[length:var(--text-xs)] text-[var(--muted)]">
+                                {item.topics[0].label}
+                              </span>
+                            ) : null}
+                          </div>
                         </li>
-                      ))}
-                    </ol>
-                  </>
-                ) : null}
-              </nav>
+                      );
+                    })}
+                  </ol>
+                </section>
+              ) : null}
             </aside>
           ) : null}
         </div>

@@ -91,7 +91,7 @@ export default async function GuidesHubPage({ params }: { params: Promise<{ loca
         {sections.map((section) => (
           <section key={section.kind} className="mt-12">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] pb-3">
-              <h2 className="border-l-4 border-[var(--teal)] pl-3 text-2xl font-extrabold tracking-tight">{section.heading}</h2>
+              <h2 className="portal-section-heading text-2xl font-extrabold tracking-tight">{section.heading}</h2>
               <Link
                 className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]"
                 href={guideListHref(section.kind)}
