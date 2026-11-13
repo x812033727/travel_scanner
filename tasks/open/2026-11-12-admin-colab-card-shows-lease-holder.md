@@ -15,6 +15,8 @@ scope:
   - apps/web/components/admin-ai-accounts-panel.tsx
   - apps/web/components/admin-ai-accounts-panel.test.tsx
   - apps/web/messages
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
   - apps/api/app/admin_ai_accounts
   - apps/api/tests/test_ai_accounts_colab_leases.py
 ---
