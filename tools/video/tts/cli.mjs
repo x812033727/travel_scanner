@@ -16,6 +16,7 @@ import { atomicWrite, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, st
 import { requireProjectLease } from "../core/project-lease.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { buildTimeline, checkChapters, formatClock, frameToSeconds, speechHash } from "../core/timeline.mjs";
+import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { checkAudio } from "./check.mjs";
 import { PILOT_SLUGS, SpeechError, minimaxQuota, speechStatus, synthesize, synthesizeAligned } from "./client.mjs";
 import { TOKEN_PATTERN, readCredentials, validSite, writeCredentials } from "./credentials.mjs";
@@ -24,6 +25,7 @@ import { GEMINI_VOICE_PREFIX, MAX_REQUEST_CHARACTERS, MINIMAX_VOICE_PREFIX, bill
 import { JOURNAL_DIR, openSpeechJournal } from "./speech-journal.mjs";
 import { buildNarration, flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "./synthesis.mjs";
 import { readCache, takeCurrent } from "./takes.mjs";
+import { narrationPace, parseTempoFlag, rawClipKey, scaleTiming, stretchWavBytes } from "./tempo.mjs";
 import { encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
 
 const FREE_TIER = 500_000;
@@ -61,12 +63,18 @@ export function alignedCharacters(body) {
 // bound to the SHA-256 of the WAV it was measured on, so a run that reuses the clip still writes
 // it into timeline.json and a timing never outlives its take.
 const timingFile = (audioDir, id) => path.join(audioDir, `${id}.timing.json`);
+const rawWavFile = (audioDir, id) => path.join(audioDir, `${id}.raw.wav`);
+const rawTimingFile = (audioDir, id) => path.join(audioDir, `${id}.raw.timing.json`);
+
+function readTimingAt(file, hash) {
+  const saved = readJson(file, null);
+  if (saved?.wav_sha256 !== hash || !Array.isArray(saved.chars)) return null;
+  return { source: saved.source, model: saved.model, chars: saved.chars };
+}
 
 /** The timing kept for the take whose WAV bytes hash to `hash`, or null. */
 function readTiming(audioDir, id, hash) {
-  const saved = readJson(timingFile(audioDir, id), null);
-  if (saved?.wav_sha256 !== hash || !Array.isArray(saved.chars)) return null;
-  return { source: saved.source, model: saved.model, chars: saved.chars };
+  return readTimingAt(timingFile(audioDir, id), hash);
 }
 
 /** Save a take's WAV with its timing: the older take's timing goes first, so the two are never paired. */
@@ -74,6 +82,13 @@ function writeTake(audioDir, id, bytes, timing) {
   rmSync(timingFile(audioDir, id), { force: true });
   atomicWrite(path.join(audioDir, `${id}.wav`), bytes);
   if (timing) atomicWrite(timingFile(audioDir, id), `${JSON.stringify({ wav_sha256: wavHash(bytes), ...timing })}\n`);
+}
+
+/** Save a 1x raw take beside its stretched clip, so later `voice.tempo` tweaks re-stretch locally without re-buying. */
+function writeRawTake(audioDir, id, bytes, timing) {
+  rmSync(rawTimingFile(audioDir, id), { force: true });
+  atomicWrite(rawWavFile(audioDir, id), bytes);
+  if (timing) atomicWrite(rawTimingFile(audioDir, id), `${JSON.stringify({ wav_sha256: wavHash(bytes), ...timing })}\n`);
 }
 
 const escapeHtml = (text) => String(text).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
@@ -295,11 +310,13 @@ async function audition(args, ctx) {
       rate: { type: "string", default: "+0%" },
       style: { type: "string" },
       model: { type: "string" },
+      tempo: { type: "string" },
       workdir: { type: "string" },
     },
     strict: true,
   }).values;
   if (!values["text-file"]) throw new UsageError("audition needs --text-file: a UTF-8 file with the sample narration");
+  const tempo = values.tempo !== undefined ? parseTempoFlag(values.tempo) : null;
   if (values.slug && !/^[a-z0-9][a-z0-9-]{1,99}$/.test(values.slug)) throw new UsageError("audition --slug must be a valid video slug");
   if (values.slug && /^(?:story-rolling-suitcase|story-conveyor-belt-sushi|story-five-|story-everyday-)/.test(values.slug) && !PILOT_SLUGS.has(values.slug)) {
     throw new UsageError("audition --slug names a budgeted story family but is not an exact budgeted story slug");
@@ -315,6 +332,8 @@ async function audition(args, ctx) {
   }
   const text = readFileSync(values["text-file"], "utf8").replace(/^﻿/, "").trim();
   if (!text || text.length > MAX_REQUEST_CHARACTERS) throw new UsageError(`the sample must be 1 to ${MAX_REQUEST_CHARACTERS} characters`);
+  const ffmpeg = { locate: ctx.ffmpeg?.locate ?? locateFfmpeg, run: ctx.ffmpeg?.run ?? runTool, env: ctx.env, tools: null };
+  if (tempo) ffmpeg.tools = await ffmpeg.locate(ctx.env);
   const credentials = requireCredentials(ctx);
   const options = { ...clientOptions(ctx, credentials), ...(values.slug ? { videoSlug: values.slug } : {}) };
   const status = await speechStatus(options);
@@ -342,7 +361,8 @@ async function audition(args, ctx) {
     const result = await send({ ...fields, segments: [{ parts, break_after_ms: 0 }] });
     requireNarrationFormat(parseWav(result.wav));
     billable += result.billable;
-    atomicWrite(path.join(out, fileName(voice)), result.wav);
+    const wav = tempo ? (await stretchWavBytes(result.wav, tempo, out, voice, ffmpeg)).bytes : result.wav;
+    atomicWrite(path.join(out, fileName(voice)), wav);
     journal.release();
     ctx.stdout.write(`${voice}: ${path.join(out, fileName(voice))}\n`);
   }
@@ -387,19 +407,55 @@ async function tts(args, ctx) {
   const audioDir = path.join(workdir, ARTIFACTS.audio);
   const clipCurrent = (request, line) => !values.force && takeCurrent(cache, workdir, request, line);
   const current = (request) => !request.lines.some((line) => redo.has(line.id)) && request.lines.every((line) => clipCurrent(request, line));
-  // When part of a scene is still current, only the rest is retaken, each line on its own: a whole
-  // scene again would re-roll every line that already passed the check, and Gemini's takes differ
-  // from one request to the next. A scene with nothing current is synthesized whole.
-  const retakes = (request) => {
+  const localRawTake = (request, line) => {
+    if (values.force || redo.has(line.id)) return null;
+    const rawKey = rawClipKey(request, line);
+    if (cache.raw?.[line.id]?.key === rawKey && existsSync(rawWavFile(audioDir, line.id))) {
+      const bytes = readFileSync(rawWavFile(audioDir, line.id));
+      const hash = wavHash(bytes);
+      if (cache.raw[line.id].sha256 === hash) {
+        requireNarrationFormat(parseWav(bytes));
+        return { bytes, hash, rawKey, timing: readTimingAt(rawTimingFile(audioDir, line.id), hash), promote: false };
+      }
+    }
+    const wavFile = path.join(audioDir, `${line.id}.wav`);
+    if (cache.lines?.[line.id] === rawKey && existsSync(wavFile)) {
+      const bytes = readFileSync(wavFile);
+      const hash = wavHash(bytes);
+      if (!cache.sha256?.[line.id] || cache.sha256[line.id] === hash) {
+        requireNarrationFormat(parseWav(bytes));
+        return { bytes, hash, rawKey, timing: readTiming(audioDir, line.id, hash), promote: true };
+      }
+    }
+    return null;
+  };
+  const allPending = requests.filter((request) => !current(request));
+  if (values["refresh-evidence"] && (allPending.length || values.redo || values.force)) throw new UsageError("audio evidence refresh needs every original take cached and current; it never synthesizes or retakes audio");
+  const localTargets = [];
+  const networkLinesByRequest = new Map();
+  for (const request of allPending) {
     const stale = request.lines.filter((line) => redo.has(line.id) || !clipCurrent(request, line));
+    const networkLines = [];
+    for (const line of stale) {
+      const raw = localRawTake(request, line);
+      if (raw) localTargets.push({ request, line, raw });
+      else networkLines.push(line);
+    }
+    if (networkLines.length) networkLinesByRequest.set(request, networkLines);
+  }
+  // When part of a scene is still current (or satisfied from a cached 1x raw take), only the rest
+  // is retaken, each line on its own: a whole scene again would re-roll every line that already
+  // passed the check, and Gemini's takes differ from one request to the next. A scene with nothing
+  // current is synthesized whole.
+  const retakes = (request) => {
+    const stale = networkLinesByRequest.get(request) ?? [];
     return stale.length && stale.length < request.lines.length ? stale : null;
   };
   const estimateFor = (request) => {
     const lines = retakes(request);
     return lines ? lines.reduce((sum, line) => sum + billableForRequest(lineBody(request, line)), 0) : billableForRequest(request.body);
   };
-  const pending = requests.filter((request) => !current(request));
-  if (values["refresh-evidence"] && (pending.length || values.redo || values.force)) throw new UsageError("audio evidence refresh needs every original take cached and current; it never synthesizes or retakes audio");
+  const pending = allPending.filter((request) => networkLinesByRequest.has(request));
   const pendingEstimate = pending.reduce((sum, request) => sum + estimateFor(request), 0);
   // Each provider has its own month, so what is still to synthesize is counted per provider.
   const pendingByProvider = new Map();
@@ -448,6 +504,10 @@ async function tts(args, ctx) {
   // nothing is synthesized or written meanwhile. The worker's unit holds it already.
   requireProjectLease(workdir, { owner: "tts", now: ctx.now, as: (error) => new SpeechError(error.message, { code: error.code, who: "owner" }) });
   requireStorySpeechLexicon(project, workdir);
+  const ffmpeg = { locate: ctx.ffmpeg?.locate ?? locateFfmpeg, run: ctx.ffmpeg?.run ?? runTool, env: ctx.env, tools: null };
+  if (localTargets.some(({ request }) => request.tempo > 1) || pending.some((request) => request.tempo > 1)) {
+    ffmpeg.tools = await ffmpeg.locate(ctx.env);
+  }
   const options = pending.length ? { ...clientOptions(ctx, requireCredentials(ctx)), videoSlug: doc.slug } : null;
   if (pending.length) {
     const status = await speechStatus(options);
@@ -464,6 +524,27 @@ async function tts(args, ctx) {
   mkdirSync(audioDir, { recursive: true });
   if (migrated.length) {
     for (const line of migrated) cache.lines[line.id] = line.key;
+    atomicWrite(path.join(audioDir, "cache.json"), `${JSON.stringify(cache, null, 2)}\n`);
+  }
+  if (localTargets.length) {
+    for (const { request, line, raw } of localTargets) {
+      if (raw.promote) {
+        writeRawTake(audioDir, line.id, raw.bytes, raw.timing);
+        cache.raw ??= {};
+        cache.raw[line.id] = { key: raw.rawKey, sha256: raw.hash };
+      }
+      if (request.tempo > 1) {
+        const stretched = await stretchWavBytes(raw.bytes, request.tempo, audioDir, line.id, ffmpeg);
+        writeTake(audioDir, line.id, stretched.bytes, scaleTiming(raw.timing, request.tempo, stretched.samples.length));
+        cache.sha256 ??= {};
+        cache.sha256[line.id] = wavHash(stretched.bytes);
+      } else {
+        writeTake(audioDir, line.id, raw.bytes, raw.timing);
+        cache.sha256 ??= {};
+        cache.sha256[line.id] = raw.hash;
+      }
+      cache.lines[line.id] = line.key;
+    }
     atomicWrite(path.join(audioDir, "cache.json"), `${JSON.stringify(cache, null, 2)}\n`);
   }
   let billable = 0;
@@ -495,12 +576,24 @@ async function tts(args, ctx) {
     billable += result.billable;
     if (result.fallback) fallbacks.push(request.id);
     for (const [id, clip] of result.clips) {
-      const bytes = encodeWav(clip);
-      requireNarrationFormat(parseWav(bytes));
-      writeTake(audioDir, id, bytes, result.timings?.get(id));
-      cache.lines[id] = request.lines.find((line) => line.id === id).key;
-      cache.sha256 ??= {};
-      cache.sha256[id] = wavHash(bytes);
+      const rawBytes = encodeWav(clip);
+      requireNarrationFormat(parseWav(rawBytes));
+      const rawTiming = result.timings?.get(id);
+      const line = request.lines.find((item) => item.id === id);
+      if (request.tempo > 1) {
+        writeRawTake(audioDir, id, rawBytes, rawTiming);
+        cache.raw ??= {};
+        cache.raw[id] = { key: rawClipKey(request, line), sha256: wavHash(rawBytes) };
+        const stretched = await stretchWavBytes(rawBytes, request.tempo, audioDir, id, ffmpeg);
+        writeTake(audioDir, id, stretched.bytes, scaleTiming(rawTiming, request.tempo, stretched.samples.length));
+        cache.sha256 ??= {};
+        cache.sha256[id] = wavHash(stretched.bytes);
+      } else {
+        writeTake(audioDir, id, rawBytes, rawTiming);
+        cache.sha256 ??= {};
+        cache.sha256[id] = wavHash(rawBytes);
+      }
+      cache.lines[id] = line.key;
     }
     atomicWrite(path.join(audioDir, "cache.json"), `${JSON.stringify(cache, null, 2)}\n`);
     journal.release();
@@ -532,6 +625,7 @@ async function tts(args, ctx) {
       if (timing) timings.set(line.id, timing);
     }
   }
+  const pace = narrationPace(doc, clips);
   const samplesById = Object.fromEntries([...clips].map(([id, clip]) => [id, Math.max(1, clip.length)]));
   // The speech hash is the script's alone: measured timing is derived from the audio and never
   // makes a timeline stale.
@@ -558,7 +652,8 @@ async function tts(args, ctx) {
   const chapters = checkChapters(presented);
   recordStage(workdir, "tts", { requests: requests.length, synthesized: pending.length, fallbacks, billable, voice: doc.voice.name, voices: voices.map((entry) => entry.voice), ...(timings.size ? { timed: timings.size } : {}), ...(chapters.length ? { ok: false, chapters } : {}) }, ctx.now());
 
-  ctx.stdout.write(`${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; narration ${formatClock(frameToSeconds(timeline.total_frames))}\n`);
+  const paceText = pace ? ` (${pace.charsPerSecond.toFixed(2)} chars/s)` : "";
+  ctx.stdout.write(`${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; narration ${formatClock(frameToSeconds(timeline.total_frames))}${paceText}\n`);
   if (journal.reused) ctx.stdout.write(`${journal.reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
   if (timings.size) ctx.stdout.write(`${timings.size} of ${timeline.lines.length} lines carry measured character times; their CC cues start on the spoken character\n`);
   if (fallbacks.length) ctx.stdout.write(`line-by-line fallback for: ${fallbacks.join(", ")}\n`);
@@ -633,6 +728,10 @@ export async function run(command, args, ctx) {
     if (error instanceof StoryLexiconError) {
       ctx.stderr.write(`${error.message}\n`);
       return ctx.EXIT.owner;
+    }
+    if (error instanceof ToolMissing) {
+      ctx.stderr.write(`${error.message}\n`);
+      return ctx.EXIT.missing;
     }
     if (!(error instanceof SpeechError)) throw error;
     ctx.stderr.write(`${error.message}\n`);
