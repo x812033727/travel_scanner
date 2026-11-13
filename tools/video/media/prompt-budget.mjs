@@ -14,7 +14,7 @@ export const IMAGE_PROMPT_LIMITS = { minimax: 1500 };
 // carry the slides image model (`slides.slides_image_model`) without its vendor, and the
 // writer's first draft has to hear the budget of the model that will draw it. The ids are the
 // catalog's (apps/api/app/video_media/catalog.py; media.test.mjs holds this table to it).
-export const IMAGE_MODEL_VENDORS = { "gemini-3-pro-image": "gemini", "gemini-3.1-flash-image": "gemini", "image-01": "minimax" };
+export const IMAGE_MODEL_VENDORS = { "gemini-3-pro-image": "gemini", "gemini-3.1-flash-image": "gemini", "image-01": "minimax", "MiniMax-H3-Image": "minimax" };
 // The server's own limit on a prompt field (apps/api/app/video_media/schemas.py MAX_PROMPT_CHARS).
 export const DEFAULT_IMAGE_PROMPT_LIMIT = 4000;
 // What the server puts between the prompt and the negative prompt: minimax.py's
