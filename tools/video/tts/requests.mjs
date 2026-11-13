@@ -96,6 +96,9 @@ export function geminiText(segments) {
   return text.trim();
 }
 
+/** Local post-synthesis speedup factor (`> 1`), or `null` when omitted or `1` (wire body stays unchanged). */
+export const effectiveTempo = (voice) => (typeof voice?.tempo === "number" && voice.tempo > 1 ? voice.tempo : null);
+
 /**
  * Every request for a video, in narration order. A request carries one voice: a scene is cut
  * where it outgrows the server's limit and where the speaker or the effective voice changes
@@ -112,12 +115,13 @@ export function planRequests(doc, lexicon) {
     let characters = 0;
     let fields = null;
     let speaker = null;
+    let tempo = null;
     const flush = () => {
       if (!chunk.length) return;
       const segments = chunk.map((line, index) => ({ parts: line.parts, break_after_ms: index < chunk.length - 1 ? SPLIT_BREAK_MS : 0 }));
       const body = { ...fields, segments };
-      const key = createHash("sha256").update(JSON.stringify([chunk.map((line) => line.id), body])).digest("hex").slice(0, 16);
-      requests.push({ id: `${scene.id}#${requests.filter((request) => request.scene === scene.id).length}`, scene: scene.id, speaker, lines: chunk, body, key });
+      const key = createHash("sha256").update(JSON.stringify(tempo ? [chunk.map((line) => line.id), body, tempo] : [chunk.map((line) => line.id), body])).digest("hex").slice(0, 16);
+      requests.push({ id: `${scene.id}#${requests.filter((request) => request.scene === scene.id).length}`, scene: scene.id, speaker, lines: chunk, body, key, ...(tempo ? { tempo } : {}) });
       chunk = [];
       characters = 0;
     };
@@ -125,25 +129,28 @@ export function planRequests(doc, lexicon) {
       const parts = spokenParts(spokenText(line), lexicon);
       const length = partsLength(parts);
       if (length > MAX_REQUEST_CHARACTERS) throw new Error(`line ${line.id} has ${length} characters; the server takes ${MAX_REQUEST_CHARACTERS} at once`);
-      const voice = voiceFields(voiceFor(doc, line));
+      const resolved = voiceFor(doc, line);
+      const voice = voiceFields(resolved);
+      const lineTempo = effectiveTempo(resolved);
       const lineSpeaker = line.speaker ?? NARRATOR;
       const canonical = parts.map((part) => part.alias || part.text).join("").normalize("NFC").trim();
       if (line.audio_ref !== undefined) {
         const original = originals.get(line.audio_ref);
-        if (!original || original.reference || original.speaker !== lineSpeaker || original.canonical !== canonical || JSON.stringify(original.voice) !== JSON.stringify(voice)) throw new Error(`line ${line.id}: audio_ref must name an earlier original take with identical speaker, spoken content and effective voice`);
+        if (!original || original.reference || original.speaker !== lineSpeaker || original.canonical !== canonical || JSON.stringify(original.voice) !== JSON.stringify(voice) || (original.tempo ?? null) !== lineTempo) throw new Error(`line ${line.id}: audio_ref must name an earlier original take with identical speaker, spoken content and effective voice`);
         flush();
-        const key = createHash("sha256").update(JSON.stringify([voice, parts])).digest("hex").slice(0, 16);
-        requests.push({ id: `${scene.id}#ref-${line.id}`, scene: scene.id, speaker: lineSpeaker, audio_ref: line.audio_ref, lines: [{ id: line.id, parts, weight: Math.max(1, spokenUnits(spokenText(line))), key }], body: { ...voice, segments: [{ parts, break_after_ms: 0 }] }, key });
+        const key = createHash("sha256").update(JSON.stringify(lineTempo ? [voice, parts, lineTempo] : [voice, parts])).digest("hex").slice(0, 16);
+        requests.push({ id: `${scene.id}#ref-${line.id}`, scene: scene.id, speaker: lineSpeaker, audio_ref: line.audio_ref, lines: [{ id: line.id, parts, weight: Math.max(1, spokenUnits(spokenText(line))), key }], body: { ...voice, segments: [{ parts, break_after_ms: 0 }] }, key, ...(lineTempo ? { tempo: lineTempo } : {}) });
         originals.set(line.id, { reference: true });
         continue;
       }
-      originals.set(line.id, { speaker: lineSpeaker, canonical, voice });
-      if (characters + length > MAX_REQUEST_CHARACTERS || lineSpeaker !== speaker || JSON.stringify(voice) !== JSON.stringify(fields)) flush();
+      originals.set(line.id, { speaker: lineSpeaker, canonical, voice, ...(lineTempo ? { tempo: lineTempo } : {}) });
+      if (characters + length > MAX_REQUEST_CHARACTERS || lineSpeaker !== speaker || lineTempo !== tempo || JSON.stringify(voice) !== JSON.stringify(fields)) flush();
       fields = voice;
       speaker = lineSpeaker;
+      tempo = lineTempo;
       // A clip stays current while its own words and the voice stay the same, whatever its
       // neighbours do, so an edit to one line retakes that line alone.
-      const key = createHash("sha256").update(JSON.stringify([voice, parts])).digest("hex").slice(0, 16);
+      const key = createHash("sha256").update(JSON.stringify(lineTempo ? [voice, parts, lineTempo] : [voice, parts])).digest("hex").slice(0, 16);
       chunk.push({ id: line.id, parts, weight: Math.max(1, spokenUnits(spokenText(line))), key });
       characters += length;
     }
