@@ -1,4 +1,4 @@
-"""MiniMax image-01, the Hailuo video models and MiniMax music.
+"""MiniMax image-01 and H3-Image, the Hailuo video models and MiniMax music.
 
 Images are synchronous and come back in the answer itself: the adapter asks for
 ``response_format: base64`` and ``submit`` returns the bytes, as the Gemini image adapter
@@ -9,6 +9,20 @@ task to poll, whose result is a file id exchanged for a download URL. Downloads 
 MiniMax's CDN and need no key, so ``fetch`` sends none. ``base_resp.status_code`` carries the
 vendor's own verdicts (quota, balance, sensitive content) inside an HTTP 200, so every answer
 is checked for it.
+
+H3-Image (released 2026-11-10) has its own API, read 2026-11-13 at
+https://platform.minimax.io/docs/api-reference/image-generation-h3-generations and
+.../image-generation-h3-edits: ``POST {base}/images/generations`` for text to image and
+``POST {base}/images/edits`` with 1 to 16 pictures in ``images[]`` (each ``{"image_url": a data
+URI}``). Both are synchronous. The size is ``aspect_ratio`` plus ``area`` (1K, 2K or 4K;
+the API's default is 4K, so the area is always named). ``response_format: b64_json`` puts the
+picture in ``data[0].b64_json``. A refusal is a real HTTP status with MiniMax's code at the end
+of an OpenAI-style message, the same shape as the v2 video API, so it goes through
+``raise_for_v2``; a request that succeeds but whose one picture failed answers 200 with
+``data[0].error``. Generations rewrites the prompt unless ``disable_prompt_enhanced`` is true
+(with an explicit ratio), which is what image-01's ``prompt_optimizer: false`` did; edits
+always rewrites it and has no such field. There is no seed and no negative prompt, so the
+avoidance text is appended as for image-01.
 
 MiniMax-H3 is served only by the v2 video API (read 2026-10-05:
 https://platform.minimax.io/docs/api-reference/video-generation-v2-create and
@@ -77,10 +91,17 @@ from app.video_media.storage import sniff_type
 
 # MiniMax's own status codes, as documented on 2026-09-26.
 BUSY = {1002, 1039}
-KEY = {1004, 1008, 2049}
+# 2053 (no credit), 2056 (M Plan usage limit), 2067 (plan limit reached, credit off) and 2068
+# (the plan tier lacks the model) are on the H3-Image pages (read 2026-11-13): none clears by
+# retrying soon, so all four are the owner's to fix.
+KEY = {1004, 1008, 2049, 2053, 2056, 2067, 2068}
 BLOCKED = {1026, 1027}
 INVALID = {2013}
 IMAGE_PROMPT_LIMIT = 1500
+# H3-Image (the pages named in the module docstring, read 2026-11-13).
+H3_IMAGE_MODELS = frozenset({"MiniMax-H3-Image"})
+H3_IMAGE_PROMPT_LIMIT = 32000
+H3_IMAGE_MAX_REFERENCES = 16
 # The clip models the v2 API serves. MiniMax-H3-Max is v2-only too, but it is not in the
 # catalog; every model not named here keeps the v1 request unchanged.
 V2_VIDEO_MODELS = frozenset({"MiniMax-H3"})
@@ -310,7 +331,68 @@ class MiniMaxImages:
             body["subject_reference"] = [{"type": "character", "image_file": data_url(subject)}]
         return body
 
+    def h3_body(self, request: MediaRequest) -> dict[str, Any]:
+        """H3-Image's body: generations without pictures, edits with them (every reference, in
+        the order given, since a prompt names them "image 1", "image 2")."""
+        prompt = (
+            request.prompt
+            if not request.negative_prompt
+            else f"{request.prompt}. Avoid: {request.negative_prompt}"
+        )
+        if len(prompt.strip()) > H3_IMAGE_PROMPT_LIMIT:
+            raise MediaUpstreamError(
+                422,
+                f"MiniMax H3-Image prompt, including avoidance text, "
+                f"must be at most {H3_IMAGE_PROMPT_LIMIT} characters",
+                "invalid",
+            )
+        if len(request.references) > H3_IMAGE_MAX_REFERENCES:
+            raise MediaUpstreamError(
+                422,
+                f"MiniMax H3-Image takes at most {H3_IMAGE_MAX_REFERENCES} reference images",
+                "invalid",
+            )
+        body: dict[str, Any] = {
+            "model": request.model,
+            "prompt": prompt,
+            "aspect_ratio": request.aspect,
+            "area": "2K" if request.resolution == "2K" else "1K",
+            "n": 1,
+            "response_format": "b64_json",
+            "output_format": "png",
+        }
+        if request.references:
+            body["images"] = [{"image_url": data_url(image)} for image in request.references]
+        else:
+            body["disable_prompt_enhanced"] = True
+        return body
+
+    async def _submit_h3(self, request: MediaRequest, client: httpx.AsyncClient) -> Submitted:
+        path = "images/edits" if request.references else "images/generations"
+        url = f"{self.base_url.rstrip('/')}/{path}"
+        payload = await _v2_json(client, url, self._headers(), self.h3_body(request))
+        data = payload.get("data")
+        item = data[0] if isinstance(data, list) and data and isinstance(data[0], dict) else {}
+        error = item.get("error")
+        if isinstance(error, dict):
+            code = _digits(error.get("code"))
+            if code is not None and code in BUSY | KEY | INVALID | BLOCKED:
+                check_base_resp({"base_resp": {"status_code": code, "status_msg": str(code)}})
+            if code == 1001:
+                raise MediaUpstreamError(502, "MiniMax H3-Image timed out (1001)", "failed")
+            raise MediaUpstreamError(502, f"MiniMax H3-Image failed ({code})", "failed")
+        encoded = item.get("b64_json")
+        if encoded is not None:
+            picture = decode_image(encoded)
+            return Submitted(inline=picture, content_type=sniff_type(picture[:16]))
+        link = item.get("url")
+        if isinstance(link, str) and link:
+            return Submitted(download=Download(url=link, content_type_hint="image/png"))
+        raise MediaUpstreamError(502, "MiniMax returned no image", "failed")
+
     async def submit(self, request: MediaRequest, client: httpx.AsyncClient) -> Submitted:
+        if request.model in H3_IMAGE_MODELS:
+            return await self._submit_h3(request, client)
         url = f"{self.base_url.rstrip('/')}/image_generation"
         payload = await post_json(
             client, url, self.request_body(request), self._headers(), "MiniMax"

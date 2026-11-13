@@ -45,6 +45,7 @@ from app.guides.schemas import (
     HeroImage,
     Kind,
     PublicSummary,
+    SearchSort,
     Section,
 )
 from app.guides.service import (
@@ -363,24 +364,73 @@ async def reindex_all(session: AsyncSession) -> dict[str, int]:
 # --- the query ----------------------------------------------------------------
 
 
+_SCRIPT_RUNS = re.compile(r"[\x00-\x7f]+|[^\x00-\x7f]+")
+_CJK_QUESTION_TAILS = (
+    "怎麼選",
+    "怎麼買",
+    "怎麼用",
+    "怎麼去",
+    "是什麼",
+    "有哪些",
+    "哪個好",
+    "值得買嗎",
+    "推薦嗎",
+)
+
+
 def parse_query(q: str) -> list[str]:
     """The folded terms of a query, or a 422 when nothing searchable is left.
 
-    Splits on whitespace and punctuation, drops a lone ASCII character (``a`` matches
-    every English article and ``,`` matches none) while keeping a lone CJK one (``雪`` is
-    a word), and keeps the first six distinct terms.
+    Splits on whitespace, punctuation, and transitions between ASCII and non-ASCII scripts
+    (so ``Gemini教學`` and ``東京eSIM`` find articles written with spaces), drops a lone
+    ASCII character (``a`` matches every English article and ``,`` matches none) while
+    keeping a lone CJK one (``雪`` is a word), and keeps the first six distinct terms.
     """
     folded = normalize(q[:MAX_QUERY_LENGTH])
     terms: list[str] = []
-    for term in _SEPARATORS.split(folded):
-        if not term or (len(term) == 1 and term.isascii()) or term in terms:
+    for piece in _SEPARATORS.split(folded):
+        if not piece:
             continue
-        terms.append(term)
-        if len(terms) == MAX_TERMS:
-            break
+        for term in _SCRIPT_RUNS.findall(piece):
+            if not term or (len(term) == 1 and term.isascii()) or term in terms:
+                continue
+            terms.append(term)
+            if len(terms) == MAX_TERMS:
+                return terms
     if not terms:
         raise AppError(422, "guide_search_query_invalid", "請輸入要搜尋的字詞")
     return terms
+
+
+def _fallback_cjk_terms(terms: list[str]) -> list[str] | None:
+    """Decompose long unspaced CJK phrases (>= 5 characters) when strict matching finds
+    nothing, while leaving 2-4 character compound nouns untouched to prevent false hits."""
+    expanded: list[str] = []
+    changed = False
+    for term in terms:
+        if term.isascii() or len(term) < 5:
+            if term not in expanded:
+                expanded.append(term)
+            continue
+        stem = term
+        for tail in _CJK_QUESTION_TAILS:
+            if stem.endswith(tail) and len(stem) - len(tail) >= 2:
+                stem = stem[: -len(tail)]
+                changed = True
+                break
+        if len(stem) >= 5:
+            changed = True
+            chunks = [stem[index : index + 2] for index in range(0, len(stem) - 1, 2)]
+            if len(stem) % 2 == 1:
+                chunks.append(stem[-2:])
+            for chunk in chunks:
+                if chunk not in expanded:
+                    expanded.append(chunk)
+        elif stem not in expanded:
+            expanded.append(stem)
+    if not changed or not expanded:
+        return None
+    return expanded[:MAX_TERMS]
 
 
 def _pattern(term: str) -> str:
@@ -481,6 +531,7 @@ async def search(
     topic: str | None = None,
     destination: str | None = None,
     country: str | None = None,
+    sort: SearchSort = "relevance",
     limit: int = 10,
     offset: int = 0,
 ) -> GuideSearchResult:
@@ -519,16 +570,40 @@ async def search(
         )
 
     best = await _best_match(session, locale, normalize(q), conditions)
-    matches = [_contains(GuideSearchEntry.search_text, term) for term in terms]
+    active_terms = terms
+    matches = [_contains(GuideSearchEntry.search_text, term) for term in active_terms]
     if best is not None:
         matches.append(GuideSearchEntry.article_id != best[0].article_id)
     total = int(
         await session.scalar(_visible(func.count(), conditions=[*conditions, *matches])) or 0
     )
+    if total == 0 and best is None:
+        fallback_terms = _fallback_cjk_terms(terms)
+        if fallback_terms is not None:
+            active_terms = fallback_terms
+            matches = [_contains(GuideSearchEntry.search_text, term) for term in active_terms]
+            total = int(
+                await session.scalar(_visible(func.count(), conditions=[*conditions, *matches]))
+                or 0
+            )
+    ordering: tuple[Any, ...]
+    if sort == "latest":
+        ordering = (
+            GuideSearchEntry.published_at.desc(),
+            GuideArticle.news_date.is_(None),
+            GuideArticle.news_date.desc(),
+            GuideArticle.slug,
+        )
+    else:
+        ordering = (
+            _score(active_terms).desc(),
+            GuideSearchEntry.published_at.desc(),
+            GuideArticle.slug,
+        )
     rows = list(
         await session.execute(
             _visible(GuideSearchEntry, GuideArticle, conditions=[*conditions, *matches])
-            .order_by(_score(terms).desc(), GuideSearchEntry.published_at.desc(), GuideArticle.slug)
+            .order_by(*ordering)
             .offset(offset)
             .limit(size)
         )
@@ -540,8 +615,8 @@ async def search(
     results = [
         GuideSearchHit(
             **_summary(entry, article, locale, topics),
-            snippet=snippet(entry.body_text, entry.description, terms),
-            matched=terms,
+            snippet=snippet(entry.body_text, entry.description, active_terms),
+            matched=active_terms,
         )
         for entry, article in rows
     ]

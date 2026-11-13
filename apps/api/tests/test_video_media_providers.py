@@ -16,6 +16,7 @@ from app.video_media.providers import (
     MediaUpstreamError,
     ReferenceImage,
     check_download,
+    data_url,
     public_https_host,
     raise_for_status,
 )
@@ -1319,3 +1320,126 @@ async def test_http_rejection_is_propagated_without_resubmitting_a_paid_request(
     assert len(seen) == 1
     assert seen[0].method == "POST"
     assert seen[0].url.host == "generativelanguage.googleapis.com"
+
+
+H3_IMAGE = "MiniMax-H3-Image"
+H3_PNG = b"\x89PNG\r\n\x1a\n" + b"h3-picture" * 20
+
+
+def _h3_answers(*responses: tuple[int, dict[str, Any]]) -> tuple[Any, list[httpx.Request]]:
+    """A handler answering H3-Image requests with these (status, body) pairs in turn."""
+    seen: list[httpx.Request] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen.append(request)
+        status, body = responses[len(seen) - 1]
+        return httpx.Response(status, json=body)
+
+    return handler, seen
+
+
+def _h3_ok(**item: Any) -> tuple[int, dict[str, Any]]:
+    return 200, {
+        "created": 1,
+        "data": [item],
+        "output_format": "png",
+        "usage": {"generated_images": 1},
+        "request_id": "r-1",
+    }
+
+
+def _h3_refusal(status: int, code: int) -> tuple[int, dict[str, Any]]:
+    return status, {
+        "type": "error",
+        "error": {"type": "x", "message": f"refused ({code})", "http_code": str(status)},
+        "request_id": "r-2",
+    }
+
+
+def test_h3_image_without_references_asks_generations_with_the_prompt_kept() -> None:
+    body = MiniMaxImages(MINIMAX, "k").h3_body(
+        _image_request(model=H3_IMAGE, references=(), aspect="9:16")
+    )
+    assert body == {
+        "model": H3_IMAGE,
+        "prompt": "a girl on a ridge. Avoid: text",
+        "aspect_ratio": "9:16",
+        "area": "1K",
+        "n": 1,
+        "response_format": "b64_json",
+        "output_format": "png",
+        "disable_prompt_enhanced": True,
+    }
+
+
+def test_h3_image_with_references_sends_every_picture_in_order_at_2k() -> None:
+    plate = ReferenceImage(role="style", content_type="image/png", data=b"\x89PNGplate")
+    body = MiniMaxImages(MINIMAX, "k").h3_body(
+        _image_request(model=H3_IMAGE, references=(SHEET, plate), resolution="2K")
+    )
+    assert body["area"] == "2K"
+    assert body["images"] == [
+        {"image_url": data_url(SHEET)},
+        {"image_url": data_url(plate)},
+    ]
+    assert "disable_prompt_enhanced" not in body, "edits has no such field"
+
+
+def test_h3_image_refuses_too_many_references_and_too_long_a_prompt() -> None:
+    provider = MiniMaxImages(MINIMAX, "k")
+    with pytest.raises(MediaUpstreamError) as many:
+        provider.h3_body(_image_request(model=H3_IMAGE, references=(SHEET,) * 17))
+    assert many.value.kind == "invalid"
+    with pytest.raises(MediaUpstreamError) as long:
+        provider.h3_body(_image_request(model=H3_IMAGE, prompt="x" * 32001, negative_prompt=None))
+    assert long.value.kind == "invalid"
+
+
+@pytest.mark.asyncio
+async def test_h3_image_answers_go_to_their_own_paths_and_come_back_inline() -> None:
+    handler, seen = _h3_answers(
+        _h3_ok(b64_json=base64.b64encode(H3_PNG).decode(), size="1365x768"),
+        _h3_ok(url="https://cdn.minimax.example/h3.png", size="1365x768"),
+    )
+    provider = MiniMaxImages(MINIMAX, "secret")
+    async with _client(handler) as client:
+        drawn = await provider.submit(_image_request(model=H3_IMAGE, references=()), client)
+        edited = await provider.submit(_image_request(model=H3_IMAGE), client)
+    assert (drawn.inline, drawn.content_type) == (H3_PNG, "image/png")
+    assert edited.download == Download(
+        url="https://cdn.minimax.example/h3.png", content_type_hint="image/png"
+    )
+    assert [request.url.path for request in seen] == ["/v1/images/generations", "/v1/images/edits"]
+    assert seen[0].headers["authorization"] == "Bearer secret"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("answer", "kind"),
+    [
+        pytest.param(_h3_refusal(402, 2068), "key", id="plan-lacks-model"),
+        pytest.param(_h3_refusal(429, 2056), "busy", id="m-plan-limit"),
+        pytest.param(_h3_refusal(422, 1026), "blocked", id="prompt-unsafe"),
+        pytest.param(_h3_refusal(400, 2013), "invalid", id="bad-params"),
+        pytest.param(_h3_ok(error={"code": 1027, "message": "unsafe"}), "blocked", id="item-1027"),
+        pytest.param(_h3_ok(error={"code": 1001, "message": "slow"}), "failed", id="item-timeout"),
+        pytest.param(_h3_ok(size="1x1"), "failed", id="no-picture"),
+    ],
+)
+async def test_h3_image_refusals_name_who_can_fix_them(
+    answer: tuple[int, dict[str, Any]], kind: str
+) -> None:
+    handler, _seen = _h3_answers(answer)
+    async with _client(handler) as client:
+        with pytest.raises(MediaUpstreamError) as error:
+            await MiniMaxImages(MINIMAX, "secret").submit(
+                _image_request(model=H3_IMAGE, references=()), client
+            )
+    assert error.value.kind == kind
+    assert "refused (" not in error.value.message, "the vendor's text is not kept"
+
+
+def test_h3_image_is_in_the_catalog_with_2k_and_references() -> None:
+    model = find_model("minimax", "image", H3_IMAGE)
+    assert model is not None and model.usd_per_image_2k is not None
+    assert model.reference_images == 4 and model.style_references == 0

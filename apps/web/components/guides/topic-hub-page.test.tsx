@@ -178,10 +178,21 @@ describe("what the topic hub tells search engines", () => {
     expect(metadata.alternates?.languages).toEqual({ "zh-TW": "http://localhost:3000/zh-TW/life/topics/ai-terms" });
   });
 
-  it("keeps a topic with nothing published in this language out of the index, but followed", async () => {
+  it("keeps a topic with nothing published in this language out of the index, but followed, while advertising its news Atom feed", async () => {
     const metadata = await topicHubMetadata(route({ topic: "ai-news" }));
     expect(metadata.robots).toEqual({ index: false, follow: true });
     expect(metadata.alternates?.languages).toBeUndefined();
+    expect(metadata.alternates?.types?.["application/atom+xml"]).toEqual([
+      { url: "http://localhost:3000/zh-TW/life/topics/ai-news/feed.xml", title: expect.any(String) },
+    ]);
+    const nonNews = await topicHubMetadata(route({ topic: "ai-terms" }));
+    expect(nonNews.alternates?.types).toBeUndefined();
+  });
+
+  it("offers an RSS feed link on news topic hubs and omits it on non-news hubs", async () => {
+    render(await renderTopicHub(route({ topic: "ai-news" })));
+    expect(screen.getByRole("link", { name: /RSS 訂閱/ }).getAttribute("href"))
+      .toBe("/zh-TW/life/topics/ai-news/feed.xml");
   });
 
   it("keeps a paged view out of the index", async () => {

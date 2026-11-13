@@ -11,7 +11,7 @@ from __future__ import annotations
 import base64
 import hashlib
 import json
-from datetime import date, datetime
+from datetime import UTC, date, datetime, timedelta
 from typing import Any, Literal, cast
 from urllib.parse import urlsplit
 from uuid import UUID
@@ -36,6 +36,7 @@ from app.guides.publication import article_is_live, published_filters
 from app.guides.schemas import (
     KINDS,
     SECTION_KINDS,
+    SLUG_PATTERN,
     DestinationFacet,
     DestinationFacetList,
     GuideDocument,
@@ -57,10 +58,12 @@ from app.guides.schemas import (
 from app.guides.series import article_navigation, resolve_article_links, term_set_for
 from app.guides.taxonomy import parent_slugs, topic_ids_including_children, topic_option
 from app.i18n import LOCALES, Locale
-from app.models import AffiliateClick
+from app.models import AffiliateClick, AnalyticsEvent
 from app.problems import AppError
 
 MAX_PAGE = 50
+MAX_TRENDING = 20
+TRENDING_WINDOW_DAYS = 14
 # The largest page ``GET /guides/sitemap`` answers, and its default: a caller that predates
 # paging still gets the newest thousand rows in one call, and a paging caller asks for less.
 SITEMAP_LIMIT = 1000
@@ -422,6 +425,164 @@ async def public_list(
         else:
             next_cursor = _encode_cursor(last_stamp, last_article.slug)
     return PublicList(articles=articles, next_cursor=next_cursor)
+
+
+def _epoch(stamp: datetime | None) -> float:
+    if stamp is None:
+        return 0.0
+    aware = stamp.replace(tzinfo=UTC) if stamp.tzinfo is None else stamp
+    return aware.timestamp()
+
+
+def _parse_article_route(path: str) -> tuple[Kind, str] | None:
+    """Inverse of ``app.analytics.service.normalize_path`` for public guide routes."""
+    parts = [part for part in path.split("/") if part]
+    kind: Kind
+    if len(parts) == 3 and parts[0] == "guides" and parts[1] in ("intel", "howto"):
+        kind = "intel" if parts[1] == "intel" else "howto"
+        slug = parts[2]
+    elif len(parts) == 2 and parts[0] == "life":
+        kind = "life"
+        slug = parts[1]
+    else:
+        return None
+    if SLUG_PATTERN.fullmatch(slug) is None:
+        return None
+    return kind, slug
+
+
+async def public_trending(
+    session: AsyncSession,
+    locale: Locale,
+    *,
+    kind: Kind | None = None,
+    section: Section | None = None,
+    topic: str | None = None,
+    limit: int = 6,
+) -> PublicList:
+    """Published articles ranked by real non-bot ``page_view`` traffic over the rolling
+    window, backfilled with ``curated`` picks when fewer articles have views yet.
+
+    View counts are never returned or invented: this endpoint orders real articles honestly
+    and falls back to editorial picks on a cold window.
+    """
+    kinds = kind_filter(kind, section)
+    if kinds is not None and not kinds:
+        return PublicList(articles=[], next_cursor=None)
+    size = min(max(limit, 1), MAX_TRENDING)
+    topic_ids = await topic_ids_including_children(session, topic) if topic else None
+    if topic_ids is not None and not topic_ids:
+        return PublicList(articles=[], next_cursor=None)
+
+    allowed_kinds: set[Kind] = set(kinds) if kinds is not None else set(KINDS)
+    prefixes: list[Any] = []
+    if "life" in allowed_kinds:
+        prefixes.append(AnalyticsEvent.normalized_path.like("/life/%"))
+    if "intel" in allowed_kinds:
+        prefixes.append(AnalyticsEvent.normalized_path.like("/guides/intel/%"))
+    if "howto" in allowed_kinds:
+        prefixes.append(AnalyticsEvent.normalized_path.like("/guides/howto/%"))
+
+    cutoff = datetime.now(UTC) - timedelta(days=TRENDING_WINDOW_DAYS)
+    counts: dict[tuple[Kind, str], int] = {}
+    with session.no_autoflush:
+        stat_rows = await session.execute(
+            select(AnalyticsEvent.normalized_path, func.count(AnalyticsEvent.id))
+            .where(
+                AnalyticsEvent.event_name == "page_view",
+                AnalyticsEvent.is_bot.is_(False),
+                AnalyticsEvent.occurred_at >= cutoff,
+                or_(*prefixes),
+            )
+            .group_by(AnalyticsEvent.normalized_path)
+            .order_by(
+                func.count(AnalyticsEvent.id).desc(),
+                AnalyticsEvent.normalized_path.asc(),
+            )
+            .limit(MAX_TRENDING * 4)
+        )
+        for norm_path, view_count in stat_rows:
+            parsed = _parse_article_route(norm_path)
+            if parsed is not None and parsed[0] in allowed_kinds and int(view_count) > 0:
+                counts[parsed] = int(view_count)
+
+    base_query = (
+        select(GuideArticle, GuideArticleLocale)
+        .join(GuideArticleLocale, GuideArticleLocale.article_id == GuideArticle.id)
+        .where(GuideArticleLocale.locale == locale, *published_filters())
+    )
+    if kinds:
+        base_query = base_query.where(GuideArticle.kind.in_(kinds))
+    if topic_ids:
+        base_query = base_query.where(
+            GuideArticle.id.in_(
+                select(GuideArticleTopic.article_id).where(
+                    GuideArticleTopic.topic_id.in_(topic_ids)
+                )
+            )
+        )
+
+    selected: list[tuple[GuideArticle, GuideArticleLocale]] = []
+    if counts:
+        candidate_slugs = sorted({slug for _, slug in counts})
+        matched_rows = list(
+            await session.execute(base_query.where(GuideArticle.slug.in_(candidate_slugs)))
+        )
+        ranked = [
+            (article, row)
+            for article, row in matched_rows
+            if counts.get((cast(Kind, article.kind), article.slug), 0) > 0
+        ]
+        ranked.sort(
+            key=lambda pair: (
+                -counts[(cast(Kind, pair[0].kind), pair[0].slug)],
+                -_epoch(pair[1].published_at),
+                pair[0].slug,
+            )
+        )
+        selected.extend(ranked[:size])
+
+    if len(selected) < size:
+        needed = size - len(selected)
+        seen_ids = [article.id for article, _ in selected]
+        backfill_query = base_query
+        if seen_ids:
+            backfill_query = backfill_query.where(GuideArticle.id.not_in(seen_ids))
+        backfill_rows = list(
+            await session.execute(
+                backfill_query.order_by(
+                    GuideArticle.featured.desc(),
+                    GuideArticle.display_order,
+                    GuideArticleLocale.published_at.desc(),
+                    GuideArticle.slug,
+                ).limit(needed)
+            )
+        )
+        selected.extend(backfill_rows)
+
+    topics = await _topic_options_for(session, [article.id for article, _ in selected], locale)
+    articles: list[PublicSummary] = []
+    for article, row in selected:
+        published = await _published_document(session, row)
+        if published is None:
+            continue
+        articles.append(
+            PublicSummary(
+                slug=article.slug,
+                kind=cast(Kind, article.kind),
+                destination_id=article.destination_id,
+                destination_label=destination_label(article.destination_id, locale),
+                topics=topics.get(article.id, []),
+                title=published.title,
+                description=published.description,
+                hero=published.hero,
+                published_at=published.published_at,
+                valid_until=article.valid_until,
+                news_date=article.news_date,
+                featured=article.featured,
+            )
+        )
+    return PublicList(articles=articles, next_cursor=None)
 
 
 async def public_article(

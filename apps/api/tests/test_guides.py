@@ -47,7 +47,7 @@ from app.guides.taxonomy import (
     TRAVEL_SEED_SUBTOPICS,
     seed_names,
 )
-from app.models import AdminAuditLog, AffiliateClick, User
+from app.models import AdminAuditLog, AffiliateClick, AnalyticsEvent, User
 from app.problems import AppError, app_error_handler, validation_error_handler
 
 TABLES = [
@@ -65,6 +65,7 @@ TABLES = [
     cast(Table, AdminAuditLog.__table__),
     # Partner-link clicks are counted here (tests/test_guide_partner_links.py).
     cast(Table, AffiliateClick.__table__),
+    cast(Table, AnalyticsEvent.__table__),
 ]
 
 
@@ -2212,3 +2213,124 @@ async def test_a_document_carries_at_most_one_opening_summary_and_one_faq(
             },
         )
         assert response.status_code == 422, response.text
+
+
+def _page_view(path: str, *, is_bot: bool = False, days_ago: int = 1) -> AnalyticsEvent:
+    stamp = datetime.now(UTC) - timedelta(days=days_ago)
+    return AnalyticsEvent(
+        id=uuid4(),
+        event_id=uuid4(),
+        event_name="page_view",
+        occurred_at=stamp,
+        received_at=stamp,
+        normalized_path=path,
+        locale="zh-TW",
+        session_hash="s" * 64,
+        visitor_day_hash="v" * 64,
+        is_bot=is_bot,
+    )
+
+
+async def test_trending_ranks_real_non_bot_views_and_backfills_curated_picks(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        first = await create_article(
+            api,
+            slug="ai-agent-guide",
+            kind="life",
+            destination_id=None,
+            topics=["ai"],
+            document=document(title="AI 代理入門"),
+        )
+        second = await create_article(
+            api,
+            slug="gemini-cli-tips",
+            kind="life",
+            destination_id=None,
+            topics=["ai"],
+            document=document(title="Gemini CLI 技巧"),
+        )
+        curated_pick = await create_article(
+            api,
+            slug="editor-featured-pick",
+            kind="life",
+            destination_id=None,
+            topics=["tech-news"],
+            document=document(title="編輯精選必讀"),
+        )
+        unfeatured_extra = await create_article(
+            api,
+            slug="plain-older-note",
+            kind="life",
+            destination_id=None,
+            topics=["tech-news"],
+            document=document(title="一般舊筆記"),
+        )
+        saved_pick = await api.put(
+            f"/admin/guides/{curated_pick['id']}",
+            json={
+                "expected_version": curated_pick["version"],
+                "kind": "life",
+                "destination_id": None,
+                "topics": ["tech-news"],
+                "featured": True,
+                "display_order": 10,
+            },
+        )
+        assert saved_pick.status_code == 200, saved_pick.text
+        hidden = await create_article(
+            api,
+            slug="draft-only-post",
+            kind="life",
+            destination_id=None,
+            topics=["ai"],
+            document=document(title="尚未發布草稿"),
+        )
+        for item in (first, second, curated_pick, unfeatured_extra):
+            assert (
+                await publish(api, item["id"], "zh-TW", item["locales"][0]["version"])
+            ).status_code == 200
+        del hidden
+
+    async with database() as session:
+        session.add_all(
+            [
+                _page_view("/life/gemini-cli-tips"),
+                _page_view("/life/gemini-cli-tips"),
+                _page_view("/life/gemini-cli-tips"),
+                _page_view("/life/ai-agent-guide"),
+                # Bot traffic, stale events and unpublished drafts never influence trending.
+                _page_view("/life/ai-agent-guide", is_bot=True),
+                _page_view("/life/ai-agent-guide", is_bot=True),
+                _page_view("/life/ai-agent-guide", is_bot=True),
+                _page_view("/life/ai-agent-guide", days_ago=30),
+                _page_view("/life/draft-only-post"),
+                _page_view("/life/draft-only-post"),
+                _page_view("/life/draft-only-post"),
+                _page_view("/life/draft-only-post"),
+            ]
+        )
+        await session.commit()
+
+    async with client(make_app(database, actor)) as api:
+        res = await api.get("/guides/trending", params={"locale": "zh-TW", "limit": 3})
+        assert res.status_code == 200, res.text
+        payload = res.json()
+        assert payload["next_cursor"] is None
+        assert [row["slug"] for row in payload["articles"]] == [
+            "gemini-cli-tips",
+            "ai-agent-guide",
+            "editor-featured-pick",
+        ]
+
+        ai_only = await api.get(
+            "/guides/trending",
+            params={"locale": "zh-TW", "section": "life", "topic": "ai", "limit": 5},
+        )
+        assert ai_only.status_code == 200
+        assert [row["slug"] for row in ai_only.json()["articles"]] == [
+            "gemini-cli-tips",
+            "ai-agent-guide",
+        ]
+

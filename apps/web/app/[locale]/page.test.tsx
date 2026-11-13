@@ -23,7 +23,12 @@ vi.mock("@/lib/discovery-status.server", () => ({ getDiscoveryStatus: async () =
 vi.mock("@/lib/discovery.server", async (original) => ({
   ...await original<typeof import("@/lib/discovery.server")>(), getInitialDiscoveryFeed: async () => state.feed,
 }));
-vi.mock("@/lib/guides.server", () => ({ getGuideList: state.guides }));
+vi.mock("@/lib/guides.server", async (original) => ({
+  ...await original<typeof import("@/lib/guides.server")>(),
+  getGuideList: state.guides,
+  getTrendingGuides: vi.fn(async () => ({ articles: [], next_cursor: null, available: false })),
+  getSeriesIndex: vi.fn(async () => []),
+}));
 
 const articles = (group: string, kind: GuideSummary["kind"]): GuideSummary[] => Array.from({ length: 4 }, (_, index) => ({
   slug: `${group}-article-${index}`, kind, destination_id: null, destination_label: null, topics: [],
@@ -63,9 +68,9 @@ describe("home", () => {
   it("says what the site is before the search, even when every article read fails", async () => {
     const home = await Home();
     await act(async () => { render(home, { wrapper: ThemeProvider }); });
-    expect(screen.getByRole("heading", { level: 2, name: "旅行與生活的實用指南" })).toBeTruthy();
+    expect(screen.getByRole("heading", { level: 2, name: "AI 科技快訊、軟體教學與旅遊生活攻略" })).toBeTruthy();
     expect(screen.getByText(/個人站長經營/)).toBeTruthy();
-    const introduction = screen.getByRole("region", { name: "旅行與生活的實用指南" });
+    const introduction = screen.getByRole("region", { name: "AI 科技快訊、軟體教學與旅遊生活攻略" });
     expect(introduction.compareDocumentPosition(document.getElementById("trip-search")!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
@@ -82,7 +87,7 @@ describe("home", () => {
     const html = renderToStaticMarkup(<ThemeProvider>{await Home()}</ThemeProvider>);
     // Mount only the server's HTML; the page components are not hydrated here.
     const { container: parsed } = render(<div dangerouslySetInnerHTML={{ __html: html }} />);
-    const introduction = within(parsed).getByRole("region", { name: "旅行與生活的實用指南" });
+    const introduction = within(parsed).getByRole("region", { name: "AI 科技快訊、軟體教學與旅遊生活攻略" });
     const followingBody = parsed.querySelector("main");
     expect(followingBody).toBeTruthy();
     expect(introduction.compareDocumentPosition(followingBody!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { Rss } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
@@ -102,6 +103,15 @@ export async function topicHubMetadata(route: TopicHubRoute): Promise<Metadata> 
             },
           }
         : {}),
+      ...(isNewsTopic(route.section, route.topic) && !route.cursor && !route.sort
+        ? {
+            types: {
+              "application/atom+xml": [
+                { url: localeUrl(route.locale, `${path}/feed.xml`), title: t("topicHubTitle", { topic: label }) },
+              ],
+            },
+          }
+        : {}),
     },
     ...(noindex ? { robots: { index: false, follow: true } } : {}),
   };
@@ -169,8 +179,21 @@ export async function renderTopicHub(
             <li aria-current="page" className="inline-flex min-h-11 items-center">{label}</li>
           </ol>
         </nav>
-        <h1 className="text-4xl font-bold tracking-tight">{label}</h1>
-        <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--muted)]">{lead}</p>
+        <header className="mt-2 rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[var(--shadow-sm)] md:p-8">
+          <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">{label}</h1>
+          <p className="mt-3 max-w-2xl text-base leading-7 text-[var(--muted)] md:text-lg md:leading-8">{lead}</p>
+          {news ? (
+            <p className="mt-4">
+              <a
+                href={`/${locale}${path}/feed.xml`}
+                className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--paper)]/75 px-3.5 text-sm font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+              >
+                <Rss size={15} aria-hidden />
+                {t("guides.rssSubscribe")}
+              </a>
+            </p>
+          ) : null}
+        </header>
 
         {!vocabulary.available ? (
           <p className="mt-6 leading-7 text-[var(--muted)]">{t("guides.topicUnavailable")}</p>
@@ -196,7 +219,7 @@ export async function renderTopicHub(
           news ? (
             <NewsList articles={list.articles} className="mt-6" />
           ) : (
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            <ul className="mt-6 grid gap-4 sm:grid-cols-2">
               {list.articles.map((article) => (
                 <GuideCard key={`${article.kind}:${article.slug}`} article={article} labels={cardLabels} />
               ))}
@@ -212,7 +235,7 @@ export async function renderTopicHub(
 
         {list.next_cursor ? (
           <p className="mt-8">
-            <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={`${next}${encodeURIComponent(list.next_cursor)}`}>
+            <Link className="inline-flex min-h-11 items-center rounded-full border border-[var(--teal)] bg-[var(--surface)] px-5 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-colors hover:bg-[var(--teal-soft)]" href={`${next}${encodeURIComponent(list.next_cursor)}`}>
               {t("guides.more")}
             </Link>
           </p>

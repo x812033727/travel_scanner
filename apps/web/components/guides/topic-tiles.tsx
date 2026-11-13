@@ -33,18 +33,20 @@ export function TopicTiles({
   return (
     <section aria-labelledby="topic-tiles-heading" className="mt-10" data-testid="topic-tiles">
       <h2 id="topic-tiles-heading" className="text-2xl font-bold tracking-tight">{labels.heading}</h2>
-      <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {parents.map((topic) => {
           const children = topics.filter((child) => child.parent === topic.slug && shown(child));
           const inFamily = topic.slug === active || children.some((child) => child.slug === active);
           return (
             <li
               key={topic.slug}
-              className={`rounded-2xl border p-4 ${inFamily ? "border-[var(--teal)] bg-[var(--teal-soft)]" : "border-[var(--line)] bg-[var(--surface)]"}`}
+              className={`rounded-2xl border p-4 shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--teal)] hover:shadow-[var(--shadow-md)] ${
+                inFamily ? "border-[var(--teal)] bg-[var(--teal-soft)]" : "border-[var(--line)] bg-[var(--surface)]"
+              }`}
             >
-              <h3 className="text-lg font-bold">
+              <h3 className="text-lg font-bold tracking-tight">
                 <Link
-                  className="inline-flex min-h-11 items-center text-[var(--teal)] underline-offset-4 hover:underline"
+                  className="inline-flex min-h-11 items-center text-[var(--ink)] underline-offset-4 hover:text-[var(--teal)] hover:underline"
                   href={guideTopicHref(section, topic.slug)}
                   aria-current={topic.slug === active ? "page" : undefined}
                 >

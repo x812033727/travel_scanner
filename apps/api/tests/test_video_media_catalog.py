@@ -49,8 +49,8 @@ def test_the_gemini_image_models_carry_a_2k_price_beside_their_1k_price() -> Non
 
 def test_only_the_gemini_image_models_take_a_style_reference() -> None:
     """The Gemini adapter forwards a role "style" reference with its own instruction; the
-    MiniMax adapter sends a character reference alone, so image-01 never sees a style plate
-    and the tools draw none for it (tools/video/media/keyframes.mjs)."""
+    MiniMax adapters send no instruction for one, so neither image-01 nor H3-Image is given a
+    style plate and the tools draw none for them (tools/video/media/keyframes.mjs)."""
     for model in MEDIA_CATALOG:
         expected = 1 if model.kind == "image" and model.vendor == "gemini" else 0
         assert model.style_references == expected, model.id

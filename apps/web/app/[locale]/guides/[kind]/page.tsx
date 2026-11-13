@@ -117,8 +117,10 @@ export default async function GuideListPage(
         ]}
       />
       <main className="mx-auto max-w-5xl px-5 py-10 md:px-8">
-        <h1 className="text-4xl font-bold tracking-tight">{heading}</h1>
-        <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--muted)]">{lead}</p>
+        <header className="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[var(--shadow-sm)] md:p-8">
+          <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">{heading}</h1>
+          <p className="mt-3 max-w-2xl text-lg leading-8 text-[var(--muted)]">{lead}</p>
+        </header>
 
         <ListingToolbar
           section="travel"
@@ -134,7 +136,7 @@ export default async function GuideListPage(
         />
 
         {list.articles.length ? (
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+          <ul className="mt-6 grid gap-4 sm:grid-cols-2">
             {list.articles.map((article) => (
               <GuideCard key={article.slug} article={article} labels={cardLabels} />
             ))}
@@ -149,7 +151,10 @@ export default async function GuideListPage(
 
         {list.next_cursor ? (
           <p className="mt-8">
-            <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={`${next}${encodeURIComponent(list.next_cursor)}`}>
+            <Link
+              className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-5 py-2 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]"
+              href={`${next}${encodeURIComponent(list.next_cursor)}`}
+            >
               {t("guides.more")}
             </Link>
           </p>

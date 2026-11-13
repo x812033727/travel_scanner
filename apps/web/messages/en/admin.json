@@ -1497,6 +1497,10 @@
       "label": "MiniMax API Key",
       "help": "Used for the MiniMax Responses API."
     },
+    "minimax_api_keys_extra": {
+      "label": "More MiniMax M Plan keys",
+      "help": "Any number, separated by commas or line breaks. Every MiniMax call picks among these and the key above by how many calls each is handling and how much of its plan is left; a key whose plan is used up rests until it resets."
+    },
     "jev_api_key": {
       "label": "Jev API Key",
       "help": "TypeSafe System One. Returns choice, score and noul decisions with a confidence value and never generates text, so it is not offered as a planner or article-search provider; encrypted on the server."
