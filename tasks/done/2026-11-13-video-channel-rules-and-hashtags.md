@@ -19,6 +19,10 @@ scope:
   - docs/videos/lessons/sothatswhy.md
   - docs/videos/so-thats-why/thumbnails.md
   - docs/videos/so-thats-why/refresh-20261101/SPEC.md
+  - docs/videos/so-thats-why/refresh-20261101/catalog.json
+  - docs/videos/so-thats-why/refresh-20261101/episodes.json
+  - docs/videos/so-thats-why/pool/pool.json
+  - docs/videos/so-thats-why/pool/manifest.json
   - docs/videos/so-thats-why/dialogue-pilot-20261103/README.md
   - docs/videos/packaging-refresh-20261111/README.md
   - tools/video/core/metadata.mjs
