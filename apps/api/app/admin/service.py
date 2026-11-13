@@ -213,6 +213,7 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "openai_api_key",
             "anthropic_api_key",
             "minimax_api_key",
+            "minimax_api_keys_extra",
             "hotspot_guide_gemini_api_key",
             "jev_api_key",
         ),
@@ -652,7 +653,16 @@ def apply_runtime_overrides(base: Settings, rows: list[ProviderConfig]) -> Setti
 
 
 async def load_runtime_settings(session: AsyncSession) -> Settings:
-    return apply_runtime_overrides(get_settings(), await provider_rows(session))
+    settings = apply_runtime_overrides(get_settings(), await provider_rows(session))
+    if not settings.minimax_api_keys_extra:
+        return settings
+    # Several M Plan keys: every text call made with these settings (planner, trip parser,
+    # guide search and review, intros, news, video stages) uses the key the pool picks now.
+    # Video media and speech pick their own per call (app.ai.minimax_pool).
+    from app.ai.minimax_pool import settings_with_key
+    from app.infra import get_redis
+
+    return await settings_with_key(get_redis(), settings)
 
 
 async def effective_registration_enabled(session: AsyncSession) -> bool:

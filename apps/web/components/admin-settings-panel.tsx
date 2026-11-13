@@ -342,6 +342,7 @@ const secretLabels: Record<string, { label?: string; help?: string; localized?: 
   openai_api_key: { localized: true },
   anthropic_api_key: { localized: true },
   minimax_api_key: { localized: true },
+  minimax_api_keys_extra: { localized: true },
   jev_api_key: { localized: true },
   azure_speech_key: { localized: true },
   pexels_api_key: { localized: true },

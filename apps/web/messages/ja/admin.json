@@ -1497,6 +1497,10 @@
       "label": "MiniMax API Key",
       "help": "MiniMax Responses API に使います。"
     },
+    "minimax_api_keys_extra": {
+      "label": "追加の MiniMax M Plan キー",
+      "help": "複数入力できます（カンマまたは改行で区切り）。MiniMax を呼び出すたびに、上のキーとこれらの中から、処理中の件数と残りの利用枠をもとに 1 つを選びます。枠を使い切ったキーはリセットまで休ませます。"
+    },
     "jev_api_key": {
       "label": "Jev API キー",
       "help": "TypeSafe System One。choice・score・noul の判定と確信度のみを返し、文章は生成しないため、旅程プランナーや記事検索の提供元としては選べません。サーバー側で暗号化して保存します。"
