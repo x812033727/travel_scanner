@@ -118,19 +118,20 @@ def obj(id, prompt, *lines, chapter=None):
     scene(id, prompt + STYLE + ", clean empty corners", *lines, chapter=chapter)
 
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；結果都不先講）----------
-obj("tube-tear", "Close-up of " + TUBET + ", lying on a light wooden desk",
-    k("所長！我做的飛機裂開了！", "急著報案的語氣"),
-    k("明天要坐飛機，我先做一架。", "委屈"), chapter="紙做的機身，從窗角裂開")
+obj("tube-tear", "Close-up of " + TUBET + ", lying on a light wooden desk in a bright cartoon office beside a small roll of clear sticky tape",
+    k("所長！事務所有膠帶嗎？", "急著報案的語氣"),
+    k("我做的飛機裂開了！", "委屈"), chapter="紙做的機身，從窗角裂開")
 # Thumbnail shot (fixed before keyframes): the kid big and centred, the torn card plane in hand.
 kid("kid-main-q", K("holding up " + TUBE + " in both hands at her chest, wide curious eyes on the viewer, in the exact centre of the picture", where=OFFICE),
+    k("明天要坐飛機，我先做了一架。", "委屈"),
     k("你看，從窗戶的角裂開的。", "指給所長看", "S:tear"),
-    c("你剪的窗戶，是方方的？", "接住上一句"),
+    c("有。先讓我看看。你剪的窗戶，是方方的？", "接住上一句"),
     k("對啊，跟我家的窗戶一樣。"))
 obj("cabin-window", "Close-up of " + WINDOW,
     c("那你明天坐飛機，看看座位旁邊的窗戶。"),
     c("它的四個角，都是圓圓的。"))
 chief("chief-strips", C("holding up " + STRIPS + " side by side with a playful mysterious smile"),
-    c("我這裡有兩條硬紙，一條剪方洞，一條剪圓洞。", "賣關子"),
+    c("我這裡有兩條硬紙，一條剪方洞，一條剪一樣寬的圓洞。", "賣關子"),
     c("兩條一起用力拉，你猜，哪一條先破？", "賣關子", "S:pull"))
 obj("clip-desk", "Close-up of " + CLIP + " lying on a light wooden desk, catching a bright glint",
     c("還有這根迴紋針。彎一下，它沒事。"),
@@ -149,9 +150,10 @@ chief("chief-skin", C("smiling kindly and holding up one finger", close=True),
     c("不刮手是好事，可是答案在窗戶旁邊的機身。", "接住上一句", "P:scratch"),
     k("機身是什麼？", "句尾上揚"), chapter="明天的飛機，被空氣撐著")
 obj("plane-side", "Wide side view of " + PLANE + " parked on a sunny airfield, its long smooth silver-white body shining",
-    c("就是飛機那一整條長長的身體，外面包著金屬。"))
+    c("就是飛機那一整條長長的身體，外面多半包著金屬。"),
+    k("它幹嘛要飛那麼高？", "句尾上揚"))
 obj("plane-sky", "Wide shot of " + PLANE + " cruising high above a fluffy sea of white clouds under a deep blue sky",
-    c("美國管飛航安全的聯邦航空總署，有一本手冊說，"),
+    c("美國聯邦航空總署的飛行手冊說，", "接住上一句"),
     c("飛得高比較省油，還能飛在暴風雨上面。"))
 kid("kid-air-q", K("looking up at the sky through a big office window with a curious face", where=OFFICE),
     k("那麼高，外面的空氣呢？", "句尾上揚"))
@@ -164,7 +166,7 @@ chief("chief-sealed", C("shaking her head gently with a reassuring smile", close
     c("不會。客機的機艙是封起來的，"),
     c("裡面一直打進空氣，比外面多，這叫加壓。"))
 obj("cabin-aisle", "Wide shot inside a bright cartoon airliner cabin, rows of soft blue seats, oval windows with rounded corners along both walls, sunlight coming in",
-    c("手冊說，通常讓機艙裡的空氣，"),
+    c("通常讓機艙裡的空氣，"),
     c("像在大約兩千四百公尺的山上，人待著比較舒服。"))
 kid("kid-push-q", K("pressing both palms together hard in front of her chest with a thinking frown", close=True, where=OFFICE),
     k("裡面空氣比外面多，", "想不通"), k("那會怎樣？", "句尾上揚", "S:push"))
@@ -175,7 +177,7 @@ obj("balloon-big", "Close-up of a round red balloon blown up big and tight, its 
     c("裡外推力的差，叫做壓差。"))
 kid("kid-pop", K("covering her ears with both hands and squeezing her eyes shut as two happy curved lines, a big round red balloon floating beside her", where=OFFICE),
     k("氣球吹太多，會破掉！", "想起來"),
-    c("對。所以機艙不會加到跟地面一樣。"))
+    c("對。所以飛很高時，機艙不會加到跟地面一樣。"))
 chief("chief-limit", C("holding one flat hand up high like a ceiling with a careful smile", close=True),
     c("手冊說，機身設計時就定好，最多撐多大的壓差，"),
     c("加壓不能超過它。"))
@@ -187,40 +189,31 @@ chief("chief-cycle", C("opening both hands wide and then bringing them close aga
     c("所以飛一趟，就是撐一下、再鬆一下。", None, "P:every"))
 kid("kid-pane-q", K("pressing one fingertip against a window pane with a curious face", close=True, where=OFFICE),
     k("那窗戶也被推嗎？", "句尾上揚", "S:pane"))
-obj("window-layers", "Extreme close-up of the edge of an airliner cabin window showing three clear acrylic panes stacked one behind another with thin gaps between them, a tiny round hole near the bottom of the middle pane, soft blue sky beyond",
-    c("會。一位機長寫的文章，問過做飛機窗戶的公司：", "接住上一句"),
-    c("客機的窗戶通常有三層。"),
-    k("中間那層，有個小洞耶！", "發現"))
-chief("chief-backup", C("holding up three fingers and then tapping the middle one with a knowing smile", close=True),
-    c("小洞讓夾縫裡的氣壓，跟機艙一樣，", "接住上一句"),
-    c("所以平常是最外層，撐住裡外的壓差。", None, "P:pane"))
-kid("kid-outer-q", K("tapping a window pane gently with one fingertip and a worried frown", where=OFFICE),
-    k("那外層壞掉了呢？", "擔心"),
-    c("中間那層也撐得住，它會來接手。"))
 chief("chief-doors", C("tracing a big rectangle in the air with one finger and a thoughtful face"),
-    c("航空總署的手冊還說，機身能撐多大的壓差，"),
-    c("要看它多強，也常要看窗戶和門這些地方。"))
+    c("會。手冊還說，機身能撐多大的壓差，", "接住上一句"),
+    c("常要看窗戶和門這些地方。", None, "P:pane"))
 kid("kid-doors-q", K("looking at the side of the toy airliner in her hands with a thinking face", close=True, where=OFFICE),
     k("窗戶跟門，有什麼特別？", "章尾停住，句尾上揚"))
 
 # ---------- 第二章：拉一拉，方洞和圓洞 ----------
 chief("chief-hole", C("making a round hole with her thumb and finger and looking through it with a playful smile", close=True),
     c("它們都是在機身上，開的一個洞。", "接住上一句"),
-    c("洞那裡沒有金屬，推力只好繞過去。"), chapter="拉一拉，方洞和圓洞")
-kid("kid-around-q", K("tilting her head with a puzzled face, one finger on her cheek", close=True, where=OFFICE),
+    c("機身被撐開時，外面那層金屬被拉得緊緊的。"), chapter="拉一拉，方洞和圓洞")
+obj("hole-skin", "Close-up of the smooth silver-white metal side of an airliner around one rounded cabin window, neat rows of tiny rivets in the skin, bright daylight",
+    c("洞那裡沒有金屬，機身裡的拉力只好繞過去。"),
     k("繞過去？怎麼繞？", "句尾上揚", "S:around"))
 obj("stream-round", "Close-up from above of " + ROUNDSTONE + ", pebbles on the sunny stream bed",
     c("想像一條小溪，中間有一顆圓圓的石頭。"),
     c("水碰到它，順著圓邊，滑滑地流過去。"))
 obj("stream-square", "Close-up from above of " + SQUAREBLOCK + ", pebbles on the sunny stream bed",
     c("換成一塊方方的水泥塊呢？"),
-    k("水在角那裡，擠成一團！", "驚訝"))
+    k("水到角那裡，擠得好急！", "驚訝"))
 chief("chief-flow", C("drawing a smooth curve in the air with one hand and then a sharp corner with the other, a bright smile"),
     c("航空總署說，機身裡的力，也有點像這樣。"),
     c("圓角的窗戶，力順著彎彎的邊走，不太會堆起來。"),
     k("那方方的窗戶呢？", "追問"))
 obj("square-corner", "Close-up of one corner of an old-fashioned squarish airplane window with a tight small-radius corner, set in a riveted silver metal wall",
-    c("方窗戶的尖角，力轉不過去，就擠在角上。", "接住上一句", "P:around"))
+    c("方窗戶的尖角，力轉得太急，就擠在角上。", "接住上一句", "P:around"))
 kid("kid-crowd-q", K("squeezing her two fists together with a curious frown", close=True, where=OFFICE),
     k("擠在角上，會怎樣？", "句尾上揚", "S:crowd"))
 chief("chief-stress", C("pressing one fingertip onto her other palm with a serious but kind face", close=True),
@@ -232,13 +225,12 @@ kid("kid-stress-q", K("scrunching her nose with a puzzled face", close=True, whe
 kid("kid-round-q", K("holding up a strip of thin white card with a small round hole in it and peering through the hole", where=OFFICE),
     k("那圓洞就不會擠嗎？", "句尾上揚", "S:roundhole"))
 chief("chief-three", C("holding up three fingers with a calm smile"),
-    c("也會。一份大學的講義說，一大片被拉的薄板開個圓洞，", "接住上一句"),
-    c("洞邊的應力，大約是遠處的三倍。", None, "P:roundhole"))
+    c("也會。工程講義算過，一大片被拉的薄板開個圓洞，", "接住上一句"),
+    c("洞邊應力最大的地方，大約是遠處的三倍。", None, "P:roundhole"))
 kid("kid-sharp-q", K("pointing at the corner of a square card hole with a wide-eyed face", close=True, where=OFFICE),
     k("那尖尖的角呢？", "追問", "S:sharp"))
 chief("chief-sharp", C("pinching the air with two fingers to show a tiny sharp point, a focused smile", close=True),
-    c("劍橋大學的教材說，裂縫越尖，尖端的應力就大得多。"),
-    c("角越尖，力就擠得越厲害。", None, "P:sharp"))
+    c("更厲害。裂縫或角越尖，尖端的應力就越大。", None, "P:sharp"))
 kid("kid-places-q", K("looking around the office with a curious face, one finger raised", where=OFFICE),
     k("只有窗戶會這樣嗎？", "句尾上揚", "S:places"),
     c("剛剛那份講義說，洞、轉角、溝槽、裂縫旁邊，", "接住上一句"),
@@ -248,7 +240,7 @@ obj("strips-pull", "Close-up of " + STRIPS + " held at both ends and pulled tigh
     k("方洞那條，從角裂開了！", "驚訝", "P:pull"))
 kid("kid-same", K("holding up " + TUBET + " next to her face with a delighted surprised grin", where=OFFICE),
     k("跟我的飛機一樣！", "恍然"),
-    c("對。你剪的方角，就是力最擠的地方。", None, "P:tear"))
+    c("對。還記得方水泥塊的角嗎？你剪的就是那種角。", None, "P:tear"))
 kid("kid-metal-q", K("knocking on a shiny metal desk leg with her knuckles and a doubtful face", where=OFFICE),
     k("可是真的飛機是金屬，", "不服氣"), k("金屬也會被撐壞嗎？", "章尾停住，句尾上揚"))
 
@@ -263,7 +255,7 @@ chief("chief-fatigue", C("holding the two broken halves of a silver paperclip in
     c("最後也可能裂開。這叫做金屬疲勞。"))
 kid("kid-tired", K("yawning with her arms stretched up, eyes closed as two happy curved lines", where=OFFICE),
     k("金屬也會累喔？", "好奇"),
-    c("那是比喻。澳洲一所大學的材料教材說，"))
+    c("那是比喻。材料學的教材說，"))
 chief("chief-steps", C("tapping one fingertip along her other forearm in small steps with a focused smile", close=True),
     c("裂縫常常先從表面冒出一點點，"),
     c("每拉一次，就往前長一點。"))
@@ -276,11 +268,11 @@ kid("kid-where-q", K("holding the toy airliner close to her face and studying it
     c("你說呢？哪裡的力最擠？"))
 kid("kid-corner", "Wide shot of the girl standing at a light wooden desk in a bright cartoon office, pointing at the corner of one square window hole on a toy plane body rolled from thin white card lying on the desk, a proud grin, " + DAY,
     k("窗戶的角！", "篤定"),
-    c("對。教材說，疲勞的裂縫，從應力集中的地方長起來。", None, "P:where"))
+    c("對。疲勞的裂縫，常從力最擠的地方長出來。", None, "P:where"))
 kid("kid-grow-q", K("holding up one finger and moving it slowly forward with a worried face", close=True, where=OFFICE),
     k("小裂縫會一直長嗎？", "擔心", "S:grow"))
 chief("chief-critical", C("holding her two hands a short distance apart and slowly widening the gap, a serious but kind face"),
-    c("教材說，裂縫還短的時候，材料撐得住。", "接住上一句"),
+    c("裂縫還短的時候，材料撐得住。", "接住上一句"),
     c("長到某個長度，它會突然很快地裂過去。", None, "P:grow"))
 kid("kid-fast-q", K("holding up a strip of thin white card with a short tear in it and frowning at it", where=OFFICE),
     k("那什麼時候會快裂？", "追問"),
@@ -291,7 +283,7 @@ obj("old-jet", "Wide side view of " + OLDJET + ", soft morning light",
     c("有。航空總署整理過一個例子，叫彗星號。", "接住上一句"),
     c("它是世界上第一種載客的加壓噴射客機。"))
 chief("chief-comet", C("holding a thin plain grey folder closed against her chest with a calm serious face", close=True),
-    c("一九五四年，有兩架在飛行中出事。"),
+    c("一九五四年，有兩架在飛行中出事，掉進海裡。"),
     c("調查的人，想找出機身是怎麼壞的。"))
 obj("water-tank", "Wide shot of the long silver body of an old airliner sitting inside a giant open rectangular water tank in a big bright hangar, the tank filled with calm blue water up to the windows, two small cranes beside it",
     c("他們把另一架放進大水槽，往機艙裡灌水加壓，"),
@@ -300,13 +292,15 @@ kid("kid-tank-q", K("leaning forward with both hands on a desk and a very curiou
     k("結果呢？", "追問"),
     c("加上它以前真的飛過的，一共三千多次，"),
     c("機身從一個方方的艙口窗的角裂開了。", None, "P:comet"))
+kid("kid-sea-q", K("looking down with a quiet thinking face, both hands resting on the toy airliner", close=True, where=OFFICE),
+    k("那掉進海裡的飛機呢？", "小聲"),
+    c("其中一架，大部分的碎片從海裡撈了回來。", "接住上一句"))
 chief("chief-adf", C("holding a small plain silver model airliner and pointing at the top of its body with one finger", close=True),
-    c("海裡撈回的那架，最先裂的地方，"),
-    c("在機頂兩個方方的天線窗那裡。"),
-    c("這一架的結論是：加壓機艙因金屬疲勞壞掉。"))
+    c("它最先裂的地方，在機頂兩個方方的天線窗。"),
+    c("對撈回來的這一架，結論是：加壓機艙因金屬疲勞壞掉。"))
 kid("kid-test-q", K("scratching her head with a puzzled frown", close=True, where=OFFICE),
     k("造飛機時，沒有先測嗎？", "不解"),
-    c("有。航空總署說，做飛機的公司拿一個機身，", "接住上一句"))
+    c("有。做飛機的公司，拿一個機身，", "接住上一句"))
 chief("chief-test", C("holding a small plain silver model airliner in both hands and turning it slowly with a serious face"),
     c("測過一萬六千次。可是它之前被加過兩倍的壓力，"),
     c("角上的金屬因此變了，測出來的次數太樂觀。"))
@@ -319,7 +313,7 @@ kid("kid-rivet-q", K("squinting at a tiny shiny silver rivet held between her fi
     k("鉚釘是什麼？", "句尾上揚"),
     c("把兩片金屬釘在一起的小金屬釘。"),
     k("釘的孔，也是洞耶！", "想起來"),
-    c("對，剛剛那份講義說的洞，力也會擠在旁邊。", None, "P:places"))
+    c("對，還記得嗎？洞的旁邊，力也會擠。", None, "P:places"))
 chief("chief-withey", C("holding two small flat metal plates together with one hand and a thoughtful face"),
     c("那位學者認為，窗戶怎麼固定，可能比形狀還要緊。"),
     c("形狀、孔和做法，是連在一起的。", None, "P:only"))
@@ -328,41 +322,38 @@ kid("kid-why-round-q", K("tapping the rounded window of the toy airliner with a 
 
 # ---------- 第四章：銅棒和玻璃棒，誰先斷 ----------
 chief("chief-why-round", C("drawing a soft rounded corner in the air with one finger and a warm smile", close=True),
-    c("因為角圓了，力不那麼擠，裂縫比較難冒出來。", "接住上一句"),
-    c("可是航空總署的教訓是：要顧的不只形狀。"), chapter="銅棒和玻璃棒，誰先斷")
-chief("chief-list", C("counting on the fingers of one hand with a thoughtful smile"),
-    c("材料、厚度、形狀、受力多大、怎麼保養，"),
-    c("每一樣都要仔細顧到。", "轉向觀眾"))
+    c("還記得圓石頭旁邊的水嗎？角圓了，力也順多了，", "接住上一句"),
+    c("裂縫就比較難冒出來。可是光靠形狀，還不夠。"), chapter="銅棒和玻璃棒，誰先斷")
 kid("kid-material-q", K("holding up two small shiny rods, one copper-coloured and one clear, with a curious frown", where=OFFICE),
-    k("材料也有差嗎？", "句尾上揚", "S:material"))
+    k("那換一種不會裂的材料？", "句尾上揚", "S:material"))
 chief("chief-rods", C("holding " + COPPER + " in one hand and " + GLASS + " in the other with a curious smile"),
-    c("有。剛剛那份澳洲大學的教材，比過兩根棒子：", "接住上一句"),
+    c("材料真的有差。大學的材料教材，比過兩根棒子：", "接住上一句"),
     c("一根銅棒，一根玻璃棒，都刻了一個小缺口。"))
 obj("glass-rod", "Close-up of " + GLASS + " lying on a light wooden desk, broken cleanly into two pieces right at the notch",
-    c("玻璃棒有了缺口，很小的力就斷了，"),
+    c("玻璃棒有了缺口，力小很多就斷了，"),
     c("裂口就從缺口那裡開始。"),
     k("玻璃好脆喔！", "驚訝"))
 obj("copper-rod", "Close-up of " + COPPER + " lying on a light wooden desk, bent into a smooth gentle U-curve at the notch and still in one piece",
     c("銅棒有缺口，卻先彎下去，沒有比較容易斷。"),
     k("銅會彎，所以不怕缺口？", "恍然"))
 chief("chief-energy", C("pressing her palms together and then opening them softly with a calm smile", close=True),
-    c("教材說，銅斷之前會先變形，吸收很多力氣。", None, "P:material"),
-    c("這只是這兩根的比較，不是所有金屬和玻璃。"))
+    c("對，它斷之前會先變形，吸收很多力氣。", None, "P:material"),
+    c("所以材料要挑；可是挑好了，還是可能疲勞。"))
 kid("kid-fix-q", K("holding up the toy airliner with a hopeful questioning face", where=OFFICE),
     k("那彗星號後來怎麼改？", "句尾上揚", "S:fix"))
 chief("chief-fix", C("holding up a small silver model airliner with oval windows and a pleased smile"),
-    c("那位學者整理過：窗戶周圍的金屬加厚，"),
-    c("後來的新型號，換了窗戶的設計，少打鉚釘。"))
+    c("那位學者寫到，後來窗戶周圍的金屬加厚了，"),
+    c("新的型號，也換了窗戶的設計，少打鉚釘。"))
 obj("oval-window", "Close-up of one oval airplane window with smoothly rounded ends set in a polished silver metal wall, a neat ring of small rivets around it, blue sky reflected in the glass",
-    c("航空總署也說，有一款改良型，窗戶改成橢圓形。", None, "P:fix"))
+    c("有一款改良型，窗戶就改成了橢圓形。", None, "P:fix"))
 kid("kid-anyway-q", K("biting her lip with a worried face", close=True, where=OFFICE),
     k("要是還是有裂縫呢？", "擔心", "S:anyway"))
 chief("chief-failsafe", C("holding up both hands as if steering something gently aside, a calm reassuring smile"),
     c("現在的設計，會先想好萬一裂了怎麼辦。", "接住上一句"),
-    c("航空總署說，要讓力有別條路可以走，"))
+    c("像是讓力，有別條路可以走，"))
 kid("kid-branch", K("drawing two branching lines in the air with one finger and an excited face", close=True, where=OFFICE),
     k("像小溪分成好幾條？", "聯想"),
-    c("有點像。還要讓裂縫能停下來，或轉個方向。", None, "P:anyway"))
+    c("有點像。也要讓裂縫能停下來，或轉個方向。", None, "P:anyway"))
 obj("inspector", "Wide shot of an aircraft mechanic in a plain navy overall standing on a low platform beside the silver-white side of an airliner in a bright hangar, shining a small flashlight closely on the smooth metal skin around a rounded cabin window",
     k("那誰知道有沒有裂縫？", "句尾上揚", "S:inspect"),
     c("美國的法規要求，造飛機的人要證明：", "接住上一句"))
@@ -383,8 +374,8 @@ chief("chief-ask", C("holding a small pair of round-tipped craft scissors and sm
     c("你說呢？要怎麼剪？", "笑"), chapter="明天，靠窗坐")
 kid("kid-got-it", K("holding up a new card tube airliner with a neat row of little round-cornered windows and a big confident grin", where=OFFICE),
     k("原來如此！", "恍然大悟"), k("窗戶的角剪圓圓的，", "篤定"),
-    k("力就不會擠在角上！", "篤定", "P:main"),
-    k("真的飛機，還要常常檢查！", "篤定"))
+    k("力就像繞過圓石頭的水！", "篤定", "P:main"),
+    k("還有剛剛說的，要定期檢查！", "篤定"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
     c("說得好。我覺得最妙的是：", "笑"),
     c("一個小小的圓角，背後是一整套設計和檢查。"))
@@ -443,7 +434,7 @@ loops = [{"setup": loops_s[key], "payoff": loops_p[key], "what": WHAT[key]} for 
 
 doc = {
     "schema_version": 1, "slug": SLUG, "format": "drama", "category": "explainer", "narration_locale": "zh-TW",
-    "target_minutes": [9, 11], "voice": VOICE, "subtitles": {"burn_in": False}, "theme": "paper", "look": {"preset": "cute-cartoon"},
+    "target_minutes": [8, 10], "voice": VOICE, "subtitles": {"burn_in": False}, "theme": "paper", "look": {"preset": "cute-cartoon"},
     # The series tag: the approved character sheets live in the series store and every episode reuses them (docs/videos/SERIES.md).
     "series": {"slug": "sothatswhy", "episode": 26, "chapter": 1},
     # 2026-11-11 (README §9 停頓, §10.6): no fixed pause between lines, a short gap between scenes, beat-timed stills.
@@ -455,11 +446,11 @@ doc = {
     "youtube": {
         "category_id": 27, "made_for_kids": False, "default_language": "zh-TW",
         "title": "飛機窗戶的圓角，怎麼改變機身受力？｜原來如此事務所",
-        "description": "小問明天要坐飛機去找外婆，先用硬紙捲了一架小飛機，剪了一排方方的窗戶，結果紙從窗戶的角裂開了。真的飛機窗戶，為什麼四個角都是圓的？\n\n"
+        "description": "小問明天要坐飛機，先用硬紙捲了一架小飛機，剪了一排方方的窗戶，結果紙從窗戶的角裂開了，她帶著它跑來事務所。真的飛機窗戶，為什麼四個角都是圓的？\n\n"
                        "這一集，所長先帶小問看飛機飛高以後發生什麼事：外面的空氣很稀，機艙加壓，裡面的空氣每一趟都把機身往外撐一下、落地前再鬆回來。"
                        "機身上開了窗戶，力只好繞過那個洞；所長用小溪繞過石頭來比：圓圓的邊，力順著走；方方的尖角，力就擠在角上，工程師叫它應力集中。"
                        "一次又一次的拉，就算每次都不大，金屬也可能從最擠的地方冒出小裂縫，慢慢長大，這叫金屬疲勞。"
-                       "美國聯邦航空總署整理的彗星號例子裡，調查的結論是加壓機艙因為金屬疲勞而壞掉；後來的學者也指出，裂縫是從開口旁邊的鉚釘孔、螺栓孔長出來的，窗戶怎麼固定也很要緊，不能只怪窗角。"
+                       "美國聯邦航空總署整理的彗星號例子裡，調查對厄爾巴島外海那一架的結論，是加壓機艙因為金屬疲勞而壞掉；後來的學者也指出，裂縫是從開口旁邊的鉚釘孔、螺栓孔長出來的，窗戶怎麼固定也很要緊，不能只怪窗角。"
                        "所以圓角只是其中一個：材料、厚度、怎麼做、萬一有裂縫怎麼擋住，還有定期檢查，都要一起顧到。\n\n"
                        "片中的飛機、窗戶、水槽和小溪都是 AI 生成的示意插圖，不是照片，也不是應力分析的結果。彗星號只引用調查與研究資料，沒有畫事故畫面。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["飛機", "飛機窗戶", "圓角", "應力集中", "金屬疲勞", "加壓", "彗星號", "科普", "原來如此事務所"]},
@@ -478,7 +469,6 @@ doc = {
         {"title": "P. A. Withey, Fatigue failure of the de Havilland Comet I, Engineering Failure Analysis (1997)", "url": "https://ae.iitm.ac.in/~nidish/courses/as3020/files/mod2/dehavcomet.pdf", "checked_on": CHECKED},
         {"title": "P. A. Withey, The de Havilland Comet (RAeS Hamburg lecture, 2019-01-24)", "url": "https://www.fzt.haw-hamburg.de/pers/Scholz/dglr/hh/text_2019_01_24_Comet.pdf", "checked_on": CHECKED},
         {"title": "14 CFR 25.571 Damage-tolerance and fatigue evaluation of structure (eCFR)", "url": "https://www.ecfr.gov/current/title-14/section-25.571", "checked_on": CHECKED},
-        {"title": "Mark Vanhoenacker, Slate: Why are there holes in airplane windows? (2015-05)", "url": "https://slate.com/human-interest/2015/05/whats-that-thing-why-are-there-holes-in-airplane-windows.html", "checked_on": CHECKED},
     ],
     "assets": [],
     "scenes": scenes,
