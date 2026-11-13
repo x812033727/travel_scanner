@@ -22,6 +22,7 @@ scope:
   - .agents/skills/minimax-h3-colab/scripts
   - .claude/skills/minimax-h3-colab/SKILL.md
   - tools/minimax-h3-colab.test.mjs
+  - apps/web/e2e/full-stack.spec.ts
 ---
 
 # Each Colab account works on its own: a site-held lease per account so parallel agents never share one, and a per-account CLI home
