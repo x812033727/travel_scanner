@@ -14,7 +14,17 @@ import { guideHref, type GuideSummary } from "@/lib/guides";
  * The rows are in the order given. The list is an `<ol>` because that order means something,
  * but it prints no numbers: a position in a list that grows every day is not worth reading.
  */
-export function NewsList({ articles, className = "mt-4" }: { articles: readonly GuideSummary[]; className?: string }) {
+export function NewsList({
+  articles,
+  className = "mt-4",
+  showTopic = false,
+  showDescription = false,
+}: {
+  articles: readonly GuideSummary[];
+  className?: string;
+  showTopic?: boolean;
+  showDescription?: boolean;
+}) {
   if (!articles.length) return null;
   return (
     <ol
@@ -36,12 +46,24 @@ export function NewsList({ articles, className = "mt-4" }: { articles: readonly 
           ) : (
             <span aria-hidden="true" className="hidden sm:block" />
           )}
-          <Link
-            href={guideHref(article.kind, article.slug)}
-            className="inline-flex min-h-11 min-w-0 items-center font-medium leading-7 text-[var(--ink)] underline-offset-4 [overflow-wrap:anywhere] hover:text-[var(--teal)] hover:underline"
-          >
-            {article.title}
-          </Link>
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+              {showTopic && article.topics[0] ? (
+                <span className="rounded-full bg-[var(--teal-soft)] px-2.5 py-0.5 text-[length:var(--text-xs)] font-semibold text-[var(--teal-dark)]">
+                  {article.topics[0].label}
+                </span>
+              ) : null}
+              <Link
+                href={guideHref(article.kind, article.slug)}
+                className="inline-flex min-h-11 min-w-0 items-center font-medium leading-7 text-[var(--ink)] underline-offset-4 [overflow-wrap:anywhere] hover:text-[var(--teal)] hover:underline"
+              >
+                {article.title}
+              </Link>
+            </div>
+            {showDescription && article.description ? (
+              <p className="mb-1.5 line-clamp-2 text-sm leading-6 text-[var(--muted)]">{article.description}</p>
+            ) : null}
+          </div>
         </li>
       ))}
     </ol>

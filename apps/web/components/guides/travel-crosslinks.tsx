@@ -34,7 +34,7 @@ export function TravelCrosslinks({
     <section data-testid="travel-crosslinks" className="space-y-8 border-t border-[var(--line)] pt-8">
       {articles.length ? (
         <div>
-          <h2 className="text-xl font-extrabold tracking-tight">{labels.relatedTravel}</h2>
+          <h2 className="portal-section-heading text-xl font-extrabold tracking-tight">{labels.relatedTravel}</h2>
           <ul className="mt-4 grid gap-4 md:grid-cols-3">
             {articles.map((article) => (
               <GuideCard key={`${article.kind}:${article.slug}`} article={article} labels={labels.card} />
@@ -45,12 +45,12 @@ export function TravelCrosslinks({
 
       {shown.length ? (
         <div>
-          <h2 className="text-xl font-extrabold tracking-tight">{labels.relatedDestinations}</h2>
+          <h2 className="portal-section-heading text-xl font-extrabold tracking-tight">{labels.relatedDestinations}</h2>
           <ul className="mt-3.5 flex flex-wrap gap-2">
             {shown.map((city) => (
               <li key={city.id}>
                 <Link
-                  className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--paper)]/55 px-4 py-1 text-sm font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+                  className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-1 text-sm font-semibold text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
                   href={`/destinations/${city.id}`}
                 >
                   {city.name}

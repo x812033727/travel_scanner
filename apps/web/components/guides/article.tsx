@@ -1,3 +1,4 @@
+import { Calendar, Clock, RefreshCw } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 import { GuideImage } from "./guide-image";
 import { SeriesStart, SeriesEnd } from "./series-navigation";
@@ -9,6 +10,7 @@ import { ArticleAdSlot } from "@/components/ads/article-ad-slot";
 import { ContentBlocks, FaqSection, ImageCreditLine, SummaryCard, type ContentBlockLabels } from "@/components/content-blocks";
 import { adsensePlacements, type AdsenseConfig } from "@/lib/adsense";
 import { DestinationAffiliateOptions } from "@/components/destination-affiliate-options";
+import { ArticleShareBar, type ArticleShareLabels } from "@/components/guides/article-share-bar";
 import { PartnerLink, type PartnerLinkLabels } from "@/components/guides/partner-link";
 import { SupportLink, type SupportLinkLabels } from "@/components/guides/support-link";
 import type { TermLinkLabels } from "@/components/guides/term-link";
@@ -28,10 +30,11 @@ export type GuideArticleLabels = Record<GuideKind, string> & {
   updated: string;
   sources: string;
   checkedOn: string;
+  sourcesProvenance?: string;
   destination: string;
   /** The table of contents heading. */
   contents: string;
-  /** Above an ad unit. Policy allows "廣告"/"Advertisements" and nothing softer. */
+  /** Above an ad unit. */
   adLabel: string;
   /** One line under the hero whenever the body itself carries partner buttons, so the
    *  disclosure comes before the first button rather than only inside the end panel. */
@@ -55,7 +58,7 @@ export const CONTENTS_MIN_HEADINGS = 3;
 
 /**
  * An article a reader can reach. Expiry is silent: an `intel` notice keeps its URL so
- * existing links do not break, and the reader is told nothing about dates — no first
+ * existing links do not break, and the reader is told nothing about dates -- no first
  * publication, no expiry banner, no date it applied until. `expired` still decides one
  * thing, below: an expired notice carries no partner buttons.
  *
@@ -69,7 +72,16 @@ export const CONTENTS_MIN_HEADINGS = 3;
  * synchronous and renders directly under React Testing Library.
  */
 export function GuideArticle({
-  state, labels, related, readingTime, adsense, seriesHub, geminiSeries = null, sidebarToc = false, constrainDiagrams = false,
+  state,
+  labels,
+  related,
+  readingTime,
+  adsense,
+  seriesHub,
+  geminiSeries = null,
+  sidebarToc = false,
+  constrainDiagrams = false,
+  share,
 }: {
   state: GuideArticleState & { document: NonNullable<GuideArticleState["document"]> };
   labels: GuideArticleLabels;
@@ -84,6 +96,8 @@ export function GuideArticle({
   sidebarToc?: boolean;
   /** Keeps wide SVG diagrams inside their own scroller when rendered inside an elevated sheet. */
   constrainDiagrams?: boolean;
+  /** Optional zero-script share actions rendered in the article header. */
+  share?: { url: string; labels: ArticleShareLabels };
 }) {
   const { document } = state;
   const visibleHero = visibleGuideHero(document.hero);
@@ -142,7 +156,7 @@ export function GuideArticle({
   });
 
   // Up to three in-article units, each kept clear of the hero (the LCP element), of every
-  // partner button or partner link and of the end panel — `adsensePlacements` has the rules.
+  // partner button or partner link and of the end panel -- `adsensePlacements` has the rules.
   // With advertising off every segment stays a single piece, so nothing is reserved anywhere.
   const pieces = adsense?.enabled
     ? adsensePlacements(segments, { hasHero: Boolean(visibleHero) })
@@ -196,19 +210,33 @@ export function GuideArticle({
             </Link>
           ) : null}
         </p>
-        <h1 className="mt-3.5 text-3xl font-extrabold leading-[1.2] tracking-tight md:text-4xl">{document.title}</h1>
-        <p className="mt-3.5 text-lg leading-8 text-[var(--muted)]">{document.description}</p>
+        <h1 className="mt-3 text-2xl font-extrabold leading-[1.28] tracking-tight sm:mt-3.5 sm:text-3xl md:text-4xl md:leading-[1.2]">{document.title}</h1>
+        <p className="mt-3 text-base leading-7 text-[var(--muted)] sm:mt-3.5 sm:text-lg sm:leading-8">{document.description}</p>
         {isGeminiHub ? <a href="#series-directory" className="mt-3 inline-flex min-h-11 items-center text-[var(--teal)] underline">{geminiCopy.start}</a> : null}
         {state.news_date || (modified && modified > published) || readingTime ? (
           <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 border-y border-[var(--line)] py-2.5 text-sm text-[var(--muted)]">
             {state.news_date ? (
-              <span>{labels.publishedOn ? `${labels.publishedOn}: ` : ""}<time dateTime={state.news_date} className="font-mono tabular-nums">{state.news_date}</time></span>
+              <span className="inline-flex items-center gap-1.5">
+                <Calendar size={14} className="shrink-0 text-[var(--teal)]" aria-hidden />
+                <span>{labels.publishedOn ? `${labels.publishedOn}: ` : ""}<time dateTime={state.news_date} className="font-mono tabular-nums">{state.news_date}</time></span>
+              </span>
             ) : null}
             {modified && modified > published ? (
-              <span>{labels.updated}: <time dateTime={modified} className="font-mono tabular-nums">{modified}</time></span>
+              <span className="inline-flex items-center gap-1.5">
+                <RefreshCw size={14} className="shrink-0 text-[var(--muted)]" aria-hidden />
+                <span>{labels.updated}: <time dateTime={modified} className="font-mono tabular-nums">{modified}</time></span>
+              </span>
             ) : null}
-            {readingTime ? <span>{readingTime}</span> : null}
+            {readingTime ? (
+              <span className="inline-flex items-center gap-1.5">
+                <Clock size={14} className="shrink-0 text-[var(--muted)]" aria-hidden />
+                <span>{readingTime}</span>
+              </span>
+            ) : null}
           </p>
+        ) : null}
+        {share && !isGeminiHub ? (
+          <ArticleShareBar url={share.url} title={document.title} labels={share.labels} />
         ) : null}
       </header>
 
@@ -256,13 +284,13 @@ export function GuideArticle({
         </nav>
       ) : null}
       {(sidebarToc || state.series?.current) && headings.length >= CONTENTS_MIN_HEADINGS ? (
-        <details open={!state.series?.current} className="rounded-2xl border border-[var(--line)] bg-[var(--surface-tint)]/55 px-5 py-3 shadow-[var(--shadow-sm)] lg:hidden">
-          <summary className="flex min-h-11 cursor-pointer items-center font-bold text-[var(--teal-dark)]">{labels.contents}</summary>
-          <ol className="mt-2 space-y-2 pb-1 text-sm leading-6">
+        <details open={!state.series?.current} className="group rounded-2xl border border-[var(--line)] bg-[color-mix(in_srgb,var(--teal-soft)_38%,var(--surface))] px-4 py-2.5 shadow-[var(--shadow-sm)] sm:px-5 sm:py-3 lg:hidden">
+          <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 font-bold text-[var(--teal-dark)] after:shrink-0 after:font-mono after:text-base after:text-[var(--muted)] after:content-['+'] group-open:after:content-['−'] [&::-webkit-details-marker]:hidden">{labels.contents}</summary>
+          <ol className="mt-1.5 space-y-1.5 border-t border-[var(--line)] pb-1.5 pt-2.5 text-sm leading-6">
             {headings.map((heading, index) => (
               <li key={heading.id}>
-                <a className="text-[var(--ink)] underline decoration-[var(--line)] underline-offset-4 hover:text-[var(--teal)]" href={`#${heading.id}`}>
-                  {index + 1}. {heading.text}
+                <a className="inline-block py-1 text-[var(--ink)] underline decoration-[var(--line)] underline-offset-4 hover:text-[var(--teal)]" href={`#${heading.id}`}>
+                  <span className="mr-1 font-mono text-[length:var(--text-xs)] font-semibold text-[var(--muted)]">{index + 1}.</span> {heading.text}
                 </a>
               </li>
             ))}
@@ -340,6 +368,10 @@ export function GuideArticle({
         />
       ) : null}
 
+      {share && !isGeminiHub ? (
+        <ArticleShareBar url={share.url} title={document.title} labels={share.labels} variant="callout" />
+      ) : null}
+
       {state.series?.current && !geminiMember ? <SeriesEnd series={state.series} locale={state.locale} /> : null}
       {geminiMember && geminiSeries ? <GeminiNavigation series={geminiSeries} number={geminiMember.number} position="bottom" /> : null}
       {related}
@@ -362,7 +394,7 @@ export function GuideArticle({
       {document.sources.length ? (
         <section className="border-t border-[var(--line)] pt-6">
           <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface-tint)]/45 p-4 md:p-5">
-            <h2 className="text-base font-bold tracking-tight text-[var(--ink)]">{labels.sources}</h2>
+            <h2 className="portal-section-heading text-base font-bold tracking-tight text-[var(--ink)]">{labels.sources}</h2>
             <ul className="mt-2.5 divide-y divide-[var(--line)]">
               {document.sources.map((source, index) => {
                 const href = contentBlockLink(source.url);
@@ -380,6 +412,11 @@ export function GuideArticle({
                 ) : null;
               })}
             </ul>
+            {labels.sourcesProvenance ? (
+              <p className="mt-3 border-t border-[var(--line)] pt-2.5 text-[length:var(--text-xs)] leading-6 text-[var(--muted)]">
+                {labels.sourcesProvenance}
+              </p>
+            ) : null}
           </div>
         </section>
       ) : null}

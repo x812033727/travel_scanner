@@ -165,7 +165,7 @@ export default async function LifeHubPage(
         {news.length ? (
           <section className="mt-10" aria-labelledby="life-news-heading" data-testid="life-news">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] pb-3">
-              <h2 id="life-news-heading" className="text-2xl font-extrabold tracking-tight">{t("guides.latestNews")}</h2>
+              <h2 id="life-news-heading" className="portal-section-heading text-2xl font-extrabold tracking-tight">{t("guides.latestNews")}</h2>
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
                 <a
                   href={`/${locale}/life/feed.xml`}
@@ -197,7 +197,7 @@ export default async function LifeHubPage(
         />
 
         <section className="mt-10" aria-labelledby="life-listing-heading">
-          <h2 id="life-listing-heading" className="border-b border-[var(--line)] pb-3 text-2xl font-extrabold tracking-tight">{t("guides.allArticles")}</h2>
+          <h2 id="life-listing-heading" className="portal-section-heading border-b border-[var(--line)] pb-3 text-2xl font-extrabold tracking-tight">{t("guides.allArticles")}</h2>
           {list.articles.length ? (
             <ul className="mt-4 grid gap-4 sm:grid-cols-2">
               {list.articles.map((article) => (

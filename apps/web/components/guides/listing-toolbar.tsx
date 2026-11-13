@@ -43,14 +43,14 @@ export function ListingToolbar({
     >
       <TopicChips section={section} topics={topics} active={active} allHref={allHref} labels={labels} className="grid gap-2" />
       {sort ? (
-        <div className="mt-3 flex flex-wrap items-center justify-end gap-3">
-          <nav aria-label={labels.sortLabel} className="flex flex-wrap gap-2">
+        <div className="mt-3 flex flex-wrap items-center justify-end gap-3 border-t border-[var(--line)]/70 pt-2.5">
+          <nav aria-label={labels.sortLabel} className="inline-flex flex-wrap gap-1.5 rounded-full border border-[var(--line)] bg-[var(--paper)]/65 p-1">
             {SORTS.map((value) => (
               <Link
                 key={value}
                 href={sort.hrefs[value]}
                 aria-current={sort.current === value ? "page" : undefined}
-                className={`app-filter-chip ${sort.current === value ? "app-filter-chip-active" : ""}`}
+                className={`app-filter-chip !border-transparent ${sort.current === value ? "app-filter-chip-active shadow-[var(--shadow-sm)]" : "!bg-transparent hover:!bg-[var(--surface)]"}`}
               >
                 {sortLabel(value)}
               </Link>
@@ -70,8 +70,8 @@ export type ListingEmptyLabels = SearchFormLabels & { empty: string; hint: strin
  */
 export function ListingEmpty({ section, action, labels }: { section: GuideSection; action: string; labels: ListingEmptyLabels }) {
   return (
-    <div className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[var(--shadow-sm)]" data-testid="listing-empty">
-      <p className="font-medium leading-7">{labels.empty}</p>
+    <div className="portal-hero-shell mt-6 rounded-2xl p-6" data-testid="listing-empty">
+      <p className="font-semibold leading-7 text-[var(--ink)]">{labels.empty}</p>
       <p className="mt-1 text-[var(--muted)]">{labels.hint}</p>
       <SearchForm action={action} q="" section={section} labels={labels} />
     </div>

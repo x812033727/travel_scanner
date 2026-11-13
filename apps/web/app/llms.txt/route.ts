@@ -5,7 +5,7 @@ import { getDestinations } from "@/lib/destinations.server";
 import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { guideHref, guideTopicHref, type GuideSection, type GuideTopic } from "@/lib/guides";
 import { getGuideTopics, getSeriesIndex } from "@/lib/guides.server";
-import { HREFLANG_DEFAULT, localeUrl, siteUrl } from "@/lib/seo";
+import { FEED_PATH, HREFLANG_DEFAULT, NEWS_SITEMAP_PATH, localeUrl, siteUrl } from "@/lib/seo";
 import { featureEnabled } from "@/lib/site-features";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import { SITEMAP_ROUTES } from "../sitemaps/sitemap";
@@ -180,6 +180,8 @@ export async function GET(): Promise<Response> {
     "## Optional",
     "",
     entry("Sitemap", `${siteUrl}/sitemap.xml`, "every indexable URL, with hreflang and article lastmod"),
+    entry("Google News sitemap", `${siteUrl}${NEWS_SITEMAP_PATH}`, "news and travel alerts published in the last 48 hours"),
+    entry("Atom feed", `${siteUrl}${FEED_PATH}`, "newest Traditional Chinese articles and news"),
     entry("robots.txt", `${siteUrl}/robots.txt`, "which agents may fetch what, and why"),
     "",
   );

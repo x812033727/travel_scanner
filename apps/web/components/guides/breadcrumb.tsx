@@ -10,15 +10,15 @@ import type { Crumb } from "@/lib/structured-data";
 export function Breadcrumb({ trail, current, label }: { trail: readonly Crumb[]; current: string; label: string }) {
   const crumbs = trail.filter((crumb) => crumb.path !== "/");
   return (
-    <nav aria-label={label} className="mb-6 text-[length:var(--text-meta)] text-[var(--muted)]">
-      <ol className="flex flex-wrap items-center gap-1">
+    <nav aria-label={label} className="mb-4 text-[length:var(--text-meta)] text-[var(--muted)] sm:mb-6">
+      <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
         {crumbs.map((crumb) => (
-          <li key={crumb.path} className="flex items-center gap-1">
-            <Link className="inline-flex min-h-11 items-center underline underline-offset-4" href={crumb.path}>{crumb.name}</Link>
+          <li key={crumb.path} className="flex items-center gap-1.5">
+            <Link className="inline-flex min-h-11 items-center underline decoration-[var(--line)] underline-offset-4 transition-colors hover:text-[var(--teal)] hover:decoration-[var(--teal)]" href={crumb.path}>{crumb.name}</Link>
             <span aria-hidden>›</span>
           </li>
         ))}
-        <li aria-current="page" className="inline-flex min-h-11 items-center">{current}</li>
+        <li aria-current="page" className="line-clamp-1 py-1.5 font-medium text-[var(--ink)] sm:line-clamp-none">{current}</li>
       </ol>
     </nav>
   );

@@ -558,6 +558,14 @@ const server = createServer((request, response) => {
     response.end(JSON.stringify({ enabled: false, publisher_id: null, slot_id: null, cmp_enabled: false }));
     return;
   }
+  if (request.method === "GET" && requestUrl.pathname === "/api/v1/guides/trending") {
+    response.end(JSON.stringify({ articles: [], next_cursor: null }));
+    return;
+  }
+  if (request.method === "GET" && requestUrl.pathname === "/api/v1/guides/series") {
+    response.end(JSON.stringify({ series: [] }));
+    return;
+  }
   if (request.method === "GET" && requestUrl.pathname === "/api/v1/admin/dashboard") {
     response.end(JSON.stringify({
       counts: {

@@ -365,16 +365,71 @@ async def reindex_all(session: AsyncSession) -> dict[str, int]:
 
 
 _SCRIPT_RUNS = re.compile(r"[\x00-\x7f]+|[^\x00-\x7f]+")
+# Longest-first so multi-character question/intent endings strip cleanly in a single pass.
 _CJK_QUESTION_TAILS = (
+    "值得買嗎",
+    "總整理",
+    "懶人包",
     "怎麼選",
     "怎麼買",
     "怎麼用",
     "怎麼去",
+    "怎麼辦",
     "是什麼",
     "有哪些",
     "哪個好",
-    "值得買嗎",
     "推薦嗎",
+    "划算嗎",
+    "免費嗎",
+    "能用嗎",
+    "多少錢",
+    "推薦",
+    "教學",
+    "攻略",
+    "整理",
+    "評價",
+    "比較",
+    "心得",
+    "介紹",
+    "指南",
+)
+_INTENT_MODIFIERS = frozenset(
+    {
+        *_CJK_QUESTION_TAILS,
+        "入門",
+        "實測",
+        "解析",
+        "完整版",
+        "tutorial",
+        "tutorials",
+        "guide",
+        "guides",
+        "review",
+        "reviews",
+        "overview",
+        "おすすめ",
+        "ガイド",
+        "まとめ",
+        "추천",
+        "가이드",
+        "정리",
+        "비교",
+    }
+)
+_COLLOQUIAL_REWRITES: tuple[tuple[str, tuple[str, ...]], ...] = (
+    ("網卡", (" esim ", " sim ")),
+    ("日幣", (" 日圓 ",)),
+    ("日圓", (" 日幣 ",)),
+    ("韓幣", (" 韓元 ",)),
+    ("韓元", (" 韓幣 ",)),
+    ("新台幣", (" 台幣 ",)),
+    ("台幣", (" 新台幣 ",)),
+    ("美金", (" 美元 ",)),
+    ("美元", (" 美金 ",)),
+    ("筆記型電腦", (" 筆電 ",)),
+    ("筆電", (" 筆記型電腦 ",)),
+    ("行動電源", (" 充電寶 ",)),
+    ("充電寶", (" 行動電源 ",)),
 )
 
 
@@ -402,22 +457,46 @@ def parse_query(q: str) -> list[str]:
     return terms
 
 
+def _strip_tail(term: str) -> str:
+    if term.isascii() or len(term) < 4:
+        return term
+    for tail in _CJK_QUESTION_TAILS:
+        if term.endswith(tail) and len(term) - len(tail) >= 2:
+            return term[: -len(tail)]
+    return term
+
+
+def _strip_intent_terms(terms: list[str]) -> list[str] | None:
+    """Drop generic format/intent modifiers (``推薦``, ``教學``, ``攻略``, ``guide``) only when
+    at least one core subject term remains, and trim trailing CJK intent suffixes."""
+    core_exists = any(_strip_tail(term) not in _INTENT_MODIFIERS for term in terms)
+    cleaned: list[str] = []
+    for term in terms:
+        if core_exists and term in _INTENT_MODIFIERS:
+            continue
+        stem = _strip_tail(term)
+        if core_exists and stem in _INTENT_MODIFIERS:
+            continue
+        if stem and stem not in cleaned:
+            cleaned.append(stem)
+    if not cleaned or cleaned == terms:
+        return None
+    return cleaned[:MAX_TERMS]
+
+
 def _fallback_cjk_terms(terms: list[str]) -> list[str] | None:
     """Decompose long unspaced CJK phrases (>= 5 characters) when strict matching finds
     nothing, while leaving 2-4 character compound nouns untouched to prevent false hits."""
     expanded: list[str] = []
     changed = False
     for term in terms:
-        if term.isascii() or len(term) < 5:
+        if term.isascii():
             if term not in expanded:
                 expanded.append(term)
             continue
-        stem = term
-        for tail in _CJK_QUESTION_TAILS:
-            if stem.endswith(tail) and len(stem) - len(tail) >= 2:
-                stem = stem[: -len(tail)]
-                changed = True
-                break
+        stem = _strip_tail(term)
+        if stem != term:
+            changed = True
         if len(stem) >= 5:
             changed = True
             chunks = [stem[index : index + 2] for index in range(0, len(stem) - 1, 2)]
@@ -431,6 +510,49 @@ def _fallback_cjk_terms(terms: list[str]) -> list[str] | None:
     if not changed or not expanded:
         return None
     return expanded[:MAX_TERMS]
+
+
+def _synonym_term_sets(terms: list[str]) -> list[list[str]]:
+    """Expand common colloquial/formal CJK variants (``日幣``/``日圓``, ``網卡``/``eSIM``) when
+    exact terms miss, re-tokenising mixed-script replacements cleanly."""
+    candidates: list[list[str]] = []
+    for variant_index in (0, 1):
+        rewritten: list[str] = []
+        changed = False
+        for term in terms:
+            updated = term
+            for source, targets in _COLLOQUIAL_REWRITES:
+                if source in updated:
+                    replacement = targets[min(variant_index, len(targets) - 1)]
+                    updated = updated.replace(source, replacement)
+                    changed = True
+                    break
+            for piece in _SEPARATORS.split(normalize(updated)):
+                for token in _SCRIPT_RUNS.findall(piece):
+                    is_single_ascii = len(token) == 1 and token.isascii()
+                    if token and not is_single_ascii and token not in rewritten:
+                        rewritten.append(token)
+        if changed and rewritten and rewritten != terms and rewritten not in candidates:
+            candidates.append(rewritten[:MAX_TERMS])
+    return candidates
+
+
+def _fallback_term_sets(terms: list[str]) -> list[list[str]]:
+    """Ordered zero-hit relaxations: strip intent words first, then decompose >=5-char CJK
+    runs, then try colloquial/formal synonyms."""
+    seen: list[list[str]] = []
+
+    def add(candidate: list[str] | None) -> None:
+        if candidate and candidate != terms and candidate not in seen:
+            seen.append(candidate)
+
+    stripped = _strip_intent_terms(terms)
+    add(stripped)
+    base = stripped or terms
+    add(_fallback_cjk_terms(base))
+    for synonym_terms in _synonym_term_sets(base):
+        add(synonym_terms)
+    return seen[:4]
 
 
 def _pattern(term: str) -> str:
@@ -578,14 +700,21 @@ async def search(
         await session.scalar(_visible(func.count(), conditions=[*conditions, *matches])) or 0
     )
     if total == 0 and best is None:
-        fallback_terms = _fallback_cjk_terms(terms)
-        if fallback_terms is not None:
-            active_terms = fallback_terms
-            matches = [_contains(GuideSearchEntry.search_text, term) for term in active_terms]
-            total = int(
-                await session.scalar(_visible(func.count(), conditions=[*conditions, *matches]))
+        for fallback_terms in _fallback_term_sets(terms):
+            candidate_matches = [
+                _contains(GuideSearchEntry.search_text, term) for term in fallback_terms
+            ]
+            candidate_total = int(
+                await session.scalar(
+                    _visible(func.count(), conditions=[*conditions, *candidate_matches])
+                )
                 or 0
             )
+            if candidate_total > 0:
+                active_terms = fallback_terms
+                matches = candidate_matches
+                total = candidate_total
+                break
     ordering: tuple[Any, ...]
     if sort == "latest":
         ordering = (
