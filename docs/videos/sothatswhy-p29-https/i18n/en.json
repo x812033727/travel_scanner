@@ -1,6 +1,6 @@
 {
   "title": "One extra S in the URL: what changes for your data on the way? | So That's Why",
-  "description": "Little Q is at a café, logging into a game on the free Wi-Fi, and Mom tells her to check first that the address starts with https. But it's just one extra S, isn't it? Doesn't her password still have to be sent out either way?\n\nIn this episode, the Chief and Little Q think it through with \"passing a letter in class\": the letter goes through several classmates' hands, just like your data goes through the café's equipment and the internet company. First they look at how you can be sure the other side really is that website (the site's ID card, how a free certificate authority only checks whether you control the address, the chain of stamps up to the root certificates built into your browser, and the public logbooks). Then they see how the two sides mix up a secret only they know, right in front of everyone, how every letter gets sealed and numbered, and the exception the spec itself admits. Finally, what the seal doesn't cover: how thick the letters are, which website they go to, and most important of all, HTTPS only protects the trip. It doesn't promise the website is a good one; scam sites have it too.\n\nMixing paint is only a comparison; the real method is math. The illustrations were made with AI; they are diagrams. The source of every claim is listed in the references below.\n\nInformation as of 2026-11-12",
+  "description": "Little Q is at a café, logging into a game on the free Wi-Fi, and Mom tells her to check first that the address starts with https. But it's just one extra S, isn't it? Doesn't her password still have to be sent out either way?\n\nIn this episode, the Chief and Little Q think it through with \"passing a letter in class\": your password goes through several classmates' hands before it reaches the website. Can the people along the way see it? How do you know the other side really is that website? What does the little lock next to the address mean? And there are things this S doesn't cover at all. Which ones?\n\nThe illustrations were made with AI; they are diagrams. The source of every claim is listed in the references below.\n\nInformation as of 2026-11-12",
   "tags": [
     "HTTPS",
     "TLS",
@@ -33,11 +33,19 @@
       "chief-your-turn": "d02cd044fdab"
     },
     "title": "15d6c5002051",
-    "description": "e4bbb5cffeb8",
+    "description": "fb90dbcb0bac",
     "tags": "9d0c606699ab",
     "thumbnail": "a3b7d61299b4"
   },
   "lines": {
+    "p001": {
+      "source_hash": "b304ba284343",
+      "text": "Mom says the address has to start with HTTPS"
+    },
+    "p002": {
+      "source_hash": "d72c9929b592",
+      "text": "before I type my game password."
+    },
     "p003": {
       "source_hash": "f052778dc2b9",
       "text": "But it's just one extra S, right?"
@@ -117,6 +125,10 @@
     "p022": {
       "source_hash": "5e96c586be67",
       "text": "others may see or change what you send."
+    },
+    "p023": {
+      "source_hash": "96ad7826a4a8",
+      "text": "But my classmates are nice!"
     },
     "p024": {
       "source_hash": "602d9fa06022",
@@ -246,6 +258,10 @@
       "source_hash": "ef6db27e8d03",
       "text": "not if they're good or content's true."
     },
+    "p056": {
+      "source_hash": "e028d4cf1b4a",
+      "text": "A classmate just sent me a link,"
+    },
     "p057": {
       "source_hash": "642f50b229cf",
       "text": "says click for free gems!"
@@ -313,6 +329,10 @@
     "p073": {
       "source_hash": "c3a722444709",
       "text": "like how you know the principal's stamp."
+    },
+    "p074": {
+      "source_hash": "33b3c33c4515",
+      "text": "What if an issuer gives out a wrong ID?"
     },
     "p075": {
       "source_hash": "7f375891702a",
@@ -402,6 +422,14 @@
       "source_hash": "1a9b7afbb8fa",
       "text": "even that ID card is sent sealed."
     },
+    "p097": {
+      "source_hash": "658689d4983b",
+      "text": "What if someone records it now"
+    },
+    "p098": {
+      "source_hash": "fd4ae9dfedb6",
+      "text": "and unlocks it later?"
+    },
     "p099": {
       "source_hash": "94031c345e76",
       "text": "Used once, gone."
@@ -429,6 +457,14 @@
     "p105": {
       "source_hash": "b5fb0c1f8f23",
       "text": "Copies can't stamp."
+    },
+    "p106": {
+      "source_hash": "f8252c903290",
+      "text": "What if a classmate sneakily"
+    },
+    "p107": {
+      "source_hash": "b83738f32e9b",
+      "text": "swaps the colors?"
     },
     "p108": {
       "source_hash": "8c4c0a2dc71a",
@@ -517,6 +553,10 @@
     "p129": {
       "source_hash": "0f37b328983b",
       "text": "if copied and resent, a purchase might happen twice."
+    },
+    "p130": {
+      "source_hash": "8fad91e73d83",
+      "text": "So the spec lists ways sites can block it."
     },
     "p131": {
       "source_hash": "1fec170346fd",
@@ -621,6 +661,10 @@
     "p156": {
       "source_hash": "ab96c661fd88",
       "text": "Unsealed, it shows the name too."
+    },
+    "p157": {
+      "source_hash": "32058694ec0f",
+      "text": "So that free-gems link..."
     },
     "p158": {
       "source_hash": "a3419c95b4a9",
