@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-13-pool-4860",
+  "revision": "2026-11-13-pool-4861",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
     "raw_records": 5250,
-    "canonical_questions": 5089,
-    "eligible_candidates": 4919,
-    "selected_candidates": 4860,
-    "alias_records": 161,
+    "canonical_questions": 5090,
+    "eligible_candidates": 4920,
+    "selected_candidates": 4861,
+    "alias_records": 160,
     "historical_records": 313,
     "source_urls": 6181,
     "current_research_source_urls": 3233,
@@ -2511,7 +2511,7 @@
     },
     {
       "file": "tools/video/so-thats-why/pool/core.mjs",
-      "sha256": "6fe4bac7733a9b6844f533ddc8b764348be940890c837cc62b827274a8e60340"
+      "sha256": "29f18e1c4590f6ac33029d088758c8cd3a0ba6effb2d9b03808ce96c4ba9fc26"
     },
     {
       "file": "tools/video/so-thats-why/pool/store.mjs",
@@ -2523,7 +2523,7 @@
     },
     {
       "file": "tools/video/so-thats-why/pool/render.mjs",
-      "sha256": "d79285418e82e95c02572717bd21813e6a72583e1008ddb89cef36115d65798c"
+      "sha256": "2a85e782394cbebd0ccb279ad8c2dd9aef0ff11cb96534a00131e21f08d17006"
     },
     {
       "file": "tools/video/so-thats-why/pool/history.mjs",
@@ -2543,11 +2543,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "5158212b0393291ad9464cd229ed916062fdc19e83379c4386f643e1a00ea3cd"
+      "sha256": "1ea3fc59d065a8c2c8877466a90a84746cd703a56148e661a13ebbe40d6369d8"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "3c690bc04055a86557e65fba81674104b3e66a4956cecc39a8c4432456c5d6f1"
+      "sha256": "b538ec1d40c00e394cfefac2e6742b68d8a2b14f99dbf739cc105a3455f25c5c"
     }
   ],
   "sources": [
@@ -203680,58 +203680,42 @@
       "production_ready": false
     },
     {
-      "id": "E7006",
-      "question": "冰河早已離開，平原為什麼後來還會凹出一個池塘？",
-      "domain": "地質與地形",
-      "mechanism_key": "geology.buried_dead_ice_melt_kettle",
-      "answer_target": "脫離冰河的冰塊先被融水沉積物包埋，之後融去失去所占空間，地表留下凹地。",
-      "scope": "限冰水沉積平原的鍋穴形成；凹地未必積成永久池塘，不與侵蝕壺穴或喀斯特天坑混同。",
-      "source_locator": "主文與Name Origin",
+      "id": "E11012",
+      "question": "冰楔融掉以後，多邊形中央為什麼反而看起來變高？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.ice_wedge_thaw_margin_subsidence_relief_inversion",
+      "answer_target": "原在邊界下方的冰楔退化，使邊緣下陷；中心相對邊緣變高，不能把高中心一概解讀成中央隆升。",
+      "scope": "限冰楔退化造成的地形反轉；不宣稱所有高中心都由此形成，不假定中央絕對高度完全不變。",
+      "source_locator": "Ice-wedge Polygons第二段",
       "premise_status": "screened",
-      "notes": "與N238空洞覆蓋層破壞、N229冰核長大相反條件不同；不延伸凍土工程判斷。",
+      "notes": "與E7006埋冰鍋穴不同：聚焦冰楔位於邊界造成相對地形翻轉，非泛稱冰融地陷。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
       "editorial": {
-        "role": "segment",
-        "payoff": "地面下降可能是埋藏冰消失的延遲結果，並非洞一直存在。",
-        "visual": "三格剖面：冰塊落地、沉積包住、冰融凹陷；標出時間差與可有可無的積水。",
+        "role": "theme_seed",
+        "payoff": "看起來升高可能是比較基準降低。",
+        "visual": "同一垂直基準線前後比較；邊界下陷用實線，中央高度不作無來源數字。",
         "seconds": [
-          55,
+          45,
           80
         ]
       },
-      "origin": "wave7-earth-20261101",
+      "origin": "wave11-landforms-20261101",
       "source_refs": [
         {
           "source_id": "SRC-f2de49ac9ccccc6e",
           "origin": "wave11-landforms-20261101",
           "locator": "Ice-wedge Polygons第二段",
           "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
-        },
-        {
-          "source_id": "SRC-2bc7ad5b83b3068d",
-          "origin": "wave7-earth-20261101",
-          "locator": "主文與Name Origin",
-          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
         }
       ],
       "eligible": true,
       "local_references": [
-        "docs/videos/so-thats-why/pool/batches/wave7-earth.json"
+        "docs/videos/so-thats-why/pool/batches/wave11-landforms.json"
       ],
       "selected": true,
-      "aliases": [
-        "E11012"
-      ],
-      "question_variants": [
-        {
-          "id": "E11012",
-          "question": "冰楔融掉以後，多邊形中央為什麼反而看起來變高？",
-          "answer_target": "原在邊界下方的冰楔退化，使邊緣下陷；中心相對邊緣變高，不能把高中心一概解讀成中央隆升。",
-          "scope": "限冰楔退化造成的地形反轉；不宣稱所有高中心都由此形成，不假定中央絕對高度完全不變。"
-        }
-      ],
+      "aliases": [],
+      "question_variants": [],
       "provenance_ids": [
-        "E11012",
-        "E7006"
+        "E11012"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -322865,6 +322849,48 @@
       "question_variants": [],
       "provenance_ids": [
         "E7005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "E7006",
+      "question": "冰河早已離開，平原為什麼後來還會凹出一個池塘？",
+      "domain": "地質與地形",
+      "mechanism_key": "geology.buried_dead_ice_melt_kettle",
+      "answer_target": "脫離冰河的冰塊先被融水沉積物包埋，之後融去失去所占空間，地表留下凹地。",
+      "scope": "限冰水沉積平原的鍋穴形成；凹地未必積成永久池塘，不與侵蝕壺穴或喀斯特天坑混同。",
+      "source_locator": "主文與Name Origin",
+      "premise_status": "screened",
+      "notes": "與N238空洞覆蓋層破壞、N229冰核長大相反條件不同；不延伸凍土工程判斷。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地面下降可能是埋藏冰消失的延遲結果，並非洞一直存在。",
+        "visual": "三格剖面：冰塊落地、沉積包住、冰融凹陷；標出時間差與可有可無的積水。",
+        "seconds": [
+          55,
+          80
+        ]
+      },
+      "origin": "wave7-earth-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-2bc7ad5b83b3068d",
+          "origin": "wave7-earth-20261101",
+          "locator": "主文與Name Origin",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave7-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "E7006"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -535084,7 +535110,7 @@
       "E11009": "E11009",
       "E11010": "E11010",
       "E11011": "E11011",
-      "E11012": "E7006",
+      "E11012": "E11012",
       "E11013": "E11013",
       "E11014": "E11014",
       "E11015": "E11015",
@@ -539858,12 +539884,6 @@
         "duplicate_id": "R10003",
         "canonical_id": "LEG-A35",
         "reason": "同一歷史核心的來源與限定答案刷新；不得另算新增核心。",
-        "kind": "editorial_core_question"
-      },
-      {
-        "duplicate_id": "E11012",
-        "canonical_id": "E7006",
-        "reason": "併E7006。邊界埋冰融去後地面下降仍是相同物理中段；高中心是有用的空間幾何變體，不另計核心。 題名、來源及相對高程示意保留作變體，中央不得另計新核心。",
         "kind": "editorial_core_question"
       },
       {
@@ -570861,6 +570881,11 @@
         "a": "H77-019",
         "b": "H77-020",
         "reason": "不同物種、不同研究群與答案：大象的哈欠幾乎都在躺臥起身時（南非象園紅外線錄影）；海獅的哈欠集中在閉眼休息與打架後 30 秒（西班牙水族館）。題目句型相同，答案不同（第二十七輪整合，2026-11-13）。"
+      },
+      {
+        "a": "E11012",
+        "b": "E7006",
+        "reason": "E7006 問退冰外洗平原裡被沉積物掩埋的死冰延後融失為何凹出鍋穴；E11012 問永凍土多邊形邊界冰楔退化下陷為何讓中央相對變高而看似隆起（地形反轉，非中央絕對抬升）。兩題物理情境、空間幾何與要拆的誤解不同；2026-11-01 合併曾使 E7006 誤掛北極冰楔來源 SRC-f2de49ac9ccccc6e，拆回各自獨立核心。"
       }
     ],
     "excluded": [
@@ -582829,10 +582854,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-13-pool-4860",
-    "target_count": 4860,
+    "revision": "2026-11-13-pool-4861",
+    "target_count": 4861,
     "reviewed_on": "2026-11-13",
-    "reason": "從4665續接；2026-11-13 第二十七輪素材審視（站主：再跑五輪，後改為跑完第二十七輪即收尾）：二十位作者（F120–F139）各在一個新領域先用 Europe PMC 作者查詢確認至少四個互不合著的研究網，再從零研究一個新長題（三位湊不到四網、沒有提案）；提案經非作者覆核（V140–V159 中有提案的十七份）；十七題都留後備。舊說明：從4653續接；2026-11-12 第二十六輪素材審視（站主追加的最後一輪）：五位作者（F113–F117）只照覆核點名的原文補讀五題後備題（兩位沒有提案）；提案經非作者覆核（V121、V124、V125）；費氏葉序經覆核可成題，其餘留後備。舊說明：從4632續接；2026-11-12 第二十五輪素材審視：八位作者（F105–F112）只照第二十四輪覆核點名的原文補讀八題後備題（三位找不到可讀原文、沒有提案）；提案經非作者覆核（V116–V120）；八題都仍後備，最接近的是費氏葉序（8.43 分，差 0.15 條）。舊說明：從4349續接；2026-11-12 第二十四輪素材審視：二十位作者（F82–F101）各在一個新領域先大範圍去重、確認至少三個研究群有開放全文，再從零研究一個新長題；提案經非作者覆核（V85–V104），二十題都留後備。另把第二十三輪覆核建議合併的後備題用池中既有核心重組三題（M1–M3），經非作者覆核：冷凍肉與冷藏蔬果合成一題可成題，其餘兩題後備。舊說明：從4321續接；2026-11-12 第二十三輪素材審視：二十位作者（F62–F81）只照第二十到二十二輪覆核點名的原文補讀二十題後備組題（其中六位找不到可讀原文、沒有提案）；提案經非作者覆核（V65–V84）；二十題都仍後備，沒有新長題。舊說明：2026-11-12 第二十輪素材審視：六位作者先在全池大範圍去重（各列 20–30 個候選），再從零研究十二個新長題——F36 天空偏振與夜光雲、F37 啄木鳥與象鼻、F38 摩擦起電與撕膠帶、F39 名琴與動物對拍、F40 發光菇與植物發熱、F41 海色與海中發光；138 個提案經非作者覆核（V39–V44），全部收（照收 33、改字後收 105）；十二題都留後備，沒有新長題。",
+    "reason": "從4860續接；2026-11-13 修正第五輪記下的 E7006 錯掛來源（2026-11-11-stw-pool-e7006-source-ref）：E11012（冰楔退化使多邊形邊界下陷、中央相對高程反轉）與 E7006（退冰平原掩埋死冰延後融失凹出鍋穴）由合併改為分開核心，E7006 不再繼承北極冰楔來源 SRC-f2de49ac9ccccc6e，短題 G120 第二章直接引用 E11012。舊說明：從4665續接；2026-11-13 第二十七輪素材審視（站主：再跑五輪，後改為跑完第二十七輪即收尾）：二十位作者（F120–F139）各在一個新領域先用 Europe PMC 作者查詢確認至少四個互不合著的研究網，再從零研究一個新長題（三位湊不到四網、沒有提案）；提案經非作者覆核（V140–V159 中有提案的十七份）；十七題都留後備。舊說明：從4653續接；2026-11-12 第二十六輪素材審視（站主追加的最後一輪）：五位作者（F113–F117）只照覆核點名的原文補讀五題後備題（兩位沒有提案）；提案經非作者覆核（V121、V124、V125）；費氏葉序經覆核可成題，其餘留後備。舊說明：從4632續接；2026-11-12 第二十五輪素材審視：八位作者（F105–F112）只照第二十四輪覆核點名的原文補讀八題後備題（三位找不到可讀原文、沒有提案）；提案經非作者覆核（V116–V120）；八題都仍後備，最接近的是費氏葉序（8.43 分，差 0.15 條）。舊說明：從4349續接；2026-11-12 第二十四輪素材審視：二十位作者（F82–F101）各在一個新領域先大範圍去重、確認至少三個研究群有開放全文，再從零研究一個新長題；提案經非作者覆核（V85–V104），二十題都留後備。另把第二十三輪覆核建議合併的後備題用池中既有核心重組三題（M1–M3），經非作者覆核：冷凍肉與冷藏蔬果合成一題可成題，其餘兩題後備。舊說明：從4321續接；2026-11-12 第二十三輪素材審視：二十位作者（F62–F81）只照第二十到二十二輪覆核點名的原文補讀二十題後備組題（其中六位找不到可讀原文、沒有提案）；提案經非作者覆核（V65–V84）；二十題都仍後備，沒有新長題。舊說明：2026-11-12 第二十輪素材審視：六位作者先在全池大範圍去重（各列 20–30 個候選），再從零研究十二個新長題——F36 天空偏振與夜光雲、F37 啄木鳥與象鼻、F38 摩擦起電與撕膠帶、F39 名琴與動物對拍、F40 發光菇與植物發熱、F41 海色與海中發光；138 個提案經非作者覆核（V39–V44），全部收（照收 33、改字後收 105）；十二題都留後備，沒有新長題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -585660,6 +585685,7 @@
       "E11009",
       "E11010",
       "E11011",
+      "E11012",
       "E11013",
       "E11014",
       "E11015",

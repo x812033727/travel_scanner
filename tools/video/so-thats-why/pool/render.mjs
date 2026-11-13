@@ -41,6 +41,10 @@ export function renderDedup(pool) {
   for (const item of pool.dedup.distinct) lines.push(`| ${item.a} | ${item.b} | ${cell(item.reason)} |`);
   lines.push('', '## 本輪另行退題', '', '| ID | 理由 |', '| --- | --- |');
   for (const item of pool.dedup.excluded) lines.push(`| ${item.id} | ${cell(item.reason)} |`);
+  if (pool.dedup.excluded_source_refs?.length) {
+    lines.push('', '## 排除的無關來源引用', '', '| 核心 ID | 來源 ID | 範圍過濾 | 理由 |', '| --- | --- | --- | --- |');
+    for (const item of pool.dedup.excluded_source_refs) lines.push(`| ${item.candidate_id} | ${item.source_id} | ${cell([item.origin, item.locator].filter(Boolean).join(' · ') || '全部匹配引用')} | ${cell(item.reason)} |`);
+  }
   lines.push('', `其他歷史剔除、暫緩與轉系列保留在 pool.json 的 prior_decision／exclusion_reason，不因新批次出現相似標題就復活。未入本輪 ${pool.counts.selected_candidates.toLocaleString('en-US')} 筆的合格題保留候補狀態，不冒稱已採用。`);
   return `${lines.join('\n')}\n`;
 }

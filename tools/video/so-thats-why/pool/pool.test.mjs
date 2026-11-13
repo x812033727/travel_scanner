@@ -366,6 +366,29 @@ test('source-only refreshes reach their intended canonical topic without leaking
   assert.deepEqual(readingsForCandidate({ ...shared, id: 'unreferenced-source' }, row), []);
 });
 
+test('excluded_source_refs removes an inherited off-scope source reference with a reason while preserving raw records', () => {
+  const rows = [record('core', '核心問題'), record('alias', '合併進核心的別名', '同核心不同寫法')];
+  const mergeOnly = { ...empty(), merges: [{ duplicate_id: 'alias', canonical_id: 'core', reason: 'Same core question' }] };
+  const decisions = {
+    ...mergeOnly,
+    excluded_source_refs: [{ candidate_id: 'core', source_id: 'alias', reason: 'Alias source covers an unrelated subtopic not claimed by core' }],
+  };
+  const pool = assemble(input(rows), decisions, choose(['core']));
+  assert.deepEqual(pool.candidates[0].source_refs.map((ref) => ref.source_id), ['core']);
+  assert.deepEqual(pool.raw_records.find((row) => row.id === 'alias').source_refs.map((ref) => ref.source_id), ['alias']);
+  assert.equal(pool.counts.selected_source_urls, 1);
+  assert.throws(() => assemble(input(rows), { ...mergeOnly, excluded_source_refs: [{ candidate_id: 'alias', source_id: 'alias', reason: 'not canonical' }] }), /Invalid excluded_source_refs/);
+  assert.throws(() => assemble(input(rows), { ...mergeOnly, excluded_source_refs: [{ candidate_id: 'core', source_id: 'alias', reason: ' ' }] }), /Invalid excluded_source_refs/);
+  assert.throws(() => assemble(input(rows), { ...mergeOnly, excluded_source_refs: [{ candidate_id: 'core', source_id: 'core', origin: 'wrong-origin', reason: 'unmatched filter' }] }), /Stale excluded_source_refs/);
+  assert.throws(() => assemble(input(rows), {
+    ...mergeOnly,
+    excluded_source_refs: [
+      { candidate_id: 'core', source_id: 'core', reason: 'drop first' },
+      { candidate_id: 'core', source_id: 'alias', reason: 'drop last' },
+    ],
+  }), /cannot remove every source reference/);
+});
+
 test('themes cannot reference excluded records or masquerade as approved scripts; HTML contains inert escaped data', () => {
   const pool = assemble(input([record('a', '</script><script>alert(1)</script>')]), empty(), choose(['a']));
   const theme = { id: 'G01', title: 'fixture', core_question: 'fixture', connection: 'fixture', boredom_risk: 'fixture', drop_if: 'fixture', evidence_gaps: 'fixture', production_ready: false, status: 'EDITORIAL_THEME_NOT_SCRIPT', candidate_ids: ['a'], target_minutes: 10, range_minutes: [9, 11], chapters: Array.from({ length: 4 }, () => ({ title: 'fixture', new_information: 'fixture', candidate_ids: ['a'], seconds: 150 })) };

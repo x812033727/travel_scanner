@@ -240,6 +240,17 @@ export function assemble(input, decisions = { merges: [], distinct: [], excluded
     return [item.id, item.reason];
   }));
   const aliases = Object.fromEntries(input.records.map((record) => [record.id, resolve(record.id)]));
+  const sourceSet = new Set(input.sources.map((source) => source.id));
+  const excludedSourceRefs = (decisions.excluded_source_refs ?? []).map((item) => {
+    if (!item || !byId.has(item.candidate_id) || aliases[item.candidate_id] !== item.candidate_id || !sourceSet.has(item.source_id) || typeof item.reason !== 'string' || !item.reason.trim()) {
+      throw new Error('Invalid excluded_source_refs decision');
+    }
+    if ((item.origin !== undefined && (typeof item.origin !== 'string' || !item.origin.trim())) || (item.locator !== undefined && (typeof item.locator !== 'string' || !item.locator.trim()))) {
+      throw new Error('Invalid excluded_source_refs filter');
+    }
+    return item;
+  });
+  const matchedExcludedRefs = new Set();
   const groups = new Map();
   for (const record of input.records) {
     const id = aliases[record.id];
@@ -251,16 +262,30 @@ export function assemble(input, decisions = { merges: [], distinct: [], excluded
     const retired = members.some((record) => record.premise_status === 'excluded_legacy');
     const rejected = members.find((record) => excludes.has(record.id));
     const eligible = !retired && !rejected && members.some((record) => record.eligible);
+    const mergedRefs = [...new Map(members.flatMap((record) => record.source_refs).map((ref) => [`${ref.source_id}:${ref.origin}:${ref.locator}`, ref])).values()];
+    const rules = excludedSourceRefs.map((rule, index) => [rule, index]).filter(([rule]) => rule.candidate_id === id);
+    const sourceRefs = mergedRefs.filter((ref) => {
+      let drop = false;
+      for (const [rule, index] of rules) {
+        if (rule.source_id === ref.source_id && (rule.origin === undefined || rule.origin === ref.origin) && (rule.locator === undefined || rule.locator === ref.locator)) {
+          matchedExcludedRefs.add(index);
+          drop = true;
+        }
+      }
+      return !drop;
+    });
+    if (eligible && rules.length && !sourceRefs.length) throw new Error(`${id}: excluded_source_refs cannot remove every source reference from an eligible candidate`);
     return {
       ...main, id, eligible, selected: false,
       aliases: members.map((record) => record.id).filter((member) => member !== id),
       question_variants: members.filter((record) => record.id !== id).map((record) => ({ id: record.id, question: record.question, answer_target: record.answer_target, scope: record.scope })),
-      source_refs: [...new Map(members.flatMap((record) => record.source_refs).map((ref) => [`${ref.source_id}:${ref.origin}:${ref.locator}`, ref])).values()],
+      source_refs: sourceRefs,
       provenance_ids: members.map((record) => record.id),
       exclusion_reason: retired ? '含歷史剔除／轉線／暫緩題，保留關係但不得靠新標題復活。' : rejected ? excludes.get(rejected.id) : !eligible ? '缺來源或前提待查。' : null,
       verification: 'TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL', production_ready: false,
     };
   });
+  if (matchedExcludedRefs.size !== excludedSourceRefs.length) throw new Error('Stale excluded_source_refs decision did not match any source reference');
   const pairs = similarityPairs(input.records, aliases);
   const distinct = new Map((decisions.distinct ?? []).map((item) => {
     if (!byId.has(item.a) || !byId.has(item.b) || !item.reason || resolve(item.a) === resolve(item.b)) throw new Error('Invalid distinct decision');
@@ -283,7 +308,7 @@ export function assemble(input, decisions = { merges: [], distinct: [], excluded
     schema_version: 1, revision: selection?.revision ?? 'unversioned-draft', status: selection ? 'CURATED_CANDIDATE_POOL_NOT_PRODUCTION' : 'DRAFT_INTAKE',
     counts: { raw_records: input.records.length, canonical_questions: candidates.length, eligible_candidates: candidates.filter((candidate) => candidate.eligible).length, selected_candidates: selected.length, alias_records: input.records.length - candidates.length, historical_records: input.records.filter((record) => record.origin === 'legacy').length, source_urls: input.sources.length, current_research_source_urls: input.sources.filter((source) => source.readings.some((reading) => !reading.origin.startsWith('legacy:'))).length, selected_source_urls: new Set(selected.flatMap((row) => row.source_refs.map((ref) => ref.source_id))).size, new_suggestions_not_added: input.not_added?.length ?? 0, high_similarity_pending: pending.length, approved_scripts: 0 },
     inputs: input.inputs, sources: input.sources, candidates, raw_records: input.records,
-    dedup: { aliases, merges: links, distinct: decisions.distinct ?? [], excluded: decisions.excluded ?? [], potential_pairs: pairs, required_pending: pending, method: 'exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence' },
+    dedup: { aliases, merges: links, distinct: decisions.distinct ?? [], excluded: decisions.excluded ?? [], ...(excludedSourceRefs.length ? { excluded_source_refs: excludedSourceRefs } : {}), potential_pairs: pairs, required_pending: pending, method: 'exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence' },
     selection: selection ?? null, not_added: input.not_added ?? [],
   };
 }
