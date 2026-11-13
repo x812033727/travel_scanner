@@ -50,3 +50,5 @@
   P21 第一次 qa 得「有示範 0.23」沒過。`video.json` 寫的 `explainer`／`drama` 要推過一次才進站：先跑
   `review-push --slug <slug> --report-only`（不送任何關卡），再跑 qa，就變「有示範：不適用（解說）」。成片最後淡出的那 1.6 秒會被
   silencedetect 算成最長空檔，不是台詞之間的空檔，看時間點再判斷。
+
+- 2026-11-13（P26）：MiniMax M Plan 是 5 小時一窗（UTC 00、05、10、15、20 點起算）加每週一窗。一集 90 景 × 3 張的關鍵畫面在 04:41 用完當窗（回 2067 Token Plan usage limit），05:00 換窗後就恢復。長的 keyframes 或八語配音之前先跑 `node tools/video/cli.mjs minimax-quota`，看 `general` 的 `current_interval_remaining_percent` 與 `end_time`；不夠就把剩下的鏡頭排到下一窗，不要升級方案或買點數（站主決定）。
