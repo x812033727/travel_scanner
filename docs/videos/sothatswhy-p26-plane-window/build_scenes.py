@@ -207,7 +207,7 @@ obj("stream-round", "Close-up from above of " + ROUNDSTONE + ", pebbles on the s
     c("水碰到它，順著圓邊，滑滑地流過去。"))
 obj("stream-square", "Close-up from above of " + SQUAREBLOCK + ", pebbles on the sunny stream bed",
     c("換成一塊方方的水泥塊呢？"),
-    k("水到角那裡，擠得好急！", "驚訝"))
+    k("水到了角那裡，擠成一團！", "驚訝"))
 chief("chief-flow", C("drawing a smooth curve in the air with one hand and then a sharp corner with the other, a bright smile"),
     c("航空總署說，機身裡的力，也有點像這樣。"),
     c("圓角的窗戶，力順著彎彎的邊走，不太會堆起來。"),
@@ -217,7 +217,7 @@ obj("square-corner", "Close-up of one corner of an old-fashioned squarish airpla
 kid("kid-crowd-q", K("squeezing her two fists together with a curious frown", close=True, where=OFFICE),
     k("擠在角上，會怎樣？", "句尾上揚", "S:crowd"))
 chief("chief-stress", C("pressing one fingertip onto her other palm with a serious but kind face", close=True),
-    c("角上那一小塊金屬，要撐的力比旁邊多很多。", "接住上一句"),
+    c("角上那一小塊金屬，要承受的力比旁邊多很多。", "接住上一句"),
     c("工程師把這個叫做應力集中。", None, "P:crowd"))
 kid("kid-stress-q", K("scrunching her nose with a puzzled face", close=True, where=OFFICE),
     k("應力是什麼？", "句尾上揚"),
@@ -246,7 +246,7 @@ kid("kid-metal-q", K("knocking on a shiny metal desk leg with her knuckles and a
 
 # ---------- 第三章：迴紋針，彎了好多次 ----------
 chief("chief-clip", C("holding up " + CLIP + " between two fingers with a knowing smile", close=True),
-    c("撐一次不會。還記得這根迴紋針嗎？", "接住上一句"), chapter="迴紋針，彎了好多次")
+    c("一次不會。還記得這根迴紋針嗎？", "接住上一句"), chapter="迴紋針，彎了好多次")
 obj("clip-bend", "Close-up of a straightened silver paperclip held between two fingertips and bent back and forth, a small bright kink at the bend, a light wooden desk below",
     c("把它扳過去，再扳回來，一次、兩次……"),
     k("彎好多次，就斷掉了！", "驚訝", "P:clip"))
@@ -312,7 +312,7 @@ chief("chief-rivet", C("holding up a tiny shiny silver rivet between two fingers
 kid("kid-rivet-q", K("squinting at a tiny shiny silver rivet held between her fingers", close=True, where=OFFICE),
     k("鉚釘是什麼？", "句尾上揚"),
     c("把兩片金屬釘在一起的小金屬釘。"),
-    k("釘的孔，也是洞耶！", "想起來"),
+    k("釘子的孔，也是洞耶！", "想起來"),
     c("對，還記得嗎？洞的旁邊，力也會擠。", None, "P:places"))
 chief("chief-withey", C("holding two small flat metal plates together with one hand and a thoughtful face"),
     c("那位學者認為，窗戶怎麼固定，可能比形狀還要緊。"),
@@ -327,7 +327,7 @@ chief("chief-why-round", C("drawing a soft rounded corner in the air with one fi
 kid("kid-material-q", K("holding up two small shiny rods, one copper-coloured and one clear, with a curious frown", where=OFFICE),
     k("那換一種不會裂的材料？", "句尾上揚", "S:material"))
 chief("chief-rods", C("holding " + COPPER + " in one hand and " + GLASS + " in the other with a curious smile"),
-    c("材料真的有差。大學的材料教材，比過兩根棒子：", "接住上一句"),
+    c("材料真的有差。有一份大學教材，比過兩根棒子：", "接住上一句"),
     c("一根銅棒，一根玻璃棒，都刻了一個小缺口。"))
 obj("glass-rod", "Close-up of " + GLASS + " lying on a light wooden desk, broken cleanly into two pieces right at the notch",
     c("玻璃棒有了缺口，力小很多就斷了，"),
@@ -335,7 +335,7 @@ obj("glass-rod", "Close-up of " + GLASS + " lying on a light wooden desk, broken
     k("玻璃好脆喔！", "驚訝"))
 obj("copper-rod", "Close-up of " + COPPER + " lying on a light wooden desk, bent into a smooth gentle U-curve at the notch and still in one piece",
     c("銅棒有缺口，卻先彎下去，沒有比較容易斷。"),
-    k("銅會彎，所以不怕缺口？", "恍然"))
+    k("銅棒會彎，所以不怕缺口？", "恍然"))
 chief("chief-energy", C("pressing her palms together and then opening them softly with a calm smile", close=True),
     c("拉一次是這樣：它斷之前會先變形，吸收很多力氣。", None, "P:material"),
     c("所以材料要挑；可是挑好了，還是可能疲勞。"))
@@ -381,7 +381,7 @@ chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", cl
     c("一個小小的圓角，背後是一整套設計和檢查。"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
 kid("outro", "Waist-up medium shot of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
-    k("明天我要坐窗邊，看圓角！", "開心大聲"))
+    k("明天我要坐窗邊，看圓圓的窗角！", "開心大聲"))
 chief("outro-chief", "Waist-up medium shot of the chief holding up a small plain white toy airliner with a curious smile, filling the frame, a plain pale wall behind her, bright morning light",
       c("你坐飛機時，窗戶是什麼形狀？", "問句上揚，像聊天"), c("留言告訴我們。"))
 chief("outro-wave", "Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light",
