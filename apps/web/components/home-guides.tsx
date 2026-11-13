@@ -153,41 +153,47 @@ export function HomeGuides({
 
   return (
     <section aria-labelledby="home-guides-title" className="mx-auto max-w-6xl px-4 pb-12 pt-4 sm:px-5 md:px-8 md:pt-7">
-      <div className="portal-hero-shell rounded-3xl p-4 sm:p-6 md:p-7">
-        <div className="flex flex-wrap items-start justify-between gap-3 sm:items-center sm:gap-4">
-          <div className="min-w-0">
-            <p className="inline-flex items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--teal)_28%,var(--line))] bg-[var(--teal-soft)] px-3 py-1 text-[length:var(--text-xs)] font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">
-              {t("eyebrow")}
-            </p>
-            <h2
-              id="home-guides-title"
-              className="mt-2.5 text-[1.45rem] font-extrabold leading-[1.28] tracking-tight sm:text-3xl md:text-[2.15rem] md:leading-[1.22]"
-            >
-              {t("title")}
-            </h2>
-          </div>
-          <Link
-            href="/search/new"
-            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--teal)] bg-[var(--surface)] px-4 py-2 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-all hover:-translate-y-0.5 hover:bg-[var(--teal-soft)]"
+      <div className="flex flex-wrap items-start justify-between gap-3 sm:items-center sm:gap-4">
+        <div className="min-w-0">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--teal)_28%,var(--line))] bg-[var(--teal-soft)] px-3 py-1 text-[length:var(--text-xs)] font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">
+            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-[var(--teal)]" />
+            {t("eyebrow")}
+          </span>
+          <h2
+            id="home-guides-title"
+            className="mt-2.5 text-[1.45rem] font-extrabold leading-[1.28] tracking-tight sm:text-3xl md:text-[2.15rem] md:leading-[1.22]"
           >
-            {flow.searchTrips}<ArrowRight size={17} className="shrink-0" aria-hidden />
-          </Link>
+            {t("title")}
+          </h2>
         </div>
-        <p className="mt-2.5 max-w-3xl text-sm leading-6 text-[var(--muted)] sm:mt-3 sm:text-base sm:leading-7">
-          {t("intro")}
-        </p>
-
-        <div
-          data-testid="portal-toolbar"
-          className="mt-4 flex flex-col gap-3 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-3 shadow-[var(--shadow-sm)] sm:mt-5 md:flex-row md:items-center md:justify-between md:p-3.5"
+        <Link
+          href="/search/new"
+          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--teal)] bg-[var(--surface)] px-4 py-2 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-all hover:-translate-y-0.5 hover:bg-[var(--teal-soft)]"
         >
-          <form
-            role="search"
-            method="get"
-            action={`/${locale}/search/articles`}
-            className="flex min-w-0 flex-1 flex-wrap items-center gap-2 sm:flex-nowrap"
-          >
-            <label className="sr-only" htmlFor="home-portal-search-q">{t("searchButton")}</label>
+          {flow.searchTrips}<ArrowRight size={17} className="shrink-0" aria-hidden />
+        </Link>
+      </div>
+      <p className="mt-2.5 max-w-3xl text-sm leading-6 text-[var(--muted)] sm:mt-3 sm:text-base sm:leading-7">
+        {t("intro")}
+      </p>
+
+      <div
+        data-testid="portal-toolbar"
+        className="portal-hero-shell mt-4 flex flex-col gap-3 rounded-2xl p-3.5 sm:mt-5 md:flex-row md:items-center md:justify-between md:p-4"
+      >
+        <form
+          role="search"
+          method="get"
+          action={`/${locale}/search/articles`}
+          className="flex min-w-0 flex-1 flex-wrap items-center gap-2 sm:flex-nowrap"
+        >
+          <label className="sr-only" htmlFor="home-portal-search-q">{t("searchButton")}</label>
+          <div className="relative min-w-0 flex-1 basis-44">
+            <Search
+              size={17}
+              aria-hidden
+              className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--muted)]"
+            />
             <input
               id="home-portal-search-q"
               type="search"
@@ -196,47 +202,54 @@ export function HomeGuides({
               maxLength={100}
               autoComplete="off"
               required
-              className="app-field min-h-11 min-w-0 flex-1 basis-44 focus-visible:border-[var(--teal)] focus-visible:outline-none"
+              style={{ paddingInlineStart: "2.45rem" }}
+              className="app-field min-h-11 w-full min-w-0 bg-[var(--surface)] pr-3 focus-visible:border-[var(--teal)] focus-visible:outline-none lg:pr-14"
             />
-            <button type="submit" className="app-primary-button min-h-11 grow justify-center px-4 min-[420px]:grow-0">
-              <Search size={16} aria-hidden />
-              {t("searchButton")}
-            </button>
-          </form>
-          <div className="portal-scroll-strip flex items-center gap-2 text-[length:var(--text-xs)] font-semibold md:flex-wrap md:overflow-visible">
-            {hotspotsEnabled ? (
-              <Link
-                href="/hotspots"
-                className="inline-flex min-h-11 shrink-0 snap-start items-center gap-1.5 whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--paper)]/80 px-3.5 text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
-              >
-                <Compass size={15} aria-hidden />
-                {t("quickHotspotsShort")}
-              </Link>
-            ) : null}
-            <Link
-              href="/foods"
-              className="inline-flex min-h-11 shrink-0 snap-start items-center gap-1.5 whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--paper)]/80 px-3.5 text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+            <kbd
+              aria-hidden="true"
+              className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-md border border-[var(--line)] bg-[var(--paper)] px-1.5 py-0.5 font-mono text-[length:var(--text-xs)] font-semibold text-[var(--muted)] lg:inline-block"
             >
-              <Soup size={15} aria-hidden />
-              {t("quickFoodsShort")}
-            </Link>
-            <Link
-              href="/videos"
-              className="inline-flex min-h-11 shrink-0 snap-start items-center gap-1.5 whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--paper)]/80 px-3.5 text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
-            >
-              <Film size={15} aria-hidden />
-              {t("quickVideosShort")}
-            </Link>
-            {news.length === 0 ? (
-              <a
-                href={`/${locale}/life/feed.xml`}
-                className="inline-flex min-h-11 shrink-0 snap-start items-center gap-1.5 whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--paper)]/80 px-3.5 text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
-              >
-                <Rss size={15} aria-hidden />
-                {t("newsDeskRss")}
-              </a>
-            ) : null}
+              ⌘K
+            </kbd>
           </div>
+          <button type="submit" className="app-primary-button min-h-11 grow justify-center px-4 min-[420px]:grow-0">
+            <Search size={16} aria-hidden />
+            {t("searchButton")}
+          </button>
+        </form>
+        <div className="portal-scroll-strip flex items-center gap-2 text-[length:var(--text-xs)] font-semibold md:flex-wrap md:overflow-visible">
+          {hotspotsEnabled ? (
+            <Link
+              href="/hotspots"
+              className="inline-flex min-h-11 shrink-0 snap-start items-center gap-1.5 whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--surface)] px-3.5 text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+            >
+              <Compass size={15} className="text-[var(--teal)]" aria-hidden />
+              {t("quickHotspotsShort")}
+            </Link>
+          ) : null}
+          <Link
+            href="/foods"
+            className="inline-flex min-h-11 shrink-0 snap-start items-center gap-1.5 whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--surface)] px-3.5 text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+          >
+            <Soup size={15} className="text-[var(--coral)]" aria-hidden />
+            {t("quickFoodsShort")}
+          </Link>
+          <Link
+            href="/videos"
+            className="inline-flex min-h-11 shrink-0 snap-start items-center gap-1.5 whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--surface)] px-3.5 text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+          >
+            <Film size={15} className="text-[var(--teal)]" aria-hidden />
+            {t("quickVideosShort")}
+          </Link>
+          {news.length === 0 ? (
+            <a
+              href={`/${locale}/life/feed.xml`}
+              className="inline-flex min-h-11 shrink-0 snap-start items-center gap-1.5 whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--surface)] px-3.5 text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+            >
+              <Rss size={15} className="text-[var(--coral)]" aria-hidden />
+              {t("newsDeskRss")}
+            </a>
+          ) : null}
         </div>
       </div>
 

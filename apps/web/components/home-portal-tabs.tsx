@@ -106,12 +106,13 @@ export function HomePortalTabs({
                 type="button"
                 aria-pressed={active}
                 onClick={() => setActiveTab(tab.id)}
-                className={`inline-flex min-h-11 shrink-0 snap-start items-center whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-all ${
+                className={`inline-flex min-h-11 shrink-0 snap-start items-center gap-1.5 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-all ${
                   active
                     ? "border border-[var(--teal)] bg-[var(--teal-fill)] text-[var(--primary-text)] shadow-[var(--shadow-sm)]"
                     : "border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/50 hover:text-[var(--teal-dark)]"
                 }`}
               >
+                {active ? <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-current opacity-90" /> : null}
                 {tab.label}
               </button>
             );
@@ -145,7 +146,7 @@ export function HomePortalTabs({
                     href={`/${locale}/life/feed.xml`}
                     className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--paper)]/75 px-3.5 text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
                   >
-                    <Rss size={15} aria-hidden />
+                    <Rss size={15} className="text-[var(--coral)]" aria-hidden />
                     {labels.newsDeskRss}
                   </a>
                   <Link
@@ -267,26 +268,33 @@ export function HomePortalTabs({
                   {wireStories.map((story) => (
                     <li
                       key={story.slug}
-                      className="group relative -mx-2 flex flex-col gap-1 rounded-xl px-2 py-3 transition-colors hover:bg-[var(--paper)]/75 sm:flex-row sm:items-baseline sm:gap-3 sm:py-2.5"
+                      className="group relative -mx-2 flex flex-col gap-1 rounded-xl px-2 py-3 transition-colors hover:bg-[var(--paper)]/75 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3 sm:py-2.5"
                     >
-                      <div className="flex shrink-0 items-center gap-2 text-[length:var(--text-xs)] text-[var(--muted)]">
-                        {story.news_date ? (
-                          <time dateTime={story.news_date} className="font-mono font-medium tabular-nums">
-                            {story.news_date}
-                          </time>
-                        ) : null}
-                        {story.topics[0] ? (
-                          <span className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-2 py-0.5 font-medium text-[var(--ink)]">
-                            {story.topics[0].label}
-                          </span>
-                        ) : null}
+                      <div className="flex min-w-0 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
+                        <div className="flex shrink-0 items-center gap-2 text-[length:var(--text-xs)] text-[var(--muted)]">
+                          {story.news_date ? (
+                            <time dateTime={story.news_date} className="font-mono font-medium tabular-nums">
+                              {story.news_date}
+                            </time>
+                          ) : null}
+                          {story.topics[0] ? (
+                            <span className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-2 py-0.5 font-medium text-[var(--ink)]">
+                              {story.topics[0].label}
+                            </span>
+                          ) : null}
+                        </div>
+                        <Link
+                          href={guideHref(story.kind, story.slug)}
+                          className="min-w-0 text-[0.96875rem] font-semibold leading-6 text-[var(--ink)] underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:text-[var(--teal)] group-hover:underline sm:text-base"
+                        >
+                          {story.title}
+                        </Link>
                       </div>
-                      <Link
-                        href={guideHref(story.kind, story.slug)}
-                        className="min-w-0 text-[0.96875rem] font-semibold leading-6 text-[var(--ink)] underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:text-[var(--teal)] group-hover:underline sm:text-base"
-                      >
-                        {story.title}
-                      </Link>
+                      <ArrowUpRight
+                        size={15}
+                        aria-hidden
+                        className="hidden shrink-0 text-[var(--muted)] opacity-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[var(--teal)] group-hover:opacity-100 sm:block"
+                      />
                     </li>
                   ))}
                 </ul>

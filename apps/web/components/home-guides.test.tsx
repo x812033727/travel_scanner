@@ -31,12 +31,15 @@ const blocks = (travel: GuideSummary[], tech: GuideSummary[], money: GuideSummar
 
 describe("the home page's portal and guide sections", () => {
   it("says what the site is, offers inline article search and quick links, and lists each section", () => {
-    render(<HomeGuides blocks={blocks(
+    const { container } = render(<HomeGuides blocks={blocks(
       [article("tokyo-first-trip", "howto", "東京第一次自由行")],
       [article("claude-code-intro", "life", "Claude Code 入門")],
       [article("credit-card-basics", "life", "信用卡入門")],
     )} />);
     expect(screen.getByRole("heading", { level: 2, name: "AI 科技快訊、軟體教學與旅遊生活攻略" })).toBeTruthy();
+    const directIntro = container.querySelectorAll('section[aria-labelledby="home-guides-title"] > p');
+    expect(directIntro).toHaveLength(1);
+    expect(directIntro[0]?.textContent).toContain("Mokaair");
     expect(screen.getByText(/個人站長經營/)).toBeTruthy();
     expect(screen.getByRole("link", { name: "搜尋機票與住宿" }).getAttribute("href")).toBe("/search/new");
     expect(screen.getByRole("search").getAttribute("action")).toBe("/zh-TW/search/articles");

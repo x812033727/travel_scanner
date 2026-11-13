@@ -1,6 +1,6 @@
 "use client";
 
-import { Search } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useId, useRef, useState, type FormEvent, type KeyboardEvent, type RefObject } from "react";
 import { useRouter } from "@/i18n/navigation";
@@ -135,9 +135,17 @@ export function SiteSearch({
             onKeyDown={onKeyDown}
             style={{ paddingInlineStart: inline ? "2.25rem" : "2.75rem" }}
             className={inline
-              ? "app-field min-h-11 w-56 pr-3 text-sm xl:w-72"
+              ? "app-field min-h-11 w-56 pr-12 text-sm xl:w-72"
               : "app-field min-h-14 w-full pr-3 text-base"}
           />
+          {inline && !query ? (
+            <kbd
+              aria-hidden="true"
+              className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 rounded-md border border-[var(--line)] bg-[var(--paper)] px-1.5 py-0.5 font-mono text-[10px] font-medium text-[var(--muted)]"
+            >
+              ⌘K
+            </kbd>
+          ) : null}
         </div>
         {inline ? null : (
           <button type="submit" className="app-primary-button min-h-14 px-5">{common("guides.searchSubmit")}</button>
@@ -148,7 +156,7 @@ export function SiteSearch({
         role="listbox"
         aria-label={nav("searchResultsLabel")}
         hidden={!expanded || !options.length}
-        className={`${inline ? "absolute left-0 right-0 z-50 mt-2 shadow-lg" : "mt-3"} max-h-[60vh] overflow-y-auto rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2`}
+        className={`${inline ? "absolute left-0 right-0 z-50 mt-2 shadow-[var(--shadow-lg)]" : "mt-3"} max-h-[60vh] overflow-y-auto rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2`}
       >
         {options.map((option, index) => (
           <li
@@ -159,15 +167,27 @@ export function SiteSearch({
             onMouseDown={(event) => event.preventDefault()}
             onMouseEnter={() => setActive(index)}
             onClick={() => go(option.href)}
-            className={`flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-xl px-3 py-2 text-sm ${index === active ? "bg-[var(--teal-soft)]" : ""} ${option.kind === "all" ? "font-semibold text-[var(--teal)]" : ""}`}
+            className={`flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-xl px-3 py-2 text-sm transition-colors ${index === active ? "bg-[var(--teal-soft)] text-[var(--teal-dark)]" : ""} ${option.kind === "all" ? "mt-1 border-t border-[var(--line)] pt-2.5 font-semibold text-[var(--teal)]" : ""}`}
           >
             <span className="min-w-0 truncate">{option.title}</span>
-            {option.tag ? <span className="flex-none rounded-full bg-[var(--line)] px-2 py-0.5 text-xs text-[var(--muted)]">{option.tag}</span> : null}
+            {option.tag ? (
+              <span
+                className={`flex-none rounded-full px-2 py-0.5 text-xs ${
+                  option.kind === "best"
+                    ? "bg-[var(--teal-soft)] font-semibold text-[var(--teal-dark)]"
+                    : "border border-[var(--line)] bg-[var(--paper)] text-[var(--muted)]"
+                }`}
+              >
+                {option.tag}
+              </span>
+            ) : option.kind === "all" ? (
+              <ArrowRight size={15} aria-hidden className="flex-none text-[var(--teal)]" />
+            ) : null}
           </li>
         ))}
       </ul>
       {expanded && !options.length ? (
-        <p role="status" className={`${inline ? "absolute left-0 right-0 z-50 mt-2 shadow-lg" : "mt-3"} rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--muted)]`}>
+        <p role="status" className={`${inline ? "absolute left-0 right-0 z-50 mt-2 shadow-[var(--shadow-lg)]" : "mt-3"} rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--muted)]`}>
           {search.status === "error" ? nav("searchUnavailable") : answered ? nav("searchNoResults") : nav("searchLoading")}
         </p>
       ) : null}

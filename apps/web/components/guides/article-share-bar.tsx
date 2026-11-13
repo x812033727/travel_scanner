@@ -9,6 +9,7 @@ export type ArticleShareLabels = {
   linkCopied: string;
   shareLine: string;
   shareSystem: string;
+  sharePrompt?: string;
 };
 
 const noopSubscribe = () => () => {};
@@ -25,10 +26,12 @@ export function ArticleShareBar({
   url,
   title,
   labels,
+  variant = "inline",
 }: {
   url: string;
   title: string;
   labels: ArticleShareLabels;
+  variant?: "inline" | "callout";
 }) {
   const [copied, setCopied] = useState(false);
   const canShare = useSyncExternalStore(noopSubscribe, getCanShareSnapshot, getServerCanShareSnapshot);
@@ -60,18 +63,19 @@ export function ArticleShareBar({
   }
 
   const lineShareHref = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}`;
+  const pillBase = "inline-flex min-h-11 items-center gap-1.5 rounded-full border px-4 py-1.5 text-xs font-semibold transition-colors";
 
-  return (
-    <div
-      role="group"
-      aria-label={labels.shareLabel}
-      className="mt-3.5 flex flex-wrap items-center gap-2"
-    >
+  const controls = (
+    <div className="flex flex-wrap items-center gap-2">
       <button
         type="button"
         onClick={handleCopy}
         aria-live="polite"
-        className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--paper)]/80 px-4 py-1.5 text-xs font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/60 hover:text-[var(--teal-dark)]"
+        className={`${pillBase} ${
+          copied
+            ? "border-[var(--teal)] bg-[var(--teal-soft)] text-[var(--teal-dark)]"
+            : "border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/60 hover:text-[var(--teal-dark)]"
+        }`}
       >
         {copied ? (
           <Check className="h-3.5 w-3.5 text-[var(--teal)]" aria-hidden="true" />
@@ -85,7 +89,7 @@ export function ArticleShareBar({
         href={lineShareHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--paper)]/80 px-4 py-1.5 text-xs font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/60 hover:text-[var(--teal-dark)]"
+        className={`${pillBase} border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/60 hover:text-[var(--teal-dark)]`}
       >
         <span>{labels.shareLine}</span>
       </a>
@@ -94,12 +98,32 @@ export function ArticleShareBar({
         <button
           type="button"
           onClick={handleWebShare}
-          className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--paper)]/80 px-4 py-1.5 text-xs font-semibold text-[var(--ink)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/60 hover:text-[var(--teal-dark)]"
+          className={`${pillBase} border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/60 hover:text-[var(--teal-dark)]`}
         >
           <Share2 className="h-3.5 w-3.5 text-[var(--muted)]" aria-hidden="true" />
           <span>{labels.shareSystem}</span>
         </button>
       ) : null}
+    </div>
+  );
+
+  if (variant === "callout") {
+    return (
+      <div
+        data-testid="article-share-footer"
+        className="portal-hero-shell flex flex-col gap-3 rounded-2xl p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5"
+      >
+        {labels.sharePrompt ? (
+          <p className="text-sm font-bold leading-6 text-[var(--ink)]">{labels.sharePrompt}</p>
+        ) : null}
+        {controls}
+      </div>
+    );
+  }
+
+  return (
+    <div role="group" aria-label={labels.shareLabel} className="mt-3.5">
+      {controls}
     </div>
   );
 }

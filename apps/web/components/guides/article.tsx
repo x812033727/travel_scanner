@@ -1,3 +1,4 @@
+import { Calendar, Clock, RefreshCw } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 import { GuideImage } from "./guide-image";
 import { SeriesStart, SeriesEnd } from "./series-navigation";
@@ -214,12 +215,23 @@ export function GuideArticle({
         {state.news_date || (modified && modified > published) || readingTime ? (
           <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 border-y border-[var(--line)] py-2.5 text-sm text-[var(--muted)]">
             {state.news_date ? (
-              <span>{labels.publishedOn ? `${labels.publishedOn}: ` : ""}<time dateTime={state.news_date} className="font-mono tabular-nums">{state.news_date}</time></span>
+              <span className="inline-flex items-center gap-1.5">
+                <Calendar size={14} className="shrink-0 text-[var(--teal)]" aria-hidden />
+                <span>{labels.publishedOn ? `${labels.publishedOn}: ` : ""}<time dateTime={state.news_date} className="font-mono tabular-nums">{state.news_date}</time></span>
+              </span>
             ) : null}
             {modified && modified > published ? (
-              <span>{labels.updated}: <time dateTime={modified} className="font-mono tabular-nums">{modified}</time></span>
+              <span className="inline-flex items-center gap-1.5">
+                <RefreshCw size={14} className="shrink-0 text-[var(--muted)]" aria-hidden />
+                <span>{labels.updated}: <time dateTime={modified} className="font-mono tabular-nums">{modified}</time></span>
+              </span>
             ) : null}
-            {readingTime ? <span>{readingTime}</span> : null}
+            {readingTime ? (
+              <span className="inline-flex items-center gap-1.5">
+                <Clock size={14} className="shrink-0 text-[var(--muted)]" aria-hidden />
+                <span>{readingTime}</span>
+              </span>
+            ) : null}
           </p>
         ) : null}
         {share && !isGeminiHub ? (
@@ -355,6 +367,10 @@ export function GuideArticle({
         />
       ) : null}
 
+      {share && !isGeminiHub ? (
+        <ArticleShareBar url={share.url} title={document.title} labels={share.labels} variant="callout" />
+      ) : null}
+
       {state.series?.current && !geminiMember ? <SeriesEnd series={state.series} locale={state.locale} /> : null}
       {geminiMember && geminiSeries ? <GeminiNavigation series={geminiSeries} number={geminiMember.number} position="bottom" /> : null}
       {related}
@@ -377,7 +393,7 @@ export function GuideArticle({
       {document.sources.length ? (
         <section className="border-t border-[var(--line)] pt-6">
           <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface-tint)]/45 p-4 md:p-5">
-            <h2 className="text-base font-bold tracking-tight text-[var(--ink)]">{labels.sources}</h2>
+            <h2 className="portal-section-heading text-base font-bold tracking-tight text-[var(--ink)]">{labels.sources}</h2>
             <ul className="mt-2.5 divide-y divide-[var(--line)]">
               {document.sources.map((source, index) => {
                 const href = contentBlockLink(source.url);

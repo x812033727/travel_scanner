@@ -337,13 +337,51 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
     });
 
     const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: "short-news-20261113" }));
-    expect(screen.getByRole("button", { name: "複製連結" })).toBeTruthy();
-    expect(screen.getByRole("link", { name: "LINE 分享" }).getAttribute("href")).toContain("social-plugins.line.me/lineit/share");
+    const headerShare = screen.getByRole("group", { name: "分享文章" });
+    expect(within(headerShare).getByRole("button", { name: "複製連結" })).toBeTruthy();
+    expect(within(headerShare).getByRole("link", { name: "LINE 分享" }).getAttribute("href")).toContain("social-plugins.line.me/lineit/share");
+    const footerShare = screen.getByTestId("article-share-footer");
+    expect(within(footerShare).getByText("覺得這篇整理實用嗎？分享給需要的朋友")).toBeTruthy();
+    expect(within(footerShare).getByRole("button", { name: "複製連結" })).toBeTruthy();
     expect(container.querySelector("div.fixed.inset-x-0.lg\\:hidden")).not.toBeNull();
     const trendingSection = screen.getByRole("region", { name: "熱門閱讀" });
     expect(trendingSection.closest("aside")?.className).not.toContain("hidden");
     expect(within(trendingSection).getByRole("link", { name: "日本 eSIM 實測比較" })).toBeTruthy();
     expect(within(trendingSection).queryByText("Self article should be excluded")).toBeNull();
+  });
+
+  it("opens a mobile TOC quick-jump bottom sheet once scrolled past 28% on multi-section articles", async () => {
+    const { fireEvent } = await import("@testing-library/react");
+    const { ArticleMobileProgress } = await import("@/components/guides/article-toc-rail");
+
+    Object.defineProperty(window.document.documentElement, "scrollHeight", { configurable: true, value: 2000 });
+    Object.defineProperty(window.document.documentElement, "clientHeight", { configurable: true, value: 800 });
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 600 });
+
+    render(
+      <ArticleMobileProgress
+        backToTopLabel="回到頂部"
+        contentsLabel="本篇目錄"
+        closeLabel="關閉目錄"
+        headings={[
+          { id: "section-1", text: "重點比較" },
+          { id: "section-2", text: "常見問題" },
+        ]}
+      />,
+    );
+    fireEvent.scroll(window);
+
+    const trigger = screen.getByRole("button", { name: "本篇目錄" });
+    fireEvent.click(trigger);
+
+    const dialog = screen.getByRole("dialog", { name: "本篇目錄" });
+    expect(within(dialog).getByText("50%")).toBeTruthy();
+    const firstJump = within(dialog).getByRole("link", { name: /重點比較/ });
+    expect(firstJump.getAttribute("href")).toBe("#section-1");
+    fireEvent.click(firstJump);
+    expect(screen.queryByRole("dialog", { name: "本篇目錄" })).toBeNull();
+
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 0 });
   });
 });
 

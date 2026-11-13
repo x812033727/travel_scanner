@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, List, X } from "lucide-react";
 
 export type ArticleTocHeading = {
   id: string;
@@ -31,57 +31,8 @@ function useScrollProgress(): number {
   return progress;
 }
 
-/**
- * Mobile/tablet reading progress bar pinned under the viewport top edge plus a floating
- * back-to-top button that clears the bottom tab bar once the reader is deep into an article.
- */
-export function ArticleMobileProgress({ backToTopLabel }: { backToTopLabel: string }) {
-  const progress = useScrollProgress();
-
-  return (
-    <>
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed inset-x-0 z-40 h-[3px] bg-transparent lg:hidden"
-        style={{ top: "var(--ad-anchor-top, 0px)" }}
-      >
-        <div
-          className="h-full bg-[linear-gradient(90deg,var(--teal)_0%,var(--coral-bright)_100%)] transition-[width] duration-150"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
-      {progress >= 28 ? (
-        <button
-          type="button"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          style={{ bottom: "calc(5.25rem + env(safe-area-inset-bottom) + var(--ad-anchor-bottom, 0px))" }}
-          className="fixed right-4 z-40 inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--teal)] bg-[var(--surface)] px-3.5 py-2 text-xs font-semibold text-[var(--teal-dark)] shadow-[var(--shadow-md)] transition-transform active:scale-95 lg:hidden"
-        >
-          <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
-          <span>{backToTopLabel}</span>
-        </button>
-      ) : null}
-    </>
-  );
-}
-
-export function ArticleTocRail({
-  headings,
-  contentsLabel,
-  backToTopLabel,
-  progressLabel,
-  seriesBackHref,
-  seriesBackLabel,
-}: {
-  headings: readonly ArticleTocHeading[];
-  contentsLabel: string;
-  backToTopLabel: string;
-  progressLabel: string;
-  seriesBackHref?: string | null;
-  seriesBackLabel?: string | null;
-}) {
+function useActiveHeading(headings: readonly ArticleTocHeading[]) {
   const [activeId, setActiveId] = useState<string>(headings[0]?.id ?? "");
-  const progress = useScrollProgress();
 
   useEffect(() => {
     if (!headings.length || typeof IntersectionObserver === "undefined") return;
@@ -106,6 +57,165 @@ export function ArticleTocRail({
     return () => observer.disconnect();
   }, [headings]);
 
+  return [activeId, setActiveId] as const;
+}
+
+const EMPTY_HEADINGS: readonly ArticleTocHeading[] = [];
+
+/**
+ * Mobile/tablet reading progress bar pinned under the viewport top edge plus floating
+ * quick-jump TOC sheet and back-to-top actions that clear the bottom tab bar once the
+ * reader is deep into an article.
+ */
+export function ArticleMobileProgress({
+  backToTopLabel,
+  headings = EMPTY_HEADINGS,
+  contentsLabel,
+  closeLabel,
+}: {
+  backToTopLabel: string;
+  headings?: readonly ArticleTocHeading[];
+  contentsLabel?: string;
+  closeLabel?: string;
+}) {
+  const progress = useScrollProgress();
+  const [activeId, setActiveId] = useActiveHeading(headings);
+  const [sheetOpen, setSheetOpen] = useState(false);
+
+  useEffect(() => {
+    if (!sheetOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSheetOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [sheetOpen]);
+
+  const showTocTrigger = headings.length > 0 && Boolean(contentsLabel);
+
+  return (
+    <>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-x-0 z-40 h-[3px] bg-transparent lg:hidden"
+        style={{ top: "var(--ad-anchor-top, 0px)" }}
+      >
+        <div
+          className="h-full bg-[linear-gradient(90deg,var(--teal)_0%,var(--coral-bright)_100%)] transition-[width] duration-150"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+      {progress >= 28 ? (
+        <div
+          style={{ bottom: "calc(5.25rem + env(safe-area-inset-bottom) + var(--ad-anchor-bottom, 0px))" }}
+          className="fixed right-4 z-40 flex items-center gap-2 lg:hidden"
+        >
+          {showTocTrigger ? (
+            <button
+              type="button"
+              aria-expanded={sheetOpen}
+              onClick={() => setSheetOpen((open) => !open)}
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--surface)]/95 px-3.5 py-2 text-xs font-semibold text-[var(--ink)] shadow-[var(--shadow-md)] backdrop-blur-md transition-transform active:scale-95"
+            >
+              <List className="h-3.5 w-3.5 text-[var(--teal)]" aria-hidden="true" />
+              <span>{contentsLabel}</span>
+            </button>
+          ) : null}
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--teal)] bg-[var(--surface)]/95 px-3.5 py-2 text-xs font-semibold text-[var(--teal-dark)] shadow-[var(--shadow-md)] backdrop-blur-md transition-transform active:scale-95"
+          >
+            <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
+            <span>{backToTopLabel}</span>
+          </button>
+        </div>
+      ) : null}
+
+      {sheetOpen && showTocTrigger ? (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={contentsLabel}
+          onClick={(event) => {
+            if (event.target === event.currentTarget) setSheetOpen(false);
+          }}
+          className="fixed inset-0 z-50 flex items-end bg-black/45 p-3 backdrop-blur-[2px] lg:hidden"
+        >
+          <div
+            style={{ marginBottom: "env(safe-area-inset-bottom)" }}
+            className="max-h-[72dvh] w-full overflow-y-auto rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-lg)] sm:p-5"
+          >
+            <div className="flex items-center justify-between gap-3 border-b border-[var(--line)] pb-3">
+              <div className="flex items-center gap-2.5">
+                <p className="portal-section-heading text-sm font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">
+                  {contentsLabel}
+                </p>
+                <span className="rounded-full bg-[var(--teal-soft)] px-2 py-0.5 font-mono text-[length:var(--text-xs)] font-semibold tabular-nums text-[var(--teal-dark)]">
+                  {progress}%
+                </span>
+              </div>
+              <button
+                type="button"
+                aria-label={closeLabel ?? contentsLabel}
+                onClick={() => setSheetOpen(false)}
+                className="inline-grid min-h-11 min-w-11 place-items-center rounded-full border border-[var(--line)] text-[var(--muted)] transition-colors hover:border-[var(--teal)] hover:text-[var(--ink)]"
+              >
+                <X size={18} aria-hidden="true" />
+              </button>
+            </div>
+            <ol className="mt-3 space-y-1 text-sm leading-6">
+              {headings.map((heading, index) => {
+                const isActive = heading.id === activeId;
+                return (
+                  <li key={heading.id}>
+                    <a
+                      href={`#${heading.id}`}
+                      aria-current={isActive ? "location" : undefined}
+                      onClick={() => {
+                        setActiveId(heading.id);
+                        setSheetOpen(false);
+                      }}
+                      className={`flex min-h-11 items-center rounded-xl px-3 py-2 transition-colors ${
+                        isActive
+                          ? "bg-[var(--teal-soft)] font-semibold text-[var(--teal-dark)]"
+                          : "text-[var(--ink)] hover:bg-[var(--paper)]"
+                      }`}
+                    >
+                      <span className="mr-2 font-mono text-[length:var(--text-xs)] font-semibold text-[var(--muted)]">
+                        {index + 1}.
+                      </span>
+                      <span className="min-w-0">{heading.text}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        </div>
+      ) : null}
+    </>
+  );
+}
+
+export function ArticleTocRail({
+  headings,
+  contentsLabel,
+  backToTopLabel,
+  progressLabel,
+  seriesBackHref,
+  seriesBackLabel,
+}: {
+  headings: readonly ArticleTocHeading[];
+  contentsLabel: string;
+  backToTopLabel: string;
+  progressLabel: string;
+  seriesBackHref?: string | null;
+  seriesBackLabel?: string | null;
+}) {
+  const [activeId, setActiveId] = useActiveHeading(headings);
+  const progress = useScrollProgress();
+
   return (
     <nav
       aria-label={contentsLabel}
@@ -123,7 +233,7 @@ export function ArticleTocRail({
       {headings.length > 0 ? (
         <>
           <div className="flex items-center justify-between gap-2">
-            <h2 className="border-l-4 border-[var(--teal)] pl-3 text-sm font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">
+            <h2 className="portal-section-heading text-sm font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">
               {contentsLabel}
             </h2>
             <span className="font-mono text-[length:var(--text-xs)] tabular-nums text-[var(--muted)]">

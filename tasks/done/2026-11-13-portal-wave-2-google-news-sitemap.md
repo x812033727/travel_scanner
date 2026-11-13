@@ -25,6 +25,7 @@ scope:
   - apps/web/app/[locale]/life/page.tsx
   - apps/web/app/[locale]/search/articles
   - apps/web/components/content-blocks.tsx
+  - apps/web/components/guide-code-block.tsx
   - apps/web/components/home-guides.tsx
   - apps/web/components/home-guides.test.tsx
   - apps/web/components/home-portal-tabs.tsx

@@ -376,7 +376,14 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   return (
     <>
       <SiteHeader />
-      {!isHub ? <ArticleMobileProgress backToTopLabel={t("guides.backToTop")} /> : null}
+      {!isHub ? (
+        <ArticleMobileProgress
+          backToTopLabel={t("guides.backToTop")}
+          headings={headings.length >= CONTENTS_MIN_HEADINGS ? headings : undefined}
+          contentsLabel={labels.contents}
+          closeLabel={t("guides.closeContents")}
+        />
+      ) : null}
       <StructuredData
         data={[
           breadcrumbs(locale, [...trail, { name: state.document.title, path: guideHref(kind, slug) }]),
@@ -451,6 +458,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
                   linkCopied: t("guides.linkCopied"),
                   shareLine: t("guides.shareLine"),
                   shareSystem: t("guides.shareSystem"),
+                  sharePrompt: t("guides.sharePrompt"),
                 },
               } : undefined}
             />
@@ -476,7 +484,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
                   aria-label={nav("searchTrending")}
                   className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-sm)] sm:p-5"
                 >
-                  <h2 className="border-l-4 border-[var(--teal)] pl-3 text-sm font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">
+                  <h2 className="portal-section-heading text-sm font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">
                     {nav("searchTrending")}
                   </h2>
                   <ol className="mt-3 divide-y divide-[var(--line)] text-sm leading-6">

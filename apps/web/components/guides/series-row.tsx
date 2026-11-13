@@ -26,7 +26,7 @@ export function SeriesRow({ series, labels }: { series: readonly SeriesRowItem[]
   if (!series.length) return null;
   return (
     <section aria-labelledby="series-row-heading" className="mt-10" data-testid="series-row">
-      <h2 id="series-row-heading" className="text-2xl font-extrabold tracking-tight">{labels.heading}</h2>
+      <h2 id="series-row-heading" className="portal-section-heading text-2xl font-extrabold tracking-tight">{labels.heading}</h2>
       <p className="mt-2 max-w-2xl leading-7 text-[var(--muted)]">{labels.lead}</p>
       <ul className="mt-4 grid gap-4 sm:grid-cols-2">
         {series.map((item) => {
@@ -34,7 +34,7 @@ export function SeriesRow({ series, labels }: { series: readonly SeriesRowItem[]
           return (
             <li
               key={item.slug}
-              className="group relative rounded-2xl border border-[var(--line)] border-l-4 border-l-[var(--teal)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--teal)] hover:shadow-[var(--shadow-md)]"
+              className="portal-card-surface group relative rounded-2xl border-l-4 border-l-[var(--teal)] p-5"
             >
               <h3 className="text-lg font-bold tracking-tight">
                 <Link
