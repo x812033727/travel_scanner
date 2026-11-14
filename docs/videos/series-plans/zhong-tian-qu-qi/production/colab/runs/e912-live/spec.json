@@ -1,0 +1,150 @@
+{
+ "_note": "e912 live d1 (e911-live/spec.json's way): s06, s14 and s29 are Tang Xiaotang's three lines, shot from behind her (nospeak, recordings laid in): her three face pictures and her identity sentence go (e908 fix1, e909 s09/s12, e910 s23/s30). s02, s05, s17, s24 are her silent face shots: e907's neutral face sentences (as e910 s36, e911 s02). s13 and s22: ref2manifest's 'only these 2 people / only person' sentence is rewritten to admit the unnamed plump hand (s13) and the official's back (s22) the composition describes; s07's foreground and s14's three are already read by ref2manifest ('the other people the composition names'). No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9121101/9121102.",
+ "seeds": [
+  9121101,
+  9121102
+ ],
+ "shots": {
+  "s01": {},
+  "s02": {
+   "replace": [
+    [
+     "dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks,",
+     "a delicate beauty: big round clear eyes with long lashes, soft peach-pink lips, light rosy cheeks,"
+    ],
+    [
+     "flowing sleeves, a small gold abacus hanging at her waist",
+     "flowing sleeves, a small gold abacus hanging at her waist, her resting face composed and unsmiling"
+    ]
+   ]
+  },
+  "s03": {},
+  "s04": {},
+  "s05": {
+   "replace": [
+    [
+     "dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks,",
+     "a delicate beauty: big round clear eyes with long lashes, soft peach-pink lips, light rosy cheeks,"
+    ],
+    [
+     "flowing sleeves, a small gold abacus hanging at her waist",
+     "flowing sleeves, a small gold abacus hanging at her waist, her resting face composed and unsmiling"
+    ]
+   ]
+  },
+  "s06": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Only these 2 people are in the frame",
+     "Only these 2 people are in the frame, the young woman seen only from behind"
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png"
+   ]
+  },
+  "s07": {},
+  "s08": {},
+  "s09": {},
+  "s10": {},
+  "s11": {},
+  "s12": {},
+  "s13": {
+   "replace": [
+    [
+     "Only these 2 people are in the frame; no second copy of anyone appears.",
+     "Only these 2 people are seen in full; besides them only the plump hand in a blue-green sleeve at the right edge the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
+    ]
+   ]
+  },
+  "s14": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Besides them, only the other people the composition names are in the frame;",
+     "Besides them, only the other people the composition names are in the frame, the young woman seen only from behind;"
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png"
+   ]
+  },
+  "s15": {},
+  "s16": {},
+  "s17": {
+   "replace": [
+    [
+     "dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks,",
+     "a delicate beauty: big round clear eyes with long lashes, soft peach-pink lips, light rosy cheeks,"
+    ],
+    [
+     "flowing sleeves, a small gold abacus hanging at her waist",
+     "flowing sleeves, a small gold abacus hanging at her waist, her resting face composed and unsmiling"
+    ]
+   ]
+  },
+  "s18": {},
+  "s19": {},
+  "s20": {},
+  "s21": {},
+  "s22": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the back of the official's hat and his shoulder in the foreground the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
+    ]
+   ]
+  },
+  "s23": {},
+  "s24": {
+   "replace": [
+    [
+     "dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks,",
+     "a delicate beauty: big round clear eyes with long lashes, soft peach-pink lips, light rosy cheeks,"
+    ],
+    [
+     "flowing sleeves, a small gold abacus hanging at her waist",
+     "flowing sleeves, a small gold abacus hanging at her waist, her resting face composed and unsmiling"
+    ]
+   ]
+  },
+  "s25": {},
+  "s26": {},
+  "s27": {},
+  "s28": {},
+  "s29": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Only these 3 people are in the frame",
+     "Only these 3 people are in the frame, the young woman seen only from behind"
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png"
+   ]
+  },
+  "s30": {},
+  "s31": {},
+  "s32": {},
+  "s33": {},
+  "s34": {},
+  "s35": {}
+ }
+}

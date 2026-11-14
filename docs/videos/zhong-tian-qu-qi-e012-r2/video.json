@@ -1,0 +1,890 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e012-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, empty-handed",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      },
+      "shot_looks": [
+        {
+          "id": "pole",
+          "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a plain wooden carrying pole over one shoulder with nothing hanging from it"
+        }
+      ]
+    },
+    {
+      "id": "zhaobutou",
+      "name": "趙捕頭",
+      "appearance": "East Asian man of forty, wiry and dark-skinned, narrow eyes, a thin two-stroke moustache, a black constable's hat and plain black official uniform with an iron ruler at his belt, always eyeing people sideways",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的捕頭，公事公辦、不耐煩、斜眼看人"
+      }
+    },
+    {
+      "id": "huxianling",
+      "name": "胡縣令",
+      "appearance": "East Asian man of forty-eight, pale and plump with a double chin and narrow eyes, a black official gauze hat and a blue-green seventh-rank official robe with bulging sleeves, his cheeks shaking when he smiles",
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十八歲的貪官縣令，官腔、拖長音、假裝威嚴"
+      }
+    },
+    {
+      "id": "qianyuanwai",
+      "name": "錢員外",
+      "appearance": "East Asian man of fifty, short and portly, round face, a thin eight-shaped moustache, small shrewd eyes, a dark gold silk robe with roundel patterns, three gold rings on his fingers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的鄉下財主，油滑、愛冷笑、拖長音"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene, continuing e011's last cue: a low dark suspense cue of low cello and deep drums in the torchlit yard at night, one warm swelling hit after the young man refuses the trade, one heavy hit as a money pouch drops into the mud, a light playful plucked figure under the little girl's line; then a tense but slightly playful cue of pizzicato strings and wood blocks, one heavy hit on the note's words, one releasing hit when the magistrate gives in, the music dropping out to wind alone for his muttered last words; then a quiet cue of wind, a soft low drone and faint crackling, one light chime under the reward and one deep heavy hit under the penalty before the end; ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "一個都不交｜種田娶妻打天下 第12集（重製版）",
+    "description": "許硯直起身，正眼看著胡縣令：不換，她們三個，一個都不交。縣令冷笑說名冊明早送州府，被吵醒的小禾跑出屋門，唐小棠臉色發白：一查，三個都瞞不住。縣令甩袖要走，袖裡掉出一個暗紅綢錢袋，小禾撿起來：伯伯，你的袋子掉了！秦霜一棍擋住：當著大家點一點。錢記銀號的銀票五十兩，一張字條：事成，再付。二牛攔住想溜的錢員外，縣令只能說：不查了。臨走他嘀咕：錢是他給的，主意可不是……阿令聽見了。人散了，系統給了造紙術改良，緊接著下強制任務：十日內，白紙一百張；失敗，失去讀寫能力。《種田娶妻打天下》第 12 集（重製版）。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "一個都不交",
+      "tag": "種田娶妻打天下",
+      "shot": "s22"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "不換",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a01",
+          "speaker": "xuyan",
+          "text": "不換。她們三個，一個都不交。",
+          "emotion": "聲音不大，很定，「不換」後停半拍"
+        }
+      ],
+      "data": {
+        "camera": "Medium two-shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: medium two-shot, the shot opens on the same moment as the shot before: Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, framed from the chest up with space above his head, his own right fist raised in front of his chest at the lower left of the frame, gripping three folded marriage certificates of plain red paper, folded shut, only their plain red backs showing, no writing visible, Xu Yan facing almost toward us, turned only a little to screen right, his eyes fixed on a point off screen right beyond the lens, never the lens; Magistrate Hu, in his black official gauze hat and blue-green seventh-rank official robe, half a step behind Xu Yan's left shoulder on screen right, bending his head to Xu Yan's left ear, his whole head staying in the frame, his face in profile toward screen left; Xu Yan steady and cold: brows level, eyes hard, lips moving low and firmly between words, no smile; Magistrate Hu sly, then thrown: his half-smile freezing and draining away, his lips pressed together; behind them only darkness and the orange flicker of torches held by people out of the frame; no torch on a stand, in the ground or on a wall, no brazier; no blade, no knife, no sword, no scabbard, no sheathed weapon at anyone's waist and no spear anywhere in the frame; every runner wears a plain black cloth sash with nothing hanging from it and holds only one burning torch, his other hand empty; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「不換。她們三個，一個都不交」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan slowly straightens up, lowers his right fist with the folded certificates to his side, takes half a step away toward screen left and turns toward the magistrate, meeting his eyes squarely, his face three-quarter to screen right; Magistrate Hu straightens too, his whole head staying in the frame, his smile freezing; the magistrate's lips stay closed; Xu Yan does not smile, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "xuyan",
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a02",
+          "speaker": "xitong",
+          "text": "叮。阿令加三，秦霜加三，唐小棠加二。",
+          "emotion": "冷，一個一個念清楚"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: medium shot past one blank paper lantern with no writing hanging under the eaves in the foreground: at the house door the three women side by side, framed from the knees up with space above their heads, their faces three-quarter to screen right toward the young man in the middle of the yard off screen right, never the lens: on screen left Qin Shuang, her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it, black trousers, leather boots and high ponytail tied with black cord, one plain straight wooden stick about as long as her arm in her right hand; in the middle Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, holding one plain wooden abacus as long as her forearm, its frame and beam plain dark wood with no carving, no inlay, no marks and no writing against her chest, the small gold abacus stays hanging at her waist; on screen right A-ling in her plain grey-white cotton dress with long sleeves and one plain wooden hairpin, no shackles, her long sleeves down over both wrists, no wrist showing, both hands empty; Qin Shuang moved: her brows easing, one corner of her mouth loosening a little, not a smile; Tang Xiaotang moved: her eyes suddenly wet and shining, lips pressed together, no smile; A-ling still: eyes slowly lifting, lips closed; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame; exactly three women",
+        "motion": "Qin Shuang knocks the tip of her stick once on the ground; Tang Xiaotang hugs the abacus tighter to her chest; A-ling slowly raises her eyes toward screen right; None of the three women says anything in this shot: all three keep their lips pressed together from the first frame to the last, no talking, no mouthing words; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "qinshuang",
+          "tangxiaotang",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse, deep night, the sky black, lit only by flickering orange torchlight and the glow of one blank paper lantern under the eaves: insert close-up, the shot opens directly on one slender left hand at a young woman's side, clenched into a tight fist, her long grey-white cotton sleeve down over the wrist, the grey-white cotton of her dress behind it, from its very first frame; only the hand, the sleeve and the cloth of the dress are in the frame, no face; flickering orange torchlight; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame",
+        "motion": "the fingers of the fist slowly loosen one by one and the empty hand hangs open and relaxed at her side; the sleeve stays down over the wrist; nothing is in the hand, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": []
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a03",
+          "speaker": "huxianling",
+          "text": "好，有骨氣！名冊明早就送州府，看你護得住幾個！",
+          "emotion": "冷笑，說給全院聽"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: medium shot: Magistrate Hu, in his black official gauze hat and blue-green seventh-rank official robe, framed from the knees up with clear space above his head, at first his face three-quarter to screen left toward the young man off screen left, then turning toward the whole yard, his eyes sweeping past the lens, never into it; scornful: a cold sneer at one corner of his mouth, eyes narrowed, mouth wide between words; behind him two yamen runners in ancient Chinese Song-dynasty plain black round-collared robes, black caps and cloth shoes, each holding one burning torch; no blade, no knife, no sword, no scabbard, no sheathed weapon at anyone's waist and no spear anywhere in the frame; every runner wears a plain black cloth sash with nothing hanging from it and holds only one burning torch, his other hand empty",
+        "motion": "Magistrate Hu speaks a short Mandarin line, 「好，有骨氣！名冊明早就送州府，看你護得住幾個！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Magistrate Hu sneers, steps back one pace, turns toward the whole yard and flings one wide sleeve out, raising his voice, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "huxianling"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a04",
+          "speaker": "xiaohe",
+          "text": "好吵喔……這些伯伯半夜來我們家做什麼？",
+          "emotion": "迷糊，剛睡醒"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: medium shot past the dark wooden frame of the house door in the foreground on screen left: little Xiaohe, an eight-year-old girl, her hair tousled from sleep, the small straw rabbit tucked into her sash, small cloth shoes, running out of the dark doorway rubbing one eye and squeezing in between Qin Shuang, her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it, black trousers, leather boots and high ponytail tied with black cord, one plain straight wooden stick about as long as her arm in her right hand, on screen left, and Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, holding one plain wooden abacus as long as her forearm, its frame and beam plain dark wood with no carving, no inlay, no marks and no writing against her chest, the small gold abacus stays hanging at her waist, on screen right; the two women framed from the knees up with space above their heads, their faces three-quarter to screen right toward the yard, never the lens; the little girl looking up past them at the torches in the yard, her face three-quarter to screen right, never the lens; drowsy and puzzled: eyes half shut, brows knitted, mouth moving between words; Tang Xiaotang frightened: face pale, eyes wide, lips pressed shut, no smile; Qin Shuang wary: brows drawn, lips closed; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame; exactly one small child and two women, nobody else",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「好吵喔……這些伯伯半夜來我們家做什麼？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xiaohe tugs at the hem of Tang Xiaotang's jacket with one hand and looks up at the torches; Tang Xiaotang's and Qin Shuang's lips stay closed; Tang Xiaotang and Qin Shuang do not smile, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "xiaohe",
+          "qinshuang",
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a05",
+          "speaker": "tangxiaotang",
+          "text": "小禾乖，他們要查名冊……一查，我們三個都瞞不住。",
+          "emotion": "小聲，發抖"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: over-the-shoulder medium shot at a child's height from close behind one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, no cheek, no profile and no lips at any moment, crouching low in the left foreground, a plain wooden abacus pressed under her left arm out of sight; facing us just beyond her, little Xiaohe, the eight-year-old girl with tousled hair, framed from the waist up with space above her head, her face lifted toward the young woman's face, never the lens; puzzled and sleepy: eyes blinking, brows knitted, lips closed; behind them only the dark house doorway; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame; exactly two people in the frame, nobody else",
+        "motion": "the young woman's two hands in peach-pink sleeves rest on the little girl's shoulders and draw her one small step closer, the fingers trembling; she keeps her head still and never turns it, the back of her head toward us the whole shot; Xiaohe blinks up at her; The little girl says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "tangxiaotang",
+          "xiaohe"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a06",
+          "speaker": "xuyan",
+          "text": "他敢查，我就讓他不敢查。",
+          "emotion": "壓低，很穩"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: over-the-shoulder medium shot from the house door past one young woman seen only from behind, appearing only once: only the back of her head with two looped buns tied with pink silk ribbons and her light peach-pink silk shoulder, soft and dark, her head turned fully away from us, her ear, cheek and profile never visible, her face never in the frame, in the left foreground; facing us in the middle of the yard on screen right Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, three folded marriage certificates of plain red paper, folded shut, only their plain red backs showing, no writing visible in his right fist, framed from the waist up with clear space above his head, his face three-quarter to screen left toward the women at the door, never the lens; low and steady: brows level, eyes calm and hard, lips moving low between words, no smile; behind him only darkness and the orange flicker of torches held by people out of the frame; no torch on a stand, in the ground or on a wall, no brazier; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame",
+        "motion": "Xu Yan speaks a short Mandarin line, 「他敢查，我就讓他不敢查」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; at first Xu Yan's face is turned to screen right toward the magistrate off screen right; he turns his head back toward the house door and speaks low; then he turns his head back to screen right and his eyes travel slowly down from a hat to a sleeve off screen right; the woman in the foreground keeps her head still; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a07",
+          "speaker": "huxianling",
+          "text": "收隊！明早天一亮，名冊就送州府！",
+          "emotion": "拉高，甩袖"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: wide shot past a row of upright plain wooden stick tips poking up behind the bamboo fence in the foreground: Magistrate Hu, in his black official gauze hat and blue-green seventh-rank official robe, walking from the middle of the yard toward the open yard gate on screen right, his face in profile toward screen right toward his men, never the lens; loud and peevish: brows down, mouth wide between words, no smile; beside him Constable Zhao, in his black futou cap and plain black round-collared constable's robe, a plain black cloth sash at his waist with nothing hanging from it, one burning torch in his right hand, lips closed; ahead of them six yamen runners in ancient Chinese Song-dynasty plain black round-collared robes, black caps and cloth shoes gathering toward the gate at walking pace, each holding one burning torch; no more than eight torches in the frame; every burning torch held in one person's hand, none floating, none stuck in the ground; no blade, no knife, no sword, no scabbard, no sheathed weapon at anyone's waist and no spear anywhere in the frame; every runner wears a plain black cloth sash with nothing hanging from it and holds only one burning torch, his other hand empty",
+        "motion": "Magistrate Hu speaks a short Mandarin line, 「收隊！明早天一亮，名冊就送州府！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Magistrate Hu takes two steps toward the gate and flings his LEFT wide sleeve out hard; Constable Zhao and the runners walk with him, their lips closed; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "huxianling",
+          "zhaobutou"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse, deep night, the sky black, lit only by flickering orange torchlight and the glow of one blank paper lantern under the eaves: insert close-up, the shot opens directly on the hem of one wide blue-green official sleeve and one black official boot on the trampled muddy ground, from its very first frame; only the sleeve, the boot and the mud are in the frame, no face; flickering orange torchlight",
+        "motion": "the wide sleeve swings hard; one palm-sized pouch of plain dark red silk tied with a drawstring, heavy, no writing and no pattern on it slides out of the cuff and drops into the mud beside the boot with a heavy thud; the boot does not stop and walks off out of the frame to screen right; the pouch lies still in the mud, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": []
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a08",
+          "speaker": "qinshuang",
+          "text": "小禾，回來！那邊都是官差！",
+          "emotion": "畫外，急"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: medium shot tracking from screen left to screen right at a child's height: little Xiaohe, an eight-year-old girl, her hair tousled from sleep, the small straw rabbit tucked into her sash, small cloth shoes, running across the trampled mud of the yard from screen left toward the dark red silk pouch, smeared with mud lying in the mud, framed full length with space above her head, her face three-quarter to screen right, never the lens; intent: eyes fixed on the pouch, lips closed; behind her only darkness and the orange flicker of torches held by people out of the frame; no torch on a stand, in the ground or on a wall, no brazier; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame; she is the only child in the frame",
+        "motion": "Xiaohe runs across the mud to the pouch, crouches and stretches out one hand to pick it up; The little girl says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a09",
+          "speaker": "xiaohe",
+          "text": "伯伯，你的袋子掉了！好重喔！",
+          "emotion": "奶聲，得意"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: low-angle medium shot from a child's height: little Xiaohe, the eight-year-old girl with tousled hair and the straw rabbit tucked into her sash, standing in the trampled mud in the middle of the yard, framed from the knees up with space above her head, holding the dark red silk pouch, smeared with mud up high in both hands, her face three-quarter to screen right toward the official off screen right, never the lens; proud and innocent: a wide gap-toothed grin showing her one missing front tooth, eyes bright, mouth moving between words; far behind her, soft and out of focus, only darkness and the orange flicker of torches held by people out of the frame; no torch on a stand, in the ground or on a wall, no brazier",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「伯伯，你的袋子掉了！好重喔！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xiaohe straightens up, turns toward screen right and holds the muddy pouch up high in both hands, grinning, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a10",
+          "speaker": "huxianling",
+          "text": "小孩子胡鬧！快，把袋子拿過來！",
+          "emotion": "聲音發緊"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse, deep night, the sky black, lit only by flickering orange torchlight and the glow of one blank paper lantern under the eaves: medium close-up of Magistrate Hu, in his black official gauze hat and blue-green seventh-rank official robe, framed from the chest up with space above his head, his face three-quarter to screen left toward the child off screen left, never the lens; alarmed: face suddenly ashen, sweat beading on his upper lip, eyes bulging, mouth tight between words, no smile; behind him only darkness and the orange flicker of torches held by people out of the frame; no torch on a stand, in the ground or on a wall, no brazier",
+        "motion": "Magistrate Hu speaks a short Mandarin line, 「小孩子胡鬧！快，把袋子拿過來！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Magistrate Hu whips round, lurches forward and thrusts his right hand out toward screen left, his whole head staying in the frame; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a11",
+          "speaker": "qinshuang",
+          "text": "大人別急。掉了什麼，當著大家點一點。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: medium shot: on screen right Qin Shuang, her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it, black trousers, leather boots and high ponytail tied with black cord, one plain straight wooden stick about as long as her arm in her right hand, framed from the knees up with space above her head, her face three-quarter to screen right toward the official off screen right, never the lens; cold: eyes level and hard, jaw set, lips moving firmly between words, no smile; on screen left behind her little Xiaohe holding the dark red silk pouch, smeared with mud against her chest, wide-eyed, lips closed; at the right edge one plump hand in a wide blue-green official sleeve reaching in from the right edge of the frame, its owner outside the frame, no second face; behind them only darkness and the orange flicker of torches held by people out of the frame; no torch on a stand, in the ground or on a wall, no brazier; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「大人別急。掉了什麼，當著大家點一點」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang steps quickly in front of the child and swings the stick across, blocking the plump reaching hand; then she plants the stick tip down into the mud; Xiaohe ducks behind her, her lips closed; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "qinshuang",
+          "xiaohe"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s14",
+      "chapter": "錢袋",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a12",
+          "speaker": "tangxiaotang",
+          "text": "錢記銀號的銀票，五十兩整。",
+          "emotion": "冷，帳房口氣"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: over-the-shoulder medium shot at a crouching height from close behind one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, no cheek, no profile and no lips at any moment, crouching low in the left foreground, a plain wooden abacus under her left arm out of sight; facing us just beyond her, little Xiaohe crouching in the mud, her face three-quarter to screen left toward the young woman, never the lens, wide-eyed, lips closed; standing behind them on screen right Qin Shuang, her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it, black trousers, leather boots and high ponytail tied with black cord, one plain straight wooden stick about as long as her arm in her right hand, her face three-quarter to screen right watching the officials off screen right, never the lens, guarded, lips closed; behind them only darkness and the orange flicker of torches held by people out of the frame; no torch on a stand, in the ground or on a wall, no brazier; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame; exactly three people in the frame, nobody else",
+        "motion": "Xiaohe puts the muddy pouch into the young woman's two hands; the young woman unties the drawstring, draws out one tall narrow banknote of pale rice-yellow paper with a thin black ruled border and one square red seal, no portrait, not green, an old-style paper note and holds it up by both ends at the height of her head against the torchlight, its plain back toward us; she keeps her head still and never turns it, the back of her head toward us the whole shot; Xiaohe's and Qin Shuang's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "tangxiaotang",
+          "xiaohe",
+          "qinshuang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse, deep night, the sky black, lit only by flickering orange torchlight and the glow of one blank paper lantern under the eaves: insert close-up, the shot opens directly on one tall narrow banknote of pale rice-yellow paper with a thin black ruled border and one square red seal, no portrait, not green, an old-style paper note held up taut by two slender hands in peach-pink silk sleeves, one hand at each end, from its very first frame; only the two hands, the cuffs and the paper are in the frame, no face; its plain back toward us, the torchlight behind it glowing through the paper so only the faint shadow of the thin black border and of the one square red seal shows, no characters, no numbers and no writing anywhere",
+        "motion": "the two hands hold the banknote taut by both ends and do not let go; the paper stays still between the hands, the torchlight flickering behind it, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": []
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a13",
+          "speaker": "erniu",
+          "text": "錢記？那不是錢員外家開的銀號嗎！",
+          "emotion": "大嗓門，生氣"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: wide shot past the top of the bamboo fence in the foreground: just behind the fence Wang Erniu, holding one thick plain wooden stick in both hands, and eight village men in ancient Chinese Song-dynasty plain undyed hemp cross-collared short jackets, cloth head wraps and cloth shoes, each holding one plain wooden stick, crouching beside him; Wang Erniu's face three-quarter to screen right toward the yard, never the lens; angry: brows slammed down, eyes wide, mouth wide between words, no smile; the villagers' lips closed; exactly nine men behind the fence, nobody else; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「錢記？那不是錢員外家開的銀號嗎！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu springs up from behind the fence; the eight villagers stand up after him one by one and glance at one another; the villagers' lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "erniu"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a14",
+          "speaker": "xuyan",
+          "text": "就是他家的。袋子裡，還有一張字條。",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: medium shot: in the middle of the yard Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, crouching on screen left, three folded marriage certificates of plain red paper, folded shut, only their plain red backs showing, no writing visible in his right hand, his face three-quarter to screen right toward the young woman, never the lens; level and sure: brows level, eyes on the pouch, lips moving between words, no smile; on screen right Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, crouching, one plain wooden abacus as long as her forearm, its frame and beam plain dark wood with no carving, no inlay, no marks and no writing tucked under her left arm, the small gold abacus stays hanging at her waist, holding the dark red silk pouch in both hands, her face three-quarter to screen left toward him, never the lens; focused: brows drawn, eyes on the pouch, lips closed, no smile; behind them only darkness and the orange flicker of torches held by people out of the frame; no torch on a stand, in the ground or on a wall, no brazier; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「就是他家的。袋子裡，還有一張字條」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan tucks the folded certificates into the front of his robe; Tang Xiaotang slips the folded banknote back into the pouch and hands it to him; he opens it and draws out one small folded slip of plain paper between two fingers; Tang Xiaotang's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse, deep night, the sky black, lit only by flickering orange torchlight and the glow of one blank paper lantern under the eaves: insert close-up, the shot opens directly on two fingers of a man's right hand in a faded blue-grey cuff under an old grey cloth sleeve, holding one small folded slip of plain paper, from its very first frame; only the hand, the cuff and the paper are in the frame, no face; the slip's blank back toward us, the torchlight behind it, no writing, no characters and no marks visible on it",
+        "motion": "the fingers open the small slip and hold it still, its blank back toward us; nothing on the paper can be read, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": []
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a15",
+          "speaker": "xuyan",
+          "text": "袋裡的字條寫著：事成，再付。",
+          "emotion": "唸給全院聽，一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse, deep night, the sky black, lit only by flickering orange torchlight and the glow of one blank paper lantern under the eaves: medium close-up slowly becoming a close-up of Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, framed from the chest up with space above his head, holding the small open slip of paper beside his face, its blank back toward us, no writing visible, his face three-quarter to screen right, never the lens; deliberate: brows level, eyes on the slip, lips moving word by word, no smile; behind him only the bamboo fence in the torchlight; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame",
+        "motion": "Xu Yan speaks a short Mandarin line, 「袋裡的字條寫著：事成，再付」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan reads out word by word, then lifts his eyes from the slip to the official off screen right; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a16",
+          "speaker": "erniu",
+          "text": "錢員外，天還沒亮，您急著上哪去？",
+          "emotion": "大嗓門，逮到人"
+        }
+      ],
+      "data": {
+        "camera": "Medium two-shot, tracking",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: medium two-shot at the open yard gate: on screen right Qian Yuanwai, his hands an ordinary natural skin tone, hunched and creeping toward the gate, his face three-quarter to screen left toward the big young man, never the lens; caught: eyes darting, mouth shut; on screen left Wang Erniu, holding one thick plain wooden stick in both hands, his face three-quarter to screen right toward Qian, never the lens; blunt and hard: brows down, eyes fixed on him, mouth moving between words, no smile; both framed from the knees up with clear space above their heads; beyond the gate only the dark road; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame; exactly two people, nobody else",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「錢員外，天還沒亮，您急著上哪去？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu takes two strides to the gate and swings the stick across the gateway, barring it; Qian Yuanwai nearly walks into it and freezes; Qian Yuanwai says nothing in this shot, his lips pressed together; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "erniu",
+          "qianyuanwai"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a17",
+          "speaker": "qianyuanwai",
+          "text": "我、我是出來透透氣……透氣而已。",
+          "emotion": "心虛，乾笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse, deep night, the sky black, lit only by flickering orange torchlight and the glow of one blank paper lantern under the eaves: close-up of Qian Yuanwai, his hands an ordinary natural skin tone, framed from the chest up with space above his head, his face three-quarter to screen left toward the big young man off screen left, never the lens; guilty: sweat on his forehead, eyes darting, a dry forced laugh between words; behind him only the bamboo fence and the dark gateway",
+        "motion": "Qian Yuanwai speaks a short Mandarin line, 「我、我是出來透透氣……透氣而已」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qian Yuanwai wipes his forehead with his wide sleeve and edges half a step back, his whole head staying in the frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a18",
+          "speaker": "xuyan",
+          "text": "大人，錢府的銀票從您袖裡掉出來。這名冊，還查嗎？",
+          "emotion": "慢，帶一點壞"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle over-the-shoulder shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: low-angle over-the-shoulder shot from close behind one plump official seen only from behind, appearing only once: his head turned fully away from us toward the man he faces, only the back of his black gauze futou hat, the back of his neck and his left shoulder in a blue-green official robe, his ear, cheek and profile never visible, soft and dark, in the right foreground; on screen left Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, standing at his full height, framed from the waist up with clear space above his head, the small slip between two fingers of his right hand and the dark red silk pouch, smeared with mud in his left hand, his face three-quarter to screen right toward the official, never the lens; cool and pointed: brows level, eyes hard, the faintest wry curl at one corner of his mouth, lips moving between words; behind him only darkness and the orange flicker of torches held by people out of the frame; no torch on a stand, in the ground or on a wall, no brazier; no blade, no knife, no sword, no scabbard, no sheathed weapon at anyone's waist and no spear anywhere in the frame; every runner wears a plain black cloth sash with nothing hanging from it and holds only one burning torch, his other hand empty",
+        "motion": "Xu Yan speaks a short Mandarin line, 「大人，錢府的銀票從您袖裡掉出來。這名冊，還查嗎？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan stands up and takes one step toward the official, stopping an arm's length away, the slip raised a little; the official in the foreground keeps still, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 10
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a19",
+          "speaker": "huxianling",
+          "text": "不、不查了！今晚的事，本官全當沒來過。",
+          "emotion": "咬牙"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse, deep night, the sky black, lit only by flickering orange torchlight and the glow of one blank paper lantern under the eaves: close-up of Magistrate Hu, in his black official gauze hat and blue-green seventh-rank official robe, framed from the chest up with space above his head, his face three-quarter to screen left toward the young man off screen left, never the lens; cornered: face streaming with sweat, eyes darting left and right, teeth gritted between words, no smile; behind him only darkness and the orange flicker of torches held by people out of the frame; no torch on a stand, in the ground or on a wall, no brazier",
+        "motion": "Magistrate Hu speaks a short Mandarin line, 「不、不查了！今晚的事，本官全當沒來過」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Magistrate Hu's eyes dart left and right; he mops his forehead with his wide sleeve, his whole head staying in the frame, and grits his teeth; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "huxianling"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a20",
+          "speaker": "xuyan",
+          "text": "錢袋我們替大人收著。名冊不查，它就不見光。",
+          "emotion": "淡淡的，對縣令"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: medium shot: on screen right Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, framed from the knees up with clear space above his head, facing screen right toward the magistrate off screen right, his face three-quarter to screen right, never the lens; cool: brows level, eyes steady, lips moving evenly between words, no smile; one step behind him on screen left Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, one plain wooden abacus as long as her forearm, its frame and beam plain dark wood with no carving, no inlay, no marks and no writing held against her chest, the small gold abacus stays hanging at her waist, her face three-quarter to screen right toward him, never the lens; focused: brows drawn, lips closed, no smile; behind them only darkness and the orange flicker of torches held by people out of the frame; no torch on a stand, in the ground or on a wall, no brazier; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「錢袋我們替大人收著。名冊不查，它就不見光」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan slips the slip back into the pouch, pulls the drawstring tight and, without turning his head, passes the pouch back with his left hand to Tang Xiaotang behind him; she takes it and hugs it against her chest together with the abacus and nods once; Tang Xiaotang's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a21",
+          "speaker": "zhaobutou",
+          "text": "收隊！火把都跟上，天亮前回縣城！",
+          "emotion": "不耐煩，喊"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before the fourth watch: the packed-earth yard trampled to mud, the packed-earth yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table in the middle, the house door at the back left with a woodpile beside it, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing hanging under the eaves, nothing written on any board or wall; deep night, the moon hidden behind clouds, the sky black, lit only by the warm glow of the one lantern and flickering orange torchlight, no daylight anywhere: wide shot past the corner of the round stone table in the foreground, one burning torch stuck slantwise in the mud beside the round stone table, dropped and left behind, nobody holding it: on screen right Magistrate Hu, in his black official gauze hat and blue-green seventh-rank official robe, hitching up his robe and hurrying toward the open yard gate, his face in profile toward screen right, never the lens, lips closed; behind him Constable Zhao, in his black futou cap and plain black round-collared constable's robe, a plain black cloth sash at his waist with nothing hanging from it, one burning torch in his right hand, half turned back toward the yard, waving his left arm, mouth wide between words, no smile; six yamen runners in ancient Chinese Song-dynasty plain black round-collared robes, black caps and cloth shoes filing out through the gate at walking pace, each holding one burning torch; in the middle of the yard A-ling in her plain grey-white cotton dress with long sleeves and one plain wooden hairpin, no shackles, her long sleeves down over both wrists, no wrist showing, both hands empty, her face three-quarter to screen right toward the gate, never the lens, eyes narrowed, lips closed; except the one torch in the mud, every burning torch is held in one person's hand; no more than eight torches in the frame; no blade, no knife, no sword, no scabbard, no sheathed weapon at anyone's waist and no spear anywhere in the frame; every runner wears a plain black cloth sash with nothing hanging from it and holds only one burning torch, his other hand empty",
+        "motion": "Constable Zhao speaks a short Mandarin line, 「收隊！火把都跟上，天亮前回縣城！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Magistrate Hu hurries out through the gate; Constable Zhao turns back and waves the men on; the runners file out one after another at walking pace, their torches swaying away; A-ling walks a few steps into the yard after them and stops; Magistrate Hu's and A-ling's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "huxianling",
+          "zhaobutou",
+          "aling"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a22",
+          "speaker": "huxianling",
+          "text": "錢是他給的，主意可不是……",
+          "emotion": "壓低，自言自語"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse, deep night, the sky black, lit only by flickering orange torchlight and the glow of one blank paper lantern under the eaves: close-up of Magistrate Hu, in his black official gauze hat and blue-green seventh-rank official robe, standing under the open yard gate, framed from the chest up with space above his head, half turned back, his face three-quarter to screen left glancing back at the yard, never the lens; sour and muttering to himself: eyes narrowed, mouth twisting, lips moving low between words, no smile; behind him only the dark road beyond the gate and a few small torch flames moving away, each held up by a person too dark and small to make out",
+        "motion": "Magistrate Hu speaks a short Mandarin line, 「錢是他給的，主意可不是……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Magistrate Hu glances back at the yard and mutters to himself, his whole head staying in the frame; then he turns and hurries away out of the frame to screen right; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "huxianling"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a23",
+          "speaker": "aling",
+          "text": "他說主意不是錢員外的。背後還有人。",
+          "emotion": "很輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse, deep night, the sky black, lit only by flickering orange torchlight and the glow of one blank paper lantern under the eaves: close-up of A-ling in her plain grey-white cotton dress with long sleeves and one plain wooden hairpin, no shackles, standing in the middle of the yard a few steps from the gate, framed from the chest up with space above her head, her long sleeves down over both wrists, her face three-quarter to screen right toward the yard gate, never the lens; sharp and quiet: eyes narrowing, brows drawn, lips moving very softly between words, no smile; behind her only the bamboo fence in the dark; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame",
+        "motion": "A-ling speaks a short Mandarin line, 「他說主意不是錢員外的。背後還有人」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling's head snaps toward the gate on screen right and her eyes narrow; she takes half a step toward it and stops, speaking very softly to the young man standing off screen right; no smile at any moment, not even at the end of the shot, until the last frame, and the deep night, the flickering torchlight and the one lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "aling"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s28",
+      "chapter": "人散了",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a24",
+          "speaker": "erniu",
+          "text": "許兄弟，我們先回去了，有事你就喊一聲！",
+          "emotion": "畫外，遠，大嗓門"
+        }
+      ],
+      "data": {
+        "camera": "Extreme wide high-angle shot, slow pull out",
+        "prompt": "In the night yard of the Xu farmhouse at the very end of the night, before dawn: the packed-earth yard trampled to mud, the yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table with round stone stools in the middle, the house door at the back left, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing glowing dimly under the eaves, nothing written on any board or wall; the sky still dark but just turning deep grey-blue, one thin pale waning moon low over the roof ridge at the back left, cold blue-grey light, no sunshine and no daylight yet: extreme wide high-angle shot looking down over the yard wall and the open yard gate on screen right: far off along the dark village road beyond the gate a long line of about fifteen small torch flames moving away to screen right, each held up by a person too small and dark to make out; at the yard gate one burly young man in a coarse brown short jacket, small and backlit, turning back toward the yard and raising one arm, his face too small and dark to see; eight small village men in Song-dynasty short jackets and cloth head wraps, sticks on their shoulders, walking out through the gate after the torches; inside the yard only one torch stuck slantwise in the mud, nobody holding it, its flame small and dying beside the round stone table and a few small dark figures near the house door at the back left, too small to see faces; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame; nobody near the camera",
+        "motion": "the line of torches moves away along the road at walking pace; the young man at the gate waves once and follows the villagers out, and the cold grey-blue light before dawn and the one small dying torch flame stay unchanged, no sunrise",
+        "characters": [],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a25",
+          "speaker": "tangxiaotang",
+          "text": "錢袋跟婚書，我都鎖進錢箱裡。你也早點睡。",
+          "emotion": "低"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse at the very end of the night, before dawn: the packed-earth yard trampled to mud, the yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table with round stone stools in the middle, the house door at the back left, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing glowing dimly under the eaves, nothing written on any board or wall; the sky still dark but just turning deep grey-blue, one thin pale waning moon low over the roof ridge at the back left, cold blue-grey light, no sunshine and no daylight yet: over-the-shoulder medium shot from just inside the dark house door past its wooden frame and one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, no cheek, no profile and no lips at any moment, standing on the threshold in the left foreground, the abacus and the dark red silk pouch held against her chest out of sight; facing us one step beyond her in the yard Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, framed from the waist up with clear space above his head, his face three-quarter to screen left toward her, never the lens; tired and gentle: eyes soft, lips closed, no smile; two steps behind him on screen right A-ling in her plain grey-white cotton dress with long sleeves and one plain wooden hairpin, no shackles, her long sleeves down over both wrists, no wrist showing, both hands empty, framed from the knees up, her face three-quarter to screen left toward him, never the lens, eyes on him, lips closed; behind them the dim yard in the cold grey-blue light before dawn, nobody else in the yard; no other torch, no lantern on a stand, no brazier; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame; exactly three people in the frame",
+        "motion": "Xu Yan takes the three folded red certificates from the front of his robe and holds them out; the young woman takes them with her right hand and lays them against the pouch at her chest; she keeps her head still and never turns it, the back of her head toward us the whole shot; A-ling stops behind him and looks at him; Xu Yan's and A-ling's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the cold grey-blue light before dawn and the one small dying torch flame stay unchanged, no sunrise",
+        "characters": [
+          "tangxiaotang",
+          "xuyan",
+          "aling"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a26",
+          "speaker": "xuyan",
+          "text": "總算過了一關……系統，這回總該給點好東西了吧？",
+          "emotion": "內心獨白，嘴閉著，累，鬆一口氣"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse at the very end of the night, before dawn: the packed-earth yard trampled to mud, the yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table with round stone stools in the middle, the house door at the back left, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing glowing dimly under the eaves, nothing written on any board or wall; the sky still dark but just turning deep grey-blue, one thin pale waning moon low over the roof ridge at the back left, cold blue-grey light, no sunshine and no daylight yet: medium shot past one torch stuck slantwise in the mud, nobody holding it, its flame small and dying in the left foreground: Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, alone in the yard, dropping down onto a round stone stool beside the round stone table, framed from the knees up with clear space above his head, his face three-quarter to screen right, never the lens; worn out: shoulders slumping, eyes heavy, lips closed; behind him the dim yard in the cold grey-blue light before dawn, nobody else in the yard; no other torch, no lantern on a stand, no brazier; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame",
+        "motion": "Xu Yan drops down onto the stone stool, braces both hands on his knees and lets out a long breath, then lifts his eyes to the empty air in front of him; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking; no smile at any moment, not even at the end of the shot, until the last frame, and the cold grey-blue light before dawn and the one small dying torch flame stay unchanged, no sunrise",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a27",
+          "speaker": "xitong",
+          "text": "叮。獲得：造紙術改良。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before dawn, the sky just turning deep grey-blue, lit only by cold blue-grey light and the small orange glow of one dying torch: close-up of Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, sitting, framed from the chest up with space above his head, his two hands together in front of his chest, his face three-quarter to screen right, never the lens; pleased: brows lifting, eyes brightening, the corners of his mouth slowly curling up into a closed-lipped smile, lips closed the whole shot; behind him only the bamboo fence and the deep grey-blue sky before dawn",
+        "motion": "Xu Yan's brows lift; he rubs his palms together in front of his chest and the corners of his mouth slowly curl up; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the cold grey-blue light before dawn and the one small dying torch flame stay unchanged, no sunrise",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a28",
+          "speaker": "xitong",
+          "text": "強制任務：十日內，白紙一百張。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse before dawn, the sky just turning deep grey-blue, lit only by cold blue-grey light and the small orange glow of one dying torch: close-up of Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, sitting, framed from the chest up with space above his head, his two hands together in front of his chest, his face three-quarter to screen right, never the lens; at first a closed-lipped smile, then stunned: the smile freezing and draining from his face, eyes going wide, lips closed the whole shot; behind him only the bamboo fence and the deep grey-blue sky before dawn",
+        "motion": "the smile freezes on Xu Yan's face and fades; his rubbing hands stop dead in front of his chest; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the cold grey-blue light before dawn and the one small dying torch flame stay unchanged, no sunrise",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a29",
+          "speaker": "xuyan",
+          "text": "十天一百張？我連一張竹簾都沒有！",
+          "emotion": "內心獨白，嘴閉著，崩潰"
+        },
+        {
+          "id": "zq912a30",
+          "speaker": "xitong",
+          "text": "那就去找。系統給方子，不給木匠。",
+          "emotion": "冷，嫌棄"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse at the very end of the night, before dawn: the packed-earth yard trampled to mud, the yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table with round stone stools in the middle, the house door at the back left, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing glowing dimly under the eaves, nothing written on any board or wall; the sky still dark but just turning deep grey-blue, one thin pale waning moon low over the roof ridge at the back left, cold blue-grey light, no sunshine and no daylight yet: medium close-up of Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, framed from the waist up with clear space above his head and his raised hands, his face three-quarter to screen right, never the lens; desperate, then deflated: brows shooting up, eyes wide, then his shoulders sagging, lips closed the whole shot; behind him the dim yard in the cold grey-blue light before dawn, nobody else in the yard; no other torch, no lantern on a stand, no brazier; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame",
+        "motion": "Xu Yan springs up from the stone stool, grabs his hair with both hands and turns half round on the spot; then his hands drop to his sides and his shoulders sag; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking; no smile at any moment, not even at the end of the shot, until the last frame, and the cold grey-blue light before dawn and the one small dying torch flame stay unchanged, no sunrise",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 10
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a31",
+          "speaker": "xuyan",
+          "text": "好，找就找。天一亮，我就去問誰會做竹簾。",
+          "emotion": "內心獨白，嘴閉著，沉，下定決心"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse at the very end of the night, before dawn: the packed-earth yard trampled to mud, the yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table with round stone stools in the middle, the house door at the back left, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing glowing dimly under the eaves, nothing written on any board or wall; the sky still dark but just turning deep grey-blue, one thin pale waning moon low over the roof ridge at the back left, cold blue-grey light, no sunshine and no daylight yet: medium shot: on screen left one torch stuck slantwise in the mud, nobody holding it, its flame small and dying; Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, alone, walking to it and crouching beside it, framed full length with clear space above his head, his face three-quarter to screen left toward the torch and then lifted toward the paling sky at the upper left, never the lens; tired and resolute: jaw set, eyes steady, lips closed; behind him the dim yard in the cold grey-blue light before dawn, nobody else in the yard; no other torch, no lantern on a stand, no brazier; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame",
+        "motion": "Xu Yan crouches by the torch and sets it upright in the mud with one hand; its flame shrinks to a tiny glow; he lifts his eyes to the paling sky; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking; no smile at any moment, not even at the end of the shot, until the last frame, and the cold grey-blue light before dawn and the one small dying torch flame stay unchanged, no sunrise",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq912a32",
+          "speaker": "xitong",
+          "text": "失敗：失去讀寫能力。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the night yard of the Xu farmhouse at the very end of the night, before dawn: the packed-earth yard trampled to mud, the yard wall capped with grey roof tiles on screen right with the plain wooden yard gate standing open in it, the bamboo fence along the left, one round stone table with round stone stools in the middle, the house door at the back left, the persimmon tree, the stone well with its wooden windlass at the front right, one blank paper lantern with no writing glowing dimly under the eaves, nothing written on any board or wall; the sky still dark but just turning deep grey-blue, one thin pale waning moon low over the roof ridge at the back left, cold blue-grey light, no sunshine and no daylight yet: medium shot: Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, standing alone in the middle of the yard beside one torch stuck slantwise in the mud, nobody holding it, its flame small and dying on screen left, framed from the knees up with clear space above his head, his face three-quarter to screen right, never the lens; shocked: eyes snapping wide, brows shooting up, his whole body frozen, lips closed the whole shot; behind him the dim yard in the cold grey-blue light before dawn, nobody else in the yard; no other torch, no lantern on a stand, no brazier; no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame",
+        "motion": "Xu Yan has just stood up; his eyes snap wide and he freezes where he stands; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; no smile at any moment, not even at the end of the shot, until the last frame, and the cold grey-blue light before dawn and the one small dying torch flame stay unchanged, no sunrise",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}
