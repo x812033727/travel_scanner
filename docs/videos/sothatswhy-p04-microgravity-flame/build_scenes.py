@@ -91,6 +91,7 @@ EXTRA = {  # storyboard score R1 (47/70): off-model faces
 }
 # Whole-prompt rewrites after a visual review. Empty until this episode's keyframes are drawn and checked.
 REWRITE = {  # zoom check R1 (2026-11-12): no take usable
+    "cloth-flame": "Close-up through a round porthole window into a small grey metal test chamber, one long flat strip of pale cream cloth stretched in a thin metal frame across the middle, a small soft blue flame with an orange tip burning on the left end of the cloth and slowly creeping right, the burnt part behind it dark grey, the rest of the cloth clean and pale, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
     "drop-glow": "Close-up of a dim round metal chamber seen through a round window, floating alone in the middle one tiny shiny amber drop wrapped in a perfectly round soft blue ball of flame like a marble, the ball smooth and round on every side, clean empty corners, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
     "chief-gas": "Head-and-shoulders close-up of the chief holding up one index finger beside her face with a careful smile, smooth plain forehead, the chief is a cute chibi cartoon woman with a big round head, glossy solid jet-black hair tied in one low ponytail, big round thick black glasses, simple dot-like cartoon eyes, a small smile, a yellow pencil tucked behind one ear, a mustard-yellow cardigan over a white blouse, plain bare ears, a plain pale cream wall behind her, bright daylight, exactly like her reference sheet, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
     "chief-apple": "Head-and-shoulders close-up of the chief holding one shiny red cartoon apple in her open palm at chest height with a gentle smile, the chief is a cute chibi cartoon woman with a big round head, glossy solid jet-black hair tied in one low ponytail, big round thick black glasses, simple dot-like cartoon eyes, a small smile, a yellow pencil tucked behind one ear, a mustard-yellow cardigan over a white blouse, plain bare ears, a plain pale cream wall behind her, bright daylight, exactly like her reference sheet, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
@@ -340,10 +341,10 @@ obj("candle-dim", "Close-up of " + CANDLE + " with a very small faint round blue
     c("一九九二年，在太空中做過的蠟燭實驗，"),
     c("大多一分鐘左右火就滅了，可能是盒子裡氧氣快沒了。", None, "P:last"))
 # 2026-11-14 (body back over 480 s after the kid-share cut): a sourced fire-safety segment, claims.md C26.
-chief("chief-putout", C("listening with a serious kind face, one hand raised in a calm careful gesture", close=True),
+obj("chief-putout", "Inside a bright cartoon space station module with white padded walls and yellow handrails, a small plain red fire extinguisher floating gently in mid-air, a round window showing the blue Earth",
     k("太空站失火了，要怎麼滅？", "擔心", "S:putout"),
     c("美國太空總署說，太空滅火要看火的樣子和燒的東西。", "接住上一句"))
-chief("chief-worse", C("gently wagging one index finger with a careful serious face"),
+obj("chief-worse", "Wide shot of a white cartoon space station with long solar panels orbiting above the curve of the blue Earth, a small white cargo spaceship drifting away from it, black starry sky",
     c("在地上好用的滅火方法，到太空可能沒用，", "認真"),
     c("甚至讓火更糟。所以比較大的火，他們不在太空站上燒。"))
 obj("cargo-ship", "Wide shot of one small simple cute cartoon cargo spaceship shaped like a short white cylinder with two round solar panels, drifting alone in deep blue space, " + EARTH,
@@ -352,7 +353,7 @@ obj("cargo-ship", "Wide shot of one small simple cute cartoon cargo spaceship sh
 obj("cloth-flame", "Close-up through a round window into a dim empty grey metal room, one long strip of pale cloth held flat in a thin metal frame in the middle, a thin line of small soft blue and orange flame creeping slowly along the cloth",
     c("他們發現，把艙裡的空氣變稀一點，火就蔓延得比較慢。"),
     c("這些研究，幫忙挑選太空船裡用的材料，"))
-chief("chief-earth-safe", C("smiling warmly with one hand on her heart"),
+obj("chief-earth-safe", "A cozy cartoon living room on Earth with a sofa and a rug, a round white smoke detector on the ceiling and a small plain red fire extinguisher standing by the door, warm daylight",
     c("也讓地上的防火更安全。", None, "P:putout"),
     c("有一組研究滅火藥劑的實驗，還發現了一件怪事。", "賣關子"))
 kid("kid-out-q", K("folding her arms with a satisfied little nod", where=YARD),

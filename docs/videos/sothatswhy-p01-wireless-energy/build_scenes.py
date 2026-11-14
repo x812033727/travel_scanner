@@ -62,8 +62,6 @@ EXTRA = {  # zoom check R1: off-model chief
     "outro-wave": ", cute chibi cartoon proportions with a big round head exactly like her reference sheet, simple cartoon eyes behind round black glasses, solid jet-black hair, small round ears",
     "kid-coin-q": ", cute chibi cartoon proportions with a big round head, a small girl of eight with black hair",
     "chief-no": ", cute chibi cartoon proportions with a big round head exactly like her reference sheet, simple cartoon eyes behind round black glasses, solid jet-black hair, small round ears",
-    "chief-brush-why": ", cute chibi cartoon proportions with a big round head exactly like her reference sheet, simple cartoon eyes behind round black glasses, solid jet-black hair, small round ears",
-    "chief-peg": ", cute chibi cartoon proportions with a big round head exactly like her reference sheet, simple cartoon eyes behind round black glasses, solid jet-black hair, small round ears",
     "chief-map": ", cute chibi cartoon proportions with a big round head exactly like her reference sheet, simple cartoon eyes behind round black glasses, solid jet-black hair, small round ears",
 }
 REWRITE = {  # zoom check R1 (2026-11-12)
@@ -349,7 +347,7 @@ TSTAND = "a small round plain white charging stand"
 obj("brush-stand", "Close-up of " + TBRUSH + " standing upright on " + TSTAND + " on a light bathroom counter beside a small sink, both smooth and unmarked, a tiny soft green glow at the foot of the stand",
     kn("我的電動牙刷，也是放上去就充！", "聯想"),
     cn("對，同一招。底座裡有一圈線，牙刷底部也有一圈。"))
-chief("chief-brush-why", C("holding up " + TBRUSH + " in one hand with a kind smile"),
+obj("chief-brush-why", "Close-up of a plain white electric toothbrush lifted just above its small round plain white charging stand on a bathroom counter beside a sink, a soft blue glow between the brush base and the stand",
     kn("為什麼牙刷要這樣充？", "句尾上揚", "S:brush"),
     cn("一個科普網站說，最主要是為了安全。"),
     cn("浴室很濕，牙刷常常是濕的。"))
@@ -359,7 +357,7 @@ obj("brush-wet", "Close-up of " + TBRUSH + " standing on " + TSTAND + " on a wet
 obj("brush-peg", "Close-up cutaway of " + TSTAND + " drawn cut open, inside it a neat coil of shiny copper wire wound around a short grey peg rising from its middle, the bottom of " + TBRUSH + " sitting over the peg with its base also cut open to show a second small copper coil ringing the same peg, a soft pale blue glow between the two coils, plain pale cream background",
     cn("而且很多牙刷底座上，有一根包著塑膠的小鐵柱。"),
     cn("牙刷一放上去，那圈線就剛好圍著鐵柱。"))
-chief("chief-peg", C("resting " + TBRUSH + " upright on " + TSTAND + " on a table in front of her with a pleased smile"),
+obj("chief-peg", "Close-up of two chargers side by side on a light wooden table: on the left a plain white electric toothbrush seated snugly upright on a small round white charging stand, a short grey peg from the stand fitting up into the toothbrush base and holding it straight, a soft pale blue glow around the peg; on the right a plain white smartphone lying face down, crooked and slid halfway off a flat round white charging pad, plain cream wall behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
     cn("兩圈線又近又正，鐵柱還把磁場集中送過去。"),
     cn("鐵柱也卡住牙刷，不會像手機那樣滑開。"))
 kid("kid-potcenter-q", K("pointing at " + POT + " on " + HOB + " with a curious face", where=KITCHEN),

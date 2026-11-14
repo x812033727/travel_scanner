@@ -65,7 +65,6 @@ EXTRA = {     # lines added to a prompt after the storyboard score (round 1)
     "chief-spark": ", glossy all-black hair in one uniform colour, bare earlobes, natural pale lips, round black glasses centred over her eyes, adult woman proportions",
     "chief-opinion": ", glossy all-black hair in one uniform colour, bare earlobes, natural pale lips, round black glasses centred over her eyes, adult woman proportions",
     "outro-wave": ", glossy all-black hair in one uniform colour, bare earlobes, natural pale lips, round black glasses centred over her eyes, adult woman proportions",
-    "chief-empty": ", glossy all-black hair in one uniform colour, bare earlobes, natural pale lips, round black glasses centred over her eyes, adult woman proportions",
     "chief-ptray": ", glossy all-black hair in one uniform colour, bare earlobes, natural pale lips, round black glasses centred over her eyes, adult woman proportions",
     "kid-try": ", all jet-black hair, closed navy coat",
     "kid-whose": ", all jet-black hair, closed navy coat",
@@ -74,6 +73,8 @@ EXTRA = {     # lines added to a prompt after the storyboard score (round 1)
     "kid-charge-q": ", all jet-black hair, closed navy coat",
 }
 REWRITE = {   # whole-prompt rewrites after a visual review (zoom check round 1)
+    "magnetron-glow": "Cutaway diagram of a plain white cartoon microwave oven seen from the side with its side panel removed, an empty grey metal cooking chamber on the left filled with many crowded bright-blue wavy lines, the wavy lines streaming to the right into a chunky silver cylinder with stacked cooling fins mounted in a slim compartment beside the chamber, the silver cylinder glowing hot red-orange with small orange sparks around it, plain cream background, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "empty-bounce": "Close-up looking straight into an open plain white cartoon microwave oven with a smooth plain front and round white buttons, shiny pale grey metal inside walls and a bare round glass turntable plate in the middle, three bold bright-blue zigzag wave lines bouncing back and forth between the left and right metal walls and crossing over the empty plate, each wave line thick and clearly visible in front of the grey walls, warm cream background, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
     "kid-gold-q": "Waist-up medium shot of the girl in a bright cartoon office kitchenette, holding up a small white rice bowl with a thin shiny gold rim around its edge in both hands and looking at it with a thinking face, bright daylight, the girl is eight, with jet-black hair cut in a short straight bob with blunt bangs and one small cowlick, simple dot-like cartoon eyes, a closed navy raincoat jacket with toggle buttons and a mustard-yellow hood resting on her shoulders, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
     "chief-water": "Waist-up medium shot of the chief filling most of the frame against a plain pale cream wall, wiggling the fingers of both hands quickly in front of her chest with a bright smile, five small round blue water drops wobbling in the air between her hands, bright daylight, the chief is a slim adult woman of about thirty-five with glossy jet-black hair in one even colour tied in a low ponytail, bare earlobes, natural pale lips, round black glasses centred over her eyes, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse and navy trousers, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
     "kid-allrack-q": "Waist-up medium shot of the girl in a bright cartoon office kitchenette, pointing at the open door of a plain white cartoon microwave oven with a low round chrome wire rack standing on short legs on its turntable, a curious face, round plain knobs, bright daylight, the girl is eight, with jet-black hair cut in a short straight bob with blunt bangs and one small cowlick, simple dot-like cartoon eyes, a closed navy raincoat jacket with toggle buttons and a mustard-yellow hood resting on her shoulders, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
@@ -384,7 +385,7 @@ obj("magnetron-glow", "Cutaway side view of a plain white cartoon microwave oven
 obj("empty-bowl", "Close-up of " + BOWL + ", empty and dry, sitting alone on the round glass turntable plate inside " + OVEN + " standing open",
     c("只放一個乾乾的空碗，也跟空著差不多。"),
     c("因為陶瓷碗會讓微波穿過去，不會吸收。"))
-chief("chief-empty", C("pointing at the open door of a plain white microwave oven beside her with a serious but kind face"),
+obj("chief-empty", "Close-up of a plain white cartoon microwave oven with its door wide open, a bowl of braised pork rice sitting on the glass turntable inside, warm light glowing in the chamber, a light wooden kitchen counter",
     c("所以那位教授說，別讓微波爐空著開超過一兩秒。"),
     c("按開始之前，先看看裡面有沒有放食物。"))
 kid("kid-spark-q", K("hugging " + BOWL + " to her chest with a worried face", where=KITCHEN),
