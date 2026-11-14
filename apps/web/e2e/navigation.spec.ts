@@ -98,6 +98,9 @@ test("itinerary drag handle works with pointer input and keyboard move keeps foc
   await page.keyboard.press("Enter");
   const dialog = page.getByRole("dialog", { name: "移動這個行程" });
   await expect(dialog).toBeVisible();
+  // The sheet moves focus to its close button one animation frame after it opens; wait for that,
+  // or a slow runner lands it after the focus below and Tab no longer wraps from the last button.
+  await expect(dialog.getByRole("button", { name: "關閉", exact: true })).toBeFocused();
   await dialog.getByRole("button", { name: "移到這裡" }).focus();
   await page.keyboard.press("Tab");
   await expect(dialog.getByRole("button", { name: "關閉", exact: true })).toBeFocused();
