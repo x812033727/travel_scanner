@@ -40,11 +40,28 @@ describe("the section listing", () => {
     expect(mocks.list).not.toHaveBeenCalled();
   });
 
-  it("renders the articles the server resolved for this URL", async () => {
+  it("renders the articles, visible breadcrumb trail, and promotes the unfiltered page-1 lead card", async () => {
+    const second = { ...summary, slug: "suica-apple-pay", title: "Suica 綁定教學" };
+    mocks.list.mockResolvedValueOnce({ articles: [summary, second], next_cursor: null, available: true });
     render(await GuideListPage({ params: params(), searchParams: search() }));
+
+    const crumb = screen.getByRole("navigation", { name: "頁面路徑" });
+    expect(crumb.querySelector('a[href="/"]')?.textContent).toBe("首頁");
+    expect(crumb.querySelector('a[href="/guides"]')?.textContent).toBe("旅遊情報與攻略");
+    expect(crumb.querySelector('[aria-current="page"]')?.textContent).toBe("旅遊情報");
+
     expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("旅遊情報");
     expect(screen.getByRole("link", { name: "JR Pass 調價" }).getAttribute("href"))
       .toBe("/guides/intel/jr-pass-sale");
+
+    const cards = screen.getAllByRole("listitem").filter((node) => node.hasAttribute("data-variant"));
+    expect(cards.map((node) => node.getAttribute("data-variant"))).toEqual(["featured", "default"]);
+
+    cleanup();
+    mocks.list.mockResolvedValueOnce({ articles: [summary, second], next_cursor: null, available: true });
+    render(await GuideListPage({ params: params(), searchParams: search({ topic: "transport" }) }));
+    const filteredCards = screen.getAllByRole("listitem").filter((node) => node.hasAttribute("data-variant"));
+    expect(filteredCards.map((node) => node.getAttribute("data-variant"))).toEqual(["default", "default"]);
   });
 
   it("resolves the filter on the server, not after hydration", async () => {

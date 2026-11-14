@@ -172,4 +172,28 @@ describe("the home page's portal and guide sections", () => {
     expect(within(catSeries).getByRole("link", { name: "Claude Code 教學中心" })).toBeTruthy();
     expect(within(catSeries).queryByText("JR 鐵路教學系列")).toBeNull();
   });
+
+  it("prioritizes the lead news story hero image for LCP while keeping secondary sub-lead images lazy", () => {
+    const news = [
+      article("lead-1", "life", "頭條焦點一", {
+        news_date: "2026-11-12",
+        hero: { src: "/guides/lead-1/hero.jpg", alt: "頭條封面", width: 1600, height: 900, credit: null },
+      }),
+      article("sub-2", "life", "次焦點報導二", {
+        news_date: "2026-11-11",
+        hero: { src: "/guides/sub-2/hero.jpg", alt: "次焦點二封面", width: 1600, height: 900, credit: null },
+      }),
+      article("sub-3", "life", "次焦點報導三", {
+        news_date: "2026-11-10",
+        hero: { src: "/guides/sub-3/hero.jpg", alt: "次焦點三封面", width: 1600, height: 900, credit: null },
+      }),
+    ];
+    render(<HomeGuides blocks={blocks([], [], [])} news={news} />);
+    const leadImg = screen.getByRole("img", { name: "頭條封面" });
+    expect(leadImg.getAttribute("loading")).toBe("eager");
+    expect(leadImg.getAttribute("fetchpriority")).toBe("high");
+    const subImg = screen.getByRole("img", { name: "次焦點二封面" });
+    expect(subImg.getAttribute("loading")).toBe("lazy");
+    expect(subImg.getAttribute("fetchpriority")).toBeNull();
+  });
 });

@@ -90,6 +90,6 @@ export default function robots(): MetadataRoute.Robots {
       },
       ...refusedCrawlers().map((userAgent) => ({ userAgent, disallow: "/" })),
     ],
-    sitemap: `${siteUrl}/sitemap.xml`,
+    sitemap: [`${siteUrl}/sitemap.xml`, `${siteUrl}/sitemap-news.xml`],
   };
 }
