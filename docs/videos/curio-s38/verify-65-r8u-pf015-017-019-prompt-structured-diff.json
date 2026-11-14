@@ -1,0 +1,41 @@
+{
+  "round": "R8u",
+  "basis": "R8t frozen video.json in clean PR #1641 worktree",
+  "before_sha256": "35a23a36a8503988bdb70ff2dc2c6e3bd2f02c226891a5119f3b9756b86d2532",
+  "after_sha256": "2d04002c0c4642d7cbac9cf541d03fdfb09a0c39e2dacca1b1be21371ebe23e9",
+  "changed_paths": [
+    "scenes[14].data.prompt",
+    "scenes[15].data.prompt",
+    "scenes[16].data.prompt",
+    "scenes[18].data.prompt"
+  ],
+  "changes": [
+    {
+      "path": "scenes[14].data.prompt",
+      "scene": "pf015",
+      "before": "Medium shot a writer gripping a tower rail while watching smoke rise from a city street, overcast light. Mid-seventeenth-century English setting: working-age figures in neckcloths and bodices; plaster or oak only where such materials fit the shot, with no East Asian robes",
+      "after": "Close shot inside a high stone lookout of the Tower on 2 September 1666, one English diarist in his thirties with a mature adult face, dark wool doublet and plain white neckcloth grips a thick stone parapet, a small plume of smoke above low tiled roofs visible through the narrow opening, soft overcast light. Tight frame on his face, stonework, roof tiles and smoke"
+    },
+    {
+      "path": "scenes[15].data.prompt",
+      "scene": "pf016",
+      "before": "Medium shot a tower officer speaking to a diarist beside an unlettered city map, grey daylight. Year 1666: grown townsfolk wear felt hats, long coats or covered dresses; masonry or candle-era fittings if visible, not electric lights",
+      "after": "Medium shot inside a stone chamber of the Tower in 1666, one mature English tower official in a plain dark doublet and white falling band speaking aloud to a listener outside the frame with one open hand, a bare wooden table and arched stone window behind him, soft grey daylight"
+    },
+    {
+      "path": "scenes[16].data.prompt",
+      "scene": "pf017",
+      "before": "Medium shot a thoughtful diarist looking out from a Tower window toward distant smoke, grey daylight. Restoration England: characters are adults in linen neckbands, fitted waistcoats and long gowns; old brickwork only where architecture appears, not present-day office gear",
+      "after": "Close shot inside the Tower on 2 September 1666, one English diarist in his thirties with a mature adult face, short dark hair, dark wool doublet and high white shirt collar leans forward to listen with a furrowed brow, a rough stone wall and narrow window behind him, soft grey daylight"
+    },
+    {
+      "path": "scenes[18].data.prompt",
+      "scene": "pf019",
+      "before": "Medium shot a worried clerk in a riverboat viewing a burned house near city Bridge, cloudy daylight. English city life, 1666: fully grown residents in period hats, doublets or full skirts; plaster or oak details if walls or furnishings appear, avoiding modern signage",
+      "after": "Medium close shot from inside a small open wooden riverboat on the Thames on 2 September 1666, one English diarist in his thirties with a mature adult face, dark wool doublet and white neckcloth looks up at the scorched timber wall and sagging roof of a house beyond the boat rail. Tight frame on boat, man, damaged house wall and pale smoke under an overcast sky"
+    }
+  ],
+  "forward_replay_matches_new_bytes": true,
+  "reverse_replay_matches_baseline_bytes": true,
+  "unified_diff": "--- R8t/video.json\n+++ R8u/video.json\n@@ -355,7 +355,7 @@\n       \"id\": \"pf015\",\n       \"template\": \"shot\",\n       \"data\": {\n-        \"prompt\": \"Medium shot a writer gripping a tower rail while watching smoke rise from a city street, overcast light. Mid-seventeenth-century English setting: working-age figures in neckcloths and bodices; plaster or oak only where such materials fit the shot, with no East Asian robes\",\n+        \"prompt\": \"Close shot inside a high stone lookout of the Tower on 2 September 1666, one English diarist in his thirties with a mature adult face, dark wool doublet and plain white neckcloth grips a thick stone parapet, a small plume of smoke above low tiled roofs visible through the narrow opening, soft overcast light. Tight frame on his face, stonework, roof tiles and smoke\",\n         \"camera\": \"push in\",\n         \"visual\": \"still\"\n       },\n@@ -371,7 +371,7 @@\n       \"id\": \"pf016\",\n       \"template\": \"shot\",\n       \"data\": {\n-        \"prompt\": \"Medium shot a tower officer speaking to a diarist beside an unlettered city map, grey daylight. Year 1666: grown townsfolk wear felt hats, long coats or covered dresses; masonry or candle-era fittings if visible, not electric lights\",\n+        \"prompt\": \"Medium shot inside a stone chamber of the Tower in 1666, one mature English tower official in a plain dark doublet and white falling band speaking aloud to a listener outside the frame with one open hand, a bare wooden table and arched stone window behind him, soft grey daylight\",\n         \"camera\": \"drift left\",\n         \"visual\": \"still\"\n       },\n@@ -387,7 +387,7 @@\n       \"id\": \"pf017\",\n       \"template\": \"shot\",\n       \"data\": {\n-        \"prompt\": \"Medium shot a thoughtful diarist looking out from a Tower window toward distant smoke, grey daylight. Restoration England: characters are adults in linen neckbands, fitted waistcoats and long gowns; old brickwork only where architecture appears, not present-day office gear\",\n+        \"prompt\": \"Close shot inside the Tower on 2 September 1666, one English diarist in his thirties with a mature adult face, short dark hair, dark wool doublet and high white shirt collar leans forward to listen with a furrowed brow, a rough stone wall and narrow window behind him, soft grey daylight\",\n         \"camera\": \"pull back\",\n         \"visual\": \"still\"\n       },\n@@ -419,7 +419,7 @@\n       \"id\": \"pf019\",\n       \"template\": \"shot\",\n       \"data\": {\n-        \"prompt\": \"Medium shot a worried clerk in a riverboat viewing a burned house near city Bridge, cloudy daylight. English city life, 1666: fully grown residents in period hats, doublets or full skirts; plaster or oak details if walls or furnishings appear, avoiding modern signage\",\n+        \"prompt\": \"Medium close shot from inside a small open wooden riverboat on the Thames on 2 September 1666, one English diarist in his thirties with a mature adult face, dark wool doublet and white neckcloth looks up at the scorched timber wall and sagging roof of a house beyond the boat rail. Tight frame on boat, man, damaged house wall and pale smoke under an overcast sky\",\n         \"camera\": \"track left\",\n         \"visual\": \"still\"\n       },\n"
+}

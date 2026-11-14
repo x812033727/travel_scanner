@@ -1,0 +1,11 @@
+# S38 R8ac｜PF020 第二張原生圖人工收用
+
+2026-10-22 UTC。**PF020 HUMAN KEEP；PF021／PF022 仍未購圖。**作者窄修已獲[非作者固定日記紙審](verify-100-r8ac-pf020-prompt-independent.md) PASS；私人圖單[離線重綁](verify-101-r8ac-pf020-offline-rebind.md)保全 12 張舊 KEEP。單景 live `media-status` 顯示 MiniMax `image-01` ready、images 19962／30000、judge 21544／30000；`keyframes --shot pf020 --takes 1 --seed-offset 1 --dry-run` 的修訂 prompt 是 322／1072 字，估一張含評審 US$0.0135。原 ledger US$0.8225 加 US$0.0035 舊 reservation 和本次 US$0.0135 預估為 **US$0.8395 < US$4.58** 整集硬上限。前置精確斷言確認 R8ac `video.json`、active manifest、ledger、STOP／空 jobs、12 張 KEEP 實檔 SHA，且前次 PF020 seed 1 退件原圖已另檔保存；僅暫移 STOP 執行一次單景原生圖＋一次 judge，EXIT trap 恢復 STOP。
+
+新圖原始 `keyframes/pf020-2.jpg` 是 1280×720 JPEG，SHA-256 `d68221f5afeea6dab00759119ac9a67a2de20c16d9179d0b2b6c49cce2287839`；正式入選裁圖 `keyframes/pf020-2-trim.jpg` SHA `e07a7190282bc74ad4a6e8821b79b299db0ee35cac64d885d65d5ac05e0ac783`，記錄上／下 paper margin 8%／1%，裁後仍為 1280×720。原圖與裁圖均已逐張目視：一名灰髮成年居民立在石河岸，深色外衣和白領，向河面伸出雙手；綁繩的家當布包已離開手掌，在開闊水面上方往外移動。畫面能承接固定 [Pepys 1666-09-02 日記](https://github.com/GITenberg/The-Diary-of-Samuel-Pepys---Complete_4200/blob/68fcf49f70ee793b989a6fd0464264d55beb4451/4200.txt#L65816-L65822) 的 `flinging into the river` 和本景旁白「還有人把搬不及的東西直接丟進河裡。」；沒把那個居民指認成佩皮斯，也沒有畫出未記載的後續。未見首張退件的黑桿、現代旁觀者、可辨近代物件、黑寬帶或照片／3D／油畫漂移。
+
+正式九題 judge **7.88／10、`passed=true`**；`awkward=4` 指出袖口靠布包處的粉色形狀像粗糙短截手臂。原圖確有這一處不順，但人物雙手向前伸、布包已在手掌外側的核心動作仍可辨，且它不改變年代或來源主張。按 `curio-episode`「評審過關的可愛插圖，除旁白／來源矛盾或畫風漂移才退」的驗收標準收用；把袖口瑕疵留給最後分鏡和成片人眼複檢，沒有宣稱它是完美史實重建。
+
+主代理另看同一原圖與裁圖，獨立同意 **KEEP**：布包明顯離手、成人衣領和河面可辨；袖口粉色瑕疵不構成旁白或來源矛盾。這項二次目視不新增圖片，也不改正式 judge 分數。
+
+新 active manifest SHA-256 `74916551dfe9299185a44bdcc17743cceb2a2a360cc05604aa6dd019051583b3`、`visual_hash=799a46f1c5720fec`，有 **13 筆 selected KEEP**。先前 12 筆完整條目 canonical SHA 前後同為 `a2c22b903adfcca2127f264b36c83280c4a7faa840bbd7bb16f6cdc0dec040e0`；加入 PF020 後 13 筆為 `605cd8f62ad8111e282445954ef48393d636a19266fde267c160fb6722a4de84`，每個選用 JPEG 的 SHA 都實算相符；見[逐張清冊](verify-102-r8ac-pf020-seed2-keep-inventory.json)。ledger SHA `9a04bd5aa7b7ee102f4f8078255cf4b7d3b46e929d22bd0773f165ded32d5850`，**US$0.8360／56 image／56 judge／1 music**，另有舊 US$0.0035 reservation；STOP 在位、jobs 空。PF021／PF022 尚待逐景單張原圖驗收，未因本景 KEEP 自動放行。全片完整插圖、storyboard 和成片尚未完成。

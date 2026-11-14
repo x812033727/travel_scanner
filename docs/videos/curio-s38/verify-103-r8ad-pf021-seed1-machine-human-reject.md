@@ -1,0 +1,11 @@
+# S38 R8ad｜PF021 首張機器 FAIL、原圖人工退件與停線
+
+2026-10-22 UTC。**PF021 machine FAIL／HUMAN REJECT；本批停在 PF021，PF022 未購圖。**R8ac `video.json` SHA-256 `d8d169a010a7ffce93b3aec580e7c9580dc3a5393ffbe0bbc5909b72e8559688`、13 張 selected KEEP 的 manifest SHA `74916551dfe9299185a44bdcc17743cceb2a2a360cc05604aa6dd019051583b3`、ledger SHA `9a04bd5aa7b7ee102f4f8078255cf4b7d3b46e929d22bd0773f165ded32d5850` 先經精確斷言，STOP 在位、jobs 空、13 張入選 JPEG 實檔 SHA 全對。live `media-status` 顯示 MiniMax `image-01` ready、images 19965／30000、judge 21554／30000；單景 dry-run PF021 prompt 254／1068 字。原 US$0.8360 加 US$0.0035 reservation 和一張含評審 US$0.0135 的預估為 **US$0.8530 < US$4.58** 整集上限。EXIT trap 恢復 STOP，只送出 PF021 seed 1 一張和一次正式 judge。
+
+原生 1280×720 `keyframes/pf021-1.jpg` SHA-256 `942a834be237bb780613a8027be70050c7b0f1ce38f4693ea8f19c19fc65c22d`。固定 [Pepys 1666-09-02 日記 L65818–65823](https://github.com/GITenberg/The-Diary-of-Samuel-Pepys---Complete_4200/blob/68fcf49f70ee793b989a6fd0464264d55beb4451/4200.txt#L65818-L65823)說居民留在屋內直到火碰屋，然後 `running into boats`；本景旁白「佩皮斯見有些住戶等火貼近門口，才往船上跑。」原圖中船在畫面左後，兩名幼童樣的前景人物卻向右前方**遠離**船跑，另外船上還有兩名小人。右側建築採顯眼的東亞式翹起瓦簷，不能代表 1666 年倫敦。畫面主動作和年代環境均不合；兩名人物本身並非日記矛盾，問題是人物年齡、跑的方向和屋頂。原圖沒有正式裁邊版。
+
+正式 judge 雖給 overall **9／10**，但 `subject=0`、`passed=false`，指出前景人物跑離船；`details=7` 指出兩名前景人而非 prompt 指定的單一主角。人工原圖檢查確認方向錯，另外看到童貌與屋簷年代錯。這是機器 FAIL 與來源／畫面 HUMAN REJECT，不以高 overall 或漂亮卡通畫風收圖。
+
+CLI 後 manifest SHA `a0f12c88b1ae887cb06e526e8ceaf46a54d90727fe292a6bf78fb4525fa470c3` 含 14 筆（PF021 `needs_review=true`）；原圖與產出後圖單逐位元封存私人 `review/r8ad-pf021-seed1-machine-human-reject/`。在 STOP／空 jobs、該圖 SHA、13 張舊 KEEP 完整條目及各選用實檔 SHA 斷言後，只把 PF021 從 active manifest 移除並清空 contact-sheet 指標。active manifest SHA `c8c9c4042fd7568a222bb26056e48d3775b66b18dd55af24dbae00a2ffc1a0da`，仍綁 R8ac 舊 `visual_hash=799a46f1c5720fec`；13 張先前 KEEP 的完整條目 canonical SHA 仍 `605cd8f62ad8111e282445954ef48393d636a19266fde267c160fb6722a4de84`，實檔 SHA 全相符，見[清冊](verify-103-r8ad-pf021-reject-inventory.json)。ledger SHA `d64076ef7a4ee30f98e242e28102139fdff756c722c94d18a4d15bd639808722`，**US$0.8495／57 image／57 judge／1 music**，另有舊 US$0.0035 reservation；STOP 在位、jobs 空。
+
+下一步只准[PF021 單景窄修](verify-104-r8ad-pf021-prompt-author.md)及非作者固定史料紙審；PASS 後還須安全離線重綁 13 KEEP、live status、prompt budget、整集費用前置斷言，才可考慮 PF021 一張重試並目視原圖。PF022 不由此票放行；完整 storyboard、成片未完成。

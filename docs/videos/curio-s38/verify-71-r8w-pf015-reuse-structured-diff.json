@@ -1,0 +1,19 @@
+{
+  "round": "R8w",
+  "basis": "R8v PF015 final native reject; reuse accepted same chapter PF010 flashback image instead of fourth image or lint-failing third card",
+  "before_sha256": "fd506ba278ffbcbb2b17908b957eb9a2163a2d26cd3b2b78556bab365212b7f4",
+  "after_sha256": "af739ca32d19df378b942f04118377f8357b6b16d03f07a1e3203b53182c3bc9",
+  "changed_paths": [
+    "scenes[14].data.prompt",
+    "scenes[14].data.camera"
+  ],
+  "scene": "pf015",
+  "reuse_source_scene": "pf010",
+  "before": "      \"id\": \"pf015\",\n      \"template\": \"shot\",\n      \"data\": {\n        \"prompt\": \"Medium shot on an open stone platform of the Tower on the morning of 2 September 1666, one fully grown English man in his thirties with mature facial features, dark hair, a plain dark wool doublet and white neckcloth grips a waist-high stone parapet with both hands while looking at a short row of old gabled house roofs with smoke rising behind them, soft grey morning light across the open sky\",\n        \"camera\": \"push in\",\n        \"visual\": \"still\"\n      },\n",
+  "after": "      \"id\": \"pf015\",\n      \"template\": \"shot\",\n      \"data\": {\n        \"prompt\": \"Medium shot inside a London house around seven in the morning on 2 September 1666, one adult English man in his thirties with mature facial features, dark hair, a wool doublet and linen collar leans from a small wooden casement window to inspect a faint distant fire glow behind gabled rooftops, soft grey daylight\",\n        \"camera\": \"pull back\",\n        \"visual\": \"still\"\n      },\n",
+  "forward_replay_matches_new_bytes": true,
+  "reverse_replay_matches_baseline_bytes": true,
+  "spoken_lines_unchanged": true,
+  "other_scenes_unchanged": true,
+  "pf015_data_equals_pf010_data": true
+}

@@ -1,0 +1,3 @@
+# 原圖驗收與繼續製作
+
+Root已查看完整原圖。對岸弧形火光與舊城房屋符合相關示意；匿名chibi及遠處小光點不作精密重建。 Jev PASS，原圖SHA 11b5c80dfedfe3c8ef53c6d61ff64a705a4baa5d586b00d0ddf615ec12a754f5；selected keyframes/pf045-2-trim.jpg SHA c8337588305431cbb99d590285ed5a34dd0f2fe3cdcc1eff37289d32a0b6d700。累計actual 2，原失敗不清除、不重開次數。現在32KEEP，剩66全零actual各max3，原整集上限不變。

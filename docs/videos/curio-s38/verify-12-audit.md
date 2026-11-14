@@ -1,0 +1,13 @@
+# Curio S38 pf002/pf072 cheese-prompt static audit — PASS
+
+**Video SHA-256:** `b7aec196479b5e08656b26afc14a56035bfece3998cd90cad9707bf919ccf5ff` (`docs/videos/curio-s38/video.json`). This is a prompt-meaning/source pass, not an approval of a generated still.
+
+I checked the pinned GITenberg *Diary of Samuel Pepys* text at commit `68fcf49f70ee793b989a6fd0464264d55beb4451`, local `4200.txt` SHA-256 `3cd43a3c39ee72eb9c4a3657f1fcb1723afba291cedac176c65a39289483be5d`. Lines 65997–66002 say Batten first dug a garden pit for his wine, and Pepys added his office papers; in the evening Pepys and Sir W. Pen dug *another* for their wine, and Pepys added `my Parmazan cheese`. The text does not establish the cheese's size, price, packaging, or later retrieval.
+
+- `pf002` follows `pf001`, which identifies the second pit; `pf072` itself specifies the second pit after `pf071`. Both show adult hands lowering one compact Parmesan cheese beside wine vessels in that pit. Both paired narration lines retain Pepys's cheese and the shared wine; neither introduces a different owner, pit, or outcome.
+- The new wording calls for a continuous **uncut exterior rind** and an **entirely hidden interior**. If followed, it cannot show the exposed Swiss-style holes seen in the rejected `pf002` image. A compact wheel is an illustrative shape, not a sourced measurement; the small scale avoids the giant-wheel implication ruled out by the research. Hard Parmesan, its natural brownish rind, 1660s linen cuffs, garden soil, and wine vessels are visually plausible for the account. Faces and writing are excluded. No unsupported historical assertion was found in these two prompts.
+- `script.md` SHA-256 remains `e59ec137e3de3871e3b0e5063d8f6504d3eb2adb5fe22265eb3faa3d613d5951`; `claims.md` remains `f9de8d2771b62cc327f4e599f002af8f3278cfb0f39dbed201e7fdc857201d42`, the same hashes in the prior four-prompt audit. Fresh `node tools/video/cli.mjs lint --slug curio-s38 --json` exited 0 with **0 errors, 0 warnings**.
+
+A parsed-JSON comparison against the authenticated R8b2 snapshot (`ca2bb866b0fb452607f20764f652c715f1447bc226f9df0a28bfc3b1d73cb1fc`) finds only four changed leaves: `data.prompt` for `pf001`, `pf002`, `pf071`, and `pf072`. The exact prior `bdceef9a…` JSON was not retained, so this audit cannot independently prove that the *last* revision touched only `pf002`/`pf072`. It does establish the current prompt meanings and unchanged script/claims hashes.
+
+**Next visual check:** inspect a small generated pilot for an intact rind with no holes, adult 1660s hands, wine and cheese in the second pit, and no invented lettering. No image was generated or approved in this audit. No repository files were edited.
