@@ -9,8 +9,8 @@
   1. **線條**：前景主體改用暖深褐色（warm-sepia）有粗細收尖變化的手繪墨線，不用粗黑死板向量框線；背景完全不畫黑框線。
   2. **光影**：窗邊斜射暖金陽光（warm golden directional window sunlight），在髮絲、眼鏡框、連帽邊緣與道具倒角打出明亮金邊輪廓光（glowing rim light），空氣帶微細光塵（subtle volumetric dust motes）。
   3. **景深**：前景角色與桌面道具銳利聚焦，背景做奶油感淺景深散景虛化（creamy shallow depth-of-field painterly bokeh）。
-  4. **材質與色盤**：保留系列色盤（暖奶油底、墨藍、芥末黃、印章紅），畫出厚塗水粉（rich gouache）筆觸、針織外套與雨衣的多層次布料摺皺陰影、木桌紋理、玻璃／壓克力透光折射、金屬高光與液體光澤，不做單色平塗色塊。
-  5. **零出錯硬規則**：全圖 100% 滿版無黑邊；嚴禁任何中英文字母、數字、招牌字或背景黑板粉筆亂碼；單人正反打不同框，`nobody: true` 純機制鏡頭零路人或殘肢；手指數（5 指）、眼神對焦與旁白提到的道具數量／比例 100% 精準吻合；匯入後必切 2 倍放大檢視圖由獨立子代理逐張審過。
+  4. **材質、色溫呼吸與圖解對比**：保留系列色盤（暖奶油底、墨藍、芥末黃、印章紅），畫出厚塗水粉（rich gouache）筆觸、針織外套與雨衣的多層次布料摺皺陰影、木桌紋理、玻璃／壓克力透光折射、金屬高光與液體光澤，不做單色平塗色塊。**防暖棕視覺疲勞**：室內對話每 6–8 鏡穿插明亮冷調藍天窗景、淺薄荷工作牆或深藍太空／工廠冷色場景讓眼睛換氣；**純機制／數量對比鏡改鋪淺奶油白或冷調日光灰桌面**，搭配墨藍、天藍、薄荷綠、珊瑚紅高對比道具（避免棕色污漬、金色小盒與暖黃橡木桌在手機小螢幕糊成一團）。
+  5. **零出錯與無字圖解連續性硬規則**：全圖 100% 滿版無黑邊；嚴禁任何中英文字母、數字、招牌字或背景黑板粉筆亂碼；單人正反打不同框，`nobody: true` 純機制鏡頭零路人或殘肢；手指數（5 指）、眼神對焦與旁白提到的道具數量／比例 100% 精準吻合；**所長手勢維持在胸前或桌面高度（禁止雙手在臉／眼鏡旁比框，以免把耳後黃鉛筆畫成懸浮雙頭鉛筆）**；同一個抽象單位（如「一盒 8 位元碼字」）全集鎖死同一種幾何外觀，截面比例採上下垂直投影對齊、非重量關係禁用翹翹板、反直覺損壞對比必加發光薄荷綠 `✓` 與珊瑚紅 `✕` 標記；匯入後必切 2 倍放大檢視圖由獨立子代理逐張審過。
 - **每鏡 Prompt 英文畫風基底句**：
   ```text
   High-craft 2D theatrical anime and rich gouache editorial illustration, 16:9 full-bleed edge-to-edge with zero borders. Delicate tapered warm-sepia ink linework on foreground subject (no heavy flat black outlines). Warm golden directional window sunlight casting glowing rim light along hair strands, glasses/hood, and object bevels, with subtle dust motes. Tactile multi-layered fabric fold shading, rich wood grain and material reflections. Creamy shallow depth-of-field painterly bokeh background with soft brushy edges and zero black outlines in the background. Clean blank surfaces with zero text or symbols.

@@ -7,6 +7,13 @@
 
 這份會自動同步到雲端硬碟兩個系列的 `_規則與教訓/教訓/解說系列共用教訓.md`（docs/videos/rules-sync）。
 
+## 2026-11-14 · sothatswhy-p12-qr-code · 成片獨立觀眾視角評分關卡（修完才推後台與備份）與八語 MiniMax 配音防呆
+站主定案「把觀眾評分加入流程，修完後才推後台跟備份」，將獨立觀眾體驗審查與 P12 八語逐句驗音抓出的跨系列規則收進兩個解說系列共用流程：
+- **成片獨立觀眾評分關卡（先修完再備份與 `review-push`）**：兩個解說系列在 `assemble` 與 `qa`（11/11）通過後，禁止直接備份或送審，必須先派**未參與撰稿與生圖的獨立子代理**扮演一般 YouTube 觀眾，同時檢視縮圖（含變體與八語縮圖）、標題說明欄、前 30 秒留存、無字插圖理解度、色溫節奏與收尾互動，寫出 `review/audience-review.md`（六項各 ≥ 7.5／10、總均 ≥ 8.0／10）；凡抓到縮圖裁切、圖解難懂、畫面疲勞或角色瑕疵，**一律先重繪／重組並重過 `qa` 11/11，確認零待修問題後才執行 Google Drive 完整備份與 `review-push --gate final`**。
+- **厚塗水粉畫風的色溫呼吸與淺冷底示意圖**：採用暖金窗光＋厚塗水粉後，避免連續十幾鏡維持同一種暖棕木桌色調；每 6–8 鏡應安排明亮冷調藍天窗景、戶外日光或深藍夜空／太空冷色場景換氣，且純機制／數量對比鏡優先用淺米白或冷灰桌面襯托高對比色道具，確保手機小螢幕一目了然。
+- **八語 MiniMax 配音（`dub --provider minimax`）跨語系發音防呆**：P12 八語共 1,272 句全數跑過 `check-audio --second-opinion` 抓出四類必防陷阱：(1) **印尼文（`id`）禁寫 `&`**：MiniMax 會把 `&` 唸成英文字母 `"FT"`，一律寫成 `dan`，並避開 `-k k-` 跨詞連音（如 `kotak kecil` 連音吞成 `kota kecil`）；(2) **越南文（`vi`）禁寫千分位句點 `.` 與全大寫詞**：`7.089`、`4.296` 會被當成小數點唸錯，四位數以上改寫成無分隔符 `7089` 或文字；全大寫強調詞（如 `CÙNG LÚC`）易被拼讀或糊音，一律用正常大小寫；單字母等級加分類詞（`mức H`），並避開聲調近音歧義（`hộp sửa`「修正盒」易聽成 `hộp sữa`「牛奶盒」，改用 `hộp cứu hộ`）；(3) **西／葡文（`es`／`pt`）單字母防連讀**：`Si H`／`Se H`／`Nível Q` 易與前後母音連讀成 `CH` 或 `nível que`，改寫為 `En nivel H`／`No nível Q`；(4) **泰文（`th`）緊窗口少塞英文縮寫**：泰語短句夾英文 `QR` 會觸發語種切換停頓而衝破 `fit.json` 時間窗，緊湊句優先用自然泰語指代（如 `ป้ายร้าน`）；若伺服器 Gemini ASR 偶發在轉寫開頭漏出 `"thought"` 觸發 `leaked word`，微調該句 1–2 字重錄即可刷新轉寫。
+- 已升為規則：`AGENTS.md`、`.agents/skills/curio-episode/SKILL.md`、`docs/videos/explainer-series/README.md`、`docs/videos/so-thats-why/dialogue-pilot-20261103/README.md` §9／§10.4／§10.8。
+
 ## 2026-11-14 · curio-m17／curio-p17／sothatswhy-p12 · 兩個解說系列全面改採「劇場級動畫光影×厚塗水粉質感」內建生圖與泰語 Hashtag 修正
 站主確認升級樣張後指定兩個旁白解說系列（奇聞檔案局、原來如此事務所）「以後用這樣的風格」，並同步收攏 `curio-m17` 抽檢與 `curio-p17` 實作抓到的跨系列規則：
 - **生圖路線（兩個系列全面停用 MiniMax 生圖）**：所有關鍵影格一律改由代理內建 `generate_image`（`AspectRatio: "16:9"`）生成，再以 `keyframes import --provider external --usd 0` 匯入，**嚴禁退回 MiniMax `image-01`**；遇到 `gemini-3.1-flash-image` 配額冷卻時，先完成八語翻譯、配音與 `check-audio`，分批等待配額恢復。`video.json` 仍保留 `"look": { "preset": "cute-mystery" }`（奇聞）或 `"cute-cartoon"`（原來如此）以通過系列身分與版型檢查。

@@ -189,7 +189,7 @@ metadata:
 2. `node tools/video/cli.mjs lint --slug <SLUG>`：**0 錯誤、0 警告**。
 3. 中文旁白（Gemini `Sulafat`，實測語速 ≥ 4.4 字／秒）→ `check-audio` → 送 `audio` 關卡；`music`（不足片長時 `--loop`）。
 4. 八語翻譯（`en,ja,ko,es,pt,id,vi,th`，獨立審校，泰文說明欄壓在 `< 4,500` UTF-8 bytes）→ `i18n-merge` → `dub --provider minimax`（0 fit overflow）→ 逐語 `check-audio` 並修正誤讀（若遇 `generate_image` 配額冷卻，優先把第 3–4 步全部跑完）。
-5. 角色設定圖＋全集關鍵影格以內建 `generate_image`（`16:9`）生成 → 四格 2x 放大獨立子代理逐張審過 → `keyframes import --provider external --usd 0` → `render`（逐張檢查 9 語縮圖）→ `clips` → `assemble` → `captions` → `qa`（11/11）→ `package`（4/4）→ 雲端硬碟備份與獨立位元組核對。
+5. 角色設定圖＋全集關鍵影格以內建 `generate_image`（`16:9`）生成 → 四格 2x 放大獨立子代理逐張審過 → `keyframes import --provider external --usd 0` → `render`（逐張檢查繁中與八語全部縮圖）→ `clips` → `assemble` → `captions` → `qa`（11/11）→ **獨立子代理成片觀眾視角評分（`review/audience-review.md`，六項各 ≥ 7.5、總均 ≥ 8.0；挑出縮圖裁切、色溫疲勞、低對比或無字圖解破綻一律先修完並重過 `assemble`＋`qa` 11/11）** → `package`（4/4）→ 雲端硬碟備份與獨立位元組核對 → `review-push --gate final`。
 6. Shorts：`docs/videos/SHORTS.md`。Shorts 一律 `from-episode`（頻道聲音）；手動 `build --redo` 一定帶 `--speech server`。
 
 ## 在雲端環境做旁白、配音與插圖匯入
@@ -212,7 +212,7 @@ metadata:
 
 1. `tts --slug <SLUG> --dry-run` 看句數與費用 → `tts --slug <SLUG>`（確認實測語速 ≥ 4.4 字／秒，不足加 `voice.tempo`）→ `check-audio --slug <SLUG>`。
 2. `check-audio` 標出唸錯的句子寫在 `review/check-flags.json`，`tts --slug <SLUG> --redo <check-flags.json>` 只重唸那幾句；speech journal 記著已付錢的句子，中斷後重跑不會重複收費。
-3. 重唸還錯（中文多音字、年份、外文數字或縮寫如 `St. Paul's`、西文千分位 `13,200`、日文逗號數字 `68,596`、印尼文 `666`）就改那一句的字，合併後重錄該句並重跑 `check-audio` 確認。改了中文旁白就要重新跑盲評 `narrative` 與 `script --slug`。
+3. 重唸還錯（中文多音字、年份、外文數字或縮寫如 `St. Paul's`、西文千分位 `13,200`、日文逗號數字 `68,596`、印尼文 `666`；以及 MiniMax 常見坑：**印尼文禁寫 `&` 必展開為 `dan`**、**越南文千分位禁寫 `.` 改空格且全大寫縮寫改小寫音讀**、**西葡單字母等級前避開同母音連音吞字**、**泰文窄時間窗避開音節過長的外來縮寫**）就改那一句的字，合併後重錄該句並重跑 `check-audio` 確認。改了中文旁白就要重新跑盲評 `narrative` 與 `script --slug`。
 4. 同一集的 `tts`、`dub` 與 `check-audio` 會共用 speech lock（「the project is held by …」，結束碼 3）：**同一集一次只跑一個語音指令**（外語 `check-audio` 一次跑一個 `--locale`，每個約 2.5 分鐘）。
 
 **插圖生成、2x 放大審圖與匯入（2026-11-14 現行流程）**
@@ -225,8 +225,8 @@ metadata:
 **配樂與成片**
 
 1. `music --slug <SLUG>`（`--dry-run` 先看價，一首約 US$0.08）→ `render` → `clips`（全是靜圖加運鏡，不花錢，
-   但 `assemble` 一定要它的 manifest）→ `assemble`（一集約 15 分鐘，4 核心一次跑一集）→ `captions` → `qa`
-   → `review-push --gate final`。
+   但 `assemble` 一定要它的 manifest）→ `assemble`（一集約 15 分鐘，4 核心一次跑一集）→ `captions` → `qa`（11/11）
+   → **獨立子代理成片觀眾視角評分（`review/audience-review.md`，問題全數修完並重過 `qa` 11/11）** → `package` → 雲端硬碟完整備份與獨立核對 → `review-push --gate final`（站主 2026-11-14 定案：修完觀眾評分問題後才推後台跟備份）。
 2. `render` 用 Playwright 開瀏覽器。容器預裝的 Chromium 版本可能比 repo 的 Playwright 舊，報「Executable doesn't
    exist」時不要 `playwright install`：在暫存目錄建一個 `PLAYWRIGHT_BROWSERS_PATH`，把預裝的 headless shell
    接成 Playwright 要的版本號資料夾（`chrome-headless-shell-linux64/chrome-headless-shell` 指到預裝的

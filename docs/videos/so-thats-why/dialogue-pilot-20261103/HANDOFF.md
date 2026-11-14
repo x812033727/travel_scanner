@@ -13,7 +13,7 @@
 - 角色設定圖沿用系列的（`video.json` 的 `series`，見 [`../series-sheets/README.md`](../series-sheets/README.md)）。
 - 翻譯合併後一定跑 `render --thumbnails-only`，看過八張語言縮圖才打包。
 - 第一次 `qa` 之前先 `review-push --report-only`，否則「有示範」會被當教學片。
-- **備份**（2026-11-10 起改傳雲端硬碟）：送審 `final` 前把整個工作目錄（重製要用的所有檔案：`audio/`、`dubs/`、`keyframes/`、`characters/`、`frames/`、`clips/`、`build/`、時間軸、清單、核准紀錄與 `upload/`）完整傳到雲端硬碟 `AI/備份/AI劇/原來如此事務所/<主題分類>/<P集數>/製作檔/<slug>/` 並逐檔核對數量與雜湊（[`../../AI-DRAMA-DRIVE.md`](../../AI-DRAMA-DRIVE.md)）。
+- **成片觀眾視角評分與備份順序**（2026-11-10 起改傳雲端硬碟；2026-11-14 加入成片觀眾審片關卡）：`assemble`＋`qa`（11/11）後**必先派未參與製作的獨立子代理完成成片觀眾視角評分（`review/audience-review.md`，六項各 ≥ 7.5、總均 ≥ 8.0）**，凡挑出縮圖裁切、色溫疲勞、低對比、無字圖解難懂或角色破綻，**一律先修完並重過 `qa`（11/11）**；全部修完確認無誤後，才把整個工作目錄（重製要用的所有檔案：`audio/`、`dubs/`、`keyframes/`、`characters/`、`frames/`、`clips/`、`build/`、時間軸、清單、核准紀錄與 `upload/`）完整傳到雲端硬碟 `AI/備份/AI劇/原來如此事務所/<主題分類>/<P集數>/製作檔/<slug>/` 並逐檔核對數量與雜湊（[`../../AI-DRAMA-DRIVE.md`](../../AI-DRAMA-DRIVE.md)），最後才執行 `review-push --gate final`。
 - 回報用繁體中文；單集製作不開 PR，除非站主說。
 
 ## 各集狀態
@@ -28,7 +28,7 @@
 
 P07、P14 後台各有一個沒有音檔的語言包待核准，站主不要核准（舊的核准仍有效）。
 
-## 怎麼做一集（摘要，細節在 README 第 9 節與第 10.7 節）
+## 怎麼做一集（摘要，細節在 README 第 9 節與第 10.7–10.8 節）
 
 1. 從題庫或 [`../refresh-20261101/EPISODES.md`](../refresh-20261101/EPISODES.md) 挑題，`npm run tasks -- new … --area docs`、`claim`。
 2. 撰稿照對話版規格寫 `brief.md`（`## 站主觀點` 寫「只借來做什麼」，不寫「不講」）、`claims.md`、`build_scenes.py`（語速 ≥ 4.4 字／秒，10 分鐘正文約 2,700–2,900 字；頂層設 `"pauses": {"line_ms": 0, "scene_ms": 150}`、`"still_motion": "beat"`）。
@@ -36,7 +36,7 @@ P07、P14 後台各有一個沒有音檔的語言包待核准，站主不要核�
 4. `tts`（Gemini `Sulafat`＋`Leda`）→ `check-audio` → 核准聲音 → `look`（沿用系列設定圖）。
 5. 關鍵影格用代理內建 `generate_image`（`16:9` 滿版，套用 [`../look.md`](../look.md) 的「劇場級動畫光影 × 厚塗水粉質感」基底句與角色設定圖參考）逐批生圖，再用 `keyframes import --provider external --usd 0` 匯入（嚴禁用 MiniMax 生圖）。
 6. 切 2 倍放大檢視圖由獨立子代理逐張審過（SCORECARD 分鏡評分 ≥ 49／70，各項 ≥ 6，零文字亂碼、眼睛手指正常、道具數量與幾何結構 100% 正確）→ 核准分鏡。
-7. 八語翻譯（`en,ja,ko,es,pt,id,vi,th`，帶定版系列譯名後綴）→ `i18n-merge` → 獨立審稿 → `dub --provider minimax` 八語配音（`fit.json` 超時就縮句重跑）→ `check-audio` → `render`（檢查繁中與八語共 9 張縮圖）→ `clips` → `assemble` → `captions` → `package` → `qa`（11/11 全過）→ 完整備份至 Google Drive → `review-push --gate final`。
+7. 八語翻譯（`en,ja,ko,es,pt,id,vi,th`，帶定版系列譯名後綴）→ `i18n-merge` → 獨立審稿 → `dub --provider minimax` 八語配音（`fit.json` 超時就縮句重跑）→ `check-audio` → `render`（逐張檢視繁中含 A/B 變體與八語全部縮圖）→ `clips` → `assemble` → `captions` → `package` → `qa`（11/11 全過）→ **獨立子代理成片觀眾視角評分（`review/audience-review.md`）→ 瑕疵全數修完並重過 `qa`（11/11）** → 完整備份至 Google Drive（獨立代理核對 0 漏檔）→ `review-push --gate final`。
 
 ## 還沒做完的票
 
