@@ -62,6 +62,8 @@ EXTRA = {  # zoom check R1: off-model chief
     "outro-wave": ", cute chibi cartoon proportions with a big round head exactly like her reference sheet, simple cartoon eyes behind round black glasses, solid jet-black hair, small round ears",
     "kid-coin-q": ", cute chibi cartoon proportions with a big round head, a small girl of eight with black hair",
     "chief-no": ", cute chibi cartoon proportions with a big round head exactly like her reference sheet, simple cartoon eyes behind round black glasses, solid jet-black hair, small round ears",
+    "chief-brush-why": ", cute chibi cartoon proportions with a big round head exactly like her reference sheet, simple cartoon eyes behind round black glasses, solid jet-black hair, small round ears",
+    "chief-peg": ", cute chibi cartoon proportions with a big round head exactly like her reference sheet, simple cartoon eyes behind round black glasses, solid jet-black hair, small round ears",
     "chief-map": ", cute chibi cartoon proportions with a big round head exactly like her reference sheet, simple cartoon eyes behind round black glasses, solid jet-black hair, small round ears",
 }
 REWRITE = {  # zoom check R1 (2026-11-12)
@@ -105,6 +107,10 @@ def scene(id, prompt, *lines, chapter=None):
     S[-1]["data"]["nobody"] = True  # PR #2028: no person or face in an object-only shot
 def k(t, e=None, tag=None): return ("kid", t, e, tag)
 def c(t, e=None, tag=None): return ("chief", t, e, tag)
+# Lines added after the ids were fixed (2026-11-14, the toothbrush segment) take the previous line's number plus a
+# letter (p125a, p125b, ...), so every existing line keeps its id and claims.md keeps its line references.
+def kn(t, e=None, tag=None): return ("kid", t, e, tag, True)
+def cn(t, e=None, tag=None): return ("chief", t, e, tag, True)
 
 def C(action, close=False):
     return ("Head-and-shoulders close-up" if close else "Waist-up medium shot") + " of the chief " + action + ", " + WALL + ", " + DAY
@@ -335,6 +341,27 @@ obj("wheel-far", "Wide shot of a very long blue plastic tub of water seen from a
 chief("chief-cardfar", C("holding up " + CARD + " between two fingers with a bright smile"),
     c("一款做車票用的卡片晶片，規格寫最遠大約十公分，"),
     c("而且還要看卡片的線圈，和閘門那一邊。", None, "P:cardfar"))
+# 2026-11-14: the electric toothbrush (Explain that Stuff, claims.md C30): the same two coils at home, why the
+# bathroom uses it (safety: no plug or exposed wire on a brush that gets wet) and how its peg keeps the coils close
+# and aligned, which leads into "鍋子也要放正中間嗎？".
+TBRUSH = "a plain white electric toothbrush"
+TSTAND = "a small round plain white charging stand"
+obj("brush-stand", "Close-up of " + TBRUSH + " standing upright on " + TSTAND + " on a light bathroom counter beside a small sink, both smooth and unmarked, a tiny soft green glow at the foot of the stand",
+    kn("我的電動牙刷，也是放上去就充！", "聯想"),
+    cn("對，同一招。底座裡有一圈線，牙刷底部也有一圈。"))
+chief("chief-brush-why", C("holding up " + TBRUSH + " in one hand with a kind smile"),
+    kn("為什麼牙刷要這樣充？", "句尾上揚", "S:brush"),
+    cn("一個科普網站說，最主要是為了安全。"),
+    cn("浴室很濕，牙刷常常是濕的。"))
+obj("brush-wet", "Close-up of " + TBRUSH + " standing on " + TSTAND + " on a wet bathroom counter, small shiny water droplets on the toothbrush and on the stand, the stand a smooth seamless plastic shell all over, a small sink beside it",
+    cn("這樣充電，牙刷底下沒有插頭，也沒有露出來的電線。", None, "P:brush"),
+    cn("電動刮鬍刀常用這種充電，也是同一個原因。"))
+obj("brush-peg", "Close-up cutaway of " + TSTAND + " drawn cut open, inside it a neat coil of shiny copper wire wound around a short grey peg rising from its middle, the bottom of " + TBRUSH + " sitting over the peg with its base also cut open to show a second small copper coil ringing the same peg, a soft pale blue glow between the two coils, plain pale cream background",
+    cn("而且充電的底座上，有一根包著塑膠的小鐵柱。"),
+    cn("牙刷一放上去，那圈線就剛好圍著鐵柱。"))
+chief("chief-peg", C("resting " + TBRUSH + " upright on " + TSTAND + " on a table in front of her with a pleased smile"),
+    cn("兩圈線又近又正，鐵柱還把磁場集中送過去。"),
+    cn("所以牙刷站得穩穩的，不會像手機那樣滑開。"))
 kid("kid-potcenter-q", K("pointing at " + POT + " on " + HOB + " with a curious face", where=KITCHEN),
     k("鍋子也要放正中間嗎？", "句尾上揚", "S:potcenter"))
 obj("pot-center", "Close-up of " + POT + " sitting neatly in the middle of " + HOB + ", seen from above",
@@ -388,16 +415,20 @@ WHAT = {"jump": "沒有插線，電怎麼跑過去", "heat": "為什麼只有鍋
         "phonewarm": "手機充電會不會變熱", "pot": "鍋子為什麼那麼燙",
         "potloop": "鍋子裡有沒有細線", "metal": "金屬鍋是不是都可以",
         "cardcool": "卡片也有電在跑，為什麼不燙", "stopped": "手機震了一下，為什麼沒在充",
-        "far": "離遠一點會怎樣", "lift": "鍋子拿起來會怎樣", "coin": "硬幣放上充電板會不會像鍋子一樣熱", "potcenter": "鍋子要不要放正中間", "talk": "卡片沒電池怎麼回話"}
+        "far": "離遠一點會怎樣", "lift": "鍋子拿起來會怎樣", "coin": "硬幣放上充電板會不會像鍋子一樣熱", "potcenter": "鍋子要不要放正中間", "talk": "卡片沒電池怎麼回話",
+        "brush": "電動牙刷為什麼要用這種方式充電"}
 # Latin terms the Mandarin voice must spell letter by letter (P13 GPS, P29 HTTPS/TLS). This episode says
 # 無線充電／感應卡／電磁爐 and never a brand or standard name, so no spoken line carries a Latin letter; the loop
 # stays so a later edit that adds one is spelled and carries say_for.
 SAY = []
-scenes, loops_s, loops_p, n, beats = [], {}, {}, 0, 0
+scenes, loops_s, loops_p, n, beats, sub = [], {}, {}, 0, 0, ""
 for sc in S:
     lines = []
-    for sp, text, emo, tag in sc["lines"]:
-        n += 1; lid = f"p{n:03d}"
+    for sp, text, emo, tag, *added in sc["lines"]:
+        if added:
+            sub = chr(ord(sub) + 1) if sub else "a"; lid = f"p{n:03d}{sub}"
+        else:
+            n += 1; lid = f"p{n:03d}"; sub = ""
         line = {"id": lid, "speaker": sp, "text": text}
         spoken = text
         for term, spell in SAY:
@@ -461,6 +492,7 @@ doc = {
         {"title": "U.S. Department of Energy, Making the Switch to Induction Stoves or Cooktops (2023-05-11)", "url": "https://www.energy.gov/articles/making-switch-induction-stoves-or-cooktops", "checked_on": CHECKED},
         {"title": "ENERGY STAR, Electric Cooking Products", "url": "https://www.energystar.gov/products/electric_cooking_products", "checked_on": CHECKED},
         {"title": "Iowa State University Extension AnswerLine, Induction Cooking – What You Need to Know (2022-06-07) and Portable Induction Burners (2019-09-30)", "url": "https://blogs.extension.iastate.edu/answerline/tag/induction-cooking", "checked_on": CHECKED},
+        {"title": "Explain that Stuff (Chris Woodford), Wireless chargers (last updated 2023-04-28)", "url": "https://www.explainthatstuff.com/inductionchargers.html", "checked_on": "2026-11-14"},
         {"title": "UC Cooperative Extension, Safety Note #14: Induction Stove Safety", "url": "https://www.ccfruitandnuts.ucanr.edu/sites/default/files/2017-09/270568.pdf", "checked_on": CHECKED},
     ],
     "assets": [],
@@ -486,8 +518,8 @@ lines_all = [l for s in scenes for l in s["lines"]]
 est = chars / RATE + 0.15 * (len(scenes) - 1) + BEAT_MS / 1000 * beats
 per_shot = sorted(len(s["lines"]) for s in scenes)
 shot_secs = sorted(sum(length(l["text"]) for l in s["lines"]) / RATE for s in scenes)
-print(f"scenes {len(scenes)} shots {len(scenes)} lines {n} chars {chars} (body {body_chars}, body Han {body_han}) kid {kidc / chars:.0%} of chars, "
-      f"{sum(l['speaker'] == 'kid' for l in lines_all) / n:.0%} of lines; est {est / 60:.1f} min at {RATE}/s "
+print(f"scenes {len(scenes)} shots {len(scenes)} lines {len(lines_all)} chars {chars} (body {body_chars}, body Han {body_han}) kid {kidc / chars:.0%} of chars, "
+      f"{sum(l['speaker'] == 'kid' for l in lines_all) / len(lines_all):.0%} of lines; est {est / 60:.1f} min at {RATE}/s "
       f"(+{len(scenes) - 1} scene gaps, {beats} beats, before the 11.9 s intro); loops {len(loops)}; "
       f"median lines a shot {per_shot[len(per_shot) // 2]}, median shot {shot_secs[len(shot_secs) // 2]:.1f} s", file=sys.stderr)
 chap_t, chap = {}, None

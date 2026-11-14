@@ -3,7 +3,7 @@
 對應 [`brief.md`](brief.md) 的「查核清單」。每一條列出片中怎麼說（行號）、來源原文與注意事項，並標出它是
 **官方說明**、**教材**、**廠商規格**、**推廣教育**、**撰稿推論**、**常識**，還是**比喻／示意**。撰稿只用「可用說法」裡的數字與說法；逐行查核等另一個代理寫 `verify-1.md`。
 
-**行號**以現行 `video.json` 為準（p001–p152，2026-11-13 照新頻道規則把小問字數壓到兩成以下、開場第二句就問核心問題後重新編號；之前是 p001–p165，verify-1 修正與四輪盲評改寫後的版本；verify-1 查的第一版是 p001–p175）；`script.md` 是它的可讀版。2026-11-12 由 `verify-2.md` 的查核代理把各列行號換成現行編號，引文不動。第一版的 C21（能源之星的效率比較）與 C27（電池太熱先不充過八成）兩段在現行版整段刪掉，標成「現行版未使用」；C15、C28、C29 也有部分句子刪掉或改寫，在該列註明。
+**行號**以現行 `video.json` 為準（p001–p152，外加 2026-11-14 為了正文回到八分鐘以上補的電動牙刷一段 p125a–p125k（C30），原有行號不動；2026-11-13 照新頻道規則把小問字數壓到兩成以下、開場第二句就問核心問題後重新編號；之前是 p001–p165，verify-1 修正與四輪盲評改寫後的版本；verify-1 查的第一版是 p001–p175）；`script.md` 是它的可讀版。2026-11-12 由 `verify-2.md` 的查核代理把各列行號換成現行編號，引文不動。第一版的 C21（能源之星的效率比較）與 C27（電池太熱先不充過八成）兩段在現行版整段刪掉，標成「現行版未使用」；C15、C28、C29 也有部分句子刪掉或改寫，在該列註明。
 
 ## 先看這裡：找不到來源、因此沒講或小心講的事
 
@@ -33,6 +33,7 @@
 - [13] ENERGY STAR〈Electric Cooking Products〉：200（53,127 bytes），讀 Consider the benefits of induction、Additional product features、Tips 段。
 - [14] Iowa State University Extension AnswerLine 標籤頁〈Induction cooking〉：200（89,461 bytes），內含 Marlene Geiger〈Induction Cooking – What You Need to Know〉（2022-06-07）與 Marcia Steed〈Portable Induction Burners〉（2019-09-30）兩篇全文。
 - [15] UC Cooperative Extension〈Safety Note #14: Induction Stove Safety〉（UCCE Solano County，PDF）：200（116,492 bytes），讀全文。
+- [16] Explain that Stuff（Chris Woodford）〈Wireless chargers〉（Last updated: April 28, 2023）：**2026-11-14** 重開，curl GET 200（66,095 bytes），HTML 去標籤後讀開頭、Ordinary chargers、Induction chargers 三段（C30）。
 - 舊素材（A68 的 `topic-checks/s3-A64-A75.md`、A45 的 `season2/A45.md` 與 `topic-checks/s2-A39-A50.md`、S78 的 `refresh-20261101/new-topics.json`）只當線索；上面每一筆都是今天重開。A45 舊查核用過的 Qi2 新聞稿、iFixit 實測、Apple 120619 屬於速度與效率排行，企劃要刪，這次沒有重讀、片中沒用。
 
 ---
@@ -234,6 +235,19 @@
 - **原文**：[1]「Since eddy currents and magnetic damping occur only in conductors」（金屬在變化的磁場中會有渦電流，見 C16）[9]「In order to enable a Power Transmitter to monitor the power loss across the interface as one of the possible methods to limit the temperature rise of Foreign Objects, the BQ51013B reports its Received Power to the Power Transmitter.」「In the WPC1.2 specification, foreign object detection (FOD) is enforced.」[15]「Do not let sugar, plastic, or aluminum foil on or near the stove when it's on.」[11] 見 C14。
 - **注意**：「可能會」照 [9] 的「limit the temperature rise of Foreign Objects」（金屬異物會升溫，所以要偵測）。「無線充電的規格」＝ WPC 1.2，不念名稱。p137 小問想試，p138 所長明說不行（現行版是「不行喔。金屬會變燙，硬幣、鋁箔都別放上去。」，「放上去」指充電板；第一版的「卡片」與「或爐子」拿掉了，卡片不放充電板由 C14 的 p070–p073 講，說明欄仍寫卡片、硬幣、鋁箔與其他金屬都別放在充電板或電磁爐上）。p134 照 verify-1 F02 改成「金屬在一直變的磁場裡」。片中**沒有**任何建議把金屬、卡片或鋁箔放上充電板或電磁爐的說法。
 
+## C30 電動牙刷也是兩圈線隔空充電；在浴室用它主要是為了安全；底座的小鐵柱讓兩圈線又近又正、把磁場集中送進牙刷【科普網站＋撰稿推論】（2026-11-14 新增）
+
+- **可用說法**：p125a–p125k（第四章 p125 之後、p126「鍋子也要放正中間嗎？」之前；新句接在 p125 後面編 p125a 起，原有行號都不動）
+- **來源**：[16]；「同一招」另依 [8] Principle（C10）
+- **原文**：[16]「it's the power behind everything from rechargeable toothbrushes and phone charging mats」「An electric toothbrush and its charger use a transformer … but it's cleverly split into two pieces, with half the transformer in the bottom of the toothbrush and the rest of it in the charger base it stands on」「The primary coil is in the charger base and it has an iron peg on top of it covered in plastic. The secondary coil is in the base of the toothbrush, which you stand on the iron peg. What's the peg for? It's not just to stop the toothbrush wobbling about: it's the core that links the primary and secondary coils together electromagnetically. More technically, the core concentrates the magnetism (magnetic "flux") from the primary coil into the secondary coil so energy is passed more efficiently」「It's fitted at the very base of the brush and sits around the little iron peg on the charger stand when the brush is sitting on its base.」「Safety is the main reason for using an induction charger in the bathroom: you don't need a power cable or exposed leads coming out of the base of your toothbrush, which typically gets wet. Electric shavers often use induction chargers for the same reason.」
+- **注意**：
+  1. p125b「同一招」＝牙刷與充電板都是 induction charger（[16]「toothbrushes and phone charging mats」），原理同 C10。
+  2. p125d「一個科普網站說」＝ Explain that Stuff，不念網站名；「最主要是為了安全」照「Safety is the main reason」。p125e「浴室很濕」是常識，「牙刷常常是濕的」照「which typically gets wet」。
+  3. p125f「沒有插頭，也沒有露出來的電線」＝「you don't need a power cable or exposed leads」；不說「完全防水」，來源沒有寫防水等級。p125g 電動刮鬍刀照「often … for the same reason」，用「常用」不說「都用」。
+  4. p125h–p125i 鐵柱與線圈的位置是 [16] 描述的那種牙刷（圖文是一款有小柱子的充電座）；片中說「充電的底座上」，**不說每一款電動牙刷都有鐵柱**。p125j「鐵柱還把磁場集中送過去」＝「the core concentrates the magnetism … into the secondary coil」；「又近又正」是**撰稿推論**（線圈套在同一根柱子上，對應 C23 的距離與對正）。
+  5. p125k「牙刷站得穩穩的，不會像手機那樣滑開」是**撰稿推論**：[16] 說鐵柱「not just to stop the toothbrush wobbling about」，表示它也讓牙刷不晃；「像手機那樣滑開」回呼 p112–p113 的故事情境（C22）。
+  6. 插圖 `brush-peg` 的剖面是示意，不是某一款產品的結構圖。
+
 ## C29 收尾、看法與留言題【撰稿／示意】
 
 - p139–p146：小問用自己的話說答案（p142–p143 一直在變的磁場推著線圈和鍋底的電；現行版 p144–p146 改成「卡片、手機、鍋子，接收的東西不一樣，做的事就不一樣！」，第一版的「卡片拿去回答、手機存起來、鍋子變成熱」刪掉；p145 的說法見 verify-2.md N01），回收 p002、p010。
@@ -258,3 +272,4 @@
 13. ENERGY STAR, Electric Cooking Products, https://www.energystar.gov/products/electric_cooking_products
 14. Iowa State University Extension and Outreach, AnswerLine: Induction Cooking – What You Need to Know (M. Geiger, 2022-06-07); Portable Induction Burners (M. Steed, 2019-09-30), https://blogs.extension.iastate.edu/answerline/tag/induction-cooking
 15. UC Cooperative Extension (Solano County), Safety Note #14: Induction Stove Safety, https://www.ccfruitandnuts.ucanr.edu/sites/default/files/2017-09/270568.pdf
+16. Chris Woodford, Explain that Stuff, Wireless chargers (last updated 2023-04-28), https://www.explainthatstuff.com/inductionchargers.html （見 C30，2026-11-14 重開）

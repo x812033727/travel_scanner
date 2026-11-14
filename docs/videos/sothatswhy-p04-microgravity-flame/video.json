@@ -63,7 +63,7 @@
  "loops": [
   {
    "setup": "p003",
-   "payoff": "p149",
+   "payoff": "p159",
    "what": "影片裡那團火為什麼圓圓的"
   },
   {
@@ -83,12 +83,12 @@
   },
   {
    "setup": "p010",
-   "payoff": "p119",
+   "payoff": "p129",
    "what": "哪一團火熄了以後還在燒"
   },
   {
    "setup": "p011",
-   "payoff": "p147",
+   "payoff": "p157",
    "what": "人一直在掉，火為什麼也跟著變了"
   },
   {
@@ -113,7 +113,7 @@
   },
   {
    "setup": "p041",
-   "payoff": "p141",
+   "payoff": "p151",
    "what": "能不能叫零重力"
   },
   {
@@ -172,23 +172,28 @@
    "what": "太空裡的火會不會一直燒下去"
   },
   {
-   "setup": "p110",
+   "setup": "p109",
    "payoff": "p117",
+   "what": "太空站失火了要怎麼滅"
+  },
+  {
+   "setup": "p120",
+   "payoff": "p127",
    "what": "火熄了是不是就不燒了"
   },
   {
-   "setup": "p121",
-   "payoff": "p122",
+   "setup": "p131",
+   "payoff": "p132",
    "what": "冷焰摸起來是不是冰的"
   },
   {
-   "setup": "p127",
-   "payoff": "p129",
+   "setup": "p137",
+   "payoff": "p139",
    "what": "為什麼要到太空才看得清楚冷焰"
   },
   {
-   "setup": "p133",
-   "payoff": "p137",
+   "setup": "p143",
+   "payoff": "p147",
    "what": "太空裡的火是不是都一樣"
   }
  ],
@@ -1730,6 +1735,128 @@
    ]
   },
   {
+   "id": "chief-putout",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief listening with a serious kind face, one hand raised in a calm careful gesture, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p109",
+     "speaker": "kid",
+     "text": "太空站失火了，要怎麼滅？",
+     "emotion": "擔心"
+    },
+    {
+     "id": "p110",
+     "speaker": "chief",
+     "text": "美國太空總署說，滅太空的火，要看火的樣子和燒的東西。",
+     "emotion": "接住上一句"
+    }
+   ]
+  },
+  {
+   "id": "chief-worse",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief gently wagging one index finger with a careful serious face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p111",
+     "speaker": "chief",
+     "text": "在地上好用的滅火方法，到太空可能沒用，",
+     "emotion": "認真"
+    },
+    {
+     "id": "p112",
+     "speaker": "chief",
+     "text": "甚至讓火更糟。所以比較大的火，他們不在太空站上燒。"
+    }
+   ]
+  },
+  {
+   "id": "cargo-ship",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of one small simple cute cartoon cargo spaceship shaped like a short white cylinder with two round solar panels, drifting alone in deep blue space, a big round blue and green planet curve at the bottom of the frame, deep blue space above, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p113",
+     "speaker": "chief",
+     "text": "等貨運太空船離開、上面沒有人了，才點火研究。"
+    },
+    {
+     "id": "p114",
+     "speaker": "chief",
+     "text": "這樣燒大一點的火，太空人也不會有危險。"
+    }
+   ]
+  },
+  {
+   "id": "cloth-flame",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up through a round window into a dim empty grey metal room, one long strip of pale cloth held flat in a thin metal frame in the middle, a thin line of small soft blue and orange flame creeping slowly along the cloth, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p115",
+     "speaker": "chief",
+     "text": "他們發現，把艙裡的空氣變稀一點，火就蔓延得比較慢。"
+    },
+    {
+     "id": "p116",
+     "speaker": "chief",
+     "text": "這些研究，幫忙挑選太空船裡用的材料，"
+    }
+   ]
+  },
+  {
+   "id": "chief-earth-safe",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief smiling warmly with one hand on her heart, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p117",
+     "speaker": "chief",
+     "text": "也讓地上的防火更安全。"
+    },
+    {
+     "id": "p118",
+     "speaker": "chief",
+     "text": "有一組研究滅火藥劑的實驗，還發現了一件怪事。",
+     "emotion": "賣關子"
+    }
+   ]
+  },
+  {
    "id": "kid-out-q",
    "template": "shot",
    "data": {
@@ -1742,13 +1869,13 @@
    },
    "lines": [
     {
-     "id": "p109",
+     "id": "p119",
      "speaker": "kid",
      "text": "火熄了，",
      "emotion": "篤定"
     },
     {
-     "id": "p110",
+     "id": "p120",
      "speaker": "kid",
      "text": "就是不燒了吧？",
      "emotion": "章尾停住，句尾上揚"
@@ -1769,7 +1896,7 @@
    },
    "lines": [
     {
-     "id": "p111",
+     "id": "p121",
      "speaker": "chief",
      "text": "太空站上有一組實驗，發現不一定。",
      "emotion": "接住上一句"
@@ -1788,7 +1915,7 @@
    },
    "lines": [
     {
-     "id": "p112",
+     "id": "p122",
      "speaker": "chief",
      "text": "他們讓一小滴燃料自己飄著，用燒熱的電線點火。"
     }
@@ -1806,12 +1933,12 @@
    },
    "lines": [
     {
-     "id": "p113",
+     "id": "p123",
      "speaker": "chief",
      "text": "有一次，一滴大約四公釐的燃料，先燒出看得見的火，"
     },
     {
-     "id": "p114",
+     "id": "p124",
      "speaker": "chief",
      "text": "燒了大約十五秒，那團火忽然熄了。"
     }
@@ -1830,7 +1957,7 @@
    },
    "lines": [
     {
-     "id": "p115",
+     "id": "p125",
      "speaker": "kid",
      "text": "火都滅了，還有什麼好看？",
      "emotion": "不以為意"
@@ -1849,14 +1976,14 @@
    },
    "lines": [
     {
-     "id": "p116",
+     "id": "p126",
      "speaker": "chief",
      "text": "相機拍不到火了。可是，",
      "emotion": "賣關子",
      "pause_after_ms": 500
     },
     {
-     "id": "p117",
+     "id": "p127",
      "speaker": "chief",
      "text": "量熱的儀器發現，那一滴燃料還在發熱。"
     }
@@ -1875,13 +2002,13 @@
    },
    "lines": [
     {
-     "id": "p118",
+     "id": "p128",
      "speaker": "chief",
      "text": "而且那一滴還在變小，只是變得慢一點。",
      "pause_after_ms": 500
     },
     {
-     "id": "p119",
+     "id": "p129",
      "speaker": "chief",
      "text": "研究的人，把它叫做冷焰。"
     }
@@ -1900,13 +2027,13 @@
    },
    "lines": [
     {
-     "id": "p120",
+     "id": "p130",
      "speaker": "kid",
      "text": "火也有冷的？",
      "emotion": "好奇"
     },
     {
-     "id": "p121",
+     "id": "p131",
      "speaker": "kid",
      "text": "摸起來是冰的嗎？",
      "emotion": "句尾上揚"
@@ -1926,13 +2053,13 @@
    },
    "lines": [
     {
-     "id": "p122",
+     "id": "p132",
      "speaker": "chief",
      "text": "不是冰的。它只是比一般的火溫度低，",
      "emotion": "笑"
     },
     {
-     "id": "p123",
+     "id": "p133",
      "speaker": "chief",
      "text": "幾乎看不見，卻還在燒。"
     }
@@ -1950,12 +2077,12 @@
    },
    "lines": [
     {
-     "id": "p124",
+     "id": "p134",
      "speaker": "chief",
      "text": "最後，那一滴縮到某個大小時，冷焰突然停了，"
     },
     {
-     "id": "p125",
+     "id": "p135",
      "speaker": "chief",
      "text": "剩下的那一滴，只是慢慢蒸發掉。"
     }
@@ -1974,13 +2101,13 @@
    },
    "lines": [
     {
-     "id": "p126",
+     "id": "p136",
      "speaker": "kid",
      "text": "為什麼要到太空，",
      "emotion": "追問"
     },
     {
-     "id": "p127",
+     "id": "p137",
      "speaker": "kid",
      "text": "才看得清楚？",
      "emotion": "句尾上揚"
@@ -2000,14 +2127,14 @@
    },
    "lines": [
     {
-     "id": "p128",
+     "id": "p138",
      "speaker": "chief",
      "text": "美國太空總署說，在地上做出的冷焰，很快就熄了；",
      "emotion": "接住上一句",
      "pause_after_ms": 500
     },
     {
-     "id": "p129",
+     "id": "p139",
      "speaker": "chief",
      "text": "在微重力裡燒得比較久，科學家才有機會研究。"
     }
@@ -2026,12 +2153,12 @@
    },
    "lines": [
     {
-     "id": "p130",
+     "id": "p140",
      "speaker": "chief",
      "text": "那本老師手冊也說，地上的對流，會把火的一些事蓋住。"
     },
     {
-     "id": "p131",
+     "id": "p141",
      "speaker": "chief",
      "text": "拿掉對流，火比較安靜，科學家更容易看懂它。"
     }
@@ -2050,13 +2177,13 @@
    },
    "lines": [
     {
-     "id": "p132",
+     "id": "p142",
      "speaker": "kid",
      "text": "太空的火，",
      "emotion": "追問"
     },
     {
-     "id": "p133",
+     "id": "p143",
      "speaker": "kid",
      "text": "是不是都會這樣？",
      "emotion": "句尾上揚"
@@ -2076,7 +2203,7 @@
    },
    "lines": [
     {
-     "id": "p134",
+     "id": "p144",
      "speaker": "chief",
      "text": "不是。同一組實驗，換掉周圍的氣體，結局就變了。",
      "emotion": "接住上一句"
@@ -2095,7 +2222,7 @@
    },
    "lines": [
     {
-     "id": "p135",
+     "id": "p145",
      "speaker": "chief",
      "text": "像是氧氣多一點，液滴燒到很小時，會自己爆開。"
     }
@@ -2114,14 +2241,14 @@
    },
    "lines": [
     {
-     "id": "p136",
+     "id": "p146",
      "speaker": "kid",
      "text": "所以火的樣子，",
      "emotion": "恍然",
      "pause_after_ms": 500
     },
     {
-     "id": "p137",
+     "id": "p147",
      "speaker": "kid",
      "text": "還要看旁邊是什麼氣體！"
     }
@@ -2140,7 +2267,7 @@
    },
    "lines": [
     {
-     "id": "p138",
+     "id": "p148",
      "speaker": "chief",
      "text": "對。那還記得零重力嗎？你自己判斷呢？",
      "emotion": "接住上一句"
@@ -2160,13 +2287,13 @@
    },
    "lines": [
     {
-     "id": "p139",
+     "id": "p149",
      "speaker": "kid",
      "text": "不能叫零重力！",
      "emotion": "得意"
     },
     {
-     "id": "p140",
+     "id": "p150",
      "speaker": "kid",
      "text": "重力一直在！"
     }
@@ -2185,7 +2312,7 @@
    },
    "lines": [
     {
-     "id": "p141",
+     "id": "p151",
      "speaker": "chief",
      "text": "對。美國太空總署也說，叫零重力會讓人誤會。"
     }
@@ -2204,13 +2331,13 @@
    },
    "lines": [
     {
-     "id": "p142",
+     "id": "p152",
      "speaker": "kid",
      "text": "太空人在掉，",
      "emotion": "推理"
     },
     {
-     "id": "p143",
+     "id": "p153",
      "speaker": "kid",
      "text": "那團火為什麼也變了？",
      "emotion": "章尾停住，句尾上揚"
@@ -2231,7 +2358,7 @@
    },
    "lines": [
     {
-     "id": "p144",
+     "id": "p154",
      "speaker": "chief",
      "text": "杯子、蠟燭你都看過了，你說呢？",
      "emotion": "笑"
@@ -2251,20 +2378,20 @@
    },
    "lines": [
     {
-     "id": "p145",
+     "id": "p155",
      "speaker": "kid",
      "text": "原來如此！",
      "emotion": "恍然大悟"
     },
     {
-     "id": "p146",
+     "id": "p156",
      "speaker": "kid",
      "text": "火和旁邊的空氣，一起在掉，",
      "emotion": "篤定",
      "pause_after_ms": 500
     },
     {
-     "id": "p147",
+     "id": "p157",
      "speaker": "kid",
      "text": "火就不會被拉成尖尖的！",
      "emotion": "篤定"
@@ -2284,14 +2411,14 @@
    },
    "lines": [
     {
-     "id": "p148",
+     "id": "p158",
      "speaker": "chief",
      "text": "說得好。我覺得最妙的是：",
      "emotion": "笑",
      "pause_after_ms": 500
     },
     {
-     "id": "p149",
+     "id": "p159",
      "speaker": "chief",
      "text": "讓杯子不漏水的那件事，也讓火變了樣子。"
     }
@@ -2310,7 +2437,7 @@
    },
    "lines": [
     {
-     "id": "p150",
+     "id": "p160",
      "speaker": "kid",
      "text": "我要拋杯子給媽媽看！",
      "emotion": "開心大聲"
@@ -2330,13 +2457,13 @@
    },
    "lines": [
     {
-     "id": "p151",
+     "id": "p161",
      "speaker": "chief",
      "text": "你在哪裡覺得自己飄了一下？",
      "emotion": "問句上揚，像聊天"
     },
     {
-     "id": "p152",
+     "id": "p162",
      "speaker": "chief",
      "text": "留言告訴我們。"
     }
@@ -2355,7 +2482,7 @@
    },
    "lines": [
     {
-     "id": "p153",
+     "id": "p163",
      "speaker": "chief",
      "text": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
      "emotion": "誠懇"

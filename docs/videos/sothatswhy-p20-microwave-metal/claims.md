@@ -3,7 +3,7 @@
 對應 [`brief.md`](brief.md) 的「查核清單」。每一條列出片中怎麼說（行號）、來源原文與注意事項，並標出它是
 **官方說明**、**教材**、**專家問答**、**廠商說明書**、**廠商支援頁**、**撰稿推論**、**常識**，還是**比喻／示意**。撰稿只用「可用說法」裡的數字與說法；逐行查核等另一個代理寫 `verify-1.md`。
 
-**行號**以現行 `video.json` 為準（p001–p150，第三版：2026-11-13 照頻道新規則把小問字數壓到 20% 以下、開場直接進題後重新編號；第二版是 p001–p166，第一版是 p001–p173）；`script.md` 是它的可讀版。
+**行號**以現行 `video.json` 為準（p001–p163，第四版：2026-11-14 在第四章 p130 之後加一段「空著開」p131–p143（C22），原 p131–p150 往後移 13 號成 p144–p163，下面的行號已照第四版改過；第三版 p001–p150：2026-11-13 照頻道新規則把小問字數壓到 20% 以下、開場直接進題後重新編號；第二版是 p001–p166，第一版是 p001–p173）；`script.md` 是它的可讀版。
 
 **第三版只刪改小問的話**（與接話所需的所長開頭字：p005 去掉「對，」、p013 去掉「是。」、p050 去掉「有點像。」、p070 去掉「也」、p076 去掉「對。」、p109 去掉「對。」），沒有新增或改動任何主張；下面每條的行號已照第三版重新對過。**第二版範圍 p001–p165**，2026-11-12 由 `verify-2.md` 的查核代理逐條對過：每條「可用說法」的行號都對得上現行台詞。整條或部分不再用到的說法標成「現行版未使用」，原文照留作紀錄。verify-2 的必改 F01（p150）若照改，行號不變，只有本檔 C16 的注意欄要跟著看。
 
@@ -29,6 +29,8 @@
 - [6] GE Appliances〈Spacemaker XL Microwave Oven JVM1542 Owner's Manual〉（49-40264，Printed in Korea）：200（677,360 bytes），讀 Safety Instructions（Arcing、Microwave-safe cookware、Foil）、Features、Shelf、Microwave terms、Troubleshooting。
 - [7] Amana Product Help〈General Arcing and Sparking - Over-the-Range Microwave〉：200（1,436,662 bytes），讀 Possible Solutions 全部。Amana 是 Whirlpool 集團的品牌。
 - [8] JennAir Product Help〈Can Metal or Aluminum Foil be Used in the Microwave〉：200（473,549 bytes），讀全文。JennAir 也是 Whirlpool 集團的品牌。
+- [9] Bloomfield〈What happens if you start the microwave oven with nothing inside?〉（2026-11-14 為 C22 新增並重讀）：200（62,204 bytes），讀全文。
+- [10] Bloomfield〈Why are you required to have an item in the microwave oven while it is operating?〉（1996-09-25，2026-11-14 為 C22 新增並重讀）：200（62,977 bytes），讀全文。另於 2026-11-14 重讀 [1]（200，52,964 bytes，Tips on Safe Microwave Oven Operation）與 [6]（Microwave-safe cookware 欄）給 C22。
 - 讀不到：USDA FSIS〈Cooking with Microwave Ovens〉（403）；Whirlpool〈General Arcing and Sparking - Built-In Microwave〉（404）。舊查核 `week7/S13.md` 與素材池 LEG-S13 只當線索；上面每一筆都是今天重開。
 
 ---
@@ -137,14 +139,14 @@
 
 ## C16 GE JVM1542 說明書：鋁箔只照它寫的方法用、小條遮蓋雞翅尖這類薄的地方、貼緊食物（原文：翹邊像天線；片中說像叉子的尖端）、離爐壁至少 1 英寸；鐵絲和金屬提把要先拿掉；金邊碗會冒火花；沒有金屬邊或光澤的瓷器大多可用；回收紙巾可能有金屬碎片；冒火花先按停止再處理（拿掉鐵絲、架子放正、鋁箔貼緊）【廠商說明書】
 
-- **可用說法**：p113–p127、p131–p134
+- **可用說法**：p113–p127、p144–p147
 - **來源**：[6]
 - **原文**：「Use foil only as directed in this manual. … When using foil in the microwave oven, keep the foil at least 1″ away from the sides of the oven.」「When microwaving, you use small strips of foil to shield thin parts, such as the tips of wings and legs on poultry, which would cook before larger parts.」Arcing is caused by：「Foil not molded to food (upturned edges act like antennas).」「Metal, such as twist-ties, poultry pins, or goldrimmed dishes, in the microwave.」「Recycled paper towels containing small metal pieces being used in the microwave.」「Remove wire twist-ties and metal handles from paper or plastic containers before placing them in the oven.」「Most glass casseroles, cooking dishes, measuring cups, custard cups, pottery or china dinnerware which does not have metallic trim or glaze with a metallic sheen can be used.」「If you see arcing, press the CLEAR/OFF pad and correct the problem.」
-- **注意**：1 英寸換算「大約兩公分半」（2.54 cm）。「容易過熟」＝ would cook before larger parts。p116 第二版把「翹起來的邊，就像一根天線」改成「翹起來的邊，就像叉子的尖端」：原文 upturned edges act like antennas、列在 Arcing is caused by 之下；說成叉子的尖端是接 C12 與 [8] sharply edged metal 的**撰稿推論**，不再用小孩沒學過的「天線」。p133–p134「怎麼處理？」「像拿掉鐵絲、把架子放正、把鋁箔貼緊」＝ correct the problem 的三個例子（verify-2 F01：對小孩要加「請大人來」，因為同一本說明書說架子 "may be hot"、東西燒起來要 "keep the oven door closed"，建議句見 verify-2.md），各對到同一頁 Arcing is caused by 的「twist-ties」「The metal shelf not installed correctly so it touches the microwave wall」「Foil not molded to food」。p118 緊接「這是這一台的規則；你家那台，要看你家的說明書」，不把它說成通則。說明書允許 3/4 英寸以下的鋁盒餐，片中**不講**（容易被聽成「金屬都可以」）。CLEAR/OFF 說成「停止」。說明書寫 paper or plastic containers，片中說「紙盒、塑膠盒」。p137 所長把飯倒進白瓷碗、鐵絲盒放旁邊，是照這幾條做的故事動作，不是新主張。
+- **注意**：1 英寸換算「大約兩公分半」（2.54 cm）。「容易過熟」＝ would cook before larger parts。p116 第二版把「翹起來的邊，就像一根天線」改成「翹起來的邊，就像叉子的尖端」：原文 upturned edges act like antennas、列在 Arcing is caused by 之下；說成叉子的尖端是接 C12 與 [8] sharply edged metal 的**撰稿推論**，不再用小孩沒學過的「天線」。p146–p147「怎麼處理？」「像拿掉鐵絲、把架子放正、把鋁箔貼緊」＝ correct the problem 的三個例子（verify-2 F01：對小孩要加「請大人來」，因為同一本說明書說架子 "may be hot"、東西燒起來要 "keep the oven door closed"，建議句見 verify-2.md），各對到同一頁 Arcing is caused by 的「twist-ties」「The metal shelf not installed correctly so it touches the microwave wall」「Foil not molded to food」。p118 緊接「這是這一台的規則；你家那台，要看你家的說明書」，不把它說成通則。說明書允許 3/4 英寸以下的鋁盒餐，片中**不講**（容易被聽成「金屬都可以」）。CLEAR/OFF 說成「停止」。說明書寫 paper or plastic containers，片中說「紙盒、塑膠盒」。p151 所長把飯倒進白瓷碗、鐵絲盒放旁邊，是照這幾條做的故事動作，不是新主張。
 
 ## C17 另一家廠商：有些機型附的架子只能用在烤箱功能，微波時放進去可能冒火花；牆上卡的髒東西可能冒火花；馬上停下來通常不會弄壞爐子【廠商支援頁】
 
-- **可用說法**：p105–p108、p128–p129、p135
+- **可用說法**：p105–p108、p128–p129、p148
 - **來源**：[7]
 - **原文**：「Metal oven-proof bakeware should only be used during Oven functions such as air fry, toast, bake, convect bake, roast, broil, and dehydrate cycles (on some models). Using the provided accessory racks with microwave function can cause arcing or sparking.」「Soil build-up on cavity walls, microwave cover, cooking rack supports, and the area where the door touches the frame can cause arcing.」「Prolonged arcing can damage the oven. If caught at once, arcing should not damage the oven.」
 - **注意**：片中說「另一家廠商」「剛剛那家廠商」「那家廠商」（Amana，不念名字）。這頁是 Amana 有烤箱功能的上掛式微波爐（over-the-range）；「有些機型」照 on some models。「通常不會」＝ should not。
@@ -163,6 +165,25 @@
 - **原文**：「Regularly clean the oven cavity, the outer edge of the cavity, and the door with water and a mild detergent. A special microwave oven cleaner is not necessary. Be sure to not use scouring pads, steel wool, or other abrasives.」
 - **注意**：片中沒有提鋼絲絨（原因 FDA 沒寫）。
 
+## C22 微波爐空著開：有些微波爐不能空著開、要看說明書；沒有東西吸收，微波越積越多、倒流回磁控管，可能把它弄壞；只放乾的空碗也差不多；別空著開超過一兩秒【官方說明＋專家問答＋撰稿推論】（2026-11-14 新增）
+
+- **可用說法**：p131–p143（場景 `oven-empty`、`empty-bounce`、`magnetron-glow`、`empty-bowl`、`chief-empty`）
+- **來源**：[1]、[9]、[10]（另見 [6]）；2026-11-14 curl GET 重讀，HTML 去標籤轉純文字逐段讀：[1] 200（52,964 bytes）、[9] 200（62,204 bytes）、[10] 200（62,977 bytes）、[6] 200（PDF，`pdftotext -layout`）
+- **原文**：
+  - [1] Tips on Safe Microwave Oven Operation，緊接在 C19 清潔那一條之前：「Some ovens should not be operated when empty. Refer to the instruction manual for your oven.」（p132–p133）；吸收與反射同 C01–C03：「The microwaves are reflected within the metal interior of the oven where they are absorbed by food.」「they pass through glass, paper, plastic, and similar materials」「Glass, paper, ceramic, or plastic containers are used in microwave cooking because microwaves pass through these materials.」（p134–p135、p141）
+  - [10] Bloomfield〈Why are you required to have an item in the microwave oven while it is operating?〉：「If there is no food in the cooking chamber, the microwaves build up in the cooking chamber until they are so intense that large numbers of them flow backward through the pipe to the magnetron. These microwaves reenter the magnetron and disrupt the motion of electrons inside it. The magnetron begins to misbehave and can be damaged as a result.」（p136–p139）
+  - [9] Bloomfield〈What happens if you start the microwave oven with nothing inside?〉：「The magnetron creates microwaves that travel into the cooking chamber and should be absorbed there. If there is no food (or rather no water-containing food), those microwaves will not be absorbed and will eventually find their way back to the magnetron. … This situation is hard on the magnetron, which works best when it has very little radiation returning to it. That's why you should never run a microwave empty for more than a second or two.」（p137–p142）
+  - [6] GE JVM1542 說明書 Microwave-safe cookware 欄：「Do not microwave empty containers.」（p140 的旁證）
+- **注意**：
+  - p132「有些微波爐不能空著開」照 FDA 的 Some ovens，不說成每一台都會壞；p133「要看那一台的說明書」照 Refer to the instruction manual for your oven，也接回 p118 的「你家那台，要看你家的說明書」。
+  - p136「越積越多」＝ build up；p137「倒流回去」＝ flow backward through the pipe／find their way back；p139「可能把它弄壞」＝ can be damaged（不說「一定會壞」）。p138「做出微波的那個磁控管」是 p017–p018（C03）的回呼。
+  - p135「本來會被飯裡的水吸收掉」接 C07（水被推著晃）與 [9] 的 water-containing food。
+  - p140–p141「只放一個乾乾的空碗，也跟空著差不多；因為陶瓷碗會讓微波穿過去，不會吸收」是**撰稿推論**：[9] 說沒有含水的食物，微波就不會被吸收（no food (or rather no water-containing food)），[1] 說微波穿過陶瓷；GE 另寫「Do not microwave empty containers」。不說空碗會怎樣燒起來或碎掉（沒有來源）。
+  - p142「別讓微波爐空著開超過一兩秒」＝ [9] never run a microwave empty for more than a second or two（[10] 說 don't run the microwave empty for any long periods of time，片中用 [9] 較具體的說法，標成「那位教授說」）。
+  - p143「按開始之前，先看看裡面有沒有放食物」是由 [1]、[9] 推出的**撰稿推論**（生活建議），不是來源原句。
+  - 「那位教授」「物理學教授」都是 Bloomfield（C04 起的同一位）。
+  - 圖：`empty-bounce`、`magnetron-glow` 的淡藍波紋與發亮的圓筒是示意，不是實際結構（同 C03 的 `oven-back`）。
+
 ## C20 水盤比喻【比喻／示意】
 
 - **可用說法**：p039–p041、p062–p063、p092–p093
@@ -172,7 +193,7 @@
 
 ## C21 故事設定與片尾【故事】
 
-- p001–p004（2026-11-13 第三版：開場兩句併成 p001「阿嬤的滷肉飯，我拿去微波！」）、p137、p146 的滷肉飯、阿嬤、便當盒、鐵架、白碗是故事設定，不是主張。p139–p143 小問的答案是 C11–C13 的白話；p144–p145 所長的看法標成「我覺得」，依據 C01、C04–C05、C11。p147 留言題。
+- p001–p004（2026-11-13 第三版：開場兩句併成 p001「阿嬤的滷肉飯，我拿去微波！」）、p151、p160 的滷肉飯、阿嬤、便當盒、鐵架、白碗是故事設定，不是主張。p153–p157 小問的答案是 C11–C13 的白話；p158–p159 所長的看法標成「我覺得」，依據 C01、C04–C05、C11。p161 留言題。
 
 ---
 
@@ -186,6 +207,8 @@
 6. GE Appliances, Spacemaker XL Microwave Oven JVM1542 Owner's Manual (49-40264). https://products-salsify.geappliances.com/image/upload/s--BEQq86so--/3842e17e8541177381e364fb66ab5c46460333f5.pdf
 7. Amana Product Help, General Arcing and Sparking - Over-the-Range Microwave. https://producthelp.amana.com/Cooking/Microwaves/Over-the-Range_Microwave/General_Arcing_and_Sparking/General_Arcing_and_Sparking_-_Over-the-Range_Microwave
 8. JennAir Product Help, Can Metal or Aluminum Foil be Used in the Microwave. https://producthelp.jennair.com/Cooking/Microwaves/Product_Info_new/Product_Information/Can_Metal_or_Aluminum_Foil_be_Used_in_the_Microwave
+9. Louis A. Bloomfield, How Everything Works, "What happens if you start the microwave oven with nothing inside?" (the site dates it 1969-12-31, a placeholder date). https://howeverythingworks.org/1969/12/31/question-326/
+10. Louis A. Bloomfield, How Everything Works, "Why are you required to have an item in the microwave oven while it is operating?" (1996-09-25). https://howeverythingworks.org/1996/09/25/question-483/
 
 
 ## verify-2 之後的改動（2026-11-12）

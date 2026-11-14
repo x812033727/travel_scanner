@@ -88,3 +88,5 @@
 - **2026-11-14：刪台詞或改縮圖字樣後，`clips` 會說關鍵畫面過期。** 插圖綁的 `visual_hash` 包含每景的台詞編號與縮圖資料，所以只刪句也會讓
   keyframes manifest 過期。不用重畫：挑一個 judge 通過、沒問題的鏡頭跑 `keyframes --shot <那一景>`（印「N 景不變、沿用」與「0 keyframes generated」），
   再跑 repin.py 並重新核准分鏡，`clips` 就能繼續。整集不加 `--shot` 跑會重試所有 needs_review 的鏡頭，花錢。
+- **2026-11-14：平行代理不准用 `git stash`。** 補內容時兩個代理為了比對 lint 前後跑了整個 repo 的 `git stash`／`pop`，把另一個代理寫到一半的
+  P04 檔案收走又還回來，`pop` 撞衝突時要手動合併。多個代理同時改不同集時，比對前後請複製檔案到 scratchpad，或用 `git diff`／`git show HEAD:<path>`，不要動共用的工作樹狀態。

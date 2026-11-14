@@ -106,6 +106,10 @@ def c(t, e=None, tag=None): return ("chief", t, e, tag)
 # 2026-11-13 rules pass (README §2: the kid at 15–20% of the characters, no pure reactions): a deleted line is
 # wrapped in cut() instead of removed, so every later line keeps its p-id (i18n/*.json, claims.md and the dubs key on it).
 def cut(t, e=None, tag=None): return ("cut", t, e, tag)
+# 2026-11-14 length pass (body back above lint's 8-minute floor): a line added after the ids were frozen is wrapped in
+# add(); it does not advance the running count, so every existing p-id stays put, and it takes the next free id after
+# the last original line (p187, p188, ...) in the order it appears. Add new lines only through add().
+def add(line): return ("+" + line[0],) + tuple(line[1:])
 
 def C(action, close=False):
     return ("Head-and-shoulders close-up" if close else "Waist-up medium shot") + " of the chief " + action + ", " + WALL + ", " + DAY
@@ -193,6 +197,14 @@ kid("kid-shrank", K("pointing at a silver wire square bubble wand in her hand wi
     k("真的縮回去了！", "驚喜"), cut("它跟氣球一樣會擠！"))
 chief("chief-tension", C("pulling her two hands slowly inward towards her chest, a calm smile", close=True),
       c("對，這種一直往內拉、想縮小的力氣，"), c("科學家叫它表面張力。", None, "P:guess"))
+# 2026-11-14 length pass: the common guess that soap makes the skin pull harder, corrected with the source's number,
+# then why plain water cannot hold a bubble and how long a sealed one lasted (claims.md C33). Objects only, no hands.
+bub("soap-drop", "Close-up of a small round glass bowl of clear water on a sunny wooden balcony table, a single golden drop of dish soap falling into the middle of it, a few soft white soap suds floating on the water, blurred green potted plants behind",
+    add(k("肥皂是讓皮拉更緊嗎？", "很有把握的錯猜，句尾上揚")), add(c("剛好相反：肥皂讓表面張力，只剩清水的三分之一左右。", "接住上一句")))
+bub("straw-water", "Close-up of a clear drinking glass of plain water on a sunny wooden balcony table with a plastic drinking straw standing in it, one tiny bubble at the tip of the straw bursting into a few sparkling droplets, blue sky behind",
+    add(c("清水拉得太用力，又乾得快，一下就破。")), add(c("肥皂有點像一層蓋子，讓皮裡的水慢一點乾掉。")))
+bub("bubble-jar", "Close-up of one round see-through soap bubble resting on a small round glass dish inside a big clear glass jar with a closed round metal lid, the jar standing on a wooden shelf in a bright sunny room, soft pink and green sheen on the bubble",
+    add(c("有人把泡泡封進罐子，不讓它乾，撐了三個月！", "數字放慢")))
 kid("kid-round-q", K("drawing a big circle in the air with one finger and a curious face", where=HOME),
     k("那它為什麼要縮成圓的？", "句尾上揚"))
 bub("bubble-free", "Wide shot of a single round transparent soap bubble floating alone high in a clear blue sky, soft swirling pink and green sheen, sunlight glinting on it",
@@ -391,10 +403,15 @@ WHAT = {"main": "方框吹出圓泡泡、顏色轉、頭頂變黑，一支方框
         "two": "形狀跟顏色，到底有沒有關係", "swirl": "泡泡身上的顏色為什麼一直轉"}
 BEAT_MS = 500   # 答案揭曉前的一拍（README §10.6）
 scenes, loops_s, loops_p, n = [], {}, {}, 0
+added = sum(1 for sc in S for l in sc["lines"] if not l[0].startswith("+"))  # p-ids of add() lines start after this
 for sc in S:
     lines = []
     for sp, text, emo, tag in sc["lines"]:
-        n += 1; lid = f"p{n:03d}"
+        if sp.startswith("+"):
+            added += 1; lid = f"p{added:03d}"; sp = sp[1:]
+            assert not tag, (lid, "add() lines carry no loop tag: loop order compares p-ids")
+        else:
+            n += 1; lid = f"p{n:03d}"
         if sp == "cut": continue
         line = {"id": lid, "speaker": sp, "text": text}
         if emo: line["emotion"] = emo
@@ -438,6 +455,8 @@ doc = {
         {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: The Shape of Bubbles", "url": "https://annex.exploratorium.edu/ronh/bubbles/shape_of_bubbles.html", "checked_on": CHECKED},
         {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: Sticky Water (surface tension)", "url": "https://annex.exploratorium.edu/ronh/bubbles/sticky_water.html", "checked_on": CHECKED},
         {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: When Bubble Meets Bubble", "url": "https://annex.exploratorium.edu/ronh/bubbles/bubble_meets_bubble.html", "checked_on": CHECKED},
+        {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: Soap", "url": "https://annex.exploratorium.edu/ronh/bubbles/soap.html", "checked_on": "2026-11-14"},
+        {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: Bubble Formulae", "url": "https://annex.exploratorium.edu/ronh/bubbles/formulae.html", "checked_on": "2026-11-14"},
         {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: Bubble Colors", "url": "https://annex.exploratorium.edu/ronh/bubbles/bubble_colors.html", "checked_on": CHECKED},
         {"title": "Exploratorium Science Explorer, See Colors in Bubbles (bubble dome activity)", "url": "https://annex.exploratorium.edu/science-explorer/bub_dome.html", "checked_on": CHECKED},
         {"title": "Virginia Tech / James Madison University Bubble Physics, Properties of Bubbles", "url": "https://www1.phys.vt.edu/bubble/properties-of-bubbles.html", "checked_on": CHECKED},

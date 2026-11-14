@@ -173,6 +173,21 @@ HyperPhysics 只有 http 能開（https 憑證不符），`build_scenes.py` 的 
 - **來源**：C03–C24 的總結；[4]（深色背景）、[5]（觀察題）
 - **可信度／注意**：Exploratorium [5]：「Interference colors on a bubble look brightest when there's white light shining on the bubble and a black background behind it.」「What colors do you see right before the bubble pops?」片中不給答案。
 
+## C26 肥皂不是讓皮拉更緊，反而讓表面張力變小；清水拉太用力又乾得快；肥皂讓皮慢一點乾；封在罐子裡的泡泡撐了三個月
+
+2026-11-14 補長度（站主：補一小段真內容，不灌水）加的一段，放在第一章 p042「科學家叫它表面張力。」之後、p043「那它為什麼要縮成圓的？」之前；三個新鏡頭 `soap-drop`、`straw-water`、`bubble-jar` 都是物件特寫。
+新台詞用 `build_scenes.py` 的 `add()` 取新編號 p187–p191，原有的 p001–p186 一個都沒動（i18n 照編號對，新五句要補翻譯）。2026-11-14 用 curl 重讀 [11]、[12] 全文（HTML 轉純文字後摘句）。
+
+- **可用說法**：小問「肥皂是讓皮拉更緊嗎？」（p187，說出常見的錯誤直覺）所長「剛好相反：肥皂讓表面張力，只剩清水的三分之一左右。」（p188）「清水拉得太用力，又乾得快，一下就破。」（p189）「肥皂有點像一層蓋子，讓皮裡的水慢一點乾掉。」（p190）「有人把泡泡封進罐子，不讓它乾，撐了三個月！」（p191）
+- **來源**：[11]、[12]
+- **可信度／注意**：高（博物館教材）。
+  - p187–p188，Exploratorium [11]：「There is a common misconception that water does not have the necessary surface tension to maintain a bubble and that soap increases it, but in fact soap decreases the pull of surface tension - typically to about a third that of plain water.」「三分之一左右」照來源的 typically／about。
+  - p189，[11]：「The surface tension in plain water is just too strong for bubbles to last for any length of time. One other problem with pure water bubbles is evaporation: the surface quickly becomes thin, causing them to pop.」
+  - p190，[11]：「Because the greasy end of the soap molecule sticks out from the surface of the bubble, the soap film is somewhat protected from evaporation (grease doesn't evaporate) which prolongs the life of the bubble substantially.」「一層蓋子」是**比喻**，來源說 somewhat protected，所以寫「有點像」「慢一點乾」，不說不會乾。
+  - p191，[11]：「I've blown soap bubbles on a watchglass glued to the bottom of a jar with a large mouth. Once I've sealed the jar the environment will support the bubble for quite a long time. My longest lasting bubble survived for three months!」[12]：「You must have a good seal or the liquid will escape slowly and the bubble will pop from evaporation.」「My longest lasting bubble survived for 3 months! This bubble never popped.」
+    「有人」＝作者 Ron Hipschman 本人；兩頁對另一位 Eiffel Plasterer 的紀錄一頁寫 341 天、一頁寫 342 天，互相不一致，**不用**。罐子裡另加了甘油的長壽配方（[12]），片中不提配方，只說封起來不讓它乾。
+  - 圖：`soap-drop` 一碗清水滴進一滴洗碗精、`straw-water` 吸管尖一顆小泡泡破掉、`bubble-jar` 玻璃罐裡小玻璃碟上的一顆泡泡。沒有手、沒有字、沒有並排對照。
+
 ## 不講、找不到來源的
 
 - 洗碗油、彩虹大全、蜂巢：依 EPISODES.md 刪減條件不講；Exploratorium [3] 提到蜂巢，片中不用。
@@ -193,3 +208,5 @@ HyperPhysics 只有 http 能開（https 憑證不符），`build_scenes.py` 的 
 8. Wolfram MathWorld, Double Bubble. https://mathworld.wolfram.com/DoubleBubble.html（2026-11-10 curl 讀全文）
 9. HyperPhysics (R. Nave, Georgia State University), Soap Film Interference. http://hyperphysics.phy-astr.gsu.edu/hbase/phyopt/soapfilm.html（2026-11-10 用 http 讀全文；https 憑證不符）
 10. University of Colorado Boulder, Physics Undergraduate Labs, Interference in a Soap Film（DCS 6D30.20）. https://physicslabs.colorado.edu/demos/optics/interference/thin-films/interference-in-a-soap-film/（2026-11-10 curl 讀全文；`new-topics.json` S81 的來源之一）
+11. Exploratorium (Ron Hipschman), Soap Bubbles: Soap. https://annex.exploratorium.edu/ronh/bubbles/soap.html（2026-11-14 curl 讀全文）
+12. Exploratorium (Ron Hipschman), Soap Bubbles: Bubble Formulae. https://annex.exploratorium.edu/ronh/bubbles/formulae.html（2026-11-14 curl 讀全文）

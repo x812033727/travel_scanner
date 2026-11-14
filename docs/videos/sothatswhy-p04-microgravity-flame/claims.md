@@ -3,7 +3,7 @@
 對應 [`brief.md`](brief.md) 的「查核清單」。每一條列出片中怎麼說、來源原文與注意事項，並標出它是
 **官方說明**、**教材**、**研究報告**、**撰稿推論**、**常識**，還是**比喻／示意**。撰稿只能用「可用說法」裡的數字與說法；逐行查核等另一個代理寫 `verify-1.md`。
 
-**行號**以現行 `video.json` 為準（p001–p153，verify-1 修正與四輪盲評之後的版本；2026-11-12 由 verify-2 從第一版的 p001–p181 換算；2026-11-13 照新頻道規則刪減小問台詞後重新換算，原 p001–p164）；`script.md` 是它的可讀版。第一版有、現行版刪掉的說法，在各列標成「現行版未使用」，引文照留。
+**行號**以現行 `video.json` 為準（p001–p153，verify-1 修正與四輪盲評之後的版本；2026-11-12 由 verify-2 從第一版的 p001–p181 換算；2026-11-13 照新頻道規則刪減小問台詞後重新換算，原 p001–p164）；`script.md` 是它的可讀版。**2026-11-14**：C26 在 p108 之後插入 10 句（p109–p118），C01–C25 裡寫的 p109 以後的行號，在現行 `video.json` 裡都要加 10（例如章尾鉤子原 p109–p110 現為 p119–p120）；p108 以前不變。第一版有、現行版刪掉的說法，在各列標成「現行版未使用」，引文照留。
 
 2026-11-12 撰稿時當天重讀每一個來源（引文是原句；方括號數字對應文末〈來源〉）：
 - [1] NASA〈What Is Microgravity? (Grades 5-8)〉（2012-02-15）、[2] NASA Glenn〈What is Microgravity?〉（2009-02-13）、[3]〈Space Station Facts and Figures〉、[5]〈Studying Combustion and Fire Safety〉（2023-12-26）、[6]〈Candle Flame – 1g vs Microgravity〉（2020-04-30）：curl GET 200（293,255／267,665／313,866／304,383／270,371 bytes），取 `<main>` 轉純文字，逐段讀。
@@ -189,13 +189,30 @@
 - p086「很像，都是比較重的往下擠」、p091–p092、p146–p147、p149：杯子比喻與小問的總結，限度見 C16；收尾原本回收 p009（C12）的「就像井裡那根蠟燭」2026-11-13 已刪。p148–p149 標成所長的看法（「我覺得最妙的是」）。
 - 所有插圖（杯子、梯子、大砲、井、太空站、蠟燭、液滴）是 AI 生成的示意，不是實驗照片或實際器材；說明欄寫明。
 
+## C26 太空站失火怎麼滅：要看火的樣子和燒的東西；地上好用的方法到太空可能沒用、甚至讓火更糟；比較大的火在離開太空站、沒有人的貨運太空船上燒；把氣壓調低火蔓延得比較慢；研究用來挑選太空船材料，也讓地上的防火更安全；研究滅火藥劑的實驗發現了冷焰【官方說明＋撰稿推論】
+
+- **可用說法**：p109–p118（2026-11-14 補：小問刪減後量到的正文 451.2 秒低於 480 秒，站主選擇補真內容；接在 C18 的 1992 年蠟燭之後、章尾鉤子 p119–p120 之前）
+- **來源**：[5]（2026-11-14 重開：curl GET 200，304,073 bytes，取 `<main>` 轉純文字重讀全文）
+- **原文**：
+  - 開頭段「Combustion investigations contribute to the safety of crew members, equipment, and spacecraft by guiding selection of spacecraft cabin materials, improving understanding of fire growth, and identifying optimal fire suppression techniques. This research also contributes to fire safety on Earth」
+  - BASS 段「Putting out fires in space must consider flame geometry, characteristics of the materials, and methods used to extinguish it, because methods used on the ground could be ineffective or even make the flame worse.」
+  - Saffire 段「Saffire is a series of experiments conducted aboard uncrewed Cygnus cargo spacecraft after they depart the station, which makes it possible to test larger fires without putting crew members at risk. Results on flame spread in microgravity can be used to establish the rate of heat release in a spacecraft and show that reducing pressure slows down that spread.」
+  - FLEX 段「FLEX, which analyzed the effectiveness of fire suppressants, led to the discovery of a type of cool flame, where the fuel continued "burning" under certain conditions after extinction of the visible flame.」
+- **注意**：
+  - p110「要看火的樣子和燒的東西」＝ flame geometry、characteristics of the materials（原文還有 methods，由 p111 接上）；p111–p112「可能沒用，甚至讓火更糟」照原文的 could，不說「一定」。
+  - p112「所以比較大的火，他們不在太空站上燒」是**撰稿推論**：原文只說 Saffire 在離站後的無人貨運船上做，因而能燒比較大的火、不讓太空人冒險；太空站上仍做小型燃燒實驗（CIR），所以只說「比較大的火」。p113「上面沒有人了」＝ uncrewed、after they depart the station；p114 ＝ test larger fires without putting crew members at risk。片中不念 Saffire、Cygnus 名稱。
+  - p115「把艙裡的空氣變稀一點」＝ reducing pressure（給小孩的說法：氣壓低就是同樣大的地方空氣比較少）；「火就蔓延得比較慢」＝ slows down that spread。不給數字。
+  - p116–p117「幫忙挑選太空船裡用的材料，也讓地上的防火更安全」＝ guiding selection of spacecraft cabin materials、contributes to fire safety on Earth；不說「挑出不會燒的材料」。
+  - p118「有一組研究滅火藥劑的實驗，還發現了一件怪事」＝ FLEX analyzed the effectiveness of fire suppressants, led to the discovery of a type of cool flame；「怪事」由下一章 C19–C20 的冷焰兌現（同一個 FLEX 系列，[7] 的液滴實驗）。不說「意外」。
+  - 插圖 cargo-ship（一艘小貨運太空船獨自飄在地球上空）與 cloth-flame（金屬艙裡一條布上爬著一道小火）是示意，不是 Cygnus 或 Saffire 的實際外觀與器材。
+
 ## 來源
 
 1. NASA STEM Team〈What Is Microgravity? (Grades 5-8)〉（2012-02-15；Is There Gravity in Space?、Why Do Objects Float in Orbit?、How Can Spacecraft Fall Around Earth?、Can Microgravity Be Found on Earth?），https://www.nasa.gov/learning-resources/for-kids-and-students/what-is-microgravity-grades-5-8/
 2. NASA Glenn Research Center〈What is Microgravity?〉（2009-02-13；全文），https://www.nasa.gov/centers-and-facilities/glenn/what-is-microgravity/
 3. NASA〈Space Station Facts and Figures〉（International Space Station Facts 段），https://www.nasa.gov/international-space-station/space-station-facts-and-figures/
 4. M. J. B. Rogers、G. L. Vogt、M. J. Wargo, *Microgravity: A Teacher's Guide with Activities in Science, Mathematics, and Technology*, NASA EG-1997-08-110-HQ（1997-08；ERIC ED463964），https://files.eric.ed.gov/fulltext/ED463964.pdf
-5. NASA Space Station Research Integration Office〈Studying Combustion and Fire Safety〉（2023-12-26；開頭兩段與 CIR／FLEX 段），https://www.nasa.gov/missions/station/iss-research/studying-combustion-and-fire-safety/
+5. NASA Space Station Research Integration Office〈Studying Combustion and Fire Safety〉（2023-12-26；開頭兩段與 CIR／FLEX 段；2026-11-14 為 C26 重讀全文，另用 BASS 與 Saffire 段），https://www.nasa.gov/missions/station/iss-research/studying-combustion-and-fire-safety/
 6. NASA〈Candle Flame – 1g vs Microgravity〉（2020-04-30），https://www.nasa.gov/image-article/candle-flame-1g-vs-microgravity/
 7. V. Nayagam、D. Dietrich、M. C. Hicks、F. A. Williams, *Cool-flame Extinction During N-Alkane Droplet Combustion in Microgravity*, 2014 Spring Technical Meeting of the Central States Section of the Combustion Institute（NASA NTRS 20140006750），https://ntrs.nasa.gov/citations/20140006750 （原 PDF：https://ntrs.nasa.gov/api/citations/20140006750/downloads/20140006750.pdf）
 

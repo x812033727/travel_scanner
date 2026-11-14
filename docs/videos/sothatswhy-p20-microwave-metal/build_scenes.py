@@ -65,6 +65,7 @@ EXTRA = {     # lines added to a prompt after the storyboard score (round 1)
     "chief-spark": ", glossy all-black hair in one uniform colour, bare earlobes, natural pale lips, round black glasses centred over her eyes, adult woman proportions",
     "chief-opinion": ", glossy all-black hair in one uniform colour, bare earlobes, natural pale lips, round black glasses centred over her eyes, adult woman proportions",
     "outro-wave": ", glossy all-black hair in one uniform colour, bare earlobes, natural pale lips, round black glasses centred over her eyes, adult woman proportions",
+    "chief-empty": ", glossy all-black hair in one uniform colour, bare earlobes, natural pale lips, round black glasses centred over her eyes, adult woman proportions",
     "chief-ptray": ", glossy all-black hair in one uniform colour, bare earlobes, natural pale lips, round black glasses centred over her eyes, adult woman proportions",
     "kid-try": ", all jet-black hair, closed navy coat",
     "kid-whose": ", all jet-black hair, closed navy coat",
@@ -365,6 +366,27 @@ kid("kid-dirty-q", K("peeking into an open microwave oven with a curious frown",
 obj("oven-clean", "Close-up of " + OPEN + ", a soft yellow sponge wiping one smooth wall clean, a small bowl of soapy water beside the oven",
     c("剛剛那家廠商也說，牆上卡的髒東西，可能冒火花。", "接住上一句", "P:dirty"),
     c("食藥署建議，用水和溫和的清潔劑，常常擦乾淨。"))
+# 2026-11-14 added segment (body back over 8 minutes with real content, claims.md C22): running the oven empty.
+# FDA's tip list puts "some ovens should not be operated when empty" right after the cleaning tip; Bloomfield
+# says why (nothing absorbs the microwaves, they build up and flow back to the magnetron). Calls back C01/C02/C03.
+obj("oven-empty", "Close-up of " + OPEN + ", the round glass turntable plate bare and empty in the middle, the clean shiny walls all around it",
+    k("那爐子空空的，按下去呢？", "句尾上揚", "S:empty"),
+    c("食藥署也說，有些微波爐不能空著開，", "接住上一句"),
+    c("要看那一台的說明書。你猜為什麼？", "轉向觀眾"))
+obj("empty-bounce", "Close-up looking into " + OPEN + ", the bare glass turntable plate in the middle, soft wavy pale-blue ripples drifting between the shiny metal walls, an illustration",
+    c("還記得嗎？微波在牆之間來回跑，"),
+    c("本來會被飯裡的水吸收掉。"),
+    c("空空的，微波就在裡面越積越多。"))
+obj("magnetron-glow", "Cutaway side view of a plain white cartoon microwave oven with its right side panel removed, showing inside the casing a chunky silver cylinder with cooling fins mounted beside the bare cooking chamber, the cylinder glowing a faint warm orange, soft wavy pale-blue ripples crowding the chamber around it, three round plain knobs on the front, warm cream background, an illustration",
+    c("物理學教授說，多到最後，微波會倒流回去，"),
+    c("跑回做出微波的那個磁控管，"),
+    c("可能把它弄壞。", None, "P:empty"))
+obj("empty-bowl", "Close-up of " + BOWL + ", empty and dry, sitting alone on the round glass turntable plate inside " + OVEN + " standing open",
+    c("只放一個乾乾的空碗，也跟空著差不多。"),
+    c("因為陶瓷碗會讓微波穿過去，不會吸收。"))
+chief("chief-empty", C("pointing at the open door of a plain white microwave oven beside her with a serious but kind face"),
+    c("所以那位教授說，別讓微波爐空著開超過一兩秒。"),
+    c("按開始之前，先看看裡面有沒有放食物。"))
 kid("kid-spark-q", K("hugging " + BOWL + " to her chest with a worried face", where=KITCHEN),
     k("要是真的冒火花了呢？", "擔心", "S:spark"))
 chief("chief-spark", C("pressing one big round plain button on the front of a white microwave oven with a calm face"),
@@ -410,7 +432,8 @@ WHAT = {"handle": "便當盒的鐵絲提把放進去會怎樣", "rack": "微波�
         "spark": "真的冒火花了怎麼辦", "prongs": "叉子有四個尖頭會怎樣",
         "flatfoil": "平平的鋁箔是不是就沒事", "hidden": "還有沒有看不出來的金屬",
         "dirty": "爐子裡髒髒的會不會冒火花", "meshbounce": "有洞的網子也能把微波彈回去嗎",
-        "spoonhot": "湯匙裡也有電子在跑，不會熱起來嗎", "gap": "兩塊金屬靠在一起會怎樣"}
+        "spoonhot": "湯匙裡也有電子在跑，不會熱起來嗎", "gap": "兩塊金屬靠在一起會怎樣",
+        "empty": "微波爐空空的按下去會怎樣"}
 # Latin terms the Mandarin voice must spell letter by letter (P13 GPS, P29 HTTPS/TLS). The one named manual is
 # GE's; the brand is said in English as its two letters (series README §3.1: brand names in the original).
 # The other brand (Amana, a Whirlpool brand, claims.md C17) is not named aloud.
@@ -471,6 +494,8 @@ doc = {
         {"title": "U.S. Food and Drug Administration, Microwave Ovens", "url": "https://www.fda.gov/radiation-emitting-products/resources-you-radiation-emitting-products/microwave-ovens", "checked_on": CHECKED},
         {"title": "Louis A. Bloomfield, How Everything Works: Why do metal objects spark/arc in the microwave? (1997-01-17)", "url": "https://howeverythingworks.org/1997/01/17/question-759/", "checked_on": CHECKED},
         {"title": "Louis A. Bloomfield, How Everything Works: If a microwave oven door reflects microwaves, why doesn't everything? (2009-03-31)", "url": "https://howeverythingworks.org/2009/03/31/question-1579/", "checked_on": CHECKED},
+        {"title": "Louis A. Bloomfield, How Everything Works: What happens if you start the microwave oven with nothing inside?", "url": "https://howeverythingworks.org/1969/12/31/question-326/", "checked_on": "2026-11-14"},
+        {"title": "Louis A. Bloomfield, How Everything Works: Why are you required to have an item in the microwave oven while it is operating? (1996-09-25)", "url": "https://howeverythingworks.org/1996/09/25/question-483/", "checked_on": "2026-11-14"},
         {"title": "OpenStax, College Physics 2e, 18.7 Conductors and Electric Fields in Static Equilibrium", "url": "https://openstax.org/books/college-physics-2e/pages/18-7-conductors-and-electric-fields-in-static-equilibrium", "checked_on": CHECKED},
         {"title": "OpenStax, College Physics 2e, 19.2 Electric Potential in a Uniform Electric Field", "url": "https://openstax.org/books/college-physics-2e/pages/19-2-electric-potential-in-a-uniform-electric-field", "checked_on": CHECKED},
         {"title": "GE Appliances, Spacemaker XL Microwave Oven JVM1542 Owner's Manual (49-40264)", "url": "https://products-salsify.geappliances.com/image/upload/s--BEQq86so--/3842e17e8541177381e364fb66ab5c46460333f5.pdf", "checked_on": CHECKED},

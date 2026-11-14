@@ -16,6 +16,9 @@ gets its own shot only when the picture changes something, so most shots carry t
 of the Han characters by deleting her pure reactions and shortening her lead-in lines (no loop tag moved), the opening
 greeting dropped so the round-versus-pointed flame question lands in the first lines, and the thumbnail sub and the
 description's first two lines pose the contradiction instead of the cause. Scenes and prompts unchanged.
+2026-11-14: the cut left the measured body at 451.2 s, under the 480 s floor; the owner chose real content over padding,
+so five new shots (chief-putout … chief-earth-safe, loop `putout`) answer "how do you put out a fire on the station?"
+from NASA's combustion and fire-safety page (claims.md C26), between the 1992 candle and the chapter-end hook.
 `script.md` is written by `node tools/video/cli.mjs script --slug sothatswhy-p04-microgravity-flame` after this runs.
 """
 import hashlib, itertools, json, os, re, sys, unicodedata
@@ -336,6 +339,22 @@ chief("chief-diffuse", C("moving one hand very slowly through the air with a cal
 obj("candle-dim", "Close-up of " + CANDLE + " with a very small faint round blue flame around the wick, tiny pale blue dots drifting slowly towards it, a plain pale cream wall behind",
     c("一九九二年，在太空中做過的蠟燭實驗，"),
     c("大多一分鐘左右火就滅了，可能是盒子裡氧氣快沒了。", None, "P:last"))
+# 2026-11-14 (body back over 480 s after the kid-share cut): a sourced fire-safety segment, claims.md C26.
+chief("chief-putout", C("listening with a serious kind face, one hand raised in a calm careful gesture", close=True),
+    k("太空站失火了，要怎麼滅？", "擔心", "S:putout"),
+    c("美國太空總署說，滅太空的火，要看火的樣子和燒的東西。", "接住上一句"))
+chief("chief-worse", C("gently wagging one index finger with a careful serious face"),
+    c("在地上好用的滅火方法，到太空可能沒用，", "認真"),
+    c("甚至讓火更糟。所以比較大的火，他們不在太空站上燒。"))
+obj("cargo-ship", "Wide shot of one small simple cute cartoon cargo spaceship shaped like a short white cylinder with two round solar panels, drifting alone in deep blue space, " + EARTH,
+    c("等貨運太空船離開、上面沒有人了，才點火研究。"),
+    c("這樣燒大一點的火，太空人也不會有危險。"))
+obj("cloth-flame", "Close-up through a round window into a dim empty grey metal room, one long strip of pale cloth held flat in a thin metal frame in the middle, a thin line of small soft blue and orange flame creeping slowly along the cloth",
+    c("他們發現，把艙裡的空氣變稀一點，火就蔓延得比較慢。"),
+    c("這些研究，幫忙挑選太空船裡用的材料，"))
+chief("chief-earth-safe", C("smiling warmly with one hand on her heart"),
+    c("也讓地上的防火更安全。", None, "P:putout"),
+    c("有一組研究滅火藥劑的實驗，還發現了一件怪事。", "賣關子"))
 kid("kid-out-q", K("folding her arms with a satisfied little nod", where=YARD),
     k("火熄了，", "篤定"), k("就是不燒了吧？", "章尾停住，句尾上揚", "S:out"))
 
@@ -419,7 +438,8 @@ WHAT = {"main": "人一直在掉，火為什麼也跟著變了", "round": "影�
         "why": "為什麼要到太空才看得清楚冷焰", "same": "太空裡的火是不是都一樣",
         "scale": "太空人在太空站站上體重計是多少", "ground": "不去太空，在地上能不能飄起來",
         "ball": "太空的蠟燭火是不是一整顆圓球",
-        "well": "點著的蠟燭掉進很深的井會怎樣", "ghost": "哪一團火熄了以後還在燒"}
+        "well": "點著的蠟燭掉進很深的井會怎樣", "ghost": "哪一團火熄了以後還在燒",
+        "putout": "太空站失火了要怎麼滅"}
 # Latin terms the Mandarin voice must spell letter by letter (P13 GPS, P29 HTTPS/TLS). This episode says
 # 美國太空總署 (the usual Taiwanese name) instead of NASA, so no spoken line carries a Latin term; the loop stays
 # so a later edit that adds one is spelled and carries say_for.
