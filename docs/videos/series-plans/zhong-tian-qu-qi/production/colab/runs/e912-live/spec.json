@@ -1,5 +1,5 @@
 {
- "_note": "e912 live d1 (e911-live/spec.json's way): s06, s14 and s29 are Tang Xiaotang's three lines, shot from behind her (nospeak, recordings laid in): her three face pictures and her identity sentence go (e908 fix1, e909 s09/s12, e910 s23/s30). s02, s05, s17, s24 are her silent face shots: e907's neutral face sentences (as e910 s36, e911 s02). s13 and s22: ref2manifest's 'only these 2 people / only person' sentence is rewritten to admit the unnamed plump hand (s13) and the official's back (s22) the composition describes; s07's foreground and s14's three are already read by ref2manifest ('the other people the composition names'). No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9121101/9121102.",
+ "_note": "e912 live d1 (e911-live/spec.json's way): s06, s14 and s29 are Tang Xiaotang's three lines, shot from behind her (nospeak, recordings laid in): her three face pictures and her identity sentence go (e908 fix1, e909 s09/s12, e910 s23/s30). s02, s05, s17, s24 are her silent face shots: e907's neutral face sentences (as e910 s36, e911 s02). s13 and s22: ref2manifest's 'only these 2 people / only person' sentence is rewritten to admit the unnamed plump hand (s13) and the official's back (s22) the composition describes; s07's foreground and s14's three are already read by ref2manifest ('the other people the composition names'). No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9121101/9121102. Review 2026-11-14 (writer-tools/e012-r2/review.md): s08 and s25 replace Zhao Butou's cast sentence (no 'constable', a plain sash with nothing hanging) and the builder's 'Constable Zhao speaks' (必改 weapons); s27 drops aling-angle-b (the side view loses the hairpin; the close-up keeps angle-a rather than the full-length portrait, which ref2manifest leaves out of one-person close-ups so it is not painted twice).",
  "seeds": [
   9121101,
   9121102
@@ -50,7 +50,14 @@
    ]
   },
   "s07": {},
-  "s08": {},
+  "s08": {
+   "replace": [
+    [
+     "an ancient Chinese Song-dynasty constable's soft black futou cap and a plain black round-collared constable's robe",
+     "a soft black futou cap and a plain black round-collared cotton robe, a plain black cloth sash at his waist with nothing hanging from it"
+    ]
+   ]
+  },
   "s09": {},
   "s10": {},
   "s11": {},
@@ -119,9 +126,24 @@
     ]
    ]
   },
-  "s25": {},
+  "s25": {
+   "replace": [
+    [
+     "an ancient Chinese Song-dynasty constable's soft black futou cap and a plain black round-collared constable's robe",
+     "a soft black futou cap and a plain black round-collared cotton robe, a plain black cloth sash at his waist with nothing hanging from it"
+    ],
+    [
+     "Constable Zhao speaks",
+     "Zhao Butou speaks"
+    ]
+   ]
+  },
   "s26": {},
-  "s27": {},
+  "s27": {
+   "drop_pictures": [
+    "aling-angle-b-l1.png"
+   ]
+  },
   "s28": {},
   "s29": {
    "replace": [

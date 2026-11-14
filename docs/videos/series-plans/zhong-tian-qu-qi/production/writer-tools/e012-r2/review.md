@@ -95,3 +95,22 @@
 3. **不說話的人寫硬（s01 s14 s29）**：s01 胡縣令拿掉 half-smile、寫「says nothing … no smile at any moment」；s14 小禾與秦霜、s29 許硯與阿令都寫「say nothing in this shot … no mouthing words」。這就是 e911 s14 整鏡重拍的原因。
 4. **s29 背影遞接**：許硯站在唐小棠正前方、她雙手直伸接婚書，頭才不會轉；s04 買 10 秒（錄音 8.12 秒）；s35 火把是 s34 扶正後的「upright」。
 5. **紅珠串**：extras 那句已經在、e911 仍 4/70。LOC 的柿子樹改成果子只在高處、下面什麼都沒掛，挑片三格必查，有就落選或重抽。
+
+## 採納情形（寫稿者，2026-11-14）
+
+**必改 11 條全改**（`r2.py` 重建 `video.json`、`overlays.json`、`storyboard.md`；`storyboard-check.py` 0 錯；`prep912.sh` 重跑：d1 70 支，`preflight-prompts.py` 0 錯 0 警告）：
+- 衙役：`RUNNERS` 拿掉職稱，寫衣著＋右手一支火把、左手空著、每人沒有槍刀鞘棍；`NOSHARP` 改成「every man in black」；s04 身後兩人胸以上虛焦、左手在畫外；s08 前景籬笆頂擋住腰以下；s25 六人背對我們；s26、s28 遠處「carrying nothing else: no spears, no poles, no flags」。d1 提示詞裡已經沒有 runner、constable。
+- 趙捕頭：`ZHAO` 照建議改，comp 一律「Zhao Butou」、s25「waving his empty left hand」；`spec.json` 的 s08、s25 用 `replace` 換掉 cast 的 constable 外貌句，s25 另把 builder 補的「Constable Zhao speaks」換成「Zhao Butou speaks」（共用的 EN 表沒動）。
+- 銀票：`NOTE` 照建議改（只寫空白紙背、不寫 banknote／border／seal），新增 `FRONTLIT`；s14 往頭頂正上方舉、s15 正面打光、s17 摺小放回。
+- 字條：s18、s19 寫厚、不透光、正面打光、空白；`SLIP` 加 opaque。
+- 婚書：`CERTS` 改成三個空白紅紙包（packets）；s01 動作、s17、s29 也改用 packets，s29 補「completely blank red paper」。
+- s01：拿掉 half-smile，胡縣令整鏡不說話、不動嘴、不笑（新的 `quiet()`）。
+- s14：小禾與秦霜用 `quiet()` 寫硬。
+- s29：許硯在她正前方、畫面中間，她兩手直伸接過；許硯與阿令用 `quiet()` 寫硬。
+- s04：`BUY` 10，動作寫在台詞前面。
+- s35：`DYING_UP`（s34 扶正後直立）。
+- 柿子樹：`nyard`、`dawn` 兩個 LOC 都改成果子只在高處、下面什麼都沒掛；extras 照舊。
+
+**建議**：除了下面一條，都照改：近景背景補 `DARK`（s02 s04 s05 s16 s19 s20 s21 s27，s26 補 no brazier）；s08 鏡頭只朝院門、不拍棍尖；s05、s20 改 push in，s10 改 slow pan right；s06、s14 前景寫成大人的肩背，s06 s13 s14 寫只有一個小孩；s06 小禾在她正前方、雙臂直伸；s14 一開始錢袋就在她手上；s20 院門在畫面中間、錢員外先看路；s21 乾笑寫上限、買 8；s11 買 8；s22 從蹲著站直、前景頭不轉、不露牙；s25 火把在左前景、不寫 dropped、兩人寫硬；s27 先垂眼聽再抬頭轉向院門、眼睛落在畫右外一個男人的眼高，comp 寫木簪；s28 背孩子進門的小影子、村民棍子拿低；第三場不寫月亮；s02、s16（還有 s05 s13 s14 s20）用 `STICKS_ONLY`；s32 結尾笑退掉；s13 秦霜從畫左走兩步；s05、s17、s24 聽的人寫硬；bible 兩處矛盾已在 `r2-bible-e011-e020.md` 直接改（錢袋與婚書收進唐小棠的「錢箱」，跟第 18 集的深褐木錢箱分開寫；趙捕頭拿掉鐵尺），並加〈拍法〉第 17 條「兵器與紙的寫法」。
+- **改法不同**：s27 不把 `aling-angle-b` 換成全身定妝照，而是只拿掉 angle-b（`spec.json` `drop_pictures`），留四分之三側的 angle-a。理由：`ref2manifest.mjs` 對單人近景故意不送全身定妝照（會在近景旁邊再畫一個她），而 `retake.py` 也只能拿掉、不能加圖；木簪改寫在 comp 裡。
+- 錄音沒動（台詞與語氣一字沒改，32 句照用）。
