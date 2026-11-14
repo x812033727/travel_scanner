@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "ORIGINAL_TEXT_RETAKE1_FIFTH_PROVIDER_BUSY_NO_NEW_TAKES_EXTENDED_COOLDOWN",
+  "attempt": {
+    "session": 59941,
+    "pid": 37224,
+    "slot": "dub-en-quality-retake1-after-busy4",
+    "dispatched_at": "2026-10-27T23:25:32.9724105Z",
+    "native_exit": 4,
+    "ended_at": "2026-10-27T23:26:19.0294417Z",
+    "provider_attempt_count": 5,
+    "http_status": 429,
+    "problem_code": "video_speech_upstream_busy",
+    "retry_after_seconds": 10,
+    "first_attempt_at": "2026-10-27T23:25:35.573Z",
+    "last_attempt_at": "2026-10-27T23:26:18.885Z"
+  },
+  "previous_attempt": {
+    "file": "dub-en-quality-retake1-provider-busy4.json",
+    "sha256": "30e45912539296ab506514bd80709217ee31973d27fe2166c63b5bba8143370a",
+    "preserved": true
+  },
+  "freeze": {
+    "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-quality-retake1-provider-busy5-before\\manifest.json",
+    "bytes": 5857,
+    "sha256": "da042ba967a3d92f0a991e45f9ae462ae83c0d52b020a952c0dc23dd799daf29"
+  },
+  "actual_comparison": {
+    "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-quality-retake1-provider-busy5-before\\actual-comparison.json",
+    "bytes": 185211,
+    "sha256": "3b4ae6200ba84af674ad121b05214ed11b3ae02b0408b36de2e2650857e71099"
+  },
+  "verification": {
+    "current_raw_wavs": 212,
+    "targeted_raw_wavs": 29,
+    "targeted_changed": 0,
+    "other_raw_wavs": 183,
+    "other_changed": 0,
+    "protected_artifacts": 102,
+    "en_mix_timeline_fit_cache_source_approvals_state_unchanged": true,
+    "check_and29flags_unchanged": true,
+    "historical_journal_files": 82,
+    "active_or_uncertain_journal_entries": 0,
+    "producer_os_probe": "ESRCH",
+    "lease_present": false,
+    "root_hash_checks": 417
+  },
+  "quality_rounds": {
+    "plain_completed": 0,
+    "plain_cap": 2,
+    "planned_round1_not_completed": true,
+    "shortening": 0,
+    "listener_reword": 0
+  },
+  "cost": {
+    "usage_receipt_available": false,
+    "actual_fee_usd": null,
+    "no_zero_fee_claim": true,
+    "monthly_quota_last_snapshot": 5157716,
+    "monthly_quota_snapshot_at": "2026-10-27T23:24:11.2927368Z",
+    "monthly_quota_does_not_prove_google_daily_quota_available": true,
+    "actual_retake_requests": 29,
+    "estimated_billable_characters": 1251,
+    "quota_receipt": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\dub-en-quality-retake1-after-busy4-dryrun-quota.json",
+      "sha256": "0a69fbb778ca2d5972f9409842c1b49a36c26512cbfdd00a92e809e239b5e426"
+    }
+  },
+  "cooldown": {
+    "not_before": "2026-10-28T07:27:00Z",
+    "exact_native_plus_480_minutes": "2026-10-28T07:26:19.0294417Z",
+    "rounded_up_for_queue": true,
+    "action": "Before this UTC boundary, read-only observation only. Do not replay any ended paid slot. Afterward require fresh quota/source/lease/journal and the exact remaining subset for a separate normal slot. No provider, quota or global setting change."
+  },
+  "future_second_asr_handoff": {
+    "preparation_review": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-first-complete-handoff-prep\\independent-preparation-review.json",
+      "sha256": "7aac26dcc504cbc60b8f6c1fb276abba937dd1187f544096cf8e41fb835e5884"
+    },
+    "preparation_only": true,
+    "executed": false,
+    "executor_approved": false,
+    "activation_gate_approved": false,
+    "current_state_and_binding_preserved": true,
+    "next": "Wait for actual new WAVs and fit; review their cohort and exact closure/activation implementation before moving the completed prior scope. Preparation PASS alone authorizes no handoff or ASR dispatch."
+  },
+  "producer_running": false,
+  "audio_accepted": false,
+  "foreign_dubs_accepted": 0,
+  "foreign_dubs_selected": 8,
+  "complete_delivery_package": false,
+  "next_episode_started": false,
+  "next": "Remain quiet during the extended cooldown; after its UTC boundary reconcile fresh evidence and quota. No completed quality-retake round or full delivery package is claimed.",
+  "provider_diagnostic_limit": {
+    "daily_quota_confirmed": false,
+    "reason": "Current adapter drops provider error JSON and maps every upstream429 to the same busy code; Retry-After10 may be the server default. Monthly site characters do not establish provider quota or availability.",
+    "existing_task": "tasks/open/2026-10-27-preserve-safe-gemini-tts-429-diagnostics.md"
+  }
+}

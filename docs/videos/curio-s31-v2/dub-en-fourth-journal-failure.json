@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "at": "2026-10-27T11:09:16.975Z",
+  "session": 77232,
+  "native_exit": 1,
+  "native_exit_receipt": {
+    "native_exit": 1,
+    "captured_immediately": true,
+    "at": "2026-10-27T10:58:46.4018257Z",
+    "locale": "en"
+  },
+  "partial_en_wavs": 172,
+  "producer_pid": 43060,
+  "producer_os_state": "ESRCH",
+  "frozen_manifest_sha256": "9b693e5a5807e82a9fbea18f139ad6b6839f928df68d785301c8cf95a6d2b891",
+  "all_active_journal_entries": [
+    {
+      "file": "0f0b8482c5e4a92624ac1d644657929dd809f25e465c43a3c878d5d5b195215f.json",
+      "request_sha": "0f0b8482c5e4a92624ac1d644657929dd809f25e465c43a3c878d5d5b195215f",
+      "status": "confirmed",
+      "pid": 43060
+    },
+    {
+      "file": "2f2ad389067e5a6d7b65cc687ebba4f1b66ce00bfef083d24487e157cb20f062.json",
+      "request_sha": "2f2ad389067e5a6d7b65cc687ebba4f1b66ce00bfef083d24487e157cb20f062",
+      "status": "sent",
+      "pid": 43060
+    }
+  ],
+  "all_active_journal_files": [
+    {
+      "file": "journal/0f0b8482c5e4a92624ac1d644657929dd809f25e465c43a3c878d5d5b195215f.json",
+      "bytes": 1279,
+      "sha256": "a370f551804b4e6d7afb08a688abc86ad721d22cb00fb61cfbd26594da5c6424"
+    },
+    {
+      "file": "journal/0f0b8482c5e4a92624ac1d644657929dd809f25e465c43a3c878d5d5b195215f.wav",
+      "bytes": 364844,
+      "sha256": "23305fd81a0b5513775d651c86e3b97c2f195541bc651d193b949bd0414ce90d"
+    },
+    {
+      "file": "journal/2f2ad389067e5a6d7b65cc687ebba4f1b66ce00bfef083d24487e157cb20f062.answer.json",
+      "bytes": 1951,
+      "sha256": "7fd8fa40e4247470dfd701aed3913f35632380aea4898773044265bc7c778ca1"
+    },
+    {
+      "file": "journal/2f2ad389067e5a6d7b65cc687ebba4f1b66ce00bfef083d24487e157cb20f062.json",
+      "bytes": 994,
+      "sha256": "149956c62d8026ef7e738d388c6a6f7d4bcf70f283d939f110c32df4b06b69e4"
+    },
+    {
+      "file": "journal/2f2ad389067e5a6d7b65cc687ebba4f1b66ce00bfef083d24487e157cb20f062.json.43060.tmp",
+      "bytes": 1255,
+      "sha256": "b054e8b67c01bee662b4f2983b42a08daf8bfa0f0cb6b4dc801d06a1762c07f3"
+    },
+    {
+      "file": "journal/2f2ad389067e5a6d7b65cc687ebba4f1b66ce00bfef083d24487e157cb20f062.wav",
+      "bytes": 172844,
+      "sha256": "29cc6310702ad6dbf4e57663dea99e1a0f19ee28a054eee55d6b253dcaac23ef"
+    }
+  ],
+  "orphan_generic_checker_actual_review_sha256": "be6b21a09d75668e55ca65eb1723487753033c219c7409d7fc3e7b7fbea87f99",
+  "joint_actual_root_offline_replay_sha256": "8829ab51bf4cdd1446e39146a9ec4f15cceb6989e446af91908d91f298535efb",
+  "joint_actual_reused": 2,
+  "joint_send_calls": 0,
+  "joint_fetch_calls": 0,
+  "clone_originals_and_frozen_evidence_unchanged": true,
+  "normal_resume_not_dispatched": true,
+  "source_video_sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86",
+  "current_chinese_final_sha256": "b8bc3fcfe22e73cff79422124d89da99630bbf7c7e59b0480ef9804db11d2c60",
+  "quality_retake_rounds": 0,
+  "fit_shortening_rounds": 0,
+  "complete_en_dub_or_fit_or_audio_qa": false,
+  "next": "Prepare and independently review a bounded, opt-in, episode-only confirmed journal rename retry preload. No shared code or OS/security setting changes. Fresh reconcile all172clips/cache/source and both paid saved answers before normal resume."
+}

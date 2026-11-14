@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "at": "2026-10-27T09:52:24.861Z",
+  "decision_by": "codex-curio-s31-f29b under owner recommended-choice delegation",
+  "owner_authorization": [
+    "核准新稿與 US$6 上限，繼續製作",
+    "用你推薦的選擇就好 不用問我"
+  ],
+  "decision": "ACCEPT_CURRENT_NARRATION_WITH_TWO_DISCLOSED_MECHANICAL_FLAGS",
+  "independent_review_sha256": "131ecc59a6e7ba13eb373f31b340274dcac50deefe9cd8eebc51ee3424b8d27a",
+  "source_sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86",
+  "script_sha256": "d9056e2b5b27b1ce4c6b084a89adb76a6c723bb603349c2d72f35f9cb028c5b0",
+  "speech_hash": "fa2912daff4bd218",
+  "timeline_sha256": "461844fdcf9a29ecf581397c9c546637ce85262bc7ef2b8854e683fdf64d8f31",
+  "narration_sha256": "2a80e13415cb2c90ae5887f2c97e0604120c9716ccffda68d1d682458ae268be",
+  "official_check_sha256": "f90e68fb66eb44013726e4e7dabeda42a8272dbe0957672164139222ed83bb8d",
+  "official_flags_sha256": "c1ca984d8e5374d69710356f026efed775738a82e4248e8472afe58a16344ea0",
+  "official_flag_count": 2,
+  "official_flags": [
+    "v2a0491",
+    "v2a0722"
+  ],
+  "mechanical_result": "native1/two flags and all original Jev scores retained; no automatic or zero-flag pass claimed",
+  "case_decisions": [
+    {
+      "id": "v2a0491",
+      "wav_sha256": "07546d441d65a5d7b7999fb6a8882a25ad1b0a11fc37490713f2154b8edf3255",
+      "disposition": "accepted by delegated contextual pronunciation review",
+      "relied_on_transcript": "學者無憎留下的文字,讓我們看到答案是怎麼形成的。",
+      "intended_contextual_sound": "wu2 zeng1",
+      "contrary_evidence": "Primary 吳政 is wu2 zheng4, not an exact tone-and-initial match to wu2 zeng1. It is preserved and is not described as ASR agreement.",
+      "limitation": "Strong evidence of comparison/default-pronunciation mismatch; no direct acoustic certification."
+    },
+    {
+      "id": "v2a0722",
+      "wav_sha256": "10c12f976d0ce98e48fb6020dc2e5d3cb258c9a4e23ebc9d902cd50d00d060c9",
+      "disposition": "accepted by delegated contextual pronunciation review",
+      "relied_on_transcript": "能證明麗芝當天也到了嗎？",
+      "intended_contextual_sound": "li4 zhi1",
+      "contrary_evidence": "Whisper 立志 is li4 zhi4 and is not strictly tone-identical to li4 zhi1. The secondary transcript cannot be called a confirming homophone. No listening was done to resolve the audible final tone.",
+      "limitation": "Demonstrated comparator/default-reading issue and plausible primary-ASR orthographic equivalence; actual final-tone correctness remains unverified by ear."
+    }
+  ],
+  "reason": "Each case has one actual whole transcript consistent with the context-correct reading, plus a reproduced polyphonic/default-reading mismatch. Independent reviewer and listener writer recommend retaining correct source, rather than purchasing more takes to satisfy orthographic noise. This is a bounded production decision, not an acoustic certification.",
+  "listener_rule": "Leave a line alone when heard already says the same thing in other characters.",
+  "plain_retake_rounds_completed": 2,
+  "listener_synthesis_rounds_completed": 1,
+  "listener_round_2_executed": false,
+  "source_or_say_or_dictionary_or_cache_or_flags_modified": false,
+  "owner_or_agent_listening_claimed": false,
+  "residual_acoustic_tone_uncertainty_disclosed": true,
+  "audio_evidence_problems": [],
+  "journal_active_entries": 0,
+  "retained_recovery_preserved": true,
+  "next_action": "Record official local audio approval with this delegated decision and exact timeline SHA, then rebuild the current Chinese final and verify it. No YouTube upload or publication."
+}

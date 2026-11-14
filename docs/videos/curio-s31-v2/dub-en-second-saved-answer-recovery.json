@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "at": "2026-10-27T10:46:27.489Z",
+  "failed_session": 12945,
+  "failed_native_exit": 1,
+  "request_sha256": "1cde9891b24dd325283187fb439e5e4c344d504199e931df4d8a2b63d9d734f1",
+  "frozen_manifest_sha256": "9fde58bfb1347fc77cd2d943a059a751ad0ab5806c4a265f7c47d35c7fcc14d9",
+  "independent_review_sha256": "69e53adebb7df1c701721e0476c40aae7ce53b163e382db26296e85f3fdaa616",
+  "independent_review": {
+    "schema_version": 1,
+    "at": "2026-10-27T10:43:54.045Z",
+    "verdict": "PASS_SAVED_SYNTHESIZE_ANSWER_RECOVERS_WITHOUT_SEND",
+    "route": "speech",
+    "request_sha256": "1cde9891b24dd325283187fb439e5e4c344d504199e931df4d8a2b63d9d734f1",
+    "request_keys": [
+      "voice",
+      "style",
+      "segments"
+    ],
+    "snapshot_manifest_sha256": "9fde58bfb1347fc77cd2d943a059a751ad0ab5806c4a265f7c47d35c7fcc14d9",
+    "journal_source_sha256": "a5cc9de701666a75f40e159970d6f102ab77be1ba0823332bbceb802589f4001",
+    "frozen_four_files": [
+      {
+        "file": "journal/1cde9891b24dd325283187fb439e5e4c344d504199e931df4d8a2b63d9d734f1.json",
+        "bytes": 969,
+        "sha256": "e37f762d970b287c6a8755568048550b31fdfd5ced05dfa0860faf5873adbfe8"
+      },
+      {
+        "file": "journal/1cde9891b24dd325283187fb439e5e4c344d504199e931df4d8a2b63d9d734f1.answer.json",
+        "bytes": 1915,
+        "sha256": "010e0ad2016dfd2c156675c03131c4036ef36bc8fb339cb9cec324a1c860d518"
+      },
+      {
+        "file": "journal/1cde9891b24dd325283187fb439e5e4c344d504199e931df4d8a2b63d9d734f1.json.51568.tmp",
+        "bytes": 1230,
+        "sha256": "022a09fa4e69ad69e3f2a8f960d128754dbedad9255c6c0f693d08b0d4a82871"
+      },
+      {
+        "file": "journal/1cde9891b24dd325283187fb439e5e4c344d504199e931df4d8a2b63d9d734f1.wav",
+        "bytes": 387884,
+        "sha256": "ca8834c1e0629e86fe47092bf99e357c0983a9b29ef2971e2ff37ccfeddde703"
+      }
+    ],
+    "producer": {
+      "pid": 51568,
+      "before": "ESRCH",
+      "after": "ESRCH",
+      "official_default_processAlive_used_for_positive_case": true
+    },
+    "validation": {
+      "schema_route_full_request_sha_match": true,
+      "sent_generation_and_confirmed_base_exact_bytes_match": true,
+      "staged_base64_canonical_and_equals_orphan_temp": true,
+      "both_confirmation_candidates_identical": true,
+      "saved_wav_full_sha_and_size_match": true,
+      "narration_format_valid": true,
+      "nonempty_samples": 193920,
+      "sample_rate": 48000,
+      "channels": 1,
+      "bits_per_sample": 16
+    },
+    "recovery": {
+      "reused_count": 1,
+      "mock_send_calls": 0,
+      "global_fetch_calls": 0,
+      "returned_wav_sha256": "ca8834c1e0629e86fe47092bf99e357c0983a9b29ef2971e2ff37ccfeddde703",
+      "returned_wav_bytes": 387884,
+      "returned_billable": 0,
+      "returned_reused": true,
+      "original_confirmed_billable": 47,
+      "original_billable_preserved_in_archived_confirmation": true,
+      "proof_sha256": "27c39ff6c11f12f2df845fccfe31417828376fbc3e0aabac194cd6cc3c7a9153",
+      "archived_source_count": 2,
+      "archived_wav_sha256": "ca8834c1e0629e86fe47092bf99e357c0983a9b29ef2971e2ff37ccfeddde703",
+      "original_four_frozen_and_clone_files_unchanged": true
+    },
+    "alive_pid_negative_control": {
+      "injected_alive": true,
+      "expected_hold": "video_speech_uncertain",
+      "reused": 0,
+      "mock_send_calls": 0,
+      "global_fetch_calls": 0
+    },
+    "recommendation": "Root may freshly reconcile the frozen/current source, English translation, completed clip/cache cohort, exact request and free project lease, then resume the unchanged normal dub command in a fresh slot. This one exact request reuses the saved synthesize answer. Other unfinished distinct requests remain normal paid-capable work under the existing authorization.",
+    "hold_conditions": [
+      "Producer is alive or its state is unknown/inaccessible",
+      "Any request/body/generation/sent/confirmed/audio bytes or SHA changes, or complete candidates conflict",
+      "Saved WAV is missing, not narration-format audio or has no samples",
+      "Recovery proof cannot be safely preserved",
+      "The command requests a different voice/text/body: this saved answer cannot answer a different request"
+    ],
+    "billing_scope": "returned billable=0 is the reuse contract for this run; it does not say the original synthesis was free or that the remainder of the full dub has zero provider calls.",
+    "scope": "Only the four frozen journal files, their private snapshot manifest, repository source and new private clones. Official recovery imported locally with must-not-run global fetch and mock send. No canonical access, no shared-tool edits, no manual promotion/rename/forget/force/release/deletion, no API/SSH/dub/check/ASR producer.",
+    "snapshot_scope": "This narrow review binds the snapshot manifest and four journal files only; it does not certify the 146 frozen English clips/cache/source as a completed dub or a fit pass.",
+    "project_lease": "Root reports free; canonical lease was not read by this reviewer.",
+    "played_or_listened": false,
+    "audio_approval": false
+  },
+  "root_fresh_guard": {
+    "at": "2026-10-27T10:44:44.455Z",
+    "independent_review_sha256": "69e53adebb7df1c701721e0476c40aae7ce53b163e382db26296e85f3fdaa616",
+    "snapshot_sha256": "9fde58bfb1347fc77cd2d943a059a751ad0ab5806c4a265f7c47d35c7fcc14d9",
+    "all_snapshot_files_checked": 160,
+    "partial_en_wavs": 146,
+    "drift": [],
+    "old_pid": "51568 ESRCH",
+    "lease": null,
+    "source_sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86",
+    "final_sha256": "b8bc3fcfe22e73cff79422124d89da99630bbf7c7e59b0480ef9804db11d2c60",
+    "allow": "normal unchanged EN resume in a fresh slot; exact current staged answer reused, other distinct unfinished work paid-capable"
+  },
+  "normal_resume": {
+    "session": 87402,
+    "slot": "dub-en-saved-answer2-resume",
+    "still_running": true,
+    "native_exit": null,
+    "line_by_line": true,
+    "force": false,
+    "remaining_requests_estimate": 52,
+    "characters_estimate": 3216,
+    "existing_monthly_quota_before": 5452289
+  },
+  "actual_recovered_response": {
+    "canonical_proof_sha256": "27c39ff6c11f12f2df845fccfe31417828376fbc3e0aabac194cd6cc3c7a9153",
+    "raw_wav_sha256": "ca8834c1e0629e86fe47092bf99e357c0983a9b29ef2971e2ff37ccfeddde703",
+    "raw_wav_bytes": 387884,
+    "official_transform": "trimSilence(requireNarrationFormat(parseWav(raw))) then encodeWav",
+    "expected_clip_sha256": "24b42cef6f0578153f3757e2880b5cfa979e629a3b7319bd52f6b8a96583a18f",
+    "actual_matching_clip_files": [
+      "lz426.wav"
+    ],
+    "exact_byte_equal_to_expected": true,
+    "old146_wav_readback_unchanged": true,
+    "original_exact_request_not_bought_again": true,
+    "other_distinct_remaining_work_paid_capable": true
+  },
+  "quality_retake_rounds": 0,
+  "shortening_rounds": 0,
+  "reword_rounds": 0,
+  "full_english_dub_or_fit_or_audio_qa_complete": false,
+  "next": "Wait for87402 nativeexit; preserve any new journal outcome before another action; actual full EN cohort/fit/independent ASR/check remain required."
+}

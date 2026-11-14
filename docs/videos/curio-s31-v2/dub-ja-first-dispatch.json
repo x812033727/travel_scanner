@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "ja",
+  "status": "JA_FIRST_SYNTHESIS_DISPATCHED_AWAIT_NATIVE",
+  "snapshot_at": "2026-10-28T13:05:21.576Z",
+  "recorded_at": "2026-10-28T13:07:37.739Z",
+  "prior_EN_unchecked_disposition": {
+    "file": "docs/videos/curio-s31-v2/dub-en-listener-reword2-check-complete.json",
+    "sha256": "397852537961307cd89637a16152294a751f8e00d112e0aca714b4f69e895076"
+  },
+  "offline_fresh_plan": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-first-fresh-plan-20261028.json",
+    "sha256": "8e8ca81861adc88c5a041e4a8c4513a27df8152d800fc03668df71fa633fc481"
+  },
+  "source_current": {
+    "merged_JA_rows": 212,
+    "missing": 0,
+    "source_video_sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86",
+    "source_speech_hash": "fa2912daff4bd218",
+    "JA_translation_sha256": "6c3e3b768896a18f00e08d9e757433b0ab3f3589a65025aab93d28cf7ba05d99",
+    "JA_translation_hash": "aabc1f2a029e93c1",
+    "old_stale_JA_worksheet_not_merged": true,
+    "provider": "gemini",
+    "voice": "Sulafat",
+    "style": "official natural standard Japanese",
+    "no_voice_provider_or_global_limit_change": true
+  },
+  "dispatch": {
+    "session": 9813,
+    "official_pid": 58696,
+    "at": "2026-10-28T13:05:20.6576256Z",
+    "lease_acquired_at": "2026-10-28T13:05:21.576Z",
+    "receipt": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-first-paid-20261028-dispatch.json",
+      "sha256": "e0c9add01b8431b6ab754346bbe2d9d344d09045a19cc8292f8843222e653826"
+    },
+    "Root_reviewed_recipe": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-first-root-recipe-20261028.ps1",
+      "sha256": "ce45092ee8248a5638932b60b8a0dfcca28b90ff34c10a061cfa41855852e090"
+    },
+    "Root_fresh_reference_checks": 195,
+    "planned_line_requests": 212,
+    "planned_billable_characters": 4504,
+    "planned_request_bodies_sha256": "e5f517606b8909bc8b860b256964b4de45b5b1699338a9997d49b08d4660d2b4",
+    "plan_is_not_actual_completion_or_invoice": true,
+    "native_exit": null,
+    "actual_synthesized_requests": null,
+    "actual_billable_characters": null,
+    "line_by_line": true,
+    "redo": false,
+    "force": false,
+    "keep_fitting": false,
+    "automatic_retry": false,
+    "io_extra_journal_wait_ms": 30000,
+    "observer_basename": "ja-first-paid-50542c3b0bba4742a043c17ed5a8ba04.jsonl",
+    "preloads_use_file_URLs": true,
+    "observer_is_synthesis_only": true,
+    "paid_log_expected_file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-first-paid-20261028.log",
+    "native_expected_file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-first-paid-20261028-native.json",
+    "moving_log_or_cache_not_pinned": true
+  },
+  "official_dryrun": {
+    "quota": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-first-dryrun-20261028-quota.json",
+      "sha256": "28d16b5f2d9bbd58d645302fe9fcd90b431eac41ecee4cb9f6d94d91b6d2d86f"
+    },
+    "native": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-first-dryrun-20261028-native.json",
+      "sha256": "86f2c77d674295c2a6ce707241a0848bef30717575d5fdfb0bcbf41c3a9e06a7"
+    },
+    "log": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-first-dryrun-20261028.log",
+      "sha256": "03ed999d6e877824c32ccc54a71b597f0ea3f4f994631cd3701bbb76c7dd1b02"
+    },
+    "native_exit": 0,
+    "at": "2026-10-28T13:04:07.4980282Z",
+    "gemini_ready": true,
+    "monthly_remaining_characters": 4689563,
+    "grouped_estimate_requests": 171,
+    "grouped_estimate_characters": 5078,
+    "line_by_line_offline_plan_requests": 212,
+    "line_by_line_offline_plan_characters": 4504,
+    "grouped_estimate_not_actual_line_budget": true,
+    "quota_snapshot_not_reservation_or_invoice": true,
+    "does_not_prove_daily_provider_availability": true
+  },
+  "JA_quality": {
+    "synthesis_complete": false,
+    "actual_fit": "UNKNOWN",
+    "new_quality_check_complete": false,
+    "plain_quality_retake_rounds_completed": 0,
+    "listener_reword_rounds_completed": 0,
+    "shorten_rounds_completed": 0,
+    "accepted": false,
+    "audio_approved": false,
+    "human_listening_claimed": false
+  },
+  "EN_preservation": {
+    "resolved_unchecked_not_accepted": true,
+    "normal_EN_dub_skipped": true,
+    "current_EN_audio_and_caption_text_metadata_retained": true,
+    "official5flags_and_scores_retained": true,
+    "completed_ASR_state_and_run_retained": true,
+    "EN_ASR_handoff_not_needed_or_performed_for_JA_synthesis": true
+  },
+  "progress": {
+    "bounded_dub_attempts_resolved": 1,
+    "unchecked_skipped_locales": [
+      "en"
+    ],
+    "active_locale": "ja",
+    "other6_not_started": [
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ],
+    "accepted_dubs": 0,
+    "selected_dubs": 8
+  },
+  "image_budget": {
+    "conservative_image_and_judge_usd": 1.578,
+    "approved_cap_usd": 6,
+    "changed": false
+  },
+  "delivery_complete": false,
+  "s15_started": false,
+  "next": "Future heartbeat must wait for this exact JA native result, then reconcile current cache/partial WAVs, fit and journal before any next action. Do not replay the212 request plan, start a competing producer, clear EN ASR state, infer JA quality, or retry an uncertain journal. Root owns the sole continuation/dispatch decision after evidence."
+}

@@ -1,0 +1,502 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "at": "2026-10-27T09:17:58.261Z",
+  "status": "amended_listener_source_fresh_bare_panel_passed",
+  "source_video_sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86",
+  "script_sha256": "d9056e2b5b27b1ce4c6b084a89adb76a6c723bb603349c2d72f35f9cb028c5b0",
+  "payload_sha256": "c60da45b976628935ba08e72697454caed50ec35c328565e1c875464ebdbe55b",
+  "narrative_hash": "7a931bb0c6952510",
+  "panel_narration_sha256": "9bf84c077d5ff6a560189a866cf03c366c96c4b80db030eb871a385a4aea071b",
+  "readers": {
+    "c": {
+      "task": "s31_rw1_blind_c",
+      "fork_turns": "none",
+      "yes": 11,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[lz101] 你想過嗎，一口荔枝換幾千里驛路，宋朝地方志甚至寫了人馬死傷。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[lz108] 一位宋朝學者，卻在同一本書裡寫了兩次。"
+        },
+        {
+          "id": "one_line",
+          "yes": false,
+          "evidence": "[lz501] 這個問題，北宋的陳正敏在崇寧、大觀年間就提出來了。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[v2a0011] 今天跟著一籃荔枝，追過唐宋幾百年的紀錄。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[lz415] 你問的依據，開頭那位寫了兩次的學者吳曾，也找過。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[v2a0241] 但這還不是最怪的。貴妃的口味，能解釋整條驛路嗎？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[lz418] 他讀了一本《涪州圖經》，又問了當地人："
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[lz424] 七天七夜，送到京城，"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[lz417] 沒想到，同一本書翻到後面，他改口了。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[lz521] 想一起把熟悉的故事翻出新問題，就訂閱奇聞檔案局。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[lz110] 楊貴妃的荔枝，到底怎麼送到長安？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[lz519] 開頭那籃荔枝，史書給了送法；"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[v2a0611] 去除唐代地志的里程。這樣能看出壓力有多大，"
+        }
+      ]
+    },
+    "d": {
+      "task": "s31_rw1_blind_d",
+      "fork_turns": "none",
+      "yes": 12,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[lz103] 一騎紅塵妃子笑，無人知是荔枝來。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[lz108] 一位宋朝學者，卻在同一本書裡寫了兩次。"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[v2a0361] 你剛跟著使者往南海走，宋人卻把籃子接到了四川。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[v2a0011] 今天跟著一籃荔枝，追過唐宋幾百年的紀錄。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": false,
+          "evidence": "[lz501] 這個問題，北宋的陳正敏在崇寧、大觀年間就提出來了。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[v2a0241] 但這還不是最怪的。貴妃的口味，能解釋整條驛路嗎？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[lz424p2] 開頭的人馬死傷，就出自這部宋代地方志。"
+        },
+        {
+          "id": "no_recap",
+          "yes": true,
+          "evidence": "[lz506] 還記得《甘澤謠》驪山上那一幕嗎？"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[lz417] 沒想到，同一本書翻到後面，他改口了。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[lz521] 想一起把熟悉的故事翻出新問題，就訂閱奇聞檔案局。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[lz101] 你想過嗎，一口荔枝換幾千里驛路，宋朝地方志甚至寫了人馬死傷。"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[lz519p2] 產地、天數和鮮度，還得留在未結的檔案裡。"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[v2a0651] 你等果子到之前，還得先確定收貨的人在哪裡。"
+        }
+      ]
+    }
+  },
+  "merged": {
+    "passed": true,
+    "answers": [
+      {
+        "id": "scene_first",
+        "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+        "required": true,
+        "yes": true,
+        "evidence": "[lz101] 你想過嗎，一口荔枝換幾千里驛路，宋朝地方志甚至寫了人馬死傷。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_spoiler",
+        "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+        "required": true,
+        "yes": true,
+        "evidence": "[lz108] 一位宋朝學者，卻在同一本書裡寫了兩次。",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_line",
+        "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+        "required": true,
+        "yes": true,
+        "evidence": "[v2a0361] 你剛跟著使者往南海走，宋人卻把籃子接到了四川。",
+        "yes_readers": 1
+      },
+      {
+        "id": "no_toc",
+        "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+        "required": true,
+        "yes": true,
+        "evidence": "[v2a0011] 今天跟著一籃荔枝，追過唐宋幾百年的紀錄。",
+        "yes_readers": 2
+      },
+      {
+        "id": "chapters_link",
+        "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+        "required": true,
+        "yes": true,
+        "evidence": "[lz415] 你問的依據，開頭那位寫了兩次的學者吳曾，也找過。",
+        "yes_readers": 1
+      },
+      {
+        "id": "open_loops",
+        "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+        "required": true,
+        "yes": true,
+        "evidence": "[v2a0241] 但這還不是最怪的。貴妃的口味，能解釋整條驛路嗎？",
+        "yes_readers": 2
+      },
+      {
+        "id": "payoffs",
+        "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+        "required": true,
+        "yes": true,
+        "evidence": "[lz418] 他讀了一本《涪州圖經》，又問了當地人：",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_recap",
+        "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+        "required": true,
+        "yes": true,
+        "evidence": "[lz506] 還記得《甘澤謠》驪山上那一幕嗎？",
+        "yes_readers": 1
+      },
+      {
+        "id": "chapters_are_events",
+        "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+        "required": false,
+        "yes": true,
+        "evidence": "[lz417] 沒想到，同一本書翻到後面，他改口了。",
+        "yes_readers": 2
+      },
+      {
+        "id": "outro_no_next",
+        "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+        "required": true,
+        "yes": true,
+        "evidence": "[lz521] 想一起把熟悉的故事翻出新問題，就訂閱奇聞檔案局。",
+        "yes_readers": 2
+      },
+      {
+        "id": "opening_hooks",
+        "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+        "required": true,
+        "yes": true,
+        "evidence": "[lz110] 楊貴妃的荔枝，到底怎麼送到長安？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_thread",
+        "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+        "required": true,
+        "yes": true,
+        "evidence": "[lz519] 開頭那籃荔枝，史書給了送法；",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_detour",
+        "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+        "required": true,
+        "yes": true,
+        "evidence": "[v2a0611] 去除唐代地志的里程。這樣能看出壓力有多大，",
+        "yes_readers": 2
+      }
+    ],
+    "failed": [],
+    "advisory": [],
+    "problems": [],
+    "readers": [
+      {
+        "passed": false,
+        "answers": [
+          {
+            "id": "scene_first",
+            "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+            "required": true,
+            "yes": true,
+            "evidence": "[lz101] 你想過嗎，一口荔枝換幾千里驛路，宋朝地方志甚至寫了人馬死傷。"
+          },
+          {
+            "id": "no_spoiler",
+            "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[lz108] 一位宋朝學者，卻在同一本書裡寫了兩次。"
+          },
+          {
+            "id": "one_line",
+            "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+            "required": true,
+            "yes": false,
+            "evidence": "[lz501] 這個問題，北宋的陳正敏在崇寧、大觀年間就提出來了。"
+          },
+          {
+            "id": "no_toc",
+            "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[v2a0011] 今天跟著一籃荔枝，追過唐宋幾百年的紀錄。"
+          },
+          {
+            "id": "chapters_link",
+            "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+            "required": true,
+            "yes": true,
+            "evidence": "[lz415] 你問的依據，開頭那位寫了兩次的學者吳曾，也找過。"
+          },
+          {
+            "id": "open_loops",
+            "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+            "required": true,
+            "yes": true,
+            "evidence": "[v2a0241] 但這還不是最怪的。貴妃的口味，能解釋整條驛路嗎？"
+          },
+          {
+            "id": "payoffs",
+            "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+            "required": true,
+            "yes": true,
+            "evidence": "[lz418] 他讀了一本《涪州圖經》，又問了當地人："
+          },
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": false,
+            "evidence": "[lz424] 七天七夜，送到京城，"
+          },
+          {
+            "id": "chapters_are_events",
+            "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+            "required": false,
+            "yes": true,
+            "evidence": "[lz417] 沒想到，同一本書翻到後面，他改口了。"
+          },
+          {
+            "id": "outro_no_next",
+            "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+            "required": true,
+            "yes": true,
+            "evidence": "[lz521] 想一起把熟悉的故事翻出新問題，就訂閱奇聞檔案局。"
+          },
+          {
+            "id": "opening_hooks",
+            "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[lz110] 楊貴妃的荔枝，到底怎麼送到長安？"
+          },
+          {
+            "id": "one_thread",
+            "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+            "required": true,
+            "yes": true,
+            "evidence": "[lz519] 開頭那籃荔枝，史書給了送法；"
+          },
+          {
+            "id": "no_detour",
+            "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+            "required": true,
+            "yes": true,
+            "evidence": "[v2a0611] 去除唐代地志的里程。這樣能看出壓力有多大，"
+          }
+        ],
+        "failed": [
+          {
+            "id": "one_line",
+            "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+            "required": true,
+            "yes": false,
+            "evidence": "[lz501] 這個問題，北宋的陳正敏在崇寧、大觀年間就提出來了。"
+          },
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": false,
+            "evidence": "[lz424] 七天七夜，送到京城，"
+          }
+        ],
+        "advisory": [],
+        "problems": [
+          "one_line：全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？（[lz501] 這個問題，北宋的陳正敏在崇寧、大觀年間就提出來了。）",
+          "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（[lz424] 七天七夜，送到京城，）"
+        ]
+      },
+      {
+        "passed": false,
+        "answers": [
+          {
+            "id": "scene_first",
+            "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+            "required": true,
+            "yes": true,
+            "evidence": "[lz103] 一騎紅塵妃子笑，無人知是荔枝來。"
+          },
+          {
+            "id": "no_spoiler",
+            "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[lz108] 一位宋朝學者，卻在同一本書裡寫了兩次。"
+          },
+          {
+            "id": "one_line",
+            "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+            "required": true,
+            "yes": true,
+            "evidence": "[v2a0361] 你剛跟著使者往南海走，宋人卻把籃子接到了四川。"
+          },
+          {
+            "id": "no_toc",
+            "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[v2a0011] 今天跟著一籃荔枝，追過唐宋幾百年的紀錄。"
+          },
+          {
+            "id": "chapters_link",
+            "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+            "required": true,
+            "yes": false,
+            "evidence": "[lz501] 這個問題，北宋的陳正敏在崇寧、大觀年間就提出來了。"
+          },
+          {
+            "id": "open_loops",
+            "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+            "required": true,
+            "yes": true,
+            "evidence": "[v2a0241] 但這還不是最怪的。貴妃的口味，能解釋整條驛路嗎？"
+          },
+          {
+            "id": "payoffs",
+            "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+            "required": true,
+            "yes": true,
+            "evidence": "[lz424p2] 開頭的人馬死傷，就出自這部宋代地方志。"
+          },
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": true,
+            "evidence": "[lz506] 還記得《甘澤謠》驪山上那一幕嗎？"
+          },
+          {
+            "id": "chapters_are_events",
+            "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+            "required": false,
+            "yes": true,
+            "evidence": "[lz417] 沒想到，同一本書翻到後面，他改口了。"
+          },
+          {
+            "id": "outro_no_next",
+            "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+            "required": true,
+            "yes": true,
+            "evidence": "[lz521] 想一起把熟悉的故事翻出新問題，就訂閱奇聞檔案局。"
+          },
+          {
+            "id": "opening_hooks",
+            "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[lz101] 你想過嗎，一口荔枝換幾千里驛路，宋朝地方志甚至寫了人馬死傷。"
+          },
+          {
+            "id": "one_thread",
+            "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+            "required": true,
+            "yes": true,
+            "evidence": "[lz519p2] 產地、天數和鮮度，還得留在未結的檔案裡。"
+          },
+          {
+            "id": "no_detour",
+            "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+            "required": true,
+            "yes": true,
+            "evidence": "[v2a0651] 你等果子到之前，還得先確定收貨的人在哪裡。"
+          }
+        ],
+        "failed": [
+          {
+            "id": "chapters_link",
+            "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+            "required": true,
+            "yes": false,
+            "evidence": "[lz501] 這個問題，北宋的陳正敏在崇寧、大觀年間就提出來了。"
+          }
+        ],
+        "advisory": [],
+        "problems": [
+          "chapters_link：每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。（[lz501] 這個問題，北宋的陳正敏在崇寧、大觀年間就提出來了。）"
+        ]
+      }
+    ]
+  },
+  "merge_rule": "official mergePanelVerdicts: ANY cited yes passes a question; all per-reader no verdicts retained",
+  "initial_failed_source_record": "narrative-listener-rw1-initial.json",
+  "source_amendment": "listener-rw1-narrative-amendment.json",
+  "script_approval_pending": true,
+  "audio_synthesis_or_approval": false
+}

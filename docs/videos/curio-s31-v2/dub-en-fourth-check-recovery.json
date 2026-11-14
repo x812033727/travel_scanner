@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "FOURTH_SAVED_ANSWER_REVIEWED_NORMAL_RESUME_ENDED_ON_NEW_FIFTH_REQUEST",
+  "failed_command": {
+    "session": 29192,
+    "slot": "check-en-saved-answer3-resume",
+    "pid": 45724,
+    "native_exit": 1,
+    "ended_at": "2026-10-27T13:24:12.5535438Z",
+    "native_receipt_sha256": "6a03954697a3e88c76af811976ca9b6db567804853ae6a04a58b748cfb3eb664",
+    "reason": "Windows EPERM promoting another complete transcribe answer. All request/answer/tmp preserved, no manual canonical promotion.",
+    "same_rename_attempts": 113,
+    "scheduled_extra_wait_ms": 28218,
+    "unchanged_retry_deadline_ms": 30000,
+    "io_log_sha256": "48e36c6dcf5d583144dfc6f98787e4c9c079e9959b4b3275110f0d85717a0a77"
+  },
+  "request_sha256": "ff4bfc70067b6bece4604236d5b506acd31d86104d5385b2dcbac3c27472d436",
+  "line_id": "lz418",
+  "freeze": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-fourth-rename-failure-before/manifest.json",
+    "sha256": "7b6bd95a21a20e6ddec4eb67207cafa3ff1571839606ed263ae67fcca19ad824",
+    "at": "2026-10-27T13:26:22.063Z",
+    "present_files": 20,
+    "absent_files": 2,
+    "unchanged_raw_wavs": 212,
+    "primary_cache_lines": 126,
+    "preserved_files": 52,
+    "active_files": 3,
+    "lease_present": false,
+    "asr_project_state_present": false,
+    "direct_bridge_runs": {
+      "dub-en-bridge-prep": [],
+      "dub-en-bridge-prep-v2": [],
+      "dub-en-bridge-prep-v3": []
+    }
+  },
+  "saved_files": [
+    {
+      "name": "ff4bfc70067b6bece4604236d5b506acd31d86104d5385b2dcbac3c27472d436.json",
+      "bytes": 443,
+      "sha256": "e971b2725a9284ff0c248bf9260cc82da0bd8e3c2c94f9b32585c0819fe3fea9"
+    },
+    {
+      "name": "ff4bfc70067b6bece4604236d5b506acd31d86104d5385b2dcbac3c27472d436.answer.json",
+      "bytes": 1262,
+      "sha256": "1adc73c9897557931d7a5a32c58338549110de1716ea4fb398b0a70d66980011"
+    },
+    {
+      "name": "ff4bfc70067b6bece4604236d5b506acd31d86104d5385b2dcbac3c27472d436.json.45724.tmp",
+      "bytes": 741,
+      "sha256": "645b70d5f3783f4eb9514b84346370a7f0a993ff8db5eae609e0ec7f2cbbd803"
+    }
+  ],
+  "private_recovery": {
+    "result_file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-transcribe-recovery-prep\\runs\\recovery-5d9e3e77-8d6a-40ed-82bd-8b031b7addde/result.json",
+    "result_sha256": "5320f2d136b4240b23db75a0792664d5502801beb55ef0b620e923a95ad1c7ae",
+    "native_exit": 0,
+    "proof_sha256": "2b93b8eb97e8851d3af1ee51c503b0dd85fd12d67a6ca8b195fb0511e7a91d44",
+    "matched_line_id": "lz418",
+    "terms_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "terms_count": 0,
+    "reused": 1,
+    "reopened_reused": 1,
+    "send_calls": 0,
+    "fetch_calls": 0,
+    "default_pid_before_and_after": "ESRCH",
+    "alive_hold": "video_speech_uncertain",
+    "original_files_unchanged": true,
+    "canonical_promoted": false
+  },
+  "actual_independent_review": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-transcribe-recovery-prep/actual-request-review-ff4bfc70067b6bec.json",
+    "sha256": "d44b7ba1e6421c24cbf5800093314d06d1199d5f3f7c2a21f170f6be6c5a75a9",
+    "verdict": "PASS_ACTUAL_PRIVATE_EN_TRANSCRIBE_RECOVERY_RESULT"
+  },
+  "audio_accepted": false,
+  "complete_delivery_package": false,
+  "owner_listened_or_watched": false,
+  "youtube_uploaded_or_published": false,
+  "next": "Completed slot38131 must not be replayed. Reconcile new fifth request in dub-en-fifth-check-recovery.json.",
+  "fresh_dispatch": {
+    "expected_terms_count": 0,
+    "observer_file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-saved-answer4-resume-transport-3bb8f396d555462d81b23b9854cbebf1.jsonl",
+    "partial_cache_lines": 126,
+    "previous_consumption_sha256": "684f6fb800ca9313489ed71d71812498762a1193957258aa8f2608fbac695576",
+    "saved_answer_to_reuse_count": 1,
+    "request_sha256": "ff4bfc70067b6bece4604236d5b506acd31d86104d5385b2dcbac3c27472d436",
+    "generic_result_sha256": "5320f2d136b4240b23db75a0792664d5502801beb55ef0b620e923a95ad1c7ae",
+    "locale": "en",
+    "generic_code_review_sha256": "8809759655937822b3b74efe347deeb9d700513c5a3445c6f5f2c1d72a68ac56",
+    "force": false,
+    "frozen_present": 20,
+    "second_timeout_ms": 1200000,
+    "preserved_journal_files": 52,
+    "frozen_absent": 2,
+    "old_cache_preserved": 110,
+    "frozen_cache_lines": 126,
+    "original_pid": 45724,
+    "prior_saved_answer_consumed": true,
+    "at": "2026-10-27T13:30:34.2163727Z",
+    "recovery_review_sha256": "d44b7ba1e6421c24cbf5800093314d06d1199d5f3f7c2a21f170f6be6c5a75a9",
+    "binding_sha256": "9899846260cb029b0c456f2629b9f65323a469911e0049c559a08677ab2eb183",
+    "raw_wavs": 212,
+    "expected_terms_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "earlier_consumption_sha256": "3d399bc377346f22e88eb386d4288260cea032b0f3cf52c78f90f26aa71a1622",
+    "fresh_files_checked": 543,
+    "second_previously_dispatched": false,
+    "slot": "check-en-saved-answer4-resume",
+    "prior_consumption_sha256": "ea83d4d322d355791cd27f32f9f97060180ac8de7d797561eccf832feb53c9e4"
+  },
+  "normal_resume": {
+    "session": 38131,
+    "slot": "check-en-saved-answer4-resume",
+    "runner_sha256": "78271a5145e2b3145a9f7bfd120c46b9d0ea488366f08889805decdc09ed8ec6",
+    "pid": 32176,
+    "dispatched_at": "2026-10-27T13:30:34.2163727Z",
+    "native_exit": 1,
+    "ended_at": "2026-10-27T13:31:25.1722048Z",
+    "native_receipt_sha256": "317226d64101875fd0983203e628c904dac85ae5756bc10cd7f22e6e44081a9c"
+  },
+  "previous_actual_consumption": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-saved-answer-consumption-aa360.json",
+    "sha256": "ea83d4d322d355791cd27f32f9f97060180ac8de7d797561eccf832feb53c9e4",
+    "original_cache_rows_preserved": 110,
+    "current_cache_rows": 126,
+    "raw_and_chinese_master_unchanged": true
+  }
+}

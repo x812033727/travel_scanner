@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "EN_LISTENER_REWORD2_SYNTHESIS_COMPLETE_NEW_QUALITY_PENDING",
+  "snapshot_at": "2026-10-28T12:33:05.2651135Z",
+  "recorded_at": "2026-10-28T12:38:09.623Z",
+  "historical_dispatch_snapshot": {
+    "file": "docs/videos/curio-s31-v2/dub-en-listener-reword2-dispatch.json",
+    "sha256": "9a61e87be4d472046a8b1825995793d026be82f9e47cadbcc5c4661a0c217b8a"
+  },
+  "synthesis": {
+    "session": 48611,
+    "official_pid": 46588,
+    "native_exit": 0,
+    "ended_at": "2026-10-28T12:33:05.2651135+00:00",
+    "native": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-prep/paid-native.json",
+      "sha256": "f7b4f2bf839e12ae764418f0c3b709c59cfc85d2a6710621166ed4e36d473525"
+    },
+    "dispatch": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-prep/paid-dispatch.json",
+      "sha256": "f39ac4f6f68ec09f0815c06fd02404241c36dc9cbc1fa8a32dd5c4151f80f2cd"
+    },
+    "official_log": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-prep/paid.log",
+      "sha256": "f9b9de77a149fa3e4317ed7375aa2a70d6c313a3d160c6e09588068cef667477"
+    },
+    "production_plan": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-prep/production-plan.json",
+      "sha256": "e496e362d3c725af1a6332ff488e02fd9655fc30b97d0e81f9e76a8a88fbc4c0"
+    },
+    "official_requests": 5,
+    "official_billable_characters": 262,
+    "official_reused_request_groups": 166,
+    "raw_reuse_count": 207,
+    "reused_groups_are_not_raw_line_count": true,
+    "line_by_line": true,
+    "redo": false,
+    "force": false,
+    "automatic_retry": false,
+    "io_extra_wait_cap_ms": 30000,
+    "process_environment_restored": true
+  },
+  "wording": {
+    "candidate": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-listener-reword2-wording-candidates-audio-plan.json",
+      "sha256": "4d9184e2718dd4e71c2adad45184f57ec9b1b658541fc122032fb12c8e2a544b"
+    },
+    "independent_semantic_review": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-listener-reword2-five-candidates-independent-review.json",
+      "sha256": "17c0c3ce1444a583eefac2374767b32d960b1a249bc4bf86aaff8ba0551ac8ce"
+    },
+    "official_merge": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-prep/merge-receipt.json",
+      "sha256": "64d6f4cde0af0e9b47e4f1c6222f7a8562babb463ce71b163c80e6fe773b1da4"
+    },
+    "translation_sha256": "3b1f40f2aa91e39cba3be034243abbf22e36c302a7163b4bbd8560d643143501",
+    "translation_hash": "46a60a970b6613b9",
+    "source_speech_hash": "fa2912daff4bd218",
+    "changed_ids": [
+      "lz213",
+      "lz411",
+      "v2a0611",
+      "lz506",
+      "v2a0791"
+    ],
+    "other207_texts_and_metadata_preserved": true
+  },
+  "independent_actual_completion": {
+    "receipt": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-prep/completion-review.json",
+      "sha256": "1e6c23777438c33a398980682e3ee48f23d3fb1c3d95b6f378c2c48b6e77f4e9"
+    },
+    "collector_compatible_observation": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-prep/completion-observation.json",
+      "sha256": "2aa069fd93a41d85c7f274fa1031dc5d2301570721a51dd630c41f5618a11ed6"
+    },
+    "current_raw_wavs": 212,
+    "changed_raw_wavs": 5,
+    "other207_raw_unchanged": true,
+    "production_before_copies_verified": 177,
+    "all207_unchanged_cache_keys_preserved": true,
+    "lease_absent_at_audit": true,
+    "full_process_inventory_not_performed_by_this_audit": true,
+    "journal": {
+      "historical_count": 120,
+      "exact_membership_and_fullsha_preserved": true,
+      "active": 0
+    },
+    "prior_completed_ASR": {
+      "state_files": 2,
+      "owning_run_files": 15,
+      "active_binding_files": 1,
+      "all18_fullsha_and_bytes_preserved": true,
+      "exact_membership_preserved": true,
+      "archive_move_or_retarget": false
+    },
+    "physical_fit": {
+      "windows": 150,
+      "over": 0,
+      "sped": 8,
+      "max_tempo": 1.15,
+      "cheng_date": {
+        "slack_frames": -3,
+        "overrun_seconds": 0.1,
+        "absorbed": "next-slack"
+      },
+      "v2_add_079": {
+        "slack_frames": -1,
+        "overrun_seconds": 0.03,
+        "absorbed": "next-slack"
+      },
+      "actual_placed_sample_replay_pass": true,
+      "required_current_stretched_files": 12,
+      "existing_stretched_files": 15
+    }
+  },
+  "technical_decode": {
+    "native": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-prep/decode-native.json",
+      "sha256": "f5c2bf1033ca7ada58f978df793edcb7cb72ec4c8eb29b1db229134ed8bc18d5"
+    },
+    "log": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-prep/decode.log",
+      "sha256": "d95cf1949bb11e06af297bd72acdbb4722c2872425ebea65f0b7ecc7c0b7895e"
+    },
+    "session": 19311,
+    "native_exit": 0,
+    "completed_at": "2026-10-28T12:33:46.0973231+00:00",
+    "full_decode": true,
+    "media": {
+      "observed_original_file": "C:/Users/x8120/mokaair-work/videos/curio-s31-v2/dubs/en.m4a",
+      "sha256": "a56fc2ea8c6bedf947c9f1d28e30e0b04610eefe7452a8db4959a4a517210d45",
+      "bytes": 46585183,
+      "duration_seconds": 969.705
+    },
+    "integrated_LUFS": -14.1,
+    "loudness_range_LU": 5.1,
+    "true_peak_dBFS": -2,
+    "human_listening_performed": false,
+    "scope": "Technical full decode and loudness only; not pronunciation, wording or acoustic quality approval."
+  },
+  "lz513": {
+    "retain_current_decision": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-prep/lz513-retain-current-decision.json",
+      "sha256": "f644ef6fe1ead0106fc35636d648c1bc0902a8f5fdf619f9d95b6d40657e0d08"
+    },
+    "same_text_and_take": true,
+    "original_primary_score": 0.17,
+    "original_second_score": 0.16,
+    "automatic_flag_retained": true,
+    "automatic_cleared": false,
+    "audio_approved": false,
+    "human_listening_claimed": false
+  },
+  "quality": {
+    "plain_synthesis_rounds_completed": 2,
+    "plain_cap": 2,
+    "listener_reword_synthesis_rounds_completed": 2,
+    "listener_cap": 2,
+    "shorten_rounds": 0,
+    "new_quality_check_complete": false,
+    "current_new_flags_count": null,
+    "old_six_flags_preserved": true,
+    "old_flags_historical_for_changed_five": true,
+    "lz513_flag_still_same_take": true,
+    "new_full_cohort_or_ASR_runtime_not_approved_by_this_receipt": true,
+    "accepted_dubs": 0,
+    "selected_dubs": 8,
+    "audio_approved": false,
+    "owner_listened": false
+  },
+  "image_budget": {
+    "conservative_image_and_judge_usd": 1.578,
+    "approved_cap_usd": 6,
+    "changed": false
+  },
+  "delivery_complete": false,
+  "s15_started": false,
+  "next": "Use separately reviewed current full-cohort evidence and exact handoff/activation before a new quality check. Preserve old takes, scores, flags and completed ASR proofs. No third plain or listener synthesis round, automatic acceptance, old-slot replay or additional production is authorized by this synthesis completion receipt."
+}

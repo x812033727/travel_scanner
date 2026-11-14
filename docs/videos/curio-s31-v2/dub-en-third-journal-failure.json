@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "at": "2026-10-27T10:53:21.276Z",
+  "session": 87402,
+  "native_exit": 1,
+  "native_exit_receipt": {
+    "locale": "en",
+    "native_exit": 1,
+    "at": "2026-10-27T10:46:29.7303782Z",
+    "captured_immediately": true
+  },
+  "partial_en_wavs": 161,
+  "staged_request": "0f3df992e0b4acdc31657e3d6fe044bae5b96bd77483106b3eb3f6a6184211a5",
+  "producer_pid": 8488,
+  "producer_os_state": "ESRCH",
+  "frozen_staged_manifest_sha256": "2dd16f17b392d75d6cb24aff093dfc9c48a31e54a66d1480ca7d935b3a5b4723",
+  "frozen_staged_journal": [
+    {
+      "file": "journal/0f3df992e0b4acdc31657e3d6fe044bae5b96bd77483106b3eb3f6a6184211a5.json",
+      "bytes": 975,
+      "sha256": "26f3dde8f184e099dc9521a54e7c2eb796f6348e225529919b94d90dc0ca8d76"
+    },
+    {
+      "file": "journal/0f3df992e0b4acdc31657e3d6fe044bae5b96bd77483106b3eb3f6a6184211a5.answer.json",
+      "bytes": 1923,
+      "sha256": "cdcf3b4ac3dc302d384e5ff36332fa85b89b27b88a96f6ef36ba3cc37b44d407"
+    },
+    {
+      "file": "journal/0f3df992e0b4acdc31657e3d6fe044bae5b96bd77483106b3eb3f6a6184211a5.json.8488.tmp",
+      "bytes": 1236,
+      "sha256": "35c18d9588344ab0ebdd3474d709965d4b2791832335119bb01f4000f0596ef9"
+    },
+    {
+      "file": "journal/0f3df992e0b4acdc31657e3d6fe044bae5b96bd77483106b3eb3f6a6184211a5.wav",
+      "bytes": 272684,
+      "sha256": "cc296df8b9df333d72ad06d5aa0d0f1ebbd53a9ef291851f44b0ff00be3bba1c"
+    }
+  ],
+  "generic_checker_sha256": "d076d652c9654e26750c056013aa646028c4fa0eb0012e1215ef228a0fe6b459",
+  "generic_checker_independent_review_sha256": "0b26727f92aeab5184fa872b53b36717ef3a47aa51c24b7e830f6a2007dbd93f",
+  "actual_staged_recovery_review_sha256": "9898ec61df1031193b56748941034ef096ecac465fd1387147d4776238a3f68f",
+  "actual_staged_recovery": {
+    "reused": 1,
+    "send": 0,
+    "fetch": 0,
+    "original_billable_preserved": 36
+  },
+  "second_active_confirmed_request": "11afb86830e29b59d2e07cfad7d15b636526f2777c72da0e7fef8ffc4604c717",
+  "confirmed_companion_manifest_sha256": "e371b343dc8cdafd3f1a84bb0eee97b3698cd054daaef61d6ba31d5e16610ed2",
+  "confirmed_companion_files": [
+    {
+      "file": "11afb86830e29b59d2e07cfad7d15b636526f2777c72da0e7fef8ffc4604c717.json",
+      "sha256": "95c0de8319842c3ad59c027a0f3ca17cb6421e933edf6cb432542de217077aec",
+      "bytes": 1227
+    },
+    {
+      "file": "11afb86830e29b59d2e07cfad7d15b636526f2777c72da0e7fef8ffc4604c717.wav",
+      "sha256": "09c843493a36b5ae327e452f010d085d816e8db54e97ce20a604de248e092e52",
+      "bytes": 203564
+    }
+  ],
+  "confirmed_companion_status": "confirmed; direct reuse validation pending, no staged sidecar/temp fabricated",
+  "active_journal_entries": 2,
+  "source_video_sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86",
+  "current_chinese_final_sha256": "b8bc3fcfe22e73cff79422124d89da99630bbf7c7e59b0480ef9804db11d2c60",
+  "normal_resume_not_dispatched": true,
+  "full_en_fit_or_audio_qa_complete": false,
+  "next": "Validate direct official reuse of the already-confirmed two-file companion on a PRIVATE clone, then fresh reconcile all161clips/cache/source plus both canonical journal entries before one normal resume in a new slot."
+}

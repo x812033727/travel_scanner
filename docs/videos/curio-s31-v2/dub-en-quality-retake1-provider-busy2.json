@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "ORIGINAL_TEXT_RETAKE1_SECOND_PROVIDER_BUSY_NO_NEW_TAKES_EXTENDED_COOLDOWN",
+  "attempt": {
+    "session": 82113,
+    "pid": 57648,
+    "slot": "dub-en-quality-retake1-after-busy1",
+    "dispatched_at": "2026-10-27T15:33:22.4095659Z",
+    "native_exit": 4,
+    "ended_at": "2026-10-27T15:34:08.1485986Z",
+    "provider_attempt_count": 5,
+    "http_status": 429,
+    "problem_code": "video_speech_upstream_busy",
+    "retry_after_seconds": 10,
+    "first_attempt_at": "2026-10-27T15:33:24.956Z",
+    "last_attempt_at": "2026-10-27T15:34:08.067Z"
+  },
+  "previous_attempt": {
+    "file": "dub-en-quality-retake1-provider-busy.json",
+    "sha256": "8dcbb3fc4cd7a19d4f0b3a21542bc50dd1858a3cf73c28d79e00051440ba3bf6",
+    "preserved": true
+  },
+  "freeze": {
+    "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-quality-retake1-provider-busy2-before\\manifest.json",
+    "bytes": 4144,
+    "sha256": "78bfd95a92376bc7da41b7dd6ac52d6a4400dc33e30f9f72faa6a28858c26869"
+  },
+  "actual_comparison": {
+    "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-quality-retake1-provider-busy2-before\\actual-comparison.json",
+    "bytes": 183687,
+    "sha256": "6e0acaa4a02f78bd34280f6146e876a50fa9d5f978d6200efd1b3d556d10f626"
+  },
+  "verification": {
+    "current_raw_wavs": 212,
+    "targeted_raw_wavs": 29,
+    "targeted_changed": 0,
+    "other_raw_wavs": 183,
+    "other_changed": 0,
+    "protected_artifacts": 102,
+    "en_mix_timeline_fit_cache_source_approvals_state_unchanged": true,
+    "check_and29flags_unchanged": true,
+    "historical_journal_files": 82,
+    "active_or_uncertain_journal_entries": 0,
+    "producer_os_probe": "ESRCH",
+    "lease_present": false,
+    "root_hash_checks": 330
+  },
+  "quality_rounds": {
+    "plain_completed": 0,
+    "plain_cap": 2,
+    "planned_round1_not_completed": true,
+    "shortening": 0,
+    "listener_reword": 0
+  },
+  "cost": {
+    "usage_receipt_available": false,
+    "actual_fee_usd": null,
+    "no_zero_fee_claim": true,
+    "monthly_quota_last_snapshot": 5157762,
+    "monthly_quota_snapshot_at": "2026-10-27T15:26:30.9841346Z",
+    "monthly_quota_does_not_prove_google_daily_quota_available": true,
+    "actual_retake_requests": 29,
+    "estimated_billable_characters": 1251,
+    "quota_receipt": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\dub-en-quality-retake1-after-busy1-dryrun-quota.json",
+      "sha256": "ab6711f00015b9c55739c9f936b5e6c15384adf578cee22778a2694fd4feb23a"
+    }
+  },
+  "cooldown": {
+    "not_before": "2026-10-27T16:35:00Z",
+    "exact_native_plus_60_minutes": "2026-10-27T16:34:08.1485986Z",
+    "rounded_up_for_queue": true,
+    "action": "Before this UTC boundary, read-only observation only. Do not replay either ended paid slot. Afterward require fresh quota/source/lease/journal and exact remaining subset for a separate normal slot. No provider, quota or global setting change."
+  },
+  "future_second_asr_handoff": {
+    "preparation_review": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-first-complete-handoff-prep\\independent-preparation-review.json",
+      "sha256": "7aac26dcc504cbc60b8f6c1fb276abba937dd1187f544096cf8e41fb835e5884"
+    },
+    "preparation_only": true,
+    "executed": false,
+    "executor_approved": false,
+    "activation_gate_approved": false,
+    "current_state_and_binding_preserved": true,
+    "next": "Wait for actual new WAVs and fit; review their cohort and exact closure/activation implementation before moving the completed prior scope. Preparation PASS alone authorizes no handoff or ASR dispatch."
+  },
+  "producer_running": false,
+  "audio_accepted": false,
+  "foreign_dubs_accepted": 0,
+  "foreign_dubs_selected": 8,
+  "complete_delivery_package": false,
+  "next_episode_started": false,
+  "next": "Remain quiet during cooldown; reconcile fresh evidence and quota after the not-before boundary. Original takes, flags and all request receipts remain intact."
+}

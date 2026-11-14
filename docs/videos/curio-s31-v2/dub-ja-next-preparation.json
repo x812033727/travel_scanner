@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "ja",
+  "status": "PREPARED_ONLY_NEXT_NORMAL_CONTINUATION_AND_ASR_SOURCE_NOT_DISPATCHED",
+  "at": "2026-10-28T14:17:03.203Z",
+  "current_stopped_snapshot": {
+    "file": "docs/videos/curio-s31-v2/dub-ja-first-resume2-stop.json",
+    "sha256": "4fd52c0b2ebff330c1751e9f2f2b8d4ac8c4a0230559444b7bf7bd42753ef8f1"
+  },
+  "current_scope": {
+    "valid_raw_cache_lines": 79,
+    "remaining_new_requests": 133,
+    "remaining_new_billable_characters": 2811,
+    "unconsumed_saved": 0,
+    "frozen_files": 226,
+    "historical_journal_files": 134,
+    "active_journal": 0,
+    "actual_comparison": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume2-stop-audit-20261028/actual-comparison.json",
+      "sha256": "3c46b46c5ef94f2312bb3768befa167ff2b4930c1759c8020e6c4aff73528aec"
+    },
+    "manifest": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume2-stop-audit-20261028/manifest.json",
+      "sha256": "411a9d335508fc56597235549613a3478a9c48c4d79dfd130520afde5e113e65"
+    }
+  },
+  "next_resume3": {
+    "recipe": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume2-stop-audit-20261028/resume3-root-recipe.mjs",
+      "sha256": "92a6bed0e568d77538ec74e91abb645cf2a2e364b50a400a5a4ca299c2fb7db6"
+    },
+    "independent_static_review": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume2-stop-audit-20261028/resume3-root-recipe-static-review.json",
+      "sha256": "554080f2a1d0586830d75b9bca3228026fcd5bdf280549b278f16d0dd76c58b0"
+    },
+    "static_source_PASS_only": true,
+    "dryrun_executed": false,
+    "paid_executed": false,
+    "once_only_dryrun_and_paid_slots_unused": true,
+    "not_before": "2026-10-28T14:35:00.000Z",
+    "both_modes_hard_block_before_boundary": true,
+    "normalized_guard": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-first-recovery-prep-20261028/process-guard-normalized.ps1",
+      "sha256": "9003fb5c610111409b8c91284f6f721168b5d3fcef137bf770a357be09950216"
+    },
+    "new_resume3_quota_receipt_exists": false,
+    "required_quota": "Root must first rehash/read current source and exact actual-comparison/native/log/quiet state, then invoke only the distinct official dryrun in ROOT_REVIEWED mode. After native0, Root reads its raw ready/quota log and creates resume3-quota.json bound to exact review+actual-comparison+native+log+live remaining/time. Require finite nonnegative age<=1200000ms and remaining>=4504 conservative; only then a separate once-only paid invocation with fullSHA. Repeat refusal extends backoff."
+  },
+  "future_JA_ASR": {
+    "candidate": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-asr-source-prep-20261028/candidate-receipt.json",
+      "sha256": "b7608c74606595fd9d1857d88b08ca761cc18baa56b0b524f543e0dc2c0b9daf"
+    },
+    "source_mapping": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-asr-source-prep-20261028/adaptation-code-pins.json",
+      "sha256": "c64a1db3879ab71a92e67043f7197df5bcc88a7769945f180870f9be2aa88549"
+    },
+    "author_selftests": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-asr-source-prep-20261028/selftest-receipt.json",
+      "sha256": "74e2dae8d025cde55e5545e57dc25d5bd3b89f8a07fdb329233bdc7075a5d0b7"
+    },
+    "independent_review": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-asr-source-prep-20261028/independent-review.json",
+      "sha256": "6ddce7f70a63ca347b0b48d616332c13187bcb52328aa787065a2e911270d9b1"
+    },
+    "independent_offline_results": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-asr-source-prep-20261028/independent-offline-suite-results.json",
+      "sha256": "6aa777d92313015af08319dfb031f840acf8cf1b83a1a3c96b83c3192937bc5b"
+    },
+    "independent_pass": 74,
+    "symlink_skip": 1,
+    "fail": 0,
+    "generic_source_only": true,
+    "actual_JA_cohort": false,
+    "binding_created": false,
+    "enabled": false,
+    "ASR_dispatched": false,
+    "hard_limits": {
+      "clips": 64,
+      "archive_MiB": 80,
+      "whole_callback_ms": 1200000,
+      "cpu_threads_max": 4,
+      "nice": 19,
+      "offline_cached_medium_only": true
+    },
+    "actual_pending_subset_unknown": true,
+    "H5_minimal_plan": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-asr-prep-20261028/H5-MINIMAL-PLAN.md",
+      "sha256": "15bc98f36a79973a7eb72d4eeee8adbd571e9fc0a981cb639cd759fba45ee938"
+    },
+    "EN_completed_state_run_and_four_closures_must_be_preserved": true,
+    "source_free_current_JA_only": true,
+    "future_H5_JA_bridge_roots_need_new_normalized_process_guard_review": "Existing9003 is sufficient for current unenabled JA synthesis scope; it is not a complete futureJA-ASR-root guard."
+  },
+  "no_provider_or_CLI_calls_by_this_preparation": true,
+  "no_canonical_or_shared_source_mutations": true,
+  "fit_or_quality_or_acceptance_approval": false,
+  "accepted_dubs": 0,
+  "EN_unchecked_attempts_resolved": 1,
+  "other6_pending": true,
+  "image_budget_unchanged": true,
+  "package_and_s15_pending": true
+}

@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "EN_RETAKE1_CONTINUATION2_SECOND_STAGE_STARTED_AWAIT_NATIVE_AND_RUNTIME_RESULT",
+  "snapshot_at": "2026-10-28T09:45:17.501Z",
+  "previous_checkpoint": {
+    "file": "docs/videos/curio-s31-v2/dub-en-retake1-check-resume1.json",
+    "sha256": "86c419d9aa1ddc58cf11c934ededcf7af16a998895bebf0227e8c8b1bf7386a8"
+  },
+  "continuation": {
+    "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-first-complete-handoff-prep\\continuation-en-retake1-primary2.json",
+    "sha256": "d243531b9e256628340dbad22413c66ae6df902d0b9ba910afa174a97b11980a"
+  },
+  "request_sha256": "2a4be1812efe7e59409d69e0244e9758a261c8b8aaa13364145680437f78e259",
+  "line_id": "v2a0751",
+  "freeze": {
+    "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\check-en-retake1-rename-failure2-before\\manifest.json",
+    "sha256": "2716c463dc9159e52eb7a9edbb22d244236e4b1c981b3f6683993de0715c49fa",
+    "preserved_files": 135,
+    "raw_wavs": 212,
+    "preserved_journal": 102,
+    "active_saved_answer_files": 3,
+    "total_journal_files": 105
+  },
+  "private_recovery": {
+    "checker_result": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-transcribe-recovery-prep\\runs\\recovery-e14f1c55-de6a-42f2-874b-decf13ba5be6\\result.json",
+      "sha256": "69a08e6bb1edbf879778c7c5596c3308690c1c8f2bfc234cf31730beaa39a1c7"
+    },
+    "native_exit": 0,
+    "unique_line": "v2a0751",
+    "terms_count": 0,
+    "reused": 1,
+    "send_calls": 0,
+    "fetch_calls": 0,
+    "actual_request_review": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-transcribe-recovery-prep/actual-request-review-2a4be1812efe7e59.json",
+      "sha256": "ff5a57aea438a1bb3e7b895f7bdf65aafee29e87551e8d635bf096b367a5f6e6"
+    },
+    "canonical_consumption_verified": false
+  },
+  "prior_saved_answer": {
+    "request_sha256": "53e4101dabf813e45e999566e669bd9a6dcba6366a68ef02f6f54cefaaf5d389",
+    "line_id": "lz504",
+    "actual_consumption": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-transcribe-recovery-prep\\actual-consumption-53e4101dabf813e4.json",
+      "sha256": "8b1b07f504a2dae08ad8092fd90eb1f6da44933fb445b0c5c50c111e130cebc8"
+    },
+    "independently_verified": true,
+    "old205_valid_cache_preserved": true
+  },
+  "pre_dispatch": {
+    "fresh_original_sha_checks": 346,
+    "raw212_current": true,
+    "journal105_exact": true,
+    "lease_absent": true,
+    "new_project_state_absent": true,
+    "legacy_runs_empty": true,
+    "previous_stop_cache_snapshot": {
+      "current_clip_sha_rows": 209,
+      "total_rows": 212,
+      "remaining_old_sha_ids": [
+        "v2a0751",
+        "v2a0791",
+        "lz520"
+      ],
+      "scope": "Previous stopped-check snapshot, not current running progress."
+    },
+    "scope": "Historical checks before09:45 dispatch only; current lease/state now exist."
+  },
+  "dispatch": {
+    "session": 25284,
+    "slot": "79b1e1c6-f38a-425b-ba6c-e65f32b3eb87",
+    "caller_pid": 19404,
+    "child_pid": 51656,
+    "intent_at": "2026-10-28T09:45:16.722Z",
+    "lease_acquired_at": "2026-10-28T09:45:17.501Z",
+    "intent": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-first-complete-handoff-prep\\fixed-caller-en-retake1-continuations\\79b1e1c6-f38a-425b-ba6c-e65f32b3eb87\\intent.json",
+      "sha256": "2127956b7791518a610f1ae9315b48c4190bec3692af03976cac238e540530cd"
+    },
+    "child_start": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-first-complete-handoff-prep\\fixed-caller-en-retake1-continuations\\79b1e1c6-f38a-425b-ba6c-e65f32b3eb87\\child-start.json",
+      "sha256": "22e94bccfedd3c6f973d2b1e2366ffc44feb2c8c34f00cf0c6ec784e69cd78a9"
+    },
+    "native_exit": null,
+    "mode": "--continue-check",
+    "force": false,
+    "io_extra_wait_cap_ms": 30000,
+    "second_opinion_timeout_ms": 1200000,
+    "second_opinion_source_free": true,
+    "second_opinion_script_basename": "bridge.mjs",
+    "second_stage_started": true,
+    "automatic_retry": false
+  },
+  "retained_scope": {
+    "operation_sha256": "38e673163bca95add54733a9603a1c09b4b76d8e192c9504a5440e068dff0132",
+    "catalog_sha256": "520b172d6a0c27846652fb071d57d7a1d3a1837da6a0871007b482deee0dafcd",
+    "activation_sha256": "7e7a0ff1f84837ba763ff4757a6ba114301cb6ad9eb9155dc6e5274c70a5c787",
+    "closure_success_preserved": true,
+    "old_slot_replayed": false,
+    "new_handoff_or_tts": false
+  },
+  "quality": {
+    "plain_rounds_completed": 1,
+    "plain_cap": 2,
+    "shorten_rounds": 0,
+    "listener_rounds": 0,
+    "accepted_dubs": 0,
+    "selected_dubs": 8,
+    "current_quality_verdict": false,
+    "audio_approved": false,
+    "owner_listened": false
+  },
+  "image_budget": {
+    "conservative_image_and_judge_usd": 1.578,
+    "approved_cap_usd": 6,
+    "changed": false
+  },
+  "delivery_complete": false,
+  "s15_started": false,
+  "next": "Wait for25284 native exit and actual independent second-stage runtime/quality readback. Pre-ASR continuation is no longer eligible; no new producer or slot replay.",
+  "updated_at": "2026-10-28T09:48:52.378Z",
+  "current_stage_reported_by_root": {
+    "lease_present": true,
+    "fixed_asr_project_state_present": true,
+    "independent_second_stage_started": true,
+    "runtime_completion_verified": false,
+    "pre_asr_continuation_eligible": false
+  }
+}

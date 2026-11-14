@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "at": "2026-10-27T10:43:22.814Z",
+  "session": 12945,
+  "native_exit": 1,
+  "failure_at": "2026-10-27T10:39:02.6967626Z",
+  "failure": "Second distinct complete synthesis confirmation failed Windows rename; first request was already safely recovered.",
+  "request_sha256": "1cde9891b24dd325283187fb439e5e4c344d504199e931df4d8a2b63d9d734f1",
+  "producer_pid": 51568,
+  "producer_os_state": "ESRCH",
+  "active_journal_entries": 1,
+  "partial_en_wavs_frozen": 146,
+  "frozen_manifest_sha256": "9fde58bfb1347fc77cd2d943a059a751ad0ab5806c4a265f7c47d35c7fcc14d9",
+  "frozen_journal": [
+    {
+      "file": "journal/1cde9891b24dd325283187fb439e5e4c344d504199e931df4d8a2b63d9d734f1.json",
+      "bytes": 969,
+      "sha256": "e37f762d970b287c6a8755568048550b31fdfd5ced05dfa0860faf5873adbfe8"
+    },
+    {
+      "file": "journal/1cde9891b24dd325283187fb439e5e4c344d504199e931df4d8a2b63d9d734f1.answer.json",
+      "bytes": 1915,
+      "sha256": "010e0ad2016dfd2c156675c03131c4036ef36bc8fb339cb9cec324a1c860d518"
+    },
+    {
+      "file": "journal/1cde9891b24dd325283187fb439e5e4c344d504199e931df4d8a2b63d9d734f1.json.51568.tmp",
+      "bytes": 1230,
+      "sha256": "022a09fa4e69ad69e3f2a8f960d128754dbedad9255c6c0f693d08b0d4a82871"
+    },
+    {
+      "file": "journal/1cde9891b24dd325283187fb439e5e4c344d504199e931df4d8a2b63d9d734f1.wav",
+      "bytes": 387884,
+      "sha256": "ca8834c1e0629e86fe47092bf99e357c0983a9b29ef2971e2ff37ccfeddde703"
+    }
+  ],
+  "source_video_sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86",
+  "current_chinese_final_sha256": "b8bc3fcfe22e73cff79422124d89da99630bbf7c7e59b0480ef9804db11d2c60",
+  "full_en_fit_or_audio_acceptance": false,
+  "next": "Independent exact official recovery on new private clone before fresh normal resume; preserve both prior/current journals and all146clips. No provider resend of this exact request."
+}

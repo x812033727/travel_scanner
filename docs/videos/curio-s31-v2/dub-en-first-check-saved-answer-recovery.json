@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "INDEPENDENT_OFFLINE_RECOVERY_PASSED_NORMAL_RESUME_RUNNING",
+  "request_sha256": "843277d2d41d2402fbb8386c85202b8ad5aba854a2a4257a9b3cdba84abb6644",
+  "clip": "lz202",
+  "independent_review": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-first-journal-recovery-clone-fd232d66-f06a-4262-8669-e91c4daf29bc/independent-recovery-review.json",
+    "sha256": "b8f3e596b9b90b1456b3495699a7bc5914b3b63ffd25a44921430847acc53f8b",
+    "verdict": "PASS_PRIVATE_OFFICIAL_JOURNAL_RECOVERY_ONLY",
+    "contract": "Exact approved frozen raw clip, official 48k-to-16k downsample, EN hintTerms=[], full transcribeBody request SHA, three actual sent/answer/tmp hashes, generation and complete answer contract match uniquely. Default original producer PID is dead; alive negative control holds. Official private clone replay reused1/send0/fetch0; same-process/reopen replay and original-file immutability checked.",
+    "canonical_modified": false,
+    "quality_result": false
+  },
+  "readonly_io_diagnosis_sha256": "65ed0e3d100a08be34cdea4c7b6681735266573fd3783c4bc48de8497c891b7a",
+  "io_limit": "Actual retry reached its fixed 30-second deadline. Current files are not ReadOnly and no self-held target FD is evidenced; lock/permission cause remains unknown. No retry-cap or OS change.",
+  "fresh_before_resume": {"frozen_current_files_and_raw_wavs_checked": 232, "raw_wavs_unchanged": 212, "primary_cache_lines": 14, "active_journal_entries": 1, "actual_saved_files": 3, "old_pid_dead": true, "lease_free": true, "fixed_asr_state_absent": true, "legacy_runs_empty": true, "hints_lexicon_current": true},
+  "normal_resume": {
+    "session": 74735,
+    "slot": "check-en-saved-answer1-resume",
+    "dispatched_at": "2026-10-27T12:30:22.5467866Z",
+    "pid": 12192,
+    "lease_acquired_at": "2026-10-27T12:30:23.343Z",
+    "native_exit": null,
+    "force": false,
+    "unchanged_binding_sha256": "9899846260cb029b0c456f2629b9f65323a469911e0049c559a08677ab2eb183",
+    "second_opinion": "Same independently approved unused source-free EN bridge v3, included from the start of normal resume.",
+    "actual_saved_answer_reuse_verified_after_resume": false,
+    "paid_scope": "The exact completed saved answer is eligible for journal reuse; other distinct remaining primary/Jev work stays within the existing authorized provider flow. Clone reused1 is not proof of completed canonical consumption or zero new cost for all remaining work."
+  },
+  "next": "Wait for session74735 native exit, then verify actual journal consumption, remaining flags, second runtime/cleanup and current source/audio. No competing producer or JA/next episode.",
+  "audio_accepted": false,
+  "owner_listened_or_watched": false,
+  "complete_delivery_package": false,
+  "youtube_uploaded_or_published": false
+}

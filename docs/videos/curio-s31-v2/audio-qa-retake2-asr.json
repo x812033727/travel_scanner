@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "status": "verified_actual_round2_asr_not_audio_approval",
+  "at": "2026-10-27T08:46:12.709Z",
+  "locale": "zh-TW",
+  "clips": 5,
+  "native_exit": 0,
+  "elapsed_seconds": 45.188281234004535,
+  "timed_out": false,
+  "cohort_manifest_sha256": "8aa3a3a9e0452d8799681aae999f1d8ece81cec9c03f943931591eb0c8cd5c3b",
+  "batch_manifest_sha256": "e5badd734036fcc05bd79b9029a9c594b7644b4f2593cf4613f9d252efa915bd",
+  "raw_stdout_sha256": "c60b384e5a10184246bb4e2aa29f40dadd9b9dba5526221ef529d8cf9294ad73",
+  "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "verified_receipt_sha256": "baa7053c0464fb9c29463ee02abdc5ecc31d9b20bb0a7327bbafa6a42b4720b7",
+  "independent_review_sha256": "0a2c85555b250b37cfbb06aca046daa7d1820c23b60b3aab37b417b3258dc22f",
+  "reader_sha256": "b6af5f73f6ea1808c3ff099889d8aaa662f83499f7e1ca73857fc91df463c1d3",
+  "current_private_anchors": 12,
+  "prior_private_anchors": 16,
+  "legacy_private_anchors": 14,
+  "whole_actual_selection": {
+    "r2_new5": 5,
+    "r1_unchanged8": 8,
+    "unchanged_context": 2,
+    "unchanged_original": 16
+  },
+  "timing": {
+    "prepared_at": "2026-10-27T08:39:07.584Z",
+    "completed_at": "2026-10-27T08:42:41.477278+00:00",
+    "completed_local_at": "2026-10-27T08:42:41.165Z",
+    "verified_at": "2026-10-27T08:43:13.157Z",
+    "at_equals_verified_at": true,
+    "timestamp_clock_domains": {
+      "prepared_at": "local_utc",
+      "completed_at": "vps_utc",
+      "completed_local_at": "local_utc",
+      "verified_at": "local_utc",
+      "at": "local_utc"
+    },
+    "local_only_chronology_validated": true,
+    "no_cross_host_subsecond_order_asserted": true,
+    "finalize_sha256": "28dc2ea97e3aa7370df1332a29a0aa3e756f28e96dc59c103f87871ab5866a9e",
+    "spread_cannot_overwrite_verified_at": true
+  },
+  "resource_readback": {
+    "available_kib": 28686572,
+    "load1": 0.49,
+    "worker_cpu_percent": 0,
+    "worker_memory_percent": 0.11,
+    "affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "nice": 19,
+    "offline": true,
+    "cached_medium_snapshot": true,
+    "stock_helper_sha256": "4b5f7918d8b2ba970bb547a66c9d25d69c969a772227ccb0b3f928740c3e5338",
+    "inner_deadline_seconds": 1190,
+    "outer_timeout_seconds": 1195,
+    "outer_kill_after_seconds": 5
+  },
+  "rows": [
+    {
+      "id": "lz318",
+      "wav_sha256": "8327773aa1d2aec198402a53d1ee817217c4f0ff899c79658c15f92cc1fa5f58",
+      "old_wav_sha256": "51e4e9f83953e6bc4bb98d68956a7113a82e88697626fb5251131cf7e7f5c9d6",
+      "actual_whisper_text": "這份檔案刊過的史書裡,只有這一條寫明《嶺南》。"
+    },
+    {
+      "id": "v2a0471",
+      "wav_sha256": "c29c1b5b5053d0123b2521c89964a369a9304b1b5ba1027bf740733975cecd98",
+      "old_wav_sha256": "8de2d53cbc7e8bccb091d0f624f50f9de1a8518b8f14af0b03bf98e5a89d62d3",
+      "actual_whisper_text": "不能補充鮮果的送法,那說福州的人,憑什麼?"
+    },
+    {
+      "id": "v2a0491",
+      "wav_sha256": "9c43e7c513f0ef3c42f118e2e86008395cc358307c207d5342835ab2d71c03e3",
+      "old_wav_sha256": "26e361039d9f23e22d894fd265efc329c7d51252bda7a609b1b6da7a66c2ce19",
+      "actual_whisper_text": "無增的變化,偏偏讓我們看到答案是怎麼形成的。"
+    },
+    {
+      "id": "v2a0722",
+      "wav_sha256": "f68035d50ae57d533d502addd46fd218ce16025277f4edeaeeea4784dddf8885",
+      "old_wav_sha256": "439ba2649521cfd4a4f9a820dd6c7c97ed520e8c06372c3b64b5a8d5b9f707ad",
+      "actual_whisper_text": "能替那蘭麗質簽收嗎?"
+    },
+    {
+      "id": "lz519",
+      "wav_sha256": "33c166f804fbe2c10f3ca9878afb13e6ba40ebb1f3f656c58a697b7b455fe3a9",
+      "old_wav_sha256": "6f84639972965cc4a490929ae7ebd5dd8697a48942833bca63a82fef59147c4a",
+      "actual_whisper_text": "開頭那欄立之,史書給了宋法。"
+    }
+  ],
+  "scope": {
+    "one_ssh": true,
+    "paid_provider_calls": 0,
+    "expected_text_sent": false,
+    "prior_asr_sent": false,
+    "content_hints_sent": false,
+    "model_download": false,
+    "canonical_mutated_by_asr": false,
+    "old_evidence_preserved": true,
+    "audio_approved": false,
+    "official_current_take_check_pending": true
+  }
+}

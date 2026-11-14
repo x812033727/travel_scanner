@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "at": "2026-10-27T00:02:09.276Z",
+  "status": "audio_unapproved_13_flags",
+  "scope": "Fresh fixed-neighbor blind audio-context ASR as a formal second opinion. Actual whole transcripts replayed with SHA verification; no intended script passed to Whisper and no transcript editing.",
+  "source_speech_hash": "8af0af8b6fb7d1e4",
+  "formal_check": {
+    "checked": 212,
+    "exact": 148,
+    "same_sound_or_filler": 29,
+    "jev_passed": 4,
+    "second_cleared": 18,
+    "flagged": 13,
+    "clips_transcribed_now": 0,
+    "jev_calls": 1,
+    "exit_code": 1,
+    "check_sha256": "d3ecd45e9bbe10428f70d459d27599aec00d31c695ce044ba709822f761add91",
+    "flags_sha256": "18f14f95fe014c4d505b060bf192c85039c1c3d0314c7439e3f3d0e2e2737a0d"
+  },
+  "newly_cleared": [
+    "lz204",
+    "lz505"
+  ],
+  "remaining": [
+    {
+      "id": "v2a0281",
+      "wav_sha256": "dabcf2d3cc29c58643fac7c90e0b43c19eefe927ee1407a0dc1b9a007f588d34"
+    },
+    {
+      "id": "lz310",
+      "wav_sha256": "78851d5fb2fe5b634a51e44cbe0e9398834de9932e9b49a9a1e6cc66a125de57"
+    },
+    {
+      "id": "lz318",
+      "wav_sha256": "502c17311a2b86608412ced26ba27615f8d3e4805e1676063b8911e2a061a9fe"
+    },
+    {
+      "id": "v2a0461",
+      "wav_sha256": "c9d14eed9f66b585c29bf5ed381f4e273ca7faf269f666cfbeb08f191fb9eb85"
+    },
+    {
+      "id": "v2a0471",
+      "wav_sha256": "ea86a5bb44f85a2b1afc36fb5c7c8bd879940d95178defc31e17b1df6134f08c"
+    },
+    {
+      "id": "v2a0491",
+      "wav_sha256": "cc227808a90613e6fdd7eb8c462fcc40f8fccdb3a7f2de0a544adf4e55a445b4"
+    },
+    {
+      "id": "lz422",
+      "wav_sha256": "6e656934ddadd89a7f7bd1d854f2edec4b52c666f4fe379e51b882903048a803"
+    },
+    {
+      "id": "v2a0611",
+      "wav_sha256": "ba80dd41f248b2c982cefd3a936b867ad1fdcbddf2904d7c720708bcee299deb"
+    },
+    {
+      "id": "lz506",
+      "wav_sha256": "e711c34917cf1be9b4c236095335cb785f3d209af35a6eb50f55f88916579d20"
+    },
+    {
+      "id": "lz511",
+      "wav_sha256": "07c6926b486956e6e8e21f8cf904c8f971be35cf931996c7fe6a44a091293003"
+    },
+    {
+      "id": "v2a0722",
+      "wav_sha256": "639812dd44addb1142e64e392bd12fba6b4be9b590de016ec5f9f540f425c534"
+    },
+    {
+      "id": "v2a0731",
+      "wav_sha256": "60a214e566dd8f3ee71bba7feb42144209dbf3ff8db3d749998722d2fef3af4f"
+    },
+    {
+      "id": "lz519",
+      "wav_sha256": "cdf992c23fed5f3b4616e175f1bb6b9a8c0064ec794e23d950aeba608aa83aee"
+    }
+  ],
+  "blind_context_batch": {
+    "contexts": 52,
+    "targets": 15,
+    "exit_code": 0,
+    "provider_calls": 0,
+    "context_raw_sha256": "54a2fe7098f134eaaec702523d54b7a0a79e000c9f78da9ac003805bc6332666",
+    "target_raw_sha256": "e3f1a8902cde22fc3f71dbf2b44af49913a6adcacd859da6901219578e1dc85e",
+    "expected_source_text_sent": false,
+    "reader_sha256": "20385818f4c8006fe85b480f9f945b1360fae3a7008b9699484e0473ee4e100b",
+    "independent_reader_review_sha256": "5fc0301c0f5ccad0aad44fec949b4fd0d38d0b3fa055c81ecfd28ace244d480f"
+  },
+  "old_results_preserved": true,
+  "audio_approval": false,
+  "owner_personally_listened": false,
+  "next": "One bounded redo of only current flags after08:15Taipei and after active assembly ends; new WAV hashes require fresh ASR. If provider429 recurs, lengthen backoff."
+}

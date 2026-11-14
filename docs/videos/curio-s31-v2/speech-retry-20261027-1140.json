@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "status": "same_provider_limit_no_changed_audio",
+  "source_speech_hash": "8af0af8b6fb7d1e4",
+  "source_video_sha256": "d68ac81ad3918a6f091f9a7a6a95b71d3f2837e5c078d79bd16c3160b6a64170",
+  "preflight_sha256": "e94072c9da71d3a2659c0685e6954045a7ac34fe6a2bf08018d1a89219c8995b",
+  "dispatch_sha256": "2b7778d49bd783bdd6f8ead12f5aa1d7164c25c8f2540caef076a04453bd8df7",
+  "result_receipt_sha256": "6d2c02d59435f2d7cf0d4bb565b37bf4f4ca521662176baf9da4fb5fd108f5fd",
+  "result": {
+    "at": "2026-10-27T04:01:57.748Z",
+    "command_session": 21401,
+    "native_exit_code": 4,
+    "native_exit_receipt_sha256": "fed822b538ca0fc4d966c2b577bdbca40cc7690a808d2c2ffa38454b03c3ccbd",
+    "native_exit_captured_immediately": true,
+    "message": "Gemini 語音暫時忙碌或達到用量上限，請稍後重試",
+    "verified_files": 21,
+    "changed_files": [],
+    "audio_evidence_problems": [],
+    "journal_files": [],
+    "lease": null,
+    "successful_retake_rounds": 0,
+    "actual_provider_http_status_saved": false,
+    "provider_reset_known": false,
+    "next_retry_not_before_utc": "2026-10-27T08:00:00Z",
+    "next_retry_not_before_taipei": "2026-10-27 16:00",
+    "backoff_minutes": 240
+  },
+  "plan": {
+    "requests_to_synthesize": 13,
+    "billable_characters_estimated": 242,
+    "site_monthly_gemini_characters_remaining_at_dry_run": 5743335
+  },
+  "scope": {
+    "one_normal_cli_resume": true,
+    "additional_asr": false,
+    "image_or_music_generation": false,
+    "voice_provider_or_global_budget_changed": false,
+    "originals_modified": false,
+    "audio_or_final_approval": false,
+    "delivery_package_complete": false,
+    "next_episode_started": false
+  },
+  "supplier_invoice_total_claimed": false
+}
