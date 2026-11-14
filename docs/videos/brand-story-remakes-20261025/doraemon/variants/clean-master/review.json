@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_clean_master_metadata_derivation",
+  "status": "METADATA_DERIVATION_PASS",
+  "checked_at": "2026-10-26T08:54:38.284Z",
+  "reviewer": "/root",
+  "independent": true,
+  "independence_basis": "Coordinator did not author the Doraemon R6 current independently source-verified/native-merged narration and teaser plan source (owner reviews pending) or its clean variant/derivation. Reproduced native checks from actual frozen bytes and native snapshot dictionary.",
+  "slug": "story-adapt-doraemon-after-fujiko-remake-20261025",
+  "scope": {
+    "source_fact_qa": false,
+    "written_visual_qa": false,
+    "media_qa": false,
+    "owner_approval": false,
+    "backend_calls": 0,
+    "provider_calls": 0,
+    "paid_requests": 0
+  },
+  "input_files_sha256": {
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/doraemon/video.json": "b18f40f7e33cdf75a13fb1f3eafc4fc542522fd893d8aa7e1cc86289d197fc05",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/doraemon/variants/clean-master/video.json": "54ac0c8fc6fa9cb95252414ef1d6217bc8be66e42304b9d35d74f620f5ade0c0",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/doraemon/variants/clean-master/derivation.json": "223a42c9c007d2929566fb08114c36b2e3487d8f78e36fcaf204179abd936e07",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/doraemon/variants/clean-master/lint.json": "d14ee35edfaed52c7ec108d2a91f396f2b8c9d0f97ac56e0d19a20c18136f4d7",
+    "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/script.md": "b3b8f9008fb2cd772d974a24d25ce19f76872359093067602ee7353555b0bdef",
+    "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/story-lexicon/current.json": "2b64d7bb2b22a49fdfbba5c5b74bc03d36b5e7c611ef3d38637f92a24e87f644"
+  },
+  "immutable_lexicon": {
+    "mode": "snapshot",
+    "lexicon_sha256": "90384a53ee2116ed4fc28a3bbc886c560721bd528f0104c373c8de9105deb184",
+    "head_event_sha256": "abf1da83a839f6478bc24eb8d6c24e0b7a4009fd25c5c9d5bd1b545fa0b4f40e",
+    "sequence": 1,
+    "actual_snapshot_read_by_native_reader": true
+  },
+  "deep_diff": [
+    {
+      "path": "subtitles.burn_in",
+      "source": true,
+      "variant": false
+    }
+  ],
+  "native_input_hashes": {
+    "narrativeHash": {
+      "source": "a1cfd1defb9c8408",
+      "variant": "a1cfd1defb9c8408",
+      "equal": true
+    },
+    "speechHash": {
+      "source": "1f13d80b3260e76a",
+      "variant": "1f13d80b3260e76a",
+      "equal": true
+    },
+    "picturesHash": {
+      "source": "d1acd0b9a8f27a57",
+      "variant": "d1acd0b9a8f27a57",
+      "equal": true
+    },
+    "lookHash": {
+      "source": "98a370ae40badbaf",
+      "variant": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "source": "6f259e1996d1599c",
+      "variant": "6f259e1996d1599c",
+      "equal": true
+    },
+    "subtitlesHash": {
+      "source": "4b23ded6e41b1e87",
+      "variant": "ec58a1493220a1da",
+      "equal": false
+    }
+  },
+  "canonical_script_sha256": "b3b8f9008fb2cd772d974a24d25ce19f76872359093067602ee7353555b0bdef",
+  "screenplay_bytes_identical": true,
+  "lint": {
+    "reproduced_from_actual_dictionary": true,
+    "errors": 0,
+    "warnings": 16,
+    "saved_lint_exactly_matches": true
+  },
+  "same_new_remake_budget_identity": true,
+  "old_activated_slug_used": false,
+  "artifacts_absent": [
+    "timeline.json",
+    "narration.wav",
+    "final.mp4",
+    "qa.json",
+    "languages.json"
+  ],
+  "actual_clean_master_exists": false,
+  "media_qa": false,
+  "final_approval": false,
+  "actual_dub_eligibility": false,
+  "limitations": [
+    "Written recipe metadata only; no actual media was decoded or generated.",
+    "Each actual clean output requires full matching QA and current owner final approval.",
+    "Paper estimates do not establish actual narration duration or dubbing eligibility."
+  ]
+}

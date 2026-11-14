@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "revision": "dyson-r5",
+  "role": "AUTHOR_SINGLE_SOURCE_PREMISE_CORRECTION_NOT_INDEPENDENT_RECHECK",
+  "prior_source_report": {
+    "path": "history/r4/reviews/source-r4-independent.json",
+    "sha256": "5aa2ce010b27ffccca12e22a127feb5259dd1aea546359d0f66cf210f16f86f7",
+    "status": "HOLD",
+    "must_fix_id": "MF-R4-01",
+    "all_140_lines_and_137_prompts_read": true
+  },
+  "line_id": "btuc",
+  "old_text": "工廠曾換掉布濾，他在家要先做出什麼，才能試同一個想法？",
+  "new_text": "前面工廠用氣旋收粉，他在家先做什麼，才能試同一個想法？",
+  "change_reason": "Replace an unestablished factory filter replacement premise with an explicit callback to the factory cyclone collection already narrated at zmbc/acb6. Retain the forward domestic-prototype question answered at y5py. No chronology interval, removal of factory filter, new historical case or unseen technical fix is asserted.",
+  "research_claim_ids_before": [
+    "N02"
+  ],
+  "research_claim_ids_after": [
+    "N01",
+    "N02"
+  ],
+  "source_evidence": [
+    {
+      "id": "N01",
+      "research_claim": "噴塗金屬架時，許多粉末沒有留在框架上；抽走餘粉的布濾反覆堵塞。戴森回憶，問到工業氣旋的報價後負擔不起，便和人用數個週末自行製作，還需在廠房屋頂開孔容納頂端構造。官網另把他去看木材廠氣旋、回來自製的來由寫明。",
+      "evidence_level": "primary_participant_recollection_or_interview_research_with_limits",
+      "anchors": [
+        {
+          "source_id": "SENRA",
+          "raw_sha256": "2dd8ebeb595a1a872fb7153b2844db5dbc7aecc4a5e0eddf46e7d8050f65cf5f",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/SENRA.txt",
+          "text_sha256": "cf8a0a3d909368dd83508c5398e4923d1649fcaf285ae429b4f586ca6330ade8",
+          "pdf_page": null,
+          "line_start_1based": 283,
+          "line_end_1based": 293,
+          "context_sha256": "22087dd6a0a18911995d8e3323cd7232871b9994541f373b82735994d822d52d",
+          "short_quote_original_language": "cloth filter",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis",
+          "raw_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/SENRA.html",
+          "short_quote_sha256": "09b87b8d46c2d2258ef4c03d29b84d9ee9bb91a436552eed41aeaba253ad7292",
+          "source_evidence_level": "original_interviewer_published_participant_transcript_retrospective_2025",
+          "original_context_reopened_by_author": true,
+          "context_decode": "strict UTF8; no replacement",
+          "auto_transcript_not_fully_corrected": false,
+          "audio_listened_by_this_author": null
+        },
+        {
+          "source_id": "DYSON_BIO",
+          "raw_sha256": "b2a0df69933272525d91633ff600c06dda360d02ec51133ce1994052e4d70fba",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/DYSON_BIO.txt",
+          "text_sha256": "380cb8db8ee96d3f7f0a5cd95b3f0add2212443b3e1957e1e90cb1256bd54584",
+          "pdf_page": null,
+          "line_start_1based": 262,
+          "line_end_1based": 267,
+          "context_sha256": "9468736971eebbeb23408a52ee9dfde56d43705b6e94f8eb74012c4092cd0b7f",
+          "short_quote_original_language": "powdered paint",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis",
+          "raw_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/DYSON_BIO.html",
+          "short_quote_sha256": "0187b02fed2aabc241b4ecafa90b799b5aa75fe12efd1d1303a8e9732eb0b2e9",
+          "source_evidence_level": "official_company_retrospective_biography",
+          "original_context_reopened_by_author": true,
+          "context_decode": "strict UTF8; no replacement",
+          "auto_transcript_not_fully_corrected": false,
+          "audio_listened_by_this_author": null
+        }
+      ],
+      "limits": [
+        "同一段工廠事件不可拆成粉末、布、報價、屋頂四次同義懸念。",
+        "兩原件對高度有25/30英尺差異；不採高度、不換算數字，也不造工程日誌。",
+        "這不是替Ballbarrow另開產品起源章，只保留吸塵器原理移用所必需的生產故障。"
+      ],
+      "capacity_research_node_id": "N01",
+      "net_new_relative_to_r3": "NEW_RAW_NEW_TO_R3",
+      "author_note": "New source fact candidate only, pending full independent SOURCE QA; original research unchanged."
+    },
+    {
+      "id": "N02",
+      "research_claim": "本人回憶家用袋提示堵塞，找不到替換袋，便倒空、用膠帶封回再試；仍沒有吸力，拆開才看到內壁細灰。再買新袋後只短暫恢復，他把原因指向氣孔被灰堵住。由工廠經驗想到縮小氣旋，用紙板、膠帶、軟管接在原直立機上取代袋，推著試用。",
+      "evidence_level": "primary_participant_recollection_or_interview_research_with_limits",
+      "anchors": [
+        {
+          "source_id": "SENRA",
+          "raw_sha256": "2dd8ebeb595a1a872fb7153b2844db5dbc7aecc4a5e0eddf46e7d8050f65cf5f",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/SENRA.txt",
+          "text_sha256": "cf8a0a3d909368dd83508c5398e4923d1649fcaf285ae429b4f586ca6330ade8",
+          "pdf_page": null,
+          "line_start_1based": 290,
+          "line_end_1based": 297,
+          "context_sha256": "5866795af871723dba7b4a32dfccc4b4e85fbabffdef1a76adce821e25092f2d",
+          "short_quote_original_language": "gaffer tape",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis",
+          "raw_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/SENRA.html",
+          "short_quote_sha256": "495c89e4a6e965a5aafde7b1f84694e006f229b4233f0973199434deb74bcaa0",
+          "source_evidence_level": "original_interviewer_published_participant_transcript_retrospective_2025",
+          "original_context_reopened_by_author": true,
+          "context_decode": "strict UTF8; no replacement",
+          "auto_transcript_not_fully_corrected": false,
+          "audio_listened_by_this_author": null
+        },
+        {
+          "source_id": "DYSON_BIO",
+          "raw_sha256": "b2a0df69933272525d91633ff600c06dda360d02ec51133ce1994052e4d70fba",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/DYSON_BIO.txt",
+          "text_sha256": "380cb8db8ee96d3f7f0a5cd95b3f0add2212443b3e1957e1e90cb1256bd54584",
+          "pdf_page": null,
+          "line_start_1based": 265,
+          "line_end_1based": 267,
+          "context_sha256": "2067e889d7dd032cdc634d6f5286ca13196b78f34ae047320dc30cba35b5bfc1",
+          "short_quote_original_language": "cardboard",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis",
+          "raw_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/DYSON_BIO.html",
+          "short_quote_sha256": "2fb41c42cec5d64aee374a0bfe78b3146675c6699a2fa63efba52b1d10ceaf0c",
+          "source_evidence_level": "official_company_retrospective_biography",
+          "original_context_reopened_by_author": true,
+          "context_decode": "strict UTF8; no replacement",
+          "auto_transcript_not_fully_corrected": false,
+          "audio_listened_by_this_author": null
+        }
+      ],
+      "limits": [
+        "不可採本人隨口說的第一台/永不失吸力作客觀全球紀錄。",
+        "紙板試驗驗的是可行性，不等於已是完整安全商品，也不等於日本前無商品。",
+        "不把重新封袋試用講成建議觀眾仿做。"
+      ],
+      "capacity_research_node_id": "N02",
+      "net_new_relative_to_r3": "NEW_RAW_NEW_TO_R3",
+      "author_note": "New source fact candidate only, pending full independent SOURCE QA; original research unchanged."
+    }
+  ],
+  "short_original_quotes_reopened_by_author": [
+    {
+      "source_id": "SENRA",
+      "line": 293,
+      "quote": "we built at the factory to stop the cloth from getting clogged with dust. Instead, we were spinning it out successfully by centrifugal force."
+    },
+    {
+      "source_id": "SENRA",
+      "line": 297,
+      "quote": "I took the bag off my upright vacuum cleaner, replaced it with a bit of hose and this cardboard mini version"
+    },
+    {
+      "source_id": "DYSON_BIO",
+      "lines": [
+        263,
+        264
+      ],
+      "quote": "building a 25ft cyclone to suck the waste powder away"
+    }
+  ],
+  "factory_filter_removal_or_replacement_claimed": false,
+  "domestic_bag_replacement_projected_back_to_factory": false,
+  "original_research_or_baseline_notice_edited": false,
+  "new_raw_fetched": 0,
+  "independent_source_recheck": "PENDING",
+  "source_pass_claimed": false,
+  "actual_native_round_count": 1,
+  "fresh_native2": "NOT_PREPARED_NOT_READ",
+  "provider_calls": 0,
+  "paid_calls": 0
+}

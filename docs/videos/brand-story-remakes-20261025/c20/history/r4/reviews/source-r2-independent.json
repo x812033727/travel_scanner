@@ -1,0 +1,1580 @@
+{
+  "schema_version": 1,
+  "revision": "c20-r2",
+  "episode": "C20",
+  "reviewer": "codex-c20-r1-source-independent",
+  "reviewed_at_utc": "2026-10-26T04:04:29.001759+00:00",
+  "independent": true,
+  "scope": "COMPLETE_R2_SOURCE_AND_WRITTEN_VISUAL",
+  "verdict": "HOLD",
+  "source_content_verdict": "PASS",
+  "written_visual_verdict": "HOLD",
+  "must_fix": [
+    {
+      "id": "M01",
+      "type": "WRITTEN_VISUAL_REPAIR_STATE",
+      "scene_ids": [
+        "c20r2e03",
+        "c20r2e04"
+      ],
+      "source_ids": [
+        "DF_CASE"
+      ],
+      "anchor_ids": [
+        "D04-Q1",
+        "E11-Q1"
+      ],
+      "source_locator": "DF_CASE.txt line43",
+      "exact_source": "it appears the hinge was repaired and tightened up by simply replacing the actual pin that is bent into the loop",
+      "current_prompt_fragment": "A simple loose hinge and a small loop at the side of a worn unmarked warm brass metal case",
+      "issue_zh": "這兩景處在回件揭露段，緊接e02的「鉸鏈也收緊了」，提示詞卻仍指定loose hinge，會把寄修前故障狀態畫成返還後觀察。這是圖文狀態衝突，不是要求把作者推測畫成確證。",
+      "minimal_fix_zh": "兩景改成不宣稱鬆動的中性hinge/loop示意，或明確顯示在檢視既有連接；保留看來換pin、不造焊接工序。無須改旁白或共圖pair。"
+    },
+    {
+      "id": "M02",
+      "type": "WRITTEN_VISUAL_OBJECT_IDENTITY",
+      "scene_ids": [
+        "c20r2e09"
+      ],
+      "source_ids": [
+        "DF_CASE"
+      ],
+      "anchor_ids": [
+        "D05-Q1",
+        "E17-Q1"
+      ],
+      "source_locator": "DF_CASE.txt lines42–44; narration c20r2e05–e09",
+      "exact_source": "The 1965 has all the scars and blemishes I expected ... Of course, both of these lighters still show wear to the finish",
+      "current_narration": "而這只外殼上，原先的表面磨損，也跟著回來了。",
+      "current_prompt": "Close-up of A worn plain warm brass hinged metal case resting on a wooden tabletop, gentle side light.",
+      "issue_zh": "e05–e08明確講同包普通銀色款的replacement hinge；e09「這只」承接它，畫面卻切回整套prompt用作帶環Camden的warm brass主物。兩只都留磨損，所以文字本身有來源；問題在本景把不同物件指代配成同一只，違反claims既定各是各的case限制。",
+      "minimal_fix_zh": "把e09改為前述普通silvery/chrome companion的中性磨損外殼示意；若改說兩者則需同步重綁旁白與投影。最小只改本景prompt及claims對應prompt。"
+    }
+  ],
+  "independence": {
+    "participated_in_primary_research_or_writing": false,
+    "read_current_or_archived_native_blind_reader_results": false,
+    "read_author_narrative_conclusions": false,
+    "used_R1_PASS_for_new_US_facts": false,
+    "asked_author": false,
+    "spawned": false,
+    "archive_sensitive_files_hashed_only": true
+  },
+  "binding": {
+    "core_four_sha256": {
+      "video.json": "1590484bcebbd45dc29bcf4fe555895d7d39d56f216623a6f60980b9e9be0170",
+      "script.md": "5ed7d81b2ba7455d64970dc407f4155e03fdb53cc4c31b2ed8fd6c77d453d2ad",
+      "narration-only.json": "0fbbdf635e1668889917e021cbe4b0d601ba931577779c928b81e6bc8b0efbf7",
+      "claims.json": "6170d489e93e97bb36f49b340e012924160576f04cbca4b3c3910fd9dcb1913b"
+    },
+    "claims_md_sha256": "9debb863e546ef5f9c614a1c861da58c51e1caf966be1216f65a574f7a0dce5c",
+    "plan_sha256": "edda6d4260303454858192953b88b8589ec192afcf7e636289eea6747b426fcc",
+    "freeze_sha256": "86c7c885267465c3099b08e8df1d4ecd99389eeae0d2a0124007eca9c39b80c2",
+    "protected_inputs_sha256": "13a719a01cf7225ca88b42ea3d2b5938aacc065dc7f520dbf864eedd68837150",
+    "research_three_sha256": {
+      "research-original.md": "bd325631384e70272d074326b8b0bc5fa10c01adc2210276fe591a3a54765be2",
+      "research-original.claims.json": "4763b1808d0ad7d21a42256f7584c3c78352bb33eb10f91027c9aa6be7a8517c",
+      "original-preservation.json": "4932a5ed91683a1dc56b717fb292ca1d74ed61d13b7c40064bb0a029e0cb96bf"
+    },
+    "runtime_video_exact": true,
+    "runtime_canonical_script_sha256": "0a3803c5235cea0f5ecd1849e9c472aa00e9c15259f92808920302a090e723a5",
+    "immutable_lexicon_sha256": "1dc8a42f7c9a3fb3f603c55a7e8d930661c358e2d55579d03d32aa28be161420"
+  },
+  "coverage": {
+    "narration_rows_reviewed": 123,
+    "scenes": 121,
+    "shot_prompts_read": 120,
+    "native_outro": 1,
+    "used_sources_personally_read": 13,
+    "used_anchors_quoted_position_and_sha_checked": 64,
+    "loops_forward_endpoints_and_source_payoffs_checked": 29,
+    "script_narration_video_claim_row_projections_exact": true,
+    "all_prompt_claim_rows_exact": true,
+    "title_promise_numbers_description_and_outro_checked": true
+  },
+  "personally_read_source_receipts": [
+    {
+      "id": "DF_CASE",
+      "publisher": "Joseph / Dependable Flame",
+      "publisher_date": "published 2022-04-06; modified 2022-04-08",
+      "applicable_country_or_region": "United States, historical reported experience",
+      "url": "https://dependableflame.com/sending-lighters-to-the-zippo-repair-clinic-a-mixed-bag-or-padded-mailer-review-from-a-happy-customer",
+      "final_url": "https://dependableflame.com/sending-lighters-to-the-zippo-repair-clinic-a-mixed-bag-or-padded-mailer-review-from-a-happy-customer",
+      "retrieved_at_utc": "2026-10-26T01:39:31.603263+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_CASE.html",
+      "raw_sha256": "6f623a6bbcb0c94cafa9fac32c7992cd5224ae78fd9885b3403e4ea57a18ebac",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_CASE.txt",
+      "text_sha256": "6ac84a07c099b3f5ede3b11718a6070f23edc23a0cbcf37bf68991e0e5844cd5"
+    },
+    {
+      "id": "DF_FORM_PHOTO",
+      "publisher": "Joseph / Dependable Flame",
+      "publisher_date": "linked in 2022-04-06 article",
+      "applicable_country_or_region": "United States",
+      "url": "https://dependableflame.com/wp-content/uploads/2022/04/8F21F941-2605-4D3B-B180-C96085A7E4AB.jpeg",
+      "final_url": "https://dependableflame.com/wp-content/uploads/2022/04/8F21F941-2605-4D3B-B180-C96085A7E4AB.jpeg",
+      "retrieved_at_utc": "2026-10-26T01:40:53.621717+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_ORIGINAL_PHOTO.html",
+      "raw_sha256": "5d7c44365f958fafe241ebe05d4adb8c47531dacc5ad83b018730ec9ceab03e7",
+      "text_path": null,
+      "text_sha256": null
+    },
+    {
+      "id": "DF_PRE_REPAIR",
+      "publisher": "Joseph / Dependable Flame",
+      "publisher_date": "published 2022-04-04; modified 2022-04-05",
+      "applicable_country_or_region": "United States, historical reported experience",
+      "url": "https://dependableflame.com/vintage-lighter-diaries-vol-8-tinkering-with-some-old-favorites-as-we-await-some-zippo-repairs",
+      "final_url": "https://dependableflame.com/vintage-lighter-diaries-vol-8-tinkering-with-some-old-favorites-as-we-await-some-zippo-repairs",
+      "retrieved_at_utc": "2026-10-26T01:41:43.877430+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_PRE_REPAIR.html",
+      "raw_sha256": "59d3ffe8516ba1ff468c507718dbc4dde04a2f3d307dc9cf384e9ae71dcbd722",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_PRE_REPAIR.decoded.txt",
+      "text_sha256": "61de0bee875121a7ef95cca07a7371e2d571c38a981fa43e0362d07e66d34eda"
+    },
+    {
+      "id": "JP_BEFORE",
+      "publisher": "ゆきいるか / note.com image CDN",
+      "publisher_date": "linked in 2024-10-18 article; original capture time not independently certified",
+      "applicable_country_or_region": "Japan",
+      "url": "https://assets.st-note.com/img/1729259530-cqSYTGsQPrvk92znbCIV8tBK.jpg?width=1200",
+      "final_url": "https://assets.st-note.com/img/1729259530-cqSYTGsQPrvk92znbCIV8tBK.jpg?width=1200",
+      "retrieved_at_utc": "2026-10-26T01:43:55.708466+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/JP_CASE_BEFORE.jpg",
+      "raw_sha256": "eb32dce72d7bc195047d174d19e8e9a4312bffd4c53034021d998e776e040422",
+      "text_path": null,
+      "text_sha256": null
+    },
+    {
+      "id": "JP_NOTE",
+      "publisher": "ゆきいるか / note.com",
+      "publisher_date": "2024-10-18 23:51 (page display; timezone not independently established)",
+      "applicable_country_or_region": "Japan; author says Tokyo–Osaka",
+      "url": "https://note.com/snow_dolphin/n/ndbe3e3f23b9c",
+      "final_url": "https://note.com/snow_dolphin/n/ndbe3e3f23b9c",
+      "retrieved_at_utc": "2026-10-26T01:41:56.198306+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/repair-case/snow-dolphin-jp.html",
+      "raw_sha256": "11820f397cc4b37b30d763b862704668a26ae9aac7cc5963da202c7215c09ca4",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/repair-case/snow-dolphin-jp.txt",
+      "text_sha256": "7f6c3b6c3d982dd06fa42552cf9ecb042b745c63a393ae7bbe75370a53857828"
+    },
+    {
+      "id": "JP_RETURN",
+      "publisher": "ゆきいるか / note.com image CDN",
+      "publisher_date": "linked in 2024-10-18 article; original capture time not independently certified",
+      "applicable_country_or_region": "Japan",
+      "url": "https://assets.st-note.com/img/1729259962-dzY8AgZGL2mFMlkIBwhROqDs.jpg?width=1200",
+      "final_url": "https://assets.st-note.com/img/1729259962-dzY8AgZGL2mFMlkIBwhROqDs.jpg?width=1200",
+      "retrieved_at_utc": "2026-10-26T01:43:56.322422+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/JP_CASE_RETURN.jpg",
+      "raw_sha256": "628d965853f6e87d47852ca6e111e19e67cfdfb7fb5360144a3abfa6bd5f4634",
+      "text_path": null,
+      "text_sha256": null
+    },
+    {
+      "id": "JP_TRACKING",
+      "publisher": "ゆきいるか / note.com image CDN",
+      "publisher_date": "linked in 2024-10-18 article; original capture time not independently certified",
+      "applicable_country_or_region": "Japan",
+      "url": "https://assets.st-note.com/img/1729259743-ZLoOkxAsbH6z2MEBCFlUWrum.png?width=1200",
+      "final_url": "https://assets.st-note.com/img/1729259743-ZLoOkxAsbH6z2MEBCFlUWrum.png?width=1200",
+      "retrieved_at_utc": "2026-10-26T01:43:56.117236+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/JP_CASE_TRACKING.png",
+      "raw_sha256": "1eed321d5bcc104b3e0bf0e19416613db7f6410029106853b84697df5c526e88",
+      "text_path": null,
+      "text_sha256": null
+    },
+    {
+      "id": "KB_FILL",
+      "publisher": "Zippo Manufacturing Company",
+      "publisher_date": "2026-07-30",
+      "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+      "url": "https://kb.zippo.com/zippo-lighter/fill",
+      "final_url": "https://kb.zippo.com/zippo-lighter/fill",
+      "retrieved_at_utc": "2026-10-26T01:41:43.725571+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_FILL.html",
+      "raw_sha256": "f490785e64b3aa130424047f774c917c0131f413e8085376d4c8cc0bf56d25f0",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_FILL.txt",
+      "text_sha256": "b47b716cd74589b0ca9786b8a12e148db15cd1f1d68af32c2c2ed52bb527a5a9"
+    },
+    {
+      "id": "KB_HISTORY",
+      "publisher": "Zippo Manufacturing Company",
+      "publisher_date": "2026-08-25",
+      "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+      "url": "https://kb.zippo.com/the-history-of-zippo",
+      "final_url": "https://kb.zippo.com/the-history-of-zippo",
+      "retrieved_at_utc": "2026-10-26T01:39:03.837789+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_HISTORY.html",
+      "raw_sha256": "c9740b36fd3b78a8de7942a1dbda2ae2d5c6a166277c6526287abe56bc201a9c",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_HISTORY.txt",
+      "text_sha256": "61be35e24fc4f59f110cf807648bc3dc7e073b9c15ffc92fd465ab6aaeb8c2d1"
+    },
+    {
+      "id": "PATENT_US2032695",
+      "publisher": "United States Patent Office; original scan hosted by Google",
+      "publisher_date": "filed 1934-05-17; granted/patented 1936-03-03",
+      "applicable_country_or_region": "United States",
+      "url": "https://patentimages.storage.googleapis.com/c6/09/ea/1d1b14be9be79c/US2032695.pdf",
+      "final_url": "https://patentimages.storage.googleapis.com/c6/09/ea/1d1b14be9be79c/US2032695.pdf",
+      "retrieved_at_utc": "2026-10-26T01:38:32.520649+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/US2032695.pdf",
+      "raw_sha256": "65e39aa2c91397b6873327c1fb32dc8fca303a5e1c3762af1746f02cf3f34ea3",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/US2032695.txt",
+      "text_sha256": "70b830281ecdd4b1a88a355235f6c31021e0d5a90e97d4d582475521e0a2a324"
+    },
+    {
+      "id": "UK_FORM_20261008",
+      "publisher": "Zippo UK linked official CDN PDF",
+      "publisher_date": "PDF metadata Creation/ModDate 2026-10-08 12:46:39 UTC; publication day not independently certified",
+      "applicable_country_or_region": "UK; forwarded to Germany",
+      "url": "https://cdn.shopify.com/s/files/1/0471/9532/4576/files/20261008_Repair_Form_EN.pdf?v=1792749458",
+      "final_url": "https://cdn.shopify.com/s/files/1/0471/9532/4576/files/20261008_Repair_Form_EN.pdf?v=1792749458",
+      "retrieved_at_utc": "2026-10-26T01:40:14.455446+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/UK_FORM_20261008.pdf",
+      "raw_sha256": "fb47e0a3acaa3c4a13b3ac3a8704025b6dd1aeafa7145d18a03e78957bd6ad51",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/UK_FORM_20261008.txt",
+      "text_sha256": "96bbe048bf5034f432e60dd60eb91fd6b1a7e49e778f63bbb55ce4a85dbecc07"
+    },
+    {
+      "id": "US_DECO",
+      "publisher": "Zippo Manufacturing Company",
+      "publisher_date": "2026-08-24",
+      "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+      "url": "https://kb.zippo.com/zippo-lighter/worn-deco",
+      "final_url": "https://kb.zippo.com/zippo-lighter/worn-deco",
+      "retrieved_at_utc": "2026-10-26T01:39:31.347978+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_DECO.html",
+      "raw_sha256": "a40dabbe427c5bd9906a516aba20b0621b96ce34493623671fc9639e492ad68b",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_DECO.txt",
+      "text_sha256": "60c2215403475764e4f159273d21cbaca4130fbb0b4819762c2398692ba21406"
+    },
+    {
+      "id": "US_REPAIR",
+      "publisher": "Zippo Manufacturing Company",
+      "publisher_date": "not displayed; retrieved 2026-10-26",
+      "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+      "url": "https://www.zippo.com/pages/repairs-windproof-lighter",
+      "final_url": "https://kb.zippo.com/warranty-repair",
+      "retrieved_at_utc": "2026-10-26T01:39:03.864721+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_REPAIR.html",
+      "raw_sha256": "12e50e284c208d90f9e9b19d0388d9ebd7fe186cb0b6c2b5f68b1ca1f685cb81",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_REPAIR.txt",
+      "text_sha256": "e6b64dbcb691eec67aa02fb27b5fe156b0b3ecae52fa20750a2ba96cdc114300"
+    }
+  ],
+  "evidence_reference_method": "Per-row anchor_ids resolve through claims.json at the bound SHA to original-language quotes, immutable raw/text SHA and line/normalized offset. All 64 used anchors checked; DF_FORM_PHOTO, JP photos/tracking, UK PDF and patent drawing personally viewed. No enormous duplicate quote table and no unused registry-source approval.",
+  "primary_findings_zh": [
+    "Joseph兩篇2022第一人稱原文重讀；他是古董打火機賣家/內容作者，帶商業連結；以下結果皆其自報，沒有升級為獨立廠內紀錄。",
+    "DF_CASE lines26–28：拍賣所得Camden款有船、盾牌、刻字及原漆；鬆蓋和可能進一步損傷/掉失是他說的顧慮，不是已掉失或原先不能點火。插圖未照抄船、盾與刻字。",
+    "DF_CASE lines33–35、38–39及DF_PRE_REPAIR lines31–33：同一次包裹確含兩件；普通鍍鉻款要求接回lid和新insert，Camden要求lossproof hinge/loop及if possible補lanyard。第一週March寄、18日收兩件通知、29日出件通知，後來generic回信；均保留作者歸屬，沒有把通知當維修工時。",
+    "DF表原照片左側帶船刻字物後方Hinge pin有勾，Will not light/work未勾；右表局部遮擋。稿子沒有把右表手寫遮擋內容補滿或替Camden增補原先點不著。",
+    "DF_CASE line42是普通1965款replacement hinge、接點整齊如近期新產品；line43另是Camden補繫繩、appears換環形pin收緊，未見new weld marks/scars；line44是both finish still worn。兩件不得合成同一部件或同serial，本輪書面配鏡M01/M02須修。",
+    "DF_CASE lines47–50：作者認為兩件回程似直接在bubble mailer中碰撞，但自己說arrived fine、沒有抱怨已發生損傷；未來individual寄是其選擇，不是現行統一寄件規範。",
+    "KB_HISTORY line29的1933首款/$1.95/保證是公司後來回顧，旁白已明示；沒有當成親讀1933原保證卡，也未拿patent filing/grant推首創。P04及現行KB_FILL只支持抽離內套與殼蓋hinge結構界線，非全型號BOM或兩案例維修清單。",
+    "日本2024原文重讀並重看三張原圖：禮物約三四年、cam spring裂/そのせいか輪不動、非regular零件搜尋卡住、9/1寄9/3到10/18回共47日、新舊兩內膽同返成立；不是Joseph同一物、不是廠內診斷、沒有回件後燃燒結果。",
+    "JP丸一日乾燥、分開包、本體及表不附盒、追蹤郵件是作者2024當時整理。E18結構圖查名稱與E19郵件袋回來在原文lines70/63；新anchor只綁既有raw，未改研究原件。未見JP填妥表、退舊申請或廠方原因。",
+    "UK20261008表的replace insert及unless requested in comments是明示英國2026對照，不倒推2022美國/2024日本；US當代finish/design exclusion只限其產品與市場。終身免費修並不等於免郵資、翻新外觀或回件成功點火。"
+  ],
+  "written_visual_findings_zh": [
+    "120個English prompt均已對照旁白；匿名成人與無字未標殼/內膽/包材，未含品牌、人名、logo、可讀字、複製船盾刻字、火焰、成功點火或新焊接工序。",
+    "兩事件預告完整prompt+camera與回收相同，且閉盒/不透明閉袋未畫repair outcome或日本兩組內膽；此計畫可成立，與M01/M02三景是分開範圍。",
+    "M01/M02只需修正三個書面prompt的狀態/物件對應；沒有要求新增場景、拖長、重畫已付費圖或更動匿名化規則。"
+  ],
+  "image_reuse_plan_review": {
+    "verdict": "PASS_WRITTEN_PLAN_ONLY",
+    "actual_same_asset_verified": false,
+    "actual_selected_file_sha_verified": false,
+    "pure_native_functions_recalculated": true,
+    "pairs": [
+      {
+        "source": "c20r2e01",
+        "reuse": "c20r2h05",
+        "composed_prompt_sha256": "f6aa701ac9dd7c2edd06474c99b4ea9b00457e616c5a7995e106ecd10d61989c",
+        "base_key": "14da6fdbee2275d6",
+        "both_native_stage_key": "10628c6d991ddf8d"
+      },
+      {
+        "source": "c20r2n01",
+        "reuse": "c20r2h06",
+        "composed_prompt_sha256": "672a05de19ae06af4371ff86389ce15ecf09c7a4c086a3dda4b8fcaf1f540a66",
+        "base_key": "405fd645b4ec7dca",
+        "both_native_stage_key": "bf1ad24b43c37ae3"
+      }
+    ],
+    "declared_tuple": "MiniMax image-01; version1;1920x1080/1K; seed1; references[];negative empty; takes1;no fixes;limit1500. Native shotPrompt(resolveLook) and Stage.prototype.imageKey called without constructor/provider. Declared planned status only, not live backend.",
+    "production_limits": "Read live model/version/size/seed/ref/fixes and intended media paths then recompute; ordinary payoff first after admission. ReadCache/existence/actual SHA guard before teaser; any miss stops without reroll, force or handwritten manifest. Both endpoints ordinary judge; actual original cache and final trimmed file SHA separately, identical selected file and assembly inputs required. Current audit lexicon/journal not rebuilt or moved."
+  },
+  "row_checks": [
+    {
+      "id": "c20r2h01",
+      "scene_id": "c20r2h01",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "O09-Q1",
+        "D05-Q1"
+      ]
+    },
+    {
+      "id": "c20r2h02",
+      "scene_id": "c20r2h02",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "D01-Q1",
+        "E01-Q1"
+      ]
+    },
+    {
+      "id": "c20r2h03",
+      "scene_id": "c20r2h03",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "D02-Q1",
+        "E02-Q1"
+      ]
+    },
+    {
+      "id": "c20r2h04",
+      "scene_id": "c20r2h04",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E03-Q1"
+      ]
+    },
+    {
+      "id": "c20r2h05",
+      "scene_id": "c20r2h05",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "D04-Q1"
+      ]
+    },
+    {
+      "id": "c20r2h06",
+      "scene_id": "c20r2h06",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J09-Q1",
+        "J17-Q1"
+      ]
+    },
+    {
+      "id": "c20r2h07",
+      "scene_id": "c20r2h07",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J01-Q1",
+        "O07-Q1",
+        "D01-Q1"
+      ]
+    },
+    {
+      "id": "c20r2h08",
+      "scene_id": "c20r2h08",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J18-Q1",
+        "O07-Q1",
+        "O09-Q1",
+        "D05-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o01",
+      "scene_id": "c20r2o01",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "H02-Q1",
+        "H03-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o02",
+      "scene_id": "c20r2o02",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "H03-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o03",
+      "scene_id": "c20r2o03",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "O07-Q1",
+        "H03-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o04",
+      "scene_id": "c20r2o04",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "O07-Q1",
+        "D02-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o05",
+      "scene_id": "c20r2o05",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "D02-Q1",
+        "D05-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o06",
+      "scene_id": "c20r2o06",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E01-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o07",
+      "scene_id": "c20r2o07",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E01-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o08",
+      "scene_id": "c20r2o08",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E01-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o09",
+      "scene_id": "c20r2o09",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E01-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o10",
+      "scene_id": "c20r2o10",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E02-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o11",
+      "scene_id": "c20r2o11",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E02-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o12",
+      "scene_id": "c20r2o12",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E15-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o13",
+      "scene_id": "c20r2o13",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E02-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o14",
+      "scene_id": "c20r2o14",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E03-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o15",
+      "scene_id": "c20r2o15",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E03-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o16",
+      "scene_id": "c20r2o16",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E03-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o17",
+      "scene_id": "c20r2o17",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E04-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o18",
+      "scene_id": "c20r2o18",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E04-Q1",
+        "E05-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o19",
+      "scene_id": "c20r2o19",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E05-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o20",
+      "scene_id": "c20r2o20",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E01-Q1",
+        "E05-Q1"
+      ]
+    },
+    {
+      "id": "c20r2o21",
+      "scene_id": "c20r2o21",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E05-Q1"
+      ]
+    },
+    {
+      "id": "c20r2i01",
+      "scene_id": "c20r2i01",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E05-Q1"
+      ]
+    },
+    {
+      "id": "c20r2i02",
+      "scene_id": "c20r2i02",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "D02-Q1"
+      ]
+    },
+    {
+      "id": "c20r2i03",
+      "scene_id": "c20r2i03",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "D02-Q1"
+      ]
+    },
+    {
+      "id": "c20r2i04",
+      "scene_id": "c20r2i04",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E07-Q1",
+        "E07-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2i05",
+      "scene_id": "c20r2i05",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E14-Q1"
+      ]
+    },
+    {
+      "id": "c20r2i06",
+      "scene_id": "c20r2i06",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E16-Q1"
+      ]
+    },
+    {
+      "id": "c20r2i07",
+      "scene_id": "c20r2i07",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E16-Q1"
+      ]
+    },
+    {
+      "id": "c20r2i08",
+      "scene_id": "c20r2i08",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "D02-Q1"
+      ]
+    },
+    {
+      "id": "c20r2i09",
+      "scene_id": "c20r2i09",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E06-Q1"
+      ]
+    },
+    {
+      "id": "c20r2i10",
+      "scene_id": "c20r2i10",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E07-Q1",
+        "E07-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2i11",
+      "scene_id": "c20r2i11",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E07-Q1",
+        "E07-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2i12",
+      "scene_id": "c20r2i12",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E07-Q1",
+        "E07-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2i13",
+      "scene_id": "c20r2i13",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E07-Q1",
+        "E09-Q1",
+        "E09-EXTRA",
+        "E07-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2i14",
+      "scene_id": "c20r2i14",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E08-Q1"
+      ]
+    },
+    {
+      "id": "c20r2i15",
+      "scene_id": "c20r2i15",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E09-Q1",
+        "E09-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2i16",
+      "scene_id": "c20r2i16",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E06-Q1",
+        "E09-Q1",
+        "E09-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2i17",
+      "scene_id": "c20r2i17",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E09-Q1",
+        "E09-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2i18",
+      "scene_id": "c20r2i18",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E10-Q1"
+      ]
+    },
+    {
+      "id": "c20r2i19",
+      "scene_id": "c20r2i19",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E09-Q1",
+        "E10-Q1",
+        "E09-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2i20",
+      "scene_id": "c20r2i20",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E10-Q1"
+      ]
+    },
+    {
+      "id": "c20r2i21",
+      "scene_id": "c20r2i21",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E10-Q1"
+      ]
+    },
+    {
+      "id": "c20r2i22",
+      "scene_id": "c20r2i22",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "D04-Q1",
+        "E10-Q1"
+      ]
+    },
+    {
+      "id": "c20r2i23",
+      "scene_id": "c20r2i23",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "D02-Q1",
+        "D04-Q1"
+      ]
+    },
+    {
+      "id": "c20r2i24",
+      "scene_id": "c20r2i24",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "D04-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e01",
+      "scene_id": "c20r2e01",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "D04-Q1",
+        "E11-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e02",
+      "scene_id": "c20r2e02",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "D04-Q1",
+        "E11-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e03",
+      "scene_id": "c20r2e03",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "HOLD",
+      "anchor_ids": [
+        "D04-Q1",
+        "E11-Q1"
+      ],
+      "must_fix_id": "M01"
+    },
+    {
+      "id": "c20r2e04",
+      "scene_id": "c20r2e04",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "HOLD",
+      "anchor_ids": [
+        "D04-Q1"
+      ],
+      "must_fix_id": "M01"
+    },
+    {
+      "id": "c20r2e05",
+      "scene_id": "c20r2e05",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E14-Q1",
+        "E17-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e06",
+      "scene_id": "c20r2e06",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E17-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e07",
+      "scene_id": "c20r2e07",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E17-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e08",
+      "scene_id": "c20r2e08",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E17-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e09",
+      "scene_id": "c20r2e09",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "HOLD",
+      "anchor_ids": [
+        "D05-Q1"
+      ],
+      "must_fix_id": "M02"
+    },
+    {
+      "id": "c20r2e10",
+      "scene_id": "c20r2e10",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "D05-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e11",
+      "scene_id": "c20r2e11",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E12-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e12",
+      "scene_id": "c20r2e12",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E12-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e13",
+      "scene_id": "c20r2e13",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E12-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e14",
+      "scene_id": "c20r2e14",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E12-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e15",
+      "scene_id": "c20r2e15",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E12-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e16",
+      "scene_id": "c20r2e16",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "D04-Q1",
+        "E12-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e17",
+      "scene_id": "c20r2e17",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E13-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e18",
+      "scene_id": "c20r2e18",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "E13-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e19",
+      "scene_id": "c20r2e19",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "O04-Q1",
+        "D04-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e20",
+      "scene_id": "c20r2e20",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "O04-Q1",
+        "P04-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e21",
+      "scene_id": "c20r2e21",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "O04-Q1",
+        "U03-Q1",
+        "D04-Q1"
+      ]
+    },
+    {
+      "id": "c20r2e22",
+      "scene_id": "c20r2e22",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J17-Q1",
+        "U03-Q1"
+      ]
+    },
+    {
+      "id": "c20r2t01",
+      "scene_id": "c20r2t01",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J03-Q1",
+        "J09-Q1",
+        "J14-Q1"
+      ]
+    },
+    {
+      "id": "c20r2t02",
+      "scene_id": "c20r2t02",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J01-Q1",
+        "J02-Q1"
+      ]
+    },
+    {
+      "id": "c20r2t03",
+      "scene_id": "c20r2t03",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J09-Q1",
+        "J20-Q1",
+        "J20-CAPTION"
+      ]
+    },
+    {
+      "id": "c20r2t04",
+      "scene_id": "c20r2t04",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J03-Q1"
+      ]
+    },
+    {
+      "id": "c20r2t05",
+      "scene_id": "c20r2t05",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J03-Q1",
+        "E18-Q1"
+      ]
+    },
+    {
+      "id": "c20r2t06",
+      "scene_id": "c20r2t06",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J04-Q1",
+        "J05-Q1"
+      ]
+    },
+    {
+      "id": "c20r2t07",
+      "scene_id": "c20r2t07",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J06-Q1",
+        "J06-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t08",
+      "scene_id": "c20r2t08",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J06-Q1",
+        "J06-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t09",
+      "scene_id": "c20r2t09",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J06-Q1",
+        "J06-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t10",
+      "scene_id": "c20r2t10",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J07-Q1",
+        "J07-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t11",
+      "scene_id": "c20r2t11",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J08-Q1",
+        "J08-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t12",
+      "scene_id": "c20r2t12",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J07-Q1",
+        "J14-Q1",
+        "J07-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t13",
+      "scene_id": "c20r2t13",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J07-Q1",
+        "J14-Q1",
+        "J07-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t14",
+      "scene_id": "c20r2t14",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J11-Q1",
+        "J12-Q1",
+        "J12-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t15",
+      "scene_id": "c20r2t15",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J12-Q1",
+        "J12-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t16",
+      "scene_id": "c20r2t16",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J10-Q1",
+        "J11-Q1",
+        "J10-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t17",
+      "scene_id": "c20r2t17",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J11-Q1"
+      ]
+    },
+    {
+      "id": "c20r2t18",
+      "scene_id": "c20r2t18",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J10-Q1",
+        "J10-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t19",
+      "scene_id": "c20r2t19",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J10-Q1",
+        "J10-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t20",
+      "scene_id": "c20r2t20",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J10-Q1",
+        "J10-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t21",
+      "scene_id": "c20r2t21",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J10-Q1",
+        "J21-Q1",
+        "J10-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t22",
+      "scene_id": "c20r2t22",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J12-Q1",
+        "J12-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t23",
+      "scene_id": "c20r2t23",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J12-Q1",
+        "J13-Q1",
+        "J12-EXTRA",
+        "J13-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t24",
+      "scene_id": "c20r2t24",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J14-Q1",
+        "J21-Q1"
+      ]
+    },
+    {
+      "id": "c20r2t25",
+      "scene_id": "c20r2t25",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J15-Q1",
+        "J15-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t26",
+      "scene_id": "c20r2t26",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J16-Q1"
+      ]
+    },
+    {
+      "id": "c20r2t27",
+      "scene_id": "c20r2t27",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J14-Q1",
+        "J15-Q1",
+        "J15-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t28",
+      "scene_id": "c20r2t28",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J15-Q1",
+        "J15-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2t29",
+      "scene_id": "c20r2t29",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J17-Q1"
+      ]
+    },
+    {
+      "id": "c20r2t30",
+      "scene_id": "c20r2t30",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J17-Q1"
+      ]
+    },
+    {
+      "id": "c20r2t31",
+      "scene_id": "c20r2t31",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J17-Q1",
+        "J18-Q1"
+      ]
+    },
+    {
+      "id": "c20r2n01",
+      "scene_id": "c20r2n01",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J18-Q1"
+      ]
+    },
+    {
+      "id": "c20r2n02",
+      "scene_id": "c20r2n02",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J22-Q1",
+        "J22-CAPTION"
+      ]
+    },
+    {
+      "id": "c20r2n03",
+      "scene_id": "c20r2n03",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J22-Q1",
+        "J22-CAPTION"
+      ]
+    },
+    {
+      "id": "c20r2n04",
+      "scene_id": "c20r2n04",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J19-Q1",
+        "E19-Q1"
+      ]
+    },
+    {
+      "id": "c20r2n05",
+      "scene_id": "c20r2n05",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J19-Q1",
+        "E19-Q1"
+      ]
+    },
+    {
+      "id": "c20r2n07",
+      "scene_id": "c20r2n07",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J18-Q1"
+      ]
+    },
+    {
+      "id": "c20r2n08",
+      "scene_id": "c20r2n08",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J13-Q1",
+        "J18-Q1",
+        "J13-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2n09",
+      "scene_id": "c20r2n09",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J13-Q1",
+        "J18-Q1",
+        "J13-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r2n10",
+      "scene_id": "c20r2n10",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "U03-Q1",
+        "U04-Q1"
+      ]
+    },
+    {
+      "id": "c20r2n11",
+      "scene_id": "c20r2n11",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "U03-Q1",
+        "U04-Q1"
+      ]
+    },
+    {
+      "id": "c20r2n12",
+      "scene_id": "c20r2n12",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "U04-Q1"
+      ]
+    },
+    {
+      "id": "c20r2n13",
+      "scene_id": "c20r2n13",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "O09-Q1"
+      ]
+    },
+    {
+      "id": "c20r2n14",
+      "scene_id": "c20r2n14",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "O07-Q1",
+        "O09-Q1"
+      ]
+    },
+    {
+      "id": "c20r2n15",
+      "scene_id": "c20r2n15",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J22-Q1",
+        "J22-CAPTION"
+      ]
+    },
+    {
+      "id": "c20r2n16",
+      "scene_id": "c20r2outro",
+      "source_content_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": [
+        "J18-Q1",
+        "O07-Q1",
+        "O09-Q1",
+        "U04-Q1",
+        "D02-Q1",
+        "E13-Q1"
+      ]
+    },
+    {
+      "id": "c20r2n17",
+      "scene_id": "c20r2outro",
+      "source_content_verdict": "OUT_OF_SCOPE_CTA",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": []
+    },
+    {
+      "id": "c20r2n18",
+      "scene_id": "c20r2outro",
+      "source_content_verdict": "OUT_OF_SCOPE_CTA",
+      "written_visual_verdict": "PASS",
+      "anchor_ids": []
+    }
+  ],
+  "validation": {
+    "native_lint": {
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "\"case\" is in 74 of 120 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"adult\" is in 55 of 120 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"worn\" is in 42 of 120 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "about 14.6 minutes; the target is 12-14"
+        }
+      ],
+      "summary": {
+        "minutes": 14.620555555555557,
+        "lines": 123,
+        "spoken_units": 3138,
+        "billable_characters": 10385,
+        "chapters": [
+          "00:00 帶繫繩環的舊盒，準備寄回去",
+          "00:50 那句承諾，遇上他不願失去的舊殼",
+          "03:19 回信還沒來，包裹先出門",
+          "06:10 蓋子收緊，舊磨痕仍在",
+          "08:45 粉紅色禮物，輪子也停住了",
+          "12:29 原來的內膽，也一起回來"
+        ]
+      }
+    },
+    "native_facts_without_marker": {
+      "ok": false,
+      "detail": "no verify-*.md beside video.json: the script has not been fact-checked"
+    },
+    "facts_result_explanation": "Expected blocked because whole review is HOLD. No verify-1.md was written, no NOT FOUND or all-CONFIRMED table fabricated to bypass the written visual findings.",
+    "protected_research_files": 3,
+    "protected_originals": 68,
+    "protected_readonly_snapshots": 68,
+    "protected_raw_files": 159,
+    "R1_archive_files_hashed_only": 24,
+    "immutable_lexicon_files_checked": 3,
+    "all_protected_sha_and_sizes_match": true
+  },
+  "limitations": {
+    "readiness": "HOLD_FOR_M01_M02_AND_REMAINING_GATES",
+    "actual_audio_seconds": null,
+    "actual_final_seconds": null,
+    "planning_units": 3138,
+    "planning_risk": "MATERIAL_CAPACITY_RISK; target13min. Lint14.62056min is an estimate, not actual speech PASS or FAIL; its 12–14 warning remains visible.",
+    "actual_images_generated": false,
+    "actual_same_asset_verified": false,
+    "narrative_or_owner_approval_created": false,
+    "paid_calls": 0,
+    "backend_mutations": 0,
+    "git_mutations": 0,
+    "core_edits": 0
+  },
+  "outputs": [
+    "reviews/source-r2-independent.json"
+  ],
+  "verify_written": false,
+  "other_nonblocking_notes": [
+    "case/adult/worn重複的3項及估計片長1項soft warnings保留。",
+    "判定完全針對凍結R2；R1 source/verify及敏感原生檔僅按保護清單hash，沒有讀者結論繼承。"
+  ]
+}

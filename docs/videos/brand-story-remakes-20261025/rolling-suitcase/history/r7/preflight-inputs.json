@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r7",
+  "status": "HOLD_SOURCE_CAPACITY_AND_PREPARATION",
+  "core_four_sha256": {
+    "video.json": "df23483c14c99f7b2a6533def1d79df8e0aa7e8ce79015cb79f840216ab81c41",
+    "script.md": "ff5c0f8c3e409c04a9a7352badc17cb106565fceee783de570ec0657a7e85eb1",
+    "narration-only.json": "075532b421f29c750ab4fafa362f8850c7cdff9f38e2e7cd7213c953eaa93f0f",
+    "claims.json": "0340c0188885f5ef06f519645ff0eea074b07f336f5d06f2085f6a704a2be2c7"
+  },
+  "source_review": "PENDING_R7_DELTA_QA",
+  "written_visual_review": "PENDING_R7_DELTA_QA",
+  "fresh_native": "NOT_PREPARED_NOT_READ",
+  "actual_native_round_count": 5,
+  "capacity": {
+    "whole_raw_spoken_units": 2330,
+    "coldopen": 133,
+    "voiced_CTA": 58,
+    "planning_target": 3500,
+    "planning_units_gap": 1170,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      466,
+      582.5
+    ],
+    "planning_at_4_5": 517.7777777777778,
+    "actual_body_seconds": null,
+    "actual_audio_tested": false,
+    "actual_duration_verdict": "PENDING_NO_TTS",
+    "planning_warning": "Natural de-duplicated single-story text remains short. Arithmetic does not establish synthesized duration or TTS FAIL. No silence, slowdown, recaps, warnings or invention anecdotes fill the gap.",
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "scope": "Whole unwrapped spoken narration, including coldopen and voiced CTA, excluding added5secondintro+21secondoutro."
+  },
+  "exact_new_project_account": {
+    "slug": "story-rolling-suitcase-v2-remake-20261025",
+    "cap_usd": 25,
+    "account_id": null,
+    "activated": false,
+    "legacy_account_reused": false
+  },
+  "whole_episode_quote": null,
+  "protected_admission": null,
+  "free_init_authorizes_spend": false,
+  "paid_commands_allowed": [],
+  "owner_approval_created": false,
+  "media_generated": false,
+  "branding_policy_path": "../branding-pr1860/required-branding.json",
+  "branding_policy_sha256": "b327ff11f96a475eecb7413e176d5b287a5d51d6db28da16fbf4a09433bc9aa5",
+  "branding_production_pin": null,
+  "languages_default": [
+    "en",
+    "ja",
+    "ko",
+    "es",
+    "pt",
+    "id",
+    "vi",
+    "th"
+  ]
+}

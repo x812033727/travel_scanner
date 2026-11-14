@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "state": "SOURCE_BOUND_FREE_PREFLIGHT_COMPLETE_PRODUCTION_HELD",
+  "checked_at": "2026-10-26T07:06:57.221402+00:00",
+  "source_video_sha256": "96b1e2a519c739dcf4b9bf9f26949370e3ea911ad2f368602cc29c1a1fda4043",
+  "canonical_script_sha256": "a03581537a7e13028cb9b937498dec44e275e33a0479d867d9e2d7261f030bbb",
+  "source_report_sha256": "6811e6b0fda564ca5dffc07835dcd309a88a400414ca797c35d7ffcf4c096fca",
+  "verify_sha256": "c9e92607a5bd74c434785afb189276d6d3044b622988d7e1e8e6e53f3a78c34e",
+  "native_record_sha256": "bcbd898a206f9edfc9dca014e4b43b334abb6bf518591fd429a3e165983b0224",
+  "actual_native_round": 3,
+  "narrative_review_matches": true,
+  "reader_yes_counts": [
+    13,
+    13
+  ],
+  "source_brief_sha256": "027df8059edae5ba887d15f486feb883eabe55fbf22c077ba1d7b813cc73299c",
+  "submitted_brief_path": "submission/brief.md",
+  "submitted_brief_sha256": "23c0c9a85f7be2c3a1154f2e793dbbc42d4374685e4cf0ab291f9b06a966e530",
+  "native_lint": {
+    "errors": 0,
+    "soft_warnings": 4,
+    "receipt": "reviews/canonical-lint-r4.json",
+    "warning_text": [
+      {
+        "path": "scenes",
+        "message": "\"adult\" is in 123 of 132 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"wrist\" is in 113 of 132 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"device\" is in 100 of 132 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "「三零五」 is said in 5 lines (gr1a01, gr1a12, gr1a15, gr1d01, gr1v01): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      }
+    ]
+  },
+  "whole_narration_spoken_units": 2877,
+  "lines": 135,
+  "chapters": 7,
+  "planning_minutes_only": 13.775,
+  "duration_risk": "2877 spokenUnits and native13.775minute estimate are planning only. At4–5units/s arithmetic575.4–719.25s; at4.5units/s639.33s. Actual720–840second body is unmeasured; capacity risk is not actualFAIL or13minute PASS. No slow playback, silence or recap padding.",
+  "body_seconds_required": [
+    720,
+    840
+  ],
+  "body_includes_coldopen_and_voiced_CTA": true,
+  "body_excludes_only_added_bookends_seconds": 26,
+  "actual_duration_measured": false,
+  "actual_narration_seconds": null,
+  "actual_final_seconds": null,
+  "tts": {
+    "dry_run": true,
+    "requests": 133,
+    "billable_characters": 3272,
+    "log_sha256": "608708b149bab41ec3a3984764cc98e26a52da28079472b27925ce29e5f61832",
+    "synthesis_performed": false
+  },
+  "keyframes": {
+    "dry_run": true,
+    "shots": 132,
+    "max_takes_per_shot": 3,
+    "one_take_catalogue_estimate_usd": 1.78,
+    "max_three_takes_catalogue_estimate_usd": 5.35,
+    "log_sha256": "67252cd3ff6d0fcacf107c3af93c65fc8df6e1f71928dffaa9e98199a4a40e91",
+    "generation_performed": false
+  },
+  "shared_image_plan_sha256": "0eeb86f4b73b5fa0223eacaf98a5d1b9e76337e2818866365a45a06f61ff58fb",
+  "full_key_readback": "reviews/full-key-readback-r4.json",
+  "teaser_pairs": 2,
+  "actual_same_asset_verified": false,
+  "pair_enforcement": "Native CLI does not enforce pair identity; live-cache miss can dispatch paid. BEFORE teaser inspect accepted real cache, full equal key, file bytes/SHA and every parameter; STOP on any missing/different proof. No auto worker.",
+  "global_per_film_cap_usd": 25,
+  "exact_new_slug_budget_account_activated": false,
+  "whole_film_all_in_quote_complete": false,
+  "protected_admission_granted": false,
+  "budget_authorization_changed": false,
+  "actual_audio_generated": false,
+  "actual_images_generated": false,
+  "actual_music_generated": false,
+  "actual_render_or_assembly": false,
+  "paid_provider_requests": 0,
+  "generated_story_media": 0,
+  "branding_handoff": {
+    "required_policy": "../branding-pr1860/required-branding.json",
+    "authority_readme": "../branding-pr1860/README.md",
+    "package_id": "mokaair-brand-package-v4-endscreen",
+    "package_hash": "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88",
+    "placed_hash_is_selection_not_production_pin": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+    "media_qa_receipt": "../branding-pr1860/media-qa.json",
+    "current_source_sha256": "96b1e2a519c739dcf4b9bf9f26949370e3ea911ad2f368602cc29c1a1fda4043",
+    "readonly_receipt": "branding-preflight-r4.json",
+    "readonly_receipt_sha256": "830f2109a742c38c35c07253a0f96dfc9762bafa9aaef691d99037acb56ddabd",
+    "intro_seconds": 5,
+    "intro_frames": 150,
+    "outro_seconds": 21,
+    "outro_frames": 630,
+    "assembly_required_option": "--intro-after-condensation",
+    "assembly_order": [
+      "cold_open",
+      "intro",
+      "remaining_body_and_voiced_CTA",
+      "outro"
+    ],
+    "fresh_readonly_preflight_required_before_assembly": true,
+    "production_pin_written": false,
+    "timeline_created": false,
+    "assembly_executed": false
+  },
+  "note": "Catalogue ready/free-tier balance and genericUSD200 dry-run display are not full-film quote, exact newUS25 account/protected admission or spending authorization. Original author preflight-inputs.json and frozen production-entry.md are preserved, not overwritten; current operator entry is production-entry-r4-prepared.md."
+}

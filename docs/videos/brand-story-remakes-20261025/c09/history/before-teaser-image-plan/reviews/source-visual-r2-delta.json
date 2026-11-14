@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "review_type": "independent-source-and-visual-r2-delta",
+  "reviewer": "c09-source-visual-independent",
+  "reviewed_at": "2026-10-25",
+  "overall": "pass",
+  "formal_approval": false,
+  "bindings": {
+    "predecessor_video_sha256": "89757aa68bf31448c3d9284a3a7261d6b99dc321344ac0d986321b105b96af37",
+    "predecessor_hold_review_sha256": "d1ec66d48c57d7fc5c7c342bc9104a8f78ae1fbfca382497c7ccedbea3f61200",
+    "video_sha256": "92c16cf77add0eda5463094237ded8367c63461d9525dc0c85bc7d9cbe7e888a",
+    "narration_only_sha256": "734db44f0eebde69f248dd5ae2c9041d1572a6ea106a59e25952802c0d90387f",
+    "claims_sha256": "210f733cbbc9a76c51f89e6cc9db3c3aec55c205321c80eb832a4682a463c6b0"
+  },
+  "method": "直接逐欄比較history-r1固定輸入與現行video/claims；把六句新措辭及新增來源放回已於本日直接重讀的S1/S2/S3/S4/S7全文邊界核對，不採用作者自稱作PASS。",
+  "unchanged_closure": {
+    "line_ids_and_order_identical": true,
+    "lines": 104,
+    "scenes": 102,
+    "unchanged_narration_lines": 98,
+    "changed_narration_ids": [
+      "c09r008",
+      "c09r009",
+      "c09r056",
+      "c09r070",
+      "c09r071",
+      "c09r101"
+    ],
+    "changed_prompt_scene_ids": [
+      "c09r-shot-005"
+    ],
+    "all_other_scene_payloads_unchanged": true,
+    "source_urls_unchanged": true,
+    "voice_subtitles_look_unchanged": true
+  },
+  "delta_rows": [
+    {
+      "id": "c09r005",
+      "kind": "visual",
+      "status": "pass",
+      "evidence": "新prompt明寫working enclosed press；與旁白仍在動及S4工廠壓床記錄一致，已消除idle狀態矛盾。"
+    },
+    {
+      "id": "c09r008",
+      "kind": "narration",
+      "status": "pass",
+      "evidence": "改成改變牽動什麼的編輯提問，移除未有來源的個人難以放手心理歸因。S4仍支持器材原先解決重用/攜帶問題。"
+    },
+    {
+      "id": "c09r009",
+      "kind": "narration",
+      "status": "pass",
+      "evidence": "改為早期軟鐵釘原本不打算反覆使用，與S4的not meant to be used over and over同一強度；移除留在岩壁的頻率斷言。"
+    },
+    {
+      "id": "c09r034",
+      "kind": "citation",
+      "status": "pass",
+      "evidence": "保留S2支持相對硬度與薄片鬆落，新增S4支持窄縫由小釘容納到需大釘的擴大現象。"
+    },
+    {
+      "id": "c09r035",
+      "kind": "citation",
+      "status": "pass",
+      "evidence": "句子不變，跟同parent_row的036一併加S4；屬明示旁白反應，沒有新事實。"
+    },
+    {
+      "id": "c09r036",
+      "kind": "citation",
+      "status": "pass",
+      "evidence": "已補S4；原小釘是否仍合用的提問與下一行S4所見大裂縫相符。"
+    },
+    {
+      "id": "c09r056",
+      "kind": "narration",
+      "status": "pass",
+      "evidence": "新增可以考慮，保留Where a piton is necessary a fixed piton should be considered的非自動採用限定，下一句仍保留當地指南紀錄條件。"
+    },
+    {
+      "id": "c09r062",
+      "kind": "citation",
+      "status": "pass",
+      "evidence": "72頁仍由S3書目支持；S4新增是同parent_row衍生來源的聯集，不把S4當成72頁的唯一證據。"
+    },
+    {
+      "id": "c09r063",
+      "kind": "citation",
+      "status": "pass",
+      "evidence": "已補S4支持1964單頁價目表，S3支持後來72頁及長文，跨年對照來源完整。"
+    },
+    {
+      "id": "c09r070",
+      "kind": "narration",
+      "status": "pass",
+      "evidence": "新句只對觀眾問販售又勸少用是否說一套做一套；移除換另一門生意賺錢的未證動機。"
+    },
+    {
+      "id": "c09r071",
+      "kind": "narration",
+      "status": "pass",
+      "evidence": "只把販賣又貶低的hypocrisy指責歸S3，與原書評記私下批評一致，未再指稱當時人問了新增商業動機。"
+    },
+    {
+      "id": "c09r101",
+      "kind": "narration",
+      "status": "pass",
+      "evidence": "改成可重用器材與留給後人路線同時成為選擇的編輯歸納；移除原本只跟這一趟相連的排他歷史判斷，與S2留給未來攀登者立場相容。"
+    }
+  ],
+  "metadata_review": [
+    {
+      "field": "youtube.title",
+      "status": "pass",
+      "evidence": "縮短為Patagonia憑什麼勸你少用？1972年的岩釘難題；保留原件所述勸少用，未誇大成停售、業績或現代品牌當年法人。"
+    },
+    {
+      "field": "youtube.description",
+      "status": "pass",
+      "evidence": "移除內部前製流程後保留簡介、五個同一來源URL、1977僅刊年及AI匿名示意揭露，未新增歷史主張或發布授權。"
+    },
+    {
+      "field": "loops[c09r007]",
+      "status": "pass",
+      "evidence": "回收改指outro首句c09r102，語義仍是建議次序變而商品仍在；這只是可用ID/事實相容性檢查，是否充分回收與敘事品質另由新雙盲讀判定。"
+    }
+  ],
+  "resolution": "r1九個REVISE均已就來源/配鏡文字範圍解決；其餘98句與101個場景data承接r1逐列審查的未變內容。r1 HOLD原件及其hash保持不變。",
+  "limits": [
+    "僅來源與配鏡文字差分通過，不是成圖或實際歷史照片重建驗收。",
+    "不是新敘事雙盲PASS、站主劇本核准、付費生成或任何後台核准。",
+    "TTS正文時長、音訊發音、生成圖像、成本硬停線、成片與觀眾驗收仍須實物證據。"
+  ]
+}

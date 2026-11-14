@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-10-25T21:49:57.273910+00:00",
+  "source_file": "tools/video/core/duration.mjs",
+  "source_sha256": "dbe0efe72376ccd6469d322a612342d74dab48435f83575b1c2800586920388d",
+  "code_modified": false,
+  "native_body_basis": "Current unwrapped actual narration timeline.total_frames / FPS; selected intro/outro are added separately in the presented timeline.",
+  "includes": [
+    "cold-open narration",
+    "all later narration including spoken CTA"
+  ],
+  "excludes": [
+    "separately added 5-second channel intro",
+    "separately added 21-second channel outro"
+  ],
+  "planning_subtotals_only": [
+    "after_cold_open_units",
+    "strict_excluding_spoken_closing_units"
+  ],
+  "planning_correction": "Earlier author planning fields called after-opening or strict counts body. These are extra subtotals, not the official measured duration basis. Preserve hash-bound historical notes; use this scope for current production.",
+  "actual_body_measured": false,
+  "actual_narration_seconds": null,
+  "required_measured_band_seconds": [
+    720,
+    840
+  ],
+  "spoken_unit_estimates_prove_duration": false,
+  "paid_calls": 0
+}

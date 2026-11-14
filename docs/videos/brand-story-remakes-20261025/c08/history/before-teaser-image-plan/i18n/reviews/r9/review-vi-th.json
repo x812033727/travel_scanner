@@ -1,0 +1,67 @@
+{
+  "source_video_sha256": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b",
+  "reviewer": "/root/c08_r9_review_vi_th",
+  "independent": true,
+  "role_disclosure": "我未參與C08中文、越南文或泰文翻譯，也未撰寫此次TH description縮寫；本輪未讀作者縮寫自校結論。原full review已由我完整逐句讀各語127句、6章及全部metadata，其原檔與SHA完整保存在revision所列路徑。本輪明確承接該次全量閱讀，親讀並獨立覆核current TH description全文及21條來源縮標題，核對中文凍結R9、原TH全文及上輪已查原件的語意／條件邊界。TH native和worksheet除description字串外，原始檔案bytes逐位相同；VI兩檔整檔SHA與原全讀版本相同。因此各語127句、6章及其他metadata的全量結論承接原full review，並非宣稱此次重新全文讀取或舊TH SHA仍為current。新description的native／worksheet文字一致，21個URL原序不變。500mL軟膜原型與上市瓶型仍明確分開，後期閥門專利未當舊玻璃瓶設計，概念圖未宣稱各量產款剖面；1961年150mL、2011年200mL與current 450mL PET各自範圍正確。各來源縮標題仍能辨認原件；Onda只用姓，JP505標明applicant prototype tests。冷藏FAQ標題仍以「ห้ามแช่เย็นหลังเปิดหรือ?」提問，未改成禁止冷藏的陳述；未變的敘述句仍區分正常密封常溫120天與取下整蓋後冷藏。只作metadata與caption文字覆核，不判時序、duration、dub fit、media或共圖gap。本輪只更新此review；未改input、native、worksheet、source/core、Git、後台，未用付費provider、未派子agent。",
+  "locales": [
+    {
+      "locale": "vi",
+      "worksheet_sha256": "d8b0d0eb8258ff12af0f84916305f48f2ae86ac4ecba75682f9d2e8aa30cf27c",
+      "translation_sha256": "87a3c10ecc58b3d6ecbe1104ae15f5dae8deb9938b84d62b0733cd5728aa43db",
+      "status": "TEXT_PASS",
+      "checked_lines": 127,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": []
+    },
+    {
+      "locale": "th",
+      "worksheet_sha256": "631e5fdbe51c25822b0c81364b70c5fdb59e2cf31c51a896c820182a4cb9d614",
+      "translation_sha256": "40d37d78e6dcce3bdcb552d42808ad29ac7fdec18915104e7b6e2f2bfd54a60f",
+      "status": "TEXT_PASS",
+      "checked_lines": 127,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": []
+    }
+  ],
+  "revision": {
+    "kind": "th_description_length_delta_review",
+    "prior_full_review_path": "/workspace/work/brand-story-20261025/c08-audit/text-r9/th-description-length-fix/review-vi-th-before.json",
+    "prior_full_review_sha256": "f1930883a45efb2140d0c65bf1c18a4dd39a1e62753af380f057c7372e7a7de0",
+    "prior_th_native_path": "/workspace/work/brand-story-20261025/c08-audit/text-r9/th-description-length-fix/before.native.json",
+    "prior_th_native_sha256": "d3dab4ea5c74c4228ab78954cbdbd22feb3707ca4d0078dc9bdcfafd3dcafaa4",
+    "prior_th_worksheet_path": "/workspace/work/brand-story-20261025/c08-audit/text-r9/th-description-length-fix/before.todo.json",
+    "prior_th_worksheet_sha256": "315a32dacc5273dc77df3915a17ba55ae8645a7ae01e3c5b7249e8d93111e972",
+    "carried_forward_full_read": {
+      "vi": {
+        "lines": 127,
+        "chapters": 6,
+        "all_metadata": true
+      },
+      "th": {
+        "lines": 127,
+        "chapters": 6,
+        "all_metadata_except_revised_description": true
+      }
+    },
+    "newly_read_scope": "TH current description全文、21個來源縮標題及其URL；原description與中文R9並讀差分覆核。",
+    "description_utf8_bytes": {
+      "before": 5678,
+      "current": 3259
+    },
+    "changed_paths": [
+      "th native.description",
+      "th worksheet.description.text"
+    ],
+    "unchanged_checks": {
+      "vi_complete_files_match_prior_full_review_sha256": true,
+      "th_raw_bytes_identical_after_masking_only_description_json_string": true,
+      "th_all_127_lines_6_chapters_other_metadata_and_source_hashes_identical": true,
+      "all_21_description_urls_identical_and_in_original_order": true,
+      "source_video_script_claims_series_match_prior_full_review_sha256": true,
+      "five_protected_research_records_match_frozen_claims_sha256": true,
+      "review_inputs_and_archived_full_review_sha256_unchanged_during_this_delta_review": true
+    }
+  }
+}

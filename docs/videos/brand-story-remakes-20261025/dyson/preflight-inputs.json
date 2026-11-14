@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "revision": "dyson-r5",
+  "status": "HOLD_PENDING_SINGLE_SOURCE_DELTA_NATIVE2_AND_MEASURED_AUDIO",
+  "core_four_sha256": {
+    "video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+    "script.md": "c38843d68985ead0fcb7699fab05cd7cf6d721f28e77f5f22b5f2706a30fadda",
+    "narration-only.json": "c8fb1776fe07ac90b532b3940b9a72934dfc4d3bb59b02d697de739fbbb399a7",
+    "claims.json": "630062f09a368c374694d15ef6b381327ca633b279936c35dd256675b04781e2"
+  },
+  "source_review": "PENDING_R5_MF_R4_01_DELTA_RECHECK",
+  "written_visual_review": "R4_COMPLETE_WRITTEN_PASS_PROMPTS_CAMERAS_UNCHANGED_PENDING_DELTA_RECHECK",
+  "actual_native_round_count": 1,
+  "prior_native1": "ACTUAL_R2_MERGED_HOLD",
+  "r3_source_review": "NOT_DONE",
+  "r3_native": "NOT_PREPARED_NOT_READ",
+  "fresh_native2": "NOT_PREPARED_NOT_READ",
+  "native_input_prepared": false,
+  "native_reader_calls_this_revision": 0,
+  "capacity": {
+    "status": "PLANNING_RANGE_ONLY_NOT_MEASURED_DURATION_PASS",
+    "whole_spoken_units": 3316,
+    "r3_spoken_units": 1953,
+    "net_narration_delta": 1363,
+    "rough_target_units": 3500,
+    "units_gap_to_3500": 184,
+    "planning_4_to_5_seconds": [
+      663.2,
+      829
+    ],
+    "planning_4_5_seconds": 736.8888888888889,
+    "target_minutes_unchanged": 13,
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "actual_audio_seconds": null,
+    "actual_duration_verified": false,
+    "is_actual_TTS_fail": false,
+    "no_slow_playback_or_added_pauses": true,
+    "risks": [
+      "Accepted count can shrink under SOURCE QA, especially uncorrected auto transcript.",
+      "Faster natural speech may make the body shorter than720seconds; only actual TTS can settle it after all ordinary production gates.",
+      "No spare factory-transition evidence identifies the rented half-factory with Bumpers Farm."
+    ]
+  },
+  "exact_new_project_account": {
+    "slug": "story-dyson-japan-first-20261021-remake-20261025",
+    "cap_usd": 25,
+    "account_id": null,
+    "activated": null,
+    "legacy_account_reused": false,
+    "deployed_account_state": "UNKNOWN_NOT_READ_BY_THIS_AUTHOR",
+    "created_by_this_author": false
+  },
+  "all_in_quote": null,
+  "protected_admission": null,
+  "production_spend_authorized_by_free_init": false,
+  "paid_commands_allowed": [],
+  "owner_approval_created": false,
+  "media_generated": false,
+  "branding_policy_path": "../branding-pr1860/required-branding.json",
+  "branding_policy_sha256": "b327ff11f96a475eecb7413e176d5b287a5d51d6db28da16fbf4a09433bc9aa5",
+  "branding_production_pin": null,
+  "languages_default": [
+    "en",
+    "ja",
+    "ko",
+    "es",
+    "pt",
+    "id",
+    "vi",
+    "th"
+  ],
+  "prior_r4_full_QA": {
+    "revision": "dyson-r4",
+    "source_report_path": "history/r4/reviews/source-r4-independent.json",
+    "source_report_sha256": "5aa2ce010b27ffccca12e22a127feb5259dd1aea546359d0f66cf210f16f86f7",
+    "status": "HOLD_MF_R4_01",
+    "full_140_lines_read": true,
+    "full_137_prompts_read": true,
+    "written_visual": "PASS_WRITTEN_ONLY_ON_R4",
+    "current_R5_delta_recheck": "PENDING_NOT_SELF_PASS"
+  }
+}

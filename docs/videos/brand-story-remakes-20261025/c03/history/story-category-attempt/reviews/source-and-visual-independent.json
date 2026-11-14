@@ -1,0 +1,2572 @@
+{
+  "schema_version": 1,
+  "review_type": "FULL_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL",
+  "reviewer": "/root/find_rules",
+  "additional_independent_source_checker": "/root/find_rules/c09_delta",
+  "independent": true,
+  "date": "2026-10-25",
+  "revision": "c03-r1-final-author-freeze",
+  "slug": "story-everyday-moleskine-c03-remake-20261025",
+  "verdict": "HOLD",
+  "source_verdict": "HOLD",
+  "written_visual_verdict": "PASS",
+  "input_sha256": {
+    "video.json": "cd5173bac7c55b1ca92f53d69c15df3fc9f21faee50849e338a7274688699b03",
+    "narration-only.json": "cd77f738fd203b1bc94d775f407658137f41b8a665935c4cb92ef57e296778d1",
+    "script.md": "00c83e28330d6c9857d2d7209a86a5a30e61b51366d94ddd13a99058a0258fad",
+    "claims.json": "5e6ff29f01b5bcd0cf7e2252a045f653e9982c3d11a7e8a6f4d4442ad1c906fa"
+  },
+  "supporting_input_sha256": {
+    "source-catalog.json": "4a19aa192202855302a49556d818d3f760b12361c2fd03683690fc24abfee41b",
+    "source-anchors.json": "a4b43af155271c18e4a6a8eba4d4c3ec5be715e3226553ba5de2846ab418bd7e",
+    "source-snapshot-manifest.json": "6ef1846b57bd70e9085081c96b34cd5666914384431f36276245152b36988da8"
+  },
+  "counts": {
+    "narration_lines": 144,
+    "source_pass": 141,
+    "source_hold": 3,
+    "scenes": 111,
+    "shots": 101,
+    "stats_cards": 9,
+    "outro": 1,
+    "written_visual_scene_pass": 111,
+    "written_visual_scene_hold": 0,
+    "line_written_visual_pass": 144
+  },
+  "projections_verified": {
+    "video_narration_claims_same_order_ids_text": true,
+    "all144_unique_line_ids": true,
+    "script_contains_all_exact_narration_text": true,
+    "all4_input_sha_match_frozen_assignment": true,
+    "all5_primary_caches_match_bytes_and_sha_manifest": true
+  },
+  "primary_cache_verification": [
+    {
+      "label": "prospectus",
+      "path": "/workspace/work/c03-audit/prospectus.pdf",
+      "sha256": "bf33730ab8fae0290e95c65ac1e70e734fdeb5061f99e96154f8071772e774fe",
+      "bytes": 4571857,
+      "bytes_match_manifest": true
+    },
+    {
+      "label": "acquisition",
+      "path": "/workspace/work/c03-audit/acquisition.pdf",
+      "sha256": "adcbc223dd1828becc4106c0629390d0056c2b78659b57901a76e03b37921c75",
+      "bytes": 92649,
+      "bytes_match_manifest": true
+    },
+    {
+      "label": "fy2025",
+      "path": "/workspace/work/c03-audit/fy2025.pdf",
+      "sha256": "52fdbd6260f2093d264d51ba9e15fe6621e65639b04e64c4d1096a35844827a9",
+      "bytes": 2383872,
+      "bytes_match_manifest": true
+    },
+    {
+      "label": "h12026",
+      "path": "/workspace/work/c03-audit/h12026.pdf",
+      "sha256": "86c7bcbdfec64e15404b97d97d494c25cd22efee7a10379d2a8e6f89bd01594d",
+      "bytes": 5511707,
+      "bytes_match_manifest": true
+    },
+    {
+      "label": "activity2017",
+      "path": "/workspace/work/c03-audit/activity2017.pdf",
+      "sha256": "c8c7fe11ff5d5a31c6ba16b37d00adbc47e1d4c8d373c4befd6e04d4fbd8dd44",
+      "bytes": 1840337,
+      "bytes_match_manifest": true
+    }
+  ],
+  "fresh_http_primary_reads_by_reviewer": [
+    {
+      "source": "S2",
+      "status": 200,
+      "bytes": 201412,
+      "sha256": "d5d6a2823410b4e2b4c390398a239f0d34a1b2c4c7ccebbe0cd30b6c9fa570dd"
+    },
+    {
+      "source": "S3",
+      "status": 200,
+      "bytes": 222033,
+      "sha256": "42c0e662cae48216184d788589311dbe7d08c8da5a9655441114429c72d06e04"
+    },
+    {
+      "source": "S7",
+      "status": 200,
+      "bytes": 41784,
+      "sha256": "7a73542018eebd018c0ce82877b2f06179bb8c8f75be484ba931c6ace452c13f"
+    },
+    {
+      "source": "S6",
+      "status": 200,
+      "bytes": 913798,
+      "sha256": "05db7e5756daa541a8e54bde3a5cad8bb1bf641e9a723439e22876b66876f3df"
+    }
+  ],
+  "findings": [
+    {
+      "id": "C03-R1-SOURCE-126",
+      "line_id": "r318041",
+      "row": 126,
+      "severity": "HOLD",
+      "issue": "報告年度與發布年混用。",
+      "evidence": "前文將現在時間定位2025；r318041說財報也出現在這一年；FY2025原件首頁/發布資訊為2026-03-10。",
+      "minimal_fix": "改成「這份二〇二五年度財報，記下開頭預告的帳面重算：」或同義年度限定；下一句2025減損額不變。"
+    },
+    {
+      "id": "C03-R1-SOURCE-130",
+      "line_id": "r3n051",
+      "row": 130,
+      "severity": "HOLD",
+      "issue": "文化定位的前半句漏綁來源。",
+      "evidence": "當前僅S12(FY2025減損)/S13a(H12026)；文化想像/新品延伸直接證據在S1c招股書PDF139–140。",
+      "minimal_fix": "在claims/source anchors補S1c（需要時S1d）並同步其表/稿引用；旁白可保持。"
+    },
+    {
+      "id": "C03-R1-SOURCE-140",
+      "line_id": "r320011",
+      "row": 140,
+      "severity": "HOLD",
+      "issue": "把發行人策略直接說成已證明的買家付費因果。",
+      "evidence": "S1c/d/f支持公司定位、展示與通路選擇，沒有獨立證明觀眾/所有買家為名字付費的原因；當前口播「所以…能讓人…是…」無歸屬。",
+      "minimal_fix": "明說「從招股書看，出版社的做法是…」或「我讀到的做法是…」，保留待寫的書/展示通路，避免聲稱獨立驗證消費者動機。"
+    }
+  ],
+  "nonblocking_clarity_notes": [
+    {
+      "line_ids": [
+        "r3t051",
+        "r316011"
+      ],
+      "note": "2017通路增降原文固定匯率口徑，若後續增加精確百分比須一併口徑；現稿只講方向，本輪不另擋。"
+    },
+    {
+      "line_ids": [
+        "r316042"
+      ],
+      "note": "批發早期角色已有前文S6a可定位，可補該anchor以利逐行追索；非新歷史事件。"
+    },
+    {
+      "field": "youtube.title / thumbnail.data.sub",
+      "note": "近5億省略歐元，發布前建議補幣種以免讀者誤解；正文近5億歐元與4.876億數卡正確，本輪不把這項清晰度建議當來源HOLD。"
+    }
+  ],
+  "source_evidence_basis": {
+    "S1a": "獨立讀招股書PDF123/139（印刷121/137）：oggetto senza nome、黑硬封/圓角/鬆緊帶/內袋、1995再製；只作發行人回顧，不證法國工坊或現代名人背書。",
+    "S1b": "獨立讀PDF260（印刷258）§11.2：Il primo deposito ... 26 novembre 1997，後文區分已准/pending；可稱首次申請，非當日完成核准。",
+    "S1c": "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。",
+    "S1d": "獨立讀PDF140（印刷138）：2006新管理層加投communication/brand management/merchandising（展示架/專屬空間），屬發行人策略回顧。",
+    "S1e": "獨立讀PDF159–160（印刷157–158）：生產委外但Operations控流程品質、每月滾動12月需求與採購，依歷史銷售/庫存/交期；敘述限原2013文件，未套今時制造地。",
+    "S1f": "協查直接讀PDF165–167（印刷163–165）：公司對直/間接通路互補與展示控制的策略；不是已證每位買家或唯一成長原因。",
+    "S1g": "獨立讀PDF166（印刷164）：寄售至經銷商因售予retailer而提貨，才移轉貨權/庫存風險；經銷商收訂單與承擔信用/配送風險成本，並非終端消費者結帳。",
+    "S1h": "獨立讀PDF167（印刷165）：非寄售依契約出貨/交付完成銷售，逐步要求月度retailer Sell-In以監控庫存；非消費者Sell-Out。",
+    "S2": "10/25直接HTTP200重開官方Heritage：明說Chatwin/The Songlines/1986圖爾供應者停業與四處購本；旁白保官網轉述，非獨立工廠史。",
+    "S3": "10/25直接HTTP200重開Code §1：1997品牌、reproducing the type與歷史人物、2007-01-01公司名及全球商標權；現代商標商品與舊型制分開。",
+    "S5": "獨立讀招股書PDF123–124：2006秋由Syntegra控制的Appunti收購並改變控制權，非只買存貨；未混1997或2016交易。",
+    "S6a": "10/25直接HTTP200取得2017簡報並讀PDF15–16：2005約12K、2010約20K wholesale doors；不把批發據點算成自營店或全書店。",
+    "S6b": "協查及金融獨立子核直接讀2016活動報告與2017年報（財務印刷7/PDF65）：2016年底79家；保留簡報78分歧，未沿用舊數字。",
+    "S7": "10/25直接HTTP200重開交易所2013-04-03公告：STAR上市、Writing/Travelling/Reading系列、市值€487.6m；不是公司銷售或同額進帳。",
+    "S8a": "協查直接讀2016-09-22公告PDF1：41%協議、€2.40/股、€506m整體股權估值；非企業價值、非當日100%或公司收入。",
+    "S8b": "協查直接讀同公告PDF1–2：2015營收€128m、買方的汽車/玻璃業務與premium/outsourcing/cost-management獲利解釋，保公告歸屬。",
+    "S9": "協查及金融獨立子核直接重開2017-01-24原公告：餘股強制收購、連庫藏股100%、當日撤牌；未錯用2016簽約日。",
+    "S10a": "協查直接讀2017活動分冊PDF5–6/印刷44–45：紙本81%是2017銷售額比重、智慧書寫為當年產品方向；未保證轉型成功。",
+    "S10b": "協查直接讀2017活動分冊PDF5–6：零售增長、電商平台遷移與下降、人員/IT投入；數字/原因限當年，固定匯率口徑另作clarity note。",
+    "S10c": "協查及金融獨立子核讀2017全報財務印刷7/PDF65：loss-making Retail channel及人員/IT負擔；不推每家店虧或造成2025減損。",
+    "S11": "協查直接讀FY2025 PDF10、23–25：€117.8m/-3.7%、美國部分大客戶謹慎庫存、非批發有機增長、調整營業結果減半及通路/行銷/營運槓桿壓力，未推出所有消費者不買。",
+    "S12": "協查直接讀FY2025 PDF10/42：2025品牌稅前減損€107.4m（非稅後77.4m）、2026–2030五年預測與折現；原報告發布日期2026-03-10，須分年度/發布年。",
+    "S13a": "協查直接讀H12026 PDF9/11/16：€52.2m同比+2.2%、零售/美國批發回升、營業結果€0.7m微降；比較同半年、有機口徑不混全年。",
+    "S13b": "協查直接讀H12026 PDF9/21：部分股東貸款減免與融資費降低、調整後集團應占稅前虧損縮小；未聲稱整筆清償或營業利潤改善。"
+  },
+  "written_visual_review": {
+    "method": "主審獨立讀全部111個scene data與對應144行；後半另由協查逐景確認。",
+    "verdict": "PASS",
+    "checked": "101圖提示詞均匿名概念、無品牌名/真人臉/可讀事件重建；9張金融/歷史卡的數額、貨幣/比例、年度及來源相符；outro未新增圖像史實。寄售圖是匿名搬箱，不冒充2025特定客戶契約；財務/貸款圖未表現退貨、現金燃燒或整筆結清。",
+    "actual_images_reviewed": false
+  },
+  "scope_limits": {
+    "blind_or_narrative_reader_files_read": false,
+    "author_editorial_self_assertions_used_as_evidence": false,
+    "author_editorial_flags_treated_as_approval": false,
+    "actual_media_or_audio_reviewed": false,
+    "actual_media_reuse_verified": false,
+    "runtime_measured": false,
+    "paid_calls": 0,
+    "backend_writes": 0,
+    "owner_approval": false,
+    "note": "只核這份凍結稿的來源與書面配鏡；43景舊prompt eligibility不是實際媒體沿用證據。本HOLD不回改歷史收據，修後另出精確差分收據。敘事、TTS、成圖、實長、費用與成片關卡另審。"
+  },
+  "line_results": [
+    {
+      "row": 1,
+      "line_id": "r3h011",
+      "scene_id": "c03r-h01",
+      "line_text_sha256": "034724ee7d6bffa1ab519ad50d4f7d1aa12368b39f712c408388385ca343e5e0",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開交易所2013-04-03公告：STAR上市、Writing/Travelling/Reading系列、市值€487.6m；不是公司銷售或同額進帳。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 2,
+      "line_id": "r3h021",
+      "scene_id": "c03r-h02",
+      "line_text_sha256": "771242ac2f56c7994e8ae0a23f994f80601ad10620ef6320c85887b6931d1f91",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開交易所2013-04-03公告：STAR上市、Writing/Travelling/Reading系列、市值€487.6m；不是公司銷售或同額進帳。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 3,
+      "line_id": "r3h031",
+      "scene_id": "c03r-h03",
+      "line_text_sha256": "61850809572cde33809c350664bb2609c211b6dbb0117f844d9cf32b2ef76588",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "明示旁白反應、中心問題或通用CTA，無新增可查歷史主張。"
+      ],
+      "line_specific": "旁白對已讀文件的明示反應/問句，不編親身購買或訪談。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 4,
+      "line_id": "r3h041",
+      "scene_id": "c03r-h04",
+      "line_text_sha256": "821711c39df62dc5cb9e76e43adf46ec67afe1350ab84dbaae187c35e8ff9445",
+      "source_anchor_ids": [
+        "S1a",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123/139（印刷121/137）：oggetto senza nome、黑硬封/圓角/鬆緊帶/內袋、1995再製；只作發行人回顧，不證法國工坊或現代名人背書。",
+        "10/25直接HTTP200重開Code §1：1997品牌、reproducing the type與歷史人物、2007-01-01公司名及全球商標權；現代商標商品與舊型制分開。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 5,
+      "line_id": "r3h051",
+      "scene_id": "c03r-h05",
+      "line_text_sha256": "b3b465c875a9567ab8c18dba2a9c7b314cb36a1abb9636f3180c5f5f05740c4a",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10/42：2025品牌稅前減損€107.4m（非稅後77.4m）、2026–2030五年預測與折現；原報告發布日期2026-03-10，須分年度/發布年。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 6,
+      "line_id": "r3h061",
+      "scene_id": "c03r-h06",
+      "line_text_sha256": "d1842584c23b8e9a442442a0fb4a1225fba2c7c5c84b4c5a5f35d4c12067866a",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開交易所2013-04-03公告：STAR上市、Writing/Travelling/Reading系列、市值€487.6m；不是公司銷售或同額進帳。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 7,
+      "line_id": "r3h062",
+      "scene_id": "c03r-h06",
+      "line_text_sha256": "3a34c1d3a0250497d83deebafc6376c20132f0ecff86495bbe2e7c6db29ca73b",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開交易所2013-04-03公告：STAR上市、Writing/Travelling/Reading系列、市值€487.6m；不是公司銷售或同額進帳。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 8,
+      "line_id": "r3h071",
+      "scene_id": "c03r-h07",
+      "line_text_sha256": "0db00f5c28346d62c7d7a9720057f12195a78bc297fd088b0c1621bba6aae180",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "明示旁白反應、中心問題或通用CTA，無新增可查歷史主張。"
+      ],
+      "line_specific": "全片中心問題，沒有額外歷史斷言。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 9,
+      "line_id": "r302011",
+      "scene_id": "c03r-p02s01",
+      "line_text_sha256": "04f38bab419ba2a25e898f157c48604dd55b953b5ca3e55fd0ae4f8ae1fc75b0",
+      "source_anchor_ids": [
+        "S2"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開官方Heritage：明說Chatwin/The Songlines/1986圖爾供應者停業與四處購本；旁白保官網轉述，非獨立工廠史。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 10,
+      "line_id": "r302021",
+      "scene_id": "c03r-p02s02",
+      "line_text_sha256": "438d28e9b068e42583faed112e82011548476d73c139dd44ecabf7230a47357d",
+      "source_anchor_ids": [
+        "S2"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開官方Heritage：明說Chatwin/The Songlines/1986圖爾供應者停業與四處購本；旁白保官網轉述，非獨立工廠史。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 11,
+      "line_id": "r302022",
+      "scene_id": "c03r-p02s02",
+      "line_text_sha256": "cb2949546ef0b85a473675fd6b28d735cedc25f6672de82ebc181277a7e1df0f",
+      "source_anchor_ids": [
+        "S2"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開官方Heritage：明說Chatwin/The Songlines/1986圖爾供應者停業與四處購本；旁白保官網轉述，非獨立工廠史。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 12,
+      "line_id": "r302031",
+      "scene_id": "c03r-p02s03",
+      "line_text_sha256": "8bc1d00e11493a9acbcc47744fef4a091e9f337fd29712e474da452516da6bf2",
+      "source_anchor_ids": [
+        "S2"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開官方Heritage：明說Chatwin/The Songlines/1986圖爾供應者停業與四處購本；旁白保官網轉述，非獨立工廠史。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 13,
+      "line_id": "r302041",
+      "scene_id": "c03r-p02s04",
+      "line_text_sha256": "8915451cd1b1363b75a98015a09422011947279fe163beffe57838408fe694fe",
+      "source_anchor_ids": [
+        "S1a",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123/139（印刷121/137）：oggetto senza nome、黑硬封/圓角/鬆緊帶/內袋、1995再製；只作發行人回顧，不證法國工坊或現代名人背書。",
+        "10/25直接HTTP200重開Code §1：1997品牌、reproducing the type與歷史人物、2007-01-01公司名及全球商標權；現代商標商品與舊型制分開。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 14,
+      "line_id": "r303011",
+      "scene_id": "c03r-p03s01",
+      "line_text_sha256": "cf5fef2bcebf55ab916b1925b6cde1d128de6b7fd47e031420c51fc9b97cc02d",
+      "source_anchor_ids": [
+        "S1a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123/139（印刷121/137）：oggetto senza nome、黑硬封/圓角/鬆緊帶/內袋、1995再製；只作發行人回顧，不證法國工坊或現代名人背書。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 15,
+      "line_id": "r303021",
+      "scene_id": "c03r-p03s02",
+      "line_text_sha256": "662bfd375391607e25a5ce9eb5fc89d418a0417a69cfc2af1eb41d558b7d47c9",
+      "source_anchor_ids": [
+        "S1a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123/139（印刷121/137）：oggetto senza nome、黑硬封/圓角/鬆緊帶/內袋、1995再製；只作發行人回顧，不證法國工坊或現代名人背書。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 16,
+      "line_id": "r303022",
+      "scene_id": "c03r-p03s02",
+      "line_text_sha256": "472b5347123732957e087fbeb4945febaa10cbb404fac067ef8ab1e50269d0fe",
+      "source_anchor_ids": [
+        "S1a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123/139（印刷121/137）：oggetto senza nome、黑硬封/圓角/鬆緊帶/內袋、1995再製；只作發行人回顧，不證法國工坊或現代名人背書。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 17,
+      "line_id": "r3o011",
+      "scene_id": "c03r-o01",
+      "line_text_sha256": "00da1b971dd2da6e9034dfae809ae70bba5c8c5d607015ae4b0d5b9bb260570d",
+      "source_anchor_ids": [
+        "S1a",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123/139（印刷121/137）：oggetto senza nome、黑硬封/圓角/鬆緊帶/內袋、1995再製；只作發行人回顧，不證法國工坊或現代名人背書。",
+        "10/25直接HTTP200重開Code §1：1997品牌、reproducing the type與歷史人物、2007-01-01公司名及全球商標權；現代商標商品與舊型制分開。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 18,
+      "line_id": "r3o012",
+      "scene_id": "c03r-o01",
+      "line_text_sha256": "08074a267b21975f674f78cf7582281a385861232accdc74d44bc117b49baa61",
+      "source_anchor_ids": [
+        "S1a",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123/139（印刷121/137）：oggetto senza nome、黑硬封/圓角/鬆緊帶/內袋、1995再製；只作發行人回顧，不證法國工坊或現代名人背書。",
+        "10/25直接HTTP200重開Code §1：1997品牌、reproducing the type與歷史人物、2007-01-01公司名及全球商標權；現代商標商品與舊型制分開。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 19,
+      "line_id": "r3o021",
+      "scene_id": "c03r-o02",
+      "line_text_sha256": "1513460a4b4fd014c246935a1cd10175654c576b3538dee3e5fe21ba7bbb5772",
+      "source_anchor_ids": [
+        "S1a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123/139（印刷121/137）：oggetto senza nome、黑硬封/圓角/鬆緊帶/內袋、1995再製；只作發行人回顧，不證法國工坊或現代名人背書。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 20,
+      "line_id": "r3o022",
+      "scene_id": "c03r-o02",
+      "line_text_sha256": "c6b37f481f33f5d0ebd6e56bae25e58b4feb04bede9d480fbd67cb26766b0304",
+      "source_anchor_ids": [
+        "S1a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123/139（印刷121/137）：oggetto senza nome、黑硬封/圓角/鬆緊帶/內袋、1995再製；只作發行人回顧，不證法國工坊或現代名人背書。"
+      ],
+      "line_specific": "接oggetto senza nome的編輯推進，不宣稱Moleskine一詞1997才新造；後句明確是出版商商標申請。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 21,
+      "line_id": "r303041",
+      "scene_id": "c03r-p03s04",
+      "line_text_sha256": "0025178bbb8e930b8eea6d6c66a4ccc9a40b139423f14ccda3acdfec599b3a84",
+      "source_anchor_ids": [
+        "S1a",
+        "S1b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123/139（印刷121/137）：oggetto senza nome、黑硬封/圓角/鬆緊帶/內袋、1995再製；只作發行人回顧，不證法國工坊或現代名人背書。",
+        "獨立讀PDF260（印刷258）§11.2：Il primo deposito ... 26 novembre 1997，後文區分已准/pending；可稱首次申請，非當日完成核准。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 22,
+      "line_id": "r304011",
+      "scene_id": "c03r-p04s01",
+      "line_text_sha256": "5855bf5aa0fc65434805e23a6195dd1377efba7f3662e60897ec109768e7468c",
+      "source_anchor_ids": [
+        "S1b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF260（印刷258）§11.2：Il primo deposito ... 26 novembre 1997，後文區分已准/pending；可稱首次申請，非當日完成核准。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 23,
+      "line_id": "r3o031",
+      "scene_id": "c03r-o03",
+      "line_text_sha256": "ead4008ae9ff00e6384f8b54a9264f81f9ee48a951dfe96a96d1764c112c440f",
+      "source_anchor_ids": [
+        "S1a",
+        "S1b",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123/139（印刷121/137）：oggetto senza nome、黑硬封/圓角/鬆緊帶/內袋、1995再製；只作發行人回顧，不證法國工坊或現代名人背書。",
+        "獨立讀PDF260（印刷258）§11.2：Il primo deposito ... 26 novembre 1997，後文區分已准/pending；可稱首次申請，非當日完成核准。",
+        "10/25直接HTTP200重開Code §1：1997品牌、reproducing the type與歷史人物、2007-01-01公司名及全球商標權；現代商標商品與舊型制分開。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 24,
+      "line_id": "r304021",
+      "scene_id": "c03r-p04s02",
+      "line_text_sha256": "dd055337f1a091d71f99e4fc70703fba96d8591074538c46ddf21c8f3f5c5313",
+      "source_anchor_ids": [
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開Code §1：1997品牌、reproducing the type與歷史人物、2007-01-01公司名及全球商標權；現代商標商品與舊型制分開。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 25,
+      "line_id": "r304031",
+      "scene_id": "c03r-p04s03",
+      "line_text_sha256": "7ba766f7e969e081e09a13faf57ac3a332281fba6606ac34032edc2d41eaf1c3",
+      "source_anchor_ids": [
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開Code §1：1997品牌、reproducing the type與歷史人物、2007-01-01公司名及全球商標權；現代商標商品與舊型制分開。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 26,
+      "line_id": "r3o041",
+      "scene_id": "c03r-o04",
+      "line_text_sha256": "ce4566f72288441a7a122a3275b9c473d5d2201add09427b5021ff25e48c6b47",
+      "source_anchor_ids": [
+        "S1a",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123/139（印刷121/137）：oggetto senza nome、黑硬封/圓角/鬆緊帶/內袋、1995再製；只作發行人回顧，不證法國工坊或現代名人背書。",
+        "10/25直接HTTP200重開Code §1：1997品牌、reproducing the type與歷史人物、2007-01-01公司名及全球商標權；現代商標商品與舊型制分開。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 27,
+      "line_id": "r3o042",
+      "scene_id": "c03r-o04",
+      "line_text_sha256": "cae16955928f8c7a67eea5d07dbbd1c4b4f69e7cfa0c8a374e30f7b557866412",
+      "source_anchor_ids": [
+        "S1a",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123/139（印刷121/137）：oggetto senza nome、黑硬封/圓角/鬆緊帶/內袋、1995再製；只作發行人回顧，不證法國工坊或現代名人背書。",
+        "10/25直接HTTP200重開Code §1：1997品牌、reproducing the type與歷史人物、2007-01-01公司名及全球商標權；現代商標商品與舊型制分開。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 28,
+      "line_id": "r304041",
+      "scene_id": "c03r-p04s04",
+      "line_text_sha256": "4997880ba6b28dcfe7b773ecb29c5d43b6b81ff1972d2e31409620a0f74fa2bd",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 29,
+      "line_id": "r305011",
+      "scene_id": "c03r-p05s01",
+      "line_text_sha256": "988676d75cb58a2df35d11925427759104db9cbdd96662b4d1f143f04f202d2c",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 30,
+      "line_id": "r305021",
+      "scene_id": "c03r-p05s02",
+      "line_text_sha256": "e2923c5a8c3893628bd308562ef5a0e4329faf040afb1b0cf351769cd912af8e",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 31,
+      "line_id": "r305031",
+      "scene_id": "c03r-p05s03",
+      "line_text_sha256": "02a16b8e4ce384065201fca64ffe0b8506df086c658bb855a303863384d0b1cf",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 32,
+      "line_id": "r3i011",
+      "scene_id": "c03r-i01",
+      "line_text_sha256": "79ac39cd66d6841623e22accff4e90f4412cfba3f4380e4abf8714f43d1915a3",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "明示旁白反應、中心問題或通用CTA，無新增可查歷史主張。"
+      ],
+      "line_specific": "明示我覺得的產品定位反應，沒有變成獨立買家研究。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 33,
+      "line_id": "r3i021",
+      "scene_id": "c03r-i02",
+      "line_text_sha256": "95a7ca8e933ce4284c3e18387e1a05280a946905f7d2e6294550962b78cf509c",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 34,
+      "line_id": "r3i022",
+      "scene_id": "c03r-i02",
+      "line_text_sha256": "eef8582a71ea196092207e0a77698709846e5ef99e8f63255efde4e3c69a961d",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 35,
+      "line_id": "r305051",
+      "scene_id": "c03r-p05s05",
+      "line_text_sha256": "08ed8df7590ea2f1e6e94fd7c454de697101e6b420844efc4d52cfbe9c6ffe2b",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 36,
+      "line_id": "r306011",
+      "scene_id": "c03r-p06s01",
+      "line_text_sha256": "fda6cfa251040a01da37fdc831bd8bbbd10b660990f3e02f2546bdd8100fc082",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 37,
+      "line_id": "r306021",
+      "scene_id": "c03r-p06s02",
+      "line_text_sha256": "d3f24ab7dc6a72a5b3f3787e070354105c95b69160cfc2a9363ef1425c3d11d2",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 38,
+      "line_id": "r3i031",
+      "scene_id": "c03r-i03",
+      "line_text_sha256": "2205e364f7954a222f523951e30a947f381ba3bf7f460415f1c53583c5fb71fa",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 39,
+      "line_id": "r3i032",
+      "scene_id": "c03r-i03",
+      "line_text_sha256": "10f1afac4976e4ad90b7176be0b774921ab09f76a1af6c33f9dc8d1b2120b3e3",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 40,
+      "line_id": "r306041",
+      "scene_id": "c03r-p06s04",
+      "line_text_sha256": "a5a620b03aa6f9596b6d13f3687ab0b04b4524764a9b59f7d90553bf7f6da1bc",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 41,
+      "line_id": "r306051",
+      "scene_id": "c03r-p06s05",
+      "line_text_sha256": "324d4c822ac4a59fde185d38f1b6026ac43a48128e95b5f632f57b4329125111",
+      "source_anchor_ids": [
+        "S1c",
+        "S6a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。",
+        "10/25直接HTTP200取得2017簡報並讀PDF15–16：2005約12K、2010約20K wholesale doors；不把批發據點算成自營店或全書店。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 42,
+      "line_id": "r307011",
+      "scene_id": "c03r-p07s01",
+      "line_text_sha256": "504256ff666c7c1876765b29addddc5e96b1acb346523a6c2d343bc29ea03765",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF166（印刷164）：寄售至經銷商因售予retailer而提貨，才移轉貨權/庫存風險；經銷商收訂單與承擔信用/配送風險成本，並非終端消費者結帳。",
+        "獨立讀PDF167（印刷165）：非寄售依契約出貨/交付完成銷售，逐步要求月度retailer Sell-In以監控庫存；非消費者Sell-Out。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 43,
+      "line_id": "r307021",
+      "scene_id": "c03r-p07s02",
+      "line_text_sha256": "35a2902f300596c831139763f293948e8d5008f816ede9157161f9e64d3d4978",
+      "source_anchor_ids": [
+        "S6a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200取得2017簡報並讀PDF15–16：2005約12K、2010約20K wholesale doors；不把批發據點算成自營店或全書店。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 44,
+      "line_id": "r307031",
+      "scene_id": "c03r-p07s03",
+      "line_text_sha256": "ce41183e7c486a245f9e7c9aa72a20c2ecfc079a4a8118dd8ba9c8035a28ff80",
+      "source_anchor_ids": [
+        "S6a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200取得2017簡報並讀PDF15–16：2005約12K、2010約20K wholesale doors；不把批發據點算成自營店或全書店。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 45,
+      "line_id": "r307061",
+      "scene_id": "c03r-p07s06",
+      "line_text_sha256": "f130bd76849b99506260bf76a28a75057c7e8ad2226ec14b9817b9a884df7609",
+      "source_anchor_ids": [
+        "S5"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123–124：2006秋由Syntegra控制的Appunti收購並改變控制權，非只買存貨；未混1997或2016交易。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 46,
+      "line_id": "r308011",
+      "scene_id": "c03r-p08s01",
+      "line_text_sha256": "dff0cd5fafada9611d51129ebc6a1bdaaaf032c2bbd39a1432c8d5e70aafa1ab",
+      "source_anchor_ids": [
+        "S5"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123–124：2006秋由Syntegra控制的Appunti收購並改變控制權，非只買存貨；未混1997或2016交易。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 47,
+      "line_id": "r308021",
+      "scene_id": "c03r-p08s02",
+      "line_text_sha256": "0c7f794fb116e5bfc17d9e01a3b66094707ecd708ffe9de148355c8330849187",
+      "source_anchor_ids": [
+        "S5"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀招股書PDF123–124：2006秋由Syntegra控制的Appunti收購並改變控制權，非只買存貨；未混1997或2016交易。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 48,
+      "line_id": "r3i041",
+      "scene_id": "c03r-i04",
+      "line_text_sha256": "b06976185840975eaa9a93093d494a8ca4ba02b1762cee93ac28953a30272a93",
+      "source_anchor_ids": [
+        "S1d"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF140（印刷138）：2006新管理層加投communication/brand management/merchandising（展示架/專屬空間），屬發行人策略回顧。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 49,
+      "line_id": "r3i051",
+      "scene_id": "c03r-i05",
+      "line_text_sha256": "5b57482d682c12087580a0c2c44d05fa96cdcc97b08c378d7f0669e25af44869",
+      "source_anchor_ids": [
+        "S1d"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF140（印刷138）：2006新管理層加投communication/brand management/merchandising（展示架/專屬空間），屬發行人策略回顧。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 50,
+      "line_id": "r308041",
+      "scene_id": "c03r-p08s04",
+      "line_text_sha256": "2ee8c25bb7e1ff3c82a6573a16556a9a26309132ae3c52e4f240633359c7fe5e",
+      "source_anchor_ids": [
+        "S3",
+        "S5"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開Code §1：1997品牌、reproducing the type與歷史人物、2007-01-01公司名及全球商標權；現代商標商品與舊型制分開。",
+        "獨立讀招股書PDF123–124：2006秋由Syntegra控制的Appunti收購並改變控制權，非只買存貨；未混1997或2016交易。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 51,
+      "line_id": "r309011",
+      "scene_id": "c03r-p09s01",
+      "line_text_sha256": "ad59074290f50853e81dbc51d032edce70560a886af2a7267c22bd3e0366ce19",
+      "source_anchor_ids": [
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開Code §1：1997品牌、reproducing the type與歷史人物、2007-01-01公司名及全球商標權；現代商標商品與舊型制分開。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 52,
+      "line_id": "r309021",
+      "scene_id": "c03r-p09s02",
+      "line_text_sha256": "ba9acd9f9c33ff0a7c05d5a8ef9b933a3071c23164af47a2dc2124619d868b24",
+      "source_anchor_ids": [
+        "S1c",
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。",
+        "10/25直接HTTP200重開交易所2013-04-03公告：STAR上市、Writing/Travelling/Reading系列、市值€487.6m；不是公司銷售或同額進帳。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 53,
+      "line_id": "r3i061",
+      "scene_id": "c03r-i06",
+      "line_text_sha256": "2ee570f971bd18282fbcbfb0942a4fb32c697a7da841b2727f66bcaf97443ea6",
+      "source_anchor_ids": [
+        "S6a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200取得2017簡報並讀PDF15–16：2005約12K、2010約20K wholesale doors；不把批發據點算成自營店或全書店。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 54,
+      "line_id": "r310011",
+      "scene_id": "c03r-p10s01",
+      "line_text_sha256": "6ea06880f10c519c36cef132a7e31716fda9beaaccb6d99c6e597719b56c28f4",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開交易所2013-04-03公告：STAR上市、Writing/Travelling/Reading系列、市值€487.6m；不是公司銷售或同額進帳。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 55,
+      "line_id": "r310021",
+      "scene_id": "c03r-p10s02",
+      "line_text_sha256": "ce239105e99e8fff4cd2d1ff0cd25f57295cc25bdd1b790ff77489ba877ee4b4",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開交易所2013-04-03公告：STAR上市、Writing/Travelling/Reading系列、市值€487.6m；不是公司銷售或同額進帳。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 56,
+      "line_id": "r310051",
+      "scene_id": "c03r-p10s05",
+      "line_text_sha256": "4528937624a44c8547d61c3b49842626f9723e9b4d9ff820155a4e3dc2e7c428",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開交易所2013-04-03公告：STAR上市、Writing/Travelling/Reading系列、市值€487.6m；不是公司銷售或同額進帳。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 57,
+      "line_id": "r311011",
+      "scene_id": "c03r-p11s01",
+      "line_text_sha256": "4ead17e124a1cd6477aaf5ed4fa62596d853cf8faaf70073b06da1cc71704714",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開交易所2013-04-03公告：STAR上市、Writing/Travelling/Reading系列、市值€487.6m；不是公司銷售或同額進帳。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 58,
+      "line_id": "r311012",
+      "scene_id": "c03r-p11s01",
+      "line_text_sha256": "e05550a9b6d25a6048c98c87116020fc282f77ee04e1a8c7018ccca6284e634e",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開交易所2013-04-03公告：STAR上市、Writing/Travelling/Reading系列、市值€487.6m；不是公司銷售或同額進帳。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 59,
+      "line_id": "r311021",
+      "scene_id": "c03r-p11s02",
+      "line_text_sha256": "df8b74ff8501ed6b14264c5c8d43cfd88cf22134f41a9c4ee93dd8c99ecebea8",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "10/25直接HTTP200重開交易所2013-04-03公告：STAR上市、Writing/Travelling/Reading系列、市值€487.6m；不是公司銷售或同額進帳。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 60,
+      "line_id": "r311041",
+      "scene_id": "c03r-p11s04",
+      "line_text_sha256": "679ee4923788aeb8133b60f28398e0a227457f64a07cff8ddd810fa77646169b",
+      "source_anchor_ids": [
+        "S1e",
+        "S1g",
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF159–160（印刷157–158）：生產委外但Operations控流程品質、每月滾動12月需求與採購，依歷史銷售/庫存/交期；敘述限原2013文件，未套今時制造地。",
+        "獨立讀PDF166（印刷164）：寄售至經銷商因售予retailer而提貨，才移轉貨權/庫存風險；經銷商收訂單與承擔信用/配送風險成本，並非終端消費者結帳。",
+        "獨立讀PDF167（印刷165）：非寄售依契約出貨/交付完成銷售，逐步要求月度retailer Sell-In以監控庫存；非消費者Sell-Out。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 61,
+      "line_id": "r3e011",
+      "scene_id": "c03r-e01",
+      "line_text_sha256": "a1d897bf2f2bd28480d87c450ee646b5bf67352ff34dd111cfe0e9cb111ef6b8",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF159–160（印刷157–158）：生產委外但Operations控流程品質、每月滾動12月需求與採購，依歷史銷售/庫存/交期；敘述限原2013文件，未套今時制造地。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 62,
+      "line_id": "r3e012",
+      "scene_id": "c03r-e01",
+      "line_text_sha256": "6955d5e900eb071e7fcd51fcc9ee8912405f9eb459604142b14d26cf550700ca",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF159–160（印刷157–158）：生產委外但Operations控流程品質、每月滾動12月需求與採購，依歷史銷售/庫存/交期；敘述限原2013文件，未套今時制造地。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 63,
+      "line_id": "r3e021",
+      "scene_id": "c03r-e02",
+      "line_text_sha256": "74936f33548cb27b210010d1f1f2dbe632aec2dda45e2e0a104c274f4fa0f9a6",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF159–160（印刷157–158）：生產委外但Operations控流程品質、每月滾動12月需求與採購，依歷史銷售/庫存/交期；敘述限原2013文件，未套今時制造地。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 64,
+      "line_id": "r3e022",
+      "scene_id": "c03r-e02-b",
+      "line_text_sha256": "87de9c9ab774c67088bfd9f81cc84c12843151cafefb233ebb25e72ef47357e9",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF159–160（印刷157–158）：生產委外但Operations控流程品質、每月滾動12月需求與採購，依歷史銷售/庫存/交期；敘述限原2013文件，未套今時制造地。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 65,
+      "line_id": "r3e031",
+      "scene_id": "c03r-e03",
+      "line_text_sha256": "de67654981ca321962abd6886575e3d3b7794108e089c860e81059729c4e766a",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF159–160（印刷157–158）：生產委外但Operations控流程品質、每月滾動12月需求與採購，依歷史銷售/庫存/交期；敘述限原2013文件，未套今時制造地。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 66,
+      "line_id": "r3e032",
+      "scene_id": "c03r-e03",
+      "line_text_sha256": "71b2e94212cf47a046e755b84a3e1d3493bc03b543ea57973ed9ca2d26661b15",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF159–160（印刷157–158）：生產委外但Operations控流程品質、每月滾動12月需求與採購，依歷史銷售/庫存/交期；敘述限原2013文件，未套今時制造地。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 67,
+      "line_id": "r3e041",
+      "scene_id": "c03r-e04",
+      "line_text_sha256": "7c141ce14b17dfc3d34cd57790a31bcef7ac01cee7667cd94fb33512090f3cc2",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF166（印刷164）：寄售至經銷商因售予retailer而提貨，才移轉貨權/庫存風險；經銷商收訂單與承擔信用/配送風險成本，並非終端消費者結帳。",
+        "獨立讀PDF167（印刷165）：非寄售依契約出貨/交付完成銷售，逐步要求月度retailer Sell-In以監控庫存；非消費者Sell-Out。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 68,
+      "line_id": "r3e051",
+      "scene_id": "c03r-e05",
+      "line_text_sha256": "0ae4082e7b893e4ec2a669325ad5009cf7b700d9f4aea30476ed70b90b1bc495",
+      "source_anchor_ids": [
+        "S1g"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF166（印刷164）：寄售至經銷商因售予retailer而提貨，才移轉貨權/庫存風險；經銷商收訂單與承擔信用/配送風險成本，並非終端消費者結帳。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 69,
+      "line_id": "r3e061",
+      "scene_id": "c03r-e06",
+      "line_text_sha256": "9293924ff624a1375520803f363386e5a9492e98dc95342a1b4c36341ef8cf68",
+      "source_anchor_ids": [
+        "S1g"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF166（印刷164）：寄售至經銷商因售予retailer而提貨，才移轉貨權/庫存風險；經銷商收訂單與承擔信用/配送風險成本，並非終端消費者結帳。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 70,
+      "line_id": "r3e062",
+      "scene_id": "c03r-e06",
+      "line_text_sha256": "d6fc1f8dcd7b6f87a3dc491bd7360b9a6ed3a2a3d03dda383a9db5691e22affd",
+      "source_anchor_ids": [
+        "S1g"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF166（印刷164）：寄售至經銷商因售予retailer而提貨，才移轉貨權/庫存風險；經銷商收訂單與承擔信用/配送風險成本，並非終端消費者結帳。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 71,
+      "line_id": "r3e071",
+      "scene_id": "c03r-e07",
+      "line_text_sha256": "10c14efec574a6b20128679e2075611313dce74746dfeef6578870031bcb245f",
+      "source_anchor_ids": [
+        "S1g"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF166（印刷164）：寄售至經銷商因售予retailer而提貨，才移轉貨權/庫存風險；經銷商收訂單與承擔信用/配送風險成本，並非終端消費者結帳。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 72,
+      "line_id": "r3e081",
+      "scene_id": "c03r-e08",
+      "line_text_sha256": "a2357dc9da6141de824a6fd9489b7de35df35f305a686ad084e2619ea85e87d7",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF167（印刷165）：非寄售依契約出貨/交付完成銷售，逐步要求月度retailer Sell-In以監控庫存；非消費者Sell-Out。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 73,
+      "line_id": "r3e082",
+      "scene_id": "c03r-e08",
+      "line_text_sha256": "29af9319c3a4d5a7d0d08126f02cfe132d9d529c8b6d2a84619a202ab257940f",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF167（印刷165）：非寄售依契約出貨/交付完成銷售，逐步要求月度retailer Sell-In以監控庫存；非消費者Sell-Out。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 74,
+      "line_id": "r3e091",
+      "scene_id": "c03r-e09",
+      "line_text_sha256": "9d7c7b827ed064458dc24242c5eeea22307012bb876fbf510cf60c486ffa3ef8",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF167（印刷165）：非寄售依契約出貨/交付完成銷售，逐步要求月度retailer Sell-In以監控庫存；非消費者Sell-Out。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 75,
+      "line_id": "r3e092",
+      "scene_id": "c03r-e09",
+      "line_text_sha256": "35ce2f4c057ddcbf561054b9a8fd2ed5f807fa8de686fe95672c489cce2685b9",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF167（印刷165）：非寄售依契約出貨/交付完成銷售，逐步要求月度retailer Sell-In以監控庫存；非消費者Sell-Out。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 76,
+      "line_id": "r3e101",
+      "scene_id": "c03r-e10",
+      "line_text_sha256": "dcd1638050422b1d0db62daaeb3f182e2aa50a962413f9da023bf0a56a93a811",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF167（印刷165）：非寄售依契約出貨/交付完成銷售，逐步要求月度retailer Sell-In以監控庫存；非消費者Sell-Out。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 77,
+      "line_id": "r3e102",
+      "scene_id": "c03r-e10",
+      "line_text_sha256": "b9f27a094fb54331580c8461da77a0130b65bae2cdb321307279b5572cc52a1f",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF167（印刷165）：非寄售依契約出貨/交付完成銷售，逐步要求月度retailer Sell-In以監控庫存；非消費者Sell-Out。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 78,
+      "line_id": "r3e111",
+      "scene_id": "c03r-e11",
+      "line_text_sha256": "0e5da6d043249e49fa00a883b5c20b9adbd6046cd6a6f6d20fc3ab99b3041edf",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF166（印刷164）：寄售至經銷商因售予retailer而提貨，才移轉貨權/庫存風險；經銷商收訂單與承擔信用/配送風險成本，並非終端消費者結帳。",
+        "獨立讀PDF167（印刷165）：非寄售依契約出貨/交付完成銷售，逐步要求月度retailer Sell-In以監控庫存；非消費者Sell-Out。"
+      ],
+      "line_specific": "明示2013文件的當時安排，與後句非現在每個客戶合約的限制合讀。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 79,
+      "line_id": "r3e112",
+      "scene_id": "c03r-e11-b",
+      "line_text_sha256": "17703adfbd9672b599a88f96cc15a2c3daaea9e6a6d151d104f0ec9ca7b575b1",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF166（印刷164）：寄售至經銷商因售予retailer而提貨，才移轉貨權/庫存風險；經銷商收訂單與承擔信用/配送風險成本，並非終端消費者結帳。",
+        "獨立讀PDF167（印刷165）：非寄售依契約出貨/交付完成銷售，逐步要求月度retailer Sell-In以監控庫存；非消費者Sell-Out。"
+      ],
+      "line_specific": "保時點/客戶契約限制，未將2013安排套2025美國客戶。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 80,
+      "line_id": "r3e121",
+      "scene_id": "c03r-e12",
+      "line_text_sha256": "cd901018080894f82e4967d102c48eba54b9d69423f5cb3a05d88dbc5623a835",
+      "source_anchor_ids": [
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀PDF165–167（印刷163–165）：公司對直/間接通路互補與展示控制的策略；不是已證每位買家或唯一成長原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 81,
+      "line_id": "r3e122",
+      "scene_id": "c03r-e12",
+      "line_text_sha256": "307cf6eeea8556f25f9df97073df01b7d3bd88524f803c98108f4f2de96db27e",
+      "source_anchor_ids": [
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀PDF165–167（印刷163–165）：公司對直/間接通路互補與展示控制的策略；不是已證每位買家或唯一成長原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 82,
+      "line_id": "r312011",
+      "scene_id": "c03r-p12s01",
+      "line_text_sha256": "a8ae145066ee43285fdc2d0d32c897549a211c075d746b49cebbb285c1abd75c",
+      "source_anchor_ids": [
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀PDF165–167（印刷163–165）：公司對直/間接通路互補與展示控制的策略；不是已證每位買家或唯一成長原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 83,
+      "line_id": "r3e131",
+      "scene_id": "c03r-e13",
+      "line_text_sha256": "58d4016d0d262b786cc3580341cb7db7fcd45f2b9f01fa327f81197ac070e11e",
+      "source_anchor_ids": [
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀PDF165–167（印刷163–165）：公司對直/間接通路互補與展示控制的策略；不是已證每位買家或唯一成長原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 84,
+      "line_id": "r3e132",
+      "scene_id": "c03r-e13",
+      "line_text_sha256": "fc8f6769751ea239db9a624730595df77d6f7846cf03c33f81c3cbaceae7f29f",
+      "source_anchor_ids": [
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀PDF165–167（印刷163–165）：公司對直/間接通路互補與展示控制的策略；不是已證每位買家或唯一成長原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 85,
+      "line_id": "r312021",
+      "scene_id": "c03r-p12s02",
+      "line_text_sha256": "5f07e10b4064aa5aebc63c74d3ae94a0a49d6ead8b747606d825032f6bad4b91",
+      "source_anchor_ids": [
+        "S6b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查及金融獨立子核直接讀2016活動報告與2017年報（財務印刷7/PDF65）：2016年底79家；保留簡報78分歧，未沿用舊數字。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 86,
+      "line_id": "r312031",
+      "scene_id": "c03r-p12s03",
+      "line_text_sha256": "b08f1c78c5776cbe7e7d61691633a56bfb99d36cebf81810ccd4f038171f4f60",
+      "source_anchor_ids": [
+        "S1f",
+        "S10b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀PDF165–167（印刷163–165）：公司對直/間接通路互補與展示控制的策略；不是已證每位買家或唯一成長原因。",
+        "協查直接讀2017活動分冊PDF5–6：零售增長、電商平台遷移與下降、人員/IT投入；數字/原因限當年，固定匯率口徑另作clarity note。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 87,
+      "line_id": "r3e141",
+      "scene_id": "c03r-e14",
+      "line_text_sha256": "9d9a0d40d2ff970002912ff58852063225bf95b5e87b07674765a6098519be03",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "明示旁白反應、中心問題或通用CTA，無新增可查歷史主張。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 88,
+      "line_id": "r312051",
+      "scene_id": "c03r-p12s05",
+      "line_text_sha256": "357a9b3ba4acda736467929cf4c0686ad01936acdf6e7a00669de8bf98507026",
+      "source_anchor_ids": [
+        "S8a",
+        "S8b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2016-09-22公告PDF1：41%協議、€2.40/股、€506m整體股權估值；非企業價值、非當日100%或公司收入。",
+        "協查直接讀同公告PDF1–2：2015營收€128m、買方的汽車/玻璃業務與premium/outsourcing/cost-management獲利解釋，保公告歸屬。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 89,
+      "line_id": "r313011",
+      "scene_id": "c03r-p13s01",
+      "line_text_sha256": "ffc01df87b3dd9b2fa42c552e88762390de5ec146736e0342b80e8ffb06348bc",
+      "source_anchor_ids": [
+        "S8a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2016-09-22公告PDF1：41%協議、€2.40/股、€506m整體股權估值；非企業價值、非當日100%或公司收入。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 90,
+      "line_id": "r313012",
+      "scene_id": "c03r-p13s01",
+      "line_text_sha256": "802c47153003cb07d09278cfd6438cd9423023e941f1e1537646e57cb78e0d39",
+      "source_anchor_ids": [
+        "S8a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2016-09-22公告PDF1：41%協議、€2.40/股、€506m整體股權估值；非企業價值、非當日100%或公司收入。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 91,
+      "line_id": "r313021",
+      "scene_id": "c03r-p13s02",
+      "line_text_sha256": "2e7bb6542747f1438d3ed3abddbb761c90939e0c25d47a6f3906f979b2ec0a0b",
+      "source_anchor_ids": [
+        "S8a",
+        "S8b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2016-09-22公告PDF1：41%協議、€2.40/股、€506m整體股權估值；非企業價值、非當日100%或公司收入。",
+        "協查直接讀同公告PDF1–2：2015營收€128m、買方的汽車/玻璃業務與premium/outsourcing/cost-management獲利解釋，保公告歸屬。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 92,
+      "line_id": "r313031",
+      "scene_id": "c03r-p13s03",
+      "line_text_sha256": "631e45144c7e07cdb98a5d153f34dd599ecc2315bdb3511395fb682d8d67afa4",
+      "source_anchor_ids": [
+        "S8b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀同公告PDF1–2：2015營收€128m、買方的汽車/玻璃業務與premium/outsourcing/cost-management獲利解釋，保公告歸屬。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 93,
+      "line_id": "r3t011",
+      "scene_id": "c03r-t01",
+      "line_text_sha256": "2e7c9618a62acfb21bd785613419138e3c52f4c071140f638c8efefbce1e9b29",
+      "source_anchor_ids": [
+        "S8b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀同公告PDF1–2：2015營收€128m、買方的汽車/玻璃業務與premium/outsourcing/cost-management獲利解釋，保公告歸屬。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 94,
+      "line_id": "r3t012",
+      "scene_id": "c03r-t01",
+      "line_text_sha256": "d3679f3ae42132531a55cdb5d2f243bc3d0278902caf5dd8df05802f6cc8d594",
+      "source_anchor_ids": [
+        "S8b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀同公告PDF1–2：2015營收€128m、買方的汽車/玻璃業務與premium/outsourcing/cost-management獲利解釋，保公告歸屬。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 95,
+      "line_id": "r3t021",
+      "scene_id": "c03r-t02",
+      "line_text_sha256": "b551fc7733312df5792def8f67e3d72ee81345bbda2a807f1ef73e42d2848bb1",
+      "source_anchor_ids": [
+        "S8a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2016-09-22公告PDF1：41%協議、€2.40/股、€506m整體股權估值；非企業價值、非當日100%或公司收入。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 96,
+      "line_id": "r3t031",
+      "scene_id": "c03r-t03",
+      "line_text_sha256": "82c802660eac0d57d968c5d4179d65592b0c1d87e6d85145b0711fe20696b8c2",
+      "source_anchor_ids": [
+        "S8a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2016-09-22公告PDF1：41%協議、€2.40/股、€506m整體股權估值；非企業價值、非當日100%或公司收入。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 97,
+      "line_id": "r3t032",
+      "scene_id": "c03r-t03",
+      "line_text_sha256": "093cfb9daf2d7a4014706228604c91d9599b776f22731a750feeb0f54b9b1653",
+      "source_anchor_ids": [
+        "S8a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2016-09-22公告PDF1：41%協議、€2.40/股、€506m整體股權估值；非企業價值、非當日100%或公司收入。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 98,
+      "line_id": "r313051",
+      "scene_id": "c03r-p13s05",
+      "line_text_sha256": "a2ebfdf8d22eed2789e4babbe7c43318679fd966030c107b0aa726606fee3f5c",
+      "source_anchor_ids": [
+        "S8a",
+        "S9"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2016-09-22公告PDF1：41%協議、€2.40/股、€506m整體股權估值；非企業價值、非當日100%或公司收入。",
+        "協查及金融獨立子核直接重開2017-01-24原公告：餘股強制收購、連庫藏股100%、當日撤牌；未錯用2016簽約日。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 99,
+      "line_id": "r314011",
+      "scene_id": "c03r-p14s01",
+      "line_text_sha256": "847f9017e3f8c42ba22c6ceebd9cc436bfd878134c98614ced85ad8ab287ea33",
+      "source_anchor_ids": [
+        "S9"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查及金融獨立子核直接重開2017-01-24原公告：餘股強制收購、連庫藏股100%、當日撤牌；未錯用2016簽約日。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 100,
+      "line_id": "r314021",
+      "scene_id": "c03r-p14s02",
+      "line_text_sha256": "3e7ea97b881b4a9df8a832aa1a441c53f6995ce3b610a38b09ebb8938432ef4d",
+      "source_anchor_ids": [
+        "S9"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查及金融獨立子核直接重開2017-01-24原公告：餘股強制收購、連庫藏股100%、當日撤牌；未錯用2016簽約日。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 101,
+      "line_id": "r314041",
+      "scene_id": "c03r-p14s04",
+      "line_text_sha256": "2f911d4d32d8c795876ac4e50e4d2bb7bbbab16b4da4ed70f728b0cf06bddfad",
+      "source_anchor_ids": [
+        "S10a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2017活動分冊PDF5–6/印刷44–45：紙本81%是2017銷售額比重、智慧書寫為當年產品方向；未保證轉型成功。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 102,
+      "line_id": "r315011",
+      "scene_id": "c03r-p15s01",
+      "line_text_sha256": "e8137ca6f3eb8a42ac5fce2db3f1d043b68715336c7dd522fe62d928d3bfc34a",
+      "source_anchor_ids": [
+        "S10a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2017活動分冊PDF5–6/印刷44–45：紙本81%是2017銷售額比重、智慧書寫為當年產品方向；未保證轉型成功。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 103,
+      "line_id": "r315021",
+      "scene_id": "c03r-p15s02",
+      "line_text_sha256": "4be4b1ab4ad22b2c20cd30b694d144e74873888d6f322d413c9c7d06e559588c",
+      "source_anchor_ids": [
+        "S10a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2017活動分冊PDF5–6/印刷44–45：紙本81%是2017銷售額比重、智慧書寫為當年產品方向；未保證轉型成功。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 104,
+      "line_id": "r3t041",
+      "scene_id": "c03r-t04",
+      "line_text_sha256": "70c1dac4cf1613665a3fb255d8048459050dc683a78db03d589e171309b38d7a",
+      "source_anchor_ids": [
+        "S10a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2017活動分冊PDF5–6/印刷44–45：紙本81%是2017銷售額比重、智慧書寫為當年產品方向；未保證轉型成功。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 105,
+      "line_id": "r3t042",
+      "scene_id": "c03r-t04",
+      "line_text_sha256": "14ac3d54f839225e86eaedd966fb1a355a93e3974453a63ad7aa62a562603213",
+      "source_anchor_ids": [
+        "S10a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2017活動分冊PDF5–6/印刷44–45：紙本81%是2017銷售額比重、智慧書寫為當年產品方向；未保證轉型成功。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 106,
+      "line_id": "r315051",
+      "scene_id": "c03r-p15s05",
+      "line_text_sha256": "a78a5592f3d50baf88f1c1e6a403a56b48e590dcd395299ce94ff6738fac632a",
+      "source_anchor_ids": [
+        "S10b",
+        "S10c"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2017活動分冊PDF5–6：零售增長、電商平台遷移與下降、人員/IT投入；數字/原因限當年，固定匯率口徑另作clarity note。",
+        "協查及金融獨立子核讀2017全報財務印刷7/PDF65：loss-making Retail channel及人員/IT負擔；不推每家店虧或造成2025減損。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 107,
+      "line_id": "r3t051",
+      "scene_id": "c03r-t05",
+      "line_text_sha256": "dadb84e2e502879c998a438cc7744a6a10362f4f21d8d4c9d1c99f359d767daf",
+      "source_anchor_ids": [
+        "S10b",
+        "S10c"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2017活動分冊PDF5–6：零售增長、電商平台遷移與下降、人員/IT投入；數字/原因限當年，固定匯率口徑另作clarity note。",
+        "協查及金融獨立子核讀2017全報財務印刷7/PDF65：loss-making Retail channel及人員/IT負擔；不推每家店虧或造成2025減損。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 108,
+      "line_id": "r3t052",
+      "scene_id": "c03r-t05",
+      "line_text_sha256": "1adf94aed66d05c05ff337ac3d3d4e7a4f2c1224a58105d03a26a34c76a60cb7",
+      "source_anchor_ids": [
+        "S10b",
+        "S10c"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2017活動分冊PDF5–6：零售增長、電商平台遷移與下降、人員/IT投入；數字/原因限當年，固定匯率口徑另作clarity note。",
+        "協查及金融獨立子核讀2017全報財務印刷7/PDF65：loss-making Retail channel及人員/IT負擔；不推每家店虧或造成2025減損。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 109,
+      "line_id": "r316011",
+      "scene_id": "c03r-p16s01",
+      "line_text_sha256": "ebdc865c44397f300bb82cc02eb53a038b67d909c4388b75e6fa329909ba1a79",
+      "source_anchor_ids": [
+        "S10b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2017活動分冊PDF5–6：零售增長、電商平台遷移與下降、人員/IT投入；數字/原因限當年，固定匯率口徑另作clarity note。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 110,
+      "line_id": "r3t061",
+      "scene_id": "c03r-t06",
+      "line_text_sha256": "e963c31b79cba45067f225a2b91b0020e286d5c9ab13a7eaaeb6a2b2c48d23e8",
+      "source_anchor_ids": [
+        "S10b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2017活動分冊PDF5–6：零售增長、電商平台遷移與下降、人員/IT投入；數字/原因限當年，固定匯率口徑另作clarity note。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 111,
+      "line_id": "r3t062",
+      "scene_id": "c03r-t06-b",
+      "line_text_sha256": "282d30a6b4b013624ce497edcc2cf09c065373b7516df0567fb76032a476ee9b",
+      "source_anchor_ids": [
+        "S10b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2017活動分冊PDF5–6：零售增長、電商平台遷移與下降、人員/IT投入；數字/原因限當年，固定匯率口徑另作clarity note。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 112,
+      "line_id": "r316041",
+      "scene_id": "c03r-p16s04",
+      "line_text_sha256": "c47ff0ef7df1a81866521cbb4af5f9e12228b684a6c687fe9777f2a5708d8549",
+      "source_anchor_ids": [
+        "S10b",
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2017活動分冊PDF5–6：零售增長、電商平台遷移與下降、人員/IT投入；數字/原因限當年，固定匯率口徑另作clarity note。",
+        "協查直接讀FY2025 PDF10、23–25：€117.8m/-3.7%、美國部分大客戶謹慎庫存、非批發有機增長、調整營業結果減半及通路/行銷/營運槓桿壓力，未推出所有消費者不買。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 113,
+      "line_id": "r316042",
+      "scene_id": "c03r-p16s04",
+      "line_text_sha256": "57a812cdf5901f79c7c3ffe276780e958f3a52f82699ca4dc57be2c1fde3e400",
+      "source_anchor_ids": [
+        "S10b",
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀2017活動分冊PDF5–6：零售增長、電商平台遷移與下降、人員/IT投入；數字/原因限當年，固定匯率口徑另作clarity note。",
+        "協查直接讀FY2025 PDF10、23–25：€117.8m/-3.7%、美國部分大客戶謹慎庫存、非批發有機增長、調整營業結果減半及通路/行銷/營運槓桿壓力，未推出所有消費者不買。"
+      ],
+      "line_specific": "作前文批發鋪路的回呼；當年放慢依S11；可補S6a為來源明晰度，非本輪新增事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 114,
+      "line_id": "r317011",
+      "scene_id": "c03r-p17s01",
+      "line_text_sha256": "83c46be97d190c8c1921e7522bf8ca8d1c2e45abad8ef4a175c98e25b46ee3a1",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10、23–25：€117.8m/-3.7%、美國部分大客戶謹慎庫存、非批發有機增長、調整營業結果減半及通路/行銷/營運槓桿壓力，未推出所有消費者不買。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 115,
+      "line_id": "r317012",
+      "scene_id": "c03r-p17s01",
+      "line_text_sha256": "ed0d06b334c3025e4850e655f8c638dd2c93e1491534b0e9c657855ded0f8a5a",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10、23–25：€117.8m/-3.7%、美國部分大客戶謹慎庫存、非批發有機增長、調整營業結果減半及通路/行銷/營運槓桿壓力，未推出所有消費者不買。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 116,
+      "line_id": "r317021",
+      "scene_id": "c03r-p17s02",
+      "line_text_sha256": "a76c9796ff2ee0e5968216cade7a2ac178a0ffa5444bdebd714dfd65e8669b32",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10、23–25：€117.8m/-3.7%、美國部分大客戶謹慎庫存、非批發有機增長、調整營業結果減半及通路/行銷/營運槓桿壓力，未推出所有消費者不買。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 117,
+      "line_id": "r3n011",
+      "scene_id": "c03r-n01",
+      "line_text_sha256": "c7d8a27f7f7956ed63f0920b338290203749cd2cd8ff5884f31a6133d0557d2a",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10、23–25：€117.8m/-3.7%、美國部分大客戶謹慎庫存、非批發有機增長、調整營業結果減半及通路/行銷/營運槓桿壓力，未推出所有消費者不買。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 118,
+      "line_id": "r3n012",
+      "scene_id": "c03r-n01",
+      "line_text_sha256": "2421738cd9a12fe09953b874333a3786a1f1196fec0066a77f6d891f18f39e60",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10、23–25：€117.8m/-3.7%、美國部分大客戶謹慎庫存、非批發有機增長、調整營業結果減半及通路/行銷/營運槓桿壓力，未推出所有消費者不買。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 119,
+      "line_id": "r318021",
+      "scene_id": "c03r-p18s02",
+      "line_text_sha256": "b9ff511026a1faba7bb120cf2fd9328b46e327e27571891c247607382c037c11",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h",
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF166（印刷164）：寄售至經銷商因售予retailer而提貨，才移轉貨權/庫存風險；經銷商收訂單與承擔信用/配送風險成本，並非終端消費者結帳。",
+        "獨立讀PDF167（印刷165）：非寄售依契約出貨/交付完成銷售，逐步要求月度retailer Sell-In以監控庫存；非消費者Sell-Out。",
+        "協查直接讀FY2025 PDF10、23–25：€117.8m/-3.7%、美國部分大客戶謹慎庫存、非批發有機增長、調整營業結果減半及通路/行銷/營運槓桿壓力，未推出所有消費者不買。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 120,
+      "line_id": "r318022",
+      "scene_id": "c03r-p18s02",
+      "line_text_sha256": "24fc52feccd14af14c0ac259f02699aef80cc633b4663a8ce161c4ebbdd02d79",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h",
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF166（印刷164）：寄售至經銷商因售予retailer而提貨，才移轉貨權/庫存風險；經銷商收訂單與承擔信用/配送風險成本，並非終端消費者結帳。",
+        "獨立讀PDF167（印刷165）：非寄售依契約出貨/交付完成銷售，逐步要求月度retailer Sell-In以監控庫存；非消費者Sell-Out。",
+        "協查直接讀FY2025 PDF10、23–25：€117.8m/-3.7%、美國部分大客戶謹慎庫存、非批發有機增長、調整營業結果減半及通路/行銷/營運槓桿壓力，未推出所有消費者不買。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 121,
+      "line_id": "r318031",
+      "scene_id": "c03r-p18s03",
+      "line_text_sha256": "395a11415e217c425cca1b57216fadd5dda065f26a27efc505ae8eef2184ca20",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10、23–25：€117.8m/-3.7%、美國部分大客戶謹慎庫存、非批發有機增長、調整營業結果減半及通路/行銷/營運槓桿壓力，未推出所有消費者不買。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 122,
+      "line_id": "r318032",
+      "scene_id": "c03r-p18s03",
+      "line_text_sha256": "f29e4daf085604c77ec0f02b5d4735148ee65e7cce696e0b9c504df8f1542619",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10、23–25：€117.8m/-3.7%、美國部分大客戶謹慎庫存、非批發有機增長、調整營業結果減半及通路/行銷/營運槓桿壓力，未推出所有消費者不買。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 123,
+      "line_id": "r3n021",
+      "scene_id": "c03r-n02",
+      "line_text_sha256": "31670a1c51f57bb28cb4a0307dff9f87b64f67b20d49e17b949a844df951248d",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10、23–25：€117.8m/-3.7%、美國部分大客戶謹慎庫存、非批發有機增長、調整營業結果減半及通路/行銷/營運槓桿壓力，未推出所有消費者不買。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 124,
+      "line_id": "r3n022",
+      "scene_id": "c03r-n02-b",
+      "line_text_sha256": "b1e049d80935537f337db7e5ce95992d96a96bb57b6d4df6e76a90b417718eb2",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10、23–25：€117.8m/-3.7%、美國部分大客戶謹慎庫存、非批發有機增長、調整營業結果減半及通路/行銷/營運槓桿壓力，未推出所有消費者不買。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 125,
+      "line_id": "r3n031",
+      "scene_id": "c03r-n03",
+      "line_text_sha256": "08e889301295f997473c03941f8525ffb9cd23f4e40d7797fadfa6e86089101b",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10/42：2025品牌稅前減損€107.4m（非稅後77.4m）、2026–2030五年預測與折現；原報告發布日期2026-03-10，須分年度/發布年。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 126,
+      "line_id": "r318041",
+      "scene_id": "c03r-p18s04",
+      "line_text_sha256": "8887716094b3b49f121dd8d1c6a58fa13ecdcc13a80b54afbd95df78c75dea28",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "HOLD",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10/42：2025品牌稅前減損€107.4m（非稅後77.4m）、2026–2030五年預測與折現；原報告發布日期2026-03-10，須分年度/發布年。"
+      ],
+      "line_specific": "HOLD：這一年承接2025，但所指FY2025報告2026-03-10發布，混報告年度與發布年；改成2025年度財報即可。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 127,
+      "line_id": "r318042",
+      "scene_id": "c03r-p18s04",
+      "line_text_sha256": "834e71f4d3bd1603cc1af7f8aa93db960e5ef8229c29ff8295800a38437fecd2",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10/42：2025品牌稅前減損€107.4m（非稅後77.4m）、2026–2030五年預測與折現；原報告發布日期2026-03-10，須分年度/發布年。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 128,
+      "line_id": "r3n041",
+      "scene_id": "c03r-n04",
+      "line_text_sha256": "63cb1c42eaf6096fb5752a5a1e6b3b476056b9757efccef9f7a8335010cd46c3",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10/42：2025品牌稅前減損€107.4m（非稅後77.4m）、2026–2030五年預測與折現；原報告發布日期2026-03-10，須分年度/發布年。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 129,
+      "line_id": "r318051",
+      "scene_id": "c03r-p18s05",
+      "line_text_sha256": "9542f3241fb9fb83cb0ef1890339cb4c183fa4964016c5855cee3740c616a572",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10/42：2025品牌稅前減損€107.4m（非稅後77.4m）、2026–2030五年預測與折現；原報告發布日期2026-03-10，須分年度/發布年。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 130,
+      "line_id": "r3n051",
+      "scene_id": "c03r-n05",
+      "line_text_sha256": "2c14fdd2fb16561d2adf50231e1b5a837f059eeab39dd74d6c36620804a4eb9c",
+      "source_anchor_ids": [
+        "S12",
+        "S13a"
+      ],
+      "source_verdict": "HOLD",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10/42：2025品牌稅前減損€107.4m（非稅後77.4m）、2026–2030五年預測與折現；原報告發布日期2026-03-10，須分年度/發布年。",
+        "協查直接讀H12026 PDF9/11/16：€52.2m同比+2.2%、零售/美國批發回升、營業結果€0.7m微降；比較同半年、有機口徑不混全年。"
+      ],
+      "line_specific": "HOLD：前半文化定位/新商品敘述僅綁S12/S13a，兩份財務段不支持該歷史策略；補S1c（必要時S1d）即可，不必改旁白。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 131,
+      "line_id": "r3n052",
+      "scene_id": "c03r-n05-b",
+      "line_text_sha256": "ddd7e3dc381e5a8e0de951b51bf8098d033b05a4b0fe3abe7c11764473277704",
+      "source_anchor_ids": [
+        "S12",
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10/42：2025品牌稅前減損€107.4m（非稅後77.4m）、2026–2030五年預測與折現；原報告發布日期2026-03-10，須分年度/發布年。",
+        "協查直接讀H12026 PDF9/11/16：€52.2m同比+2.2%、零售/美國批發回升、營業結果€0.7m微降；比較同半年、有機口徑不混全年。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 132,
+      "line_id": "r319011",
+      "scene_id": "c03r-p19s01",
+      "line_text_sha256": "9fbf922071e8132a6a4eb7e5414195f5b30bf5e50d218788f9192a52be65f27f",
+      "source_anchor_ids": [
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀H12026 PDF9/11/16：€52.2m同比+2.2%、零售/美國批發回升、營業結果€0.7m微降；比較同半年、有機口徑不混全年。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 133,
+      "line_id": "r319021",
+      "scene_id": "c03r-p19s02",
+      "line_text_sha256": "e64d102d30e46b13358e23a923e73d87c472ef62693aae1910aac1bad1e78afb",
+      "source_anchor_ids": [
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀H12026 PDF9/11/16：€52.2m同比+2.2%、零售/美國批發回升、營業結果€0.7m微降；比較同半年、有機口徑不混全年。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 134,
+      "line_id": "r3n061",
+      "scene_id": "c03r-n06",
+      "line_text_sha256": "f05267fe357a0ef335397908250d5b9ab2f77fc0a75049f3a5b06e0c85396970",
+      "source_anchor_ids": [
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀H12026 PDF9/11/16：€52.2m同比+2.2%、零售/美國批發回升、營業結果€0.7m微降；比較同半年、有機口徑不混全年。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 135,
+      "line_id": "r319041",
+      "scene_id": "c03r-p19s04",
+      "line_text_sha256": "6ed799424e316106de1e92a59006f8685e0dd45629cc84b568637db4b2baa09c",
+      "source_anchor_ids": [
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀H12026 PDF9/11/16：€52.2m同比+2.2%、零售/美國批發回升、營業結果€0.7m微降；比較同半年、有機口徑不混全年。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 136,
+      "line_id": "r319031",
+      "scene_id": "c03r-p19s03",
+      "line_text_sha256": "8b050a18ebd4c82b1530b96565b141200d15a35dbc2785398cc854c73e42aaa4",
+      "source_anchor_ids": [
+        "S13b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀H12026 PDF9/21：部分股東貸款減免與融資費降低、調整後集團應占稅前虧損縮小；未聲稱整筆清償或營業利潤改善。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 137,
+      "line_id": "r3n071",
+      "scene_id": "c03r-n07",
+      "line_text_sha256": "67a790e844ef45e1349b1663f3547e703d4aeff28d14810f98bca3d8e2ac48cb",
+      "source_anchor_ids": [
+        "S13a",
+        "S13b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀H12026 PDF9/11/16：€52.2m同比+2.2%、零售/美國批發回升、營業結果€0.7m微降；比較同半年、有機口徑不混全年。",
+        "協查直接讀H12026 PDF9/21：部分股東貸款減免與融資費降低、調整後集團應占稅前虧損縮小；未聲稱整筆清償或營業利潤改善。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 138,
+      "line_id": "r3n072",
+      "scene_id": "c03r-n07",
+      "line_text_sha256": "077f898a596d3b15023210a68a0971bcca6dc39e8bf043ec556b2284522e960b",
+      "source_anchor_ids": [
+        "S13a",
+        "S13b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀H12026 PDF9/11/16：€52.2m同比+2.2%、零售/美國批發回升、營業結果€0.7m微降；比較同半年、有機口徑不混全年。",
+        "協查直接讀H12026 PDF9/21：部分股東貸款減免與融資費降低、調整後集團應占稅前虧損縮小；未聲稱整筆清償或營業利潤改善。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 139,
+      "line_id": "r319051",
+      "scene_id": "c03r-p19s05",
+      "line_text_sha256": "8a8a1ae5d4f282d493452e071acba42e7fdf02007db85e6b7a53689d1f2c7d65",
+      "source_anchor_ids": [
+        "S11",
+        "S13a",
+        "S13b"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "協查直接讀FY2025 PDF10、23–25：€117.8m/-3.7%、美國部分大客戶謹慎庫存、非批發有機增長、調整營業結果減半及通路/行銷/營運槓桿壓力，未推出所有消費者不買。",
+        "協查直接讀H12026 PDF9/11/16：€52.2m同比+2.2%、零售/美國批發回升、營業結果€0.7m微降；比較同半年、有機口徑不混全年。",
+        "協查直接讀H12026 PDF9/21：部分股東貸款減免與融資費降低、調整後集團應占稅前虧損縮小；未聲稱整筆清償或營業利潤改善。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 140,
+      "line_id": "r320011",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "1ad611eb94973ede1d7dc4a32ea54a0f21efbcfd706f16100eac853958d1ce5b",
+      "source_anchor_ids": [
+        "S1c",
+        "S1d",
+        "S1f"
+      ],
+      "source_verdict": "HOLD",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。",
+        "獨立讀PDF140（印刷138）：2006新管理層加投communication/brand management/merchandising（展示架/專屬空間），屬發行人策略回顧。",
+        "協查直接讀PDF165–167（印刷163–165）：公司對直/間接通路互補與展示控制的策略；不是已證每位買家或唯一成長原因。"
+      ],
+      "line_specific": "HOLD：所以能讓人為名字付錢，是…將發行人定位/通路策略升為已證買家付費因果；editorial旗標不代替旁白歸屬，須明示從招股書看/我的解讀。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 141,
+      "line_id": "r320012",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "9c9bb8815f27ce0d962a236f773bfdcb939dc83cf21c960fd31fdf16eb36d0f2",
+      "source_anchor_ids": [
+        "S1c",
+        "S1d",
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "獨立讀PDF139–140（印刷137–138）：libro ancora da scrivere、文化/記憶/想像/旅行價值、優先書店與目標客群；證公司定位，不證獨立消費者付費原因。",
+        "獨立讀PDF140（印刷138）：2006新管理層加投communication/brand management/merchandising（展示架/專屬空間），屬發行人策略回顧。",
+        "協查直接讀PDF165–167（印刷163–165）：公司對直/間接通路互補與展示控制的策略；不是已證每位買家或唯一成長原因。"
+      ],
+      "line_specific": "逐句與所列原件的主張、歸屬、期間及數字相符；未把概念/意見當新增歷史事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 142,
+      "line_id": "r320031",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "ebd9734cbc76043b6b2840c29e4c7564138bc09ddb16056253d1127062762d53",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "明示旁白反應、中心問題或通用CTA，無新增可查歷史主張。"
+      ],
+      "line_specific": "觀眾假想選擇問句，非虛構消費者訪談。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 143,
+      "line_id": "r320032",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "5d05af678eb675e4ed17e7af9bdc6da99dfed99213816af4d49fef922d50030a",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "明示旁白反應、中心問題或通用CTA，無新增可查歷史主張。"
+      ],
+      "line_specific": "通用留言CTA，沒有新增史實。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    },
+    {
+      "row": 144,
+      "line_id": "r320041",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "1811b44570130b229b2e5f0cc298074a650b31c7a15a5f89b4e5ed7214f012b8",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "source_basis": [
+        "明示旁白反應、中心問題或通用CTA，無新增可查歷史主張。"
+      ],
+      "line_specific": "通用訂閱邀請，沒有新增史實。",
+      "written_visual_verdict": "PASS",
+      "written_visual_basis": "已讀對應scene完整data/prompt/card；匿名無字概念插圖或正確數字卡與此句相容，無新增真人/品牌商標/特定歷史現場或錯誤財務標籤。"
+    }
+  ]
+}

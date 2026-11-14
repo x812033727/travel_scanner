@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "state": "KNOWN_DISPLAY_WORDING_DEFECT_ACTUAL_BLIND_INPUT_PRESERVED",
+  "task": "../../../tasks/open/2026-10-26-preserve-genre-specific-question-wording-in.md",
+  "source_video_sha256": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9",
+  "blind_input_sha256": "5d101770151739fa1f5d3d5d1b122f3a7e11112671932e5973a763b9675bfa41",
+  "binding_sha256": "0552b4e887ef8aac3ad7e7260346494a5e71ab2a6baf6a17820f86c48628561e",
+  "native_receipt_sha256": "a0b12381fd1a0c3c46ab05a38f0458a54ea6a0add59ae492112247a5a301264a",
+  "native_code_sha256": "2b474789da003607847a062b0d627a33f50e6026f093d832ed5f26803782d7bc",
+  "same_question_ids_order": true,
+  "actual_votes_or_rules_modified": false,
+  "core_modified": false,
+  "wording_differences": [
+    {
+      "id": "scene_first",
+      "actual_blind_question": "開頭兩句是否先講了這件事的利害（它改變了什麼、差一點改變什麼，帶一個數字），而且前六句（約 25 秒）內觀眾已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事？打招呼不算；一句點名題目與規模的承諾句（「今天我們就來看 Seiko 當年有多瘋狂」）算是開場的一部分，不算介紹主題。",
+      "stored_merged_question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？"
+    },
+    {
+      "id": "no_toc",
+      "actual_blind_question": "是否沒有任何一句只是在宣告這支片分幾段（「接下來分三段」「第一…第二…最後」「先講 A 再講 B」「這一章回答…」）或把後面的內容排成清單？開場可以有一句承諾句：點名題目和一個數字或規模，整支片只一次。",
+      "stored_merged_question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）"
+    },
+    {
+      "id": "chapters_link",
+      "actual_blind_question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，或轉向觀眾（「換成你站在那裡」「你大概也會這樣想」），讓事情往前走？標籤、總結、重述剛問過的話不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "stored_merged_question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。"
+    },
+    {
+      "id": "opening_hooks",
+      "actual_blind_question": "開場 60 秒內，是否至少有三個讓人想看下去的東西：一句講給觀眾的利害（帶數字）、一件停在結果之前的時刻、一個問題、或一句點名題目與規模的承諾句？（「接下來我們會看到」這種空宣告不算；超過兩個預告時刻、像在念線索清單，也算沒做到。）",
+      "stored_merged_question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）"
+    }
+  ],
+  "paid_requests": 0
+}

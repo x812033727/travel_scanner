@@ -1,0 +1,36 @@
+{
+  "source_video_sha256": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b",
+  "reviewer": "/root/c08_r9_review_en_ja",
+  "independent": true,
+  "role_disclosure": "未參與本輪EN/JA翻譯，未讀譯者author自校結論。逐項全讀並對照凍結source video.json、script.md、claims.md、series.json及research-original／patent研究原件，完整覆蓋每語127句、6章、title、description正文與21項來源標籤及URL、tags和thumbnail tag/headline/sub；JA另由未參與翻譯的只讀校對者 /root/c08_r9_review_en_ja/ja_readonly 全量複核。native與worksheet所有譯文逐字相等，worksheet source逐字對應凍結video，script的127句與video逐字相等，兩語description的21 URL數量及順序與source相同。核對前後14項輸入（凍結source/research、config、兩語native與worksheet）實際SHA-256完全不變。保留I/you、說話者歸屬、假設與否定；分開1961 150mL玻璃瓶、2010 500mL軟袋、2011特定200mL瓶、JP5727888B2軸向液閥、JP5053463B2 500mL軟膜prototype與2018 450mL PET瓶；120h未見空氣但出液失敗、160cm內閥失效但未見外漏、每條件5樣及約45度均保留。登錄／公開不被寫成實驗日期；正常密封常溫120天目安、產品例外、現行FAQ與卸下整座蓋子後冷藏的界線均保留。JA使用恩田友貴，EN使用已證姓氏Onda及系列名Itsudemo Shinsen，Kenji Ekuan一致。本判定僅TEXT語意；metadata文字已讀，未以本輪審核授予duration、配鏡或開場同圖已知HOLD放行。唯一寫入本review，未更動translation/core、後台、Git或paid項目。",
+  "locales": [
+    {
+      "locale": "en",
+      "worksheet_sha256": "ec04c4b390349956c5a437861fac10846f908bb4f4a25c01cd2e01d23c92f83d",
+      "translation_sha256": "4406b85e963297e1b2650bdc8b4bb00804f29c433cfaa81583e1e93bae2bc2ac",
+      "status": "TEXT_PASS",
+      "checked_lines": 127,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": [
+        {
+          "target": "lines.c8r10402",
+          "current": "Kikkoman product developer Onda  later explained that this soy sauce skips heat pasteurization and uses special filtration to remove microorganisms instead.",
+          "proposed": "Kikkoman product developer Onda later explained that this soy sauce skips heat pasteurization and uses special filtration to remove microorganisms instead.",
+          "reason": "Onda後有兩個空格，合併即可；純排版，不影響語意或TEXT_PASS。",
+          "required": false
+        }
+      ]
+    },
+    {
+      "locale": "ja",
+      "worksheet_sha256": "9dd45d3d715991fdb14c52d6f25985fee5f309b41f5159ace75430e699d2435b",
+      "translation_sha256": "34f52e5435dff1883d77fdf3b2253f11ce26ca0a217d2f13322304055c51092f",
+      "status": "TEXT_PASS",
+      "checked_lines": 127,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": []
+    }
+  ]
+}

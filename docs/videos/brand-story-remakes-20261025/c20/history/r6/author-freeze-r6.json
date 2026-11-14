@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "revision": "c20-r6",
+  "frozen_at_utc": "2026-10-26T05:55:55.828470+00:00",
+  "role": "AUTHOR_SUBMISSION_NOT_INDEPENDENT_APPROVAL",
+  "file_sha256": {
+    "video.json": "c132258339157a5f1bcb4f120de10714d0967aba9e734cca1cf2edd794d1af81",
+    "script.md": "166b4e8043e094996bf633514b1048d4f80e11cb6dff1460922d9033d8118227",
+    "narration-only.json": "928d74815f3a834cea95563769c50f0f0ef5782fd667a3c946592349daa2efa3",
+    "claims.json": "f0429709633dbc81dd92f5a0319cf9029a5af9efcca1d00fc1b2801d8d853f9b",
+    "claims.md": "9f78f033bb1c0242211ab8e0af17dee4f305fd80394823effc2a01b08e58c74f",
+    "brief.md": "1cfc889957db02c3090d09ca42a9a859a32ecc78459850dd1dbe0c55fa9b4303",
+    "series.json": "664a43d025e99e06b30fe8644edf118869c6a97351fc6815b4a0907b8d3cc24a",
+    "build-candidate.mjs": "760e45027592ebf384602ff677e2d152381d516f03e2a2e9ed90bf29380c5dd6",
+    "producer.md": "b3d7e3a9990299269db52fecb40d0e920e51c58674e6a66c8dac52ae1aaf0125",
+    "image-reuse-plan.json": "8f104f21463b42a9311cee5c05b7353fd05cf5711086d73c6412d5c591b92095",
+    "author-notes.json": "e821856ec29dd873be322dde86f71eabcc35ae44d334739909a7fbd8bd39c0ee",
+    "author-primary-anchors-r3.json": "aa314dd6edc79648ccdbca1aa65fb5f1a1ea5d98de60e4dc685938a8a4c60d38",
+    "native-author-lint-r6.json": "63c6541166dfbb19d73f7dbb1546a1a2598c3fa4a6502ac90527b0d55415f024",
+    "protected-inputs-r6.json": "613179fe2d9fae515c027b4d6ed26c9816908a0adaf36b7f5b72c411b61d7cff",
+    "changes-r6.json": "031cfce40e25be5c5dec34afed0c456ccd55f63a0fb363fd46cf95fc7aab3f1c"
+  },
+  "core_four_sha256": {
+    "video.json": "c132258339157a5f1bcb4f120de10714d0967aba9e734cca1cf2edd794d1af81",
+    "script.md": "166b4e8043e094996bf633514b1048d4f80e11cb6dff1460922d9033d8118227",
+    "narration-only.json": "928d74815f3a834cea95563769c50f0f0ef5782fd667a3c946592349daa2efa3",
+    "claims.json": "f0429709633dbc81dd92f5a0319cf9029a5af9efcca1d00fc1b2801d8d853f9b"
+  },
+  "image_reuse_plan_sha256": "8f104f21463b42a9311cee5c05b7353fd05cf5711086d73c6412d5c591b92095",
+  "whole_narration_spoken_units": 2794,
+  "rough_target_whole_units": [
+    3300,
+    3500
+  ],
+  "target_minutes": 13,
+  "target_whole_narration_seconds": [
+    720,
+    840
+  ],
+  "capacity_risk": "506 below3300 /706 below3500; R5 minus29units from deleting only o16. Unpadded4–5units/s arithmetic558.8–698.5seconds is below720–840 target. No slowdown or extra short scenes; native estimate is not actual audio.",
+  "source_review": "PENDING_OTHER_REVIEWER",
+  "fresh_native_readers": "PENDING_NATIVE6",
+  "actual_previous_native_round_count": 5,
+  "native6_blind_input_prepared": false,
+  "actual_audio_seconds": null,
+  "actual_final_seconds": null,
+  "actual_same_asset_verified": false,
+  "all_retained_visual_inputs_and_both_full_image_keys_unchanged_from_r5": true,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "owner_approval_created": false,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0,
+  "runtime_root": "/workspace/work/brand-story-20261025/c20-audit/author-r6/runtime",
+  "original_r5_runtime_read_only": "/workspace/work/brand-story-20261025/c20-submission-root",
+  "original_r5_runtime_hash_manifest_sha256": "c1cf6cf53d20fc163d70d29fb25a539ae6e4f458695b655d488c1c1be5fe0011",
+  "runtime_canonical_script_sha256": "d71d2441494e9e16580514d9c7061eddde290ed51ef4a896733a77754882e38e",
+  "immutable_lexicon_sha256": "1dc8a42f7c9a3fb3f603c55a7e8d930661c358e2d55579d03d32aa28be161420",
+  "immutable_lexicon_unchanged": true,
+  "protected_legacy_files": 68,
+  "frozen_research_three_sha256": {
+    "research-original.md": "bd325631384e70272d074326b8b0bc5fa10c01adc2210276fe591a3a54765be2",
+    "research-original.claims.json": "4763b1808d0ad7d21a42256f7584c3c78352bb33eb10f91027c9aa6be7a8517c",
+    "original-preservation.json": "4932a5ed91683a1dc56b717fb292ca1d74ed61d13b7c40064bb0a029e0cb96bf"
+  },
+  "history_archive_manifest_sha256": {
+    "r1": "174f8f56d162627bd2d22b5cf1cbaf0caaf799a5f1dc513d74dbe311c20eb69c",
+    "r2": "1633357f3090b44fe68ab25f470e3cf21b04115bb5201f9c05e190f2cd1f5b19",
+    "r3": "bdce9a3b223d53a34f97acd0eca29440886fc0c6a5867f4d569a873585978c66",
+    "r4": "3ca1a7a7490d6d29a0abc6fd04da67a0a0db92866ffac05339296a7d7820fda8",
+    "r5": "9a223aee5c3938a8e7d954b49a4afb4b5173550e1ef91856ab0a53f8ae402073"
+  },
+  "r5_source_visual_pass_verify_and_native5_hold_preserved": true
+}

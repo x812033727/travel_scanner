@@ -1,0 +1,91 @@
+{
+  "performed_at": "2026-10-26T01:04:06.148Z",
+  "source_video_sha256": "8549eb766873b65cb3453d03edfb5c2d151a3a9209578f3383cdc321c9620a75",
+  "video_sha256": "8549eb766873b65cb3453d03edfb5c2d151a3a9209578f3383cdc321c9620a75",
+  "baseline_source_video_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+  "canonical_script_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+  "actual_dictionary_content_sha256": "08c9f55597275ea28ac4b963aebd4fac74e9a05778ca8a0dcc9354365da6cf2f",
+  "prior_preflight_preserved": "history/preflight-before-controlled-visual-adoption/preflight-inputs.json",
+  "paid_calls": 0,
+  "duration_measured": false,
+  "actual_duration_measured": false,
+  "lint": {
+    "log": "reviews/runtime-lint-teaser-plan.json",
+    "log_sha256": "ac2f652c67af0f81499f120d48aef755df19b6c36e246e18d91560ebc15bfaa4",
+    "exit_code": 0,
+    "errors": 0,
+    "soft_warnings": 9,
+    "stale_or_missing_translation_warnings": 0
+  },
+  "tts": {
+    "log": "tts-dry-run.txt",
+    "log_sha256": "a3c7d91cde54ed1d3cdbae8d83f58c9f6786f4cd1c44a7c7f2023ec70d2c02b4",
+    "exit_code": 0,
+    "requests": 101,
+    "billable_characters": 3640
+  },
+  "keyframes": {
+    "log": "keyframes-dry-run.txt",
+    "log_sha256": "92b7633e9a76e2c6cef76034b0b5e2c7e14fb51fb202a182d4add91bbd4f5a2f",
+    "exit_code": 0,
+    "shots": 92,
+    "max_takes_per_shot": 3,
+    "one_take_catalogue_estimate_usd": 1.24,
+    "max_three_takes_catalogue_estimate_usd": 3.73
+  },
+  "music": {
+    "status": "NOT_REQUOTED_NO_ACTUAL_TIMELINE",
+    "historical_hold_preserved": true
+  },
+  "whole_film_quote_complete": false,
+  "actual_audio_generated": false,
+  "actual_images_generated": false,
+  "actual_same_asset_verified": false,
+  "image_reuse_plan": "image-reuse-plan.json",
+  "image_reuse_plan_sha256": "666ce7c8ac4f41efa1c65c7d57ac0cf5a638a170558bca3b216abbe37240def2",
+  "note": "Current catalog/status dry-run only; not an all-in price, new budget authorization or actual narration timing. USD200 generic display does not override existing USD25 stop.",
+  "branding_handoff": {
+    "state": "FORMAL_V4_DOWNLOADED_INSTALLED_FULL_AV_DECODE_PASS",
+    "required_policy": "../branding-pr1860/required-branding.json",
+    "authority_readme": "../branding-pr1860/README.md",
+    "package_id": "mokaair-brand-package-v4-endscreen",
+    "package_hash": "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88",
+    "placed_hash_is_selection_not_production_pin": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+    "media_qa_receipt": "../branding-pr1860/media-qa.json",
+    "media_qa_receipt_sha256": "8b1af7a724ff34d5fde2ed5c128369390106a8629694aba6e5a25e2813781fd6",
+    "project_preflight_snapshot": "../branding-pr1860/project-preflights.json",
+    "snapshot_observed_at": "2026-10-26T02:23:38.291Z",
+    "snapshot_source_sha256": "8549eb766873b65cb3453d03edfb5c2d151a3a9209578f3383cdc321c9620a75",
+    "current_source_sha256_at_handoff": "8549eb766873b65cb3453d03edfb5c2d151a3a9209578f3383cdc321c9620a75",
+    "snapshot_matches_current_source": true,
+    "source_specific_status": "PASS_FOR_RECORDED_CURRENT_SOURCE_SNAPSHOT_RECHECK_BEFORE_ASSEMBLY",
+    "fresh_readonly_preflight_required_before_assembly": true,
+    "intro_frames": 150,
+    "intro_seconds": 5,
+    "outro_frames": 630,
+    "outro_seconds": 21,
+    "assembly_required_option": "--intro-after-condensation",
+    "assembly_order": [
+      "cold_open",
+      "intro",
+      "remaining_body_and_voiced_CTA",
+      "outro"
+    ],
+    "body_narration_seconds_required": [
+      720,
+      840
+    ],
+    "body_includes_cold_open_and_voiced_CTA": true,
+    "bookends_excluded_from_body_seconds": true,
+    "bookends_extra_seconds": 26,
+    "bookends_extra_frames": 780,
+    "fail_on_missing_disabled_wrong_package_or_unreadable_remote": true,
+    "production_pin_written": false,
+    "timeline_created": false,
+    "assembly_executed": false,
+    "generated_story_media": 0,
+    "paid_requests": 0,
+    "budget_or_admission_authorization_changed": false,
+    "owner_decisions_written": 0
+  }
+}

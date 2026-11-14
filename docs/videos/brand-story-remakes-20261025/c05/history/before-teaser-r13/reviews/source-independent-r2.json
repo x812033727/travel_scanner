@@ -1,0 +1,1705 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/find_rules",
+  "independent": true,
+  "date": "2026-10-25",
+  "revision": "r2",
+  "slug": "story-everyday-kincho-c05-remake-20261025",
+  "input_sha256": {
+    "video.json": "db5d57087a2451191026e7b6aa61a2d2e65b03fd29bd704a2c03a5a64f068598",
+    "narration-only.json": "c036a2b592c897ea2b846cbfdd026ab14e7e7d030f1ee95983924d547ad392fe",
+    "script.md": "2a4c3a90e9d557289a9df8eab0369f214a123e655655b6beb530d0d2f730f859",
+    "claims.md": "37d42bae0b0a2c7374385e5ab78e4b4850a9c5ffe4f1810cf31cfdcaf728358f",
+    "source-snapshots/source-1.txt": "6825f7be6ac8650b7d4e265411185caa805b72213ca0fbf346af4fd256577c28",
+    "source-snapshots/source-2.txt": "007caa06f4f678b853ec030ab474e21f6e0253755bb5a41b9b95f51d66eafd3f"
+  },
+  "source_matrix_sha256": "a7eb8401abcc5715c46352187c0efe100fa3aa47e22a020a1fc16ffd55504516",
+  "verdict": "HOLD",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "editorial_identity_verdict": "HOLD",
+  "counts": {
+    "source_lines_pass": 114,
+    "source_lines_hold": 0,
+    "written_visual_scenes_pass": 112,
+    "written_visual_scenes_hold": 0,
+    "delivery_lines_pass": 113,
+    "delivery_lines_hold": 1
+  },
+  "findings": [
+    {
+      "id": "E01",
+      "severity": "P2",
+      "verdict": "HOLD",
+      "line_id": "c05r103",
+      "scene_id": "c05r-outro",
+      "issue": "片尾邀請訂閱奇聞檔案局，但本稿category=story、標題後綴品牌故事；移植的系列名稱錯配。",
+      "required_fix": "將CTA中的系列名稱修為品牌故事或頻道通用邀請，並固定新旁白/video SHA；不得冒稱本r2精確稿已全數可交付。",
+      "source": "PROJECT"
+    }
+  ],
+  "new_source_checks": {
+    "S21_density_comparison": "PASS。對原件qa03核對固定條件與假設性，r2未寫成測試或實測數據。",
+    "S21_residue_and_binders": "PASS。粕粉與タブ粉/澱粉各自有原文，不當有效成分或早期配方。",
+    "S21_particle_mechanism": "PASS as manufacturer explanation only。未增加粒徑、暴露、安全或效力主張。",
+    "historical_modern_separation": "PASS。1919/1922/現行規格各分開；早期花粉/現行合成藥/製程不混同。"
+  },
+  "advisories": [
+    {
+      "line_id": "c05rx001",
+      "note": "可把原廠提出的比較明加假設兩字，進一步避免被誤讀為有對照試驗；現有提出/應該/歸屬組合未判來源硬錯。"
+    },
+    {
+      "scene_id": "c05rx006",
+      "note": "空螺旋模具僅可作成形問題示意；現代工廠製程仍須依092保持片材打型，生成圖勿畫成1895木模已量產。"
+    },
+    {
+      "scene_id": "c05r081",
+      "note": "prompt同時Wide shot/close view有景別語意衝突，屬生成品質風險，不是來源HOLD。"
+    }
+  ],
+  "sources_reopened_on": "2026-10-25",
+  "sources": {
+    "K_M": {
+      "url": "https://www.kincho.co.jp/kaisha/ayumi/index.html",
+      "locations": "1885–1890,1895,1900,1902 rows",
+      "scope": "原廠後年年表，申請/上市分開，無世界首創優先權判定"
+    },
+    "K_T": {
+      "url": "https://www.kincho.co.jp/new/tech/",
+      "locations": "棒状蚊取り線香,試作木型,押し出し機,戦前海外ポスター",
+      "scope": "保存物件與原廠回顧；無原始專利、量產率或成本金額"
+    },
+    "K_F": {
+      "url": "https://www.kincho.co.jp/factory/listen/detail.html",
+      "locations": "家庭用殺虫剤の略歴/除虫菊/なぜ渦巻/なぜ緑/ゆっくり燃える/なぜ蚊が死ぬ",
+      "scope": "原廠工程/配方說明；不是本集獨立燃燒、毒理、殺蚊或歷史換線實驗",
+      "direct_get": {
+        "status": 200,
+        "bytes": 20890,
+        "raw_html_sha256": "98cc42111485595fc062421931adf48851d9a6337933b83bd696152210c2aa9f",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)"
+      }
+    },
+    "K_S": {
+      "url": "https://www.kincho.co.jp/factory/shiryou/index.html",
+      "locations": "大正8年頃/大正11年頃/現在/蚊遣り火",
+      "scope": "1919與1922不同商品；後年資料館標示，不是同配方進化或殺蚊倍數"
+    },
+    "K_Q": {
+      "url": "https://www.kincho.co.jp/seihin/qa/qa_uzumaki.html",
+      "locations": "一巻何時間/2巻くっついて",
+      "scope": "現行各規格與拆卷/保存；不倒推早年配方"
+    },
+    "K_40": {
+      "url": "https://www.kincho.co.jp/kaisha/ayumi/ayumi03.html",
+      "locations": "1940 row",
+      "scope": "機器完成，非全廠同年改線"
+    },
+    "K_57": {
+      "url": "https://www.kincho.co.jp/kaisha/ayumi/ayumi04.html",
+      "locations": "1957 row",
+      "scope": "改良機完成，未證所有生產線日期"
+    },
+    "NM": {
+      "url": "https://sts.kahaku.go.jp/sts/detail.php?no=910191180001",
+      "locations": "資料號910191180001; 製作1895; 種類試作品; 特徵",
+      "scope": "館藏登錄與描述；未複製圖片/段落；不替誰先說提供家庭對話"
+    },
+    "NA": {
+      "url": "https://www.archives.go.jp/exhibition/digital/hatsumei/contents/42.html?m=42&pm=01&ps=01&pt=03",
+      "locations": "1943授勳文件介紹；1890/1895敘述",
+      "scope": "後年檔案介紹的歸屬，非妻子被忽略的證明"
+    },
+    "EDITORIAL": {
+      "scope": "觀眾假想/幾何解讀/明示旁白反應/來源界線/CTA，不是記錄過的客戶或工廠事件"
+    },
+    "PROJECT": {
+      "path": "docs/videos/brand-story-remakes-20261025/c05/video.json",
+      "scope": "category=story、title後綴品牌故事與本批身分；不是奇聞檔案局"
+    }
+  },
+  "boundaries": {
+    "independent_from_author": true,
+    "blind_reader_answers_seen": false,
+    "prior_PASS_reused": false,
+    "health_claims": "只核原廠機制歸屬；未審核任何安全/毒理/療效建議，稿中也未加入此類宣稱。",
+    "visual_scope": "112景書面方向全讀；未看或核准生成圖、音訊或成片。",
+    "duration": "未量TTS，不能拿字數估秒作12–14分鐘PASS。",
+    "paid_calls": 0,
+    "backend_writes": 0
+  },
+  "line_results": [
+    {
+      "line_id": "c05r001",
+      "scene_id": "c05r001",
+      "line_text_sha256": "a754847348c4eb6a914e8e6fb90675ec72c1c621aeb13a843d108e430526af38",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_note": "40分鐘有原廠回顧/館藏介紹支持；不是本集實驗。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r002",
+      "scene_id": "c05r002",
+      "line_text_sha256": "9dde97c55c3ab06e78665a85ba877a69e53626c98a30cbd27d35ba62133cb172",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_note": "想像明示假想，不稱某戶長夜實錄。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r003",
+      "scene_id": "c05r003",
+      "line_text_sha256": "9ae7fd9c3c7890d63d2d80e759f0ec187e67b8971bf29349f009692494c77c8a",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_note": "1895試作木模有實物登錄；比喻不當量產證據。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r004",
+      "scene_id": "c05r004",
+      "line_text_sha256": "6d991f150404e4636695074c40aa083b809fe077bcc6c81fa398413f0db05abd",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_note": "反應/問題，不稱工具已量產。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r005",
+      "scene_id": "c05r005",
+      "line_text_sha256": "8212f81a6290b54f9d6628c3735a3e8a6d0c2d49c3eca03bb9526c29bca33cc4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_note": "後來保存設備；後文052/053釐清先擠出再合兩條，不稱同步雙擠。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r006",
+      "scene_id": "c05r006",
+      "line_text_sha256": "3b6397b7a836370f1af79ab231db1530670ec7d6e4b42eb2afe9d52a9aa2ba1c",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_F",
+        "NM"
+      ],
+      "source_note": "敘事承諾。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r007",
+      "scene_id": "c05r007",
+      "line_text_sha256": "ed5de127c2f520a410189f09511edeae1671e84be4f426187f39d080b765318a",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_F",
+        "NM"
+      ],
+      "source_note": "形狀/燃速/運輸分題，沒有效力倍數。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r008",
+      "scene_id": "c05r008",
+      "line_text_sha256": "1f8cf36d6ab9c4ac776867018d861bcf977ea2b6ada0eac6841871e929e15860",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_note": "種子起點承接年表，不是配方。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r009",
+      "scene_id": "c05r009",
+      "line_text_sha256": "0c38663e9bf707e014c8ddf86aee73a77e428bcd085512284e851e63614b3b2d",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_note": "1885交換約定明歸金鳥年表。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r010",
+      "scene_id": "c05r010",
+      "line_text_sha256": "7681b2da2cff5b9aca43b67d6177449a9c77475089aad1139b2ed7445082450e",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_note": "1886種子到手。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r011",
+      "scene_id": "c05r011",
+      "line_text_sha256": "2b79427165650aa3ecc44ee103cc02daabd92edfa22f784dd0c7110c28fb8367",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_note": "觀眾假想，不虛構買家行為。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r012",
+      "scene_id": "c05r012",
+      "line_text_sha256": "26986adf850436f695b85888756131edee68c275a4e14f482ce59b0b221fdc32",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_note": "提問，不稱當年粉末配方已知。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r013",
+      "scene_id": "c05r013",
+      "line_text_sha256": "72186aa5b726e2b6a1a8285c383418f86b83d7c08c17154bce47856a32edae20",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_note": "1887收成/試磨。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r014",
+      "scene_id": "c05r014",
+      "line_text_sha256": "df0c168b4e50ecc12ab0721024bd77daff0a95ee466f57e7a8d295f59d999f39",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_note": "閱讀反應。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r015",
+      "scene_id": "c05r015",
+      "line_text_sha256": "9f86a2cca94de6384749408614f552bca756af994e66f4eb3a55daa1f3e39793",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_note": "蚊遣火由資料館歸屬回顧。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r016",
+      "scene_id": "c05r016",
+      "line_text_sha256": "872d217bb3fcee0bd9dd1c3aeea606d3aca6f8b68f8ab2cc92ddaf4cddfc4d3b",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_note": "煙多困擾見資料館，未給現代使用建議。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r017",
+      "scene_id": "c05r017",
+      "line_text_sha256": "536768c8b9891425ebf48e803ad76217417fd8cbc2cd8adfadb4c60a7761eb52",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_S",
+        "K_M"
+      ],
+      "source_note": "形態問題的編輯轉場。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r018",
+      "scene_id": "c05r018",
+      "line_text_sha256": "595e1c1c2baa5af93cf464e2deac1386f6f9e25e6886b5291344b0e94694e644",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_note": "1888東京同宿線香商。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r019",
+      "scene_id": "c05r019",
+      "line_text_sha256": "79f7ffcd49d3c2931b3a115bcc23859d628239f017516fc3f17c9eb484bfc925",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_note": "舶來除蚤粉，不改寫確證為除蟲菊粉。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r020",
+      "scene_id": "c05r020",
+      "line_text_sha256": "515f61c1773d79be45d2eed4780fd50ab9125bc0528ded59d019ddb8866073ab",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_note": "遺產頁說沿用仏壇線香製法；一般形狀解讀。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r021",
+      "scene_id": "c05r021",
+      "line_text_sha256": "a40736eca7a90fae2a4983770a4bcc7d35b71a61c34604f2ac773bb6e95a556e",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_note": "1890上市由年表支持，無世界第一斷言。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r022",
+      "scene_id": "c05r022",
+      "line_text_sha256": "7cf0151e99c7749df494e26f3dd043ed635c1de675fef455b56ff45a8197a4a5",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_note": "問題，不推新長度或實驗。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r023",
+      "scene_id": "c05r023",
+      "line_text_sha256": "f21d401c386bdb168c598e8ed6b20a2c0747e846a57586babd77cd15fa1f25a6",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_note": "20公分與同用數根仍歸原廠回顧。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r024",
+      "scene_id": "c05r024",
+      "line_text_sha256": "c4a8e789da2a6866dc80b36caf0ca102973ef70765b32eb0b4e91458aba90c06",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_note": "單根路徑幾何解讀，不是藥效試驗。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r025",
+      "scene_id": "c05r025",
+      "line_text_sha256": "4ef18156f53ece49c8df437b2a0a57b64675673012bdf208e68b43d8d6cbf341",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_note": "易折明歸原廠。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r026",
+      "scene_id": "c05r026",
+      "line_text_sha256": "d0830437614615783600905441395c20f1e212c8ee2a1147c7a91bab0c699647",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_F",
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_note": "長路徑占地提問。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r027",
+      "scene_id": "c05r027",
+      "line_text_sha256": "d3bf6c4e960f616dd44cd801753a635517074af46b715db77265f6ca0f97e7c4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_note": "妻子構想明歸公司後年記述。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r028",
+      "scene_id": "c05r028",
+      "line_text_sha256": "0583ab14f63d17695bb19ec34598aa6baaa47c3020623cab04c7e1ce95053c7c",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_note": "1895著想/試作公司歸屬；那一年承接開場，不新增年。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r029",
+      "scene_id": "c05r029",
+      "line_text_sha256": "92c4449b1defb636164d9cb7855d906a934d7bc7497a4037c184f21242ff868a",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA",
+        "K_T"
+      ],
+      "source_note": "木模1895/試作物館藏登錄。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r030",
+      "scene_id": "c05r030",
+      "line_text_sha256": "b56be268aedb2a2aa972abb1b2b4bfe207769ac7f866f3bd47d8c990e7805202",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_note": "拿線想像，幾何示意。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r031",
+      "scene_id": "c05r031",
+      "line_text_sha256": "34df41d9c15774c8f7ffc8aacd3f2397cdd9c50babf1e2020251b6a6b3648440",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_note": "螺旋可收長路徑，不說速度或效力。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r032",
+      "scene_id": "c05r032",
+      "line_text_sha256": "e8fa9bb92e5ab75f071d1f54952851e8bf6aa19b1df5b17c0f4b5eda3cbc4f67",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_note": "反應/生產提問。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r033",
+      "scene_id": "c05r033",
+      "line_text_sha256": "10e84aff103ac7616ad58f2871fcfe4405b608ed4829e35cd88394d1351b0bf4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_note": "一件與連續交貨的編輯解讀。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r034",
+      "scene_id": "c05r034",
+      "line_text_sha256": "b4aece567756e79088965ec3b8cc77c4f6b9dd81632e2c38b96d327187742e39",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_note": "填原料/推出成型見NM描述，非捏造卡裂事件。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r035",
+      "scene_id": "c05r035",
+      "line_text_sha256": "3677f8e210702380095f1d9692c45f91a035a12be77ff920357379697978d4d5",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_note": "觀眾可能誤讀之提問。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r036",
+      "scene_id": "c05r036",
+      "line_text_sha256": "de1430ef8f942af6fd12b75b639c662f0b1d1688ff6752def3c541694ff1df37",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_note": "技術遺產頁明說不適合量產/未採用。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r037",
+      "scene_id": "c05r037",
+      "line_text_sha256": "0af2a49d2a38959fe2ad32a7d7517c375708f17cd5e887e25eeac05c2431ef33",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_note": "明示反應，沒有另造失敗情節。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r038",
+      "scene_id": "c05r038",
+      "line_text_sha256": "e88d5d5bfaff5dce28a536435dc7ebf48b0150849b6b821012299a6a9bb6aceb",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "NM",
+        "K_M"
+      ],
+      "source_note": "證據範圍限制。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r039",
+      "scene_id": "c05r039",
+      "line_text_sha256": "18a25c337e35df66732a8da57fc94cacbdff84cdf5f9602db7acc5a04dfdb22c",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA",
+        "K_T"
+      ],
+      "source_note": "公司/館藏層級區分。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r040",
+      "scene_id": "c05r040",
+      "line_text_sha256": "389eeaa85950649cae5ad56175295dd8a14d539ec298db5170e8d64f7bafe0ff",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_note": "國立公文書館1943授勳介紹的歸屬。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r041",
+      "scene_id": "c05r041",
+      "line_text_sha256": "4214ad64e237f246696988ba2f29c86dd468d450d1c6e49720960bdc78e38dd6",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_note": "未推論抹除妻子或家庭對話。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r042",
+      "scene_id": "c05r042",
+      "line_text_sha256": "4e25ffabd42f054fc4d769966e37478838e3daa585b562fc31aa457861a91486",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "NM",
+        "K_M"
+      ],
+      "source_note": "問題，不新增客戶/工廠事故。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r043",
+      "scene_id": "c05r043",
+      "line_text_sha256": "f50d072bffd0c9520e88b7e88a3c555f1f538c0cbce1296711562dcd3f9f11a9",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_note": "申請節點提問。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r044",
+      "scene_id": "c05r044",
+      "line_text_sha256": "b8a91ff4d77615650ad5cd3cb7e1376973caa483acba8b3f9d222df19b310641",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M",
+        "NM"
+      ],
+      "source_note": "假想櫃台，不聲稱真客戶等貨。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r045",
+      "scene_id": "c05r045",
+      "line_text_sha256": "0274363ed162e2745a4e5c91e97e4876fd703b90e3a1112e6f2725de501094ae",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_note": "1900只說公司記載申請。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r046",
+      "scene_id": "c05r046",
+      "line_text_sha256": "290baeb5da80ef32f679ab0854864cf68d6825b4e8a08f97b6b69c91a7fdd8b2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_note": "缺原始申請文件明示，未當成獲准。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r047",
+      "scene_id": "c05r047",
+      "line_text_sha256": "feb039c95e3d1a8c9b8ea5082123f66927dcee28f59bf8dd6f5d9ed10ade77c9",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M",
+        "NM"
+      ],
+      "source_note": "1902上市/七年間隔有K_M及NM。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r048",
+      "scene_id": "c05r048",
+      "line_text_sha256": "c8080f45b115b44ddf481129515f7336a564388e0dc22537e468edc1f5797625",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "NM",
+        "K_M"
+      ],
+      "source_note": "限定現有資料不足，不造逐年試作。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r049",
+      "scene_id": "c05r049",
+      "line_text_sha256": "3bee416b1c3da51e0284fdfaf4ae6bc39e8c38960ec8036941d668d0e1157d5f",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_note": "編輯選擇追留存工具。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r050",
+      "scene_id": "c05r050",
+      "line_text_sha256": "4231927fac52ce3e51db8bdceef772aeff6da41e98c612366988b2520d2a0260",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_note": "約1910起使用，與上市分開。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r051",
+      "scene_id": "c05r051",
+      "line_text_sha256": "54e9cbbe4c6c1cc9961c03c38d02a3db7b6110de4970e264afe6bd87a46a8af9",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_note": "木模與擠條兩法對照。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r052",
+      "scene_id": "c05r052",
+      "line_text_sha256": "f56b4b165d5bc91850690b0f25254941064382a8d15d3cfd10856669b4a101c0",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_note": "兩根已擠出物手卷，符合K_T。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r053",
+      "scene_id": "c05r053",
+      "line_text_sha256": "ab6f2d0d76687097a42aeb9af06a68f6a429b3931ce340dda2f7eca78921a129",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_note": "未聲稱機器同步擠兩條。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r054",
+      "scene_id": "c05r054",
+      "line_text_sha256": "d13eb0cdb587fb85e0ee2df0b0c5ab5e0dbf5dfbf03f5a34fa1a2eb187fbc4fe",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_note": "特定雙卷的提問，不斷定所有品牌/上市日都必須雙卷。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r055",
+      "scene_id": "c05r055",
+      "line_text_sha256": "a71dab7d3801a70286040f514c41320cd9b5317c57a40f99c06af424f622a71e",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_note": "雙卷折損/成本為原廠說法，無數值。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r056",
+      "scene_id": "c05r056",
+      "line_text_sha256": "d3fb5323b581bbb2e5cf9b3cf46065dbf18637e7b192aa5154af7b3fa37e6cf3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_note": "反應，不新增採用年份。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r057",
+      "scene_id": "c05r057",
+      "line_text_sha256": "18b0314109562caf732a78e81c0ebc958c6c74484383c137c96be8e494900bf6",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_note": "運輸結構與單卷燃速分開。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r058",
+      "scene_id": "c05r058",
+      "line_text_sha256": "d0640565f4fc0e678d24058c8f04bf38a7b1d533d645bac43403fe9edb4f392c",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_note": "限定較晚產品。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r059",
+      "scene_id": "c05r059",
+      "line_text_sha256": "b2a96fcbd782aff13d7d8a9d4bc738419f560a632efdc0dafe156dc5135f2963",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_note": "約1919款58cm/6hr。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r060",
+      "scene_id": "c05r060",
+      "line_text_sha256": "f0bef5d7161295667a89a21c659e92768b76b5f1dab3394d7d0ca07e0d48aeb5",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_note": "排除倒推1895/1902。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r061",
+      "scene_id": "c05r061",
+      "line_text_sha256": "569d9aadf76b3e1d6417d0a53911f352da21fb04d2efb9293a5e1d5517548fcc",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_note": "約1922款12hr，明說另一款。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r062",
+      "scene_id": "c05r062",
+      "line_text_sha256": "63b6d2f4fabffe74e7cb21dd3f2a832b045f369a2fccd7782771a684e8c639ee",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_note": "問題，不以時數推殺蚊力。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r063",
+      "scene_id": "c05r063",
+      "line_text_sha256": "5663dd6650073e2d801e414dd5cfe8af2a69cd5dc710b7fac6f8218d354cfbc1",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_F",
+        "K_S"
+      ],
+      "source_note": "拒絕效力倍數。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r064",
+      "scene_id": "c05r064",
+      "line_text_sha256": "9524a7237311a2db118013685e780779b5114818a0f7b73ae5e6ecb8a6f6612a",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_note": "燃燒時間與效力區分。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r065",
+      "scene_id": "c05r065",
+      "line_text_sha256": "91309e56be19674c3c5191a7fc8577ae01fc700da7c2fb1718c7e03b29a19877",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_note": "戰前1930–1940海外宣傳物存在。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r066",
+      "scene_id": "c05r066",
+      "line_text_sha256": "703c1271341d91c12b5381b98aef5e3b884a149674f54b5c965dba2f9fe64f0f",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_note": "不推各地銷量。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r067",
+      "scene_id": "c05r067",
+      "line_text_sha256": "2ce47014ee1238662eccf2212c8acb8adcf83ccf54951421acfb3546e48d4685",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_40"
+      ],
+      "source_note": "機器/手卷交替提問。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r068",
+      "scene_id": "c05r068",
+      "line_text_sha256": "94e2f24257188f0eea5d97ce7aba0737ff009fc4e7df75809849e9c839a10000",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_40"
+      ],
+      "source_note": "1940完成原廠年表，不等於全線取代。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r069",
+      "scene_id": "c05r069",
+      "line_text_sha256": "2d203808f621f17cea4226a3b7e03a54d43edfeab9309ec4dd70d56f5601b800",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_note": "舊設備約用至1957。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r070",
+      "scene_id": "c05r070",
+      "line_text_sha256": "15665e4331206d2edcb920763c6cc892465e754dbae5581356c035fc2e4bc912",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_40"
+      ],
+      "source_note": "兩條紀錄並列，不虛構換線過程。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r071",
+      "scene_id": "c05r071",
+      "line_text_sha256": "4717badff1dcba74ae757fab463d384616f78aec2311d3e38ecf097354793ffe",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_40"
+      ],
+      "source_note": "明示觀點，不泛證每廠細節。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r072",
+      "scene_id": "c05r072",
+      "line_text_sha256": "4d74888ab690e7506bdbdf0d64722390a0002bc2aba67985d34b20baf0d505e4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_40"
+      ],
+      "source_note": "材料轉場，未給配方更換日。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r073",
+      "scene_id": "c05r073",
+      "line_text_sha256": "d8fe93c37b509ddb51e0994f3571bfa748dd6cee0b1d969c89819f89b1c380d7",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "食糧增產/栽培縮小原廠回顧。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r074",
+      "scene_id": "c05r074",
+      "line_text_sha256": "9185d08999ee89867a1ca56a76595c71aeff3d79de4d02622992798331a0f96e",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "約1955開發實用為原廠說明，不稱世界首次發明年。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r075",
+      "scene_id": "c05r075",
+      "line_text_sha256": "6aed604376efc45e9a6a68e8b9c9e9fd3baa21968e2d6a13afe5ad64d0c3d5cd",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "不推所有款式同年換方。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r076",
+      "scene_id": "c05r076",
+      "line_text_sha256": "456c94d2db29b84dbba2cf4551b02b4e79c242c9766a6ccd2189f1cdaa72ec89",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_57",
+        "K_F"
+      ],
+      "source_note": "改良型1957完成/機械打型原廠回顧。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r077",
+      "scene_id": "c05r077",
+      "line_text_sha256": "68474d17f83b03b9b3042075b548b8b4f2581166ff4dd9333ece038f3b725211",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_57",
+        "K_F"
+      ],
+      "source_note": "方向提問。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r078",
+      "scene_id": "c05r078",
+      "line_text_sha256": "7b29677c9eeebd216007b155a59ebe6ca9d1089dfe1989ebb74bee5fa529284b",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_57",
+        "K_F"
+      ],
+      "source_note": "左/右辨識理由歸原廠。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r079",
+      "scene_id": "c05r079",
+      "line_text_sha256": "322c2aa838f3d3f7d7bb17353d1350a5aa8de8f548ca3d993c193eb63a6ce635",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_57",
+        "K_F"
+      ],
+      "source_note": "不推左卷提高燃速或效力。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r080",
+      "scene_id": "c05r080",
+      "line_text_sha256": "d58c2dbcded9f808fcd47bfce0480d752fe9f243dc34530d69d3d012d22c94dc",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_Q"
+      ],
+      "source_note": "明切至今天雙卷。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r081",
+      "scene_id": "c05r081",
+      "line_text_sha256": "df4343dff0649d37b2a7aee682c958e7f98262fd04290468ac9d049978c95b71",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_Q"
+      ],
+      "source_note": "現行QA中心上下輕按/捏厚處。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r082",
+      "scene_id": "c05r082",
+      "line_text_sha256": "246f525ed108c4118da79f76fde01b11e690844d6c74a97c8d49efd2f7002073",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_Q"
+      ],
+      "source_note": "端部易折/保持成對存放有QA。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r083",
+      "scene_id": "c05r083",
+      "line_text_sha256": "46758860f5bb649b3903a7caa9d291642479763ae3414d8787c034d8d45d8dcf",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_Q"
+      ],
+      "source_note": "觀眾心情假想。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r084",
+      "scene_id": "c05r084",
+      "line_text_sha256": "c7701e651b1deed5b19d420936b0b24517f7dbad47345fbefcff2c5d13888ca7",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_Q",
+        "K_F"
+      ],
+      "source_note": "單卷路徑/慢燃問題。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r085",
+      "scene_id": "c05r085",
+      "line_text_sha256": "f61ce9c140562e897ec65800f47c161be6d827d368a27eba499b0819ab8a0c3b",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "稀少空隙/氧接觸由K_F說明，不是自家實驗。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05rx001",
+      "scene_id": "c05rx001",
+      "line_text_sha256": "4ca75225633b9e177af94052b8acda78bb670f24c0d473245f49f828bb14e443",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "K_F qa03是反事實條件比較，全部外形/材料/粗細/長度固定、只減重。此處提出比較，下一句應該保留條件，沒有宣稱試驗已做。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05rx002",
+      "scene_id": "c05rx002",
+      "line_text_sha256": "a49f2595742fbd77c0773cc2d95928b7a394d6f2e781a3d1bb96b97675fedc9a",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "條件比較的提問，不是測得空隙率。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05rx003",
+      "scene_id": "c05rx003",
+      "line_text_sha256": "a24a3cdc7d8f9fb36604f9c3d5fa9f4a34b61fb6521dc59ac9025b3f73c7614f",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "明歸公司且保留應該，無測量數據或普遍性燃速公式。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05rx004",
+      "scene_id": "c05rx004",
+      "line_text_sha256": "fc6b834e0876789efc7bfd1de4e50a23bf36c53b92496959ccc4951f0f39c13e",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F",
+        "K_Q"
+      ],
+      "source_note": "標示依各款產品，未延伸藥效。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r086",
+      "scene_id": "c05r086",
+      "line_text_sha256": "f18e5fe24d5ab374d3d481da204d5c50e750d3a705435bdb4630f7beff5d21aa",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F",
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_note": "幾何與材料燃速分開。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r087",
+      "scene_id": "c05r087",
+      "line_text_sha256": "de414f685fb80d15ef9053492f1df04a7195ffa22100e857e4f35b748d69727e",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "明示反應。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r088",
+      "scene_id": "c05r088",
+      "line_text_sha256": "12722eeb5c25324bb96d468e9dc8c59844b1f7b965e8565bcd324789873ced1a",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_Q"
+      ],
+      "source_note": "現行一般75cm/7hr，明說另一代。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r089",
+      "scene_id": "c05r089",
+      "line_text_sha256": "3341121cb3bc98f8f09ede42db6f2df40018e4a4144661f3f0a5d10314ee6d56",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_Q"
+      ],
+      "source_note": "QA短長尺寸/環境影響，未倒推早期。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r090",
+      "scene_id": "c05r090",
+      "line_text_sha256": "3a5fa259f1481980c98e453eeb55ace40b57a3911a331a0d12690b544d1e5a78",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "所述現行產品合成擬除蟲菊酯，非所有年代/品牌。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r091",
+      "scene_id": "c05r091",
+      "line_text_sha256": "ed326acc877395ac124c83a2aa4834ae6faf41e9279e30067beeeb4f45372b95",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "植物粉/木粉/黏結材料K_F；未說當年配方不變。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05rx005",
+      "scene_id": "c05rx005",
+      "line_text_sha256": "b34299ab6d21c30f1d9c4d093693ca6f50e4a7e9cafb43cb32616024e68748fb",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "K_Fなぜ緑明定粕粉為取走有效成分後粉；不說早期產品也同配方。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05rx006",
+      "scene_id": "c05rx006",
+      "line_text_sha256": "1dde5f016b64c00af50af7b511214c4998240cec0013a4132a72b11442f0b243",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "粉末散/黏結問題是一般解讀；不給比例或處方。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05rx007",
+      "scene_id": "c05rx007",
+      "line_text_sha256": "7e9d59a7d49c4fd3d7b093392961b7fc1e544f836808a1ebf2cfdc6a4f1ebdcc",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "K_F製程與なぜ緑列タブ粉/澱粉，兩類黏結材料及混合有據。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05rx008",
+      "scene_id": "c05rx008",
+      "line_text_sha256": "387f78d2e6a03b57764b2097ba9213113b7337a895b26b53b28bfe1f939d76c4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "成形工作之編輯概括，非另一套歷史製程。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r092",
+      "scene_id": "c05r092",
+      "line_text_sha256": "f0e5a2b9ee396f667720b77944fc75b2b33bc359030cf2738d2cdc1f32d1da49",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "K_F所述現行片材打型乾燥，與手卷分開。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05rx009",
+      "scene_id": "c05rx009",
+      "line_text_sha256": "ccd5702021a7cf0b202ce2134b73c05e0b14a9af30ecf1b562e80b2baeca3df4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "工作方式提問，無安全或效力承諾。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05rx010",
+      "scene_id": "c05rx010",
+      "line_text_sha256": "031790cbb136387073ff2e4d6d4aa76d896d652df29775a340cc3e601cd7376e",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "K_F qa08極細微粒子可直接核對，且明歸原廠；不推粒徑、濃度、時間或健康結果。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05rx011",
+      "scene_id": "c05rx011",
+      "line_text_sha256": "57ead6a2e04b84394a65047c270f834887e01ce9fc94876f339713ff9a6ad6a9",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "成形/燃燒的編輯綜合，不稱黏結材料本身就是有效成分。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r093",
+      "scene_id": "c05r093",
+      "line_text_sha256": "81493d3abe21cbc0c42faec59031496a04d6a3062f0c06aa3b485bccc373400e",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_note": "製法比較，不給全廠變更日。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r094",
+      "scene_id": "c05r094",
+      "line_text_sha256": "da3d210a099e1af92d095a8b80e730aa765c1721d9ee884a8eadb9b496bdcfd1",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "偏棕混料/綠色提問為原廠說明。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r095",
+      "scene_id": "c05r095",
+      "line_text_sha256": "c277282a4fb4cfff846f5804543e84334a156e987c616e36043280398d23f537",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "染綠及均勻/清涼印象是原廠理由。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r096",
+      "scene_id": "c05r096",
+      "line_text_sha256": "a9138f9a5351114e42ce78bc97f4e918fdda957240c2d6a5a4b952200bdefe02",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_note": "視覺印象不是降溫功能。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r097",
+      "scene_id": "c05r097",
+      "line_text_sha256": "99d2cc9b01d93ddd3b4769e5de022a05d856136e0dfd58c09a9f71769b8b44c0",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F",
+        "K_S"
+      ],
+      "source_note": "草葉聯想歸公司，不是實證消費者心理。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r098",
+      "scene_id": "c05r098",
+      "line_text_sha256": "b42eee1e27c55262e574b12284c908c44ae25b33063bfe14b873de7d24f7f5f3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_F",
+        "K_S"
+      ],
+      "source_note": "後年理由與早年配方切開。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r099",
+      "scene_id": "c05r099",
+      "line_text_sha256": "c36668e58760393df4b977487635f12d4a18154dffbf63e67cd697c8a74ab1fd",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "NM",
+        "K_F"
+      ],
+      "source_note": "工程問題回收，不添量產年份。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r100",
+      "scene_id": "c05r100",
+      "line_text_sha256": "ea3c90c30ace214bbdd51d24507e9f6e8a313f1bb037a6a045f01b13e323df26",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA",
+        "K_T",
+        "K_F"
+      ],
+      "source_note": "我的看法明示觀點。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "原創示意，匿名人物/無品牌物件；未作特定史實實景或測試結果證據。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r101",
+      "scene_id": "c05r-outro",
+      "line_text_sha256": "709971fcf5d9f207a7177b3c0b315d45eba66f6c3079e3c9848be9aa0550aed5",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA",
+        "K_T",
+        "K_F"
+      ],
+      "source_note": "三機制有據且雙卷仍歸原廠。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "片尾字卡，無金鳥技術數字。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r102",
+      "scene_id": "c05r-outro",
+      "line_text_sha256": "c60526d446fce2ae596b139a0b481cce285db0752350d2fa7895d4a1a0a0c6e8",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "K_T",
+        "NM",
+        "K_Q"
+      ],
+      "source_note": "留言提問，不是歷史/效力主張。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "片尾字卡，無金鳥技術數字。",
+      "line_delivery_verdict": "PASS"
+    },
+    {
+      "line_id": "c05r103",
+      "scene_id": "c05r-outro",
+      "line_text_sha256": "5b90ff40eb9743ee6b66ad492459cc395b8668121ecff8be977feae7b2eae048",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL",
+        "PROJECT"
+      ],
+      "source_note": "CTA不涉及金鳥事實，但系列身分與本稿metadata衝突。",
+      "written_visual_verdict": "PASS",
+      "written_visual_note": "片尾字卡，無金鳥技術數字。",
+      "line_delivery_verdict": "HOLD"
+    }
+  ]
+}

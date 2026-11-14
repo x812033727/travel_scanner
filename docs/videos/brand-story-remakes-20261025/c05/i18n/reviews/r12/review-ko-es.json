@@ -1,0 +1,36 @@
+{
+  "source_video_sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+  "reviewer": "c05-r12-independent-ko-es-reviewer (/root/c05_r12_review_ko_es)",
+  "independent": true,
+  "role_disclosure": "本reviewer未撰寫本次Chinese原稿或KO/ES譯文；獨立閱讀current video.json、script.md、claims.json，以及兩語worksheet/native全108句（含18句沿用）、6章、title、description、tags、thumbnail；未以譯者自校或既有review結論替代逐項判斷。已確認worksheet文字與native文字逐項一致、source文字與current video/claims逐句一致。檢查忠實度、自然度、主詞時態、專名、數字及條件、材料與化學術語、歷史事件歸屬；本報告只判定文字，不聲稱SRT時間軸或dub fit通過。",
+  "locales": [
+    {
+      "locale": "ko",
+      "worksheet_sha256": "5ccfa6ba676e9927418f97225b16522f6d863ea8bf1cede719cd149f2276a49f",
+      "translation_sha256": "3e950c9f927ac42e2e3217dfc2a4b0ebeda74f630b6f0d8d45084b98480035f7",
+      "status": "TEXT_PASS",
+      "checked_lines": 108,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": []
+    },
+    {
+      "locale": "es",
+      "worksheet_sha256": "820f50cbf607eeef586a31f774729bbcc3514f32be24c9d20e27bed830f5a62e",
+      "translation_sha256": "5b472eadb0bae3f057b194fc2fbdfc6c777ccce1e3f950f5b16009ab3f947392",
+      "status": "TEXT_PASS",
+      "checked_lines": 108,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": [
+        {
+          "target": "title",
+          "required": false,
+          "current": "¿Cómo dura toda la noche una espiral de KINCHO? Un siglo de materiales | Historia de marca",
+          "proposed": "¿Cómo dura toda la noche una espiral de KINCHO? Un siglo de retos con materiales | Historia de marca",
+          "reason": "純屬可選的標題精度與措辭調整：「Un siglo de materiales」已保留材料史主題；若希望更明示source的「材料難關」，可加retos。現行標題未造成事實或年代誤讀，不阻擋TEXT_PASS。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,937 @@
+{
+  "schema_version": 1,
+  "researcher": "/root/find_rules",
+  "date": "2026-10-25",
+  "topic": "C06 Play-Doh 10/25 new-rule remake source preparation",
+  "status": "SOURCE_RESEARCH_ONLY_NOT_A_NEW_SCRIPT_APPROVAL",
+  "input_versions": {
+    "repo": "/workspace/work/brand-remakes-source",
+    "video": "docs/videos/story-everyday-play-doh-c06/video.json",
+    "video_sha256": "666cd45a5e126d7f17dd95cce1cace213b07eaa2597340d3661d5cc3c3c4cbfa",
+    "script": "docs/videos/story-everyday-play-doh-c06/script.md",
+    "script_sha256": "80671fce0cc1d03e46b68361173fb547b156c255f1af10468e3011389e08232f",
+    "spoken_units": 2410,
+    "scenes": 94,
+    "lines": 94,
+    "target_minutes": [
+      9,
+      11
+    ],
+    "burn_in": false
+  },
+  "rules": {
+    "target_minutes": 13,
+    "actual_spoken_body_seconds": [
+      720,
+      840
+    ],
+    "approx_spoken_units": 3500,
+    "no_padding_or_fake_callbacks": true,
+    "new_script_not_written": true
+  },
+  "sources": [
+    {
+      "id": "K1",
+      "url": "https://www.kutol.com/kutols-story/",
+      "status": 200,
+      "final_url": "https://www.kutol.com/kutols-story/",
+      "bytes": 314017,
+      "raw_sha256": "e703d65813edf4c52278228a431f9394b953f88cd3e96239b15bf2252ad2a209",
+      "content_type": "text/html; charset=UTF-8",
+      "publication_meta": {
+        "og:title": "Kutol's Story",
+        "article:publisher": "https://www.facebook.com/KutolProductsCompany",
+        "article:modified_time": "2024-09-09T19:39:47+00:00"
+      },
+      "title": "Kutol’s Story",
+      "publisher": "Kutol",
+      "kind": "corporate_retrospective",
+      "published_on": null,
+      "modified_on": "2024-09-09",
+      "locator": "開頭沿革；Cleo/Kroger段；Kay Zufall/Rainbow段；Bill/液體皂與後續經營段",
+      "excerpt": "introduced Kutol’s wallpaper cleaner to her kindergarten class",
+      "confidence": "高：公司確如此回顧；中：多年以前事件本身",
+      "limits": "不是1933合約、教室紀錄或逐年帳本。largest-world等公司自評不作本片核心。",
+      "accessed_on": "2026-10-25",
+      "raw_document_saved": false
+    },
+    {
+      "id": "M1",
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "status": 200,
+      "final_url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "bytes": 415288,
+      "raw_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4",
+      "content_type": "text/html; charset=UTF-8",
+      "publication_meta": {
+        "og:title": "The History of Play-Doh: Good, Clean Fun! - The Strong National Museum of Play",
+        "article:publisher": "https://www.facebook.com/TheStrongMuseum/",
+        "article:published_time": "2016-11-03T04:00:00+00:00",
+        "article:modified_time": "2022-07-13T14:28:37+00:00"
+      },
+      "title": "The History of Play-Doh: Good, Clean Fun!",
+      "publisher": "The Strong National Museum of Play",
+      "kind": "official_institution_retrospective",
+      "published_on": "2016-11-03",
+      "modified_on": "2022-07-13",
+      "locator": "正文1933/early1950s/1955/1956/1957/1960/1964/1965段；文末出版日",
+      "excerpt": "According to Tim Walsh’s book",
+      "confidence": "中：館方回顧，早史部分轉引後出書籍",
+      "limits": "不是同期帳本；1955推出與1956公司/校園推廣分開。不可將其與Toy Hall條目算兩獨立機構。",
+      "accessed_on": "2026-10-25",
+      "raw_document_saved": false
+    },
+    {
+      "id": "M2",
+      "url": "https://www.toyhalloffame.org/toys/play-doh/",
+      "status": 200,
+      "final_url": "https://www.toyhalloffame.org/toys/play-doh/",
+      "bytes": 399945,
+      "raw_sha256": "7139f8584fb3c72dcf3b4fce6c7f9399199b426cb879a3d8327934cc203f03e6",
+      "content_type": "text/html; charset=UTF-8",
+      "publication_meta": {
+        "og:title": "Play-Doh | National Toy Hall of Fame | The Strong",
+        "article:publisher": "https://www.facebook.com/TheStrongMuseum/",
+        "article:modified_time": "2026-10-23T22:54:36+00:00"
+      },
+      "title": "Play-Doh — National Toy Hall of Fame",
+      "publisher": "The Strong",
+      "kind": "official_institution_retrospective",
+      "published_on": "2021-08-20",
+      "modified_on": "2026-10-23",
+      "locator": "Inducted Year；正文教師/1955教育展/百貨/1956/1957段",
+      "excerpt": "kids usually found modeling clay too hard to manipulate",
+      "confidence": "中：官方館方回顧，非當年教師試驗報告",
+      "limits": "與M1同機構；不證孩子比例、轉換率、百貨採購量。",
+      "accessed_on": "2026-10-25",
+      "raw_document_saved": false
+    },
+    {
+      "id": "P1",
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "status": 200,
+      "final_url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "bytes": 699681,
+      "raw_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6",
+      "content_type": "application/pdf",
+      "title": "US3167440 — Plastic modeling composition of a soft, pliable working consistency",
+      "publisher": "United States Patent Office（原始核發掃描，Google Patent Images保存）",
+      "kind": "primary_patent_scan",
+      "published_on": "1965-01-26",
+      "filing_on": "1960-05-17",
+      "locator": "PDF1（印刷欄1–2）：標頭、用途、CIP、目標、機制說明；後頁claims",
+      "excerpt": "a modeling composition for children's play",
+      "confidence": "高：原件人名、日期、申請內容；不證市售批次或效果",
+      "limits": "早申請735,985，1958-05-19，文內稱now abandoned。不是1933原配方、1956首賣證據或今天安全/成分保證。",
+      "accessed_on": "2026-10-25",
+      "raw_document_saved": false
+    },
+    {
+      "id": "G1",
+      "url": "https://tmng-al.uspto.gov/resting2/api/casedoc/cms/case/87335817/registration-certificate/5467089_87335817_051518_ORC.pdf",
+      "status": 200,
+      "final_url": "https://tmng-al.uspto.gov/resting2/api/casedoc/cms/case/87335817/registration-certificate/5467089_87335817_051518_ORC.pdf",
+      "bytes": 50733,
+      "raw_sha256": "62126abb502d40e723087e392491ceb5123d49bf44fd226fd5f6da42e93be1b2",
+      "content_type": "application/pdf;charset=UTF-8",
+      "title": "US trademark registration certificate 5,467,089 / serial 87-335,817",
+      "publisher": "USPTO",
+      "kind": "primary_official_registration",
+      "published_on": "2018-05-15",
+      "filing_on": "2017-02-14",
+      "locator": "PDF1：registration/date/Class28/first use/mark description",
+      "excerpt": "Registered May 15, 2018",
+      "confidence": "高：登記與證書所載；首次使用是申請人歷史聲明",
+      "limits": "氣味商標，不是配方專利。1955-09-12 first-use不是本次獨立核到的首筆發票。未查2026維持/續展狀態，不宣稱今日仍有效。",
+      "accessed_on": "2026-10-25",
+      "raw_document_saved": false
+    },
+    {
+      "id": "G2",
+      "url": "https://tsdrsec.uspto.gov/ts/cd/casedoc/sn87335817/RFA20170217125306/1/webcontent?scale=1",
+      "status": 200,
+      "final_url": "https://tsdrsec.uspto.gov/ts/cd/casedoc/sn87335817/RFA20170217125306/1/webcontent?scale=1",
+      "bytes": 27932,
+      "raw_sha256": "38400b68c170110e5dda782d87ae8a905b8f5a362ce59130bfe905d048cb018c",
+      "content_type": "text/html;charset=UTF-8",
+      "publication_meta": {},
+      "title": "Original trademark application, serial 87335817",
+      "publisher": "USPTO / Hasbro applicant",
+      "kind": "primary_applicant_declaration",
+      "published_on": null,
+      "filing_on": "2017-02-14",
+      "locator": "FIRST USE ANYWHERE/IN COMMERCE；miscellaneous statement；declaration",
+      "excerpt": "At least as early as 09/12/1955",
+      "confidence": "高：申請人作此聲明；非獨立首單查核",
+      "limits": "與1956品牌生日未必矛盾；不可寫成政府獨立證明1955-09-12首次售出。",
+      "accessed_on": "2026-10-25",
+      "raw_document_saved": false,
+      "document_date": "2017-02-14"
+    },
+    {
+      "id": "H1",
+      "url": "https://newsroom.hasbro.com/node/34691",
+      "status": 200,
+      "final_url": "https://newsroom.hasbro.com/node/34691",
+      "bytes": 35397,
+      "raw_sha256": "12c3a40ee1f8b19012447903cfbcad820ee55bc6e80fde8cd494b948b164ee78",
+      "content_type": "text/html; charset=UTF-8",
+      "publication_meta": {
+        "og:title": "HASBRO AND HORIZON GROUP USA SIGN A STRATEGIC PLAY-DOH LICENSING DEAL | Hasbro"
+      },
+      "title": "Hasbro and Horizon Group USA sign a strategic Play-Doh licensing deal",
+      "publisher": "Hasbro",
+      "kind": "contemporary_corporate_announcement",
+      "published_on": "2024-04-02",
+      "dateline_on": "2024-04-03",
+      "locator": "About PLAY-DOH；Horizon agreement段",
+      "excerpt": "over 500M cans of PLAY-DOH shipped a year",
+      "confidence": "高：2024公司公布口徑；非獨立銷量稽核",
+      "limits": "頁首4/2與內文4/3不一致，口播用2024年公告；5億是罐/年出貨，不是用戶或收入。2025供應新材質是當時計畫，不能單憑宣布證明完成。",
+      "accessed_on": "2026-10-25",
+      "raw_document_saved": false
+    },
+    {
+      "id": "H2",
+      "url": "https://corp.hasbro.com/news-releases/news-release-details/hasbro-trademarks-favorite-smell-childhood-play-doh-scent",
+      "status": 200,
+      "final_url": "https://corp.hasbro.com/news-releases/news-release-details/hasbro-trademarks-favorite-smell-childhood-play-doh-scent",
+      "bytes": 36534,
+      "raw_sha256": "faf0487550b58005ae7f073583ab5a07f9cdabab37cc769e966884d3be8d8cfc",
+      "content_type": "text/html; charset=UTF-8",
+      "publication_meta": {
+        "og:title": "Hasbro Trademarks a Favorite Smell from Childhood: The PLAY-DOH Scent | Hasbro, Inc."
+      },
+      "title": "Hasbro trademarks a favorite smell from childhood: the Play-Doh scent",
+      "publisher": "Hasbro",
+      "kind": "contemporary_corporate_announcement",
+      "published_on": "2018-05-18",
+      "locator": "宣布氣味商標、1956 brand inception、recipe largely unchanged段",
+      "excerpt": "the brand’s inception in 1956",
+      "confidence": "高：當年宣布與品牌自述；註冊日另依G1",
+      "limits": "1956為品牌回顧起點，不是首張訂單；largely unchanged不能倒推1930清潔膏相同、所有新品皆同方。",
+      "accessed_on": "2026-10-25",
+      "raw_document_saved": false
+    },
+    {
+      "id": "H3",
+      "url": "https://newsroom.hasbro.com/news-releases/news-release-details/hasbro-introduces-blooms-play-doh-new-creative-experience",
+      "status": 200,
+      "final_url": "https://newsroom.hasbro.com/news-releases/news-release-details/hasbro-introduces-blooms-play-doh-new-creative-experience",
+      "bytes": 34631,
+      "raw_sha256": "59479f5fd92ec190bccbf0dad30d3be50d096ccab14b36ad5f8e5b193f1a1392",
+      "content_type": "text/html; charset=UTF-8",
+      "publication_meta": {
+        "og:title": "Hasbro Introduces Blooms by Play-Doh, A New Creative Experience Designed for Adults | Hasbro"
+      },
+      "title": "Hasbro introduces Blooms by Play-Doh, a new creative experience designed for adults",
+      "publisher": "Hasbro",
+      "kind": "contemporary_corporate_announcement",
+      "published_on": "2026-07-09",
+      "locator": "首段成人線；kit步驟；finishing spray段；當時上架段",
+      "excerpt": "the first-ever Play-Doh line designed specifically for adults",
+      "confidence": "高：公司當時推出/定位；保存效果未獨立測試",
+      "limits": "成人產品線『首次』是公司措辭；噴霧維持花型數月是廠商聲稱。不可說臨床減壓或所有Play-Doh配方已改為永久定型。",
+      "accessed_on": "2026-10-25",
+      "raw_document_saved": false
+    },
+    {
+      "id": "H4",
+      "url": "https://consumercare.hasbro.com/en-ca/product/play-doh-fun-factory-set/2DE0510A-5056-9047-F548-E6B3E3FFF561",
+      "status": 200,
+      "final_url": "https://consumercare.hasbro.com/en-ca/product/play-doh-fun-factory-set/2DE0510A-5056-9047-F548-E6B3E3FFF561",
+      "bytes": 82119,
+      "raw_sha256": "e550e157362877e22a491eaca409eda472dce54951155fef01b21ffde4a619c1",
+      "content_type": "text/html; charset=utf-8",
+      "publication_meta": {
+        "og:title": "Play-Doh Fun Factory Set"
+      },
+      "title": "Play-Doh Fun Factory Set — Item B5554",
+      "publisher": "Hasbro Consumer Care",
+      "kind": "current_official_product_description",
+      "published_on": null,
+      "locator": "商品玩法/2 rails/lever；內容物與標示",
+      "excerpt": "choose a shape ... and press the lever",
+      "confidence": "高：當前型號說明；非1960歷史設計原件",
+      "limits": "只能示範此型號壓柄/形狀軌機制，不拿今天組件數或外形當1960原件。",
+      "accessed_on": "2026-10-25",
+      "raw_document_saved": false
+    },
+    {
+      "id": "H5",
+      "url": "https://consumercare.hasbro.com/en-ca/product/play-doh-4-pack-of-classic-colors/9BD4A680-3966-49AF-8A1A-147D584ABE32",
+      "status": 200,
+      "final_url": "https://consumercare.hasbro.com/en-ca/product/play-doh-4-pack-of-classic-colors/9BD4A680-3966-49AF-8A1A-147D584ABE32",
+      "bytes": 82663,
+      "raw_sha256": "eeb3b221395f8e57a078d976e7e99606139bf6ebd602f6ab827e0fcd056261c1",
+      "content_type": "text/html; charset=utf-8",
+      "publication_meta": {
+        "og:title": "Play-Doh 4-Pack of Classic Colors"
+      },
+      "title": "Play-Doh 4-Pack of Classic Colors — Item B5517",
+      "publisher": "Hasbro Consumer Care",
+      "kind": "current_official_product_description",
+      "published_on": null,
+      "locator": "Original quality；Notice to Parents/compound labels",
+      "excerpt": "made primarily with wheat, water, and salt",
+      "confidence": "高：當前型號廠商成分/用途標示",
+      "limits": "primarily不是完整配方；contains wheat/not intended to be eaten，不能由專利non-toxic變成可食或全齡安全建議。",
+      "accessed_on": "2026-10-25",
+      "raw_document_saved": false
+    }
+  ],
+  "claims": [
+    {
+      "id": "C06-01",
+      "statement": "Kutol在1912年起於Louisville，後移Cincinnati做清潔用品。",
+      "source_ids": [
+        "K1"
+      ],
+      "status": "usable_with_attribution",
+      "old_line_ids": [
+        "c060201",
+        "c060202",
+        "c060203"
+      ],
+      "limits": "企業回顧，不從頁面未列的年月補精確遷址日。",
+      "story_role": "background",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-02",
+      "statement": "Cleo與Kroger談壁紙清潔膏供應；公司說Cleo接手重整。",
+      "source_ids": [
+        "K1"
+      ],
+      "status": "usable_with_attribution",
+      "old_line_ids": [
+        "c060204",
+        "c060205"
+      ],
+      "limits": "不要添合約金額/簽約日/世界排名或當時淨利。",
+      "story_role": "origin",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-03",
+      "statement": "1933合作與Noah早期配方歸因只有館方後出歷史敘述。",
+      "source_ids": [
+        "M1"
+      ],
+      "status": "needs_scope",
+      "old_line_ids": [
+        "c060206",
+        "c060210"
+      ],
+      "limits": "可歸館方，不當已見1933原合約/原配方；專利雙發明人不等於證明1933誰單獨配方。",
+      "story_role": "background",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-04",
+      "statement": "1950年代需求轉弱與煤改油/氣的背景由館方提出。",
+      "source_ids": [
+        "M1"
+      ],
+      "status": "usable_with_attribution",
+      "old_line_ids": [
+        "c060104",
+        "c060207",
+        "c060208",
+        "c060211",
+        "c060214",
+        "c060302",
+        "c060303"
+      ],
+      "limits": "未取得逐年銷售或家戶能源資料；不說唯一原因令Kutol破產。",
+      "story_role": "origin",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-05",
+      "statement": "Cleo1949過世與Joseph接手的日期依館方。",
+      "source_ids": [
+        "M1"
+      ],
+      "status": "needs_attribution",
+      "old_line_ids": [
+        "c060301"
+      ],
+      "limits": "舊句未在本句明歸來源；新稿如保精確年，保回顧歸屬。",
+      "story_role": "background",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-06",
+      "statement": "幼兒難以揉普通造型黏土的理由是名人堂回顧。",
+      "source_ids": [
+        "M2"
+      ],
+      "status": "usable_with_attribution",
+      "old_line_ids": [
+        "c060308",
+        "c060309",
+        "c060310"
+      ],
+      "limits": "不是有樣本數的比較試驗；不推每位幼兒/所有黏土都太硬。",
+      "story_role": "new_user_problem",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-07",
+      "statement": "Kutol稱Kay Zufall為Joseph的sister-in-law，並將她連到幼兒園把清潔膏作造型材料。",
+      "source_ids": [
+        "K1"
+      ],
+      "status": "usable_with_attribution",
+      "old_line_ids": [
+        "c060105",
+        "c060313",
+        "c060314",
+        "c060401",
+        "c060403"
+      ],
+      "limits": "Kay/姻親稱謂與公司回顧保留；不是已讀本人同期訪談/教室日誌。",
+      "story_role": "pivot",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-08",
+      "statement": "『她看到的好處』與Joseph親見作品，只能分別作功能解讀與館方轉述。",
+      "source_ids": [
+        "K1",
+        "M1"
+      ],
+      "status": "needs_revision",
+      "old_line_ids": [
+        "c060402",
+        "c060405"
+      ],
+      "limits": "不要代寫內心、當天對話、孩子反應或教師原話；若解釋用途，要明示編輯判讀。",
+      "story_role": "pivot",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-09",
+      "statement": "館方明述後來重新配方/轉用途；公司史只說repurposed。",
+      "source_ids": [
+        "M1",
+        "K1"
+      ],
+      "status": "usable_with_attribution",
+      "old_line_ids": [
+        "c060311",
+        "c060312",
+        "c060409",
+        "c060410",
+        "c060517"
+      ],
+      "limits": "不能拿後出的玩具專利獨自證明1955某次實際改方，更不能添刪清潔劑/加杏仁香等無原件細節。",
+      "story_role": "product_requirements",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-10",
+      "statement": "Rainbow是Kutol子公司；館方把成立/校園推廣放1956。",
+      "source_ids": [
+        "K1",
+        "M1"
+      ],
+      "status": "usable_with_attribution",
+      "old_line_ids": [
+        "c060415",
+        "c060416"
+      ],
+      "limits": "尚未取得州公司登記/首單，1956不說成所有事件同日發生。",
+      "story_role": "organization",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-11",
+      "statement": "Hasbro以1956作Play-Doh品牌起點；2017氣味商標聲明則載至少早於1955-09-12使用。",
+      "source_ids": [
+        "H2",
+        "G2",
+        "G1"
+      ],
+      "status": "needs_revision",
+      "old_line_ids": [
+        "c060411",
+        "c060412",
+        "c060413",
+        "c060414"
+      ],
+      "limits": "品牌生日、試用、首次使用聲明與首張交易單分開；不可再泛稱完全沒有早期使用原件，也不能當已獨立證實首賣日。",
+      "story_role": "chronology",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-12",
+      "statement": "1955教育展與Macy’s/Marshall Field’s擴散依名人堂回顧。",
+      "source_ids": [
+        "M2"
+      ],
+      "status": "usable_with_attribution",
+      "old_line_ids": [
+        "c060501",
+        "c060502"
+      ],
+      "limits": "未讀百貨原採購單；不算家長轉換率或銷售增幅。",
+      "story_role": "distribution",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-13",
+      "statement": "館方將加入紅黃藍新色放1957。",
+      "source_ids": [
+        "M1",
+        "M2"
+      ],
+      "status": "usable_with_attribution",
+      "old_line_ids": [
+        "c060504",
+        "c060505",
+        "c060506"
+      ],
+      "limits": "兩頁是同機構，不是雙獨立來源；不寫成1956一開始四新色同時上市。",
+      "story_role": "product_requirements",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-14",
+      "statement": "Captain Kangaroo帶來曝光是館方回顧的因果。",
+      "source_ids": [
+        "M1"
+      ],
+      "status": "usable_with_attribution",
+      "old_line_ids": [
+        "c060508",
+        "c060509",
+        "c060510"
+      ],
+      "limits": "不推每波銷量、佣金比例或現場商談；若要具體播出畫面需另取同期節目證據。",
+      "story_role": "distribution",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-15",
+      "statement": "Fun Factory的1960推出/兩位工程師依館方；當前型號官方說明壓柄與形狀軌。",
+      "source_ids": [
+        "M1",
+        "H4"
+      ],
+      "status": "usable_with_attribution",
+      "old_line_ids": [
+        "c060512",
+        "c060513",
+        "c060514"
+      ],
+      "limits": "歷史年份與當前機制分開；不要把今天B5554設計/組件數當1960原件。",
+      "story_role": "mechanism",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-16",
+      "statement": "1964年逾百萬罐年出貨是館方回顧數字。",
+      "source_ids": [
+        "M1"
+      ],
+      "status": "optional_attributed_not_core_number",
+      "old_line_ids": [
+        "c060605",
+        "c060606"
+      ],
+      "limits": "無原始出貨帳；不當獨立審計，不換算兒童數/收入。",
+      "story_role": "optional",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-17",
+      "statement": "1965售出Rainbow而非Kutol全公司；Kutol繼續做清潔/護膚。",
+      "source_ids": [
+        "K1",
+        "M1"
+      ],
+      "status": "usable_with_attribution",
+      "old_line_ids": [
+        "c060610",
+        "c060611"
+      ],
+      "limits": "交易年據館方，子公司/原公司分開；不添價格或聲稱Kutol退出所有生意。",
+      "story_role": "payoff",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-18",
+      "statement": "Kenner至Hasbro的後續歸屬可採館方概述。",
+      "source_ids": [
+        "M1"
+      ],
+      "status": "optional_attributed",
+      "old_line_ids": [
+        "c060612"
+      ],
+      "limits": "若要精確法律交易鏈/1991收購對象須另核公司/SEC原件，不從簡述添所有權細節。",
+      "story_role": "optional",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-19",
+      "statement": "2026 Hasbro確實公告Play-Doh新品系列。",
+      "source_ids": [
+        "H3"
+      ],
+      "status": "usable_as_dated_announcement",
+      "old_line_ids": [
+        "c060613"
+      ],
+      "limits": "7/9公告的上架/定位，不等於銷售成功；未驗未來平台推出是否按計畫發生。",
+      "story_role": "payoff",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-P01",
+      "statement": "US3167440原件列Noah W.與Joseph S. McVicker，assignors to Rainbow Crafts。",
+      "source_ids": [
+        "P1"
+      ],
+      "status": "usable_primary_document",
+      "old_line_ids": [
+        "c060602"
+      ],
+      "limits": "兩人列名只證這件申請；不抹去Kay商業用途建議，也不倒推1933配方唯一作者。",
+      "story_role": "primary_turn",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-P02",
+      "statement": "本案1960-05-17提出，1965-01-26核發，16 claims，No Drawing。",
+      "source_ids": [
+        "P1"
+      ],
+      "status": "usable_primary_document",
+      "old_line_ids": [
+        "c060601",
+        "c060607",
+        "c060608"
+      ],
+      "limits": "申請/核發/上市/首單不同；不能叫1956推出前的核准藍圖。",
+      "story_role": "primary_turn",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-P03",
+      "statement": "原件稱為1958-05-19的735,985部分續案，早案now abandoned。",
+      "source_ids": [
+        "P1"
+      ],
+      "status": "usable_primary_document",
+      "old_line_ids": [
+        "c060604",
+        "c060609"
+      ],
+      "limits": "未取得早案全文；不要把1958當已核准專利或1930清潔膏成分證明。",
+      "story_role": "primary_turn",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-P04",
+      "statement": "文首針對兒童遊戲，目標含慢乾、反覆改形、乾淨、不黏、不染。",
+      "source_ids": [
+        "P1"
+      ],
+      "status": "usable_as_patent_goals",
+      "old_line_ids": [
+        "c060603",
+        "c060518"
+      ],
+      "limits": "是申請人的設計主張，非本次性能/安全試驗，非1956某罐實測。",
+      "story_role": "mechanism",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-P05",
+      "statement": "專利目標還包括加入顏色不破壞可塑性。",
+      "source_ids": [
+        "P1"
+      ],
+      "status": "usable_as_patent_goals",
+      "old_line_ids": [],
+      "limits": "不能只當外觀加色；但不證1957工廠怎麼量產或現在全部色系同方。",
+      "story_role": "mechanism",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-P06",
+      "statement": "原件以薄膜包覆與穀粉糊化描述柔軟/不黏機制，且用It is believed限定部分解釋。",
+      "source_ids": [
+        "P1"
+      ],
+      "status": "optional_hypothesis_only",
+      "old_line_ids": [],
+      "limits": "若用須保『專利作者認為』；不當獨立實驗結論，不做家用配方教學。",
+      "story_role": "optional",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-P07",
+      "statement": "專利有穀粉、水、鹽及其他成分/選項；香料與色料可選。",
+      "source_ids": [
+        "P1"
+      ],
+      "status": "usable_as_document_content",
+      "old_line_ids": [],
+      "limits": "不列家庭製作比例；不把1965專利與2026成分表畫等號，不宣稱清潔膏與玩具完全同方。",
+      "story_role": "mechanism",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-N01",
+      "statement": "Hasbro2024公告自稱年出貨逾5億罐、銷售超過80國。",
+      "source_ids": [
+        "H1"
+      ],
+      "status": "usable_with_corporate_attribution",
+      "old_line_ids": [],
+      "limits": "須說公告年份/公司口徑；罐≠兒童、出貨≠零售成交、非本片稽核；不倒推1950s規模。",
+      "story_role": "opening_number",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-N02",
+      "statement": "2017-02-14申請氣味商標，2018-05-15註冊第5467089號，Class28玩具造型材料。",
+      "source_ids": [
+        "G1",
+        "G2"
+      ],
+      "status": "usable_primary_document",
+      "old_line_ids": [],
+      "limits": "不是1965配方專利；不說全球/永久壟斷所有麵粉味，不宣稱2026維持狀態已查。",
+      "story_role": "optional_reveal",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-N03",
+      "statement": "註冊描述是一組特定氣味組合；證書所載首次使用為1955-09-12。",
+      "source_ids": [
+        "G1",
+        "G2"
+      ],
+      "status": "usable_with_record_scope",
+      "old_line_ids": [],
+      "limits": "首次使用由申請人聲明，不等於首筆發票；氣味是來源識別，不是以香味證明配方不變。",
+      "story_role": "chronology",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-N04",
+      "statement": "Hasbro2018把氣味描述為品牌辨識/記憶連結，並稱1956後recipe大致未變。",
+      "source_ids": [
+        "H2"
+      ],
+      "status": "usable_with_corporate_attribution",
+      "old_line_ids": [],
+      "limits": "不能推所有人都聞得出/香味造成全部購買；『大致』非完全、且不涵蓋1930清潔膏或後續所有替代材質。",
+      "story_role": "optional_reveal",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-N05",
+      "statement": "當前B5554說明選形狀軌、裝軟泥、壓柄擠出形狀。",
+      "source_ids": [
+        "H4"
+      ],
+      "status": "usable_current_model_scope",
+      "old_line_ids": [],
+      "limits": "只指本型號，沒有實際操作就標廠商說明；不說已親測或1960工廠現場。",
+      "story_role": "mechanism",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-N06",
+      "statement": "當前B5517標示主要為小麥、水、鹽，另有含麥/非食用用途標示。",
+      "source_ids": [
+        "H5"
+      ],
+      "status": "usable_current_label_scope",
+      "old_line_ids": [],
+      "limits": "primarily不等於完整配方；non-toxic不等於可食，也不能把1965目標當今天全齡安全證書。",
+      "story_role": "boundary",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-N07",
+      "statement": "2024 Hasbro宣布Horizon授權，計畫2025起製造/分銷air-dry clay等替代材料。",
+      "source_ids": [
+        "H1"
+      ],
+      "status": "usable_as_announcement_only",
+      "old_line_ids": [],
+      "limits": "公告/預期不等於已執行，替代材質不概括為經典軟泥配方。",
+      "story_role": "optional_business",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-N08",
+      "statement": "2026-07-09 Hasbro推出定位成人的Blooms花藝套件。",
+      "source_ids": [
+        "H3"
+      ],
+      "status": "usable_as_dated_announcement",
+      "old_line_ids": [],
+      "limits": "『首個成人線』保Hasbro歸屬；非成人從沒玩過Play-Doh，不代表市場成功。",
+      "story_role": "new_user_payoff",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-N09",
+      "statement": "Blooms套件包含造花工具及特製finishing spray；公司稱可助花型維持數月。",
+      "source_ids": [
+        "H3"
+      ],
+      "status": "usable_with_performance_attribution",
+      "old_line_ids": [],
+      "limits": "保存效果是廠商說法，未獨立測試；不是經典軟泥全改成永久定型。",
+      "story_role": "new_user_payoff",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-N10",
+      "statement": "成人線讓『誰需要它/要反覆捏還是留下作品』得到另一個當代案例。",
+      "source_ids": [
+        "H3",
+        "P1"
+      ],
+      "status": "editorial_inference_available",
+      "old_line_ids": [],
+      "limits": "這是跨時點的明示編輯對照，不聲稱成人需求造成1950改配方，亦不說兩時期同一化學配方。",
+      "story_role": "genuine_callback",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-L01",
+      "statement": "首批清潔膏的完整配方、1933原合約、Kay同期課堂、1956州登記/首單尚未在本輪原件中核得。",
+      "source_ids": [
+        "K1",
+        "M1",
+        "P1",
+        "G2"
+      ],
+      "status": "unresolved_not_absence",
+      "old_line_ids": [],
+      "limits": "不把有限搜尋未核得寫成從未存在/無人記錄。已找到的1955 first-use申請聲明須保留。",
+      "story_role": "boundary",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-L02",
+      "statement": "去清潔劑、加杏仁香、精確銷售佣金與救活公司的金額目前無本輪核心原件支持。",
+      "source_ids": [],
+      "status": "omit_unless_new_primary_evidence",
+      "old_line_ids": [],
+      "limits": "不從常見網路故事、YouTube逐字稿或專利配方自行補出歷史事件。",
+      "story_role": "exclude",
+      "new_script_reviewed": false
+    },
+    {
+      "id": "C06-L03",
+      "statement": "舊稿多次重講教室試用/改方與查核缺口，不宜靠換字延長。",
+      "source_ids": [],
+      "status": "editorial_restructure_needed",
+      "old_line_ids": [
+        "c060304",
+        "c060307",
+        "c060315",
+        "c060401",
+        "c060409",
+        "c060510",
+        "c060516",
+        "c060517",
+        "c060606",
+        "c060608",
+        "c060609"
+      ],
+      "limits": "不是判這些句子全部史實錯；新稿把必要歸屬貼主張，其餘查核過程移說明欄，新增段落要推進。",
+      "story_role": "exclude_repetition",
+      "new_script_reviewed": false
+    }
+  ],
+  "relationships": [
+    {
+      "person": "Cleo McVicker",
+      "scope": "公司/館方回顧的Kutol經營與Kroger供應；非本案專利列名發明人"
+    },
+    {
+      "person": "Noah W. McVicker",
+      "scope": "US3167440列名共同發明人；早期清潔膏配方歸因屬館方回顧"
+    },
+    {
+      "person": "Joseph S. McVicker",
+      "scope": "US3167440共同發明人；公司/館方將轉玩具/推廣與其相連"
+    },
+    {
+      "person": "Kay Zufall",
+      "scope": "Kutol稱Joseph的sister-in-law、幼兒園教師；引入造型用途。不因專利未列名就聲稱她沒貢獻或發明被偷"
+    },
+    {
+      "person": "Bill Rhodenbaugh",
+      "scope": "Kutol後續清潔/護膚路線；別把其家族的Joe與Joseph McVicker混同"
+    }
+  ],
+  "narrative_material_not_script": [
+    {
+      "question": "材料原本替哪種問題工作？",
+      "evidence": [
+        "C06-02",
+        "C06-04"
+      ],
+      "concrete_object": "壁紙污痕與一團可揉清潔材料；匿名概念，不重建原工廠"
+    },
+    {
+      "question": "換了使用者後，柔軟之外還要什麼？",
+      "evidence": [
+        "C06-07",
+        "C06-P04",
+        "C06-P05"
+      ],
+      "concrete_object": "教師的用途建議；後出專利的反覆塑形/慢乾/加色目標，日期不壓同一天"
+    },
+    {
+      "question": "一團材料如何產生新的玩法？",
+      "evidence": [
+        "C06-15",
+        "C06-N05"
+      ],
+      "concrete_object": "形狀軌/壓柄；當前工具說明與1960回顧分開"
+    },
+    {
+      "question": "大規模商品是否只有改名？",
+      "evidence": [
+        "C06-N01",
+        "C06-10",
+        "C06-17"
+      ],
+      "concrete_object": "玩具子公司/通路及有日期罐數；不算人物數/收入"
+    },
+    {
+      "question": "同樣品牌，今天還會換使用者和目標嗎？",
+      "evidence": [
+        "C06-N08",
+        "C06-N09",
+        "C06-N10"
+      ],
+      "concrete_object": "成人花藝工具與保存噴霧，回收反覆捏/保留作品的不同需求"
+    }
+  ],
+  "scope_limits": {
+    "new_narration_drafted": false,
+    "new_script_reviewed": false,
+    "old_sources_modified": false,
+    "backend_calls": 0,
+    "provider_model_calls": 0,
+    "paid_calls": 0,
+    "primary_caches_written": false,
+    "actual_tts_runtime_or_media_verified": false,
+    "source_excerpts_brief": true
+  }
+}

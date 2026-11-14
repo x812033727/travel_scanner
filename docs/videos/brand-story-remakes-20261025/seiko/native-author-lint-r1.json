@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "role": "AUTHOR_LOCAL_NATIVE_LINT_NOT_INDEPENDENT_REVIEW",
+  "revision": "seiko-r1",
+  "checked_at_utc": "2026-10-26T03:56:31.439Z",
+  "runtime_root": "/workspace/work/brand-story-20261025/seiko-submission-root",
+  "ordinary_cli_command": [
+    "node",
+    "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+    "/workspace/work/brand-story-20261025/seiko-submission-root",
+    "lint",
+    "--slug",
+    "story-adapt-seiko-quartz-astron-remake-20261025",
+    "--json"
+  ],
+  "ordinary_cli_observed_exit_code": 0,
+  "ordinary_cli_output_path": "/workspace/work/brand-story-20261025/seiko-audit/native-lint-r1-ordinary-cli.json",
+  "ordinary_cli_output_sha256": "b5beb94b80eb711bff1899d313930a3d887c7c976d62ee903851101f17c352bb",
+  "native_lint_errors": [],
+  "native_lint_warnings": [
+    {
+      "path": "scenes",
+      "message": "about 16.2 minutes; the target is 12-14"
+    }
+  ],
+  "whole_narration_spoken_units": 3438,
+  "native_estimate_seconds": 972.3666666666667,
+  "native_estimate_is_not_actual_audio": true,
+  "planning_at_4_to_5_units_per_second": [
+    687.6,
+    859.5
+  ],
+  "actual_audio_seconds": null,
+  "actual_duration_verified": false,
+  "required_actual_body_seconds": [
+    720,
+    840
+  ],
+  "body_includes_coldopen_and_voiced_CTA": true,
+  "extra_bookends_seconds": 26,
+  "hook_cadence_45s_warnings": [],
+  "chapter_viewer_and_narrator_counts": [
+    {
+      "chapter": "四十五萬的錶，先回到工作台",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "振子、回路與馬達，擠進三公分",
+      "you": 6,
+      "I": 2
+    },
+    {
+      "chapter": "送到東京，價牌卻又要換",
+      "you": 3,
+      "I": 2
+    },
+    {
+      "chapter": "售出的錶，回來重新調整",
+      "you": 3,
+      "I": 2
+    },
+    {
+      "chapter": "走到爐邊，才看見少記的事",
+      "you": 3,
+      "I": 1
+    },
+    {
+      "chapter": "把手焊回路，接向下一代晶片",
+      "you": 5,
+      "I": 3
+    },
+    {
+      "chapter": "回路變小，還得留出能修的地方",
+      "you": 4,
+      "I": 5
+    }
+  ],
+  "source_video_script_narration_claims_projection_consistent": true,
+  "scene_count": 144,
+  "shot_count": 143,
+  "illustration_share_written_body": 1,
+  "maximum_consecutive_cards": 0,
+  "immutable_lexicon_sha256": "4ce7a255c5ba40e62246b602cf2ce17a91d1ea431b2b02827a51f589d14aa57e",
+  "immutable_lexicon_not_reinitialized": true,
+  "dictionary_readings_independent_review_pending": true,
+  "voice_object_unchanged": true,
+  "runtime_manifest_sha256": "4ead1cd694e6486f52472f7edc6c4ab0397f7085747b50deeaa7e06dc7c3569b",
+  "reproducible_build": {
+    "command": [
+      "node",
+      "docs/videos/brand-story-remakes-20261025/seiko/build-candidate.mjs"
+    ],
+    "exit_code": 0,
+    "before_sha256": {
+      "video.json": "a4dbe4850de1a2773aee8b273c8d92beb9f775d6e8bb3ba808a9bf70b4f6e115",
+      "script.md": "591c8de7a42817fdcd2ed934eacee35467df2345fa1c3fd194119d58e4171443",
+      "narration-only.json": "347c428bc7f93e00f8dbae1620e036cd32984c86d22d006bce3b8582043e57c9",
+      "claims.json": "d18d87d822fb0febb22c79b099da3db7a552edd41cac0521471ebfa02d701b2b",
+      "claims.md": "71ecec4c0c741556134c6077fe0481c69150697fbaf51a27837355c96f76e0e8",
+      "brief.md": "500c3ed7a0ef505569a9d7081dd71fe5949f76e92f6459feb30edec295961599",
+      "series.json": "61ed905c670fc5f1e4eb9328d7cf23a8f496d4d1a38a76537d164c1cb4f7e260",
+      "image-reuse-plan.json": "05f5574cdd4d57b9027a014a487d3858a11da134551668e55045bba582c0450b",
+      "producer.md": "2938831b2c4f8257224ae08b06287799066f122e0a758d7fb524081342a73129",
+      "protected-inputs-r1.json": "82c0c533a256eab89a06348668dca39dac6dae17dbb65e5a0a1441668ea1ed40"
+    },
+    "after_sha256": {
+      "video.json": "a4dbe4850de1a2773aee8b273c8d92beb9f775d6e8bb3ba808a9bf70b4f6e115",
+      "script.md": "591c8de7a42817fdcd2ed934eacee35467df2345fa1c3fd194119d58e4171443",
+      "narration-only.json": "347c428bc7f93e00f8dbae1620e036cd32984c86d22d006bce3b8582043e57c9",
+      "claims.json": "d18d87d822fb0febb22c79b099da3db7a552edd41cac0521471ebfa02d701b2b",
+      "claims.md": "71ecec4c0c741556134c6077fe0481c69150697fbaf51a27837355c96f76e0e8",
+      "brief.md": "500c3ed7a0ef505569a9d7081dd71fe5949f76e92f6459feb30edec295961599",
+      "series.json": "61ed905c670fc5f1e4eb9328d7cf23a8f496d4d1a38a76537d164c1cb4f7e260",
+      "image-reuse-plan.json": "05f5574cdd4d57b9027a014a487d3858a11da134551668e55045bba582c0450b",
+      "producer.md": "2938831b2c4f8257224ae08b06287799066f122e0a758d7fb524081342a73129",
+      "protected-inputs-r1.json": "82c0c533a256eab89a06348668dca39dac6dae17dbb65e5a0a1441668ea1ed40"
+    },
+    "all_equal": true
+  },
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "current_verify_absent": true,
+  "actual_native_review_round_count": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "owner_approvals_created": 0
+}

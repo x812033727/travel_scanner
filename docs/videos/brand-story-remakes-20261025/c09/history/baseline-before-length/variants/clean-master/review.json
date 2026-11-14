@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "review_type": "METADATA_ONLY_CLEAN_MASTER_DERIVATION",
+  "reviewer": "/root/c04_readiness",
+  "independent": true,
+  "checked_at": "2026-10-25T15:52:53.829Z",
+  "slug": "story-everyday-patagonia-c09-remake-20261025",
+  "verdict": "METADATA_DERIVATION_PASS",
+  "bindings": {
+    "source_video": {
+      "path": "../../video.json",
+      "sha256": "875eaca7ba51de28a9e2a198dfd8070325aabec91b58bb7cb903731415fb233a"
+    },
+    "variant_video": {
+      "path": "video.json",
+      "sha256": "885e6177bde976c4ebea72bcc7bbe4e5e91ac7649abcf93146cb2b8aee9eac9d"
+    },
+    "derivation": {
+      "path": "derivation.json",
+      "sha256": "2cba8a6c5309f2689f2e14953bc3850a3e5649d6bed84e520d7eac37d4939af8"
+    },
+    "source_receipt": {
+      "path": "../../reviews/source-r12-delta.json",
+      "sha256": "6cdbad01e2b958ce36a40068ffc45d3a76ac32efec23bce6fa026c7531dfa019"
+    }
+  },
+  "full_object_comparison": {
+    "only_difference": "subtitles.burn_in: true -> false",
+    "same_new_remake_slug": true,
+    "old_activated_slug_used": false,
+    "all_other_input_fields_identical": true
+  },
+  "native_pure_function_verification": {
+    "screenplay_bytes_identical": true,
+    "canonical_script_sha256": "0547060346e7d6194d9bd096bcc19bb4e0166dde28fd292543ff3f047cf216d1",
+    "hashes": {
+      "narrativeHash": {
+        "source": "54c01ca34061e549",
+        "variant": "54c01ca34061e549",
+        "equal": true
+      },
+      "speechHash": {
+        "source": "9569235a362f3ef8",
+        "variant": "9569235a362f3ef8",
+        "equal": true
+      },
+      "picturesHash": {
+        "source": "76d837ba592a203a",
+        "variant": "76d837ba592a203a",
+        "equal": true
+      },
+      "lookHash": {
+        "source": "98a370ae40badbaf",
+        "variant": "98a370ae40badbaf",
+        "equal": true
+      },
+      "mixHash": {
+        "source": "71ecdd098c551254",
+        "variant": "71ecdd098c551254",
+        "equal": true
+      },
+      "subtitlesHash": {
+        "source": "4b23ded6e41b1e87",
+        "variant": "ec58a1493220a1da",
+        "equal": false
+      }
+    },
+    "lint_errors": 0,
+    "real_immutable_project_lexicon_used": true
+  },
+  "render_plan_review": {
+    "verdict": "PASS_AS_UNRENDERED_PLAN",
+    "same_ledger": true,
+    "required_future_evidence": [
+      "Legal paid admission for this exact remake; actual verified narration/images/music and corresponding receipts.",
+      "Two actually rendered outputs and their distinct MP4 SHA values; real burned/clean subtitle evidence.",
+      "Each applicable bound QA, with the clean cut becoming the current approved final before native dub eligibility."
+    ],
+    "no_duplicate_provider_purchase": true,
+    "no_existing_MP4_final_approval_or_QA_inheritance": true
+  },
+  "not_claimed": {
+    "actual_clean_master_exists": false,
+    "actual_burned_export_exists": false,
+    "media_qa": false,
+    "final_owner_approval": false,
+    "actual_dub_eligibility": false,
+    "dubs_completed": false,
+    "source_reopened_for_c05_or_c09": false,
+    "budget_activation": false
+  },
+  "review_actions": {
+    "provider_calls": 0,
+    "paid_calls": 0,
+    "backend_actions": 0,
+    "source_or_recipe_edits": 0
+  },
+  "findings": [],
+  "scope_note": "PASS is limited to the complete-object metadata difference, source receipt/native input identity and an unrendered plan. Input identity is not verified media reuse, actual duration, sound/image QA, MP4 approval, dubbing eligibility or publication approval."
+}

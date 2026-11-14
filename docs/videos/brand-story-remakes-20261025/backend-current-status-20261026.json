@@ -1,0 +1,2283 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-26T08:58:44.768Z",
+  "scope": "15 completed text projects only: current entry/config/source/receipt/runtime preflight, then normal authenticated read-only GET /api/video/reviews/<slug>. No stale-root helper execution.",
+  "requests": {
+    "method": "GET",
+    "review_gets_attempted": 21,
+    "post_put_patch_delete": 0
+  },
+  "stage_is_next_gate_not_decision": true,
+  "projects": [
+    {
+      "id": "c03",
+      "slug": "story-everyday-moleskine-c03-remake-20261025",
+      "source_video_sha256": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+      "canonical_script_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+      "outline_sha256": "56becc4f375bc3e9c2a1600eb4f6061803be39c34f0e70d1ff7ce7dd70931b2e",
+      "runtime_root": "/workspace/work/brand-story-20261025/c03-submission-root",
+      "current_entry": [
+        {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c03/production-entry.md",
+          "sha256": "6fb7680fe078ac4c9a875631092c0b24fb47444dec516d056af457687da94c88"
+        }
+      ],
+      "backend_status_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c03/backend-status.json",
+        "sha256": "bcdad2442ba61839bca48e4b9230149cca400294056b4143a3d04e0448fa4065"
+      },
+      "canonical_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c03/backend-script-receipt.json",
+        "sha256": "cfd02fe51415a5d3ad855edf889be2a70fc71d5f061400fbb3c5c7e35eb9cecc",
+        "receipt_source_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+        "source_sha_is_historical": true
+      },
+      "text_config": null,
+      "text_source_rebind": null,
+      "root_source_current_receipt_consistent": true,
+      "local_approval_path": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/approvals.json",
+      "local_approval_before_sha256": "709b5d261469595ffc55358b9f4585e2754403ec167924b4054625fb2febe5da",
+      "expected_script": {
+        "review_id": "c90d3492-7efe-4385-bdcc-ccd6664205d1",
+        "content_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+        "previous_status": "approved",
+        "previous_decided_at": "2026-10-25T14:09:45.088309Z"
+      },
+      "expected_outline": {
+        "review_id": "3b0480b5-0ca4-4337-b743-0db04dfb4106",
+        "content_sha256": "56becc4f375bc3e9c2a1600eb4f6061803be39c34f0e70d1ff7ce7dd70931b2e",
+        "previous_status": "approved",
+        "previous_decided_at": "2026-10-25T14:10:30.120741Z"
+      },
+      "observed_at": "2026-10-26T08:57:26.935Z",
+      "http_status": 200,
+      "readback": "EXACT_CURRENT_CANONICAL_GET_VERIFIED_WITH_HISTORICAL_PROMPT_PAYLOAD",
+      "category": "story",
+      "stage": "narration synthesized",
+      "stage_is_next_gate_not_decision": true,
+      "series_slug": null,
+      "script": {
+        "review_id": "c90d3492-7efe-4385-bdcc-ccd6664205d1",
+        "gate": "script",
+        "status": "approved",
+        "content_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+        "decided_at": "2026-10-25T14:09:45.088309Z",
+        "created_at": "2026-10-25T13:55:36.115566Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "approved",
+        "newly_observed_approved": false
+      },
+      "outline": {
+        "review_id": "3b0480b5-0ca4-4337-b743-0db04dfb4106",
+        "gate": "outline",
+        "status": "approved",
+        "content_sha256": "56becc4f375bc3e9c2a1600eb4f6061803be39c34f0e70d1ff7ce7dd70931b2e",
+        "decided_at": "2026-10-25T14:10:30.120741Z",
+        "created_at": "2026-10-25T13:55:34.104604Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "approved",
+        "newly_observed_approved": false
+      },
+      "exact_payload": {
+        "script_scenes_match_current_source": false,
+        "script_narrative_hash_matches_current_source": true,
+        "outline_brief_bytes_match_current_submission": true,
+        "all_non_prompt_scene_payload_fields_match_current_source": true,
+        "difference_scope": "Only scene.prompt fields differ. Canonical screenplay approval excludes shot prompts; current independent visual-only adoption preserved canonical/narrative inputs and owner review ID.",
+        "historical_prompt_differences": [
+          {
+            "scene_id": "c03r-h04",
+            "remote_historical_prompt_sha256": "5b033257284d56130975afb995dfb3e47c5aed9d94220a247639eb4deb87d599",
+            "current_visual_prompt_sha256": "5864f92d036095203cd6417df522316c06ef04afb8d3d88d2c1d1119abe0fe56"
+          },
+          {
+            "scene_id": "c03r-h05",
+            "remote_historical_prompt_sha256": "34e36c2dc66e7ed9dcc2110d4f8c824cf9c2246250cc7b7df27524545e4c55f4",
+            "current_visual_prompt_sha256": "4fc3b4c522413d60f490c4e269c19b729213fdcb931d945cee82c678711e3ad6"
+          }
+        ],
+        "visual_only_adoption_receipt": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c03/visual-only-runtime-adoption.json",
+          "sha256": "a8a54882a80d838a1959b39600b25bb61f807466a5b5bba96f45ba995a391622",
+          "source_video_sha256": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+          "canonical_script_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f"
+        }
+      },
+      "current_hash_reviews": [
+        {
+          "id": "c90d3492-7efe-4385-bdcc-ccd6664205d1",
+          "gate": "script",
+          "status": "approved",
+          "content_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+          "decided_at": "2026-10-25T14:09:45.088309Z"
+        },
+        {
+          "id": "3b0480b5-0ca4-4337-b743-0db04dfb4106",
+          "gate": "outline",
+          "status": "approved",
+          "content_sha256": "56becc4f375bc3e9c2a1600eb4f6061803be39c34f0e70d1ff7ce7dd70931b2e",
+          "decided_at": "2026-10-25T14:10:30.120741Z"
+        }
+      ],
+      "languages": {
+        "status": "OBSERVED_ACTUAL_GET",
+        "locales": {
+          "en": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ja": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ko": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "es": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "pt": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "id": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "vi": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "th": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          }
+        },
+        "locales_decided_at": "2026-10-25T14:09:36.202531Z",
+        "dub_allowed": false,
+        "dub_allowed_is_not_actual_clean_media_eligibility": true
+      },
+      "remote_media_usd": 0,
+      "remote_clip_seconds": 0,
+      "approvals_imported": false,
+      "local_approval_after_sha256": "709b5d261469595ffc55358b9f4585e2754403ec167924b4054625fb2febe5da",
+      "local_approval_unchanged": true,
+      "exact_current_canonical_review_ids_and_hashes_verified": true,
+      "visual_payload_followup_observed_at": "2026-10-26T08:58:43.296Z"
+    },
+    {
+      "id": "c04",
+      "slug": "story-everyday-bubble-wrap-c04-remake-20261025",
+      "source_video_sha256": "8549eb766873b65cb3453d03edfb5c2d151a3a9209578f3383cdc321c9620a75",
+      "canonical_script_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+      "outline_sha256": "c3eb5e30f27880ddbeb890ea9983b8c0c3d2189ccc3861ebd2f7c75dc022613c",
+      "runtime_root": "/workspace/work/brand-story-20261025/submission-root",
+      "current_entry": [
+        {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c04/production-entry.md",
+          "sha256": "ce619916e1a0e9a000ee2b2194058a46674bb5dcc64c748168cd1ac5c5df00cb"
+        }
+      ],
+      "backend_status_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c04/backend-status.json",
+        "sha256": "d9552caed3756197f0400f7e3140dbfca5a0eecfe95b9554ffc8f285849fae3b"
+      },
+      "canonical_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c04/backend-script-receipt.json",
+        "sha256": "8ee85a7309a0a3f8cd0c19cf7689cb6f9521e90600f4bf1d83e07c9e08cbf3df",
+        "receipt_source_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+        "source_sha_is_historical": true
+      },
+      "text_config": null,
+      "text_source_rebind": null,
+      "root_source_current_receipt_consistent": true,
+      "local_approval_path": "/workspace/work/brand-story-20261025/media/story-everyday-bubble-wrap-c04-remake-20261025/approvals.json",
+      "local_approval_before_sha256": "df2fd85df2633fa3a436370e3ff1610c65d5c1799eee1dcbbed3e5a9ab6e8402",
+      "expected_script": {
+        "review_id": "4b59f286-1467-4548-b0da-95b5462f682f",
+        "content_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+        "previous_status": "approved",
+        "previous_decided_at": "2026-10-25T11:30:32.315048Z"
+      },
+      "expected_outline": {
+        "review_id": "b82ea00f-85da-4cc9-92d8-a654e08ea09b",
+        "content_sha256": "c3eb5e30f27880ddbeb890ea9983b8c0c3d2189ccc3861ebd2f7c75dc022613c",
+        "previous_status": "approved",
+        "previous_decided_at": "2026-10-26T00:07:53.166579Z"
+      },
+      "observed_at": "2026-10-26T08:57:26.842Z",
+      "http_status": 200,
+      "readback": "EXACT_CURRENT_CANONICAL_GET_VERIFIED_WITH_HISTORICAL_PROMPT_PAYLOAD",
+      "category": "story",
+      "stage": "outline approved",
+      "stage_is_next_gate_not_decision": true,
+      "series_slug": null,
+      "script": {
+        "review_id": "4b59f286-1467-4548-b0da-95b5462f682f",
+        "gate": "script",
+        "status": "approved",
+        "content_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+        "decided_at": "2026-10-25T11:30:32.315048Z",
+        "created_at": "2026-10-25T10:53:39.439179Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "approved",
+        "newly_observed_approved": false
+      },
+      "outline": {
+        "review_id": "b82ea00f-85da-4cc9-92d8-a654e08ea09b",
+        "gate": "outline",
+        "status": "approved",
+        "content_sha256": "c3eb5e30f27880ddbeb890ea9983b8c0c3d2189ccc3861ebd2f7c75dc022613c",
+        "decided_at": "2026-10-26T00:07:53.166579Z",
+        "created_at": "2026-10-25T15:52:17.641605Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "approved",
+        "newly_observed_approved": false
+      },
+      "exact_payload": {
+        "script_scenes_match_current_source": false,
+        "script_narrative_hash_matches_current_source": true,
+        "outline_brief_bytes_match_current_submission": true,
+        "all_non_prompt_scene_payload_fields_match_current_source": true,
+        "difference_scope": "Only scene.prompt fields differ. Canonical screenplay approval excludes shot prompts; current independent visual-only adoption preserved canonical/narrative inputs and owner review ID.",
+        "historical_prompt_differences": [
+          {
+            "scene_id": "c04r-h05",
+            "remote_historical_prompt_sha256": "25f36f5f7746da85ed7ad1c653081a31414411583a1bc217939f47ba90e116b0",
+            "current_visual_prompt_sha256": "7ffdc9bb6aa5ecf818b3267b989f52cb5a6cc472cde21e2e3a82fea065fe77b1"
+          },
+          {
+            "scene_id": "c04r-e07",
+            "remote_historical_prompt_sha256": "d22c507368ec4bf5fc9243ef786001f7d6bea49651c74bb46ad1d6fe9a7e0bd7",
+            "current_visual_prompt_sha256": "7ffdc9bb6aa5ecf818b3267b989f52cb5a6cc472cde21e2e3a82fea065fe77b1"
+          }
+        ],
+        "visual_only_adoption_receipt": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c04/visual-only-runtime-adoption.json",
+          "sha256": "c96f0a15363a80b21680fc6607bcbcd3d653afafcd9a1c78d9c4391032737c04",
+          "source_video_sha256": "8549eb766873b65cb3453d03edfb5c2d151a3a9209578f3383cdc321c9620a75",
+          "canonical_script_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884"
+        }
+      },
+      "current_hash_reviews": [
+        {
+          "id": "b82ea00f-85da-4cc9-92d8-a654e08ea09b",
+          "gate": "outline",
+          "status": "approved",
+          "content_sha256": "c3eb5e30f27880ddbeb890ea9983b8c0c3d2189ccc3861ebd2f7c75dc022613c",
+          "decided_at": "2026-10-26T00:07:53.166579Z"
+        },
+        {
+          "id": "4b59f286-1467-4548-b0da-95b5462f682f",
+          "gate": "script",
+          "status": "approved",
+          "content_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+          "decided_at": "2026-10-25T11:30:32.315048Z"
+        }
+      ],
+      "languages": {
+        "status": "OBSERVED_ACTUAL_GET",
+        "locales": {
+          "en": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ja": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ko": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "es": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "pt": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "id": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "vi": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "th": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          }
+        },
+        "locales_decided_at": "2026-10-25T11:30:25.950439Z",
+        "dub_allowed": false,
+        "dub_allowed_is_not_actual_clean_media_eligibility": true
+      },
+      "remote_media_usd": 0,
+      "remote_clip_seconds": 0,
+      "approvals_imported": false,
+      "local_approval_after_sha256": "df2fd85df2633fa3a436370e3ff1610c65d5c1799eee1dcbbed3e5a9ab6e8402",
+      "local_approval_unchanged": true,
+      "exact_current_canonical_review_ids_and_hashes_verified": true,
+      "visual_payload_followup_observed_at": "2026-10-26T08:58:43.670Z"
+    },
+    {
+      "id": "c05",
+      "slug": "story-everyday-kincho-c05-remake-20261025",
+      "source_video_sha256": "773836e4a9c63770afbd6900014cbd57e6b123df44a22dca5987afaf9488d546",
+      "canonical_script_sha256": "3f2f19c4989a33f0887331997e29ae505839726fb8079ceb0607511593835c80",
+      "outline_sha256": "8e7cde871372c751f0a59561e96b23926c6c44376aa786ba7839d2ca00a1ac1b",
+      "runtime_root": "/workspace/work/brand-story-20261025/submission-root",
+      "current_entry": [
+        {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/production-entry.md",
+          "sha256": "a4b74cc01d0833e78c9f587fbc7d3da96177ce1f61355ff65ddd65fc877d52c7"
+        }
+      ],
+      "backend_status_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-status.json",
+        "sha256": "1d43b5502a44cf6f455b47984fab91bab9cb9ddf8598a773202d2948159c9586"
+      },
+      "canonical_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-script-receipt.json",
+        "sha256": "615b4d910f4c93f9bc8fb7cdc73d1ccea1f89162fe902bf27dcc7ea0de4c2489",
+        "receipt_source_sha256": "773836e4a9c63770afbd6900014cbd57e6b123df44a22dca5987afaf9488d546",
+        "source_sha_is_historical": false
+      },
+      "text_config": {
+        "path": "/workspace/work/brand-story-20261025/c05-audit/text-r13/text-current.json",
+        "sha256": "b9c8a7d228efbfa5ddd579ab8b08cb2e0aaa92ae198432a7556a139b15668863",
+        "root": "/workspace/work/brand-story-20261025/submission-root",
+        "source_video_sha256": "773836e4a9c63770afbd6900014cbd57e6b123df44a22dca5987afaf9488d546"
+      },
+      "text_source_rebind": null,
+      "root_source_current_receipt_consistent": true,
+      "local_approval_path": "/workspace/work/brand-story-20261025/media/story-everyday-kincho-c05-remake-20261025/approvals.json",
+      "local_approval_before_sha256": "ef6e1cae8d7e6657352772b91aba25628e44f8a9e32c2cddac50da242b552bd6",
+      "expected_script": {
+        "review_id": "7eda9d94-62a3-4cd2-9bfe-5cdc48341126",
+        "content_sha256": "3f2f19c4989a33f0887331997e29ae505839726fb8079ceb0607511593835c80",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "expected_outline": {
+        "review_id": "3f9e948c-8a95-43de-bbb9-d06d45a4cb2a",
+        "content_sha256": "8e7cde871372c751f0a59561e96b23926c6c44376aa786ba7839d2ca00a1ac1b",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "observed_at": "2026-10-26T08:57:26.936Z",
+      "http_status": 200,
+      "readback": "EXACT_CURRENT_CANONICAL_AND_FULL_PAYLOAD_GET_VERIFIED",
+      "category": "story",
+      "stage": "outline approved",
+      "stage_is_next_gate_not_decision": true,
+      "series_slug": null,
+      "script": {
+        "review_id": "7eda9d94-62a3-4cd2-9bfe-5cdc48341126",
+        "gate": "script",
+        "status": "pending",
+        "content_sha256": "3f2f19c4989a33f0887331997e29ae505839726fb8079ceb0607511593835c80",
+        "decided_at": null,
+        "created_at": "2026-10-26T01:12:13.087884Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": false
+      },
+      "outline": {
+        "review_id": "3f9e948c-8a95-43de-bbb9-d06d45a4cb2a",
+        "gate": "outline",
+        "status": "pending",
+        "content_sha256": "8e7cde871372c751f0a59561e96b23926c6c44376aa786ba7839d2ca00a1ac1b",
+        "decided_at": null,
+        "created_at": "2026-10-26T01:12:10.886568Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": false
+      },
+      "exact_payload": {
+        "script_scenes_match_current_source": true,
+        "script_narrative_hash_matches_current_source": true,
+        "outline_brief_bytes_match_current_submission": true
+      },
+      "current_hash_reviews": [
+        {
+          "id": "7eda9d94-62a3-4cd2-9bfe-5cdc48341126",
+          "gate": "script",
+          "status": "pending",
+          "content_sha256": "3f2f19c4989a33f0887331997e29ae505839726fb8079ceb0607511593835c80",
+          "decided_at": null
+        },
+        {
+          "id": "3f9e948c-8a95-43de-bbb9-d06d45a4cb2a",
+          "gate": "outline",
+          "status": "pending",
+          "content_sha256": "8e7cde871372c751f0a59561e96b23926c6c44376aa786ba7839d2ca00a1ac1b",
+          "decided_at": null
+        }
+      ],
+      "languages": {
+        "status": "OBSERVED_ACTUAL_GET",
+        "locales": {
+          "en": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ja": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ko": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "es": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "pt": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "id": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "vi": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "th": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          }
+        },
+        "locales_decided_at": "2026-10-25T11:29:01.252022Z",
+        "dub_allowed": false,
+        "dub_allowed_is_not_actual_clean_media_eligibility": true
+      },
+      "remote_media_usd": 0,
+      "remote_clip_seconds": 0,
+      "approvals_imported": false,
+      "local_approval_after_sha256": "ef6e1cae8d7e6657352772b91aba25628e44f8a9e32c2cddac50da242b552bd6",
+      "local_approval_unchanged": true,
+      "exact_current_canonical_review_ids_and_hashes_verified": true
+    },
+    {
+      "id": "c06",
+      "slug": "story-everyday-play-doh-c06-remake-20261025",
+      "source_video_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+      "canonical_script_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+      "outline_sha256": "b0ce1bf0f44699cfcf68b9381bfd58813dd07a973b13ed3509348ed4944cb95d",
+      "runtime_root": "/workspace/work/brand-story-20261025/c06-submission-root",
+      "current_entry": [
+        {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/production-entry.md",
+          "sha256": "9d0ddda7ad60cecf20df9b213339b75c0fb12b7ffb0e224421bce0de683d9afa"
+        }
+      ],
+      "backend_status_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/backend-status.json",
+        "sha256": "529c61b983b67d6e27855352eac71c930e4e349a6cc0cbff8c4b7237a1641fa2"
+      },
+      "canonical_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/backend-script-receipt.json",
+        "sha256": "6c71116d9db9419220122a4d6b3971ceb7f1f5544e6fbe3f0785e1039843c72b",
+        "receipt_source_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+        "source_sha_is_historical": true
+      },
+      "text_config": {
+        "path": "/workspace/work/brand-story-20261025/c06-audit/text-current.json",
+        "sha256": "ead8707a072c02799d0ae8356571d7032473ff854d86d0d3ddf2bb5549caaea7",
+        "root": "/workspace/work/brand-story-20261025/c06-submission-root",
+        "source_video_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13"
+      },
+      "text_source_rebind": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/i18n/source-rebind-teaser-plan.json",
+        "sha256": "f1402167b6540ec6f71e1b909f800106d8391100feb35113dd841e06b0c596c2",
+        "semantic_review_source_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+        "current_source_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+        "canonical_script_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e"
+      },
+      "root_source_current_receipt_consistent": true,
+      "local_approval_path": "/workspace/work/brand-story-20261025/media/story-everyday-play-doh-c06-remake-20261025/approvals.json",
+      "local_approval_before_sha256": "fa11088aeee5df879010388b84db5a2daa8d949c78352d5962a71aa82682c56f",
+      "expected_script": {
+        "review_id": "3d8ed292-ea12-4bfd-98b8-097acda4a828",
+        "content_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+        "previous_status": "approved",
+        "previous_decided_at": "2026-10-25T23:42:51.381747Z"
+      },
+      "expected_outline": {
+        "review_id": "cf42c3a1-f54b-4295-934e-f4d6fa0ee163",
+        "content_sha256": "b0ce1bf0f44699cfcf68b9381bfd58813dd07a973b13ed3509348ed4944cb95d",
+        "previous_status": "approved",
+        "previous_decided_at": "2026-10-25T23:55:27.437521Z"
+      },
+      "observed_at": "2026-10-26T08:57:26.484Z",
+      "http_status": 200,
+      "readback": "EXACT_CURRENT_CANONICAL_GET_VERIFIED_WITH_HISTORICAL_PROMPT_PAYLOAD",
+      "category": "story",
+      "stage": "outline approved",
+      "stage_is_next_gate_not_decision": true,
+      "series_slug": null,
+      "script": {
+        "review_id": "3d8ed292-ea12-4bfd-98b8-097acda4a828",
+        "gate": "script",
+        "status": "approved",
+        "content_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+        "decided_at": "2026-10-25T23:42:51.381747Z",
+        "created_at": "2026-10-25T18:32:09.277988Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "approved",
+        "newly_observed_approved": false
+      },
+      "outline": {
+        "review_id": "cf42c3a1-f54b-4295-934e-f4d6fa0ee163",
+        "gate": "outline",
+        "status": "approved",
+        "content_sha256": "b0ce1bf0f44699cfcf68b9381bfd58813dd07a973b13ed3509348ed4944cb95d",
+        "decided_at": "2026-10-25T23:55:27.437521Z",
+        "created_at": "2026-10-25T18:32:08.073285Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "approved",
+        "newly_observed_approved": false
+      },
+      "exact_payload": {
+        "script_scenes_match_current_source": false,
+        "script_narrative_hash_matches_current_source": true,
+        "outline_brief_bytes_match_current_submission": true,
+        "all_non_prompt_scene_payload_fields_match_current_source": true,
+        "difference_scope": "Only scene.prompt fields differ. Canonical screenplay approval excludes shot prompts; current independent visual-only adoption preserved canonical/narrative inputs and owner review ID.",
+        "historical_prompt_differences": [
+          {
+            "scene_id": "c06r2-h05",
+            "remote_historical_prompt_sha256": "0af781c474f545c454774b57a044954e99d216698ca8b28d72d8f024e0d5ced7",
+            "current_visual_prompt_sha256": "645c14fe094b2b44f1f73008c4b93a41b6f66ed2da5288e703edd24abd4d8c35"
+          },
+          {
+            "scene_id": "c06r2-h06",
+            "remote_historical_prompt_sha256": "2501ca3b07dd91c9d12395f85130844e6a65546750aeb91d7d1f9e93fd4075de",
+            "current_visual_prompt_sha256": "5a048e0df5bd8c8d940fcffed731699edb28a036c401054e0e704be1c93110b9"
+          },
+          {
+            "scene_id": "c06r2-k02-p2",
+            "remote_historical_prompt_sha256": "a5d45131155e7525f16e05c19e5f393b342e51b58b849823bdda35936866cb59",
+            "current_visual_prompt_sha256": "645c14fe094b2b44f1f73008c4b93a41b6f66ed2da5288e703edd24abd4d8c35"
+          },
+          {
+            "scene_id": "c06r2-n06",
+            "remote_historical_prompt_sha256": "5dde4aed2a08614492ba45dfd35140ae54d153984a37d98d646a0fc755b7cd07",
+            "current_visual_prompt_sha256": "5a048e0df5bd8c8d940fcffed731699edb28a036c401054e0e704be1c93110b9"
+          }
+        ],
+        "visual_only_adoption_receipt": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/visual-only-runtime-adoption.json",
+          "sha256": "5465747645eda91e7b985ff5ccedf3a2d75a1924a874ba3461863e2dab9c98f2",
+          "source_video_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+          "canonical_script_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e"
+        }
+      },
+      "current_hash_reviews": [
+        {
+          "id": "3d8ed292-ea12-4bfd-98b8-097acda4a828",
+          "gate": "script",
+          "status": "approved",
+          "content_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+          "decided_at": "2026-10-25T23:42:51.381747Z"
+        },
+        {
+          "id": "cf42c3a1-f54b-4295-934e-f4d6fa0ee163",
+          "gate": "outline",
+          "status": "approved",
+          "content_sha256": "b0ce1bf0f44699cfcf68b9381bfd58813dd07a973b13ed3509348ed4944cb95d",
+          "decided_at": "2026-10-25T23:55:27.437521Z"
+        }
+      ],
+      "languages": {
+        "status": "OBSERVED_ACTUAL_GET",
+        "locales": {
+          "en": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ja": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ko": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "es": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "pt": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "id": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "vi": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "th": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          }
+        },
+        "locales_decided_at": "2026-10-25T23:42:39.755660Z",
+        "dub_allowed": false,
+        "dub_allowed_is_not_actual_clean_media_eligibility": true
+      },
+      "remote_media_usd": 0,
+      "remote_clip_seconds": 0,
+      "approvals_imported": false,
+      "local_approval_after_sha256": "fa11088aeee5df879010388b84db5a2daa8d949c78352d5962a71aa82682c56f",
+      "local_approval_unchanged": true,
+      "exact_current_canonical_review_ids_and_hashes_verified": true,
+      "visual_payload_followup_observed_at": "2026-10-26T08:58:43.941Z"
+    },
+    {
+      "id": "c07",
+      "slug": "story-everyday-dr-martens-c07-remake-20261025",
+      "source_video_sha256": "d2c90c26f028b01c3b03ee8c02368f1c35b8e31390643b7d5a71fb6fbc8a2805",
+      "canonical_script_sha256": "104fd328f69068cb84d0de47284b1b08c2fa90a4f7bf94a3d4882f4372ddf112",
+      "outline_sha256": "5ba5c9a3b251234519f0196f3f4ff0f179c8815db8be6a4176e9beb38f19c9c8",
+      "runtime_root": "/workspace/work/brand-story-20261025/c07-submission-root",
+      "current_entry": [
+        {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/production-entry.md",
+          "sha256": "3f721e4a55d0681302aa7bb62ee01df8f44dfd14ffadd7074614800a1be842b7"
+        }
+      ],
+      "backend_status_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/backend-status.json",
+        "sha256": "750dc4ef88fad97b7670eee2388c55239116daa6229a7c5dbe51b8891e6ac18e"
+      },
+      "canonical_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/backend-script-receipt.json",
+        "sha256": "4c54126ff4385ffa51637c2d0a2c12d0135f37d1dbb19c211036c8b64f15c42a",
+        "receipt_source_sha256": "d2c90c26f028b01c3b03ee8c02368f1c35b8e31390643b7d5a71fb6fbc8a2805",
+        "source_sha_is_historical": false
+      },
+      "text_config": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/text-r10/text-current.json",
+        "sha256": "8322409a28d9bf851e4bd522a89fe9dfdf800477f1ee8eac9bb34788eac4ac2f",
+        "root": "/workspace/work/brand-story-20261025/c07-submission-root",
+        "source_video_sha256": "d2c90c26f028b01c3b03ee8c02368f1c35b8e31390643b7d5a71fb6fbc8a2805"
+      },
+      "text_source_rebind": null,
+      "root_source_current_receipt_consistent": true,
+      "local_approval_path": "/workspace/work/brand-story-20261025/media/story-everyday-dr-martens-c07-remake-20261025/approvals.json",
+      "local_approval_before_sha256": null,
+      "expected_script": {
+        "review_id": "38853f5f-8086-4493-aefd-81a772706286",
+        "content_sha256": "104fd328f69068cb84d0de47284b1b08c2fa90a4f7bf94a3d4882f4372ddf112",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "expected_outline": {
+        "review_id": "6da974aa-2b66-4e98-900c-0187b328e0c6",
+        "content_sha256": "5ba5c9a3b251234519f0196f3f4ff0f179c8815db8be6a4176e9beb38f19c9c8",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "observed_at": "2026-10-26T08:57:26.455Z",
+      "http_status": 200,
+      "readback": "EXACT_CURRENT_CANONICAL_AND_FULL_PAYLOAD_GET_VERIFIED",
+      "category": "story",
+      "stage": "outline approved",
+      "stage_is_next_gate_not_decision": true,
+      "series_slug": null,
+      "script": {
+        "review_id": "38853f5f-8086-4493-aefd-81a772706286",
+        "gate": "script",
+        "status": "approved",
+        "content_sha256": "104fd328f69068cb84d0de47284b1b08c2fa90a4f7bf94a3d4882f4372ddf112",
+        "decided_at": "2026-10-26T02:26:26.955624Z",
+        "created_at": "2026-10-26T02:00:13.578075Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": true
+      },
+      "outline": {
+        "review_id": "6da974aa-2b66-4e98-900c-0187b328e0c6",
+        "gate": "outline",
+        "status": "pending",
+        "content_sha256": "5ba5c9a3b251234519f0196f3f4ff0f179c8815db8be6a4176e9beb38f19c9c8",
+        "decided_at": null,
+        "created_at": "2026-10-26T02:00:09.324666Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": false
+      },
+      "exact_payload": {
+        "script_scenes_match_current_source": true,
+        "script_narrative_hash_matches_current_source": true,
+        "outline_brief_bytes_match_current_submission": true
+      },
+      "current_hash_reviews": [
+        {
+          "id": "38853f5f-8086-4493-aefd-81a772706286",
+          "gate": "script",
+          "status": "approved",
+          "content_sha256": "104fd328f69068cb84d0de47284b1b08c2fa90a4f7bf94a3d4882f4372ddf112",
+          "decided_at": "2026-10-26T02:26:26.955624Z"
+        },
+        {
+          "id": "6da974aa-2b66-4e98-900c-0187b328e0c6",
+          "gate": "outline",
+          "status": "pending",
+          "content_sha256": "5ba5c9a3b251234519f0196f3f4ff0f179c8815db8be6a4176e9beb38f19c9c8",
+          "decided_at": null
+        }
+      ],
+      "languages": {
+        "status": "OBSERVED_ACTUAL_GET",
+        "locales": {
+          "en": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ja": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ko": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "es": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "pt": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "id": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "vi": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "th": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          }
+        },
+        "locales_decided_at": "2026-10-26T02:26:18.570478Z",
+        "dub_allowed": false,
+        "dub_allowed_is_not_actual_clean_media_eligibility": true
+      },
+      "remote_media_usd": 0,
+      "remote_clip_seconds": 0,
+      "approvals_imported": false,
+      "local_approval_after_sha256": null,
+      "local_approval_unchanged": true,
+      "exact_current_canonical_review_ids_and_hashes_verified": true
+    },
+    {
+      "id": "c08",
+      "slug": "story-everyday-kikkoman-c08-remake-20261025",
+      "source_video_sha256": "db15e970a5e64715744760c3ef6ecc7c868ee132170bd09a6751dd35bf7c7895",
+      "canonical_script_sha256": "0d354c54fd581d5c76af1f27ebf0e47c146a68b768ddfbb67c7ac973dae70e5b",
+      "outline_sha256": "b53c5a7952ce7a5fe4d8d3db591bd8b854267a033f81d58506d4ff96909dcde1",
+      "runtime_root": "/workspace/work/brand-story-20261025/c08-submission-root",
+      "current_entry": [
+        {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c08/production-entry.md",
+          "sha256": "ba68481d757e5b47b6105636d2cc32dfa8d90b6dbcd6bf54c954f91a4f0bbea2"
+        }
+      ],
+      "backend_status_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c08/backend-status.json",
+        "sha256": "0e33272a726861993548e4d87fc8a2a6eb9dd6b1fd062b8a5bf66cd95ae6c227"
+      },
+      "canonical_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c08/backend-script-receipt.json",
+        "sha256": "67166ece0eb0339269a7199d6c5c0f1f42c49ec289153e8af3a34a4892f4e7be",
+        "receipt_source_sha256": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b",
+        "source_sha_is_historical": true
+      },
+      "text_config": {
+        "path": "/workspace/work/brand-story-20261025/c08-audit/text-r9/text-current.json",
+        "sha256": "8bd4c8ad81d0464e7e9b92fd0d15f0e3c6d53966a9a180ab680d4275805d28aa",
+        "root": "/workspace/work/brand-story-20261025/c08-submission-root",
+        "source_video_sha256": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b"
+      },
+      "text_source_rebind": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c08/i18n/source-rebind-teaser-plan.json",
+        "sha256": "96d799859668f9b13528c3106194cac7490702a50ef029ffc4dafada05faf6c9",
+        "semantic_review_source_sha256": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b",
+        "current_source_sha256": "db15e970a5e64715744760c3ef6ecc7c868ee132170bd09a6751dd35bf7c7895",
+        "canonical_script_sha256": "0d354c54fd581d5c76af1f27ebf0e47c146a68b768ddfbb67c7ac973dae70e5b"
+      },
+      "root_source_current_receipt_consistent": true,
+      "local_approval_path": "/workspace/work/brand-story-20261025/media/story-everyday-kikkoman-c08-remake-20261025/approvals.json",
+      "local_approval_before_sha256": "cd073ec28f47c9f53fde65c6341d192ec8c51cd0393510a3f90bb19452106798",
+      "expected_script": {
+        "review_id": "3135f5d6-47d2-4496-a36f-4dc0a1ca8258",
+        "content_sha256": "0d354c54fd581d5c76af1f27ebf0e47c146a68b768ddfbb67c7ac973dae70e5b",
+        "previous_status": "approved",
+        "previous_decided_at": "2026-10-26T00:07:52.484229Z"
+      },
+      "expected_outline": {
+        "review_id": "294c49b6-b310-426e-8422-a64827717bff",
+        "content_sha256": "b53c5a7952ce7a5fe4d8d3db591bd8b854267a033f81d58506d4ff96909dcde1",
+        "previous_status": "approved",
+        "previous_decided_at": "2026-10-26T00:07:52.345052Z"
+      },
+      "observed_at": "2026-10-26T08:57:27.980Z",
+      "http_status": 200,
+      "readback": "EXACT_CURRENT_CANONICAL_GET_VERIFIED_WITH_HISTORICAL_PROMPT_PAYLOAD",
+      "category": "story",
+      "stage": "outline approved",
+      "stage_is_next_gate_not_decision": true,
+      "series_slug": null,
+      "script": {
+        "review_id": "3135f5d6-47d2-4496-a36f-4dc0a1ca8258",
+        "gate": "script",
+        "status": "approved",
+        "content_sha256": "0d354c54fd581d5c76af1f27ebf0e47c146a68b768ddfbb67c7ac973dae70e5b",
+        "decided_at": "2026-10-26T00:07:52.484229Z",
+        "created_at": "2026-10-25T23:43:43.451711Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "approved",
+        "newly_observed_approved": false
+      },
+      "outline": {
+        "review_id": "294c49b6-b310-426e-8422-a64827717bff",
+        "gate": "outline",
+        "status": "approved",
+        "content_sha256": "b53c5a7952ce7a5fe4d8d3db591bd8b854267a033f81d58506d4ff96909dcde1",
+        "decided_at": "2026-10-26T00:07:52.345052Z",
+        "created_at": "2026-10-25T23:43:08.540141Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "approved",
+        "newly_observed_approved": false
+      },
+      "exact_payload": {
+        "script_scenes_match_current_source": false,
+        "script_narrative_hash_matches_current_source": true,
+        "outline_brief_bytes_match_current_submission": true,
+        "all_non_prompt_scene_payload_fields_match_current_source": true,
+        "difference_scope": "Only scene.prompt fields differ. Canonical screenplay approval excludes shot prompts; current independent visual-only adoption preserved canonical/narrative inputs and owner review ID.",
+        "historical_prompt_differences": [
+          {
+            "scene_id": "c08r1-01-05",
+            "remote_historical_prompt_sha256": "36a27dd2fca0c42309bd58de3dab4468790f992aa660d287d0ea8f3539f73a79",
+            "current_visual_prompt_sha256": "f0c7ea8e0ab9f6b2d5c31e7f365a018552afa707ad50e148180b91887d8deea3"
+          },
+          {
+            "scene_id": "c08r1-01-06",
+            "remote_historical_prompt_sha256": "0b0a58d83c03bdabe400bea68b4f2b28932457cce42c2852146b9050388990a5",
+            "current_visual_prompt_sha256": "c81c7f91f4ca6b62c8ebc68b71513bfb21d8f17577b61d2f69a4e05219b7e891"
+          },
+          {
+            "scene_id": "c08r1-05-03",
+            "remote_historical_prompt_sha256": "b13bab35ef7cd1bbb45d758ccc37fbb471bc59cf8b505d7f351bb0ccd95ad054",
+            "current_visual_prompt_sha256": "f0c7ea8e0ab9f6b2d5c31e7f365a018552afa707ad50e148180b91887d8deea3"
+          },
+          {
+            "scene_id": "c08r1-06-21",
+            "remote_historical_prompt_sha256": "d8089f2f5122b6dfd2a7261e4aaf340b0f9d7e4c937a9dc90a8a4a33d4e94fe3",
+            "current_visual_prompt_sha256": "c81c7f91f4ca6b62c8ebc68b71513bfb21d8f17577b61d2f69a4e05219b7e891"
+          }
+        ],
+        "visual_only_adoption_receipt": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c08/visual-only-runtime-adoption.json",
+          "sha256": "309e7f30e08e9829c6e8448965386b02ef0aa63870550081c1d43a10ba3e6cae",
+          "source_video_sha256": "db15e970a5e64715744760c3ef6ecc7c868ee132170bd09a6751dd35bf7c7895",
+          "canonical_script_sha256": "0d354c54fd581d5c76af1f27ebf0e47c146a68b768ddfbb67c7ac973dae70e5b"
+        }
+      },
+      "current_hash_reviews": [
+        {
+          "id": "3135f5d6-47d2-4496-a36f-4dc0a1ca8258",
+          "gate": "script",
+          "status": "approved",
+          "content_sha256": "0d354c54fd581d5c76af1f27ebf0e47c146a68b768ddfbb67c7ac973dae70e5b",
+          "decided_at": "2026-10-26T00:07:52.484229Z"
+        },
+        {
+          "id": "294c49b6-b310-426e-8422-a64827717bff",
+          "gate": "outline",
+          "status": "approved",
+          "content_sha256": "b53c5a7952ce7a5fe4d8d3db591bd8b854267a033f81d58506d4ff96909dcde1",
+          "decided_at": "2026-10-26T00:07:52.345052Z"
+        }
+      ],
+      "languages": {
+        "status": "OBSERVED_ACTUAL_GET",
+        "locales": {},
+        "locales_decided_at": null,
+        "dub_allowed": false,
+        "dub_allowed_is_not_actual_clean_media_eligibility": true
+      },
+      "remote_media_usd": 0,
+      "remote_clip_seconds": 0,
+      "approvals_imported": false,
+      "local_approval_after_sha256": "cd073ec28f47c9f53fde65c6341d192ec8c51cd0393510a3f90bb19452106798",
+      "local_approval_unchanged": true,
+      "exact_current_canonical_review_ids_and_hashes_verified": true,
+      "visual_payload_followup_observed_at": "2026-10-26T08:58:44.248Z"
+    },
+    {
+      "id": "c09",
+      "slug": "story-everyday-patagonia-c09-remake-20261025",
+      "source_video_sha256": "1912082c8c1ecc0d2bab399903bde0e6f2a203cc3aac7487519ec3bbc26cc222",
+      "canonical_script_sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de",
+      "outline_sha256": "55475b788d21d3d51429a9567f0ea660e47a6ecb4c1c373e87fa590082820efb",
+      "runtime_root": "/workspace/work/brand-story-20261025/submission-root",
+      "current_entry": [
+        {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/production-entry.md",
+          "sha256": "5af8fb9a1f3621ea76876bdf46f700bb688f5261596d7e109d24bb8754b628cb"
+        }
+      ],
+      "backend_status_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/backend-status.json",
+        "sha256": "565737d4f4998fcb98698083bdec88896d368bce87cec63fa562885ebb89de48"
+      },
+      "canonical_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/backend-script-receipt.json",
+        "sha256": "28702bf1e73eaeef5bc374b38962ae031d51c34ff2ad7dca1a0dff0471f77ca9",
+        "receipt_source_sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
+        "source_sha_is_historical": true
+      },
+      "text_config": {
+        "path": "/workspace/work/brand-story-20261025/c09-audit/text-r7/text-current.json",
+        "sha256": "5cdcb64e65fce89530907c931e7721aef0d2483fd2716af3072ec015707d239d",
+        "root": "/workspace/work/brand-story-20261025/submission-root",
+        "source_video_sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6"
+      },
+      "text_source_rebind": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/i18n/source-rebind-teaser-plan.json",
+        "sha256": "542a249b44bc5586f557c20bd8c6a18978fd0ccfb4dc52cd3c9814aabd7db26f",
+        "semantic_review_source_sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
+        "current_source_sha256": "1912082c8c1ecc0d2bab399903bde0e6f2a203cc3aac7487519ec3bbc26cc222",
+        "canonical_script_sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de"
+      },
+      "root_source_current_receipt_consistent": true,
+      "local_approval_path": "/workspace/work/brand-story-20261025/media/story-everyday-patagonia-c09-remake-20261025/approvals.json",
+      "local_approval_before_sha256": "259ace2692f5c7b2ed4a075264fd1fe1f858a37afdf7416d008069adb90b512c",
+      "expected_script": {
+        "review_id": "6a441762-8d88-45b7-adff-78b5c3ef1260",
+        "content_sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de",
+        "previous_status": "approved",
+        "previous_decided_at": "2026-10-26T00:07:52.889302Z"
+      },
+      "expected_outline": {
+        "review_id": "5199b233-c1ee-4970-ae11-af9115cbbde9",
+        "content_sha256": "55475b788d21d3d51429a9567f0ea660e47a6ecb4c1c373e87fa590082820efb",
+        "previous_status": "approved",
+        "previous_decided_at": "2026-10-26T00:07:52.765755Z"
+      },
+      "observed_at": "2026-10-26T08:57:27.898Z",
+      "http_status": 200,
+      "readback": "EXACT_CURRENT_CANONICAL_GET_VERIFIED_WITH_HISTORICAL_PROMPT_PAYLOAD",
+      "category": "story",
+      "stage": "outline approved",
+      "stage_is_next_gate_not_decision": true,
+      "series_slug": null,
+      "script": {
+        "review_id": "6a441762-8d88-45b7-adff-78b5c3ef1260",
+        "gate": "script",
+        "status": "approved",
+        "content_sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de",
+        "decided_at": "2026-10-26T00:07:52.889302Z",
+        "created_at": "2026-10-25T20:05:15.973352Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "approved",
+        "newly_observed_approved": false
+      },
+      "outline": {
+        "review_id": "5199b233-c1ee-4970-ae11-af9115cbbde9",
+        "gate": "outline",
+        "status": "approved",
+        "content_sha256": "55475b788d21d3d51429a9567f0ea660e47a6ecb4c1c373e87fa590082820efb",
+        "decided_at": "2026-10-26T00:07:52.765755Z",
+        "created_at": "2026-10-25T20:05:13.587802Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "approved",
+        "newly_observed_approved": false
+      },
+      "exact_payload": {
+        "script_scenes_match_current_source": false,
+        "script_narrative_hash_matches_current_source": true,
+        "outline_brief_bytes_match_current_submission": true,
+        "all_non_prompt_scene_payload_fields_match_current_source": true,
+        "difference_scope": "Only scene.prompt fields differ. Canonical screenplay approval excludes shot prompts; current independent visual-only adoption preserved canonical/narrative inputs and owner review ID.",
+        "historical_prompt_differences": [
+          {
+            "scene_id": "c09r5-shot-006",
+            "remote_historical_prompt_sha256": "c90ce101ec454243a057d3f74b51455185b6cf0dc2ad2757c23098e424f6bf73",
+            "current_visual_prompt_sha256": "8115ff40d59719eb84690080d20e1339f02b0e18ff38184a4abc2d0b8c2eecf3"
+          },
+          {
+            "scene_id": "c09r5-shot-088",
+            "remote_historical_prompt_sha256": "2197146de2bb9e0f80060e925b3ace7a736a5f60fe246a8d60d21b8f6243c90a",
+            "current_visual_prompt_sha256": "8115ff40d59719eb84690080d20e1339f02b0e18ff38184a4abc2d0b8c2eecf3"
+          }
+        ],
+        "visual_only_adoption_receipt": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/visual-only-runtime-adoption.json",
+          "sha256": "6c7b64cef7f458ec21cc0067fffa7ccb654afc197647e01b39592957a0724573",
+          "source_video_sha256": "1912082c8c1ecc0d2bab399903bde0e6f2a203cc3aac7487519ec3bbc26cc222",
+          "canonical_script_sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de"
+        }
+      },
+      "current_hash_reviews": [
+        {
+          "id": "6a441762-8d88-45b7-adff-78b5c3ef1260",
+          "gate": "script",
+          "status": "approved",
+          "content_sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de",
+          "decided_at": "2026-10-26T00:07:52.889302Z"
+        },
+        {
+          "id": "5199b233-c1ee-4970-ae11-af9115cbbde9",
+          "gate": "outline",
+          "status": "approved",
+          "content_sha256": "55475b788d21d3d51429a9567f0ea660e47a6ecb4c1c373e87fa590082820efb",
+          "decided_at": "2026-10-26T00:07:52.765755Z"
+        }
+      ],
+      "languages": {
+        "status": "OBSERVED_ACTUAL_GET",
+        "locales": {
+          "en": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ja": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ko": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "es": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "pt": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "id": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "vi": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "th": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          }
+        },
+        "locales_decided_at": "2026-10-25T13:00:10.532417Z",
+        "dub_allowed": false,
+        "dub_allowed_is_not_actual_clean_media_eligibility": true
+      },
+      "remote_media_usd": 0,
+      "remote_clip_seconds": 0,
+      "approvals_imported": false,
+      "local_approval_after_sha256": "259ace2692f5c7b2ed4a075264fd1fe1f858a37afdf7416d008069adb90b512c",
+      "local_approval_unchanged": true,
+      "exact_current_canonical_review_ids_and_hashes_verified": true,
+      "visual_payload_followup_observed_at": "2026-10-26T08:58:44.511Z"
+    },
+    {
+      "id": "c10",
+      "slug": "story-everyday-oxo-c10-remake-20261025",
+      "source_video_sha256": "637c8cce6426341d8612b2443089556cbfc2b67d415d1d726bc559999a2d307f",
+      "canonical_script_sha256": "1fa2d25a0161b8ed0e4638fbaf8d982cc1dbf5717e9300cd2d121e43b0a29082",
+      "outline_sha256": "990aa6a3ec25c705dd67e7eb0902f5df5ec24af53f1f98543b6f61888fe73511",
+      "runtime_root": "/workspace/work/brand-story-20261025/c10-submission-root",
+      "current_entry": [
+        {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c10/production-entry.md",
+          "sha256": "78ea61e772a2917012bf5a2c8d105f7abec0663ca386b4b306cd4d9e518c51da"
+        }
+      ],
+      "backend_status_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c10/backend-status.json",
+        "sha256": "ef53069f5272d35f18fc562bc2b6aa9f0dec99417cca7fd6d7ed44129a856fc1"
+      },
+      "canonical_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c10/backend-script-receipt.json",
+        "sha256": "348390038369d430ab68f8e9d32d80231741f57405c9f1c20b72d543c3890fff",
+        "receipt_source_sha256": "bc1a619974666659e134e976db7aee0b68dbc744dc391070590d9f85a0acc176",
+        "source_sha_is_historical": true
+      },
+      "text_config": {
+        "path": "/workspace/work/brand-story-20261025/c10-audit/text-r7/text-current.json",
+        "sha256": "48edff1d76d5d89795da8a59092a370bf7bb8752298605987c40d92ab5125a15",
+        "root": "/workspace/work/brand-story-20261025/c10-submission-root",
+        "source_video_sha256": "637c8cce6426341d8612b2443089556cbfc2b67d415d1d726bc559999a2d307f"
+      },
+      "text_source_rebind": null,
+      "root_source_current_receipt_consistent": true,
+      "local_approval_path": "/workspace/work/brand-story-20261025/media/story-everyday-oxo-c10-remake-20261025/approvals.json",
+      "local_approval_before_sha256": "eeb2946c1fb730dc45aba74d1f4e72fb59dd91d25e1bc75c193142dc4b7dd3bd",
+      "expected_script": {
+        "review_id": "1c9895e6-4de2-4ed8-b869-d315efecdba6",
+        "content_sha256": "1fa2d25a0161b8ed0e4638fbaf8d982cc1dbf5717e9300cd2d121e43b0a29082",
+        "previous_status": "approved",
+        "previous_decided_at": "2026-10-26T00:07:52.054884Z"
+      },
+      "expected_outline": {
+        "review_id": "6de185a0-c301-4ad1-843f-d2cc0d4765ba",
+        "content_sha256": "990aa6a3ec25c705dd67e7eb0902f5df5ec24af53f1f98543b6f61888fe73511",
+        "previous_status": "approved",
+        "previous_decided_at": "2026-10-26T00:07:51.880862Z"
+      },
+      "observed_at": "2026-10-26T08:57:27.731Z",
+      "http_status": 200,
+      "readback": "EXACT_CURRENT_CANONICAL_GET_VERIFIED_WITH_HISTORICAL_PROMPT_PAYLOAD",
+      "category": "story",
+      "stage": "outline approved",
+      "stage_is_next_gate_not_decision": true,
+      "series_slug": null,
+      "script": {
+        "review_id": "1c9895e6-4de2-4ed8-b869-d315efecdba6",
+        "gate": "script",
+        "status": "approved",
+        "content_sha256": "1fa2d25a0161b8ed0e4638fbaf8d982cc1dbf5717e9300cd2d121e43b0a29082",
+        "decided_at": "2026-10-26T00:07:52.054884Z",
+        "created_at": "2026-10-25T23:51:12.335646Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "approved",
+        "newly_observed_approved": false
+      },
+      "outline": {
+        "review_id": "6de185a0-c301-4ad1-843f-d2cc0d4765ba",
+        "gate": "outline",
+        "status": "approved",
+        "content_sha256": "990aa6a3ec25c705dd67e7eb0902f5df5ec24af53f1f98543b6f61888fe73511",
+        "decided_at": "2026-10-26T00:07:51.880862Z",
+        "created_at": "2026-10-25T23:51:11.237415Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "approved",
+        "newly_observed_approved": false
+      },
+      "exact_payload": {
+        "script_scenes_match_current_source": false,
+        "script_narrative_hash_matches_current_source": true,
+        "outline_brief_bytes_match_current_submission": true,
+        "all_non_prompt_scene_payload_fields_match_current_source": true,
+        "difference_scope": "Only scene.prompt fields differ. Canonical screenplay approval excludes shot prompts; current independent visual-only adoption preserved canonical/narrative inputs and owner review ID.",
+        "historical_prompt_differences": [
+          {
+            "scene_id": "c10r1-h06",
+            "remote_historical_prompt_sha256": "7e34f488b06cec43ff303e88b9cab1f01ee7231ab48ad61dbb45ac2cb14657eb",
+            "current_visual_prompt_sha256": "857bc7a557a621813907efe036e077d043bbfaab8c3a60a7342e5b8f3cc44bcb"
+          },
+          {
+            "scene_id": "c10r1-h07",
+            "remote_historical_prompt_sha256": "2f5cb6977c1810824161c4da680326ce5cd22a350e447915af8734a2a915becb",
+            "current_visual_prompt_sha256": "0aad007560f3833f96915619ae598fe0cd94a517b1f7c080db713809e9361326"
+          },
+          {
+            "scene_id": "c10r1-o06",
+            "remote_historical_prompt_sha256": "1f719a8daaef21379b1d63fb8922f6251b2b200fb663792018a48a96125cc1bf",
+            "current_visual_prompt_sha256": "857bc7a557a621813907efe036e077d043bbfaab8c3a60a7342e5b8f3cc44bcb"
+          },
+          {
+            "scene_id": "c10r5-s04",
+            "remote_historical_prompt_sha256": "16558eff9b7d71953d7aa2a82ec9b11a4d8b84523929a99dfa879d1a782a5ac7",
+            "current_visual_prompt_sha256": "0aad007560f3833f96915619ae598fe0cd94a517b1f7c080db713809e9361326"
+          }
+        ],
+        "visual_only_adoption_receipt": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c10/visual-only-runtime-adoption.json",
+          "sha256": "10f4fbd32b2e1841258e2e975feafbc89f00e3caae787b5e98a585c20038fb5f",
+          "source_video_sha256": "637c8cce6426341d8612b2443089556cbfc2b67d415d1d726bc559999a2d307f",
+          "canonical_script_sha256": "1fa2d25a0161b8ed0e4638fbaf8d982cc1dbf5717e9300cd2d121e43b0a29082"
+        }
+      },
+      "current_hash_reviews": [
+        {
+          "id": "1c9895e6-4de2-4ed8-b869-d315efecdba6",
+          "gate": "script",
+          "status": "approved",
+          "content_sha256": "1fa2d25a0161b8ed0e4638fbaf8d982cc1dbf5717e9300cd2d121e43b0a29082",
+          "decided_at": "2026-10-26T00:07:52.054884Z"
+        },
+        {
+          "id": "6de185a0-c301-4ad1-843f-d2cc0d4765ba",
+          "gate": "outline",
+          "status": "approved",
+          "content_sha256": "990aa6a3ec25c705dd67e7eb0902f5df5ec24af53f1f98543b6f61888fe73511",
+          "decided_at": "2026-10-26T00:07:51.880862Z"
+        }
+      ],
+      "languages": {
+        "status": "OBSERVED_ACTUAL_GET",
+        "locales": {},
+        "locales_decided_at": null,
+        "dub_allowed": false,
+        "dub_allowed_is_not_actual_clean_media_eligibility": true
+      },
+      "remote_media_usd": 0,
+      "remote_clip_seconds": 0,
+      "approvals_imported": false,
+      "local_approval_after_sha256": "eeb2946c1fb730dc45aba74d1f4e72fb59dd91d25e1bc75c193142dc4b7dd3bd",
+      "local_approval_unchanged": true,
+      "exact_current_canonical_review_ids_and_hashes_verified": true,
+      "visual_payload_followup_observed_at": "2026-10-26T08:58:44.768Z"
+    },
+    {
+      "id": "c11",
+      "slug": "story-everyday-ucc-c11-remake-20261025",
+      "source_video_sha256": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
+      "canonical_script_sha256": "4011ea915073e7ae6bc5a796eb06aff337020bdd0e946c73d76b2d85065af005",
+      "outline_sha256": "b91785f365f20bbff70cd79b35af86457e8f9a0a91dba40efaf6ba90eb52ccb7",
+      "runtime_root": "/workspace/work/brand-story-20261025/c11-submission-root",
+      "current_entry": [
+        {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/production-entry.md",
+          "sha256": "6c39cbf0eb3e146be2d7d0ba12c880376488cbecb546685b2216675f136a4607"
+        }
+      ],
+      "backend_status_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/backend-status.json",
+        "sha256": "9abf102921ebb5086e4d560b091c0524372508ff1033ebdf6ac0ce65e30a7a59"
+      },
+      "canonical_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/backend-script-receipt.json",
+        "sha256": "dfa3b41bdcba9dbcd8210a921e640303fec88b313004bb7652bada32793eef93",
+        "receipt_source_sha256": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
+        "source_sha_is_historical": false
+      },
+      "text_config": {
+        "path": "/workspace/work/brand-story-20261025/c11-audit/text-r6/text-current.json",
+        "sha256": "2a9c5b29dbd7baf903bdb33fcbb0b791ffbf1f3b253b734d02408f28740bef56",
+        "root": "/workspace/work/brand-story-20261025/c11-submission-root",
+        "source_video_sha256": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b"
+      },
+      "text_source_rebind": null,
+      "root_source_current_receipt_consistent": true,
+      "local_approval_path": "/workspace/work/brand-story-20261025/media/story-everyday-ucc-c11-remake-20261025/approvals.json",
+      "local_approval_before_sha256": null,
+      "expected_script": {
+        "review_id": "e57b1958-8d93-44d3-b203-1098c5af4a81",
+        "content_sha256": "4011ea915073e7ae6bc5a796eb06aff337020bdd0e946c73d76b2d85065af005",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "expected_outline": {
+        "review_id": "ee93f101-d27e-4980-82e6-d2f89d07cacc",
+        "content_sha256": "b91785f365f20bbff70cd79b35af86457e8f9a0a91dba40efaf6ba90eb52ccb7",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "observed_at": "2026-10-26T08:57:27.650Z",
+      "http_status": 200,
+      "readback": "EXACT_CURRENT_CANONICAL_AND_FULL_PAYLOAD_GET_VERIFIED",
+      "category": "story",
+      "stage": "outline approved",
+      "stage_is_next_gate_not_decision": true,
+      "series_slug": null,
+      "script": {
+        "review_id": "e57b1958-8d93-44d3-b203-1098c5af4a81",
+        "gate": "script",
+        "status": "pending",
+        "content_sha256": "4011ea915073e7ae6bc5a796eb06aff337020bdd0e946c73d76b2d85065af005",
+        "decided_at": null,
+        "created_at": "2026-10-26T00:20:13.190984Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": false
+      },
+      "outline": {
+        "review_id": "ee93f101-d27e-4980-82e6-d2f89d07cacc",
+        "gate": "outline",
+        "status": "pending",
+        "content_sha256": "b91785f365f20bbff70cd79b35af86457e8f9a0a91dba40efaf6ba90eb52ccb7",
+        "decided_at": null,
+        "created_at": "2026-10-26T00:20:11.275638Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": false
+      },
+      "exact_payload": {
+        "script_scenes_match_current_source": true,
+        "script_narrative_hash_matches_current_source": true,
+        "outline_brief_bytes_match_current_submission": true
+      },
+      "current_hash_reviews": [
+        {
+          "id": "e57b1958-8d93-44d3-b203-1098c5af4a81",
+          "gate": "script",
+          "status": "pending",
+          "content_sha256": "4011ea915073e7ae6bc5a796eb06aff337020bdd0e946c73d76b2d85065af005",
+          "decided_at": null
+        },
+        {
+          "id": "ee93f101-d27e-4980-82e6-d2f89d07cacc",
+          "gate": "outline",
+          "status": "pending",
+          "content_sha256": "b91785f365f20bbff70cd79b35af86457e8f9a0a91dba40efaf6ba90eb52ccb7",
+          "decided_at": null
+        }
+      ],
+      "languages": {
+        "status": "OBSERVED_ACTUAL_GET",
+        "locales": {},
+        "locales_decided_at": null,
+        "dub_allowed": false,
+        "dub_allowed_is_not_actual_clean_media_eligibility": true
+      },
+      "remote_media_usd": 0,
+      "remote_clip_seconds": 0,
+      "approvals_imported": false,
+      "local_approval_after_sha256": null,
+      "local_approval_unchanged": true,
+      "exact_current_canonical_review_ids_and_hashes_verified": true
+    },
+    {
+      "id": "c14",
+      "slug": "story-everyday-camelbak-c14-remake-20261025",
+      "source_video_sha256": "5a555ee4b1ac57f4a990a251a0336376d87d293500824771fe4e1c75f70525ea",
+      "canonical_script_sha256": "7aca1f854cde265715340ba0218ef891584c9148a808d63a3864dae04a7a36f7",
+      "outline_sha256": "dec5844232644c7b1282c18725f81ec374c2bdeeb7ada95f981b61703c903695",
+      "runtime_root": "/workspace/work/brand-story-20261025/c14-submission-root",
+      "current_entry": [
+        {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/production-entry.md",
+          "sha256": "742bbb86c5c17d8aeb7e06512223804e9659043542e49d1c4e9866d9fae2903b"
+        }
+      ],
+      "backend_status_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/backend-status.json",
+        "sha256": "01a7e102f252398fc12f2a48539af60b2f6012b05653485906de64be3639a719"
+      },
+      "canonical_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/backend-script-receipt.json",
+        "sha256": "896fce517b66e899763244c1b37e805bb753dfd3f0623d74b1a9d652c182053f",
+        "receipt_source_sha256": "5a555ee4b1ac57f4a990a251a0336376d87d293500824771fe4e1c75f70525ea",
+        "source_sha_is_historical": false
+      },
+      "text_config": {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/text-r6/text-current.json",
+        "sha256": "ef2e940b6759e6a5fe7413dcdb12181d4a09b4f0aa0b8ed637fc4a1786501621",
+        "root": "/workspace/work/brand-story-20261025/c14-submission-root",
+        "source_video_sha256": "5a555ee4b1ac57f4a990a251a0336376d87d293500824771fe4e1c75f70525ea"
+      },
+      "text_source_rebind": null,
+      "root_source_current_receipt_consistent": true,
+      "local_approval_path": "/workspace/work/brand-story-20261025/media/story-everyday-camelbak-c14-remake-20261025/approvals.json",
+      "local_approval_before_sha256": null,
+      "expected_script": {
+        "review_id": "31bcfffc-9281-43d3-92cc-332a62165c55",
+        "content_sha256": "7aca1f854cde265715340ba0218ef891584c9148a808d63a3864dae04a7a36f7",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "expected_outline": {
+        "review_id": "7c6a0b46-a59f-4f4a-8906-d17978369674",
+        "content_sha256": "dec5844232644c7b1282c18725f81ec374c2bdeeb7ada95f981b61703c903695",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "observed_at": "2026-10-26T08:57:27.896Z",
+      "http_status": 200,
+      "readback": "EXACT_CURRENT_CANONICAL_AND_FULL_PAYLOAD_GET_VERIFIED",
+      "category": "story",
+      "stage": "outline approved",
+      "stage_is_next_gate_not_decision": true,
+      "series_slug": null,
+      "script": {
+        "review_id": "31bcfffc-9281-43d3-92cc-332a62165c55",
+        "gate": "script",
+        "status": "pending",
+        "content_sha256": "7aca1f854cde265715340ba0218ef891584c9148a808d63a3864dae04a7a36f7",
+        "decided_at": null,
+        "created_at": "2026-10-26T00:20:30.501377Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": false
+      },
+      "outline": {
+        "review_id": "7c6a0b46-a59f-4f4a-8906-d17978369674",
+        "gate": "outline",
+        "status": "pending",
+        "content_sha256": "dec5844232644c7b1282c18725f81ec374c2bdeeb7ada95f981b61703c903695",
+        "decided_at": null,
+        "created_at": "2026-10-26T00:20:29.417926Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": false
+      },
+      "exact_payload": {
+        "script_scenes_match_current_source": true,
+        "script_narrative_hash_matches_current_source": true,
+        "outline_brief_bytes_match_current_submission": true
+      },
+      "current_hash_reviews": [
+        {
+          "id": "31bcfffc-9281-43d3-92cc-332a62165c55",
+          "gate": "script",
+          "status": "pending",
+          "content_sha256": "7aca1f854cde265715340ba0218ef891584c9148a808d63a3864dae04a7a36f7",
+          "decided_at": null
+        },
+        {
+          "id": "7c6a0b46-a59f-4f4a-8906-d17978369674",
+          "gate": "outline",
+          "status": "pending",
+          "content_sha256": "dec5844232644c7b1282c18725f81ec374c2bdeeb7ada95f981b61703c903695",
+          "decided_at": null
+        }
+      ],
+      "languages": {
+        "status": "OBSERVED_ACTUAL_GET",
+        "locales": {},
+        "locales_decided_at": null,
+        "dub_allowed": false,
+        "dub_allowed_is_not_actual_clean_media_eligibility": true
+      },
+      "remote_media_usd": 0,
+      "remote_clip_seconds": 0,
+      "approvals_imported": false,
+      "local_approval_after_sha256": null,
+      "local_approval_unchanged": true,
+      "exact_current_canonical_review_ids_and_hashes_verified": true
+    },
+    {
+      "id": "c15",
+      "slug": "story-everyday-frixion-c15-remake-20261025",
+      "source_video_sha256": "09f70cdcfa3776d827754bdbc9e41664ceae8231ec077eda2b141fcd0069531e",
+      "canonical_script_sha256": "bf4210c14d702e4d9048d05ec0246dc4aea1b4b85a688fbb7370878ed178f99f",
+      "outline_sha256": "d8d85cfe44e7c6ee8c75285c9a2173ee5f37780927ff85c9584416d1dec3b469",
+      "runtime_root": "/workspace/work/brand-story-20261025/c15-submission-root",
+      "current_entry": [
+        {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c15/production-entry.md",
+          "sha256": "e24f21f3ef2c22eadb0fbce2bb3bb6be636ecd84b81cc8cd88bca4729078dfc1"
+        }
+      ],
+      "backend_status_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c15/backend-status.json",
+        "sha256": "3bcb0c9827270430a28b10a6df104a07f512c11540bbc7efa574b8be7e85ea0b"
+      },
+      "canonical_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c15/backend-script-receipt.json",
+        "sha256": "2f0f0118c47ed699262827cde2edc011d34aee5022c68a3e1d05439a15ea6b76",
+        "receipt_source_sha256": "09f70cdcfa3776d827754bdbc9e41664ceae8231ec077eda2b141fcd0069531e",
+        "source_sha_is_historical": false
+      },
+      "text_config": {
+        "path": "/workspace/work/brand-story-20261025/c15-audit/text-r5/text-current.json",
+        "sha256": "03f321b5de4ab950649bd9d0e702fccaf9270d6dd05a60ecf97de526c21b9407",
+        "root": "/workspace/work/brand-story-20261025/c15-submission-root",
+        "source_video_sha256": "09f70cdcfa3776d827754bdbc9e41664ceae8231ec077eda2b141fcd0069531e"
+      },
+      "text_source_rebind": null,
+      "root_source_current_receipt_consistent": true,
+      "local_approval_path": "/workspace/work/brand-story-20261025/media/story-everyday-frixion-c15-remake-20261025/approvals.json",
+      "local_approval_before_sha256": null,
+      "expected_script": {
+        "review_id": "f07a1ee2-6648-448f-a236-9dd4a94710cb",
+        "content_sha256": "bf4210c14d702e4d9048d05ec0246dc4aea1b4b85a688fbb7370878ed178f99f",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "expected_outline": {
+        "review_id": "f7f65baf-f607-44a1-94a7-0038f5518f70",
+        "content_sha256": "d8d85cfe44e7c6ee8c75285c9a2173ee5f37780927ff85c9584416d1dec3b469",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "observed_at": "2026-10-26T08:57:28.795Z",
+      "http_status": 200,
+      "readback": "EXACT_CURRENT_CANONICAL_AND_FULL_PAYLOAD_GET_VERIFIED",
+      "category": "story",
+      "stage": "outline approved",
+      "stage_is_next_gate_not_decision": true,
+      "series_slug": null,
+      "script": {
+        "review_id": "f07a1ee2-6648-448f-a236-9dd4a94710cb",
+        "gate": "script",
+        "status": "pending",
+        "content_sha256": "bf4210c14d702e4d9048d05ec0246dc4aea1b4b85a688fbb7370878ed178f99f",
+        "decided_at": null,
+        "created_at": "2026-10-26T02:01:09.193455Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": false
+      },
+      "outline": {
+        "review_id": "f7f65baf-f607-44a1-94a7-0038f5518f70",
+        "gate": "outline",
+        "status": "pending",
+        "content_sha256": "d8d85cfe44e7c6ee8c75285c9a2173ee5f37780927ff85c9584416d1dec3b469",
+        "decided_at": null,
+        "created_at": "2026-10-26T02:01:08.174432Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": false
+      },
+      "exact_payload": {
+        "script_scenes_match_current_source": true,
+        "script_narrative_hash_matches_current_source": true,
+        "outline_brief_bytes_match_current_submission": true
+      },
+      "current_hash_reviews": [
+        {
+          "id": "f07a1ee2-6648-448f-a236-9dd4a94710cb",
+          "gate": "script",
+          "status": "pending",
+          "content_sha256": "bf4210c14d702e4d9048d05ec0246dc4aea1b4b85a688fbb7370878ed178f99f",
+          "decided_at": null
+        },
+        {
+          "id": "f7f65baf-f607-44a1-94a7-0038f5518f70",
+          "gate": "outline",
+          "status": "pending",
+          "content_sha256": "d8d85cfe44e7c6ee8c75285c9a2173ee5f37780927ff85c9584416d1dec3b469",
+          "decided_at": null
+        }
+      ],
+      "languages": {
+        "status": "OBSERVED_ACTUAL_GET",
+        "locales": {},
+        "locales_decided_at": null,
+        "dub_allowed": false,
+        "dub_allowed_is_not_actual_clean_media_eligibility": true
+      },
+      "remote_media_usd": 0,
+      "remote_clip_seconds": 0,
+      "approvals_imported": false,
+      "local_approval_after_sha256": null,
+      "local_approval_unchanged": true,
+      "exact_current_canonical_review_ids_and_hashes_verified": true
+    },
+    {
+      "id": "c19",
+      "slug": "story-everyday-seven-bank-c19-remake-20261025",
+      "source_video_sha256": "268d89aa563929543938fe9dd825b4729e91cd2003852e43ab870b29b032aa0e",
+      "canonical_script_sha256": "040048a25ed3fb16128f30e7bbdeeaa12a36ebf8f28fd9f588a3f4e6ec4ecdf9",
+      "outline_sha256": "4e73f17d53d7e267b66825dfa255f7209208c185697535d5de6bc72300775d2f",
+      "runtime_root": "/workspace/work/brand-story-20261025/c19-submission-root",
+      "current_entry": [
+        {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c19/production-entry.md",
+          "sha256": "43696f82259d72fecc5006348ed4e464c70a7bd5f7a876fc3a181405406c6462"
+        }
+      ],
+      "backend_status_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c19/backend-status.json",
+        "sha256": "51896ef1acad09f0d7fc4057bbaaf90e43f9125cc4f440d407fd16f9b33b0d49"
+      },
+      "canonical_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c19/backend-script-receipt.json",
+        "sha256": "c4f7e288cfd41137250c00482d6166893b15fb48e29cb280257d2fb7bd35898c",
+        "receipt_source_sha256": "268d89aa563929543938fe9dd825b4729e91cd2003852e43ab870b29b032aa0e",
+        "source_sha_is_historical": false
+      },
+      "text_config": {
+        "path": "/workspace/work/brand-story-20261025/c19-audit/text-r8/text-current.json",
+        "sha256": "859bde8a2bdf05a0fd063e931b544efe4c111dadc870677e5e16f1a779300e89",
+        "root": "/workspace/work/brand-story-20261025/c19-submission-root",
+        "source_video_sha256": "268d89aa563929543938fe9dd825b4729e91cd2003852e43ab870b29b032aa0e"
+      },
+      "text_source_rebind": null,
+      "root_source_current_receipt_consistent": true,
+      "local_approval_path": "/workspace/work/brand-story-20261025/media/story-everyday-seven-bank-c19-remake-20261025/approvals.json",
+      "local_approval_before_sha256": null,
+      "expected_script": {
+        "review_id": "d5c056c2-4a8a-4cce-800e-02af4b209093",
+        "content_sha256": "040048a25ed3fb16128f30e7bbdeeaa12a36ebf8f28fd9f588a3f4e6ec4ecdf9",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "expected_outline": {
+        "review_id": "7a6be9d6-fa01-4b92-840b-1fd3909cf018",
+        "content_sha256": "4e73f17d53d7e267b66825dfa255f7209208c185697535d5de6bc72300775d2f",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "observed_at": "2026-10-26T08:57:28.798Z",
+      "http_status": 200,
+      "readback": "EXACT_CURRENT_CANONICAL_AND_FULL_PAYLOAD_GET_VERIFIED",
+      "category": "story",
+      "stage": "outline approved",
+      "stage_is_next_gate_not_decision": true,
+      "series_slug": null,
+      "script": {
+        "review_id": "d5c056c2-4a8a-4cce-800e-02af4b209093",
+        "gate": "script",
+        "status": "pending",
+        "content_sha256": "040048a25ed3fb16128f30e7bbdeeaa12a36ebf8f28fd9f588a3f4e6ec4ecdf9",
+        "decided_at": null,
+        "created_at": "2026-10-26T04:36:39.071706Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": false
+      },
+      "outline": {
+        "review_id": "7a6be9d6-fa01-4b92-840b-1fd3909cf018",
+        "gate": "outline",
+        "status": "pending",
+        "content_sha256": "4e73f17d53d7e267b66825dfa255f7209208c185697535d5de6bc72300775d2f",
+        "decided_at": null,
+        "created_at": "2026-10-26T04:36:32.660058Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": false
+      },
+      "exact_payload": {
+        "script_scenes_match_current_source": true,
+        "script_narrative_hash_matches_current_source": true,
+        "outline_brief_bytes_match_current_submission": true
+      },
+      "current_hash_reviews": [
+        {
+          "id": "d5c056c2-4a8a-4cce-800e-02af4b209093",
+          "gate": "script",
+          "status": "pending",
+          "content_sha256": "040048a25ed3fb16128f30e7bbdeeaa12a36ebf8f28fd9f588a3f4e6ec4ecdf9",
+          "decided_at": null
+        },
+        {
+          "id": "7a6be9d6-fa01-4b92-840b-1fd3909cf018",
+          "gate": "outline",
+          "status": "pending",
+          "content_sha256": "4e73f17d53d7e267b66825dfa255f7209208c185697535d5de6bc72300775d2f",
+          "decided_at": null
+        }
+      ],
+      "languages": {
+        "status": "OBSERVED_ACTUAL_GET",
+        "locales": {},
+        "locales_decided_at": null,
+        "dub_allowed": false,
+        "dub_allowed_is_not_actual_clean_media_eligibility": true
+      },
+      "remote_media_usd": 0,
+      "remote_clip_seconds": 0,
+      "approvals_imported": false,
+      "local_approval_after_sha256": null,
+      "local_approval_unchanged": true,
+      "exact_current_canonical_review_ids_and_hashes_verified": true
+    },
+    {
+      "id": "seiko",
+      "slug": "story-adapt-seiko-quartz-astron-remake-20261025",
+      "source_video_sha256": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9",
+      "canonical_script_sha256": "fbce041d1b326cc6e6e74d5aaf73966c2315ce50d3196886c9b67ac974007e81",
+      "outline_sha256": "633e143b4a8884bd6ab49a6b36c1131b1d9e4b74c24480d3bc0199b46e23c12c",
+      "runtime_root": "/workspace/work/brand-story-20261025/seiko-submission-root",
+      "current_entry": [
+        {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/production-entry-text-r4.md",
+          "sha256": "94d27b35c24fd4ba8071c95f3454248a48bd7e5b7c70772974042ef6105c7329"
+        }
+      ],
+      "backend_status_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/backend-status.json",
+        "sha256": "bf9672da82a238dcd60258dd19ab484014d5d3cbea8c325cd9d17c9313f975eb"
+      },
+      "canonical_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/backend-script-receipt.json",
+        "sha256": "c46cc9780b461827679893191701764f9680dad20d2a76ce8ff3bc01e1660e3d",
+        "receipt_source_sha256": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9",
+        "source_sha_is_historical": false
+      },
+      "text_config": {
+        "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/text-current.json",
+        "sha256": "823ac5db057f4b238ee9a1477ba90afb662b58d9c811ae470f3a344b1b04e09c",
+        "root": "/workspace/work/brand-story-20261025/seiko-submission-root",
+        "source_video_sha256": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9"
+      },
+      "text_source_rebind": null,
+      "root_source_current_receipt_consistent": true,
+      "local_approval_path": "/workspace/work/brand-story-20261025/media/story-adapt-seiko-quartz-astron-remake-20261025/approvals.json",
+      "local_approval_before_sha256": null,
+      "expected_script": {
+        "review_id": "7126bf9c-0c88-4149-8380-46a9cdbf7f90",
+        "content_sha256": "fbce041d1b326cc6e6e74d5aaf73966c2315ce50d3196886c9b67ac974007e81",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "expected_outline": {
+        "review_id": "93d9eaf2-950f-4c4f-a2d4-1fa1b7e552eb",
+        "content_sha256": "633e143b4a8884bd6ab49a6b36c1131b1d9e4b74c24480d3bc0199b46e23c12c",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "observed_at": "2026-10-26T08:57:28.403Z",
+      "http_status": 200,
+      "readback": "EXACT_CURRENT_CANONICAL_AND_FULL_PAYLOAD_GET_VERIFIED",
+      "category": "story",
+      "stage": "outline approved",
+      "stage_is_next_gate_not_decision": true,
+      "series_slug": null,
+      "script": {
+        "review_id": "7126bf9c-0c88-4149-8380-46a9cdbf7f90",
+        "gate": "script",
+        "status": "approved",
+        "content_sha256": "fbce041d1b326cc6e6e74d5aaf73966c2315ce50d3196886c9b67ac974007e81",
+        "decided_at": "2026-10-26T05:54:46.054899Z",
+        "created_at": "2026-10-26T05:51:01.619540Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": true
+      },
+      "outline": {
+        "review_id": "93d9eaf2-950f-4c4f-a2d4-1fa1b7e552eb",
+        "gate": "outline",
+        "status": "approved",
+        "content_sha256": "633e143b4a8884bd6ab49a6b36c1131b1d9e4b74c24480d3bc0199b46e23c12c",
+        "decided_at": "2026-10-26T05:54:53.089841Z",
+        "created_at": "2026-10-26T05:51:00.190118Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": true
+      },
+      "exact_payload": {
+        "script_scenes_match_current_source": true,
+        "script_narrative_hash_matches_current_source": true,
+        "outline_brief_bytes_match_current_submission": true
+      },
+      "current_hash_reviews": [
+        {
+          "id": "7126bf9c-0c88-4149-8380-46a9cdbf7f90",
+          "gate": "script",
+          "status": "approved",
+          "content_sha256": "fbce041d1b326cc6e6e74d5aaf73966c2315ce50d3196886c9b67ac974007e81",
+          "decided_at": "2026-10-26T05:54:46.054899Z"
+        },
+        {
+          "id": "93d9eaf2-950f-4c4f-a2d4-1fa1b7e552eb",
+          "gate": "outline",
+          "status": "approved",
+          "content_sha256": "633e143b4a8884bd6ab49a6b36c1131b1d9e4b74c24480d3bc0199b46e23c12c",
+          "decided_at": "2026-10-26T05:54:53.089841Z"
+        }
+      ],
+      "languages": {
+        "status": "OBSERVED_ACTUAL_GET",
+        "locales": {
+          "en": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ja": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ko": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "es": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "pt": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "id": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "vi": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "th": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          }
+        },
+        "locales_decided_at": "2026-10-26T05:54:36.789752Z",
+        "dub_allowed": false,
+        "dub_allowed_is_not_actual_clean_media_eligibility": true
+      },
+      "remote_media_usd": 0,
+      "remote_clip_seconds": 0,
+      "approvals_imported": false,
+      "local_approval_after_sha256": null,
+      "local_approval_unchanged": true,
+      "exact_current_canonical_review_ids_and_hashes_verified": true
+    },
+    {
+      "id": "garmin",
+      "slug": "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+      "source_video_sha256": "96b1e2a519c739dcf4b9bf9f26949370e3ea911ad2f368602cc29c1a1fda4043",
+      "canonical_script_sha256": "a03581537a7e13028cb9b937498dec44e275e33a0479d867d9e2d7261f030bbb",
+      "outline_sha256": "23c0c9a85f7be2c3a1154f2e793dbbc42d4374685e4cf0ab291f9b06a966e530",
+      "runtime_root": "/workspace/work/brand-story-20261025/garmin-submission-root",
+      "current_entry": [
+        {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/garmin/production-entry-text-r4.md",
+          "sha256": "90f8182ff27d643503231248ee6ff04beec7befc218e687c28b6f853971aa639"
+        }
+      ],
+      "backend_status_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/garmin/backend-status.json",
+        "sha256": "ae2b1b4c9b4ef2b3f17968fbc1b4b0955c07369c6438b4df369174266721dacf"
+      },
+      "canonical_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/garmin/backend-script-receipt.json",
+        "sha256": "fe8f968eeb52b3d5c61a0894100b5d1348676a0128aff47621e085f9efdb8a3d",
+        "receipt_source_sha256": "96b1e2a519c739dcf4b9bf9f26949370e3ea911ad2f368602cc29c1a1fda4043",
+        "source_sha_is_historical": false
+      },
+      "text_config": {
+        "path": "/workspace/work/brand-story-20261025/garmin-audit/text-r4/text-current.json",
+        "sha256": "b8f2362847ac3d5d717d3835558733ac369429b9a740a23843e6fff38abcbffe",
+        "root": "/workspace/work/brand-story-20261025/garmin-submission-root",
+        "source_video_sha256": "96b1e2a519c739dcf4b9bf9f26949370e3ea911ad2f368602cc29c1a1fda4043"
+      },
+      "text_source_rebind": null,
+      "root_source_current_receipt_consistent": true,
+      "local_approval_path": "/workspace/work/brand-story-20261025/media/story-garmin-smartphone-pivot-worker-2026-remake-20261025/approvals.json",
+      "local_approval_before_sha256": null,
+      "expected_script": {
+        "review_id": "9a5024e2-c705-41e1-ae00-610a7121058e",
+        "content_sha256": "a03581537a7e13028cb9b937498dec44e275e33a0479d867d9e2d7261f030bbb",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "expected_outline": {
+        "review_id": "e7de91d3-0a00-46bc-8b97-7ae230f54811",
+        "content_sha256": "23c0c9a85f7be2c3a1154f2e793dbbc42d4374685e4cf0ab291f9b06a966e530",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "observed_at": "2026-10-26T08:57:28.787Z",
+      "http_status": 200,
+      "readback": "EXACT_CURRENT_CANONICAL_AND_FULL_PAYLOAD_GET_VERIFIED",
+      "category": "story",
+      "stage": "outline approved",
+      "stage_is_next_gate_not_decision": true,
+      "series_slug": null,
+      "script": {
+        "review_id": "9a5024e2-c705-41e1-ae00-610a7121058e",
+        "gate": "script",
+        "status": "pending",
+        "content_sha256": "a03581537a7e13028cb9b937498dec44e275e33a0479d867d9e2d7261f030bbb",
+        "decided_at": null,
+        "created_at": "2026-10-26T07:04:37.106537Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": false
+      },
+      "outline": {
+        "review_id": "e7de91d3-0a00-46bc-8b97-7ae230f54811",
+        "gate": "outline",
+        "status": "pending",
+        "content_sha256": "23c0c9a85f7be2c3a1154f2e793dbbc42d4374685e4cf0ab291f9b06a966e530",
+        "decided_at": null,
+        "created_at": "2026-10-26T07:04:35.655695Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": false
+      },
+      "exact_payload": {
+        "script_scenes_match_current_source": true,
+        "script_narrative_hash_matches_current_source": true,
+        "outline_brief_bytes_match_current_submission": true
+      },
+      "current_hash_reviews": [
+        {
+          "id": "9a5024e2-c705-41e1-ae00-610a7121058e",
+          "gate": "script",
+          "status": "pending",
+          "content_sha256": "a03581537a7e13028cb9b937498dec44e275e33a0479d867d9e2d7261f030bbb",
+          "decided_at": null
+        },
+        {
+          "id": "e7de91d3-0a00-46bc-8b97-7ae230f54811",
+          "gate": "outline",
+          "status": "pending",
+          "content_sha256": "23c0c9a85f7be2c3a1154f2e793dbbc42d4374685e4cf0ab291f9b06a966e530",
+          "decided_at": null
+        }
+      ],
+      "languages": {
+        "status": "OBSERVED_ACTUAL_GET",
+        "locales": {},
+        "locales_decided_at": null,
+        "dub_allowed": false,
+        "dub_allowed_is_not_actual_clean_media_eligibility": true
+      },
+      "remote_media_usd": 0,
+      "remote_clip_seconds": 0,
+      "approvals_imported": false,
+      "local_approval_after_sha256": null,
+      "local_approval_unchanged": true,
+      "exact_current_canonical_review_ids_and_hashes_verified": true
+    },
+    {
+      "id": "c20",
+      "slug": "story-everyday-zippo-c20-remake-20261025",
+      "source_video_sha256": "abe91823784207abb476876cbfa243c4f0b4e370fc5f03bc733ac1752db6194e",
+      "canonical_script_sha256": "8667936ba1e889b1a9c9f353008b264382537b11bfb2423685bad6f434721bd2",
+      "outline_sha256": "7ab47a0d4b5f73da0010a01af7e7f871176beb6810fd168ba2f61bc4a131765f",
+      "runtime_root": "/workspace/work/brand-story-20261025/c20-submission-root",
+      "current_entry": [
+        {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c20/production-entry-text-r8.md",
+          "sha256": "a70e74e4154395d8a0eed2d7ad0665efa24afb749ff76aca675d267fa0671811"
+        }
+      ],
+      "backend_status_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c20/backend-status.json",
+        "sha256": "ca6a3c5831913ae4b8a36aab3652b66d9fdc89cc0ff51f7a6e73818d33730c73"
+      },
+      "canonical_receipt": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c20/backend-script-receipt.json",
+        "sha256": "ec4298b191edc7c8c0a5bb1a74f0d83f683a409275bf2feddb375add69f56efc",
+        "receipt_source_sha256": "abe91823784207abb476876cbfa243c4f0b4e370fc5f03bc733ac1752db6194e",
+        "source_sha_is_historical": false
+      },
+      "text_config": {
+        "path": "/workspace/work/brand-story-20261025/c20-audit/text-r8/text-current.json",
+        "sha256": "56fbf5fa0c3bbcbb9eb1340c03590a55ad4b50bb6286acf2e7dafaa695981019",
+        "root": "/workspace/work/brand-story-20261025/c20-submission-root",
+        "source_video_sha256": "abe91823784207abb476876cbfa243c4f0b4e370fc5f03bc733ac1752db6194e"
+      },
+      "text_source_rebind": null,
+      "root_source_current_receipt_consistent": true,
+      "local_approval_path": "/workspace/work/brand-story-20261025/media/story-everyday-zippo-c20-remake-20261025/approvals.json",
+      "local_approval_before_sha256": null,
+      "expected_script": {
+        "review_id": "5190cb63-1076-4689-8d58-bcb8d1c9e4e6",
+        "content_sha256": "8667936ba1e889b1a9c9f353008b264382537b11bfb2423685bad6f434721bd2",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "expected_outline": {
+        "review_id": "97b0d655-a81a-4083-aa62-c4535ded615c",
+        "content_sha256": "7ab47a0d4b5f73da0010a01af7e7f871176beb6810fd168ba2f61bc4a131765f",
+        "previous_status": "pending",
+        "previous_decided_at": null
+      },
+      "observed_at": "2026-10-26T08:57:28.388Z",
+      "http_status": 200,
+      "readback": "EXACT_CURRENT_CANONICAL_AND_FULL_PAYLOAD_GET_VERIFIED",
+      "category": "story",
+      "stage": "outline approved",
+      "stage_is_next_gate_not_decision": true,
+      "series_slug": null,
+      "script": {
+        "review_id": "5190cb63-1076-4689-8d58-bcb8d1c9e4e6",
+        "gate": "script",
+        "status": "approved",
+        "content_sha256": "8667936ba1e889b1a9c9f353008b264382537b11bfb2423685bad6f434721bd2",
+        "decided_at": "2026-10-26T07:52:31.875093Z",
+        "created_at": "2026-10-26T07:09:46.565508Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": true
+      },
+      "outline": {
+        "review_id": "97b0d655-a81a-4083-aa62-c4535ded615c",
+        "gate": "outline",
+        "status": "approved",
+        "content_sha256": "7ab47a0d4b5f73da0010a01af7e7f871176beb6810fd168ba2f61bc4a131765f",
+        "decided_at": "2026-10-26T07:52:29.877975Z",
+        "created_at": "2026-10-26T07:09:45.375197Z",
+        "id_matches_expected": true,
+        "content_sha_matches_current": true,
+        "gate_matches_expected": true,
+        "previous_status": "pending",
+        "newly_observed_approved": true
+      },
+      "exact_payload": {
+        "script_scenes_match_current_source": true,
+        "script_narrative_hash_matches_current_source": true,
+        "outline_brief_bytes_match_current_submission": true
+      },
+      "current_hash_reviews": [
+        {
+          "id": "5190cb63-1076-4689-8d58-bcb8d1c9e4e6",
+          "gate": "script",
+          "status": "approved",
+          "content_sha256": "8667936ba1e889b1a9c9f353008b264382537b11bfb2423685bad6f434721bd2",
+          "decided_at": "2026-10-26T07:52:31.875093Z"
+        },
+        {
+          "id": "97b0d655-a81a-4083-aa62-c4535ded615c",
+          "gate": "outline",
+          "status": "approved",
+          "content_sha256": "7ab47a0d4b5f73da0010a01af7e7f871176beb6810fd168ba2f61bc4a131765f",
+          "decided_at": "2026-10-26T07:52:29.877975Z"
+        }
+      ],
+      "languages": {
+        "status": "OBSERVED_ACTUAL_GET",
+        "locales": {
+          "en": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ja": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "ko": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "es": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "pt": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "id": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "vi": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          },
+          "th": {
+            "metadata": true,
+            "captions": true,
+            "dub": true
+          }
+        },
+        "locales_decided_at": "2026-10-26T07:52:19.988310Z",
+        "dub_allowed": false,
+        "dub_allowed_is_not_actual_clean_media_eligibility": true
+      },
+      "remote_media_usd": 0,
+      "remote_clip_seconds": 0,
+      "approvals_imported": false,
+      "local_approval_after_sha256": null,
+      "local_approval_unchanged": true,
+      "exact_current_canonical_review_ids_and_hashes_verified": true
+    }
+  ],
+  "summary": {
+    "projects": 15,
+    "exact_current_get_verified": 15,
+    "unknown": 0,
+    "outline_approved": 8,
+    "script_approved": 9,
+    "outline_pending": 7,
+    "script_pending": 6,
+    "newly_observed_approved": [
+      {
+        "project": "c07",
+        "gate": "script",
+        "review_id": "38853f5f-8086-4493-aefd-81a772706286",
+        "content_sha256": "104fd328f69068cb84d0de47284b1b08c2fa90a4f7bf94a3d4882f4372ddf112",
+        "decided_at": "2026-10-26T02:26:26.955624Z"
+      },
+      {
+        "project": "seiko",
+        "gate": "outline",
+        "review_id": "93d9eaf2-950f-4c4f-a2d4-1fa1b7e552eb",
+        "content_sha256": "633e143b4a8884bd6ab49a6b36c1131b1d9e4b74c24480d3bc0199b46e23c12c",
+        "decided_at": "2026-10-26T05:54:53.089841Z"
+      },
+      {
+        "project": "seiko",
+        "gate": "script",
+        "review_id": "7126bf9c-0c88-4149-8380-46a9cdbf7f90",
+        "content_sha256": "fbce041d1b326cc6e6e74d5aaf73966c2315ce50d3196886c9b67ac974007e81",
+        "decided_at": "2026-10-26T05:54:46.054899Z"
+      },
+      {
+        "project": "c20",
+        "gate": "outline",
+        "review_id": "97b0d655-a81a-4083-aa62-c4535ded615c",
+        "content_sha256": "7ab47a0d4b5f73da0010a01af7e7f871176beb6810fd168ba2f61bc4a131765f",
+        "decided_at": "2026-10-26T07:52:29.877975Z"
+      },
+      {
+        "project": "c20",
+        "gate": "script",
+        "review_id": "5190cb63-1076-4689-8d58-bcb8d1c9e4e6",
+        "content_sha256": "8667936ba1e889b1a9c9f353008b264382537b11bfb2423685bad6f434721bd2",
+        "decided_at": "2026-10-26T07:52:31.875093Z"
+      }
+    ],
+    "full_current_visual_scene_payload_exact": 9,
+    "historical_prompt_payload_explained_by_controlled_visual_adoption": 6
+  },
+  "local_inputs_hashed": 191,
+  "local_input_changes": [],
+  "local_approvals_all_unchanged": true,
+  "source_or_runtime_writes": 0,
+  "admin_settings_calls": 0,
+  "review_pull_calls": 0,
+  "paid_provider_requests": 0,
+  "generated_story_media": 0,
+  "additional_readonly_adoption_receipts": [
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c03/visual-only-runtime-adoption.json",
+      "sha256": "a8a54882a80d838a1959b39600b25bb61f807466a5b5bba96f45ba995a391622"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c04/visual-only-runtime-adoption.json",
+      "sha256": "c96f0a15363a80b21680fc6607bcbcd3d653afafcd9a1c78d9c4391032737c04"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/visual-only-runtime-adoption.json",
+      "sha256": "5465747645eda91e7b985ff5ccedf3a2d75a1924a874ba3461863e2dab9c98f2"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c08/visual-only-runtime-adoption.json",
+      "sha256": "309e7f30e08e9829c6e8448965386b02ef0aa63870550081c1d43a10ba3e6cae"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/visual-only-runtime-adoption.json",
+      "sha256": "6c7b64cef7f458ec21cc0067fffa7ccb654afc197647e01b39592957a0724573"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c10/visual-only-runtime-adoption.json",
+      "sha256": "10f4fbd32b2e1841258e2e975feafbc89f00e3caae787b5e98a585c20038fb5f"
+    }
+  ],
+  "canonical_contract_note": "Official core/screenplay.mjs binds script approval to narrative-only screenplay bytes; scriptScenes also includes shot prompts as adjacent review context. Six retained historical scene prompts differ only in prompt fields after explicit visual-only adoption; their current canonicalSHA, reviewID, narrative hash, all non-prompt scene fields and outline bytes are exact."
+}

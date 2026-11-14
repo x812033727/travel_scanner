@@ -1,0 +1,42 @@
+{
+  "source_video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
+  "reviewer": "/root/c03_review_vi_th; independent reviewer of KO/ES, did not translate KO/ES",
+  "scope": "text_only",
+  "locales": [
+    {
+      "locale": "ko",
+      "worksheet_sha256": "c4062b9797fce898109a63bc1c0d3353e3af76f112a710e886f66f6709f09204",
+      "translation_sha256": "60a8afba7d45d7132777dbf221bc4e1a3a3d2c3680b20b62e645f471b0afd82d",
+      "verdict": "FIXES_REQUIRED",
+      "lines_checked": 97,
+      "chapters_checked": 6,
+      "findings": [
+        {
+          "target": "lines.c05r010",
+          "required": true,
+          "proposed": "이듬해 미국의 식물 상인이 보내온 씨앗에 제충국이 들어 있었습니다. 그제야 새 재료를 손에 넣었습니다.",
+          "reason": "The source means a plant dealer who sent seeds. 식물상 is normally read as flora, and is not a natural clear label for the merchant here. Use 식물 상인 so the sender remains a person; retain the following-year timing and pyrethrum seeds.",
+          "current": "이듬해 미국 식물상이 보내온 씨앗에 제충국이 들어 있었습니다. 그제야 새 재료를 손에 넣었습니다."
+        },
+        {
+          "target": "lines.c05r028",
+          "required": true,
+          "proposed": "회사 연표는 그해에 구상 제안과 시제품 제작 시작을 기록합니다. 이는 회사가 훗날 구상의 출처를 그렇게 기록한 것입니다.",
+          "reason": "정리한 귀속 is unnatural Korean and 귀속 can suggest ownership or allocation. The source is qualifying the origin attribution as the company’s later account, without establishing ownership rights or a contemporary independent record. State that retrospective attribution plainly while keeping the chronology first.",
+          "current": "회사 연표는 그해에 구상 제안과 시제품 제작 시작을 기록합니다. 이는 회사가 훗날 정리한 귀속입니다."
+        }
+      ]
+    },
+    {
+      "locale": "es",
+      "worksheet_sha256": "d9845e587a06ebc5e3f63bd1a778f0250e0a6a29a2a673d2aeb8e5f918c7afac",
+      "translation_sha256": "b61a533a63a7e197075f86ae9c56235626f8a6c4a06df40f014e622ed23e2739",
+      "verdict": "TEXT_PASS",
+      "lines_checked": 97,
+      "chapters_checked": 6,
+      "findings": []
+    }
+  ],
+  "actual_timing_verified": false,
+  "paid_calls": 0
+}

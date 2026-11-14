@@ -1,0 +1,42 @@
+{
+  "source_video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
+  "review_file_sha256": "18aee95341c7159137fbe8e14060f39639e62e1ab428668914e4cae354e093e1",
+  "locales": [
+    {
+      "locale": "pt",
+      "previous_worksheet_sha256": "20ce05fb051f7d2c820dfb3775de07ff063689bf61d70049d501fe479dafedc2",
+      "previous_translation_sha256": "08d82e0473b64934a1469e7ecdd92abfd2cd7cca313a3f704794a435e8553b68",
+      "new_worksheet_sha256": "d47e552e276b439d6394371305cbfa9708e011b51e5728e29192350bd2a2e7d9",
+      "changes": [
+        {
+          "target": "lines.c05r055",
+          "before": "A KINCHO diz que as espirais duplas reduzem quebras e custos no transporte; não temos aqui um valor específico de economia.",
+          "after": "A KINCHO diz que as espirais duplas podem reduzir quebras e custos no transporte; não temos aqui um valor específico de economia.",
+          "reason": "The source says the paired-coil method can reduce breakage and transport costs (能降低). The indicative reduzem makes the reported capability more categorical. Restore podem reduzir while preserving attribution to KINCHO and the absence of a specific savings amount."
+        }
+      ]
+    },
+    {
+      "locale": "id",
+      "previous_worksheet_sha256": "22e0ffb9bece965e71b50b03b1772a4253eefa8e33554cfdfdd9cf787d3bfa26",
+      "previous_translation_sha256": "80b3563cbffcc10561ff87cd15263089b8e5c5fea43f84ed6b58299fb9e6e067",
+      "new_worksheet_sha256": "8ce2df81c7e560a569cb488dddc16241aca3381b31265e7360e4c4cd81bf9baf",
+      "changes": [
+        {
+          "target": "lines.c05r004",
+          "before": "Namun, menurut saya yang benar-benar aneh, terpikir bentuk lingkaran ini belum tentu berarti bisa membuatnya menjadi produk.",
+          "after": "Namun, menurut saya, yang benar-benar aneh adalah bahwa menemukan ide lingkaran ini belum tentu berarti bisa mewujudkannya sebagai produk.",
+          "reason": "The draft leaves yang benar-benar aneh without a clear predicate and follows it with the awkward terpikir bentuk construction. Complete the sentence naturally while retaining the narrator's first-person opinion and the distinction between conceiving the circle and being able to make a saleable product."
+        },
+        {
+          "target": "lines.c05r093",
+          "before": "Gerakan menggulung tangan yang kamu lihat tadi di sini berganti menjadi pemotongan dengan cetakan; lingkarannya tetap, tetapi cara membuatnya berubah.",
+          "after": "Gerakan menggulung dengan tangan yang kamu lihat tadi di sini berganti menjadi pemotongan dengan cetakan; lingkarannya tetap, tetapi cara membuatnya berubah.",
+          "reason": "Menggulung tangan makes tangan the object being rolled. The source means winding the material by hand. Add dengan so the hand-winding/die-cutting contrast is correct, retaining the unchanged circle and changed manufacturing action in the second cue."
+        }
+      ]
+    }
+  ],
+  "independent_targeted_recheck": "pending",
+  "paid_calls": 0
+}

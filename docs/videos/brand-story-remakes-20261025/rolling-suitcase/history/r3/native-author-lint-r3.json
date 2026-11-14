@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r3",
+  "role": "AUTHOR_LOCAL_CHECKS_NOT_SOURCE_OR_NATIVE_APPROVAL",
+  "checked_at_utc": "2026-10-26T06:14:46.393Z",
+  "core_four_sha256": {
+    "video.json": "63d86ccbefad3a13ad0645874078ae83b1ed27858b0071c5707cd2e42766ee3d",
+    "script.md": "7084da40d3451dfe5f59c2e22ef34c73212d7e995a776d2f4d7bf75b386b0d55",
+    "narration-only.json": "a7c06f8181e08981e81510037c72f10384ee559eb380195b3374aea91628b4fd",
+    "claims.json": "bced288f4aaa2acaf67444418d7af0881c9be78b719256532d82d90da0bdb6a1"
+  },
+  "content_changes": [
+    {
+      "id": "rs0007",
+      "action": "replace_promise",
+      "before": "今天跟著普拉斯的輪子行李箱，從一張圖，追到能再帶一包的設計。",
+      "after": "今天跟著普拉斯的輪子行李箱，從一張圖，追查那台外架帶來的拆裝難題。"
+    },
+    {
+      "id": "rs0039",
+      "action": "delete_recap_line_and_its_scene",
+      "before": "你也可以把這個落差想得很具體：提出圖的人，並沒有因此得到接手製作的人。"
+    },
+    {
+      "id": "rs0050",
+      "action": "delete_recap_line_and_its_scene",
+      "before": "你把它放到地上時，原本得另外帶著走的東西，已經成了箱子的一部分。"
+    }
+  ],
+  "other_retained_narration_ids_and_values_unchanged": true,
+  "all_retained_prompt_camera_and_data_values_unchanged": true,
+  "rs0021_retying_preserved": true,
+  "all_27_loops_exactly_unchanged": true,
+  "projections_exact": true,
+  "counts": {
+    "lines": 110,
+    "chapters": 7,
+    "scenes": 108,
+    "shots": 107,
+    "cards": 0,
+    "outro": 1,
+    "loops": 27
+  },
+  "chapter_viewer_narrator_counts": [
+    {
+      "chapter": "開場｜兩個包與一張圖",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "一｜輪架已經能走",
+      "you": 3,
+      "I": 3
+    },
+    {
+      "chapter": "二｜圖紙等了兩週",
+      "you": 1,
+      "I": 3
+    },
+    {
+      "chapter": "三｜把輪子放進箱角",
+      "you": 2,
+      "I": 2
+    },
+    {
+      "chapter": "四｜拉把靠摩擦留住",
+      "you": 3,
+      "I": 2
+    },
+    {
+      "chapter": "五｜讓第二個包一起站",
+      "you": 3,
+      "I": 3
+    },
+    {
+      "chapter": "六｜別人也要一只",
+      "you": 3,
+      "I": 3
+    }
+  ],
+  "normal_lint": {
+    "observed_exit_code": 0,
+    "errors": [],
+    "soft_warnings": [
+      {
+        "path": "scenes",
+        "message": "\"luggage\" is in 53 of 107 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"suitcase\" is in 41 of 107 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      }
+    ],
+    "hook_cadence_gaps": 0,
+    "near_identical_adjacent_shots": 0,
+    "output_sha256": "5b5b1e85bb510fe08a9fc94db5b0dd3ec96808cca578c19c940bc9e77fa15b92"
+  },
+  "free_planner": {
+    "ordinary_cli": "tts --dry-run",
+    "observed_exit_code": 0,
+    "credential_context": "empty same-task home and empty env; no credentials read",
+    "network_attempts": 0,
+    "requests": 108,
+    "unchanged_request_objects": 107,
+    "changed_request_ids": [
+      "rs0007"
+    ],
+    "deleted_request_ids": [
+      "rs0039",
+      "rs0050"
+    ],
+    "ordinary_output_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/ordinary-free-planner-r3.txt",
+    "ordinary_output_sha256": "cb93478ec8fb417f022d54e0f0da6b2032873e1defeb8fb72a3358d6e66cb795",
+    "speech_hash": "b2b379c12a39e7a8",
+    "speech_hash_changed_from_r2": true
+  },
+  "stage_imageKey_rehearsal": {
+    "pure_local_only": true,
+    "all_pair_plan_objects_exactly_equal_r2": true,
+    "pairs": [
+      {
+        "teaser": "rs0005",
+        "payoff": "rs0066",
+        "native_stage_key": "e8d589542750b9e4",
+        "composed_prompt_sha256": "a284bc1420604858438ad893d3ff6f0c6350db2f292eecd60ab895c657b6d973",
+        "complete_tuple_equal": true,
+        "actual_same_asset_verified": false
+      },
+      {
+        "teaser": "rs0006",
+        "payoff": "rs0082",
+        "native_stage_key": "ab8eb6c1780fa08b",
+        "composed_prompt_sha256": "6d1a2d8a9cf400df283a46bf55ae69e162f8fc92ffd0dcae7b4b0c04aa772beb",
+        "complete_tuple_equal": true,
+        "actual_same_asset_verified": false
+      }
+    ]
+  },
+  "normal_lexicon": {
+    "sequence": 1,
+    "lexicon_sha256": "5a770dcde527377743c4b6e4efbfee41a69241a939cafe2e1f33360e97816e7a",
+    "files": [
+      {
+        "relative_path": "current.json",
+        "sha256": "29516c8a1aba3ae0a4d226747bd172be4db3c832feeca27f9c3aeb190edcece1",
+        "bytes": 287
+      },
+      {
+        "relative_path": "events/93516d24a1b2c6e45a21d1f14d357fed3bb0ac7facbdba330d65343ef7050a32.json",
+        "sha256": "93516d24a1b2c6e45a21d1f14d357fed3bb0ac7facbdba330d65343ef7050a32",
+        "bytes": 298
+      },
+      {
+        "relative_path": "versions/5a770dcde527377743c4b6e4efbfee41a69241a939cafe2e1f33360e97816e7a.json",
+        "sha256": "5a770dcde527377743c4b6e4efbfee41a69241a939cafe2e1f33360e97816e7a",
+        "bytes": 6778
+      }
+    ],
+    "original_r1_r2_and_r3_bytes_equal": true,
+    "initialize_returned_existing_snapshot": true,
+    "reinitialized_or_rebuilt": false
+  },
+  "runtime_manifest_sha256": "f35329b05f263a4c7ca999b5d2847a1f60ef172888e3dd7276251b62951b0e9b",
+  "runtime_script_sha256": "d282f2439fa250e10b466d5e8f0b9ea659b115bfcc03138d9326fee8c1785541",
+  "protected_readback": {
+    "original_protected_851": 851,
+    "research_files": 3,
+    "original_related_files": 192,
+    "source_cache_files": 611,
+    "backend_snapshot_copies": 2,
+    "total_unique_original_files_checked": 919,
+    "archived_r2_files_checked": 37,
+    "old_r2_runtime_files": 10,
+    "r1_history_unchanged": true,
+    "all_sha_and_bytes_match": true,
+    "history_r2_manifest_sha256": "c4abc97cb295826c1c6c80f9f82d46dac689af20715a6f9f31d78cb846ca78d4"
+  },
+  "facts": {
+    "ok": false,
+    "detail": "no verify-*.md beside video.json: the script has not been fact-checked"
+  },
+  "current_verify_present": false,
+  "capacity": {
+    "whole_raw_spoken_units": 2629,
+    "coldopen": 169,
+    "voiced_CTA": 58,
+    "planning_target": 3500,
+    "planning_units_gap": 871,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      525.8,
+      657.25
+    ],
+    "planning_at_4_5": 584.2222222222222,
+    "actual_body_seconds": null,
+    "actual_audio_tested": false,
+    "actual_duration_verdict": "PENDING_NO_TTS",
+    "planning_warning": "Natural de-duplicated single-story text remains short. Arithmetic does not establish synthesized duration or TTS FAIL. No silence, slowdown, recaps, warnings or invention anecdotes fill the gap.",
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "scope": "Whole unwrapped spoken narration, including coldopen and voiced CTA, excluding added5secondintro+21secondoutro."
+  },
+  "actual_native_round_count": 1,
+  "native_input_prepared": false,
+  "native_reader_calls": 2,
+  "current_revision_native_reader_calls": 0,
+  "prior_native_round_1_verdict": "HOLD_NO_SPOILER_NO_RECAP",
+  "source_review": "PENDING_R3_DELTA_QA",
+  "written_visual_review": "PENDING_R3_DELTA_QA",
+  "next_gate": "INDEPENDENT_R3_SOURCE_DELTA_QA_BEFORE_FRESH_NATIVE_2",
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "actual_audio_seconds": null,
+  "actual_duration_verified": false,
+  "actual_same_asset_verified": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0,
+  "owner_approvals_created": 0
+}

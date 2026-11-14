@@ -1,0 +1,380 @@
+{
+  "schema_version": 1,
+  "episode": "C20",
+  "revision": "c20-r4",
+  "reviewer": "codex-c20-r1-source-independent",
+  "reviewed_at_utc": "2026-10-26T04:54:26.329831+00:00",
+  "independent": true,
+  "scope": "EXACT_R3_FULL_SOURCE_VISUAL_BASELINE_PLUS_TWO_TEXT_DELTAS",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "must_fix": [],
+  "independence": {
+    "research_or_writing_participation": false,
+    "native_blind_or_author_narrative_judgments_read": false,
+    "sensitive_archive_files": "SHA_AND_SIZE_ONLY",
+    "author_questions_spawn_paid_backend_git_owner_actions": false
+  },
+  "binding": {
+    "core_four_sha256": {
+      "video.json": "89b259599f127197332b9528c58552c8781b322c6b6dde36d5a9e1ae21183ee3",
+      "script.md": "c6fef4108da560b7c5f45c066ef463bea48a5a98e910070f5dd57bd17c01834e",
+      "narration-only.json": "2c688690439239067eaedfc6ec910579581348da54e11d06c2ad093d279f30e4",
+      "claims.json": "f2e2547145cd01d0d0705d514eb385324e721b1a60541e4f35fd4842eba22296"
+    },
+    "claims_md_sha256": "76730491d1af24932db2df4a9fecdc1f53aece0b05d82df06c8758e79ce5c27f",
+    "image_reuse_plan_sha256": "26029565aabc4caf1a70f65c364bc292629215b899019fc17b0e91e5fd2f5622",
+    "freeze_sha256": "345d1126a5039ac9e5a4f93310af2456d94e7574dc70e208ad274b17dbb99ba6",
+    "protected_inputs_sha256": "d5a201237b5368165181eefddc04bae0d1e80e4d9c273355d3271eaf99206500",
+    "runtime_video_exact": true,
+    "runtime_canonical_script_sha256": "088fc31d5dea1c25f5a1b5b7d005f4b58dabe840827277250e03ba8dc4c7e831"
+  },
+  "baseline_chain": {
+    "R3": {
+      "receipt": "history/r3/reviews/source-r3-independent.json",
+      "sha256": "1adc1fa4246bb3d925234e3c0bfb28be25b04e702efdf7461530979f75de79cf",
+      "verdict": "PASS",
+      "core_four_sha256": {
+        "video.json": "8b68147765cd4cfdf4769a80db8a381e3d24ef6d387c8cb7ba693d9d2abe6a93",
+        "script.md": "7c07b65966df310e19dca161f6dd28ef395a95142d3b0cdf577bfbe0531e825d",
+        "narration-only.json": "3c8d3145307a7130d70d240b81b2f0dbf914959894a5bd27147af02a4241ee3c",
+        "claims.json": "e949796bc6144ec49b721072b11d7c78147b58e4cb1ad63c5e0ab268223dc54c"
+      },
+      "verify_sha256": "dccf7eb21c42e201ccf77975d44292d6e9ecf6860e40ec371464c70cf39f7c2f"
+    },
+    "R2": {
+      "review_path": "history/r2/reviews/source-r2-independent.json",
+      "review_sha256": "00e5569b45a84fa9d8685d0e30ba7fdab9f95f78ab483ec38077d3a7ed21a81e",
+      "core_four_sha256": {
+        "video.json": "1590484bcebbd45dc29bcf4fe555895d7d39d56f216623a6f60980b9e9be0170",
+        "script.md": "5ed7d81b2ba7455d64970dc407f4155e03fdb53cc4c31b2ed8fd6c77d453d2ad",
+        "narration-only.json": "0fbbdf635e1668889917e021cbe4b0d601ba931577779c928b81e6bc8b0efbf7",
+        "claims.json": "6170d489e93e97bb36f49b340e012924160576f04cbca4b3c3910fd9dcb1913b"
+      },
+      "source_content_verdict": "PASS",
+      "written_visual_verdict_was": "HOLD",
+      "inheritance_rule": "Compare canonical JSON source payload (claim, kind, research/source/quote IDs, full source_evidence and limits) exactly after only c20r2→c20r3 identifier renaming. IDs, deletions, order/context and 28 loop endpoints separately reviewed. Rows retain per-payload SHA. No R2 visual HOLD is inherited as PASS.",
+      "sources": [
+        {
+          "id": "DF_CASE",
+          "publisher": "Joseph / Dependable Flame",
+          "publisher_date": "published 2022-04-06; modified 2022-04-08",
+          "applicable_country_or_region": "United States, historical reported experience",
+          "url": "https://dependableflame.com/sending-lighters-to-the-zippo-repair-clinic-a-mixed-bag-or-padded-mailer-review-from-a-happy-customer",
+          "final_url": "https://dependableflame.com/sending-lighters-to-the-zippo-repair-clinic-a-mixed-bag-or-padded-mailer-review-from-a-happy-customer",
+          "retrieved_at_utc": "2026-10-26T01:39:31.603263+00:00",
+          "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_CASE.html",
+          "raw_sha256": "6f623a6bbcb0c94cafa9fac32c7992cd5224ae78fd9885b3403e4ea57a18ebac",
+          "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_CASE.txt",
+          "text_sha256": "6ac84a07c099b3f5ede3b11718a6070f23edc23a0cbcf37bf68991e0e5844cd5"
+        },
+        {
+          "id": "DF_FORM_PHOTO",
+          "publisher": "Joseph / Dependable Flame",
+          "publisher_date": "linked in 2022-04-06 article",
+          "applicable_country_or_region": "United States",
+          "url": "https://dependableflame.com/wp-content/uploads/2022/04/8F21F941-2605-4D3B-B180-C96085A7E4AB.jpeg",
+          "final_url": "https://dependableflame.com/wp-content/uploads/2022/04/8F21F941-2605-4D3B-B180-C96085A7E4AB.jpeg",
+          "retrieved_at_utc": "2026-10-26T01:40:53.621717+00:00",
+          "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_ORIGINAL_PHOTO.html",
+          "raw_sha256": "5d7c44365f958fafe241ebe05d4adb8c47531dacc5ad83b018730ec9ceab03e7",
+          "text_path": null,
+          "text_sha256": null
+        },
+        {
+          "id": "DF_PRE_REPAIR",
+          "publisher": "Joseph / Dependable Flame",
+          "publisher_date": "published 2022-04-04; modified 2022-04-05",
+          "applicable_country_or_region": "United States, historical reported experience",
+          "url": "https://dependableflame.com/vintage-lighter-diaries-vol-8-tinkering-with-some-old-favorites-as-we-await-some-zippo-repairs",
+          "final_url": "https://dependableflame.com/vintage-lighter-diaries-vol-8-tinkering-with-some-old-favorites-as-we-await-some-zippo-repairs",
+          "retrieved_at_utc": "2026-10-26T01:41:43.877430+00:00",
+          "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_PRE_REPAIR.html",
+          "raw_sha256": "59d3ffe8516ba1ff468c507718dbc4dde04a2f3d307dc9cf384e9ae71dcbd722",
+          "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_PRE_REPAIR.decoded.txt",
+          "text_sha256": "61de0bee875121a7ef95cca07a7371e2d571c38a981fa43e0362d07e66d34eda"
+        },
+        {
+          "id": "JP_BEFORE",
+          "publisher": "ゆきいるか / note.com image CDN",
+          "publisher_date": "linked in 2024-10-18 article; original capture time not independently certified",
+          "applicable_country_or_region": "Japan",
+          "url": "https://assets.st-note.com/img/1729259530-cqSYTGsQPrvk92znbCIV8tBK.jpg?width=1200",
+          "final_url": "https://assets.st-note.com/img/1729259530-cqSYTGsQPrvk92znbCIV8tBK.jpg?width=1200",
+          "retrieved_at_utc": "2026-10-26T01:43:55.708466+00:00",
+          "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/JP_CASE_BEFORE.jpg",
+          "raw_sha256": "eb32dce72d7bc195047d174d19e8e9a4312bffd4c53034021d998e776e040422",
+          "text_path": null,
+          "text_sha256": null
+        },
+        {
+          "id": "JP_NOTE",
+          "publisher": "ゆきいるか / note.com",
+          "publisher_date": "2024-10-18 23:51 (page display; timezone not independently established)",
+          "applicable_country_or_region": "Japan; author says Tokyo–Osaka",
+          "url": "https://note.com/snow_dolphin/n/ndbe3e3f23b9c",
+          "final_url": "https://note.com/snow_dolphin/n/ndbe3e3f23b9c",
+          "retrieved_at_utc": "2026-10-26T01:41:56.198306+00:00",
+          "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/repair-case/snow-dolphin-jp.html",
+          "raw_sha256": "11820f397cc4b37b30d763b862704668a26ae9aac7cc5963da202c7215c09ca4",
+          "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/repair-case/snow-dolphin-jp.txt",
+          "text_sha256": "7f6c3b6c3d982dd06fa42552cf9ecb042b745c63a393ae7bbe75370a53857828"
+        },
+        {
+          "id": "JP_RETURN",
+          "publisher": "ゆきいるか / note.com image CDN",
+          "publisher_date": "linked in 2024-10-18 article; original capture time not independently certified",
+          "applicable_country_or_region": "Japan",
+          "url": "https://assets.st-note.com/img/1729259962-dzY8AgZGL2mFMlkIBwhROqDs.jpg?width=1200",
+          "final_url": "https://assets.st-note.com/img/1729259962-dzY8AgZGL2mFMlkIBwhROqDs.jpg?width=1200",
+          "retrieved_at_utc": "2026-10-26T01:43:56.322422+00:00",
+          "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/JP_CASE_RETURN.jpg",
+          "raw_sha256": "628d965853f6e87d47852ca6e111e19e67cfdfb7fb5360144a3abfa6bd5f4634",
+          "text_path": null,
+          "text_sha256": null
+        },
+        {
+          "id": "JP_TRACKING",
+          "publisher": "ゆきいるか / note.com image CDN",
+          "publisher_date": "linked in 2024-10-18 article; original capture time not independently certified",
+          "applicable_country_or_region": "Japan",
+          "url": "https://assets.st-note.com/img/1729259743-ZLoOkxAsbH6z2MEBCFlUWrum.png?width=1200",
+          "final_url": "https://assets.st-note.com/img/1729259743-ZLoOkxAsbH6z2MEBCFlUWrum.png?width=1200",
+          "retrieved_at_utc": "2026-10-26T01:43:56.117236+00:00",
+          "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/JP_CASE_TRACKING.png",
+          "raw_sha256": "1eed321d5bcc104b3e0bf0e19416613db7f6410029106853b84697df5c526e88",
+          "text_path": null,
+          "text_sha256": null
+        },
+        {
+          "id": "KB_FILL",
+          "publisher": "Zippo Manufacturing Company",
+          "publisher_date": "2026-07-30",
+          "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+          "url": "https://kb.zippo.com/zippo-lighter/fill",
+          "final_url": "https://kb.zippo.com/zippo-lighter/fill",
+          "retrieved_at_utc": "2026-10-26T01:41:43.725571+00:00",
+          "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_FILL.html",
+          "raw_sha256": "f490785e64b3aa130424047f774c917c0131f413e8085376d4c8cc0bf56d25f0",
+          "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_FILL.txt",
+          "text_sha256": "b47b716cd74589b0ca9786b8a12e148db15cd1f1d68af32c2c2ed52bb527a5a9"
+        },
+        {
+          "id": "KB_HISTORY",
+          "publisher": "Zippo Manufacturing Company",
+          "publisher_date": "2026-08-25",
+          "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+          "url": "https://kb.zippo.com/the-history-of-zippo",
+          "final_url": "https://kb.zippo.com/the-history-of-zippo",
+          "retrieved_at_utc": "2026-10-26T01:39:03.837789+00:00",
+          "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_HISTORY.html",
+          "raw_sha256": "c9740b36fd3b78a8de7942a1dbda2ae2d5c6a166277c6526287abe56bc201a9c",
+          "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_HISTORY.txt",
+          "text_sha256": "61be35e24fc4f59f110cf807648bc3dc7e073b9c15ffc92fd465ab6aaeb8c2d1"
+        },
+        {
+          "id": "PATENT_US2032695",
+          "publisher": "United States Patent Office; original scan hosted by Google",
+          "publisher_date": "filed 1934-05-17; granted/patented 1936-03-03",
+          "applicable_country_or_region": "United States",
+          "url": "https://patentimages.storage.googleapis.com/c6/09/ea/1d1b14be9be79c/US2032695.pdf",
+          "final_url": "https://patentimages.storage.googleapis.com/c6/09/ea/1d1b14be9be79c/US2032695.pdf",
+          "retrieved_at_utc": "2026-10-26T01:38:32.520649+00:00",
+          "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/US2032695.pdf",
+          "raw_sha256": "65e39aa2c91397b6873327c1fb32dc8fca303a5e1c3762af1746f02cf3f34ea3",
+          "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/US2032695.txt",
+          "text_sha256": "70b830281ecdd4b1a88a355235f6c31021e0d5a90e97d4d582475521e0a2a324"
+        },
+        {
+          "id": "UK_FORM_20261008",
+          "publisher": "Zippo UK linked official CDN PDF",
+          "publisher_date": "PDF metadata Creation/ModDate 2026-10-08 12:46:39 UTC; publication day not independently certified",
+          "applicable_country_or_region": "UK; forwarded to Germany",
+          "url": "https://cdn.shopify.com/s/files/1/0471/9532/4576/files/20261008_Repair_Form_EN.pdf?v=1792749458",
+          "final_url": "https://cdn.shopify.com/s/files/1/0471/9532/4576/files/20261008_Repair_Form_EN.pdf?v=1792749458",
+          "retrieved_at_utc": "2026-10-26T01:40:14.455446+00:00",
+          "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/UK_FORM_20261008.pdf",
+          "raw_sha256": "fb47e0a3acaa3c4a13b3ac3a8704025b6dd1aeafa7145d18a03e78957bd6ad51",
+          "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/UK_FORM_20261008.txt",
+          "text_sha256": "96bbe048bf5034f432e60dd60eb91fd6b1a7e49e778f63bbb55ce4a85dbecc07"
+        },
+        {
+          "id": "US_DECO",
+          "publisher": "Zippo Manufacturing Company",
+          "publisher_date": "2026-08-24",
+          "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+          "url": "https://kb.zippo.com/zippo-lighter/worn-deco",
+          "final_url": "https://kb.zippo.com/zippo-lighter/worn-deco",
+          "retrieved_at_utc": "2026-10-26T01:39:31.347978+00:00",
+          "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_DECO.html",
+          "raw_sha256": "a40dabbe427c5bd9906a516aba20b0621b96ce34493623671fc9639e492ad68b",
+          "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_DECO.txt",
+          "text_sha256": "60c2215403475764e4f159273d21cbaca4130fbb0b4819762c2398692ba21406"
+        },
+        {
+          "id": "US_REPAIR",
+          "publisher": "Zippo Manufacturing Company",
+          "publisher_date": "not displayed; retrieved 2026-10-26",
+          "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+          "url": "https://www.zippo.com/pages/repairs-windproof-lighter",
+          "final_url": "https://kb.zippo.com/warranty-repair",
+          "retrieved_at_utc": "2026-10-26T01:39:03.864721+00:00",
+          "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_REPAIR.html",
+          "raw_sha256": "12e50e284c208d90f9e9b19d0388d9ebd7fe186cb0b6c2b5f68b1ca1f685cb81",
+          "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_REPAIR.txt",
+          "text_sha256": "e6b64dbcb691eec67aa02fb27b5fe156b0b3ecae52fa20750a2ba96cdc114300"
+        }
+      ]
+    },
+    "R1_source_receipt_sha256": "7fddccb74b818e363a0195921162d7af6a189c7f082dcad6101544833d7e643e",
+    "inheritance": "All video fields compare exactly after restoring only the two narration text strings. All claims rows compare exactly after restoring only those two claim strings. Source/anchor registries exact; IDs retained as c20r3. Exact R3 baseline covers 13 source documents/images and 64 used anchors; no new source or anchor.",
+    "unchanged_rows": 115,
+    "unchanged_rows_payload_sha256": "16472c5496846f08edf7909a42820253ebea0b30ce14b9df8cfd191e6129e6c7",
+    "unchanged_visual_payload_sha256": "22dfd15ce1f5976cffd4ecba368c26cb7a2ecd3aac4e726b2a0d7831fb95ab36",
+    "all_114_shot_prompts_cameras_other_video_fields_exact": true
+  },
+  "delta_checks": [
+    {
+      "id": "c20r3i06",
+      "before": "他公開的照片裡，帶船圖與刻字那只，修理表上勾的是哪個位置？",
+      "after": "剛剛那只帶環的舊盒，在他公開的照片裡，對應的修理表勾的是哪一欄？",
+      "source_id": "DF_FORM_PHOTO",
+      "anchor_id": "E16-Q1",
+      "raw_sha256": "5d7c44365f958fafe241ebe05d4adb8c47531dacc5ad83b018730ec9ceab03e7",
+      "verdict": "PASS",
+      "finding_zh": "重新親看照片：左側有船/盾牌刻字的Camden對應後方左表，Hinge pin可見勾選，Will not light/work未勾。與前文帶環Camden來源一致；右側普通銀色款為另一件。不解讀遮住手寫內容，不畫新填表或新增故障。prompt仍是匿名帶環brass概念物和無字紙，未生可讀勾欄。"
+    },
+    {
+      "id": "c20r3t10",
+      "before": "自己找零件走不通，廠商那裡，還有能接手的入口嗎？",
+      "after": "廠商那裡，還有能接手的入口嗎？",
+      "source_id": "JP_NOTE",
+      "anchor_ids": [
+        "J07-Q1",
+        "J07-EXTRA"
+      ],
+      "raw_sha256": "11820f397cc4b37b30d763b862704668a26ae9aac7cc5963da202c7215c09ca4",
+      "verdict": "PASS",
+      "finding_zh": "重讀原文lines14–21，找非regular零件後才注意永久保證，並記正品免費生涯保証。新問句刪去前述搜尋失敗的重述，仍位於日本2024那次送修敘事、由t11–t13作者查費及選寄修回答；沒有把它改成今天所有產品/地區的現行承諾或申請成功保證。"
+    }
+  ],
+  "coverage": {
+    "narration_and_true_marker_rows": 117,
+    "shots": 114,
+    "outro_scenes": 1,
+    "exact_unchanged_text_claim_rows": 115,
+    "personally_reread_delta_rows": 2,
+    "all_projections_script_video_narration_claims_exact": true,
+    "loop_order_and_endpoints_checked": 28,
+    "R2_M01_M02_repairs_still_exact_and_valid": true,
+    "prompt_brand_person_logo_text_copyright_constraints_inherited_exact": true
+  },
+  "image_reuse_plan": {
+    "verdict": "PASS_WRITTEN_ONLY",
+    "pairs": [
+      {
+        "source": "c20r3e01",
+        "reuse": "c20r3h05",
+        "full_input_equal": true,
+        "composed_sha256": "f6aa701ac9dd7c2edd06474c99b4ea9b00457e616c5a7995e106ecd10d61989c",
+        "composed_sha_matches": true,
+        "base_key": "14da6fdbee2275d6",
+        "source_native_key": "10628c6d991ddf8d",
+        "reuse_native_key": "10628c6d991ddf8d",
+        "expected_native_key": "10628c6d991ddf8d"
+      },
+      {
+        "source": "c20r3n01",
+        "reuse": "c20r3h06",
+        "full_input_equal": true,
+        "composed_sha256": "9d60b29c7012dd1ee180808278130ba215a099e2abdd860d2a6962cf6f5d12d3",
+        "composed_sha_matches": true,
+        "base_key": "382dc0d240a028e3",
+        "source_native_key": "8499e810e4c09fb5",
+        "reuse_native_key": "8499e810e4c09fb5",
+        "expected_native_key": "8499e810e4c09fb5"
+      }
+    ],
+    "pure_native_functions_only": true,
+    "declared_tuple": "MiniMax/image-01;version1;1920x1080/1K;seed1;refs[];negative empty;takes1;no fixes;limit1500;complete composed prompt and camera included. No backend/provider readback claimed.",
+    "handoff_reviewed": "Live model/version/size/seed/references/fixes and intended media root readback before actual admission; payoff first; readCache/existence/bytes SHA guard before teaser, any miss stops with no reroll/force/handwritten manifest; both ordinary endpoint judges; actual selected and final trim files SHA equal plus assembly same file, originals hashed separately.",
+    "actual_same_asset_verified": false,
+    "actual_final_file_sha_verified": false
+  },
+  "fact_limits_inherited": [
+    "US two items and JP later gift are distinct; US appears/no new weld is owner observation, not factory process.",
+    "No JP successful ignition, completed form, old-unit request or return reason;47days is reported travel not repair-hours or warranty deadline.",
+    "Company1933 retrospective is attributed; patent is limited structural context, no first-invention/all-model BOM. UK2026 and US current function/finish scope not retroactive or global."
+  ],
+  "validation": {
+    "native_lint": {
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "\"case\" is in 71 of 114 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"adult\" is in 55 of 114 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"closed\" is in 40 of 114 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        }
+      ],
+      "summary": {
+        "minutes": 13.966111111111111,
+        "lines": 117,
+        "spoken_units": 3000,
+        "billable_characters": 9908,
+        "chapters": [
+          "00:00 帶繫繩環的舊盒，準備寄回去",
+          "00:51 想修鬆蓋，卻遲遲沒寄的舊盒",
+          "03:19 回信還沒來，包裹先出門",
+          "06:17 蓋子收緊，舊磨痕仍在",
+          "08:52 粉紅色禮物，輪子也停住了",
+          "11:50 原來的內膽，也一起回來"
+        ]
+      }
+    },
+    "native_facts_parser": {
+      "not_found_count": 0,
+      "result": {
+        "ok": true,
+        "detail": "verify-1.md marks no claim NOT FOUND"
+      }
+    },
+    "facts_parser_limit": "Checks cited NOT FOUND rows only; factual validation is the exact independently reviewed baseline plus personal two-delta reread.",
+    "protected_research": 3,
+    "legacy_originals": 68,
+    "readonly_snapshots": 68,
+    "raw_sha_size_checked": 159,
+    "immutable_lexicon_files": 3,
+    "history_file_counts_sha_only": {
+      "r1": 24,
+      "r2": 35,
+      "r3": 47
+    },
+    "R3_external_evidence_files_sha_only": 30,
+    "all_protected_inputs_match": true
+  },
+  "limitations": {
+    "readiness": "HOLD_FOR_REMAINING_EDITORIAL_AND_PRODUCTION_GATES",
+    "material_capacity_risk": true,
+    "spoken_units": 3000,
+    "target_minutes": 13,
+    "actual_audio_seconds": null,
+    "actual_final_seconds": null,
+    "duration_verdict": "UNMEASURED; native estimate is planning, not durationPASS or actualspeechFAIL",
+    "actual_same_asset_verified": false,
+    "source_PASS_is_not_narrative_media_or_owner_approval": true,
+    "paid_calls": 0,
+    "backend_git_owner_mutations": 0
+  },
+  "outputs": [
+    "reviews/source-r4-independent.json",
+    "verify-1.md"
+  ]
+}

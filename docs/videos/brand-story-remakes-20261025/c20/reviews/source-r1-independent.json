@@ -1,0 +1,1478 @@
+{
+  "schema_version": 1,
+  "episode": "C20",
+  "revision": "c20-r1",
+  "video_slug": "story-everyday-zippo-c20-remake-20261025",
+  "reviewer": "codex-c20-r1-source-independent",
+  "reviewed_at_utc": "2026-10-26T03:18:59.222919+00:00",
+  "independent": true,
+  "scope": "SOURCE_AND_WRITTEN_VISUAL_ONLY",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "must_fix": [],
+  "independence": {
+    "participated_in_research_or_writing": false,
+    "read_current_narrative_or_blind_results": false,
+    "read_author_notes_or_author_lint_conclusions": false,
+    "asked_author": false,
+    "delegated": false,
+    "author_self_checks_used_as_evidence": false
+  },
+  "binding": {
+    "core_four_sha256": {
+      "video.json": "57229f16660e840a65194a1f3fa29c8aa41856b8d522684ef039d12eee0e1b80",
+      "script.md": "2128e19253702e50ea53172c8fe521e1d79f8e993c94bb214032b1c3c01963b5",
+      "narration-only.json": "d7c6d148cb486958c905efcd8e15d38884b448967cdbba765785d5b01028839e",
+      "claims.json": "588ac3c404ed81e59077804b2d8fa8ccbf87deeff641172d2d8b24288c0054a3"
+    },
+    "claims_md_sha256": "635fe3452d5386bb8390d604c00858f2081f06e6cd43d7bbb31d9bad97cb0965",
+    "image_reuse_plan_sha256": "6d578393b528ec52f29cce1ea50a90d229d2e07b0c4257b94135a0d7dd033d7f",
+    "freeze_sha256": "6d57895c1e9214f954b33a0b6d5c8755095dd5ed83143a27bfcdf853a78228a1",
+    "research_three_sha256": {
+      "research-original.md": "bd325631384e70272d074326b8b0bc5fa10c01adc2210276fe591a3a54765be2",
+      "research-original.claims.json": "4763b1808d0ad7d21a42256f7584c3c78352bb33eb10f91027c9aa6be7a8517c",
+      "original-preservation.json": "4932a5ed91683a1dc56b717fb292ca1d74ed61d13b7c40064bb0a029e0cb96bf"
+    },
+    "runtime_video_matches": true,
+    "runtime_canonical_script_sha256": "7bb81d6e65bbb1c16bfa2fe8cc05646448a5aeb15159cdc985a3b824abdd6909",
+    "immutable_lexicon_sha256": "1dc8a42f7c9a3fb3f603c55a7e8d930661c358e2d55579d03d32aa28be161420"
+  },
+  "coverage": {
+    "narration_lines": 113,
+    "unique_line_ids": 113,
+    "scenes": 111,
+    "generated_shot_prompts_read": 110,
+    "native_outro_scenes": 1,
+    "used_sources_personally_read": 12,
+    "used_anchors_checked": 44,
+    "script_video_narration_claim_rows_exact_after_markdown_delimiters": true,
+    "prompt_claim_rows_exact": true,
+    "loops_read_and_all_endpoints_in_forward_order": 24,
+    "no_reference_channel_transcript_read": true
+  },
+  "personally_read_source_receipts": [
+    {
+      "id": "JP_BEFORE",
+      "publisher": "ゆきいるか / note.com image CDN",
+      "publisher_date": "linked in 2024-10-18 article; original capture time not independently certified",
+      "applicable_country_or_region": "Japan",
+      "url": "https://assets.st-note.com/img/1729259530-cqSYTGsQPrvk92znbCIV8tBK.jpg?width=1200",
+      "final_url": "https://assets.st-note.com/img/1729259530-cqSYTGsQPrvk92znbCIV8tBK.jpg?width=1200",
+      "retrieved_at_utc": "2026-10-26T01:43:55.708466+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/JP_CASE_BEFORE.jpg",
+      "raw_sha256": "eb32dce72d7bc195047d174d19e8e9a4312bffd4c53034021d998e776e040422",
+      "text_path": null,
+      "text_sha256": null
+    },
+    {
+      "id": "JP_NOTE",
+      "publisher": "ゆきいるか / note.com",
+      "publisher_date": "2024-10-18 23:51 (page display; timezone not independently established)",
+      "applicable_country_or_region": "Japan; author says Tokyo–Osaka",
+      "url": "https://note.com/snow_dolphin/n/ndbe3e3f23b9c",
+      "final_url": "https://note.com/snow_dolphin/n/ndbe3e3f23b9c",
+      "retrieved_at_utc": "2026-10-26T01:41:56.198306+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/repair-case/snow-dolphin-jp.html",
+      "raw_sha256": "11820f397cc4b37b30d763b862704668a26ae9aac7cc5963da202c7215c09ca4",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/repair-case/snow-dolphin-jp.txt",
+      "text_sha256": "7f6c3b6c3d982dd06fa42552cf9ecb042b745c63a393ae7bbe75370a53857828"
+    },
+    {
+      "id": "JP_RETURN",
+      "publisher": "ゆきいるか / note.com image CDN",
+      "publisher_date": "linked in 2024-10-18 article; original capture time not independently certified",
+      "applicable_country_or_region": "Japan",
+      "url": "https://assets.st-note.com/img/1729259962-dzY8AgZGL2mFMlkIBwhROqDs.jpg?width=1200",
+      "final_url": "https://assets.st-note.com/img/1729259962-dzY8AgZGL2mFMlkIBwhROqDs.jpg?width=1200",
+      "retrieved_at_utc": "2026-10-26T01:43:56.322422+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/JP_CASE_RETURN.jpg",
+      "raw_sha256": "628d965853f6e87d47852ca6e111e19e67cfdfb7fb5360144a3abfa6bd5f4634",
+      "text_path": null,
+      "text_sha256": null
+    },
+    {
+      "id": "JP_TRACKING",
+      "publisher": "ゆきいるか / note.com image CDN",
+      "publisher_date": "linked in 2024-10-18 article; original capture time not independently certified",
+      "applicable_country_or_region": "Japan",
+      "url": "https://assets.st-note.com/img/1729259743-ZLoOkxAsbH6z2MEBCFlUWrum.png?width=1200",
+      "final_url": "https://assets.st-note.com/img/1729259743-ZLoOkxAsbH6z2MEBCFlUWrum.png?width=1200",
+      "retrieved_at_utc": "2026-10-26T01:43:56.117236+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/JP_CASE_TRACKING.png",
+      "raw_sha256": "1eed321d5bcc104b3e0bf0e19416613db7f6410029106853b84697df5c526e88",
+      "text_path": null,
+      "text_sha256": null
+    },
+    {
+      "id": "KB_FILL",
+      "publisher": "Zippo Manufacturing Company",
+      "publisher_date": "2026-07-30",
+      "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+      "url": "https://kb.zippo.com/zippo-lighter/fill",
+      "final_url": "https://kb.zippo.com/zippo-lighter/fill",
+      "retrieved_at_utc": "2026-10-26T01:41:43.725571+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_FILL.html",
+      "raw_sha256": "f490785e64b3aa130424047f774c917c0131f413e8085376d4c8cc0bf56d25f0",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_FILL.txt",
+      "text_sha256": "b47b716cd74589b0ca9786b8a12e148db15cd1f1d68af32c2c2ed52bb527a5a9"
+    },
+    {
+      "id": "KB_FLINT",
+      "publisher": "Zippo Manufacturing Company",
+      "publisher_date": "2026-07-13",
+      "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+      "url": "https://kb.zippo.com/zippo-lighter/flint",
+      "final_url": "https://kb.zippo.com/zippo-lighter/flint",
+      "retrieved_at_utc": "2026-10-26T01:41:43.716591+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_FLINT.html",
+      "raw_sha256": "0fb5581032427fcfeebf44ea7ce25192c097c867f47247a567b4efe26c21770e",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_FLINT.txt",
+      "text_sha256": "a142f2bd28f7dec99cddccf3b59b00dcaa28ee8fca5c56ebbd0e03cc888dd3e9"
+    },
+    {
+      "id": "KB_NOT_LIGHTING",
+      "publisher": "Zippo Manufacturing Company",
+      "publisher_date": "2026-08-24",
+      "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+      "url": "https://kb.zippo.com/zippo-lighter/not-lighting",
+      "final_url": "https://kb.zippo.com/zippo-lighter/not-lighting",
+      "retrieved_at_utc": "2026-10-26T01:39:03.635323+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_NOT_LIGHTING.html",
+      "raw_sha256": "3f6f507c8845e29968499a955e1924bd9670ec7b37f91632bce8ff91f93ae089",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_NOT_LIGHTING.txt",
+      "text_sha256": "cf93ae8001a5f91bd6def28a9f0ae15351f87b09d14f5fd975e363e450589485"
+    },
+    {
+      "id": "KB_WICK",
+      "publisher": "Zippo Manufacturing Company",
+      "publisher_date": "2026-07-30",
+      "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+      "url": "https://kb.zippo.com/zippo-lighter/wick",
+      "final_url": "https://kb.zippo.com/zippo-lighter/wick",
+      "retrieved_at_utc": "2026-10-26T01:41:43.710988+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_WICK.html",
+      "raw_sha256": "ab83e5cf458944d7a95ed61cb224b0d2cb9491c3c96796d2d6adac150dad8291",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_WICK.txt",
+      "text_sha256": "1520dd1fe5f4a7369800ff244f15b7a1a520a87570e0d1fb7fda273157bea8ab"
+    },
+    {
+      "id": "UK_FORM_20261008",
+      "publisher": "Zippo UK linked official CDN PDF",
+      "publisher_date": "PDF metadata Creation/ModDate 2026-10-08 12:46:39 UTC; publication day not independently certified",
+      "applicable_country_or_region": "UK; forwarded to Germany",
+      "url": "https://cdn.shopify.com/s/files/1/0471/9532/4576/files/20261008_Repair_Form_EN.pdf?v=1792749458",
+      "final_url": "https://cdn.shopify.com/s/files/1/0471/9532/4576/files/20261008_Repair_Form_EN.pdf?v=1792749458",
+      "retrieved_at_utc": "2026-10-26T01:40:14.455446+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/UK_FORM_20261008.pdf",
+      "raw_sha256": "fb47e0a3acaa3c4a13b3ac3a8704025b6dd1aeafa7145d18a03e78957bd6ad51",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/UK_FORM_20261008.txt",
+      "text_sha256": "96bbe048bf5034f432e60dd60eb91fd6b1a7e49e778f63bbb55ce4a85dbecc07"
+    },
+    {
+      "id": "US_DECO",
+      "publisher": "Zippo Manufacturing Company",
+      "publisher_date": "2026-08-24",
+      "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+      "url": "https://kb.zippo.com/zippo-lighter/worn-deco",
+      "final_url": "https://kb.zippo.com/zippo-lighter/worn-deco",
+      "retrieved_at_utc": "2026-10-26T01:39:31.347978+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_DECO.html",
+      "raw_sha256": "a40dabbe427c5bd9906a516aba20b0621b96ce34493623671fc9639e492ad68b",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_DECO.txt",
+      "text_sha256": "60c2215403475764e4f159273d21cbaca4130fbb0b4819762c2398692ba21406"
+    },
+    {
+      "id": "US_HINGE",
+      "publisher": "Zippo Manufacturing Company",
+      "publisher_date": "2026-08-24",
+      "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+      "url": "https://kb.zippo.com/zippo-lighter/hinge-broke",
+      "final_url": "https://kb.zippo.com/zippo-lighter/hinge-broke",
+      "retrieved_at_utc": "2026-10-26T01:39:31.315861+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_HINGE.html",
+      "raw_sha256": "2be24a40c7fbcce4ca46e4d92539cc48d46b99fbc2b0fd134618bb7813f00c80",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_HINGE.txt",
+      "text_sha256": "d4f55d3cb25d8cf0d691957ef504532ec0aa744889faaa997b53f88d28e5920f"
+    },
+    {
+      "id": "US_REPAIR",
+      "publisher": "Zippo Manufacturing Company",
+      "publisher_date": "not displayed; retrieved 2026-10-26",
+      "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+      "url": "https://www.zippo.com/pages/repairs-windproof-lighter",
+      "final_url": "https://kb.zippo.com/warranty-repair",
+      "retrieved_at_utc": "2026-10-26T01:39:03.864721+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_REPAIR.html",
+      "raw_sha256": "12e50e284c208d90f9e9b19d0388d9ebd7fe186cb0b6c2b5f68b1ca1f685cb81",
+      "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_REPAIR.txt",
+      "text_sha256": "e6b64dbcb691eec67aa02fb27b5fe156b0b3ecae52fa20750a2ba96cdc114300"
+    }
+  ],
+  "evidence_method": "row_checks anchor IDs resolve to exact quotes, raw SHA, text SHA and line/normalized offset in claims.json at the bound SHA. All 44 used anchors found at stated positions. JP source images and UK PDF page visually inspected; not inferred from captions alone. No unused registry source is claimed personally verified here.",
+  "source_boundary_findings_zh": [
+    "主線全程只用日本ゆきいるか2024一件粉紅殼送修；約三四年禮物、自己保養、非regular尺寸、裂彈簧與磨輪不動均按自述保留。",
+    "47日可由2024-09-01投寄至2024-10-18回件算得；9/3追蹤送達不等於拆件或開工。",
+    "準備寄件、丸一日乾燥與表格建議明示為作者當時的整理；沒有假稱取得日本2024原官方條款、完成表或廠內工序。",
+    "兩內膽及粉紅殼在原圖和新旧二つ入ってた文字相互對應；不知道為何退舊，也不知道返還後點火是否成功。",
+    "當代美國功能終身保證、鉸鏈免費、finish/design不含及less than one year聯絡選項彼此分明，不擴至瓦斯、電池內膽或暖手器，也未許諾運費全免。",
+    "UK 20261008原表的insert整組更換、comments要求退原件及Do not repair hinge/Sentimental欄位確認；PDF建立修改時間2026-10-08 UTC不是獨立證明發布日。",
+    "另讀UK現行頁6–8weeks與20260820舊表2weeks差異；本稿未採為日本工期，未拼接Joseph案例或專利首創/BOM結論。"
+  ],
+  "written_visual_findings_zh": [
+    "110個English prompt逐一對回旁白；匿名成人與純色未標金屬殼／內膽／包材，無品牌、人名、logo、可讀表格、版權圖形、真人肖像、火焰或成功維修演示。",
+    "工廠只以空工作桌或未開包裹概念呈現，沒有臆造拆修、焊接、鑑定或完成表。原照片僅作研究，未作AI圖像參照或採用素材。",
+    "預告h05/e14用無字紙背及閉殼，h06/n01用不透明閉袋；沒有在預告先畫出地址、勾選、兩組內膽或成功點火。"
+  ],
+  "image_reuse_plan_review": {
+    "verdict": "PASS_WRITTEN_PLAN_ONLY",
+    "pure_local_recalculation": true,
+    "no_stage_image_or_provider_call": true,
+    "pairs": [
+      {
+        "reuse": "c20r1h05",
+        "source": "c20r1e14",
+        "prompt_and_camera_exact": true,
+        "composed_prompt_sha256": "d1c357b4edbf32c950e81d14a662617fd99df25cbd932047d69a8118d7fd0146",
+        "base_key": "949d3f1d79445f88",
+        "source_and_reuse_native_stage_key": "294e073b76e78b83"
+      },
+      {
+        "reuse": "c20r1h06",
+        "source": "c20r1n01",
+        "prompt_and_camera_exact": true,
+        "composed_prompt_sha256": "cd5c9bede47a24db421aeae870832bd69a30e8080b2ee8e4557353137ddede37",
+        "base_key": "9d93433fc8edd964",
+        "source_and_reuse_native_stage_key": "15b7e570590af9d8"
+      }
+    ],
+    "declared_tuple": "MiniMax/image-01, native selection version1, 1920x1080/1K, seed1, no references/negative/fixes, takes1, prompt limit1500. Recalculated via shotPrompt(resolveLook) and Stage.prototype.imageKey with declared status stub; no constructor/generate/provider invoked.",
+    "actual_same_asset_verified": false,
+    "actual_final_file_sha_verified": false,
+    "production_requirements": [
+      "Actual status/model/version/size/seed/references/fixes and intended runtime/media paths must be read back and keys recomputed before execution; paper values are not live cache receipts.",
+      "Generate payoff only after ordinary production admission; readCache plus existence and actual bytes SHA before teaser; any miss or change stops the pair without reroll or force.",
+      "Both endpoints require their own normal judge. Require identical final selected file/SHA and assembly inputs; separately hash original cache bytes and any trimmed selected bytes.",
+      "Written recipe currently names c20-audit/media for initial lexicon root. The parent-proposed future global media handoff is unexecuted and must preserve this project dictionary/journal; this review did not rebuild or move it."
+    ]
+  },
+  "row_checks": [
+    {
+      "id": "c20r1h01",
+      "scene_id": "c20r1h01",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J01-Q1",
+        "J02-Q1"
+      ]
+    },
+    {
+      "id": "c20r1h02",
+      "scene_id": "c20r1h02",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J03-Q1",
+        "J09-Q1"
+      ]
+    },
+    {
+      "id": "c20r1h03",
+      "scene_id": "c20r1h03",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J03-Q1",
+        "J04-Q1"
+      ],
+      "note_zh": "原文そのせいか保留也許；使用者自報裂彈簧與不轉，非廠方診斷。"
+    },
+    {
+      "id": "c20r1h04",
+      "scene_id": "c20r1h04",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J05-Q1",
+        "J06-Q1"
+      ]
+    },
+    {
+      "id": "c20r1h05",
+      "scene_id": "c20r1h05",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J13-Q1",
+        "J13-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1h06",
+      "scene_id": "c20r1h06",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J17-Q1",
+        "J18-Q1"
+      ]
+    },
+    {
+      "id": "c20r1h07",
+      "scene_id": "c20r1h07",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J09-Q1",
+        "J15-Q1",
+        "J15-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1h08",
+      "scene_id": "c20r1h08",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J18-Q1",
+        "J22-Q1",
+        "J22-CAPTION"
+      ]
+    },
+    {
+      "id": "c20r1o01",
+      "scene_id": "c20r1o01",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J06-Q1"
+      ]
+    },
+    {
+      "id": "c20r1o02",
+      "scene_id": "c20r1o02",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J02-Q1"
+      ]
+    },
+    {
+      "id": "c20r1o03",
+      "scene_id": "c20r1o03",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J03-Q1",
+        "J04-Q1",
+        "O02-Q1"
+      ]
+    },
+    {
+      "id": "c20r1o04",
+      "scene_id": "c20r1o04",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J03-Q1"
+      ]
+    },
+    {
+      "id": "c20r1o05",
+      "scene_id": "c20r1o05",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J04-Q1",
+        "J05-Q1"
+      ]
+    },
+    {
+      "id": "c20r1o06",
+      "scene_id": "c20r1o06",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J04-Q1",
+        "O01-Q1",
+        "O02-Q1"
+      ]
+    },
+    {
+      "id": "c20r1o07",
+      "scene_id": "c20r1o07",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "O01-Q1",
+        "O02-Q1",
+        "O03-Q1"
+      ]
+    },
+    {
+      "id": "c20r1o08",
+      "scene_id": "c20r1o08",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "O01-Q1"
+      ]
+    },
+    {
+      "id": "c20r1o09",
+      "scene_id": "c20r1o09",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "O01-Q1"
+      ]
+    },
+    {
+      "id": "c20r1o10",
+      "scene_id": "c20r1o10",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "O02-Q1"
+      ]
+    },
+    {
+      "id": "c20r1o11",
+      "scene_id": "c20r1o11",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "O02-Q1",
+        "O06-Q1"
+      ]
+    },
+    {
+      "id": "c20r1o12",
+      "scene_id": "c20r1o12",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J04-Q1",
+        "O02-Q1"
+      ]
+    },
+    {
+      "id": "c20r1o13",
+      "scene_id": "c20r1o13",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J04-Q1",
+        "O03-Q1"
+      ]
+    },
+    {
+      "id": "c20r1o14",
+      "scene_id": "c20r1o14",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J06-Q1"
+      ]
+    },
+    {
+      "id": "c20r1o15",
+      "scene_id": "c20r1o15",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J06-Q1"
+      ],
+      "note_zh": "原文非regular尺寸、無法找到合用零件；不擴為所有型號零件都不能買。"
+    },
+    {
+      "id": "c20r1o16",
+      "scene_id": "c20r1o16",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J06-Q1"
+      ]
+    },
+    {
+      "id": "c20r1o17",
+      "scene_id": "c20r1o17",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J07-Q1",
+        "J07-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1o18",
+      "scene_id": "c20r1o18",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J02-Q1",
+        "J07-Q1",
+        "J07-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1o19",
+      "scene_id": "c20r1o19",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J07-Q1",
+        "J07-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1o20",
+      "scene_id": "c20r1o20",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J08-Q1",
+        "J08-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1i01",
+      "scene_id": "c20r1i01",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J08-Q1",
+        "J08-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1i02",
+      "scene_id": "c20r1i02",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J08-Q1",
+        "J08-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1i03",
+      "scene_id": "c20r1i03",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J08-Q1",
+        "J08-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1i04",
+      "scene_id": "c20r1i04",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J01-Q1",
+        "J08-Q1",
+        "J08-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1i05",
+      "scene_id": "c20r1i05",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J07-Q1",
+        "J08-Q1",
+        "J08-EXTRA",
+        "J07-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1i06",
+      "scene_id": "c20r1i06",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J07-Q1",
+        "J14-Q1",
+        "J07-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1i07",
+      "scene_id": "c20r1i07",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "O07-Q1"
+      ]
+    },
+    {
+      "id": "c20r1i08",
+      "scene_id": "c20r1i08",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "O07-Q1"
+      ]
+    },
+    {
+      "id": "c20r1i09",
+      "scene_id": "c20r1i09",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "O08-Q1"
+      ]
+    },
+    {
+      "id": "c20r1i10",
+      "scene_id": "c20r1i10",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "O09-Q1"
+      ]
+    },
+    {
+      "id": "c20r1i11",
+      "scene_id": "c20r1i11",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "O09-Q1"
+      ]
+    },
+    {
+      "id": "c20r1i12",
+      "scene_id": "c20r1i12",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "O10-Q1"
+      ]
+    },
+    {
+      "id": "c20r1i13",
+      "scene_id": "c20r1i13",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "O10-Q1"
+      ],
+      "note_zh": "owned less than one year及contact to discuss options，不是外觀免費翻新保證。"
+    },
+    {
+      "id": "c20r1i14",
+      "scene_id": "c20r1i14",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J08-Q1",
+        "O10-Q1",
+        "J08-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1i15",
+      "scene_id": "c20r1i15",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J09-Q1",
+        "J11-Q1"
+      ]
+    },
+    {
+      "id": "c20r1i16",
+      "scene_id": "c20r1i16",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J11-Q1",
+        "O04-Q1"
+      ]
+    },
+    {
+      "id": "c20r1i17",
+      "scene_id": "c20r1i17",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J11-Q1",
+        "O04-Q1",
+        "O05-Q1",
+        "O06-Q1"
+      ]
+    },
+    {
+      "id": "c20r1i18",
+      "scene_id": "c20r1i18",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "O04-Q1"
+      ]
+    },
+    {
+      "id": "c20r1i19",
+      "scene_id": "c20r1i19",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J20-Q1",
+        "J20-CAPTION",
+        "O04-Q1"
+      ]
+    },
+    {
+      "id": "c20r1i20",
+      "scene_id": "c20r1i20",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J06-Q1"
+      ]
+    },
+    {
+      "id": "c20r1i21",
+      "scene_id": "c20r1i21",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J06-Q1",
+        "O04-Q1"
+      ]
+    },
+    {
+      "id": "c20r1i22",
+      "scene_id": "c20r1i22",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J06-Q1",
+        "J07-Q1",
+        "J07-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e01",
+      "scene_id": "c20r1e01",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J11-Q1",
+        "J12-Q1",
+        "J12-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e02",
+      "scene_id": "c20r1e02",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J12-Q1",
+        "J12-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e03",
+      "scene_id": "c20r1e03",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J12-Q1",
+        "J12-EXTRA"
+      ],
+      "note_zh": "丸一日是日本作者對2024當時說明的轉述；未冒稱親讀失佚的日本舊條款。"
+    },
+    {
+      "id": "c20r1e04",
+      "scene_id": "c20r1e04",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J12-Q1",
+        "J12-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e05",
+      "scene_id": "c20r1e05",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J12-Q1",
+        "J12-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e06",
+      "scene_id": "c20r1e06",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J12-Q1",
+        "U06-Q1",
+        "J12-EXTRA"
+      ],
+      "note_zh": "UK表two days僅支持程序差異，不當本集寄件建議。"
+    },
+    {
+      "id": "c20r1e07",
+      "scene_id": "c20r1e07",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J12-Q1",
+        "O04-Q1",
+        "J12-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e08",
+      "scene_id": "c20r1e08",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J10-Q1",
+        "J11-Q1",
+        "J10-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e09",
+      "scene_id": "c20r1e09",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J10-Q1",
+        "J10-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e10",
+      "scene_id": "c20r1e10",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J11-Q1"
+      ]
+    },
+    {
+      "id": "c20r1e11",
+      "scene_id": "c20r1e11",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J08-Q1",
+        "J10-Q1",
+        "J08-EXTRA",
+        "J10-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e12",
+      "scene_id": "c20r1e12",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J12-Q1",
+        "J13-Q1",
+        "J12-EXTRA",
+        "J13-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e13",
+      "scene_id": "c20r1e13",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J08-Q1",
+        "J10-Q1",
+        "J13-Q1",
+        "J08-EXTRA",
+        "J10-EXTRA",
+        "J13-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e14",
+      "scene_id": "c20r1e14",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J13-Q1",
+        "J13-EXTRA"
+      ],
+      "note_zh": "JP原文返還地址漏填或錯誤提醒；示意僅無字紙背，未畫已填地址。"
+    },
+    {
+      "id": "c20r1e15",
+      "scene_id": "c20r1e15",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J13-Q1",
+        "J13-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e16",
+      "scene_id": "c20r1e16",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J13-Q1",
+        "J13-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e17",
+      "scene_id": "c20r1e17",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J13-Q1",
+        "J13-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e18",
+      "scene_id": "c20r1e18",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J13-Q1",
+        "J13-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e19",
+      "scene_id": "c20r1e19",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J13-Q1",
+        "J13-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e20",
+      "scene_id": "c20r1e20",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J10-Q1",
+        "J10-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e21",
+      "scene_id": "c20r1e21",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J10-Q1",
+        "J10-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e22",
+      "scene_id": "c20r1e22",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J10-Q1",
+        "J21-Q1",
+        "J10-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e23",
+      "scene_id": "c20r1e23",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J10-Q1",
+        "J21-Q1",
+        "J10-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1e24",
+      "scene_id": "c20r1e24",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J14-Q1",
+        "J21-Q1"
+      ]
+    },
+    {
+      "id": "c20r1t01",
+      "scene_id": "c20r1t01",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J14-Q1",
+        "J21-Q1"
+      ],
+      "note_zh": "原圖2024/09/01引受、09/03送達；正文九月一日至兩天後正確。"
+    },
+    {
+      "id": "c20r1t02",
+      "scene_id": "c20r1t02",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J21-Q1"
+      ]
+    },
+    {
+      "id": "c20r1t03",
+      "scene_id": "c20r1t03",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J21-Q1"
+      ]
+    },
+    {
+      "id": "c20r1t04",
+      "scene_id": "c20r1t04",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J15-Q1",
+        "J15-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1t05",
+      "scene_id": "c20r1t05",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J15-Q1",
+        "J15-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1t06",
+      "scene_id": "c20r1t06",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J15-Q1",
+        "J15-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1t07",
+      "scene_id": "c20r1t07",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J16-Q1"
+      ]
+    },
+    {
+      "id": "c20r1t08",
+      "scene_id": "c20r1t08",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J16-Q1"
+      ]
+    },
+    {
+      "id": "c20r1t09",
+      "scene_id": "c20r1t09",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J16-Q1"
+      ]
+    },
+    {
+      "id": "c20r1t10",
+      "scene_id": "c20r1t10",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J14-Q1",
+        "J15-Q1",
+        "J15-EXTRA"
+      ],
+      "note_zh": "JP原文10月18日朝；47為9/1至10/18日期差，不是工時或保證時限。"
+    },
+    {
+      "id": "c20r1t11",
+      "scene_id": "c20r1t11",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J15-Q1",
+        "J15-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1t12",
+      "scene_id": "c20r1t12",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J15-Q1",
+        "J15-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1t13",
+      "scene_id": "c20r1t13",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J15-Q1",
+        "J21-Q1",
+        "J15-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1t14",
+      "scene_id": "c20r1t14",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J17-Q1"
+      ]
+    },
+    {
+      "id": "c20r1t15",
+      "scene_id": "c20r1t15",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J17-Q1",
+        "J18-Q1"
+      ],
+      "note_zh": "交換說法明示為作者理解；不聲稱見過廠內逐項維修。"
+    },
+    {
+      "id": "c20r1t16",
+      "scene_id": "c20r1t16",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J17-Q1"
+      ]
+    },
+    {
+      "id": "c20r1t17",
+      "scene_id": "c20r1t17",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J17-Q1"
+      ]
+    },
+    {
+      "id": "c20r1t18",
+      "scene_id": "c20r1t18",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J18-Q1",
+        "J22-Q1",
+        "J22-CAPTION"
+      ]
+    },
+    {
+      "id": "c20r1n01",
+      "scene_id": "c20r1n01",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J18-Q1"
+      ],
+      "note_zh": "JP原文新旧二つ入ってた；同圖預告用不透明閉袋不提前露出新舊內膽。"
+    },
+    {
+      "id": "c20r1n02",
+      "scene_id": "c20r1n02",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J22-Q1",
+        "J22-CAPTION"
+      ],
+      "note_zh": "已看原圖左panel粉紅開殼內含一組內膽；概念圖去掉可讀品牌字，不採原照片。"
+    },
+    {
+      "id": "c20r1n03",
+      "scene_id": "c20r1n03",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J22-Q1",
+        "J22-CAPTION"
+      ],
+      "note_zh": "已看右panel磨損較明顯的另一組在氣泡材上；沒有點火。"
+    },
+    {
+      "id": "c20r1n04",
+      "scene_id": "c20r1n04",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J17-Q1",
+        "J18-Q1"
+      ]
+    },
+    {
+      "id": "c20r1n05",
+      "scene_id": "c20r1n05",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J19-Q1"
+      ],
+      "note_zh": "原文送ったもの全部帰ってきた與緩衝材/紙膠帶圖說；不逐件保證所有零件。"
+    },
+    {
+      "id": "c20r1n06",
+      "scene_id": "c20r1n06",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J18-Q1",
+        "U03-Q1",
+        "U04-Q1"
+      ]
+    },
+    {
+      "id": "c20r1n07",
+      "scene_id": "c20r1n07",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J18-Q1",
+        "U04-Q1"
+      ]
+    },
+    {
+      "id": "c20r1n08",
+      "scene_id": "c20r1n08",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "U03-Q1"
+      ],
+      "note_zh": "UK 20261008原PDF不修insert、整組replace，限定英國2026年版。"
+    },
+    {
+      "id": "c20r1n09",
+      "scene_id": "c20r1n09",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "U04-Q1"
+      ],
+      "note_zh": "UK原表original not returned unless requested in comments，不替日本個案推原因。"
+    },
+    {
+      "id": "c20r1n10",
+      "scene_id": "c20r1n10",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "U08-Q1"
+      ]
+    },
+    {
+      "id": "c20r1n11",
+      "scene_id": "c20r1n11",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "U08-Q1"
+      ],
+      "note_zh": "已看UK原表Do not repair hinge與Sentimental分開的可勾欄位；不畫主角已勾。"
+    },
+    {
+      "id": "c20r1n12",
+      "scene_id": "c20r1n12",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J13-Q1",
+        "J18-Q1",
+        "U04-Q1",
+        "J13-EXTRA"
+      ]
+    },
+    {
+      "id": "c20r1n13",
+      "scene_id": "c20r1n13",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J13-Q1",
+        "J18-Q1",
+        "J13-EXTRA"
+      ],
+      "note_zh": "JP未公開填妥表與廠方退舊原因，保持未知。"
+    },
+    {
+      "id": "c20r1n14",
+      "scene_id": "c20r1n14",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J18-Q1",
+        "U04-Q1"
+      ]
+    },
+    {
+      "id": "c20r1n15",
+      "scene_id": "c20r1n15",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J18-Q1"
+      ]
+    },
+    {
+      "id": "c20r1n16",
+      "scene_id": "c20r1n16",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J22-Q1",
+        "J22-CAPTION"
+      ]
+    },
+    {
+      "id": "c20r1n17",
+      "scene_id": "c20r1n17",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J22-Q1",
+        "J22-CAPTION"
+      ],
+      "note_zh": "原文與回件原圖未提供返還後火焰/燃燒測試；不從較乾淨外觀推成功。"
+    },
+    {
+      "id": "c20r1n18",
+      "scene_id": "c20r1n18",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "J22-Q1",
+        "J22-CAPTION",
+        "O07-Q1"
+      ]
+    },
+    {
+      "id": "c20r1n19",
+      "scene_id": "c20r1outro",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS_NATIVE_OUTRO",
+      "evidence_anchor_ids": [
+        "J18-Q1",
+        "O07-Q1"
+      ],
+      "note_zh": "結論只限本次換新及退回舊內膽，未升級為功能驗收。"
+    },
+    {
+      "id": "c20r1n20",
+      "scene_id": "c20r1outro",
+      "source_verdict": "OUT_OF_SCOPE_CTA",
+      "written_visual_verdict": "PASS_NATIVE_OUTRO",
+      "evidence_anchor_ids": []
+    },
+    {
+      "id": "c20r1n21",
+      "scene_id": "c20r1outro",
+      "source_verdict": "OUT_OF_SCOPE_CTA",
+      "written_visual_verdict": "PASS_NATIVE_OUTRO",
+      "evidence_anchor_ids": []
+    }
+  ],
+  "validation": {
+    "native_lint": {
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "\"pink\" is in 61 of 110 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"case\" is in 59 of 110 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"adult\" is in 58 of 110 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        }
+      ],
+      "summary": {
+        "minutes": 13.34388888888889,
+        "lines": 113,
+        "spoken_units": 2862,
+        "billable_characters": 9484,
+        "chapters": [
+          "00:00 粉紅色小盒，磨輪停住了",
+          "00:49 先找零件，才找到那句保證",
+          "03:07 沒有盒與收據，還是把舊物送回去",
+          "05:48 把內膽拔出，讓包裹準備好出門",
+          "08:43 郵件送達了，等的卻不是同一個時鐘",
+          "10:44 包裹裡，新舊內膽都在"
+        ]
+      }
+    },
+    "native_facts_parser": {
+      "parser": "tools/video/qa/facts.mjs",
+      "not_found_count": 0,
+      "result": {
+        "ok": true,
+        "detail": "verify-1.md marks no claim NOT FOUND"
+      }
+    },
+    "native_facts_parser_limit": "The parser only blocks cited NOT FOUND rows; it does not independently validate sources, durations or image identity. Source PASS is based on the personal checks above.",
+    "protected_inputs": {
+      "research_three_verified": 3,
+      "legacy_originals_verified": 68,
+      "readonly_snapshots_verified": 68,
+      "raw_files_verified": 159,
+      "all_sha_and_sizes_match": true,
+      "manifest_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache-manifest.json",
+      "manifest_sha256": "6eafb6bf397e8434c123c009a7851360bf89b93a6cf85a28004653f32e71cf93"
+    },
+    "writes_limited_to": [
+      "reviews/source-r1-independent.json",
+      "verify-1.md"
+    ]
+  },
+  "limitations": {
+    "readiness": "HOLD_FOR_REMAINING_EDITORIAL_AND_PRODUCTION_GATES",
+    "length_planning": "MATERIAL_CAPACITY_RISK; 2862 units vs rough3500 target. Native estimate13.3438888889min is not actual speech. No paper-duration PASS or actual-audio FAIL.",
+    "actual_audio_seconds": null,
+    "actual_final_seconds": null,
+    "actual_images_generated": false,
+    "actual_same_asset_verified": false,
+    "source_pass_is_not_narrative_or_owner_approval": true,
+    "paid_requests": 0,
+    "backend_mutations": 0,
+    "git_mutations": 0
+  },
+  "nonblocking_notes_zh": [
+    "原生pink/case/adult三個重複道具soft warnings如實保留；屬畫面變化/敘事安排後續評估，不因此編造新場所或未見工序。",
+    "本收據僅證精確R1來源與書面配鏡可成立；實聲長度、敘事、實圖、同一素材、預算/製片入場及owner核准各自仍待正常關卡。"
+  ]
+}

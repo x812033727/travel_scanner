@@ -1,0 +1,1011 @@
+{
+  "schema_version": 1,
+  "review_type": "independent-source-and-visual-text-review",
+  "reviewer": "c09-source-visual-independent",
+  "reviewed_at": "2026-10-25",
+  "role_disclosure": "本代理先做唯讀來源材料查找，沒有撰寫或修改這份候選；本輪直接重讀S1/S2/S3/S4/S7原頁並逐行核對，不以作者claims表自稱作通過證據。",
+  "scope": "104句旁白、102景文字提示；不含實際音訊、成圖、成片、敘事盲評、付費或後台核准。",
+  "bindings": {
+    "video_sha256": "89757aa68bf31448c3d9284a3a7261d6b99dc321344ac0d986321b105b96af37",
+    "narration_only_sha256": "c7d01b29b4222cce454fa841debf6fa1ca3e1f1d159bb015be15d517fc755a58",
+    "claims_sha256": "8b6c1a401406a5e89c98dbf347f554b87efe63a94e3e84ea007d045277103522"
+  },
+  "overall": "hold",
+  "summary": {
+    "lines": 104,
+    "scenes": 102,
+    "pass": 95,
+    "revise": 9,
+    "visual_revise": 1,
+    "formal_approval": false
+  },
+  "source_access": {
+    "S1": {
+      "url": "https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use",
+      "read": "direct full article",
+      "anchors": {
+        "A": "1967署名、首段revolution及rope of expert climbers/art form",
+        "B": "Racking Hardware尺寸整理/效率段"
+      }
+    },
+    "S2": {
+      "url": "https://www.patagonia.com/stories/sports/climbing/a-word/story-116598.html",
+      "read": "direct full reprinted foreword plus author profile; distinguish 2022 editorial lead-in",
+      "anchors": {
+        "A": "The 1960s marked起的1972原前言至Remember the rock結語",
+        "profile": "頁尾Yvon Chouinard作者簡介"
+      }
+    },
+    "S3": {
+      "url": "https://publications.americanalpineclub.org/articles/12197352200/Chouinard-Equipment",
+      "read": "direct full 1973 review",
+      "anchors": {
+        "A": "書目72pages與首段commercial catalog問題",
+        "B": "hypocrisy指責、Rowell反駁及Yosemite所見",
+        "C": "A small minority及freedom as an individual段"
+      }
+    },
+    "S4": {
+      "url": "https://www.newyorker.com/magazine/1977/01/31/ascending",
+      "read": "direct full article; publication year only, visit date unspecified",
+      "anchors": {
+        "B": "1946 Salathé、Model A axles、1957煤爐以及Could you make a living問答",
+        "C": "1964秋first mail-order catalogue至1966 Ventura/Frost工坊",
+        "D": "Scott英國楔塊前史、1970回信、裂縫損傷與1973Nose攀登",
+        "E": "Ventura零售店舊釘小展區/商品櫃/衣物所見",
+        "F": "After visiting the retail shop至工廠壓床/示範板/服裝補貼及模具估算"
+      }
+    },
+    "S7": {
+      "url": "https://www.patagonia.com/stories/culture/community/patagonia-surf-stores-the-wave-riding-collective/story-18439.html",
+      "read": "direct page",
+      "anchors": {
+        "A": "Fletcher Chouinard Designs (FCD), Ventura段；1973 outdoor clothing under Patagonia label"
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "c09r001",
+      "scene_id": "c09r-shot-001",
+      "status": "pass",
+      "source_anchor": "S2:A",
+      "source_judgment": "觀眾假設問句，依原前言的器材重用與留給後人傷痕衝突，不稱真實個案。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r002",
+      "scene_id": "c09r-shot-002",
+      "status": "pass",
+      "source_anchor": "S2:A",
+      "source_judgment": "1972型錄前言確實討論岩石損傷與用具選擇。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r003",
+      "scene_id": "c09r-shot-003",
+      "status": "pass",
+      "source_anchor": "S2:A",
+      "source_judgment": "明示想像，反覆放取硬岩釘造成傷痕有直接支持。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r004",
+      "scene_id": "c09r-shot-004",
+      "status": "pass",
+      "source_anchor": "S2:A;S2:profile",
+      "source_judgment": "原序為Chouinard/Frost自家型錄；同網頁作者介紹明說Yvon Chouinard創辦Patagonia，故S2整頁已支持，不需另補S7才能成立。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r005",
+      "scene_id": "c09r-shot-005",
+      "status": "revise",
+      "source_anchor": "S4:F",
+      "source_judgment": "1973單次攀登及工廠壓製釘子的伏筆皆有支持；但配圖要求idle press與旁白仍在動直接相反。",
+      "visual_status": "revise",
+      "visual_judgment": "旁白說工廠機器仍在動，prompt卻要求idle press；應改成運作中或不使用停機狀態。"
+    },
+    {
+      "id": "c09r006",
+      "scene_id": "c09r-shot-006",
+      "status": "pass",
+      "source_anchor": "editorial",
+      "source_judgment": "編輯承諾，不作史實或結果主張。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r007",
+      "scene_id": "c09r-shot-007",
+      "status": "pass",
+      "source_anchor": "S2:A;S4:F",
+      "source_judgment": "全片問題，有原序勸用楔塊與後來工廠記錄作問題基礎。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r008",
+      "scene_id": "c09r-shot-008",
+      "status": "revise",
+      "source_anchor": "S4:B",
+      "source_judgment": "器材原本解決重用與攜帶問題有據；他難以放手是未被報導證實的個人心理歸因，須刪或明示為旁白推想。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r009",
+      "scene_id": "c09r-shot-009",
+      "status": "revise",
+      "source_anchor": "S4:B",
+      "source_judgment": "原文只說早期軟鐵釘不是為反覆使用而製、長攀需帶幾十枚；沒有在此證明用過往往留在岩壁的頻率主張。",
+      "visual_status": "pass",
+      "visual_judgment": "概念負重器材袋不畫可數的歷史釘子量，畫面本身無額外頻率主張。"
+    },
+    {
+      "id": "c09r010",
+      "scene_id": "c09r-shot-010",
+      "status": "pass",
+      "source_anchor": "S4:B",
+      "source_judgment": "記者明述1946 Salathé改良而非Chouinard發明。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r011",
+      "scene_id": "c09r-shot-011",
+      "status": "pass",
+      "source_anchor": "S4:B",
+      "source_judgment": "硬釘可反覆重用與大量攜帶問題的概括銜接；問句不宣稱特定交易。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r012",
+      "scene_id": "c09r-shot-012",
+      "status": "pass",
+      "source_anchor": "S4:B",
+      "source_judgment": "供應狀況明歸Chouinard對1957的回憶，與原文相同證據層級。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r013",
+      "scene_id": "c09r-shot-013",
+      "status": "pass",
+      "source_anchor": "S4:B",
+      "source_judgment": "換成你是明示假設；煤爐、鐵砧、讀書學鍛造皆為當事人回憶。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r014",
+      "scene_id": "c09r-shot-014",
+      "status": "pass",
+      "source_anchor": "S4:B",
+      "source_judgment": "車載便攜爐沿加州海岸停留鍛造為本人回憶，未混成每一站都在攀岩區賣。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r015",
+      "scene_id": "c09r-shot-015",
+      "status": "pass",
+      "source_anchor": "S4:B",
+      "source_judgment": "two pitons an hour及有時八小時鍛釘；後半為可辨識的現代比喻。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r016",
+      "scene_id": "c09r-shot-016",
+      "status": "pass",
+      "source_anchor": "S4:B",
+      "source_judgment": "本人說在攀岩區向攀岩者售貨，末句為提價問題。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r017",
+      "scene_id": "c09r-shot-017",
+      "status": "pass",
+      "source_anchor": "S4:B",
+      "source_judgment": "本人說歐洲約30美分、自製1.5美元、起初抗拒後漸接受；皆已歸回憶，沒有推毛利或價格原因。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r018",
+      "scene_id": "c09r-shot-018",
+      "status": "pass",
+      "source_anchor": "editorial:S4:B",
+      "source_judgment": "我覺得明示反應；對買家掂量價值作一般假設，不充作當時實訪。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r019",
+      "scene_id": "c09r-shot-019",
+      "status": "pass",
+      "source_anchor": "S4:B",
+      "source_judgment": "本人明說夏季攀岩區售貨、冬季存貨供下一夏季。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r020",
+      "scene_id": "c09r-shot-020",
+      "status": "pass",
+      "source_anchor": "S4:C",
+      "source_judgment": "1964秋首次one-sheet mimeographed price list及五月至九月交貨提醒直接有據；此句的本人回憶歸屬可由相鄰19/21承接。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r021",
+      "scene_id": "c09r-shot-021",
+      "status": "pass",
+      "source_anchor": "S4:C",
+      "source_judgment": "That was the climbing season為記者敘述；後半是明示對觀眾的編輯反應。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r022",
+      "scene_id": "c09r-shot-022",
+      "status": "pass",
+      "source_anchor": "S4:C",
+      "source_judgment": "需求使手工做不夠快是本人原話，未加實際產量。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r023",
+      "scene_id": "c09r-shot-023",
+      "status": "pass",
+      "source_anchor": "S4:C",
+      "source_judgment": "機器、複雜模具與Frost航空工程背景皆有據。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r024",
+      "scene_id": "c09r-shot-024",
+      "status": "pass",
+      "source_anchor": "S4:C",
+      "source_judgment": "1966在Ventura鐵道旁設工坊；記者所見公司沿用該處，未把刊年當到訪年。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r025",
+      "scene_id": "c09r-shot-025",
+      "status": "pass",
+      "source_anchor": "S4:C;S1:A",
+      "source_judgment": "機器生產及技藝效率作編輯橋接；沒有量化產量或普及率。用得更順手只可讀作下一段文獻對熟練技藝的概括，勿升成市場統計。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r026",
+      "scene_id": "c09r-shot-026",
+      "status": "pass",
+      "source_anchor": "S1:A",
+      "source_judgment": "1967為AAJ文章出版年；與下一行合讀。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r027",
+      "scene_id": "c09r-shot-027",
+      "status": "pass",
+      "source_anchor": "S1:A",
+      "source_judgment": "署名Chouinard/Frost，將放取岩釘稱為成熟技藝。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r028",
+      "scene_id": "c09r-shot-028",
+      "status": "pass",
+      "source_anchor": "S1:A",
+      "source_judgment": "原文rope of expert artificial climbers placing/removing 100 pitons a day，已限定結繩熟手小組例示。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r029",
+      "scene_id": "c09r-shot-029",
+      "status": "pass",
+      "source_anchor": "S1:B",
+      "source_judgment": "Racking Hardware討論按尺寸整理和迅速取用；不教具體放置保護點。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r030",
+      "scene_id": "c09r-shot-030",
+      "status": "pass",
+      "source_anchor": "S1:A",
+      "source_judgment": "原文明稱well developed form of art；後半為轉向岩石的問句。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r031",
+      "scene_id": "c09r-shot-031",
+      "status": "pass",
+      "source_anchor": "S1:A;S2:A",
+      "source_judgment": "工具重用對照反覆敲拔傷痕，是有原件支持的編輯對照。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r032",
+      "scene_id": "c09r-shot-032",
+      "status": "pass",
+      "source_anchor": "S2:A",
+      "source_judgment": "熱門路線反覆放取造成累積釘孔，未指認虛構攀登個案。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r033",
+      "scene_id": "c09r-shot-033",
+      "status": "pass",
+      "source_anchor": "S2:A",
+      "source_judgment": "Yosemite popular routes裂縫成列釘孔有直接支持。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r034",
+      "scene_id": "c09r-shot-034",
+      "status": "revise",
+      "source_anchor": "S2:A;S4:D",
+      "source_judgment": "相對硬度及薄片鬆落在S2；窄裂縫擴大需S4的small cracks now needed large pitons。現claims只列S2，漏標S4，須補。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r035",
+      "scene_id": "c09r-shot-035",
+      "status": "pass",
+      "source_anchor": "editorial:S2:A",
+      "source_judgment": "我覺得為明示反應，與下一問句合讀。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r036",
+      "scene_id": "c09r-shot-036",
+      "status": "revise",
+      "source_anchor": "S4:D",
+      "source_judgment": "裂縫變寬與原小釘不適用有S4支持；目前claims僅S2，須補S4，和37的同一來源界線一致。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r037",
+      "scene_id": "c09r-shot-037",
+      "status": "pass",
+      "source_anchor": "S4:D",
+      "source_judgment": "記者寫原可容rurps的裂縫後需較大岩釘；目前以某些裂縫限定。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r038",
+      "scene_id": "c09r-shot-038",
+      "status": "pass",
+      "source_anchor": "editorial:S2:A",
+      "source_judgment": "未來攀登者作明示可能假設，對應原序other climber及future generations。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r039",
+      "scene_id": "c09r-shot-039",
+      "status": "pass",
+      "source_anchor": "S2:A;S4:D",
+      "source_judgment": "提出替代器材問題，未保證任何路線都安全。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r040",
+      "scene_id": "c09r-shot-040",
+      "status": "pass",
+      "source_anchor": "S4:D",
+      "source_judgment": "英國chocks前史清楚早於Chouinard採用，沒有冒稱發明。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r041",
+      "scene_id": "c09r-shot-041",
+      "status": "pass",
+      "source_anchor": "S4:D",
+      "source_judgment": "楔入而非錘入、容易取回為S4概括定義；沒有零影響保證。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r042",
+      "scene_id": "c09r-shot-042",
+      "status": "pass",
+      "source_anchor": "editorial",
+      "source_judgment": "製片範圍界線，不是從1972原文冒充出的現代安全結論。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r043",
+      "scene_id": "c09r-shot-043",
+      "status": "pass",
+      "source_anchor": "S4:D",
+      "source_judgment": "1959/60在Tetons已用chocks有原文支持。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r044",
+      "scene_id": "c09r-shot-044",
+      "status": "pass",
+      "source_anchor": "S4:D",
+      "source_judgment": "原文是Bernstein轉引Doug Scott書裡1970回信，已留雙層歸屬。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r045",
+      "scene_id": "c09r-shot-045",
+      "status": "pass",
+      "source_anchor": "S4:D",
+      "source_judgment": "normal situation不會以nut替piton為信中看法的概括，未泛指後來立場。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r046",
+      "scene_id": "c09r-shot-046",
+      "status": "pass",
+      "source_anchor": "S4:D",
+      "source_judgment": "本人回顧發現岩石損壞，未指定未見資料的精確轉念日期。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r047",
+      "scene_id": "c09r-shot-047",
+      "status": "pass",
+      "source_anchor": "S2:A",
+      "source_judgment": "前言與Frost署名、勸用楔塊有據；與48合讀限定合適路線。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r048",
+      "scene_id": "c09r-shot-048",
+      "status": "pass",
+      "source_anchor": "S2:A",
+      "source_judgment": "在most free/many artificial climbs優先chocks的概括，已保留適用限制。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r049",
+      "scene_id": "c09r-shot-049",
+      "status": "pass",
+      "source_anchor": "S2:A",
+      "source_judgment": "山脈finite以及使用自家器材需restraint為作者原序立場。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r050",
+      "scene_id": "c09r-shot-050",
+      "status": "pass",
+      "source_anchor": "S2:A",
+      "source_judgment": "style of climb而非attainment summit為作者原意，後半我覺得為反應。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r051",
+      "scene_id": "c09r-shot-051",
+      "status": "pass",
+      "source_anchor": "editorial:S2:A",
+      "source_judgment": "承接50明示旁白反應，不作本人逐字引言。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r052",
+      "scene_id": "c09r-shot-052",
+      "status": "pass",
+      "source_anchor": "editorial:S2:A",
+      "source_judgment": "對觀眾提問，未說有確定受訪者只讀前言。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r053",
+      "scene_id": "c09r-shot-053",
+      "status": "pass",
+      "source_anchor": "S2:A;S3:A",
+      "source_judgment": "原序引Doug Robinson專文、分路線建議存在；不會所以為編輯解釋而非內部製作因果證詞。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r054",
+      "scene_id": "c09r-shot-054",
+      "status": "pass",
+      "source_anchor": "S2:A",
+      "source_judgment": "原本clean routes不再用pitons為原序明文。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r055",
+      "scene_id": "c09r-shot-055",
+      "status": "pass",
+      "source_anchor": "S2:A",
+      "source_judgment": "chocks適合路線及非通用安全保證的限定可支持。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r056",
+      "scene_id": "c09r-shot-056",
+      "status": "revise",
+      "source_anchor": "S2:A",
+      "source_judgment": "原文Where a piton is necessary a fixed piton should be considered。須保留考慮的非自動採用限定，現句容易把必要條件讀成固定釘做法。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r057",
+      "scene_id": "c09r-shot-057",
+      "status": "pass",
+      "source_anchor": "S2:A",
+      "source_judgment": "documented in local guide books直接支持，資訊留給後人為編輯解說。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r058",
+      "scene_id": "c09r-shot-058",
+      "status": "pass",
+      "source_anchor": "editorial:S2:A",
+      "source_judgment": "明示我覺得，原序確有例外、非全面禁用；與59合讀。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r059",
+      "scene_id": "c09r-shot-059",
+      "status": "pass",
+      "source_anchor": "S2:A",
+      "source_judgment": "以路線條件改變建議次序為編輯歸納，不是停售主張。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r060",
+      "scene_id": "c09r-shot-060",
+      "status": "pass",
+      "source_anchor": "S2:A;S3:A",
+      "source_judgment": "Robinson為本型錄特寫pitonless climbing長文有原件支持。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r061",
+      "scene_id": "c09r-shot-061",
+      "status": "pass",
+      "source_anchor": "S2:A;S3:A",
+      "source_judgment": "前言/技術長文的功能概括，不引用具體操作。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r062",
+      "scene_id": "c09r-shot-062",
+      "status": "pass",
+      "source_anchor": "S3:A",
+      "source_judgment": "AAJ 1973書評書目列72 pages，已保留出版物/評論層級。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r063",
+      "scene_id": "c09r-shot-063",
+      "status": "pass",
+      "source_anchor": "S3:A;S4:C",
+      "source_judgment": "單頁價目表和72頁型錄的跨年對照，不稱相同印次。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r064",
+      "scene_id": "c09r-shot-064",
+      "status": "pass",
+      "source_anchor": "editorial:S2:A",
+      "source_judgment": "明示觀眾可能提問，沒有假稱真實顧客回應。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r065",
+      "scene_id": "c09r-shot-065",
+      "status": "pass",
+      "source_anchor": "S2:A",
+      "source_judgment": "原序英國舊路線磨亮腳點與未打釘的完整保護裂縫對照直接有據。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r066",
+      "scene_id": "c09r-shot-066",
+      "status": "pass",
+      "source_anchor": "editorial:S2:A",
+      "source_judgment": "概括前述腳點磨亮現象，與67合讀，不泛化全部英國路線。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r067",
+      "scene_id": "c09r-shot-067",
+      "status": "pass",
+      "source_anchor": "editorial:S2:A",
+      "source_judgment": "作者用該例對照器材使用影響的有限歸納。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r068",
+      "scene_id": "c09r-shot-068",
+      "status": "pass",
+      "source_anchor": "S3:A",
+      "source_judgment": "商業型錄有商品與價格為書評首段明文；對你說為假設。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r069",
+      "scene_id": "c09r-shot-069",
+      "status": "pass",
+      "source_anchor": "editorial:S3:A",
+      "source_judgment": "假設觀眾心理問句，與70合讀。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r070",
+      "scene_id": "c09r-shot-070",
+      "status": "revise",
+      "source_anchor": "S3:B",
+      "source_judgment": "原書評記一邊販賣一邊貶低的hypocrisy指責，未記錄想換一門生意繼續賺的動機；71又將此問題歸為當時真問，應收窄。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r071",
+      "scene_id": "c09r-shot-071",
+      "status": "revise",
+      "source_anchor": "S3:B",
+      "source_judgment": "後半所述一邊賣又貶低確有原文；首句承接70的新增商業動機問題，須與70一起修以免錯歸來源。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r072",
+      "scene_id": "c09r-shot-072",
+      "status": "pass",
+      "source_anchor": "editorial:S3:B",
+      "source_judgment": "明確將指責歸書評且我覺得為反應，沒有把意見作內部文件。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r073",
+      "scene_id": "c09r-shot-073",
+      "status": "pass",
+      "source_anchor": "S3:C",
+      "source_judgment": "書評記少數人認為先做大岩壁者限制後人，與74合讀。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r074",
+      "scene_id": "c09r-shot-074",
+      "status": "pass",
+      "source_anchor": "S3:C",
+      "source_judgment": "個人攀登自由的異議直接有據，承接73還有人覺得。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r075",
+      "scene_id": "c09r-shot-075",
+      "status": "pass",
+      "source_anchor": "S3:C",
+      "source_judgment": "難壁不帶岩釘可能無法完成為書評記反對者的疑慮，不作作者安全結論。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r076",
+      "scene_id": "c09r-shot-076",
+      "status": "pass",
+      "source_anchor": "S3:B",
+      "source_judgment": "Rowell自述在Yosemite遇到更多不帶錘子者，已清楚限個人觀察。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r077",
+      "scene_id": "c09r-shot-077",
+      "status": "pass",
+      "source_anchor": "S3:B",
+      "source_judgment": "Rowell判型錄反駁hypocrisy且有長篇clean climbing文章，有據且歸其評價。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r078",
+      "scene_id": "c09r-shot-078",
+      "status": "pass",
+      "source_anchor": "editorial:S3:B;S4:D",
+      "source_judgment": "從評論轉向一次攀登的問句；不冒充作者當時現場。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r079",
+      "scene_id": "c09r-shot-079",
+      "status": "pass",
+      "source_anchor": "S4:D",
+      "source_judgment": "1973 Chouinard/Carson以chocks未帶pitons攀Nose有直接報導；同年指前述1973書評，沒有額外年份。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r080",
+      "scene_id": "c09r-shot-080",
+      "status": "pass",
+      "source_anchor": "S4:D",
+      "source_judgment": "原文completed with no serious hitches，沒帶只限pitons，非無繩攀登。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r081",
+      "scene_id": "c09r-shot-081",
+      "status": "pass",
+      "source_anchor": "S4:D",
+      "source_judgment": "seems to have quieted skeptics明歸記者判斷；提問不作安全保證。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r082",
+      "scene_id": "c09r-shot-082",
+      "status": "pass",
+      "source_anchor": "editorial:S4:D",
+      "source_judgment": "我覺得明示反應，單次結果不可普遍推廣的限定適當。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r083",
+      "scene_id": "c09r-shot-083",
+      "status": "pass",
+      "source_anchor": "S3:B;S4:D",
+      "source_judgment": "部分接受及單次實踐有原件支持，轉場非新採用率主張。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r084",
+      "scene_id": "c09r-shot-084",
+      "status": "pass",
+      "source_anchor": "editorial:S4:F",
+      "source_judgment": "回到開場工廠問題，不作新史實。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r085",
+      "scene_id": "c09r-shot-085",
+      "status": "pass",
+      "source_anchor": "S4:F",
+      "source_judgment": "明寫1977刊出，未稱記者到訪日；工廠仍壓製pitons有直接記錄。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r086",
+      "scene_id": "c09r-shot-086",
+      "status": "pass",
+      "source_anchor": "S4:E",
+      "source_judgment": "記者所見店內small museum含Salathé及Chouinard手鍛釘有據；配圖展示箱只作匿名概念家具，不能當作確切原場景重建。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名概念展示箱可接受；不得稱確切歷史陳列箱樣式。"
+    },
+    {
+      "id": "c09r087",
+      "scene_id": "c09r-shot-087",
+      "status": "pass",
+      "source_anchor": "S4:E",
+      "source_judgment": "店內器材櫃的pitons/chocks有據；存貨/新製為提問，下一行工廠回答。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r088",
+      "scene_id": "c09r-shot-088",
+      "status": "pass",
+      "source_anchor": "S4:F",
+      "source_judgment": "記者所見old portable forge there but idle直接支持。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r089",
+      "scene_id": "c09r-shot-089",
+      "status": "pass",
+      "source_anchor": "S4:F",
+      "source_judgment": "stamp dies/presses，block metal in piton out為原文記錄，未說創辦人仍手鍛。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r090",
+      "scene_id": "c09r-shot-090",
+      "status": "pass",
+      "source_anchor": "S4:F",
+      "source_judgment": "工廠角落木板加不規則木塊仿岩壁及楔塊示範有據，與91合讀。",
+      "visual_status": "pass",
+      "visual_judgment": "prompt equipment shop與報導factory角落非確切場址重建，屬同工作場所概念示意；成圖勿加宣稱原址標示。"
+    },
+    {
+      "id": "c09r091",
+      "scene_id": "c09r-shot-091",
+      "status": "pass",
+      "source_anchor": "S4:F",
+      "source_judgment": "bright-colored rope loops through them直接有據；匿名示意不教完整放置。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r092",
+      "scene_id": "c09r-shot-092",
+      "status": "pass",
+      "source_anchor": "editorial:S4:E/F",
+      "source_judgment": "明示我覺得；勸告與製造都在報導中，外套問題有商店段背景。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r093",
+      "scene_id": "c09r-shot-093",
+      "status": "pass",
+      "source_anchor": "S7:A;S2:A",
+      "source_judgment": "1973服裝使用Patagonia標籤，相對1972前言晚一年；已歸品牌回顧，不推每件所見外套都有標籤。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r094",
+      "scene_id": "c09r-shot-094",
+      "status": "pass",
+      "source_anchor": "S4:E/F",
+      "source_judgment": "店內確有衣物；修納德說的歸屬承到95。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r095",
+      "scene_id": "c09r-shot-095",
+      "status": "pass",
+      "source_anchor": "S4:F",
+      "source_judgment": "clothing subsidizes hardware為受訪者說法，沒有冒稱獨立財報。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r096",
+      "scene_id": "c09r-shot-096",
+      "status": "pass",
+      "source_anchor": "S4:F",
+      "source_judgment": "dies cost thousands dollars為受訪者說法，與97合讀。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r097",
+      "scene_id": "c09r-shot-097",
+      "status": "pass",
+      "source_anchor": "S4:F",
+      "source_judgment": "often five to ten years才收回為本人估算，未拿此推繼續供貨原因。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r098",
+      "scene_id": "c09r-shot-098",
+      "status": "pass",
+      "source_anchor": "editorial:S4:F",
+      "source_judgment": "把受訪估算與獨立財報分開，並非說世上不存在財報。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r099",
+      "scene_id": "c09r-shot-099",
+      "status": "pass",
+      "source_anchor": "editorial:S2:A;S4:F",
+      "source_judgment": "有仍製造與原序建議為問題基礎。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r100",
+      "scene_id": "c09r-shot-100",
+      "status": "pass",
+      "source_anchor": "editorial:S2:A",
+      "source_judgment": "原序other climber/future generations，編輯歸納未增加環境修復量。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r101",
+      "scene_id": "c09r-shot-101",
+      "status": "revise",
+      "source_anchor": "S1:A;S4:B;S2:A",
+      "source_judgment": "原本只跟這一趟路線相連容易否定早已可重用多趟的器材，也暗示過去只關切單趟而無來源；改成非排他的回呼，勿發明價值觀前史。",
+      "visual_status": "pass",
+      "visual_judgment": "匿名成人、無商標概念示意與該句物件/動作相容；沒有可指認真人、來源未支持的可讀數字或特定歷史場景宣稱。"
+    },
+    {
+      "id": "c09r102",
+      "scene_id": "c09r-outro",
+      "status": "pass",
+      "source_anchor": "S2:A;S4:F",
+      "source_judgment": "只歸紀錄所見建議次序轉變及仍製造，不推永久停售或精確連續供貨。",
+      "visual_status": "pass",
+      "visual_judgment": "後製片尾CTA只含本片概括及留言邀請，無新增歷史畫面主張。"
+    },
+    {
+      "id": "c09r103",
+      "scene_id": "c09r-outro",
+      "status": "pass",
+      "source_anchor": "editorial",
+      "source_judgment": "明示如果是你與留言題，不作歷史顧客反應。",
+      "visual_status": "pass",
+      "visual_judgment": "後製片尾CTA只含本片概括及留言邀請，無新增歷史畫面主張。"
+    },
+    {
+      "id": "c09r104",
+      "scene_id": "c09r-outro",
+      "status": "pass",
+      "source_anchor": "editorial",
+      "source_judgment": "頻道訂閱邀請，沒有新增史實或下一集預告。",
+      "visual_status": "pass",
+      "visual_judgment": "後製片尾CTA只含本片概括及留言邀請，無新增歷史畫面主張。"
+    }
+  ],
+  "metadata_notes": [
+    "sources.checked_on保留作者所記2026-10-24；本獨立審查實際重讀日為2026-10-25。",
+    "c09r004此前口頭提醒可加S7，但重新檢查S2整頁作者簡介後已直接支持創辦Patagonia，因此本收據判pass，撤回該補標要求。",
+    "c09r034及036是支持來源漏標，事實可由已直接讀取S4支持；應修改claims的來源，不能把漏標當已通過。",
+    "S2固定釘條件及S3指責用語應窄修後重新綁定；舊稿hash下的HOLD不得改寫成PASS。"
+  ]
+}

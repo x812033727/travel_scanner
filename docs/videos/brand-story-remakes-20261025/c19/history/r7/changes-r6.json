@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "revision": "c19-r6",
+  "status": "AUTHOR_THREE_LINE_REVISION_PENDING_DELTA_SOURCE_AND_NATIVE6",
+  "baseline_revision": "c19-r5",
+  "baseline_core_four_sha256": {
+    "video.json": "66195f39be280501c6b6af9e1873fdb58894832a8392a96669c45b6ae77c4fee",
+    "script.md": "e7387e6576f04f78ac2a331640f12634fa3494231a16354930a81be82c86deee",
+    "narration-only.json": "0cfc03921e2cd080ba07c5c5bdb893d5504e880079c01ad7b24f9954d75207b5",
+    "claims.json": "857085d52c7b35135311123991af733cb30ccada9458a9b96a686569eaffb1cb"
+  },
+  "baseline_source_result": "PASS_R5_ONLY",
+  "baseline_source_receipt_sha256": "2d475e5a9f2ae622ddc69f942448b53dab278d4e39f4f6c2ce79988ef9fb5c8d",
+  "baseline_verify_sha256": "787a7adedb137896f1a5d73ea2e9436c92c204e71da9d54d4f572127c6d9499b",
+  "baseline_native_round": 5,
+  "baseline_native_result": "HOLD",
+  "baseline_native_shared_failure": [
+    "no_recap"
+  ],
+  "native5_evidence_addressed": {
+    "reader_a": "n09 repeats n08 replenishment-related service pause",
+    "reader_b": "a05 repeats a03 separate activation dates after giving June18"
+  },
+  "native5_lone_payoffs_issue_addressed": {
+    "question_id": "c19r1a20",
+    "answer_ids": [
+      "c19r1a21",
+      "c19r1a22",
+      "c19r2a33"
+    ],
+    "source_id": "S6",
+    "quote_id": "R16-Q1",
+    "locator": "PDF15／印13 設置時期別週平均一日あたりご利用件数推移 圖前正文",
+    "comparison": "Company compares usage-count growth of machines installed in February2002 with machines installed in June2001; the later cohort grew more markedly in its account.",
+    "not_a_controlled_publicity_effect": true,
+    "question_no_longer_asks_for_publicity_causation": true
+  },
+  "changed_rows": [
+    {
+      "id": "c19r1a05",
+      "before": "匯款服務又到六月十八日才開始；成立銀行，並不會讓所有功能一起出現。",
+      "after": "匯款服務又到六月十八日才開始。",
+      "reason": "Keep only the unique June18 remittance activation date; a03 already states that service functions did not open together.",
+      "source_claim_references_and_quotes_unchanged": true,
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1a20",
+      "before": "原本走進銀行的人，也能在分行看到新入口；這些宣傳，讓新機器有人用了嗎？",
+      "after": "那麼，公司報告裡，不同批次新設機器的使用次數，成長有什麼差別？",
+      "reason": "Ask only for the installation-cohort usage-growth comparison that a21/a22/a33 and the company report actually give. Do not ask whether publicity independently caused usage.",
+      "source_claim_references_and_quotes_unchanged": true,
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1n09",
+      "before": "補鈔是維持提款的工作，卻也會占用機器；那麼，乾脆一次裝很多不就好了？",
+      "after": "那麼，乾脆一次裝很多鈔票，不就好了？",
+      "reason": "Keep only the unanswered question about loading more banknotes; n08 already explains service interruption from replenishment.",
+      "source_claim_references_and_quotes_unchanged": true,
+      "source_review_required": true
+    }
+  ],
+  "removed_rows": [],
+  "added_rows": [],
+  "unchanged_remaining_narration_rows": 112,
+  "remaining_source_claim_rows_unchanged": 112,
+  "opening_scenes_and_narration_unchanged": true,
+  "all_prompts_and_cameras_exactly_r5": true,
+  "new_historical_claims": false,
+  "source_registry_and_quote_registry_exactly_r5": true,
+  "source_quotes_changed": false,
+  "all_conditions_and_data_preserved_at_ids": [
+    "c19r1a12",
+    "c19r1a14",
+    "c19r1n03",
+    "c19r1n18",
+    "c19r1n19",
+    "c19r1n20",
+    "c19r1n23",
+    "c19r1n24",
+    "c19r1t03",
+    "c19r1t04",
+    "c19r1t05",
+    "c19r1t14",
+    "c19r1t15",
+    "c19r1t16",
+    "c19r1o02",
+    "c19r1o05",
+    "c19r1a25",
+    "c19r1a26",
+    "c19r1a21",
+    "c19r1a22",
+    "c19r2a33"
+  ],
+  "june18_date_preserved": true,
+  "usage_cohorts_and_answer_rows_unchanged": true,
+  "loop_metadata_unchanged": true,
+  "loop_count": 36,
+  "all_loop_endpoints_exist_and_forward": true,
+  "chapter_viewer_address": [
+    {
+      "chapter": "金融廳裡，先拿到一份文件",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "預備牌照之後，機器才開門",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "別家銀行的客人走進店裡",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "入口變多，仍有人沒有用",
+      "you": 2,
+      "I": 2
+    },
+    {
+      "chapter": "螢幕上的免費，沒有結清網路的帳",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "訊息接回銀行，現鈔留在機器裡",
+      "you": 5,
+      "I": 4
+    }
+  ],
+  "whole_narration_spoken_units": 3222,
+  "previous_units": 3257,
+  "delta_units": -35,
+  "removed_restatement_not_replaced_by_padding": true,
+  "native_actual_round_count": 5,
+  "next_native_round": 6,
+  "native2_format_correction_not_extra_draw": true,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "verify_1_created": false,
+  "owner_approval_created": false,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0
+}

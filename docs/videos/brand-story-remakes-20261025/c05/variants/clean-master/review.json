@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_clean_master_metadata_derivation",
+  "status": "METADATA_DERIVATION_PASS",
+  "checked_at": "2026-10-26T02:32:41.384Z",
+  "reviewer": "/root",
+  "independent": true,
+  "independence_basis": "Coordinator did not author the C05 current approved narration and verified teaser plan source or its clean variant/derivation. Reproduced native checks from actual frozen bytes and native snapshot dictionary.",
+  "slug": "story-everyday-kincho-c05-remake-20261025",
+  "scope": {
+    "source_fact_qa": false,
+    "written_visual_qa": false,
+    "media_qa": false,
+    "owner_approval": false,
+    "backend_calls": 0,
+    "provider_calls": 0,
+    "paid_requests": 0
+  },
+  "input_files_sha256": {
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/video.json": "773836e4a9c63770afbd6900014cbd57e6b123df44a22dca5987afaf9488d546",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/variants/clean-master/video.json": "7e125f19a9620bed09a17a1149e42427bdbe2901a36040634f7fa45bb9f8a2ad",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/variants/clean-master/derivation.json": "6efea1b3bbc756d1a1b99dd2d155287024e046fc3cece66ca398ce629b1975e3",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/variants/clean-master/lint.json": "938a098d5164da0531c3473d741db927015f989b33cb1363247fca6ba2075290",
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/script.md": "3f2f19c4989a33f0887331997e29ae505839726fb8079ceb0607511593835c80",
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/story-lexicon/current.json": "7b1b9b47222332183d952019ab560df14ddad343c5ccd7131f56b0f91c39a105"
+  },
+  "immutable_lexicon": {
+    "mode": "snapshot",
+    "lexicon_sha256": "1b7ab06d93193c145da374d4f0d1ae686f4e6ff948730ddb1532522f32ec21c3",
+    "head_event_sha256": "e1e8278f2992b3525b33fa5eed19374a793905896dae49aa2c0bb33221848fe7",
+    "sequence": 1,
+    "actual_snapshot_read_by_native_reader": true
+  },
+  "deep_diff": [
+    {
+      "path": "subtitles.burn_in",
+      "source": true,
+      "variant": false
+    }
+  ],
+  "native_input_hashes": {
+    "narrativeHash": {
+      "source": "5359d4bf17f13094",
+      "variant": "5359d4bf17f13094",
+      "equal": true
+    },
+    "speechHash": {
+      "source": "35fc3a212b1b27d8",
+      "variant": "35fc3a212b1b27d8",
+      "equal": true
+    },
+    "picturesHash": {
+      "source": "bd1951c6fc2edb52",
+      "variant": "bd1951c6fc2edb52",
+      "equal": true
+    },
+    "lookHash": {
+      "source": "98a370ae40badbaf",
+      "variant": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "source": "71ecdd098c551254",
+      "variant": "71ecdd098c551254",
+      "equal": true
+    },
+    "subtitlesHash": {
+      "source": "4b23ded6e41b1e87",
+      "variant": "ec58a1493220a1da",
+      "equal": false
+    }
+  },
+  "canonical_script_sha256": "3f2f19c4989a33f0887331997e29ae505839726fb8079ceb0607511593835c80",
+  "screenplay_bytes_identical": true,
+  "lint": {
+    "reproduced_from_actual_dictionary": true,
+    "errors": 0,
+    "warnings": 7,
+    "saved_lint_exactly_matches": true,
+    "saved_lint_phase": "Before R13 split-line translations: reproduced with archived R12 translations",
+    "saved_lint_warnings": 23,
+    "current_lint_warnings": 7
+  },
+  "same_new_remake_budget_identity": true,
+  "old_activated_slug_used": false,
+  "artifacts_absent": [
+    "timeline.json",
+    "narration.wav",
+    "final.mp4",
+    "qa.json",
+    "languages.json"
+  ],
+  "actual_clean_master_exists": false,
+  "media_qa": false,
+  "final_approval": false,
+  "actual_dub_eligibility": false,
+  "limitations": [
+    "Written recipe metadata only; no actual media was decoded or generated.",
+    "Each actual clean output requires full matching QA and current owner final approval.",
+    "Paper estimates do not establish actual narration duration or dubbing eligibility."
+  ]
+}

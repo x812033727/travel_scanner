@@ -1,0 +1,126 @@
+{
+  "source_video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
+  "reviewer": "/root/c03_review_vi_th; independent KO/ES reviewer, not their translator",
+  "scope": "text_only_targeted_post_fix_recheck",
+  "original_review": {
+    "path": "/workspace/work/brand-story-20261025/c05-audit/review-ko-es.json",
+    "sha256": "4b59fb1c7d9454de11929f36a8b2ad79cdeb473bc2ab6649d291ca3d793b1eb9",
+    "unchanged_from_applied_fixes_receipt": true
+  },
+  "applied_fixes": {
+    "path": "/workspace/work/brand-story-20261025/c05-audit/applied-fixes-ko-es.json",
+    "sha256": "bbe4415f3215ca2f5e1991bcca59c761673a7fcf05971fedfa7196201f55b0ed"
+  },
+  "reviewed_on_utc": "2026-10-25T16:13:24.113895+00:00",
+  "locales": [
+    {
+      "locale": "ko",
+      "verdict": "TEXT_PASS",
+      "worksheet_sha256": "9e33996690ab8825b2c8181522ed203b0dac52919aea6b0b2ffb9609e9ad33f0",
+      "translation_sha256": "70d8f1c0f28d754576a3a5eb690313b4e49fae5827a05e5d788d7e21a80fd02f",
+      "worksheet_path": "/workspace/work/brand-story-20261025/media/story-everyday-kincho-c05-remake-20261025/i18n/ko.todo.json",
+      "translation_path": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/ko.json",
+      "baseline_inputs": {
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c05-audit/translation-review-history/ko/translation-before.json",
+          "sha256": "60a8afba7d45d7132777dbf221bc4e1a3a3d2c3680b20b62e645f471b0afd82d"
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/c05-audit/translation-review-history/ko/worksheet-before.json",
+          "sha256": "c4062b9797fce898109a63bc1c0d3353e3af76f112a710e886f66f6709f09204"
+        }
+      },
+      "native_merge_receipt": {
+        "path": "/workspace/work/brand-story-20261025/c05-audit/native-merge-ko.json",
+        "sha256": "69e130da02efedbd2cda3016ccb6a4f9e5948700cc56315c6c9fa4f65182fd46"
+      },
+      "checks": {
+        "source_video_unchanged": true,
+        "original_review_unchanged": true,
+        "native_merge_exit_zero": true,
+        "native_merge_hashes_match_current_inputs": true,
+        "native_protected_source_invariants_pass": true,
+        "baseline_translation_hash_matches_original_review": true,
+        "baseline_worksheet_hash_matches_original_review": true,
+        "only_requested_translation_text_targets_changed": true,
+        "only_requested_worksheet_text_targets_changed": true,
+        "all_non_target_and_protected_fields_unchanged": true,
+        "all_exact_replacements_accepted": true,
+        "current_worksheet_matches_applied_receipt": true
+      },
+      "targets_checked": 2,
+      "translation_changed_text_fields": [
+        "lines.c05r010.text",
+        "lines.c05r028.text"
+      ],
+      "worksheet_changed_text_fields": [
+        "lines[9].text",
+        "lines[27].text"
+      ],
+      "accepted_fixes": [
+        {
+          "target": "lines.c05r010",
+          "before": "이듬해 미국 식물상이 보내온 씨앗에 제충국이 들어 있었습니다. 그제야 새 재료를 손에 넣었습니다.",
+          "after": "이듬해 미국의 식물 상인이 보내온 씨앗에 제충국이 들어 있었습니다. 그제야 새 재료를 손에 넣었습니다.",
+          "source": "隔年，美國植物商寄來的種子裡，有了除蟲菊；新的材料這才到手。",
+          "exact_requested_replacement": true,
+          "faithful_and_natural": true,
+          "introduced_meaning_error": false,
+          "note": "The Korean now unambiguously identifies an American plant merchant. The following-year reference, pyrethrum among the seeds, and arrival of the new material remain unchanged.",
+          "verdict": "TEXT_PASS"
+        },
+        {
+          "target": "lines.c05r028",
+          "before": "회사 연표는 그해에 구상 제안과 시제품 제작 시작을 기록합니다. 이는 회사가 훗날 정리한 귀속입니다.",
+          "after": "회사 연표는 그해에 구상 제안과 시제품 제작 시작을 기록합니다. 이는 회사가 훗날 구상의 출처를 그렇게 기록한 것입니다.",
+          "source": "公司年表把提出構想和開始試作記在那一年；這是公司的後年歸屬。",
+          "exact_requested_replacement": true,
+          "faithful_and_natural": true,
+          "introduced_meaning_error": false,
+          "note": "The Korean now naturally says that the idea-origin attribution was recorded later by the company. It preserves the year-of-proposal/trial statement first and does not add legal ownership, contemporary proof or patent approval.",
+          "verdict": "TEXT_PASS"
+        }
+      ],
+      "remaining_required": []
+    },
+    {
+      "locale": "es",
+      "verdict": "TEXT_PASS",
+      "worksheet_sha256": "d9845e587a06ebc5e3f63bd1a778f0250e0a6a29a2a673d2aeb8e5f918c7afac",
+      "translation_sha256": "b61a533a63a7e197075f86ae9c56235626f8a6c4a06df40f014e622ed23e2739",
+      "worksheet_path": "/workspace/work/brand-story-20261025/media/story-everyday-kincho-c05-remake-20261025/i18n/es.todo.json",
+      "translation_path": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/es.json",
+      "baseline_inputs": {
+        "method": "Whole-file hash identity with original independent TEXT_PASS receipt; no Spanish edits requested or applied.",
+        "translation_sha256": "b61a533a63a7e197075f86ae9c56235626f8a6c4a06df40f014e622ed23e2739",
+        "worksheet_sha256": "d9845e587a06ebc5e3f63bd1a778f0250e0a6a29a2a673d2aeb8e5f918c7afac"
+      },
+      "native_merge_receipt": {
+        "path": "/workspace/work/brand-story-20261025/c05-audit/native-merge-es.json",
+        "sha256": "be323e7368cfcb733d96cf28e33496253854e390d9a88e2bbea21c1d3d06b306"
+      },
+      "checks": {
+        "source_video_unchanged": true,
+        "original_review_unchanged": true,
+        "native_merge_exit_zero": true,
+        "native_merge_hashes_match_current_inputs": true,
+        "native_protected_source_invariants_pass": true,
+        "original_verdict_was_text_pass": true,
+        "translation_whole_file_unchanged_from_text_pass": true,
+        "worksheet_whole_file_unchanged_from_text_pass": true
+      },
+      "targets_checked": 0,
+      "translation_changed_text_fields": [],
+      "worksheet_changed_text_fields": [],
+      "accepted_fixes": [],
+      "remaining_required": []
+    }
+  ],
+  "actual_timing_verified": false,
+  "paid_calls": 0,
+  "limitations": [
+    "Targeted recheck of the two originally required Korean fixes, plus complete structural diffs against hash-matched pre-fix files. Spanish is checked only for unchanged whole-file hashes relative to its original TEXT_PASS; the full reviews were not repeated.",
+    "No actual timeline or timed SRT is available. Reading speed, synchronization, rendering, dub and media QA remain unverified.",
+    "The original review is preserved. No owner approval or independent primary-source approval is implied."
+  ]
+}

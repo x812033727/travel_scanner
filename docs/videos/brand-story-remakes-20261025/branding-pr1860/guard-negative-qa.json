@@ -1,0 +1,30 @@
+{
+  "observed_at": "2026-10-26T02:23:09.350Z",
+  "tests": [
+    {
+      "fixture": "missing",
+      "external_directory": "/workspace/work/brand-story-20261025/branding-pr1860-evidence/guard-fixtures/missing",
+      "exit_code": 1,
+      "passed": false,
+      "error": {
+        "message": "required channel branding is missing or disabled"
+      },
+      "site_requests": 0,
+      "production_media_modified": false,
+      "production_pin_created": false
+    },
+    {
+      "fixture": "different-id",
+      "external_directory": "/workspace/work/brand-story-20261025/branding-pr1860-evidence/guard-fixtures/different-id",
+      "exit_code": 1,
+      "passed": false,
+      "error": {
+        "message": "local package id: expected mokaair-brand-package-v4-endscreen, got intentional-isolated-qa-mismatch"
+      },
+      "site_requests": 0,
+      "production_media_modified": false,
+      "production_pin_created": false
+    }
+  ],
+  "paid_requests": 0
+}

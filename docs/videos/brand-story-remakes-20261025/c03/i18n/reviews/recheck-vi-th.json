@@ -1,0 +1,336 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_fix_recheck",
+  "reviewed_on_utc": "2026-10-25T14:41:41.141541+00:00",
+  "scope": "TEXT_ONLY",
+  "source_slug": "story-everyday-moleskine-c03-remake-20261025",
+  "reviewer_was_translator": false,
+  "translator_critique_read": false,
+  "original_review": {
+    "path": "/workspace/work/brand-story-20261025/c03-audit/review-vi-th.json",
+    "sha256": "64aa1f459732761ad0b23868d45ab74589d4ec6d425f1a63993aac50acb24235",
+    "original_verdicts": {
+      "vi": "FIXES_REQUIRED",
+      "th": "FIXES_REQUIRED"
+    }
+  },
+  "common_inputs": {
+    "video": {
+      "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/video.json",
+      "sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005"
+    },
+    "claims": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c03/claims.md",
+      "sha256": "eabe20e67a544eff53d10ed97fe3bdc1c9737a00041bba2f5d951943d73a57fb"
+    },
+    "lexicon": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/lexicon.json",
+      "sha256": "e91a7de47dfe80156ad3acb21b8a6ee02e6978d6bf085e42c926aa138f9c19d5"
+    },
+    "review_prompt": {
+      "path": "/workspace/work/brand-remakes-source/.agents/skills/youtube-video/references/prompts/caption-review.md",
+      "sha256": "e95c973686da098ea76dcbe4e3c41cbfe0148967e3a6f17840cd478ab3f3bd9a"
+    }
+  },
+  "locales": {
+    "vi": {
+      "verdict": "TEXT_PASS",
+      "timing_status": "UNVERIFIED",
+      "current_inputs": {
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/i18n/vi.json",
+          "sha256": "79ac336669b46aef8968883dcbd7d0aae6a3ee50e420e27f1c96ce7ca6b247bb"
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/vi.todo.json",
+          "sha256": "7b450128e33dbda2477137428a09562c7f1b287b1dde91a673613efaeecb8f8b"
+        },
+        "native_merge_log": {
+          "path": "/workspace/work/brand-story-20261025/c03-audit/native-merge-vi.json",
+          "sha256": "3e72d7e2a0dca3588a81cbc594c129f48544ed43e22cfdc4a548006e5836be7b"
+        }
+      },
+      "baseline_inputs": {
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/vi/translation-before.json",
+          "sha256": "a4bb7773c71246f67260d062609bc67152a1c08130f6e0c076cc688cec10910b",
+          "matches_original_receipt": true
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/vi/worksheet-before.json",
+          "sha256": "6330cd04f30ded9c9c984e22d8533f0558e8efe07eb59ceb7ee8ef3122268b9f",
+          "matches_original_receipt": true
+        }
+      },
+      "requested_target_count": 8,
+      "actual_translation_changed_target_count": 8,
+      "actual_worksheet_changed_target_count": 8,
+      "checks": {
+        "pre_fix_input_hashes_match_original_receipt": true,
+        "source_common_inputs_unchanged": true,
+        "translation_only_requested_fields_changed": true,
+        "worksheet_only_requested_fields_changed": true,
+        "all_requested_replacements_exact_and_semantically_accepted": true,
+        "all_non_text_source_ids_and_other_fields_unchanged": true,
+        "native_merge_exit_zero": true,
+        "native_merge_hashes_match_current_inputs": true,
+        "native_merge_protected_source_invariants_pass": true
+      },
+      "accepted_targets": [
+        {
+          "id": "r319021",
+          "field": "lines.r319021.text",
+          "worksheet_field": "lines[130].text",
+          "source": "銷售約五千兩百二十萬歐元，比上年同半年增加百分之二點二。",
+          "before": "Doanh số khoảng 52,2 triệu euro, tăng 2,2% so với cùng nửa năm trước.",
+          "after": "Doanh số khoảng 52,2 triệu euro, tăng 2,2% so với cùng kỳ năm trước.",
+          "matches_exact_requested_replacement": true,
+          "worksheet_matches_canonical": true,
+          "source_fidelity_recheck": "PASS",
+          "introduced_meaning_error": false,
+          "status": "ACCEPTED"
+        },
+        {
+          "id": "r305031",
+          "field": "lines.r305031.text",
+          "worksheet_field": "lines[25].text",
+          "source": "在發行人的構想裡，買的人接過本子，也接過作者的位置。",
+          "before": "Theo ý tưởng của nhà xuất bản, người mua nhận cuốn sổ cũng nhận luôn vị trí tác giả.",
+          "after": "Theo ý tưởng của công ty, người mua nhận cuốn sổ cũng nhận luôn vai trò tác giả.",
+          "matches_exact_requested_replacement": true,
+          "worksheet_matches_canonical": true,
+          "source_fidelity_recheck": "PASS",
+          "introduced_meaning_error": false,
+          "status": "ACCEPTED"
+        },
+        {
+          "id": "r310021",
+          "field": "lines.r310021.text",
+          "worksheet_field": "lines[49].text",
+          "source": "義大利交易所把它描述為經營書寫、旅行與閱讀商品的集團。",
+          "before": "Sở giao dịch Ý mô tả họ là tập đoàn kinh doanh sản phẩm viết, du lịch và đọc.",
+          "after": "Sở giao dịch Ý mô tả họ là tập đoàn kinh doanh các sản phẩm phục vụ việc viết lách, du lịch và đọc sách.",
+          "matches_exact_requested_replacement": true,
+          "worksheet_matches_canonical": true,
+          "source_fidelity_recheck": "PASS",
+          "introduced_meaning_error": false,
+          "status": "ACCEPTED"
+        },
+        {
+          "id": "r312051",
+          "field": "lines.r312051.text",
+          "worksheet_field": "lines[85].text",
+          "source": "這張由批發、直營和網店接成的網，吸引了一個原本離紙張很遠的買方。",
+          "before": "Mạng lưới bán buôn, cửa hàng riêng và cửa hàng mạng ấy thu hút một bên mua vốn rất xa ngành giấy.",
+          "after": "Mạng lưới bán buôn, cửa hàng riêng và cửa hàng trực tuyến ấy thu hút một bên mua vốn rất xa ngành giấy.",
+          "matches_exact_requested_replacement": true,
+          "worksheet_matches_canonical": true,
+          "source_fidelity_recheck": "PASS",
+          "introduced_meaning_error": false,
+          "status": "ACCEPTED"
+        },
+        {
+          "id": "r3t031",
+          "field": "lines.r3t031.text",
+          "worksheet_field": "lines[93].text",
+          "source": "這個價錢是拿來買股份，不是把同額現金存進本子公司的帳戶。",
+          "before": "Giá ấy dùng để mua cổ phần, không phải gửi từng ấy tiền vào tài khoản công ty sổ.",
+          "after": "Giá ấy dùng để mua cổ phần, không phải gửi từng ấy tiền vào tài khoản của công ty bán sổ.",
+          "matches_exact_requested_replacement": true,
+          "worksheet_matches_canonical": true,
+          "source_fidelity_recheck": "PASS",
+          "introduced_meaning_error": false,
+          "status": "ACCEPTED"
+        },
+        {
+          "id": "r316011",
+          "field": "lines.r316011.text",
+          "worksheet_field": "lines[106].text",
+          "source": "網店則在遷移到新平台的那一年，銷售下降。改善購物體驗的投資，還得加上哪些營運工作？",
+          "before": "Doanh số cửa hàng mạng giảm trong năm đổi nền tảng. Đầu tư cải thiện mua sắm còn cần thêm việc vận hành nào?",
+          "after": "Doanh số cửa hàng trực tuyến giảm trong năm chuyển sang nền tảng mới. Đầu tư cải thiện trải nghiệm mua sắm còn cần thêm những công việc vận hành nào?",
+          "matches_exact_requested_replacement": true,
+          "worksheet_matches_canonical": true,
+          "source_fidelity_recheck": "PASS",
+          "introduced_meaning_error": false,
+          "status": "ACCEPTED"
+        },
+        {
+          "id": "r320041",
+          "field": "lines.r320041.text",
+          "worksheet_field": "lines[142].text",
+          "source": "想繼續從日用品看懂一個名字怎麼變成生意，還要面對哪些現實考驗，歡迎訂閱。",
+          "before": "Để qua đồ dùng hằng ngày hiểu cái tên thành việc kinh doanh, gặp thử thách thực tế nào, mời bạn đăng ký.",
+          "after": "Muốn tiếp tục tìm hiểu qua đồ dùng hằng ngày xem một cái tên trở thành một hoạt động kinh doanh ra sao, và phải đối mặt với những thử thách thực tế nào, bạn hãy đăng ký kênh.",
+          "matches_exact_requested_replacement": true,
+          "worksheet_matches_canonical": true,
+          "source_fidelity_recheck": "PASS",
+          "introduced_meaning_error": false,
+          "status": "ACCEPTED"
+        },
+        {
+          "id": "chapter:c03r-p17s01",
+          "field": "chapters.c03r-p17s01",
+          "worksheet_field": "chapters[5].text",
+          "source": "補貨回來了，名字仍要接受檢驗",
+          "before": "Hàng về, còn xét lại tên tuổi",
+          "after": "Nhập hàng hồi phục, thương hiệu vẫn chịu thử thách",
+          "matches_exact_requested_replacement": true,
+          "worksheet_matches_canonical": true,
+          "source_fidelity_recheck": "PASS",
+          "introduced_meaning_error": false,
+          "status": "ACCEPTED"
+        }
+      ],
+      "additional_fixes": [],
+      "timed_readability": "UNMEASURED",
+      "cue_order_recheck": "No new source-boundary clause-order change introduced by the accepted replacements."
+    },
+    "th": {
+      "verdict": "TEXT_PASS",
+      "timing_status": "UNVERIFIED",
+      "current_inputs": {
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/i18n/th.json",
+          "sha256": "e6c48afe876073c1e88b8d7fd7225155fd2803441664973d8ec7274d0a052706"
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/th.todo.json",
+          "sha256": "c78be3b9b7d1e8ae82b596c8b14dc1962ffa15be70c0e472e44a7e3ecdfd3952"
+        },
+        "native_merge_log": {
+          "path": "/workspace/work/brand-story-20261025/c03-audit/native-merge-th.json",
+          "sha256": "5c66d61f68e46b0c9da074bdb3f0a1977909555de1702a8a47a0b00d05005dff"
+        }
+      },
+      "baseline_inputs": {
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/th/translation-before.json",
+          "sha256": "d99af24e4a2d20307c253fe5c87472de75a3b5d0ded14ef5b032dd721047f961",
+          "matches_original_receipt": true
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/th/worksheet-before.json",
+          "sha256": "af4996155ffd6e1169e54fe9b6bb2dc2edfbc2b6c5d4dc81bdb32db7de6297d2",
+          "matches_original_receipt": true
+        }
+      },
+      "requested_target_count": 7,
+      "actual_translation_changed_target_count": 7,
+      "actual_worksheet_changed_target_count": 7,
+      "checks": {
+        "pre_fix_input_hashes_match_original_receipt": true,
+        "source_common_inputs_unchanged": true,
+        "translation_only_requested_fields_changed": true,
+        "worksheet_only_requested_fields_changed": true,
+        "all_requested_replacements_exact_and_semantically_accepted": true,
+        "all_non_text_source_ids_and_other_fields_unchanged": true,
+        "native_merge_exit_zero": true,
+        "native_merge_hashes_match_current_inputs": true,
+        "native_merge_protected_source_invariants_pass": true
+      },
+      "accepted_targets": [
+        {
+          "id": "r305031",
+          "field": "lines.r305031.text",
+          "worksheet_field": "lines[25].text",
+          "source": "在發行人的構想裡，買的人接過本子，也接過作者的位置。",
+          "before": "ในแนวคิดของผู้จัดพิมพ์ ผู้ซื้อรับสมุดไปพร้อมกับรับบทผู้เขียน",
+          "after": "ในแนวคิดที่บริษัทเสนอ ผู้ซื้อรับสมุดไปพร้อมกับรับบทผู้เขียน",
+          "matches_exact_requested_replacement": true,
+          "worksheet_matches_canonical": true,
+          "source_fidelity_recheck": "PASS",
+          "introduced_meaning_error": false,
+          "status": "ACCEPTED"
+        },
+        {
+          "id": "r304031",
+          "field": "lines.r304031.text",
+          "worksheet_field": "lines[21].text",
+          "source": "那是同一類型的物件，並不是他們用過後來的現代品牌商品。",
+          "before": "มันเป็นสิ่งของประเภทเดียวกัน ไม่ได้แปลว่าพวกเขาเคยใช้สินค้าแบรนด์ยุคใหม่ที่เกิดขึ้นภายหลัง",
+          "after": "เป็นสิ่งของประเภทเดียวกัน แต่พวกเขาไม่ได้ใช้สินค้าแบรนด์ยุคใหม่ที่เกิดขึ้นภายหลัง",
+          "matches_exact_requested_replacement": true,
+          "worksheet_matches_canonical": true,
+          "source_fidelity_recheck": "PASS",
+          "introduced_meaning_error": false,
+          "status": "ACCEPTED"
+        },
+        {
+          "id": "r3e081",
+          "field": "lines.r3e081.text",
+          "worksheet_field": "lines[69].text",
+          "source": "另一種非寄售方式，則依契約，在出貨或交到經銷商時完成銷售；",
+          "before": "ส่วนแบบไม่ฝากขาย จะนับว่าขายเสร็จเมื่อส่งออกหรือส่งถึงผู้จัดจำหน่าย ตามสัญญา",
+          "after": "ส่วนแบบไม่ฝากขาย จะถือว่าขายเสร็จเมื่อจัดส่งสินค้า หรือส่งมอบถึงผู้จัดจำหน่าย ตามสัญญา",
+          "matches_exact_requested_replacement": true,
+          "worksheet_matches_canonical": true,
+          "source_fidelity_recheck": "PASS",
+          "introduced_meaning_error": false,
+          "status": "ACCEPTED"
+        },
+        {
+          "id": "r307021",
+          "field": "lines.r307021.text",
+          "worksheet_field": "lines[37].text",
+          "source": "後來的投資人簡報回看，二〇〇五年約有一萬兩千個批發銷售據點。",
+          "before": "เอกสารนำเสนอนักลงทุนในภายหลังย้อนว่า ปี 2005 มีจุดขายผ่านเครือข่ายขายส่งราว 12,000 แห่ง",
+          "after": "เอกสารนำเสนอนักลงทุนในภายหลังระบุว่า ในปี 2005 มีจุดขายผ่านเครือข่ายขายส่งราว 12,000 แห่ง",
+          "matches_exact_requested_replacement": true,
+          "worksheet_matches_canonical": true,
+          "source_fidelity_recheck": "PASS",
+          "introduced_meaning_error": false,
+          "status": "ACCEPTED"
+        },
+        {
+          "id": "r315021",
+          "field": "lines.r315021.text",
+          "worksheet_field": "lines[100].text",
+          "source": "背包、智慧筆與其他配件已在商品裡，卻還沒把紙本的主位換掉。",
+          "before": "มีกระเป๋าเป้ ปากกาอัจฉริยะ และอุปกรณ์อื่นในสินค้าแล้ว แต่ยังแทนที่บทบาทหลักของกระดาษไม่ได้",
+          "after": "มีกระเป๋าเป้ ปากกาอัจฉริยะ และอุปกรณ์เสริมอื่น ๆ อยู่ในกลุ่มสินค้าแล้ว แต่สินค้ากระดาษยังครองบทบาทหลัก",
+          "matches_exact_requested_replacement": true,
+          "worksheet_matches_canonical": true,
+          "source_fidelity_recheck": "PASS",
+          "introduced_meaning_error": false,
+          "status": "ACCEPTED"
+        },
+        {
+          "id": "r316042",
+          "field": "lines.r316042.text",
+          "worksheet_field": "lines[110].text",
+          "source": "多年後，最早替小黑本鋪路的批發網，又先踩了煞車。",
+          "before": "หลายปีต่อมา เครือข่ายขายส่งที่เคยปูทางให้สมุดดำเป็นแห่งแรก กลับชะลอตัวก่อน",
+          "after": "หลายปีต่อมา เครือข่ายขายส่งที่เคยปูทางให้สมุดดำตั้งแต่แรก กลับเป็นฝ่ายชะลอตัวก่อน",
+          "matches_exact_requested_replacement": true,
+          "worksheet_matches_canonical": true,
+          "source_fidelity_recheck": "PASS",
+          "introduced_meaning_error": false,
+          "status": "ACCEPTED"
+        },
+        {
+          "id": "chapter:c03r-p17s01",
+          "field": "chapters.c03r-p17s01",
+          "worksheet_field": "chapters[5].text",
+          "source": "補貨回來了，名字仍要接受檢驗",
+          "before": "เติมสินค้าฟื้น ทดสอบแบรนด์ต่อ",
+          "after": "การเติมสินค้าฟื้น แบรนด์ยังต้องพิสูจน์ตัวเอง",
+          "matches_exact_requested_replacement": true,
+          "worksheet_matches_canonical": true,
+          "source_fidelity_recheck": "PASS",
+          "introduced_meaning_error": false,
+          "status": "ACCEPTED"
+        }
+      ],
+      "additional_fixes": [],
+      "timed_readability": "UNMEASURED",
+      "cue_order_recheck": "No new source-boundary clause-order change introduced by the accepted replacements."
+    }
+  },
+  "limitations": [
+    "Recheck is limited to the 8 Vietnamese and 7 Thai fixes requested by the independent original review, plus complete structural diffs against its hash-matched pre-fix inputs.",
+    "Original FIXES_REQUIRED review reports remain historical records and were not rewritten.",
+    "No actual timeline, timed SRT or synthesized narration is available; timed readability, reading speed, synchronization and full caption/media QA remain unmeasured.",
+    "No owner approval or independent primary-source fact approval is granted."
+  ]
+}

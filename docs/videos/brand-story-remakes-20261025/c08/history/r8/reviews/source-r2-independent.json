@@ -1,0 +1,3079 @@
+{
+  "schema_version": 1,
+  "revision": "C08remake r2",
+  "reviewer": "/root/c06_translate_pt_id",
+  "independent": true,
+  "reviewed_at_utc": "2026-10-25T19:57:10.033389+00:00",
+  "scope": "Independent r1→r2 source/written-visual delta. No blind/narrative files read. Full unchanged line/scene objects and complete original evidence chain verified before carrying r1proof; changed source/scene material directly re-read.",
+  "overall": "HOLD",
+  "verdict": "HOLD",
+  "source_verdict": "HOLD",
+  "written_visual_verdict": "PASS",
+  "input_sha256": {
+    "video.json": "eacc578080f00d164221496c7061af1bd81ce07f24b9f68c327e9eac49292964",
+    "script.md": "bee3726ceed3ab1506fffbdaf977c6f7123ef97bb1ad66c1f17441bfb8da1e32",
+    "narration-only.json": "a3dee011045493e60160a5361ac59d1a80fe39f1c90556af7128da1c740b7810",
+    "claims.json": "4dc8157c8420accbb75e92d6a8602486a613624a97ad023a5890d40f0a3a0273"
+  },
+  "supporting_input_sha256": {
+    "brief.md": "1a985e7bd528cf819bc1b587b4aadc21582fadd376a1c1e6c094f92bf08fbe02",
+    "series.json": "8084576dbe257f40b089650535a3667800e9d3ab983fe3a3363c61429024e0d8",
+    "claims.md": "38881c0d87fa7612930296b03d6b3ce3004967a48e7e7567c83b90ddcb68225b"
+  },
+  "r1_binding": {
+    "source_report_sha256": "eb7b8b1b1841da7cda3fa0ef6d0d595a91103691b89d99b1ccbca0149a09545b",
+    "verify_marker_sha256": "4caabe71f219c57ff5aa59e9fdee5803d975faed636d5d14f17855342811e399",
+    "input_sha256": {
+      "video.json": "478496f1ef0f5f64680a5e34a34e01c4092f223be885a6bb6af608cae2bb0a3c",
+      "script.md": "4c8cf7f9258ad84bd8e4fb4182094d5a9daabf52bf185952cae4b85ae1e69397",
+      "narration-only.json": "23b4486a3a59c3e477df25ac1df9d88bb386626ab8497fab85aeaf4c63c60dd1",
+      "claims.json": "57f5a58281ac9c6d2d2188813ab5f2eeccbf0140f9a78852c52046256f54f2be"
+    },
+    "all_history_inputs_match_bound_report": true,
+    "current_r1_report_copy_equals_history": true,
+    "historical_SOURCE_and_WRITTEN_VISUAL_PASS_preserved": true
+  },
+  "protected_research_files_sha256": {
+    "research-original.claims.json": "098d17da9a77136bfe3e3d2dafe5aa19d11c087c7203686ecd7f4e87906e7795",
+    "research-original-patents.json": "2ed544c6ed699724c8b6cc26099433a8f6df38f8acc884e82861eca61e18951c",
+    "research-preservation.json": "86beb0a5259ee374092a1e3295187f8a6bbf7d43d271abb19e04edad9b50cd73",
+    "research-original-patents.md": "fa8aca895af38633b1d007cec176319ca1257c236abbce322b6d85b13912753e",
+    "research-original.md": "632c82616fa87591482902731c7079288625160b5dd693a5c21893e9b5531ae3",
+    "README.md": "59b955d5b0e06c73a1ee03e1832a50cc62fc64b25f4abb926b54695ef51fd145"
+  },
+  "original21_raw_and_existing_text_cache_hashes_rechecked": true,
+  "original21_raw_files_sha256": {
+    "K4": "e5316c1f339096526d7962eaab1a437dac90d6403060de3812b4360548b6e896",
+    "K3": "00fd4cedb8cf846703c84f28a5015240e857f06724538059285b0717929ab7f4",
+    "E1": "7b75f2b6c14bb039ef9adcec5223ab3903959af0e7ae2facd63a0ce21479c68d",
+    "M1": "62e7a9c15af2163807fc8126401232914229c35d5b222e51d052db1f80530a99",
+    "K6": "b65d9da5c95fdcf4a71cece6d3f4d61595debd99f23bf92db5ac710b07cce206",
+    "F6": "113703f6417b0167b04a082339ad9d2ad63063e17fdb6d92b16a1edb7828fefe",
+    "K2a": "b461cd5ce171d5a6f54a18ec8c0b9d603b0708de9a42d84da3e2cbb19ba24387",
+    "F2": "1f1d606a9581b0792bad1766eddf1704246ab6560d968043824d5be52fa1abb5",
+    "K1": "0319f9880ec9341838276615564b82cb4cd7d5da241ec3a92c05fe8177b57410",
+    "R1": "26be46fad9880d37e91bb3052b48b70274c64aa71e07d51bfa7e3aeac632be3a",
+    "D1": "50985f2dc386cd2ee4f1f46b93c0578a0e12753387964d4607b14555f8e89b9a",
+    "K5": "a67d9f3e4e9f3f560662468157a888ebc73e57775bc82fb80ca288aed38b8acd",
+    "K7": "497d551c90b9365800877d8d606bfd9958945b91594657535b19bce7797b9c6e",
+    "P1": "b45e7a295f5f9e13687a1b4c8ca21ed724713aac3c53e937ed5609776320b9ba",
+    "P2": "8514ca1f251208bd4ad1d05d55987d98c76a75044933f6f40a85743befdb5811",
+    "P7": "b205d203a3603555d3cca17a9d3ca933deef7e17853311b489d5890e1f7d2398",
+    "F3": "47595c9c9b70be23e2fd9b0588c0b2111d45373748dac7d9a0b5197c931a9d92",
+    "F4": "46b2bceb95db0014b7b838e1ca61d1838cf902cab27382040f7f725ea4db447a",
+    "F7": "8aaa7f839fd439d0102ca7bc4cc5ecd93b310be57d19bd67ec3be46c89f4f38d",
+    "F9": "5d36f5bcdc495aa3d3eaf363a419a3893aecf68bac02b72920db733e42d9fc21",
+    "F5": "fd0131e73cb45b0dca44c1bc463909a03611e48a3a7e94972f1f4cf5b8e2f6b4"
+  },
+  "legacy8_input_hashes_reopened_unchanged": [
+    {
+      "file": "docs/videos/story-everyday-kikkoman-c08/video.json",
+      "sha256": "57371891a62b0b8f4e6ddbd9e5ffea196dade2ef3d92b5f4bc17c319dd0805b2"
+    },
+    {
+      "file": "docs/videos/story-everyday-kikkoman-c08/script.md",
+      "sha256": "b9e4c547ffa190609b433d48ff7e27a94b9c9df4322aeb48104a3163694b3376"
+    },
+    {
+      "file": "docs/videos/story-everyday-kikkoman-c08/claims.md",
+      "sha256": "e70ee7655c0ba5a05885752c894300be1c2676540f89528493e1afc9d8e26f1b"
+    },
+    {
+      "file": "docs/videos/story-everyday-kikkoman-c08/series.json",
+      "sha256": "45595a5ed0d415fc9269e04c617a65b0287ccaa885935d86b5bd6dbb85535e20"
+    },
+    {
+      "file": "docs/videos/story-everyday-kikkoman-c08-short-v8/video.json",
+      "sha256": "1d33c0a4e9c58a58aa65a097aa59c93bf6c259947acd33b75f04008e23d378bb"
+    },
+    {
+      "file": "docs/videos/story-everyday-kikkoman-c08-short-v8/script.md",
+      "sha256": "07cc18d1d90e6eba679a699f0243d977717f896b924158ab251fb390a308c0b9"
+    },
+    {
+      "file": "docs/videos/story-everyday-kikkoman-c08-short-v8/claims.md",
+      "sha256": "de832835117bc85592d4159074c746de59dac0a014f8908bb0e2fb83c7e9121d"
+    },
+    {
+      "file": "docs/videos/story-everyday-kikkoman-c08-short-v8/series.json",
+      "sha256": "07af8fda0e8beaf3d0f4a0ea90acd94b2ae88f79b34ca509016339b223c875db"
+    }
+  ],
+  "actual_delta": {
+    "retained_lines": 135,
+    "unchanged_complete_line_objects": 129,
+    "changed_line_ids": [
+      "c8r10204",
+      "c8r10201",
+      "c8r10203",
+      "c8r10211",
+      "c8r10401",
+      "c8r10402"
+    ],
+    "deleted_line_ids": [
+      "c8r10202",
+      "c8r10322",
+      "c8r10603"
+    ],
+    "added_line_ids": [],
+    "retained_scenes": 133,
+    "retained_illustration_prompts": 132,
+    "unchanged_complete_scene_objects": 127,
+    "unchanged_complete_shot_data": 131,
+    "only_changed_shot_data_scene": "c08r1-04-01",
+    "changed_shot_data_fields": [
+      "data.prompt (subject/action and lighting wording)"
+    ],
+    "all_cameras_and_visual_modes_unchanged": true,
+    "moved_scene": "c08r1-02-04 moved to chapter2first with chapter header transferred from02-01",
+    "all_non_scenes_video_values_unchanged": true,
+    "brief_and_series_bytes_unchanged": true,
+    "same24loops_and_all_endpoints_present": true
+  },
+  "required_source_fixes": [
+    {
+      "id": "S01",
+      "target": "lines.c8r10402",
+      "required": true,
+      "current": "公司主管恩田友貴後來解釋，這款醬油省去火入加熱，改用特殊過濾去除微生物。",
+      "proposed": "龜甲萬的產品開發人員恩田友貴後來解釋，這款醬油省去火入加熱，改用特殊過濾去除微生物。",
+      "reason": "限定為原件可直接支持的商品開發担当，不宣稱或否認其未獲證實的管理職級。",
+      "original_file": "/workspace/work/brand-story-20261025/c08-audit/source-cache/K7.pdf",
+      "original_sha256": "497d551c90b9365800877d8d606bfd9958945b91594657535b19bce7797b9c6e",
+      "original_locators": [
+        "PDFp1intro",
+        "PDFp2process",
+        "PDFp6profile"
+      ],
+      "original_exact_role_quotes": [
+        "商品開発を担当する恩田友貴",
+        "現在はしょうゆの商品開発担当。"
+      ],
+      "profile_render_file": "/workspace/work/brand-story-20261025/c08-audit/source-review-r2/K7-p6.png",
+      "profile_render_sha256": "16812e55ed7d2f1105c6dc0db59a235926029c1f2c8bfe30a90c041a7c3e55e1",
+      "related_active_annotation_note": "目前claims的C08R26 claim_scope沿用研究標籤2025主管；該標籤與來源題名product manager不是個人職級原件證據。新active claim可改寫為具名商品開發担当；受保護research-original歷史檔仍保持不動。"
+    }
+  ],
+  "required_written_visual_fixes": [],
+  "changed_source_checks": {
+    "c8r10201": {
+      "source": "K1",
+      "locator": "PDFp8; actual raw re-extraction",
+      "quote": "In October 1955 ... one-liter bottles, intended for small families",
+      "verdict": "PASS",
+      "reason": "刪去2020出版／回顧年份不改1955年10月上市與小家庭定位。source仍是公司2020回顧，沒有改成同期訪談、實驗或人物心理。"
+    },
+    "c8r10203": {
+      "source": "K1",
+      "locator": "PDFp8; following contrast",
+      "quote": "despite this, consumers demanded even smaller bottles",
+      "verdict": "PASS",
+      "reason": "將刪句中仍想要更小容量的內容併入問題；原件明載，未加上顧客樣本數或市場比例。"
+    },
+    "c8r10204": {
+      "source": "R1",
+      "locator": "original PDF/printedp23; own bound scan render retained from r1",
+      "quote": "Housewives poured small amounts of sauce into a small ceramic soy sauce cruet for use on the table.",
+      "verdict": "PASS",
+      "reason": "移到第二章首，匿名第二人稱為前1961龜甲萬桌上瓶的概念轉裝動作，原件支持大瓶轉小陶壺。不是所有玻璃小瓶的世界首創或某位真實人物的紀錄；研究仍明列同一份後代回顧。"
+    },
+    "c8r10211": {
+      "source": "E1",
+      "locator": "2009first-person article; paragraph beginning依頼のあった1958年当時",
+      "quote": "依頼のあった1958年当時",
+      "verdict": "PASS",
+      "reason": "仍明說後來回憶，1958為本人原文直接記載，不由三年研發期間倒算。"
+    },
+    "c8r10401": {
+      "source": "K7",
+      "locator": "PDFpp2–3; raw-soy preservation/pouch origin and current product-use diagram",
+      "quote": "パウチタイプでは中身が減ると自立しない",
+      "verdict": "PASS",
+      "reason": "新增倒完放回、等下一次取用只是匿名產品使用情境，未指稱2011真實個人行為或心態。密封袋屬2010pouch→2011新瓶這條後期產品線，不套1961玻璃或當代450mLPET內構。"
+    },
+    "c8r10402": {
+      "source": "K7",
+      "locator": "PDFp1intro/p2manufacturing description/p6profile; p6own-render visually read",
+      "quote": "商品開発を担当する恩田友貴 / 現在はしょうゆの商品開発担当。",
+      "verdict": "HOLD",
+      "reason": "特殊過濾與省火入有p2支持，但新增公司主管職級不由原件pp1/6證明。プロダクト・マネジャー室是所屬單位，不是此人主管或組長職稱；不能由單位名稱推人員職級。"
+    }
+  },
+  "line_checks": [
+    {
+      "id": "c8r10101",
+      "scene": "c08r1-01-01",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "034807b4bbd9abb49f3691dbb9879384a765d8230db48ab6a4ee1a88a2970c51",
+      "text_sha256": "37d2d4949dfc3770a78e8fbe699aa512d0cc553b52b6c3a0a78c51c93e8b0696",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10102",
+      "scene": "c08r1-01-02",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "3fd85e25477049e646de3aa2ca9b92c181ab8222535c26220bb4cfa97076c19f",
+      "text_sha256": "96bec1816b87cfccec0ac05f0aedbb24f39315f6b7386adf3b659c0e6b597564",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10103",
+      "scene": "c08r1-01-03",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "01e2277744d9ba7bd7a0b92923b355421592510153efa42d9b93a45c5d8c3084",
+      "text_sha256": "d15e833ad083f9e49614d19f2cd0c53c24416fa83adba1472cd281dc4ccb9aed",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10104",
+      "scene": "c08r1-01-04",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "a1a8616fb809e38e6a143ee28e4eb4109ca2ddeea46246fe080dda7af32b67bb",
+      "text_sha256": "c4bf502b15b189b905b9e763373f3a43c084c2e8b27870019bf88bf221fca90d",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10105",
+      "scene": "c08r1-01-05",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "232e1a717c49457ae2e0bb75c2c5cdc0abd6cce1b556ac07131480c6ba6c3553",
+      "text_sha256": "f133aabb2b196bc775e167c570db37c665f5fded368b29f7d3722a69a9390264",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10106",
+      "scene": "c08r1-01-06",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "34a6d09c0fab75bfdfdae0e087b88865d94432e09d35c93ad32f96a3d114b812",
+      "text_sha256": "bc79b72e65e1d1162a3acd8bd339b9d7eaa7c9299065ad1a502e16affe442b72",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10107",
+      "scene": "c08r1-01-07",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "e40362e4f2b4bd6b65032a72d64cc392f4cc8e3975a7156b08c6cc805fb72a00",
+      "text_sha256": "1883d2b44800e2193f3864fbf41dc387027d3afeffebf8b07d78f2ba96290d01",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10108",
+      "scene": "c08r1-01-08",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "56aae75438482054024115c2b451ff317fcee73e429761bc97954621f50ab929",
+      "text_sha256": "d5c2d9bb28fd7733ef9d4080693ecd605039c8c82a8445ed0611bec4cf7331e5",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10204",
+      "scene": "c08r1-02-04",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": false,
+      "before": "設計公司GK的刊物回顧，當年醬油買回來，還得倒進小陶壺才上桌。",
+      "after": "玻璃小瓶出現以前，你先把大瓶醬油倒進小陶壺，才把它端上餐桌。",
+      "direct_delta_check": {
+        "source": "R1",
+        "locator": "original PDF/printedp23; own bound scan render retained from r1",
+        "quote": "Housewives poured small amounts of sauce into a small ceramic soy sauce cruet for use on the table.",
+        "verdict": "PASS",
+        "reason": "移到第二章首，匿名第二人稱為前1961龜甲萬桌上瓶的概念轉裝動作，原件支持大瓶轉小陶壺。不是所有玻璃小瓶的世界首創或某位真實人物的紀錄；研究仍明列同一份後代回顧。"
+      },
+      "original_sha256": "26be46fad9880d37e91bb3052b48b70274c64aa71e07d51bfa7e3aeac632be3a"
+    },
+    {
+      "id": "c8r10201",
+      "scene": "c08r1-02-01",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": false,
+      "before": "照公司二〇二〇年的回顧，一九五五年十月，龜甲萬推出了一公升瓶。",
+      "after": "一九五五年十月，龜甲萬推出給小家庭的一公升瓶。",
+      "direct_delta_check": {
+        "source": "K1",
+        "locator": "PDFp8; actual raw re-extraction",
+        "quote": "In October 1955 ... one-liter bottles, intended for small families",
+        "verdict": "PASS",
+        "reason": "刪去2020出版／回顧年份不改1955年10月上市與小家庭定位。source仍是公司2020回顧，沒有改成同期訪談、實驗或人物心理。"
+      },
+      "original_sha256": "0319f9880ec9341838276615564b82cb4cd7d5da241ec3a92c05fe8177b57410"
+    },
+    {
+      "id": "c8r10203",
+      "scene": "c08r1-02-03",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": false,
+      "before": "一公升已經變小了，為什麼還不夠？",
+      "after": "可是仍有人想要更小的容器，一公升為什麼還不夠？",
+      "direct_delta_check": {
+        "source": "K1",
+        "locator": "PDFp8; following contrast",
+        "quote": "despite this, consumers demanded even smaller bottles",
+        "verdict": "PASS",
+        "reason": "將刪句中仍想要更小容量的內容併入問題；原件明載，未加上顧客樣本數或市場比例。"
+      },
+      "original_sha256": "0319f9880ec9341838276615564b82cb4cd7d5da241ec3a92c05fe8177b57410"
+    },
+    {
+      "id": "c8r10205",
+      "scene": "c08r1-02-05",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "d6a90281a7d1990e57dc42062f3c722a0a1ef2997eb92e77f9c875298fa82c7d",
+      "text_sha256": "50efcc4669fc216ff98620ab166d1f543da5f921ca84b758256b497126e00751",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10206",
+      "scene": "c08r1-02-06",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "4d7176a694ccca14a0e5e58839aa37c39afb20ecf6ec829118260bf9f3f3a969",
+      "text_sha256": "0ec940ebb0d26697d04150b70a05a2fce5bf4d1fc03e48a670d7db32e558851c",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10207",
+      "scene": "c08r1-02-07",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "447cf3a5829a4584ae40296434e988b39fe6efbd664ed1336bff0ace375b6476",
+      "text_sha256": "017de7233e8dfe652dac4ea84c5eaf185c6fd1863370b0ebd2ccd3da3ccb623d",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10208",
+      "scene": "c08r1-02-08",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "f392f85c10551538cf92821baccf9bd450d88986392bfda45ca9df94638c2677",
+      "text_sha256": "938dc076f53fced44c4a8443bee9408f9a12a55f3de83513d04409bfa8340a1e",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10209",
+      "scene": "c08r1-02-09",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "2c0a14f7b8535f7fd3e7d1eba0bc3dbc7449b6d5a23fed4ad0d66b4e4491ca45",
+      "text_sha256": "2eb9319722630e256fd663d9961f7fb8569f646b3db3cb4b1542d72d98529428",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10210",
+      "scene": "c08r1-02-10",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "3f3dc959da7f6dea734654dbe28f543a04188b7ce2b37378ea33c2fcb52a0119",
+      "text_sha256": "b7707e50595e09d73371335035ade90162124221b718432ae1f191c2b5610015",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10211",
+      "scene": "c08r1-02-11",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": false,
+      "before": "設計者榮久庵憲司，在二〇〇九年的回述裡，說委託來自一九五八年。",
+      "after": "榮久庵憲司後來回憶，一九五八年，他接到了這個委託。",
+      "direct_delta_check": {
+        "source": "E1",
+        "locator": "2009first-person article; paragraph beginning依頼のあった1958年当時",
+        "quote": "依頼のあった1958年当時",
+        "verdict": "PASS",
+        "reason": "仍明說後來回憶，1958為本人原文直接記載，不由三年研發期間倒算。"
+      },
+      "original_sha256": "7b75f2b6c14bb039ef9adcec5223ab3903959af0e7ae2facd63a0ce21479c68d"
+    },
+    {
+      "id": "c8r10212",
+      "scene": "c08r1-02-12",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "b411c70e478b327aca52841dd4cdd2d1048e088589b9fdf8a4f361f8ee45988f",
+      "text_sha256": "2915e5782f87847a5ab45bb05bb745928582601213d34bd6a9fa59e9b126debb",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10213",
+      "scene": "c08r1-02-13",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "3b45eb13f01bac51235d78b8739deb05330507d82cd7dddf95f3dafd462d9e5a",
+      "text_sha256": "b04951f58796498efde2e5064381b72725b5aba36c8456d3b067a650d9a4e7e4",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10214",
+      "scene": "c08r1-02-14",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "1ce8aa74a8cb595d30286af4c4d27eef69c85325b8bac11b0bce1593f61e3f63",
+      "text_sha256": "84815acfb56f7e162499401e09e6cd426755b2344e1a65d49bf1f612b5b7d12c",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10215",
+      "scene": "c08r1-02-15",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "3955a251d2f9d96450f824e428002444c754d46e4042368d7a547b81e4a595b1",
+      "text_sha256": "0ce9708788e30bb1ceabddf7e3941a5243869518c84c50fe17312a4e1be0c582",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10216",
+      "scene": "c08r1-02-16",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "03ac13c821a17cc2e4ceaa0a343a97264e7a9d63eca17faa91ed9d8a8d1c49f3",
+      "text_sha256": "e1573830888529425e7c668a0005a9ac0174a3b369a95668e0f7d3131ca7ca7f",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10217",
+      "scene": "c08r1-02-17",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "a21f5bdd28c3d3e95c14b6438b6a695f71683d37e552d3f6c5ede3f97abe32a6",
+      "text_sha256": "3a8facd9f7fad0475c3b8d6e19b272c06db16ccda30d5ed8c0a52e3b93a4f897",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10218",
+      "scene": "c08r1-02-18",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "11889651faf963f116c8f3e7e4d59dd144ff54a7a56cd62e749e1f5ff9a9cf26",
+      "text_sha256": "4403837ca550f00ae2e3fa4af1abfde9c098ce58d928252b164bcbea8793d66f",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10219",
+      "scene": "c08r1-02-19",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "6d16c7c5fbafe620136943bf97c8370f260a66ae55b1b7abf35f4b81d2a96ef8",
+      "text_sha256": "f8c36ec990a5149a2999204e5b7f81a06e8d00634ab3863cb44bc474eb64d419",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10220",
+      "scene": "c08r1-02-20",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "2482c5cb9d5afc2f80ada0654fe31fb58370dd54333a1ad6afd2115245167c02",
+      "text_sha256": "9246abb8f9a42a6eb3da3230f8ca8c420ec7508edcf7c495104ff17c5e2b9321",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10221",
+      "scene": "c08r1-02-21",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "c2f17adb3fbf37b6cdcd00d34b0907d33a612f356ea7bed49e556b22f8b45c62",
+      "text_sha256": "2aea3dc2108d780ee41408f507899e754af0c68206abfc241790f492fefc14aa",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10222",
+      "scene": "c08r1-02-22",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "3319c2c24df4efe2092835661a67e71dc35b02cb690202ddf734e628b1d30e9e",
+      "text_sha256": "c47230b101cebaa3608b65215433e3417fb30858a0af174d67d7a88dbb6ffc9c",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10223",
+      "scene": "c08r1-02-23",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "ae1398f61c16fd34b706ecd0eacf537e1e96db0df601046090fa5f96e23de379",
+      "text_sha256": "3395b8e626b89aecbc9567230e021f1f6e2c59d53a18c5379345f2c8f5a665b2",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10301",
+      "scene": "c08r1-03-01",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "0431b28852515212bda188fa7165af2a93e4c0624ad610f0d534c99f937dc646",
+      "text_sha256": "92c9ee914e33f495e0eb111b196c0d036341a128e5ba16c0ae350cbcdd8e15d3",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10302",
+      "scene": "c08r1-03-02",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "7302be4aae6d2cd59b509bb7ad30e6e53aef87ede56708db66fbf6a178816cef",
+      "text_sha256": "8d1d1bdc9b859d4885e4cf0946fca22b0f5ffa439782943af0a2b2de136f38a3",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10303",
+      "scene": "c08r1-03-03",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "85c61b7b29cfb5558aef193b7a227f8a2850faac2024772f700c6d3fe0952733",
+      "text_sha256": "006475738b9005d1a4fa5bb3ec3d68fcbe1686be445d4f5c956eae43e7f28425",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10304",
+      "scene": "c08r1-03-04",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "e54e64e833330694236cf0ad0b8d7380d11e66e7ba594697c10c04a20b228f09",
+      "text_sha256": "0128ba32c0148f54aa2e1a196cd07ce62c266b59e2a83cf4787a32d5bc4ecd9e",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10305",
+      "scene": "c08r1-03-05",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "eb2ccbbac59e8da84118721d0984e040e4af9795172ca582e500b0918af2fe4a",
+      "text_sha256": "e39a65493f932cbd8f480a99de530bc15fa08cae662b29a401f826d78f9bf4c2",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10306",
+      "scene": "c08r1-03-06",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "c7eca13ed9771c348f15c28cddb7e5d0d640b1ce7794dd6a2328688d8685f888",
+      "text_sha256": "83ea095feed0bdb0d0bdbe771e6dc002bf650f854a2a1bbaa35f9c3f75faf214",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10307",
+      "scene": "c08r1-03-07",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "278984756eb4c973afce4849ce9c08c9d41837f760458715f9b1bb85e299af07",
+      "text_sha256": "6c9e865884502a29ace5661d13b41de1f63c2049315f1832fae1d2b3d993af1f",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10308",
+      "scene": "c08r1-03-08",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "0187109a755509262ad2147a3177205a89572824781a55746f3971a34b065baa",
+      "text_sha256": "7fa5d91b5c71c7d8aa32a5634aea2479dd0d0a66a8a1401679d60889707ff474",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10309",
+      "scene": "c08r1-03-09",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "950aadc57a230ceb08dda7627982ea13cbc95d4c7752949ace2f4f50bf5c3c50",
+      "text_sha256": "3c4c726a8688099ba90ab27ea54abe8646c7e23e2ec3cedd76ccb24e757702de",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10310",
+      "scene": "c08r1-03-10",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "63b5ce1124742ed8ae98b3c1b655b7b79f9e6e904917867320e78d318bd9f952",
+      "text_sha256": "c89bc23d0da321ee8212a7e8f024568e53b20864543feffbebc532722c4c15c4",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10311",
+      "scene": "c08r1-03-11",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "c2cc0fb038b0aa20abf37318f3ab623bbe1c86f3d632a646704c06417bd6c786",
+      "text_sha256": "fe4bf2ae5f820b245537ac6375f7e621cf281c96033d6b45fa85fbbed7a50047",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10312",
+      "scene": "c08r1-03-12",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "2a47a94d47be0610107a8340a62d435aea847bf3ed3a9369a162df99232a521d",
+      "text_sha256": "2d0d227bbdaaea5adf968f0e714ce1a64c5de98876695626381f8f03605eea88",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10313",
+      "scene": "c08r1-03-13",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "8ab6ddf7c7398427f9cadfeda8ca6f4ebdc786f479f8e6fd81e46eb66ade96c1",
+      "text_sha256": "0fd44667ff15ff4d6867a3165cc44ddb72a9f8991af3fd50c050048281b6c847",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10314",
+      "scene": "c08r1-03-14",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "7b10a44a6df4237d15ef0b9268d19c50047681067641d712da6e94f316196231",
+      "text_sha256": "313c8e4703e034f6c5551721e074adc77d6bf066e98cace8294c915f896cd3bd",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10315",
+      "scene": "c08r1-03-15",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "326d0f632f785ac5e251ed7c680ce0fa46ae53635a3074360ccfa3c0ce3d4db6",
+      "text_sha256": "a6b586e8b5438bfc51f6a43bff4f0cc73a7f41e1ceaf235f9130cf14f0024d7a",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10316",
+      "scene": "c08r1-03-16",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "bb8654a06ab15bb330392bba53a84b36184a1096767ea135558b1f4ca3c810bc",
+      "text_sha256": "eed7e88861e5c62308aee9f50132199791711c54244211d452d1359408a9e639",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10317",
+      "scene": "c08r1-03-17",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "dd949ef3442132fc6d784247cf7e0ebba62de3fc82bd81deab293e5a28a4220f",
+      "text_sha256": "4f0d268dca7c284ed6f413772a05f17f458ab55b65c0eb1b2925ffcaf403e506",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10318",
+      "scene": "c08r1-03-18",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "48369fe97e956a1225b00a3f837ffa212ca928b6fdcf15f0c637870c3e5ef67f",
+      "text_sha256": "ced90185bf46da90e9d5323bb1c91a073201daf9453b67742c3a1d356dbcdbb5",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10319",
+      "scene": "c08r1-03-19",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "ad03bed234f4c5e7d46bf42fb4470eb80b5dbd6e679e023c36726bfbc5b21548",
+      "text_sha256": "142852408b88d755275b30b1b6a9250d7d1753ef8b808c3167799a583009968c",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10320",
+      "scene": "c08r1-03-20",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "b9ed5444a29bf8cf9e0870ca2e010d3af92b574b1b5c450d89e8d1477013a854",
+      "text_sha256": "36d30ddbb246dcd4daf4f2fa1b07f8aedae05efc7daf972f3e9e978a0fd9b73a",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10321",
+      "scene": "c08r1-03-21",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "6851393b6a9208fc2ea4c5ddad2dafea712eaff16c9b723919500cbeeeaf8433",
+      "text_sha256": "d0dc056520dcc7eb3606a30980926d1b199d5a065703e11f5c609b59485c0a46",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10401",
+      "scene": "c08r1-04-01",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": false,
+      "before": "生醬油的這個新問題，恩田友貴在二〇二五年的公司訪談裡講得很直接。",
+      "after": "你拿起另一款生醬油，倒完放回桌上，剩下的還得等下一次取用。",
+      "direct_delta_check": {
+        "source": "K7",
+        "locator": "PDFpp2–3; raw-soy preservation/pouch origin and current product-use diagram",
+        "quote": "パウチタイプでは中身が減ると自立しない",
+        "verdict": "PASS",
+        "reason": "新增倒完放回、等下一次取用只是匿名產品使用情境，未指稱2011真實個人行為或心態。密封袋屬2010pouch→2011新瓶這條後期產品線，不套1961玻璃或當代450mLPET內構。"
+      },
+      "original_sha256": "497d551c90b9365800877d8d606bfd9958945b91594657535b19bce7797b9c6e"
+    },
+    {
+      "id": "c8r10402",
+      "scene": "c08r1-04-02",
+      "source_verdict": "HOLD",
+      "full_line_object_equal_r1": false,
+      "before": "他說，這款生醬油沒有經過一般的火入加熱，而以特殊過濾去除微生物。",
+      "after": "公司主管恩田友貴後來解釋，這款醬油省去火入加熱，改用特殊過濾去除微生物。",
+      "direct_delta_check": {
+        "source": "K7",
+        "locator": "PDFp1intro/p2manufacturing description/p6profile; p6own-render visually read",
+        "quote": "商品開発を担当する恩田友貴 / 現在はしょうゆの商品開発担当。",
+        "verdict": "HOLD",
+        "reason": "特殊過濾與省火入有p2支持，但新增公司主管職級不由原件pp1/6證明。プロダクト・マネジャー室是所屬單位，不是此人主管或組長職稱；不能由單位名稱推人員職級。"
+      },
+      "original_sha256": "497d551c90b9365800877d8d606bfd9958945b91594657535b19bce7797b9c6e"
+    },
+    {
+      "id": "c8r10403",
+      "scene": "c08r1-04-03",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "912142a9ad613b64046738dfac3e2a57b659e1d577a735b6054fd7dafb5d7887",
+      "text_sha256": "54b59ff95491148e333f93e6cfd49f2449649bbf69fd284c890d50b54f2f16dc",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10404",
+      "scene": "c08r1-04-04",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "84571281de51b806c24d3badb7b3c0589788b67b6230c3cdd50cfeff63b9e8a5",
+      "text_sha256": "1113bcaba716c8cafbbabb685715cc60f2a40b5dd414bae9f9c53e9485003a9b",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10405",
+      "scene": "c08r1-04-05",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "ae377ecb51bef59a9b08930916b0c8a80413e0b9524f3442575a29515b593426",
+      "text_sha256": "011691c4f9c2c32717f8039c76f149f6cb6df6e2d98419243324e05a2f78a81b",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10406",
+      "scene": "c08r1-04-06",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "df211ef31d43fcf23af284487bd1c0ef562268c04ca92a5785132a75576169c8",
+      "text_sha256": "72a9d88defe236f29454cfd64e96722fc19f5d28dd4dab5e15dbb44f517b38ef",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10407",
+      "scene": "c08r1-04-07",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "2e008de6bc24e7b00b9cdd80aa9edc04c0d5a982cd9697591e396ff427163573",
+      "text_sha256": "fd8df29cffb351b5b66f5969b32573f96341cb20a9a33fbdd8abf912b6b19764",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10408",
+      "scene": "c08r1-04-08",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "a17169f4bb767a2180cfeeac23504b58ea5dee1dc1b1f2fabebea8fabadcff0c",
+      "text_sha256": "e86b0b1c716e88fba97ddd60a0ce13c5596ee662436e12dddb926447ff0868f6",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10409",
+      "scene": "c08r1-04-09",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "e9c46492ce6e3d2727786a0aac1df072d180fd04166a34efc9afa0b6970ee9dc",
+      "text_sha256": "e2b0c6a36e0faa5fdb9d90ae5f3d1982019d789a71ba09e6ccfb65f392f7cd4b",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10410",
+      "scene": "c08r1-04-10",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "daee683ace27a8f0c2f6e2fed8391d230b8d31da3b613de053d915627091d5f8",
+      "text_sha256": "7d8c8bcad712a3f513da6be3a4873f0c3e8c819942c2802ae4b5eceebce46ed3",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10411",
+      "scene": "c08r1-04-11",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "b5b9d4a037f4f91b27a3621d0e5237799f835c231e469cf67709acee15d74f5d",
+      "text_sha256": "240a6b90197619d1c7fb367d86ebc0ca06da75001f6083b71ceef03e828e5b7e",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10412",
+      "scene": "c08r1-04-12",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "c29109152f6f44906bb6770ed5caba99eb3a5900972658e5b188b0b1bfb0fa2a",
+      "text_sha256": "ef9e813cb8af84566cff56ed4277b08097f5886fa217772a81719caa5cfb8420",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10413",
+      "scene": "c08r1-04-13",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "939a97c4433a1a1dc6a72a0e87d0e34a4e80041e3405aac91d664b4fa24bb873",
+      "text_sha256": "190e763d21961641345cc7cab6bab2a4ee40279e981ecf9e3f64a90e6ef3c10e",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10414",
+      "scene": "c08r1-04-14",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "ecb3de3b168552afd9950d679de544548c86394f10ee76aedb868c127443bfbe",
+      "text_sha256": "a8aad898f305241a8e9aefdf854c24151c6bc806012820f004f05aee2b365949",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10415",
+      "scene": "c08r1-04-15",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "f13308c326e7a29e4260df8dfa5bee580bd99f63768d630179f33bae75b2fdf9",
+      "text_sha256": "e7811838d603bae729bd9c8f99774030b9e718e99e562bce06968bf87a03407c",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10416",
+      "scene": "c08r1-04-16",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "d990ae85ba6fdabb391511723f283ced496447c5884d08a2540f105c1f9d3006",
+      "text_sha256": "c9ea86009e0be81dfa1ecd8996be176333e722aa22df3104d6bdc382bae7a4f3",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10417",
+      "scene": "c08r1-04-17",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "cfd5667d165a1428dc5931f43ba842859e49f00e3f413a4c022e0090ff8a8e99",
+      "text_sha256": "c18b04ae06cd228b92257a390825830d0f4f6631e0d75dab9ab2fd52dd943fda",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10418",
+      "scene": "c08r1-04-18",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "42aa835afb365533e4e4b2f1fa37f5098581945fba474b75d5ee69aa36334305",
+      "text_sha256": "cd9cb36bbd17c474d3a2914050eb93dc9047d4f9c9aa194a28a8e6699490440f",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10419",
+      "scene": "c08r1-04-19",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "b07579c1c2cc09425a325452dc5cf8a787b626eb55117ed8f63ad86c28c6cb87",
+      "text_sha256": "9c6bcf5535cff99323ef678387fba609cd5091b10c5efb9de61a32a712b17261",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10420",
+      "scene": "c08r1-04-20",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "6a465c70265eb3b2e1d957e7f2c1abf6b51888153bfcb17b08ae974ee3872f44",
+      "text_sha256": "05c5154629a91242ae8e8feae2474d26f53f50bc98c7b4046a87cb5039877f19",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10421",
+      "scene": "c08r1-04-21",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "ff51cd9e8ecde76c51eac4cf848ba8fc27104e8b25aaa4d79c971427851eb170",
+      "text_sha256": "883a27a946d5dabcd7b3f8f0d60765aeba03a7f0645b3e69077b6bcf250a4ca0",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10422",
+      "scene": "c08r1-04-22",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "3447fc9db509a6786fbeea6e4634ab90d4fabf7e5d31ef7e91a368c68c12ac7b",
+      "text_sha256": "fc91220d18645c4c55765caf196e1638bb98ef0926fea78313c618bdc6f0496e",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10423",
+      "scene": "c08r1-04-23",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "f8a257a28d3e282fe026d5fb939b5c992e042f8caa50541c2abcba1b52736bb0",
+      "text_sha256": "db5ed417752d4cad0d5813369d0ba46f1e34c62a7f470ef9683021ac147ae54a",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10501",
+      "scene": "c08r1-05-01",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "61d9d61deaa3b81d318665ba72707b6dbea85fe22a87bf91d28f4a1538bc5823",
+      "text_sha256": "3a342cb42c5d5ec5f4673a65f5f36d5a3d61ae9f934d91713ceeba94e0ac2a5e",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10502",
+      "scene": "c08r1-05-02",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "00d58218fbaf7e947cd1f41389226fe24cdcd3d0bb45f4a7f9836fd3401dc827",
+      "text_sha256": "b13aa58e160e028abb739a8f0b6fa12c92871d0f20d1e0de69f7f02ad10ad47e",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10503",
+      "scene": "c08r1-05-03",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "a6d7ef276f60b7be15fe3d20df56468b17967725ae1ad54fd3b58e4a6ebd0780",
+      "text_sha256": "5b06f0e2beb272c3433b6a3631484ca778587dfc06baa5f6f00aa637be37dfd3",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10504",
+      "scene": "c08r1-05-04",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "387c814f8ba432e78f4bb0a8a2aa3e43007580ff4080329934600ed985c5f73d",
+      "text_sha256": "30edc30248d2876d51fe039a9813c53afc2854fed424a8907f69b94a19fc5654",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10505",
+      "scene": "c08r1-05-05",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "93c05d7904beb4af1c30f02e4e2ab2330aa35abd77a603937e499826e31a4c7c",
+      "text_sha256": "cc85d13ba800b0d2b620c2efa9918aeb8ce8ef6ee3a08579526272ad7928c108",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10506",
+      "scene": "c08r1-05-06",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "c214eb64d041444dc16bed533da4d24beea4e8aa05619a6fb73ab59be1083077",
+      "text_sha256": "2d11c5fe6a476ae60f6aac02348d178f18135c9c8b77e96a038215fc467d3808",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10507",
+      "scene": "c08r1-05-07",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "1d616e3d0b9d885617d6feaaebecd0d4138c8a5c7cf1b3f450c437fde9307336",
+      "text_sha256": "ff8a7a0449f7634ce27810d2417088765e18ce319294d85cf68c0712ced0023e",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10508",
+      "scene": "c08r1-05-08",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "165cd35a5d543ff302c10a0162b93e349df0bacf88868b3ee2f656dad6e6fd21",
+      "text_sha256": "33514bc45d06d20bd25edc6bc14f889093084d53de6dcb8237fa05c6027b54dc",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10509",
+      "scene": "c08r1-05-09",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "810f59c00103124532c1976178e8b41c5c1b8f5cf4917756fa431256c1a9da99",
+      "text_sha256": "03fbe97edaa5cbaeb6fc43af41fc93051c4f0820d976ad54d0fadf3e1451d6d7",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10510",
+      "scene": "c08r1-05-10",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "03edaa8417ddc7818ed1523f4ed1836c5c6f4886eea407e6ddc59b7e76b8c2ae",
+      "text_sha256": "428e5af38862a687114e9a7954e2ca498c113f47f0ab4426b4fd6c57f2fbd9fc",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10511",
+      "scene": "c08r1-05-11",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "2ffd0db118439527c466aa6eb3847122f68def70fe466c468f171e1001641a9a",
+      "text_sha256": "51fe0b267e0912188669e5057ad05860c632ea0eac83efcd0664c746cfb41de8",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10512",
+      "scene": "c08r1-05-12",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "a1c5d1e9db2d49ec2939e58f213d0c0a015b51b92d589bc06b9354f5109bf0fc",
+      "text_sha256": "82f992ebc289f9d2da9c01a20c9a64502e8fd6b3109f72f4e77c01ac07739444",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10513",
+      "scene": "c08r1-05-13",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "1550863b16b6af1060252fdbcbb812c14af08932de408510dc628dc90884e5c0",
+      "text_sha256": "ebe66b3ba9f2afdec32bfea34583117c0d66dc34de452eb4fba374bf321c365b",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10514",
+      "scene": "c08r1-05-14",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "e1d43911da107dabacbd6891b4cff7dd234e2a9a4cf1dc77b48dbe1f39379958",
+      "text_sha256": "609c4ce29675509a95bed43fd2e5fff77076db8dc8082b1fde59591eb631981b",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10515",
+      "scene": "c08r1-05-15",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "cf2581d2f8720781a203b87e79a2cbf5124b7507734f24f4797ffdd4b8370b90",
+      "text_sha256": "1ef0dafdc0e2c403c4b4b41e6634d150e88cf579a6fe97d17c629902406d6d5f",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10516",
+      "scene": "c08r1-05-16",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "2900a025551a4a01f7dd9006adb470a281bd34001cf5589861d74e0b346c7d16",
+      "text_sha256": "7264f507353c0901770310ef3d02c2cad5bec667137712e2c780c0923123cbe0",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10517",
+      "scene": "c08r1-05-17",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "08fb12b46ef4f142bffa3ded34a8d1d913ee1177bd83eff4a24035b97922fce0",
+      "text_sha256": "59a23c36def279ca9caa57a64ee4669f0401c9ee83ca39e2af29b904eb3907f8",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10518",
+      "scene": "c08r1-05-18",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "7424b268cc6224b635790203b727dbfe0788af7032be8917111141cb58c8193b",
+      "text_sha256": "ed0d3dc3b0a4d88f5b960ef805a71e1abede8fb3186da83f5ce41f58c0bd2556",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10519",
+      "scene": "c08r1-05-19",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "9c09bfadb53ded9303195a3c68ad043232cf3831124268acc6f4f208336301a4",
+      "text_sha256": "1d58eb178e62c6d44811685c0467d25407b4810c2313bc3e603816652f59f303",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10520",
+      "scene": "c08r1-05-20",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "014faf4f9479ef7c56d6224ef5e8fb2dc38275ac7e9414673ea1166e2874053a",
+      "text_sha256": "332e16f91d22001f0816a10ee8151368bb97b620ccf69bf3406cb77ff3d02a89",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10521",
+      "scene": "c08r1-05-21",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "ddc5aeccc7462cec11d9eb6d4b58f4417783cff4441b7cca07d96d3b2fd8a0fd",
+      "text_sha256": "6b73d19b80b588d0a83364b5629acd96ce75527f968a9d3558eaf93ecf9d2b7b",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10522",
+      "scene": "c08r1-05-22",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "2649751832203cfd917f535e9d3c041816bb1bc64db91a224024fe3ef5c3b5f7",
+      "text_sha256": "795ffbb284c69313a1d68cc905b0a351d914821e49eab9d48dc7ac41f9dbebe6",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10523",
+      "scene": "c08r1-05-23",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "514ca2ec34ef94a3892d85ccfae066454ae2c8c65ab0c5182211263eef5498fd",
+      "text_sha256": "9e87eb3e28af6fd6f2b49afb21cf8daa5bcbf2199c865d254f56d4cdb8c415e0",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10524",
+      "scene": "c08r1-05-24",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "65f428793faa1b0330daef8578098a3b375b7a06c1595a7b844a42529775ec45",
+      "text_sha256": "f57f2586b57773aab16a76012a767d03a24db75b23c1bf0dc75888edb2f3157a",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10525",
+      "scene": "c08r1-05-25",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "b94e1947489f4078cd7c330d2204b5638b4a1ae3a4ce94245b0da666a26ffac0",
+      "text_sha256": "fb5ec4e6db9c6c8d96f3a0d8ecafe29c9c8cfa3d9511390f925497c4705cce07",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10526",
+      "scene": "c08r1-05-26",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "25709d9cdfb5dff0b6e184c90b0ed9f052506da4c98eae737592f89652490aca",
+      "text_sha256": "ecdceeec52ba683d575f156dad438aa984a02b35541f85c1ab8fe16888e7a810",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10527",
+      "scene": "c08r1-05-27",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "878c05a9b282a801e67505dfe486023f139c373b0de0d763b64d388278c81b63",
+      "text_sha256": "a4d5c9499a89c0f664330bdfedd47ef14d4aab4dadeeaa155ec510d8fb28af39",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10528",
+      "scene": "c08r1-05-28",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "a47110dac848326d8cd904365addc506ac2ec59b2ed644e2491c39f876e8a1c3",
+      "text_sha256": "07eef274a444c3602aab889aa38dfe5c2ed86abac5d5a8915ee8c811682644da",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10529",
+      "scene": "c08r1-05-29",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "f5d263764879132e9c8f92305d1193547748d97ee6d386bd28369fe205e70eeb",
+      "text_sha256": "eacfeb9bb58dec55da82e71bf82b81fc15263ebf57bf3c4236d5ef2d148f3dea",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10530",
+      "scene": "c08r1-05-30",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "fe84ca9f79c9844490ab1d61152e67d2abea2872fcdd1ec4a63885e9c953c766",
+      "text_sha256": "73f2bdbcd05763cd96500ce9ad541e697463292ecea92223b60f07a6a27221e5",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10601",
+      "scene": "c08r1-06-01",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "649e343636ccb147cf410e7aef09afdcc2e106af7baca0a0db5d282cd983c413",
+      "text_sha256": "56023e1a199bd3e71e8a9d58961a8c65ffd693152c1ce48d7787a23b47b243f3",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10602",
+      "scene": "c08r1-06-02",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "b57b002e49026626188e48199b21cc3a9f9bc6540f06e8a8ce3e193dbb6fec64",
+      "text_sha256": "3a3d6b0c8ef3f4cd8893bf9d36fc1315ce55124880d6b52a715e9931f4b21ec5",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10604",
+      "scene": "c08r1-06-04",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "92d4a440ae4eaa3a9cca4fe538ed59991432c83474b728cb5803ac8a16058bbd",
+      "text_sha256": "4616facd4badabaa6ebceef5da780885f7957281bd89a57fd16ceeac0667b6b5",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10605",
+      "scene": "c08r1-06-05",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "e0abfcd9758526e406663ee733ee143dad2b1e596aa436789ec31fb743b6a8a0",
+      "text_sha256": "ede39a4f3b29a5d76b601a038c692285ae22d0615a7d91d1b199b37a416aeb75",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10606",
+      "scene": "c08r1-06-06",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "f2f5e9b4747dfb7b8bf5d65e0a408b931cb26a53e3ef96d33b0f6846f3b00771",
+      "text_sha256": "86f3b8ff503eaa5335fc731e51234c9a2cb11d472677b575f38ddba0346c0488",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10607",
+      "scene": "c08r1-06-07",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "e5dfb7e201dba5b7c5841dd0024d739a8cc8e3e718d0286862e825ddc69761e5",
+      "text_sha256": "6b03ae420c0b1d1a2e15fad2488a17b1b263b705a8b824a85fef1e3918202566",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10608",
+      "scene": "c08r1-06-08",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "4dc7afcb8993f7950ebb1678ec9624f88aaaebd07a6415a6c2efbdd287c9001a",
+      "text_sha256": "ea00c5caf6b1da5ee10683695cd75912e926e9df83d24d8878b907c4cd6c02c8",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10609",
+      "scene": "c08r1-06-09",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "4a7c97d023398952ba3d9b04d0dd4c397fcdb989528163db89435f4229a36544",
+      "text_sha256": "e6da48cc0672d72c9e3a4337f9af39fd252f5f69b0a70a17e586c01b23d5369a",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10610",
+      "scene": "c08r1-06-10",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "5e7da968522c6eae216b19a4cce3d14014442ecba1ed82e7969bd08b1a5b20c3",
+      "text_sha256": "b71cb0dd84566d390286cc4d402eb12292576a107299313bec47ce442cc79898",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10611",
+      "scene": "c08r1-06-11",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "eb412e443994d6e670e2a6343066cf11c720d126a83d200012014de8cfa6228b",
+      "text_sha256": "3a0a41a3efbaf85ddbf212bc5bbbef878f42c35f289280f5f1a4550b60c27052",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10612",
+      "scene": "c08r1-06-12",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "6b16b690721d01c7e84fc8f2a0c5eaa554cd5b2e6e19479664f431c97508d5c5",
+      "text_sha256": "270173ccdbb90b1fd7b3f1fe6a60a3f4e1452fd2ac191ac6e48eb8df3c9d67df",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10613",
+      "scene": "c08r1-06-13",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "c2ba3bfb63f73fc92504bdefebb7fd3c30786ab82de2888df6b438ef14cea91c",
+      "text_sha256": "65a7d8a13cb346be25c8aa4183171ee61ec576b932d21aadc99cd437d09f3abe",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10614",
+      "scene": "c08r1-06-14",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "dbd9c8f5368f7af426bfa815fe97d383ff94fabea700bb8defb5b36ad5f816f0",
+      "text_sha256": "0e78ce53baf6920390ed9a5f5373922f94a36ee008686ae62bfb299a861d0f8b",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10615",
+      "scene": "c08r1-06-15",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "24f4f68d38095ac8b12425e298325e44f8795de6b7d534fde18f28df034313b2",
+      "text_sha256": "aa266918dd62c2179a0c2a8a602fd8e566732d363658ac81c1d2f421817f9abb",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10616",
+      "scene": "c08r1-06-16",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "d71df7f462ee421c256a98311eca8e53c569494e01e6bc7fcba8911e5c87eb2a",
+      "text_sha256": "415e86ff78be6ec50c036d119959f213d15f9b580d189bc22a35506f474bfdcf",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10617",
+      "scene": "c08r1-06-17",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "2e627de2cd00c64b12999f1fed25a59b1d876c99f4301465d249adf9645fcfc7",
+      "text_sha256": "88f03e2f0f9f84c500977e01493347cac5af0b31839b2bd7e834ec73bde9ab19",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10618",
+      "scene": "c08r1-06-18",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "3dad1d64fb2d8f1b36681304e6c86d182935e52ecf10612c38fe6930f6bcce70",
+      "text_sha256": "7e3b3ec43740e05af7795f926faec1956537439d0b902efd6022dc72478ee58a",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10619",
+      "scene": "c08r1-06-19",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "64e27014d2fbbf5182de6329a96833f465069913b716d5c8b1b81201d3840f01",
+      "text_sha256": "054477bf851cb0bafbc3bc98659b6e9e53145b06942ca75c773b6bf0f71a185b",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10620",
+      "scene": "c08r1-06-20",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "4f77a3c5ba1d7d2628be5f0884546c3bb049ae7d5566b8b8dd9f87111ee330e6",
+      "text_sha256": "2cdb3bf9b302ea74ba21e40e7a867a0e807d7772f3da37c4aeb8c8aa0e84a14a",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10621",
+      "scene": "c08r1-06-21",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "a48c9b85fac49718f38b6a77067101c6c048b981646e120f7f04e1fbf2b87e86",
+      "text_sha256": "65288ed0d81a447ba91c7ea4c541625de9f2a8cbfc98554c1371fa650032c75b",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10622",
+      "scene": "c08r1-06-22",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "876b5f20c7a20fd9049d586a2551b7cc5041f28e7b23729508ade55bad78e13d",
+      "text_sha256": "054c6d8d5e0b1d62ca45068f9644c346713ee0adc07dc4bd87ccae6fe38c9bbc",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10623",
+      "scene": "c08r1-06-23",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "8984b996ab7a133e6b63d2dc1125a94c4ad05e094b13e7cabadea2dcfa330760",
+      "text_sha256": "42e613e3c828a345581d64ed818df75d0d633d4f0a7b9d8fa669da573cbb215b",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10624",
+      "scene": "c08r1-06-24",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "2704e4d79cc6dd3c9ebef002f84a900e73af2d1fff1a097de7e045a727602ad0",
+      "text_sha256": "a3ed08d2036a22f8aefe9509f0af89366e901236b7e6b1befd2f102ca9768a72",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10625",
+      "scene": "c08r1-06-25",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "a098d8cbbfbfb73c88485fc10dedfd1f65ecbec6397d142e61baecb8f040be12",
+      "text_sha256": "093acd9569142777f180d6ff91ccf6172f0491fdcad574b68327b3d5a56fa8a8",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10626",
+      "scene": "c08r1-06-26",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "2a629027ee58b7a9b58eebd99bd1d67caffac666d04ea3da1ffa2bdaa2d7f81a",
+      "text_sha256": "e5b96907b9da2c66bac1d1a4e066c5bd4f5552ff93576d3b1f2958178ecc2595",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10627",
+      "scene": "c08r1-06-27",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "8dd0484f1ff7ebc4b547108a79149d9f27883a1d9f6d173f0e261e08fa882cc0",
+      "text_sha256": "bb532ba3fe796c363451250a0da628df6559a98a93267f8ab3341024045d80fb",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10628",
+      "scene": "c08r1-06-28",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "6ddb30b124b0b72e0b97e191811bf9e4032c67baab822db56da28474afee47de",
+      "text_sha256": "ef996968c5ecb2d9386b24204df74cbe0b2be130176d9ab990d5515254650e51",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10629",
+      "scene": "c08r1-06-29",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "029216a93828a724648da0066c1562c4e21412c3d28183d80ea6a85a34a3a77e",
+      "text_sha256": "ed424f03e16d85a305428632e4de35d5645140fe2028023b197cb6d79cc75cd0",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10630",
+      "scene": "c08r1-outro",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "5097c15a66891fc811ac052fc01cdf07e0c283182faa4f5a0cd599336390fc93",
+      "text_sha256": "703ac15264d4b5f3007e95ddcf4556013e27ef070b53a03c4f6efd4103533258",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10631",
+      "scene": "c08r1-outro",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "008777f93e82f1cbae09653bf51ca5c4fabaab96b26fecf27262c421c3aa6b27",
+      "text_sha256": "36587760760d1f3034a15c6c741eac8cff8d1fa5a9acd5842dbb9cdf8668595b",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    },
+    {
+      "id": "c8r10632",
+      "scene": "c08r1-outro",
+      "source_verdict": "PASS",
+      "full_line_object_equal_r1": true,
+      "line_value_sha256": "05d15e8fa713ddd083973cfe7cbc3e906e19aebc1a2e7e9a451dc6bdd60327aa",
+      "text_sha256": "03d4f77c8a0ec123c4ce6f7777015bcecff4af7a35ee4b45202a7ef97c2d65d9",
+      "proof": "Exact same r1line object plus bound PASS report, all original raw/cache/protected-chain hashes rechecked; no unverified inherited approval."
+    }
+  ],
+  "scene_checks": [
+    {
+      "scene": "c08r1-01-01",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "c5c99c4361cf2f799de82c5f11c34906caba481a1e0003f592e3d4f26b51b67b",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "75a5ea276dc8c76e51e52a9551fdd7b2e95d311a8ae24fa7980cd05a1ac8c107",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-01-02",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "76b865042b4fbe55ae712a7a17a60b747ddead7c791faa516641740f0c2d4a14",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "b775edf03cd9da781f91e2b66543c9a05c814d9df2f19a231366c16bcce6fb22",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-01-03",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "16662a699b80e0eed60341fc51ec50239b0b5914455ded636f77b76845660eb3",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "0ded8181305df642b3d5544f2ca1ae21fcdda32454693751223b0d7ec75c05a2",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-01-04",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "e7d20df22c02d6e102a3ffe5113f571fb178a77f1a3691e60c2cfa91eb3f72f7",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "8da39e1af5829af486e807fa1f59e480493ab2cfb0039428497212a1a0d9d971",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-01-05",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "36a27dd2fca0c42309bd58de3dab4468790f992aa660d287d0ea8f3539f73a79",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "4177325930190081acfa96bfc2944b4d38d37c866c5b6095b32632ea67ead992",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-01-06",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "0b0a58d83c03bdabe400bea68b4f2b28932457cce42c2852146b9050388990a5",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "81f7da7576c8dc4cf8ed45a407afb0a0016dc1c1c27a570572759864afcaa3f1",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-01-07",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "995ff2e9a6ba4c822f5fcd796eb56471da4b0941bce93f963bdc8b9947915703",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "29a144016270732487a6b44c8ed8697e8415cb2f1d0798aa07703315eb8b49db",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-01-08",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "e8b77fa1bb4ab39fa230e0ee449b7934ecabb5247633445d10d8e692f380b1de",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "3dad57654c8aa5afeafb04153ba9209c35f641c9633dcb53f88c3ff8dabdbbda",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-04",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "142cba55a0d99df11803ebbd88a95af8bba5bef6570a78088c7b2539cf0aaae8",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": false,
+      "scene_value_sha256": "d2a36182a4e3ec3142230f14b987a10f6570a00acadbfd2b4bb996d84bf3041f",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-01",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "6c6cbfa75a2f6430c85aa16943173841b60436dcf31f5aca56149bcf777992d4",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": false,
+      "scene_value_sha256": "64c98610ec30b45bf6a4e1e01ce5c65119a489199248b7218fa766142fc3302b",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-03",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "57b2aa88b7457290256b78eed0d7d203d96b8ccfbcfe1657c4bc2a080c8633a9",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": false,
+      "scene_value_sha256": "8d660899c4b679356961cb140692c31970f5228d4ab9a4dcd0685875e35a3540",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-05",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "0fc532f6a32cd020a856d14e0bcbbc95d5c1584f933e008da11b6b0b7dc44f65",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "85017844bca2157dd4b7803a923b23948fd3347820e4b55d00214f8c6d608881",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-06",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "4535547f627bf0a2085d17cf35a3ffb2bf10c019265dc68b02cbd0d3fbfefce9",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "3479c04d6db1a0c7fdc7b1cf44ebde5bee311efbff2ee4ad54338c2717385724",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-07",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "87a110a3a0d5faca9b466fde369b512b5fcc06752dfb78af4b9f35053aa22966",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "2ddcef71ccb1eab0336a792a3042873945a98ac0ac49c4d463bdccd9f32a489a",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-08",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "d8ab2cce5cb82c93ba840bc1e783915dba66660e4276244a1e51ab20d172ceec",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "8a269ab9d6217f2ea15ad105cfb32e82514bc75dc90dc5e7f3c2bd4b30521811",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-09",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "580773e03251cc0781c8813dfb77f8a9fd9c68fd73e1a35255f2103f3e67aeca",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "b01fa65008288fbf799383922f981a1993e7a5b65edba60128f5908dbe5a4f1c",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-10",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "7d4c635ff1731a8fa78005b5633e9ec66f7c51d71553e44fcafa1da6575dc668",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "6786e38bdb11a6a7bfba797ec99309f7b408cab4d9065f22f7aa2fdff62182b3",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-11",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "5b2c2cec69612e8e74fc798f38867e767c8f26e92befa15a59d4cbc3e8af902b",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": false,
+      "scene_value_sha256": "87296043f63e86a391ddc14556e30346b3193571fab86d6c44cd6fb68146d30a",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-12",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "8745dc6ec569c7e2b7d758fca8f0788fdf950e70f37478a21711b5d045bfc58a",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "e684fd586f721c40daeabb64d1c7848e48efe064b9f1e22f4b13e85c586340b0",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-13",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "c6f38134e8a7d7e46e9aea15c77a3c0b9aaa2bcab0c66dcab6304f64278c1031",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "d213de81628974047db597586cd6817bfd8adf696d01ba41b577198aea584103",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-14",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "ab3023ffb228fae9b1d9a328d0808809acf944b4fa3e556934a06a93d01b3a7a",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "200a035d2c2ccc1140e9107041c8990fb8fc301c6ff79bd87463bd02c6c6b251",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-15",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "ddc5efa3e0c0387c9d46a95aaea67ec730c0012b02c5573d6f086574b432b495",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "85225cb36090ebe4a2202bf15f00c1d3b40ebd41ad34426f90208704e6df6cd4",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-16",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "4d8363bfc41f9ca7ae63beed6928f31d9be8c3b099e3a04420f2c72ace426fdc",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "70e247e8a38b0852239b0a24c79faebcd226eb0eb6b7df4bf2ca0c171c07c3a7",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-17",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "8a7eae3817f8de3919a88e44d12f7dfc53ceb4b72afdde608842ec8f380bb2da",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "af3f54814502728e6c8a2297f977146355597d943f82ea5c95a3be597fc22049",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-18",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "3affdc74b29821abb7a0536eff7d8cdf50fcbb8f3d5a7338bcba743f51b0a3bf",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "38ffc326286f2c60957ff5890e235fbd6978a1243a97a32ef8e4b647c1b1e0b5",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-19",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "1ff2502168fdea3b9c65d4776c1363e5b2be9357d0dfa95696a642d15df8fc84",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "2c0e5ef5593013a6825f49a256d463824514f40b519f8d902b2fa36710b070ab",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-20",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "a16ad6246ed8878c1bfe30887bac8a185fd03401a19cc5c6dfc3762ed409bbe1",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "2d24312ec88db781077ce0cd925902aad7736b9fb68363870d96b7b34d26fced",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-21",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "81970933af59216ff5fd178e71361fc66d95d454d62ace2742ddec21282e3e1c",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "67f768119f0b3d7200ed96f89f2cd7d34b803472e55ddbb995c33699976ec183",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-22",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "e033a548cb01b02e18bd6d5565c0d6959e2669447a2192614ac6ebedd37e3652",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "0363381a1fd27040b7821930e065266bc4665f6a2f04582db1ca5c96246d3dc0",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-02-23",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "cab3b84878bd1cc9470a9bce6f3b774d24c019994657cc2c2f80f12bbe2dcaad",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "f20a2cf06b6e44db9b94ca180711f0079fa127e5197e89d82350fb5f8fbe01ea",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-01",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "25a17311ae80c609f6a0dc226901d8ac9155bd4b35098c1024ccc63b0ffa21d8",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "68ad73c313d1e95f63c76103d4052de7d5592e5c1c6cf228bde89262c85219a3",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-02",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "a71f1ae7a6b3c92ca3edb1730c1074a08958664fc1344eb59d9c802323d3c358",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "48cbb6c2291e0911e3c3dc020717a1d4a7ae063b7fa9957344a7c95a7ec0573d",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-03",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "59f63cbad9a5f76c95c81142247e46e1394e84b7a4a9898d9ba47da02e4b86c1",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "ee4d01bdfa3a9dc52f4f21e6566f9f3a17e37514a68d6926cc0bc640359bc521",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-04",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "156eaffc57ea1747ae39ff793a9b9b86f52ea261cf3302d181abd66fb4a424e2",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "dc79ed3d3bd95cadeed7764a00f53c33bd0b8a8b24a3de0db4698539479d97db",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-05",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "3f488b06a1fbd32b44ab73b0830e7fe2d371647db462b353ce0b704f9b2666ea",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "3a47d60515b02f9de79e385f7aa09ff22eb47603b82ea1b765611fa96af31310",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-06",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "2cb79b84db9eab482be953b6c2b2a280a612969ccf989cc40d73f3d4ffd5329a",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "9c2c1e62e93fd36f4f6bfbbc30d04f9b8c71e22252a00c98870b4609d7719d4a",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-07",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "b5ae4a24fcd66f4e4ec1dd7c1a721b4549e4d743eed48b8ecf1d7e2f59a5fb8d",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "c5929330ef918c71d32c21eb6f7c45af5dd58abff29ec5488a6627b298560364",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-08",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "38c6f6603a77fdd592af49a1e073d7c019de0bf6b996574797d4dc521e7b3115",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "f90bd757103e949eccfa5c27d34b83a5d3d766296038866ecf5963ce7802fc9d",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-09",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "4f1060fbfcf3568ebbf946946c71b9de3b4cd7483377640d54bbca54dbb1bf52",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "89bc48842b63e22188b5c7ed2cd652cd942305ccfd5c93500fcc851b526a5a89",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-10",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "0891a341337b25386cdc82d4c425bfb2a608efe766dd51bd459bc84c8ba9c36b",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "7628dc329510a86a19a5d869c26e052982807a08a37d950fd3ebd0aadafddb40",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-11",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "c366cb633b992f4865a96e398dddac65815fe2781d85db219ad0c53322c8feb2",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "d6151f44b3674974a91159feca8281389ceaf2a27ecf3127351e84361a456788",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-12",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "868a2997bf041dad0800c2a9017fd473198bde70801b858b470adf3db6cb0259",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "182cdcfd6f72346475d7ab5b4a405ef69738904df460145b1c8c83a1aa904e19",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-13",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "7866db9f519a9304381d0f92a46b762810cb46814f3727edc1d2f852c75c071a",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "9b024a9459aee07be820aa0e2ccbb6eeb2118d8284e07c829b5dc349c36afd07",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-14",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "51e5e6bec03bfddd4f2bca2c9f5ded42ced9db5ebeb6703dea1f2bbe3ee717fa",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "333d05c426953b29fbe48e2b3f7c421eb31a1f4ac5c85629b21104c2f710fea7",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-15",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "5bffcfcdefae6c04d941d1b7b797543b2f3d5ad0e10a53efabc493c89f3a180d",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "b5a54701b83ba79785ff061c6c763b52ab5d59db0ef78418113d2cf65e53d4ea",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-16",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "48c0853dfcaa1df6939f6cee7e44df26b83fac84cf6e9108b826f0bc811f281b",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "a1b27a71d8d906d7cfccf5419d01ddd9eca6ef39a9c6d9c7caf6c469df6afb41",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-17",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "a335ef27034541f858a9fc97c9a6cf0f0fb393b07dc340556f9430843fe0e7ae",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "7d008863bbfab079d980309004e3eb3ef2247ccc2dc9330ff08496b8cd3618d0",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-18",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "c297f1952bfdcbb3a7364be3db6fd845d2cf48dfc00c061f7e8cd86ea694efab",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "f85498eebdd0b364630087cf7a713484ae78f1ea1f11d11482346054a48038fe",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-19",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "d45a5f7b48b66c1f8d4dbfd5f4373aeb11e8b5581b688ed5c4c5faa5a8c26c17",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "f1b68694ea2498f96f516038f890c1bf35893ad2039a8f044f14cb2afcff08a2",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-20",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "c9f0337a4d74d3e715db6117f07118a5b2f31b20f43dea76b7a9ec66406235c7",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "4acc7133b7ed800964c32f5abeb198d3dc7b826fc15df6ce2e36f920fc6ce341",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-03-21",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "eaed31e9581d9aeef29c5a79cb0c58029eb3b8babc7411512ce9ef26eed8d2b5",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "b0bf42934c1f1960379b383f93730d90010b97cb8015342a4416aadcc1155f73",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-01",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "b1f2e60db9de4dc312364cb0c244fb830504668b5be2bb1b4e9af0ee39df4c06",
+      "complete_data_equal_r1": false,
+      "full_scene_object_equal_r1": false,
+      "scene_value_sha256": "f1d4f9dbda7a7893ddc3afa6aedde860a553d5317557f3f574e790dcff0c0736",
+      "proof": "Changed anonymous cook setting a plain sealed pouch upright; K7pp2–3support late pouch lineage. No1961glass inner pouch or current450mLPET assertion; its partly-empty inability to stand remains a later conditional, not contradicted by a full pouch placed upright. New soft overcast lighting is conceptual, not a historical factual claim.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-02",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "5260dbae4b497cca962def641bed3681a1d2ca3249506034d5e3aa1954e7b969",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": false,
+      "scene_value_sha256": "44b7a1fa9079523b6b06f22c182264cfd566443333d51eee78ffc5c22ab7155e",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-03",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "5a9c992a2b55b342cf1d5295315041058009b0efd92c985af7d0aeb9084a708c",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "303f6639a60ff2af3afeffb251de9b8181753491841ebbfbaba9d814887cfbd2",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-04",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "5e4d2f363b55e7ae0d75bc25e6ae31851b3a17a0b646597d58bf7166f82a8376",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "1e4cd9e7cf9b050a8c5a3155a15c56211ee101c099f1d43762fbdba86eccb65e",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-05",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "28ca4c96c422c9fcf94cc8f346fae55538cf29afba8a8e0542338dc47cb209cb",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "740b7fcf823a8f4d649dec7a4299135e52e0646b860b1ae930e7f384ce901576",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-06",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "0ee45d728f11bd19911c038966b027fab41789198dbd4f2922c92b5bf0ebe8e4",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "e16e810ed2461d3118ca64372b6f61ed6ce7db67b18fd8508e59b73e6de3ca78",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-07",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "077e1a1c407b0903d42a47f832508c1994ed318f1268bc14b363bdcd64f04ece",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "336bcc4301314963a6f8925d6dfcaafb74f493daf1df4faa5268a76f4f4c33f0",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-08",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "072a31e0f43898e6e8ff42d289fbc0c3e05ae3f91cb869cdebafc6cb9cfebc53",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "5d6063a246a0ed0e952cb603c77bc234c8fbecd164771b7b354a999934b956e1",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-09",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "33cdf4e41f62b1f2cff2621ac1584c147968c2bb8b8301b1adf989af9678764d",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "23c88a364fead921a5c35df48c16a5a5d211908693ea17ef195a0a5dfd9743c5",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-10",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "c53dd750640cfa23779d5967af1720b43f743c1f643cede336c386f60d61be3b",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "0aa7962bc0d2d69dd58b036f56f84a7193f754bfe92e36f28b9ad13a36fb2c95",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-11",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "3805db97691b21c5f0903d263b5d06703ffc35b96c6dcf127b5b47255f61df22",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "aa24d1d1de943d8975f6cbc51653cedf133404c90c60ea70b3c31f5b7cad09ab",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-12",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "84214a300e23227de25ec64a9fb4ff83d4efe5cb343833e45f08d91a5d8440b8",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "8bdfe61f98f2c2ea6698f25ce90cda3a24852a7f8b1dcd983e102af4f3d66cbc",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-13",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "5276ce11608a2df1415a40e5b9522c695aaae34e96fd00178cf3dc4906571705",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "86bc15e8f5398598cafc9c19fe85d7b5221515907f531dbb15d9fd056558aee2",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-14",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "b1486fd86e739bc1ef5edb833f3abd7982412f5438c4a6bd5ca58e07199a41ac",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "3ba548d94d71c4fe4277c237096d1b2ba79042c4c66933aa24d168128033455e",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-15",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "dcafb204f208fc46395be47d3b1236649588e6a0f1665644c96c032cb6aac065",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "da4dffe84c155d2deae174c584c4c4d990954383733ee74161fdfa58529c1a57",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-16",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "5e4ddf6fea94548730e6f631b4136022e55847509316d343f129cbf1349bfc25",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "9de5e13dc7e7c13a39e68fee510d8c51c7643b4dc8a9ddaadcf98edb36e3147c",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-17",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "aa24a7b52613a6136da2b06e713b8b65fe0850924077efc9e399c9ccd4d5fa85",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "1e3e0b452a13e07c76542777c8ea48c54ab48a20215d9c701023997e987d7237",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-18",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "f5da53cf7c2301d4d92ff6a7b5e7bb1d1d448c1a90bb1ea10ed05927bf0bde82",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "4df2f8cd5a90aa87555a693108356f25b996f0d0205ee4a3a20d3c2db82bb914",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-19",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "7c77b16eecc49469b0617e7ac499bcb94e5ecd85b5d51001453f1ce8abe2d258",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "eec3fc1f72e81788fdccc6d9677814158d90ef58dc6c35b55d963fac96691523",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-20",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "b19e2b1ff5f31facf37ed5ca768a7f4b89e49dc33c2d72c8553d69784b4e65b8",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "b8d177794702fcab5a051045e71f023afc0d11692e416414a043068c1ce08686",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-21",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "7a4fc41085b7b16a0f75c2113839588101e17abd2ef0086f59cf89a9029e4001",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "d07eb0576054e161d58471e985a0b5f8c99526e0adb17af34afdb52421d53506",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-22",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "cc673387833743c2f6f1d8676e3b63133d332d7573a4be5cc6423a747f753952",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "2f5783ba44da3db0350d6a9ac7991ea695633700a3b6c7be2f622555bfaccb02",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-04-23",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "d1c71e45cbdad174de9e14553ae8df2c24b220c85a848ff7ba76ecf36f4a62c1",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "7042c8f07a87f02e6c08ee78caef579e6aaf07b4ef41343419ecd5ece6437cf7",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-01",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "6ef40a04bb5e0cbb93dc98a265c87b7d522459e8bae4d8087113005b9626953b",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "f37cc980c4c548230891ac09cac958292f9ec12a762cff33bb7c0ff021f212fc",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-02",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "5fda5f6869cdff86216547e1af2c5cb2561dcffa4ae667674d169ae550eb0222",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "62fc6715c7454a03de4284918117541c86e28f5dc8ba579856b525462f7c09d5",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-03",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "b13bab35ef7cd1bbb45d758ccc37fbb471bc59cf8b505d7f351bb0ccd95ad054",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "6e0dbaa194116cf5f7846062a9933bf7be2ba799257f03e5bde8a1403831ae03",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-04",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "ec610a80dd54543cc2af6a560ef69ea53dcf7532a5f83222e8eec35bdea36afe",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "98be28e6dbcae6d0f702405858f3f36d1a24248daa2631289932aca0d9d6c8da",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-05",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "ea8c653380c4bcdf4a64cb82bd771412bda4c26811420b51b7065c9fef6517de",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "d536de7f653fbf5bedd63595bc58ae4c747611e47c94effb1e2963f81c53cf68",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-06",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "122d1bcecf8055298c9c6a48b471e34f74a9d6cb60a94120c5ed412ca85c9d8a",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "60aea33d35c5bc6fd96cbbb5c6eff8b62dfc8e3c33e38d7c237249eb58290db0",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-07",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "2f7d3500bad97ac318f5a409c17dd69ad9e73838ed91221844c3594801d17703",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "91f8e956d911b7c2fad01314d38721282724fdf9d5aabaed5cab2bcb5f967593",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-08",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "d789ec0db82cd7c35facdbb48b9341eb832690a6832f2e43647c081a18226a12",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "4d5c15de70d241c81ad4d8cdc2f4cbe4d169904a12b09101c67faf1409dea003",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-09",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "82d24b28f2fd111a3e3c835c1fece3cba69d15bfa04afa671116aa9ca0214440",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "eb62e8fc7227cef342b3817f03dec90aadd3dc84c9e64ca464a310042b139a86",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-10",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "f06dec726ebe0075b8332e364309a113adae0c5d4f22b0349a42338ac75309ce",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "52a95ade519a70382146a244b097ffe480c685cac1e3ab1f491d223330e3eb01",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-11",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "82e1f62ade698d6b06e60d98ecd2dad83e77ac15758783ba6ad33b4a276f36ce",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "6ec64d50878696da224ded45855dd6b3138f0c15e0f0329cc5ad536531179228",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-12",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "461f941d364518abc432049f7d2fa1d97f487db04cc52e7edd43222f69eb607d",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "db57adfd116ba2d6037370ca27e97b6e9bad48bc8667907be36f62b99f114af5",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-13",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "0b6866fae6d9674dce96e97c09bdf9e7d29b6cd5120eb496f66b05be79bab9c4",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "e83f3f4f762e79cc82d02e699a2e892d1229f37efca7173ed1cf8314d585e27a",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-14",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "715be2f159d29c04d0e0a2a23cf81ca7ac637406426031230053a782203de05f",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "8388ed8dd45db93343cf3735fc13ef00afbd6a836ce48c6a6cd1aff4b92cf316",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-15",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "668b8287c3dcea48d983e596a0707e016762ba095641f1876bf1b665c280d406",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "f8c90f77aca7f08e81d3ac416e139a290d8014daa034d6c424b1d40be64db5c3",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-16",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "69813d333dd004d3b0138f3562c7a7e804c2228133578ea18d1ffa32829cb799",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "94e6f047201a35797146b69a537ed2c7c3ff39fc0441f3e709fc9e650b1879c2",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-17",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "8d8048e5d2c61ced4594ca2ce8e0b3ded47abfbf68b2cb7b602fe4f2d8f550ae",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "11f388b059a87013fdb0f2182228c0dc201c0ee3f0c661044dd5a8eb12123720",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-18",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "9d582d66938f174ad4018c43e108f01d32539118cbbaef5e5ad57acd76aa25ef",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "861f9dbb91a2feb9e237b09b906d84dfe4cb4c2161aa16c1934cbb05d4b60102",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-19",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "8cf37744a43c9da04d0e02250dda62fde87dc2846ea49dac1384cbe130b39f06",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "442a1cf9aa6b367972f298e3210b8329aed12976670ec336d276097400fedb48",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-20",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "fdaf05fad7d16b5f91b82e3cbfa6d22aa03c7ee5410c99cd99e93c31d6c582b2",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "3c8ebcf0db6ba3e0c1bd5c433d81758fe265f137eaea4417f8136a33dfe1adfe",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-21",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "70e40e42934f1b4701361ffed0617c570c97c4057caf7d81843de39ed633df9d",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "8830382c8171b16c214eee7c6c464e5b887eae883ba5e7642b2847185e56db84",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-22",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "d9ab1960019c46f832700718e9a344730f33c2d17e6933b8e23ab8057435a740",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "d6bff12826c7aa26bce419e3c390dbe803e2fff3a51fd06bd69d1ae9dc63367c",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-23",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "f0f091ee98ce569013a50ca22de126e8ca8864666e5e1f5cbb1b8fada8cf4ae2",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "5be38270b28f8f242b046eae9fea63090719d514875fe68a2746fc2f144135d3",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-24",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "cb56c7149af83fc37f6b72fc198a2adef5b07cd9e02a75a54a7cee8a8d18afe9",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "c0dce9820fc99cae21bdf79c9cb2e0683b44ef65710a6a3e0c93ca636c27826c",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-25",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "999b7a5a827d4d2679357251f9f5b1e8e6745914b065490c8c92120bbcb3ad3e",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "8bf4801ab991415397b947022edb747e633e5f3e0889e07caedd3a33348d6958",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-26",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "fac8b68a766ac8d7771257f2bc1b0218054a47c4f5e1b3af45d75c7531ced4a5",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "68251127e0ddf480f3f25ba0d558102b3b85e2f873ff0a4635edf5c60de7b5a1",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-27",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "002d2e23a15ff85216aa4832ce58ad1c69ae5578386879eea357a6d788d4b18e",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "c1345da0307311ab295809d136eb1e19e6a977b4549dc78612a128dbb4cc75d0",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-28",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "d4f00a0b6014b4766867855100723101b5302e0d1d1037781a71c348efe31782",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "6304812e5c48b7dfeb84c59309c5bc96c912866bab1def2ce1055e3f89050f07",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-29",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "508e966ccc35ed878364d4736c5c9a7b01ac90ac83b91be16e545667a7568ed0",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "60b5a7fa0d67f216ba0cb594caf787a45a2401fa3abfdade0f037fc2e1d529b8",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-05-30",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "66be7510691cb51c06d29b264f1e9d9eb0af0e63e7717b72a92415dd4f22086d",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "e4721ed1b71e880f3f083d5b29c35e9446b9069d932cbbc2b9a8b583b709ddf5",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-01",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "b490be91779df09cf7a20bfe1be4e989c6d83de3af08b9e1705fe55b0c939baa",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "f11dba3d989e5f5b584186fb63b41918a817daf39c9175614756242278c17dbc",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-02",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "2bb2b39e45bbfc32b43dc1ce41095ad60b26046601cc269defa88e27aa2f2fa8",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "346ba7667ad28dc0733b4a03736470a225ef4972650b5b42872b224c2ed7fca7",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-04",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "5c9b62a5fbbd2cdfae4f436da0a6fd2c03d7aa0bbfe2ee491ec3dc4d7c8b066e",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "6dbbc4151c45d9838290f5144c6cccf4830dce7e5b8eaabfdafbeb467351110c",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-05",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "97ddda8f82033b018a11e14bec93e2a55d96b996555d5efb0ddfdc6206e06d9f",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "ea64ad5c11d650cb63d19f56adce59b5af944a857788355a30bd344b9be087e7",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-06",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "eb0f112e7dcfd8f97fb7147a80f7f15ae55782b087ada8a058c9ef082d538309",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "40d0b555d966bb8746a55f621a667115ef416da94143db7d01f8908f6c2cfa9d",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-07",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "c9077c1f81f35f386b8883870e913bcd3ed94c3519a781506f0a4d40a1e9b7f2",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "be7c6596178d3ad94153e3920585a71602861bf94082f74ec8cc6f42bddc76c9",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-08",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "6a39394afc75e2c239daaf248c97718bd4c1c499e52f8ac9836a56a6e2086bb2",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "4aebbe31974b84f34a3d6b4d4652f5b0d5f529e92b3a6446194bd6baf84af3cf",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-09",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "d070950ff74b7ce9ef0f523dfd752a754368a0a5797a5938da9c77cadee9f062",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "e8b55d90ac476f866bec23618756f63cba296d4963eb364bd2812877a1afbc10",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-10",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "dc5023d6dc3bed0d614d8d11a1169feb2d3951a1e9282bfd394769bbc0a59537",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "32198ce78a40cb64a3739132b58ca49a2131be2e6eeb8e311a523a79272856cc",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-11",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "a390c9b85b2b38d609396815e1d08c8e991b4c630f68a73a5582905bbdc63f6a",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "5a70e8fb1b9ce13cb1ccf2888fd1d73d25480b23c7a78bf22e381b7da0148876",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-12",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "aaeb4f76eeaca68ced3f0a6c3787131031c5257bc5b6c83e77b2b5d05d616043",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "1b75fe7ca839109dcf498eeccf84d8596afeb7512f9dc3724b81093bb324db88",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-13",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "ae6151223d9747aa7a58003dde9690047044c27a469a7ba243e4a2855622ce6c",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "dd1ccf15ac0aa56294f16e6c4943d3d8475f4ff36944dbfb847c090631ab6578",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-14",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "3b1fb21e00ea5886bb6a602775526c3bc531658f9221dcc23649c2028587b350",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "d94e889c8103b4651583a5cf920605a8e06f1efc3a53d0f99210124f9d5b43e0",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-15",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "d95008e9fa22a15c19fb9ce6a734718f8d4e4727a90ac81b52db53db850af261",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "b70776b31900eaaaaf2da14ddd3e7f4c00d49bd33b466973c63679c4225fe507",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-16",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "72c23618317a0576efd58987471b4265a95630fe4f1fde5d9f3b781622e34675",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "8c8c5b05d60d6c5f384125c6a590e993b7e68b9db05287acf7db639b3964c1b1",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-17",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "8c2063e423255ff40787485bdec5f53a07f5acd4c7201b14367bd647ade00388",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "08f99489048a837f48e9cc19e77ceb43f2e4fba94d44bfd98e6e78d6d047d94d",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-18",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "2ac6ede1206e16f8ab360a12b16764b73144b36a04ed9b5e934b11fd99ef2f0d",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "184cd1b1f748f4f9448da0c15cf43362546c468d574e4b31db10fc0ea66065c9",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-19",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "2fa87448d07514fc86440e281a4a703c215e6ecc72fb09f7185b4e0da10fe945",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "d55c7feb81e8ffe9582778bd0802b0210d8720532a062da67c0e706fd562cad9",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-20",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "b3b727d016244713a686822e6d4f78586e12fbf208b8a7b8c741d43c387ab28f",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "9d122022c6fbfbe8c4193e404778e05f8a6fbcf3309ec4ae29903ce20ef6bf14",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-21",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "d8089f2f5122b6dfd2a7261e4aaf340b0f9d7e4c937a9dc90a8a4a33d4e94fe3",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "288a8ffe81b84297a6416e5c1607b1be11a7ba1a6d97c70e8afa48c3fb4a28f5",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-22",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "66cd82f85cc0670982a97081bad31e072ba2810b58836af207ce749abf4696f2",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "4fcbede2a0a3ae5d862ad4e51de7df831ad7a09d6a251122604cd739ba3b2ea1",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-23",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "7e278bec497fc4ec1fda36354fa815534906dbc302946834ce474ef15840bb9b",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "cb6c6a1f60977fae87d7948703d322da8083bb42638abcf2f6df183b7857222a",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-24",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "129933b5f405353d35cee9479c69812741c0b1865f7755bd5fbf4e0d171836b6",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "347b4dace862b78a8658c13e8146e9f6935e669f41c5a21a68ebc0f5ca043448",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-25",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "35d24fab44ecf2044cfa6d2c07299a9553f8eccffaf79741287fc54be08f2eea",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "b7679b07af72cc169470964e4aee3500bb9578e192dcbf5fd18a0bb425f8218c",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-26",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "c93b5f7c00b813a05c8fe0cb6afe219a6ac684377ca347a3dca89c0d716f1087",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "8ca6522d32fa3032d654df44bbb1762935660db6dcde9cec7cb3eaab19aa0b84",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-27",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "8a63da468794c4ebea207d63cedb551cdeb5e2bfdff9f560d61863f31d1d1161",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "85396a0ecd7966445d933da4f1a33301697f88ad2dcbcc9fad155bffc8cdcc52",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-28",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "d8dbfd602fd7163003b8104ac21973c777ae8e552d05dec95443a96788c0a6e9",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "4edacf2fcba9c5955ed1afa3cd42a007504fb6bd24dd43e5e5e3d6752e695fca",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-06-29",
+      "template": "shot",
+      "written_visual_verdict": "PASS",
+      "prompt_sha256": "10dc2d85756daa444db15b62031802683edb8dc6f4289c3d077fb1a21798e20a",
+      "complete_data_equal_r1": true,
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "70d37cbf72e65af67e5d8409dbcb247003eb047e4e4789525d9418e5eb22d88e",
+      "proof": "Exact complete prompt/camera/light data match bound r1written-visual PASS.",
+      "camera_unchanged": true,
+      "actual_generated_image_checked": false
+    },
+    {
+      "scene": "c08r1-outro",
+      "template": "outro",
+      "written_visual_verdict": "PASS",
+      "full_scene_object_equal_r1": true,
+      "scene_value_sha256": "ccbf98338fd206fec7603d2111fc8d277ff95dc576b7af0daece461702dc88f1",
+      "proof": "Exact unchanged native closing card, no generated-media acceptance."
+    }
+  ],
+  "deletion_dependency_check": {
+    "deleted_facts_not_needed_for_remaining_scene_source_validity": true,
+    "PET_same_material_and_no_pouch_removal_kept_only_in_c8r10627": true,
+    "F5_source_still_supports_current450mLPET_scope": true,
+    "no_dangling_loop_or_thumbnail_reference": true
+  },
+  "advisory": [
+    "出版年份刪除不等於改為同期史料；2020/K1、2009/E1、2018/R1與2025/K7仍按其後代回顧／本人回憶／公司訪談性質理解。",
+    "R2正文與畫面仍分開1961glassrefill、2010pouch/2011later200mL、2018PETeco/current450mL。密封袋畫面為匿名概念，不是指定年份人物證據照。",
+    "135句來源目前134PASS／1HOLD；132writtenprompts及1原生outroPASS不代表生成影像或媒體驗收。",
+    "實際音訊正文12–14分鐘及讀音仍未測，不能由規劃body3037或native估算給runtimePASS。"
+  ],
+  "verify_marker_written": false,
+  "current_verify_marker_present_before_review": false,
+  "blind_files_read": false,
+  "narrative_verdict_issued": false,
+  "runtime_pass_issued": false,
+  "actual_audio_measured": false,
+  "pronunciation_approval_issued": false,
+  "actual_generated_media_checked": false,
+  "media_qa": false,
+  "owner_approval": false,
+  "paid_calls": 0,
+  "backend_writes": 0
+}

@@ -1,0 +1,272 @@
+{
+  "schema_version": 1,
+  "revision": "c04-teaser-image-plan-v1-story-category",
+  "author": "/root/approved_teaser_visual_plan",
+  "created_at": "2026-10-26T00:46:31.006Z",
+  "status": "AUTHOR_CATEGORY_ONLY_HOLD_NATIVE_CARD_TEMPLATE_COMPATIBILITY",
+  "scope": "Cumulative patch from before-teaser-image-plan: specified shot data.prompt/data.camera plus the single category metadata leaf explainer -> story. Relative to the immediately preceding independently checked visual source, category is the only video.json difference. Narration, IDs, scene order, chapters, loops, all other metadata, voice, subtitles, look, dictionaries and existing approval bytes remain unchanged.",
+  "baseline_archive": "history/before-teaser-image-plan",
+  "source_before_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+  "source_after_sha256": "4a259f650f43fac5553d0ccff60a57a98c583b564cd1f47045acab3cff795b92",
+  "source_four_sha256": {
+    "video.json": "4a259f650f43fac5553d0ccff60a57a98c583b564cd1f47045acab3cff795b92",
+    "script.md": "6aac163b264501ae0ea87bb2a49b874bd288632c33bacc313d5a4a3c4dda9228",
+    "narration-only.json": "b6897d452d1a2b051bcce76184a02100f8e50e4fa61a9f5fd8e3a756e8d5a8b2",
+    "claims.json": "ecac34dc628e6be94b207baab5103438ede4d42002146e8850d413e2e193f38a"
+  },
+  "claims_md_sha256": "e34e067ce56b2ca41485b57d42c44af75ece300befc2ab5899e4a6449c249d96",
+  "plan_sha256": "9fcb947acfe2dbd4496cd9430a8bfd56be197a6e81bf2bd5365be5f59dcea6c5",
+  "author_input_sha256": "d72beee40b6a5484277542c6f3d3e4c4f0d3d62b489ab13a15f8002bdeadfa3c",
+  "changed_scenes": [
+    {
+      "scene_id": "c04r-h05",
+      "before": {
+        "prompt": "Close-up at a workbench, one technician tracing the narrow sealed edge of a raised plastic cell with a fingertip, soft side light.",
+        "visual": "still",
+        "camera": "tilt up"
+      },
+      "after": {
+        "prompt": "Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light.",
+        "visual": "still",
+        "camera": "tilt up"
+      }
+    },
+    {
+      "scene_id": "c04r-e07",
+      "before": {
+        "prompt": "Wide shot beside a generic laminating press, one anonymous technician guiding an embossed plastic web between heated rollers, muted workshop light.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "after": {
+        "prompt": "Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light.",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    }
+  ],
+  "native_hash_comparison": {
+    "narrativeHash": {
+      "before": "99b7fa6451a86058",
+      "after": "99b7fa6451a86058",
+      "equal": true
+    },
+    "speechHash": {
+      "before": "cbac582983bbb901",
+      "after": "cbac582983bbb901",
+      "equal": true
+    },
+    "picturesHash": {
+      "before": "3dee2b3ea4f722e5",
+      "after": "34c8e122b8db8835",
+      "equal": false
+    },
+    "lookHash": {
+      "before": "98a370ae40badbaf",
+      "after": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "before": "71ecdd098c551254",
+      "after": "71ecdd098c551254",
+      "equal": true
+    }
+  },
+  "canonical_script_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+  "canonical_script_bytes_identical": true,
+  "author_script_bytes_identical": true,
+  "narration_projection_bytes_identical": true,
+  "claims_json_fact_bytes_identical": true,
+  "native_final_review_file_sha256": "05cdf7649684ff4b129fb0d91b61ee1ae3f07d05c6195787bb73d4f817d9d06e",
+  "native_final_review_matches_before_and_after": true,
+  "reader_count_in_preserved_record": 2,
+  "source_marker_removed_from_current_and_archived": true,
+  "runtime": {
+    "root": "/workspace/work/brand-story-20261025/submission-root",
+    "source_video_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+    "still_equals_archived_prechange_source": true,
+    "official_script_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+    "approval_file_sha256_read_only": "01c224bb2bbb0af52b5ef4cf8b46ffe4289aa6d74384a034f0629354c55d984c",
+    "any_runtime_or_media_write_by_this_task": false,
+    "latest_category_delta_runtime_source_sha256_read_only": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+    "latest_category_delta_approval_file_sha256_read_only": "01c224bb2bbb0af52b5ef4cf8b46ffe4289aa6d74384a034f0629354c55d984c"
+  },
+  "lint": {
+    "native_actual_immutable_dictionary_context": true,
+    "errors": 8,
+    "errors_details": [
+      {
+        "path": "scenes[8].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-o02",
+        "template": "stats",
+        "line_ids": [
+          "c04ro021"
+        ]
+      },
+      {
+        "path": "scenes[25].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-i01",
+        "template": "stats",
+        "line_ids": [
+          "c04ri011"
+        ]
+      },
+      {
+        "path": "scenes[32].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-i07",
+        "template": "stats",
+        "line_ids": [
+          "c04ri071"
+        ]
+      },
+      {
+        "path": "scenes[59].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-e17",
+        "template": "stats",
+        "line_ids": [
+          "c04re171"
+        ]
+      },
+      {
+        "path": "scenes[65].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-t03",
+        "template": "stats",
+        "line_ids": [
+          "c04rt031"
+        ]
+      },
+      {
+        "path": "scenes[76].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-t12",
+        "template": "stats",
+        "line_ids": [
+          "c04rt121"
+        ]
+      },
+      {
+        "path": "scenes[84].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-n01",
+        "template": "stats",
+        "line_ids": [
+          "c04rn011"
+        ]
+      },
+      {
+        "path": "scenes[90].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-n07",
+        "template": "stats",
+        "line_ids": [
+          "c04rn071"
+        ]
+      }
+    ],
+    "soft_warnings_before": 9,
+    "soft_warnings_after": 0,
+    "result": {
+      "errors": [
+        {
+          "path": "scenes[8].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        },
+        {
+          "path": "scenes[25].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        },
+        {
+          "path": "scenes[32].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        },
+        {
+          "path": "scenes[59].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        },
+        {
+          "path": "scenes[65].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        },
+        {
+          "path": "scenes[76].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        },
+        {
+          "path": "scenes[84].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        },
+        {
+          "path": "scenes[90].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        }
+      ],
+      "warnings": [],
+      "summary": null
+    }
+  },
+  "producer_build": {
+    "path": "build-remake.py",
+    "sha256": "f34aea824bd7db9778f51e73d833b5938eaa75ac899246a4fcaa3b96a637bb4b",
+    "memory_only_replay_core_four_and_claims_md_exact": true,
+    "c03_preexisting_producer_voice_style_drift_aligned_to_existing_approved_source": false,
+    "actual_source_voice_changed": false
+  },
+  "preservation": {
+    "archive_manifest_sha256": "7fac99522b29bab9eb8324e5436fb98525d33911892907c3b792f6bb8436e3ce",
+    "archived_source_and_reviews_hashes_verified": true,
+    "unchanged_current_auxiliary_files_verified": 51
+  },
+  "source_or_written_visual_PASS_issued": false,
+  "owner_approval_created": false,
+  "actual_images_verified": false,
+  "actual_duration_measured": false,
+  "paid_provider_requests": 0,
+  "backend_calls": 0,
+  "git_actions": 0,
+  "additional_allowed_video_metadata_paths": [
+    "category"
+  ],
+  "category_only_delta": {
+    "baseline_archive": "history/teaser-plan-before-story-category",
+    "source_before_sha256": "8549eb766873b65cb3453d03edfb5c2d151a3a9209578f3383cdc321c9620a75",
+    "source_after_sha256": "4a259f650f43fac5553d0ccff60a57a98c583b564cd1f47045acab3cff795b92",
+    "path": "category",
+    "before": "explainer",
+    "after": "story",
+    "receipt": "story-category-delta.json",
+    "receipt_sha256": "ea95c5408040b5d53583ed6500e281139941dd76bed020ae63cbea9403b6be64"
+  },
+  "category_only_native_hash_comparison": {
+    "narrativeHash": {
+      "before": "99b7fa6451a86058",
+      "after": "99b7fa6451a86058",
+      "equal": true
+    },
+    "speechHash": {
+      "before": "cbac582983bbb901",
+      "after": "cbac582983bbb901",
+      "equal": true
+    },
+    "picturesHash": {
+      "before": "34c8e122b8db8835",
+      "after": "34c8e122b8db8835",
+      "equal": true
+    },
+    "lookHash": {
+      "before": "98a370ae40badbaf",
+      "after": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "before": "71ecdd098c551254",
+      "after": "71ecdd098c551254",
+      "equal": true
+    }
+  },
+  "latest_source_marker_archive": "history/teaser-plan-before-story-category/verify-1.md"
+}

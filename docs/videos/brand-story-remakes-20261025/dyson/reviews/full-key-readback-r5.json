@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-26T09:01:42.674Z",
+  "source_video_sha256": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+  "sidecar_sha256": "31c6b3028c86bd68a130908ce8d08943583f34d2efa2999d09db33da3dd4f0b9",
+  "scope": "Pure local native complete request/key recomputation, declared model/version only. Not live settings/cache/file or media QA.",
+  "forward_events": 2,
+  "pairs": [
+    {
+      "asset_plan_id": "perforated-cup-experiment",
+      "endpoints": [
+        {
+          "scene_id": "88z5",
+          "line_ids": [
+            "88z5"
+          ],
+          "tuple": {
+            "provider": "minimax",
+            "model": "image-01",
+            "prompt": "Medium close-up at a component experiment table, an anonymous technician arranging two plain perforated cylindrical cups with differently sized holes, soft interior lamp light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan right",
+            "negative": "",
+            "width": 1920,
+            "height": 1080,
+            "seed": 1,
+            "references": []
+          },
+          "full_stage_key": "126df4181a46b30f",
+          "size": null,
+          "image_version": 1,
+          "camera": "pan right",
+          "takes": 1,
+          "seed_offset": 0,
+          "actual_file_sha256": null
+        },
+        {
+          "scene_id": "qggg",
+          "line_ids": [
+            "qggg"
+          ],
+          "tuple": {
+            "provider": "minimax",
+            "model": "image-01",
+            "prompt": "Medium close-up at a component experiment table, an anonymous technician arranging two plain perforated cylindrical cups with differently sized holes, soft interior lamp light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan right",
+            "negative": "",
+            "width": 1920,
+            "height": 1080,
+            "seed": 1,
+            "references": []
+          },
+          "full_stage_key": "126df4181a46b30f",
+          "size": null,
+          "image_version": 1,
+          "camera": "pan right",
+          "takes": 1,
+          "seed_offset": 0,
+          "actual_file_sha256": null
+        }
+      ],
+      "complete_requests_and_keys_equal": true,
+      "actual_same_asset_verified": false,
+      "normal_production_command_recipe": [
+        {
+          "state": "AFTER_LEGAL_ADMISSION_ACCEPT_PAYOFF_TAKES1",
+          "argv": [
+            "node",
+            "--use-env-proxy",
+            "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+            "/workspace/work/brand-story-20261025/dyson-submission-root",
+            "keyframes",
+            "--slug",
+            "story-dyson-japan-first-20261021-remake-20261025",
+            "--workdir",
+            "/workspace/work/brand-story-20261025/media",
+            "--shot",
+            "88z5",
+            "--takes",
+            "1"
+          ]
+        },
+        {
+          "state": "STOP_BEFORE_TEASER_COMMAND_UNLESS_LIVE_ACCEPTED_CACHE_FILE_AND_FULL_EQUAL_KEY_VERIFIED",
+          "argv": [
+            "node",
+            "--use-env-proxy",
+            "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+            "/workspace/work/brand-story-20261025/dyson-submission-root",
+            "keyframes",
+            "--slug",
+            "story-dyson-japan-first-20261021-remake-20261025",
+            "--workdir",
+            "/workspace/work/brand-story-20261025/media",
+            "--shot",
+            "qggg",
+            "--takes",
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "asset_plan_id": "tooling-finance-meeting",
+      "endpoints": [
+        {
+          "scene_id": "jyqr",
+          "line_ids": [
+            "jyqr"
+          ],
+          "tuple": {
+            "provider": "minimax",
+            "model": "image-01",
+            "prompt": "Wide shot at a quiet bank meeting table, an anonymous bank representative holding a unlettered document beside a closed plain folder, muted diffuse light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pull out",
+            "negative": "",
+            "width": 1920,
+            "height": 1080,
+            "seed": 1,
+            "references": []
+          },
+          "full_stage_key": "9a34a2b9fdf6933b",
+          "size": null,
+          "image_version": 1,
+          "camera": "pull out",
+          "takes": 1,
+          "seed_offset": 0,
+          "actual_file_sha256": null
+        },
+        {
+          "scene_id": "t39s",
+          "line_ids": [
+            "t39s"
+          ],
+          "tuple": {
+            "provider": "minimax",
+            "model": "image-01",
+            "prompt": "Wide shot at a quiet bank meeting table, an anonymous bank representative holding a unlettered document beside a closed plain folder, muted diffuse light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pull out",
+            "negative": "",
+            "width": 1920,
+            "height": 1080,
+            "seed": 1,
+            "references": []
+          },
+          "full_stage_key": "9a34a2b9fdf6933b",
+          "size": null,
+          "image_version": 1,
+          "camera": "pull out",
+          "takes": 1,
+          "seed_offset": 0,
+          "actual_file_sha256": null
+        }
+      ],
+      "complete_requests_and_keys_equal": true,
+      "actual_same_asset_verified": false,
+      "normal_production_command_recipe": [
+        {
+          "state": "AFTER_LEGAL_ADMISSION_ACCEPT_PAYOFF_TAKES1",
+          "argv": [
+            "node",
+            "--use-env-proxy",
+            "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+            "/workspace/work/brand-story-20261025/dyson-submission-root",
+            "keyframes",
+            "--slug",
+            "story-dyson-japan-first-20261021-remake-20261025",
+            "--workdir",
+            "/workspace/work/brand-story-20261025/media",
+            "--shot",
+            "jyqr",
+            "--takes",
+            "1"
+          ]
+        },
+        {
+          "state": "STOP_BEFORE_TEASER_COMMAND_UNLESS_LIVE_ACCEPTED_CACHE_FILE_AND_FULL_EQUAL_KEY_VERIFIED",
+          "argv": [
+            "node",
+            "--use-env-proxy",
+            "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+            "/workspace/work/brand-story-20261025/dyson-submission-root",
+            "keyframes",
+            "--slug",
+            "story-dyson-japan-first-20261021-remake-20261025",
+            "--workdir",
+            "/workspace/work/brand-story-20261025/media",
+            "--shot",
+            "t39s",
+            "--takes",
+            "1"
+          ]
+        }
+      ]
+    }
+  ],
+  "complete_requests_and_keys_equal": true,
+  "actual_same_asset_verified": false,
+  "judge_transfer_allowed": false,
+  "live_cache_miss_action": "STOP BEFORE teaser command; normal CLI can dispatch paid work on a cache miss.",
+  "provider_requests": 0,
+  "paid_calls": 0
+}

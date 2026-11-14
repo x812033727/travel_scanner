@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "source_video_sha256": "875eaca7ba51de28a9e2a198dfd8070325aabec91b58bb7cb903731415fb233a",
+  "reviewer": "/root/c03_admission_current — independent PT/ID reviewer; did not translate these locales",
+  "reviewed_at_utc": "2026-10-25T16:40:06.961720+00:00",
+  "scope": "text_only",
+  "revision_scope": "Exact 95-line baseline only; excludes any length-extension candidate.",
+  "locales": [
+    {
+      "locale": "pt",
+      "worksheet_sha256": "2bd57285f526674f514ee85540e454f33ffda1673c06a38b821f57980d81952a",
+      "translation_sha256": "04e383ba4ae160441ff8a357794d6789aeb1008ce60df6b036810a3d10ddb9e8",
+      "verdict": "FIXES_REQUIRED",
+      "lines_checked": 95,
+      "chapters_checked": 6,
+      "metadata_checked": [
+        "title",
+        "complete description and five source URLs",
+        "tags",
+        "thumbnail.tag",
+        "thumbnail.headline",
+        "thumbnail.sub"
+      ],
+      "glossary_checked": true,
+      "all_boundaries_checked": true,
+      "boundaries_checked": 57,
+      "native_merge_receipt_binds_inputs": true,
+      "findings": [
+        {
+          "target": "c09r013",
+          "field": "lines.c09r013.text",
+          "current": "Você talvez perguntasse em outra loja; ele comprou uma forja a carvão e uma bigorna e aprendeu em livros a fazer o que não encontrava.",
+          "proposed": "Se você não conseguisse comprar o equipamento adequado, talvez perguntasse em outra loja; já ele comprou uma forja a carvão e uma bigorna e aprendeu a fabricá-lo lendo livros.",
+          "required": true,
+          "kind": "meaning/cue_order",
+          "reason": "The source first conditions the viewer's possible response on being unable to buy suitable gear. The current text omits that condition from the viewer clause and places what could not be found at the end as the maker's object. Restore the complete viewer condition before the shop response, then the contrasting forge/anvil/books action, matching the source cue order."
+        },
+        {
+          "target": "c09r078",
+          "field": "lines.c09r078.text",
+          "current": "Mas essa é a avaliação do autor da resenha. Numa grande parede de verdade, o que você encontra na bolsa de Chouinard e seus parceiros?",
+          "proposed": "Mas essa é a avaliação do autor da resenha. Numa grande parede de verdade, o que você encontra na bolsa de Chouinard e seu parceiro?",
+          "required": true,
+          "kind": "facts",
+          "reason": "seus parceiros adds multiple companions to this particular ascent setup. The source's unnamed partner is singular in the underlying account (Chouinard and Bruce Carson, two climbers). Use seu parceiro, without adding the person's name or a year to the current narration."
+        },
+        {
+          "target": "c09r079",
+          "field": "lines.c09r079.text",
+          "current": "A escalada sem levar pitons anunciada no começo é esta: naquele mesmo ano, Chouinard e seus parceiros levaram entaladores para uma famosa via longa no El Capitan.",
+          "proposed": "A escalada sem levar pitons anunciada no começo é esta: naquele mesmo ano, Chouinard e seu parceiro levaram entaladores para uma famosa via longa no El Capitan.",
+          "required": true,
+          "kind": "facts",
+          "reason": "The plural seus parceiros changes the number of companions on the single ascent. Keep an unnamed singular partner. Preserve naquele mesmo ano exactly; this review must not add a date or borrow a future length-extension clarification."
+        }
+      ],
+      "checks": [
+        "1946, 1957, 1959/1960, 1964, May–September, 1966, 1967, 1970, 1972, 1973, 1977, 100 pitons/day, 2/hour, US$0.30/US$1.50, 72 pages, thousands of dollars and 5–10 years retain their values and attribution.",
+        "Pitons and passive chocks stay distinct; no-piton climbing is not described as ropeless/free solo, and the explicit rope/other-gear clarification remains.",
+        "1972 is reduced use with suitable-route/fixed-piton exceptions, not a sales or production stop. 1977 is publication, not a confirmed visit year.",
+        "Critics, the review author and the company interviewee retain separate positions. Clothing revenue is not changed to profit; cost-recovery estimates are not refunds, verified financial statements or a new motive claim.",
+        "The 1973 clothing label remains attributed to the later brand retrospective. Narrator I/viewer questions are retained apart from the required PT condition repair.",
+        "Patagonia, Chouinard and other proper names keep Latin spelling. Series names are omitted from title/tags; thumbnail keeps its three fields and the source headline newline.",
+        "PT uses Brazilian você naturally."
+      ]
+    },
+    {
+      "locale": "id",
+      "worksheet_sha256": "b5418b1e9260c4ebc89a3f15dedd559d682925ee6960fd0316fae932fadd2bc7",
+      "translation_sha256": "ed504067730666a5000b961003ebd96f9d977e8f02b583d22140b83ee9ce1233",
+      "verdict": "TEXT_PASS",
+      "lines_checked": 95,
+      "chapters_checked": 6,
+      "metadata_checked": [
+        "title",
+        "complete description and five source URLs",
+        "tags",
+        "thumbnail.tag",
+        "thumbnail.headline",
+        "thumbnail.sub"
+      ],
+      "glossary_checked": true,
+      "all_boundaries_checked": true,
+      "boundaries_checked": 57,
+      "native_merge_receipt_binds_inputs": true,
+      "findings": [],
+      "checks": [
+        "1946, 1957, 1959/1960, 1964, May–September, 1966, 1967, 1970, 1972, 1973, 1977, 100 pitons/day, 2/hour, US$0.30/US$1.50, 72 pages, thousands of dollars and 5–10 years retain their values and attribution.",
+        "Pitons and passive chocks stay distinct; no-piton climbing is not described as ropeless/free solo, and the explicit rope/other-gear clarification remains.",
+        "1972 is reduced use with suitable-route/fixed-piton exceptions, not a sales or production stop. 1977 is publication, not a confirmed visit year.",
+        "Critics, the review author and the company interviewee retain separate positions. Clothing revenue is not changed to profit; cost-recovery estimates are not refunds, verified financial statements or a new motive claim.",
+        "The 1973 clothing label remains attributed to the later brand retrospective. Narrator I/viewer questions are retained apart from the required PT condition repair.",
+        "Patagonia, Chouinard and other proper names keep Latin spelling. Series names are omitted from title/tags; thumbnail keeps its three fields and the source headline newline.",
+        "ID uses kamu naturally with everyday Indonesian wording."
+      ]
+    }
+  ],
+  "timing": false,
+  "paid": 0,
+  "paid_calls": 0,
+  "backend_writes": 0,
+  "owner_approval_asserted": false,
+  "limitations": [
+    "No actual timeline, SRT, audio or timed max_chars is available. Soft length guidance was not used to remove facts. Timing, segmentation, pronunciation, dub fit and media QA are unverified.",
+    "079 remains same year in proposed text. No year or climber name is added in this translation review."
+  ]
+}

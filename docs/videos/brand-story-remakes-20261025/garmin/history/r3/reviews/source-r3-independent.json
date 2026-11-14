@@ -1,0 +1,2137 @@
+{
+  "schema_version": 1,
+  "reviewer": "codex-garmin-r3-independent-source",
+  "review_role": "Independent SOURCE and written visual delta QA; no native blind review",
+  "reviewed_at_utc": "2026-10-26T06:11:49.172701+00:00",
+  "revision": "garmin-r3",
+  "slug": "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS_WRITTEN_PLAN_ONLY",
+  "production_readiness": "HOLD_DURATION_CAPACITY_AND_REMAINING_GATES",
+  "input_sha256": {
+    "video.json": "572c24735edb484a28cdc2a44031c4678459cbcada67875091db1e6b4377dcda",
+    "script.md": "c78f35749f98bb9d91be254cc07c8d60d49016c17e2e7afcb00788a19fd9d551",
+    "narration-only.json": "af0818590ec67ae27a21ade8a39c1bd6b7070ed4b81d96b01b64e82a5d1ca9b3",
+    "claims.json": "fcb89ee93c461da8a017f9596e5a6b9ca7e011d385d6122e4740531d8b8e2321",
+    "author-freeze-r3.json": "cee558c11a145e3f8d0d6194915152f9c8e97f6ab8e202913455e506d9038598",
+    "changes-r3.json": "d9dd22b162f48f2fce30731f0a41b1189af4fc7a8eba387bea6af028e4adf530"
+  },
+  "prior_source_review": {
+    "path": "../history/r2/reviews/source-r2-independent.json",
+    "sha256": "ac565ffb5d81410f137cca2743a0c5e26e7da810533f0df73a979218b69cd3d2",
+    "verdict": "PASS",
+    "prior_marker_sha256": "52ae045e585701631b739bd706e99e7d985c9bea39ea7c951ac89bcd3c9a3db3",
+    "inheritance": "Exact105 complete authorrows and unchanged source passages inherit prior independent readings only after current projection, sourcehash and archive checks."
+  },
+  "coverage": {
+    "current_lines": 137,
+    "scenes": 135,
+    "shot_prompts": 134,
+    "outro_scenes": 1,
+    "changed_text_count": 31,
+    "changed_text_ids": [
+      "gr1h01",
+      "gr1h02",
+      "gr1h03",
+      "gr1h04",
+      "gr1s01",
+      "gr1s18",
+      "gr1s20",
+      "gr1s24",
+      "gr1p01",
+      "gr1r01",
+      "gr1r11",
+      "gr1a01",
+      "gr1a03",
+      "gr1a21",
+      "gr1a23",
+      "gr1a24",
+      "gr1a26",
+      "gr1d01",
+      "gr1d03",
+      "gr1d06",
+      "gr1d09",
+      "gr1d10",
+      "gr1d11",
+      "gr1d24",
+      "gr1v01",
+      "gr1v02",
+      "gr1v03",
+      "gr1v06",
+      "gr1f07",
+      "gr1f08",
+      "gr1f09"
+    ],
+    "other_changed_author_row": "gr1p08",
+    "gr1p08_actual_delta": "Text unchanged; G11 added alongsideG10, reaction_question becomesquestion, visualscreen becomespartner; currentprompt/camera independentlychecked. Not described as only an anchor change.",
+    "unchanged_complete_author_row_count": 105,
+    "unchanged_complete_author_row_ids": [
+      "gr1h05",
+      "gr1h06",
+      "gr1h07",
+      "gr1h08",
+      "gr1s02",
+      "gr1s03",
+      "gr1s04",
+      "gr1s05",
+      "gr1s06",
+      "gr1s07",
+      "gr1s08",
+      "gr1s09",
+      "gr1s10",
+      "gr1s11",
+      "gr1s12",
+      "gr1s13",
+      "gr1s14",
+      "gr1s15",
+      "gr1s16",
+      "gr1s17",
+      "gr1s19",
+      "gr1s21",
+      "gr1s22",
+      "gr1s23",
+      "gr1s25",
+      "gr1s26",
+      "gr1s28",
+      "gr1p02",
+      "gr1p03",
+      "gr1p04",
+      "gr1p05",
+      "gr1p06",
+      "gr1p07",
+      "gr1p10",
+      "gr1p11",
+      "gr1p12",
+      "gr1p13",
+      "gr1p14",
+      "gr1p15",
+      "gr1p16",
+      "gr1p17",
+      "gr1p18",
+      "gr1p19",
+      "gr1p20",
+      "gr1p22",
+      "gr1p23",
+      "gr1p25",
+      "gr1r03",
+      "gr1r04",
+      "gr1r06",
+      "gr1r07",
+      "gr1r08",
+      "gr1r09",
+      "gr1r10",
+      "gr1r12",
+      "gr1r13",
+      "gr1r14",
+      "gr1r15",
+      "gr1r16",
+      "gr1r17",
+      "gr1r18",
+      "gr1r19",
+      "gr1r20",
+      "gr1r22",
+      "gr1a04",
+      "gr1a05",
+      "gr1a06",
+      "gr1a07",
+      "gr1a08",
+      "gr1a09",
+      "gr1a11",
+      "gr1a12",
+      "gr1a13",
+      "gr1a14",
+      "gr1a15",
+      "gr1a16",
+      "gr1a17",
+      "gr1a18",
+      "gr1a19",
+      "gr1a20",
+      "gr1a27",
+      "gr1d02",
+      "gr1d04",
+      "gr1d07",
+      "gr1d08",
+      "gr1d12",
+      "gr1d14",
+      "gr1d15",
+      "gr1d16",
+      "gr1d17",
+      "gr1d18",
+      "gr1d19",
+      "gr1d20",
+      "gr1d21",
+      "gr1v04",
+      "gr1v05",
+      "gr1v07",
+      "gr1v08",
+      "gr1v09",
+      "gr1v10",
+      "gr1v11",
+      "gr1v12",
+      "gr1v13",
+      "gr1v14",
+      "gr1v15"
+    ],
+    "removed_narration_count": 21,
+    "removed_narration_ids": [
+      "gr1s27",
+      "gr1p09",
+      "gr1p21",
+      "gr1p24",
+      "gr1r02",
+      "gr1r05",
+      "gr1r21",
+      "gr1a02",
+      "gr1a10",
+      "gr1a22",
+      "gr1a25",
+      "gr1d05",
+      "gr1d13",
+      "gr1d22",
+      "gr1d23",
+      "gr1f01",
+      "gr1f02",
+      "gr1f03",
+      "gr1f04",
+      "gr1f05",
+      "gr1f06"
+    ],
+    "new_narration_ids": [],
+    "retained_narration_order_unchanged": true,
+    "all_video_script_narration_claims_json_claims_md_id_text_equal": true,
+    "used_anchor_groups": 35,
+    "used_anchor_ids": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06",
+      "A07",
+      "A08",
+      "A09",
+      "A10",
+      "A11",
+      "A12",
+      "A13",
+      "A14",
+      "G01",
+      "G02",
+      "G03",
+      "G04",
+      "G05",
+      "G06",
+      "G07",
+      "G08",
+      "G09",
+      "G10",
+      "G11",
+      "G12",
+      "G13",
+      "G14",
+      "G15",
+      "G16",
+      "G17",
+      "G18",
+      "G19",
+      "G20",
+      "G21"
+    ],
+    "historical_anchor_groups_preserved": 38,
+    "current_removed_anchor_ids": [
+      "G33",
+      "G34",
+      "G35"
+    ],
+    "no_new_raw_or_anchor": true,
+    "all_used_evidence_objects_exact_R2": true,
+    "all_35_group_quotes_lf_locators_pdf_pages_rechecked": true,
+    "all_other_factual_scope_boundaries_inherited": true,
+    "unreviewed_rows": []
+  },
+  "text_delta_checks": [
+    {
+      "id": "gr1h01",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G07",
+        "G08"
+      ],
+      "reason": "Manual-operation demonstration addressed to the viewer; not a reported historical runner. POWER, blinking satellite icon and outdoor clear-sky context match MAN201 p14."
+    },
+    {
+      "id": "gr1h02",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G07",
+        "G08"
+      ],
+      "reason": "MAN201 original PDF bibliographic line33 onPDF2 states February2006 /190-00318-00 RevF; the following initial-use procedure isPDF14. This is the manual revision date, not a fictional event date or launchfirmware claim."
+    },
+    {
+      "id": "gr1h03",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G07"
+      ],
+      "reason": "15–30minutes remains conditional on first acquisition, with may; subsequent acquisition scope is retained in gr1s21."
+    },
+    {
+      "id": "gr1h04",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G05",
+        "G08"
+      ],
+      "reason": "Question about initial satellite acquisition; it does not assert a hardware ban on pressing start."
+    },
+    {
+      "id": "gr1s01",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G01",
+        "G02"
+      ],
+      "reason": "SEC original2003 filingLF237–240 explicitly records November2003 shipping. Starting point refers to this Garmin201 storyline, not firstever GPS or allrunning watches."
+    },
+    {
+      "id": "gr1s18",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G07"
+      ],
+      "reason": "Callback preserves earlier2006-02 manual attribution without changing the document fact."
+    },
+    {
+      "id": "gr1s20",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G07"
+      ],
+      "reason": "Question is answered by the retained first-versus-subsequent acquisition distinction."
+    },
+    {
+      "id": "gr1s24",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G08"
+      ],
+      "reason": "MAN201PDF14LF313–325 supports blinking-to-steady indicator and disappearing bar; no readability or authentic-screen reproduction requested."
+    },
+    {
+      "id": "gr1p01",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G09"
+      ],
+      "reason": "MAN201PDF16LF355–357 supports time/pace/distance on the exercise screen."
+    },
+    {
+      "id": "gr1r01",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "A01"
+      ],
+      "reason": "MAN201PDF15LF341–347 supports stopped timer plus RESET3seconds and current-to-last-run change; no new operating condition introduced."
+    },
+    {
+      "id": "gr1r11",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G14"
+      ],
+      "reason": "MAN201PDF44LF1044–1055 supports the same charging cradle, serialconnection and TrainingCenter transfer. The follow-up serialport sentence remains."
+    },
+    {
+      "id": "gr1a01",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G16"
+      ],
+      "reason": "SPEC305PDF2LF111–113 applies built-in patch/sky-facing wrist-in-motion feature to205/305; this is manufacturer specification, not independent reception measurement."
+    },
+    {
+      "id": "gr1a03",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G17"
+      ],
+      "reason": "BLOG20LF16–17 is Garmin2023 retrospective about305, corresponding to the2006 second device teased atgr1h06; no claim that the2003 rectangular201 has the same shape."
+    },
+    {
+      "id": "gr1a21",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "A07"
+      ],
+      "reason": "Pairing-distance question; no unverified wrong-pairing incident asserted."
+    },
+    {
+      "id": "gr1a23",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "A07"
+      ],
+      "reason": "MAN305PDF64LF1641–1645 specifies within3meters and far from others while pairing."
+    },
+    {
+      "id": "gr1a24",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "A07"
+      ],
+      "reason": "MAN305PDF64LF1649–1652 gives RestartScan only if apparently paired with another sensor; scope remains troubleshooting, not a fabricated field incident."
+    },
+    {
+      "id": "gr1a26",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "A04"
+      ],
+      "reason": "Editorial storage bridge grounded in the detailed-history capacity onMAN305PDF50; no extra measured capacity asserted."
+    },
+    {
+      "id": "gr1d01",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "A04"
+      ],
+      "reason": "MAN305PDF50LF1281–1286 supports defaultSmartRecording and key direction/speed/heart-rate changes. Naming305 preserves model attribution."
+    },
+    {
+      "id": "gr1d03",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "A04"
+      ],
+      "reason": "Question about every-second history capacity; answered by the retained up-to3.5hours."
+    },
+    {
+      "id": "gr1d06",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "A04",
+        "G21"
+      ],
+      "reason": "MAN305PDF50 detailed-data capacity is distinct from PDF68 typical10hour battery specification; no battery-exhaustion-at3.5hour claim."
+    },
+    {
+      "id": "gr1d09",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "A04"
+      ],
+      "reason": "MAN305PDF50LF1301–1305 warns older history is overwritten when full and recommends frequent computer transfers."
+    },
+    {
+      "id": "gr1d10",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G20"
+      ],
+      "reason": "Question now refers to activity in onboardhistory, matching Course creation scope."
+    },
+    {
+      "id": "gr1d11",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G20",
+        "A08"
+      ],
+      "reason": "MAN305PDF28–29LF726–746 supports creation ofCourse from an existing historyentry; coursepoint software restriction remains in following retained lines."
+    },
+    {
+      "id": "gr1d24",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G20",
+        "A10"
+      ],
+      "reason": "Question bridges specification to a namedlong-term account; it makes no aggregate or controlledtest claim."
+    },
+    {
+      "id": "gr1v01",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "A10"
+      ],
+      "reason": "DCR originalbodyLF74 explicitly states363runs, separately from112rides/24swims; namedreviewer/305 attribution preserved with the next sentence self-report scope."
+    },
+    {
+      "id": "gr1v02",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "A10"
+      ],
+      "reason": "DCRLF72–74 explicitly says majorupdateJune25,2009. Originalpublication2007 is not misrepresented as the date of all363runs or updated observations."
+    },
+    {
+      "id": "gr1v03",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "A10",
+        "A11"
+      ],
+      "reason": "Question about that namedreviewer account, subsequently answered with his own qualitative building/tree observations, not universal reception accuracy."
+    },
+    {
+      "id": "gr1v06",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G11",
+        "A12"
+      ],
+      "reason": "G11 establishesVirtualPartner context; DCRLF95 says he rarelyusesit because he mostlytrainsbyheart rate. No newdeviceperformance or designmotive claim."
+    },
+    {
+      "id": "gr1f07",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "G06",
+        "G09",
+        "G13",
+        "G16",
+        "G20"
+      ],
+      "reason": "Editorial answer links firstacquisition to understandable retainedactivity; no additional product metric or company-growth causation."
+    },
+    {
+      "id": "gr1f08",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "A04"
+      ],
+      "reason": "Viewer-use CTA, not an unanswered factual claim or promise that everyrecord is permanent."
+    },
+    {
+      "id": "gr1f09",
+      "verdict": "SUPPORTED",
+      "anchors": [
+        "A04"
+      ],
+      "reason": "Subscription CTA only; no next-episode claim."
+    }
+  ],
+  "must_fix": [],
+  "structure_and_written_visual": {
+    "scene_ids_removed": [
+      "gr1s27",
+      "gr1p09",
+      "gr1p21",
+      "gr1p24",
+      "gr1r02",
+      "gr1r05",
+      "gr1r21",
+      "gr1a10",
+      "gr1a22",
+      "gr1a25",
+      "gr1d13",
+      "gr1d22",
+      "gr1d23",
+      "gr1f01",
+      "gr1f02",
+      "gr1f03",
+      "gr1f04",
+      "gr1f05",
+      "gr1f06"
+    ],
+    "new_scene_ids_for_existing_lines": [
+      "gr1a13",
+      "gr1d21"
+    ],
+    "scene_membership_changes": [
+      {
+        "line": "gr1a13",
+        "old_scene": "gr1a12",
+        "current_scene": "gr1a13"
+      },
+      {
+        "line": "gr1d21",
+        "old_scene": "gr1d20",
+        "current_scene": "gr1d21"
+      }
+    ],
+    "changed_prompt_line_ids": [
+      "gr1h01",
+      "gr1h02",
+      "gr1h03",
+      "gr1s24",
+      "gr1p08",
+      "gr1r01",
+      "gr1r11",
+      "gr1a01",
+      "gr1a13",
+      "gr1d21",
+      "gr1d24",
+      "gr1v01",
+      "gr1v02",
+      "gr1v06"
+    ],
+    "all_changed_prompts_and_cameras_reviewed": true,
+    "changed_prompt_assessment": "Buttons/manual/waiting/recordtransfer/anonymousdevices/cheststrap/wordlesscourse arrows/attributedreviewrecords match their corresponding claimcontext. Splitgr1a13 explicitly usesbare-skin strapbelowsternum; splitgr1d21 shows returntocourse. None claims a historical portrait, original screen capture, exactproductgeometry or measured fieldplot.",
+    "all_prompts_english_ascii": true,
+    "brand_product_real_person_names_in_prompts": [],
+    "readable_text_logo_or_real_likeness_requested": false,
+    "look_exact": {
+      "preset": "cute-mystery"
+    },
+    "image_model": "image-01",
+    "cast": [],
+    "all_shots_still": true,
+    "global_video_fields_unchanged": [
+      "schema_version",
+      "slug",
+      "format",
+      "category",
+      "narration_locale",
+      "target_minutes",
+      "voice",
+      "subtitles",
+      "look",
+      "characters",
+      "music",
+      "thumbnail",
+      "assets"
+    ],
+    "global_video_fields_changed": [
+      "loops",
+      "youtube.description",
+      "sources"
+    ],
+    "metadata_source_change": "Removed2013finance paragraph/source as corresponding sixfinance rows leave the story; originalraw andhistorical38anchors remain preserved. Other8source entries and registry values exactR2.",
+    "outro_data_change": "CTA asks whichrecord the viewer revisits; fixedtitle unchanged.",
+    "loops_current": 35,
+    "all_endpoints_exist_and_payoff_follows_setup": true,
+    "all_35_loop_descriptions_checked_against_current_source_context": true,
+    "loop_semantic_notes": "Pairingdistance setup now answers3meters; rescan is conditional advice. Course question references an onboard historyentry; longuse question answers namedDCR363runs with2009self-report scope. No native cadence or narrative score awarded."
+  },
+  "rows": [
+    {
+      "id": "gr1h01",
+      "anchors": [
+        "G07",
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h01"
+    },
+    {
+      "id": "gr1h02",
+      "anchors": [
+        "G07",
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h02"
+    },
+    {
+      "id": "gr1h03",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h03"
+    },
+    {
+      "id": "gr1h04",
+      "anchors": [
+        "G05",
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h04"
+    },
+    {
+      "id": "gr1h05",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h05"
+    },
+    {
+      "id": "gr1h06",
+      "anchors": [
+        "G16",
+        "G17"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h06"
+    },
+    {
+      "id": "gr1h07",
+      "anchors": [
+        "G01",
+        "G14",
+        "G16"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h07"
+    },
+    {
+      "id": "gr1h08",
+      "anchors": [
+        "G06",
+        "G09",
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1h08"
+    },
+    {
+      "id": "gr1s01",
+      "anchors": [
+        "G01",
+        "G02"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s01"
+    },
+    {
+      "id": "gr1s02",
+      "anchors": [
+        "G02"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s02"
+    },
+    {
+      "id": "gr1s03",
+      "anchors": [
+        "G04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s03"
+    },
+    {
+      "id": "gr1s04",
+      "anchors": [
+        "G04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s04"
+    },
+    {
+      "id": "gr1s05",
+      "anchors": [
+        "G04",
+        "G09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s05"
+    },
+    {
+      "id": "gr1s06",
+      "anchors": [
+        "G03"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s06"
+    },
+    {
+      "id": "gr1s07",
+      "anchors": [
+        "G05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s07"
+    },
+    {
+      "id": "gr1s08",
+      "anchors": [
+        "G05",
+        "G04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s08"
+    },
+    {
+      "id": "gr1s09",
+      "anchors": [
+        "G05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s09"
+    },
+    {
+      "id": "gr1s10",
+      "anchors": [
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s10"
+    },
+    {
+      "id": "gr1s11",
+      "anchors": [
+        "A09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s11"
+    },
+    {
+      "id": "gr1s12",
+      "anchors": [
+        "A09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s12"
+    },
+    {
+      "id": "gr1s13",
+      "anchors": [
+        "A09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s13"
+    },
+    {
+      "id": "gr1s14",
+      "anchors": [
+        "A09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s14"
+    },
+    {
+      "id": "gr1s15",
+      "anchors": [
+        "A09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s15"
+    },
+    {
+      "id": "gr1s16",
+      "anchors": [
+        "G06",
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s16"
+    },
+    {
+      "id": "gr1s17",
+      "anchors": [
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s17"
+    },
+    {
+      "id": "gr1s18",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s18"
+    },
+    {
+      "id": "gr1s19",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s19"
+    },
+    {
+      "id": "gr1s20",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s20"
+    },
+    {
+      "id": "gr1s21",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s21"
+    },
+    {
+      "id": "gr1s22",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s22"
+    },
+    {
+      "id": "gr1s23",
+      "anchors": [
+        "G06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s23"
+    },
+    {
+      "id": "gr1s24",
+      "anchors": [
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s24"
+    },
+    {
+      "id": "gr1s25",
+      "anchors": [
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s25"
+    },
+    {
+      "id": "gr1s26",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s26"
+    },
+    {
+      "id": "gr1s28",
+      "anchors": [
+        "G09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1s28"
+    },
+    {
+      "id": "gr1p01",
+      "anchors": [
+        "G09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p01"
+    },
+    {
+      "id": "gr1p02",
+      "anchors": [
+        "G09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p02"
+    },
+    {
+      "id": "gr1p03",
+      "anchors": [
+        "G09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p03"
+    },
+    {
+      "id": "gr1p04",
+      "anchors": [
+        "G10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p04"
+    },
+    {
+      "id": "gr1p05",
+      "anchors": [
+        "G10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p05"
+    },
+    {
+      "id": "gr1p06",
+      "anchors": [
+        "G10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p06"
+    },
+    {
+      "id": "gr1p07",
+      "anchors": [
+        "G10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p07"
+    },
+    {
+      "id": "gr1p08",
+      "anchors": [
+        "G10",
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_ANCHOR_AND_VISUAL_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p08"
+    },
+    {
+      "id": "gr1p10",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p10"
+    },
+    {
+      "id": "gr1p11",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p11"
+    },
+    {
+      "id": "gr1p12",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p12"
+    },
+    {
+      "id": "gr1p13",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p13"
+    },
+    {
+      "id": "gr1p14",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p14"
+    },
+    {
+      "id": "gr1p15",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p15"
+    },
+    {
+      "id": "gr1p16",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p16"
+    },
+    {
+      "id": "gr1p17",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p17"
+    },
+    {
+      "id": "gr1p18",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p18"
+    },
+    {
+      "id": "gr1p19",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p19"
+    },
+    {
+      "id": "gr1p20",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p20"
+    },
+    {
+      "id": "gr1p22",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p22"
+    },
+    {
+      "id": "gr1p23",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p23"
+    },
+    {
+      "id": "gr1p25",
+      "anchors": [
+        "G13",
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1p25"
+    },
+    {
+      "id": "gr1r01",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r01"
+    },
+    {
+      "id": "gr1r03",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r03"
+    },
+    {
+      "id": "gr1r04",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r04"
+    },
+    {
+      "id": "gr1r06",
+      "anchors": [
+        "G13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r06"
+    },
+    {
+      "id": "gr1r07",
+      "anchors": [
+        "G13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r07"
+    },
+    {
+      "id": "gr1r08",
+      "anchors": [
+        "G13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r08"
+    },
+    {
+      "id": "gr1r09",
+      "anchors": [
+        "G13",
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r09"
+    },
+    {
+      "id": "gr1r10",
+      "anchors": [
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r10"
+    },
+    {
+      "id": "gr1r11",
+      "anchors": [
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r11"
+    },
+    {
+      "id": "gr1r12",
+      "anchors": [
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r12"
+    },
+    {
+      "id": "gr1r13",
+      "anchors": [
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r13"
+    },
+    {
+      "id": "gr1r14",
+      "anchors": [
+        "A02"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r14"
+    },
+    {
+      "id": "gr1r15",
+      "anchors": [
+        "A02"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r15"
+    },
+    {
+      "id": "gr1r16",
+      "anchors": [
+        "G15",
+        "A03"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r16"
+    },
+    {
+      "id": "gr1r17",
+      "anchors": [
+        "A03"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r17"
+    },
+    {
+      "id": "gr1r18",
+      "anchors": [
+        "A03"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r18"
+    },
+    {
+      "id": "gr1r19",
+      "anchors": [
+        "G15"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r19"
+    },
+    {
+      "id": "gr1r20",
+      "anchors": [
+        "G15"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r20"
+    },
+    {
+      "id": "gr1r22",
+      "anchors": [
+        "G06",
+        "G16"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1r22"
+    },
+    {
+      "id": "gr1a01",
+      "anchors": [
+        "G16"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a01"
+    },
+    {
+      "id": "gr1a03",
+      "anchors": [
+        "G17"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a03"
+    },
+    {
+      "id": "gr1a04",
+      "anchors": [
+        "G17"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a04"
+    },
+    {
+      "id": "gr1a05",
+      "anchors": [
+        "G16"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a05"
+    },
+    {
+      "id": "gr1a06",
+      "anchors": [
+        "G16",
+        "G17"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a06"
+    },
+    {
+      "id": "gr1a07",
+      "anchors": [
+        "G16",
+        "G18"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a07"
+    },
+    {
+      "id": "gr1a08",
+      "anchors": [
+        "G18"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a08"
+    },
+    {
+      "id": "gr1a09",
+      "anchors": [
+        "G18"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a09"
+    },
+    {
+      "id": "gr1a11",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a11"
+    },
+    {
+      "id": "gr1a12",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a12"
+    },
+    {
+      "id": "gr1a13",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a13"
+    },
+    {
+      "id": "gr1a14",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a14"
+    },
+    {
+      "id": "gr1a15",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a15"
+    },
+    {
+      "id": "gr1a16",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a16"
+    },
+    {
+      "id": "gr1a17",
+      "anchors": [
+        "A06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a17"
+    },
+    {
+      "id": "gr1a18",
+      "anchors": [
+        "A06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a18"
+    },
+    {
+      "id": "gr1a19",
+      "anchors": [
+        "A06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a19"
+    },
+    {
+      "id": "gr1a20",
+      "anchors": [
+        "A06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a20"
+    },
+    {
+      "id": "gr1a21",
+      "anchors": [
+        "A07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a21"
+    },
+    {
+      "id": "gr1a23",
+      "anchors": [
+        "A07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a23"
+    },
+    {
+      "id": "gr1a24",
+      "anchors": [
+        "A07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a24"
+    },
+    {
+      "id": "gr1a26",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a26"
+    },
+    {
+      "id": "gr1a27",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1a27"
+    },
+    {
+      "id": "gr1d01",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d01"
+    },
+    {
+      "id": "gr1d02",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d02"
+    },
+    {
+      "id": "gr1d03",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d03"
+    },
+    {
+      "id": "gr1d04",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d04"
+    },
+    {
+      "id": "gr1d06",
+      "anchors": [
+        "A04",
+        "G21"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d06"
+    },
+    {
+      "id": "gr1d07",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d07"
+    },
+    {
+      "id": "gr1d08",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d08"
+    },
+    {
+      "id": "gr1d09",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d09"
+    },
+    {
+      "id": "gr1d10",
+      "anchors": [
+        "G20"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d10"
+    },
+    {
+      "id": "gr1d11",
+      "anchors": [
+        "G20",
+        "A08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d11"
+    },
+    {
+      "id": "gr1d12",
+      "anchors": [
+        "G20"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d12"
+    },
+    {
+      "id": "gr1d14",
+      "anchors": [
+        "A08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d14"
+    },
+    {
+      "id": "gr1d15",
+      "anchors": [
+        "A08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d15"
+    },
+    {
+      "id": "gr1d16",
+      "anchors": [
+        "A08",
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d16"
+    },
+    {
+      "id": "gr1d17",
+      "anchors": [
+        "A08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d17"
+    },
+    {
+      "id": "gr1d18",
+      "anchors": [
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d18"
+    },
+    {
+      "id": "gr1d19",
+      "anchors": [
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d19"
+    },
+    {
+      "id": "gr1d20",
+      "anchors": [
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d20"
+    },
+    {
+      "id": "gr1d21",
+      "anchors": [
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d21"
+    },
+    {
+      "id": "gr1d24",
+      "anchors": [
+        "G20",
+        "A10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1d24"
+    },
+    {
+      "id": "gr1v01",
+      "anchors": [
+        "A10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v01"
+    },
+    {
+      "id": "gr1v02",
+      "anchors": [
+        "A10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v02"
+    },
+    {
+      "id": "gr1v03",
+      "anchors": [
+        "A10",
+        "A11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v03"
+    },
+    {
+      "id": "gr1v04",
+      "anchors": [
+        "A11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v04"
+    },
+    {
+      "id": "gr1v05",
+      "anchors": [
+        "A11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v05"
+    },
+    {
+      "id": "gr1v06",
+      "anchors": [
+        "G11",
+        "A12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v06"
+    },
+    {
+      "id": "gr1v07",
+      "anchors": [
+        "A12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v07"
+    },
+    {
+      "id": "gr1v08",
+      "anchors": [
+        "A12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v08"
+    },
+    {
+      "id": "gr1v09",
+      "anchors": [
+        "A12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v09"
+    },
+    {
+      "id": "gr1v10",
+      "anchors": [
+        "A13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v10"
+    },
+    {
+      "id": "gr1v11",
+      "anchors": [
+        "A13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v11"
+    },
+    {
+      "id": "gr1v12",
+      "anchors": [
+        "A13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v12"
+    },
+    {
+      "id": "gr1v13",
+      "anchors": [
+        "A14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v13"
+    },
+    {
+      "id": "gr1v14",
+      "anchors": [
+        "A14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v14"
+    },
+    {
+      "id": "gr1v15",
+      "anchors": [
+        "A13",
+        "A14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_EXACT_COMPLETE_AUTHOR_ROW_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "current_scene": "gr1v15"
+    },
+    {
+      "id": "gr1f07",
+      "anchors": [
+        "G06",
+        "G09",
+        "G13",
+        "G16",
+        "G20"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "NATIVE_OUTRO_NO_IMAGE_PROMPT",
+      "current_scene": "gr1outro"
+    },
+    {
+      "id": "gr1f08",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "NATIVE_OUTRO_NO_IMAGE_PROMPT",
+      "current_scene": "gr1outro"
+    },
+    {
+      "id": "gr1f09",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R3_TEXT_DELTA_RECHECK",
+      "visual": "NATIVE_OUTRO_NO_IMAGE_PROMPT",
+      "current_scene": "gr1outro"
+    }
+  ],
+  "reuse_plan": {
+    "plan_sha256": "540dcbcac495d9289125ef998a457f11a21f0af41b0ffdcae041221da24a5779",
+    "complete_pair_tuples_exact_R2": true,
+    "full_Stage_imageKey_recomputed": true,
+    "key_dimensions": "camera/composedprompt/cast/look/model/imageversion/size/negative/references/seed/fixes all included",
+    "pairs": [
+      {
+        "payoff": "gr1p12",
+        "teaser": "gr1h05",
+        "both_endpoints_key": "6a8adb8315a70678",
+        "composed_prompt_sha256": "3298c402b00e905c067ccc828258c921f83571ef8c0dfa70d468e97c606c4de7"
+      },
+      {
+        "payoff": "gr1a03",
+        "teaser": "gr1h06",
+        "both_endpoints_key": "6ece2406bc7cd130",
+        "composed_prompt_sha256": "597e908835ecee71d0d71939a919fd64594dde461496e9ff168c1ef1ab0f1847"
+      }
+    ],
+    "code_files_sha256_rechecked": {
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+      "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1"
+    },
+    "actual_same_asset_verified": false,
+    "required_execution_after_normal_admission": "Payofffirst takes1; then readCache+officialselectedmanifest+finalcroppedbytesSHA guard before teaser. Cachemiss/missingfile/changedrequest/hashmismatch must stop before a second command. Both endpoints need ownordinaryjudge and same finalselectedfile/SHA aftertrim. Plannedkeys are not actualassets.",
+    "production_commands_executed": false
+  },
+  "preservation": {
+    "independent_hash_comparison_set": 528,
+    "mismatches": [],
+    "protected_before_manifest_path": "/workspace/work/brand-story-20261025/garmin-audit/author-r3/protected-before.json",
+    "protected_before_manifest_sha256": "6afc0eb3884558e8dfd68ab262a11230be847d8ad76f759fc224fc9a8b0b849b",
+    "all395_protected_baseline_files_rehashed_unchanged": true,
+    "previous328_baseline_preserved": true,
+    "original_research_files": 3,
+    "related_originals_and_snapshots": 9,
+    "original_raw_cache_items": 57,
+    "R1_history_files_rehashed": 31,
+    "R2_history_files_rehashed": 59,
+    "R2_archive_manifest_sha256": "3696d7099b73417a194a6a2c2400872253a571a2968bedf81e9bd4006b6fd175",
+    "dictionary_files": 3,
+    "dictionary_sequence": 1,
+    "lexicon_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
+    "dictionary_rebuilt_or_published": false,
+    "native_and_blind_artifacts_hashed_only": true,
+    "legacy_paid_media_preserved_claim": false
+  },
+  "actual_runtime_binding": {
+    "runtime_root": "/workspace/work/brand-story-20261025/garmin-submission-root",
+    "path_evidence": "Actualpreflight path and readback; not assumed to be author-r3/runtime.",
+    "runtime_video_sha256": "572c24735edb484a28cdc2a44031c4678459cbcada67875091db1e6b4377dcda",
+    "canonical_runtime_script_sha256": "363a35d518fafa6cf4381bbe3dcbb564532fa0a0cd4145902074184dcbf35cb7",
+    "immutable_dictionary_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
+    "source_runtime_video_identical": true,
+    "runtime_written_or_rebuilt_by_reviewer": false
+  },
+  "normal_checks": {
+    "lint": {
+      "command": "node docs/videos/brand-story-remakes-20261025/runtime-cli.mjs /workspace/work/brand-story-20261025/garmin-submission-root lint --slug story-garmin-smartphone-pivot-worker-2026-remake-20261025 --json",
+      "exit_code": 0,
+      "errors": 0,
+      "soft_warnings": 4,
+      "spoken_units": 2922,
+      "estimated_minutes": 13.988333333333333,
+      "soft_warning_scope": "adult125/wrist115/device102 of134pictures;305namedinfive lines. Necessary modelattribution is retained. These warnings are not actual-media or native-story findings."
+    },
+    "facts": {
+      "ok": true,
+      "detail": "verify-1.md marks no claim NOT FOUND"
+    },
+    "marker": {
+      "path": "../verify-1.md",
+      "sha256": "4c853badfbe0c350a36be5729c5938646f91b1ac37bb67a7d281c5c125470e65",
+      "rows": 137,
+      "normal_facts_parser_passed": true
+    }
+  },
+  "duration_and_other_gates": {
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "planning_at4_to5_units_per_second": [
+      584.4,
+      730.5
+    ],
+    "planning_at4_5_units_per_second": 649.3333333333334,
+    "planning_is_actual_audio": false,
+    "capacity_risk": "HOLD_FOR_REAL_TIMING_AND_STORY_GATES",
+    "actual_body_seconds": null,
+    "actual_final_seconds": null,
+    "actual_duration_failure_claimed": false,
+    "body_definition": "Includescoldopen/voicedCTA; excludesnew5secondintro+21secondoutro. Do notslowdelivery/addsilence/repeatfacts to reachduration.",
+    "actual_native_round_count": 1,
+    "R3_native2_status": "NOT_PREPARED_NOT_READ",
+    "native_verdict_by_this_reviewer": null,
+    "native_payload_or_result_read": false,
+    "owner_new_account_fullquote_protected_admission": "PENDING_NO_SPEND_AUTHORIZATION",
+    "actual_same_asset_verified": false,
+    "eightlanguage_actual_status": "Notproduced/verifiedhere",
+    "branding_actual_timeline_or_pin": "Notacceptedhere"
+  },
+  "independence_and_actions": {
+    "source_judgment_derived_from_originals_and_verified_R2_source_receipt": true,
+    "native_review_payloads_or_answers_read": false,
+    "native_storytelling_blind_review_performed": false,
+    "source_author_contact_or_subagents": false,
+    "writes": [
+      "reviews/source-r3-independent.json",
+      "verify-1.md"
+    ],
+    "core_or_original_edits": 0,
+    "runtime_writes": 0,
+    "git_mutations": 0,
+    "backend_calls": 0,
+    "owner_writes": 0,
+    "paid_calls": 0
+  },
+  "limits": [
+    "SOURCE and writtenvisual PASS only for the exactR3 hashes. Any later contentchange needs renewedbinding/review.",
+    "MAN201RevF2006-02 and MAN305RevD2006–2008 are latermanuals, not launchfirmware proof.2003November isSECshipping, not Augustspecdate.305strap doesnot applyto205;610results are not imported.",
+    "DCRisnamedindividual2009updated363-run self-report, not a controlledtest or allmodels guarantee; software-spike/editlimitations are historical and no ambiguous paceunit is supplied. Engineeringrepost remains excluded.",
+    "Actualaudio, illustrationjudging, selectedfile reuse, finalduration, native2, ownerapproval, exactnewUS25account, wholefilmquote, protectedadmission, eightlanguage outputs andfinalQA remain unverified."
+  ]
+}

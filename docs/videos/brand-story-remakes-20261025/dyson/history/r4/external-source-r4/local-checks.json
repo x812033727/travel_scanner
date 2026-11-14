@@ -1,0 +1,118 @@
+{
+  "normal_lint": {
+    "argv": [
+      "node",
+      "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+      "/workspace/work/brand-story-20261025/dyson-audit/author-r4/runtime",
+      "lint",
+      "--slug",
+      "story-dyson-japan-first-20261021-remake-20261025",
+      "--json"
+    ],
+    "exit_code": 0,
+    "result": {
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "about 15.6 minutes; the target is 12-14"
+        }
+      ],
+      "summary": {
+        "minutes": 15.615555555555554,
+        "lines": 140,
+        "spoken_units": 3316,
+        "billable_characters": 11255,
+        "chapters": [
+          "00:00 四個人有圖，卻找不到人組裝",
+          "00:49 布濾堵住，家裡的空袋也吸不動",
+          "04:24 授權有人接，工作還沒結束",
+          "06:51 馬達改了，入口也要動手",
+          "08:55 圖紙跨海，商品走到日本市場",
+          "10:56 圖面之外，還缺資金和組裝的人",
+          "12:49 讓買手看見，也要讓顧客看懂"
+        ]
+      }
+    },
+    "prior_usage_error": "--workdir is not accepted for lint; initial invocation rejected exit 2 before running lint. Correct invocation above completed."
+  },
+  "pure_projection_and_keys": {
+    "projection_exact": true,
+    "script_projection_exact": true,
+    "claims_projection_exact": true,
+    "all_shot_prompts_equal_claim_rows": true,
+    "all_loop_refs_in_order": true,
+    "lines": 140,
+    "shots": 137,
+    "loops": 35,
+    "chapters": 7,
+    "opening_lines": 8,
+    "spoken_units": 3316,
+    "prompts_English_ASCII": true,
+    "look": {
+      "preset": "cute-mystery"
+    },
+    "image_model": "image-01",
+    "pairs": [
+      {
+        "pair": "perforated-cup-experiment",
+        "ends": [
+          {
+            "id": "88z5",
+            "camera": "pan right",
+            "composed_prompt_sha256": "6ba15f5c06057a21242bd47ed95357bdb0e65146e03d8c55e1956df981e06eab",
+            "base_key": "8401cae966d37a50",
+            "stage_key": "126df4181a46b30f",
+            "cut_chars": 0,
+            "cast": 0,
+            "full_input_matches_plan": true
+          },
+          {
+            "id": "qggg",
+            "camera": "pan right",
+            "composed_prompt_sha256": "6ba15f5c06057a21242bd47ed95357bdb0e65146e03d8c55e1956df981e06eab",
+            "base_key": "8401cae966d37a50",
+            "stage_key": "126df4181a46b30f",
+            "cut_chars": 0,
+            "cast": 0,
+            "full_input_matches_plan": true
+          }
+        ],
+        "equal_keys": true,
+        "full_rehearsal_equal_r3": true,
+        "camera_equal_r3": true,
+        "matches_declared_key": true
+      },
+      {
+        "pair": "tooling-finance-meeting",
+        "ends": [
+          {
+            "id": "jyqr",
+            "camera": "pull out",
+            "composed_prompt_sha256": "dc1cddc123b343c2d70177052a857ccb83dcf9eb247662dd0269bcdf2bee92cf",
+            "base_key": "981dbcaa421bb1a7",
+            "stage_key": "9a34a2b9fdf6933b",
+            "cut_chars": 0,
+            "cast": 0,
+            "full_input_matches_plan": true
+          },
+          {
+            "id": "t39s",
+            "camera": "pull out",
+            "composed_prompt_sha256": "dc1cddc123b343c2d70177052a857ccb83dcf9eb247662dd0269bcdf2bee92cf",
+            "base_key": "981dbcaa421bb1a7",
+            "stage_key": "9a34a2b9fdf6933b",
+            "cut_chars": 0,
+            "cast": 0,
+            "full_input_matches_plan": true
+          }
+        ],
+        "equal_keys": true,
+        "full_rehearsal_equal_r3": true,
+        "camera_equal_r3": true,
+        "matches_declared_key": true
+      }
+    ],
+    "no_provider_calls": true
+  }
+}

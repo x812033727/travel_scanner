@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "revision": "dyson-r5",
+  "review_kind": "INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_DELTA_QA",
+  "reviewer": "/root/dyson_r1_source",
+  "completed_at_utc": "2026-10-26T08:48:56.764790+00:00",
+  "independent": true,
+  "not_researcher_or_author": true,
+  "status": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS_WRITTEN_ONLY",
+  "overall_verdict": "PASS_SOURCE_AND_WRITTEN_VISUAL_ONLY",
+  "source_pass": true,
+  "must_fix": [],
+  "video_slug": "story-dyson-japan-first-20261021-remake-20261025",
+  "input_sha256": {
+    "video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+    "script.md": "c38843d68985ead0fcb7699fab05cd7cf6d721f28e77f5f22b5f2706a30fadda",
+    "narration-only.json": "c8fb1776fe07ac90b532b3940b9a72934dfc4d3bb59b02d697de739fbbb399a7",
+    "claims.json": "630062f09a368c374694d15ef6b381327ca633b279936c35dd256675b04781e2"
+  },
+  "author_freeze_sha256": "ccb3708f69011c4a2154c02cf99b0f5c39d076f5ceafa927eeef4b0970af5b1e",
+  "source_correction_sha256": "34feb6f56c64dbf1537563fda88b5dfc7898ce5fbd8cd377ec9f0fb99f40aac7",
+  "baseline": {
+    "path": "history/r4/reviews/source-r4-independent.json",
+    "sha256": "5aa2ce010b27ffccca12e22a127feb5259dd1aea546359d0f66cf210f16f86f7",
+    "original_status": "FIXES_REQUIRED / HOLD; only MF-R4-01",
+    "full_QA_scope": "R4 independently read all140 narration lines,137 prompts,35loops and all selected source contexts including metadata; it was not R3 inheritance.",
+    "R4_author_freeze_sha256": "f31238cde281ac71b3d34ed75e3db127c67c0eaae825d8afda7b6c3805206ea6",
+    "R4_history_manifest_sha256": "3b9b5d94f1d9a314696e943ecb42a251ba6faf1acd6cfd7f677acc22ef0c2b4f",
+    "R4_archive_files": 81,
+    "R4_original_HOLD_receipt_and_source_audio_receipts_preserved": true,
+    "R3_source_or_native_PASS_inherited": false,
+    "R3_state": "UNREVIEWED / NOT_PREPARED_NOT_READ"
+  },
+  "delta": {
+    "must_fix_id": "MF-R4-01",
+    "line_id": "btuc",
+    "old_text": "工廠曾換掉布濾，他在家要先做出什麼，才能試同一個想法？",
+    "new_text": "前面工廠用氣旋收粉，他在家先做什麼，才能試同一個想法？",
+    "verdict": "RESOLVED",
+    "research_claim_ids": [
+      "N01",
+      "N02"
+    ],
+    "new_anchor_objects_exactly_equal_to_R4_N01_and_N02": true,
+    "anchors": [
+      {
+        "source_id": "SENRA",
+        "raw_sha256": "2dd8ebeb595a1a872fb7153b2844db5dbc7aecc4a5e0eddf46e7d8050f65cf5f",
+        "text_sha256": "cf8a0a3d909368dd83508c5398e4923d1649fcaf285ae429b4f586ca6330ade8",
+        "line_start_1based": 283,
+        "line_end_1based": 293,
+        "context_sha256": "22087dd6a0a18911995d8e3323cd7232871b9994541f373b82735994d822d52d",
+        "short_quote_original_language": "cloth filter",
+        "short_quote_sha256": "09b87b8d46c2d2258ef4c03d29b84d9ee9bb91a436552eed41aeaba253ad7292"
+      },
+      {
+        "source_id": "DYSON_BIO",
+        "raw_sha256": "b2a0df69933272525d91633ff600c06dda360d02ec51133ce1994052e4d70fba",
+        "text_sha256": "380cb8db8ee96d3f7f0a5cd95b3f0add2212443b3e1957e1e90cb1256bd54584",
+        "line_start_1based": 262,
+        "line_end_1based": 267,
+        "context_sha256": "9468736971eebbeb23408a52ee9dfde56d43705b6e94f8eb74012c4092cd0b7f",
+        "short_quote_original_language": "powdered paint",
+        "short_quote_sha256": "0187b02fed2aabc241b4ecafa90b799b5aa75fe12efd1d1303a8e9732eb0b2e9"
+      },
+      {
+        "source_id": "SENRA",
+        "raw_sha256": "2dd8ebeb595a1a872fb7153b2844db5dbc7aecc4a5e0eddf46e7d8050f65cf5f",
+        "text_sha256": "cf8a0a3d909368dd83508c5398e4923d1649fcaf285ae429b4f586ca6330ade8",
+        "line_start_1based": 290,
+        "line_end_1based": 297,
+        "context_sha256": "5866795af871723dba7b4a32dfccc4b4e85fbabffdef1a76adce821e25092f2d",
+        "short_quote_original_language": "gaffer tape",
+        "short_quote_sha256": "495c89e4a6e965a5aafde7b1f84694e006f229b4233f0973199434deb74bcaa0"
+      },
+      {
+        "source_id": "DYSON_BIO",
+        "raw_sha256": "b2a0df69933272525d91633ff600c06dda360d02ec51133ce1994052e4d70fba",
+        "text_sha256": "380cb8db8ee96d3f7f0a5cd95b3f0add2212443b3e1957e1e90cb1256bd54584",
+        "line_start_1based": 265,
+        "line_end_1based": 267,
+        "context_sha256": "2067e889d7dd032cdc634d6f5286ca13196b78f34ae047320dc30cba35b5bfc1",
+        "short_quote_original_language": "cardboard",
+        "short_quote_sha256": "2fb41c42cec5d64aee374a0bfe78b3146675c6699a2fa63efba52b1d10ceaf0c"
+      }
+    ],
+    "original_contexts_reopened": true,
+    "original_raw_and_text_context_hashes_verified": true,
+    "original_HTML_each_selected_nonempty_extraction_line_found": true,
+    "independent_reading": "SENRA Dyson answers L285/287/293 establish blocked cloth and factory cyclone powder separation. DYSON_BIO L263–264 likewise describes powder and the cyclone carrying waste powder away. SENRA L297 and DYSON_BIO L267 separately describe the domestic cardboard/hose model replacing its bag. The new question only refers back to the factory collection method and asks forward about domestic testing; it says nothing about physical removal/replacement of the factory cloth.",
+    "callback_assessment": "前面 points to the already narrated zmbc/acb6 factory event. It adds no elapsed-time interval, new historical episode, causal claim or unseen fix. It does not transfer the domestic bag replacement back to the factory.",
+    "selected_original_quotes": [
+      {
+        "source_id": "SENRA",
+        "line": 293,
+        "quote": "we built at the factory to stop the cloth from getting clogged with dust. Instead, we were spinning it out successfully by centrifugal force."
+      },
+      {
+        "source_id": "SENRA",
+        "line": 297,
+        "quote": "I took the bag off my upright vacuum cleaner, replaced it with a bit of hose and this cardboard mini version"
+      },
+      {
+        "source_id": "DYSON_BIO",
+        "line": 264,
+        "quote": "building a 25ft cyclone to suck the waste powder away"
+      }
+    ],
+    "new_text_native_units": 24,
+    "old_text_native_units": 24
+  },
+  "inheritance_and_projection_checks": {
+    "other_139_narration_lines_byte_equal": true,
+    "other_139_complete_claim_row_objects_equal": true,
+    "video_JSON_only_changed_leaf": "/scenes/25/lines/0/text",
+    "all_other_video_objects_exactly_equal": true,
+    "narration_JSON_only_changed_leaf": "/25/text",
+    "claims_changes_confined_to_revision_correction_bindings_and_btuc_N01_N02_text_limits_status": true,
+    "video_to_narration_exact": true,
+    "script_to_narration_exact": true,
+    "claims_to_narration_exact": true,
+    "all137_prompt_camera_data_equal_R4": true,
+    "all35_loops_endpoints_and_text_equal_R4": true,
+    "all_loop_references_resolve_and_payoffs_follow_setups": true,
+    "all8_opening_lines_equal_R4": true,
+    "scope_statement": "139 unchanged lines and137 unchanged written visuals inherit the exact R4 full-QA findings after hash/deep-equality checks. Only the changed premise is newly source-read here; this is not a claimed fresh full140-line reading."
+  },
+  "same_image_key_checks": {
+    "pure_functions_used": [
+      "resolveLook",
+      "shotCast",
+      "shotAppearancePrompt",
+      "composeShotPrompt",
+      "keyframeKey",
+      "Stage.imageKey"
+    ],
+    "input_tuple": {
+      "provider": "minimax",
+      "model": "image-01",
+      "width": 1920,
+      "height": 1080,
+      "requested_size": null,
+      "seed": 1,
+      "references": [],
+      "cast": [],
+      "negative": "",
+      "image_selection_version": 1,
+      "fixes": [],
+      "takes": 1,
+      "prompt_limit": 1500
+    },
+    "pairs": [
+      {
+        "asset_plan_id": "perforated-cup-experiment",
+        "payoff": "88z5",
+        "teaser": "qggg",
+        "camera": "pan right",
+        "base_key": "8401cae966d37a50",
+        "native_stage_key": "126df4181a46b30f",
+        "complete_input_tuple_equal_R4": true,
+        "both_ends_independently_recomputed_equal": true,
+        "cut_chars": 0
+      },
+      {
+        "asset_plan_id": "tooling-finance-meeting",
+        "payoff": "jyqr",
+        "teaser": "t39s",
+        "camera": "pull out",
+        "base_key": "981dbcaa421bb1a7",
+        "native_stage_key": "9a34a2b9fdf6933b",
+        "complete_input_tuple_equal_R4": true,
+        "both_ends_independently_recomputed_equal": true,
+        "cut_chars": 0
+      }
+    ],
+    "payoff_first_takes1_and_cache_miss_stop_recipe_preserved": true,
+    "both_contexts_ordinary_judge_required": true,
+    "post_crop_final_selected_file_SHA_and_assembly_input_equality_required": true,
+    "actual_same_asset_verified": false,
+    "provider_requests_executed": false
+  },
+  "normal_lint": {
+    "argv": [
+      "node",
+      "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+      "/workspace/work/brand-story-20261025/dyson-audit/author-r5/runtime",
+      "lint",
+      "--slug",
+      "story-dyson-japan-first-20261021-remake-20261025",
+      "--json"
+    ],
+    "exit_code": 0,
+    "errors": 0,
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "about 15.6 minutes; the target is 12-14"
+      }
+    ],
+    "lines": 140,
+    "spoken_units": 3316,
+    "legacy_estimate_minutes": 15.615555555555554,
+    "runtime_or_dictionary_rebuilt_or_written": false
+  },
+  "native_facts_marker": {
+    "path": "verify-1.md",
+    "sha256": "4707ff4bf32b9e764f1ef276d498559911cf802480b43fccf0579c4ff658bd68",
+    "actual_table_rows": 140,
+    "row_ids_order_and_text_exact": true,
+    "confirmed_source_attributed_or_factual_rows": 85,
+    "out_of_scope_editorial_rows": 55,
+    "not_found_rows": 0,
+    "factsChecks_actual_result": {
+      "ok": true,
+      "detail": "verify-1.md marks no claim NOT FOUND"
+    },
+    "runtime_doc_path": "/workspace/work/brand-story-20261025/dyson-audit/author-r5/runtime/docs/videos/story-dyson-japan-first-20261021-remake-20261025/video.json",
+    "runtime_video_sha256": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+    "runtime_written": false,
+    "meaning": "Native facts marker checks current written script only; no native narrative, audio, image, final-film or owner approval is implied."
+  },
+  "preservation": {
+    "all664_expected_hash_comparisons_passed_before_and_after": true,
+    "protected_manifest_files": 535,
+    "inherited_R4_protected_files": 395,
+    "R4_archived_files": 81,
+    "original_research_files": 3,
+    "original_raw_index203_new_raw_and_R1_to_R4_history_covered_by_protection": true,
+    "same_episode_dictionary_sequence": 1,
+    "immutable_R5_dictionary_copy_files_hash_checked": 3,
+    "archived_R4_dictionary_files_hash_checked": 3,
+    "dictionary_rebuilt": false,
+    "original_runtime_overwritten": false,
+    "capacity_claims_SHA_mislabel_notice_preserved": "The capacity baseline.claims_sha256 value7af89ce33b0161facfa661ecabffe4d8b639870319732d672fd233d9736d44c0 hashesR3claims.md, not claims.json; trueR3claims.json is2e2c9f9a9731e529a4838b30105063ae606a7c9d8f89591e89062127115aaad3. R4 recorded this nonblocking provenance-field error; research and notice bytes remain unchanged."
+  },
+  "limits": [
+    "All R4 source/evidence limitations remain, including corporate and participant retrospective accounts, sponsored Japanese interview and uncorrected official Masters auto transcript. No precise original-audio words/counts/dates or independently listened original speech are newly certified.",
+    "No inherited R3 PASS exists. This reviewer did not prepare/read native2 or blind payloads; supplied actual narrative-panel count remains1 from R2, and no new panel is performed.",
+    "3316units and planning663.2–829seconds are not actual TTS duration. Unwrapped voiced body720–840seconds includes coldopen and voicedCTA and excludes added26seconds branding; actual audio remains unknown.",
+    "No actual narration listening, pronunciation check, generated-image judgement, post-crop same-image file check, timed captions, finished-film QA or owner approval.",
+    "This source PASS creates no exact newUS25 account, all-in quote, protected production admission or spending permission."
+  ],
+  "native_or_blind_or_author_review_conclusions_used": false,
+  "narrative_reader_review_performed": false,
+  "new_media_generated": false,
+  "paid_calls": 0,
+  "provider_calls": 0,
+  "backend_mutations": 0,
+  "git_operations": 0,
+  "owner_approval_created": false,
+  "only_files_written": [
+    "reviews/source-r5-independent.json",
+    "verify-1.md"
+  ]
+}

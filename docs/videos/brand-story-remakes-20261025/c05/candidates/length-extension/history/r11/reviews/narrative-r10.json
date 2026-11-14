@@ -1,0 +1,269 @@
+{
+  "narrative_hash": "e193c95de358ae69",
+  "script_hash": "73bf5a907a6e5b646cac5d939f2c7427d6947c4c44866d2c3530d1f20becbd84",
+  "panel_rules_sha256": "f46a3e7ed0366033e199204e20b2dc5199b873654a0a4cccc1d8bcdde300a628",
+  "panel_narration_sha256": "e0f3c21508d8e4a1608dcd52b078cf422473c9ebbfcd393d396e33a4972ebbf4",
+  "round": 10,
+  "passed": false,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c05r001] 你想讓一根蚊香陪你撐過長夜，早期一根卻約四十分鐘就燒完。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c07o04] 採下的花遇上連雨怎麼辦，點火後成分又從哪裡離開？",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c05r074] 同一份說明又記，約一九五五年，合成成分丙烯菊酯開發並實用化。；讀者二：[c05r074] 同一份說明又記，約一九五五年，合成成分丙烯菊酯開發並實用化。",
+      "yes_readers": 0
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c07o05] 金鳥這一卷香，我們沿著百餘年的材料選擇，追到你點火的那一端。",
+      "yes_readers": 2
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c05r091] 原廠的現行原料表裡，仍有植物性粉末和木粉。",
+      "yes_readers": 2
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c05r032] 我覺得這個轉身很漂亮；但盤得進小桌面，就等於工廠能夠交貨了嗎？",
+      "yes_readers": 2
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c07d08] 它寫，做一張寬大的竹簾，把花排在上面，再從下方供熱，讓溫暖的室內接手乾燥。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c05r061] 資料館另列約一九二二年的手卷商品，燃燒約十二小時，又是另一款。",
+      "yes_readers": 2
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[c05r080] 使用前，照原廠的現行問答，先從中間輕按，再捏住較厚的中心，上下分開。",
+      "yes_readers": 2
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c05r103] 想看懂日用品背後這些不只靠一個好點子的選擇，歡迎訂閱這個頻道。",
+      "yes_readers": 2
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c07o06] 一把會散的乾花粉末，憑什麼變成能陪你過夜的商品？",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c05r101] 一把乾花粉末要成為過夜的商品，靠的是讓材料在該留的時候留住，到了使用時，再有節奏地離開。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c07a10] 這些身分研究，讓後來合成成分的開發往前走；但換了有效成分，植物粉料就可以拿掉了嗎？",
+      "yes_readers": 1
+    }
+  ],
+  "failed": [
+    "one_line"
+  ],
+  "advisory": [],
+  "readers": [
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[c05r001] 你想讓一根蚊香陪你撐過長夜，早期一根卻約四十分鐘就燒完。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[c07o04] 採下的花遇上連雨怎麼辦，點火後成分又從哪裡離開？"
+        },
+        {
+          "id": "one_line",
+          "yes": false,
+          "evidence": "[c05r074] 同一份說明又記，約一九五五年，合成成分丙烯菊酯開發並實用化。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[c07o05] 金鳥這一卷香，我們沿著百餘年的材料選擇，追到你點火的那一端。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[c05r091] 原廠的現行原料表裡，仍有植物性粉末和木粉。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c05r032] 我覺得這個轉身很漂亮；但盤得進小桌面，就等於工廠能夠交貨了嗎？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[c07d08] 它寫，做一張寬大的竹簾，把花排在上面，再從下方供熱，讓溫暖的室內接手乾燥。"
+        },
+        {
+          "id": "no_recap",
+          "yes": true,
+          "evidence": "[c05r061] 資料館另列約一九二二年的手卷商品，燃燒約十二小時，又是另一款。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[c05r080] 使用前，照原廠的現行問答，先從中間輕按，再捏住較厚的中心，上下分開。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c05r103] 想看懂日用品背後這些不只靠一個好點子的選擇，歡迎訂閱這個頻道。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c07o06] 一把會散的乾花粉末，憑什麼變成能陪你過夜的商品？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c05r101] 一把乾花粉末要成為過夜的商品，靠的是讓材料在該留的時候留住，到了使用時，再有節奏地離開。"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[c07a10] 這些身分研究，讓後來合成成分的開發往前走；但換了有效成分，植物粉料就可以拿掉了嗎？"
+        }
+      ],
+      "failed": [
+        "one_line"
+      ],
+      "advisory": []
+    },
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[c05r001] 你想讓一根蚊香陪你撐過長夜，早期一根卻約四十分鐘就燒完。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[c07o06] 一把會散的乾花粉末，憑什麼變成能陪你過夜的商品？"
+        },
+        {
+          "id": "one_line",
+          "yes": false,
+          "evidence": "[c05r074] 同一份說明又記，約一九五五年，合成成分丙烯菊酯開發並實用化。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[c07o05] 金鳥這一卷香，我們沿著百餘年的材料選擇，追到你點火的那一端。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[c05r091] 原廠的現行原料表裡，仍有植物性粉末和木粉。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c05r058] 那麼，這些較晚的商品，到底留下多長、燒多久的明確紀錄？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[c05r055] 金鳥說，雙卷方式能降低運送中的折損與運輸成本。"
+        },
+        {
+          "id": "no_recap",
+          "yes": true,
+          "evidence": "[c05r061] 資料館另列約一九二二年的手卷商品，燃燒約十二小時，又是另一款。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[c5r5a07] 出貨還得等。這個圓，接著要在工廠裡待多久？"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c05r103] 想看懂日用品背後這些不只靠一個好點子的選擇，歡迎訂閱這個頻道。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c05r001] 你想讓一根蚊香陪你撐過長夜，早期一根卻約四十分鐘就燒完。"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c05r101] 一把乾花粉末要成為過夜的商品，靠的是讓材料在該留的時候留住，到了使用時，再有節奏地離開。"
+        },
+        {
+          "id": "no_detour",
+          "yes": false,
+          "evidence": "[c07a09] 文章還刊出保存的實驗筆記照片，圖說標成約那個年代使用；一碗花的功效，背後有這樣細的辨認。"
+        }
+      ],
+      "failed": [
+        "one_line",
+        "no_detour"
+      ],
+      "advisory": []
+    }
+  ]
+}

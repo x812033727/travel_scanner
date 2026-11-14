@@ -1,0 +1,52 @@
+{
+  "source_video_sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+  "reviewer": "/root/c05_r12_review_pt_id",
+  "independent": true,
+  "role_disclosure": "本 agent 未撰寫或修訂本次中文原稿、PT 或 ID 譯稿。以目前 source video.json、script.md、claims.json／claims.md 為語意原件，獨立全讀兩語各108句（含18句沿用）、6章、title、description、tags 及全部 thumbnail 文字，並逐項比對 worksheet 與 native JSON；未以譯者自校或既往 review 作為結論。僅作全文語意、術語與語言審查；沒有實際音訊／字幕 timeline，未驗證 SRT 對時或 dub fit。",
+  "locales": [
+    {
+      "locale": "pt",
+      "worksheet_sha256": "f964598f362bb3f9fd31c39e50d1106b46bdeb8f3329bfec2d96d065a391f645",
+      "translation_sha256": "fde887f5a9686dc3f49b19d21a99b8ab859f3b237caa8513f65cf837c55a2439",
+      "status": "FIXES_REQUIRED",
+      "checked_lines": 108,
+      "checked_chapters": 6,
+      "findings": [
+        {
+          "target": "lines.c07a07",
+          "required": true,
+          "current": "Em 1958, Yoshio Katsuda e outros pesquisadores fizeram transformações químicas no material, ligando-o a compostos de identidade conhecida.",
+          "proposed": "Em 1958, Yoshio Katsuda e outros pesquisadores transformaram quimicamente o material em compostos cuja identidade já era conhecida.",
+          "reason": "「ligando-o a compostos」寫成把材料與已知化合物連接；原件及 claims.c07a07 的限定是經化學轉換得到身分／配置已知的化合物，再依 c07a08 保留的立體關係判定原材料身分。連接兩物與轉化成已知物是不同化學動作，需明確用「轉變成」保留研究方法。1958 年及 Yoshio Katsuda 保持不變。"
+        }
+      ],
+      "advisory": []
+    },
+    {
+      "locale": "id",
+      "worksheet_sha256": "a5a1c1d78747d123e8ce6276655952082c7207c57b7ccce7ad644d16da349008",
+      "translation_sha256": "b2023a0a86a25f8cc65f42726dc014eab55911719a43552e739ff5808a3873b6",
+      "status": "FIXES_REQUIRED",
+      "checked_lines": 108,
+      "checked_chapters": 6,
+      "findings": [
+        {
+          "target": "lines.c07a07",
+          "required": true,
+          "current": "Pada 1958, Yoshio Katsuda dan rekan-rekannya mengubah bahan itu secara kimia, menghubungkannya dengan senyawa yang identitasnya sudah diketahui.",
+          "proposed": "Pada 1958, Yoshio Katsuda dan rekan-rekannya mengubah bahan itu secara kimia menjadi senyawa yang identitasnya sudah diketahui.",
+          "reason": "「menghubungkannya dengan senyawa」寫成把材料與已知化合物連接；原件及 claims.c07a07 的限定是經化學轉換得到身分／配置已知的化合物，再依 c07a08 保留的立體關係判定原材料身分。連接兩物與轉化成已知物是不同化學動作，需明確用「轉變成」保留研究方法。1958 年及 Yoshio Katsuda 保持不變。"
+        }
+      ],
+      "advisory": [
+        {
+          "target": "lines.c07o04",
+          "required": false,
+          "current": "Bagaimana kalau bunga yang sudah dipetik terkena hujan berhari-hari, dan setelah dinyalakan, dari bagian mana kandungannya terlepas?",
+          "proposed": "Bagaimana kalau bunga yang sudah dipetik terkena hujan berhari-hari? Lalu, setelah obat nyamuk dinyalakan, dari bagian mana kandungannya terlepas?",
+          "reason": "可將兩個預告拆成兩個問句，並補明第二問的點火主詞為 obat nyamuk，讀起來更自然。全文語境已可還原主詞，因此列為可選潤飾，不作阻擋。"
+        }
+      ]
+    }
+  ]
+}

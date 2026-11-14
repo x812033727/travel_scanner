@@ -1,0 +1,73 @@
+{
+  "status": "candidate_unapproved",
+  "basis_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
+  "reference_pr": 1844,
+  "original_slug": "story-everyday-kincho-c05",
+  "candidate_slug": "story-everyday-kincho-c05-remake-20261025",
+  "counts": {
+    "scenes": 112,
+    "lines": 114,
+    "spoken_characters": 3303,
+    "characters_including_punctuation": 3676,
+    "illustration_scenes": 111,
+    "cards": 1
+  },
+  "estimated_seconds_at_4_5_chars": 734.0,
+  "duration_gate_passed": false,
+  "measured_tts_seconds": null,
+  "prior_owner_approval_reused": false,
+  "new_source_access_performed": true,
+  "source_evidence": "Existing 2026-10-22 C05 source matrix plus 2026-10-25 source-snapshots/source-1.txt and source-2.txt; S21 adds the factory density comparison and binder ingredients; independent exact-script verification pending.",
+  "holds": [
+    "New candidate script needs independent line-by-line source review and two isolated narrative readers.",
+    "No TTS or image request has been made; actual 12–14 minute body duration remains unmeasured.",
+    "Candidate remake slug has no activated whole-film account; no paid call is allowed until production budget routing and attribution are ready.",
+    "Current C05 historic USD25/79-line/86-image approval does not cover this expanded remake."
+  ],
+  "source_boundaries": [
+    "F03 wife attribution remains company retrospective; archival attribution differs and does not prove erasure.",
+    "F05 1900 is a company-recorded patent application only, not a grant.",
+    "F07/F14 describe separate circa-1919 and circa-1922 products, not a same-formula evolution or efficacy multiples.",
+    "F09 extruded strands are combined by hand; no claim of simultaneous double extrusion.",
+    "F15/F16 completion dates do not prove fleetwide changeovers.",
+    "F17 green color is the described modern product design rationale, not historic formula continuity.",
+    "F18 geometry, material burn rate and dual-coil shipping are different mechanisms."
+  ],
+  "input_sha256": {
+    "script.md": "d49fe268109ddce4bf6e44a3e75831467735dec23e58d11bcc92065ee533288d",
+    "source-matrix.md": "a7eb8401abcc5715c46352187c0efe100fa3aa47e22a020a1fc16ffd55504516",
+    "video.json": "49e1787fae4e2b7e8358321496f01c0c73bb21f7376b49dfe1e2e1b0f84f5452"
+  },
+  "file_sha256": {
+    "video.json": "db5d57087a2451191026e7b6aa61a2d2e65b03fd29bd704a2c03a5a64f068598",
+    "script.md": "2a4c3a90e9d557289a9df8eab0369f214a123e655655b6beb530d0d2f730f859",
+    "claims.md": "37d42bae0b0a2c7374385e5ab78e4b4850a9c5ffe4f1810cf31cfdcaf728358f",
+    "narration-only.json": "c036a2b592c897ea2b846cbfdd026ab14e7e7d030f1ee95983924d547ad392fe",
+    "series-context.json": "fc96b78cbd6817d85c18cdf2878bb4b961ecd607bfe082cf94f14a1f7e204e91",
+    "lint.json": "bc67ba3d78eda49c82f1755225570e36d106ee6b5a38bcdea2073ca7816b7431"
+  },
+  "revision": "r2",
+  "lint": {
+    "errors": 0,
+    "warnings": 0,
+    "summary": {
+      "minutes": 15.10388888888889,
+      "lines": 114,
+      "spoken_units": 3297,
+      "billable_characters": 10393,
+      "chapters": [
+        "00:00 一根香燒完了，夜還很長",
+        "00:51 先有花種，卻還沒有能賣的形狀",
+        "03:16 長條盤進圓，木模卻停住了",
+        "05:37 上市後，工人把兩條合在一起",
+        "08:38 新機器完成，舊手卷沒有立刻消失",
+        "10:56 路徑在外面，速度藏在香體裡"
+      ]
+    }
+  },
+  "previous_revision": {
+    "narration_sha256": "d7776ed5c66b61989e2c0e8443537dbb34ccd4886c5c1fd828cd02179c6458a2",
+    "status": "superseded_before_independent_review",
+    "reason": "six cadence gaps and insufficient spoken content"
+  }
+}

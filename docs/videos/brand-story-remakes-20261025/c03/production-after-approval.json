@@ -1,0 +1,40 @@
+{
+  "observed_at": "2026-10-25T14:36:02.885Z",
+  "slug": "story-everyday-moleskine-c03-remake-20261025",
+  "source_video_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+  "outline": {
+    "status": "approved",
+    "review_id": "3b0480b5-0ca4-4337-b743-0db04dfb4106",
+    "content_sha256": "56becc4f375bc3e9c2a1600eb4f6061803be39c34f0e70d1ff7ce7dd70931b2e",
+    "decided_at": "2026-10-25T14:10:30.120741Z",
+    "imported": true
+  },
+  "script": {
+    "status": "approved",
+    "review_id": "c90d3492-7efe-4385-bdcc-ccd6664205d1",
+    "content_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+    "decided_at": "2026-10-25T14:09:45.088309Z",
+    "imported": true
+  },
+  "next_native_stage": "tts",
+  "native_attempt": {
+    "exit_code": 3,
+    "error_code": "video_budget_preproduction_hold",
+    "log_sha256": "828652d02a5cb31b820952616f467000169df147373aa59bbdd9a1af0f3bf787",
+    "reason": "this story's whole-film budget route is on preproduction hold",
+    "refused_before_request_planning_or_provider_dispatch": true
+  },
+  "paid_provider_requests": 0,
+  "generated_audio_files": 0,
+  "admission_policy": {
+    "file": "tools/video/core/pending-pilot-budget.mjs",
+    "sha256": "58273eb487f49bf94ca917a541e8df570a403056f744fdb8437e430f955eae93",
+    "latest_checked_main": "9ada4a4ee",
+    "guard_changed": false
+  },
+  "remaining_prerequisites": [
+    "Reviewed registration, separate account and protected activation for this exact remake slug; actual provider/account/price/operation readback.",
+    "Formal v4 channel branding bytes and identity verification."
+  ],
+  "ordinary_approval_does_not_activate_budget": true
+}

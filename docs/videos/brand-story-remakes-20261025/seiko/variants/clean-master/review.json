@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_clean_master_metadata_derivation",
+  "status": "METADATA_DERIVATION_PASS",
+  "checked_at": "2026-10-26T05:57:36.994Z",
+  "reviewer": "/root",
+  "independent": true,
+  "independence_basis": "Coordinator did not author the Seiko R4 current independently source-verified/native-merged narration and teaser plan source (owner reviews pending) or its clean variant/derivation. Reproduced native checks from actual frozen bytes and native snapshot dictionary.",
+  "slug": "story-adapt-seiko-quartz-astron-remake-20261025",
+  "scope": {
+    "source_fact_qa": false,
+    "written_visual_qa": false,
+    "media_qa": false,
+    "owner_approval": false,
+    "backend_calls": 0,
+    "provider_calls": 0,
+    "paid_requests": 0
+  },
+  "input_files_sha256": {
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/video.json": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/variants/clean-master/video.json": "7af7e283baa19bf07f4c5e8d62aa8a545a6d0cb7e48a96817807dbee90e17add",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/variants/clean-master/derivation.json": "a27402e6354d600ad01da947a01033680ebd5ac8707bab73a7eef45df9984664",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/variants/clean-master/lint.json": "3d9f727a0343a0836d2a9c655441f97f20d796cd9ac206a1b067e73931aba2f9",
+    "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/script.md": "fbce041d1b326cc6e6e74d5aaf73966c2315ce50d3196886c9b67ac974007e81",
+    "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/story-lexicon/current.json": "0d27f13eda0ba59de93bf08e9464152c5fda914dfc6e4b45083cf840985b8ff8"
+  },
+  "immutable_lexicon": {
+    "mode": "snapshot",
+    "lexicon_sha256": "4ce7a255c5ba40e62246b602cf2ce17a91d1ea431b2b02827a51f589d14aa57e",
+    "head_event_sha256": "2d1f3f0163df7cfd7eb4fe1971633c98abf9f73bdf57f7fc21e388d352736355",
+    "sequence": 1,
+    "actual_snapshot_read_by_native_reader": true
+  },
+  "deep_diff": [
+    {
+      "path": "subtitles.burn_in",
+      "source": true,
+      "variant": false
+    }
+  ],
+  "native_input_hashes": {
+    "narrativeHash": {
+      "source": "075992825ec0ee49",
+      "variant": "075992825ec0ee49",
+      "equal": true
+    },
+    "speechHash": {
+      "source": "4306f6e4e84cf19b",
+      "variant": "4306f6e4e84cf19b",
+      "equal": true
+    },
+    "picturesHash": {
+      "source": "df2913b7280dca45",
+      "variant": "df2913b7280dca45",
+      "equal": true
+    },
+    "lookHash": {
+      "source": "98a370ae40badbaf",
+      "variant": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "source": "71ecdd098c551254",
+      "variant": "71ecdd098c551254",
+      "equal": true
+    },
+    "subtitlesHash": {
+      "source": "4b23ded6e41b1e87",
+      "variant": "ec58a1493220a1da",
+      "equal": false
+    }
+  },
+  "canonical_script_sha256": "fbce041d1b326cc6e6e74d5aaf73966c2315ce50d3196886c9b67ac974007e81",
+  "screenplay_bytes_identical": true,
+  "lint": {
+    "reproduced_from_actual_dictionary": true,
+    "errors": 0,
+    "warnings": 1,
+    "saved_lint_exactly_matches": true
+  },
+  "same_new_remake_budget_identity": true,
+  "old_activated_slug_used": false,
+  "artifacts_absent": [
+    "timeline.json",
+    "narration.wav",
+    "final.mp4",
+    "qa.json",
+    "languages.json"
+  ],
+  "actual_clean_master_exists": false,
+  "media_qa": false,
+  "final_approval": false,
+  "actual_dub_eligibility": false,
+  "limitations": [
+    "Written recipe metadata only; no actual media was decoded or generated.",
+    "Each actual clean output requires full matching QA and current owner final approval.",
+    "Paper estimates do not establish actual narration duration or dubbing eligibility."
+  ]
+}
