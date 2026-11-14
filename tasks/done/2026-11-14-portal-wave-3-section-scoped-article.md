@@ -13,6 +13,7 @@ depends_on: []
 scope:
   - apps/web/components/guides/article-page.tsx
   - apps/web/components/guides/article-page.test.tsx
+  - apps/web/app/(ads-public)/[locale]/life/[slug]/page.test.tsx
   - apps/web/lib/destination-decisions.json
   - apps/web/components/destination-guide.test.tsx
   - apps/web/app/[locale]/destinations/[destinationId]/page.test.tsx
