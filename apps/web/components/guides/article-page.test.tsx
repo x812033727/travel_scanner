@@ -9,7 +9,9 @@ const mocks = vi.hoisted(() => ({
     async () => ({ articles: [], next_cursor: null }),
   ),
   topics: vi.fn(async (): Promise<Record<string, unknown>[]> => []),
-  trending: vi.fn(async () => ({ articles: [] as Record<string, unknown>[], next_cursor: null, available: true })),
+  trending: vi.fn<(locale: string, filters?: Record<string, string>, limit?: number) => Promise<{ articles: Record<string, unknown>[]; next_cursor: null; available: boolean }>>(
+    async () => ({ articles: [], next_cursor: null, available: true }),
+  ),
   permanentRedirect: vi.fn((url: string) => { throw new Error(`NEXT_REDIRECT ${url}`); }),
   headers: vi.fn(async () => new Headers()),
 }));
@@ -175,6 +177,50 @@ describe("further reading", () => {
     expect(screen.queryByTestId("backlinks")).toBeNull();
   });
 
+  it("falls back to same-topic then same-section lifestyle articles when a standalone life article has no API related list", async () => {
+    mocks.article.mockResolvedValue({
+      ...state,
+      slug: "ai-tools-2026-overview",
+      series: null,
+      topics: [{ slug: "ai", label: "AI" }],
+      related: [],
+    });
+    mocks.list.mockImplementation(async (_locale, filters) => {
+      if (filters.section === "life" && filters.topic === "ai") {
+        return {
+          articles: [
+            { ...ref("ai-tools-2026-overview", "Self article"), topics: [{ slug: "ai", label: "AI" }] },
+            { ...ref("claude-code-mcp-guide", "Claude Code MCP 指南"), topics: [{ slug: "ai", label: "AI" }] },
+          ],
+          next_cursor: null,
+        };
+      }
+      if (filters.section === "life" && !filters.topic) {
+        return {
+          articles: [
+            { ...ref("claude-code-mcp-guide", "Claude Code MCP 指南"), topics: [{ slug: "ai", label: "AI" }] },
+            { ...ref("etf-dca-checklist", "ETF 定期定額檢查清單"), topics: [{ slug: "finance", label: "理財" }] },
+            { ...ref("tokyo-rail-pass", "東京交通票券", "howto"), topics: [{ slug: "transport", label: "交通" }] },
+          ],
+          next_cursor: null,
+        };
+      }
+      return { articles: [], next_cursor: null };
+    });
+
+    render(await renderGuideArticle({ locale: "en", kind: "life", slug: "ai-tools-2026-overview" }));
+    expect(mocks.list).toHaveBeenCalledWith("en", { section: "life", kind: "life", topic: "ai" }, 4);
+    expect(mocks.list).toHaveBeenCalledWith("en", { section: "life", kind: "life" }, 4);
+    const grid = screen.getByRole("region", { name: "同主題延伸閱讀" });
+    expect(within(grid).getAllByRole("link").map((link) => link.textContent)).toEqual([
+      "Claude Code MCP 指南",
+      "ETF 定期定額檢查清單",
+    ]);
+    expect(within(grid).queryByText("Self article")).toBeNull();
+    expect(within(grid).queryByText("東京交通票券")).toBeNull();
+    expect(screen.queryByTestId("travel-crosslinks")).toBeNull();
+  });
+
   it("hands the definition-card words to the body, so a term link can show its target's description", async () => {
     mocks.article.mockResolvedValue({
       ...state,
@@ -300,40 +346,104 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
       series: null,
       news_date: "2026-11-13",
       topics: [{ slug: "ai-news", label: "AI 新聞" }],
+      related: [
+        { kind: "life", slug: "already-related", title: "已列延伸閱讀", description: "D" },
+      ],
       document: {
         ...document,
         blocks: [{ type: "heading", level: 2, text: "重點" }],
       },
     });
-    mocks.trending.mockResolvedValueOnce({
-      articles: [
-        {
-          slug: "short-news-20261113",
-          kind: "life",
-          destination_id: null,
-          destination_label: null,
-          topics: [{ slug: "ai-news", label: "AI 新聞" }],
-          title: "Self article should be excluded",
-          description: "D",
-          published_at: "2026-11-13T00:00:00Z",
-          valid_until: null,
-          featured: false,
-        },
-        {
-          slug: "tokyo-esim-pick",
-          kind: "howto",
-          destination_id: "tokyo",
-          destination_label: "東京",
-          topics: [{ slug: "connectivity", label: "網路" }],
-          title: "日本 eSIM 實測比較",
-          description: "D",
-          published_at: "2026-11-13T01:00:00Z",
-          valid_until: null,
-          featured: true,
-        },
-      ],
-      next_cursor: null,
-      available: true,
+    mocks.trending.mockImplementation(async (_locale, filters) => {
+      if (filters?.section === "life" && filters?.topic === "ai-news") {
+        return {
+          articles: [
+            {
+              slug: "short-news-20261113",
+              kind: "life",
+              destination_id: null,
+              destination_label: null,
+              topics: [{ slug: "ai-news", label: "AI 新聞" }],
+              title: "Self article should be excluded",
+              description: "D",
+              published_at: "2026-11-13T00:00:00Z",
+              valid_until: null,
+              featured: false,
+            },
+            {
+              slug: "already-related",
+              kind: "life",
+              destination_id: null,
+              destination_label: null,
+              topics: [{ slug: "ai-news", label: "AI 新聞" }],
+              title: "已列延伸閱讀",
+              description: "D",
+              published_at: "2026-11-13T00:30:00Z",
+              valid_until: null,
+              featured: false,
+            },
+            {
+              slug: "claude-code-mcp-guide",
+              kind: "life",
+              destination_id: null,
+              destination_label: null,
+              topics: [{ slug: "ai-news", label: "AI 新聞" }],
+              title: "Claude Code MCP 指南",
+              description: "D",
+              published_at: "2026-11-13T01:00:00Z",
+              valid_until: null,
+              featured: true,
+            },
+            {
+              slug: "tokyo-esim-pick",
+              kind: "howto",
+              destination_id: "tokyo",
+              destination_label: "東京",
+              topics: [{ slug: "connectivity", label: "網路" }],
+              title: "日本 eSIM 實測比較",
+              description: "D",
+              published_at: "2026-11-13T01:30:00Z",
+              valid_until: null,
+              featured: true,
+            },
+          ],
+          next_cursor: null,
+          available: true,
+        };
+      }
+      if (filters?.section === "life" && !filters?.topic) {
+        return {
+          articles: [
+            {
+              slug: "claude-code-mcp-guide",
+              kind: "life",
+              destination_id: null,
+              destination_label: null,
+              topics: [{ slug: "ai-news", label: "AI 新聞" }],
+              title: "Claude Code MCP 指南",
+              description: "D",
+              published_at: "2026-11-13T01:00:00Z",
+              valid_until: null,
+              featured: true,
+            },
+            {
+              slug: "etf-dca-checklist",
+              kind: "life",
+              destination_id: null,
+              destination_label: null,
+              topics: [{ slug: "finance", label: "理財" }],
+              title: "ETF 定期定額檢查清單",
+              description: "D",
+              published_at: "2026-11-13T02:00:00Z",
+              valid_until: null,
+              featured: false,
+            },
+          ],
+          next_cursor: null,
+          available: true,
+        };
+      }
+      return { articles: [], next_cursor: null, available: true };
     });
 
     const meta = await guideArticleMetadata({ locale: "en", kind: "life", slug: "short-news-20261113" });
@@ -351,10 +461,15 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
     expect(within(footerShare).getByText("覺得這篇整理實用嗎？分享給需要的朋友")).toBeTruthy();
     expect(within(footerShare).getByRole("button", { name: "複製連結" })).toBeTruthy();
     expect(container.querySelector("div.fixed.inset-x-0.lg\\:hidden")).not.toBeNull();
+    expect(mocks.trending).toHaveBeenCalledWith("en", { section: "life", topic: "ai-news" }, 8);
+    expect(mocks.trending).toHaveBeenCalledWith("en", { section: "life" }, 10);
     const trendingSection = screen.getByRole("region", { name: "熱門閱讀" });
     expect(trendingSection.closest("aside")?.className).not.toContain("hidden");
-    expect(within(trendingSection).getByRole("link", { name: "日本 eSIM 實測比較" })).toBeTruthy();
+    expect(within(trendingSection).getByRole("link", { name: "Claude Code MCP 指南" })).toBeTruthy();
+    expect(within(trendingSection).getByRole("link", { name: "ETF 定期定額檢查清單" })).toBeTruthy();
     expect(within(trendingSection).queryByText("Self article should be excluded")).toBeNull();
+    expect(within(trendingSection).queryByText("已列延伸閱讀")).toBeNull();
+    expect(within(trendingSection).queryByText("日本 eSIM 實測比較")).toBeNull();
   });
 
   it("opens a mobile TOC quick-jump bottom sheet once scrolled past 28% on multi-section articles", async () => {
