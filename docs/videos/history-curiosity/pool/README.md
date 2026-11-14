@@ -15,6 +15,15 @@
 - [來源索引](SOURCES.md)
 - [驗證](VALIDATION.md)
 
+## 獨立觀眾評分（2026-11-14 起，成題必評）
+
+站主 2026-11-14：「把分數寫回題目池」「之後擴充如果有成題的也要補評分」。
+
+- **評什麼：** 每一組可成 8 分鐘以上一集的長題案。分數寫在 `themes.json` 的 `audience`（`score`、`rank`／`of`、點擊／鉤子／驚喜／兌現／分享五項、短評、`reviewed_on`、`review`），排名表在 [THEMES.md](THEMES.md) 開頭。 入選的單集長題（`editorial.role` 為 `episode_core`、片長下限 ≥ 8 分鐘）同日抽樣評了 156 題，分數在 `reviews/audience-20261114.json` 的 `candidates`，build 會掛到 `pool.json` 該題的 `audience`；還沒評的單集題不擋。
+- **檢查會擋：** 素材審視為可成題（或未審）的題案沒有 `audience` 的可成題長題，`cli.mjs build`／`check` 直接失敗。擴充新增長題時，要先補評分再 build。
+- **怎麼補：** 派**沒參與該輪撰稿、研究與覆核的獨立子代理**，以第一次滑到的一般觀眾身分，只讀題案卡（片名、核心追問、目標分鐘、章節標題與新增理解），不讀 repo 其他檔案、不上網，五項各打 1–10 分。每批都放進 `reviews/audience-20261114.json` 的同一組 `anchors` 錨點題，用錨點平均的差扣掉該評審的鬆緊，再併入全池重排 `rank`／`of`。新紀錄存成 `reviews/audience-<日期>.json`，題案的 `review` 指向它。
+- **它不是什麼：** 題案吸引力的參考，不是成片評分（成片仍要走 `review/audience-review.md` 的觀眾審片關卡），也不是點閱率預測。
+
 ## 目前的結果（2026-11-13，revision `2026-11-13-curio-pool-1492`）
 
 | 層級 | 數量 |

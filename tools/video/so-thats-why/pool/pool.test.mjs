@@ -7,12 +7,15 @@ import { assemble, normalizeUrl, urlsIn, readPool, similarityPairs, validateEdit
 import { readBaseline, compareBaseline, validateBaseline, validateCheckpoints, sourceImpact } from './history.mjs';
 import { openStore, ingest, assertSnapshot, search, lookup } from './store.mjs';
 import { validateThemes, renderHtml, renderProducible, readingsForCandidate } from './render.mjs';
+import { validateAudience } from './render.mjs';
 
 const source = (id) => ({ id, url: `https://example.org/${id}`, readings: [{ origin: 'fixture', title: id, publisher: 'fixture', accessed_on: '2026-11-01', reading_scope: 'test fixture' }] });
 const record = (id, question, target = 'different mechanism') => ({ id, origin: 'fixture', question, domain: 'test', mechanism_key: id, answer_target: target, scope: 'fixture scope', source_refs: [{ source_id: id, locator: `section ${id}` }], premise_status: 'screened', eligible: true, notes: '', local_references: [] });
 const input = (rows) => ({ records: rows, sources: rows.map((row) => source(row.id)), inputs: [] });
 const empty = () => ({ merges: [], distinct: [], excluded: [] });
 const choose = (ids) => ({ ids, target_count: ids.length, reason: 'Test fixture selection' });
+
+const AUDIENCE = { score: 7, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json' };
 
 test('exact wording variants preserve both source histories and raw IDs', () => {
   const rows = [record('a', '門把為什麼會電人？', '電荷與放電'), record('b', '門把為什麼會電人?', '另一份資料')];
@@ -391,7 +394,7 @@ test('excluded_source_refs removes an inherited off-scope source reference with 
 
 test('themes cannot reference excluded records or masquerade as approved scripts; HTML contains inert escaped data', () => {
   const pool = assemble(input([record('a', '</script><script>alert(1)</script>')]), empty(), choose(['a']));
-  const theme = { id: 'G01', title: 'fixture', core_question: 'fixture', connection: 'fixture', boredom_risk: 'fixture', drop_if: 'fixture', evidence_gaps: 'fixture', production_ready: false, status: 'EDITORIAL_THEME_NOT_SCRIPT', candidate_ids: ['a'], target_minutes: 10, range_minutes: [9, 11], chapters: Array.from({ length: 4 }, () => ({ title: 'fixture', new_information: 'fixture', candidate_ids: ['a'], seconds: 150 })) };
+  const theme = { id: 'G01', audience: AUDIENCE, title: 'fixture', core_question: 'fixture', connection: 'fixture', boredom_risk: 'fixture', drop_if: 'fixture', evidence_gaps: 'fixture', production_ready: false, status: 'EDITORIAL_THEME_NOT_SCRIPT', candidate_ids: ['a'], target_minutes: 10, range_minutes: [9, 11], chapters: Array.from({ length: 4 }, () => ({ title: 'fixture', new_information: 'fixture', candidate_ids: ['a'], seconds: 150 })) };
   validateThemes({ episodes: [theme] }, pool);
   assert.ok(!renderHtml(pool, { episodes: [theme] }).includes('</script><script>alert(1)</script>'));
   assert.throws(() => validateThemes({ episodes: [{ ...theme, candidate_ids: ['missing'] }] }, pool), /unselected/);
@@ -425,4 +428,20 @@ test('every committed candidate and theme carries one of the 7 Drive categories'
   const themes = JSON.parse(fs.readFileSync(path.join(ROOT, DIR, 'themes.json'), 'utf8'));
   assert.ok(themes.episodes.every((episode) => CATEGORIES.includes(episode.category)));
   validateThemes(themes, pool);
+});
+
+test('audience scores on a theme are 1–10 on five dimensions, ranked, and point at their review record', () => {
+  const good = { score: 7.5, rank: 1, of: 3, click: 8, hook: 7, surprise: 7.5, payoff: 7, share: 8, comment: '想看', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json' };
+  assert.doesNotThrow(() => validateAudience('T1', good));
+  assert.doesNotThrow(() => validateAudience('T1', undefined));
+  assert.throws(() => validateAudience('T1', { ...good, hook: 11 }), /between 1 and 10/);
+  assert.throws(() => validateAudience('T1', { ...good, rank: 4 }), /rank/);
+  assert.throws(() => validateAudience('T1', { ...good, review: 'notes.md' }), /reviews\/audience/);
+});
+
+test('a theme scored after the baseline must be improved and rescored to at least the audience minimum', () => {
+  const base = { score: 7, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-20', review: 'reviews/audience-20261120.json' };
+  const round = { score: 5.5, comment: '片名太長', changes: '縮短片名、刪掉術語章', reviewed_on: '2026-11-19', review: 'reviews/audience-20261119.json' };
+  assert.throws(() => validateAudience('T1', { ...base, rounds: [{ ...round, changes: '' }] }), /changes made after it/);
+  assert.doesNotThrow(() => validateAudience('T1', { ...base, rounds: [round] }));
 });
