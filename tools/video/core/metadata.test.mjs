@@ -187,9 +187,10 @@ test("the description credits the stock photos after the sources, in the vendors
   assert.ok(creditBytes(assets, "zh-TW") > 200 && creditBytes(assets, "zh-TW") < 300, `two credits cost ${creditBytes(assets, "zh-TW")} bytes`);
 });
 
-test("hashtags drop spaces and punctuation, skip repeats in any case and stop at three", () => {
+test("hashtags drop spaces and punctuation, keep combining marks, skip repeats in any case and stop at three", () => {
   assert.deepEqual(hashtagsFrom(["ChatGPT Go", "AI·廣告", "chatgpt-go", "ChatGPTGo", "Plus", "Pro"]), ["#ChatGPTGo", "#AI廣告", "#Plus"]);
-  assert.deepEqual(hashtagsFrom(["!!!", ""]), []);
+  assert.deepEqual(hashtagsFrom(["ตำนาน Frankenstein", "ปีที่ไร้ฤดูร้อน"]), ["#ตำนานFrankenstein", "#ปีที่ไร้ฤดูร้อน"], "Thai vowel and tone marks (\\p{M}) stay intact");
+  assert.deepEqual(hashtagsFrom(["!!!", "\u0301", ""]), []);
 });
 
 test("a brand story's title says so in its own language before the captions tag, once", async () => {

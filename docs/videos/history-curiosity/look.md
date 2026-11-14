@@ -1,6 +1,26 @@
-# 歷史與奇異：畫面規格與畫風樣張
+# 歷史與奇異（奇聞檔案局）：畫面規格與畫風樣張
 
-2026-10-10 起草。畫面參考 cheap（`@cheapaoe`）的可愛卡通，站主要求「內容相關的可愛插畫」、「跟原來如此系列比較像」，全部由 **MiniMax `image-01`** 生成，不再由 Claude 或 Codex 手繪 SVG。這份寫 MiniMax 的限制、系列的 `look`、每張 prompt 的寫法、照片怎麼貼、片頭片尾，與 2026-10-10 畫的四種候選畫風樣張。
+**2026-11-14 定案（現行標準）**：站主指定全系列（與原來如此事務所同步，見 [`../so-thats-why/look.md`](../so-thats-why/look.md)）全面改採升級版**「劇場級動畫光影 × 厚塗水粉質感」**，所有關鍵影格固定由代理內建 `generate_image`（`AspectRatio: "16:9"`）生成，再以 `keyframes import --provider external --usd 0` 匯入，**嚴禁用 MiniMax 生圖**（完整操作規則見 [`../../../.agents/skills/curio-episode/SKILL.md`](../../../.agents/skills/curio-episode/SKILL.md)）：
+
+- **角色參考鎖定**：有角色出場的鏡頭（串場研究員或單集內跨 ≥ 4 鏡出場、過世滿 70 年可入畫的歷史人物），先以 `generate_image` 產出固定角色設定圖（鎖死五官、髮色、髮型與主色年代服裝），每鏡出場時 `ImagePaths` 必傳該角色設定圖；若是重繪既有鏡頭，一併傳入前一版圖檔鎖定骨架與道具位置。遇到 `gemini-3.1-flash-image` 配額冷卻時，先做八語翻譯、配音與 `check-audio` 或分批等待，絕不退回 MiniMax。
+- **五大質感配方**：
+  1. **線條**：前景主體改用暖深褐色（warm-sepia）有粗細收尖變化的細膩手繪墨線，嚴禁粗黑死板的平塗向量框線；背景完全不畫黑框線。
+  2. **光影**：窗邊斜射暖金陽光或年代暖光（warm golden directional window sunlight），在髮絲、眼鏡框、領口／帽緣與道具倒角打出明亮金邊輪廓光（glowing rim light），空氣帶微細光塵（subtle volumetric dust motes）。
+  3. **景深**：前景角色與桌面道具銳利聚焦，背景做奶油感淺景深散景虛化（creamy shallow depth-of-field painterly bokeh）。
+  4. **材質與色盤**：保留奇聞檔案局色盤（夜空藍、牛皮紙暖金、褪色青、印章紅點綴），畫出厚塗水粉（rich gouache）與劇場動畫的多層次布料摺皺陰影、木桌紋理、玻璃透光折射、金屬高光與液體光澤，不要單色平塗色塊。
+  5. **零出錯硬規則**：全圖 100% 滿版無黑邊（桌面靜物近景必明寫背景顏料延伸至四邊最外層像素，防畫紙留白邊）；嚴禁任何中英文字母、數字、街道招牌字（外景明寫 `plain unadorned walls with zero hanging shop signs`）或粉筆亂碼；`nobody: true` 純物件／空景鏡頭嚴禁出現路人或殘肢；五指結構、眼神對焦、時代道具（嚴禁穿越插電檯燈等現代物）與地圖／地球儀地理位置必須 100% 精準；全部匯入前必切四格 2 倍放大圖，派獨立子代理逐張審過才可鎖定分鏡。
+- **每鏡 Prompt 英文畫風基底句**：
+  ```text
+  High-craft 2D theatrical anime and rich gouache editorial illustration, 16:9 full-bleed edge-to-edge with zero borders. Delicate tapered warm-sepia ink linework on foreground subject (no heavy flat black outlines). Warm golden directional window sunlight casting glowing rim light along hair strands, glasses/hood, and object bevels, with subtle dust motes. Tactile multi-layered fabric fold shading, rich wood grain and material reflections. Creamy shallow depth-of-field painterly bokeh background with soft brushy edges and zero black outlines in the background.
+  ```
+- `video.json` 頂層仍寫 `"look": { "preset": "cute-mystery" }`（不加 `style`／`negative`）以通過系列 lint（`tools/video/core/curio.mjs`）與縮圖版型檢查，實際關鍵影格一律用上方升級基底句經 `generate_image` 生圖後 `keyframes import --provider external --usd 0` 匯入。
+- **語音固定配置**：中文（`zh-TW`）固定用 Gemini `Sulafat`（實測語速 ≥ 4.4 字／秒）；八語配音（`en,ja,ko,es,pt,id,vi,th`）固定用 MiniMax（`dub --provider minimax`）。
+
+---
+
+以下為早期歷史版本紀錄（2026-10-10 MiniMax `image-01` 平塗卡通樣張紀錄，已被上方 2026-11-14 定案取代）：
+
+2026-10-10 起草。畫面當時參考 cheap（`@cheapaoe`）的可愛卡通，曾由 MiniMax `image-01` 生成。以下保留當時 MiniMax 的限制與四種候選樣張紀錄供考證。
 
 ## 2026-10-14：做法收進 skill，lint 守住畫風
 
