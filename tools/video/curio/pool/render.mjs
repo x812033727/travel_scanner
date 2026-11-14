@@ -30,6 +30,31 @@ export function themeCategory(episode, byId) {
   return best ?? CATEGORY_LIST[0];
 }
 
+// 獨立觀眾評分（站主 2026-11-14「把分數寫回題目池」）：未參與撰稿的評審只讀題案的片名、追問與章節，
+// 以第一次滑到的一般觀眾打五項 1–10 分；共同錨點題校正評審鬆緊。是題案吸引力的參考，不是成片評分或點閱率預測。
+export const AUDIENCE_DIMENSIONS = Object.freeze({ click: '點擊', hook: '鉤子', surprise: '驚喜', payoff: '兌現', share: '分享' });
+// 站主 2026-11-14：擴充出的成題要「初評 → 依短評改進 → 複評」，複評達 AUDIENCE_MIN 才能入題。
+// 2026-11-14 那一次全池初評（AUDIENCE_BASELINE）是基準線，不受這道關卡限制；其他紀錄（含同日的改進後複評）都要過。
+export const AUDIENCE_MIN = 6.5;
+export const AUDIENCE_BASELINE = 'reviews/audience-20261114.json';
+export function validateAudience(owner, audience) {
+  if (audience === undefined) return;
+  for (const round of audience?.rounds ?? []) {
+    if (!Number.isFinite(round.score) || round.score < 1 || round.score > 10 || !round.comment || !round.changes || !/^\d{4}-\d{2}-\d{2}$/.test(round.reviewed_on ?? '') || !/^reviews\/audience-[\w-]+\.json$/.test(round.review ?? '')) throw new Error(`${owner}: each earlier audience round needs score, comment, the changes made after it, reviewed_on and review`);
+  }
+  const inRange = (value) => Number.isFinite(value) && value >= 1 && value <= 10;
+  if (!audience || !inRange(audience.score) || Object.keys(AUDIENCE_DIMENSIONS).some((key) => !inRange(audience[key]))) throw new Error(`${owner}: audience needs score and ${Object.keys(AUDIENCE_DIMENSIONS).join(', ')} between 1 and 10`);
+  if (!Number.isInteger(audience.rank) || !Number.isInteger(audience.of) || audience.rank < 1 || audience.rank > audience.of) throw new Error(`${owner}: audience rank must be 1..of`);
+  if (!audience.comment || !/^\d{4}-\d{2}-\d{2}$/.test(audience.reviewed_on ?? '') || !/^reviews\/audience-[\w-]+\.json$/.test(audience.review ?? '')) throw new Error(`${owner}: audience needs a comment, reviewed_on and its reviews/audience-*.json record`);
+}
+const audienceLine = (audience) => `**獨立觀眾評分：** ${audience.score.toFixed(2)}／10（第 ${audience.rank}／${audience.of} 名；${Object.entries(AUDIENCE_DIMENSIONS).map(([key, label]) => `${label} ${audience[key]}`).join('、')}）— ${cell(audience.comment)}（${audience.reviewed_on}，[${audience.review}](${audience.review})）${(audience.rounds ?? []).map((round) => `；先前 ${round.reviewed_on} 評 ${round.score.toFixed(2)}，改了：${cell(round.changes)}`).join('')}`;
+function audienceRanking(episodes) {
+  const scored = episodes.filter((episode) => episode.audience).sort((a, b) => a.audience.rank - b.audience.rank);
+  if (!scored.length) return [];
+  const { reviewed_on: on, review } = scored[0].audience;
+  return ['', `## 獨立觀眾評分排名（${on}）`, '', `${scored.length} 組長題由未參與撰稿的評審以一般觀眾的角度讀題案打分（點擊、鉤子、驚喜、兌現、分享各 1–10，取平均；共同錨點題校正評審鬆緊；紀錄在 [${review}](${review})）。這是題案吸引力的參考，不是成片評分，也不是點閱率預測。`, '', '| 名次 | ID | 題案 | 分數 | 觀眾短評 |', '| --- | --- | --- | --- | --- |', ...scored.map((episode) => `| ${episode.audience.rank} | ${episode.id} | ${cell(episode.title)} | ${episode.audience.score.toFixed(2)} | ${cell(episode.audience.comment)} |`)];
+}
+
 export function validateThemes(themes, pool) {
   if (!Array.isArray(themes.episodes) || !themes.episodes.length) throw new Error('Theme list is empty');
   if (new Set(themes.episodes.map((episode) => episode.id)).size !== themes.episodes.length) throw new Error('Duplicate theme id');
@@ -39,6 +64,13 @@ export function validateThemes(themes, pool) {
     for (const key of ['id', 'title', 'core_question', 'connection', 'boredom_risk', 'drop_if', 'evidence_gaps']) if (!episode[key]) throw new Error(`${episode.id}: missing ${key}`);
     if (episode.category !== undefined && !CATEGORY_LIST.includes(episode.category)) throw new Error(`${episode.id}: unknown category ${episode.category}`);
     if (episode.production_ready !== false || episode.status !== 'EDITORIAL_THEME_NOT_SCRIPT') throw new Error('A theme cannot grant production approval');
+    validateAudience(episode.id, episode.audience);
+    // 站主 2026-11-14：之後擴充出的可成題長題也要補獨立觀眾評分，沒評分不能進池。
+    if (episode.audience === undefined && materialReady(episode)) throw new Error(`${episode.id}: a producible long theme needs an independent audience score (theme.audience, recorded in reviews/audience-*.json); see the pool README`);
+    if (episode.audience && episode.audience.review !== AUDIENCE_BASELINE && materialReady(episode)) {
+      if (!episode.audience.rounds?.length) throw new Error(`${episode.id}: a new producible theme is scored, improved from the feedback, then scored again; record the first round in audience.rounds`);
+      if (episode.audience.score < AUDIENCE_MIN) throw new Error(`${episode.id}: audience ${episode.audience.score} is below ${AUDIENCE_MIN}; improve it and score again, or keep it out of the producible list (material reserve)`);
+    }
     if (episode.material !== undefined) {
       const material = episode.material;
       if (!Object.hasOwn(MATERIAL_VERDICTS, material?.verdict) || !material.reviewed_on || !material.review) throw new Error(`${episode.id}: material needs a verdict (${Object.keys(MATERIAL_VERDICTS).join(', ')}), reviewed_on and review`);
@@ -134,11 +166,12 @@ export function renderThemes(themes, pool) {
     const cat = themeCategory(episode, byId);
     lines.push(`| ${episode.id} | ${cat} | ${cell(episode.title)} | ${mmss(episode.target_minutes * 60)}（範圍 ${mmss(episode.range_minutes[0] * 60)}–${mmss(episode.range_minutes[1] * 60)}；未試讀） | ${episode.candidate_ids.length} | ${readiness.ready ? '已有可追溯來源' : `來源待補：${readiness.unsourced.join('、')}`} | ${episode.material ? MATERIAL_VERDICTS[episode.material.verdict] : '未審'} |`);
   }
+  lines.push(...audienceRanking(themes.episodes));
   for (const episode of themes.episodes) {
     const cat = themeCategory(episode, byId);
     const material = episode.material;
     const verdict = material ? [`**素材審視：** ${MATERIAL_VERDICTS[material.verdict]}`, material.missing ? `；缺：${cell(material.missing)}` : '', material.merge_with?.length ? `；合併對象：${material.merge_with.join('、')}` : ''].join('') : '';
-    lines.push('', `## ${episode.id} ${episode.title}`, '', `**分類：** ${cat}`, ...(verdict ? ['', verdict] : []), '', `**追問：** ${episode.core_question}`, '', `**為什麼接成一集：** ${episode.connection}`, '', '| 章 | 秒數 | 新增理解 | 用到的題 | 刪段條件 |', '| --- | --- | --- | --- | --- |');
+    lines.push('', `## ${episode.id} ${episode.title}`, '', `**分類：** ${cat}`, ...(verdict ? ['', verdict] : []), ...(episode.audience ? ['', audienceLine(episode.audience)] : []), '', `**追問：** ${episode.core_question}`, '', `**為什麼接成一集：** ${episode.connection}`, '', '| 章 | 秒數 | 新增理解 | 用到的題 | 刪段條件 |', '| --- | --- | --- | --- | --- |');
     for (const chapter of episode.chapters) lines.push(`| ${cell(chapter.title)} | ${chapter.seconds} | ${cell(chapter.new_information)} | ${chapter.candidate_ids.join('、')} | ${cell(chapter.cut_if ?? '')} |`);
     lines.push('', '**用到的題與來源：**', '');
     for (const id of episode.candidate_ids) {
