@@ -430,7 +430,7 @@ doc = {
                        "坐在沙發上一動也不動、只看賽車畫面，為什麼也有人會暈？最後也老實交代，科學到現在還回答不了的事：為什麼每個人差這麼多、為什麼偏偏是想吐。\n\n"
                        "本集只介紹研究看到的現象與目前的解釋，不是醫療建議；插圖由 AI 生成，是示意，不是人體構造圖。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["暈車", "暈動症", "內耳", "平衡", "感覺衝突", "科普", "原來如此事務所"]},
-    "thumbnail": {"template": "thumb", "data": {"headline": "看漫畫\n**就暈車？**", "sub": "開車的爸爸卻沒事？", "shot": "kid-comic-sick", "subject": "right"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "看漫畫\n**就暈車？**", "sub": "開車的爸爸卻沒事？", "shot": "kid-reading-open", "subject": "right"}},
     "sources": [
         {"title": "CDC Yellow Book 2026, Motion Sickness (John F. Golding; updated 2025-04-23)", "url": "https://www.cdc.gov/yellow-book/hcp/travel-air-sea/motion-sickness.html", "checked_on": CHECKED},
         {"title": "NHS, Motion sickness (reviewed 2023-06-19)", "url": "https://www.nhs.uk/conditions/motion-sickness/", "checked_on": CHECKED},
