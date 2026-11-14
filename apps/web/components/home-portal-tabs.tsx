@@ -175,6 +175,7 @@ export function HomePortalTabs({
                       width={leadHero.width}
                       height={leadHero.height}
                       loading="eager"
+                      fetchPriority="high"
                       decoding="async"
                       className="aspect-video w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                     />

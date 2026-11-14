@@ -43,8 +43,16 @@ beforeEach(() => {
 });
 
 describe("the guides hub", () => {
-  it("shows both sections and links each article at its own URL", async () => {
-    render(await GuidesHubPage({ params }));
+  it("shows both sections, renders a visible breadcrumb trail, and links each article at its own URL", async () => {
+    const { container } = render(await GuidesHubPage({ params }));
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')]
+      .flatMap((node) => JSON.parse(node.textContent ?? "[]"));
+    expect(graphs.map((graph) => graph["@type"])).toEqual(["BreadcrumbList", "ItemList"]);
+
+    const crumb = screen.getByRole("navigation", { name: "頁面路徑" });
+    expect(crumb.querySelector('a[href="/"]')?.textContent).toBe("首頁");
+    expect(crumb.querySelector('[aria-current="page"]')?.textContent).toBe("旅遊情報與攻略");
+
     expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("旅遊情報與攻略");
     expect(screen.getAllByRole("link", { name: "JR Pass 調價" })[0].getAttribute("href"))
       .toBe("/guides/intel/jr-pass-sale");

@@ -86,6 +86,37 @@ export function itemList(locale: Locale, items: readonly Crumb[]): object | null
   };
 }
 
+export type VideoListItem = {
+  slug: string;
+  title: string;
+  youtube_video_id: string;
+  articlePath?: string | null;
+};
+
+/**
+ * The server-rendered video cards on `/videos`, as an `ItemList` pointing each `ListItem` at the
+ * canonical YouTube watch URL the card links to and, when present, naming the companion Mokaair
+ * article via `subjectOf`. `PublicVideo` carries no text description, so an `ItemList` stays
+ * strictly honest to the rendered card without tripping Search Console's `VideoObject.description`
+ * requirement.
+ */
+export function videoItemList(locale: Locale, videos: readonly VideoListItem[]): object | null {
+  if (!videos.length) return null;
+  return {
+    "@context": CONTEXT,
+    "@type": "ItemList",
+    itemListElement: videos.map((video, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: video.title,
+      url: `https://www.youtube.com/watch?v=${video.youtube_video_id}`,
+      ...(video.articlePath
+        ? { subjectOf: { "@type": "Article", url: localeUrl(locale, video.articlePath) } }
+        : {}),
+    })),
+  };
+}
+
 export function touristDestination(
   locale: Locale,
   input: {

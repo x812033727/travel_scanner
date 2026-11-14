@@ -36,8 +36,8 @@ function noindexRoutes(): string[] {
 }
 
 describe("robots", () => {
-  it("points at the sitemap on the canonical origin", () => {
-    expect(robots().sitemap).toBe(`${siteUrl}/sitemap.xml`);
+  it("points at the evergreen and news sitemaps on the canonical origin", () => {
+    expect(robots().sitemap).toEqual([`${siteUrl}/sitemap.xml`, `${siteUrl}/sitemap-news.xml`]);
   });
 
   it("blocks the BFF, the console and every token URL", () => {

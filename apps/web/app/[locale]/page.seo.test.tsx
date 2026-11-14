@@ -40,12 +40,13 @@ describe("marketing homepage server HTML", () => {
     expect(html).toContain('"@type":"SearchAction"');
   });
 
-  it("does not render closed module links or structured search actions", async () => {
+  it("does not render closed module links while keeping public article SearchAction", async () => {
     state.featuresEnabled = false;
     const html = renderToString(await Home());
     expect(html).not.toContain('href="/hotspots"');
     expect(html).not.toContain('href="/trips"');
-    expect(html).not.toContain('"@type":"SearchAction"');
+    expect(html).toContain('"@type":"SearchAction"');
+    expect(html).toContain("/search/articles?q={search_term_string}");
     expect(html).toContain('href="/foods"');
     expect(html).toContain('href="/destinations/tokyo"');
   });

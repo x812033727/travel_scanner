@@ -216,7 +216,7 @@ export default async function Home() {
     <>
       <SiteHeader />
       {/* Outside the gate: the graph reaches a crawler with either discovery state. */}
-      <StructuredData data={[organization(), webSite(locale, hotspotsEnabled)]} />
+      <StructuredData data={[organization(), webSite(locale)]} />
       {/* Keep the site context and article entrances ahead of the discovery feed in both
           the server response and the client's later switch resolution. */}
       <HomeGuides {...guides} hotspotsEnabled={hotspotsEnabled} />
