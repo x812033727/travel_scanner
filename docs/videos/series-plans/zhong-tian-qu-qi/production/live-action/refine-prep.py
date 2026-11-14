@@ -20,8 +20,8 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[6]
 N = int(sys.argv[1])
 V = Path.home() / "mokaair-work" / "videos"
-LIVE = V / f"zhong-tian-qu-qi-e90{N}-dh" / "runpod" / "live"
-W = V / f"_live-e90{N}" / f"zhong-tian-qu-qi-e90{N}-dh" / "runpod" / "a"
+LIVE = V / f"zhong-tian-qu-qi-e{900 + N}-dh" / "runpod" / "live"
+W = V / f"_live-e{900 + N}" / f"zhong-tian-qu-qi-e{900 + N}-dh" / "runpod" / "a"
 (W / "st1" / "out").mkdir(parents=True, exist_ok=True)
 picks = {}
 for tsv in sys.argv[2:]:
@@ -50,7 +50,7 @@ for shot, p in picks.items():
 STYLE = [("[Shot 1] 3D CG.", "[Shot 1] Photorealistic live-action film footage of real actors in an ancient Chinese (Song-dynasty) period drama, shot on a cinema camera."),
          ("Smooth, weighty 3D CG character animation; faces, hair and costumes stay as in the first frame.",
           "Natural, realistic human motion of real actors; faces, hair and costumes stay as in the first frame.")]
-clips = json.loads((REPO / f"docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/clips-dh-e90{N}.json").read_text(encoding="utf-8"))
+clips = json.loads((REPO / f"docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/clips-dh-e{900 + N}.json").read_text(encoding="utf-8"))
 live = {}
 for key, row in clips.items():
     if key.split("-")[1] not in picks:
@@ -61,7 +61,7 @@ for key, row in clips.items():
     if "3D" in text or "CG" in text:
         sys.exit(f"{key}: a 3D CG mention is left in the refine prompt")
     live[key] = [text] + row[1:]
-clips_live = W.parent.parent / f"live-clips-e90{N}.json"
+clips_live = W.parent.parent / f"live-clips-e{900 + N}.json"
 clips_live.write_text(json.dumps(live, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 skip = sorted({k.split("-")[1] for k in clips} - set(picks))
 (W / "st2").mkdir(exist_ok=True)

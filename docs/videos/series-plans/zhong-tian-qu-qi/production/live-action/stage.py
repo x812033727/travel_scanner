@@ -16,8 +16,8 @@ from pathlib import Path
 
 N = int(sys.argv[1])
 V = Path.home() / "mokaair-work" / "videos"
-E = V / f"_live-e90{N}" / f"zhong-tian-qu-qi-e90{N}-dh"
-CG = V / f"zhong-tian-qu-qi-e90{N}-dh"
+E = V / f"_live-e{900 + N}" / f"zhong-tian-qu-qi-e{900 + N}-dh"
+CG = V / f"zhong-tian-qu-qi-e{900 + N}-dh"
 picks = json.loads((E / "picks.json").read_text(encoding="utf-8"))
 (E / "clips").mkdir(exist_ok=True)
 for name in ("audio", "music"):
