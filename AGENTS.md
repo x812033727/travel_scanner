@@ -73,8 +73,10 @@ Claude Code share (Claude reads the byte-identical copy under `.claude/skills/`,
 queues, Place IDs, coordinates), `prod-host-ops` (nginx, admin settings, host CLIs),
 `backend-conventions` (migrations, session helpers, admin pages), `dev-and-ci` (local
 checks, CI failures, Dependabot), `web-i18n-e2e` (messages and Playwright),
-`youtube-video`, `curio-episode` (any 奇聞檔案局 episode, a `curio-` slug: the series look,
-which route, how its illustrations are written and accepted, and the lint gate that keeps them),
+`youtube-video`, `curio-episode` (any 奇聞檔案局 episode, a `curio-` slug: theatrical-light
+rich-gouache keyframes via built-in `generate_image` + `keyframes import --provider external --usd 0`,
+never MiniMax images; `zh-TW` Gemini `Sulafat` >= 4.4 chars/s; 8-locale dubs via MiniMax;
+2x-zoom independent audit and the lint gate that keeps them),
 `brand-story` (any 品牌故事, a `story-` slug: the owner's fixed choices, how a batch is planned,
 fact-checked and imported, and what to do when the host worker stalls),
 `minimax-h3-runpod` (H3 clips on a RunPod pod the site starts, from a paired session),
@@ -84,5 +86,11 @@ package and change orders; also 審劇本 — turning a script into a storyboard
 notes, then the three checks before it goes to production), `animation-camera` (how a drama scene is covered and how camera,
 prompt and motion are written so the tools and the models read them alike) and
 `animation-production` (a drama production's stage preconditions, cost per route, preflight,
-error catalogue and post-mortem). Read the matching skill before re-deriving a workflow
-from the docs.
+error catalogue and post-mortem). For any 原來如此事務所 episode (a `sothatswhy-` slug),
+read `docs/videos/so-thats-why/look.md`,
+`docs/videos/so-thats-why/dialogue-pilot-20261103/README.md` and
+`docs/videos/lessons/sothatswhy.md` alongside `youtube-video` (owner 2026-11-14:
+theatrical-light rich-gouache keyframes via built-in image generation +
+`keyframes import --provider external --usd 0`, never MiniMax images; `zh-TW` Gemini
+`Sulafat` + `Leda`; 8-locale dubs via MiniMax). Read the matching skill before
+re-deriving a workflow from the docs.

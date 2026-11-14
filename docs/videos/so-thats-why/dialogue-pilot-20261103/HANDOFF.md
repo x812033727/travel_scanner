@@ -7,12 +7,14 @@
 ## 站主定下的規則
 
 - **誰核准哪一關**：稿子、聲音、畫風、分鏡由 Claude 請獨立代理查核、盲評、評分後自己核准（`approve --gate … --note`，附評分與「owner delegated」）；成片、上架、語言三關由站主在 /admin/videos 決定。站主 2026-11-07：「都依據你建議的決定就好 不用問我」。
-- 畫面不放字、正文不用卡片；片尾三張圖（小問比讚，不拿印章）；小孩沒有筆記本；每張臉逐張放大看眼睛；盲評含「沒頭沒尾」（`no_orphans`）。
-- 角色設定圖沿用系列的（`video.json` 的 `series`，見 [`../series-sheets/README.md`](../series-sheets/README.md)）；配樂沿用 `sothatswhy-p02-bed.m4a`，不另外生成。
+- **生圖與畫風定案（2026-11-14 起）**：**停用 MiniMax 生圖**；全系列改用代理內建 `generate_image`（`16:9` 滿版，有角色鏡傳系列角色設定圖 `characters/chief/*.png` 或 `characters/kid/*.png`）生成**「劇場級動畫光影 × 厚塗水粉質感」**（暖深褐收尖細線、窗邊斜射暖金陽光＋髮絲／鏡框／物件金邊輪廓光與微塵、前景清晰＋背景奶油淺景深散景無黑框線、多層次布料與材質紋理；完整英文基底句見 [`../look.md`](../look.md)），再以 `keyframes import --provider external --usd 0` 匯入。遇到生圖配額冷卻時先跑八語翻譯與配音或分批等待，絕不退回 MiniMax。
+- **語音與配樂定案（2026-11-14 起）**：中文（`zh-TW`）固定用 Gemini（所長 `Sulafat`、小問 `Leda`，語速 ≥ 4.4 字／秒）；八語配音（`en,ja,ko,es,pt,id,vi,th`）固定用 MiniMax（`dub --provider minimax`）；系列配樂床沿用 `sothatswhy-bed-r2.m4a`（sha256 `9bb4ba6f…`，見 [`../../explainer-series/README.md`](../../explainer-series/README.md)），不另外生成。
+- 畫面不放字、正文不用卡片；片尾三張圖（小問比讚，不拿印章）；小孩沒有筆記本；每張圖匯入後切 2 倍放大檢視圖由獨立子代理逐張審過（眼睛、手指、零文字亂碼、道具數量與幾何結構 100% 正確）；盲評含「沒頭沒尾」（`no_orphans`）。
+- 角色設定圖沿用系列的（`video.json` 的 `series`，見 [`../series-sheets/README.md`](../series-sheets/README.md)）。
 - 翻譯合併後一定跑 `render --thumbnails-only`，看過八張語言縮圖才打包。
 - 第一次 `qa` 之前先 `review-push --report-only`，否則「有示範」會被當教學片。
-- **備份**（站主 2026-11-07 多次強調）：每過一關就把整個工作目錄（重製要用的所有檔案：`audio/`、`dubs/`、`keyframes/` 每一張候選、`characters/`、`frames/`、`clips/`、`build/`、時間軸、清單、核准紀錄）加上 `upload/` 全部上傳檔，推到 `claude/backup-<slug>`，超過 90 MB 切塊，逐檔核對雜湊；之後才產生或補上的檔案也補進同一個分支；交給站主或送上後台的檔案一律先進分支；沒備份完不准刪任何檔案。工具：[`tools/tobranch.sh`](tools/tobranch.sh)。
-- 回報用繁體中文；不開 PR，除非站主說。
+- **備份**（2026-11-10 起改傳雲端硬碟）：送審 `final` 前把整個工作目錄（重製要用的所有檔案：`audio/`、`dubs/`、`keyframes/`、`characters/`、`frames/`、`clips/`、`build/`、時間軸、清單、核准紀錄與 `upload/`）完整傳到雲端硬碟 `AI/備份/AI劇/原來如此事務所/<主題分類>/<P集數>/製作檔/<slug>/` 並逐檔核對數量與雜湊（[`../../AI-DRAMA-DRIVE.md`](../../AI-DRAMA-DRIVE.md)）。
+- 回報用繁體中文；單集製作不開 PR，除非站主說。
 
 ## 各集狀態
 
@@ -26,15 +28,15 @@
 
 P07、P14 後台各有一個沒有音檔的語言包待核准，站主不要核准（舊的核准仍有效）。
 
-## 怎麼做一集（摘要，細節在 README 第 9 節）
+## 怎麼做一集（摘要，細節在 README 第 9 節與第 10.7 節）
 
-1. 從 [`../refresh-20261101/EPISODES.md`](../refresh-20261101/EPISODES.md) 挑題（剩 P01 P03 P04 P06 P09–P13 P15–P19；P06 泡泡、P16 潮汐、P17 壁虎較適合小孩發問），`npm run tasks -- new … --area docs`、`claim`。
-2. 撰稿代理照 P08 寫 `brief.md`（`## 站主觀點` 寫「只借來做什麼」，不寫「不講」）、`claims.md`、`build_scenes.py`（3.2 字／秒，正文約 2,400–2,600 字）。
-3. 另一個代理逐條查核寫 `verify-1.md`；`narrative` 盲評 14 題由全新代理只讀轉寫稿作答，全過才核准稿子。
-4. `tts` → `check-audio`（「殼」常被聽錯，換說法）→ 核准聲音 → `look`（沿用設定圖）。
-5. `keyframes --takes 3`（背景、`nohup`，跑完一次約 3–5 小時）。三次都不過的不要信評審分數：代理逐張放大挑；挑不到的改提示詞（`EXTRA` 字典），一輪全部修完；用 [`tools/repin.py`](tools/repin.py) 固定，`keyframes --shot` 會把固定的丟掉，最後一定再固定一次。
-6. 分鏡評分 ≥ 49／70：卡住的通常是「圖文相符」（講數字、機制的鏡頭要畫成東西本身，用 `scene()`）和「角色一致」。過了就核准分鏡。
-7. `render clips assemble captions qa` → 送成片 → 站主核准 → `package` → 送上架 → 八語翻譯（四個代理，對齊 P07 的 `i18n/`）→ `i18n-merge` → `dub`（一次一語系，斷線就 `speech-journal.mjs forget` 重試；`fit.json` 超時就縮句）→ `render --thumbnails-only` → `package` → 上架核准後送語言包。
+1. 從題庫或 [`../refresh-20261101/EPISODES.md`](../refresh-20261101/EPISODES.md) 挑題，`npm run tasks -- new … --area docs`、`claim`。
+2. 撰稿照對話版規格寫 `brief.md`（`## 站主觀點` 寫「只借來做什麼」，不寫「不講」）、`claims.md`、`build_scenes.py`（語速 ≥ 4.4 字／秒，10 分鐘正文約 2,700–2,900 字；頂層設 `"pauses": {"line_ms": 0, "scene_ms": 150}`、`"still_motion": "beat"`）。
+3. 獨立子代理逐條查核寫 `verify-1.md`；`narrative` 盲評 14 題由全新子代理只讀轉寫稿作答，全過才核准稿子。
+4. `tts`（Gemini `Sulafat`＋`Leda`）→ `check-audio` → 核准聲音 → `look`（沿用系列設定圖）。
+5. 關鍵影格用代理內建 `generate_image`（`16:9` 滿版，套用 [`../look.md`](../look.md) 的「劇場級動畫光影 × 厚塗水粉質感」基底句與角色設定圖參考）逐批生圖，再用 `keyframes import --provider external --usd 0` 匯入（嚴禁用 MiniMax 生圖）。
+6. 切 2 倍放大檢視圖由獨立子代理逐張審過（SCORECARD 分鏡評分 ≥ 49／70，各項 ≥ 6，零文字亂碼、眼睛手指正常、道具數量與幾何結構 100% 正確）→ 核准分鏡。
+7. 八語翻譯（`en,ja,ko,es,pt,id,vi,th`，帶定版系列譯名後綴）→ `i18n-merge` → 獨立審稿 → `dub --provider minimax` 八語配音（`fit.json` 超時就縮句重跑）→ `check-audio` → `render`（檢查繁中與八語共 9 張縮圖）→ `clips` → `assemble` → `captions` → `package` → `qa`（11/11 全過）→ 完整備份至 Google Drive → `review-push --gate final`。
 
 ## 還沒做完的票
 

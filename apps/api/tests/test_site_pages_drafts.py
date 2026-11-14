@@ -163,6 +163,33 @@ def test_privacy_describes_the_consent_message_conditionally(locale: Locale) -> 
         assert region in section, f"{locale} does not name {region}"
 
 
+@pytest.mark.parametrize("locale", LOCALES)
+def test_about_discloses_ai_assistance_and_corrections_contact(locale: Locale) -> None:
+    """`/about` must reflect the site's actual travel + AI/tech + personal finance scope,
+    disclose AI-assisted drafting/translation without claiming firsthand visits or testing,
+    and state the corrections email in the body text as well as the confirmed requirements."""
+    document = initial_document("about", locale)
+    blocks = document.blocks
+    assert len(blocks) == 6
+    intro = str(getattr(blocks[0], "text", ""))
+    ai_heading = str(getattr(blocks[1], "text", ""))
+    ai_body = " ".join(str(getattr(block, "text", "")) for block in blocks[2:4])
+    corrections_body = str(getattr(blocks[5], "text", ""))
+
+    assert "AI" in intro
+    assert "AI" in ai_heading
+    assert "AI" in ai_body
+    firsthand_caveat = {
+        "en": "firsthand",
+        "ja": "実体験",
+        "ko": "직접 경험",
+        "zh-TW": "親身經驗",
+        "zh-CN": "亲身经历",
+    }[locale]
+    assert firsthand_caveat in ai_body, f"{locale} does not state the firsthand-account caveat"
+    assert "support@mokaair.com" in corrections_body
+
+
 AUDIT_CALL = re.compile(r"AdminAuditLog\((.{0,800}?)\)\s*\n", re.S)
 TARGET = re.compile(r"target=([^,\n]+)")
 METADATA = re.compile(r"metadata_json=(\{.{0,400}?\})", re.S)

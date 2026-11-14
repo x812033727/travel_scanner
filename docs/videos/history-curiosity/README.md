@@ -1,11 +1,13 @@
 # 歷史與奇異（工作名：奇聞檔案局）：系列企劃
 
-2026-10-10 起草。一個新的內容線：**歷史懸案、奇異現象、預言、外星與都市傳說**，一集打開一份「檔案」，把流傳的說法、留下的證據與目前最站得住的解釋講清楚。內容參考馬臉姐（YouTube `@malianjie`，125 萬訂閱、522 支片）的選題與鉤子，畫面參考 cheap（`@cheapaoe`，163 萬訂閱、1,693 支片）的可愛插畫，**插圖全部由 MiniMax `image-01` 生成**，不再由 Claude 或 Codex 手繪 SVG；可以放實體照片（公有領域檔案照、圖庫照片），貼圖方式參考馬臉姐。站主同日決定：**原來如此事務所之後也改成 MiniMax 生圖**，見 [`../so-thats-why/README.md`](../so-thats-why/README.md) 的 2026-10-10 更新。
+> **2026-11-14 現行生圖與語音定案**：站主指定全系列（與原來如此事務所同步）停用 MiniMax 生圖，關鍵影格一律改由代理內建 `generate_image`（`AspectRatio: "16:9"`）套用**「劇場級動畫光影 × 厚塗水粉質感」**基底句生成，經獨立子代理四格 2 倍放大審圖後以 `keyframes import --provider external --usd 0` 匯入；中文旁白用 Gemini `Sulafat`（語速 ≥ 4.4 字／秒），八語配音（`en,ja,ko,es,pt,id,vi,th`）用 MiniMax（`dub --provider minimax`）。完整規則以 [`.agents/skills/curio-episode/SKILL.md`](../../../.agents/skills/curio-episode/SKILL.md) 與 [`look.md`](look.md) 頂端 2026-11-14 定案為準，下文 2026-10-10 的 MiniMax 生圖與照片卡段落僅供歷史參考。
+
+2026-10-10 起草。一個新的內容線：**歷史懸案、奇異現象、預言、外星與都市傳說**，一集打開一份「檔案」，把流傳的說法、留下的證據與目前最站得住的解釋講清楚。內容參考馬臉姐（YouTube `@malianjie`，125 萬訂閱、522 支片）的選題與鉤子，畫面早期參考 cheap（`@cheapaoe`，163 萬訂閱、1,693 支片）的可愛插畫（2026-11-14 起升級為劇場級動畫光影 × 厚塗水粉質感，不再用 MiniMax 生圖；見 [`look.md`](look.md)）。
 
 - 題庫（224 個候選題、六個主軸、鉤子、檔案結論、畫面、照片來源、待查核事實；2026-10-10 第一批 40 題、10-11 第二批 148 題、10-18 S 軸 36 題）：[`topics.json`](topics.json)
 - S 軸（歷史人物與名場面，2026-10-18）：§S 軸
 - F 軸（童話、神話與怪談的原版）與 G 軸（靈異事件），2026-10-26：§F 軸與 G 軸；題庫 F01–F38、G01–G23 暫放 [`topics-fg.json`](topics-fg.json)；題材點閱的量測在 [`../storyteller-genres-20261026/README.md`](../storyteller-genres-20261026/README.md)
-- 畫面：畫風樣張、MiniMax 的限制、提示詞規則、貼圖式照片卡：[`look.md`](look.md)
+- 畫面：2026-11-14 劇場動畫光影×厚塗水粉畫風定案、提示詞基底句與早期樣張紀錄：[`look.md`](look.md)
 - 產線與票：§怎麼做、§票
 - 頻道規格：[`../README.md`](../README.md)；插圖投影片：[`../ILLUSTRATED.md`](../ILLUSTRATED.md)；原來如此事務所：[`../so-thats-why/README.md`](../so-thats-why/README.md)
 

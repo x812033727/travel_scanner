@@ -338,6 +338,14 @@ async def link_youtube(
     )
 
 
+@admin_router.delete("/{slug}/youtube", response_model=ProjectOut)
+async def unlink_youtube(slug: str, user: ContentManager, session: Session) -> ProjectOut:
+    """The owner re-pushed a remade cut: take the old upload's link off a video that has no
+    publish time yet, so the new cut can be uploaded and linked again
+    (admin_service.unlink_youtube)."""
+    return await service.unlink_youtube(session, slug, user)
+
+
 @admin_router.put("/{slug}/languages", response_model=ProjectOut)
 async def set_languages(
     slug: str, payload: LocalesIn, user: ContentManager, session: Session
