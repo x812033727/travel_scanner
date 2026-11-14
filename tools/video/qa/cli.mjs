@@ -25,6 +25,7 @@ import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } fr
 import { DEFAULT_LOCALES, minEpisodeMinutes, narrationLocale } from "../core/schema.mjs";
 import { alwaysLocales, captionLocalesOf, chosenLocales, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, dubArtifacts, lintProject, loadProject } from "../core/state.mjs";
+import { isCurio } from "../core/curio.mjs";
 import { isStory } from "../core/story.mjs";
 import { chapterList, checkChapters, estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
 import { checksCurrent } from "../package/cli.mjs";
@@ -160,7 +161,7 @@ export function thumbnailItem(doc, workdir, translations = {}) {
   if (!existsSync(thumbnailFile)) return item("thumbnail", false, `${THUMBNAIL_FILE} is missing; run render`);
   const series = thumbnailSeries(doc);
   const titleOf = (fields) => (isCompilation(doc) ? null : fields?.title ?? null);
-  const verdict = thumbnailChecks({ bytes: readFileSync(thumbnailFile), headline: doc.thumbnail.data?.headline, title: titleOf(doc.youtube), series, layout: doc.thumbnail.data?.layout ?? null });
+  const verdict = thumbnailChecks({ bytes: readFileSync(thumbnailFile), headline: doc.thumbnail.data?.headline, title: titleOf(doc.youtube), series, layout: doc.thumbnail.data?.layout ?? null, sub: doc.thumbnail.data?.sub ?? null, curio: isCurio(doc) });
   const warnings = [...verdict.warnings];
   const checked = [];
   for (const [locale, drawn] of Object.entries(readJson(path.join(workdir, ARTIFACTS.frames), null)?.thumbnail_locales ?? {})) {
