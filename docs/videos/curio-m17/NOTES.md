@@ -36,9 +36,11 @@
   - `vi`（max `1.15x`）：修正跨行語氣與法文地名音節，全軌聽審清晰。
   - `th`（max `1.21x`）：數字 `101` 預設讀四音節 `หนึ่งร้อยเอ็ด` 易超窗，改用口語自然讀法 `ร้อยเอ็ด` 並以泰文詞彙隔開相鄰數字後 88/88 視窗一次過關。
 
-## 成片品管、上架包與備份
+## 成片品管、審片修正、上架包與備份
 
-- **自動品管（`qa`）**：**11/11 全數通過**（`final.mp4` `sha256 99a8e93d5003`；11 條外部來源連結全數 HTTP 200 開啟；Jev 政策檢查通過）。
-- **上架包（`package`）**：**4/4 檢查通過**（`metadata.json` `sha256 958f420bd976`），含 `final.mp4`、`thumbnail.jpg`＋8 張外語縮圖、9 語 `.srt` 可切換 CC 字幕（依 2026-11-04 奇聞規則 `burn_in: false`）、9 語標題與說明欄（尾行自動帶 `#奇聞檔案局`）、8 條 MiniMax `.m4a` 配音軌與 `UPLOAD.md`。
+- **審片四項修正**：
+  - **關鍵影格重繪（`s049`、`s083`）**：`s049`（1816 年日內瓦別墅深夜臥房）重繪移除床頭現代燈罩插電檯燈，改為十九世紀黃銅手燭台與未點燃白蠟燭（`s049-import-2.png`，`sha256 b89c5db43297`）；`s083`（地球儀「松巴哇 vs 菲律賓」地理位置）重繪為無文字東南亞海域地球儀，紅圖釘與冒煙小火山精準落在爪哇東側松巴哇島、虛線箭頭指向北方菲律賓呂宋島黃旗（`s083-import-2.png`，`sha256 d6fb7d6adaca`）。關鍵影格清單更新為 `keyframes/manifest.json` `sha256 c4fddb08356d`，重新組裝 `final.mp4`（八語配音與字幕雜湊完全不變）。
+  - **泰文 hashtag 母音保留與說明欄 UTF-8 安全區間**：修正 `tools/video/core/metadata.mjs` 的 `hashtagsFrom` 與 `LABEL_ONLY` 保留 Unicode 結合符號 `\p{M}`，使泰文標籤正常輸出 `#ปีที่ไร้ฤดูร้อน`（不再被截斷成無母音的 `#ปทไรฤดรอน`）；同時精簡 `i18n/th.json` 的說明欄與章節標題，使 `metadata.localizations.th.description` 降至 **4,217 UTF-8 bytes**（含首行標題之 `upload/description.th.txt` 為 **4,406 bytes**，遠低於 YouTube `5,000 bytes` 上限）。經驗同步寫入 `docs/videos/lessons/curio.md`。
+- **自動品管（`qa`）**：**11/11 全數通過**（`final.mp4` `sha256 1627fc07ccab`；11 條外部來源連結全數 HTTP 200 開啟；Jev 政策檢查通過）。
+- **上架包（`package`）**：**4/4 檢查通過**（`metadata.json` `sha256 ff1be733cc04`），含 `final.mp4`、`thumbnail.jpg`＋8 張外語縮圖、9 語 `.srt` 可切換 CC 字幕（依 2026-11-04 奇聞規則 `burn_in: false`）、9 語標題與說明欄（尾行自動帶 `#奇聞檔案局`）、8 條 MiniMax `.m4a` 配音軌與 `UPLOAD.md`。
 - **Google Drive 備份路徑**：`AI/備份/AI劇/奇聞檔案局/M17/製作檔/`（含完整工作目錄 `curio-m17/` 與 `docs-curio-m17/`，雙重驗證 `0 differences`）。
-

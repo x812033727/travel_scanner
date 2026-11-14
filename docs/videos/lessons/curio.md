@@ -8,6 +8,12 @@
 這份會自動同步到雲端硬碟 `AI劇/奇聞檔案局/_規則與教訓/教訓/教訓.md`（docs/videos/rules-sync）。
 之前的教訓：`.agents/skills/curio-episode/references/w03-lessons.md`。
 
+## 2026-11-13 · curio-m17 · 站主審片與 Antigravity 修正
+首輪放大檢查抓完手眼與文字後，審片又抓出三個跨語系與作畫細節問題：
+- **19 世紀以前室內夜景冒出現代檯燈**：`s049`（1816 年日內瓦別墅臥室夜景）提示詞只寫 `lying awake on white pillows in a bedroom`，模型習慣在床頭櫃補上一盞圓底座配布燈罩的現代插電檯燈。19 世紀末電燈普及前的室內鏡頭，提示詞要主動指定年代照明器物（例如 `an antique brass chamberstick holder with an unlit white wax candle on the wooden nightstand, strictly no modern lampshade or electric lamp`），放大檢查時除了看手眼與亂碼字，也要順手掃背景傢俱電器是否符合年代。
+- **地圖與地球儀鏡頭插錯島嶼、印出地名**：`s083`（把印尼坦博拉火山搬去菲律賓的烏龍）初版只寫 `Southeast Asia` 加 `pin on Indonesia` 與 `flag floating over the sea to the north`，模型把紅圖釘插進面積最大的新幾內亞島，黃旗飄在太平洋海面；重畫時若在提示詞括號列舉 `(Java, Bali, Lombok, Sumbawa)`，模型又會把英文地名印在海面上。畫地圖／地球儀比對鏡頭時，提示詞要描述具體島嶼輪廓與落點（爪哇東側小巽他群島 vs 婆羅洲北方菲律賓呂宋島）並嚴禁任何文字標籤（若模型仍印出地名，可用同圖去字編修抹除），驗收時必須逐島核對地理落點。
+- **泰文等複合母音文字的 Hashtag 被削掉母音，且說明欄易撞 5,000 bytes 上限**：Unicode 正則 `\p{L}` 不包含結合符號 `\p{M}`（泰文上下母音與聲調如 `ี`、`่`、`้`、`ู`），清洗 hashtag 若寫 `[^\p{L}\p{N}_]` 會把 `#ปีที่ไร้ฤดูร้อน` 削成無母音的 `#ปทไรฤดรอน`（已於 `tools/video/core/metadata.mjs` 修為保留 `\p{M}`）。另外泰文每個字元占 UTF-8 3 bytes，翻譯說明欄加上 10 個章節與 11 條來源後達 4,992–5,013 bytes；泰文 `i18n/th.json` 的說明欄與章節標題要寫得比中文更精練，組裝後壓在 `< 4,500 bytes` 留足安全餘裕。
+
 ## 2026-11-13 · curio-s10／s13／s14／s23–s26-v2 · 站主發現、Claude 量
 設定都是新版，實測語速卻都不到 4.4：停頓（0／150 毫秒）與 beat 都對，聲音指示也寫了「一秒四到五個字」，七集實測只有 4.08–4.33 字／秒。站主定 4.4 為下限，不符合的全部重做，八語改用 MiniMax 重錄。
 - **怎麼量**：timeline.json 每句 `audio_samples` 加總 ÷ 48000 是純講話秒數；字數用稿子去掉空白與標點。全片長度除會把換景停頓算進去，偏低。

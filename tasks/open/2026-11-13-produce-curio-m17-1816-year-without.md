@@ -12,6 +12,9 @@ branch: antigravity/curio-m17
 depends_on: []
 scope:
   - docs/videos/curio-m17
+  - docs/videos/lessons/curio.md
+  - tools/video/core/metadata.mjs
+  - tools/video/core/metadata.test.mjs
 ---
 
 # Produce Curio M17 (1816 Year Without a Summer and Frankenstein) with agent-generated illustrations, Gemini zh-TW and MiniMax 8-language dubs
@@ -34,8 +37,8 @@ Owner requested producing one complete 奇聞檔案局 (`curio-*`) episode selec
 - [x] Write `brief.md`, `video.json`, `claims.md`; pass `lint` (0 errors, 0 warnings), independent fact-check (`verify-1.md`, 20/20 CONFIRMED), and two-reader blind `narrative` panel (14/14 PASS).
 - [x] Synthesize `zh-TW` Gemini narration (`Sulafat`), verify speaking rate `4.94` bare chars/s (`>= 4.4`, unwrapped body `689.4` s / `11:29`), and audit `check-audio` clips by ear (`l065` `重種` fixed via `say`/`say_for`).
 - [x] Generate all 88 `16:9` `cute-mystery` illustrations via `generate_image`, inspect quadrant crops, and import via `keyframes import --provider external --usd 0` (`US$0.00`).
-- [x] Translate & independently review 8 locales (`i18n-sheet` → `i18n-merge`), render 9 Layout E thumbnails, build clips, loop Lyria music (`US$0.08` total spend), assemble `final.mp4` (`11:55.4`, `-14 LUFS`, `sha256 99a8e93d5003`), and synthesize + ear-audit 8 MiniMax dubs + 9 `.srt` captions.
-- [x] Run `qa` (11/11 PASS) + `package` (4/4 PASS, `metadata.json` `sha256 958f420bd976`, `#奇聞檔案局` hashtag included via PR #2099), back up to Google Drive (`0` diffs), push review gates to `/admin/videos`, and run repo checks.
+- [x] Translate & independently review 8 locales (`i18n-sheet` → `i18n-merge`), render 9 Layout E thumbnails, build clips, loop Lyria music (`US$0.08` total spend), assemble `final.mp4` (`11:55.4`, `-14 LUFS`, `sha256 1627fc07ccab`), and synthesize + ear-audit 8 MiniMax dubs + 9 `.srt` captions.
+- [x] Run `qa` (11/11 PASS) + `package` (4/4 PASS, `metadata.json` `sha256 ff1be733cc04`, `#奇聞檔案局` + `#ปีที่ไร้ฤดูร้อน` hashtags verified), redraw `s049` (1816 brass chamberstick) & `s083` (Sumbawa/Luzon globe without text), trim `th` description to `4,217` UTF-8 bytes, record lessons in `docs/videos/lessons/curio.md`, back up to Google Drive (`0` diffs), push review gates to `/admin/videos`, and run repo checks.
 
 ## How to verify
 
@@ -48,6 +51,6 @@ npm run test:docs-videos && npm run check:tasks
 ## Notes
 
 - Used `initializeStoryLexicon` (`13ae670bb0c859c87b0ea4a0f51dca9a393305feb16471cc461bd5efaf6c2841`) before writing `video.json` so all Latin terms resolve inside `docs/videos/curio-m17/story-lexicon/` without touching `docs/videos/lexicon.json`.
-- Key hashes & metrics: `script.md` `sha256 dcdeade65c3f`; `keyframes/manifest.json` `sha256 45aacce8f5b2` (88 external `cute-mystery` stills, `US$0.00`); `timeline.json` `sha256 7003ef057e40` (`4.94` bare chars/s, `689.4` s body); `final.mp4` `sha256 99a8e93d5003` (`21,463` frames / `715.434` s, `-14 LUFS`, true peak `-1.9 dBFS`); `upload/metadata.json` `sha256 958f420bd976`; total media ledger spend `US$0.08` (single looped Lyria music track).
-- Google Drive backup: `AI/備份/AI劇/奇聞檔案局/M17/製作檔/` (`M17` folder `1aQ90i04NG1x2xi7nT4eQgBWt1hpt8Ap_`, `製作檔` folder `1hJfI7AA2gD3A_QFuzTU2PAFvkgVryUOH`, `curio-m17` `1_x9w_wv2ozsdWoZBDY_Kxaud8zumsOe6` [`2,486` files], `docs-curio-m17` `1qwaMz54q_vf63AJOWklolTBv2dkEtJVe` [`17` files]) — independently verified by subagent `4a564df72527eefa7f11129c32ce9d43` via full bidirectional tree check + 100% full-content download & byte-for-byte MD5 hashing (`2,503 / 2,503` files, `0` missing, `0` extra, `0` duplicate names, `0` MD5 mismatches). Note: `gdrive readonly ls --json` omits `md5Checksum`, so future custom `gdrive` backup verifiers should hash downloaded content rather than relying on `ls --json`.
+- Key hashes & metrics: `script.md` `sha256 dcdeade65c3f`; `keyframes/manifest.json` `sha256 c4fddb08356d` (88 external `cute-mystery` stills including redrawn `s049-import-2.png` `sha256 b89c5db43297` and `s083-import-2.png` `sha256 d6fb7d6adaca`, `US$0.00`); `timeline.json` `sha256 7003ef057e40` (`4.94` bare chars/s, `689.4` s body); `final.mp4` `sha256 1627fc07ccab` (`21,463` frames / `715.434` s, `-14 LUFS`, true peak `-1.9 dBFS`); `upload/metadata.json` `sha256 ff1be733cc04` (`th` description `4,217` UTF-8 bytes, `#ปีที่ไร้ฤดูร้อน` preserved via `\p{M}` fix in `tools/video/core/metadata.mjs`); total media ledger spend `US$0.08` (single looped Lyria music track).
+- Google Drive backup: `AI/備份/AI劇/奇聞檔案局/M17/製作檔/` (`M17` folder `1aQ90i04NG1x2xi7nT4eQgBWt1hpt8Ap_`, `製作檔` folder `1hJfI7AA2gD3A_QFuzTU2PAFvkgVryUOH`, `curio-m17` `1_x9w_wv2ozsdWoZBDY_Kxaud8zumsOe6` [`2,502` local files], `docs-curio-m17` `1qwaMz54q_vf63AJOWklolTBv2dkEtJVe` [`17` files]) — initial tree verified by subagent `4a564df72527eefa7f11129c32ce9d43`, and follow-up update independently verified by subagent `6a964ba998e6389dac726321214a37d1` (`0` missing, `0` duplicates, `90 / 90` modified files downloaded & byte-for-byte MD5 + SHA-256 verified). Note: `gdrive readonly ls --json` omits `md5Checksum`, so custom `gdrive` backup verifiers hash downloaded content rather than relying on `ls --json`.
 - Hand-pushed review gates (`outline`, `script`, `storyboard`, `audio`, `final`, `publish`) sent to `/admin/videos` (`hand_pushed = true` waits for owner approval on `/admin/videos`). Ticket stays in `review` (PR labeled `no-auto-merge`) until owner approves `/admin/videos` gates and confirms merge.
