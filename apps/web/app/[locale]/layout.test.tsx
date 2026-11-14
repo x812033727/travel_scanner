@@ -1,9 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { isValidElement, type ReactNode } from "react";
 
-const { incoming, jar, passthrough } = vi.hoisted(() => ({
+const { incoming, jar, adsConfig, passthrough } = vi.hoisted(() => ({
   incoming: vi.fn(),
   jar: vi.fn(),
+  adsConfig: vi.fn(async () => ({ enabled: false, publisher_id: null as string | null, slot_id: null as string | null, cmp_enabled: false })),
   // vi.mock factories are hoisted above ordinary consts, so this has to be hoisted too.
   passthrough: (name: string) => ({ [name]: (props: Record<string, unknown>) => props.children }),
 }));
@@ -17,6 +18,7 @@ vi.mock("next-intl/server", () => ({
   getMessages: async () => ({}),
   getTranslations: async () => (key: string) => key,
 }));
+vi.mock("@/lib/adsense-config", () => ({ fetchAdsenseConfig: adsConfig }));
 vi.mock("@/lib/community/server", () => ({ getCommunityState: async () => ({ enabled: false }) }));
 vi.mock("@/lib/site-visibility.server", () => ({ getSiteVisibility: async () => ({}) }));
 vi.mock("@/lib/usage-catalog.server", () => ({ getUsageCatalog: async () => ({}) }));
@@ -34,7 +36,8 @@ vi.mock("@/components/app-bottom-nav", () => ({ AppBottomNav: () => null }));
 vi.mock("@/components/site-footer", () => ({ SiteFooter: () => null }));
 vi.mock("@/components/ads/adsense-loader", () => ({ AdsenseLoader: () => null }));
 
-import LocaleLayout from "./layout";
+import LocaleLayout, { generateMetadata } from "./layout";
+import { ADS_TXT_FALLBACK_PUBLISHER_ID } from "@/app/ads.txt/ads-txt";
 import { HeaderSessionProvider } from "@/components/header-session";
 import { SavedItemsProvider } from "@/components/saved-items-provider";
 import { AdsenseLoader } from "@/components/ads/adsense-loader";
@@ -58,6 +61,7 @@ describe("the shared locale document", () => {
     vi.clearAllMocks();
     incoming.mockResolvedValue(new Headers({ "x-travel-pathname": "/zh-TW/guides/howto/tokyo-esim" }));
     jar.mockResolvedValue({ has: () => true });
+    adsConfig.mockResolvedValue({ enabled: false, publisher_id: null, slot_id: null, cmp_enabled: false });
   });
 
   it("asks about the reader on an ordinary page", async () => {
@@ -92,5 +96,29 @@ describe("the shared locale document", () => {
     jar.mockResolvedValue({ has: () => false });
     const tree = await LocaleLayout({ children: null, params, ads: enabledAds });
     expect(findAll(tree, HeaderSessionProvider)[0].hasSession).toBe(false);
+  });
+
+  it("emits google-adsense-account meta on public mokaair.com routes and omits it on private or non-production hosts", async () => {
+    incoming.mockResolvedValueOnce(new Headers({ host: "mokaair.com", "x-travel-pathname": "/zh-TW" }));
+    const homeMeta = await generateMetadata({ params });
+    expect(homeMeta.other).toEqual({ "google-adsense-account": ADS_TXT_FALLBACK_PUBLISHER_ID });
+
+    adsConfig.mockResolvedValueOnce({
+      enabled: true,
+      publisher_id: "ca-pub-9999999999999999",
+      slot_id: "1234567890",
+      cmp_enabled: true,
+    });
+    incoming.mockResolvedValueOnce(new Headers({ host: "mokaair.com", "x-travel-pathname": "/zh-TW/life/ai-notes" }));
+    const articleMeta = await generateMetadata({ params });
+    expect(articleMeta.other).toEqual({ "google-adsense-account": "ca-pub-9999999999999999" });
+
+    incoming.mockResolvedValueOnce(new Headers({ host: "mokaair.com", "x-travel-pathname": "/zh-TW/admin/settings" }));
+    const adminMeta = await generateMetadata({ params });
+    expect(adminMeta.other).toBeUndefined();
+
+    incoming.mockResolvedValueOnce(new Headers({ host: "localhost:3000", "x-travel-pathname": "/zh-TW" }));
+    const localMeta = await generateMetadata({ params });
+    expect(localMeta.other).toBeUndefined();
   });
 });

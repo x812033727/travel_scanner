@@ -173,6 +173,8 @@ export function guideArticle(
     collection?: boolean;
     /** The hub's members, when the series listing resolved. */
     entries?: readonly Crumb[] | null;
+    /** Parent series hub when this article is a member lesson of a series. */
+    partOfSeries?: Crumb | null;
     /** The editor's summary block: the answer in two to five sentences. Becomes `abstract`,
      *  and the card that shows it (`#article-summary`) becomes the speakable passage. */
     abstract?: readonly string[] | null;
@@ -210,6 +212,15 @@ export function guideArticle(
       ? {
           abstract: input.abstract.join(" "),
           speakable: { "@type": "SpeakableSpecification", cssSelector: ["#article-summary"] },
+        }
+      : {}),
+    ...(input.partOfSeries && !input.collection
+      ? {
+          isPartOf: {
+            "@type": "CreativeWorkSeries",
+            name: input.partOfSeries.name,
+            url: localeUrl(locale, input.partOfSeries.path),
+          },
         }
       : {}),
     isAccessibleForFree: true,

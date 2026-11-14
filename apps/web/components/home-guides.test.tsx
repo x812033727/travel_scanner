@@ -31,12 +31,15 @@ const blocks = (travel: GuideSummary[], tech: GuideSummary[], money: GuideSummar
 
 describe("the home page's portal and guide sections", () => {
   it("says what the site is, offers inline article search and quick links, and lists each section", () => {
-    render(<HomeGuides blocks={blocks(
+    const { container } = render(<HomeGuides blocks={blocks(
       [article("tokyo-first-trip", "howto", "東京第一次自由行")],
       [article("claude-code-intro", "life", "Claude Code 入門")],
       [article("credit-card-basics", "life", "信用卡入門")],
     )} />);
     expect(screen.getByRole("heading", { level: 2, name: "AI 科技快訊、軟體教學與旅遊生活攻略" })).toBeTruthy();
+    const directIntro = container.querySelectorAll('section[aria-labelledby="home-guides-title"] > p');
+    expect(directIntro).toHaveLength(1);
+    expect(directIntro[0]?.textContent).toContain("Mokaair");
     expect(screen.getByText(/個人站長經營/)).toBeTruthy();
     expect(screen.getByRole("link", { name: "搜尋機票與住宿" }).getAttribute("href")).toBe("/search/new");
     expect(screen.getByRole("search").getAttribute("action")).toBe("/zh-TW/search/articles");
@@ -125,5 +128,48 @@ describe("the home page's portal and guide sections", () => {
     expect(within(desk).getByRole("link", { name: "次焦點報導二" }).getAttribute("href")).toBe("/life/sub-2");
     expect(within(desk).getByRole("link", { name: "次焦點報導三" }).getAttribute("href")).toBe("/life/sub-3");
     expect(within(desk).getByRole("link", { name: "即時快訊列表四" }).getAttribute("href")).toBe("/life/wire-4");
+  });
+
+  it("caps overview columns at 4 items and expands full category articles plus matching series on a category tab", () => {
+    const aiArticles = [1, 2, 3, 4, 5, 6].map((n) => article(`ai-pick-${n}`, "life", `AI 精選指南 ${n}`));
+    render(
+      <HomeGuides
+        blocks={blocks(
+          [article("tokyo-1", "howto", "東京交通")],
+          aiArticles,
+          [article("money-1", "life", "雙幣卡比較")],
+        )}
+        series={[
+          {
+            slug: "claude-code",
+            section: "life",
+            topic: "ai",
+            source: "api-series",
+            entries: 12,
+            hub: { kind: "life", slug: "claude-code-tutorials", title: "Claude Code 教學中心" },
+          },
+          {
+            slug: "jr-rail",
+            section: "travel",
+            topic: "transport",
+            source: "api-series",
+            entries: 5,
+            hub: { kind: "howto", slug: "jr-rail-hub", title: "JR 鐵路教學系列" },
+          },
+        ]}
+      />,
+    );
+
+    // Overview ("all") keeps each category column compact at 4 items.
+    const overviewTech = screen.getByTestId("home-guides-tech");
+    expect(within(overviewTech).getAllByRole("listitem")).toHaveLength(4);
+
+    // Switching to AI tab reveals all 6 AI articles and only AI series hubs.
+    const tabs = screen.getByTestId("portal-tabs");
+    fireEvent.click(within(tabs).getByRole("button", { name: "AI 應用" }));
+    expect(within(screen.getByTestId("home-guides-tech")).getAllByRole("listitem")).toHaveLength(6);
+    const catSeries = screen.getByTestId("portal-category-series");
+    expect(within(catSeries).getByRole("link", { name: "Claude Code 教學中心" })).toBeTruthy();
+    expect(within(catSeries).queryByText("JR 鐵路教學系列")).toBeNull();
   });
 });

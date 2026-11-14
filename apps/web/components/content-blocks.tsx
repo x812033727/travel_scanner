@@ -179,7 +179,7 @@ export function ContentBlocks({
     if (block.type === "heading") {
       const id = headingIds.get(index);
       if (block.level === 3) return <h3 key={index} id={id} className="scroll-mt-24 pt-3 text-lg font-bold tracking-tight">{block.text}</h3>;
-      return <h2 key={index} id={id} className="scroll-mt-24 border-b border-l-4 border-[var(--line)] border-l-[var(--teal)] pb-2.5 pl-3.5 pt-6 text-2xl font-extrabold tracking-tight">{block.text}</h2>;
+      return <h2 key={index} id={id} className="article-h2 scroll-mt-24 pt-6 text-xl font-extrabold tracking-tight sm:text-2xl">{block.text}</h2>;
     }
     if (block.type === "paragraph") return <p key={index} className="whitespace-pre-wrap leading-8">{block.text}</p>;
     if (block.type === "summary") return <SummaryCard key={index} items={block.items} heading={labels?.summary} />;
@@ -250,7 +250,7 @@ export function ContentBlocks({
               tabIndex={0}
               role="group"
               className={constrainDiagrams
-                ? "-mx-5 overflow-x-auto pl-5 sm:mx-0 sm:pl-0"
+                ? "-mx-4 overflow-x-auto pl-4 sm:mx-0 sm:pl-0"
                 : "-mx-5 overflow-x-auto pl-5 xl:-mx-[226px] xl:pl-0"}
             >
               {image}

@@ -46,13 +46,13 @@ export function AiHubRails({ rails, news, labels }: {
   if (!rails.length && !news) return null;
   return (
     <section aria-labelledby="ai-hub-rails" className="mt-10" data-testid="ai-hub-rails">
-      <h2 id="ai-hub-rails" className="text-2xl font-extrabold tracking-tight">{labels.heading}</h2>
-      <nav aria-label={labels.heading} className="mt-4 flex flex-wrap gap-2">
+      <h2 id="ai-hub-rails" className="portal-section-heading text-2xl font-extrabold tracking-tight">{labels.heading}</h2>
+      <nav aria-label={labels.heading} className="portal-scroll-strip mt-4 flex items-center gap-2 sm:flex-wrap sm:overflow-visible">
         {[...(news ? [news] : []), ...rails].map((rail) => (
           <a
             key={rail.topic.slug}
             href={`#rail-${rail.topic.slug}`}
-            className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 text-sm font-semibold text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+            className="inline-flex min-h-11 shrink-0 snap-start items-center whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 text-sm font-semibold text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
           >
             {rail.topic.label}
           </a>
@@ -81,7 +81,7 @@ function Rail({ rail, seeAll, children }: { rail: AiHubRail; seeAll: string; chi
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="mt-10 scroll-mt-24">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] pb-2.5">
-        <h3 id={`${id}-title`} className="border-l-4 border-[var(--teal)] pl-3 text-xl font-extrabold tracking-tight">{rail.topic.label}</h3>
+        <h3 id={`${id}-title`} className="portal-section-heading text-xl font-extrabold tracking-tight">{rail.topic.label}</h3>
         <Link
           href={guideTopicHref("life", rail.topic.slug)}
           className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]"

@@ -392,7 +392,7 @@ async def test_status_reports_minimax_voices_and_usage(minimax_app: Any) -> None
     assert status["minimax_configured"] is True
     assert f"minimax:{VOICE}" in status["minimax_voices"]
     assert status["minimax_models"] == ["speech-2.8-hd", "speech-2.8-turbo"]
-    assert status["minimax_monthly_limit"] == 300_000 and status["minimax_used"] == 0
+    assert status["minimax_monthly_limit"] == 0 and status["minimax_used"] == 0
     minimax_app["settings"] = Settings()
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         bare = (await client.get("/api/v1/video/speech/status")).json()

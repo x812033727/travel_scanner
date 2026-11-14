@@ -65,4 +65,30 @@ describe("SiteSearchDialog", () => {
     fireEvent.keyDown(window, { key: "k", ctrlKey: true, altKey: true });
     expect(screen.queryByRole("dialog")).toBeNull();
   });
+
+  it("loads live trending articles when opened and closes on click", async () => {
+    mock.api.mockResolvedValueOnce({
+      articles: [
+        {
+          kind: "life",
+          slug: "gemini-cli-guide",
+          title: "Gemini CLI 完整教學",
+          description: "快速上手",
+          published_at: "2026-11-10T00:00:00Z",
+          updated_at: "2026-11-10T00:00:00Z",
+          topics: [{ slug: "ai", label: "AI 專區" }],
+        },
+      ],
+    });
+    render(<SiteSearchDialog />);
+    await act(async () => {
+      openSiteSearch();
+    });
+    const trending = await screen.findByTestId("search-trending");
+    expect(trending).toBeTruthy();
+    const link = screen.getByRole("link", { name: /Gemini CLI 完整教學/ });
+    expect(link.getAttribute("href")).toBe("/life/gemini-cli-guide");
+    fireEvent.click(link);
+    expect(screen.queryByRole("dialog")).toBeNull();
+  });
 });

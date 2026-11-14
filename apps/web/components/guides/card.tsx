@@ -31,14 +31,14 @@ export function GuideCard({
   const featured = variant === "featured";
   const hero = visibleGuideHero(article.hero);
   const shell = featured
-    ? `group relative rounded-2xl border border-[var(--teal)] bg-[var(--surface)] p-4 shadow-[var(--shadow-md)] transition-all duration-200 hover:shadow-[var(--shadow-lg)] sm:col-span-2 ${hero ? "md:grid md:grid-cols-2 md:items-center md:gap-6" : "border-l-4"} md:p-6`
+    ? `group relative rounded-3xl border border-[color-mix(in_srgb,var(--teal)_52%,var(--line))] bg-[color-mix(in_srgb,var(--teal-soft)_34%,var(--surface))] p-4 shadow-[var(--shadow-md)] transition-all duration-200 hover:border-[var(--teal)] hover:shadow-[var(--shadow-lg)] sm:col-span-2 sm:p-5 ${hero ? "md:grid md:grid-cols-2 md:items-center md:gap-6" : "border-l-4 border-l-[var(--teal)]"} md:p-6`
     : compact
-      ? "group relative rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-3.5 shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--teal)] hover:shadow-[var(--shadow-md)]"
-      : "group relative flex flex-col justify-between rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--teal)] hover:shadow-[var(--shadow-md)]";
+      ? "portal-card-surface group relative rounded-2xl p-3.5 sm:p-4"
+      : "portal-card-surface group relative flex flex-col justify-between rounded-2xl p-4 sm:p-5";
   return (
     <li className={shell} data-variant={variant}>
       {hero && !compact ? (
-        <div className={`overflow-hidden rounded-xl bg-[var(--paper)] ${featured ? "mb-3.5 md:mb-0" : "mb-3.5"}`}>
+        <div className={`overflow-hidden rounded-xl bg-[var(--paper)] ring-1 ring-black/5 ${featured ? "mb-3.5 md:mb-0" : "mb-3.5"}`}>
           <GuideImage
             src={hero.src}
             alt={hero.alt}
@@ -62,7 +62,7 @@ export function GuideCard({
           ) : null}
           {article.destination_label ? <span>{article.destination_label}</span> : null}
         </p>
-        <h3 className={`mt-2.5 font-bold tracking-tight ${featured ? "text-2xl leading-snug" : compact ? "text-base leading-6" : "text-lg leading-snug"}`}>
+        <h3 className={`mt-2.5 font-bold tracking-tight ${featured ? "text-xl leading-[1.35] sm:text-2xl sm:leading-snug" : compact ? "text-base leading-6" : "text-[1.0625rem] leading-[1.4] sm:text-lg sm:leading-snug"}`}>
           <Link
             className="text-[var(--ink)] underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:text-[var(--teal)] group-hover:underline"
             href={guideHref(article.kind, article.slug)}
@@ -74,7 +74,7 @@ export function GuideCard({
         {article.topics.length && !compact ? (
           <ul className="mt-auto flex flex-wrap gap-1.5 pt-3">
             {article.topics.map((topic) => (
-              <li key={topic.slug} className="rounded-full border border-[var(--line)] bg-[var(--paper)]/70 px-2.5 py-0.5 text-[length:var(--text-xs)] font-medium text-[var(--muted)]">
+              <li key={topic.slug} className="rounded-full border border-[var(--line)] bg-[var(--paper)]/75 px-2.5 py-0.5 text-[length:var(--text-xs)] font-medium text-[var(--muted)]">
                 {topic.label}
               </li>
             ))}
