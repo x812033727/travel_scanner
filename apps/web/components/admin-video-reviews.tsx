@@ -20,6 +20,7 @@ import { AdminVideoPlans } from "@/components/admin-video-plans";
 import { stateTone } from "@/components/admin-video-shorts-data";
 import { SlidesRequests } from "@/components/admin-video-slides-requests";
 import { DiscussionThread, scriptSubject } from "@/components/admin-video-thread";
+import { UnlinkYoutube } from "@/components/admin-video-unlink-youtube";
 import { syncRunning, useYoutubeConnection, YoutubeChannelCard, type YoutubeConnection, YoutubeLinkHint, YoutubePublishForm, YoutubeSyncPanel } from "@/components/admin-video-youtube";
 import { Button, Tabs } from "@/components/community/ui";
 import { useAdminQueryState, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
@@ -467,6 +468,7 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
       </section>}
       <RetryVideo project={project} canManage={manage.allowed} onRequested={load} />
       <AdminVideoRenewal key={project.slug} project={project} canManage={manage.allowed} onSubmitted={load} />
+      {manage.allowed && <UnlinkYoutube project={project} onUnlinked={load} />}
       {project.youtube_sync && <YoutubeSyncPanel slug={slug} sync={project.youtube_sync} canManage={manage.allowed && !dropped} onChange={load} />}
       {readyToUpload(project) && manage.allowed && <SendToYoutube slug={slug} confirmation={approvedPackage(project.reviews)} connection={connection} sync={project.youtube_sync} mp4Gone={retired} onSent={load} />}
       {pendingFinal && !dropped && !short && !project.youtube_video_id && !approvedPackage(project.reviews) && !syncRunning(project.youtube_sync) && connection?.linked && manage.allowed

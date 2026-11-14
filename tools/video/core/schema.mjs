@@ -68,6 +68,9 @@ const GEMINI_VOICE = /^[A-Za-z][A-Za-z0-9_-]{1,79}$/;
 export const MINIMAX_MODELS = ["speech-2.8-hd", "speech-2.8-turbo"];
 const MINIMAX_VOICE = /^[A-Za-z][A-Za-z0-9 ()_.-]{1,81}$/;
 const STYLE_MAX = 400;
+// Pitch-preserving speech speedup (`tts/tempo.mjs`): >= 1 so tempo only tightens pace, never pads length.
+export const VOICE_TEMPO_MIN = 1;
+export const VOICE_TEMPO_MAX = 1.5;
 export const MAX_PAUSE_MS = 5000;
 // The defaults `pauses` may only tighten: timeline.mjs DEFAULT_PAUSE_MS and SCENE_GAP_MS (a test
 // keeps them equal; timeline.mjs imports this module, so it is not imported back).
@@ -155,7 +158,7 @@ const TOP_KEYS = new Set([
 const LOOP_KEYS = new Set(["setup", "payoff", "what"]);
 /** The most characters a loop's "what" may have: one phrase naming what is held back. */
 export const LOOP_WHAT_MAX = 40;
-const VOICE_KEYS = new Set(["provider", "name", "rate", "lang", "style", "model"]);
+const VOICE_KEYS = new Set(["provider", "name", "rate", "lang", "style", "model", "tempo"]);
 const YOUTUBE_KEYS = new Set([
   "category_id",
   "made_for_kids",
@@ -200,6 +203,9 @@ export function validateVoice(voice, errors, where = "voice", locale = NARRATION
   if (!isText(voice.name)) errors.push({ path: `${where}.name`, message: "must name the voice, e.g. zh-TW-HsiaoChenNeural" });
   if (voice.rate !== undefined && !RATE.test(voice.rate)) {
     errors.push({ path: `${where}.rate`, message: 'must look like "+5%" or "-10%"' });
+  }
+  if (voice.tempo !== undefined && !(typeof voice.tempo === "number" && Number.isFinite(voice.tempo) && voice.tempo >= VOICE_TEMPO_MIN && voice.tempo <= VOICE_TEMPO_MAX)) {
+    errors.push({ path: `${where}.tempo`, message: `must be a number from ${VOICE_TEMPO_MIN} to ${VOICE_TEMPO_MAX} (tempo only speeds speech up, never pads duration)` });
   }
   if (voice.provider === "gemini") {
     if (isText(voice.name) && !GEMINI_VOICE.test(voice.name)) {

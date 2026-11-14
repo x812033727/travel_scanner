@@ -14,7 +14,8 @@ import { CONTENTS_MIN_HEADINGS, GuideArticle, type GuideArticleLabels } from "@/
 import { ArticleMobileProgress, ArticleTocRail } from "@/components/guides/article-toc-rail";
 import type { GuideCardLabels } from "@/components/guides/card";
 import { Breadcrumb } from "@/components/guides/breadcrumb";
-import { Backlinks, RelatedGrid } from "@/components/guides/related-grid";
+import { Backlinks, RELATED_GRID_LIMIT, RelatedGrid } from "@/components/guides/related-grid";
+import type { ArticleReference } from "@/lib/guide-series";
 import { VideoCard } from "@/components/videos/video-card";
 import { getVideos } from "@/lib/videos.server";
 import { TravelCrosslinks, type TravelCrosslinksLabels } from "@/components/guides/travel-crosslinks";
@@ -51,6 +52,8 @@ type Translate = (key: string, values?: Record<string, string | number>) => stri
 
 /** How many related articles end a travel article; past three it stops being a pick. */
 export const RELATED_ARTICLE_LIMIT = 3;
+
+const RAIL_TRENDING_LIMIT = 5;
 
 /** The listing an article belongs to: the heading readers return to, and its URL. */
 function listingOf(kind: GuideKind, t: Translate): Crumb {
@@ -208,6 +211,46 @@ async function relatedTravel(
   return shown.length ? <TravelCrosslinks articles={shown} cities={[]} labels={labels} /> : null;
 }
 
+/**
+ * Fallback related reading for a standalone lifestyle article when the API sent no ranked
+ * `related` list: up to three other lifestyle articles from its primary topic, topped up from
+ * the lifestyle section. Series pages keep their own chapter navigation untouched.
+ */
+async function relatedLife(
+  locale: Locale,
+  state: GuideArticleState,
+  excludeSlugs: readonly string[],
+): Promise<ArticleReference[]> {
+  const own = `${state.kind}:${state.slug}`;
+  const excluded = new Set(excludeSlugs);
+  const key = (article: GuideSummary) => `${article.kind}:${article.slug}`;
+  const picks: GuideSummary[] = [];
+  const take = (articles: GuideSummary[]) => {
+    for (const article of articles) {
+      if (
+        article.kind === "life"
+        && key(article) !== own
+        && !excluded.has(article.slug)
+        && !picks.some((pick) => key(pick) === key(article))
+      ) {
+        picks.push(article);
+      }
+    }
+  };
+  if (state.topics[0]) {
+    take((await getGuideList(locale, { section: "life", kind: "life", topic: state.topics[0].slug }, RELATED_ARTICLE_LIMIT + 1)).articles);
+  }
+  if (picks.length < RELATED_ARTICLE_LIMIT) {
+    take((await getGuideList(locale, { section: "life", kind: "life" }, RELATED_ARTICLE_LIMIT + 1)).articles);
+  }
+  return picks.slice(0, RELATED_ARTICLE_LIMIT).map((article) => ({
+    kind: article.kind,
+    slug: article.slug,
+    title: article.title,
+    description: article.description,
+  }));
+}
+
 export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRoute) {
   await canonicalSlugOrRedirect({ locale, kind, slug });
   const [rawState, t, nav, ts] = await Promise.all([
@@ -267,14 +310,25 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   const kindLabels = { intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life") };
   // A card is labelled by its section and nothing else, so the kind labels are the whole set.
   const card: GuideCardLabels = kindLabels;
+  const isCodexHub = kind === "life" && slug === HUB_SLUG;
+  const isHub = isCodexHub || Boolean(state.series && !state.series.current && state.series.hub.slug === slug);
+  const section = guideSection(kind);
+  const topic = state.topics[0];
   // What to read next comes from the API's ranked list when it has one (the editor's picks,
   // then the nearest neighbours); a lesson's own related lessons are already listed by the
-  // series navigation just above and are not repeated. A lifestyle article that names a
-  // destination keeps the travel handover after it; a travel article's list replaces the
-  // same-city cards it used to end with, which an API without the list still supplies.
+  // series navigation just above and are not repeated. Standalone lifestyle articles without
+  // ranked neighbours fall back to same-topic/same-section lifestyle articles. A lifestyle
+  // article that names a destination keeps the travel handover after it; a travel article's
+  // list replaces the same-city cards it used to end with, which an API without the list still supplies.
   const seriesRelated = (state.series?.related ?? []).map((item) => item.slug);
-  const grid = state.related?.length
-    ? <RelatedGrid heading={t("guides.relatedSameTopic")} items={state.related} kindLabels={kindLabels} exclude={seriesRelated} />
+  const apiRelated = (state.related ?? []).filter((item) => !seriesRelated.includes(item.slug));
+  const gridItems = apiRelated.length
+    ? apiRelated.slice(0, RELATED_GRID_LIMIT)
+    : kind === "life" && !isHub && !state.series && !geminiSeries
+      ? await relatedLife(locale, state, seriesRelated)
+      : [];
+  const grid = gridItems.length
+    ? <RelatedGrid heading={t("guides.relatedSameTopic")} items={gridItems} kindLabels={kindLabels} />
     : null;
   const cited = state.backlinks?.length ? <Backlinks heading={t("guides.citedBy")} items={state.backlinks} /> : null;
   const handover = kind === "life"
@@ -316,8 +370,6 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   const trail: Crumb[] = kind === "life"
     ? [{ name: nav("home"), path: "/" }, listing]
     : [{ name: nav("home"), path: "/" }, { name: t("guides.hubTitle"), path: "/guides" }, listing];
-  const section = guideSection(kind);
-  const topic = state.topics[0];
   if (topic) {
     const vocabulary = await getGuideTopics(locale, section);
     const parentSlug = topic.parent ?? vocabulary.find((item) => item.slug === topic.slug)?.parent ?? null;
@@ -352,26 +404,48 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   const hero = visibleGuideHero(state.document.hero);
   const copy = seriesCopy(locale);
   labels.blocks.code = copy;
-  const isCodexHub = kind === "life" && slug === HUB_SLUG;
-  const isHub = isCodexHub || Boolean(state.series && !state.series.current && state.series.hub.slug === slug);
   const useApiDirectory = isHub && !geminiSeries;
+  const excludedTrendingKeys = new Set<string>([
+    `${kind}:${slug}`,
+    ...(state.series?.related ?? []).map((item) => `${item.kind}:${item.slug}`),
+    ...(state.series?.previous ? [`${state.series.previous.kind}:${state.series.previous.slug}`] : []),
+    ...(state.series?.next ? [`${state.series.next.kind}:${state.series.next.slug}`] : []),
+    ...(state.series?.hub ? [`${state.series.hub.kind}:${state.series.hub.slug}`] : []),
+    ...gridItems.map((item) => `${item.kind}:${item.slug}`),
+  ]);
   const fetchRailTrending = async (): Promise<GuideSummary[]> => {
     if (isHub) return [];
     try {
       if (typeof guidesServer.getTrendingGuides !== "function") return [];
-      const result = await guidesServer.getTrendingGuides(locale, {}, 6);
-      return Array.isArray(result?.articles) ? result.articles : [];
+      const picks: GuideSummary[] = [];
+      const seen = new Set<string>(excludedTrendingKeys);
+      const collect = (articles: unknown) => {
+        if (!Array.isArray(articles)) return;
+        for (const item of articles as GuideSummary[]) {
+          const itemKey = `${item.kind}:${item.slug}`;
+          if (guideSection(item.kind) !== section || seen.has(itemKey)) continue;
+          seen.add(itemKey);
+          picks.push(item);
+          if (picks.length >= RAIL_TRENDING_LIMIT) break;
+        }
+      };
+      if (topic) {
+        const topical = await guidesServer.getTrendingGuides(locale, { section, topic: topic.slug }, 8);
+        collect(topical?.articles);
+      }
+      if (picks.length < RAIL_TRENDING_LIMIT) {
+        const sectional = await guidesServer.getTrendingGuides(locale, { section }, 10);
+        collect(sectional?.articles);
+      }
+      return picks;
     } catch {
       return [];
     }
   };
-  const [series, trendingArticles] = await Promise.all([
+  const [series, railTrending] = await Promise.all([
     useApiDirectory ? getGuideSeries(isCodexHub ? "codex" : state.series!.slug, locale) : Promise.resolve(null),
     fetchRailTrending(),
   ]);
-  const railTrending = trendingArticles
-    .filter((item) => `${item.kind}:${item.slug}` !== `${kind}:${slug}`)
-    .slice(0, 5);
   if (state.series?.current) trail.push({ name: state.series.hub.title, path: guideHref(state.series.hub.kind, state.series.hub.slug) });
   const headings = guideHeadings(extras.blocks);
   const hasDesktopToc = !isHub && (Boolean(state.series?.current) || headings.length >= CONTENTS_MIN_HEADINGS);

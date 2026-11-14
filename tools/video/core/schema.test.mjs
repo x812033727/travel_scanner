@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { compilationDocument } from "./compilation.mjs";
-import { fixture } from "./fixtures/load.mjs";
+import { dramaFixture, fixture } from "./fixtures/load.mjs";
 import { eachLine, spokenText, textHash, THEMES, validateVideo, VIDEO_CATEGORIES } from "./schema.mjs";
 import { localizationPlan } from "../production/retention.mjs";
 
@@ -147,3 +147,27 @@ test("theme is the paper look or nothing (docs/videos/PAPER.md)", () => {
   assert.match(errors[0].message, /^must be "paper" \(docs\/videos\/PAPER\.md\), or left out for the dark theme$/);
   assert.deepEqual(THEMES, ["paper"]);
 });
+
+test("voice.tempo allows 1 to 1.5 across narrator, cohost and drama characters, and refuses values that could pad duration", () => {
+  for (const tempo of [1, 1.12, 1.5]) {
+    const doc = fixture();
+    doc.voice.tempo = tempo;
+    doc.cohost = { id: "partner", name: "搭檔", voice: { provider: "gemini", name: "Leda", style: "清亮明快，一秒五個字以上", tempo } };
+    assert.deepEqual(validateVideo(doc), [], `tempo=${tempo}`);
+  }
+  const drama = dramaFixture();
+  drama.characters[0].voice.tempo = 1.15;
+  assert.deepEqual(validateVideo(drama), []);
+
+  for (const bad of [0.95, 0, -1, 1.51, "1.12", true, NaN, Infinity]) {
+    const doc = fixture();
+    doc.voice.tempo = bad;
+    const errors = validateVideo(doc);
+    assert.deepEqual(paths(errors), ["voice.tempo"], `bad=${String(bad)}`);
+    assert.match(errors[0].message, /1 to 1\.5/);
+  }
+  const badDrama = dramaFixture();
+  badDrama.characters[1].voice.tempo = 0.8;
+  assert.deepEqual(paths(validateVideo(badDrama)), ["characters[1].voice.tempo"]);
+});
+

@@ -149,7 +149,29 @@ describe("DestinationGuide", () => {
     expect(screen.queryByText(copy.emptyFood)).toBeNull();
   });
 
-  const cities = { tokyo, seoul };
+  const osakaKyoto: DestinationSummary = {
+    ...tokyo,
+    id: "osaka-kyoto",
+    city: "大阪／京都",
+    localName: "大阪・京都",
+    englishName: "Osaka & Kyoto",
+    extensionIds: [],
+    areas: ["難波／心齋橋", "梅田", "京都站", "四條河原町"],
+  };
+  const taipei: DestinationSummary = {
+    ...tokyo,
+    id: "taipei",
+    city: "台北",
+    localName: "臺北",
+    englishName: "Taipei",
+    country: "台灣",
+    countryCode: "TW",
+    extensionIds: [],
+    areas: ["台北車站", "西門町", "信義區", "中山"],
+    timezone: "Asia/Taipei",
+    currency: "TWD",
+  };
+  const cities = { tokyo, seoul, "osaka-kyoto": osakaKyoto, taipei };
   it.each(decisionDestinationIds.flatMap((id) => locales.map((locale) => [id, locale] as const)))(
     "renders four complete, sourced %s decision cards in %s", (id, locale) => {
     const decisions = destinationDecisions(locale, id)!;
@@ -176,12 +198,16 @@ describe("DestinationGuide", () => {
     expect([...decisionDestinationIds].sort()).toEqual(Object.keys(cities).sort());
   });
 
-  it("shows Seoul's own comparisons in place of its catalog area names", () => {
-    draw({ destination: seoul });
-    const decisions = destinationDecisions("zh-TW", "seoul")!;
+  it.each([
+    ["seoul", seoul],
+    ["osaka-kyoto", osakaKyoto],
+    ["taipei", taipei],
+  ] as const)("shows %s comparisons in place of its catalog area names", (id, city) => {
+    draw({ destination: city });
+    const decisions = destinationDecisions("zh-TW", id)!;
     const section = screen.getByRole("region", { name: decisions.title });
     expect(within(section).getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent))
-      .toEqual(seoul.areas);
+      .toEqual(city.areas);
     expect(screen.queryByText(copy.areasTitle)).toBeNull();
     expect(screen.queryByRole("region", { name: destinationDecisions("zh-TW", "tokyo")!.title })).toBeNull();
     expect(screen.queryByRole("link", { name: /GO TOKYO/ })).toBeNull();

@@ -1,74 +1,59 @@
 ---
 name: curio-episode
-description: 奇聞檔案局（slug 以 curio- 開頭的歷史與奇異解說長片）的做法：系列定案不能改的事、照黑猫研究院十步的架構（鉤子＋承諾句，不先濃縮劇情）、該走哪條路線（新集走主機可愛解說 cute-mystery；重製走本機 recut）、MiniMax image-01 可愛插圖怎麼寫提示詞、插圖怎麼驗收（內容相關的可愛插畫，圖文相符與接梗）、不用卡片也不放文字、在世或 1956 年後過世的人不入畫、英文名照原文念、整集一次報價、跟品牌故事一樣每 45 秒一個鉤子與配樂、片頭片尾、配音與 Shorts。lint 對 curio- 的 slug 檢查系列畫風、插圖占比至少七成、連續卡片最多三張（舊集的上限；新集一張卡都不寫）。要做、重做、續做或修任何一集奇聞檔案局（含 H01–H07、U、L 各題與它們的 v2），或改它的畫面、提示詞、卡片時，先讀這個 skill，再讀 youtube-video。Make or remake a 奇聞檔案局 (curio-*) episode in the series look.
+description: 奇聞檔案局（slug 以 curio- 開頭的歷史與奇異解說長片）的做法：系列定案不能改的事、照黑猫研究院十步的架構（鉤子＋承諾句，不先濃縮劇情）、2026-11-14 定案升級版「劇場級動畫光影 × 厚塗水粉質感」內建 generate_image 生圖與 keyframes import 匯入（停用 MiniMax 生圖、角色設定圖 ImagePaths 鎖定、四格 2x 放大獨立審圖）、成片組裝後必先派獨立代理做一般觀眾視角評分挑刺並修完才備份雲端與推後台、不用卡片也不放文字、在世或 1956 年後過世的人不入畫、英文名照原文念（拼讀不一致的姓氏補音標式英文讀法）、中文 Gemini Sulafat（≥4.4 字／秒）＋八語 MiniMax 配音、每 30–45 秒一個鉤子與配樂、片頭片尾與 Shorts。lint 對 curio- 的 slug 檢查系列畫風、插圖占比至少七成、連續卡片最多三張（舊集的上限；新集一張卡都不寫）。要做、重做、續做或修任何一集奇聞檔案局（含 H01–H07、M、P、S、U、L、F、G 各題與它們的 v2），或改它的畫面、提示詞、卡片時，先讀這個 skill，再讀 youtube-video。Make or remake a 奇聞檔案局 (curio-*) episode in the series look.
 metadata:
-  short-description: 奇聞檔案局：系列畫風、路線、插圖驗收、檢查
+  short-description: 奇聞檔案局：劇場厚塗水粉畫風、內建生圖匯入、觀眾評分關卡、檢查
 ---
 
 # 奇聞檔案局（curio-episode）
 
-奇聞檔案局是一個**可愛卡通插圖**配一個說書旁白的歷史與奇異系列：每一集講一個真實的怪事，像講故事
-一樣講到底。畫面全是 MiniMax `image-01` 畫的插圖；2026-11-05 起不用卡片、畫面不放任何文字（§不用卡片）。
-這份 skill 是系列的固定做法；通用的步驟（旁白、合成、上架包、配音、Shorts）仍在 `youtube-video`。
+奇聞檔案局是一個**劇場級動畫光影 × 厚塗水粉插畫**配一個說書旁白的歷史與奇異系列：每一集講一個真實的怪事，像講故事一樣講到底。**2026-11-14 起全系列停用 MiniMax 生圖，並在備份雲端與推後台前增設「獨立一般觀眾視角評分挑刺」硬關卡**：關鍵影格一律用代理內建 `generate_image`（`AspectRatio: "16:9"`）套用五大質感配方生成，經獨立子代理四格 2 倍放大審圖後以 `keyframes import --provider external --usd 0` 匯入；成片組裝過 `qa`（11/11）與 `package`（4/4）後，必須先派沒參與製作的獨立子代理實看成片與九語縮圖／說明欄打分挑刺（`review/audience-review.md`（六項各 ≥ 7.5／10、總均 ≥ 8.0／10）、把破綻全數修完重驗通過，才做雲端硬碟備份，備份核對成功後才 `review-push --gate final`；2026-11-05 起不用卡片、畫面不放任何文字（§不用卡片）。這份 skill 是系列的固定做法；通用的步驟（旁白、合成、上架包、配音、Shorts）仍在 `youtube-video`。
 
-2026-10-14 為什麼有這份 skill：H04–H06 重製時，負責的模型沒讀到系列的畫面規則（只寫在
-`docs/videos/history-curiosity/look.md`），把插圖當證據重建、一張一張向站主要授權，試圖連續被自己退回，
-最後整集變成 88 張文字卡、0 張插圖，跟 H01–H03 完全不像一個頻道。下面每一條都是為了不再發生。
+2026-10-14 為什麼有這份 skill：H04–H06 重製時，負責的模型沒讀到系列的畫面規則（只寫在 `docs/videos/history-curiosity/look.md`），把插圖當證據重建、一張一張向站主要授權，試圖連續被自己退回，最後整集變成 88 張文字卡、0 張插圖，跟 H01–H03 完全不像一個頻道。下面每一條都是為了不再發生。
 
 ## 先讀
 
-1. 參考片 `docs/videos/curio-h01-v2/video.json`：動筆前讀前 30 景，看一張圖配一兩句的節奏。它有 7 張卡片、
-   提示詞也比現在的規則長；2026-11-05 以後卡片與提示詞照 §不用卡片、§插圖提示詞怎麼寫。
-2. `docs/videos/history-curiosity/README.md`（系列企劃與站主的決定）、`docs/videos/history-curiosity/look.md`
-   （畫風怎麼來的、MiniMax 的限制、量過哪些寫法會漂）。
-3. 稿子：`.agents/skills/youtube-video/references/script-writing.md` §故事主線與鉤子（一條故事線、`loops` 表、
-   片尾不點名下一支）與 §奇聞檔案局與品牌故事的架構（2026-11-05：黑猫研究院的十步，鉤子＋承諾句，不先濃縮劇情）。
+1. 參考片 `docs/videos/curio-h01-v2/video.json`：動筆前讀前 30 景，看一張圖配一兩句的節奏（現改為同節拍 2–3 句併一景）。它有 7 張卡片；2026-11-05 起不用卡片，2026-11-14 起插圖生圖與提示詞照 §插圖生圖與提示詞怎麼寫（2026-11-14 定案）。
+2. `docs/videos/history-curiosity/README.md`（系列企劃與站主的決定）、`docs/videos/history-curiosity/look.md`（2026-11-14 劇場級動畫光影×厚塗水粉質感定案與英文基底句）。
+3. 稿子：`.agents/skills/youtube-video/references/script-writing.md` §故事主線與鉤子（一條故事線、`loops` 表、片尾不點名下一支）與 §奇聞檔案局與品牌故事的架構（2026-11-05：黑猫研究院的十步，鉤子＋承諾句，不先濃縮劇情；顯性「還記得開頭…嗎？」留頭尾最多 2 次，最後一章章名寫總結收束句）。
 
 ## 系列定案（改任何一條都要先問站主）
 
 | 項目 | 定案 | 來源 |
 | --- | --- | --- |
-| 畫面 | MiniMax `image-01` 畫的可愛卡通插圖；**不由 Claude 或 Codex 手繪 SVG** | 站主 2026-10-10「用 minimax 產生圖不要用 claude 或 codex 產生」 |
-| 畫風 | `look: { "preset": "cute-mystery" }`，一個字都不加：不寫 `style`、`negative` 留空 | 站主 2026-10-10 選第 3 版；`tools/video/core/drama.mjs` PRESETS |
+| 畫面與生圖 | **2026-11-14 起全面改用代理內建 `generate_image`（`AspectRatio: "16:9"`）生成「劇場級動畫光影 × 厚塗水粉質感」插圖，再用 `keyframes import --provider external --usd 0` 匯入；嚴禁用 MiniMax 生圖，亦不由手寫 SVG 充數**。全片所有鏡頭畫風必須 100% 統一（重製或中途升級時嚴禁混用舊版平塗黑框大頭卡通與新版厚塗水粉）。遇到 `gemini-3.1-flash-image` 配額冷卻時，先跑八語翻譯、配音與 `check-audio`，分批等待配額恢復，絕不退回 MiniMax | 站主 2026-11-14「畫圖用你生成的不要用 minimax」「以後用這樣的風格」 |
+| 畫風設定 | `video.json` 頂層仍寫 `look: { "preset": "cute-mystery" }`（不寫 `style`、`negative` 留空）以通過系列 lint（`tools/video/core/curio.mjs`）；實際 `generate_image` 的每鏡 Prompt 必帶「劇場級動畫光影 × 厚塗水粉質感」英文基底句（見 §插圖生圖與提示詞怎麼寫） | 站主 2026-10-10、2026-11-14；`tools/video/core/curio.mjs` |
 | 照片 | 2026-11-05 起新集不用：照片卡也是卡片（§不用卡片）。之前可放，限公有領域（CC BY 不用），做成貼圖式照片卡 | 站主 2026-10-10、L08、2026-11-05 |
-| 人物 | 1956 年以前過世（70 年以上）可畫成卡通（用描述不用名字）。**在世或 1956 年後過世的人不入畫**，連「代表他的路人」也不畫：講到他們時畫串場角色、物件，或明顯是一般人的匿名角色（§誰可以入畫） | README §內容守則；站主 2026-11-05 |
+| 人物與設定卡 | 1956 年以前過世（70 年以上）可入畫（Prompt 用年代／身分／服裝描述，不寫真名）。**單一可入畫歷史人物或串場研究員只要跨 ≥ 4 鏡出場，開畫前必先用 `generate_image` 產一張角色設定圖（鎖死五官、髮色、髮型與主色服裝），每鏡出場時 `ImagePaths` 必傳該設定圖**（重繪既有鏡頭時一併傳入前一版圖檔）。**在世或 1956 年後過世的人不入畫**，連「代表他的路人」也不畫：講到他們時畫串場角色、物件，或明顯是一般人的匿名角色（§誰可以入畫） | README §內容守則；站主 2026-11-05、2026-11-14 |
 | 長度 | **2026-11-01 站主改為看內容決定：至少 8 分鐘、最多 13 分鐘**（「≥8 分鐘都可以」）。片長跟著素材走：撐不住就剪短，或跟同一個核心問題的兄弟題排成一集，不用重述、停頓或慢唸補時間。後台建立單集時照題案的 `target_minutes` 選（`docs/videos/history-curiosity/pool/THEMES.md`；沒有題案的單題照題卡素材估，至少 8 分鐘），正文約 4.5 字／秒：8 分鐘約 2,100 字、13 分鐘約 3,500 字。2026-10-25 曾定一律 13 分鐘（參考頻道中位 13–31 分，§跟高點閱頻道的差距），已被這條取代；已製作與製作中的集照原本的長度 | `docs/videos/long-form/README.md`；`docs/videos/channel-review-20261025-story-series/README.md` |
 | 片頭片尾 | 頻道片頭放在第一章（鉤子＋承諾句）之後（`intro_at` = after_first_chapter）；片尾 v4-endscreen，旁白不提下一支 | `docs/videos/BRANDING.md` |
 | 語速與停頓 | **2026-11-13 站主：實測語速至少 4.4 字／秒**（字數不含標點，除以每句錄音長度加總，不算句間空白）；停頓照 PR #2069：`"pauses": {"line_ms": 0, "scene_ms": 150}`、`"still_motion": "beat"`。**不符合的集數一律重做**，連已核准、待上傳的也重做；重錄旁白時八語配音一起改用 MiniMax（PR #2085），中文旁白維持 Gemini `Sulafat`。聲音指示寫「一秒四到五個字」只念到約 4.1–4.3（Gemini 會打折扣），要寫得比目標快（見 §稿子 的語速） | 站主 2026-11-13「不符合的都要重製」「重錄的話八語就用 minimax」 |
-| 八語 | **2026-11-13 起每集預設八語都做**（en、ja、ko、es、pt、id、vi、th：標題說明、CC、配音）；外語配音用 MiniMax 各語言的聲音；外語標題要在手機清單寬度內（lint `at most 36`），外語縮圖標題手機寬度 ≥ 24 px | 站主 2026-11-13「預設八語言都做 除了中文其他都用minimax」 |
-| 語言 | zh-TW 先做完，en／ja／ko 的標題說明、CC、配音由站主勾選 | `docs/videos/DUBS.md` |
+| 八語 | **2026-11-13 起每集預設八語都做**（en、ja、ko、es、pt、id、vi、th：標題說明、CC、配音）。工具的 `DEFAULT_LOCALES` 仍只有 zh-TW、en、ja、ko，所以每集要明確選這八個語言（站台的語言勾選／`languages.json`，`i18n-sheet --locale en,ja,ko,es,pt,id,vi,th`、`dub --locale <loc>` 逐一跑），不能靠預設；外語配音固定用 MiniMax；外語標題要在手機清單寬度內（lint `at most 36`），外語縮圖標題手機寬度 ≥ 24 px 且副標 `sub` 避免單字孤行換行；外語（尤其泰文，每字 3 bytes）組完說明欄壓在 `< 4,500` UTF-8 bytes 安全區間 | 站主 2026-11-13、2026-11-14 |
+| 語言 | zh-TW 先做完（Gemini `Sulafat`）；外語照上一列「八語」全做（MiniMax） | `docs/videos/DUBS.md` |
 | 鉤子 | 跟品牌故事一樣密：正文每 30–45 秒一個懸念，沒有超過 45 秒的空檔；`loops` 十分鐘至少 8 個；每章停在一個沒解的問題上 | 站主 2026-10-19「品牌故事比較順也有比較多鉤子」；lint 的 `TIGHT_CADENCE`（`tools/video/core/narrative.mjs`） |
-| 架構與口吻 | **2026-11-05 起照黑猫研究院十步**：鉤子（問句或情境＋終點多大×起點多小，最多 1–2 個高潮標籤，不講過程、不先濃縮劇情）→ 承諾句「今天我們就來聊聊…」（約 0:40–1:05）→ 時代與起源 → 第一次起落 → 升級關卡 2–4 個 → 最大危機或反轉 → 翻身與揭曉（「還記得…嗎？」）→ 尾聲「故事還沒結束」→ 主題收束 → 提問＋訂閱；大方向照時間順序，倒敘只做小段且有時間提示；全片不能沒頭沒尾。取代 2026-10-25 的開場五步與 30–60 秒開場濃縮。說給一個人聽：每章至少一句「你」、一句旁白自己的反應，lint 低於每千字 2 個「你」警告；標題公式見 §標題與縮圖 | 站主 2026-11-05；`script-writing.md` §奇聞檔案局與品牌故事的架構；`register.mjs` `STORY_OPENING_RULE`、`TOLD_TO_ONE_VIEWER` |
+| 架構與口吻 | **2026-11-05 起照黑猫研究院十步**：鉤子（問句或情境＋終點多大×起點多小，最多 1–2 個高潮標籤，不講過程、不先濃縮劇情）→ 承諾句「今天我們就來聊聊…」（約 0:40–1:05）→ 時代與起源 → 第一次起落 → 升級關卡 2–4 個 → 最大危機或反轉 → 翻身與揭曉（「還記得…嗎？」顯性提示全片留頭尾最多 2 次，中段直接講事實）→ 尾聲「故事還沒結束」→ 主題收束（最後一章章名寫總結收束句，不拿花絮當最後章名）→ 提問＋訂閱；大方向照時間順序，倒敘只做小段且有時間提示；全片不能沒頭沒尾。說給一個人聽：每章至少一句「你」、一句旁白自己的反應，lint 低於每千字 2 個「你」警告；標題公式見 §標題與縮圖 | 站主 2026-11-05；`script-writing.md` §奇聞檔案局與品牌故事的架構；`register.mjs` `STORY_OPENING_RULE`、`TOLD_TO_ONE_VIEWER` |
 | 畫面上的字 | **不用卡片、畫面不放任何文字**（走全球市場）：數字講出來、畫成圖；章名只放在 YouTube 說明欄的章節（工具從 `chapter` 欄位寫）；縮圖保留文字，每個語言各做一張 | 站主 2026-11-05；`register.mjs` `STORY_SERIES_SCREEN_RULE` |
-| 英文名稱 | 人名、公司、作品、地名只要是英文（或其他拉丁字母）就**寫英文、念英文**，不硬翻成中文音譯（Pigafetta 不寫「皮加費塔」）；中英之間空一格；不寫中文音譯的 `say`；台灣慣用的正式中文名例外（三星、華為、維基百科、麥哲倫）；新的英文詞在 `docs/videos/lexicon.json` 記 `null` | 站主 2026-11-05；2026-11-08「如果是英文就用英文不要硬翻譯 不然會怪怪的」 |
-| 配樂 | 每一集都有：`"music": {"prompt": "light, curious, a little mysterious, no vocals", "gain_db": -20, "duck_db": -10}`，跟品牌故事同樣的音量；沒有配樂 lint 會警告 | 站主 2026-10-19「而且有音樂」；`tools/video/core/curio.mjs` 的 `CURIO_MUSIC` |
+| 英文名稱 | 人名、公司、作品、地名只要是英文（或其他拉丁字母）就**寫英文、念英文**，不硬翻成中文音譯（Pigafetta 不寫「皮加費塔」）；中英之間空一格；不寫中文音譯的 `say`；台灣慣用的正式中文名例外（三星、華為、維基百科、麥哲倫）；新的英文詞在 `docs/videos/lexicon.json` 記 `null`，**但遇到拼寫與實際英文讀音差距大的古典／英國專有名詞（如 `Pepys`、`Worcester`、`Thames`），必須在單集 `story-lexicon` 補音標式英文讀法（如 `"Pepys": "Peeps"`）鎖死全片發音一致** | 站主 2026-11-05；2026-11-08「如果是英文就用英文不要硬翻譯 不然會怪怪的」；2026-11-14 `curio-p17` |
+| 配樂 | 每一集都有：`"music": {"prompt": "light, curious, a little mysterious, no vocals", "gain_db": -20, "duck_db": -10}`（若歷史懸疑集數混音偏乾，可微調至 `-18`／`-8` 讓鋪底更有存在感且不蓋人聲）；沒有配樂 lint 會警告 | 站主 2026-10-19「而且有音樂」；`tools/video/core/curio.mjs` 的 `CURIO_MUSIC` |
+| 成片觀眾評分關卡 | **2026-11-14 起必經關卡**：`assemble`、`qa`（11/11）與 `package`（4/4）完成後，**嚴禁直接推後台或備份雲端**；必須先派沒參與製作的獨立子代理以「一般觀眾視角」實看成片 `final.mp4`、九語縮圖與說明欄，對「外包裝吸睛度、內容與聲音體驗、視覺與連貫感」三維度評分挑刺，寫成 `review/audience-review.md`（六項各 ≥ 7.5／10、總均 ≥ 8.0／10）。凡抓出縮圖字過多裁字、外語副標孤行、專有名詞唸法飄移、畫風不統一、時代道具穿幫或情緒光影違和，一律先修完並重過 `qa`（11/11）＋`package`（4/4），**修完達標後先跑 `todrive.sh` 雲端硬碟完整備份並獨立核對，成功後才 `review-push --gate final` 推後台** | 站主 2026-11-14「把觀眾評分加入流程 修完後才推後台跟備份」 |
 
-## 選路線
+## 選路線（2026-11-14 更新）
 
 | 情況 | 路線 | 怎麼做 |
 | --- | --- | --- |
-| **新的一集** | 主機可愛解說路線（預設） | 後台「影片審核 → 漫劇 → 新的漫劇」，風格選奇聞檔案局（`cute-mystery`），圖片模型自動是 `image-01`，長度 10 分鐘。工人照 `tools/video/automation/explainer-series.mjs` 的 MYSTERY 系列檔案寫聖經與稿子；`settle()` 會丟掉撰稿模型加的 `style`／`negative`；每張圖九題是非題評審；畫面多樣性 lint 也管。設計在 `docs/videos/explainer-route/DESIGN.md` |
-| **重製已交付的一集**（改稿、改開場、換片頭片尾） | 本機 recut | `docs/videos/curio-five-recuts-20261012/README.md`；已付錢的插圖照舊用（提示詞逐字不動就吃快取），新景才畫新圖 |
-| **主機不能用、要在本機從零做** | 本機漫劇格式 | `format: "drama"`、`look: { "preset": "cute-mystery" }`、`characters: []`；`node tools/video/cli.mjs keyframes --slug <SLUG> --takes 3` 一次畫整集（不是一次三張） |
+| **新的一集（現行預設）** | 本機／雲端對話漫劇格式＋內建 `generate_image` 匯入 | `format: "drama"`、`look: { "preset": "cute-mystery" }`、`characters: []`、`"pauses": { "line_ms": 0, "scene_ms": 150 }`、`"still_motion": "beat"`；全部關鍵影格由代理內建 `generate_image`（`AspectRatio: "16:9"`）套用劇場級動畫光影×厚塗水粉基底句生成（角色跨 ≥ 4 鏡時先產角色設定圖並傳入 `ImagePaths`），經獨立子代理四格 2 倍放大審過後，逐鏡以 `node tools/video/cli.mjs keyframes import --slug <SLUG> --shot <ID> --file <PNG> --provider external --usd 0` 匯入，**不跑 MiniMax `keyframes` 生圖** |
+| **重製已交付的一集**（改稿、改開場、換片頭片尾） | 本機 recut | `docs/videos/curio-five-recuts-20261012/README.md`；既有已核准插圖可保留，新景或重繪鏡頭一律改用內建 `generate_image`＋`keyframes import --provider external --usd 0`（重繪時將原圖一併傳入 `ImagePaths` 鎖定構圖） |
+| **主機自動解說路線（歷史參考）** | 主機 `explainer-series.mjs` | 早期主機工人綁定 `image-01` 的自動化路線（`docs/videos/explainer-route/DESIGN.md`）；2026-11-14 站主定案停用 MiniMax 生圖後，新集一律走第一列內建生圖匯入路線 |
 
-**同一位歷史人物要在很多張圖裡長得一樣時**（站主 2026-11-04 為 S42 的皮加費塔定案）：單靠提示詞的文字鎖不住臉，
-在 `characters` 列這個人（`appearance`、`sheet_prompt`，`voice` 照填但不會用到），跑 `look` 畫設定圖、
-`review-push --gate look` 交站主挑一張，`review-pull` 後再跑 keyframes，該人物出場的景在 `data.characters` 寫他的 id。
-奇聞檔案局仍然只有旁白：任何一句的 `speaker` 寫成角色 id，`lint` 就報錯（`core/drama.mjs` `isNarratedExplainer`）。
-只列 70 年前過世、可以入畫的人；在世或 1956 年後過世的人照舊不入畫，不要為他們建角色。
+**同一位歷史人物要在很多張圖裡長得一樣時**（2026-11-14 更新）：單靠提示詞文字鎖不住臉與穿搭（`curio-m17` 瑪麗・雪萊未傳設定圖，6 鏡換了 6 套髮色與洋裝）。只要單一可入畫人物（過世滿 70 年的歷史人物，或虛構的檔案局串場研究員）在單集出場 ≥ 4 鏡，開畫前先用 `generate_image` 產一張 16:9 角色設定圖（鎖死五官、髮色、髮型、主色年代服裝），之後該人物出場的每一鏡都在 `generate_image` 的 `ImagePaths` 傳入該設定圖；`video.json` 的 `characters` 維持 `[]` 即可（奇聞檔案局只有旁白：任何一句的 `speaker` 寫成角色 id，`lint` 就報錯，`core/drama.mjs` `isNarratedExplainer`）。在世或 1956 年後過世的人照舊不入畫，不要為他們建角色設定圖。
 
-**句間停頓**（站主 2026-11-05）：預設每句後停 0.3 秒、換場再停 0.7 秒，加上配音本身的尾音，
-成片靜音佔 7–10%，評分卡的目標是 3% 以下。奇聞的 video.json 加 `"pauses": { "line_ms": 0, "scene_ms": 150 }`
-（只能比預設短）；改了之後時間軸會變，旁白與分鏡都要站主重新核准，配音不必重錄。
-**插圖的動法**（同日，參考黑貓研究院）：預設整張圖慢慢飄、而且多半往裡推，站主嫌「只會一直放大」。
-video.json 加 `"still_motion": "beat"`：插圖輪流用推近、右移、拉遠、左移、上搖（camera 寫了方向就照寫的），
-整段都在動、幅度比預設大；圖與圖之間淡入淡出，章節開頭硬切。只動合成，不必重畫、不必重新核准分鏡。
-**2026-11-11 起這兩項是系列預設**（站主「改成系列預設」；奇聞檔案局與原來如此事務所都是，`core/curio.mjs` `SERIES_PACING`）：
-主機路線的 `settle()` 在撰稿沒寫時自動補上；本機路線不自動改（已核准的時間軸不能在背後變），`lint` 缺哪一項就警告哪一項，照警告補上。
+**句間停頓**（站主 2026-11-05）：預設每句後停 0.3 秒、換場再停 0.7 秒，加上配音本身的尾音，成片靜音佔 7–10%，評分卡的目標是 3% 以下。奇聞的 video.json 加 `"pauses": { "line_ms": 0, "scene_ms": 150 }`（只能比預設短）；改了之後時間軸會變，旁白與分鏡都要站主重新核准，配音不必重錄。
+**插圖的動法**（同日，參考黑貓研究院）：預設整張圖慢慢飄、而且多半往裡推，站主嫌「只會一直放大」。video.json 加 `"still_motion": "beat"`：插圖輪流用推近、右移、拉遠、左移、上搖（camera 寫了方向就照寫的），整段都在動、幅度比預設大；圖與圖之間淡入淡出，章節開頭硬切。只動合成，不必重畫、不必重新核准分鏡。
+**2026-11-11 起這兩項是系列預設**（站主「改成系列預設」；奇聞檔案局與原來如此事務所都是，`core/curio.mjs` `SERIES_PACING`）：主機路線的 `settle()` 在撰稿沒寫時自動補上；**用 Claude 對話／雲端配對影音權杖做片走的是本機路線（不經主機 `settle()`），`video.json` 必須自己明寫 `"pauses": { "line_ms": 0, "scene_ms": 150 }` 與 `"still_motion": "beat"`**（S42、B01 漏寫就退回 300／700 毫秒舊停頓與單向慢推）。`lint` 缺哪一項就警告哪一項，照警告補上。
+**同節拍多句併一景（禁止全集一句一景）**：講同一個動作、因果或畫面的連續 **2–3 句短句放進同一個 `scene.lines[]`**（一張插圖停留約 4–8 秒），畫面主體換了才開新 `scene`。若寫成 100% 一句一景（S42 92 句拆 73 景、B01 137 句拆 137 景），每一句結尾都變成換景的 `scene_ms`，`line_ms: 0` 完全失效，插圖張數與費用也白白翻倍。
 停頓拿掉後同一份稿子估出來的片長會變短：奇聞每句少 0.3 秒（句子原本用預設的 300 毫秒）、每景少 0.55 秒；原來如此每句只少 0.1 秒（它的台詞原本每句寫 `pause_after_ms: 100`，新一集照 [`docs/videos/so-thats-why/dialogue-pilot-20261103/README.md`](../../../docs/videos/so-thats-why/dialogue-pilot-20261103/README.md) §10.6 不再每句寫，只在答案前留一拍）、每景同樣少 0.55 秒。接近片長下限的稿子要多寫內容，不要拉長停頓補時間。
 
-不要用 `format: "slides"` 從零做新集：那是 H01–L08 第一版的試片路線，系列預設與評審都要手動接，
-H04–H06 就是在這裡偏掉的。
+不要用 `format: "slides"` 從零做新集：那是 H01–L08 第一版的試片路線，系列預設與評審都要手動接，H04–H06 就是在這裡偏掉的。
 
 ## 稿子：跟品牌故事一樣順、一樣多鉤子
 
@@ -114,19 +99,30 @@ H04–H06 就是在這裡偏掉的。
 - **語速**：正文目標 4.5 字／秒（參考頻道約 5，我們 3.3）；句子用連接詞接著講，事實後面接它對某個人的意義。10 分鐘的集數
   正文約 2,700 字起算，不是 2,100。聲音指示 `STORY_VOICE_STYLE` 2026-10-25 已加「語速像平常聊天，一秒四到五個字，句與句之間不拖」（站主定）；
   主機用的是後台設定分頁貼的那一份，**站主要把這句貼上去**；它在 `speechHash` 裡，舊片不重錄。
-  **2026-11-13 改**：實測只有 4.1–4.3 字／秒，站主定「至少 4.4、不符合的重做」（§系列定案〈語速與停頓〉）。原來如此實測過的寫法是「語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音」（`docs/videos/lessons/sothatswhy.md` 2026-11-11），奇聞照用；錄完用 timeline.json 的 `audio_samples` 量，到 4.4 才送審，沒到就再加快指示重錄。
+  **2026-11-13 改**：實測只有 4.1–4.3 字／秒，站主定「至少 4.4、不符合的重做」（§系列定案〈語速與停頓〉）。原來如此實測過的寫法是「語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音」（`docs/videos/lessons/sothatswhy.md` 2026-11-11），奇聞照用；錄完看 `tts` 印出的實測語速（或量 `timeline.json` 的 `audio_samples`），若 Gemini 仍把語速打折在 4.1–4.3 字／秒，可在 `voice` 加 `"tempo": 1.08`–`1.15`（`ffmpeg atempo` 不變調微加速，`1 <= tempo <= 1.5`）再跑 `tts`，確保實測 ≥ 4.4 字／秒才送審。
 - **結尾**也是對話：答案、「如果你…，留言告訴我」、訂閱的理由；可以說「好啦，這就是今天的故事」，仍然不講下一支。
 
-## 標題與縮圖（2026-10-25）
+## 標題與縮圖（2026-10-25；2026-11-13 審片補齊）
 
 - 標題：**大家認得的名字放前 6 字**（船、地方、人、事件、品牌）＋**一個利害或反常的詞**（消失、不敢、騙過、差點、全部、真相、
   憑什麼）＋一個數字或年份＋問號；後綴照舊「｜奇聞檔案局」或「｜品牌故事」；後綴前最多 30 字。
   例：「十個人全部消失，1872 年這艘船為什麼還在走？」「曹操自己放的火？赤壁真正燒船的人是誰」「賣輪胎的公司，憑什麼決定全世界最好吃的餐廳？」。
   不要平靜的閱讀題（「燈塔的故事改了哪裡？」「研究揭露了什麼？」）。
-- 縮圖（版型重做前能做的）：`headline` 用最有利害的 6 字（「全部消失」「他自己燒的？」），`sub` 寫數字或年份，`shot` 選一張
-  **有表情的臉**或**那件東西本身**（船、信、鞋），不選空景。版型 2026-10-25 已做（layout d，票 `2026-10-24-story-series-thumbnails-take-the-bold`）：`sub` 要寫，它是第二行白字大標（≤12 字），不是註腳。
+- 縮圖文字（layout e 預設）：
+  - `headline`（**硬上限 ≤ 6 個單位，拆兩行**）：**第一行優先寫大家認得的名字／主體**（人、品牌、國家、船；S42 只寫「為了一頭豬」沒點名，不如「英美差點開戰\n**為一頭豬？**」），**第二行用 `**…？**` 寫反常識衝突或反轉**。超過 6 個單位時，layout `e` 字級會縮到低於手機可讀門檻（`< 24 px`）甚至把最後一個字擠出框外（`curio-p17` 初版 9 個單位曾把「手」裁掉一半）。
+  - `sub`（≤ 12 字）：補標題與 `headline` 沒說的硬事實（數字、年份、懸殊對比），是第二行白字大標，不是註腳；**外語 `sub` 渲染後必須逐張目視檢查，嚴禁第二行只掉下單一孤字（orphan word wrap）**。
+  - **嚴禁在縮圖破梗答案**：`headline` 與 `sub` 只能拉高懸念與利害，**絕不直接寫出片中才要揭曉的因果答案或結局**。
+- 縮圖畫面（`shot`）：選**誇張清楚的表情特寫**（驚恐、困惑、震驚的大臉）或**強烈視覺反差**（例如軍艦對一頭豬）；**禁止選闔上的空白書本、空房間、單一靜態死物**（W02 選闔上的紅皮書在手機列表毫無吸睛力；書頁不能畫字時改選角色看到結果的驚訝表情）。
 - **字不擋主體**（站主 2026-11-08）：重做的集數在 `thumbnail.data` 寫 `"layout": "e"`（左邊深藍字區、右邊放圖，字不疊在圖上，長的外語標題在字區內自動縮字），
   `"focus": 0–100` 調圖在右框裡的左右位置，讓主體在框中間；做上架包時八語縮圖逐張看。**2026-11-10 起 curio- 的預設就是 layout e**（站主「應該用新版縮圖」：W02、S10-v2 因為沒寫 layout 畫成舊版）；不寫也會是新版，`focus` 照樣要調。要保留舊版的集數寫 `"layout": "d"`。
+
+## 說明欄、八語系列後綴與置頂留言（2026-11-13）
+
+- **前兩行鉤子不破梗**：`youtube.description` 第一行是鉤子問題或反差，第二行是「給…的人」（搜尋結果與展開前只看得到這兩行）；**不在前兩行直接講完謎底**。
+- **內部查核與作畫備註不進說明欄**：史料算式核對、版本出入、誰能不能入畫（「皮加費塔過世超過四百年」「不畫創辦人的臉」）一律留在 `claims.md`／`verify-1.md`，**禁止寫進給觀眾看的 `youtube.description`**（S42、W02、B01 把內部查核備忘錄寫進說明欄，讀起來像工程紀錄）。AI 揭露若要寫，只留最後一行乾淨短句（Studio 照勾「變造或合成內容」）。
+- **參考資料標題寫給觀眾看**：`sources[].title` 用清楚的書名、章名或機構頁面名稱；引用同一份公有領域長文時，只挑最核心的 1–2 段（`#L...` 行號錨點只用來區分確實不同的關鍵段落，不要把同一本書拆成五六條洗版）。說明欄最末由工具自動帶上 `#奇聞檔案局` 系列 hashtag（`core/metadata.mjs` `SERIES_HASHTAGS`）。
+- **八語標題保留系列後綴**：`i18n/<locale>.json` 的外語標題一律帶定版系列譯名後綴（例如英文 `｜Curio Archive`、日文 `｜奇聞ファイル局`，完整八語對照表在 [`docs/videos/packaging-refresh-20261111/README.md`](../../../docs/videos/packaging-refresh-20261111/README.md) §譯名），最末的 `｜CC Subtitles` 等字幕標記由工具自動補上。
+- **播放清單與二選一置頂留言**：交付上架包時，一併擬好一則**低門檻二選一置頂留言**（例如「換作是你會選 1 還是 2？留言打數字！」），提醒站主公開後置頂並把影片歸入「奇聞檔案局」播放清單。
 
 ## 配樂
 
@@ -135,56 +131,41 @@ H04–H06 就是在這裡偏掉的。
 看 `status` 印出的報價），再 `assemble`。主機路線的撰稿提示詞也要求在設定開著配樂時一定寫 `music`。
 2026-10-19 以前交付的集數都沒有配樂，**不補**（站主 2026-10-19「新的集數再開始就好」）：重製或重新合成舊集時也不要順手加。
 
-## 插圖提示詞怎麼寫（2026-11-05 改）
+## 插圖生圖與提示詞怎麼寫（2026-11-14 定案升級）
 
-畫風只在 `look` 裡；提示詞只寫**這一張畫什麼**。2026-11-05 站主照 W03 重做時量到的結果定下 MiniMax `image-01` 的寫法
-（主機撰稿提示是 `register.mjs` `STORY_SERIES_SCREEN_RULE` 與 `explainer-series.mjs` 的 `NO_WORDS_PICTURE_RULES`）：
+**兩層提示詞分工（必須同時滿足 lint 與畫質）**：
+1. **`video.json` 裡的 `scene.data.prompt`（供 `lint` 與分鏡紀錄讀）**：保持精簡（約 100–200 字元），開頭必寫標準景別（`Close-up`、`Medium shot`、`Wide shot`、`Overhead shot` 等）→ 地點與光線 → 一個主體做一個動作 → 關鍵道具；**不寫 `no`、`not`、`without`、`text`、`blank`，也不寫 `cartoon`、`chibi`、`gouache`、`painterly`、`bokeh`、`navy` 等畫風字**（`tools/video/core/curio.mjs` 會對禁用負面詞與抄 `look` 字詞報錯／警告）。連續三張同一種運鏡仍是 lint 錯誤。
+2. **呼叫代理內建 `generate_image`（`AspectRatio: "16:9"`）的完整英文 Prompt（實際生圖用）**：每鏡必帶站主 2026-11-14 定案的**「劇場級動畫光影 × 厚塗水粉質感」**基底句，再接該鏡主體、光影、材質與零文字正向描述：
+   ```text
+   High-craft 2D theatrical anime and rich gouache editorial illustration, 16:9 full-bleed edge-to-edge with zero borders. Delicate tapered warm-sepia ink linework on foreground subject (no heavy flat black outlines). Warm golden directional window sunlight casting glowing rim light along hair strands, glasses/hood, and object bevels, with subtle dust motes. Tactile multi-layered fabric fold shading, rich wood grain and material reflections. Creamy shallow depth-of-field painterly bokeh background with soft brushy edges and zero black outlines in the background.
+   ```
+    - **角色造型與頭身比鎖死（與《原來如此事務所》嚴格分家）**：奇聞全系列人物固定採 **3.5 頭身修長繪本／劇場動畫比例（`3.5-head slender storybook theatrical anime proportion`）**——與《原來如此事務所》的 2.5 頭身圓滾大頭 Q 版（所長＋小問）在頭身比、剪影與色盤上完全不同，**嚴禁畫成 2.5 頭身大頭娃娃或混用隔壁角色**。串場檔案局研究員 **`ada`** 出場時，`ImagePaths` **必傳 Repo 內正式設定圖 `docs/videos/history-curiosity/series-sheets/characters/ada/ada-canon-v2.png`**（黑色微捲齊下巴短髮＋側分斜瀏海、暗酒紅細圓框眼鏡、褪色青雙排釦風衣配牛皮紙米白高領毛衣，見 `docs/videos/history-curiosity/series-sheets/README.md`）；單集內跨 ≥ 4 鏡出場的可入畫歷史人物，開畫前同樣以 3.5 頭身比例產出固定角色設定圖並傳入 `ImagePaths`；重繪修正既有鏡頭時把前一版圖檔一併傳入 `ImagePaths` 鎖定構圖與道具位置。
+    - **全片畫風 100% 統一**：同一集內所有鏡頭必須統一為劇場級動畫光影 × 厚塗水粉質感，**嚴禁前段混留舊版平塗黑框大頭卡通、後段才切厚塗水粉**（觀眾連看會像兩部不同動畫拼貼）。
+    - **情緒光影與年代道具精準對齊**：遇到夜間大火、災難逃生、陰鬱法庭審訊等緊張場次，依劇情將光影微調為火光橘紅高反差冷暖輪廓光或陰天冷灰藍窗光，避免在緊急逃難場套用悠閒午後暖陽；歷史道具嚴禁現代穿幫（例如 17 世紀倫敦不可畫現代圓形橡膠腳輪手推車、現代白瓷餐盤、現代對折賀卡式雙開頁或懸空無支撐木匾，應指定木輻條鐵箍輪手推車、粗陶／錫镴盤與三摺火漆羊皮紙信）。
+   - **防畫紙白邊與防招牌亂碼（實戰必加）**：桌面物件／書本／食物特寫容易被水粉筆觸留出四周白紙邊，Prompt 尾端必加 `100% full-bleed edge-to-edge composition where rich background pigment reaches every single outer pixel on all four sides`；街道與建築外景必加 `plain unadorned timber and stone walls with clean blank surfaces and zero hanging shop signs`。
+   - **會冒字的道具與螢幕**：書頁、文件、木牌一律寫成 `clean blank parchment surface` 或改拍闔上的書脊與人物表情；現代題材螢幕只畫一條藍色路線、一個白色轉彎箭頭或紅色定位釘；數字與比例畫成具體視覺對比（鼓或扁的錢包、滿載的小船），不上文字卡。
+   - **畫面不必每鏡都有人（`nobody: true` 純物件／場景鏡佔 45%–65%）**：內建 `generate_image` 不會像早期 MiniMax 在空景帳篷亂畫人臉，**嚴禁為了湊人頭把每一鏡都塞進 Ada 或路人**。全集約 **45%–65%** 鏡頭應標 `"nobody": true`，直接聚焦歷史器物、航海儀器、火山／船隻／建築環境或數量視覺對比，生圖 Prompt 明確寫出純環境與物件結構，嚴禁出現路人、背景人影或殘肢；角色鏡頭（約 **35%–55%**）只放在關鍵行動、發現異常線索與情緒轉折拍。
 
-- **短**：100–200 字元。順序：景別 → 白天明亮的地點 → **一個主體做一個動作** → 一兩個道具。
-  例：「Medium shot of a smiling young woman in a parked car pressing a small navigation box onto the windshield glass by its suction cup, bright morning」。
-- **白天、明亮**：夜晚與燈光場景常被畫成 3D。2026-10 為了色盤寫的 mild、overcast、lamp 不再用。
-- **不寫 no、not、without、text、blank，也不寫畫風字**：模型會把被否定的東西畫出來；畫風字（cartoon、chibi、navy…）是 lint 警告。
-- **會冒字的道具換掉**：日曆、報表、招牌、按鈕、價格牌、報紙、筆電商標都會長出亂碼字；換成不需要字的畫面（罐子、圓餅、排隊的人、一疊資料夾）。
-- **螢幕只用安全圖案**（2026-11-06 站主選 B 方案）：手機、導航機、筆電螢幕只有一條藍色路線、一個白色大轉彎箭頭或一個紅色定位釘（或黑屏、單色）；手錶只有一顆紅色愛心。不畫地圖、街道、介面、多條線。
-- **數字畫成感覺，不畫比例**：模型畫不準「七成」「三塊有兩塊」「多 170%」，箭頭方向也常畫反。改用鼓或扁的錢包、升起或洩氣的氣球、長大或枯萎的幼苗、倒抽一口氣；同一集的比喻要一致。不上卡片。
+（註：2026-11-05 以前針對 MiniMax `image-01`「夜晚會變 3D 公仔、不吃厚塗水粉」的舊限制隨停用 MiniMax 生圖解除；歷史火災、燭光書房、月夜航行可正常表現暖金火光／窗光與深藍夜色冷暖對比，但仍須維持 2D 手繪暖褐墨線與厚塗水粉筆觸，不可漂成寫實照片或 3D CGI。）
 
-| 這樣寫 | 不要這樣寫 |
-| --- | --- |
-| 一個人在做一件事，臉朝鏡頭，表情是主角（驚訝、害怕、困惑） | 從背後看的無名人物、兩三個人同框互動（MiniMax 聽不懂多人互動） |
-| 物件交給一個人拿著或站在旁邊 | 大量空景（空帳篷、空運河、空櫃台）：模型會把臉畫到物件上，或自己補人 |
-| 物件寫成卡通裡會有的樣子 | 在提示詞或 `look` 裡寫年代材質、地形學細節、「寫實」要求：會漂成照片或油畫 |
-| 不需要字的道具、寫出內容的螢幕 | blank sign、blank page、no text：寫了反而長字 |
-| 白天明亮；景別遠、中、特寫輪替 | 懸疑題材全部寫成夜晚或檯燈下 |
-
-連續三張同一種運鏡是 lint 錯誤；提示詞裡出現 cartoon、chibi、navy 這類畫風字是警告（抄 `look`）。
-2026-11-05 以前的集數照舊的寫法畫好了，重製時已付錢的圖提示詞逐字不動（吃快取），只有新景照這一節寫。
-
-## 誰可以入畫（2026-11-05）
+## 誰可以入畫（2026-11-05；2026-11-14 補齊標準設定圖）
 
 - **在世或 1956 年後過世的人不入畫**，連「代表他的路人」也不畫。講到他們時三選一：
-  1. **串場角色**：例如虛構的檔案局研究員，用角色設定圖固定長相，**只畫不說話**；第一次入畫前旁白先介紹她
-     （W03：「我們檔案局的研究員，把那一年的帳攤開來」）。主機解說路線的 `characters` 還是空的，旁白長片的入畫角色
-     等 PR #2016 合併才有；在那之前本機路線照 `characters` 寫，主機路線用下面兩種。
-  2. **物件**：他做的東西、他寫的那份文件（不畫字）、他坐過的位子。
-  3. **明顯是一般人的匿名角色**：做觀眾也會做的事的店員、客人、路人，不是他本人的替身。
-- 1956 年以前過世的人照舊可以畫成卡通，用年代、身分、服裝描述，不寫名字。
+  1. **串場角色 `ada`**：虛構的檔案局研究員，`ImagePaths` 固定傳 `docs/videos/history-curiosity/series-sheets/characters/ada/ada-canon-v2.png`（3.5 頭身修長比例，不與《原來如此》2.5 頭身 Q 版混用），**只畫不說話**；第一次入畫前旁白先介紹她（W03：「我們檔案局的研究員，把那一年的帳攤開來」）。
+  2. **物件（`nobody: true`）**：他做的東西、他寫的那份文件（`clean blank surfaces`，不畫字）、他坐過的位子。
+  3. **明顯是一般人的匿名角色**：做觀眾也會做的事的店員、客人、路人（維持 3.5 頭身比例），不是他本人的替身。
+- 1956 年以前過世的人照舊可以入畫（3.5 頭身比例），Prompt 用年代、身分、服裝描述，不寫真名；跨 ≥ 4 鏡出場時必先產角色設定圖並在每鏡傳入 `ImagePaths`。
 
-## 插圖怎麼驗收
+## 插圖怎麼驗收（2026-11-14 四格 2x 放大硬門檻）
 
-插圖是**內容相關的可愛插畫**，不是證據重建：觀眾知道這是卡通。驗收看四件事：
+所有關鍵影格轉成 `1920×1080` PNG 後、鎖定 `storyboard` 關卡之前，必須通過**程式邊緣檢測＋獨立子代理四格 2 倍放大審查**：
 
-1. **評審過了就收**：九題是非題（文字、解剖、主體、畫框、畫風、細節……）全過的圖可以用。不要再加一層
-   「每個細節都要有出處」的人工審核；H04–H06 judge 通過的 9 張被人工退到只剩 0–1 張，是標準錯了。
-2. **只退會誤導的圖**：跟旁白或來源**矛盾**的事實才重畫（人數講九個畫成三個、旁白說白天畫成夜晚、
-   旁白說他拿著劍畫成拿槍）。多一隻貓、一塊看不出是字的塗鴉、卡通化的道具，不是重畫的理由。
-3. **畫風漂了就重畫**：照片質感、3D、油畫、黑邊——這些評審會抓；抓到就照上表改提示詞，不改 `look`。
-4. **圖文相符與接梗**（2026-11-05）：每一景的畫面是旁白**當下**講的主體；旁白的笑點、比喻、數字要被畫面接住
-   （講「三張小桌子」就畫三張桌子；數字用上一節的感覺比喻接住，不畫比例）。不必每一句都硬補一張新圖：硬畫會牽強的那一句，
-   併到前一景或後一景。分鏡卡給站主看之前先自己逐景對一次，品管表的〈圖文相符與接梗〉就是看這個
-   （`.agents/skills/producer/references/scorecards.md`）。
+1. **100% 滿版無邊框**：先檢查四邊外框像素，零白邊、零黑邊、零相框線。
+2. **零文字與零亂碼**：把每張圖切成左上、右上、左下、右下四張 2 倍放大圖（2x zoom quadrants），派**沒參與生圖的獨立子代理**逐張檢查，嚴禁任何中英文字母、數字、街道招牌字、印章字或黑板粉筆亂碼。
+3. **解剖、人數與 `nobody` 精準**：手指數（5 指）、眼神對焦正常；`nobody: true` 鏡頭零路人與殘肢；跨鏡角色五官髮色服裝與設定圖一致，全集畫風一致。
+4. **圖文相符、時代道具與地理考證**：畫面必須精準接住旁白當下講的主體與數量；**嚴禁時代穿幫與物理懸空**（例如 1816 年出現現代插電檯燈、1666 年出現現代橡膠腳輪手推車或懸空無支撐木匾）；若畫面出現地圖或地球儀，標記位置必須 100% 符合真實地理（例如印尼松巴哇島不可插在巴布亞紐幾內亞、菲律賓不可插在北太平洋公海；若無把握精準對位，改畫局部火山島或無標記古地球儀）。
 
-一張圖重畫三次加兩輪改提示詞還不過，主機會停在 `prompt_fixes:keyframes` 等站主按重試；本機就把那一景
-換成同一章已經過的另一張圖（提示詞逐字複製，吃快取不花錢），或把那一句併到前後景。不換成卡片（§不用卡片）。
+任何一鏡被獨立審圖代理抓到上述瑕疵，立即把原圖與角色設定圖傳入 `ImagePaths` 重繪修正，直到全集 100% 通過後才逐鏡執行 `keyframes import --provider external --usd 0` 並送審分鏡。
 
 ## 不用卡片（2026-11-05）
 
@@ -200,26 +181,23 @@ H04–H06 就是在這裡偏掉的。
   以前的集數的上限，新集一張卡都沒有，自然是 100%。
 - 2026-11-05 以前交付的集數不補拆卡片；重製時順手改成插圖。
 
-## 預算：整集一次報、一次授權
+## 費用結構（2026-11-14 更新）
 
-一集約 75–120 張插圖，每張含評審約 US$0.0135，加上重畫，整集大約 **US$1.5–3**，再加一首配樂（約 US$0.15）（H01：136 次生成
-US$2.04；L08：92 張 US$2.83）。開畫之前，把整集的張數與上限金額一次報給站主，核准後一次畫完；
-**不要**一張、三張地分批要授權。試畫樣張只在換畫風時才需要，系列畫風已經定了。
+- 關鍵影格：由代理內建 `generate_image` 生成並以 `keyframes import --provider external --usd 0` 匯入，站台帳本生圖費用為 **US\$0.00**（嚴禁改調用 MiniMax `image-01` 或站台付費生圖 API 充數）。
+- 語音與配樂：中文旁白走站台 Gemini `Sulafat`（約 US\$0.35–0.50／集），一首配樂 `music` 約 US\$0.08，八語 MiniMax 配音合計約 US\$2–3／集。
 
 ## 每一集的順序與檢查
 
-1. 大綱（站主選）→ 稿子（十步架構、`loops`、沒有卡片）→ 查核 → 盲評 `narrative` 每一題都過 → 自己逐景對一次圖文相符與接梗。
-2. `node tools/video/cli.mjs lint --slug <SLUG>`：**0 錯誤**，包含這份 skill 的系列檢查。lint 紅了先修稿
-   或分鏡，不要繞過。
-3. 旁白（頻道聲音）→ `check-audio` → 站主聽。
-4. 插圖整集一次畫 → 分鏡卡給站主看一次 → 配樂（`music`）→ 成片 → 品管 → 上架包。
-5. 配音、Shorts：`docs/videos/DUBS.md`、`docs/videos/SHORTS.md`。Shorts 一律 `from-episode`（頻道聲音）；
-   手動 `build --redo` 一定帶 `--speech server`，不帶會換成 Windows 的聲音。
+1. 大綱 → 稿子（十步架構、`loops`、同節拍 2–3 句併一景、沒有卡片）→ 獨立代理逐主張查核（`claims.md`＋`verify-1.md`）→ 盲評兩位獨立讀者 `narrative` 14/14 通過 → 逐景核對圖文相符與接梗。
+2. `node tools/video/cli.mjs lint --slug <SLUG>`：**0 錯誤、0 警告**。
+3. 中文旁白（Gemini `Sulafat`，實測語速 ≥ 4.4 字／秒；拼讀不一致的英文姓氏先在 `story-lexicon` 補音標式英文讀法）→ `check-audio` → 送 `audio` 關卡；`music`（不足片長時 `--loop`）。
+4. 八語翻譯（`en,ja,ko,es,pt,id,vi,th`，獨立審校，泰文說明欄壓在 `< 4,500` UTF-8 bytes）→ `i18n-merge` → `dub --provider minimax`（0 fit overflow）→ 逐語 `check-audio` 並修正誤讀（若遇 `generate_image` 配額冷卻，優先把第 3–4 步全部跑完）。
+5. 角色設定圖＋全集關鍵影格以內建 `generate_image`（`16:9`）生成 → 四格 2x 放大獨立子代理逐張審過 → `keyframes import --provider external --usd 0` → `render`（逐張檢查繁中與八語全部縮圖）→ `clips` → `assemble` → `captions` → `qa`（11/11）→ **獨立子代理成片觀眾視角評分（`review/audience-review.md`，六項各 ≥ 7.5、總均 ≥ 8.0；挑出縮圖裁切、色溫疲勞、低對比或無字圖解破綻一律先修完並重過 `assemble`＋`qa` 11/11）** → `package`（4/4）→ 雲端硬碟備份與獨立位元組核對 → `review-push --gate final`。
+6. Shorts：`docs/videos/SHORTS.md`。Shorts 一律 `from-episode`（頻道聲音）；手動 `build --redo` 一定帶 `--speech server`。
 
-## 在雲端環境做旁白與插圖（Claude Code 雲端、Codex 雲端）
+## 在雲端環境做旁白、配音與插圖匯入
 
-2026-10-19 S01、S09、S18 三集的旁白和插圖全部在雲端容器裡做完，沒碰本機。容器裡沒有 Windows 的聲音，
-所以旁白一律走網站的頻道聲音（伺服器 Gemini TTS），插圖走網站的 MiniMax；兩者都要網站權杖，錢記在網站上。
+容器裡沒有本機語音引擎，中文旁白走網站 Gemini TTS（`Sulafat`），八語配音走網站 MiniMax TTS（`--provider minimax`），關鍵影格則由代理內建 `generate_image` 產出後 `keyframes import --provider external --usd 0` 匯入。
 
 **準備（每個新容器一次）**
 
@@ -228,50 +206,30 @@ US$2.04；L08：92 張 US$2.83）。開畫之前，把整集的張數與上限�
    mokaair.com」。
 2. 權杖：`node tools/video/cli.mjs login --name <名字>`（例如 `claude-cloud-curio`）。它印出後台連結和代碼，
    等站主在後台按「允許」才結束，權杖存在 `~/.mokaair/video-tool.json`，不進 repo。容器回收就要重配一次。
-3. 長指令一律用工具的背景執行（Claude Code 的 `run_in_background`），不要在 shell 裡用 `&` 丟背景：
-   回合結束時 `&` 的程序會被殺，`login` 等不到允許、代碼過期。輸出導到檔案，不要接 `grep` 管線（會卡緩衝）。
-   背景執行最長 2 小時，到時間會被殺；整集插圖一集一個指令分開跑，不要三集串在一個指令裡。
-4. 工作目錄在 `<VIDEO_WORKDIR>/<SLUG>/`（預設在容器家目錄下；音檔、`narration.wav`、`keyframes/manifest.json`、
-   `review/check.json`）；容器回收就沒了，交接寫進票，不要只寫路徑。
+3. 長指令一律用工具的背景執行，不要在 shell 裡用 `&` 丟背景：回合結束時 `&` 的程序會被殺。輸出導到檔案，不要接 `grep` 管線（會卡緩衝）。
+4. 工作目錄在 `<VIDEO_WORKDIR>/<SLUG>/`（音檔、`narration.wav`、`keyframes/manifest.json`、`review/check.json`）；容器回收就沒了，完片必傳雲端硬碟備份，交接寫進票。
 5. 片頭片尾：拿到權杖後跑 `branding --pull`，把正式站工人用的素材包裝進這個容器（`docs/videos/BRANDING.md`
-   §從正式站取得目前的素材包）。容器裡本來沒有 `_branding`，不裝就合成，成片沒有片頭片尾（S01、S09、S18 的第一版）；
-   已經這樣合成的未核准集數，裝好後 `assemble --slug <SLUG> --adopt-branding` 重做。
+   §從正式站取得目前的素材包）。容器裡本來沒有 `_branding`，不裝就合成，成片沒有片頭片尾。
 
-**旁白**
+**旁白與八語配音**
 
-1. `tts --slug <SLUG> --dry-run` 看句數與費用 → `tts --slug <SLUG>` → `check-audio --slug <SLUG>`。
-2. `check-audio` 標出唸錯的句子寫在 `review/check-flags.json`，`tts --slug <SLUG> --redo <check-flags.json>`
-   只重唸那幾句；speech journal 記著已付錢的句子，中斷後重跑不會重複收費。
-3. 重唸還錯（中文多音字、年份、日文人名）就改那一句的字：`lexicon.json` 只收拉丁字母開頭的詞，中文讀音
-   不能放進去。改的那句若是卡片上的原文（刀銘、題字），旁白跟卡片就不一樣了：卡片的 `sub` 補一句「意思是……」，
-   讓觀眾知道旁白唸的是白話。改了旁白就要重新跑一次盲評 `narrative`（新讀者），再 `script --slug` 重產 `script.md`。
-4. `review-push --slug <SLUG> --gate audio` 送審，站主在 `/admin/videos` 決定後 `review-pull --slug <SLUG>` 記下。
-   站主在對話裡要先聽，就用 `ffmpeg -i narration.wav -codec:a libmp3lame -b:a 96k <SLUG>-narration.mp3`
-   轉成 mp3 傳給站主；後台用不了、站主在對話裡說可以時，才 `approve --slug <SLUG> --gate audio --note "<站主原話>"`。
-5. Gemini 回 429（`video_speech_upstream_busy`）可能是一時忙碌，也可能是網站那把金鑰的當日額度用完；工具會照
-   `Retry-After` 自己重送。重送一小時以上還是 429，多半是當日額度：Gemini 的每日額度在太平洋時間午夜重置
-   （夏令 07:00 UTC、冬令 08:00 UTC），S01 就是等到 07:05 UTC 才唸完。不要一直手動重跑。
+1. `tts --slug <SLUG> --dry-run` 看句數與費用 → `tts --slug <SLUG>`（確認實測語速 ≥ 4.4 字／秒，不足加 `voice.tempo`）→ `check-audio --slug <SLUG>`。
+2. `check-audio` 標出唸錯的句子寫在 `review/check-flags.json`，`tts --slug <SLUG> --redo <check-flags.json>` 只重唸那幾句；speech journal 記著已付錢的句子，中斷後重跑不會重複收費。
+3. 重唸還錯（中文多音字、年份、外文數字或縮寫如 `St. Paul's`、西文千分位 `13,200`、日文逗號數字 `68,596`、印尼文 `666`；以及 MiniMax 常見坑：**印尼文禁寫 `&` 必展開為 `dan`**、**越南文千分位禁寫 `.` 改空格且全大寫縮寫改小寫音讀**、**西葡單字母等級前避開同母音連音吞字**、**泰文窄時間窗避開音節過長的外來縮寫**）就改那一句的字，合併後重錄該句並重跑 `check-audio` 確認；遇到拼寫與發音不一致的英文姓氏或古地名（如 `Pepys` 應唸 `Peeps` 而非「佩皮斯／皮普斯」），在單集 `story-lexicon` 補上音標式英文讀法鎖定全片一致。改了中文旁白就要重新跑盲評 `narrative` 與 `script --slug`。
+4. 同一集的 `tts`、`dub` 與 `check-audio` 會共用 speech lock（「the project is held by …」，結束碼 3）：**同一集一次只跑一個語音指令**（外語 `check-audio` 一次跑一個 `--locale`，每個約 2.5 分鐘）。
 
-**插圖**
+**插圖生成、2x 放大審圖與匯入（2026-11-14 現行流程）**
 
-1. `keyframes --slug <SLUG> --dry-run` 拿到張數與上限金額，三集一起報、一次授權（見上一節）。
-2. 授權後一集一個背景指令：`keyframes --slug <SLUG> --takes 3`，約 30–60 分鐘。
-3. 評審三次都不過的景，照〈插圖提示詞怎麼寫〉改成「一個人做一件事」再跑同一個指令：過了的圖吃快取，
-   只畫改過的景。S01 八景、S09 六景、S18 十一景都是這樣一輪就過。
-4. 網站回 HTTP 502 或背景到時被殺：直接重跑同一個指令，已經過的不會再收費；`ledgerTotals(workdir)`
-   （`tools/video/media/ledger.mjs`）看這集花了多少。S01、S09、S18 每集 US$1.7–1.9，三集合計 US$5.32。
-5. 畫完 `review-push --slug <SLUG> --gate storyboard` 把分鏡卡推給站主看。
-6. 同一集的 `tts`、`check-audio` 與 `keyframes` 會互相鎖住（「the project is held by keyframes」，結束碼 3，什麼都沒送）：
-   同一集一次只跑一個；不同集可以同時跑。排隊等前一個指令時，等待時間也算在背景的 2 小時裡，等太久會被殺，
-   重跑即可（過的圖吃快取）。
-7. 評審回「AI 拒絕回應（PROHIBITED_CONTENT）」時整個指令停下：是下一景的提示詞或畫面踩到安全規則
-   （S34 是「偷渡的少年坐在淺水裡」）。改成成年人、穿著衣服、在乾地上，再重跑。
+1. 嚴禁呼叫 `node tools/video/cli.mjs keyframes` 讓站台調用 MiniMax 生圖。
+2. 先用內建 `generate_image`（`AspectRatio: "16:9"`）畫出單集跨 ≥ 4 鏡出場的角色設定圖，再逐批生成全集關鍵影格（有角色出場必傳 `ImagePaths`）。若遇 `gemini-3.1-flash-image` 配額冷卻，先跑完八語翻譯、配音與 `check-audio`，等配額恢復再繼續生圖，**絕不退回 MiniMax**。
+3. 將所有關鍵影格轉為 `1920×1080` PNG 並切出四格 2x 放大圖，交由獨立子代理逐張審過（零文字、零白邊、角色一致、五指與地理／時代道具無誤），不合格鏡頭帶原圖進 `ImagePaths` 重繪。
+4. 全數審過後，逐鏡執行 `node tools/video/cli.mjs keyframes import --slug <SLUG> --shot <ID> --file <PNG> --provider external --usd 0` 寫入 `keyframes/manifest.json`，再鎖定並推送 `storyboard` 關卡。注意：之後只要改動 `video.json` 某景的 `prompt`，該景的外部匯入紀錄就會失效，務必先定稿 `video.json` 再匯入。
 
-**配樂與成片**
+**配樂、觀眾評分關卡與成片推送**
 
-1. `music --slug <SLUG>`（`--dry-run` 先看價，一首約 US$0.08）→ `render` → `clips`（全是靜圖加運鏡，不花錢，
-   但 `assemble` 一定要它的 manifest）→ `assemble`（一集約 15 分鐘，4 核心一次跑一集）→ `captions` → `qa`
-   → `review-push --gate final`。
+1. `music --slug <SLUG>`（`--dry-run` 先看價，一首約 US$0.08；不足片長加 `--loop`）→ `render` → `clips`（全是靜圖加運鏡，不花錢，
+   但 `assemble` 一定要它的 manifest）→ `assemble`（一集約 15 分鐘，4 核心一次跑一集）→ `captions` → `qa`（11/11）
+   → **獨立子代理成片觀眾視角評分（`review/audience-review.md`，問題全數修完並重過 `qa` 11/11）** → `package` → 雲端硬碟完整備份與獨立核對 → `review-push --gate final`（站主 2026-11-14 定案：修完觀眾評分問題後才推後台跟備份）。
 2. `render` 用 Playwright 開瀏覽器。容器預裝的 Chromium 版本可能比 repo 的 Playwright 舊，報「Executable doesn't
    exist」時不要 `playwright install`：在暫存目錄建一個 `PLAYWRIGHT_BROWSERS_PATH`，把預裝的 headless shell
    接成 Playwright 要的版本號資料夾（`chrome-headless-shell-linux64/chrome-headless-shell` 指到預裝的

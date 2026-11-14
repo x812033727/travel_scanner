@@ -765,6 +765,7 @@ async def upsert_project(
     project = await session.scalar(
         select(VideoProject).where(VideoProject.slug == slug).with_for_update()
     )
+    existed = project is not None
     if project is None:
         # A sender that has been answered for this slug before finds no row only when the owner
         # deleted it (admin_deletion.py); a worker that has not noticed yet must not bring it back.
@@ -777,7 +778,13 @@ async def upsert_project(
     project.checklist = [item.model_dump() for item in payload.checklist]
     # The owner records the id on /admin/videos first; a report that does not carry it yet
     # (the worker reads it back a round later) must not clear it.
-    if payload.youtube_video_id is not None:
+    # An id the owner unlinked (unlink_youtube) is the old cut's: video.json still names it, and a
+    # report that carries it must not link the video again or replace the new cut's id.
+    if (
+        payload.youtube_video_id is not None
+        and payload.youtube_video_id != project.youtube_video_id
+        and not (existed and payload.youtube_video_id in await unlinked_youtube_ids(session, slug))
+    ):
         project.youtube_video_id = payload.youtube_video_id
     if payload.source_guide is not None:
         project.source_guide = payload.source_guide
@@ -2942,6 +2949,89 @@ async def link_youtube(
     await session.commit()
     view = await project_view(session, slug)
     return view.model_copy(update={"youtube_publish_note": reason})
+
+
+UNLINKED_ACTION = "video_youtube_unlinked"
+
+
+async def unlinked_youtube_ids(session: AsyncSession, slug: str) -> set[str]:
+    """The YouTube ids the owner took off this video with ``unlink_youtube``, from the audit log.
+
+    A report or an uploader job that still names one of them speaks for the old cut: the worker's
+    video.json, the repository's docs/videos/<slug>/video.json and the VPS uploader's last job all
+    keep the id they once had, and none of them is told about the unlink.
+    """
+    rows = await session.scalars(
+        select(AdminAuditLog.metadata_json).where(
+            AdminAuditLog.action == UNLINKED_ACTION,
+            AdminAuditLog.target == f"video_project:{slug}",
+        )
+    )
+    return {
+        str(row["youtube_video_id"])
+        for row in rows
+        if isinstance(row, dict) and isinstance(row.get("youtube_video_id"), str)
+    }
+
+
+async def unlink_youtube(session: AsyncSession, slug: str, user: User) -> ProjectOut:
+    """Take an uploaded-but-unscheduled video's YouTube link off, so a remade cut can go up again.
+
+    Only for the "linked, no publish time" state (the owner pasted or the site recorded an id, and
+    nothing says when it goes public): a scheduled or public video is refused, and so is one whose
+    YouTube send or VPS uploader job is still going, or one the owner dropped. Everything that
+    speaks for the old video goes with the id: the resumable upload session, the last send's state
+    and the "removed from YouTube" mark, so the page, the senders and a long renewal read the video
+    as never uploaded. The video on the channel is left alone; the owner deletes it in Studio.
+
+    The worker's and the repository's video.json keep the old id and report it again; the audit
+    row written here is how ``upsert_project`` (and the VPS sender) know to ignore it.
+    """
+    project = await _project(session, slug, lock=True)
+    _refuse_dropped(project)
+    if project.youtube_video_id is None:
+        raise AppError(409, "video_youtube_not_linked", "這支影片沒有 YouTube 連結，不用解除")
+    if project.youtube_publish_at is not None:
+        raise AppError(
+            409,
+            "video_youtube_unlink_scheduled",
+            "這支影片已記錄公開時間（已排程或已公開），不能解除連結；要換片請先在 Studio 處理",
+        )
+    if youtube_sync_running(project.youtube_sync):
+        raise AppError(
+            409, "video_youtube_unlink_sync_running", "YouTube 同步進行中，等它跑完再解除連結"
+        )
+    from app.video_youtube.vps import assert_idle
+
+    try:
+        await assert_idle(session, slug)
+    except Refused as refused:
+        raise AppError(refused.status, refused.code, refused.detail) from refused
+    previous = project.youtube_video_id
+    now = datetime.now(UTC)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action=UNLINKED_ACTION,
+            target=f"video_project:{slug}",
+            metadata_json={
+                "slug": slug,
+                "youtube_video_id": previous,
+                "had_upload_session": project.youtube_upload_session is not None,
+                "youtube_sync_status": (project.youtube_sync or {}).get("status"),
+                "youtube_removed_at": (
+                    project.youtube_removed_at.isoformat() if project.youtube_removed_at else None
+                ),
+            },
+        )
+    )
+    project.youtube_video_id = None
+    project.youtube_upload_session = None
+    project.youtube_sync = None
+    project.youtube_removed_at = None
+    project.updated_at = now
+    await session.commit()
+    return await project_view(session, slug)
 
 
 async def backfill_youtube_publish_times(

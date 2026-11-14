@@ -91,18 +91,23 @@ describe("destination guide publication boundaries", () => {
       .toBe("/guides/howto?destination=busan");
   });
 
-  it("renders Seoul's sourced stay decisions before partner options in server HTML", async () => {
-    const seoul = { ...tokyo, id: "seoul", city: "Seoul", areas: ["Myeongdong", "Hongdae", "Dongdaemun", "Gangnam"] };
-    mocks.catalog.mockResolvedValue([tokyo, seoul]);
+  it.each([
+    ["seoul", "Seoul", ["Myeongdong", "Hongdae", "Dongdaemun", "Gangnam"]],
+    ["osaka-kyoto", "Osaka & Kyoto", ["Namba / Shinsaibashi", "Umeda", "Kyoto Station", "Shijo Kawaramachi"]],
+    ["taipei", "Taipei", ["Taipei Main Station", "Ximending", "Xinyi District", "Zhongshan"]],
+  ] as const)("renders %s sourced stay decisions before partner options in server HTML", async (destinationId, city, areas) => {
+    const target = { ...tokyo, id: destinationId, city, areas: [...areas] };
+    mocks.catalog.mockResolvedValue([tokyo, target]);
     mocks.guides.mockResolvedValue({ articles: [], next_cursor: null, available: true });
-    const html = renderToStaticMarkup(await DestinationGuidePage({ params: Promise.resolve({ locale: "en", destinationId: "seoul" }) }));
-    const decisions = destinationDecisions("en", "seoul")!;
+    const html = renderToStaticMarkup(await DestinationGuidePage({ params: Promise.resolve({ locale: "en", destinationId }) }));
+    const decisions = destinationDecisions("en", destinationId)!;
     const partnerAt = html.indexOf('data-testid="affiliate"');
     expect(partnerAt).toBeGreaterThan(-1);
     expect(html).toContain(decisions.title);
     expect(html).not.toContain(destinationDecisions("en", "tokyo")!.title);
     for (const row of decisions.areas) {
-      expect(html.indexOf(row.tradeoff.replaceAll("&", "&amp;"))).toBeGreaterThan(-1);
+      const escapedTradeoff = row.tradeoff.replaceAll("&", "&amp;").replaceAll("'", "&#x27;");
+      expect(html.indexOf(escapedTradeoff)).toBeGreaterThan(-1);
       expect(html.indexOf(row.sources[0].url)).toBeGreaterThan(-1);
       expect(html.indexOf(row.sources[0].url)).toBeLessThan(partnerAt);
     }
