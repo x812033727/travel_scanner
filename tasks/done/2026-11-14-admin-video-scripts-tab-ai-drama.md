@@ -23,6 +23,7 @@ scope:
   - apps/web/lib/video-dramas-copy.ts
   - apps/web/lib/video-dramas-messages
   - docs/videos/drama/README.md
+  - apps/web/e2e/navigation.spec.ts
 ---
 
 # Admin video scripts tab: AI drama briefs, scripts, storyboards and series documents
@@ -51,3 +52,4 @@ cd apps/web && npx vitest run components/admin-video-dramas.test.tsx
 - 改任何一集的 brief／script／storyboard／review 或系列企劃資料夾最上層的 Markdown 後，要跑 `node tools/video/drama-admin/bundle.mjs build` 並一起提交；`docs/videos/drama/README.md` 已寫明。
 - 資料包約 12MB，最大單檔約 5MB（種田），API 每次只讀一部劇的檔案。
 - 認領時 `tasks` 工具回報範圍與 2026-10-12、10-13、10-19、10-30、11-02 幾張票重疊（`main.py`、`i18n.py`、`admin-video-reviews.tsx`），那些票都已停滯數百小時，沒有對應的進行中工作；這裡只新增 router 掛載、錯誤訊息與一個分頁項目。
+- PR #2113 的 CI 在 `e2e/navigation.spec.ts`「itinerary drag handle … keeps focus inside the sheet」偶發失敗：移動行程的對話框在開啟後下一個動畫影格才把焦點移到「關閉」，CI 機器忙時這一步晚於測試把焦點放到「移到這裡」，Tab 就不會繞回。測試改成先等「關閉」取得焦點；產品行為沒變。
