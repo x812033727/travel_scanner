@@ -38,7 +38,7 @@ const theme = (id, ids, minutes = 10, extra = {}) => {
   return { id, title: `題案 ${id}`, core_question: '追問', connection: '同一個核心', boredom_risk: '重複', drop_if: '撤案', evidence_gaps: '待補', status: 'EDITORIAL_THEME_NOT_SCRIPT', production_ready: false, target_minutes: minutes, range_minutes: [8, 13], candidate_ids: ids, chapters, audience: AUDIENCE, ...extra };
 };
 
-const AUDIENCE = { score: 7, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-14', review: 'reviews/audience-fixture.json' };
+const AUDIENCE = { score: 7, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json' };
 
 test('topic-check files are read whole: every URL in a table cell is kept and non-200 link checks become limitations', () => {
   const urls = ['https://example.org/a', 'https://example.org/b', 'https://archive.example.net/c?utm_source=x'];
@@ -178,6 +178,11 @@ test('themes are 8–13 minutes, add up exactly, use each core once and never pl
   const ok = { episodes: [theme('T01', ['N101', 'N102'], 10)] };
   assert.equal(validateThemes(ok, pool), ok);
   assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: undefined })] }, pool), /independent audience score/);
+  const later = { ...AUDIENCE, reviewed_on: '2026-11-20', review: 'reviews/audience-20261120.json' };
+  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: later })] }, pool), /scored again/);
+  const rounds = [{ score: 5, comment: '太硬', changes: '改片名', reviewed_on: '2026-11-19', review: 'reviews/audience-20261119.json' }];
+  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: { ...later, score: 6, rounds } })] }, pool), /below 6.5/);
+  assert.doesNotThrow(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: { ...later, rounds } })] }, pool));
   assert.doesNotThrow(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: undefined, material: { verdict: 'reserve', reviewed_on: '2026-11-11', review: 'fixture', missing: 'fixture' } })] }, pool));
   assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101'], 10)] }, pool), /N102.*cannot stand alone/);
   assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 7, { range_minutes: [7, 9] })] }, pool), /8–13 minutes/);
@@ -350,4 +355,11 @@ test('audience scores on a theme are 1–10 on five dimensions, ranked, and poin
   assert.throws(() => validateAudience('T1', { ...good, hook: 11 }), /between 1 and 10/);
   assert.throws(() => validateAudience('T1', { ...good, rank: 4 }), /rank/);
   assert.throws(() => validateAudience('T1', { ...good, review: 'notes.md' }), /reviews\/audience/);
+});
+
+test('a theme scored after the baseline must be improved and rescored to at least the audience minimum', () => {
+  const base = { score: 7, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-20', review: 'reviews/audience-20261120.json' };
+  const round = { score: 5.5, comment: '片名太長', changes: '縮短片名、刪掉術語章', reviewed_on: '2026-11-19', review: 'reviews/audience-20261119.json' };
+  assert.throws(() => validateAudience('T1', { ...base, rounds: [{ ...round, changes: '' }] }), /changes made after it/);
+  assert.doesNotThrow(() => validateAudience('T1', { ...base, rounds: [round] }));
 });

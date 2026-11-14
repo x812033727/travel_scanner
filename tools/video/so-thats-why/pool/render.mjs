@@ -73,14 +73,21 @@ export const MATERIAL_VERDICTS = Object.freeze({ ready: '可成題', merge: '待
 // 獨立觀眾評分（站主 2026-11-14「把分數寫回題目池」）：未參與撰稿的評審只讀題案的片名、追問與章節，
 // 以第一次滑到的一般觀眾打五項 1–10 分；共同錨點題校正評審鬆緊。是題案吸引力的參考，不是成片評分或點閱率預測。
 export const AUDIENCE_DIMENSIONS = Object.freeze({ click: '點擊', hook: '鉤子', surprise: '驚喜', payoff: '兌現', share: '分享' });
+// 站主 2026-11-14：擴充出的成題要「初評 → 依短評改進 → 複評」，複評達 AUDIENCE_MIN 才能入題。
+// 2026-11-14 那一次全池初評（AUDIENCE_BASELINE）是基準線，不受這道關卡限制；其他紀錄（含同日的改進後複評）都要過。
+export const AUDIENCE_MIN = 6.5;
+export const AUDIENCE_BASELINE = 'reviews/audience-20261114.json';
 export function validateAudience(owner, audience) {
   if (audience === undefined) return;
+  for (const round of audience?.rounds ?? []) {
+    if (!Number.isFinite(round.score) || round.score < 1 || round.score > 10 || !round.comment || !round.changes || !/^\d{4}-\d{2}-\d{2}$/.test(round.reviewed_on ?? '') || !/^reviews\/audience-[\w-]+\.json$/.test(round.review ?? '')) throw new Error(`${owner}: each earlier audience round needs score, comment, the changes made after it, reviewed_on and review`);
+  }
   const inRange = (value) => Number.isFinite(value) && value >= 1 && value <= 10;
   if (!audience || !inRange(audience.score) || Object.keys(AUDIENCE_DIMENSIONS).some((key) => !inRange(audience[key]))) throw new Error(`${owner}: audience needs score and ${Object.keys(AUDIENCE_DIMENSIONS).join(', ')} between 1 and 10`);
   if (!Number.isInteger(audience.rank) || !Number.isInteger(audience.of) || audience.rank < 1 || audience.rank > audience.of) throw new Error(`${owner}: audience rank must be 1..of`);
   if (!audience.comment || !/^\d{4}-\d{2}-\d{2}$/.test(audience.reviewed_on ?? '') || !/^reviews\/audience-[\w-]+\.json$/.test(audience.review ?? '')) throw new Error(`${owner}: audience needs a comment, reviewed_on and its reviews/audience-*.json record`);
 }
-const audienceLine = (audience) => `**獨立觀眾評分：** ${audience.score.toFixed(2)}／10（第 ${audience.rank}／${audience.of} 名；${Object.entries(AUDIENCE_DIMENSIONS).map(([key, label]) => `${label} ${audience[key]}`).join('、')}）— ${cell(audience.comment)}（${audience.reviewed_on}，[${audience.review}](${audience.review})）`;
+const audienceLine = (audience) => `**獨立觀眾評分：** ${audience.score.toFixed(2)}／10（第 ${audience.rank}／${audience.of} 名；${Object.entries(AUDIENCE_DIMENSIONS).map(([key, label]) => `${label} ${audience[key]}`).join('、')}）— ${cell(audience.comment)}（${audience.reviewed_on}，[${audience.review}](${audience.review})）${(audience.rounds ?? []).map((round) => `；先前 ${round.reviewed_on} 評 ${round.score.toFixed(2)}，改了：${cell(round.changes)}`).join('')}`;
 function audienceRanking(episodes) {
   const scored = episodes.filter((episode) => episode.audience).sort((a, b) => a.audience.rank - b.audience.rank);
   if (!scored.length) return [];
@@ -98,6 +105,10 @@ export function validateThemes(themes, pool) {
     validateAudience(episode.id, episode.audience);
     // 站主 2026-11-14：之後擴充出的可成題長題也要補獨立觀眾評分，沒評分不能進池。
     if (episode.audience === undefined && episode.target_minutes >= 8 && episode.material?.verdict === 'ready') throw new Error(`${episode.id}: a producible long theme needs an independent audience score (theme.audience, recorded in reviews/audience-*.json); see the pool README`);
+    if (episode.audience && episode.audience.review !== AUDIENCE_BASELINE && episode.target_minutes >= 8 && episode.material?.verdict === 'ready') {
+      if (!episode.audience.rounds?.length) throw new Error(`${episode.id}: a new producible theme is scored, improved from the feedback, then scored again; record the first round in audience.rounds`);
+      if (episode.audience.score < AUDIENCE_MIN) throw new Error(`${episode.id}: audience ${episode.audience.score} is below ${AUDIENCE_MIN}; improve it and score again, or keep it out of the producible list (material reserve)`);
+    }
     if (!Number.isFinite(episode.target_minutes) || episode.target_minutes <= 0 || !Array.isArray(episode.range_minutes) || episode.range_minutes.length !== 2 || episode.range_minutes.some((n) => !Number.isFinite(n) || n <= 0)) throw new Error(`${episode.id}: invalid duration`);
     if (!episode.candidate_ids?.length || new Set(episode.candidate_ids).size !== episode.candidate_ids.length) throw new Error('Theme needs unique candidate ids');
     if (episode.candidate_ids.some((id) => !pool.candidates.some((row) => row.id === id && row.selected))) throw new Error(`${episode.id}: theme includes an unselected or alias record`);

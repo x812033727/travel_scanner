@@ -15,7 +15,7 @@ const input = (rows) => ({ records: rows, sources: rows.map((row) => source(row.
 const empty = () => ({ merges: [], distinct: [], excluded: [] });
 const choose = (ids) => ({ ids, target_count: ids.length, reason: 'Test fixture selection' });
 
-const AUDIENCE = { score: 7, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-14', review: 'reviews/audience-fixture.json' };
+const AUDIENCE = { score: 7, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json' };
 
 test('exact wording variants preserve both source histories and raw IDs', () => {
   const rows = [record('a', '門把為什麼會電人？', '電荷與放電'), record('b', '門把為什麼會電人?', '另一份資料')];
@@ -437,4 +437,11 @@ test('audience scores on a theme are 1–10 on five dimensions, ranked, and poin
   assert.throws(() => validateAudience('T1', { ...good, hook: 11 }), /between 1 and 10/);
   assert.throws(() => validateAudience('T1', { ...good, rank: 4 }), /rank/);
   assert.throws(() => validateAudience('T1', { ...good, review: 'notes.md' }), /reviews\/audience/);
+});
+
+test('a theme scored after the baseline must be improved and rescored to at least the audience minimum', () => {
+  const base = { score: 7, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-20', review: 'reviews/audience-20261120.json' };
+  const round = { score: 5.5, comment: '片名太長', changes: '縮短片名、刪掉術語章', reviewed_on: '2026-11-19', review: 'reviews/audience-20261119.json' };
+  assert.throws(() => validateAudience('T1', { ...base, rounds: [{ ...round, changes: '' }] }), /changes made after it/);
+  assert.doesNotThrow(() => validateAudience('T1', { ...base, rounds: [round] }));
 });
