@@ -17,6 +17,8 @@ import { AdminVideoSettings } from "@/components/admin-video-settings";
 import { AdminVideoRenewal } from "@/components/admin-video-renewal";
 import { AdminVideoShorts } from "@/components/admin-video-shorts";
 import { AdminVideoPlans } from "@/components/admin-video-plans";
+import { AdminVideoPools } from "@/components/admin-video-pools";
+import { AdminVideoDramas } from "@/components/admin-video-dramas";
 import { stateTone } from "@/components/admin-video-shorts-data";
 import { SlidesRequests } from "@/components/admin-video-slides-requests";
 import { DiscussionThread, scriptSubject } from "@/components/admin-video-thread";
@@ -25,6 +27,8 @@ import { Button, Tabs } from "@/components/community/ui";
 import { useAdminQueryState, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
 import { videoPlansCopy } from "@/lib/video-plans-copy";
+import { videoPoolsCopy } from "@/lib/video-pools-copy";
+import { videoDramasCopy } from "@/lib/video-dramas-copy";
 
 // The review card, the gate bodies and the shared types live in admin-video-review-card.tsx;
 // these two are re-exported so older imports keep working. The drama tab (series and one-off
@@ -600,21 +604,25 @@ function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
   </div>;
 }
 
-const TABS = ["reviews", "drama", "shorts", "settings", "plans"] as const;
+const TABS = ["reviews", "drama", "shorts", "settings", "plans", "pools", "scripts"] as const;
 
 export function AdminVideoReviews() {
   const t = useTranslations("admin.videoReviews");
   const plans = videoPlansCopy(useLocale());
+  const pools = videoPoolsCopy(useLocale());
+  const scripts = videoDramasCopy(useLocale());
   const [slug, setSlug] = useAdminQueryValue("video", "", (value) => SLUG.test(value));
   const [tab, setTab] = useAdminQueryState("tab", TABS, "reviews");
   if (slug) return <ProjectDetail slug={slug} onBack={() => setSlug("")} onOpen={setSlug} />;
   return <div className="mt-6">
     <Tabs value={tab} onChange={(value) => setTab(value as (typeof TABS)[number])} label={t("tabsLabel")}
-      items={[{ value: "reviews", label: t("tabReviews") }, { value: "drama", label: t("tabDrama") }, { value: "shorts", label: t("tabShorts") }, { value: "settings", label: t("tabSettings") }, { value: "plans", label: plans.tab }]}>
+      items={[{ value: "reviews", label: t("tabReviews") }, { value: "drama", label: t("tabDrama") }, { value: "shorts", label: t("tabShorts") }, { value: "settings", label: t("tabSettings") }, { value: "plans", label: plans.tab }, { value: "pools", label: pools.tab }, { value: "scripts", label: scripts.tab }]}>
       {tab === "reviews" && <ProjectList onOpen={setSlug} />}
       {tab === "drama" && <AdminVideoSeries onOpenVideo={setSlug} />}
       {tab === "shorts" && <AdminVideoShorts onOpenVideo={setSlug} />}
       {tab === "plans" && <AdminVideoPlans />}
+      {tab === "pools" && <AdminVideoPools />}
+      {tab === "scripts" && <AdminVideoDramas />}
       {tab === "settings" && <><div className="mt-6"><YoutubeChannelCard /></div><AdminVideoSettings /></>}
     </Tabs>
   </div>;

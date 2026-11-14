@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { writeBundle as writeAdminBundle } from '../../pool-admin/bundle.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, DIR, hash, loadDraft, buildPool, readPool, writeJson } from './core.mjs';
@@ -24,6 +25,8 @@ try {
     writeJson(ROOT, 'pool.json', pool);
     for (const [name, content] of Object.entries(rendered)) fs.writeFileSync(path.join(ROOT, DIR, name), content);
     writeJson(ROOT, 'manifest.json', { status: 'CANDIDATE_EXPORT_NOT_PRODUCTION', counts: pool.counts, theme_count: themes.episodes.length, inputs: pool.inputs, theme_definition_sha256: hash(fs.readFileSync(path.join(ROOT, DIR, 'themes.json'))), files: ['pool.json', ...Object.keys(rendered)].map((name) => ({ file: name, sha256: hash(fs.readFileSync(path.join(ROOT, DIR, name))) })) });
+    // 後台「題目池」分頁的資料包跟著池子重產（站主 2026-11-14：每次 build 自動重產）。
+    writeAdminBundle();
     console.log(JSON.stringify({ status: 'BUILT', ...pool.counts, themes: themes.episodes.length }));
   } else {
     const pool = readPool();
