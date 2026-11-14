@@ -31,10 +31,14 @@ from app.models import (
 )
 from app.trips.name_backfill import backfill_trip_item_names
 
-pytestmark = pytest.mark.skipif(
-    os.getenv("RUN_INTEGRATION_TESTS") != "1",
-    reason="requires PostgreSQL",
-)
+pytestmark = [
+    pytest.mark.skipif(
+        os.getenv("RUN_INTEGRATION_TESTS") != "1",
+        reason="requires PostgreSQL",
+    ),
+    # Its fixture trips start on fixed November 2026 dates (tests/conftest.py).
+    pytest.mark.usefixtures("pin_trip_today"),
+]
 
 
 @pytest_asyncio.fixture(scope="module", loop_scope="module", autouse=True)

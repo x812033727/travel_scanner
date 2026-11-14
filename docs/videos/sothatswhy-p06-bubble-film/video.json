@@ -1,0 +1,2833 @@
+{
+ "schema_version": 1,
+ "slug": "sothatswhy-p06-bubble-film",
+ "format": "drama",
+ "category": "explainer",
+ "narration_locale": "zh-TW",
+ "target_minutes": [
+  10,
+  12
+ ],
+ "voice": {
+  "provider": "gemini",
+  "name": "Sulafat",
+  "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速偏快、輕快，像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。"
+ },
+ "subtitles": {
+  "burn_in": false
+ },
+ "theme": "paper",
+ "look": {
+  "preset": "cute-cartoon"
+ },
+ "series": {
+  "slug": "sothatswhy",
+  "episode": 6,
+  "chapter": 1
+ },
+ "pauses": {
+  "line_ms": 0,
+  "scene_ms": 150
+ },
+ "still_motion": "beat",
+ "music": {
+  "track": "sothatswhy-bed-r2.m4a",
+  "sha256": "9bb4ba6fd16feb4a7f352144b2d89e9648acbbbbaa2173c27a7eefbdb70f28c6",
+  "gain_db": -20,
+  "duck_db": -10
+ },
+ "characters": [
+  {
+   "id": "chief",
+   "name": "所長",
+   "appearance": "a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear",
+   "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速偏快、輕快，像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。"
+   },
+   "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+  },
+  {
+   "id": "kid",
+   "name": "小問",
+   "appearance": "a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, both hands free",
+   "voice": {
+    "provider": "gemini",
+    "name": "Leda",
+    "tempo": 1.12,
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快，一秒五個字以上，不拖尾音"
+   },
+   "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+  }
+ ],
+ "loops": [
+  {
+   "setup": "p003",
+   "payoff": "p134",
+   "what": "泡泡身上的顏色為什麼一直轉"
+  },
+  {
+   "setup": "p009",
+   "payoff": "p054",
+   "what": "框是方的，泡泡為什麼是圓的"
+  },
+  {
+   "setup": "p010",
+   "payoff": "p114",
+   "what": "泡泡水沒有顏色，泡泡為什麼有顏色"
+  },
+  {
+   "setup": "p013",
+   "payoff": "p077",
+   "what": "兩顆泡泡黏在一起，中間的牆往哪邊彎"
+  },
+  {
+   "setup": "p014",
+   "payoff": "p142",
+   "what": "泡泡頂上變黑，是在說什麼"
+  },
+  {
+   "setup": "p018",
+   "payoff": "p175",
+   "what": "方框吹出圓泡泡、顏色轉、頭頂變黑，一支方框就找得出原因嗎"
+  },
+  {
+   "setup": "p029",
+   "payoff": "p042",
+   "what": "這層皮是不是一直想把自己縮小"
+  },
+  {
+   "setup": "p035",
+   "payoff": "p038",
+   "what": "泡泡吹到一半停下來，會怎樣"
+  },
+  {
+   "setup": "p047",
+   "payoff": "p049",
+   "what": "包成方盒子不行嗎"
+  },
+  {
+   "setup": "p061",
+   "payoff": "p067",
+   "what": "兩顆泡泡黏在一起，還會是圓的嗎"
+  },
+  {
+   "setup": "p075",
+   "payoff": "p082",
+   "what": "一大一小，是不是大的把小的壓扁"
+  },
+  {
+   "setup": "p090",
+   "payoff": "p091",
+   "what": "是不是皮拉得太緊才變彩色"
+  },
+  {
+   "setup": "p115",
+   "payoff": "p138",
+   "what": "哪一種顏色會被抵掉"
+  },
+  {
+   "setup": "p121",
+   "payoff": "p130",
+   "what": "怎麼知道「看厚薄」這個猜法對不對"
+  },
+  {
+   "setup": "p149",
+   "payoff": "p156",
+   "what": "一歪頭顏色也變，是皮變薄了嗎"
+  },
+  {
+   "setup": "p161",
+   "payoff": "p163",
+   "what": "怎麼分出是厚薄在變還是方向在變"
+  },
+  {
+   "setup": "p172",
+   "payoff": "p177",
+   "what": "形狀跟顏色，到底有沒有關係"
+  }
+ ],
+ "youtube": {
+  "category_id": 27,
+  "made_for_kids": false,
+  "default_language": "zh-TW",
+  "title": "泡泡用方框吹也是圓的，顏色又從哪來？｜原來如此事務所",
+  "description": "小問把鐵絲彎成方框吹泡泡，吹出來的還是圓的；泡泡水明明是透明的，泡泡身上的顏色卻一直轉，最後頭頂變黑就破了。\n為什麼方框吹出圓泡泡？透明的水又哪來的顏色？\n\n這一集，所長和小問跟著同一支方框、同一瓶泡泡水走：先用氣球皮的比喻，看泡泡皮怎麼一直想縮小、為什麼飄在空中的泡泡會被拉成圓的；再讓兩顆、三顆泡泡黏在一起，考考這個說法——一樣大的中間是平平的牆，一大一小時，小的反而往大的那邊推。接著換問顏色：光從皮的外面和裡面各彈回一道，像池塘裡兩圈水波碰在一起，有的顏色加強、有的被抵掉；最後用同一顆泡泡分出顏色是跟著時間在變，還是跟著你的眼睛在變。\n\n本集插圖由 AI 生成。每個說法的出處列在下方參考資料。\n\n資料截至 2026-11-10",
+  "tags": [
+   "泡泡",
+   "肥皂泡",
+   "表面張力",
+   "薄膜干涉",
+   "顏色",
+   "光",
+   "科普",
+   "原來如此事務所"
+  ]
+ },
+ "thumbnail": {
+  "template": "thumb",
+  "data": {
+   "headline": "方框吹出\n**圓泡泡？**",
+   "sub": "透明的水卻有顏色",
+   "shot": "round-from-square",
+   "subject": "right"
+  }
+ },
+ "sources": [
+  {
+   "title": "Exploratorium (Ron Hipschman), Soap Bubbles: The Shape of Bubbles",
+   "url": "https://annex.exploratorium.edu/ronh/bubbles/shape_of_bubbles.html",
+   "checked_on": "2026-11-10"
+  },
+  {
+   "title": "Exploratorium (Ron Hipschman), Soap Bubbles: Sticky Water (surface tension)",
+   "url": "https://annex.exploratorium.edu/ronh/bubbles/sticky_water.html",
+   "checked_on": "2026-11-10"
+  },
+  {
+   "title": "Exploratorium (Ron Hipschman), Soap Bubbles: When Bubble Meets Bubble",
+   "url": "https://annex.exploratorium.edu/ronh/bubbles/bubble_meets_bubble.html",
+   "checked_on": "2026-11-10"
+  },
+  {
+   "title": "Exploratorium (Ron Hipschman), Soap Bubbles: Soap",
+   "url": "https://annex.exploratorium.edu/ronh/bubbles/soap.html",
+   "checked_on": "2026-11-14"
+  },
+  {
+   "title": "Exploratorium (Ron Hipschman), Soap Bubbles: Bubble Formulae",
+   "url": "https://annex.exploratorium.edu/ronh/bubbles/formulae.html",
+   "checked_on": "2026-11-14"
+  },
+  {
+   "title": "Exploratorium (Ron Hipschman), Soap Bubbles: Bubble Colors",
+   "url": "https://annex.exploratorium.edu/ronh/bubbles/bubble_colors.html",
+   "checked_on": "2026-11-10"
+  },
+  {
+   "title": "Exploratorium Science Explorer, See Colors in Bubbles (bubble dome activity)",
+   "url": "https://annex.exploratorium.edu/science-explorer/bub_dome.html",
+   "checked_on": "2026-11-10"
+  },
+  {
+   "title": "Virginia Tech / James Madison University Bubble Physics, Properties of Bubbles",
+   "url": "https://www1.phys.vt.edu/bubble/properties-of-bubbles.html",
+   "checked_on": "2026-11-10"
+  },
+  {
+   "title": "Virginia Tech / James Madison University Bubble Physics, Introduction and Basic Information (Young-Laplace, Plateau laws)",
+   "url": "https://www1.phys.vt.edu/bubble/basic-information.html",
+   "checked_on": "2026-11-10"
+  },
+  {
+   "title": "Wolfram MathWorld, Double Bubble",
+   "url": "https://mathworld.wolfram.com/DoubleBubble.html",
+   "checked_on": "2026-11-10"
+  },
+  {
+   "title": "HyperPhysics (Georgia State University), Soap Film Interference",
+   "url": "https://hyperphysics.gsu.edu/hbase/phyopt/soapfilm.html",
+   "checked_on": "2026-11-10"
+  },
+  {
+   "title": "University of Colorado Boulder Physics Undergraduate Labs, Interference in a Soap Film (demo 6D30.20)",
+   "url": "https://physicslabs.colorado.edu/demos/optics/interference/thin-films/interference-in-a-soap-film/",
+   "checked_on": "2026-11-10"
+  }
+ ],
+ "assets": [],
+ "scenes": [
+  {
+   "id": "square-wand",
+   "chapter": "方框吹出的圓泡泡",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a simple bubble wand made of plain silver wire bent into a square loop with a short straight handle standing in a small plain smooth clear plastic bottle of colourless bubble liquid on a sunny balcony railing, green potted plants and blue sky behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p001",
+     "speaker": "kid",
+     "text": "所長！我剛在陽台彎了方框，",
+     "emotion": "委屈又興奮，跑進來報案的語氣"
+    }
+   ]
+  },
+  {
+   "id": "round-from-square",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a perfectly round soap bubble just floating free from a simple bubble wand made of plain silver wire bent into a square loop with a short straight handle, the square loop still shiny and wet, sunny balcony and blue sky behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p002",
+     "speaker": "kid",
+     "text": "吹出來的泡泡還是圓的！",
+     "emotion": "不服氣"
+    }
+   ]
+  },
+  {
+   "id": "swirl-bubble",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a round transparent soap bubble with soft swirling pink, green and gold sheen floating in the sunny air above a balcony, the colours swirling across its surface, blue sky behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p003",
+     "speaker": "kid",
+     "text": "而且它身上的顏色一直轉，",
+     "emotion": "比手畫腳"
+    }
+   ]
+  },
+  {
+   "id": "pop-bubble",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a round soap bubble in the sunny air at the moment it bursts, a small dark grey patch at its top and a ring of tiny sparkling droplets flying outward, blue sky behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p004",
+     "speaker": "kid",
+     "text": "最後頭頂變黑，就破了！",
+     "emotion": "可惜"
+    }
+   ]
+  },
+  {
+   "id": "kid-wand",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony holding up a silver wire bubble wand with a square loop in one hand and a small clear bottle in the other, a round soap bubble beside her face, a surprised open-mouthed face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p005",
+     "speaker": "kid",
+     "text": "就是這支跟這瓶！",
+     "emotion": "舉起來"
+    }
+   ]
+  },
+  {
+   "id": "chief-look",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief leaning forward with a curious smile, one hand on her chin, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p006",
+     "speaker": "chief",
+     "text": "給我看看。很平常的方框和泡泡水嘛。",
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p007",
+     "speaker": "chief",
+     "text": "可是你剛剛說的，每一句都很怪。"
+    }
+   ]
+  },
+  {
+   "id": "kid-which-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room holding up two fingers with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p008",
+     "speaker": "kid",
+     "text": "哪裡怪？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-two",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up two fingers with a friendly smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p009",
+     "speaker": "chief",
+     "text": "框是方的，泡泡卻是圓的。"
+    },
+    {
+     "id": "p010",
+     "speaker": "chief",
+     "text": "泡泡水沒有顏色，泡泡卻有。"
+    }
+   ]
+  },
+  {
+   "id": "kid-bottle",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room holding up a small plain clear bottle of colourless bubble liquid and staring at it with a puzzled face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p011",
+     "speaker": "kid",
+     "text": "對耶，這瓶明明是透明的！",
+     "emotion": "發現"
+    }
+   ]
+  },
+  {
+   "id": "chief-tease",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up one finger with a mysterious playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p012",
+     "speaker": "chief",
+     "text": "還有更怪的：兩顆泡泡黏在一起時，",
+     "emotion": "賣關子"
+    },
+    {
+     "id": "p013",
+     "speaker": "chief",
+     "text": "中間那片牆會往哪邊彎？等一下你就知道。"
+    }
+   ]
+  },
+  {
+   "id": "dark-top-tease",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of one round see-through soap bubble held on a single thin silver wire bent into an open square loop with four straight sides and a short straight handle, soft pink, green and gold colour bands swirling on its lower half, the very top of the bubble a small smooth dark grey patch where the film is thinnest, plain blue sky behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p014",
+     "speaker": "chief",
+     "text": "頂上變黑也不是隨便黑的，它在跟你說一件事。",
+     "emotion": "賣關子"
+    }
+   ]
+  },
+  {
+   "id": "chief-promise",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up a silver wire bubble wand with a square loop beside her face with a warm inviting smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p015",
+     "speaker": "chief",
+     "text": "你每次吹泡泡，這些事都在你眼前發生，",
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p016",
+     "speaker": "chief",
+     "text": "今天就用你這支方框跟這瓶，把它們全部找出來。"
+    }
+   ]
+  },
+  {
+   "id": "kid-main-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Simple flat 2D cel-shaded children's cartoon illustration with thick clean ink outlines, waist-up shot of a chibi cartoon girl of about eight with a big round head, a smooth chin-length black bob with thick straight bangs and one thin curled strand on the crown, simple dot eyes, a plain solid navy raincoat with a smooth plain front and the mustard-yellow hood folded down behind her neck, navy trousers, holding up in both hands a thin silver wire bent into a flat open square loop on a short handle, staring through the empty square with a puzzled tilted head, plain blurred pale balcony railing behind her, bright daylight, clean empty corners",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p018",
+     "speaker": "kid",
+     "text": "一支方框就夠？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-start",
+   "chapter": "一直想縮小的那層皮",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief tapping the square loop of a silver wire bubble wand with one finger, a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p019",
+     "speaker": "chief",
+     "text": "夠。來，你是怎麼吹的？吹給我看看。",
+     "emotion": "接住上一句"
+    }
+   ]
+  },
+  {
+   "id": "kid-dip",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony dipping a silver wire square bubble wand into a small clear bottle with a concentrating face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p021",
+     "speaker": "kid",
+     "text": "框裡就有一片薄薄的皮！",
+     "emotion": "示範"
+    }
+   ]
+  },
+  {
+   "id": "film-in-wand",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a simple bubble wand made of plain silver wire bent into a square loop with a short straight handle held level in the sunny air, a flat shiny transparent soap film stretched across the square loop like a tiny window, a faint rainbow sheen on it, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p022",
+     "speaker": "chief",
+     "text": "對，框上那片皮是平平的。"
+    },
+    {
+     "id": "p023",
+     "speaker": "chief",
+     "text": "你一吹，它就被撐大，包住一團空氣。"
+    }
+   ]
+  },
+  {
+   "id": "kid-made-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony peering closely at the shiny film in a square wire wand with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p024",
+     "speaker": "kid",
+     "text": "這層皮是什麼做的？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-made",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up a small clear bottle of bubble liquid and swirling it gently, a friendly smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p025",
+     "speaker": "chief",
+     "text": "就是你這瓶泡泡水：很多水，加上一點肥皂。"
+    },
+    {
+     "id": "p026",
+     "speaker": "chief",
+     "text": "肥皂夾在兩面，水夾在中間，像一片很薄的三明治。"
+    }
+   ]
+  },
+  {
+   "id": "kid-square-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony holding up the square wire wand and pointing at its square loop with a puzzled frown, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p028",
+     "speaker": "kid",
+     "text": "為什麼不吹出方的？",
+     "emotion": "不解，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-guess",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief pressing her two open palms slowly together in front of her chest as if squeezing something small, a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with a soft round cartoon face, glossy jet-black hair tied in a low ponytail at the nape, round black glasses, a yellow pencil tucked behind her ear, a soft knitted mustard-yellow cardigan over a white blouse, plain bare ears, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p029",
+     "speaker": "chief",
+     "text": "我的想法是：這層皮，一直想把自己縮小。"
+    }
+   ]
+  },
+  {
+   "id": "kid-shrink-doubt",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room tilting her head with a doubtful little frown, arms crossed, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p030",
+     "speaker": "kid",
+     "text": "皮會自己縮？",
+     "emotion": "懷疑"
+    }
+   ]
+  },
+  {
+   "id": "balloon-fly",
+   "template": "shot",
+   "data": {
+    "prompt": "Medium shot of a plump red rubber balloon zooming away through a sunny living room as the air rushes out of its open neck, curly motion lines behind it, bright daylight, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p031",
+     "speaker": "chief",
+     "text": "你吹過氣球吧？吹大的氣球皮，是被撐開的。",
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p032",
+     "speaker": "chief",
+     "text": "一放手，皮就把空氣擠出來。"
+    }
+   ]
+  },
+  {
+   "id": "kid-balloon",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room laughing and spreading both arms wide like a zooming balloon, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p033",
+     "speaker": "kid",
+     "text": "對，它會咻咻亂飛！",
+     "emotion": "笑"
+    }
+   ]
+  },
+  {
+   "id": "chief-test",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding out towards the viewer a thin silver wire bent into a flat open square loop with four straight sides, on a short straight handle, a playful inviting smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with a soft round cartoon face, glossy jet-black hair combed smoothly back into a low ponytail at the nape, round black glasses, a yellow pencil tucked behind her ear, a soft knitted mustard-yellow cardigan over a white blouse, plain bare ears, flat 2D cel-shaded cartoon drawing with clean ink outlines, clean empty corners",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p034",
+     "speaker": "chief",
+     "text": "那我們來試：泡泡吹到一半，你停下來不吹，",
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p035",
+     "speaker": "chief",
+     "text": "你猜會怎樣？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "kid-stay-guess",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony puffing out her cheeks proudly with a confident grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p036",
+     "speaker": "kid",
+     "text": "我猜它會一直留著！",
+     "emotion": "很有把握的錯猜"
+    }
+   ]
+  },
+  {
+   "id": "bubble-shrink",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a simple bubble wand made of plain silver wire bent into a square loop with a short straight handle with a small half-blown soap bubble on its square loop, the bubble shrinking back down towards the loop, soft curved motion lines around it, sunny balcony background, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p037",
+     "speaker": "chief",
+     "text": "你試試看。泡泡會慢慢縮回去，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p038",
+     "speaker": "chief",
+     "text": "最後在框裡，又變回一片平平的皮。"
+    }
+   ]
+  },
+  {
+   "id": "kid-shrank",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony pointing at a silver wire square bubble wand in her hand with a surprised delighted face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p039",
+     "speaker": "kid",
+     "text": "真的縮回去了！",
+     "emotion": "驚喜"
+    }
+   ]
+  },
+  {
+   "id": "chief-tension",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief pulling her two hands slowly inward towards her chest, a calm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p041",
+     "speaker": "chief",
+     "text": "對，這種一直往內拉、想縮小的力氣，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p042",
+     "speaker": "chief",
+     "text": "科學家叫它表面張力。"
+    }
+   ]
+  },
+  {
+   "id": "soap-drop",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a small round glass bowl of clear water on a sunny wooden balcony table, a single golden drop of dish soap falling into the middle of it, a few soft white soap suds floating on the water, blurred green potted plants behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p187",
+     "speaker": "kid",
+     "text": "肥皂是讓皮拉更緊嗎？",
+     "emotion": "很有把握的錯猜，句尾上揚"
+    },
+    {
+     "id": "p188",
+     "speaker": "chief",
+     "text": "剛好相反：肥皂讓表面張力，只剩清水的三分之一左右。",
+     "emotion": "接住上一句"
+    }
+   ]
+  },
+  {
+   "id": "straw-water",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a clear drinking glass of plain water on a sunny wooden balcony table with a plastic drinking straw standing in it, one tiny bubble at the tip of the straw bursting into a few sparkling droplets, blue sky behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p189",
+     "speaker": "chief",
+     "text": "清水拉得太用力，又乾得快，一下就破。"
+    },
+    {
+     "id": "p190",
+     "speaker": "chief",
+     "text": "肥皂有點像一層蓋子，讓皮裡的水慢一點乾掉。"
+    }
+   ]
+  },
+  {
+   "id": "bubble-jar",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a big clear glass jar with a closed round metal lid standing on a wooden shelf in a bright sunny room, inside the jar one round see-through soap bubble with a soft pink and green sheen resting on a small glass dish at the bottom of the jar, the bubble fully enclosed by the jar walls, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p191",
+     "speaker": "chief",
+     "text": "有人用特別的泡泡水封進罐子，撐了三個月！",
+     "emotion": "數字放慢"
+    }
+   ]
+  },
+  {
+   "id": "kid-round-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room drawing a big circle in the air with one finger and a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p043",
+     "speaker": "kid",
+     "text": "那它為什麼要縮成圓的？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "bubble-free",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of a single round transparent soap bubble floating alone high in a clear blue sky, soft swirling pink and green sheen, sunlight glinting on it, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p044",
+     "speaker": "chief",
+     "text": "泡泡一離開框，那團空氣就被關在裡面了。"
+    },
+    {
+     "id": "p045",
+     "speaker": "chief",
+     "text": "空氣一樣多，皮卻想用最少的面積把它包住。"
+    }
+   ]
+  },
+  {
+   "id": "kid-box-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room holding up a small square cardboard gift box in both hands with a hopeful face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p046",
+     "speaker": "kid",
+     "text": "包成方盒子，",
+     "emotion": "追問"
+    },
+    {
+     "id": "p047",
+     "speaker": "kid",
+     "text": "不行嗎？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "box-ball",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a small plain square cardboard gift box and a plain round red rubber ball of about the same size side by side on a wooden table, plain warm pale cream background, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p048",
+     "speaker": "chief",
+     "text": "不划算。包一樣多的空氣，方盒子要的皮，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p049",
+     "speaker": "chief",
+     "text": "比圓球多了兩成多。",
+     "emotion": "數字放慢"
+    }
+   ]
+  },
+  {
+   "id": "chief-sphere",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding a small round ball up in one hand with a pleased smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p050",
+     "speaker": "chief",
+     "text": "所有形狀裡，用的皮最少的，就是圓球。"
+    }
+   ]
+  },
+  {
+   "id": "kid-stingy",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl holding one hand up beside her cheek, thumb and index finger pinched almost together with a tiny visible gap between the fingertips, a cheeky teasing grin, plain pale wall behind her, bright daylight, the girl is a little girl of about eight with a smooth rounded chin-length black bob, thick straight blunt bangs down to her eyebrows, both sides hanging evenly to her chin, one thin curled strand on the crown, a plain solid navy raincoat with a smooth plain front and the mustard-yellow hood folded down flat behind her neck, navy trousers, simple dot-like cartoon eyes, a round young child face, flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p052",
+     "speaker": "kid",
+     "text": "泡泡也要省？",
+     "emotion": "調皮，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-stingy",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief laughing softly with one hand raised, a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p053",
+     "speaker": "chief",
+     "text": "對泡泡皮來說，能縮就縮，多一點都不肯。",
+     "emotion": "笑"
+    }
+   ]
+  },
+  {
+   "id": "many-wands",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of three silver wire bubble wands lying side by side on a round wooden balcony table, the left one a square loop, the middle one a triangle loop, the right one a star-shaped loop, above each wand floats one perfectly round see-through soap bubble with a soft pink and green sheen, sunny blurred balcony railing behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p054",
+     "speaker": "chief",
+     "text": "所以你的方框，只管得住框裡那一片皮。"
+    }
+   ]
+  },
+  {
+   "id": "chief-limit",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up one deflated red balloon with an honest serious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p055",
+     "speaker": "chief",
+     "text": "先說清楚，氣球皮只是比喻。氣球放完氣，皮會鬆掉；"
+    },
+    {
+     "id": "p056",
+     "speaker": "chief",
+     "text": "泡泡皮不管縮得多小，都一直在拉。"
+    }
+   ]
+  },
+  {
+   "id": "kid-always-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room hugging a big round beach ball with a wondering face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p058",
+     "speaker": "kid",
+     "text": "永遠都是圓的嗎？",
+     "emotion": "追問，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-alone",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding one finger up beside a single soap bubble floating near her shoulder, a careful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p059",
+     "speaker": "chief",
+     "text": "不一定。我說的是飄在空中、只有一顆的泡泡。",
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p060",
+     "speaker": "chief",
+     "text": "停在濕濕的盤子上，就會變成半顆圓頂。"
+    }
+   ]
+  },
+  {
+   "id": "kid-wall-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony holding up two fingers side by side close together with a curious wondering face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p061",
+     "speaker": "kid",
+     "text": "那兩顆黏在一起呢？",
+     "emotion": "章尾停住，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-exam",
+   "chapter": "兩顆泡泡黏在一起",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding two silver wire bubble wands, one in each hand, with a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p063",
+     "speaker": "chief",
+     "text": "這就是剛剛那個想法的考試。",
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p064",
+     "speaker": "chief",
+     "text": "你從同一瓶，吹兩顆一樣大的泡泡，讓它們碰一下。"
+    }
+   ]
+  },
+  {
+   "id": "kid-pop-guess",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony squeezing her eyes half shut and covering her ears with both hands, an expectant grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p065",
+     "speaker": "kid",
+     "text": "我猜一碰就破掉！",
+     "emotion": "很有把握的錯猜"
+    }
+   ]
+  },
+  {
+   "id": "twin-bubbles",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of two equal-sized round see-through soap bubbles floating in clear blue sky, stuck together side by side so that they share one flat round film wall between them, the shared wall a straight line where the two spheres meet, each bubble with a thin pink and green sheen, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p066",
+     "speaker": "chief",
+     "text": "常常不會破，它們會黏成一對。",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p067",
+     "speaker": "chief",
+     "text": "中間多了一片兩顆一起用的牆，而且是平的。"
+    }
+   ]
+  },
+  {
+   "id": "kid-dot-guess",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony touching the tips of her two index fingers together with a surprised face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p068",
+     "speaker": "kid",
+     "text": "我還以為，",
+     "emotion": "驚訝"
+    },
+    {
+     "id": "p069",
+     "speaker": "kid",
+     "text": "只會碰到一個點！"
+    }
+   ]
+  },
+  {
+   "id": "chief-share",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief pressing her two flat palms firmly together in front of her chest with a knowing smile, a plain pale cream wall behind her, bright daylight, the chief is a slim young woman of about thirty with a soft round cartoon face, glossy jet-black hair tied in a low ponytail at the nape, round black glasses, a yellow pencil tucked behind her ear, a soft knitted mustard-yellow cardigan over a white blouse, plain bare ears, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p070",
+     "speaker": "chief",
+     "text": "那樣各包各的，皮用得比較多。"
+    },
+    {
+     "id": "p071",
+     "speaker": "chief",
+     "text": "還是想省皮：兩顆合用一片牆，比較省。"
+    }
+   ]
+  },
+  {
+   "id": "kid-flat-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony pressing her two flat palms together in front of her chest with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p072",
+     "speaker": "kid",
+     "text": "那為什麼是平的？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-flat",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding her two hands flat and level side by side with a calm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p073",
+     "speaker": "chief",
+     "text": "兩邊一樣大，誰也推不動誰，牆就平平的。"
+    }
+   ]
+  },
+  {
+   "id": "kid-big-guess",
+   "template": "shot",
+   "data": {
+    "prompt": "Simple flat 2D cel-shaded children's cartoon illustration with thick clean ink outlines, waist-up shot of a chibi cartoon girl of about eight with a big round head, a smooth chin-length black bob with thick straight bangs and one thin curled strand on the crown, simple dot eyes, a plain solid navy raincoat with a smooth plain front and the mustard-yellow hood folded down behind her neck, navy trousers, holding up a big round red ball as large as her head in one hand and a tiny round blue ball the size of a marble in the other, a confident cheeky grin, plain flat pale cream background, clean empty corners",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p075",
+     "speaker": "kid",
+     "text": "大的一定把小的壓扁！",
+     "emotion": "很有把握的錯猜"
+    }
+   ]
+  },
+  {
+   "id": "chief-recall-push",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up one finger with a playful knowing smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p076",
+     "speaker": "chief",
+     "text": "還記得我問，中間那片牆會往哪邊彎嗎？",
+     "emotion": "點名回呼"
+    }
+   ]
+  },
+  {
+   "id": "small-big",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a small round soap bubble stuck to the side of a big round soap bubble in the sunny air, the shared round wall between them curving outward into the big bubble like a small dome, soft pink and green sheen, blue sky behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p077",
+     "speaker": "chief",
+     "text": "你看，中間那片牆，是往大泡泡那邊凸過去的。"
+    }
+   ]
+  },
+  {
+   "id": "kid-small-strong",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny Taiwanese apartment living room making a small fist and looking at it with an amazed face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p078",
+     "speaker": "kid",
+     "text": "小泡泡比較用力？",
+     "emotion": "不敢相信"
+    }
+   ]
+  },
+  {
+   "id": "chief-curve",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief cupping one hand into a tight small curve and the other into a wide gentle curve, a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p079",
+     "speaker": "chief",
+     "text": "你可以這樣想：同一瓶泡泡水，皮拉的力氣都差不多。"
+    },
+    {
+     "id": "p080",
+     "speaker": "chief",
+     "text": "可是小泡泡彎得比較厲害，"
+    }
+   ]
+  },
+  {
+   "id": "chief-squeeze",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief squeezing a small soft ball tightly in one hand with a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p081",
+     "speaker": "chief",
+     "text": "所以小泡泡的皮，把裡面的空氣壓得比較緊，"
+    }
+   ]
+  },
+  {
+   "id": "chief-pressure",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief nodding with one hand open towards the viewer, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p082",
+     "speaker": "chief",
+     "text": "所以是小的往大的那邊推。"
+    }
+   ]
+  },
+  {
+   "id": "kid-small-wins",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny park by a small pond jumping up with both arms raised high and a surprised delighted grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p083",
+     "speaker": "kid",
+     "text": "小的反而贏了！",
+     "emotion": "驚訝"
+    }
+   ]
+  },
+  {
+   "id": "kid-colour-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony holding a small clear unmarked plastic bottle of colourless bubble liquid up toward the sunlight and looking at it with a puzzled frown, plain blurred balcony railing behind her, bright daylight, the girl is a little girl of about eight with a short chin-length black bob, straight blunt bangs and one small cowlick on top, plain black hair hanging free, a navy raincoat with plain solid navy sleeves and the mustard-yellow hood folded down flat behind her neck, navy trousers, simple dot-like cartoon eyes, a round young child face, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p086",
+     "speaker": "kid",
+     "text": "顏色從哪來？",
+     "emotion": "章尾停住，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-clear",
+   "chapter": "透明的泡泡水，變出了顏色",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief pouring a little clear liquid from a small bottle into her cupped palm, a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p087",
+     "speaker": "chief",
+     "text": "好問題。顏料是沒有，那泡泡身上除了這層皮，還有什麼？",
+     "emotion": "接住上一句"
+    }
+   ]
+  },
+  {
+   "id": "kid-tension-guess",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony snapping her fingers with a confident know-it-all grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p089",
+     "speaker": "kid",
+     "text": "是皮拉得太緊，",
+     "emotion": "很有把握的錯猜"
+    },
+    {
+     "id": "p090",
+     "speaker": "kid",
+     "text": "才變彩色的？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-not-tension",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief shaking her head gently with a kind smile, one hand raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p091",
+     "speaker": "chief",
+     "text": "很多人會這樣猜。可是這股往內拉的力氣，管的是形狀，"
+    },
+    {
+     "id": "p092",
+     "speaker": "chief",
+     "text": "顏色要找另一個角色：光。"
+    }
+   ]
+  },
+  {
+   "id": "kid-white-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony shading her eyes with one hand and looking up at the sunny sky with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p093",
+     "speaker": "kid",
+     "text": "光不是白白的嗎？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-white",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding one open hand up into a beam of warm sunlight from the side, a calm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p094",
+     "speaker": "chief",
+     "text": "白光其實是很多種顏色混在一起。"
+    },
+    {
+     "id": "p095",
+     "speaker": "chief",
+     "text": "要是從裡面拿掉一種，剩下的，就會帶著顏色。"
+    }
+   ]
+  },
+  {
+   "id": "kid-remove-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room pinching the air with two fingers as if picking something out, a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p096",
+     "speaker": "kid",
+     "text": "拿掉一種？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-yellow",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up a small yellow lemon with a friendly smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p097",
+     "speaker": "chief",
+     "text": "比方說，從白光裡拿掉藍色，剩下的看起來就偏黃。"
+    }
+   ]
+  },
+  {
+   "id": "kid-who-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny Taiwanese apartment living room narrowing her eyes with a curious detective-like frown, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p098",
+     "speaker": "kid",
+     "text": "誰把顏色拿走？",
+     "emotion": "追問"
+    }
+   ]
+  },
+  {
+   "id": "chief-two-faces",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up a silver wire square bubble wand with a big shimmering soap bubble on it, a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p099",
+     "speaker": "chief",
+     "text": "這層皮有外面和裡面兩個面。"
+    },
+    {
+     "id": "p100",
+     "speaker": "chief",
+     "text": "光照過來，兩個面都會把一點光，彈回你的眼睛。"
+    }
+   ]
+  },
+  {
+   "id": "kid-two-light",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room holding up two fingers with a surprised face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p102",
+     "speaker": "kid",
+     "text": "彈回來兩道光？",
+     "emotion": "驚訝"
+    }
+   ]
+  },
+  {
+   "id": "chief-longer",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding her two hands one slightly behind the other, a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p103",
+     "speaker": "chief",
+     "text": "對。裡面那道，要在皮裡走一個來回，"
+    },
+    {
+     "id": "p104",
+     "speaker": "chief",
+     "text": "走的路，比外面那道長一點點。"
+    }
+   ]
+  },
+  {
+   "id": "kid-so-what",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room shrugging with both palms up and a puzzled face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p106",
+     "speaker": "kid",
+     "text": "又怎樣？",
+     "emotion": "不解，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-pond",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding two small round smooth pebbles in her open palm with a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p107",
+     "speaker": "chief",
+     "text": "我們用水波來想。你往池塘裡，同時丟兩顆小石頭。",
+     "emotion": "轉向觀眾"
+    }
+   ]
+  },
+  {
+   "id": "pond-rings",
+   "template": "shot",
+   "data": {
+    "prompt": "Top-down view of a calm green pond in a sunny park with two small pebbles just dropped in, two sets of round ripple rings spreading out and overlapping in the middle, lily pads at the edge, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p108",
+     "speaker": "chief",
+     "text": "兩圈水波碰在一起：高的碰到高的，就變得更高；"
+    },
+    {
+     "id": "p109",
+     "speaker": "chief",
+     "text": "高的碰到低的，就互相抵掉，水面平平的。"
+    }
+   ]
+  },
+  {
+   "id": "kid-pond",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny park by a small pond crouching beside a small pond and pointing at ripples on the water with a delighted face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p111",
+     "speaker": "kid",
+     "text": "有的地方特別平！",
+     "emotion": "想起來"
+    }
+   ]
+  },
+  {
+   "id": "chief-flat-spot",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief crouching and pointing down at a calm patch of water in a small round tub, a pleased smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p112",
+     "speaker": "chief",
+     "text": "對，那就是兩圈水波，互相抵掉的地方。"
+    }
+   ]
+  },
+  {
+   "id": "chief-light-wave",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling calmly and moving one empty open hand in a gentle up-and-down wave through the air in front of her, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with a soft round cartoon face, glossy jet-black hair tied in a low ponytail at the nape, round black glasses, a yellow pencil tucked behind her ear, a soft knitted mustard-yellow cardigan over a white blouse, plain bare ears, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p113",
+     "speaker": "chief",
+     "text": "光也可以想成一種波。兩道光一碰，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p114",
+     "speaker": "chief",
+     "text": "有的顏色被加強，有的顏色被抵掉。"
+    }
+   ]
+  },
+  {
+   "id": "kid-which-q2",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room tapping her chin with one finger and a thinking face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p115",
+     "speaker": "kid",
+     "text": "哪一種會被抵掉？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-guess-thick",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding her thumb and finger a tiny gap apart near her eye, a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p116",
+     "speaker": "chief",
+     "text": "我的想法是：要看這層皮有多厚。"
+    },
+    {
+     "id": "p117",
+     "speaker": "chief",
+     "text": "厚薄一變，裡面那道光多走的路就跟著變，"
+    }
+   ]
+  },
+  {
+   "id": "two-colours",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of two round soap bubbles side by side in the sunny air, the left one shimmering mostly blue and the right one shimmering mostly gold, blue sky behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p118",
+     "speaker": "chief",
+     "text": "被抵掉的顏色就換一種，你看到的顏色也跟著換。"
+    },
+    {
+     "id": "p119",
+     "speaker": "chief",
+     "text": "比方說，紅色被抵掉，剩下的就偏藍綠。"
+    }
+   ]
+  },
+  {
+   "id": "kid-proof-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room putting both hands on her hips with a doubtful challenging grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p121",
+     "speaker": "kid",
+     "text": "你猜得對不對？",
+     "emotion": "章尾停住，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-watch",
+   "chapter": "歪一下頭，顏色也跟著變",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up a silver wire square bubble wand with a bubble hanging on it, an inviting smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p122",
+     "speaker": "chief",
+     "text": "拿你那一瓶來試。把泡泡吹在框上，先別讓它飛走，",
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p123",
+     "speaker": "chief",
+     "text": "頭不要動，盯著它看。",
+     "emotion": "轉向觀眾"
+    }
+   ]
+  },
+  {
+   "id": "kid-stripes",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony holding a single thin silver wire bent into an open square loop with four straight sides and a short straight handle at arm's length with a big round soap bubble hanging on it, the bubble covered in clear horizontal stripes of pink, green, gold and blue from top to bottom, the girl pointing at the stripes with wide amazed eyes, bright daylight, the girl is a little girl of about eight with a short chin-length black bob, straight blunt bangs and one small cowlick on top, plain black hair hanging free, a navy raincoat with plain solid navy sleeves and the mustard-yellow hood folded down flat behind her neck, navy trousers, simple dot-like cartoon eyes, a round young child face, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p125",
+     "speaker": "kid",
+     "text": "一條一條橫的！",
+     "emotion": "驚訝"
+    }
+   ]
+  },
+  {
+   "id": "bubble-stripes",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a big round soap bubble hanging from a square silver wire loop, its surface covered in neat horizontal bands of colour: pale gold at the top, then magenta, blue and green towards the bottom, sunny balcony background, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p126",
+     "speaker": "chief",
+     "text": "對。泡泡水會被地球往下拉，慢慢往下流，"
+    },
+    {
+     "id": "p127",
+     "speaker": "chief",
+     "text": "底下比較厚，頂上越來越薄，顏色就排成一條一條。"
+    }
+   ]
+  },
+  {
+   "id": "kid-moving",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony leaning close to a big round soap bubble hanging on the square silver wire wand in her hand, wavy pink, green and gold colour bands sliding down the bubble, the girl watching them with an amazed open mouth, bright daylight, the girl is a little girl of about eight with a short chin-length black bob, straight blunt bangs and one small cowlick on top, plain black hair hanging free, a navy raincoat with plain solid navy sleeves and the mustard-yellow hood folded down flat behind her neck, navy trousers, simple dot-like cartoon eyes, a round young child face, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p128",
+     "speaker": "kid",
+     "text": "而且它們一直往下跑！",
+     "emotion": "發現"
+    }
+   ]
+  },
+  {
+   "id": "chief-time",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief with a pleased smile sliding one flat open empty hand slowly downward through the air beside her face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with a soft round cartoon face, glossy jet-black hair tied in a low ponytail at the nape, round black glasses, a yellow pencil tucked behind her ear, a soft knitted mustard-yellow cardigan over a white blouse, plain bare ears, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p129",
+     "speaker": "chief",
+     "text": "時間一過，皮一直變薄，顏色就一條一條往下換。",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p130",
+     "speaker": "chief",
+     "text": "還記得我的想法嗎？它過關了。"
+    }
+   ]
+  },
+  {
+   "id": "kid-swirl-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony drawing small swirls in the air with one finger and a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p132",
+     "speaker": "kid",
+     "text": "顏色為什麼會打轉？",
+     "emotion": "想起來，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "swirl-flow",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a big round soap bubble on a square silver wire loop, soft breeze lines beside it, its pink, green, blue and gold colours swirling across the surface like marbled paint, sunny balcony background, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p133",
+     "speaker": "chief",
+     "text": "風一吹，泡泡水就在皮裡流來流去，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p134",
+     "speaker": "chief",
+     "text": "厚的薄的換了位置，顏色就跟著打轉。"
+    }
+   ]
+  },
+  {
+   "id": "chief-recall-dark",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief pointing one finger up with a playful knowing smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p135",
+     "speaker": "chief",
+     "text": "還記得我說，頂上變黑，是它在跟你說一件事嗎？",
+     "emotion": "點名回呼"
+    }
+   ]
+  },
+  {
+   "id": "kid-black-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl behind a balcony railing holding up a thin silver wire bent into a flat open square loop with four straight sides, on a short straight handle, a big round see-through soap bubble hanging from it whose very top is a small dark grey cap, the girl gazing up at it with an excited open mouth, bright daylight, the girl is a little girl of about eight with a smooth rounded chin-length black bob, thick straight blunt bangs down to her eyebrows, both sides hanging evenly to her chin, one thin curled strand on the crown, a plain solid navy raincoat with a smooth plain front and the mustard-yellow hood folded down flat behind her neck, navy trousers, simple dot-like cartoon eyes, a round young child face, flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p136",
+     "speaker": "kid",
+     "text": "記得！為什麼會變黑？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "bubble-dark-top",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a big round see-through soap bubble hanging in a square silver wire loop on a sunny balcony, the very top of the thin film fading softly into a smooth dark grey see-through patch, gold and pink colour bands shimmering below it, the bubble still round and glassy like a real soap bubble, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p137",
+     "speaker": "chief",
+     "text": "頂上的皮比光的波還薄很多，兩道光不管是什麼顏色，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p138",
+     "speaker": "chief",
+     "text": "都剛好互相抵掉。"
+    }
+   ]
+  },
+  {
+   "id": "chief-no-light",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief cupping both empty hands open towards the viewer with a gentle smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p139",
+     "speaker": "chief",
+     "text": "沒有光彈回你的眼睛，看起來就黑了。"
+    }
+   ]
+  },
+  {
+   "id": "kid-black-pop",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony covering her mouth with both hands and wide worried eyes, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p141",
+     "speaker": "kid",
+     "text": "就是快破了？",
+     "emotion": "緊張，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-black",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding her thumb and finger almost touching with a serious kind smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p142",
+     "speaker": "chief",
+     "text": "它在說：我已經薄到快撐不住了。"
+    },
+    {
+     "id": "p143",
+     "speaker": "chief",
+     "text": "美國舊金山一間科學博物館說，這時候頂上的皮，"
+    }
+   ]
+  },
+  {
+   "id": "chief-thin",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief squinting closely at the tiny gap between her thumb and finger with a playful amazed face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p144",
+     "speaker": "chief",
+     "text": "大約只有一毫米的四萬分之一。"
+    },
+    {
+     "id": "p145",
+     "speaker": "chief",
+     "text": "不過不是一黑就馬上破，常常還會撐一下下。"
+    }
+   ]
+  },
+  {
+   "id": "kid-quick",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony leaning in close with wide eager eyes and both fists under her chin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p146",
+     "speaker": "kid",
+     "text": "那我要看快一點！",
+     "emotion": "笑"
+    }
+   ]
+  },
+  {
+   "id": "kid-tilt",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony tilting her head far to one side while looking at a bubble on her square wire wand, a surprised face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p148",
+     "speaker": "kid",
+     "text": "我一歪頭，",
+     "emotion": "發現"
+    },
+    {
+     "id": "p149",
+     "speaker": "kid",
+     "text": "顏色也變了耶！"
+    }
+   ]
+  },
+  {
+   "id": "chief-tilt-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief tilting her head to one side with a curious playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p150",
+     "speaker": "chief",
+     "text": "好觀察。那你覺得，是皮在你歪頭那一下變薄了嗎？",
+     "emotion": "接住上一句"
+    }
+   ]
+  },
+  {
+   "id": "kid-tilt-guess",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony scratching her head with a thinking face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p152",
+     "speaker": "kid",
+     "text": "沒有那麼巧吧？",
+     "emotion": "猶豫"
+    }
+   ]
+  },
+  {
+   "id": "chief-angle",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding one hand flat and tilting it slowly to a slant, a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p153",
+     "speaker": "chief",
+     "text": "對，沒有那麼巧。皮的厚薄沒變，"
+    },
+    {
+     "id": "p154",
+     "speaker": "chief",
+     "text": "變的是光進來、彈到你眼睛的方向。"
+    }
+   ]
+  },
+  {
+   "id": "chief-slant",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief drawing a slanted line in the air with one fingertip, a calm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p155",
+     "speaker": "chief",
+     "text": "光斜斜地穿過皮，裡面那道光多走的路，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p156",
+     "speaker": "chief",
+     "text": "就跟直直穿過的時候不一樣長。"
+    }
+   ]
+  },
+  {
+   "id": "kid-again-path",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony pointing up with one finger and a bright realising grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p157",
+     "speaker": "kid",
+     "text": "又是多走的路！",
+     "emotion": "恍然"
+    }
+   ]
+  },
+  {
+   "id": "chief-second-test",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up two fingers with a warm pleased smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p158",
+     "speaker": "chief",
+     "text": "對，這下又多了一條線索。我原本只猜到厚薄，"
+    },
+    {
+     "id": "p159",
+     "speaker": "chief",
+     "text": "沒想到你歪個頭，就把我的想法補齊了。"
+    }
+   ]
+  },
+  {
+   "id": "kid-tell-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony looking back and forth between two bubbles with a puzzled frown, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p161",
+     "speaker": "kid",
+     "text": "是哪一種在變？",
+     "emotion": "追問，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-tell",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding her head very still and pointing at her own eye with a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p162",
+     "speaker": "chief",
+     "text": "還記得往下流的顏色嗎？那是皮在變薄；",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p163",
+     "speaker": "chief",
+     "text": "泡泡不動，你一歪頭顏色就跳，是方向在變。"
+    }
+   ]
+  },
+  {
+   "id": "chief-honest",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding a silver wire square bubble wand with a colourful bubble on it at arm's length, an honest thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p164",
+     "speaker": "chief",
+     "text": "還有一件事要老實說："
+    },
+    {
+     "id": "p165",
+     "speaker": "chief",
+     "text": "光看顏色，沒辦法準準地量出皮有多厚。"
+    }
+   ]
+  },
+  {
+   "id": "kid-why-not",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room tilting her head with a curious frown, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p166",
+     "speaker": "kid",
+     "text": "為什麼不行？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-repeat",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief drawing a few loops in the air with one finger, a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p167",
+     "speaker": "chief",
+     "text": "因為皮越變越薄的時候，同一種顏色會出現好幾次，"
+    },
+    {
+     "id": "p168",
+     "speaker": "chief",
+     "text": "光看顏色，分不出是哪一次。"
+    }
+   ]
+  },
+  {
+   "id": "kid-loop",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room spinning one finger in small circles in the air with a curious grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p169",
+     "speaker": "kid",
+     "text": "像在繞圈圈！",
+     "emotion": "發現"
+    }
+   ]
+  },
+  {
+   "id": "chief-clue",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief nodding with a calm honest smile, one finger raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p170",
+     "speaker": "chief",
+     "text": "對，所以顏色只能當線索，不能當尺。"
+    }
+   ]
+  },
+  {
+   "id": "kid-two-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony holding the square wire wand in one hand and the small clear bottle in the other, looking from one to the other with a thinking face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p171",
+     "speaker": "kid",
+     "text": "那形狀跟顏色，",
+     "emotion": "推理"
+    },
+    {
+     "id": "p172",
+     "speaker": "kid",
+     "text": "到底有沒有關係？",
+     "emotion": "章尾停住，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-answer",
+   "chapter": "小問把方框跟變黑連起來了",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief sitting on the edge of a desk and leaning forward with an inviting grin, one hand open towards the viewer, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p173",
+     "speaker": "chief",
+     "text": "有。你自己找找看：方框跟變黑，哪裡一樣？",
+     "emotion": "笑"
+    }
+   ]
+  },
+  {
+   "id": "kid-got-it",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny apartment balcony holding up the square wire bubble wand proudly with a big confident grin, a round bubble floating beside her, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p174",
+     "speaker": "kid",
+     "text": "原來如此！",
+     "emotion": "恍然大悟",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p175",
+     "speaker": "kid",
+     "text": "全是同一層皮：",
+     "emotion": "篤定",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p177",
+     "speaker": "kid",
+     "text": "縮小變圓，變薄換色！",
+     "emotion": "篤定"
+    }
+   ]
+  },
+  {
+   "id": "chief-opinion",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling with her hands clasped, a thoughtful look, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p178",
+     "speaker": "chief",
+     "text": "說得好，形狀跟顏色，被你接起來了。",
+     "emotion": "笑"
+    }
+   ]
+  },
+  {
+   "id": "bubble-thinning",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a round soap bubble on a square silver wire loop shimmering with soft bands of gold, magenta and blue, a small dark grey cap just starting at its very top, sunny balcony background, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p179",
+     "speaker": "chief",
+     "text": "我覺得最好玩的是：你天天吹的泡泡，藏了這麼多事。"
+    }
+   ]
+  },
+  {
+   "id": "kid-blow-again",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl crouching on a sunny apartment balcony and dipping a single thin silver wire bent into an open square loop with four straight sides and a short straight handle into a small plain unmarked clear glass bottle held in her other hand, an excited open-mouthed grin, plain blurred balcony railing behind her, bright daylight, the girl is a little girl of about eight with a short chin-length black bob, straight blunt bangs and one small cowlick on top, plain black hair hanging free, a navy raincoat with plain solid navy sleeves and the mustard-yellow hood folded down flat behind her neck, navy trousers, simple dot-like cartoon eyes, a round young child face, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p180",
+     "speaker": "kid",
+     "text": "我要再吹一顆！",
+     "emotion": "興奮"
+    }
+   ]
+  },
+  {
+   "id": "chief-observe",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief nodding with an encouraging smile, one finger raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p181",
+     "speaker": "chief",
+     "text": "好啊。這次把泡泡留在框上，背後找一面深色的牆，",
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p182",
+     "speaker": "chief",
+     "text": "看看頂上變黑之前，最後一個顏色是什麼。"
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p183",
+     "speaker": "kid",
+     "text": "好，我去吹！",
+     "emotion": "開心大聲"
+    }
+   ]
+  },
+  {
+   "id": "outro-chief",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up a silver wire square bubble wand with a curious smile, filling the frame, a plain pale wall behind her, bright morning light, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p184",
+     "speaker": "chief",
+     "text": "你的泡泡變黑之前，最後是什麼顏色？",
+     "emotion": "問句上揚，像聊天"
+    },
+    {
+     "id": "p185",
+     "speaker": "chief",
+     "text": "留言告訴我們。"
+    }
+   ]
+  },
+  {
+   "id": "outro-wave",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p186",
+     "speaker": "chief",
+     "text": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
+     "emotion": "誠懇"
+    }
+   ]
+  }
+ ]
+}

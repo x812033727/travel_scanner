@@ -1,0 +1,787 @@
+{
+  "title": "GPS lệch một chút thời gian, sao vị trí lệch xa thế? | Văn phòng À ra thế",
+  "description": "Bé Wen đi bộ ra công viên tìm bạn, đi giữa hai dãy nhà cao tầng thì chấm xanh trên bản đồ điện thoại bỗng nhảy sang con phố bên kia, mở lại bản đồ còn phải chờ rất lâu. Rốt cuộc điện thoại dùng thời gian thế nào để biết mình đang ở đâu?\n\nTrong tập này, cô Trưởng phòng và bé Wen đi theo cùng một đoạn đường, dùng trò chơi \"thổi còi trong công viên\" để suy nghĩ: nghe tiếng còi trễ bao lâu là biết cách người bạn ấy bao xa. Vệ tinh chính là người bạn mang đồng hồ nguyên tử, tín hiệu chạy nhanh như ánh sáng, nên thời gian chỉ lệch một phần triệu giây là khoảng cách đã lệch ba trăm mét, đến cả chút chênh lệch do thuyết tương đối của đồng hồ vệ tinh cũng phải sửa trước; điện thoại không có đồng hồ nguyên tử, nên phải nghe thêm vệ tinh thứ tư, tính luôn đồng hồ của mình lệch bao nhiêu. Tiếp theo xem vì sao chấm xanh bị lệch: vệ tinh phát rất chuẩn, thứ hất chấm xanh sang phố bên kia giữa các tòa nhà phần lớn là nhà cao che khuất và tín hiệu dội lại từ tường; tầng điện ly trên cao cũng làm tín hiệu chậm đi, nhưng nó thay đổi từ từ trên cả bầu trời, không bỗng nhảy giữa các tòa nhà, lại sửa được một phần, nghe cùng lúc hai tần số thì sửa gần hết; cuối cùng là vì sao vừa mở bản đồ phải chờ, điện thoại nhờ mạng để đỡ phải chờ ra sao, và vì sao có điện thoại lại phải tìm thêm một vệ tinh.\n\nVẽ vòng tròn tìm giao điểm chỉ là minh họa, máy thu thật ước tính vị trí và thời gian cùng một lúc; hình minh họa do AI tạo, chỉ là minh họa, không phải vị trí vệ tinh thật. Nguồn của từng nhận định được liệt kê trong phần tài liệu tham khảo bên dưới.\n\nDữ liệu tính đến 2026-11-11",
+  "tags": [
+    "GPS",
+    "định vị vệ tinh",
+    "bản đồ điện thoại",
+    "đồng hồ nguyên tử",
+    "đa đường",
+    "tầng điện ly",
+    "thuyết tương đối",
+    "khoa học phổ thông",
+    "Văn phòng À ra thế"
+  ],
+  "thumbnail": {
+    "headline": "GPS\n**nhảy phố?**",
+    "sub": "1 phần triệu giây: lệch bao xa?"
+  },
+  "chapters": {
+    "phone-dot": "Giữa nhà cao, chấm xanh nhảy sang phố bên kia",
+    "kid-ask-guess": "Vệ tinh chẳng hề biết cháu ở đâu",
+    "chief-condition": "Vệ tinh thứ tư đến để chỉnh đồng hồ",
+    "chief-signal-good": "Tín hiệu đập vào nhà, đi đường vòng",
+    "chief-almanac": "Vừa mở bản đồ, chấm xanh mãi chưa hiện",
+    "chief-your-turn": "Đến công viên, Wen hiểu ra"
+  },
+  "source_hashes": {
+    "chapters": {
+      "phone-dot": "7c943314fd65",
+      "kid-ask-guess": "d1227a7969c2",
+      "chief-condition": "d641a36a71f0",
+      "chief-signal-good": "62b9774c9040",
+      "chief-almanac": "890be0e29d73",
+      "chief-your-turn": "d031c5f9fe23"
+    },
+    "title": "d65b2c80c4da",
+    "description": "f7a6cda335e3",
+    "tags": "287a4a52f296",
+    "thumbnail": "824cf94c83bc"
+  },
+  "lines": {
+    "p001": {
+      "source_hash": "93ccb81d26eb",
+      "text": "Cháu đi bộ ra công viên,"
+    },
+    "p002": {
+      "source_hash": "61ec3795728d",
+      "text": "chấm xanh"
+    },
+    "p003": {
+      "source_hash": "c1edb2249952",
+      "text": "nhảy sang phố kia!"
+    },
+    "p004": {
+      "source_hash": "bd89671c7487",
+      "text": "nhưng cháu ở bên này mà,"
+    },
+    "p005": {
+      "source_hash": "30f6595f88a3",
+      "text": "Mở lại bản đồ, chấm xanh còn chờ lâu lắm!"
+    },
+    "p006": {
+      "source_hash": "62179fa81859",
+      "text": "Giữa cao ốc hay gặp."
+    },
+    "p007": {
+      "source_hash": "521a1668055d",
+      "text": "Lúc gọi xe, có khi cháu thấy xe đỗ bên kia."
+    },
+    "p008": {
+      "source_hash": "b1457943850a",
+      "text": "Lạ hơn: điện thoại tính cháu ở đâu là nhờ thời gian."
+    },
+    "p009": {
+      "source_hash": "9d9f046b2f82",
+      "text": "Lệch một phần triệu giây, đoán xem xa gần lệch bao nhiêu?"
+    },
+    "p010": {
+      "source_hash": "d4c4c758b0b9",
+      "text": "Một, hai mét?"
+    },
+    "p011": {
+      "source_hash": "e2754de54e6b",
+      "text": "Nhiều hơn cháu đoán nhiều. Và điện thoại phải nghe ít nhất bốn vệ tinh."
+    },
+    "p012": {
+      "source_hash": "1cb4061a4ef3",
+      "text": "Vệ tinh thừa ra đó giúp ai?"
+    },
+    "p013": {
+      "source_hash": "4390cc77659c",
+      "text": "Điện thoại dùng thời gian"
+    },
+    "p014": {
+      "source_hash": "d42f9e4004f1",
+      "text": "biết chỗ cháu?"
+    },
+    "p015": {
+      "source_hash": "5a5590da82fb",
+      "text": "Máy hỏi vệ tinh,"
+    },
+    "p016": {
+      "source_hash": "cbde1f360146",
+      "text": "rồi vệ tinh bảo cháu ở đâu?"
+    },
+    "p017": {
+      "source_hash": "d4d741c54e0f",
+      "text": "Ngược lại, vệ tinh chẳng biết cháu."
+    },
+    "p018": {
+      "source_hash": "085ba5c9d7ef",
+      "text": "Trang GPS chính phủ Mỹ nói, vệ tinh như hải đăng,"
+    },
+    "p019": {
+      "source_hash": "80714bf9c067",
+      "text": "chỉ lo phát xuống liên tục."
+    },
+    "p020": {
+      "source_hash": "25b8250cae48",
+      "text": "Máy chỉ nghe, im lặng"
+    },
+    "p021": {
+      "source_hash": "b5ec32110e05",
+      "text": "tự tính cháu ở đâu từ cái nghe được."
+    },
+    "p022": {
+      "source_hash": "84c0b2411ab8",
+      "text": "Chỉ nghe?"
+    },
+    "p023": {
+      "source_hash": "ff5dcf1ef1e5",
+      "text": "Nghe gì ạ?"
+    },
+    "p024": {
+      "source_hash": "9c12dd252d42",
+      "text": "Cháu chắc chơi rồi: thấy chớp là đếm, đến khi sấm."
+    },
+    "p025": {
+      "source_hash": "e0592a443052",
+      "text": "Khí tượng Mỹ nói, sấm đi một dặm khoảng năm giây,"
+    },
+    "p026": {
+      "source_hash": "9d22ff9089e3",
+      "text": "đổi ra km, khoảng ba giây một km."
+    },
+    "p027": {
+      "source_hash": "bdce82f41682",
+      "text": "6 giây,"
+    },
+    "p028": {
+      "source_hash": "80a3fa2fa94f",
+      "text": "là xa hai km!"
+    },
+    "p029": {
+      "source_hash": "de05004d0b9e",
+      "text": "Đúng. Mình chơi trò này: công viên có vài bạn đứng,"
+    },
+    "p030": {
+      "source_hash": "cb8a2d3ae60a",
+      "text": "mỗi bạn đeo đồng hồ rất chuẩn, đúng giờ là thổi còi."
+    },
+    "p031": {
+      "source_hash": "00004141493e",
+      "text": "Nghe còi trễ bao lâu là biết cách bạn ấy bao xa."
+    },
+    "p032": {
+      "source_hash": "4d0a1698d341",
+      "text": "Vệ tinh là bạn ấy. Nó mang đồng hồ nguyên tử, đồng hồ cực kỳ chuẩn,"
+    },
+    "p033": {
+      "source_hash": "57c87d19fff6",
+      "text": "tín hiệu ghi: tôi phát ra lúc nào."
+    },
+    "p034": {
+      "source_hash": "f7b711e2a525",
+      "text": "Vệ tinh xa vậy,"
+    },
+    "p035": {
+      "source_hash": "692036877126",
+      "text": "tín hiệu đi bao lâu?"
+    },
+    "p036": {
+      "source_hash": "7391bf91dd47",
+      "text": "Vệ tinh cao khoảng hai mươi nghìn km. Tín hiệu từ đó đến tay cháu,"
+    },
+    "p037": {
+      "source_hash": "faf2ab245950",
+      "text": "thường chỉ 60 đến 90 mili giây, tức phần nghìn giây."
+    },
+    "p038": {
+      "source_hash": "f0402d26d173",
+      "text": "Vì nó nhanh như ánh sáng, mỗi giây khoảng ba trăm nghìn km."
+    },
+    "p039": {
+      "source_hash": "5300a5e329f3",
+      "text": "Nên một phần triệu giây lúc nãy,"
+    },
+    "p040": {
+      "source_hash": "1787db7fbd40",
+      "text": "ánh sáng đi chừng 300 mét, không 1-2 mét."
+    },
+    "p041": {
+      "source_hash": "192f8820297f",
+      "text": "Đồng hồ đó"
+    },
+    "p042": {
+      "source_hash": "a09778d34fcf",
+      "text": "chuẩn thật à?"
+    },
+    "p043": {
+      "source_hash": "724772ce72fb",
+      "text": "Rất chuẩn, nhưng còn một chỗ phải sửa."
+    },
+    "p044": {
+      "source_hash": "23bf5d46d811",
+      "text": "Nhìn từ mặt đất, nó chạy nhanh hơn, lý do rất nổi tiếng: thuyết tương đối."
+    },
+    "p045": {
+      "source_hash": "1f2e81718a79",
+      "text": "Vệ tinh ở rất cao, Trái Đất kéo yếu hơn,"
+    },
+    "p046": {
+      "source_hash": "6234c3a85f27",
+      "text": "đồng hồ nhanh chút; nó lại bay rất nhanh, bay nhanh thì chậm đi"
+    },
+    "p047": {
+      "source_hash": "757054b692d7",
+      "text": "Gộp lại: nhanh."
+    },
+    "p048": {
+      "source_hash": "dcee72aea8bc",
+      "text": "Bao nhiêu?"
+    },
+    "p049": {
+      "source_hash": "d6b708d99b0b",
+      "text": "Một bài tổng quan GPS và tương đối"
+    },
+    "p050": {
+      "source_hash": "95c17e5cdb2d",
+      "text": "mỗi ngày nhanh thêm hơn 38 micrô giây."
+    },
+    "p051": {
+      "source_hash": "c6dde0ebf2d6",
+      "text": "Micrô giây là phần triệu giây lúc đầu."
+    },
+    "p052": {
+      "source_hash": "77b408ccd4e3",
+      "text": "Ngắn quá mà?"
+    },
+    "p053": {
+      "source_hash": "37d97338b7fd",
+      "text": "Cháu tính xem: trong lúc đó ánh sáng đi được hơn 11 km."
+    },
+    "p054": {
+      "source_hash": "46f967c7bfa8",
+      "text": "Không sửa thì giờ trên còi, một ngày sai chừng ấy."
+    },
+    "p055": {
+      "source_hash": "f8480abb9871",
+      "text": "Nên có vệ tinh chỉnh đồng hồ chậm từ dưới đất;"
+    },
+    "p056": {
+      "source_hash": "cf7ad4d9a32e",
+      "text": "có cái lên rồi đo, ghi chỉnh vào bản tin."
+    },
+    "p057": {
+      "source_hash": "6281dbd6c135",
+      "text": "Giờ tin rồi,"
+    },
+    "p058": {
+      "source_hash": "fa9707e64bd7",
+      "text": "vậy nghe một vệ tinh"
+    },
+    "p059": {
+      "source_hash": "27b2d8262c51",
+      "text": "là biết cháu đâu?"
+    },
+    "p060": {
+      "source_hash": "516505d70ae6",
+      "text": "Chưa được. Nghe một bạn, chỉ biết cách bạn ấy bao xa,"
+    },
+    "p061": {
+      "source_hash": "c6cc242bc279",
+      "text": "cháu có thể ở bất cứ đâu quanh bạn ấy."
+    },
+    "p062": {
+      "source_hash": "5f7fe4956ecd",
+      "text": "Trong không gian, là cả mặt một quả cầu lớn."
+    },
+    "p063": {
+      "source_hash": "a0ef2cf486bd",
+      "text": "Nghe thêm bạn thứ hai, thứ ba, mấy vòng chồng lên nhau,"
+    },
+    "p064": {
+      "source_hash": "9a58b25eddfc",
+      "text": "chỗ đứng hẹp dần"
+    },
+    "p065": {
+      "source_hash": "70a5adbe2ce7",
+      "text": "Nói rõ trước, vẽ vòng tròn chỉ là minh họa."
+    },
+    "p066": {
+      "source_hash": "6da76b49916a",
+      "text": "Vậy ba cái đủ rồi chứ?"
+    },
+    "p067": {
+      "source_hash": "a8a9b5dfb066",
+      "text": "thứ tư làm gì?"
+    },
+    "p068": {
+      "source_hash": "9d439d36e147",
+      "text": "Ba là đủ, nhưng có điều kiện."
+    },
+    "p069": {
+      "source_hash": "5ca701d8faad",
+      "text": "Cục Hàng không Liên bang Mỹ ghi rõ: cháu cũng phải có một"
+    },
+    "p070": {
+      "source_hash": "840a6cd70bb7",
+      "text": "đồng hồ nguyên tử khớp giờ với GPS."
+    },
+    "p071": {
+      "source_hash": "30abd3290e36",
+      "text": "Điện thoại cháu"
+    },
+    "p072": {
+      "source_hash": "8d410677464f",
+      "text": "có đồng hồ đó?"
+    },
+    "p073": {
+      "source_hash": "4a4f4c0ccc4c",
+      "text": "Không, điện thoại không chuẩn vậy."
+    },
+    "p074": {
+      "source_hash": "9afcf546f320",
+      "text": "Quay lại công viên. Còi là âm thanh, giả sử đồng hồ cháu chậm một giây,"
+    },
+    "p075": {
+      "source_hash": "13a9657d89b1",
+      "text": "mỗi tiếng còi, cháu tưởng nó đi ngắn hơn,"
+    },
+    "p076": {
+      "source_hash": "727f0776a14c",
+      "text": "Nhớ sấm ba giây một km không? Bạn nào cũng như gần thêm hơn 300 mét."
+    },
+    "p077": {
+      "source_hash": "467f4962b22c",
+      "text": "Ai cũng gần?"
+    },
+    "p078": {
+      "source_hash": "00d84787c55e",
+      "text": "Vậy rốt cuộc cháu ở đâu?"
+    },
+    "p079": {
+      "source_hash": "b5d2a04cd99e",
+      "text": "Không có điểm nào khớp với mọi bạn."
+    },
+    "p080": {
+      "source_hash": "97330c78d87b",
+      "text": "Nên phải nghe thêm một bạn,"
+    },
+    "p081": {
+      "source_hash": "fbda0269eaa6",
+      "text": "coi lệch giờ bao nhiêu là số cần tìm."
+    },
+    "p082": {
+      "source_hash": "19b9f16a40b5",
+      "text": "Đổi về vệ tinh: đông tây, nam bắc, cao thấp, thêm đồng hồ lệch bao nhiêu,"
+    },
+    "p083": {
+      "source_hash": "8967640141ab",
+      "text": "bốn số cần tìm, cần bốn vệ tinh mới giải ra."
+    },
+    "p084": {
+      "source_hash": "f9b3a8ad2a0e",
+      "text": "Hóa ra vệ tinh thứ tư"
+    },
+    "p085": {
+      "source_hash": "37d4de34da7b",
+      "text": "giúp máy chỉnh giờ!"
+    },
+    "p086": {
+      "source_hash": "71432d482a6e",
+      "text": "Giỏi. Nhớ mấy vòng tròn không?"
+    },
+    "p087": {
+      "source_hash": "3c58f9960228",
+      "text": "Điện thoại thật không vẽ vòng, mà tính bốn đáp án một lần."
+    },
+    "p088": {
+      "source_hash": "146bde6fdbd7",
+      "text": "Nghe được hơn bốn vệ tinh, nó tìm đáp án hợp với tất cả nhất."
+    },
+    "p089": {
+      "source_hash": "7a7ff825bcec",
+      "text": "Trên trời lúc nào"
+    },
+    "p090": {
+      "source_hash": "5269b631be43",
+      "text": "ít nhất bốn?"
+    },
+    "p091": {
+      "source_hash": "b3a89ff8ade9",
+      "text": "Vệ tinh GPS xếp cơ bản có 24 vị trí,"
+    },
+    "p092": {
+      "source_hash": "601ad93b022a",
+      "text": "gần như khắp Trái Đất đều thấy ít nhất bốn."
+    },
+    "p093": {
+      "source_hash": "77813307d307",
+      "text": "Vậy cũng bốn cái,"
+    },
+    "p094": {
+      "source_hash": "7a571bd1410f",
+      "text": "lần nào cũng chuẩn"
+    },
+    "p095": {
+      "source_hash": "f9d391061fe0",
+      "text": "Không. Sai số vị trí điện thoại tính ra"
+    },
+    "p096": {
+      "source_hash": "61b9dcaa45a8",
+      "text": "khoảng bằng sai số đo khoảng cách nhân với một hệ số phóng đại."
+    },
+    "p097": {
+      "source_hash": "0e245d613d1b",
+      "text": "Hệ số tùy vệ tinh nằm so với cháu ra sao."
+    },
+    "p098": {
+      "source_hash": "4d70d836493d",
+      "text": "Vị trí quá tệ thì thậm chí không tính ra."
+    },
+    "p099": {
+      "source_hash": "86a8709277b6",
+      "text": "Dùng từ năm vệ tinh, hệ số không tệ hơn bốn."
+    },
+    "p100": {
+      "source_hash": "b4584fe88120",
+      "text": "Giữa nhà cao,"
+    },
+    "p101": {
+      "source_hash": "d52f6f3fbbcb",
+      "text": "trời chỉ còn một khe!"
+    },
+    "p102": {
+      "source_hash": "f7244a45c679",
+      "text": "Ừ, nhà che bớt vệ tinh,"
+    },
+    "p103": {
+      "source_hash": "2606d06e3a48",
+      "text": "dùng được ít đi, hệ số có thể tăng."
+    },
+    "p104": {
+      "source_hash": "26d7dc2944a3",
+      "text": "Vậy chấm xanh nhảy đi"
+    },
+    "p105": {
+      "source_hash": "80d7d7b41509",
+      "text": "là do tín hiệu không chuẩn?"
+    },
+    "p106": {
+      "source_hash": "427ebc856d53",
+      "text": "Phát rất chuẩn."
+    },
+    "p107": {
+      "source_hash": "906db6a9564b",
+      "text": "Trung bình mọi vệ tinh, sai số tín hiệu"
+    },
+    "p108": {
+      "source_hash": "f4c61659cadd",
+      "text": "được bảo đảm dưới hai mét, 95% thời gian."
+    },
+    "p109": {
+      "source_hash": "d7790246a845",
+      "text": "Đo thực tế ngày 20 tháng 4 năm 2021, chưa đến 65 cm."
+    },
+    "p110": {
+      "source_hash": "2e81ec1110d7",
+      "text": "Có khi nào"
+    },
+    "p111": {
+      "source_hash": "a7f5daa57eca",
+      "text": "cố tình làm sai?"
+    },
+    "p112": {
+      "source_hash": "e8199d06e05d",
+      "text": "Trang GPS của chính phủ Mỹ nói: không cố tình làm kém bản dân sự."
+    },
+    "p113": {
+      "source_hash": "ec04d093e42b",
+      "text": "Trước đây từng cố ý làm bản dân sự kém chính xác, năm 2000 đã dừng."
+    },
+    "p114": {
+      "source_hash": "717ca4e2cce2",
+      "text": "Mà tín hiệu kém thì lệch khắp nơi, không riêng giữa nhà cao."
+    },
+    "p115": {
+      "source_hash": "477df1283cd7",
+      "text": "Vậy điện thoại"
+    },
+    "p116": {
+      "source_hash": "500190aaedf3",
+      "text": "sao lệch sang phố kia?"
+    },
+    "p117": {
+      "source_hash": "011b500c3ec9",
+      "text": "Nhưng sai số tín hiệu không bằng sai số trên tay."
+    },
+    "p118": {
+      "source_hash": "b05fe607c615",
+      "text": "Trên tay còn cộng thêm chuyện tín hiệu gặp dọc đường."
+    },
+    "p119": {
+      "source_hash": "59d9dd3e986b",
+      "text": "Khóa học trực tuyến Stanford cho hàng nghìn người ở 100 nước đo bằng máy"
+    },
+    "p120": {
+      "source_hash": "050d462e0841",
+      "text": "Chỗ thoáng, trung bình lệch chừng năm mét."
+    },
+    "p121": {
+      "source_hash": "110a3014fd6c",
+      "text": "Trong phố, sai số phụ thuộc nhiều vào độ cao nhà bên."
+    },
+    "p122": {
+      "source_hash": "0225165a37b6",
+      "text": "Nhà cao ăn mất"
+    },
+    "p123": {
+      "source_hash": "bbeedbd0202c",
+      "text": "sóng à?"
+    },
+    "p124": {
+      "source_hash": "0883bdaed928",
+      "text": "Nhớ khe trời không? Có lúc là bị che; có lúc phiền hơn,"
+    },
+    "p125": {
+      "source_hash": "2db375019ba9",
+      "text": "tín hiệu đập tường, dội lại vào máy."
+    },
+    "p126": {
+      "source_hash": "2ad6e2526d56",
+      "text": "Quay lại công viên: tiếng còi đập vào tường, đi vòng xa mới tới tai cháu,"
+    },
+    "p127": {
+      "source_hash": "d4694015f4ca",
+      "text": "cháu tưởng bạn đó ở xa hơn. Đó gọi là đa đường."
+    },
+    "p128": {
+      "source_hash": "b726f9728305",
+      "text": "Bách khoa Navipedia của ESA nói,"
+    },
+    "p129": {
+      "source_hash": "aad849746432",
+      "text": "chủ yếu do ăng-ten sát vật phản xạ;"
+    },
+    "p130": {
+      "source_hash": "16d3fdd21d88",
+      "text": "vệ tinh chiếu xiên từ rất thấp ảnh hưởng nhất."
+    },
+    "p131": {
+      "source_hash": "d4564241c345",
+      "text": "Hay đoạn đường trên trời"
+    },
+    "p132": {
+      "source_hash": "1fb2b605b8f2",
+      "text": "làm lệch chấm?"
+    },
+    "p133": {
+      "source_hash": "a42c2b045190",
+      "text": "Trên trời có làm chậm tín hiệu: trên cao có tầng điện ly."
+    },
+    "p134": {
+      "source_hash": "7b9faffd566d",
+      "text": "Nghe một tần số, như chỉ nghe một cao độ, hiệu ứng này đến vài chục mét."
+    },
+    "p135": {
+      "source_hash": "68f2aa9c5f51",
+      "text": "Nhưng nó thay đổi chậm cả bầu trời, không bỗng nhảy giữa hai tòa nhà."
+    },
+    "p136": {
+      "source_hash": "d6f3c416566b",
+      "text": "Bản sửa vệ tinh phát, trung bình toàn cầu bỏ nửa;"
+    },
+    "p137": {
+      "source_hash": "e78e30d3ebc8",
+      "text": "nghe cùng lúc hai tần số cao thấp, như so hai cái còi,"
+    },
+    "p138": {
+      "source_hash": "4a376c358140",
+      "text": "hiệu ứng điện ly bỏ được trên 99%."
+    },
+    "p139": {
+      "source_hash": "78e8fc2ebd73",
+      "text": "Nên đẩy cháu sang phố kia, phần lớn không do đoạn trên trời."
+    },
+    "p140": {
+      "source_hash": "ec2170715222",
+      "text": "Còn lần cháu mở lại bản đồ,"
+    },
+    "p141": {
+      "source_hash": "40ee9a093171",
+      "text": "sao chấm xanh chờ lâu thế?"
+    },
+    "p142": {
+      "source_hash": "593d43f5c16d",
+      "text": "Chỉ biết xa chưa đủ,"
+    },
+    "p143": {
+      "source_hash": "014d160ab3c1",
+      "text": "còn phải biết vệ tinh ở đâu, đồng hồ nó lệch bao."
+    },
+    "p144": {
+      "source_hash": "6f72828a8374",
+      "text": "Chúng nằm trong bản tin, nhưng nó nói chậm,"
+    },
+    "p145": {
+      "source_hash": "a69117f56db6",
+      "text": "mỗi giây chỉ 50 bit."
+    },
+    "p146": {
+      "source_hash": "032197e0ca59",
+      "text": "Bit là cái gì ạ?"
+    },
+    "p147": {
+      "source_hash": "c62dba463531",
+      "text": "Ô nhỏ nhất của dữ liệu: có hoặc không."
+    },
+    "p148": {
+      "source_hash": "66baa4da1b4c",
+      "text": "Như bạn kia báo chỗ đứng, đọc chậm từng chữ một."
+    },
+    "p149": {
+      "source_hash": "2b90ad517602",
+      "text": "Một vòng mất 30 giây, rồi mới nói lại từ đầu;"
+    },
+    "p150": {
+      "source_hash": "331a1a6ddd9f",
+      "text": "đồng hồ lệch bao nhiêu, vệ tinh ở đâu, nằm ở ba đoạn đầu mỗi vòng."
+    },
+    "p151": {
+      "source_hash": "ae3473d32746",
+      "text": "Cách truyền thống phải nghe hết ba đoạn, lâu nhất khoảng 36 giây."
+    },
+    "p152": {
+      "source_hash": "1bffabd43b97",
+      "text": "Chờ lâu vậy,"
+    },
+    "p153": {
+      "source_hash": "a34099d14ac6",
+      "text": "cháu sang phố rồi!"
+    },
+    "p154": {
+      "source_hash": "39967432215e",
+      "text": "Nên khởi động có lạnh, nóng."
+    },
+    "p155": {
+      "source_hash": "e95ee1b2107d",
+      "text": "Chẳng biết gì gọi là khởi động lạnh, phải tìm khắp bầu trời;"
+    },
+    "p156": {
+      "source_hash": "b3e41c4e48a4",
+      "text": "đã có vị trí vệ tinh chính xác là khởi động nóng, khỏi chờ bản tin."
+    },
+    "p157": {
+      "source_hash": "0e5ee3b6bd3c",
+      "text": "Giữa nhà cao, tín hiệu chập chờn, còn chờ lâu hơn."
+    },
+    "p158": {
+      "source_hash": "2e85b35f3587",
+      "text": "Nhưng có lúc,"
+    },
+    "p159": {
+      "source_hash": "566bc6933dd2",
+      "text": "mở ra có ngay!"
+    },
+    "p160": {
+      "source_hash": "266ca74113ad",
+      "text": "Thường là GPS hỗ trợ. Máy qua mạng di động"
+    },
+    "p161": {
+      "source_hash": "6ad9c2709f86",
+      "text": "lấy trước vị trí và giờ vệ tinh,"
+    },
+    "p162": {
+      "source_hash": "46d9a26a2970",
+      "text": "chỉ cần thu vài mili giây là tính được."
+    },
+    "p163": {
+      "source_hash": "59247aa59012",
+      "text": "Như có người nhắn trước chỗ đứng của từng bạn."
+    },
+    "p164": {
+      "source_hash": "7c6107e778f0",
+      "text": "Khỏi chờ!"
+    },
+    "p165": {
+      "source_hash": "158c0b4b2939",
+      "text": "Có dở gì?"
+    },
+    "p166": {
+      "source_hash": "c0a3685b9a02",
+      "text": "Có. Cháu không đọc được giờ chính xác từ bản tin."
+    },
+    "p167": {
+      "source_hash": "b9c742a85ed3",
+      "text": "Vệ tinh luôn chuyển động, sai giờ một chút, vị trí vệ tinh tính ra sẽ sai."
+    },
+    "p168": {
+      "source_hash": "db4b15654947",
+      "text": "Một bài báo tạp chí định vị dẫn ước tính của người phát minh cách này:"
+    },
+    "p169": {
+      "source_hash": "b721b39ac7fe",
+      "text": "giờ lệch mỗi một giây, khoảng cách tính ra sai khoảng 800 mét."
+    },
+    "p170": {
+      "source_hash": "80e0e33f06fc",
+      "text": "Nên có điện thoại coi bây giờ là lúc nào cũng là đáp án cần tính."
+    },
+    "p171": {
+      "source_hash": "d25e149e4a01",
+      "text": "Đó là số cần tìm thứ năm, cần ít nhất 5 vệ tinh."
+    },
+    "p172": {
+      "source_hash": "ea8cdfdeed05",
+      "text": "Chấm xanh hiện ngay ở góc phố, có thể tính kiểu này."
+    },
+    "p173": {
+      "source_hash": "ec7ec5d9ce3f",
+      "text": "Bảo sao có lúc nó hiện ngay!"
+    },
+    "p174": {
+      "source_hash": "d566683e2f7a",
+      "text": "Vậy chấm xanh nhảy sang phố kia,"
+    },
+    "p175": {
+      "source_hash": "b0c98e99d1e8",
+      "text": "rốt cuộc là sao?"
+    },
+    "p176": {
+      "source_hash": "3e56d1cade7d",
+      "text": "Cháu vừa đi giữa hai dãy nhà, nói xem?"
+    },
+    "p177": {
+      "source_hash": "36d742bcb996",
+      "text": "À ra thế!"
+    },
+    "p178": {
+      "source_hash": "ddb839a8d661",
+      "text": "Tín hiệu đập tường lúc nãy,"
+    },
+    "p179": {
+      "source_hash": "ccc527979c83",
+      "text": "đến trễ chút, đã tính cháu sang phố kia!"
+    },
+    "p180": {
+      "source_hash": "cd4f5a859079",
+      "text": "Hay lắm. Nhớ đồng hồ chậm một giây?"
+    },
+    "p181": {
+      "source_hash": "bfe51a3d7863",
+      "text": "Cô thấy kỳ diệu nhất: mỗi lần định vị, máy đều tự chỉnh giờ."
+    },
+    "p182": {
+      "source_hash": "a7c359895f4c",
+      "text": "Tới nơi"
+    },
+    "p183": {
+      "source_hash": "f7d0fad3b760",
+      "text": "Cháu chơi trò còi với bạn đây!"
+    },
+    "p184": {
+      "source_hash": "d3a8d5cb7ed7",
+      "text": "Chấm nhảy ở đâu?"
+    },
+    "p185": {
+      "source_hash": "fe508e80b52e",
+      "text": "Bình luận"
+    },
+    "p186": {
+      "source_hash": "88de677d4daa",
+      "text": "Muốn cùng tìm những câu hỏi vì sao quanh ta, hãy đăng ký Văn phòng À ra thế."
+    }
+  }
+}

@@ -26,6 +26,9 @@ why it lives here rather than in a fixture.
 from __future__ import annotations
 
 import os
+from collections.abc import Iterator
+from datetime import UTC, date, time, tzinfo
+from datetime import datetime as real_datetime
 
 import pytest
 
@@ -82,3 +85,25 @@ def _pin_trip_today(monkeypatch: pytest.MonkeyPatch) -> None:
     router = sys.modules.get("app.trips.router")
     if router is not None:
         monkeypatch.setattr(router, "trip_today", lambda: date(*PINNED_TRIP_TODAY))
+
+
+@pytest.fixture
+def pin_trip_today(monkeypatch: pytest.MonkeyPatch) -> Iterator[date]:
+    """Also take PINNED_TRIP_TODAY as today in the "departure has passed" check of a search from
+    a trip (app.trips.search_criteria), for the suites whose trips start on fixed November dates.
+    The autouse _pin_trip_today above covers the new-trip floor (router.trip_today); everything
+    else (expiries, timestamps) keeps the real clock."""
+    import app.trips.router as trips_router
+    import app.trips.search_criteria as search_criteria
+
+    pinned_day = date(*PINNED_TRIP_TODAY)
+
+    class PinnedDateTime(real_datetime):
+        @classmethod
+        def now(cls, tz: tzinfo | None = None) -> PinnedDateTime:
+            pinned = cls.combine(pinned_day, time(3), tzinfo=UTC)
+            return pinned.astimezone(tz) if tz else pinned
+
+    monkeypatch.setattr(trips_router, "trip_today", lambda: pinned_day)
+    monkeypatch.setattr(search_criteria, "datetime", PinnedDateTime)
+    yield pinned_day

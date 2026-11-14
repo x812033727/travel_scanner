@@ -1,0 +1,2536 @@
+{
+ "schema_version": 1,
+ "slug": "sothatswhy-p13-gps-timing",
+ "format": "drama",
+ "category": "explainer",
+ "narration_locale": "zh-TW",
+ "target_minutes": [
+  9,
+  11
+ ],
+ "voice": {
+  "provider": "gemini",
+  "name": "Sulafat",
+  "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速偏快、輕快，像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。"
+ },
+ "subtitles": {
+  "burn_in": false
+ },
+ "theme": "paper",
+ "look": {
+  "preset": "cute-cartoon"
+ },
+ "series": {
+  "slug": "sothatswhy",
+  "episode": 13,
+  "chapter": 1
+ },
+ "pauses": {
+  "line_ms": 0,
+  "scene_ms": 150
+ },
+ "still_motion": "beat",
+ "music": {
+  "track": "sothatswhy-bed-r2.m4a",
+  "sha256": "9bb4ba6fd16feb4a7f352144b2d89e9648acbbbbaa2173c27a7eefbdb70f28c6",
+  "gain_db": -20,
+  "duck_db": -10
+ },
+ "characters": [
+  {
+   "id": "chief",
+   "name": "所長",
+   "appearance": "a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear",
+   "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速偏快、輕快，像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。"
+   },
+   "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+  },
+  {
+   "id": "kid",
+   "name": "小問",
+   "appearance": "a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, both hands free",
+   "voice": {
+    "provider": "gemini",
+    "name": "Leda",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快，一秒五個字以上，不拖尾音"
+   },
+   "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+  }
+ ],
+ "loops": [
+  {
+   "setup": "p003",
+   "payoff": "p179",
+   "what": "藍點為什麼會跳到對街"
+  },
+  {
+   "setup": "p009",
+   "payoff": "p040",
+   "what": "差百萬分之一秒，怎麼會差三百公尺"
+  },
+  {
+   "setup": "p011",
+   "payoff": "p081",
+   "what": "為什麼至少要四顆衛星"
+  },
+  {
+   "setup": "p014",
+   "payoff": "p083",
+   "what": "手機怎麼用時間，知道我在哪裡"
+  },
+  {
+   "setup": "p016",
+   "payoff": "p017",
+   "what": "是不是手機問衛星我在哪"
+  },
+  {
+   "setup": "p023",
+   "payoff": "p031",
+   "what": "手機只用聽的，要聽什麼"
+  },
+  {
+   "setup": "p035",
+   "payoff": "p037",
+   "what": "訊號從衛星走到手上要多久"
+  },
+  {
+   "setup": "p042",
+   "payoff": "p053",
+   "what": "衛星的錶真的那麼準嗎"
+  },
+  {
+   "setup": "p059",
+   "payoff": "p060",
+   "what": "聽一顆衛星能不能知道我在哪"
+  },
+  {
+   "setup": "p067",
+   "payoff": "p085",
+   "what": "三顆夠不夠，第四顆要幹嘛"
+  },
+  {
+   "setup": "p072",
+   "payoff": "p073",
+   "what": "手機裡有沒有原子鐘"
+  },
+  {
+   "setup": "p090",
+   "payoff": "p092",
+   "what": "天上隨時都有四顆衛星可以聽嗎"
+  },
+  {
+   "setup": "p094",
+   "payoff": "p099",
+   "what": "同樣四顆衛星，每次都一樣準嗎"
+  },
+  {
+   "setup": "p105",
+   "payoff": "p117",
+   "what": "藍點跳走，是不是衛星訊號不準"
+  },
+  {
+   "setup": "p111",
+   "payoff": "p112",
+   "what": "是不是故意給民眾不準的訊號"
+  },
+  {
+   "setup": "p123",
+   "payoff": "p127",
+   "what": "大樓是不是把訊號吃掉了"
+  },
+  {
+   "setup": "p132",
+   "payoff": "p139",
+   "what": "天上那段路會不會也走歪"
+  },
+  {
+   "setup": "p141",
+   "payoff": "p157",
+   "what": "地圖剛打開，藍點為什麼要等很久"
+  },
+  {
+   "setup": "p159",
+   "payoff": "p162",
+   "what": "為什麼我的手機一打開就有藍點"
+  },
+  {
+   "setup": "p165",
+   "payoff": "p171",
+   "what": "不用等的辦法有沒有缺點"
+  }
+ ],
+ "youtube": {
+  "category_id": 27,
+  "made_for_kids": false,
+  "default_language": "zh-TW",
+  "title": "GPS 差一點時間，位置怎麼差那麼遠？｜原來如此事務所",
+  "description": "小問走路去公園找同學，走在兩排大樓中間，手機地圖上的藍點突然跳到對面那條街，重開地圖還等好久。手機到底怎麼用時間，知道你在哪裡？\n\n這一集，所長和小問跟著同一段路走，用一個「公園吹哨子」的遊戲來想：聽到哨聲晚了多久，就知道離那個朋友多遠。衛星就是帶著原子鐘的朋友，訊號跑得跟光一樣快，所以時間只差百萬分之一秒，距離就差三百公尺，連衛星時鐘那一點相對論的差都一定要先修好；手機沒有原子鐘，所以要多聽第四顆衛星，把自己的錶差多少也一起算出來。接著看藍點為什麼會偏：衛星送得很準，在大樓中間把藍點甩到對街的，多半是大樓擋住和牆面反彈；高空的電離層也會拖慢訊號，但它是整片天空慢慢變，不會在大樓之間突然跳，而且修得掉一部分，同時聽兩個頻率幾乎全修掉；最後是剛開地圖時為什麼要等，以及手機怎麼靠網路省下等待，有些手機卻得多找一顆衛星。\n\n畫圓圈找交點只是示意，真正的接收機是把位置和時間一起估算出來；插圖由 AI 生成，是示意，不是實際的衛星位置。每個說法的出處列在下方參考資料。\n\n資料截至 2026-11-11",
+  "tags": [
+   "GPS",
+   "衛星定位",
+   "手機地圖",
+   "原子鐘",
+   "多路徑",
+   "電離層",
+   "相對論",
+   "科普",
+   "原來如此事務所"
+  ]
+ },
+ "thumbnail": {
+  "template": "thumb",
+  "data": {
+   "headline": "藍點\n**跳到對街？**",
+   "sub": "差百萬分之一秒，差多遠？",
+   "shot": "kid-main-q",
+   "subject": "right"
+  }
+ },
+ "sources": [
+  {
+   "title": "GPS.gov, GPS Accuracy (FAQ, current page)",
+   "url": "https://www.gps.gov/node/70",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "GPS.gov, Frequently Asked Questions (satellites are one-way beacons)",
+   "url": "https://www.gps.gov/faq",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "GPS.gov, Space Segment (about 20,200 km; 24 slots, at least four in view)",
+   "url": "https://www.gps.gov/space-segment",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "GPS.gov, Augmentation Systems (what a GPS augmentation is)",
+   "url": "https://www.gps.gov/augmentation-systems",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "U.S. DoD, GPS Standard Positioning Service Performance Standard, 5th ed. (April 2020)",
+   "url": "https://archive.gps.gov/technical/ps/2020-SPS-performance-standard.pdf",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "FAA, Satellite Navigation - GPS - How It Works",
+   "url": "https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gnss/gps/howitworks",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "van Diggelen & Enge (2015), The World's first GPS MOOC and Worldwide Laboratory using Smartphones, ION GNSS+ 2015 (abstract)",
+   "url": "https://www.ion.org/publications/abstract.cfm?articleID=13079",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "ESA Navipedia, Code Based Positioning (SPS)",
+   "url": "https://gssc.esa.int/navipedia/index.php/Code_Based_Positioning_(SPS)",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "ESA Navipedia, Multipath",
+   "url": "https://gssc.esa.int/navipedia/index.php/Multipath",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "ESA Navipedia, Ionospheric Delay",
+   "url": "https://gssc.esa.int/navipedia/index.php/Ionospheric_Delay",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "ESA Navipedia, Klobuchar Ionospheric Model",
+   "url": "https://gssc.esa.int/navipedia/index.php/Klobuchar_Ionospheric_Model",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "ESA Navipedia, TTFF",
+   "url": "https://gssc.esa.int/navipedia/index.php/TTFF",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Blay, Wang & Akos (2021), Deriving Accurate Time from Assisted GNSS Using Extended Ambiguity Resolution, NAVIGATION 68(1):217",
+   "url": "https://navi.ion.org/content/68/1/217",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Ashby (2003), Relativity in the Global Positioning System, Living Reviews in Relativity 6:1",
+   "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5253894/fullTextXML",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "NOAA National Weather Service, Understanding Lightning: Thunder",
+   "url": "https://www.weather.gov/safety/lightning-science-thunder",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "NIST CODATA, speed of light in vacuum",
+   "url": "https://physics.nist.gov/cgi-bin/cuu/Value?c",
+   "checked_on": "2026-11-11"
+  }
+ ],
+ "assets": [],
+ "scenes": [
+  {
+   "id": "phone-dot",
+   "chapter": "大樓中間，藍點跳到對街",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a child's small hand holding a small phone showing a simple pattern of pale green and grey blocks with one glowing blue dot on a sunny city sidewalk, tall plain glass buildings with smooth unmarked walls rising behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p001",
+     "speaker": "kid",
+     "text": "我走路去公園找同學，"
+    },
+    {
+     "id": "p002",
+     "speaker": "kid",
+     "text": "地圖上的藍點，",
+     "emotion": "不可思議"
+    },
+    {
+     "id": "p003",
+     "speaker": "kid",
+     "text": "突然跳到對面那條街！"
+    }
+   ]
+  },
+  {
+   "id": "kid-dot-puzzled",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny sidewalk between tall smooth glass towers, holding a small phone up in front of her chest with both hands and frowning at it in puzzlement, in the exact centre of the picture, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p004",
+     "speaker": "kid",
+     "text": "可是我明明在這邊，",
+     "emotion": "不服氣"
+    },
+    {
+     "id": "p005",
+     "speaker": "kid",
+     "text": "重開地圖，藍點還等好久！",
+     "emotion": "困惑"
+    }
+   ]
+  },
+  {
+   "id": "chief-listen",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief leaning forward with a curious smile, one hand on her chin, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p006",
+     "speaker": "chief",
+     "text": "這在大樓中間很常見。",
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p007",
+     "speaker": "chief",
+     "text": "你叫車的時候，可能也看過車停在對面。",
+     "emotion": "轉向觀眾"
+    }
+   ]
+  },
+  {
+   "id": "chief-tease",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding a small phone up beside her face with a playful knowing smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p008",
+     "speaker": "chief",
+     "text": "更怪的是：手機算你在哪裡，靠的是時間。",
+     "emotion": "賣關子"
+    },
+    {
+     "id": "p009",
+     "speaker": "chief",
+     "text": "時間只差百萬分之一秒，你猜，距離會差多少？",
+     "emotion": "數字放慢"
+    }
+   ]
+  },
+  {
+   "id": "kid-wow",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl on a sunny sidewalk between tall smooth glass towers, throwing both hands up with wide amazed eyes, a small phone in one hand, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p010",
+     "speaker": "kid",
+     "text": "差一兩公尺吧？",
+     "emotion": "篤定的錯猜"
+    }
+   ]
+  },
+  {
+   "id": "chief-promise",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up one finger with a warm inviting smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p011",
+     "speaker": "chief",
+     "text": "比你猜的多很多。而且手機要聽的衛星，至少要四顆。",
+     "emotion": "賣關子"
+    },
+    {
+     "id": "p012",
+     "speaker": "chief",
+     "text": "多出來的那一顆，到底在幫誰？",
+     "emotion": "賣關子"
+    }
+   ]
+  },
+  {
+   "id": "kid-main-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl at a sunny street corner by tall smooth glass towers, looking down at a small phone in her hand with a thinking frown, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p013",
+     "speaker": "kid",
+     "text": "手機到底怎麼用時間，",
+     "emotion": "想不通"
+    },
+    {
+     "id": "p014",
+     "speaker": "kid",
+     "text": "知道我在哪裡？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "kid-ask-guess",
+   "chapter": "衛星根本不知道你在哪",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny sidewalk between tall smooth glass towers, pointing straight up at the sky with one hand and holding a small phone in the other, a confident grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p015",
+     "speaker": "kid",
+     "text": "是手機問衛星，",
+     "emotion": "很有把握的錯猜"
+    },
+    {
+     "id": "p016",
+     "speaker": "kid",
+     "text": "衛星再告訴它我在哪嗎？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-lighthouse",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief shaking her head gently with a kind smile, one hand raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p017",
+     "speaker": "chief",
+     "text": "剛好相反，衛星根本不知道你在哪。",
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p018",
+     "speaker": "chief",
+     "text": "美國政府的 GPS 網站說，衛星就像燈塔，",
+     "say": "美國政府的 G P S 網站說，衛星就像燈塔，",
+     "say_for": "085ba5c9d7ef"
+    },
+    {
+     "id": "p019",
+     "speaker": "chief",
+     "text": "只負責一直往下廣播。"
+    }
+   ]
+  },
+  {
+   "id": "satellite-sky",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of one simple cartoon satellite shaped like a shiny silver box with a small round white dish antenna on top and two wide flat golden solar wings, all smooth plain metal panels, floating high in a deep blue daytime sky above soft white clouds, the satellite small in the centre of the frame, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p020",
+     "speaker": "chief",
+     "text": "手機只聽、不說話，"
+    },
+    {
+     "id": "p021",
+     "speaker": "chief",
+     "text": "它要自己從聽到的東西，算出你在哪。"
+    },
+    {
+     "id": "p022",
+     "speaker": "kid",
+     "text": "只用聽的？",
+     "emotion": "不相信"
+    },
+    {
+     "id": "p023",
+     "speaker": "kid",
+     "text": "那要聽什麼？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "lightning-hills",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of a bright zigzag lightning bolt over distant green hills under grey storm clouds, seen from a cosy covered porch with a wooden railing in daytime, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p024",
+     "speaker": "chief",
+     "text": "你一定玩過：看到閃電就開始數，數到打雷。",
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p025",
+     "speaker": "chief",
+     "text": "美國氣象局說，雷聲大約五秒走一英里，"
+    },
+    {
+     "id": "p026",
+     "speaker": "chief",
+     "text": "換成公里，差不多三秒一公里。"
+    }
+   ]
+  },
+  {
+   "id": "kid-count",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a sunny green park counting on her fingers with a scrunched-up thinking face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p027",
+     "speaker": "kid",
+     "text": "數到六秒，",
+     "emotion": "算算看"
+    },
+    {
+     "id": "p028",
+     "speaker": "kid",
+     "text": "就是兩公里遠！"
+    }
+   ]
+  },
+  {
+   "id": "chief-whistle-game",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief blowing a small shiny silver referee whistle held to her lips with one hand, cheeks puffed and eyes smiling, a red cord hanging from the whistle, a plain pale wall behind her, bright daylight, the chief is a middle-aged woman with round black glasses, dark hair with one grey streak tied in a low ponytail, a yellow pencil tucked behind one ear, a mustard-yellow cardigan over a white blouse and navy trousers, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p029",
+     "speaker": "chief",
+     "text": "對。我們用這個玩一個遊戲：公園裡站著幾個朋友，"
+    },
+    {
+     "id": "p030",
+     "speaker": "chief",
+     "text": "每人戴一支很準的錶，整點一到，就吹一聲哨子。"
+    }
+   ]
+  },
+  {
+   "id": "whistle-tree",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a shiny silver whistle on a red cord hanging from a low tree branch in a sunny green park, a wide lawn softly blurred behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p031",
+     "speaker": "chief",
+     "text": "你聽到哨聲晚了多久，就知道離那個朋友多遠。"
+    }
+   ]
+  },
+  {
+   "id": "chief-atomic",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding a small toy satellite model up in one hand with a proud smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p032",
+     "speaker": "chief",
+     "text": "衛星就是那個朋友。它帶著原子鐘，就是非常非常準的鐘，"
+    },
+    {
+     "id": "p033",
+     "speaker": "chief",
+     "text": "訊號裡寫著：我是什麼時候發出來的。"
+    }
+   ]
+  },
+  {
+   "id": "kid-travel-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny green park shading her eyes with one hand and gazing up at the sky with a wondering face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p034",
+     "speaker": "kid",
+     "text": "衛星那麼遠，",
+     "emotion": "好奇"
+    },
+    {
+     "id": "p035",
+     "speaker": "kid",
+     "text": "訊號要走多久？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "satellite-high",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of one simple cartoon satellite shaped like a shiny silver box with a small round white dish antenna on top and two wide flat golden solar wings, all smooth plain metal panels, floating high in a deep blue daytime sky above soft white clouds, the satellite small in the centre of the frame, a tiny sunny city with tall glass buildings far below under the clouds, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p036",
+     "speaker": "chief",
+     "text": "衛星大約在兩萬公里高。訊號從衛星跑到你手上，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p037",
+     "speaker": "chief",
+     "text": "通常只要六十到九十毫秒，一毫秒是千分之一秒。",
+     "emotion": "數字放慢"
+    }
+   ]
+  },
+  {
+   "id": "chief-light",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief sweeping one flat hand quickly past her face with a bright amazed smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p038",
+     "speaker": "chief",
+     "text": "因為它跟光跑得一樣快，一秒大約三十萬公里。"
+    },
+    {
+     "id": "p039",
+     "speaker": "chief",
+     "text": "所以剛剛那百萬分之一秒，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p040",
+     "speaker": "chief",
+     "text": "光就跑了大約三百公尺，不是一兩公尺。"
+    }
+   ]
+  },
+  {
+   "id": "kid-rel-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a sunny green park holding a simple round wristwatch with a smooth plain white face and two hands up to her ear with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p041",
+     "speaker": "kid",
+     "text": "那衛星的錶，",
+     "emotion": "追問"
+    },
+    {
+     "id": "p042",
+     "speaker": "kid",
+     "text": "真的那麼準嗎？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-rel",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding a small golden pocket watch with a smooth plain face up beside her face, a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p043",
+     "speaker": "chief",
+     "text": "原子鐘很準，可是還有一件事要修。"
+    },
+    {
+     "id": "p044",
+     "speaker": "chief",
+     "text": "從地面看，它走得比較快，原因很有名：相對論。"
+    }
+   ]
+  },
+  {
+   "id": "satellite-clock",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of one cute cartoon satellite with two wide golden solar wings floating high in a deep blue sky above soft white clouds, far above a big round green and blue planet curve at the bottom of the frame, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p045",
+     "speaker": "chief",
+     "text": "衛星在很高的地方，地球拉得比較沒那麼用力，"
+    },
+    {
+     "id": "p046",
+     "speaker": "chief",
+     "text": "鐘會走快一點；它又跑得很快，跑快的鐘會慢一點。"
+    },
+    {
+     "id": "p047",
+     "speaker": "chief",
+     "text": "兩個加起來，還是快。"
+    }
+   ]
+  },
+  {
+   "id": "chief-38",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up her thumb and finger a tiny gap apart with a serious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p048",
+     "speaker": "kid",
+     "text": "快多少？",
+     "emotion": "追問"
+    },
+    {
+     "id": "p049",
+     "speaker": "chief",
+     "text": "一篇 GPS 相對論的回顧算出來，",
+     "say": "一篇 G P S 相對論的回顧算出來，",
+     "say_for": "d6b708d99b0b"
+    },
+    {
+     "id": "p050",
+     "speaker": "chief",
+     "text": "衛星的鐘一天快了三十八微秒多。"
+    },
+    {
+     "id": "p051",
+     "speaker": "chief",
+     "text": "一微秒，就是開頭那個百萬分之一秒。"
+    }
+   ]
+  },
+  {
+   "id": "kid-38",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny green park shrugging with both palms up and a doubtful grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p052",
+     "speaker": "kid",
+     "text": "那也太短了吧？",
+     "emotion": "不以為意"
+    }
+   ]
+  },
+  {
+   "id": "chief-11km",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief pointing one finger at the viewer with a playful raised eyebrow, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p053",
+     "speaker": "chief",
+     "text": "你算算看：光在這段時間，可以跑十一公里多。"
+    },
+    {
+     "id": "p054",
+     "speaker": "chief",
+     "text": "不修的話，哨子報的時間，一天就錯這麼多。"
+    }
+   ]
+  },
+  {
+   "id": "satellite-workshop",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of one cute cartoon satellite with two wide golden solar wings resting on a large clean workbench in a bright white workshop, sunny windows behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p055",
+     "speaker": "chief",
+     "text": "所以有些衛星的鐘，上去之前就先在地面調慢；"
+    },
+    {
+     "id": "p056",
+     "speaker": "chief",
+     "text": "有些上去以後再量，把修正寫進廣播裡。"
+    }
+   ]
+  },
+  {
+   "id": "kid-one-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny green park holding up one finger with a hopeful questioning face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p057",
+     "speaker": "kid",
+     "text": "時間可以相信了，",
+     "emotion": "追問"
+    },
+    {
+     "id": "p058",
+     "speaker": "kid",
+     "text": "那聽一顆衛星，"
+    },
+    {
+     "id": "p059",
+     "speaker": "kid",
+     "text": "就知道我在哪了？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "rope-ring",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of a long red jump rope laid out in one big round ring on a sunny green park lawn, a shiny silver whistle on a red cord lying in the middle of the ring, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p060",
+     "speaker": "chief",
+     "text": "還不行。只聽一個朋友，你只知道離他多遠，",
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p061",
+     "speaker": "chief",
+     "text": "你可能在他周圍一整圈的任何地方。"
+    },
+    {
+     "id": "p062",
+     "speaker": "chief",
+     "text": "換到太空，是一整顆大球的表面。"
+    }
+   ]
+  },
+  {
+   "id": "hoops-lawn",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of three big hula hoops in red, yellow and blue lying overlapping on a sunny green park lawn, soft trees behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p063",
+     "speaker": "chief",
+     "text": "接著聽第二個、第三個朋友，幾個圈疊在一起，"
+    },
+    {
+     "id": "p064",
+     "speaker": "chief",
+     "text": "能站的地方就縮小了。"
+    },
+    {
+     "id": "p065",
+     "speaker": "chief",
+     "text": "先說清楚，畫圓圈只是幫你想像的示意。"
+    }
+   ]
+  },
+  {
+   "id": "kid-three-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny green park holding up three fingers with a confident grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p066",
+     "speaker": "kid",
+     "text": "那三顆就夠了吧？",
+     "emotion": "很有把握"
+    },
+    {
+     "id": "p067",
+     "speaker": "kid",
+     "text": "第四顆要幹嘛？",
+     "emotion": "章尾停住，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-condition",
+   "chapter": "第四顆衛星，是來對錶的",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up one finger with a calm knowing smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p068",
+     "speaker": "chief",
+     "text": "三顆是夠，不過有一個條件。",
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p069",
+     "speaker": "chief",
+     "text": "美國聯邦航空總署寫得很清楚：你手上也要有一顆，"
+    },
+    {
+     "id": "p070",
+     "speaker": "chief",
+     "text": "跟 GPS 對好時間的原子鐘。",
+     "say": "跟 G P S 對好時間的原子鐘。",
+     "say_for": "840a6cd70bb7"
+    }
+   ]
+  },
+  {
+   "id": "kid-clock-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl on a sunny sidewalk between tall smooth glass towers, holding a small phone up close and peering at it with narrowed curious eyes, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p071",
+     "speaker": "kid",
+     "text": "我的手機裡，",
+     "emotion": "懷疑"
+    },
+    {
+     "id": "p072",
+     "speaker": "kid",
+     "text": "有原子鐘嗎？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-watch-fast",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief tapping a simple round wristwatch with a smooth plain white face and two hands on her wrist with a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p073",
+     "speaker": "chief",
+     "text": "沒有，手機裡沒有那麼準的鐘。",
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p074",
+     "speaker": "chief",
+     "text": "回到公園。哨子是聲音，假設你的錶慢了一秒，"
+    }
+   ]
+  },
+  {
+   "id": "wristwatch",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a child's wrist wearing a simple round wristwatch with a smooth plain white face and two hands, resting on a wooden park bench in sunshine, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p075",
+     "speaker": "chief",
+     "text": "每一聲哨子，你都以為它走得比較短，"
+    },
+    {
+     "id": "p076",
+     "speaker": "chief",
+     "text": "還記得雷聲三秒一公里？每個朋友都像近了三百多公尺。"
+    }
+   ]
+  },
+  {
+   "id": "kid-all-close",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny green park looking around in confusion with both hands raised, a small phone in one hand, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p077",
+     "speaker": "kid",
+     "text": "大家都變近了？",
+     "emotion": "困惑"
+    },
+    {
+     "id": "p078",
+     "speaker": "kid",
+     "text": "那我到底在哪？"
+    }
+   ]
+  },
+  {
+   "id": "chief-no-match",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of a middle-aged woman with round black glasses, dark hair with a grey streak tied in a low ponytail, a yellow pencil tucked behind one ear, a mustard-yellow cardigan over a white blouse and navy trousers, standing in front of a plain pale cream wall in bright daylight, both palms turned up at shoulder height in a gentle shrug, an honest warm apologetic smile, clean empty space around her, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p079",
+     "speaker": "chief",
+     "text": "你找不到一個點，跟每個朋友的距離都對得上。"
+    },
+    {
+     "id": "p080",
+     "speaker": "chief",
+     "text": "所以要多聽一個朋友，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p081",
+     "speaker": "chief",
+     "text": "把你的錶差了多少，也當成一個要算的答案。"
+    }
+   ]
+  },
+  {
+   "id": "chief-four-unknowns",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief counting on her fingers with a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p082",
+     "speaker": "chief",
+     "text": "換回衛星：東西、南北、高低，再加上錶差多少，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p083",
+     "speaker": "chief",
+     "text": "四個不知道的數，要四顆衛星才解得出來。"
+    }
+   ]
+  },
+  {
+   "id": "kid-four-got",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny green park clapping her hands together with a bright realising grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p084",
+     "speaker": "kid",
+     "text": "原來第四顆衛星，",
+     "emotion": "恍然大悟",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p085",
+     "speaker": "kid",
+     "text": "是來幫手機對錶的！"
+    }
+   ]
+  },
+  {
+   "id": "chief-practice",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief giving a small thumbs-up with a pleased smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p086",
+     "speaker": "chief",
+     "text": "說得好。還記得剛剛那些圓圈嗎？"
+    },
+    {
+     "id": "p087",
+     "speaker": "chief",
+     "text": "真的手機不畫圈，是把四個答案一次算出來。"
+    }
+   ]
+  },
+  {
+   "id": "chief-best-fit",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief bringing both open hands slowly together in front of her with a satisfied smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p088",
+     "speaker": "chief",
+     "text": "聽到的衛星超過四顆，它就找一個跟大家最合得來的答案。"
+    }
+   ]
+  },
+  {
+   "id": "kid-sky-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny green park tilting her head back and looking up at the open sky with a hopeful face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p089",
+     "speaker": "kid",
+     "text": "天上隨時都有，",
+     "emotion": "追問"
+    },
+    {
+     "id": "p090",
+     "speaker": "kid",
+     "text": "至少四顆嗎？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "satellite-sky-wide",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of a bright blue sky over a sunny green park, one cute cartoon satellite with golden solar wings floating high among soft white clouds, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p091",
+     "speaker": "chief",
+     "text": "GPS 衛星的基本排法，有二十四個位置，",
+     "say": "G P S 衛星的基本排法，有二十四個位置，",
+     "say_for": "b3a89ff8ade9",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p092",
+     "speaker": "chief",
+     "text": "地球上幾乎任何地方，都看得到至少四顆。"
+    }
+   ]
+  },
+  {
+   "id": "kid-geometry-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a sunny green park holding up four fingers with a thinking face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p093",
+     "speaker": "kid",
+     "text": "那同樣是四顆，",
+     "emotion": "追問"
+    },
+    {
+     "id": "p094",
+     "speaker": "kid",
+     "text": "每次都一樣準嗎？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-geometry",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding her two hands apart as if measuring something, a careful thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p095",
+     "speaker": "chief",
+     "text": "不一樣。手機最後算出來的位置誤差，"
+    },
+    {
+     "id": "p096",
+     "speaker": "chief",
+     "text": "大約是量距離的誤差，乘上一個放大的倍數。"
+    }
+   ]
+  },
+  {
+   "id": "chief-geometry-2",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief turning a small toy satellite model slowly in one hand and studying it with a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p097",
+     "speaker": "chief",
+     "text": "這個倍數，看衛星和你的相對位置好不好。"
+    },
+    {
+     "id": "p098",
+     "speaker": "chief",
+     "text": "位置太差的時候，甚至算不出來。"
+    }
+   ]
+  },
+  {
+   "id": "chief-five",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief nodding with a confident smile, one finger raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p099",
+     "speaker": "chief",
+     "text": "用五顆以上去算，倍數一定不會比四顆差。"
+    }
+   ]
+  },
+  {
+   "id": "kid-sky-strip",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny sidewalk between tall smooth glass towers, looking straight up with her mouth open in surprise, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p100",
+     "speaker": "kid",
+     "text": "我在大樓中間，",
+     "emotion": "發現"
+    },
+    {
+     "id": "p101",
+     "speaker": "kid",
+     "text": "天空只剩一條縫！"
+    }
+   ]
+  },
+  {
+   "id": "sky-strip",
+   "template": "shot",
+   "data": {
+    "prompt": "Low angle view looking straight up between two tall plain glass buildings with smooth unmarked walls, a narrow strip of bright blue sky between them, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p102",
+     "speaker": "chief",
+     "text": "對，大樓擋住了一部分衛星，"
+    },
+    {
+     "id": "p103",
+     "speaker": "chief",
+     "text": "能用的變少，放大的倍數就可能變大。"
+    }
+   ]
+  },
+  {
+   "id": "kid-signal-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny sidewalk between tall smooth glass towers, holding a small phone out at arm's length and frowning at it, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p104",
+     "speaker": "kid",
+     "text": "所以藍點跳走，",
+     "emotion": "推理"
+    },
+    {
+     "id": "p105",
+     "speaker": "kid",
+     "text": "是衛星的訊號不準？",
+     "emotion": "章尾停住，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-signal-good",
+   "chapter": "訊號撞上大樓，繞了遠路",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief shaking her head with a confident smile, one hand raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p106",
+     "speaker": "chief",
+     "text": "衛星送得其實很準。",
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p107",
+     "speaker": "chief",
+     "text": "所有衛星平均起來，訊號本身的誤差，"
+    },
+    {
+     "id": "p108",
+     "speaker": "chief",
+     "text": "保證九成五的時間在兩公尺以內。"
+    }
+   ]
+  },
+  {
+   "id": "chief-2021",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding a small toy satellite model up proudly with a bright smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p109",
+     "speaker": "chief",
+     "text": "二〇二一年四月二十日實際量到的，還不到六十五公分。"
+    }
+   ]
+  },
+  {
+   "id": "kid-military-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl at a sunny street corner by tall smooth glass towers, crossing her arms with a suspicious pout, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p110",
+     "speaker": "kid",
+     "text": "會不會給我們的，",
+     "emotion": "懷疑"
+    },
+    {
+     "id": "p111",
+     "speaker": "kid",
+     "text": "故意弄不準？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-sa",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief shaking her head with a calm reassuring smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p112",
+     "speaker": "chief",
+     "text": "美國政府的 GPS 網站說：沒有故意把民用的弄差。",
+     "say": "美國政府的 G P S 網站說：沒有故意把民用的弄差。",
+     "say_for": "e8199d06e05d"
+    },
+    {
+     "id": "p113",
+     "speaker": "chief",
+     "text": "以前曾經故意讓民用的變不準，二〇〇〇年就停了。"
+    }
+   ]
+  },
+  {
+   "id": "kid-then-why",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl at a sunny street corner by tall smooth glass towers, pointing across a sunny street with a frustrated frown, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p114",
+     "speaker": "chief",
+     "text": "而且就算訊號變差，也是到處都偏，不會專挑大樓中間。"
+    },
+    {
+     "id": "p115",
+     "speaker": "kid",
+     "text": "那我的手機，",
+     "emotion": "不服氣"
+    },
+    {
+     "id": "p116",
+     "speaker": "kid",
+     "text": "怎麼會差到對街？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-ure-not",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up one finger with an honest careful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p117",
+     "speaker": "chief",
+     "text": "不過，訊號的誤差，不等於你手上的誤差。"
+    },
+    {
+     "id": "p118",
+     "speaker": "chief",
+     "text": "手上的誤差，還要加上訊號在路上遇到的事。"
+    }
+   ]
+  },
+  {
+   "id": "chief-mooc",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding a small phone out towards the viewer with a friendly smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p119",
+     "speaker": "chief",
+     "text": "史丹佛的一門線上課，讓上千個人，在一百個國家用手機量。"
+    },
+    {
+     "id": "p120",
+     "speaker": "chief",
+     "text": "開闊的地方，平均差大約五公尺。"
+    }
+   ]
+  },
+  {
+   "id": "city-towers",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of a sunny city street lined with very tall smooth glass towers on both sides, a few small green street trees along the sidewalk, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p121",
+     "speaker": "chief",
+     "text": "在城市裡，誤差跟旁邊的大樓有多高，關係很大。"
+    }
+   ]
+  },
+  {
+   "id": "kid-echo-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny sidewalk between tall smooth glass towers, pointing up at a tall glass building with a suspicious frown, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p122",
+     "speaker": "kid",
+     "text": "是大樓把訊號，",
+     "emotion": "猜"
+    },
+    {
+     "id": "p123",
+     "speaker": "kid",
+     "text": "吃掉了嗎？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-echo",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief bouncing one flat hand off the other palm with a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p124",
+     "speaker": "chief",
+     "text": "還記得那條天空的縫嗎？有時候是擋住；有時候更麻煩，"
+    },
+    {
+     "id": "p125",
+     "speaker": "chief",
+     "text": "訊號撞到牆，反彈以後才進你的手機。"
+    }
+   ]
+  },
+  {
+   "id": "glass-wall",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of a sunny green park seen from the side: on the left a tiny cartoon child blows a silver whistle, on the right a tall plain cream wall stands at the edge of the lawn, and a curved trail of small round pale-blue sound ripples travels from the whistle to the wall, bounces off it and curves back to a second tiny cartoon child on the far left cupping one ear, the bounced ripple trail clearly longer than the short straight gap between the two children, bright daylight, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p126",
+     "speaker": "chief",
+     "text": "回到公園：哨聲撞到一面牆，繞了遠路才到你耳朵，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p127",
+     "speaker": "chief",
+     "text": "你就以為那個朋友比較遠。這叫多路徑。"
+    }
+   ]
+  },
+  {
+   "id": "chief-echo-where",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding a small phone close to a pale wall with a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p128",
+     "speaker": "chief",
+     "text": "歐洲太空總署發起的導航百科說，"
+    },
+    {
+     "id": "p129",
+     "speaker": "chief",
+     "text": "主要是因為天線太靠近會反射的東西；"
+    },
+    {
+     "id": "p130",
+     "speaker": "chief",
+     "text": "從很低的地方斜斜進來的衛星，影響最大。"
+    }
+   ]
+  },
+  {
+   "id": "kid-iono-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny green park pointing high up at the sky with a suspicious frown, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p131",
+     "speaker": "kid",
+     "text": "會不會是天上那段路，",
+     "emotion": "猜"
+    },
+    {
+     "id": "p132",
+     "speaker": "kid",
+     "text": "把我的藍點弄歪？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "haze-sky",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of a bright blue sky with a soft shimmering band of pale violet haze high above the white clouds, a cute cartoon satellite with two wide golden solar wings above the haze, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p133",
+     "speaker": "chief",
+     "text": "天上會拖慢訊號：高空有一層叫電離層的地方。",
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p134",
+     "speaker": "chief",
+     "text": "只聽一個頻率，就像只聽一種音高，這個效應可以到幾十公尺。"
+    }
+   ]
+  },
+  {
+   "id": "chief-model-half",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief sweeping one flat hand slowly and evenly across in front of her with a calm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p135",
+     "speaker": "chief",
+     "text": "可是它是整片天空慢慢變，不會在兩棟大樓之間突然跳。"
+    },
+    {
+     "id": "p136",
+     "speaker": "chief",
+     "text": "衛星廣播的修正，估計全世界平均約修掉一半；"
+    }
+   ]
+  },
+  {
+   "id": "two-whistles",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of two whistles lying side by side on a wooden park bench in sunshine, one big silver whistle and one small golden whistle, each on a red cord, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p137",
+     "speaker": "chief",
+     "text": "同時聽高低兩個頻率，就像比一比兩支哨子，"
+    },
+    {
+     "id": "p138",
+     "speaker": "chief",
+     "text": "電離層的效應，可以去掉九成九以上。"
+    }
+   ]
+  },
+  {
+   "id": "kid-towers-back",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of a little 8-year-old girl on a sunny sidewalk beside tall smooth glass towers, tilting her head back to look up at the towers with a small satisfied smile, bright daylight, smooth glass facades with simple window grids and a clear blue sky. The girl has a short black bob with straight blunt bangs and one small curl of cowlick on top, a round young face with simple dot-like eyes and rosy cheeks, a navy raincoat jacket with a mustard-yellow hood folded down behind her neck, her black bob uncovered and hanging free, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p139",
+     "speaker": "chief",
+     "text": "所以把你甩到對街的，多半不是天上那段路。"
+    }
+   ]
+  },
+  {
+   "id": "kid-slow-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl at a sunny street corner by tall smooth glass towers, holding a small phone up and tapping it impatiently with a bored pout, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p140",
+     "speaker": "kid",
+     "text": "還有我重開地圖那次，",
+     "emotion": "抱怨"
+    },
+    {
+     "id": "p141",
+     "speaker": "kid",
+     "text": "藍點怎麼等那麼久？",
+     "emotion": "章尾停住，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-almanac",
+   "chapter": "剛打開地圖，藍點遲遲不出來",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of a middle-aged woman with round black glasses, dark hair with one grey streak tied in a low ponytail, a yellow pencil tucked behind one ear, a mustard-yellow cardigan over a white blouse, holding up two fingers beside her face like a calm teacher counting two points, a confident warm smile and relaxed eyebrows, a plain pale cream wall behind her with clean empty space all around her head, bright daylight, chibi proportions with a large round head, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p142",
+     "speaker": "chief",
+     "text": "因為光知道距離還不夠，",
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p143",
+     "speaker": "chief",
+     "text": "還要知道衛星現在在哪、它的鐘差多少。"
+    }
+   ]
+  },
+  {
+   "id": "whistle-bench",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a shiny silver whistle on a red cord lying on a wooden park bench in warm sunshine, a quiet green lawn behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p144",
+     "speaker": "chief",
+     "text": "這些寫在衛星的廣播裡，可是它講得很慢，"
+    },
+    {
+     "id": "p145",
+     "speaker": "chief",
+     "text": "一秒只有五十個位元。"
+    }
+   ]
+  },
+  {
+   "id": "kid-bit-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a sunny green park tilting her head with a puzzled face, one finger on her chin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p146",
+     "speaker": "kid",
+     "text": "位元是什麼東西？",
+     "emotion": "句尾上揚"
+    },
+    {
+     "id": "p147",
+     "speaker": "chief",
+     "text": "資料裡最小的一格，只能是或不是。"
+    },
+    {
+     "id": "p148",
+     "speaker": "chief",
+     "text": "就像那個朋友報他站在哪裡，一個字一個字慢慢念。"
+    }
+   ]
+  },
+  {
+   "id": "chief-36",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief tapping a simple round wristwatch with a smooth plain white face and two hands on her wrist and waiting patiently with a wry smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p149",
+     "speaker": "chief",
+     "text": "一整輪要三十秒，才從頭再講一次；"
+    },
+    {
+     "id": "p150",
+     "speaker": "chief",
+     "text": "衛星的鐘差多少、衛星在哪，放在每一輪最前面的三段。"
+    }
+   ]
+  },
+  {
+   "id": "kid-36",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny sidewalk between tall smooth glass towers, walking briskly in mid-step with a small phone in her hand and a cheeky grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p151",
+     "speaker": "chief",
+     "text": "傳統的做法要聽完這三段，最久要等大約三十六秒。"
+    },
+    {
+     "id": "p152",
+     "speaker": "kid",
+     "text": "等那麼久，",
+     "emotion": "笑"
+    },
+    {
+     "id": "p153",
+     "speaker": "kid",
+     "text": "我都走到對街了！"
+    }
+   ]
+  },
+  {
+   "id": "chief-starts",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief nodding with an amused smile, one hand open, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p154",
+     "speaker": "chief",
+     "text": "所以開機有分冷、熱。"
+    },
+    {
+     "id": "p155",
+     "speaker": "chief",
+     "text": "什麼都不知道，叫冷開機，要把整片天空找一遍；"
+    }
+   ]
+  },
+  {
+   "id": "chief-canyon",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding a small phone up and looking at it with a patient smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p156",
+     "speaker": "chief",
+     "text": "手上已經有精確的衛星位置，叫熱開機，不用再等廣播。",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p157",
+     "speaker": "chief",
+     "text": "在大樓中間，訊號斷斷續續，等待還會更久。"
+    }
+   ]
+  },
+  {
+   "id": "kid-assist-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl at a sunny street corner by tall smooth glass towers, holding a small phone up proudly with a bright grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p158",
+     "speaker": "kid",
+     "text": "可是有時候，",
+     "emotion": "不服氣"
+    },
+    {
+     "id": "p159",
+     "speaker": "kid",
+     "text": "一打開就有藍點耶！"
+    }
+   ]
+  },
+  {
+   "id": "cell-tower",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of a tall slim grey cell tower with small antennas on a green hill under a bright blue sky, a sunny city of tall glass buildings below, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p160",
+     "speaker": "chief",
+     "text": "那多半是輔助 GPS。手機透過行動網路，",
+     "say": "那多半是輔助 G P S。手機透過行動網路，",
+     "say_for": "266ca74113ad"
+    },
+    {
+     "id": "p161",
+     "speaker": "chief",
+     "text": "先拿到衛星的位置和鐘差，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p162",
+     "speaker": "chief",
+     "text": "只要收幾毫秒的訊號，就能算出位置。"
+    }
+   ]
+  },
+  {
+   "id": "chief-friend-text",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding a small phone up beside her face and pretending to read a message with a cheerful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p163",
+     "speaker": "chief",
+     "text": "就像有人先把每個朋友站在哪，傳訊息給你。"
+    }
+   ]
+  },
+  {
+   "id": "kid-cost-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny green park giving a big double thumbs-up with a delighted grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p164",
+     "speaker": "kid",
+     "text": "那就不用等了！",
+     "emotion": "開心"
+    },
+    {
+     "id": "p165",
+     "speaker": "kid",
+     "text": "有沒有缺點？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-cost",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief raising one hand with an honest careful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p166",
+     "speaker": "chief",
+     "text": "有。你沒有從廣播裡，讀到精確的時間。"
+    },
+    {
+     "id": "p167",
+     "speaker": "chief",
+     "text": "衛星一直在動，時間錯一點，算出的衛星位置就錯。"
+    }
+   ]
+  },
+  {
+   "id": "chief-800",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief spreading her arms wide apart with a serious amazed face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p168",
+     "speaker": "chief",
+     "text": "一篇導航期刊的論文，引用這個方法發明人的估算："
+    },
+    {
+     "id": "p169",
+     "speaker": "chief",
+     "text": "時間每差一秒，算出的距離就錯大約八百公尺。"
+    }
+   ]
+  },
+  {
+   "id": "chief-fifth",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief counting on her fingers with an encouraging smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p170",
+     "speaker": "chief",
+     "text": "所以有些手機把現在是哪一刻，也當成要算的答案。",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p171",
+     "speaker": "chief",
+     "text": "這是第五個不知道的數，要至少五顆衛星。"
+    }
+   ]
+  },
+  {
+   "id": "corner-phone",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a child's small hand holding a small phone showing a simple pattern of pale green and grey blocks with one glowing blue dot at a sunny street corner, tall smooth glass towers rising behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p172",
+     "speaker": "chief",
+     "text": "你在街角一打開就看到的藍點，可能就是這樣算出來的。"
+    },
+    {
+     "id": "p173",
+     "speaker": "kid",
+     "text": "難怪它有時候一下就出來！",
+     "emotion": "恍然"
+    }
+   ]
+  },
+  {
+   "id": "kid-final-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny sidewalk between tall smooth glass towers, standing still and looking up from a small phone with a thinking face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p174",
+     "speaker": "kid",
+     "text": "所以我的藍點跳到對街，",
+     "emotion": "推理"
+    },
+    {
+     "id": "p175",
+     "speaker": "kid",
+     "text": "到底是怎麼回事？",
+     "emotion": "章尾停住，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-your-turn",
+   "chapter": "走到公園，小問想通了",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief leaning forward with an inviting grin, one hand open towards the viewer, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p176",
+     "speaker": "chief",
+     "text": "你剛剛就走在那兩排大樓中間，你說呢？",
+     "emotion": "笑"
+    }
+   ]
+  },
+  {
+   "id": "kid-got-it",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny green park pointing back towards tall glass buildings in the distance with a big confident grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p177",
+     "speaker": "kid",
+     "text": "原來如此！",
+     "emotion": "恍然大悟"
+    },
+    {
+     "id": "p178",
+     "speaker": "kid",
+     "text": "剛剛那個撞牆的訊號，",
+     "emotion": "篤定",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p179",
+     "speaker": "kid",
+     "text": "晚到一點點，就把我算到對街！",
+     "emotion": "篤定"
+    }
+   ]
+  },
+  {
+   "id": "chief-opinion",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling with her hands clasped, a thoughtful look, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p180",
+     "speaker": "chief",
+     "text": "說得好。還記得那支慢一秒的錶嗎？",
+     "emotion": "笑"
+    },
+    {
+     "id": "p181",
+     "speaker": "chief",
+     "text": "我覺得最神奇的是：手機每次定位，都在幫自己對錶。"
+    }
+   ]
+  },
+  {
+   "id": "park-arrive",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of the sunny entrance of a green city park, a wide grassy lawn and leafy trees, tall plain glass buildings far behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p182",
+     "speaker": "kid",
+     "text": "公園到了！",
+     "emotion": "開心"
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p183",
+     "speaker": "kid",
+     "text": "我要跟同學玩哨子遊戲！",
+     "emotion": "開心大聲"
+    }
+   ]
+  },
+  {
+   "id": "outro-chief",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up a small phone with a curious smile, filling the frame, a plain pale wall behind her, bright morning light, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p184",
+     "speaker": "chief",
+     "text": "你在哪裡看過藍點亂跳？",
+     "emotion": "問句上揚，像聊天"
+    },
+    {
+     "id": "p185",
+     "speaker": "chief",
+     "text": "留言告訴我們。"
+    }
+   ]
+  },
+  {
+   "id": "outro-wave",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p186",
+     "speaker": "chief",
+     "text": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
+     "emotion": "誠懇"
+    }
+   ]
+  }
+ ]
+}

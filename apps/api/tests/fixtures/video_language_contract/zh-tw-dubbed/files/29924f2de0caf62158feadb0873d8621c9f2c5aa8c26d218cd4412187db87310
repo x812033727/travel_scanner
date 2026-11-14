@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "slug": "fixture-minimal",
+  "source": {
+    "publish": {
+      "review_id": "00000000-0000-4000-8000-000000000002",
+      "content_sha256": "e5cea0025fbdfa3931bc93d302bca5be4850a2ed6564420d0a15b4e13f924162"
+    },
+    "final": {
+      "review_id": "00000000-0000-4000-8000-000000000001",
+      "content_sha256": "f92c8f5e6ab5dbdfa087e3879e73f851983f15bc84cbed28a5d46c7089d0b0e2"
+    },
+    "script": null,
+    "branding_hash": null,
+    "speech_hash": "c6bdc8648dca2192",
+    "compilation_hash": null
+  },
+  "choice": {
+    "locales": {
+      "ja": {
+        "metadata": false,
+        "captions": true,
+        "dub": true
+      }
+    },
+    "decided_at": "2026-10-01T01:00:00.000000Z"
+  },
+  "locales": {
+    "ja": {
+      "captions": "ready",
+      "dub": "ready",
+      "file": "ja.mp3",
+      "format": "mp3",
+      "tempo_max": 1.05,
+      "file_role": "dub_ja",
+      "sha256": "d8c186f4b23b527527d5d50af128d5890f37d109257089be276932e60d492781"
+    }
+  },
+  "files": [
+    {
+      "role": "captions_ja",
+      "sha256": "3b0457eca7b12b58f27f267afe6f8edae2db29e8cbe39d0f5611f0c253eda8d3",
+      "size": 286,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "dub_ja",
+      "sha256": "d8c186f4b23b527527d5d50af128d5890f37d109257089be276932e60d492781",
+      "size": 37,
+      "content_type": "audio/mpeg"
+    },
+    {
+      "role": "metadata",
+      "sha256": "8e65110804178d0d46f0cfb452603d912db52d63d92e2061d3b1de4773772c00",
+      "size": 1741,
+      "content_type": "application/json"
+    }
+  ]
+}

@@ -1,0 +1,787 @@
+{
+  "title": "Selisih waktu sedikit, kok posisi GPS meleset jauh? | Kantor Oh Begitu",
+  "description": "Wen berjalan ke taman untuk menemui teman. Saat lewat di antara dua deret gedung, titik biru di peta ponselnya tiba-tiba loncat ke seberang jalan, dan waktu peta dibuka ulang, ia harus menunggu lama. Bagaimana sebenarnya ponsel memakai waktu untuk tahu di mana kamu berada?\n\nDi episode ini, Bu Kepala dan Wen mengikuti jalan yang sama dan memakai permainan \"tiup peluit di taman\": dari seberapa telat peluit terdengar, kamu tahu jarakmu ke teman itu. Satelit adalah teman yang membawa jam atom, sinyalnya secepat cahaya, jadi selisih sepersejuta detik saja membuat jarak meleset 300 meter, bahkan selisih kecil jam satelit akibat relativitas harus dikoreksi dulu; ponsel tak punya jam atom, jadi ia perlu mendengar satelit keempat untuk sekalian menghitung selisih jamnya sendiri. Lalu dilihat kenapa titik biru meleset: satelit mengirim dengan sangat tepat; yang melempar titik biru ke seberang di antara gedung kebanyakan adalah gedung yang menghalangi dan dinding yang memantulkan sinyal; ionosfer di ketinggian juga memperlambat sinyal, tapi ia berubah pelan di seluruh langit, tak melompat tiba-tiba di antara gedung, sebagian bisa dikoreksi, dan dengan mendengar dua frekuensi sekaligus hampir seluruhnya hilang; terakhir, kenapa harus menunggu saat baru membuka peta, bagaimana ponsel memakai internet untuk memangkas waktu tunggu, dan kenapa sebagian ponsel justru perlu satu satelit lagi.\n\nMenggambar lingkaran untuk mencari titik potong hanya gambaran; penerima sungguhan memperkirakan posisi dan waktu sekaligus. Ilustrasi dibuat dengan AI dan hanya gambaran, bukan posisi satelit sebenarnya. Sumber setiap klaim tercantum di daftar referensi di bawah.\n\nData per 2026-11-11",
+  "tags": [
+    "GPS",
+    "penentuan posisi satelit",
+    "peta ponsel",
+    "jam atom",
+    "multipath",
+    "ionosfer",
+    "relativitas",
+    "sains populer",
+    "Kantor Oh Begitu"
+  ],
+  "thumbnail": {
+    "headline": "Titik biru\n**loncat ke seberang?**",
+    "sub": "Sepersejuta detik: meleset berapa?"
+  },
+  "chapters": {
+    "phone-dot": "Di antara gedung, titik biru loncat ke seberang",
+    "kid-ask-guess": "Satelit sama sekali tak tahu kamu di mana",
+    "chief-condition": "Satelit keempat untuk mencocokkan jam",
+    "chief-signal-good": "Sinyal menabrak gedung, mengambil jalan memutar",
+    "chief-almanac": "Baru buka peta, titik biru lama muncul",
+    "chief-your-turn": "Sampai di taman, Wen paham"
+  },
+  "source_hashes": {
+    "chapters": {
+      "phone-dot": "7c943314fd65",
+      "kid-ask-guess": "d1227a7969c2",
+      "chief-condition": "d641a36a71f0",
+      "chief-signal-good": "62b9774c9040",
+      "chief-almanac": "890be0e29d73",
+      "chief-your-turn": "d031c5f9fe23"
+    },
+    "title": "d65b2c80c4da",
+    "description": "f7a6cda335e3",
+    "tags": "287a4a52f296",
+    "thumbnail": "824cf94c83bc"
+  },
+  "lines": {
+    "p001": {
+      "source_hash": "93ccb81d26eb",
+      "text": "Ke taman cari teman,"
+    },
+    "p002": {
+      "source_hash": "61ec3795728d",
+      "text": "titik biru,"
+    },
+    "p003": {
+      "source_hash": "c1edb2249952",
+      "text": "loncat ke seberang!"
+    },
+    "p004": {
+      "source_hash": "bd89671c7487",
+      "text": "Padahal aku di sini,"
+    },
+    "p005": {
+      "source_hash": "30f6595f88a3",
+      "text": "buka ulang peta, titiknya lama sekali!"
+    },
+    "p006": {
+      "source_hash": "62179fa81859",
+      "text": "Biasa di antara gedung."
+    },
+    "p007": {
+      "source_hash": "521a1668055d",
+      "text": "Pesan mobil, pernah ia di seberang?"
+    },
+    "p008": {
+      "source_hash": "b1457943850a",
+      "text": "Lebih aneh: ponsel cari posisimu pakai waktu."
+    },
+    "p009": {
+      "source_hash": "9d9f046b2f82",
+      "text": "Beda sepersejuta detik, tebak, beda berapa?"
+    },
+    "p010": {
+      "source_hash": "d4c4c758b0b9",
+      "text": "Satu dua meter?"
+    },
+    "p011": {
+      "source_hash": "e2754de54e6b",
+      "text": "Jauh lebih banyak. Dan satelit yang didengar ponsel minimal empat."
+    },
+    "p012": {
+      "source_hash": "1cb4061a4ef3",
+      "text": "Satu yang lebih itu bantu siapa?"
+    },
+    "p013": {
+      "source_hash": "4390cc77659c",
+      "text": "Ponsel pakai waktu,"
+    },
+    "p014": {
+      "source_hash": "d42f9e4004f1",
+      "text": "tahu aku di mana?"
+    },
+    "p015": {
+      "source_hash": "5a5590da82fb",
+      "text": "Ponsel tanya satelit,"
+    },
+    "p016": {
+      "source_hash": "cbde1f360146",
+      "text": "lalu satelit jawab?"
+    },
+    "p017": {
+      "source_hash": "d4d741c54e0f",
+      "text": "Terbalik, satelit tak tahu posisimu."
+    },
+    "p018": {
+      "source_hash": "085ba5c9d7ef",
+      "text": "Situs GPS AS: satelit seperti mercusuar,"
+    },
+    "p019": {
+      "source_hash": "80714bf9c067",
+      "text": "terus menyiarkan ke bawah."
+    },
+    "p020": {
+      "source_hash": "25b8250cae48",
+      "text": "Ponsel cuma dengar,"
+    },
+    "p021": {
+      "source_hash": "b5ec32110e05",
+      "text": "lalu menghitung sendiri posisimu."
+    },
+    "p022": {
+      "source_hash": "84c0b2411ab8",
+      "text": "Cuma dengar?"
+    },
+    "p023": {
+      "source_hash": "ff5dcf1ef1e5",
+      "text": "Dengar apa?"
+    },
+    "p024": {
+      "source_hash": "9c12dd252d42",
+      "text": "Pernah kan: lihat kilat, hitung sampai guntur."
+    },
+    "p025": {
+      "source_hash": "e0592a443052",
+      "text": "Kata badan cuaca AS, guntur lima detik per mil,"
+    },
+    "p026": {
+      "source_hash": "9d22ff9089e3",
+      "text": "atau kira-kira tiga detik sekilo."
+    },
+    "p027": {
+      "source_hash": "bdce82f41682",
+      "text": "Enam detik,"
+    },
+    "p028": {
+      "source_hash": "80a3fa2fa94f",
+      "text": "berarti dua kilo!"
+    },
+    "p029": {
+      "source_hash": "de05004d0b9e",
+      "text": "Ya. Kita main: di taman ada beberapa teman,"
+    },
+    "p030": {
+      "source_hash": "cb8a2d3ae60a",
+      "text": "jamnya akurat; tiap jam tepat, tiup peluit."
+    },
+    "p031": {
+      "source_hash": "00004141493e",
+      "text": "Dari telatnya peluit, kamu tahu jarak teman itu."
+    },
+    "p032": {
+      "source_hash": "4d0a1698d341",
+      "text": "Satelit itulah temannya. Ia bawa jam atom, super tepat,"
+    },
+    "p033": {
+      "source_hash": "57c87d19fff6",
+      "text": "sinyalnya tertulis: kapan aku dikirim."
+    },
+    "p034": {
+      "source_hash": "f7b711e2a525",
+      "text": "Satelit jauh,"
+    },
+    "p035": {
+      "source_hash": "692036877126",
+      "text": "sinyal berapa lama?"
+    },
+    "p036": {
+      "source_hash": "7391bf91dd47",
+      "text": "Satelit di ketinggian 20.000 km. Dari sana ke tanganmu,"
+    },
+    "p037": {
+      "source_hash": "faf2ab245950",
+      "text": "biasanya 60–90 milidetik, tiap milidetik seperseribu detik."
+    },
+    "p038": {
+      "source_hash": "f0402d26d173",
+      "text": "Karena secepat cahaya, sekitar 300.000 km per detik."
+    },
+    "p039": {
+      "source_hash": "5300a5e329f3",
+      "text": "Jadi sepersejuta detik tadi,"
+    },
+    "p040": {
+      "source_hash": "1787db7fbd40",
+      "text": "cahaya jalan 300-an meter, bukan dua."
+    },
+    "p041": {
+      "source_hash": "192f8820297f",
+      "text": "Jam satelit,"
+    },
+    "p042": {
+      "source_hash": "a09778d34fcf",
+      "text": "setepat itu?"
+    },
+    "p043": {
+      "source_hash": "724772ce72fb",
+      "text": "Tepat, tapi ada satu koreksi."
+    },
+    "p044": {
+      "source_hash": "23bf5d46d811",
+      "text": "Dari bumi, ia lebih cepat. Sebabnya terkenal: relativitas."
+    },
+    "p045": {
+      "source_hash": "1f2e81718a79",
+      "text": "Satelit tinggi, tarikan bumi lebih lemah,"
+    },
+    "p046": {
+      "source_hash": "6234c3a85f27",
+      "text": "jam lebih cepat; tapi ia melesat, jam melesat melambat."
+    },
+    "p047": {
+      "source_hash": "757054b692d7",
+      "text": "Total tetap cepat."
+    },
+    "p048": {
+      "source_hash": "dcee72aea8bc",
+      "text": "Berapa?"
+    },
+    "p049": {
+      "source_hash": "d6b708d99b0b",
+      "text": "Ulasan relativitas GPS menghitung,"
+    },
+    "p050": {
+      "source_hash": "95c17e5cdb2d",
+      "text": "jamnya maju 38 mikrodetik lebih sehari."
+    },
+    "p051": {
+      "source_hash": "c6dde0ebf2d6",
+      "text": "Satu mikrodetik, ya sepersejuta detik."
+    },
+    "p052": {
+      "source_hash": "77b408ccd4e3",
+      "text": "Pendek sekali, kan?"
+    },
+    "p053": {
+      "source_hash": "37d97338b7fd",
+      "text": "Hitung: cahaya bisa jalan 11 km lebih."
+    },
+    "p054": {
+      "source_hash": "46f967c7bfa8",
+      "text": "Tak dikoreksi, peluit meleset segitu sehari."
+    },
+    "p055": {
+      "source_hash": "f8480abb9871",
+      "text": "Ada jam yang diperlambat dulu di darat;"
+    },
+    "p056": {
+      "source_hash": "cf7ad4d9a32e",
+      "text": "ada yang diukur di atas, lalu disiarkan."
+    },
+    "p057": {
+      "source_hash": "6281dbd6c135",
+      "text": "Waktu beres,"
+    },
+    "p058": {
+      "source_hash": "fa9707e64bd7",
+      "text": "dengar satu satelit,"
+    },
+    "p059": {
+      "source_hash": "27b2d8262c51",
+      "text": "tahu posisiku?"
+    },
+    "p060": {
+      "source_hash": "516505d70ae6",
+      "text": "Belum. Satu teman, kamu cuma tahu jaraknya,"
+    },
+    "p061": {
+      "source_hash": "c6cc242bc279",
+      "text": "bisa di mana pun di lingkarannya."
+    },
+    "p062": {
+      "source_hash": "5f7fe4956ecd",
+      "text": "Di luar angkasa, itu permukaan sebuah bola besar."
+    },
+    "p063": {
+      "source_hash": "a0ef2cf486bd",
+      "text": "Dengar teman kedua, ketiga, lingkaran bertumpuk,"
+    },
+    "p064": {
+      "source_hash": "9a58b25eddfc",
+      "text": "tempatmu sempit."
+    },
+    "p065": {
+      "source_hash": "70a5adbe2ce7",
+      "text": "Ingat, lingkaran cuma gambaran."
+    },
+    "p066": {
+      "source_hash": "6da76b49916a",
+      "text": "Tiga cukup, dong?"
+    },
+    "p067": {
+      "source_hash": "a8a9b5dfb066",
+      "text": "Keempat?"
+    },
+    "p068": {
+      "source_hash": "9d439d36e147",
+      "text": "Cukup, dengan satu syarat."
+    },
+    "p069": {
+      "source_hash": "5ca701d8faad",
+      "text": "Badan penerbangan AS jelas menulis: kamu perlu"
+    },
+    "p070": {
+      "source_hash": "840a6cd70bb7",
+      "text": "jam atom yang dicocokkan dengan GPS."
+    },
+    "p071": {
+      "source_hash": "30abd3290e36",
+      "text": "Di ponselku,"
+    },
+    "p072": {
+      "source_hash": "8d410677464f",
+      "text": "ada jam atom?"
+    },
+    "p073": {
+      "source_hash": "4a4f4c0ccc4c",
+      "text": "Tidak, jam ponsel tak setepat itu."
+    },
+    "p074": {
+      "source_hash": "9afcf546f320",
+      "text": "Kembali ke taman. Peluit itu suara; misalnya jammu telat sedetik,"
+    },
+    "p075": {
+      "source_hash": "13a9657d89b1",
+      "text": "tiap peluit kamu kira lebih dekat,"
+    },
+    "p076": {
+      "source_hash": "727f0776a14c",
+      "text": "ingat tiga detik sekilo? Semua tampak 300-an meter lebih dekat."
+    },
+    "p077": {
+      "source_hash": "467f4962b22c",
+      "text": "Semua dekat?"
+    },
+    "p078": {
+      "source_hash": "00d84787c55e",
+      "text": "Jadi aku di mana?"
+    },
+    "p079": {
+      "source_hash": "b5d2a04cd99e",
+      "text": "Tak ada titik yang cocok semua jarak."
+    },
+    "p080": {
+      "source_hash": "97330c78d87b",
+      "text": "Jadi dengar satu teman lagi,"
+    },
+    "p081": {
+      "source_hash": "fbda0269eaa6",
+      "text": "selisih jammu ikut dihitung."
+    },
+    "p082": {
+      "source_hash": "19b9f16a40b5",
+      "text": "Ke satelit: timur-barat, utara-selatan, atas-bawah, plus jam,"
+    },
+    "p083": {
+      "source_hash": "8967640141ab",
+      "text": "empat yang dicari, perlu empat satelit."
+    },
+    "p084": {
+      "source_hash": "f9b3a8ad2a0e",
+      "text": "Jadi satelit keempat,"
+    },
+    "p085": {
+      "source_hash": "37d4de34da7b",
+      "text": "untuk cocokkan jam!"
+    },
+    "p086": {
+      "source_hash": "71432d482a6e",
+      "text": "Bagus. Ingat lingkaran tadi?"
+    },
+    "p087": {
+      "source_hash": "3c58f9960228",
+      "text": "Ponsel tak menggambar; empatnya dihitung sekaligus."
+    },
+    "p088": {
+      "source_hash": "146bde6fdbd7",
+      "text": "Lebih dari empat? Ia cari jawaban paling cocok."
+    },
+    "p089": {
+      "source_hash": "7a7ff825bcec",
+      "text": "Selalu ada,"
+    },
+    "p090": {
+      "source_hash": "5269b631be43",
+      "text": "minimal empat?"
+    },
+    "p091": {
+      "source_hash": "b3a89ff8ade9",
+      "text": "Susunan dasar GPS punya 24 posisi,"
+    },
+    "p092": {
+      "source_hash": "601ad93b022a",
+      "text": "hampir di mana pun, ada minimal empat."
+    },
+    "p093": {
+      "source_hash": "77813307d307",
+      "text": "Sama-sama empat,"
+    },
+    "p094": {
+      "source_hash": "7a571bd1410f",
+      "text": "selalu sama tepat?"
+    },
+    "p095": {
+      "source_hash": "f9d391061fe0",
+      "text": "Tidak. Kesalahan posisi akhir di ponsel"
+    },
+    "p096": {
+      "source_hash": "61b9dcaa45a8",
+      "text": "kira-kira kesalahan jarak dikali satu angka pembesar."
+    },
+    "p097": {
+      "source_hash": "0e245d613d1b",
+      "text": "Angkanya tergantung letak satelit."
+    },
+    "p098": {
+      "source_hash": "4d70d836493d",
+      "text": "Letak buruk, bahkan gagal dihitung."
+    },
+    "p099": {
+      "source_hash": "86a8709277b6",
+      "text": "Lima ke atas, angkanya tak lebih buruk dari empat."
+    },
+    "p100": {
+      "source_hash": "b4584fe88120",
+      "text": "Di antara gedung,"
+    },
+    "p101": {
+      "source_hash": "d52f6f3fbbcb",
+      "text": "langit tinggal celah!"
+    },
+    "p102": {
+      "source_hash": "f7244a45c679",
+      "text": "Ya, gedung menutupi,"
+    },
+    "p103": {
+      "source_hash": "2606d06e3a48",
+      "text": "satelit berkurang, pembesarnya bisa naik."
+    },
+    "p104": {
+      "source_hash": "26d7dc2944a3",
+      "text": "Jadi titik biru loncat,"
+    },
+    "p105": {
+      "source_hash": "80d7d7b41509",
+      "text": "sinyalnya tak tepat?"
+    },
+    "p106": {
+      "source_hash": "427ebc856d53",
+      "text": "Sinyalnya tepat."
+    },
+    "p107": {
+      "source_hash": "906db6a9564b",
+      "text": "Rata-rata semua satelit, kesalahan sinyal"
+    },
+    "p108": {
+      "source_hash": "f4c61659cadd",
+      "text": "dijamin di bawah 2 meter, 95% waktu."
+    },
+    "p109": {
+      "source_hash": "d7790246a845",
+      "text": "Diukur 20 April 2021, malah kurang dari 65 sentimeter."
+    },
+    "p110": {
+      "source_hash": "2e81ec1110d7",
+      "text": "Untuk kita,"
+    },
+    "p111": {
+      "source_hash": "a7f5daa57eca",
+      "text": "sengaja meleset?"
+    },
+    "p112": {
+      "source_hash": "e8199d06e05d",
+      "text": "Situs GPS AS: tak ada kesengajaan memperburuk sinyal sipil."
+    },
+    "p113": {
+      "source_hash": "ec04d093e42b",
+      "text": "Dulu sipil sengaja dibuat meleset, berhenti tahun 2000."
+    },
+    "p114": {
+      "source_hash": "717ca4e2cce2",
+      "text": "Kalaupun buruk, meleset di mana-mana, tak pilih gedung."
+    },
+    "p115": {
+      "source_hash": "477df1283cd7",
+      "text": "Lalu ponselku,"
+    },
+    "p116": {
+      "source_hash": "500190aaedf3",
+      "text": "kok sampai seberang?"
+    },
+    "p117": {
+      "source_hash": "011b500c3ec9",
+      "text": "Tapi kesalahan sinyal bukan kesalahan di tanganmu."
+    },
+    "p118": {
+      "source_hash": "b05fe607c615",
+      "text": "Ditambah yang dialami sinyal di jalan."
+    },
+    "p119": {
+      "source_hash": "59d9dd3e986b",
+      "text": "Kelas online Stanford: seribuan orang di 100 negara ukur pakai ponsel."
+    },
+    "p120": {
+      "source_hash": "050d462e0841",
+      "text": "Di tempat terbuka, rata-rata meleset 5 meter."
+    },
+    "p121": {
+      "source_hash": "110a3014fd6c",
+      "text": "Di kota, melesetnya tergantung tinggi gedung."
+    },
+    "p122": {
+      "source_hash": "0225165a37b6",
+      "text": "Gedung itu,"
+    },
+    "p123": {
+      "source_hash": "bbeedbd0202c",
+      "text": "makan sinyal?"
+    },
+    "p124": {
+      "source_hash": "0883bdaed928",
+      "text": "Ingat celah langit? Kadang terhalang; kadang lebih repot,"
+    },
+    "p125": {
+      "source_hash": "2db375019ba9",
+      "text": "sinyal mantul di dinding dulu."
+    },
+    "p126": {
+      "source_hash": "2ad6e2526d56",
+      "text": "Ke taman lagi: peluit menabrak dinding, memutar ke telingamu,"
+    },
+    "p127": {
+      "source_hash": "d4694015f4ca",
+      "text": "kamu kira ia lebih jauh. Ini namanya multipath."
+    },
+    "p128": {
+      "source_hash": "b726f9728305",
+      "text": "Ensiklopedia navigasi ESA bilang,"
+    },
+    "p129": {
+      "source_hash": "aad849746432",
+      "text": "sebabnya antena dekat pemantul;"
+    },
+    "p130": {
+      "source_hash": "16d3fdd21d88",
+      "text": "satelit rendah yang miring, paling kena."
+    },
+    "p131": {
+      "source_hash": "d4564241c345",
+      "text": "Apa jalur di langit,"
+    },
+    "p132": {
+      "source_hash": "1fb2b605b8f2",
+      "text": "bikin titik miring?"
+    },
+    "p133": {
+      "source_hash": "a42c2b045190",
+      "text": "Langit memang memperlambat: ada lapisan ionosfer."
+    },
+    "p134": {
+      "source_hash": "7b9faffd566d",
+      "text": "Satu frekuensi, seperti satu nada, efeknya bisa puluhan meter."
+    },
+    "p135": {
+      "source_hash": "68f2aa9c5f51",
+      "text": "Tapi ia berubah pelan di seluruh langit, tak melompat antar gedung."
+    },
+    "p136": {
+      "source_hash": "d6f3c416566b",
+      "text": "Koreksi satelit hapus kira-kira separuh, rata-rata dunia;"
+    },
+    "p137": {
+      "source_hash": "e78e30d3ebc8",
+      "text": "dua frekuensi, tinggi dan rendah, seperti dua peluit,"
+    },
+    "p138": {
+      "source_hash": "4a376c358140",
+      "text": "efek ionosfer hilang 99% lebih."
+    },
+    "p139": {
+      "source_hash": "78e8fc2ebd73",
+      "text": "Jadi yang melemparmu ke seberang, biasanya bukan langit."
+    },
+    "p140": {
+      "source_hash": "ec2170715222",
+      "text": "Lalu waktu buka ulang,"
+    },
+    "p141": {
+      "source_hash": "40ee9a093171",
+      "text": "kenapa titiknya lama?"
+    },
+    "p142": {
+      "source_hash": "593d43f5c16d",
+      "text": "Jarak saja kurang,"
+    },
+    "p143": {
+      "source_hash": "014d160ab3c1",
+      "text": "perlu posisi satelit dan selisih jamnya."
+    },
+    "p144": {
+      "source_hash": "6f72828a8374",
+      "text": "Itu disiarkan satelit, tapi pelan,"
+    },
+    "p145": {
+      "source_hash": "a69117f56db6",
+      "text": "50 bit per detik."
+    },
+    "p146": {
+      "source_hash": "032197e0ca59",
+      "text": "Bit itu apa?"
+    },
+    "p147": {
+      "source_hash": "c62dba463531",
+      "text": "Kotak data terkecil, ya atau tidak."
+    },
+    "p148": {
+      "source_hash": "66baa4da1b4c",
+      "text": "Seperti teman menyebut posisinya, kata demi kata."
+    },
+    "p149": {
+      "source_hash": "2b90ad517602",
+      "text": "Satu putaran 30 detik, lalu diulang;"
+    },
+    "p150": {
+      "source_hash": "331a1a6ddd9f",
+      "text": "jam dan posisi satelit di tiga bagian awal tiap putaran."
+    },
+    "p151": {
+      "source_hash": "ae3473d32746",
+      "text": "Cara lama dengar tiga bagian ini, paling lama sekitar 36 detik."
+    },
+    "p152": {
+      "source_hash": "1bffabd43b97",
+      "text": "Selama itu,"
+    },
+    "p153": {
+      "source_hash": "a34099d14ac6",
+      "text": "aku di seberang!"
+    },
+    "p154": {
+      "source_hash": "39967432215e",
+      "text": "Ada start dingin dan panas."
+    },
+    "p155": {
+      "source_hash": "e95ee1b2107d",
+      "text": "Tak tahu apa-apa: start dingin, sisir seluruh langit;"
+    },
+    "p156": {
+      "source_hash": "b3e41c4e48a4",
+      "text": "punya posisi satelit tepat: start panas, tak tunggu."
+    },
+    "p157": {
+      "source_hash": "0e5ee3b6bd3c",
+      "text": "Di antara gedung, sinyal putus-putus, makin lama."
+    },
+    "p158": {
+      "source_hash": "2e85b35f3587",
+      "text": "Tapi kadang,"
+    },
+    "p159": {
+      "source_hash": "566bc6933dd2",
+      "text": "langsung ada titik!"
+    },
+    "p160": {
+      "source_hash": "266ca74113ad",
+      "text": "Itu biasanya GPS berbantuan. Lewat jaringan,"
+    },
+    "p161": {
+      "source_hash": "6ad9c2709f86",
+      "text": "dapat posisi dan selisih jam satelit,"
+    },
+    "p162": {
+      "source_hash": "46d9a26a2970",
+      "text": "sinyal beberapa milidetik cukup."
+    },
+    "p163": {
+      "source_hash": "59247aa59012",
+      "text": "Seperti dikirimi lokasi tiap teman."
+    },
+    "p164": {
+      "source_hash": "7c6107e778f0",
+      "text": "Tak usah tunggu!"
+    },
+    "p165": {
+      "source_hash": "158c0b4b2939",
+      "text": "Kurangnya?"
+    },
+    "p166": {
+      "source_hash": "c0a3685b9a02",
+      "text": "Ada. Kamu tak membaca waktu tepat dari siaran."
+    },
+    "p167": {
+      "source_hash": "b9c742a85ed3",
+      "text": "Satelit terus bergerak; waktu salah, posisinya ikut salah."
+    },
+    "p168": {
+      "source_hash": "db4b15654947",
+      "text": "Makalah jurnal navigasi mengutip hitungan penemu cara ini:"
+    },
+    "p169": {
+      "source_hash": "b721b39ac7fe",
+      "text": "tiap beda sedetik, jarak meleset sekitar 800 meter."
+    },
+    "p170": {
+      "source_hash": "80e0e33f06fc",
+      "text": "Maka ada ponsel yang ikut menghitung \"sekarang detik ke berapa\"."
+    },
+    "p171": {
+      "source_hash": "d25e149e4a01",
+      "text": "Itu yang kelima, perlu lima satelit."
+    },
+    "p172": {
+      "source_hash": "ea8cdfdeed05",
+      "text": "Titik yang langsung muncul mungkin dari sini."
+    },
+    "p173": {
+      "source_hash": "ec7ec5d9ce3f",
+      "text": "Pantas kadang langsung muncul!"
+    },
+    "p174": {
+      "source_hash": "d566683e2f7a",
+      "text": "Jadi titikku ke seberang,"
+    },
+    "p175": {
+      "source_hash": "b0c98e99d1e8",
+      "text": "sebenarnya kenapa?"
+    },
+    "p176": {
+      "source_hash": "3e56d1cade7d",
+      "text": "Kamu tadi di antara gedung, kan?"
+    },
+    "p177": {
+      "source_hash": "36d742bcb996",
+      "text": "Oh begitu!"
+    },
+    "p178": {
+      "source_hash": "ddb839a8d661",
+      "text": "Sinyal yang mantul tadi,"
+    },
+    "p179": {
+      "source_hash": "ccc527979c83",
+      "text": "telat sedikit, aku ke seberang!"
+    },
+    "p180": {
+      "source_hash": "cd4f5a859079",
+      "text": "Bagus. Ingat jam yang telat?"
+    },
+    "p181": {
+      "source_hash": "bfe51a3d7863",
+      "text": "Ajaibnya: tiap cari posisi, ponsel setel jamnya."
+    },
+    "p182": {
+      "source_hash": "a7c359895f4c",
+      "text": "Taman!"
+    },
+    "p183": {
+      "source_hash": "f7d0fad3b760",
+      "text": "Aku main peluit sama teman!"
+    },
+    "p184": {
+      "source_hash": "d3a8d5cb7ed7",
+      "text": "Titik birumu loncat di mana?"
+    },
+    "p185": {
+      "source_hash": "fe508e80b52e",
+      "text": "Komentar ya!"
+    },
+    "p186": {
+      "source_hash": "88de677d4daa",
+      "text": "Cari 'kenapa' sehari-hari, subscribe Kantor Oh Begitu."
+    }
+  }
+}

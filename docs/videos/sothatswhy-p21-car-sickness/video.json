@@ -1,0 +1,2865 @@
+{
+ "schema_version": 1,
+ "slug": "sothatswhy-p21-car-sickness",
+ "format": "drama",
+ "category": "explainer",
+ "narration_locale": "zh-TW",
+ "target_minutes": [
+  9,
+  11
+ ],
+ "voice": {
+  "provider": "gemini",
+  "name": "Sulafat",
+  "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速偏快、輕快，像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。"
+ },
+ "subtitles": {
+  "burn_in": false
+ },
+ "theme": "paper",
+ "look": {
+  "preset": "cute-cartoon"
+ },
+ "series": {
+  "slug": "sothatswhy",
+  "episode": 21,
+  "chapter": 1
+ },
+ "pauses": {
+  "line_ms": 0,
+  "scene_ms": 150
+ },
+ "still_motion": "beat",
+ "music": {
+  "track": "sothatswhy-bed-r2.m4a",
+  "sha256": "9bb4ba6fd16feb4a7f352144b2d89e9648acbbbbaa2173c27a7eefbdb70f28c6",
+  "gain_db": -20,
+  "duck_db": -10
+ },
+ "characters": [
+  {
+   "id": "chief",
+   "name": "所長",
+   "appearance": "a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear",
+   "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速偏快、輕快，像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。"
+   },
+   "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+  },
+  {
+   "id": "kid",
+   "name": "小問",
+   "appearance": "a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, both hands free",
+   "voice": {
+    "provider": "gemini",
+    "name": "Leda",
+    "tempo": 1.12,
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快，一秒五個字以上，不拖尾音"
+   },
+   "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+  }
+ ],
+ "loops": [
+  {
+   "setup": "p005",
+   "payoff": "p082",
+   "what": "爸爸開同一台車，為什麼一點事都沒有"
+  },
+  {
+   "setup": "p007",
+   "payoff": "p052",
+   "what": "遮住眼睛坐車，會不會暈"
+  },
+  {
+   "setup": "p008",
+   "payoff": "p101",
+   "what": "坐在沙發上不動，只看賽車畫面會不會暈"
+  },
+  {
+   "setup": "p013",
+   "payoff": "p163",
+   "what": "坐車看漫畫，頭暈肚子怪，到底怎麼了"
+  },
+  {
+   "setup": "p015",
+   "payoff": "p017",
+   "what": "會暈車是不是內耳不好"
+  },
+  {
+   "setup": "p021",
+   "payoff": "p028",
+   "what": "內耳到底在做什麼"
+  },
+  {
+   "setup": "p031",
+   "payoff": "p036",
+   "what": "眼睛也會告訴大腦嗎"
+  },
+  {
+   "setup": "p038",
+   "payoff": "p044",
+   "what": "看漫畫時，是誰在說謊"
+  },
+  {
+   "setup": "p049",
+   "payoff": "p053",
+   "what": "閉上眼睛是不是就不會吵"
+  },
+  {
+   "setup": "p054",
+   "payoff": "p057",
+   "what": "眼睛閉起來了，還在跟誰吵"
+  },
+  {
+   "setup": "p060",
+   "payoff": "p066",
+   "what": "看窗外會不會比較好"
+  },
+  {
+   "setup": "p089",
+   "payoff": "p097",
+   "what": "反過來，眼睛說在動、身體說沒動會怎樣"
+  },
+  {
+   "setup": "p103",
+   "payoff": "p107",
+   "what": "沒在動，為什麼會覺得在動"
+  },
+  {
+   "setup": "p116",
+   "payoff": "p117",
+   "what": "自己玩和看錄影，誰比較不暈"
+  },
+  {
+   "setup": "p120",
+   "payoff": "p122",
+   "what": "在車上用螢幕播前面的路，會不會比較不暈"
+  },
+  {
+   "setup": "p130",
+   "payoff": "p141",
+   "what": "為什麼同一台車有人很會暈、有人不會"
+  },
+  {
+   "setup": "p143",
+   "payoff": "p150",
+   "what": "對不上，為什麼偏偏是想吐"
+  },
+  {
+   "setup": "p152",
+   "payoff": "p156",
+   "what": "大腦裡有沒有負責比對的地方"
+  }
+ ],
+ "youtube": {
+  "category_id": 27,
+  "made_for_kids": false,
+  "default_language": "zh-TW",
+  "title": "坐車看書，為什麼容易暈？｜原來如此事務所",
+  "description": "小問在去阿嬤家的山路上看漫畫，看到一半頭暈暈、肚子怪怪的；可是在前面開車的爸爸，一點事都沒有。同一台車、同一條路，為什麼只有她在暈？\n\n這一集，所長和小問跟著同一趟車走，手上只有一杯水當線索：看漫畫的時候，到底是誰在說謊？遮住眼睛坐車，會不會就不暈？坐在沙發上一動也不動、只看賽車畫面，為什麼也有人會暈？最後也老實交代，科學到現在還回答不了的事：為什麼每個人差這麼多、為什麼偏偏是想吐。\n\n本集只介紹研究看到的現象與目前的解釋，不是醫療建議；插圖由 AI 生成，是示意，不是人體構造圖。每個說法的出處列在下方參考資料。\n\n資料截至 2026-11-11",
+  "tags": [
+   "暈車",
+   "暈動症",
+   "內耳",
+   "平衡",
+   "感覺衝突",
+   "科普",
+   "原來如此事務所"
+  ]
+ },
+ "thumbnail": {
+  "template": "thumb",
+  "data": {
+   "headline": "看漫畫\n**就暈車？**",
+   "sub": "開車的爸爸卻沒事？",
+   "shot": "kid-reading-open",
+   "subject": "right"
+  }
+ },
+ "sources": [
+  {
+   "title": "CDC Yellow Book 2026, Motion Sickness (John F. Golding; updated 2025-04-23)",
+   "url": "https://www.cdc.gov/yellow-book/hcp/travel-air-sea/motion-sickness.html",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "NHS, Motion sickness (reviewed 2023-06-19)",
+   "url": "https://www.nhs.uk/conditions/motion-sickness/",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Cleveland Clinic, Motion Sickness (updated 2024-04-08)",
+   "url": "https://my.clevelandclinic.org/health/diseases/12782-motion-sickness",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "NIDCD (NIH), Balance Disorders",
+   "url": "https://www.nidcd.nih.gov/health/balance-disorders",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Lackner (2014), Motion sickness: more than nausea and vomiting, Exp Brain Res 232:2493",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4112051/",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Golding (2006), Motion sickness susceptibility, Auton Neurosci 129:67",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/16931173/",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Golding (2016), Motion sickness, Handb Clin Neurol 137:371",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/27638085/",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Griffin & Newman (2004), Visual field effects on motion sickness in cars, Aviat Space Environ Med 75:739",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/15460624/",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Turner & Griffin (1999), Motion sickness in public road transport, Ergonomics 42:444",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/10048305/",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Kuiper, Bos & Diels (2018), In-vehicle auxiliary display positioning affects carsickness, Appl Ergon 68:169",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/29409631/",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Rolnick & Lubow (1991), Why is the driver rarely motion sick?, Ergonomics 34:867",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/1915252/",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Kuiper et al. (2020), Anticipatory audio cues can mitigate motion sickness, Appl Ergon 85:103068",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/32174356/",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Keshavarz, Riecke, Hettinger & Campos (2015), Vection and visually induced motion sickness: how are they related?, Front Psychol 6:472",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4403286/",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Dong, Yoshida & Stoffregen (2011), Control of a virtual vehicle influences postural activity and motion sickness, J Exp Psychol Appl 17:128",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/21604911/",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Reavley et al. (2006), Genetic influences on motion sickness susceptibility in adult women: a classical twin study",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/17086768/",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Treisman (1977), Motion sickness: an evolutionary hypothesis, Science 197:493",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/301659/",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Oman (2012), Are evolutionary hypotheses for motion sickness \"just-so\" stories?, J Vestib Res 22:117",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/23000611/",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Stoffregen & Smart (1998), Postural instability precedes motion sickness, Brain Res Bull 47:437",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/10052572/",
+   "checked_on": "2026-11-11"
+  },
+  {
+   "title": "Oman & Cullen (2014), Brainstem processing of vestibular sensory exafference, Exp Brain Res 232:2483",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/24838552/",
+   "checked_on": "2026-11-11"
+  }
+ ],
+ "assets": [],
+ "scenes": [
+  {
+   "id": "car-mountain",
+   "chapter": "去阿嬤家的山路",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of a small rounded family car driving along a winding green mountain road on a sunny morning, tea bushes and blue sky around it, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p001",
+     "speaker": "kid",
+     "text": "我坐車去阿嬤家，",
+     "emotion": "委屈又急，跑進來報案的語氣"
+    }
+   ]
+  },
+  {
+   "id": "kid-reading-open",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a car back seat, seat belt on, giggling at a small comic with a plain red cover held close to her face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p002",
+     "speaker": "kid",
+     "text": "看漫畫看到一半，",
+     "emotion": "難受"
+    }
+   ]
+  },
+  {
+   "id": "kid-comic-sick",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a car back seat, seat belt on, holding a small comic with a plain red cover in both hands on her lap, looking up from it with a queasy pale face and puffed cheeks, in the exact centre of the picture, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p003",
+     "speaker": "kid",
+     "text": "頭暈暈的，肚子也怪怪的。",
+     "emotion": "難受"
+    }
+   ]
+  },
+  {
+   "id": "driver-view",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide view from the back seat of a small family car between the two empty front headrests, the steering wheel and a winding sunny mountain road ahead through the windshield, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p004",
+     "speaker": "kid",
+     "text": "可是爸爸在前面開車，",
+     "emotion": "不服氣"
+    },
+    {
+     "id": "p005",
+     "speaker": "kid",
+     "text": "一點事都沒有！"
+    }
+   ]
+  },
+  {
+   "id": "chief-listen",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief leaning forward with a curious smile, one hand on her chin, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p006",
+     "speaker": "chief",
+     "text": "同一台車、同一條路，只有你在暈？",
+     "emotion": "接住上一句"
+    }
+   ]
+  },
+  {
+   "id": "chief-tease-blind",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding a plain pale-blue fabric sleep mask with two oval eye cups and a stretchy strap up beside her face in one hand, giving a playful wink with one eye closed and a cheeky smile, a plain pale wall behind her, bright daylight, the chief is a middle-aged woman with round black glasses, dark hair with a grey streak tied in a low ponytail, a yellow pencil tucked behind one ear, a mustard-yellow cardigan over a white blouse and navy trousers, chibi proportions, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p007",
+     "speaker": "chief",
+     "text": "還有更怪的：遮住眼睛坐車，會不會暈？",
+     "emotion": "賣關子"
+    }
+   ]
+  },
+  {
+   "id": "chief-tease-sofa",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief sitting very still on a sofa holding a game controller, a puzzled playful face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p008",
+     "speaker": "chief",
+     "text": "坐在沙發上不動，只看賽車畫面，又會不會暈？",
+     "emotion": "賣關子"
+    }
+   ]
+  },
+  {
+   "id": "kid-me-too",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny living room pointing at herself with a surprised face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p009",
+     "speaker": "kid",
+     "text": "我猜都不會！",
+     "emotion": "篤定的錯猜"
+    }
+   ]
+  },
+  {
+   "id": "chief-promise",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding a clear plastic cup of water up beside her face with a warm inviting smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p010",
+     "speaker": "chief",
+     "text": "先別猜。你會暈，絕對不是你一個人。",
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p011",
+     "speaker": "chief",
+     "text": "今天就用去阿嬤家這一趟，把原因找出來。"
+    }
+   ]
+  },
+  {
+   "id": "kid-main-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a car back seat, seat belt on, holding a small comic with a plain red cover against her chest and frowning with a puzzled tilted head, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p012",
+     "speaker": "kid",
+     "text": "我的頭跟肚子，",
+     "emotion": "想不通"
+    },
+    {
+     "id": "p013",
+     "speaker": "kid",
+     "text": "到底怎麼了？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "kid-ear-guess",
+   "chapter": "眼睛和耳朵，各說各的",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a sunny living room cupping one hand behind her ear with a worried little frown, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p014",
+     "speaker": "kid",
+     "text": "會暈車，",
+     "emotion": "擔心"
+    },
+    {
+     "id": "p015",
+     "speaker": "kid",
+     "text": "我聽說是耳朵裡面不好？",
+     "emotion": "擔心的錯猜"
+    }
+   ]
+  },
+  {
+   "id": "chief-opposite",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief shaking her head gently with a kind smile, one hand raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p016",
+     "speaker": "chief",
+     "text": "那叫內耳。不一定喔，研究暈車的人發現，",
+     "emotion": "接住上一句",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p017",
+     "speaker": "chief",
+     "text": "內耳的平衡功能完全不能用的人，才完全不會暈。"
+    }
+   ]
+  },
+  {
+   "id": "chief-almost-all",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief opening both arms wide towards the viewer with a reassuring smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p018",
+     "speaker": "chief",
+     "text": "耳朵裡面好好的人，幾乎每一個都可能暈。"
+    }
+   ]
+  },
+  {
+   "id": "kid-working",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a sunny living room touching her own ear with one finger and a surprised delighted face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p019",
+     "speaker": "kid",
+     "text": "所以耳朵有在認真？",
+     "emotion": "驚訝"
+    }
+   ]
+  },
+  {
+   "id": "chief-working",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief nodding with a warm amused smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p020",
+     "speaker": "chief",
+     "text": "可以這麼說：會暈，代表它一直在工作。",
+     "emotion": "笑"
+    }
+   ]
+  },
+  {
+   "id": "kid-ear-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny living room tilting her head with one hand on her ear and a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p021",
+     "speaker": "kid",
+     "text": "到底在做什麼？",
+     "emotion": "追問，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-inside",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding her thumb and finger a tiny gap apart beside her ear, a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p022",
+     "speaker": "chief",
+     "text": "你耳朵很深的地方，有幾條很細的小管子和小袋子，"
+    },
+    {
+     "id": "p023",
+     "speaker": "chief",
+     "text": "裡面裝著液體。"
+    }
+   ]
+  },
+  {
+   "id": "chief-cup",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up a clear plastic cup of water in one hand with a friendly smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p024",
+     "speaker": "chief",
+     "text": "我們借一杯水來想。",
+     "emotion": "轉向觀眾"
+    }
+   ]
+  },
+  {
+   "id": "cup-holder-tilt",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a clear plastic cup of water standing in the cup holder of a small family car, the water surface tilted and sloshing up one side of the cup, sunny car interior around it, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p025",
+     "speaker": "chief",
+     "text": "車子一轉彎，杯子裡的水就晃到一邊；"
+    },
+    {
+     "id": "p026",
+     "speaker": "chief",
+     "text": "一煞車、一加速，水也跟著晃。"
+    }
+   ]
+  },
+  {
+   "id": "chief-grains",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief tipping a clear plastic cup of water gently in one hand and watching the water with a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p027",
+     "speaker": "chief",
+     "text": "耳朵裡的液體也會晃，裡面還有很小的顆粒，被地球往下拉。"
+    }
+   ]
+  },
+  {
+   "id": "chief-brain-reads",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief pretending to steer a car with both hands, then braking with a surprised laughing face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p028",
+     "speaker": "chief",
+     "text": "大腦就看它們怎麼晃，知道你在轉、在加速，還是在煞車。"
+    }
+   ]
+  },
+  {
+   "id": "chief-limit",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief putting a clear plastic cup of water down on a small table with an honest serious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p029",
+     "speaker": "chief",
+     "text": "先說清楚，杯子只是比喻。真的耳朵裡面很小很小，"
+    },
+    {
+     "id": "p030",
+     "speaker": "chief",
+     "text": "而且管轉彎的地方，跟管加速的地方，是分開的。"
+    }
+   ]
+  },
+  {
+   "id": "kid-eyes-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a sunny living room pointing at her own eyes with two fingers and a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p031",
+     "speaker": "kid",
+     "text": "眼睛也會告訴大腦嗎？",
+     "emotion": "追問，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-eyes",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief pointing at her own eye with one finger and a friendly smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p032",
+     "speaker": "chief",
+     "text": "會。眼睛看外面的東西怎麼跑，也在告訴大腦你在動。"
+    },
+    {
+     "id": "p033",
+     "speaker": "chief",
+     "text": "腳底跟肌肉，也會告訴大腦。"
+    }
+   ]
+  },
+  {
+   "id": "kid-walk-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny park walking forward in mid-step along a sunny park path with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p034",
+     "speaker": "kid",
+     "text": "那我走路的時候呢？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "walk-cup",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a child's small hand carrying a clear plastic cup of water along a sunny park path, the water gently rippling, trees and grass blurred behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p035",
+     "speaker": "chief",
+     "text": "你走路，眼睛看到路往後退，杯子裡的水也在晃。",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p036",
+     "speaker": "chief",
+     "text": "大家說的都一樣，大腦就很放心。"
+    }
+   ]
+  },
+  {
+   "id": "kid-liar-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a car back seat, seat belt on, holding a small comic with a plain red cover up and peering over it with narrowed suspicious eyes, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p037",
+     "speaker": "kid",
+     "text": "那我看漫畫的時候，",
+     "emotion": "推理"
+    },
+    {
+     "id": "p038",
+     "speaker": "kid",
+     "text": "是誰在說謊？",
+     "emotion": "章尾停住，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-nobody-lies",
+   "chapter": "漫畫跟著小問一起晃",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up two fingers with a calm friendly smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p039",
+     "speaker": "chief",
+     "text": "沒有人說謊，只是它們看到的不一樣。",
+     "emotion": "接住上一句"
+    }
+   ]
+  },
+  {
+   "id": "kid-reading",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a car back seat, seat belt on, looking down at a small comic with a plain red cover held close to her face, completely absorbed, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p040",
+     "speaker": "kid",
+     "text": "我一直盯著漫畫看耶！",
+     "emotion": "回想"
+    }
+   ]
+  },
+  {
+   "id": "chief-comic",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding a small red comic close in front of her chest and swaying gently with it, a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p041",
+     "speaker": "chief",
+     "text": "漫畫拿在你手上，跟著你一起晃。"
+    },
+    {
+     "id": "p042",
+     "speaker": "chief",
+     "text": "眼睛盯著它，報告的是：沒在動。"
+    }
+   ]
+  },
+  {
+   "id": "cup-turn",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a clear plastic cup of water in the cup holder of a small family car on a bend, the water surface tilted and sloshing, a curving green mountain road visible through the side window, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p043",
+     "speaker": "chief",
+     "text": "可是車子一轉彎，杯子裡的水晃了。",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p044",
+     "speaker": "chief",
+     "text": "內耳報告的是：我們在轉彎。"
+    }
+   ]
+  },
+  {
+   "id": "kid-two-reports",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a car back seat, seat belt on, holding up one finger on each hand with a surprised realising face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p045",
+     "speaker": "kid",
+     "text": "一個說沒動，",
+     "emotion": "恍然"
+    },
+    {
+     "id": "p046",
+     "speaker": "kid",
+     "text": "一個說在轉！"
+    }
+   ]
+  },
+  {
+   "id": "chief-mismatch",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding her two hands apart at different heights with a calm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p047",
+     "speaker": "chief",
+     "text": "對，兩邊的報告對不上。"
+    }
+   ]
+  },
+  {
+   "id": "kid-close-guess",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of one 8-year-old girl sitting in the back seat of a small family car, a diagonal seat belt across her chest, her eyes squeezed tightly shut as two curved lines, a confident proud grin, both hands resting on her knees, bright daylight through the side window, the girl is 8 years old with a short black bob, straight bangs and one small cowlick on top, a round young face with simple dot-like eyes, wearing a navy raincoat jacket with a mustard-yellow hood folded down behind her neck, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p048",
+     "speaker": "kid",
+     "text": "那我閉上眼睛，",
+     "emotion": "很有把握"
+    },
+    {
+     "id": "p049",
+     "speaker": "kid",
+     "text": "就不會吵了吧？",
+     "emotion": "很有把握的錯猜"
+    }
+   ]
+  },
+  {
+   "id": "chief-recall-blind",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up one finger with a playful knowing smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p050",
+     "speaker": "chief",
+     "text": "還記得我說，遮住眼睛的乘客照樣會暈嗎？",
+     "emotion": "點名回呼"
+    }
+   ]
+  },
+  {
+   "id": "kid-blindfold",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of one 8-year-old girl sitting calmly in the back seat of a small family car, a diagonal seat belt across her chest, a soft pastel-blue sleep mask pulled down fully over both of her eyes, a calm small smile, her hands resting in her lap, bright daylight through the side window, the girl is 8 years old with a short black bob, straight bangs and one small cowlick on top, a round young face with simple dot-like eyes, wearing a navy raincoat jacket with a mustard-yellow hood folded down behind her neck, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p051",
+     "speaker": "chief",
+     "text": "英國有研究讓乘客在郊區坐車三十分鐘，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p052",
+     "speaker": "chief",
+     "text": "遮住眼睛的人，跟看不到前面的人，差不多一樣暈。"
+    }
+   ]
+  },
+  {
+   "id": "chief-close",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief closing her eyes gently with a calm thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p053",
+     "speaker": "chief",
+     "text": "所以閉上眼睛，也不一定能讓大腦安靜。"
+    }
+   ]
+  },
+  {
+   "id": "kid-who-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a car back seat, seat belt on, lifting a sleep mask up onto her forehead with a puzzled frown, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p054",
+     "speaker": "kid",
+     "text": "還在跟誰吵？",
+     "emotion": "不解，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-guess-brain",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief tapping her temple with one finger and a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p055",
+     "speaker": "chief",
+     "text": "這就是重點。大腦不只聽報告，它自己還會先猜。"
+    }
+   ]
+  },
+  {
+   "id": "chief-predict",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding a clear plastic cup of water out level in front of her and watching it closely, a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p056",
+     "speaker": "chief",
+     "text": "它心裡有一個預想：照現在這樣，等一下應該感覺到什麼。"
+    }
+   ]
+  },
+  {
+   "id": "chief-conflict",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief bringing her two fists together knuckle to knuckle with a serious kind smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p057",
+     "speaker": "chief",
+     "text": "報告跟這個預想對不上，人就會不舒服。"
+    }
+   ]
+  },
+  {
+   "id": "chief-label",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding one finger up with an honest careful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p058",
+     "speaker": "chief",
+     "text": "這叫感覺衝突，是目前研究暈車最多人接受的解釋。"
+    },
+    {
+     "id": "p059",
+     "speaker": "chief",
+     "text": "不過它是一個解釋，還不是全部的答案。"
+    }
+   ]
+  },
+  {
+   "id": "kid-window-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a car back seat, seat belt on, pressing her nose close to the side window of the car with a hopeful face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p060",
+     "speaker": "kid",
+     "text": "看窗外會比較好嗎？",
+     "emotion": "追問，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "coach-road",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of a big friendly round-nosed tour coach driving along a sunny green coastal road, blue sea and soft green hills around it, the coach painted smooth solid sunny yellow with one plain wide teal stripe along its side, rows of tiny round passenger heads in its windows, white clouds in a bright sky, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p061",
+     "speaker": "chief",
+     "text": "研究的人真的去問過。英國問了三千多位遊覽車乘客，"
+    },
+    {
+     "id": "p062",
+     "speaker": "chief",
+     "text": "完全看不到前面路的人，覺得不舒服的，"
+    }
+   ]
+  },
+  {
+   "id": "road-ahead",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide view from the middle of the back seat of a small family car looking forward through the windshield at a long sunny mountain road and the far horizon, the two front headrests at the bottom edges, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p063",
+     "speaker": "chief",
+     "text": "大約是看得很清楚的人的三倍。",
+     "emotion": "數字放慢"
+    }
+   ]
+  },
+  {
+   "id": "side-window",
+   "template": "shot",
+   "data": {
+    "prompt": "Medium view out of the side window of a small family car, green trees and roadside bushes streaking past in soft motion blur, a sunny sky above, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p064",
+     "speaker": "chief",
+     "text": "剛剛那個遮眼睛的小客車實驗也發現：只看得到旁邊的窗，"
+    },
+    {
+     "id": "p065",
+     "speaker": "chief",
+     "text": "跟看不到前面差不多。"
+    }
+   ]
+  },
+  {
+   "id": "chief-forward",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief pointing straight forward past the viewer with one arm and a bright smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p066",
+     "speaker": "chief",
+     "text": "看得到前面的路，才比較不暈。"
+    }
+   ]
+  },
+  {
+   "id": "kid-front-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a car back seat, seat belt on, pointing forward between the two front seats with a surprised face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p067",
+     "speaker": "kid",
+     "text": "不是窗戶？",
+     "emotion": "發現，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-seat",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief nodding with a calm smile, one open hand forward, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p068",
+     "speaker": "chief",
+     "text": "對。那個實驗裡，坐哪個位子，反而沒有明顯差別。"
+    }
+   ]
+  },
+  {
+   "id": "chief-my-guess",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief drawing a gentle curve in the air with one fingertip, a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p069",
+     "speaker": "chief",
+     "text": "我的想法是：前面的路一彎，眼睛先看到，"
+    },
+    {
+     "id": "p070",
+     "speaker": "chief",
+     "text": "大腦就猜得到，杯子裡的水等一下要晃。"
+    }
+   ]
+  },
+  {
+   "id": "chief-holland",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding a small plain tablet up at eye level with both hands and a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p071",
+     "speaker": "chief",
+     "text": "荷蘭也有實驗，讓乘客在車上邊坐邊看螢幕找東西。"
+    }
+   ]
+  },
+  {
+   "id": "display-high",
+   "template": "shot",
+   "data": {
+    "prompt": "View from the front passenger seat of a small family car, a child passenger's two small hands holding a small plain tablet up high at windshield level, the tablet showing colourful circles and stars, a sunny road and green hills visible all around it through the windshield, the passenger side dashboard and glovebox along the bottom of the frame, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p072",
+     "speaker": "chief",
+     "text": "螢幕擺在前窗那麼高、看得到外面，比擺在低處比較不暈。"
+    }
+   ]
+  },
+  {
+   "id": "kid-dad-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of one 8-year-old girl alone in the back seat of a small family car, a diagonal seat belt across her chest, leaning forward between the two front seats with a curious frown, the back of her dad's short dark hair and his hands on the steering wheel visible in the front seat, the sunny road ahead through the windshield, bright daylight, the girl is 8 years old with a short black bob, straight bangs and one small cowlick on top, a round young face with simple dot-like eyes, wearing a navy raincoat jacket with a mustard-yellow hood folded down behind her neck, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p073",
+     "speaker": "kid",
+     "text": "那爸爸呢？",
+     "emotion": "追問"
+    },
+    {
+     "id": "p074",
+     "speaker": "kid",
+     "text": "就因為這樣不暈嗎？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-driver",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding an imaginary steering wheel with both hands and a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p075",
+     "speaker": "chief",
+     "text": "看前面只是一部分。司機很少暈車，研究的人也注意到了。",
+     "emotion": "接住上一句"
+    }
+   ]
+  },
+  {
+   "id": "swivel-chair",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a single sturdy padded swivel chair standing in the middle of a bright plain empty room, soft curved motion lines around its base, sunny window light, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p076",
+     "speaker": "chief",
+     "text": "以色列有個實驗，讓二十二對人坐上會轉的機器。"
+    }
+   ]
+  },
+  {
+   "id": "chief-yoked",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up two fingers side by side, then wiggling only one of them, a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p077",
+     "speaker": "chief",
+     "text": "每一對轉得一模一樣，可是只有一個人能控制怎麼轉。"
+    }
+   ]
+  },
+  {
+   "id": "kid-control-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny living room pretending to steer with both hands and a hopeful grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p078",
+     "speaker": "kid",
+     "text": "能控制的人，",
+     "emotion": "猜"
+    },
+    {
+     "id": "p079",
+     "speaker": "kid",
+     "text": "比較不暈？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-control",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief, a slim woman of about thirty with round black glasses, glossy dark hair with a grey streak tied in a low ponytail, a yellow pencil tucked behind one ear, a mustard-yellow cardigan over a white blouse, nodding with a warm encouraging smile and one finger raised beside her face, a calm clean pale wall behind her, bright daylight, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p080",
+     "speaker": "chief",
+     "text": "對，能控制的那一個，不舒服的感覺明顯比較少。"
+    }
+   ]
+  },
+  {
+   "id": "own-cup",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of an adult hand holding a clear plastic cup of water steady while turning a corner along a sunny hallway, the water surface calm and level, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p081",
+     "speaker": "chief",
+     "text": "研究的人認為：自己要轉彎，大腦早就知道，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p082",
+     "speaker": "chief",
+     "text": "杯子裡的水一晃，剛好跟它猜的一樣。"
+    }
+   ]
+  },
+  {
+   "id": "chief-cue",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief cupping one hand beside her mouth as if calling out softly, a friendly smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p083",
+     "speaker": "chief",
+     "text": "還有實驗用聲音先提醒：什麼時候、要往哪動。"
+    },
+    {
+     "id": "p084",
+     "speaker": "chief",
+     "text": "有提醒的時候，同一群人也比較不暈。"
+    }
+   ]
+  },
+  {
+   "id": "kid-dad-says",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a car back seat, seat belt on, cupping both hands around her mouth and calling out with a cheerful grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p085",
+     "speaker": "kid",
+     "text": "就像爸爸先喊一聲，",
+     "emotion": "笑"
+    },
+    {
+     "id": "p086",
+     "speaker": "kid",
+     "text": "要轉彎囉？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-cue-limit",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief raising one hand with a gentle honest smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p087",
+     "speaker": "chief",
+     "text": "有點像。不過那個實驗是在軌道上滑的車，不是山路。"
+    }
+   ]
+  },
+  {
+   "id": "kid-reverse-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a car back seat, seat belt on, holding a small comic with a plain red cover upside down and staring at it with a thinking face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p088",
+     "speaker": "kid",
+     "text": "眼睛說在動，",
+     "emotion": "推理"
+    },
+    {
+     "id": "p089",
+     "speaker": "kid",
+     "text": "身體說沒動呢？",
+     "emotion": "章尾停住，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-sofa",
+   "chapter": "換成螢幕在動",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief sitting on a sofa holding a game controller and smiling, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p090",
+     "speaker": "chief",
+     "text": "那就是剛剛說的，沙發上的情況。",
+     "emotion": "接住上一句"
+    }
+   ]
+  },
+  {
+   "id": "sofa-tv",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of a cosy sunny living room, a big flat television on a low cabinet showing a bright cartoon racing road rushing into green hills, a game controller resting on the sofa cushion, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p091",
+     "speaker": "chief",
+     "text": "你坐在沙發上看賽車遊戲，畫面裡的路一直衝過來，"
+    },
+    {
+     "id": "p092",
+     "speaker": "chief",
+     "text": "眼睛報告：我們跑得飛快。"
+    }
+   ]
+  },
+  {
+   "id": "table-cup",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a clear plastic cup of water standing on a low wooden coffee table, the water surface perfectly flat and still, a sunny living room softly blurred behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p093",
+     "speaker": "chief",
+     "text": "可是茶几上那杯水，一動也不動，"
+    },
+    {
+     "id": "p094",
+     "speaker": "chief",
+     "text": "你的內耳報告的也是：沒在動。"
+    }
+   ]
+  },
+  {
+   "id": "kid-reverse",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny living room sitting on a sofa holding a game controller and looking up with a surprised open mouth, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p095",
+     "speaker": "kid",
+     "text": "這次換眼睛，",
+     "emotion": "驚訝"
+    },
+    {
+     "id": "p096",
+     "speaker": "kid",
+     "text": "說在動了！"
+    }
+   ]
+  },
+  {
+   "id": "chief-reverse",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief turning one open palm over with a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p097",
+     "speaker": "chief",
+     "text": "對，剛好跟看漫畫反過來。這樣也有人會暈，"
+    },
+    {
+     "id": "p098",
+     "speaker": "chief",
+     "text": "研究的人叫它，視覺引起的暈動症。"
+    }
+   ]
+  },
+  {
+   "id": "kid-long-name",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a sunny living room counting on her fingers with a scrunched-up face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p099",
+     "speaker": "kid",
+     "text": "名字好長！",
+     "emotion": "笑"
+    }
+   ]
+  },
+  {
+   "id": "chief-short-name",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief laughing softly with one hand raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p100",
+     "speaker": "chief",
+     "text": "你就記：眼睛看出來的暈。",
+     "emotion": "笑"
+    }
+   ]
+  },
+  {
+   "id": "chief-cinema",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief sitting in a red cinema seat holding a striped bucket of popcorn and leaning back in surprise, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p101",
+     "speaker": "chief",
+     "text": "在電影院看大銀幕、玩虛擬實境，都有人遇過。"
+    }
+   ]
+  },
+  {
+   "id": "kid-vection-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny living room sitting very still on a sofa with both hands flat on her knees and a puzzled face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p102",
+     "speaker": "kid",
+     "text": "可是我又沒在動，",
+     "emotion": "不解"
+    },
+    {
+     "id": "p103",
+     "speaker": "kid",
+     "text": "為什麼會覺得在動？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-train",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding the edge of an imaginary window with a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p104",
+     "speaker": "chief",
+     "text": "你坐過火車吧？停在月台的時候，旁邊那列開走了，"
+    }
+   ]
+  },
+  {
+   "id": "train-window",
+   "template": "shot",
+   "data": {
+    "prompt": "Medium view out of the window of a bright local train standing at a sunny platform, a neighbouring blue and white train right beside it sliding slowly past, its windows a smooth blur, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p105",
+     "speaker": "chief",
+     "text": "你會突然覺得，是自己這列在動。"
+    }
+   ]
+  },
+  {
+   "id": "kid-train",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl by a train window gripping the window ledge with a surprised laughing face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p106",
+     "speaker": "kid",
+     "text": "有！我以為車子開了！",
+     "emotion": "笑"
+    }
+   ]
+  },
+  {
+   "id": "chief-vection",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief waving one hand past her eyes with a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p107",
+     "speaker": "chief",
+     "text": "那叫自己在動的錯覺。眼睛一下子，就騙過大腦了。"
+    }
+   ]
+  },
+  {
+   "id": "chief-vection-limit",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding her two hands side by side with an honest thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p108",
+     "speaker": "chief",
+     "text": "眼睛看出來的暈，常常跟這種錯覺一起出現。"
+    }
+   ]
+  },
+  {
+   "id": "kid-train-fine",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl by a train window smiling happily and waving out of the window, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p109",
+     "speaker": "chief",
+     "text": "可是有錯覺的人不一定會暈，兩者怎麼連，研究的人還在爭論。"
+    }
+   ]
+  },
+  {
+   "id": "kid-either-way",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny living room sitting cross-legged on a sofa cushion holding both palms up like a weighing scale with a thinking face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p110",
+     "speaker": "kid",
+     "text": "所以不管哪一邊，",
+     "emotion": "推理"
+    },
+    {
+     "id": "p111",
+     "speaker": "kid",
+     "text": "對不上就可能暈？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-works",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief nodding with a warm pleased smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p112",
+     "speaker": "chief",
+     "text": "對，這是感覺衝突說得通的地方。"
+    }
+   ]
+  },
+  {
+   "id": "chief-game-test",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of a cheerful middle-aged woman holding a chunky dark grey game controller out towards the viewer in both hands, an inviting smile, a plain pale cream wall behind her, bright daylight. She has round black glasses, dark hair with one grey streak tied in a low ponytail, a yellow pencil tucked behind one ear, a mustard-yellow cardigan over a white blouse and navy trousers. The controller is a simple gamepad with two round thumbsticks and four coloured buttons, firmly gripped, five fingers on each hand. Cute chibi proportions with a big round head, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p113",
+     "speaker": "chief",
+     "text": "還有一個實驗：兩個人看一模一樣的開車遊戲畫面，"
+    },
+    {
+     "id": "p114",
+     "speaker": "chief",
+     "text": "一個自己玩，一個看錄下來的影片。"
+    }
+   ]
+  },
+  {
+   "id": "kid-game-guess",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of an 8-year-old girl in a sunny living room beside a mustard sofa, holding a dark grey game controller up proudly in one raised hand with a confident grin. She has a short straight black bob with blunt straight-cut bangs and one small curl of cowlick on top, the bob uncovered and hanging free, simple dot-like eyes and round pink cheeks, and wears a navy raincoat jacket with its mustard-yellow hood folded down behind her neck and long navy trousers. Cute chibi proportions with a big round head, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p115",
+     "speaker": "kid",
+     "text": "自己玩的，",
+     "emotion": "很有把握"
+    },
+    {
+     "id": "p116",
+     "speaker": "kid",
+     "text": "比較不暈？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-game",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief giving a small thumbs-up with a pleased smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p117",
+     "speaker": "chief",
+     "text": "猜對了，自己開的人比較少說會暈。"
+    },
+    {
+     "id": "p118",
+     "speaker": "chief",
+     "text": "就算車子只在螢幕裡，能控制還是有差。"
+    }
+   ]
+  },
+  {
+   "id": "kid-carscreen-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of an 8-year-old girl sitting in a car back seat with a grey seat belt across her chest, holding up a small smooth dark grey tablet in one hand and pointing at it with the other, a bright idea face with raised eyebrows and a wide smile, beige cartoon car seats and a sunny side window behind her. She has a short straight black bob with blunt straight-cut bangs and one small curl of cowlick on top, simple dot-like eyes and round pink cheeks, and wears a navy raincoat jacket with its mustard-yellow hood folded down behind her neck. Cute chibi proportions with a big round head, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p119",
+     "speaker": "kid",
+     "text": "那在車上，",
+     "emotion": "靈機一動"
+    },
+    {
+     "id": "p120",
+     "speaker": "kid",
+     "text": "用螢幕播前面的路呢？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-carscreen",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up one finger with a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p121",
+     "speaker": "chief",
+     "text": "那個遮眼睛的英國實驗，真的試過。"
+    }
+   ]
+  },
+  {
+   "id": "tablet-road",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a small plain tablet mounted on the back of a car's front seat, showing a live picture of the sunny mountain road ahead, soft car interior around it, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p122",
+     "speaker": "chief",
+     "text": "螢幕即時播前面的路，結果，並沒有比較不暈。"
+    }
+   ]
+  },
+  {
+   "id": "kid-huh",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a car back seat, seat belt on, blinking with a baffled open mouth, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p123",
+     "speaker": "kid",
+     "text": "咦，沒用耶！",
+     "emotion": "驚訝"
+    }
+   ]
+  },
+  {
+   "id": "chief-unknown-view",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief spreading her hands with an honest shrug and a kind smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p124",
+     "speaker": "chief",
+     "text": "研究的人自己也說，還要再弄清楚，"
+    },
+    {
+     "id": "p125",
+     "speaker": "chief",
+     "text": "畫面裡哪些東西會讓人暈，哪些能讓人不暈。"
+    }
+   ]
+  },
+  {
+   "id": "chief-boundary",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding her two hands apart as if measuring something, an honest thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p126",
+     "speaker": "chief",
+     "text": "這就是這個解釋的界線：它說得出哪裡對不上，"
+    },
+    {
+     "id": "p127",
+     "speaker": "chief",
+     "text": "卻還不能每次準準地說，誰會暈、暈多少。"
+    }
+   ]
+  },
+  {
+   "id": "kid-differ-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a car back seat, seat belt on, looking back over her shoulder towards the front seat with a wondering face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p128",
+     "speaker": "kid",
+     "text": "那為什麼同一台車，",
+     "emotion": "追問"
+    },
+    {
+     "id": "p129",
+     "speaker": "kid",
+     "text": "有人很會暈，"
+    },
+    {
+     "id": "p130",
+     "speaker": "kid",
+     "text": "有人一點都不會？",
+     "emotion": "章尾停住，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-first-unknown",
+   "chapter": "最會暈和最不會暈，差了一萬倍",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up one finger with a serious kind smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p131",
+     "speaker": "chief",
+     "text": "這個問題，研究也還沒完全解開。",
+     "emotion": "接住上一句"
+    }
+   ]
+  },
+  {
+   "id": "chief-range",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief spreading her arms very wide apart with an amazed smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p132",
+     "speaker": "chief",
+     "text": "研究暈車幾十年的科學家估計，最會暈和最不會暈的人，"
+    },
+    {
+     "id": "p133",
+     "speaker": "chief",
+     "text": "暈的程度可以差到一萬倍。"
+    }
+   ]
+  },
+  {
+   "id": "kid-wow",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a sunny living room throwing both hands up with wide amazed eyes, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p134",
+     "speaker": "kid",
+     "text": "一萬倍！",
+     "emotion": "驚訝"
+    }
+   ]
+  },
+  {
+   "id": "chief-age",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding one hand low and then raising it with a friendly smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p135",
+     "speaker": "chief",
+     "text": "美國疾病管制中心整理過：兩歲以下的小孩，通常不太會暈；"
+    }
+   ]
+  },
+  {
+   "id": "kids-shoes-row",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a sunny doorstep with four pairs of children's shoes lined up in one neat row from left to right, growing steadily in size: a pair of tiny pink baby booties, a pair of small blue toddler shoes, a pair of medium yellow school sneakers and a pair of big red grown-up sneakers, eight shoes in total, each pair standing side by side, plain smooth shoe surfaces, a warm orange door behind, potted plants at both sides, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p136",
+     "speaker": "chief",
+     "text": "之後越來越容易，七到十二歲最容易，再慢慢變少。"
+    }
+   ]
+  },
+  {
+   "id": "kid-eight",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny living room holding up eight fingers with a surprised realising face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p137",
+     "speaker": "kid",
+     "text": "我八歲耶！",
+     "emotion": "恍然"
+    }
+   ]
+  },
+  {
+   "id": "chief-women",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief nodding with a gentle smile, one hand open, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p138",
+     "speaker": "chief",
+     "text": "對，你剛好在那個年紀。"
+    }
+   ]
+  },
+  {
+   "id": "twin-shoes",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a sunny doorstep with two identical pairs of small yellow children's sneakers standing side by side, four shoes in total, the two pairs matching exactly like twins, empty shoes standing neatly on the step, plain smooth shoe surfaces, a warm orange door behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p139",
+     "speaker": "chief",
+     "text": "雙胞胎研究還發現，誰比較會暈，很大一部分跟遺傳有關。"
+    }
+   ]
+  },
+  {
+   "id": "kid-which-part",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a sunny living room tapping her own head with one finger and a curious frown, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p140",
+     "speaker": "kid",
+     "text": "有一部分是天生的？",
+     "emotion": "追問，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-dunno",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief shaking her head slowly with an honest kind smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p141",
+     "speaker": "chief",
+     "text": "有一部分是。可是到底差在哪裡，研究還不清楚。"
+    }
+   ]
+  },
+  {
+   "id": "coach-again",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of a big friendly round-nosed tour coach parked at a sunny rest stop beside green hills, its door open, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p142",
+     "speaker": "chief",
+     "text": "那份遊覽車調查也看到：年紀越大、越常坐車的人，越少暈。"
+    }
+   ]
+  },
+  {
+   "id": "kid-vomit-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a car back seat, seat belt on, holding both hands over her tummy with a queasy face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p143",
+     "speaker": "kid",
+     "text": "為什麼偏偏是想吐？",
+     "emotion": "追問，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-second-unknown",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up two fingers with a serious kind smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p144",
+     "speaker": "chief",
+     "text": "老實說，還沒有人知道。說得出它怎麼被引起，"
+    },
+    {
+     "id": "p145",
+     "speaker": "chief",
+     "text": "卻說不出，身體為什麼要用想吐來反應。"
+    }
+   ]
+  },
+  {
+   "id": "chief-poison",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up a small green leaf between two fingers and studying it with a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p146",
+     "speaker": "chief",
+     "text": "有人提過一個猜法：有些毒會讓感覺亂掉，"
+    },
+    {
+     "id": "p147",
+     "speaker": "chief",
+     "text": "身體乾脆吐掉比較保險，暈車是不小心被晃動觸發了。"
+    }
+   ]
+  },
+  {
+   "id": "kid-ate-wrong",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a sunny living room covering her mouth with both hands and wide surprised eyes, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p148",
+     "speaker": "kid",
+     "text": "我吃壞東西了？",
+     "emotion": "驚訝，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-poison-limit",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief raising one hand with an honest careful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p149",
+     "speaker": "chief",
+     "text": "這只是一個猜法。有證據支持它，也有證據跟它對不上，",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p150",
+     "speaker": "chief",
+     "text": "所以為什麼偏偏是想吐，答案還是：不知道。"
+    }
+   ]
+  },
+  {
+   "id": "kid-neuron-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a sunny living room pointing at her own forehead with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p151",
+     "speaker": "kid",
+     "text": "那大腦裡，",
+     "emotion": "追問"
+    },
+    {
+     "id": "p152",
+     "speaker": "kid",
+     "text": "有負責吵架的地方嗎？",
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-neurons",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding a clear plastic cup of water still in one hand and pointing at it with the other, a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p153",
+     "speaker": "chief",
+     "text": "猴子的腦裡有一群細胞，被別人帶著動時，反應特別大；"
+    },
+    {
+     "id": "p154",
+     "speaker": "chief",
+     "text": "自己動的時候，它們就比較安靜。"
+    }
+   ]
+  },
+  {
+   "id": "chief-neuron-limit",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief tilting her head with an honest thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p155",
+     "speaker": "chief",
+     "text": "研究的人推測，大腦可能就是在這裡比對、找不同。",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p156",
+     "speaker": "chief",
+     "text": "可是它們怎麼讓人想吐，還沒找到。"
+    }
+   ]
+  },
+  {
+   "id": "kid-final-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a car back seat, seat belt on, holding a small comic with a plain red cover on her lap and looking straight ahead with a thinking face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p157",
+     "speaker": "kid",
+     "text": "所以我看漫畫會暈，",
+     "emotion": "推理"
+    },
+    {
+     "id": "p158",
+     "speaker": "kid",
+     "text": "到底是怎麼回事？",
+     "emotion": "章尾停住，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-your-turn",
+   "chapter": "快到阿嬤家，小問想通了",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief leaning forward with an inviting grin, one hand open towards the viewer, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p159",
+     "speaker": "chief",
+     "text": "你自己說說看，從你的漫畫，到那杯水。",
+     "emotion": "笑"
+    }
+   ]
+  },
+  {
+   "id": "kid-got-it",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a car back seat, seat belt on, holding a small comic with a plain red cover up proudly with a big confident grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p160",
+     "speaker": "kid",
+     "text": "原來如此！",
+     "emotion": "恍然大悟"
+    },
+    {
+     "id": "p161",
+     "speaker": "kid",
+     "text": "就像那杯水：眼睛跟耳朵說的不一樣，",
+     "emotion": "篤定"
+    }
+   ]
+  },
+  {
+   "id": "kid-got-it-2",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny living room pretending to turn a big steering wheel with both hands and laughing, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p162",
+     "speaker": "kid",
+     "text": "大腦一對不上，",
+     "emotion": "篤定",
+     "pause_after_ms": 500
+    },
+    {
+     "id": "p163",
+     "speaker": "kid",
+     "text": "我就暈了！",
+     "emotion": "篤定"
+    },
+    {
+     "id": "p164",
+     "speaker": "kid",
+     "text": "還記得爸爸？他先知道要轉彎，"
+    },
+    {
+     "id": "p165",
+     "speaker": "kid",
+     "text": "所以他不暈！"
+    }
+   ]
+  },
+  {
+   "id": "chief-opinion",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling with her hands clasped, a thoughtful look, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p166",
+     "speaker": "chief",
+     "text": "說得好。還記得一開始我說，會暈代表它一直在工作嗎？",
+     "emotion": "笑"
+    },
+    {
+     "id": "p167",
+     "speaker": "chief",
+     "text": "我覺得最好玩的是：你的身體一直很認真在算你怎麼動。"
+    }
+   ]
+  },
+  {
+   "id": "grandma-house",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide shot of a small family car parked in front of a cosy old Taiwanese brick farmhouse with a red-tiled roof, potted plants and green hills, sunny afternoon, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p168",
+     "speaker": "kid",
+     "text": "到阿嬤家了！",
+     "emotion": "開心"
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p169",
+     "speaker": "kid",
+     "text": "我要先去找阿嬤！",
+     "emotion": "開心大聲"
+    }
+   ]
+  },
+  {
+   "id": "outro-chief",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up a clear plastic cup of water with a curious smile, filling the frame, a plain pale wall behind her, bright morning light, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p170",
+     "speaker": "chief",
+     "text": "你坐車或看什麼的時候，最容易暈？",
+     "emotion": "問句上揚，像聊天"
+    },
+    {
+     "id": "p171",
+     "speaker": "chief",
+     "text": "留言告訴我們。"
+    }
+   ]
+  },
+  {
+   "id": "outro-wave",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p172",
+     "speaker": "chief",
+     "text": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
+     "emotion": "誠懇"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,754 @@
+{
+  "title": "Thêm chữ S vào địa chỉ web, dữ liệu trên đường khác gì? | Văn phòng À ra thế",
+  "description": "Bé Wen dùng mạng miễn phí ở quán cà phê để đăng nhập game, mẹ dặn trước hết xem địa chỉ web có bắt đầu bằng https không. Nhưng chẳng phải chỉ thêm một chữ S sao? Mật khẩu vẫn phải gửi đi mà?\n\nTrong tập này, cô Trưởng phòng và bé Wen dùng trò \"chuyền thư trong lớp\" để suy nghĩ: mật khẩu của cháu phải qua tay mấy bạn cùng lớp mới đến được trang web. Người dọc đường có nhìn thấy không? Làm sao biết bên kia đúng là trang web đó? Ổ khóa nhỏ cạnh địa chỉ web nghĩa là gì? Còn nữa, có những việc chữ S này hoàn toàn không lo — đó là những việc nào?\n\nHình minh họa do AI tạo, chỉ là minh họa. Nguồn của từng nhận định được liệt kê trong phần tài liệu tham khảo bên dưới.\n\nDữ liệu tính đến 2026-11-12",
+  "tags": [
+    "HTTPS",
+    "TLS",
+    "an ninh mạng",
+    "chứng chỉ",
+    "mã hóa",
+    "trang web lừa đảo",
+    "khoa học phổ thông",
+    "Văn phòng À ra thế"
+  ],
+  "thumbnail": {
+    "headline": "Thêm 1 S\n**khác gì?**",
+    "sub": "Ai thấy mật khẩu?"
+  },
+  "chapters": {
+    "cafe-tablet": "Ở quán cà phê, địa chỉ web thêm chữ S",
+    "kid-direct-guess": "Mật khẩu đi qua tay nhiều người",
+    "chief-impostor": "Wen muốn chắc bên kia là công ty game",
+    "chief-secret": "Pha màu trước, rồi dán thư",
+    "chief-length": "Thư dán kín rồi, còn bị thấy gì",
+    "chief-your-turn": "Wen đã nhìn rõ"
+  },
+  "source_hashes": {
+    "chapters": {
+      "cafe-tablet": "d50c3a414bf2",
+      "kid-direct-guess": "5f0085e0d948",
+      "chief-impostor": "89c916008f4a",
+      "chief-secret": "fafa3f686f12",
+      "chief-length": "5c251a984970",
+      "chief-your-turn": "d02cd044fdab"
+    },
+    "title": "15d6c5002051",
+    "description": "fb90dbcb0bac",
+    "tags": "9d0c606699ab",
+    "thumbnail": "a3b7d61299b4"
+  },
+  "lines": {
+    "p001": {
+      "source_hash": "b304ba284343",
+      "text": "Mẹ bảo, địa chỉ web phải bắt đầu bằng HTTPS,"
+    },
+    "p002": {
+      "source_hash": "d72c9929b592",
+      "text": "mới được gõ mật khẩu game."
+    },
+    "p003": {
+      "source_hash": "f052778dc2b9",
+      "text": "Nhưng chỉ thêm một chữ S thôi mà?"
+    },
+    "p004": {
+      "source_hash": "acc022b92588",
+      "text": "Thêm S, chẳng khác mấy?"
+    },
+    "p005": {
+      "source_hash": "7cca83e5d5e4",
+      "text": "Mật khẩu vẫn phải gửi đi mà!"
+    },
+    "p006": {
+      "source_hash": "79b087605a5e",
+      "text": "Thêm chữ S, mật khẩu trên đường khác nhiều hơn cháu nghĩ;"
+    },
+    "p007": {
+      "source_hash": "e5a728d64c8b",
+      "text": "nhưng cũng có việc nó chẳng hề lo."
+    },
+    "p008": {
+      "source_hash": "2e380f9700cb",
+      "text": "Cả ổ khóa nhỏ cạnh địa chỉ, nhiều người hiểu sai."
+    },
+    "p009": {
+      "source_hash": "7e6bafa8fc0a",
+      "text": "Vậy khác ở chỗ nào?"
+    },
+    "p010": {
+      "source_hash": "e6bcb7926c6a",
+      "text": "Mật khẩu bay thẳng tới công ty game chứ?"
+    },
+    "p011": {
+      "source_hash": "eb8e060fe97e",
+      "text": "Không. Nó tới máy Wi-Fi của quán trước,"
+    },
+    "p012": {
+      "source_hash": "3a107da667f4",
+      "text": "rồi sang nhà mạng, chuyền từng trạm,"
+    },
+    "p013": {
+      "source_hash": "4276ee5d9281",
+      "text": "qua rất nhiều máy tính chuyển tiếp, mới đến công ty game."
+    },
+    "p014": {
+      "source_hash": "bcecc1a4b076",
+      "text": "Máy đó,"
+    },
+    "p015": {
+      "source_hash": "96a54b0f0935",
+      "text": "có thấy cháu gửi gì?"
+    },
+    "p016": {
+      "source_hash": "d6c2c99f4af1",
+      "text": "Như chuyền thư ở lớp."
+    },
+    "p017": {
+      "source_hash": "90d221914ef0",
+      "text": "Cháu muốn chuyền một lá thư cho bạn thân ở đầu kia lớp học."
+    },
+    "p018": {
+      "source_hash": "ebad3769172e",
+      "text": "Giữa đường phải qua tay mấy bạn."
+    },
+    "p019": {
+      "source_hash": "1c0ffac7138c",
+      "text": "Máy của quán cà phê, nhà mạng, chính là những bạn ấy."
+    },
+    "p020": {
+      "source_hash": "664bc9b909d3",
+      "text": "Thư mà không dán lại…"
+    },
+    "p021": {
+      "source_hash": "df76c962fc08",
+      "text": "Trợ giúp trình duyệt Chrome: web không kết nối riêng tư,"
+    },
+    "p022": {
+      "source_hash": "5e96c586be67",
+      "text": "người ta có thể xem, có thể sửa đồ cháu gửi."
+    },
+    "p023": {
+      "source_hash": "96ad7826a4a8",
+      "text": "Nhưng các bạn đều tốt mà!"
+    },
+    "p024": {
+      "source_hash": "602d9fa06022",
+      "text": "Đa số thôi. Nhưng cháu không chọn được ai chuyền giúp."
+    },
+    "p025": {
+      "source_hash": "9c40a1f7ef8a",
+      "text": "Nên quy tắc sau chữ S này tên là TLS,"
+    },
+    "p026": {
+      "source_hash": "fc89e7bacdd2",
+      "text": "quy chuẩn ghi: dù người dọc đường kiểm soát hoàn toàn mạng, vẫn phải bảo vệ được."
+    },
+    "p027": {
+      "source_hash": "1640142ce803",
+      "text": "Vậy chữ S"
+    },
+    "p028": {
+      "source_hash": "6e839b9923b3",
+      "text": "nghĩa là gì?"
+    },
+    "p029": {
+      "source_hash": "429b0140e7e5",
+      "text": "S là \"secure\", an toàn."
+    },
+    "p030": {
+      "source_hash": "d83f8215dca9",
+      "text": "HTTPS là bản trao đổi trang web được mã hóa bằng TLS."
+    },
+    "p031": {
+      "source_hash": "7eb5223e7ddd",
+      "text": "Mã hóa là biến nội dung thành thứ chỉ cháu và bên kia đọc hiểu."
+    },
+    "p032": {
+      "source_hash": "7d3f39f39414",
+      "text": "Vậy dán thư"
+    },
+    "p033": {
+      "source_hash": "ebb58a09260a",
+      "text": "là xong nhỉ?"
+    },
+    "p034": {
+      "source_hash": "67d33bed8e8c",
+      "text": "Phải dán cho đúng người."
+    },
+    "p035": {
+      "source_hash": "b00c3d7b7f67",
+      "text": "Nếu giữa đường có kẻ giả làm công ty game nhận thư,"
+    },
+    "p036": {
+      "source_hash": "22915cd739be",
+      "text": "dán kỹ mấy cũng là đưa thư cho hắn."
+    },
+    "p037": {
+      "source_hash": "154f671a2090",
+      "text": "Trước khi đi, máy hỏi quầy tra cứu \"địa chỉ này ở đâu\","
+    },
+    "p038": {
+      "source_hash": "5e4726bc5efe",
+      "text": "câu trả lời đó cũng có thể bị kẻ dọc đường sửa."
+    },
+    "p039": {
+      "source_hash": "232778e9e290",
+      "text": "Vậy sao cháu biết,"
+    },
+    "p040": {
+      "source_hash": "a711d0fbfdda",
+      "text": "đúng là công ty game?"
+    },
+    "p041": {
+      "source_hash": "525fc70e2253",
+      "text": "Web trình ra tấm thẻ, gọi là chứng chỉ."
+    },
+    "p042": {
+      "source_hash": "f9bc188f8259",
+      "text": "Trên đó ghi tên trang web, còn in hình một con dấu riêng,"
+    },
+    "p043": {
+      "source_hash": "1df2bb822378",
+      "text": "con dấu ấy chỉ trang web tự giữ."
+    },
+    "p044": {
+      "source_hash": "f5b8f537fc9e",
+      "text": "Trình duyệt xem: tên trên thẻ có khớp thanh địa chỉ không?"
+    },
+    "p045": {
+      "source_hash": "4420af03cc3c",
+      "text": "Thẻ do ai cấp?"
+    },
+    "p046": {
+      "source_hash": "78eab39ed2c3",
+      "text": "Tự làm là xong!"
+    },
+    "p047": {
+      "source_hash": "c0a5d81d8ce9",
+      "text": "Tự làm, trình duyệt không nhận. Phải nhờ nơi cấp chứng chỉ."
+    },
+    "p048": {
+      "source_hash": "2368e2dfb000",
+      "text": "Một nơi cấp miễn phí ghi trên web cách họ kiểm tra:"
+    },
+    "p049": {
+      "source_hash": "9553e2039a47",
+      "text": "ví dụ bảo cháu đặt một tệp họ chỉ định vào chỗ cố định trên web của cháu,"
+    },
+    "p050": {
+      "source_hash": "994408e4d3f4",
+      "text": "rồi cùng lúc xem từ nhiều nơi khác."
+    },
+    "p051": {
+      "source_hash": "2a49ab220018",
+      "text": "Như bắt cháu để tấm thiệp định sẵn vào ngăn bàn."
+    },
+    "p052": {
+      "source_hash": "1fd819e3095a",
+      "text": "Vậy họ có kiểm"
+    },
+    "p053": {
+      "source_hash": "502d9b441fb9",
+      "text": "trang web là người tốt?"
+    },
+    "p054": {
+      "source_hash": "d56c4cda65bd",
+      "text": "Không. Họ kiểm xem cháu có quản được địa chỉ này không;"
+    },
+    "p055": {
+      "source_hash": "ef6db27e8d03",
+      "text": "không xét người tốt xấu, nội dung đáng tin."
+    },
+    "p056": {
+      "source_hash": "e028d4cf1b4a",
+      "text": "Bạn vừa gửi cháu một đường link,"
+    },
+    "p057": {
+      "source_hash": "642f50b229cf",
+      "text": "bảo bấm vào được tặng đá quý miễn phí!"
+    },
+    "p058": {
+      "source_hash": "0dd33a4574e8",
+      "text": "Nó cũng là HTTPS nè!"
+    },
+    "p059": {
+      "source_hash": "47e1935228e1",
+      "text": "Coi chừng. Nhóm Chrome từng viết:"
+    },
+    "p060": {
+      "source_hash": "7ce1ab9b0d1a",
+      "text": "gần như mọi trang web lừa đảo đều dùng HTTPS."
+    },
+    "p061": {
+      "source_hash": "c3b79bd26f76",
+      "text": "Đó là trang giả làm người khác, lừa cháu gõ mật khẩu."
+    },
+    "p062": {
+      "source_hash": "792801bcb5ae",
+      "text": "Kẻ lừa cũng xin được thẻ cho trang giả có tên na ná."
+    },
+    "p063": {
+      "source_hash": "73f4c583a1aa",
+      "text": "Từ lâu trình duyệt vẽ ổ khóa nhỏ cạnh địa chỉ, báo kết nối có mã hóa."
+    },
+    "p064": {
+      "source_hash": "aff070985817",
+      "text": "Họ nghiên cứu thấy,"
+    },
+    "p065": {
+      "source_hash": "0f080ad3d0b4",
+      "text": "chỉ 11 phần trăm người tham gia thật sự hiểu ổ khóa."
+    },
+    "p066": {
+      "source_hash": "5366fe180b45",
+      "text": "Năm 2023, họ báo thay ổ khóa bằng hình khác,"
+    },
+    "p067": {
+      "source_hash": "6a6bb3f747d1",
+      "text": "kẻo ai cũng tưởng có khóa là web tốt."
+    },
+    "p068": {
+      "source_hash": "b2e5860d3bbf",
+      "text": "Vậy sao trình duyệt lại tin"
+    },
+    "p069": {
+      "source_hash": "a86219184cc6",
+      "text": "nơi cấp thẻ?"
+    },
+    "p070": {
+      "source_hash": "6f6db301b224",
+      "text": "Vì nơi đó cũng có thẻ, đóng dấu của tầng cao hơn."
+    },
+    "p071": {
+      "source_hash": "5e6dbdb537c8",
+      "text": "Tầng này đóng dấu tầng kia nối lên trên, tấm trên cùng gọi là chứng chỉ gốc."
+    },
+    "p072": {
+      "source_hash": "1d7448dc983d",
+      "text": "Trình duyệt, hệ điện thoại cài sẵn bộ chứng chỉ gốc,"
+    },
+    "p073": {
+      "source_hash": "c3a722444709",
+      "text": "như cháu quen hiệu trưởng, thấy dấu là yên tâm."
+    },
+    "p074": {
+      "source_hash": "33b3c33c4515",
+      "text": "Lỡ nơi cấp thẻ cấp nhầm thì sao?"
+    },
+    "p075": {
+      "source_hash": "7f375891702a",
+      "text": "Giờ trình duyệt Chrome, Safari buộc"
+    },
+    "p076": {
+      "source_hash": "c984a15b46a8",
+      "text": "chứng chỉ vào sổ công khai."
+    },
+    "p077": {
+      "source_hash": "1e11b18eb865",
+      "text": "Sổ này chỉ thêm, không xóa, ai cũng xem được."
+    },
+    "p078": {
+      "source_hash": "420d60731ff7",
+      "text": "Chủ web còn đăng ký báo tin: ai lấy chứng chỉ tên mình,"
+    },
+    "p079": {
+      "source_hash": "ebd851f9de48",
+      "text": "ghi vào sổ là nhận được tin."
+    },
+    "p080": {
+      "source_hash": "18f43fe30eb0",
+      "text": "Kiểm không qua,"
+    },
+    "p081": {
+      "source_hash": "4f01b2a87e0b",
+      "text": "thì sao?"
+    },
+    "p082": {
+      "source_hash": "1db0e6f1cb49",
+      "text": "Như Chrome cảnh báo cả trang: kết nối của bạn không riêng tư."
+    },
+    "p083": {
+      "source_hash": "58c933233ff6",
+      "text": "Trợ giúp của nó viết, lỗi có thể do trang web, mạng, hoặc thiết bị của cháu."
+    },
+    "p084": {
+      "source_hash": "0f9ff212438e",
+      "text": "Vậy dán thư sao"
+    },
+    "p085": {
+      "source_hash": "505405816696",
+      "text": "để bạn không bóc ra?"
+    },
+    "p086": {
+      "source_hash": "ff5cbf054b72",
+      "text": "Trước khi viết, hai bên cần một bí mật chỉ hai bên biết."
+    },
+    "p087": {
+      "source_hash": "25fef5981cc5",
+      "text": "Nhưng thứ gửi qua,"
+    },
+    "p088": {
+      "source_hash": "ace89faccd81",
+      "text": "ai cũng thấy mà!"
+    },
+    "p089": {
+      "source_hash": "78f4082af2c6",
+      "text": "Nghĩ như pha màu. Trước hết chọn chung một màu ai cũng biết,"
+    },
+    "p090": {
+      "source_hash": "649c4cc514c4",
+      "text": "rồi mỗi người lén thêm một màu chỉ mình biết."
+    },
+    "p091": {
+      "source_hash": "5f96cc89be8b",
+      "text": "Gửi màu đã pha cho nhau, người nhận thêm màu của mình."
+    },
+    "p092": {
+      "source_hash": "ac7e588dc99a",
+      "text": "Cuối cùng hai bên pha ra cùng một màu;"
+    },
+    "p093": {
+      "source_hash": "76904a9733bf",
+      "text": "bạn chuyền chỉ thấy màu dở, không pha ra nổi."
+    },
+    "p094": {
+      "source_hash": "25ba75df94a4",
+      "text": "Đây chỉ là ví dụ, cách thật là toán học. Nhưng quy chuẩn ghi rõ:"
+    },
+    "p095": {
+      "source_hash": "ac4de42f936e",
+      "text": "bước đầu là đổi thứ này, sau đó mọi qua lại đều dán kín,"
+    },
+    "p096": {
+      "source_hash": "1a9b7afbb8fa",
+      "text": "cả tấm thẻ lúc nãy cũng dán rồi mới gửi."
+    },
+    "p097": {
+      "source_hash": "658689d4983b",
+      "text": "Lỡ có người ghi lại trước,"
+    },
+    "p098": {
+      "source_hash": "fd4ae9dfedb6",
+      "text": "sau này mới giải thì sao?"
+    },
+    "p099": {
+      "source_hash": "94031c345e76",
+      "text": "Màu này dùng xong bỏ."
+    },
+    "p100": {
+      "source_hash": "04a08154d826",
+      "text": "Quy chuẩn ghi: dù sau này con dấu của web bị trộm,"
+    },
+    "p101": {
+      "source_hash": "a1838529621c",
+      "text": "bí mật lần này đã bỏ thì bản ghi cũ cũng không mở được."
+    },
+    "p102": {
+      "source_hash": "44f7a967312b",
+      "text": "Nhưng tấm thẻ"
+    },
+    "p103": {
+      "source_hash": "df9694d39614",
+      "text": "photo được mà?"
+    },
+    "p104": {
+      "source_hash": "99a025f33a0c",
+      "text": "Được. Nên chỉ đưa thẻ là chưa đủ, trang web còn phải đóng dấu tại chỗ."
+    },
+    "p105": {
+      "source_hash": "b5fb0c1f8f23",
+      "text": "Kẻ photo không có dấu."
+    },
+    "p106": {
+      "source_hash": "f8252c903290",
+      "text": "Lỡ có bạn lén lút"
+    },
+    "p107": {
+      "source_hash": "b83738f32e9b",
+      "text": "đổi màu đi thì sao?"
+    },
+    "p108": {
+      "source_hash": "8c4c0a2dc71a",
+      "text": "Web đóng dấu lên cả đoạn vừa qua lại, gồm màu."
+    },
+    "p109": {
+      "source_hash": "1da8d9b9c8d0",
+      "text": "Trình duyệt lấy hình trên thẻ ra so;"
+    },
+    "p110": {
+      "source_hash": "f07c6109a3cb",
+      "text": "màu bị tráo, dấu không khớp, ngắt kết nối ngay."
+    },
+    "p111": {
+      "source_hash": "b919fd4e2053",
+      "text": "Cuối cùng hai bên soát lại: cả đoạn qua lại,"
+    },
+    "p112": {
+      "source_hash": "d822de3fff3b",
+      "text": "điều tôi thấy có giống bạn thấy không? Khớp rồi mới bắt đầu gửi thư thật."
+    },
+    "p113": {
+      "source_hash": "28716be7344d",
+      "text": "Từ đó mỗi lá thư đều dán bằng màu chỉ hai bên biết."
+    },
+    "p114": {
+      "source_hash": "6d4bc44dce94",
+      "text": "Dọc đường ai sửa một chút, thư không mở được; quy chuẩn bắt ngắt kết nối ngay."
+    },
+    "p115": {
+      "source_hash": "902a797bebcf",
+      "text": "Ngoài phong bì ghi độ dài thư;"
+    },
+    "p116": {
+      "source_hash": "9467029bdf8e",
+      "text": "nó cũng thuộc niêm phong: thấy được, không sửa được."
+    },
+    "p117": {
+      "source_hash": "302a9c019594",
+      "text": "Nếu có người chép lá thư"
+    },
+    "p118": {
+      "source_hash": "b90e45595ae9",
+      "text": "“mua đá quý”"
+    },
+    "p119": {
+      "source_hash": "723fa530afa8",
+      "text": "rồi gửi lại lần nữa?"
+    },
+    "p120": {
+      "source_hash": "fc341badc049",
+      "text": "Mỗi thư đều có số, hai bên tự đếm từ không, gửi một thư cộng một."
+    },
+    "p121": {
+      "source_hash": "89685960cbe8",
+      "text": "Số không ghi ngoài, trộn vào niêm phong."
+    },
+    "p122": {
+      "source_hash": "d55c279876db",
+      "text": "Thư cũ gửi lại lần nữa, hay thứ tự bị đảo,"
+    },
+    "p123": {
+      "source_hash": "6d4110cea98b",
+      "text": "lệch số, mở không ra."
+    },
+    "p124": {
+      "source_hash": "968f430aa1c1",
+      "text": "Có một ngoại lệ, chính quy chuẩn đánh dấu là \"lưu ý quan trọng\"."
+    },
+    "p125": {
+      "source_hash": "7602cd85eca2",
+      "text": "Ngoại lệ gì ạ?"
+    },
+    "p126": {
+      "source_hash": "553543ca8b09",
+      "text": "Nếu cháu từng vào web đó, trình duyệt có thể dùng bí mật lần trước,"
+    },
+    "p127": {
+      "source_hash": "ba453ee7c1fc",
+      "text": "cho thư đầu đi sớm, đỡ một vòng đi về."
+    },
+    "p128": {
+      "source_hash": "9e1444b6c979",
+      "text": "Quy chuẩn nói: thư đi trước không được bảo đảm chống gửi lại;"
+    },
+    "p129": {
+      "source_hash": "0f37b328983b",
+      "text": "ai chép rồi gửi lại, có thể làm việc như mua đồ xảy ra hai lần."
+    },
+    "p130": {
+      "source_hash": "8fad91e73d83",
+      "text": "Nên quy chuẩn ghi thêm vài cách để web tự chặn."
+    },
+    "p131": {
+      "source_hash": "1fec170346fd",
+      "text": "Còn nữa, khi xong, thư cuối nói: tôi nói xong rồi."
+    },
+    "p132": {
+      "source_hash": "9394e984b262",
+      "text": "thư bị cắt ngang, bên kia mới nhận ra."
+    },
+    "p133": {
+      "source_hash": "d63276da9fb9",
+      "text": "dọc đường"
+    },
+    "p134": {
+      "source_hash": "6331fdc77b32",
+      "text": "hết ai thấy gì nhỉ?"
+    },
+    "p135": {
+      "source_hash": "04c977acf9f4",
+      "text": "Vẫn thấy một ít. Nhớ độ dài ghi ngoài phong bì chứ?"
+    },
+    "p136": {
+      "source_hash": "b8490afffed4",
+      "text": "Độ dày thư, bao lâu một lá, dọc đường vẫn thấy."
+    },
+    "p137": {
+      "source_hash": "d4af98736f5f",
+      "text": "Xem độ dày,"
+    },
+    "p138": {
+      "source_hash": "1b8095ed3cb1",
+      "text": "thấy được gì?"
+    },
+    "p139": {
+      "source_hash": "ab5abfc5e171",
+      "text": "Quy chuẩn nhắc: độ dài, thời gian có khi lộ ra cháu làm gì,"
+    },
+    "p140": {
+      "source_hash": "8526817723d4",
+      "text": "nhất là khi ít lựa chọn, như một web chỉ có mấy video cố định."
+    },
+    "p141": {
+      "source_hash": "82683984a2e9",
+      "text": "Web có thể độn chỗ trống, cho thư dày bằng nhau;"
+    },
+    "p142": {
+      "source_hash": "7f707aa2cc48",
+      "text": "độn bao nhiêu thì quy chuẩn bỏ ngỏ."
+    },
+    "p143": {
+      "source_hash": "ab23b3a03ce4",
+      "text": "Vậy họ biết"
+    },
+    "p144": {
+      "source_hash": "223eb2eefe69",
+      "text": "cháu đang vào web nào?"
+    },
+    "p145": {
+      "source_hash": "49e13a5d08de",
+      "text": "Rất có thể. Đầu kết nối, trình duyệt sẽ nói nó muốn tìm web nào,"
+    },
+    "p146": {
+      "source_hash": "e2e05accb87c",
+      "text": "tên này thường không được dán kín."
+    },
+    "p147": {
+      "source_hash": "e126ecac4372",
+      "text": "Tên người nhận ngoài bì."
+    },
+    "p148": {
+      "source_hash": "41393d46b22b",
+      "text": "Dán luôn được không?"
+    },
+    "p149": {
+      "source_hash": "2b1f5709f5b3",
+      "text": "Tháng 3 năm 2026, một quy chuẩn mới chính thức ban hành, để làm đúng việc này:"
+    },
+    "p150": {
+      "source_hash": "3bf054473b66",
+      "text": "đưa cả tên người nhận vào phong bì lớp trong."
+    },
+    "p151": {
+      "source_hash": "b04f1a6b3261",
+      "text": "Nhưng nó ghi: chỉ thế chưa đủ."
+    },
+    "p152": {
+      "source_hash": "8faf7b3c8147",
+      "text": "thư cuối cùng tới máy nào của web, dọc đường vẫn thấy;"
+    },
+    "p153": {
+      "source_hash": "7a1cffad8f55",
+      "text": "nhưng nhiều web hay chung máy,"
+    },
+    "p154": {
+      "source_hash": "f23ed3bd09fa",
+      "text": "nên tên trên phong bì mới là manh mối rõ nhất."
+    },
+    "p155": {
+      "source_hash": "5e678cbab737",
+      "text": "Nhớ câu hỏi \"địa chỉ này ở đâu\" trước khi đi không?"
+    },
+    "p156": {
+      "source_hash": "ab96c661fd88",
+      "text": "câu hỏi đó mà không dán, cũng lộ tên."
+    },
+    "p157": {
+      "source_hash": "32058694ec0f",
+      "text": "Vậy cái link tặng đá quý…"
+    },
+    "p158": {
+      "source_hash": "a3419c95b4a9",
+      "text": "Quan trọng nhất: niêm phong chỉ lo dọc đường."
+    },
+    "p159": {
+      "source_hash": "d2a2e0600df0",
+      "text": "Thư tới tay bên kia, bên kia đọc được hết."
+    },
+    "p160": {
+      "source_hash": "ee61cf48823e",
+      "text": "Nếu bên kia là kẻ lừa, HTTPS cũng đưa mật khẩu tới tận tay hắn."
+    },
+    "p161": {
+      "source_hash": "635e3b5108cd",
+      "text": "Vậy cháu phân biệt sao?"
+    },
+    "p162": {
+      "source_hash": "823a5d7f35b2",
+      "text": "Trợ giúp Chrome cũng nhắc: dù là kết nối an toàn,"
+    },
+    "p163": {
+      "source_hash": "a5a00a69cb84",
+      "text": "cũng phải xem kỹ tên trên thanh địa chỉ có đúng web cần vào."
+    },
+    "p164": {
+      "source_hash": "b8c39e07a2b3",
+      "text": "Tên dư một chữ cái!"
+    },
+    "p165": {
+      "source_hash": "9d0e52451533",
+      "text": "Đúng, niêm phong không lo, cháu tự nhìn."
+    },
+    "p166": {
+      "source_hash": "c997e773f825",
+      "text": "Vậy thêm chữ S, mật khẩu trên đường khác gì?"
+    },
+    "p167": {
+      "source_hash": "36d742bcb996",
+      "text": "À ra thế!"
+    },
+    "p168": {
+      "source_hash": "b4a835294305",
+      "text": "Như thư dán lúc nãy,"
+    },
+    "p169": {
+      "source_hash": "9143b223f739",
+      "text": "các bạn vẫn chuyền, nhưng không đọc được,"
+    },
+    "p170": {
+      "source_hash": "616bf2174fb3",
+      "text": "không giả nổi tên web đó!"
+    },
+    "p171": {
+      "source_hash": "495a669350df",
+      "text": "Hay lắm. Cô thấy hay nhất: niêm phong này cháu dùng mỗi ngày,"
+    },
+    "p172": {
+      "source_hash": "c0ee9b730ede",
+      "text": "mà chưa từng nhìn rõ nó."
+    },
+    "p173": {
+      "source_hash": "b4f348522f85",
+      "text": "Cháu báo mẹ,"
+    },
+    "p174": {
+      "source_hash": "b8a9ebbacfcd",
+      "text": "cái link đó là giả!"
+    },
+    "p175": {
+      "source_hash": "23c35e85a11e",
+      "text": "Xem tên rồi mới gõ mật khẩu!"
+    },
+    "p176": {
+      "source_hash": "7e4f77703946",
+      "text": "Bạn gặp web tên na ná mà giả chưa?"
+    },
+    "p177": {
+      "source_hash": "fe508e80b52e",
+      "text": "Bình luận"
+    },
+    "p178": {
+      "source_hash": "88de677d4daa",
+      "text": "Muốn cùng tìm những câu hỏi vì sao quanh ta, hãy đăng ký Văn phòng À ra thế."
+    }
+  }
+}

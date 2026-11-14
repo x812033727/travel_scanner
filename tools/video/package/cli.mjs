@@ -3,7 +3,8 @@ import { assembledAudioProblems } from "../core/audio-evidence.mjs";
 // been approved exactly as it is. metadata.json carries the disclosure answer (the same the
 // quality check writes), and the package is checked as soon as it is written
 // (docs/videos/HANDS-OFF.md §上傳包與「可以上架」); the publish review sends that check.
-import { copyFileSync, existsSync, linkSync, mkdirSync, readdirSync, rmSync, statSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { copyFileSync, existsSync, linkSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 
@@ -52,6 +53,16 @@ export function captionsCurrent(manifest, speech, wanted, translations, branding
   const have = Object.keys(manifest.locales ?? {});
   if (have.some((locale) => !wanted.includes(locale))) return false;
   return wanted.every((locale) => manifest.locales?.[locale] || manifest.skipped?.[locale] || (locale !== narration && !translations[locale]));
+}
+
+/** { file: sha256 } for each package file that is there, in the order given; a missing one is left out (the check names it). */
+export function thumbnailHashes(upload, files) {
+  const out = {};
+  for (const file of files) {
+    const full = path.join(upload, file);
+    if (existsSync(full)) out[file] = createHash("sha256").update(readFileSync(full)).digest("hex");
+  }
+  return out;
 }
 
 /**
@@ -257,6 +268,12 @@ export async function run(command, args, ctx) {
     final_sha256: approval.sha256,
     ...(runtimeProof ? { production_policy: doc.production_policy, runtime_spec: { ...doc.runtime_spec }, runtime_context: runtimeProof.runtime_context, runtime_policy_hash: runtimeProof.policy_hash, runtime_proof: runtimeProof } : {}),
     ...(applied ? { branding_hash: applied.hash } : {}),
+    // The bytes of every thumbnail in the package. The publish review is bound to this file's hash
+    // (review/sync.mjs publishSubmission), and the site keeps an approved review for the same hash:
+    // without these a new thumbnail on an approved package never reached the site (ticket
+    // 2026-11-10-review-push-a-changed-thumbnail-never). Only with a thumbnail; before `thumbnail`
+    // so the keys after it read as before.
+    ...(thumbnail ? { thumbnail_sha256: thumbnailHashes(upload, ["thumbnail.jpg", ...variants, ...Object.values(localized.files)]) } : {}),
     thumbnail: thumbnail ? "thumbnail.jpg" : null,
     // Only with a thumbnail: a package written before localized thumbnails reads the same.
     ...(thumbnail ? { thumbnails: localized.files, skipped_thumbnail_locales: localized.skipped } : {}),
