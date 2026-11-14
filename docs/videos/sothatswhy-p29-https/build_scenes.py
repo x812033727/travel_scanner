@@ -35,7 +35,7 @@ CHARACTERS = [
      "voice": dict(VOICE), "sheet_prompt": SHEET},
     {"id": "kid", "name": "小問",
      "appearance": "a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, both hands free",
-     "voice": {"provider": "gemini", "name": "Leda", "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快，一秒五個字以上，不拖尾音"},
+     "voice": {"provider": "gemini", "name": "Leda", "tempo": 1.12, "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快，一秒五個字以上，不拖尾音"},
      "sheet_prompt": SHEET},
 ]
 
