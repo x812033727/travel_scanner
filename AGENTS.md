@@ -76,7 +76,8 @@ checks, CI failures, Dependabot), `web-i18n-e2e` (messages and Playwright),
 `youtube-video`, `curio-episode` (any 奇聞檔案局 episode, a `curio-` slug: theatrical-light
 rich-gouache keyframes via built-in `generate_image` + `keyframes import --provider external --usd 0`,
 never MiniMax images; `zh-TW` Gemini `Sulafat` >= 4.4 chars/s; 8-locale dubs via MiniMax;
-2x-zoom independent audit and the lint gate that keeps them),
+2x-zoom independent audit, post-assembly independent audience review fixed before Drive backup
+and `review-push`, and the lint gate that keeps them),
 `brand-story` (any 品牌故事, a `story-` slug: the owner's fixed choices, how a batch is planned,
 fact-checked and imported, and what to do when the host worker stalls),
 `minimax-h3-runpod` (H3 clips on a RunPod pod the site starts, from a paired session),
@@ -92,5 +93,7 @@ read `docs/videos/so-thats-why/look.md`,
 `docs/videos/lessons/sothatswhy.md` alongside `youtube-video` (owner 2026-11-14:
 theatrical-light rich-gouache keyframes via built-in image generation +
 `keyframes import --provider external --usd 0`, never MiniMax images; `zh-TW` Gemini
-`Sulafat` + `Leda`; 8-locale dubs via MiniMax). Read the matching skill before
+`Sulafat` + `Leda`; 8-locale dubs via MiniMax; independent post-assembly audience review
+in `review/audience-review.md` with all findings fixed and `qa` re-passed before Google Drive
+backup and `review-push --gate final`). Read the matching skill before
 re-deriving a workflow from the docs.
