@@ -776,8 +776,14 @@ async def upsert_project(
     project.stage = payload.stage
     project.checklist = [item.model_dump() for item in payload.checklist]
     # The owner records the id on /admin/videos first; a report that does not carry it yet
-    # (the worker reads it back a round later) must not clear it.
-    if payload.youtube_video_id is not None:
+    # (the worker reads it back a round later) must not clear it. Nor may a report bring back an
+    # id the owner unlinked (unlink_youtube): the script's video.json keeps the old id, and the
+    # worker and `review push` send it on every report.
+    if (
+        payload.youtube_video_id is not None
+        and payload.youtube_video_id != project.youtube_video_id
+        and not await _youtube_id_unlinked(session, slug, payload.youtube_video_id)
+    ):
         project.youtube_video_id = payload.youtube_video_id
     if payload.source_guide is not None:
         project.source_guide = payload.source_guide
@@ -2942,6 +2948,80 @@ async def link_youtube(
     await session.commit()
     view = await project_view(session, slug)
     return view.model_copy(update={"youtube_publish_note": reason})
+
+
+async def _youtube_id_unlinked(session: AsyncSession, slug: str, video_id: str) -> bool:
+    """Whether the owner unlinked this id from this video on /admin/videos (unlink_youtube).
+
+    Read from the audit rows, so no column is needed; a report only asks when it would change
+    the stored id. Linking the same id again by hand (link_youtube) stores it, and a report that
+    then carries it changes nothing."""
+    rows = await session.scalars(
+        select(AdminAuditLog.metadata_json).where(
+            AdminAuditLog.action == "video_youtube_unlinked",
+            AdminAuditLog.target == f"video_project:{slug}",
+        )
+    )
+    return any(isinstance(row, dict) and row.get("youtube_video_id") == video_id for row in rows)
+
+
+async def unlink_youtube(session: AsyncSession, slug: str, user: User) -> ProjectOut:
+    """Forget the YouTube video this project was linked to, so its new final can be uploaded.
+
+    Only a link without a publish time (the page's "linked" state) is cleared: a scheduled or
+    public video is the channel's, and the site does not let go of it from here. Nothing is asked
+    of YouTube and nothing is deleted there; the old video stays on the channel as it is.
+
+    Cleared with the id is everything that belongs to the old video: the publish time (null
+    already), the last YouTube sync (its request and step results name the old id, and
+    ``_upload`` would otherwise find the run done), the resumable upload session (a capability
+    URL for an mp4 upload of the old final), and ``youtube_removed_at`` (a finding about the old
+    video). Refused while a sync run or a VPS job holds the video.
+    """
+    project = await _project(session, slug, lock=True)
+    _refuse_dropped(project)
+    old_id = project.youtube_video_id
+    if old_id is None:
+        raise AppError(409, "video_youtube_not_linked", "這支影片沒有 YouTube 連結，沒有可以解除的")
+    if project.youtube_publish_at is not None:
+        raise AppError(
+            409,
+            "video_youtube_unlink_published",
+            "這支影片已記錄公開時間（已排程或已公開），網站不解除它的連結；要改請先在 Studio 處理",
+        )
+    if youtube_sync_running(project.youtube_sync):
+        raise AppError(
+            409, "video_youtube_sync_running", "這支影片正在送 YouTube，等它跑完再解除連結"
+        )
+    # The VPS sender takes the same project lock before staging or starting an upload.
+    from app.video_youtube import vps
+
+    try:
+        await vps.assert_idle(session, slug)
+    except Refused as error:
+        raise AppError(error.status, error.code, error.detail) from error
+    previous_sync = project.youtube_sync
+    now = datetime.now(UTC)
+    project.youtube_video_id = None
+    project.youtube_publish_at = None
+    project.youtube_sync = None
+    project.youtube_upload_session = None
+    project.youtube_removed_at = None
+    project.updated_at = now
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="video_youtube_unlinked",
+            target=f"video_project:{slug}",
+            metadata_json={
+                "slug": slug,
+                "youtube_video_id": old_id,
+                "youtube_sync_status": (previous_sync or {}).get("status"),
+            },
+        )
+    )
+    await session.commit()
+    return await project_view(session, slug)
 
 
 async def backfill_youtube_publish_times(

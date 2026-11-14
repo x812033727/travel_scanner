@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { chosenLanguagesComplete, finalApproved, publishState, PublishPill, ReviewCard, UploadPackage, type ProjectSummary, type Review } from "./admin-video-review-card";
+import { chosenLanguagesComplete, finalApproved, publishState, PublishPill, ReviewCard, UnlinkYoutube, UploadPackage, type ProjectSummary, type Review } from "./admin-video-review-card";
 
 // Ticket 2026-09-28-admin-video-review-the-owner-s: three final-cut approvals did not register on
 // 2026-09-28 until the owner was sent the exact titles. These pin down what the card itself does
@@ -132,6 +132,47 @@ describe("a final cut's review card", () => {
     await waitFor(() => expect(onDecided).toHaveBeenCalledTimes(1));
     expect(posts).toHaveLength(2);
     expect(within(card).queryByRole("alert")).toBeNull();
+  });
+});
+
+describe("clearing a YouTube link without a publish time", () => {
+  it("asks first, explains the old video stays, then posts to the unlink route and reads the page again", async () => {
+    const calls: { url: string; method?: string }[] = [];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      calls.push({ url: String(input), method: init?.method });
+      return Promise.resolve(Response.json({ slug: "remade", youtube_video_id: null }));
+    }));
+    const confirm = vi.fn<(message?: string) => boolean>(() => false);
+    vi.stubGlobal("confirm", confirm);
+    const onUnlinked = vi.fn();
+    render(<UnlinkYoutube slug="remade" videoId="abcdefghijk" onUnlinked={onUnlinked} />);
+    const button = screen.getByRole("button", { name: "解除 YouTube 連結" });
+
+    // Declined: nothing is sent.
+    fireEvent.click(button);
+    expect(confirm).toHaveBeenCalledTimes(1);
+    expect(String(confirm.mock.calls[0]?.[0])).toContain("abcdefghijk");
+    expect(String(confirm.mock.calls[0]?.[0])).toContain("YouTube 上的舊影片不會被刪除");
+    expect(calls).toEqual([]);
+
+    confirm.mockReturnValue(true);
+    fireEvent.click(button);
+    await waitFor(() => expect(onUnlinked).toHaveBeenCalledTimes(1));
+    expect(calls).toEqual([{ url: "/api/travel/admin/videos/remade/youtube/unlink", method: "POST" }]);
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+
+  it("keeps a refusal on the page with the server's reason", async () => {
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json(
+      { code: "video_youtube_unlink_published", detail: "這支影片已記錄公開時間" }, { status: 409 },
+    ))));
+    vi.stubGlobal("confirm", vi.fn(() => true));
+    const onUnlinked = vi.fn();
+    render(<UnlinkYoutube slug="remade" videoId="abcdefghijk" onUnlinked={onUnlinked} />);
+    fireEvent.click(screen.getByRole("button", { name: "解除 YouTube 連結" }));
+    const alert = await screen.findByRole("alert");
+    expect(alert.textContent).toMatch(/^沒有解除：/);
+    expect(onUnlinked).not.toHaveBeenCalled();
   });
 });
 

@@ -835,6 +835,36 @@ export function UploadedForm({ slug, onLinked, publishAt: suggested = "", privat
   </form>;
 }
 
+/**
+ * A video linked to a YouTube id with no publish time ("linked"): the owner re-made its final and
+ * wants to upload again. POST /admin/videos/{slug}/youtube/unlink clears the site's record of the
+ * old video (id, last sync, upload session); nothing is asked of YouTube and the old video stays
+ * there. The server refuses a scheduled or public video and one a sync or VPS job holds.
+ */
+export function UnlinkYoutube({ slug, videoId, onUnlinked }: { slug: string; videoId: string; onUnlinked: () => void }) {
+  const t = useTranslations("admin.videoReviews");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const unlink = async () => {
+    if (busy || !window.confirm(t("unlinkYoutubeConfirm", { id: videoId }))) return;
+    setBusy(true);
+    setError("");
+    try {
+      await api(`/admin/videos/${slug}/youtube/unlink`, { method: "POST" });
+      onUnlinked();
+    } catch (problem) {
+      setError(t("unlinkYoutubeError", { message: problem instanceof Error ? problem.message : "" }));
+    } finally {
+      setBusy(false);
+    }
+  };
+  return <div className="grid gap-2 rounded-2xl border border-[var(--line)] p-4">
+    <p className="text-sm leading-6 text-[var(--muted)]">{t("unlinkYoutubeHelp")}</p>
+    {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
+    <div><Button secondary disabled={busy} onClick={() => void unlink()}>{busy ? t("unlinkingYoutube") : t("unlinkYoutubeButton")}</Button></div>
+  </div>;
+}
+
 const THUMBNAIL_VARIANTS = [["A", "thumbnail"], ["B", "thumbnail-b"], ["C", "thumbnail-c"]] as const;
 
 function FinalBody({ slug, review, mp4Gone, vertical }: { slug: string; review: Review; mp4Gone: boolean; vertical: boolean }) {

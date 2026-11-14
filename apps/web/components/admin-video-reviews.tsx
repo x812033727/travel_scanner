@@ -8,7 +8,7 @@ import { AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
 import { CategoryPanel, VideoBrowser } from "@/components/admin-video-browser";
 import {
   CompilationDownload, control, finalApproved, isBlocked, type LanguagePart, type LocaleChoice, LOCALE_PARTS, LOCALES, mp4Retired, needsOwner, partStateLabel, type Project,
-  type ProjectSummary, PublishPill, publishState, REFRESH_MS, readyToUpload, type Review, ReviewCard, SLUG, UploadPackage, UploadedForm, fileUrl,
+  type ProjectSummary, PublishPill, publishState, REFRESH_MS, readyToUpload, type Review, ReviewCard, SLUG, UnlinkYoutube, UploadPackage, UploadedForm, fileUrl,
   useRefresh, useWhen, NARRATION_LOCALES, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
 import { DeleteVideo } from "@/components/admin-video-delete";
@@ -467,6 +467,8 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
       </section>}
       <RetryVideo project={project} canManage={manage.allowed} onRequested={load} />
       <AdminVideoRenewal key={project.slug} project={project} canManage={manage.allowed} onSubmitted={load} />
+      {state === "linked" && project.youtube_video_id && manage.allowed && !syncRunning(project.youtube_sync)
+        && <UnlinkYoutube slug={slug} videoId={project.youtube_video_id} onUnlinked={load} />}
       {project.youtube_sync && <YoutubeSyncPanel slug={slug} sync={project.youtube_sync} canManage={manage.allowed && !dropped} onChange={load} />}
       {readyToUpload(project) && manage.allowed && <SendToYoutube slug={slug} confirmation={approvedPackage(project.reviews)} connection={connection} sync={project.youtube_sync} mp4Gone={retired} onSent={load} />}
       {pendingFinal && !dropped && !short && !project.youtube_video_id && !approvedPackage(project.reviews) && !syncRunning(project.youtube_sync) && connection?.linked && manage.allowed

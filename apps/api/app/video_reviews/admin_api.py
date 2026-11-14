@@ -338,6 +338,13 @@ async def link_youtube(
     )
 
 
+@admin_router.post("/{slug}/youtube/unlink", response_model=ProjectOut)
+async def unlink_youtube(slug: str, user: ContentManager, session: Session) -> ProjectOut:
+    """Clear a link that has no publish time, so the video's new final can be uploaded again.
+    Only the site's record goes; the old video stays on YouTube untouched."""
+    return await service.unlink_youtube(session, slug, user)
+
+
 @admin_router.put("/{slug}/languages", response_model=ProjectOut)
 async def set_languages(
     slug: str, payload: LocalesIn, user: ContentManager, session: Session
