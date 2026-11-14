@@ -3,12 +3,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, DIR, hash, loadDraft, buildPool, readPool, writeJson } from './core.mjs';
 import { openStore, ingest, assertSnapshot, search, lookup } from './store.mjs';
-import { renderQuestions, renderSources, renderDedup, renderThemes, renderHtml, validateThemes } from './render.mjs';
+import { renderQuestions, renderSources, renderDedup, renderThemes, renderHtml, renderProducible, validateThemes } from './render.mjs';
 import { readBaseline, compareBaseline, validateBaseline, validateCheckpoints, sourceImpact } from './history.mjs';
 
 const [command = 'help', value, flag] = process.argv.slice(2);
 const readThemes = (pool) => validateThemes(JSON.parse(fs.readFileSync(path.join(ROOT, DIR, 'themes.json'), 'utf8')), pool);
-const exportsFor = (pool, themes) => ({ 'QUESTIONS.md': renderQuestions(pool), 'SOURCES.md': renderSources(pool), 'DEDUP.md': renderDedup(pool), 'THEMES.md': renderThemes(themes, pool), 'index.html': renderHtml(pool, themes) });
+const exportsFor = (pool, themes) => ({ 'QUESTIONS.md': renderQuestions(pool), 'SOURCES.md': renderSources(pool), 'DEDUP.md': renderDedup(pool), 'THEMES.md': renderThemes(themes, pool), 'index.html': renderHtml(pool, themes), 'PRODUCIBLE.html': renderProducible(pool, themes) });
 let db;
 try {
   if (process.argv.length > 5 || (flag && (flag !== '--all' || command !== 'search')) || (['help', 'preview', 'build', 'check', 'index', 'stats', 'themes', 'baseline'].includes(command) && value)) throw new Error('Unexpected arguments');

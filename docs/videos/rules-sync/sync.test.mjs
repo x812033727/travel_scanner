@@ -27,9 +27,12 @@ test("globs: *, **, {a,b} and the fixed base", () => {
 });
 
 test("episode folders use the drama backup names", () => {
-  assert.equal(episodeFolder("curio-h04-v2"), "奇聞檔案局/H04");
-  assert.equal(episodeFolder("curio-w02-michelin-guide-stars"), "奇聞檔案局/W02");
-  assert.equal(episodeFolder("sothatswhy-p17-gecko-feet"), "原來如此事務所/P17");
+  assert.equal(episodeFolder("curio-h04-v2"), "奇聞檔案局/H-歷史懸案/H04");
+  assert.equal(episodeFolder("curio-b01"), "奇聞檔案局/W-商業與品牌奇聞/B01");
+  assert.equal(episodeFolder("curio-w02-michelin-guide-stars"), "奇聞檔案局/W-商業與品牌奇聞/W02");
+  assert.equal(episodeFolder("curio-t74-wow-signal"), "奇聞檔案局/U-外星太空與未知訊號/T74");
+  assert.equal(episodeFolder("sothatswhy-p17-gecko-feet"), "原來如此事務所/生物動物與植物/P17");
+  assert.equal(episodeFolder("sothatswhy-g638-firefly"), "原來如此事務所/生物動物與植物/G638");
   assert.equal(episodeFolder("zhong-tian-qu-qi-e033"), "種田娶妻打天下/第033集");
   assert.equal(episodeFolder("zhong-tian-qu-qi-e001-005-v2"), "種田娶妻打天下/第001-005集");
   assert.equal(episodeFolder("zhong-tian-qu-qi-e001-r2"), "種田娶妻打天下（真人版）/第001集");
@@ -52,7 +55,7 @@ test("one file can go to several places; except and - are honoured", () => {
   assert.equal(destination(sample[1], "a/x/r2-bible.md"), "AI劇/B/r2-bible.md");
   assert.equal(destination(sample[2], "a/x/keep.md"), "AI劇/C/k.md");
   assert.equal(destination(sample[3], "a/old.md"), "-");
-  assert.equal(destination(sample[4], "docs/videos/curio-h04-v2/NOTES.md"), "AI劇/奇聞檔案局/H04/教訓/curio-h04-v2-NOTES.md");
+  assert.equal(destination(sample[4], "docs/videos/curio-h04-v2/NOTES.md"), "AI劇/奇聞檔案局/H-歷史懸案/H04/教訓/curio-h04-v2-NOTES.md");
   const result = plan(["a/x/keep.md", "a/x/r2-bible.md", "a/old.md", "docs/videos/curio-h04-v2/NOTES.md"], sample,
     readWatch("a/**/*.md\ndocs/videos/*/NOTES.md"));
   assert.deepEqual(result.sends.get("a/x/keep.md"), ["AI劇/A/keep.md", "AI劇/C/k.md"]);
@@ -101,7 +104,7 @@ test("the copy says where the original is, and the index lists it", () => {
 test("only owned folders are synced; episode notes are copied, never synced", () => {
   const runs = commands(new Map([
     ["a.md", ["AI劇/_共用規則/規則/a.md", "AI劇/奇聞檔案局/_規則與教訓/規則/a.md"]],
-    ["b/NOTES.md", ["AI劇/奇聞檔案局/H04/教訓/curio-h04-NOTES.md"]],
+    ["b/NOTES.md", ["AI劇/奇聞檔案局/H-歷史懸案/H04/教訓/curio-h04-NOTES.md"]],
   ]), "20261110T000000Z");
   const syncs = runs.filter((args) => args[0] === "sync").map((args) => args[2]);
   assert.deepEqual(syncs, ["videobackup:AI劇/_共用規則", "videobackup:AI劇/奇聞檔案局/_規則與教訓"]);
@@ -112,4 +115,5 @@ test("only owned folders are synced; episode notes are copied, never synced", ()
   const copy = runs.find((args) => args[0] === "copy");
   assert.deepEqual(copy.slice(1, 3), ["@STAGE/AI劇", "videobackup:AI劇"]);
   assert.ok(copy.includes("+ /*/*/教訓/**"));
+  assert.ok(copy.includes("+ /*/*/*/教訓/**"));
 });

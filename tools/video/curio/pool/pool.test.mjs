@@ -3,8 +3,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { ROOT, DIR, hash, intake, assemble, loadDraft, buildPool, urlsIn, normalizeUrl, linkStatuses, validateEditorial, topicCheckLimits, splitLocator, SCOPE_NOT_SCOPED } from './core.mjs';
+import { ROOT, DIR, hash, intake, assemble, loadDraft, buildPool, urlsIn, normalizeUrl, linkStatuses, validateEditorial, topicCheckLimits, splitLocator, SCOPE_NOT_SCOPED, CATEGORY_LIST, categoryForAxis } from './core.mjs';
 import { renderQuestions, renderThemes } from './render.mjs';
+import { validateAudience } from './render.mjs';
 import { validateThemes, renderHtml, renderDedup, renderProducible, producibleData } from './render.mjs';
 import { writeBaseline, readBaseline, validateBaseline } from './history.mjs';
 import { openStore, ingest, search, lookup } from './store.mjs';
@@ -34,8 +35,10 @@ const theme = (id, ids, minutes = 10, extra = {}) => {
   const total = minutes * 60;
   const per = Math.floor(total / 4);
   const chapters = [0, 1, 2, 3].map((i) => ({ title: `章 ${i + 1}`, seconds: i === 3 ? total - per * 3 : per, new_information: `新理解 ${i + 1}`, candidate_ids: [ids[i % ids.length]] }));
-  return { id, title: `題案 ${id}`, core_question: '追問', connection: '同一個核心', boredom_risk: '重複', drop_if: '撤案', evidence_gaps: '待補', status: 'EDITORIAL_THEME_NOT_SCRIPT', production_ready: false, target_minutes: minutes, range_minutes: [8, 13], candidate_ids: ids, chapters, ...extra };
+  return { id, title: `題案 ${id}`, core_question: '追問', connection: '同一個核心', boredom_risk: '重複', drop_if: '撤案', evidence_gaps: '待補', status: 'EDITORIAL_THEME_NOT_SCRIPT', production_ready: false, target_minutes: minutes, range_minutes: [8, 13], candidate_ids: ids, chapters, audience: AUDIENCE, ...extra };
 };
+
+const AUDIENCE = { score: 7, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json' };
 
 test('topic-check files are read whole: every URL in a table cell is kept and non-200 link checks become limitations', () => {
   const urls = ['https://example.org/a', 'https://example.org/b', 'https://archive.example.net/c?utm_source=x'];
@@ -174,6 +177,13 @@ test('themes are 8–13 minutes, add up exactly, use each core once and never pl
   const pool = buildPool(fixture({ topics: [topic('H01', '一艘船', 'scripted')], batch, episodes, selection: { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 2, ids: ['N101', 'N102'] } }));
   const ok = { episodes: [theme('T01', ['N101', 'N102'], 10)] };
   assert.equal(validateThemes(ok, pool), ok);
+  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: undefined })] }, pool), /independent audience score/);
+  const later = { ...AUDIENCE, reviewed_on: '2026-11-20', review: 'reviews/audience-20261120.json' };
+  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: later })] }, pool), /scored again/);
+  const rounds = [{ score: 5, comment: '太硬', changes: '改片名', reviewed_on: '2026-11-19', review: 'reviews/audience-20261119.json' }];
+  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: { ...later, score: 6, rounds } })] }, pool), /below 6.5/);
+  assert.doesNotThrow(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: { ...later, rounds } })] }, pool));
+  assert.doesNotThrow(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: undefined, material: { verdict: 'reserve', reviewed_on: '2026-11-11', review: 'fixture', missing: 'fixture' } })] }, pool));
   assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101'], 10)] }, pool), /N102.*cannot stand alone/);
   assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 7, { range_minutes: [7, 9] })] }, pool), /8–13 minutes/);
   assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 14, { range_minutes: [12, 14] })] }, pool), /8–13 minutes/);
@@ -310,6 +320,17 @@ test('a batch source_locator is split so each source reference keeps its own loc
   assert.deepEqual(row.source_refs.map((ref) => ref.locator), ['S1 第一段', 'S2 第二段']);
 });
 
+test('every core and theme resolves to one of the 9 Drive categories, with B folded into W', () => {
+  assert.equal(CATEGORY_LIST.length, 9);
+  assert.equal(categoryForAxis('H'), 'H-歷史懸案');
+  assert.equal(categoryForAxis('B'), 'W-商業與品牌奇聞');
+  assert.equal(categoryForAxis('W'), 'W-商業與品牌奇聞');
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '貝奇莫號為什麼漂了幾十年？')] };
+  const pool = buildPool(fixture({ batch, selection: { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 1, ids: ['N101'] } }));
+  assert.equal(pool.candidates[0].category, 'H-歷史懸案');
+  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101'], 10, { category: '不存在的分類' })] }, pool), /unknown category/);
+});
+
 test('the committed pool export is internally consistent', { skip: !fs.existsSync(path.join(ROOT, DIR, 'manifest.json')) }, () => {
   // Hash checks only: the full rebuild (`cli.mjs check`) depends on topics.json, which other tasks edit.
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, DIR, 'manifest.json'), 'utf8'));
@@ -320,7 +341,25 @@ test('the committed pool export is internally consistent', { skip: !fs.existsSyn
   assert.equal(pool.counts.approved_scripts, 0);
   assert.equal(pool.candidates.filter((row) => row.selected).length, pool.counts.selected_candidates);
   assert.ok(pool.candidates.every((row) => row.production_ready === false));
+  assert.ok(pool.candidates.every((row) => CATEGORY_LIST.includes(row.category)));
   const themes = JSON.parse(fs.readFileSync(path.join(ROOT, DIR, 'themes.json'), 'utf8'));
   assert.equal(hash(fs.readFileSync(path.join(ROOT, DIR, 'themes.json'))), manifest.theme_definition_sha256);
+  assert.ok(themes.episodes.every((episode) => CATEGORY_LIST.includes(episode.category)));
   validateThemes(themes, pool);
+});
+
+test('audience scores on a theme are 1–10 on five dimensions, ranked, and point at their review record', () => {
+  const good = { score: 7.5, rank: 1, of: 3, click: 8, hook: 7, surprise: 7.5, payoff: 7, share: 8, comment: '想看', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json' };
+  assert.doesNotThrow(() => validateAudience('T1', good));
+  assert.doesNotThrow(() => validateAudience('T1', undefined));
+  assert.throws(() => validateAudience('T1', { ...good, hook: 11 }), /between 1 and 10/);
+  assert.throws(() => validateAudience('T1', { ...good, rank: 4 }), /rank/);
+  assert.throws(() => validateAudience('T1', { ...good, review: 'notes.md' }), /reviews\/audience/);
+});
+
+test('a theme scored after the baseline must be improved and rescored to at least the audience minimum', () => {
+  const base = { score: 7, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-20', review: 'reviews/audience-20261120.json' };
+  const round = { score: 5.5, comment: '片名太長', changes: '縮短片名、刪掉術語章', reviewed_on: '2026-11-19', review: 'reviews/audience-20261119.json' };
+  assert.throws(() => validateAudience('T1', { ...base, rounds: [{ ...round, changes: '' }] }), /changes made after it/);
+  assert.doesNotThrow(() => validateAudience('T1', { ...base, rounds: [round] }));
 });

@@ -29,6 +29,7 @@ export const FILTERS = [
   "+ /AI劇/_共用規則/**",
   "+ /AI劇/*/_規則與教訓/**",
   "+ /AI劇/*/*/教訓/**",
+  "+ /AI劇/*/*/*/教訓/**",
   "- **",
 ];
 export const DRAMA_NAMES = {
@@ -38,6 +39,56 @@ export const DRAMA_NAMES = {
   "zhong-tian-qu-qi-r2": "種田娶妻打天下（真人版）",
   "tai-nainai": "恁祖媽今年18",
 };
+export const CURIO_CATEGORIES = {
+  H: "H-歷史懸案",
+  S: "S-歷史人物與名場面",
+  M: "M-奇異現象與自然",
+  F: "F-童話神話與怪談原版",
+  L: "L-都市傳說與消失地名",
+  G: "G-靈異與超自然公案",
+  P: "P-預言與末日",
+  U: "U-外星太空與未知訊號",
+  W: "W-商業與品牌奇聞",
+  B: "W-商業與品牌奇聞",
+};
+export const SOTHATSWHY_PREFIX_CATEGORIES = {
+  PHY: "物理化學與日常材料",
+  BIO: "生物動物與植物",
+  GEO: "地球天氣與太空",
+  TEC: "數位科技與通訊工程",
+  FOD: "飲食與廚房科學",
+  HUM: "人體感官與日常行為",
+  SOC: "建築交通與商業制度",
+};
+export const SOTHATSWHY_PLAN_CATEGORIES = {
+  P01: "數位科技與通訊工程", P02: "地球天氣與太空", P03: "數位科技與通訊工程",
+  P04: "地球天氣與太空", P05: "物理化學與日常材料", P06: "物理化學與日常材料",
+  P07: "物理化學與日常材料", P08: "飲食與廚房科學", P09: "數位科技與通訊工程",
+  P10: "數位科技與通訊工程", P11: "數位科技與通訊工程", P12: "數位科技與通訊工程",
+  P13: "數位科技與通訊工程", P14: "地球天氣與太空", P15: "地球天氣與太空",
+  P16: "地球天氣與太空", P17: "生物動物與植物", P18: "物理化學與日常材料",
+  P19: "數位科技與通訊工程", P20: "物理化學與日常材料", P21: "人體感官與日常行為",
+  P22: "物理化學與日常材料", P23: "地球天氣與太空", P24: "地球天氣與太空",
+  P25: "建築交通與商業制度", P26: "建築交通與商業制度", P27: "建築交通與商業制度",
+  P28: "建築交通與商業制度", P29: "數位科技與通訊工程", P30: "建築交通與商業制度",
+};
+
+let themeMapsCache = null;
+function themeCategoryMaps() {
+  if (themeMapsCache) return themeMapsCache;
+  const load = (rel) => {
+    const p = path.resolve(HERE, "..", rel);
+    if (!fs.existsSync(p)) return new Map();
+    const raw = JSON.parse(fs.readFileSync(p, "utf8"));
+    const items = Array.isArray(raw) ? raw : (raw.episodes || raw.themes || []);
+    return new Map(items.map((t) => [String(t.id).toUpperCase(), t.category]));
+  };
+  themeMapsCache = {
+    curio: load("history-curiosity/pool/themes.json"),
+    sothatswhy: load("so-thats-why/pool/themes.json"),
+  };
+  return themeMapsCache;
+}
 
 /** A glob (`*`, `**`, `?`, `{a,b}`) as an anchored RegExp over repository paths. */
 export function globToRegExp(glob) {
@@ -84,12 +135,50 @@ export function readWatch(text = fs.readFileSync(WATCH, "utf8")) {
   return lines(text).map((line) => ({ pattern: line.trim(), regex: globToRegExp(line.trim()) }));
 }
 
-/** `<劇>/<集數>` for an episode folder name, or null. Same names as the drama backups (AI-DRAMA-DRIVE.md). */
+/** `<劇>/<集數>` (or `<系列>/<分類>/<代碼>` for explainers) for an episode folder, or null. Same names as AI-DRAMA-DRIVE.md. */
 export function episodeFolder(slug) {
-  let m = slug.match(/^curio-([a-z]\d{2})(?=-|$)/);
-  if (m) return `${DRAMA_NAMES.curio}/${m[1].toUpperCase()}`;
+  let m = slug.match(/^curio-([hsmflgpuwb])-([a-z]?\d+)(?=-|$)/);
+  if (m) {
+    const axis = m[1].toUpperCase();
+    const raw = m[2].toUpperCase();
+    const code = /^\d/.test(raw) ? `${axis}${raw}` : raw;
+    return `${DRAMA_NAMES.curio}/${CURIO_CATEGORIES[axis]}/${code}`;
+  }
+  m = slug.match(/^curio-([hsmflgpuwb]\d+)(?=-|$)/);
+  if (m) {
+    const code = m[1].toUpperCase();
+    return `${DRAMA_NAMES.curio}/${CURIO_CATEGORIES[code[0]]}/${code}`;
+  }
+  m = slug.match(/^curio-(t\d+)(?=-|$)/);
+  if (m) {
+    const code = m[1].toUpperCase();
+    const cat = themeCategoryMaps().curio.get(code);
+    return cat ? `${DRAMA_NAMES.curio}/${cat}/${code}` : null;
+  }
+  m = slug.match(/^sothatswhy-(phy|bio|geo|tec|fod|hum|soc)-([a-z]?\d+(?:-\d+)?)(?=-|$)/);
+  if (m) {
+    const prefix = m[1].toUpperCase();
+    const raw = m[2].toUpperCase();
+    const code = /^\d/.test(raw) ? `${prefix}-${raw}` : raw;
+    return `${DRAMA_NAMES.sothatswhy}/${SOTHATSWHY_PREFIX_CATEGORIES[prefix]}/${code}`;
+  }
+  m = slug.match(/^sothatswhy-(phy|bio|geo|tec|fod|hum|soc)(\d+)(?=-|$)/);
+  if (m) {
+    const prefix = m[1].toUpperCase();
+    return `${DRAMA_NAMES.sothatswhy}/${SOTHATSWHY_PREFIX_CATEGORIES[prefix]}/${prefix}${m[2]}`;
+  }
   m = slug.match(/^sothatswhy-p(\d{2})(?=-|$)/);
-  if (m) return `${DRAMA_NAMES.sothatswhy}/P${m[1]}`;
+  if (m) {
+    const code = `P${m[1]}`;
+    const cat = SOTHATSWHY_PLAN_CATEGORIES[code];
+    return cat ? `${DRAMA_NAMES.sothatswhy}/${cat}/${code}` : null;
+  }
+  m = slug.match(/^sothatswhy-(g\d+)(?=-|$)/);
+  if (m) {
+    const code = m[1].toUpperCase();
+    const cat = themeCategoryMaps().sothatswhy.get(code);
+    return cat ? `${DRAMA_NAMES.sothatswhy}/${cat}/${code}` : null;
+  }
   m = slug.match(/^(zhong-tian-qu-qi|tai-nainai)-e(\d{3})(?:-(\d{3}))?(-r\d+)?(?:-v\d+)?$/);
   if (m) {
     const name = DRAMA_NAMES[m[1] + (m[4] ? "-r2" : "")];
@@ -191,7 +280,9 @@ export function commands(sends, stamp, extra = []) {
   }
   const runs = [...roots].sort().map((root) =>
     ["sync", `@STAGE/${root}`, `${REMOTE}:${root}`, ...common, "--backup-dir", `${REMOTE}:${OLD}/${stamp}/${root}`]);
-  runs.push(["copy", "@STAGE/AI劇", `${REMOTE}:AI劇`, ...common, "--filter", "- /*/_規則與教訓/**", "--filter", "+ /*/*/教訓/**", "--filter", "- **",
+  runs.push(["copy", "@STAGE/AI劇", `${REMOTE}:AI劇`, ...common,
+    "--filter", "- /_共用規則/**", "--filter", "- /*/_規則與教訓/**",
+    "--filter", "+ /*/*/教訓/**", "--filter", "+ /*/*/*/教訓/**", "--filter", "- **",
     "--backup-dir", `${REMOTE}:${OLD}/${stamp}/AI劇`]);
   return runs;
 }
