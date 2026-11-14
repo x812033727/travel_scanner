@@ -1,8 +1,29 @@
 # 原來如此事務所：畫面識別與片頭
 
-2026-09-28 起草。站主決定**不用吉祥物**（2026-09-28）：這個系列沒有任何固定角色，辨識度由畫風、色盤與「蓋章」這個動作承擔。這份寫全系列共用的 `look`、片頭 3 秒、結尾蓋章與章節卡；片頭三張關鍵影格做一次、每集重用，選定後雜湊記在最後一節。
+2026-09-28 起草。
 
-**2026-10-10 更新**：插圖改由 MiniMax `image-01` 生成，畫風改成可愛卡通家族（候選與 MiniMax 的限制在 [`../history-curiosity/look.md`](../history-curiosity/look.md)）。站主同日選了候選 A「大頭卡通」。下面是 2026-10-10 版的 `look`（`negative` 對 MiniMax 無效，留空；第 1 版的 flat-explainer 文字保留在 `tools/video/core/drama.mjs` 的預設裡）；色盤、印章、片頭、章節卡的規則不變。
+**2026-11-14 定案（現行標準）**：站主對比 P21 與 P12 樣張後指定全系列改採**「劇場級動畫光影 × 厚塗水粉質感」**，並固定由代理內建 `generate_image`（`16:9` 滿版）生圖後以 `keyframes import --provider external --usd 0` 匯入，**嚴禁用 MiniMax 生圖**（對話版雙角色分工與完整製作流程見 [`dialogue-pilot-20261103/README.md`](dialogue-pilot-20261103/README.md)）：
+
+- **角色參考鎖定**：有角色的鏡頭，`ImagePaths` 必傳系列角色設定圖（`characters/chief/*.png` 或 `characters/kid/*.png`，見 [`series-sheets/README.md`](series-sheets/README.md)）；重繪或修正既有分鏡時，一併傳入原構圖參考圖鎖定骨架與道具位置。遇到 `gemini-3.1-flash-image` 配額冷卻時，先執行八語翻譯與配音或分批等待，絕不退回 MiniMax。
+- **五大質感配方**：
+  1. **線條**：前景主體改用暖深褐色（warm-sepia）有粗細收尖變化的手繪墨線，不用粗黑死板向量框線；背景完全不畫黑框線。
+  2. **光影**：窗邊斜射暖金陽光（warm golden directional window sunlight），在髮絲、眼鏡框、連帽邊緣與道具倒角打出明亮金邊輪廓光（glowing rim light），空氣帶微細光塵（subtle volumetric dust motes）。
+  3. **景深**：前景角色與桌面道具銳利聚焦，背景做奶油感淺景深散景虛化（creamy shallow depth-of-field painterly bokeh）。
+  4. **材質與色盤**：保留系列色盤（暖奶油底、墨藍、芥末黃、印章紅），畫出厚塗水粉（rich gouache）筆觸、針織外套與雨衣的多層次布料摺皺陰影、木桌紋理、玻璃／壓克力透光折射、金屬高光與液體光澤，不做單色平塗色塊。
+  5. **零出錯硬規則**：全圖 100% 滿版無黑邊；嚴禁任何中英文字母、數字、招牌字或背景黑板粉筆亂碼；單人正反打不同框，`nobody: true` 純機制鏡頭零路人或殘肢；手指數（5 指）、眼神對焦與旁白提到的道具數量／比例 100% 精準吻合；匯入後必切 2 倍放大檢視圖由獨立子代理逐張審過。
+- **每鏡 Prompt 英文畫風基底句**：
+  ```text
+  High-craft 2D theatrical anime and rich gouache editorial illustration, 16:9 full-bleed edge-to-edge with zero borders. Delicate tapered warm-sepia ink linework on foreground subject (no heavy flat black outlines). Warm golden directional window sunlight casting glowing rim light along hair strands, glasses/hood, and object bevels, with subtle dust motes. Tactile multi-layered fabric fold shading, rich wood grain and material reflections. Creamy shallow depth-of-field painterly bokeh background with soft brushy edges and zero black outlines in the background. Clean blank surfaces with zero text or symbols.
+  ```
+- `video.json` 頂層仍寫 `"look": { "preset": "cute-cartoon" }` 以綁定系列身分（縮圖版型、卡片與不燒字幕檢查），實際關鍵影格一律用上方升級基底句經 `generate_image` 生圖後 `keyframes import --provider external --usd 0` 匯入。
+
+---
+
+以下為早期歷史版本紀錄（2026-09-28 無角色草案、2026-10-10 MiniMax 平塗版，已被上方 2026-11-14 定案取代）：
+
+2026-09-28 原始起草紀錄：當時決定**不用吉祥物**（2026-09-28）：這個系列沒有任何固定角色，辨識度由畫風、色盤與「蓋章」這個動作承擔。這份寫全系列共用的 `look`、片頭 3 秒、結尾蓋章與章節卡；片頭三張關鍵影格做一次、每集重用，選定後雜湊記在最後一節。
+
+**2026-10-10 更新（歷史紀錄，已停用 MiniMax 生圖）**：插圖曾改由 MiniMax `image-01` 生成，畫風改成可愛卡通家族（候選與 MiniMax 的限制在 [`../history-curiosity/look.md`](../history-curiosity/look.md)）。站主同日選了候選 A「大頭卡通」。下面是 2026-10-10 版的 `look`（`negative` 對 MiniMax 無效，留空；第 1 版的 flat-explainer 文字保留在 `tools/video/core/drama.mjs` 的預設裡）；色盤、印章、片頭、章節卡的規則不變。
 
 ```json
 {

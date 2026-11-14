@@ -87,7 +87,11 @@ describe("a published lifestyle article", () => {
   it("ends without travel crosslinks when it names no destination, which is the usual case", async () => {
     // An AI or finance article has nothing to do with the site's newest travel guides.
     render(await LifeArticlePage({ params: params() }));
-    expect(mocks.list).not.toHaveBeenCalled();
+    expect(mocks.list).not.toHaveBeenCalledWith(
+      "zh-TW",
+      expect.objectContaining({ section: "travel" }),
+      expect.anything(),
+    );
     expect(screen.queryByTestId("travel-crosslinks")).toBeNull();
     expect(screen.queryByRole("heading", { name: "最新旅遊情報攻略" })).toBeNull();
     expect(screen.queryByRole("heading", { name: "熱門目的地" })).toBeNull();

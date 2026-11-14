@@ -130,13 +130,26 @@ test("the title rules are warnings: width, one question, the banned shapes, list
   assert.deepEqual(youtubeWarnings({}), []);
 });
 
-test("hashtags: two topic words then the series by category or series slug; the upload keeps ten tags", () => {
-  assert.deepEqual(SERIES_HASHTAGS, { "ai-terms": "#AI名詞十分鐘", tutorial: "#AI工具教學", "ai-news": "#AI新聞拆解" });
+test("hashtags: two topic words then the series by category, series slug or episode prefix; the upload keeps ten tags", () => {
+  assert.deepEqual(SERIES_HASHTAGS, {
+    "ai-terms": "#AI名詞十分鐘",
+    tutorial: "#AI工具教學",
+    "ai-news": "#AI新聞拆解",
+    story: "#品牌故事",
+    curio: "#奇聞檔案局",
+    sothatswhy: "#原來如此事務所",
+  });
   assert.equal(seriesHashtag({ category: "ai-news" }), "#AI新聞拆解");
+  assert.equal(seriesHashtag({ category: "story" }), "#品牌故事");
   assert.equal(seriesHashtag({ category: "explainer" }), null);
+  assert.equal(seriesHashtag({ category: "explainer", slug: "curio-s42-pig-war" }), "#奇聞檔案局");
+  assert.equal(seriesHashtag({ category: "explainer", slug: "sothatswhy-p23-mirror" }), "#原來如此事務所");
+  assert.equal(seriesHashtag({ category: "explainer", slug: "story-b01-michelin" }), "#品牌故事");
+  assert.equal(seriesHashtag({ category: "explainer", series: "sothatswhy" }), "#原來如此事務所");
   assert.equal(seriesHashtag({ category: "ai-terms", series: { slug: "unknown" } }), "#AI名詞十分鐘", "a series without a row falls back to the category");
   assert.equal(seriesHashtag(), null);
   assert.deepEqual(descriptionHashtags({ tags: ["ChatGPT Go", "Plus", "Pro"], category: "tutorial" }), ["#ChatGPTGo", "#Plus", "#AI工具教學"]);
+  assert.deepEqual(descriptionHashtags({ tags: ["奇聞檔案局", "豬戰爭", "聖胡安島", "英國"], category: "explainer", slug: "curio-s42-pig-war" }), ["#豬戰爭", "#聖胡安島", "#奇聞檔案局"]);
   assert.deepEqual(descriptionHashtags({ tags: ["ChatGPT Go", "Plus", "Pro"] }), ["#ChatGPTGo", "#Plus"], "no series row: no third");
   assert.deepEqual(descriptionHashtags({ tags: ["ai名詞十分鐘", "token"], category: "ai-terms" }), ["#token", "#AI名詞十分鐘"], "the series tag is not repeated in another case");
   assert.deepEqual(descriptionHashtags({}), []);

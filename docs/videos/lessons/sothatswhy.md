@@ -7,6 +7,21 @@
 
 這份會自動同步到雲端硬碟 `AI劇/原來如此事務所/_規則與教訓/教訓/教訓.md`（docs/videos/rules-sync）。
 
+## 2026-11-14 · sothatswhy-p12-qr-code · 站主定案升級版劇場動畫光影×厚塗水粉畫風與生圖／語音固定配置
+對比 P21（暈車）與平塗繪本版後發現：MiniMax 舊路線雖然偶有透視或粉筆字失誤，但暖金窗光、淺景深虛化與厚塗筆觸的畫面質感明顯高於粗黑死線平塗；站主確認升級樣張後指定「以後用這種的」作為全系列固定做法：
+- **生圖路線（停用 MiniMax 生圖）**：所有關鍵影格改由代理內建 `generate_image`（`16:9` 滿版）生成，再以 `keyframes import --provider external --usd 0` 匯入，**嚴禁用 MiniMax 生圖**；有角色鏡頭必傳入系列角色設定圖（`characters/chief/*.png` 或 `characters/kid/*.png`）鎖定五官與服裝，重繪既有構圖時一併傳入原草圖鎖定骨架與道具位置。遇到 `gemini-3.1-flash-image` 配額冷卻時先跑八語翻譯與配音或分批等待，絕不退回 MiniMax。
+- **五大畫面質感配方**：(1) 前景主體用暖深褐色（warm-sepia）收尖細膩手繪墨線，不用粗黑死板框線；(2) 窗邊斜射暖金陽光，在髮絲、眼鏡框、連帽與道具倒角打出金邊輪廓光（rim light）與空氣微塵；(3) 前景清晰聚焦、背景做奶油感淺景深散景虛化且背景零黑框線；(4) 厚塗水粉（rich gouache）與多層次布料摺皺、木紋、玻璃／壓克力透光折射與液體反光材質；(5) 全圖 100% 滿版無黑邊、零文字／零黑板粉筆亂碼、道具數量與幾何結構 100% 吻合旁白，匯入後必切 2 倍放大圖由獨立子代理逐張審過。
+- **語音固定配置**：中文（`zh-TW`）固定用 Gemini（所長 `Sulafat`、小問 `Leda`，語速 ≥ 4.4 字／秒）；八語配音（`en,ja,ko,es,pt,id,vi,th`）固定用 MiniMax（`dub --provider minimax`）。
+- 已升為規則：`docs/videos/so-thats-why/dialogue-pilot-20261103/README.md` §1、§3.1、§4、§10.7，`docs/videos/so-thats-why/dialogue-pilot-20261103/HANDOFF.md`，`docs/videos/so-thats-why/look.md`，`.agents/skills/youtube-video/SKILL.md`。
+
+## 2026-11-13 · sothatswhy-p18／sothatswhy-p23 · 一般觀眾視角檢討
+連看 P18（冰塊為什麼會浮）與 P23（鏡子為什麼左右顛倒）發現三個對話版特有的流失點：
+- **開場日常寒暄太長**：系列片頭動畫已佔 11.9 秒，P23 又花 34 秒聊照鏡子貼貼紙，到 0:46 才問出核心問題，前 30 秒觀眾已滑走。片頭結束後第 1–2 句（20 秒內）就要直入核心反常識提問。
+- **小問感嘆句過密打斷推理**：小問頻繁插「哇！」「真的假的？」等純捧場句，既切碎所長的因果推進，又讓每次換人說話多吃一段換景停頓。小問字數壓在 15–20%，每句都必須承擔錯誤直覺或追問矛盾；所長同節拍連續 2–3 句併入同一景。
+- **縮圖把謎底講完**：P23 縮圖寫「鏡子沒翻左右／翻的是前後」，觀眾不用點進來就知道答案。`原來如此` 的縮圖從「補一句結論」改為「只寫反常識衝突或認知缺口，嚴禁破梗因果答案」。
+- **小問（`Leda`）語速偏慢**：P18／P23 實測約 3.6–3.9 字／秒；兩個角色的 `voice.style` 一律寫「一秒五個字以上，句與句緊接、不拖長尾音」，仍低於 4.4 字／秒時加 `voice.tempo`（如 `1.1`–`1.15`）微加速。
+- 已升為規則：`docs/videos/so-thats-why/dialogue-pilot-20261103/README.md` §2、§4、§9、§10.6，`docs/videos/so-thats-why/thumbnails.md`，`docs/videos/packaging-refresh-20261111/README.md`。
+
 - **2026-11-12，P29，站主決定：空間不足就完全備份到雲端再刪。** 容器的磁碟額度用完（ENOSPC）時，配音做到一半停掉、speech-journal 留下「已送出、沒有回應」的請求要手動 `forget`，輔助 worktree 也建不起來。
   站主：「如果空間不足就完全備份到雲端就可以刪除了，只要記得完全備份不要漏了就好」。刪本機工作目錄前：`todrive.sh` 傳完，再 `rclone check <本機> <雲端> --one-way` 要印 `0 differences found`，而且 `matching files` 等於 `find <本機> -type f | wc -l`，兩個都對才刪。
   已核准、已上傳或等 YouTube ID 的集數先刪（要用再 `rclone copy` 拉回，排除重複的同名子資料夾、build、segments）。長步驟開始前先看 `df -h /root`，剩不到約 3 GB 就先清。
