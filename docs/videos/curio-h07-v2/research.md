@@ -38,6 +38,12 @@
 
 ## 撰稿可直接使用的回答
 
+### 2026-10-18 新版增補查核
+
+- [L69](https://earlymodernfrance.org/journal/2016-volume-xvii/valet-marquis-louvois%E2%80%99s-invited-guest-mystery-man-iron-mask) 所引 1669 年公文原句要求：若 Dauger 談生活所需以外的事，Saint-Mars 須以死相威脅。這是命令，不是處決紀錄。
+- [F99 第 IV 章](https://www.gutenberg.org/cache/epub/43231/pg43231-images.html) 轉錄 Du Junca 的 1698 年記錄：下午三點抵達，晚上九點換塔，Rosarges 受派照看囚犯；1703 年補記與下葬簿轉錄再出現 Rosarges。這把入獄與下葬記錄接起來，**沒有**把囚犯姓名接到 1669 年 Dauger。
+- [T70 第 XXII–XXIII 章](https://www.gutenberg.org/cache/epub/70207/pg70207-images.html) 收 Saint-Mars 1681 年信，說 Mattioli 留在 Pignerol；1693 年命令仍點名他在該處，並命燒掉他和僕役寫過字、藏在外套襯裡的衣袋布片（非紙條）；1694 年移送三名未具名囚犯往 Sainte-Marguerite。Topin 推定 Mattioli 在三人之中，但所引移送記述不逐名列出；不能用 1681 年的分路或 1694 年的匿名移送單獨定案。
+
 > 有一位蒙面囚犯真實地進了巴士底、死在那裡。副官寫下的材質是黑絲絨，而不是鐵。這只能說明**那一筆紀錄中的面具**，無法證明他一生從未戴過其他面具。公文把 1669 年另一名祕密囚犯記成 Dauger；很多研究者認為兩人就是同一個，但最後的登記沒有把這件事證實。國王的雙胞胎則屬後來越講越大的傳說。
 
 畫面可把 1669 公文、1698 入獄、1703 死亡及後世作品分成四張不同證據卡。史料卡的遮臉畫黑布／黑絲絨；金屬頭罩只能放在明標「傳說」的卡。直接展示 J98 圖片時，標「1698 巴士底入獄登記；BnF／Agence Meurisse，Commons 公有領域」；2026-10-14 Commons 檔案頁寫原件 1698、攝影 1927、來源 Gallica，授權欄有 `PD-author` 與 `PD-Art|PD-old-100` 對應的公有領域說明。另有 [較高解析的 BnF 匯入版](https://commons.wikimedia.org/wiki/File:Biblioth%C3%A8que_Nationale_-_registre_des_entr%C3%A9es_et_sorties_de_la_Bastille_-_acte_d%27%C3%A9crou_du_masque_de_fer_du_18-09-1698_-_btv1b90561976.jpg)，標 `PD France`、`PD-1996`；本次只查檔案頁，未下載素材。
