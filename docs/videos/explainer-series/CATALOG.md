@@ -1,6 +1,6 @@
 # 奇聞檔案局與原來如此事務所：各集總表
 
-由 `docs/videos/ai-drama-drive/catalog.py` 產生（2026-11-13 21:22 UTC），不要手改；要更新就重跑：
+由 `docs/videos/ai-drama-drive/catalog.py` 產生（2026-11-14 02:40 UTC），不要手改；要更新就重跑：
 
 ```bash
 python3 docs/videos/ai-drama-drive/catalog.py   # 自動選用 rclone (videobackup:AI劇) 或 gdrive CLI
@@ -27,7 +27,7 @@ python3 docs/videos/ai-drama-drive/catalog.py   # 自動選用 rclone (videoback
 
 ## 奇聞檔案局
 
-共 62 列：已上架（有 YouTube ID）22 集。題庫在 `docs/videos/history-curiosity/pool`。
+共 63 列：已上架（有 YouTube ID）22 集。題庫在 `docs/videos/history-curiosity/pool`。
 
 | 分類 | 雲端位置 | slug | 版本 | 狀態 | YouTube | 其他版本的 YouTube ID（repo 紀錄） | 公開 | 畫風 | 縮圖 | 旁白 | 外語配音 | 片頭片尾 | 成片日期 | 雲端有 | 舊版 | repo 文件 | 標題 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -40,6 +40,7 @@ python3 docs/videos/ai-drama-drive/catalog.py   # 自動選用 rclone (videoback
 | H-歷史懸案 | `H-歷史懸案/H09` |  |  | 只有製作檔或教訓 |  |  |  | cute-mystery（新版） | e（預設） | Gemini Sulafat |  |  |  | 教訓 |  | `docs/videos/curio-h09-v2` | 艾爾哈特消失 89 年，2026 年那座島上找到了什麼？｜奇聞檔案局 |
 | H-歷史懸案 | `H-歷史懸案/H24` | `curio-h24` | v1 | 已上傳 YouTube | [BJj0BEQnDGk](https://youtu.be/BJj0BEQnDGk) |  | private | cute-mystery（新版） | e（預設） | Gemini Sulafat | Gemini 8 語 | 416c8768d4d2 | 2026-11-08 | final.mp4、keyframes、recordings、timeline.json、教訓、製作檔 |  | `docs/videos/curio-h24` | 報紙說圖坦卡門的詛咒殺了 9 個人？醫師算完 44 個人的答案｜奇聞檔案局｜CC字幕 |
 | L-都市傳說與消失地名 | `L-都市傳說與消失地名/L08` |  |  | 只有製作檔或教訓 |  | `curio-l08-recut-20261012=LQ0pV9vZdeA`、`curio-l08=mLxCEB_wSLk` |  | cute-mystery（新版） | e（預設） | Gemini Sulafat |  |  |  | 教訓 |  | `docs/videos/curio-l08`、`docs/videos/curio-l08-v2` | 為什麼 1991 年兩個英國老先生，承認麥田圈是他們做的？｜奇聞檔案局 |
+| M-奇異現象與自然 | `M17` |  |  | 只有製作檔或教訓 |  |  |  |  |  |  |  |  |  | 製作檔 |  |  |  |
 | S-歷史人物與名場面 | `S-歷史人物與名場面/S01` | `curio-s01-v2` | v2 | 已上傳 YouTube | [gkl0vABh1_c](https://youtu.be/gkl0vABh1_c) |  | private | cute-mystery（新版） | e（預設） | Gemini Sulafat | Gemini 8 語 | 39d34ab0d563 | 2026-11-03 | final.mp4、主機檔、教訓 |  | `docs/videos/curio-s01` | 赤壁的火是曹操自己放的？八十萬大軍與他寫給孫權的兩封信｜奇聞檔案局｜CC字幕 |
 | S-歷史人物與名場面 | `S-歷史人物與名場面/S02` | `curio-s02-v2` | v2 | 已上傳 YouTube | [WOYPoicmnJU](https://youtu.be/WOYPoicmnJU) |  | private | cute-mystery（新版） | e（預設） | Gemini Sulafat | Gemini 8 語 | 39d34ab0d563 |  | 主機檔、教訓 |  | `docs/videos/curio-s02` | 草船借箭不是諸葛亮？史書 38 個字裡，差點翻船的是誰｜奇聞檔案局｜CC字幕 |
 | S-歷史人物與名場面 | `S-歷史人物與名場面/S03` | `curio-s03-v2` | v2 | 已上傳 YouTube | [cVGdU7yabfc](https://youtu.be/cVGdU7yabfc) |  | private | cute-mystery（新版） | e（預設） | Gemini Sulafat | Gemini 8 語 | 39d34ab0d563 | 2026-11-03 | final.mp4、主機檔、教訓 |  | `docs/videos/curio-s03` | 空城計那天，司馬懿根本不在？二二八年真正被唬住的是張郃｜奇聞檔案局｜CC字幕 |
@@ -96,7 +97,7 @@ python3 docs/videos/ai-drama-drive/catalog.py   # 自動選用 rclone (videoback
 
 ## 原來如此事務所
 
-共 20 列：已上架（有 YouTube ID）14 集。題庫在 `docs/videos/so-thats-why/pool`。
+共 21 列：已上架（有 YouTube ID）14 集。題庫在 `docs/videos/so-thats-why/pool`。
 
 | 分類 | 雲端位置 | slug | 版本 | 狀態 | YouTube | 其他版本的 YouTube ID（repo 紀錄） | 公開 | 畫風 | 縮圖 | 旁白 | 外語配音 | 片頭片尾 | 成片日期 | 雲端有 | 舊版 | repo 文件 | 標題 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -106,6 +107,7 @@ python3 docs/videos/ai-drama-drive/catalog.py   # 自動選用 rclone (videoback
 | 地球天氣與太空 | `地球天氣與太空/P14` | `sothatswhy-p14-sky-colors` | v1 | 已上傳 YouTube | [5xf1VoDNXWo](https://youtu.be/5xf1VoDNXWo) |  | private | cute-cartoon（新版） |  | Gemini Sulafat |  | 82263266d425 | 2026-11-07 | final.mp4、keyframes、recordings、timeline.json、製作檔 |  | `docs/videos/sothatswhy-p14-sky-colors` | 同一道陽光，天空為什麼是藍的、夕陽卻是紅的？｜原來如此事務所｜CC字幕 |
 | 地球天氣與太空 | `地球天氣與太空/P15` | `sothatswhy-p15-salty-sea` | v1 | 已上傳 YouTube | [YQmMeTzBMPk](https://youtu.be/YQmMeTzBMPk) |  | private |  |  |  | Gemini 8 語 | 82263266d425 | 2026-11-08 | final.mp4、keyframes、recordings、timeline.json、製作檔 |  |  | 河水一直流進海裡，海為什麼還是鹹？｜原來如此事務所｜CC字幕 |
 | 地球天氣與太空 | `地球天氣與太空/P23` | `sothatswhy-p23-quake-alert` | v1 | 已上傳 YouTube | [jrKdMbdOscQ](https://youtu.be/jrKdMbdOscQ) |  | private |  |  |  | Gemini 8 語 | 82263266d425 | 2026-11-09 | final.mp4、keyframes、recordings、timeline.json、製作檔 |  |  | 地震已經發生，警報怎麼還能搶先？｜原來如此事務所｜CC字幕 |
+| 建築交通與商業制度 | `建築交通與商業制度/P26` |  |  | 只有製作檔或教訓 |  |  |  |  |  |  |  |  |  | 製作檔 |  |  |  |
 | 數位科技與通訊工程 | `數位科技與通訊工程/P01` |  |  | 只有製作檔或教訓 |  |  |  |  |  |  |  |  |  | 製作檔 |  |  |  |
 | 數位科技與通訊工程 | `數位科技與通訊工程/P11` | `sothatswhy-p11-old-battery` | v1 | 已上傳 YouTube | [pQHhfq3oXGE](https://youtu.be/pQHhfq3oXGE) |  | private |  |  |  | Gemini 8 語 | 82263266d425 | 2026-11-09 | final.mp4、keyframes、recordings、timeline.json、製作檔 |  |  | 電量還有，手機電池為什麼已經老了？｜原來如此事務所｜CC字幕 |
 | 數位科技與通訊工程 | `數位科技與通訊工程/P13` | `sothatswhy-p13-gps-timing` | v1 | 已上傳 YouTube | [1LNOlJ-0938](https://youtu.be/1LNOlJ-0938) |  | private |  |  |  | MiniMax（推定） 8 語 |  | 2026-11-12 | final.mp4、keyframes、recordings、timeline.json、製作檔 |  |  | GPS 差一點時間，位置怎麼差那麼遠？｜原來如此事務所｜CC字幕 |
