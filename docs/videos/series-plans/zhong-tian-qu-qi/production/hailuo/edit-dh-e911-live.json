@@ -1,0 +1,800 @@
+{
+ "tempo": 1.0,
+ "grades": {},
+ "default_grade": "dh",
+ "finish": "vignette=angle=PI/5,format=yuv420p",
+ "names": {},
+ "punch": false,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+ ],
+ "name_whoosh": "swish-9",
+ "music": [
+  {
+   "cue": "suspense",
+   "from": "s01",
+   "to": "s08",
+   "offset": 63.25,
+   "gain": -20,
+   "fade_in": 1.0,
+   "fade_out": 0.6,
+   "tail": -2.82
+  },
+  {
+   "cue": "suspense",
+   "from": "s09",
+   "from_off": 0.1,
+   "to": "s22",
+   "offset": 0.0,
+   "gain": -19,
+   "fade_in": 1.5,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "night",
+   "from": "s24",
+   "to": "s28",
+   "offset": 0.0,
+   "gain": -20,
+   "fade_in": 1.5,
+   "fade_out": 0.3,
+   "tail": -9.78
+  },
+  {
+   "cue": "night",
+   "from": "s28",
+   "from_off": 3.2,
+   "to": "s35",
+   "offset": 0.0,
+   "gain": -20,
+   "fade_in": 1.5,
+   "fade_out": 4.0,
+   "tail": 0
+  }
+ ],
+ "sfx": [
+  {
+   "file": "fire",
+   "at": "s01",
+   "off": 0,
+   "gain": -22,
+   "to": "s23"
+  },
+  {
+   "file": "fire-1",
+   "at": "s01",
+   "off": 0,
+   "gain": -25,
+   "to": "s23"
+  },
+  {
+   "file": "Wind",
+   "at": "s01",
+   "off": 0,
+   "gain": -28,
+   "to": "s23"
+  },
+  {
+   "file": "fire",
+   "at": "s23",
+   "off": 4.4,
+   "gain": -24,
+   "to": "s35"
+  },
+  {
+   "file": "fire-1",
+   "at": "s23",
+   "off": 4.4,
+   "gain": -27,
+   "to": "s35"
+  },
+  {
+   "file": "Wind",
+   "at": "s23",
+   "off": 4.4,
+   "gain": -30,
+   "to": "s35"
+  },
+  {
+   "synth": "heartbeat",
+   "at": "s28",
+   "off": 0.4,
+   "to": "s29",
+   "gain": -16
+  },
+  {
+   "synth": "heartbeat",
+   "at": "s33",
+   "off": 0.0,
+   "to": "s35",
+   "gain": -17
+  },
+  {
+   "file": "cloth2",
+   "at": "s01",
+   "off": 0.25,
+   "gain": -14
+  },
+  {
+   "file": "rustle03",
+   "at": "s01",
+   "off": 0.3,
+   "gain": -18
+  },
+  {
+   "file": "impactPunch_heavy_000",
+   "at": "s01",
+   "off": 0.3,
+   "gain": 2
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s01",
+   "off": 0.3,
+   "gain": -4
+  },
+  {
+   "file": "impactWood_heavy_002",
+   "at": "s01",
+   "off": 0.3,
+   "gain": 0
+  },
+  {
+   "file": "slam_03",
+   "at": "s01",
+   "off": 0.32,
+   "gain": -2
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "s01",
+   "off": 1.1,
+   "gain": -28
+  },
+  {
+   "file": "cloth1",
+   "at": "s02",
+   "off": 1.9,
+   "gain": -28
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s03",
+   "off": 0.2,
+   "gain": -27
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s03",
+   "off": 0.48,
+   "gain": -27
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s03",
+   "off": 0.76,
+   "gain": -27
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s03",
+   "off": 1.04,
+   "gain": -27
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s03",
+   "off": 1.32,
+   "gain": -27
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s03",
+   "off": 1.6,
+   "gain": -27
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s03",
+   "off": 1.75,
+   "gain": -22
+  },
+  {
+   "file": "cloth2",
+   "at": "s03",
+   "off": 1.8,
+   "gain": -24
+  },
+  {
+   "file": "rustle03",
+   "at": "s03",
+   "off": 2.4,
+   "gain": -28
+  },
+  {
+   "file": "cloth1",
+   "at": "s04",
+   "off": 0.6,
+   "gain": -32
+  },
+  {
+   "file": "cloth2",
+   "at": "s04",
+   "off": 1.9,
+   "gain": -33
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s05",
+   "off": 0.3,
+   "gain": -22
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s05",
+   "off": 0.7,
+   "gain": -33
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s05",
+   "off": 1.08,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s05",
+   "off": 1.46,
+   "gain": -31
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s05",
+   "off": 1.84,
+   "gain": -33
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s05",
+   "off": 2.22,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s05",
+   "off": 2.6,
+   "gain": -31
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s05",
+   "off": 2.98,
+   "gain": -33
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s05",
+   "off": 3.36,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s05",
+   "off": 3.74,
+   "gain": -31
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s05",
+   "off": 4.12,
+   "gain": -33
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s05",
+   "off": 4.5,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s05",
+   "off": 4.88,
+   "gain": -31
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s05",
+   "off": 5.26,
+   "gain": -33
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s05",
+   "off": 5.64,
+   "gain": -32
+  },
+  {
+   "file": "swish-7",
+   "at": "s05",
+   "off": 5.85,
+   "gain": -24
+  },
+  {
+   "file": "paper_01",
+   "at": "s06",
+   "off": 1.0,
+   "gain": -28
+  },
+  {
+   "file": "paper_02",
+   "at": "s06",
+   "off": 2.2,
+   "gain": -30
+  },
+  {
+   "file": "paper_03",
+   "at": "s07",
+   "off": 1.3,
+   "gain": -28
+  },
+  {
+   "file": "cloth1",
+   "at": "s07",
+   "off": 2.0,
+   "gain": -34
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s08",
+   "off": 0.3,
+   "gain": -28
+  },
+  {
+   "file": "cloth1",
+   "at": "s08",
+   "off": 0.5,
+   "gain": -30
+  },
+  {
+   "file": "swish-7",
+   "at": "s09",
+   "off": 3.65,
+   "gain": -24
+  },
+  {
+   "file": "cloth2",
+   "at": "s09",
+   "off": 3.7,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s11",
+   "off": 1.0,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s11",
+   "off": 1.3,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s11",
+   "off": 1.55,
+   "gain": -31
+  },
+  {
+   "file": "cloth1",
+   "at": "s12",
+   "off": 0.4,
+   "gain": -32
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s13",
+   "off": 0.9,
+   "gain": -20
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s13",
+   "off": 0.9,
+   "gain": -22
+  },
+  {
+   "file": "swish-9",
+   "at": "s13",
+   "off": 1.0,
+   "gain": -28
+  },
+  {
+   "file": "impactPlate_light_000",
+   "at": "s14",
+   "off": 0.9,
+   "gain": -28
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s15",
+   "off": 0.4,
+   "gain": -24
+  },
+  {
+   "file": "cloth2",
+   "at": "s16",
+   "off": 0.6,
+   "gain": -24
+  },
+  {
+   "file": "rustle03",
+   "at": "s16",
+   "off": 0.9,
+   "gain": -28
+  },
+  {
+   "file": "cloth1",
+   "at": "s17",
+   "off": 1.0,
+   "gain": -34
+  },
+  {
+   "file": "impactPunch_heavy_000",
+   "at": "s17",
+   "off": 5.35,
+   "gain": 3
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "s17",
+   "off": 5.35,
+   "gain": 1
+  },
+  {
+   "file": "slam_01",
+   "at": "s17",
+   "off": 5.37,
+   "gain": 0
+  },
+  {
+   "file": "gong_02",
+   "at": "s17",
+   "off": 5.35,
+   "gain": 6
+  },
+  {
+   "file": "paper_02",
+   "at": "s18",
+   "off": 0.15,
+   "gain": -24
+  },
+  {
+   "file": "paper_04",
+   "at": "s18",
+   "off": 1.0,
+   "gain": -26
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s19",
+   "off": 0.6,
+   "gain": -30
+  },
+  {
+   "file": "paper_01",
+   "at": "s19",
+   "off": 0.4,
+   "gain": -32
+  },
+  {
+   "file": "paper_03",
+   "at": "s20",
+   "off": 5.6,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s21",
+   "off": 0.8,
+   "gain": -30
+  },
+  {
+   "file": "cloth1",
+   "at": "s21",
+   "off": 0.9,
+   "gain": -32
+  },
+  {
+   "file": "swish-7",
+   "at": "s22",
+   "off": 0.6,
+   "gain": -20
+  },
+  {
+   "file": "swish-9",
+   "at": "s22",
+   "off": 1.1,
+   "gain": -21
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s22",
+   "off": 1.8,
+   "gain": -31
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s22",
+   "off": 2.15,
+   "gain": -31
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s22",
+   "off": 2.5,
+   "gain": -31
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s22",
+   "off": 2.85,
+   "gain": -31
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s22",
+   "off": 3.2,
+   "gain": -31
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s22",
+   "off": 3.55,
+   "gain": -31
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s23",
+   "off": 0.3,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s23",
+   "off": 0.7,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s23",
+   "off": 1.1,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s23",
+   "off": 1.5,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s23",
+   "off": 1.9,
+   "gain": -30
+  },
+  {
+   "file": "cloth1",
+   "at": "s23",
+   "off": 3.0,
+   "gain": -32
+  },
+  {
+   "file": "cloth2",
+   "at": "s24",
+   "off": 0.4,
+   "gain": -28
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s24",
+   "off": 0.45,
+   "gain": -30
+  },
+  {
+   "file": "swish-7",
+   "at": "s25",
+   "off": 2.05,
+   "gain": -24
+  },
+  {
+   "file": "cloth2",
+   "at": "s25",
+   "off": 2.1,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s26",
+   "off": 0.4,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s26",
+   "off": 0.9,
+   "gain": -30
+  },
+  {
+   "file": "cloth1",
+   "at": "s26",
+   "off": 2.5,
+   "gain": -32
+  },
+  {
+   "file": "impactPlate_light_000",
+   "at": "s27",
+   "off": 0.5,
+   "gain": -34
+  },
+  {
+   "file": "impactPunch_heavy_000",
+   "at": "s28",
+   "off": 0.12,
+   "gain": 0
+  },
+  {
+   "file": "impactBell_heavy_001",
+   "at": "s28",
+   "off": 0.12,
+   "gain": -4
+  },
+  {
+   "file": "impactMetal_heavy_000",
+   "at": "s28",
+   "off": 0.12,
+   "gain": -8
+  },
+  {
+   "file": "gong_01",
+   "at": "s28",
+   "off": 0.12,
+   "gain": 4
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s31",
+   "off": 0.8,
+   "gain": -30
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s31",
+   "off": 2.2,
+   "gain": -28
+  },
+  {
+   "file": "cloth1",
+   "at": "s31",
+   "off": 2.25,
+   "gain": -30
+  },
+  {
+   "file": "cloth1",
+   "at": "s32",
+   "off": 0.3,
+   "gain": -34
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s34",
+   "off": 0.4,
+   "gain": -30
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s34",
+   "off": 1.0,
+   "gain": -22
+  },
+  {
+   "file": "impactPlate_light_000",
+   "at": "s34",
+   "off": 1.15,
+   "gain": -30
+  },
+  {
+   "file": "paper_03",
+   "at": "s35",
+   "off": 4.3,
+   "gain": -22
+  },
+  {
+   "file": "impactWood_heavy_001",
+   "at": "s35",
+   "off": 4.45,
+   "gain": -2
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s35",
+   "off": 4.45,
+   "gain": -4
+  },
+  {
+   "file": "impactBell_heavy_001",
+   "at": "s35",
+   "off": 4.45,
+   "gain": -6
+  }
+ ],
+ "frame_round": true,
+ "clip_voice": true,
+ "voice_skip": {
+  "s31": 0.5
+ },
+ "voice_until": {
+  "s33": 5.3
+ },
+ "clip_af": {
+  "s13": {
+   "from": 0,
+   "af": "rubberband=pitch=0.66:formant=preserved,volume=3dB,alimiter=limit=0.89:attack=1:release=50:level=false"
+  },
+  "s15": {
+   "from": 0,
+   "af": "volume=-2dB"
+  },
+  "s16": {
+   "from": 0,
+   "af": "volume=-2dB"
+  },
+  "s31": {
+   "from": 0,
+   "af": "volume=enable='between(t,0,0.4)':volume=0"
+  }
+ },
+ "voice_off": [
+  "s03",
+  "s17",
+  "s19",
+  "s21",
+  "s22"
+ ],
+ "move_lines": {
+  "zq911a26": "s29"
+ },
+ "min": {},
+ "line_at": {
+  "zq911a01": 1.4,
+  "zq911a02": 1.4,
+  "zq911a03": 0.6,
+  "zq911a05": 0.3,
+  "zq911a10": 0.5,
+  "zq911a15": 0.2,
+  "zq911a16": 1.3,
+  "zq911a18": 0.3,
+  "zq911a19": 0.15,
+  "zq911a20": 0.8,
+  "zq911a21": 0.5,
+  "zq911a24": 0.37,
+  "zq911a26": 0.37,
+  "zq911a27": 2.7
+ },
+ "vf": {
+  "s13": "split[pa][pb];[pb]crop=380:357:0:60,eq=brightness=-0.4:saturation=0,boxblur=8,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*min(1\\,min(min(X\\,W-X)\\,min(Y\\,H-Y))/50)'[pc];[pa]format=rgba[pd];[pd][pc]overlay=0:60,format=yuv420p",
+  "s14": "split[pa][pb];[pb]crop=300:496:0:169,eq=brightness=-0.4:saturation=0,boxblur=8,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*min(1\\,min(min(X\\,W-X)\\,min(Y\\,H-Y))/50)'[pc];[pa]format=rgba[pd];[pd][pc]overlay=0:169,format=yuv420p,split[qa][qb];[qb]crop=300:347:1620:228,eq=brightness=-0.4:saturation=0,boxblur=8,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*min(1\\,min(min(X\\,W-X)\\,min(Y\\,H-Y))/50)'[qc];[qa]format=rgba[qd];[qd][qc]overlay=1620:228,format=yuv420p",
+  "s16": "split[pa][pb];[pb]crop=420:298:0:69,eq=brightness=-0.4:saturation=0,boxblur=8,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*min(1\\,min(min(X\\,W-X)\\,min(Y\\,H-Y))/50)'[pc];[pa]format=rgba[pd];[pd][pc]overlay=0:69,format=yuv420p",
+  "s22": "split[pa][pb];[pb]crop=160:169:130:242,boxblur=12,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*min(1\\,min(min(X\\,W-X)\\,min(Y\\,H-Y))/30)'[pc];[pa]format=rgba[pd];[pd][pc]overlay=130:242,format=yuv420p",
+  "s31": "split[pa][pb];[pb]crop=160:834:1570:198,eq=brightness=-0.4:saturation=0,boxblur=8,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*min(1\\,min(min(X\\,W-X)\\,min(Y\\,H-Y))/50)'[pc];[pa]format=rgba[pd];[pd][pc]overlay=1570:198,format=yuv420p"
+ },
+ "subtitle_lines": [
+  "zq911a26"
+ ],
+ "_note": "live action, written 2026-11-14 from edit-dh-e910-live.json (its three reviews applied from the start) before the refined clips exist: clip_voice, no punch-in, slow-down <= 1.1, interpolate off, no title card (script: no episode number or title, c01 goes straight on from e910 c40), names {}. SOURCES: script/storyboard/video.json/overlays.json in docs/videos/zhong-tian-qu-qi-e011-r2; picks _live-e911/zhong-tian-qu-qi-e911-dh/picks.json, 35 shots (colab/runs/e911-live/picks-merged.tsv; fix1/review-picks.tsv for s02 s09 s13 s14 s16 s18; pre-refine review colab/runs/e911-live/pick-review.md and its review2-trims.tsv: no retakes). Offsets are seconds from the first frame of the trimmed shot, measured on the picked drafts runpod/a/st1/out/sNN.mp4 (md5-identical to picks.json's drafts): silencedetect -35 dB / 0.25 s as assemble-v4's speechSpans, word times by faster-whisper medium on the whole drafts, YIN pitch, contact sheets every 0.5 s. DRY RUN (scratchpad e911edit/dry): drafts trimmed as stage.py does, scaled to 1312x736 for the refined clips, assembled with this table, then e911cut.sh's limiter and loudnorm2, audio-qa and a floor/accent scan by hand (e911cut.sh itself not run). TRIMS THIS TABLE ASSUMES (start, end-before; 0 = none; picks.json must get them before stage.py 11, e911cut.sh warns otherwise). The whisper pass found that picks.json and pick-review's review2-trims cut spoken lines in eight shots: s10 7.4 cut 給我的妻 (line to 7.88) -> none; s11 7.6 cut 書 -> 7.709; s20 start 1.8 dropped 抓她 (0.6-1.2) and 7.7 cut 誰 -> 0.5/7.834 (the slight mouth corner at 1.25-1.75 comes back in); s25 4.6-9.5 dropped 好 (3.05-3.6) and cut 名冊 (to 9.96) -> 3.0/10.084 (the laugh pick-review saw is 2.0-3.0, before the start); s26 7.0 cut 算不到本官頭上 (to 7.90) -> none; s31 5.6 cut 本官給你一條路 (to 7.80) -> none; s32 7.5 cut 的人 -> 7.708; s33 start 1.0 cut 另 (0.89) -> 0.75/7.0; s35 6.2 ended on 差's last frame -> none. Taken from pick-review: s13 2.583 (its 2.6), s14 5.417 (its 5.4), s17 0.375/5.792 (its 0.4/5.8), s21 0/4.25 (its 4.0; the grin starts 4.25), s30 0.791/7.125 (its 7.0 cut 見, speech to 7.10, smile 7.25), s27 2.0. Others: s01 3.375/6.417, s02 0/2.791, s03 0.791/5.583, s04 0/5.417, s05 0.875/7.5, s06 3.375/7.5, s07 0/3.375, s08 0.583/0, s09 0.75/6.75 (2.3 s of nothing after his pointing), s12 0/6.0, s15 0/4.584, s16 0/0, s18 0/3.5 (the unfold is 0-2.0, 6.6 s of a static paper otherwise), s19 1.0/6.0, s22 0.375/4.625, s23 0.583/5.583, s24 1.375/6.791, s28 0/10.084, s29 0/0, s34 0.375/3.584. Whole frames: ffmpeg's input -ss keeps a frame only at or after `start` and -to drops a frame whose end passes `to`, so a start is frame/24 rounded DOWN to 3 decimals and an end-before frame/24 rounded UP (0.792 lost frame 19 of s03; 7.708 left s11 a frame short, 10.083 two frames on s25/s28); 0.8 2.6 2.8 1.8 3.4 5.6 5.8 6.4 7.7 are not on frames. Each staged dry clip was checked: picture frames == round(audio x 24), so nothing holds. RESULT: 191.54 s (script 179), no shot held except s21 (below). VOICE. Voiced (clip_voice), median pitch per shot: Xu Yan s08 106, s10 142, s11 130, s20 128, s30 140 (recordings a02 126, a06 103, a09 143); Magistrate Hu s05 271 (官腔拉高, kept), s09 250, s25 235, s26 149, s31 169, whispers s16 106, s32 103, s33 85, s35 101; Qin Shuang s15 217; Zhao s17 142 (now voice_off). OUT OF VOICE: s13 Hu 347 Hz (惱羞拔高, a medium shot) -> clip_af rubberband pitch 0.66 formant preserved + 3 dB under alimiter 0.89 (e910 s36's recipe) -> 237 Hz in the dry run, his s09/s25 are 250/238. voice_off (recorded line laid, the draft's sound muted): s03 Xu Yan 347 Hz in a wide shot (a02 line_at 1.4, under the wrist grab 1.7-3.2); s22 Hu 363 Hz in a wide shot (a19 0.15, draft speech from 0.17); s19 Xu Yan 181 Hz with a 1.5 s hole in mid-line (說她是 5.77 ... 欽犯 7.25) that the 6.0 end cut -> a16 line_at 1.3 where his mouth moves (draft 2.3-5.77); s17 Zhao: the draft speaks 0.6-7.58 and 5.792 cuts 前天親手蓋的印, while 6.5-7.6 grins -> a15 line_at 0.2 (draft 有 at 0.6), slowed 1.03; s21 Hu: the draft speaks to 7.68 and grins from 4.25, so 4.25 keeps only 這、這是 -> a18 (5.04 s) line_at 0.3, slowed 1.1 and HELD 0.87 s (the only hold; alternatives in RECHECK). Recorded because the speaker's lips are not on screen: s02 a01 (住手 on his back, line_at 1.4), s04 a03 0.6 (her hand to the sleeve 0.5-2.0), s06 a05 0.3 and s14 a12 (Tang Xiaotang from behind; s14 slowed 1.04), s12 a10 0.5 (his hand on the sleeve 0-3.5), s23 a20 0.8, s24 a21 0.5 (Qian off screen), s28 a24 0.37 (ding at 0.15) + a25 inner, s29 a26 0.37 + a27 inner 2.7. a26 MOVED to s29 (move_lines): a24+a25+a26 need 11.9 s against the 10 s take (script: 最後一句系統吐槽延到 c29 開頭，c29 的心裡話從約 2.7 秒起). Draft sounds that the assembler mutes on its own (no on-screen line): s24 invented 請註記 0-2.0, s29 1.1-2.5. Voiced fixes: s31 voice_skip 0.5 and clip_af mute 0-0.4 (a -42 dB blip at 0.05); s33 voice_until 5.3 (low noise after 不碰 stretched the subtitle to the end). Speech spans on the trimmed drafts: s05 0.18-4.53 (then the fling 5.8); s08 0.53-7.11; s09 0.74-4.64; s10 0.36-1.71 + 3.72-6.00; s11 0.52-5.08; s13 0.60-5.14 (the invented 尼列扛 line is 0-2.50 of the draft, before the start); s15 0.57-4.17; s16 2.48-6.56; s20 0.10-7.33; s25 0.05-7.08; s26 0.89-7.00; s30 0.00-6.33; s31 1.74-7.07; s32 0.69-4.92; s33 0.14-5.10; s35 0.37-4.35. RECORDINGS (audio/, originals in audio/orig/, e909's recipe: acompressor 3:1 at -20 dB, volume, alimiter 0.84; integrated LUFS before -> after): system a24 -16.2 -> -13.5 (the warning, under the hit) and a26 -21.4 -> -14.6 (e910 lesson: 任務，完成 was 10 dB small); a28 -18.2 -> -14.6; a01 -16.2 -> -13.1 (a 0.4 s shout that touched 0 dBFS; audio-qa failed it 'quiet' against the grab); inner a25 -17.8 -> -16.0 and a27 -21.2 -> -16.1 (close and soft, same level); whispers a30 -18.2 -> -17.0, a31 -21.7 -> -17.0 (a32 -17.1 untouched). Not touched: a03 -17.1 and a21 -17.5 (畫外，低／壓低), the rest -12.4..-16.5, the raw-tts files. LEVELS: clip voices -10.4..-13.8 LUFS, whispers -15..-17; clip_af s15 -2 dB (低聲), s16 -2 dB (急，壓低). MUSIC (library only: a new cue would be Lyria, a paid service, not used; linked as zhong-tian-qu-qi-e911-dh/music and _live-e911/.../music as for e910, audio linked into _live-e911). Scene 1 continues e910's suspense, which ran from cue 2.0 at e910 s32 to its end at cue 63.25: (1) s01 c0 -> s08 c4.6 from cue 63.25 (gain -20, fade in 1.0, out 0.6), out just before 名冊，您帶來了嗎 (s08 4.80-7.11) -- script: c08 停一拍; (2) back at s09 c0.1 from cue 0 so the cue's crescendo (48 -> peak 50.75) climbs under Zhao's confession and peaks on the s17 accent (88.2 s), the loud 48-72 under s18-s21, its own drop at 72 lands on s22 and it fades (1.5) as he waves his men back -- c22 收; s23 has beds only. Scene 2 (更低的 suspense): cue-night, the darkest library cue (centroid ~300-380 Hz for 0-60 against suspense's 700-1100), (3) s24 c0 -> s28 c0.3 from cue 0, gain -20, cut under the warning hit; (4) s28 c3.2 (after the warning) -> s35 end from cue 0, fade out 4.0 over s35 so only the low end and the heartbeat are left under the last whisper. Synth heartbeat (assembler's) s28 c0.4 -> s29 end at -16 and s33 -> s35 at -17 (the script's slow heartbeat drum). Ducked 3.5 : 1, release 900 ms. SFX (_series/zhong-tian-qu-qi/sfx). Beds: s01 -> s23 fire -22 + fire-1 -25 + Wind -28; s23 c4.4 -> s35 fire -24 + fire-1 -27 + Wind -30 (0.6 s overlap). Floor: no 0.15 s stretch under -55 dB; quietest 0.5 s -41.8 (s25 c3.2). Accents (e910 review 3: an accent's momentary must top the lines next to it; the -4.4 dBFS limiter flattens short hits, so each carries a ringing tail): s17 c5.35 (after 蓋的印) impactPunch_heavy_000 +3, impactWood_heavy_000 +1, slam_01 0, gong_02 +6 -> 0.4 s max -7.9 against a15 -11.4 / a16 -11.5; s28 c0.12 red warning impactPunch_heavy_000 0, impactBell_heavy_001 -4, impactMetal_heavy_000 -8, gong_01 +4 under a24 (moving a24 off the hit made audio-qa fail it 'quiet') -> -9.1, a23 -10.3; s35 c4.45 last soft hit impactWood_heavy_001 -2, impactSoft_heavy_000 -4, impactBell_heavy_001 -6, paper_03 4.3 (script: soft) -> -14.2, then beds and the faded night cue to the end (-20, no drop). s01 c0.3 grab impactPunch_heavy_000 +2, impactWood_heavy_002 0, slam_03 -2, impactSoft -4, cloth2/rustle. Spot effects (times from the sheets, recheck on the refined cut): s02 cloth 1.9; s03 run 0.2-1.6, wrist 1.75, cloth 1.8/2.4; s04 sleeve 0.6/1.9; s05 boot 0.3, troop 0.7-5.6, fling 5.85; s06 paper 1.0/2.2; s07 paper into the palm 1.3; s08 step 0.3; s09 sleeve 3.65; s11 steps back 1.0-1.55; s12 sleeve 0.4; s13 stamp + jab 0.9; s14 one bead 0.9; s15 stick on palm 0.4; s16 sleeve grab 0.6/0.9; s18 paper 0.15/1.0; s19 step 0.6; s20 paper 5.6; s21 half step 0.8; s22 two sleeves 0.6/1.1, constables back 1.8-3.55; s23 steps 0.3-1.9; s24 hand on the shoulder 0.4; s25 fling 2.05; s26 steps 0.4/0.9; s27 a bead 0.5; s31 step 0.8, pat 2.2; s32 hand to mouth 0.3; s34 stick 1.0, abacus 1.15; dings: the assembler's. subtitle_lines a26 (sped-up system 吐槽, not on the panel; a24 is the panel). VF (on the 1920x1080 picture before the grade; pick-review's draft boxes x2, y x1.985; feather 50, boxblur 8 = its 25/4 at draft size; no colour key): spear racks darkened + desaturated + blurred: s13 380x357 at 0,60; s14 300x496 at 0,169 and 300x347 at 1620,228 (the right rack moves 820-950 draft x over the push-in, inside the box); s16 420x298 at 0,69 (the spear between their heads and the one by the door are accepted, the box would take a face); s31 160x834 at 1570,199 (pick-review optional: the door-side spear reads as a dark post); s22 plaque blurred 160x169 at 130,242 (boxblur 12, feather 30). On the dry run frames the boxes show no edge. Not done (pick-review accepted): sheathed swords on constables s25 s26 s31 s32 s35, s32 spears, s19 seal strokes, torch-head white bands s05. No repeated frames found (mpdecimate). RESULT of the dry run (e911cut.sh's limiter and loudnorm2 by hand): 191.54 s; -14.0 LUFS, LRA 6.7, true peak -2.7; loudnorm2 linear (pre-loudnorm -15.05 LUFS, true peak -3.59 + 1.05 dB = -2.54 <= -2.2); audio-qa 32 lines 0 problems. RECHECK on the refined clips: every speech span and the s31/s33 skip/until; s13 rubberband 0.66 by ear; voice_off lip sync in s17 (close-up) and s19 (medium), s03/s22 are wide; s21's 0.87 s hold (choices: accept; or clip voice with end-before 7.875 and his grin from 4.25; or a retake); s20 mouth corner 1.25-1.75; the vf boxes after refinement (a few px may move); spot-effect times."
+}
