@@ -30,6 +30,13 @@ const SET = [
   [/second bedroom of the Xu farmhouse/i, "dh-set-xujia-qinfang-t1"],
   [/third bedroom of the Xu farmhouse/i, "dh-set-xujia-lingfang-t1"],
   [/inside corridor of the Xu farmhouse/i, "dh-set-xujia-zoulang-t1"],
+  // e010 r2 (live only): the corridor by morning (the e909 picture is night, doors on the other wall), the yard by night
+  // (the yard picture is a sunny day) and the village road outside the yard gate by night have no CG picture; their live
+  // pictures will be refs-live/set-xujia-{zoulang-chen,yuan-ye,menwai}-l1.png (live-action/screen-test-e010.py). Before
+  // "yard gate" and "village lane" below.
+  [/morning corridor of the Xu farmhouse/i, "dh-set-xujia-zoulang-chen-t1"],
+  [/night yard of the Xu farmhouse/i, "dh-set-xujia-yuan-ye-t1"],
+  [/village road outside the Xu yard gate/i, "dh-set-xujia-menwai-t1"],
   [/headmaster's study/i, "dh-set-shuyuan-zhai-t1"],
   [/examination cells?\b/i, "dh-set-haoshe-t1"],
   [/sealing room/i, "dh-set-mifeng-fang-t1"],

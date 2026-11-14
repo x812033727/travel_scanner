@@ -14,7 +14,7 @@ P = f"{REPO}/docs/videos/series-plans/zhong-tian-qu-qi"
 H = f"{P}/production/hailuo"
 CAST = {c["id"]: c for c in json.load(open(f"{P}/production/cast.json"))["characters"]}
 EN = {"chengshanzhang": "Headmaster Cheng", "fengxuezheng": "Examiner Feng", "weixun": "Wei Xun", "dutie": "Du Tie", "chuzhifu": "Prefect Chu", "dengyasi": "Sergeant Deng", "lengtie": "Leng Tie", "xudalang": "Xu Dalang", "hanbo": "Elder Han", "xuyan": "Xu Yan", "aling": "A-ling", "qinshuang": "Qin Shuang", "tangxiaotang": "Tang Xiaotang", "xiaohe": "little Xiaohe", "erniu": "Wang Erniu", "qianyuanwai": "Qian Yuanwai", "laisan": "Lai San", "sunzhanggui": "Sun Zhanggui", "zongbiaotou": "the escort chief", "menfang": "the gatekeeper",
-      "yayi": "the yamen runner", "tongpan": "the vice-prefect", "zhifufuren": "the prefect's wife", "xinchai": "the courier", "zhanggui": "the innkeeper", "zhaobutou": "Constable Zhao", "mianshiguan": "the interviewer"}
+      "yayi": "the yamen runner", "tongpan": "the vice-prefect", "zhifufuren": "the prefect's wife", "xinchai": "the courier", "zhanggui": "the innkeeper", "zhaobutou": "Constable Zhao", "mianshiguan": "the interviewer", "huxianling": "Magistrate Hu"}
 HER = {"aling", "qinshuang", "tangxiaotang", "xiaohe", "zhifufuren"}
 BASE = json.load(open(f"{REPO}/docs/videos/zhong-tian-qu-qi-e042/video.json"))
 sys.path.insert(0, f"{REPO}/docs/videos/series-plans/zhong-tian-qu-qi/production/writer-tools/e051-e055")
