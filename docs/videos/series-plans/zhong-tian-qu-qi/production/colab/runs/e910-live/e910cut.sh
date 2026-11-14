@@ -26,7 +26,8 @@ cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ
 # e910 review 3: with louder accents and beds the same limiter left a true peak of -2.39 (input -15.25 LUFS, +1.25 dB to go),
 # loudnorm2 went dynamic and the cut clicked to +3.6 dBFS at 3.8 s. The overshoot is made by the AAC encode after the limiter
 # (the limited PCM measures -4.3 dBTP): attack 2 ms -> -2.3, 0.5 ms -> -1.8, 5 ms -> -4.2 on the s01 footsteps, so the attack
-# is 5 ms (limit still 0.6 = -4.4 dBFS; 0.5 lost 0.7 LU and stayed at -2.9 dBTP))
+# is 5 ms (limit still 0.6 = -4.4 dBFS; 0.5 lost 0.7 LU and stayed at -2.9 dBTP). s01's birds at -16 put one more AAC over
+# at 4.9 s (-3.0 dBTP), so they are -20; result -4.06 dBTP + 1.25 dB = -2.81, linear)
 ffmpeg -v error -y -i $E/cut/e910-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.6:attack=5:release=60:level=false,aresample=48000" $E/cut/e910-live.lim.mp4 && mv $E/cut/e910-live.lim.mp4 $E/cut/e910-live.mp4
 bash $Q/loudnorm2.sh $E/cut/e910-live.mp4
 echo "== cut-qa";   python3 $Q/cut-qa.py $E/cut --stem e910-live 2>&1 | tail -20
