@@ -5,15 +5,17 @@
 
 **行號**以現行 `video.json` 為準（p001–p163，第四版：2026-11-14 在第四章 p130 之後加一段「空著開」p131–p143（C22），原 p131–p150 往後移 13 號成 p144–p163，下面的行號已照第四版改過；第三版 p001–p150：2026-11-13 照頻道新規則把小問字數壓到 20% 以下、開場直接進題後重新編號；第二版是 p001–p166，第一版是 p001–p173）；`script.md` 是它的可讀版。
 
+**第五版（2026-11-14）只改所長的出處說法**：站主審片說所長一直講「食藥署說／教授說／課本說／一家家電公司說」，聽起來像公告，所以 p013、p028、p039、p043、p049、p059、p064、p070、p074、p076、p079、p084、p091、p102、p104、p107、p109、p111、p120、p123、p126、p129、p130、p132、p137、p142、p148 改成直接講（行號、句數、場景都沒變，句子只等長或變短），主張、數字與可能／通常／比較的強度照舊，出處只寫在本檔。片中還念出處的只剩：p033「美國食藥署說，門和門框好好的，微波不會漏出來」（官方的安心話）、p100「像這本，是GE一款微波爐的說明書」（架子那段）、p114「這本說明書說，只能照它寫的方法用」（鋁箔那段）、p145「說明書說：先按停止，再把出問題的東西處理好」（冒火花那段），每段說明書只說一次。
+
 **第三版只刪改小問的話**（與接話所需的所長開頭字：p005 去掉「對，」、p013 去掉「是。」、p050 去掉「有點像。」、p070 去掉「也」、p076 去掉「對。」、p109 去掉「對。」），沒有新增或改動任何主張；下面每條的行號已照第三版重新對過。**第二版範圍 p001–p165**，2026-11-12 由 `verify-2.md` 的查核代理逐條對過：每條「可用說法」的行號都對得上現行台詞。整條或部分不再用到的說法標成「現行版未使用」，原文照留作紀錄。verify-2 的必改 F01（p150）若照改，行號不變，只有本檔 C16 的注意欄要跟著看。
 
 **第二版刪掉的段落**（盲評說不推進火花的問題）：門的兩套連鎖開關、開門那一下（舊 p041–p044）；厚食物外層先熱、比較省電（舊 p064–p070，原 C09）；塑膠盒會融化（舊 p074–p076）；避雷針與高壓電線（舊 p095–p098，查核 F01 因此不再適用）。這些說法片中、說明欄、標籤與縮圖都不再出現。
 
 ## 先看這裡：找不到來源、因此沒講或小心講的事
 
-- **USDA FSIS〈Cooking with Microwave Ovens〉讀不到**：2026-11-12 curl（一般 User-Agent）與 WebFetch 都回 403，跟 2026-09-29 舊查核（`so-thats-why/week7/S13.md`）一樣。搜尋摘要提到「皺的鋁箔會冒火花」「鋁箔不超過食物四分之一」，但沒有讀到原頁，**片中一句都不用 FSIS**。鋁箔的規則只用一本具名的說明書（GE JVM1542，C16），而且明說「這是這一台的規則；你家那台，要看你家的說明書」（p118）；通用的建議只用 FDA 的「一般不要放金屬鍋子或鋁箔」（p111）。
+- **USDA FSIS〈Cooking with Microwave Ovens〉讀不到**：2026-11-12 curl（一般 User-Agent）與 WebFetch 都回 403，跟 2026-09-29 舊查核（`so-thats-why/week7/S13.md`）一樣。搜尋摘要提到「皺的鋁箔會冒火花」「鋁箔不超過食物四分之一」，但沒有讀到原頁，**片中一句都不用 FSIS**。鋁箔的規則只用一本具名的說明書（GE JVM1542，C16），而且明說「這是這一台的規則；你家那台，要看你家的說明書」（p118）；通用的建議只用 FDA 的「一般來說，不要放金屬鍋子或鋁箔」（p111）。
 - **企劃點名的兩個缺口**：(1) 尖端與窄縫為什麼集中電場、跳火花——用 OpenStax《College Physics 2e》18.7 與 19.2（大學物理教材，講的是靜電導體）；套到微波爐裡，靠 Bloomfield（維吉尼亞大學物理學教授）講的「微波推著電子在金屬裡來回跑、電子在尖端擠起來、跳進空氣」。教材本身沒有講微波爐，這個連結是**撰稿推論加專家問答**，見 C11–C13。(2) 具名說明書——GE Appliances〈Spacemaker XL Microwave Oven JVM1542 Owner's Manual〉（49-40264），檔案在 GE 自己的 `products-salsify.geappliances.com`。
-- **金邊碗為什麼會冒火花**：沒有找到機制來源（GE 與 Amana 只列在會冒火花的東西裡）。片中只說「說明書把金邊的碗，也列在會冒火花的東西裡」（p123），**不解釋原因**。
+- **金邊碗為什麼會冒火花**：沒有找到機制來源（GE 與 Amana 只列在會冒火花的東西裡）。片中只說「金邊的碗，也是會冒火花的東西」（p123，照 GE 把 goldrimmed dishes 列在 Arcing is caused by 之下），**不解釋原因**。
 - **皺鋁箔為什麼會冒火花**：JennAir 支援頁說「Thin, crumpled, or sharply edged metal can concentrate energy and spark」（C14）；「皺一次，就多出很多小尖角」（p086）是撰稿用 C12 的尖端原理接上去的**撰稿推論**；p088「平的尖角少，可是一樣很薄，邊也可能尖尖的」照 JennAir 的 Thin or wrinkled／sharply edged（C14）。
 - **含礦物質的蔬菜也會冒火花**（Amana 有提）：機制沒有來源，片中不提。
 - **2.45 GHz、水的共振頻率、發明故事、漏能數字**：舊查核有來源，但本集不講（第二章只講到「推著晃、摩擦生熱」，見 brief.md「長度判斷」）。
@@ -107,7 +109,7 @@
 - **可用說法**：p035–p041、p055–p060、p073–p081
 - **來源**：[2]
 - **原文**：「Since an electric field exerts forces on charged particles, a microwave pushes electrons back and forth through any metals it encounters. It is this motion of electrons back and forth through the metal walls of the microwave oven that allow that metal to reflect the microwaves and keep them inside the oven.」「To keep the spoon from overheating, it must be a good conductor of electricity. Since most spoons are pretty thick, the modest currents flowing through them in the microwave will leave little energy inside them and they won't overheat. But a thin twist-tie or small bit of aluminum foil may well overheat and begin to burn.」「Electrons are more likely to leave the end of a metal surface at a sharp point, so avoiding points is important. Most spoons are smooth enough that no sparks will occur. But a fork, a sharp piece of foil, or a twist-tie may well begin to emit electrons into the air as those electrons pile up at one end of the wire while the microwave oven is on.」「Like a spoon, the walls of the oven are good conductors of electricity and they have no sharp points. While electrons move back and forth in these walls, they simply reflect the microwaves without becoming very hot and without emitting any sparks.」
-- **注意**：片中第一次說「一位物理學教授說」（p028，C04 的同一位），之後簡稱「物理學教授」「教授」。p036–p038 的「電子」白話（很小、帶電、在金屬裡能到處跑）是**常識／簡化**。原文是 twist-tie（束線鐵絲），片中套到便當盒的鐵絲提把（同樣是細鐵絲、有兩個尖頭），是**撰稿推論**；GE 說明書（C16）也把 wire twist-ties 和 metal handles 一起列出。「湯匙夠厚、頭又圓圓的，通常不會冒火花」＝ most spoons are smooth enough / pretty thick；「叉子就可能會」＝ may well。p080–p081「那細細的鐵絲呢？」「還記得嗎？它太細，熱就留在裡面，才可能燒起來」是 p059 的具名回呼，新增的是和厚湯匙（p079）的對比：原文 thick spoons「leave little energy inside them」對 thin twist-tie「may well overheat and begin to burn」；「熱就留在裡面」是 overheat 的白話。
+- **注意**：片中不念出處（2026-11-14 第五版：站主審片說「某某說」太像公告，所長改成直接講，出處只留在本檔）；p039「微波一照，就會推著金屬裡的電子來回跑」＝ pushes electrons back and forth，p043、p059、p074、p079 同樣直接講，可能／通常的強度照原文。p036–p038 的「電子」白話（很小、帶電、在金屬裡能到處跑）是**常識／簡化**。原文是 twist-tie（束線鐵絲），片中套到便當盒的鐵絲提把（同樣是細鐵絲、有兩個尖頭），是**撰稿推論**；GE 說明書（C16）也把 wire twist-ties 和 metal handles 一起列出。「湯匙夠厚、頭又圓圓的，通常不會冒火花」＝ most spoons are smooth enough / pretty thick；「叉子就可能會」＝ may well。p080–p081「那細細的鐵絲呢？」「還記得嗎？它太細，熱就留在裡面，才可能燒起來」是 p059 的具名回呼，新增的是和厚湯匙（p079）的對比：原文 thick spoons「leave little energy inside them」對 thin twist-tie「may well overheat and begin to burn」；「熱就留在裡面」是 overheat 的白話。
 
 ## C12 金屬上越尖的地方電荷擠得越多、周圍的推力越強；強到空氣擋不住，就從尖端跳進空氣，變成像閃電一樣的小火花；又平又圓的表面電荷比較不會跑出去；叉子的每個尖頭都是電荷會擠過去的地方【教材＋簡化】
 
@@ -121,14 +123,14 @@
 - **可用說法**：p090–p094、p102–p104
 - **來源**：[5]、[6]、[8]
 - **原文**：[5]「it takes about 75 kV to make a spark jump across a 2.5 cm (1 in.) gap, or 150 kV for a 5 cm spark. … A smaller voltage will cause a spark if there are points on the surface, since points create greater fields than smooth surfaces.」[6] Arcing is caused by：「The metal shelf not installed correctly so it touches the microwave wall.」「Metal or foil touching the side of the oven.」[8]「Do not allow aluminum foil or metal to touch the inside cavity walls, ceiling, or floor. Do not allow contact with another metal object during cooking.」
-- **注意**：[5] 的意思是「縫越寬，要越大的推力才跳得過去」，片中反過來說「縫越窄，越容易跳」，不念千伏。「碰到牆」有 [6] 的原句；「靠得很近也比較容易冒火花」是把 [5] 的原理套到微波爐的**撰稿推論**，說明書只寫 touch／contact（查核 verify-1 判 p094 正確）。p103「就是剛剛說的：金屬碰到牆，比較容易冒火花」是 p094 的具名回呼，新增的是 p102 說明書對架子的要求（C15）。p104「剛剛那家家電公司也說，金屬別碰到別的金屬」＝ [8]「Do not allow contact with another metal object during cooking.」（「剛剛那家家電公司」指 p084 的 JennAir）。
+- **注意**：[5] 的意思是「縫越寬，要越大的推力才跳得過去」，片中反過來說「縫越窄，越容易跳」，不念千伏。「碰到牆」有 [6] 的原句；「靠得很近也比較容易冒火花」是把 [5] 的原理套到微波爐的**撰稿推論**，說明書只寫 touch／contact（查核 verify-1 判 p094 正確）。p103「就是剛剛說的：金屬碰到牆，比較容易冒火花」是 p094 的具名回呼，新增的是 p102 說明書對架子的要求（C15）。p104「還有，金屬也別碰到別的金屬」＝ [8]「Do not allow contact with another metal object during cooking.」（「剛剛那家家電公司」指 p084 的 JennAir）。
 
 ## C14 鋁箔是包東西用的薄金屬片；薄的、皺的、邊很尖的金屬會把能量集中起來冒火花【廠商支援頁＋常識】
 
 - **可用說法**：p082–p089
 - **來源**：[8]，交叉 [2]、[6]
 - **原文**：[8]「Microwaves heat food by exciting water molecules. Metal reflects this energy rather than absorbing it. Thin, crumpled, or sharply edged metal can concentrate energy and spark (arc).」「Thin or wrinkled aluminum foil, or foil touching the cavity walls, floor, or door」「Forks, skewers, or scrunched foil balls with pointed ends」[2]「a sharp piece of foil」
-- **注意**：片中說「一家家電公司說」（JennAir，不念名字）。p086「皺一次，就多出很多小尖角」是**撰稿推論**（接 C12 的尖端）。p083 鋁箔的定義是常識。p087–p089 平的鋁箔：「平的尖角少」是 C12 的推論，「可是一樣很薄，邊也可能尖尖的」照 [8] 的 Thin or wrinkled aluminum foil／sharply edged metal；p089「所以平的也要照說明書用」接 C16 的 [6]「Use foil only as directed in this manual」（p114）。
+- **注意**：片中不念出處（第五版起 p084 直接說「像這種薄的、皺的、邊很尖的金屬，會把能量集中起來，冒出火花」；來源是 JennAir）。p086「皺一次，就多出很多小尖角」是**撰稿推論**（接 C12 的尖端）。p083 鋁箔的定義是常識。p087–p089 平的鋁箔：「平的尖角少」是 C12 的推論，「可是一樣很薄，邊也可能尖尖的」照 [8] 的 Thin or wrinkled aluminum foil／sharply edged metal；p089「所以平的也要照說明書用」接 C16 的 [6]「Use foil only as directed in this manual」（p114）。
 
 ## C15 金屬架：GE JVM1542 附的架子給大盤子或兩層一起熱；要放對位置、不能碰到牆，不然可能冒火花【廠商說明書】
 
@@ -149,7 +151,7 @@
 - **可用說法**：p105–p108、p128–p129、p148
 - **來源**：[7]
 - **原文**：「Metal oven-proof bakeware should only be used during Oven functions such as air fry, toast, bake, convect bake, roast, broil, and dehydrate cycles (on some models). Using the provided accessory racks with microwave function can cause arcing or sparking.」「Soil build-up on cavity walls, microwave cover, cooking rack supports, and the area where the door touches the frame can cause arcing.」「Prolonged arcing can damage the oven. If caught at once, arcing should not damage the oven.」
-- **注意**：片中說「另一家廠商」「剛剛那家廠商」「那家廠商」（Amana，不念名字）。這頁是 Amana 有烤箱功能的上掛式微波爐（over-the-range）；「有些機型」照 on some models。「通常不會」＝ should not。
+- **注意**：片中不念出處（第五版起 p107「不一定。有些微波爐附的架子，」、p129「牆上卡的髒東西，也可能冒火花」、p148「馬上停下來，通常不會弄壞爐子」都直接講；來源是 Amana）。這頁是 Amana 有烤箱功能的上掛式微波爐（over-the-range）；「有些機型」照 on some models。「通常不會」＝ should not。
 
 ## C18 每台微波爐的說明會寫可以用哪些容器；一般不要放金屬鍋子或鋁箔，因為微波被彈開，食物熱得不平均、還可能弄壞爐子【官方說明】
 
@@ -179,9 +181,9 @@
   - p136「越積越多」＝ build up；p137「倒流回去」＝ flow backward through the pipe／find their way back；p139「可能把它弄壞」＝ can be damaged（不說「一定會壞」）。p138「做出微波的那個磁控管」是 p017–p018（C03）的回呼。
   - p135「本來會被飯裡的水吸收掉」接 C07（水被推著晃）與 [9] 的 water-containing food。
   - p140–p141「只放一個乾乾的空碗，也跟空著差不多；因為陶瓷碗會讓微波穿過去，不會吸收」是**撰稿推論**：[9] 說沒有含水的食物，微波就不會被吸收（no food (or rather no water-containing food)），[1] 說微波穿過陶瓷；GE 另寫「Do not microwave empty containers」。不說空碗會怎樣燒起來或碎掉（沒有來源）。
-  - p142「別讓微波爐空著開超過一兩秒」＝ [9] never run a microwave empty for more than a second or two（[10] 說 don't run the microwave empty for any long periods of time，片中用 [9] 較具體的說法，標成「那位教授說」）。
+  - p142「別讓微波爐空著開超過一兩秒」＝ [9] never run a microwave empty for more than a second or two（[10] 說 don't run the microwave empty for any long periods of time，片中用 [9] 較具體的說法；第五版起直接說「所以，別讓微波爐空著開超過一兩秒」，不念出處）。
   - p143「按開始之前，先看看裡面有沒有放食物」是由 [1]、[9] 推出的**撰稿推論**（生活建議），不是來源原句。
-  - 「那位教授」「物理學教授」都是 Bloomfield（C04 起的同一位）。
+  - p137、p142 的說法都出自 Bloomfield（C04 起的同一位）；第五版起片中不念「教授說」。
   - 圖：`empty-bounce`、`magnetron-glow` 的淡藍波紋與發亮的圓筒是示意，不是實際結構（同 C03 的 `oven-back`）。
 
 ## C20 水盤比喻【比喻／示意】
@@ -216,3 +218,7 @@
 - p134 改「請大人來：拿掉鐵絲、架子放正、鋁箔貼緊。」（verify-2 F01：GE 說架子可能燙、要大人處理）。
 - 新增 p135「要是燒起來了，門別打開，先按停止，叫大人。」：GE JVM1542 說明書 "If materials inside the oven should ignite, keep the oven door closed, turn the oven off"；「叫大人」是兒童節目的安全措辭（verify-2 S1）。
 - 收尾「金屬牆和網子」（FDA：金屬牆與門上的金屬網把微波留在爐內，C02）；「那家家電公司」去掉重複的「剛剛」；小問總結改「就可能跳出火花」（verify-1 S5）。
+
+## 第五版的改動（2026-11-14）
+
+- 所長的 27 句出處說法改成直接講（清單見檔頭「第五版」一段）；p013「美國管食品安全的食藥署說，」改成「那面牆，藏著一個祕密：」，p014 的主張（C01）不變。
