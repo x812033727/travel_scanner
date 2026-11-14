@@ -357,11 +357,11 @@ obj("brush-wet", "Close-up of " + TBRUSH + " standing on " + TSTAND + " on a wet
     cn("這樣充電，牙刷底下沒有插頭，也沒有露出來的電線。", None, "P:brush"),
     cn("電動刮鬍刀常用這種充電，也是同一個原因。"))
 obj("brush-peg", "Close-up cutaway of " + TSTAND + " drawn cut open, inside it a neat coil of shiny copper wire wound around a short grey peg rising from its middle, the bottom of " + TBRUSH + " sitting over the peg with its base also cut open to show a second small copper coil ringing the same peg, a soft pale blue glow between the two coils, plain pale cream background",
-    cn("而且充電的底座上，有一根包著塑膠的小鐵柱。"),
+    cn("而且很多牙刷底座上，有一根包著塑膠的小鐵柱。"),
     cn("牙刷一放上去，那圈線就剛好圍著鐵柱。"))
 chief("chief-peg", C("resting " + TBRUSH + " upright on " + TSTAND + " on a table in front of her with a pleased smile"),
     cn("兩圈線又近又正，鐵柱還把磁場集中送過去。"),
-    cn("所以牙刷站得穩穩的，不會像手機那樣滑開。"))
+    cn("鐵柱也卡住牙刷，不會像手機那樣滑開。"))
 kid("kid-potcenter-q", K("pointing at " + POT + " on " + HOB + " with a curious face", where=KITCHEN),
     k("鍋子也要放正中間嗎？", "句尾上揚", "S:potcenter"))
 obj("pot-center", "Close-up of " + POT + " sitting neatly in the middle of " + HOB + ", seen from above",

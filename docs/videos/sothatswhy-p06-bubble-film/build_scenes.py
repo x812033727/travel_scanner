@@ -204,7 +204,7 @@ bub("soap-drop", "Close-up of a small round glass bowl of clear water on a sunny
 bub("straw-water", "Close-up of a clear drinking glass of plain water on a sunny wooden balcony table with a plastic drinking straw standing in it, one tiny bubble at the tip of the straw bursting into a few sparkling droplets, blue sky behind",
     add(c("清水拉得太用力，又乾得快，一下就破。")), add(c("肥皂有點像一層蓋子，讓皮裡的水慢一點乾掉。")))
 bub("bubble-jar", "Close-up of one round see-through soap bubble resting on a small round glass dish inside a big clear glass jar with a closed round metal lid, the jar standing on a wooden shelf in a bright sunny room, soft pink and green sheen on the bubble",
-    add(c("有人把泡泡封進罐子，不讓它乾，撐了三個月！", "數字放慢")))
+    add(c("有人用特別的泡泡水封進罐子，撐了三個月！", "數字放慢")))
 kid("kid-round-q", K("drawing a big circle in the air with one finger and a curious face", where=HOME),
     k("那它為什麼要縮成圓的？", "句尾上揚"))
 bub("bubble-free", "Wide shot of a single round transparent soap bubble floating alone high in a clear blue sky, soft swirling pink and green sheen, sunlight glinting on it",

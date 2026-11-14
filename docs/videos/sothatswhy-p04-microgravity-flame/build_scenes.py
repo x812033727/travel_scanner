@@ -342,7 +342,7 @@ obj("candle-dim", "Close-up of " + CANDLE + " with a very small faint round blue
 # 2026-11-14 (body back over 480 s after the kid-share cut): a sourced fire-safety segment, claims.md C26.
 chief("chief-putout", C("listening with a serious kind face, one hand raised in a calm careful gesture", close=True),
     k("太空站失火了，要怎麼滅？", "擔心", "S:putout"),
-    c("美國太空總署說，滅太空的火，要看火的樣子和燒的東西。", "接住上一句"))
+    c("美國太空總署說，太空滅火要看火的樣子和燒的東西。", "接住上一句"))
 chief("chief-worse", C("gently wagging one index finger with a careful serious face"),
     c("在地上好用的滅火方法，到太空可能沒用，", "認真"),
     c("甚至讓火更糟。所以比較大的火，他們不在太空站上燒。"))
@@ -360,7 +360,7 @@ kid("kid-out-q", K("folding her arms with a satisfied little nod", where=YARD),
 
 # ---------- 第四章：火熄了，那一滴還在變小 ----------
 chief("chief-not-quite", C("holding up one finger with a mysterious smile", close=True),
-    c("太空站上有一組實驗，發現不一定。", "接住上一句"), chapter="火熄了，那一滴還在變小")
+    c("剛剛那組實驗就發現：不一定。", "接住上一句"), chapter="火熄了，那一滴還在變小")
 obj("drop-float", "Close-up of " + DROP + ", two thin wires reaching towards it from both sides",
     c("他們讓一小滴燃料自己飄著，用燒熱的電線點火。"))
 obj("drop-glow", "Close-up of " + DROP + ", a bright soft orange glowing flame ball surrounding the drop",
