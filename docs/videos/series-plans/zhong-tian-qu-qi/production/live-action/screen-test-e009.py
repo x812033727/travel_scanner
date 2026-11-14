@@ -12,9 +12,9 @@ SETS = {
    "three plain wooden doors in a row along the right-hand wall with no writing on them, warm candlelight glowing through the cracks around them, "
    "the open end of the corridor on the left letting in a little cold blue moonlight, at the near end a low woodshed doorway; "
    "dark, lit only by the glow from the door cracks and the moonlight"),
- "set-xujia-tangfang": ("a small bedroom in a poor ancient Chinese Song-dynasty farmhouse at night, made neat by a young woman: a plain wooden table "
+ "set-xujia-tangfang": ("a small bedroom in a poor ancient Chinese Song-dynasty farmhouse at night, tidy and unoccupied: a plain wooden table "
    "on the right with three thin cloth-bound account books on it and one lit candle, a simple wooden bed with a pale pink quilt behind the table, "
-   "a paper window with plain blank paper, the wooden door on the left, packed-earth walls; warm yellow light from the one candle only"),
+   "a paper window with plain blank paper, the wooden door on the left, packed-earth walls; warm yellow light from the one candle only; the room is completely empty: no person, no woman, nobody sitting on the bed or at the table"),
  "set-xujia-qinfang": ("a small plain bedroom in a poor ancient Chinese Song-dynasty farmhouse at night, its owner gone: an empty wooden bed with "
    "the quilt folded square and neat, the paper window flung wide open to the night, an empty wooden wall rack beside the window with nothing on it, "
    "a small table with one candle whose flame leans in the night wind; cold blue moonlight through the open window and a little warm candlelight"),

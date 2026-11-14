@@ -1,0 +1,905 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e009-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene: a light playful comedy of pipa, woodblock and dizi through the night corridor and the warm candlelit room where the accounts are checked, dropping out for one beat on the system chime and pausing for a breath under the system's last jab; a low suspense cue of low cello and soft guqin in the dark corridor, the empty moonlit room and the dark candlelit room, one sharp hit as the blade touches his neck; from the lowered blade a very soft warm string cue, only the strings left under the last whispered line; ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "洞房夜三扇門｜種田娶妻打天下 第9集（重製版）",
+    "description": "第四天夜裡，許硯三人騎著鏢局的馬回到家。小禾端著燭台擋在走廊：昨天成親他躲去睡柴房，今晚不准再躲，三扇門自己選一扇。第一扇是唐小棠，要他先把今天的三本帳對完；許硯不碰算盤就心算出二十兩一錢，還抓出一筆三錢記成三兩，唐小棠好感加二，接著又搬出十本帳。第二扇門裡沒有人，窗戶開著，他替秦霜把窗關上。第三扇門一推開，阿令的匕首就抵上他的脖子；他看到她手腕上的舊傷，問了一句就不再問：「妳睡床，我睡門口，誰要進來，先過我。」阿令丟出一條厚被子，好感加十，隱藏任務完成。夜裡，她隔著門板說：明天，我可能得走。《種田娶妻打天下》第 9 集（重製版）。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "洞房夜，刀抵喉",
+      "tag": "種田娶妻打天下",
+      "shot": "s24"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "回家",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, tracking",
+        "prompt": "At the yard gate in the bamboo fence of the Xu farmhouse at night: the yard gate on screen right with one blank paper lantern with no writing hanging beside it, the house door at the back left with warm candlelight in its doorway, one thatched horse shed in the back left corner, a packed-earth yard, cool blue moonlight over everything: wide shot past the bamboo fence and the blank paper lantern in the foreground, everyone small in the frame: on screen right Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, standing at his full height just inside the yard gate, his face three-quarter to screen left toward the house, never the lens; worn out: brows drawn together, eyes heavy, lips closed; in the middle, seen only from behind, Qin Shuang, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, both her hands on the reins of one chestnut-red horse with a saddle, leading it toward the horse shed at the back left, her face never seen, no blade, no knife, no scabbard and no weapon of any kind anywhere in the frame; small in the lit house doorway at the back left A-ling in her plain grey-white cotton dress with long sleeves and one plain wooden hairpin, no shackles, her sleeves pulled down over her wrists, standing; each person appears only once, nobody else behind them",
+        "motion": "Qin Shuang, both hands on the reins, leads the horse away toward the horse shed at the back left; Xu Yan rubs his stiff shoulder and walks a few steps toward the house; in the doorway A-ling looks at him for one beat, then turns and goes inside; nobody speaks; all lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the cool moonlight and the lantern glow stay unchanged",
+        "characters": [
+          "xuyan",
+          "qinshuang",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "chapter": "走廊",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a01",
+          "speaker": "xiaohe",
+          "text": "哥，昨天成親你躲去睡柴房，今晚不准再躲。",
+          "emotion": "很認真"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the inside corridor of the Xu farmhouse at night, lit only by warm candlelight through the door cracks and a little cool moonlight: medium shot past one rough timber post of the corridor in the left foreground: little Xiaohe in her patched lilac short jacket with red-string pigtails and one front tooth missing, a small woven straw rabbit tucked into her sash, framed from the knees up with space above her head, one small brass candlestick with one lit white candle raised in her right hand, her face three-quarter to screen left toward Xu Yan off screen left, never the lens; very earnest: brows drawn together, eyes wide and firm, lips firm between words; behind her only the packed-earth wall and one candlelit door crack of the same corridor",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「哥，昨天成親你躲去睡柴房，今晚不准再躲」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xiaohe runs in from screen right with the candlestick held high, stops in the middle of the corridor and throws her left arm out wide to block the way, the candle flame swaying; no smile at any moment, not even at the end of the shot, until the last frame, and the warm glow from the door cracks and the faint cool moonlight stay unchanged",
+        "characters": [
+          "xiaohe"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a02",
+          "speaker": "xuyan",
+          "text": "我沒躲，柴房涼快。再說債剛還完，我累了。",
+          "emotion": "推託，乾笑"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the inside corridor of the Xu farmhouse at night: packed-earth walls and rough timber posts, three plain wooden doors in a row along the right-hand wall with no writing on them, warm candlelight glowing through the cracks around each door, the open end of the corridor on screen left letting in a little cool moonlight, one low woodshed doorway at the near left end; dark, lit only by the glow from the door cracks and the moonlight: over-the-shoulder medium shot from behind Xiaohe: Xiaohe appears only once, only the top of her small head with its two red-string pigtails at the bottom right foreground, her face out of the frame; Xu Yan on screen left at the near end of the corridor beside the low woodshed doorway, standing at his full height, framed from the knees up with clear space above his head, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, his face three-quarter to screen right toward her, never the lens; caught out: brows lifted, eyes shifting, a weak dry laugh between words; nobody else behind him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「我沒躲，柴房涼快。再說債剛還完，我累了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan squats down beside the woodshed doorway, takes up one rolled bedding bundle of grey-blue coarse cloth tied round with hemp cord under his left arm and rises again to his full height, his whole head staying in the frame, then takes half a step back toward screen left and hugs the bundle to his chest; Xiaohe's lips stay closed, and the warm glow from the door cracks and the faint cool moonlight stay unchanged",
+        "characters": [
+          "xiaohe",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a03",
+          "speaker": "xiaohe",
+          "text": "三扇門都留著燈，你自己選一扇進去。",
+          "emotion": "瞪眼"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the inside corridor of the Xu farmhouse at night, lit only by warm candlelight through the door cracks and a little cool moonlight: close-up of little Xiaohe in her patched lilac short jacket with red-string pigtails and one front tooth missing, a small woven straw rabbit tucked into her sash, framed from the chest up with space above her head, her face three-quarter to screen left and tilted up toward Xu Yan off screen left, never the lens; glaring: brows drawn down hard, eyes wide, lips firm between words; the brass candlestick in her right hand; behind her only the packed-earth wall of the same corridor",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「三扇門都留著燈，你自己選一扇進去」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xiaohe steps forward and thrusts the brass candlestick out of the frame at the bottom left into a man's hand there, then rises onto her toes, her whole head staying in the frame, glaring up; no smile at any moment, not even at the end of the shot, until the last frame, and the warm glow from the door cracks and the faint cool moonlight stay unchanged",
+        "characters": [
+          "xiaohe"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a04",
+          "speaker": "xuyan",
+          "text": "一扇算帳，一扇沒聲，一扇在磨刀。",
+          "emotion": "畫外，低聲"
+        }
+      ],
+      "data": {
+        "camera": "Point-of-view shot, slow push in",
+        "prompt": "In the inside corridor of the Xu farmhouse at night: packed-earth walls and rough timber posts, three plain wooden doors in a row along the right-hand wall with no writing on them, warm candlelight glowing through the cracks around each door, the open end of the corridor on screen left letting in a little cool moonlight, one low woodshed doorway at the near left end; dark, lit only by the glow from the door cracks and the moonlight: point-of-view shot looking along the corridor at the three plain wooden doors in a row on screen right, no writing on them, warm candlelight glowing through the cracks around each one; the small flame of one candle on a brass candlestick rising from the bottom edge of the frame, the hand that holds it below the frame; nobody in the corridor, no person and no face anywhere in the frame; Xu Yan speaks off screen",
+        "motion": "the candle flame at the bottom edge sways; the light in the crack of the first door flickers, the crack of the second door stays still, and a shadow passes once behind the crack of the third door; nobody appears, and the warm glow from the door cracks and the faint cool moonlight stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a05",
+          "speaker": "xiaohe",
+          "text": "小棠嫂嫂那扇最亮，先去那裡準沒錯。",
+          "emotion": "推人"
+        }
+      ],
+      "data": {
+        "camera": "Medium two-shot, tracking",
+        "prompt": "In the inside corridor of the Xu farmhouse at night: packed-earth walls and rough timber posts, three plain wooden doors in a row along the right-hand wall with no writing on them, warm candlelight glowing through the cracks around each door, the open end of the corridor on screen left letting in a little cool moonlight, one low woodshed doorway at the near left end; dark, lit only by the glow from the door cracks and the moonlight: medium two-shot along the corridor, framed with clear space above Xu Yan's head: in front Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, the bedding bundle under his left arm and one small brass candlestick with one lit white candle in his right hand, moving toward screen right, his face in profile toward the doors ahead, never the lens; helpless: brows lifted, eyes wide, lips closed; right behind him little Xiaohe in her patched lilac short jacket with red-string pigtails and one front tooth missing, a small woven straw rabbit tucked into her sash, both small hands pressed flat on the small of his back, her face lifted toward the back of his head; the first door ahead on screen right with candlelight glowing round its edges; each person appears only once, nobody else behind them",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「小棠嫂嫂那扇最亮，先去那裡準沒錯」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xiaohe pushes Xu Yan along the corridor toward the first door on screen right; he stumbles two steps forward, the candle flame swaying; Xu Yan's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm glow from the door cracks and the faint cool moonlight stay unchanged",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s07",
+      "chapter": "唐小棠房",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a06",
+          "speaker": "tangxiaotang",
+          "text": "來得正好，先把今天這三本帳對完再說。",
+          "emotion": "理所當然，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, tracking",
+        "prompt": "In the first bedroom of the Xu farmhouse at night, a young woman's small neat room: one small plain wooden table on screen right, as high as a seated person's waist, with one lit candle on it, a low wooden stool on each side of it, a simple wooden bed with a pale pink quilt behind the table, one paper window covered with blank paper, the wooden door on screen left, packed-earth walls; warm yellow light from the one candle only: wide shot past the wooden door frame in the left foreground, both small in the frame, framed with clear space above their heads: on screen right Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, seated on a low stool behind the small table, her left hand resting flat on three thin account books with plain blue cloth covers, shut, the covers blank with no writing, one plain wooden abacus as long as her forearm, no marks or writing and the lit candle beside them, her face three-quarter to screen left toward Xu Yan, never the lens; businesslike and cool: brows level, eyes steady on him, lips firm between words; on screen left Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, the bedding bundle under his left arm and the brass candlestick in his right hand, stepping in through the doorway at his full height; nobody in the doorway behind him; each person appears only once, nobody else behind them",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「來得正好，先把今天這三本帳對完再說」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan shoulders the door open and steps into the room; Tang Xiaotang looks up from the books and presses her left hand flat on the three of them; Xu Yan's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm yellow light of the one candle stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a07",
+          "speaker": "xuyan",
+          "text": "別人洞房喝交杯酒，我洞房對帳本？",
+          "emotion": "傻眼，苦笑"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse at night, a young woman's small neat room: one small plain wooden table on screen right, as high as a seated person's waist, with one lit candle on it, a low wooden stool on each side of it, a simple wooden bed with a pale pink quilt behind the table, one paper window covered with blank paper, the wooden door on screen left, packed-earth walls; warm yellow light from the one candle only: over-the-shoulder medium shot from behind Tang Xiaotang's left shoulder: Tang Xiaotang appears only once, seated, her shoulder and the back of her head with its two looped buns and pink silk ribbons in the right foreground, her face out of the frame; Xu Yan standing at his full height on the near side of the small table on screen left, the tabletop as high as the middle of his thigh, framed from the waist up with clear space above his head, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, his face three-quarter to screen right toward her, never the lens; dumbfounded: brows shot up, eyes wide, mouth twisting into a wry helpless half smile between words; on the table the three blue-covered account books, shut and blank, and the lit candle; nobody else behind him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「別人洞房喝交杯酒，我洞房對帳本？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan sets the brass candlestick down on the table and lets the bedding bundle drop by the door at his feet, his whole head staying in the frame, then looks from the books to her and back; Tang Xiaotang's lips stay closed, and the warm yellow light of the one candle stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a08",
+          "speaker": "tangxiaotang",
+          "text": "交杯酒一壺二十文，帳錯一筆可是幾兩。",
+          "emotion": "理所當然，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse at night, a young woman's small neat room: one small plain wooden table on screen right, as high as a seated person's waist, with one lit candle on it, a low wooden stool on each side of it, a simple wooden bed with a pale pink quilt behind the table, one paper window covered with blank paper, the wooden door on screen left, packed-earth walls; warm yellow light from the one candle only: over-the-shoulder medium shot from close behind one young woman's left shoulder: one young woman appears only once: in the right foreground only the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; she is the only woman in the whole shot; she keeps facing across the table toward the man the whole time, the back of her head toward us, her ear the furthest round her head we ever see, no cheek, no profile and no lips at any moment; across the small table on screen left Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, sitting down on the low stool on his side of the table, framed from the chest up with space above his head, his head at the same height as hers, his face three-quarter to screen right toward her, never the lens; deflated: brows drawn up, eyes on her, lips closed; on the table one plain wooden abacus as long as her forearm, no marks or writing, the three blue-covered account books, blank, and the lit candle; exactly two people in the frame, nobody else",
+        "motion": "her right hand pushes the wooden abacus across the table toward him and her chin lifts once, the back of her head still toward us; Xu Yan sinks onto the stool, his head level with hers, and stares at the abacus; Xu Yan's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm yellow light of the one candle stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a09",
+          "speaker": "xuyan",
+          "text": "後巷十二兩，客棧六兩，鏢局二兩一錢。",
+          "emotion": "畫外，邊翻邊念"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, high angle, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse at night, warm yellow light from one candle on the table: high-angle insert close-up, the shot opens directly on one open account book, its pages soft and out of focus so no line can be read on the table from its very first frame: one man's hand in a dusty blue-grey cuff, its forefinger running down the page; one plain wooden abacus as long as her forearm, no marks or writing beside the book, untouched; only the hand, cuff, book and abacus are in the frame, no face; the lit candle at the top edge; Xu Yan speaks off screen",
+        "motion": "the hand turns one page, then the forefinger runs down the blurred lines one by one; the hand never touches the abacus, and the warm yellow light of the one candle stays unchanged",
+        "characters": [],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a10",
+          "speaker": "xuyan",
+          "text": "今天總共二十兩一錢，還完債剩下一錢。",
+          "emotion": "平穩"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse at night, warm yellow light from one candle on the table: close-up of Xu Yan sitting on the low stool at the small table, framed from the chest up with space above his head, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, his face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; calm and sure: brows level, eyes steady, lips firm between words; behind him only the wooden door and the packed-earth wall of the same room in warm candlelight",
+        "motion": "Xu Yan speaks a short Mandarin line, 「今天總共二十兩一錢，還完債剩下一錢」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan shuts the account book with one hand below the frame and lifts his eyes to her off screen right; no smile at any moment, not even at the end of the shot, until the last frame, and the warm yellow light of the one candle stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a11",
+          "speaker": "tangxiaotang",
+          "text": "你連算盤都沒碰，怎麼算得這麼快？",
+          "emotion": "愣住，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse at night, a young woman's small neat room: one small plain wooden table on screen right, as high as a seated person's waist, with one lit candle on it, a low wooden stool on each side of it, a simple wooden bed with a pale pink quilt behind the table, one paper window covered with blank paper, the wooden door on screen left, packed-earth walls; warm yellow light from the one candle only: over-the-shoulder medium shot from close behind one young woman's left shoulder: one young woman appears only once: in the right foreground only the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; she is the only woman in the whole shot; she keeps facing across the table toward the man the whole time, the back of her head toward us, her ear the furthest round her head we ever see, no cheek, no profile and no lips at any moment; her right hand resting on one plain wooden abacus as long as her forearm, no marks or writing on the table; across the small table on screen left Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, sitting on the low stool, framed from the chest up with space above his head, his head at the same height as hers, his face three-quarter to screen right toward her, never the lens; unbothered: brows level, eyes calm on her, lips closed; the lit candle on the table; exactly two people in the frame, nobody else",
+        "motion": "her fingers stop dead on the abacus beads; the back of her head jerks up and her shoulders tip a little forward toward him over the table, the back of her head still toward us; Xu Yan looks back at her; Xu Yan's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm yellow light of the one candle stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a12",
+          "speaker": "xuyan",
+          "text": "心算。還有，第三頁這筆，三錢記成了三兩。",
+          "emotion": "輕描淡寫"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse at night, a young woman's small neat room: one small plain wooden table on screen right, as high as a seated person's waist, with one lit candle on it, a low wooden stool on each side of it, a simple wooden bed with a pale pink quilt behind the table, one paper window covered with blank paper, the wooden door on screen left, packed-earth walls; warm yellow light from the one candle only: over-the-shoulder medium shot from behind Tang Xiaotang's left shoulder: Tang Xiaotang appears only once, seated, her shoulder and the back of her head with its two looped buns and pink silk ribbons in the right foreground, her face out of the frame; Xu Yan sitting on the low stool across the small table on screen left, framed from the chest up with space above his head, his head at the same height as hers, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, his face three-quarter to screen right toward her, never the lens; offhand: brows level, eyes steady, lips moving lightly between words, no smile; on the table one open account book, its pages soft and out of focus so no line can be read and the lit candle; nobody else behind him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「心算。還有，第三頁這筆，三錢記成了三兩」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan turns the account book to the third page, spins it round and slides it across the table to her, then taps one blurred line with his forefinger; Tang Xiaotang's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm yellow light of the one candle stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, high angle, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse at night, warm yellow light from one candle on the table: high-angle insert close-up, the shot opens directly on one plain wooden abacus as long as her forearm, no marks or writing from its very first frame: two slender hands in peach-pink silk cuffs on its beads; only the hands, cuffs and abacus are in the frame, no face; the dark wood of the table in warm candlelight",
+        "motion": "the slender fingers flick a whole row of beads across with quick clicks, stop, and the forefinger presses down hard on one bead, and the warm yellow light of the one candle stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a13",
+          "speaker": "tangxiaotang",
+          "text": "真的錯了……我對了三遍都沒看出來。",
+          "emotion": "聲音軟下來"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse at night, warm yellow light from one candle on the table: close-up of Tang Xiaotang framed from the chest up with space above her head, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, seated at the small table, her face three-quarter to screen left toward Xu Yan off screen left, never the lens; softening: eyes lifting slowly to him, brows easing, voice soft, the corners of her mouth slowly curving up into a small smile; behind her only the bed curtain of the same room in warm candlelight",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「真的錯了……我對了三遍都沒看出來」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Xiaotang slowly lifts her eyes from the abacus below the frame to him off screen left, and only then do the corners of her mouth curve up, and the warm yellow light of the one candle stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a14",
+          "speaker": "xitong",
+          "text": "叮。唐小棠，好感加二。",
+          "emotion": "冷淡，報數"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse at night, warm yellow light from one candle on the table: close-up of Xu Yan sitting at the small table, framed from the chest up with space above his head, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, his face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; awkward under her gaze: brows twitching, eyes sliding away to one side, lips pressed shut; behind him only the wooden door and the packed-earth wall in warm candlelight; the system voice speaks off screen",
+        "motion": "Xu Yan rubs the side of his nose once with his right forefinger and his eyes slide off to screen left; his lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm yellow light of the one candle stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a15",
+          "speaker": "tangxiaotang",
+          "text": "相公這麼會算，那這十本也天亮前對完。",
+          "emotion": "興奮"
+        }
+      ],
+      "data": {
+        "camera": "Medium two-shot, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse at night, a young woman's small neat room: one small plain wooden table on screen right, as high as a seated person's waist, with one lit candle on it, a low wooden stool on each side of it, a simple wooden bed with a pale pink quilt behind the table, one paper window covered with blank paper, the wooden door on screen left, packed-earth walls; warm yellow light from the one candle only: medium two-shot across the small table, both seated on low stools with their heads at the same height, framed from the waist up with clear space above both heads: on screen right Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, her face three-quarter to screen left toward Xu Yan, never the lens; excited: brows lifted, eyes bright, a wide eager smile between words; on screen left Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, his face three-quarter to screen right toward her, never the lens; dismayed: brows shooting up, eyes wide, lips closed; on the table one open account book, its pages soft and out of focus so no line can be read, the wooden abacus and the lit candle; each person appears only once, nobody else behind them",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「相公這麼會算，那這十本也天亮前對完」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Xiaotang lifts a stack of ten thin account books with plain blue cloth covers, blank with no writing up from the floor beside her stool with both arms and thumps it down in front of him, her whole head staying in the frame; Xu Yan's upper body jerks back on his stool; Xu Yan's lips stay closed, and the warm yellow light of the one candle stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a16",
+          "speaker": "xuyan",
+          "text": "我先去看看別人，帳本明天一定陪妳對。",
+          "emotion": "推託"
+        },
+        {
+          "id": "zq909a17",
+          "speaker": "tangxiaotang",
+          "text": "明天就明天。相公記得，你欠我十本。",
+          "emotion": "畫外，不急不慢"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "In the first bedroom of the Xu farmhouse at night, a young woman's small neat room: one small plain wooden table on screen right, as high as a seated person's waist, with one lit candle on it, a low wooden stool on each side of it, a simple wooden bed with a pale pink quilt behind the table, one paper window covered with blank paper, the wooden door on screen left, packed-earth walls; warm yellow light from the one candle only: medium shot of Xu Yan, framed from the knees up with clear space above his head the whole time, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, rising from the low stool to stand at his full height, his head well below the top edge of the frame, his face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; sheepish: brows lifted, eyes darting, an awkward polite half smile between words; at the right edge of the frame one peach-pink silk sleeve and the stack of blue-covered account books, blank, on the table; the brass candlestick with its lit candle left on the table; behind him the wooden door",
+        "motion": "Xu Yan speaks a short Mandarin line, 「我先去看看別人，帳本明天一定陪妳對」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan stands up, leaves the candlestick on the table, picks up the bedding bundle from the floor by the door, his whole head staying in the frame, backs into the doorway and rests one hand on the door; while the woman's voice answers from off screen his lips stay closed and he nods once, and the warm yellow light of the one candle stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 10
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a18",
+          "speaker": "xitong",
+          "text": "明天一定？宿主今晚第二次推託了。",
+          "emotion": "冷，嫌棄"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the inside corridor of the Xu farmhouse at night, lit only by warm candlelight through the door cracks and a little cool moonlight: medium close-up in the corridor, framed from the chest up with space above his head, Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, standing at his full height, one rolled bedding bundle of grey-blue coarse cloth tied round with hemp cord under his left arm, nothing in his hands, his back pressed against the shut wooden door, his face turned a little to screen right down the corridor, never the lens; worn out: brows drawn together, eyes half closed, lips closed; only the thin candlelight from the door crack beside him and a little cool moonlight; nobody else in the corridor; the system voice speaks off screen",
+        "motion": "Xu Yan lets out one long breath against the door; then he rolls his eyes, rubs between his brows with two fingers, pushes off the door and walks off toward screen right; his lips stay closed the whole shot; no smile at any moment, not even at the end of the shot, until the last frame, and the warm glow from the door cracks and the faint cool moonlight stay unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s20",
+      "chapter": "秦霜房",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a19",
+          "speaker": "xuyan",
+          "text": "秦霜，睡了嗎？我進來了，有事妳就喊。",
+          "emotion": "小聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the inside corridor of the Xu farmhouse at night, lit only by warm candlelight through the door cracks and a little cool moonlight: medium shot in the corridor, framed from the waist up with clear space above his head, Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, the bedding bundle under his left arm, nothing in his hands, standing at his full height before the second plain wooden door on screen right, no writing on it, only a faint flicker of candlelight in its crack, his face in profile toward the door, never the lens; careful: brows lifted, eyes on the door, lips moving softly between words, no smile; cool moonlight from the open end of the corridor on screen left; nobody else",
+        "motion": "Xu Yan speaks a short Mandarin line, 「秦霜，睡了嗎？我進來了，有事妳就喊」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan knocks twice on the door with the knuckles of his right hand, waits a beat, then pushes it open a crack and brings his face to the gap, his whole head staying in the frame, and the warm glow from the door cracks and the faint cool moonlight stay unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a20",
+          "speaker": "xuyan",
+          "text": "窗開著，柴刀也不在，大半夜去哪了？",
+          "emotion": "畫外，低聲"
+        }
+      ],
+      "data": {
+        "camera": "Point-of-view shot, slow push in",
+        "prompt": "In the second bedroom of the Xu farmhouse at night, its owner gone: one empty wooden bed with the quilt folded square and neat, the paper window on screen right flung wide open to the night, its paper blank, one empty wooden wall rack beside the window with nothing on it, one small table under the window with one lit candle whose flame is bent low by the night wind; cold moonlight through the open window and a little flickering candlelight: point-of-view shot through the narrow gap of a door held ajar, the dark edge of the door in the left foreground: the room is empty, nobody in it, no person, no face and no hand anywhere in the frame; the empty bed with its quilt folded square; the open window's blank paper puffing in and out in the night wind; moonlight falling across the empty wooden wall rack, nothing hanging on it; the candle flame on the table bent flat by the wind, nearly out; Xu Yan speaks off screen",
+        "motion": "the view glides slowly in through the gap into the room; the blank window paper puffs in the wind and the candle flame bends low and flickers; nobody appears, and the cold moonlight from the window stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a21",
+          "speaker": "xuyan",
+          "text": "人不在，我明天再問她。窗先替她關上。",
+          "emotion": "低聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "In the second bedroom of the Xu farmhouse at night, its owner gone: one empty wooden bed with the quilt folded square and neat, the paper window on screen right flung wide open to the night, its paper blank, one empty wooden wall rack beside the window with nothing on it, one small table under the window with one lit candle whose flame is bent low by the night wind; cold moonlight through the open window and a little flickering candlelight: medium shot, framed from the waist up with clear space above his head, Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, the bedding bundle clamped under his left arm, standing at his full height at the open window on screen right, the windowsill as high as his belt, his face in profile toward the window, never the lens; uneasy: brows drawn together, eyes searching outside, lips moving low between words, no smile; outside the window only the empty yard wall in cold moonlight, nobody there; the small table with its wind-bent candle beside him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「人不在，我明天再問她。窗先替她關上」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan tightens the bundle under his arm, looks out of the window once, his head staying inside the room, then reaches out with his right hand and pulls the window shut; the candle flame on the table rises upright again, and the cold moonlight from the window stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s23",
+      "chapter": "阿令房",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a22",
+          "speaker": "xuyan",
+          "text": "阿令，我進來了。我只是來鋪個地鋪。",
+          "emotion": "給自己壯膽"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "In the inside corridor of the Xu farmhouse at night, lit only by warm candlelight through the door cracks and a little cool moonlight: low-angle medium shot in the corridor, framed from the knees up with clear space above his head, Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, the bedding bundle under his left arm, standing at his full height before the third plain wooden door on screen right, no writing on it, a thin line of warm candlelight in its crack, his face in profile toward the door, never the lens; steeling himself: brows drawn together, jaw set, eyes on the door, lips firm between words, no smile; nobody else in the corridor",
+        "motion": "Xu Yan speaks a short Mandarin line, 「阿令，我進來了。我只是來鋪個地鋪」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan draws one deep breath, his chest rising, then pushes the door inward with his right palm and the line of candlelight widens, and the warm glow from the door cracks and the faint cool moonlight stay unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a23",
+          "speaker": "aling",
+          "text": "別動。碰我一下，你就沒命。",
+          "emotion": "冷，貼在他身後"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the third bedroom of the Xu farmhouse at night, very small and very dark: the wooden door on screen left, one narrow wooden bed on screen right, one small low side table beside the bed with one lit candle, packed-earth walls; the one candle is the only light, warm and dim, deep shadows in the corners: medium shot inside the dark room, framed from the waist up with clear space above both heads, lit only by the one candle by the bed: in the middle Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, the bedding bundle in his arms, standing at his full height just inside the threshold, his face three-quarter to screen right, never the lens; frozen: eyes wide and fixed, face drained, lips pressed shut; right behind him by the edge of the door A-ling in her plain grey-white cotton dress with long sleeves and one plain wooden hairpin, no shackles, her cold face showing past his left shoulder, her eyes on the side of his face, never the lens; cold and still: brows level, eyes hard, lips barely parting on her words, no smile; one dagger with a single-edged iron blade about a palm long and a wooden grip wrapped in black cloth, held in her left hand only, in a forward grip, its sharp edge turned in toward his neck and its blunt back facing outward, one pale old scar across the inside of her left wrist showing as her sleeve slides back; her right hand gripping his right shoulder; each person appears only once, nobody else behind them; no other blade and no other weapon anywhere in the frame",
+        "motion": "A-ling speaks a short Mandarin line, 「別動。碰我一下，你就沒命」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; as Xu Yan steps in, A-ling's left arm in its grey-white sleeve comes round from behind his left shoulder and lays the dagger's edge against the left side of his neck, her right hand clamping his right shoulder; Xu Yan goes rigid; Xu Yan's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the dim warm light of the one candle stays unchanged",
+        "characters": [
+          "xuyan",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a24",
+          "speaker": "xuyan",
+          "text": "不碰！我手上只有鋪蓋，妳看。",
+          "emotion": "聲音發乾"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the third bedroom of the Xu farmhouse at night, dark, lit only by one dim warm candle by the bed: medium close-up of Xu Yan, framed from the chest up with space above his head, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, standing at his full height, his eyes straining sideways toward Aling off screen left behind his shoulder, his face three-quarter, never the lens; terrified: face pale, brows drawn up, eyes wide, mouth dry and stiff between words, no smile; at the bottom edge of the frame a woman's left hand in a grey-white sleeve, one pale old scar across the inside of her left wrist, holding one dagger with a single-edged iron blade about a palm long and a wooden grip wrapped in black cloth, its sharp edge turned in toward his neck and its blunt back facing outward; behind him only the dark room and a little candlelight; no other blade and no other weapon anywhere in the frame",
+        "motion": "Xu Yan speaks a short Mandarin line, 「不碰！我手上只有鋪蓋，妳看」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan slowly lifts both open hands up beside his face; the bedding bundle slips out of the crook of his arm and drops below the frame at his feet; the dagger hand at the bottom edge does not move, and the dim warm light of the one candle stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the third bedroom of the Xu farmhouse at night, dark, lit only by one dim warm candle by the bed: insert close-up looking down, the shot opens directly on a woman's left hand from its very first frame: the left hand in a grey-white cotton sleeve holding one dagger with a single-edged iron blade about a palm long and a wooden grip wrapped in black cloth in a forward grip, its sharp edge turned up toward the edge of a blue-grey robe collar at the top of the frame and its blunt back facing outward; one pale old scar across the inside of her left wrist, clearly visible; warm flickering candlelight; only the hand, the sleeve, the dagger and the edge of that collar are in the frame, no person and no face; no other blade and no other weapon anywhere in the frame",
+        "motion": "the candlelight flickers along the blade; the hand stays perfectly steady, only her fingers tighten once on the grip, and the dim warm light of the one candle stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a25",
+          "speaker": "xuyan",
+          "text": "妳手腕上那道傷，是怎麼來的？",
+          "emotion": "放輕"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the third bedroom of the Xu farmhouse at night, very small and very dark: the wooden door on screen left, one narrow wooden bed on screen right, one small low side table beside the bed with one lit candle, packed-earth walls; the one candle is the only light, warm and dim, deep shadows in the corners: over-the-shoulder medium shot from behind A-ling's right shoulder: A-ling appears only once, her grey-white shoulder and the back of her head with its one plain wooden hairpin in the right foreground, her face out of the frame; Xu Yan on screen left with his back pressed flat against the shut wooden door, standing at his full height, framed from the chest up with space above his head, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, both hands still raised open beside his shoulders, his face three-quarter to screen right toward her, never the lens; gentle and steady: brows easing, eyes lowered to her wrist then back up to her, lips moving softly between words, no smile; her left hand holding the dagger with its sharp edge against the side of his neck and its blunt back facing outward, one pale old scar across the inside of her left wrist showing at her wrist; nobody else behind him; no other blade and no other weapon anywhere in the frame",
+        "motion": "Xu Yan speaks a short Mandarin line, 「妳手腕上那道傷，是怎麼來的？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling's right hand turns him round and pushes his back against the door with a thud, her left hand keeping the dagger at the side of his neck; Xu Yan's eyes drop to her left wrist and come back up to her; A-ling's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the dim warm light of the one candle stays unchanged",
+        "characters": [
+          "aling",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a26",
+          "speaker": "aling",
+          "text": "翻牆刮的。那道牆很高，牆裡的人也狠。",
+          "emotion": "淡"
+        }
+      ],
+      "data": {
+        "camera": "Reverse over-the-shoulder medium shot, slow push in",
+        "prompt": "In the third bedroom of the Xu farmhouse at night, very small and very dark: the wooden door on screen left, one narrow wooden bed on screen right, one small low side table beside the bed with one lit candle, packed-earth walls; the one candle is the only light, warm and dim, deep shadows in the corners: reverse over-the-shoulder medium shot from behind Xu Yan's left shoulder: Xu Yan appears only once, his blue-grey shoulder and topknot in the left foreground, his face out of the frame; on screen right A-ling in her plain grey-white cotton dress with long sleeves and one plain wooden hairpin, no shackles, framed from the chest up with space above her head, her face three-quarter to screen left toward him, never the lens; guarded and flat: brows level, eyes lowered and turned a little aside from his, lips barely moving between words, no smile; her left hand still holding the dagger at the side of his neck, its sharp edge in and its blunt back outward, unmoving; behind her only the dark room and the one candle by the bed; nobody else; no other blade and no other weapon anywhere in the frame",
+        "motion": "A-ling speaks a short Mandarin line, 「翻牆刮的。那道牆很高，牆裡的人也狠」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling's right hand pulls her left sleeve down over the pale scar on her left wrist; the dagger in her left hand does not move; Xu Yan's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the dim warm light of the one candle stays unchanged",
+        "characters": [
+          "xuyan",
+          "aling"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a27",
+          "speaker": "xuyan",
+          "text": "好，我不問。妳睡床，我睡門口。",
+          "emotion": "平靜"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, tracking",
+        "prompt": "In the third bedroom of the Xu farmhouse at night, dark, lit only by one dim warm candle by the bed: medium close-up of Xu Yan, framed from the chest up with space above his head the whole time, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, his back to the shut door, his face three-quarter to screen right toward Aling off screen right, never the lens; quiet and settled: brows level, eyes steady on her, lips moving calmly between words, no smile; at the right edge of the frame a woman's left hand, her left sleeve pulled down over the scar on her wrist, holding one dagger with a single-edged iron blade about a palm long and a wooden grip wrapped in black cloth, its sharp edge turned toward him and its blunt back outward; behind him only the dark wooden door; no other blade and no other weapon anywhere in the frame",
+        "motion": "Xu Yan speaks a short Mandarin line, 「好，我不問。妳睡床，我睡門口」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan slowly squats down, the frame following his head down, gathers the bedding bundle up off the floor and slowly rises again to his full height; the dagger hand at the right edge follows him down and up, its edge still toward him, and the dim warm light of the one candle stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a28",
+          "speaker": "aling",
+          "text": "門口？你不怕我半夜，一刀下去？",
+          "emotion": "不信"
+        }
+      ],
+      "data": {
+        "camera": "Medium two-shot, slow push in",
+        "prompt": "In the third bedroom of the Xu farmhouse at night, very small and very dark: the wooden door on screen left, one narrow wooden bed on screen right, one small low side table beside the bed with one lit candle, packed-earth walls; the one candle is the only light, warm and dim, deep shadows in the corners: medium two-shot inside the dark room, framed from the waist up with clear space above both heads: on screen right A-ling in her plain grey-white cotton dress with long sleeves and one plain wooden hairpin, no shackles, standing, her face three-quarter to screen left toward Xu Yan, never the lens; disbelieving: brows drawn together, eyes narrowed, lips firm between words, no smile; one dagger with a single-edged iron blade about a palm long and a wooden grip wrapped in black cloth raised in her left hand only, its sharp edge turned toward him and its blunt back outward, her left sleeve pulled down over the scar on her wrist; on screen left Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, standing at his full height with the bedding bundle in both arms and his back to the door, his face three-quarter to screen right toward her, never the lens, lips closed; each person appears only once, nobody else behind them; no other blade and no other weapon anywhere in the frame",
+        "motion": "A-ling speaks a short Mandarin line, 「門口？你不怕我半夜，一刀下去？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling takes one step back from him, the dagger in her left hand still raised toward him, and her brows knit tighter; Xu Yan's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the dim warm light of the one candle stays unchanged",
+        "characters": [
+          "aling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a29",
+          "speaker": "xuyan",
+          "text": "怕。所以我睡外面，誰要進來，先過我。",
+          "emotion": "平實"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow pull out",
+        "prompt": "In the inside corridor of the Xu farmhouse at night: packed-earth walls and rough timber posts, three plain wooden doors in a row along the right-hand wall with no writing on them, warm candlelight glowing through the cracks around each door, the open end of the corridor on screen left letting in a little cool moonlight, one low woodshed doorway at the near left end; dark, lit only by the glow from the door cracks and the moonlight: wide shot from the corridor past the wooden door frame in the foreground, both small in the frame, framed with clear space above their heads: just outside the threshold on the packed-earth corridor floor Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, kneeling to unroll the bedding bundle, his face turned back over his shoulder toward the open doorway in three-quarter profile, never the lens; calm and plain: brows level, eyes on her, lips moving between words, no smile; inside the open doorway in the dim candlelight A-ling in her plain grey-white cotton dress with long sleeves and one plain wooden hairpin, no shackles, standing at her full height, one dagger with a single-edged iron blade about a palm long and a wooden grip wrapped in black cloth in her left hand only, her left sleeve pulled down over the scar on her wrist, her lips closed, watching him; each person appears only once, nobody else behind them; no other blade and no other weapon anywhere in the frame",
+        "motion": "Xu Yan speaks a short Mandarin line, 「怕。所以我睡外面，誰要進來，先過我」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan steps backward over the threshold into the corridor, kneels and unrolls the bedding bundle flat along the floor outside the door, then turns his head to look back at her through the doorway; A-ling's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm glow from the door cracks and the faint cool moonlight stay unchanged",
+        "characters": [
+          "xuyan",
+          "aling"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a30",
+          "speaker": "aling",
+          "text": "傻子。門外風大，被子拿厚的那條。",
+          "emotion": "極輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the third bedroom of the Xu farmhouse at night, dark, lit only by one dim warm candle by the bed: close-up of A-ling in her plain grey-white cotton dress with long sleeves and one plain wooden hairpin, no shackles, her left sleeve down over her wrist, framed from the chest up with space above her head, standing just inside the doorway of the dark room, her face three-quarter to screen left toward Xu Yan off screen left beyond the doorway, never the lens; softening only a little: brows easing, eyes lowered then back on him, one corner of her mouth moving the slightest bit without ever becoming a smile, speaking very softly; behind her only the dark room and a little candlelight; no other blade and no other weapon anywhere in the frame except the dagger in her left hand",
+        "motion": "A-ling speaks a short Mandarin line, 「傻子。門外風大，被子拿厚的那條」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; her left hand slowly lowers the dagger to her side, its point turning down toward the floor, until hand and dagger leave the bottom of the frame; no open smile at any moment, and the dim warm light of the one candle stays unchanged",
+        "characters": [
+          "aling"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a31",
+          "speaker": "xitong",
+          "text": "叮。阿令，好感加十。",
+          "emotion": "冷淡，報數"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle close-up, slow push in",
+        "prompt": "In the inside corridor of the Xu farmhouse at night, lit only by warm candlelight through the door cracks and a little cool moonlight: low-angle close-up at floor level beside the bedding laid on the packed-earth corridor floor: Xu Yan lying on his back on the unrolled grey-blue bedding, his head toward screen right, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, his face turned up toward the roof beams, never the lens; wide awake: eyes open, brows level, lips closed, no smile; the wooden threshold of the door along the top edge of the frame; the system voice speaks off screen",
+        "motion": "one thick quilt of dark indigo coarse cloth is tossed out over the threshold and lands on him, only the cuff of a grey-white sleeve showing for a moment at the top edge; Xu Yan pulls the quilt up to his chin and lies still, eyes open on the roof beams; his lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm glow from the door cracks and the faint cool moonlight stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a32",
+          "speaker": "xitong",
+          "text": "隱藏任務，完成。",
+          "emotion": "冷，宣布"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "In the inside corridor of the Xu farmhouse at night, lit only by warm candlelight through the door cracks and a little cool moonlight: extreme close-up filling the whole frame edge to edge with only Xu Yan's two eyes and brows, no nose and no mouth in the frame, the shot opens directly on his eyes from its very first frame, natural dark brown irises with a tiny catchlight, his gaze slightly off to screen left and never into the lens; his eyes wide awake in the dark; the system voice speaks off screen",
+        "motion": "his eyes blink once, slowly; nothing else moves, and the warm glow from the door cracks and the faint cool moonlight stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a33",
+          "speaker": "xuyan",
+          "text": "種田保住了。只是這洞房，睡的是門檻。",
+          "emotion": "內心獨白，嘴閉著，心裡話，嘴閉著，苦笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the inside corridor of the Xu farmhouse at night, lit only by warm candlelight through the door cracks and a little cool moonlight: close-up of Xu Yan lying on the bedding on the corridor floor, framed from the shoulders up with the dark indigo quilt pulled to his chin, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, his face in profile, never the lens; worn out and rueful: brows drawn up in the middle, eyes half closed, lips pressed shut in a small crooked wry line; behind him only the dark packed-earth floor of the corridor",
+        "motion": "Xu Yan rolls onto his side, turning his back to the door, and settles the quilt over his shoulder; his lips stay closed the whole shot, and the warm glow from the door cracks and the faint cool moonlight stay unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a34",
+          "speaker": "xitong",
+          "text": "睡哪不歸系統管。好感到了，就算數。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the inside corridor of the Xu farmhouse at night, lit only by warm candlelight through the door cracks and a little cool moonlight: close-up of Xu Yan lying on his side on the bedding on the corridor floor, framed from the shoulders up, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, the thick dark indigo quilt over his shoulder, his face toward screen left, eyes on nothing, never the lens; sour: brows drawn down, lips pressed shut, no smile; behind him only the dark corridor; the system voice speaks off screen",
+        "motion": "Xu Yan grimaces with his lips shut, then yanks the quilt up over his head and lies still under it; his lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm glow from the door cracks and the faint cool moonlight stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a35",
+          "speaker": "aling",
+          "text": "許硯，你聽著就好。明天，我可能得走。",
+          "emotion": "隔著門板，很輕，慢"
+        }
+      ],
+      "data": {
+        "camera": "Close shot, slow push in",
+        "prompt": "In the third bedroom of the Xu farmhouse at night, dark, lit only by one dim warm candle by the bed: close shot inside the dark room, the shot opens directly on the inside of the shut wooden door from its very first frame: A-ling in her plain grey-white cotton dress with long sleeves and one plain wooden hairpin, no shackles, her left sleeve pulled down over her wrist, sitting on the floor with her back against the door, her face in profile at the left edge of the frame, turned toward the door and the man beyond it, never the lens; quiet and grave: brows level, eyes lowered, lips moving softly between words, no smile; one dagger with a single-edged iron blade about a palm long and a wooden grip wrapped in black cloth lying flat across her knees, its edge turned outward, her hands off it; the dim warm light of the one candle; no other blade and no other weapon anywhere in the frame",
+        "motion": "A-ling speaks a short Mandarin line, 「許硯，你聽著就好。明天，我可能得走」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling lifts her right hand and lays her palm flat against the wooden door beside her shoulder and leaves it there; no smile at any moment, not even at the end of the shot, until the last frame, and the dim warm light of the one candle stays unchanged",
+        "characters": [
+          "aling"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the inside corridor of the Xu farmhouse at night, lit only by warm candlelight through the door cracks and a little cool moonlight: close-up of Xu Yan lying on his side on the bedding on the corridor floor, framed from the shoulders up, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty from a long day's ride, tired, the rims of his eyes a little red, the thick dark indigo quilt pulled over his head at first; the bottom of the wooden door at the right edge of the frame; when his face shows: startled, then still and listening, brows lifting, eyes wide on the door, lips closed, no smile",
+        "motion": "Xu Yan pulls the quilt down off his head, opens his eyes wide and slowly turns his head to look at the door on screen right, his face three-quarter toward it, never the lens; his lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm glow from the door cracks and the faint cool moonlight stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}

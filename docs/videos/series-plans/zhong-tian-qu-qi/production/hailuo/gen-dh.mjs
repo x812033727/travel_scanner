@@ -23,6 +23,13 @@ const MODERN = "3D Chinese donghua CG animation still of a present-day city, Unr
 const SET = [
   // e043-e060 (s01-e043-e060-registry.md): the specific places first, so "examination hall", "prefectural inn",
   // "courtyard", "granary" and "riverbank" further down do not take them.
+  // e009 r2 (live only): the four night rooms of the Xu house have no CG picture; their live pictures will be
+  // refs-live/set-xujia-{tangfang,qinfang,lingfang,zoulang}-l1.png (live-action/screen-test-e009.py). No person's name in
+  // these phrases (a name sends that person's portrait).
+  [/first bedroom of the Xu farmhouse/i, "dh-set-xujia-tangfang-t1"],
+  [/second bedroom of the Xu farmhouse/i, "dh-set-xujia-qinfang-t1"],
+  [/third bedroom of the Xu farmhouse/i, "dh-set-xujia-lingfang-t1"],
+  [/inside corridor of the Xu farmhouse/i, "dh-set-xujia-zoulang-t1"],
   [/headmaster's study/i, "dh-set-shuyuan-zhai-t1"],
   [/examination cells?\b/i, "dh-set-haoshe-t1"],
   [/sealing room/i, "dh-set-mifeng-fang-t1"],
