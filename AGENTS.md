@@ -75,7 +75,9 @@ queues, Place IDs, coordinates), `prod-host-ops` (nginx, admin settings, host CL
 checks, CI failures, Dependabot), `web-i18n-e2e` (messages and Playwright),
 `youtube-video`, `curio-episode` (any 奇聞檔案局 episode, a `curio-` slug: theatrical-light
 rich-gouache keyframes via built-in `generate_image` + `keyframes import --provider external --usd 0`,
-never MiniMax images; `zh-TW` Gemini `Sulafat` >= 4.4 chars/s; 8-locale dubs via MiniMax;
+never MiniMax images; distinct 3.5-head slender `Ada` sheet at
+`docs/videos/history-curiosity/series-sheets/characters/ada/ada-canon-v2.png` and ~45%-65%
+`nobody: true` object/scene shots; `zh-TW` Gemini `Sulafat` >= 4.4 chars/s; 8-locale dubs via MiniMax;
 2x-zoom independent audit, post-assembly independent audience review fixed before Drive backup
 and `review-push`, and the lint gate that keeps them),
 `brand-story` (any 品牌故事, a `story-` slug: the owner's fixed choices, how a batch is planned,
@@ -89,11 +91,13 @@ prompt and motion are written so the tools and the models read them alike) and
 `animation-production` (a drama production's stage preconditions, cost per route, preflight,
 error catalogue and post-mortem). For any 原來如此事務所 episode (a `sothatswhy-` slug),
 read `docs/videos/so-thats-why/look.md`,
+`docs/videos/so-thats-why/series-sheets/README.md`,
 `docs/videos/so-thats-why/dialogue-pilot-20261103/README.md` and
 `docs/videos/lessons/sothatswhy.md` alongside `youtube-video` (owner 2026-11-14:
 theatrical-light rich-gouache keyframes via built-in image generation +
-`keyframes import --provider external --usd 0`, never MiniMax images; `zh-TW` Gemini
-`Sulafat` + `Leda`; 8-locale dubs via MiniMax; independent post-assembly audience review
-in `review/audience-review.md` with all findings fixed and `qa` re-passed before Google Drive
-backup and `review-push --gate final`). Read the matching skill before
-re-deriving a workflow from the docs.
+`keyframes import --provider external --usd 0`, never MiniMax images; 2.5-head chibi canonical
+sheets `chief-canon-v2.png` + `kid-canon-v2.png` strictly distinct from Curio, and ~45%-65%
+`nobody: true` mechanism/object shots; `zh-TW` Gemini `Sulafat` + `Leda`; 8-locale dubs via MiniMax;
+independent post-assembly audience review in `review/audience-review.md` with all findings fixed
+and `qa` re-passed before Google Drive backup and `review-push --gate final`). Read the matching
+skill before re-deriving a workflow from the docs.

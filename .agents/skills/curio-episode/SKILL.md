@@ -138,20 +138,20 @@ metadata:
    ```text
    High-craft 2D theatrical anime and rich gouache editorial illustration, 16:9 full-bleed edge-to-edge with zero borders. Delicate tapered warm-sepia ink linework on foreground subject (no heavy flat black outlines). Warm golden directional window sunlight casting glowing rim light along hair strands, glasses/hood, and object bevels, with subtle dust motes. Tactile multi-layered fabric fold shading, rich wood grain and material reflections. Creamy shallow depth-of-field painterly bokeh background with soft brushy edges and zero black outlines in the background.
    ```
-   - **角色一致性（`ImagePaths` 必傳）**：單集內跨 ≥ 4 鏡出場的可入畫歷史人物或串場研究員，先用 `generate_image` 生一張固定角色設定圖（鎖定髮色、髮型、五官與主色服裝），之後每鏡出場必把設定圖路徑放進 `ImagePaths`；重繪修正既有鏡頭時，把前一版圖檔也放進 `ImagePaths` 鎖定構圖與道具位置。
+    - **角色造型與頭身比鎖死（與《原來如此事務所》嚴格分家）**：奇聞全系列人物固定採 **3.5 頭身修長繪本／劇場動畫比例（`3.5-head slender storybook theatrical anime proportion`）**——與《原來如此事務所》的 2.5 頭身圓滾大頭 Q 版（所長＋小問）在頭身比、剪影與色盤上完全不同，**嚴禁畫成 2.5 頭身大頭娃娃或混用隔壁角色**。串場檔案局研究員 **`ada`** 出場時，`ImagePaths` **必傳 Repo 內正式設定圖 `docs/videos/history-curiosity/series-sheets/characters/ada/ada-canon-v2.png`**（黑色微捲齊下巴短髮＋側分斜瀏海、暗酒紅細圓框眼鏡、褪色青雙排釦風衣配牛皮紙米白高領毛衣，見 `docs/videos/history-curiosity/series-sheets/README.md`）；單集內跨 ≥ 4 鏡出場的可入畫歷史人物，開畫前同樣以 3.5 頭身比例產出固定角色設定圖並傳入 `ImagePaths`；重繪修正既有鏡頭時把前一版圖檔一併傳入 `ImagePaths` 鎖定構圖與道具位置。
    - **防畫紙白邊與防招牌亂碼（實戰必加）**：桌面物件／書本／食物特寫容易被水粉筆觸留出四周白紙邊，Prompt 尾端必加 `100% full-bleed edge-to-edge composition where rich background pigment reaches every single outer pixel on all four sides`；街道與建築外景必加 `plain unadorned timber and stone walls with clean blank surfaces and zero hanging shop signs`。
    - **會冒字的道具與螢幕**：書頁、文件、木牌一律寫成 `clean blank parchment surface` 或改拍闔上的書脊與人物表情；現代題材螢幕只畫一條藍色路線、一個白色轉彎箭頭或紅色定位釘；數字與比例畫成具體視覺對比（鼓或扁的錢包、滿載的小船），不上文字卡。
-   - **純物件／空景鏡頭**：`video.json` 標 `"nobody": true`，生圖 Prompt 明確寫出純環境與物件結構，嚴禁出現路人、背景人影或殘肢。
+   - **畫面不必每鏡都有人（`nobody: true` 純物件／場景鏡佔 45%–65%）**：內建 `generate_image` 不會像早期 MiniMax 在空景帳篷亂畫人臉，**嚴禁為了湊人頭把每一鏡都塞進 Ada 或路人**。全集約 **45%–65%** 鏡頭應標 `"nobody": true`，直接聚焦歷史器物、航海儀器、火山／船隻／建築環境或數量視覺對比，生圖 Prompt 明確寫出純環境與物件結構，嚴禁出現路人、背景人影或殘肢；角色鏡頭（約 **35%–55%**）只放在關鍵行動、發現異常線索與情緒轉折拍。
 
 （註：2026-11-05 以前針對 MiniMax `image-01`「夜晚會變 3D 公仔、不吃厚塗水粉」的舊限制隨停用 MiniMax 生圖解除；歷史火災、燭光書房、月夜航行可正常表現暖金火光／窗光與深藍夜色冷暖對比，但仍須維持 2D 手繪暖褐墨線與厚塗水粉筆觸，不可漂成寫實照片或 3D CGI。）
 
-## 誰可以入畫（2026-11-05）
+## 誰可以入畫（2026-11-05；2026-11-14 補齊標準設定圖）
 
 - **在世或 1956 年後過世的人不入畫**，連「代表他的路人」也不畫。講到他們時三選一：
-  1. **串場角色**：例如虛構的檔案局研究員，用角色設定圖（`ImagePaths`）固定長相，**只畫不說話**；第一次入畫前旁白先介紹她（W03：「我們檔案局的研究員，把那一年的帳攤開來」）。
-  2. **物件**：他做的東西、他寫的那份文件（`clean blank surfaces`，不畫字）、他坐過的位子。
-  3. **明顯是一般人的匿名角色**：做觀眾也會做的事的店員、客人、路人，不是他本人的替身。
-- 1956 年以前過世的人照舊可以入畫，Prompt 用年代、身分、服裝描述，不寫真名；跨 ≥ 4 鏡出場時必先產角色設定圖並在每鏡傳入 `ImagePaths`。
+  1. **串場角色 `ada`**：虛構的檔案局研究員，`ImagePaths` 固定傳 `docs/videos/history-curiosity/series-sheets/characters/ada/ada-canon-v2.png`（3.5 頭身修長比例，不與《原來如此》2.5 頭身 Q 版混用），**只畫不說話**；第一次入畫前旁白先介紹她（W03：「我們檔案局的研究員，把那一年的帳攤開來」）。
+  2. **物件（`nobody: true`）**：他做的東西、他寫的那份文件（`clean blank surfaces`，不畫字）、他坐過的位子。
+  3. **明顯是一般人的匿名角色**：做觀眾也會做的事的店員、客人、路人（維持 3.5 頭身比例），不是他本人的替身。
+- 1956 年以前過世的人照舊可以入畫（3.5 頭身比例），Prompt 用年代、身分、服裝描述，不寫真名；跨 ≥ 4 鏡出場時必先產角色設定圖並在每鏡傳入 `ImagePaths`。
 
 ## 插圖怎麼驗收（2026-11-14 四格 2x 放大硬門檻）
 

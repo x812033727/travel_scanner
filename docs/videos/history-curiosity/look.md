@@ -2,7 +2,8 @@
 
 **2026-11-14 定案（現行標準）**：站主指定全系列（與原來如此事務所同步，見 [`../so-thats-why/look.md`](../so-thats-why/look.md)）全面改採升級版**「劇場級動畫光影 × 厚塗水粉質感」**，所有關鍵影格固定由代理內建 `generate_image`（`AspectRatio: "16:9"`）生成，再以 `keyframes import --provider external --usd 0` 匯入，**嚴禁用 MiniMax 生圖**（完整操作規則見 [`../../../.agents/skills/curio-episode/SKILL.md`](../../../.agents/skills/curio-episode/SKILL.md)）：
 
-- **角色參考鎖定**：有角色出場的鏡頭（串場研究員或單集內跨 ≥ 4 鏡出場、過世滿 70 年可入畫的歷史人物），先以 `generate_image` 產出固定角色設定圖（鎖死五官、髮色、髮型與主色年代服裝），每鏡出場時 `ImagePaths` 必傳該角色設定圖；若是重繪既有鏡頭，一併傳入前一版圖檔鎖定骨架與道具位置。遇到 `gemini-3.1-flash-image` 配額冷卻時，先做八語翻譯、配音與 `check-audio` 或分批等待，絕不退回 MiniMax。
+- **角色造型與頭身比鎖死（與《原來如此事務所》嚴格分家）**：本系列人物一律採 **3.5 頭身修長繪本／劇場動畫比例（`3.5-head slender storybook theatrical anime proportion`）**——與《原來如此事務所》的 2.5 頭身圓滾大頭 Q 版（所長＋小問）在頭身比、剪影與色盤上完全區隔，**嚴禁畫成 2.5 頭身大頭娃娃或混用隔壁系列角色**。固定串場角色為不開口的檔案局研究員 **`ada`**（黑色微捲齊下巴短髮＋側分斜瀏海、暗酒紅細圓框眼鏡、褪色青雙排釦風衣配牛皮紙米白高領毛衣），出場時 `ImagePaths` **必傳 Repo 內正式標準設定圖 `docs/videos/history-curiosity/series-sheets/characters/ada/ada-canon-v2.png`**（詳見 [`series-sheets/README.md`](series-sheets/README.md)）。單集內跨 ≥ 4 鏡出場、過世滿 70 年可入畫的歷史人物，開畫前同樣以 3.5 頭身比例產出固定角色設定圖，每鏡必傳 `ImagePaths`；重繪既有鏡頭時一併傳入前一版圖檔鎖定骨架與道具位置。遇到 `gemini-3.1-flash-image` 配額冷卻時，先做八語翻譯、配音與 `check-audio` 或分批等待，絕不退回 MiniMax。
+- **畫面不必每鏡都有人（`nobody: true` 純物件／場景鏡佔 45%–65%）**：內建 `generate_image` 畫無人場景不會像早期 MiniMax 在帳篷或器物上亂畫人臉，**嚴禁為了湊人頭把每一鏡都塞進 Ada 或路人**。全集約 **45%–65%** 鏡頭應設為 `"nobody": true`，直接聚焦歷史器物、航海儀器、火山／船隻／建築環境與數量視覺對照；角色鏡頭（約 **35%–55%**）只放在關鍵行動、發現異常線索與情緒轉折拍。
 - **五大質感配方**：
   1. **線條**：前景主體改用暖深褐色（warm-sepia）有粗細收尖變化的細膩手繪墨線，嚴禁粗黑死板的平塗向量框線；背景完全不畫黑框線。
   2. **光影**：窗邊斜射暖金陽光或年代暖光（warm golden directional window sunlight），在髮絲、眼鏡框、領口／帽緣與道具倒角打出明亮金邊輪廓光（glowing rim light），空氣帶微細光塵（subtle volumetric dust motes）。

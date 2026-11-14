@@ -7,6 +7,14 @@
 
 這份會自動同步到雲端硬碟兩個系列的 `_規則與教訓/教訓/解說系列共用教訓.md`（docs/videos/rules-sync）。
 
+## 2026-11-14 · sothatswhy-p12-qr-code／奇聞檔案局 · 鎖死兩系列不同人物造型設定圖（2.5 頭身 vs 3.5 頭身）與無人物件鏡佔比（45%–65% `nobody: true`）
+站主指出「也不一定每一個畫面要都有人；另外原來如此系列幫我確定人的造型，因為別的對話畫得怪怪的；奇聞就是另外一個造型的人，兩系列不同」。追查根因有二：(1) 舊版 `docs/videos/so-thats-why/series-sheets/` 只放了兩張早期 MiniMax `passed: false` 失敗圖（所長耳垂掛黃鉛筆像耳環、小問半閉豆豆眼＋無指圓手），且《奇聞檔案局》在 Repo 內完全沒有正式設定圖檔，導致不同對話各自憑文字生圖或漏寫頭身比，在「劇場級動畫光影」下把 Q 版角色拉成 6–7 頭身寫實大人或兩系列撞臉；(2) 早期防 MiniMax 空景亂長人臉的舊規則寫「不要大量空景、物件交給人拿」，導致代理把超過六七成的原理解釋鏡都硬塞角色站樁講話。定案如下：
+- **兩系列標準角色設定圖正式進版控並徹底分家（嚴禁混用）**：
+  - **《原來如此事務所》（`sothatswhy-*`）**：鎖死 **2.5 頭身圓頭大眼 Q 版比例（`2.5-head chibi`）** 雙角色，`ImagePaths` 必傳 Repo 內 `docs/videos/so-thats-why/series-sheets/characters/chief/chief-canon-v2.png`（所長：深棕黑低馬尾帶銀灰挑染、粗黑圓框眼鏡、雙耳乾淨無耳後鉛筆、芥末黃針織外套配白襯衫）與 `kid/kid-canon-v2.png`（小問：亮黑平瀏海短髮＋頭頂呆毛、圓亮大眼有高光、深墨藍牛角釦雨衣配亮黃垂領帽兜、空手無筆記本）。
+  - **《奇聞檔案局》（`curio-*`）**：鎖死 **3.5 頭身修長繪本／劇場動畫比例（`3.5-head slender theatrical anime`）**，串場檔案局研究員 `ada` 的 `ImagePaths` 必傳 `docs/videos/history-curiosity/series-sheets/characters/ada/ada-canon-v2.png`（黑色微捲齊下巴短髮＋側分斜瀏海、暗酒紅細圓框眼鏡、褪色青雙排釦風衣配米白高領毛衣；單集跨 ≥ 4 鏡出場的可入畫歷史人物亦先產 3.5 頭身專屬設定圖鎖臉）。
+- **畫面不必每鏡都有人（`nobody: true` 佔全集約 45%–65%）**：內建 `generate_image` 畫純物件不會亂長人臉，兩個系列全集應有約 **45%–65%** 鏡頭設為 `"nobody": true`（聚焦純機制剖面、日常物件微距、數量對照、歷史器物與建築環境），角色鏡頭約 **35%–55%** 只留給開場反常、提問猜測、關鍵發現與轉折收束拍。
+- 已升為規則：`AGENTS.md`、`.agents/skills/curio-episode/SKILL.md`、`docs/videos/explainer-series/README.md`、`docs/videos/so-thats-why/series-sheets/README.md`、`docs/videos/history-curiosity/series-sheets/README.md`、`docs/videos/so-thats-why/look.md`、`docs/videos/history-curiosity/look.md`。
+
 ## 2026-11-14 · sothatswhy-p12-qr-code · 成片獨立觀眾視角評分關卡（修完才推後台與備份）與八語 MiniMax 配音防呆
 站主定案「把觀眾評分加入流程，修完後才推後台跟備份」，將獨立觀眾體驗審查與 P12 八語逐句驗音抓出的跨系列規則收進兩個解說系列共用流程：
 - **成片獨立觀眾評分關卡（先修完再備份與 `review-push`）**：兩個解說系列在 `assemble` 與 `qa`（11/11）通過後，禁止直接備份或送審，必須先派**未參與撰稿與生圖的獨立子代理**扮演一般 YouTube 觀眾，同時檢視縮圖（含變體與八語縮圖）、標題說明欄、前 30 秒留存、無字插圖理解度、色溫節奏與收尾互動，寫出 `review/audience-review.md`（六項各 ≥ 7.5／10、總均 ≥ 8.0／10）；凡抓到縮圖裁切、圖解難懂、畫面疲勞或角色瑕疵，**一律先重繪／重組並重過 `qa` 11/11，確認零待修問題後才執行 Google Drive 完整備份與 `review-push --gate final`**。

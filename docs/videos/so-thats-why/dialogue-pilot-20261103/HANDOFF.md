@@ -7,7 +7,7 @@
 ## 站主定下的規則
 
 - **誰核准哪一關**：稿子、聲音、畫風、分鏡由 Claude 請獨立代理查核、盲評、評分後自己核准（`approve --gate … --note`，附評分與「owner delegated」）；成片、上架、語言三關由站主在 /admin/videos 決定。站主 2026-11-07：「都依據你建議的決定就好 不用問我」。
-- **生圖與畫風定案（2026-11-14 起）**：**停用 MiniMax 生圖**；全系列改用代理內建 `generate_image`（`16:9` 滿版，有角色鏡傳系列角色設定圖 `characters/chief/*.png` 或 `characters/kid/*.png`）生成**「劇場級動畫光影 × 厚塗水粉質感」**（暖深褐收尖細線、窗邊斜射暖金陽光＋髮絲／鏡框／物件金邊輪廓光與微塵、前景清晰＋背景奶油淺景深散景無黑框線、多層次布料與材質紋理；完整英文基底句見 [`../look.md`](../look.md)），再以 `keyframes import --provider external --usd 0` 匯入。遇到生圖配額冷卻時先跑八語翻譯與配音或分批等待，絕不退回 MiniMax。
+- **生圖、雙系列人物分家與人景配比定案（2026-11-14 起）**：**停用 MiniMax 生圖**；全系列改用代理內建 `generate_image`（`16:9` 滿版，有角色鏡 `ImagePaths` **必傳 Repo 內正式 2.5 頭身 Q 版設定圖** `docs/videos/so-thats-why/series-sheets/characters/chief/chief-canon-v2.png` 或 `kid/kid-canon-v2.png`，禁用舊版 MiniMax 失敗檔，並與《奇聞檔案局》3.5 頭身修長比例 `Ada` 嚴格分家）生成**「劇場級動畫光影 × 厚塗水粉質感」**（完整英文基底句見 [`../look.md`](../look.md)），再以 `keyframes import --provider external --usd 0` 匯入。**全集不必每鏡都有人**：約 **45%–65%** 鏡頭設 `"nobody": true` 直接畫純機制剖面與物件對照，角色鏡頭約 **35%–55%** 只放提問、反應、轉折與首尾。遇到生圖配額冷卻時先跑八語翻譯與配音或分批等待，絕不退回 MiniMax。
 - **語音與配樂定案（2026-11-14 起）**：中文（`zh-TW`）固定用 Gemini（所長 `Sulafat`、小問 `Leda`，語速 ≥ 4.4 字／秒）；八語配音（`en,ja,ko,es,pt,id,vi,th`）固定用 MiniMax（`dub --provider minimax`）；系列配樂床沿用 `sothatswhy-bed-r2.m4a`（sha256 `9bb4ba6f…`，見 [`../../explainer-series/README.md`](../../explainer-series/README.md)），不另外生成。
 - 畫面不放字、正文不用卡片；片尾三張圖（小問比讚，不拿印章）；小孩沒有筆記本；每張圖匯入後切 2 倍放大檢視圖由獨立子代理逐張審過（眼睛、手指、零文字亂碼、道具數量與幾何結構 100% 正確）；盲評含「沒頭沒尾」（`no_orphans`）。
 - 角色設定圖沿用系列的（`video.json` 的 `series`，見 [`../series-sheets/README.md`](../series-sheets/README.md)）。
