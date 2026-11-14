@@ -1,0 +1,61 @@
+"""e909 fix1: retakes merged from review-picks-a/b (s10 s12 s18 s27 s28 s33 s36)."""
+import json, pathlib
+TANG = ("Tang Xiaotang shown in <Picture 4>, <Picture 5> and <Picture 6> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ")
+ALING = ("A-ling shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze; ")
+XUYAN1 = ("Xu Yan shown in <Picture 1>, <Picture 2> and <Picture 3> (the same man from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes; ")
+SCAR = "one pale old scar across the inside of her left wrist"
+SCAR_NEW = "one thin long-healed scar, pale whitish and never red, across the inside of her left wrist"
+S = {
+ "s10": {"replace": [
+   ["its pages soft and out of focus so no line can be read on the table from its very first frame",
+    "both pages plain cream paper ruled only with faint thin red column lines and completely blank: no characters, no numbers, no writing and no marks of any kind; very shallow focus on the fingertip, the pages soft and blurred, from its very first frame"],
+   ["one plain wooden abacus as long as her forearm, no marks or writing beside the book, untouched",
+    "one plain wooden abacus with plain dark beads on a plain unmarked wooden frame beside the book, untouched"],
+   ["its forefinger running down the page", "its forefinger resting on the empty ruled columns"],
+   ["the forefinger runs down the blurred lines one by one", "the forefinger runs slowly down the empty ruled columns one by one"]]},
+ "s12": {"replace": [
+   [TANG, ""],
+   ["her right hand resting on one plain wooden abacus as long as her forearm, no marks or writing on the table",
+    "one plain wooden abacus as long as her forearm lies on HER side of the small table, close to us in the lower right, plain with no marks or writing, her right hand resting on its beads; nothing on his side of the table but the lit candle"],
+   ["sitting on the low stool, framed from the chest up",
+    "sitting on the low stool with both his hands resting flat on his own knees below the table edge the whole time, empty, never touching the abacus or the table, framed from the chest up"]],
+  "drop_pictures": ["tangxiaotang-portrait-l1.png", "tangxiaotang-angle-a-l1.png", "tangxiaotang-angle-b-l1.png"]},
+ "s18": {"replace": [
+   ["sheepish: brows lifted, eyes darting, an awkward polite half smile between words",
+    "evasive and uneasy: brows a little drawn, eyes darting away, no smile at any moment"],
+   ["at the right edge of the frame one peach-pink silk sleeve and the stack of blue-covered account books, blank, on the table",
+    "along the right edge of the frame the whole time stay one peach-pink silk sleeve resting on the stack of blue-covered account books, blank, on the table, no face"],
+   ["behind him the wooden door.",
+    "behind him the wooden door, and on the floor beside the door one rolled bedding bundle of grey-blue coarse cloth tied with hemp cord; one table only."],
+   ["picks up the bedding bundle from the floor by the door, his whole head staying in the frame,",
+    "crouches by the door on screen left, his whole head staying in the frame, picks up the rolled grey-blue bedding bundle from the floor and tucks it under his left arm,"],
+   ["he nods once,", "he gives one small nod, no smile,"]]},
+ "s27": {"replace": [
+   [ALING, ""],
+   ["over-the-shoulder medium shot from behind A-ling's right shoulder: A-ling appears only once, her grey-white shoulder and the back of her head with its one plain wooden hairpin in the right foreground, her face out of the frame;",
+    "over-the-shoulder medium shot from close behind one young woman's right shoulder: in the right foreground only her right shoulder in a plain grey-white long-sleeved cotton dress and the back of her head with long black hair pinned up by one plain wooden hairpin, the back of her head toward us the whole time, no cheek, no profile and no lips at any moment; she is the only woman in the shot and appears only once;"],
+   ["her left hand holding the dagger with its sharp edge against the side of his neck and its blunt back facing outward, one pale old scar across the inside of her left wrist showing at her wrist;",
+    "on the LEFT side of the frame her left hand holds one dagger with a single-edged iron blade about a palm long and a black-cloth-wrapped grip, its sharp edge pressed in against the right side of his neck and its blunt back facing outward, her left sleeve slid back showing " + SCAR_NEW + ", the only scar anywhere in the shot; her right hand, on the right side of the frame near us, rests on his left shoulder, its long sleeve down over its wrist, and holds no blade; the dagger never changes hands;"],
+   ["A-ling's right hand turns him round and pushes his back against the door with a thud, her left hand keeping the dagger at the side of his neck;",
+    "her right hand stays pressed on his shoulder and her left hand keeps the dagger at the side of his neck;"],
+   ["A-ling's lips stay closed;", "the back of her head stays toward us;"]],
+  "drop_pictures": ["aling-portrait-l1.png", "aling-angle-a-l1.png", "aling-angle-b-l1.png"]},
+ "s28": {"replace": [
+   [XUYAN1, ""],
+   ["from behind Xu Yan's left shoulder", "from behind one young man's left shoulder"],
+   ["Xu Yan appears only once, his blue-grey shoulder and topknot in the left foreground, his face out of the frame;",
+    "one young man appears only once: only his faded blue-grey shoulder and the back of his black topknot in the left foreground, his face never in the frame;"],
+   ["her left hand still holding the dagger at the side of his neck, its sharp edge in and its blunt back outward, unmoving;",
+    "her LEFT hand, the one with " + SCAR_NEW + ", holds one dagger with a single-edged iron blade about a palm long and a black-cloth-wrapped grip at the side of his neck, its sharp edge in and its blunt back outward, unmoving; her right hand holds nothing;"],
+   ["A-ling's right hand pulls her left sleeve down over the pale scar on her left wrist; the dagger in her left hand does not move;",
+    "early in the shot her empty right hand reaches across and tugs her long left sleeve down over the inside of her left wrist until no scar shows; the dagger stays in her left hand the whole time and does not move;"],
+   ["Xu Yan's lips stay closed;", ""]],
+  "drop_pictures": ["xuyan-portrait-l1.png", "xuyan-angle-a-l1.png", "xuyan-angle-b-l1.png"]},
+ "s33": {"replace": [
+   ["one thick quilt of dark indigo coarse cloth is tossed out over the threshold and lands on him, only the cuff of a grey-white sleeve showing for a moment at the top edge;",
+    "one thick folded quilt of dark indigo coarse cloth flies in over the wooden threshold at the top edge of the frame and drops onto him; whoever threw it stays behind the door out of sight: no person, no legs, no arm and no hand ever appear;"]]},
+ "s36": {"replace": [
+   ["Xu Yan grimaces with his lips shut, then yanks the quilt up over his head and lies still under it;",
+    "Xu Yan scrunches his face once, then at once grabs the top edge of the quilt with one hand and pulls it all the way up over his head in one motion, so that from the middle of the shot only the dark indigo quilt mound is in the frame, his face and hair completely hidden under it, and he lies still under it to the last frame;"]]},
+}
+pathlib.Path(__file__).with_name("spec.json").write_text(json.dumps({"seeds": [9091201, 9091202], "shots": S}, ensure_ascii=False, indent=1), encoding="utf-8")
