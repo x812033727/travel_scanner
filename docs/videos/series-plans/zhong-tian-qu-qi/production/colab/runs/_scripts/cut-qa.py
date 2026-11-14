@@ -10,6 +10,10 @@ Every check is a problem that reached an owner's review in season 1 (season1-rev
              series vignette darkens the edges and pulls every frame difference down, so on the finished cut e910 read
              static 19-20 % while its clips read 7-8 % (owner 2026-11-14: measure before the vignette). The finished cut's
              own number is printed as a note; with no clips beside the cut, the cut itself is measured as before;
+- jitter:    a shot whose picture hops back and forth by a pixel or more frame to frame (owner 2026-11-14: e910 s13 at 1:25
+             "shakes"; the draft itself jittered ~6 px up/down every frame and refine kept it). Scored on the cut's own
+             frames of that shot at 320x180 as sign reversals of the whole-frame shift per frame; over 0.15 fails
+             (e910 s13 0.32, s06 0.24, s09 0.18; a steady shot reads 0.00-0.05). Fix with deshake in the edit table's vf;
 - loudness:  integrated loudness of the cut and each dub (target -14 LUFS +- 1) and true peak (<= -1.0 dBTP);
 - fps:       the video frame rate (24; season 1 mixed 23.976 / 24 / 48 / 120);
 - black:     black frames longer than 0.2 s;
@@ -53,6 +57,25 @@ def summarize(d):
 
 def motion(path):
     return summarize(diffs(path))
+
+
+def jitter(path, start, dur, w=320, h=180):
+    import numpy as np
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{start:.3f}", "-t", f"{dur:.3f}", "-i", str(path),
+                          "-vf", f"scale={w}:{h},format=gray", "-f", "rawvideo", "-"], capture_output=True).stdout
+    n = len(raw) // (w * h)
+    f = np.frombuffer(raw, np.uint8)[:n * w * h].reshape(n, h, w).astype(float)
+    xs, ys = [], []
+    for i in range(1, n):
+        a, b = f[i - 1] - f[i - 1].mean(), f[i] - f[i].mean()
+        r = np.abs(np.fft.ifft2(np.fft.fft2(a) * np.conj(np.fft.fft2(b))))
+        y, x = np.unravel_index(np.argmax(r), r.shape)
+        xs.append(x - w if x > w / 2 else x)
+        ys.append(y - h if y > h / 2 else y)
+    def rev(v):
+        nz = [a for a in v if a]
+        return sum(1 for i in range(1, len(nz)) if nz[i] * nz[i - 1] < 0)
+    return (rev(xs) + rev(ys)) / max(1, len(xs))
 
 
 def srt_entries(path):
@@ -99,6 +122,9 @@ def main(cut, stem):
         else:
             m, st = motion(video)
             say("FAIL" if m < 7 or st > 0.15 else "ok", "motion", f"in-shot motion {m:.1f} (>= 7), static {st * 100:.0f}% (<= 15%)")
+        starts = re.findall(r"^([sc]\d+[a-z]?) ([\d.]+) \+([\d.]+)s", log, re.M)
+        shaky = [(s, round(j, 2)) for s, a, d in starts if float(d) > 1 for j in [jitter(video, float(a) + 0.1, float(d) - 0.2)] if j > 0.15]
+        say("FAIL" if shaky else "ok", "jitter", f"shots hopping frame to frame: {shaky}" if shaky else f"{len(starts)} shots steady")
         i, p = loudness(video)
         say("FAIL" if i is None or abs(i + 14) > 1 or (p is not None and p > -1.0) else "ok", "loudness", f"{stem}.mp4 {i} LUFS, peak {p} dBFS")
         fps = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=r_frame_rate", "-of", "csv=p=0", str(video)],
