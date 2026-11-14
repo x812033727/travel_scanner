@@ -115,6 +115,10 @@ def scene(id, prompt, *lines, chapter=None):
     S[-1]["data"]["nobody"] = True  # PR #2028: no person or face in an object-only shot
 def k(t, e=None, tag=None): return ("kid", t, e, tag)
 def c(t, e=None, tag=None): return ("chief", t, e, tag)
+# Lines added after the ids were fixed (2026-11-14, sixth version: the body back over 8 minutes after the fifth
+# version's shorter lines) take the previous line's number plus a letter (p034a, p127a, p127b, ...), so every
+# existing line keeps its id and claims.md keeps its line references (the same scheme as P01's toothbrush segment).
+def cn(t, e=None, tag=None): return ("chief", t, e, tag, True)
 
 def C(action, close=False):
     return ("Head-and-shoulders close-up" if close else "Waist-up medium shot") + " of the chief " + action + ", " + WALL + ", " + DAY
@@ -273,7 +277,8 @@ kid("kid-lightning", K("covering her mouth with both hands and wide amazed eyes"
     c("那是像閃電一樣的放電。"),
     k("叉子有四個尖尖的頭耶！", "發現", "S:prongs"))
 chief("chief-prongs", C("holding up " + FORK + " and touching the tips of its prongs with one finger, a knowing smile", close=True),
-    c("對，每個尖尖的叉子頭，電荷都會擠過去。", None, "P:prongs"))
+    c("對，每個尖尖的叉子頭，電荷都會擠過去。", None, "P:prongs"),
+    cn("微波把電子推到叉子頭，前面沒路了，就擠在那裡。"))
 chief("chief-spoon", C("holding up " + SPOON + " with a gentle smile", close=True),
     k("那湯匙呢？", "追問"),
     c("湯匙呀，夠厚、頭又圓圓的，"))
@@ -347,13 +352,16 @@ obj("foil-wing", "Close-up of one roast chicken wing on a plain white plate, onl
     c("鋁箔要貼緊食物；翹起來的邊，就像叉子的尖端。"),
     c("還要離爐子的牆，至少一英寸，大約兩公分半。", None, "P:foilok"))
 chief("chief-your-home", C("holding the thin grey booklet up beside her face with a kind smile", close=True),
-    c("這是這一台的規則；你家那台，要看你家的說明書。", "轉向觀眾"))
+    c("這是這一台的規則；你家那台，要看你家的說明書。", "轉向觀眾"),
+    cn("想蓋住食物，用可以微波的蓋子，比鋁箔安全。"))
 kid("kid-box-again", K("holding up " + BOXK + " by its thin wire handle with a hopeful face", where=KITCHEN),
     k("那我的便當盒呢？", "句尾上揚"))
 chief("chief-handle", C("pointing at a thin grey booklet with a bright smile"),
     c("紙盒、塑膠盒上的鐵絲和金屬提把，"),
-    c("放進去之前，要先拿掉。", None, "P:handle"))
+    c("放進去之前，要先拿掉。", None, "P:handle"),
+    cn("釘書針、包三明治的鋁箔紙，也一樣。"))
 kid("kid-gold-q", K("looking up with a thinking face, one finger on her chin", close=True, where=KITCHEN),
+    cn("有些裝肉的保麗龍盤，底下藏著金屬條，可能燒壞爐底。", "認真"),
     k("阿嬤家的金邊碗可以嗎？", "句尾上揚", "S:gold"))
 obj("gold-bowl", "Close-up of " + GOLD + " on a wooden counter, the thin gold line shining",
     c("金邊的碗，也是會冒火花的東西。", "接住上一句", "P:gold"),
@@ -363,10 +371,13 @@ chief("chief-towel", C("holding up a folded soft grey kitchen towel sheet with a
     c("有。回收紙做的紙巾，", "接住上一句"),
     c("可能藏著小小的金屬碎片，也會冒火花。", None, "P:hidden"))
 kid("kid-dirty-q", K("peeking into an open microwave oven with a curious frown", where=KITCHEN),
+    cn("微波爐照亮裡面的小燈，通常裝在牆的外面，", "接住上一句"),
+    cn("因為燈泡裡也有小小的金屬。"),
     k("爐子裡髒髒的也會嗎？", "句尾上揚", "S:dirty"))
 obj("oven-clean", "Close-up of " + OPEN + ", a soft yellow sponge wiping one smooth wall clean, a small bowl of soapy water beside the oven",
     c("牆上卡的髒東西，也可能冒火花。", "接住上一句", "P:dirty"),
-    c("所以要用水和溫和的清潔劑，常常擦乾淨。"))
+    c("所以要用水和溫和的清潔劑，常常擦乾淨。"),
+    cn("也別用鋼絲球去刷。"))
 # 2026-11-14 added segment (body back over 8 minutes with real content, claims.md C22): running the oven empty.
 # FDA's tip list puts "some ovens should not be operated when empty" right after the cleaning tip; Bloomfield
 # says why (nothing absorbs the microwaves, they build up and flow back to the magnetron). Calls back C01/C02/C03.
@@ -397,8 +408,10 @@ obj("oven-fixed", "Close-up of " + OPEN + ", " + RACK + " standing neatly in the
     c("請大人來：拿掉鐵絲、架子放正、鋁箔貼緊。"),
     c("馬上停下來，通常不會弄壞爐子。"))
 chief("chief-fire", C("holding up one open hand firmly with a serious caring face"),
-    c("要是燒起來了，門別打開，先按停止，叫大人。"))
+    c("要是燒起來了，門別打開，先按停止，叫大人。"),
+    cn("大人會拔掉插頭，或把電源關掉。"))
 kid("kid-rice-q", K("holding " + BOXK + " up with a hungry pleading face", close=True, where=KITCHEN),
+    cn("沒放金屬也冒火花，就先別用，請大人找人修。", "認真"),
     k("那我的滷肉飯，現在怎麼辦？", "章尾停住，句尾上揚"))
 
 # ---------- 收尾 ----------
@@ -439,11 +452,14 @@ WHAT = {"handle": "便當盒的鐵絲提把放進去會怎樣", "rack": "微波�
 # GE's; the brand is said in English as its two letters (series README §3.1: brand names in the original).
 # The other brand (Amana, a Whirlpool brand, claims.md C17) is not named aloud.
 SAY = [("GE", "G E")]
-scenes, loops_s, loops_p, n, beats = [], {}, {}, 0, 0
+scenes, loops_s, loops_p, n, beats, sub = [], {}, {}, 0, 0, ""
 for sc in S:
     lines = []
-    for sp, text, emo, tag in sc["lines"]:
-        n += 1; lid = f"p{n:03d}"
+    for sp, text, emo, tag, *added in sc["lines"]:
+        if added:
+            sub = chr(ord(sub) + 1) if sub else "a"; lid = f"p{n:03d}{sub}"
+        else:
+            n += 1; lid = f"p{n:03d}"; sub = ""
         line = {"id": lid, "speaker": sp, "text": text}
         spoken = text
         for term, spell in SAY:
@@ -526,8 +542,8 @@ lines_all = [l for s in scenes for l in s["lines"]]
 est = chars / RATE + 0.15 * (len(scenes) - 1) + BEAT_MS / 1000 * beats
 per_shot = sorted(len(s["lines"]) for s in scenes)
 shot_secs = sorted(sum(length(l["text"]) for l in s["lines"]) / RATE for s in scenes)
-print(f"scenes {len(scenes)} shots {len(scenes)} lines {n} chars {chars} (body {body_chars}, body Han {body_han}) kid {kidc / chars:.0%} of chars, "
-      f"{sum(l['speaker'] == 'kid' for l in lines_all) / n:.0%} of lines; est {est / 60:.1f} min at {RATE}/s "
+print(f"scenes {len(scenes)} shots {len(scenes)} lines {len(lines_all)} chars {chars} (body {body_chars}, body Han {body_han}) kid {kidc / chars:.0%} of chars, "
+      f"{sum(l['speaker'] == 'kid' for l in lines_all) / len(lines_all):.0%} of lines; est {est / 60:.1f} min at {RATE}/s "
       f"(+{len(scenes) - 1} scene gaps, {beats} beats, before the 11.9 s intro); loops {len(loops)}; "
       f"median lines a shot {per_shot[len(per_shot) // 2]}, median shot {shot_secs[len(shot_secs) // 2]:.1f} s", file=sys.stderr)
 chap_t, chap = {}, None

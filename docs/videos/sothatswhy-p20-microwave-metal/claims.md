@@ -7,6 +7,8 @@
 
 **第五版（2026-11-14）只改所長的出處說法**：站主審片說所長一直講「食藥署說／教授說／課本說／一家家電公司說」，聽起來像公告，所以 p013、p028、p039、p043、p049、p059、p064、p070、p074、p076、p079、p084、p091、p102、p104、p107、p109、p111、p120、p123、p126、p129、p130、p132、p137、p142、p148 改成直接講（行號、句數、場景都沒變，句子只等長或變短），主張、數字與可能／通常／比較的強度照舊，出處只寫在本檔。片中還念出處的只剩：p033「美國食藥署說，門和門框好好的，微波不會漏出來」（官方的安心話）、p100「像這本，是GE一款微波爐的說明書」（架子那段）、p114「這本說明書說，只能照它寫的方法用」（鋁箔那段）、p145「說明書說：先按停止，再把出問題的東西處理好」（冒火花那段），每段說明書只說一次。
 
+**第六版（2026-11-14）只加句子、不改舊句**：第五版的句子變短後，量到的配音本體只剩 457.9 秒（下限 480 秒），所以在既有場景裡加 9 句所長的話（約 143 個漢字、約 31 秒），**沒有新場景、沒有新圖、沒有改任何舊句、舊行號一個都沒動**：新句的行號是前一句加字母（p072a、p118a、p121a、p121b、p127a、p127b、p130a、p149a、p149b），寫法同 P01。新句都不念出處；主張與原文見 **C23**。加句的場景都不超過 3 句（`chief-handle`、`kid-dirty-q`、`oven-clean` 各 3 句，其餘 2 句），lint 沒有新的超過 10 秒的鏡頭。小問的漢字占比從 18.3% 降到 17.1%。
+
 **第三版只刪改小問的話**（與接話所需的所長開頭字：p005 去掉「對，」、p013 去掉「是。」、p050 去掉「有點像。」、p070 去掉「也」、p076 去掉「對。」、p109 去掉「對。」），沒有新增或改動任何主張；下面每條的行號已照第三版重新對過。**第二版範圍 p001–p165**，2026-11-12 由 `verify-2.md` 的查核代理逐條對過：每條「可用說法」的行號都對得上現行台詞。整條或部分不再用到的說法標成「現行版未使用」，原文照留作紀錄。verify-2 的必改 F01（p150）若照改，行號不變，只有本檔 C16 的注意欄要跟著看。
 
 **第二版刪掉的段落**（盲評說不推進火花的問題）：門的兩套連鎖開關、開門那一下（舊 p041–p044）；厚食物外層先熱、比較省電（舊 p064–p070，原 C09）；塑膠盒會融化（舊 p074–p076）；避雷針與高壓電線（舊 p095–p098，查核 F01 因此不再適用）。這些說法片中、說明欄、標籤與縮圖都不再出現。
@@ -33,6 +35,7 @@
 - [8] JennAir Product Help〈Can Metal or Aluminum Foil be Used in the Microwave〉：200（473,549 bytes），讀全文。JennAir 也是 Whirlpool 集團的品牌。
 - [9] Bloomfield〈What happens if you start the microwave oven with nothing inside?〉（2026-11-14 為 C22 新增並重讀）：200（62,204 bytes），讀全文。
 - [10] Bloomfield〈Why are you required to have an item in the microwave oven while it is operating?〉（1996-09-25，2026-11-14 為 C22 新增並重讀）：200（62,977 bytes），讀全文。另於 2026-11-14 重讀 [1]（200，52,964 bytes，Tips on Safe Microwave Oven Operation）與 [6]（Microwave-safe cookware 欄）給 C22。
+- 第六版（C23）2026-11-14 再用 curl GET 重開：[1] 200（52,964 bytes，Tips on Safe Microwave Oven Operation 的清潔那一條）、[2] 200（63,984 bytes，讀全文，最後一句講燈泡）、[6] 200（677,360 bytes，`pdftotext` 與 `pdftotext -layout` 都讀：Safety Instructions 的起火那一條、Microwave-safe cookware 欄的保麗龍盤）、[7] 200（1,436,664 bytes，Are the utensils and/or cookware microwave safe?）、[8] 200（473,551 bytes，Safer alternatives to foil 與 Troubleshooting）。
 - 讀不到：USDA FSIS〈Cooking with Microwave Ovens〉（403）；Whirlpool〈General Arcing and Sparking - Built-In Microwave〉（404）。舊查核 `week7/S13.md` 與素材池 LEG-S13 只當線索；上面每一筆都是今天重開。
 
 ---
@@ -185,6 +188,28 @@
   - p143「按開始之前，先看看裡面有沒有放食物」是由 [1]、[9] 推出的**撰稿推論**（生活建議），不是來源原句。
   - p137、p142 的說法都出自 Bloomfield（C04 起的同一位）；第五版起片中不念「教授說」。
   - 圖：`empty-bounce`、`magnetron-glow` 的淡藍波紋與發亮的圓筒是示意，不是實際結構（同 C03 的 `oven-back`）。
+
+## C23 第六版加的 9 句：叉子頭為什麼擠電子、蓋子比鋁箔安全、釘書針與包三明治的鋁箔紙、保麗龍盤的金屬條、微波爐的小燈裝在外面、別用鋼絲球、起火時大人拔插頭、沒放金屬也冒火花要送修【專家問答＋廠商說明書＋廠商支援頁＋官方說明】（2026-11-14 新增）
+
+- **可用說法**：p072a、p118a、p121a、p121b、p127a–p127b、p130a、p149a、p149b（場景都是原有的：`chief-prongs`、`chief-your-home`、`chief-handle`、`kid-gold-q`、`kid-dirty-q`、`oven-clean`、`chief-fire`、`kid-rice-q`）
+- **來源與原文**（2026-11-14 curl 重開，見上方「當天重讀的來源」第六版那一條）：
+  - p072a「微波把電子推到叉子頭，前面沒路了，就擠在那裡。」——[2]「a fork, a sharp piece of foil, or a twist-tie may well begin to emit electrons into the air as those electrons pile up at one end of the wire while the microwave oven is on.」「a microwave pushes electrons back and forth through any metals it encounters.」
+  - p118a「想蓋住食物，用可以微波的蓋子，比鋁箔安全。」——[8] Safer alternatives to foil：「Cover with a microwave-safe lid, vented plastic wrap, or a splatter cover」
+  - p121a「釘書針、包三明治的鋁箔紙，也一樣。」（接 p121「放進去之前，要先拿掉」）——[7]「Metal cookware and bakeware, gold, silver, pewter, non-approved meat thermometers, skewers, twist ties, foil liners such as sandwich wrappers, staples, and objects with gold or silver trim or a metallic glaze should not be used in the microwave oven. If used, they could cause sparking or arcing in the microwave.」
+  - p121b「有些裝肉的保麗龍盤，底下藏著金屬條，可能燒壞爐底。」——[6] Microwave-safe cookware：「Some styrofoam trays (like those that meat is packaged on) have a thin strip of metal embedded in the bottom. When microwaved, the metal can burn the floor of the oven or ignite a paper towel.」
+  - p127a–p127b「微波爐照亮裡面的小燈，通常裝在牆的外面，因為燈泡裡也有小小的金屬。」——[2]「You’ll note that the light bulb for the microwave is always outside the cooking chamber because it contains small bits of metal that would have trouble inside a microwave oven.」
+  - p130a「也別用鋼絲球去刷。」（接 p130 的水和溫和的清潔劑，C19）——[1]「Regularly clean the oven cavity, the outer edge of the cavity, and the door with water and a mild detergent. A special microwave oven cleaner is not necessary. Be sure to not use scouring pads, steel wool, or other abrasives.」
+  - p149a「大人會拔掉插頭，或把電源關掉。」（接 p149 起火時門別打開）——[6] Safety Instructions：「If materials inside the oven should ignite, keep the oven door closed, turn the oven off and disconnect the power cord, or shut off power at the fuse or circuit breaker panel. If the door is opened, the fire may spread.」
+  - p149b「沒放金屬也冒火花，就先別用，請大人找人修。」——[8] Troubleshooting：「If sparking occurs without any metal present, contact service before further use」
+- **注意**：
+  - p072a 的「前面沒路了」是 pile up at one end of the wire 的**簡化**（電子跑到金屬的盡頭就擠在那裡）；不說尖頭越多火花越大（同 C12）。
+  - p118a 照 [8] 的 Safer alternatives，只說「比鋁箔安全」，不說鋁箔一定不安全（前面 p114–p117 才講過照說明書可以用小條鋁箔）。
+  - p121a：「釘書針」＝ staples，「包三明治的鋁箔紙」＝ foil liners such as sandwich wrappers；這是 Amana 的清單（第五版起片中不念廠商名），「也一樣」指 p121 的「要先拿掉」，原文是 should not be used／could cause sparking。
+  - p121b：「有些」照 Some styrofoam trays；「可能燒壞爐底」＝ can burn the floor of the oven（另一個後果 ignite a paper towel 片中不講）。這是 GE 說明書寫的情形，不說每個保麗龍盤都有金屬條。
+  - p127a：原文說 always outside the cooking chamber，片中說「通常」，比原文弱（新機種的燈怎麼裝沒有查，所以不說「一定」）；「牆的外面」＝ outside the cooking chamber 的白話。「小小的金屬」＝ small bits of metal；would have trouble 片中只用「因為」帶過，不說會怎樣。
+  - p130a：FDA 只說不要用鋼絲絨（steel wool）、菜瓜布這類會刮的東西，**沒說原因**，片中也不說原因、不說它會冒火花；「鋼絲球」是台灣對 steel wool 刷子的說法。「不用買專用清潔劑」（A special microwave oven cleaner is not necessary）片中沒講。
+  - p149a 是 [6] 的 turn the oven off and disconnect the power cord, or shut off power 的白話；說成「大人會……」，接 p149 的「叫大人」，不叫小孩自己去拔插頭。
+  - p149b：「請大人找人修」＝ contact service（給小孩的說法加「請大人」，同 verify-2 F01）；「先別用」＝ before further use。不解釋沒放金屬為什麼也會冒火花（p129 的髒東西是一種可能，C17）。
 
 ## C20 水盤比喻【比喻／示意】
 
