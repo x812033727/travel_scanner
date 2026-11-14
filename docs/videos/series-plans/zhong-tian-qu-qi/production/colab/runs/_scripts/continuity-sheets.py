@@ -60,7 +60,11 @@ for n, scene in enumerate(scenes, 1):
     if not rows:
         continue
     sheet = out / f"scene-{n:02d}.jpg"
-    subprocess.run(["ffmpeg", "-v", "error", "-y", *sum((["-i", str(r)] for r in rows), []), "-filter_complex", f"vstack=inputs={len(rows)}", str(sheet)], check=True)
+    # a scene of one shot: vstack needs two inputs (e909 s38-only scene crashed the sheets)
+    if len(rows) == 1:
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(rows[0]), str(sheet)], check=True)
+    else:
+        subprocess.run(["ffmpeg", "-v", "error", "-y", *sum((["-i", str(r)] for r in rows), []), "-filter_complex", f"vstack=inputs={len(rows)}", str(sheet)], check=True)
     for p in out.glob(".[sc][0-9]*.jpg"):
         p.unlink()
     print(f"{sheet}  ({scene['name']}, {len(rows)} shots)")

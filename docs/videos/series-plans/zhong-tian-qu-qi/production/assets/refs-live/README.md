@@ -28,3 +28,5 @@
 第 8 集（2026-11-12，`../../live-action/screen-test-e008.py`，Colab Qwen-Image-Edit，站主選）：`set-biaoju-l1` = 37002（左上與右下角各有一小串假字：先裁掉右下 10% 再放大回 1312×736，左上再用 delogo 補掉）、`set-qianfu-men-l1` = 37002（大門與白外牆、燈籠、木樁同一張）、`set-qianfu-ting-l1` = 37001。試鏡原圖在 `~/mokaair-work/videos/_series/zhong-tian-qu-qi/live-screen-test-e008/out/`。
 
 第 9 集（2026-11-14，`../../live-action/screen-test-e009.py`，Colab Qwen-Image-Edit，站主選，四張都是 37002）：`set-xujia-zoulang-l1`（許家走廊，夜，三扇門在右）、`set-xujia-tangfang-l1`（唐小棠房，夜；第一、二輪畫出一個坐著的女子，拿掉「made neat by a young woman」並寫明房裡沒有人後的第三輪 `tangfang-v3-37002`）、`set-xujia-qinfang-l1`（秦霜房，夜，窗開、空木架；37001 窗紙有紅色人形圖案）、`set-xujia-lingfang-l1`（阿令房，夜，門左床右）。試鏡原圖在 `~/mokaair-work/videos/_series/zhong-tian-qu-qi/live-screen-test-e009/out/`。
+
+第 10 集（2026-11-14，`../../live-action/screen-test-e010.py`，Colab Qwen-Image-Edit，站主「照建議選」）：`huxianling-portrait-l1`（胡縣令，37001：官帽平翅；37002 翅膀下垂）、`set-xujia-menwai-l1`（院門外村路，夜，37001：畫右外有橘色火光）、`set-xujia-zoulang-chen-l1`（許家走廊，晨，用第 9 集夜景走廊左右鏡像改光；37002，37001 門板上長出假字）、`set-xujia-yuan-ye-l1`（許家院子，夜，用 `set-xujia-yuan-l2` 改光；37001 有月亮，37002 仍是白天藍天與亮黃花田）。試鏡原圖在 `~/mokaair-work/videos/_series/zhong-tian-qu-qi/live-screen-test-e010/out/`。
