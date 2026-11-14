@@ -70,6 +70,24 @@ export function renderDedup(pool) {
 // (merge) or is dropped, instead of being made. Short explainers are not reviewed against that floor.
 export const MATERIAL_VERDICTS = Object.freeze({ ready: '可成題', merge: '待合併', reserve: '後備', drop: '淘汰' });
 
+// 獨立觀眾評分（站主 2026-11-14「把分數寫回題目池」）：未參與撰稿的評審只讀題案的片名、追問與章節，
+// 以第一次滑到的一般觀眾打五項 1–10 分；共同錨點題校正評審鬆緊。是題案吸引力的參考，不是成片評分或點閱率預測。
+export const AUDIENCE_DIMENSIONS = Object.freeze({ click: '點擊', hook: '鉤子', surprise: '驚喜', payoff: '兌現', share: '分享' });
+export function validateAudience(owner, audience) {
+  if (audience === undefined) return;
+  const inRange = (value) => Number.isFinite(value) && value >= 1 && value <= 10;
+  if (!audience || !inRange(audience.score) || Object.keys(AUDIENCE_DIMENSIONS).some((key) => !inRange(audience[key]))) throw new Error(`${owner}: audience needs score and ${Object.keys(AUDIENCE_DIMENSIONS).join(', ')} between 1 and 10`);
+  if (!Number.isInteger(audience.rank) || !Number.isInteger(audience.of) || audience.rank < 1 || audience.rank > audience.of) throw new Error(`${owner}: audience rank must be 1..of`);
+  if (!audience.comment || !/^\d{4}-\d{2}-\d{2}$/.test(audience.reviewed_on ?? '') || !/^reviews\/audience-[\w-]+\.json$/.test(audience.review ?? '')) throw new Error(`${owner}: audience needs a comment, reviewed_on and its reviews/audience-*.json record`);
+}
+const audienceLine = (audience) => `**獨立觀眾評分：** ${audience.score.toFixed(2)}／10（第 ${audience.rank}／${audience.of} 名；${Object.entries(AUDIENCE_DIMENSIONS).map(([key, label]) => `${label} ${audience[key]}`).join('、')}）— ${cell(audience.comment)}（${audience.reviewed_on}，[${audience.review}](${audience.review})）`;
+function audienceRanking(episodes) {
+  const scored = episodes.filter((episode) => episode.audience).sort((a, b) => a.audience.rank - b.audience.rank);
+  if (!scored.length) return [];
+  const { reviewed_on: on, review } = scored[0].audience;
+  return ['', `## 獨立觀眾評分排名（${on}）`, '', `${scored.length} 組長題由未參與撰稿的評審以一般觀眾的角度讀題案打分（點擊、鉤子、驚喜、兌現、分享各 1–10，取平均；共同錨點題校正評審鬆緊；紀錄在 [${review}](${review})）。這是題案吸引力的參考，不是成片評分，也不是點閱率預測。`, '', '| 名次 | ID | 題案 | 分數 | 觀眾短評 |', '| --- | --- | --- | --- | --- |', ...scored.map((episode) => `| ${episode.audience.rank} | ${episode.id} | ${cell(episode.title)} | ${episode.audience.score.toFixed(2)} | ${cell(episode.audience.comment)} |`)];
+}
+
 export function validateThemes(themes, pool) {
   if (!Array.isArray(themes.episodes) || !themes.episodes.length) throw new Error('Theme list is empty');
   if (new Set(themes.episodes.map((episode) => episode.id)).size !== themes.episodes.length) throw new Error('Duplicate theme id');
@@ -77,6 +95,9 @@ export function validateThemes(themes, pool) {
     for (const key of ['id', 'title', 'core_question', 'connection', 'boredom_risk', 'drop_if', 'evidence_gaps']) if (!episode[key]) throw new Error(`${episode.id}: missing ${key}`);
     if (episode.category !== undefined && !CATEGORIES.includes(episode.category)) throw new Error(`${episode.id}: unknown category ${episode.category}`);
     if (episode.production_ready !== false || episode.status !== 'EDITORIAL_THEME_NOT_SCRIPT') throw new Error('A theme cannot grant production approval');
+    validateAudience(episode.id, episode.audience);
+    // 站主 2026-11-14：之後擴充出的可成題長題也要補獨立觀眾評分，沒評分不能進池。
+    if (episode.audience === undefined && episode.target_minutes >= 8 && episode.material?.verdict === 'ready') throw new Error(`${episode.id}: a producible long theme needs an independent audience score (theme.audience, recorded in reviews/audience-*.json); see the pool README`);
     if (!Number.isFinite(episode.target_minutes) || episode.target_minutes <= 0 || !Array.isArray(episode.range_minutes) || episode.range_minutes.length !== 2 || episode.range_minutes.some((n) => !Number.isFinite(n) || n <= 0)) throw new Error(`${episode.id}: invalid duration`);
     if (!episode.candidate_ids?.length || new Set(episode.candidate_ids).size !== episode.candidate_ids.length) throw new Error('Theme needs unique candidate ids');
     if (episode.candidate_ids.some((id) => !pool.candidates.some((row) => row.id === id && row.selected))) throw new Error(`${episode.id}: theme includes an unselected or alias record`);
@@ -108,11 +129,12 @@ export function renderThemes(themes, pool) {
     }).join('–');
     lines.push(`| ${episode.id} | ${cat} | ${episode.title} | ${duration}（工作範圍 ${range}；分:秒；未試讀） | ${episode.candidate_ids.length} | ${episode.material ? `${MATERIAL_VERDICTS[episode.material.verdict]}（素材約 ${episode.material.est_minutes} 分）` : '未審'} |`);
   }
+  lines.push(...audienceRanking(themes.episodes));
   for (const episode of themes.episodes) {
     const cat = themeCategory(episode, byId);
     const material = episode.material;
     const verdict = material ? [`**素材審視：** ${MATERIAL_VERDICTS[material.verdict]}，素材約 ${material.est_minutes} 分`, material.missing ? `；缺：${material.missing}` : '', material.merge_with ? `；合併對象：${material.merge_with}` : ''].join('') : '';
-    lines.push('', `## ${episode.id} ${episode.title}`, '', `**分類：** ${cat}`, '', ...(verdict ? [verdict, ''] : []), `**追問：** ${episode.core_question}`, '', `**為什麼能接成一集：** ${episode.connection}`, '', '| 段落 | 秒數預算 | 新增理解 | 使用素材 |', '| --- | --- | --- | --- |');
+    lines.push('', `## ${episode.id} ${episode.title}`, '', `**分類：** ${cat}`, '', ...(verdict ? [verdict, ''] : []), ...(episode.audience ? [audienceLine(episode.audience), ''] : []), `**追問：** ${episode.core_question}`, '', `**為什麼能接成一集：** ${episode.connection}`, '', '| 段落 | 秒數預算 | 新增理解 | 使用素材 |', '| --- | --- | --- | --- |');
     for (const chapter of episode.chapters) lines.push(`| ${chapter.title} | ${chapter.seconds} | ${chapter.new_information} | ${chapter.candidate_ids.join('、')} |`);
     for (const variantId of episode.variant_budget_ids ?? []) {
       const variant = pool.raw_records.find((row) => row.id === variantId);

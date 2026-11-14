@@ -605,7 +605,32 @@ export function buildPool(root = ROOT) {
   const selection = parse(root, file);
   if (!selection.revision || !selection.reviewed_on) throw new Error('Selection needs a reviewed revision');
   input.inputs.push({ file, sha256: hash(readFileSync(path.join(root, file))) });
-  return assemble(input, decisions, selection);
+  const audience = readAudience(root, input);
+  const pool = assemble(input, decisions, selection);
+  for (const [id, score] of audience) {
+    const row = pool.candidates.find((candidate) => candidate.id === id);
+    if (!row?.selected || row.editorial?.role !== 'episode_core') throw new Error(`${id}: an audience score belongs to a selected single-episode core`);
+    row.audience = score;
+  }
+  return pool;
+}
+
+// 獨立觀眾評分（站主 2026-11-14「把分數寫回題目池」）：reviews/audience-*.json 的 candidates 掛到入選的單集題上，
+// 檔名排序較後的紀錄覆蓋較早的。題案（themes.json）的分數寫在題案自己身上，這裡只處理單集題。
+function readAudience(root, input) {
+  const directory = path.join(root, DIR, 'reviews');
+  const scores = new Map();
+  for (const name of existsSync(directory) ? readdirSync(directory).filter((file) => /^audience-[\w-]+\.json$/.test(file)).sort() : []) {
+    const file = `${DIR}/reviews/${name}`;
+    const record = parse(root, file);
+    input.inputs.push({ file, sha256: hash(readFileSync(path.join(root, file))) });
+    for (const row of record.candidates ?? []) {
+      const { id, rank, of, score, click, hook, surprise, payoff, share, comment } = row;
+      if (![score, click, hook, surprise, payoff, share].every((value) => Number.isFinite(value) && value >= 1 && value <= 10) || !Number.isInteger(rank) || rank < 1 || rank > of || !comment) throw new Error(`${file}: ${id} needs score, five dimensions, rank and comment`);
+      scores.set(id, { score, rank, of, click, hook, surprise, payoff, share, comment, reviewed_on: record.reviewed_on, review: `reviews/${name}` });
+    }
+  }
+  return scores;
 }
 
 export function readPool(root = ROOT) {
