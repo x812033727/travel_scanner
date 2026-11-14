@@ -451,7 +451,7 @@ doc = {
                        "接著換問顏色：光從皮的外面和裡面各彈回一道，像池塘裡兩圈水波碰在一起，有的顏色加強、有的被抵掉；最後用同一顆泡泡分出顏色是跟著時間在變，還是跟著你的眼睛在變。\n\n"
                        "本集插圖由 AI 生成。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["泡泡", "肥皂泡", "表面張力", "薄膜干涉", "顏色", "光", "科普", "原來如此事務所"]},
-    "thumbnail": {"template": "thumb", "data": {"headline": "方框吹出\n**圓泡泡？**", "sub": "透明的水卻有顏色", "shot": "kid-square-q", "subject": "right"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "方框吹出\n**圓泡泡？**", "sub": "透明的水卻有顏色", "shot": "round-from-square", "subject": "right"}},
     "sources": [
         {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: The Shape of Bubbles", "url": "https://annex.exploratorium.edu/ronh/bubbles/shape_of_bubbles.html", "checked_on": CHECKED},
         {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: Sticky Water (surface tension)", "url": "https://annex.exploratorium.edu/ronh/bubbles/sticky_water.html", "checked_on": CHECKED},
