@@ -23,25 +23,37 @@ def besides(pr, what):
 
 
 shots = {f"s{n:02d}": {} for n in range(1, 43)}
-for sid in ["s04", "s07", "s10", "s12", "s21", "s23", "s32"]:  # Tang Xiaotang's lines, from behind her
+for sid in ["s04", "s10", "s12", "s21", "s23"]:  # Tang Xiaotang's lines, from behind her (s07 and s09 are inserts of her hands)
     shots[sid] = {"replace": [[TANG_ID, ""], ["Only these 2 people are in the frame", "Only these 2 people are in the frame, the young woman seen only from behind"]],
                   "drop_pictures": TANG_PICS}
 for sid in ["s13", "s25"]:  # her silent face
     shots[sid] = {"replace": NEUTRAL}
 shots["s03"] = {"replace": [[ONLY_SHE, besides("her", "the back of the young man's head and his shoulder")]]}
-shots["s05"] = {"replace": [[ONLY_HE, besides("him", "the back of the young woman's head and her shoulder")]]}
 shots["s16"] = {"replace": [[ONLY_HE, besides("him", "the hand holding the wooden plane")]]}
 shots["s20"] = {"replace": [[ONLY_HE, besides("him", "the back of the young man's head and his shoulder")]]}
+# s32 (review.md 必改 4): both from behind; only she is named, the young man beside her is unnamed with no picture.
+shots["s32"] = {"replace": [[TANG_ID, ""],
+                            [ONLY_SHE, "Besides her, only the young man seen only from behind walking beside her, whose face is out of the "
+                                       "frame, is in the frame; the young woman is seen only from behind; no second copy of anyone appears."]],
+                "drop_pictures": TANG_PICS}
+# s35 (review.md 必改 3): one man alone in the grove (the original e013 grew a second lantern-carrying figure here).
+shots["s35"] = {"replace": [[ONLY_HE, "He is the only person in the frame and the only person in the whole grove; nobody else, no second "
+                                      "lantern and no other light anywhere among the bamboo; no second copy of anyone appears."]]}
+# s01 (review.md 建議 s01): she speaks over her shoulder with her eyes on the gate, not turned to him (s03 is the look back).
+shots["s01"] = {"replace": [["turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+                             "facing the way she walks, her face in three-quarter profile, her eyes on the gate ahead, not on him"]]}
 for sid in ["s41", "s42"]:  # the knife: Xu Yan unnamed, from behind
     shots[sid] = {"replace": [[ONLY_SHE, besides("her", "the young man seen from behind with the lantern")]]}
 
 spec = {
-    "_note": ("e913 live d1 (e912-live/spec.json's way, written by mkspec.py). s04, s07, s10, s12, s21, s23 and s32 are Tang Xiaotang's "
+    "_note": ("e913 live d1 (e912-live/spec.json's way, written by mkspec.py). s04, s10, s12, s21, s23 and s32 are Tang Xiaotang's "
               "lines shot from behind her (nospeak, recordings laid in): her three face pictures and her identity sentence go (e908 fix1, "
-              "e909 s09/s12, e910 s23/s30, e912 s06/s14/s29); s09, her other line, is an insert of her hand with no picture of her. s13 and "
-              "s25 are her silent face shots: e907's neutral face sentences (as e912 s02/s05/s17/s24). s03, s05, s16, s20, s41 and s42: "
-              "ref2manifest's 'only person' sentence is rewritten to admit the unnamed back, shoulder or hand the composition describes "
-              "(s41-s42: Xu Yan from behind with no picture, bible rule 5 for the knife shots). No off-screen sentence is in these "
+              "e909 s09/s12, e910 s23/s30, e912 s06/s14/s29); s07 and s09, her other two lines, are inserts of her hands with no picture of her; in s32 the young man beside her "
+              "is unnamed too (review.md 必改 4). s13 and s25 are her silent face shots: e907's neutral face sentences (as e912 "
+              "s02/s05/s17/s24). s03, s16, s20, s41 and s42: ref2manifest's 'only person' sentence is rewritten to admit the unnamed "
+              "back, shoulder or hand the composition describes (s41-s42: Xu Yan from behind with no picture, bible rule 5 for the "
+              "knife shots). s35: the only person in the whole grove (review.md 必改 3). s01: her eyes on the gate, not on him "
+              "(review.md 建議). No off-screen sentence is in these "
               "prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9131101/9131102."),
     "seeds": [9131101, 9131102],
     "shots": shots,
