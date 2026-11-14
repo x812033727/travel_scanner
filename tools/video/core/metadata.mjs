@@ -427,14 +427,15 @@ export function seriesHashtag({ category = null, series = null, slug = null } = 
 
 /**
  * Hashtags from the first tags: YouTube shows the description's first three above the title.
- * A hashtag cannot hold spaces or punctuation, so "ChatGPT Go" becomes #ChatGPTGo.
+ * A hashtag cannot hold spaces or punctuation, so "ChatGPT Go" becomes #ChatGPTGo; \p{M} keeps
+ * combining vowel and tone marks in scripts such as Thai (#ปีที่ไร้ฤดูร้อน) and Devanagari.
  */
 export function hashtagsFrom(tags = [], count = HASHTAG_COUNT) {
   const hashtags = [];
   for (const tag of tags) {
-    const word = String(tag).replace(/[^\p{L}\p{N}_]/gu, "");
+    const word = String(tag).replace(/[^\p{L}\p{M}\p{N}_]/gu, "");
     // YouTube treats #ChatGPTGo and #chatgptgo as one hashtag.
-    if (word && !hashtags.some((hashtag) => hashtag.toLowerCase() === `#${word}`.toLowerCase())) hashtags.push(`#${word}`);
+    if (/[\p{L}\p{N}]/u.test(word) && !hashtags.some((hashtag) => hashtag.toLowerCase() === `#${word}`.toLowerCase())) hashtags.push(`#${word}`);
     if (hashtags.length === count) break;
   }
   return hashtags;
