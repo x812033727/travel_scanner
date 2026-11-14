@@ -98,7 +98,7 @@ LEDGER = "one thread-bound account book with a plain dark blue cloth cover, noth
 INKBOX = "one small round red lacquered box no bigger than a coin purse"
 HORSE = "one brown horse with a plain leather saddle and reins"
 PLANE = "one carpenter's wooden hand plane, a smooth rectangular block of pale wood"
-LANTERN = "one blank paper lantern with no writing, a small candle burning inside it"
+LANTERN = "one blank paper lantern with no writing and a small burning candle inside"
 NOBLADE = "no blade, no knife, no sword, no scabbard and no weapon of any kind anywhere in the frame"
 # bible rule 5: the plot's knife, one fixed object, only in c40-c41 (s41-s42), always in her RIGHT hand.
 KNIFE = ("one old chopping knife with a short plain wooden handle and a dark iron blade only a little longer than a palm, "
@@ -320,7 +320,7 @@ SHOTS = [
     dict(chapter="竹林", loc="nyard", cam="Point-of-view medium shot, slow push in", chars=["qinshuang"], night="night", act=4,
          comp=f"point-of-view shot through the narrow gap of a half-open dark wooden house door, the dark door edges soft in the foreground on both sides, nobody in the foreground, no hand; out in the yard Qin Shuang, {QIN}, one small bundle of dark blue cloth tucked under her left arm, walking from screen left to screen right through the warm glow of the lantern, framed full length, her face in profile toward screen right, never the lens; tense and quiet: brows drawn, lips closed, no smile; {NOBLADE}; she is the only person in the yard, carrying no lantern",
          lines=[],
-         motion="Qin Shuang glances back toward the house for a moment, then pulls the yard gate on screen right open and slips out; the gate swings shut behind her",
+         motion="Qin Shuang walks on to the yard gate on screen right, glances back once toward the house, pulls the gate open and slips out through it; the gate swings shut behind her",
          zh="主觀（許硯從門縫往外看）、慢推、前景虛掩的門縫（前景沒有人、沒有手）：秦霜（左臂夾一個小藍布包、不提燈籠、腰帶什麼都沒插）由左往右走過燈籠光，回頭看一眼屋子，拉開院門閃身出去，院門盪回來（無台詞；稿子的火摺子不拍）"),
     dict(loc="nyard_c", cam="Close-up, slow push in", chars=["xuyan"], night="night",
          comp=f"close-up of {XU}, standing in the dark just inside the house door, framed from the chest up with space above his head, one thin strip of warm lantern light from the gap of the door falling across one of his eyes, his face three-quarter to screen right, never the lens; uneasy and resolved: brows drawn, eyes narrowed, lips closed; behind him only the dark room",
@@ -354,7 +354,7 @@ SHOTS = [
          motion="the cloth shoe comes down from screen left onto the twig; the twig snaps in two and the foot freezes where it is",
          zh="插鏡、固定（第一格就是竹林落葉地）：一隻舊布鞋（藍灰袍下襬入鏡）從左邊踩下，乾竹枝「啪」地斷成兩截，腳僵住（無台詞）"),
     dict(loc="grove_c", cam="Close-up, slow push in", chars=["qinshuang"], night="grove", act=3,
-         comp=f"close-up of Qin Shuang, {QIN}, kneeling, framed from the chest up with space above her head, at first her face in profile toward screen right toward the grave, never the lens; the warm glow of the little paper fire on her face from below; at first tearful, then cold: eyes wet, then hard and narrowed, lips closed the whole shot; behind her only the grave and the little fire; {NOBLADE}",
+         comp=f"close-up of Qin Shuang, {QIN}, kneeling, framed from the chest up with space above her head, at first her face in profile toward screen right toward the grave, never the lens; the warm glow of the little fire of burning blank paper on her face from below; at first tearful, then cold: eyes wet, then hard and narrowed, lips closed the whole shot; behind her only the grave and the little fire; {NOBLADE}",
          lines=[],
          motion=f"Qin Shuang whips her head round toward screen left at the sound, a glint of tears in her eyes, and the next instant her eyes turn cold and hard; {SILENT_SHE}; {NOSMILE}",
          zh="近景、慢推（身後只有墳與紙錢火）：秦霜猛地回頭（轉向畫左），眼裡淚光一閃，下一瞬眼神冷下來；嘴一直閉著、不笑（無台詞）"),
@@ -362,10 +362,10 @@ SHOTS = [
     dict(loc="grove", cam="Medium shot, locked", chars=["qinshuang"], night="grove", act=4,
          comp=f"medium shot from just behind one young man seen only from behind, appearing only once, half hidden behind bamboo stalks on screen left in the foreground: only the back of his black topknot, his shoulder in an old plain grey cloth coat and {LANTERN} held low in his left hand, his face never in the frame; on screen right a few steps away, beside the small grave and its little paper fire, Qin Shuang, {QIN}, springing up from her knees with {KNIFE} in her right hand, its edge forward, framed full length with space above her head, her face three-quarter to screen left toward him, never the lens; fierce: eyes cold and hard, jaw set, lips closed, no smile; the whole movement stays inside the frame; {ONLYKNIFE}; exactly two people",
          lines=[],
-         motion=f"Qin Shuang springs up and takes two fast steps toward him, the knife raised in her right hand, never changing hands; the young man stumbles back and his back hits a bamboo stalk, the lantern swinging in his left hand, his head never turning toward us; {quiet('Qin Shuang', 'her')}",
+         motion=f"Qin Shuang springs up and takes two fast steps toward him, the knife raised in her right hand, never changing hands; the young man stumbles back against a bamboo stalk beside him, the lantern swinging in his left hand, his head never turning toward us; {quiet('Qin Shuang', 'her')}",
          zh="中景、固定（整個動作留在畫面裡）：前景左只有許硯的後腦、舊灰外衣肩與左手低提的燈籠（不點名、不送圖）；畫右墳邊秦霜一躍而起，右手已經握著舊柴刀（短木柄、刀身比手掌長一點、刀背厚、刃口有缺口；從腰帶拔刀那一下不拍，音效交代），兩步撲向他；他往後一退、背撞上竹竿、燈籠一晃；兩人嘴都閉著；畫面裡沒有別的刀"),
     dict(loc="grove_c", cam="Over-the-shoulder close two-shot, slow push in", chars=["qinshuang"], night="grove",
-         comp=f"over-the-shoulder close two-shot from close behind one young man seen only from behind, appearing only once, his back to a thick bamboo stalk on screen left: only the back of his black topknot, his shoulder in an old plain grey cloth coat, {LANTERN} in his left hand lighting her face from below and his right hand raised open beside his head, his face never in the frame; facing us a little right of the middle Qin Shuang, {QIN}, framed from the chest up with space above her head, her face three-quarter to screen left toward him, never the lens; low and cold: eyes locked on him, brows down, lips moving low between words, no smile; {KNIFE} held level in her right hand, its sharp edge stopped one finger's width from the side of his throat, its blunt back outward, not touching his skin; far behind her the small grave with the little paper fire still burning; {ONLYKNIFE}; exactly two people",
+         comp=f"over-the-shoulder close two-shot from close behind one young man seen only from behind, appearing only once, standing pressed against a thick bamboo stalk beside him on screen left: only the back of his black topknot, his shoulder in an old plain grey cloth coat, {LANTERN} in his left hand lighting her face from below and his right hand raised open beside his head, his face never in the frame; facing us a little right of the middle Qin Shuang, {QIN}, framed from the chest up with space above her head, her face three-quarter to screen left toward him, never the lens; low and cold: eyes locked on him, brows down, lips moving low between words, no smile; {KNIFE}, held level in her right hand, its sharp edge stopped one finger's width from the side of his throat, its blunt back outward, not touching his skin; far behind her the small grave with the little paper fire still burning; {ONLYKNIFE}; exactly two people",
          lines=[("qinshuang", "你跟蹤我？從院子一路跟到這裡？", "低而冷")],
          motion=f"Qin Shuang leans in a little closer, the knife level and unmoving in her right hand at his throat; the young man's raised hand trembles; he keeps the back of his head toward us the whole shot; {NOSMILE}",
          zh="過肩雙人近景、慢推（真人版改從許硯背後拍：前景左只有他的後腦、舊灰外衣肩、左手燈籠照亮她的下巴、右手張開舉在頭旁，不點名、不送圖）：秦霜正對我們（畫面中偏右），右手平舉舊柴刀、刃口停在他喉側一指寬、刀背朝外、不碰皮膚，身子往前壓一點，低而冷地說；遠處墳前紙錢還在燒；畫面裡沒有別的刀（結尾，懸念接第 14 集：更鼓三聲）"),
@@ -380,7 +380,7 @@ HEAD = [
     "- 兵器：秦霜的柴刀只在 s41–s42（c40–c41）入鏡，一把固定描述的舊柴刀、永遠在她右手、刃口朝喉、刀背朝外；拔刀那一下不拍（腰帶全集寫什麼都沒插，extras.json 拿掉造型句的柴刀）；這兩鏡許硯不點名、不送圖、從背後拍，寫明畫面裡沒有別的刀。其他鏡一律沒有刀。稿子的火摺子不拍。",
     "- 石木匠家：真人場景圖 `set-mujiang-fang-l1` 是巷子加木匠鋪門面、屋簷下一張工作台，沒有屋內；「工坊裡」c24–c30（s25–s31）改在簷下工作台，c27 對著陽光。竹林：`set-zhulin-fen-l1` 墳在中間、空白木牌在右、遠處一座舊屋（匾與兩盞紅燈籠），提示詞寫那邊全暗、燈籠不亮、匾空白，竹林裡的光只有紙錢火與許硯手上那一盞燈籠。",
     "- 交領角色都不能水平翻轉：每鏡用畫左畫右寫死誰在哪；過肩鏡寫明從誰背後拍。",
-    "- 長鏡要買的秒數（BUY）：照 36 句錄音核過（`~/mokaair-work/videos/zhong-tian-qu-qi-e913-dh/audio`，見 `r2.py` 的 BUY 註解）。",
+    "- 長鏡要買的秒數（BUY）：照 36 句錄音核過（`~/mokaair-work/videos/zhong-tian-qu-qi-e913-dh/audio`，見 `r2.py` 的 BUY 註解）：s06（系統 3.3 秒＋心裡話 4.6 秒，8.4 秒，稿子估 8 不夠）買 10；s18（系統兩句 7.6 秒）買 8；有台詞又有動作的鏡買 8；其餘 5–6。",
 ]
 FOOT = [
     "- **參考圖都有了**（`assets/refs-live/`）：許硯、秦霜、唐小棠（l1 交領）、石木匠（`shimujiang-portrait-l1`，第 2 篇章試鏡，站主照建議選 37002；沒有角度圖）；場景 `set-xujia-yuan-l2`（白天院子）、`set-xujia-yuan-ye-l1`（夜院）、`set-mujiang-fang-l1`、`set-zhulin-fen-l1`。pilot.py 不會停。",
@@ -391,5 +391,18 @@ FOOT = [
     "- 配樂：第一場清晨輕 cue（s06 吐槽停一拍）；第二場喜劇輕快 cue（s18 判定說謊一個低音、s29 服氣一個小重音）；第三場安靜冷的 cue（s36 墳一個低音、s39 枯枝斷時音樂停、s41 拔刀一個重音）。音效表見 script.md〈音樂與音效〉。",
 ]
 
-# Long shots: seconds to buy. script.md 長鏡清單: c06 and c17 at 8. Filled in after the recordings (see below).
-BUY = {}
+# Long shots: seconds to buy. script.md 長鏡清單: c06 and c17 at 8. Measured 2026-11-14 against the 36 recordings
+# (~/mokaair-work/videos/zhong-tian-qu-qi-e913-dh/audio, half a second between lines, against (buy - 0.3) x 1.1, e011's way):
+# s06 runs 8.39 s (system 3.29 + thought 4.60, plus the stop, the eye-roll and the breath) -> 10 (the script's 8 is too tight);
+# s18 7.56 s (system 4.35 + 2.71) -> 8, as the script. The rest by e008's estimate (lines of 14 characters or more, or 13 with
+# an action, get 8): s02 (16, 3.40 s + the step), s03 (5.04 s + the glance and the lead-out), s04 (16 + hurrying up), s05 (13 +
+# backing away), s07 (16 + the books), s08 (15 + the frame in the air), s09 (20, 4.64 s, the insert), s10 (21 + the finger),
+# s11 (5.20 s + the neck and the glance), s12 (16 + book, box, step), s13 (14 + knock and slam), s15 (17 + bending for the
+# plane), s16 (5.00 s + the door), s20 (15 + the door), s21 (18 + the palm), s22 (13, 4.88 s), s23 (20 + book and box),
+# s24 (15 + door, arms, palm), s25 (17 + charcoal and board), s26 (13 + the whole drawing), s27 (13 + finger and glare),
+# s28 (22, 5.32 s), s29 (13, 5.20 s), s31 (17 + wipe, turn, pole), s32 (18 + the walk), s34 (15, 4.20 s + lantern and door),
+# s37 (15 + lantern and breath), s42 (13 + the lean). The rest stay at gen-dh's 5 or 6 (s01 3.40 s, s17 2.76, s19 2.56,
+# s38 3.76; the shots without a line s14, s30, s33, s35, s36, s39, s40, s41).
+BUY = {"s06": 10, "s18": 8, "s02": 8, "s03": 8, "s04": 8, "s05": 8, "s07": 8, "s08": 8, "s09": 8, "s10": 8, "s11": 8, "s12": 8,
+       "s13": 8, "s15": 8, "s16": 8, "s20": 8, "s21": 8, "s22": 8, "s23": 8, "s24": 8, "s25": 8, "s26": 8, "s27": 8, "s28": 8,
+       "s29": 8, "s31": 8, "s32": 8, "s34": 8, "s37": 8, "s42": 8}
