@@ -310,6 +310,7 @@ Terms of service (paragraph): The operator may publish videos produced on this s
 | --- | --- | --- |
 | 2026-10-22 | 五個語系的隱私權政策與服務條款加上 §三 的段落並發布 | 生效日改成 2026-10-22；privacy zh-TW v6、其他語系 v5，terms 同。送出前發現正式站還沒有這一節 |
 | 2026-10-22 | 送出表單（站主） | 申請額外配額：每日總配額 50,000、每分鐘尖峰 5,000；`videos.insert` 維持預設 100。在 Chrome 送出，看到「感謝你提交 YouTube API 服務表單」；內建瀏覽器的 reCAPTCHA 一直轉圈送不出去。案件編號待補（看自動回覆信） |
+| 2026-10-23 | Google 回信要補件（七個工作天內） | 要兩件：上傳流程的完整程式或螢幕錄影；確認 `videos.insert` 上傳後有沒有被自動鎖成私人。答：沒有。網站從 9 月底起至少用 `videos.insert` 上傳了 45 支，全部先以私人上傳（程式固定送 `privacyStatus: private`），之後很多支在 Studio 改成公開或排定，沒有一支被鎖。程式碼直接連公開 repo。錄影：站主選 curio-s02、瀏覽權限私人，等 10-24 15:00（台北）配額重置後用 Chrome 錄 GIF，附在回信裡 |
 | | | |
 
 2026-10-22 送出的版本跟 §一 不同的地方：
