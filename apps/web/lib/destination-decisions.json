@@ -491,6 +491,498 @@
           }
         }
       }
+    },
+    "osaka-kyoto": {
+      "checkedOn": "2026-11-14",
+      "areaIds": [
+        "nambaShinsaibashi",
+        "umeda",
+        "kyotoStation",
+        "shijoKawaramachi"
+      ],
+      "sources": {
+        "nambaShinsaibashi": [
+          {
+            "label": "OSAKA-INFO — Dotonbori",
+            "url": "https://osaka-info.jp/en/spot/dotonbori/"
+          },
+          {
+            "label": "OSAKA-INFO — Shinsaibashi-Suji Shopping Street",
+            "url": "https://osaka-info.jp/en/spot/shinsaibashi-suji-shopping-street/"
+          },
+          {
+            "label": "Nankai Electric Railway — Limited Express Rapi:t",
+            "url": "https://www.nankai.co.jp/en_railway/traffic/express/rapit.html"
+          }
+        ],
+        "umeda": [
+          {
+            "label": "OSAKA-INFO — Tourist Information OSAKA (JR Osaka Station)",
+            "url": "https://osaka-info.jp/en/spot/tourist-information-osaka/"
+          },
+          {
+            "label": "OSAKA-INFO — Shin-Umeda City General Information Center",
+            "url": "https://osaka-info.jp/en/spot/tourist-information-shin-umeda/"
+          },
+          {
+            "label": "JR-WEST — Kansai-Airport Express HARUKA",
+            "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/oneway/haruka/"
+          },
+          {
+            "label": "Kyoto City Official Travel Guide — Getting to Kyoto",
+            "url": "https://kyoto.travel/en/getting-to/"
+          }
+        ],
+        "kyotoStation": [
+          {
+            "label": "Kyoto City Official Travel Guide — Getting to Kyoto",
+            "url": "https://kyoto.travel/en/getting-to/"
+          },
+          {
+            "label": "Kyoto City Official Travel Guide — Getting Around Kyoto by Subway & Train",
+            "url": "https://kyoto.travel/en/getting-around/getting-around-kyoto-by-subway-train/"
+          },
+          {
+            "label": "Kyoto City Official Travel Guide — Access to Higashiyama and Shijo Kawaramachi",
+            "url": "https://kyoto.travel/en/getting-around/comfortable-access-to-higashiyama-kiyomizu-dera-temple/"
+          }
+        ],
+        "shijoKawaramachi": [
+          {
+            "label": "Kyoto City Official Travel Guide — Access to Higashiyama and Shijo Kawaramachi",
+            "url": "https://kyoto.travel/en/getting-around/comfortable-access-to-higashiyama-kiyomizu-dera-temple/"
+          },
+          {
+            "label": "Kyoto City Official Travel Guide — Getting to Kyoto",
+            "url": "https://kyoto.travel/en/getting-to/"
+          },
+          {
+            "label": "Kyoto City Official Travel Guide — Getting Around Kyoto by Subway & Train",
+            "url": "https://kyoto.travel/en/getting-around/getting-around-kyoto-by-subway-train/"
+          }
+        ]
+      },
+      "locales": {
+        "zh-TW": {
+          "title": "大阪／京都住宿區怎麼選",
+          "intro": "先決定全程住同一城市或分住大阪、京都，再看關西機場與新幹線進出路線，以及行李多寡。區名相近不代表同一座車站，難波、梅田與四條河原町都對應多個不同鐵道入口。",
+          "suitableLabel": "適合情境",
+          "tradeoffLabel": "交通取捨",
+          "checkLabel": "入住前檢查",
+          "sourceLabel": "官方參考",
+          "checkedLabel": "官方資料核對日期",
+          "areas": {
+            "nambaShinsaibashi": {
+              "name": "難波／心齋橋",
+              "suitable": "行程集中在大阪南區的道頓堀餐飲、運河夜景與心齋橋筋拱廊購物，可先看難波／心齋橋。",
+              "tradeoff": "南海電鐵特急 Rapi:t 可往返關西機場與南海難波站，周邊另有大阪 Metro（御堂筋線、千日前線、四橋線、長堀鶴見綠地線）與近鐵／阪神；但南海難波、地鐵難波、大阪難波、JR 難波與心齋橋並非同一座站，商街人潮也多。",
+              "check": "核對旅館最近的是哪一座難波站或心齋橋站、哪個出口，以及拖行李穿過拱廊或街口的路線；重視安靜時，確認房間是否臨道頓堀或商街。"
+            },
+            "umeda": {
+              "name": "梅田",
+              "suitable": "想以大阪北區為據點當日往返京都或神戶，並兼顧百貨購物與梅田藍天大廈一帶景觀，可先看梅田。",
+              "tradeoff": "JR 關空特急 HARUKA 停靠大阪站與新大阪站，JR 大阪站可搭新快速往京都站，阪急大阪梅田站可往京都河原町站；但 JR 大阪站與大阪 Metro、阪急、阪神各「梅田」站分布在不同建築與地下街，轉乘步行距離可能偏長。",
+              "check": "核對旅館實際靠 JR 大阪站、大阪 Metro 梅田站、阪急大阪梅田站或阪神大阪梅田站，並先查帶行李時的電梯與地面／地下通道。"
+            },
+            "kyotoStation": {
+              "name": "京都站",
+              "suitable": "搭東海道新幹線或關空特急 HARUKA 進出京都，或常搭 JR、近鐵前往伏見、嵐山、宇治、大阪與奈良，可先看京都站。",
+              "tradeoff": "新幹線、HARUKA、JR 各線、近鐵與地下鐵烏丸線匯集，寄放或拖行李較單純；但官方交通指南提醒京都站直達東山一帶的市巴士容易擁擠，建議改用鐵道搭配地下鐵或京阪電車，且烏丸口與八條口位於車站南北兩側。",
+              "check": "核對旅館在烏丸口（北側）或八條口（新幹線南側），以及連通地下道出口；前往東山與清水寺一帶時，先查鐵道加地下鐵／京阪的路線。"
+            },
+            "shijoKawaramachi": {
+              "name": "四條河原町",
+              "suitable": "想在京都市中心散步、逛街與吃晚餐，並步行前往花見小路、八坂神社與東山一帶，可先看四條河原町。",
+              "tradeoff": "阪急京都河原町站可往大阪梅田，過鴨川的京阪祇園四條站可往大阪及伏見、宇治，西側烏丸通則有地下鐵四條站；但新幹線與 HARUKA 都不停此區，從關西機場或京都站前往需轉乘地下鐵、私鐵或巴士。",
+              "check": "核對旅館最近的是阪急京都河原町站、京阪祇園四條站還是地下鐵四條站，並先確認帶行李從京都站或大阪轉乘的動線。"
+            }
+          }
+        },
+        "en": {
+          "title": "Choosing where to stay in Osaka and Kyoto",
+          "intro": "Decide first whether to keep one base or split nights between Osaka and Kyoto, then compare Kansai Airport or Shinkansen access and luggage routes. Nearby area names cover multiple separate railway stations in Namba, Umeda, and Shijo Kawaramachi.",
+          "suitableLabel": "Good fit",
+          "tradeoffLabel": "Transport trade-off",
+          "checkLabel": "Before your stay",
+          "sourceLabel": "Official references",
+          "checkedLabel": "Official sources checked",
+          "areas": {
+            "nambaShinsaibashi": {
+              "name": "Namba / Shinsaibashi",
+              "suitable": "Consider Namba or Shinsaibashi for dining and canal-side evenings in Dotonbori and covered arcade shopping along Shinsaibashi-Suji in southern Osaka.",
+              "tradeoff": "Nankai's Limited Express Rapi:t links Kansai Airport directly with Nankai Namba Station, alongside Osaka Metro (Midosuji, Sennichimae, Yotsubashi, and Nagahori Tsurumi-ryokuchi lines) and Kintetsu/Hanshin services. However, Nankai Namba, Osaka Metro Namba, Osaka-Namba, JR Namba, and Shinsaibashi are separate stations, and arcade crowds are heavy.",
+              "check": "Confirm which specific Namba or Shinsaibashi station and exit the hotel uses, and map your route with luggage. If quiet matters, check whether the room faces Dotonbori or a busy shopping street."
+            },
+            "umeda": {
+              "name": "Umeda",
+              "suitable": "Consider Umeda in northern Osaka as a rail base for day trips to Kyoto, alongside department stores and views around the Umeda Sky Building area.",
+              "tradeoff": "JR's Kansai-Airport Express HARUKA stops at Osaka and Shin-Osaka, JR trains connect JR Osaka Station with Kyoto Station, and Hankyu runs from Osaka-Umeda to Kyoto-Kawaramachi. However, JR Osaka Station and the separate Umeda stations (Osaka Metro, Hankyu, and Hanshin) span multi-level buildings and underground malls, so transfers can mean long walks.",
+              "check": "Identify whether the hotel is closest to JR Osaka, Osaka Metro Umeda, Hankyu Osaka-Umeda, or Hanshin Osaka-Umeda, and check elevator and surface or underground routes when carrying luggage."
+            },
+            "kyotoStation": {
+              "name": "Kyoto Station",
+              "suitable": "Consider Kyoto Station when arriving by Tokaido Shinkansen or Kansai-Airport Express HARUKA, or when taking JR and Kintetsu trips to Fushimi, Arashiyama, Uji, Osaka, or Nara.",
+              "tradeoff": "Shinkansen, HARUKA, JR lines, Kintetsu, and the Subway Karasuma Line meet in one hub, simplifying luggage handling. Official Kyoto guidance notes that direct buses from Kyoto Station toward Higashiyama are often congested and recommends rail plus subway or Keihan transfers instead; the Karasuma and Hachijo sides also sit on opposite sides of the station.",
+              "check": "Check whether the hotel sits on the Karasuma (central) or Hachijo (Shinkansen) side and which passage connects to your rail line. For Higashiyama sightseeing, check rail plus subway or Keihan routes alongside bus options."
+            },
+            "shijoKawaramachi": {
+              "name": "Shijo Kawaramachi",
+              "suitable": "Consider Shijo Kawaramachi for downtown Kyoto dining and shopping within walking reach of Hanamikoji Street, Yasaka-jinja Shrine, and Higashiyama.",
+              "tradeoff": "Hankyu Kyoto-Kawaramachi runs toward Osaka-Umeda, Keihan Gion-Shijo across the river serves Osaka and Fushimi/Uji, and Subway Shijo sits west at Karasuma. Neither the Shinkansen nor the HARUKA airport express stops here, so arriving from Kansai Airport or Kyoto Station requires a subway, rail, or bus transfer.",
+              "check": "Identify whether the hotel is closest to Hankyu Kyoto-Kawaramachi, Keihan Gion-Shijo, or Subway Shijo Station, and plan how you will transfer with luggage from Kyoto Station or Osaka."
+            }
+          }
+        },
+        "ja": {
+          "title": "大阪・京都の宿泊エリアを選ぶ",
+          "intro": "1都市を拠点にするか大阪・京都で分泊するかを先に決め、関西空港や新幹線での到着ルートと荷物の量を比較しましょう。難波・梅田・四条河原町はいずれも複数の異なる駅に分かれています。",
+          "suitableLabel": "こんな旅に",
+          "tradeoffLabel": "交通の利点と注意点",
+          "checkLabel": "宿泊前に確認",
+          "sourceLabel": "公式情報",
+          "checkedLabel": "公式情報の確認日",
+          "areas": {
+            "nambaShinsaibashi": {
+              "name": "難波／心斎橋",
+              "suitable": "道頓堀での食事や水辺の散策、心斎橋筋商店街での買い物など、大阪ミナミを中心に過ごすなら候補に。",
+              "tradeoff": "南海電鉄の特急ラピートで関西空港と南海難波駅を直結でき、Osaka Metro（御堂筋線・千日前線・四つ橋線・長堀鶴見緑地線）や近鉄・阪神も利用できます。ただし南海難波・地下鉄なんば・大阪難波・JR難波・心斎橋は別の駅で、商店街の人出も多めです。",
+              "check": "最寄りがどの難波駅または心斎橋駅か、どの出口か、荷物を持ってアーケードや通りを歩く経路を確認。静かさを重視するなら、客室が道頓堀や繁華街に面しているかも確認しましょう。"
+            },
+            "umeda": {
+              "name": "梅田",
+              "suitable": "大阪キタを拠点に京都方面へ日帰り移動したい場合や、百貨店での買い物・梅田スカイビル周辺の散策を組み合わせたい場合に。",
+              "tradeoff": "JR関空特急はるかが大阪駅・新大阪駅に停車し、JR大阪駅から京都駅へ新快速、阪急大阪梅田駅から京都河原町駅へ阪急線が利用できます。一方、JR大阪駅とOsaka Metro・阪急・阪神の各梅田駅は建物や地下街が分かれており、乗り換えの徒歩移動が長くなりがちです。",
+              "check": "ホテルの最寄りがJR大阪駅・Osaka Metro梅田駅・阪急大阪梅田駅・阪神大阪梅田駅のどれかを確認し、荷物がある場合はエレベーターと地上・地下ルートを調べておきましょう。"
+            },
+            "kyotoStation": {
+              "name": "京都駅",
+              "suitable": "東海道新幹線や関空特急はるかで京都に入る場合や、伏見・嵐山・宇治・大阪・奈良へJRや近鉄で移動する予定が多い場合に。",
+              "tradeoff": "新幹線、はるか、JR各線、近鉄、地下鉄烏丸線が集まり、荷物の預け入れや移動がしやすい拠点です。公式案内では京都駅から東山方面への直通市バスは混雑しやすいため鉄道と地下鉄・京阪の組み合わせが案内されており、烏丸口と八条口も駅の南北に分かれています。",
+              "check": "ホテルが烏丸口側か八条口（新幹線）側か、利用路線への連絡通路を確認。東山・清水寺方面へ行く日は鉄道＋地下鉄・京阪のルートも確認しておきましょう。"
+            },
+            "shijoKawaramachi": {
+              "name": "四条河原町",
+              "suitable": "京都中心部での食事や買い物に加え、花見小路・八坂神社・東山エリアへ徒歩圏で回りたい場合に。",
+              "tradeoff": "阪急京都河原町駅から大阪梅田方面、鴨川を渡った京阪祇園四条駅から大阪や伏見・宇治方面へ移動でき、西側の烏丸通には地下鉄四条駅があります。新幹線やはるかは止まらないため、関西空港や京都駅からは地下鉄・私鉄・バスへの乗り換えが必要です。",
+              "check": "最寄りが阪急京都河原町駅・京阪祇園四条駅・地下鉄四条駅のどれかを確認し、京都駅や大阪から荷物を持って乗り換える経路を事前に確認しましょう。"
+            }
+          }
+        },
+        "ko": {
+          "title": "오사카·교토 숙박 지역 고르기",
+          "intro": "한 도시를 거점으로 삼을지 오사카와 교토에 나누어 묵을지 먼저 정한 뒤, 간사이공항·신칸센 도착 경로와 짐의 양을 비교하세요. 난바, 우메다, 시조 가와라마치는 모두 여러 개의 서로 다른 역으로 나뉘어 있습니다.",
+          "suitableLabel": "이런 여행에 적합",
+          "tradeoffLabel": "교통의 장점과 유의점",
+          "checkLabel": "숙박 전 확인",
+          "sourceLabel": "공식 참고 자료",
+          "checkedLabel": "공식 자료 확인일",
+          "areas": {
+            "nambaShinsaibashi": {
+              "name": "난바 / 신사이바시",
+              "suitable": "도톤보리 식사와 운하 산책, 신사이바시스지 아케이드 쇼핑 등 오사카 미나미 일정이 중심이라면 살펴보세요.",
+              "tradeoff": "난카이 특급 라피트로 간사이공항과 난카이 난바역을 바로 오갈 수 있고, 오사카 메트로(미도스지선·센니치마에선·요쓰바시선·나가호리쓰루미료쿠치선)와 긴테쓰·한신도 지납니다. 다만 난카이 난바, 지하철 난바, 오사카난바, JR 난바, 신사이바시는 서로 다른 역이며 상점가 인파도 많습니다.",
+              "check": "호텔에서 가장 가까운 역이 어느 난바역 또는 신사이바시역인지, 몇 번 출구인지, 짐을 끌고 이동할 동선을 확인하세요. 조용한 숙소를 원한다면 도톤보리나 번화가와 마주하는지도 확인하세요."
+            },
+            "umeda": {
+              "name": "우메다",
+              "suitable": "오사카 기타를 거점으로 교토 당일치기를 다녀오거나 백화점 쇼핑과 우메다 스카이빌딩 일대 전망을 함께 즐기려면 살펴보세요.",
+              "tradeoff": "JR 간사이공항 특급 하루카가 오사카역·신오사카역에 서고, JR 오사카역에서 교토역으로, 한큐 오사카우메다역에서 교토가와라마치역으로 이동할 수 있습니다. 다만 JR 오사카역과 오사카 메트로·한큐·한신의 각 우메다역이 여러 건물과 지하상가에 걸쳐 있어 환승 도보 거리가 길어질 수 있습니다.",
+              "check": "가장 가까운 역이 JR 오사카역, 오사카 메트로 우메다역, 한큐 오사카우메다역, 한신 오사카우메다역 중 어디인지 확인하고, 짐이 있다면 엘리베이터와 지상·지하 통로를 미리 확인하세요."
+            },
+            "kyotoStation": {
+              "name": "교토역",
+              "suitable": "도카이도 신칸센이나 간사이공항 특급 하루카로 도착하거나 후시미·아라시야마·우지·오사카·나라로 JR·긴테쓰 이동이 잦다면 살펴보세요.",
+              "tradeoff": "신칸센, 하루카, JR 노선, 긴테쓰, 지하철 가라스마선이 한곳에 모여 짐 보관이 편리합니다. 다만 교토 공식 교통 안내는 교토역에서 히가시야마 방면 직통 시내버스가 자주 혼잡하므로 철도와 지하철·게이한 환승을 권장하며, 가라스마구치와 하치조구치도 역 남북으로 나뉘어 있습니다.",
+              "check": "호텔이 가라스마구치(북쪽)인지 하치조구치(신칸센 남쪽)인지, 이용할 노선과 이어지는 통로를 확인하세요. 히가시야마 방문 시에는 철도+지하철·게이한 경로도 함께 확인하세요."
+            },
+            "shijoKawaramachi": {
+              "name": "시조 가와라마치",
+              "suitable": "교토 시내 중심가 식사·쇼핑과 함께 하나미코지, 야사카 신사, 히가시야마 일대를 걸어서 둘러보고 싶다면 살펴보세요.",
+              "tradeoff": "한큐 교토가와라마치역에서 오사카 우메다 방면, 강 건너 게이한 기온시조역에서 오사카 및 후시미·우지 방면으로 갈 수 있고, 서쪽 가라스마에는 지하철 시조역이 있습니다. 신칸센과 하루카는 서지 않으므로 간사이공항이나 교토역에서는 지하철·사철·버스 환승이 필요합니다.",
+              "check": "가장 가까운 역이 한큐 교토가와라마치역, 게이한 기온시조역, 지하철 시조역 중 어디인지 확인하고, 교토역이나 오사카에서 짐을 들고 환승하는 경로를 계획하세요."
+            }
+          }
+        },
+        "zh-CN": {
+          "title": "大阪／京都住宿区域怎么选",
+          "intro": "先决定全程住同一座城市还是分住大阪、京都，再看关西机场与新干线进出路线，以及行李多少。区域名称相近不代表同一座车站，难波、梅田与四条河原町都对应多个不同铁道入口。",
+          "suitableLabel": "适合场景",
+          "tradeoffLabel": "交通取舍",
+          "checkLabel": "入住前检查",
+          "sourceLabel": "官方参考",
+          "checkedLabel": "官方资料核对日期",
+          "areas": {
+            "nambaShinsaibashi": {
+              "name": "难波／心斋桥",
+              "suitable": "行程集中在大阪南区的道顿堀餐饮、运河夜景与心斋桥筋拱廊购物，可以先看难波／心斋桥。",
+              "tradeoff": "南海电铁特急 Rapi:t 可往返关西机场与南海难波站，周边另有大阪 Metro（御堂筋线、千日前线、四桥线、长堀鹤见绿地线）与近铁／阪神；但南海难波、地铁难波、大阪难波、JR 难波与心斋桥并非同一座车站，商业街人流也多。",
+              "check": "核对酒店最近的是哪一座难波站或心斋桥站、哪个出口，以及拖行李穿过拱廊或街口的路线；重视安静时，确认客房是否临道顿堀或商业街。"
+            },
+            "umeda": {
+              "name": "梅田",
+              "suitable": "想以大阪北区为据点当日往返京都或神户，并兼顾百货购物与梅田蓝天大厦一带景观，可以先看梅田。",
+              "tradeoff": "JR 关空特急 HARUKA 停靠大阪站与新大阪站，JR 大阪站可乘新快速往京都站，阪急大阪梅田站可往京都河原町站；但 JR 大阪站与大阪 Metro、阪急、阪神各“梅田”站分布在不同建筑与地下街，换乘步行距离可能偏长。",
+              "check": "核对酒店实际靠 JR 大阪站、大阪 Metro 梅田站、阪急大阪梅田站还是阪神大阪梅田站，并先查带行李时的电梯与地面／地下通道。"
+            },
+            "kyotoStation": {
+              "name": "京都站",
+              "suitable": "乘东海道新干线或关空特急 HARUKA 进出京都，或常乘 JR、近铁前往伏见、岚山、宇治、大阪与奈良，可以先看京都站。",
+              "tradeoff": "新干线、HARUKA、JR 各线、近铁与地铁乌丸线汇集，寄存或拖行李较省心；但官方交通指南提醒京都站直达东山一带的市巴士容易拥挤，建议改用铁道搭配地铁或京阪电车，且乌丸口与八条口位于车站南北两侧。",
+              "check": "核对酒店在乌丸口（北侧）还是八条口（新干线南侧），以及连通地下道出口；前往东山与清水寺一带时，先查铁道加地铁／京阪的路线。"
+            },
+            "shijoKawaramachi": {
+              "name": "四条河原町",
+              "suitable": "想在京都市中心散步、逛街与吃晚餐，并步行前往花见小路、八坂神社与东山一带，可以先看四条河原町。",
+              "tradeoff": "阪急京都河原町站可往大阪梅田，过鸭川的京阪祇园四条站可往大阪及伏见、宇治，西侧乌丸通则有地铁四条站；但新干线与 HARUKA 都不停此区，从关西机场或京都站前往需换乘地铁、私铁或巴士。",
+              "check": "核对酒店最近的是阪急京都河原町站、京阪祇园四条站还是地铁四条站，并先确认带行李从京都站或大阪换乘的路线。"
+            }
+          }
+        }
+      }
+    },
+    "taipei": {
+      "checkedOn": "2026-11-14",
+      "areaIds": [
+        "taipeiMainStation",
+        "ximending",
+        "xinyi",
+        "zhongshan"
+      ],
+      "sources": {
+        "taipeiMainStation": [
+          {
+            "label": "Taipei Travel — Taiwan Railways (Taipei Main Station)",
+            "url": "https://www.travel.taipei/en/attraction/details/1727"
+          },
+          {
+            "label": "Taipei Travel — Taipei City Mall",
+            "url": "https://www.travel.taipei/en/attraction/details/2145"
+          },
+          {
+            "label": "Taoyuan Metro — Route Map",
+            "url": "https://www.tymetro.com.tw/tymetro-new/en/_pages/travel-guide/road.html"
+          }
+        ],
+        "ximending": [
+          {
+            "label": "Taipei Travel — Ximending Shopping District",
+            "url": "https://www.travel.taipei/en/pictorial/article/53989"
+          },
+          {
+            "label": "Taipei Travel — The Red House",
+            "url": "https://www.travel.taipei/en/attraction/details/503"
+          },
+          {
+            "label": "Taoyuan Metro — Route Map",
+            "url": "https://www.tymetro.com.tw/tymetro-new/en/_pages/travel-guide/road.html"
+          }
+        ],
+        "xinyi": [
+          {
+            "label": "Taipei Travel — Xinyi Shopping District",
+            "url": "https://www.travel.taipei/en/attraction/details/1695"
+          },
+          {
+            "label": "Taipei Travel — Taipei 101 Mall",
+            "url": "https://www.travel.taipei/en/attraction/details/540"
+          },
+          {
+            "label": "Taoyuan Metro — Route Map",
+            "url": "https://www.tymetro.com.tw/tymetro-new/en/_pages/travel-guide/road.html"
+          }
+        ],
+        "zhongshan": [
+          {
+            "label": "Taipei Travel — MRT Green Corridor",
+            "url": "https://www.travel.taipei/en/attraction/details/3692"
+          },
+          {
+            "label": "Taipei Travel — MRT Zhongshan Underground Book Street",
+            "url": "https://www.travel.taipei/en/attraction/details/2100"
+          },
+          {
+            "label": "Taoyuan Metro — Route Map",
+            "url": "https://www.tymetro.com.tw/tymetro-new/en/_pages/travel-guide/road.html"
+          }
+        ]
+      },
+      "locales": {
+        "zh-TW": {
+          "title": "台北住宿區怎麼選",
+          "intro": "先看從桃園機場或松山機場怎麼進市區、是否安排高鐵與台鐵跨縣市行程，以及行李多寡，再核對旅館到實際捷運出口的路線。行政區名如信義、中山涵蓋多座不同捷運站。",
+          "suitableLabel": "適合情境",
+          "tradeoffLabel": "交通取捨",
+          "checkLabel": "入住前檢查",
+          "sourceLabel": "官方參考",
+          "checkedLabel": "官方資料核對日期",
+          "areas": {
+            "taipeiMainStation": {
+              "name": "台北車站",
+              "suitable": "需要搭高鐵、台鐵或國道客運跨縣市移動，或希望直接連通桃園機場捷運 A1 台北車站，可先看台北車站。",
+              "tradeoff": "台鐵、高鐵、台北捷運（板南線、淡水信義線）與機場捷運 A1 站、北門站透過地下街與通道相連；但站區橫跨多棟建築與 M、Z、K、Y 等地下街，拖大件行李走到特定地面出口可能要花不少路程。",
+              "check": "核對旅館靠近哪一個地面路口或地下街出口（M、Z、K、Y 區），並確認該出口是否有電梯，不要只看「台北車站旁」。"
+            },
+            "ximending": {
+              "name": "西門町",
+              "suitable": "喜歡徒步區逛街、電影街、街頭小吃與西門紅樓周邊歷史街區，可先看西門町。",
+              "tradeoff": "捷運西門站同時有板南線與松山新店線，距台北車站與北門站僅一站；但桃園機場捷運與高鐵不停西門，需在台北車站或北門站轉乘，且徒步區入夜後依然熱鬧。",
+              "check": "核對旅館靠近西門站哪個出口（6 號出口往徒步區、1 號出口往西門紅樓），以及拖行李路線；重視安靜時，確認與徒步商圈的距離。"
+            },
+            "xinyi": {
+              "name": "信義區",
+              "suitable": "以信義商圈空橋百貨群、餐飲、書店、影城與台北 101 夜景為主，可先看信義區。",
+              "tradeoff": "北側靠板南線市政府站，南側靠淡水信義線台北 101／世貿站與象山站，分屬兩條不同捷運線；距離台北車站與機場捷運 A1 站較偏東，帶行李進出需搭捷運或轉乘。",
+              "check": "核對旅館實際靠市政府站、台北 101／世貿站或象山站，並先確認從機場抵達時的轉乘方式與出口電梯。"
+            },
+            "zhongshan": {
+              "name": "中山",
+              "suitable": "喜歡心中山線形公園散步、赤峰街一帶選物店與咖啡館，以及中山地下書街氛圍，可先看中山。",
+              "tradeoff": "捷運中山站有淡水信義線（距台北車站一站）與松山新店線交會；但機場捷運與高鐵仍需在台北車站或北門站轉乘，且標示「中山區」的旅館可能實際較靠雙連、松江南京或中山國小站。",
+              "check": "核對旅館是否真的靠近捷運中山站，而非中山區其他地段，並確認常用出口的手扶梯或電梯位置。"
+            }
+          }
+        },
+        "en": {
+          "title": "Choosing where to stay in Taipei",
+          "intro": "Start with whether you arrive via Taoyuan Airport MRT or Taipei Songshan Airport, whether you plan High Speed Rail or Taiwan Railways day trips, and your luggage needs, then map the walk to the actual MRT exit. District names like Xinyi and Zhongshan span multiple MRT stations.",
+          "suitableLabel": "Good fit",
+          "tradeoffLabel": "Transport trade-off",
+          "checkLabel": "Before your stay",
+          "sourceLabel": "Official references",
+          "checkedLabel": "Official sources checked",
+          "areas": {
+            "taipeiMainStation": {
+              "name": "Taipei Main Station",
+              "suitable": "Consider Taipei Main Station when combining city MRT rides with Taiwan High Speed Rail, Taiwan Railways, intercity buses, or Taoyuan Airport MRT Taipei Station (A1).",
+              "tradeoff": "Taiwan Railways, High Speed Rail, Taipei Metro (Bannan and Tamsui-Xinyi lines), and underground passages to Airport MRT A1 and MRT Beimen meet here. However, the complex spans separate buildings and underground malls (M, Z, K, and Y zones), so walking with luggage to a specific street exit can be long.",
+              "check": "Identify which street intersection or underground mall exit (M, Z, K, or Y) is closest to the hotel and check elevator access rather than relying on “near Taipei Main Station” alone."
+            },
+            "ximending": {
+              "name": "Ximending",
+              "suitable": "Consider Ximending for pedestrian shopping streets, Cinema Street, street snacks, and historic walks around the Red House.",
+              "tradeoff": "MRT Ximen Station serves both the Bannan Line and Songshan-Xindian Line, one stop from Taipei Main Station and Beimen. Taoyuan Airport MRT and High Speed Rail do not stop at Ximen directly, so airport or rail arrivals require a short transfer, and pedestrian streets stay lively late into the evening.",
+              "check": "Check which MRT Ximen exit the hotel uses (Exit 6 faces the pedestrian zone; Exit 1 faces the Red House) and check distance from nightlife streets if you prefer quieter nights."
+            },
+            "xinyi": {
+              "name": "Xinyi District",
+              "suitable": "Consider Xinyi District for interconnected department stores, dining, bookstores, cinemas, and evening views around Taipei 101.",
+              "tradeoff": "Two separate MRT lines serve opposite sides of the district—the Bannan Line at Taipei City Hall Station on the north and the Tamsui-Xinyi Line at Taipei 101/World Trade Center and Xiangshan on the south. It sits further east of Taipei Main Station and Airport MRT A1, requiring an MRT ride or transfer with luggage.",
+              "check": "Confirm whether the hotel is nearest MRT Taipei City Hall, Taipei 101/World Trade Center, or Xiangshan Station, and check your airport transfer route before arrival."
+            },
+            "zhongshan": {
+              "name": "Zhongshan",
+              "suitable": "Consider Zhongshan for tree-lined walks along the MRT Green Corridor, independent shops and cafes in nearby lanes, and the underground book street toward Shuanglian.",
+              "tradeoff": "MRT Zhongshan Station connects the Tamsui-Xinyi Line (one stop north of Taipei Main Station) and the Songshan-Xindian Line. Airport MRT and High Speed Rail require transferring via Taipei Main Station or Beimen, and hotels listed in “Zhongshan District” may sit closer to Shuanglian, Songjiang Nanjing, or Zhongshan Elementary School stations.",
+              "check": "Verify that the hotel is near MRT Zhongshan Station itself rather than another part of Zhongshan District, and check which exit has an escalator or elevator for luggage."
+            }
+          }
+        },
+        "ja": {
+          "title": "台北の宿泊エリアを選ぶ",
+          "intro": "桃園空港MRTと松山空港のどちらで市内に入るか、台湾高速鉄道（高鉄）や台鉄での移動があるか、荷物の量をもとに、ホテルから利用するMRT出口までの道順を比較しましょう。信義や中山といった行政区名は複数のMRT駅にまたがります。",
+          "suitableLabel": "こんな旅に",
+          "tradeoffLabel": "交通の利点と注意点",
+          "checkLabel": "宿泊前に確認",
+          "sourceLabel": "公式情報",
+          "checkedLabel": "公式情報の確認日",
+          "areas": {
+            "taipeiMainStation": {
+              "name": "台北駅",
+              "suitable": "台湾高速鉄道・台鉄・長距離バスで地方へ足を延ばす予定がある場合や、桃園空港MRTのA1台北駅と直結した拠点を重視する場合に。",
+              "tradeoff": "台鉄・高鉄・台北MRT（板南線・淡水信義線）に加え、地下街や連絡通路で空港MRT A1駅・北門駅ともつながっています。ただし複数の建物とM・Z・K・Yなどの地下街に広がるため、大きな荷物を持って目的の地上出口まで歩く距離が長くなることがあります。",
+              "check": "ホテルに最も近い地上交差点または地下街出口（M・Z・K・Y区画）とエレベーターの有無を確認し、「台北駅近く」という表記だけで判断しないようにしましょう。"
+            },
+            "ximending": {
+              "name": "西門町",
+              "suitable": "歩行者天国の商店街や映画街、屋台グルメ、西門紅楼周辺の歴史ある街並みを楽しみたいなら候補に。",
+              "tradeoff": "MRT西門駅は板南線と松山新店線が交差し、台北駅や北門駅から1駅です。桃園空港MRTや高鉄は直接乗り入れていないため台北駅・北門駅での乗り換えが必要で、歩行者エリアは夜遅くまでにぎわいます。",
+              "check": "ホテルが西門駅のどの出口に近いか（6番出口が歩行者エリア側、1番出口が西門紅楼側）、荷物を持って歩く経路を確認。静かさを重視するなら繁華街との距離も確認しましょう。"
+            },
+            "xinyi": {
+              "name": "信義区",
+              "suitable": "連絡デッキでつながる百貨店群や食事、書店、映画館、台北101周辺の夜景を中心に過ごすなら候補に。",
+              "tradeoff": "北側は板南線の市政府駅、南側は淡水信義線の台北101／世貿駅・象山駅と、2つの異なるMRT路線に分かれています。台北駅や空港MRT A1駅からは東側に離れており、荷物を持ってMRTでの移動や乗り換えが必要です。",
+              "check": "最寄りが市政府駅・台北101／世貿駅・象山駅のどれかを確認し、空港からの乗り換えルートと出口のエレベーターを事前に調べておきましょう。"
+            },
+            "zhongshan": {
+              "name": "中山",
+              "suitable": "心中山線形公園の並木道散策や路地裏のショップ・カフェ巡り、中山地下書街の雰囲気を楽しみたいなら候補に。",
+              "tradeoff": "MRT中山駅は淡水信義線（台北駅から北へ1駅）と松山新店線の乗換駅です。空港MRTや高鉄からは台北駅・北門駅での乗り換えが必要で、「中山区」表記のホテルでも実際は雙連・松江南京・中山国小駅に近い場合があります。",
+              "check": "行政区の中山区ではなくMRT中山駅の近くかどうかを確認し、荷物がある場合はエスカレーターやエレベーターのある出口も確認しましょう。"
+            }
+          }
+        },
+        "ko": {
+          "title": "타이베이 숙박 지역 고르기",
+          "intro": "타오위안 공항철도(MRT)와 송산공항 중 어디로 도착하는지, 고속철도(THSR)·일반철도(TRA) 이동이 있는지, 짐의 양을 먼저 살핀 뒤 호텔에서 실제 이용할 MRT 출구까지의 동선을 비교하세요. 신이·중산 같은 행정구 이름은 여러 MRT 역에 걸쳐 있습니다.",
+          "suitableLabel": "이런 여행에 적합",
+          "tradeoffLabel": "교통의 장점과 유의점",
+          "checkLabel": "숙박 전 확인",
+          "sourceLabel": "공식 참고 자료",
+          "checkedLabel": "공식 자료 확인일",
+          "areas": {
+            "taipeiMainStation": {
+              "name": "타이베이역",
+              "suitable": "고속철도(THSR)·일반철도(TRA)·시외버스로 근교나 다른 도시를 오가거나 타오위안 공항철도 A1 타이베이역과의 연결을 중시한다면 살펴보세요.",
+              "tradeoff": "TRA, THSR, 타이베이 MRT(반난선·단수이신이선)와 공항철도 A1역·베이먼역이 지하상가와 통로로 이어집니다. 다만 역 구역이 여러 건물과 M·Z·K·Y 지하상가로 넓게 퍼져 있어 큰 짐을 끌고 특정 지상 출구까지 걷는 거리가 길어질 수 있습니다.",
+              "check": "호텔에서 가장 가까운 지상 교차로나 지하상가 출구(M·Z·K·Y 구역)와 엘리베이터 유무를 확인하고, ‘타이베이역 근처’라는 설명만으로 판단하지 마세요."
+            },
+            "ximending": {
+              "name": "시먼딩",
+              "suitable": "보행자 쇼핑 거리, 영화 거리, 길거리 간식과 시먼홍러우 주변 역사 거리를 즐기고 싶다면 살펴보세요.",
+              "tradeoff": "MRT 시먼역은 반난선과 송산신뎬선이 함께 지나며 타이베이역·베이먼역에서 한 정거장입니다. 공항철도와 고속철도는 바로 서지 않아 타이베이역이나 베이먼역에서 환승해야 하며, 보행자 거리는 밤늦게까지 붐빕니다.",
+              "check": "호텔이 시먼역 몇 번 출구와 가까운지(6번 출구는 보행자 광장 방면, 1번 출구는 시먼홍러우 방면) 확인하고, 조용한 숙소를 원한다면 번화가와의 거리도 확인하세요."
+            },
+            "xinyi": {
+              "name": "신이구",
+              "suitable": "연결 통로로 이어진 백화점과 식사, 서점, 영화관, 타이베이 101 야경이 중심이라면 살펴보세요.",
+              "tradeoff": "북쪽은 반난선 시정부역, 남쪽은 단수이신이선 타이베이101/세계무역센터역·샹산역으로 서로 다른 두 MRT 노선을 이용합니다. 타이베이역 및 공항철도 A1역에서 동쪽으로 떨어져 있어 짐을 들고 MRT 이동이나 환승이 필요합니다.",
+              "check": "가장 가까운 역이 시정부역, 타이베이101/세계무역센터역, 샹산역 중 어디인지 확인하고 공항 도착 시 환승 동선과 엘리베이터 위치를 미리 확인하세요."
+            },
+            "zhongshan": {
+              "name": "중산",
+              "suitable": "MRT 선형공원 산책, 골목길 편집숍과 카페, 중산 지하 책거리 분위기를 좋아한다면 살펴보세요.",
+              "tradeoff": "MRT 중산역은 단수이신이선(타이베이역에서 북쪽으로 한 정거장)과 송산신뎬선이 만납니다. 공항철도와 고속철도는 타이베이역·베이먼역 환승이 필요하며, ‘중산구’ 주소 호텔이라도 실제로는 솽롄역·쑹장난징역·중산초등학교역에 더 가까울 수 있습니다.",
+              "check": "행정구역상 중산구가 아니라 실제 MRT 중산역 근처인지 확인하고, 짐이 있다면 에스컬레이터나 엘리베이터가 있는 출구를 확인하세요."
+            }
+          }
+        },
+        "zh-CN": {
+          "title": "台北住宿区域怎么选",
+          "intro": "先看从桃园机场还是松山机场进市区、是否安排高铁与台铁跨县市行程，以及行李多少，再核对酒店到实际捷运出口的路线。行政区名如信义、中山涵盖多座不同捷运站。",
+          "suitableLabel": "适合场景",
+          "tradeoffLabel": "交通取舍",
+          "checkLabel": "入住前检查",
+          "sourceLabel": "官方参考",
+          "checkedLabel": "官方资料核对日期",
+          "areas": {
+            "taipeiMainStation": {
+              "name": "台北车站",
+              "suitable": "需要乘高铁、台铁或客运跨县市移动，或希望直接连通桃园机场捷运 A1 台北车站，可以先看台北车站。",
+              "tradeoff": "台铁、高铁、台北捷运（板南线、淡水信义线）与机场捷运 A1 站、北门站通过地下街与通道相连；但站区横跨多栋建筑与 M、Z、K、Y 等地下街，拖大件行李走到特定地面出口可能要走不少路程。",
+              "check": "核对酒店靠近哪一个地面路口或地下街出口（M、Z、K、Y 区），并确认该出口是否有电梯，不要只看“台北车站旁”。"
+            },
+            "ximending": {
+              "name": "西门町",
+              "suitable": "喜欢步行区逛街、电影街、街头小吃与西门红楼周边历史街区，可以先看西门町。",
+              "tradeoff": "捷运西门站同时有板南线与松山新店线，距台北车站与北门站仅一站；但桃园机场捷运与高铁不停西门，需在台北车站或北门站换乘，且步行区入夜后依然热闹。",
+              "check": "核对酒店靠近西门站哪个出口（6 号出口往步行区、1 号出口往西门红楼），以及拖行李路线；重视安静时，确认与步行商业区的距离。"
+            },
+            "xinyi": {
+              "name": "信义区",
+              "suitable": "以信义商圈连廊百货群、餐饮、书店、影城与台北 101 夜景为主，可以先看信义区。",
+              "tradeoff": "北侧靠板南线市政府站，南侧靠淡水信义线台北 101／世贸站与象山站，分属两条不同捷运线；距离台北车站与机场捷运 A1 站较偏东，带行李进出需乘捷运或换乘。",
+              "check": "核对酒店实际靠市政府站、台北 101／世贸站还是象山站，并先确认从机场抵达时的换乘方式与出口电梯。"
+            },
+            "zhongshan": {
+              "name": "中山",
+              "suitable": "喜欢心中山线形公园散步、赤峰街一带选物店与咖啡馆，以及中山地下书街氛围，可以先看中山。",
+              "tradeoff": "捷运中山站有淡水信义线（距台北车站一站）与松山新店线交会；但机场捷运与高铁仍需在台北车站或北门站换乘，且标示“中山区”的酒店可能实际更靠近双连、松江南京或中山国小站。",
+              "check": "核对酒店是否真的靠近捷运中山站，而非中山区其他地段，并确认常用出口的扶梯或电梯位置。"
+            }
+          }
+        }
+      }
     }
   }
 }

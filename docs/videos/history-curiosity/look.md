@@ -1,6 +1,28 @@
-# 歷史與奇異：畫面規格與畫風樣張
+# 歷史與奇異（奇聞檔案局）：畫面規格與畫風樣張
 
-2026-10-10 起草。畫面參考 cheap（`@cheapaoe`）的可愛卡通，站主要求「內容相關的可愛插畫」、「跟原來如此系列比較像」，全部由 **MiniMax `image-01`** 生成，不再由 Claude 或 Codex 手繪 SVG。這份寫 MiniMax 的限制、系列的 `look`、每張 prompt 的寫法、照片怎麼貼、片頭片尾，與 2026-10-10 畫的四種候選畫風樣張。
+**2026-11-14 定案（現行標準）**：站主指定全系列（與原來如此事務所同步，見 [`../so-thats-why/look.md`](../so-thats-why/look.md)）全面改採升級版**「劇場級動畫光影 × 厚塗水粉質感」**，所有關鍵影格固定由代理內建 `generate_image`（`AspectRatio: "16:9"`）生成，再以 `keyframes import --provider external --usd 0` 匯入，**嚴禁用 MiniMax 生圖**（完整操作規則見 [`../../../.agents/skills/curio-episode/SKILL.md`](../../../.agents/skills/curio-episode/SKILL.md)）：
+
+- **角色造型與頭身比鎖死（與《原來如此事務所》嚴格分家）**：本系列人物一律採 **3.5 頭身修長繪本／劇場動畫比例（`3.5-head slender storybook theatrical anime proportion`）**——與《原來如此事務所》的 2.5 頭身圓滾大頭 Q 版（所長＋小問）在頭身比、剪影與色盤上完全區隔，**嚴禁畫成 2.5 頭身大頭娃娃或混用隔壁系列角色**。固定串場角色為不開口的檔案局研究員 **`ada`**（黑色微捲齊下巴短髮＋側分斜瀏海、暗酒紅細圓框眼鏡、褪色青雙排釦風衣配牛皮紙米白高領毛衣），出場時 `ImagePaths` **必傳 Repo 內正式標準設定圖 `docs/videos/history-curiosity/series-sheets/characters/ada/ada-canon-v2.png`**（詳見 [`series-sheets/README.md`](series-sheets/README.md)）。單集內跨 ≥ 4 鏡出場、過世滿 70 年可入畫的歷史人物，開畫前同樣以 3.5 頭身比例產出固定角色設定圖，每鏡必傳 `ImagePaths`；重繪既有鏡頭時一併傳入前一版圖檔鎖定骨架與道具位置。遇到 `gemini-3.1-flash-image` 配額冷卻時，先做八語翻譯、配音與 `check-audio` 或分批等待，絕不退回 MiniMax。
+- **畫面不必每鏡都有人（`nobody: true` 純物件／場景鏡佔 45%–65%）**：內建 `generate_image` 畫無人場景不會像早期 MiniMax 在帳篷或器物上亂畫人臉，**嚴禁為了湊人頭把每一鏡都塞進 Ada 或路人**。全集約 **45%–65%** 鏡頭應設為 `"nobody": true`，直接聚焦歷史器物、航海儀器、火山／船隻／建築環境與數量視覺對照；角色鏡頭（約 **35%–55%**）只放在關鍵行動、發現異常線索與情緒轉折拍。
+- **五大質感配方**：
+  1. **線條**：前景主體改用暖深褐色（warm-sepia）有粗細收尖變化的細膩手繪墨線，嚴禁粗黑死板的平塗向量框線；背景完全不畫黑框線。
+  2. **光影**：窗邊斜射暖金陽光或符合劇情情緒的年代光影（夜間大火用橘紅火光與深藍夜空高反差冷暖輪廓光，陰鬱審訊場用冷灰藍窗光），在髮絲、眼鏡框、領口／帽緣與道具倒角打出明亮輪廓光（glowing rim light），空氣帶微細光塵（subtle volumetric dust motes）。
+  3. **景深**：前景角色與桌面道具銳利聚焦，背景做奶油感淺景深散景虛化（creamy shallow depth-of-field painterly bokeh）。
+  4. **材質與色盤**：保留奇聞檔案局色盤（夜空藍、牛皮紙暖金、褪色青、印章紅點綴），畫出厚塗水粉（rich gouache）與劇場動畫的多層次布料摺皺陰影、木桌紋理、玻璃透光折射、金屬高光與液體光澤，不要單色平塗色塊；**同一集全片畫風必須 100% 統一**（重製或中途升級時嚴禁混留舊版平塗黑框大頭卡通）。
+  5. **零出錯硬規則**：全圖 100% 滿版無黑邊（桌面靜物近景必明寫背景顏料延伸至四邊最外層像素，防畫紙留白邊）；嚴禁任何中英文字母、數字、街道招牌字（外景明寫 `plain unadorned walls with zero hanging shop signs`）或粉筆亂碼；`nobody: true` 純物件／空景鏡頭嚴禁出現路人或殘肢；五指結構、眼神對焦、時代道具（嚴禁穿越現代插電檯燈、現代圓形橡膠腳輪手推車、對折賀卡式信件或懸空無支撐木匾）與地圖／地球儀地理位置必須 100% 精準；全部匯入前必切四格 2 倍放大圖，派獨立子代理逐張審過才可鎖定分鏡。
+- **每鏡 Prompt 英文畫風基底句**：
+  ```text
+  High-craft 2D theatrical anime and rich gouache editorial illustration, 16:9 full-bleed edge-to-edge with zero borders. Delicate tapered warm-sepia ink linework on foreground subject (no heavy flat black outlines). Warm golden directional window sunlight casting glowing rim light along hair strands, glasses/hood, and object bevels, with subtle dust motes. Tactile multi-layered fabric fold shading, rich wood grain and material reflections. Creamy shallow depth-of-field painterly bokeh background with soft brushy edges and zero black outlines in the background.
+  ```
+- `video.json` 頂層仍寫 `"look": { "preset": "cute-mystery" }`（不加 `style`／`negative`）以通過系列 lint（`tools/video/core/curio.mjs`）與縮圖版型檢查，實際關鍵影格一律用上方升級基底句經 `generate_image` 生圖後 `keyframes import --provider external --usd 0` 匯入。
+- **語音固定配置**：中文（`zh-TW`）固定用 Gemini `Sulafat`（實測語速 ≥ 4.4 字／秒；拼讀不一致的古典英文姓氏如 `Pepys` 於單集 `story-lexicon` 補音標式英文讀法 `"Peeps"` 鎖定一致）；八語配音（`en,ja,ko,es,pt,id,vi,th`）固定用 MiniMax（`dub --provider minimax`）。
+- **成片必過獨立一般觀眾評分關卡**：`assemble`、`qa`（11/11）與 `package`（4/4）後，必先派獨立子代理實看成片與九語縮圖／說明欄打分挑刺，寫成 `review/audience-review.md`（六項各 ≥ 7.5／10、總均 ≥ 8.0／10，特別看外包裝、內容聲音與視覺連貫），把所有破綻修完並重過 `qa`＋`package` 後，先做雲端硬碟備份並核對，成功後才 `review-push --gate final` 推後台。
+
+---
+
+以下為早期歷史版本紀錄（2026-10-10 MiniMax `image-01` 平塗卡通樣張紀錄，已被上方 2026-11-14 定案取代）：
+
+2026-10-10 起草。畫面當時參考 cheap（`@cheapaoe`）的可愛卡通，曾由 MiniMax `image-01` 生成。以下保留當時 MiniMax 的限制與四種候選樣張紀錄供考證。
 
 ## 2026-10-14：做法收進 skill，lint 守住畫風
 
