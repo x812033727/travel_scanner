@@ -1,6 +1,6 @@
 # 歷史與奇異（工作名：奇聞檔案局）：系列企劃
 
-> **2026-11-14 現行生圖與語音定案**：站主指定全系列（與原來如此事務所同步）停用 MiniMax 生圖，關鍵影格一律改由代理內建 `generate_image`（`AspectRatio: "16:9"`）套用**「劇場級動畫光影 × 厚塗水粉質感」**基底句生成，經獨立子代理四格 2 倍放大審圖後以 `keyframes import --provider external --usd 0` 匯入；中文旁白用 Gemini `Sulafat`（語速 ≥ 4.4 字／秒），八語配音（`en,ja,ko,es,pt,id,vi,th`）用 MiniMax（`dub --provider minimax`）。完整規則以 [`.agents/skills/curio-episode/SKILL.md`](../../../.agents/skills/curio-episode/SKILL.md) 與 [`look.md`](look.md) 頂端 2026-11-14 定案為準，下文 2026-10-10 的 MiniMax 生圖與照片卡段落僅供歷史參考。
+> **2026-11-14 現行生圖、語音與觀眾評分關卡定案**：站主指定全系列（與原來如此事務所同步）停用 MiniMax 生圖，關鍵影格一律改由代理內建 `generate_image`（`AspectRatio: "16:9"`）套用**「劇場級動畫光影 × 厚塗水粉質感」**基底句生成，經獨立子代理四格 2 倍放大審圖後以 `keyframes import --provider external --usd 0` 匯入；中文旁白用 Gemini `Sulafat`（語速 ≥ 4.4 字／秒），八語配音（`en,ja,ko,es,pt,id,vi,th`）用 MiniMax（`dub --provider minimax`）；成片組裝過 `qa`（11/11）與 `package`（4/4）後，必先派獨立子代理以一般觀眾視角實看成片與九語縮圖／說明欄打分挑刺（`review/audience-review.md`），修完重驗通過後先做雲端硬碟完整備份，備份核對成功後才 `review-push --gate final` 推後台。完整規則以 [`.agents/skills/curio-episode/SKILL.md`](../../../.agents/skills/curio-episode/SKILL.md) 與 [`look.md`](look.md) 頂端 2026-11-14 定案為準，下文 2026-10-10 的 MiniMax 生圖與照片卡段落僅供歷史參考。
 
 2026-10-10 起草。一個新的內容線：**歷史懸案、奇異現象、預言、外星與都市傳說**，一集打開一份「檔案」，把流傳的說法、留下的證據與目前最站得住的解釋講清楚。內容參考馬臉姐（YouTube `@malianjie`，125 萬訂閱、522 支片）的選題與鉤子，畫面早期參考 cheap（`@cheapaoe`，163 萬訂閱、1,693 支片）的可愛插畫（2026-11-14 起升級為劇場級動畫光影 × 厚塗水粉質感，不再用 MiniMax 生圖；見 [`look.md`](look.md)）。
 

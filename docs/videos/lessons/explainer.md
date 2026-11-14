@@ -22,6 +22,15 @@
 - **八語 MiniMax 配音（`dub --provider minimax`）跨語系發音防呆**：P12 八語共 1,272 句全數跑過 `check-audio --second-opinion` 抓出四類必防陷阱：(1) **印尼文（`id`）禁寫 `&`**：MiniMax 會把 `&` 唸成英文字母 `"FT"`，一律寫成 `dan`，並避開 `-k k-` 跨詞連音（如 `kotak kecil` 連音吞成 `kota kecil`）；(2) **越南文（`vi`）禁寫千分位句點 `.` 與全大寫詞**：`7.089`、`4.296` 會被當成小數點唸錯，四位數以上改寫成無分隔符 `7089` 或文字；全大寫強調詞（如 `CÙNG LÚC`）易被拼讀或糊音，一律用正常大小寫；單字母等級加分類詞（`mức H`），並避開聲調近音歧義（`hộp sửa`「修正盒」易聽成 `hộp sữa`「牛奶盒」，改用 `hộp cứu hộ`）；(3) **西／葡文（`es`／`pt`）單字母防連讀**：`Si H`／`Se H`／`Nível Q` 易與前後母音連讀成 `CH` 或 `nível que`，改寫為 `En nivel H`／`No nível Q`；(4) **泰文（`th`）緊窗口少塞英文縮寫**：泰語短句夾英文 `QR` 會觸發語種切換停頓而衝破 `fit.json` 時間窗，緊湊句優先用自然泰語指代（如 `ป้ายร้าน`）；若伺服器 Gemini ASR 偶發在轉寫開頭漏出 `"thought"` 觸發 `leaked word`，微調該句 1–2 字重錄即可刷新轉寫。
 - 已升為規則：`AGENTS.md`、`.agents/skills/curio-episode/SKILL.md`、`docs/videos/explainer-series/README.md`、`docs/videos/so-thats-why/dialogue-pilot-20261103/README.md` §9／§10.4／§10.8。
 
+## 2026-11-14 · curio-p17 · 成片先過「獨立一般觀眾視角評分挑刺」並修完，才備份雲端與推後台
+站主在 `curio-p17`（1666 倫敦大火與 666 預言）製作中途請沒參與撰稿生圖的獨立代理以一般觀眾視角實看樣片、九語縮圖與文稿打分挑刺，一次抓出機器 `lint`／`qa` 容易放過、但真實觀眾一秒出戲的五類問題，並定案「把觀眾評分加入標準流程，修完才推後台跟備份」：
+- **成片必過獨立一般觀眾評分關卡**：本集實測印證上一條（P12）定案的關卡——`assemble`、`qa`（11/11）只代表機器格式合格，獨立子代理以一般觀眾視角實看成片 `final.mp4`、九語縮圖與說明欄，一次抓出下列五類機器放過的破綻；全部修完並重過 `qa` 後，才照既定順序做雲端硬碟完整備份與 `review-push --gate final`。
+- **縮圖大標硬上限 ≤ 6 單位與外語副標孤行目視檢查**：`curio-p17` 初版 `headline` 寫了 9 個單位（`666燒掉倫敦\n**誰是真兇？**`），在 layout `e` 不僅觸發手機 `< 24 px` 字級警告，更把第一行尾端切字；縮成 `666燒城\n**誰背鍋？**`（6 單位）後字級飽滿不裁切。同時八語外語縮圖的 `sub` 渲染後必須逐張目視檢查，修掉第二行只掉下單一孤字（如英文 `sea`、西文 `barco`）的尷尬斷行。
+- **拼讀不一致的古典／英國英文姓氏必補音標式英文 `say`**：`Samuel Pepys` 英文正確讀音是 `/piːps/`（Peeps），若只在詞典標 `null` 交給 Gemini 自由發揮，同一集 12 次出場會飄出「佩皮斯／皮普斯／ピプス」三種唸法，一般觀眾一聽就覺得不專業；凡拼寫與實際讀音落差大的英文專有名詞（`Pepys`、`Worcester`、`Thames`），必須在單集 `story-lexicon` 補音標式英文讀法（如 `"Pepys": "Peeps"`）鎖死全片與拉丁語系配音發音一致。
+- **同一集嚴禁混用新舊兩種畫風**：中途升級畫風時，若前段保留舊版平塗黑框大頭卡通、中後段才切劇場級厚塗水粉，一般觀眾連看會像兩部不同動畫拼貼；全片所有關鍵影格必須 100% 統一畫風。
+- **災難／審訊場的情緒光影與 17 世紀道具考證**：火災逃生與陰鬱法庭場不可套千篇一律的悠閒午後暖陽，應改用火光橘紅冷暖高反差光或陰天冷藍窗光；年代物件需防現代穿幫與物理懸空（如 1666 年倫敦不可畫現代圓形橡膠腳輪手推車、現代白磁盤、對折賀卡式雙開信件或懸空無支撐木匾，應明寫木輻條鐵箍輪推車、粗陶／錫镴盤與三摺火漆羊皮紙信）。
+- 已升為規則：`AGENTS.md`、`.agents/skills/curio-episode/SKILL.md`、`docs/videos/history-curiosity/look.md`、`docs/videos/history-curiosity/README.md`、`docs/videos/explainer-series/README.md`。
+
 ## 2026-11-14 · curio-m17／curio-p17／sothatswhy-p12 · 兩個解說系列全面改採「劇場級動畫光影×厚塗水粉質感」內建生圖與泰語 Hashtag 修正
 站主確認升級樣張後指定兩個旁白解說系列（奇聞檔案局、原來如此事務所）「以後用這樣的風格」，並同步收攏 `curio-m17` 抽檢與 `curio-p17` 實作抓到的跨系列規則：
 - **生圖路線（兩個系列全面停用 MiniMax 生圖）**：所有關鍵影格一律改由代理內建 `generate_image`（`AspectRatio: "16:9"`）生成，再以 `keyframes import --provider external --usd 0` 匯入，**嚴禁退回 MiniMax `image-01`**；遇到 `gemini-3.1-flash-image` 配額冷卻時，先完成八語翻譯、配音與 `check-audio`，分批等待配額恢復。`video.json` 仍保留 `"look": { "preset": "cute-mystery" }`（奇聞）或 `"cute-cartoon"`（原來如此）以通過系列身分與版型檢查。
