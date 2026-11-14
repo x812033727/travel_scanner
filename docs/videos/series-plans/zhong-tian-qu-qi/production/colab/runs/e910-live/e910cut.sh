@@ -8,11 +8,16 @@ rm -rf $E/segments-v4
 miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.join(s for s in p if not os.path.exists('$E/clips/'+s+'-t1.mp4')))")
 [ -z "$miss" ] || { echo "not staged: $miss -- run: python3 $P/live-action/stage.py 10"; exit 1; }
 # e910 dry run: the old trims cut the end of a spoken line (s05 7.4, s21 7.3, s26 7.2) or end on a part frame that holds one
-# frame (s10 5.4); s17 is review2-trims.tsv's 5.6;
-# edit-dh-e910-live.json's _note has the values -- warn (not stop) if picks.json still has the old ones
+# frame (s10 5.4); s17 is review2-trims.tsv's 5.6. REVIEW 3 (review3-trims.tsv): static heads/tails cut on whole frames
+# (s18 start 0.8 -> 0.75 because 0.8 is not on a frame and the take came out two frames short), s18 longer to 4.417.
+# edit-dh-e910-live.json's _note has the values -- warn (not stop) if picks.json does not have them (start, end-before; 0 = none)
 python3 -c "
-import json;p=json.load(open('$E/picks.json'));want={'s05':7.75,'s10':5.417,'s17':5.6,'s21':7.75,'s26':7.375}
-bad=[f'{s} end-before {p[s][\"trim\"].get(\"end-before\")} (want {v})' for s,v in want.items() if abs(p[s]['trim'].get('end-before',0)-v)>0.02]
+import json;p=json.load(open('$E/picks.json'))
+want={'s01':(0.75,0),'s04':(1.0,0),'s05':(1.25,7.75),'s08':(0.75,0),'s10':(0,5.417),'s11':(1.25,0),'s12':(1.25,0),'s13':(0.75,0),
+ 's17':(0,5.6),'s18':(0.75,4.417),'s19':(0,6.5),'s20':(1.0,0),'s21':(1.25,7.75),'s22':(0,7.375),'s24':(1.0,0),'s25':(1.0,0),'s26':(0,7.375),
+ 's28':(0.75,0),'s29':(0,7.0),'s30':(0,7.5),'s31':(0,6.625),'s32':(2.0,0),'s38':(0.75,0),'s39':(0.875,0),'s40':(0.75,0)}
+bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].get(\"end-before\",0)} (want {a} {b})' for s,(a,b) in want.items()
+     if abs(p[s]['trim'].get('start',0)-a)>0.02 or abs(p[s]['trim'].get('end-before',0)-b)>0.02]
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ $R/docs/videos/zhong-tian-qu-qi-e010-r2/overlays.json $P/hailuo/edit-dh-e910-live.json $E $E/cut/e910-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log
 [ -f $E/cut/e910-live.mp4 ] || exit 1
