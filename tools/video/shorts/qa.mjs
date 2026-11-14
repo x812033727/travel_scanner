@@ -21,7 +21,7 @@ import { policyVerdict } from '../qa/policy.mjs';
 import { comparable } from '../tts/check.mjs';
 import { loudnessProblems, measureFinal, profileProblems } from './build.mjs';
 import { audioHash, buildClips, CHECK_FILE, phrasesHash } from './check.mjs';
-import { PROFILE, SCRIPT_FILE, callsToAction, lineOf, phrasesOf, saveJson, sha256, verifyEvidence } from './core.mjs';
+import { PROFILE, SCRIPT_FILE, callsToAction, isSilent, lineOf, phrasesOf, saveJson, sha256, verifyEvidence } from './core.mjs';
 import { loopProblems, psnrText } from './motion.mjs';
 import { CAPTIONS_FILE, EXTRA_LOCALES, captionProblems, composeMetadata, disclosureOf, metadataProblems, sourceUrlOf } from './package.mjs';
 
@@ -114,10 +114,17 @@ export function narrationItem({ check, audioSha256, phrases }) {
  * highlight's or a vertical short's source is a video the site knows that is public, or whose
  * final cut is approved. `source` is the site's record, null when it has none.
  */
-export function evidenceItem({ doc, evidenceError = null, source = null, now = new Date() }) {
+export function evidenceItem({ doc, evidenceError = null, source = null, finalSha256 = null, now = new Date() }) {
   if (lineOf(doc) === 'lab') {
     if (evidenceError) return item('evidence', false, evidenceError);
     return item('evidence', true, `${doc.evidence.length} evidence files match the script's hashes`);
+  }
+  if (doc.original === true) {
+    // An original Short is cut from no video: what it shows is the cut itself, bound by its hash.
+    if (evidenceError) return item('evidence', false, evidenceError);
+    const own = (doc.evidence ?? []).find((entry) => entry.sha256 === finalSha256);
+    if (!own) return item('evidence', false, 'an original Short is its own evidence, and its script lists no file with the final cut\'s hash: import it again');
+    return item('evidence', true, `an original Short, cut from no video: its evidence is the cut itself (${own.path}, ${String(finalSha256).slice(0, 12)})`);
   }
   if (!doc.source?.slug) return item('evidence', true, 'a short of its own, cut from no video');
   if (!source) return item('evidence', false, `the site has no video ${doc.source.slug}, or did not answer`);
@@ -161,7 +168,13 @@ export function metadataItem({ metadata }) {
  * passes with a warning: the words are right and on the clock, only the highlight is a guess
  * until the speech alignment measures it.
  */
-export function captionsItem({ captions, timeline, locales = [], checks = null }) {
+export function captionsItem({ captions, timeline, locales = [], checks = null, silent = false }) {
+  if (silent) {
+    // Nothing is said, so there is nothing to caption in any language.
+    const stray = [...captions.keys()].map((locale) => `upload/${locale}.srt`);
+    if (stray.length) return item('captions', false, `a silent Short carries no caption track: remove ${stray.join(', ')}`);
+    return item('captions', true, 'a silent Short: nothing is said, so it carries no caption track (silent: true)');
+  }
   const problems = captions.has('zh-TW') ? captionProblems(captions.get('zh-TW'), timeline) : [`${CAPTIONS_FILE} is missing`];
   for (const locale of locales) {
     if (!captions.has(locale)) problems.push(`${locale}.srt is missing`);
@@ -185,10 +198,13 @@ export function linksItem({ results, metadata }) {
   return item('links', !broken.length, linksDetail(results));
 }
 
-/** What two Shorts are compared on: how the first phrase reads, and how the cards are built. */
+/**
+ * What two Shorts are compared on: how the first phrase reads, and how the cards are built. A
+ * silent Short opens on its first card, since it says nothing.
+ */
 export function scriptShape(doc) {
   return {
-    opening: comparable(phrasesOf(doc)[0] ?? ''),
+    opening: comparable(phrasesOf(doc)[0] ?? doc.scenes[0]?.headline ?? ''),
     // A scene with a camera move over its picture reads "c": two Shorts that move alike are built alike.
     structure: doc.scenes.map((scene) => `${scene.narration.length}${scene.big ? 'b' : ''}${scene.asset ? 'a' : ''}${scene.camera ? 'c' : ''}${scene.body?.length ?? 0}${scene.note ? 'n' : ''}`).join('-'),
   };
@@ -207,7 +223,8 @@ export function varietyItem({ doc, history }) {
   const same = others.find((entry) => entry.opening && comparable(entry.opening) === mine.opening);
   if (same) problems.push(`${same.slug} opens with the same words`);
   const previous = others.find((entry) => entry.series === doc.series);
-  if (previous?.structure && previous.structure === mine.structure) problems.push(`the cards are built exactly like ${previous.slug}, the series' previous Short`);
+  // A silent Short's cards are only its headlines, so every episode of a silent series is built alike.
+  if (previous?.structure && previous.structure === mine.structure && !isSilent(doc)) problems.push(`the cards are built exactly like ${previous.slug}, the series' previous Short`);
   return verdict('variety', problems, `the opening differs from the latest ${others.length} Shorts${previous ? `, the cards from ${previous.slug}` : ''}`);
 }
 
@@ -310,8 +327,9 @@ export async function runQa({ directory, client = null, offline = false, setting
   const measured = await measureImpl(final, tools ?? (await locateFfmpeg()), { cover: path.join(directory, 'upload', 'cover.png'), frames: timeline.frames });
 
   const line = lineOf(doc);
+  const silent = isSilent(doc);
   let evidenceError = null;
-  if (line === 'lab') {
+  if (line === 'lab' || doc.original === true) {
     try {
       verifyEvidence(doc, path.join(directory, 'evidence'));
     } catch (error) {
@@ -325,7 +343,9 @@ export async function runQa({ directory, client = null, offline = false, setting
   if (online) {
     let asked;
     try {
-      asked = { value: await client.judgePolicy({ slug: doc.slug, script: phrases.join('\n'), viewpoint: '' }) };
+      // A silent Short is read by its titles and cards, the only words it has.
+      const words = silent ? [...doc.titles, ...doc.scenes.map((scene) => scene.headline)] : phrases;
+      asked = { value: await client.judgePolicy({ slug: doc.slug, script: words.join('\n'), viewpoint: '' }) };
     } catch (error) {
       // Sent, and its answer lost: Jev may have judged it, and the call was paid for. The worker's
       // check ends here, ahead of the comparison of the inputs below, so an edit made meanwhile
@@ -342,7 +362,7 @@ export async function runQa({ directory, client = null, offline = false, setting
   }
   const past = history !== undefined ? history : online ? (await failing(() => siteHistory(client))).value ?? null : null;
   const captions = new Map();
-  for (const locale of ['zh-TW', ...(used.locales ?? [])]) {
+  for (const locale of ['zh-TW', ...(silent ? EXTRA_LOCALES : used.locales ?? [])]) {
     const file = path.join(directory, 'upload', `${locale}.srt`);
     if (existsSync(file)) captions.set(locale, readFileSync(file, 'utf8'));
   }
@@ -359,12 +379,13 @@ export async function runQa({ directory, client = null, offline = false, setting
     profileItem({ measured, frames: timeline.frames, range }),
     loudnessItem({ loudness: measured.loudness }),
     layoutItem({ checks, cues: timeline.cues.length }),
-    clips ? narrationItem({ check: readJson(path.join(directory, CHECK_FILE), null), audioSha256: audioHash(clips), phrases }) : item('narration', false, 'the clips of the phrases are missing'),
-    line !== 'lab' && doc.source?.slug && !online ? item('evidence', false, OFFLINE) : evidenceItem({ doc, evidenceError, source, now: now() }),
+    silent ? item('narration', true, 'a silent Short: nothing is said, so there is no phrase to hear (silent: true)')
+      : clips ? narrationItem({ check: readJson(path.join(directory, CHECK_FILE), null), audioSha256: audioHash(clips), phrases }) : item('narration', false, 'the clips of the phrases are missing'),
+    line !== 'lab' && doc.source?.slug && !online ? item('evidence', false, OFFLINE) : evidenceItem({ doc, evidenceError, source, finalSha256: finalSha, now: now() }),
     factsItem({ verify: readJson(path.join(directory, VERIFY_FILE), null), documentSha256: sha256(scriptBytes) }),
     policy,
     metadataItem({ metadata }),
-    captionsItem({ captions, timeline, locales: used.locales ?? [], checks }),
+    captionsItem({ captions, timeline, locales: used.locales ?? [], checks, silent }),
     links,
     past === null && offline ? item('variety', false, OFFLINE) : varietyItem({ doc, history: past }),
     disclosureItem({ doc }),
