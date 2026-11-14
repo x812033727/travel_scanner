@@ -11,9 +11,9 @@ completed_at: 2026-11-14T08:52:00Z
 branch: antigravity/sothatswhy-texture-and-voice-rules
 depends_on: []
 scope:
-  - .agents/skills/youtube-video/SKILL.md
-  - .claude/skills/youtube-video/SKILL.md
+  - AGENTS.md
   - docs/videos/lessons/sothatswhy.md
+  - docs/videos/so-thats-why/CURRENT.md
   - docs/videos/so-thats-why/look.md
   - docs/videos/so-thats-why/dialogue-pilot-20261103/README.md
   - docs/videos/so-thats-why/dialogue-pilot-20261103/HANDOFF.md
@@ -23,20 +23,20 @@ scope:
 
 ## Why
 
-在製作 `sothatswhy-p12-qr-code` 期間，站主對比舊版 MiniMax 圖（如 P21）與平塗繪本版後指出：舊版雖偶有透視或粉筆亂碼問題，但光影與筆觸質感較佳；經實測升級為「劇場級動畫光影 × 厚塗水粉質感」（暖深褐收尖細線、窗邊斜射暖金陽光＋金邊輪廓光與微塵、前景清晰＋背景奶油淺景深散景無黑框線、多層次布料與材質紋理）並以代理內建 `generate_image`（16:9 滿版＋角色設定圖參考）生圖匯入後，站主拍板「以後用這種的」，同時固定中文用 Gemini（`Sulafat`＋`Leda`）、八語配音用 MiniMax（`dub --provider minimax`）。把這套定案寫入系列規則檔、教訓檔與 `youtube-video` skill 索引，之後任何新對話開工都會自動套用，無須手動貼提示詞。
+在製作 `sothatswhy-p12-qr-code` 期間，站主對比舊版 MiniMax 圖（如 P21）與平塗繪本版後指出：舊版雖偶有透視或粉筆亂碼問題，但光影與筆觸質感較佳；經實測升級為「劇場級動畫光影 × 厚塗水粉質感」（暖深褐收尖細線、窗邊斜射暖金陽光＋金邊輪廓光與微塵、前景清晰＋背景奶油淺景深散景無黑框線、多層次布料與材質紋理）並以代理內建 `generate_image`（16:9 滿版＋角色設定圖參考）生圖匯入後，站主拍板「以後用這種的」，同時固定中文用 Gemini（`Sulafat`＋`Leda`）、八語配音用 MiniMax（`dub --provider minimax`）。把這套定案寫入系列規則檔、教訓檔與 `AGENTS.md`（每個新對話自動載入的頂層規則），之後任何新對話開工都會自動套用，無須手動貼提示詞。
 
 ## Definition of done
 
-- [x] `docs/videos/so-thats-why/look.md`、`docs/videos/so-thats-why/dialogue-pilot-20261103/README.md`、`HANDOFF.md` 與 `docs/videos/lessons/sothatswhy.md` 寫明 2026-11-14 定案（停用 MiniMax 生圖、改走內建 `generate_image`＋`keyframes import --provider external --usd 0`、五大質感配方與英文基底句、2 倍放大審圖、Gemini 中文＋MiniMax 八語配音）。
-- [x] `.agents/skills/youtube-video/SKILL.md` 與 `.claude/skills/youtube-video/SKILL.md` 補上 `sothatswhy-` 系列入口指引並保持逐位元一致。
-- [x] `npm run test:tools && npm run test:docs-videos && npm run check:tasks` 與 `node docs/videos/rules-sync/sync.mjs --dry-run` 全數通過。
+- [x] `docs/videos/so-thats-why/look.md`、`docs/videos/so-thats-why/CURRENT.md`、`docs/videos/so-thats-why/dialogue-pilot-20261103/README.md`、`HANDOFF.md` 與 `docs/videos/lessons/sothatswhy.md` 寫明 2026-11-14 定案（停用 MiniMax 生圖、改走內建 `generate_image`＋`keyframes import --provider external --usd 0`、五大質感配方與英文基底句、2 倍放大審圖、Gemini 中文＋MiniMax 八語配音）。
+- [x] `AGENTS.md`（Where things are）補上 `sothatswhy-` 系列必讀入口，保持 `youtube-video/SKILL.md` 長片審查雜湊（`docs/videos/long-form/review.json`）不變。
+- [x] `tools/video/long-form/review.test.mjs`、`npm run test:docs-videos`、`npm run check:tasks` 與 `node docs/videos/rules-sync/sync.mjs --dry-run` 全數通過。
 
 ## Steps
 
 - [x] 更新 `docs/videos/lessons/sothatswhy.md` 記錄 2026-11-14 站主定案與升為規則檔案清單。
-- [x] 更新 `docs/videos/so-thats-why/look.md`、`dialogue-pilot-20261103/README.md` 與 `HANDOFF.md` 的生圖路線、畫風基底句與語音規則。
-- [x] 更新 `.agents/skills/youtube-video/SKILL.md` 並同步至 `.claude/skills/youtube-video/SKILL.md`。
-- [x] 通過 `test:tools`、`test:docs-videos`、`check:tasks` 與 `rules-sync --dry-run` 後結案開 PR。
+- [x] 更新 `docs/videos/so-thats-why/look.md`、`CURRENT.md`、`dialogue-pilot-20261103/README.md` 與 `HANDOFF.md` 的生圖路線、畫風基底句與語音規則。
+- [x] 更新 `AGENTS.md` 頂層入口指引。
+- [x] 通過 `long-form/review.test.mjs`、`test:docs-videos`、`check:tasks` 與 `rules-sync --dry-run` 後推送 PR。
 
 ## How to verify
 

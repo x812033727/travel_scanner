@@ -84,5 +84,11 @@ package and change orders; also 審劇本 — turning a script into a storyboard
 notes, then the three checks before it goes to production), `animation-camera` (how a drama scene is covered and how camera,
 prompt and motion are written so the tools and the models read them alike) and
 `animation-production` (a drama production's stage preconditions, cost per route, preflight,
-error catalogue and post-mortem). Read the matching skill before re-deriving a workflow
-from the docs.
+error catalogue and post-mortem). For any 原來如此事務所 episode (a `sothatswhy-` slug),
+read `docs/videos/so-thats-why/look.md`,
+`docs/videos/so-thats-why/dialogue-pilot-20261103/README.md` and
+`docs/videos/lessons/sothatswhy.md` alongside `youtube-video` (owner 2026-11-14:
+theatrical-light rich-gouache keyframes via built-in image generation +
+`keyframes import --provider external --usd 0`, never MiniMax images; `zh-TW` Gemini
+`Sulafat` + `Leda`; 8-locale dubs via MiniMax). Read the matching skill before
+re-deriving a workflow from the docs.
