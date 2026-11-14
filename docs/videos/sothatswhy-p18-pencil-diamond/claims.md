@@ -9,7 +9,7 @@
 
 ## C01 手上那層黑大部分是筆芯磨下來的石墨；它跟鑽石都是碳組成的
 
-- **可用說法**：「給我看看。你手上這層黑黑的，大部分是從你的鉛筆芯磨下來的。」（p004–p005）「這要從一件怪事說起：這層黑黑的東西，跟亮晶晶的鑽石，都是碳組成的。」（p007–p008）「對。你手上那層，大部分就是石墨，而石墨，是由碳組成的。」（p032–p033）「鑽石幾乎全部都是碳。」（p042）
+- **可用說法**：「你手上這層黑黑的，大部分是從你的鉛筆芯磨下來的。」（p004–p005）「這要從一件怪事說起：這層黑黑的東西，跟亮晶晶的鑽石，都是碳組成的。」（p007–p008）「對。你手上那層，大部分就是石墨，而石墨，是由碳組成的。」（p032–p033）「鑽石幾乎全部都是碳。」（p042）
 - **來源**：[1]、[2]、[4]
 - **可信度／注意**：高。USGS [1]：「Graphite, which is a soft form of elemental carbon」；寶石頁 [2]：「Diamond (hardness: 10 Mohs) Carbon」。LibreTexts [4]：「When you use a pencil, sheets are rubbed off and stick to the paper.」
   「大部分」是因為筆芯還混了黏土（C02），手上那層不全是石墨；「幾乎全部」是因為鑽石含微量的氮、硼等（C17 的藍鑽就是含硼）。p008 只說「都是碳組成的」，緊接著第一章就交代筆芯是混合物。
@@ -79,7 +79,7 @@
 
 ## C12 要刮傷鑽石得扯斷很多往三維方向的強鍵；硬就是不容易被刮傷
 
-- **可用說法**：「再推鑽石的攀爬架。每顆球都被四面八方牽住，沒有一層可以滑開。」「要刮下一點點，就得把好多隻牽得很牢的手，一起扯斷。」（p116–p119）「對。科學家說的硬，就是不容易被刮傷。」（p123）「硬，是比誰不容易被刮傷；」（p133）
+- **可用說法**：「推推看：每顆球都被四面八方牽住，沒有一層可以滑開。」「要刮下一點點，就得把好多隻牽得很牢的手，一起扯斷。」（p114–p117）「對。科學上的硬，就是不容易被刮傷。」（p121）「硬，就是剛剛說的，比誰不容易被刮傷；」（p131）
 - **來源**：[4]、[2]、[6]
 - **可信度／注意**：高。LibreTexts [4]（鑽石的硬）：「This is again due to the need to break very strong covalent bonds operating in 3-dimensions.」USGS 寶石頁 [2]：「Hardness of a gemstone is its resistance to scratching」。GIA [6]：「A gemstone’s hardness is a good indicator of how well it will resist scratches and abrasions.」
 
@@ -98,14 +98,14 @@
 
 ## C15 硬和耐敲是兩回事；鑽石最硬但不一定最韌；重重一敲可能裂開或缺角；玻璃杯的例子
 
-- **可用說法**：「很多人都這樣猜。可是硬，跟不容易碎，是兩回事。」（p131）「硬，是比誰不容易被刮傷；耐敲，是比被重重敲一下，會不會裂開。」（p133–p134）「你想想家裡的玻璃杯：用指甲刮不出痕跡，掉到地上，卻可能摔碎。」（p135–p136）「還記得我說，最硬的鑽石，也有怕的東西嗎？」「怕重重的一敲。」（p138、p140，回收開場 p011 的預告）「研究寶石的機構說，這樣一敲，鑽石還是可能裂開，或缺掉一角。」（p141–p142）（第二版刪掉「別以為它敲不碎」「尖角要保護」「硬和耐敲真的是兩回事」三句重述，GIA 尖角那句引文不再用）
+- **可用說法**：「很多人都這樣猜。可是硬，跟不容易碎，是兩回事。」（p129）「硬，就是剛剛說的，比誰不容易被刮傷；耐敲，是比被重重敲一下，會不會裂開。」（p131–p132）「你想想家裡的玻璃杯：用指甲刮不出痕跡，掉到地上，卻可能摔碎。」（p133–p134）「還記得我說，最硬的鑽石，也有怕的東西嗎？」「怕重重的一敲。」（p137、p139，回收開場 p011 的預告）「就算再硬，被這樣重重一敲，鑽石還是可能裂開，或缺掉一角。」（p140–p141）（第二版刪掉「別以為它敲不碎」「尖角要保護」「硬和耐敲真的是兩回事」三句重述，GIA 尖角那句引文不再用）
 - **來源**：[6]、[5]、[9]
 - **可信度／注意**：高。GIA [6]：「determine a gemstone’s toughness, or how well a gemstone resists breaking and chipping」「Diamond is the hardest gemstone, but not necessarily the toughest.」「While they resist scratching and abrasions, diamonds can be cleaved or fractured by a hard blow.」GIA [5]：「Toughness is a measure of how well a gem can survive an impact and resist breaking, chipping, or cracking.」「But even after cutting, a hard blow can still cleave a diamond.」「Cutting styles with pointed corners or ends are often set with prongs to protect the corners from chipping.」
   玻璃杯：Windows to the Universe [9]「Glass: 5.5」高於指甲 2.5，所以指甲刮不出痕跡；「掉到地上可能摔碎」是日常常識，沒有另找來源。插圖 `hammer-chip` 畫鐵鎚旁邊裂開的小晶體，是示意。
 
 ## C16 鑽石最弱的方向是原子離得最遠的方向；切割的人順著劈開方向敲開它
 
-- **可用說法**：「他們說，鑽石裡有幾個方向，跨過去牽著的手比較少，順著那些方向，就比較容易裂開。」（p144–p145，依 verify-1 F01 改寫）「切鑽石的人，有時就是順著這種方向，故意把它敲開。」（p146）「對，他們就是利用它最怕的那幾個方向。」（p148，同一件事的口語收尾）
+- **可用說法**：「會。鑽石裡有幾個方向，跨過去牽著的手比較少，順著那些方向，就比較容易裂開。」（p143–p144，依 verify-1 F01 改寫）「切鑽石的人，有時就是順著這種方向，故意把它敲開。」（p145）「對，他們就是利用它最怕的那幾個方向。」（p147，同一件事的口語收尾）
 - **來源**：[5]
 - **可信度／注意**：高。GIA [5]：「Diamonds are tougher in the directions where the atoms are bonded tightly together.」「The weakest directions are the ones where the atoms are farthest apart.」「It's easier to break a diamond in those directions, which are called cleavage directions.」「A cutter can cleave a diamond by hitting it sharply in the cleavage direction.」
   原稿「碳跟碳離得比較遠」會被聽成有些木棍比較長，依 verify-1 F01 改成模型的說法「跨過去牽著的手比較少」（GIA：「tougher in the directions where the atoms are bonded tightly together」）。
@@ -118,7 +118,7 @@
 
 ## C18 粗粗黑黑的鉛筆線接上電池和小燈，燈會亮；線越長燈越暗；軟的鉛筆石墨比例高
 
-- **可用說法**：「讓電通過。用軟一點的鉛筆，用力畫一條又粗又黑、不斷掉的線，兩頭接上電池和小燈。」（p154–p155）「可是有一間科學博物館，教大家做這個實驗，那顆小小的燈，真的亮了。」（p158–p159）「博物館說，石墨只是還不錯的導電材料，線越長，電越難走，燈就越暗。」（p186–p187）「對了，這個小實驗只能用小電池，牆上的插座，絕對不要拿來玩。」（p191–p192）
+- **可用說法**：「讓電通過。用軟一點的鉛筆，用力畫一條又粗又黑、不斷掉的線，兩頭接上電池和小燈。」（p153–p154）「可是很多人照這樣接好，做過這個實驗，那顆小小的燈，真的亮了。」（p157–p158）「對了，這個小實驗只能用小電池，牆上的插座，絕對不要拿來玩。」（p185–p186）
 - **來源**：[7]
 - **可信度／注意**：高。Science Museum Group [7]：「Make sure you draw one continuous line, and press quite hard to make the lines thick.」「Graphite is a form of carbon, and is a conductor of electricity.」「Graphite is only a fairly good conductor, and longer circuits have more resistance to current flow.」實驗用一顆電池、一條電線、一顆 LED（片中說「小燈」；`LED` 不在 `lexicon.json`）。
   「兩頭接上電池和小燈」是簡化：實際是電池一極接電線到線的一頭，LED 一腳接電池另一極、另一腳碰線。插座的提醒是安全常識，不當成查核過的主張。
