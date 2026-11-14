@@ -497,7 +497,7 @@ doc = {
                        "最後看太空站上的液滴燃燒實驗：看得見的火熄了以後，還有幾乎看不見的「冷焰」繼續燒；換掉周圍的氣體，結局也跟著變。所以太空裡的火不是都長一個樣子，微重力也不是零重力。\n\n"
                        "片中的杯子、蠟燭、井、太空站與液滴都是 AI 生成的示意插圖，不是實驗的照片或實際的器材；火很危險，請不要自己在家做燃燒的實驗。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["微重力", "太空站", "自由落體", "火焰", "蠟燭", "對流", "冷焰", "軌道", "科普", "原來如此事務所"]},
-    "thumbnail": {"template": "thumb", "data": {"headline": "太空的火\n**變圓了？**", "sub": "重力明明還有九成", "shot": "kid-main-q", "subject": "right"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "太空的火\n**變圓了？**", "sub": "重力明明還有九成", "shot": "cabin-flame", "subject": "right"}},
     "sources": [
         {"title": "NASA STEM, What Is Microgravity? (Grades 5-8)", "url": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-is-microgravity-grades-5-8/", "checked_on": CHECKED},
         {"title": "NASA Glenn Research Center, What is Microgravity?", "url": "https://www.nasa.gov/centers-and-facilities/glenn/what-is-microgravity/", "checked_on": CHECKED},

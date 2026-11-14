@@ -246,18 +246,18 @@ chief("chief-best-fit", C("bringing both open hands slowly together in front of 
 kid("kid-sky-q", K("tilting her head back and looking up at the open sky with a hopeful face", where=PARK),
     k("天上隨時都有，", "追問"), k("至少四顆嗎？", "句尾上揚", "S:sky"))
 obj("satellite-sky-wide", "Wide shot of a bright blue sky over a sunny green park, one cute cartoon satellite with golden solar wings floating high among soft white clouds",
-    c("美國政府的 GPS 網站說，衛星的基本排法有二十四個位置，"),
+    c("GPS 衛星的基本排法，有二十四個位置，"),
     c("地球上幾乎任何地方，都看得到至少四顆。", None, "P:sky"))
 kid("kid-geometry-q", K("holding up four fingers with a thinking face", close=True, where=PARK),
     k("那同樣是四顆，", "追問"), k("每次都一樣準嗎？", "句尾上揚", "S:geometry"))
 chief("chief-geometry", C("holding her two hands apart as if measuring something, a careful thoughtful smile"),
-      c("不一樣。GPS 的官方性能標準寫：位置的誤差，"),
+      c("不一樣。手機最後算出來的位置誤差，"),
       c("大約是量距離的誤差，乘上一個放大的倍數。"))
 chief("chief-geometry-2", C("turning a small toy satellite model slowly in one hand and studying it with a curious smile", close=True),
       c("這個倍數，看衛星和你的相對位置好不好。"),
       c("位置太差的時候，甚至算不出來。"))
 chief("chief-five", C("nodding with a confident smile, one finger raised", close=True),
-      c("標準也寫：用五顆以上去算，倍數一定不會比四顆差。", None, "P:geometry"))
+      c("用五顆以上去算，倍數一定不會比四顆差。", None, "P:geometry"))
 kid("kid-sky-strip", K("looking straight up with her mouth open in surprise", where=STREET),
     k("我在大樓中間，", "發現"), k("天空只剩一條縫！"))
 obj("sky-strip", "Low angle view looking straight up between two tall plain glass buildings with smooth unmarked walls, a narrow strip of bright blue sky between them",
@@ -269,8 +269,8 @@ kid("kid-signal-q", K("holding a small phone out at arm's length and frowning at
 # ---------- 第三章：時鐘和路上，怎麼帶偏藍點 ----------
 chief("chief-signal-good", C("shaking her head with a confident smile, one hand raised", close=True),
       c("衛星送得其實很準。", "接住上一句"),
-      c("美國政府承諾，所有衛星平均，訊號本身的誤差，"),
-      c("九成五的時間在兩公尺以內。"), chapter="訊號撞上大樓，繞了遠路")
+      c("所有衛星平均起來，訊號本身的誤差，"),
+      c("保證九成五的時間在兩公尺以內。"), chapter="訊號撞上大樓，繞了遠路")
 chief("chief-2021", C("holding a small toy satellite model up proudly with a bright smile"),
       c("二〇二一年四月二十日實際量到的，還不到六十五公分。"))
 kid("kid-military-q", K("crossing her arms with a suspicious pout", where=CORNER),
@@ -282,7 +282,7 @@ kid("kid-then-why", K("pointing across a sunny street with a frustrated frown", 
     c("而且就算訊號變差，也是到處都偏，不會專挑大樓中間。"),
     k("那我的手機，", "不服氣"), k("怎麼會差到對街？", "句尾上揚"))
 chief("chief-ure-not", C("holding up one finger with an honest careful smile", close=True),
-      c("官方特別說明：訊號的誤差，不等於你手上的誤差。", None, "P:signal"),
+      c("不過，訊號的誤差，不等於你手上的誤差。", None, "P:signal"),
       c("手上的誤差，還要加上訊號在路上遇到的事。"))
 chief("chief-mooc", C("holding a small phone out towards the viewer with a friendly smile"),
       c("史丹佛的一門線上課，讓上千個人，在一百個國家用手機量。"),

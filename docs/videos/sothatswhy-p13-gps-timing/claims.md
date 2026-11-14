@@ -95,6 +95,7 @@
   B.2.4.3.4：「Using five or more SISs for the PVT solution or time transfer solution always results in DOP values that are at least as good as the 4-SIS DOP values.」
 - **注意**：照素材審視的要求，**刪掉**來源沒有的「衛星擠在一角放大得多、散開放大得少」機制句；片中只說「看衛星和你的相對位置好不好」。公式是**近似**（標準自己說的）。
   「二十四個位置」是基本排法的 slot 數，不是衛星總數（衛星數會變，片中不用）。PDOP ≤ 6 的 98% 承諾沒有放進片裡（觀眾聽不出意義）。
+  2026-11-14 站主審片（出處念太多像公告）：口白拿掉出處，來源只留在這裡。p091「GPS 衛星的基本排法，有二十四個位置，」（原「美國政府的 GPS 網站說，…」，出處 [4]）；p095「不一樣。手機最後算出來的位置誤差，」（原「GPS 的官方性能標準寫：…」，出處 [6]）；p099「用五顆以上去算，倍數一定不會比四顆差。」（原「標準也寫：…」，出處 [6] B.2.4.3.4，「一定不會比…差」＝at least as good，強度不變）。
 
 ## C10 大樓擋住一部分衛星，能用的變少，放大倍數可能變大【撰稿推論，連接兩個官方說法】
 
@@ -109,7 +110,8 @@
 - **來源**：[1]
 - **原文**：GPS.gov [1]：「the government commits to broadcasting the GPS signal in space with a daily global average user range error (URE) of ≤2.0 m (6.6 ft.), with 95% probability … On April 20, 2021, the global average URE across all satellites was ≤0.643 m (2.1 ft.), 95% of the time.」
   「To be clear, URE is not user accuracy. User accuracy depends on a combination of satellite geometry, URE, and local factors such as signal blockage, atmospheric conditions, and receiver design features/quality.」
-- **注意**：「每日全球平均」與「所有健康衛星」的限定片中省略，**簡化**；2021 年的數字是頁面上的舊日期，片中照念日期。原文沒有「乘上」，乘法是 C09 SPS 的近似式，兩段分開講。
+- **注意**：2026-11-14 站主審片拿掉口白出處，來源 [1] 只留在這裡：p107「所有衛星平均起來，訊號本身的誤差，」（原「美國政府承諾，所有衛星平均，…」；F01 要的「所有衛星平均」條件保留）、p108「保證九成五的時間在兩公尺以內。」（原「九成五的時間在兩公尺以內。」；加「保證」留住 commits 的意思，不說成實測）、p117「不過，訊號的誤差，不等於你手上的誤差。」（原「官方特別說明：…」，＝「To be clear, URE is not user accuracy.」）。
+  「每日全球平均」與「所有健康衛星」的限定片中省略，**簡化**；2021 年的數字是頁面上的舊日期，片中照念日期。原文沒有「乘上」，乘法是 C09 SPS 的近似式，兩段分開講。
 
 ## C12 手機開闊天空平均約 5 公尺；城市裡誤差跟大樓高度很相關【研究摘要，經 GPS.gov 引用】
 
@@ -144,7 +146,7 @@
 - **可用說法**：p110–p114（第二輪移到第三章「衛星送得很準」之後，當作小問的錯猜「會不會給我們的，故意弄不準？」）
 - **來源**：[1]
 - **原文**：GPS.gov [1]：「Doesn't the Government Degrade Civilian GPS Accuracy? No. During the 1990s, GPS employed a feature called Selective Availability that intentionally degraded civilian accuracy on a global basis. In May 2000 … the U.S. government ended its use of Selective Availability」。
-- **注意**：p112 照查核 F02 的改法「美國政府的 GPS 網站說：沒有故意把民用的弄差。」（不回答「軍用是不是比較準」）。
+- **注意**：p112 照查核 F02 的改法「美國政府的 GPS 網站說：沒有故意把民用的弄差。」（不回答「軍用是不是比較準」）。2026-11-14 站主審片後，這是 p091–p117 唯一留在口白的出處（站主點名要留的官方澄清）。
   p114「而且就算訊號變差，也是到處都偏，不會專挑大樓中間」是**撰稿推論**：GPS.gov 說選擇性可用性是「on a global basis」降低民用精度，而藍點只在大樓中間跳，所以這不是她看到的原因。
   第二輪**刪掉**了增強系統兩句（p129–p130 舊版）：跟藍點為什麼跳無關。來源 [5] 仍列在文末，但片中已不用。
   素材審視提到的「軍民 URE 相同、多數民用單頻、軍用雙頻」**只在** archive.gps.gov 典藏頁 [2]（頁首寫 2025 年 2 月後沒有更新），現行 node/70 已刪；片中不用。

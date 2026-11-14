@@ -471,7 +471,7 @@ doc = {
                        "沒有電池的卡片，怎麼回答閘門？手機只往旁邊挪一點點，為什麼就不充了？換一口玻璃鍋放上電磁爐，水熱得起來嗎？\n\n"
                        "片中的閘門、卡片、手機、充電板、電磁爐與水盆都是 AI 生成的示意插圖，不是實際的產品或結構圖。請不要把卡片、硬幣、鋁箔或其他金屬放在充電板或電磁爐上試；剛放過鍋子的爐面會燙。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["無線充電", "電磁爐", "感應卡", "交通卡", "磁場", "電磁感應", "渦電流", "科普", "原來如此事務所"]},
-    "thumbnail": {"template": "thumb", "data": {"headline": "卡片不燙\n**鍋子卻熱？**", "sub": "電怎麼隔空跑過去", "shot": "kid-main-q", "subject": "right"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "卡片不燙\n**鍋子卻熱？**", "sub": "電怎麼隔空跑過去", "shot": "kid-potcenter-q", "subject": "right"}},
     "sources": [
         {"title": "Microchip, microID 13.56 MHz RFID System Design Guide (DS21299E)", "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/21299E.pdf", "checked_on": CHECKED},
         {"title": "OpenStax, College Physics 2e, 23.4 Eddy Currents and Magnetic Damping", "url": "https://openstax.org/books/college-physics-2e/pages/23-4-eddy-currents-and-magnetic-damping", "checked_on": CHECKED},
