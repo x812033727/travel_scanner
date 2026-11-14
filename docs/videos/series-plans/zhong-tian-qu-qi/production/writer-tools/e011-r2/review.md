@@ -79,3 +79,20 @@
 3. **s06、s14 唐小棠背影鏡**：拿掉轉頭與遞向畫右的寫法，讓她正對畫面深處；s14 縣令「嘴半張又嘴閉著」二選一；先建好 e911 的 extras.json 與 spec.json 再拍。
 4. **s32、s35 耳語**：站位改成縣令在畫右、許硯左肩後耳語，許硯幾乎正面、看畫右鏡外。這樣對上 bible 的「左耳」與第 12 集「正眼看胡縣令」。s35 拿掉前景「a man's right fist」。
 5. **全景與接戲**：s22 補許硯（第三個名額），s05 鏡頭只朝院門，s19 阿令仍被架著。
+
+## 採納情形（寫稿者，2026-11-14）
+
+**必改 16 條全改**（`r2.py` 重建 `video.json`、`overlays.json`、`storyboard.md`；`storyboard-check.py` 0 錯）：
+- s24、s28、s29 畫外句：`build-r2.py` 加開關 `OFFSCREEN_SPEECH`，本集設 `False`，提示詞不再補「… speaks off screen」「the system voice speaks off screen」（不靠 spec.json 刪）。s04、s12、s23、s24、s28、s29 的 motion 都寫「says nothing … no mouthing words」（放在動作後面，放開頭會被 shot_reading 判成只有反應）。e910 照舊（沒設開關），重建後三個檔逐位元相同。
+- s02：`nospeak=["xuyan"]`，寫成張嘴喊一聲。
+- `ZHAO` 改成腰間只有黑布帶；`NOSHARP` 照建議改寫（刀鞘、布帶、另一手空著）；s17 改按布帶，加 NOBLADE。
+- s06、s14 照建議改寫；s19 阿令仍被架著；s22 補許硯（三人）；s05 鏡頭只朝院門；s32、s35 用同一句站位（`WHISPER`），s33 耳朵在畫左緣；s35 改成他自己的右拳。
+- `colab/runs/e911/extras.json`、`colab/runs/e911-live/spec.json` 已建：s06、s14 拿掉唐小棠三張臉部圖與身分句、「Only these 2 people…seen only from behind」；s02、s23、s27、s29、s34 用 e910 s36 的中性外貌句。
+
+**建議**：
+- 採納：s02 鏡位；月亮照第 10 集；近景背景（`DARK`）；人數寫死；HU_BACK／HIM_BACK 頭整個轉開、左肩；s01、s04、s24、s26、s27、s30、s31、s33 的「only person」句在 spec.json 改寫；s21 買 8；s01、s34 `act=3`；inner 的 emotion 只寫「沉」；s18–s20 另兩份婚書；s24 官帽歪；s15 改中近景（腰以上）；s06 直接遞紅紙；小金算盤每鏡寫、s23 用 ABACUS；s27 第三人的袖與肩；extras 加不要霓虹線與故障效果；s16 朝畫右轉。
+- s28–s29 長度：錄音後量過，s28 三句 11.9 秒，超過 10 秒能裝的量，最後一句系統吐槽延到 s29 開頭；另外 s25（9.1 秒）改買 10、s09 改買 8。
+- 沒採納或延後：
+  - s05「畫面火把不超過八支」：這鏡寫死了九個衙役、趙捕頭、兩個家丁各一支（共十二支）。台詞是「攔得住幾個」，人要多；s11、s22 有寫上限。
+  - 許硯嚴肅鏡帶笑：要看草稿才知道，第一輪挑片時看 s03、s08、s10、s19、s20、s28、s30。
+  - preflight 的 `smile-ref` 改認 l1 檔名：共用工具，不在本集範圍，要另開票。CG 那一層的 st1 預檢對 s06 仍報這條（送的是 CG 的 `xuyan-portrait-t1`），真人那一層（d1）0 警告。

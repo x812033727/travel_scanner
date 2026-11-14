@@ -90,11 +90,16 @@ def main(name):
         comp = re.sub(r"((?:close-up|shot)) of ([A-Z][\w'-]*(?: [A-Z][\w'-]*)?) on screen", r"\1, \2 on screen", s['comp'])
         prompt = f"{spec.LOC[s['loc']]}: {comp}".replace("A-ling off screen", "Aling off screen")
         motion = motion.replace("A-ling off screen", "Aling off screen")
-        offs = [k for (k, *_) in s.get("lines", []) if k != "xitong" and k not in on]
-        if offs and "off screen" not in prompt:
-            prompt += f"; {EN[offs[0]]} speaks off screen"
-        if any(k == "xitong" for (k, *_) in s.get("lines", [])) and "system voice" not in prompt:
-            prompt += "; the system voice speaks off screen"
+        # The off-screen sentence. e911 review (e910 s16, s31, s33): "<X> speaks off screen" / "the system voice speaks off
+        # screen" made the one person on screen move their lips, and an inner thought was announced as speech. A spec that sets
+        # OFFSCREEN_SPEECH = False gets no such sentence (it writes the silence of the people on screen itself, live action
+        # from e911 on); without it the old behaviour stays, so e901-e910 rebuild byte for byte.
+        if getattr(spec, "OFFSCREEN_SPEECH", True):
+            offs = [k for (k, *_) in s.get("lines", []) if k != "xitong" and k not in on]
+            if offs and "off screen" not in prompt:
+                prompt += f"; {EN[offs[0]]} speaks off screen"
+            if any(k == "xitong" for (k, *_) in s.get("lines", [])) and "system voice" not in prompt:
+                prompt += "; the system voice speaks off screen"
         if len(motion) > 300: print("MOTION TOO LONG", sid, len(motion), len(motion) - len(s["motion"]))
         if len(prompt) > 1000: print("PROMPT TOO LONG", sid, len(prompt))
         scene = {"id": sid}
