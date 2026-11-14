@@ -320,7 +320,7 @@ export function urlKey(url) {
 
 const ANY_LINK = /https?:\/\/[^\s｜|<>"'）)\]，。、；：！？「」『』】〉》]+/g;
 // A line that is only a link, with at most a short label before it (「完整文章：https://…」, 「🔗 https://…」).
-const LABEL_ONLY = /^[^\p{L}\p{N}]*(?:[\p{L}\p{N}\s]{0,16}[：:]\s*)?[^\p{L}\p{N}]*$/u;
+const LABEL_ONLY = /^[^\p{L}\p{N}]*(?:[\p{L}\p{M}\p{N}\s]{0,16}[：:]\s*)?[^\p{L}\p{N}]*$/u;
 
 /**
  * The body without the lines that only repeat a link the description carries elsewhere: the
@@ -432,7 +432,8 @@ export function seriesHashtag({ category = null, series = null, slug = null } = 
 export function hashtagsFrom(tags = [], count = HASHTAG_COUNT) {
   const hashtags = [];
   for (const tag of tags) {
-    const word = String(tag).replace(/[^\p{L}\p{N}_]/gu, "");
+    // Keep combining marks (\p{M}) so scripts like Thai (#ปีที่ไร้ฤดูร้อน) keep their vowels and tones.
+    const word = String(tag).replace(/[^\p{L}\p{M}\p{N}_]/gu, "").replace(/^\p{M}+/u, "");
     // YouTube treats #ChatGPTGo and #chatgptgo as one hashtag.
     if (word && !hashtags.some((hashtag) => hashtag.toLowerCase() === `#${word}`.toLowerCase())) hashtags.push(`#${word}`);
     if (hashtags.length === count) break;

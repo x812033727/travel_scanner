@@ -187,9 +187,12 @@ test("the description credits the stock photos after the sources, in the vendors
   assert.ok(creditBytes(assets, "zh-TW") > 200 && creditBytes(assets, "zh-TW") < 300, `two credits cost ${creditBytes(assets, "zh-TW")} bytes`);
 });
 
-test("hashtags drop spaces and punctuation, skip repeats in any case and stop at three", () => {
+test("hashtags drop spaces and punctuation, keep Unicode combining marks, skip repeats in any case and stop at three", () => {
   assert.deepEqual(hashtagsFrom(["ChatGPT Go", "AI·廣告", "chatgpt-go", "ChatGPTGo", "Plus", "Pro"]), ["#ChatGPTGo", "#AI廣告", "#Plus"]);
-  assert.deepEqual(hashtagsFrom(["!!!", ""]), []);
+  assert.deepEqual(hashtagsFrom(["ตำนาน Frankenstein", "ปีที่ไร้ฤดูร้อน"]), ["#ตำนานFrankenstein", "#ปีที่ไร้ฤดูร้อน"]);
+  assert.deepEqual(hashtagsFrom(["\u0e49ปี", "\u0e49\u0e48", "!!!", ""]), ["#ปี"]);
+  const thArticle = "https://mokaair.com/th/life/x?utm_source=youtube&utm_medium=video&utm_campaign=c";
+  assert.deepEqual(dedupeLinks(`鉤子。\nบทความฉบับเต็ม: https://mokaair.com/th/life/x`, thArticle), { body: "鉤子。", mentioned: false });
 });
 
 test("a brand story's title says so in its own language before the captions tag, once", async () => {
