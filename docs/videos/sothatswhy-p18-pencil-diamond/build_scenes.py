@@ -18,7 +18,7 @@ CHECKED = "2026-11-09"
 # Both characters are identical to P07/P14/P08 (approved series sheets reused through the `series` tag):
 # the chief as in P02/P05/P14, the kid in her notebook-free look (series README §3.2).
 VOICE = {"provider": "gemini", "name": "Sulafat",
-         "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速像平常聊天，一秒四到五個字，句與句之間不拖。"}
+         "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速偏快、輕快，像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。"}
 SHEET = "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
 CHARACTERS = [
     {"id": "chief", "name": "所長",
@@ -26,7 +26,7 @@ CHARACTERS = [
      "voice": dict(VOICE), "sheet_prompt": SHEET},
     {"id": "kid", "name": "小問",
      "appearance": "a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, both hands free",
-     "voice": {"provider": "gemini", "name": "Leda", "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快"},
+     "voice": {"provider": "gemini", "name": "Leda", "tempo": 1.12, "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快，一秒五個字以上，不拖尾音"},
      "sheet_prompt": SHEET},
 ]
 

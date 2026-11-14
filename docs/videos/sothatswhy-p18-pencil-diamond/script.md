@@ -613,4 +613,4 @@
 【所長】（誠懇）想一起找生活裡的為什麼，就訂閱原來如此事務所。
 
 narrative af1c9d2e8991fb2b
-speech 5dd59511f7b7975b
+speech 9dcd569944a6cc4b
