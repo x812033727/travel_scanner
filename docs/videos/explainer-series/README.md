@@ -33,7 +33,7 @@ AI 劇（種田、祖媽）的同類文件在 [`../drama/`](../drama/)（PR #204
 | 刪工作目錄的條件 | 站主確認完成、語言關卡已送審、逐檔核對 | 逐檔核對雜湊後才刪 | 三件都要：站主確認這支完成（三個後台關卡都決定了）、逐檔核對 0 不符、**另一個沒參與製作的代理**到 GitHub 核對涵蓋 0 漏 |
 | 插圖放大檢查 | 獨立代理把每張切四格 2 倍看字、臉、人、Ada 一致 | 獨立代理逐張放大看眼睛 | 兩邊合併：每張全圖＋四格 2 倍，看字、記號、貓、無人景的臉與人、角色一致（含眼睛、五指）、暖深褐收尖細線與厚塗水粉質感、四邊最外層像素零白邊、地圖／地球儀方位與時代道具考證、圖文矛盾；檢查的代理沒畫過這些圖 |
 | 生圖工具與畫風（2026-11-14 定案） | 早期走 MiniMax `image-01` 平塗卡通 | 同左 | **兩個系列全面停用 MiniMax 生圖**：關鍵影格一律由代理內建 `generate_image`（`AspectRatio: "16:9"`）套用**「劇場級動畫光影 × 厚塗水粉質感」**英文基底句生成，再用 `keyframes import --provider external --usd 0` 匯入；遇到 `gemini-3.1-flash-image` 配額冷卻時先跑翻譯與八語配音，絕不退回 MiniMax。`video.json` 頂層仍保留 `look: { "preset": "cute-mystery" }`（奇聞）／`"cute-cartoon"`（原來如此）供系列身分與 lint 檢查 |
-| 角色設定圖鎖定（2026-11-14 定案） | 串場 Ada 固定一張；單集歷史人物未建卡易每鏡換臉換衣 | `chief`／`kid` 系列設定圖 | 凡有角色出場，`ImagePaths` **必傳**角色設定圖（原來如此傳 `characters/chief/*.png`／`characters/kid/*.png`；奇聞除串場研究員外，單集內跨 ≥ 4 鏡出場的可入畫歷史人物也必須先產固定設定圖鎖死髮色、髮型與主色服裝）；重繪既有鏡頭時一併傳入前一版圖檔鎖定骨架與道具位置 |
+| 角色設定圖鎖定與人景配比（2026-11-14 定案） | 串場 Ada 舊圖未進 `main`；單集歷史人物未建卡易每鏡換臉換衣；舊版防空景讓全片塞滿人 | 舊版 MiniMax 設定圖（`0c3a400c…`／`f8dac008…`）未過評審，其它對話沒鎖頭身比畫得怪怪的 | **兩系列人物造型與頭身比徹底分家**：《原來如此》固定 **2.5 頭身圓頭大眼 Q 版**，`ImagePaths` 必傳 `docs/videos/so-thats-why/series-sheets/characters/{chief/chief-canon-v2.png,kid/kid-canon-v2.png}`（所長雙耳乾淨無耳後鉛筆、小問圓亮大眼有高光，禁用舊 MiniMax 檔）；《奇聞》固定 **3.5 頭身修長劇場動畫比例**，串場 `ada` 必傳 `docs/videos/history-curiosity/series-sheets/characters/ada/ada-canon-v2.png`（微捲黑短髮側分瀏海＋暗紅細圓框眼鏡＋褪色青風衣），單集跨 ≥ 4 鏡的可入畫歷史人物同樣先產 3.5 頭身設定圖鎖臉。**兩系列都不必每鏡有人**：約 **45%–65%** 鏡頭設 `"nobody": true` 聚焦純機制剖面、日常物件或歷史器物／場景，角色鏡頭約 **35%–55%** 只放提問、反應、線索轉折與首尾 |
 | 評審被推翻時 | W03：重畫、改提示詞，三次不過換成物件畫面 | 不准用 `--accept-best`；三個 take 都不過的鏡頭由沒畫過圖的代理放大逐張挑，挑中的用 `repin.py` 固定成 `accepted_with_problems`；每次重跑 `keyframes` 都用累積的 `pins.json` 再固定一次 | 2026-11-14 起全面走內建 `generate_image`＋獨立子代理四格 2 倍放大審查後 `keyframes import --provider external --usd 0` 匯入；放大審查抓到破綻就以 `ImagePaths` 帶原構圖重繪修正，**任何一次改動 `video.json` 後都要確認外部匯入清單未失效** |
 | 縮圖 | `thumbnail.data.layout: "e"`＋`focus`（左字右圖，#2044、#2045、#2046） | `thumbnail.data.subject: "right"`（插圖縮到右側 38%）；P15 在畫完圖後改縮圖，整份 manifest 失效要重跑＋repin＋重核分鏡 | 各用自己系列的版型，規則統一：**主體不被字擋且不裁切斷頭**（原來如此設 `"subject": "right"` 時，`object-fit: cover` 只保留 16:9 原圖水平中央 `x ≈ 31%–69%`，故主角大臉與關鍵道具必排在**水平中央 `x = 35%–65%`**，嚴禁寫 `on the right third`）、**大字與副標嚴禁直接破梗因果答案**（只寫反常識衝突或硬數字）、**右圖必有誇張清楚表情或強烈視覺反差**（禁止選闔上的空白書本、空房間、單一靜態死物）、**縮圖的圖、文字、`subject` 在畫關鍵影格之前定好**（只有奇聞的 `layout: "e"`、`focus`、`brand` 事後可改，#2046）；繁中（含 A/B 變體）與八語全部渲染縮圖逐張看過才打包 |
 | 八語縮圖 | 做上架包時看 | `i18n-merge` 後一定跑 `render --thumbnails-only` | `i18n-merge` 後一定 `render --thumbnails-only`，連同 `thumbnail.jpg`／`thumbnail-b.jpg`／`thumbnail-c.jpg` 逐張看過才 `package` |
@@ -77,7 +77,7 @@ AI 劇（種田、祖媽）的同類文件在 [`../drama/`](../drama/)（PR #204
 - **誰核准稿子、聲音、設定圖、分鏡**（站主 2026-11-08「分開」）：奇聞照原本，站主在 /admin/videos 逐關按
   （大綱、設定圖兩關另有站主原話的固定 note，見 skill）；原來如此照原本，獨立代理查核、盲評、評分後 Claude
   `approve --note`。成片、上架、語言三關兩邊都由站主在後台決定。
-- 角色：奇聞只有不說話的研究員 Ada（設定圖固定用 `curio-redo-handoff/ada-sheet/`）；原來如此有所長與小問兩個說話的角色。
+- **角色造型與頭身比徹底區隔**（站主 2026-11-14「原來如此跟奇聞兩系列人物造型不同」）：《奇聞檔案局》採 **3.5 頭身修長劇場動畫比例**，固定串場角色為不說話的研究員 `Ada`（標準設定圖：`docs/videos/history-curiosity/series-sheets/characters/ada/ada-canon-v2.png`）；《原來如此事務所》採 **2.5 頭身圓頭大眼 Q 版比例**，有所長 `chief` 與小問 `kid` 兩個說話的角色（標準設定圖：`docs/videos/so-thats-why/series-sheets/characters/{chief/chief-canon-v2.png,kid/kid-canon-v2.png}`）。
 - 結構：奇聞照黑貓研究院十步；原來如此是問答對話。
 - 入畫規則：奇聞在世或 1956 年後過世的人不入畫、用物件代稱；原來如此照它自己的規則。
 - 配樂：奇聞每集 `music` 生成（太短就循環）；原來如此用系列配樂床：P15 起是 `sothatswhy-bed-r2.m4a`（用 P02 的付費原檔重做，sha256 `9bb4ba6f…`），更早的集數用 `sothatswhy-p02-bed.m4a`。
