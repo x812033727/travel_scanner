@@ -5,7 +5,11 @@ Every check is a problem that reached an owner's review in season 1 (season1-rev
 - held:      a shot whose clip ran out and the last frame froze (final.log "held N s"); buy the shot longer;
 - punch:     a shot split in two with the second half cropped in (final.log "split@"); reads as a stutter;
 - reuse:     one clip file used by more than one shot (e001 s29 used four times, the same ponytail toss again and again);
-- motion:    in-shot motion median and static-frame share of the whole cut (camera-feel; targets >= 7 and <= 15 %);
+- motion:    in-shot motion median and static-frame share (camera-feel; targets >= 7 and <= 15 %), measured on the shots'
+             clips (../clips/<clip> for the duration final.log gives each shot) before the cut's grade and vignette: the
+             series vignette darkens the edges and pulls every frame difference down, so on the finished cut e910 read
+             static 19-20 % while its clips read 7-8 % (owner 2026-11-14: measure before the vignette). The finished cut's
+             own number is printed as a note; with no clips beside the cut, the cut itself is measured as before;
 - loudness:  integrated loudness of the cut and each dub (target -14 LUFS +- 1) and true peak (<= -1.0 dBTP);
 - fps:       the video frame rate (24; season 1 mixed 23.976 / 24 / 48 / 120);
 - black:     black frames longer than 0.2 s;
@@ -33,15 +37,22 @@ def loudness(path):
     return (float(i[-1]) if i else None), (float(p[-1]) if p else None)
 
 
-def motion(path):
+def diffs(path, dur=None):
     w, h, top = 96, 54, int(54 * 0.8)
-    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), "-vf", f"fps=4,scale={w}:{h}:flags=area,format=gray", "-f", "rawvideo", "-"],
-                         capture_output=True).stdout
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), *(["-t", f"{dur:.3f}"] if dur else []),
+                          "-vf", f"fps=4,scale={w}:{h}:flags=area,format=gray", "-f", "rawvideo", "-"], capture_output=True).stdout
     n = len(raw) // (w * h)
     fr = [raw[i * w * h:i * w * h + w * top] for i in range(n)]
-    d = [sum(abs(a - b) for a, b in zip(fr[i], fr[i - 1])) / (w * top) for i in range(1, n)]
+    return [sum(abs(a - b) for a, b in zip(fr[i], fr[i - 1])) / (w * top) for i in range(1, n)]
+
+
+def summarize(d):
     inner = [x for x in d if x < 25]
     return (statistics.median(inner) if inner else 0.0), (sum(1 for x in d if x < 3) / len(d) if d else 0.0)
+
+
+def motion(path):
+    return summarize(diffs(path))
 
 
 def srt_entries(path):
@@ -78,8 +89,16 @@ def main(cut, stem):
             say("FAIL", "reuse", f"{clip} used by {n} shots: {', '.join(s for s, _, c, _ in rows if c == clip)}")
     video = cut / f"{stem}.mp4"
     if video.exists():
-        m, st = motion(video)
-        say("FAIL" if m < 7 or st > 0.15 else "ok", "motion", f"in-shot motion {m:.1f} (>= 7), static {st * 100:.0f}% (<= 15%)")
+        clips = cut.parent / "clips"
+        shots = [(clips / c, float(d)) for _, d, c, _ in rows if (clips / c).is_file() and c.endswith(".mp4")]
+        if rows and len(shots) == len(rows):
+            m, st = summarize([x for c, d in shots for x in diffs(c, d)])
+            say("FAIL" if m < 7 or st > 0.15 else "ok", "motion", f"in-shot motion {m:.1f} (>= 7), static {st * 100:.0f}% (<= 15%), {len(shots)} clips before grade and vignette")
+            m2, st2 = motion(video)
+            print(f"note motion    finished cut (after grade and vignette): {m2:.1f}, static {st2 * 100:.0f}%")
+        else:
+            m, st = motion(video)
+            say("FAIL" if m < 7 or st > 0.15 else "ok", "motion", f"in-shot motion {m:.1f} (>= 7), static {st * 100:.0f}% (<= 15%)")
         i, p = loudness(video)
         say("FAIL" if i is None or abs(i + 14) > 1 or (p is not None and p > -1.0) else "ok", "loudness", f"{stem}.mp4 {i} LUFS, peak {p} dBFS")
         fps = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=r_frame_rate", "-of", "csv=p=0", str(video)],
