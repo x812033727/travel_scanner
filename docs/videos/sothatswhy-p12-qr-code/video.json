@@ -1,0 +1,2285 @@
+{
+  "schema_version": 1,
+  "slug": "sothatswhy-p12-qr-code",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    12
+  ],
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；溫暖清楚的解說主持人，像在跟一個好奇的朋友講道理，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "theme": "paper",
+  "look": {
+    "preset": "cute-cartoon"
+  },
+  "series": {
+    "slug": "sothatswhy",
+    "episode": 12,
+    "chapter": 1
+  },
+  "music": {
+    "track": "sothatswhy-bed-r2.m4a",
+    "sha256": "9bb4ba6fd16feb4a7f352144b2d89e9648acbbbbaa2173c27a7eefbdb70f28c6",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "characters": [
+    {
+      "id": "chief",
+      "name": "所長",
+      "appearance": "a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；溫暖清楚的解說主持人，像在跟一個好奇的朋友講道理，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音"
+      },
+      "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+    },
+    {
+      "id": "kid",
+      "name": "小問",
+      "appearance": "a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, both hands free",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；好奇愛發問的年輕女生，像觀眾的嘴替，語氣輕快自然，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音"
+      },
+      "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "p004",
+      "payoff": "p151",
+      "what": "為什麼沾了冰咖啡的碼掃得過，旁邊花邊貼很近的乾淨新碼卻沒反應"
+    },
+    {
+      "setup": "p005",
+      "payoff": "p035",
+      "what": "當年兩位日本工程師天天統計傳單線條，在找什麼比例"
+    },
+    {
+      "setup": "p006",
+      "payoff": "p069",
+      "what": "保護太空探測器訊號的數學怎麼藏進日常掃的方形碼裡"
+    },
+    {
+      "setup": "p007",
+      "payoff": "p150",
+      "what": "QR Code 髒掉一塊到底怎麼把資料讀回來"
+    },
+    {
+      "setup": "p008",
+      "payoff": "p120",
+      "what": "遮住一樣大的面積，為什麼一整滴咖啡跟散開的小墨點命運相反"
+    },
+    {
+      "setup": "p009",
+      "payoff": "p011",
+      "what": "手機讀方形碼是不是像看書一樣從左上角照順序讀"
+    },
+    {
+      "setup": "p019",
+      "payoff": "p024",
+      "what": "正方形有四個角，為什麼偏偏只在三個角畫大定位框"
+    },
+    {
+      "setup": "p025",
+      "payoff": "p038",
+      "what": "飲料店桌上到處是黑線，手機怎麼不會把別的花紋看成定位角"
+    },
+    {
+      "setup": "p039",
+      "payoff": "p041",
+      "what": "印在彎曲飲料罐上格子都彎了，手機怎麼對準"
+    },
+    {
+      "setup": "p045",
+      "payoff": "p047",
+      "what": "既有三個大定位角又有小校正框，為什麼第二張乾淨新碼還是失敗"
+    },
+    {
+      "setup": "p052",
+      "payoff": "p084",
+      "what": "框抓到之後，裡面被咖啡蓋住的黑格子怎麼猜回來"
+    },
+    {
+      "setup": "p059",
+      "payoff": "p061",
+      "what": "缺一塊還能讀，是不是把同一個網址偷偷抄了三遍"
+    },
+    {
+      "setup": "p065",
+      "payoff": "p067",
+      "what": "一個碼字是不是眼睛看到的單獨一小格"
+    },
+    {
+      "setup": "p075",
+      "payoff": "p080",
+      "what": "沒有抄備份，光靠數學怎麼算出被蓋住的內容"
+    },
+    {
+      "setup": "p089",
+      "payoff": "p091",
+      "what": "一百盒原資料碼字救回五十盒，為什麼官方只算百分之二十五而不是一半"
+    },
+    {
+      "setup": "p099",
+      "payoff": "p101",
+      "what": "開到最高 H 級約百分之三十，能不能拿剪刀隨便剪掉三成面積"
+    },
+    {
+      "setup": "p107",
+      "payoff": "p109",
+      "what": "為什麼有些 QR Code 正中間貼了小圖案還是掃得出來"
+    },
+    {
+      "setup": "p113",
+      "payoff": "p115",
+      "what": "中間貼了小圖案的 QR Code，是不是會先花掉一部分救命額度"
+    },
+    {
+      "setup": "p130",
+      "payoff": "p132",
+      "what": "既然 H 級能救最多碼字，為什麼不把所有 QR Code 都開到最高 H 級"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "QR Code 沾到咖啡還能嗶，旁邊新碼卻失靈？｜原來如此事務所",
+    "description": "飲料店桌上的 QR Code 沾了一大塊冰咖啡，手機一照居然照樣「嗶」一聲過關；旁邊另一張新印的乾乾淨淨，只是花邊貼得太近，卻怎麼掃都沒反應。同樣是黑白小方格，到底差在哪裡？\n\n給每次掃菜單、買手搖飲遇過掃不過，或好奇日常黑白小方格裡藏了什麼機關的人。\n\n這一集，所長和小問順著手機掃碼的瞬間一路拆解：三個角落為什麼能三百六十度抓方向、一九九四年問世前兩人團隊怎麼從成堆印刷品裡找出最罕見的黑白比例、太空探測器與音樂 CD 都在用的數學怎麼把缺掉的資料算回來，以及號稱最高約 30% 的容錯率到底在算什麼、為什麼遮住一樣大，一整滴咖啡跟散開的小墨點結果可能完全相反。\n\n本集插圖由 AI 生成。\n\n資料截至 2026-11-14",
+    "tags": [
+      "QR Code",
+      "QR Code 原理",
+      "QR Code 容錯",
+      "Reed-Solomon",
+      "錯誤修正碼",
+      "條碼原理",
+      "科普",
+      "原來如此事務所"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "缺一塊\n**還能嗶？**",
+      "sub": "花邊貼太近反而掃不過",
+      "tag": "科技",
+      "pillar": "tech",
+      "shot": "kid-solve-first",
+      "subject": "right"
+    },
+    "variants": [
+      {
+        "data": {
+          "headline": "髒一大塊\n**照樣嗶？**"
+        }
+      },
+      {
+        "data": {
+          "headline": "清晰 vs\n**過密？**",
+          "sub": "印在杯套上差在哪？",
+          "shot": "dense-sticker-blur"
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "title": "DENSO WAVE: What is a QR Code?",
+      "url": "https://www.qrcode.com/en/about/",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "DENSO WAVE: Readable from any direction in 360°",
+      "url": "https://www.qrcode.com/en/about/featurePage/featurePage5.html",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "DENSO WAVE: History of QR Code",
+      "url": "https://www.qrcode.com/en/history/",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "DENSO WAVE: QR Code Model 1 and Model 2",
+      "url": "https://www.qrcode.com/en/codes/model12.html",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "DENSO WAVE: Point for determining the code area",
+      "url": "https://www.qrcode.com/en/howto/code.html",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "DENSO WAVE: Information capacity and versions of QR Code",
+      "url": "https://www.qrcode.com/en/about/version.html",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "DENSO WAVE: Error correction feature",
+      "url": "https://www.qrcode.com/en/about/error_correction.html",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "DENSO WAVE: QR Code Standardization",
+      "url": "https://www.qrcode.com/en/about/standards.html",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Riley & Richardson: An introduction to Reed-Solomon codes (CMU CS)",
+      "url": "https://www.cs.cmu.edu/~guyb/realworld/reedsolomon/reed_solomon_codes.html",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Wikipedia: QR code",
+      "url": "https://en.wikipedia.org/wiki/QR_code",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Wikipedia: Reed–Solomon error correction",
+      "url": "https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction",
+      "checked_on": "2026-11-14"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "two-stands-open",
+      "chapter": "沾了咖啡還能嗶，乾淨的卻失靈",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two square acrylic mosaic stands side by side on a wooden cafe counter: the left stand has a brown iced-coffee splash near the middle with a glowing mint check ring above it, the right stand has clean mosaic tiles squeezed tight by floral vine trim with a coral cross icon above it",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p001",
+          "speaker": "kid",
+          "text": "所長！轉角飲料店那張碼沾咖啡，",
+          "emotion": "急促興奮，跑進來報案"
+        },
+        {
+          "id": "p002",
+          "speaker": "kid",
+          "text": "QR Code 居然嗶過了！",
+          "emotion": "急促興奮，跑進來報案"
+        }
+      ]
+    },
+    {
+      "id": "kid-coffee-tile",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the girl on the right third holding up a square acrylic stand with a stylized dark mosaic grid, three nested corner squares and a brown iced-coffee splash near the middle with huge wide surprised eyes and open mouth, plain pale wall on the left, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p003",
+          "speaker": "kid",
+          "text": "旁邊新印的那張乾乾淨淨，",
+          "emotion": "困惑追問"
+        },
+        {
+          "id": "p004",
+          "speaker": "kid",
+          "text": "花邊貼很近卻掃不過！",
+          "emotion": "困惑追問"
+        }
+      ]
+    },
+    {
+      "id": "open-teasers",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead medium shot of an oak table split between stacks of colourful geometric pattern swatches under a brass magnifying glass on the left and a golden-winged space probe model beside a shiny silver compact disc on the right",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p005",
+          "speaker": "chief",
+          "text": "這兩張碼差在哪？發明它的兩位工程師量傳單線條在找什麼？",
+          "emotion": "懸疑輕快"
+        },
+        {
+          "id": "p006",
+          "speaker": "chief",
+          "text": "保護太空探測器的數學，怎麼也藏在小方塊裡？",
+          "emotion": "懸疑輕快"
+        }
+      ]
+    },
+    {
+      "id": "kid-open-splash-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the girl at a tidy oak desk by a bright window pointing at two wooden trays of dark-and-light tiles, one with a single coffee drop and one with tiny ink speckles, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p007",
+          "speaker": "kid",
+          "text": "髒掉一塊到底怎麼讀出來的？",
+          "emotion": "瞪大眼追問"
+        },
+        {
+          "id": "p008",
+          "speaker": "chief",
+          "text": "不只髒一塊能讀，整滴咖啡跟小墨點命運還相反！先猜怎麼讀？",
+          "emotion": "拉高懸念"
+        }
+      ]
+    },
+    {
+      "id": "kid-book-guess",
+      "chapter": "三個角落抓方向，白邊被吃掉就瞎了",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the girl at a tidy oak desk by a bright window tracing her finger horizontally from left to right in the air with a confident grin, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p009",
+          "speaker": "kid",
+          "text": "我猜手機讀那個黑白方塊，",
+          "emotion": "很有把握的錯猜"
+        },
+        {
+          "id": "p010",
+          "speaker": "kid",
+          "text": "是像看書從左上角讀起嗎？",
+          "emotion": "很有把握的錯猜"
+        }
+      ]
+    },
+    {
+      "id": "chief-barcode-compare",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a cool pale-slate counter in bright morning light of a tilted paper label of vertical dark stripes where a slanted red laser beam misses half the bars beside a glowing coral-red cross",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p011",
+          "speaker": "chief",
+          "text": "要是像看書那樣死板，你手機拿歪一點不就全讀錯了？",
+          "emotion": "輕鬆反問"
+        },
+        {
+          "id": "p012",
+          "speaker": "chief",
+          "text": "以前超市常見的一維條碼，真的只往橫的單一方向排線條。",
+          "emotion": "輕鬆反問"
+        }
+      ]
+    },
+    {
+      "id": "barcode-vs-square",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up on a wooden counter comparing a narrow row of vertical dark stripes holding a tiny handful of glass beads on the left and a square mosaic grid packed both across and down with glowing beads on the right",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p013",
+          "speaker": "chief",
+          "text": "那種傳統條碼最多大約只能裝二十個英數字元，"
+        },
+        {
+          "id": "p014",
+          "speaker": "chief",
+          "text": "以前單線紅光刷條碼，你沒橫切過線條就讀不到。"
+        }
+      ]
+    },
+    {
+      "id": "square-two-way",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a neat square wooden mosaic board on an oak tabletop with two perpendicular mint arrows running across and down its rows of dark and light tiles",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p015",
+          "speaker": "chief",
+          "text": "一般方形的 QR Code，改成橫的、直的兩個方向都裝資訊，",
+          "emotion": "清楚推進"
+        },
+        {
+          "id": "p016",
+          "speaker": "chief",
+          "text": "還在三個角落放了大大的回字形定位方框！",
+          "emotion": "清楚推進"
+        }
+      ]
+    },
+    {
+      "id": "three-corners-spin",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead medium shot of a square mosaic stand spinning on a sunlit cafe table while its three bold nested corner squares glow warm gold and a handheld phone locks onto them",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p017",
+          "speaker": "chief",
+          "text": "不管你正著拿、歪著拿、甚至整個倒過來，",
+          "emotion": "輕快有力"
+        },
+        {
+          "id": "p018",
+          "speaker": "chief",
+          "text": "三百六十度任何角度，鏡頭一抓到三個角就知道碼在哪裡！",
+          "emotion": "輕快有力"
+        }
+      ]
+    },
+    {
+      "id": "kid-fourth-corner",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the girl in a cheerful wooden craft studio pointing at the fourth corner of a wooden square mosaic board with a puzzled frown, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p019",
+          "speaker": "kid",
+          "text": "等一下，正方形明明有四個角！",
+          "emotion": "抓到破綻的語氣"
+        },
+        {
+          "id": "p020",
+          "speaker": "kid",
+          "text": "為什麼偏偏少畫第四個角？",
+          "emotion": "抓到破綻的語氣"
+        }
+      ]
+    },
+    {
+      "id": "chief-fourth-rotate",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up on a cool pale-slate tabletop of two mosaic tiles each sporting four identical corner boxes, linked by a curved turquoise half-turn arrow showing identical upside-down orientation",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p021",
+          "speaker": "chief",
+          "text": "你想想看，要是四個角落全都畫上長得一模一樣的大方框，",
+          "emotion": "引導想像"
+        },
+        {
+          "id": "p022",
+          "speaker": "chief",
+          "text": "整張碼轉了半圈，手機怎麼分得出哪邊是頭、哪邊是腳？",
+          "emotion": "引導想像"
+        }
+      ]
+    },
+    {
+      "id": "chief-fourth-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the chief in a cheerful wooden craft studio tapping one corner of a wooden square frame with a crisp nod, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p023",
+          "speaker": "chief",
+          "text": "正因為第四個角故意不畫大框，",
+          "emotion": "揭曉肯定"
+        },
+        {
+          "id": "p024",
+          "speaker": "chief",
+          "text": "不管轉幾度，手機一眼就認得出上下左右！",
+          "emotion": "揭曉肯定",
+          "pause_after_ms": 200
+        }
+      ]
+    },
+    {
+      "id": "kid-clutter-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the girl at a warm wooden bubble-tea counter looking around at patterned drink cups, striped straws and checkered coasters with a skeptical look, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p025",
+          "speaker": "kid",
+          "text": "可是飲料店桌上到處都是黑線條，",
+          "emotion": "懷疑追問"
+        },
+        {
+          "id": "p026",
+          "speaker": "kid",
+          "text": "鏡頭怎麼不會把別的花紋看錯？",
+          "emotion": "懷疑追問"
+        }
+      ]
+    },
+    {
+      "id": "chief-hara-team",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the chief in front of a tidy wooden bookcase holding up two fingers with warm respect, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p027",
+          "speaker": "chief",
+          "text": "還記得開頭發明它的兩位日本工程師嗎？",
+          "emotion": "說故事口吻"
+        },
+        {
+          "id": "p028",
+          "speaker": "chief",
+          "text": "一九九四年發表時，汽車零件廠 DENSO 原昌宏團隊只有兩人！",
+          "emotion": "說故事口吻"
+        }
+      ]
+    },
+    {
+      "id": "chief-hara-qr-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a bright sunlit desk of a mosaic table stand beside a ruled grid sheet, where a camera viewfinder frame locks onto the grid sheet corner instead beside a glowing coral-red cross",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p029",
+          "speaker": "chief",
+          "text": "QR 就是英文 Quick Response，意思是快速反應。"
+        },
+        {
+          "id": "p030",
+          "speaker": "chief",
+          "text": "要是鏡頭老是把旁邊的表格看錯成定位框，根本快不起來！"
+        }
+      ]
+    },
+    {
+      "id": "survey-brochures",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a sunlit wooden studio table piled high with colourful geometric pattern swatches, striped gift boxes and shipping cartons under a brass magnifying glass",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p031",
+          "speaker": "chief",
+          "text": "他們先挑了商務表單上最少見的正方形，",
+          "emotion": "節奏明快"
+        },
+        {
+          "id": "p032",
+          "speaker": "chief",
+          "text": "接著抱來數不清的傳單、雜誌和紙箱，全部轉成黑白圖樣！",
+          "emotion": "節奏明快"
+        }
+      ]
+    },
+    {
+      "id": "survey-measuring",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two pairs of hands using brass calipers to measure black-and-white stripe swatches spread across a wooden workbench",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p033",
+          "speaker": "chief",
+          "text": "兩個人連續好幾天從早到晚，一筆一筆統計黑白寬度。",
+          "emotion": "懸疑推進"
+        },
+        {
+          "id": "p034",
+          "speaker": "chief",
+          "text": "猜猜看，這些印刷品裡最罕見的比例是幾比幾？",
+          "emotion": "懸疑推進"
+        }
+      ]
+    },
+    {
+      "id": "ratio-blocks",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one bold nested square corner frame sliced across its center by a glowing gold line beside five chunky wooden blocks in exact widths: thin dark, thin pale, triple-wide dark, thin pale, thin dark",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p035",
+          "speaker": "chief",
+          "text": "最後找出來的罕見節奏，就是一比一比三比一比一！",
+          "emotion": "揭曉重音",
+          "pause_after_ms": 200
+        },
+        {
+          "id": "p036",
+          "speaker": "chief",
+          "text": "切過回字框正中心，黑、白、黑、白、黑剛好就是這個寬度比！",
+          "emotion": "揭曉重音"
+        }
+      ]
+    },
+    {
+      "id": "chief-ratio-any-angle",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the chief at a tidy oak desk by a bright window slicing her open hand across the air diagonally with a confident smile, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p037",
+          "speaker": "chief",
+          "text": "不管鏡頭從橫的、直的、斜的切過去，"
+        },
+        {
+          "id": "p038",
+          "speaker": "chief",
+          "text": "只要撞見一比一比三比一比一，馬上確定找到碼了！"
+        }
+      ]
+    },
+    {
+      "id": "kid-curved-can",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the girl at a warm wooden bubble-tea counter holding up a cold curved aluminium soda can with a mosaic grid on its side, squinting at it, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p039",
+          "speaker": "kid",
+          "text": "那如果印在彎彎的飲料罐上，",
+          "emotion": "歪頭追問"
+        },
+        {
+          "id": "p040",
+          "speaker": "kid",
+          "text": "格子都彎掉了，也能對準嗎？",
+          "emotion": "歪頭追問"
+        }
+      ]
+    },
+    {
+      "id": "alignment-can",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a curved mint-blue aluminium beverage can on a wooden table showing a geometric mosaic grid with one small nested alignment square glowing coral near the lower right",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p041",
+          "speaker": "chief",
+          "text": "日常掃的改良版叫 Model 2，裡面藏了小校正圖形。",
+          "emotion": "溫和清楚"
+        },
+        {
+          "id": "p042",
+          "speaker": "chief",
+          "text": "印在彎曲罐子上，鏡頭也能參照這顆小框把格子對齊！",
+          "emotion": "溫和清楚"
+        }
+      ]
+    },
+    {
+      "id": "chief-tilted-angle",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle close-up at a sunlit cafe table of a tilted sleek smartphone projecting a glowing mint-green alignment grid onto a table stand's three corner boxes and tiny alignment box with a mint check",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p043",
+          "speaker": "chief",
+          "text": "就算你坐在餐桌斜邊、拿手機斜斜地拍過去，"
+        },
+        {
+          "id": "p044",
+          "speaker": "chief",
+          "text": "畫面稍微變形了，它照樣能幫忙順利讀出來！"
+        }
+      ]
+    },
+    {
+      "id": "kid-why-second-failed",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the girl at a warm wooden bubble-tea counter holding up a square acrylic stand with a stylized dark mosaic grid crowded right up to its edges by floral vine trim with both eyebrows raised in confusion, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p045",
+          "speaker": "kid",
+          "text": "既有三個大角又有小校正框，",
+          "emotion": "不解追問"
+        },
+        {
+          "id": "p046",
+          "speaker": "kid",
+          "text": "為什麼第二張乾淨新碼還是失敗？",
+          "emotion": "不解追問"
+        }
+      ]
+    },
+    {
+      "id": "quiet-zone-compare",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of two square mosaic stands on an oak counter: the left sits inside a clean wide four-tile pale margin with a mint check glow, the right has floral vines pressing right against its outer dark tiles",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p047",
+          "speaker": "chief",
+          "text": "兇手就在最外面那圈白邊！官方叫留白區，也叫靜區。",
+          "emotion": "轉折強調"
+        },
+        {
+          "id": "p048",
+          "speaker": "chief",
+          "text": "規定四個邊都要留出四格寬、完全不印東西的乾淨空白！",
+          "emotion": "轉折強調"
+        }
+      ]
+    },
+    {
+      "id": "chief-quiet-zone-fail",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the chief at a tidy oak desk by a bright window framing a small square with her fingers and shaking her head, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p049",
+          "speaker": "chief",
+          "text": "那張新碼把花邊貼太近、吃掉四格白邊，"
+        },
+        {
+          "id": "p050",
+          "speaker": "chief",
+          "text": "鏡頭連碼的邊界在哪裡都分不出來，直接卡在找邊界！"
+        }
+      ]
+    },
+    {
+      "id": "kid-ch1-turn",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the girl at a warm wooden bubble-tea counter holding up a square acrylic stand with a stylized dark mosaic grid, three nested corner squares and a brown iced-coffee splash near the middle and pointing right at the brown coffee blotch in the middle, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p051",
+          "speaker": "kid",
+          "text": "原來第二張連邊界都沒抓到！",
+          "emotion": "恍然大悟又追問"
+        },
+        {
+          "id": "p052",
+          "speaker": "kid",
+          "text": "那第一張被蓋住的黑格，怎麼救回來？",
+          "emotion": "恍然大悟又追問"
+        }
+      ]
+    },
+    {
+      "id": "chief-modules-intro",
+      "chapter": "八位元裝成一盒，太空數學補缺口",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the chief in a cheerful wooden craft studio pinching two fingers together to show one tiny square tile with a calm smile, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p053",
+          "speaker": "chief",
+          "text": "邊界跟方向抓穩之後，鏡頭才開始讀裡面的黑白小方點。"
+        },
+        {
+          "id": "p054",
+          "speaker": "chief",
+          "text": "每一顆黑白小方點，正式名字叫做一個『模組』！"
+        }
+      ]
+    },
+    {
+      "id": "versions-small-to-mid",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of three square wooden mosaic boards on a craft bench growing step by step from a coarse twenty-one-by-twenty-one grid on the left to medium grids on the right",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p055",
+          "speaker": "chief",
+          "text": "最小的版本一，整張是二十一乘二十一顆模組；",
+          "emotion": "清楚有畫面感"
+        },
+        {
+          "id": "p056",
+          "speaker": "chief",
+          "text": "每往上升一版，每邊就多長出四顆模組。",
+          "emotion": "清楚有畫面感"
+        }
+      ]
+    },
+    {
+      "id": "version-forty-giant",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a huge finely detailed square wooden mosaic board resting on an easel in a sunlit workshop beside a tiny coarse Version-one board",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p057",
+          "speaker": "chief",
+          "text": "一路長到最大的版本四十，每邊有一百七十七顆模組，",
+          "emotion": "驚嘆推進"
+        },
+        {
+          "id": "p058",
+          "speaker": "chief",
+          "text": "最多能塞進七千零八十九個純數字，或四千兩百九十六個英數字！",
+          "emotion": "驚嘆推進"
+        }
+      ]
+    },
+    {
+      "id": "kid-copy-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the girl in a cheerful wooden craft studio holding up three fingers with a cheeky confident grin, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p059",
+          "speaker": "kid",
+          "text": "我猜到怎麼救咖啡漬了！",
+          "emotion": "得意猜錯"
+        },
+        {
+          "id": "p060",
+          "speaker": "kid",
+          "text": "一定是把同一個網址抄三遍吧？",
+          "emotion": "得意猜錯"
+        }
+      ]
+    },
+    {
+      "id": "chief-copy-refute",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the chief in a sunlit wooden craft studio raising one open hand to gently shake off a guess, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p061",
+          "speaker": "chief",
+          "text": "要是傻傻抄三遍，三分之二的空間都浪費在重複的字了！",
+          "emotion": "笑著推翻"
+        },
+        {
+          "id": "p062",
+          "speaker": "chief",
+          "text": "萬一那滴冰咖啡剛好把備份也蓋住，不就照樣完蛋？",
+          "emotion": "笑著推翻"
+        }
+      ]
+    },
+    {
+      "id": "chief-codeword-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the chief in a cheerful wooden craft studio holding a small eight-slot wooden box of four dark and four light pegs, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p063",
+          "speaker": "chief",
+          "text": "真正的辦法聰明多了！手機不是單獨一顆一顆救，"
+        },
+        {
+          "id": "p064",
+          "speaker": "chief",
+          "text": "而是把八個位元打包成一小盒，叫做一個『碼字』。"
+        }
+      ]
+    },
+    {
+      "id": "kid-one-dot-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the girl in a cheerful wooden craft studio squinting closely at one chunky wooden mosaic square held between two fingers, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p065",
+          "speaker": "kid",
+          "text": "一個碼字，",
+          "emotion": "確認細節"
+        },
+        {
+          "id": "p066",
+          "speaker": "kid",
+          "text": "不是我看到的單獨一小格喔？",
+          "emotion": "確認細節"
+        }
+      ]
+    },
+    {
+      "id": "peg-boxes-row",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of neat light-wood square trays on a workbench, each tray holding eight dark-and-light round wooden pegs packed snugly together as one unit",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p067",
+          "speaker": "chief",
+          "text": "對，要八個位元合起來才算一盒碼字！",
+          "emotion": "肯定清楚"
+        },
+        {
+          "id": "p068",
+          "speaker": "chief",
+          "text": "原資料裝成一排小盒，後面再加上數學算出來的修正碼字。",
+          "emotion": "肯定清楚"
+        }
+      ]
+    },
+    {
+      "id": "chief-rs-origin",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the chief in front of a starry night window pointing upward with a proud intrigued smile, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p069",
+          "speaker": "chief",
+          "text": "這套數學叫做 Reed-Solomon 碼，",
+          "emotion": "驚喜揭曉"
+        },
+        {
+          "id": "p070",
+          "speaker": "chief",
+          "text": "就是開頭提到，連遙遠太空通訊都靠它保護訊號！",
+          "emotion": "驚喜揭曉"
+        }
+      ]
+    },
+    {
+      "id": "space-probe-signal",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a golden-winged planetary space probe floating in starry deep space sending glowing wave rings back toward a small blue Earth",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p071",
+          "speaker": "chief",
+          "text": "人造衛星和行星探測器從外太空傳資料回地球，",
+          "emotion": "畫面感強"
+        },
+        {
+          "id": "p072",
+          "speaker": "chief",
+          "text": "就算半路遇到通訊雜訊，也能靠它把錯字救回來。",
+          "emotion": "畫面感強"
+        }
+      ]
+    },
+    {
+      "id": "music-cd-gleam",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shiny silver compact disc spinning inside a player with rainbow reflections gleaming across one tiny surface scratch while musical notes float up",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p073",
+          "speaker": "chief",
+          "text": "後來連家裡的音樂 CD 刮到一點點還能照常唱歌，"
+        },
+        {
+          "id": "p074",
+          "speaker": "chief",
+          "text": "背後用的也是同一套數學！"
+        }
+      ]
+    },
+    {
+      "id": "kid-math-how",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the girl at a tidy oak desk by a bright window tilting her head with big curious eyes and both palms open, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p075",
+          "speaker": "kid",
+          "text": "沒有抄備份，",
+          "emotion": "好奇追問"
+        },
+        {
+          "id": "p076",
+          "speaker": "kid",
+          "text": "光靠數學怎麼算出被蓋住什麼？",
+          "emotion": "好奇追問"
+        }
+      ]
+    },
+    {
+      "id": "three-bowls-setup",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of three ceramic bowls on an oak table holding three, five and two glass marbles beside a woven basket holding ten marbles",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p077",
+          "speaker": "chief",
+          "text": "打個最簡單的比方：假設你有三個數字，三、五、二。",
+          "emotion": "親切比喻"
+        },
+        {
+          "id": "p078",
+          "speaker": "chief",
+          "text": "你不抄備份，只在旁邊多記一條線索：三個加起來等於十。",
+          "emotion": "親切比喻"
+        }
+      ]
+    },
+    {
+      "id": "three-bowls-solve",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the same three ceramic bowls where a brown coffee napkin covers the middle bowl while five glowing marbles appear in a thought bubble above it",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p079",
+          "speaker": "chief",
+          "text": "就算中間那個數被蓋住，你拿十減掉三和二，",
+          "emotion": "輕快揭曉"
+        },
+        {
+          "id": "p080",
+          "speaker": "chief",
+          "text": "馬上就算出中間一定是五！",
+          "emotion": "輕快揭曉",
+          "pause_after_ms": 200
+        }
+      ]
+    },
+    {
+      "id": "chief-unknown-spot",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the chief at a tidy oak desk by a bright window raising two fingers seriously to make a clear distinction, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p081",
+          "speaker": "chief",
+          "text": "當然，真正的演算法比加法厲害得多！",
+          "emotion": "轉折推進"
+        },
+        {
+          "id": "p082",
+          "speaker": "chief",
+          "text": "既然手機事先不知道哪一盒髒了，怎麼抓出來修？",
+          "emotion": "轉折推進"
+        }
+      ]
+    },
+    {
+      "id": "two-for-one-boxes",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a wooden workbench of one coffee-stained peg-box on the left balanced on a small wooden seesaw against two gold-trimmed rescue peg-boxes on the right",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p083",
+          "speaker": "chief",
+          "text": "它得同時抓出『哪一盒壞掉』，再算出『原本裝什麼』。",
+          "emotion": "清楚放慢"
+        },
+        {
+          "id": "p084",
+          "speaker": "chief",
+          "text": "所以每想救回一個壞碼字，就得事先準備兩個修正碼字！",
+          "emotion": "清楚放慢"
+        }
+      ]
+    },
+    {
+      "id": "chief-denso-example",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up on a cool pale-slate desk of ten neat rows of ten sky-blue eight-peg wooden boxes, half shaded under a translucent espresso coffee tint inside a glowing golden rescue bracket",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p085",
+          "speaker": "chief",
+          "text": "後來獨立的開發方 DENSO WAVE 舉過算例："
+        },
+        {
+          "id": "p086",
+          "speaker": "chief",
+          "text": "假設原本有一百盒資料碼字，希望壞掉五十盒也能救回來，"
+        }
+      ]
+    },
+    {
+      "id": "hundred-plus-hundred",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead medium shot of two equal neat blocks of tiny wooden peg-boxes on a table: dark-trimmed data boxes on the left and gold-trimmed rescue boxes on the right",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p087",
+          "speaker": "chief",
+          "text": "就得加上兩倍的一百盒修正盒，總共兩百盒，",
+          "emotion": "清楚有力"
+        },
+        {
+          "id": "p088",
+          "speaker": "chief",
+          "text": "官方把修正率算成百分之二十五！",
+          "emotion": "清楚有力"
+        }
+      ]
+    },
+    {
+      "id": "kid-fifty-percent-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the girl at a tidy oak desk by a bright window counting on her fingers with her brow furrowed in disbelief, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p089",
+          "speaker": "kid",
+          "text": "等一下！剛才說一百盒救回五十盒，",
+          "emotion": "抓到矛盾大聲問"
+        },
+        {
+          "id": "p090",
+          "speaker": "kid",
+          "text": "不是一半嗎？怎麼只算剛剛那二十五？",
+          "emotion": "抓到矛盾大聲問"
+        }
+      ]
+    },
+    {
+      "id": "chief-stain-hits-both",
+      "chapter": "號稱能救三成，為什麼不能隨便剪？",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the chief at a warm wooden bubble-tea counter smiling and spreading both hands wide as if a coffee drop just splashed, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p091",
+          "speaker": "chief",
+          "text": "因為冰咖啡滴下來的時候，才不會看路閃開修正碼字啊！",
+          "emotion": "好笑又清楚"
+        },
+        {
+          "id": "p092",
+          "speaker": "chief",
+          "text": "原本的資料盒跟後來的修正盒，統統印在同一張圖上。",
+          "emotion": "好笑又清楚"
+        }
+      ]
+    },
+    {
+      "id": "splash-across-all",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of dark-trimmed data boxes and gold-trimmed rescue boxes mingled on a wooden tray with a brown coffee splash covering a few of both kinds",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p093",
+          "speaker": "chief",
+          "text": "剛剛那兩百盒裡面，不管是哪五十盒髒掉都能修好。"
+        },
+        {
+          "id": "p094",
+          "speaker": "chief",
+          "text": "拿全部總碼字當分母一除，就是剛剛說的百分之二十五，對應 Q 級！"
+        }
+      ]
+    },
+    {
+      "id": "chief-four-levels-intro",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the chief in front of a tidy wooden bookcase holding up four fingers with a clear steady smile, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p095",
+          "speaker": "chief",
+          "text": "官方一共把錯誤修正分成 L、M、Q、H 四個等級：",
+          "emotion": "清楚列舉"
+        },
+        {
+          "id": "p096",
+          "speaker": "chief",
+          "text": "L 級大約能救總碼字的百分之七，M 級大約百分之十五，",
+          "emotion": "清楚列舉"
+        }
+      ]
+    },
+    {
+      "id": "four-shields-levels",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of four sturdy wooden shield emblems in ascending sizes lined up on a shelf, from a small sky-blue shield on the left to a large gold-trimmed shield on the right",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p097",
+          "speaker": "chief",
+          "text": "往上的 Q 級就是剛剛算過的約百分之二十五，",
+          "emotion": "清楚列舉"
+        },
+        {
+          "id": "p098",
+          "speaker": "chief",
+          "text": "最高的一級 H，大約能救回總碼字的百分之三十！",
+          "emotion": "清楚列舉"
+        }
+      ]
+    },
+    {
+      "id": "kid-scissors-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the girl in a cheerful wooden craft studio miming a snipping motion with two fingers like scissors and grinning, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p099",
+          "speaker": "kid",
+          "text": "剛剛說開到 H 級約救三成，",
+          "emotion": "天真大膽的錯猜"
+        },
+        {
+          "id": "p100",
+          "speaker": "kid",
+          "text": "那拿剪刀隨便剪掉三成也能掃囉？",
+          "emotion": "天真大膽的錯猜"
+        }
+      ]
+    },
+    {
+      "id": "chief-not-guaranteed",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a cool pale-porcelain studio desk in bright daylight of open silver craft scissors poised beside one big corner finder box of a mosaic card under a glowing coral-red warning cross",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p101",
+          "speaker": "chief",
+          "text": "千萬別拿剪刀試！官方明寫能不能救要看污損情況，",
+          "emotion": "急忙提醒，轉向觀眾"
+        },
+        {
+          "id": "p102",
+          "speaker": "chief",
+          "text": "可從來沒保證怎麼傷都一定救得回來！",
+          "emotion": "急忙提醒，轉向觀眾"
+        }
+      ]
+    },
+    {
+      "id": "chief-codewords-not-area",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the chief in a cheerful wooden craft studio holding up one small wooden peg-box in one hand and a wide square frame in the other, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p103",
+          "speaker": "chief",
+          "text": "更重要的是，剛剛那百分比算的是『總碼字盒數』，",
+          "emotion": "清楚強調"
+        },
+        {
+          "id": "p104",
+          "speaker": "chief",
+          "text": "根本不是整張圖讓你隨便撕掉的面積！",
+          "emotion": "清楚強調"
+        }
+      ]
+    },
+    {
+      "id": "corner-blotch-fail",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a square mosaic stand where one tiny dark ink drop lands squarely over one of the three nested corner frames while a phone viewfinder ring drifts unable to lock on",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p105",
+          "speaker": "chief",
+          "text": "你想，要是小小一滴墨水偏偏蓋爛了角落定位方框，",
+          "emotion": "對比鮮明"
+        },
+        {
+          "id": "p106",
+          "speaker": "chief",
+          "text": "手機連碼都認不出來，後面再多修正盒也輪不到上場！",
+          "emotion": "對比鮮明",
+          "pause_after_ms": 200
+        }
+      ]
+    },
+    {
+      "id": "kid-center-logo-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the girl at a warm wooden bubble-tea counter pointing at a square mosaic stand that has a small star emblem pasted right in its center, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p107",
+          "speaker": "kid",
+          "text": "難怪有些店家的碼中間貼小圖案，",
+          "emotion": "突然想通追問"
+        },
+        {
+          "id": "p108",
+          "speaker": "kid",
+          "text": "居然還是掃得出來！",
+          "emotion": "突然想通追問"
+        }
+      ]
+    },
+    {
+      "id": "chief-center-logo-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the chief at a warm wooden bubble-tea counter nodding approvingly while tapping the center of her open palm, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p109",
+          "speaker": "chief",
+          "text": "完全正確！小圖案貼在正中央，剛好避開三個角跟四周白邊。"
+        },
+        {
+          "id": "p110",
+          "speaker": "chief",
+          "text": "只要事先把容錯等級調高，預留夠多的修正碼字，"
+        }
+      ]
+    },
+    {
+      "id": "center-emblem-rescue",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a square wooden mosaic board with a small coral star emblem in the center while gold-trimmed rescue boxes along the side glow mint green",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p111",
+          "speaker": "chief",
+          "text": "手機掃到的時候，就會把中間被擋住的那幾盒，",
+          "emotion": "清楚揭曉"
+        },
+        {
+          "id": "p112",
+          "speaker": "chief",
+          "text": "直接當成壞掉的碼字，靠數學算回來！",
+          "emotion": "清楚揭曉"
+        }
+      ]
+    },
+    {
+      "id": "kid-logo-limit-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the girl at a warm wooden bubble-tea counter making a playfully big circle with both hands and raising her eyebrows, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p113",
+          "speaker": "kid",
+          "text": "原來那是先花掉救命額度喔！",
+          "emotion": "恍然又追問"
+        },
+        {
+          "id": "p114",
+          "speaker": "kid",
+          "text": "貼了圖就更怕再沾到髒東西囉？",
+          "emotion": "恍然又追問"
+        }
+      ]
+    },
+    {
+      "id": "chief-logo-limit-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the chief at a warm wooden bubble-tea counter pointing warmly at her with a confirming nod, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p115",
+          "speaker": "chief",
+          "text": "沒錯，先用掉一部分額度，再沾到咖啡就更容易爆表！",
+          "emotion": "讚許肯定"
+        },
+        {
+          "id": "p116",
+          "speaker": "chief",
+          "text": "那還記得開頭問你的嗎？要是兩張碼遮一樣大——",
+          "emotion": "拋出懸念"
+        }
+      ]
+    },
+    {
+      "id": "kid-pepper-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the girl at a tidy oak desk by a bright window tapping tiny imaginary dots in the air with one fingertip and smiling confidently, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p117",
+          "speaker": "chief",
+          "text": "一邊是一整滴濃咖啡，一邊是散開的小墨點，誰比較好救？",
+          "emotion": "拋出懸念"
+        },
+        {
+          "id": "p118",
+          "speaker": "kid",
+          "text": "散開的小墨點每顆都小小一點，",
+          "emotion": "直覺錯猜"
+        },
+        {
+          "id": "p119",
+          "speaker": "kid",
+          "text": "應該比較好救吧？",
+          "emotion": "直覺錯猜"
+        }
+      ]
+    },
+    {
+      "id": "chief-whole-box-rule",
+      "chapter": "一整滴咖啡救得活，散成小點卻全廢",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the chief at a tidy oak desk by a bright window holding up a wooden peg-box with both hands and shaking her head with a grin, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p120",
+          "speaker": "chief",
+          "text": "答案剛好顛倒！秘密就在剛剛說的『八位元一整盒一起算』！",
+          "emotion": "反轉揭曉",
+          "pause_after_ms": 200
+        },
+        {
+          "id": "p121",
+          "speaker": "chief",
+          "text": "Reed-Solomon 修錯時，最小單位就是一整盒碼字。",
+          "emotion": "反轉揭曉"
+        }
+      ]
+    },
+    {
+      "id": "one-peg-vs-eight-pegs",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two light-wood eight-peg boxes side by side on an oak table: the left box has just one peg smudged brown, the right box has all eight pegs smudged brown, and both carry the same single coral cross token",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p122",
+          "speaker": "chief",
+          "text": "在同一盒裡，不管你只弄髒一個位元，還是八個位元全毀，",
+          "emotion": "清楚對比"
+        },
+        {
+          "id": "p123",
+          "speaker": "chief",
+          "text": "在解碼器的帳本上，統統都記成『壞掉一盒碼字』！",
+          "emotion": "清楚對比"
+        }
+      ]
+    },
+    {
+      "id": "burst-puddle-two-boxes",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of eight neat wooden peg-boxes on a table where one round brown coffee puddle covers just two adjacent boxes while six boxes stay clean",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p124",
+          "speaker": "chief",
+          "text": "所以官方特別指出，它最擅長對付『集中的突發損傷』！",
+          "emotion": "畫面感強"
+        },
+        {
+          "id": "p125",
+          "speaker": "chief",
+          "text": "八滴咖啡聚成一坨蓋住兩盒，帳本只壞兩盒，輕鬆救活。",
+          "emotion": "畫面感強"
+        }
+      ]
+    },
+    {
+      "id": "scatter-drops-eight-boxes",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of eight neat wooden peg-boxes on a table where eight tiny dark ink droplets land one inside each of the eight separate boxes",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p126",
+          "speaker": "chief",
+          "text": "可是像撒胡椒一樣散進八個盒子裡，就算每盒只髒一點，",
+          "emotion": "戲劇轉折"
+        },
+        {
+          "id": "p127",
+          "speaker": "chief",
+          "text": "帳本一口氣壞八盒，額度就很容易爆表！",
+          "emotion": "戲劇轉折"
+        }
+      ]
+    },
+    {
+      "id": "kid-pepper-shock",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the girl at a tidy oak desk by a bright window holding both hands to her cheeks with wide round eyes, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p128",
+          "speaker": "kid",
+          "text": "每盒只沾一小點，",
+          "emotion": "驚訝恍然"
+        },
+        {
+          "id": "p129",
+          "speaker": "kid",
+          "text": "救命額度卻一下就被吃光了！",
+          "emotion": "驚訝恍然"
+        }
+      ]
+    },
+    {
+      "id": "kid-why-not-all-h",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the girl in a cheerful wooden craft studio raising one fist energetically with an eager look, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p130",
+          "speaker": "kid",
+          "text": "那既然 H 級能救最多盒，",
+          "emotion": "順勢追問"
+        },
+        {
+          "id": "p131",
+          "speaker": "kid",
+          "text": "為什麼不把每張碼都開到最高 H 級？",
+          "emotion": "順勢追問"
+        }
+      ]
+    },
+    {
+      "id": "chief-space-tradeoff",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the chief in a cheerful wooden craft studio spreading her hands like a crowded suitcase that will barely close, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p132",
+          "speaker": "chief",
+          "text": "因為修正碼字也要佔地盤啊，天下沒有白吃的午餐！",
+          "emotion": "幽默轉向觀眾"
+        },
+        {
+          "id": "p133",
+          "speaker": "chief",
+          "text": "同一版的格子總數固定，修正盒越多，原資料空間就越少。",
+          "emotion": "幽默轉向觀眾"
+        }
+      ]
+    },
+    {
+      "id": "v1-capacity-compare",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of two identical small twenty-one-by-twenty-one wooden trays: the left tray holds forty-one glass marbles with few rescue blocks, the right tray is packed with rescue blocks leaving seventeen marbles",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p134",
+          "speaker": "chief",
+          "text": "還記得剛剛最小的版本一嗎？開 L 級最多裝四十一個純數字；"
+        },
+        {
+          "id": "p135",
+          "speaker": "chief",
+          "text": "一旦開到最高的 H 級，直接掉到只剩十七個數字！"
+        }
+      ]
+    },
+    {
+      "id": "chief-upgrade-needed",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up on a cool pale-porcelain tabletop of two equal wooden trays: the left tray neatly holds all glowing blue glass marbles, while the right tray full of golden shields spills blue marbles out",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p136",
+          "speaker": "chief",
+          "text": "反過來，要是有五十個純數字想印成碼，",
+          "emotion": "清楚推理"
+        },
+        {
+          "id": "p137",
+          "speaker": "chief",
+          "text": "版本二 M 級夠裝，改開 H 級只裝三十四個怎麼辦？",
+          "emotion": "清楚推理"
+        }
+      ]
+    },
+    {
+      "id": "version-upgrade-grid",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two square wooden mosaic boards on a craft desk: a smaller twenty-five-by-twenty-five board overflowing with beads beside a larger twenty-nine-by-twenty-nine board holding them all",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p138",
+          "speaker": "chief",
+          "text": "想維持 H 級塞進剛剛那五十個數，就得升級版本三，",
+          "emotion": "清楚推理"
+        },
+        {
+          "id": "p139",
+          "speaker": "chief",
+          "text": "長大成二十九乘二十九顆模組才裝得下！",
+          "emotion": "清楚推理"
+        }
+      ]
+    },
+    {
+      "id": "dense-sticker-blur",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two small square stickers of the exact same width on a beverage cup sleeve: the left has larger crisp dark squares, the right is crammed with tiny dense squares that blur slightly",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p140",
+          "speaker": "chief",
+          "text": "如果杯套或發票留給你的貼紙一樣小，格子變密、黑點縮太細，",
+          "emotion": "生活感提醒"
+        },
+        {
+          "id": "p141",
+          "speaker": "chief",
+          "text": "印表機稍微暈開或你手抖一下，反而更容易掃不出來！",
+          "emotion": "生活感提醒"
+        }
+      ]
+    },
+    {
+      "id": "kid-tradeoff-click",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the girl in a cheerful wooden craft studio giving a wry little grin with one hand on her forehead, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p142",
+          "speaker": "kid",
+          "text": "本來想讓它更耐髒，",
+          "emotion": "恍然失笑"
+        },
+        {
+          "id": "p143",
+          "speaker": "kid",
+          "text": "結果格子太擠反而更怕糊掉！",
+          "emotion": "恍然失笑"
+        }
+      ]
+    },
+    {
+      "id": "chief-factory-vs-clean",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up split view in bright light: on the left an oiled steel gear beside a rugged coarse-grid metal plate with a golden shield glow; on the right a clean glass lab dish beside a dense fine-grid card",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p144",
+          "speaker": "chief",
+          "text": "對！所以容易沾油污的工廠常選 Q 或 H 級，"
+        },
+        {
+          "id": "p145",
+          "speaker": "chief",
+          "text": "乾淨但資料量超大的地方就選 L 級。"
+        }
+      ]
+    },
+    {
+      "id": "chief-daily-m-level",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the chief in front of a tidy wooden bookcase making an okay gesture with a warm reassuring smile, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p146",
+          "speaker": "chief",
+          "text": "而日常菜單最常選剛剛那約百分之十五的 M 級。",
+          "emotion": "親切收束"
+        },
+        {
+          "id": "p147",
+          "speaker": "chief",
+          "text": "現在看回飲料店那兩張碼，你抓出差別了嗎？",
+          "emotion": "親切收束"
+        }
+      ]
+    },
+    {
+      "id": "kid-solve-first",
+      "chapter": "飲料店那兩張碼，命運全解開了",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the girl at a warm wooden bubble-tea counter holding up a square acrylic stand with a stylized dark mosaic grid, three nested corner squares and a brown iced-coffee splash near the middle with a huge proud grin, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p148",
+          "speaker": "kid",
+          "text": "抓到了！飲料店那張沾咖啡的碼，",
+          "emotion": "自己想通，超開心"
+        },
+        {
+          "id": "p149",
+          "speaker": "kid",
+          "text": "冰咖啡沒蓋到剛剛那三個角跟白邊！",
+          "emotion": "自己想通，超開心"
+        }
+      ]
+    },
+    {
+      "id": "kid-solve-second",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the girl at a warm wooden bubble-tea counter pointing smartly with one finger at a square acrylic stand with a stylized dark mosaic grid crowded right up to its edges by floral vine trim and beaming, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p150",
+          "speaker": "kid",
+          "text": "而且咖啡聚成一塊，只弄壞幾盒碼字，",
+          "emotion": "篤定收束"
+        },
+        {
+          "id": "p151",
+          "speaker": "kid",
+          "text": "第二張花邊吃掉白邊，連框都找不到！",
+          "emotion": "篤定收束"
+        }
+      ]
+    },
+    {
+      "id": "chief-summary-two-steps",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the chief at a tidy oak desk by a bright window holding up two fingers warmly toward the viewer, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p152",
+          "speaker": "chief",
+          "text": "答得漂亮！先靠剛剛那三個角、校正框和留白區抓準位置，",
+          "emotion": "溫柔收尾，轉向觀眾"
+        },
+        {
+          "id": "p153",
+          "speaker": "chief",
+          "text": "再靠剛剛那排 Reed-Solomon 修正盒補回缺口。",
+          "emotion": "溫柔收尾，轉向觀眾"
+        }
+      ]
+    },
+    {
+      "id": "chief-daily-look",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up by a sunlit cafe window of the chief holding a takeaway cup sporting a neat mosaic sticker on its sleeve, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p154",
+          "speaker": "chief",
+          "text": "下次你拿到飲料杯或發票上的方形碼，",
+          "emotion": "輕快邀請"
+        },
+        {
+          "id": "p155",
+          "speaker": "chief",
+          "text": "不妨看看它的白邊，找找右下附近有沒有小校正框！",
+          "emotion": "輕快邀請"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the girl at a warm wooden bubble-tea counter giving a big cheerful thumbs-up with one hand and a bright grin, the same curious girl with a short bob, straight bangs, one cowlick on top, navy hooded jacket and long navy trousers",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p156",
+          "speaker": "kid",
+          "text": "原來如此！",
+          "emotion": "開心大聲"
+        }
+      ]
+    },
+    {
+      "id": "outro-chief",
+      "template": "shot",
+      "data": {
+        "prompt": "Head-and-shoulders close-up of the chief leaning lightly on her oak desk with one finger raised and a curious smile, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p157",
+          "speaker": "chief",
+          "text": "你掃過最慘烈的一張 QR Code 長什麼樣？",
+          "emotion": "像聊天問觀眾"
+        },
+        {
+          "id": "p158",
+          "speaker": "chief",
+          "text": "最後有沒有成功嗶過？留言告訴我們！",
+          "emotion": "像聊天問觀眾"
+        }
+      ]
+    },
+    {
+      "id": "outro-wave",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-up medium shot of the chief standing beside a sunlit window with potted green plants, waving goodbye warmly, the same warm woman in her thirties with dark hair in a low ponytail, round glasses, mustard cardigan over an ivory blouse",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p159",
+          "speaker": "chief",
+          "text": "想一起拆解每天都在用的生活機關，就訂閱原來如此事務所！",
+          "emotion": "誠懇溫暖"
+        }
+      ]
+    }
+  ]
+}

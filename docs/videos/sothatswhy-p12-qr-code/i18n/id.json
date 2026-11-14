@@ -1,0 +1,679 @@
+{
+  "title": "QR Code Kena Kopi Masih Bunyi, Kok yang Baru Gagal? | Oh Begitu Toh",
+  "description": "QR Code di meja kedai minuman ketumpahan es kopi, tapi saat diarahkan kamera HP malah langsung 'bip' terbaca. Tepat di sebelahnya ada QR Code baru yang bersih, hanya bingkai bunganya terlalu mepet—dan gagal terus saat dipindai. Sama-sama kotak hitam-putih, apa bedanya?\n\nDi episode ini, Bu Kepala dan Wen membongkar apa yang terjadi sepersekian detik saat HP memindai kode: bagaimana tiga sudut mengunci arah 360 derajat, bagaimana tim dua orang mengukur tumpukan brosur sebelum rilis 1994 demi mencari rasio hitam-putih paling langka, bagaimana matematika wahana antariksa dan CD musik menghitung balik data yang tertutup, serta kenapa 'koreksi hingga ~30%' bukan berarti boleh digunting asal dan kenapa satu tetes besar kopi berbeda nasib dengan bintik tinta menyebar.\n\nIlustrasi di episode ini dibuat dengan AI; kotak hitam-putih di layar hanyalah diagram konsep, bukan kode untuk dipindai. Spesifikasi dan contoh resmi tercantum di referensi bawah.\n\nData per 2026-11-14",
+  "tags": [
+    "QR Code",
+    "Cara Kerja QR Code",
+    "Koreksi Error QR",
+    "Reed-Solomon",
+    "Kode Koreksi Kesalahan",
+    "Cara Kerja Barcode",
+    "Sains Populer",
+    "Oh Begitu Toh"
+  ],
+  "thumbnail": {
+    "tag": "TEKNO",
+    "headline": "Kopi,\n**kok bip?**",
+    "sub": "Kode baru gagal?"
+  },
+  "chapters": {
+    "two-stands-open": "Kena Kopi Bisa, yang Bersih Malah Gagal",
+    "kid-book-guess": "Tiga Sudut Kunci Arah, Tanpa Tepi Putih Buta",
+    "chief-modules-intro": "Kotak 8-Bit & Matematika Luar Angkasa",
+    "chief-stain-hits-both": "Kenapa ~30% Tak Boleh Asal Digunting?",
+    "chief-whole-box-rule": "Setetes Kopi Selamat, Bintik Kecil Tamat",
+    "kid-solve-first": "Kasus Terpecahkan! Dua Langkah Baca QR"
+  },
+  "source_hashes": {
+    "title": "3e83c6ee6f4f",
+    "description": "c132dab06a61",
+    "tags": "ef83f6cf0d13",
+    "chapters": {
+      "two-stands-open": "effebff87072",
+      "kid-book-guess": "fe8aeb6c3962",
+      "chief-modules-intro": "73b040322617",
+      "chief-stain-hits-both": "bff6d984de96",
+      "chief-whole-box-rule": "4ddfef8e5ced",
+      "kid-solve-first": "cd9ba93d3c86"
+    },
+    "thumbnail": "3e5cabdd20fd"
+  },
+  "lines": {
+    "p001": {
+      "source_hash": "70186a9eea7f",
+      "text": "Bu! QR kena kopi"
+    },
+    "p002": {
+      "source_hash": "74f7e2d26c21",
+      "text": "masih bip!"
+    },
+    "p003": {
+      "source_hash": "18d1e62a8348",
+      "text": "Sebelahnya baru dan bersih,"
+    },
+    "p004": {
+      "source_hash": "cd0ac0714165",
+      "text": "bunga mepet malah gagal!"
+    },
+    "p005": {
+      "source_hash": "851d261ebdc9",
+      "text": "Apa bedanya? Apa yang diukur dua penemunya di brosur?"
+    },
+    "p006": {
+      "source_hash": "14a2a5a6d1e6",
+      "text": "Kok matematika wahana antariksa ada di persegi kecil?"
+    },
+    "p007": {
+      "source_hash": "f5b154da4070",
+      "text": "Kok noda bisa dibaca?"
+    },
+    "p008": {
+      "source_hash": "f907d6a651d8",
+      "text": "Malah setetes kopi dan bintik tinta beda nasib! Tebak caranya?"
+    },
+    "p009": {
+      "source_hash": "c5563027aa2d",
+      "text": "Saat HP baca kotak itu,"
+    },
+    "p010": {
+      "source_hash": "4cc3d495995a",
+      "text": "dari kiri atas bak buku?"
+    },
+    "p011": {
+      "source_hash": "c62b1709f7d8",
+      "text": "Kalau kaku kayak buku, miring dikit langsung salah!"
+    },
+    "p012": {
+      "source_hash": "396334be6f90",
+      "text": "Barcode 1D lama memang berjajar satu arah mendatar."
+    },
+    "p013": {
+      "source_hash": "132c44f79d4b",
+      "text": "Cuma muat sekitar 20 karakter,"
+    },
+    "p014": {
+      "source_hash": "531dc9608a96",
+      "text": "laser gagal bila tak memotong semua garis."
+    },
+    "p015": {
+      "source_hash": "1416c46f94d1",
+      "text": "QR persegi menyimpan data mendatar dan menurun,"
+    },
+    "p016": {
+      "source_hash": "7f7b76939392",
+      "text": "plus kotak pencari besar di 3 sudutnya!"
+    },
+    "p017": {
+      "source_hash": "5c9a5df87c8f",
+      "text": "Mau tegak, miring, atau terbalik,"
+    },
+    "p018": {
+      "source_hash": "ae5eb9a4af11",
+      "text": "putar 360 derajat pun, tiga sudut langsung tahu posisinya!"
+    },
+    "p019": {
+      "source_hash": "eea652b34685",
+      "text": "Tunggu, persegi punya 4 sudut!"
+    },
+    "p020": {
+      "source_hash": "ae31440ad98c",
+      "text": "Kenapa kurang satu?"
+    },
+    "p021": {
+      "source_hash": "9041ac6531da",
+      "text": "Bayangkan kalau keempat sudut digambar kotak kembar,"
+    },
+    "p022": {
+      "source_hash": "0056b5cf197e",
+      "text": "diputar setengah lingkaran, mana atas mana bawah?"
+    },
+    "p023": {
+      "source_hash": "46f404ceafd4",
+      "text": "Karena sudut keempat kosong,"
+    },
+    "p024": {
+      "source_hash": "2b49d673b919",
+      "text": "diputar pun, atas-bawah langsung terbaca!"
+    },
+    "p025": {
+      "source_hash": "a61a8435105a",
+      "text": "Meja penuh garis hitam,"
+    },
+    "p026": {
+      "source_hash": "35963b7476e5",
+      "text": "kok tak salah lihat?"
+    },
+    "p027": {
+      "source_hash": "d033b0e2465a",
+      "text": "Ingat 2 insinyur Jepang tadi?"
+    },
+    "p028": {
+      "source_hash": "1e2ee20d6498",
+      "text": "Saat rilis 1994, tim Masahiro Hara di DENSO cuma berdua!"
+    },
+    "p029": {
+      "source_hash": "4342cc3be0d4",
+      "text": "QR: Quick Response, respons cepat."
+    },
+    "p030": {
+      "source_hash": "101d90541b4b",
+      "text": "Kalau garis tabel dikira sudut QR, mana bisa cepat!"
+    },
+    "p031": {
+      "source_hash": "68177d8a6e2f",
+      "text": "Dipilih persegi yang jarang ada,"
+    },
+    "p032": {
+      "source_hash": "90bdb6570bf5",
+      "text": "lalu ubah tumpukan brosur, majalah, kardus ke hitam-putih!"
+    },
+    "p033": {
+      "source_hash": "75a092d70bd6",
+      "text": "Berhari-hari pagi sampai malam, mereka ukur lebar garis."
+    },
+    "p034": {
+      "source_hash": "96e709668c86",
+      "text": "Tebak, rasio mana paling langka di cetakan itu?"
+    },
+    "p035": {
+      "source_hash": "993ed47ce875",
+      "text": "Irama paling langka itu 1 : 1 : 3 : 1 : 1!"
+    },
+    "p036": {
+      "source_hash": "a5d500205ad0",
+      "text": "Potong tengah kotak sudut: hitam-putih-hitam-putih-hitam pas begitu!"
+    },
+    "p037": {
+      "source_hash": "a0b0ee56d7d2",
+      "text": "Mau dipotong datar, tegak, miring,"
+    },
+    "p038": {
+      "source_hash": "6940933c9955",
+      "text": "ketemu 1:1:3:1:1 langsung yakin itu kode QR!"
+    },
+    "p039": {
+      "source_hash": "08b3cb4dc77a",
+      "text": "Kalau di kaleng,"
+    },
+    "p040": {
+      "source_hash": "25a0f6dfcb4e",
+      "text": "kotaknya melengkung?"
+    },
+    "p041": {
+      "source_hash": "bb3b3bed4add",
+      "text": "QR sehari-hari itu Model 2, punya pola pelurus kecil."
+    },
+    "p042": {
+      "source_hash": "235bffab42ff",
+      "text": "Di kaleng lengkung pun, kotak ini merapikan grid!"
+    },
+    "p043": {
+      "source_hash": "c0c6707a84fc",
+      "text": "Walau dipotret miring dari meja,"
+    },
+    "p044": {
+      "source_hash": "99411e023ced",
+      "text": "sedikit melenceng tetap terbaca mulus!"
+    },
+    "p045": {
+      "source_hash": "60b5279bc867",
+      "text": "Ada 3 sudut dan pola pas,"
+    },
+    "p046": {
+      "source_hash": "72c58e738dd5",
+      "text": "kok QR bersih kedua gagal?"
+    },
+    "p047": {
+      "source_hash": "a1e6fe2b8ed1",
+      "text": "Biangnya tepi putih luar! Resminya margin atau zona tenang."
+    },
+    "p048": {
+      "source_hash": "fba578e49592",
+      "text": "Empat sisi wajib punya tepi putih kosong selebar 4 modul!"
+    },
+    "p049": {
+      "source_hash": "644e5d07c4f3",
+      "text": "Bunga memakan 4 kotak tepi putih itu,"
+    },
+    "p050": {
+      "source_hash": "693ed9398af5",
+      "text": "kamera gagal cari batasnya, macet di awal!"
+    },
+    "p051": {
+      "source_hash": "c74161db9964",
+      "text": "Batasnya tak ketemu!"
+    },
+    "p052": {
+      "source_hash": "efd408d62313",
+      "text": "Lalu bagaimana titik hitam itu pulih?"
+    },
+    "p053": {
+      "source_hash": "8592f2e11ab4",
+      "text": "Batas dan arah pas, barulah baca titik hitam-putih."
+    },
+    "p054": {
+      "source_hash": "7cb3dd845256",
+      "text": "Tiap titik hitam-putih resmi disebut 'modul'!"
+    },
+    "p055": {
+      "source_hash": "ddb9c1b2bf35",
+      "text": "Versi 1 itu 21 kali 21 modul;"
+    },
+    "p056": {
+      "source_hash": "1687342d771b",
+      "text": "tiap naik versi, sisi tambah 4."
+    },
+    "p057": {
+      "source_hash": "82f7458f1b25",
+      "text": "Versi 40 punya 177 modul per sisi,"
+    },
+    "p058": {
+      "source_hash": "8f784c257d3e",
+      "text": "muat 7.089 angka atau 4.296 karakter!"
+    },
+    "p059": {
+      "source_hash": "5a9d49745d6f",
+      "text": "Aku tahu triknya!"
+    },
+    "p060": {
+      "source_hash": "cbc79840edd2",
+      "text": "Link-nya disalin tiga kali ya?"
+    },
+    "p061": {
+      "source_hash": "df4b996dcb72",
+      "text": "Disalin tiga kali buang dua pertiga ruang cuma buat ulang!"
+    },
+    "p062": {
+      "source_hash": "3f35996cfd49",
+      "text": "Kalau kopi tutup cadangannya, tamat juga!"
+    },
+    "p063": {
+      "source_hash": "0a836fe6493d",
+      "text": "Cara aslinya lebih pintar! Tak per titik,"
+    },
+    "p064": {
+      "source_hash": "37f7a22dbe54",
+      "text": "8 bit dikemas jadi satu kotak: 'codeword'."
+    },
+    "p065": {
+      "source_hash": "b091781fac96",
+      "text": "Sekotak"
+    },
+    "p066": {
+      "source_hash": "c43ee8dc3df7",
+      "text": "bukan satu titik kecil?"
+    },
+    "p067": {
+      "source_hash": "1a8ba2f73ea7",
+      "text": "Ya, 8 bit digabung jadi 1 kotak codeword!"
+    },
+    "p068": {
+      "source_hash": "82e893c261db",
+      "text": "Kotak data berjajar, lalu ditambah kotak koreksi matematika."
+    },
+    "p069": {
+      "source_hash": "29d00f55910b",
+      "text": "Kode Reed-Solomon,"
+    },
+    "p070": {
+      "source_hash": "c4be9cc81a8d",
+      "text": "pelindung sinyal komunikasi luar angkasa tadi!"
+    },
+    "p071": {
+      "source_hash": "10e3dcd38f9f",
+      "text": "Satelit dan wahana kirim data dari antariksa;"
+    },
+    "p072": {
+      "source_hash": "22047c8b461b",
+      "text": "kena gangguan pun, byte salah dipulihkan."
+    },
+    "p073": {
+      "source_hash": "8fcbf5e6c06d",
+      "text": "CD musik tergores dikit pun tetap nyanyi,"
+    },
+    "p074": {
+      "source_hash": "a13bfe6a535d",
+      "text": "pakai matematika sama!"
+    },
+    "p075": {
+      "source_hash": "b7f7043bbcb9",
+      "text": "Lho,"
+    },
+    "p076": {
+      "source_hash": "c41c90fb86b2",
+      "text": "tanpa salinan kok bisa tahu?"
+    },
+    "p077": {
+      "source_hash": "d81507e45401",
+      "text": "Contoh gampang: misal kamu punya tiga angka, 3, 5, dan 2."
+    },
+    "p078": {
+      "source_hash": "01bed37830e1",
+      "text": "Tanpa salinan, catat petunjuk: ketiganya jumlahnya 10."
+    },
+    "p079": {
+      "source_hash": "f069a45a56f8",
+      "text": "Tengah tertutup pun, 10 kurangi 3 dan 2,"
+    },
+    "p080": {
+      "source_hash": "08bfe40b0ca2",
+      "text": "ketahuan tengahnya pasti 5!"
+    },
+    "p081": {
+      "source_hash": "2e03b21c3faa",
+      "text": "Algoritma aslinya jauh di atas penjumlahan!"
+    },
+    "p082": {
+      "source_hash": "4b64074fc75b",
+      "text": "HP tak tahu kotak mana kotor, gimana carinya?"
+    },
+    "p083": {
+      "source_hash": "b4e5ad75beb8",
+      "text": "Ia harus cari KOTAK MANA rusak sekaligus APA isinya."
+    },
+    "p084": {
+      "source_hash": "41267e231438",
+      "text": "Maka pulihkan 1 kotak rusak butuh 2 kotak koreksi!"
+    },
+    "p085": {
+      "source_hash": "73c8df6aaf2c",
+      "text": "DENSO WAVE beri contoh hitungan:"
+    },
+    "p086": {
+      "source_hash": "9ceb07327e8b",
+      "text": "Dari 100 kotak data, agar 50 rusak tetap selamat,"
+    },
+    "p087": {
+      "source_hash": "22e256783bdf",
+      "text": "tambah dua kali: 100 koreksi, total 200,"
+    },
+    "p088": {
+      "source_hash": "2c9383a0e9ac",
+      "text": "resminya tingkat koreksi 25%!"
+    },
+    "p089": {
+      "source_hash": "063ca5925848",
+      "text": "Lho! 50 dari 100"
+    },
+    "p090": {
+      "source_hash": "304994e3b52a",
+      "text": "kan separuh? Kok 25%?"
+    },
+    "p091": {
+      "source_hash": "9b7216d56177",
+      "text": "Tetesan kopi tak pilih-pilih hindari kotak koreksi!"
+    },
+    "p092": {
+      "source_hash": "e86fce2f077b",
+      "text": "Kotak data dan koreksi tercetak di gambar yang sama."
+    },
+    "p093": {
+      "source_hash": "dd3d49e2b695",
+      "text": "Dari 200 kotak itu, 50 mana pun kotor bisa pulih."
+    },
+    "p094": {
+      "source_hash": "78fe349e0c4f",
+      "text": "Dibagi total semua kotak jadi 25%—itulah Level Q!"
+    },
+    "p095": {
+      "source_hash": "90f8fc04dc07",
+      "text": "Ada 4 level koreksi: L, M, Q, H."
+    },
+    "p096": {
+      "source_hash": "bedd1e70e169",
+      "text": "L pulihkan 7%, M sekitar 15%,"
+    },
+    "p097": {
+      "source_hash": "dd6398ac9ed1",
+      "text": "Level Q sekitar 25% seperti hitungan tadi"
+    },
+    "p098": {
+      "source_hash": "3b37edcf7efc",
+      "text": "dan tertinggi Level H pulihkan sekitar 30% kotak!"
+    },
+    "p099": {
+      "source_hash": "8260b3cd08d0",
+      "text": "Level H pulihkan 30%,"
+    },
+    "p100": {
+      "source_hash": "38eca550d0ee",
+      "text": "bisa dipotong 30%?"
+    },
+    "p101": {
+      "source_hash": "90339e8001b7",
+      "text": "Jangan gunting! Tergantung kondisi kerusakannya,"
+    },
+    "p102": {
+      "source_hash": "bf8dadbf53e4",
+      "text": "tak jamin rusak apa pun aman!"
+    },
+    "p103": {
+      "source_hash": "5144414819ac",
+      "text": "Apalagi persen itu dihitung dari seluruh codeword,"
+    },
+    "p104": {
+      "source_hash": "7f5054baa23a",
+      "text": "bukan luas kertas bebas disobek!"
+    },
+    "p105": {
+      "source_hash": "57d1d57e15ca",
+      "text": "Setetes kecil tinta saja merusak kotak sudut pencari,"
+    },
+    "p106": {
+      "source_hash": "e689e4523105",
+      "text": "HP gagal kenali QR, kotak koreksi tak sempat kerja!"
+    },
+    "p107": {
+      "source_hash": "8f47a5f2f9d1",
+      "text": "Pantas QR toko berlogo tengah"
+    },
+    "p108": {
+      "source_hash": "7f24063eab8b",
+      "text": "masih lancar dipindai!"
+    },
+    "p109": {
+      "source_hash": "3e99f7cb322c",
+      "text": "Tepat! Logo di tengah aman dari tiga sudut dan tepi putih."
+    },
+    "p110": {
+      "source_hash": "9d059f226706",
+      "text": "Asal level koreksi dinaikkan dulu agar cadangan cukup,"
+    },
+    "p111": {
+      "source_hash": "12af5ee1904d",
+      "text": "HP anggap kotak tengah yang tertutup logo"
+    },
+    "p112": {
+      "source_hash": "72ac83d0e311",
+      "text": "sebagai rusak lalu menghitungnya!"
+    },
+    "p113": {
+      "source_hash": "9eb9bb57836b",
+      "text": "Pakai jatah duluan!"
+    },
+    "p114": {
+      "source_hash": "c68b9161e8ac",
+      "text": "Berarti makin rawan kena noda?"
+    },
+    "p115": {
+      "source_hash": "e34d6e64668a",
+      "text": "Benar, jatah sudah terpakai, kena kopi cepat jebol!"
+    },
+    "p116": {
+      "source_hash": "e3c2067c5250",
+      "text": "Ingat tebakan awal? Kalau luas nodanya sama persis—"
+    },
+    "p117": {
+      "source_hash": "15b2df6064d5",
+      "text": "satu gumpal kopi vs bintik tinta nyebar, mana selamat?"
+    },
+    "p118": {
+      "source_hash": "d141ef46ea6f",
+      "text": "Bintik kecil mungil,"
+    },
+    "p119": {
+      "source_hash": "b38e127088a2",
+      "text": "lebih mudah?"
+    },
+    "p120": {
+      "source_hash": "9105aef59632",
+      "text": "Justru kebalik! Ingat: 8 bit dihitung satu kotak utuh!"
+    },
+    "p121": {
+      "source_hash": "8c72e305907d",
+      "text": "Unit terkecil Reed-Solomon: 1 kotak codeword penuh."
+    },
+    "p122": {
+      "source_hash": "b69ba961aab5",
+      "text": "Dalam satu kotak, kotor 1 bit atau hancur 8 bit semua,"
+    },
+    "p123": {
+      "source_hash": "966441f5a0ae",
+      "text": "di buku catatannya tetap '1 kotak rusak'!"
+    },
+    "p124": {
+      "source_hash": "961c587056b3",
+      "text": "Makanya ia paling jago hadapi 'kerusakan terpusat'!"
+    },
+    "p125": {
+      "source_hash": "e703e1a867fd",
+      "text": "Kopi mengumpul di 2 kotak cuma merusak 2—mudah selamat."
+    },
+    "p126": {
+      "source_hash": "792246506397",
+      "text": "Tapi menyebar bak merica ke 8 kotak, walau setitik,"
+    },
+    "p127": {
+      "source_hash": "e366e0d7e04c",
+      "text": "langsung 8 kotak rusak, kuota jebol!"
+    },
+    "p128": {
+      "source_hash": "1f6b8be99136",
+      "text": "Cuma setitik,"
+    },
+    "p129": {
+      "source_hash": "affa311700e7",
+      "text": "jatahnya langsung ludes!"
+    },
+    "p130": {
+      "source_hash": "def70e376f07",
+      "text": "Bila H paling kuat,"
+    },
+    "p131": {
+      "source_hash": "c9d0390ce1da",
+      "text": "kenapa tak semua pakai H?"
+    },
+    "p132": {
+      "source_hash": "f2895a054fb2",
+      "text": "Kotak koreksi makan ruang, tak ada yang gratis!"
+    },
+    "p133": {
+      "source_hash": "081c67ddc2ac",
+      "text": "Ukuran sama, makin banyak koreksi makin sempit ruang data."
+    },
+    "p134": {
+      "source_hash": "50765ab19037",
+      "text": "Di Versi 1 terkecil, Level L muat sampai 41 angka;"
+    },
+    "p135": {
+      "source_hash": "e1ab74667fc5",
+      "text": "begitu disetel ke H, anjlok sisa 17 angka!"
+    },
+    "p136": {
+      "source_hash": "f65fbbcb5ffa",
+      "text": "Mau cetak 50 angka jadi QR:"
+    },
+    "p137": {
+      "source_hash": "4fb090215a32",
+      "text": "Versi 2 M cukup, di H cuma 34!"
+    },
+    "p138": {
+      "source_hash": "56624c9c6a36",
+      "text": "Mau tetap H untuk 50 angka, wajib naik ke Versi 3,"
+    },
+    "p139": {
+      "source_hash": "20edd29fd918",
+      "text": "membesar jadi 29 kali 29 modul!"
+    },
+    "p140": {
+      "source_hash": "b5d2c0549f45",
+      "text": "Di stiker kecil gelas yang sama, titiknya jadi super rapat;"
+    },
+    "p141": {
+      "source_hash": "28eb8391519b",
+      "text": "tinta sedikit meleber atau tangan goyang malah gagal!"
+    },
+    "p142": {
+      "source_hash": "ee2d449911c4",
+      "text": "Mau tahan kotor,"
+    },
+    "p143": {
+      "source_hash": "c80c934c30c1",
+      "text": "jadi rapat dan mudah buram!"
+    },
+    "p144": {
+      "source_hash": "0b202cbf4c9c",
+      "text": "Ya! Pabrik berminyak pilih Q atau H,"
+    },
+    "p145": {
+      "source_hash": "cddb66d80dd7",
+      "text": "tempat bersih berdata besar pilih Level L."
+    },
+    "p146": {
+      "source_hash": "284bb5cd7786",
+      "text": "Menu harian biasa pilih level M 15%."
+    },
+    "p147": {
+      "source_hash": "72c414b86054",
+      "text": "Lihat 2 QR kedai tadi, tahu bedanya?"
+    },
+    "p148": {
+      "source_hash": "235535790b13",
+      "text": "Ketemu! Pada QR yang kena kopi,"
+    },
+    "p149": {
+      "source_hash": "937372fee198",
+      "text": "es kopi tak menutup 3 sudut dan tepi putih!"
+    },
+    "p150": {
+      "source_hash": "97a47ebe4c15",
+      "text": "Mengumpul, rusak dikit;"
+    },
+    "p151": {
+      "source_hash": "d635acff1aea",
+      "text": "yang kedua bunganya makan tepi putih!"
+    },
+    "p152": {
+      "source_hash": "cbb561cfe954",
+      "text": "Mantap! Tiga sudut, kotak kecil dan tepi putih kunci posisi,"
+    },
+    "p153": {
+      "source_hash": "79f8366b1a01",
+      "text": "lalu kotak Reed-Solomon menambal celahnya."
+    },
+    "p154": {
+      "source_hash": "b650343d808b",
+      "text": "Lihat QR di gelas atau struk,"
+    },
+    "p155": {
+      "source_hash": "99c96a95f123",
+      "text": "cek tepi putihnya dan kotak kecil kanan bawah!"
+    },
+    "p156": {
+      "source_hash": "36d742bcb996",
+      "text": "Oh begitu toh!"
+    },
+    "p157": {
+      "source_hash": "7041eea7af5f",
+      "text": "QR terparah yang dipindai?"
+    },
+    "p158": {
+      "source_hash": "9ecfff696535",
+      "text": "Berhasil bip? Tulis di komen!"
+    },
+    "p159": {
+      "source_hash": "96b6a755f021",
+      "text": "Mau bongkar rahasia benda harian bareng? Subscribe Oh Begitu Toh!"
+    }
+  }
+}

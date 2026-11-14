@@ -1,0 +1,679 @@
+{
+  "title": "QR Code sujo de café funciona, mas um novo limpo falha? | Agora Entendi",
+  "description": "Cai café gelado em cima do QR Code da cafeteria e, mesmo assim, o celular lê na hora com um bipe. Bem ao lado, outro código recém-impresso e limpinho só tem uma borda florida perto demais — e nenhum aparelho consegue ler. Se os dois são quadradinhos pretos e brancos, o que muda?\n\nNeste episódio, a Diretora e a Wen desmontam o que acontece na fração de segundo em que você aponta a câmera: como três cantos travam a direção em 360 graus, como uma dupla mediu pilhas de panfletos antes de 1994 para achar a proporção preto e branco mais rara, como a matemática das sondas espaciais e dos CDs de música calcula os dados cobertos, e por que 'até ~30% de correção' não permite cortar um pedaço na tesoura nem trata igual uma gota grande e pontinhos espalhados.\n\nAs ilustrações deste episódio foram geradas por IA; as grades na tela são diagramas conceituais e não códigos escaneáveis. As especificações e exemplos oficiais estão nas referências abaixo.\n\nDados atualizados em 2026-11-14",
+  "tags": [
+    "QR Code",
+    "Como funciona o QR Code",
+    "Correção de erros QR",
+    "Reed-Solomon",
+    "Código corretor",
+    "Código de barras",
+    "Curiosidades",
+    "Agora Entendi"
+  ],
+  "thumbnail": {
+    "tag": "TECH",
+    "headline": "Com café\n**e lê?**",
+    "sub": "E o novo falha?"
+  },
+  "chapters": {
+    "two-stands-open": "Com café funciona, mas o limpo falha?",
+    "kid-book-guess": "Três cantos guiam; sem margem ele cega",
+    "chief-modules-intro": "Caixas de 8 bits e matemática espacial",
+    "chief-stain-hits-both": "Por que ~30% não deixa cortar na tesoura?",
+    "chief-whole-box-rule": "Gota grande vive, pontinhos estragam tudo",
+    "kid-solve-first": "Caso resolvido! Leitura QR em dois passos"
+  },
+  "source_hashes": {
+    "title": "3e83c6ee6f4f",
+    "description": "c132dab06a61",
+    "tags": "ef83f6cf0d13",
+    "chapters": {
+      "two-stands-open": "effebff87072",
+      "kid-book-guess": "fe8aeb6c3962",
+      "chief-modules-intro": "73b040322617",
+      "chief-stain-hits-both": "bff6d984de96",
+      "chief-whole-box-rule": "4ddfef8e5ced",
+      "kid-solve-first": "cd9ba93d3c86"
+    },
+    "thumbnail": "3e5cabdd20fd"
+  },
+  "lines": {
+    "p001": {
+      "source_hash": "70186a9eea7f",
+      "text": "Chefe! Caiu café no QR,"
+    },
+    "p002": {
+      "source_hash": "74f7e2d26c21",
+      "text": "e ele apitou!"
+    },
+    "p003": {
+      "source_hash": "18d1e62a8348",
+      "text": "O novo ao lado tá limpinho,"
+    },
+    "p004": {
+      "source_hash": "cd0ac0714165",
+      "text": "com flor perto e não lê!"
+    },
+    "p005": {
+      "source_hash": "851d261ebdc9",
+      "text": "Qual a diferença? O que os 2 criadores mediam?"
+    },
+    "p006": {
+      "source_hash": "14a2a5a6d1e6",
+      "text": "Como a matemática espacial parou nos quadrados?"
+    },
+    "p007": {
+      "source_hash": "f5b154da4070",
+      "text": "Como lê algo sujo?"
+    },
+    "p008": {
+      "source_hash": "f907d6a651d8",
+      "text": "E uma gota grande vence pontinhos! Como acha que lê?"
+    },
+    "p009": {
+      "source_hash": "c5563027aa2d",
+      "text": "Ao ler esses quadros,"
+    },
+    "p010": {
+      "source_hash": "4cc3d495995a",
+      "text": "lê do topo como livro?"
+    },
+    "p011": {
+      "source_hash": "c62b1709f7d8",
+      "text": "Se fosse fixo assim, inclinar já erraria tudo!"
+    },
+    "p012": {
+      "source_hash": "396334be6f90",
+      "text": "O código de barras 1D alinha barras numa direção só."
+    },
+    "p013": {
+      "source_hash": "132c44f79d4b",
+      "text": "Guarda só uns 20 caracteres,"
+    },
+    "p014": {
+      "source_hash": "531dc9608a96",
+      "text": "o laser falha se não cortar as barras."
+    },
+    "p015": {
+      "source_hash": "1416c46f94d1",
+      "text": "O QR quadrado guarda dados na largura e altura,"
+    },
+    "p016": {
+      "source_hash": "7f7b76939392",
+      "text": "com grandes quadrados em 3 cantos!"
+    },
+    "p017": {
+      "source_hash": "5c9a5df87c8f",
+      "text": "Reto, torto ou de ponta-cabeça,"
+    },
+    "p018": {
+      "source_hash": "ae5eb9a4af11",
+      "text": "em 360 graus, três cantos mostram na hora onde está!"
+    },
+    "p019": {
+      "source_hash": "eea652b34685",
+      "text": "Ei, quadrado tem 4 cantos!"
+    },
+    "p020": {
+      "source_hash": "ae31440ad98c",
+      "text": "Cadê o quarto?"
+    },
+    "p021": {
+      "source_hash": "9041ac6531da",
+      "text": "Pensa: se os quatro cantos tivessem o mesmo quadro,"
+    },
+    "p022": {
+      "source_hash": "0056b5cf197e",
+      "text": "girando meia volta, como acharia o topo?"
+    },
+    "p023": {
+      "source_hash": "46f404ceafd4",
+      "text": "Sem o quarto quadro,"
+    },
+    "p024": {
+      "source_hash": "2b49d673b919",
+      "text": "o celular acha cima e baixo na hora!"
+    },
+    "p025": {
+      "source_hash": "a61a8435105a",
+      "text": "Na mesa há linhas pretas,"
+    },
+    "p026": {
+      "source_hash": "35963b7476e5",
+      "text": "como não confunde?"
+    },
+    "p027": {
+      "source_hash": "d033b0e2465a",
+      "text": "Lembra dos 2 engenheiros?"
+    },
+    "p028": {
+      "source_hash": "1e2ee20d6498",
+      "text": "Em 1994, a equipe de Masahiro Hara na DENSO tinha 2!"
+    },
+    "p029": {
+      "source_hash": "4342cc3be0d4",
+      "text": "QR é Quick Response: resposta ágil."
+    },
+    "p030": {
+      "source_hash": "101d90541b4b",
+      "text": "Se confundisse tabelas com cantos, ia travar tudo!"
+    },
+    "p031": {
+      "source_hash": "68177d8a6e2f",
+      "text": "Escolheram quadrados, raros."
+    },
+    "p032": {
+      "source_hash": "90bdb6570bf5",
+      "text": "Folhetos, revistas e caixas viraram preto e branco!"
+    },
+    "p033": {
+      "source_hash": "75a092d70bd6",
+      "text": "Por dias, o dia todo, mediram faixas pretas e brancas."
+    },
+    "p034": {
+      "source_hash": "96e709668c86",
+      "text": "Qual proporção era mais rara nos papéis?"
+    },
+    "p035": {
+      "source_hash": "993ed47ce875",
+      "text": "O ritmo mais raro achado foi 1 pra 1 pra 3 pra 1 pra 1!"
+    },
+    "p036": {
+      "source_hash": "a5d500205ad0",
+      "text": "Cortando o meio do canto, preto-branco-preto-branco-preto!"
+    },
+    "p037": {
+      "source_hash": "a0b0ee56d7d2",
+      "text": "Reto, em pé ou na diagonal,"
+    },
+    "p038": {
+      "source_hash": "6940933c9955",
+      "text": "bateu 1:1:3:1:1, achou o código na hora!"
+    },
+    "p039": {
+      "source_hash": "08b3cb4dc77a",
+      "text": "E na lata curva,"
+    },
+    "p040": {
+      "source_hash": "25a0f6dfcb4e",
+      "text": "se entortar tudo?"
+    },
+    "p041": {
+      "source_hash": "bb3b3bed4add",
+      "text": "O QR comum é Model 2, com quadrinho de ajuste."
+    },
+    "p042": {
+      "source_hash": "235bffab42ff",
+      "text": "Mesmo na lata curva, ele alinha toda a grade!"
+    },
+    "p043": {
+      "source_hash": "c0c6707a84fc",
+      "text": "Mesmo tirando de lado na mesa,"
+    },
+    "p044": {
+      "source_hash": "99411e023ced",
+      "text": "mesmo torto, ele lê direitinho!"
+    },
+    "p045": {
+      "source_hash": "60b5279bc867",
+      "text": "Com 3 cantos e ajuste,"
+    },
+    "p046": {
+      "source_hash": "72c58e738dd5",
+      "text": "por que o QR limpo falhou?"
+    },
+    "p047": {
+      "source_hash": "a1e6fe2b8ed1",
+      "text": "Culpa da borda branca externa: a zona silenciosa!"
+    },
+    "p048": {
+      "source_hash": "fba578e49592",
+      "text": "Pede 4 módulos de largura em branco nos quatro lados!"
+    },
+    "p049": {
+      "source_hash": "644e5d07c4f3",
+      "text": "As flores comeram a borda branca,"
+    },
+    "p050": {
+      "source_hash": "693ed9398af5",
+      "text": "e a câmera nem achou onde o QR começa!"
+    },
+    "p051": {
+      "source_hash": "c74161db9964",
+      "text": "Nem viu a borda!"
+    },
+    "p052": {
+      "source_hash": "efd408d62313",
+      "text": "E como salvou o manchado?"
+    },
+    "p053": {
+      "source_hash": "8592f2e11ab4",
+      "text": "Achando borda e giro, a câmera lê os pontinhos."
+    },
+    "p054": {
+      "source_hash": "7cb3dd845256",
+      "text": "Cada ponto preto ou branco é um 'módulo'!"
+    },
+    "p055": {
+      "source_hash": "ddb9c1b2bf35",
+      "text": "A menor Versão 1 tem 21×21 módulos;"
+    },
+    "p056": {
+      "source_hash": "1687342d771b",
+      "text": "cada versão soma 4 em cada lado."
+    },
+    "p057": {
+      "source_hash": "82f7458f1b25",
+      "text": "A maior Versão 40 tem 177 módulos por lado,"
+    },
+    "p058": {
+      "source_hash": "8f784c257d3e",
+      "text": "cabendo até 7.089 dígitos ou 4.296 alfanuméricos!"
+    },
+    "p059": {
+      "source_hash": "5a9d49745d6f",
+      "text": "Já adivinhei!"
+    },
+    "p060": {
+      "source_hash": "cbc79840edd2",
+      "text": "Copia o link três vezes?"
+    },
+    "p061": {
+      "source_hash": "df4b996dcb72",
+      "text": "Copiar três vezes jogaria fora dois terços do espaço!"
+    },
+    "p062": {
+      "source_hash": "3f35996cfd49",
+      "text": "Se o café cobrisse a cópia, já era!"
+    },
+    "p063": {
+      "source_hash": "0a836fe6493d",
+      "text": "O jeito real é esperto: junta 8 bits"
+    },
+    "p064": {
+      "source_hash": "37f7a22dbe54",
+      "text": "numa caixinha chamada 'codeword'!"
+    },
+    "p065": {
+      "source_hash": "b091781fac96",
+      "text": "Caixa,"
+    },
+    "p066": {
+      "source_hash": "c43ee8dc3df7",
+      "text": "não um pontinho só?"
+    },
+    "p067": {
+      "source_hash": "1a8ba2f73ea7",
+      "text": "Isso, 8 bits juntos formam 1 caixa!"
+    },
+    "p068": {
+      "source_hash": "82e893c261db",
+      "text": "Os dados vão em caixas e atrás vêm caixas de correção."
+    },
+    "p069": {
+      "source_hash": "29d00f55910b",
+      "text": "Código Reed-Solomon,"
+    },
+    "p070": {
+      "source_hash": "c4be9cc81a8d",
+      "text": "que protege sinais até no espaço profundo!"
+    },
+    "p071": {
+      "source_hash": "10e3dcd38f9f",
+      "text": "Satélites e sondas enviam dados de longe;"
+    },
+    "p072": {
+      "source_hash": "22047c8b461b",
+      "text": "mesmo com ruído, a conta salva tudo."
+    },
+    "p073": {
+      "source_hash": "8fcbf5e6c06d",
+      "text": "Até CD musical riscadinho toca normal"
+    },
+    "p074": {
+      "source_hash": "a13bfe6a535d",
+      "text": "com a mesma conta!"
+    },
+    "p075": {
+      "source_hash": "b7f7043bbcb9",
+      "text": "Ué,"
+    },
+    "p076": {
+      "source_hash": "c41c90fb86b2",
+      "text": "sem cópia, como calcula?"
+    },
+    "p077": {
+      "source_hash": "d81507e45401",
+      "text": "Pensa simples: você tem três números — 3, 5 e 2."
+    },
+    "p078": {
+      "source_hash": "01bed37830e1",
+      "text": "Sem cópia, anota só uma pista ao lado: somam 10."
+    },
+    "p079": {
+      "source_hash": "f069a45a56f8",
+      "text": "Tapando o meio, 10 menos 3 e 2:"
+    },
+    "p080": {
+      "source_hash": "08bfe40b0ca2",
+      "text": "descobre na hora que é 5!"
+    },
+    "p081": {
+      "source_hash": "2e03b21c3faa",
+      "text": "Claro, o cálculo real supera a soma!"
+    },
+    "p082": {
+      "source_hash": "4b64074fc75b",
+      "text": "Sem saber qual sujou, como ele acha?"
+    },
+    "p083": {
+      "source_hash": "b4e5ad75beb8",
+      "text": "Ele acha QUAL caixa quebrou e O QUE tinha nela."
+    },
+    "p084": {
+      "source_hash": "41267e231438",
+      "text": "Por isso salvar 1 caixa ruim pede 2 corretoras!"
+    },
+    "p085": {
+      "source_hash": "73c8df6aaf2c",
+      "text": "A DENSO WAVE dá este exemplo:"
+    },
+    "p086": {
+      "source_hash": "9ceb07327e8b",
+      "text": "Com 100 caixas de dados, pra salvar 50 ruins,"
+    },
+    "p087": {
+      "source_hash": "22e256783bdf",
+      "text": "soma o dobro: 100 corretoras, 200 total,"
+    },
+    "p088": {
+      "source_hash": "2c9383a0e9ac",
+      "text": "taxa oficial de 25%!"
+    },
+    "p089": {
+      "source_hash": "063ca5925848",
+      "text": "Ei! Salvar 50 de 100 caixas"
+    },
+    "p090": {
+      "source_hash": "304994e3b52a",
+      "text": "não é 50%? Por que 25%?"
+    },
+    "p091": {
+      "source_hash": "9b7216d56177",
+      "text": "O café caindo não desvia das caixas corretoras!"
+    },
+    "p092": {
+      "source_hash": "e86fce2f077b",
+      "text": "Dados e correção ficam impressos no mesmo QR."
+    },
+    "p093": {
+      "source_hash": "dd3d49e2b695",
+      "text": "Das 200 caixas, QUAISQUER 50 sujas salvam."
+    },
+    "p094": {
+      "source_hash": "78fe349e0c4f",
+      "text": "Divide pelo total e dá 25%: nível Q do QR!"
+    },
+    "p095": {
+      "source_hash": "90f8fc04dc07",
+      "text": "São quatro níveis oficiais: L, M, Q e H."
+    },
+    "p096": {
+      "source_hash": "bedd1e70e169",
+      "text": "L salva uns 7% das caixas, M uns 15%,"
+    },
+    "p097": {
+      "source_hash": "dd6398ac9ed1",
+      "text": "Q salva uns 25%, como calculamos,"
+    },
+    "p098": {
+      "source_hash": "3b37edcf7efc",
+      "text": "e o máximo H salva cerca de 30% do total!"
+    },
+    "p099": {
+      "source_hash": "8260b3cd08d0",
+      "text": "Como o nível H salva 30%,"
+    },
+    "p100": {
+      "source_hash": "38eca550d0ee",
+      "text": "posso cortar 30% a tesoura?"
+    },
+    "p101": {
+      "source_hash": "90339e8001b7",
+      "text": "Sem tesoura! Depende de onde pega o dano —"
+    },
+    "p102": {
+      "source_hash": "bf8dadbf53e4",
+      "text": "nunca garante salvar tudo!"
+    },
+    "p103": {
+      "source_hash": "5144414819ac",
+      "text": "E essa taxa conta o 'total de caixas do código',"
+    },
+    "p104": {
+      "source_hash": "7f5054baa23a",
+      "text": "não área pra rasgar à vontade!"
+    },
+    "p105": {
+      "source_hash": "57d1d57e15ca",
+      "text": "Se uma gotinha cobrir um quadrado guia do canto,"
+    },
+    "p106": {
+      "source_hash": "e689e4523105",
+      "text": "o celular nem acha o QR e nada funciona!"
+    },
+    "p107": {
+      "source_hash": "8f47a5f2f9d1",
+      "text": "Por isso QR com logo no meio"
+    },
+    "p108": {
+      "source_hash": "7f24063eab8b",
+      "text": "ainda lê normal!"
+    },
+    "p109": {
+      "source_hash": "3e99f7cb322c",
+      "text": "Exato! No centro ele foge dos 3 cantos e da margem."
+    },
+    "p110": {
+      "source_hash": "9d059f226706",
+      "text": "Subindo antes o nível pra guardar mais caixas extra,"
+    },
+    "p111": {
+      "source_hash": "12af5ee1904d",
+      "text": "o celular trata o miolo coberto"
+    },
+    "p112": {
+      "source_hash": "72ac83d0e311",
+      "text": "como caixas sujas e recalcula!"
+    },
+    "p113": {
+      "source_hash": "9eb9bb57836b",
+      "text": "Já gasta a cota!"
+    },
+    "p114": {
+      "source_hash": "c68b9161e8ac",
+      "text": "Aí teme mais outra sujeira?"
+    },
+    "p115": {
+      "source_hash": "e34d6e64668a",
+      "text": "Sim, gastando cota antes, o café estoura!"
+    },
+    "p116": {
+      "source_hash": "e3c2067c5250",
+      "text": "Lembra do desafio inicial? Mesma área suja —"
+    },
+    "p117": {
+      "source_hash": "15b2df6064d5",
+      "text": "uma gotona de café ou pontinhos soltos, quem vive?"
+    },
+    "p118": {
+      "source_hash": "d141ef46ea6f",
+      "text": "Pontos são menores,"
+    },
+    "p119": {
+      "source_hash": "b38e127088a2",
+      "text": "mais fácil?"
+    },
+    "p120": {
+      "source_hash": "9105aef59632",
+      "text": "O oposto! Lembra: os 8 bits contam a caixa toda!"
+    },
+    "p121": {
+      "source_hash": "8c72e305907d",
+      "text": "No Reed-Solomon, a menor unidade é 1 caixa toda."
+    },
+    "p122": {
+      "source_hash": "b69ba961aab5",
+      "text": "Sujando 1 bit só ou os 8 bits da mesma caixa,"
+    },
+    "p123": {
+      "source_hash": "966441f5a0ae",
+      "text": "na conta entra como '1 caixa quebrada'!"
+    },
+    "p124": {
+      "source_hash": "961c587056b3",
+      "text": "Por isso ele brilha contra 'dano concentrado'!"
+    },
+    "p125": {
+      "source_hash": "e703e1a867fd",
+      "text": "Café junto em 2 caixas quebra só 2: salva fácil."
+    },
+    "p126": {
+      "source_hash": "792246506397",
+      "text": "Espalhado igual pimenta em 8 caixas, um pingo cada,"
+    },
+    "p127": {
+      "source_hash": "e366e0d7e04c",
+      "text": "quebra 8 caixas e estoura cota!"
+    },
+    "p128": {
+      "source_hash": "1f6b8be99136",
+      "text": "Só 1 pingo,"
+    },
+    "p129": {
+      "source_hash": "affa311700e7",
+      "text": "e acaba toda a cota!"
+    },
+    "p130": {
+      "source_hash": "def70e376f07",
+      "text": "Como o nível H salva mais,"
+    },
+    "p131": {
+      "source_hash": "c9d0390ce1da",
+      "text": "por que não pôr H nelas?"
+    },
+    "p132": {
+      "source_hash": "f2895a054fb2",
+      "text": "Caixa extra ocupa espaço — nada é de graça!"
+    },
+    "p133": {
+      "source_hash": "081c67ddc2ac",
+      "text": "Com tamanho fixo, mais correção deixa menos dados."
+    },
+    "p134": {
+      "source_hash": "50765ab19037",
+      "text": "Na menor Versão 1, o nível L leva até 41 dígitos;"
+    },
+    "p135": {
+      "source_hash": "e1ab74667fc5",
+      "text": "no máximo H, cai pra só 17 dígitos!"
+    },
+    "p136": {
+      "source_hash": "f65fbbcb5ffa",
+      "text": "Se quiser gravar 50 dígitos num QR,"
+    },
+    "p137": {
+      "source_hash": "4fb090215a32",
+      "text": "Versão 2 M cabe, mas em H só cabem 34!"
+    },
+    "p138": {
+      "source_hash": "56624c9c6a36",
+      "text": "Pra manter H com 50 dígitos, vai à Versão 3,"
+    },
+    "p139": {
+      "source_hash": "20edd29fd918",
+      "text": "crescendo pra 29 por 29 módulos!"
+    },
+    "p140": {
+      "source_hash": "b5d2c0549f45",
+      "text": "No mesmo adesivo pequeno do copo, os pontos ficam finos;"
+    },
+    "p141": {
+      "source_hash": "28eb8391519b",
+      "text": "se borrar a tinta ou tremer a mão, falha mais!"
+    },
+    "p142": {
+      "source_hash": "ee2d449911c4",
+      "text": "Queria cuidar,"
+    },
+    "p143": {
+      "source_hash": "c80c934c30c1",
+      "text": "e apertado borra fácil!"
+    },
+    "p144": {
+      "source_hash": "0b202cbf4c9c",
+      "text": "Isso! Fábricas sujas usam Q ou H;"
+    },
+    "p145": {
+      "source_hash": "cddb66d80dd7",
+      "text": "locais limpos com muito dado usam L."
+    },
+    "p146": {
+      "source_hash": "284bb5cd7786",
+      "text": "Cardápios diários usam o M de 15%."
+    },
+    "p147": {
+      "source_hash": "72c414b86054",
+      "text": "Nos 2 QR da loja, viu a razão?"
+    },
+    "p148": {
+      "source_hash": "235535790b13",
+      "text": "Achei! No QR sujo de café,"
+    },
+    "p149": {
+      "source_hash": "937372fee198",
+      "text": "o café poupou os 3 cantos e a borda!"
+    },
+    "p150": {
+      "source_hash": "97a47ebe4c15",
+      "text": "Junto, sujou só poucas;"
+    },
+    "p151": {
+      "source_hash": "d635acff1aea",
+      "text": "no outro, a flor comeu a borda branca!"
+    },
+    "p152": {
+      "source_hash": "cbb561cfe954",
+      "text": "Mandou bem! Cantos, ajuste e margem acham o lugar;"
+    },
+    "p153": {
+      "source_hash": "79f8366b1a01",
+      "text": "e o Reed-Solomon reconstrói a falha."
+    },
+    "p154": {
+      "source_hash": "b650343d808b",
+      "text": "Ao ver QR em copo ou nota,"
+    },
+    "p155": {
+      "source_hash": "99c96a95f123",
+      "text": "olhe a borda branca e o quadrinho no canto!"
+    },
+    "p156": {
+      "source_hash": "36d742bcb996",
+      "text": "Agora entendi!"
+    },
+    "p157": {
+      "source_hash": "7041eea7af5f",
+      "text": "Qual QR mais feio leu?"
+    },
+    "p158": {
+      "source_hash": "9ecfff696535",
+      "text": "Apitou no fim? Conta aqui!"
+    },
+    "p159": {
+      "source_hash": "96b6a755f021",
+      "text": "Quer desvendar segredos do dia a dia? Inscreva-se no Agora Entendi!"
+    }
+  }
+}

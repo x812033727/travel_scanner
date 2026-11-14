@@ -1,0 +1,679 @@
+{
+  "title": "Coffee-Stained QR Scans, Yet a Clean One Fails? | So That's Why",
+  "description": "A QR Code at a drink shop gets splashed with iced coffee, yet your phone still scans it with a crisp beep. Right beside it sits a freshly printed, spotless code—only its floral border is a little too close, and no phone can read it at all. They're both grids of tiny black-and-white squares, so what makes the difference?\n\nIn this episode, Chief and Little Q trace what happens in the split second your camera scans a code: how three corner squares lock onto orientation across 360 degrees, how a two-person team measured stacks of printed flyers before the 1994 release to find the rarest black-and-white ratio, how the same math that protects deep-space probes and music CDs calculates missing data back, and why 'up to ~30% error correction' doesn't mean tearing off 30%—or why one big coffee drop and scattered tiny ink dots can have opposite fates.\n\nIllustrations in this episode are AI-generated; all black-and-white grids shown are conceptual diagrams rather than scannable codes. Official specifications and calculation examples are listed in the references below.\n\nSources current as of 2026-11-14",
+  "tags": [
+    "QR Code",
+    "How QR Codes Work",
+    "QR Error Correction",
+    "Reed-Solomon",
+    "Error Correction Code",
+    "Barcode Science",
+    "Explainer",
+    "So That's Why"
+  ],
+  "thumbnail": {
+    "tag": "TECH",
+    "headline": "Stained,\n**Scans?**",
+    "sub": "Clean new code fails?"
+  },
+  "chapters": {
+    "two-stands-open": "Coffee-Stained Scans, Clean One Fails",
+    "kid-book-guess": "3 Corners Lock Angle, No Margin Fails",
+    "chief-modules-intro": "8-Bit Codewords & Deep-Space Math",
+    "chief-stain-hits-both": "Why You Can't Just Snip Off 30%",
+    "chief-whole-box-rule": "One Big Drop Lives, Tiny Specks Fail",
+    "kid-solve-first": "Case Solved: Two-Step QR Check"
+  },
+  "source_hashes": {
+    "title": "3e83c6ee6f4f",
+    "description": "c132dab06a61",
+    "tags": "ef83f6cf0d13",
+    "chapters": {
+      "two-stands-open": "effebff87072",
+      "kid-book-guess": "fe8aeb6c3962",
+      "chief-modules-intro": "73b040322617",
+      "chief-stain-hits-both": "bff6d984de96",
+      "chief-whole-box-rule": "4ddfef8e5ced",
+      "kid-solve-first": "cd9ba93d3c86"
+    },
+    "thumbnail": "3e5cabdd20fd"
+  },
+  "lines": {
+    "p001": {
+      "source_hash": "70186a9eea7f",
+      "text": "Chief! Coffee hit a cafe code,"
+    },
+    "p002": {
+      "source_hash": "74f7e2d26c21",
+      "text": "and the QR still read!"
+    },
+    "p003": {
+      "source_hash": "18d1e62a8348",
+      "text": "A new one next to it is clean,"
+    },
+    "p004": {
+      "source_hash": "cd0ac0714165",
+      "text": "floral border tight—won't scan!"
+    },
+    "p005": {
+      "source_hash": "851d261ebdc9",
+      "text": "Why the gap? And why did its two inventors measure flyer lines?"
+    },
+    "p006": {
+      "source_hash": "14a2a5a6d1e6",
+      "text": "How did deep-space probe math end up inside tiny squares?"
+    },
+    "p007": {
+      "source_hash": "f5b154da4070",
+      "text": "How did a stain scan?"
+    },
+    "p008": {
+      "source_hash": "f907d6a651d8",
+      "text": "Even wilder: one big drop beats tiny ink specks! Guess how it reads?"
+    },
+    "p009": {
+      "source_hash": "c5563027aa2d",
+      "text": "When my phone reads a QR,"
+    },
+    "p010": {
+      "source_hash": "4cc3d495995a",
+      "text": "is it top-left like books?"
+    },
+    "p011": {
+      "source_hash": "c62b1709f7d8",
+      "text": "If it read rigidly like books, one slight tilt would fail!"
+    },
+    "p012": {
+      "source_hash": "396334be6f90",
+      "text": "Old supermarket 1D barcodes really do line bars up one way."
+    },
+    "p013": {
+      "source_hash": "132c44f79d4b",
+      "text": "Classic barcodes hold about 20 characters,"
+    },
+    "p014": {
+      "source_hash": "531dc9608a96",
+      "text": "a red laser fails unless it cuts across bars."
+    },
+    "p015": {
+      "source_hash": "1416c46f94d1",
+      "text": "Square QR Codes pack data both across and up-and-down,"
+    },
+    "p016": {
+      "source_hash": "7f7b76939392",
+      "text": "with big finder boxes in three corners!"
+    },
+    "p017": {
+      "source_hash": "5c9a5df87c8f",
+      "text": "Straight, tilted, or upside down,"
+    },
+    "p018": {
+      "source_hash": "ae5eb9a4af11",
+      "text": "at any 360-degree angle, three corners tell your camera where it is!"
+    },
+    "p019": {
+      "source_hash": "eea652b34685",
+      "text": "Wait—a square has four corners!"
+    },
+    "p020": {
+      "source_hash": "ae31440ad98c",
+      "text": "Why skip the 4th?"
+    },
+    "p021": {
+      "source_hash": "9041ac6531da",
+      "text": "Think: if all four corners had identical big squares,"
+    },
+    "p022": {
+      "source_hash": "0056b5cf197e",
+      "text": "spin it halfway and how could your phone find the top?"
+    },
+    "p023": {
+      "source_hash": "46f404ceafd4",
+      "text": "Leaving the fourth corner blank"
+    },
+    "p024": {
+      "source_hash": "2b49d673b919",
+      "text": "lets phones spot up, down, left, right fast!"
+    },
+    "p025": {
+      "source_hash": "a61a8435105a",
+      "text": "Cafe tables have dark lines too—"
+    },
+    "p026": {
+      "source_hash": "35963b7476e5",
+      "text": "why won't it misread them?"
+    },
+    "p027": {
+      "source_hash": "d033b0e2465a",
+      "text": "Remember our two engineers?"
+    },
+    "p028": {
+      "source_hash": "1e2ee20d6498",
+      "text": "Before 1994's debut, Masahiro Hara's DENSO team was just two people!"
+    },
+    "p029": {
+      "source_hash": "4342cc3be0d4",
+      "text": "QR means Quick Response—built for speed."
+    },
+    "p030": {
+      "source_hash": "101d90541b4b",
+      "text": "If cameras mistook nearby table lines for corners, it'd crawl!"
+    },
+    "p031": {
+      "source_hash": "68177d8a6e2f",
+      "text": "First: squares, rare on office forms."
+    },
+    "p032": {
+      "source_hash": "90bdb6570bf5",
+      "text": "They turned piles of flyers, magazines, and boxes black and white!"
+    },
+    "p033": {
+      "source_hash": "75a092d70bd6",
+      "text": "For days from dawn to night, both tallied black-to-white widths."
+    },
+    "p034": {
+      "source_hash": "96e709668c86",
+      "text": "Guess the rarest width ratio across all those prints?"
+    },
+    "p035": {
+      "source_hash": "993ed47ce875",
+      "text": "The rarest rhythm they found was 1 to 1 to 3 to 1 to 1!"
+    },
+    "p036": {
+      "source_hash": "a5d500205ad0",
+      "text": "Slice right through a corner square: black-white-black-white-black matches it!"
+    },
+    "p037": {
+      "source_hash": "a0b0ee56d7d2",
+      "text": "Across, down, or diagonal—"
+    },
+    "p038": {
+      "source_hash": "6940933c9955",
+      "text": "hit 1-1-3-1-1 and it locks onto the QR!"
+    },
+    "p039": {
+      "source_hash": "08b3cb4dc77a",
+      "text": "And on a curved can,"
+    },
+    "p040": {
+      "source_hash": "25a0f6dfcb4e",
+      "text": "when the grid bends?"
+    },
+    "p041": {
+      "source_hash": "bb3b3bed4add",
+      "text": "Everyday QR is Model 2, hiding a tiny alignment pattern."
+    },
+    "p042": {
+      "source_hash": "235bffab42ff",
+      "text": "Even on a curved can, that small box aligns the grid!"
+    },
+    "p043": {
+      "source_hash": "c0c6707a84fc",
+      "text": "Even scanning from an angled cafe seat,"
+    },
+    "p044": {
+      "source_hash": "99411e023ced",
+      "text": "slight perspective warp still reads fine!"
+    },
+    "p045": {
+      "source_hash": "60b5279bc867",
+      "text": "With 3 corners & alignment,"
+    },
+    "p046": {
+      "source_hash": "72c58e738dd5",
+      "text": "why did that clean new QR fail?"
+    },
+    "p047": {
+      "source_hash": "a1e6fe2b8ed1",
+      "text": "Blame the outer white rim—officially the margin, or quiet zone!"
+    },
+    "p048": {
+      "source_hash": "fba578e49592",
+      "text": "All four sides need a 4-module-wide blank white border!"
+    },
+    "p049": {
+      "source_hash": "644e5d07c4f3",
+      "text": "That floral trim ate the 4-unit margin,"
+    },
+    "p050": {
+      "source_hash": "693ed9398af5",
+      "text": "so the camera couldn't even tell where it begins!"
+    },
+    "p051": {
+      "source_hash": "c74161db9964",
+      "text": "It never found the edge!"
+    },
+    "p052": {
+      "source_hash": "efd408d62313",
+      "text": "Then how were stained black dots saved?"
+    },
+    "p053": {
+      "source_hash": "8592f2e11ab4",
+      "text": "Once edges and angle lock, it reads inner black-white dots."
+    },
+    "p054": {
+      "source_hash": "7cb3dd845256",
+      "text": "Each tiny black or white dot is called a 'module'!"
+    },
+    "p055": {
+      "source_hash": "ddb9c1b2bf35",
+      "text": "Smallest Version 1 is 21 by 21 modules;"
+    },
+    "p056": {
+      "source_hash": "1687342d771b",
+      "text": "each version up adds 4 modules per side."
+    },
+    "p057": {
+      "source_hash": "82f7458f1b25",
+      "text": "Biggest Version 40 reaches 177 modules per side,"
+    },
+    "p058": {
+      "source_hash": "8f784c257d3e",
+      "text": "holding up to 7,089 digits or 4,296 alphanumeric characters!"
+    },
+    "p059": {
+      "source_hash": "5a9d49745d6f",
+      "text": "I know the trick!"
+    },
+    "p060": {
+      "source_hash": "cbc79840edd2",
+      "text": "Does it copy the link three times?"
+    },
+    "p061": {
+      "source_hash": "df4b996dcb72",
+      "text": "Copying it three times would waste two-thirds of the space!"
+    },
+    "p062": {
+      "source_hash": "3f35996cfd49",
+      "text": "If coffee hid the copies too, it'd still fail!"
+    },
+    "p063": {
+      "source_hash": "0a836fe6493d",
+      "text": "The real trick is smarter—not dot by dot,"
+    },
+    "p064": {
+      "source_hash": "37f7a22dbe54",
+      "text": "it packs 8 bits into one box: a 'codeword'."
+    },
+    "p065": {
+      "source_hash": "b091781fac96",
+      "text": "One box—"
+    },
+    "p066": {
+      "source_hash": "c43ee8dc3df7",
+      "text": "not just a single tiny dot?"
+    },
+    "p067": {
+      "source_hash": "1a8ba2f73ea7",
+      "text": "Yes, 8 bits together make one codeword box!"
+    },
+    "p068": {
+      "source_hash": "82e893c261db",
+      "text": "Data fills boxes first, followed by math-built error-correction boxes."
+    },
+    "p069": {
+      "source_hash": "29d00f55910b",
+      "text": "It's Reed-Solomon coding—"
+    },
+    "p070": {
+      "source_hash": "c4be9cc81a8d",
+      "text": "the math mentioned earlier that guards deep-space signals!"
+    },
+    "p071": {
+      "source_hash": "10e3dcd38f9f",
+      "text": "Satellites and probes beam data from deep space;"
+    },
+    "p072": {
+      "source_hash": "22047c8b461b",
+      "text": "even through noise, this math saves lost bytes."
+    },
+    "p073": {
+      "source_hash": "8fcbf5e6c06d",
+      "text": "Even home music CDs playing past light scratches"
+    },
+    "p074": {
+      "source_hash": "a13bfe6a535d",
+      "text": "use this very same math!"
+    },
+    "p075": {
+      "source_hash": "b7f7043bbcb9",
+      "text": "Wait—"
+    },
+    "p076": {
+      "source_hash": "c41c90fb86b2",
+      "text": "no copy—how can math find it?"
+    },
+    "p077": {
+      "source_hash": "d81507e45401",
+      "text": "Simple analogy: say you have three numbers—3, 5, and 2."
+    },
+    "p078": {
+      "source_hash": "01bed37830e1",
+      "text": "No backup copy—just one clue beside them: they add up to 10."
+    },
+    "p079": {
+      "source_hash": "f069a45a56f8",
+      "text": "Cover the middle one: take 10 minus 3 and 2,"
+    },
+    "p080": {
+      "source_hash": "08bfe40b0ca2",
+      "text": "and the middle one must be 5!"
+    },
+    "p081": {
+      "source_hash": "2e03b21c3faa",
+      "text": "Of course, the real math beats simple addition!"
+    },
+    "p082": {
+      "source_hash": "4b64074fc75b",
+      "text": "Phones don't know what's dirty—how do they fix it?"
+    },
+    "p083": {
+      "source_hash": "b4e5ad75beb8",
+      "text": "It must find BOTH which box broke AND what was inside."
+    },
+    "p084": {
+      "source_hash": "41267e231438",
+      "text": "So rescuing 1 bad codeword takes 2 error-correction codewords!"
+    },
+    "p085": {
+      "source_hash": "73c8df6aaf2c",
+      "text": "Developer DENSO WAVE shows a case:"
+    },
+    "p086": {
+      "source_hash": "9ceb07327e8b",
+      "text": "With 100 data boxes, to survive 50 ruined boxes,"
+    },
+    "p087": {
+      "source_hash": "22e256783bdf",
+      "text": "you add double—100 check boxes—making 200 total,"
+    },
+    "p088": {
+      "source_hash": "2c9383a0e9ac",
+      "text": "an official 25% correction rate!"
+    },
+    "p089": {
+      "source_hash": "063ca5925848",
+      "text": "Wait! Saving 50 boxes out of 100—"
+    },
+    "p090": {
+      "source_hash": "304994e3b52a",
+      "text": "isn't that half? Why 25%?"
+    },
+    "p091": {
+      "source_hash": "9b7216d56177",
+      "text": "Because dripping iced coffee won't dodge the check boxes!"
+    },
+    "p092": {
+      "source_hash": "e86fce2f077b",
+      "text": "Data boxes and check boxes sit on the very same grid."
+    },
+    "p093": {
+      "source_hash": "dd3d49e2b695",
+      "text": "Out of all 200 boxes, ANY 50 ruined boxes can be fixed."
+    },
+    "p094": {
+      "source_hash": "78fe349e0c4f",
+      "text": "Divide by total codewords and that's 25%—matching Level Q!"
+    },
+    "p095": {
+      "source_hash": "90f8fc04dc07",
+      "text": "There are four levels—L, M, Q, H:"
+    },
+    "p096": {
+      "source_hash": "bedd1e70e169",
+      "text": "L saves about 7%, M about 15%,"
+    },
+    "p097": {
+      "source_hash": "dd6398ac9ed1",
+      "text": "Level Q saves about 25%, as we just saw,"
+    },
+    "p098": {
+      "source_hash": "3b37edcf7efc",
+      "text": "and top Level H saves about 30% of all codewords!"
+    },
+    "p099": {
+      "source_hash": "8260b3cd08d0",
+      "text": "Level H saves about 30%—"
+    },
+    "p100": {
+      "source_hash": "38eca550d0ee",
+      "text": "can I snip off 30% with scissors?"
+    },
+    "p101": {
+      "source_hash": "90339e8001b7",
+      "text": "No scissors! Official docs say it depends on the damage—"
+    },
+    "p102": {
+      "source_hash": "bf8dadbf53e4",
+      "text": "never a blanket guarantee!"
+    },
+    "p103": {
+      "source_hash": "5144414819ac",
+      "text": "Plus, that percentage counts total codeword boxes,"
+    },
+    "p104": {
+      "source_hash": "7f5054baa23a",
+      "text": "not 30% of paper area to tear away!"
+    },
+    "p105": {
+      "source_hash": "57d1d57e15ca",
+      "text": "If one tiny ink drop wrecks a corner finder square,"
+    },
+    "p106": {
+      "source_hash": "e689e4523105",
+      "text": "your phone never spots the QR, so check boxes can't even start!"
+    },
+    "p107": {
+      "source_hash": "8f47a5f2f9d1",
+      "text": "No wonder shop QRs with a logo"
+    },
+    "p108": {
+      "source_hash": "7f24063eab8b",
+      "text": "still scan just fine!"
+    },
+    "p109": {
+      "source_hash": "3e99f7cb322c",
+      "text": "Spot on! A center logo dodges the three corners and white rim."
+    },
+    "p110": {
+      "source_hash": "9d059f226706",
+      "text": "Raise the error level ahead of time to pack extra check boxes,"
+    },
+    "p111": {
+      "source_hash": "12af5ee1904d",
+      "text": "and your phone treats those covered center boxes"
+    },
+    "p112": {
+      "source_hash": "72ac83d0e311",
+      "text": "as broken codewords, solving them back!"
+    },
+    "p113": {
+      "source_hash": "9eb9bb57836b",
+      "text": "So logos spend quota!"
+    },
+    "p114": {
+      "source_hash": "c68b9161e8ac",
+      "text": "Then stains hurt it much faster?"
+    },
+    "p115": {
+      "source_hash": "e34d6e64668a",
+      "text": "Yes—spend quota on a logo and coffee maxes it out fast!"
+    },
+    "p116": {
+      "source_hash": "e3c2067c5250",
+      "text": "Now recall our opening riddle: same total stain area—"
+    },
+    "p117": {
+      "source_hash": "15b2df6064d5",
+      "text": "one big coffee puddle vs scattered tiny ink dots—which lives?"
+    },
+    "p118": {
+      "source_hash": "d141ef46ea6f",
+      "text": "Tiny dots are so small—"
+    },
+    "p119": {
+      "source_hash": "b38e127088a2",
+      "text": "easier to fix?"
+    },
+    "p120": {
+      "source_hash": "9105aef59632",
+      "text": "Just the opposite! Remember: 8 bits count as ONE whole box!"
+    },
+    "p121": {
+      "source_hash": "8c72e305907d",
+      "text": "Reed-Solomon's smallest unit is one whole codeword box."
+    },
+    "p122": {
+      "source_hash": "b69ba961aab5",
+      "text": "Dirty 1 bit in a box or wreck all 8 bits—either way,"
+    },
+    "p123": {
+      "source_hash": "966441f5a0ae",
+      "text": "the decoder's ledger marks '1 broken codeword box'!"
+    },
+    "p124": {
+      "source_hash": "961c587056b3",
+      "text": "Official docs note it excels at concentrated burst damage!"
+    },
+    "p125": {
+      "source_hash": "e703e1a867fd",
+      "text": "Coffee pooled over 2 boxes breaks just 2 boxes—easy save."
+    },
+    "p126": {
+      "source_hash": "792246506397",
+      "text": "Scatter specks like pepper into 8 boxes—1 dot per box—"
+    },
+    "p127": {
+      "source_hash": "e366e0d7e04c",
+      "text": "8 boxes break at once, blowing the quota!"
+    },
+    "p128": {
+      "source_hash": "1f6b8be99136",
+      "text": "One speck each,"
+    },
+    "p129": {
+      "source_hash": "affa311700e7",
+      "text": "and the whole quota is gone!"
+    },
+    "p130": {
+      "source_hash": "def70e376f07",
+      "text": "If H saves the most,"
+    },
+    "p131": {
+      "source_hash": "c9d0390ce1da",
+      "text": "why not set every QR to H?"
+    },
+    "p132": {
+      "source_hash": "f2895a054fb2",
+      "text": "Check boxes take real estate too—no free lunch!"
+    },
+    "p133": {
+      "source_hash": "081c67ddc2ac",
+      "text": "In a fixed grid, more check boxes leave less room for data."
+    },
+    "p134": {
+      "source_hash": "50765ab19037",
+      "text": "Take smallest Version 1: Level L fits up to 41 digits;"
+    },
+    "p135": {
+      "source_hash": "e1ab74667fc5",
+      "text": "crank it to Level H and capacity drops to 17 digits!"
+    },
+    "p136": {
+      "source_hash": "f65fbbcb5ffa",
+      "text": "Say you want to encode 50 digits:"
+    },
+    "p137": {
+      "source_hash": "4fb090215a32",
+      "text": "Version 2 M fits it, while Version 2 H holds only 34!"
+    },
+    "p138": {
+      "source_hash": "56624c9c6a36",
+      "text": "To keep Level H for 50 digits, you jump to Version 3—"
+    },
+    "p139": {
+      "source_hash": "20edd29fd918",
+      "text": "growing to 29 by 29 modules to fit!"
+    },
+    "p140": {
+      "source_hash": "b5d2c0549f45",
+      "text": "On the same tiny cup-sleeve sticker, denser dots shrink super thin;"
+    },
+    "p141": {
+      "source_hash": "28eb8391519b",
+      "text": "slight ink bleed or hand shake makes it harder to scan!"
+    },
+    "p142": {
+      "source_hash": "ee2d449911c4",
+      "text": "Built for dirt,"
+    },
+    "p143": {
+      "source_hash": "c80c934c30c1",
+      "text": "yet tiny dots blur easier!"
+    },
+    "p144": {
+      "source_hash": "0b202cbf4c9c",
+      "text": "Right! Oily factories pick Q or H;"
+    },
+    "p145": {
+      "source_hash": "cddb66d80dd7",
+      "text": "clean spots with huge data pick Level L."
+    },
+    "p146": {
+      "source_hash": "284bb5cd7786",
+      "text": "Daily menus mostly pick balanced 15% Level M."
+    },
+    "p147": {
+      "source_hash": "72c414b86054",
+      "text": "Now look back at those two cafe QRs—see it?"
+    },
+    "p148": {
+      "source_hash": "235535790b13",
+      "text": "Got it! On that coffee-stained QR,"
+    },
+    "p149": {
+      "source_hash": "937372fee198",
+      "text": "iced coffee missed the 3 corners and margin!"
+    },
+    "p150": {
+      "source_hash": "97a47ebe4c15",
+      "text": "One puddle broke few boxes,"
+    },
+    "p151": {
+      "source_hash": "d635acff1aea",
+      "text": "while floral trim ate the border—unfindable!"
+    },
+    "p152": {
+      "source_hash": "cbb561cfe954",
+      "text": "Nailed it! Three corners, alignment, and quiet zone lock position;"
+    },
+    "p153": {
+      "source_hash": "79f8366b1a01",
+      "text": "then Reed-Solomon check boxes rebuild the gap."
+    },
+    "p154": {
+      "source_hash": "b650343d808b",
+      "text": "On your next cup or receipt QR,"
+    },
+    "p155": {
+      "source_hash": "99c96a95f123",
+      "text": "check its white border and spot the tiny alignment box!"
+    },
+    "p156": {
+      "source_hash": "36d742bcb996",
+      "text": "So that's why!"
+    },
+    "p157": {
+      "source_hash": "7041eea7af5f",
+      "text": "Most beat-up QR you scanned?"
+    },
+    "p158": {
+      "source_hash": "9ecfff696535",
+      "text": "Did it beep? Tell us below!"
+    },
+    "p159": {
+      "source_hash": "96b6a755f021",
+      "text": "Want to unpack everyday tech secrets together? Subscribe to So That's Why!"
+    }
+  }
+}
