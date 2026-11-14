@@ -1,0 +1,56 @@
+{
+  "slug": "2025-15-xingde-xiangyu-western",
+  "title": "Till the Verdict Do Us Part",
+  "source_plan": "../plan.json",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "language": "en",
+  "seasons": 1,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 60,
+  "episode_seconds": {
+    "min": 90,
+    "max": 180,
+    "chapter_finale_min": 120
+  },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "Same as the Chinese plan: hook, mid_hook and cliffhanger, plus 0–2 extra_hooks, all different beats."
+  },
+  "closed_ending": false,
+  "ending_note": "Season one only for now (owner 2026-11-09). It ends on the Chinese S1 finale: Elias pulls off his glove and Grant recognises him — \"Hello, Sales. Twelve years.\" Later seasons follow ../outline.json if season one performs.",
+  "aspect": {
+    "decided": "9:16",
+    "by": "owner 2026-11-10 (changed from 16:9 decided 2026-11-09)",
+    "canvas": {
+      "draft": "544x960",
+      "refine": "736x1312",
+      "final": "1080x1920 (upscale or the editor's output size)"
+    },
+    "framing": "Vertical: medium close-ups and singles; two-person scenes as shot/reverse-shot; wide establishing shots only as short inserts."
+  },
+  "scope": {
+    "decided": "season one, 60 episodes",
+    "by": "owner 2026-11-09"
+  },
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "Photoreal live-action modern revenge drama with a diverse Western cast, set in fictional Port Merrow on Puget Sound: the Glass House on the bluff, Merrow General's seventh-floor hallway, Pell Glassworks and Furnace No. 3 on Kiln Row, the concrete Ashford house on the hill, the courthouse. Light follows the glass: cold blue in season one, furnace orange once Remelt opens.",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是夢裡無聲碎裂的玻璃屋與『今天的藥是甜的』；證物（瓶底的氣泡、簽名的停頓、偏光、爐記）一律給特寫插入鏡，讓觀眾一眼看懂誰贏。",
+    "reuse": "Fixed sets: the Glass House, the seventh-floor hallway, the Harborview Motor Inn room, Remelt Studio (Furnace No. 3, light box, evidence wall, case tracker), the Ashford dining table and study, the Whitlock Home launch stage, the Prosecutor's Office, Superior Court, Rosa's.",
+    "voice": "English, written natively (not dubbed from Mandarin). Nora soft and level; Elias low and sparse; Peg quick and dry; Grant warm like a keynote, clipped when cornered; Sienna bright and fast; Theo flat. Voices auditioned before episode 1."
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "法庭、偵查庭與飯桌的文戲用一張首格＋緩推可省六到七成；三號爐的吹製與火光拍一組跨季重用；證物特寫（氣泡、偏光、簽名）用固定的插入鏡模板與後製疊字，不靠海螺生成文字。",
+    "owner_decision": true
+  },
+  "validate": "node docs/videos/series-plans/top40-2025-2026/lib/validate.mjs docs/videos/series-plans/top40-2025-2026/2025-15-xingde-xiangyu/western --season 1",
+  "ready_for_import": false,
+  "why_not_ready": "Episode outlines, not shot-by-shot scripts."
+}
