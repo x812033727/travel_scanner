@@ -1,0 +1,665 @@
+{
+ "tempo": 1.0,
+ "grades": {},
+ "default_grade": "dh",
+ "finish": "vignette=angle=PI/5,format=yuv420p",
+ "names": {},
+ "punch": false,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+ ],
+ "name_whoosh": "swish-9",
+ "music": [
+  {
+   "cue": "warm",
+   "from": "s01",
+   "to": "s08",
+   "offset": 0.0,
+   "gain": -21,
+   "fade_in": 1.0,
+   "fade_out": 1.5,
+   "tail": 0
+  },
+  {
+   "cue": "comedy",
+   "from": "s09",
+   "to": "s12",
+   "offset": 0.0,
+   "gain": -22,
+   "fade_in": 0.8,
+   "fade_out": 1.5,
+   "tail": 0
+  },
+  {
+   "cue": "night",
+   "from": "s13",
+   "from_off": 0.3,
+   "to": "s15",
+   "offset": 20.0,
+   "gain": -24,
+   "fade_in": 1.5,
+   "fade_out": 1.0,
+   "tail": 0
+  },
+  {
+   "cue": "warm",
+   "from": "s16",
+   "to": "s18",
+   "offset": 15.0,
+   "gain": -21,
+   "fade_in": 0.8,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "comedy",
+   "from": "s19",
+   "to": "s24",
+   "offset": 25.0,
+   "gain": -22,
+   "fade_in": 1.0,
+   "fade_out": 0.6,
+   "tail": 0
+  },
+  {
+   "cue": "warm",
+   "from": "s25",
+   "to": "s29",
+   "offset": 0.0,
+   "gain": -19,
+   "fade_in": 0.5,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "night",
+   "from": "s31",
+   "to": "s35",
+   "offset": 0.0,
+   "gain": -22,
+   "fade_in": 1.5,
+   "fade_out": 2.0,
+   "tail": 0.3
+  },
+  {
+   "cue": "tension",
+   "from": "s36",
+   "to": "s42",
+   "offset": 0.0,
+   "gain": -21,
+   "fade_in": 1.0,
+   "fade_out": 1.0,
+   "tail": 0
+  }
+ ],
+ "sfx": [
+  {
+   "file": "fire-1",
+   "at": "s01",
+   "off": 0,
+   "gain": -30,
+   "to": "s08"
+  },
+  {
+   "file": "Wind",
+   "at": "s01",
+   "off": 0,
+   "gain": -13,
+   "to": "s08"
+  },
+  {
+   "file": "wind1",
+   "at": "s01",
+   "off": 1.75,
+   "gain": -13,
+   "to": "s08"
+  },
+  {
+   "file": "birds",
+   "at": "s08",
+   "off": 6.0,
+   "gain": -18,
+   "to": "s18"
+  },
+  {
+   "file": "Wind",
+   "at": "s08",
+   "off": 6.0,
+   "gain": -10,
+   "to": "s18"
+  },
+  {
+   "file": "wind1",
+   "at": "s09",
+   "off": 1.25,
+   "gain": -10,
+   "to": "s18"
+  },
+  {
+   "file": "birds",
+   "at": "s18",
+   "off": 6.5,
+   "gain": -16,
+   "to": "s30"
+  },
+  {
+   "file": "Wind",
+   "at": "s18",
+   "off": 6.5,
+   "gain": -9,
+   "to": "s30"
+  },
+  {
+   "file": "wind1",
+   "at": "s19",
+   "off": 1.25,
+   "gain": -9,
+   "to": "s30"
+  },
+  {
+   "file": "Wind",
+   "at": "s30",
+   "off": 6.0,
+   "gain": -9,
+   "to": "s35"
+  },
+  {
+   "file": "wind1",
+   "at": "s31",
+   "off": 1.25,
+   "gain": -9,
+   "to": "s35"
+  },
+  {
+   "file": "Wind",
+   "at": "s35",
+   "off": 3.5,
+   "gain": -11,
+   "to": "s42"
+  },
+  {
+   "file": "wind1",
+   "at": "s36",
+   "off": 1.25,
+   "gain": -11,
+   "to": "s42"
+  },
+  {
+   "file": "birds",
+   "at": "s35",
+   "off": 3.5,
+   "gain": -24,
+   "to": "s42"
+  },
+  {
+   "file": "paper_02",
+   "at": "s01",
+   "off": 0.3,
+   "gain": -24
+  },
+  {
+   "file": "paper_01",
+   "at": "s02",
+   "off": 0.6,
+   "gain": -28
+  },
+  {
+   "file": "bookPlace1",
+   "at": "s02",
+   "off": 3.6,
+   "gain": -24
+  },
+  {
+   "file": "bookPlace1",
+   "at": "s02",
+   "off": 4.1,
+   "gain": -26
+  },
+  {
+   "file": "paper_04",
+   "at": "s04",
+   "off": 0.6,
+   "gain": -28
+  },
+  {
+   "file": "cloth1",
+   "at": "s05",
+   "off": 0.4,
+   "gain": -28
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s07",
+   "off": 0.5,
+   "gain": -26
+  },
+  {
+   "file": "paper_03",
+   "at": "s08",
+   "off": 0.4,
+   "gain": -30
+  },
+  {
+   "file": "paper_03",
+   "at": "s08",
+   "off": 2.2,
+   "gain": -30
+  },
+  {
+   "file": "paper_03",
+   "at": "s08",
+   "off": 4.0,
+   "gain": -30
+  },
+  {
+   "file": "swish-3",
+   "at": "s09",
+   "off": 0.2,
+   "gain": -20
+  },
+  {
+   "file": "swish-7",
+   "at": "s09",
+   "off": 1.5,
+   "gain": -22
+  },
+  {
+   "file": "swish-3",
+   "at": "s09",
+   "off": 2.8,
+   "gain": -22
+  },
+  {
+   "file": "swish-11",
+   "at": "s13",
+   "off": 0.3,
+   "gain": -26
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s15",
+   "off": 0.5,
+   "gain": -26
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s15",
+   "off": 1.1,
+   "gain": -28
+  },
+  {
+   "file": "paper_02",
+   "at": "s16",
+   "off": 0.5,
+   "gain": -22
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s18",
+   "off": 6.1,
+   "gain": -28
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s18",
+   "off": 6.4,
+   "gain": -28
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s18",
+   "off": 6.7,
+   "gain": -28
+  },
+  {
+   "file": "creak2",
+   "at": "s19",
+   "off": 0.4,
+   "gain": -24
+  },
+  {
+   "file": "creak2",
+   "at": "s19",
+   "off": 2.6,
+   "gain": -26
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s21",
+   "off": 0.3,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s21",
+   "off": 0.8999999999999999,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s21",
+   "off": 1.5,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s21",
+   "off": 2.0999999999999996,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s21",
+   "off": 2.6999999999999997,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s21",
+   "off": 3.3,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s21",
+   "off": 3.8999999999999995,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s21",
+   "off": 4.5,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s21",
+   "off": 5.1,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s21",
+   "off": 5.699999999999999,
+   "gain": -32
+  },
+  {
+   "file": "impactWood_heavy_002",
+   "at": "s21",
+   "off": 7.1,
+   "gain": -18
+  },
+  {
+   "file": "rustle03",
+   "at": "s25",
+   "off": 0.5,
+   "gain": -22
+  },
+  {
+   "file": "rustle03",
+   "at": "s25",
+   "off": 2.5,
+   "gain": -22
+  },
+  {
+   "file": "rustle03",
+   "at": "s25",
+   "off": 4.5,
+   "gain": -22
+  },
+  {
+   "file": "rustle03",
+   "at": "s25",
+   "off": 6.5,
+   "gain": -22
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s25",
+   "off": 0.8,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s25",
+   "off": 1.6,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s25",
+   "off": 2.4000000000000004,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s25",
+   "off": 3.2,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s25",
+   "off": 4.0,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s25",
+   "off": 4.8,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s25",
+   "off": 5.6000000000000005,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s25",
+   "off": 6.4,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s25",
+   "off": 7.2,
+   "gain": -30
+  },
+  {
+   "file": "impactBell_heavy_001",
+   "at": "s28",
+   "off": 0.0,
+   "gain": -10
+  },
+  {
+   "file": "rustle03",
+   "at": "s29",
+   "off": 3.0,
+   "gain": -30
+  },
+  {
+   "file": "rustle03",
+   "at": "s31",
+   "off": 0.5,
+   "gain": -26
+  },
+  {
+   "file": "rustle03",
+   "at": "s31",
+   "off": 2.8,
+   "gain": -28
+  },
+  {
+   "file": "rustle03",
+   "at": "s32",
+   "off": 0.3,
+   "gain": -30
+  },
+  {
+   "file": "creak3",
+   "at": "s36",
+   "off": 0.5,
+   "gain": -22
+  },
+  {
+   "file": "creak1",
+   "at": "s36",
+   "off": 2.0,
+   "gain": -24
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s36",
+   "off": 3.1,
+   "gain": -22
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s38",
+   "off": 4.75,
+   "gain": -10
+  },
+  {
+   "file": "impactWood_heavy_001",
+   "at": "s38",
+   "off": 4.75,
+   "gain": -18
+  },
+  {
+   "file": "paper_04",
+   "at": "s42",
+   "off": 0.6,
+   "gain": -26
+  },
+  {
+   "file": "gong_02",
+   "at": "s42",
+   "off": 5.45,
+   "gain": -2
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s42",
+   "off": 5.45,
+   "gain": -2
+  }
+ ],
+ "frame_round": true,
+ "clip_voice": true,
+ "voice_skip": {},
+ "voice_until": {},
+ "clip_af": {
+  "s10": {
+   "from": 0,
+   "af": "asendcmd=c='2.6 rubberband pitch 1.0',rubberband=pitch=0.78:formant=preserved"
+  },
+  "s11": {
+   "from": 0,
+   "af": "asendcmd=c='2.6 rubberband pitch 1.1;4.5 rubberband pitch 1.0',rubberband=pitch=1.0:formant=preserved"
+  },
+  "s12": {
+   "from": 0,
+   "af": "rubberband=pitch=1.1:formant=preserved"
+  },
+  "s14": {
+   "from": 0,
+   "af": "asendcmd=c='2.0 rubberband pitch 1.3',rubberband=pitch=1.15:formant=preserved"
+  },
+  "s15": {
+   "from": 0,
+   "af": "asendcmd=c='5.44 rubberband pitch 0.75',rubberband=pitch=1.0:formant=preserved"
+  },
+  "s16": {
+   "from": 0,
+   "af": "rubberband=pitch=0.88:formant=preserved"
+  },
+  "s17": {
+   "from": 0,
+   "af": "asendcmd=c='1.4 rubberband pitch 1.0;4.6 rubberband pitch 1.25;6.55 rubberband pitch 1.1',rubberband=pitch=1.1:formant=preserved"
+  },
+  "s18": {
+   "from": 0,
+   "af": "rubberband=pitch=0.8:formant=preserved"
+  },
+  "s22": {
+   "from": 0,
+   "af": "rubberband=pitch=0.92:formant=preserved"
+  },
+  "s24": {
+   "from": 0,
+   "af": "asendcmd=c='4.2 rubberband pitch 1.06',rubberband=pitch=1.0:formant=preserved"
+  },
+  "s27": {
+   "from": 0,
+   "af": "asendcmd=c='1.8 rubberband pitch 1.0;3.33 rubberband pitch 1.08',rubberband=pitch=0.88:formant=preserved"
+  },
+  "s30": {
+   "from": 0,
+   "af": "asendcmd=c='2.9 rubberband pitch 1.2',rubberband=pitch=0.88:formant=preserved"
+  },
+  "s32": {
+   "from": 0,
+   "af": "asendcmd=c='2.4 rubberband pitch 1.12',rubberband=pitch=1.25:formant=preserved"
+  },
+  "s33": {
+   "from": 0,
+   "af": "rubberband=pitch=1.28:formant=preserved"
+  },
+  "s34": {
+   "from": 0,
+   "af": "asendcmd=c='1.95 rubberband pitch 1.0;3.6 rubberband pitch 1.18',rubberband=pitch=1.1:formant=preserved"
+  },
+  "s38": {
+   "from": 0,
+   "af": "asendcmd=c='2.95 rubberband pitch 0.72;5.0 rubberband pitch 1.0',rubberband=pitch=0.88:formant=preserved"
+  },
+  "s39": {
+   "from": 0,
+   "af": "asendcmd=c='4.72 rubberband pitch 1.0',rubberband=pitch=0.72:formant=preserved"
+  },
+  "s40": {
+   "from": 0,
+   "af": "asendcmd=c='4.4 rubberband pitch 0.8;5.1 rubberband pitch 1.25',rubberband=pitch=1.0:formant=preserved"
+  },
+  "s42": {
+   "from": 0,
+   "af": "asendcmd=c='2.0 rubberband pitch 1.3;3.5 rubberband pitch 1.12;4.6 rubberband pitch 1.0',rubberband=pitch=1.0:formant=preserved"
+  }
+ },
+ "voice_off": [
+  "s21",
+  "s23",
+  "s36"
+ ],
+ "move_lines": {},
+ "min": {
+  "s42": 6.5
+ },
+ "line_at": {
+  "zq915a21": 0.8,
+  "zq915a23": 0.25,
+  "zq915a34": 3.3
+ },
+ "panel_y": {
+  "s03": 860
+ },
+ "panel_until": {
+  "s03": 3.85
+ },
+ "vf": {
+  "s42": "split[qaa][qab];[qab]crop=420:380:500:380,gblur=sigma=10,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((105-abs(X+500-(if(lt(T\\,2.500)\\,755\\,if(lt(T\\,2.750)\\,755+(-55)*(T-2.500)/0.250\\,if(lt(T\\,3.250)\\,700+(2)*(T-2.750)/0.500\\,if(lt(T\\,4.000)\\,702+(-30)*(T-3.250)/0.750\\,if(lt(T\\,4.750)\\,672+(18)*(T-4.000)/0.750\\,if(lt(T\\,5.250)\\,690+(-40)*(T-4.750)/0.500\\,if(lt(T\\,5.560)\\,650+(2)*(T-5.250)/0.310\\,652))))))))))/16\\,0\\,1)*clip((90-abs(Y+380-(if(lt(T\\,2.500)\\,522\\,if(lt(T\\,2.750)\\,522+(26)*(T-2.500)/0.250\\,if(lt(T\\,3.250)\\,548+(32)*(T-2.750)/0.500\\,if(lt(T\\,4.000)\\,580+(-2)*(T-3.250)/0.750\\,if(lt(T\\,4.750)\\,578+(-20)*(T-4.000)/0.750\\,if(lt(T\\,5.250)\\,558+(34)*(T-4.750)/0.500\\,if(lt(T\\,5.560)\\,592+(3)*(T-5.250)/0.310\\,595))))))))))/16\\,0\\,1)*clip((T-2.4)/0.1\\,0\\,1)'[qac];[qaa]format=rgba[qad];[qad][qac]overlay=500:380,format=yuv420p,fade=t=out:st=5.000:d=0.56",
+  "s17": "split[paa][pab];[pab]crop=640:720:0:360,gblur=sigma=7,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))-172)/20\\,0\\,1)*clip((50-(r(X\\,Y)-b(X\\,Y)))/15\\,0\\,1)*clip((640-X)/40\\,0\\,1)*clip(Y/40\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=0:360,format=yuv420p",
+  "s11": "split[saa][sab];[sab]crop=520:600:440:0,gblur=sigma=60:sigmaV=1,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((90-abs(X+440-(if(lt(T\\,0.000)\\,780\\,if(lt(T\\,2.000)\\,780+(-43)*(T-0.000)/2.000\\,if(lt(T\\,4.000)\\,737+(-25)*(T-2.000)/2.000\\,if(lt(T\\,5.000)\\,712+(-64)*(T-4.000)/1.000\\,if(lt(T\\,5.300)\\,648+(-18)*(T-5.000)/0.300\\,630))))))))/40\\,0\\,1)*clip((280-abs(Y+0-(if(lt(T\\,0.000)\\,270\\,if(lt(T\\,5.300)\\,270+(0)*(T-0.000)/5.300\\,270)))))/40\\,0\\,1)*clip((5.3-T)/0.1\\,0\\,1)'[sac];[saa]format=rgba[sad];[sad][sac]overlay=440:0,format=yuv420p",
+  "s13": "split[faa][fab];[fab]crop=1920:600:0:480,eq=contrast=0.6:saturation=0.88:brightness=0.015,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((Y-30)/110\\,0\\,1)'[fac];[faa]format=rgba[fad];[fad][fac]overlay=0:480,format=yuv420p",
+  "s19": "split[fba][fbb];[fbb]crop=1920:520:0:560,eq=contrast=0.82:saturation=0.92:brightness=0.01,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((Y-20)/150\\,0\\,1)'[fbc];[fba]format=rgba[fbd];[fbd][fbc]overlay=0:560,format=yuv420p",
+  "s28": "split[kaa][kab];[kab]crop=1920:520:0:0,hue=s=0.25,colorbalance=rs=0.08:bs=-0.08:rm=0.14:gm=0.02:bm=-0.12:rh=0.18:gh=0.05:bh=-0.10,eq=brightness=0.03,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((470-Y)/120\\,0\\,1)'[kac];[kaa]format=rgba[kad];[kad][kac]overlay=0:0,format=yuv420p,colorbalance=rs=0.08:gs=0.02:bs=-0.10:rm=0.08:gm=0.02:bm=-0.10:rh=0.06:gh=0.02:bh=-0.12,eq=saturation=0.92:gamma=0.97"
+ },
+ "subtitle_lines": [],
+ "_note": "draft"
+}
