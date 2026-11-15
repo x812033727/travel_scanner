@@ -1,0 +1,75 @@
+"""e912 fix2: s22 again (pick-review.md, serious 1). Both fix1 seeds still hung two long black tails from the foreground hat
+(not Hu's flat-winged futou of s12/s23/s26), and stood a row of red-tasselled spears and a burning tripod brazier behind Xu
+Yan; the foreground man turned his face in from 6.5 s. spec.json only sent Xu Yan's pictures, so the model drew the hat
+itself, and writing the hat a second time would likely draw it the same again. So the hat leaves the frame: in the
+foreground only the back of one plump man's left shoulder and upper arm, his head above the top edge the whole shot.
+
+Same steps as e912 fix1 (retake.py from st1, mkjobs.py for the duration, 10 s as the review asks), seeds 9121301/9121302.
+- pictures: xuyan-portrait-l1 and the night-yard set only (drop_angles; the review's list; nobody's picture for the shoulder).
+- background: only the dark bamboo fence and the dark earth wall, nothing leaning on them, no racks, poles, spears, tassels,
+  brazier or flame inside the frame, nobody behind him, exactly one face; the d1 "every man in black holds one torch" clause
+  goes (it wrote men in black into the shot). No title word for the foreground man (fix1 lesson).
+- props: the blank slip between the first two fingers of the right hand at chest height, the palm-sized dark red silk
+  drawstring pouch smeared with mud low in the left hand, both the whole shot.
+- face: e911 fix2 s21 wrote "no smile" hard and both seeds still grinned after 4 s, and fix1 1201 of this shot smiled from
+  5.7 s. So the cold face is written as things he does: brows drawn down, eyes narrowed, jaw set, lips pressed into a
+  flat line with the corners pulled down between words, and after the last word he clenches his jaw, presses his lips
+  flat, flares his nostrils and stares the man down without blinking to the last frame (the late-grin window is held by
+  an action, not a negative).
+"""
+import json
+import pathlib
+
+HERE = pathlib.Path(__file__).resolve().parent
+D1SPEC = json.loads((HERE.parent / "spec.json").read_text(encoding="utf-8"))["shots"]
+BEADS = ["no strings of beads and no glitch effects anywhere.",
+         "no strings of beads, no hanging beads, no bead curtains, no strings of red beads, no strings of corn or chili hanging "
+         "anywhere and no glitch effects anywhere."]
+
+COMPOSITION_OLD = (
+    "low-angle over-the-shoulder shot from close behind one plump official seen only from behind, appearing only once: his "
+    "head turned fully away from us toward the man he faces, only the back of his black gauze futou hat, the back of his neck "
+    "and his left shoulder in a blue-green official robe, his ear, cheek and profile never visible, soft and dark, in the right "
+    "foreground; on screen left Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, rising "
+    "from a crouch to his full height, framed from the waist up with clear space above his head, the small slip between two "
+    "fingers of his right hand and the dark red silk pouch, smeared with mud in his left hand, his face three-quarter to screen "
+    "right toward the official, never the lens; cool and pointed: brows level, eyes hard, the faintest wry curl at one corner "
+    "of his mouth, no grin, teeth never showing, lips moving between words; behind him only darkness and the orange flicker of "
+    "torches held by people out of the frame; no torch on a stand, in the ground or on a wall, no brazier; no blade, no knife, "
+    "no sword, no scabbard, no sheathed weapon at anyone's waist, no spear, no pole and no staff anywhere in the frame; every "
+    "man in black holds only one burning torch in his right hand, his left hand empty, a plain black cloth sash at his waist "
+    "with nothing hanging from it. Besides him, only the back of the official's hat and his shoulder in the foreground the "
+    "composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone "
+    "appears.")
+COMPOSITION_NEW = (
+    "low-angle over-the-shoulder shot. In the right foreground, soft and dark and out of focus, only the back of one plump "
+    "man's left shoulder and upper arm in a blue-green robe; his head is above the top edge of the frame the whole shot and "
+    "never enters it, so no hat, no hat wings, no ribbons and no face of his are ever visible. On screen left Xu Yan, in an old "
+    "plain grey cloth outer coat over his faded blue-grey scholar's robe, rising from a crouch to his full height, framed from "
+    "the waist up with clear space above his head, a small blank slip pinched between the first two fingers of his right hand "
+    "at chest height and a palm-sized dark red silk drawstring pouch smeared with mud held low in his left hand, both hands in "
+    "front of him the whole shot, his face three-quarter to screen right toward the man in the foreground, never the lens; cold "
+    "and pointed: his brows drawn down, his eyes narrowed and hard, his jaw set, his nostrils slightly flared; he speaks low "
+    "and level, and between words his lips press together into a firm flat line with the corners pulled down, his cheeks "
+    "still. Behind him only the dark bamboo fence and the dark earth wall of the house, soft and out of focus; nothing leans "
+    "against the fence or the wall; no racks, no poles, no spears, no tassels, no red tassels, no blade, no sword, no "
+    "scabbard and no weapons of any kind; no brazier, no fire bowl, no torch on a stand, in the ground or on a wall, no flame "
+    "anywhere inside the frame, the torchlight comes only from people outside the frame; nobody else stands behind him. "
+    "Besides him, only the blurred shoulder and upper arm in the foreground the composition describes is in the frame, "
+    "belonging to someone whose head is above the frame; exactly one face in the frame; no second copy of anyone appears.")
+MOTION_OLD = (
+    "Xu Yan rises to his full height and takes one step toward the official, stopping an arm's length away, the slip raised a "
+    "little; the official in the foreground keeps still, his head never turns, the back of his hat toward us the whole shot,")
+MOTION_NEW = (
+    "Xu Yan rises to his full height and takes one step toward the man, stopping an arm's length away, the slip raised a "
+    "little in his right hand, the pouch still low in his left; his eyes stay on the man, never on the camera; after the last "
+    "word he clenches his jaw, presses his lips flat with the corners pulled down, flares his nostrils and stares the man down "
+    "with narrowed eyes without blinking, holding that cold hard face to the last frame; the shoulder in the foreground keeps "
+    "still and the head above it never comes into the frame,")
+
+S = {
+ "s22": {"replace": D1SPEC["s22"]["replace"] + [[COMPOSITION_OLD, COMPOSITION_NEW], [MOTION_OLD, MOTION_NEW], BEADS],
+         "drop_angles": True,
+         "duration_seconds": 10},
+}
+(HERE / "spec.json").write_text(json.dumps({"seeds": [9121301, 9121302], "shots": S}, ensure_ascii=False, indent=1), encoding="utf-8")
