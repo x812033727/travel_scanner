@@ -12,13 +12,13 @@ miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.j
 # every end-before rounded UP to a whole 24 fps frame (input -ss keeps frames at/after start, -to drops a frame whose end
 # passes it: 0.792 lost s03's frame 19, 7.708 left s11 a frame short). Warn (not stop) if picks.json does not have them.
 # REVIEW 3 (cut-review.md + cut-review-2.md, review3-trims.tsv): s01 4.25 (the grab on the c0.3 hit), s04 4.5, s09 6.25, s12 5.0,
-# s21 4.292 (a18 atempo 1.15, no hold), s26 1.75 and s31 1.625 (spears at the head), s29 7.5.
+# s21 4.292 (a18 atempo 1.19, no hold), s26 1.75 and s31 2.291 (spears at the head), s29 7.5.
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
 want={'s01':(4.25,6.417),'s02':(0,2.791),'s03':(0.791,5.583),'s04':(0,4.5),'s05':(0.875,7.5),'s06':(3.375,7.5),'s07':(0,3.375),
  's08':(0.583,0),'s09':(0.75,6.25),'s10':(2.0,0),'s11':(2.625,7.709),'s12':(0,5.0),'s13':(2.583,0),'s14':(0,5.417),'s15':(0,4.584),
  's16':(0,0),'s17':(0.375,5.792),'s18':(0,3.5),'s19':(1.0,6.0),'s20':(0.5,7.834),'s21':(0,4.292),'s22':(0.375,4.625),'s23':(0.583,5.583),
- 's24':(1.375,6.791),'s25':(3.0,10.084),'s26':(1.75,0),'s27':(0,2.0),'s28':(0,10.084),'s29':(0,7.5),'s30':(0.791,7.125),'s31':(1.625,0),
+ 's24':(1.375,6.791),'s25':(3.0,10.084),'s26':(1.75,0),'s27':(0,2.0),'s28':(0,10.084),'s29':(0,7.5),'s30':(0.791,7.125),'s31':(2.291,0),
  's32':(2.791,7.708),'s33':(0.75,7.0),'s34':(0.375,3.584),'s35':(1.791,0)}
 bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].get(\"end-before\",0)} (want {a} {b})' for s,(a,b) in want.items()
      if abs(p[s]['trim'].get('start',0)-a)>0.0005 or abs(p[s]['trim'].get('end-before',0)-b)>0.0005]
