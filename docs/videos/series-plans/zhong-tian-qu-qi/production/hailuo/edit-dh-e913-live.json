@@ -1,0 +1,727 @@
+{
+ "tempo": 1.0,
+ "grades": {},
+ "default_grade": "dh",
+ "finish": "vignette=angle=PI/5,format=yuv420p",
+ "names": {},
+ "punch": false,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+ ],
+ "name_whoosh": "swish-9",
+ "music": [
+  {
+   "cue": "warm",
+   "from": "s01",
+   "to": "s05",
+   "offset": 0.0,
+   "gain": -20,
+   "fade_in": 1.0,
+   "fade_out": 1.0,
+   "tail": 0
+  },
+  {
+   "cue": "warm",
+   "from": "s06",
+   "from_off": 3.3,
+   "to": "s12",
+   "offset": 21.0,
+   "gain": -20,
+   "fade_in": 1.5,
+   "fade_out": 2.0,
+   "tail": 0.3
+  },
+  {
+   "cue": "comedy",
+   "from": "s13",
+   "to": "s32",
+   "offset": 2.5,
+   "gain": -20,
+   "fade_in": 1.0,
+   "fade_out": 2.0,
+   "tail": 0.5
+  },
+  {
+   "cue": "night",
+   "from": "s33",
+   "to": "s38",
+   "offset": 0.0,
+   "gain": -19,
+   "fade_in": 1.5,
+   "fade_out": 0.1,
+   "tail": 1.19
+  }
+ ],
+ "sfx": [
+  {
+   "file": "birds",
+   "at": "s01",
+   "off": 0,
+   "gain": -16,
+   "to": "s12"
+  },
+  {
+   "file": "Wind",
+   "at": "s01",
+   "off": 0,
+   "gain": -8,
+   "to": "s12"
+  },
+  {
+   "file": "wind1",
+   "at": "s01",
+   "off": 1.75,
+   "gain": -8,
+   "to": "s12"
+  },
+  {
+   "file": "fire-1",
+   "at": "s01",
+   "off": 0,
+   "gain": -30,
+   "to": "s01"
+  },
+  {
+   "file": "birds",
+   "at": "s12",
+   "off": 3.9,
+   "gain": -18,
+   "to": "s32"
+  },
+  {
+   "file": "Wind",
+   "at": "s12",
+   "off": 3.9,
+   "gain": -7,
+   "to": "s32"
+  },
+  {
+   "file": "wind1",
+   "at": "s12",
+   "off": 5.65,
+   "gain": -7,
+   "to": "s32"
+  },
+  {
+   "file": "Wind",
+   "at": "s32",
+   "off": 4.15,
+   "gain": -7,
+   "to": "s42"
+  },
+  {
+   "file": "wind1",
+   "at": "s32",
+   "off": 5.9,
+   "gain": -9,
+   "to": "s42"
+  },
+  {
+   "file": "fire-1",
+   "at": "s36",
+   "off": 0,
+   "gain": -26,
+   "to": "s42"
+  },
+  {
+   "file": "impactPunch_heavy_000",
+   "at": "s18",
+   "off": 0.15,
+   "gain": 2
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s18",
+   "off": 0.15,
+   "gain": 2
+  },
+  {
+   "file": "impactBell_heavy_001",
+   "at": "s29",
+   "off": 4.1,
+   "gain": -6
+  },
+  {
+   "file": "gong_02",
+   "at": "s36",
+   "off": 0.3,
+   "gain": -4
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s36",
+   "off": 0.3,
+   "gain": -4
+  },
+  {
+   "file": "chop",
+   "at": "s39",
+   "off": 1.19,
+   "gain": -6
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s39",
+   "off": 1.19,
+   "gain": -8
+  },
+  {
+   "file": "drawKnife1",
+   "at": "s41",
+   "off": 0.45,
+   "gain": -6
+  },
+  {
+   "file": "impactPunch_heavy_000",
+   "at": "s41",
+   "off": 0.55,
+   "gain": 5
+  },
+  {
+   "file": "impactMetal_heavy_000",
+   "at": "s41",
+   "off": 0.55,
+   "gain": 0
+  },
+  {
+   "file": "slam_01",
+   "at": "s41",
+   "off": 0.55,
+   "gain": 1
+  },
+  {
+   "file": "gong_01",
+   "at": "s41",
+   "off": 0.55,
+   "gain": 3
+  },
+  {
+   "file": "hooves_trot",
+   "at": "s01",
+   "off": 0,
+   "gain": -26,
+   "to": "s01"
+  },
+  {
+   "file": "hooves_trot",
+   "at": "s03",
+   "off": 3.5,
+   "gain": -28,
+   "to": "s03"
+  },
+  {
+   "file": "cloth1",
+   "at": "s03",
+   "off": 3.0,
+   "gain": -30
+  },
+  {
+   "file": "cloth1",
+   "at": "s04",
+   "off": 0.2,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s05",
+   "off": 0.3,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s05",
+   "off": 0.8,
+   "gain": -32
+  },
+  {
+   "file": "cloth1",
+   "at": "s05",
+   "off": 1.6,
+   "gain": -32
+  },
+  {
+   "file": "bookPlace1",
+   "at": "s07",
+   "off": 1.15,
+   "gain": -10
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s07",
+   "off": 1.15,
+   "gain": -22
+  },
+  {
+   "file": "cloth1",
+   "at": "s08",
+   "off": 3.3,
+   "gain": -32
+  },
+  {
+   "file": "wooden_01",
+   "at": "s09",
+   "off": 0.85,
+   "gain": -26
+  },
+  {
+   "file": "wooden_01",
+   "at": "s09",
+   "off": 1.05,
+   "gain": -28
+  },
+  {
+   "file": "paper_02",
+   "at": "s12",
+   "off": 0.5,
+   "gain": -30
+  },
+  {
+   "file": "cloth1",
+   "at": "s12",
+   "off": 1.0,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s12",
+   "off": 2.5,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s12",
+   "off": 2.9,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s12",
+   "off": 3.3,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s12",
+   "off": 3.7,
+   "gain": -32
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s13",
+   "off": 0.8,
+   "gain": -10
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s13",
+   "off": 1.1,
+   "gain": -10
+  },
+  {
+   "file": "door_close_01",
+   "at": "s13",
+   "off": 2.3,
+   "gain": -6
+  },
+  {
+   "file": "slam_01",
+   "at": "s13",
+   "off": 2.3,
+   "gain": -10
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "s13",
+   "off": 2.3,
+   "gain": -10
+  },
+  {
+   "file": "rustle03",
+   "at": "s13",
+   "off": 2.35,
+   "gain": -24
+  },
+  {
+   "file": "wooden_01",
+   "at": "s14",
+   "off": 0.05,
+   "gain": -14
+  },
+  {
+   "file": "swish-3",
+   "at": "s14",
+   "off": 0.3,
+   "gain": -24
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "s14",
+   "off": 0.85,
+   "gain": -12
+  },
+  {
+   "file": "rustle03",
+   "at": "s14",
+   "off": 0.9,
+   "gain": -20
+  },
+  {
+   "file": "rustle03",
+   "at": "s15",
+   "off": 0.3,
+   "gain": -26
+  },
+  {
+   "file": "cloth1",
+   "at": "s15",
+   "off": 0.6,
+   "gain": -30
+  },
+  {
+   "file": "creak2",
+   "at": "s16",
+   "off": 0.1,
+   "gain": -24
+  },
+  {
+   "file": "cloth1",
+   "at": "s16",
+   "off": 1.0,
+   "gain": -30
+  },
+  {
+   "file": "creak1",
+   "at": "s20",
+   "off": 0.5,
+   "gain": -26
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s20",
+   "off": 1.2,
+   "gain": -24
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s21",
+   "off": 0.85,
+   "gain": -22
+  },
+  {
+   "file": "creak3",
+   "at": "s21",
+   "off": 0.6,
+   "gain": -28
+  },
+  {
+   "file": "creak2",
+   "at": "s22",
+   "off": 4.8,
+   "gain": -28
+  },
+  {
+   "file": "bookFlip1",
+   "at": "s23",
+   "off": 0.6,
+   "gain": -26
+  },
+  {
+   "file": "paper_03",
+   "at": "s23",
+   "off": 2.4,
+   "gain": -26
+  },
+  {
+   "file": "cloth1",
+   "at": "s24",
+   "off": 0.3,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s25",
+   "off": 0.2,
+   "gain": -32
+  },
+  {
+   "file": "impactPlank_medium_000",
+   "at": "s25",
+   "off": 1.4,
+   "gain": -28
+  },
+  {
+   "file": "paper_01",
+   "at": "s26",
+   "off": 0.3,
+   "gain": -34
+  },
+  {
+   "file": "paper_04",
+   "at": "s26",
+   "off": 1.6,
+   "gain": -34
+  },
+  {
+   "file": "impactPlank_medium_000",
+   "at": "s29",
+   "off": 0.3,
+   "gain": -28
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s30",
+   "off": 1.0,
+   "gain": -26
+  },
+  {
+   "file": "paper_02",
+   "at": "s30",
+   "off": 2.4,
+   "gain": -32
+  },
+  {
+   "file": "cloth1",
+   "at": "s31",
+   "off": 0.6,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s32",
+   "off": 0.5,
+   "gain": -34
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s32",
+   "off": 1.0,
+   "gain": -34
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s32",
+   "off": 1.5,
+   "gain": -34
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s32",
+   "off": 2.0,
+   "gain": -34
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s32",
+   "off": 2.5,
+   "gain": -34
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s32",
+   "off": 3.0,
+   "gain": -34
+  },
+  {
+   "file": "creak1",
+   "at": "s33",
+   "off": 4.1,
+   "gain": -24
+  },
+  {
+   "file": "door_close_01",
+   "at": "s33",
+   "off": 4.7,
+   "gain": -26
+  },
+  {
+   "file": "cloth1",
+   "at": "s34",
+   "off": 0.5,
+   "gain": -30
+  },
+  {
+   "file": "creak3",
+   "at": "s34",
+   "off": 3.6,
+   "gain": -28
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s35",
+   "off": 0.3,
+   "gain": -34
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s35",
+   "off": 1.0,
+   "gain": -34
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s35",
+   "off": 1.7,
+   "gain": -34
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s35",
+   "off": 2.6,
+   "gain": -34
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s35",
+   "off": 3.3,
+   "gain": -34
+  },
+  {
+   "file": "rustle03",
+   "at": "s35",
+   "off": 1.2,
+   "gain": -26
+  },
+  {
+   "file": "rustle03",
+   "at": "s35",
+   "off": 3.0,
+   "gain": -26
+  },
+  {
+   "file": "rustle03",
+   "at": "s37",
+   "off": 0.4,
+   "gain": -30
+  },
+  {
+   "file": "paper_01",
+   "at": "s38",
+   "off": 0.8,
+   "gain": -30
+  },
+  {
+   "file": "rustle03",
+   "at": "s40",
+   "off": 0.5,
+   "gain": -26
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s41",
+   "off": 0.9,
+   "gain": -24
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s41",
+   "off": 1.4,
+   "gain": -24
+  },
+  {
+   "file": "impactWood_medium_001",
+   "at": "s41",
+   "off": 1.5,
+   "gain": -16
+  },
+  {
+   "file": "cloth1",
+   "at": "s42",
+   "off": 0.4,
+   "gain": -32
+  }
+ ],
+ "frame_round": true,
+ "clip_voice": true,
+ "voice_skip": {
+  "s15": 0.35,
+  "s29": 0.75
+ },
+ "voice_until": {},
+ "clip_af": {
+  "s03": {
+   "from": 0,
+   "af": "asendcmd=c='2.6 rubberband pitch 1.0',rubberband=pitch=0.78:formant=preserved"
+  },
+  "s08": {
+   "from": 0,
+   "af": "rubberband=pitch=0.92:formant=preserved"
+  },
+  "s15": {
+   "from": 4.2,
+   "af": "rubberband=pitch=0.8:formant=preserved"
+  },
+  "s17": {
+   "from": 0,
+   "af": "rubberband=pitch=0.62:formant=preserved,volume=3dB,alimiter=limit=0.89:attack=1:release=50:level=false"
+  },
+  "s20": {
+   "from": 0,
+   "af": "volume=2dB,asendcmd=c='1.6 rubberband pitch 0.6',rubberband=pitch=1.0:formant=preserved,volume=3dB,alimiter=limit=0.89:attack=1:release=50:level=false"
+  },
+  "s22": {
+   "from": 0,
+   "af": "volume=3dB,alimiter=limit=0.89:attack=1:release=50:level=false"
+  },
+  "s24": {
+   "from": 0,
+   "af": "asendcmd=c='2.85 rubberband pitch 1.0',rubberband=pitch=0.6:formant=preserved,volume=2dB,alimiter=limit=0.89:attack=1:release=50:level=false"
+  },
+  "s28": {
+   "from": 0,
+   "af": "rubberband=pitch=0.9:formant=preserved"
+  },
+  "s29": {
+   "from": 0,
+   "af": "rubberband=pitch=1.25:formant=preserved"
+  },
+  "s31": {
+   "from": 0,
+   "af": "asendcmd=c='1.2 rubberband pitch 1.0;2.6 rubberband pitch 0.65;4.1 rubberband pitch 1.0',rubberband=pitch=0.65:formant=preserved,volume=2dB,alimiter=limit=0.89:attack=1:release=50:level=false"
+  }
+ },
+ "voice_off": [
+  "s16"
+ ],
+ "move_lines": {},
+ "min": {},
+ "line_at": {
+  "zq913a04": 0.2,
+  "zq913a06": 0.37,
+  "zq913a07": 3.55,
+  "zq913a08": 0.3,
+  "zq913a10": 0.6,
+  "zq913a14": 1.3,
+  "zq913a16": 1.25,
+  "zq913a18": 0.37,
+  "zq913a20": 0.5,
+  "zq913a22": 0.6,
+  "zq913a27": 0.4,
+  "zq913a32": 0.3,
+  "zq913a33": 1.0,
+  "zq913a34": 0.5
+ },
+ "panel_y": {
+  "s18": 870
+ },
+ "vf": {
+  "s01": "split[paa][pab];[pab]crop=220:476:1700:603,gblur=sigma=22,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+1700)-1740)/40\\,0\\,1)*clip(((Y+603)-643)/40\\,0\\,1)*clip((1.25-T)/0.2\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=1700:603,format=yuv420p",
+  "s02": "split[paa][pab];[pab]crop=540:586:1120:297,gblur=sigma=28,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+1120)-1160)/40\\,0\\,1)*clip((1620-(X+1120))/40\\,0\\,1)*clip(((Y+297)-337)/40\\,0\\,1)*clip((844-(Y+297))/40\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=1120:297,format=yuv420p",
+  "s03": "split[paa][pab];[pab]crop=380:456:510:178,gblur=sigma=22,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+510)-540)/30\\,0\\,1)*clip((860-(X+510))/30\\,0\\,1)*clip(((Y+178)-208)/30\\,0\\,1)*clip((605-(Y+178))/30\\,0\\,1)*clip((1.5-T)/0.12\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=510:178,format=yuv420p,split[qaa][qab];[qab]crop=360:456:330:178,gblur=sigma=22,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+330)-360)/30\\,0\\,1)*clip((660-(X+330))/30\\,0\\,1)*clip(((Y+178)-208)/30\\,0\\,1)*clip((605-(Y+178))/30\\,0\\,1)*clip((T-1.38)/0.12\\,0\\,1)'[qac];[qaa]format=rgba[qad];[qad][qac]overlay=330:178,format=yuv420p",
+  "s04": "split[paa][pab];[pab]crop=250:294:875:785,gblur=sigma=12,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+875)-900)/25\\,0\\,1)*clip((1100-(X+875))/25\\,0\\,1)*clip(((Y+785)-(810+68*T))/25\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=875:785,format=yuv420p",
+  "s07": "split[paa][pab];[pab]crop=450:208:515:362,gblur=sigma=12,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+515)-540)/25\\,0\\,1)*clip((940-(X+515))/25\\,0\\,1)*clip(((Y+362)-387)/25\\,0\\,1)*clip((546-(Y+362))/25\\,0\\,1)*clip((T-0.9)/0.2\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=515:362,format=yuv420p",
+  "s12": "split[paa][pab];[pab]crop=130:814:0:69,gblur=sigma=18,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((100-X)/30\\,0\\,1)*clip(((Y+69)-99)/30\\,0\\,1)*clip((853-(Y+69))/30\\,0\\,1)*clip((0.75-T)/0.15\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=0:69,format=yuv420p",
+  "s23": "split[paa][pab];[pab]crop=480:388:640:635,gblur=sigma=18,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+640)-670)/30\\,0\\,1)*clip((1090-(X+640))/30\\,0\\,1)*clip(((Y+635)-665)/30\\,0\\,1)*clip((993-(Y+635))/30\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=640:635,format=yuv420p",
+  "s26": "vidstabtransform=input=/root/mokaair-work/videos/_live-e913/zhong-tian-qu-qi-e913-dh/s26.trf:smoothing=12:zoom=3:optzoom=0:interpol=bicubic",
+  "s36": "split[paa][pab];[pab]crop=124:202:1042:421,gblur=sigma=12,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+1042)-1054)/12\\,0\\,1)*clip((1154-(X+1042))/12\\,0\\,1)*clip(((Y+421)-433)/12\\,0\\,1)*clip((612-(Y+421))/12\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=1042:421,format=yuv420p,scale=w='trunc(1920*(1+0.01*t)/2)*2':h=-2:eval=frame,crop=1920:1080",
+  "s38": "scale=w='trunc(1920*(1+0.008*t)/2)*2':h=-2:eval=frame,crop=1920:1080",
+  "s42": "scale=w='trunc(1920*(1+0.006*t)/2)*2':h=-2:eval=frame,crop=1920:1080,fade=t=out:st=4.42:d=0.6"
+ },
+ "subtitle_lines": [
+  "zq913a19"
+ ],
+ "_note": "live action, written 2026-11-15 from edit-dh-e912-live.json (its REVIEW 3 form) and edit-dh-e911-live.json, with the e909-e912 lessons applied from the start, before the refined clips exist (refine is running): clip_voice, no punch-in, slow-down <= 1.1, interpolate off, frame_round, no title card (s01 goes straight on from e912 s35, an hour later at sunrise), names {}. SOURCES: script/storyboard/video.json/overlays.json in docs/videos/zhong-tian-qu-qi-e013-r2; picks _live-e913/zhong-tian-qu-qi-e913-dh/picks.json (drafts runpod/a/st1/out/sNN.mp4, md5-identical to the picked d1/fix1/fix2 drafts) as changed by colab/runs/e913-live/review2-trims.tsv (s01 start 2.25, s17 and s42 to the clip's end; s06 s11 s40 s41 RETAKE in fix3) and pick-review.md (masks, s26 vidstab), plus this table's two review3 trims (s22 start 0.708, s27 start 0.458: the first syllable starts at 0.75 / 0.50, so the picked starts began on it; scratch review3-trims.tsv in the report). e913cut.sh's want table holds every trim and fix seed this table assumes (whole frames, start floor / end ceil to 3 decimals, tolerance 0.001) and only prints the fix3 shots. PLACEHOLDERS (fix3, not yet shot): s06 (10 s), s11 (8 s), s40 (6 s), s41 (6 s, matches s42). The dry run used their fallback drafts (s06 0.5-9.0, s11 2.5-8.0, s40 0.25-3.75, s41 0-4.0); nothing in this table is fitted to those drafts except s06's line_at (a06 0.37, a07 3.55: a 10 s take has room) -- recheck s06 line_at against the new eye roll / eye close, give s11 a clip_af if its voice is outside Xu Yan's 106-142 Hz, and look for weapons / lights / fake text in all four (pick-review's fallback masks for s11 and s40 are not in vf). Every offset is seconds from the first frame of the trimmed shot. MEASURED on the drafts (no whisper in this box -- faster-whisper is not installed and installing it was refused -- so silencedetect -35 dB / 0.25 s, the assembler's own, and -42 dB / 0.15 s, plus 25-50 ms RMS envelopes at every trim): no trim cuts a syllable after the changes above (s01 onset 2.25 at -23 dB, silent -61 dB at 2.225; s02 and s11 and s28 run to the draft's end 8.0 with the last syllable ending 7.75-7.85; s38 ends 5.70 under end 5.75). PITCH: a YIN tracker (numpy) per speech span on the drafts and per line on the dry cut. Xu Yan target 106-142; Carpenter Shi measured first on his own takes: the fix1 takes s22 107-132, s27 132-137 and the low phrases of s20 s24 s31 120-157, his recordings (Schedar) 120-158 (a14, shouted through the door, 208) -> target about 110-160; Qin's takes s01 225-254, s38 225-235, s42 219-254 -> 220-255; Tang is only recordings (Laomedeia, every line nospeak or off screen); the system Callirrhoe. VOICE (clip_af, rubberband formant preserved; a shift inside a shot uses asendcmd 'T rubberband pitch R' at a pause, tested: timing and length unchanged): s03 Qin phrase 1 (碰到就叫他們讓路) 305 -> 0.78 until c2.6 -> 235; s08 Xu 153/130 -> 0.92; s15 Xu phrase 2 (您怎麼就知道…) 180 -> 0.8 from c4.2; s17 Xu 187/290 (the shout) -> 0.62 whole +3 dB + alimiter 0.89 -> 121 (the shout about 180); s20 Shi phrase 1 157 kept, phrase 2 (那就叫縣令自己來敲門) 271 -> 0.6 from c1.6, +5 dB, alimiter; s22 Shi +3 dB (quiet, -16.9); s24 Shi phrase 1 (一成先不說。竹簾要多密) 234 -> 0.6 until c2.85 then 1.0 (你畫得出來 124 kept), +2 dB; s28 Xu 205/154/113/95 (a falling line) -> 0.9 whole; s29 Shi 88-95 -> 1.25 (up) -> 110; s31 Shi 215/147/232/120 by phrase -> 0.65 on 明晚 and 少一根絲 (c0-1.2, c2.6-4.1) -> 139/148/158/122, +2 dB. Kept: s02 Xu 107-113, s05 144/104, s25 96/152/126, s22 s27 Shi, s38 s42 Qin, s01 Qin (her own take: 254/225, the same voice as s38/s42; review2's start 2.25 keeps 馬). DRY-CUT medians per line: Xu 105-145, Shi 110-158 (a14 211, shouted off screen), Qin 225-254, Tang 163-360 (recordings, emotion), system 163-260. 0.6 is the limit used (s20 phrase 2, s24 phrase 1); listen to both for blur; the fallback is voice_off with a21 / a25 (recordings 3.55 / 3.80 s, both fit the shot). VOICE_OFF s16: Shi spoke at 302-364 Hz, 0.45 would blur; the recording a16 (151 Hz) is laid at line_at 1.25 (his mouth opens at c1.35), sped 1.15x in the file so its second phrase 騙了我三年工錢 lands at c3.9 against the take's c3.85 (unsped it was 0.5 s late); a medium shot, check the lips. LAID lines (speaker off screen / nospeak / inner / system): s04 a04 0.2, s06 a06 0.37 (ding 0.15) + a07 3.55, s07 a08 0.3, s09 a10 0.6, s10 a11, s12 a13, s13 a14 1.3 (after the two knocks at c0.8 / c1.1; the slam at c2.3 lands under 不值錢), s18 a18 0.37 (ding 0.15 with the panel) + a19, s19 a20 0.5, s21 a22 0.6 (her palm stops the door at c0.5-1.0), s23 a24, s26 a27 0.4, s32 a32 0.3, s34 a33 1.0, s37 a34 0.5. subtitle_lines a19 (the system's jibe 宿主連木匠都騙… is not on the s18 panel; a06 has no panel and is subtitled anyway). voice_skip s15 0.35 (a pickup grunt at c0-0.3), s29 0.75 (a breath at c0.56-0.70). RECORDINGS (audio/, originals in audio/orig/, e909's recipe acompressor 3:1 at -20 dB + volume + alimiter 0.84, integrated LUFS before -> after): system a06 -18.2 -> -14.5, a18 -18.5 -> -14.6, a19 -22.8 -> -14.6; Tang a11 -17.0 -> -14.5, a24 -17.6 -> -14.6, a32 -19.6 -> -16.0 (小聲，得意: kept soft); inner a07 -17.6 -> -16.0, a33 -21.7 -> -16.0, a34 -17.8 -> -16.0; Shi a16 -16.3 -> -14.5 with atempo 1.15 before the recipe (4.52 -> 3.93 s). Untouched: a04 -13.4, a08 -14.0, a10 -15.6, a13 -15.3, a14 -14.8, a20 -15.9, a22 -13.5, a27 -14.9, the lines the clips voice, the raw-tts files, gacrux-takes/ (old Gacrux carpenter, not used). MUSIC (library only, no new cue: Lyria is a paid service; music linked as _live-e913/.../music and zhong-tian-qu-qi-e913-dh/music, audio linked into _live-e913): (1) warm s01-s05 from 0 (-20, fade 1.0/1.0), the morning cue (script: 清晨輕 cue); it fades out under the end of s05 so the system's 晚上對？ in s06 has no music under it (script: 停一拍); (2) warm again from s06 c3.3 under the inner line, cue 21.0, to s12 + 0.3 (fade in 1.5, out 2.0); (3) comedy s13-s32 from 2.5 (e909's offset, past the quiet head; -20, fade 1.0/2.0, tail 0.5); (4) night from s33 c0 (cue 0, -19, fade in 1.5) to s39 c1.19, the twig snap, where it stops in 0.1 s (script: the music drops out at the snap) -- s39-s42 run on wind, the paper fire and the hits only, and end in tense silence. Ducked 3.5 : 1, release 900 ms. SFX (_series/zhong-tian-qu-qi/sfx). Beds: scene 1 birds -16, Wind -8 and wind1 -8 started 1.75 s later (s01 also fire-1 -30, the cold torch); scene 2 birds -18, Wind -7 from s12 c3.9 (0.6 s overlap), wind1 -7 1.75 s later; scene 3 Wind -7 from s32 c4.15 and wind1 -9 1.75 s later, fire-1 -26 from s36 (the paper fire). FLOOR: birds.wav is chirps with digital silence between them (not a bed), and Wind / wind1 are the same 3.5 s swell with troughs at 1.25-1.75 s, so two winds started together, or birds + Wind, both fall into the same trough every 40 s (the first dry run had sixteen 0.2-0.5 s stretches under -40 LUFS momentary, the second with beds 3 dB up still six, e.g. 41.5-42.0 at -43..-46); wind1 offset by 1.75 s fills the troughs: the dry mix re-run with these beds (same graph, beds changed) has no 0.2 s stretch under -40 M after the first 0.5 s. ACCENTS (momentary 0.4 s measured on the dry cut): s18 c0.15 low thud with the ding and the panel (script: 叮 + 低音) impactPunch_heavy_000 +2, impactSoft_heavy_000 +2 -> -12.0 (a18 -13.6); s29 c4.1 small bright accent on 有點意思 (script: 服氣) impactBell_heavy_001 -6; s36 c0.3 low note at the grave gong_02 -4, impactSoft_heavy_000 -4 -> -12.3; s39 c1.19 the twig snap chop -6, impactWood_light_001 -8 (music cut on it); s41 c0.45 drawKnife1 -6 and c0.55 the heavy hit impactPunch_heavy_000 +5, impactMetal_heavy_000 0, slam_01 +1, gong_01 +3 -> -8.9 (the loudest moment of scene 3). Spot effects (times from the drafts; recheck on the refined clips): s01 hooves 0-4.25; s03 cloth 3.0, hooves 3.5-; s04 cloth 0.2; s05 steps 0.3/0.8, cloth 1.6; s07 books on the stone table 1.15 (bookPlace1 -10 + impactSoft -22); s08 cloth 3.3; s09 abacus 0.85/1.05; s12 paper 0.5, cloth 1.0, steps 2.5-3.7; s13 knocks 0.8/1.1 (the take's own knock sounds at draft 3.3/3.6), slam 2.3 (dust bursts from the door at draft 4.83) door_close_01 -6 + slam_01 -10 + impactWood_heavy_000 -10, sawdust 2.35; s14 window board 0.05, swish 0.3, the plane lands 0.85 + shavings 0.9; s15 0.3/0.6; s16 door creak 0.1, cloth 1.0; s20 creak 0.5, door 1.2; s21 palm on the door 0.85, creak 0.6; s22 door 4.8; s23 book 0.6, page 2.4; s24 cloth 0.3; s25 step 0.2, plank 1.4; s26 charcoal 0.3/1.6; s29 plank 0.3; s30 thumb 1.0, paper 2.4; s31 cloth 0.6; s32 steps 0.5-3.0; s33 gate creak 4.1, gate shut 4.7; s34 cloth 0.5, door 3.6; s35 steps 0.3-3.3, leaves 1.2/3.0; s37 leaves 0.4; s38 paper 0.8; s40 leaves 0.5; s41 steps 0.9/1.4, the bamboo knock as he backs into it 1.5; s42 cloth 0.4. VF (on the 1920x1080 picture before the grade; draft px x2, y x1.985; blur only -- coordinator 2026-11-15: no darken or desaturate, the e912 recipe turns into grey blocks in the backlit yard; gblur, feathered alpha, unfeathered at a frame edge; pick-review's boxes): s01 right-edge rack leg 180x437 at 1740,643 (its 90:220 at 870:324), out at c1.05-1.25 (= draft 3.5 after the 2.25 start); s02 the spears behind the well 460x507 at 1160,337 (230:255 at 580:170), sigma 28, whole shot (the box ends at y 844 so his raised arm at c2.5-3.6 is clear); s03 the spears on the house wall 320x397 at 540,208 to c1.5, then 300x397 at 360,208 (160:200 at 270:105, 150:200 at 180:105), 0.12 s crossfade, sigma 22; s04 the ledger's top tag (three marks) 200x105 moving down 68 px/s from 900,810 as she lowers the books (tracked), sigma 12; s07 the top ledger's tag 400x159 at 540,387 from c0.9 (200:80 at 270:195), sigma 12; s12 the spear at the left edge 100x754 at 0,99 to c0.75 (50:380 at 0:50, draft 4.25), sigma 18; s23 the ledger's tag and the opened pages 420x328 at 670,665 (210:165 at 335:335), whole shot, sigma 18; s36 the plank's marks 100x179 at 1054,433 (50:90 at 527:218), sigma 12, then a slow push 1 + 0.01 t (65 % static frames); s26 vidstabtransform smoothing 12 zoom 3 optzoom 0 on a transform e913cut.sh detects from the staged clip (vidstabdetect shakiness 8 accuracy 15 at 1920x1080 / 24 fps; on the draft jitter() 0.43 -> 0.05, deshake alone 0.33-0.36); s38 slow push 0.008 (95 % static); s42 slow push 0.006 and the picture fades out over its last 0.6 s (st 4.42); e913cut.sh fades the sound over the same 0.6 s (her last word ends at c4.28: e912's 1.0 s fade would start on it). JITTER: cut-qa's jitter() on every trimmed draft: 0.00-0.06 except s26 0.43 (fixed above); no deshake elsewhere. PANEL: s18 is the extreme close-up of his eyes; panel_y 870 puts the two rows (870-1068) on his nose and cheeks, the eyes and brows (the eye pop at c0.5, the squeeze at c5.5-6.5) stay clear. END: s42 to the clip's end, a clip-voiced shot (never slowed or held); she stares to the last frame; the knife hit was s41's; no music after the snap; wind under the fade. RESULT (dry run, scratchpad e913/dry: the drafts trimmed as stage.py does with this table's trims, scaled to 1312x736, assembled with this table, then e913cut.sh's limiter + 0.6 s afade + loudnorm2, audio-qa, cut-qa, cut-jumps; e913cut.sh itself not run -- refine is running): 209.42 s (script estimate 210.5; s06 placeholder 8.5 s); -14.1 LUFS, LRA 8.6, peak -2.5 dBFS, loudnorm2 linear; audio-qa 36 lines 0 problems (gap notes before a15, a33, a34, a36: the plane insert, the night yard, the grove walk, the snap and the knife -- on purpose); cut-jumps 0; cut-qa: fps 24, black none, held none, motion 8.0 / static 5 % on the clips (ok; the cut after grade and vignette 6.4 / 8 %), jitter FAIL s26 0.38 -- a false positive of the metric, not the picture: the stabilised shot measures 0.07 before the grade and 0.389 after the vignette alone (dither off too); with the board's edges darkened, the phase correlation follows the hand drawing short back-and-forth strokes in the middle (a centre crop reads 0.42 stabilised or not); the board's own hop (0.43 on the raw draft) is gone. Slowed: s13 1.026 (a14 runs to 4.92), s32 1.026; nothing held. Accents (0.4 s momentary): s18 -12.2 (a18 -13.6), s29 -15.6, s36 -12.1, s39 snap -17.8 under silence, s41 -8.9. BY EAR / EYE on the refined cut: s20 phrase 2 and s24 phrase 1 at 0.6 (blur?); s17 0.62 and s31's phrase switches; s16 a16 against his mouth (medium shot, sped 1.15); s01 馬 at the first frame; s13 the shout over the knocks and the slam; s06 s11 s40 s41 (fix3) everything; the mask boxes may move a few px after refinement (s02 s03 s04 s23 especially); s26 stabilised edge (zoom 3); s18 panel on the nose; s42 the fade and the last frame; the twig snap and the knife hit timing (from the drafts)."
+}
