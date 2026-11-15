@@ -1,0 +1,627 @@
+{
+  "title": "¿Por qué los trenes bala tienen la nariz tan larga? ¡No es por el viento! | Agencia ¡Con Razón!",
+  "description": "Los trenes bala Shinkansen de Japón tienen una nariz puntiaguda de hasta 15 metros de largo. Muchos creen que solo sirve para cortar el aire y reducir la resistencia al viento; lo más extraño es que el tren de alta velocidad de Taiwán corre más rápido que el modelo japonés original, ¡pero tiene la nariz más corta! ¿Cómo se explica esto?\n\nEn este episodio, la directora y Wen entran al andén y a los túneles: primero ven dónde se concentra la mayor parte de la resistencia al aire en un tren largo, por qué al entrar en un túnel el tren actúa como una bomba de aire y dispara un fuerte estallido en la salida (onda de micropresión de túnel), y por qué el problema salió a la luz al cambiar a vías sobre placas de concreto. Luego descubren cómo una nariz larga transforma un acantilado de presión en una cuesta suave, qué aprendieron los ingenieros del martín pescador y del búho, qué curvas salieron de disparar proyectiles en tubos y simular en supercomputadoras, y finalmente el equilibrio entre velocidad, tamaño del túnel y asientos, revelando por qué en Taiwán basta una nariz de 8 metros.\n\nLas ilustraciones de este episodio fueron generadas con IA; los trenes mostrados son representaciones genéricas y no corresponden a un diseño comercial específico. Las proporciones y dimensiones mencionadas son valores aproximados de literatura de ingeniería y materiales didácticos; la fuente de cada afirmación figura en las referencias de abajo.\n\nDatos actualizados al 2026-11-14",
+  "tags": [
+    "tren de alta velocidad",
+    "Shinkansen",
+    "onda de micropresión",
+    "estallido de túnel",
+    "martín pescador",
+    "Serie 500",
+    "tren bala de Taiwán",
+    "ciencia",
+    "Agencia ¡Con Razón!"
+  ],
+  "thumbnail": {
+    "headline": "Nariz del tren\n**¿No es por viento?**",
+    "sub": "El de Taiwán es más rápido y más corto"
+  },
+  "chapters": {
+    "platform-nose": "No es solo para cortar el viento",
+    "kid-wind-front": "El estallido a la salida del túnel",
+    "kid-absorb-guess": "De acantilado a cuesta suave",
+    "chief-500-challenge": "El martín pescador y la supercomputadora",
+    "chief-seat-tradeoff": "Velocidad, túneles y asientos",
+    "chief-ask-kid": "Wen resuelve el misterio"
+  },
+  "source_hashes": {
+    "chapters": {
+      "platform-nose": "c3f1382b2399",
+      "kid-wind-front": "4cae28212e7c",
+      "kid-absorb-guess": "1d1ff483eb44",
+      "chief-500-challenge": "0d1398cf1096",
+      "chief-seat-tradeoff": "5965cde506f9",
+      "chief-ask-kid": "d839bbdce18f"
+    },
+    "title": "130d9c8f96a4",
+    "description": "0a92b437a1f3",
+    "tags": "0b9543624fbb",
+    "thumbnail": "8be3bd7bfb31"
+  },
+  "lines": {
+    "p001": {
+      "source_hash": "ee3712f22a5d",
+      "text": "¡Jefa! Esa nariz"
+    },
+    "p002": {
+      "source_hash": "b7ba93b6aa2c",
+      "text": "de quince metros,"
+    },
+    "p003": {
+      "source_hash": "cf049b281c1a",
+      "text": "¿es para cortar el viento?"
+    },
+    "p004": {
+      "source_hash": "64db113cf41d",
+      "text": "Creen que es por viento,"
+    },
+    "p005": {
+      "source_hash": "8d64aac773ee",
+      "text": "pero el verdadero rival está en los túneles."
+    },
+    "p006": {
+      "source_hash": "dbc05700bdba",
+      "text": "¿En túneles?"
+    },
+    "p007": {
+      "source_hash": "90183e8d7646",
+      "text": "El de Taiwán corre"
+    },
+    "p008": {
+      "source_hash": "647003528dfd",
+      "text": "¿y es más corto?"
+    },
+    "p009": {
+      "source_hash": "0ff64bac1f98",
+      "text": "El de Taiwán es más rápido, pero más corto."
+    },
+    "p010": {
+      "source_hash": "4150c4a09721",
+      "text": "¡Vamos al túnel por la pista!"
+    },
+    "p011": {
+      "source_hash": "f9f8f814f46d",
+      "text": "A trescientos km/h,"
+    },
+    "p012": {
+      "source_hash": "d83567827741",
+      "text": "el viento es fuerte"
+    },
+    "p013": {
+      "source_hash": "90f0f7fee8f0",
+      "text": "¿no va al frente?"
+    },
+    "p014": {
+      "source_hash": "8aefcc347036",
+      "text": "El frente sí frena algo."
+    },
+    "p015": {
+      "source_hash": "ae259f74b36c",
+      "text": "Pero el instituto japonés vio que el tren une más de diez vagones."
+    },
+    "p016": {
+      "source_hash": "f32cb6897bfc",
+      "text": "Gran parte del freno del aire está en los costados y entre vagones,"
+    },
+    "p017": {
+      "source_hash": "9cff07cde23b",
+      "text": "no en la punta."
+    },
+    "p018": {
+      "source_hash": "6906d0b93d00",
+      "text": "Si está en los lados,"
+    },
+    "p019": {
+      "source_hash": "bdeba6c28ccb",
+      "text": "¿por qué larga?"
+    },
+    "p020": {
+      "source_hash": "883443830a8f",
+      "text": "Al entrar en un túnel estrecho, pasa algo."
+    },
+    "p021": {
+      "source_hash": "ef08f4e12854",
+      "text": "Apenas entra, ¡a kilómetros en la salida suena un gran pum!"
+    },
+    "p022": {
+      "source_hash": "e57573a906fc",
+      "text": "No es solo como un cañón;"
+    },
+    "p023": {
+      "source_hash": "10da8a9c88d7",
+      "text": "vibraciones bajas hacen temblar puertas y ventanas."
+    },
+    "p024": {
+      "source_hash": "62cbab98ebed",
+      "text": "¿Como cañón?"
+    },
+    "p025": {
+      "source_hash": "ce09eef99edf",
+      "text": "¿Corre más que el sonido"
+    },
+    "p026": {
+      "source_hash": "7041bbe758e0",
+      "text": "y hace bum sónico?"
+    },
+    "p027": {
+      "source_hash": "73a224eb4ac0",
+      "text": "Le dicen bum de túnel, mas el tren no es supersónico"
+    },
+    "p028": {
+      "source_hash": "fd7799771b5e",
+      "text": "El sonido va a más de mil doscientos km/h; el tren a un cuarto."
+    },
+    "p029": {
+      "source_hash": "e3543a6848d5",
+      "text": "Lo que va al sonido no es el tren,"
+    },
+    "p030": {
+      "source_hash": "67b56983024a",
+      "text": "¡sino el aire empujado con fuerza!"
+    },
+    "p031": {
+      "source_hash": "26b0fbbdead2",
+      "text": "Ve el túnel como un tubo y el tren como un pistón."
+    },
+    "p032": {
+      "source_hash": "d5923c92f37c",
+      "text": "Afuera, el aire empujado se hace a un lado, ¿no"
+    },
+    "p033": {
+      "source_hash": "5ae2e203f41d",
+      "text": "En el túnel no tiene salida,"
+    },
+    "p034": {
+      "source_hash": "f67ff0c30cec",
+      "text": "y el frente lo comprime en una onda de presión."
+    },
+    "p035": {
+      "source_hash": "b7756078a2cc",
+      "text": "La onda va al sonido, más rápido que el tren."
+    },
+    "p036": {
+      "source_hash": "0e6d4e8b43de",
+      "text": "Apenas entra el tren, la onda llega a la salida y estalla."
+    },
+    "p037": {
+      "source_hash": "438b3c72245f",
+      "text": "Se llama onda de micropresión,"
+    },
+    "p038": {
+      "source_hash": "2ac39e8f653f",
+      "text": "o «bum de túnel» en Japón."
+    },
+    "p039": {
+      "source_hash": "8c3c43cbe22e",
+      "text": "Antes pasaban túneles,"
+    },
+    "p040": {
+      "source_hash": "437f4090ec16",
+      "text": "¿por qué 1975"
+    },
+    "p041": {
+      "source_hash": "24c92ac8e8b8",
+      "text": "empeoró tanto?"
+    },
+    "p042": {
+      "source_hash": "09f00c6f3bb1",
+      "text": "En 1975, la línea llegó a Hakata."
+    },
+    "p043": {
+      "source_hash": "0d4aa037e1d3",
+      "text": "En pruebas, las salidas de túneles largos sonaban."
+    },
+    "p044": {
+      "source_hash": "c74ea922e793",
+      "text": "¡Vieron que el secreto estaba bajo los rieles!"
+    },
+    "p045": {
+      "source_hash": "75b7d3d82912",
+      "text": "Antes había grava, y sus huecos suavizaban la onda."
+    },
+    "p046": {
+      "source_hash": "0058f476b30f",
+      "text": "Los nuevos usaron placas duras de concreto."
+    },
+    "p047": {
+      "source_hash": "350c17ff7822",
+      "text": "Sin grava, ¡la onda se hacía más brusca y sonaba fuerte!"
+    },
+    "p048": {
+      "source_hash": "58313e209fa3",
+      "text": "Si va un poco más,"
+    },
+    "p049": {
+      "source_hash": "6b78810bddbf",
+      "text": "¿suena un poco más?"
+    },
+    "p050": {
+      "source_hash": "ce4e198fe3b2",
+      "text": "¡No! La onda crece con el cubo de la velocidad del tren."
+    },
+    "p051": {
+      "source_hash": "ee30af61a7ab",
+      "text": "¡Subir diez por ciento la velocidad sube el pum más de treinta!"
+    },
+    "p052": {
+      "source_hash": "305592dfc2df",
+      "text": "Sin frenarlo,"
+    },
+    "p053": {
+      "source_hash": "65ee0aa213f8",
+      "text": "¿cómo domas esa onda justo cuando entra?"
+    },
+    "p054": {
+      "source_hash": "d232e0945460",
+      "text": "¿La nariz larga"
+    },
+    "p055": {
+      "source_hash": "a49e8e092337",
+      "text": "es esponja"
+    },
+    "p056": {
+      "source_hash": "016bcd8c957f",
+      "text": "que absorbe la presión?"
+    },
+    "p057": {
+      "source_hash": "82be1ffe056e",
+      "text": "No come aire; cambia cuán brusco sube la presión."
+    },
+    "p058": {
+      "source_hash": "2ed29a142930",
+      "text": "Qué tan fuerte suena depende de cuán brusco sube al inicio"
+    },
+    "p059": {
+      "source_hash": "55ee7a358784",
+      "text": "Si entra un frente cuadrado,"
+    },
+    "p060": {
+      "source_hash": "57a009670e20",
+      "text": "como golpe al agua, la presión sube brusco."
+    },
+    "p061": {
+      "source_hash": "3a3161d2b3a3",
+      "text": "Con nariz larga, entra la punta y se ensancha poco a poco."
+    },
+    "p062": {
+      "source_hash": "bce5f5a4060c",
+      "text": "La presión sube suave y la salida ya no estalla."
+    },
+    "p063": {
+      "source_hash": "1d421f391aff",
+      "text": "¿Y si la tallas como cono agudo,"
+    },
+    "p064": {
+      "source_hash": "991a49e08f4e",
+      "text": "como lápiz,"
+    },
+    "p065": {
+      "source_hash": "7ae4d61e24d7",
+      "text": "es mejor?"
+    },
+    "p066": {
+      "source_hash": "cff68074bd74",
+      "text": "El instituto japonés probó conos y elipsoides."
+    },
+    "p067": {
+      "source_hash": "56f08022cce8",
+      "text": "¡El cono no ganó! Atrás el área crece rápido y la presión se dispara."
+    },
+    "p068": {
+      "source_hash": "f7658f8cf89d",
+      "text": "Ganó el paraboloide:"
+    },
+    "p069": {
+      "source_hash": "7a7471ea599f",
+      "text": "de la punta al vagón el área crece fijo y la presión sube parejo."
+    },
+    "p070": {
+      "source_hash": "5f4ec540f7b7",
+      "text": "También hicieron el vagón más delgado y redondeado."
+    },
+    "p071": {
+      "source_hash": "5440a00b5236",
+      "text": "Al ocupar menos espacio, empuja menos aire y baja la onda."
+    },
+    "p072": {
+      "source_hash": "77b0aa2e4e6d",
+      "text": "¿Y túnel?"
+    },
+    "p073": {
+      "source_hash": "08fcee87b61a",
+      "text": "¿Puede soltar aire?"
+    },
+    "p074": {
+      "source_hash": "f58fffcbf442",
+      "text": "En Japón pusieron capuchas al túnel."
+    },
+    "p075": {
+      "source_hash": "e2360d3eebe5",
+      "text": "Al entrar el tren, parte del aire sale por los lados."
+    },
+    "p076": {
+      "source_hash": "5d667ad55670",
+      "text": "Pero a más velocidad, eso no bastaba,"
+    },
+    "p077": {
+      "source_hash": "d68453d5403c",
+      "text": "y miraron a la naturaleza."
+    },
+    "p078": {
+      "source_hash": "e8e5efe05570",
+      "text": "En los noventa, JR Oeste creó la veloz serie quinientos."
+    },
+    "p079": {
+      "source_hash": "6a3a088b37d9",
+      "text": "La mitad de Sanyo son túneles estrechos de 65 m²."
+    },
+    "p080": {
+      "source_hash": "841a88a0cfce",
+      "text": "Según el ingeniero Nakatsu, a 400 metros se quejaban,"
+    },
+    "p081": {
+      "source_hash": "8fddf94e94db",
+      "text": "y casi dejan las pruebas a 350 km/h."
+    },
+    "p082": {
+      "source_hash": "0141ad463655",
+      "text": "¡A cuatrocientos m!"
+    },
+    "p083": {
+      "source_hash": "90e9aa83e7e1",
+      "text": "¿Qué hizo?"
+    },
+    "p084": {
+      "source_hash": "18d516858033",
+      "text": "Nakatsu miraba aves. Al oír que el vagón se comprimía,"
+    },
+    "p085": {
+      "source_hash": "7d43d1007a48",
+      "text": "¡pensó en el martín pescador entrando al agua!"
+    },
+    "p086": {
+      "source_hash": "ced39fa35764",
+      "text": "¿Entonces copiaron"
+    },
+    "p087": {
+      "source_hash": "47fa9a0ed7a1",
+      "text": "el pico al frente?"
+    },
+    "p088": {
+      "source_hash": "7af93a5ddab9",
+      "text": "¡No lo calcaron! El ave inspiró, y la forma salió de pruebas."
+    },
+    "p089": {
+      "source_hash": "9e0457bc87ed",
+      "text": "Dispararon modelos en tubos y simularon en supercomputadora."
+    },
+    "p090": {
+      "source_hash": "31a8702d3c8c",
+      "text": "Al comparar la curva ideal con el ave,"
+    },
+    "p091": {
+      "source_hash": "046a1d1b3bf5",
+      "text": "¡era casi igual a la forma del pico a la frente!"
+    },
+    "p092": {
+      "source_hash": "d9c8051b226c",
+      "text": "¡Igual al pico!"
+    },
+    "p093": {
+      "source_hash": "4d8f97342652",
+      "text": "¿Los biólogos lo midieron?"
+    },
+    "p094": {
+      "source_hash": "a699d6cd5eea",
+      "text": "En 2019, biólogos compararon setenta y una especies,"
+    },
+    "p095": {
+      "source_hash": "b9a11c02a97f",
+      "text": "probando que ese pico y frente reducen el freno en el agua."
+    },
+    "p096": {
+      "source_hash": "28b2b96558f7",
+      "text": "Listo el ruido,"
+    },
+    "p097": {
+      "source_hash": "df904fd35fca",
+      "text": "¿y el brazo del techo?"
+    },
+    "p098": {
+      "source_hash": "cbebbd90126f",
+      "text": "El pantógrafo también suena con el viento."
+    },
+    "p099": {
+      "source_hash": "277bf67e4925",
+      "text": "Nakatsu dice que imitaron las plumas del búho para callarlo."
+    },
+    "p100": {
+      "source_hash": "c0c1135d403c",
+      "text": "En marzo de 1997, acortó 15 minutos de Shin-Osaka a Hakata."
+    },
+    "p101": {
+      "source_hash": "d3a641b6bdcc",
+      "text": "JR Oeste planea retirar su servicio en 2027."
+    },
+    "p102": {
+      "source_hash": "734210a2f07f",
+      "text": "Si salió tan bien,"
+    },
+    "p103": {
+      "source_hash": "a46be47c71ad",
+      "text": "¿por qué luego"
+    },
+    "p104": {
+      "source_hash": "85f3d523c9b9",
+      "text": "no creció?"
+    },
+    "p105": {
+      "source_hash": "1286fd2e541c",
+      "text": "La nariz larga cuesta: ¡más larga, menos asientos!"
+    },
+    "p106": {
+      "source_hash": "b9788ebd7634",
+      "text": "El vagón mide igual; la nariz atrasa la cabina y quita sillas."
+    },
+    "p107": {
+      "source_hash": "bc32199c10a0",
+      "text": "La serie 700, a 285 km/h, acortó la nariz."
+    },
+    "p108": {
+      "source_hash": "e35bbbf02087",
+      "text": "¡Con paraboloides múltiples la bajaron a 9,2 metros!"
+    },
+    "p109": {
+      "source_hash": "1045156b2db9",
+      "text": "Para ir más rápido,"
+    },
+    "p110": {
+      "source_hash": "a2b1a134d97b",
+      "text": "¿crece más?"
+    },
+    "p111": {
+      "source_hash": "ee4ad340ac99",
+      "text": "¡Sí! En los trenes del norte a 320 km/h la nariz volvió a crecer."
+    },
+    "p112": {
+      "source_hash": "33bfdc876ae9",
+      "text": "¡El tren de prueba a 360 km/h tiene nariz de 22 m!"
+    },
+    "p113": {
+      "source_hash": "b3134d6632e2",
+      "text": "El instituto también crea un frente de tres etapas,"
+    },
+    "p114": {
+      "source_hash": "ddab1bfbc99d",
+      "text": "buscando igual silencio con 1 m menos para asientos."
+    },
+    "p115": {
+      "source_hash": "2c52341dfcf0",
+      "text": "¿Y el de Taiwán?"
+    },
+    "p116": {
+      "source_hash": "4b1d9e208dd0",
+      "text": "Del japonés,"
+    },
+    "p117": {
+      "source_hash": "a6d5350dd6f6",
+      "text": "¿más rápido y nariz más corta?"
+    },
+    "p118": {
+      "source_hash": "06cd0ff3b9f2",
+      "text": "¡Eso es lo mejor! El de Taiwán es más veloz que el japonés,"
+    },
+    "p119": {
+      "source_hash": "3dca47a8bf64",
+      "text": "¡pero su nariz bajó de 9,2 a 8 metros: 1,2 metros menos!"
+    },
+    "p120": {
+      "source_hash": "03d47086e8c9",
+      "text": "Más veloz y -1,2m"
+    },
+    "p121": {
+      "source_hash": "adaa509f7afe",
+      "text": "¿No truena?"
+    },
+    "p122": {
+      "source_hash": "1a18431381d5",
+      "text": "¡No! El secreto no está en el tren, sino en el túnel."
+    },
+    "p123": {
+      "source_hash": "f4521d0a4709",
+      "text": "¿Ves la bomba? En un tubo ancho el aire pasa al lado y baja."
+    },
+    "p124": {
+      "source_hash": "4e433abfdd21",
+      "text": "En Japón eran estrechos; Taiwán hizo túneles de 90 m² o más,"
+    },
+    "p125": {
+      "source_hash": "c9407828ffa3",
+      "text": "casi 50% más grandes que en Japón, ¡muy amplios!"
+    },
+    "p126": {
+      "source_hash": "aec4bb96320a",
+      "text": "Taiwán puso capuchas de 30 a 40 m a 45 grados."
+    },
+    "p127": {
+      "source_hash": "8f10c606f842",
+      "text": "¡Con túnel ancho y capucha, 8 m bastan y quedan más asientos!"
+    },
+    "p128": {
+      "source_hash": "c3bfbff2ed70",
+      "text": "¡Túnel más ancho!"
+    },
+    "p129": {
+      "source_hash": "b4066e63dcf2",
+      "text": "¿Y el nuevo tren,"
+    },
+    "p130": {
+      "source_hash": "f9bc83ae751f",
+      "text": "cómo es?"
+    },
+    "p131": {
+      "source_hash": "fe034ad666e9",
+      "text": "El nuevo llegó en agosto de 2026 y saldrá a fines del otro año."
+    },
+    "p132": {
+      "source_hash": "4d9c8eb96ec5",
+      "text": "Es más plano con aristas a los lados, estable en túneles."
+    },
+    "p133": {
+      "source_hash": "291624b6464f",
+      "text": "Tienes las pistas, Wen:"
+    },
+    "p134": {
+      "source_hash": "5da8f046c5b8",
+      "text": "¡resuelve lo de las narices!"
+    },
+    "p135": {
+      "source_hash": "32290839c68c",
+      "text": "El túnel es una bomba,"
+    },
+    "p136": {
+      "source_hash": "853112b8c7c8",
+      "text": "¡la onda va al sonido y hace pum!"
+    },
+    "p137": {
+      "source_hash": "aec722477070",
+      "text": "¡La nariz larga sube suave la presión!"
+    },
+    "p138": {
+      "source_hash": "ae3a3069bf56",
+      "text": "Menos asientos,"
+    },
+    "p139": {
+      "source_hash": "dbd9a7c04a0c",
+      "text": "En Taiwán el túnel es 50% mayor"
+    },
+    "p140": {
+      "source_hash": "45d225a8a60c",
+      "text": "¡así 8 metros callan!"
+    },
+    "p141": {
+      "source_hash": "de238215d1d4",
+      "text": "En el andén, mira la curva suave de la punta a la ventana."
+    },
+    "p142": {
+      "source_hash": "084866675035",
+      "text": "Es la forma calculada para saludar suave al aire."
+    },
+    "p143": {
+      "source_hash": "36d742bcb996",
+      "text": "¡Con razón!"
+    },
+    "p144": {
+      "source_hash": "61e3b0839442",
+      "text": "Al entrar en un túnel, ¿sientes en los oídos el cambio de presión"
+    },
+    "p145": {
+      "source_hash": "01835bda53a6",
+      "text": "Dinos"
+    },
+    "p146": {
+      "source_hash": "88de677d4daa",
+      "text": "Para descubrir el porqué de las cosas, suscríbete a Agencia ¡Con Razón!."
+    }
+  }
+}
