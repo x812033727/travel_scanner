@@ -1,0 +1,3499 @@
+{
+  "schema_version": 1,
+  "slug": "curio-f01",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "chief",
+      "name": "所長",
+      "appearance": "a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。"
+      }
+    },
+    {
+      "id": "kid",
+      "name": "小問",
+      "appearance": "a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, holding a small plain blank notebook in both hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。"
+      }
+    }
+  ],
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "e",
+      "headline": "**切腳跟**\n誰當后？",
+      "sub": "1812格林初版灰姑娘",
+      "shot": "qp0l"
+    }
+  },
+  "loops": [
+    {
+      "setup": "2uf0",
+      "payoff": "lfu6",
+      "what": "初版灰姑娘被隱藏兩百年的真正秘密"
+    },
+    {
+      "setup": "eeqm",
+      "payoff": "nhsb",
+      "what": "初版灰姑娘為什麼完全沒有仙女與南瓜馬車"
+    },
+    {
+      "setup": "gtql",
+      "payoff": "k7sz",
+      "what": "金拖鞋為什麼會變成現代全世界熟知的玻璃鞋"
+    },
+    {
+      "setup": "5xsd",
+      "payoff": "1ou0",
+      "what": "母親為什麼要遞刀讓大女兒切掉腳跟"
+    },
+    {
+      "setup": "e250",
+      "payoff": "gdqx",
+      "what": "城門上的白鴿是怎麼揭穿假新娘騙局的"
+    },
+    {
+      "setup": "vm7e",
+      "payoff": "57dk",
+      "what": "1812年初版結尾為什麼根本沒有懲罰惡毒姊姊"
+    },
+    {
+      "setup": "smoq",
+      "payoff": "gq7c",
+      "what": "法國作家佩羅如何創造了溫馨的仙女教母與玻璃鞋"
+    },
+    {
+      "setup": "twsn",
+      "payoff": "zela",
+      "what": "格林兄弟為什麼在第二版越修越狠加上殘酷私刑"
+    },
+    {
+      "setup": "xvrt",
+      "payoff": "n565",
+      "what": "婚禮上白鴿啄瞎雙眼的殘酷私刑到底是怎麼回事"
+    },
+    {
+      "setup": "e2i4",
+      "payoff": "g2n5",
+      "what": "迪士尼如何選擇佩羅版本重塑了全人類的集體記憶"
+    },
+    {
+      "setup": "4do0",
+      "payoff": "7okx",
+      "what": "玻璃鞋是毛皮誤譯的百年都市傳說是真是假"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Aschenputtel (Kinder- und Haus-Märchen Band 1, 1812, Nr. 21)",
+      "url": "https://de.wikisource.org/wiki/Aschenputtel_(1812)",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Aschenputtel (Kinder- und Haus-Märchen Band 1, 2. Auflage, 1819)",
+      "url": "https://de.wikisource.org/wiki/Aschenputtel_(1819)",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Aschenputtel (Kinder- und Haus-Märchen Band 1, 7. Auflage, 1857)",
+      "url": "https://de.wikisource.org/wiki/Aschenputtel_(1857)",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Cendrillon, ou la petite pantoufle de verre (Charles Perrault, 1697)",
+      "url": "https://fr.wikisource.org/wiki/Histoires_ou_Contes_du_temps_pass%C3%A9_(1697)/Original/Cendrillon",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Cinderella (film, 1950) — Disney A to Z Encyclopedia",
+      "url": "https://d23.com/a-to-z/cinderella-film/",
+      "checked_on": "2026-11-14"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "格林初版灰姑娘：沒有神仙教母與玻璃鞋，姊姊為何切掉腳跟？｜奇聞檔案局",
+    "description": "1812 年柏林出版的第一版格林童話裡，灰姑娘既沒有神仙教母，也沒有南瓜馬車與玻璃鞋。\n幫她的是母親墳前的小樹與白鴿，舞會穿的是金拖鞋。\n為了穿進鞋子，母親竟然遞刀讓大姊削腳跟、二姊削腳趾！\n更顛覆的是：大家都以為童話越改越溫和，格林兄弟在 1819 年第二版反而越改越狠，在婚禮加上鴿子啄瞎雙眼的嚴酷私刑……",
+    "tags": [
+      "奇聞檔案局",
+      "灰姑娘",
+      "格林童話",
+      "原版童話",
+      "黑童話",
+      "Aschenputtel",
+      "童話真相",
+      "冷知識",
+      "佩羅",
+      "迪士尼"
+    ]
+  },
+  "scenes": [
+    {
+      "id": "5gr0",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief sits at her archive desk adjusting her round glasses with a knowing smile.",
+        "camera": "Medium shot, slow push in",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "2uf0",
+          "speaker": "chief",
+          "text": "你聽過灰姑娘的真相嗎？",
+          "emotion": "神秘發問"
+        }
+      ],
+      "chapter": "一八一二年的柏林，母親遞給女兒一把刀"
+    },
+    {
+      "id": "ohhb",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid tilts her head with wide eyes, holding her pencil poised.",
+        "camera": "Close-up, tilt up",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "wv43",
+          "speaker": "kid",
+          "text": "灰姑娘？",
+          "emotion": "好奇疑問"
+        }
+      ]
+    },
+    {
+      "id": "3t43",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid smiling curiously, her cowlick bouncing as she asks.",
+        "camera": "Medium close-up, pan right",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e1g4",
+          "speaker": "kid",
+          "text": "南瓜馬車和玻璃鞋？",
+          "emotion": "天真追問"
+        }
+      ]
+    },
+    {
+      "id": "rdre",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief gently touching the spine of an ancient leather folio on the table.",
+        "camera": "Medium shot, pull out",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "uep4",
+          "speaker": "chief",
+          "text": "如果在最早的童話裡，",
+          "emotion": "揭秘開場"
+        }
+      ]
+    },
+    {
+      "id": "09bb",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Chief looking directly forward with warm, intriguing expression.",
+        "camera": "Close-up, pan left",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "eeqm",
+          "speaker": "chief",
+          "text": "這些全都不存在呢？",
+          "emotion": "懸念拋出"
+        }
+      ]
+    },
+    {
+      "id": "jyhd",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid opening her eyes wide in complete astonishment.",
+        "camera": "Close-up, tilt down",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "1mbk",
+          "speaker": "kid",
+          "text": "全都不存在？",
+          "emotion": "震驚反問"
+        }
+      ]
+    },
+    {
+      "id": "9y71",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Snowy historic Berlin rooftops and streets in 1812 twilight, warm gaslit windows, zero humans.",
+        "camera": "Wide shot, slow drift",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p8gg",
+          "speaker": "chief",
+          "text": "兩百多年前的冬天，",
+          "emotion": "時代背景"
+        }
+      ]
+    },
+    {
+      "id": "09my",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief holding the aged volume bound in marbled paper under warm lamp light.",
+        "camera": "Medium shot, pan right",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "tbkz",
+          "speaker": "chief",
+          "text": "格林兄弟出版了第一版。",
+          "emotion": "文獻出土"
+        }
+      ]
+    },
+    {
+      "id": "5xo3",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of aged 1812 leather bound book cover with clean blank debossed crest, zero text, zero letters on rough paper, zero humans.",
+        "camera": "Close-up insert, slow push in",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "2866",
+          "speaker": "chief",
+          "text": "在那本泛黃的初版裡，",
+          "emotion": "歷史細節"
+        }
+      ]
+    },
+    {
+      "id": "toh7",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of an ornate embroidered golden slipper resting on dark crimson velvet, zero humans.",
+        "camera": "Close-up insert, tilt up",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "gtql",
+          "speaker": "chief",
+          "text": "舞會穿的是金拖鞋！",
+          "emotion": "核心真相"
+        }
+      ]
+    },
+    {
+      "id": "ge2x",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid writing in her notebook with knitted brows and deep fascination.",
+        "camera": "Medium close-up, pull out",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "bkw0",
+          "speaker": "kid",
+          "text": "居然是金拖鞋？",
+          "emotion": "驚嘆疑問"
+        }
+      ]
+    },
+    {
+      "id": "oewr",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the question office as Chief gestures calmly over the polished desk.",
+        "camera": "Wide shot, pan left",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "30af",
+          "speaker": "chief",
+          "text": "試鞋的那一天，",
+          "emotion": "情節突進"
+        }
+      ]
+    },
+    {
+      "id": "qp0l",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Austere 19th-century mother passing a gleaming sharp iron knife across table to her daughter.",
+        "camera": "Medium close-up, tilt down",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "5xsd",
+          "speaker": "chief",
+          "text": "母親遞給女兒一把鋼刀！",
+          "emotion": "駭人遞刀"
+        }
+      ]
+    },
+    {
+      "id": "5k3z",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid covering her mouth in shock, pen trembling slightly.",
+        "camera": "Close-up, slow drift",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vjzo",
+          "speaker": "kid",
+          "text": "拿刀要做什麼？！",
+          "emotion": "駭然發問"
+        }
+      ]
+    },
+    {
+      "id": "q1ts",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Stern mother in bonnet with sharp profile and cold eyes in candle shadow.",
+        "camera": "Medium shot, pan right",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "b2vg",
+          "speaker": "chief",
+          "text": "母親冷冷地說：",
+          "emotion": "冷血台詞"
+        }
+      ]
+    },
+    {
+      "id": "44gq",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Mother's austere face illuminated by cold side light in rustic German bedchamber.",
+        "camera": "Close-up, slow push in",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "gdsc",
+          "speaker": "chief",
+          "text": "痛一下沒關係，",
+          "emotion": "還原台詞"
+        }
+      ]
+    },
+    {
+      "id": "1g5f",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of the glinting steel blade resting on a dark pine tabletop, zero humans.",
+        "camera": "Close-up insert, pull out",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "fvmp",
+          "speaker": "chief",
+          "text": "你們有一個會當王后！",
+          "emotion": "台詞收尾"
+        }
+      ]
+    },
+    {
+      "id": "rg93",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid holding her breath with wide eyes and tense shoulders.",
+        "camera": "Close-up, tilt up",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "o8cw",
+          "speaker": "kid",
+          "text": "難道要把腳給……",
+          "emotion": "驚恐猜測"
+        }
+      ]
+    },
+    {
+      "id": "vmd9",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Dimly lit rustic 19th-century cottage chamber, dramatic shadows cast across timber walls.",
+        "camera": "Wide shot, pan left",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "v0ph",
+          "speaker": "chief",
+          "text": "大姊一狠心，",
+          "emotion": "動作前奏"
+        }
+      ]
+    },
+    {
+      "id": "as5c",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of clean white linen cloth beside a golden slipper on floorboards, zero humans.",
+        "camera": "Close-up insert, tilt down",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vwnq",
+          "speaker": "chief",
+          "text": "切掉了自己的腳跟！",
+          "emotion": "真相揭曉"
+        }
+      ]
+    },
+    {
+      "id": "4e77",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid jumping up from her stool, holding her notepad in disbelief.",
+        "camera": "Close-up, slow drift",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "0olx",
+          "speaker": "kid",
+          "text": "把腳跟切掉？！",
+          "emotion": "極度震撼"
+        }
+      ]
+    },
+    {
+      "id": "zjkt",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief smiling warmly, gesturing toward the open historic dossier.",
+        "camera": "Medium shot, slow push in",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "oa01",
+          "speaker": "chief",
+          "text": "今天我們就翻開文獻，",
+          "emotion": "承諾句"
+        }
+      ]
+    },
+    {
+      "id": "jl07",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Chief and Kid standing together in the sunlit question office among books.",
+        "camera": "Wide shot, pull out",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief",
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "lfu6",
+          "speaker": "chief",
+          "text": "看看被隱藏兩百年的真相！",
+          "emotion": "開場收尾"
+        }
+      ]
+    },
+    {
+      "id": "ms8g",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief turning a delicate yellowed page of the vintage archive volume.",
+        "camera": "Medium shot, pan right",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ud2o",
+          "speaker": "chief",
+          "text": "翻開這本古老的書卷，",
+          "emotion": "講述歷史"
+        }
+      ],
+      "chapter": "沒有神仙教母的灶邊，生母墳上長出小樹"
+    },
+    {
+      "id": "h654",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief looking up with a gentle, patient expression.",
+        "camera": "Medium close-up, tilt up",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "bw8e",
+          "speaker": "chief",
+          "text": "故事的名字叫做灰姑娘。",
+          "emotion": "篇名說明"
+        }
+      ]
+    },
+    {
+      "id": "giol",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid resting her chin in her hands attentively on the wooden counter.",
+        "camera": "Close-up, pull out",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "1ttl",
+          "speaker": "kid",
+          "text": "她一開始也是睡在灰堆裡嗎？",
+          "emotion": "追問起點"
+        }
+      ]
+    },
+    {
+      "id": "1re2",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of A humble rustic 19th-century stone hearth with gray ashes, Cinderella sitting solitary.",
+        "camera": "Wide shot, pan left",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "lidv",
+          "speaker": "chief",
+          "text": "是的，她天天坐在爐灶旁。",
+          "emotion": "悲苦身世"
+        }
+      ]
+    },
+    {
+      "id": "g4r0",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of A frail dying mother holding young Cinderella's small hand in warm candlelight.",
+        "camera": "Medium shot, tilt down",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "z1lt",
+          "speaker": "chief",
+          "text": "生母在臨終前對她說：",
+          "emotion": "生母遺言"
+        }
+      ]
+    },
+    {
+      "id": "2ldd",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Gentle portrait of the dying mother's face in soft shadow.",
+        "camera": "Close-up, slow drift",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "e250",
+          "speaker": "chief",
+          "text": "只要你一生虔誠善良，",
+          "emotion": "教誨內容"
+        }
+      ]
+    },
+    {
+      "id": "xxmv",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Young Cinderella weeping softly beside the wooden bedframe.",
+        "camera": "Medium close-up, slow push in",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "y6mt",
+          "speaker": "chief",
+          "text": "我就會永遠在天上守護你。",
+          "emotion": "遺言收束"
+        }
+      ]
+    },
+    {
+      "id": "n4c3",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Early spring countryside cemetery with quiet grassy mounds and bare birch trees, zero humans.",
+        "camera": "Wide shot, pull out",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "alc3",
+          "speaker": "chief",
+          "text": "母親去世後，",
+          "emotion": "情節發展"
+        }
+      ]
+    },
+    {
+      "id": "3ht5",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Young Cinderella planting a slender green twig into the grassy soil with care.",
+        "camera": "Medium shot, pan right",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "t2fs",
+          "speaker": "chief",
+          "text": "她去墳前種了一棵小樹。",
+          "emotion": "種下小樹"
+        }
+      ]
+    },
+    {
+      "id": "zcro",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid raising her yellow pencil to interrupt with a keen question.",
+        "camera": "Close-up, tilt up",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "svem",
+          "speaker": "kid",
+          "text": "等等，那不是榛樹嗎？",
+          "emotion": "質疑細節"
+        }
+      ]
+    },
+    {
+      "id": "9nda",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief nodding with an appreciative, proud smile.",
+        "camera": "Medium close-up, pan left",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "afjx",
+          "speaker": "chief",
+          "text": "問得非常精準！",
+          "emotion": "肯定讚許"
+        }
+      ]
+    },
+    {
+      "id": "spyl",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of blackletter Fraktur German text highlighting the word Bäumlein, zero humans.",
+        "camera": "Close-up insert, tilt down",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "rq95",
+          "speaker": "chief",
+          "text": "初版德文原文裡，",
+          "emotion": "文獻對照"
+        }
+      ]
+    },
+    {
+      "id": "u3cm",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Slender young green sapling budding in bright morning sunlight over the mound, zero humans.",
+        "camera": "Medium shot, slow drift",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sl1u",
+          "speaker": "chief",
+          "text": "只寫了一棵小樹！",
+          "emotion": "澄清細節"
+        }
+      ]
+    },
+    {
+      "id": "p2hx",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid nodding while rapidly writing down the correction in her notebook.",
+        "camera": "Close-up, slow push in",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "uw9h",
+          "speaker": "kid",
+          "text": "原來初版根本沒提榛樹！",
+          "emotion": "領會真相"
+        }
+      ]
+    },
+    {
+      "id": "zelm",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Cinderella kneeling beneath the growing tree canopy in morning mist.",
+        "camera": "Wide shot, pull out",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "pwk1",
+          "speaker": "chief",
+          "text": "灰姑娘每天三次去痛哭，",
+          "emotion": "淚水澆灌"
+        }
+      ]
+    },
+    {
+      "id": "knyh",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of A flourishing lush green tree bathed in morning sunbeams, two white doves on boughs, zero humans.",
+        "camera": "Medium shot, pan right",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "i7rz",
+          "speaker": "chief",
+          "text": "眼淚把小樹澆成了大樹。",
+          "emotion": "奇蹟長成"
+        }
+      ]
+    },
+    {
+      "id": "rifd",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid looking around curiously as if expecting a magic fairy wand.",
+        "camera": "Close-up, tilt up",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "tvaa",
+          "speaker": "kid",
+          "text": "那神仙教母這時出現了嗎？",
+          "emotion": "期待仙女"
+        }
+      ]
+    },
+    {
+      "id": "5bvj",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief raising a finger with a slight mysterious twinkle in her eyes.",
+        "camera": "Medium close-up, pan left",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "j2o9",
+          "speaker": "chief",
+          "text": "問題來了：完全沒有！",
+          "emotion": "懸念揭曉"
+        }
+      ]
+    },
+    {
+      "id": "86ya",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Chief shaking her head gently under the warm study lamp.",
+        "camera": "Close-up, tilt down",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "nhsb",
+          "speaker": "chief",
+          "text": "初版沒有任何仙女！",
+          "emotion": "斬釘截鐵"
+        }
+      ]
+    },
+    {
+      "id": "x5v9",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of two pure white doves perched peacefully on green leafy branches, zero humans.",
+        "camera": "Close-up insert, slow drift",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "r5fw",
+          "speaker": "chief",
+          "text": "幫她的是樹上的白鳥。",
+          "emotion": "真相機制"
+        }
+      ]
+    },
+    {
+      "id": "646b",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid leaning forward with sparkling, captivated eyes.",
+        "camera": "Medium close-up, slow push in",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "whv7",
+          "speaker": "kid",
+          "text": "是白鳥丟下禮服和鞋子？",
+          "emotion": "驚奇追問"
+        }
+      ]
+    },
+    {
+      "id": "s61t",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Cinderella looking up serenely at the fluttering birds in the tree canopy.",
+        "camera": "Medium shot, pull out",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "ddi5",
+          "speaker": "chief",
+          "text": "沒錯，只要她對小樹許願，",
+          "emotion": "許願機制"
+        }
+      ]
+    },
+    {
+      "id": "v2is",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Golden sunlight filtering through green leaves as sparkling silk fabric descends, zero humans.",
+        "camera": "Wide shot, pan right",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "blk4",
+          "speaker": "chief",
+          "text": "白鳥就會把願望投給她。",
+          "emotion": "奇幻時刻"
+        }
+      ]
+    },
+    {
+      "id": "1mr6",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Grand gothic castle silhouette against twilight sky, warm palace torches blazing.",
+        "camera": "Wide shot, tilt up",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "1ou0",
+          "speaker": "chief",
+          "text": "國王舉辦了連續三天舞會。",
+          "emotion": "舞會開始"
+        }
+      ],
+      "chapter": "金色拖鞋與城門上的白鴿：鞋裡全都是血"
+    },
+    {
+      "id": "gw61",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Stern stepmother tipping a clay bowl of dried lentils into the hearth ash.",
+        "camera": "Medium shot, pan left",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "h04o",
+          "speaker": "chief",
+          "text": "繼母刁難她撿爐灰裡的扁豆，",
+          "emotion": "刁難情節"
+        }
+      ]
+    },
+    {
+      "id": "9xbt",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid frowning with genuine empathy for Cinderella's plight.",
+        "camera": "Close-up, tilt down",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "yrbe",
+          "speaker": "kid",
+          "text": "灰姑娘一個人怎麼撿得完？",
+          "emotion": "同情疑問"
+        }
+      ]
+    },
+    {
+      "id": "v78w",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Sunlight streaming into stone hearth as gentle white doves pick lentils into bowl, zero humans.",
+        "camera": "Wide shot, slow drift",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "83d7",
+          "speaker": "chief",
+          "text": "飛來無數白鴿幫她撿乾淨！",
+          "emotion": "鳥群相助"
+        }
+      ]
+    },
+    {
+      "id": "sz1s",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Stepmother and two haughty daughters stepping into horse carriage, leaving Cinderella.",
+        "camera": "Medium shot, slow push in",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "bm2e",
+          "speaker": "chief",
+          "text": "但繼母還是冷笑著丟下她。",
+          "emotion": "背叛諾言"
+        }
+      ]
+    },
+    {
+      "id": "eve2",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid smiling with anticipation, leaning forward.",
+        "camera": "Close-up, pull out",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "gdqx",
+          "speaker": "kid",
+          "text": "灰姑娘立刻跑去找小樹！",
+          "emotion": "興奮推測"
+        }
+      ]
+    },
+    {
+      "id": "gefi",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Cinderella catching shimmering gold and silver embroidered gown in soft glow.",
+        "camera": "Medium close-up, pan right",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "smgk",
+          "speaker": "chief",
+          "text": "白鳥投下了金絲銀絲禮服，",
+          "emotion": "禮服降臨"
+        }
+      ]
+    },
+    {
+      "id": "bgie",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of gleaming embroidered gold slippers on polished stone, zero humans.",
+        "camera": "Close-up insert, tilt up",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "5w8s",
+          "speaker": "chief",
+          "text": "還有那雙精緻的金拖鞋！",
+          "emotion": "金拖鞋特寫"
+        }
+      ]
+    },
+    {
+      "id": "cxhv",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid eagerly asking about the famous midnight fairy tale rule.",
+        "camera": "Close-up, pan left",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "edx1",
+          "speaker": "kid",
+          "text": "十二點鐘聲一響南瓜會變回嗎？",
+          "emotion": "經典問句"
+        }
+      ]
+    },
+    {
+      "id": "2tuc",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief shaking her head with an amused smile.",
+        "camera": "Medium shot, tilt down",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zcbw",
+          "speaker": "chief",
+          "text": "更離奇的是：沒有南瓜！",
+          "emotion": "打破迷思"
+        }
+      ]
+    },
+    {
+      "id": "41at",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief resting her palms flat on the warm desk surface.",
+        "camera": "Medium close-up, slow drift",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "gq4c",
+          "speaker": "chief",
+          "text": "初版完全沒有十二點鐘聲！",
+          "emotion": "再次闢謠"
+        }
+      ]
+    },
+    {
+      "id": "hbsj",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid scratching her cowlick in honest bewilderment.",
+        "camera": "Close-up, slow push in",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "5hw7",
+          "speaker": "kid",
+          "text": "那她為什麼要在晚上逃跑？",
+          "emotion": "困惑發問"
+        }
+      ]
+    },
+    {
+      "id": "96iv",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Cinderella in flowing golden dress slipping through moonlit palace colonnades.",
+        "camera": "Wide shot, pull out",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "g4nw",
+          "speaker": "chief",
+          "text": "她只是不想讓王子知道身世。",
+          "emotion": "機智逃離"
+        }
+      ]
+    },
+    {
+      "id": "ltzt",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief continuing the engaging historical tale with vivid expression.",
+        "camera": "Medium shot, pan right",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "reb6",
+          "speaker": "chief",
+          "text": "到了第三天舞會散場，",
+          "emotion": "情節升級"
+        }
+      ]
+    },
+    {
+      "id": "uoi5",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Royal palace stone stairway coated in dark sticky pitch under courtyard torches, zero humans.",
+        "camera": "Wide shot, tilt up",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "f738",
+          "speaker": "chief",
+          "text": "王子命人倒了滿地的黑瀝青！",
+          "emotion": "設下陷阱"
+        }
+      ]
+    },
+    {
+      "id": "nuav",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid giggling and shaking her head at the prince's desperate trick.",
+        "camera": "Close-up, pan left",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vm7e",
+          "speaker": "kid",
+          "text": "在樓梯上倒瀝青？！",
+          "emotion": "吐槽驚呼"
+        }
+      ]
+    },
+    {
+      "id": "llrf",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Cinderella's golden hem fluttering as she leaps swiftly down the grand staircase.",
+        "camera": "Medium shot, tilt down",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "h5ua",
+          "speaker": "chief",
+          "text": "灰姑娘飛奔下樓的時候，",
+          "emotion": "金拖鞋被黏"
+        }
+      ]
+    },
+    {
+      "id": "fmo2",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of the golden shoe firmly trapped in thick black pitch on the step, zero humans.",
+        "camera": "Close-up insert, slow drift",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "57dk",
+          "speaker": "chief",
+          "text": "右腳的金拖鞋被牢牢黏住了！",
+          "emotion": "關鍵一幕"
+        }
+      ]
+    },
+    {
+      "id": "vd6f",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid nodding eagerly as the classic search begins.",
+        "camera": "Medium close-up, slow push in",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "2284",
+          "speaker": "kid",
+          "text": "這就是王子尋找新娘的線索！",
+          "emotion": "劇情轉折"
+        }
+      ]
+    },
+    {
+      "id": "xvra",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Prince on white horse arriving outside the rustic timber house with guards.",
+        "camera": "Wide shot, pull out",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "rm2d",
+          "speaker": "chief",
+          "text": "王子拿著金拖鞋來到繼母家。",
+          "emotion": "王子上門"
+        }
+      ]
+    },
+    {
+      "id": "jjkb",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Eldest sister straining on a wooden stool in the dim bedroom.",
+        "camera": "Medium shot, pan right",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "au8n",
+          "speaker": "chief",
+          "text": "大姊走進房裡試穿，",
+          "emotion": "大姊試穿"
+        }
+      ]
+    },
+    {
+      "id": "hz59",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of large bare heel protruding from the petite golden shoe, zero humans.",
+        "camera": "Close-up insert, tilt up",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "smoq",
+          "speaker": "chief",
+          "text": "可是腳跟太大了根本擠不進去。",
+          "emotion": "試穿受阻"
+        }
+      ]
+    },
+    {
+      "id": "wnny",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid leaning forward with wide, breathless eyes.",
+        "camera": "Close-up, pan left",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "2xqj",
+          "speaker": "kid",
+          "text": "母親這時遞上了那把鋼刀？",
+          "emotion": "緊張追問"
+        }
+      ]
+    },
+    {
+      "id": "zvc1",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Mother's chilling expression placing the knife firmly in her daughter's palm.",
+        "camera": "Medium close-up, tilt down",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "aqo8",
+          "speaker": "chief",
+          "text": "母親說：痛一下沒關係！",
+          "emotion": "冷酷再現"
+        }
+      ]
+    },
+    {
+      "id": "1twn",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of clean white stocking forced into the tight gold shoe, zero humans.",
+        "camera": "Close-up insert, slow drift",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "6lp0",
+          "speaker": "chief",
+          "text": "大姊切掉腳跟，硬塞進金鞋！",
+          "emotion": "大姊削腳跟"
+        }
+      ]
+    },
+    {
+      "id": "shge",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid gasping with hand pressed against her cheek.",
+        "camera": "Close-up, slow push in",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "v380",
+          "speaker": "kid",
+          "text": "天啊！王子難道沒看出來嗎？",
+          "emotion": "震驚疑問"
+        }
+      ]
+    },
+    {
+      "id": "rsm5",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Prince riding proud white steed carrying the veiled eldest sister across town.",
+        "camera": "Wide shot, pull out",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "k7sz",
+          "speaker": "chief",
+          "text": "王子被瞞過了，帶她騎馬離開。",
+          "emotion": "受騙出發"
+        }
+      ]
+    },
+    {
+      "id": "xar6",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Two pure white doves perched atop the stone city gate archway, flapping wings, zero humans.",
+        "camera": "Medium shot, pan right",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "j8e7",
+          "speaker": "chief",
+          "text": "但經過城門時，城門上的白鴿喊了！",
+          "emotion": "鴿子揭穿"
+        }
+      ]
+    },
+    {
+      "id": "pt7f",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief reciting the ancient German pigeon rhyme with clear cadence.",
+        "camera": "Medium close-up, tilt up",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "1aqn",
+          "speaker": "chief",
+          "text": "咕咕！鞋子裡全都是血！",
+          "emotion": "童謠童趣"
+        }
+      ]
+    },
+    {
+      "id": "4605",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of bright crimson blood seeping through white silk weave of shoe, zero humans.",
+        "camera": "Close-up insert, pan left",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mw3j",
+          "speaker": "chief",
+          "text": "王子低頭看見鮮血滲透了白襪！",
+          "emotion": "識破大姊"
+        }
+      ]
+    },
+    {
+      "id": "6wux",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid clutching her notebook tightly in heightened suspense.",
+        "camera": "Close-up, tilt down",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "i694",
+          "speaker": "kid",
+          "text": "太可怕了！那二姊呢？",
+          "emotion": "急切追問"
+        }
+      ]
+    },
+    {
+      "id": "a2bt",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Second sister in dim bedchamber gripping the iron blade in desperate resolve.",
+        "camera": "Medium shot, slow drift",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "okhw",
+          "speaker": "chief",
+          "text": "二姊接過刀，切掉了一根腳趾！",
+          "emotion": "二姊削腳趾"
+        }
+      ]
+    },
+    {
+      "id": "68ot",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Stone city gate beneath open sky as doves call out warning from the battlements, zero humans.",
+        "camera": "Wide shot, slow push in",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "wa7h",
+          "speaker": "chief",
+          "text": "結果一模一樣：白鴿再次大喊！",
+          "emotion": "二度揭穿"
+        }
+      ]
+    },
+    {
+      "id": "dceg",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Prince turning his stallion around in outrage, leading the sister back.",
+        "camera": "Medium close-up, pull out",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "b8nf",
+          "speaker": "chief",
+          "text": "兩次血腥騙局全都被當場識破！",
+          "emotion": "騙局破滅"
+        }
+      ]
+    },
+    {
+      "id": "9mx6",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid smiling happily, eager for the true maiden's turn.",
+        "camera": "Close-up, pan right",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zzww",
+          "speaker": "kid",
+          "text": "最後終於輪到灰姑娘了！",
+          "emotion": "期待轉正"
+        }
+      ]
+    },
+    {
+      "id": "2lzk",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Cinderella stepping forward into morning sunshine, face radiant and clean.",
+        "camera": "Medium shot, tilt up",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "9qv9",
+          "speaker": "chief",
+          "text": "灰姑娘洗乾淨雙手走出來，",
+          "emotion": "灰姑娘登場"
+        }
+      ]
+    },
+    {
+      "id": "mweq",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of the golden shoe sliding smoothly onto Cinderella's slender foot, zero humans.",
+        "camera": "Close-up insert, pan left",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "gq7c",
+          "speaker": "chief",
+          "text": "金拖鞋就像量身打造一樣合腳！",
+          "emotion": "完美合腳"
+        }
+      ]
+    },
+    {
+      "id": "144m",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid waiting intently for the satisfying fairy tale punishment.",
+        "camera": "Close-up, tilt down",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "bzxv",
+          "speaker": "kid",
+          "text": "那這兩個狠毒的姊姊下場如何？",
+          "emotion": "期待懲罰"
+        }
+      ]
+    },
+    {
+      "id": "n4sk",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the question office as Chief leans back with an unexpected, knowing smile.",
+        "camera": "Wide shot, slow drift",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ly17",
+          "speaker": "chief",
+          "text": "怪就怪在：初版根本沒有處罰！",
+          "emotion": "大反轉"
+        }
+      ]
+    },
+    {
+      "id": "22ga",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of final German sentence on page 101 of 1812 edition, zero humans.",
+        "camera": "Close-up insert, slow push in",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "twsn",
+          "speaker": "chief",
+          "text": "故事只寫到王子帶她回家就停了！",
+          "emotion": "戛然而止"
+        }
+      ]
+    },
+    {
+      "id": "mprm",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid staring in sheer disbelief, jaw completely dropped.",
+        "camera": "Close-up, pull out",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "lisv",
+          "speaker": "kid",
+          "text": "什麼？！初版居然沒有懲罰姊姊？！",
+          "emotion": "驚呆反問"
+        }
+      ]
+    },
+    {
+      "id": "zeva",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief smiles gently, gesturing toward the ancient books on the desk.",
+        "camera": "Medium shot, pan right",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "novp",
+          "speaker": "chief",
+          "text": "很意外對吧？",
+          "emotion": "承接反轉"
+        }
+      ]
+    },
+    {
+      "id": "egv3",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid looking at Chief with deep, probing curiosity.",
+        "camera": "Close-up, tilt up",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "36vf",
+          "speaker": "kid",
+          "text": "那大家熟知的仙女和南瓜，到底是什麼人發明的？",
+          "emotion": "溯源提問"
+        }
+      ],
+      "chapter": "一六九七年的巴黎：玻璃鞋與神仙教母的真正身世"
+    },
+    {
+      "id": "ru6e",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Twilight panorama of 17th-century Paris with Notre Dame and Seine river, zero humans.",
+        "camera": "Wide shot, pan left",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "a6qn",
+          "speaker": "chief",
+          "text": "這就要回到更早的一六九七年！",
+          "emotion": "時間倒流"
+        }
+      ]
+    },
+    {
+      "id": "r0uh",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of French author Charles Perrault in elegant powdered wig writing with quill in salon.",
+        "camera": "Medium shot, tilt down",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "qc3e",
+          "speaker": "chief",
+          "text": "法國巴黎的作家夏爾·佩羅，",
+          "emotion": "作者登場"
+        }
+      ]
+    },
+    {
+      "id": "s5b5",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of 1697 French title page with delicate baroque engraved ornament, zero humans.",
+        "camera": "Close-up insert, slow drift",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "hr84",
+          "speaker": "chief",
+          "text": "出版了一本名震後世的童話集。",
+          "emotion": "經典問世"
+        }
+      ]
+    },
+    {
+      "id": "cib0",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief speaking with graceful, poetic inflection.",
+        "camera": "Medium close-up, slow push in",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "wtkn",
+          "speaker": "chief",
+          "text": "在這本法國童話裡，",
+          "emotion": "法式風格"
+        }
+      ]
+    },
+    {
+      "id": "1xgs",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of A graceful French fairy godmother in azure silk gown waving an ivory wand in garden.",
+        "camera": "Wide shot, pull out",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "hzeu",
+          "speaker": "chief",
+          "text": "神仙教母首次拿著魔杖登場！",
+          "emotion": "仙女教母"
+        }
+      ]
+    },
+    {
+      "id": "w5uf",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid smiling brightly with recognition.",
+        "camera": "Close-up, pan right",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "2baj",
+          "speaker": "kid",
+          "text": "南瓜就是這時候變成馬車的！",
+          "emotion": "共鳴確認"
+        }
+      ]
+    },
+    {
+      "id": "x7ot",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Round orange pumpkin transforming into a magnificent gilded carriage, zero humans.",
+        "camera": "Wide shot, tilt up",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m0gl",
+          "speaker": "chief",
+          "text": "對！南瓜變成了金色馬車，",
+          "emotion": "南瓜馬車"
+        }
+      ]
+    },
+    {
+      "id": "gfub",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Six dappled gray horses harnessed to the gold carriage beside a bearded coachman, zero humans.",
+        "camera": "Medium shot, pan left",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "zela",
+          "speaker": "chief",
+          "text": "老鼠變駿馬、大老鼠變馬車伕！",
+          "emotion": "動物變身"
+        }
+      ]
+    },
+    {
+      "id": "uyai",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of a pristine translucent crystal glass slipper shining on parquet floor, zero humans.",
+        "camera": "Close-up insert, tilt down",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "wuzq",
+          "speaker": "chief",
+          "text": "仙女還送給她一雙晶瑩剔透的玻璃鞋！",
+          "emotion": "玻璃鞋出世"
+        }
+      ]
+    },
+    {
+      "id": "t9ip",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid asking cautiously with wide, concerned eyes.",
+        "camera": "Medium close-up, slow drift",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "jjv9",
+          "speaker": "kid",
+          "text": "那佩羅的故事裡，姊姊有切腳嗎？",
+          "emotion": "求證血腥度"
+        }
+      ]
+    },
+    {
+      "id": "gi04",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Opulent Versailles ballroom with mirrored walls and sparkling crystal chandeliers, zero humans.",
+        "camera": "Wide shot, slow push in",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "aesw",
+          "speaker": "chief",
+          "text": "完全沒有！法國宮廷講究優雅。",
+          "emotion": "優雅風尚"
+        }
+      ]
+    },
+    {
+      "id": "xqye",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of French court ladies in silk gowns watching the shoe trial calmly without distress.",
+        "camera": "Medium shot, pull out",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "xvrt",
+          "speaker": "chief",
+          "text": "姊姊穿不進去就直接作罷了。",
+          "emotion": "文明試鞋"
+        }
+      ]
+    },
+    {
+      "id": "6med",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Cinderella in bridal veil warmly embracing her two weeping sisters with love.",
+        "camera": "Medium close-up, pan right",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "tdwk",
+          "speaker": "chief",
+          "text": "灰姑娘甚至在婚禮上真誠原諒她們，",
+          "emotion": "寬恕姊姊"
+        }
+      ]
+    },
+    {
+      "id": "cpbs",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Joyous royal palace wedding banquet with noble courtiers toasting happily.",
+        "camera": "Wide shot, tilt up",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "8783",
+          "speaker": "chief",
+          "text": "還把姊姊嫁給了宮廷裡的大貴族！",
+          "emotion": "圓滿富貴"
+        }
+      ]
+    },
+    {
+      "id": "7gzl",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid smiling with a sigh of relief at the gentle French outcome.",
+        "camera": "Close-up, pan left",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "tm3b",
+          "speaker": "kid",
+          "text": "這也太溫柔善良了吧！",
+          "emotion": "由衷讚嘆"
+        }
+      ]
+    },
+    {
+      "id": "mztw",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief chuckling as she taps the critical German footnotes.",
+        "camera": "Medium shot, tilt down",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "iobi",
+          "speaker": "chief",
+          "text": "但格林兄弟看完，可完全不買帳！",
+          "emotion": "格林態度"
+        }
+      ]
+    },
+    {
+      "id": "8432",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief pointing with a pencil to the historic German annotation margin.",
+        "camera": "Medium close-up, slow drift",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "xpj0",
+          "speaker": "chief",
+          "text": "格林兄弟在初版註解裡直接批評：",
+          "emotion": "格林吐槽"
+        }
+      ]
+    },
+    {
+      "id": "70gu",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of 1812 German commentary text criticizing the French version, zero humans.",
+        "camera": "Close-up insert, slow push in",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "b1of",
+          "speaker": "chief",
+          "text": "佩羅這篇故事，講得不算好！",
+          "emotion": "犀利批判"
+        }
+      ]
+    },
+    {
+      "id": "an3g",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid chuckling in amusement at the German brothers' fierce critique.",
+        "camera": "Close-up, pull out",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "lemu",
+          "speaker": "kid",
+          "text": "格林兄弟居然嫌佩羅講得太溫和？！",
+          "emotion": "逗趣驚訝"
+        }
+      ]
+    },
+    {
+      "id": "ct46",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the question office as Chief rests her chin thoughtfully, looking over the rim of her glasses.",
+        "camera": "Wide shot, pan right",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "q9hh",
+          "speaker": "chief",
+          "text": "大家常以為童話會越改越溫和。",
+          "emotion": "普遍迷思"
+        }
+      ],
+      "chapter": "一八一九年的修訂本：童話非但沒變溫和，反而越改越狠"
+    },
+    {
+      "id": "huyq",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief leaning forward with an intriguing smile.",
+        "camera": "Medium close-up, tilt up",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "pepd",
+          "speaker": "chief",
+          "text": "但格林兄弟對灰姑娘的修訂，",
+          "emotion": "反向轉折"
+        }
+      ]
+    },
+    {
+      "id": "u31d",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Chief's eyes sharp with scholarly insight in the warm light.",
+        "camera": "Close-up, pan left",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "muzj",
+          "speaker": "chief",
+          "text": "偏偏是越改越殘酷！",
+          "emotion": "重磅結論"
+        }
+      ]
+    },
+    {
+      "id": "ox6f",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid holding her notebook in suspense, awaiting the reveal.",
+        "camera": "Close-up, tilt down",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "khon",
+          "speaker": "kid",
+          "text": "越改越殘酷？難道他們加了更狠的情節？",
+          "emotion": "驚訝猜想"
+        }
+      ]
+    },
+    {
+      "id": "6g6n",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of the heavy 1819 second edition volume bound in dark leather, zero humans.",
+        "camera": "Close-up insert, slow drift",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "dckz",
+          "speaker": "chief",
+          "text": "一八一九年，他們推出第二版修訂本。",
+          "emotion": "第二版問世"
+        }
+      ]
+    },
+    {
+      "id": "7d8l",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of A 19th-century traveler on horseback riding through a green hazel bush grove.",
+        "camera": "Wide shot, slow push in",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "dbsp",
+          "speaker": "chief",
+          "text": "首先，加上了父親帶回榛樹枝的橋段。",
+          "emotion": "榛樹枝情節"
+        }
+      ]
+    },
+    {
+      "id": "g45o",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Cinderella planting the tender hazel branch into the moist earth with tears.",
+        "camera": "Medium shot, pull out",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "ib6y",
+          "speaker": "chief",
+          "text": "灰姑娘把榛樹枝種在母親墳前。",
+          "emotion": "墳上榛樹"
+        }
+      ]
+    },
+    {
+      "id": "m9jf",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid nodding in sudden clarity, writing the fact down.",
+        "camera": "Close-up, pan right",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "nppt",
+          "speaker": "kid",
+          "text": "這就是後來大家說的墳上榛樹！",
+          "emotion": "恍然大悟"
+        }
+      ]
+    },
+    {
+      "id": "w8i1",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief holding up two fingers to emphasize the reversal.",
+        "camera": "Medium close-up, tilt up",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "n565",
+          "speaker": "chief",
+          "text": "接著，切腳的順序被對調了！",
+          "emotion": "順序對調"
+        }
+      ]
+    },
+    {
+      "id": "rmde",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of rustic bedchamber as the mother and daughter stand beside the stone window.",
+        "camera": "Wide shot, pan left",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "jsx9",
+          "speaker": "chief",
+          "text": "變成大姊切腳趾、二姊切腳跟！",
+          "emotion": "新順序"
+        }
+      ]
+    },
+    {
+      "id": "q2ef",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Mother's chilling, resolute profile in harsh candle contrast.",
+        "camera": "Close-up, tilt down",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "94w8",
+          "speaker": "chief",
+          "text": "而且母親的台詞變得更加冷酷：",
+          "emotion": "台詞升級"
+        }
+      ]
+    },
+    {
+      "id": "fuhk",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of the sharp iron blade resting against a wooden bench, zero humans.",
+        "camera": "Close-up insert, slow drift",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e2i4",
+          "speaker": "chief",
+          "text": "把腳趾砍掉！",
+          "emotion": "名言第一句"
+        }
+      ]
+    },
+    {
+      "id": "uir9",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief delivering the dark historical line with measured gravitas.",
+        "camera": "Medium close-up, slow push in",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h4xc",
+          "speaker": "chief",
+          "text": "當了王后你就不用走路了！",
+          "emotion": "冷血名言完整"
+        }
+      ]
+    },
+    {
+      "id": "sxf0",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid shivering slightly, holding her arms tight.",
+        "camera": "Close-up, pull out",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "nxab",
+          "speaker": "kid",
+          "text": "當了王后不用走路……聽了真讓人發毛！",
+          "emotion": "真實感受"
+        }
+      ]
+    },
+    {
+      "id": "unyw",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief's voice dropping into a thrilling whisper.",
+        "camera": "Medium shot, pan right",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "tf3v",
+          "speaker": "chief",
+          "text": "但這還不是最可怕的！",
+          "emotion": "更大懸念"
+        }
+      ]
+    },
+    {
+      "id": "z47q",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief looking directly into the viewer's eyes with serious gaze.",
+        "camera": "Medium close-up, tilt up",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "qrca",
+          "speaker": "chief",
+          "text": "格林兄弟在第二版的結尾，",
+          "emotion": "私刑預告"
+        }
+      ]
+    },
+    {
+      "id": "7qdk",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Exterior of imposing gothic cathedral towering into gloomy overcast skies, zero humans.",
+        "camera": "Wide shot, pan left",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ogvj",
+          "speaker": "chief",
+          "text": "親自加了一場觸目驚心的血腥私刑！",
+          "emotion": "私刑揭曉"
+        }
+      ]
+    },
+    {
+      "id": "uymw",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid staring with tense, eager curiosity.",
+        "camera": "Close-up, tilt down",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "z6lb",
+          "speaker": "kid",
+          "text": "第二版到底在婚禮加了什麼？",
+          "emotion": "緊張發問"
+        }
+      ],
+      "chapter": "教堂門口的殘酷私刑：去程啄一隻，回程啄一隻"
+    },
+    {
+      "id": "630e",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Sunlight streaming through towering cathedral stained glass onto royal wedding crowd.",
+        "camera": "Wide shot, slow drift",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "z5i2",
+          "speaker": "chief",
+          "text": "婚禮那一天，盛裝的人群擠滿教堂。",
+          "emotion": "婚禮現場"
+        }
+      ]
+    },
+    {
+      "id": "ni67",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Two sisters in pastel ruffled gowns walking proudly up the cathedral steps.",
+        "camera": "Medium shot, slow push in",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "bbyt",
+          "speaker": "chief",
+          "text": "那兩個切掉腳的假姊姊也趕來了！",
+          "emotion": "假姊姊趕來"
+        }
+      ]
+    },
+    {
+      "id": "giwe",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid shaking her head at the sisters' brazen greed.",
+        "camera": "Close-up, pull out",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g2n5",
+          "speaker": "kid",
+          "text": "她們居然還敢跑去分好處！",
+          "emotion": "義憤填膺"
+        }
+      ]
+    },
+    {
+      "id": "aaq3",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Sisters flanking Cinderella, walking through the tall arched church portal.",
+        "camera": "Medium close-up, pan right",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "4do0",
+          "speaker": "chief",
+          "text": "大姊走在新娘右邊、二姊走在左邊。",
+          "emotion": "列隊入場"
+        }
+      ]
+    },
+    {
+      "id": "kw65",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of High carved stone vaults of the cathedral entryway, white wings fluttering above, zero humans.",
+        "camera": "Wide shot, tilt up",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "y1up",
+          "speaker": "chief",
+          "text": "偏偏就在這時候，更離奇的事發生了！",
+          "emotion": "情節突變"
+        }
+      ]
+    },
+    {
+      "id": "ia4e",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of two pure white doves with sharp beaks diving swiftly through air, zero humans.",
+        "camera": "Close-up insert, pan left",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "oyo9",
+          "speaker": "chief",
+          "text": "樹上的白鴿突然像利箭一樣俯衝！",
+          "emotion": "白鴿撲擊"
+        }
+      ]
+    },
+    {
+      "id": "zxvm",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Dramatic silhouettes of the two sisters throwing hands up in panic against stone walls.",
+        "camera": "Medium shot, tilt down",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "2bpc",
+          "speaker": "chief",
+          "text": "撲向大姊和二姊，當場啄瞎了每人的一隻眼睛！",
+          "emotion": "第一輪啄眼"
+        }
+      ]
+    },
+    {
+      "id": "acwh",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid gasping with hand over her chest.",
+        "camera": "Close-up, slow drift",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "7okx",
+          "speaker": "kid",
+          "text": "天啊！當場啄瞎了一隻眼睛？！",
+          "emotion": "驚駭反問"
+        }
+      ]
+    },
+    {
+      "id": "ykuu",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Somber wedding procession moving through incense-filled cathedral nave.",
+        "camera": "Wide shot, slow push in",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "h529",
+          "speaker": "chief",
+          "text": "她們忍痛硬撐著參加完婚禮。",
+          "emotion": "硬撐儀式"
+        }
+      ]
+    },
+    {
+      "id": "6w6n",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Sunlit plaza as the bridal party emerges from the grand cathedral doors.",
+        "camera": "Medium shot, pull out",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "ft1n",
+          "speaker": "chief",
+          "text": "走出教堂時，可怕的報應再次降臨！",
+          "emotion": "二度報應"
+        }
+      ]
+    },
+    {
+      "id": "2new",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of white dove wings beating vigorously against blue sky, zero humans.",
+        "camera": "Close-up insert, pan right",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "rl2j",
+          "speaker": "chief",
+          "text": "白鴿再次展翅撲下，",
+          "emotion": "二度俯衝"
+        }
+      ]
+    },
+    {
+      "id": "b7g9",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Dramatic high-contrast silhouettes of the sisters stumbling away blindly.",
+        "camera": "Medium shot, tilt up",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift"
+      },
+      "lines": [
+        {
+          "id": "2zxg",
+          "speaker": "chief",
+          "text": "狠狠啄出了她們僅剩的另一隻眼睛！",
+          "emotion": "雙目失明"
+        }
+      ]
+    },
+    {
+      "id": "fhtn",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief reading from the open leather-bound volume with solemn respect.",
+        "camera": "Medium close-up, pan left",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vv44",
+          "speaker": "chief",
+          "text": "德文原文寫道：",
+          "emotion": "引用古書"
+        }
+      ]
+    },
+    {
+      "id": "68it",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of historical 1857 German text: 'mit Blindheit auf ihr Lebtage gestraft', zero humans.",
+        "camera": "Close-up insert, tilt down",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "r4xd",
+          "speaker": "chief",
+          "text": "她們因虛偽與邪惡，終生雙目失明！",
+          "emotion": "定版結尾"
+        }
+      ]
+    },
+    {
+      "id": "nncn",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Chief and Kid surrounded by library stacks as golden evening light settles.",
+        "camera": "Wide shot, slow drift",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief",
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "4xql",
+          "speaker": "chief",
+          "text": "這段血腥的結局，一直保留到第七版最終定版！",
+          "emotion": "歷史定論"
+        }
+      ]
+    },
+    {
+      "id": "t58n",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid looking at Chief with furrowed brow and wide eyes.",
+        "camera": "Close-up, slow push in",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "4nub",
+          "speaker": "kid",
+          "text": "難道當時的讀者不覺得太殘忍嗎？",
+          "emotion": "質疑反思"
+        }
+      ]
+    },
+    {
+      "id": "r3i1",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief smiling with philosophical calm under the warm lamp glow.",
+        "camera": "Medium close-up, pull out",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "11te",
+          "speaker": "chief",
+          "text": "偏偏這就是格林兄弟的堅持：惡有惡報，絕不能輕易寬恕！",
+          "emotion": "道德總結"
+        }
+      ]
+    },
+    {
+      "id": "g676",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid turning a page in her notebook, looking up curiously.",
+        "camera": "Close-up, pan right",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "1dnb",
+          "speaker": "kid",
+          "text": "所長，那既然格林版這麼可怕，",
+          "emotion": "現代轉折"
+        }
+      ],
+      "chapter": "一九五零年的迪士尼銀幕：重回佩羅的魔法城堡"
+    },
+    {
+      "id": "1236",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid asking the central question that connects history to modern life.",
+        "camera": "Medium close-up, tilt up",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t57s",
+          "speaker": "kid",
+          "text": "為什麼我們小時候看到的完全不一樣？",
+          "emotion": "核心疑問"
+        }
+      ]
+    },
+    {
+      "id": "jmk5",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief smiling warmly, introducing the modern animation era.",
+        "camera": "Medium shot, pan left",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "cl4w",
+          "speaker": "chief",
+          "text": "這就必須感謝二十世紀的造夢大師——迪士尼！",
+          "emotion": "迪士尼登場"
+        }
+      ]
+    },
+    {
+      "id": "5ylf",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Nostalgic 1950s cinema facade with neon lights reading 'CINDERELLA' in rain, zero humans.",
+        "camera": "Wide shot, tilt down",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "a5nm",
+          "speaker": "chief",
+          "text": "一九五零年二月，經典動畫《仙履奇緣》上映。",
+          "emotion": "上映紀錄"
+        }
+      ]
+    },
+    {
+      "id": "s2qk",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Animation artist light table with hand-drawn Cinderella cels and pigment jars, zero humans.",
+        "camera": "Medium close-up, slow drift",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "eckd",
+          "speaker": "chief",
+          "text": "迪士尼製作團隊做了一個關鍵決定：",
+          "emotion": "關鍵決策"
+        }
+      ]
+    },
+    {
+      "id": "7004",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief gesturing firmly with her hand against violence.",
+        "camera": "Medium shot, slow push in",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "iiat",
+          "speaker": "chief",
+          "text": "徹底拋棄格林兄弟血腥嚴酷的私刑，",
+          "emotion": "拋棄格林"
+        }
+      ]
+    },
+    {
+      "id": "0mra",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of delicate vintage pastel sketch of Cinderella's ballgown, zero humans.",
+        "camera": "Close-up insert, pull out",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "i980",
+          "speaker": "chief",
+          "text": "全面採用兩百五十年前佩羅的法國版本！",
+          "emotion": "擁抱佩羅"
+        }
+      ]
+    },
+    {
+      "id": "uw3c",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid smiling happily with sparkling eyes.",
+        "camera": "Close-up, pan right",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ztwb",
+          "speaker": "kid",
+          "text": "就是那位念著魔法咒語的神仙教母！",
+          "emotion": "經典童年"
+        }
+      ]
+    },
+    {
+      "id": "p6o3",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Golden fairy tale coach traveling under glittering starlight toward palace, zero humans.",
+        "camera": "Wide shot, tilt up",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "nwih",
+          "speaker": "chief",
+          "text": "對！還有溫暖、夢幻的南瓜馬車與玻璃鞋！",
+          "emotion": "夢幻元素"
+        }
+      ]
+    },
+    {
+      "id": "o2ag",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief speaking with warm gratitude for the gentle art.",
+        "camera": "Medium close-up, pan left",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sd6v",
+          "speaker": "chief",
+          "text": "迪士尼用善良與夢想，覆蓋了歷史上的血腥私刑。",
+          "emotion": "集體記憶重塑"
+        }
+      ]
+    },
+    {
+      "id": "kg51",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid squinting playfully, asking the famous urban legend.",
+        "camera": "Close-up, tilt down",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ykq7",
+          "speaker": "kid",
+          "text": "那傳說『玻璃鞋是毛皮誤譯』又是怎麼回事？",
+          "emotion": "破解大迷思"
+        }
+      ]
+    },
+    {
+      "id": "eugs",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief shaking her head with an amused smile.",
+        "camera": "Medium shot, slow drift",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "oegz",
+          "speaker": "chief",
+          "text": "很多人傳說佩羅把毛皮聽錯成玻璃。",
+          "emotion": "傳言由來"
+        }
+      ]
+    },
+    {
+      "id": "ud2h",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of antique 1697 French printing of the word 'verre', zero humans.",
+        "camera": "Close-up insert, slow push in",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "54lu",
+          "speaker": "chief",
+          "text": "但查證一六九七年原書，清清楚楚寫的就是玻璃！",
+          "emotion": "闢謠鐵證"
+        }
+      ]
+    },
+    {
+      "id": "4k04",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief looking authoritative and gentle.",
+        "camera": "Medium close-up, pull out",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ca7l",
+          "speaker": "chief",
+          "text": "現代民俗學早已證實：玻璃鞋不是筆誤！",
+          "emotion": "學術結論"
+        }
+      ]
+    },
+    {
+      "id": "ixj3",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of pristine crystal glass slipper radiating rainbow highlights, zero humans.",
+        "camera": "Close-up insert, pan right",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "z377",
+          "speaker": "chief",
+          "text": "那是佩羅刻意打造的易碎奇蹟！",
+          "emotion": "文學讚譽"
+        }
+      ]
+    },
+    {
+      "id": "on72",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid clapping her hands in delight.",
+        "camera": "Close-up, tilt up",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "0ing",
+          "speaker": "kid",
+          "text": "原來連毛皮誤譯說都是假的！考證真的太精彩了！",
+          "emotion": "由衷佩服"
+        }
+      ]
+    },
+    {
+      "id": "svo4",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Three historical leather volumes from 1697, 1812, and 1857 lined up neatly, zero humans.",
+        "camera": "Wide shot, pan left",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ez8v",
+          "speaker": "chief",
+          "text": "從初版的小樹與金拖鞋，",
+          "emotion": "回顧起點"
+        }
+      ],
+      "chapter": "蓋上檔案章：童話的殘酷與溫柔，都是時代的鏡子"
+    },
+    {
+      "id": "6vwz",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief looking softly down at the books in warm reading light.",
+        "camera": "Medium shot, tilt down",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "hsvi",
+          "speaker": "chief",
+          "text": "到一八一九年切腳跟與啄眼睛的殘酷懲罰，",
+          "emotion": "回顧修訂"
+        }
+      ]
+    },
+    {
+      "id": "6qz2",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief resting her hands gently on the closed dossier.",
+        "camera": "Medium close-up, slow drift",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "5mzk",
+          "speaker": "chief",
+          "text": "再到佩羅與迪士尼的南瓜馬車與玻璃鞋。",
+          "emotion": "回顧圓滿"
+        }
+      ]
+    },
+    {
+      "id": "oe1g",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid looking thoughtful and mature beyond her years.",
+        "camera": "Close-up, slow push in",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "5su7",
+          "speaker": "kid",
+          "text": "不同時代的人，都在童話裡尋找自己的心靈慰藉！",
+          "emotion": "深刻領悟"
+        }
+      ]
+    },
+    {
+      "id": "e1o3",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Chief smiling warmly at Kid, golden dust motes dancing in the sunbeams.",
+        "camera": "Wide shot, pull out",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief",
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "oxrk",
+          "speaker": "chief",
+          "text": "這就是兩百年來《灰姑娘》教給我們的一堂課：",
+          "emotion": "哲理總結"
+        }
+      ]
+    },
+    {
+      "id": "ulw9",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief speaking the concluding wisdom with calm grace.",
+        "camera": "Medium close-up, pan right",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "67lq",
+          "speaker": "chief",
+          "text": "童話的殘酷與溫柔，都是人類時代心靈的鏡子！",
+          "emotion": "結案金句"
+        }
+      ]
+    },
+    {
+      "id": "5i3h",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of heavy brass official archive stamp pressing red wax onto cover, zero humans.",
+        "camera": "Close-up insert, tilt up",
+        "motion": "Subtle cinematic lighting drift and gentle optical drift",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ds9n",
+          "speaker": "chief",
+          "text": "那麼，今天這份灰姑娘檔案，就正式存檔！",
+          "emotion": "蓋章存檔"
+        }
+      ]
+    },
+    {
+      "id": "vmtd",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid pointing her pencil toward the screen with a friendly, inquiring smile.",
+        "camera": "Close-up, pan left",
+        "motion": "Kid keeps subtle natural ambient drift",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "1gti",
+          "speaker": "kid",
+          "text": "在你聽過的原版童話裡，哪一個故事最讓你震撼？",
+          "emotion": "觀眾互動"
+        }
+      ]
+    },
+    {
+      "id": "i7s4",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Chief and Kid standing together in the twilight archive, waving warmly to the audience.",
+        "camera": "Wide shot, pull out",
+        "motion": "Chief keeps subtle natural ambient drift",
+        "characters": [
+          "chief",
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "k7zf",
+          "speaker": "chief",
+          "text": "歡迎在下方留言分享，並按讚訂閱奇聞檔案局！",
+          "emotion": "訂閱邀請"
+        }
+      ]
+    }
+  ]
+}

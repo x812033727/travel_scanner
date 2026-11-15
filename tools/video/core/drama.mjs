@@ -249,7 +249,7 @@ export const isCuteExplainer = (doc) => isDrama(doc) && CUTE_EXPLAINER_PRESETS.i
  * their approved sheets keep a recurring historical figure's face the same from picture to picture
  * (奇聞檔案局 S42, owner 2026-11-04); none of them speaks a line.
  */
-export const DIALOGUE_EXPLAINER_PRESETS = Object.freeze(["cute-cartoon"]);
+export const DIALOGUE_EXPLAINER_PRESETS = Object.freeze(["cute-cartoon", "cute-mystery"]);
 /** An explainer whose lines are spoken by its cast: still pictures and the floor, but a drama's intro at the start. */
 export const isDialogueExplainer = (doc) => isExplainer(doc) && DIALOGUE_EXPLAINER_PRESETS.includes(doc.look.preset) && Array.isArray(doc.characters) && doc.characters.length > 0;
 /** An explainer the narrator tells alone, with or without characters drawn from sheets: every explainer but a dialogue one. */

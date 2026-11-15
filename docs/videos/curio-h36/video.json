@@ -1,0 +1,3378 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h36",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，關鍵數字放慢，清單段落加快。語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。絕不平、絕不像在念稿。",
+    "performance": "從頭到尾說書與問答節奏緊湊：開場神秘引出世紀騙局；農場出土大驚小怪；耶魯教授鑿痕揭穿時沉穩透徹；石膏漂流與芝加哥穀倉敲毛孔生動細緻；百老匯兩巨人對打荒謬高潮；法庭宣誓判決趣味橫生；收尾平靜深刻留下新聞啟發。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "chief",
+      "name": "所長",
+      "appearance": "a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。"
+      }
+    },
+    {
+      "id": "kid",
+      "name": "小問",
+      "appearance": "a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, holding a small plain blank notebook in both hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。"
+      }
+    }
+  ],
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "e",
+      "headline": "**假告假**\n誰是真？",
+      "sub": "1869年百老匯奇案",
+      "shot": "xd9z"
+    }
+  },
+  "loops": [
+    {
+      "setup": "89rb",
+      "payoff": "kydw",
+      "what": "百老匯為什麼會同時有兩個巨人搶著收門票"
+    },
+    {
+      "setup": "b4au",
+      "payoff": "ywcq",
+      "what": "神秘大木箱裡裝的到底是什麼龐然大物"
+    },
+    {
+      "setup": "j56w",
+      "payoff": "kkr3",
+      "what": "拆穿的假石人為什麼反而吸引更多人買票"
+    },
+    {
+      "setup": "4wng",
+      "payoff": "sz43",
+      "what": "農場主人原本為什麼根本不需要挖水井"
+    },
+    {
+      "setup": "q7ht",
+      "payoff": "nnaz",
+      "what": "石像皮膚上新鮮的鑿痕是誰留下的"
+    },
+    {
+      "setup": "yi6z",
+      "payoff": "rsmh",
+      "what": "皮膚上十萬個毛孔究竟是怎麼做出來的"
+    },
+    {
+      "setup": "d9yh",
+      "payoff": "3chd",
+      "what": "雕刻石匠為什麼敢在報紙上公開接單"
+    },
+    {
+      "setup": "fcfi",
+      "payoff": "9iex",
+      "what": "這具被當成笑柄的石人最後落腳何處"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Autobiography of Andrew Dickson White — Volume 2 Chapter LVI (The Cardiff Giant: A Chapter in the History of Human Folly)",
+      "url": "https://www.gutenberg.org/cache/epub/1370/pg1370.html",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "The Cardiff Giant (Full Text of Chapter LVI with Notes and Contemporary Documents by Donald Simanek)",
+      "url": "https://dsimanek.vialattea.net/cardiff.htm",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "“A Remarkable Deception”: The Cardiff Giant Hoax (Massachusetts Historical Society Beehive)",
+      "url": "https://www.masshist.org/beehiveblog/2017/02/a-remarkable-deception-the-cardiff-giant-hoax/",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "The Cardiff Giant Fools the Nation, 145 Years Ago (History.com)",
+      "url": "https://www.history.com/articles/the-cardiff-giant-fools-the-nation-145-years-ago",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "The Cardiff Giant: Archaeology's biggest hoax (Hektoen International)",
+      "url": "https://hekint.org/2025/06/05/the-cardiff-giant-archaeologys-biggest-hoax/",
+      "checked_on": "2026-11-14"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "卡迪夫巨人：拆穿是石膏，百老匯為何兩個巨人同時收門票？｜奇聞檔案局",
+    "description": "1869 年 10 月，紐約州一座寧靜農場挖出一具高達三公尺的史前石化巨人，引發全美轟動。\n然而，當耶魯科學家一眼看出新鮮鑿痕、報紙追出芝加哥石匠雕刻經過後，這場騙局不但沒結束，紐約百老匯反而出現「兩個假巨人」同時收門票的荒謬奇觀！",
+    "tags": [
+      "奇聞檔案局",
+      "卡迪夫巨人",
+      "Cardiff Giant",
+      "歷史謎團",
+      "考古騙局",
+      "巴納姆",
+      "PT Barnum",
+      "百老匯",
+      "冷知識",
+      "都市傳說"
+    ]
+  },
+  "scenes": [
+    {
+      "id": "7jnm",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the question office. Chief stands beside the vintage archive cabinet holding a manila dossier, morning sunbeams illuminating wooden shelves.",
+        "camera": "Wide shot, slow push in",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief picks up the vintage manila folder from the desk"
+      },
+      "lines": [
+        {
+          "id": "89rb",
+          "speaker": "chief",
+          "text": "你聽過這樁奇案嗎？",
+          "emotion": "神秘"
+        }
+      ],
+      "chapter": "一八六九年秋天，農場水井底下挖出三公尺石人"
+    },
+    {
+      "id": "vftn",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief placing the folder on the oak table, warm light reflecting off her mustard cardigan.",
+        "camera": "Medium shot, pan right",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief taps the folder lightly against the table"
+      },
+      "lines": [
+        {
+          "id": "dw8a",
+          "speaker": "chief",
+          "text": "一八六九年秋天。",
+          "emotion": "說書"
+        }
+      ]
+    },
+    {
+      "id": "3ke6",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of the office director with round spectacles reflecting warm sunlight, smiling knowingly.",
+        "camera": "Medium close-up, tilt up",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief opens the vintage dossier with both hands"
+      },
+      "lines": [
+        {
+          "id": "uz9i",
+          "speaker": "chief",
+          "text": "紐約一座農場底下，",
+          "emotion": "神秘"
+        }
+      ]
+    },
+    {
+      "id": "b7zu",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of the investigator speaking with vivid expression, golden dust motes floating in the air.",
+        "camera": "Close-up, pull out",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief leans slightly forward toward the listener"
+      },
+      "lines": [
+        {
+          "id": "smrr",
+          "speaker": "chief",
+          "text": "挖出三公尺巨大石人！",
+          "emotion": "驚奇"
+        }
+      ]
+    },
+    {
+      "id": "kvc8",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of eight-year-old girl Kid in navy jacket with mustard hood, wide round eyes filled with wonder.",
+        "camera": "Close-up, pan left",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid raises her yellow pencil in surprise"
+      },
+      "lines": [
+        {
+          "id": "uqqw",
+          "speaker": "kid",
+          "text": "三公尺？",
+          "emotion": "好奇"
+        }
+      ]
+    },
+    {
+      "id": "req3",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief gesturing with her hands against the tall bookshelf to show the scale.",
+        "camera": "Medium shot, slow drift",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief holds her hand high to indicate the height"
+      },
+      "lines": [
+        {
+          "id": "zbz8",
+          "speaker": "chief",
+          "text": "足足有兩層樓那麼高！",
+          "emotion": "形容"
+        }
+      ]
+    },
+    {
+      "id": "3tfa",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid holding her blank notebook tightly against her chest, leaning forward with curiosity.",
+        "camera": "Medium close-up, slow push in",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid jots down a quick note in her notebook"
+      },
+      "lines": [
+        {
+          "id": "32tb",
+          "speaker": "kid",
+          "text": "真的是史前巨人嗎？",
+          "emotion": "好奇"
+        }
+      ]
+    },
+    {
+      "id": "shrd",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid tilting her head with wide questioning eyes.",
+        "camera": "Close-up, pan right",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid points her pencil at the folder"
+      },
+      "lines": [
+        {
+          "id": "bkes",
+          "speaker": "kid",
+          "text": "還是遠古神話成真了？",
+          "emotion": "疑惑"
+        }
+      ]
+    },
+    {
+      "id": "9gte",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of a muddy 1869 New York farm pit. Two men in suspenders leaning on long iron shovels beside a colossal stone foot.",
+        "camera": "Wide shot, tilt up",
+        "characters": [],
+        "motion": "Two men clear loose gravel from the pit edge"
+      },
+      "lines": [
+        {
+          "id": "gi2a",
+          "speaker": "chief",
+          "text": "當時全美都為之瘋狂，",
+          "emotion": "說書"
+        },
+        {
+          "id": "8n6c",
+          "speaker": "chief",
+          "text": "成千上萬人趕去排隊！",
+          "emotion": "熱鬧"
+        }
+      ]
+    },
+    {
+      "id": "d3md",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of farm visitors lining up beside a large white canvas pavilion in an open pasture.",
+        "camera": "Medium shot, pull out",
+        "characters": [],
+        "motion": "A crowd of people queues up with silver coins in hand"
+      },
+      "lines": [
+        {
+          "id": "pgn8",
+          "speaker": "chief",
+          "text": "農場搭起大帳篷天天漲價！",
+          "emotion": "驚奇"
+        },
+        {
+          "id": "uqug",
+          "speaker": "chief",
+          "text": "全郡所有人都在談論這具石人！",
+          "emotion": "轟動"
+        }
+      ]
+    },
+    {
+      "id": "apac",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of a soft white gypsum rock fragment resting on dark weathered wood, fine mineral dust scattered nearby.",
+        "camera": "Close-up insert, pan left",
+        "characters": [],
+        "motion": "A brass magnifying glass slides over the rock sample",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "y89n",
+          "speaker": "chief",
+          "text": "但才過了兩個月，",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "wr5q",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of the narrator pointing firmly at a scientific report in the file, glasses glistening.",
+        "camera": "Medium close-up, slow drift",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief points a finger at the written report"
+      },
+      "lines": [
+        {
+          "id": "wivm",
+          "speaker": "chief",
+          "text": "耶魯科學家就當場拆穿它！",
+          "emotion": "肯定"
+        },
+        {
+          "id": "8uh9",
+          "speaker": "chief",
+          "text": "連這塊石頭的身世都查得一清二楚！",
+          "emotion": "徹底拆穿"
+        }
+      ]
+    },
+    {
+      "id": "fwaf",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of the office director speaking with firm certainty.",
+        "camera": "Close-up, slow push in",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief delivers the decisive conclusion"
+      },
+      "lines": [
+        {
+          "id": "8vrw",
+          "speaker": "chief",
+          "text": "這根本不是遠古化石！",
+          "emotion": "拆穿"
+        }
+      ]
+    },
+    {
+      "id": "nue7",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid with furrowed brows, tilting her head with intense curiosity.",
+        "camera": "Close-up, pan right",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid blinks with an inquisitive expression"
+      },
+      "lines": [
+        {
+          "id": "qqey",
+          "speaker": "kid",
+          "text": "被拆穿是假貨了？",
+          "emotion": "驚訝"
+        }
+      ]
+    },
+    {
+      "id": "jctz",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid raising both hands in confusion, looking at the case file.",
+        "camera": "Medium close-up, tilt up",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid turns the page of her notebook"
+      },
+      "lines": [
+        {
+          "id": "n4dd",
+          "speaker": "kid",
+          "text": "那大家不就散場回家了嗎？",
+          "emotion": "質疑"
+        }
+      ]
+    },
+    {
+      "id": "hq5b",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the question office. Chief smiles warmly beside the book-lined wall as golden morning light streams across.",
+        "camera": "Wide shot, pull out",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief turns to face the audience warmly"
+      },
+      "lines": [
+        {
+          "id": "j56w",
+          "speaker": "chief",
+          "text": "今天我們就來聊聊，",
+          "emotion": "說書"
+        },
+        {
+          "id": "gwa9",
+          "speaker": "chief",
+          "text": "百老匯雙巨人的門票奇案！",
+          "emotion": "承諾"
+        }
+      ]
+    },
+    {
+      "id": "sbhc",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief holding an antique map of Onondaga county, pointing to Cardiff hamlet.",
+        "camera": "Medium shot, pan left",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief traces her finger across the Cardiff valley map"
+      },
+      "lines": [
+        {
+          "id": "siju",
+          "speaker": "chief",
+          "text": "時間回到一八六九年秋天。",
+          "emotion": "說書"
+        }
+      ],
+      "chapter": "白布帳篷底下，排隊門票從兩毛五漲到五毛"
+    },
+    {
+      "id": "pu9j",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of the narrator describing the peaceful rural setting.",
+        "camera": "Medium close-up, slow drift",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief shows an engraving of Newell farm"
+      },
+      "lines": [
+        {
+          "id": "pbhr",
+          "speaker": "chief",
+          "text": "紐約州卡迪夫小鎮的農場。",
+          "emotion": "鋪墊"
+        }
+      ]
+    },
+    {
+      "id": "e6rg",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of the director revealing a curious detail about the farm.",
+        "camera": "Close-up, slow push in",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief taps the farm survey diagram"
+      },
+      "lines": [
+        {
+          "id": "4wng",
+          "speaker": "chief",
+          "text": "農舍旁本來就有天然泉水！",
+          "emotion": "懸念設定"
+        }
+      ]
+    },
+    {
+      "id": "66cc",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid raising an eyebrow with sharp curiosity.",
+        "camera": "Close-up, pan right",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid points her pencil at the water spring mark"
+      },
+      "lines": [
+        {
+          "id": "7exf",
+          "speaker": "kid",
+          "text": "那何必多花錢挖水井呢？",
+          "emotion": "懷疑提問"
+        }
+      ]
+    },
+    {
+      "id": "fcxk",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of William Newell's rural farm in Cardiff. Autumn trees with golden foliage surround a red barn and pasture.",
+        "camera": "Wide shot, tilt up",
+        "characters": [],
+        "motion": "Two farm horses graze quietly near the wooden fence",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "cy2c",
+          "speaker": "chief",
+          "text": "農場主人卻突然說要挖井。",
+          "emotion": "介紹"
+        }
+      ]
+    },
+    {
+      "id": "ek9r",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of two workmen in denim overalls and muddy boots digging into a trench behind the farmhouse.",
+        "camera": "Medium shot, pull out",
+        "characters": [],
+        "motion": "Two men thrust heavy iron spades into the soil"
+      },
+      "lines": [
+        {
+          "id": "3j9g",
+          "speaker": "chief",
+          "text": "他雇了兩名工人來挖水井。",
+          "emotion": "說書"
+        }
+      ]
+    },
+    {
+      "id": "i8bf",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Newell pointing at a precise spot in the gravel behind the barn.",
+        "camera": "Medium close-up, pan left",
+        "characters": [],
+        "motion": "Newell gestures firmly toward the chosen ground"
+      },
+      "lines": [
+        {
+          "id": "4s6v",
+          "speaker": "chief",
+          "text": "還指定在穀倉後面特定地點！",
+          "emotion": "古怪"
+        }
+      ]
+    },
+    {
+      "id": "djva",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of an iron spade edge slicing through wet autumn gravel and clay.",
+        "camera": "Close-up insert, slow drift",
+        "characters": [],
+        "motion": "The spade strikes hard stone with a metallic thud",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "c2mb",
+          "speaker": "chief",
+          "text": "挖到大約三英尺深時，",
+          "emotion": "敘事"
+        }
+      ]
+    },
+    {
+      "id": "xd9z",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of an iron spade edge scraping against a giant stone toe buried in dark damp loam.",
+        "camera": "Close-up insert, slow push in",
+        "characters": [],
+        "motion": "An iron spade scrapes against the hard stone surface",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "3pey",
+          "speaker": "chief",
+          "text": "鐵鏟突然發出清脆撞擊聲！",
+          "emotion": "驚奇"
+        }
+      ]
+    },
+    {
+      "id": "q9yq",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of a startled workman dropping his shovel, pointing into the mud.",
+        "camera": "Medium close-up, pan right",
+        "characters": [],
+        "motion": "The man steps back with eyes wide in shock"
+      },
+      "lines": [
+        {
+          "id": "cdma",
+          "speaker": "chief",
+          "text": "泥土底下露出一隻大腳趾！",
+          "emotion": "震撼"
+        }
+      ]
+    },
+    {
+      "id": "5r5f",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the excavated trench. A three-meter stone colossus lies supine, right arm folded over its belly.",
+        "camera": "Wide shot, tilt up",
+        "characters": [],
+        "motion": "A crowd of people gathers around the trench edge to peer inside",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "qmmb",
+          "speaker": "chief",
+          "text": "幾小時後整尊石人被挖出，",
+          "emotion": "震撼"
+        }
+      ]
+    },
+    {
+      "id": "f4j6",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of onlookers staring down into the trench with hands on hats.",
+        "camera": "Medium shot, pull out",
+        "characters": [],
+        "motion": "The onlookers murmur in astonishment"
+      },
+      "lines": [
+        {
+          "id": "efwi",
+          "speaker": "chief",
+          "text": "身長十英尺、重近三千磅！",
+          "emotion": "數據"
+        }
+      ]
+    },
+    {
+      "id": "za87",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid staring in astonishment, pencil hovering above her open notepad.",
+        "camera": "Close-up, pan left",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid gasps with hands resting on her chest"
+      },
+      "lines": [
+        {
+          "id": "qvw4",
+          "speaker": "kid",
+          "text": "將近一噸半！太巨大了吧！",
+          "emotion": "驚嘆"
+        }
+      ]
+    },
+    {
+      "id": "yg2k",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief holding up an old ledger showing visitor receipts, warm lamplight nearby.",
+        "camera": "Medium shot, slow drift",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief turns a page of the vintage receipt ledger"
+      },
+      "lines": [
+        {
+          "id": "gkx5",
+          "speaker": "chief",
+          "text": "消息半天傳遍紐約州！",
+          "emotion": "轟動"
+        },
+        {
+          "id": "yiim",
+          "speaker": "chief",
+          "text": "各大報紙頭版瘋狂報導！",
+          "emotion": "報紙報導"
+        }
+      ]
+    },
+    {
+      "id": "sctm",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Cardiff farm pasture with a long line of buggies and horse carriages, hundreds waiting outside a pavilion.",
+        "camera": "Wide shot, slow push in",
+        "characters": [],
+        "motion": "A crowd of people moves slowly toward the tent entrance",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "27vp",
+          "speaker": "chief",
+          "text": "主人立刻搭起白帳篷！",
+          "emotion": "動作"
+        },
+        {
+          "id": "3wna",
+          "speaker": "chief",
+          "text": "排隊馬車一路塞了幾英里！",
+          "emotion": "大塞車"
+        }
+      ]
+    },
+    {
+      "id": "drsg",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of vintage silver half-dollar coins dropping onto a green felt collection plate.",
+        "camera": "Close-up insert, pan right",
+        "characters": [],
+        "motion": "Silver half-dollar coins slide across the ticket plate",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m9wm",
+          "speaker": "chief",
+          "text": "排隊門票從兩毛五漲到五毛！",
+          "emotion": "漲價"
+        }
+      ]
+    },
+    {
+      "id": "qiev",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief showing a syndicate contract document.",
+        "camera": "Medium close-up, tilt up",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief taps the syndicate contract paper"
+      },
+      "lines": [
+        {
+          "id": "nf3z",
+          "speaker": "chief",
+          "text": "短短幾週進帳上萬美元！",
+          "emotion": "收益"
+        }
+      ]
+    },
+    {
+      "id": "kebj",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of the director revealing the buyout offer.",
+        "camera": "Close-up, pull out",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief displays the syndicate buyout sum"
+      },
+      "lines": [
+        {
+          "id": "aw4u",
+          "speaker": "chief",
+          "text": "雪城財團捧著三萬七千美元，",
+          "emotion": "巨款"
+        },
+        {
+          "id": "fcfi",
+          "speaker": "chief",
+          "text": "買下巨人四分之三的股份！",
+          "emotion": "入股"
+        }
+      ]
+    },
+    {
+      "id": "rpvx",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid shaking her head in amazement at the crowds.",
+        "camera": "Close-up, pan left",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid shakes her head with a laugh"
+      },
+      "lines": [
+        {
+          "id": "9rii",
+          "speaker": "kid",
+          "text": "連火車公司都跟著發大財！",
+          "emotion": "感嘆"
+        }
+      ]
+    },
+    {
+      "id": "98xd",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief displaying the local hotel registers.",
+        "camera": "Medium shot, slow drift",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief turns the vintage hotel register"
+      },
+      "lines": [
+        {
+          "id": "9v8a",
+          "speaker": "chief",
+          "text": "附近旅館天天客滿一房難求！",
+          "emotion": "熱鬧"
+        }
+      ]
+    },
+    {
+      "id": "jkea",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid shaking her head in amazement, jotting numbers down.",
+        "camera": "Close-up, slow push in",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid writes down the ticket earnings eagerly"
+      },
+      "lines": [
+        {
+          "id": "w6s4",
+          "speaker": "kid",
+          "text": "三萬七千美元！是天文數字！",
+          "emotion": "震撼計算"
+        }
+      ],
+      "chapter": "耶魯教授彎下腰，看見石像皮膚上全是新鮮鑿痕"
+    },
+    {
+      "id": "2hii",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid leaning forward with skeptical eyes.",
+        "camera": "Medium close-up, pan right",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid points her pencil at the sketch of the pit"
+      },
+      "lines": [
+        {
+          "id": "5tt3",
+          "speaker": "kid",
+          "text": "但難道都沒學者去檢驗真假？",
+          "emotion": "質疑"
+        }
+      ]
+    },
+    {
+      "id": "2y88",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the question office. Chief stands by the blackboard showing diagrams of fossilisation.",
+        "camera": "Wide shot, tilt up",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief points a wooden ruler at the chalk diagram"
+      },
+      "lines": [
+        {
+          "id": "323g",
+          "speaker": "chief",
+          "text": "當然有！學者立刻趕到現場。",
+          "emotion": "肯定"
+        }
+      ]
+    },
+    {
+      "id": "anba",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief showing sketches of religious debates printed in 1869 newspapers.",
+        "camera": "Medium shot, pull out",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief displays an antique newspaper illustration"
+      },
+      "lines": [
+        {
+          "id": "hg84",
+          "speaker": "chief",
+          "text": "很多人堅信是聖經巨人！",
+          "emotion": "背景"
+        },
+        {
+          "id": "x2sq",
+          "speaker": "chief",
+          "text": "神職人員專程趕來膜拜！",
+          "emotion": "膜拜"
+        }
+      ]
+    },
+    {
+      "id": "sjnv",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief recalling the high-profile endorsements.",
+        "camera": "Medium close-up, pan left",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief holds up a vintage editorial article"
+      },
+      "lines": [
+        {
+          "id": "ujs4",
+          "speaker": "chief",
+          "text": "連前紐約州州長都公開背書！",
+          "emotion": "權威背書"
+        }
+      ]
+    },
+    {
+      "id": "bmnm",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the crowded white canvas exhibition tent as Professor Marsh arrives surrounded by onlookers.",
+        "camera": "Wide shot, slow drift",
+        "characters": [],
+        "motion": "Professor Marsh enters the tent surrounded by murmuring onlookers"
+      },
+      "lines": [
+        {
+          "id": "smri",
+          "speaker": "chief",
+          "text": "直到十一月初耶魯專家登場！",
+          "emotion": "轉折登場"
+        }
+      ]
+    },
+    {
+      "id": "rmze",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid watching with keen anticipation, leaning forward.",
+        "camera": "Close-up, slow push in",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid holds her pencil ready to take notes"
+      },
+      "lines": [
+        {
+          "id": "tayy",
+          "speaker": "kid",
+          "text": "耶魯大教授會相信嗎？",
+          "emotion": "好奇提問"
+        }
+      ]
+    },
+    {
+      "id": "ttqi",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Professor Marsh kneeling beside the giant torso, peering intently through a magnifying lens.",
+        "camera": "Close-up, pan right",
+        "characters": [],
+        "motion": "Marsh leans close to inspect the stone surface"
+      },
+      "lines": [
+        {
+          "id": "xpb9",
+          "speaker": "chief",
+          "text": "大名鼎鼎的馬什教授親自檢查。",
+          "emotion": "學者"
+        }
+      ]
+    },
+    {
+      "id": "kym5",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Marsh's stern expression turning into a contemptuous smirk as he spots tool marks.",
+        "camera": "Medium close-up, tilt up",
+        "characters": [],
+        "motion": "Marsh taps a finger against the stone edge"
+      },
+      "lines": [
+        {
+          "id": "e8bz",
+          "speaker": "chief",
+          "text": "他只看了幾分鐘就冷笑起來！",
+          "emotion": "轉變"
+        }
+      ]
+    },
+    {
+      "id": "9hjh",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of the stone giant's side, showing crisp parallel tool grooves cut into the gypsum.",
+        "camera": "Close-up insert, pull out",
+        "characters": [],
+        "motion": "A brass ruler measures the distance between chisel lines",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q7ht",
+          "speaker": "chief",
+          "text": "表面全是新鮮工具鑿痕！",
+          "emotion": "破案關鍵"
+        },
+        {
+          "id": "ewya",
+          "speaker": "chief",
+          "text": "工匠刀痕連掩飾都沒做！",
+          "emotion": "粗糙細節"
+        }
+      ]
+    },
+    {
+      "id": "jjpd",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid with eyes wide, pencil pointing up in sudden realisation.",
+        "camera": "Close-up, pan left",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid taps her notebook with excitement"
+      },
+      "lines": [
+        {
+          "id": "nkbh",
+          "speaker": "kid",
+          "text": "古代化石怎麼可能有新鑿痕！",
+          "emotion": "發現"
+        }
+      ]
+    },
+    {
+      "id": "zhzj",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief holding a piece of raw gypsum crystal under the warm desk lamp.",
+        "camera": "Medium close-up, slow drift",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief turns the gypsum crystal in the light"
+      },
+      "lines": [
+        {
+          "id": "yi6z",
+          "speaker": "chief",
+          "text": "而且這石質根本是軟石膏，",
+          "emotion": "強調"
+        }
+      ]
+    },
+    {
+      "id": "xmx5",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of the lead investigator speaking with clear chemical authority.",
+        "camera": "Close-up, slow push in",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief explains the scientific contradiction"
+      },
+      "lines": [
+        {
+          "id": "xvhr",
+          "speaker": "chief",
+          "text": "根本不是耐保存的大理石！",
+          "emotion": "破案"
+        }
+      ]
+    },
+    {
+      "id": "6amr",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot inside the tent as Professor Marsh addresses the murmuring crowd with outstretched hand.",
+        "camera": "Wide shot, pan right",
+        "characters": [],
+        "motion": "Marsh addresses the gathered people firmly"
+      },
+      "lines": [
+        {
+          "id": "tc2p",
+          "speaker": "chief",
+          "text": "石膏在濕土裡早化成水！",
+          "emotion": "科學常識"
+        },
+        {
+          "id": "gyye",
+          "speaker": "chief",
+          "text": "懂點地質常識就能拆穿！",
+          "emotion": "常識"
+        }
+      ]
+    },
+    {
+      "id": "d8i2",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief placing a copy of the Syracuse Daily Journal onto the table.",
+        "camera": "Medium shot, tilt up",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief points out the published letter"
+      },
+      "lines": [
+        {
+          "id": "ktm8",
+          "speaker": "chief",
+          "text": "馬什教授當即投書報紙痛斥：",
+          "emotion": "公開宣戰"
+        }
+      ]
+    },
+    {
+      "id": "cgw3",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of a vintage newspaper printed in Syracuse reading 'THE CARDIFF GIANT A HUMBUG'.",
+        "camera": "Close-up insert, pull out",
+        "characters": [],
+        "motion": "A hand places the printed newspaper flat on the desk",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "r6eq",
+          "speaker": "chief",
+          "text": "這是一場徹頭徹尾的騙局！",
+          "emotion": "宣告"
+        }
+      ]
+    },
+    {
+      "id": "42xr",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid leaning back with an excited expression.",
+        "camera": "Close-up, pan left",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid nods her head firmly"
+      },
+      "lines": [
+        {
+          "id": "8mpj",
+          "speaker": "kid",
+          "text": "耶魯教授親自拆穿！",
+          "emotion": "點評"
+        }
+      ]
+    },
+    {
+      "id": "wbky",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid looking at Chief with eager curiosity.",
+        "camera": "Medium close-up, slow drift",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid taps her pencil on her chin"
+      },
+      "lines": [
+        {
+          "id": "xrmi",
+          "speaker": "kid",
+          "text": "那這石人到底誰做出來的？",
+          "emotion": "追查提問"
+        }
+      ]
+    },
+    {
+      "id": "qsgn",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the question office. Chief stands beside a large wall map of northern United States railways.",
+        "camera": "Wide shot, slow push in",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief points a wooden pointer at the Midwest rail lines"
+      },
+      "lines": [
+        {
+          "id": "x5qb",
+          "speaker": "chief",
+          "text": "記者循著鐵路運單一路倒查！",
+          "emotion": "追查"
+        }
+      ],
+      "chapter": "愛荷華採石場的來信，拼出大木箱的一年漂流記"
+    },
+    {
+      "id": "zyys",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief unfolding old telegrams and shipping receipts on the desk.",
+        "camera": "Medium shot, pan right",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief unfolds an accordion-fold shipping receipt"
+      },
+      "lines": [
+        {
+          "id": "7kkg",
+          "speaker": "chief",
+          "text": "三噸重大木箱留下痕跡，",
+          "emotion": "推理"
+        },
+        {
+          "id": "rpaj",
+          "speaker": "chief",
+          "text": "鐵路人員都記得這件巨物！",
+          "emotion": "記憶"
+        }
+      ]
+    },
+    {
+      "id": "viav",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of the lead investigator revealing George Hull's portrait card.",
+        "camera": "Close-up, tilt up",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief taps the portrait card of George Hull"
+      },
+      "lines": [
+        {
+          "id": "676q",
+          "speaker": "chief",
+          "text": "幕後主使叫喬治赫爾。",
+          "emotion": "揭露主角"
+        }
+      ]
+    },
+    {
+      "id": "5e94",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid with questioning eyes, studying Hull's portrait.",
+        "camera": "Close-up, pull out",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid flips the portrait card over"
+      },
+      "lines": [
+        {
+          "id": "dthr",
+          "speaker": "kid",
+          "text": "一個賣雪茄的商人？",
+          "emotion": "疑惑"
+        }
+      ]
+    },
+    {
+      "id": "wt7y",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid leaning forward over her notes.",
+        "camera": "Medium close-up, pan left",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid taps the paper with her pencil"
+      },
+      "lines": [
+        {
+          "id": "879i",
+          "speaker": "kid",
+          "text": "他幹嘛費這麼大工夫做石人？",
+          "emotion": "動機提問"
+        }
+      ]
+    },
+    {
+      "id": "ktf8",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief recounting the origin dispute, holding an antique Bible.",
+        "camera": "Medium shot, slow drift",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief holds up a worn Bible volume with both hands"
+      },
+      "lines": [
+        {
+          "id": "qgnn",
+          "speaker": "chief",
+          "text": "源於兩年前一場激烈辯論，",
+          "emotion": "起因"
+        },
+        {
+          "id": "6s5d",
+          "speaker": "chief",
+          "text": "對方堅稱聖經絕無虛言！",
+          "emotion": "爭辯"
+        }
+      ]
+    },
+    {
+      "id": "7jcc",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of the office director reciting the minister's words with subtle irony.",
+        "camera": "Medium close-up, slow push in",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief turns to the book of Genesis"
+      },
+      "lines": [
+        {
+          "id": "55iw",
+          "speaker": "chief",
+          "text": "牧師堅稱古代地上真有巨人！",
+          "emotion": "爭論"
+        }
+      ]
+    },
+    {
+      "id": "svd5",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid listening with curious eyes, tilting her head.",
+        "camera": "Close-up, pan right",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid takes notes attentively"
+      },
+      "lines": [
+        {
+          "id": "xmnr",
+          "speaker": "kid",
+          "text": "無神論者？那他想怎麼反擊？",
+          "emotion": "追問反擊"
+        }
+      ]
+    },
+    {
+      "id": "y25z",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief describing Hull's atheist outrage.",
+        "camera": "Medium close-up, tilt up",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief closes the Bible firmly"
+      },
+      "lines": [
+        {
+          "id": "99d6",
+          "speaker": "chief",
+          "text": "赫爾是無神論者，氣得睡不著。",
+          "emotion": "心態"
+        },
+        {
+          "id": "88f6",
+          "speaker": "chief",
+          "text": "他決定做假巨人嘲弄大眾盲信！",
+          "emotion": "策劃動機"
+        }
+      ]
+    },
+    {
+      "id": "8zi7",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Fort Dodge gypsum quarry in Iowa under crisp autumn sky. Quarrymen cutting an enormous stone slab.",
+        "camera": "Wide shot, pull out",
+        "characters": [],
+        "motion": "Two men lever a giant stone block onto a heavy dray"
+      },
+      "lines": [
+        {
+          "id": "b4au",
+          "speaker": "chief",
+          "text": "前一年才在愛荷華買下，",
+          "emotion": "設定伏筆"
+        }
+      ]
+    },
+    {
+      "id": "yn7v",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of quarry workers loading a five-ton block of gypsum onto a freight wagon.",
+        "camera": "Medium shot, pan left",
+        "characters": [],
+        "motion": "Horses strain to pull the loaded quarry wagon"
+      },
+      "lines": [
+        {
+          "id": "3hbe",
+          "speaker": "chief",
+          "text": "五噸重大石膏運上火車，",
+          "emotion": "採購運送"
+        },
+        {
+          "id": "j6r8",
+          "speaker": "chief",
+          "text": "赫爾親自押送確保安全！",
+          "emotion": "親自押運"
+        }
+      ]
+    },
+    {
+      "id": "qbxy",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of a freight manifest stamped 'IRON AND MARBLE' affixed to a massive wooden crate.",
+        "camera": "Close-up insert, slow drift",
+        "characters": [],
+        "motion": "A shipping clerk's stamp thuds down onto the bill of lading",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "gwgf",
+          "speaker": "chief",
+          "text": "他謊稱幫林肯總統刻紀念碑，",
+          "emotion": "謊言"
+        }
+      ]
+    },
+    {
+      "id": "fadc",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of a 1860s steam locomotive chugging along iron tracks carrying the massive wooden freight crate.",
+        "camera": "Medium shot, slow push in",
+        "characters": [],
+        "motion": "The steam train rolls steadily eastward",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "85es",
+          "speaker": "chief",
+          "text": "騙過鐵路局將石膏運往芝加哥！",
+          "emotion": "運輸"
+        }
+      ]
+    },
+    {
+      "id": "uwuv",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid laughing at Hull's audacious excuse.",
+        "camera": "Close-up, pan right",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid shakes her head with an amused smile"
+      },
+      "lines": [
+        {
+          "id": "dj5y",
+          "speaker": "kid",
+          "text": "連林肯總統都拿來當藉口！",
+          "emotion": "感嘆"
+        }
+      ]
+    },
+    {
+      "id": "3wic",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief sliding a sketch of a Chicago workshop into view.",
+        "camera": "Medium close-up, tilt up",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief positions the Chicago workshop sketch"
+      },
+      "lines": [
+        {
+          "id": "9j93",
+          "speaker": "chief",
+          "text": "他在芝加哥穀倉秘密雕刻，",
+          "emotion": "鋪墊"
+        }
+      ]
+    },
+    {
+      "id": "6av3",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the question office. Chief stands ready to reveal the sculpting secrets.",
+        "camera": "Wide shot, pull out",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief turns to the workshop section on the board"
+      },
+      "lines": [
+        {
+          "id": "y8gw",
+          "speaker": "chief",
+          "text": "我們去那間神秘工坊看看！",
+          "emotion": "引導"
+        }
+      ]
+    },
+    {
+      "id": "cupc",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid with eyes wide, listening eagerly.",
+        "camera": "Close-up, pan left",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid taps her pencil on the paper"
+      },
+      "lines": [
+        {
+          "id": "zruy",
+          "speaker": "kid",
+          "text": "五噸重的大石膏居然沒人起疑！",
+          "emotion": "好奇"
+        }
+      ]
+    },
+    {
+      "id": "vvu5",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief showing the freight manifest stamped with fictitious names.",
+        "camera": "Medium shot, slow drift",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief points to the transit stamp"
+      },
+      "lines": [
+        {
+          "id": "qjc6",
+          "speaker": "chief",
+          "text": "大家都以為是送給林肯的雕像！",
+          "emotion": "謊言"
+        }
+      ]
+    },
+    {
+      "id": "3pvi",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot inside an 1868 Chicago wooden workshop. Dust motes float in shafts of light from barn siding cracks.",
+        "camera": "Wide shot, slow push in",
+        "characters": [],
+        "motion": "Two men in leather aprons chip at the giant stone block",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "3ygp",
+          "speaker": "chief",
+          "text": "赫爾租下芝加哥隱密工坊，",
+          "emotion": "秘密基地"
+        },
+        {
+          "id": "mfg8",
+          "speaker": "chief",
+          "text": "雇了兩名德國雕刻師親自動工！",
+          "emotion": "雕刻工匠"
+        }
+      ],
+      "chapter": "芝加哥穀倉裡的鐵板與鋼針，親手敲出十萬個毛孔"
+    },
+    {
+      "id": "zmgy",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of German stone sculptor Henry Salle wiping marble dust from his chisel edge.",
+        "camera": "Medium shot, pan right",
+        "characters": [],
+        "motion": "Salle inspects the contours of the stone forehead"
+      },
+      "lines": [
+        {
+          "id": "2auk",
+          "speaker": "chief",
+          "text": "工匠以赫爾本人為模特兒，",
+          "emotion": "模特兒"
+        },
+        {
+          "id": "yy39",
+          "speaker": "chief",
+          "text": "整整雕刻了十四個星期！",
+          "emotion": "工期"
+        }
+      ]
+    },
+    {
+      "id": "xysz",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of the carved giant's stone face taking shape under chisel blows.",
+        "camera": "Close-up, tilt up",
+        "characters": [],
+        "motion": "A soft brush sweeps dust from the stone eye socket",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "nnaz",
+          "speaker": "chief",
+          "text": "曝光穀倉裡的雕刻實況，",
+          "emotion": "工期實況"
+        },
+        {
+          "id": "nrhk",
+          "speaker": "chief",
+          "text": "赫爾每天都在穀倉監督！",
+          "emotion": "親自監督"
+        }
+      ]
+    },
+    {
+      "id": "9mu2",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid leaning forward, chin in hand, listening with fascinated eyes.",
+        "camera": "Close-up, pull out",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid props her chin in both palms attentively"
+      },
+      "lines": [
+        {
+          "id": "txxk",
+          "speaker": "kid",
+          "text": "那古代化石的皮膚質感呢？",
+          "emotion": "工藝難題"
+        }
+      ]
+    },
+    {
+      "id": "hnxu",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid looking skeptical.",
+        "camera": "Medium close-up, pan left",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid taps her fingers on the notebook"
+      },
+      "lines": [
+        {
+          "id": "8za7",
+          "speaker": "kid",
+          "text": "新石頭表面看起來太光滑了！",
+          "emotion": "質疑"
+        }
+      ]
+    },
+    {
+      "id": "vqwn",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the Chicago workshop floor littered with stone chips and woodworking tools under daylight shafts.",
+        "camera": "Wide shot, slow drift",
+        "characters": [],
+        "motion": "Two men confer beside the massive carved gypsum figure",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vevb",
+          "speaker": "chief",
+          "text": "赫爾的巧思就在這裡！",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "8i9i",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of a lead hammer head studded with sharp steel darning needles gleaming in window light.",
+        "camera": "Close-up insert, slow push in",
+        "characters": [],
+        "motion": "A hand lifts the needle-studded lead hammer slowly",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "7zvv",
+          "speaker": "chief",
+          "text": "工匠特製嵌滿鋼針的鉛槌，",
+          "emotion": "道具"
+        }
+      ]
+    },
+    {
+      "id": "it5v",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of sculptor Salle wielding the needle hammer over the giant stone thigh.",
+        "camera": "Medium shot, pan right",
+        "characters": [],
+        "motion": "The man strikes the needle hammer rhythmically against the stone"
+      },
+      "lines": [
+        {
+          "id": "rsmh",
+          "speaker": "chief",
+          "text": "一針針敲出十萬個毛孔！",
+          "emotion": "驚人細節"
+        },
+        {
+          "id": "jxu5",
+          "speaker": "chief",
+          "text": "密密麻麻完美偽裝皮膚！",
+          "emotion": "偽裝毛孔"
+        }
+      ]
+    },
+    {
+      "id": "i3by",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid touching her own arm in sheer disbelief, eyes wide.",
+        "camera": "Close-up, tilt up",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid rubs her arm in goosebump reaction"
+      },
+      "lines": [
+        {
+          "id": "ay5a",
+          "speaker": "kid",
+          "text": "敲出十萬個毛孔！太逼真了！",
+          "emotion": "震撼"
+        }
+      ]
+    },
+    {
+      "id": "prig",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief demonstrating with small antique chemical bottles.",
+        "camera": "Medium close-up, pull out",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief picks up an amber acid bottle carefully"
+      },
+      "lines": [
+        {
+          "id": "fc3r",
+          "speaker": "chief",
+          "text": "接著在雕像上澆硫酸和墨水，",
+          "emotion": "化學做舊"
+        }
+      ]
+    },
+    {
+      "id": "qnpi",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of the lead investigator showing an aged stone texture photo.",
+        "camera": "Close-up, pan left",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief shows the weathered stone finish"
+      },
+      "lines": [
+        {
+          "id": "8ktw",
+          "speaker": "chief",
+          "text": "腐蝕出千年石化泛黃斑痕，",
+          "emotion": "逼真質感"
+        },
+        {
+          "id": "8prg",
+          "speaker": "chief",
+          "text": "就像在地下沉睡了千年！",
+          "emotion": "古老偽裝"
+        }
+      ]
+    },
+    {
+      "id": "48km",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of Newell farm under dark starlit sky in November 1868. Lantern glow illuminates four men rolling a box into a pit.",
+        "camera": "Wide shot, slow drift",
+        "characters": [],
+        "motion": "Four men lower the heavy statue into the pit with ropes"
+      },
+      "lines": [
+        {
+          "id": "ywcq",
+          "speaker": "chief",
+          "text": "Hull 偷偷將它埋進農場泥土。",
+          "emotion": "秘密伏筆"
+        }
+      ]
+    },
+    {
+      "id": "2pqs",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief placing her hands on the table, summarizing Hull's grand plan.",
+        "camera": "Medium shot, slow push in",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief rests both hands on the open case file"
+      },
+      "lines": [
+        {
+          "id": "sz43",
+          "speaker": "chief",
+          "text": "埋整整一年才假裝挖到！",
+          "emotion": "埋伏完畢"
+        }
+      ]
+    },
+    {
+      "id": "m3ip",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of the narrator tallying the total production budget.",
+        "camera": "Medium close-up, pan right",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief points to Hull's account book"
+      },
+      "lines": [
+        {
+          "id": "4wp7",
+          "speaker": "chief",
+          "text": "整套騙局成本兩千兩百美元。",
+          "emotion": "成本結算"
+        }
+      ]
+    },
+    {
+      "id": "jzf6",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid taking notes furiously, grinning with understanding.",
+        "camera": "Close-up, tilt up",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid scribbles Hull's financial balance sheet"
+      },
+      "lines": [
+        {
+          "id": "iyam",
+          "speaker": "kid",
+          "text": "花兩千二，光門票就賺上萬！",
+          "emotion": "算帳"
+        }
+      ]
+    },
+    {
+      "id": "744n",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid looking up with anticipation.",
+        "camera": "Medium close-up, pull out",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid taps her pencil on the paper"
+      },
+      "lines": [
+        {
+          "id": "q7rs",
+          "speaker": "kid",
+          "text": "那怎麼會跑出第二個巨人呢？",
+          "emotion": "引入下文"
+        }
+      ]
+    },
+    {
+      "id": "a7jp",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the question office. Chief stands beside an exhibition board with 1860s theatrical showbills.",
+        "camera": "Wide shot, pan left",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief hangs a replica Barnum circus broadside"
+      },
+      "lines": [
+        {
+          "id": "y2s6",
+          "speaker": "chief",
+          "text": "這就是這場奇案最瘋狂的高潮！",
+          "emotion": "轉折引導"
+        }
+      ],
+      "chapter": "百老匯的阿波羅大廳門口，兩個巨人同時對打收門票"
+    },
+    {
+      "id": "ybit",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief holding a portrait of showman P.T. Barnum, top hat and formal coat.",
+        "camera": "Medium shot, slow drift",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief displays the vintage portrait engraving of Barnum"
+      },
+      "lines": [
+        {
+          "id": "nccy",
+          "speaker": "chief",
+          "text": "馬戲之王巴納姆親自趕來！",
+          "emotion": "大亨登場"
+        },
+        {
+          "id": "p88i",
+          "speaker": "chief",
+          "text": "娛樂大亨嗅到巨大金錢氣味！",
+          "emotion": "商機"
+        }
+      ]
+    },
+    {
+      "id": "9zzr",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of the office director describing Barnum's staggering offer.",
+        "camera": "Medium close-up, slow push in",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief raises five fingers to indicate the offer"
+      },
+      "lines": [
+        {
+          "id": "5tcx",
+          "speaker": "chief",
+          "text": "他開價五萬到六萬美元想租！",
+          "emotion": "天價報價"
+        }
+      ]
+    },
+    {
+      "id": "62mh",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Chief describing the syndicate's refusal.",
+        "camera": "Close-up, pan right",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief shakes her head with a wry smile"
+      },
+      "lines": [
+        {
+          "id": "st29",
+          "speaker": "chief",
+          "text": "財團老闆們居然當場拒絕！",
+          "emotion": "傲慢拒絕"
+        }
+      ]
+    },
+    {
+      "id": "bcdn",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid gasping with round eyes, hands on both sides of her face.",
+        "camera": "Close-up, tilt up",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid gasps with hands clasped in front"
+      },
+      "lines": [
+        {
+          "id": "n8uw",
+          "speaker": "kid",
+          "text": "巴納姆被拒絕會善罷甘休嗎？",
+          "emotion": "衝突提問"
+        }
+      ]
+    },
+    {
+      "id": "r2wb",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief laughing softly at Barnum's legendary ruthlessness.",
+        "camera": "Medium close-up, pull out",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief snaps her fingers with amusement"
+      },
+      "lines": [
+        {
+          "id": "sck2",
+          "speaker": "chief",
+          "text": "巴納姆字典裡可沒有放棄！",
+          "emotion": "大亨性格"
+        }
+      ]
+    },
+    {
+      "id": "kndp",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Chief quoting Barnum's famous defiant words.",
+        "camera": "Close-up, pan left",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief delivers Barnum's quote with gusto"
+      },
+      "lines": [
+        {
+          "id": "9zxh",
+          "speaker": "chief",
+          "text": "既然你們不租，我就自己做！",
+          "emotion": "反擊宣告"
+        }
+      ]
+    },
+    {
+      "id": "rmcu",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of liquid plaster pouring into a wooden mold frame, replicating the giant's form.",
+        "camera": "Close-up insert, slow drift",
+        "characters": [],
+        "motion": "Thick white plaster pours into the large wooden mold",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "z55y",
+          "speaker": "chief",
+          "text": "派密探量尺寸迅速翻模！",
+          "emotion": "商業間諜"
+        },
+        {
+          "id": "p7vf",
+          "speaker": "chief",
+          "text": "幾天做出同款假複製品！",
+          "emotion": "神速仿造"
+        }
+      ]
+    },
+    {
+      "id": "uank",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of gas-lit Broadway in New York City in December 1869. Crowds in wool coats queue outside Apollo Hall.",
+        "camera": "Wide shot, slow push in",
+        "characters": [],
+        "motion": "A crowd of people crowds the sidewalks of Broadway"
+      },
+      "lines": [
+        {
+          "id": "6dw4",
+          "speaker": "chief",
+          "text": "巴納姆搶先運到百老匯展出！",
+          "emotion": "搶先上市"
+        }
+      ]
+    },
+    {
+      "id": "7u8u",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of horse carriages pulling up outside the grand entrance of Apollo Hall.",
+        "camera": "Medium shot, pan right",
+        "characters": [],
+        "motion": "People alight from carriages and buy tickets",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "efnu",
+          "speaker": "chief",
+          "text": "百老匯反而同時出現，",
+          "emotion": "對打伏筆"
+        }
+      ]
+    },
+    {
+      "id": "nqjc",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of a theatrical barker shouting through a brass megaphone outside the venue.",
+        "camera": "Medium close-up, tilt up",
+        "characters": [],
+        "motion": "The man waves a Cardiff giant leaflet vigorously"
+      },
+      "lines": [
+        {
+          "id": "yqdg",
+          "speaker": "chief",
+          "text": "原版石人也運到對面阿波羅大廳！",
+          "emotion": "正面對決"
+        }
+      ]
+    },
+    {
+      "id": "zap4",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of two competing entrance tickets side by side on dark wood.",
+        "camera": "Close-up insert, pull out",
+        "characters": [],
+        "motion": "Two different ticket stubs lie next to each other",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "xuab",
+          "speaker": "chief",
+          "text": "兩展廳相隔幾百公尺對打！",
+          "emotion": "同場對打"
+        },
+        {
+          "id": "rswm",
+          "speaker": "chief",
+          "text": "百老匯天天上演搶人大戰！",
+          "emotion": "搶人狂歡"
+        }
+      ]
+    },
+    {
+      "id": "cw27",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid shaking her head in utter amazement, pencil tapping her temple.",
+        "camera": "Close-up, pan left",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid shakes her head with a wide grin"
+      },
+      "lines": [
+        {
+          "id": "kydw",
+          "speaker": "kid",
+          "text": "同一條街上，兩個巨人在搶生意！",
+          "emotion": "提煉荒謬"
+        }
+      ]
+    },
+    {
+      "id": "zhhb",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief quoting Barnum's advertisements with delight.",
+        "camera": "Medium close-up, slow drift",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief raises an index finger to quote the ad"
+      },
+      "lines": [
+        {
+          "id": "459w",
+          "speaker": "chief",
+          "text": "巴納姆還宣傳對面才是假的！",
+          "emotion": "倒打一耙"
+        }
+      ]
+    },
+    {
+      "id": "3xju",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid laughing out loud, covering her mouth with her notebook.",
+        "camera": "Close-up, slow push in",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid giggles behind her small notebook"
+      },
+      "lines": [
+        {
+          "id": "kv97",
+          "speaker": "kid",
+          "text": "假貨罵假貨是假貨！",
+          "emotion": "金句"
+        }
+      ]
+    },
+    {
+      "id": "5uzd",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the question office. Chief and Kid smile across the desk at the sheer audacity.",
+        "camera": "Wide shot, pan right",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief chuckles as she pours tea"
+      },
+      "lines": [
+        {
+          "id": "nzev",
+          "speaker": "chief",
+          "text": "觀眾明知是假，卻爭先恐後買票！",
+          "emotion": "觀眾心態"
+        },
+        {
+          "id": "bwwb",
+          "speaker": "chief",
+          "text": "大家都想看看兩個假貨誰更真！",
+          "emotion": "集體心理"
+        }
+      ]
+    },
+    {
+      "id": "wddq",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid laughing at Barnum's circus style marketing.",
+        "camera": "Close-up, tilt up",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid smiles broadly while writing"
+      },
+      "lines": [
+        {
+          "id": "ubpf",
+          "speaker": "kid",
+          "text": "巴納姆的嘴簡直能把黑的說成白的！",
+          "emotion": "幽默"
+        }
+      ]
+    },
+    {
+      "id": "xp8v",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief describing the newspaper column wars.",
+        "camera": "Medium shot, pull out",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief shows competing newspaper ads"
+      },
+      "lines": [
+        {
+          "id": "ftam",
+          "speaker": "chief",
+          "text": "兩邊買通各大報紙打筆戰！",
+          "emotion": "商戰"
+        }
+      ]
+    },
+    {
+      "id": "h7v2",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief opening legal case transcripts on the oak table.",
+        "camera": "Medium shot, pan left",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief spreads the yellowed court summons flat"
+      },
+      "lines": [
+        {
+          "id": "8bzd",
+          "speaker": "chief",
+          "text": "結果巴納姆賺得比原版還多！",
+          "emotion": "荒謬現實"
+        }
+      ],
+      "chapter": "法官在法庭上說：請你的巨人自己來宣誓是真貨"
+    },
+    {
+      "id": "p95t",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of the lead investigator describing the lawsuit eruption.",
+        "camera": "Medium close-up, slow drift",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief points to the plaintiff petition"
+      },
+      "lines": [
+        {
+          "id": "c23e",
+          "speaker": "chief",
+          "text": "原版財團氣炸告上法庭！",
+          "emotion": "對簿公堂"
+        },
+        {
+          "id": "gg67",
+          "speaker": "chief",
+          "text": "怒斥巴納姆是無恥盜版！",
+          "emotion": "怒斥剽竊"
+        }
+      ]
+    },
+    {
+      "id": "p2r6",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Chief outlining the injunction request.",
+        "camera": "Close-up, slow push in",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief taps the injunction motion"
+      },
+      "lines": [
+        {
+          "id": "6k4x",
+          "speaker": "chief",
+          "text": "控告巴納姆侵權，要求查封！",
+          "emotion": "訴求"
+        }
+      ]
+    },
+    {
+      "id": "nhrr",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid leaning forward with keen legal curiosity.",
+        "camera": "Close-up, pan right",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid leans forward over her notepad"
+      },
+      "lines": [
+        {
+          "id": "eujd",
+          "speaker": "kid",
+          "text": "這官司打得贏嗎？",
+          "emotion": "好奇"
+        }
+      ]
+    },
+    {
+      "id": "jv3y",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid tilting her head thoughtfully.",
+        "camera": "Medium close-up, tilt up",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid taps her pencil on the paper"
+      },
+      "lines": [
+        {
+          "id": "9esz",
+          "speaker": "kid",
+          "text": "畢竟原版也是個造假的石膏啊！",
+          "emotion": "核心矛盾"
+        }
+      ]
+    },
+    {
+      "id": "7h2r",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of an 1870 New York supreme court session. The judge in black robes sitting behind the oak bench.",
+        "camera": "Wide shot, pull out",
+        "characters": [],
+        "motion": "The judge raises his hand for silence in the courtroom"
+      },
+      "lines": [
+        {
+          "id": "xkxx",
+          "speaker": "chief",
+          "text": "這審判成了全城最大笑柄，",
+          "emotion": "審判氛圍"
+        },
+        {
+          "id": "eb8t",
+          "speaker": "chief",
+          "text": "各大報紙天天頭版連載笑料！",
+          "emotion": "頭版連載"
+        }
+      ]
+    },
+    {
+      "id": "w3p3",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Judge Nelson peering over his glasses with profound irony.",
+        "camera": "Medium close-up, pan left",
+        "characters": [],
+        "motion": "The judge leans forward over his mahogany desk"
+      },
+      "lines": [
+        {
+          "id": "pibm",
+          "speaker": "chief",
+          "text": "法官最後對原告律師說了一句：",
+          "emotion": "法官開口"
+        }
+      ]
+    },
+    {
+      "id": "7yuj",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Judge Nelson delivering his sarcastic courtroom challenge.",
+        "camera": "Close-up, slow drift",
+        "characters": [],
+        "motion": "The judge raises an eyebrow quizzically"
+      },
+      "lines": [
+        {
+          "id": "h2vb",
+          "speaker": "chief",
+          "text": "請叫你的巨人親自來宣誓真偽！",
+          "emotion": "法官金句"
+        }
+      ]
+    },
+    {
+      "id": "gfhu",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid breaking into uncontrollable laughter.",
+        "camera": "Close-up, slow push in",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid giggles with twinkling eyes"
+      },
+      "lines": [
+        {
+          "id": "fdfr",
+          "speaker": "kid",
+          "text": "叫一塊石膏舉手宣誓！",
+          "emotion": "幽默反饋"
+        }
+      ]
+    },
+    {
+      "id": "pw2p",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief reading the historic verdict summary.",
+        "camera": "Medium shot, pan right",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief points to the final paragraph of the ruling"
+      },
+      "lines": [
+        {
+          "id": "xnph",
+          "speaker": "chief",
+          "text": "法院最終直接駁回原告起訴！",
+          "emotion": "裁決結果"
+        }
+      ]
+    },
+    {
+      "id": "u8fd",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of the narrator delivering the legal rationale.",
+        "camera": "Medium close-up, tilt up",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief quotes the historic ruling"
+      },
+      "lines": [
+        {
+          "id": "kkr3",
+          "speaker": "chief",
+          "text": "法律無法保護假貨的專利。",
+          "emotion": "法律原則"
+        }
+      ]
+    },
+    {
+      "id": "ks9c",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Chief delivering the punchline with calm authority.",
+        "camera": "Close-up, pull out",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief delivers the key lesson thoughtfully"
+      },
+      "lines": [
+        {
+          "id": "qri7",
+          "speaker": "chief",
+          "text": "本身是騙局，就無權阻止仿造！",
+          "emotion": "法理總結"
+        }
+      ]
+    },
+    {
+      "id": "fnpj",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of an 1870 newspaper ad by Chicago sculptor Salle offering custom stone giants for sale.",
+        "camera": "Close-up insert, pan left",
+        "characters": [],
+        "motion": "A hand turns the yellowed advertisement clipping",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "d9yh",
+          "speaker": "chief",
+          "text": "石匠甚至報紙上公開接單！",
+          "emotion": "荒誕後續"
+        },
+        {
+          "id": "tgzw",
+          "speaker": "chief",
+          "text": "給錢就幫你刻任何史前神像！",
+          "emotion": "大甩賣"
+        }
+      ]
+    },
+    {
+      "id": "gz96",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid shaking her head with an ironic chuckle.",
+        "camera": "Close-up, slow drift",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid draws a laughing face on her notepad"
+      },
+      "lines": [
+        {
+          "id": "3chd",
+          "speaker": "kid",
+          "text": "歡迎訂製各式古代石巨人！",
+          "emotion": "諷刺回應"
+        }
+      ]
+    },
+    {
+      "id": "qy7u",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid looking thoughtful.",
+        "camera": "Medium close-up, slow push in",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid writes 'Verdict: Both Fakes' in notebook"
+      },
+      "lines": [
+        {
+          "id": "2pxk",
+          "speaker": "kid",
+          "text": "人人都能在家挖出巨人！",
+          "emotion": "諷刺總結"
+        }
+      ]
+    },
+    {
+      "id": "qmvk",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the question office. Chief closes the courtroom volume with a satisfying click.",
+        "camera": "Wide shot, pan right",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief closes the law volume calmly"
+      },
+      "lines": [
+        {
+          "id": "2p23",
+          "speaker": "chief",
+          "text": "一場由騙局打倒騙局的審判！",
+          "emotion": "章節收尾"
+        }
+      ]
+    },
+    {
+      "id": "9q59",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid grinning at the absurd courtroom trial.",
+        "camera": "Close-up, tilt up",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid leans forward over her notes"
+      },
+      "lines": [
+        {
+          "id": "qbp9",
+          "speaker": "kid",
+          "text": "假貨告假貨侵權真是前所未聞！",
+          "emotion": "笑話"
+        }
+      ]
+    },
+    {
+      "id": "gnuc",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief tapping the court transcripts.",
+        "camera": "Medium shot, pull out",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief points to the final verdict paragraph"
+      },
+      "lines": [
+        {
+          "id": "ceue",
+          "speaker": "chief",
+          "text": "法官的判決成了經典法學判例！",
+          "emotion": "判例"
+        }
+      ]
+    },
+    {
+      "id": "ah2n",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the question office. Chief stands at the center table holding an antique brass magnifying glass, warm sunset light.",
+        "camera": "Wide shot, pan left",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief places the magnifying glass down gently"
+      },
+      "lines": [
+        {
+          "id": "2unw",
+          "speaker": "chief",
+          "text": "鬧劇落幕，熱潮漸漸退去。",
+          "emotion": "收束開始"
+        },
+        {
+          "id": "iscb",
+          "speaker": "chief",
+          "text": "策劃人赫爾最終公開坦承一切。",
+          "emotion": "真相大白"
+        }
+      ],
+      "chapter": "蓋上檔案章：百老匯兩張門票教給我們的新聞課"
+    },
+    {
+      "id": "mc5k",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief looking at an archival museum photo postcard.",
+        "camera": "Medium shot, slow drift",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief lays out modern museum photos on the desk"
+      },
+      "lines": [
+        {
+          "id": "2a5y",
+          "speaker": "chief",
+          "text": "初代石人沒被砸毀丟棄，",
+          "emotion": "命運保留"
+        },
+        {
+          "id": "4j9u",
+          "speaker": "chief",
+          "text": "反而成大眾文化不朽傳奇！",
+          "emotion": "傳奇"
+        }
+      ]
+    },
+    {
+      "id": "qrvj",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the Farmers' Museum in Cooperstown New York. Visitors observing the historic stone giant in a glass display.",
+        "camera": "Wide shot, slow push in",
+        "characters": [],
+        "motion": "A group of people walks respectfully past the historic display case"
+      },
+      "lines": [
+        {
+          "id": "9iex",
+          "speaker": "chief",
+          "text": "一九四七年進駐農夫博物館。",
+          "emotion": "館藏"
+        }
+      ]
+    },
+    {
+      "id": "i8hp",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of museum visitors of all ages gazing down at the peaceful sleeping colossus.",
+        "camera": "Medium shot, pan right",
+        "characters": [],
+        "motion": "A young person leans over the brass museum railing"
+      },
+      "lines": [
+        {
+          "id": "zeaw",
+          "speaker": "chief",
+          "text": "至今仍靜靜躺在展廳裡供人參觀！",
+          "emotion": "現狀"
+        }
+      ]
+    },
+    {
+      "id": "vr5m",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid looking thoughtful, pencil tapping her chin.",
+        "camera": "Close-up, tilt up",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid tilts her head in thoughtful reflection"
+      },
+      "lines": [
+        {
+          "id": "hasc",
+          "speaker": "kid",
+          "text": "過了一百年，大家還是想看它。",
+          "emotion": "思考"
+        }
+      ]
+    },
+    {
+      "id": "x4i6",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid asking with a wondering smile.",
+        "camera": "Medium close-up, pull out",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid looks up at Chief with clear eyes"
+      },
+      "lines": [
+        {
+          "id": "44k3",
+          "speaker": "kid",
+          "text": "這到底是為什麼呢？",
+          "emotion": "哲思提問"
+        }
+      ]
+    },
+    {
+      "id": "hn3g",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the question office. Chief stands beside the sunlit archive desk as warm evening light streams across the room.",
+        "camera": "Wide shot, pan left",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief walks slowly toward the sunset window"
+      },
+      "lines": [
+        {
+          "id": "gfgf",
+          "speaker": "chief",
+          "text": "大家買的不是古蹟門票，",
+          "emotion": "深刻伏筆"
+        }
+      ]
+    },
+    {
+      "id": "asud",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief with a gentle knowing smile, warm reflections in her spectacles.",
+        "camera": "Medium close-up, slow drift",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief nods gently in understanding"
+      },
+      "lines": [
+        {
+          "id": "xywb",
+          "speaker": "chief",
+          "text": "而是人類熱愛奇蹟的集體笑聲！",
+          "emotion": "精神昇華"
+        }
+      ]
+    },
+    {
+      "id": "94f9",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of the office director speaking warmly directly to the camera.",
+        "camera": "Close-up, slow push in",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief speaks warmly with sincerity"
+      },
+      "lines": [
+        {
+          "id": "cyfv",
+          "speaker": "chief",
+          "text": "每天都有人渴望被奇蹟打動，",
+          "emotion": "昇華總結"
+        },
+        {
+          "id": "9d24",
+          "speaker": "chief",
+          "text": "這就是卡迪夫巨人的魔力！",
+          "emotion": "魔力收束"
+        }
+      ]
+    },
+    {
+      "id": "j4g4",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up insert of a wooden stamp pressing red ink CASE CLOSED onto the Cardiff Giant file.",
+        "camera": "Close-up insert, pan right",
+        "characters": [],
+        "motion": "The red archive stamp presses firmly onto the dossier cover",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "2a4t",
+          "speaker": "chief",
+          "text": "奇聞檔案局，第一百八十三號結案！",
+          "emotion": "結案口號"
+        }
+      ]
+    },
+    {
+      "id": "gc57",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid closing her filled notebook, waving cheerfully with a bright smile.",
+        "camera": "Medium close-up, tilt up",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid snaps her notebook shut and waves cheerfully"
+      },
+      "lines": [
+        {
+          "id": "mfyz",
+          "speaker": "kid",
+          "text": "這場大騙局真的太精彩了！",
+          "emotion": "道別"
+        }
+      ]
+    },
+    {
+      "id": "vmws",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief presenting an antique newspaper report on ticket sales.",
+        "camera": "Medium shot, pull out",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief turns to the ticket sales chart"
+      },
+      "lines": [
+        {
+          "id": "z2h5",
+          "speaker": "chief",
+          "text": "光是門票收入就超過當時銀行儲備！",
+          "emotion": "收益評價"
+        }
+      ]
+    },
+    {
+      "id": "xqfy",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid shaking her head with an ironic smile.",
+        "camera": "Close-up, pan left",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid jots down the financial conclusion"
+      },
+      "lines": [
+        {
+          "id": "6ys5",
+          "speaker": "kid",
+          "text": "這場假戲演得比真戲還真！",
+          "emotion": "精闢總結"
+        }
+      ]
+    },
+    {
+      "id": "k22z",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Chief describing Barnum's audacity.",
+        "camera": "Medium close-up, slow drift",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief holds up Barnum's circus memoir"
+      },
+      "lines": [
+        {
+          "id": "tizp",
+          "speaker": "chief",
+          "text": "巴納姆甚至把假巨人帶到全美巡迴！",
+          "emotion": "巡迴演出"
+        }
+      ]
+    },
+    {
+      "id": "iqir",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of a bustling 1870 train station platform as spectators crowd around a freight car display.",
+        "camera": "Wide shot, slow push in",
+        "characters": [],
+        "motion": "A crowd of people gathers around the traveling exhibition train"
+      },
+      "lines": [
+        {
+          "id": "gx84",
+          "speaker": "chief",
+          "text": "每一站都吸引萬人空巷爭相目睹！",
+          "emotion": "巡迴轟動"
+        }
+      ]
+    },
+    {
+      "id": "x8f3",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid laughing at the sheer spectacle.",
+        "camera": "Close-up, pan right",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid covers her mouth with her pencil in hand"
+      },
+      "lines": [
+        {
+          "id": "582y",
+          "speaker": "kid",
+          "text": "假貨巡迴居然比真貨還受歡迎！",
+          "emotion": "荒謬對比"
+        }
+      ]
+    },
+    {
+      "id": "n4yj",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief reflecting on human nature by the archive bookshelves.",
+        "camera": "Medium shot, tilt up",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief places an antique magnifying glass down"
+      },
+      "lines": [
+        {
+          "id": "tnbn",
+          "speaker": "chief",
+          "text": "這正是大眾心理學最經典的一課！",
+          "emotion": "心理總結"
+        }
+      ]
+    },
+    {
+      "id": "hxje",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Chief delivering a final thoughtful reflection.",
+        "camera": "Close-up, pull out",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief speaks directly and warmly"
+      },
+      "lines": [
+        {
+          "id": "zert",
+          "speaker": "chief",
+          "text": "人們有時寧可相信一個美麗的假象！",
+          "emotion": "哲理啟發"
+        }
+      ]
+    },
+    {
+      "id": "ir77",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium close-up of Kid nodding in deep agreement.",
+        "camera": "Medium close-up, pan left",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid writes the moral of the story on her paper"
+      },
+      "lines": [
+        {
+          "id": "6x6q",
+          "speaker": "kid",
+          "text": "因為假象比平淡的現實更有趣！",
+          "emotion": "兒童智慧"
+        }
+      ]
+    },
+    {
+      "id": "tcq6",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid looking thoughtful about the power of storytelling.",
+        "camera": "Close-up, slow drift",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid rests her chin on her hands"
+      },
+      "lines": [
+        {
+          "id": "4gd9",
+          "speaker": "kid",
+          "text": "歷史上的奇聞真的比小說還精彩！",
+          "emotion": "感悟"
+        }
+      ]
+    },
+    {
+      "id": "8z7k",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief smiling warmly under the sunset library lamp.",
+        "camera": "Medium shot, slow push in",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief nods in agreement with Kid"
+      },
+      "lines": [
+        {
+          "id": "rteq",
+          "speaker": "chief",
+          "text": "真相雖然被拆穿，故事卻永遠流傳！",
+          "emotion": "昇華"
+        }
+      ]
+    },
+    {
+      "id": "m6zh",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of Chief smiling thoughtfully in the sunset light of the archive office.",
+        "camera": "Medium shot, pan right",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief rests her hands gently on the closed dossier"
+      },
+      "lines": [
+        {
+          "id": "2epz",
+          "speaker": "chief",
+          "text": "好奇心永遠比真相更有魔力。",
+          "emotion": "結案金句"
+        }
+      ]
+    },
+    {
+      "id": "9kcw",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of Kid smiling and asking the viewers directly.",
+        "camera": "Close-up, tilt up",
+        "characters": [
+          "kid"
+        ],
+        "motion": "Kid points her pencil toward the screen curiously"
+      },
+      "lines": [
+        {
+          "id": "sbrx",
+          "speaker": "kid",
+          "text": "你會買票去看這尊假巨人嗎？",
+          "emotion": "互動問句"
+        }
+      ]
+    },
+    {
+      "id": "ciw6",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of the question office. Chief and Kid standing together in warm golden sunset light, waving warmly.",
+        "camera": "Wide shot, pull out",
+        "characters": [
+          "chief"
+        ],
+        "motion": "Chief and Kid bow politely toward the viewer"
+      },
+      "lines": [
+        {
+          "id": "5g8i",
+          "speaker": "chief",
+          "text": "歡迎留言討論並訂閱奇聞檔案局！",
+          "emotion": "訂閱邀請"
+        }
+      ]
+    }
+  ]
+}
