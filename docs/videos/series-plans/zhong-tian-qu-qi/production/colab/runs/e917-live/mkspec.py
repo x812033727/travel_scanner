@@ -25,9 +25,15 @@ FACE = ["dazzling glamorous beauty: big round sparkling eyes with long lashes, g
 NEUTRAL = [FACE, ["flowing sleeves, a small gold abacus hanging at her waist",
                   "flowing sleeves, a small gold abacus hanging at her waist, her resting face composed, her lips closed"]]
 # A-ling's hair comes loose in the fire (script c11-c26): her sentence keeps the face and costume, the hair is let down.
-ALING_HAIR = ["long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face",
-              "long glossy black hair, in this shot come loose from its pin and hanging straight down her back and over her right "
-              "shoulder"]
+# review.md 必改 10: every picture of her has the topknot and the pin and the hair already down her back, so the loose hair is
+# written by what differs (the crown smooth and bare, the hair down her chest); wet in the fire, dry the next morning (s17).
+ALING_PINNED = "long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face"
+ALING_HAIR = [ALING_PINNED,
+              "long glossy black hair, in this shot let down completely: the crown of her head smooth and bare, the wet hair "
+              "falling loose over both shoulders and down her chest, a few strands stuck to her damp cheek"]
+ALING_HAIR_DRY = [ALING_PINNED,
+                  "long glossy black hair, in this shot let down completely: the crown of her head smooth and bare, the hair "
+                  "falling loose over both shoulders and down her chest"]
 ONLY_HE = "He is the only person in the frame; no second copy of anyone appears."
 ONLY_SHE = "She is the only person in the frame; no second copy of anyone appears."
 ONLY_2 = "Only these 2 people are in the frame; no second copy of anyone appears."
@@ -72,7 +78,13 @@ BACK2 = (f"Only these 2 people are in the frame, the young woman with the buns s
          f"middle; {ONE_TANG}; no second copy of anyone appears.")
 shots["s10"] = tang_back(BESIDES_HER, CROWD, True)   # one villager beside her
 shots["s31"] = tang_back(BESIDES_HER, CROWD, True)   # the villagers far beyond her
-shots["s23"] = tang_back(ONLY_SHE, ALONE, True)
+# s23 has no set picture now (review 必改 15) and she is its only person: a job needs one picture, so her portrait stays as the
+# owner of the hair, ribbons and costume seen from behind (the e916 hand-insert way), her two angle pictures and her identity
+# sentence go.
+shots["s23"] = {"replace": [[TANG_ID, "The buns, ribbons and costume of the young woman seen only from behind belong to Tang Xiaotang "
+                                      "shown in <Picture 1>, whose face stays turned away out of the frame the whole shot; "],
+                            [ONLY_SHE, ALONE]],
+                "drop_pictures": ["tangxiaotang-angle-a-l1.png", "tangxiaotang-angle-b-l1.png"]}
 shots["s17"] = tang_back(ONLY_2, BACK2)              # A-ling beyond her
 # Her silent face (s01, s18): e907's neutral face sentences.
 for sid in ["s01", "s18"]:
@@ -88,11 +100,31 @@ ALING_KEEP = ["keeps exactly the same face, hair and costume as the pictures: Ea
               "keeps exactly the same face and costume as the pictures, her hair let down in this shot: East Asian young woman of twenty,"]
 for sid in ["s11", "s12", "s13", "s14", "s17"]:
     add(sid, "replace", list(ALING_KEEP))
-    add(sid, "replace", list(ALING_HAIR))
+    add(sid, "replace", list(ALING_HAIR_DRY if sid == "s17" else ALING_HAIR))
+# 必改 10: her pictures with the topknot lose to the text otherwise; the side view (angle-b) shows it most. s11, s13, s17 send
+# her portrait only, the close-ups s12, s14 her angle-a only (she faces screen left three-quarter, as angle-a does). A draft
+# with a topknot or a hairpin on her crown is rejected at picking.
+ALING_ANGLES = ["aling-angle-a-l1.png", "aling-angle-b-l1.png"]
 
 # The shots at the burning hut send no set picture (the yard picture would put the yard behind them): only smoke and a glow.
 for sid in ["s11", "s12", "s16"]:
     shots[sid]["drop_set"] = True
+# review.md 必改 15: the burnt workshop has no picture (neither seed of set-zhifang-shao-l2 was taken; the e011-e020 l1 is an
+# intact CG house): s17-s26 send none (s20, s21 below too). The place sentence describes the burnt state instead.
+for sid in ["s17", "s18", "s19", "s22", "s23", "s24", "s25", "s26"]:
+    shots[sid]["drop_set"] = True  # s23 keeps only Tang Xiaotang's portrait (above)
+# review.md 必改 1: the yard shots send the burning yard set-xujia-yuan-huo-l1 (screen-test-e017.py --r2) in place of l3.
+# retake.py cannot swap a picture; prep917.sh applies "swap_pictures" to colab-jobs.json after retake.py (the text is the same).
+for sid in ["s02", "s03", "s04", "s05", "s06", "s07", "s08", "s09", "s10", "s13", "s14", "s15"]:
+    shots[sid]["swap_pictures"] = {"set-xujia-yuan-l3.png": "set-xujia-yuan-huo-l1.png"}
+# review.md 必改 2: extras' clean-air sentence contradicts the smoke the prompt describes; per scene, only where there is smoke
+# (s20, s21, s26 and s38, s39 have none in their prompts and keep it).
+AIR = "the air is clear and still, a clean natural film image."
+SMOKE_AIR = {**{f"s{n:02d}": "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
+                for n in range(1, 17)},
+             **{sid: "the thin white smoke rises straight and slowly, a clean natural film image."
+                for sid in ["s17", "s18", "s19", "s22", "s23", "s24", "s25", "s36", "s37", "s40"]},
+             **{f"s{n:02d}": "the bonfire smoke rises thin and straight, a clean natural film image." for n in range(27, 36)}}
 
 # The two hand inserts send no set picture (the e915 s08 lesson); one picture of the hand's owner, named only as the owner.
 shots["s20"] = {"drop_set": True,
@@ -105,10 +137,19 @@ shots["s21"] = {"drop_set": True, "drop_pictures": ["xuyan-portrait-l1.png", "xu
                              "Only his one hand and sleeve are in the frame; no second copy of anyone appears."],
                             [FACES + " ", ""], [ACTING, HANDS]]}
 
+for sid, new in SMOKE_AIR.items():
+    add(sid, "replace", [AIR, new])
+
 # Unnamed backs and hands the composition describes.
 add("s12", "replace", [ONLY_SHE, besides("her", "the two hands in blue-grey sleeves at the left edge")])
 add("s25", "replace", [ONLY_HE, besides("him", "the back of the young man's head and his shoulders in the foreground")])
-add("s26", "replace", [ONLY_HE, besides("him", "the one slender hand in a grey-white sleeve at the left edge")])
+add("s26", "replace", [ONLY_HE, besides("him", "the one slender hand in a grey-white sleeve at the right edge")])  # 必改 8
+# 必改 12: the bucket in the s09 foreground has its owner's two hands at the right edge.
+add("s09", "replace", ["Besides him, only the other people the composition names are in the frame; no second copy of anyone appears.",
+                       "Besides him, only the other people the composition names and the two hands at the right edge are in the "
+                       "frame; no second copy of anyone appears."])
+# 必改 7: Elder Han holds his staff level in both hands in s25; his sentence does not lean on it.
+add("s25", "replace", ["leaning on a polished old bamboo walking staff", "with a polished old bamboo walking staff"])
 add("s29", "replace", [ONLY_SHE, besides("her", "the one hand in a blue-grey sleeve at the top right")])
 add("s33", "replace", [ONLY_HE, besides("him", "the back of the young woman's head and her shoulder in the foreground")])
 
@@ -118,6 +159,8 @@ add("s08", "replace", [SPEAK_GAZE_HE, "his face turned back over his left should
 add("s27", "replace", [SPEAK_GAZE_HE, "his face lowered toward the post hole at his feet, his eyes on the hole"])
 add("s28", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen right toward the rising post, his eyes on it"])
 add("s37", "replace", [SPEAK_GAZE_HE, "his face tipped up toward the crossbeams, his eyes on the new frame"])
+add("s16", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen left toward Xu Yan off screen left, his eyes on him"])  # 必改 13
+add("s24", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen left toward the yard gate ahead of him, his eyes on the gate"])  # 必改 6
 
 # ref2manifest's shoe sentence against Qin Shuang's leather boots (e915 review 必改 7).
 for sid in ["s01", "s06", "s15"]:
@@ -127,15 +170,27 @@ for sid in ["s01", "s06", "s15"]:
 shots["s01"]["drop_pictures"] = ["xuyan-angle-b-l1.png", "tangxiaotang-angle-b-l1.png"]
 for sid in ["s13", "s18"]:
     shots[sid]["drop_pictures"] = ["xuyan-angle-b-l1.png"]
+for sid in ["s11", "s13", "s17"]:
+    shots[sid]["drop_pictures"] = shots[sid].get("drop_pictures", []) + ALING_ANGLES
+for sid in ["s12", "s14"]:
+    shots[sid]["drop_pictures"] = shots[sid].get("drop_pictures", []) + ["aling-angle-b-l1.png"]
 
 spec = {
     "_note": ("e917 live d1 (e916-live/spec.json's way, written by mkspec.py). Tang Xiaotang's four lines never show her mouth: s10, "
               "s17, s23, s31 from behind her (nospeak, recordings laid in): her three face pictures and her identity sentence go, and "
               "the 'only' sentence says she is seen from behind and appears only once (e915 s26/s41). s01, s18 are her silent face "
               "shots: e907's neutral face sentences. s04: Qin Shuang's line from behind her, her picture and sentence dropped. s11-s14, "
-              "s17: A-ling's hair is let down in her sentence (the fire). s11, s12, s16 (at the burning hut) send no set picture. s20, s21: "
+              "s17: A-ling's hair is let down in her sentence (the fire; crown bare, hair down her chest), and she is sent only by "
+              "her portrait (s11, s13, s17) or her angle-a (s12, s14) (review 必改 10). s11, s12, s16 (at the burning hut) and "
+              "s17-s26 (the burnt workshop, no picture taken; review 必改 15) send no set picture. The yard shots s02-s10, s13-s15 "
+              "swap set-xujia-yuan-l3 for set-xujia-yuan-huo-l1 (swap_pictures, applied by prep917.sh; review 必改 1). The "
+              "clean-air sentence becomes a smoke sentence per scene where the prompt has smoke (review 必改 2). s09 admits the "
+              "bucket's two hands (必改 12); s16, s24 speak to Xu Yan off screen and toward the gate (必改 13, 6); s25 Elder Han "
+              "does not lean on the staff (必改 7). s23 (no set picture, nobody else) keeps Tang Xiaotang's portrait only, as "
+              "the owner of the buns and costume seen from behind. s20, s21: "
               "the hand inserts send no set picture, only the owner of the hand (qinshuang-portrait-l1; xuyan-angle-a-l1) and lose the "
-              "face sentences. s12, s25, s26, s29, s33: the 'only person' sentence admits the unnamed hands or back. s07, s08, s27, s28, "
+              "face sentences. s12, s25, s26 (the hand at the right edge), s29, s33: the 'only person' sentence admits the unnamed "
+              "hands or back. s07, s08, s27, s28, "
               "s37: the speaking gaze is not a listener. s01, s06, s15: the shoe sentence keeps Qin Shuang's boots. s01 drops Xu Yan's "
               "and Tang Xiaotang's profiles, s13 and s18 Xu Yan's. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = "
               "False). Seeds 9171101/9171102."),

@@ -175,9 +175,9 @@ ALING_UP = ("A-ling, in her plain grey-white cotton dress with long sleeves cove
 def aling_loose(wet=True):
     hair = ("the wet hair falling loose over both shoulders and down her chest, a few strands stuck to her damp cheek" if wet else
             "the hair falling loose over both shoulders and down her chest")
-    return ("A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, grey with soot, her long glossy "
-            f"black hair let down completely: the crown of her head smooth and bare, {hair}, one broad smear of soot across her "
-            "right cheek")
+    return ("A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, grey with soot, one broad smear "
+            "of soot across her right cheek, her long glossy black hair let down completely: the crown of her head smooth and "
+            f"bare, {hair}")
 
 
 ALING_LOOSE = aling_loose()
@@ -507,5 +507,11 @@ FOOT = [
 # the mat); s28 (Erniu's counted a26 6.92 s, 一、二、起 with pauses); s35 (the thought a33 7.44 s).
 # 10 s goes to s39, the script's long shot (system a37 2.12 + thought a38 3.40 + system a39 3.05 + 2 x 0.5 = 9.57 s).
 # Every other line is 1.08-5.56 s and fits 6 s with half a second to spare (s20's a18 5.56 s, s34's a32 5.44 s the tightest).
+# Review check (2026-11-15, after the independent review): a07 (Erniu's shout) has a median pitch of about 320 Hz against his
+# 167-193 Hz elsewhere, but faster-whisper reads it word for word; two new takes (direction "低沉、不拉高") came out at 267 Hz
+# (heard 推開／潑囉) and 320 Hz again, so the original is kept (scratchpad rec917/ holds the two takes); if it sounds shrill at
+# the cut, lower it there the e914 PITCH way (rubberband, formant preserved, no lower than 0.8). a20-a22: 跛 is heard as 脖／箔
+# by whisper, but the pitch of 跛 dips and rises in all three (a20 250->95->296, a21 340->211->271, a22 112->167 from Erniu's
+# floor): the third tone bǒ; not re-recorded.
 # Laugh-prone faces stay at 6: Carpenter Shi s02, s16, s19, s27, s36; Erniu s07, s24 (his cast voice "愛憨笑").
 BUY = {"s05": 8, "s08": 8, "s25": 8, "s26": 8, "s28": 8, "s35": 8, "s39": 10}

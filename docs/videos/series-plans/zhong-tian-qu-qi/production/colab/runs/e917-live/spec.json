@@ -1,5 +1,5 @@
 {
- "_note": "e917 live d1 (e916-live/spec.json's way, written by mkspec.py). Tang Xiaotang's four lines never show her mouth: s10, s17, s23, s31 from behind her (nospeak, recordings laid in): her three face pictures and her identity sentence go, and the 'only' sentence says she is seen from behind and appears only once (e915 s26/s41). s01, s18 are her silent face shots: e907's neutral face sentences. s04: Qin Shuang's line from behind her, her picture and sentence dropped. s11-s14, s17: A-ling's hair is let down in her sentence (the fire). s11, s12, s16 (at the burning hut) send no set picture. s20, s21: the hand inserts send no set picture, only the owner of the hand (qinshuang-portrait-l1; xuyan-angle-a-l1) and lose the face sentences. s12, s25, s26, s29, s33: the 'only person' sentence admits the unnamed hands or back. s07, s08, s27, s28, s37: the speaking gaze is not a listener. s01, s06, s15: the shoe sentence keeps Qin Shuang's boots. s01 drops Xu Yan's and Tang Xiaotang's profiles, s13 and s18 Xu Yan's. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9171101/9171102.",
+ "_note": "e917 live d1 (e916-live/spec.json's way, written by mkspec.py). Tang Xiaotang's four lines never show her mouth: s10, s17, s23, s31 from behind her (nospeak, recordings laid in): her three face pictures and her identity sentence go, and the 'only' sentence says she is seen from behind and appears only once (e915 s26/s41). s01, s18 are her silent face shots: e907's neutral face sentences. s04: Qin Shuang's line from behind her, her picture and sentence dropped. s11-s14, s17: A-ling's hair is let down in her sentence (the fire; crown bare, hair down her chest), and she is sent only by her portrait (s11, s13, s17) or her angle-a (s12, s14) (review 必改 10). s11, s12, s16 (at the burning hut) and s17-s26 (the burnt workshop, no picture taken; review 必改 15) send no set picture. The yard shots s02-s10, s13-s15 swap set-xujia-yuan-l3 for set-xujia-yuan-huo-l1 (swap_pictures, applied by prep917.sh; review 必改 1). The clean-air sentence becomes a smoke sentence per scene where the prompt has smoke (review 必改 2). s09 admits the bucket's two hands (必改 12); s16, s24 speak to Xu Yan off screen and toward the gate (必改 13, 6); s25 Elder Han does not lean on the staff (必改 7). s23 (no set picture, nobody else) keeps Tang Xiaotang's portrait only, as the owner of the buns and costume seen from behind. s20, s21: the hand inserts send no set picture, only the owner of the hand (qinshuang-portrait-l1; xuyan-angle-a-l1) and lose the face sentences. s12, s25, s26 (the hand at the right edge), s29, s33: the 'only person' sentence admits the unnamed hands or back. s07, s08, s27, s28, s37: the speaking gaze is not a listener. s01, s06, s15: the shoe sentence keeps Qin Shuang's boots. s01 drops Xu Yan's and Tang Xiaotang's profiles, s13 and s18 Xu Yan's. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9171101/9171102.",
  "seeds": [
   9171101,
   9171102
@@ -16,6 +16,10 @@
      "flowing sleeves, a small gold abacus hanging at her waist, her resting face composed, her lips closed"
     ],
     [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
+    ],
+    [
      "Every person in the frame wears dark cloth shoes on both feet.",
      "Qin Shuang wears her black leather boots and everyone else wears dark cloth shoes, on both feet."
     ]
@@ -25,8 +29,28 @@
     "tangxiaotang-angle-b-l1.png"
    ]
   },
-  "s02": {},
-  "s03": {},
+  "s02": {
+   "swap_pictures": {
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-huo-l1.png"
+   },
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
+    ]
+   ]
+  },
+  "s03": {
+   "swap_pictures": {
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-huo-l1.png"
+   },
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
+    ]
+   ]
+  },
   "s04": {
    "replace": [
     [
@@ -36,15 +60,39 @@
     [
      "Only these 2 people are in the frame; no second copy of anyone appears.",
      "Only these 2 people are in the frame, the young woman with the ponytail seen only from behind; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
     ]
    ],
    "drop_pictures": [
     "qinshuang-portrait-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-huo-l1.png"
+   }
+  },
+  "s05": {
+   "swap_pictures": {
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-huo-l1.png"
+   },
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
+    ]
    ]
   },
-  "s05": {},
   "s06": {
+   "swap_pictures": {
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-huo-l1.png"
+   },
    "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
+    ],
     [
      "Every person in the frame wears dark cloth shoes on both feet.",
      "Qin Shuang wears her black leather boots and everyone else wears dark cloth shoes, on both feet."
@@ -52,7 +100,14 @@
    ]
   },
   "s07": {
+   "swap_pictures": {
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-huo-l1.png"
+   },
    "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
+    ],
     [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
      "his face three-quarter to screen right toward the fire, his eyes on the smoke beyond the wall"
@@ -60,14 +115,35 @@
    ]
   },
   "s08": {
+   "swap_pictures": {
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-huo-l1.png"
+   },
    "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
+    ],
     [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
      "his face turned back over his left shoulder toward the village lane outside the gate, his eyes on the lane"
     ]
    ]
   },
-  "s09": {},
+  "s09": {
+   "swap_pictures": {
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-huo-l1.png"
+   },
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
+    ],
+    [
+     "Besides him, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Besides him, only the other people the composition names and the two hands at the right edge are in the frame; no second copy of anyone appears."
+    ]
+   ]
+  },
   "s10": {
    "replace": [
     [
@@ -77,13 +153,20 @@
     [
      "Besides her, only the other people the composition names are in the frame; no second copy of anyone appears.",
      "Besides her, seen only from behind, only the other people the composition names are in the frame; the young woman with the two buns and pink ribbons appears only once; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
     ]
    ],
    "drop_pictures": [
     "tangxiaotang-portrait-l1.png",
     "tangxiaotang-angle-a-l1.png",
     "tangxiaotang-angle-b-l1.png"
-   ]
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-huo-l1.png"
+   }
   },
   "s11": {
    "replace": [
@@ -93,10 +176,18 @@
     ],
     [
      "long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face",
-     "long glossy black hair, in this shot come loose from its pin and hanging straight down her back and over her right shoulder"
+     "long glossy black hair, in this shot let down completely: the crown of her head smooth and bare, the wet hair falling loose over both shoulders and down her chest, a few strands stuck to her damp cheek"
+    ],
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
     ]
    ],
-   "drop_set": true
+   "drop_set": true,
+   "drop_pictures": [
+    "aling-angle-a-l1.png",
+    "aling-angle-b-l1.png"
+   ]
   },
   "s12": {
    "replace": [
@@ -106,14 +197,21 @@
     ],
     [
      "long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face",
-     "long glossy black hair, in this shot come loose from its pin and hanging straight down her back and over her right shoulder"
+     "long glossy black hair, in this shot let down completely: the crown of her head smooth and bare, the wet hair falling loose over both shoulders and down her chest, a few strands stuck to her damp cheek"
+    ],
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
     ],
     [
      "She is the only person in the frame; no second copy of anyone appears.",
      "Besides her, only the two hands in blue-grey sleeves at the left edge the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
     ]
    ],
-   "drop_set": true
+   "drop_set": true,
+   "drop_pictures": [
+    "aling-angle-b-l1.png"
+   ]
   },
   "s13": {
    "replace": [
@@ -123,11 +221,20 @@
     ],
     [
      "long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face",
-     "long glossy black hair, in this shot come loose from its pin and hanging straight down her back and over her right shoulder"
+     "long glossy black hair, in this shot let down completely: the crown of her head smooth and bare, the wet hair falling loose over both shoulders and down her chest, a few strands stuck to her damp cheek"
+    ],
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
     ]
    ],
+   "swap_pictures": {
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-huo-l1.png"
+   },
    "drop_pictures": [
-    "xuyan-angle-b-l1.png"
+    "xuyan-angle-b-l1.png",
+    "aling-angle-a-l1.png",
+    "aling-angle-b-l1.png"
    ]
   },
   "s14": {
@@ -138,12 +245,29 @@
     ],
     [
      "long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face",
-     "long glossy black hair, in this shot come loose from its pin and hanging straight down her back and over her right shoulder"
+     "long glossy black hair, in this shot let down completely: the crown of her head smooth and bare, the wet hair falling loose over both shoulders and down her chest, a few strands stuck to her damp cheek"
+    ],
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
     ]
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-huo-l1.png"
+   },
+   "drop_pictures": [
+    "aling-angle-b-l1.png"
    ]
   },
   "s15": {
+   "swap_pictures": {
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-huo-l1.png"
+   },
    "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
+    ],
     [
      "Every person in the frame wears dark cloth shoes on both feet.",
      "Qin Shuang wears her black leather boots and everyone else wears dark cloth shoes, on both feet."
@@ -151,7 +275,17 @@
    ]
   },
   "s16": {
-   "drop_set": true
+   "drop_set": true,
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the smoke rolls slowly and evenly and stays where it is described, a clean natural film image."
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left toward Xu Yan off screen left, his eyes on him"
+    ]
+   ]
   },
   "s17": {
    "replace": [
@@ -169,14 +303,21 @@
     ],
     [
      "long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face",
-     "long glossy black hair, in this shot come loose from its pin and hanging straight down her back and over her right shoulder"
+     "long glossy black hair, in this shot let down completely: the crown of her head smooth and bare, the hair falling loose over both shoulders and down her chest"
+    ],
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the thin white smoke rises straight and slowly, a clean natural film image."
     ]
    ],
    "drop_pictures": [
     "tangxiaotang-portrait-l1.png",
     "tangxiaotang-angle-a-l1.png",
-    "tangxiaotang-angle-b-l1.png"
-   ]
+    "tangxiaotang-angle-b-l1.png",
+    "aling-angle-a-l1.png",
+    "aling-angle-b-l1.png"
+   ],
+   "drop_set": true
   },
   "s18": {
    "replace": [
@@ -187,13 +328,26 @@
     [
      "flowing sleeves, a small gold abacus hanging at her waist",
      "flowing sleeves, a small gold abacus hanging at her waist, her resting face composed, her lips closed"
+    ],
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the thin white smoke rises straight and slowly, a clean natural film image."
     ]
    ],
+   "drop_set": true,
    "drop_pictures": [
     "xuyan-angle-b-l1.png"
    ]
   },
-  "s19": {},
+  "s19": {
+   "drop_set": true,
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the thin white smoke rises straight and slowly, a clean natural film image."
+    ]
+   ]
+  },
   "s20": {
    "drop_set": true,
    "replace": [
@@ -240,43 +394,81 @@
     ]
    ]
   },
-  "s22": {},
+  "s22": {
+   "drop_set": true,
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the thin white smoke rises straight and slowly, a clean natural film image."
+    ]
+   ]
+  },
   "s23": {
    "replace": [
     [
-     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; the location",
-     "The location"
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     "The buns, ribbons and costume of the young woman seen only from behind belong to Tang Xiaotang shown in <Picture 1>, whose face stays turned away out of the frame the whole shot; "
     ],
     [
      "She is the only person in the frame; no second copy of anyone appears.",
      "She is the only person in the frame, seen only from behind the whole shot; the young woman with the two buns and pink ribbons appears only once; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the thin white smoke rises straight and slowly, a clean natural film image."
     ]
    ],
    "drop_pictures": [
-    "tangxiaotang-portrait-l1.png",
     "tangxiaotang-angle-a-l1.png",
     "tangxiaotang-angle-b-l1.png"
+   ],
+   "drop_set": true
+  },
+  "s24": {
+   "drop_set": true,
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the thin white smoke rises straight and slowly, a clean natural film image."
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left toward the yard gate ahead of him, his eyes on the gate"
+    ]
    ]
   },
-  "s24": {},
   "s25": {
+   "drop_set": true,
    "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the thin white smoke rises straight and slowly, a clean natural film image."
+    ],
     [
      "He is the only person in the frame; no second copy of anyone appears.",
      "Besides him, only the back of the young man's head and his shoulders in the foreground the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
+    ],
+    [
+     "leaning on a polished old bamboo walking staff",
+     "with a polished old bamboo walking staff"
     ]
    ]
   },
   "s26": {
+   "drop_set": true,
    "replace": [
     [
      "He is the only person in the frame; no second copy of anyone appears.",
-     "Besides him, only the one slender hand in a grey-white sleeve at the left edge the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
+     "Besides him, only the one slender hand in a grey-white sleeve at the right edge the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
     ]
    ]
   },
   "s27": {
    "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the bonfire smoke rises thin and straight, a clean natural film image."
+    ],
     [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
      "his face lowered toward the post hole at his feet, his eyes on the hole"
@@ -286,6 +478,10 @@
   "s28": {
    "replace": [
     [
+     "the air is clear and still, a clean natural film image.",
+     "the bonfire smoke rises thin and straight, a clean natural film image."
+    ],
+    [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
      "his face three-quarter to screen right toward the rising post, his eyes on it"
     ]
@@ -294,12 +490,23 @@
   "s29": {
    "replace": [
     [
+     "the air is clear and still, a clean natural film image.",
+     "the bonfire smoke rises thin and straight, a clean natural film image."
+    ],
+    [
      "She is the only person in the frame; no second copy of anyone appears.",
      "Besides her, only the one hand in a blue-grey sleeve at the top right the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
     ]
    ]
   },
-  "s30": {},
+  "s30": {
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the bonfire smoke rises thin and straight, a clean natural film image."
+    ]
+   ]
+  },
   "s31": {
    "replace": [
     [
@@ -309,6 +516,10 @@
     [
      "Besides her, only the other people the composition names are in the frame; no second copy of anyone appears.",
      "Besides her, seen only from behind, only the other people the composition names are in the frame; the young woman with the two buns and pink ribbons appears only once; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the bonfire smoke rises thin and straight, a clean natural film image."
     ]
    ],
    "drop_pictures": [
@@ -317,20 +528,56 @@
     "tangxiaotang-angle-b-l1.png"
    ]
   },
-  "s32": {},
+  "s32": {
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the bonfire smoke rises thin and straight, a clean natural film image."
+    ]
+   ]
+  },
   "s33": {
    "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the bonfire smoke rises thin and straight, a clean natural film image."
+    ],
     [
      "He is the only person in the frame; no second copy of anyone appears.",
      "Besides him, only the back of the young woman's head and her shoulder in the foreground the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
     ]
    ]
   },
-  "s34": {},
-  "s35": {},
-  "s36": {},
+  "s34": {
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the bonfire smoke rises thin and straight, a clean natural film image."
+    ]
+   ]
+  },
+  "s35": {
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the bonfire smoke rises thin and straight, a clean natural film image."
+    ]
+   ]
+  },
+  "s36": {
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the thin white smoke rises straight and slowly, a clean natural film image."
+    ]
+   ]
+  },
   "s37": {
    "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the thin white smoke rises straight and slowly, a clean natural film image."
+    ],
     [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
      "his face tipped up toward the crossbeams, his eyes on the new frame"
@@ -339,6 +586,13 @@
   },
   "s38": {},
   "s39": {},
-  "s40": {}
+  "s40": {
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image.",
+     "the thin white smoke rises straight and slowly, a clean natural film image."
+    ]
+   ]
+  }
  }
 }

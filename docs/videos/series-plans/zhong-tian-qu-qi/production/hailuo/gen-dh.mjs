@@ -93,8 +93,10 @@ const SET = [
   [/spring field|muddy field|ploughed field|plowed field/i, "dh-set-chuntian-t1"],
   [/stone bridge/i, "dh-set-shiqiao-t1"],
   // e017 r2 (live only): the paper workshop after the fire and its new timber frame (night, dawn) have no CG picture;
-  // their live pictures are refs-live/set-zhifang-shao-l2, set-zhifang-gujia-ye-l2 and set-zhifang-gujia-chen-l1
-  // (live-action/screen-test-e017.py; the e011-e020 screen test's l1 pictures are CG renders of the wrong state).
+  // their live pictures are refs-live/set-zhifang-gujia-ye-l2 and set-zhifang-gujia-chen-l1 (live-action/screen-test-e017.py;
+  // the e011-e020 screen test's l1 pictures are CG renders of the wrong state). The burnt workshop has NO live picture (no
+  // seed of set-zhifang-shao-l2 was taken): its line stays so the e017 ash prompts have a set clause, which e917-live's
+  // spec.json drops (drop_set) on every one of them, and so the bamboo mat's "willow" never takes the stream.
   // The dawn frame before the night frame, both before the burnt workshop and before "work shed|workshop".
   [/new timber frame at dawn/i, "dh-set-zhifang-gujia-chen-t1"],
   [/new timber frame/i, "dh-set-zhifang-gujia-ye-t1"],
