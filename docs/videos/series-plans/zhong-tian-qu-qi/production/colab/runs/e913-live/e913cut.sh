@@ -36,11 +36,13 @@ ffmpeg -v error -y -i $E/clips/s26-t1.mp4 -vf "scale=1920:1080:flags=lanczos,fps
 cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ $R/docs/videos/zhong-tian-qu-qi-e013-r2/overlays.json $P/hailuo/edit-dh-e913-live.json $E $E/cut/e913-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log
 [ -f $E/cut/e913-live.mp4 ] || exit 1
 # a sample-peak limiter before loudnorm2 keeps it linear (e908-e912: attack 5 ms, limit 0.6 = -4.4 dBFS; the AAC encode
-# after it overshoots at shorter attacks and loudnorm2 then goes dynamic and clicks)
+# after it overshoots at shorter attacks and loudnorm2 then goes dynamic and clicks). REVIEW 3: attack 8 ms -- with 5 ms the
+# re-cut's AAC overshot to -3.11 dBTP at 0.64 (an onset in s01's line), -15.36 LUFS + 1.36 dB -> -1.75 > -2.2 and
+# loudnorm2 went dynamic (gain spread 6 dB); 8 ms: -3.84 dBTP, -15.36 LUFS -> -2.48, linear
 # END: s42 is a clip-voiced shot (never slowed or held), her last word ends at c4.28 and the clip at c5.083, so the last
 # 0.6 s fades out with the picture fade in its vf (fade=t=out:st=4.483:d=0.6); a 1.0 s fade as e912 would start on 裡
 D=$(ffprobe -v error -show_entries format=duration -of csv=p=0 $E/cut/e913-live.mp4); FS=$(python3 -c "print(f'{$D-0.6:.3f}')")
-ffmpeg -v error -y -i $E/cut/e913-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.6:attack=5:release=60:level=false,aresample=48000,afade=t=out:st=$FS:d=0.6" $E/cut/e913-live.lim.mp4 && mv $E/cut/e913-live.lim.mp4 $E/cut/e913-live.mp4
+ffmpeg -v error -y -i $E/cut/e913-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.6:attack=8:release=60:level=false,aresample=48000,afade=t=out:st=$FS:d=0.6" $E/cut/e913-live.lim.mp4 && mv $E/cut/e913-live.lim.mp4 $E/cut/e913-live.mp4
 bash $Q/loudnorm2.sh $E/cut/e913-live.mp4
 echo "== cut-qa";   python3 $Q/cut-qa.py $E/cut --stem e913-live 2>&1 | tail -20
 echo "== cut-jumps"; python3 $Q/cut-jumps.py $E/cut 2>&1 | tail -12
