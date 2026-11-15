@@ -65,10 +65,14 @@ const FINISH = edit.finish ?? "vignette=angle=PI/4.6,noise=alls=5:allf=t,format=
 
 const COLORS = { panel: "0x5ec8ff", task: "0xffd75e", affection: "0xff8fb8", reward: "0xffe08a", penalty: "0xff6b6b" };
 function panelFilters(shot) {
-  const items = (overlays[shot] ?? []).slice(0, 2);
+  // Up to three rows (e912 cut review: e012 s02's third affection row 唐小棠 +2 was dropped while the system read it out);
+  // a longer list keeps the old first-two cut (e006 s30 has four items and its cuts were made with two rows)
+  const all = overlays[shot] ?? [];
+  const items = all.slice(0, all.length > 3 ? 2 : 3);
   if (!items.length) return "";
   // `at` on the first overlay item: when the panel appears (e907 cut review: a fixed 0.15 put "已賺 6 兩" two seconds before the money went in)
-  const h = 70 + 64 * items.length, y0 = 120, start = Number(items[0].at ?? 0.15);
+  // `panel_y: {"s02": 690}` in the edit list: the panel's top edge for that shot (e912: off the faces); 120 otherwise
+  const h = 70 + 64 * items.length, y0 = Number(edit.panel_y?.[shot] ?? 120), start = Number(items[0].at ?? 0.15);
   let f = `,drawbox=x=(iw-1000)/2:y=${y0}:w=1000:h=${h}:color=0x0b2a4a@0.62:t=fill:enable='gte(t,${start})'`;
   f += `,drawbox=x=(iw-1000)/2:y=${y0}:w=1000:h=${h}:color=0x7fd6ff@0.9:t=3:enable='gte(t,${start})'`;
   items.forEach((item, i) => {
