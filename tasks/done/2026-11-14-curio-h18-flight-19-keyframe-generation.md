@@ -51,6 +51,6 @@ node tools/video/cli.mjs lint docs/videos/curio-h18-flight-19
 
 ## Notes
 
-- 雲端備份位置：Google Drive `AI/備份/AI劇/奇聞檔案局/H18/製作檔/curio-h18-flight-19/`（資料夾 ID: `1dGjoosUoNX5N_OJC6IgP2lQQp_JF6bYy`），內含完整 788MB 壓縮檔 `curio-h18-workdir.tar.gz` 及個別音訊檔案。
+- 雲端備份位置：Google Drive `AI/備份/AI劇/奇聞檔案局/H-歷史懸案/H18/製作檔/curio-h18-flight-19/`（資料夾 ID: `1dGjoosUoNX5N_OJC6IgP2lQQp_JF6bYy`，父層 H18 ID: `1fBpM1QyrKVIPfnpw8BrNNcfFFa9Efqht` 位於分類 `H-歷史懸案` ID: `1LtDh79EeF17pCzjnhW9nV6NNnQCtaQnI` 底下），內含完整 2.3GB 壓縮檔 `curio-h18-workdir-final.tar.gz` 及 `final.mp4`、`thumbnail.jpg`、`metadata.json` 等。
 - 工作區位置：`/home/antigravity/mokaair-work/videos/curio-h18-flight-19`。
 - 本集不使用字卡或卡片，全片 76 鏡均為插圖（插圖比例 100%）。
