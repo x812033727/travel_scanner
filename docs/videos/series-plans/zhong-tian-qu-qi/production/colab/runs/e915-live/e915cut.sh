@@ -8,9 +8,10 @@ rm -rf $E/segments-v4
 miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.join(s for s in p if not os.path.exists('$E/clips/'+s+'-t1.mp4')))")
 [ -z "$miss" ] || { echo "not staged: $miss -- run: python3 $P/live-action/stage.py 15"; exit 1; }
 # e915 trims and seeds the edit table assumes (edit-dh-e915-live.json _note): picks.json as refine-prep.py 15 builds it from
-# picks-merged.tsv, fix1/review-picks.tsv and review3-trims.tsv in that order -- the fix1 retakes s08 s10 s21 s25 s26 s41
-# (9151201/9151202) play whole (no trim, 0 0 below); review3-trims.tsv (first cut): s22 end 6.125 (a -9 dB knock at c5.90-6.00
-# fell on the cut; 見 ends draft 5.45), s32 end 6.375 (the post list: her mouth slackens at 6.5; 字 ends c6.00).
+# picks-merged.tsv, fix1/review-picks.tsv and review3-trims.tsv in that order -- the fix1 retakes s08 s10 s21 s25
+# (9151201/9151202) play whole (no trim, 0 0 below; fix1 s26 s41 are trimmed below); review3-trims.tsv (first cut): s22 end 6.125 (a -9 dB knock at c5.90-6.00
+# fell on the cut; 見 ends draft 5.45), s32 end 6.375 (the post list: her mouth slackens at 6.5; 字 ends c6.00), s26 end 4.5
+# (2.8 s of her back after a25), s41 end 4.25 (the frame slides right at 4.3-5.0; a39 ends c3.71).
 # Whole frames: a start rounded DOWN and an end-before rounded UP to 3 decimals, tolerance 0.001 (e912 review 3: -ss keeps a
 # frame at/after start, -to drops a frame whose end passes it); 0 = no end (the clip's end).
 # Warn (not stop) if picks.json differs.
@@ -19,9 +20,9 @@ import json;p=json.load(open('$E/picks.json'))
 want={'s01':(1.0,6.584),'s02':(0.5,6.584),'s03':(0.0,8.0),'s04':(0.5,8.0),'s05':(0.25,6.584),'s06':(1.125,6.5),'s07':(0.25,6.584),
  's08':(0,0),'s09':(0.75,4.5),'s10':(0,0),'s11':(0.25,6.375),'s12':(1.0,6.584),'s13':(0.5,5.167),'s14':(0.75,6.584),'s15':(1.0,8.0),
  's16':(0.0,6.584),'s17':(0.25,8.0),'s18':(0.0,7.0),'s19':(0.5,5.0),'s20':(0.0,4.75),'s21':(0,0),'s22':(0.25,6.125),
- 's23':(2.25,6.584),'s24':(1.0,8.0),'s25':(0,0),'s26':(0,0),'s27':(0.75,5.5),'s28':(0.5,5.0),'s29':(0.25,6.584),'s30':(0.0,6.584),
+ 's23':(2.25,6.584),'s24':(1.0,8.0),'s25':(0,0),'s26':(0,4.5),'s27':(0.75,5.5),'s28':(0.5,5.0),'s29':(0.25,6.584),'s30':(0.0,6.584),
  's31':(0.5,6.0),'s32':(0.25,6.375),'s33':(1.0,4.75),'s34':(1.0,6.375),'s35':(2.5,6.584),'s36':(0.5,8.0),'s37':(0.25,6.584),
- 's38':(0.5,8.0),'s39':(0.0,6.584),'s40':(1.375,8.0),'s41':(0,0),'s42':(1.0,6.584)}
+ 's38':(0.5,8.0),'s39':(0.0,6.584),'s40':(1.375,8.0),'s41':(0,4.25),'s42':(1.0,6.584)}
 seed={'s01':9151102,'s05':9151102,'s07':9151102,'s08':9151202,'s09':9151102,'s10':9151201,'s11':9151102,'s13':9151102,
  's15':9151102,'s16':9151102,'s17':9151102,'s19':9151102,'s21':9151201,'s24':9151102,'s25':9151201,'s26':9151202,'s30':9151102,
  's32':9151102,'s33':9151102,'s34':9151102,'s37':9151102,'s38':9151102,'s39':9151102,'s41':9151202,'s42':9151102}
