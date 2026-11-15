@@ -12,7 +12,7 @@ TANG_PICS = ["tangxiaotang-portrait-l1.png", "tangxiaotang-angle-a-l1.png", "tan
 FACE = ["dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks,",
         "a delicate beauty: big round clear eyes with long lashes, soft peach-pink lips, light rosy cheeks,"]
 NEUTRAL = [FACE, ["flowing sleeves, a small gold abacus hanging at her waist",
-                  "flowing sleeves, a small gold abacus hanging at her waist, her resting face composed and unsmiling"]]
+                  "flowing sleeves, a small gold abacus hanging at her waist, her resting face composed, her lips closed"]]
 ONLY_HE = "He is the only person in the frame; no second copy of anyone appears."
 ONLY_SHE = "She is the only person in the frame; no second copy of anyone appears."
 ONLY_2 = "Only these 2 people are in the frame; no second copy of anyone appears."
