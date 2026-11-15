@@ -39,13 +39,18 @@ on screen left, left hand on the oilcloth bundle; Tang Xiaotang beside the cart 
 other side of the log: Lai San's back in the right foreground, Xu Yan facing us on screen left, Tang Xiaotang behind him.
 Places (the coordinator's decisions, 2026-11-15, after the independent review review.md in this folder; listed again in
 script.md 〈真人版的改動〉). FOUR PICTURES ARE REDRAWN in live-action/screen-test-e016.py (seeds 37013/37014, manifest
-~/mokaair-work/videos/_series/zhong-tian-qu-qi/live-screen-test-e016/e016.json, 8 jobs, NOT run here); prep916.sh stops until
+~/mokaair-work/videos/_series/zhong-tian-qu-qi/live-screen-test-e016/e016.json, 8 jobs, run by the coordinator: shuyuan-l2 37013, zhufa-ye-l2 37013 + its hflip mirror, gongpeng-l3 37014
+cropped; dukou-l2 failed and is redrawn in round 2, r2.json, seeds 37015/37016); prep916.sh stops until
 all four and the raft mirror are in refs-live (pilot.py takes the newest l-version of a set):
 - the stone bridge set-shiqiao-l2 (e015's redraw: arch in the middle, stone path on the left; the log and its trestles are
   written in each shot as e015 did). Kept.
-- the work shed by day set-gongpeng-l3 (NEW, an edit of l2): bare packed-earth floor, the far left only the bare stone wall
-  (l2's two tall A-frames of poles gone), both vats with bare rims (l2's crossed stirring sticks gone); the text writes
-  exactly that (review 必改 4). The script's third tub is written as one new small tub in front of the table.
+- the work shed by day set-gongpeng-l3 (NEW): both round-1 seeds kept l2's A-frames and sticks, so the coordinator took
+  37014 cropped (crop=918:516:394:200, scaled back): one big pulp tub at the front left with two plain stirring sticks
+  crossed in it, the stone mortar in the middle, the old table at the right, the stone back wall with plants, a floor of
+  flat cracked earth-coloured flagstones. The text writes exactly that (review 必改 4). Blocking: Carpenter Shi works at that
+  tub (the sticks resting against its far left rim, away from the mats); Xu Yan works at a second big tub that is only in
+  his own shots (beside the first, just beyond the left edge of the wide shots); Tang Xiaotang at one new small tub in front
+  of the table (the script's third tub, an added thing).
 - the raft at night set-zhufa-ye-l2 (NEW, a real-photo redraw of l1, same layout: bow at the lower left, the stern pole and
   lantern on the right, two oilcloth bundles stacked low). gen-dh SET gets "bamboo raft" -> dh-set-zhufa-ye-t1 before
   "bamboo grove" and "stream|...|reeds" (shared edit; e910-e915 rebuild byte for byte). s39 (upstream, the bow on screen
@@ -88,13 +93,14 @@ BRIDGE = ("an old grey stone arch bridge over the misty water, a stone-paved pat
           "and reeds along the bank at the right, tiled houses on the far bank")
 BAR = ("one thick rough log laid across the small stone landing at the foot of the bridge as a barrier, each end resting on a "
        "low wooden trestle")
-# review.md 必改 4 with the coordinator's redraw set-gongpeng-l3 (screen-test-e016.py): bare earth floor, the far left wall bare,
-# the vats' rims bare (l2's A-frames of poles and crossed stirring sticks are gone from the picture, so nothing long is written).
+# review.md 必改 4 with set-gongpeng-l3 as picked (37014 cropped): one big tub at the front left with two stirring sticks
+# crossed in it, the mortar in the middle, the table at the right; written as what is there (bible 18).
 SHED = ("a dark timber roof on rough wooden posts, open on the right side, a low back wall of fitted stone with green plants at "
-        "its foot, two big round wooden vats at the left filled with smooth milky white bamboo pulp, their round rims bare, a "
-        "squat stone mortar in the middle, an old plain wooden table at the right and in front of the table one new small round "
-        "wooden tub of the same milky pulp; at the far left only the bare stone wall; the floor bare packed earth, smooth and "
-        "even")
+        "its foot and grey tiled roofs and green trees beyond it; at the front left one big round wooden tub filled with smooth "
+        "milky white bamboo pulp, two plain wooden stirring sticks crossed and resting in it against its far left rim; a squat "
+        "dark stone mortar in the middle; an old plain wooden table at the right and in front of the table one new small round "
+        "wooden tub of the same milky pulp; the floor of flat cracked earth-coloured flagstones")
+XUTUB = "a second big round wooden tub of the same milky pulp, its rim bare"
 # set-zhufa-ye-l2 (the real-photo redraw of l1, same layout): bow at the lower left, the stern pole and lantern on the right.
 RAFT = ("one long bamboo raft of eight thick green-yellow bamboo poles with natural nodes lashed side by side with rough hemp "
         "rope, two rounded bundles wrapped in worn brown oilcloth and tied with rope stacked low in its middle, one tall bamboo "
@@ -280,51 +286,52 @@ SHOTS = [
          lines=[("laisan", "好，看你的紙，能漂到哪裡去！", "咬牙")],
          motion=f"the man lurches one limping step forward after them, dragging his left foot, stops, and kicks the low wooden trestle hard with his left foot so the log jolts; {HEADSTILL_HE}",
          zh="低角度中景（從石台高度拍）、慢推：賴三的背影（spec 拿掉他的定妝照與身分句），拖著左腳往前追一拐、停住，用跛的左腳狠狠踢一下橫木下的木架、橫木一震；遠處石板路上推車往村裡走（很小、虛焦）；頭始終不轉，背對鏡頭說話，台詞剪接放錄音"),
-    # ---- scene 1b: the work shed, the same day (open on the right; two vats at the left, the new small tub in front of the
-    # table at the right). Carpenter Shi at the far vat, Xu Yan at the near vat, Tang Xiaotang at the new tub.
+    # ---- scene 1b: the work shed, the same day (open on the right; set-gongpeng-l3: the big tub at the front left, the mortar in
+    # the middle, the table at the right, the new small tub in front of it). Carpenter Shi at the big tub, Xu Yan at a second
+    # big tub seen only in his own shots, Tang Xiaotang at the new small tub.
     dict(chapter="三張簾", loc="pm", cam="Wide shot, slow push in", chars=["shimujiang", "xuyan"], night="pm",
-         comp=f"wide shot past the round wooden rim of the near vat in the left foreground: at the far vat a little left of the middle {CARP}, framed full length with clear space above his head, holding {MAT} level in both hands over the pulp, his face lowered to it, never the lens; gruff and busy: brows knotted, lips moving curtly between words; coming in through the open right side {XU_ROLL}, framed full length, both hands on the two handles of {CART}, his face three-quarter to screen left toward the old man, never the lens; brisk, lips closed; {HANDS}",
+         comp=f"wide shot: at the big round tub in the left foreground {CARP}, standing behind it on its far side, framed from the knees up with clear space above his head, holding {MAT} level in both hands over the open pulp, the crossed stirring sticks resting against the tub's far left rim away from his hands, his face lowered to the mat, never the lens; gruff and busy: brows knotted, lips moving curtly between words; coming in through the open right side {XU_ROLL}, framed full length, both hands on the two handles of {CART}, his face three-quarter to screen left toward the old man, never the lens; brisk, lips closed; {HANDS}",
          lines=[("shimujiang", "第三張簾子剛做好，要多少紙就抄多少。", "頭也不抬")],
          motion=f"Carpenter Shi dips the flat mat straight down into the milky pulp, lifts it out level with a thin even layer of pulp on it and gives it one small shake, his eyes on the mat the whole time; Xu Yan pushes the wheelbarrow in through the open right side and stops it beside the table; {quiet('Xu Yan')}; {NOSMILE}",
-         zh="全景、慢推、前景是畫左近桶的木桶沿（工棚重畫 l3：最左牆邊光禿、桶沿光禿）：石木匠在後面那個紙漿桶前（畫面中偏左），兩手平端一張竹簾（只寫形狀：平的細竹絲席、木邊、正中編一片柳葉），往漿裡一壓、平平抬起、輕晃一下，頭也不抬地說；許硯（袖子捲到手肘）推著獨輪車從畫右開口進來，停在木桌邊、嘴閉著；不笑"),
+         zh="全景、慢推（工棚 l3 裁切圖：前景左一個大紙漿桶、桶裡兩根交叉的攪棒靠在左後桶沿，中間石臼、右邊木桌）：石木匠站在左前景那個大桶後面，兩手平端一張竹簾（只寫形狀：平的細竹絲席、木邊、正中編一片柳葉），往漿裡一壓、平平抬起、輕晃一下，頭也不抬地說；許硯（袖子捲到手肘）推著獨輪車從畫右開口進來，停在木桌邊、嘴閉著；不笑"),
     dict(loc="pm", cam="Over-the-shoulder medium shot, slow push in", chars=["xuyan"], night="pm",
-         comp=f"over-the-shoulder medium shot from close behind {CARP_BACK}, in the right foreground; facing us a few steps away at the near vat on screen left, a little left of the middle, {XU_ROLL}, framed from the waist up with clear space above his head, holding {MAT} flat at waist height in both hands like a tray, just lifted out of the pulp, his two hands only on the bamboo mat, his face three-quarter to screen right toward the old man, never the lens; keen and quick: brows up, eyes bright, lips moving between words; behind him only the bare stone back wall; {HANDS}; exactly two people, the man in the foreground seen only from behind",
+         comp=f"over-the-shoulder medium shot from close behind {CARP_BACK}, in the right foreground; facing us a few steps away on screen left, a little left of the middle, standing at {XUTUB}, {XU_ROLL}, framed from the waist up with clear space above his head, holding {MAT} flat at waist height in both hands like a tray, just lifted out of the pulp, his two hands only on the bamboo mat, his face three-quarter to screen right toward the old man, never the lens; keen and quick: brows up, eyes bright, lips moving between words; behind him only the bare stone back wall; {HANDS}; exactly two people, the man in the foreground seen only from behind",
          lines=[("xuyan", "三張簾一起抄，天黑前能抄到三百張嗎？", "盤算，問")],
          motion="the old man in the right foreground keeps his head still, the back of his grey topknot toward us the whole shot; Xu Yan holds the mat level while the water drips off its underside, then lifts his eyes from it to the old man; after the last word his brows stay up, lips pressed, eyes on the old man",
-         zh="過肩中景、慢推：前景右只有石木匠的後腦、插木筆的髮髻、肩與皮圍裙帶（不點名、不送圖；審稿必改 2：『頭不轉』點名是前景的老人、放在許硯動作前）；許硯在前面那個紙漿桶邊（畫面中偏左），兩手只拿著剛撈起的竹簾、平端在腰前像托盤、水從底下滴，抬眼問；說完眉毛還揚著、抿嘴"),
+         zh="過肩中景、慢推：前景右只有石木匠的後腦、插木筆的髮髻、肩與皮圍裙帶（不點名、不送圖；審稿必改 2：『頭不轉』點名是前景的老人、放在許硯動作前）；許硯在畫左他自己那個大紙漿桶邊（畫面中偏左，只在他自己的鏡頭裡入鏡），兩手只拿著剛撈起的竹簾、平端在腰前像托盤、水從底下滴，抬眼問；說完眉毛還揚著、抿嘴"),
     # Carpenter Shi does not smile (e913/e914: written as what his face does; short).
     dict(loc="pm", cam="Medium shot, slow push in", chars=["shimujiang", "tangxiaotang"], night="pm",
-         comp=f"medium shot: a little left of the middle {CARP}, framed from the knees up with clear space above his head, standing beside a low board with a small stack of wet blank sheets on it, {MAT} with a wet sheet on it held face down in both his hands over the stack, his face three-quarter to screen left toward Xu Yan off screen left, never the lens; gruff and curt: brows knotted low, one eye narrowed, the corners of his mouth pulled down, lips moving curtly between words and pressed flat between them; on screen right, a few steps behind him, at the new small tub in front of the old table, Tang Xiaotang {TANG}, {GOLD}, framed from the waist up, her sleeves pushed back, pressing {mat('her')} down into the pulp with both hands, her face lowered to the tub, never the lens; intent: brows drawn together in concentration, lips closed; {HANDS}",
+         comp=f"medium shot: a little left of the middle {CARP}, framed from the knees up with clear space above his head, standing beside the big tub at the left, next to a low board with a small stack of wet blank sheets on it, {MAT} with a wet sheet on it held face down in both his hands over the stack, his face three-quarter to screen left toward Xu Yan off screen left, never the lens; gruff and curt: brows knotted low, one eye narrowed, the corners of his mouth pulled down, lips moving curtly between words and pressed flat between them; on screen right, a few steps behind him, at the new small tub in front of the old table, Tang Xiaotang {TANG}, {GOLD}, framed from the waist up, her sleeves pushed back, pressing {mat('her')} down into the pulp with both hands, her face lowered to the tub, never the lens; intent: brows drawn together in concentration, lips closed; {HANDS}",
          lines=[("shimujiang", "三百張？我手不停，你們兩個別拖累我就行。", "嘴硬，短促")],
          motion=f"Carpenter Shi turns the mat over and lays the wet sheet down flat on the stack, then peels the mat away; Tang Xiaotang pushes her mat down into the pulp the way he does; after the last word he snorts once through his nose and presses his lips into a hard flat line; {quiet('Tang Xiaotang', 'her')}",
          zh="中景、慢推：畫面中偏左石木匠在矮木板邊，兩手把竹簾翻過來、把濕紙扣到紙堆上再揭開簾子，眉頭壓低、嘴角往下，嘴硬地說，說完鼻子哼一聲、嘴抿成一條線（不笑）；畫右後面唐小棠在木桌前的新小盆邊（袖子推起），學他把竹簾壓進漿裡，低頭專心、嘴閉著（中性臉）"),
     dict(loc="pm_c", cam="Insert close-up, slow push in", chars=["xuyan"], night="pm", act=3,
-         comp=f"insert close-up, the shot opens directly on {MAT} rising level out of the milky white pulp in a round wooden vat from its very first frame, held flat by Xu Yan's two hands at its two sides, his blue-grey sleeves rolled up to the elbows; only the hands, the forearms, the mat and the pulp are in the frame; warm daylight from the right",
+         comp=f"insert close-up, the shot opens directly on {MAT} rising level out of the milky white pulp in a round wooden tub from its very first frame, held flat by Xu Yan's two hands at its two sides, his blue-grey sleeves rolled up to the elbows; only the hands, the forearms, the mat and the pulp are in the frame; warm daylight from the right",
          lines=[],
-         motion="the two hands lift the mat level out of the pulp; milky water streams down through the fine gaps between the strips and drips back into the vat, and a thin even layer of white pulp settles smooth across the whole mat",
+         motion="the two hands lift the mat level out of the pulp; milky water streams down through the fine gaps between the strips and drips back into the tub, and a thin even layer of white pulp settles smooth across the whole mat",
          zh="插鏡、慢推（第一格就是竹簾從紙漿裡平平抬起；審稿必改 5：spec 不送工棚圖，只送許硯四分之三側面圖當手的主人）：許硯一雙捲袖的手端著竹簾兩側平平抬起，水從簾縫往下流、滴回桶裡，一層薄薄的白漿均勻鋪平；只有手、前臂、竹簾與紙漿（無台詞）"),
     # Qin Shuang comes in with the punting pole on her shoulder (a pole of plain green bamboo, smooth to its flat-cut ends).
     dict(loc="pm", cam="Wide shot, tracking", chars=["qinshuang", "xuyan"], night="pm",
-         comp=f"wide shot following her past one rough timber post in the foreground: coming in through the open right side Qin Shuang, {QIN}, framed full length with clear space above her head, {POLE} resting on her right shoulder, held by her right hand, her face three-quarter to screen left toward Xu Yan, never the lens; brisk and direct: brows level, eyes steady, lips moving crisply between words; at the near vat on screen left {XU_ROLL}, framed full length, {MAT} held flat in both hands over the pulp, turning his head toward her, never the lens; lips closed; Qin Shuang's green bamboo pole is the only thing anyone carries, and Xu Yan's two hands are only on the bamboo mat; {HANDS}; exactly two people",
+         comp=f"wide shot following her past one rough timber post in the foreground: coming in through the open right side Qin Shuang, {QIN}, framed full length with clear space above her head, {POLE} resting on her right shoulder, held by her right hand, her face three-quarter to screen left toward Xu Yan, never the lens; brisk and direct: brows level, eyes steady, lips moving crisply between words; on screen left at {XUTUB} {XU_ROLL}, framed full length, {MAT} held flat in both hands over the pulp, turning his head toward her, never the lens; lips closed; Qin Shuang's green bamboo pole is the only thing anyone carries, and Xu Yan's two hands are only on the bamboo mat; {HANDS}; exactly two people",
          lines=[("qinshuang", "小棠說要走水路。竹篙我削好了，筏子二牛照石叔說的在紮。", "乾脆，交代")],
          motion=f"Qin Shuang lowers the bamboo pole from her shoulder and stands it upright against the timber post, then walks over and stops a step to his right, facing him; Xu Yan stops working and turns round toward her, the mat still flat in his hands; {quiet('Xu Yan')}",
-         zh="全景、跟拍、前景是棚柱：秦霜（腰帶空著）右肩扛一根比人高一倍的青竹篙（兩頭平切、通身圓滑）從畫右開口進來，把竹篙立靠在棚柱邊，走到許硯身後停下，乾脆地交代；許硯在畫左前面那個桶邊，兩手端著竹簾，回頭看她、嘴閉著"),
+         zh="全景、跟拍、前景是棚柱：秦霜（腰帶空著）右肩扛一根比人高一倍的青竹篙（兩頭平切、通身圓滑）從畫右開口進來，把竹篙立靠在棚柱邊，走到許硯身後停下，乾脆地交代；許硯在畫左他自己那個大桶邊（第二個桶只在他的鏡頭裡），兩手端著竹簾，回頭看她、嘴閉著"),
     dict(loc="pm", cam="Over-the-shoulder medium shot, slow push in", chars=["xuyan"], night="pm",
-         comp=f"over-the-shoulder medium shot from close behind {QIN_BACK}, in the right foreground; facing us a step away beside the near vat on screen left, a little left of the middle, {XU_ROLL}, framed from the waist up with clear space above his head, {MAT} in both hands, his face three-quarter to screen right toward her, never the lens; worried: brows knotted, eyes searching hers, lips moving between words; behind him only the stone back wall; {HANDS}; exactly two people, the young woman in the foreground seen only from behind",
+         comp=f"over-the-shoulder medium shot from close behind {QIN_BACK}, in the right foreground; facing us a step away beside {XUTUB} on screen left, a little left of the middle, {XU_ROLL}, framed from the waist up with clear space above his head, {MAT} in both hands, his face three-quarter to screen right toward her, never the lens; worried: brows knotted, eyes searching hers, lips moving between words; behind him only the stone back wall; {HANDS}; exactly two people, the young woman in the foreground seen only from behind",
          lines=[("xuyan", "柳溪夜裡有灘，妳一個人撐得了一整夜？", "皺眉，擔心")],
-         motion=f"Xu Yan lays the mat down flat across the rim of the vat, wipes both wet hands on the front hem of his robe and frowns at her; the young woman in the foreground keeps her head still, the back of her head toward us the whole shot; {NOSMILE}",
-         zh="過肩中景、慢推：前景右只有秦霜的後腦、高馬尾與肩（不點名、不送圖）；許硯在畫左前面那個桶邊，把竹簾平放在桶沿上，兩手在書生袍前襬上擦一擦，皺眉看她、擔心地問；不笑"),
+         motion=f"Xu Yan lays the mat down flat across the rim of his tub, wipes both wet hands on the front hem of his robe and frowns at her; the young woman in the foreground keeps her head still, the back of her head toward us the whole shot; {NOSMILE}",
+         zh="過肩中景、慢推：前景右只有秦霜的後腦、高馬尾與肩（不點名、不送圖）；許硯在畫左他自己那個大桶邊，把竹簾平放在桶沿上，兩手在書生袍前襬上擦一擦，皺眉看她、擔心地問；不笑"),
     dict(loc="pm_c", cam="Close-up, low angle, slow push in", chars=["qinshuang"], night="pm",
          comp=f"low-angle close-up of Qin Shuang, {QIN}, framed from the chest up with space above her head, her right hand on {POLE} standing upright beside her, her face three-quarter to screen left toward Xu Yan off screen left, never the lens; sure and proud: brows level, chin lifted, eyes steady, lips moving firmly between words; behind her only one rough timber post and the bright open side of the shed",
          lines=[("qinshuang", "哪裡有灘、哪裡有石頭，我都記得，你坐穩就好。", "篤定")],
          motion=f"Qin Shuang grips the upright pole, lifts it a hand's width and thumps its flat end down once on the earth, then lifts her chin; {NOSMILE}",
          zh="低角度近景、慢推（身後只有棚柱與亮的開口）：秦霜右手握著立在身旁的青竹篙，提起一點往地上一頓，抬起下巴，篤定地說；不笑"),
-    # Converted: from behind her, crouched by the paper stack; Xu Yan and Carpenter Shi beyond her at the vats.
+    # Converted: from behind her, crouched by the paper stack; Xu Yan and Carpenter Shi beyond her at the big tub.
     dict(loc="eve", cam="Medium shot, slow push in", chars=["tangxiaotang", "xuyan", "shimujiang"], nospeak=["tangxiaotang"], night="eve",
-         comp=f"medium shot from behind and a little above: {TBACK}, crouching in the right foreground beside the old wooden table, {SHEETS} knee-high on a low board in front of her, both her hands flat on top of it, {GOLD}; {only_tang('right')}; beyond her across the shed at the two vats on screen left, soft, {XU_ROLL} and {CARP}, each lifting a flat bamboo mat out of the pulp and setting it upright against the vat's side, their faces three-quarter toward each other, never the lens, tired, lips closed; the low sunset light from the open right side falls across the top of the stack; {HANDS}",
+         comp=f"medium shot from behind and a little above: {TBACK}, crouching in the right foreground beside the old wooden table, {SHEETS} knee-high on a low board in front of her, both her hands flat on top of it, {GOLD}; {only_tang('right')}; beyond her across the shed at the big tub on screen left, soft, {XU_ROLL} and {CARP}, each lifting a flat bamboo mat out of the pulp and setting it upright against the tub's side, their faces three-quarter toward each other, never the lens, tired, lips closed; the low sunset light from the open right side falls across the top of the stack; {HANDS}",
          lines=[("tangxiaotang", "三百二十張，一張不少，還多一張給你試筆。", "擦汗，眼睛亮，累但開心")],
-         motion=f"the young woman presses the last few sheets flat with both palms, taps the top of the stack twice with her right forefinger (on screen right) and straightens her back; the two men at the vats set their mats aside; {HEADSTILL}; {quiet('Xu Yan and Carpenter Shi', 'their', True)}",
-         zh="【改背後拍】中景、從背後稍高處、慢推：前景右唐小棠蹲在木桌邊、膝高的白紙堆前，兩手壓平最後幾張，右手食指（畫右）點兩下紙堆、挺直背；後面畫左兩個桶邊許硯、石木匠把竹簾從漿裡拿起來立在桶邊（虛焦、嘴閉著）；斜陽從畫右開口照在紙堆上；頭始終不轉。台詞 nospeak，剪接放錄音（她說時可以笑，看不到）"),
+         motion=f"the young woman presses the last few sheets flat with both palms, taps the top of the stack twice with her right forefinger (on screen right) and straightens her back; the two men at the tub set their mats aside; {HEADSTILL}; {quiet('Xu Yan and Carpenter Shi', 'their', True)}",
+         zh="【改背後拍】中景、從背後稍高處、慢推：前景右唐小棠蹲在木桌邊、膝高的白紙堆前，兩手壓平最後幾張，右手食指（畫右）點兩下紙堆、挺直背；後面畫左那個大桶邊許硯、石木匠把竹簾從漿裡拿起來立在桶邊（虛焦、嘴閉著）；斜陽從畫右開口照在紙堆上；頭始終不轉。台詞 nospeak，剪接放錄音（她說時可以笑，看不到）"),
     dict(loc="eve", cam="Medium shot, slow push in", chars=["xuyan", "shimujiang"], night="eve",
          comp=f"medium shot: on screen left {XU_ROLL}, framed from the knees up with clear space above his head, bending to lift {BUNDLE} from the floor in both hands, his face three-quarter to screen right toward the old man, never the lens; decided: brows level, eyes firm, lips moving between words; on screen right a step away {CARP}, bent over a second {BUNDLE} on the floor, pulling its rope tight with both hands, his face lowered to the knot, never the lens; gruff, lips pressed shut; low golden sunset light from the open right side; {HANDS}; exactly two people",
          lines=[("xuyan", "好。天一黑就上筏，天亮前進縣城。", "定下來")],
@@ -488,7 +495,7 @@ HEAD = [
     "- 唐小棠十四句台詞都不露嘴、放錄音（nospeak）：s03、s06、s16、s20、s24、s26、s29、s32、s33、s37、s42 從她背後拍，每鏡寫明「畫面裡只有她一個雙丸子頭粉緞帶的人」與她固定在哪一側（第 15 集 s26、s41 背影鏡冒出第二個她）；s27、s38 是她手的插鏡；s04 是她的主觀鏡（畫外）。spec.json 拿掉她三張臉部參考圖與身分句。她不說話的臉（s01、s07、s11、s18、s34、s39）用第 7 集的中性外貌句。",
     "- 賴三本集不給正臉（稿子）：s01、s07 過肩與全景的背影不點名、不送圖；他自己的兩句（s02、s08）從背後拍、nospeak，spec.json 拿掉他的定妝照與身分句。",
     "- 兵器：本集沒有刀（秦霜腰帶整集空著）；兩根竹篙寫成青竹；家丁只寫扶橫木的手。一鏡最多三張有名字的臉；書生寫小、只見側臉或背影。",
-    "- 場景：石橋 `set-shiqiao-l2`（沿用）；審稿後**重畫四張**（`live-action/screen-test-e016.py`，種子 37013／37014，還沒跑；`prep916.sh` 在四張圖與竹筏鏡像都進 refs-live 之前停住）：工棚 `set-gongpeng-l3`（從 l2 改：地面光禿的夯土、最左只剩光禿石牆、兩個桶沿光禿；稿子的第三個盆寫成木桌前一個新的小圓盆）、竹筏夜景 `set-zhufa-ye-l2`（l1 同構圖的真人實拍質感；`gen-dh.mjs` 的 SET 加 `bamboo raft` 一行；s39 逆水用它的水平鏡像 `set-zhufa-ye-l2-flip.png`）、縣學書院門口 `set-shuyuan-l2`（一般焦距、素平空白木匾、素牆、屋簷不掛白板；門這邊往街上拍的 s29、s32、s33、s34、s37 另寫場景句：街與馬車在畫右）、柳溪口 `set-dukou-l2`（村後一柱黑煙、棧橋空著）。插鏡 s12、s27、s31、s38 與 s35 車裡、s40 竹筏上不送場景圖。",
+    "- 場景：石橋 `set-shiqiao-l2`（沿用）；審稿後**重畫四張**（`live-action/screen-test-e016.py`，種子 37013／37014，協調者已跑並挑好三張；柳溪口第一輪失敗（畫出磚造煙囪、篷船還在），第二輪 `r2.json` 種子 37015／37016；`prep916.sh` 在四張圖與竹筏鏡像都進 refs-live 之前停住）：工棚 `set-gongpeng-l3`（第一輪兩個種子都還留著竹竿架與攪棒，協調者取 37014 裁切：左前景一個大紙漿桶、桶裡兩根交叉攪棒，中間石臼、右邊木桌；石木匠在那個桶，許硯的第二個大桶只在他自己的鏡頭裡；稿子的第三個盆寫成木桌前一個新的小圓盆）、竹筏夜景 `set-zhufa-ye-l2`（l1 同構圖的真人實拍質感；`gen-dh.mjs` 的 SET 加 `bamboo raft` 一行；s39 逆水用它的水平鏡像 `set-zhufa-ye-l2-flip.png`）、縣學書院門口 `set-shuyuan-l2`（一般焦距、素平空白木匾、素牆、屋簷不掛白板；門這邊往街上拍的 s29、s32、s33、s34、s37 另寫場景句：街與馬車在畫右）、柳溪口 `set-dukou-l2`（村後一柱黑煙、棧橋空著）。插鏡 s12、s27、s31、s38 與 s35 車裡、s40 竹筏上不送場景圖。",
     "- 新出場：孫掌櫃（`sunzhanggui-portrait-l1`，第 7 集畫的瘦長臉、花白鬍、綠緞袍），聲音照 `cast.json` 的 Charon；只在 s35 馬車裡。extras.json 把他造型句的「smiling」與「(no jade balls)」拿掉（否定名詞）。",
     "- 長鏡要買的秒數（BUY）：照 39 句錄音核過（`~/mokaair-work/videos/zhong-tian-qu-qi-e916-dh/audio`，見 `r2.py` 的 BUY 註解）：4 鏡買 8 秒（s23 系統加心裡話 7.8 秒，即稿子的長鏡；s07、s09、s13 台詞前後有好幾拍動作），s27 插鏡由 5 秒改 6 秒（a26 5.32 秒），其餘 6 秒（不能笑的 s11 石木匠、s35 孫掌櫃與唐小棠的背影都留 6 秒）。a18（s20 打哈欠那句）6.56 秒，句尾靜音剪到約 0.1 秒（6.23 秒，剪前的檔在 `audio/trim-takes/`），s20 照 6 秒。",
     "- **獨立審稿**（`writer-tools/e016-r2/review.md`，2026-11-15，必改 18、建議 18）照改，逐條見 `r2.py` 的註解與 script.md〈2026-11-15 獨立審稿後的修改〉；四張場景圖由協調者決定重畫。剪接：s20 錄音 6.23 秒，句尾約 0.2 秒延到 s21 開頭；s23 系統那句可往前疊到 s22 尾巴（或句間縮到 0.3 秒）。",
