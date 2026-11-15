@@ -46,6 +46,7 @@ repo 是題庫與總表的原件；雲端的快照是唯讀備份，不要在雲
 | 2026-11-15 | 原來如此題庫研究與審稿原稿（`stw33`–`stw35`：第三十三至三十五輪的 `F160–F171`／`V180–V191` 提案、覆核、合著審計、全文快取、觀眾評分 `aud/` 與 `_整合腳本/`；第一次上傳時第三十五輪還在寫檔而有 34 個不符，重傳後核對通過） | session `018EYo` 的 scratchpad | `AI劇/原來如此事務所/_共用/製作檔/題庫研究-session018EYo/` | `todrive: 4948 files, 0 differences` |
 | 2026-11-15 | 奇聞題庫研究與審稿原稿更新（追加 `curio56`、`curio57`：wave56–57 的 `ZL1–ZM4`／`R561–R574`；累計 `curio53`–`curio57`） | session `018EYo` 的 scratchpad | `AI劇/奇聞檔案局/_共用/製作檔/題庫研究-session018EYo/` | `todrive: 2760 files, 0 differences` |
 | 2026-11-15 | 原來如此題庫研究與審稿原稿更新（追加 `stw36`、`stw37`：第三十六至三十七輪的 `F172–F179`／`V192–V199`、觀眾評分與更新後的 `_整合腳本/`；累計 `stw33`–`stw37`） | 同上 | `AI劇/原來如此事務所/_共用/製作檔/題庫研究-session018EYo/` | `todrive: 8239 files, 0 differences` |
+| 2026-11-15 | 原來如此題庫研究與審稿原稿更新（追加 `stw38`：第三十八輪補料的 `F180–F183`／`V201–V203`、觀眾評分與補料版整合腳本；累計 `stw33`–`stw38`） | 同上 | `AI劇/原來如此事務所/_共用/製作檔/題庫研究-session018EYo/` | `todrive: 9033 files, 0 differences` |
 
 比上面更早的研究原稿（奇聞 `curio26` 以前、原來如此 `stw6` 以前）沒有傳過雲端：做那些的 scratchpad 已經收掉，
 只剩 repo 裡的批次檔（`batches/`）、審稿紀錄（`reviews/`）與 `SOURCES.md`。
