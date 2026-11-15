@@ -4,6 +4,15 @@
 
 [可成片清單](PRODUCIBLE.html) · [搜尋素材池](index.html) · [入選題目](QUESTIONS.md) · [片單與片長](THEMES.md) · [去重紀錄](DEDUP.md) · [來源索引](SOURCES.md)
 
+## 檔案配置（2026-11-15，照奇聞池做法拆檔）
+
+`docs/videos/so-thats-why/pool/pool.json` 在第三十七輪之後達到 42.3 MB，為了避免逼近 GitHub 50 MB 警示線（100 MB 拒收），比照奇聞素材池架構拆分為三個檔案：
+- `pool.json`（約 18 MB）：核心題目與計算欄位（`candidates`）、統計、去重與未收錄紀錄；`sources` 與 `raw_records` 保留 `{ file, count }` 指針。
+- `pool-sources.json`（約 12 MB）：所有來源清單與閱讀紀錄。
+- `pool-records.json`（約 12 MB）：原始紀錄（包含別名與未展開欄位），提供 `semantic.py` 作為預設輸入。
+
+工具端經由 `core.mjs` 的 `readSavedPool()` 自動拼合回完整 pool 物件，結構與鍵順序一致；三個檔案皆列入 `manifest.json` 並校驗 revision 與 sha256。單檔大小測試門檻設為 45 MB。
+
 ## 獨立觀眾評分（2026-11-14 起，成題必評）
 
 站主 2026-11-14：「把分數寫回題目池」「之後擴充如果有成題的也要補評分」。

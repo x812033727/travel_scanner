@@ -267,7 +267,7 @@ footer a{color:var(--accent)}
   </div>
   <p id="count" aria-live="polite"></p>
   <section class="grid" id="list"></section>
-  <footer>資料來源：同一目錄的 <a href="THEMES.md">THEMES.md</a>、<a href="QUESTIONS.md">QUESTIONS.md</a> 與 pool.json；搜尋全部入選核心問題見 <a href="index.html">index.html</a>。</footer>
+  <footer>資料來源：同一目錄的 <a href="THEMES.md">THEMES.md</a>、<a href="QUESTIONS.md">QUESTIONS.md</a> 與 pool.json（來源與原始紀錄另存 pool-sources.json、pool-records.json）；搜尋全部入選核心問題見 <a href="index.html">index.html</a>。</footer>
 </div>
 <script type="application/json" id="data">${payload}</script>
 <script>

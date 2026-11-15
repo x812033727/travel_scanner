@@ -184,7 +184,7 @@ def run(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--prepare', action='store_true')
-    parser.add_argument('--input', default='docs/videos/so-thats-why/pool/pool.json')
+    parser.add_argument('--input', default='docs/videos/so-thats-why/pool/pool-records.json')  # pool.json only points at this file
     parser.add_argument('--output', default='docs/videos/so-thats-why/pool/.cache/semantic-neighbours.json')
     parser.add_argument('--top-k', type=int, default=10)
     parser.add_argument('--batch-size', type=int, default=16)

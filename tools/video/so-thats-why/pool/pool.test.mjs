@@ -3,7 +3,7 @@ import test from 'node:test';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { assemble, normalizeUrl, urlsIn, readPool, similarityPairs, validateEditorial, CATEGORIES, classifyCandidate, DIR, ROOT } from './core.mjs';
+import { assemble, normalizeUrl, urlsIn, readPool, similarityPairs, validateEditorial, CATEGORIES, classifyCandidate, DIR, ROOT, POOL_PARTS, splitPool, readSavedPool, writePool } from './core.mjs';
 import { readBaseline, compareBaseline, validateBaseline, validateCheckpoints, sourceImpact } from './history.mjs';
 import { openStore, ingest, assertSnapshot, search, lookup } from './store.mjs';
 import { validateThemes, renderHtml, renderProducible, readingsForCandidate } from './render.mjs';
@@ -444,4 +444,27 @@ test('a theme scored after the baseline must be improved and rescored to at leas
   const round = { score: 5.5, comment: '片名太長', changes: '縮短片名、刪掉術語章', reviewed_on: '2026-11-19', review: 'reviews/audience-20261119.json' };
   assert.throws(() => validateAudience('T1', { ...base, rounds: [{ ...round, changes: '' }] }), /changes made after it/);
   assert.doesNotThrow(() => validateAudience('T1', { ...base, rounds: [round] }));
+});
+
+test('the pool is written as three files and reads back as the same object', () => {
+  const rows = [record('a', '門把為什麼會電人？', '電荷與放電')];
+  const pool = assemble(input(rows), empty(), choose(['a']));
+  const { main } = splitPool(pool);
+  assert.deepEqual(Object.keys(main), Object.keys(pool));
+  assert.deepEqual(main.sources, { file: 'pool-sources.json', count: pool.sources.length });
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'stw-split-test-'));
+  try {
+    assert.deepEqual(writePool(root, pool), ['pool.json', 'pool-sources.json', 'pool-records.json']);
+    assert.equal(JSON.stringify(readSavedPool(root)), JSON.stringify(pool));
+    const stale = path.join(root, DIR, 'pool-records.json');
+    fs.writeFileSync(stale, JSON.stringify({ revision: 'older', raw_records: pool.raw_records }));
+    assert.throws(() => readSavedPool(root), /does not belong to this pool\.json/);
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
+
+test('the committed pool export is internally consistent and each file is < 45 MB', () => {
+  const pool = readSavedPool();
+  for (const name of ['pool.json', ...Object.values(POOL_PARTS)]) assert.ok(fs.statSync(path.join(ROOT, DIR, name)).size < 45 * 1024 * 1024, `${name} is near GitHub's 50 MB warning; split it further`);
+  assert.equal(pool.counts.high_similarity_pending, 0);
+  assert.equal(pool.counts.approved_scripts, 0);
 });
