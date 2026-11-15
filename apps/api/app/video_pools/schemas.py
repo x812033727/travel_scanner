@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Annotated, Literal, Self
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
@@ -7,6 +8,7 @@ from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_vali
 SeriesKey = Literal["curio", "so-thats-why"]
 ThemeStatus = Literal["producible", "reserve", "short", "all"]
 ThemeSort = Literal["rank", "id"]
+EpisodeStatus = Literal["published", "unpublished", "all"]
 MaterialVerdict = Literal["ready", "merge", "reserve", "drop"]
 NonEmptyText = Annotated[str, StringConstraints(min_length=1, pattern=r"\S")]
 Sha256 = Annotated[str, StringConstraints(pattern=r"^[a-f0-9]{64}$")]
@@ -93,6 +95,24 @@ class Checkpoint(PoolModel):
     raw: int | None
 
 
+class EpisodeCatalog(PoolModel):
+    youtube_id: str | None
+    privacy: str | None
+    status: str | None
+    version: str | None
+    final_date: str | None
+
+
+class PoolEpisode(PoolModel):
+    key: NonEmptyText
+    code: str | None
+    title: NonEmptyText
+    category: str | None
+    slugs: list[NonEmptyText]
+    candidate_ids: list[NonEmptyText]
+    catalog: EpisodeCatalog
+
+
 class SeriesCounts(PoolModel):
     raw_records: Annotated[int, Field(ge=0)]
     selected: Annotated[int, Field(ge=0)]
@@ -116,6 +136,7 @@ class SeriesBundle(PoolModel):
     counts: SeriesCounts
     audience_min: Annotated[float, Field(ge=1, le=10)]
     themes: list[ThemeDetail]
+    episodes: list[PoolEpisode]
     expansions: list[Expansion]
     checkpoints: list[Checkpoint]
     sources: SourceHashes
@@ -172,3 +193,28 @@ class ThemePage(PoolModel):
 class ExpansionPage(PoolModel):
     expansions: list[Expansion]
     checkpoints: list[Checkpoint]
+
+
+class EpisodeStatusRow(PoolModel):
+    key: str
+    code: str | None
+    title: str
+    category: str | None
+    slugs: list[str]
+    candidate_ids: list[str]
+    published: bool
+    youtube_id: str | None
+    youtube_url: str | None
+    youtube_source: Literal["site", "catalog"] | None
+    site_slug: str | None
+    publish_at: datetime | None
+    stage: str | None
+    dropped: bool
+    privacy: str | None
+
+
+class EpisodePage(PoolModel):
+    items: list[EpisodeStatusRow]
+    total: int
+    published: int
+    unpublished: int

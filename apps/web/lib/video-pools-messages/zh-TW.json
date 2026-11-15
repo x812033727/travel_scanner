@@ -4,14 +4,32 @@
   "description": "奇聞檔案局與原來如此事務所兩個素材池的題案、獨立觀眾評分與擴池紀錄。題案是編輯候選，不是已核准的劇本；分數是一般觀眾讀題案的吸引力參考，不是成片評分或點閱率預測。",
   "readOnly": "資料隨部署更新，這裡只能瀏覽；要改題案請改 repo 的素材池。",
   "seriesLabel": "系列",
-  "series": { "curio": "奇聞檔案局", "so-thats-why": "原來如此事務所" },
+  "series": {
+    "curio": "奇聞檔案局",
+    "so-thats-why": "原來如此事務所"
+  },
   "revision": "池子版本：{revision}",
-  "counts": { "selected": "入選題", "producible": "可成題", "long_reserve": "長題後備", "scored": "已評分題案", "improved": "改進過的題案" },
+  "counts": {
+    "selected": "入選題",
+    "producible": "可成題",
+    "long_reserve": "長題後備",
+    "scored": "已評分題案",
+    "improved": "改進過的題案"
+  },
   "minimum": "入題門檻：獨立觀眾評分 {min} 分以上；新成題要經過評分、改進、複評才入題。",
   "viewLabel": "檢視",
-  "views": { "themes": "成題列表", "expansions": "擴池紀錄" },
+  "views": {
+    "themes": "成題列表",
+    "published": "上架狀態",
+    "expansions": "擴池紀錄"
+  },
   "statusLabel": "狀態",
-  "statuses": { "producible": "可成題", "reserve": "長題後備", "short": "短題", "all": "全部題案" },
+  "statuses": {
+    "producible": "可成題",
+    "reserve": "長題後備",
+    "short": "短題",
+    "all": "全部題案"
+  },
   "category": "分類",
   "allCategories": "全部分類",
   "minScore": "最低分數",
@@ -29,10 +47,22 @@
   "rank": "第 {rank}／{of} 名",
   "score": "觀眾評分",
   "notScored": "未評分",
-  "dims": { "click": "點擊", "hook": "鉤子", "surprise": "驚喜", "payoff": "兌現", "share": "分享" },
+  "dims": {
+    "click": "點擊",
+    "hook": "鉤子",
+    "surprise": "驚喜",
+    "payoff": "兌現",
+    "share": "分享"
+  },
   "minutes": "約 {minutes} 分鐘",
   "candidates": "{count} 題素材",
-  "verdicts": { "ready": "可成題", "merge": "待合併", "reserve": "後備", "drop": "淘汰", "none": "素材未審" },
+  "verdicts": {
+    "ready": "可成題",
+    "merge": "待合併",
+    "reserve": "後備",
+    "drop": "淘汰",
+    "none": "素材未審"
+  },
   "details": "查看題案",
   "detailLoading": "載入題案內容中",
   "detailError": "無法載入這個題案",
@@ -54,5 +84,23 @@
   "previous": "上一頁",
   "next": "下一頁",
   "pagination": "第 {page} 頁，共 {pages} 頁",
-  "pageLabel": "題案分頁"
+  "pageLabel": "題案分頁",
+  "publishedLabel": "上架狀態",
+  "publishedStatuses": {
+    "published": "已上架",
+    "unpublished": "未上架",
+    "all": "全部"
+  },
+  "episodeSearch": "搜尋片名、集數代號、slug 或題號",
+  "episodeResults": "符合條件的集數：{count} 集",
+  "episodeEmpty": "沒有符合條件的集數",
+  "episodeCores": "題號：{ids}",
+  "dropped": "已撤下",
+  "sources": {
+    "site": "站台紀錄",
+    "catalog": "各集總表"
+  },
+  "privacy": "公開狀態：{privacy}",
+  "publishAt": "預定公開：{date}",
+  "stage": "製作階段：{stage}"
 }

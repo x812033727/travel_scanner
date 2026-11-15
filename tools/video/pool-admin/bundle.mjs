@@ -31,6 +31,48 @@ function audience(value) {
   };
 }
 
+const CATALOG = 'docs/videos/explainer-series/catalog.json';
+const base = (dir) => dir.split('/').pop();
+
+/**
+ * Produced episodes of a series, from the per-episode catalog (docs/videos/explainer-series/catalog.json) joined to
+ * the pool cores they came from: Curio cores name their episode folders in production.locators; So That's Why
+ * legacy cores name their episode code (P14) in prior_decision.episode. The API looks the slugs up in the site's
+ * video projects for the live YouTube id; the catalog's id is only the fallback.
+ */
+function episodesFor(root, series, pool) {
+  const catalog = existsSync(path.join(root, CATALOG)) ? json(root, CATALOG).episodes.filter((row) => row.series === series.name) : [];
+  const byDir = new Map();
+  const byCode = new Map();
+  for (const row of pool.candidates) {
+    for (const locator of row.production?.locators ?? []) if (/^docs\/videos\/(curio|sothatswhy)-/.test(locator)) byDir.set(base(locator), [...(byDir.get(base(locator)) ?? []), row.id]);
+    const code = row.prior_decision?.episode;
+    if (typeof code === 'string' && code) byCode.set(code.toUpperCase(), [...(byCode.get(code.toUpperCase()) ?? []), row.id]);
+  }
+  const used = new Set();
+  const episodes = catalog.map((row) => {
+    const slugs = [...new Set([row.slug, ...(row.repo_versions ?? []).map(base), ...(row.other_youtube_ids ?? []).map((pair) => pair.split('=')[0])].filter(Boolean))];
+    const code = (row.folder ?? '').split('/').pop() || (row.slug.match(/^sothatswhy-([a-z]\d+)/)?.[1] ?? '').toUpperCase();
+    const ids = new Set([...slugs.flatMap((slug) => byDir.get(slug) ?? []), ...(series.key === 'so-thats-why' && code ? byCode.get(code.toUpperCase()) ?? [] : [])]);
+    for (const slug of slugs) used.add(slug);
+    return {
+      key: row.slug || row.folder || slugs[0] || row.title,
+      code: code || null,
+      title: row.title || slugs[0] || code,
+      category: row.category || null,
+      slugs,
+      candidate_ids: [...ids].sort(),
+      catalog: { youtube_id: row.youtube_id || null, privacy: row.privacy || null, status: row.status || null, version: row.version || null, final_date: row.final_date || null },
+    };
+  });
+  // A produced core whose folders the catalog does not list still belongs on the list, unpublished until the site says otherwise.
+  for (const [dir, ids] of [...byDir].sort(([a], [b]) => a.localeCompare(b))) {
+    if (used.has(dir)) continue;
+    episodes.push({ key: dir, code: null, title: pool.candidates.find((row) => row.id === ids[0])?.question ?? dir, category: null, slugs: [dir], candidate_ids: [...new Set(ids)].sort(), catalog: { youtube_id: null, privacy: null, status: null, version: null, final_date: null } });
+  }
+  return episodes.filter((episode) => episode.title);
+}
+
 function seriesBundle(root, series) {
   const themesBytes = read(root, `${series.dir}/themes.json`);
   const manifestBytes = read(root, `${series.dir}/manifest.json`);
@@ -98,6 +140,7 @@ function seriesBundle(root, series) {
     },
     audience_min: AUDIENCE_MIN,
     themes: rows,
+    episodes: episodesFor(root, series, pool),
     expansions,
     checkpoints,
     sources: { themes_sha256: sha256(themesBytes), manifest_sha256: sha256(manifestBytes) },
