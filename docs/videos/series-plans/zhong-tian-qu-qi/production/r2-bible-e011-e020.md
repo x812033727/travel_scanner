@@ -69,6 +69,22 @@
       銀票只寫看得到的空白紙背，不寫框線與印；婚書寫「three small folded packets of plain red paper, every visible side completely blank red」。
     - **不說話的人**（尤其錄音鏡、背影鏡對面的人）每鏡寫「says nothing in this shot: lips pressed together from the first frame to the last, no talking, no mouthing words, no smile at any moment」。
     - **夜院場景圖**：柿子樹寫「only a few fruits high in its branches, nothing hanging below them」（紅色珠串故障）；圖上右上是滿月，提示詞不寫月亮的形狀與位置。
+18. **背景用正面描述，不寫否定名詞（第 13 集草稿教訓，2026-11-15，兩位挑片各自推斷出同一件事；第 14 集起照做，取代第 5、16、17 條裡的否定清單）**：
+    提示詞裡被否定的名詞會被畫出來。第 13 集院子的每句場景都寫「no weapon rack, no spears and no poles or sticks leaning anywhere」，
+    院子鏡幾乎每支都長出紅纓長槍或兵器架，參考圖 `set-xujia-yuan-l3` 上明明沒有；木匠鋪的 `TOOLS` 句寫「no knife, no sword, no axe」，s27 兩支就一把紅柄斧頭、一把刀；
+    `extras.json` 的「no strings of beads」每鏡都有，s02、s04、s05、s08、s11（1102）、s34（1101）、s37（兩支）照樣掛滿紅色或彩色珠串；竹林寫「no building, no roof, no lantern」，s37 就長出屋頂和遠處燈火；
+    「not a broad cleaver」的柴刀畫成寬菜刀。寫法：
+    - **背景寫在場的東西**：「bare earthen wall with nothing mounted or leaning on it」「plain fence」「empty ground」「only dense dark bamboo stalks growing straight up」；
+      有工具就寫確切幾樣（「one hand saw hanging flat on the wall and one wooden hand plane」），有竹竿就寫「smooth and round up to their cut ends」。
+      `NORACK`、`NOBLADE`、`TOOLS` 的否定清單、`LANE_POLES` 的「no tips, no blades, no tassels」、`GROVE_BACK` 的 no building／roof／lantern／lit window、
+      `FIRE` 的 no bowl／brazier／basin 都改成正面句。可以用「nothing」「nobody」「only」，不列被否定的那樣東西。
+    - **道具寫它的樣子**：燈籠寫「one round white paper lantern held by its bamboo handle」（第 13 集畫成金屬油燈、碟裝蠟燭）；柴刀寫刀身「two fingers wide」，
+      不寫「not a broad cleaver, not a sword」；畫面裡唯一的刀寫「the knife in her right hand is the only metal in the frame」。
+    - **`extras.json` 的乾淨句**只留「no subtitles, captions or text anywhere on screen」，neon lines、glowing streaks、light rain、strings of beads、glitch effects
+      這五個換成「the air is clear and still, a clean natural film image」。
+    - **不笑寫成具體動作**：緊抿嘴、皺眉、嘴角下拉、鼻子哼一聲、別開臉、咬牙；說完最後一個字之後的那一兩秒也寫一個動作佔住（笑多半在句尾冒出來），
+      不靠「no smile at any moment」。容易笑場的角色（石木匠、許硯說推託的話）鏡頭買短：第 13 集 fix1 不笑的五鏡從 8 秒改買 6 秒。
+    - 已經拍完的鏡不回頭改；重拍的提示詞照這條改（第 13 集 `colab/runs/e913-live/fix1/mkspec.py`、`fix2/mkspec.py`）。
 
 ## 時間線（r2 定案，從 `r2-bible-e011-e060.md` 帶過來）
 
