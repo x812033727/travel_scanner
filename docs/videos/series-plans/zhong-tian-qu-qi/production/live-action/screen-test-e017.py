@@ -25,8 +25,8 @@ wrong state wins over the text, so the wrong-state picture is not sent; e017 nee
   pale. A dawn shot sent the night picture would come out as night (bible 拍法 8, the other way round).
 gen-dh.mjs maps "burnt paper workshop", "new timber frame" and "new timber frame at dawn" to these ids (shared edit, e910-e916
 rebuild byte for byte); pilot.py takes the newest l-version, so the l2 picks replace the l1 renders for every later episode (e018's night
-shots at the half-roofed frame start from gujia-ye-l2: bible 第 18 集). prep917.sh stops until all three (and set-dukou-l2, e016's redraw)
-are in refs-live.
+shots at the half-roofed frame start from gujia-ye-l2: bible 第 18 集). prep917.sh stops until all three
+are in refs-live (e016's set-dukou-l2, which s01 sends, is already there).
 The positive prompts are written only as what is there (bible 拍法 18); the things to keep out are in the negative files.
 """
 import json

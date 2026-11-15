@@ -38,8 +38,8 @@ e913-live/pick-review.md, the _note of hailuo/edit-dh-e914-live.json):
 State at the junction (e016 r2.py s42): the raft at dawn nearing the ferry landing; Tang Xiaotang kneeling with the oilcloth
 packet, Xu Yan standing, Qin Shuang poling at the bow; black smoke behind the village. s01 is the next moment at the jetty.
 Places (the coordinator's decisions, 2026-11-15; listed again in script.md 〈真人版的改動〉):
-- the ferry landing set-dukou-l2 (e016's redraw, in progress: the jetty empty, one column of black smoke behind the village):
-  s01 only; prep917.sh waits for refs-live/set-dukou-l2.png.
+- the ferry landing set-dukou-l2 (e016's redraw, picked 2026-11-15 while this was written: the jetty empty, the nearest
+  thatched house on the right bank burning under one column of black smoke): s01 only.
 - the yard set-xujia-yuan-l3 (sunrise light from the right, the well at the front right): s02-s10, s13-s15. The script's well
   "on the left" and gate "at the left front" follow the picture instead (bible 場景格局: the well is at the front right).
 - THREE NEW PICTURES (live-action/screen-test-e017.py, seeds 37019/37020, manifest
@@ -50,7 +50,7 @@ Places (the coordinator's decisions, 2026-11-15; listed again in script.md 〈�
   set-zhifang-gujia-ye-l2 (night: the ash raked to the left wall, a new pale pine frame of four posts and two crossbeams, a
   bonfire on a ring of stones at the front left, two blank paper lanterns) for s27-s35; set-zhifang-gujia-chen-l1 (the same
   frame at dawn, embers, a ladder at the right post) for s36-s40. gen-dh SET gets three lines (shared edit, e910-e916 rebuild
-  byte for byte). prep917.sh stops until all four pictures are in refs-live.
+  byte for byte). prep917.sh stops until the three are in refs-live (set-dukou-l2 is).
 - Inserts send no set picture (the e915 s08 lesson): s20 Qin Shuang's hand, s21 Xu Yan's finger, each picture only as the
   owner of the hand.
 """
@@ -77,8 +77,10 @@ MUSIC = "one cue per scene: an urgent cue of fast drums and driving strings at a
 DUKOU = ("wide calm water reflecting the sky, a few tall bare wooden mooring posts standing in the water, a low wooden jetty "
          "of bare grey planks running out from the right bank, dry grass and reeds along the right bank, a dirt path up the bank "
          "to a cluster of low thatched and tiled village houses on the right, blue hills far off at the left")
-SMOKE = ("from behind the village houses on the right one thick column of black smoke rising and rolling into the pale dawn sky, "
-         "the red glow low on the far left horizon")
+# set-dukou-l2 as picked (e016 round 2): the nearest thatched house on the bank at the right is the one burning (the paper
+# workshop), orange flames at its roof under one thick column of black smoke; the jetty runs from the left middle to the right bank.
+SMOKE = ("the nearest thatched house on the bank at the right on fire, orange flames at its roof and one thick column of black "
+         "smoke rolling up from it into the pale dawn sky, the red glow low on the far left horizon")
 YARD = ("the low thatched farmhouse with its dark open doorway, one lattice window and a stack of split firewood on the left, a "
         "plain wooden yard gate under a small tiled roof in the back wall, a bare persimmon tree in the middle with only a few "
         "orange fruits high in its branches, one round stone well with a wooden windlass at the front right, the low mud wall "
@@ -154,7 +156,8 @@ RICE = "one plain white rice ball the size of a child's fist"
 ABACUS = "one plain dark wooden abacus with a plain frame and plain round wooden beads"
 LEDGER = "one thread-bound ledger lying closed, its cover plain dark blue cloth"
 HAIRPIN = "one plain wooden hairpin as long as a finger"
-LANTERN = ("the charred remains of one small round paper lantern: a ring of blackened bamboo strips the size of two hands, and "
+LANTERN = ("the charred remains of one small round paper lantern: a ring of blackened bamboo strips the size of two hands, its "
+           "blank paper burned away to a few brown edges, and "
            "fixed at its base one small round copper plate as small as a thumbnail, embossed with the outline of one round coin "
            "with a square hole in its middle, smooth and plain all round it")
 
@@ -203,10 +206,10 @@ SHOTS = [
     # ---- scene 1: the fire. s01 at the ferry landing (the raft has just reached the jetty; the jetty runs to the right bank
     # and the village path on the right). No replay of e016 s42: Xu Yan is already in the air.
     dict(chapter="火場", loc="dukou", cam="Wide shot, slow push in", chars=["xuyan", "qinshuang", "tangxiaotang"], night="dukou", act=3,
-         comp=f"wide shot from the water: the bamboo raft of eight lashed green bamboo poles just bumping against the far end of the low wooden jetty in the middle of the frame; {XU_COAT}, framed full length, small, already in mid-leap from the raft onto the jetty planks, his face three-quarter to screen right toward the village, never the lens; urgent: brows drawn, mouth set; behind him on the raft Qin Shuang, {QIN}, framed full length, small, {PUNT} falling from her right hand onto the raft; kneeling in the middle of the raft Tang Xiaotang {TANG}, small, {PACKET} held against her in both arms, her face three-quarter to screen right toward the smoke, never the lens; afraid: brows drawn up, lips closed; exactly three people",
+         comp=f"wide shot from the water: the bamboo raft of eight lashed green bamboo poles just bumping against the far end of the low wooden jetty at the left of the middle; {XU_COAT}, framed full length, small, already in mid-leap from the raft onto the jetty planks, his face three-quarter to screen right toward the burning house, never the lens; urgent: brows drawn, mouth set; behind him on the raft Qin Shuang, {QIN}, framed full length, small, {PUNT} falling from her right hand onto the raft; kneeling in the middle of the raft Tang Xiaotang {TANG}, small, {PACKET} held against her in both arms, her face three-quarter to screen right toward the smoke, never the lens; afraid: brows drawn up, lips closed; exactly three people",
          lines=[],
          motion=f"Xu Yan lands on the jetty and runs along it toward the bank at the right; Qin Shuang lets the pole drop, jumps onto the jetty and runs after him; Tang Xiaotang stays kneeling on the raft, hugging the packet; {quiet('Xu Yan, Qin Shuang and Tang Xiaotang', 'their', True)}",
-         zh="全景、慢推（送 e016 重畫的 `set-dukou-l2`：棧橋空著、村後一柱黑煙）：竹筏剛撞上棧橋盡頭；許硯（外披舊灰外衣）第一格已經從竹筏跳上棧橋，往畫右的岸邊跑；秦霜把竹篙丟在筏上、跳上棧橋跟上；唐小棠跪在筏中間抱著油布小包（小、中性臉、嘴閉著）；三人嘴閉著（無台詞）"),
+         zh="全景、慢推（送 e016 重畫的 `set-dukou-l2`：棧橋空著、右岸最近那間草屋著火冒黑煙）：竹筏剛撞上棧橋左邊的盡頭；許硯（外披舊灰外衣）第一格已經從竹筏跳上棧橋，往畫右著火的那間屋子跑；秦霜把竹篙丟在筏上、跳上棧橋跟上；唐小棠跪在筏中間抱著油布小包（小、中性臉、嘴閉著）；三人嘴閉著（無台詞）"),
     # The yard (set-xujia-yuan-l3): the hut burns beyond the mud wall on the right; Carpenter Shi by that wall.
     dict(loc="fire", cam="Medium-wide shot, slow push in", chars=["shimujiang"], night="fire",
          comp=f"medium-wide shot: on screen right beside the low mud wall {CARP}, framed from the knees up with clear space above his head, {SHIPOLE} held up in both hands, its far end reaching over the wall toward the burning thatch, his face three-quarter to screen left toward Xu Yan off screen left, never the lens; frantic: brows knotted, eyes wide, mouth wide open between words, sweat on his face; the persimmon tree and the yard gate soft behind him at the left; he is alone in the yard; {HANDS}",
@@ -433,15 +436,15 @@ HEAD = [
     "- **火（照 animation-preproduction 分級，火放在背景與邊上）**：院子用 `set-xujia-yuan-l3`（屋在左、院門在後、柿子樹在中、井在前右），燒著的紙坊在**畫右土牆外**，每鏡火都在牆那邊、人都在院子這邊、臉被火光照橘；沒有人著火、沒有血。s11、s12、s16 在紙坊邊，不送場景圖，只有濃煙與後面的火光。皮膚只寫汗與一抹灰，不寫細小灰點（拍法 12）。",
     "- 唐小棠四句台詞都不露嘴、放錄音（nospeak）：s10、s17、s23、s31 從她背後拍，每鏡寫明「畫面裡唯一雙丸子頭粉緞帶的人」與固定在哪一側（沒有阿令的鏡另寫她是唯一的年輕女子）；spec.json 拿掉她三張臉部參考圖與身分句。她不說話的臉（s01、s18）用第 7 集的中性外貌句。秦霜 s04 那句從她背後拍（nospeak，spec 拿掉她的圖與身分句）。",
     "- **群眾**（第 14 集 s40、s42 一群人從門口湧進來最弱）：救火的十五人改成三、四個已經站好的村民，重建的十人改成兩對扛木頭、第一格已經在畫面裡的村民；都寫宋式短打、布包頭、小、只見側臉。一鏡最多三張有名字的臉。",
-    "- 場景：柳溪口 `set-dukou-l2`（第 16 集重畫中；s01）；院子 `set-xujia-yuan-l3`；**新畫三張**（`live-action/screen-test-e017.py`，種子 37019／37020，6 支，**還沒跑**）：燒毀的紙坊 `set-zhifang-shao-l2`（s17–s26）、夜裡的新骨架 `set-zhifang-gujia-ye-l2`（s27–s35）、天亮的新骨架 `set-zhifang-gujia-chen-l1`（s36–s40）。篇章試鏡的 `set-zhifang-shao-l1` 是一棟完好的 CG 草屋（狀態錯）、`set-zhifang-gujia-ye-l1` 是純 3D 渲染，都不送。`prep917.sh` 在四張圖進 refs-live 之前停住。",
+    "- 場景：柳溪口 `set-dukou-l2`（第 16 集重畫、已挑：棧橋空著、右岸最近那間草屋著火冒黑煙；s01）；院子 `set-xujia-yuan-l3`；**新畫三張**（`live-action/screen-test-e017.py`，種子 37019／37020，6 支，**還沒跑**）：燒毀的紙坊 `set-zhifang-shao-l2`（s17–s26）、夜裡的新骨架 `set-zhifang-gujia-ye-l2`（s27–s35）、天亮的新骨架 `set-zhifang-gujia-chen-l1`（s36–s40）。篇章試鏡的 `set-zhifang-shao-l1` 是一棟完好的 CG 草屋（狀態錯）、`set-zhifang-gujia-ye-l1` 是純 3D 渲染，都不送。`prep917.sh` 在這三張進 refs-live 之前停住（`set-dukou-l2` 已在）。",
     "- 長鏡要買的秒數（BUY）：照 40 句錄音核過（`~/mokaair-work/videos/zhong-tian-qu-qi-e917-dh/audio`，見 `r2.py` 的 BUY 註解；faster-whisper 逐句聽寫，a10、a26、a30、a32、a33 重錄，第一次的檔在 `audio/take1/`）：s39 買 10 秒（系統兩句加心裡話 9.6 秒，稿子的長鏡）；s05（稿子的長鏡，6.4 秒）、s08、s25（韓伯說得慢，5.7、7.1 秒）、s26（交竹簾再說 5.6 秒）、s28（二牛數一二起 6.9 秒）、s35（心裡話 7.4 秒）買 8 秒；其餘 6 秒（容易笑場的石木匠、二牛都留 6 秒）。",
     "- **表上的「秒」欄是 lint 估法**，比錄音短；剪接以錄音長度＋0.5 秒為準。",
 ]
 FOOT = [
-    "- **參考圖**（`assets/refs-live/`）：許硯、阿令、秦霜、唐小棠（l1 交領）、二牛、韓伯、石木匠、小禾。場景 `set-dukou-l2`（第 16 集重畫）、`set-xujia-yuan-l3`、新畫的 `set-zhifang-shao-l2`、`set-zhifang-gujia-ye-l2`、`set-zhifang-gujia-chen-l1`（`live-action/screen-test-e017.py`，manifest `~/mokaair-work/videos/_series/zhong-tian-qu-qi/live-screen-test-e017/e017.json`，6 支）。",
+    "- **參考圖**（`assets/refs-live/`）：許硯、阿令、秦霜、唐小棠（l1 交領）、二牛、韓伯、石木匠、小禾。場景 `set-dukou-l2`（第 16 集重畫、已挑）、`set-xujia-yuan-l3`、新畫的 `set-zhifang-shao-l2`、`set-zhifang-gujia-ye-l2`、`set-zhifang-gujia-chen-l1`（`live-action/screen-test-e017.py`，manifest `~/mokaair-work/videos/_series/zhong-tian-qu-qi/live-screen-test-e017/e017.json`，6 支）。",
     "- `gen-dh.mjs` 的 SET 加三行：`new timber frame at dawn` → `dh-set-zhifang-gujia-chen-t1`、`new timber frame` → `dh-set-zhifang-gujia-ye-t1`、`burnt paper workshop` → `dh-set-zhifang-shao-t1`（排在 `night work shed` 與 `work shed|workshop` 前）；第 910–916 集重建逐位元相同。`build-r2.py` 的 EN 與 `cast.json` 不用改。",
     "- `colab/runs/e917/extras.json`（照 e915、e916：畫面不放字幕、空氣清澈那句；拿掉秦霜的柴刀、二牛的 empty-handed、小禾抱著的草兔子改塞在腰帶；石木匠與韓伯的造型句改宋式交領）與 `colab/runs/e917-live/spec.json`（`mkspec.py` 產生；種子 9171101／9171102）。",
-    "- 免費準備：`prep917.sh`（`DRY=1 REFS=~/mokaair-work/videos/zhong-tian-qu-qi-e917-dh/runpod/refs-dh-e917 VIDEO_JSON=docs/videos/zhong-tian-qu-qi-e017-r2/video.json st1-ep.sh 917` → `pilot.py runpod/a/st1 runpod/live/st1 s01…s40` → `retake.py runpod/live/st1 runpod/live/d1 colab/runs/e917-live/spec.json` → `colab-jobs.json` 加 output_path → `preflight-prompts.py`）。草稿等 Colab 空出來、四張圖都挑好再拍。",
+    "- 免費準備：`prep917.sh`（`DRY=1 REFS=~/mokaair-work/videos/zhong-tian-qu-qi-e917-dh/runpod/refs-dh-e917 VIDEO_JSON=docs/videos/zhong-tian-qu-qi-e017-r2/video.json st1-ep.sh 917` → `pilot.py runpod/a/st1 runpod/live/st1 s01…s40` → `retake.py runpod/live/st1 runpod/live/d1 colab/runs/e917-live/spec.json` → `colab-jobs.json` 加 output_path → `preflight-prompts.py`）。草稿等 Colab 空出來、三張新圖都挑好再拍。",
     "- 配樂：第一場急促鼓與弦，s11 阿令衝出一個重音、s14 叮、s15 頂塌一個大重音後收；第二場低弦與風聲，s20 燈籠一個重音、s23「賴三」第二個；第三場溫暖的鼓點與號子，s36 天亮一個上揚的重音，s38 紅框一個冷重音後收。音效表見 script.md〈音樂與音效〉。",
 ]
 

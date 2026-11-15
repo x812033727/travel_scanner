@@ -10,14 +10,14 @@
 - **火（照 animation-preproduction 分級，火放在背景與邊上）**：院子用 `set-xujia-yuan-l3`（屋在左、院門在後、柿子樹在中、井在前右），燒著的紙坊在**畫右土牆外**，每鏡火都在牆那邊、人都在院子這邊、臉被火光照橘；沒有人著火、沒有血。s11、s12、s16 在紙坊邊，不送場景圖，只有濃煙與後面的火光。皮膚只寫汗與一抹灰，不寫細小灰點（拍法 12）。
 - 唐小棠四句台詞都不露嘴、放錄音（nospeak）：s10、s17、s23、s31 從她背後拍，每鏡寫明「畫面裡唯一雙丸子頭粉緞帶的人」與固定在哪一側（沒有阿令的鏡另寫她是唯一的年輕女子）；spec.json 拿掉她三張臉部參考圖與身分句。她不說話的臉（s01、s18）用第 7 集的中性外貌句。秦霜 s04 那句從她背後拍（nospeak，spec 拿掉她的圖與身分句）。
 - **群眾**（第 14 集 s40、s42 一群人從門口湧進來最弱）：救火的十五人改成三、四個已經站好的村民，重建的十人改成兩對扛木頭、第一格已經在畫面裡的村民；都寫宋式短打、布包頭、小、只見側臉。一鏡最多三張有名字的臉。
-- 場景：柳溪口 `set-dukou-l2`（第 16 集重畫中；s01）；院子 `set-xujia-yuan-l3`；**新畫三張**（`live-action/screen-test-e017.py`，種子 37019／37020，6 支，**還沒跑**）：燒毀的紙坊 `set-zhifang-shao-l2`（s17–s26）、夜裡的新骨架 `set-zhifang-gujia-ye-l2`（s27–s35）、天亮的新骨架 `set-zhifang-gujia-chen-l1`（s36–s40）。篇章試鏡的 `set-zhifang-shao-l1` 是一棟完好的 CG 草屋（狀態錯）、`set-zhifang-gujia-ye-l1` 是純 3D 渲染，都不送。`prep917.sh` 在四張圖進 refs-live 之前停住。
+- 場景：柳溪口 `set-dukou-l2`（第 16 集重畫、已挑：棧橋空著、右岸最近那間草屋著火冒黑煙；s01）；院子 `set-xujia-yuan-l3`；**新畫三張**（`live-action/screen-test-e017.py`，種子 37019／37020，6 支，**還沒跑**）：燒毀的紙坊 `set-zhifang-shao-l2`（s17–s26）、夜裡的新骨架 `set-zhifang-gujia-ye-l2`（s27–s35）、天亮的新骨架 `set-zhifang-gujia-chen-l1`（s36–s40）。篇章試鏡的 `set-zhifang-shao-l1` 是一棟完好的 CG 草屋（狀態錯）、`set-zhifang-gujia-ye-l1` 是純 3D 渲染，都不送。`prep917.sh` 在這三張進 refs-live 之前停住（`set-dukou-l2` 已在）。
 - 長鏡要買的秒數（BUY）：照 40 句錄音核過（`~/mokaair-work/videos/zhong-tian-qu-qi-e917-dh/audio`，見 `r2.py` 的 BUY 註解；faster-whisper 逐句聽寫，a10、a26、a30、a32、a33 重錄，第一次的檔在 `audio/take1/`）：s39 買 10 秒（系統兩句加心裡話 9.6 秒，稿子的長鏡）；s05（稿子的長鏡，6.4 秒）、s08、s25（韓伯說得慢，5.7、7.1 秒）、s26（交竹簾再說 5.6 秒）、s28（二牛數一二起 6.9 秒）、s35（心裡話 7.4 秒）買 8 秒；其餘 6 秒（容易笑場的石木匠、二牛都留 6 秒）。
 - **表上的「秒」欄是 lint 估法**，比錄音短；剪接以錄音長度＋0.5 秒為準。
 
 | 鏡 | 開始 | 秒 | 種類 | 景別、運鏡 | 畫面 | 台詞 | 面板（overlays） |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | **火場** |||||||
-| s01 | 0:00 | 3.0 | 片段 | Wide shot, slow push in | 全景、慢推（送 e016 重畫的 `set-dukou-l2`：棧橋空著、村後一柱黑煙）：竹筏剛撞上棧橋盡頭；許硯（外披舊灰外衣）第一格已經從竹筏跳上棧橋，往畫右的岸邊跑；秦霜把竹篙丟在筏上、跳上棧橋跟上；唐小棠跪在筏中間抱著油布小包（小、中性臉、嘴閉著）；三人嘴閉著（無台詞）（無台詞） | — | — |
+| s01 | 0:00 | 3.0 | 片段 | Wide shot, slow push in | 全景、慢推（送 e016 重畫的 `set-dukou-l2`：棧橋空著、右岸最近那間草屋著火冒黑煙）：竹筏剛撞上棧橋左邊的盡頭；許硯（外披舊灰外衣）第一格已經從竹筏跳上棧橋，往畫右著火的那間屋子跑；秦霜把竹篙丟在筏上、跳上棧橋跟上；唐小棠跪在筏中間抱著油布小包（小、中性臉、嘴閉著）；三人嘴閉著（無台詞）（無台詞） | — | — |
 | s02 | 0:03 | 4.4 | 片段 | Medium-wide shot, slow push in | 中全景、慢推（院子 l3：紙坊在畫右土牆外燒，火都在牆那邊）：石木匠（皮圍裙、衣服灰）在畫右土牆邊，兩手把一根兩人長的青竹竿往牆外的火裡一捅，回頭朝畫左（許硯跑進來的方向）嘶喊；說完轉回去對著火、咬牙；不笑（原稿的跟拍改慢推：他不走動） | 石木匠：簾子還在裡面！三張都掛在架子上！ | — |
 | s03 | 0:07 | 1.5 | 片段 | Medium shot, slow push in | 中景、慢推：阿令在前右的石井邊（畫面中偏右），兩手把一塊灰布浸進井沿上的水桶，濕淋淋地往頭上肩上一蓋，往畫右的煙衝出畫面；嘴閉著（許硯「阿令！」短喊在畫外） | 許硯（畫外）：阿令！ | — |
 | s04 | 0:08 | 5.1 | 片段 | Over-the-shoulder medium shot, slow push in | 過肩中景、慢推：前景左只有秦霜的後腦、高馬尾與肩（背對鏡頭說話，nospeak；spec 拿掉她的參考圖與身分句），她的左手第一格就已經抓著許硯的右手腕（接觸寫成第一格的狀態，不演『抓』）；許硯（外衣）在畫面中偏右，身體往畫右的火掙一下、被拉住、停下，眼睛看手腕再回到她；嘴閉著。台詞剪接放錄音 | 秦霜：別進去，你不會躲火。你去顧井，我叫人排水。 | — |
@@ -60,8 +60,8 @@
 | s39 | 2:44 | 10.5 | 片段 | Close-up, slow push in | 近景、慢推（身後只有骨架）：許硯握燈籠的手一緊、眉頭皺起來，不服地往旁邊一瞥、再收回來；全程嘴閉著（系統兩句與心裡話畫外，紅框面板疊上）（長鏡） | 系統（畫外）：失敗：失去種田技能。<br>許硯：放火的是他，扣的倒是我的技能？<br>系統（畫外）：系統不抓人，只看結果。宿主自己想辦法。 | 失敗：失去種田技能（penalty） |
 | s40 | 2:55 | 5.2 | 片段 | Medium shot, slow push in | 中景推到中近景、慢推：許硯把燒剩的燈籠舉到眼前，盯著底座那塊小銅片，慢慢握緊；全程嘴閉著（心裡話畫外；結尾，懸念接第 18 集） | 許硯：七天……我要讓錢員外，自己開口認罪。 | — |
 
-- **參考圖**（`assets/refs-live/`）：許硯、阿令、秦霜、唐小棠（l1 交領）、二牛、韓伯、石木匠、小禾。場景 `set-dukou-l2`（第 16 集重畫）、`set-xujia-yuan-l3`、新畫的 `set-zhifang-shao-l2`、`set-zhifang-gujia-ye-l2`、`set-zhifang-gujia-chen-l1`（`live-action/screen-test-e017.py`，manifest `~/mokaair-work/videos/_series/zhong-tian-qu-qi/live-screen-test-e017/e017.json`，6 支）。
+- **參考圖**（`assets/refs-live/`）：許硯、阿令、秦霜、唐小棠（l1 交領）、二牛、韓伯、石木匠、小禾。場景 `set-dukou-l2`（第 16 集重畫、已挑）、`set-xujia-yuan-l3`、新畫的 `set-zhifang-shao-l2`、`set-zhifang-gujia-ye-l2`、`set-zhifang-gujia-chen-l1`（`live-action/screen-test-e017.py`，manifest `~/mokaair-work/videos/_series/zhong-tian-qu-qi/live-screen-test-e017/e017.json`，6 支）。
 - `gen-dh.mjs` 的 SET 加三行：`new timber frame at dawn` → `dh-set-zhifang-gujia-chen-t1`、`new timber frame` → `dh-set-zhifang-gujia-ye-t1`、`burnt paper workshop` → `dh-set-zhifang-shao-t1`（排在 `night work shed` 與 `work shed|workshop` 前）；第 910–916 集重建逐位元相同。`build-r2.py` 的 EN 與 `cast.json` 不用改。
 - `colab/runs/e917/extras.json`（照 e915、e916：畫面不放字幕、空氣清澈那句；拿掉秦霜的柴刀、二牛的 empty-handed、小禾抱著的草兔子改塞在腰帶；石木匠與韓伯的造型句改宋式交領）與 `colab/runs/e917-live/spec.json`（`mkspec.py` 產生；種子 9171101／9171102）。
-- 免費準備：`prep917.sh`（`DRY=1 REFS=~/mokaair-work/videos/zhong-tian-qu-qi-e917-dh/runpod/refs-dh-e917 VIDEO_JSON=docs/videos/zhong-tian-qu-qi-e017-r2/video.json st1-ep.sh 917` → `pilot.py runpod/a/st1 runpod/live/st1 s01…s40` → `retake.py runpod/live/st1 runpod/live/d1 colab/runs/e917-live/spec.json` → `colab-jobs.json` 加 output_path → `preflight-prompts.py`）。草稿等 Colab 空出來、四張圖都挑好再拍。
+- 免費準備：`prep917.sh`（`DRY=1 REFS=~/mokaair-work/videos/zhong-tian-qu-qi-e917-dh/runpod/refs-dh-e917 VIDEO_JSON=docs/videos/zhong-tian-qu-qi-e017-r2/video.json st1-ep.sh 917` → `pilot.py runpod/a/st1 runpod/live/st1 s01…s40` → `retake.py runpod/live/st1 runpod/live/d1 colab/runs/e917-live/spec.json` → `colab-jobs.json` 加 output_path → `preflight-prompts.py`）。草稿等 Colab 空出來、三張新圖都挑好再拍。
 - 配樂：第一場急促鼓與弦，s11 阿令衝出一個重音、s14 叮、s15 頂塌一個大重音後收；第二場低弦與風聲，s20 燈籠一個重音、s23「賴三」第二個；第三場溫暖的鼓點與號子，s36 天亮一個上揚的重音，s38 紅框一個冷重音後收。音效表見 script.md〈音樂與音效〉。
