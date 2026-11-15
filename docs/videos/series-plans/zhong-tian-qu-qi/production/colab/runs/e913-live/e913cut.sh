@@ -12,25 +12,26 @@ miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.j
 # (s22 start 0.708 and s27 start 0.458: their first syllable starts at 0.75 / 0.50, so 0.75 / 0.5 began on it; s13 7.5 kept).
 # Whole frames: a start rounded DOWN and an end-before rounded UP to 3 decimals, tolerance 0.001 (e912 review 3: -ss keeps a
 # frame at/after start, -to drops a frame whose end passes it); 0 = no end (the clip's end).
-# s06 s11 s40 s41 are fix3 retakes (placeholders in this table): their trims and seeds are not checked, only printed --
-# recheck their line_at, clip_af (s11), masks and min against the new takes before the cut.
+# REVIEW 3 (after cut-review.md and cut-review-2.md; review3-trims.tsv): s24 start 0.75 (一成先不說 back in), the fix3 takes
+# trimmed -- s06 end 8.5, s11 start 1.0, s40 end 2.5, s41 end 1.75 -- and their seeds checked like the others.
 # Warn (not stop) if picks.json differs.
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
 want={'s01':(2.25,6.5),'s02':(3.0,8.0),'s03':(0.5,6.5),'s04':(3.5,8.0),'s05':(1.0,5.5),'s07':(0,4.5),'s08':(0.25,5.25),'s09':(0.5,6.5),
  's10':(0.5,5.5),'s12':(3.5,8.0),'s13':(2.5,7.5),'s14':(0.25,3.25),'s15':(0,6.5),'s16':(2.375,8.0),'s17':(2.75,0),'s18':(0,8.0),
- 's19':(0.5,4.5),'s20':(3.0,7.625),'s21':(2.5,7.25),'s22':(0.708,5.75),'s23':(3.0,8.0),'s24':(3.375,8.0),'s25':(0,5.0),'s26':(4.0,8.0),
+ 's19':(0.5,4.5),'s20':(3.0,7.625),'s21':(2.5,7.25),'s22':(0.708,5.75),'s23':(3.0,8.0),'s24':(0.75,8.0),'s25':(0,5.0),'s26':(4.0,8.0),
  's27':(0.458,5.25),'s28':(1.5,8.0),'s29':(0.5,5.5),'s30':(1.25,5.125),'s31':(0.25,6.25),'s32':(3.25,8.0),'s33':(0.5,5.5),'s34':(1.5,8.0),
- 's35':(0,4.5),'s36':(0.5,5.0),'s37':(0.5,5.5),'s38':(0.75,5.75),'s39':(1.75,4.75),'s42':(1.5,0)}
-seed={'s05':9131201,'s08':9131201,'s15':9131201,'s22':9131201,'s27':9131201,'s29':9131201,'s35':9131301,'s37':9131301,'s38':9131302,'s42':9131302}
+ 's35':(0,4.5),'s36':(0.5,5.0),'s37':(0.5,5.5),'s38':(0.75,5.75),'s39':(1.75,4.75),'s42':(1.5,0),
+ 's06':(0,8.5),'s11':(1.0,0),'s40':(0,2.5),'s41':(0,1.75)}
+seed={'s05':9131201,'s08':9131201,'s15':9131201,'s22':9131201,'s27':9131201,'s29':9131201,'s35':9131301,'s37':9131301,'s38':9131302,'s42':9131302,'s06':9131401,'s11':9131402,'s40':9131401,'s41':9131402}
 bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].get(\"end-before\",0)} (want {a} {b})' for s,(a,b) in want.items()
      if abs(p[s]['trim'].get('start',0)-a)>0.001 or abs(p[s]['trim'].get('end-before',0)-b)>0.001]
 bad+=[f'{s} seed {p[s][\"seed\"]} (want {v})' for s,v in seed.items() if p[s]['seed']!=v]
-print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None
-print('fix3 placeholders: '+'; '.join(f'{s} seed {p[s][\"seed\"]} trim {p[s][\"trim\"]}' for s in ('s06','s11','s40','s41') if s in p))"
+print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # s26 (the overhead drawing insert) jitters frame to frame (cut-qa jitter 0.43 on the draft): the edit table's vf runs
 # vidstabtransform on this file, so detect on the staged clip exactly as assemble-v4 feeds it (1920x1080, 24 fps)
-# (pick-review: shakiness 8, accuracy 15; on the draft jitter 0.43 -> 0.05)
+# (pick-review: shakiness 8, accuracy 15; on the draft jitter 0.43 -> 0.05). REVIEW 3: the edit table smooths with 4, not 12
+# (12 swung the board about 15 px left and right at c2.2-2.8, the hand read as camera motion; 4 holds it to 2-3 px)
 ffmpeg -v error -y -i $E/clips/s26-t1.mp4 -vf "scale=1920:1080:flags=lanczos,fps=24,format=yuv420p,vidstabdetect=shakiness=8:accuracy=15:result=$E/s26.trf" -f null - || exit 1
 cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ $R/docs/videos/zhong-tian-qu-qi-e013-r2/overlays.json $P/hailuo/edit-dh-e913-live.json $E $E/cut/e913-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log
 [ -f $E/cut/e913-live.mp4 ] || exit 1

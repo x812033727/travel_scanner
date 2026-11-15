@@ -73,10 +73,13 @@ function panelFilters(shot) {
   // `at` on the first overlay item: when the panel appears (e907 cut review: a fixed 0.15 put "已賺 6 兩" two seconds before the money went in)
   // `panel_y: {"s02": 690}` in the edit list: the panel's top edge for that shot (e912: off the faces); 120 otherwise
   const h = 70 + 64 * items.length, y0 = Number(edit.panel_y?.[shot] ?? 120), start = Number(items[0].at ?? 0.15);
-  let f = `,drawbox=x=(iw-1000)/2:y=${y0}:w=1000:h=${h}:color=0x0b2a4a@0.62:t=fill:enable='gte(t,${start})'`;
-  f += `,drawbox=x=(iw-1000)/2:y=${y0}:w=1000:h=${h}:color=0x7fd6ff@0.9:t=3:enable='gte(t,${start})'`;
+  // `panel_until: {"s18": 4.35}` in the edit list: seconds into the shot when the panel goes (e913 cut reviews: s18's panel
+  // sat under the subtitle of the system's next line a19); a shot not named keeps its panel to the end, as before
+  const until = edit.panel_until?.[shot], on = (s) => (until === undefined ? `gte(t,${s})` : `between(t,${s},${Number(until)})`);
+  let f = `,drawbox=x=(iw-1000)/2:y=${y0}:w=1000:h=${h}:color=0x0b2a4a@0.62:t=fill:enable='${on(start)}'`;
+  f += `,drawbox=x=(iw-1000)/2:y=${y0}:w=1000:h=${h}:color=0x7fd6ff@0.9:t=3:enable='${on(start)}'`;
   items.forEach((item, i) => {
-    f += `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-p${i}`, item.text)}':fontsize=52:fontcolor=${COLORS[item.kind] ?? COLORS.panel}:shadowcolor=0x000000@0.8:shadowx=2:shadowy=2:x=(w-text_w)/2:y=${y0 + 38 + 64 * i}:enable='gte(t,${start + 0.1 * i})'`;
+    f += `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-p${i}`, item.text)}':fontsize=52:fontcolor=${COLORS[item.kind] ?? COLORS.panel}:shadowcolor=0x000000@0.8:shadowx=2:shadowy=2:x=(w-text_w)/2:y=${y0 + 38 + 64 * i}:enable='${on(start + 0.1 * i)}'`;
   });
   return f;
 }
