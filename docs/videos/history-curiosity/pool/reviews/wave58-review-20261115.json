@@ -1,0 +1,373 @@
+{
+  "batch": "batches/wave58-20261115.json",
+  "reviewed_on": "2026-11-15",
+  "method": "四位沒有參與研究的獨立覆核代理（R581–R584 依序覆核 ZN1–ZN4）逐題至少重新請求一個關鍵一手／機構來源、對照研究代理的請求紀錄逐筆核對網址出處與快取雜湊、grep 全池與跨系列核心去重、對照系列不收清單與 1956 真人規範及 8 分鐘門檻；修改直接寫進批次的題目與來源欄位，沒被引用的來源移除。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 17,
+    "NEEDS_CHECK": 2,
+    "REJECT": 1
+  },
+  "source_renames": {},
+  "verdicts": [
+    {
+      "id": "N6401",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN1-S001 https://archive.org/details/trialofroyalbrit00browrich（R581 重開審訊速記，核對起訴書 pp. 12–15 與判決 pp. 135–148）",
+      "reopen_result": "相符：總經理 Cameron 與董事會明知虧損仍發布虛假資產負債表並宣告 6% 股息；放貸董事自營 Glamorganshire 鐵礦公司超過十二萬鎊屬實；檢察總長 Bethell 首次以刑法共謀詐欺起訴董事會全員成立。修訂：修飾 hook 與 scope 敘述，強調制度性轉折。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：查池內無 Royal British Bank 相關題目，與 N5702、南海公司等題完全不同。核心轉折強烈，撐得起 8.5–11 分鐘。",
+      "agent": "ZN1",
+      "reviewer": "R581",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6402",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN1-S002 https://archive.org/details/historyofbanksof00grah（R581 重開愛丁堡銀行史文獻，核對 pp. 242–254 停付與追索清冊）",
+      "reopen_result": "相符：格拉斯哥市銀行為無限責任合夥銀行；金庫百萬黃金儲備作假屬實；1,811 名股東每百鎊股票被追索 2,250 鎊清算款相符。修訂：在 answer_target 補齊 1879 年有限責任法案背景。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內無格拉斯哥市銀行崩塌題。無限責任制度對普通中產階級股東的毀滅性衝擊極具警示與反思價值，過門檻入選。",
+      "agent": "ZN1",
+      "reviewer": "R581",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6403",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN1-S003 https://archive.org/details/reportfromselect00grea_3（R581 重開下議院藍皮書質詢實錄，核對 pp. 82–108 冒名筆錄）",
+      "reopen_result": "相符：1845 年鐵路狂熱國會審批規定繳納 10% 押金與名冊；發起人收買倫敦街頭流浪漢與信差冒名簽署數萬英鎊股份契約屬實。修訂：明確限定不針對當代股市做延伸攻擊。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內雖有鐵路狂熱提及，但無下議院偽造認購名冊專案調查題。反轉生動，入選。",
+      "agent": "ZN1",
+      "reviewer": "R581",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6404",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN1-S004 https://archive.org/details/westernaustralia00gold（R581 重開西澳地質局公報，核對 pp. 36–44 地質勘測剖面）",
+      "reopen_result": "相符：庫爾加迪 Golden Hole 表層富礦囊挖出數千盎司黃金並裝入鐵盒鎖上展出屬實；開挖二十英尺後貧瘠石英脈中斷屬實；地質學成因分析確鑿。修訂：修飾 visual 與 editorial 定位。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內無庫爾加迪金礦騙局題。地質罕見富礦囊與資本炒作落差巨大，反轉極佳，入選。",
+      "agent": "ZN1",
+      "reviewer": "R581",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6405",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN1-S005 https://archive.org/details/lightingofpasseng00pint（R581 重開 Pintsch 系統技術公報，核對 pp. 8–52 專利與化學原理）",
+      "reopen_result": "相符：石油殘渣高溫熱裂解製成富烴油氣；十個大氣壓下抗冷凝與低溫燃燒優勢屬實；鐵路事故中防漏安全閥與北美換裝合約相符。修訂：補充與普通城市煤氣化學成分之精準對比。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內無 Pintsch 油氣鐵路專利題。破解夜行火車安全難題之技術反轉生動，入選。",
+      "agent": "ZN1",
+      "reviewer": "R581",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6421",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN2-S001 https://archive.org/details/astronomischenac112unkngoog（R582 重開 Astronomische Nachrichten 原文，核對 pp. 355–360 測光與光譜）",
+      "reopen_result": "相符：Hartwig 於 1885 年 8 月在仙女座星雲核心觀測到 6 等新星屬實；拉普拉斯星雲假說與島宇宙論在當時能量計算上的尖銳衝突確鑿。修訂：嚴格鎖定不提及現代天文學家姓名。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內無 SN 1885A 仙女座超新星大辯論題。宇宙尺度大爭論極具懸念，入選。",
+      "agent": "ZN2",
+      "reviewer": "R582",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6422",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN2-S002 https://archive.org/details/reportsobservati00unit_1（R582 重開海軍天文台日食公報，核對 pp. 38–76 營地紀錄）",
+      "reopen_result": "相符：愛迪生微熱計 Tasimeter 因日冕熱輻射超出量程而失效屬實；Watson 與 Swift 聲稱在太陽旁看見祝融星被證實為巨蟹座已知恆星錯位屬實。修訂：修飾愛迪生實驗細節。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內雖有祝融星概念（N2422），但無 1878 年懷俄明日全食愛迪生微熱計與 Watson 觀測烏龍專題。雙重科學反轉，入選。",
+      "agent": "ZN2",
+      "reviewer": "R582",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6423",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN2-S003 https://doi.org/10.1038/217709a0（R582 重讀 Nature 1968 論文與實驗室代號記錄）",
+      "reopen_result": "相符：1967 年 11 月 Jocelyn Bell 記錄到 1.337 秒極度精確週期脈衝；實驗室內部一度標記 LGM-1 並嚴格保密屬實；隨後第二顆脈衝星證實為旋轉中子星屬實。修訂：遵守 1956 規則，不評述諾貝爾獎爭議。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內無首顆脈衝星發現與 LGM-1 命名題。科學假說提出與證偽過程完美，入選。",
+      "agent": "ZN2",
+      "reviewer": "R582",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6424",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN2-S004 https://archive.org/details/magneticalandme00obsegoog（R582 重開格林威治觀測日誌，核對 pp. xxiv–148 感光紙設備）",
+      "reopen_result": "相符：Airy 於 1844 年建立溴化銀感光紙自記磁力儀；強烈地磁暴中磁針光斑沖出邊界與地底電報線感應電流自發打字屬實。修訂：明確區分與 1859 年卡靈頓事件的不同。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內無格林威治 1844 年感光紙自記磁暴與早期電報自發打字題。儀器飛躍與自然反轉強烈，入選。",
+      "agent": "ZN2",
+      "reviewer": "R582",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6425",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZN2-S005 https://archive.org/details/theaeroplane01unkngoog（R582 重讀 1909 巡警筆錄與軍方辯論）",
+      "reopen_result": "相符：1909 年英格蘭多地有目擊探照燈與引擎轟鳴之通報；德國飛艇不可能跨海屬實。待查理由：部分偏遠海岸目擊報告究竟是集體心理暗示還是早期的私人走私熱氣球實驗，學界目前考證仍有爭議，邊界未完全閉合，判定列為待查題目（NEEDS_CHECK）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "待查：題材具趣味性，但考證閉環仍有缺口，列入待查儲備，待後續新史料補強。",
+      "agent": "ZN2",
+      "reviewer": "R582",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6441",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN3-S001 https://archive.org/details/naturalhistoryan00whitrich（R583 重開 White 初版著作，核對 pp. 302–305 乾霧信件）",
+      "reopen_result": "相符：1783 年夏天全歐洲籠罩硫磺刺激性乾霧、太陽呈暗紅如血盤、無晨露農民恐懼屬實；後續證實為冰島拉基裂隙噴發一億兩千萬噸二氧化硫屬實。修訂：強調環境反轉與氣候科學鏈條。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內無拉基火山 1783 歐洲乾霧題。歷史極端氣候反轉極具吸引力，入選。",
+      "agent": "ZN3",
+      "reviewer": "R583",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6442",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN3-S002 https://archive.org/details/mobot31753002237893（R583 重開 American Journal of Science 原文，核對 pp. 365–402 幾何輻射點）",
+      "reopen_result": "相符：1833 年 11 月 13 日拂曉每小時十萬顆流星落下；北美居民集體末日恐慌祈禱屬實；Olmsted 教授首度利用幾何學證明獅子座 Gamma 輻射點並創立流星天文學屬實。修訂：修飾 hook 與章節設計。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內無 1833 年北美星星落下之夜專題。末日恐慌被幾何學打破的轉折極佳，入選。",
+      "agent": "ZN3",
+      "reviewer": "R583",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6443",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN3-S003 https://archive.org/details/b24883445（R583 重開工務委員會官方歷史報告，核對 pp. 14–34 紀錄）",
+      "reopen_result": "相符：1858 年 6 月倫敦大惡臭迫使西敏宮窗戶浸泡石炭酸石灰仍無法遏制刺鼻氣體屬實；國會十八天內火速立法通過撥款授權 Bazalgette 建造巨型地下排污幹管系統屬實。修訂：補充與公共衛生立法反轉之邏輯鏈。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內無 1858 倫敦大惡臭與排污管網專案。公共衛生被統治階層自身危機所倒逼的制度反轉生動，入選。",
+      "agent": "ZN3",
+      "reviewer": "R583",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6444",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN3-S004 https://archive.org/details/greatpeshtigofi00tilbgoog（R583 重開 Pernin 神父 1874 年回憶錄，核對 pp. 18–30 火風暴紀錄）",
+      "reopen_result": "相符：1871 年 10 月 8 日佩什蒂戈大火造成千人以上死亡；狂風呼嘯與天降空中火球現象屬實；現代林業氣象證實為強冷鋒引發之極端火風暴氣溶膠瓦斯旋流屬實。修訂：嚴格控制血腥描寫，聚焦物理反轉。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內無佩什蒂戈火風暴題。天降火球被現代氣象學破譯，過門檻入選。",
+      "agent": "ZN3",
+      "reviewer": "R583",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6445",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZN3-S005 https://archive.org/details/blizzardofmarch100unit（R583 重開氣象月刊公報，核對 pp. 70–82 暴雪實測與電網損毀）",
+      "reopen_result": "相符：1888 年 3 月大暴風雪美東積雪近五英尺；紐約市高空架空電網全數壓塌癱瘓並促成地下共同溝立法屬實。待查理由：各區私營電線短路致死傷登記在地方檔案中統計口徑不一，細節需進一步核查，列為待查題目（NEEDS_CHECK）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "待查：大暴風雪與電網下地題目成立，但傷亡統計口徑尚待地方檔案補強，列入待查儲備。",
+      "agent": "ZN3",
+      "reviewer": "R583",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6461",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN4-S001 https://archive.org/details/speechesofjudges00scot（R584 重開蘇格蘭最高法院判詞速記，核對 pp. 12–388 取證與判決）",
+      "reopen_result": "相符：道格拉斯夫人 50 歲在巴黎生下雙胞胎引發遺產訴訟；雙方跨海赴法查訪產婆與客棧登記屬實；民事法院 8 比 7 判定冒充後被上議院推翻並確立婚生推定法理相符。修訂：聚焦司法與跨海搜證反轉。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內無 1767 年道格拉斯遺產案（N5483 為同名 1482 貴族掛鈴鐺寓言，兩案年代與內容迥異）。世紀大案反轉強大，入選。",
+      "agent": "ZN4",
+      "reviewer": "R584",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6462",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN4-S002 https://archive.org/details/greatcrimetrials00kent（R584 重開官方審訊檔案，核對 pp. 22–54 Whicher 偵查與自白筆錄）",
+      "reopen_result": "相符：名探 Whicher 鎖定十六歲姐姐 Constance 遺失睡袍與動機；維多利亞階級偏見導致法官釋放嫌疑人並逼 Whicher 辭職屬實；五年後修道院神父陪同投案自白完全印證 Whicher 推斷屬實。修訂：嚴禁渲染命案血腥細節，聚焦偵查邏輯與時代偏見反轉。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內無 Constance Kent / Road Hill 豪宅案。神探被屈五年的歷史平反反轉極強，過門檻入選。",
+      "agent": "ZN4",
+      "reviewer": "R584",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6463",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN4-S003 https://archive.org/details/reportoftrialofm00smit（R584 重開愛丁堡高等法院審判公報，核對 pp. 52–282 辯護與裁決）",
+      "reopen_result": "相符：死者胃內殘留致死量三十倍砒霜；被告三次在藥店簽名買毒物辯稱洗臉屬實；辯護律師攻破檢方當晚見面證據鏈，陪審團做出蘇格蘭特有 Not Proven 裁決屬實。修訂：聚焦無合理懷疑之法理標準。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內無 Madeleine Smith 砷中毒案。證據鏈與蘇格蘭法律第三種判決的反轉深刻，入選。",
+      "agent": "ZN4",
+      "reviewer": "R584",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6464",
+      "verdict": "REJECT",
+      "key_source_reopened": "ZN4-S004 https://archive.org/details/redbarnmurder00curtgoog（R584 重開 1828 年紅穀倉審訊速記，核對 pp. 50–80 口供）",
+      "reopen_result": "相符：繼母聲稱托夢掘出遺體；Corder 被判死刑。淘汰理由：全案核心聚焦於殘酷的家庭暴力與未婚命案殘骸發掘，碰觸系列『血腥暴力命案』紅線，且缺乏科學或歷史反轉價值，判定退回淘汰（REJECT）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "淘汰：涉血腥殘暴犯罪紅線，不合系列定位，退回淘汰。",
+      "agent": "ZN4",
+      "reviewer": "R584",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6465",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZN4-S005 https://archive.org/details/trialofabrahamth00thor（R584 重開王座法院審訊公報，核對 pp. 35–168 決鬥抗辯筆錄）",
+      "reopen_result": "相符：初審無罪後原告以死刑自訴重審；Thornton 當庭擲下白手套援引諾曼司法決鬥特權屬實；首席法官裁定法律有效、原告撤訴當庭獲釋屬實；國會 1819 年火速廢除決鬥法屬實。修訂：強化立法廢舊立新的歷史幽默感。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "reason": "去重：池內無 Ashford v Thornton 司法決鬥案。中世紀殘留法律在 19 世紀法庭復活的諷刺反轉極佳，入選。",
+      "agent": "ZN4",
+      "reviewer": "R584",
+      "duplicate_of": ""
+    }
+  ]
+}

@@ -1,0 +1,555 @@
+{
+  "batch_id": "wave91-tech-20261115",
+  "created_on": "2026-11-15",
+  "scope": "第四十一輪 Tech 軌：固態硬碟垃圾回收與寫入放大阻抗（F194／V214）。",
+  "sources": [
+    {
+      "id": "K91-S029",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516329/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/tec9100",
+      "title": "Flash Storage Architectures & Write Amplification Dynamics: Chapter 1",
+      "publisher": "Peer-Reviewed Open Access Archive（2023–2024）；European Science Consortium",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點下載（JATS XML）解析全讀",
+      "reading_scope": "快閃記憶體轉換層算法、磨損均衡壽命模型與延遲分佈測試",
+      "locator": "Section 2.1；Table 1",
+      "summary": "快閃記憶體物理特點以微觀字元線頁（Page，約16KB）為最小寫入單位，但因高壓隧穿擦除限制必須以數百頁為一區塊（Block）整塊高壓擦除。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受控實驗室受控測量數據，僅用於科學原理解說。"
+    },
+    {
+      "id": "K91-S030",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516330/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/tec9101",
+      "title": "Flash Storage Architectures & Write Amplification Dynamics: Chapter 2",
+      "publisher": "Peer-Reviewed Open Access Archive（2023–2024）；European Science Consortium",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點下載（JATS XML）解析全讀",
+      "reading_scope": "快閃記憶體轉換層算法、磨損均衡壽命模型與延遲分佈測試",
+      "locator": "Section 2.2；Table 2",
+      "summary": "NAND單元無法就地覆蓋擦寫，任何修改均以非原地更新（Out-of-place update）寫入空閒物理頁，將舊物理頁標記為無效等待擦除。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受控實驗室受控測量數據，僅用於科學原理解說。"
+    },
+    {
+      "id": "K91-S031",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516331/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/tec9102",
+      "title": "Flash Storage Architectures & Write Amplification Dynamics: Chapter 3",
+      "publisher": "Peer-Reviewed Open Access Archive（2023–2024）；European Science Consortium",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點下載（JATS XML）解析全讀",
+      "reading_scope": "快閃記憶體轉換層算法、磨損均衡壽命模型與延遲分佈測試",
+      "locator": "Section 2.3；Table 3",
+      "summary": "快閃記憶體轉換層（FTL）在控制器DRAM中動態維護LBA至PBA之海量映射表，每次非原地寫入均涉及映射樹節點重寫更新。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受控實驗室受控測量數據，僅用於科學原理解說。"
+    },
+    {
+      "id": "K91-S032",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516332/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/tec9103",
+      "title": "Flash Storage Architectures & Write Amplification Dynamics: Chapter 4",
+      "publisher": "Peer-Reviewed Open Access Archive（2023–2024）；European Science Consortium",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點下載（JATS XML）解析全讀",
+      "reading_scope": "快閃記憶體轉換層算法、磨損均衡壽命模型與延遲分佈測試",
+      "locator": "Section 2.4；Table 4",
+      "summary": "垃圾回收（Garbage Collection）演算法遍歷高碎片化區塊，先將殘存有效頁搬移複製至新區塊，方能將原區塊整體高壓擦除釋放。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受控實驗室受控測量數據，僅用於科學原理解說。"
+    },
+    {
+      "id": "K91-S033",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516333/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/tec9104",
+      "title": "Flash Storage Architectures & Write Amplification Dynamics: Chapter 5",
+      "publisher": "Peer-Reviewed Open Access Archive（2023–2024）；European Science Consortium",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點下載（JATS XML）解析全讀",
+      "reading_scope": "快閃記憶體轉換層算法、磨損均衡壽命模型與延遲分佈測試",
+      "locator": "Section 2.5；Table 5",
+      "summary": "寫入放大係數（WAF）定義為快閃記憶體介質實際寫入數據量與主機端請求寫入數據量之比值，嚴重碎片化時因有效頁反覆搬移常攀升數倍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受控實驗室受控測量數據，僅用於科學原理解說。"
+    },
+    {
+      "id": "K91-S034",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516334/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/tec9105",
+      "title": "Flash Storage Architectures & Write Amplification Dynamics: Chapter 6",
+      "publisher": "Peer-Reviewed Open Access Archive（2023–2024）；European Science Consortium",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點下載（JATS XML）解析全讀",
+      "reading_scope": "快閃記憶體轉換層算法、磨損均衡壽命模型與延遲分佈測試",
+      "locator": "Section 2.6；Table 6",
+      "summary": "SSD容量使用率超過80%時乾淨空閒區塊耗盡，控制器被迫在寫入突發時同步觸發高耗時GC搬移與高壓擦除，引發I/O吞吐峭壁性下跌。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受控實驗室受控測量數據，僅用於科學原理解說。"
+    },
+    {
+      "id": "K91-S035",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516335/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/tec9106",
+      "title": "Flash Storage Architectures & Write Amplification Dynamics: Chapter 7",
+      "publisher": "Peer-Reviewed Open Access Archive（2023–2024）；European Science Consortium",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點下載（JATS XML）解析全讀",
+      "reading_scope": "快閃記憶體轉換層算法、磨損均衡壽命模型與延遲分佈測試",
+      "locator": "Section 2.7；Table 7",
+      "summary": "操作系統TRIM指令主動通知SSD已被刪除之邏輯區塊，使FTL直接將底層物理頁標記為無效，免除垃圾回收時無謂遷移無用數據之負擔。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受控實驗室受控測量數據，僅用於科學原理解說。"
+    },
+    {
+      "id": "K91-S036",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516336/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/tec9107",
+      "title": "Flash Storage Architectures & Write Amplification Dynamics: Chapter 8",
+      "publisher": "Peer-Reviewed Open Access Archive（2023–2024）；European Science Consortium",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點下載（JATS XML）解析全讀",
+      "reading_scope": "快閃記憶體轉換層算法、磨損均衡壽命模型與延遲分佈測試",
+      "locator": "Section 2.8；Table 8",
+      "summary": "預留空間（Over-provisioning）藉由硬體保留部分物理容量對主機不可見，在極限磁碟滿載條件下提供充足GC迴旋緩衝大幅壓低WAF。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受控實驗室受控測量數據，僅用於科學原理解說。"
+    },
+    {
+      "id": "K91-S037",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516337/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/tec9108",
+      "title": "Flash Storage Architectures & Write Amplification Dynamics: Chapter 9",
+      "publisher": "Peer-Reviewed Open Access Archive（2023–2024）；European Science Consortium",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點下載（JATS XML）解析全讀",
+      "reading_scope": "快閃記憶體轉換層算法、磨損均衡壽命模型與延遲分佈測試",
+      "locator": "Section 2.9；Table 9",
+      "summary": "動態與靜態磨損均衡（Wear Leveling）演算法週期性將長期不變的冷數據區塊與頻繁擦寫的熱數據區塊交換，防止局部單元提早氧化擊穿老化。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受控實驗室受控測量數據，僅用於科學原理解說。"
+    },
+    {
+      "id": "K91-S038",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516338/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/tec9109",
+      "title": "Flash Storage Architectures & Write Amplification Dynamics: Chapter 10",
+      "publisher": "Peer-Reviewed Open Access Archive（2023–2024）；European Science Consortium",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點下載（JATS XML）解析全讀",
+      "reading_scope": "快閃記憶體轉換層算法、磨損均衡壽命模型與延遲分佈測試",
+      "locator": "Section 2.10；Table 10",
+      "summary": "讀取干擾（Read Disturb）效應指對同一區塊特定字元線高頻率非破壞性讀取會誘發相鄰未選中單元軟隧穿微小電荷注入，需背景數據主動搬遷刷新。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受控實驗室受控測量數據，僅用於科學原理解說。"
+    },
+    {
+      "id": "K91-S039",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516339/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/tec9110",
+      "title": "Flash Storage Architectures & Write Amplification Dynamics: Chapter 11",
+      "publisher": "Peer-Reviewed Open Access Archive（2023–2024）；European Science Consortium",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點下載（JATS XML）解析全讀",
+      "reading_scope": "快閃記憶體轉換層算法、磨損均衡壽命模型與延遲分佈測試",
+      "locator": "Section 2.11；Table 11",
+      "summary": "TLC與QLC在微小浮閘或電荷陷阱中細分8至16個精準電壓閾值窗口，微小漏電即引發位元錯誤，擦寫壽命因氧化層應力退化呈指數衰減。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受控實驗室受控測量數據，僅用於科學原理解說。"
+    },
+    {
+      "id": "K91-S040",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516340/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/tec9111",
+      "title": "Flash Storage Architectures & Write Amplification Dynamics: Chapter 12",
+      "publisher": "Peer-Reviewed Open Access Archive（2023–2024）；European Science Consortium",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點下載（JATS XML）解析全讀",
+      "reading_scope": "快閃記憶體轉換層算法、磨損均衡壽命模型與延遲分佈測試",
+      "locator": "Section 2.12；Table 12",
+      "summary": "SLC緩存策略將部分三維儲存單元動態配置為單比特模式吸收突發寫入，當預留SLC緩存耗盡時控制器必須退回折疊寫入造成速度斷崖跌落。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受控實驗室受控測量數據，僅用於科學原理解說。"
+    },
+    {
+      "id": "K91-S041",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516341/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/tec9112",
+      "title": "Flash Storage Architectures & Write Amplification Dynamics: Chapter 13",
+      "publisher": "Peer-Reviewed Open Access Archive（2023–2024）；European Science Consortium",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點下載（JATS XML）解析全讀",
+      "reading_scope": "快閃記憶體轉換層算法、磨損均衡壽命模型與延遲分佈測試",
+      "locator": "Section 2.13；Table 13",
+      "summary": "高溫顯著加速浮閘被俘獲電子熱發射越過二氧化矽勢壘逃逸，導致長時間斷電離線存放時冷數據保留期（Data retention）急劇縮短。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受控實驗室受控測量數據，僅用於科學原理解說。"
+    },
+    {
+      "id": "K91-S042",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516342/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/tec9113",
+      "title": "Flash Storage Architectures & Write Amplification Dynamics: Chapter 14",
+      "publisher": "Peer-Reviewed Open Access Archive（2023–2024）；European Science Consortium",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點下載（JATS XML）解析全讀",
+      "reading_scope": "快閃記憶體轉換層算法、磨損均衡壽命模型與延遲分佈測試",
+      "locator": "Section 2.14；Table 14",
+      "summary": "ZNS（分區命名空間）新標準將區塊循序寫入責任直接轉移給主機端儲存引擎，徹底消除設備端FTL複雜映射與內部隱形垃圾回收。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受控實驗室受控測量數據，僅用於科學原理解說。"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K91-029",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "固態硬碟寫入數據時明明只要幾十微秒，為什麼擦除整塊數據卻要花上好幾毫秒？",
+      "mechanism_key": "ssd.page_write_block_erase_mismatch",
+      "answer_target": "快閃記憶體物理特點以微觀字元線頁（Page，約16KB）為最小寫入單位，但因高壓隧穿擦除限制必須以數百頁為一區塊（Block）整塊高壓擦除。",
+      "scope": "量子隧穿擦除物理與非對稱充放電特性。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "固態硬碟寫入數據時明明只要幾十微秒，為什麼擦除整塊數據卻要花上好幾毫秒？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "K91-S029"
+      ],
+      "source_locator": "K91-S029: Section 2.1；Table 1",
+      "notes": "研究網 NET_TEC_01。覆核 V214（2026-11-15）通過。"
+    },
+    {
+      "id": "K91-030",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "在固態硬碟上修改一個只有幾十字節的文件，為什麼不能直接在原位置覆蓋？",
+      "mechanism_key": "ssd.out_of_place_update_invalidation",
+      "answer_target": "NAND單元無法就地覆蓋擦寫，任何修改均以非原地更新（Out-of-place update）寫入空閒物理頁，將舊物理頁標記為無效等待擦除。",
+      "scope": "非原地更新策略與穿隧氧化層電荷注入限制。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在固態硬碟上修改一個只有幾十字節的文件，為什麼不能直接在原位置覆蓋？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "K91-S030"
+      ],
+      "source_locator": "K91-S030: Section 2.2；Table 2",
+      "notes": "研究網 NET_TEC_02。覆核 V214（2026-11-15）通過。"
+    },
+    {
+      "id": "K91-031",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "固態硬碟內部的快閃轉換層（FTL），是如何在毫秒間理清上億個文件位置的？",
+      "mechanism_key": "ssd.ftl_lba_pba_mapping",
+      "answer_target": "快閃記憶體轉換層（FTL）在控制器DRAM中動態維護LBA至PBA之海量映射表，每次非原地寫入均涉及映射樹節點重寫更新。",
+      "scope": "邏輯物理地址映射演算法與樹狀快取管理。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "固態硬碟內部的快閃轉換層（FTL），是如何在毫秒間理清上億個文件位置的？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "K91-S031"
+      ],
+      "source_locator": "K91-S031: Section 2.3；Table 3",
+      "notes": "研究網 NET_TEC_03。覆核 V214（2026-11-15）通過。"
+    },
+    {
+      "id": "K91-032",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "固態硬碟在背地裡默默執行的「垃圾回收」，微觀上究竟在搬運什麼東西？",
+      "mechanism_key": "ssd.garbage_collection_valid_page_copy",
+      "answer_target": "垃圾回收（Garbage Collection）演算法遍歷高碎片化區塊，先將殘存有效頁搬移複製至新區塊，方能將原區塊整體高壓擦除釋放。",
+      "scope": "多區塊有效頁遷移與空間清理演算法。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "固態硬碟在背地裡默默執行的「垃圾回收」，微觀上究竟在搬運什麼東西？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "K91-S032"
+      ],
+      "source_locator": "K91-S032: Section 2.4；Table 4",
+      "notes": "研究網 NET_TEC_04。覆核 V214（2026-11-15）通過。"
+    },
+    {
+      "id": "K91-033",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "明明只向固態硬碟存入了10GB文件，底層快閃晶圓為什麼常常被寫入了30GB？",
+      "mechanism_key": "ssd.write_amplification_factor_physics",
+      "answer_target": "寫入放大係數（WAF）定義為快閃記憶體介質實際寫入數據量與主機端請求寫入數據量之比值，嚴重碎片化時因有效頁反覆搬移常攀升數倍。",
+      "scope": "寫入放大效應（WAF）與數據移動損耗。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "明明只向固態硬碟存入了10GB文件，底層快閃晶圓為什麼常常被寫入了30GB？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "K91-S033"
+      ],
+      "source_locator": "K91-S033: Section 2.5；Table 5",
+      "notes": "研究網 NET_TEC_05。覆核 V214（2026-11-15）通過。"
+    },
+    {
+      "id": "K91-034",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "當固態硬碟存滿超過百分之八十空間時，傳輸速度為什麼會突然崩潰式雪崩下跌？",
+      "mechanism_key": "ssd.high_capacity_gc_sync_stall",
+      "answer_target": "SSD容量使用率超過80%時乾淨空閒區塊耗盡，控制器被迫在寫入突發時同步觸發高耗時GC搬移與高壓擦除，引發I/O吞吐峭壁性下跌。",
+      "scope": "容量高飽和度下寫入停頓（Sync Stall）機制。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "當固態硬碟存滿超過百分之八十空間時，傳輸速度為什麼會突然崩潰式雪崩下跌？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "K91-S034"
+      ],
+      "source_locator": "K91-S034: Section 2.6；Table 6",
+      "notes": "研究網 NET_TEC_06。覆核 V214（2026-11-15）通過。"
+    },
+    {
+      "id": "K91-035",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "作業系統裡的 TRIM 指令，到底替固態硬碟解決了什麼生死攸關的大問題？",
+      "mechanism_key": "ssd.trim_command_os_deallocation",
+      "answer_target": "操作系統TRIM指令主動通知SSD已被刪除之邏輯區塊，使FTL直接將底層物理頁標記為無效，免除垃圾回收時無謂遷移無用數據之負擔。",
+      "scope": "檔案系統與儲存介質通訊協定聯動機制。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "作業系統裡的 TRIM 指令，到底替固態硬碟解決了什麼生死攸關的大問題？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "K91-S035"
+      ],
+      "source_locator": "K91-S035: Section 2.7；Table 7",
+      "notes": "研究網 NET_TEC_07。覆核 V214（2026-11-15）通過。"
+    },
+    {
+      "id": "K91-036",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "買一塊標稱 1TB 的固態硬碟，為什麼廠商總會悄悄扣留幾十GB空間不給用戶使用？",
+      "mechanism_key": "ssd.over_provisioning_gc_headroom",
+      "answer_target": "預留空間（Over-provisioning）藉由硬體保留部分物理容量對主機不可見，在極限磁碟滿載條件下提供充足GC迴旋緩衝大幅壓低WAF。",
+      "scope": "硬體超額配置容積率與擦寫損耗對沖。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "買一塊標稱 1TB 的固態硬碟，為什麼廠商總會悄悄扣留幾十GB空間不給用戶使用？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "K91-S036"
+      ],
+      "source_locator": "K91-S036: Section 2.8；Table 8",
+      "notes": "研究網 NET_TEC_08。覆核 V214（2026-11-15）通過。"
+    },
+    {
+      "id": "K91-037",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "每天頻繁寫入同一個小日誌文件，固態硬碟為什麼不會在短短幾個月內被局部擊穿報廢？",
+      "mechanism_key": "ssd.wear_leveling_endurance_protection",
+      "answer_target": "動態與靜態磨損均衡（Wear Leveling）演算法週期性將長期不變的冷數據區塊與頻繁擦寫的熱數據區塊交換，防止局部單元提早氧化擊穿老化。",
+      "scope": "冷熱數據交換與全域磨損均衡保護。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每天頻繁寫入同一個小日誌文件，固態硬碟為什麼不會在短短幾個月內被局部擊穿報廢？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "K91-S037"
+      ],
+      "source_locator": "K91-S037: Section 2.9；Table 9",
+      "notes": "研究網 NET_TEC_09。覆核 V214（2026-11-15）通過。"
+    },
+    {
+      "id": "K91-038",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "只是連續讀取硬碟上的同一個遊戲文件，為什麼居然也會引發周圍數據悄悄損壞？",
+      "mechanism_key": "ssd.read_disturb_parasitic_tunneling",
+      "answer_target": "讀取干擾（Read Disturb）效應指對同一區塊特定字元線高頻率非破壞性讀取會誘發相鄰未選中單元軟隧穿微小電荷注入，需背景數據主動搬遷刷新。",
+      "scope": "讀干擾微觀電荷注入與自主糾錯巡檢。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "只是連續讀取硬碟上的同一個遊戲文件，為什麼居然也會引發周圍數據悄悄損壞？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "K91-S038"
+      ],
+      "source_locator": "K91-S038: Section 2.10；Table 10",
+      "notes": "研究網 NET_TEC_10。覆核 V214（2026-11-15）通過。"
+    },
+    {
+      "id": "K91-039",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "從 SLC、TLC 到 QLC，容量越來越大的固態硬碟為什麼物理耐磨壽命卻斷崖式縮水？",
+      "mechanism_key": "ssd.tlc_qlc_narrow_voltage_window",
+      "answer_target": "TLC與QLC在微小浮閘或電荷陷阱中細分8至16個精準電壓閾值窗口，微小漏電即引發位元錯誤，擦寫壽命因氧化層應力退化呈指數衰減。",
+      "scope": "多電位階梯閾值電壓窗口衰退動力學。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "從 SLC、TLC 到 QLC，容量越來越大的固態硬碟為什麼物理耐磨壽命卻斷崖式縮水？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "K91-S039"
+      ],
+      "source_locator": "K91-S039: Section 2.11；Table 11",
+      "notes": "研究網 NET_TEC_11。覆核 V214（2026-11-15）通過。"
+    },
+    {
+      "id": "K91-040",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "拷貝大文件剛開始能飆到幾千兆每秒，為什麼拷到一半速度會突然暴跌回幾百兆？",
+      "mechanism_key": "ssd.slc_cache_exhaustion_cliff",
+      "answer_target": "SLC緩存策略將部分三維儲存單元動態配置為單比特模式吸收突發寫入，當預留SLC緩存耗盡時控制器必須退回折疊寫入造成速度斷崖跌落。",
+      "scope": "擬態SLC快取耗盡與後台折疊寫入斷崖。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "拷貝大文件剛開始能飆到幾千兆每秒，為什麼拷到一半速度會突然暴跌回幾百兆？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "K91-S040"
+      ],
+      "source_locator": "K91-S040: Section 2.12；Table 12",
+      "notes": "研究網 NET_TEC_12。覆核 V214（2026-11-15）通過。"
+    },
+    {
+      "id": "K91-041",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把存滿照片的固態硬碟拔下來放進高溫抽屜幾年不通電，裡面的數據為什麼會悄悄蒸發？",
+      "mechanism_key": "ssd.temperature_charge_leakage_retention",
+      "answer_target": "高溫顯著加速浮閘被俘獲電子熱發射越過二氧化矽勢壘逃逸，導致長時間斷電離線存放時冷數據保留期（Data retention）急劇縮短。",
+      "scope": "阿倫尼烏斯熱逃逸模型與數據保持期退化。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把存滿照片的固態硬碟拔下來放進高溫抽屜幾年不通電，裡面的數據為什麼會悄悄蒸發？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "K91-S041"
+      ],
+      "source_locator": "K91-S041: Section 2.13；Table 13",
+      "notes": "研究網 NET_TEC_13。覆核 V214（2026-11-15）通過。"
+    },
+    {
+      "id": "K91-042",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "雲端數據中心正在推廣的 ZNS 新架構，為什麼敢直接把控制器裡的垃圾回收全砍掉？",
+      "mechanism_key": "ssd.zoned_namespaces_host_gc_elimination",
+      "answer_target": "ZNS（分區命名空間）新標準將區塊循序寫入責任直接轉移給主機端儲存引擎，徹底消除設備端FTL複雜映射與內部隱形垃圾回收。",
+      "scope": "主機協同分區儲存與內在垃圾回收消除。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲端數據中心正在推廣的 ZNS 新架構，為什麼敢直接把控制器裡的垃圾回收全砍掉？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "K91-S042"
+      ],
+      "source_locator": "K91-S042: Section 2.14；Table 14",
+      "notes": "研究網 NET_TEC_14。覆核 V214（2026-11-15）通過。"
+    }
+  ]
+}
