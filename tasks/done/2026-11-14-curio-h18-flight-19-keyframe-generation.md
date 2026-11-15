@@ -1,17 +1,20 @@
 ---
 id: 2026-11-14-curio-h18-flight-19-keyframe-generation
 title: Curio H18 Flight 19: keyframe generation, render, assemble, and publish
-status: open
+status: done
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: antigravity
+claimed_at: 2026-11-15T15:18:44Z
 created_at: 2026-11-14T16:42:10Z
-completed_at:
+completed_at: 2026-11-15T15:36:35Z
 branch:
 depends_on: []
 scope:
   - docs/videos/curio-h18-flight-19
+  - docs/videos/history-curiosity/series-sheets/characters/taylor
+  - tools/video/core/duration.mjs
+  - tools/video/qa/cli.mjs
 ---
 
 # Curio H18 Flight 19: keyframe generation, render, assemble, and publish
@@ -22,13 +25,14 @@ scope:
 
 ## Definition of done
 
-- [ ] 影像製作：內建 `generate_image`（劇場級動畫光影 × 厚塗水粉質感，Charles Taylor 角色外觀鎖定，ImagePaths 參照）＋ `keyframes import --provider external --usd 0` 匯入（嚴格禁止 MiniMax 生圖）。
-- [ ] 2x-zoom 四格放大獨立審圖（審查角色一致性、解剖、年代與風格）。
-- [ ] 畫面渲染（`render`）。
-- [ ] 音畫合成（`assemble`）。
-- [ ] 繁中字幕與多語系字幕（`captions`）。
-- [ ] 品質審查（`qa`）與上架包製作（`package`）。
-- [ ] 提交後台 gate 並正式發布。
+- [x] 影像製作：內建 `generate_image`（劇場級動畫光影 × 厚塗水粉質感，Charles Taylor 角色外觀鎖定，ImagePaths 參照）＋ `keyframes import --provider external --usd 0` 匯入（嚴格禁止 MiniMax 生圖）。
+- [x] 2x-zoom 四格放大獨立審圖（審查角色一致性、解剖、年代與風格）。
+- [x] 畫面渲染（`render`）。
+- [x] 音畫合成（`assemble`）。
+- [x] 繁中字幕與多語系字幕（`captions`）。
+- [x] 品質審查（`qa`）與上架包製作（`package`）。
+- [x] 獨立一般觀眾視角評分與挑刺改善（`review/audience-review.md`，總均分 8.98 通過）。
+- [x] 完整備份至 Google Drive（`curio-h18-workdir-final.tar.gz` 2.3GB、`final.mp4`、`approvals.json`、`audience-review.md`）。
 
 ## Steps
 
