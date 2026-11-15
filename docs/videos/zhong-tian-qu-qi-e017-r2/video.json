@@ -1,0 +1,1000 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e017-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, empty-handed",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      },
+      "shot_looks": [
+        {
+          "id": "pole",
+          "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a plain wooden carrying pole over one shoulder with nothing hanging from it"
+        }
+      ]
+    },
+    {
+      "id": "hanbo",
+      "name": "韓伯",
+      "appearance": "East Asian man of sixty-five, thin and upright, a deeply lined kind face, a long white beard down to his chest, white hair in a neat small topknot, warm but firm eyes, a faded washed-out grey cotton long robe, leaning on a polished old bamboo walking staff",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十五歲的老村長，男聲、蒼老溫和但有分量，說話慢、句句篤定"
+      }
+    },
+    {
+      "id": "shimujiang",
+      "name": "石木匠",
+      "appearance": "East Asian man of fifty-five, lean and wiry with weathered tanned skin, a grey stubbled jaw, deep frown lines and suspicious narrow eyes, grey hair tied in a small rough topknot with a pencil-like wooden stick, a faded brown short work jacket with sleeves rolled up, a leather apron covered in wood shavings, calloused hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十五歲的老木匠，男聲、粗啞低沉，脾氣硬、說話短、帶著不耐煩"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene: an urgent cue of fast drums and driving strings at a farmhouse fire at dawn, one heavy accent when a young woman runs out of the smoke, a soft chime, one big crashing accent when a burning roof falls in and then it stops; a low cue of slow strings and a little wind over grey ash in the morning, one accent on a charred lantern and a second on a name; then a warm cue of steady drums and a work chant around a night bonfire, one rising accent at dawn and one cold low accent at the end; ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "火裡搶簾子｜種田娶妻打天下 第17集（重製版）",
+    "description": "天亮回到柳溪口，紙坊已經燒成一片火海。石木匠喊簾子還在裡面，阿令把濕布往頭上一蓋就衝進濃煙；秦霜一把抓住要跟進去的許硯，站上井沿排出傳水的人龍，二牛挑水、韓伯叫全村拿桶來。阿令抱著編柳葉的那張竹簾衝出來，轉身還要回去，許硯拉住她：「簾子可以再做，妳不行。」草頂塌了，紙坊燒光。灰裡，秦霜拉出一個燒剩的燈籠骨架，底座釘著錢府的銅片，旁邊一行一深一淺的鞋印。當夜全村扛木頭來，天亮之前骨架立起來了，系統卻亮起紅框：七日內，縱火者認罪。《種田娶妻打天下》第 17 集（重製版）。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "火裡搶簾子",
+      "tag": "種田娶妻打天下",
+      "shot": "s11"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "火場",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the ferry landing below the village at dawn: wide calm water reflecting the sky, a few tall bare wooden mooring posts standing in the water, a low wooden jetty of bare grey planks running out from the right bank, dry grass and reeds along the right bank, a dirt path up the bank to a cluster of low thatched and tiled village houses on the right, blue hills far off at the left; from behind the village houses on the right one thick column of black smoke rising and rolling into the pale dawn sky, the red glow low on the far left horizon; cool dawn light: wide shot from the water: the bamboo raft of eight lashed green bamboo poles just bumping against the far end of the low wooden jetty in the middle of the frame; Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, framed full length, small, already in mid-leap from the raft onto the jetty planks, his face three-quarter to screen right toward the village, never the lens; urgent: brows drawn, mouth set; behind him on the raft Qin Shuang, her dark brown cross-collared short jacket with the sleeves pushed up to her elbows, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, framed full length, small, one long punting pole of plain green bamboo about twice a man's height and as thick as a wrist, smooth and round along its whole length, both ends cut flat falling from her right hand onto the raft; kneeling in the middle of the raft Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, small, one small square packet wrapped in brown oilcloth and tied with string, the size of a book held against her in both arms, her face three-quarter to screen right toward the smoke, never the lens; afraid: brows drawn up, lips closed; exactly three people",
+        "motion": "Xu Yan lands on the jetty and runs along it toward the bank at the right; Qin Shuang lets the pole drop, jumps onto the jetty and runs after him; Tang Xiaotang stays kneeling on the raft, hugging the packet; Xu Yan, Qin Shuang and Tang Xiaotang say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the cool dawn light and the column of smoke stay unchanged",
+        "characters": [
+          "xuyan",
+          "qinshuang",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a01",
+          "speaker": "shimujiang",
+          "text": "簾子還在裡面！三張都掛在架子上！",
+          "emotion": "嘶喊"
+        }
+      ],
+      "data": {
+        "camera": "Medium-wide shot, slow push in",
+        "prompt": "In the farmhouse yard of the Xu family at dawn on a dry clear autumn morning: the low thatched farmhouse with its dark open doorway, one lattice window and a stack of split firewood on the left, a plain wooden yard gate under a small tiled roof in the back wall, a bare persimmon tree in the middle with only a few orange fruits high in its branches, one round stone well with a wooden windlass at the front right, the low mud wall running along the right; beyond the low mud wall on the right the thatched papermaking hut next door is on fire: tall orange flames behind thick grey smoke rolling up and drifting to the right, every flame staying beyond the wall; the orange firelight falling across the yard and on every face: medium-wide shot: on screen right beside the low mud wall Carpenter Shi, in his faded brown cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, both grey with soot, one plain wooden stick through his grey topknot, framed from the knees up with clear space above his head, one long pole of plain green bamboo as long as two men, smooth and round along its whole length, both ends cut flat held up in both hands, its far end reaching over the wall toward the burning thatch, his face three-quarter to screen left toward Xu Yan off screen left, never the lens; frantic: brows knotted, eyes wide, mouth wide open between words, sweat on his face; the persimmon tree and the yard gate soft behind him at the left; he is alone in the yard; their hands hold only what is described here",
+        "motion": "Carpenter Shi speaks a short Mandarin line, 「簾子還在裡面！三張都掛在架子上！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Carpenter Shi shoves the long pole up over the wall into the smoke once, then swings his head round toward screen left and shouts; after the last word he turns back to the fire, his jaw set, the pole still in both hands, and the orange firelight from the right and the grey smoke stay unchanged, every flame staying beyond the wall",
+        "characters": [
+          "shimujiang"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a02",
+          "speaker": "xuyan",
+          "text": "阿令！",
+          "emotion": "畫外，短喊"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the farmhouse yard of the Xu family at dawn on a dry clear autumn morning: the low thatched farmhouse with its dark open doorway, one lattice window and a stack of split firewood on the left, a plain wooden yard gate under a small tiled roof in the back wall, a bare persimmon tree in the middle with only a few orange fruits high in its branches, one round stone well with a wooden windlass at the front right, the low mud wall running along the right; beyond the low mud wall on the right the thatched papermaking hut next door is on fire: tall orange flames behind thick grey smoke rolling up and drifting to the right, every flame staying beyond the wall; the orange firelight falling across the yard and on every face: medium shot: at the round stone well a little right of the middle A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, grey with soot, her black hair pinned up again with one plain wooden hairpin, framed from the knees up with clear space above her head, one square of plain grey cotton cloth in both hands over one plain wooden bucket with a rope handle full of water standing on the stone rim of the well, her face three-quarter to screen right toward the fire beyond the wall, never the lens; set and fearless: brows level, eyes narrowed on the smoke, lips pressed shut; the wooden windlass beside her; their hands hold only what is described here",
+        "motion": "A-ling plunges the cloth into the bucket, throws the dripping cloth over her head and shoulders and runs out of the frame to the right toward the smoke; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the orange firelight from the right and the grey smoke stay unchanged, every flame staying beyond the wall",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a03",
+          "speaker": "qinshuang",
+          "text": "別進去，你不會躲火。你去顧井，我叫人排水。",
+          "emotion": "不笑，很快"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the farmhouse yard of the Xu family at dawn on a dry clear autumn morning: the low thatched farmhouse with its dark open doorway, one lattice window and a stack of split firewood on the left, a plain wooden yard gate under a small tiled roof in the back wall, a bare persimmon tree in the middle with only a few orange fruits high in its branches, one round stone well with a wooden windlass at the front right, the low mud wall running along the right; beyond the low mud wall on the right the thatched papermaking hut next door is on fire: tall orange flames behind thick grey smoke rolling up and drifting to the right, every flame staying beyond the wall; the orange firelight falling across the yard and on every face: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: only the back of her head with her high ponytail tied with black cord and her left shoulder in a dark brown jacket with the sleeve pushed up, soft, her head turned fully away from us, her ear, cheek and profile never visible, her face never in the frame, in the left foreground, her left arm reaching forward, her left hand already gripping Xu Yan's right wrist at the bottom of the frame from the first frame; facing us a step away a little right of the middle, Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, framed from the waist up with clear space above his head, his body straining toward the fire at the right, his face three-quarter to screen left toward her, never the lens; desperate: brows drawn up, jaw tight, lips pressed shut; behind him only the low mud wall and the grey smoke lit orange; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman with the ponytail in the left foreground keeps her head still, the back of her head toward us the whole shot, her hand holding his wrist; Xu Yan pulls once toward the fire, is held, and stops; his eyes go to her hand on his wrist, then back to her, and the orange firelight from the right and the grey smoke stay unchanged, every flame staying beyond the wall",
+        "characters": [
+          "qinshuang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a04",
+          "speaker": "xitong",
+          "text": "宿主衝進去，只會多一個要人救的。",
+          "emotion": "冷，毒舌"
+        },
+        {
+          "id": "zq917a05",
+          "speaker": "xuyan",
+          "text": "我知道……可我也不能站在外面看。",
+          "emotion": "內心獨白，嘴閉著，咬牙，心裡回嘴"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the Xu farmhouse yard at dawn, orange firelight from the burning papermaking hut on the right and grey smoke drifting across: close-up of Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, framed from the chest up with space above his head, the orange firelight from the right on his face, his face three-quarter to screen right toward the fire, never the lens; torn: jaw clenched, brows drawn hard, eyes fixed on the smoke; behind him only drifting grey smoke and the bare persimmon branches",
+        "motion": "Xu Yan stares at the fire with his jaw clenched, then lowers his eyes to his right wrist and lets out one long breath through his nose; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking, and the orange firelight from the right and the grey smoke stay unchanged, every flame staying beyond the wall",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a06",
+          "speaker": "qinshuang",
+          "text": "從井邊排一條，一桶接一桶傳過去！",
+          "emotion": "大喊"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the farmhouse yard of the Xu family at dawn on a dry clear autumn morning: the low thatched farmhouse with its dark open doorway, one lattice window and a stack of split firewood on the left, a plain wooden yard gate under a small tiled roof in the back wall, a bare persimmon tree in the middle with only a few orange fruits high in its branches, one round stone well with a wooden windlass at the front right, the low mud wall running along the right; beyond the low mud wall on the right the thatched papermaking hut next door is on fire: tall orange flames behind thick grey smoke rolling up and drifting to the right, every flame staying beyond the wall; the orange firelight falling across the yard and on every face: wide shot: at the front right Qin Shuang, her dark brown cross-collared short jacket with the sleeves pushed up to her elbows, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, standing up on the low stone rim of the round well beside its wooden windlass, framed full length with clear space above her head, her right arm swept out toward the fire beyond the wall at the right, her face three-quarter to screen left toward the yard gate, never the lens; commanding: brows drawn, eyes hard, mouth wide between words; far back in the dark doorway of the farmhouse at the left, small, little Xiaohe, the eight-year-old girl, in her patched lilac cotton jacket, two little pigtails tied with red string, a small woven straw rabbit tucked into her sash, standing still, both hands on the door frame, afraid: eyes wide, lips closed; at the yard gate at the back three villagers in Song-dynasty cross-collared coarse cotton short jackets and cloth head-wraps, cloth shoes, small and soft, their faces seen only from the side, each holding one plain wooden bucket with a rope handle, standing still; their hands hold only what is described here",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「從井邊排一條，一桶接一桶傳過去！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang sweeps her right arm from the well toward the wall and the fire; the three villagers at the gate start toward the well with their buckets; little Xiaohe says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still; the villagers say nothing; after the last word Qin Shuang's jaw sets, and the orange firelight from the right and the grey smoke stay unchanged, every flame staying beyond the wall",
+        "characters": [
+          "qinshuang",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a07",
+          "speaker": "erniu",
+          "text": "水來了！前面的退開，我要潑了！",
+          "emotion": "大吼"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the farmhouse yard of the Xu family at dawn on a dry clear autumn morning: the low thatched farmhouse with its dark open doorway, one lattice window and a stack of split firewood on the left, a plain wooden yard gate under a small tiled roof in the back wall, a bare persimmon tree in the middle with only a few orange fruits high in its branches, one round stone well with a wooden windlass at the front right, the low mud wall running along the right; beyond the low mud wall on the right the thatched papermaking hut next door is on fire: tall orange flames behind thick grey smoke rolling up and drifting to the right, every flame staying beyond the wall; the orange firelight falling across the yard and on every face: medium shot: on screen right by the low mud wall Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, grey with soot, framed from the knees up with clear space above his head, one plain wooden carrying pole as long as a man, flat and smooth, one short rope hanging from each end across his right shoulder with one plain wooden bucket with a rope handle full of water hanging from each end, his face three-quarter to screen right toward the fire, never the lens; furious and straining: teeth gritted, brows knotted low, mouth wide between words, sweat on his face; beyond the wall the grey smoke lit orange; their hands hold only what is described here",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「水來了！前面的退開，我要潑了！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu swings the carrying pole down off his shoulder, grabs one bucket by its rope handle with both hands and heaves the water up over the wall into the smoke in one long arc; after the last word his teeth stay gritted and he reaches for the second bucket, and the orange firelight from the right and the grey smoke stay unchanged, every flame staying beyond the wall",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a08",
+          "speaker": "hanbo",
+          "text": "全村的，都拿桶來！一戶都不許關門！",
+          "emotion": "揚聲"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "In the farmhouse yard of the Xu family at dawn on a dry clear autumn morning: the low thatched farmhouse with its dark open doorway, one lattice window and a stack of split firewood on the left, a plain wooden yard gate under a small tiled roof in the back wall, a bare persimmon tree in the middle with only a few orange fruits high in its branches, one round stone well with a wooden windlass at the front right, the low mud wall running along the right; beyond the low mud wall on the right the thatched papermaking hut next door is on fire: tall orange flames behind thick grey smoke rolling up and drifting to the right, every flame staying beyond the wall; the orange firelight falling across the yard and on every face: low-angle medium shot: in the plain wooden yard gate at the back Elder Han, in his washed-out grey cotton long robe, his long white beard down to his chest, one polished old bamboo walking staff as tall as his shoulder, smooth and round along its whole length in his right hand, framed from the knees up with clear space above his head, the orange firelight from the right on his face and beard, his face turned back over his left shoulder toward the village lane outside the gate, never the lens; stern and urgent: brows drawn, eyes hard, lips moving firmly between words; the tiled gate roof above him; their hands hold only what is described here",
+        "motion": "Elder Han speaks a short Mandarin line, 「全村的，都拿桶來！一戶都不許關門！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Elder Han stamps the foot of his staff once on the ground, then raises his left arm high and waves it toward the lane outside the gate; after the last word his mouth sets in a hard line, and the orange firelight from the right and the grey smoke stay unchanged, every flame staying beyond the wall",
+        "characters": [
+          "hanbo"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the farmhouse yard of the Xu family at dawn on a dry clear autumn morning: the low thatched farmhouse with its dark open doorway, one lattice window and a stack of split firewood on the left, a plain wooden yard gate under a small tiled roof in the back wall, a bare persimmon tree in the middle with only a few orange fruits high in its branches, one round stone well with a wooden windlass at the front right, the low mud wall running along the right; beyond the low mud wall on the right the thatched papermaking hut next door is on fire: tall orange flames behind thick grey smoke rolling up and drifting to the right, every flame staying beyond the wall; the orange firelight falling across the yard and on every face: wide shot past one wooden bucket held up in the right foreground: at the round stone well Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, robe and sleeves grey with soot, his face shiny with sweat, one broad dark smear of soot across his left cheek, framed full length, both hands on the handle of the wooden windlass, his grey outer coat lying thrown over the stone rim beside him, his face three-quarter to screen right, never the lens; straining: jaw set, brows drawn; four villagers in Song-dynasty cross-collared coarse cotton short jackets and cloth head-wraps, cloth shoes, small and soft, their faces seen only from the side, standing in a short line from the well to the low mud wall at the right, each holding one plain wooden bucket with a rope handle; beyond the wall the grey smoke lit orange; their hands hold only what is described here",
+        "motion": "Xu Yan winds the windlass round twice, lifts the full bucket off its rope and hands it to the villager beside him, and each bucket passes from hand to hand along the line toward the wall; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still; the villagers say nothing, and the orange firelight from the right and the grey smoke stay unchanged, every flame staying beyond the wall",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a09",
+          "speaker": "tangxiaotang",
+          "text": "阿令還沒出來！進去快一盞茶了！",
+          "emotion": "急到破音"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the farmhouse yard of the Xu family at dawn on a dry clear autumn morning: the low thatched farmhouse with its dark open doorway, one lattice window and a stack of split firewood on the left, a plain wooden yard gate under a small tiled roof in the back wall, a bare persimmon tree in the middle with only a few orange fruits high in its branches, one round stone well with a wooden windlass at the front right, the low mud wall running along the right; beyond the low mud wall on the right the thatched papermaking hut next door is on fire: tall orange flames behind thick grey smoke rolling up and drifting to the right, every flame staying beyond the wall; the orange firelight falling across the yard and on every face: medium shot from behind and a little to her left: one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, standing in the bucket line in the left foreground, the small gold abacus hanging at her right hip, both her hands passing one plain wooden bucket with a rope handle to one villager on her right, a man in a coarse brown short jacket and cloth head-wrap, soft, his face seen only from the side; she is the only young woman in the frame and the only one in the frame with buns and pink ribbons, and she stays in the left foreground from the first frame to the last; beyond them over the low mud wall at the right the grey smoke lit orange; their hands hold only what is described here",
+        "motion": "the young woman hands the bucket over to the man on her right and keeps her face toward the smoke at the right; the man passes the bucket on; the young woman with the two buns and pink ribbons keeps her head still, the back of her head toward us the whole shot; the man says nothing, his lips closed, and the orange firelight from the right and the grey smoke stay unchanged, every flame staying beyond the wall",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "Beside the burning papermaking hut next to the Xu farmhouse yard at dawn: thick grey smoke filling the air, a deep orange glow of fire far behind the smoke: medium shot, the frame filled with thick grey smoke lit orange from far behind: A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, grey with soot, her long black hair come loose from its pin and hanging straight down her back and over her right shoulder, the crown of her head bare, one broad smear of soot across her right cheek, already stumbling forward out of the smoke toward the camera a little left of the middle, framed from the knees up, a flat rectangular mat of thin split bamboo strips laid close side by side, as wide as her shoulders and as deep as her forearm is long, edged with a thin plain wooden border, the strips an old deep honey colour, one small willow-leaf shape woven into its middle in darker strips clutched flat against her chest in both arms, the wet grey cloth slipping off her shoulders, her face toward the ground ahead, never the lens; gasping: eyes squeezed half shut, lips parted for breath; her dress and hair are only grey with soot, the fire stays far behind in the smoke; she is the only person in the frame",
+        "motion": "A-ling stumbles two steps out of the smoke and drops onto her right knee, curling her body over the bamboo mat to shield it, and the grey cloth slides to the ground; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the grey smoke and the orange glow far behind it stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a10",
+          "speaker": "aling",
+          "text": "這是最早那張……另外兩張還在架子上。",
+          "emotion": "喘"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Beside the burning papermaking hut next to the Xu farmhouse yard at dawn: thick grey smoke filling the air, a deep orange glow of fire far behind the smoke: close-up of A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, grey with soot, her long black hair come loose from its pin and hanging straight down her back and over her right shoulder, the crown of her head bare, one broad smear of soot across her right cheek, framed from the chest up with space above her head, a flat rectangular mat of thin split bamboo strips laid close side by side, as wide as her shoulders and as deep as her forearm is long, edged with a thin plain wooden border, the strips an old deep honey colour, one small willow-leaf shape woven into its middle in darker strips held out in both hands at the bottom of the frame toward screen left, where two hands in blue-grey sleeves rolled up to the elbows reach into the frame at the left edge to take it, her face three-quarter to screen left toward those hands, never the lens; breathless and urgent: brows drawn, eyes wide, lips moving between quick breaths; behind her only grey smoke lit orange",
+        "motion": "A-ling speaks a short Mandarin line, 「這是最早那張……另外兩張還在架子上」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling pushes the mat into the two hands at the left edge, which draw it away past the left edge; then she turns her head and shoulders toward the smoke at the right as if to go back in; after the last word her lips press shut, her eyes on the smoke, and the grey smoke and the orange glow far behind it stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a11",
+          "speaker": "xuyan",
+          "text": "阿令，簾子可以再做，妳不行。",
+          "emotion": "不笑，很重"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the farmhouse yard of the Xu family at dawn on a dry clear autumn morning: the low thatched farmhouse with its dark open doorway, one lattice window and a stack of split firewood on the left, a plain wooden yard gate under a small tiled roof in the back wall, a bare persimmon tree in the middle with only a few orange fruits high in its branches, one round stone well with a wooden windlass at the front right, the low mud wall running along the right; beyond the low mud wall on the right the thatched papermaking hut next door is on fire: tall orange flames behind thick grey smoke rolling up and drifting to the right, every flame staying beyond the wall; the orange firelight falling across the yard and on every face: medium shot: on screen left Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, robe and sleeves grey with soot, his face shiny with sweat, one broad dark smear of soot across his left cheek, framed from the waist up with clear space above his head, a flat rectangular mat of thin split bamboo strips laid close side by side, as wide as his shoulders and as deep as his forearm is long, edged with a thin plain wooden border, the strips an old deep honey colour, one small willow-leaf shape woven into its middle in darker strips clamped flat under his left arm, his right hand already holding A-ling's left forearm through her sleeve from the first frame, his face three-quarter to screen right toward her, never the lens; stern and heavy: brows drawn low, eyes fixed on her, lips moving slowly and firmly between words; on screen right A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, grey with soot, her long black hair come loose from its pin and hanging straight down her back and over her right shoulder, the crown of her head bare, one broad smear of soot across her right cheek, framed from the waist up, half turned away toward the smoke at the right, her face in profile to screen right, never the lens, lips closed; behind them only the low mud wall and the grey smoke lit orange; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「阿令，簾子可以再做，妳不行」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling leans toward the smoke and is held; she stops and turns her head back toward him; his hand stays on her forearm; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still; after the last word his jaw sets and his eyes stay on hers, and the orange firelight from the right and the grey smoke stay unchanged, every flame staying beyond the wall",
+        "characters": [
+          "xuyan",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a12",
+          "speaker": "xitong",
+          "text": "叮。阿令，好感加一。",
+          "emotion": "宣布"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the Xu farmhouse yard at dawn, orange firelight from the burning papermaking hut on the right and grey smoke drifting across: close-up of A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, grey with soot, her long black hair come loose from its pin and hanging straight down her back and over her right shoulder, the crown of her head bare, one broad smear of soot across her right cheek, framed from the chest up with space above her head, the orange firelight from the right on her cheek, her face three-quarter to screen left toward Xu Yan off screen left, never the lens; stunned and softening: brows slowly lifting, eyes on him, lips closed; behind her only grey smoke",
+        "motion": "A-ling looks back at him; the tension leaves her shoulders and her left arm slowly sinks down out of the frame; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the orange firelight from the right and the grey smoke stay unchanged, every flame staying beyond the wall",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a13",
+          "speaker": "qinshuang",
+          "text": "全部往後退！頂要塌了，別再靠近！",
+          "emotion": "大喊"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the farmhouse yard of the Xu family at dawn on a dry clear autumn morning: the low thatched farmhouse with its dark open doorway, one lattice window and a stack of split firewood on the left, a plain wooden yard gate under a small tiled roof in the back wall, a bare persimmon tree in the middle with only a few orange fruits high in its branches, one round stone well with a wooden windlass at the front right, the low mud wall running along the right; beyond the low mud wall on the right the thatched papermaking hut next door is on fire: tall orange flames behind thick grey smoke rolling up and drifting to the right, every flame staying beyond the wall; the orange firelight falling across the yard and on every face: wide shot: in the middle Qin Shuang, her dark brown cross-collared short jacket with the sleeves pushed up to her elbows, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, framed full length with clear space above her head, both arms spread wide, her face three-quarter to screen left toward the people in front of her, never the lens; fierce: brows drawn, eyes hard, mouth wide between words; on screen left Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, grey with soot, framed full length, one plain wooden bucket with a rope handle empty in his right hand, stepping back, his face three-quarter to screen right toward the fire, never the lens, teeth gritted; far behind them beyond the low mud wall at the right the burning thatched roof of the papermaking hut sagging in the smoke; their hands hold only what is described here; exactly two people",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「全部往後退！頂要塌了，別再靠近！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; far beyond the wall the burning roof falls in with a burst of orange sparks rising into the smoke; Qin Shuang walks backward toward screen left with her arms spread, and Wang Erniu steps back with her; Wang Erniu says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still; after the last word her jaw sets, and the orange firelight from the right and the grey smoke stay unchanged, every flame staying beyond the wall",
+        "characters": [
+          "qinshuang",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a14",
+          "speaker": "shimujiang",
+          "text": "那兩張簾子，跟著頂一起燒沒了。",
+          "emotion": "啞著嗓子"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Beside the burning papermaking hut next to the Xu farmhouse yard at dawn: thick grey smoke filling the air, a deep orange glow of fire far behind the smoke: close-up of Carpenter Shi, in his faded brown cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, both grey with soot, one plain wooden stick through his grey topknot, framed from the chest up with space above his head, sweat on his face, his empty hands hanging at his sides below the frame, his face three-quarter to screen left, never the lens; spent and bitter: brows knotted, eyes red-rimmed, the corners of his mouth pulled down, lips moving hoarsely between words; behind him only grey smoke and a low orange glow where the roof fell",
+        "motion": "Carpenter Shi speaks a short Mandarin line, 「那兩張簾子，跟著頂一起燒沒了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Carpenter Shi drags the back of his right hand once across his eyes, lets it fall, and stares back over his shoulder at the glow; after the last word his mouth pulls down and his jaw works, and the grey smoke and the orange glow far behind it stay unchanged",
+        "characters": [
+          "shimujiang"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "chapter": "灰燼",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a15",
+          "speaker": "tangxiaotang",
+          "text": "紙坊……全沒了，架上晾的紙也一張不剩。",
+          "emotion": "聲音發顫"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the burnt paper workshop beside the Xu farmhouse on the morning after the fire: the papermaking shed burned to the ground: open pale sky above, the charred black stumps of the timber posts, one long charred beam lying across the floor from the left, the whole floor deep in soft grey ash with black pieces of charred bamboo in it, the big round wooden tub at the front left charred black, a low heap of charred planks at the right, the low stone walls at the back and left blackened with soot, a squat stone mortar in the middle, a few thin wisps of white smoke rising from the ash; beyond the open right side a low fence of plain bamboo stakes with one section pushed over flat; bright clear morning sunlight from the right, crisp shadows: wide shot past the charred stump of one post in the right foreground: one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, sitting on a low blackened stone step in the left foreground, hugging her knees, the small gold abacus hanging at her right hip; she is the only one in the frame with buns and pink ribbons, and she stays in the left foreground from the first frame to the last; beyond her a little right of the middle A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, grey with soot, her long black hair come loose from its pin and hanging straight down her back and over her right shoulder, the crown of her head bare, one broad smear of soot across her right cheek, framed full length, bending over the ash with her right hand reaching down to it, her face three-quarter to screen left, never the lens; quiet and drained: eyes lowered, lips closed; A-ling stays a little right of the middle from the first frame to the last; their hands hold only what is described here",
+        "motion": "A-ling straightens up from the ash holding one plain wooden hairpin as long as a finger in her right hand and looks down at it; the young woman on the step hugs her knees tighter, her shoulders shaking once; the young woman with the two buns and pink ribbons keeps her head still, the back of her head toward us the whole shot; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the bright morning sunlight from the right stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "aling"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a16",
+          "speaker": "xuyan",
+          "text": "簾子在，紙就在。石叔，再做兩張要幾天？",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the burnt paper workshop beside the Xu farmhouse on the morning after the fire: the papermaking shed burned to the ground: open pale sky above, the charred black stumps of the timber posts, one long charred beam lying across the floor from the left, the whole floor deep in soft grey ash with black pieces of charred bamboo in it, the big round wooden tub at the front left charred black, a low heap of charred planks at the right, the low stone walls at the back and left blackened with soot, a squat stone mortar in the middle, a few thin wisps of white smoke rising from the ash; beyond the open right side a low fence of plain bamboo stakes with one section pushed over flat; bright clear morning sunlight from the right, crisp shadows: medium shot: on screen left Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, sitting on a low blackened stone step, her knees drawn up, the small gold abacus hanging at her right hip, framed full length, her face three-quarter to screen right toward the mat, never the lens; drained: eyes lowered, lips closed; on screen right beside her Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, robe and sleeves grey with soot, his face shiny with sweat, one broad dark smear of soot across his left cheek, crouching, framed full length with clear space above his head, a flat rectangular mat of thin split bamboo strips laid close side by side, as wide as his shoulders and as deep as his forearm is long, edged with a thin plain wooden border, the strips an old deep honey colour, one small willow-leaf shape woven into its middle in darker strips held upright on the ash in front of her in both hands, his face three-quarter to screen left toward her, never the lens; steady: brows level, eyes firm, lips moving evenly between words; behind them only the charred post stumps and the blackened wall; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「簾子在，紙就在。石叔，再做兩張要幾天？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan stands the mat up in front of her so she can see the willow leaf, then turns his head to screen right toward Carpenter Shi off screen right; Tang Xiaotang lifts her eyes to the mat; Tang Xiaotang says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still; after the last word his brows stay level, eyes on the right, and the bright morning sunlight from the right stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a17",
+          "speaker": "shimujiang",
+          "text": "竹子還泡著，三天，兩張一張不少還你。",
+          "emotion": "嘴硬"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the burnt paper workshop beside the Xu farmhouse on the morning after the fire: the papermaking shed burned to the ground: open pale sky above, the charred black stumps of the timber posts, one long charred beam lying across the floor from the left, the whole floor deep in soft grey ash with black pieces of charred bamboo in it, the big round wooden tub at the front left charred black, a low heap of charred planks at the right, the low stone walls at the back and left blackened with soot, a squat stone mortar in the middle, a few thin wisps of white smoke rising from the ash; beyond the open right side a low fence of plain bamboo stakes with one section pushed over flat; bright clear morning sunlight from the right, crisp shadows: medium shot of Carpenter Shi, in his faded brown cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, both grey with soot, one plain wooden stick through his grey topknot, already crouching beside the charred black tub at the left, framed from the knees up with clear space above his head, one long half-burnt strip of bamboo in his right hand, pulled out of the ash, his face three-quarter to screen left toward Xu Yan off screen left, never the lens; gruff: brows knotted low, one eye narrowed, the corners of his mouth pulled down, lips moving curtly between words and pressed flat between them; behind him only the blackened stone wall; their hands hold only what is described here",
+        "motion": "Carpenter Shi speaks a short Mandarin line, 「竹子還泡著，三天，兩張一張不少還你」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Carpenter Shi turns the half-burnt strip over in his fingers and taps the ash off it against the tub; after the last word he snorts once through his nose and tosses the strip down into the ash, and the bright morning sunlight from the right stays unchanged",
+        "characters": [
+          "shimujiang"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a18",
+          "speaker": "qinshuang",
+          "text": "燈籠骨架。錢府門口的燈籠，都釘這塊銅片。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the burnt paper workshop on the morning after the fire, grey ash and charred posts, bright morning sunlight from the right: insert close-up, the shot opens directly on smooth grey ash on the ground from its very first frame: one hand in a dark brown sleeve pushed up to the forearm, smudged grey, already gripping the rim of the charred remains of one small round paper lantern: a ring of blackened bamboo strips the size of two hands, and fixed at its base one small round copper plate as small as a thumbnail, embossed with the outline of one round coin with a square hole in its middle, smooth and plain all round it, half buried in the ash; only the hand, the sleeve, the ash and the charred lantern remains are in the frame; bright morning sunlight from the right",
+        "motion": "the hand draws the charred lantern remains up out of the ash and turns them so the small copper plate at the base faces us; grey ash slides off the blackened strips, and the bright morning sunlight from the right stays unchanged",
+        "characters": [
+          "qinshuang"
+        ],
+        "nospeak": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a19",
+          "speaker": "xuyan",
+          "text": "還有腳印，一路往籬笆外去了。",
+          "emotion": "低"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle insert close-up, slow push in",
+        "prompt": "In the burnt paper workshop on the morning after the fire, grey ash and charred posts, bright morning sunlight from the right: low insert close-up at ground level, the shot opens directly on a line of shoe prints pressed into smooth grey ash from its very first frame, running away from the camera toward the open side at the right, every second print deep and the prints between them shallow; one forefinger of a hand in a blue-grey sleeve rolled up to the elbow pointing at the nearest print at the bottom edge; only the hand, the ash and the prints are in the frame; bright morning sunlight from the right",
+        "motion": "the forefinger moves slowly along the line of prints from the nearest toward the far ones, then stops and points on toward the right, and the bright morning sunlight from the right stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "nospeak": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a20",
+          "speaker": "qinshuang",
+          "text": "一腳深，一腳淺，走路的人是跛子。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the burnt paper workshop beside the Xu farmhouse on the morning after the fire: the papermaking shed burned to the ground: open pale sky above, the charred black stumps of the timber posts, one long charred beam lying across the floor from the left, the whole floor deep in soft grey ash with black pieces of charred bamboo in it, the big round wooden tub at the front left charred black, a low heap of charred planks at the right, the low stone walls at the back and left blackened with soot, a squat stone mortar in the middle, a few thin wisps of white smoke rising from the ash; beyond the open right side a low fence of plain bamboo stakes with one section pushed over flat; bright clear morning sunlight from the right, crisp shadows: medium shot of Qin Shuang, her dark brown cross-collared short jacket with the sleeves pushed up to her elbows, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, crouching on the grey ash beside a line of shoe prints, framed from the knees up with clear space above her head, her right forefinger and middle finger pressed into one deep print, her face three-quarter to screen left toward Xu Yan off screen left, never the lens; cold: brows level, eyes hard, lips moving crisply between words; behind her the open right side and the low bamboo fence with one section lying flat; their hands hold only what is described here",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「一腳深，一腳淺，走路的人是跛子」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang lifts her two fingers out of the deep print and presses them into the shallow one beside it, then lifts her eyes; after the last word her lips press into a hard line, and the bright morning sunlight from the right stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a21",
+          "speaker": "tangxiaotang",
+          "text": "跛子……錢府的賴三，就是跛的！",
+          "emotion": "氣到發抖"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the burnt paper workshop beside the Xu farmhouse on the morning after the fire: the papermaking shed burned to the ground: open pale sky above, the charred black stumps of the timber posts, one long charred beam lying across the floor from the left, the whole floor deep in soft grey ash with black pieces of charred bamboo in it, the big round wooden tub at the front left charred black, a low heap of charred planks at the right, the low stone walls at the back and left blackened with soot, a squat stone mortar in the middle, a few thin wisps of white smoke rising from the ash; beyond the open right side a low fence of plain bamboo stakes with one section pushed over flat; bright clear morning sunlight from the right, crisp shadows: medium shot from behind and a little above: one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, rising from the low blackened stone step in the right foreground, the small gold abacus hanging at her right hip; she is the only young woman in the frame and the only one in the frame with buns and pink ribbons, and she stays in the right foreground from the first frame to the last; beyond her only the grey ash, the charred black tub and the blackened stone wall; nobody else in the frame",
+        "motion": "the young woman stands up in one quick movement, drags her right sleeve across her face, then clenches both hands into fists at her sides, her shoulders shaking; the young woman with the two buns and pink ribbons keeps her head still, the back of her head toward us the whole shot, and the bright morning sunlight from the right stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a22",
+          "speaker": "erniu",
+          "text": "我這就去錢府，把那個跛子揪出來！",
+          "emotion": "怒"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "In the burnt paper workshop beside the Xu farmhouse on the morning after the fire: the papermaking shed burned to the ground: open pale sky above, the charred black stumps of the timber posts, one long charred beam lying across the floor from the left, the whole floor deep in soft grey ash with black pieces of charred bamboo in it, the big round wooden tub at the front left charred black, a low heap of charred planks at the right, the low stone walls at the back and left blackened with soot, a squat stone mortar in the middle, a few thin wisps of white smoke rising from the ash; beyond the open right side a low fence of plain bamboo stakes with one section pushed over flat; bright clear morning sunlight from the right, crisp shadows: medium shot following him: Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, grey with soot, framed from the knees up with clear space above his head, one plain wooden carrying pole as long as a man, flat and smooth, one short rope hanging from each end gripped in his right hand from the first frame, striding toward screen left across the ash, his face three-quarter to screen left, never the lens; furious: teeth gritted, brows knotted low, nostrils flared, mouth wide between words; behind him the charred post stumps; their hands hold only what is described here",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「我這就去錢府，把那個跛子揪出來！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu strides three long steps toward screen left with the carrying pole swinging in his right hand, shouting over his shoulder; after the last word his teeth stay gritted and he keeps walking, and the bright morning sunlight from the right stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a23",
+          "speaker": "hanbo",
+          "text": "沒人看見他放火，告到官府，官府也不認。",
+          "emotion": "沉聲"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "In the burnt paper workshop beside the Xu farmhouse on the morning after the fire: the papermaking shed burned to the ground: open pale sky above, the charred black stumps of the timber posts, one long charred beam lying across the floor from the left, the whole floor deep in soft grey ash with black pieces of charred bamboo in it, the big round wooden tub at the front left charred black, a low heap of charred planks at the right, the low stone walls at the back and left blackened with soot, a squat stone mortar in the middle, a few thin wisps of white smoke rising from the ash; beyond the open right side a low fence of plain bamboo stakes with one section pushed over flat; bright clear morning sunlight from the right, crisp shadows: low-angle medium shot past one big broad-shouldered young man seen only from behind, appearing only once: only the back of his head with a small topknot and his broad shoulders in a coarse brown jacket, soft, his face never in the frame, in the left foreground, the carrying pole in his right hand; facing us a step in front of him, a little right of the middle, Elder Han, in his washed-out grey cotton long robe, his long white beard down to his chest, one polished old bamboo walking staff as tall as his shoulder, smooth and round along its whole length in his right hand, framed from the knees up with clear space above his head, holding the staff crosswise in both hands at chest height a hand's width in front of the young man, his face three-quarter to screen left toward him, never the lens; grave: brows drawn, eyes steady, lips moving slowly and firmly between words; behind him only the charred stumps and the open sky; their hands hold only what is described here; exactly two people, the young man in the foreground seen only from behind",
+        "motion": "Elder Han speaks a short Mandarin line, 「沒人看見他放火，告到官府，官府也不認」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the young man in the left foreground keeps his head still, the back of his head toward us the whole shot, stops and lets the carrying pole sink down at his side; Elder Han holds the staff level across in front of him; after the last word Elder Han's mouth sets and his eyes hold, and the bright morning sunlight from the right stays unchanged",
+        "characters": [
+          "hanbo"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a24",
+          "speaker": "xuyan",
+          "text": "韓伯說得對。先把紙坊蓋回來，人，我會讓他自己認。",
+          "emotion": "定下來"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the burnt paper workshop on the morning after the fire, grey ash and charred posts, bright morning sunlight from the right: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, robe and sleeves grey with soot, his face shiny with sweat, one broad dark smear of soot across his left cheek, framed from the chest up with space above his head, a flat rectangular mat of thin split bamboo strips laid close side by side, as wide as his shoulders and as deep as his forearm is long, edged with a thin plain wooden border, the strips an old deep honey colour, one small willow-leaf shape woven into its middle in darker strips clamped under his left arm at the bottom left of the frame, his right hand holding the charred remains of one small round paper lantern: a ring of blackened bamboo strips the size of two hands, and fixed at its base one small round copper plate as small as a thumbnail, embossed with the outline of one round coin with a square hole in its middle, smooth and plain all round it at chest height from the first frame, his face three-quarter to screen right toward Elder Han off screen right, never the lens; resolved: brows level, eyes hard, lips moving evenly between words; behind him only charred post stumps and the blackened wall",
+        "motion": "Xu Yan speaks a short Mandarin line, 「韓伯說得對。先把紙坊蓋回來，人，我會讓他自己認」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; one slender hand in a grey-white sleeve at the left edge takes the bamboo mat from under his left arm and draws it away past the left edge; Xu Yan lifts the charred lantern in his right hand and looks at it, then raises his eyes; after the last word his jaw sets, lips pressed, and the bright morning sunlight from the right stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s27",
+      "chapter": "一夜",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a25",
+          "speaker": "shimujiang",
+          "text": "天亮之前，骨架給你立起來，少一根我賠。",
+          "emotion": "頭也不抬"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the new timber frame of the paper workshop beside the Xu farmhouse late at night: the swept bare earth where the papermaking shed stood, the grey ash raked into one long low heap along the foot of the blackened stone wall at the left, the stone back wall, a squat stone mortar; in the middle a new frame of freshly peeled pale yellow pine: four thick round posts standing upright in a square and two round crossbeams across their tops, open to the sky; at the front left a bonfire of split logs burning on a ring of stones, two plain round pale paper lanterns with candles burning inside hanging from the near crossbeam; deep dark night, a black sky full of cold stars, only the bonfire and the two lanterns giving warm light: wide shot past the bonfire in the left foreground: in the middle beside the new posts Carpenter Shi, in his faded brown cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, both grey with soot, one plain wooden stick through his grey topknot, framed full length with clear space above his head, one wooden mallet, its plain round wooden head the size of his fist on a short handle in his right hand pointing down at one dark post hole in the swept ground, his eyes on the hole, never the lens; gruff and busy: brows knotted, lips moving curtly between words; two pairs of villagers in Song-dynasty cross-collared coarse cotton short jackets and cloth head-wraps, cloth shoes, small and soft, their faces seen only from the side, already walking in from the left of the frame, each pair carrying one long peeled pale pine log on their shoulders; their hands hold only what is described here",
+        "motion": "Carpenter Shi speaks a short Mandarin line, 「天亮之前，骨架給你立起來，少一根我賠」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Carpenter Shi taps the edge of the post hole twice with the mallet; the two pairs of villagers lower their logs to the ground beside it; the villagers say nothing; after the last word he snorts once and does not look up, and the deep night, the warm bonfire light and the two lantern glows stay unchanged, the sky stays black",
+        "characters": [
+          "shimujiang"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a26",
+          "speaker": "erniu",
+          "text": "一、二、起！這根柱子扶正了！",
+          "emotion": "咬牙使勁"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "At the new timber frame of the paper workshop beside the Xu farmhouse late at night: the swept bare earth where the papermaking shed stood, the grey ash raked into one long low heap along the foot of the blackened stone wall at the left, the stone back wall, a squat stone mortar; in the middle a new frame of freshly peeled pale yellow pine: four thick round posts standing upright in a square and two round crossbeams across their tops, open to the sky; at the front left a bonfire of split logs burning on a ring of stones, two plain round pale paper lanterns with candles burning inside hanging from the near crossbeam; deep dark night, a black sky full of cold stars, only the bonfire and the two lanterns giving warm light: low-angle medium shot: on screen left Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, grey with soot, framed from the knees up with clear space above his head, and beside him on his right Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, robe and sleeves grey with soot, his face shiny with sweat, one broad dark smear of soot across his left cheek, framed from the knees up, both gripping one thick hemp rope in both hands, the rope running up to the top of one peeled pale pine post leaning at the right; Erniu's face three-quarter to screen right toward the post, straining: teeth gritted, brows knotted, mouth wide between words; Xu Yan's face three-quarter to screen right, never the lens, jaw clenched, lips pressed shut; the bonfire light on them from the left; their hands hold only what is described here; exactly two people",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「一、二、起！這根柱子扶正了！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; both men lean back and haul together hand over hand, and the pine post at the right rises slowly upright; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still; after the last word Erniu lets out a hard breath, teeth still gritted, and the deep night, the warm bonfire light and the two lantern glows stay unchanged, the sky stays black",
+        "characters": [
+          "erniu",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a27",
+          "speaker": "xiaohe",
+          "text": "哥哥，你從早上到現在都沒吃，先吃一個！",
+          "emotion": "奶聲，催"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "At the new timber frame beside the Xu farmhouse late at night, deep dark night, the warm orange light of a bonfire: low-angle medium shot at a child's height: little Xiaohe, the eight-year-old girl, in her patched lilac cotton jacket, two little pigtails tied with red string, a small woven straw rabbit tucked into her sash, framed from the knees up with clear space above her head, one small round flat bamboo tray with six plain white rice balls on it held level in her left hand, one plain white rice ball the size of a child's fist held up high in her right hand toward one hand in a blue-grey sleeve reaching down into the frame at the top right, her face tipped up three-quarter to screen right toward Xu Yan off screen above, never the lens; coaxing and bright: eyes wide, a small gap-toothed smile, lips moving sweetly between words; behind her only the warm bonfire glow and the dark",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「哥哥，你從早上到現在都沒吃，先吃一個！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; little Xiaohe rises on her toes and pushes the rice ball up into the hand reaching down; the hand closes on it and lifts it away upward past the top edge, and the deep night, the warm bonfire light and the two lantern glows stay unchanged, the sky stays black",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a28",
+          "speaker": "xuyan",
+          "text": "好，哥哥吃。妳去睡，明早起來看新紙坊。",
+          "emotion": "溫和"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the new timber frame of the paper workshop beside the Xu farmhouse late at night: the swept bare earth where the papermaking shed stood, the grey ash raked into one long low heap along the foot of the blackened stone wall at the left, the stone back wall, a squat stone mortar; in the middle a new frame of freshly peeled pale yellow pine: four thick round posts standing upright in a square and two round crossbeams across their tops, open to the sky; at the front left a bonfire of split logs burning on a ring of stones, two plain round pale paper lanterns with candles burning inside hanging from the near crossbeam; deep dark night, a black sky full of cold stars, only the bonfire and the two lanterns giving warm light: medium shot: on screen left Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, robe and sleeves grey with soot, his face shiny with sweat, one broad dark smear of soot across his left cheek, crouching down to her height, framed from the waist up with clear space above his head, one plain white rice ball the size of a child's fist in his left hand, his right hand resting lightly on top of her head from the first frame, his face three-quarter to screen right toward her, never the lens; tired and gentle: eyes soft, brows eased, lips moving softly between words; on screen right little Xiaohe, the eight-year-old girl, in her patched lilac cotton jacket, two little pigtails tied with red string, a small woven straw rabbit tucked into her sash, framed from the waist up, one small round flat bamboo tray with six plain white rice balls on it held in both hands, her face tipped up three-quarter to screen left toward him, never the lens, a small gap-toothed smile, lips closed; the bonfire glow on them; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「好，哥哥吃。妳去睡，明早起來看新紙坊」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan pats the top of her head twice with his right hand and lifts it away, the rice ball still in his left hand; little Xiaohe nods hard; little Xiaohe says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the deep night, the warm bonfire light and the two lantern glows stay unchanged, the sky stays black",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a29",
+          "speaker": "tangxiaotang",
+          "text": "四十二個人來幫工，每個人的工錢，我都記著。",
+          "emotion": "鼻子紅紅的"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the new timber frame of the paper workshop beside the Xu farmhouse late at night: the swept bare earth where the papermaking shed stood, the grey ash raked into one long low heap along the foot of the blackened stone wall at the left, the stone back wall, a squat stone mortar; in the middle a new frame of freshly peeled pale yellow pine: four thick round posts standing upright in a square and two round crossbeams across their tops, open to the sky; at the front left a bonfire of split logs burning on a ring of stones, two plain round pale paper lanterns with candles burning inside hanging from the near crossbeam; deep dark night, a black sky full of cold stars, only the bonfire and the two lanterns giving warm light: medium shot from behind and a little to her right: one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, sitting on a low wooden crate beside the bonfire in the left foreground, one plain dark wooden abacus with a plain frame and plain round wooden beads on her knees under her right hand, one thread-bound ledger lying closed, its cover plain dark blue cloth on the crate beside her, the small gold abacus hanging at her right hip; she is the only young woman in the frame and the only one in the frame with buns and pink ribbons, and she stays in the left foreground from the first frame to the last; beyond her across the firelit ground, small and soft, the new pine frame and three villagers in Song-dynasty cross-collared coarse cotton short jackets and cloth head-wraps, cloth shoes, small and soft, their faces seen only from the side carrying a log; the bonfire light warm on her shoulders and ribbons; their hands hold only what is described here",
+        "motion": "the young woman flicks the beads of the abacus with her right forefinger, three quick flicks, then lifts her head toward the workers and holds still; the villagers say nothing; the young woman with the two buns and pink ribbons keeps her head still, the back of her head toward us the whole shot, and the deep night, the warm bonfire light and the two lantern glows stay unchanged, the sky stays black",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a30",
+          "speaker": "aling",
+          "text": "起火前，我起來喝水，看見籬笆外一個背影。",
+          "emotion": "很輕"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the new timber frame of the paper workshop beside the Xu farmhouse late at night: the swept bare earth where the papermaking shed stood, the grey ash raked into one long low heap along the foot of the blackened stone wall at the left, the stone back wall, a squat stone mortar; in the middle a new frame of freshly peeled pale yellow pine: four thick round posts standing upright in a square and two round crossbeams across their tops, open to the sky; at the front left a bonfire of split logs burning on a ring of stones, two plain round pale paper lanterns with candles burning inside hanging from the near crossbeam; deep dark night, a black sky full of cold stars, only the bonfire and the two lanterns giving warm light: medium shot: A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, grey with soot, her black hair pinned up again with one plain wooden hairpin, sitting beside the bonfire a little left of the middle, framed from the knees up with clear space above her head, a flat rectangular mat of thin split bamboo strips laid close side by side, as wide as her shoulders and as deep as her forearm is long, edged with a thin plain wooden border, the strips an old deep honey colour, one small willow-leaf shape woven into its middle in darker strips lying across her knees, her right fingers on one charred strip at its edge, her face three-quarter to screen right, never the lens; quiet: brows level, eyes lifting, lips moving softly between words; the bonfire light warm on her face from the left; behind her only the dark and the pale posts; their hands hold only what is described here",
+        "motion": "A-ling speaks a short Mandarin line, 「起火前，我起來喝水，看見籬笆外一個背影」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling pulls the one charred strip out of the edge of the mat and drops it into the fire, then lifts her eyes to screen right; after the last word her lips close and her eyes stay on him, and the deep night, the warm bonfire light and the two lantern glows stay unchanged, the sky stays black",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a31",
+          "speaker": "xuyan",
+          "text": "看清楚臉了嗎？是不是賴三？",
+          "emotion": "急問"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "At the new timber frame of the paper workshop beside the Xu farmhouse late at night: the swept bare earth where the papermaking shed stood, the grey ash raked into one long low heap along the foot of the blackened stone wall at the left, the stone back wall, a squat stone mortar; in the middle a new frame of freshly peeled pale yellow pine: four thick round posts standing upright in a square and two round crossbeams across their tops, open to the sky; at the front left a bonfire of split logs burning on a ring of stones, two plain round pale paper lanterns with candles burning inside hanging from the near crossbeam; deep dark night, a black sky full of cold stars, only the bonfire and the two lanterns giving warm light: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: only the back of her head with her black hair pinned up with one plain wooden hairpin and her shoulder in a grey-white cotton dress, soft, her face never in the frame, in the left foreground, the edge of the bamboo mat on her knees soft at the bottom of the frame; facing us a step away a little right of the middle, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, robe and sleeves grey with soot, his face shiny with sweat, one broad dark smear of soot across his left cheek, already crouching beside her, framed from the waist up with clear space above his head, his hands resting on his knees, his face three-quarter to screen left toward her, never the lens; sharp and urgent: brows drawn, eyes intent, lips moving quickly between words; the bonfire light on his face from the left; behind him only the dark and one pale post; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "Xu Yan speaks a short Mandarin line, 「看清楚臉了嗎？是不是賴三？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the young woman with the hairpin in the left foreground keeps her head still, the back of her head toward us the whole shot; Xu Yan's head turns sharply toward her and he leans in; after the last word his brows stay drawn, eyes on her, and the deep night, the warm bonfire light and the two lantern glows stay unchanged, the sky stays black",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a32",
+          "speaker": "aling",
+          "text": "太暗了，看不見臉，只看見他走路一拐一拐。",
+          "emotion": "輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the new timber frame beside the Xu farmhouse late at night, deep dark night, the warm orange light of a bonfire: close-up of A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, grey with soot, her black hair pinned up again with one plain wooden hairpin, framed from the chest up with space above her head, the edge of the bamboo mat held in both hands at the bottom of the frame, her face three-quarter to screen right toward Xu Yan off screen right, never the lens; regretful: brows drawn together, eyes lowered, lips moving softly between words; behind her only the warm firelight and the dark",
+        "motion": "A-ling speaks a short Mandarin line, 「太暗了，看不見臉，只看見他走路一拐一拐」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling shakes her head once slowly, and her hands tighten on the edge of the mat; after the last word she presses her lips together and lifts her eyes to him, and the deep night, the warm bonfire light and the two lantern glows stay unchanged, the sky stays black",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a33",
+          "speaker": "xuyan",
+          "text": "燈籠、腳印、背影，全指著賴三，可沒有一樣能上公堂。",
+          "emotion": "內心獨白，嘴閉著，沉，心裡盤算"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the new timber frame beside the Xu farmhouse late at night, deep dark night, the warm orange light of a bonfire: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, robe and sleeves grey with soot, his face shiny with sweat, one broad dark smear of soot across his left cheek, framed from the chest up with space above his head, the bonfire lighting half his face orange from the left and leaving the other half dark, the charred remains of one small round paper lantern: a ring of blackened bamboo strips the size of two hands, and fixed at its base one small round copper plate as small as a thumbnail, embossed with the outline of one round coin with a square hole in its middle, smooth and plain all round it in his right hand at the bottom of the frame, his face lowered toward it, never the lens; brooding: brows drawn, eyes narrowed on the copper plate, lips pressed flat; behind him only the dark",
+        "motion": "Xu Yan rubs his right thumb slowly across the small copper plate at the base of the charred lantern, then his hand goes still; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking, and the deep night, the warm bonfire light and the two lantern glows stay unchanged, the sky stays black",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a34",
+          "speaker": "shimujiang",
+          "text": "立好了。我說天亮之前，就是天亮之前。",
+          "emotion": "啞著嗓子"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the new timber frame at dawn beside the Xu farmhouse: the swept bare earth where the papermaking shed stood, the grey ash raked into one long low heap along the foot of the blackened stone wall at the left, the stone back wall, a squat stone mortar; in the middle a new frame of freshly peeled pale yellow pine: four thick round posts standing upright in a square and two round crossbeams across their tops, open to the sky; at the front left a ring of stones holding a bed of grey embers with one thin thread of smoke, one plain wooden ladder leaning against the right-hand post; the pale dawn sky above, cool dawn light with low gold light from the right on the new pine: wide shot past the low heap of raked grey ash in the left foreground: the new pale pine frame standing in the middle; Carpenter Shi, in his faded brown cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, both grey with soot, one plain wooden stick through his grey topknot, standing on the ladder at the right-hand post, framed full length, one wooden mallet, its plain round wooden head the size of his fist on a short handle in his right hand raised to the joint of the last crossbeam, his face three-quarter to screen left toward the people below, never the lens; worn out: eyes red-rimmed, brows knotted, lips moving hoarsely between words; three villagers in Song-dynasty cross-collared coarse cotton short jackets and cloth head-wraps, cloth shoes, small and soft, their faces seen only from the side, sitting slumped on the ground at the left of the frame, still; their hands hold only what is described here",
+        "motion": "Carpenter Shi speaks a short Mandarin line, 「立好了。我說天亮之前，就是天亮之前」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Carpenter Shi knocks the crossbeam into its joint with two blows of the mallet, then lowers the mallet and looks down; the villagers say nothing; after the last word he lets out a long breath, his mouth pulled down, and the cool dawn light and the low gold light from the right stay unchanged",
+        "characters": [
+          "shimujiang"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a35",
+          "speaker": "xuyan",
+          "text": "立起來了……紙坊還在，人也都在。",
+          "emotion": "累，嘴角一鬆"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the new timber frame at dawn beside the Xu farmhouse: the swept bare earth where the papermaking shed stood, the grey ash raked into one long low heap along the foot of the blackened stone wall at the left, the stone back wall, a squat stone mortar; in the middle a new frame of freshly peeled pale yellow pine: four thick round posts standing upright in a square and two round crossbeams across their tops, open to the sky; at the front left a ring of stones holding a bed of grey embers with one thin thread of smoke, one plain wooden ladder leaning against the right-hand post; the pale dawn sky above, cool dawn light with low gold light from the right on the new pine: medium shot past one new pale pine post at the left edge: Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, robe and sleeves grey with soot, his face shiny with sweat, one broad dark smear of soot across his left cheek, standing in front of the new frame, framed from the waist up with clear space above his head, the charred remains of one small round paper lantern: a ring of blackened bamboo strips the size of two hands, and fixed at its base one small round copper plate as small as a thumbnail, embossed with the outline of one round coin with a square hole in its middle, smooth and plain all round it hanging from his right hand at his side, his face tipped up three-quarter to screen right toward the crossbeams, never the lens; exhausted and relieved: brows easing, eyes tired, lips moving slowly between words; behind him the pale pine frame and the pale dawn sky; their hands hold only what is described here",
+        "motion": "Xu Yan speaks a short Mandarin line, 「立起來了……紙坊還在，人也都在」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan lifts his eyes up the new posts to the crossbeams and lets out one long breath, his shoulders dropping; after the last word the corner of his mouth eases a little, eyes still on the frame, and the cool dawn light and the low gold light from the right stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a36",
+          "speaker": "xitong",
+          "text": "叮。強制任務：七日內，縱火者認罪。",
+          "emotion": "冷，宣布"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the new timber frame at dawn beside the Xu farmhouse, cool dawn light and low gold light from the right: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, robe and sleeves grey with soot, his face shiny with sweat, one broad dark smear of soot across his left cheek, framed from the chest up with space above his head, his face three-quarter to screen right, never the lens; the ease draining away: eyes narrowing, brows drawing together, lips pressing shut; behind him only the pale pine frame and the dawn sky",
+        "motion": "the eased corner of Xu Yan's mouth flattens and his eyes narrow sharply; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the cool dawn light and the low gold light from the right stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a37",
+          "speaker": "xitong",
+          "text": "失敗：失去種田技能。",
+          "emotion": "冷"
+        },
+        {
+          "id": "zq917a38",
+          "speaker": "xuyan",
+          "text": "放火的是他，扣的倒是我的技能？",
+          "emotion": "內心獨白，嘴閉著，不服，心裡回嘴"
+        },
+        {
+          "id": "zq917a39",
+          "speaker": "xitong",
+          "text": "系統不抓人，只看結果。宿主自己想辦法。",
+          "emotion": "冷，毒舌"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the new timber frame at dawn beside the Xu farmhouse, cool dawn light and low gold light from the right: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, robe and sleeves grey with soot, his face shiny with sweat, one broad dark smear of soot across his left cheek, framed from the chest up with space above his head, the charred remains of one small round paper lantern: a ring of blackened bamboo strips the size of two hands, and fixed at its base one small round copper plate as small as a thumbnail, embossed with the outline of one round coin with a square hole in its middle, smooth and plain all round it in his right hand at the bottom of the frame, his face three-quarter to screen right, never the lens; stung and stubborn: brows knotting, eyes hard, jaw tight, lips pressed flat; behind him only the pale pine frame",
+        "motion": "Xu Yan's grip on the charred lantern tightens and his brows knot; he glances sideways once in disbelief, then his eyes come back hard; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking, and the cool dawn light and the low gold light from the right stay unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 10
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq917a40",
+          "speaker": "xuyan",
+          "text": "七天……我要讓錢員外，自己開口認罪。",
+          "emotion": "內心獨白，嘴閉著，沉，下決心"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the new timber frame at dawn beside the Xu farmhouse: the swept bare earth where the papermaking shed stood, the grey ash raked into one long low heap along the foot of the blackened stone wall at the left, the stone back wall, a squat stone mortar; in the middle a new frame of freshly peeled pale yellow pine: four thick round posts standing upright in a square and two round crossbeams across their tops, open to the sky; at the front left a ring of stones holding a bed of grey embers with one thin thread of smoke, one plain wooden ladder leaning against the right-hand post; the pale dawn sky above, cool dawn light with low gold light from the right on the new pine: medium shot: Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, robe and sleeves grey with soot, his face shiny with sweat, one broad dark smear of soot across his left cheek, standing in front of the new frame, framed from the waist up with clear space above his head, the charred remains of one small round paper lantern: a ring of blackened bamboo strips the size of two hands, and fixed at its base one small round copper plate as small as a thumbnail, embossed with the outline of one round coin with a square hole in its middle, smooth and plain all round it in his right hand, his face three-quarter to screen right, never the lens; set and cold: brows level and hard, eyes narrowed, lips pressed flat; behind him the pale pine frame and the dawn sky; their hands hold only what is described here",
+        "motion": "Xu Yan lifts the charred lantern up to his eyes, stares at the small copper plate at its base, and slowly closes his fingers tight round the blackened strips; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the cool dawn light and the low gold light from the right stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}
