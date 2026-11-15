@@ -1,0 +1,425 @@
+{
+  "batch": "batches/wave57-20261115.json",
+  "reviewed_on": "2026-11-15",
+  "method": "四位沒有參與研究的獨立覆核代理（R571–R574 依序覆核 ZM1–ZM4）逐題至少重新請求一個關鍵一手／機構來源、對照研究代理的請求紀錄逐筆核對網址出處與快取雜湊、grep 全池與跨系列核心去重、對照系列不收清單與 1956 真人規範及 8 分鐘門檻；修改直接寫進批次的題目與來源欄位，覆核補讀的來源編入該研究代理的來源序號，沒被引用的來源移除。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 17,
+    "NEEDS_CHECK": 2,
+    "REJECT": 1
+  },
+  "source_renames": {
+    "R571-S001": "ZM1-S019",
+    "R571-S002": "ZM1-S020",
+    "R571-S003": "ZM1-S021",
+    "R571-S004": "ZM1-S022",
+    "R571-S005": "ZM1-S023",
+    "R572-S001": "ZM2-S026",
+    "R572-S002": "ZM2-S027",
+    "R573-S001": "ZM3-S022",
+    "R574-S001": "ZM4-S025"
+  },
+  "verdicts": [
+    {
+      "id": "N6301",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM1-S003 https://archive.org/details/voyagestoeastin01conggoog（R571 seq 1 metadata、seq 9 掃描 PDF、seq 17 _djvu.txt；以影像核對 pp. 412、415、416、417 與書名頁）；ZM1-S004 https://archive.org/details/BSG_8G252_2INV2850（seq 2 metadata、seq 16 掃描 PDF 214,793,263 bytes，以文字層核對 pp. 294–297）；ZM1-S002 Gutenberg（seq 19 重抓）；補讀 ZM1-S019 1776 年初版第二卷（seq 20、23–24，影像核對 pp. 107、249；seq 21–22 第二個 1776 藏本交叉比對）、ZM1-S020 Valmont de Bomare 1764 第三卷（seq 26–29，影像核對 p. 548）；ZM1-S005 Temple（seq 25 重抓）、ZM1-S001 Crawfurd（seq 34 重抓）、ZM1-S006 Deccan Herald（seq 39 重抓）",
+      "reopen_result": "Stavorinus 正文確有三百萬磅、十五分之一、十年存貨、「committed to the flames」「proofs enough of the decrease of the clove-trade」（pp. 415–416），法譯 p. 296 同；1769/1773/1775 株數在正文 pp. 332–333。對不上：（1）英譯書名頁寫明「WITH NOTES AND ADDITIONS BY THE TRANSLATOR」，砍樹隊「all from one tree」（p. 412 註）、1779 年安汶帳目（pp. 414–415 註）都署 T.，長註（pp. 416–417）裡的「no more worth the expences」「dupes of their own avarice」、1778 年班達颶風、1796 年英軍取安汶、1798 年 10 月進口數字也都是譯者的話，法譯本全無——原稿寫成作者 Stavorinus 的結論，錯；（2）帳目掃描是 f.201,082（原稿 f.201,084），與倒貼 f.152,335 相合；（3）長註的 1760 年火註明是「M. Beaumare」所見，金額首位數字印壞；R571 找到出處：Valmont de Bomare 1764 年辭典第三卷 p. 548 第一人稱：「Le dix Juin 1760, j’en ai vû à Amsterdam, près de l’Amirauté, un feu, dont l’aliment étoit estimé huit millions argent de France」，同段寫荷蘭人倉庫有十六年收成、1760 年賣 1744 年的貨、法國常說他們丟進海裡其實是燒——原稿「阿姆斯特丹大火是英譯者在註腳裡補的、出處不明」的轉折不成立；（4）《國富論》1776 年初版 vol. II p. 249 寫「the Dutch burn」，沒有「are said to」，「savage policy」初版是「barbarous policy」；p. 107 那句初版就有「are said to」——原稿「兩處都寫據說」只對一半；（5）Temple 原文是「one of their Sea-men」，比大小用的是「眼前看得到的村子裡那座小教堂」，書名頁 1705 年第七版、作者署 Ambassador at the Hague，皆相符；（6）hook「安汶收入不到支出的四分之一」是自行換算，且出自譯者註。Crawfurd pp. 388–392 數字相符，獨占 1681 年在 p. 388。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "reason": "去重：python 讀 pool.json（candidates 1,930、not_added 3,145）查 肉豆蔻、丁香、香料、Banda、班達、摩鹿加、安汶、Stavorinus、Poivre、燒、毀掉；N1121（Run 換曼哈頓）只談條約；N6204（葉門燙咖啡豆）是「為保獨占毀掉種子是不是商人編的」，本題是「燒存貨是過剩與衰退的症狀」，不同型；ZM1 不收「肉豆蔻浸石灰」併 N6204 的判斷成立（existing_ids N6204 確在池內）；legacy/w-axis.json、原來如此 QUESTIONS.md 無同案；ZM2–ZM4 稿無撞題。與 N6302 背景相同、核心不同（燒存貨 vs 取苗與新獨占），兩題可並收，但排片不宜相鄰；樣本雖出自同一篇特稿相鄰兩句，各取一句不構成重複。修正後轉折更強：火是真的（法國博物學家第一人稱）→理由寫在同一段（十六年存貨）→一百年前英國使節已說是銷路不夠→名著初版斷言、後來才加「據說」→海軍少將算帳說是衰退→最尖銳的評語是英譯者註，撐得起 9–12 分鐘。點名人物全部改為身分稱呼，不需傳記頁；不畫屠殺，Bomare 同段的絞刑傳聞不用。",
+      "agent": "ZM1",
+      "reviewer": "R571",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6302",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM1-S007 https://archive.org/details/noticesurlaviede00dupo（R571 seq 6 metadata、seq 11 掃描 PDF，以文字層的印刷頁眉逐頁核對 pp. 21–29、46–54、77）；ZM1-S008 encyclopedia.com（seq 33 重抓）；ZM1-S001 Crawfurd（seq 34）；補讀第二來源 ZM1-S021 Sonnerat 1776《Voyage à la Nouvelle Guinée》https://archive.org/details/voyagelanouvel00sonn（seq 30–32）",
+      "reopen_result": "相符：五株有根的肉豆蔻苗、丁香「ne jouit pas de la faculté de germer」（p. 21）；1754 年 la Colombe、兩倍時間、「à un jet de pierre」（pp. 25–28）；1755 年 6 月 8 日、留給居民的苗死了「leur mort n’avait pas été naturelle」（p. 29）；Provost「ancien Ecrivain … qui parlait la Langue Malaise」、1769 年 5 月（p. 46）；Gebi 與 Patani「Souverains indépendans des Hollandais」（p. 48）；1770 年 6 月 24 日（p. 49）；叛國令「le zèle du Commandant, & l’avis unanime du Conseil Supérieur, M. Poivre seul excepté」「coupable de trahison」（p. 52）；四百株、一萬顆、七十株、一箱（p. 53）；卒於 1786 年 1 月 6 日（p. 77）。對不上或漏掉：（1）3 月 10 日是在船上開會、「veille de la séparation」，原稿寫成當天分兵；（2）傳記 pp. 49–50 自己就說歐洲將買到更便宜的香料、摩鹿加人不再受壓迫——流傳說法源頭之一就是這本頌詞，原稿漏；（3）DSB 書目寫 d’Etcheverry 報告訖於 6 月 25 日，與傳記差一天；（4）Crawfurd p. 391：1814–1818 年英國一年消費 78,000 磅丁香，其中 70,000 磅產自卡宴——對「靠荷蘭高價才活」的反轉不利，原稿漏；（5）叛國令只有傳記轉述，議會原令未讀到。第二來源 Sonnerat：序言寫 Provost 負責察看植物、旅程目的是「un trésor qu’aucune Nation n’avoit encore entrepris de déterrer」，地名一律「Pulo ***」，Patani 國王來訪，6 月 4 日回法蘭西島（與傳記第二趟的回航日相符），但序言把出航寫成 1769 年、且全書未寫取苗數量——只能佐證第二趟。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "reason": "去重：池內 candidates 與 not_added 無 Poivre、無模里西斯香料引種（模里西斯命中的 N2762、N4063、N5821、N6201 皆無關）；wave56 not_added 的 Albius 香草授粉是另一作物、另一核心；ZM2–ZM4 無撞題。單方來源問題：主要仍是朋友寫的頌詞，第二來源（同行者遊記）只證到第二趟，正片要照實說「據他朋友寫的傳記」，並帶出遊記刻意隱去地名。轉折三個（駕船的不是他、苗是向不屬荷蘭的島主要的→殖民地先立叛國令→移植的丁香靠荷蘭高價才活，且「打破獨占」是頌詞自己說的），撐得起 8–11 分鐘。點名只有 Poivre（傳記 p. 77 與 DSB 互證卒於 1786 年）；原稿 visual「空袖的背影」無出處，刪。",
+      "agent": "ZM1",
+      "reviewer": "R571",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6303",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM1-S010 https://archive.org/details/generalhistoryof02duha（R571 seq 8 metadata、seq 14 _bw.pdf，以文字層頁眉核對 pp. 310–314、347–349）；ZM1-S011 https://archive.org/details/historyofpottery00marr（seq 7 metadata、seq 15 PDF，核對 pp. 190–191、242–244、305–308）；ZM1-S012 Tea Masters（seq 40 重抓）；補讀 ZM1-S022 Brongniart 1844 t. 2 https://archive.org/details/traiteydesartsc2bron（seq 35–38）",
+      "reopen_result": "Du Halde 相符：浮梁縣志（p. 310）、福建仿製失敗與康熙召工匠到北京「yet we are assur’d that their Work failed」（p. 311）、白墩子與高嶺（p. 312）、高嶺是「Sinews」、「a Body whose Flesh should be supported without Bones」（pp. 313–314）、「for one Workman that grows rich there are a hundred that are ruined」（p. 347）、二十四甕成八（p. 349）。Marryat 相符：1712 年 9 月 1 日饒州信、「not sufficiently specific to be of much practical use」、卒於北京 1741（p. 191）；1708 紅炻器、1709 白瓷、1710 Meissen、髮粉、封桶（p. 243）；Réaumur「did not completely succeed」（p. 306）、1761 Frankenthal 秘方、Alençon 灰高嶺（p. 307）、Darnet 夫人與肥皂、1769 硬瓷（p. 308）。對不上：（1）原稿 limitations 說 Marryat「註明 Krünig、Klemm」，這幾頁沒有；兩則發現故事幾乎逐句同 1844 年 Brongniart；（2）Brongniart 把 Schnorr 髮粉土定在 1711 年，並自己寫這與 1710 年首批白瓷對不上（p. 490）——原稿把髮粉土寫成 Böttger 白瓷的定論；（3）Brongniart 註裡說 Darnet 夫人晚年曾來求助、他提請年金——肥皂土故事至少有見過當事人的人寫下，回答了「是不是沒出處的軼事」：髮粉那則較弱，肥皂那則較有來歷；（4）hook「一百多年後」與年代不合；「半個世紀」「信寄出前三年」是自行換算，刪；（5）樣本部落格引現代書說 1708 年 10 月 9 日已有白瓷杯，與 Marryat 的 1709 並陳。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "reason": "去重：池內無 Entrecolles、景德鎮、高嶺；瓷器命中的 N2088、N2402、N2862、N2866 無關；wave55 not_added 的 Böttger 煉金題只在本題當對照；W 軸已有兩題「工業間諜傳說」（N5902 Lombe 絲廠、N6001 明礬），本題核心是「信偷不走，缺的是土」，不同但同屬一類，排片避免相鄰。ZM4 not_added 也列了 Böttger/Meissen 且未打開來源，無撞題。工作單的五點已處理：（a）只講一封信與歐洲瓷器史的時間差，不評價教會或傳教；（b）神父只稱身分，可；（c）兩則發現故事追到 1844 年出處，髮粉那則日期自相矛盾、肥皂那則有見證者；（d）「偷走中國秘密」只當流傳說法，部落格對教會的定性句子不引；（e）Meissen、Sèvres 只講十八世紀。轉折三個以上，撐得起 9–12 分鐘。",
+      "agent": "ZM1",
+      "reviewer": "R571",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6304",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM1-S013 https://archive.org/details/reportsrelating00headgoog（R571 seq 3 metadata、seq 10 掃描 PDF 無文字層、seq 18 _djvu.txt；以影像核對 pp. 1、5、6、66、77、143，掃描頁碼＝PDF 頁序減 13）；ZM1-S014 English 1825（seq 45 重抓）；ZM1-S015 DNB vol. XXV（seq 44 重抓）；補讀第二來源 ZM1-S023 Parish 1839（WebSearch seq 41 得線索、seq 42 Gutenberg 下載）",
+      "reopen_result": "相符：1824 年 12 月 4 日 London Tavern（p. 1）；「horses, beef, and thistles」（p. 9 註）；一天一萬六千鎊、一人十一天、裝不滿一輛手推車、化驗無金（pp. 24–25）；1826 年 4 月 27 日感謝決議；「more than 100,000l.」、最後一期股款未繳；錫盒縫在 William Tuckfield 外套內襯、近四個月、1,480 張 foolscap（p. 76）；礦區報告「gold springs up with the rain, as in others weeds」（p. 143）；招股書 £1,000,000、「abounding in Forests … Pastures and Streams」「not being in legal possession of any proprietor」；DNB「supposed concession」「1,200l. a year for four years」「Galloping Head」「spent 60,000l. of the shareholders’ money」「attempted to withhold, unsuccessfully」、1875 年 7 月 20 日卒於 Duppas Hall。對不上或漏掉：（1）p. 6 寫授權書 1823 年 11 月 23 日、法律 1825 年 1 月 24 日，p. 66 寫授權書 11 月 24 日、法律 1 月 23 日——同書互換，原稿只取 p. 66 當定論；（2）p. 58作者承認「the arbitration had proceeded from my own act」（他放棄合約、為酬勞提仲裁），原稿寫成董事會把他拉上仲裁庭；（3）p. 73「（say 60,000l.）」是他說的「國家蒙受的損失」，DNB 的六萬鎊是董事花掉的股東錢，不同。第二來源 Parish（英國駐布宜諾斯艾利斯代辦，1839）：Famatina 那批公司失敗是「miscalculations and mismanagement, and an entire ignorance of the political state of the country」；Uspallata「would not answer」，並說 Head 看過也同樣結論——部分轉述 Head，但對失敗原因加了「經營不善」。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "reason": "去重：池內無 Rio Plata、Bond Head、Rivadavia；同一波「1825 年」與「泡沫」命中的 N3262（Poyais，L 軸，虛構國家賣地）、N5702（1720 年交易巷泡沫）、N6063（1864 孟買填海股）、N6163（Scioto 地契）、N5961（1872 鑽石騙局）都是公司或騙局失敗，但本題核心是「招股書失真、實地查核的人反被指控」，不同；Poyais 那類「紙上國家」與本題不同型（礦區真實存在）。ZM4 稿只在別題提到 1825，無撞題。單方來源：主要仍是 Head 的辯護集，已補一位局外英國官員的評語並照實寫其局限；正片須一再標明「他在自己出版的報告裡寫」。轉折三個（招股書 vs 實地→智利代理人沒見過礦→感謝決議後在他自己提的仲裁裡被控），撐得起 9–12 分鐘。點名只有 Head（DNB，1875 年卒）。",
+      "agent": "ZM1",
+      "reviewer": "R571",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6305",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM1-S016 https://archive.org/details/chroniclesofeast0000hose_h7m0（R571 seq 4 metadata、seq 12 PDF，以文字層頁眉核對 vol. II pp. 53–58、82、355、361–362）；ZM1-S017 https://archive.org/details/chroniclesofeast0000hose（seq 5 metadata、seq 13 PDF，核對 vol. III pp. 308–312）；ZM1-S018 Hunter（seq 43 重抓）",
+      "reopen_result": "相符：4,400,222（p. 54）、1760 年上諭、加倍分十年無息（pp. 53–58）、9 月下獄 11 月底送伊犁、欠皇帝稅 150,000 兩（p. 58）；1782 年四家、「the Canton merchants tried to evade the burdensome honour」、Morse 評公行是抽取收入的工具（p. 82）；1817 年浩官（Puiqua）為七家小行商墊稅、商館直接借錢給六家繳 Consoo 攤派、Kung-Kia 55,000 兩、1808 年河工 150,000 兩、山東賑災、「to prop them up and save them from bankruptcy」、四家交三位外國債主代管、倫敦董事會責備越權（pp. 309–312）；Hunter「degrading and even criminal」、E-Lee、Man-Ho 三品藍頂、中外友人合捐（pp. 38–39）、1834 年自估二千六百萬元。對不上或漏掉：（1）「Men only of desperate fortune」那份陳情在 1800 年（vol. II p. 355，章節 1800），不是 1801；且是商館擬好、由商館的人譯成中文以隱去行商在背後；（2）294 種新課稅品（1801）——新任海關監督 12 月 11 日即撤銷前任「unjust and erroneous decision」（pp. 361–362），原稿漏；（3）帳上「外國欠款」常是最大項（如 1815 年 145,000 兩），原稿「只是其中一項」有誤導；（4）那封信是六家小行商「向商館求助時被迫解釋」的；（5）Morse 1926 年出版、1934 年卒，英國 2005 年、美國 2022 年起公有領域，原稿 rights 未寫依據。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes"
+      ],
+      "reason": "去重：池內 candidates 無十三行、Cohong、Consoo；行商命中的 N5601 是英國塵足法庭，無關；not_added 只有 wave56 ZL1「浩官撕借據、世界首富」（理由：只有 Hunter 一人回憶、贖城費牽涉鴉片戰爭），本題照那筆線索改讀 Morse，核心換成「獨占是推不掉的差事、公所基金被挪作朝廷與河工開銷」，不重複。ZM4 稿提到「行商」一詞但無同案。紅線：只用 1780–1817 年與鴉片無關的段落，不評價清朝或英國；乾隆裁決只有英文轉述，照實寫；行商與 Hunter 只稱身分。轉折三個（富可敵國是自估→沒人想當、流放伊犁→公所基金流向朝廷與河工，連英國公司都要借錢撐住），撐得起 9–12 分鐘。",
+      "agent": "ZM1",
+      "reviewer": "R571",
+      "duplicate_of": ""
+    },
+    {
+      "id": "N6321",
+      "agent": "ZM2",
+      "reviewer": "R572",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM2-S001 https://archive.org/details/in.ernet.dli.2015.165764（R572 重新 GET /metadata，seq 13；下載 metadata 所列掃描 PDF，seq 14，18,896,902 bytes，PDF 頁＝印本頁＋107，逐頁看 pp. 19、42、44 掃描影像，其餘以研究代理快取 OCR 對讀，雜湊與其 access_log 相符）；ZM2-S003 DNB vol. 23 用研究代理快取（雜湊相符）重讀，確認書名頁 1890、頁眉『Grubb 301 Gruffydd』；ZM2-S002、ZM2-S005 快取重讀。",
+      "reopen_result": "p. 19 掃描頁：蟲膠『very refractory』、酷熱、用 alcohol、『unpleasant mealy appearance』、『grand in the extreme』都在；同頁還寫 B 鏡有兩小片焊錫藥水滴落的蝕坑（原稿只寫『B 鏡也沒事』）。p. 42 掃描頁：Severn 原文是 136°、『will and must prove a failure』、『It is a grievous failure, it will certainly go far to prove the error of constructing a large Cassegrain, or any kind of reflector, for this country』——原稿譯成『必定證明』過頭，已改『必定會大大證明』；同頁 Severn 說焦點誤差『Mr Le Sueur told me this himself』，原稿漏。pp. 38–39 Grubb 小冊在『The process was radically bad』之前記下觀測員辯稱用甲基化酒精是『overruled by Mr Ellery』，原稿漏了這句對觀測員有利、對台長不利的話。Robinson 與另一位回信者轉引成 130°（Severn 原信 136°）。p. 29 Robinson 確實考慮並否定了『船艙裡的化學藥劑』，所以『沒有人說是船』應改成『唯一談到船艙的人把它排除了』。DNB 那句『The metallic speculum suffered severely on the voyage to Australia』在 Grubb, Thomas 條 p. 301，條目署名 A. M. C.，無根據。Macgeorge p. 65 原句全對。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：python 讀 pool.json（candidates 1,930、not_added 3,145）查 Melbourne、墨爾本、Grubb、speculum、Le Sueur，無同案；N5721、N5565 是別的儀器題。同批 ZM1、ZM3、ZM4 無撞題。一手往來信四方說法加接手觀測員的報告，轉折四個（船被排除→三種說法互打→台長頂撞會長、觀測員把酒精推給台長→被怪的人重新拋光成功），撐得起 9–12 分鐘。點名只有 Grubb（1878）、Robinson（1882），DNB 各一條；台長、兩任觀測員、Severn、Sabine、John Herschel 本題都只稱身分（ADB 網站不再碰，未補傳記頁）。只講 1860 年代，不提任何今天的公司。"
+    },
+    {
+      "id": "N6322",
+      "agent": "ZM2",
+      "reviewer": "R572",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZM2-S006 Phil. Trans. 77（1787）〈An Account of Three Volcanos in the Moon〉、ZM2-S007 Phil. Trans. 82（1792）〈Miscellaneous Observations〉：用研究代理快取（雜湊與其 access_log seq 24、31 相符）逐行重讀；ZM2-S008 Webb 1904 重印本以快取 OCR 對頁眉（pp. 82、101、108、119）。",
+      "reopen_result": "原稿的關鍵轉折『他在報告裡就想到地照、並在信裡排除』不成立。pp. 230–231 原句是『These three spots are plainly to be distinguished from the rest of the marks upon the moon; for the reflection of the sun's rays from the earth is, in its present situation, sufficiently bright, with a ten-feet reflector, to shew the moon's spots, even the darkest of them』——他把地照當成看得清楚的條件，沒有討論三點會不會就是被地照照亮的亮處，正好是後人的解釋所依據的。1790 年月食一節在 p. 27（頁眉『27』），150 個紅點、『We know too little of the surface of the moon to venture at a surmise』相符。Webb 的 Aristarchus 句在 p. 119，不是 pp. 118–119。Clerke p. 266 原文是『completely, though temporarily』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "待查：去掉不成立的轉折後，缺口與 wave33、wave40、wave53、U8 四次不收時一樣——仍沒讀到最早是誰、何時提出地照解釋，指出錯誤的人只經 1893 年修訂版手冊轉述；剩下的轉折（1790 年不猜、Aristarchus 亮度變化至今無解）撐不起 8 分鐘。修訂後的題卡已改寫為『地照就寫在他自己的報告裡』，留給補到 Schröter 1791 年原文或 Herschel 日後的說法再議。去重：S49／U30（月球騙局）、Gruithuisen（N2802 與多筆 not_added）、N4386（Linné）都是別的核心。",
+      "coordinator_note": ""
+    },
+    {
+      "id": "N6323",
+      "agent": "ZM2",
+      "reviewer": "R572",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM2-S013 https://archive.org/details/journalofasiati291860asia（R572 重新 GET _djvu.txt，seq 11，sha256 前 16 碼與研究代理 seq 40 相同 2f9acd9e881b973a）逐段對 pp. 410–416；ZM2-S014 https://www.gutenberg.org/ebooks/22472.txt.utf-8（R572 seq 12，雜湊相同）重讀第 17、23 章；新補 ZM2-S026 https://www.albany.edu/arce/Fort35.html（seq 10）。",
+      "reopen_result": "『Saturday the 14th July』、第 927 號公函『dated Dhurmsala, 28th July, 1860』、『Some coolies, passing by where one fell…owing to the intensity of the cold which benumbed their fingers』、『I quote the account from the writer who describes it, verbatim』、『In different newspapers I have read…』清單（Benares 活魚、Agra、Furruckabad 與 Meerut 血雨、日斑、黃霧）全部逐字相符；另一位寫信人（阿姆利則）的轉寄信也署 7 月 28 日，原稿沒寫。Fort 第 17 章引出處『Canadian Institute Proceedings, 2-7-198』，寫『coated with ice』『he saw lights』『July 28, 1860』，可是同書另一處寫『July 17, 1860』——Fort 自己兩個日期，原稿只放在 locator。Fort 第 23 章說公函寫苦力『immediately』撿起，原件沒有這個字。Fort 也逐字引了撰寫者『neither fire balloons, lanterns, nor bonfires』。原稿說『Fort 引過的教科書說法正是這一類』不精確：Fort 引的教科書只說『soon／within half an hour』撿起，冷熱的道理是他自己預告『conventionalists may argue』，已改寫。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 查 Dhurm、Dharamsala、Kangra 無；Fort 相關的 N3186、N3282、N3283、N3441、N3742 核心不同（本題是冰、光的主人、日期與報紙清單四層轉述錯位），排片時避免連排。一手公函與 Fort 原文都讀得到，轉折四個，撐得起 8–11 分鐘。依工作單把題卡與旁白的『苦力』全部改成『搬運工』，scope 註明原文 coolies。1956 紅線：Fort 1932 年卒，補了大學機構頁 ZM2-S026（1932 年 5 月 3 日卒），與 ZM2-S016 互證；沒有找到公有領域傳記辭典條目（ANB 非公版），照實寫進 risk。"
+    },
+    {
+      "id": "N6324",
+      "agent": "ZM2",
+      "reviewer": "R572",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM2-S017 https://archive.org/details/bub_gb_OSDaUONTr0oC（R572 GET /metadata seq 1、掃描 PDF seq 2，170 dpi 逐頁看 PDF 頁 6–13 影像）；ZM2-S018 https://archive.org/details/bub_gb_rWBNnEevE4cC（metadata seq 3、PDF seq 4，看 PDF 頁 4、5、23、28 影像）；ZM2-S019 https://archive.org/details/paper-doi-10_1098_rstl_1695_0140（metadata seq 5、PDF seq 6，PDF 頁 n＝印本 p. 756+n，看 pp. 757、770、773、776 影像）；ZM2-S020 ADB 用研究代理快取重讀全文。",
+      "reopen_result": "Fraktur 掃描頁確認：書名頁『Verfertiget von dem Collegio Medico in Gotha, den 14. Febr. 1696』；〈Historia〉開頭是『Zu Ende nechst abgewichenen 95ten und Anfang jetzt lauffenden 1696ten Jahrs』、8 Schuh、一 Centner、四顆 12 磅臼齒；PDF 頁 12『in destillatione ex aperto igne keinen spiritum oleosum volatilem…sondern nur ein stinckendes Phlegma, so seinen Ursprung von einem sulphure terrestri hat』（是在『若是象骨為何……』的條件句論證中寫出）、比例、象牙位置、『so viel Elephanten in Teutschland』、結論句都相符。對不上的：藥效段（PDF 頁 13）原文說這次挖到的『藥效還不知道』（noch nichts bekant），只說『無疑』會和化石獨角獸一樣；Gräfentonna 早年那件鹿角形的，PDF 頁 8 寫治『fallende Sucht』，頁 13 寫『das böse Wesen der Kinder』——原稿寫成已確認藥效相同，已改。Tentzel PDF 頁 23（簽記 B 4）是『in vase fictili, quod Retortam vocant』，得到 phlegma、『sal volatile gustu』、oleum，並把硫磺味解釋成『igne subterraneo』燒過——兩方都聞到硫磺，原稿漏了這個最好的對照；醫學院用的是『明火乾餾』，不宜說『同一個曲頸瓶』。PDF 頁 5 Tentzel 把對方說法寫成『minerali iocantis naturae foetu』，原稿說 OCR 不清、找不到，已補。地層否定人為埋葬與『Nihil igitur superest, praeterquam universale diluvium』在 PT pp. 772–773。p. 776 附記原文是送去『part of the Skull, wherein appear its Cells, some of the Teeth…Ivory…all which they found agreeable to his Description』，只是說骨片與描述相符，原稿標成『倫敦的判決』過頭，已改。日期 X. Kal. Feb.＝1 月 23 日、Quinto Nonas Maias＝5 月 3 日。ADB 全文確無象骨，卒日 1707 年 11 月 17 日。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 查 Quedlinburg（無）、Guericke（只有 N5544 馬德堡半球）、獨角獸／unicorn（N309 獨角鯨牙、N4681 有角兔）、Tentzel／Tonna（無）、巨人骨（N3242 Theutobochus、N3241 Plot）、mammoth；最接近的是 N3242（巨人骨其實是長鼻類）與 N3243（舌石，Colonna 用火燒分辨骨與石）——本題的巨人說在原件開頭就被否定，核心是官方醫學院把骨架判成地裡長出的礦物並順手寫成藥、兩方用同一種乾餾聞到同一種硫磺而各自解釋，核心不同，排片時不要與 N3243 連排。同批無撞題。轉折三個加尾聲，撐得起 9–12 分鐘。點名只有 Tentzel（ADB，1707 年卒）。"
+    },
+    {
+      "id": "N6325",
+      "agent": "ZM2",
+      "reviewer": "R572",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "新讀 ZM2-S027 Purchas his Pilgrimage 1626（archive.org advancedsearch seq 7、metadata seq 8、_djvu.txt seq 9，識別碼 b30334652）全書檢索；ZM2-S021 Asher 1860、ZM2-S022 Markham 1893 用研究代理快取（雜湊相符）重讀 p. 28 與腳註、導言 p. viii、p. 139、pp. v–vi、p. 154。",
+      "reopen_result": "兩個主要轉折讀原件後不成立。（1）『1626 年就換了證人』：Purchas 原句『they met, as both himselfe and Juet have testified, a Mermaid in the Sea, seene by Thomas Hils and Robert Rainer』後半仍寫明是兩名水手看到；同一本 1626 年書另一處（OCR 頁眉約 p. 626）又照水手說法寫一次，旁邊側註 OCR 判讀為『Robert Iuet in his relation of that Voyage』，前一句他對另一則荷蘭美人魚說『I sweare not to the truth of it』——『作了證』是兩人都記進日誌。（2）『讀到的四份文件沒有一份說她是什麼』：研究代理自己下載的 Asher 1860 年本 p. 28 腳註就寫『Probably a seal. Dr. Kane observes that there is something in the appearance and the movements of this animal strongly akin to those of human beings.』。日誌原文、75°7′、兩人名字、Markham p. 154 正文與海牛／儒艮腳註、pp. v–vi『now lost』與『the Admiral says』說明都相符。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "待查：剩下的骨架是『兩份日誌都寫明是水手看到、兩位 19 世紀編者各在腳註給了解釋』，沒有任何讀到的樣本頁真的寫『Hudson 本人看到美人魚』（流傳說法可能是稻草人），哥倫布一半的『日誌只剩 Las Casas 節錄本』又已是 N3184 的轉折，撐不起 8 分鐘（editorial.minutes 改為 [6, 8] 示意）。重收條件：補到流傳說法的樣本頁、Purchas 1625《Pilgrimes》與 Juet 殘片的掃描頁，再找一個更強的轉折。去重：池內美人魚題 F08、N310、N444、N550、N721、N765 都是傳說或展品，N2945 是 Steller 海牛，無同案；哥倫布只讀一條日誌、不評價其人，不觸及不收清單。兩名水手沒有傳記頁，可唸名字、只畫背影。",
+      "coordinator_note": ""
+    },
+    {
+      "id": "N6341",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM3-S002 https://archive.org/details/chroniclesoflond00kinguoft（R573 GET /metadata seq 1、下載 _djvu.txt seq 2，1,198,176 bytes，雜湊 c029caa6bfd6aae1 與 ZM3 seq 14 相同；以 OCR 內印出的頁眉『154 CHRONICLES OF LONDON』『III. VITELLIUS A XVI, 1440-1443 155』對頁碼）；另讀 ZM3 快取 S001（engchron.txt pp. 57–60）、S003（Gregory pp. 183–184）、S004（Gutenberg 49297 三場）、S005（DNB vol. 28 Humphrey 條，檔內頁眉 Howard–Inglethorp）",
+      "reopen_result": "p. 154『anone after Mydsomer in the moneth of Juyn … arrested for coniectyng of þe kynges deth』『Roger Bullynbroke, a Clerk of Nigromancie』『Margery Jurdemayne, the Witche of Eye』『Thomas Southwell died for sorowe』；p. 155『M. John Hum had his chartre』『he died giltles of that he died for』『the nyght before he shuld haue been areyned … he shuld die in his bed and not by Rigour of the lawe』都在。對不上或漏掉的：（1）編者導言 pp. xvi–xviii 說這部是 15 世紀晚期的手寫、1440 年後的前段『in no sense contemporary』，同案者下場在第 19、20 年各記一次（所以 Southwell 有『憂傷而死』與『說中死在床上』兩條），Margaret 來英格蘭的年份記錯——原稿拿這部的順序推『劇裡在場的王后當時還沒嫁來』，刪；（2）An English Chronicle p. 58 原文是他受她慫恿『wroughte the said nygromancie』以知道她的前途，原稿簡化成『只是替她算命』；同書 p. 60 作者說她的『pride, fals coveitise and lecherie』是她垮台的原因，原稿漏；（3）Gregory p. 184 只說堂區長在聖西門與聖猶大節『deyde in the Toure for sorowe』；（4）DNB 說 1442 年請願可見 Gloucester 影響的『trace』，原稿 payoff 寫成『真正改變的是貴族婦女該由誰審判』，過頭；（5）question 點名劇作家，與 risk『不點名』矛盾。劇本引句全在 Cambridge 版（1863–66，公有領域）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：python 讀 pool.json（candidates 1,930、not_added 3,145）查 Cobham、Bolingbroke、Jourdemayne、Southwell、Eleanor，全池無同案；N5744（Dee 1555 王室星盤）、N3961（Gaurico 與亨利二世）同屬占星家與國王，但案子與答案都不同；同批 ZM1、ZM4 無撞題（ZM2 尚未交稿）。Bolingbroke 沒有 DNB 獨立條目（覆核翻 ZM3 快取 DNB vol. 5 Bicheno–Bottisham 確認），三部編年史與 DNB Humphrey 條都記他 1441 年 11 月被處死，15 世紀人物無 1956 之虞，可具名。三部編年史互相出入、劇本與編年史四處落差（靈、三句預言、三人絞刑、赦免），加上 DNB 把 Fabyan 的蠟像寫成事實，轉折夠撐 9–12 分鐘。處刑只一句帶過，visual 沒有絞架、火刑與文字。",
+      "agent": "ZM3",
+      "reviewer": "R573"
+    },
+    {
+      "id": "N6342",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM3-S014 https://archive.org/details/b30538750（R573 GET /metadata seq 5、_djvu.txt seq 6，503,369 bytes，雜湊 e834a835c03b7b51 與 ZM3 seq 57 相同；以 OCR 頁眉 pp. 66–68、97、307–312 對頁）；DNB Wharton 條（vol. 60）與 Lilly 條（vol. 33）讀 ZM3 快取",
+      "reopen_result": "Lilly pp. 66–67『an impudent senseless fellow』『Before that time, I was more Cavalier than Roundhead』『If now we fight, a victory stealeth upon us … at Naseby』；p. 68 十二小時寫答辯、Starry Messenger 在 Naseby 當天上市、十四天內被告到審查委員會；p. 97『it was my happiness to procure Captain Wharton his liberty』『I will be an enemy to Lilly』；Ashmole p. 307 被捕與越獄、p. 309 再入獄、pp. 310–312『the next day after, I went to Mr. Lilly』『intended to hang him』『all acknowledgments to me are omitted』『after Christmas』『Oaken Friend』都在。對不上或漏掉的：（1）Lilly 那句是『engaged body and soul in the cause of Parliament, but still with much affection to his Majesty’s person』，原稿只引前半；（2）Ashmole 日記 1645-10-08 記 Wharton 那天才當騎兵上尉，hook 卻把 1645 年初出曆書的他稱為『上尉』；DNB 說用 Naworth 名義在 Oxford 印的是 1644 年曆書、1645 年已署本名，與 Lilly『1645 年 Naworth 曆書』不同；（3）『1651 年曆書只謝 Lilly』只有 Ashmole 這樣說，原稿寫成事實；（4）Ashmole 那段是排在 1650-08-08 條後的追記、說『21st of November last』，與 DNB『1650 年秋』並陳。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：查 Wharton、Naworth、Naseby、Bradfield、Ashmole、Lilly；池內 Lilly 題 P17、N4744、N5725、N3784 與 not_added 的 1666 象形圖、白王、國會傳喚都是 Lilly 的某則預言或記述，曆書專賣 N6242 是書商公會特許狀；Wharton、Naseby 全池沒有。本題核心是兩位敵對曆書作者與救命之恩的三個版本，答案不同。三位點名者 DNB 各一條（Wharton 1681-08-12、Lilly 1681-06-09、Ashmole 1617–1692），Bradshaw、Whitelocke 只稱身分。轉折：互罵後換邊、Naseby 預言只是自述、同一天他自己也被國會傳喚、救命三說、收留者是沒被謝的人，撐得起 9–12 分鐘。與同批 N6341 同屬占星家與政治，排片不要相鄰。",
+      "agent": "ZM3",
+      "reviewer": "R573"
+    },
+    {
+      "id": "N6343",
+      "verdict": "REJECT",
+      "key_source_reopened": "ZM3-S021 https://archive.org/details/sim_gentlemans-magazine_1753-12_23_12（R573 GET /metadata seq 7、_djvu.txt seq 8，455,140 bytes）；ZM3-S018 讀 ZM3 快取；並用 python 讀 pool.json 的 N5281 全文與 wave47、wave40 的相關 not_added",
+      "reopen_result": "12 月號 p. 578 牧師回信『blossom’d the fullest and finest about christmas-day new-style, or rather sooner』『the old thorn has been decay’d and gone time immemorial』都在；但同段 Hull 傳單還說它『was originally the staff of Joseph of Arimathea』，牧師回信接著引主教考證 Joseph『never was』在英格蘭——新增轉折與現存教會的聖物傳說寫在同一段。1 月號 Quainton 條與編者附註，池內 N5281 的 answer_target 已逐項使用（兩千人提燈籠、『只有今年才想起來』是 Glastonbury 插枝、拒上教堂、牧師宣布舊聖誕照守、Glastonbury『照常開花』、園藝辭典『現在有理由不信』）。",
+      "changed_fields": [
+        "notes"
+      ],
+      "duplicate_of": "N5281",
+      "reason": "重複：核心答案與 N5281 相同（1753 年 1 月號記的荊棘『裁決』是改曆反應的真實一幕，而『名荊棘插枝』是當年才想起的、園藝辭典早說看天氣），研究代理說『只有 N5281 是暴動口號、核心不同』不成立；wave47 ZC1 已明列 not_added『Glastonbury 荊棘在舊曆聖誕節開花，證明新曆是錯的（單獨成題）』併入 N5281，理由是單獨講荊棘會變成 wave40 U4 退掉的聖物神蹟題，研究稿沒提這筆。新增素材只有三則短信（10 月號後半 OCR 斷、11 月號是玩笑投書），單一刊物、撐不起 8 分鐘，且 12 月號的反轉與 Joseph of Arimathea 傳說同段，觸〈不收的題目〉的現存宗教界線；『兩千人拿荊棘裁決新曆』單獨成集也容易被讀成嘲笑信徒。處置：退回，建議把 10 月號『舊曆米迦勒節已盛開』與 12 月號牧師兩句補進 N5281 的一章，不講 Joseph 傳說；已在 proposal.reviewed.json 的 not_added 加一筆（existing_ids N5281）。",
+      "agent": "ZM3",
+      "reviewer": "R573"
+    },
+    {
+      "id": "N6344",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM3-S009 Hutchinson 1718 https://archive.org/details/b30500370_0001（R573 GET /metadata seq 3、_djvu.txt seq 4，603,498 bytes，雜湊與 ZM3 seq 37 相同；OCR 頁眉『66 Of the Suffolk Witches』）；S010 1720 年版、S011 DNB vol. 27、S012 N&Q 1854、S008 Stearne 1648、S007 Hopkins 1647 讀 ZM3 快取（雜湊與其 access_log 相符；DNB 27 的 seq 39 失敗後 seq 41 覆寫，屬正常）",
+      "reopen_result": "1718 pp. 65–66『These Two last Verses, I suppose, relate to that which I have often heard … he himself swam as they did. That clear’d the Country of him』、p. 71『it was Time for Hopkins to leave the Country when he did』；1720 年版（書名頁 Second Edition … MDCCXX）同段在 p. 86，兩版都沒有 hanged。DNB vol. 27（檔內頁眉 HINDMARSH HOVENDEN）p. 337『According to Hutchinson his thumbs and toes were tied, “he swam,” and was hanged』與緊接的 Mistley 葬籍逐字相符；N&Q『There is reason to believe』『The inference therefore is』在；Hopkins 1647 Querie 1、Quer. 10『never brought in … as any evidence』『for ever shall be left』、Quer. 14『20.s. a town』都在。對不上的：Stearne 原文是『(notwithstanding whatsoever hath been said of him) he died peaceably at Mann[缺字] after a long sicknesse of a Consumption, as many of [缺字] … without any [缺字] for what he had done, as was falsly reported of him』——『as was falsly reported』接在缺字後，原稿寫成『並不像外面誤傳的那樣』並暗指在駁浸水說，過頭；『Manningtree』是推讀；同段他也承認起初『he might watch some』。《Hudibras》的『1660 年代』不在本輪任何來源。hook『那年 8 月他就下葬了』把 N&Q 投書人自己說的『推斷』寫成定論。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：查 Hopkins、Stearne、Mistley、Witchfinder、浸水、獵巫；池內只有 wave55 ZK3 not_added（同題，未收理由：Stearne 與葬籍沒讀、血腥界線、本批 G 軸已兩題英語巫術案）——前兩項本輪已補讀並在 scope 壓住，第三項本批 G 軸另一題是德國案。N5944、N6144、N5844、N6145 是被告或假證，核心不同。點名 Hopkins（DNB vol. 27）、Hutchinson（DNB vol. 28：1660–1739）；搭檔、Butler、Gaule 不點名。傳說的四層演變（1647 年自己書裡的第一條質疑→1648 年搭檔說外面有許多說法→1718 年『我想、我常聽說』被趕走→1891 年辭典多了『被吊死』）撐得起 9–12 分鐘。visual 沒有落水、絞架與文字。",
+      "agent": "ZM3",
+      "reviewer": "R573"
+    },
+    {
+      "id": "N6345",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM3-S013 https://archive.org/details/joanniskeplerias08kepl（R573 GET /metadata seq 9、_djvu.txt seq 10，4,886,613 bytes，雜湊 a59e8411… 與 ZM3 seq 51 相同；以 OCR 頁眉核對 pp. 41–42、361–362、368、395、428、548–551）；補讀 ZM3-S022 Bryant 1920 https://archive.org/details/keplerbrya00bryauoft（seq 12 搜尋、13 metadata、14 _djvu.txt）",
+      "reopen_result": "注 8『Certe … ex illa ipsa urbe et domo enati sunt sermones de me ipso calumniosi』『Nisi fallor … vexatione sexennali』、1624 年信『Mater se defendere, illam in jus vocare』『ex rea quinquennali facta accusatrix』『24. Julii … 5. Augusti』『usque in 4. Novembris anni 1621』『13. Aprilis anno 1622 … aetatis anno 75』、法學院『realis tortura diss Ortts kheineswegs statt haben wird』『exemplo grave』『nicht angegriffen … noch sonsten gemarttert』、9-28 報告『ein Ader nach der andern』『pure et constanter』『77 fl. 46 kr.』、10-03 令『durch aussgestandene Territion die einkhommene indicia purgirt』與 120 盾分攤（玻璃匠 10、Christoph 30、Leonberg 城 40、執政官 40）都在。對不上或漏掉的：（1）注 8 在『Nisi fallor』前面就說朋友會認為這本書對他和家人『ominosa』，『Nec ego dissentio』，並說手稿流傳是『cladis domesticae』的徵兆——原稿說他『用的是假設語氣』低估了他自己的說法；（2）信裡是母親先『atrociter lacessita exprobratione vitae anteactae』揭對方舊事才結仇，原稿漏；『年近七十』原文是『jamque septuagenaria』；（3）9-28 報告她承認『den leitten etwan Kraitter zuegebrauchen gebe』，原稿漏；（4）10-03 令要家屬繳費或擔保才放人，原稿漏；（5）『Est parva, macra…』是 Frisch 引言引 Kepler 另一處，不是信；（6）卷宗 pp. 368、395、428 記告發者的親兄弟 Urban Kreutlin 是 Tübingen 的理髮師、親王的御用理髮師，曾半拔佩劍逼她解咒——與注 8 點名的 Tübingen 理髮店可以並列，研究稿沒讀到。Bryant p. 53 起因同 Kepler 信，不提 Somnium，但把刑訊判決誤記為『July, 1620』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：查 Kepler、Somnium、Katharina、Guldenmann、Leonberg、Güglingen、克卜勒；池內 Kepler 題 N704、N1201、N2703 等是別案，N4582 的 Somnium 是 Cicero 的夢；wave26 K1 not_added（同題）未收的條件是讀到注 8 原文與卷宗，本輪已補齊，可重開。N6145（Grace Sherwood）也有『先上法院的是她』這個轉折，但案子與核心不同，排片不要相鄰。原稿只有一部來源，覆核補上 ZM3-S022（1920 年英文傳記）作第二來源兼『後來怎麼簡化』的樣本；question 原寫『常被說成』沒有可讀的樣本頁（兩個通俗頁 403），改以 Kepler 自注為說法源頭。點名 Kepler（Frisch Vita、Bryant p. 55：1630 卒）、Katharina（Kepler 信：1622 卒）；Christoph、告發者夫婦、理髮師、執政官只稱身分。轉折：說法的源頭是 Kepler 自己→信裡的起因是口角與她先提的官司→卷宗裡有一位 Tübingen 的理髮師→刑訊只是嚇她、因為完全無罪是壞榜樣→家人得繳錢才放人，撐得起 10–13 分鐘。刑具不畫，visual 只到門口。",
+      "agent": "ZM3",
+      "reviewer": "R573"
+    },
+    {
+      "id": "N6361",
+      "agent": "ZM4",
+      "reviewer": "R574",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "新增 ZM4-S025 https://archive.org/details/chepfl-lipr-axd-31-05（R574 seq 1 以 advancedsearch 查 Encyclopédie 全部卷冊，seq 2 GET /metadata 確認為 Lucca 1759 年翻印第一版 tome 5〈DO–ESY〉，seq 4 下載 _djvu.txt 8,244,897 bytes 讀 EPINGLE 全條）；ZM4-S001 講義與 ZM4-S002《國富論》、ZM4-S003 1778 年版用研究代理快取（研究代理 95 筆快取雜湊全數與其 access_log 相符）重讀；ZM4-S005 DNB vol. 53 掃描 PDF（seq 23–24）以影像頁眉核頁碼",
+      "reopen_result": "1755 年條目（翻印本）條首確實寫『une épingle éprouve dix-huit opérations avant d’entrer dans le commerce』，接著 1° 到 18° 逐道編號，第 18 道是插紙；條末編者說明撰稿人 M. Delaire『在工人的作坊裡』描述——研究代理沒讀到的條首總述句已確認。對不上的：研究代理的轉折三與 question、hook 裡『那部法國百科全書承認最好的別針是英格蘭人做的』、逐工種『一百二十千』『七十二千』日產量、巴黎師傅剩九十四位，全部只在 1778 年新版的改寫條目裡，第一版沒有；第一版只說英格蘭用的錫最純所以針很白、Bordeaux 更亮更持久、Laigle 的針磨兩次尖，記的工人速度是切頭工每小時不少於一萬二千個頭、插紙一天最多三萬六千根只賺三蘇、孩子插六千根賺兩 liard。銅絲在第一版是『從瑞典或漢堡』來（1778 年版才寫德國）。講義『in all eighteen』『with great ease make 2000』、編者註 1–2、《國富論》pp. 6–7『very often taken notice of』『I have seen a small manufactory』『four thousand eight hundred』逐句相符。DNB 頁碼改為 p. 3 條首、p. 9 卒年。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：python 讀 pool.json（candidates 1,930、not_added 3,145）、legacy/w-axis.json、原來如此 QUESTIONS.md 與 ZM1–ZM3 的 proposal，查 Adam Smith、亞當斯密、斯密、pin factory、別針、大頭針、Encyclop、分工、Chambers：只有 ZM1 N6301（VOC 燒肉豆蔻）引了《國富論》，核心不同。改正後轉折三個（十八道與編號清單在講義前八年已印出→講義兩千變書裡四千八百→那篇條目記的是個別工人速度與孩子的工錢，1778 年改寫版才說英格蘭最好），撐得起 8–10 分鐘，minutes 由 [8,11] 改 [8,10]。軸：主體是一門 18 世紀手工業的分工、工錢與產量，放 W 可；它也有經濟思想史的味道，若排片偏重人物可改 S。點名只有斯密（DNB 卒 1790）。仍不放心：1755 年巴黎原版的掃描本輪沒讀到，翻印本頁碼只靠 OCR 頁眉。"
+    },
+    {
+      "id": "N6362",
+      "agent": "ZM4",
+      "reviewer": "R574",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM4-S007 https://archive.org/details/accountofarcticr02scor（R574 seq 5 GET /metadata、seq 6 下載 metadata 所列掃描 PDF 36,165,876 bytes，以 PDF 文字層頁眉逐頁核對）；ZM4-S006 Conway（seq 7–8 掃描 PDF）；ZM4-S008 挪威極地研究所頁（seq 29 重抓）、ZM4-S009 荷蘭文化資產署頁（seq 30 重抓），兩頁雜湊與研究代理快取相同；ZM4-S010 DNB vol. 51 掃描 PDF（seq 27–28）以影像頁眉核頁碼",
+      "reopen_result": "Scoresby p. 143『two or three hundred vessels, containing from 12,000 to 18,000 men, being double manned』、p. 144 巴達維亞與『did not exceed 30 sail on an average; but in a few years, after it was laid entirely open, the annual voyagers from Holland were increased tenfold』逐句相符，頁碼由『依次序推定』改為頁眉確認的 p. 143／p. 144；p. 144 註†說熬油房廢棄後港灣整個漁季仍擠滿裝桶的船——研究代理的『同頁船數兜不攏』是他自己的推論（三十艘的十倍正是開放後的規模），已刪；Scoresby 引的是荷蘭文彙編，研究代理說他是『第一個把它寫成大城的英國船長』沒有出處，已改。Conway p. viii 女人一句、p. 138『10,000 to 20,000』『1,000 to 1,200 at the outside』、p. 182 Harlingen 相符，Zorgdrager 譯文起於 p. 137；但 p. 137 Conway 自己列了『a church and a fort armed with cannon』，教堂不能當成後來加的傳說，已寫進 scope。兩個機構頁的『1979 and 1981』『approximately 200 inhabitants』『around 19 buildings』『about twenty houses with room for a few hundred people』『1970s and 1980s』相符；後者還提到出土穿衣骨骸，已列入 risk。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 查 Smeerenburg、鯨脂、捕鯨、whal、Svalbard、Spitsbergen、斯瓦巴、Noordsche、Muscovy、Scoresby、ghost town、消失的城、萬人城鎮：沒有本案；Scoresby 只命中一筆 not_added（格陵蘭海上蜃景），斯瓦巴只命中 N3202、N2784 等別題；同型的『城鎮規模或消失』題 N5765、N4085、N1364 核心不同。來源：1720 年荷蘭書（經 1906 年英譯）、1820 年船長、1906 年史家、兩個機構頁，轉折三個（大數字數的是港裡雙倍船員、同頁寫獨占時期不到三十艘→史家拆穿兩萬人卻在序言加了沒出處的女人→發掘只有二十棟左右），撐得起 8–11 分鐘。軸：Scoresby 同頁的獨占與開放船數是商業轉折，放 W 可，也可放 L。點名只有 Scoresby（DNB 卒 1857，pp. 6–8）；發掘主持人在世，不點名。"
+    },
+    {
+      "id": "N6363",
+      "agent": "ZM4",
+      "reviewer": "R574",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM4-S015 https://archive.org/details/statutes-of-the-realm-v-1-1101-1377（R574 seq 9 GET /metadata、seq 10 下載 metadata 所列 _text.pdf 37,333,690 bytes，以掃描影像讀 p. 206 頁腳註與 p. 207 正文）；ZM4-S017 DNB vol. 25 掃描 PDF（seq 19–20）以頁眉核頁碼；ZM4-S011／S012／S013／S014／S016 用研究代理快取（雜湊相符）逐句重讀；另以兩次網路搜尋（一般與加強）找『鼻尖到拇指』的早期出處",
+      "reopen_result": "研究代理的『古法令』段：它自己下載的 OCR 檔裡根本沒有這段文字，頁碼寫『約 pp. 206–208、未核』。掃描影像顯示：大麥那段不是法令正文，是 p. 206〈Statutum de Admensuratione Terre〉頁腳註附的一篇短文〈Compositio Ulnarum & Perticarum〉，只見於 Cotton 抄本 Claudius D. II fo. 241b 與『一些較早的印本』，英譯取自 Rastall 1603 年法令集；拉丁文『tria grana ordei sicca & rotunda faciunt pollicem…tres pedes faciunt ulnam』與研究代理所引相符。法令正文 p. 207 寫的是『ulna domini Regis ferrea continet iij pedes & non plus』，一吋是這把鐵碼的三十六分之一——研究代理漏了，已補進題目（正好接 1197 年的鐵尺）。Malmesbury 1840 年本 p. 641『Mercatorum falsam ulnam castigavit; brachii sui mensura adhibita』、Bohn 譯本 p. 445『false ell』、Holinshed『which was a yard, appointing it to be cut after the length of his owne arme』與旁註、Hoveden pp. 410–411『The ell…is to be made of iron』與紅布黑布、p. 530『Base means of gain ought to be shamed』逐句相符；1201 年那段漏了『to the injury of many』，已補。DNB Henry I 條 p. 436 起、『is said to have made the length of his own arm』在 p. 440、卒年在 p. 451。『鼻尖到拇指』：兩次搜尋只得到 1992 年《Deseret News》與更晚的網頁，19 世紀出處仍查不到，維持『出處不明』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 查 Henry I、亨利一世、一碼、yard、ell、量布尺、barleycorn、大麥粒、度量衡、Malmesbury、Holinshed、Hoveden、Statutes of the Realm：亨利一世只命中 N466（梅林預言）、N3645 別題；度量衡只命中 N189、S24；N6103（baker’s dozen）是麵包秤重與 1419 年《白皮書》，同屬度量衡但核心不同。轉折四個（手臂不是鼻子、管的是作假布商→1587 年才加上『碼』與年份→1197 年鐵尺詔令、1201 年被商人一大筆錢擋掉→法令裡是國王的鐵碼、抄本另附三粒大麥），撐得起 8–11 分鐘。點名只有亨利一世（DNB 卒 1135）。仍不放心：『鼻尖』版本的源頭不明，正片收尾只能照實說不知道。"
+    },
+    {
+      "id": "N6364",
+      "agent": "ZM4",
+      "reviewer": "R574",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM4-S018 https://archive.org/details/trialatbarbetwee00crai（R574 seq 13 GET /metadata、seq 14 下載掃描 PDF 38,814,041 bytes，以 PDF 文字層頁眉逐頁核對，p. 394 另以影像確認）；ZM4-S019 https://archive.org/details/annesleycase00crai（seq 11–12 掃描 PDF，書名頁確認編者）；ZM4-S021 DNB vol. 2（seq 21–22 掃描 PDF，以影像頁眉核頁碼）；ZM4-S020 書名頁用研究代理快取重讀",
+      "reopen_result": "Dawson 男爵『one can’t tell where to set his Foot』『This Trial has lasted twelve Days』『the Plaintiff has not produced such Evidence as can, in my Opinion, support the Point』（pp. 391–394）、Mountney『not stand in equilibrio』（p. 391）、『in about two Hours』『6d. Damages, and 6d. Costs』（p. 394，影像確認）相符；p. 1 開庭 11 月 11 日相符。對不上的：（1）p. 148 被告律師並非指出『另一個名字相近的少年』，而是承認原告找到商人帳冊上的『James Annesley』登船，說這『證明得太多了』，主張 Hennesley 就是這孩子、是正式立約去的——研究代理的 hook『名字跟他幾乎一樣的少年』會誤導；（2）1912 年書的 Hennesley 段在 pp. 41–43，不是 pp. 52–53；編者的話是另有一個 Hennesley 的巧合『in a high degree improbable』（這句其實對被告有利），他靠另兩位證人才『推定』4 月 30 日被綁走，原稿把兩句接成一句因果；（3）編者 p. 15 說裁決『in which the judges obviously concurred』，與八開本的 Dawson 結語相反，原稿漏；（4）編者 p. 78 說依醫學證據女僕『so far perjured herself』，原稿 hook 寫『作證的女僕後來被判沒有說謊』相反，已改；（5）頁碼 pp. 4→5、pp. 14–15→15–16；DNB 條在 vol. 2 pp. 5–7，『fifteen days』『3 Feb. 1744』在 p. 6；（6）編者經書名頁確認為 Andrew Lang（不點名）。『只判六便士』是收回土地訴訟的名義賠償，原稿用『只』暗示陪審團態度，已改中性。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 查 Annesley、Anglesey、claimant、冒名、繼承人、Tichborne、Kaspar Hauser、Kidnapped：沒有本案；身分官司同型題 N3863（Tichborne）、N3862（Warbeck）、N4805（假 Baudouin）、N3864、H06、H15 都是冒充者被拆穿或身分未明，本題是法庭判他勝訴、文件卻互相矛盾，核心不同。一手審判紀錄加 1912 年全卷宗編者與 DNB，轉折三個以上，撐得起 9–12 分鐘。visual 原稿『美洲菸草田裡少年彎腰工作』與 risk『不描寫勞役』衝突，已改成帆船剪影。點名只有 James Annesley（DNB 卒 1760）。"
+    },
+    {
+      "id": "N6365",
+      "agent": "ZM4",
+      "reviewer": "R574",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZM4-S023 https://archive.org/details/memoirslatedrhe00bathgoog（R574 seq 15 GET /metadata、seq 16 下載掃描 PDF 11,844,457 bytes，PDF 無文字層，以影像逐頁讀 pp. 88–94）；ZM4-S024 DNB vol. 3（seq 25–26 掃描 PDF，以影像讀 p. 407 全條）；ZM4-S022 Baring-Gould（seq 17–18 掃描 PDF，以文字層頁眉逐頁核對）",
+      "reopen_result": "1837 年回憶錄 p. 90 Wellesley 召父親到 Apsley House、Krouse 同車隨行；p. 91 原文『after waiting for him nearly an hour his servants began to make inquiries for him』（是『他的僕人們』，與 DNB『without a servant』正相反）、老婦人在鎮附近 copse 撿到 overalls、只有一封寫在髒紙片上給妻子的信、作者沒見過信——相符。研究代理只讀到 p. 92，漏了 pp. 92–94：大臣 1810-01-19 的信說『更有理由認為是出於他人之手』；妻子見法國皇帝、皇帝鄭重表示不知情；『the mother of Mr. Bathurst always more suspected the Court of Austria』——與 1889 年書 p. 24『The Bathurst family never doubted』是法國人所為正相反，已補成轉折。DNB p. 407 影像：條目標題是『(1784–1809)』，不是原稿的『1809?』；生於 1784 年 3 月 14 日；『without a servant』『near Lützen』『his death remains a mystery』相符；條末列 1853 年 Thistlethwaite 回憶錄。1889 年書 p. 8『stepped round to the heads of the horses and was never seen again』與同頁『No one particularly observed the movements』、p. 10 兩個彈孔無血跡、p. 11 鉛筆信（另指名 d’Entraigues 伯爵）、p. 13 Moniteur 12 月 12 日自殺說、p. 13 1 月 29 日罵英國派『half fools』、pp. 19–20 人骨與妹妹認不出、p. 18 皇帝以名譽保證，都相符。原稿 hook『一百年來最常被講』與 payoff『眾目睽睽、憑空是後來加的』沒有讀到任何樣本，已刪，改以 1889 年原句當流傳樣本。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json（含 not_added）、legacy/w-axis.json、原來如此、ZM1–ZM3 查 Bathurst、Perleberg、envoy、diplomat、外交官、憑空消失、vanish、失蹤、Baring-Gould：零命中本案；H、L、M 軸的人物失蹤題 N303（1930 年紐約法官）、H12（燈塔三人）、N4983（巴黎旅館消失的母親）核心不同；Baring-Gould 只命中三題無關的 G 軸。三份十九世紀紀錄加家屬內部的不同懷疑，轉折至少三個，撐得起 8–11 分鐘。遺體與謀殺推測：1852 年人骨只一句帶過，visual 無骨骸、墳墓；原稿的掛鐘一格（可能畫出數字）改為蠟燭。拿破崙時代外交事件今天沒有國家爭議，正片不下結論、法國皇帝不點名。點名只有 Benjamin Bathurst（DNB 1809 年失蹤）。仍不放心：他妹妹 1853 年的回憶錄（DNB 與 1889 年書都引）本輪仍未讀到。"
+    }
+  ],
+  "reviewer_notes": {
+    "R571": "（1）最嚴重的是把英譯者的註當成作者的話：N6301 的砍樹隊、安汶帳目、『不值得維持』『被自己的貪婪愚弄』、1778 年班達颶風全在 1798 年英譯本署 T. 的譯者註裡，法譯本沒有；書名頁就寫明附有譯者註。（2）用『查不到出處』立了一個錯的反轉：N6301 說阿姆斯特丹 1760 年大火是英譯者在註腳裡補的、出處不明，實際上英譯者註明了目擊者，原文是 1764 年法國博物學辭典的第一人稱目擊（八百萬、十六年存貨）；《國富論》也不是兩處都寫『據說』，1776 年初版第 249 頁是斷言，『據說』是後來版本加的——沒有回到初版就下了結論。（3）同一本書裡互相矛盾或不利的句子漏掉：N6304 Head 書中法律與授權書的日期兩處互換、仲裁其實是 Head 自己提起的；N6305 的 294 種新稅隨即被新任海關監督撤銷、陳情年份是 1800 不是 1801；N6302 傳記自己就先講『打破獨占』、Crawfurd 同頁寫英國丁香大半來自卡宴。（4）把十九世紀二手史書的軼事當定論：N6303 的髮粉土故事，較早的 1844 年出處自己就說日期對不上；原稿聲稱 Marryat 註明德文出處，查無。（5）自行換算的數字與無出處的細節進了題卡：『收入不到支出的四分之一』『半個世紀』『信寄出前三年』『一百多年後』、visual 的『空袖』，已刪。（6）單方來源題補了第二來源：N6302 補同行者 1776 年遊記（只證到第二趟）、N6304 補英國代辦 1839 年的評語；兩題正片仍須標明主要來源的立場。",
+    "R572": "（1）把原文讀過頭、立成轉折：N6322 把 Herschel『地照讓暗面的斑都看得見』讀成『他想到地照並排除了』；N6325 把 Purchas『他本人與 Juet 都作了證』讀成『換了證人』，其實同一句就寫明是兩名水手看到，同書另一處還註明出自 Juet 的記述。兩題的核心轉折都不成立，改列待查。（2）同一本書的腳註漏讀：N6325 研究代理自己下載的 Asher 本 p. 28 腳註寫『Probably a seal』，原稿卻下結論『沒有一份文件說她是什麼』。（3）漏掉對主角有利或不利的句子：N6321 Grubb 小冊記觀測員說用甲基化酒精是被台長否決，Severn 說焦點數字是觀測員親口告訴他；N6324 醫學院的藥效段原文說這次的骨頭藥效『還不知道』，只是『無疑』會一樣；兩方乾餾都聞到硫磺、各自解釋，原稿沒寫。（4）引句譯過頭：Severn『will certainly go far to prove』譯成『必定證明』；皇家學會附記『agreeable to his Description』標成『倫敦的判決』；『同一個曲頸瓶』其實醫學院寫的是明火乾餾。（5）拉丁文、Fraktur 與英文原件對掃描頁後，數字與日期大致正確（8 Schuh、12 磅、X. Kal. Feb.、Quinto Nonas Maias、7 月 14 日、7 月 28 日、136°、111°），頁碼有小誤（Webb Aristarchus 在 p. 119；Fort 自己還寫了 7 月 17 日），已補到 locator。網址都有成功請求紀錄，快取雜湊全數相符（seq 42 是一次失敗的請求、無檔）。",
+    "R573": "（1）去重沒查到底：N6343 的流傳說法與主要轉折已在 N5281 的 answer_target 裡，wave47 還有一筆『荊棘單獨成題』併入 N5281 的 not_added，研究稿說『核心不同』而且沒列這筆；not_added 的 d'Ailly、今村明恆兩題也漏列了池內本案 N5841、N1101。（2）同一份紀錄裡對主角不利、或改變語氣的句子漏讀：Eleanor 案漏了編年史作者對她的負面評語與『受慫恿做 nygromancie』的原話；Kepler 注 8 漏了『Nec ego dissentio』，信裡漏了母親先揭對方舊事，報告漏了她承認給人草藥；Stearne 承認起初讓人不得睡。（3）把缺字與推讀寫成定論：Stearne『as was falsly reported』前有缺字卻被接成駁浸水說、『Manningtree』是推讀、Mistley 葬籍投書人自己說是推斷，hook 卻寫『那年 8 月他就下葬了』。（4）用版本可疑的來源排先後、加來源沒有的細節：拿 Kingsford 自己說年份有誤的 Chronicles of London 推『王后還沒嫁來』；hook 把 1645 年初的 Wharton 叫『上尉』『在牛津印』（日記記他 1645-10-08 才當上尉）；《Hudibras》『1660 年代』無出處；Kepler hook『行刑的地方』『刑具一件一件擺出來』。（5）自己的 risk 與 question 不一致：N6341 risk 說不點名劇作家，question 卻點了；N6345 question『常被說成』沒有樣本頁。（6）優點：網址全部有成功請求紀錄，快取雜湊除兩筆被後續請求覆寫的之外全部相符，DNB 卷冊都有看檔內頁眉，引句絕大多數逐字對得上，Hutchinson 兩版與 DNB『was hanged』的落差、Kepler 法學院『完全無罪是壞榜樣』都是實讀出來的好轉折。",
+    "R574": "（1）讀錯版本：N6361 把 1778 年整篇改寫的《百科全書》新版條目（晚於《國富論》）當成 1755 年第一版來用，hook 與轉折三的『百科全書承認英格蘭別針最好』與逐工種日產量都不是第一版內容；R574 以 Lucca 1759 年翻印本補讀第一版，十八道工序確認，題目改寫。（2）自己推論寫成反轉：N6362 說 Scoresby『同頁船數兜不攏』、是『第一個把它寫成大城的英國船長』，兩者都是研究代理的推論；N6365 的『眾目睽睽、憑空消失是後來加的』沒有任何樣本，是稻草人。（3）沒讀到的文字寫成定論：N6363 的『古法令』段在研究代理自己下載的 OCR 檔裡並不存在，掃描影像顯示大麥那段只是頁腳附的短文，法令正文寫的是國王的鐵碼。（4）方向與對主角不利的句子：N6364 Hennesley 被寫成『另一個名字相近的少年』，其實是被告主張就是同一人；漏了編者『法官顯然同意裁決』『女僕在這一點上作了偽證』；N6365 只讀到 p. 92，漏了母親懷疑奧地利、與 1889 年書『家族從不懷疑法國』相反的一段。（5）頁碼：1912 年書三處、DNB 四處、Scoresby、古法令都由 OCR 推測改為掃描頁眉或影像確認的頁碼；DNB Bathurst 條標題年份是『1784–1809』不是『1809?』。（6）去重與 1956 紅線乾淨，五題點名人物都有 DNB 一人一條；not_added 漏列 N6102 一筆已補。"
+  },
+  "process_notes": [
+    "N6343（1752 年改曆後荊棘裁決新曆）退回並併入 N5281：N5281 已用同一份 1753 年 1 月號的內容，wave47 另有一筆「荊棘單獨成題」已併入；牧師回信一段同時談聖物傳說，碰現存宗教那條線。覆核建議把 10 月號與 12 月號新讀到的兩句補進 N5281 當一章。處置寫在 dedup-decisions.json 的 merges。",
+    "N6322（Herschel 月球三座火山）待查：研究稿的轉折「他在報告裡就想到地照並排除」對 Phil. Trans. 原文不成立；仍不知道最早是誰、何時提出地照解釋。這個方向是第五次沒收。",
+    "N6325（Hudson 的美人魚）待查：「1626 年換了證人」與「沒有一份文件說她是什麼」對原文都不成立；哥倫布那一半已是池內 N3184 的轉折。",
+    "N6301（荷蘭東印度公司燒香料）的核心轉折經覆核整個改寫：研究稿把 1798 年英譯者的註當成作者的話；阿姆斯特丹 1760 年大火追到 1764 年博物學辭典的第一人稱目擊記述。",
+    "排片提醒：N6301 與 N6302 同是荷蘭香料背景、與 N6305 都圍繞獨占；N6303 與池內 N5902、N6001 同屬工業間諜傳說；N6341 與 N6342 同屬占星家與政治；N6345 與 N6145 都有「先上法院的是她」的轉折。"
+  ]
+}
