@@ -13,6 +13,8 @@
 - 種田娶妻打天下：[`RULES.md`](../series-plans/zhong-tian-qu-qi/production/RULES.md)、[`lessons/zhong-tian-qu-qi.md`](../lessons/zhong-tian-qu-qi.md)、[`REVIEW.md`](../series-plans/zhong-tian-qu-qi/production/REVIEW.md)
 - 恁祖媽今年18：[`RULES.md`](../series-plans/top40-2025-2026/2025-01-tai-nainai/production/RULES.md)、[`lessons/tai-nainai.md`](../lessons/tai-nainai.md)、[`REVIEW.md`](../series-plans/top40-2025-2026/2025-01-tai-nainai/production/REVIEW.md)
 
+後台的「劇本」分頁（`/admin/videos?tab=scripts`）唯讀顯示各部 AI 劇的分集簡介、劇本、分鏡、審稿與系列文件，資料包在 `apps/api/app/video_dramas/data/`。改了任何一集的 `brief.md`／`script.md`／`storyboard.md`／`review.md`，或系列企劃資料夾最上層的 Markdown（大綱、季綱、設定、README），要跑 `node tools/video/drama-admin/bundle.mjs build` 並一起提交，否則 `npm run test:tools` 會失敗。
+
 ## 兩個系列統一的做法（站主 2026-11-08：「照你的建議統一」）
 
 種田與祖媽原本做法不同的地方，統一如下。系列的 bible 或舊文件跟這裡衝突時，以這裡為準。

@@ -57,3 +57,8 @@ Re-assemble curio-s14-v2 (or any cut with a hot line) and read the last line of 
   re-mixed), then the file was restored. Result: -14 LUFS, true peak -2.2 dBFS, qa 11/11. The
   narration, timeline and storyboard approvals were not touched.
 - Dubs (`dubs/encode.mjs`) reuse `mixArgs`; check them too.
+- 2026-11-14, curio-s10-v2: same failure after the 4.4 chars/s re-record (Gemini Sulafat, new style
+  wording, louder delivery). The same local patch, applied as `alimiter=limit=0.79:level=false:attack=1:release=50`
+  after the mix's loudnorm, passed at -14 LUFS; drama.mjs restored afterwards. Every redo build in that
+  batch (s13, s23–s26-v2, w01, w02) ran with this patch so the faster, louder narration could not trip it;
+  three cases now, so the fix is worth doing in the tool.

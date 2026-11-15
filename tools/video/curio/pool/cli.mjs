@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 // 奇聞檔案局素材池 CLI；指令照原來如此事務所素材池的 cli.mjs。
+import { writeBundle as writeAdminBundle } from '../../pool-admin/bundle.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, DIR, hash, loadDraft, buildPool, readPool, writeJson, writePool } from './core.mjs';
@@ -30,6 +31,8 @@ try {
     const poolFiles = writePool(ROOT, pool);
     for (const [name, content] of Object.entries(rendered)) fs.writeFileSync(path.join(ROOT, DIR, name), content);
     writeJson(ROOT, 'manifest.json', { status: 'CANDIDATE_EXPORT_NOT_PRODUCTION', revision: pool.revision, counts: pool.counts, theme_count: themes.episodes.length, inputs: pool.inputs, theme_definition_sha256: hash(fs.readFileSync(path.join(ROOT, DIR, 'themes.json'))), files: [...poolFiles, ...Object.keys(rendered)].map((name) => ({ file: name, sha256: hash(fs.readFileSync(path.join(ROOT, DIR, name))) })) });
+    // 後台「題目池」分頁的資料包跟著池子重產（站主 2026-11-14：每次 build 自動重產）。
+    writeAdminBundle();
     console.log(JSON.stringify({ status: 'BUILT', ...pool.counts, themes: themes.episodes.length }));
   } else {
     const pool = readPool();
