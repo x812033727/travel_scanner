@@ -299,7 +299,7 @@ footer a{color:var(--accent)}
   </div>
   <p id="count" aria-live="polite"></p>
   <section class="grid" id="list"></section>
-  <footer>資料來源：同一目錄的 <a href="THEMES.md">THEMES.md</a>、<a href="QUESTIONS.md">QUESTIONS.md</a> 與 pool.json；可搜尋全部題目見 <a href="index.html">index.html</a>。「素材估計」是研究代理估的正文分鐘數，還沒試讀；沒有估計的題是舊有完整查核的題，片長在寫企劃時決定。</footer>
+  <footer>資料來源：同一目錄的 <a href="THEMES.md">THEMES.md</a>、<a href="QUESTIONS.md">QUESTIONS.md</a> 與 pool.json（來源與原始紀錄另存 pool-sources.json、pool-records.json）；可搜尋全部題目見 <a href="index.html">index.html</a>。「素材估計」是研究代理估的正文分鐘數，還沒試讀；沒有估計的題是舊有完整查核的題，片長在寫企劃時決定。</footer>
 </div>
 <script type="application/json" id="data">${payload}</script>
 <script>

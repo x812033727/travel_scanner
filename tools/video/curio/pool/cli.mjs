@@ -2,7 +2,7 @@
 // 奇聞檔案局素材池 CLI；指令照原來如此事務所素材池的 cli.mjs。
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOT, DIR, hash, loadDraft, buildPool, readPool, writeJson } from './core.mjs';
+import { ROOT, DIR, hash, loadDraft, buildPool, readPool, writeJson, writePool } from './core.mjs';
 import { openStore, ingest, assertSnapshot, search, lookup } from './store.mjs';
 import { renderQuestions, renderSources, renderDedup, renderThemes, renderHtml, renderProducible, validateThemes, themeReadiness } from './render.mjs';
 import { readBaseline, writeBaseline, compareBaseline, validateBaseline, sourceImpact } from './history.mjs';
@@ -27,9 +27,9 @@ try {
   } else if (command === 'build') {
     const pool = buildPool(); validateBaseline(readBaseline(), pool);
     const themes = readThemes(pool); const rendered = exportsFor(pool, themes);
-    writeJson(ROOT, 'pool.json', pool);
+    const poolFiles = writePool(ROOT, pool);
     for (const [name, content] of Object.entries(rendered)) fs.writeFileSync(path.join(ROOT, DIR, name), content);
-    writeJson(ROOT, 'manifest.json', { status: 'CANDIDATE_EXPORT_NOT_PRODUCTION', revision: pool.revision, counts: pool.counts, theme_count: themes.episodes.length, inputs: pool.inputs, theme_definition_sha256: hash(fs.readFileSync(path.join(ROOT, DIR, 'themes.json'))), files: ['pool.json', ...Object.keys(rendered)].map((name) => ({ file: name, sha256: hash(fs.readFileSync(path.join(ROOT, DIR, name))) })) });
+    writeJson(ROOT, 'manifest.json', { status: 'CANDIDATE_EXPORT_NOT_PRODUCTION', revision: pool.revision, counts: pool.counts, theme_count: themes.episodes.length, inputs: pool.inputs, theme_definition_sha256: hash(fs.readFileSync(path.join(ROOT, DIR, 'themes.json'))), files: [...poolFiles, ...Object.keys(rendered)].map((name) => ({ file: name, sha256: hash(fs.readFileSync(path.join(ROOT, DIR, name))) })) });
     console.log(JSON.stringify({ status: 'BUILT', ...pool.counts, themes: themes.episodes.length }));
   } else {
     const pool = readPool();

@@ -1774,13 +1774,20 @@ W04–W19 有自己的製作線，維持鎖定。工作目錄與舊稿都留著�
 ```bash
 node tools/video/curio/pool/cli.mjs preview      # 草稿，寫到 .cache/draft.json
 node tools/video/curio/pool/cli.mjs pairs        # 列出還沒處置的高相似配對
-node tools/video/curio/pool/cli.mjs build        # 產出 pool.json、四份 md、index.html、manifest.json
+node tools/video/curio/pool/cli.mjs build        # 產出 pool.json、pool-sources.json、pool-records.json、四份 md、index.html、manifest.json
 node tools/video/curio/pool/cli.mjs check        # 重建比對，不能有漂移
 node tools/video/curio/pool/cli.mjs themes | theme T05 | source <SRC-id 或網址> | index | search <字> [--all] | show <id>
 node tools/video/curio/pool/cli.mjs snapshot <label>   # 寫新的基線快照
 python -X utf8 tools/video/curio/pool/semantic.py --prepare   # 第一次下載釘版模型（約 135 MB，放 .cache）
 python -X utf8 tools/video/curio/pool/semantic.py --input docs/videos/history-curiosity/pool/.cache/draft.json --cross-series
 ```
+
+**`pool.json` 拆成三個檔（2026-11-15）。** 單檔在第五十七批後是 55.6 MB，超過 GitHub 的 50 MB 警告線（100 MB 直接拒收）。
+現在 `pool.json`（約 20 MB）放統計、入選題與去重紀錄，`sources` 與 `raw_records` 兩個欄位只留 `{ file, count }` 指向
+`pool-sources.json`（約 20 MB）與 `pool-records.json`（約 16 MB）。工具一律經 `core.mjs` 的 `readSavedPool()` 讀，讀回來仍是原本那一個物件；
+三個檔的 `revision` 對不上就報錯。自己寫腳本讀池時：題目在 `pool.json` 的 `candidates`，來源全文在 `pool-sources.json` 的 `sources`，
+`semantic.py` 預設讀 `pool-records.json`。測試會擋任何一個檔超過 45 MB；再長大就把 `candidates` 也拆出去。
+
 
 **下一批**
 - 新題寫成 `batches/<wave>.json` 的 `candidates`；舊題的研究寫 `legacy_updates`。
