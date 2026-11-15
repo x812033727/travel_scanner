@@ -3,9 +3,11 @@ from __future__ import annotations
 import hashlib
 import json
 from collections.abc import AsyncIterator
+from datetime import UTC, datetime
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Any
-from unittest.mock import AsyncMock
+from unittest.mock import AsyncMock, MagicMock
 from uuid import uuid4
 
 import pytest
@@ -19,7 +21,7 @@ from app.models import User
 from app.problems import AppError, app_error_handler
 from app.video_pools import catalog
 from app.video_pools.router import router
-from app.video_pools.schemas import ExpansionPage, PoolOverview, ThemeDetail, ThemePage
+from app.video_pools.schemas import EpisodePage, ExpansionPage, PoolOverview, ThemeDetail, ThemePage
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 URL = "/api/v1/admin/video-pools"
@@ -175,3 +177,87 @@ def test_error_codes_are_localized() -> None:
     for locale in ("en", "ja", "ko", "zh-CN"):
         assert "video_pools_unavailable" in ERROR_DETAILS[locale]
         assert "video_pool_theme_not_found" in ERROR_DETAILS[locale]
+
+
+def _episode_app(rows: list[SimpleNamespace]) -> tuple[FastAPI, list[Any]]:
+    application = _app()
+    statements: list[Any] = []
+
+    async def session() -> AsyncIterator[AsyncMock]:
+        mock = AsyncMock()
+
+        async def execute(statement: Any) -> MagicMock:
+            statements.append(statement)
+            result = MagicMock()
+            result.all.return_value = rows
+            return result
+
+        mock.execute.side_effect = execute
+        yield mock
+
+    application.dependency_overrides[get_session] = session
+    return application, statements
+
+
+def _project(slug: str, youtube: str | None, *, dropped: bool = False) -> SimpleNamespace:
+    return SimpleNamespace(
+        slug=slug,
+        youtube_video_id=youtube,
+        youtube_publish_at=datetime(2026, 11, 1, tzinfo=UTC) if youtube else None,
+        stage="published" if youtube else "review",
+        dropped_at=datetime(2026, 11, 2, tzinfo=UTC) if dropped else None,
+    )
+
+
+async def test_episodes_prefer_the_site_upload_and_fall_back_to_the_catalog() -> None:
+    bundle = catalog.load_bundle()
+    stw = next(series for series in bundle.series if series.key == "so-thats-why")
+    cataloged = next(episode for episode in stw.episodes if episode.catalog.youtube_id)
+    bare = next(
+        episode for episode in stw.episodes if not episode.catalog.youtube_id and episode.slugs
+    )
+    rows = [_project(cataloged.slugs[0], "AAAAAAAAAAA"), _project(bare.slugs[0], None)]
+    application, statements = _episode_app(rows)
+    async with _client(application) as client:
+        published = await client.get(f"{URL}/so-thats-why/episodes")
+        everything = await client.get(f"{URL}/so-thats-why/episodes", params={"status": "all"})
+        waiting = await client.get(f"{URL}/so-thats-why/episodes", params={"status": "unpublished"})
+        found = await client.get(
+            f"{URL}/so-thats-why/episodes", params={"status": "all", "q": bare.slugs[0]}
+        )
+    assert len(statements) == 4
+    page = EpisodePage.model_validate_json(published.content)
+    by_key = {row.key: row for row in page.items}
+    site = by_key[cataloged.key]
+    assert (site.youtube_id, site.youtube_source, site.stage) == (
+        "AAAAAAAAAAA",
+        "site",
+        "published",
+    )
+    assert site.youtube_url == "https://www.youtube.com/watch?v=AAAAAAAAAAA"
+    assert all(row.published for row in page.items)
+    other = next(row for row in page.items if row.key != cataloged.key)
+    assert other.youtube_source == "catalog" and other.youtube_id
+    full = EpisodePage.model_validate_json(everything.content)
+    assert full.total == full.published + full.unpublished == len(stw.episodes)
+    pending = EpisodePage.model_validate_json(waiting.content)
+    assert bare.key in {row.key for row in pending.items}
+    assert all(not row.published for row in pending.items)
+    assert [row.key for row in EpisodePage.model_validate_json(found.content).items] == [bare.key]
+
+
+async def test_a_dropped_upload_does_not_count_as_published() -> None:
+    bundle = catalog.load_bundle()
+    curio = next(series for series in bundle.series if series.key == "curio")
+    episode = next(item for item in curio.episodes if not item.catalog.youtube_id and item.slugs)
+    application, _ = _episode_app([_project(episode.slugs[0], "BBBBBBBBBBB", dropped=True)])
+    async with _client(application) as client:
+        response = await client.get(
+            f"{URL}/curio/episodes", params={"status": "all", "q": episode.slugs[0]}
+        )
+    row = next(
+        item
+        for item in EpisodePage.model_validate_json(response.content).items
+        if item.key == episode.key
+    )
+    assert not row.published and row.dropped and row.youtube_id is None

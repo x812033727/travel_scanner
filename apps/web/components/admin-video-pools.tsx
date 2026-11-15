@@ -9,7 +9,8 @@ import { api } from "@/lib/api";
 import { videoPoolsCopy, videoPoolsText } from "@/lib/video-pools-copy";
 
 const SERIES = ["curio", "so-thats-why"] as const;
-const VIEWS = ["themes", "expansions"] as const;
+const VIEWS = ["themes", "published", "expansions"] as const;
+const EPISODE_STATUSES = ["published", "unpublished", "all"] as const;
 const STATUSES = ["producible", "reserve", "short", "all"] as const;
 const DIMS = ["click", "hook", "surprise", "payoff", "share"] as const;
 const MIN_SCORES = ["6.5", "7", "7.5", "8"] as const;
@@ -29,6 +30,12 @@ export type PoolThemeDetail = PoolTheme & {
 };
 export type PoolOverview = { series: { key: Series; name: string; revision: string; audience_min: number; themes_sha256: string; counts: Record<keyof Copy["counts"] | "raw_records" | "themes" | "long_themes", number> }[] };
 export type PoolThemePage = { items: PoolTheme[]; total: number; page: number; page_size: number; categories: { category: string; count: number }[] };
+export type PoolEpisode = {
+  key: string; code: string | null; title: string; category: string | null; slugs: string[]; candidate_ids: string[];
+  published: boolean; youtube_id: string | null; youtube_url: string | null; youtube_source: "site" | "catalog" | null;
+  site_slug: string | null; publish_at: string | null; stage: string | null; dropped: boolean; privacy: string | null;
+};
+export type PoolEpisodePage = { items: PoolEpisode[]; total: number; published: number; unpublished: number };
 export type PoolExpansions = {
   expansions: { batch_id: string; created_on: string | null; scope: string; candidates: number; selected: number; not_added: number; sources: number }[];
   checkpoints: { name: string; revision: string | null; selected: number | null; raw: number | null }[];
@@ -37,6 +44,7 @@ const PAGE_SIZE = 25;
 const oneOf = (values: readonly string[]) => (value: string) => values.includes(value);
 const isSeries = oneOf(SERIES);
 const isView = oneOf(VIEWS);
+const isEpisodeStatus = oneOf(EPISODE_STATUSES);
 const isStatus = oneOf(STATUSES);
 const isMinScore = oneOf(MIN_SCORES);
 const isPage = (value: string) => /^[1-9]\d{0,5}$/.test(value);
@@ -187,6 +195,47 @@ function Themes({ series, copy }: { series: Series; copy: Copy }) {
   </>;
 }
 
+function Published({ series, copy }: { series: Series; copy: Copy }) {
+  const [status] = useAdminQueryValue("pool_published", "published", isEpisodeStatus);
+  const [query] = useAdminQueryValue("pool_q", "", isShort);
+  const params = new URLSearchParams({ status });
+  if (query) params.set("q", query);
+  const { data, error, retry } = useLoad<PoolEpisodePage>(`/admin/video-pools/${series}/episodes?${params}`, (value) => Array.isArray(value.items) && Number.isInteger(value.total));
+  return <>
+    <AdminFilterBar>
+      <label className="grid min-w-0 gap-1 text-sm font-semibold">{copy.publishedLabel}
+        <select value={status} onChange={(event) => updateAdminQuery({ pool_published: event.target.value === "published" ? "" : event.target.value })} className={selectClass}>
+          {EPISODE_STATUSES.map((value) => <option key={value} value={value}>{copy.publishedStatuses[value]}{data ? ` (${value === "published" ? data.published : value === "unpublished" ? data.unpublished : data.published + data.unpublished})` : ""}</option>)}
+        </select>
+      </label>
+      <ThemeSearch key={query} query={query} copy={{ ...copy, search: copy.episodeSearch }} />
+    </AdminFilterBar>
+    {error ? <AdminErrorState title={copy.error} detail={copy.errorDetail} retry={retry} retryLabel={copy.retry} />
+      : !data ? <AdminSkeleton label={copy.loading} />
+        : <>
+          <p role="status" className="text-sm text-[var(--muted)]">{videoPoolsText(copy.episodeResults, { count: data.total })}</p>
+          {data.items.length ? <div className="grid min-w-0 gap-3">{data.items.map((episode) => <article key={episode.key} className="min-w-0 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-[var(--muted)]">
+              {episode.code && <span className="font-mono font-semibold">{episode.code}</span>}
+              {episode.category && <span>{episode.category}</span>}
+              {episode.candidate_ids.length > 0 && <span>{videoPoolsText(copy.episodeCores, { ids: episode.candidate_ids.join("、") })}</span>}
+            </div>
+            <h3 className="mt-2 break-words font-bold">{episode.title}</h3>
+            <div className="mt-2 flex flex-wrap items-center gap-2 text-sm">
+              <AdminStatusPill status={episode.published ? "active" : episode.dropped ? "failed" : "inactive"}>{episode.published ? copy.publishedStatuses.published : episode.dropped ? copy.dropped : copy.publishedStatuses.unpublished}</AdminStatusPill>
+              {episode.youtube_id && <a href={episode.youtube_url ?? undefined} target="_blank" rel="noreferrer" className="font-mono font-semibold text-[var(--teal)] underline">{episode.youtube_id}</a>}
+              {episode.youtube_source && <span className="text-xs text-[var(--muted)]">{copy.sources[episode.youtube_source]}</span>}
+              {episode.privacy && <span className="text-xs text-[var(--muted)]">{videoPoolsText(copy.privacy, { privacy: episode.privacy })}</span>}
+              {episode.publish_at && <span className="text-xs text-[var(--muted)]">{videoPoolsText(copy.publishAt, { date: episode.publish_at.slice(0, 10) })}</span>}
+              {episode.stage && <span className="text-xs text-[var(--muted)]">{videoPoolsText(copy.stage, { stage: episode.stage })}</span>}
+            </div>
+            {episode.slugs.length > 0 && <p className="mt-2 break-all font-mono text-xs text-[var(--muted)]">{episode.slugs.join("　")}</p>}
+          </article>)}</div>
+            : <AdminEmptyState title={copy.episodeEmpty} detail={copy.emptyDetail} />}
+        </>}
+  </>;
+}
+
 function Expansions({ series, copy }: { series: Series; copy: Copy }) {
   const { data, error, retry } = useLoad<PoolExpansions>(`/admin/video-pools/${series}/expansions`, (value) => Array.isArray(value.expansions) && Array.isArray(value.checkpoints));
   if (error) return <AdminErrorState title={copy.error} detail={copy.errorDetail} retry={retry} retryLabel={copy.retry} />;
@@ -245,6 +294,6 @@ export function AdminVideoPools() {
         <p className="text-xs text-[var(--muted)]">{videoPoolsText(copy.revision, { revision: current.revision })}</p>
         <p className="text-sm">{videoPoolsText(copy.minimum, { min: current.audience_min })}</p>
       </div>}
-    {view === "themes" ? <Themes key={series} series={series} copy={copy} /> : <Expansions key={series} series={series} copy={copy} />}
+    {view === "themes" ? <Themes key={series} series={series} copy={copy} /> : view === "published" ? <Published key={series} series={series} copy={copy} /> : <Expansions key={series} series={series} copy={copy} />}
   </section>;
 }

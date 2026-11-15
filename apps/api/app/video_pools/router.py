@@ -1,11 +1,15 @@
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, Path, Query
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import require_capability
+from app.db import get_session
 from app.models import User
 from app.video_pools import catalog
 from app.video_pools.schemas import (
+    EpisodePage,
+    EpisodeStatus,
     ExpansionPage,
     PoolOverview,
     SeriesKey,
@@ -60,3 +64,14 @@ def get_theme(
 @router.get("/{series}/expansions", response_model=ExpansionPage)
 def get_expansions(_user: ContentReader, series: SeriesKey) -> ExpansionPage:
     return catalog.expansions(series)
+
+
+@router.get("/{series}/episodes", response_model=EpisodePage)
+async def get_episodes(
+    _user: ContentReader,
+    session: Annotated[AsyncSession, Depends(get_session)],
+    series: SeriesKey,
+    status: Annotated[EpisodeStatus, Query()] = "published",
+    q: Annotated[str | None, Query(max_length=200)] = None,
+) -> EpisodePage:
+    return await catalog.episodes(session, series, status=status, q=q)

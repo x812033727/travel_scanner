@@ -3,12 +3,19 @@ from __future__ import annotations
 import logging
 from collections import Counter
 from pathlib import Path
+from typing import Any, Literal
 
 from pydantic import ValidationError
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.models import VideoProject
 from app.problems import AppError
 from app.video_pools.schemas import (
     CategoryCount,
+    EpisodePage,
+    EpisodeStatus,
+    EpisodeStatusRow,
     ExpansionPage,
     PoolBundle,
     PoolOverview,
@@ -147,4 +154,77 @@ def expansions(key: SeriesKey) -> ExpansionPage:
     series = _series(load_bundle(), key)
     return ExpansionPage(
         expansions=list(reversed(series.expansions)), checkpoints=list(reversed(series.checkpoints))
+    )
+
+
+async def episodes(
+    session: AsyncSession,
+    key: SeriesKey,
+    *,
+    status: EpisodeStatus = "published",
+    q: str | None = None,
+) -> EpisodePage:
+    """Produced episodes with their live upload state from the site's video projects.
+
+    A slug the site knows wins over the catalog's recorded id; the first listed slug is the
+    current version, so its upload is preferred over an older recut's.
+    """
+    series = _series(load_bundle(), key)
+    slugs = sorted({slug for episode in series.episodes for slug in episode.slugs})
+    projects: dict[str, Any] = {}
+    if slugs:
+        result = await session.execute(
+            select(
+                VideoProject.slug,
+                VideoProject.youtube_video_id,
+                VideoProject.youtube_publish_at,
+                VideoProject.stage,
+                VideoProject.dropped_at,
+            ).where(VideoProject.slug.in_(slugs))
+        )
+        projects = {row.slug: row for row in result.all()}
+    rows: list[EpisodeStatusRow] = []
+    for episode in series.episodes:
+        known = [projects[slug] for slug in episode.slugs if slug in projects]
+        uploaded = next((row for row in known if row.youtube_video_id and not row.dropped_at), None)
+        current = uploaded or (known[0] if known else None)
+        youtube_id = uploaded.youtube_video_id if uploaded else episode.catalog.youtube_id
+        source: Literal["site", "catalog"] | None = (
+            "site" if uploaded else ("catalog" if youtube_id else None)
+        )
+        rows.append(
+            EpisodeStatusRow(
+                key=episode.key,
+                code=episode.code,
+                title=episode.title,
+                category=episode.category,
+                slugs=episode.slugs,
+                candidate_ids=episode.candidate_ids,
+                published=youtube_id is not None,
+                youtube_id=youtube_id,
+                youtube_url=f"https://www.youtube.com/watch?v={youtube_id}" if youtube_id else None,
+                youtube_source=source,
+                site_slug=current.slug if current else None,
+                publish_at=current.youtube_publish_at if current else None,
+                stage=current.stage if current else None,
+                dropped=bool(current and current.dropped_at),
+                privacy=episode.catalog.privacy if source == "catalog" else None,
+            )
+        )
+    query = (q or "").strip().casefold()
+    matches = [
+        row
+        for row in rows
+        if (status == "all" or row.published == (status == "published"))
+        and (
+            not query
+            or any(
+                query in value.casefold()
+                for value in (row.title, row.code or "", *row.slugs, *row.candidate_ids)
+            )
+        )
+    ]
+    published = sum(row.published for row in rows)
+    return EpisodePage(
+        items=matches, total=len(matches), published=published, unpublished=len(rows) - published
     )

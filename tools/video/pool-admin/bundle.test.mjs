@@ -19,6 +19,9 @@ test('every producible theme in the bundle is long and carries an audience score
       if (theme.audience.rounds.length) assert.ok(theme.audience.score >= series.audience_min, `${theme.id} passed the gate after improving`);
     }
     assert.ok(series.expansions.length > 0, `${series.key} lists its batches`);
+    assert.ok(series.episodes.length > 0, `${series.key} lists its produced episodes`);
+    assert.equal(new Set(series.episodes.map((episode) => episode.key)).size, series.episodes.length);
+    assert.ok(series.episodes.some((episode) => episode.candidate_ids.length), `${series.key} links episodes to pool topics`);
     assert.ok(series.expansions.every((batch) => batch.selected <= batch.candidates));
   }
 });

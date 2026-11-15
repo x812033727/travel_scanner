@@ -1,7 +1,7 @@
 # Admin topic pools
 
 `GET /api/v1/admin/video-pools` and its `/{series}/themes`, `/{series}/themes/{id}` and
-`/{series}/expansions` children require `content.read` and read the immutable
+`/{series}/expansions` and `/{series}/episodes` children require `content.read` and read the immutable
 `data/pools.json` inside the API image. The video admin opens them through
 `/zh-TW/admin/videos?tab=pools`. Viewing changes nothing: themes are editorial candidates
 (`EDITORIAL_THEMES_NOT_SCRIPTS`), not approved scripts or production requests.
@@ -25,3 +25,11 @@ or invalid bundle returns `503 video_pools_unavailable` without a partial or sta
 audience bar), `reserve` (long but held back), `short`, or `all`. `category`, `min_score`
 and `q` (id, title or core question) narrow it further; `sort` is `rank` (audience rank,
 unscored last) or `id`; `page_size` is at most 100.
+
+`/{series}/episodes` lists the produced episodes (from `docs/videos/explainer-series/catalog.json`,
+joined to the pool topics they came from) with their live upload state: it looks each episode's
+slugs up in `video_projects` and prefers the site's `youtube_video_id` (ignoring dropped
+projects), falling back to the catalog's recorded id. `status` is `published` (has a YouTube id,
+the default), `unpublished` or `all`; `q` matches titles, episode codes, slugs and topic IDs.
+This is the only pool endpoint that reads the database. Regenerating the episode catalog
+(`docs/videos/ai-drama-drive/catalog.py`) changes the bundle too: run `bundle.mjs build` after it.
