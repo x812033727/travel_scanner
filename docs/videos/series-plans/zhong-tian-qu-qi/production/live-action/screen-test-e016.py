@@ -105,6 +105,28 @@ NEG_BY = {
     "set-gongpeng-l3": NEG + ", tiled floor, cracked tiles, paving stones, A-frame, tripod, leaning poles, poles, sticks, "
                              "stirring sticks, paddles, rack, ladder, rake, staff",
 }
+# Round 2 (2026-11-15, the coordinator's pick of round 1): set-shuyuan-l2, set-zhufa-ye-l2 (+ its mirror) and set-gongpeng-l3
+# (cropped) are in refs-live; set-dukou-l2 failed in both seeds (a modern brick factory chimney under the smoke, and the
+# covered boat kept at the jetty). `screen-test-e016.py OUT_DIR --r2` writes OUT_DIR/r2.json with set-dukou-l2 only, seeds
+# 37015/37016: the smoke billows up from among the thatched roofs of the far village houses like a burning house, the jetty is
+# bare planks on posts in open water with only reeds at the water's edge; an edit of set-dukou-l1 (it keeps the layout).
+ROUND2 = "--r2" in sys.argv[2:]
+if ROUND2:
+    SEEDS = (37015, 37016)
+    PICTURES = [("set-dukou-l2", "set-dukou-l1", "e016 s41",
+                 "image 1 is a photograph of the place: keep exactly its camera position, the wide calm water, the tall bare "
+                 "wooden mooring posts standing in the water, the low wooden jetty running out from the right bank, the dry grass "
+                 "along the right bank, the dirt path up the bank, the low thatched and tiled village houses on the right, the "
+                 "blue hills far off at the left and the dawn light; change only the things described here. ",
+                 "the same ferry landing below a poor ancient Chinese Song-dynasty farming village at dawn, a real photograph: "
+                 "(1) a house in the village is burning: thick dark smoke billows up from among the low thatched roofs of the far "
+                 "village houses on the right, rising in one rolling dark plume over the roofs into the pale dawn sky, a faint "
+                 "orange glow low between the roofs where it rises, the roofs themselves low thatch and grey tile; (2) the low "
+                 "wooden jetty is bare grey planks laid on wooden posts, open calm water all around it and between the mooring "
+                 "posts, reflecting the sky; (3) only green and dry reeds along the water's edge by the right bank; (4) the red "
+                 "glow of dawn stays low along the far left horizon, the sky pale above it; " + QUIET)]
+    NEG_ROUND2 = ("chimney, factory, tower, smokestack, brick chimney, industrial building, boat, sampan, canopy, covered boat, "
+                  "moored boat, raft, ship")
 jobs, summary = [], []
 for pid, base, first, rule, desc in PICTURES:
     src = LIVE / f"{base}.png"
@@ -113,13 +135,14 @@ for pid, base, first, rule, desc in PICTURES:
     body = rule + PLACE.format(desc=desc) + " " + STYLE
     for bad in (" no ", " not ", "without", "never", "nobody", "nothing", "gone"):
         assert bad not in body.lower(), f"{pid}: the positive prompt has '{bad.strip()}' (write what is there)"
-    prompt = out / "prompts" / f"{pid}.txt"
+    prompt = out / "prompts" / (f"{pid}-r2.txt" if ROUND2 else f"{pid}.txt")
     prompt.write_text(body, encoding="utf-8")
-    neg = out / "prompts" / f"negative-{pid}.txt"
-    neg.write_text(NEG_BY[pid], encoding="utf-8")
+    neg = out / "prompts" / (f"negative-{pid}-r2.txt" if ROUND2 else f"negative-{pid}.txt")
+    neg.write_text(NEG_BY[pid] + (", " + NEG_ROUND2 if ROUND2 else ""), encoding="utf-8")
     jobs += [{"id": f"{pid}-{s}", "reference_images": [str(src)], "prompt_file": str(prompt), "negative_file": str(neg),
               "width": 1312, "height": 736, "seed": s, "latent": "empty"} for s in SEEDS]
     summary.append({"picture": pid, "seeds": list(SEEDS), "base": "edit of " + base, "first_shot": first})
-(out / "e016.json").write_text(json.dumps({"jobs": jobs}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-(out / "e016-pictures.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-print(len(jobs), "jobs ->", out / "e016.json")
+name = "r2" if ROUND2 else "e016"
+(out / f"{name}.json").write_text(json.dumps({"jobs": jobs}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+(out / f"{name}-pictures.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+print(len(jobs), "jobs ->", out / f"{name}.json")
