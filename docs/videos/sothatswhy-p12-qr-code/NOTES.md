@@ -26,5 +26,5 @@
   - `final.mp4`（`sha256 b9a7b1839d315c74ebfa28d2850403a01e0c7e4b3bdaa0ad32336e6f991140fc`，`18,187 frames`，`606.26 s`，`-14.0 LUFS`）組裝完成後，交由全新獨立代理以一般 YouTube 觀眾視角檢視 21 張成片抽格總表、9 語字幕與 11 張縮圖。
   - 80 鏡正片與音訊 **0 處待修瑕疵**；初審抓出 `thumbnail-c.jpg` 副標單行與 `en/es/pt/id` 外語縮圖主標單行壓邊共 2 項零成本排版問題，已全數改為雙行斷行重繪並複驗左側文字安全區（`< 794px`），最終六維度平均 **`9.13 / 10`**、技術七項 **`64.3 / 70`**，並通過 **`qa` 11／11**。
 - **Google Drive 完整備份與後台送審**：
-  - 完整製作目錄（含 `_raw_keyframes/`、`_repo_docs/`、`final.mp4`、8 語 `dubs/`、9 語 `captions/`、`review/`、`SHA256SUMS`，排除任何權杖密鑰）已備份至 `AI/備份/AI劇/原來如此事務所/數位科技與通訊工程/P12/製作檔/sothatswhy-p12-qr-code/`（資料夾 ID：`1kMdSO7TbqNqoTayAhSlB5c7Xo_Kln7EO`），並經獨立代理涵蓋核對 `0` 差異。
-  - 已執行 `review-push --slug sothatswhy-p12-qr-code --gate final` 送交 `/admin/videos` 待站主核准 `final` 關卡（後續站主核准後再跑 `review-pull` 與 `package`）。
+  - 完整製作目錄（含 `_raw_keyframes/`、`_repo_docs/`、`final.mp4`、8 語 `dubs/`、9 語 `captions/`、`review/`、`upload/` 全套上架包、`SHA256SUMS`，排除任何權杖密鑰）已備份至 `AI/備份/AI劇/原來如此事務所/數位科技與通訊工程/P12/製作檔/sothatswhy-p12-qr-code/`（資料夾 ID：`1kMdSO7TbqNqoTayAhSlB5c7Xo_Kln7EO`），並經獨立代理涵蓋核對 `0` 差異。
+  - 站主核准 `final` 後，已完成 `review-pull`、`package`（`4/4` 通過，`metadata.json sha256 f8c6814d945d`）、`review-push --gate publish`（`pending`）與 `review-push --gate languages`（`pending`；`review-files --dry-run --gate languages` 確認 8 配音、8 縮圖、8 字幕、8 說明、`metadata.json`、`languages_manifest.json` 共 34 檔全數在站上）。待站主核准 `publish` 與 `languages` 並貼回 YouTube 網址後結案。
