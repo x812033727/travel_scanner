@@ -154,15 +154,15 @@
   },
   {
    "file": "birds",
-   "at": "s27",
-   "off": 0,
+   "at": "s26",
+   "off": 6.3,
    "gain": -18,
    "to": "s42"
   },
   {
    "file": "Wind",
-   "at": "s27",
-   "off": 0,
+   "at": "s26",
+   "off": 6.3,
    "gain": -8,
    "to": "s42"
   },
@@ -212,13 +212,13 @@
   {
    "file": "impactWood_heavy_000",
    "at": "s18",
-   "off": 0.73,
+   "off": 0.05,
    "gain": -5
   },
   {
    "file": "splash_01",
    "at": "s18",
-   "off": 0.75,
+   "off": 0.1,
    "gain": -15
   },
   {
@@ -236,13 +236,13 @@
   {
    "file": "gong_02",
    "at": "s42",
-   "off": 5.08,
+   "off": 4.85,
    "gain": -2
   },
   {
    "file": "impactSoft_heavy_000",
    "at": "s42",
-   "off": 5.08,
+   "off": 4.85,
    "gain": -1
   },
   {
@@ -326,7 +326,7 @@
   {
    "file": "door_close_01",
    "at": "s14",
-   "off": 5.95,
+   "off": 5.3,
    "gain": -22
   },
   {
@@ -344,7 +344,7 @@
   {
    "file": "impactWood_light_000",
    "at": "s16",
-   "off": 0.4,
+   "off": 0.15,
    "gain": -22
   },
   {
@@ -504,28 +504,21 @@
    "gain": -22
   },
   {
-   "file": "impactWood_medium_000",
-   "at": "s40",
-   "off": 0.15,
-   "gain": -16
-  },
-  {
    "file": "paper_03",
    "at": "s42",
-   "off": 0.8,
+   "off": 0.1,
    "gain": -26
   },
   {
    "file": "paper_04",
    "at": "s42",
-   "off": 3.0,
+   "off": 1.75,
    "gain": -28
   }
  ],
  "frame_round": true,
  "clip_voice": true,
  "voice_skip": {
-  "s11": 0.4,
   "s18": 1.1,
   "s41": 0.4
  },
@@ -541,7 +534,7 @@
   },
   "s04": {
    "from": 0,
-   "af": "rubberband=pitch=1.28:formant=preserved"
+   "af": "rubberband=pitch=1.18:formant=preserved"
   },
   "s06": {
    "from": 0,
@@ -581,7 +574,7 @@
   },
   "s30": {
    "from": 0,
-   "af": "rubberband=pitch=0.65:formant=preserved,volume=3dB,alimiter=limit=0.89:attack=1:release=50:level=false"
+   "af": "rubberband=pitch=0.72:formant=preserved,volume=3dB,alimiter=limit=0.89:attack=1:release=50:level=false"
   },
   "s31": {
    "from": 0,
@@ -613,7 +606,7 @@
  ],
  "move_lines": {},
  "min": {
-  "s42": 5.667
+  "s42": 6.667
  },
  "line_at": {
   "zq914a01": 2.15,
@@ -635,15 +628,19 @@
  "panel_until": {
   "s22": 2.8
  },
+ "panel_from": {
+  "s01": 2.15
+ },
  "vf": {
   "s01": "split[maa][mab];[mab]crop=670:400:1250:380,format=rgba,geq=r='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(r(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':g='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(g(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':b='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(b(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':a='255*clip((r(X\\,Y)-b(X\\,Y)-60)/50\\,0\\,1)*clip(X/40\\,0\\,1)*clip(Y/40\\,0\\,1)*clip((400-Y)/40\\,0\\,1)'[mac];[maa]format=rgba[mad];[mad][mac]overlay=1250:380,format=yuv420p",
   "s03": "split[maa][mab];[mab]crop=660:380:0:700,format=rgba,geq=r='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(r(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':g='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(g(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':b='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(b(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':a='255*clip((r(X\\,Y)-b(X\\,Y)-60)/50\\,0\\,1)*clip((660-X)/40\\,0\\,1)*clip(Y/40\\,0\\,1)'[mac];[maa]format=rgba[mad];[mad][mac]overlay=0:700,format=yuv420p",
   "s04": "crop=1600:900:0:0,scale=1920:1080:flags=lanczos,setsar=1",
-  "s06": "split[maa][mab];[mab]crop=640:420:0:660,format=rgba,geq=r='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(r(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':g='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(g(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':b='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(b(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':a='255*clip((r(X\\,Y)-b(X\\,Y)-60)/50\\,0\\,1)*clip((640-X)/40\\,0\\,1)*clip(Y/40\\,0\\,1)'[mac];[maa]format=rgba[mad];[mad][mac]overlay=0:660,format=yuv420p",
-  "s23": "split[taa][tab];[tab]crop=820:340:1100:740,gblur=sigma=10,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((200-abs(X+1100-(if(lt(T\\,0.000)\\,1368\\,if(lt(T\\,1.500)\\,1368+(76)*(T-0.000)/1.500\\,if(lt(T\\,2.500)\\,1444+(92)*(T-1.500)/1.000\\,if(lt(T\\,3.000)\\,1536+(44)*(T-2.500)/0.500\\,if(lt(T\\,3.250)\\,1580+(16)*(T-3.000)/0.250\\,if(lt(T\\,4.000)\\,1596+(-32)*(T-3.250)/0.750\\,if(lt(T\\,4.500)\\,1564+(52)*(T-4.000)/0.500\\,if(lt(T\\,5.100)\\,1616+(56)*(T-4.500)/0.600\\,1672)))))))))))/16\\,0\\,1)*clip((60-abs(Y+740-(if(lt(T\\,0.000)\\,824\\,if(lt(T\\,1.500)\\,824+(42)*(T-0.000)/1.500\\,if(lt(T\\,2.500)\\,866+(46)*(T-1.500)/1.000\\,if(lt(T\\,3.000)\\,912+(32)*(T-2.500)/0.500\\,if(lt(T\\,3.250)\\,944+(12)*(T-3.000)/0.250\\,if(lt(T\\,4.000)\\,956+(12)*(T-3.250)/0.750\\,if(lt(T\\,4.500)\\,968+(16)*(T-4.000)/0.500\\,if(lt(T\\,5.100)\\,984+(56)*(T-4.500)/0.600\\,1040)))))))))))/16\\,0\\,1)'[tac];[taa]format=rgba[tad];[tad][tac]overlay=1100:740,format=yuv420p",
+  "s06": "split[maa][mab];[mab]crop=640:420:0:660,format=rgba,geq=r='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(r(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':g='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(g(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':b='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(b(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':a='255*clip((r(X\\,Y)-b(X\\,Y)-60)/50\\,0\\,1)*clip((640-X)/40\\,0\\,1)*clip(Y/40\\,0\\,1)'[mac];[maa]format=rgba[mad];[mad][mac]overlay=0:660,format=yuv420p,crop=1440:810:480:40,scale=1920:1080:flags=lanczos,setsar=1",
+  "s23": "split[taa][tab];[tab]crop=820:340:1100:740,gblur=sigma=10,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((200-abs(X+1100-(if(lt(T\\,0.000)\\,1368\\,if(lt(T\\,1.500)\\,1368+(76)*(T-0.000)/1.500\\,if(lt(T\\,2.500)\\,1444+(92)*(T-1.500)/1.000\\,if(lt(T\\,3.000)\\,1536+(44)*(T-2.500)/0.500\\,if(lt(T\\,3.250)\\,1580+(16)*(T-3.000)/0.250\\,if(lt(T\\,4.000)\\,1596+(-32)*(T-3.250)/0.750\\,if(lt(T\\,4.500)\\,1564+(52)*(T-4.000)/0.500\\,if(lt(T\\,5.100)\\,1616+(56)*(T-4.500)/0.600\\,1672)))))))))))/16\\,0\\,1)*clip((45-abs(Y+730-(if(lt(T\\,0.000)\\,824\\,if(lt(T\\,1.500)\\,824+(42)*(T-0.000)/1.500\\,if(lt(T\\,2.500)\\,866+(46)*(T-1.500)/1.000\\,if(lt(T\\,3.000)\\,912+(32)*(T-2.500)/0.500\\,if(lt(T\\,3.250)\\,944+(12)*(T-3.000)/0.250\\,if(lt(T\\,4.000)\\,956+(12)*(T-3.250)/0.750\\,if(lt(T\\,4.500)\\,968+(16)*(T-4.000)/0.500\\,if(lt(T\\,5.100)\\,984+(56)*(T-4.500)/0.600\\,1040)))))))))))/16\\,0\\,1)'[tac];[taa]format=rgba[tad];[tad][tac]overlay=1100:740,format=yuv420p",
+  "s24": "split[qaa][qab];[qab]crop=200:110:860:848,gblur=sigma=10,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(X/16\\,0\\,1)*clip((200-X)/16\\,0\\,1)*clip(Y/16\\,0\\,1)*clip((110-Y)/16\\,0\\,1)*clip((6.0-T)/0.1\\,0\\,1)'[qac];[qaa]format=rgba[qad];[qad][qac]overlay=860:848,format=yuv420p",
   "s38": "split[paa][pab];[pab]crop=560:220:0:860,gblur=sigma=16,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((520-(X+0))/40\\,0\\,1)*clip(((Y+860)-900)/40\\,0\\,1)*clip((T-1.45)/0.1\\,0\\,1)*clip((2.9-T)/0.1\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=0:860,format=yuv420p",
   "s41": "split[paa][pab];[pab]crop=740:840:1180:0,gblur=sigma=10,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+1180)-1240)/60\\,0\\,1)*clip((780-(Y+0))/60\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=1180:0,format=yuv420p",
-  "s42": "fade=t=out:st=5.067:d=0.6"
+  "s42": "fade=t=out:st=4.840:d=0.6"
  },
  "subtitle_lines": [
   "zq914a23"
