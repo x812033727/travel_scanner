@@ -9,7 +9,7 @@ miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.j
 [ -z "$miss" ] || { echo "not staged: $miss -- run: python3 $P/live-action/stage.py 12"; exit 1; }
 # e912 trims and seeds the edit table assumes (edit-dh-e912-live.json _note): review2-trims.tsv (pick-review + the whisper
 # pass: s02 -> 9121202 start 2.0, s26 -> 9121201, s04 2.4583 keeps 好, lines no longer cut in s01 s11 s13 s20 s21 s23 s25 s27,
-# s12's invented 了 dropped). s22 is not checked: fix2 reshoot pending, the table holds a placeholder. Tolerance 0.001 so
+# s12's invented 了 dropped) and review3's s35 start 1.5 (the last hit's gong rings out under the fade). s22 is not checked: fix2 reshoot pending, the table holds a placeholder. Tolerance 0.001 so
 # review3-trims.tsv's 3-decimal values also pass: a start must be frame/24 rounded DOWN and an end-before rounded UP (input -ss
 # keeps frames at/after start, -to drops a frame whose end passes it; 6.3333 < 152/24 lost s01's last frame in the dry run and
 # assemble-v4 held it). Warn (not stop) if picks.json differs.
@@ -19,7 +19,7 @@ want={'s01':(0,6.3333),'s02':(2.0,0),'s03':(2.7917,5.8333),'s04':(2.4583,0),'s05
  's08':(2.375,0),'s09':(0.875,4.2083),'s10':(1.5,5.0),'s11':(2.5833,0),'s12':(2.2917,6.5),'s13':(1.375,7.75),'s14':(2.0,5.9167),
  's15':(1.0,4.2083),'s16':(0.375,5.625),'s17':(0.2917,4.8333),'s18':(1.5,4.5),'s19':(1.0833,5.8333),'s20':(0.875,6.0833),'s21':(1.2083,0),
  's23':(1.1667,7.8333),'s24':(0,5.5),'s25':(0.75,4.9167),'s26':(0,0),'s27':(1.0,7.7083),'s28':(1.0,6.0),'s29':(1.0,6.125),
- 's30':(0.2917,7.0),'s31':(0.5,3.4167),'s32':(0.5,4.4167),'s33':(0,0),'s34':(1.25,6.25),'s35':(2.5833,6.0)}
+ 's30':(0.2917,7.0),'s31':(0.5,3.4167),'s32':(0.5,4.4167),'s33':(0,0),'s34':(1.25,6.25),'s35':(1.5,6.0)}
 seed={'s02':9121202,'s26':9121201}
 bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].get(\"end-before\",0)} (want {a} {b})' for s,(a,b) in want.items()
      if abs(p[s]['trim'].get('start',0)-a)>0.001 or abs(p[s]['trim'].get('end-before',0)-b)>0.001]
