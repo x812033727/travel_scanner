@@ -1,15 +1,15 @@
 {
   "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 5810,
-    "canonical_questions": 5650,
-    "eligible_candidates": 5480,
-    "selected_candidates": 5421,
+    "raw_records": 5866,
+    "canonical_questions": 5706,
+    "eligible_candidates": 5536,
+    "selected_candidates": 5477,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 6743,
-    "current_research_source_urls": 3796,
-    "selected_source_urls": 4794,
+    "source_urls": 6799,
+    "current_research_source_urls": 3852,
+    "selected_source_urls": 4850,
     "new_suggestions_not_added": 3419,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
@@ -27,28 +27,28 @@
         "selected": 904
       },
       "數位科技與通訊工程": {
-        "canonical": 860,
-        "selected": 807
+        "canonical": 874,
+        "selected": 821
       },
       "飲食與廚房科學": {
-        "canonical": 349,
-        "selected": 344
+        "canonical": 363,
+        "selected": 358
       },
       "人體感官與日常行為": {
-        "canonical": 428,
-        "selected": 418
+        "canonical": 442,
+        "selected": 432
       },
       "建築交通與商業制度": {
-        "canonical": 551,
-        "selected": 412
+        "canonical": 565,
+        "selected": 426
       }
     }
   },
-  "theme_count": 667,
+  "theme_count": 670,
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "43f9688fbb73f5c1382c947208d64d497e83f5ff3746fc5f1c8e015b0761670e"
+      "sha256": "0ea0853670d434465085e84145eadcae00660dfa68e0c65a50b1bcc67d962efe"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -745,6 +745,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-15-5413.json.gz",
       "sha256": "e26b6a009b8bf166c313e2ac4f1964591511c1d61ac3893cb0b917b4f63327eb"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-5421.json",
+      "sha256": "4d154d2811ba73f0469799aac75fb928efb397ed2943264a39e09a283726640d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-15-5421.json.gz",
+      "sha256": "8d813904d51571bad8e50d5c10523404660725501a70685500e2a81a966b8f91"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -2735,6 +2743,22 @@
       "sha256": "d574aa1a2aebbaa5cf78e5f2216893200c173eb3362b19a6eaf8f4ed1fbe1f06"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave89-food.json",
+      "sha256": "e6517bda76c7530981848fa1abb773e635fc8daf65e9f6cdf2113d1403a4ee56"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave89-human.json",
+      "sha256": "857ffdeb2aa77ead23510a1eaf79fb5fced0ff0ec82db6711c32d27c0cd4da5d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave89-soc.json",
+      "sha256": "448dac4b67eff5849b65d6510935ae4d337edc09e0a6598b7e4e0f3c5138c77c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave89-tech.json",
+      "sha256": "5286211846a3dbb0558cbdbfc124053a19925be7c3a6eff901dbf6636878cd16"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave9-acoustics.json",
       "sha256": "bd184137dcf336337213a6769b6cc0235251eeacb58b2eb840a98ff860572a93"
     },
@@ -2784,46 +2808,46 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "277f1509a5a4dc6d27e672062e5f60967f073cc67f9d2eda350b0414d5353e99"
+      "sha256": "4cb7fb2bae83f24a056206c5be4a95bfe5c0748564628e6793fcc6e3f4b54bc3"
     }
   ],
-  "theme_definition_sha256": "edff18c11bfca31c9c942142fe164aa64b77d5d32644b5f61247f054c6a54dbd",
+  "theme_definition_sha256": "858fc6c7ea64a3a6ed2e7459c95bacf54392048dfc7aabbce13921e7e447c0a9",
   "files": [
     {
       "file": "pool.json",
-      "sha256": "6866190046ac878d78ca5dd276ec187afd2df1a92786da0935aaea920a412a30"
+      "sha256": "b253a9afa6a11f3bd549d14d34ff7b4cff8eef986d6583b3257c4077eb6da7b0"
     },
     {
       "file": "pool-sources.json",
-      "sha256": "aa9be68a36cb1dd2a2ffef3fb00816ae2dfd1bf753db0f9c2524dec41dc92a8a"
+      "sha256": "16a58d87df379f0aeff444a094ad6ef907e6e80978a3c1a2c1329b842085092c"
     },
     {
       "file": "pool-records.json",
-      "sha256": "12c8caddedabeeaa59b7ee7b00a695a0ce639864fd59a90fa6204eb5f52197af"
+      "sha256": "5c2fcc018e18ddf00264c3e229cad8ef6613af8278048989635884e23b02e6f2"
     },
     {
       "file": "QUESTIONS.md",
-      "sha256": "6d5a16e37999b0797d37b419e630e77e081f3c2471c2998963aa6aa72b3530f0"
+      "sha256": "2f8bfad51a11f87e91dbec72316d6d5f96fa8b23a01a7bc7f9aaf17802c31225"
     },
     {
       "file": "SOURCES.md",
-      "sha256": "4774047fd6b2c64c7e0cda66fb89587cc1bab020babcb5ca117446382a5aad8a"
+      "sha256": "dc7049b39a1e8cff6b2e37847a32acedff3d96c441db78e1cae20e4456d6823f"
     },
     {
       "file": "DEDUP.md",
-      "sha256": "ae90c0cac261222e0bad13918ce3fe7cf6ad69f3147eb80219da70b6958bc15a"
+      "sha256": "e46b4267bb5d07e5cf4bf3b05927c6d0d5edc8cc8300369d95366f1389fa064e"
     },
     {
       "file": "THEMES.md",
-      "sha256": "8dfa743a8eff9bbcede7864d32c02c2fb8096d4d5a055a685fcea5cf8e00045e"
+      "sha256": "e16071946286a5337df37208021c629d530ca45cbeef7cad00a02a48962a1bc2"
     },
     {
       "file": "index.html",
-      "sha256": "c9c7d2b002baacc058f09ae8b4f5577fe03168e1f238c1622ee2922ae53590e7"
+      "sha256": "2a37d42f097053147ab42aa61e0eba40c3404cef8101294baeee47528d89251f"
     },
     {
       "file": "PRODUCIBLE.html",
-      "sha256": "e645cdd8a6aca453a9bfc6b62b29021241b803262212625569c537658f14a007"
+      "sha256": "e945a9113a06d54ab1a0f5d7cae9a5f81d0e5f9e94d384ef183f3c9f96af7988"
     }
   ]
 }
