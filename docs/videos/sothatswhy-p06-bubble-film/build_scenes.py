@@ -205,7 +205,9 @@ bub("soap-drop", "Close-up of a small round glass bowl of clear water on a sunny
 bub("straw-water", "Close-up of a clear drinking glass of plain water on a sunny wooden balcony table with a plastic drinking straw standing in it, one tiny bubble at the tip of the straw bursting into a few sparkling droplets, blue sky behind",
     add(c("清水拉得太用力，又乾得快，一下就破。")), add(c("肥皂有點像一層蓋子，讓皮裡的水慢一點乾掉。")))
 bub("bubble-jar", "Close-up of one round see-through soap bubble resting on a small round glass dish inside a big clear glass jar with a closed round metal lid, the jar standing on a wooden shelf in a bright sunny room, soft pink and green sheen on the bubble",
-    add(c("有人用特別的泡泡水封進罐子，撐了三個月！", "數字放慢")))
+    add(c("有人用特別的泡泡水封進罐子，撐了三個月！", "數字放慢")),
+    # 2026-11-15 merge pass (claims.md C27): the jar bubble never popped, it shrank — the skin kept squeezing (ties to p032, p081).
+    add(c("而且它沒有破，是越縮越小。")), add(c("皮一直擠，裡面的空氣就慢慢穿過皮跑掉了。")))
 kid("kid-round-q", K("drawing a big circle in the air with one finger and a curious face", where=HOME),
     k("那它為什麼要縮成圓的？", "句尾上揚"))
 bub("bubble-free", "Wide shot of a single round transparent soap bubble floating alone high in a clear blue sky, soft swirling pink and green sheen, sunlight glinting on it",
@@ -379,7 +381,8 @@ kid("kid-got-it", K("holding up the square wire bubble wand proudly with a big c
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好，形狀跟顏色，被你接起來了。", "笑"))
 bub("bubble-thinning", "Close-up of a round soap bubble on a square silver wire loop shimmering with soft bands of gold, magenta and blue, a small dark grey cap just starting at its very top, sunny balcony background",
-    c("我覺得最好玩的是：你天天吹的泡泡，藏了這麼多事。"))
+    c("我覺得最好玩的是：你天天吹的泡泡，藏了這麼多事。"),
+    add(c("雨後路上那層油亮亮的彩色，也是同一招變出來的。")))  # 2026-11-15 (claims.md C28)
 kid("kid-blow-again", K("dipping the square wire wand into her small clear bottle with an excited grin", where=BALCONY),
     k("我要再吹一顆！", "興奮"))
 chief("chief-observe", C("nodding with an encouraging smile, one finger raised", close=True),
@@ -391,6 +394,74 @@ chief("outro-chief", "Waist-up medium shot of the chief holding up a silver wire
       c("你的泡泡變黑之前，最後是什麼顏色？", "問句上揚，像聊天"), c("留言告訴我們。"))
 chief("outro-wave", "Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light",
       c("想一起找生活裡的為什麼，就訂閱原來如此事務所。", "誠懇"))
+
+# ---------- 2026-11-15 scene merge (owner review 2026-11-14, 75/100: 「畫面太碎、空牆說話鏡太多」) ----------
+# README §10.6: 2–3 lines of one beat share one picture (about 4–8 s). Every shot above is still written exactly as it
+# was drawn and approved; MERGE folds runs of consecutive shots into ONE of them. Key = the shot that stays (its id,
+# prompt, camera and data unchanged), value = the run in screen order; the other shots of the run are dropped and their
+# lines move, in order, into the kept shot, so every p-id and the cut()/add() numbering stay exactly as before.
+# Which shot stays: an object or phenomenon shot first; then a character holding the thing being explained (wand,
+# bubble, bottle, lemon, pebbles, balloon, sunlight); then the kid in her balcony or living room for a question or a
+# reaction; a chief gesturing at an empty wall only when nothing else is in the run. Never across a chapter start:
+# only the first shot of a run may open a chapter, and then that shot is the one kept (i18n/*.json key chapter titles
+# on its id). Never more than 3 spoken lines in one shot.
+MERGE = {
+    # 開場
+    # square-wand stays alone: it opens the chapter (i18n chapter titles key on it) and round-from-square is the thumbnail
+    "round-from-square": ("round-from-square", "swirl-bubble", "pop-bubble"),
+    "kid-wand": ("kid-wand", "chief-look"),
+    "kid-which-q": ("kid-which-q", "chief-two"),
+    # 第一章
+    "chief-start": ("chief-start", "kid-dip"),
+    "film-in-wand": ("film-in-wand", "kid-made-q"),
+    "kid-square-q": ("kid-square-q", "chief-guess", "kid-shrink-doubt"),
+    "balloon-fly": ("balloon-fly", "kid-balloon"),
+    "kid-stay-guess": ("chief-test", "kid-stay-guess"),
+    "kid-shrank": ("kid-shrank", "chief-tension"),
+    "box-ball": ("box-ball", "chief-sphere"),
+    "many-wands": ("kid-stingy", "chief-stingy", "many-wands"),
+    # 第二章
+    "twin-bubbles": ("kid-pop-guess", "twin-bubbles"),
+    "kid-flat-q": ("kid-flat-q", "chief-flat"),
+    "kid-big-guess": ("kid-big-guess", "chief-recall-push"),
+    "small-big": ("small-big", "kid-small-strong"),
+    "chief-squeeze": ("chief-squeeze", "chief-pressure"),
+    "kid-colour-q": ("kid-small-wins", "kid-colour-q"),
+    # 第三章
+    "chief-clear": ("chief-clear", "kid-tension-guess"),
+    "kid-white-q": ("chief-not-tension", "kid-white-q"),
+    "chief-white": ("chief-white", "kid-remove-q"),
+    "chief-yellow": ("chief-yellow", "kid-who-q"),
+    "chief-two-faces": ("chief-two-faces", "kid-two-light"),
+    "chief-pond": ("kid-so-what", "chief-pond"),
+    "kid-pond": ("kid-pond", "chief-flat-spot"),
+    "kid-which-q2": ("chief-light-wave", "kid-which-q2"),
+    # 第四章
+    "chief-watch": ("chief-watch", "kid-stripes"),
+    "kid-moving": ("kid-moving", "chief-time"),
+    "swirl-flow": ("kid-swirl-q", "swirl-flow"),
+    "kid-black-q": ("chief-recall-dark", "kid-black-q"),
+    "kid-black-pop": ("chief-no-light", "kid-black-pop"),
+    "kid-quick": ("chief-thin", "kid-quick"),
+    "kid-tilt": ("kid-tilt", "chief-tilt-q"),
+    "kid-tilt-guess": ("kid-tilt-guess", "chief-angle"),
+    "kid-again-path": ("chief-slant", "kid-again-path"),
+    "kid-tell-q": ("kid-tell-q", "chief-tell"),
+    "chief-honest": ("chief-honest", "kid-why-not"),
+    "kid-loop": ("chief-repeat", "kid-loop"),
+    "kid-two-q": ("chief-clue", "kid-two-q"),
+    # 收尾: chief-opinion stays its own shot so bubble-thinning can hold the oil-slick line (C28); bubble-jar likewise
+    # keeps the two C27 lines and kid-round-q stays alone (bubble-jar about 10 s, bubble-thinning about 9 s).
+}
+for keep, run in MERGE.items():
+    at = [next(i for i, s in enumerate(S) if s["id"] == r) for r in run]
+    assert keep in run and at == list(range(at[0], at[0] + len(run))), (keep, "a merge run must be consecutive shots")
+    assert all(S[i]["chapter"] is None for i in at[1:]), (keep, "never merge across a chapter start")
+    assert S[at[0]]["chapter"] is None or keep == run[0], (keep, "a chapter's first shot stays the chapter start")
+    kept = S[at[run.index(keep)]]
+    kept["lines"] = [l for i in at for l in S[i]["lines"]]
+    assert sum(l[0] != "cut" for l in kept["lines"]) <= 3, (keep, "at most 3 spoken lines in one shot")
+    S[at[0]:at[-1] + 1] = [kept]
 
 # ---------- assemble ----------
 WHAT = {"main": "方框吹出圓泡泡、顏色轉、頭頂變黑，一支方框就找得出原因嗎", "square": "框是方的，泡泡為什麼是圓的",
@@ -455,10 +526,10 @@ doc = {
     "sources": [
         {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: The Shape of Bubbles", "url": "https://annex.exploratorium.edu/ronh/bubbles/shape_of_bubbles.html", "checked_on": CHECKED},
         {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: Sticky Water (surface tension)", "url": "https://annex.exploratorium.edu/ronh/bubbles/sticky_water.html", "checked_on": CHECKED},
-        {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: When Bubble Meets Bubble", "url": "https://annex.exploratorium.edu/ronh/bubbles/bubble_meets_bubble.html", "checked_on": CHECKED},
+        {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: When Bubble Meets Bubble", "url": "https://annex.exploratorium.edu/ronh/bubbles/bubble_meets_bubble.html", "checked_on": "2026-11-15"},
         {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: Soap", "url": "https://annex.exploratorium.edu/ronh/bubbles/soap.html", "checked_on": "2026-11-14"},
-        {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: Bubble Formulae", "url": "https://annex.exploratorium.edu/ronh/bubbles/formulae.html", "checked_on": "2026-11-14"},
-        {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: Bubble Colors", "url": "https://annex.exploratorium.edu/ronh/bubbles/bubble_colors.html", "checked_on": CHECKED},
+        {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: Bubble Formulae", "url": "https://annex.exploratorium.edu/ronh/bubbles/formulae.html", "checked_on": "2026-11-15"},
+        {"title": "Exploratorium (Ron Hipschman), Soap Bubbles: Bubble Colors", "url": "https://annex.exploratorium.edu/ronh/bubbles/bubble_colors.html", "checked_on": "2026-11-15"},
         {"title": "Exploratorium Science Explorer, See Colors in Bubbles (bubble dome activity)", "url": "https://annex.exploratorium.edu/science-explorer/bub_dome.html", "checked_on": CHECKED},
         {"title": "Virginia Tech / James Madison University Bubble Physics, Properties of Bubbles", "url": "https://www1.phys.vt.edu/bubble/properties-of-bubbles.html", "checked_on": CHECKED},
         {"title": "Virginia Tech / James Madison University Bubble Physics, Introduction and Basic Information (Young-Laplace, Plateau laws)", "url": "https://www1.phys.vt.edu/bubble/basic-information.html", "checked_on": CHECKED},

@@ -188,6 +188,29 @@ HyperPhysics 只有 http 能開（https 憑證不符），`build_scenes.py` 的 
     「有人」＝作者 Ron Hipschman 本人；兩頁對另一位 Eiffel Plasterer 的紀錄一頁寫 341 天、一頁寫 342 天，互相不一致，**不用**。罐子裡另加了甘油的長壽配方（[12]），片中不提配方，只說封起來不讓它乾。
   - 圖：`soap-drop` 一碗清水滴進一滴洗碗精、`straw-water` 吸管尖一顆小泡泡破掉、`bubble-jar` 玻璃罐裡小玻璃碟上的一顆泡泡。沒有手、沒有字、沒有並排對照。
 
+## C27 罐子裡的泡泡沒有破，是越縮越小：皮一直擠，裡面的空氣慢慢穿過皮跑掉
+
+2026-11-15 併鏡（站主 2026-11-14 審片：「畫面太碎、空牆說話鏡太多」）時，119 景併成 78 景，少了 41 個換景停頓（約 6 秒），本體估算掉到 480 秒以下，
+所以在既有物件鏡頭裡補兩小段真內容（沒有新鏡頭、沒有新圖）。新台詞用 `add()` 取 p192–p194，原有編號一個都沒動（i18n 要補這三句的翻譯）。
+2026-11-15 用 curl 重讀 [3]、[4]、[12] 全文（HTML 轉純文字後摘句），引文是原句。
+
+- **可用說法**：所長（接在 p191「撐了三個月！」之後，同一個 `bubble-jar` 鏡頭）「而且它沒有破，是越縮越小。」（p192）「皮一直擠，裡面的空氣就慢慢穿過皮跑掉了。」（p193）
+- **來源**：[12]；「皮一直擠」接 [1]、[3]
+- **可信度／注意**：高（博物館教材，作者本人的紀錄）。
+  - p192，[12]：「My longest lasting bubble survived for 3 months! This bubble never popped. It just got smaller and smaller as the higher pressure air inside the bubble slowly diffused through the film and escaped.」
+  - p193，[12] 同句的「the higher pressure air inside the bubble slowly diffused through the film and escaped」；裡面的氣壓比較高，是因為皮一直在拉：[1]「a bubble always has its "stretch" no matter how small the surface becomes」，[3]「the smaller bubble, which always has a higher internal pressure」。
+    「皮一直擠」是把來源的「higher pressure air inside」用片中第一章的氣球皮說法（p032「皮就把空氣擠出來」、p081「把裡面的空氣壓得比較緊」）講出來，**撰稿推論**，沒有超出來源。
+    「穿過皮」照來源的 diffused through the film；不說多快、不給數字。
+  - 圖：沿用 `bubble-jar`（玻璃罐裡小玻璃碟上的一顆泡泡），沒有改提示詞。
+
+## C28 雨後路上油漬的彩色，也是同一招（兩道光互相加強、抵掉）
+
+- **可用說法**：所長（接在 p179「你天天吹的泡泡，藏了這麼多事。」之後，同一個 `bubble-thinning` 鏡頭）「雨後路上那層油亮亮的彩色，也是同一招變出來的。」（p194）
+- **來源**：[4]
+- **可信度／注意**：高。Exploratorium [4]：「Interference is responsible for the pearly luster of an abalone shell, the beautiful colors in some bird feathers and insect wings, and the flowing patches of color in an oil slick on the street after a rain shower - and for the color of bubbles.」
+  「同一招」指片中第三、四章講的兩道光互相加強、抵掉（來源的 interference），不說油膜多厚、不說油膜的反射跟泡泡完全一樣；來源列的鮑魚殼、鳥羽、昆蟲翅膀片中不提。
+  - 圖：沿用 `bubble-thinning`，沒有改提示詞。
+
 ## 不講、找不到來源的
 
 - 洗碗油、彩虹大全、蜂巢：依 EPISODES.md 刪減條件不講；Exploratorium [3] 提到蜂巢，片中不用。
@@ -198,10 +221,10 @@ HyperPhysics 只有 http 能開（https 憑證不符），`build_scenes.py` 的 
 
 ## 來源
 
-1. Exploratorium (Ron Hipschman, 1995), Soap Bubbles: The Shape of Bubbles. https://annex.exploratorium.edu/ronh/bubbles/shape_of_bubbles.html（2026-11-10 curl 讀全文）
+1. Exploratorium (Ron Hipschman, 1995), Soap Bubbles: The Shape of Bubbles. https://annex.exploratorium.edu/ronh/bubbles/shape_of_bubbles.html（2026-11-10 curl 讀全文；2026-11-15 重讀）
 2. Exploratorium (Ron Hipschman, 1995), Soap Bubbles: Sticky Water. https://annex.exploratorium.edu/ronh/bubbles/sticky_water.html（2026-11-10 curl 讀全文）
-3. Exploratorium (Ron Hipschman, 1995), Soap Bubbles: When Bubble Meets Bubble. https://annex.exploratorium.edu/ronh/bubbles/bubble_meets_bubble.html（2026-11-10 curl 讀全文）
-4. Exploratorium (Ron Hipschman, 1995), Soap Bubbles: Bubble Colors. https://annex.exploratorium.edu/ronh/bubbles/bubble_colors.html（2026-11-10 curl 讀全文）
+3. Exploratorium (Ron Hipschman, 1995), Soap Bubbles: When Bubble Meets Bubble. https://annex.exploratorium.edu/ronh/bubbles/bubble_meets_bubble.html（2026-11-10 curl 讀全文；2026-11-15 重讀）
+4. Exploratorium (Ron Hipschman, 1995), Soap Bubbles: Bubble Colors. https://annex.exploratorium.edu/ronh/bubbles/bubble_colors.html（2026-11-10 curl 讀全文；2026-11-15 重讀）
 5. Exploratorium Science Explorer (1998), See Colors in Bubbles. https://annex.exploratorium.edu/science-explorer/bub_dome.html（2026-11-10 curl 讀全文；`new-topics.json` S81 的來源之一）
 6. Virginia Tech / James Madison University, Bubble Physics: Properties of Bubbles. https://www1.phys.vt.edu/bubble/properties-of-bubbles.html（2026-11-10 curl 讀全文；舊題查核 `topic-checks/s3-S64-S75.md` 用過）
 7. Virginia Tech / James Madison University, Bubble Physics: Introduction and Basic Information（Young-Laplace、Plateau Laws）. https://www1.phys.vt.edu/bubble/basic-information.html（2026-11-10 curl 讀全文）
@@ -209,4 +232,4 @@ HyperPhysics 只有 http 能開（https 憑證不符），`build_scenes.py` 的 
 9. HyperPhysics (R. Nave, Georgia State University), Soap Film Interference. http://hyperphysics.phy-astr.gsu.edu/hbase/phyopt/soapfilm.html（2026-11-10 用 http 讀全文；https 憑證不符）
 10. University of Colorado Boulder, Physics Undergraduate Labs, Interference in a Soap Film（DCS 6D30.20）. https://physicslabs.colorado.edu/demos/optics/interference/thin-films/interference-in-a-soap-film/（2026-11-10 curl 讀全文；`new-topics.json` S81 的來源之一）
 11. Exploratorium (Ron Hipschman), Soap Bubbles: Soap. https://annex.exploratorium.edu/ronh/bubbles/soap.html（2026-11-14 curl 讀全文）
-12. Exploratorium (Ron Hipschman), Soap Bubbles: Bubble Formulae. https://annex.exploratorium.edu/ronh/bubbles/formulae.html（2026-11-14 curl 讀全文）
+12. Exploratorium (Ron Hipschman), Soap Bubbles: Bubble Formulae. https://annex.exploratorium.edu/ronh/bubbles/formulae.html（2026-11-14 curl 讀全文；2026-11-15 重讀）
