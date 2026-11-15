@@ -69,6 +69,32 @@ for sid in ["s09", "s18"]:
 for sid in ["s36", "s42"]:
     shots[sid]["drop_pictures"] = ["xuyan-angle-b-l1.png", "tangxiaotang-angle-b-l1.png"]
 
+# review.md (2026-11-15) after the independent review:
+FACES = "Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood."
+ACTING = ("Natural, realistic human motion and acting of real actors: each person keeps the identity, hair and costume of their "
+          "reference pictures, while every visible face acts the emotion written above and changes with it; the pictures are "
+          "neutral studio portraits, never copy their blank expression.")
+HANDS = "Only hands move in this shot; the frame stays on the paper and the hands from the first frame to the last."
+# 建議 (s02, s05, s08): the inserts of hands drop the two face sentences, which send the model looking for a face.
+for sid in ["s02", "s05"]:
+    shots[sid]["replace"] += [[FACES + " ", ""], [ACTING, HANDS]]
+shots["s08"] = {"replace": [[ACTING, HANDS]]}
+# 必改 7 (s09, s25, s31): ref2manifest's shoe sentence against Qin Shuang's leather boots.
+SHOES = "Every person in the frame wears dark cloth shoes on both feet."
+for sid in ["s09", "s25", "s31"]:
+    shots[sid].setdefault("replace", []).append([SHOES, "Qin Shuang wears her black leather boots and everyone else wears dark cloth shoes, on both feet."])
+# 必改 11 (s24): the axis is turned; Erniu's shoulder and open hand are at the left edge now.
+shots["s24"] = {"replace": [[ONLY_SHE, besides("her", "the broad shoulder and open hand of the young man at the left edge")]]}
+# 必改 2: s27, s29, s30 are after the ploughing (furrows, sunset): the unploughed field picture is not sent. s28 keeps it:
+# nobody is named in it, so the set is its only picture and Ref2VA needs one (retake.py stops with no picture left); its
+# text writes the furrows and the sunset over the picture's flat field and soft late light.
+for sid in ["s27", "s29", "s30"]:
+    shots[sid]["drop_set"] = True
+# 必改 12 (s29): his staff already lies on the earth at the first frame (his cast sentence has it in his hand).
+shots["s29"]["replace"] += [["leaning on a polished old bamboo walking staff", "his polished old bamboo walking staff laid on the earth beside him"]]
+# 建議 (s40): a low close-up against mist and bridge stone; the bridge picture is not sent.
+shots["s40"] = {"drop_set": True}
+
 spec = {
     "_note": ("e915 live d1 (e914-live/spec.json's way, written by mkspec.py). Tang Xiaotang's eight lines never show her mouth: "
               "s01, s07, s20, s26, s37, s41 from behind her and s02, s05 inserts of her hand (nospeak, recordings laid in): her three "
@@ -77,7 +103,9 @@ spec = {
               "person' sentence admits the unnamed back or shoulder the composition describes (her back, Erniu's shoulder, Lai San's "
               "back). s15, s29 (Elder Han), s32, s34 (Qin Shuang): the speaking sentence's gaze is the fields, the sky, the plank and "
               "the bamboo, not a listener. s09, s18, s36, s42 (seven or eight pictures): Xu Yan's profile picture is dropped, in s36 and "
-              "s42 Tang Xiaotang's too. s33, s34: the grove picture is dropped (close shots against bamboo; r2.py docstring). "
+              "s42 Tang Xiaotang's too. After review.md: s02, s05, s08 (hands only) lose the face sentences; s09, s25, s31 the shoe "
+              "sentence keeps Qin Shuang's boots; s24's foreground hand is at the left edge; s27, s29, s30 and s40 send no set picture (s28 has no other picture); "
+              "s29's staff lies on the earth. s33, s34: the grove picture is dropped (close shots against bamboo; r2.py docstring). "
               "No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9151101/9151102."),
     "seeds": [9151101, 9151102],
     "shots": shots,

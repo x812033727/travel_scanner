@@ -1,5 +1,5 @@
 {
- "_note": "e915 live d1 (e914-live/spec.json's way, written by mkspec.py). Tang Xiaotang's eight lines never show her mouth: s01, s07, s20, s26, s37, s41 from behind her and s02, s05 inserts of her hand (nospeak, recordings laid in): her three face pictures and her identity sentence go, and the 'only' sentence says she is seen from behind (or that only hands are in the frame). s36 and s42 are her silent face shots: e907's neutral face sentences. s06, s24, s39: the 'only person' sentence admits the unnamed back or shoulder the composition describes (her back, Erniu's shoulder, Lai San's back). s15, s29 (Elder Han), s32, s34 (Qin Shuang): the speaking sentence's gaze is the fields, the sky, the plank and the bamboo, not a listener. s09, s18, s36, s42 (seven or eight pictures): Xu Yan's profile picture is dropped, in s36 and s42 Tang Xiaotang's too. s33, s34: the grove picture is dropped (close shots against bamboo; r2.py docstring). No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9151101/9151102.",
+ "_note": "e915 live d1 (e914-live/spec.json's way, written by mkspec.py). Tang Xiaotang's eight lines never show her mouth: s01, s07, s20, s26, s37, s41 from behind her and s02, s05 inserts of her hand (nospeak, recordings laid in): her three face pictures and her identity sentence go, and the 'only' sentence says she is seen from behind (or that only hands are in the frame). s36 and s42 are her silent face shots: e907's neutral face sentences. s06, s24, s39: the 'only person' sentence admits the unnamed back or shoulder the composition describes (her back, Erniu's shoulder, Lai San's back). s15, s29 (Elder Han), s32, s34 (Qin Shuang): the speaking sentence's gaze is the fields, the sky, the plank and the bamboo, not a listener. s09, s18, s36, s42 (seven or eight pictures): Xu Yan's profile picture is dropped, in s36 and s42 Tang Xiaotang's too. After review.md: s02, s05, s08 (hands only) lose the face sentences; s09, s25, s31 the shoe sentence keeps Qin Shuang's boots; s24's foreground hand is at the left edge; s27, s29, s30 and s40 send no set picture (s28 has no other picture); s29's staff lies on the earth. s33, s34: the grove picture is dropped (close shots against bamboo; r2.py docstring). No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9151101/9151102.",
  "seeds": [
   9151101,
   9151102
@@ -31,6 +31,14 @@
     [
      "She is the only person in the frame; no second copy of anyone appears.",
      "Only hands are in the frame: the young man's two hands and her one hand in a peach-pink silk sleeve; no second copy of anyone appears."
+    ],
+    [
+     "Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood. ",
+     ""
+    ],
+    [
+     "Natural, realistic human motion and acting of real actors: each person keeps the identity, hair and costume of their reference pictures, while every visible face acts the emotion written above and changes with it; the pictures are neutral studio portraits, never copy their blank expression.",
+     "Only hands move in this shot; the frame stays on the paper and the hands from the first frame to the last."
     ]
    ],
    "drop_pictures": [
@@ -50,6 +58,14 @@
     [
      "She is the only person in the frame; no second copy of anyone appears.",
      "Only her one hand in a peach-pink silk sleeve is in the frame; no second copy of anyone appears."
+    ],
+    [
+     "Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood. ",
+     ""
+    ],
+    [
+     "Natural, realistic human motion and acting of real actors: each person keeps the identity, hair and costume of their reference pictures, while every visible face acts the emotion written above and changes with it; the pictures are neutral studio portraits, never copy their blank expression.",
+     "Only hands move in this shot; the frame stays on the paper and the hands from the first frame to the last."
     ]
    ],
    "drop_pictures": [
@@ -83,10 +99,23 @@
     "tangxiaotang-angle-b-l1.png"
    ]
   },
-  "s08": {},
+  "s08": {
+   "replace": [
+    [
+     "Natural, realistic human motion and acting of real actors: each person keeps the identity, hair and costume of their reference pictures, while every visible face acts the emotion written above and changes with it; the pictures are neutral studio portraits, never copy their blank expression.",
+     "Only hands move in this shot; the frame stays on the paper and the hands from the first frame to the last."
+    ]
+   ]
+  },
   "s09": {
    "drop_pictures": [
     "xuyan-angle-b-l1.png"
+   ],
+   "replace": [
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "Qin Shuang wears her black leather boots and everyone else wears dark cloth shoes, on both feet."
+    ]
    ]
   },
   "s10": {},
@@ -134,11 +163,18 @@
    "replace": [
     [
      "She is the only person in the frame; no second copy of anyone appears.",
-     "Besides her, only the broad shoulder of the young man at the right edge in the foreground the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
+     "Besides her, only the broad shoulder and open hand of the young man at the left edge in the foreground the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
     ]
    ]
   },
-  "s25": {},
+  "s25": {
+   "replace": [
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "Qin Shuang wears her black leather boots and everyone else wears dark cloth shoes, on both feet."
+    ]
+   ]
+  },
   "s26": {
    "replace": [
     [
@@ -156,18 +192,34 @@
     "tangxiaotang-angle-b-l1.png"
    ]
   },
-  "s27": {},
+  "s27": {
+   "drop_set": true
+  },
   "s28": {},
   "s29": {
    "replace": [
     [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
      "his face in three-quarter profile, his eyes lifted to the sky"
+    ],
+    [
+     "leaning on a polished old bamboo walking staff",
+     "his polished old bamboo walking staff laid on the earth beside him"
+    ]
+   ],
+   "drop_set": true
+  },
+  "s30": {
+   "drop_set": true
+  },
+  "s31": {
+   "replace": [
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "Qin Shuang wears her black leather boots and everyone else wears dark cloth shoes, on both feet."
     ]
    ]
   },
-  "s30": {},
-  "s31": {},
   "s32": {
    "replace": [
     [
@@ -231,7 +283,9 @@
     ]
    ]
   },
-  "s40": {},
+  "s40": {
+   "drop_set": true
+  },
   "s41": {
    "replace": [
     [
