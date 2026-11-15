@@ -80,6 +80,10 @@ const SET = [
   [/Qian manor gate/i, "dh-set-qianfu-men-t1"],
   [/Qian manor hall|Qian manor/i, "dh-set-qianfu-ting-t1"],
   [/village entrance/i, "dh-set-cunkou-t1"],
+  // e016 r2 (live only): the raft on the stream at night has no CG picture; its live picture is refs-live/set-zhufa-ye-l1.
+  // After "ferry landing" (the dawn shots on the raft at the landing take the landing), before "bamboo grove" and
+  // "stream|...|reeds".
+  [/bamboo raft/i, "dh-set-zhufa-ye-t1"],
   [/bamboo grove|nameless grave/i, "dh-set-zhulin-fen-t1"],
   [/carpenter's workshop/i, "dh-set-mujiang-fang-t1"],
   [/threshing ground/i, "dh-set-dagu-chang-t1"],
