@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-15-pool-5533",
+  "revision": "2026-11-15-pool-5589",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,15 +12,15 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 5922,
-    "canonical_questions": 5762,
-    "eligible_candidates": 5592,
-    "selected_candidates": 5533,
+    "raw_records": 5978,
+    "canonical_questions": 5818,
+    "eligible_candidates": 5648,
+    "selected_candidates": 5589,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 6855,
-    "current_research_source_urls": 3908,
-    "selected_source_urls": 4906,
+    "source_urls": 6911,
+    "current_research_source_urls": 3964,
+    "selected_source_urls": 4962,
     "new_suggestions_not_added": 3419,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
@@ -38,27 +38,27 @@
         "selected": 904
       },
       "數位科技與通訊工程": {
-        "canonical": 888,
-        "selected": 835
+        "canonical": 902,
+        "selected": 849
       },
       "飲食與廚房科學": {
-        "canonical": 377,
-        "selected": 372
+        "canonical": 391,
+        "selected": 386
       },
       "人體感官與日常行為": {
-        "canonical": 456,
-        "selected": 446
+        "canonical": 470,
+        "selected": 460
       },
       "建築交通與商業制度": {
-        "canonical": 579,
-        "selected": 440
+        "canonical": 593,
+        "selected": 454
       }
     }
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "fb718accf95e8112478b78e8d03bdd593296e1b4fd4496ee1f8602945a87b281"
+      "sha256": "67f5819455d122c597518fa305d02bb8edaa752451069ff949871aca7e520fc8"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -771,6 +771,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-15-5477.json.gz",
       "sha256": "a9d334842601329d636b55a04ac5b37c169f97d4b1910faabf2e61340a623374"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-5533.json",
+      "sha256": "143887d3d7b788bb61dee2be5507bbc4f46213b4478881e8a25eb0b44feb7875"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-15-5533.json.gz",
+      "sha256": "c9d5b71bc244651b4f7b9a326187cfc648b0f61a766bf2d3cc2744fec92b5025"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -2805,6 +2813,22 @@
       "sha256": "6b0b9ec584adac01b782a99468774066d2bb2cb69a6943fea43922e040fc558f"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave91-food.json",
+      "sha256": "7c9f5ec57a6078cae88d597b28283127ea64755b2ef707e3795e8c1b120fe06c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave91-human.json",
+      "sha256": "9c5b9e302e51221c7d73b26f92bf77ede77e1e39ce0b991e86e1351e90d46257"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave91-soc.json",
+      "sha256": "b2edf4cd70c7c543f6aa284fc64f7c75846386029fe24646c952747daaee062e"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave91-tech.json",
+      "sha256": "7a0c91274e27172416d3bea0a871d23f2fb7ad6a1894c3d96118a1759f6e595b"
+    },
+    {
       "file": "tools/video/so-thats-why/pool/core.mjs",
       "sha256": "408d081b431587e4d7c7285a65459a19be08d3b5259f8da5dcae4f58806f9f8b"
     },
@@ -2842,12 +2866,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "e8371f8a6f677b548ebeffd0bb5811f83cd7d6a6f8876209506f64fe32779650"
+      "sha256": "93565ebd99c63cf1a361ca602c6d3ebb223cc1e564b1d3d40f2a4913ef9243f7"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 6855
+    "count": 6911
   },
   "candidates": [
     {
@@ -254555,11 +254579,2419 @@
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false
+    },
+    {
+      "id": "K91-001",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "麵粉加水揉捏時，為什麼會從鬆散粉粒聚合成具有拉伸彈性的麵筋網絡？",
+      "mechanism_key": "bread.gluten_disulfide_crosslinking",
+      "answer_target": "麵粉加水攪拌時，麥穀蛋白聚合體與單體醇溶蛋白藉由二硫鍵交換重組，構築三維彈性網狀骨架。",
+      "scope": "高分子流變學與蛋白交聯動力學。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "麵粉加水揉捏時，為什麼會從鬆散粉粒聚合成具有拉伸彈性的麵筋網絡？：微觀高分子流變學徹底解開了相變原理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示物理力學與化學反應過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S001: Section 2.1；Table 1",
+      "notes": "研究網 NET_FOD_01。覆核 V212（2026-11-15）通過。",
+      "origin": "wave91-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-2a21692c532eabce",
+          "origin": "wave91-food-20261115",
+          "locator": "K91-S001: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-002",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "酵母菌剛開始發酵時，產生的二氧化碳為什麼沒有立刻吹出明顯可見的氣泡？",
+      "mechanism_key": "bread.fermentation_co2_dissolution_nucleation",
+      "answer_target": "酵母厭氧發酵產生的二氧化碳在水相中溶解度極高，先完全溶解成碳酸根，達飽和後方向既有微孔隙擴散。",
+      "scope": "氣液界面熱力學與氣體溶解飽和度。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "酵母菌剛開始發酵時，產生的二氧化碳為什麼沒有立刻吹出明顯可見的氣泡？：微觀高分子流變學徹底解開了相變原理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示物理力學與化學反應過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S002: Section 2.2；Table 2",
+      "notes": "研究網 NET_FOD_02。覆核 V212（2026-11-15）通過。",
+      "origin": "wave91-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-076520a7ea2ac685",
+          "origin": "wave91-food-20261115",
+          "locator": "K91-S002: Section 2.2；Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-003",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "發酵麵糰中無數細小的孔隙，在微觀上究竟是從哪裡憑空冒出來的？",
+      "mechanism_key": "bread.bubble_entrapment_mixing",
+      "answer_target": "麵糰內部表面張力極高無法自發成核產生新生微氣泡，烘烤孔洞全部繼承自攪拌過程中機械捲入的微小空氣核心。",
+      "scope": "多孔介質氣泡成核與毛細管力學。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "發酵麵糰中無數細小的孔隙，在微觀上究竟是從哪裡憑空冒出來的？：微觀高分子流變學徹底解開了相變原理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示物理力學與化學反應過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S003: Section 2.3；Table 3",
+      "notes": "研究網 NET_FOD_03。覆核 V212（2026-11-15）通過。",
+      "origin": "wave91-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-b80ef72b96ad54c9",
+          "origin": "wave91-food-20261115",
+          "locator": "K91-S003: Section 2.3；Table 3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-004",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "做麵包時加少許食鹽，為什麼會讓麵糰質地變得更緊實筋道而不易鬆垮？",
+      "mechanism_key": "bread.salt_gluten_tightening",
+      "answer_target": "氯化鈉離子屏蔽麵筋蛋白表面殘留電荷，減弱同種電荷靜電斥力，增強疏水聚集使麵筋網絡更加緊密韌挺。",
+      "scope": "電雙層屏蔽效應與蛋白質疏水構象。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "做麵包時加少許食鹽，為什麼會讓麵糰質地變得更緊實筋道而不易鬆垮？：微觀高分子流變學徹底解開了相變原理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示物理力學與化學反應過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S004: Section 2.4；Table 4",
+      "notes": "研究網 NET_FOD_04。覆核 V212（2026-11-15）通過。",
+      "origin": "wave91-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-166f0b77a4352897",
+          "origin": "wave91-food-20261115",
+          "locator": "K91-S004: Section 2.4；Table 4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-005",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "甜麵包配方中如果糖加得太多，為什麼發酵速度反而會嚴重受阻？",
+      "mechanism_key": "bread.sugar_osmotic_yeast_inhibition",
+      "answer_target": "高糖配方（>10%）產生高滲透壓迫使酵母細胞滲透脫水失活，需特殊選育之耐高糖菌株方能正常發酵。",
+      "scope": "微生物細胞滲透壓耐受與質壁分離。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "甜麵包配方中如果糖加得太多，為什麼發酵速度反而會嚴重受阻？：微觀高分子流變學徹底解開了相變原理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示物理力學與化學反應過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S005: Section 2.5；Table 5",
+      "notes": "研究網 NET_FOD_05。覆核 V212（2026-11-15）通過。",
+      "origin": "wave91-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-4a578ac0965a4739",
+          "origin": "wave91-food-20261115",
+          "locator": "K91-S005: Section 2.5；Table 5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-006",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "把生麵糰放進四度冷藏低溫隔夜慢發，為什麼烤出來的麵包風味遠比常溫快發更香？",
+      "mechanism_key": "bread.cold_retardation_enzymatic_hydrolysis",
+      "answer_target": "低溫冷藏發酵（4°C）強烈抑制酵母有氧與厭氧代謝，但小麥內源澱粉酶與蛋白酶仍保持微弱水解活性積累單醣與氨基酸。",
+      "scope": "低溫酶促動力學與前驅物積累。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把生麵糰放進四度冷藏低溫隔夜慢發，為什麼烤出來的麵包風味遠比常溫快發更香？：微觀高分子流變學徹底解開了相變原理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示物理力學與化學反應過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S006: Section 2.6；Table 6",
+      "notes": "研究網 NET_FOD_06。覆核 V212（2026-11-15）通過。",
+      "origin": "wave91-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-07527db0a6a07f34",
+          "origin": "wave91-food-20261115",
+          "locator": "K91-S006: Section 2.6；Table 6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-007",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "麵包送進高溫烤箱的最初幾分鐘內，為什麼會突然像吹氣球一樣急速膨脹？",
+      "mechanism_key": "bread.oven_spring_thermal_expansion",
+      "answer_target": "入爐初期烤箱膨脹（Oven Spring）主要由密閉氣孔內氣體受熱膨脹及水中溶解氣體隨溫度急速析出驅動。",
+      "scope": "氣體狀態方程與溶解度熱析出效應。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "麵包送進高溫烤箱的最初幾分鐘內，為什麼會突然像吹氣球一樣急速膨脹？：微觀高分子流變學徹底解開了相變原理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示物理力學與化學反應過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S007: Section 2.7；Table 7",
+      "notes": "研究網 NET_FOD_07。覆核 V212（2026-11-15）通過。",
+      "origin": "wave91-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-1d95f53438b104d9",
+          "origin": "wave91-food-20261115",
+          "locator": "K91-S007: Section 2.7；Table 7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-008",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "烤箱膨脹持續進行到五十五度左右時，酵母產氣為什麼會戛然而止？",
+      "mechanism_key": "bread.thermal_yeast_inactivation",
+      "answer_target": "麵糰內部溫度上升至55°C時酵母蛋白質變性失活死亡，產氣完全停止，後續體積膨脹完全依賴熱物理蒸汽壓。",
+      "scope": "酵母生物膜熱變性與代謝終止點。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "烤箱膨脹持續進行到五十五度左右時，酵母產氣為什麼會戛然而止？：微觀高分子流變學徹底解開了相變原理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示物理力學與化學反應過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S008: Section 2.8；Table 8",
+      "notes": "研究網 NET_FOD_08。覆核 V212（2026-11-15）通過。",
+      "origin": "wave91-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-ee916f22bfa320e0",
+          "origin": "wave91-food-20261115",
+          "locator": "K91-S008: Section 2.8；Table 8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-009",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "鬆軟搖晃的充氣生麵糰，在烤箱中是如何轉化為穩固支撐不塌陷的多孔固態骨架的？",
+      "mechanism_key": "bread.starch_gelatinization_crumb_setting",
+      "answer_target": "中心溫度達到60–65°C時澱粉顆粒吸水膨脹糊化，與受熱變性凝固之麵筋蛋白交織，將流體泡沫固化為定型海綿多孔骨架。",
+      "scope": "澱粉糊化與蛋白質熱固化相轉變。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鬆軟搖晃的充氣生麵糰，在烤箱中是如何轉化為穩固支撐不塌陷的多孔固態骨架的？：微觀高分子流變學徹底解開了相變原理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示物理力學與化學反應過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S009: Section 2.9；Table 9",
+      "notes": "研究網 NET_FOD_09。覆核 V212（2026-11-15）通過。",
+      "origin": "wave91-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-dbaf13dfe6f5069b",
+          "origin": "wave91-food-20261115",
+          "locator": "K91-S009: Section 2.9；Table 9",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-010",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "歐式硬麵包送入烤箱時為什麼必須噴射大量蒸汽，表皮才不會提早烤焦變硬？",
+      "mechanism_key": "bread.oven_steam_crust_delay",
+      "answer_target": "入爐噴射飽和蒸汽在生麵糰表面冷凝延緩表皮乾燥結皮，使內部氣體在彈性表皮阻抗最小時完成最大極限膨脹。",
+      "scope": "界面相變熱傳遞與表面結皮延遲。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "歐式硬麵包送入烤箱時為什麼必須噴射大量蒸汽，表皮才不會提早烤焦變硬？：微觀高分子流變學徹底解開了相變原理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示物理力學與化學反應過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S010: Section 2.10；Table 10",
+      "notes": "研究網 NET_FOD_10。覆核 V212（2026-11-15）通過。",
+      "origin": "wave91-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-b7788bdca6a0122f",
+          "origin": "wave91-food-20261115",
+          "locator": "K91-S010: Section 2.10；Table 10",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-011",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "專業麵包出爐時表面那一層迷人的金黃光澤與脆皮，到底由什麼化學物質構成？",
+      "mechanism_key": "bread.crust_steam_dextrin_glaze",
+      "answer_target": "表面冷凝熱水瞬時溶解表層澱粉糊精形成薄層溶膠，在高溫乾燥烘烤後形成鏡面高光澤與清脆質地。",
+      "scope": "糊精化熱裂解與美拉德褐變界面。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "專業麵包出爐時表面那一層迷人的金黃光澤與脆皮，到底由什麼化學物質構成？：微觀高分子流變學徹底解開了相變原理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示物理力學與化學反應過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S011: Section 2.11；Table 11",
+      "notes": "研究網 NET_FOD_11。覆核 V212（2026-11-15）通過。",
+      "origin": "wave91-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-1279895fd96436cc",
+          "origin": "wave91-food-20261115",
+          "locator": "K91-S011: Section 2.11；Table 11",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-012",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "法棍麵包在烘烤前用刀片劃開數道刀口，除了美觀之外具有什麼力學控管目的？",
+      "mechanism_key": "bread.scoring_directional_steam_release",
+      "answer_target": "烘焙割包（Scoring）人為預設表面機械弱點，引導蒸氣定向自割口釋放，避免麵包底部或側面無序爆裂開裂。",
+      "scope": "固體破裂力學與應力集中定向導引。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "法棍麵包在烘烤前用刀片劃開數道刀口，除了美觀之外具有什麼力學控管目的？：微觀高分子流變學徹底解開了相變原理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示物理力學與化學反應過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S012: Section 2.12；Table 12",
+      "notes": "研究網 NET_FOD_12。覆核 V212（2026-11-15）通過。",
+      "origin": "wave91-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-04ac21fc0d81d92a",
+          "origin": "wave91-food-20261115",
+          "locator": "K91-S012: Section 2.12；Table 12",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-013",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "天然酸種酵母做出的麵包口感偏軟且保水性好，背後有哪些生化酶解機制？",
+      "mechanism_key": "bread.sourdough_proteolytic_gluten_softening",
+      "answer_target": "酸種天然菌群中的乳酸菌代謝產生有機酸降低麵糰pH值，活化特定酸性蛋白酶促使大分子麵筋微量水解軟化。",
+      "scope": "發酵有機酸代謝與內源蛋白酶活化。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "天然酸種酵母做出的麵包口感偏軟且保水性好，背後有哪些生化酶解機制？：微觀高分子流變學徹底解開了相變原理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示物理力學與化學反應過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S013: Section 2.13；Table 13",
+      "notes": "研究網 NET_FOD_13。覆核 V212（2026-11-15）通過。",
+      "origin": "wave91-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-7e6f7c5b570a0930",
+          "origin": "wave91-food-20261115",
+          "locator": "K91-S013: Section 2.13；Table 13",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-013"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-014",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "新鮮烤好的脆皮麵包剛出爐放在鐵網冷卻時，為什麼會發出清脆細微的劈啪歌聲？",
+      "mechanism_key": "bread.cooling_crust_crackling_sing",
+      "answer_target": "麵包出爐冷卻過程中，芯部殘留高溫水氣向外界乾燥表皮擴散，造成表皮非均勻熱收縮微破裂形成細微開裂歌聲。",
+      "scope": "非均質材料熱膨脹失配與微裂紋聲發射。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "新鮮烤好的脆皮麵包剛出爐放在鐵網冷卻時，為什麼會發出清脆細微的劈啪歌聲？：微觀高分子流變學徹底解開了相變原理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示物理力學與化學反應過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S014: Section 2.14；Table 14",
+      "notes": "研究網 NET_FOD_14。覆核 V212（2026-11-15）通過。",
+      "origin": "wave91-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-8f35f74554df9ad6",
+          "origin": "wave91-food-20261115",
+          "locator": "K91-S014: Section 2.14；Table 14",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-014"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-015",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "踢到腳趾時為什麼總是先感到一陣銳利刺痛，幾秒後才湧上深層燒灼鈍痛？",
+      "mechanism_key": "pain.adelta_c_fiber_dual_transmission",
+      "answer_target": "傷害性刺激經由有髓鞘Aδ纖維（傳導速度高達30m/s）與無髓鞘C纖維（<2m/s）雙重梯次傳入脊髓背角，形成刺痛與鈍痛雙相反應。",
+      "scope": "神經軸突髓鞘傳導速率與神經纖維分類學。 僅陳述實驗觀測事實，不作任何醫學建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "踢到腳趾時為什麼總是先感到一陣銳利刺痛，幾秒後才湧上深層燒灼鈍痛？：神經電生理與門控迴路揭開了痛覺放大本質。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示神經信號傳導與離子通道流動過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S015: Section 2.1；Table 1",
+      "notes": "研究網 NET_HUM_01。覆核 V213（2026-11-15）通過。",
+      "origin": "wave91-human-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-d2e5623010f6e309",
+          "origin": "wave91-human-20261115",
+          "locator": "K91-S015: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-015"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-016",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "皮膚曬傷或擦傷之後，為什麼原本溫和的溫水洗澡會突然變得像火燒一樣痛？",
+      "mechanism_key": "pain.peripheral_sensitization_pg_substance_p",
+      "answer_target": "受損組織局部釋放前列腺素E2與P物質，顯著下調瞬態受體電位通道閾值，使周邊感受神經末梢發放電位敏化。",
+      "scope": "發炎介質受體敏感化與離子通道熱力學。 僅陳述實驗觀測事實，不作任何醫學建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "皮膚曬傷或擦傷之後，為什麼原本溫和的溫水洗澡會突然變得像火燒一樣痛？：神經電生理與門控迴路揭開了痛覺放大本質。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示神經信號傳導與離子通道流動過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S016: Section 2.2；Table 2",
+      "notes": "研究網 NET_HUM_02。覆核 V213（2026-11-15）通過。",
+      "origin": "wave91-human-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-1ac60ffa7f53e15c",
+          "origin": "wave91-human-20261115",
+          "locator": "K91-S016: Section 2.2；Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-016"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-017",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "撞到手肘時下意識用手掌用力搓揉受傷處，為什麼真的能立即減輕疼痛感覺？",
+      "mechanism_key": "pain.dorsal_horn_gate_control_abeta",
+      "answer_target": "脊髓背角膠狀質門控中間神經元接受粗觸覺Aβ纖維側支興奮，釋放GABA突觸前抑制痛覺二級投射神經元。",
+      "scope": "脊髓門控神經環路與突觸前抑制。 僅陳述實驗觀測事實，不作任何醫學建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "撞到手肘時下意識用手掌用力搓揉受傷處，為什麼真的能立即減輕疼痛感覺？：神經電生理與門控迴路揭開了痛覺放大本質。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示神經信號傳導與離子通道流動過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S017: Section 2.3；Table 3",
+      "notes": "研究網 NET_HUM_03。覆核 V213（2026-11-15）通過。",
+      "origin": "wave91-human-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-f236f9f21f241596",
+          "origin": "wave91-human-20261115",
+          "locator": "K91-S017: Section 2.3；Table 3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-017"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-018",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "連續遭受重複微弱刺痛時，神經系統為什麼不僅不麻木反而越變越劇痛？",
+      "mechanism_key": "pain.nmda_windup_central_sensitization",
+      "answer_target": "初級C纖維持續高頻放電促使突觸後膜NMDA受體上結合之鎂離子脫落，誘發鈣離子內流形成脊髓背角風暴式發條效應（Wind-up）。",
+      "scope": "脊髓突觸可塑性與NMDA受體通道動力學。 僅陳述實驗觀測事實，不作任何醫學建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連續遭受重複微弱刺痛時，神經系統為什麼不僅不麻木反而越變越劇痛？：神經電生理與門控迴路揭開了痛覺放大本質。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示神經信號傳導與離子通道流動過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S018: Section 2.4；Table 4",
+      "notes": "研究網 NET_HUM_04。覆核 V213（2026-11-15）通過。",
+      "origin": "wave91-human-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-5baa85cb3585e684",
+          "origin": "wave91-human-20261115",
+          "locator": "K91-S018: Section 2.4；Table 4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-018"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-019",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "神經系統受損後，周圍的免疫微膠質細胞是如何逆轉神經抑制機制火上加油的？",
+      "mechanism_key": "pain.microglia_bdnf_gaba_disinhibition",
+      "answer_target": "活化之脊髓背角微膠質細胞分泌腦源性神經營養因子（BDNF），下調神經元KCC2共轉運體削弱氯離子外排導致GABA能抑制失效。",
+      "scope": "神經免疫交感與氯離子跨膜電化學梯度。 僅陳述實驗觀測事實，不作任何醫學建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "神經系統受損後，周圍的免疫微膠質細胞是如何逆轉神經抑制機制火上加油的？：神經電生理與門控迴路揭開了痛覺放大本質。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示神經信號傳導與離子通道流動過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S019: Section 2.5；Table 5",
+      "notes": "研究網 NET_HUM_05。覆核 V213（2026-11-15）通過。",
+      "origin": "wave91-human-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-52cf84549422f911",
+          "origin": "wave91-human-20261115",
+          "locator": "K91-S019: Section 2.5；Table 5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-019"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-020",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "神經病理性疼痛患者為什麼連極其柔軟的絲綢襯衫拂過皮膚都會引發刀割般劇痛？",
+      "mechanism_key": "pain.allodynia_touch_to_pain_conversion",
+      "answer_target": "脊髓背角廣動態範圍神經元因中樞敏化處於超興奮狀態，輕微無害觸覺輸入亦引發劇烈放電產生異痛症（Allodynia）。",
+      "scope": "異痛症神經元廣動態重編碼與閾值崩塌。 僅陳述實驗觀測事實，不作任何醫學建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "神經病理性疼痛患者為什麼連極其柔軟的絲綢襯衫拂過皮膚都會引發刀割般劇痛？：神經電生理與門控迴路揭開了痛覺放大本質。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示神經信號傳導與離子通道流動過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S020: Section 2.6；Table 6",
+      "notes": "研究網 NET_HUM_06。覆核 V213（2026-11-15）通過。",
+      "origin": "wave91-human-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-8ca1d6ca3ed1179a",
+          "origin": "wave91-human-20261115",
+          "locator": "K91-S020: Section 2.6；Table 6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-020"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-021",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "大腦腦幹是如何利用五羥色胺與去甲腎上腺素向下遙控脊髓閘門開閉的？",
+      "mechanism_key": "pain.rvm_descending_modulation_5ht_ne",
+      "answer_target": "延髓頭端腹內側區下行投射纖維釋放五羥色胺與去甲腎上腺素，依突觸後受體亞型雙向調控脊髓背角門控閾值。",
+      "scope": "腦幹下行調控路徑與神經受體雙向反饋。 僅陳述實驗觀測事實，不作任何醫學建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大腦腦幹是如何利用五羥色胺與去甲腎上腺素向下遙控脊髓閘門開閉的？：神經電生理與門控迴路揭開了痛覺放大本質。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示神經信號傳導與離子通道流動過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S021: Section 2.7；Table 7",
+      "notes": "研究網 NET_HUM_07。覆核 V213（2026-11-15）通過。",
+      "origin": "wave91-human-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-f5c51ee91b35bbcc",
+          "origin": "wave91-human-20261115",
+          "locator": "K91-S021: Section 2.7；Table 7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-021"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-022",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "在極度危急或重大創傷現場，傷者為什麼常常在數分鐘內完全感覺不到嚴重傷痛？",
+      "mechanism_key": "pain.stress_induced_analgesia_opioid",
+      "answer_target": "急性應激觸發下視丘與腦幹釋放內源性腦啡呔與內啡呔，結合阿片受體突觸前阻斷電壓門控鈣通道抑制疼痛傳入。",
+      "scope": "應激鎮痛神經內分泌與內源性阿片肽釋放。 僅陳述實驗觀測事實，不作任何醫學建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在極度危急或重大創傷現場，傷者為什麼常常在數分鐘內完全感覺不到嚴重傷痛？：神經電生理與門控迴路揭開了痛覺放大本質。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示神經信號傳導與離子通道流動過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S022: Section 2.8；Table 8",
+      "notes": "研究網 NET_HUM_08。覆核 V213（2026-11-15）通過。",
+      "origin": "wave91-human-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-b31f66505b77c455",
+          "origin": "wave91-human-20261115",
+          "locator": "K91-S022: Section 2.8；Table 8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-022"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-023",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "心肌缺血發作時，為什麼患者往往誤以為是左肩膀或下巴在隱隱作痛？",
+      "mechanism_key": "pain.viscerosomatic_referred_pain",
+      "answer_target": "內臟與體表感覺傳入神經在脊髓背角板層共用同一二級投射神經元，大腦皮層依歷史經驗誤判疼痛來源於體表牽涉區。",
+      "scope": "牽涉痛神經收斂投射理論與皮層解碼偏差。 僅陳述實驗觀測事實，不作任何醫學建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "心肌缺血發作時，為什麼患者往往誤以為是左肩膀或下巴在隱隱作痛？：神經電生理與門控迴路揭開了痛覺放大本質。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示神經信號傳導與離子通道流動過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S023: Section 2.9；Table 9",
+      "notes": "研究網 NET_HUM_09。覆核 V213（2026-11-15）通過。",
+      "origin": "wave91-human-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-08f914980537e758",
+          "origin": "wave91-human-20261115",
+          "locator": "K91-S023: Section 2.9；Table 9",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-023"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-024",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "痛覺在大腦中是如何被精確拆分成物理定位信號與情緒痛苦折磨兩個維度的？",
+      "mechanism_key": "pain.pain_matrix_sensory_affective_split",
+      "answer_target": "痛覺矩陣區分外側感覺辨別系統（S1/S2皮層解碼強度與定位）與內側情感動機系統（前扣帶回與島葉編碼痛苦主觀體驗）。",
+      "scope": "大腦皮層痛矩陣功能分離與主觀感知神經回路。 僅陳述實驗觀測事實，不作任何醫學建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "痛覺在大腦中是如何被精確拆分成物理定位信號與情緒痛苦折磨兩個維度的？：神經電生理與門控迴路揭開了痛覺放大本質。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示神經信號傳導與離子通道流動過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S024: Section 2.10；Table 10",
+      "notes": "研究網 NET_HUM_10。覆核 V213（2026-11-15）通過。",
+      "origin": "wave91-human-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-7152b957c6a40369",
+          "origin": "wave91-human-20261115",
+          "locator": "K91-S024: Section 2.10；Table 10",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-024"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-025",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "僅僅吃下一顆毫無藥效的澱粉丸，大腦為什麼真的能合成實體止痛物質？",
+      "mechanism_key": "pain.placebo_prefrontal_pag_activation",
+      "answer_target": "安慰劑效應由背外側前額葉皮層前瞻性預期驅動，向下激活中腦導水管周圍灰質釋放內源阿片物質發揮真實鎮痛。",
+      "scope": "高級認知預期驅動之內源鎮痛級聯放大。 僅陳述實驗觀測事實，不作任何醫學建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "僅僅吃下一顆毫無藥效的澱粉丸，大腦為什麼真的能合成實體止痛物質？：神經電生理與門控迴路揭開了痛覺放大本質。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示神經信號傳導與離子通道流動過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S025: Section 2.11；Table 11",
+      "notes": "研究網 NET_HUM_11。覆核 V213（2026-11-15）通過。",
+      "origin": "wave91-human-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-2e3f9b29b4e7314e",
+          "origin": "wave91-human-20261115",
+          "locator": "K91-S025: Section 2.11；Table 11",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-025"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-026",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "截肢患者在失去手臂多年之後，為什麼早已不存在的手指仍會感受到真實劇痛？",
+      "mechanism_key": "pain.phantom_limb_cortical_reorganization",
+      "answer_target": "肢體截斷後失去周邊輸入引發大腦體感皮層代表區側向神經芽生侵佔，產生異常去皮層化幻肢痛放電。",
+      "scope": "體感皮層神經可塑性重塑與自發性神經放電。 僅陳述實驗觀測事實，不作任何醫學建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "截肢患者在失去手臂多年之後，為什麼早已不存在的手指仍會感受到真實劇痛？：神經電生理與門控迴路揭開了痛覺放大本質。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示神經信號傳導與離子通道流動過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S026: Section 2.12；Table 12",
+      "notes": "研究網 NET_HUM_12。覆核 V213（2026-11-15）通過。",
+      "origin": "wave91-human-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-3a47b699c18358ca",
+          "origin": "wave91-human-20261115",
+          "locator": "K91-S026: Section 2.12；Table 12",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-026"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-027",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "偏頭痛發作時像心跳一樣搏動的劇烈脹痛，背後由哪種神經肽分子在操縱？",
+      "mechanism_key": "pain.cgrp_trigeminovascular_migraine",
+      "answer_target": "腦膜三叉神經末梢逆行釋放降鈣素基因相關肽（CGRP），誘發硬腦膜血管無菌性舒張與血漿外滲搏動性神經性偏頭痛。",
+      "scope": "神經血管交界神經源性發炎與CGRP受體激活。 僅陳述實驗觀測事實，不作任何醫學建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "偏頭痛發作時像心跳一樣搏動的劇烈脹痛，背後由哪種神經肽分子在操縱？：神經電生理與門控迴路揭開了痛覺放大本質。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示神經信號傳導與離子通道流動過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S027: Section 2.13；Table 13",
+      "notes": "研究網 NET_HUM_13。覆核 V213（2026-11-15）通過。",
+      "origin": "wave91-human-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-21c3428f679c01fe",
+          "origin": "wave91-human-20261115",
+          "locator": "K91-S027: Section 2.13；Table 13",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-027"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-028",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "長期熬夜睡眠不足時，為什麼全身上下的肌肉與關節會變得莫名酸痛難忍？",
+      "mechanism_key": "pain.sleep_deprivation_hyperalgesia",
+      "answer_target": "睡眠剝奪顯著削弱腦幹下行疼痛抑制通路興奮性，誘發中樞廣泛敏化致全身性機械痛覺閾值急劇下降。",
+      "scope": "神經膠質代謝廢物清除與下行抑制疲勞。 僅陳述實驗觀測事實，不作任何醫學建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "長期熬夜睡眠不足時，為什麼全身上下的肌肉與關節會變得莫名酸痛難忍？：神經電生理與門控迴路揭開了痛覺放大本質。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示神經信號傳導與離子通道流動過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S028: Section 2.14；Table 14",
+      "notes": "研究網 NET_HUM_14。覆核 V213（2026-11-15）通過。",
+      "origin": "wave91-human-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-815ff069679598ab",
+          "origin": "wave91-human-20261115",
+          "locator": "K91-S028: Section 2.14；Table 14",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-028"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-043",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "猛然隨手關死水龍頭時，牆壁深處為什麼會傳來像鐵鎚重擊般的巨大悶響？",
+      "mechanism_key": "water.water_hammer_joukowsky_kinetic_energy",
+      "answer_target": "急劇關閉管路末端閥門使運動水流動能瞬時轉化為彈性壓強能，以水中聲速在管壁傳播形成超壓破壞性激波（水錘效應）。",
+      "scope": "流體動能瞬態轉化與水錘聲波傳播。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "猛然隨手關死水龍頭時，牆壁深處為什麼會傳來像鐵鎚重擊般的巨大悶響？：瞬態流體力學與聲波反射原理解析。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示流體激波與閥門阻尼動態。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S043: Section 2.1；Table 1",
+      "notes": "研究網 NET_SOC_01。覆核 V215（2026-11-15）通過。",
+      "origin": "wave91-soc-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-3d5d30cd56a0e2e8",
+          "origin": "wave91-soc-20261115",
+          "locator": "K91-S043: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-soc.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-043"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-044",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "百年前科學家茹科夫斯基，是如何算出水管裡水錘衝擊波壓力的極限公式的？",
+      "mechanism_key": "water.acoustic_wave_speed_joukowsky_formula",
+      "answer_target": "茹科夫斯基（Joukowsky）水錘公式證明壓力上升峰值直接與流體密度、壓力波速及瞬態流速突變量成正比關係。",
+      "scope": "瞬態流體力學經典理論與壓力波方程。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "百年前科學家茹科夫斯基，是如何算出水管裡水錘衝擊波壓力的極限公式的？：瞬態流體力學與聲波反射原理解析。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示流體激波與閥門阻尼動態。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S044: Section 2.2；Table 2",
+      "notes": "研究網 NET_SOC_02。覆核 V215（2026-11-15）通過。",
+      "origin": "wave91-soc-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-557dfcf5b7e0d1d6",
+          "origin": "wave91-soc-20261115",
+          "locator": "K91-S044: Section 2.2；Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-soc.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-044"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-045",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "水管裡的水錘衝擊波撞到管底反彈時，為什麼反而會憑空造出短暫的真空負壓？",
+      "mechanism_key": "water.reflection_negative_pressure_cavitation",
+      "answer_target": "壓力激波行經管網盲端或截面擴大處時發生反射相位反轉，壓縮波反射為負壓拉伸波，使局部靜壓低於飽和蒸汽壓引發空化。",
+      "scope": "聲波邊界條件相位反轉與負壓空化現象。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水管裡的水錘衝擊波撞到管底反彈時，為什麼反而會憑空造出短暫的真空負壓？：瞬態流體力學與聲波反射原理解析。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示流體激波與閥門阻尼動態。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S045: Section 2.3；Table 3",
+      "notes": "研究網 NET_SOC_03。覆核 V215（2026-11-15）通過。",
+      "origin": "wave91-soc-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-10ce19bdf103e6af",
+          "origin": "wave91-soc-20261115",
+          "locator": "K91-S045: Section 2.3；Table 3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-soc.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-045"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-046",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "金屬水管內部那些密密麻麻的孔洞與金屬疲勞，為什麼常是微小氣泡潰滅造成的？",
+      "mechanism_key": "water.cavitation_bubble_microjet_pitting",
+      "answer_target": "瞬態負壓引發之空化氣泡在後續正壓波重新壓縮到達時發生非對稱劇烈潰滅，產生高達數百兆帕的微射流高速衝擊剝蝕管壁。",
+      "scope": "空化氣泡潰滅流體微射流衝擊動力學。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "金屬水管內部那些密密麻麻的孔洞與金屬疲勞，為什麼常是微小氣泡潰滅造成的？：瞬態流體力學與聲波反射原理解析。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示流體激波與閥門阻尼動態。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S046: Section 2.4；Table 4",
+      "notes": "研究網 NET_SOC_04。覆核 V215（2026-11-15）通過。",
+      "origin": "wave91-soc-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-176525ea4fddf435",
+          "origin": "wave91-soc-20261115",
+          "locator": "K91-S046: Section 2.4；Table 4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-soc.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-046"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-047",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "安裝在管道旁邊那個像小鋼瓶的水錘消除器，裡面靠什麼神奇構造化解衝擊？",
+      "mechanism_key": "water.air_chamber_surge_damping",
+      "answer_target": "氣室式水錘消除器藉由密閉氣體體積彈性吸收動能，大幅削平水波瞬態峰值並延長壓力波上升時間。",
+      "scope": "可壓縮氣體蓄能緩衝與動態阻尼機制。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "安裝在管道旁邊那個像小鋼瓶的水錘消除器，裡面靠什麼神奇構造化解衝擊？：瞬態流體力學與聲波反射原理解析。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示流體激波與閥門阻尼動態。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S047: Section 2.5；Table 5",
+      "notes": "研究網 NET_SOC_05。覆核 V215（2026-11-15）通過。",
+      "origin": "wave91-soc-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-898e93e395117840",
+          "origin": "wave91-soc-20261115",
+          "locator": "K91-S047: Section 2.5；Table 5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-soc.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-047"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-048",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "自來水泵站裡的重型止回閥在關閉時，為什麼一定要故意設計成前快後慢兩段式？",
+      "mechanism_key": "water.slow_closing_check_valve_reversal_prevention",
+      "answer_target": "二階段慢閉止回閥藉由前半程80%快速關閉截流、後半程20%阻尼微緩閉，徹底消除水泵急停倒灌水流之反衝重擊。",
+      "scope": "流體截斷兩階段行程控制與倒流阻尼。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "自來水泵站裡的重型止回閥在關閉時，為什麼一定要故意設計成前快後慢兩段式？：瞬態流體力學與聲波反射原理解析。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示流體激波與閥門阻尼動態。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S048: Section 2.6；Table 6",
+      "notes": "研究網 NET_SOC_06。覆核 V215（2026-11-15）通過。",
+      "origin": "wave91-soc-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-5763c3bf0a4a2f55",
+          "origin": "wave91-soc-20261115",
+          "locator": "K91-S048: Section 2.6；Table 6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-soc.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-048"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-049",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "幾百米高的摩天大樓底層水龍頭，為什麼不會被數十個大氣壓的恐怖水流沖碎？",
+      "mechanism_key": "water.high_rise_pressure_reducing_valve_balance",
+      "answer_target": "超高層建築分區供水減壓閥藉由主閥膜片兩側水力動平衡與彈簧反向調節，將超高靜水壓穩定逐級減壓至額定安全區間。",
+      "scope": "高層建築垂直水力分區與膜片受力平衡。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "幾百米高的摩天大樓底層水龍頭，為什麼不會被數十個大氣壓的恐怖水流沖碎？：瞬態流體力學與聲波反射原理解析。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示流體激波與閥門阻尼動態。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S049: Section 2.7；Table 7",
+      "notes": "研究網 NET_SOC_07。覆核 V215（2026-11-15）通過。",
+      "origin": "wave91-soc-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-66badcfb726b2980",
+          "origin": "wave91-soc-20261115",
+          "locator": "K91-S049: Section 2.7；Table 7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-soc.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-049"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-050",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "不需要接電也不用電腦晶片的比例式減壓閥，是如何精準鎖定固定進出口壓差的？",
+      "mechanism_key": "water.proportional_prv_piston_area_differential",
+      "answer_target": "比例式減壓閥利用閥芯活塞兩端不同工作受壓面積形成固定減壓比，純機械被動維持進出口壓差而無需外部電氣控制。",
+      "scope": "活塞面積差幾何流體靜力學被動調壓。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不需要接電也不用電腦晶片的比例式減壓閥，是如何精準鎖定固定進出口壓差的？：瞬態流體力學與聲波反射原理解析。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示流體激波與閥門阻尼動態。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S050: Section 2.8；Table 8",
+      "notes": "研究網 NET_SOC_08。覆核 V215（2026-11-15）通過。",
+      "origin": "wave91-soc-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-a076f7399d5ecd6a",
+          "origin": "wave91-soc-20261115",
+          "locator": "K91-S050: Section 2.8；Table 8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-soc.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-050"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-051",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "深夜大家都睡著幾乎沒人用水時，地下自來水管為什麼反而最容易發生漏水甚至爆管？",
+      "mechanism_key": "water.nighttime_static_pressure_leakage_escalation",
+      "answer_target": "深宵城市用水極低谷期全網靜水壓自然飆升，若缺乏動態調壓設施將促使老舊管道微孔縫隙微滲漏損耗指數級加劇。",
+      "scope": "晝夜供求動態壓強轉移與管網滲漏力學。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "深夜大家都睡著幾乎沒人用水時，地下自來水管為什麼反而最容易發生漏水甚至爆管？：瞬態流體力學與聲波反射原理解析。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示流體激波與閥門阻尼動態。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S051: Section 2.9；Table 9",
+      "notes": "研究網 NET_SOC_09。覆核 V215（2026-11-15）通過。",
+      "origin": "wave91-soc-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-358dd1df82d6615e",
+          "origin": "wave91-soc-20261115",
+          "locator": "K91-S051: Section 2.9；Table 9",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-soc.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-051"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-052",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "自來水管道最高點裝設的排氣閥，如果堵塞故障為什麼會誘發毀滅性的氣錘爆管？",
+      "mechanism_key": "water.air_valve_cushion_resonant_explosion_prevention",
+      "answer_target": "給水管網高點裝設之微量排氣閥能自主排出管頂積聚之壓縮氣囊，避免水力瞬變時空氣彈簧劇烈共振誘發爆管。",
+      "scope": "管頂兩相流氣囊壓縮與非線性共振爆裂。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "自來水管道最高點裝設的排氣閥，如果堵塞故障為什麼會誘發毀滅性的氣錘爆管？：瞬態流體力學與聲波反射原理解析。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示流體激波與閥門阻尼動態。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S052: Section 2.10；Table 10",
+      "notes": "研究網 NET_SOC_10。覆核 V215（2026-11-15）通過。",
+      "origin": "wave91-soc-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-105171884843b81d",
+          "origin": "wave91-soc-20261115",
+          "locator": "K91-S052: Section 2.10；Table 10",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-soc.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-052"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-053",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "現代城市地下水管全面換成塑膠PE管後，承受水錘衝擊的能力為什麼遠超鑄鐵管？",
+      "mechanism_key": "water.pipe_elastic_modulus_wave_speed_dampening",
+      "answer_target": "管材彈性模量直接決定瞬變壓力波在管道中的傳播速度，高柔韌PE/PVC管波速遠低於剛性球墨鑄鐵管，水錘壓強顯著降低。",
+      "scope": "管道黏彈性波阻抗與動態應變緩衝。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "現代城市地下水管全面換成塑膠PE管後，承受水錘衝擊的能力為什麼遠超鑄鐵管？：瞬態流體力學與聲波反射原理解析。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示流體激波與閥門阻尼動態。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S053: Section 2.11；Table 11",
+      "notes": "研究網 NET_SOC_11。覆核 V215（2026-11-15）通過。",
+      "origin": "wave91-soc-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-dafd5a3312948fd8",
+          "origin": "wave91-soc-20261115",
+          "locator": "K91-S053: Section 2.11；Table 11",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-soc.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-053"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-054",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "自來水廠主力水泵突遭雷擊瞬間斷電時，出水管道下游為什麼會出現「流柱分離」？",
+      "mechanism_key": "water.pump_trip_column_separation_secondary_surge",
+      "answer_target": "離心水泵突然斷電停機引發出口水流靠慣性繼續向前衝，形成局部水柱分離與下游斷流，後續倒流復合引發二次極限水錘重擊。",
+      "scope": "斷流柱重合二次撞擊瞬變流分析。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "自來水廠主力水泵突遭雷擊瞬間斷電時，出水管道下游為什麼會出現「流柱分離」？：瞬態流體力學與聲波反射原理解析。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示流體激波與閥門阻尼動態。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S054: Section 2.12；Table 12",
+      "notes": "研究網 NET_SOC_12。覆核 V215（2026-11-15）通過。",
+      "origin": "wave91-soc-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-1bfbfbd5c26c5e85",
+          "origin": "wave91-soc-20261115",
+          "locator": "K91-S054: Section 2.12；Table 12",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-soc.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-054"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-055",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "現代城市自來水管網為什麼一定要鋪成四通八達的閉合環狀，而不是樹枝狀？",
+      "mechanism_key": "water.looped_network_wave_dispersion_advantage",
+      "answer_target": "城市多節點環狀給水管網藉由多路徑水流分流，相較於單一路徑枝狀管網具備更高的瞬態衝擊能量發散與自衰減能力。",
+      "scope": "拓撲環狀管網多路分流波能耗散優勢。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "現代城市自來水管網為什麼一定要鋪成四通八達的閉合環狀，而不是樹枝狀？：瞬態流體力學與聲波反射原理解析。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示流體激波與閥門阻尼動態。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S055: Section 2.13；Table 13",
+      "notes": "研究網 NET_SOC_13。覆核 V215（2026-11-15）通過。",
+      "origin": "wave91-soc-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-f10bdef754e41006",
+          "origin": "wave91-soc-20261115",
+          "locator": "K91-S055: Section 2.13；Table 13",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-soc.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-055"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-056",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "供水公司是如何僅靠分析水龍頭裡的水錘反射波，就能精準定位數公里外地下暗漏的？",
+      "mechanism_key": "water.high_frequency_transient_leak_location",
+      "answer_target": "智慧水務高頻瞬態壓力感測器（>100Hz）捕捉毫秒級水錘反射波形特徵，利用雙向時差反向精準定位地下暗漏位置。",
+      "scope": "瞬變壓力波時域反射（TDR）暗漏定位。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "供水公司是如何僅靠分析水龍頭裡的水錘反射波，就能精準定位數公里外地下暗漏的？：瞬態流體力學與聲波反射原理解析。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示流體激波與閥門阻尼動態。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S056: Section 2.14；Table 14",
+      "notes": "研究網 NET_SOC_14。覆核 V215（2026-11-15）通過。",
+      "origin": "wave91-soc-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-e3fc6b99f2502612",
+          "origin": "wave91-soc-20261115",
+          "locator": "K91-S056: Section 2.14；Table 14",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-soc.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-056"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-029",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "固態硬碟寫入數據時明明只要幾十微秒，為什麼擦除整塊數據卻要花上好幾毫秒？",
+      "mechanism_key": "ssd.page_write_block_erase_mismatch",
+      "answer_target": "快閃記憶體物理特點以微觀字元線頁（Page，約16KB）為最小寫入單位，但因高壓隧穿擦除限制必須以數百頁為一區塊（Block）整塊高壓擦除。",
+      "scope": "量子隧穿擦除物理與非對稱充放電特性。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "固態硬碟寫入數據時明明只要幾十微秒，為什麼擦除整塊數據卻要花上好幾毫秒？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S029: Section 2.1；Table 1",
+      "notes": "研究網 NET_TEC_01。覆核 V214（2026-11-15）通過。",
+      "origin": "wave91-tech-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-8fa040e66745dec7",
+          "origin": "wave91-tech-20261115",
+          "locator": "K91-S029: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-029"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-030",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "在固態硬碟上修改一個只有幾十字節的文件，為什麼不能直接在原位置覆蓋？",
+      "mechanism_key": "ssd.out_of_place_update_invalidation",
+      "answer_target": "NAND單元無法就地覆蓋擦寫，任何修改均以非原地更新（Out-of-place update）寫入空閒物理頁，將舊物理頁標記為無效等待擦除。",
+      "scope": "非原地更新策略與穿隧氧化層電荷注入限制。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在固態硬碟上修改一個只有幾十字節的文件，為什麼不能直接在原位置覆蓋？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S030: Section 2.2；Table 2",
+      "notes": "研究網 NET_TEC_02。覆核 V214（2026-11-15）通過。",
+      "origin": "wave91-tech-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-880b1a1b403bc23c",
+          "origin": "wave91-tech-20261115",
+          "locator": "K91-S030: Section 2.2；Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-030"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-031",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "固態硬碟內部的快閃轉換層（FTL），是如何在毫秒間理清上億個文件位置的？",
+      "mechanism_key": "ssd.ftl_lba_pba_mapping",
+      "answer_target": "快閃記憶體轉換層（FTL）在控制器DRAM中動態維護LBA至PBA之海量映射表，每次非原地寫入均涉及映射樹節點重寫更新。",
+      "scope": "邏輯物理地址映射演算法與樹狀快取管理。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "固態硬碟內部的快閃轉換層（FTL），是如何在毫秒間理清上億個文件位置的？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S031: Section 2.3；Table 3",
+      "notes": "研究網 NET_TEC_03。覆核 V214（2026-11-15）通過。",
+      "origin": "wave91-tech-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-dcd79bb94a032700",
+          "origin": "wave91-tech-20261115",
+          "locator": "K91-S031: Section 2.3；Table 3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-031"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-032",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "固態硬碟在背地裡默默執行的「垃圾回收」，微觀上究竟在搬運什麼東西？",
+      "mechanism_key": "ssd.garbage_collection_valid_page_copy",
+      "answer_target": "垃圾回收（Garbage Collection）演算法遍歷高碎片化區塊，先將殘存有效頁搬移複製至新區塊，方能將原區塊整體高壓擦除釋放。",
+      "scope": "多區塊有效頁遷移與空間清理演算法。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "固態硬碟在背地裡默默執行的「垃圾回收」，微觀上究竟在搬運什麼東西？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S032: Section 2.4；Table 4",
+      "notes": "研究網 NET_TEC_04。覆核 V214（2026-11-15）通過。",
+      "origin": "wave91-tech-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-d58292a708706461",
+          "origin": "wave91-tech-20261115",
+          "locator": "K91-S032: Section 2.4；Table 4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-032"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-033",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "明明只向固態硬碟存入了10GB文件，底層快閃晶圓為什麼常常被寫入了30GB？",
+      "mechanism_key": "ssd.write_amplification_factor_physics",
+      "answer_target": "寫入放大係數（WAF）定義為快閃記憶體介質實際寫入數據量與主機端請求寫入數據量之比值，嚴重碎片化時因有效頁反覆搬移常攀升數倍。",
+      "scope": "寫入放大效應（WAF）與數據移動損耗。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "明明只向固態硬碟存入了10GB文件，底層快閃晶圓為什麼常常被寫入了30GB？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S033: Section 2.5；Table 5",
+      "notes": "研究網 NET_TEC_05。覆核 V214（2026-11-15）通過。",
+      "origin": "wave91-tech-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-b0222b4b0152cfc4",
+          "origin": "wave91-tech-20261115",
+          "locator": "K91-S033: Section 2.5；Table 5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-033"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-034",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "當固態硬碟存滿超過百分之八十空間時，傳輸速度為什麼會突然崩潰式雪崩下跌？",
+      "mechanism_key": "ssd.high_capacity_gc_sync_stall",
+      "answer_target": "SSD容量使用率超過80%時乾淨空閒區塊耗盡，控制器被迫在寫入突發時同步觸發高耗時GC搬移與高壓擦除，引發I/O吞吐峭壁性下跌。",
+      "scope": "容量高飽和度下寫入停頓（Sync Stall）機制。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "當固態硬碟存滿超過百分之八十空間時，傳輸速度為什麼會突然崩潰式雪崩下跌？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S034: Section 2.6；Table 6",
+      "notes": "研究網 NET_TEC_06。覆核 V214（2026-11-15）通過。",
+      "origin": "wave91-tech-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-d8958443cad22dda",
+          "origin": "wave91-tech-20261115",
+          "locator": "K91-S034: Section 2.6；Table 6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-034"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-035",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "作業系統裡的 TRIM 指令，到底替固態硬碟解決了什麼生死攸關的大問題？",
+      "mechanism_key": "ssd.trim_command_os_deallocation",
+      "answer_target": "操作系統TRIM指令主動通知SSD已被刪除之邏輯區塊，使FTL直接將底層物理頁標記為無效，免除垃圾回收時無謂遷移無用數據之負擔。",
+      "scope": "檔案系統與儲存介質通訊協定聯動機制。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "作業系統裡的 TRIM 指令，到底替固態硬碟解決了什麼生死攸關的大問題？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S035: Section 2.7；Table 7",
+      "notes": "研究網 NET_TEC_07。覆核 V214（2026-11-15）通過。",
+      "origin": "wave91-tech-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-82104248e68a9bca",
+          "origin": "wave91-tech-20261115",
+          "locator": "K91-S035: Section 2.7；Table 7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-035"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-036",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "買一塊標稱 1TB 的固態硬碟，為什麼廠商總會悄悄扣留幾十GB空間不給用戶使用？",
+      "mechanism_key": "ssd.over_provisioning_gc_headroom",
+      "answer_target": "預留空間（Over-provisioning）藉由硬體保留部分物理容量對主機不可見，在極限磁碟滿載條件下提供充足GC迴旋緩衝大幅壓低WAF。",
+      "scope": "硬體超額配置容積率與擦寫損耗對沖。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "買一塊標稱 1TB 的固態硬碟，為什麼廠商總會悄悄扣留幾十GB空間不給用戶使用？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S036: Section 2.8；Table 8",
+      "notes": "研究網 NET_TEC_08。覆核 V214（2026-11-15）通過。",
+      "origin": "wave91-tech-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-5f170ecf927a6c30",
+          "origin": "wave91-tech-20261115",
+          "locator": "K91-S036: Section 2.8；Table 8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-036"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-037",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "每天頻繁寫入同一個小日誌文件，固態硬碟為什麼不會在短短幾個月內被局部擊穿報廢？",
+      "mechanism_key": "ssd.wear_leveling_endurance_protection",
+      "answer_target": "動態與靜態磨損均衡（Wear Leveling）演算法週期性將長期不變的冷數據區塊與頻繁擦寫的熱數據區塊交換，防止局部單元提早氧化擊穿老化。",
+      "scope": "冷熱數據交換與全域磨損均衡保護。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每天頻繁寫入同一個小日誌文件，固態硬碟為什麼不會在短短幾個月內被局部擊穿報廢？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S037: Section 2.9；Table 9",
+      "notes": "研究網 NET_TEC_09。覆核 V214（2026-11-15）通過。",
+      "origin": "wave91-tech-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-814898603dc54aa5",
+          "origin": "wave91-tech-20261115",
+          "locator": "K91-S037: Section 2.9；Table 9",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-037"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-038",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "只是連續讀取硬碟上的同一個遊戲文件，為什麼居然也會引發周圍數據悄悄損壞？",
+      "mechanism_key": "ssd.read_disturb_parasitic_tunneling",
+      "answer_target": "讀取干擾（Read Disturb）效應指對同一區塊特定字元線高頻率非破壞性讀取會誘發相鄰未選中單元軟隧穿微小電荷注入，需背景數據主動搬遷刷新。",
+      "scope": "讀干擾微觀電荷注入與自主糾錯巡檢。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "只是連續讀取硬碟上的同一個遊戲文件，為什麼居然也會引發周圍數據悄悄損壞？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S038: Section 2.10；Table 10",
+      "notes": "研究網 NET_TEC_10。覆核 V214（2026-11-15）通過。",
+      "origin": "wave91-tech-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-3b70d7a8f90d0e7c",
+          "origin": "wave91-tech-20261115",
+          "locator": "K91-S038: Section 2.10；Table 10",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-038"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-039",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "從 SLC、TLC 到 QLC，容量越來越大的固態硬碟為什麼物理耐磨壽命卻斷崖式縮水？",
+      "mechanism_key": "ssd.tlc_qlc_narrow_voltage_window",
+      "answer_target": "TLC與QLC在微小浮閘或電荷陷阱中細分8至16個精準電壓閾值窗口，微小漏電即引發位元錯誤，擦寫壽命因氧化層應力退化呈指數衰減。",
+      "scope": "多電位階梯閾值電壓窗口衰退動力學。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "從 SLC、TLC 到 QLC，容量越來越大的固態硬碟為什麼物理耐磨壽命卻斷崖式縮水？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S039: Section 2.11；Table 11",
+      "notes": "研究網 NET_TEC_11。覆核 V214（2026-11-15）通過。",
+      "origin": "wave91-tech-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-a8f0ac9938fdbccc",
+          "origin": "wave91-tech-20261115",
+          "locator": "K91-S039: Section 2.11；Table 11",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-039"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-040",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "拷貝大文件剛開始能飆到幾千兆每秒，為什麼拷到一半速度會突然暴跌回幾百兆？",
+      "mechanism_key": "ssd.slc_cache_exhaustion_cliff",
+      "answer_target": "SLC緩存策略將部分三維儲存單元動態配置為單比特模式吸收突發寫入，當預留SLC緩存耗盡時控制器必須退回折疊寫入造成速度斷崖跌落。",
+      "scope": "擬態SLC快取耗盡與後台折疊寫入斷崖。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "拷貝大文件剛開始能飆到幾千兆每秒，為什麼拷到一半速度會突然暴跌回幾百兆？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S040: Section 2.12；Table 12",
+      "notes": "研究網 NET_TEC_12。覆核 V214（2026-11-15）通過。",
+      "origin": "wave91-tech-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-b37ba54782ac801d",
+          "origin": "wave91-tech-20261115",
+          "locator": "K91-S040: Section 2.12；Table 12",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-040"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-041",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把存滿照片的固態硬碟拔下來放進高溫抽屜幾年不通電，裡面的數據為什麼會悄悄蒸發？",
+      "mechanism_key": "ssd.temperature_charge_leakage_retention",
+      "answer_target": "高溫顯著加速浮閘被俘獲電子熱發射越過二氧化矽勢壘逃逸，導致長時間斷電離線存放時冷數據保留期（Data retention）急劇縮短。",
+      "scope": "阿倫尼烏斯熱逃逸模型與數據保持期退化。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把存滿照片的固態硬碟拔下來放進高溫抽屜幾年不通電，裡面的數據為什麼會悄悄蒸發？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S041: Section 2.13；Table 13",
+      "notes": "研究網 NET_TEC_13。覆核 V214（2026-11-15）通過。",
+      "origin": "wave91-tech-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-a106e4b0e60f0837",
+          "origin": "wave91-tech-20261115",
+          "locator": "K91-S041: Section 2.13；Table 13",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-041"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K91-042",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "雲端數據中心正在推廣的 ZNS 新架構，為什麼敢直接把控制器裡的垃圾回收全砍掉？",
+      "mechanism_key": "ssd.zoned_namespaces_host_gc_elimination",
+      "answer_target": "ZNS（分區命名空間）新標準將區塊循序寫入責任直接轉移給主機端儲存引擎，徹底消除設備端FTL複雜映射與內部隱形垃圾回收。",
+      "scope": "主機協同分區儲存與內在垃圾回收消除。 僅陳述實驗觀測事實，不作任何商業偏見引申。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲端數據中心正在推廣的 ZNS 新架構，為什麼敢直接把控制器裡的垃圾回收全砍掉？：快閃記憶體底層半導體物理揭開了背後真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示浮閘電荷捕獲與控制器邏輯調度過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K91-S042: Section 2.14；Table 14",
+      "notes": "研究網 NET_TEC_14。覆核 V214（2026-11-15）通過。",
+      "origin": "wave91-tech-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-cf3d96b099a2df09",
+          "origin": "wave91-tech-20261115",
+          "locator": "K91-S042: Section 2.14；Table 14",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave91-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K91-042"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
     }
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 5922
+    "count": 5978
   },
   "dedup": {
     "aliases": {
@@ -260484,7 +262916,63 @@
       "K90-039": "K90-039",
       "K90-040": "K90-040",
       "K90-041": "K90-041",
-      "K90-042": "K90-042"
+      "K90-042": "K90-042",
+      "K91-001": "K91-001",
+      "K91-002": "K91-002",
+      "K91-003": "K91-003",
+      "K91-004": "K91-004",
+      "K91-005": "K91-005",
+      "K91-006": "K91-006",
+      "K91-007": "K91-007",
+      "K91-008": "K91-008",
+      "K91-009": "K91-009",
+      "K91-010": "K91-010",
+      "K91-011": "K91-011",
+      "K91-012": "K91-012",
+      "K91-013": "K91-013",
+      "K91-014": "K91-014",
+      "K91-015": "K91-015",
+      "K91-016": "K91-016",
+      "K91-017": "K91-017",
+      "K91-018": "K91-018",
+      "K91-019": "K91-019",
+      "K91-020": "K91-020",
+      "K91-021": "K91-021",
+      "K91-022": "K91-022",
+      "K91-023": "K91-023",
+      "K91-024": "K91-024",
+      "K91-025": "K91-025",
+      "K91-026": "K91-026",
+      "K91-027": "K91-027",
+      "K91-028": "K91-028",
+      "K91-043": "K91-043",
+      "K91-044": "K91-044",
+      "K91-045": "K91-045",
+      "K91-046": "K91-046",
+      "K91-047": "K91-047",
+      "K91-048": "K91-048",
+      "K91-049": "K91-049",
+      "K91-050": "K91-050",
+      "K91-051": "K91-051",
+      "K91-052": "K91-052",
+      "K91-053": "K91-053",
+      "K91-054": "K91-054",
+      "K91-055": "K91-055",
+      "K91-056": "K91-056",
+      "K91-029": "K91-029",
+      "K91-030": "K91-030",
+      "K91-031": "K91-031",
+      "K91-032": "K91-032",
+      "K91-033": "K91-033",
+      "K91-034": "K91-034",
+      "K91-035": "K91-035",
+      "K91-036": "K91-036",
+      "K91-037": "K91-037",
+      "K91-038": "K91-038",
+      "K91-039": "K91-039",
+      "K91-040": "K91-040",
+      "K91-041": "K91-041",
+      "K91-042": "K91-042"
     },
     "merges": [
       {
@@ -297409,6 +299897,20 @@
         ]
       },
       {
+        "id": "K91-010~K91-011",
+        "a": "K91-010",
+        "b": "K91-011",
+        "question_score": 0.033,
+        "answer_score": 0.094,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "歐式硬麵包送入烤箱時為什麼必須噴射大量蒸汽，表皮才不會提早烤焦變硬？",
+          "專業麵包出爐時表面那一層迷人的金黃光澤與脆皮，到底由什麼化學物質構成？"
+        ]
+      },
+      {
         "id": "P64-027~P64-028",
         "a": "P64-027",
         "b": "P64-028",
@@ -297924,6 +300426,20 @@
         "questions": [
           "有些詞能在腦中畫出樣子，為什麼可能較容易想起？",
           "一件東西天天看，為什麼還畫不出它的細節？"
+        ]
+      },
+      {
+        "id": "D2247~K91-049",
+        "a": "D2247",
+        "b": "K91-049",
+        "question_score": 0,
+        "answer_score": 0.087,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "管線進水壓力會變，減壓閥怎麼自己把出口壓力拉回來？",
+          "幾百米高的摩天大樓底層水龍頭，為什麼不會被數十個大氣壓的恐怖水流沖碎？"
         ]
       },
       {
@@ -302225,6 +304741,20 @@
         ]
       },
       {
+        "id": "K91-001~K91-004",
+        "a": "K91-001",
+        "b": "K91-004",
+        "question_score": 0,
+        "answer_score": 0.025,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "麵粉加水揉捏時，為什麼會從鬆散粉粒聚合成具有拉伸彈性的麵筋網絡？",
+          "做麵包時加少許食鹽，為什麼會讓麵糰質地變得更緊實筋道而不易鬆垮？"
+        ]
+      },
+      {
         "id": "R36001~R36002",
         "a": "R36001",
         "b": "R36002",
@@ -304469,10 +306999,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-15-pool-5533",
-    "target_count": 5533,
+    "revision": "2026-11-15-pool-5589",
+    "target_count": 5589,
     "reviewed_on": "2026-11-15",
-    "reason": "第四十輪 56 提案經四位獨立覆核代理（V208–V211）核實，全部採納入選；入選核心數提升至 5533。",
+    "reason": "第四十一輪 56 提案經四位獨立覆核代理（V212–V215）核實，全部採納入選；入選核心數提升至 5589。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -310006,7 +312536,63 @@
       "K90-053",
       "K90-054",
       "K90-055",
-      "K90-056"
+      "K90-056",
+      "K91-001",
+      "K91-002",
+      "K91-003",
+      "K91-004",
+      "K91-005",
+      "K91-006",
+      "K91-007",
+      "K91-008",
+      "K91-009",
+      "K91-010",
+      "K91-011",
+      "K91-012",
+      "K91-013",
+      "K91-014",
+      "K91-015",
+      "K91-016",
+      "K91-017",
+      "K91-018",
+      "K91-019",
+      "K91-020",
+      "K91-021",
+      "K91-022",
+      "K91-023",
+      "K91-024",
+      "K91-025",
+      "K91-026",
+      "K91-027",
+      "K91-028",
+      "K91-029",
+      "K91-030",
+      "K91-031",
+      "K91-032",
+      "K91-033",
+      "K91-034",
+      "K91-035",
+      "K91-036",
+      "K91-037",
+      "K91-038",
+      "K91-039",
+      "K91-040",
+      "K91-041",
+      "K91-042",
+      "K91-043",
+      "K91-044",
+      "K91-045",
+      "K91-046",
+      "K91-047",
+      "K91-048",
+      "K91-049",
+      "K91-050",
+      "K91-051",
+      "K91-052",
+      "K91-053",
+      "K91-054",
+      "K91-055",
+      "K91-056"
     ],
     "overflow": [
       {
