@@ -42,6 +42,7 @@ repo 是題庫與總表的原件；雲端的快照是唯讀備份，不要在雲
 | 2026-11-14 | 奇聞題庫第五輪研究與審稿原稿（追加 `curio52` 第 52 波 `ZH1–ZH4`／`R521–R524` 與完整快取封裝） | session `240faf7e` 的 scratchpad | `AI劇/奇聞檔案局/_共用/製作檔/題庫研究-session240faf7e/` | `93 files（累計涵蓋 2,493 個原始檔壓縮包與 SHA256）, 0 differences` |
 | 2026-11-14 | 原來如此題庫第五輪研究與審稿原稿（追加 `stw32` 第 32 輪 `F156–F159`／`V176–V179` 合著審計與全文快取封裝） | session `240faf7e` 的 scratchpad | `AI劇/原來如此事務所/_共用/製作檔/題庫研究-session240faf7e/` | `152 files（累計涵蓋 6,830 個原始檔壓縮包與 SHA256）, 0 differences` |
 | 2026-11-14 | 各集總表重跑同步（84 列：奇聞 63 列＋原來如此 21 列）與這份紀錄就地更新 | `catalog.py`（PR #2093） | `AI劇/奇聞檔案局/_總表/`、`AI劇/原來如此事務所/_總表/` | `gdrive mutate update` 兩處各 3 檔就地更新成功 |
+| 2026-11-15 | 奇聞題庫研究與審稿原稿（`curio53`–`curio55`：wave53–55 的 `ZI1–ZK4`／`R531–R554` 題案、覆核、請求紀錄、下載的來源原檔、工作單與整合腳本） | session `018EYo` 的 scratchpad | `AI劇/奇聞檔案局/_共用/製作檔/題庫研究-session018EYo/` | `todrive: 1642 files, 0 differences` |
 
 比上面更早的研究原稿（奇聞 `curio26` 以前、原來如此 `stw6` 以前）沒有傳過雲端：做那些的 scratchpad 已經收掉，
 只剩 repo 裡的批次檔（`batches/`）、審稿紀錄（`reviews/`）與 `SOURCES.md`。
