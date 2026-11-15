@@ -83,8 +83,14 @@ const SET = [
   [/bamboo grove|nameless grave/i, "dh-set-zhulin-fen-t1"],
   [/carpenter's workshop/i, "dh-set-mujiang-fang-t1"],
   [/threshing ground/i, "dh-set-dagu-chang-t1"],
+  // e015 r2 (live): the autumn field after the rice harvest (live picture refs-live/set-qiutian-l1); before "ploughed
+  // field" (its furrows) and "willow" (the tree on its ridge), which would take the spring field or the stream.
+  [/autumn stubble field/i, "dh-set-qiutian-t1"],
   [/spring field|muddy field|ploughed field|plowed field/i, "dh-set-chuntian-t1"],
   [/stone bridge/i, "dh-set-shiqiao-t1"],
+  // e015 r2 (live only): the shed before dawn has no CG picture; its live picture is refs-live/set-gongpeng-ye-l2
+  // (live-action/screen-test-e015.py). Before "work shed".
+  [/night work shed/i, "dh-set-gongpeng-ye-t1"],
   [/work shed|workshop|lean-to/i, "dh-set-gongpeng-t1"],
   [/kitchen/i, "dh-set-xujia-zao-t1"],
   [/dirt yard|farmhouse yard|in the yard|morning yard|courtyard|yard gate|mud wall|woodpile|wooden gate|broken gate/i, "dh-set-xujia-yuan-t1"],
