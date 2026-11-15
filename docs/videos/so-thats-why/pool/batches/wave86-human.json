@@ -1,0 +1,1680 @@
+{
+  "batch_id": "wave86-human-20261115",
+  "created_on": "2026-11-15",
+  "scope": "第三十六輪：補強入選核心與可成題長題數最少的分類，從零研究新長題：人體感官與日常行為——走路時很少盯著腳下，怎麼還踩得準？（F173／V193）；人體感官與日常行為——聲音和嘴型差多少，你才會發現對不上？（F175／V195）。動筆前先以 JATS 作者群＋Europe PMC（Crossref 可用時補查）逐對確認研究網互不合著，再由非作者覆核重抓來源、補查合著、逐卡對全文並重算分鐘。",
+  "sources": [
+    {
+      "id": "H86-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:5937949&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.1016/j.cub.2018.03.008",
+      "title": "Gaze and the Control of Foot Placement When Walking in Natural Terrain",
+      "publisher": "Current Biology 28(8):1224–1233.e5（2018）；美國德州大學奧斯汀分校知覺系統中心、紐約州羅徹斯特大學",
+      "version": "作者手稿經出版社開放（CC BY-NC-ND 4.0；PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "PMC 官方 OAI-PMH GetRecord（identifier=oai:pubmedcentral.nih.gov:5937949，metadataPrefix=pmc），Mokaair-editorial/1.0 標頭下載（F173 seq=31，HTTP 200，149300 位元組，sha256 前 16 碼 fb100a5f1e4cc316），與前一筆請求間隔 3 秒以上；在此之前 Europe PMC 全文端點兩次都回 HTTP 500（seq=5、seq=18，各 150 位元組錯誤訊息，未保留），依工作單改走 OAI-PMH，該主機本輪只請求這一次。本機解析完整 JATS XML 後逐節全讀",
+      "reading_scope": "Summary、Introduction、Results（Influence of Terrain on the Gait Cycle、Gaze Allocation、Gaze Coupling to Upcoming Footholds、Probability of Looking at Each Foothold、Path Planning、Time-Course of Gaze、Temporal versus Spatial Look-Ahead）、Discussion、STAR Methods 全部小節（受試者、器材、任務、VOR 校正、地面估計、量測誤差來源、統計）、Quantification and Statistical Analysis 表 29 列全讀；Figure 1–6 與補充 Figure S1–S7、影片未下載，數字只取正文與統計表。器材廠牌不用。",
+      "locator": "EXPERIMENTAL MODEL AND SUBJECT DETAILS（6 人，2 女 4 男，平均 26.8 歲）、Experimental Task／Protocol（德州奧斯汀市區一條溪床附近的平坦夯土步道、中等碎石步道、大石塊乾溪床三種路面，每種約 320–420 公尺）、Results: Influence of Terrain（速度 1.38、0.98、0.88 m/s）、Gaze Allocation（視線落在 4 個腿長以內地面的時間比例 58.0 ± 10%、94.3 ± 1%、96.0 ± 1%）、Probability of Looking at Each Foothold（中等路面看第 N+2 個落腳點 34.8 ± 4%、N+3 18.3 ± 3%；大石路 27.6 ± 4% 與 24.5 ± 1%，統計表第 13 列 p = 0.465 不顯著）、Gaze Coupling（峰值放大倍數 2.36、1.74、1.18）、Temporal versus Spatial Look-Ahead（平路看得較遠：2.05 公尺對 1.35 公尺；三種路面的「預看時間」都約 1.5 秒，統計表第 26–29 列皆不顯著）、Discussion（1.5 秒可能與視覺記憶衰退有關、慢下來可能是收集資訊的瓶頸，作者皆寫 may／possible）、Known sources of measurement error（IMU 漂移、平地假設）",
+      "summary": "走在石頭路上，眼睛到底看哪裡？美國德州大學的團隊讓 6 個人戴著眼動儀和全身動作感測衣，在平坦步道、碎石步道和大石塊乾溪床上來回走。平路上，他們只有大約一半的時間在看前方 4 個腿長以內的地面，而且看的不是之後要踩的位置；到了碎石和大石頭上，幾乎所有時間都在看地面，而且視線緊緊黏在「再過兩步、三步」要踩的地方。最有意思的是：不論路好不好走，眼睛看的地方都大約是「1.5 秒後會走到」的位置——路難走時走得慢，看的距離就跟著縮短。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 6 位受試者、都是年輕成人，只在同一處溪谷的三段路面上走，沒有隨機分配順序（先平路、再碎石、最後大石頭）。眼動儀取樣 30 Hz、單眼；系統把地面當成一個平面，看向凸起石頭時會把落點算遠，作者說誤差大致會互相抵銷、但會增加變異。1.5 秒可能反映視覺記憶的上限、走慢是因為收集資訊跟不上，兩者都是作者在討論段的推測（may、it is possible），不是量到的因果。圖與補充資料未下載。研究群：NET_01_Austin_Amsterdam（與 H86-S005、S012 併網、封頂 2.00；合著審計見 coauthorship_audit）。 覆核 V193（2026-11-15）：N+2／N+3 的白話順序更正；補「偶爾看 N+1」。Europe PMC 全文端點覆核時仍回 500（V193 seq=9），未重試、未改走 OAI，只以作者快取核對。",
+      "author_cache": {
+        "file": "F173/cache/PMC5937949.oai.xml",
+        "sha256_prefix": "fb100a5f1e4cc316",
+        "note": "第三十六輪 F173 本機完整 OAI-PMH 回應快取（seq=31，149300 位元組，內含完整 JATS XML），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3078928/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0019079",
+      "title": "When Is Visual Information Used to Control Locomotion When Descending a Kerb?",
+      "publisher": "PLoS ONE 6(4):e19079（2011）；英國布拉德福大學工程設計學院、健康學院、視光學院，劍橋的安格里亞魯斯金大學視覺研究單位",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點（REST fullTextXML），Mokaair-editorial/1.0 標頭下載（F173 seq=94，HTTP 200，75837 位元組，sha256 前 16 碼 5c38cddb83160a5a），本機以 python 解析完整 JATS XML 後逐節全讀（含討論、限制段、表格完整數列與圖說）",
+      "reading_scope": "Abstract、Introduction、Materials and Methods（Participants、Protocol、Data analysis、Statistical analysis）、Results、Discussion、Figure 1–4 圖說、Table 1–2 全部數列、經費與利益聲明；全文逐節讀完。護目鏡與感測器的廠牌不用。",
+      "locator": "Participants（12 位健康年輕人，6 男 6 女，22 ± 2.5 歲，視力、對比與立體視都正常）、Protocol（在高 14.6 公分、長 3 公尺的平台上走，再跨下一階到地面；起點隨機距邊緣 4 或 5 步；護目鏡下半部貼一片約 5 毫秒就能由透明變霧的液晶片，由鞋底感壓片觸發，在「倒數第二步」或「最後一步」踩地瞬間把下半視野遮住，直到落地；遮蔽與不遮蔽 1:5 隨機；每三次有一次偷偷把平台加高 15 毫米當干擾；每人 36 次）、Results（遮蔽時間 1.378 與 0.756 秒；從最後一步才遮：所有變項都不顯著，p > 0.09；從倒數第二步就遮：腳跟垂直離邊高度 53 → 61 毫米、水平 153 → 169 毫米，膝蓋下沉 97 → 92 毫米且提早，踝關節角位移變大，重心轉移時間 0.088 → 0.095 秒；邊緣前最後落腳距離 140、139、137 毫米不受影響；頭部前屈角度各條件無差別，平均約 2 度）、Discussion（作者解讀：下台階時用的是倒數第二步之前從下半視野拿到的資訊，不是當下看著腳；其他種障礙是否相同「需要未來研究確認」）",
+      "summary": "跨下一個路緣石的時候，我們有沒有在「看著腳」？英國布拉德福大學讓 12 位年輕人走在一個 14.6 公分高的平台上、再跨下地面，戴著一副下半片會瞬間變霧的護目鏡。如果在最後一步踩地時才把下半視野遮住、一路遮到落地，所有動作量測都和沒遮的時候一樣；但若提早一步、在倒數第二步就遮住，大家跨下去時腳抬得更高、離邊更遠，落地前準備得更早，像是不太確定邊緣到底在哪。研究者的解讀是：跨下那一步的資訊，是一兩步之前就從下半視野收進來的，不是當下看著腳完成的。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "12 人、單一高度（14.6 公分）的平板台階、實驗室照明；每人每種遮蔽條件只有 3 次，是探索性研究，作者明說未做多重比較校正。量的是動作的變化，沒有量眼睛看哪裡；「當下看腳沒有用到」是從「最後一步遮住沒有影響」推論來的，作者說其他障礙物是否相同仍待證實。沒有任何人絆倒，所有變化都是幾毫米到十幾毫米的細微差別。研究群：NET_13_Bradford（獨立網 1.00；其中一位作者與另一網一位作者有合著，已把那一篇剔除以保持獨立，見 H86-NA002 與 coauthorship_audit）。 覆核 V193（2026-11-15）：重抓全文位元組與 sha256 完全相同（V193 seq=1）；payoff 改為「沒有明顯改變」並標明「一兩步前收好」是研究者的推論。",
+      "author_cache": {
+        "file": "F173/cache/PMC3078928.xml",
+        "sha256_prefix": "5c38cddb83160a5a",
+        "note": "第三十六輪 F173 本機完整 JATS XML 快取（seq=94，75837 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S003",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11961907/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fspor.2025.1526576",
+      "title": "How far along the future path do individuals recognize the path for stepping on multiple footfall targets? A new evaluation method under virtual reality",
+      "publisher": "Frontiers in Sports and Active Living 7:1526576（2025）；日本東京都立大學健康福祉學院（共同作者另屬德國耶拿大學、筑波大學與一家企業的技術研究所）",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點（REST fullTextXML），Mokaair-editorial/1.0 標頭下載（F173 seq=16，HTTP 200，95005 位元組，sha256 前 16 碼 ec9aff098c359428），本機以 python 解析完整 JATS XML 後逐節全讀（含討論、限制段、表格完整數列與圖說）",
+      "reading_scope": "Abstract、Introduction、Materials and methods（Participants、Apparatus、Task and procedure、Data analysis）、Results、Discussion（含限制段）、Table 1–2 全部數列、Figure 1–3 圖說、作者貢獻與聲明；附錄 A（前導實驗）未另外下載，只讀正文對它的敘述。頭戴顯示器與動作捕捉的廠牌不用。",
+      "locator": "Participants（13 位年輕人，8 男 5 女，26.2 ± 3.7 歲）、Apparatus（4 公尺走道、9 排、每排 3 個 10 公分見方的彩色方格，排距 35 公分；虛擬實境中只顯示一雙鞋子）、Task and procedure（只能踩指定顏色；左腳或右腳踩到第 4 排時，前方第 1、2 或 3 排的三個方格同時變白；每種條件 9 次，共 36 次）、Results 與 Table 1（變白在前 1 排、前 2 排與控制組：失誤率 0%；在前 3 排：13 人中 9 人至少失誤一次（69.2%），共 15 次，無母數檢定 p < 0.001；失誤多半是踩到別的顏色，配對檢定 p = 0.008）、Table 2（失誤次數只和頭部上下擺動的幅度有關，r = −0.597，p = 0.031）、Discussion（限制：人數少、方格排法每次相同可能被記住，但後半 18 次 9 人中仍有 6 人失誤；不能排除「看過但忘了」；沒有量眼動）",
+      "summary": "走路時，我們能「提前認出」幾步以外的路？東京都立大學做了一個虛擬實境小遊戲：13 位年輕人在 4 公尺的走道上，只能踩某一種顏色的方格。走到一半時，前方某一排方格會突然全部變白，只能憑剛才的印象踩。變白的若是前面第 1 排或第 2 排，沒有人踩錯；若是第 3 排，13 人裡有 9 人至少踩錯一次，而且多半是踩到別的顏色，像是根本還沒認出來。在這個作業裡，人預先認好的路大約只有兩排遠。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 13 人、一種排法（每次相同，可能被記住），排距只有 35 公分，和平常一步的長度不同；沒有量眼睛看哪裡，只量頭部角度，「兩排」不能直接換算成一般走路的「兩步」。失誤也可能是「看過但走著走著忘了」，作者明列為無法排除。這是研究者為了日後評估長者而開發的方法，本題只用年輕受試者的結果，不談長者、跌倒或任何訓練用途。研究群：NET_07_TokyoMetropolitan（獨立網 1.00；通訊作者另有一篇與他網作者合著，該篇所屬卡片已剔除，見 H86-NA002）。 覆核 V193（2026-11-15）：重抓全文一致（V193 seq=2）；刪去兩個以 1956 年後過世者命名的檢定名；VR 實測維持 1.00（見卡片 notes）。",
+      "author_cache": {
+        "file": "F173/cache/PMC11961907.xml",
+        "sha256_prefix": "ec9aff098c359428",
+        "note": "第三十六輪 F173 本機完整 JATS XML 快取（seq=16，95005 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9813236/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fnhum.2022.1039201",
+      "title": "Probing the deployment of peripheral visual attention during obstacle-crossing planning",
+      "publisher": "Frontiers in Human Neuroscience 16:1039201（2022）；加拿大英屬哥倫比亞大學運動學院、西門菲莎大學生物醫學生理與運動學系",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點（REST fullTextXML），Mokaair-editorial/1.0 標頭下載（F173 seq=15，HTTP 200，150606 位元組，sha256 前 16 碼 4ffb68fcfecd1aac），本機以 python 解析完整 JATS XML 後逐節全讀（含討論、限制段、表格完整數列與圖說）",
+      "reading_scope": "Abstract、Introduction、Materials and Methods（Participants、Setup、Procedure 各小節、Data analysis、Statistical analysis）、Results（Gaze fixation、Obstacle-crossing behavior、方位辨識小圖（orientation discrimination））、Discussion、Table 1–2 全部數列、Figure 1–5 圖說；全文逐節讀完。頭戴顯示器與眼動儀廠牌不用。",
+      "locator": "Participants（12 人，6 男 6 女，平均 29 歲，22–37 歲）、Setup（虛擬實境中一道 5 公分高的障礙放在兩步之外，受試者必須盯著障礙上的十字）、Procedure（提示出現 300 毫秒後，在四個可能落腳點之一閃出一個斜條紋小圖 77.8 毫秒，要回答往左或往右斜；第一步落點約在注視點下方 24 度、第二步約 8 度；每人 288 次）、Results（注視偏離超過 2 度的只占 0.1%；起步平均 741 毫秒；和站著不動相比，只有「第一步要踩的位置」判斷正確率下降 7.3%（d = 1.39）、敏感度 d′ 降 0.52，第二步落點與不踩的位置都和站著時差不多，約九成正確；反應偏好沒有改變）、Discussion（作者解讀為：用眼角規劃時一次只處理最近的一步；並傾向以「規劃完成、注意力移開」而非「互相干擾」解釋；只測一種時間間隔）",
+      "summary": "眼睛盯著兩步外的障礙物時，眼角還在幫忙嗎？加拿大英屬哥倫比亞大學與西門菲莎大學讓 12 人在虛擬實境裡準備跨過一道矮障礙，眼睛必須一直盯著障礙上的十字，同時在腳要踩的位置閃出一個小斜紋，請他們說出斜向哪邊。準備起步時，只有「第一步要踩的位置」上的小斜紋變得比較難判斷，第二步的位置和不踩的位置都不受影響。研究者的解讀是：眼角一次只處理即將踩下的那一步，而且很可能已經規劃完、注意力移開了。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "12 人；只測了一種提示與測試之間的間隔（300 毫秒），「規劃已完成所以注意力移開」是作者在多種解釋中偏好的一種，原文也討論了雙重作業干擾的可能；方向是「判斷變差」，不能寫成「眼角看得更清楚」。障礙是虛擬的，受試者看得到自己腿的位置。研究群：NET_08_SFU_UBC（與 H86-S015 同一位共同作者，併網、封頂 2.00）。 覆核 V193（2026-11-15）：重抓全文一致（V193 seq=3）；量測是在站姿準備起步時；刪去以 1956 年後過世者命名的刺激名稱。",
+      "author_cache": {
+        "file": "F173/cache/PMC9813236.xml",
+        "sha256_prefix": "4ffb68fcfecd1aac",
+        "note": "第三十六輪 F173 本機完整 JATS XML 快取（seq=15，150606 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9840440/fullTextXML",
+      "canonical_url": "https://doi.org/10.1167/jov.23.1.7",
+      "title": "Where do people look when walking up and down familiar staircases?",
+      "publisher": "Journal of Vision 23(1):7（2023）；荷蘭阿姆斯特丹自由大學運動科學系",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點（REST fullTextXML），Mokaair-editorial/1.0 標頭下載（F173 seq=8，HTTP 200，86959 位元組，sha256 前 16 碼 63d0df54ada72f82），本機以 python 解析完整 JATS XML 後逐節全讀（含討論、限制段、表格完整數列與圖說）",
+      "reading_scope": "Abstract、Introduction、Methods（Participants、Setup and data collection、The steps、Data analysis、Ambiguous situations、Data reliability）、Results、Discussion（含 How reliable are our findings?）、Conclusion、Table 1 全部數列、Figure 1–6 圖說；全文逐節讀完。眼動儀廠牌不用。",
+      "locator": "Participants（30 人，17 女，18–60 歲，平均 30 歲）、Setup（在自己家裡逛一圈、實驗者不跟隨，受試者不知道研究重點是樓梯；居住中位數 11.5 個月；樓梯中位數 13 階、4–19 階；上下各 44 段樓梯）、Results（上樓平均看約 60% 的台階、下樓約 51%；下樓時有 3 人一階都沒看；上樓看的台階平均在腳下那一階之前 5 階、下樓平均 2 階、最常是 1 階，不少時候就看正要踩的那一階；上樓時第一階反而最常被跳過；接近要下樓的樓梯時，視線多半落在第一階邊緣附近，接近要上樓時多半看在第一階之上）、Discussion（實驗室研究約 70% 與 65–67%；荷蘭樓梯約 45 度、比過去研究的 30–34 度陡，作者認為下樓看得近可能和陡度有關；沒看的台階可能靠眼角或對自家樓梯的熟悉，作者兩者都列）、Data reliability（下樓時垂直方向系統誤差 2.99 ± 2.90 度，可能把視線歸到更遠一階）",
+      "summary": "走自己家的樓梯，眼睛會一階一階看嗎？荷蘭阿姆斯特丹自由大學請 30 個人在自己家裡隨意走動，他們不知道研究的重點是樓梯。結果上樓時大約只看了六成的台階，下樓時只看了一半，有 3 個人下樓時一階都沒有正眼看；上樓時，被看的台階平均在腳下那階的前 5 階，下樓時只在前 2 階、最常就是下一階。比起在實驗室裡被要求上下樓梯，大家看得更少。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "每人走的是不同的樓梯（陡度、階數、扶手都不同），多數是陡的荷蘭式樓梯；逐格人工判讀，下樓時眼動資料的系統誤差較大（作者說可能把視線歸到更遠的台階）；能分析「看幾階前」的只有 27 段上樓、23 段下樓。上下樓看的比例之間的相關，原文寫成「positive correlation (p = 0.40)」，數值意義不明，本卡不引用。沒看的台階是靠眼角還是靠熟悉，作者兩者都列為可能，沒有區分。研究群：NET_01_Austin_Amsterdam（通訊作者與 S001 的通訊作者共同署名過一篇期刊特刊導言，從嚴併網、封頂 2.00）。 覆核 V193（2026-11-15）：重抓全文一致（V193 seq=7）；「不知道研究重點」改照原文保留寫法；實驗室引用值 65%／67% 原文前後不一。",
+      "author_cache": {
+        "file": "F173/cache/PMC9840440.xml",
+        "sha256_prefix": "63d0df54ada72f82",
+        "note": "第三十六輪 F173 本機完整 JATS XML 快取（seq=8，86959 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5071366/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s00221-016-4721-6",
+      "title": "Gaze shifts during dual-tasking stair descent",
+      "publisher": "Experimental Brain Research 234(11):3233（2016）；加拿大滑鐵盧大學運動學系（第一作者另屬美國一家企業附設的安全研究所）",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點（REST fullTextXML），Mokaair-editorial/1.0 標頭下載（F173 seq=21，HTTP 200，95961 位元組，sha256 前 16 碼 f38c0c4f3ae6a1ae），本機以 python 解析完整 JATS XML 後逐節全讀（含討論、限制段、表格完整數列與圖說）",
+      "reading_scope": "Abstract、Introduction、Methods（Participants、Protocol、Data acquisition and analysis）、Results（Gaze behaviour、Locomotor behaviour、Visual task performance、Individual strategies）、Discussion、Conclusions、Table 1–2 全部數列（含 10 人逐一資料）、Figure 1–4 圖說；全文逐節讀完。眼動儀與感測器廠牌不用。",
+      "locator": "Participants（10 位健康年輕人，5 女，23.8 ± 3.0 歲）、Protocol（7 階樓梯，階高 18 公分、踏面 25.5 公分，兩側扶手，戴安全吊帶；起點距樓梯 1.2、1.4、1.6 公尺隨機，開始前用紙板擋住視線；三種條件：自由下樓、邊下樓邊做螢幕反應作業（螢幕放在樓下離地 0.5 公尺的低處，或牆上離地 3.5 公尺的高處）；每人 42 次）、Results: Gaze behaviour（往下瞄一眼的時間：自由下樓 421 ± 50 毫秒、低螢幕 250 ± 62、高螢幕 274 ± 96；低螢幕時 3 人、高螢幕時 1 人從頭到尾沒有往下看，自由下樓時 10 人都會往下看；總往下看時間 F = 87.88）、Locomotor（做作業時走得較慢，高低螢幕之間無差別；扶手：自由下樓只有 1 人 1 次，低螢幕 26% 的次數（3 人）、高螢幕 34.7%（4 人））、Table 1（反應最快在中段台階，303 毫秒）、Discussion（下半視野與記憶都可能提供資訊，作者列出兩種解釋）",
+      "summary": "下樓梯一定要低頭看台階嗎？加拿大滑鐵盧大學請 10 位年輕人下一段 7 階的樓梯，有時要一邊盯著前方的螢幕、看到字母 X 就按鍵。要做作業時，往下瞄一眼的時間從平常的 0.42 秒縮短到 0.25 秒左右，有幾個人整段樓梯都沒往下看，但大家仍安全走完，只是放慢、有些人改扶扶手。螢幕放在樓下低處（讓眼角看得到台階）或牆上高處，往下看的程度沒有差別；反應最快的時候是在樓梯中段。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "10 人、一座 7 階實驗樓梯、戴安全吊帶；結果段「有往下看的試次比例」三個數字（60.9%、1.9%、11.8%）和 Table 2 逐人資料（自由下樓時每人 100%）對不上，本卡不引用比例，只用秒數與人數。作者推測沒有低頭的人可能用眼角、扶手輪廓或對台階的記憶，三者都沒有分開驗證；做作業時變慢也可能是認知負荷本身造成的，作者自己也這樣寫。研究群：NET_06_Waterloo（獨立網 1.00）。 覆核 V193（2026-11-15）：重抓全文一致（V193 seq=8）；機構泛稱再去掉產業別。",
+      "author_cache": {
+        "file": "F173/cache/PMC5071366.xml",
+        "sha256_prefix": "f38c0c4f3ae6a1ae",
+        "note": "第三十六輪 F173 本機完整 JATS XML 快取（seq=21，95961 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S007",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12551874/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0334093",
+      "title": "On utilizing gaze behavior to predict movement transitions during natural human walking on different terrains",
+      "publisher": "PLOS One 20(10):e0334093（2025）；德國奧芬巴赫一所企業附設的研究所",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點（REST fullTextXML），Mokaair-editorial/1.0 標頭下載（F173 seq=19，HTTP 200，249569 位元組，sha256 前 16 碼 29234f4da1e74eb7），本機以 python 解析完整 JATS XML 後逐節全讀（含討論、限制段、表格完整數列與圖說）",
+      "reading_scope": "Abstract、Introduction、Materials and methods（Dataset、Participants、Experimental task、Procedure、Data preprocessing 全部小節、Data classification and forecasting）、Results（三節）、Discussion（含 Answers to research questions、Limitations and future work）、Conclusions、Table 1–4 全部數列、Figure 1–7 圖說；補充表 S1–S16 未下載。感測衣、鞋墊與眼動儀廠牌不用。",
+      "locator": "Dataset（使用一份先前公開的資料集，作者另補上眼動儀內建的頭部姿態資料）、Participants（20 人，5 女 15 男，36.8 ± 10.75 歲）、Experimental task（德國法蘭克福近郊一座火車站周邊、約 500 公尺路線，平路、25 階約 3.4 公尺高的樓梯、約 70 公尺長 6% 的坡道；繞三圈）、Table 2（26,791 個有效步）、Results（平路轉下樓梯時偏離最大：踏上前一步，頭部比平路平均低超過 30 度、眼球再低約 20 度；坡道只有 0 到約 10 度；最早顯著改變：平路轉上樓梯在前 6 步、與下樓梯有關的轉換在前 5 步、平路轉下坡在前 2 步，都是頭部角度；步長步時的改變最多只提前 2 步，比視線晚 2 到 5 步）、Data modeling（分類器在樓梯轉換的表現約 0.4–0.8、坡道約 0.2–0.6；提前 4 步預測平路轉樓梯平均 0.60）、Discussion（頭比眼更敏感）、Limitations（轉換點人工標記、未標記閃避行人等干擾、沒有分析注視點）",
+      "summary": "快走到樓梯前，身體什麼時候開始準備？德國一所企業附設的研究所分析了一份 20 個人在火車站周邊實際走路的資料：路線上有平路、樓梯和緩坡。接近要往下走的樓梯時，頭和眼睛一路往下壓，踏上去前一步，頭比平常走平路時低了 30 度以上、眼球再往下約 20 度；而這些視線的變化，在踏上樓梯前好幾步就開始了，比步伐的改變早了 2 到 5 步。走向緩坡時，視線幾乎沒變。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "用的是先前已公開的資料集（二手資料，計 0.75 條）；摘要寫「最多提前四步」、結果段最早到前六步、結論寫視線比步伐早到五步，三處寫法不同，本卡只寫「好幾步」「比步伐早 2 到 5 步」；轉換點由人工標記、閃避行人等動作沒有標記；量的是頭與眼的俯仰角，不是注視點，作者明說無法區分是用正眼還是眼角。分類器與輔具應用的部分本題不談。研究群：NET_10_Offenbach（獨立網，二手資料 0.75 條）。 覆核 V193（2026-11-15）：重抓全文一致（V193 seq=6）；資料集由第一作者與同事建立（原文參考文獻 4、36、37），屬同一研究所的舊資料再分析，維持 0.75；「前 6 步」是分析窗邊界；倫理審查單位名含企業商號，不寫。",
+      "author_cache": {
+        "file": "F173/cache/PMC12551874.xml",
+        "sha256_prefix": "29234f4da1e74eb7",
+        "note": "第三十六輪 F173 本機完整 JATS XML 快取（seq=19，249569 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S008",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13542172/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-026-57119-8",
+      "title": "Gaze and gait dynamics are shaped by terrain type during urban walking",
+      "publisher": "Scientific Reports 16:27733（2026）；比利時魯汶大學腦與認知研究組（共同作者另屬英國劍橋大學建築系）",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點（REST fullTextXML），Mokaair-editorial/1.0 標頭下載（F173 seq=17，HTTP 200，126428 位元組，sha256 前 16 碼 14393e1fe341f69e），本機以 python 解析完整 JATS XML 後逐節全讀（含討論、限制段、表格完整數列與圖說）",
+      "reading_scope": "Abstract、Introduction、Results（Gaze dynamics 各小節、Gait dynamics 各小節、Spatial relationships 各小節）、Discussion（含限制）、Methods（Participants、Sample size、Procedure、Materials、Data processing 全部小節）、Figure 1–4 圖說；補充圖 S1–S3 未下載。眼動儀、感測器與手錶廠牌不用。",
+      "locator": "Participants（20 位慣用右手的成人，11 女，26.5 ± 5.18 歲，20–37 歲）、Procedure（比利時魯汶市區預定的 1.9 公里步行路線，含平整人行道、石塊路、泥土小徑；實驗者跟在幾公尺後）、Results: Proportion of floor-directed fixation time（看地面的時間：平路 13.0%、石塊路 22.9%、泥土路 39.4%）、Floor-fixation distance（平路看地面的位置比石塊路與泥土路遠，數值只在圖中）、Head pitch（石塊路與泥土路頭往下傾，泥土路更明顯）、Walking pace（5.81、5.70、4.86 公里／小時；平路與石塊路沒有顯著差別）、Cadence（112.64、111.18、107.99 步／分）、Spatial correlations（走得越快越少看地面 r = −0.44；每步時間越長越常看地面 r = 0.59）、Discussion（泥土路段在公園內、建築與行人較少，可能也影響視線；走速可能是中介因素，未建模；行人密度未控制；以注視方向推論注意力有限）",
+      "summary": "走在城市裡，換一種路面，眼睛會跟著變嗎？比利時魯汶大學讓 20 位年輕人戴著眼動儀、腳上綁感測器，沿著 1.9 公里的市區路線走過平整人行道、石塊路和泥土小徑。看地面的時間從平路的 13%，到石塊路的 23%，再到泥土路的 39%；路越不平，頭也壓得越低、看的地面越近，步伐變短、變慢。在路線上的同一個位置，走得快的時候比較少看地面，每一步拖得越久的地方越常低頭。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "路面種類和周邊環境綁在一起：泥土路在公園裡，建築、招牌、行人都較少，作者明說無法分開「路面」與「周遭可看的東西」；走速可能是中介因素，沒有正式建模；看地面的距離靠雙眼聚散估計，遠處誤差大，作者說要謹慎解讀；路線是指定的。石塊路與平路比較的一個統計值（t = 31.26、d = 8.57）異常偏大，本卡不引用。研究群：NET_09_Leuven（獨立網 1.00）。 覆核 V193（2026-11-15）：重抓全文一致（V193 seq=11）；卡片不再寫「三者兩兩都有差別」。",
+      "author_cache": {
+        "file": "F173/cache/PMC13542172.xml",
+        "sha256_prefix": "14393e1fe341f69e",
+        "note": "第三十六輪 F173 本機完整 JATS XML 快取（seq=17，126428 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S009",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7134013/fullTextXML",
+      "canonical_url": "https://doi.org/10.7717/peerj.8838",
+      "title": "Look out: an exploratory study assessing how gaze (eye angle and head angle) and gait speed are influenced by surface complexity",
+      "publisher": "PeerJ 8:e8838（2020）；英國利物浦大學人口健康研究所、老化與慢性病研究所",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點（REST fullTextXML），Mokaair-editorial/1.0 標頭下載（F173 seq=93，HTTP 200，72067 位元組，sha256 前 16 碼 59714311a0c79629），本機以 python 解析完整 JATS XML 後逐節全讀（含討論、限制段、表格完整數列與圖說）",
+      "reading_scope": "Abstract、Introduction、Methodology（Participants、Data collection、Protocol、Data analysis）、Results、Discussion、Conclusions、Table 1–2 全部數列、Figure 1–4 圖說、作者貢獻與資料聲明；補充資料 1 未下載。感測器與眼動儀廠牌不用。JATS 作者群中的期刊學術編輯不列為作者。",
+      "locator": "Participants（11 位健康成人，7 男，24.6 ± 3.5 歲；另 9 人因感測器故障未用）、Protocol（四種路面各走 10 次：室內平板 13.2 公尺（傾角儀量的平均高低變化 1.8 度）、戶外方形鋪石 16.6 公尺（1.9 度）、戶外石塊路 15.7 公尺（2.5 度）、室內加了小木塊的凹凸板（最大高低差 27 毫米，7.5 度））、Results（只有室內凹凸板的視線明顯較低；頭部俯仰佔整體視線下壓的比例：平板 17%、鋪石 25%、石塊路 35%、凹凸板 54%；眼與頭的相關都很弱，平板 +0.13、鋪石 +0.24 顯著，凹凸板 +0.01 不顯著；速度凹凸板 1.19 m/s，其餘 1.35–1.44）、Table 2（由平均視線角與眼高估算的「看幾步前」：平板 6.12、鋪石 7.75、石塊路 6.66、凹凸板 2.00）、Discussion（作者解讀為只有必要時才動用比較費力的頭部；石塊路與平路沒有顯著差別）",
+      "summary": "路不好走時，是眼睛往下看，還是整顆頭低下去？英國利物浦大學讓 11 個人分別走過室內平地、室內凹凸板、戶外鋪石路與石塊路，同時量眼球和頭部的角度。只有在最凹凸的那條路上，整體視線才明顯往下壓、走得也最慢；而且視線往下壓的份量裡，頭部負責的比例從平地的 17% 一路升到凹凸板的 54%。換算起來，在凹凸板上大家只看約兩步前，平路上則看得遠得多。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "探索性研究、只有 11 人；「看幾步前」是用全程平均視線角與平均眼高推算的估計值，不是逐次注視點，原文正文提到它時誤寫成 Table 1；ANOVA 的 F 值與 p 值組合（F = 28.34、p = 0.003）不尋常，本卡只用描述性結果；石塊路與平路沒有顯著差別，不能說「石塊路就會低頭」。原本設計的跨越障礙因位置效果不明而未分析。研究群：NET_12_Liverpool（獨立網 1.00）。 覆核 V193（2026-11-15）：重抓全文一致（V193 seq=12）。",
+      "author_cache": {
+        "file": "F173/cache/PMC7134013.xml",
+        "sha256_prefix": "59714311a0c79629",
+        "note": "第三十六輪 F173 本機完整 JATS XML 快取（seq=93，72067 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S010",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8354071/fullTextXML",
+      "canonical_url": "https://doi.org/10.1167/jov.21.8.11",
+      "title": "Icy road ahead—rapid adjustments of gaze–gait interactions during perturbed naturalistic walking",
+      "publisher": "Journal of Vision 21(8):11（2021）；德國開姆尼茨工業大學物理研究所認知系統實驗室、人類運動科學研究所",
+      "version": "出版社開放取用版（CC BY-NC-ND 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點（REST fullTextXML），Mokaair-editorial/1.0 標頭下載（F173 seq=10，HTTP 200，171502 位元組，sha256 前 16 碼 a740f06a7095a07f），本機以 python 解析完整 JATS XML 後逐節全讀（含討論、限制段、表格完整數列與圖說）",
+      "reading_scope": "Abstract、Introduction、Method（Participants、Perturbations and the virtual environment、Procedure、Data processing and variables）、Results（Event-related gaze patterns、Effects per block、Short-term and long-term differences、Summary）、Discussion、Appendix（校正誤差）、Table 1–2 全部數列、Figure 1–11 圖說；補充影片未下載。跑步機與眼動儀廠牌不用。",
+      "locator": "Participants（兩個實驗各 22 人；實驗一 16 女 6 男，22.5 歲；實驗二 13 女 9 男，25.6 歲）、Perturbations（雙履帶跑步機，某一側履帶在腳落下時以每秒平方 15 公尺加速到 1.5 或 2.0 m/s，持續約 0.64–0.70 秒，受試者形容像在冰上滑一下；240 度環繞螢幕顯示一條路；實驗二路面上有藍色方塊提示）、Results: Event-related（滑一下之後：約 200 毫秒內頭部先短暫上揚，之後數百毫秒起明顯往下看、持續超過 1 秒，主要靠低頭，幅度隨加速強度變大；滑倒與視線變化逐次相關很弱，平均 r = 0.21、0.13、0.18、0.06）、Effects per block（有提示時眼球平均上抬 2.5 度、整體視線 2.6 度；有滑動時頭部描述性下壓 0.9 與 1.3 度）、Short-term and long-term（每一段的第一次滑倒反應和之後明顯不同，下一段同條件又重新來過，幾乎沒有保留）、Discussion（作者認為往下看是主動的、不是被滑倒動作帶著低頭；頭對身體擾動、眼對視覺提示各自反應）、Appendix（眼動校正誤差中位數 5.5 度，修正後 2.2 度）",
+      "summary": "腳下突然一滑，眼睛會怎麼反應？德國開姆尼茨工業大學讓兩組各 22 人在環繞螢幕前的跑步機上走路，偶爾讓一側履帶在腳落下時猛然加速，像在冰上滑了一下。每滑一次，頭先短暫上揚，接著在幾百毫秒內低頭往地上看、持續一秒多；滑得越猛，低頭越明顯。如果路面上畫了預告會滑的藍色方塊，眼球反而會抬起來去追那些遠處的方塊。最奇妙的是：每一段的第一次滑倒，反應都和後面不一樣，換到下一段又重新來過。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "跑步機加虛擬道路，不是真的冰面；只在前後方向擾動；眼動儀校正誤差較大（中位數 5.5 度、修正後 2.2 度），作者因此不分析對提示方塊的注視，只看相對變化。「往下看是主動決定、不是被動低頭」是作者根據時間進程與弱相關所做的推論；初始上揚「可能是反射」也是作者的推測。受試者都是年輕健康成人，本卡不談跌倒與長者。研究群：NET_03_Chemnitz（獨立網 1.00）。",
+      "author_cache": {
+        "file": "F173/cache/PMC8354071.xml",
+        "sha256_prefix": "a740f06a7095a07f",
+        "note": "第三十六輪 F173 本機完整 JATS XML 快取（seq=10，171502 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S011",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10175744/fullTextXML",
+      "canonical_url": "https://doi.org/10.1073/pnas.2211405120",
+      "title": "Humans plan for the near future to walk economically on uneven terrain",
+      "publisher": "Proceedings of the National Academy of Sciences 120(19):e2211405120（2023）；加拿大卡加利大學運動學院與生醫工程學程（實驗另經美國密西根大學倫理審查）",
+      "version": "出版社開放取用版（CC BY-NC-ND 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點（REST fullTextXML），Mokaair-editorial/1.0 標頭下載（F173 seq=23，HTTP 200，150330 位元組，sha256 前 16 碼 5c676e3ee610c968），本機以 python 解析完整 JATS XML 後逐節全讀（含討論、限制段、表格完整數列與圖說）",
+      "reading_scope": "Significance、引言、Results（Model Predictions）、Experimental Results（三節）、Discussion（含限制兩段）、Materials and Methods（Model Dynamics、Optimal Control Problem Formulation、Alternative hypotheses、Experiment）、Figure 1–7 圖說、作者貢獻與資料聲明；補充附錄 PDF 未下載。",
+      "locator": "Experiment（兩組健康成人：第一組 12 人，7 男 5 女，皆未滿 30 歲；第二組 11 人，7 男 4 女，皆未滿 30 歲；30–40 公尺走道中段用泡棉板疊出 1 到 16 階、每階高低差為 2.54 公分整數倍的不平路段；腳背慣性感測器量每步速度；只要求每次「用差不多的時間走完」，不給回饋）、Experimental Results（整體速度與時間各路面差異多在 6% 以內且不顯著；第一個上台階前一步加速 3.74%–5.70%、第一個下台階前一步減速約 2.05%；前兩步的提前調整除一種路面外皆顯著；個人與平均型態相關 0.66–0.85）、模型比較（最省力模型與人的速度起伏相關 0.35–0.67，平均 0.55；只往前規劃一兩步的模型幾乎預測不了，往前 6 到 8 步可達飽和值的 92%–93%）、Discussion（約 70% 的前進動量會延續到下一步，引自前作；作者解讀為下意識的規劃，但未量受試者的覺察；限制：預測只算中等、沒有量能量消耗、台階平整離散）、Footnotes（另一網的一位作者是本文的客座編輯，非作者）",
+      "summary": "還沒踩到不平的路，身體會先準備嗎？加拿大卡加利大學在走道中段用泡棉板疊出幾階高高低低的路面，讓兩組年輕人照平常速度走過去。結果在踏上第一個「往上」的台階前一步，大家不自覺地加快約 4% 到 6%；遇到「往下」的台階前則先放慢約 2%；走過之後再慢慢恢復。研究者用一個像倒立鐘擺的簡單走路模型算出「最省力」的速度起伏，和人實際的起伏相當一致；而且模型要往前「看」6 到 8 步，才算得出人的做法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "沒有量眼睛看哪裡，「往前看 6 到 8 步」是模型的規劃長度，不是注視距離，作者自己也說這可能只需短暫一瞥、或用眼角；台階是平整的泡棉板、高低差最多約 7.6 公分；只量速度、沒有量實際的能量消耗；模型與人的相關只算中等（0.35–0.67），複雜路面上人的起伏比模型平滑。「下意識」是作者的形容。研究群：NET_02_Calgary（獨立網 1.00；另一網的一位作者擔任本文客座編輯，不構成合著）。",
+      "author_cache": {
+        "file": "F173/cache/PMC10175744.xml",
+        "sha256_prefix": "5c676e3ee610c968",
+        "note": "第三十六輪 F173 本機完整 JATS XML 快取（seq=23，150330 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S012",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11627511/fullTextXML",
+      "canonical_url": "https://doi.org/10.7554/eLife.91243",
+      "title": "Analysis of foothold selection during locomotion using terrain reconstruction",
+      "publisher": "eLife 12:RP91243（2024）；美國德州大學奧斯汀分校知覺系統中心（共同作者另屬印第安納大學、東北大學）",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文，含審查後定稿）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點（REST fullTextXML），Mokaair-editorial/1.0 標頭下載（F173 seq=7，HTTP 200，240174 位元組，sha256 前 16 碼 83217302ae24c4d2），本機以 python 解析完整 JATS XML 後逐節全讀（含討論、限制段、表格完整數列與圖說）",
+      "reading_scope": "Abstract、Introduction、Results（Terrain reconstruction、Aligned data、Benefits、Reliability、Retinocentric depth、Walkers prefer flatter paths、Walkers choose indirect routes）、Discussion（含 Cost functions、Path planning、Conclusion）、Methods 全部小節（資料選取、受試者、器材、任務、資料處理、地形重建、神經網路、步伐與路徑模擬）、Table 1–2 全部數列、Figure 1–12 圖說；影片與審查意見未另讀。軟體與眼動儀廠牌不用。",
+      "locator": "Results 首段與 Methods: Experimental data（資料取自同一團隊先前兩項研究，加州 7 人、德州 2 人，只用大石塊路段）、Table 1（9 人，5 男 4 女，23–54 歲，腿長 81–103.5 公分，共 4,230 步）、Evaluating reliability（重建地形誤差中位數 4.5 公分、落腳點 4.0 公分）、Walkers prefer flatter paths（實際選的 5 步路段平均坡度：各人中位數 7.7°–11.8°、平均 9.5°；同一地形隨機模擬可行路徑 9.1°–19.2°、平均 14.9°；每個人實際都比模擬平，平均差 5.56°，t(8) = 7.64）、Walkers choose indirect routes（直走的路越陡，實際路線越彎；9 人都有此趨勢，逐段資料 9 人中 8 人顯著；腿越短越願意繞路，r = −0.83，p = 0.005，僅 9 人）、Discussion（坡度 10° 以下約等於 14–17 公分高低差；作者認為是學來的經驗法則，不是嚴格計算；本文沒有分析視線）",
+      "summary": "走在亂石堆裡，人怎麼挑下一腳要踩哪裡？德州大學把 9 個人過去在野外大石塊路段走路時，眼動儀上的前方攝影畫面拿來重建出立體地形，再對照每一步踩在哪裡。和電腦在同一片地形上隨機產生、同樣走得通的路線相比，每個人實際選的路都比較平：五步平均坡度約 9.5 度，隨機路線約 14.9 度。直走的路越陡，大家越願意繞一點遠路，而且腿越短的人越常繞。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "重新分析同一團隊先前收集的資料（二手資料，計 0.75 條）；只有 9 人、只用大石塊路段；腿長與繞路的相關只有 9 個點；本文沒有直接分析視線，「繞路前會先看向路線外」只是圖中觀察到的型態；作者明說這些可能是學來的經驗法則而非精確計算，也沒有量能量。原文一句把相關係數範圍誤植為「81 到 103.5 公分」，本卡不引用。研究群：NET_01_Austin_Amsterdam（與 S001 同團隊，併網、封頂 2.00）。 覆核 V193（2026-11-15）：腿長相關改寫為「腿越長，坡度與繞路的關聯越弱」。",
+      "author_cache": {
+        "file": "F173/cache/PMC11627511.xml",
+        "sha256_prefix": "83217302ae24c4d2",
+        "note": "第三十六輪 F173 本機完整 JATS XML 快取（seq=7，240174 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S013",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4458691/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fnhum.2015.00312",
+      "title": "Differences in gaze anticipation for locomotion with and without vision",
+      "publisher": "Frontiers in Human Neuroscience 9:312（2015）；法國巴黎法蘭西學院知覺與動作生理實驗室（國家科學研究中心合設）、巴黎第七大學數學研究所",
+      "version": "出版社開放取用版（CC BY；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點（REST fullTextXML），Mokaair-editorial/1.0 標頭下載（F173 seq=22，HTTP 200，140819 位元組，sha256 前 16 碼 df2954c9b91120bc），本機以 python 解析完整 JATS XML 後逐節全讀（含討論、限制段、表格完整數列與圖說）",
+      "reading_scope": "Abstract、1. Introduction、2. Materials and methods（2.1–2.13 全部小節）、3. Results（3.1–3.9）、4. Discussion（4.1–4.8）、5. Conclusion、Figure 1–10 圖說；補充資料未下載。動作捕捉與眼動儀廠牌不用。",
+      "locator": "2.1 Participants（實驗室成員 10 人，4 女 6 男，30 ± 5.2 歲，事先不知研究目的；另 2 人因未照指示被排除）、2.4 Task（照紙上看過的形狀走「蝸線」與拉長的「8 字」，地上沒有任何標記；明亮與全黑兩種條件，全黑時眼睛張開、外加不透光布罩；每種 8 次）、3.1（速度：黑暗 0.67、明亮 0.80 m/s）、3.3（以骨盆方向為準的空間超前角：視線明亮 27.53 ± 6.91°、黑暗 12.67 ± 6.05°；頭部 14.79° 與 7.67°，「幾乎減半」；10 人都如此；時間超前：視線 557 與 268.5 毫秒、頭部 264 與 129 毫秒——該段另有一句寫成「明亮時比黑暗時少」，與數值和討論段相反，卡片只用數值）、3.6（兩種條件都出現走路時的規律性眼球擺動，快相頻率 1.89 與 2.23 Hz，85% 振幅小於 14 度）、3.7（反向跳視 592 次，佔 5,093 次快相的 11.62%；8 字路線上多數發生在轉彎方向改變前 2 秒內：黑暗 62.43%、明亮 79.49%）、4.5（作者推測視線超前的功能之一是「模擬接下來的路線」，也明說不能排除其他轉向策略、超前並非走路的必要條件）",
+      "summary": "全黑裡看不到路，眼睛還會「先往彎道轉」嗎？法國巴黎法蘭西學院的研究者請 10 個人憑記憶走出蝸線和 8 字形的路線，一次在明亮的房間，一次在全黑、張著眼睛也什麼都看不到的情況下。兩種情況下，視線方向都比頭先轉、頭又比身體先轉；在全黑中這個「超前」縮小到大約一半，但沒有消失。快要從左彎改成右彎前的兩秒內，眼睛常會先往新的方向跳一下，這在黑暗中也照樣發生。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 10 人，而且都是該實驗室成員（雖然事先不知研究目的）；眼動儀 50 Hz、只量右眼；黑暗中走的路形比較不準、速度較慢，作者在附錄分析後認為速度與曲率不是超前減半的原因。原文 3.3 節一句敘述（明亮時時間超前較小）與同段數值、討論段相反，本卡只用數值。「視線在模擬未來路線」是作者提出的功能解釋之一，作者也說不能排除其他策略，且超前並不是走路的必要條件。研究群：NET_05_Paris（獨立網 1.00）。 覆核 V193（2026-11-15）：重抓全文一致（V193 seq=4）；摘要與題目把「全黑中張眼」誤寫成「閉著眼睛」，已更正；3.3 節那句寫反的敘述確認未被引用。",
+      "author_cache": {
+        "file": "F173/cache/PMC4458691.xml",
+        "sha256_prefix": "df2954c9b91120bc",
+        "note": "第三十六輪 F173 本機完整 JATS XML 快取（seq=22，140819 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S014",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11845409/fullTextXML",
+      "canonical_url": "https://doi.org/10.3758/s13414-024-02932-4",
+      "title": "The speed and phase of locomotion dictate saccade probability and simultaneous low-frequency power spectra",
+      "publisher": "Attention, Perception, & Psychophysics 87(1):245–260（2024 年線上，2025 年刊期）；澳洲雪梨大學心理學院",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點（REST fullTextXML），Mokaair-editorial/1.0 標頭下載（F173 seq=20，HTTP 200，164776 位元組，sha256 前 16 碼 ec262fe3d5f3f943），本機以 python 解析完整 JATS XML 後逐節全讀（含討論、限制段、表格完整數列與圖說）",
+      "reading_scope": "Abstract、Introduction、Methods（Participants、Apparatus、Procedure、Stimuli、Eye-movement data、Gait extraction、Cycles-per-stride、Bayesian prevalence、EEG 各節、Exclusions）、Results（全部小節）、Discussion（全部小節）、Conclusion、Figure 1–6 圖說；全文逐節讀完。腦波結果只讀不用。頭戴顯示器、眼動與腦波設備廠牌不用。",
+      "locator": "Participants 與 Exclusions（招募 37 人，資料完整 19 人，6 男，21.05 ± 3.43 歲）、Procedure（在虛擬實境中沿一條平坦紅色走道走，5 秒內走完 7 公尺（約每秒 1.4 公尺，自然速度）或 3.5 公尺（約 0.7，慢速），同時盯著眼前固定距離的十字，留意周圍快速輪播的圖片、看到重複就按鍵；圖片跟著頭移動，不需要看地面）、Results: Walking speed（慢速平均 429.9 步、每步 0.72 秒；自然速度 636.7 步、0.61 秒）、Locomotion entrains saccade onsets（眼球跳動的發生機率隨步伐起伏，最佳擬合約每一大步 2 個週期，即每一步一次：慢速 1.97、R² = 0.70；自然速度 2.06）、個人層級（每步一次的節律：慢速 19 人中 14 人、自然速度 10 人顯著；若含其他頻率，19/19 與 16/19；族群盛行率估計 0.73 與 0.51）、相位（慢速時各人相位一致，Rayleigh p = 0.003；自然速度未達顯著，p = 0.059）、Discussion（作者提到頭戴顯示器的畫面隨頭移動，可能造成視覺與前庭的衝突）",
+      "summary": "在平坦的路上、根本不用看腳下，眼睛的跳動也會跟著腳步嗎？澳洲雪梨大學讓 19 位年輕人戴著虛擬實境頭盔，在一條平坦的走道上走，眼睛盯著眼前的十字、留意周圍閃過的圖片，完全不需要看地面。結果眼球「跳一下」的機率仍然隨著腳步一起一落，大約每走一步起伏一次；慢慢走的時候最明顯，19 人中有 14 人出現這種每步一次的節律。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "37 人中只有 19 人資料完整；偵測的是固定注視時的小幅跳動，不是走路時往地面的大幅注視；圖片固定在頭盔畫面上，與真實世界不同，作者提到這可能造成視覺與前庭的衝突。原文對跳動高峰落在步伐哪個時間點，摘要（腳跟著地之後）、結果段（擺盪期、中間支撐之後）與另一句（接近落地時）寫法不一，本卡不寫高峰時點，只寫「隨每一步起伏」；自然速度時各人相位不一致（p = 0.059，未達顯著）。腦波結果本題不用。研究群：NET_04_Sydney（獨立網 1.00）。 覆核 V193（2026-11-15）：重抓全文一致（V193 seq=5）；原文同段「兩種速度相位都顯著聚集」與 p = 0.059 矛盾，以數值為準；群體層級兩種速度的節律都通過置換檢定；作者列出視覺前庭衝突可能有貢獻。",
+      "author_cache": {
+        "file": "F173/cache/PMC11845409.xml",
+        "sha256_prefix": "ec262fe3d5f3f943",
+        "note": "第三十六輪 F173 本機完整 JATS XML 快取（seq=20，164776 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S015",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11244644/fullTextXML",
+      "canonical_url": "https://doi.org/10.1167/jov.24.7.7",
+      "title": "Fork in the road: How self-efficacy related to walking across terrain influences gaze behavior and path choice",
+      "publisher": "Journal of Vision 24(7):7（2024）；加拿大西門菲莎大學生物醫學生理與運動學系、神經科學與神經技術研究所",
+      "version": "出版社開放取用版（CC BY-NC-ND 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點（REST fullTextXML），Mokaair-editorial/1.0 標頭下載（F173 seq=13，HTTP 200，142185 位元組，sha256 前 16 碼 ab607a0d0fd0cd95），本機以 python 解析完整 JATS XML 後逐節全讀（含討論、限制段、表格完整數列與圖說）",
+      "reading_scope": "Abstract、Introduction、Methods（Participants、Experimental design、Experimental protocol、Data and statistical analyses、Data availability）、Results（三節）、Discussion、Appendix Figure A1 與 Table A1–A6 全部數列、Figure 1–4 圖說；全文逐節讀完。投影機、眼動儀與繪圖軟體廠牌不用。",
+      "locator": "Participants（16 位健康成人，5 女 11 男，26 ± 3 歲）、Experimental design（在昏暗房間（1.1–3.5 勒克斯）把兩條約 2 公尺長、55 公分寬、在起點相連的「岔路」投影在地上，路面是登山步道或城市路面的照片：泥巴、樹根、石頭、坑洞、龜裂人行道、石塊路等）、Protocol（先站著看 2 秒，再走過其中一條；1 條單一路面對 3 段不同路面的 32 次、兩條都 3 段的 20 次；全部做完才請每人對每種路面「不失去平衡走過去的信心」打 1–10 分）、Results（選的那條看得較多：注視 7.8 對 3.9 次、7.5 對 4.1 次；單一路面與三種路面的注視次數 5.84 對 5.90、看的時間比例 0.34 對 0.34，沒有差別；63% 的時候反而選資訊較少的那條；77% 與 69% 的時候選平均信心較高的那條；對單一路面越沒信心，越常看另一條（R² = 0.31）；兩條路「最沒信心的那段」差距越大，越常看最後選的那條（R² = 0.51、0.48））、Discussion（大多數人沒踩在石頭、坑洞、水窪的圖上，但只從 4 與 6 人的影像確認；信心評分在實驗後收集）、Table A5–A6（平均信心：泥巴 3.0、平整人行道 9.9）",
+      "summary": "走到岔路口，眼睛會先看比較「有東西可看」的那條嗎？西門菲莎大學在地上投影兩條岔路，路面是石頭、樹根、泥巴、坑洞等照片，請 16 個人先站著看兩秒再選一條走過去。結果，大家並沒有多看路面花樣比較多、資訊比較多的那條；眼睛停留比較多的，是他們最後選、也自認比較有把握走過去的那條。一條路上只要有一段讓人沒把握（例如泥巴），大家就比較少看它、也比較少選它。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "路面是投影的照片，不是真的地形，作者刻意排除了真實的能量與平衡代價；信心分數是在全部試次後才打的一次分數，只能說兩者相關，不能說是信心「造成」視線改變；看地面的時間以停留比例計；只有在「看一段一段的花色」層級，色相的變化量與注視次數有關（R² = 0.22），作者說這只是有限的證據。研究群：NET_08_SFU_UBC（與 H86-S004 同一位作者，併網、封頂 2.00）。",
+      "author_cache": {
+        "file": "F173/cache/PMC11244644.xml",
+        "sha256_prefix": "ab607a0d0fd0cd95",
+        "note": "第三十六輪 F173 本機完整 JATS XML 快取（seq=13，142185 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S016",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13132448/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0337786",
+      "title": "The cost of dual-task walking: Cognitive demands restrict gaze behaviour and gait planning",
+      "publisher": "PLOS One 21(4):e0337786（2026）；英國艾希特大學公共衛生與運動科學系",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點（REST fullTextXML），Mokaair-editorial/1.0 標頭下載（F173 seq=25，HTTP 200，118917 位元組，sha256 前 16 碼 c04732c5cffa8d90），本機以 python 解析完整 JATS XML 後逐節全讀（含討論、限制段、表格完整數列與圖說）",
+      "reading_scope": "Abstract、Introduction、Methods（Study design、Participants、Procedure、Instruments、Data analysis、Statistical analysis）、Results（Participants、Biomechanical、Eye-tracking、Cross-steps）、Discussion（三節與 Limitations）、Conclusions、Highlights、Table 1–3 全部數列、Figure 1–3 圖說；補充表 S1–S2 未下載。JATS 作者群裡的期刊學術編輯不列為作者。器材廠牌不用。",
+      "locator": "Participants 與 Results: Participants（招募 23 位 18–23 歲大學生，眼動分析 17 人、動作分析 13 人）、Procedure（赤腳走 L 形路線，兩段各約 2.5 公尺；轉角一個藍色、第二段兩個紅色的凸起圓形目標，約高 5 公分，上面的塑膠條規定腳的方向；簡單與困難兩種排法；單純走路，或邊走邊從 185–210 間的數字開始大聲連續減 7）、Table 1（邊算邊走：全程 6.12 → 6.69 秒，速度 0.92 → 0.84 m/s，踩在藍色目標上的時間 577 → 677 毫秒）、Table 2（還沒走到藍色目標時看第一個紅色目標：注視 1.2 → 0.7 次、每次 148 → 90 毫秒；看路線以外的地方 3.43 → 6.25 次；平均跳視幅度 10.14 → 9.07 度）、困難度（對動作與看目標都沒有顯著影響；只在單純走路時，困難排法讓看路外的時間變長，305 → 404 毫秒）、交叉步（單純走路 43 次、邊算 14 次，只做描述）、Discussion（作者稱之為「盯著空氣發呆」，解釋為工作記憶與注意力的限制，屬推論；建議把看路外視為「行有餘力」的表現）",
+      "summary": "一邊走一邊心算，眼睛會跑去哪裡？英國艾希特大學請 17 位大學生赤腳走一條 L 形路線，要準確踩進幾個凸起、規定腳尖方向的圓圈裡，有時還要一邊大聲連續減 7。邊算邊走時，大家走得更慢，在還沒走到前一個圓圈之前，提前看下一個圓圈的次數和時間都少了四成左右，反而更常看向路線外面毫無關係的地方。有趣的是，不必心算、只是排法變難時，每次看路外停留的時間反而變長——研究者認為那可能是「行有餘力」。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "眼動 17 人、動作 13 人，路線很短（約 5 公尺），目標是凸起的圓圈，是實驗室裡的精準踩點作業，不代表一般散步；研究者把交叉步與跌倒風險相連的引言與結論中的「介入」展望，本卡都不轉述；「工作記憶受限所以少看前方」「看路外代表行有餘力」都是作者的解讀；交叉步只做描述統計。研究群：NET_11_Exeter（獨立網 1.00）。 覆核 V193（2026-11-15）：重抓全文一致（V193 seq=10）；摘要「也會看看路外」改為原文量到的「看路外的停留時間變長」（305 → 404 毫秒）。",
+      "author_cache": {
+        "file": "F173/cache/PMC13132448.xml",
+        "sha256_prefix": "c04732c5cffa8d90",
+        "note": "第三十六輪 F173 本機完整 JATS XML 快取（seq=25，118917 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S017",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12059004/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-025-00243-8",
+      "title": "Synchrony perception of audiovisual speech is a reliable, yet individual construct",
+      "publisher": "Scientific Reports 15:15909（2025）；美國華盛頓大學言語與聽力科學系，合作單位為美國一所兒童聽力研究醫院與范德比大學",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=6，HTTP 200，122866 位元組，sha256 前 16 碼 c54c022eacf6238f）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract、Introduction、Results（TBW shape 的群體與個人分析、Response times）、Discussion、Methods（Participants、Recruitment、Experimental protocol、Stimulus types、Temporal synchrony measure、Stimuli & noise、Data analysis）、作者貢獻與聲明全讀；Table 1–2 全讀；Fig. 1–4 只有圖說與正文敘述（群體 TBW 寬度只在圖中，不引用）；補充資料 Figure S1–S2、Table TS2 未下載。",
+      "locator": "Methods（18 人、在家用自己的電腦與內建喇叭完成；三位女性說話者的單字、無意義字與倒放字；只做「畫面先、聲音晚」0–500 毫秒 8 個落差；4 人背景人聲、目標比背景低 6 dB；每次 480 題，間隔一個月內重做一次）、Results「Individual level analysis」（兩次測驗的窗口寬度 R = 0.71、ICC = 0.82；單字刺激的窗口寬度在 17 人之間從 125 到 378 毫秒；個人之間的變異約為同一人兩次之間的 5 倍：3503.18 對 685.64）、Table 1（三種刺激之間 R = 0.82–0.87）、Discussion（重做只讓判斷更一致、窗口寬度不變）",
+      "summary": "差多少才會覺得嘴型和聲音對不上？美國華盛頓大學的團隊請 18 位年輕人在家裡，用自己的電腦看女性說單字的短片，聲音比畫面晚 0 到 500 毫秒不等，背景還有幾個人在講話，每一題只回答「同時」或「不同時」，一個月內再做一次。結果每個人「還覺得同時」的範圍差很多：單字片段裡最窄的人約 125 毫秒、最寬的人約 378 毫秒；但同一個人兩次測出來很接近（相關 0.71），人與人之間的差異大約是同一人前後差異的 5 倍。第二次答得比較快、也比較一致，但窗口本身沒有變窄。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 17 人有效資料、全是英語母語的年輕人；只測了「畫面先、聲音晚」一側，沒測聲音搶先；在家用各自的電腦與喇叭，作者承認硬體差異可能放大人與人之間的差異；群體平均的窗口寬度只在圖中，本卡不引用。背景噪音（目標比背景低 6 dB）下的結果不代表安靜時。 研究群：NET_01_VUAmsterdam_Sydney_Vanderbilt_UW（三篇併網、封頂 2.00；本篇的范德比大學作者與 H86-S025、H86-S031 的阿姆斯特丹作者另有合著，見 networks）。 覆核 V195（2026-11-15）：全文核對；分類改為人體感官與日常行為。",
+      "author_cache": {
+        "file": "F175/cache/PMC12059004.xml",
+        "sha256_prefix": "c54c022eacf6238f",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=6，122866 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S018",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4915493/fullTextXML",
+      "canonical_url": "https://doi.org/10.1111/ejn.13242",
+      "title": "Behavioural evidence for separate mechanisms of audiovisual temporal binding as a function of leading sensory modality",
+      "publisher": "European Journal of Neuroscience 43:1561（2016）；英國格拉斯哥大學神經科學與心理學研究所",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=8，HTTP 200，103918 位元組，sha256 前 16 碼 cdb816337800c163）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract、Introduction、Materials and methods（Participants、Experimental design、SJ assessment、SJ training、Apparatus、Data analysis）、Results（三個小節全部）、Discussion、利益衝突與致謝全讀；Fig. 1–5 只有圖說與正文數字。",
+      "locator": "Participants（34 人報名、30 人分析，三組各 10 人）、SJ assessment（閃光與 10 毫秒短音，聲音先或畫面先各 50–500 毫秒，共 13 種落差）、Results「Asymmetry in TBW at baseline」（聲音先時的辨別力 d′ = 1.58，畫面先時 0.98）、「Trainability」（只練畫面先的一組，畫面先的辨別力 0.83 → 1.48；練聲音先的一組兩邊都沒有進步）、Discussion（兩邊不互通，作者解讀為兩套機制）",
+      "summary": "聲音比畫面早一點，和聲音比畫面晚一點，哪個比較容易被抓到？英國格拉斯哥大學的研究者讓 30 個人判斷一個閃光和一聲短音是不是同時，兩天裡分三組做有回饋的練習。一開始，大家對「聲音先」的落差明顯比較敏感（辨別力 1.58 對 0.98）。練習之後，只有「畫面先、聲音晚」那一側變得更敏銳；專練「聲音先」的那一組不但聲音先那側沒進步，畫面先那側也毫無變化。研究者據此認為，抓「聲音搶先」和抓「聲音晚到」很可能是兩套各自獨立的機制，而不是同一把尺的兩端。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "刺激是閃光加短音，不是說話的影片；每組只有 10 人；「兩套機制」是作者由練習不互通推出的解釋，沒有直接量腦。聲音先那側不進步，作者也承認可能只是因為本來就已經很準。 研究群：NET_02_Glasgow_Munster（本篇第二作者與 H86-S024 的明斯特作者在 2021–2025 年有多篇直接合著，兩篇併網、封頂 2.00）。 覆核 V195（2026-11-15）：全文核對；分類改為人體感官與日常行為。",
+      "author_cache": {
+        "file": "F175/cache/PMC4915493.xml",
+        "sha256_prefix": "cdb816337800c163",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=8，103918 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S019",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4117430/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pcbi.1003743",
+      "title": "No, There Is No 150 ms Lead of Visual Speech on Auditory Speech, but a Range of Audiovisual Asynchronies Varying from Small Audio Lead to Large Audio Lag",
+      "publisher": "PLoS Computational Biology 10:e1003743（2014）；法國格勒諾布爾一所國家科研中心與大學合設的語言與認知實驗室",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=7，HTTP 200，106164 位元組，sha256 前 16 碼 1a74c663c83c08ec）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract、Introduction（四個小節）、Methods（Data、Analysis 兩小節）、Results（孤立音節與連續音節兩節）、Discussion（四個小節）、Concluding remarks 全讀；Figure 1–7 只有圖說與正文數字；補充資料（模型細節 Text S1 與三張補充圖）未下載，本卡不引用模型結果的數字。",
+      "locator": "Methods「Data」（一位法語說話者把 8 個音節 pa ta ka ba da ga ma na 各說 6 次，分「單獨說」與「連著說」兩種；每秒 50 格攝影、唇上塗藍色以自動描出嘴唇輪廓）、Results（單獨說的音節，嘴唇開始動比聲音早 200–400 毫秒；連著說時，閉嘴階段畫面只領先 20–40 毫秒（以音量判斷）、張嘴階段 ㄅㄆㄇ 類幾乎同步、舌根音反而是聲音先出現 20 毫秒以上）、Discussion（自然說話的落差大約從聲音先 40 毫秒到畫面先 200 毫秒；說話者在 10 公尺外，光比聲快的差距也不超過 30 毫秒）",
+      "summary": "常聽到的說法是「說話時嘴巴總比聲音早 150 毫秒」。法國格勒諾布爾的語音學家錄了一位說話者把 8 個音節各說 6 次，逐格量嘴唇開合和聲音出現的時間。單獨說一個音節時，嘴唇確實先動很久（200 到 400 毫秒），因為要先閉嘴準備；但音節一個接一個連著說，嘴唇和聲音幾乎同時變化：畫面最多只領先幾十毫秒，有些舌頭在後面發的音甚至是聲音先出來。研究者整理說，自然說話裡的落差大約從「聲音先 40 毫秒」到「畫面先 200 毫秒」都有；而光比聲音快造成的差距，說話者站在 10 公尺外也不到 30 毫秒，解釋不了人對「聲音晚到」寬容得多。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有一位說話者、8 個音節、每個 6 次，屬於示範性的量測；攝影每秒 50 格，嘴唇快速張開的時間點精度約 10 毫秒。「自然說話的落差範圍」與「人的容忍窗口反映了說話本身的統計」是作者綜合文獻的推論，不是本篇直接量到。10 公尺、30 毫秒是作者以聲速推算的說明。以作者自錄資料為主，計 1.00（若覆核認為屬示範性資料可折為 0.75）。 研究群：NET_03_Grenoble（與其他各網互不合著）。 覆核 V195（2026-11-15）：改計 0.75（示範性的一位說話者資料加文獻綜合與玩具模型）；另記：本篇的學術編輯是 H86-S021 第一作者，編輯不是作者，依規則不併網。",
+      "author_cache": {
+        "file": "F175/cache/PMC4117430.xml",
+        "sha256_prefix": "1a74c663c83c08ec",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=7，106164 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S020",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5399466/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep46413",
+      "title": "Sight and sound persistently out of synch: stable individual differences in audiovisual synchronisation revealed by implicit measures of lip-voice integration",
+      "publisher": "Scientific Reports 7:46413（2017）；英國倫敦城市大學心理系，合作者分屬薩塞克斯大學、密德薩斯大學與倫敦大學伯貝克學院",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=9，HTTP 200，122689 位元組，sha256 前 16 碼 572b9d9ac5a1cae6）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract 與引言段、Methods（Participants、Apparatus and stimuli、Design、Procedure、Analysis）、Results（Dot detection、Group statistics、Within- and between-task correlations、Benefit of desynchronising speech）、Discussion、作者貢獻全讀；Fig. 1–4 只有圖說與正文數字；補充資料未下載。",
+      "locator": "Methods（36 人，最後 33 人分析；說話嘴部影片，聲音從早 500 毫秒到晚 500 毫秒共 9 級；兩種作業：錯配音節的錯覺、被處理得模糊的單字辨認）、Results「Group statistics」（錯覺最強時平均聲音晚 91 毫秒，模糊單字辨認最好時平均聲音晚 113 毫秒）、「Within- and between-task correlations」（同一作業重測：當天 r = 0.62、隔一週 r = 0.44；兩種作業之間 r ≤ 0.26、不顯著）、「Benefit」（模糊單字辨認在個人最佳落差下比完全同步平均多對 12.02 個百分點）、Discussion（1 公尺距離光聲時差約 3 毫秒）",
+      "summary": "倫敦城市大學的研究者沒有問「你覺得同不同時」，而是看「聲音和嘴型差多少時，人最能把兩者合在一起用」。33 位年輕人看說話的嘴部影片，聲音從早半秒到晚半秒共九種落差，一種作業是聽被處理得模糊的單字、一種是嘴型與聲音故意配錯時會不會聽成第三個音。平均來說，兩種作業的最佳點都落在「聲音晚到」約 90 到 110 毫秒，而不是完全同步；每個人的最佳點差很多，同一作業隔一週重測仍相關（r = 0.44），但同一個人在兩種作業的最佳點彼此不相關。研究者指出，1 公尺距離光比聲快只差約 3 毫秒，遠小於這些數字。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用單字與音節、而且每一題的落差都在變，作者明說還需要用句子和真實對話驗證；有 3 人因最佳點超過 400 毫秒被排除。「最佳落差下多對 12 個百分點」是從九個落差中挑最高點和同步比，作者以重抽樣與相關分析支持它不是隨機高點，但本卡只當作「最佳點不在零」的佐證，不寫成可以靠延遲聲音改善的做法（作者文中提到的應用一律不轉述）。歷史上天文學家的個人誤差故事是引言背景，不用。 研究群：NET_04_CityLondon（與其他各網互不合著）。 覆核 V195（2026-11-15）：全文核對；分類改為人體感官與日常行為。",
+      "author_cache": {
+        "file": "F175/cache/PMC5399466.xml",
+        "sha256_prefix": "572b9d9ac5a1cae6",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=9，122689 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S021",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3461522/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fnint.2012.00071",
+      "title": "Assessing the effect of physical differences in the articulation of consonants and vowels on audiovisual temporal perception",
+      "publisher": "Frontiers in Integrative Neuroscience 6:71（2012）；希臘雅典一所認知系統研究所與雅典國立技術大學，實驗在英國牛津大學實驗心理系進行",
+      "version": "出版社開放取用版（Frontiers 開放取用；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=23，HTTP 200，155137 位元組，sha256 前 16 碼 90a0965c82dd506f）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract、Introduction、Experiments 1–3 的 Materials and methods（Participants、Apparatus、Design、Procedure、Analysis、訊號顯著性分析）、Results and discussion（1A、1B、1C、2A、2B、2C、3 七個小節）、General discussion 全讀；Table 1 全讀；Figure 1–9 只有圖說與正文數字。 覆核 V195（2026-11-15）：作者自述本篇篇幅長、分幾段讀完；覆核另讀 1A–3 各節與 General discussion，卡片數字全部在原文找到。",
+      "locator": "Apparatus（三位英國說話者的子音與母音特寫影片，聲音與畫面從同一處播放）、Design（聲音與畫面前後差 0、66、133、200、300 毫秒，判斷哪一個先出現）、Experiment 1A（14 人：雙唇音的主觀同時點是聲音先 3 毫秒、與 0 無顯著差；舌尖音與舌根音要畫面先 31 與 35 毫秒）、1C（13 人：雙唇鼻音能分辨先後的最小差 51 毫秒，舌尖、舌根鼻音 60 與 64 毫秒）、Experiment 3（11 人：圓唇母音 73 毫秒、不圓唇 89 毫秒）、General discussion",
+      "summary": "同樣對不上，為什麼有些字特別容易穿幫？雅典與牛津的研究團隊讓受試者看三位說話者念子音和母音的特寫影片，聲音與畫面前後錯開幾十到三百毫秒，判斷哪一個先出現。嘴唇要閉起來的音（像 b、p、m）最容易抓：鼻音裡，雙唇音只要差約 51 毫秒就分得出先後，舌頭在嘴裡面動的舌尖、舌根音要 60 到 64 毫秒；嘴唇圓起來的母音也比不圓唇的好抓（73 對 89 毫秒）。而且越看得見的音，越不需要畫面先跑；看不太見的舌頭音，要畫面先 30 多毫秒才覺得剛好同時。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "每個小實驗只有 11 到 14 人，部分差異未達顯著（例如塞音的先後辨別力差異 p = 0.15，只能說數字上較小）；判斷「哪個先」的作業和判斷「同不同時」不完全相同；作者自承影片同步的製作方式不如後來的方法精確。訊號顯著性分析是相關性的比對，「看得越清楚越不需要畫面先」是作者的解讀。 研究群：NET_05_Athens_Barcelona_Tokyo（本篇作者與 H86-S028 作者在 2005–2008 年有多篇直接合著；本篇第一作者與 H86-S030 第二作者於 2021 年共同署名一篇論文；三篇併網、封頂 2.00）。 覆核 V195（2026-11-15）：全文核對；分類改為人體感官與日常行為。",
+      "author_cache": {
+        "file": "F175/cache/PMC3461522.xml",
+        "sha256_prefix": "90a0965c82dd506f",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=23，155137 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S022",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3826594/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fpsyg.2013.00798",
+      "title": "Causal inference of asynchronous audiovisual speech",
+      "publisher": "Frontiers in Psychology 4:798（2013）；美國德州大學休士頓醫學院與貝勒醫學院",
+      "version": "出版社開放取用版（Frontiers 開放取用；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=21，HTTP 200，105036 位元組，sha256 前 16 碼 73be5e6f899da5e8）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract、Introduction、模型說明一節、Materials and methods（Behavioral testing、Stimuli、Experimental design、Model parameters、參考系、Model fitting、Model derivation）、Results（實驗 1 的四種刺激、整體比較、參數解讀；實驗 2）、Discussion（三個小節）、Conclusion 全讀；Figure 1–6 只有圖說與正文數字。",
+      "locator": "Behavioral testing（39 人，實驗 1 16 人、實驗 2 有效 21 人；單字影片，聲音從早 300 到晚 500 毫秒共 15 級）、Results「Visual reliable, high visual intelligibility」（畫面先 67 到 133 毫秒時九成以上判為同時）、「Visual blurred」（畫面糊掉後，從 0 到畫面先 267 毫秒都高比例判為同時，判斷曲線變寬、更偏向畫面先）、「Low visual intelligibility」（嘴型不明顯的字，平台變成聲音先 67 到畫面先 133 毫秒）、「Interpreting parameters」（個人之間的感覺雜訊 70–300 毫秒，遠大於刺激操弄造成的約 30 毫秒）",
+      "summary": "畫面糊糊的影片，嘴型和聲音差一點會不會比較不容易發現？美國休士頓的團隊讓大學生看單字影片，聲音比畫面早 300 到晚 500 毫秒共十五種落差，有的影片清楚、有的被刻意模糊，有的字嘴型明顯、有的不明顯。清楚的嘴型明顯的字，只有畫面先 67 到 133 毫秒時九成以上的人說同時；畫面一糊，從完全對齊一直到畫面先 267 毫秒，大家都還說同時，能「被放過」的範圍變寬、而且主要往聲音晚到那一側延伸。研究者用一個「這兩個訊號像不像同一個人發出的」推論模型來解釋：看得越不清楚，對時間的估計越不準，就越傾向相信它們是同一件事。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "以模型比較為主題，但兩個實驗都是新收的行為資料，計 1.00；模型的優劣比較（BIC）本卡不引用。刺激只有 8 個單字、取自前人錄製的影片；模糊是用影像濾鏡做的，不等同於串流畫質不好；「看不清就更傾向相信是同一件事」是模型的解讀。實驗 2 每人每種刺激只看 1 次。 研究群：NET_06_Houston（Europe PMC 與 Crossref 查詢中一筆同姓縮寫的閱讀研究論文經全名核對為不同人，見 coauthorship_audit）。 覆核 V195（2026-11-15）：改計 0.75（以建模為主）；模糊後 0 到 +267 毫秒的平台原文只寫「high synchrony values」，不是 ≥ 0.90。",
+      "author_cache": {
+        "file": "F175/cache/PMC3826594.xml",
+        "sha256_prefix": "73be5e6f899da5e8",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=21，105036 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S023",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11543760/fullTextXML",
+      "canonical_url": "https://doi.org/10.3758/s13423-024-02478-4",
+      "title": "Audiovisual simultaneity windows reflect temporal sensory uncertainty",
+      "publisher": "Psychonomic Bulletin & Review 31:2170（2024）；美國塔夫茨大學心理系",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=10，HTTP 200，127968 位元組，sha256 前 16 碼 3199f16d5b17d9dc）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract、Introduction、Methods（Participants、Apparatus and stimuli、Procedure、Analysis）、Results、Discussion 全讀；Fig. 1–4 只有圖說與正文數字；線上補充資料（模擬檢定力、指數模型）未下載。",
+      "locator": "Participants（兩個實驗各 20 人）、Apparatus（牆上藏一顆白光燈與一個小喇叭，同時在牆上投影城市街道步行、森林步行或單調實驗室畫面與聲音；目標刺激前後差 0 到 300 毫秒）、Analysis（用「兩個訊號各有誤差」的模型估每人每個環境的時間不確定度與判斷界線）、Results（不確定度顯著預測判斷界線：實驗 1 χ2 = 14.57、實驗 2 χ2 = 15.88，皆 p < 0.001；環境本身對全體沒有一致的影響；個人層次 20 人中有 14 人與 8 人受環境影響）、Discussion",
+      "summary": "同一個人，換了環境，「還算同時」的範圍會不會跟著變？美國塔夫茨大學讓 40 個人坐在投影牆前，牆上播著走過城市街頭、走過森林或是一片單調的畫面與聲音，同時牆中央藏著的小燈和小喇叭不斷送出一閃一響，請他們判斷是不是同時。研究者用模型估出每個人在每個環境裡「對時間有多不確定」，發現這個不確定度可以預測他放寬到多少才說「不同時」：當下越不確定，就放得越寬。至於哪個環境讓誰比較不確定，因人而異，全體沒有一致的方向。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "刺激是閃光與短音，不是說話影片；不確定度與判斷界線都是由模型從同一批判斷估出來的，兩者的關係依賴模型假設（作者另以指數分佈模型重做，結論相同，但該部分在補充資料中未讀）。環境沒有一致效果，不能寫成「熱鬧的地方比較容易放過」。作者也說無法確定受試者的做法是否「最佳」。 研究群：NET_07_Tufts（與其他各網互不合著）。 覆核 V195（2026-11-15）：全文核對；分類改為人體感官與日常行為。",
+      "author_cache": {
+        "file": "F175/cache/PMC11543760.xml",
+        "sha256_prefix": "3199f16d5b17d9dc",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=10，127968 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S024",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8298114/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0253130",
+      "title": "Surmising synchrony of sound and sight: Factors explaining variance of audiovisual integration in hurdling, tap dancing and drumming",
+      "publisher": "PLoS ONE 16:e0253130（2021）；德國明斯特大學心理系、運動科學研究所與腦磁研究所",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=22，HTTP 200，256736 位元組，sha256 前 16 碼 1a341294ad0b1713）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract、Introduction、Study 1（Participants、Stimuli、聲音特徵擷取、動作量估計、Procedure、Design、Results、Interim discussion）、Study 2（Participants、Stimuli、Procedure、Design、Results）、General discussion、Limitations、Conclusions、補充資料說明全讀；Fig 1–6 只有圖說與正文數字；補充影片未下載。",
+      "locator": "Study 1（22 人；跨欄與踢踏舞的光點動作影片配原聲，聲音早或晚 120–400 毫秒）、Results（畫面先時判為同時 59.2%，聲音先時 33.7%；踢踏舞 58.9%、跨欄 34.0%；跨欄在 400 毫秒時兩側都只剩 7.7% 與 6.4%）、Study 2（31 人；專業鼓手錄製四種鼓聲：每秒事件多或少、輕重分明或平均）、Results（每秒事件多時判為同時 69.8%，事件少時 39.9%；輕重分明 57.4%、平均 52.3%）、General discussion（事件密到兩拍間隔接近落差時，錯開的聲音會剛好落在另一個動作上）",
+      "summary": "同樣差 300 毫秒，為什麼有些影片看得出來、有些看不出來？德國明斯特大學把跨欄、踢踏舞與打鼓錄成只剩關節光點的動作影片，配上原本的腳步聲或鼓聲，再把聲音往前或往後挪。跨欄的腳步稀稀落落，差到 400 毫秒時幾乎沒人說同時；踢踏舞腳步又密又碎，同樣的落差還常被當成同步。第二個實驗請鼓手專門打出「每秒幾下」不同的節奏：事件密的版本，有七成的時候被判為同時，事件疏的只有四成。研究者解釋，聲音一下接一下時，往後挪的那一聲很容易剛好疊在下一個動作上，眼睛和耳朵就找不到破綻。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "光點影片不是真人影像；鼓聲只有一位鼓手、四種節奏各四段；Study 1 的事件密度與節奏是事後分析，Study 2 才直接操弄。「預期讓人過度相信同步」是作者的推測。每秒事件數只有約 2.4 與 3.2 兩級，不能外推到更快的節奏。 研究群：NET_02_Glasgow_Munster（本篇第三作者與 H86-S018 第二作者有多篇直接合著，併網、封頂 2.00）。 覆核 V195（2026-11-15）：全文核對；分類改為人體感官與日常行為。",
+      "author_cache": {
+        "file": "F175/cache/PMC8298114.xml",
+        "sha256_prefix": "1a341294ad0b1713",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=22，256736 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S025",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4600976/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep14526",
+      "title": "Audiovisual temporal recalibration occurs independently at two different time scales",
+      "publisher": "Scientific Reports 5:14526（2015）；澳洲雪梨大學心理學院與西雪梨大學",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=11，HTTP 200，64965 位元組，sha256 前 16 碼 512db17a4ae57a92）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "摘要與引言、Experiment、Methods（Participants、Stimuli and apparatus、Procedure and design、Analyses）、Results（PSS、Bandwidth and amplitude）、General Discussion、致謝與作者貢獻全讀；Figure 1–3 只有圖說與正文數字。",
+      "locator": "Methods（10 人；先連續 3 分鐘左右看 235 組「聲音固定先或後 200 毫秒」的閃光與短音，再接 98 題同時判斷）、Results「PSS」（上一題聲音先時，這一題的主觀同時點為 9 毫秒；上一題畫面先時為 23 毫秒；長時間適應的效果在結束後約 52 秒內顯著（多重比較校正後），之後消失）、General Discussion（兩種調整互不干擾、可以相加）",
+      "summary": "一直看一段聲音慢半拍的影片，會不會看著看著就不覺得慢了？澳洲雪梨的研究者先讓 10 個人連續看 3 分鐘「聲音固定晚 200 毫秒」或「固定早 200 毫秒」的閃光與短音，再立刻做同時判斷。剛看完的那一分鐘內，大家「覺得剛好同時」的點明顯往剛才的方向挪，約 52 秒後這個效果就消失了。更快的一種調整則每一題都在發生：只要上一題是聲音先，這一題的同時點就比上一題是畫面先時少了十幾毫秒（9 對 23 毫秒），而且兩種調整各做各的、可以疊在一起。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 10 人；刺激是閃光與短音；主觀同時點的變化以群體平均報告。兩種調整是否來自不同機制，作者明說目前分不出來。不寫成「看久了就會習慣」的使用建議。 研究群：NET_01_VUAmsterdam_Sydney_Vanderbilt_UW（第一作者亦為 H86-S031 通訊作者，併網、封頂 2.00）。 覆核 V195（2026-11-15）：全文核對；分類改為人體感官與日常行為。",
+      "author_cache": {
+        "file": "F175/cache/PMC4600976.xml",
+        "sha256_prefix": "512db17a4ae57a92",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=11，64965 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S026",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7607801/fullTextXML",
+      "canonical_url": "https://doi.org/10.1177/2041669520966614",
+      "title": "Rapid Temporal Recalibration to Audiovisual Asynchrony Occurs Across the Difference in Neural Processing Speed Based on Spatial Frequency",
+      "publisher": "i-Perception 11（2020）；日本同志社大學心理學系",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=14，HTTP 200，70499 位元組，sha256 前 16 碼 6de280cab58f9149）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract 與引言、Experiment 1 與 2（Participants、Apparatus、Stimuli、Procedure、Results）、General Discussion、經費與利益聲明全讀；Figure 1–5 只有圖說與正文數字（調整幅度只在圖中，本卡不引用數值）。",
+      "locator": "Experiment 1（33 人、31 人分析；粗條紋與細條紋兩種圖案隨機配短音，前後差 0 到 510 毫秒）、Results（上一題的落差顯著影響這一題的主觀同時點，F(8, 240) = 4.58、p < 0.001；粗細條紋之間、上一題與這一題圖案相同或不同之間，調整幅度都沒有差別，F = 0.14、p = 0.71）、Experiment 2（32 人、28 人分析；整段只用一種圖案，結果相同）、General Discussion（作者推測這種逐題調整主要發生在判斷標準層次）",
+      "summary": "上一秒看到的落差，會不會只影響「長得一樣」的下一個畫面？日本同志社大學用粗條紋和細條紋兩種圖案配上短音，請 59 位有效受試者判斷是否同時。粗條紋的訊號在腦中跑得比較快，細條紋慢一些，這點也在反應時間上重現了。可是不論這一題和上一題的圖案一樣或不一樣，上一題是聲音先還是畫面先，都同樣把這一題「覺得同時」的點往那個方向拉。研究者認為，這種一題接一題的調整，看的是聲音和畫面之間的時間關係，而不是畫面長什麼樣子。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "刺激是條紋圖案與短音；調整幅度只在圖中，本卡不寫毫秒數；「發生在判斷標準層次」是作者的推測。單一作者研究。 研究群：NET_11_Doshisha（與其他各網互不合著；Europe PMC 查詢中同姓縮寫的醫學論文皆為不同人）。 覆核 V195（2026-11-15）：全文核對；分類改為人體感官與日常行為。",
+      "author_cache": {
+        "file": "F175/cache/PMC7607801.xml",
+        "sha256_prefix": "6de280cab58f9149",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=14，70499 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S027",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9468170/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-022-19665-9",
+      "title": "Musical training refines audiovisual integration but does not influence temporal recalibration",
+      "publisher": "Scientific Reports 12:15292（2022）；澳洲昆士蘭科技大學心理與諮商學院",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=15，HTTP 200，115946 位元組，sha256 前 16 碼 fe08b48bbdeda2dc）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract、Introduction、Methods（Participants、Stimuli and apparatus、Design and procedure、The observer model、Analysis）、Results（Participant characteristics、Sensory noise、Cumulative and rapid recalibration、PSS）、Discussion、作者貢獻與資料聲明全讀；Figure 1–4 只有圖說與正文數字；補充表 S1、補充圖 S1–S2 未下載。",
+      "locator": "Participants（20 位學樂器 6 年以上的人、18 位幾乎沒學過的人）、Design（閃光與短音前後差 0 到 400 毫秒；每段先看約 2 分鐘固定「聲音先或畫面先 200 毫秒」的配對）、Results「Sensory noise」（學樂器的人雜訊小 39.85 毫秒）、「Cumulative and rapid recalibration」（學樂器的人左右判斷界線分別窄 76.53 與 90.27 毫秒；長時間調整只在聲音先時出現：主觀同時點挪 28.59 毫秒，畫面先時 7.13 毫秒不顯著；逐題調整 34.30 毫秒；兩組調整幅度沒有差別）",
+      "summary": "學樂器的人比較會抓聲音和畫面對不上，那他們會不會比較不容易被「帶著走」？澳洲昆士蘭科技大學比較了 20 位學樂器六年以上的人和 18 位幾乎沒學過的人。學樂器的人「還算同時」的範圍窄得多，兩側界線各收窄 70 到 90 毫秒，判斷也比較不受雜訊干擾。可是看了幾分鐘固定落差之後，兩組被拉動的幅度一樣；上一題的方向對下一題的影響（約 34 毫秒）也一樣。另一個意外：這個實驗裡，只有「聲音先」的落差看久了會讓人調整，「畫面先」的沒有可靠效果。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "刺激是閃光與短音；學樂器的人以自述年資分組，大多 6 到 12 年，無法細分；作者沒有事先做樣本數估算，但交互作用的效果量極小。「長時間調整只在聲音先時出現」與 H86-S028 方向相反（落差 200 對 706 毫秒、作業不同），作者自己也說這點出乎意料，稿中要並陳。不寫成「學音樂可以讓人更敏銳」的建議。 研究群：NET_08_QUT（Europe PMC 查詢中同姓縮寫的醫學論文皆為不同人，見 coauthorship_audit）。 覆核 V195（2026-11-15）：全文核對；分類改為人體感官與日常行為。",
+      "author_cache": {
+        "file": "F175/cache/PMC9468170.xml",
+        "sha256_prefix": "fe08b48bbdeda2dc",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=15，115946 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S028",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3877269/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0084278",
+      "title": "Realigning Thunder and Lightning: Temporal Adaptation to Spatiotemporally Distant Events",
+      "publisher": "PLoS ONE 8:e84278（2013）；西班牙巴塞隆納一所兒童醫院附設研究基金會與巴塞隆納大學腦與認知研究所",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=16，HTTP 200，77104 位元組，sha256 前 16 碼 f20a4f1c7de54ad3）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract、Introduction、Ethics Statement、Experiment 1–3 的 Materials and methods 與 Results and Discussion、General Discussion、Conclusions、致謝與經費聲明全讀；Figure 1–5 只有圖說與正文數字。",
+      "locator": "Experiment 1（16 人；3 分鐘反覆看「紅點先、706 毫秒後才響」或反過來的一閃一響；另 5 人預試確認 706 毫秒無論看多久都不會覺得同時，220 毫秒則會）、Results（只有畫面先的一組，之後的主觀同時點往畫面先挪 23 毫秒；聲音先的一組沒有顯著變化）、Experiment 2（26 人；光和聲來自明顯不同位置，畫面先組挪 37 毫秒）、Experiment 3（42 人；改判斷先後，畫面先組挪 14 毫秒，21 人中 16 人方向一致）",
+      "summary": "先看到閃電、隔一下才聽到雷，腦子會不會把這種「明顯對不上」的也調過來？巴塞隆納的研究者讓受試者連看 3 分鐘：一個紅點閃過，706 毫秒後才響一聲，落差大到無論看多久都不會覺得同時。看完之後再做同時判斷，結果只有「畫面先、聲音後」的那一組，主觀同時點往畫面先的方向挪了 23 毫秒；反過來「聲音先、畫面後」的那一組，沒有可靠的變化。就算把燈和喇叭放在完全不同的位置，畫面先的一組照樣挪了 37 毫秒；改用判斷先後的作業也一樣（14 毫秒）。研究者認為，這和日常裡遠方的事件總是光先到、聲後到的經驗有關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "「和遠方事件的經驗有關」是作者的解讀；刺激是紅點與短音；三個實驗的組別各 8 到 21 人。注意與 H86-S027 的結果方向相反（該研究的長時間調整只在聲音先時出現，落差是 200 毫秒），稿中必須並陳，不能寫成定論。 研究群：NET_05_Athens_Barcelona_Tokyo（與 H86-S021 作者有直接合著，併網、封頂 2.00）。 覆核 V195（2026-11-15）：全文核對；分類改為人體感官與日常行為。",
+      "author_cache": {
+        "file": "F175/cache/PMC3877269.xml",
+        "sha256_prefix": "f20a4f1c7de54ad3",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=16，77104 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S029",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3324684/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s00221-012-3038-3",
+      "title": "Audiovisual time perception is spatially specific",
+      "publisher": "Experimental Brain Research 218:477（2012）；英國布拉德福大學視覺科學系，合作者屬諾丁漢大學",
+      "version": "出版社開放取用版（CC BY；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=17，HTTP 200，76926 位元組，sha256 前 16 碼 0c0b632a98b30048）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract、Introduction、Methods（Observers、Stimuli、Procedures、Adaptation phase、Test phase）、Results、Discussion、致謝全讀；Fig. 1–4 只有圖說與正文敘述（各條件的後效大小只在圖中，本卡不引用數值）。",
+      "locator": "Methods（6 位觀察者，其中 4 位是作者；左右各 10 度的位置同時適應相反的 120 毫秒落差，聲音以各人量過的耳朵頻率特性做出方位感）、Results（兩個位置各自往自己被適應的方向偏，彼此不抵消；改成以音高配條紋粗細而位置相同時，相反的兩種落差就無法同時適應，後效與零沒有顯著差異）、Discussion",
+      "summary": "同一時間，左邊一個人說話慢半拍、右邊一個人搶半拍，腦子能分開調嗎？英國布拉德福大學的研究者讓觀察者同時面對左右兩個位置：左邊固定聲音先、右邊固定畫面先（或反過來），每個位置都有自己方位的聲音。看完之後，左右兩邊各自往自己剛才的方向調整，沒有互相抵消。但如果兩組閃光與聲音放在同一個位置，只靠「高音配細條紋、低音配粗條紋」來區分，相反的兩種落差就調不起來了。研究者認為，負責對時間的機制和空間位置綁在一起。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 6 位觀察者，其中 4 位是作者本人；後效的數值只在圖中，本卡只講方向與有無；聲音用耳機加方位處理播放。「機制綁在位置上」是作者的解讀。 研究群：NET_09_Bradford_Nottingham（與其他各網互不合著）。 覆核 V195（2026-11-15）：全文核對；分類改為人體感官與日常行為。",
+      "author_cache": {
+        "file": "F175/cache/PMC3324684.xml",
+        "sha256_prefix": "0c0b632a98b30048",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=17，76926 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S030",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9734665/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-022-25614-3",
+      "title": "Cross-modal correspondence between auditory pitch and visual elevation modulates audiovisual temporal recalibration",
+      "publisher": "Scientific Reports 12:21308（2022）；日本東京大學人文社會系研究科心理學研究室",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=25，HTTP 200，105801 位元組，sha256 前 16 碼 f22ed90cc19c9e21）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract、Introduction、Experiment 1 與 2 的 Methods（Participants、Apparatus、Stimuli、Design and procedures、Data analysis）與 Results and discussion、General discussion（Possible descriptive mechanisms、Functional significance、Conclusion）、作者貢獻與資料聲明全讀；Figure 1–4 只有圖說與正文數字；補充資料未下載。",
+      "locator": "Experiment 1（20 人；上方或下方的圓與高音或低音交替出現，間隔都是 200 毫秒，唯一差別是「高音配上方」這一對裡誰先）、Results（之後判斷同時，視覺先組的主觀同時點 19.1 毫秒、聽覺先組 5.6 毫秒，差 13.5 毫秒，p = 0.014）、Experiment 2（32 人、31 人分析；高音配上方的測試對差 11.4 毫秒、p = 0.016；高音配下方的測試對沒有顯著差異）、General discussion（沒有測基準線，無法分辨是哪一邊被調）",
+      "summary": "腦子怎麼知道要把哪個聲音和哪個畫面對起來調？東京大學的研究者做了一串一閃一響輪流出現的刺激：上方的圓、下方的圓、高音、低音，彼此間隔完全相同。唯一的線索是人通常覺得「高音配上面、低音配下面」。結果在「高音配上方」這一對裡如果總是畫面先，之後判斷同時就會往畫面先挪；總是聲音先，就往聲音先挪，兩者差 11 到 13 毫秒。可是拿「高音配下方」這種不搭的組合來測，就看不到這個差別。研究者認為，腦子只調它認為屬於同一件事的那一對。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "沒有適應前的基準線，只能說兩種適應之後不同，不能說哪一邊被調了多少（作者自己指出）；效果只有十幾毫秒；「高音配上方」是否反映自然界的統計或只是語言標籤，作者列為未解。 研究群：NET_05_Athens_Barcelona_Tokyo（本篇第二作者與 H86-S021 第一作者 2021 年共同署名一篇論文，從嚴併網、封頂 2.00）。 覆核 V195（2026-11-15）：全文核對；分類改為人體感官與日常行為。",
+      "author_cache": {
+        "file": "F175/cache/PMC9734665.xml",
+        "sha256_prefix": "f22ed90cc19c9e21",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=25，105801 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S031",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10904801/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-024-55572-x",
+      "title": "Perception of temporal synchrony not a prerequisite for multisensory integration",
+      "publisher": "Scientific Reports 14:4982（2024）；荷蘭阿姆斯特丹自由大學臨床與發展心理系、阿姆斯特丹大學心理系，合作者屬英國雷丁大學與印度兩所機構",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=20，HTTP 200，116844 位元組，sha256 前 16 碼 cdacd4261d89b158）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract、Introduction、Methods（Participants、Apparatus and stimuli、Procedure and design）、Results（Synchrony judgements、錯覺結果、Rapid temporal recalibration、探索性分析）、Discussion（含限制段）、致謝、作者貢獻與資料聲明全讀；Figure 1–5 只有圖說與正文數字；補充圖 1 未下載。",
+      "locator": "Participants（101 人經線上平台招募、19–73 歲，排除後 90 人）、Apparatus（一位女演員說 ga 的影片，聲音配 ga 或故意配 ba；聲音與嘴型錯開 0、±260、±500 毫秒）、Results（判為同時的比例：配對正確 0.60、配錯 0.33；產生融合錯覺的那些題，平均只有 46.6% 被判為同時；固定在 260 毫秒時，覺得同時與不覺得同時的題，錯覺率 27% 對 22%、無顯著差異）、「Rapid temporal recalibration」（上一題聲音先時主觀同時點 156 毫秒、畫面先時 192 毫秒）、Discussion",
+      "summary": "發現聲音和嘴型對不上，是不是就不會把它們合在一起聽？阿姆斯特丹自由大學的團隊在線上請 90 位成人看一位女演員說話的影片，有時聲音和嘴型配對正確，有時故意把聲音換成另一個音（這種錯配常讓人聽成第三個音），並把聲音錯開到半秒。每一題先回答聽到哪個音，再回答聲音和嘴型同不同步。結果，那些「聽成第三個音」的題目，平均有一半以上被說成「不同步」；而且在同一個落差下，覺得同步與否，跟會不會聽錯並沒有關聯。反過來，嘴型和聲音內容配錯，本身就讓人更常說「不同步」，即使兩者其實完全對齊。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "線上進行、各人設備不同；只有一個音節、五種落差，作者說不足以用更精細的模型；荷蘭語受試者產生錯覺的比例偏低，作者推測與語言有關。「覺得同步不是融合的前提」是作者的結論，本卡寫成「在這個實驗裡兩者沒有綁在一起」。 研究群：NET_01_VUAmsterdam_Sydney_Vanderbilt_UW（通訊作者為 H86-S025 第一作者，併網、封頂 2.00）。 覆核 V195（2026-11-15）：（1）排除人數並非前後不一：原文寫 11 人因「符合一項或多項」排除條件被剔除，各條件的 1、2、8、5 人可以重疊，所以加總 16 大於 11；101 − 11 = 90，與 F(1, 88)、t(89) 的自由度一致，分析人數就是 90 人。（2）作者稿寫「致謝提到部分受試者來自一個研究登錄庫的志願者」，原文致謝實為感謝一個荷蘭的自閉症研究登錄庫的志願受試者；方法寫經線上受試者平台招募，論文沒有報告受試者有無任何診斷，也沒有任何依族群的分析。作者群多屬自閉症與發展心理研究單位，本篇不以臨床族群為框架（只有末句一般性提到臨床），因此不剔除；但無法確認全是一般健康成人，稿中只說「一個線上實驗的成人受試者」，不得說「健康成人」，也不得提任何族群。（3）46.6% 與 27% 對 22% 出自作者明寫「超出預先登記」的探索性分析；兩個方向的比較原文印出完全相同的統計量（χ2(1) = 0.030、p = 0.862），可能是排版重複，稿中只說「沒有顯著差異」，不報 p 值。0.60 對 0.33 是預先登記的主分析。",
+      "author_cache": {
+        "file": "F175/cache/PMC10904801.xml",
+        "sha256_prefix": "cdacd4261d89b158",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=20，116844 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S032",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6711538/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0221584",
+      "title": "Audiovisual synchrony perception in observing human motion to music",
+      "publisher": "PLoS ONE 14:e0221584（2019）；日本電氣通信大學資訊理工學研究科（期刊編輯屬德國明斯特大學，非作者，已排除）",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=27，HTTP 200，153890 位元組，sha256 前 16 碼 0ac698bb00e90fb9）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract、Introduction、Experiment 1（Participants、Apparatus、Materials、Procedure、Analysis、Results and discussions）、Experiment 2（同上）、Experiment 3（Purpose、Methods、Results）、Summary and general discussion（四個小節）全讀；Fig 1–8 只有圖說與正文數字。",
+      "locator": "Experiment 1（15 人；一位指導員做一套配鋼琴音樂的團體體操的六段動作影片，音樂與畫面錯開 −400 到 +600 毫秒共 11 級）、Results（多數動作「還算同時」的寬度平均 300–450 毫秒；不同人之間的最佳點差異約 200 毫秒，小於窗口寬度；拍點對上的是手腳到最低點或動作終點，從來不是動作的起點）、Experiment 2（10 人；只露出拍點附近或拍點之前的畫面，仍能判斷；只露拍點前時窗口傾向變寬，p = 0.0502、未達顯著）、Experiment 3（3 人的地面反作用力量測）",
+      "summary": "看跳舞或做操的影片，音樂慢了多少才會覺得沒對到拍？日本電氣通信大學錄了一位指導員做一套配鋼琴音樂的團體體操，把音樂和畫面錯開不同的時間，請 15 位做過這套操的學生判斷有沒有對上。結果大多數動作要錯開超過三、四百毫秒的範圍才會被發現，而且大家覺得最剛好的那個點很接近。被當成「拍點」的，是手擺到最低處或動作停住的那一刻，從來不是動作開始的瞬間。就算把拍點那一瞬間的畫面遮掉、只留前面一小段，受試者還是判斷得出來，研究者認為人是在預測動作接下來何時到位。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有一位表演者、受試者 15 人（實驗 2 只有 10 人且多為男性）；舞蹈與音樂沒有「物理上的同時」，只能主觀定義；實驗 2 窗口變寬只是趨勢（p = 0.0502），不能寫成已證實；實驗 3 只有 3 人，本卡不用其力學推論。體操名稱與播出單位不寫。 研究群：NET_10_UEC（Europe PMC 查詢中同姓縮寫的醫學論文皆為不同人，見 coauthorship_audit）。 覆核 V195（2026-11-15）：全文核對；分類改為人體感官與日常行為。",
+      "author_cache": {
+        "file": "F175/cache/PMC6711538.xml",
+        "sha256_prefix": "0ac698bb00e90fb9",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=27，153890 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "H86-S033",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12783870/fullTextXML",
+      "canonical_url": "https://doi.org/10.1111/bjop.70029",
+      "title": "The rhythm of sensory input shapes audio-visual temporal processing",
+      "publisher": "British Journal of Psychology 117:314（2026，2025 年線上刊出）；義大利米蘭聖拉斐爾生命健康大學心理學院與同院研究所、特倫托大學、帕多瓦大學等",
+      "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML 全文）",
+      "accessed_on": "2026-11-15",
+      "read_via": "Europe PMC 全文端點 fullTextXML（工作單指定首選）；Mokaair-editorial/1.0 標頭下載（F175 seq=26，HTTP 200，210128 位元組，sha256 前 16 碼 89872471e96a9114）；本機解析完整 JATS XML 後逐節全讀（含討論、限制與表格數列）",
+      "reading_scope": "Abstract、Background、Experiment 1–3 的 Materials and methods（Participants、Stimuli and procedure）、Data analysis 與 Results、Discussion、作者貢獻、經費、利益衝突與資料聲明全讀；Figure 1–4 只有圖說與正文數字。 覆核 V195（2026-11-15）：作者自述本篇分幾段讀完；覆核另讀三個實驗的 Participants、Stimuli and procedure 與 Results，卡片數字全部在原文找到。",
+      "locator": "Experiment 1（100 人線上報名、88 人分析；一個灰色圓點的大小和一個音的音量一起有節奏地起伏 3 秒，每秒 1、2 或 3 下；聲音與畫面錯開 0 到 500 毫秒）、Results（「還算同時」的寬度：每秒 1 下 458.41 毫秒、2 下 307.19 毫秒、3 下 273.11 毫秒；聲音先側的門檻 165.22 毫秒、畫面先側 371.42 毫秒）、Experiment 2（50 人；固定三下、改變長度，結果相同：458.50、340.06、307.79 毫秒）、Experiment 3（34 人；照真人說話的音量起伏做成不規則的版本，寬度 373.10 毫秒，規則版本 318.23 毫秒；差別只出現在聲音先的一側）",
+      "summary": "節奏快的影片比較容易看出聲音沒對上嗎？米蘭、特倫托與帕多瓦的研究者在線上讓一百多位大學生看一個會「呼吸」的圓點：圓點變大縮小的同時，一個音也跟著變大變小，每秒一下、兩下或三下。節奏越快，大家越容易發現兩者錯開：「還算同時」的範圍從每秒一下的約 460 毫秒，縮到每秒三下的約 270 毫秒；就算把三種節奏都固定成三下也一樣。可是把起伏改成照真人說話那種不規則的強弱，範圍又變寬了（約 370 對 320 毫秒），而且只在聲音搶先的那一側放寬。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "線上施測、設備不受控（作者確認螢幕更新率為每秒 60 格）；刺激是抽象圓點與純音，不是說話的臉；三組受試者不同；說話式起伏只在聲音先的一側放寬，作者提出三種解釋都未驗證。與 H86-S024「事件越密越不容易發現」看似相反：本篇的節奏是規則起伏、最快每秒 3 下且落差最大 500 毫秒，H86-S024 是真實動作聲，稿中要說兩者條件不同，不要合成一句定論。文末對臨床族群的延伸不引用。 研究群：NET_12_Milan_Padova（Europe PMC 查詢中的命中皆為大型臨床合作群的集體署名，與本篇作者無關）。 覆核 V195（2026-11-15）：全文核對；分類改為人體感官與日常行為。",
+      "author_cache": {
+        "file": "F175/cache/PMC12783870.xml",
+        "sha256_prefix": "89872471e96a9114",
+        "note": "第三十六輪 F175 本機完整 JATS XML 快取（seq=26，210128 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H86-001",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "走在石頭路上，眼睛是盯著腳下，還是看著前面？",
+      "mechanism_key": "walking_gaze.outdoor_terrain_gaze_two_to_three_footholds_ahead_constant_1_5s_lookahead",
+      "answer_target": "多半看著前面兩三步要踩的地方。美國德州大學奧斯汀分校讓 6 位年輕人（2 女 4 男，平均 26.8 歲）戴著眼動儀與全身動作感測衣，在同一處溪谷的平坦夯土步道、碎石步道與大石塊乾溪床上各來回走約 320–420 公尺。平路上，他們只有 58.0%（± 10%）的時間在看前方 4 個腿長以內的地面，而且看的不是之後要踩的位置；碎石路與大石路上則是 94.3% 與 96.0%，視線緊扣著接下來的落腳點：碎石路上，視線落在腳下這一步之後第二個落腳點（N+2）附近的時間佔 34.8%、第三個（N+3）18.3%；大石路上兩者相近（27.6% 與 24.5%，差異不顯著），作者推測（may）是大石路更需要規劃路線。兩種路面上也偶爾會看緊接著要踩的那一步（N+1）。三種路面上，大家越難走越慢（每秒 1.38、0.98、0.88 公尺），看的距離也跟著縮短（平路平均 2.05 公尺、另兩種 1.35 公尺），可是換算成「還要多久才會走到看的那個點」，三種路面都約 1.5 秒，彼此的差異未達顯著，作者據此稱預看時間維持不變。作者推測 1.5 秒可能和視覺記憶能保留多久有關、走慢可能是因為收集資訊跟不上，這兩點都是推測。",
+      "scope": "6 位年輕成人；平路、碎石、大石三種戶外路面，每種約 320–420 公尺；單眼 30 Hz 眼動儀與慣性動作捕捉；以地面為平面估計落點。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不論路好不好走，眼睛看的地方大約都是「再過 1.5 秒會走到」的位置；路越難走，看得越近、越緊盯接下來兩三步。",
+        "visual": "清爽可愛的機制剖面動畫：一條從平坦步道漸漸變成亂石溪床的剖面小路，一個圓圓的小人沿路走。小人眼前伸出一道柔和的光束：在平坦處，光束落在遠方、時常飄向路旁的樹；進入亂石區，光束落點收近，一下一下輪流點亮前方第二、第三顆要踩的石頭，腳印隨後才落到那些亮過的石頭上。畫面上方有一個沙漏般的小光圈跟著小人，光束落點和小人之間始終隔著同樣的一段沙漏時間。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "source_ids": [
+        "H86-S001"
+      ],
+      "source_locator": "H86-S001 EXPERIMENTAL MODEL（6 人）、Results: Influence of Terrain（1.38、0.98、0.88 m/s）、Gaze Allocation（58.0%、94.3%、96.0%）、Probability of Looking at Each Foothold（34.8%、18.3%；27.6%、24.5%，統計表第 12–13 列）、Temporal versus Spatial Look-Ahead（統計表第 22–29 列；2.05 與 1.35 公尺取自 Parallax error 段；約 1.5 秒取自 Results 末段與 Discussion）、Discussion（may／possible 的推測）",
+      "notes": "研究網 NET_01_Austin_Amsterdam。開場卡，立下全片的基本畫面：眼睛跑在腳前面約 1.5 秒。2.05 與 1.35 公尺出自方法學的「視差誤差」段，是作者寫的平均預看距離。「1.5 秒與視覺記憶有關」「走慢是因為收集資訊跟不上」只能寫成研究者的猜想。只有 6 人，口播說「一個小型的戶外實驗」。提案 H86-001（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：N+2／N+3 的白話原稿寫成「再下下一步／再下一步」，順序寫反，改為「第二個、第三個落腳點」；補上原文「偶爾也看 N+1」，避免讀成腳下那一步完全不看；「作者認為」改為「作者推測」（原文 may arise）。 原提案 F173-001（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-002",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "跨下路緣石的那一步，我們是看著腳踩下去的嗎？",
+      "mechanism_key": "walking_gaze.kerb_descent_lower_field_occlusion_final_step_no_effect_penultimate_step_effect",
+      "answer_target": "在這個實驗裡不是。英國布拉德福大學讓 12 位健康年輕人（6 男 6 女，22 歲）走在一個高 14.6 公分、長 3 公尺的平台上，再跨下一階到地面；起點隨機距邊緣 4 或 5 步，每三次就有一次在受試者看不到時把平台加高 15 毫米，讓人不能只靠前幾次的腳感預測高度。受試者戴一副下半片貼著液晶片的護目鏡，液晶片約 5 毫秒就能從透明變霧，由鞋底感壓片觸發，遮住下半部的視野直到落地；遮與不遮以 1 比 5 隨機出現。若在「最後一步」踩地時才開始遮（平均遮 0.756 秒），量到的動作都和沒遮時沒有顯著差異（p > 0.09）。若提早到「倒數第二步」就開始遮（平均 1.378 秒），跨下去時腳跟離邊緣的高度從 53 毫米升到 61 毫米、水平距離從 153 升到 169 毫米，膝蓋下沉較少、準備落地的時間提早，重心轉移時間從 0.088 秒變成 0.095 秒；但邊緣前最後一步的位置沒有變（140、139、137 毫米），也沒有人絆倒。頭部前屈各條件都約 2 度，沒有人低頭去補看。研究者據此認為，跨下那一步用的是倒數第二步時從下半視野收進來的資訊，而不是當下看著腳；其他種障礙是否也一樣，他們說還需要研究。",
+      "scope": "12 位年輕成人；單一高度 14.6 公分的平板台階；每種遮蔽條件每人 3 次；探索性研究、未做多重比較校正；量的是動作，沒有量眼動。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最後一步才把下半視野遮住，跨下台階時量到的動作都沒有明顯改變；提早一步遮，腳就抬高、離邊更遠——研究者由此推論，跨下去要的資訊在一兩步前就收好了。",
+        "visual": "清爽可愛的機制剖面動畫：側面剖面圖：一個圓圓的小人走向一階低低的平台邊緣，臉前戴著一副下半片會變成磨砂霧面的透明護目鏡。第一段，小人踏出最後一步時鏡片下半才變霧，腳順順地跨下、軌跡是一條平滑的弧線；第二段，在倒數第二步時鏡片就變霧，跨下去的腳軌跡變成一條抬得更高、離邊更遠的弧線，落地前腳尖先輕輕探一下。兩條弧線並排淡淡對照。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "H86-S002"
+      ],
+      "source_locator": "H86-S002 Participants、Protocol（14.6 公分、液晶片約 5 毫秒、1:5、加高 15 毫米、36 次）、Results（1.378 與 0.756 秒；最後一步遮 p > 0.09；倒數第二步遮的 z 值）、Table 1（53→61、153→169、97→92 毫米、140/139/137 毫米）、Table 2（0.088→0.095 秒）、Figure 2 與 Discussion（頭部前屈約 2 度；作者解讀與「未來研究需確認」）",
+      "notes": "研究網 NET_13_Bradford。轉折一的核心證據：直覺以為「看著腳」才踩得準，實驗卻顯示最後一步根本不需要看。數字都是毫米級的細微差異，口播只說「腳抬得更高、離邊更遠」。不談跌倒與視力不良族群（原文引言提到）。提案 H86-002（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：payoff「完全不受影響」改為「沒有明顯改變」（原文是 p > 0.09 不顯著，不是證明相同）；「一兩步前就收好」標明是研究者由遮擋實驗得出的推論；這篇沒有量眼動，也沒有比較「看著腳」與「不看腳」的踩準程度。 原提案 F173-002（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-003",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "走路時，我們能提前「認好」幾步以外的落腳點？",
+      "mechanism_key": "walking_gaze.vr_multitarget_stepping_targets_vanish_two_rows_ok_three_rows_misrecognized",
+      "answer_target": "在這個作業裡大約兩排。日本東京都立大學讓 13 位年輕人（8 男 5 女，26.2 歲）戴著虛擬實境頭盔，在 4 公尺長的走道上只踩某一種指定顏色的方格；走道共 9 排、每排紅藍黃 3 格、排距 35 公分，虛擬畫面裡只顯示一雙鞋。腳踩到第 4 排時，前方第 1、第 2 或第 3 排的三格會同時變白，只能憑剛才的印象選一格踩。變白的是前 1 排、前 2 排，或完全不變的控制條件，失誤率都是 0%；變白的是前 3 排時，13 人中有 9 人至少踩錯一次（69.2%，共 15 次），而且多半是踩到別的顏色，像是根本還沒認出來，而不是腳沒踩準（統計檢定 p = 0.008）。失誤次數和頭部平均低多少無關，只和頭部上下擺動的幅度有關：擺得越少，錯得越多（r = −0.597，p = 0.031）。作者說樣本少、方格排法每次相同可能被記住（但後半 18 次 9 人中仍有 6 人失誤），也不能排除「看過但走著忘了」。",
+      "scope": "13 位年輕成人；戴頭盔在真實地面上行走、畫面為虛擬走道、排距 35 公分；每種條件 9 次；沒有量眼動，只量頭部角度。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "前面兩排的落腳點消失了，沒有人踩錯；換成第三排，大部分人就踩錯了——預先認好的路，比我們以為的短。",
+        "visual": "清爽可愛的機制剖面動畫：俯視的一條棋盤格小路，一排三格、有紅藍黃三色，一雙圓頭小鞋一步一步往前踩著同一種顏色。鞋子踩到中段時，前方某一排的三格同時褪成白色：當褪白的是前面第一、第二排，小鞋穩穩踩中原本的顏色位置；當褪白的是第三排，小鞋在三格之間猶豫晃了一下，踩到旁邊那一格，那格泛起一圈小漣漪。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_ids": [
+        "H86-S003"
+      ],
+      "source_locator": "H86-S003 Participants（13 人）、Apparatus（9 排、10 公分方格、排距 35 公分）、Task and procedure（第 4 排觸發、每條件 9 次）、Results 與 Table 1（0%、69.2%、15 次、配對檢定 p = 0.008）、Table 2（r = −0.597、p = 0.031）、Discussion 限制段（後半 18 次 6/9 人仍失誤；不能排除遺忘）",
+      "notes": "研究網 NET_07_TokyoMetropolitan。與 H86-002 一起構成轉折一：腳下這一步的資訊早已收好，但能提前認好的範圍有限。「兩排」不直接等於日常的「兩步」（排距 35 公分），口播要說「在這個作業裡」。原文是為長者評估開發的方法，本卡只用年輕人結果，不談長者、跌倒與訓練。提案 H86-003（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：刪去統計檢定的人名（命名者 1956 年後過世）。權重判斷：受試者是在真實地面上走、真的踩下每一步，量的是人的踩錯次數，屬實測，維持 1.00，不比照「模擬」折算；但原文前導實驗顯示虛擬實境中頭部比真實場地壓得更低，「兩排」可能帶有虛擬實境的影響，口播要說「在這個虛擬實境作業裡」。 原提案 F173-003（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-004",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "眼睛盯著兩步外的障礙時，眼角在幫忙看哪一步？",
+      "mechanism_key": "walking_gaze.covert_attention_obstacle_crossing_drop_only_at_first_step_location",
+      "answer_target": "研究者認為眼角一次只處理最近的那一步。加拿大英屬哥倫比亞大學與西門菲莎大學讓 12 人（6 男 6 女，平均 29 歲）在虛擬實境裡準備跨過一道兩步外、5 公分高的障礙，眼睛必須一直盯著障礙上的十字（偏離超過 2 度的只佔 0.1%）。提示出現 300 毫秒後，地上四個可能的落腳點之一會閃出一個斜條紋小圖 77.8 毫秒，請他們說出往左還是往右斜；第一步的落點約在注視點下方 24 度、第二步約 8 度。和站著不動時相比，準備起步時只有「第一步要踩的位置」判斷正確率下降 7.3%（效果量 d = 1.39）、敏感度 d′ 下降 0.52；第二步要踩的位置與不踩的位置都和站著時差不多，約九成正確，反應偏好也沒變。起步平均在提示後 741 毫秒。作者的解讀是：眼角一次只為即將踩下的那一步規劃，判斷變差可能是因為那一步已經規劃好、注意力移開了（他們也討論了「同時做兩件事互相干擾」的可能，但較傾向前者）。",
+      "scope": "12 位成人；站在起點準備起步跨越虛擬障礙時測眼角判斷，不是走路途中；只測一種提示到測試的間隔（300 毫秒）；方向是判斷「變差」。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "視線固定在兩步外時，只有「下一步要踩的那個點」被眼角特別處理過——而且是處理完就放手。",
+        "visual": "清爽可愛的機制剖面動畫：第一人稱視角的剖面圖：前方地上一道矮矮的小柵欄，柵欄上有一個發光的小圓點，畫面中央一圈柔光一直停在那個點上。畫面下緣的眼角區域裡有兩個淡淡的腳印位置，靠近腳邊的那一個先亮起一圈細細的漣漪，然後像被收進口袋一樣慢慢黯淡；較遠的那一個則保持平常的亮度。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_ids": [
+        "H86-S004"
+      ],
+      "source_locator": "H86-S004 Participants（12 人）、Setup（障礙兩步外、注視十字）、Procedure（300 毫秒、77.8 毫秒、24° 與 8°、288 次）、Results（注視 0.1% 排除、起步 741 毫秒、Table 2：−7.281%、d′ −0.525、其餘位置與站立相近）、Discussion（一次一步、偏好抑制返回的解釋、只測一種間隔）",
+      "notes": "研究網 NET_08_SFU_UBC（與 H86-015 同一位作者，併網封頂 2.00）。補充轉折一：正眼看兩步外，眼角處理最近一步。方向容易寫反：是「判斷變差」，作者解讀為規劃完成後注意力移開，不能寫成「眼角看得更清楚」。提案 H86-004（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：補上量測時點是「站姿準備起步」；章節白話改成「只有第一步那個位置的眼角判斷出現變化，研究者推測那一步已經規劃好」，不寫「眼角特別處理」。 原提案 F173-004（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-005",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "走自己家的樓梯，我們會一階一階看嗎？",
+      "mechanism_key": "walking_gaze.home_staircase_naturalistic_about_half_steps_fixated_three_never_descending",
+      "answer_target": "不會，大約只看一半。荷蘭阿姆斯特丹自由大學請 30 人（17 女，18–60 歲，平均 30 歲）戴著眼動眼鏡在自己家裡隨意走動，實驗者不跟隨，研究者也沒有告訴他們要看的是樓梯（作者沒有正式確認，但事後無人表示察覺）；居住時間中位數 11.5 個月，樓梯中位數 13 階（4–19 階），上下各 44 段。逐格人工判讀後，上樓平均只看了約 60% 的台階、下樓約 51%，有 3 人下樓時一階都沒有正眼看；過去在實驗室裡被要求上下樓梯的研究大約是 70% 與 65–67%（原文結果段與討論段對下樓那個引用值分別寫 65% 與 67%）。上樓時被看的台階平均在腳下那一階之前 5 階；下樓時平均只在前 2 階、最常是下一階，也有不少時候就看正要踩的那一階。上樓時第一階反而最常被跳過；接近要下樓的樓梯時，視線多半落在第一階邊緣附近。研究者推測，沒看的台階可能靠眼角，也可能靠對自家樓梯的熟悉，兩者沒有區分；下樓看得近，可能和荷蘭樓梯約 45 度、比過去研究的 30–34 度陡有關。",
+      "scope": "30 人；各自家中的樓梯（多為陡的荷蘭式）；受試者不知研究重點；人工逐格判讀，下樓時眼動誤差較大。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在最熟悉的樓梯上，人只正眼看了一半的台階，有人下樓時一階都沒看。",
+        "visual": "清爽可愛的機制剖面動畫：一座小小的室內木樓梯剖面，一個圓圓的小人從上往下走。小人眼前的柔光一下照在下一階、一下跳過兩三階照到更下面、偶爾又回頭照一下剛走過的那階；沒被照到的台階邊緣，在小人腳旁的眼角區域裡泛著淡淡的輪廓光，腳仍一階一階穩穩踩下。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          35
+        ]
+      },
+      "source_ids": [
+        "H86-S005"
+      ],
+      "source_locator": "H86-S005 Participants（30 人）、Setup（自家、不知重點、11.5 個月、13 階、44 段）、Results（60% 與 51%；3 人下樓不看；上樓 5 階、下樓 2 階、峰值 1 階；第一階最常被跳過；接近時看第一階邊緣）、Discussion（實驗室約 70% 與 65–67%；荷蘭樓梯約 45 度；眼角或熟悉兩種解釋）、Table 1 與 Data reliability（下樓垂直系統誤差 2.99°）",
+      "notes": "研究網 NET_01_Austin_Amsterdam（與 H86-001、012 併網封頂 2.00）。第三章開場：真實生活裡眼睛看得比實驗室還少。上下樓比例之間「positive correlation (p = 0.40)」意義不明，不引用。提案 H86-005（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：「不知道研究重點」改照原文的保留寫法；註明引用值 65%／67% 原文前後不一；下樓時「也有不少時候看正要踩的那一階」是本題題名改成「很少盯著腳下」的原因之一。 原提案 F173-005（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-006",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "下樓梯時眼睛被別的事占住，還會低頭看台階嗎？",
+      "mechanism_key": "walking_gaze.stair_descent_visual_task_shorter_fewer_downward_glances_lower_field_suffices",
+      "answer_target": "會看得更少、更短，但仍安全走完。加拿大滑鐵盧大學請 10 位健康年輕人（5 女，23.8 歲）在戴安全吊帶的情況下走下一段 7 階樓梯（階高 18 公分、踏面 25.5 公分、兩側有扶手），起點距樓梯 1.2、1.4 或 1.6 公尺隨機，開始前用紙板擋住視線。有時要一邊盯著前方螢幕、看到字母 X 就按鍵；螢幕放在樓下離地 0.5 公尺的低處（眼角還看得到台階），或牆上離地 3.5 公尺的高處（看螢幕時就看不到台階）。往下瞄一眼的時間，自由下樓時平均 421 毫秒，低螢幕 250 毫秒、高螢幕 274 毫秒；自由下樓時 10 人都會往下看，做作業時低螢幕有 3 人、高螢幕有 1 人整段都沒往下看，總往下看時間顯著減少（F = 87.88）。做作業時大家走得較慢，高低兩種螢幕之間沒有差別；扶手使用從自由下樓的 1 人 1 次，變成低螢幕 26%、高螢幕 34.7% 的次數；按鍵反應最快出現在樓梯中段（303 毫秒）。作者推測沒低頭的人可能用眼角、扶手的輪廓或對台階的記憶，也說變慢可能來自認知負荷本身。",
+      "scope": "10 位年輕成人；一座 7 階實驗樓梯、戴吊帶；三種條件共 42 次。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "眼睛被前方的事占住時，下樓梯往下瞄一眼的時間短了三到四成，有人整段都沒看，仍走完了，只是放慢、扶扶手。",
+        "visual": "清爽可愛的機制剖面動畫：一段七階樓梯的剖面，一個圓圓的小人一邊下樓、一邊抬頭看著前方牆上一塊亮著小圖案的方板。小人眼前的柔光大多停在方板上，只偶爾飛快地往下閃一下照到台階又回去；樓梯的輪廓在小人眼角處淡淡發亮，小人的手輕輕搭上扶手，步子放慢但一階一階踩穩。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_ids": [
+        "H86-S006"
+      ],
+      "source_locator": "H86-S006 Participants（10 人）、Protocol（7 階、18 與 25.5 公分、0.5 與 3.5 公尺螢幕、42 次）、Results: Gaze behaviour（421、250、274 毫秒；3 人與 1 人未往下看；F = 87.88）、Locomotor behaviour（走得較慢、扶手 26% 與 34.7%）、Table 1（中段 303 毫秒）、Discussion（眼角、扶手、記憶三種解釋；認知負荷）",
+      "notes": "研究網 NET_06_Waterloo。結果段「有往下看的試次比例」60.9%、1.9%、11.8% 與 Table 2 逐人資料（自由下樓 100%）矛盾，卡片不用比例。只描述實驗，不寫成「邊走樓梯邊看東西也沒關係」之類的做法。提案 H86-006（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：逐項對原文（421／250／274 毫秒、3 人與 1 人、F = 87.88、26% 與 34.7%、中段 303 毫秒）相符；確認卡片未用與 Table 2 矛盾的試次比例。 原提案 F173-006（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-007",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "快走到樓梯前，視線和腳步誰先開始準備？",
+      "mechanism_key": "walking_gaze.urban_route_stairs_transition_head_pitch_changes_steps_before_gait",
+      "answer_target": "視線先。德國一所企業附設的研究所分析了同一研究所先前公開的一份資料：20 人（5 女 15 男，36.8 歲）在法蘭克福近郊一座火車站周邊、約 500 公尺的路線上照平常速度繞三圈，路線包含平路、25 階（約 3.4 公尺高）的樓梯與約 70 公尺長、6% 的緩坡，共 26,791 個有效步。以各人走平路時的頭與眼角度為基準，從平路轉下樓梯時變化最大：踏上前一步，頭平均低了超過 30 度、眼球再往下約 20 度；轉上樓梯的變化方向相同但較小；坡道只有 0 到約 10 度。最早出現顯著改變的是頭部角度：結果段寫平路轉上樓梯在前 6 步、與下樓梯有關的轉換在前 5 步、平路轉下坡在前 2 步；但分析本來就只往前追到第 6 步，「前 6 步」是分析範圍的邊界，作者也說變化可能延伸得更早，摘要則另寫「最多提前四步」。步長與步時的改變多半只提前 2 步（一個例外提前 3 步），比視線晚了 2 到 5 步。作者也指出頭部角度比眼球角度更敏感。這份資料沒有分析注視點，作者明說無法分辨用的是正眼還是眼角；轉換點是人工標記，閃避行人等動作沒有標記。",
+      "scope": "20 位成人；火車站周邊實際路線（平路、樓梯、緩坡）；先前公開的資料集；量的是頭與眼的俯仰角。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "還沒踏上往下的樓梯，頭和眼睛就已經提前好幾步往下壓，比腳步的改變早得多。",
+        "visual": "清爽可愛的機制剖面動畫：一條從平地通往下行樓梯的城市小路剖面，一個圓圓的小人走向樓梯口。離樓梯還有好幾步時，小人的頭像點頭娃娃一樣一點一點往下傾、眼前的柔光逐漸往地面移；這時腳步仍是平常的步伐，直到最後一兩步，腳印才開始變短、變密，然後一階一階往下。旁邊另一段緩坡路上，小人的頭幾乎沒有動。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          20,
+          30
+        ]
+      },
+      "source_ids": [
+        "H86-S007"
+      ],
+      "source_locator": "H86-S007 Dataset 與 Participants（20 人、先前公開資料）、Experimental task（約 500 公尺、25 階 3.4 公尺、70 公尺 6%）、Table 2（26,791 步）、Results（踏上前一步頭 > −30°、眼約 −20°；坡道 0 至 −10°；最早顯著：前 6 步、前 5 步、前 2 步；步伐最多前 2 步、晚 2–5 步）、Discussion（頭比眼敏感）、Limitations",
+      "notes": "研究網 NET_10_Offenbach（二手資料 0.75 條）。摘要寫「最多提前四步」、結果段最早到前六步、結論寫視線早於步伐「最多五步」，三處不一，口播只說「好幾步前」與「比腳步早兩到五步」。分類器與輔具應用不談；機構名用泛稱。提案 H86-007（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：步數三種寫法（摘要四步、結果段五到六步、討論段步伐最多三步）逐一對過：卡片保留結果段的數字並註明「前 6 步」是分析窗邊界、摘要另有寫法；connection 與章節只說「好幾步」。資料集由第一作者與另一位同事先前建立並公開，屬重新分析舊資料，維持 0.75。 原提案 F173-007（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-008",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "從平整人行道走到石塊路、泥土路，眼睛和腳步怎麼變？",
+      "mechanism_key": "walking_gaze.urban_walk_floor_fixation_13_23_39_percent_flat_cobble_dirt",
+      "answer_target": "路越不平，看地面越多、頭越低、步伐越慢越短。比利時魯汶大學讓 20 位年輕人（11 女，26.5 歲，20–37 歲）戴著眼動眼鏡、腳上綁感測器，沿魯汶市區預定的 1.9 公里路線走過平整人行道、石塊路與泥土小徑，實驗者跟在幾公尺後。看地面的時間比例：平路 13.0%、石塊路 22.9%、泥土路 39.4%，泥土路顯著高於另兩種；石塊路也被報告為高於平路，但原文這一組的統計量異常偏大（見來源限制），只引用平均值；在平路上看地面時看的位置比另兩種路遠（數值只在圖中）；石塊路與泥土路上頭都往下傾，泥土路更明顯。步速：平路每小時 5.81 公里、石塊路 5.70（與平路沒有顯著差別）、泥土路 4.86；步頻 112.64、111.18、107.99 步／分，泥土路的步伐也較短。在路線上的同一段，走得越快越少看地面（r = −0.44），每一步拖得越久的地方越常低頭（r = 0.59）。作者提醒：泥土路段在公園裡，建築、招牌與行人較少，可能也讓人多看地面；走速可能是中介因素，沒有另外分析；看地面的距離靠雙眼聚散估計，誤差較大。",
+      "scope": "20 位年輕成人；比利時一座城市的 1.9 公里指定路線；三種路面；行人密度未控制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "從平路到石塊路再到泥土路，看地面的時間從一成多升到將近四成，腳步也跟著變慢變短。",
+        "visual": "清爽可愛的機制剖面動畫：一條橫向延伸的城市小路剖面，路面由平滑的人行道漸漸變成一顆顆圓圓的石塊，再變成有小樹根和碎石的泥土路，一個圓圓的小人沿路走。小人眼前的柔光在平路上多半照向遠方的街景，到了石塊路開始時不時往下照，到了泥土路上大半時間都照在腳前不遠的地面；小人的頭也一段比一段低，腳印一段比一段密。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          30
+        ]
+      },
+      "source_ids": [
+        "H86-S008"
+      ],
+      "source_locator": "H86-S008 Participants（20 人）、Procedure（1.9 公里、三種路面）、Results: Proportion of floor-directed fixation time（13.0%、22.9%、39.4%）、Floor-fixation distance（平路較遠，數值在 Fig. 1B）、Head pitch、Walking pace（5.81、5.70、4.86）、Cadence（112.64、111.18、107.99）、Spatial relationships（r = −0.44、0.59）、Discussion（公園環境、走速中介、聚散估計誤差）",
+      "notes": "研究網 NET_09_Leuven。第四章的日常場景卡。石塊路對平路的一個 t 值（31.26、d = 8.57）異常，不引用；「路面本身」與「周遭可看的東西」分不開，口播要說「部分可能是環境不同」。提案 H86-008（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：「三者兩兩都有差別」依賴那組異常的 t 值，改為只說泥土路高於另兩種、石塊路對平路只引平均值。 原提案 F173-008（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-009",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "路面變難走時，是眼睛往下轉，還是整顆頭低下去？",
+      "mechanism_key": "walking_gaze.surface_complexity_head_share_of_gaze_lowering_17_to_54_percent",
+      "answer_target": "越難走，頭出的力越多。英國利物浦大學讓 11 位健康成人（7 男，24.6 歲）在四種路面上各走 10 次：室內平板（13.2 公尺，用傾角儀量到的平均高低變化 1.8 度）、戶外方形鋪石（16.6 公尺，1.9 度）、戶外石塊路（15.7 公尺，2.5 度）與室內貼了小木塊的凹凸板（與平板同長，最大高低差 27 毫米，7.5 度）；同時量眼球與頭部的上下角度。只有在室內凹凸板上，整體視線明顯比其他三種路面低，走得也最慢（每秒 1.19 公尺，其他 1.35–1.44）；石塊路與平路之間沒有顯著差別。視線往下壓的份量裡，頭部負責的比例從平板的 17%、鋪石的 25%、石塊路的 35%，升到凹凸板的 54%。眼與頭的角度相關都很弱（平板 +0.13、鋪石 +0.24 顯著，凹凸板 +0.01 不顯著）。作者用平均視線角與眼高粗估「看幾步前」：平板約 6 步、鋪石約 8 步、石塊路約 7 步、凹凸板約 2 步。作者的解讀是：比較費力的頭部動作只在必要時才動用。",
+      "scope": "探索性研究、11 人；四種路面、每種 10 次；看幾步前是由平均角度推算的估計。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "路面最凹凸時，視線往下壓的份量有一半以上是整顆頭低下去完成的；平路上頭幾乎不動，主要靠眼睛。",
+        "visual": "清爽可愛的機制剖面動畫：四格並排的小路剖面：平滑木地板、方格鋪石、圓石塊路、佈滿小方塊的凹凸板，每格上都有同一個圓圓的小人在走。小人的頭與眼睛分別用兩根小指針表示：在前三格，眼睛的小指針微微往下、頭的指針幾乎不動；到了凹凸板那一格，頭的指針也大大往下傾，兩根指針一起把眼前的柔光壓到腳前兩步的地方。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_ids": [
+        "H86-S009"
+      ],
+      "source_locator": "H86-S009 Participants（11 人；另 9 人因感測器故障未用）、Protocol（四種路面、長度、1.8／1.9／2.5／7.5°、各 10 次）、Results（只有凹凸板顯著較低；頭部比例 17%、25%、35%、54%；相關 +0.13、+0.24、+0.01；速度 1.19 對 1.35–1.44）、Table 2（6.12、7.75、6.66、2.00 步）、Discussion",
+      "notes": "研究網 NET_12_Liverpool。「看幾步前」是平均角度推算值，口播用「大約」；石塊路沒有顯著差別，不可說「石塊路就會低頭」。ANOVA 的 F 與 p 組合異常（F = 28.34、p = 0.003），只用描述性結果。提案 H86-009（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：數字逐項相符（17%／25%／35%／54%、1.19 對 1.35–1.44、+0.13／+0.24／+0.01、6.12／7.75／6.66／2.00）；石塊路的眼頭相關 +0.15、p = 0.060 未達顯著，不寫。 原提案 F173-009（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-010",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "腳下一滑，眼睛接下來會做什麼？",
+      "mechanism_key": "walking_gaze.treadmill_slip_perturbation_head_dips_gaze_first_slip_differs_no_carryover",
+      "answer_target": "先短暫抬起，接著低頭往地上看一秒多。德國開姆尼茨工業大學讓兩組各 22 位年輕人（22.5 歲與 25.6 歲）在 240 度環繞螢幕前的雙履帶跑步機上，以每秒 1 公尺走約 5 分鐘一段；某些步一側履帶在腳落下時以每秒平方 15 公尺猛然加速到每秒 1.5 或 2.0 公尺、持續約 0.64–0.70 秒，受試者形容像在冰上滑一下；第二個實驗的虛擬路面上有時會畫出預告的藍色方塊。每滑一次，約 200 毫秒內頭部先短暫上揚，之後幾百毫秒起明顯往下看、持續超過一秒，主要靠低頭，加速越強越明顯；但每次滑倒的猛烈程度和視線變化的相關很弱（平均 r 約 0.06–0.21），作者因此認為往下看是主動的，不是被滑倒動作帶著低頭。整段來看，有滑倒的區段頭部平均略低，有藍色方塊時眼球反而平均抬高約 2.5 度，像在追遠處的方塊：頭主要回應腳下的擾動，眼主要回應看得到的提示。每一段的第一次滑倒反應都和後面不同，換到下一段同條件又重新來過，幾乎沒有保留。",
+      "scope": "兩個實驗各 22 位年輕成人；跑步機加環繞螢幕；只在前後方向擾動；眼動校正誤差中位數 5.5 度、修正後 2.2 度。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "滑一下之後，人會主動低頭往地上看一秒多；而每一段的第一次滑倒，總像是第一次。",
+        "visual": "清爽可愛的機制剖面動畫：一條在環繞布幕上延伸的虛擬小路，一個圓圓的小人在一條會轉動的履帶上走。履帶某一段突然變成亮晶晶的冰面、小人腳下一滑：小人的頭先輕輕往上一抬，接著慢慢低下、眼前的柔光照到腳前的地面停留一會兒，再回到前方。另一段畫面裡，路面遠處浮現一塊淡藍色方塊，小人的頭不動、眼前的光點卻往遠處抬起，追著那塊方塊靠近。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          30
+        ]
+      },
+      "source_ids": [
+        "H86-S010"
+      ],
+      "source_locator": "H86-S010 Participants（各 22 人）、Perturbations（15 m/s²、1.5／2.0 m/s、643 ± 318 與 695 ± 312 毫秒、藍色 1 × 1 公尺方塊）、Results: Event-related（Table 2；頭部 F = 23.19；r = .21、.13、.18、.06）、Effects per block（眼 +2.5°、整體 +2.6°；頭 −0.9°、−1.3° 描述性）、Short-term and long-term（第一次滑倒不同、幾乎不保留）、Discussion（主動低頭的推論；200 毫秒內上揚「可能是反射」）、Appendix（5.5° 與 2.2°）",
+      "notes": "研究網 NET_03_Chemnitz。第四章收尾：路況一變，眼與頭會在一秒內重新分配。跑步機與螢幕的廠牌不出現；不談跌倒與長者（討論段提到）。「主動低頭」「可能是反射」都是作者的推論，口播要照寫。提案 H86-010（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：對原文相符；「200 毫秒內上揚可能是反射」原文為 could potentially be reflex based，照寫。 原提案 F173-010（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-011",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "還沒踩到高低不平的路，身體會先調整速度嗎？",
+      "mechanism_key": "walking_gaze.uneven_terrain_anticipatory_speed_change_matches_min_energy_six_to_eight_step_horizon",
+      "answer_target": "會，而且提早好幾步。加拿大卡加利大學在 30–40 公尺走道的中段，用泡棉板疊出 1 到 16 階、每階高低差為 2.54 公分整數倍（最多約 7.6 公分）的路面，讓兩組未滿 30 歲的健康成人（12 人與 11 人）照平常速度走過，只要求每次「用差不多的時間走完」，腳背上的感測器量每一步的速度。結果整體速度與時間各種路面差異多在 6% 以內、不顯著，但每一步的速度有固定的起伏：踏上第一個往上的台階前一步，速度提高 3.74% 到 5.70%；遇到第一個往下的台階前一步，先放慢約 2.05%；走過之後再恢復；個人和平均型態的相關 0.66 到 0.85。研究者用一個像倒立鐘擺、只計算蹬地做功的簡單走路模型，算出最省力的速度起伏，和人的實際起伏相關 0.35 到 0.67（平均 0.55）；模型若只往前規劃一兩步幾乎預測不了，往前規劃 6 到 8 步就達到飽和值的 92% 到 93%。這篇沒有量眼睛看哪裡，作者說這種規劃可能只需短暫一瞥；他們也說模型的預測只算中等，且沒有量實際的能量消耗。",
+      "scope": "兩組各 11–12 位年輕成人；泡棉板疊成的離散台階、最多約 7.6 公分；腳背慣性感測器；沒有量眼動與能量。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "還沒踏上往上的台階，身體已經提前一步悄悄加速；要算出人怎麼走，模型得往前看六到八步。",
+        "visual": "清爽可愛的機制剖面動畫：側面剖面：一條平路中間有幾階高高低低、像積木一樣的淺色台階，一個圓圓的小人像倒立的小鐘擺一樣一步一盪地走過來。小人腳邊有一顆代表速度的小光球：在第一個往上的積木前一步，光球微微變亮、往前多滾一點；遇到往下的積木前，光球先收斂變暗一些；走過積木後又回到原本的亮度。小人頭頂上方有一排六到八格的小方框，像預告的格子一樣，一格一格映出前方的高低。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          35,
+          40
+        ]
+      },
+      "source_ids": [
+        "H86-S011"
+      ],
+      "source_locator": "H86-S011 Experiment（12 + 11 人、2.54 公分整數倍、30–40 公尺、腳背感測器、指示語）、Experimental Results（< 6% 不顯著；+3.74%–5.70%、−2.05%；0.66–0.85）、Humans walking speed fluctuations（0.35–0.67、平均 0.55）、A finite planning horizon（6–8 步、92%–93%）、Discussion（短暫一瞥的推測、限制兩段）",
+      "notes": "研究網 NET_02_Calgary。第五章：不只眼睛，身體也在提前準備。「往前規劃 6 到 8 步」是模型的規劃長度，不是眼睛看的距離，口播必須分清楚；另一網的一位作者是本文客座編輯，不構成合著。提案 H86-011（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：數字相符（< 6%、+3.74%–5.70%、−2.05%、0.66–0.85、0.35–0.67、6–8 步達飽和 92%–93%）；「短暫一瞥」原文為 might require only a brief glance，是作者推測。這篇沒有量視線也沒有操弄視覺，是全題離「視線與落腳」最遠的一張，覆核維持 1.00，但列入敏感度測試。 原提案 F173-011（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-012",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "走在亂石堆裡，人怎麼挑下一腳要踩哪裡？",
+      "mechanism_key": "walking_gaze.rough_terrain_reconstruction_chosen_paths_flatter_detour_more_short_legs",
+      "answer_target": "挑比較平的，寧可繞一點路。美國德州大學奧斯汀分校把同一團隊先前收集的 9 個人（5 男 4 女，23–54 歲，腿長 81–103.5 公分，共 4,230 步）在野外大石塊路段走路時、眼動儀前方攝影機的畫面拿來重建出立體地形（重建誤差中位數 4.5 公分、落腳點 4.0 公分），再對照每一步踩在哪裡。和電腦在同一片地形上隨機產生、同樣走得通的 5 步路線相比，每個人實際選的都比較平：實際路線平均坡度各人中位數 7.7° 到 11.8°（平均 9.5°），隨機路線 9.1° 到 19.2°（平均 14.9°），每人都比模擬平，平均差 5.56°。直走的路越陡，實際路線越彎，9 人都有這個趨勢；而且腿越長的人，「路越陡越繞」的關聯越弱——也就是腿短的人一遇到陡就更傾向繞（r = −0.83，p = 0.005，只有 9 個點）。作者說坡度 10° 以下大約只是 14–17 公分的高低差，並認為這些選擇比較像學來的經驗法則，不是精確計算；本文沒有直接分析視線，也沒有量能量。",
+      "scope": "9 位成人、只用大石塊路段；重新分析同團隊舊資料；隨機模擬的可行路徑作為比較基準。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在亂石堆裡，人實際走的路比同一片地形上隨機挑的路平了五度多，寧可多繞一點；腿短的人一遇到陡更傾向繞。",
+        "visual": "清爽可愛的機制剖面動畫：俯視的一片圓滾滾大石頭地形，等高線像年輪一樣淡淡浮現。一個圓圓的小人站在起點，前方先閃過幾條細細的虛線路徑，有的直直穿過高低起伏的石頭；接著一條柔和的實線慢慢畫出來，彎彎地繞過最陡的那幾顆石頭，沿著比較平的石面前進，小人的腳印一步一步落在這條彎線上。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          30
+        ]
+      },
+      "source_ids": [
+        "H86-S012"
+      ],
+      "source_locator": "H86-S012 Results 首段與 Methods: Experimental data（舊資料：加州 7 人、德州 2 人）、Table 1（9 人、4,230 步）、Evaluating reliability（4.5 與 4.0 公分）、Walkers prefer flatter paths（7.7°–11.8°、9.5°；9.1°–19.2°、14.9°；5.56°、t(8) = 7.64）、Walkers choose indirect routes（9 人皆有；逐段 8/9 顯著；r = −0.83）、Discussion（14–17 公分；經驗法則；未分析視線）",
+      "notes": "研究網 NET_01_Austin_Amsterdam（二手資料 0.75，網內封頂 2.00）。第五章：預看的資訊被拿來「選路」。原文一處把相關範圍誤植為公分數，不引用。「繞路前視線先看向路線外」只是圖中觀察，不寫成結論。提案 H86-012（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：原文的相關是「腿長」對「坡度與繞路的相關係數」，不是對繞路量本身；改寫成「腿越長，路越陡越繞的關聯越弱」。 原提案 F173-012（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-013",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "在全黑裡看不到路，眼睛還會「先往彎道轉」嗎？",
+      "mechanism_key": "walking_gaze.darkness_walking_gaze_still_anticipates_turns_halved_reverse_saccades_before_inflection",
+      "answer_target": "會，只是幅度縮小到大約一半。法國巴黎法蘭西學院的研究者請 10 位實驗室成員（4 女 6 男，30 歲，事先不知研究目的）憑記憶走出紙上看過的「蝸線」與拉長的「8 字」路線，地上沒有任何標記；一次在明亮的房間，一次在全黑中（眼睛張開，外加不透光的布罩），每種 8 次。兩種情況下，視線方向都比頭先轉、頭又比骨盆先轉，10 個人都是如此。以骨盆方向為準，視線的超前角在明亮時平均 27.53 度、全黑時 12.67 度；頭部 14.79 度與 7.67 度，都「幾乎減半」；換成時間，視線超前 557 對 268.5 毫秒、頭部 264 對 129 毫秒。兩種情況都出現走路時規律的眼球擺動（快相每秒約 1.9 與 2.2 次），在 8 字路線上，眼睛常在轉彎方向改變前 2 秒內先往新的方向跳一下（全黑 62.43%、明亮 79.49% 的這類跳動落在這段時間）。全黑時走得較慢（每秒 0.67 對 0.80 公尺），作者分析後認為速度與曲率不是超前減半的原因。作者提出，視線超前的功能之一可能是「模擬接下來的路線」，但也明說不能排除其他轉向策略，而且這種超前不是走路的必要條件。",
+      "scope": "10 位實驗室成員；明亮與全黑兩種條件；憑記憶走蝸線與 8 字；單眼 50 Hz 眼動儀。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在完全看不到任何東西的黑暗裡，眼睛仍比頭、比身體早一步轉向彎道，只是幅度少了一半。",
+        "visual": "清爽可愛的機制剖面動畫：俯視的一間全黑小房間，地上用極淡的虛線浮出一個 8 字形。一個圓圓的小人沿著 8 字走，頭上用三根顏色柔和的小箭頭分別代表眼睛、頭與身體的方向：轉彎時，眼睛的箭頭總是最先轉過去，頭的箭頭跟著，身體的箭頭最後；快要從往左彎改成往右彎時，眼睛的箭頭先輕輕往右一跳。同一段動畫在亮房間裡重播一次，三根箭頭之間拉開的角度比黑暗中大一倍。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          45,
+          50
+        ]
+      },
+      "source_ids": [
+        "H86-S013"
+      ],
+      "source_locator": "H86-S013 2.1 Participants（10 人）、2.4 Task（蝸線與 8 字、明暗、各 8 次）、3.1（0.67 與 0.80 m/s）、3.3（27.53°／12.67°、14.79°／7.67°；557／268.5 毫秒、264／129 毫秒）、3.4（速度與曲率分析）、3.6（快相 1.89 與 2.23 Hz）、3.7（反向跳視 11.62%；62.43% 與 79.49%）、4.5（模擬路線的功能推測；不能排除其他策略）",
+      "notes": "研究網 NET_05_Paris。轉折二的核心：視線超前不只是為了「看見」。原文 3.3 有一句（明亮時時間超前較小）與同段數值、討論段相反，卡片只用數值並在來源限制註明。受試者是實驗室成員，口播說「一個小實驗」。不寫成「閉眼走路」之類可模仿的活動。提案 H86-013（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：原稿題目寫「閉上眼睛」，但實驗是在全黑中張著眼睛走，改為「在全黑裡」；章節標題同步更正。10 人全部呈現同樣型態有原文支持（3.3 末段與 Fig. 4C）。 原提案 F173-013（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-014",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "在平坦的路上、根本不用看腳下，眼睛的跳動還會跟著腳步嗎？",
+      "mechanism_key": "walking_gaze.level_vr_walking_saccade_probability_entrained_to_step_rate",
+      "answer_target": "會，大約每走一步起伏一次。澳洲雪梨大學招募 37 人，資料完整的 19 人（6 男，21 歲）戴著有眼動追蹤的虛擬實境頭盔，在一條平坦的走道上走：5 秒內走完 7 公尺（約每秒 1.4 公尺）或 3.5 公尺（約 0.7），同時盯著眼前固定距離的十字，留意周圍每秒 5 張快速輪播的圖片、看到重複就按鍵；圖片跟著頭移動，完全不需要看地面。慢速時平均記錄到 430 步（每步 0.72 秒）、自然速度 637 步（每步 0.61 秒）。眼球「跳一下」的機率隨步伐起伏，最符合的節律是每一大步兩個週期、也就是每一步一次（慢速 1.97、R² = 0.70；自然速度 2.06）。個人層級上，每步一次的節律在慢速時 19 人中 14 人顯著、自然速度 10 人；族群盛行率估計 0.73 與 0.51。群體層級上，兩種速度的每步一次節律都通過置換檢定；個人層級的相位，慢速時各人一致（p = 0.003），自然速度時未達顯著（p = 0.059）——原文同段一句寫「兩種速度相位都顯著聚集」，與這個 p 值矛盾，以數值為準，自然速度的相位結果不拿來支撐任何結論。作者說，這種同步出現在不需要用眼睛引導落腳的作業裡，表示走路與眼動之間的連結可能一直存在；他們也說，圖片固定在頭盔畫面上造成的視覺與前庭衝突，可能對這個結果有貢獻。",
+      "scope": "19 位年輕成人；虛擬實境平坦走道、頭盔固定畫面；偵測固定注視時的小幅跳動；腦波結果不用。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在這個頭盔實驗裡，眼睛只是盯著眼前的十字、完全不必看路，眼球跳動的時機仍然大致跟著每一步一起一落。",
+        "visual": "清爽可愛的機制剖面動畫：一條極簡的平坦小走道，一個圓圓的小人戴著圓頭盔往前走，眼前浮著一個固定的小十字，四周輪流閃過幾張小圖卡（圖卡上只有簡單色塊）。小人腳邊有一條隨步伐起伏的波浪線，眼睛旁邊每閃出一個代表「跳一下」的小星點，星點的出現就像跟著波浪的節拍，一步一簇。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          35,
+          40
+        ]
+      },
+      "source_ids": [
+        "H86-S014"
+      ],
+      "source_locator": "H86-S014 Participants 與 Exclusions（37 → 19 人）、Procedure（7 與 3.5 公尺、5 秒、十字、圖片隨頭移動）、Walking speed（429.9 與 636.7 步；0.72 與 0.61 秒）、Locomotion entrains saccade onsets（1.97、R² = 0.70；2.06）、個人層級（14/19、10/19；19/19、16/19；MAP 0.73、0.51）、相位（p = 0.003；p = 0.059）、Discussion（無需引導落腳；視覺前庭衝突）",
+      "notes": "研究網 NET_04_Sydney。轉折二的第二根柱子：眼睛的節拍被腳步帶著走。跳動高峰落在步伐哪一點，原文三處寫法不一，口播不講時點，只說「每一步起伏一次」；腦波部分不用。提案 H86-014（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：未達顯著的自然速度相位（p = 0.059）與原文矛盾的「兩速度皆顯著」一句都不用；轉折二只用「跳動頻率每步一次」這個群體層級結果，並補上作者自己列的視覺前庭衝突。本卡只支撐「眼動節拍與步伐綁在一起」，不支撐「眼睛往前看」；轉折二的主證據是 H86-013。 原提案 F173-014（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-015",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "走到岔路口，眼睛會先看「比較有東西可看」的那條嗎？",
+      "mechanism_key": "walking_gaze.fork_path_choice_gaze_follows_self_efficacy_not_visual_information",
+      "answer_target": "在這個實驗裡不會，眼睛看的是自己比較有把握的那條。加拿大西門菲莎大學在昏暗的房間（1.1–3.5 勒克斯）把兩條約 2 公尺長、在起點相連的岔路投影在地上，路面是泥巴、樹根、石頭、坑洞、龜裂人行道、石塊路等照片，請 16 位健康成人（5 女 11 男，26 歲）先站著看 2 秒，再選一條走過去。最後選的那條，看的次數約是另一條的兩倍（7.8 對 3.9 次、7.5 對 4.1 次）。可是一條只有單一路面、另一條有三種路面時，兩條被看的次數（5.84 對 5.90）與時間比例（0.34 對 0.34）沒有差別，而且 63% 的時候大家反而選資訊較少的那條。全部做完後，每人對每種路面「不失去平衡走過去的信心」打 1 到 10 分（平均：泥巴 3.0、平整人行道 9.9）：大家 77% 與 69% 的時候選了平均信心較高的那條；對單一路面越沒信心，越常看另一條（R² = 0.31）；兩條路「最沒信心的那一段」差距越大，眼睛越集中在最後選的那條（次數 R² = 0.51、時間 0.48）。作者據此認為，對自己能力的把握會影響眼睛往哪裡看；信心分數是事後才打的，因此只能說兩者相關。",
+      "scope": "16 位成人；投影的路面照片、不是真實地形；每人 52 次選路；信心分數在實驗後收集一次。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "眼睛不是追著路面資訊最多的地方跑，而是停在自己覺得走得過去的那條路上。",
+        "visual": "清爽可愛的機制剖面動畫：俯視的一個岔路口，兩條小路像投影一樣亮在暗暗的地板上：左邊一條是平整的小方磚，右邊一條是一段泥巴、一段樹根、一段石頭。一個圓圓的小人站在路口，眼前的柔光在兩條路之間來回掃了幾下，然後多半停在讓小人點點頭、胸口冒出一顆小小安心光點的那一條上，小人沿著那條走過去。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          40,
+          45
+        ]
+      },
+      "source_ids": [
+        "H86-S015"
+      ],
+      "source_locator": "H86-S015 Participants（16 人）、Experimental design（1.1–3.5 lux、約 2 公尺、路面照片）、Protocol（2 秒、32 + 20 次、事後信心評分）、Results（7.8／3.9、7.5／4.1；5.84／5.90、0.34／0.34；63%；77% 與 69%；R² = 0.31；R² = 0.51 與 0.48；色相 R² = 0.22 屬有限證據）、Discussion、Table A5–A6（3.0、9.9）",
+      "notes": "研究網 NET_08_SFU_UBC（與 H86-004 併網封頂 2.00）。第七章前半：眼睛看哪裡，不只取決於路面。路面是投影照片，口播要說「在地上投影的路面照片」；信心與注視是相關，不寫成因果。不談平衡能力差的族群。提案 H86-015（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：數字相符（7.8／3.9、7.5／4.1、5.84／5.90、63%、77% 與 69%、R² = 0.31、0.51 與 0.48、3.0 與 9.9）。 原提案 F173-015（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-016",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "一邊走一邊心算，眼睛會跑去哪裡？",
+      "mechanism_key": "walking_gaze.dual_task_serial_sevens_fewer_proactive_target_fixations_more_off_path",
+      "answer_target": "比較少提前看下一個落腳點，反而更常看向路線外。英國艾希特大學招募 23 位 18–23 歲的大學生，最後眼動分析 17 人、動作分析 13 人。他們赤腳走一條 L 形路線（兩段各約 2.5 公尺），要準確踩進幾個約 5 公分高、用塑膠條規定腳尖方向的圓形目標；有時單純走，有時要從 185 到 210 之間的一個數字開始，大聲連續減 7。邊算邊走時，全程從 6.12 秒變成 6.69 秒、速度從每秒 0.92 降到 0.84 公尺，踩在轉角目標上的時間從 577 拉長到 677 毫秒。還沒走到轉角之前「提前」看第一個紅色目標的次數從 1.2 降到 0.7、每次停留從 148 降到 90 毫秒；看路線外毫無關係地方的次數從 3.43 增加到 6.25；平均跳視幅度從 10.14 度降到 9.07 度。目標排法變難，對動作與看目標都沒有顯著影響；只有在單純走路時，困難排法讓看路外的時間變長（305 → 404 毫秒）。研究者把邊算邊看路外稱為「盯著空氣發呆」，解讀為工作記憶與注意力的限制；單純走路時的看路外，他們認為可能是「行有餘力」，這些都是作者的推論。",
+      "scope": "17 位大學生（眼動）；約 5 公尺的 L 形精準踩點路線；單純走與邊心算邊走；交叉步只做描述統計。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "腦袋忙著算數時，眼睛提前看下一個落腳點的次數和時間都少了四成左右，反而更常飄到路外。",
+        "visual": "清爽可愛的機制剖面動畫：俯視的一條 L 形小路，轉角和後段地上各有一兩個凸起的小圓盤，一個圓圓的小人赤腳走著。第一段，小人眼前的柔光在腳前、下一個圓盤、再下一個圓盤之間輕快地跳；第二段，小人頭頂浮著一串慢慢往下掉的抽象小圓點（代表心算，不放數字），眼前的柔光常常飄到路旁一塊空白的牆面上停住，只在快踩到圓盤時才匆匆回來，小人的步子也放慢了。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_ids": [
+        "H86-S016"
+      ],
+      "source_locator": "H86-S016 Participants 與 Results: Participants（23 → 17 與 13 人）、Procedure（L 形、約 5 公分圓形目標、185–210 連續減 7）、Table 1（6.12→6.69 秒、0.92→0.84 m/s、577→677 毫秒）、Table 2（1.2→0.7 次、148→90 毫秒、3.43→6.25 次、10.14°→9.07°）、困難度與交互作用（305→404 毫秒）、Discussion（「gazing into thin air」、工作記憶、行有餘力的推論）",
+      "notes": "研究網 NET_11_Exeter。第七章後半與全片收尾：眼睛往前看需要腦袋留出空間。原文引言把交叉步連到跌倒風險、結論提到介入與安全，本卡與章節都不轉述，也不寫成「走路不要心算」之類的建議。PLOS 的學術編輯不是作者。提案 H86-016（第三十六輪，作者 F173）。 覆核 V193（2026-11-15）：數字相符；原文摘要最後一句以「支持減少心智負荷的介入」作結、引言把雙重作業連到長者跌倒——本卡與章節只描述實驗，任何介入、跌倒、老化內容都不轉述（drop_if 第 1、19 條）。 原提案 F173-016（第三十六輪，作者 F173、覆核 V193）。"
+    },
+    {
+      "id": "H86-017",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "影片裡的聲音比嘴型晚，要晚多少你才會發現？每個人都一樣嗎？",
+      "mechanism_key": "av_sync_perception.speech_window_width_differs_125_to_378ms_between_people_but_stable_within_person_r071",
+      "answer_target": "沒有一個人人通用的數字，但每個人自己的數字很穩定。美國華盛頓大學請 18 位英語母語的年輕人（17 人有效）在家用自己的電腦與內建喇叭，看女性說單字的短片，聲音比畫面晚 0、50、100、150、200、300、400、500 毫秒，背景同時有 4 個人在講話（目標比背景低 6 dB），每題回答聲音與畫面「同時」或「不同時」，一個月內再做一次。單字片段裡，「有一半機會還說同時」的寬度在 17 人之間從 125 毫秒到 378 毫秒；同一個人兩次的寬度相關 R = 0.71（組內相關 0.82），兩次平均只差 4 毫秒；人與人之間的變異約為同一人前後變異的 5 倍（3503.18 對 685.64）。第二次答得比較快、判斷曲線更陡、更一致，但寬度沒有顯著改變（p = 0.69）。",
+      "scope": "17 位英語母語年輕人；三位女性說話者的單字、無意義字與倒放字；只有畫面先、聲音晚 0–500 毫秒；4 人背景人聲；在家用自己的電腦離線執行；間隔一個月內重測。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "嘴型和聲音差多少才穿幫，答案因人而異：有人一百多毫秒就察覺，有人到快四百毫秒還說同時；但同一個人隔一個月再測，答案差不多。",
+        "visual": "清爽可愛的機制剖面動畫：一條橫向的時間軌上，上方一排代表畫面的小方塊、下方一排代表聲音的小波浪，聲音那一排慢慢往右滑開；畫面中央有一個半透明的「寬容區」泡泡框住兩者，泡泡在一排不同顏色的小人形剪影之間變寬變窄，每個剪影的泡泡大小不同，但同一個剪影第二次出現時泡泡大小幾乎相同（剪影無五官）。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "source_ids": [
+        "H86-S017"
+      ],
+      "source_locator": "H86-S017 Methods（Participants、Experimental protocol、Temporal synchrony measure、Stimuli & noise fragments）、Results「Group level analysis」（寬度不隨重測改變，F1,80 = 0.15、p = 0.6945）、「Test-retest reliability」（R = 0.71、ICC = 0.82、平均差 −4 毫秒）、「Inter-rater reliability」（Type A 範圍 125–378 毫秒；變異 3503.18 對 685.64）、Table 1",
+      "notes": "研究網 NET_01_VUAmsterdam_Sydney_Vanderbilt_UW。開場卡：先讓觀眾知道「差多少才穿幫」沒有單一答案，再把問題推向「為什麼聲音晚到比較容易被放過」。群體平均寬度只在圖中，不引用；只測了聲音晚到一側。 提案 H86-017（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：逐項對全文核對無誤；只改分類為人體感官與日常行為。 原提案 F175-001（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-018",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "聲音比嘴型早一點，和晚一點，哪一個比較容易被抓到？",
+      "mechanism_key": "av_sync_perception.auditory_lead_detected_better_dprime_158_vs_098_and_only_visual_lead_side_trainable",
+      "answer_target": "聲音搶先比較容易被抓到，而且這兩個方向看起來是各自獨立的兩套判斷。英國格拉斯哥大學請 30 位成人（34 人報名）判斷一個 10 毫秒的白色光環與一聲 10 毫秒短音是不是同時，聲音先或畫面先各 50 到 500 毫秒。練習前，聲音先時的辨別力 d′ = 1.58，畫面先時只有 0.98（p < 0.0001）。接著分三組做兩天有對錯回饋的練習：兩邊都練、只練畫面先、只練聲音先（各 10 人）。只有練到畫面先的兩組，畫面先那側變得更敏銳（只練畫面先的一組 0.83 → 1.48）；聲音先那側在任何一組都沒有進步，只練聲音先的一組，兩側都沒有可測到的練習效果（F3,27 = 1.05、p = 0.39）。研究者據此認為，抓「聲音搶先」與抓「聲音晚到」很可能由不同的機制負責。",
+      "scope": "30 位健康成人；閃光環與短音；13 種落差；兩天、每天練習前後各測一次；以 d′ 分析。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "聲音只要搶先一點就容易穿幫，晚到卻常被放過；練習只能讓「晚到」那一側變敏銳，兩邊像是兩把不同的尺。",
+        "visual": "清爽可愛的機制剖面動畫：一條時間軌中央有一個天平，左盤放「聲音先到」的小音符、右盤放「畫面先到」的小方塊；左邊的偵測燈一碰就亮，右邊的燈要推很遠才亮；接著一隻小手輕敲右邊的燈幾次，右邊的燈變得更靈敏，左邊的燈不動，兩盞燈之間沒有電線相連。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          50,
+          65
+        ]
+      },
+      "source_ids": [
+        "H86-S018"
+      ],
+      "source_locator": "H86-S018 Participants、SJ assessment（13 種落差、10 毫秒光環與短音）、Results「Asymmetry in TBW at baseline」（d′ 1.58 對 0.98，F1,27 = 37.101）、「Differences in trainability」與「Trainability and transferability」（VA-only 0.83 → 1.48；AV-only 無效果）、Discussion",
+      "notes": "研究網 NET_02_Glasgow_Munster。建立「不對稱」的現象，下一章才拆它的常見解釋。刺激不是說話影片，稿中說「在閃光與短音的實驗裡」；「兩套機制」是作者解讀。不寫成練習的建議。 提案 H86-018（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：「毫無變化」改為原文的統計結果；分類改為人體感官與日常行為。 原提案 F175-002（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-019",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "聲音晚到比較能被原諒，真的是因為光跑得比聲音快嗎？",
+      "mechanism_key": "av_sync_perception.light_sound_travel_gap_too_small_and_natural_speech_ranges_20ms_audio_lead_to_large_visual_lead",
+      "answer_target": "光速差解釋不了，至少在說話的距離上不行。法國格勒諾布爾的語音實驗室錄了一位法語說話者把 pa、ta、ka、ba、da、ga、ma、na 八個音節各說 6 次（唇上塗藍色、每秒 50 格自動描出嘴唇開合），分「單獨說」與「連著說」兩種。單獨說時，嘴唇開始閉起來準備，比聲音出現早 200 到 400 毫秒；但連著說時，聲音和嘴唇幾乎一起變化：閉嘴階段畫面只領先約 20 到 40 毫秒（以音量判斷），張嘴階段雙唇音幾乎完全同步，舌根音甚至是聲音先出現 20 毫秒以上。作者綜合文獻估計，自然說話的落差大約從聲音先 40 毫秒到畫面先 200 毫秒；並指出就算說話者站在 10 公尺外，光比聲快造成的差距也不超過 30 毫秒，解釋不了人對聲音晚到寬容得多的程度。作者推測，這種不對稱反映了說話時嘴巴常常先動的統計。",
+      "scope": "一位法語說話者、8 個音節各 6 次；單獨說與連著說；每秒 50 格影像；以音量與共振峰判斷聲音事件。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "光比聲快，在幾公尺內只差幾毫秒到幾十毫秒；真正讓嘴型常常「先到」的，是說話本身的動作。",
+        "visual": "清爽可愛的機制剖面動畫：左半邊是一個沒有五官的圓形說話泡泡，上下兩片弧線代表嘴的開合，旁邊一條聲音波浪；單獨一個音時，弧線先慢慢閉上、很久之後波浪才冒出來；連續說話時，弧線一開一合和波浪起伏幾乎同步。右半邊一道光束與一圈聲波從遠處一起出發，光束幾乎瞬間抵達，聲波只落後一小截。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_ids": [
+        "H86-S019"
+      ],
+      "source_locator": "H86-S019 Methods「Data」（6 次 × 8 音節、50 Hz 攝影、藍色唇妝）、Results「Isolated syllables」（Figure 5 敘述：200–400 毫秒）、「Chained syllables」（Figure 7 敘述：閉合 −20 到 −40 毫秒、雙唇音張開近乎同步、舌根音聲音先逾 20 毫秒）、Discussion「Summary」與「Plausible consequences」（−40 到 +200 毫秒；10 公尺不超過 30 毫秒）",
+      "notes": "研究網 NET_03_Grenoble。轉折一的前半：拆掉「光比聲快」這個最常見的解釋。一位說話者的示範性量測，稿中要說「一位說話者的錄音」；「窗口反映說話統計」是作者推測。作者並說明先前常被引用的「嘴巴總比聲音早 150 毫秒」只適用於單獨音節或句首。 提案 H86-019（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：本篇的自錄資料只有一位說話者、每音節 6 次，屬示範性量測，「自然說話從聲音先 40 毫秒到畫面先 200 毫秒」與「窗口反映說話統計」來自作者綜合文獻與一個玩具模型，全文過半是論證；依「以建模或二手資料為主從嚴」改計 0.75。卡片內容核對無誤（200–400、−20 到 −40、舌根音聲音先逾 20 毫秒、−40 到 +200、10 公尺不超過 30 毫秒皆與原文相符）。 原提案 F175-003（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-020",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "嘴型和聲音完全對齊時，真的是最好懂的時候嗎？",
+      "mechanism_key": "av_sync_perception.best_integration_at_about_100ms_audio_lag_stable_per_person_but_uncorrelated_across_tasks",
+      "answer_target": "在這個實驗裡不是，平均最好懂的時候，聲音反而晚了一百毫秒左右。英國倫敦城市大學讓 33 位年輕人（39 人參加、36 人完成兩次測試，再排除 3 位最佳點超過 400 毫秒者）看說話的嘴部影片，聲音從早 500 毫秒到晚 500 毫秒共 9 級，做兩種不需要回答「同不同時」的作業：辨認被處理得模糊的單字，以及嘴型與聲音故意配錯時會不會聽成第三個音。模糊單字辨認最好的落差平均是聲音晚 113 毫秒，錯配錯覺最強的落差平均是聲音晚 91 毫秒（都顯著不等於 0）。每個人的最佳點差很多，同一作業重測仍相關（當天重測的一組 r = 0.62、隔一週重測的另一組 r = 0.44，單尾檢定），但同一個人在兩種作業的最佳點彼此不相關（r ≤ 0.26、不顯著）。作者指出 1 公尺距離光聲時差只有約 3 毫秒；他們推測不同作業動用的腦內路徑各有各的時間差。",
+      "scope": "33 位 18–24 歲成人；嘴部影片；9 級落差；模糊單字辨認與錯配音節兩種隱性作業；當天或隔一週重測。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人最能把嘴型和聲音合起來用的時刻，平均落在聲音晚一百毫秒左右；每個人的「最佳時差」不同，連同一個人換一件事做都不一樣。",
+        "visual": "清爽可愛的機制剖面動畫：一個旋鈕把聲音波浪慢慢往右推，每推一格，旁邊代表「聽懂程度」的小水杯就裝一點水；水杯在完全對齊時不是最滿，而是在旋鈕往「聲音晚」轉了一小段時最滿；畫面右側兩個不同顏色的水杯（代表兩件不同的事）滿水的位置不一樣。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_ids": [
+        "H86-S020"
+      ],
+      "source_locator": "H86-S020 Methods（36 人、33 人分析；9 級落差；兩種作業）、Results「Group statistics」（tMax 91 與 113 毫秒）、「Within- and between-task correlations」（r 0.62、0.44；作業間 r ≤ 0.26）、「Benefit of desynchronising speech」（模糊單字多對 12.02 個百分點，僅作佐證）、Discussion（約 3 毫秒於 1 公尺）",
+      "notes": "研究網 NET_04_CityLondon。轉折一的後半：不對稱不只是「容忍」，在這個實驗裡最佳點本身就偏向聲音晚到。不寫成「延遲聲音可以讓人聽得更清楚」的建議；作者文中的應用展望不轉述。 提案 H86-020（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：人數依原文 Participants 與 Results 更正（39 人報名、36 人完成、33 人分析）；重測相關是兩個不同小組（17 與 16 人）。 原提案 F175-004（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-021",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "同樣對不上，為什麼念到某些字特別容易穿幫？",
+      "mechanism_key": "av_sync_perception.visible_bilabial_and_rounded_articulation_detected_with_smaller_offsets_51ms_vs_60_64ms",
+      "answer_target": "嘴唇動作看得越清楚的音，越容易抓到先後，也越不需要畫面先跑。雅典與牛津的研究團隊讓受試者看三位說話者念子音與母音的特寫影片，聲音與畫面前後錯開 0、66、133、200、300 毫秒，判斷哪一個先出現。在鼻音的實驗（13 人）裡，雙唇的 m 只要差約 51 毫秒就分得出先後，舌尖的 n、舌根的 ng 要 60 與 64 毫秒（顯著）；母音實驗（11 人）裡，嘴唇圓起來的母音 73 毫秒、不圓的 89 毫秒（F(1, 10) = 4.75、p = 0.05，剛好在邊緣）。在塞音實驗（14 人）裡，雙唇音的主觀同時點是聲音先 3 毫秒（與 0 無顯著差），舌尖音與舌根音則要畫面先 31 與 35 毫秒才覺得剛好同時。研究者解讀為：嘴型越顯眼，越能提早預告聲音，越不需要畫面領先。",
+      "scope": "11–14 人的七個小實驗；三位英國說話者；子音配 a、母音單獨念；判斷先後的作業；聲音與畫面從同一處播放。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "閉嘴唇的音、圓嘴唇的母音最容易被看出沒對上；舌頭躲在嘴裡的音，差多一點也不容易發現。",
+        "visual": "清爽可愛的機制剖面動畫：三個沒有五官的圓形說話泡泡並排，第一個的兩片唇線大大地閉合再彈開，第二個只有唇線微微開合、內部一條小舌頭在暗處動，第三個的唇線變成小圓圈；每個泡泡上方有一盞偵測燈，唇線動作越明顯的那盞燈越早亮起。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_ids": [
+        "H86-S021"
+      ],
+      "source_locator": "H86-S021 Apparatus and materials、Design（9 種落差）、Experiment 1A（PSS：雙唇 −3 毫秒、舌尖 31、舌根 35 毫秒）、1C（JND：51、60、64 毫秒，p < 0.05）、Experiment 3（JND：73 對 89 毫秒）、General discussion",
+      "notes": "研究網 NET_05_Athens_Barcelona_Tokyo。第四章「什麼樣的畫面容易穿幫」的第一張。部分差異未達顯著（塞音 JND p = 0.15），稿中只用鼻音的顯著結果；母音的差異 p = 0.05，只能說「在邊緣」。判斷先後與判斷同不同時是不同作業。 提案 H86-021（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：母音的 p 值補上（原文 p = 0.05，不是 p < 0.05）；章節白話把「ㄅ、ㄆ、ㄇ」改為只舉「ㄇ」——塞音 b、p 的先後辨別力差異未達顯著（p = 0.15）。 原提案 F175-005（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-022",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "畫面糊糊的影片，嘴型和聲音差一點，是不是比較不容易發現？",
+      "mechanism_key": "av_sync_perception.blurred_video_extends_judged_synchrony_from_67_133ms_to_0_267ms_visual_lead",
+      "answer_target": "在這個實驗裡是，而且被放寬的主要是「聲音晚到」那一側。美國休士頓的團隊讓 37 位大學生（實驗 1 16 人、實驗 2 21 人）看單字影片，聲音比畫面早 300 毫秒到晚 500 毫秒共 15 級，影片有清楚與高斯模糊兩種，單字有嘴型明顯與不明顯兩種。清楚、嘴型明顯的字，只有畫面先 67 到 133 毫秒時九成以上判為同時；同一批字一模糊，從完全對齊（0）一直到畫面先 267 毫秒都還高比例判為同時，曲線的平台變寬、下降得更慢，而且偏向畫面先。嘴型不明顯的字，平台落在聲音先 67 毫秒到畫面先 133 毫秒。研究者用「這兩個訊號像不像同一個人發出」的推論模型解釋：畫面越不可靠，對時間差的估計越模糊，就越容易判成同一件事；模型估出的個人感覺雜訊在 70 到 300 毫秒之間，遠大於模糊等操弄造成的約 30 毫秒。",
+      "scope": "大學生 39 人（有效 37 人）；8 個單字、前人錄製影片；清楚與模糊；15 級落差；同時判斷。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "畫面一糊，嘴型的時間點就看不準，腦子比較願意把晚到的聲音也當成同一句話。",
+        "visual": "清爽可愛的機制剖面動畫：同一個沒有五官的說話泡泡出現兩次，第一次輪廓銳利，第二次像隔著毛玻璃；下方各有一個代表「還算同時」的彈性橡皮筋，銳利的那個橡皮筋短短的，毛玻璃那個被拉長，而且主要往右邊（聲音晚到的方向）延伸。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_ids": [
+        "H86-S022"
+      ],
+      "source_locator": "H86-S022 Behavioral testing procedure、Stimuli（15 級落差、模糊濾鏡、高低可讀度）、Results「Visual reliable, high」（+67 到 +133 毫秒 ≥ 0.90）、「Visual blurred, high」（0 到 +267 毫秒）、「Visual reliable, low」（−67 到 +133 毫秒）、「Interpreting parameters」（70–300 毫秒、約 30 毫秒）",
+      "notes": "研究網 NET_06_Houston。模糊是影像濾鏡造成的，不等同串流或視訊畫質，稿中不要寫成「網路不好時」。模型比較的勝負不引用。 提案 H86-022（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：本篇以「推論模型」為題與主要貢獻，37 人的行為資料是為了檢驗模型而收，依「以建模為主從嚴」改計 0.75；卡片的行為數字核對無誤（+67 到 +133 毫秒 ≥ 0.90；模糊後平台從 0 延伸到 +267 毫秒，原文只說「高比例」，不是九成以上；70–300 與約 30 毫秒）。題案 connection 的「九成以上判為同時的範圍擴大到 0–267 毫秒」已改。 原提案 F175-006（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-023",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "同一個人換了環境，「還算同時」的範圍會跟著變嗎？",
+      "mechanism_key": "av_sync_perception.simultaneity_criterion_tracks_momentary_temporal_uncertainty_across_virtual_environments",
+      "answer_target": "會，而且跟著變的是當下的「不確定程度」，不是環境本身。美國塔夫茨大學讓兩組各 20 人坐在投影牆前，牆上播放走過城市街道、走過森林或單調實驗室的畫面與聲音（實驗 2 改為城市與一段緩慢流動的彩色圓點畫面），同時牆中央藏著的白光燈與小喇叭送出 50 毫秒的一閃一響，前後差 0 到 300 毫秒，請他們判斷同不同時。研究者用模型估出每個人在每個環境裡對時間差的不確定度與判斷界線：不確定度顯著預測界線（實驗 1 χ2 = 14.57、實驗 2 χ2 = 15.88，皆 p < 0.001）——越不確定，界線放得越寬。但環境對全體沒有一致的影響；20 人中分別有 14 人與 8 人的表現隨環境改變，方向因人而異。",
+      "scope": "40 位成人；隱藏的燈與喇叭；投影的城市、森林、實驗室環境；9 級落差；以「兩個訊號各有誤差」的模型估參數。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「還算同時」的寬窄不是寫死的：同一個人當下對時間越拿不準，就放得越寬。",
+        "visual": "清爽可愛的機制剖面動畫：一盞小燈與一個小喇叭嵌在一面牆裡，牆上輪流投影抽象的街道方塊與樹林線條；燈與喇叭上方一個代表「拿不準程度」的霧團忽大忽小，霧團一大，底下代表寬容範圍的拱門就跟著變寬。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_ids": [
+        "H86-S023"
+      ],
+      "source_locator": "H86-S023 Participants、Apparatus and stimuli（投影環境、隱藏燈與喇叭、SOA 0–300 毫秒）、Analysis（獨立通道模型）、Results（χ2 = 14.57、15.88；環境無群體效果；14/20 與 8/20）、Discussion",
+      "notes": "研究網 NET_07_Tufts。第四章的收束：前兩張說「畫面看不清楚會放寬」，這張說同一個人的放寬程度跟著當下的不確定度走。環境沒有一致效果，不能寫成「熱鬧的地方比較容易放過」。 提案 H86-023（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：補上實驗 2 的環境與實驗 1 不同；投影的螢幕保護程式不寫來源名稱。 原提案 F175-007（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-024",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "同樣差三百毫秒，為什麼踢踏舞看不出來，跨欄卻看得出來？",
+      "mechanism_key": "av_sync_perception.dense_action_sounds_hide_offset_drumming_698_vs_399_percent_judged_synchronous",
+      "answer_target": "聲音一下接一下太密時，錯開的那一聲很容易剛好疊在下一個動作上。德國明斯特大學把跨欄、踢踏舞與打鼓錄成只剩關節光點的動作影片，配上原聲，再把聲音往前或往後挪 120 到 400 毫秒。實驗 1（22 人）裡，畫面先時判為同時 59.2%、聲音先時 33.7%；腳步密的踢踏舞 58.9%、腳步疏的跨欄 34.0%；跨欄差到 400 毫秒時兩側都只剩 7.7% 與 6.4%。實驗 2（31 人）請一位專業鼓手打出「每秒事件多或少、輕重分明或平均」四種節奏：事件多時判為同時 69.8%，事件少時 39.9%；輕重分明 57.4%、平均 52.3%（輕重的效果只在事件少時明顯）。研究者解釋：每秒約 2.5 下時兩聲間隔約 400 毫秒，挪 400 毫秒的聲音正好落在另一個動作上，除非音量輕重不同，否則找不到破綻。",
+      "scope": "22 與 31 位未受過該項訓練的成人；光點動作影片配原聲；聲音早或晚 120、200、320、400 毫秒；同時判斷。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "畫面越熱鬧、聲音越密，聲音錯開也越難被發現，因為錯開的那一聲會剛好對到下一個動作。",
+        "visual": "清爽可愛的機制剖面動畫：上排一雙由光點組成的小腳，左邊稀疏地一步一步跨、右邊密密地快速踩；下排對應的鼓點小圓點整串往右滑開；稀疏的那一邊滑開後鼓點落在兩步之間的空白，顯得突兀；密集的那一邊滑開後每個鼓點剛好又對上另一步。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          25,
+          30
+        ]
+      },
+      "source_ids": [
+        "H86-S024"
+      ],
+      "source_locator": "H86-S024 Study 1 Participants、Stimuli（光點影片、±120/200/320/400 毫秒）、Results—Study 1（59.2% 對 33.7%；58.9% 對 34.0%；7.7% 對 6.4%）、Study 2 Stimuli（事件密度 2.37 與 3.23 Hz）、Results（69.8% 對 39.9%；57.4% 對 52.3%）、General discussion（400 毫秒與 2.5 Hz 的解釋）",
+      "notes": "研究網 NET_02_Glasgow_Munster。第五章主卡。與 H86-033「規則節奏越快越容易發現」看似相反，稿中要說兩者條件不同（真實動作聲、事件密到與落差同量級 vs. 抽象規則起伏），不合成單一規則。 提案 H86-024（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：逐項對全文核對無誤；只改分類為人體感官與日常行為。 原提案 F175-008（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-025",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "一直看聲音慢半拍的畫面，看久了會不會就不覺得慢了？",
+      "mechanism_key": "av_sync_perception.three_minute_adaptation_shifts_simultaneity_point_for_about_52s_and_previous_trial_shifts_it_9_vs_23ms",
+      "answer_target": "會被拉過去，而且有快慢兩種拉法。澳洲雪梨的研究者讓 10 個人先連續看約 3 分鐘、235 組聲音固定晚 200 毫秒（或固定早 200 毫秒）的閃光與短音，再立刻判斷 98 組前後差 0 到 512 毫秒的配對是不是同時。剛看完時，大家「覺得剛好同時」的點明顯往剛才的方向挪；這個效果在多重比較校正後只在結束後約 52 秒內可靠，之後消失。另一種更快的調整則每一題都在發生：上一題是聲音先時，這一題的主觀同時點是 9 毫秒；上一題是畫面先時是 23 毫秒（p = 0.006），而且整段測驗都一樣大。兩種調整彼此不干擾、可以相加；作者說目前還分不出它們是不是同一個機制。",
+      "scope": "10 位成人；閃光環與 500 Hz 短音；約 3 分鐘固定 200 毫秒落差的適應加 98 題測試；四個回合。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「覺得剛好同時」的那個點會被剛剛看到的拉著走：看幾分鐘固定落差，拉一分鐘左右；連上一題都會拉一點。",
+        "visual": "清爽可愛的機制剖面動畫：時間軌上一根代表「剛好同時」的小旗子，一連串聲音慢半拍的音符從右邊流過時，小旗子被一條橡皮筋慢慢往右拉，音符停了以後又慢慢彈回原位；同時旗子底下還有一個小彈簧，每來一個音符就輕輕往那個音符的方向抖一下。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          30,
+          35
+        ]
+      },
+      "source_ids": [
+        "H86-S025"
+      ],
+      "source_locator": "H86-S025 Methods（10 人；235 組、約 200 秒、200 毫秒；98 題、SOA 0/64/128/256/512 毫秒）、Results「PSS」（9 對 23 毫秒，F(1,9) = 12.9、p = .006；前 5 個時間窗經 FDR 校正後可靠，約 52 秒）、General Discussion",
+      "notes": "研究網 NET_01_VUAmsterdam_Sydney_Vanderbilt_UW。轉折二的主卡：門檻不是固定的。不寫成「看久就會習慣，所以不用管延遲」。 提案 H86-025（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：逐項對全文核對無誤；只改分類為人體感官與日常行為。 原提案 F175-009（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-026",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "上一個畫面和下一個長得不一樣，上一秒的落差還會影響下一秒嗎？",
+      "mechanism_key": "av_sync_perception.trial_to_trial_recalibration_independent_of_spatial_frequency_of_preceding_image",
+      "answer_target": "會，逐題的調整只看聲音和畫面之間的先後，不看畫面長什麼樣。日本同志社大學用粗條紋與細條紋兩種圖案配 500 Hz 短音，前後差 0 到 510 毫秒，請兩個實驗共 59 位有效受試者判斷是否同時。細條紋的訊號在腦中處理得比較慢，這點在反應時間上重現（實驗 1 t(30) = 4.88、p < .001），細條紋的主觀同時點也比較偏畫面先。但上一題的落差方向顯著影響這一題的主觀同時點（F(8, 240) = 4.58、p < .001），而且不論這一題是粗是細、上一題和這一題圖案相同或不同，調整幅度都沒有差別（F = 0.14、p = 0.71）；整段只用一種圖案的實驗 2 結果相同。作者推測這種逐題調整主要發生在判斷標準的層次。",
+      "scope": "59 位有效成人；粗細兩種條紋圖案與短音；10 級落差；隨機混合或整段單一圖案兩種安排。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "上一秒的落差會拉動下一秒的判斷，就算下一個畫面長得完全不一樣。",
+        "visual": "清爽可愛的機制剖面動畫：一排卡片輪流翻開，有的印著寬條紋、有的印著細條紋，每張卡片旁邊一個小音符；同一根代表「剛好同時」的小旗子，不管下一張是寬是細，都往上一張音符偏的方向擺一下。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_ids": [
+        "H86-S026"
+      ],
+      "source_locator": "H86-S026 Experiment 1 Participants（33 人、31 人分析）、Stimuli（1.0 與 5.0 週期/度、SOA ±510/260/130/50/0）、Results（RT t(30) = 4.88；上一題 SOA 主效果 F(8, 240) = 4.58；SF 無差異 F = 0.14、p = .71）、Experiment 2（32 人、28 人分析）、General Discussion",
+      "notes": "研究網 NET_11_Doshisha。轉折二的第二張：補強「逐題被拉動」不是只在一種畫面上發生。調整幅度只在圖中，不寫毫秒數。 提案 H86-026（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：逐項對全文核對無誤；只改分類為人體感官與日常行為。 原提案 F175-010（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-027",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "學樂器的人比較會抓聲音沒對上，那他們也比較不容易被帶著走嗎？",
+      "mechanism_key": "av_sync_perception.musicians_narrower_window_but_same_recalibration_and_cumulative_shift_only_after_auditory_lead",
+      "answer_target": "不會，學樂器的人窗口比較窄，但被拉動的幅度和一般人一樣。澳洲昆士蘭科技大學比較了 20 位學樂器 6 年以上、每週至少練 1 小時的人，與 18 位幾乎沒學過的人。學樂器的人判斷「同時」的左右兩條界線分別收窄 76.53 與 90.27 毫秒，判斷受雜訊干擾也比較小（少 39.85 毫秒）。每段先看約 2 分鐘固定「聲音先」或「畫面先」200 毫秒的閃光與短音再測試：兩組被拉動的幅度沒有差別，上一題方向造成的逐題調整（主觀同時點約 34.30 毫秒）也沒有差別。出乎作者意料的是，這個實驗裡只有「聲音先」的長時間適應讓主觀同時點挪動（−28.59 毫秒），「畫面先」的只挪 7.13 毫秒、不顯著。",
+      "scope": "38 位成人（20 位學樂器者、18 位非學樂器者）；閃光環與 2000 Hz 短音；9 級落差；每段約 2 分鐘適應加短測驗；以觀察者模型分析。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "耳朵眼睛比較敏銳，不代表比較不會被最近看到的落差拉著走；而且哪一種落差會讓人調整，不同實驗的答案還不一樣。",
+        "visual": "清爽可愛的機制剖面動畫：兩個代表「寬容範圍」的拱門並排，左邊（一個抱著小樂器的剪影旁）的拱門窄、右邊的寬；同一陣往右吹的風（一串慢半拍的音符）吹過，兩個拱門被吹歪的角度一模一樣（剪影無五官）。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          30,
+          35
+        ]
+      },
+      "source_ids": [
+        "H86-S027"
+      ],
+      "source_locator": "H86-S027 Participants（20 對 18；6 年、每週 1 小時）、Design and procedure（±400/266/133/66/0 毫秒；約 2 分鐘 ±200 毫秒適應）、Results「Group differences in sensory noise」（39.85 毫秒）、「Cumulative and rapid recalibration」（76.53、90.27 毫秒；交互作用皆不顯著）、「Shifts in the PSS」（−28.59、7.13、34.30 毫秒）、Discussion",
+      "notes": "研究網 NET_08_QUT。轉折二的第三張，同時帶出一個必須誠實保留的矛盾：本篇只有聲音先的長時間適應有效，H86-028（第七章）卻只有畫面先的有效；兩者落差大小與作業不同，稿中要並陳。不寫成學音樂的建議。 提案 H86-027（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：交叉引用由 H86-026 改為 H86-028（矛盾的另一邊是巴塞隆納 706 毫秒實驗，不是同志社的條紋實驗）。 原提案 F175-011（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-028",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "先看到閃電、很久才聽到雷，這種明顯對不上的，腦子也會調過來嗎？",
+      "mechanism_key": "av_sync_perception.adaptation_to_706ms_visual_first_gap_shifts_simultaneity_23_37_14ms_but_not_auditory_first",
+      "answer_target": "會，但在這組實驗裡只對「光先、聲後」的那一種。巴塞隆納的研究者讓受試者連看 3 到 4 分鐘：一個紅點閃過、706 毫秒後才響一聲，或反過來先響再閃；預試的 5 人看了 30 秒或 3 到 4 分鐘都不覺得這種落差同時（220 毫秒的落差看 3 到 4 分鐘後全部覺得同時）。看完之後再判斷前後差 0 到 320 毫秒的配對：光先的一組，主觀同時點往光先的方向挪了 23 毫秒（實驗 1，16 人分成兩組、每組 8 人），燈和喇叭放在明顯不同位置時挪了 37 毫秒（實驗 2，26 人、每組 13 人），改成判斷先後時挪了 14 毫秒（實驗 3，42 人、每組 21 人，光先組 21 人中 16 人方向一致）；聲音先的各組都沒有可靠變化。作者認為這和日常裡遠方事件總是光先到、聲後到的經驗有關。",
+      "scope": "84 位成人分三個實驗；紅點與 250 Hz 短音；706 毫秒固定落差的 3–4 分鐘適應；同時判斷或先後判斷。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連明顯對不上的「光先聲後」，看幾分鐘也會讓人的判斷往那邊挪；反過來「聲先光後」卻沒動。",
+        "visual": "清爽可愛的機制剖面動畫：遠方一朵小雲先閃出一道光，一段距離後才有一圈聲波慢慢走到前景的小耳朵形狀；重複幾次後，前景一根代表「剛好同時」的小旗子往光那一側傾斜；畫面另一半換成聲波先到、光後到，小旗子不動。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_ids": [
+        "H86-S028"
+      ],
+      "source_locator": "H86-S028 Experiment 1 Procedure（706 毫秒、80 對、3–4 分鐘；預試 5 人、220 毫秒對照）、Results（VA 組 23 毫秒，t(7) = −4.869、p = .002；AV 組不顯著）、Experiment 2（37 毫秒）、Experiment 3（14 毫秒；16/21）、General Discussion",
+      "notes": "研究網 NET_05_Athens_Barcelona_Tokyo。第七章開場：調整不只發生在小落差。與 H86-027 方向相反，稿中必須並陳。「和遠方事件的經驗有關」是作者解讀。 提案 H86-028（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：「無論看多久」改為原文的 30 秒與 3–4 分鐘；補上每組人數（實驗 1 光先組只有 8 人，t(7)）。章節白話的「閃電與雷」改說是研究者用一個紅點與一聲短音模擬。 原提案 F175-012（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-029",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "左邊的人說話慢半拍、右邊的人搶半拍，腦子能分開調嗎？",
+      "mechanism_key": "av_sync_perception.opposite_lags_at_two_locations_recalibrate_separately_but_not_when_only_pitch_pattern_differs",
+      "answer_target": "在這個小實驗裡可以，只要兩者在不同位置。英國布拉德福大學與諾丁漢大學讓 6 位觀察者（位置條件其中 4 位是作者、音高條件其中 3 位是作者）同時面對左右各 10 度的兩個位置：一邊固定聲音先 120 毫秒、另一邊固定畫面先 120 毫秒，聲音以各人量過的耳朵頻率特性做出方位感。適應之後判斷先後，兩個位置各自往自己被適應的方向偏，沒有互相抵消，而且兩側效果一樣大。但如果兩組刺激放在同一個正前方位置，只靠「高音配細條紋、低音配粗條紋」區分，相反的兩種落差就無法同時適應，後效與零沒有顯著差異。研究者認為，對時間的調整和空間位置綁在一起。",
+      "scope": "6 位觀察者；耳機播放、依個人耳朵特性處理的方位聲；左右 ±10 度；120 毫秒相反落差同時適應；先後判斷；每人 3360 題。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不同位置的兩組聲音畫面，腦子可以各調各的；同一個位置的兩組，只靠音高和花紋分不開。",
+        "visual": "清爽可愛的機制剖面動畫：畫面左右各一盞小燈與一個小喇叭，左邊的音符總是先跳出、右邊的光總是先亮；兩邊各有一根小旗子，往各自相反的方向傾斜；接著兩組燈與喇叭疊到正中央，一組配細條紋、一組配粗條紋，中央的小旗子左右拉扯，最後停在原位。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_ids": [
+        "H86-S029"
+      ],
+      "source_locator": "H86-S029 Observers（6 人，4 位作者）、Stimuli（±10 度、HRTF 處理）、Adaptation phase（120 毫秒）、Test phase（±120/80/40/0 毫秒，3360 題）、Results（Fig. 3 敘述：空間條件不受一致性影響；Fig. 4 敘述：音高與條紋不一致條件後效不異於 0；F1,10 = 24.2 的交互作用）、Discussion",
+      "notes": "研究網 NET_09_Bradford_Nottingham。第七章第二張：腦子要先決定哪個聲音配哪個畫面，才知道要調誰。樣本很小、多數為作者本人，稿中說「一個只有幾位觀察者的小實驗」；後效數值只在圖中，不引用。 提案 H86-029（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：補上音高與條紋條件的 6 人中有 3 位作者；後效仍不引用數值。全文是完整的心理物理實驗（每人 3360 題），依規則不折，但敏感度測試列入。 原提案 F175-013（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-030",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "一閃一響輪流出現、間隔都一樣，腦子怎麼知道要把哪個聲音配哪個畫面？",
+      "mechanism_key": "av_sync_perception.pitch_elevation_pairing_groups_signals_and_selectively_recalibrates_congruent_pairs_11_to_13ms",
+      "answer_target": "在這個實驗裡，它用的是「高音配上面、低音配下面」這種直覺配對。東京大學讓受試者看上方或下方的圓與高音或低音交替出現，相鄰兩者的間隔都是 200 毫秒，唯一的差別是「高音配上方、低音配下方」這兩對裡誰先出現。之後判斷高音配上方（或低音配下方）的測試對：適應時畫面先的一組，主觀同時點比聲音先的一組多 13.5 毫秒（實驗 1，20 人，19.1 對 5.6 毫秒，p = 0.014），重做時多 11.4 毫秒（實驗 2，31 人，36.1 對 24.7 毫秒，p = 0.016）；但在實驗 2 拿高音配下方這種不搭的組合來測，就看不到差別（p = 0.716）。研究者認為腦子只會替它認為屬於同一件事的那一對調整時間差。",
+      "scope": "51 位有效成人分兩個實驗；上下位置的圓與 1000、4000 Hz 純音；交替序列 60 秒初始適應加每題 5 秒補充；同時判斷。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "腦子不是把所有聲音和畫面一起調，而是先猜「誰跟誰是一對」，只調那一對。",
+        "visual": "清爽可愛的機制剖面動畫：上方一顆小圓、下方一顆小圓，旁邊一個高音小鳥與一個低音小熊輪流冒出；一條虛線把高音小鳥連到上方小圓、低音小熊連到下方小圓，只有被虛線連起來的那一對旁邊的小旗子會傾斜，沒連起來的組合旁的小旗子不動。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_ids": [
+        "H86-S030"
+      ],
+      "source_locator": "H86-S030 Experiment 1 Participants（20 人）、Design and procedures（間隔 200 毫秒、60 秒初始適應、5 秒補充適應）、Results（19.1 對 5.6 毫秒、t(19) = 2.69、p = 0.014）、Experiment 2（31 人分析；一致對 36.1 對 24.7 毫秒、p = 0.016；不一致對 p = 0.716）、General discussion（無基準線）",
+      "notes": "研究網 NET_05_Athens_Barcelona_Tokyo。第七章收束：與 H86-029 合看，位置可以當配對線索，「高音配上方」也可以，但隨意指定的音高配條紋不行（見 H86-029）。沒有基準線，只能說兩種適應之後不同。 提案 H86-030（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：標明不搭組合的測試只在實驗 2。 原提案 F175-014（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-031",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "覺得嘴型和聲音不同步，是不是就不會把它們合在一起聽？",
+      "mechanism_key": "av_sync_perception.audiovisual_fusion_occurs_on_trials_judged_asynchronous_mean_466_percent_judged_synchronous",
+      "answer_target": "不一定，在這個實驗裡，「覺得不同步」和「把兩者合成一個音」並沒有綁在一起。荷蘭阿姆斯特丹自由大學的團隊在線上請成人（101 人參加，依統計自由度約 90 人分析）看一位女演員說 ga 的影片，聲音配對正確，或故意換成 ba（這種錯配常讓人聽成第三個音 da），聲音與嘴型錯開 0、±260、±500 毫秒。每題先說聽到什麼、再說同不同步。在作者自己標明「超出預先登記」的探索性分析裡，那些聽成 da 的題目，平均只有 46.6% 被判為同步；固定在畫面先 260 毫秒時，覺得同步的題與不覺得同步的題，聽成 da 的比例是 27% 對 22%，沒有顯著差異（同為探索性分析，只納入兩種情形都出現過的 79 人）。反過來（這是預先登記的主分析），聲音內容配錯，本身就讓「同步」的回答從 0.60 降到 0.33，即使兩者完全對齊時也一樣。另外，上一題聲音先時這一題的主觀同時點是 156 毫秒，畫面先時是 192 毫秒。",
+      "scope": "約 90 位 19–73 歲成人、線上施測；一個音節（配對正確或錯配）；5 種落差；每題回答聽到的音與是否同步。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "發現聲音和嘴型對不上，不代表腦子就把它們分開處理；內容對不上，反而會讓人覺得時間也對不上。",
+        "visual": "清爽可愛的機制剖面動畫：一個沒有五官的說話泡泡吐出一顆紅色音符，旁邊耳機形狀的小盒子收到一顆藍色音符，兩顆音符在中間的小漏斗裡混成一顆紫色音符；同時一盞代表「同不同步」的小燈閃著警示色，紫色音符照樣從漏斗底下掉出來，兩件事各走各的路。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          55,
+          65
+        ]
+      },
+      "source_ids": [
+        "H86-S031"
+      ],
+      "source_locator": "H86-S031 Participants（101 人；排除人數前後不一，依 t(89) 採 90 人）、Apparatus and stimuli（ga/ba；SOA −500、−260、0、260、500）、Results「Synchrony judgements」（0.60 對 0.33）、探索性分析（46.6%；260 毫秒時 27% 對 22%，p = 0.862）、「Rapid temporal recalibration」（156 對 192 毫秒）、Discussion",
+      "notes": "研究網 NET_01_VUAmsterdam_Sydney_Vanderbilt_UW。全片最後一個轉折與收尾：「察覺不對」與「合在一起」是兩件可以分開的事。作者的結論是「覺得同步不是融合的前提」，稿中寫成「在這個實驗裡兩者沒有綁在一起」；不轉述文末臨床延伸。與池內錯配音節的核心（R43001）邊界見 H86-NA017。 提案 H86-031（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：分類改為人體感官與日常行為；46.6% 與 27% 對 22% 標明為探索性分析；受試者健康狀態論文沒有報告（見來源 limitations），稿中只說「一個線上實驗的成人受試者」，不提任何族群。本篇屬 NET_01（已封頂 2.00），折或不折條數都不變；「察覺不同步不等於沒有合在一起」是收尾的第三個意外，不是兩個轉折之一。 原提案 F175-015（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-032",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "看做操或跳舞的影片，音樂慢了多少才會覺得沒對到拍？",
+      "mechanism_key": "av_sync_perception.music_to_body_motion_window_300_450ms_beat_matched_to_movement_endpoint_not_onset",
+      "answer_target": "在這個實驗裡，「還算對上」的範圍有幾百毫秒寬。日本電氣通信大學錄了一位指導員做一套配鋼琴音樂的團體體操，取六段動作，把音樂和畫面錯開 −400 到 +600 毫秒共 11 級，請 15 位做過這套操的大學與研究所學生判斷有沒有對上（六段動作分成兩組、每段由其中 10 人判斷，5 人兩組都做）。多數動作「還算同時」的範圍（半高全寬）平均 300 到 450 毫秒；不同人覺得最剛好的點相差約 200 毫秒，小於窗口寬度。被當成拍點的，是手擺到最低處或動作停住（手碰到肩、落地）的那一刻，動作開始的瞬間從來不是。實驗 2（10 人）把拍點附近的畫面遮掉、只留拍點前一小段，受試者仍能判斷，只是窗口有變寬的趨勢（p = 0.0502，未達顯著）；作者認為人是在預測動作何時到位。",
+      "scope": "15 位做過這套操的學生；一位指導員的六段動作；11 級錯開；實驗 2 以 10 人遮掉部分畫面。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "音樂和動作的拍子，人用的是「動作停在哪一刻」，而且會先猜它什麼時候停。",
+        "visual": "清爽可愛的機制剖面動畫：一個由簡單幾何形組成、沒有五官的小人偶隨著一排鋼琴琴鍵形狀的節拍點擺手；每個節拍點都正好落在手擺到最低處或拍到肩膀的瞬間，而不是剛開始動的時候；接著小人偶的手部被一朵雲遮住，雲後面露出一條預測的虛線軌跡，仍然準確接到下一個節拍點。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_ids": [
+        "H86-S032"
+      ],
+      "source_locator": "H86-S032 Experiment 1 Participants（15 人）、Materials（六段動作、−400 到 +600 毫秒 11 級）、Results and discussions（TIW 300–450 毫秒、PSS 個人差約 200 毫秒、Fig 4 敘述的拍點位置）、Experiment 2（10 人；p = 0.0502）、Summary and general discussion",
+      "notes": "研究網 NET_10_UEC。第五章第三張：把題目從說話延伸到音樂與動作，說明「動作越容易預測，越能容忍落差」。體操名稱、播出單位不寫；實驗 3 的力學推論不用。 提案 H86-032（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：「比說話寬得多」是跨研究比較、原文沒有，刪去；作者只說與前人的 350–400、330 毫秒相近。人數更正為每段 10 人。 原提案 F175-016（第三十六輪，作者 F175、覆核 V195）。"
+    },
+    {
+      "id": "H86-033",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "節奏快的畫面，聲音沒對上比較容易被發現嗎？",
+      "mechanism_key": "av_sync_perception.faster_regular_pulsing_narrows_window_458_307_273ms_but_speechlike_irregular_envelope_widens_it",
+      "answer_target": "規則的節奏越快越容易發現，但照說話那樣不規則起伏時，又變得比較寬容。米蘭、特倫托與帕多瓦的研究者在線上讓大學生看一個會「呼吸」的灰色圓點：圓點大小和一個 500 Hz 音的音量一起起伏 3 秒，每秒 1、2 或 3 下，聲音與畫面錯開 0 到 500 毫秒。實驗 1（88 人）「還算同時」的寬度：每秒 1 下 458.41 毫秒、2 下 307.19 毫秒、3 下 273.11 毫秒；聲音先側的門檻 165.22 毫秒、畫面先側 371.42 毫秒（門檻分析因擬合標準較嚴，只含 73 人）。實驗 2（50 人）把三種節奏都固定為三下，結果相同（458.50、340.06、307.79 毫秒）。實驗 3（34 人）照真人說話的音量起伏做成不規則版本，寬度 373.10 毫秒，規則的每秒 3 下 318.23 毫秒；差別只出現在聲音先的那一側（門檻 210.63 對 128.71 毫秒，門檻分析 28 人）。",
+      "scope": "172 位有效大學生分三個實驗、線上施測；抽象圓點與純音一起起伏；11 級錯開；5 點量尺的同時判斷。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "規則的拍子越快，越容易看出聲音沒對上；可是像說話那樣忽強忽弱的節奏，又讓人比較寬容。",
+        "visual": "清爽可愛的機制剖面動畫：一顆灰色小圓點像在呼吸一樣一脹一縮，旁邊一條聲音波浪跟著起伏；先是慢慢地一脹一縮，代表寬容範圍的拱門很寬，接著越脹越快，拱門越縮越窄；最後圓點改成忽大忽小、不規則地跳動，拱門又稍微撐開，而且只往左邊（聲音先到）撐開。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          25,
+          30
+        ]
+      },
+      "source_ids": [
+        "H86-S033"
+      ],
+      "source_locator": "H86-S033 Experiment 1 Participants（88 人分析）、Stimuli and procedure（1、2、3 Hz；±500 到 0 毫秒）、Results（TBW 458.41、307.19、273.11 毫秒；門檻 165.22 對 371.42 毫秒）、Experiment 2 Results（458.50、340.06、307.79 毫秒）、Experiment 3 Results（373.10 對 318.23 毫秒；AL 門檻 210.63 對 128.71 毫秒）、Discussion",
+      "notes": "研究網 NET_12_Milan_Padova。第五章第二張：和 H86-024 並陳，說明「熱鬧」有兩種：真實動作的聲音密到跟落差差不多長時會藏住破綻；規則起伏變快時反而更容易看出錯開。不合成單一規則；文末臨床延伸不引用。 提案 H86-033（第三十六輪，作者 F175）。 覆核 V195（2026-11-15）：補上門檻分析的人數（實驗 1 為 73 人、實驗 3 為 28 人，與窗口寬度分析的 88、34 人不同）。 原提案 F175-017（第三十六輪，作者 F175、覆核 V195）。"
+    }
+  ],
+  "not_added": [
+    {
+      "id": "H86-NA001",
+      "question": "全池去重：池內既有題案、入選核心、未收紀錄與另一系列（奇聞檔案局）是否已經回答過「走路、上下樓梯時眼睛看哪裡、看幾步前、腳下那一步怎麼控制、眼睛往前看的作用」？",
+      "existing_ids": [
+        "G646",
+        "G650",
+        "G50",
+        "H65-001",
+        "H65-007",
+        "H69-004",
+        "H72-001",
+        "H51-004",
+        "H74-022",
+        "P77-004",
+        "P77-009",
+        "A5016",
+        "H56-001",
+        "P74-039",
+        "X35-002",
+        "P60-006",
+        "G654",
+        "G642"
+      ],
+      "reentry_condition": "若日後擴寫「蒙眼走直線」（H65、H69 系列）或「走路的換跑」（H74 系列）長題，可引用本題 H86-013（全黑中的視線超前）當旁證，但不得併成同一題；本題零借用舊卡答案，全部以本輪新讀的 16 篇開放全文建構。",
+      "reading_status": "2026-11-15 選題前以 python 直接讀 pool.json（5,528 筆核心，5,299 筆入選；本分類 395 筆、入選 385）與 themes.json（本分類全部 61 組題案逐一列出題名），並以正規表示式比對核心題目、答案與機制鍵（走路、行走、步行、walking、gait、locomot、踩空、絆、跨過、障礙、樓梯、stair、step、腳步、落腳、地形、terrain、眼睛、視線、注視、gaze、fixat、預看、look-ahead、foothold、台階、人行道、石塊路、往前看、盯著路），另 grep THEMES.md、QUESTIONS.md 與奇聞池 QUESTIONS.md（腳下、看路、盯著地、低頭走、往前看幾步、樓梯、台階、走路與眼）；未使用 cli.mjs search。另比對本題 16 篇的 PMCID 與 DOI 在 pool.json、themes.json 與全部批次檔中的出現次數。",
+      "reason": "檢索結果：（1）池內沒有任何題案或核心回答「走路時視線落在哪裡、看幾步前、腳下那一步怎麼控制」：本分類 61 組題案中，相關的只有 G646（站立平衡與指尖輕觸）、G650（掃視與眨眼時畫面不糊）、G50（頭轉時畫面不滑走，前庭眼反射）、G642（空間聽覺）、G654（皮膚溫度），都不談走路時的視線分配。（2）邊界一，H65／H69／H72 系列（蒙眼走路為什麼會走彎、偏轉的原因、以聲音導航、前庭電刺激）：問的是看不見時方向怎麼漂移；本題 H86-013 雖然也在黑暗中走，問的是視線是否仍超前於身體，不談走直與偏轉。H69-004 是虛擬實境中察覺被改向的門檻，與本題無關。（3）邊界二，H74 系列（從走變跑的時機、能量與預備步）：H74-022 談換跑是否提前幾步準備；本題 H86-011 談遇到高低台階前的速度調整與規劃長度，不談走跑轉換。H51-004 是甩手的力學，無關。（4）邊界三，P77 系列（打者是否盯球到擊中、預判跳視）與 A5016（平滑追視）：是看移動的球；本題是走路時看地面與路線。H56-001 是看不見大猩猩的注意力題，無關。（5）邊界四，建築交通分類 X35-002（迎面人群與看手機）、P60-006（擠的時候步伐怎麼變）：談群體行人互動；本題只談一個人走路時的視線與步伐，並已剔除以手機為框架的研究（H86-NA003）。P74-039 是盲人以聲音察覺障礙，不談視線。（6）另一系列 QUESTIONS.md 中與「樓梯」相關的只有幾則鬼影照片故事，與本題無關。（7）本題 16 篇的 PMCID 與 DOI 在 pool.json、themes.json 與全部批次檔中出現 0 次；16 個機制鍵（皆以 walking_gaze. 開頭）與池內 5,528 筆既有機制鍵無一相同。（8）同輪平行作者 F172（飲食與廚房科學）、F174（建築交通與商業制度）、F175（數位科技與通訊工程）分類不同；本題不談行人流、建築法規、樓梯設計規範或任何穿戴裝置。 覆核 V193（2026-11-15）：以 python 重讀 pool.json（5,528 筆核心）與 themes.json（659 組），以「走路、步行、落腳、踩、樓梯、台階、視線、凝視、look-ahead、foothold、stair、terrain」等正規表示式比對核心題目、答案與機制鍵，命中 93 筆皆為走路力學、鳥類點頭、矇眼偏轉（H65／H69／H72）、走跑轉換（H74）、人行橋與人群（P59、P77、P78）、腳印化石等，沒有回答「走路時視線落在哪裡、腳下那一步何時看好」；鄰題 G646（站立平衡）、G650（掃視與眨眼不糊）、G658（時間知覺）、A5015（視線為什麼用跳的）、G50（前庭眼反射）與上一輪暈車 14 張核心卡（wave85-human 的 H85-018 至 H85-031）都不重疊。同輪 F172（切面褐變）、F174（街道降溫）、F175（聲畫同步）的 proposal.json 與本題 PMCID 零重疊；F175 即使改到人體分類，問的是聲音與嘴型差多少會被察覺，與走路視線不相鄰（F175 只在未收紀錄裡提到一篇步伐相位與聲畫同步的研究）。"
+    },
+    {
+      "id": "H86-NA002",
+      "question": "為什麼讀完了荷蘭阿姆斯特丹自由大學「兩人並肩跑步時更常看腳前的路」（PMC11088211）卻沒有收成卡？",
+      "existing_ids": [],
+      "reentry_condition": "若覆核或後續改題時能換掉 H86-S002 與 S003 兩篇（或確認相關合著不成立），可把它收回第四章當「情境改變視線」的例子，並重做合著審計。",
+      "reading_status": "已下載完整 JATS XML（F173 seq=9，23988 位元組，sha256 前 16 碼 c474e016078f565f），全文讀完（短篇報告：12 位年輕人跑 1.5 公里兩次，獨跑 8.3 分鐘、並肩邊聊邊跑 9.2 分鐘；並肩時看路的時間多 9.2%（95% 信賴區間 ±6.4%）、視線低 5.7 度（±2.0 度）；第二次跑時看路 67% 對 62%；一人看同伴超過 10% 的時間）。",
+      "reason": "內容可用，但為了保持研究網獨立而不收：合著審計發現這篇的一位共同作者與 H86-S003 的通訊作者在 2021 年合著一篇期刊論文（Europe PMC 與 Crossref 都查到），又與 H86-S002 的第二作者在 2021–2024 年合著至少四篇論文（Europe PMC）；它本身又與 H86-S005 同一團隊、而 S005 已與 S001 併網。收入它會讓 NET_01 吸進 NET_07 與 NET_13，總條數由 14.75 掉到 12.75，卻只多一張卡。另外，並肩時還要聊天、跑步順序也有影響，作者自己用 presumably 說明原因。不寫卡、不引用任何數字。"
+    },
+    {
+      "id": "H86-NA003",
+      "question": "為什麼讀完了英國林肯大學「邊用手機邊爬樓梯時看哪裡」（PMC5770487）卻沒有收？",
+      "existing_ids": [
+        "X35-002"
+      ],
+      "reentry_condition": "不再進入本題。若日後有不以手機危害為框架、而只量真實樓梯視線分布的開放全文，可另行評估。",
+      "reading_status": "已下載完整 JATS XML（F173 seq=29，94194 位元組，sha256 前 16 碼 546a5b806f23dc1e），全文讀完（40 人、19–68 歲、三座校園樓梯只往上走；用手機時看樓梯與周遭的時間降到約兩成，但手機以外的視線分布與不用手機時相近；走得較慢；扶手使用低；看樓梯時多半看四階以上）。",
+      "reason": "三個理由。第一，全文以手機分心與跌倒危害為框架，結論直接建議開發偵測走樓梯並警告使用者的手機程式，屬工作單所說「結論等於行為建議」。第二，受試者年齡跨到 68 歲並附跌倒經驗問卷，方法段點名眼動儀與手機品牌。第三，兩位判讀者對「看的是第幾階」的一致率只有 75.5%，「看幾階前」的數字本身不穩。"
+    },
+    {
+      "id": "H86-NA004",
+      "question": "德州大學「雙眼視覺與崎嶇地形中的落腳控制」（PMC8536664）為什麼沒有收？",
+      "existing_ids": [],
+      "reentry_condition": "若只取其中健康受試者模糊一眼的條件、且 NET_01 尚未封頂，可再評估；目前 NET_01 已封頂，收入不增條數。",
+      "reading_status": "已下載完整 JATS XML（F173 seq=6，122299 位元組，sha256 前 16 碼 6321029fc24ca730），只讀摘要與作者資訊，未讀全文。",
+      "reason": "受試者包含弱視、斜視等發育性雙眼視覺障礙者，比較的重點之一是這些族群，屬工作單排除的臨床框架；而且與 S001 同一團隊，NET_01 已封頂。只讀摘要，不引用任何數字。"
+    },
+    {
+      "id": "H86-NA005",
+      "question": "其他已下載、只讀了摘要的鄰近研究，為什麼沒有收？",
+      "existing_ids": [],
+      "reentry_condition": "各篇都要先讀完全文並重做合著審計，才能作為後備。",
+      "reading_status": "以下各篇都已下載完整 JATS XML 存於 F173/cache，但只讀了摘要與作者資訊：阿姆斯特丹自由大學與烏特勒支大學「知道在做什麼也預測不了看哪裡」（PMC11238878，seq=30，端著兩杯水上下樓梯）；西門菲莎大學「動作成本與信心對視線與選路的交互作用」（PMC11681150，seq=14）；普渡大學「年輕與年長者邊反應邊跨障礙」（PMC11098502，seq=26）；藤田醫科大學「說話時的眼球跳動」（PMC12500083，seq=27）；因斯布魯克大學「走路時探索性的轉頭與全身動作」（PMC9868120，seq=28）。",
+      "reason": "前兩篇所屬研究網（NET_01、NET_08）已封頂，收入不增條數；普渡大學一篇以年長者跨障礙與絆倒風險為主要框架；藤田醫科大學一篇是坐著做的眼動實驗、不是走路，且以駕駛風險為框架；因斯布魯克大學一篇以跌倒與傷害預防為應用框架、量的是跑步機上的轉頭。都只讀摘要，不引用任何數字。"
+    },
+    {
+      "id": "H86-NA006",
+      "question": "開姆尼茨工業大學另外兩篇（虛擬實境與真實世界中的走路視線、邊數數邊滑倒）為什麼沒有收？",
+      "existing_ids": [],
+      "reentry_condition": "後備：讀完其中一篇全文即可把 NET_03 由 1.00 補到 2.00（同網），可替補任何被剔除的卡。",
+      "reading_status": "已下載完整 JATS XML（PMC8180583，seq=11，168888 位元組；PMC9985588，seq=12，113779 位元組），只讀摘要與作者資訊。",
+      "reason": "本輪時間有限，優先讀完能增加獨立研究網的論文；這兩篇與 H86-S010 同一位通訊作者，屬同一網。前者只有 8 人、虛擬實境中靠手持裝置前進；後者是邊倒數減 7 邊在跑步機上滑倒，結論與 H86-016 部分重疊。未讀全文，不引用任何數字。"
+    },
+    {
+      "id": "H86-NA007",
+      "question": "以色列本古里安大學「年輕人的視覺、認知與走路穩定」（PMC8752684）為什麼沒有收？",
+      "existing_ids": [],
+      "reentry_condition": "後備獨立網候選：讀完全文、確認依變項不是臨床指標、重做合著審計後可補 1.00 條。",
+      "reading_status": "已下載完整 JATS XML（F173 seq=24，103857 位元組，sha256 前 16 碼 2f876767b516545f），只讀摘要與作者資訊。",
+      "reason": "摘要顯示它用一種新方法刻意破壞走路穩定、再量看地面的時間與前額葉活動，作者自己說結果「並非定論」、並延伸到臨床意涵；本輪條數已足，未讀全文，不引用任何數字。"
+    },
+    {
+      "id": "H86-NA008",
+      "question": "搜尋時大量出現的中風、帕金森氏症、青光眼、前庭疾病、長者跌倒與復健相關的走路視線研究，為什麼一篇都沒有用？",
+      "existing_ids": [],
+      "reentry_condition": "不進入本題。",
+      "reading_status": "Europe PMC 搜尋（F173 access_log seq=1–4 與 91–92）回傳的結果中，依題名與摘要逐筆篩除；未下載全文。",
+      "reason": "工作單明訂本分類只做健康成人的基礎感知與動作科學，不做疾病、診斷、治療、復健與養生；以病人、長者跌倒風險或訓練效果為框架的論文一律不用。本題 16 篇的受試者都是自述健康的成人；其中 H86-S003 原本是為日後評估長者而開發的方法、H86-S016 的引言連到跌倒，卡片都只用健康年輕受試者的量測，並在 drop_if 中禁止轉述那些應用。"
+    },
+    {
+      "id": "H86-NA009",
+      "question": "德州大學同團隊的其他走路視線研究（視網膜上的光流、用地形重建控制走路、走路時的網膜流角色）與其他團隊的高速轉向研究，為什麼沒有讀？",
+      "existing_ids": [],
+      "reentry_condition": "NET_01 已封頂；除非 NET_01 內的卡被剔除，否則不需補讀。",
+      "reading_status": "只在 Europe PMC 搜尋結果中看到題名與作者（PMC8896712、PMC10156169、PMC12894906、PMC13657132、PMC10923441、PMC5798835），未下載。",
+      "reason": "前四篇與 H86-S001 同一團隊，收入只會併入已封頂的 NET_01，不增加條數；後兩篇（高速轉向、接近障礙）屬另一團隊且不是走在地面上的視線研究，本輪未下載、未審計，不引用任何內容。"
+    },
+    {
+      "id": "H86-NA010",
+      "question": "全池去重：池內既有題案、入選核心、未收紀錄與另一系列（奇聞檔案局）是否已經回答過「影片或說話時聲音與嘴型（或閃光與聲音）差多少才會被察覺、為什麼聲音晚到比早到容易被放過、這個門檻會不會被最近的經驗拉動、察覺不同步是否就不再整合」？",
+      "existing_ids": [
+        "I8017",
+        "A21001",
+        "G220",
+        "R43001",
+        "R43002",
+        "R43003",
+        "G448",
+        "P14010",
+        "M5014",
+        "M5015",
+        "H85-003",
+        "H85-014",
+        "G658",
+        "G659",
+        "G648"
+      ],
+      "reentry_condition": "日後若有人把 I8017（播放器如何用時間戳把聲音和畫面對齊）擴成長題，可引用本題 H86-017、H86-020 說明「要對到多準才夠」，但不得併成同一題；本題零借用任何舊卡的答案，全部以本輪新讀的 17 篇開放取用全文建構。",
+      "reading_status": "2026-11-15 動筆前以 python 直接讀 themes.json（659 組題案，依分類列出「數位科技與通訊工程」全部 50 組）與 pool.json（5,528 筆核心的題目、答案前段與機制鍵，其中 5,299 筆入選；分類「數位科技與通訊工程」846 筆、入選 793 筆），並 grep THEMES.md、QUESTIONS.md 與奇聞池 QUESTIONS.md（關鍵字：嘴型、對嘴、口型、嘴唇、聲畫、音畫、不同步、同步、延遲、McGurk、麥格克、打雷、閃電、lip、視訊、語音、麥克風；選題階段另查 GPS、GNSS、衛星定位、多路徑、高樓、降噪、語音辨識、口音、指紋、虛擬實境、VR、頭戴、輻輳、閱讀、紙本）；未使用 cli.mjs search。",
+      "reason": "檢索結果：（1）池內沒有任何題案或核心以人的察覺門檻回答「聲音與畫面差多少才會被發現」：「嘴型」只命中 I8017（播放器怎麼知道哪一句要配哪個嘴型？），它講的是傳輸協定用共同參考時刻對齊兩條媒體流，屬工程機制，本題不講任何協定與播放器，只講人對落差的察覺與調整，邊界成立。（2）A21001／G220（按了才亮的燈，習慣延遲後為什麼反而覺得它先亮）是「自己的動作 → 燈」的時間重校，本題的 H86-025 至 H86-030 是「別人的聲音 ↔ 畫面」的重校，刺激、作業與問題都不同，不借用其答案；稿中不談自己按鍵或打字的延遲。（3）R43001（錯配音節聽成第三個音）、R43002（看過嘴形後純聲音也聽得不同）、R43003（光點嘴型在噪音中能否幫助聽懂）與 G448（字幕語言與陌生口音）講的是「看嘴型如何改變聽到什麼」，本題 H86-031 只用錯配音節當工具，回答的是「察覺不同步」與「合起來聽」是否綁在一起，不重講錯覺本身。P14010 是聲音與光點的空間位置拉扯，本題不談空間定位。（4）M5014、M5015 是語音封包大小與遺失補救，與察覺門檻無關。H85-003（慢動作鏡頭的時間感）、H85-014 與 G658（時間感）是時間長短的估計，本題不談時間長短。（5）近五輪本分類已做的 G648（電容觸控）、G644（光纖）、G652（鋰電池）、G656（LED）、G659（光學心率）與本題零字詞重疊。（6）奇聞池 QUESTIONS.md 對「嘴型、聲畫、對嘴、不同步」為 0 筆；「打雷、閃電」的命中皆為歷史與天氣題，無關。（7）本題 17 篇的 PMCID 在 pool.json 全文字串比對為 0 筆；17 個機制鍵皆以 av_sync_perception. 開頭，池內以此開頭者為 0。（8）同輪 F172（飲食與廚房科學）、F173（人體感官與日常行為）、F174（建築交通與商業制度）分類不同；本題以「影片中聲音軌與畫面軌的時間落差」為切入，問的是一段數位影音的聲畫偏移多少會被看出來，所以放在本分類；若覆核認為應歸「人體感官與日常行為」，請與 F173 的題目比對後再決定，本題不談任何疾病、聽力或視力狀況。 覆核 V195（2026-11-15）：覆核以 python 重讀 pool.json（5,528 筆核心）、themes.json（659 組）並 grep THEMES.md、QUESTIONS.md 與奇聞池 QUESTIONS.md（同步、延遲、嘴型、視聽、McGurk、麥格克、聲畫、音畫、對嘴、口型、閃電、打雷），結論同作者；17 篇與 3 篇未收全文的 PMCID 與 DOI 在 docs/videos/so-thats-why/pool 與 docs/videos/history-curiosity/pool 下所有檔案（含 batches、reviews）0 筆。第（8）點的分類已改為人體感官與日常行為，見 H86-NA019。"
+    },
+    {
+      "id": "H86-NA011",
+      "question": "為什麼下載了「說話影片的逐題快速重校」研究（PMC6104055，2018）卻沒有收成卡？",
+      "existing_ids": [],
+      "reentry_condition": "若 NET_01 以外沒有說話影片的逐題重校證據，可改用它取代 H86-025，但條數不變。",
+      "reading_status": "已下載完整 JATS XML（F175 seq=12，120371 位元組）；只看了摘要與文末作者貢獻，未逐節讀完，不引用任何數字。",
+      "reason": "作者群與 H86-S017 共用一位范德比大學作者，屬已封頂 2.00 的 NET_01，收進來不增加條數；且主體為腦波與擴散模型分析，為控制閱讀量，未讀完全文即不收。"
+    },
+    {
+      "id": "H86-NA012",
+      "question": "為什麼下載了「腦波節律與快速重校」研究（PMC8113519，2021）卻沒有收成卡？",
+      "existing_ids": [],
+      "reentry_condition": "若稿子需要一張「腦內節律在上一題之後如何改變」的卡，須讀完全文並重做合著審計後再補。",
+      "reading_status": "已下載完整 JATS XML（F175 seq=13，140939 位元組）；只看了摘要，未讀方法與結果，不引用任何數字。",
+      "reason": "主題是腦磁圖的振盪耦合機制，觀眾難以在生活中對照；本題已有 H86-025、H86-026、H86-027 三個獨立網直接量到逐題重校的行為結果，不需要它。"
+    },
+    {
+      "id": "H86-NA013",
+      "question": "為什麼下載了「說話不同步知覺的模型比較」研究（PMC4975115，2015）卻沒有收成卡？",
+      "existing_ids": [],
+      "reentry_condition": "無。",
+      "reading_status": "已下載完整 JATS XML（F175 seq=24，131761 位元組）；只看了題名、作者與章節標題，未讀全文。",
+      "reason": "從章節標題（Models、Data and Model Fitting）看，主體是模型比較，可能以既有資料為主（若是只能計 0.75），且與 H86-022 的模型比較重疊；未讀全文、無法確認資料來源，因此不收、不引用。"
+    },
+    {
+      "id": "H86-NA014",
+      "question": "選題階段查過、因撞題或風險而換掉的方向有哪些？",
+      "existing_ids": [
+        "T53-015",
+        "T53-013",
+        "T53-014",
+        "LEG-S86",
+        "P53-005",
+        "P53-006",
+        "X37-001",
+        "D12003",
+        "G124",
+        "G648",
+        "LEG-A72",
+        "H85-023",
+        "H85-029",
+        "A5023"
+      ],
+      "reentry_condition": "若日後要做下列方向，須先確認與這些舊卡的邊界。",
+      "reading_status": "2026-11-15 選題時以 python 讀 pool.json 與 themes.json 逐一關鍵字比對（同 H86-NA010 的選題階段關鍵字）。",
+      "reason": "（1）衛星定位在高樓間飄移：T53-015「在高樓之間，GPS 為什麼會把你放到對街？」已是入選核心，T53-013、T53-014 也回答精度來源，換掉。（2）主動降噪擋不住人聲：LEG-S86、P53-005、P53-006 已回答，換掉。（3）指紋辨識手濕手乾：X37-001 已有乾手與沾水指紋的量測，D12003／G124 講指紋登入，換掉。（4）觸控螢幕打字容易打錯：與上上輪 G648（電容觸控）相鄰，工作單要求不做相鄰題，換掉。（5）語音辨識在吵雜處與口音：開放全文的實測論文少，且口音題容易被寫成對特定族群的評價（LEG-A72 未入選），換掉。（6）虛擬實境看久不舒服：依變項多為不適症狀量表，接近醫療框架，且與 H85-023、H85-029 的暈動題相鄰，A5023 已講調焦與兩眼內轉，換掉。（7）視訊通話的對話延遲：Europe PMC 搜尋（F175 seq=3）命中多為網路排程與遠距醫療，沒有找到開放全文、直接量測對話延遲知覺的研究，因此題名與章節不承諾任何視訊通話情境。"
+    },
+    {
+      "id": "H86-NA015",
+      "question": "為什麼搜尋結果裡大量以臨床族群為框架的聲畫同步研究一篇都沒用？",
+      "existing_ids": [],
+      "reentry_condition": "無；本題只用一般成人的實驗。",
+      "reading_status": "Europe PMC 搜尋紀錄 F175 seq=1、2、4、5、18 的結果清單（標題與作者），未下載。",
+      "reason": "工作單紅線排除以疾病、成癮、疼痛為框架的論文：搜尋結果中以自閉症、思覺失調、閱讀障礙、人工電子耳、弱視、聽力損失、強迫症、老化為主題的研究一律不下載、不引用；嬰兒與兒童發展研究也不用。已收的 H86-S017、H86-S031、H86-S033 雖有作者或文末段落提到臨床延伸，卡片只用一般成人的結果，臨床段落不轉述。"
+    },
+    {
+      "id": "H86-NA016",
+      "question": "同網內還有哪些研究沒有收（不增加條數）？",
+      "existing_ids": [],
+      "reentry_condition": "若需要替換 NET_01 內的卡片，可考慮這些，但條數不變。",
+      "reading_status": "Europe PMC 搜尋紀錄 F175 seq=1、2、5 的結果清單，未下載。",
+      "reason": "走路速度與步伐相位會改變聲畫同步知覺（PMC13087153，2026）與「說話同步窗口跨時段穩定」的相關研究，作者與 NET_01 的雪梨或范德比作者重疊；NET_01 已有三篇（原始 3.00、封頂 2.00），再收不增加條數，未下載。另一篇 2018 年的深度距離研究（PMC6010498）作者亦屬 NET_01，同樣不收。"
+    },
+    {
+      "id": "H86-NA017",
+      "question": "與池內錯配音節、看嘴型聽聲音的既有核心相比，H86-031 的邊界在哪裡？",
+      "existing_ids": [
+        "R43001",
+        "R43002",
+        "R43003"
+      ],
+      "reentry_condition": "若日後 R43001 擴成長題，可引用 H86-031 的「錯覺在被判為不同步的題目上照樣出現」，但不得併題。",
+      "reading_status": "以 python 讀 pool.json 這三筆核心的題目與答案全文比對。",
+      "reason": "R43001 回答「聲音巴配嘴型嘎會聽成什麼」，R43002 是看過嘴形後的後效，R43003 是光點嘴型在噪音中的幫助；三者都不涉及聲音與畫面的時間落差。H86-031 只把錯配音節當作「有沒有合在一起」的指標，回答的是察覺不同步與整合是否綁在一起，且所有數字取自 H86-S031。稿中講到錯配音節時只用一句帶過現象，不展開。"
+    },
+    {
+      "id": "H86-NA018",
+      "question": "本題兩組彼此矛盾的結果，為什麼都收、沒有剔除一邊？",
+      "existing_ids": [],
+      "reentry_condition": "若覆核認為矛盾會讓觀眾困惑，可把 H86-027 的「只有聲音先會調」一句刪去（卡片本身的學樂器結果仍成立），條數不變。",
+      "reading_status": "H86-S027、H86-S028、H86-S024、H86-S033 全文皆已讀完。",
+      "reason": "（1）長時間適應的方向：H86-028（706 毫秒、3–4 分鐘）只有「畫面先」會讓人調整，H86-027（200 毫秒、每段約 2 分鐘）只有「聲音先」會讓人調整；H86-027 的作者自己也說出乎意料。兩者落差、作業與模型都不同，誠實的說法是「哪一個方向比較會被調，不同實驗的答案不一樣」，不能選一邊寫成定論。（2）節奏與事件密度：H86-024（真實動作聲，事件密到與落差同量級）事件越密越難發現；H86-033（抽象規則起伏，最快每秒 3 下）越快越容易發現。兩者條件不同，稿中並陳，不合成單一規則。保留矛盾是為了不讓結論比證據強。"
+    },
+    {
+      "id": "H86-NA019",
+      "question": "覆核把分類改到「人體感官與日常行為」之後，本題和同分類的 G658（主觀時間知覺）、G642（空間聽覺）、G650（掃視與眨眼）、G220（按了才亮的燈）與同輪 F173（走路時眼睛看哪裡）的邊界在哪裡？",
+      "existing_ids": [
+        "G658",
+        "G642",
+        "G650",
+        "G220",
+        "A21001",
+        "P14010",
+        "H85-016",
+        "H85-NA003"
+      ],
+      "reentry_condition": "若日後有人把 G658 擴充成「時間感」系列，可在片尾提到本題的「同時判斷」是另一種時間判斷，但不得借用本題卡片的數字，也不得併題。",
+      "reading_status": "2026-11-15 覆核以 python 讀 themes.json 的 G658、G642、G650、G220 全部欄位與 pool.json 的 H85-001 至 H85-031、H81、H83、A21001、P14010 題目與答案；讀 wave85-human.json 的 31 筆來源與 round35 覆核報告 V189 的研究網；讀同輪 F173 的 proposal.json（16 篇來源）。",
+      "reason": "（1）G658 回答的是「一段時間感覺多長、過得快或慢」（長短與快慢），本題回答的是「兩個訊號是不是同時」（同時與先後）；G658 的 17 張卡沒有一張量聲畫同步，本題 17 張卡沒有一張量時間長短；兩題來源的 PMCID 與 DOI 零重疊。G658 的研究網裡有一位雅典的時間知覺研究者，她正是本題 H86-S021 的第一作者，另有一位東京大學的時間知覺研究者（與本題 H86-S030 的東京大學作者不同人）；同一位研究者出現在兩個題目不影響本題條數，本題也不引用 G658 的任何來源。H85-NA003（聲音與畫面的長短估計）是長短，不是同步。（2）G642 是聽聲音辨方位，本題 H86-029 雖用方位聲，問的是時間調整綁不綁在位置上，不講怎麼辨方位。G650 是眼球跳動與眨眼時畫面為何連續，與本題無關。P14010 是聲音被光點拉偏的空間位置，本題不談空間定位。（3）G220／A21001 是「自己按鍵 → 燈亮」的動作與結果時間重校，本題轉折二是「別人的聲音 ↔ 畫面」的重校，刺激與作業不同；稿中不談自己按鍵、打字或遊戲操作的延遲，以免與 G220 相鄰。（4）同輪 F173（走路時不看腳下怎麼踩得準）講視線與步態，與本題零字詞與來源重疊；F172（切開變褐）、F174（街道降溫）分類不同、無關。（5）作者稿原列「數位科技與通訊工程」，理由是從數位影音的聲畫偏移切入；但 17 篇全部是人的知覺實驗，沒有一篇量任何裝置或傳輸的延遲，與上一輪暈車題因主角是人的感覺而改分類同理，覆核改歸人體感官與日常行為；題名同步拿掉「影片的」，避免被讀成影音傳輸題。"
+    }
+  ]
+}

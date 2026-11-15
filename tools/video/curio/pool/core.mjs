@@ -633,8 +633,42 @@ function readAudience(root, input) {
   return scores;
 }
 
-export function readPool(root = ROOT) {
+// pool.json would pass GitHub's 50 MB warning as one file (100 MB is refused), so the two bulky
+// arrays live in their own files and pool.json keeps a pointer where each one was. Reading puts
+// them back in place, so every caller still sees one pool object with the same key order.
+export const POOL_PARTS = { sources: 'pool-sources.json', raw_records: 'pool-records.json' };
+
+export function splitPool(pool) {
+  const main = { ...pool };
+  const parts = {};
+  for (const [key, file] of Object.entries(POOL_PARTS)) {
+    parts[file] = { revision: pool.revision, [key]: pool[key] };
+    main[key] = { file, count: pool[key].length };
+  }
+  return { main, parts };
+}
+
+export function readSavedPool(root = ROOT) {
   const saved = parse(root, `${DIR}/pool.json`);
+  for (const [key, file] of Object.entries(POOL_PARTS)) {
+    if (Array.isArray(saved[key])) continue; // a pool written before the split
+    if (saved[key]?.file !== file) throw new Error(`pool.json: ${key} must point at ${file}`);
+    const part = parse(root, `${DIR}/${file}`);
+    if (part.revision !== saved.revision || !Array.isArray(part[key]) || part[key].length !== saved[key].count) throw new Error(`${file}: does not belong to this pool.json; run build`);
+    saved[key] = part[key];
+  }
+  return saved;
+}
+
+export function writePool(root, pool) {
+  const { main, parts } = splitPool(pool);
+  writeJson(root, 'pool.json', main);
+  for (const [file, value] of Object.entries(parts)) writeJson(root, file, value);
+  return ['pool.json', ...Object.keys(parts)];
+}
+
+export function readPool(root = ROOT) {
+  const saved = readSavedPool(root);
   const current = buildPool(root);
   if (JSON.stringify(saved) !== JSON.stringify(current)) throw new Error('Pool drift: the topic bank, episode folders, source files or decisions changed; re-review and run build');
   return saved;

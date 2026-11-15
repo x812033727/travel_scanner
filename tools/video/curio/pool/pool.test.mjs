@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { ROOT, DIR, hash, intake, assemble, loadDraft, buildPool, urlsIn, normalizeUrl, linkStatuses, validateEditorial, topicCheckLimits, splitLocator, SCOPE_NOT_SCOPED, CATEGORY_LIST, categoryForAxis } from './core.mjs';
+import { ROOT, DIR, hash, intake, assemble, loadDraft, buildPool, urlsIn, normalizeUrl, linkStatuses, validateEditorial, topicCheckLimits, splitLocator, SCOPE_NOT_SCOPED, CATEGORY_LIST, categoryForAxis, POOL_PARTS, splitPool, readSavedPool, writePool } from './core.mjs';
 import { renderQuestions, renderThemes } from './render.mjs';
 import { validateAudience } from './render.mjs';
 import { validateThemes, renderHtml, renderDedup, renderProducible, producibleData } from './render.mjs';
@@ -331,11 +331,27 @@ test('every core and theme resolves to one of the 9 Drive categories, with B fol
   assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101'], 10, { category: '不存在的分類' })] }, pool), /unknown category/);
 });
 
+test('the pool is written as three files and reads back as the same object', () => {
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '貝奇莫號為什麼漂了幾十年？')] };
+  const root = fixture({ batch, selection: { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 1, ids: ['N101'] } });
+  const pool = buildPool(root);
+  const { main } = splitPool(pool);
+  assert.deepEqual(Object.keys(main), Object.keys(pool));
+  assert.deepEqual(main.sources, { file: 'pool-sources.json', count: pool.sources.length });
+  assert.deepEqual(writePool(root, pool), ['pool.json', 'pool-sources.json', 'pool-records.json']);
+  assert.equal(JSON.stringify(readSavedPool(root)), JSON.stringify(pool));
+  // A part left over from another build must not be read as this pool's.
+  const stale = path.join(root, DIR, 'pool-records.json');
+  fs.writeFileSync(stale, JSON.stringify({ revision: 'older', raw_records: pool.raw_records }));
+  assert.throws(() => readSavedPool(root), /does not belong to this pool\.json/);
+});
+
 test('the committed pool export is internally consistent', { skip: !fs.existsSync(path.join(ROOT, DIR, 'manifest.json')) }, () => {
   // Hash checks only: the full rebuild (`cli.mjs check`) depends on topics.json, which other tasks edit.
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, DIR, 'manifest.json'), 'utf8'));
   for (const entry of manifest.files) assert.equal(hash(fs.readFileSync(path.join(ROOT, DIR, entry.file))), entry.sha256, entry.file);
-  const pool = JSON.parse(fs.readFileSync(path.join(ROOT, DIR, 'pool.json'), 'utf8'));
+  const pool = readSavedPool();
+  for (const name of ['pool.json', ...Object.values(POOL_PARTS)]) assert.ok(fs.statSync(path.join(ROOT, DIR, name)).size < 45 * 1024 * 1024, `${name} is near GitHub's 50 MB warning; split it further`);
   assert.equal(pool.counts.high_similarity_pending, 0);
   assert.equal(pool.counts.cross_series_pending, 0);
   assert.equal(pool.counts.approved_scripts, 0);
