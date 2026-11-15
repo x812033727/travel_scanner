@@ -112,22 +112,22 @@
   },
   {
    "file": "Wind",
-   "at": "s10",
-   "off": 0,
+   "at": "s09",
+   "off": 5.0,
    "gain": -11,
    "to": "s14"
   },
   {
    "file": "wind1",
-   "at": "s10",
-   "off": 1.75,
+   "at": "s09",
+   "off": 6.75,
    "gain": -11,
    "to": "s14"
   },
   {
    "file": "fire-1",
-   "at": "s10",
-   "off": 0,
+   "at": "s09",
+   "off": 5.0,
    "gain": -30,
    "to": "s14"
   },
@@ -213,13 +213,13 @@
    "file": "impactWood_heavy_000",
    "at": "s18",
    "off": 0.73,
-   "gain": -8
+   "gain": -5
   },
   {
    "file": "splash_01",
    "at": "s18",
    "off": 0.75,
-   "gain": -18
+   "gain": -15
   },
   {
    "file": "impactPlate_light_000",
@@ -237,7 +237,7 @@
    "file": "gong_02",
    "at": "s42",
    "off": 5.08,
-   "gain": -3
+   "gain": -2
   },
   {
    "file": "impactSoft_heavy_000",
@@ -648,5 +648,5 @@
  "subtitle_lines": [
   "zq914a23"
  ],
- "_note": "draft note"
+ "_note": "live action, written 2026-11-15 from edit-dh-e913-live.json (its REVIEW 3 form) and edit-dh-e912-live.json with the e909-e913 lessons applied from the start, on the refined, staged clips (_live-e914/zhong-tian-qu-qi-e914-dh/clips/sNN-t1.mp4, 42 shots): clip_voice, no punch-in, slow-down <= 1.1, interpolate off, frame_round, no title card (s01 goes straight on from e913 s42, the same moment), names {}. Every offset is seconds from the first frame of the trimmed shot. SOURCES: script/storyboard/video.json/overlays.json in docs/videos/zhong-tian-qu-qi-e014-r2; picks.json rebuilt by refine-prep.py 14 from colab/runs/e914-live/picks-merged.tsv, fix1/review-picks.tsv and review3-trims.tsv (in that order) and re-staged with stage.py 14; e914cut.sh's want table holds every trim (whole frames: start floor / end ceil to 3 decimals, tolerance 0.001) and the seeds. REVIEW3-TRIMS (this table's): s24 9141201 0.5-8.0, s30 9141201 end 5.5 (on the walk out, before s31's step), s32 9141201 from 0.75 (the fix1 retakes had no trim); s42 end 5.417 (the pick's suggested earlier end, less of her nose tip); s16 start 1.75 (the extra cream-sleeved hand on the abacus, gone by 2.25; 1.916 held 0.14 s because a16 needs 5.23 s); s29 start 2.625 -> 0.875: whisper on the drafts plus 25 ms RMS showed 不是 at draft 1.00-1.30 (-11 dB, -60 around it) -- the pick cut it out and the subtitle had it, the sound did not; the cost is a polite toothy smile at c0.6-1.5 (the original script's 想保持客氣的笑). MEASURED: faster-whisper medium (scratchpad fw env, wav first) word times on every draft plus 25 ms RMS at every trim: no other trim cuts a syllable (every start lands on -55..-75 dB, every end after the last word's decay). PITCH (YIN on 16 kHz, per speech span; clip_af rubberband formant preserved, a shift inside a shot by asendcmd at a pause, timing unchanged; whisper re-read every processed clip): Xu target 106-142: s02 1.06 from c3.4 (101 -> 107), s04 1.28 (83-91 -> 107-118), s06 1.15, s13 1.22 (+2 dB), s17 0.65 (200/222 -> 131/145, +3 dB, alimiter; 0.65 is the limit), s19 1.2 / 1.0 at 3.0 / 1.25 at 4.5, s21 1.1, s29 1.12 from 3.45, s31 1.0 / 0.85 at 2.4 / 0.8 at 4.6, s39 0.82 / 1.0 / 0.82 / 1.0 (switches 1.8 3.1 5.3), s41 1.12; kept s11 s25. Shi 110-160: s28 1.12 until 1.5, s30 0.65 (178/246 -> 122/160, +3 dB, alimiter), s32 1.1 until 3.0, s37 1.06; kept s27 s33. Qin 225-255: s03 0.88 until 1.6 then 1.1 (271/213/203 -> 235/235/222, -2 dB), s38 1.15 from 5.75 (193 -> 225, -2 dB); kept s05 s07. Aling (no fixed range; her recordings 176-195, her takes 186-254): s12 0.88 until 3.8 (254/239 -> 221/208). Erniu 160-180: s18 0.8 at 3.3-4.55 (219 -> 182); VOICE_OFF s15: the take's Erniu is 314-348 Hz (0.5 needed, beyond 0.65), the recording a15 (overall 174 Hz) is laid at line_at 0.2 where the take speaks (a wide shot). On the cut, line medians: Xu 107-142, Shi 113-131, Qin 219-235, Aling 195-203, Erniu 165/175, Tang (recordings) 198-262, system 130-186. RECORDINGS (audio/, originals in audio/orig/, e909's recipe acompressor 3:1 at -20 dB + volume + alimiter 0.84, integrated LUFS before -> after): system a01 -22.9 -> -14.6, a08 -21.7 -> -14.6, a22 -20.9 -> -14.6, a23 -20.5 -> -14.6, a35 -21.1 -> -14.6; Qin a09 -17.8 -> -14.5 with rubberband 1.3 formant preserved first (147 -> 208 Hz, her takes are 225-255); Tang a16 -17.2 -> -14.5 with atempo 1.15 first (5.84 -> 5.07 s, so s16 fits from 1.75 at slow 1.087), a25 -16.7 -> -14.5, a41 -16.6 -> -14.5. Untouched: a20 -15.9, a24 -16.1 (inner), a27 -15.6, a39 -15.3, a15 -15.7, the lines the clips voice, the raw-tts files, fast-takes/ and long-pause-takes/. a15's TTS reads 許兄弟 so that whisper hears 嘿嘿兄弟 (in the file itself) -- listen. LAID LINES: s01 a01 2.15 (after the three watch-drum beats), s08 a08, s09 a09 0.6, s15 a15 0.2, s16 a16 0.08, s20 a20, s22 a22 + a23 3.05 (half a beat after, its own ding), s23 a24 0.6, s24 a25 0.3, s26 a27 1.6 (she reaches the opening), s35 a35, s40 a39, s42 a41 0.05. subtitle_lines a23 (the jibe 對，只有一 is not on the s22 panel). voice_skip s11 0.4, s41 0.4 (a breath before the first word pulled the subtitle early), s18 1.1 (two thuds in the take before 墳). PANEL: panel_y 860 on s01 s08 s22 s35 (faces are in the upper half of all four; s35's panel covers the lower edge of the raised paper); panel_until s22 2.8 (a22 ends c2.54, a23's ding at c2.83). MUSIC (library cues only, no new cue: Lyria is a paid service; music linked as zhong-tian-qu-qi-e914-dh/music -> _series/zhong-tian-qu-qi/music, the e913 way): (1) night s01-s07 from 0 (-21, fade 1.0/1.5): the cold cue going on from e913; (2) warm from s08 c0.3 (after the ding) to s09, cue 0 (-21, fade 1.5/1.5): 轉一點暖; (3) night from cue 20 under the corridor s10-s14 (-23, fade 1.5/1.5, tail 0.3): only the low part; (4) comedy s15-s17 from 2.5 (-20), out in 0.15 s at the cut to s18 (the pestle drop: 停一拍); (5) comedy again from s18 c1.2, cue 25, to s26 + 0.5 (-21, fade 0.8/2.0); (6) warm s27-s29 + 0.6 from cue 15 (-21, out 0.4): it stops as Shi swings the mat up to leave (c30 要走時停); (7) warm from s32 c4.4 (after 頭一回見) cue 0 (-20, in 2.0) to the end of s39, out 0.15: the music drops as Tang bursts in (c40); s40-s42 run on beds and effects only. Ducked 3.5 : 1, release 900 ms. SFX (_series/zhong-tian-qu-qi/sfx). Beds: bamboo grove s01-s09 Wind -9 + wind1 -9 (1.75 s later, the e913 trough fix) + fire-1 -30 (the paper money); corridor Wind -11 + wind1 -11 + fire-1 -30 (candles) from s09 c5.0 so they cross-fade into s10 (starting them at s10 left 0.5 s at -49 M); workshop morning birds -16 + Wind -9 + wind1 -9 (s15-s26); afternoon/evening birds -18 + Wind -8 + wind1 -8 (s27-s42). ACCENTS (0.4 s momentary on the finished cut; lines' max M -13.3..-7.4): s01 the watch drum three times at c0.15 / 0.95 / 1.75 (impactSoft_heavy_000 -13/-13/-5 + impactWood_heavy_001 -19/-19/-11) -> -20.5, -20.4, -14.3, then the ding and a01 (drums 3 dB louder made audio-qa FAIL quiet on a01); s18 c0.73 pestle into the mortar impactWood_heavy_000 -5 + splash_01 -15 -> -16.3; s22 c4.2 after 對，只有一 impactPlate_light_000 -14 -> -17.6 (the jibe's sting); s35 c3.0 the paper up to the light impactBell_heavy_001 -3 -> -15.0 (亮的重音); s42 c5.08 after her last word gong_02 -2 + impactSoft_heavy_000 -1 -> -15.4, ringing out in the last 0.6 s fade (0 / +2 pushed the sample peak to -1.2 dBFS). Spot effects: s03 blade 1.2; s05 s07 cloth; s09 leaves 0.8/3.0 and six steps 0.5-3.5; s10 door creak 0.3, step 0.6; s14 door shut 5.95; s15 pestle 0.15, cloth 1.2; s16 bead 0.4; s22 abacus 0.2; s23 stool 0.7, sit 1.5, ledger 3.0 (where the take's own sounds were); s24 beads 1.0/3.0, ledger on the pile 6.3; s26 steps 2.6-4.4; s27 mat set down 1.4; s30 cloth 0.3, steps 4.7/5.2; s32 mat down 5.3; s33 slosh 1/2/3; s34 lift and drip 0.3/1.6; s35 paper 0.4; s37 paper 1.0; s38 basket on the table 0.9; s39 paper 1.0; s40 step 0, palm on the pillar 0.15; s42 crumple 0.8/3.0. VF (on the 1920x1080 picture before the grade; draft px x2, y x1.985; blur only for masks, no darkening box): s01 s03 s06 the grave mound glowing orange (the post list's test on s01 first): a colour-keyed geq on a box (s01 670x400 at 1250,380; s03 660x380 at 0,700; s06 640x420 at 0,660), only pixels with R-B over 60 (soft over 50) and feathered 40 at the inner edges, brought to 0.65 brightness and 0.6 saturation -- the mound reads as a brown earth mound in all three, the ground's warm glow and the faces, hands and lantern untouched (night, no grey block); s05's mound is a real paper-money fire on earth, left alone; s04 crop 1600x900 at 0,0 scaled back (16.7 %: the metal lantern at the right edge c0-1.6 and the blade at the collar go; a tighter close-up); s23 the ledger tag's faint fake writing: a 400x120 box (feather 16) tracked through c0-5.1 (centre 1368,824 -> 1444,866 -> 1536,912 -> 1580,944 -> 1596,956 -> 1564,968 -> 1616,984 -> 1672,1040), sigma 10; s38 the paper with fake lines in Xu's hand bottom-left: 560x220 at 0,860 c1.45-2.9 (0.1 s fades), sigma 16, feather 40 (the coordinator's 720x357 box would have blurred Qin's hand at the basket; the lines are only in this part, checked every 0.25 s); s41 the ladder and long pole on the back wall: 740x840 at 1180,0, sigma 10, feather 60 (already out of focus, now soft; his hair edge clear at c4.0); s42 the picture fades out over the last 0.6 s (st 5.067). Not done: s16's hand cropped (it overlaps her hand; trimmed instead), s15's A-frame (pick: optional). JITTER: cut-qa's jitter() on every staged clip 0.00-0.04: no deshake, no vidstab. SLOWED (never held): s01 1.026 (a01 after the drums), s16 1.087, s42 1.097 (min 5.667: a41 ends c5.04, then the 0.6 s fade); the clip-voiced shots never slow. END: s42 a recorded-line shot (Tang's back); e914cut.sh fades the sound over the same last 0.6 s. RESULT (e914cut.sh as written): 228.83 s (5492 frames; script estimate 212.5); -14.0 LUFS, LRA 5.7, peak -2.8 dBFS; loudnorm2 linear (pre -15.2 LUFS, -4.15 dBTP + 1.2 = -2.95 <= -2.2); cut-qa: fps 24, black none, jitter 42 steady, motion FAIL 5.8 / static 6 % on the clips (the refined takes are slow push-ins; the cut after grade and vignette 4.7 / 20 %) -- a property of the takes, nothing the edit can change; cut-jumps 0; audio-qa 41 lines 0 problems (gap notes before a35 and a36: the papermaking inserts, on purpose). Floor: one 0.3 s stretch under -40 M (70.31-70.60, -42.6, the corridor wind's trough inside s14), otherwise >= -40 after the first 0.5 s. Whisper (medium) on the first cut heard every line; homophones only (情霜, 清晨 for 京城 in the take itself, 一城紅利, 販送來了, 書房行為) plus 你一個人記名字 for 進林子 (s04 at 1.28, under the night cue) and 嘿嘿兄弟 (a15's own TTS). BY EAR / EYE: 0.0-4.9 the three drums then a01 (s01 slowed 1.026); 16.25-22.0 s04 at 1.28 (進林子 clear?) and the crop; 74.75-82.0 a15 許兄弟 on a wide shot (voice_off); 82.0-87.25 s16 from 1.75: the hand leaving at the left for 0.5 s, a16 at 1.15x; 87.25-92.0 s17 at 0.65 (blur?); 92.0-98.0 the pestle hit and Erniu's 0.8 phrase; 154.5-160.2 s29 不是, the 1.4 s pause with the polite smile, then the rest; 160.2-165.7 s30 at 0.65 (the shout 這簾子我扛回去); 207.4-214.4 s39's four switches; 40.5-45.5 a09 pitched 1.3 (still her?); 0-5, 10-16, 27-33 the darkened mound; 119.3-124.4 s23 tag box following the ledger; 201.8-203.2 s38 the paper box; 223.2-228.8 the end: a41, the low hit, the fade."
 }
