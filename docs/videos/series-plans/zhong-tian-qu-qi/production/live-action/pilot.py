@@ -76,7 +76,9 @@ def live_picture(name):
     m = re.match(r"(?P<id>[a-z]+)-(?P<kind>portrait|angle-[ab]|modern)(-t\d)?\.png$", name)
     s = re.match(r"set-(?P<id>[a-z-]+)-t\d\.png$", name)
     if s:  # the newest version of a set (l2 = the yard without its written plaques, 2026-11-08)
-        versions = sorted(LIVE.glob(f"set-{s['id']}-l*.png"), key=lambda q: int(q.stem.rsplit("-l", 1)[1]))
+        # only set-<id>-l<N>.png: e016 keeps a mirrored copy set-zhufa-ye-l2-flip.png beside the raft picture for s39
+        versions = sorted((q for q in LIVE.glob(f"set-{s['id']}-l*.png") if re.fullmatch(rf"set-{s['id']}-l\d+", q.stem)),
+                          key=lambda q: int(q.stem.rsplit("-l", 1)[1]))
         path = versions[-1] if versions else LIVE / f"set-{s['id']}-l1.png"
     elif m and m["kind"] == "portrait":
         path = LIVE / f"{m['id']}-portrait-l1.png"

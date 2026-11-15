@@ -9,7 +9,7 @@ miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.j
 [ -z "$miss" ] || { echo "not staged: $miss -- run: python3 $P/live-action/stage.py 14"; exit 1; }
 # e914 trims and seeds the edit table assumes (edit-dh-e914-live.json _note): picks.json as refine-prep.py 14 builds it from
 # picks-merged.tsv, fix1/review-picks.tsv and review3-trims.tsv in that order -- the fix1 retakes s24 s30 s32 (9141201, no trim
-# in fix1) trimmed there, s16 start 1.916 (the extra hand on the abacus), s29 start 0.875 (不是 at 1.00-1.30 was cut out by
+# in fix1) trimmed there, s16 start 1.75 (the extra hand on the abacus, gone by 2.25), s29 start 0.875 (不是 at 1.00-1.30 was cut out by
 # 2.625), s42 end 5.417 (the pick's suggested earlier end).
 # Whole frames: a start rounded DOWN and an end-before rounded UP to 3 decimals, tolerance 0.001 (e912 review 3: -ss keeps a
 # frame at/after start, -to drops a frame whose end passes it); 0 = no end (the clip's end).
@@ -18,7 +18,7 @@ python3 -c "
 import json;p=json.load(open('$E/picks.json'))
 want={'s01':(0.0,4.75),'s02':(0.875,6.375),'s03':(0.5,6.375),'s04':(0.75,6.5),'s05':(1.5,6.375),'s06':(1.5,7.875),'s07':(3.0,6.584),
  's08':(0.5,3.584),'s09':(0.5,6.125),'s10':(2.0,7.5),'s11':(0.625,6.375),'s12':(1.375,7.75),'s13':(0.75,6.125),'s14':(1.0,7.25),
- 's15':(0.375,7.625),'s16':(1.916,6.584),'s17':(0.625,5.375),'s18':(0.625,6.625),'s19':(0.125,6.375),'s20':(0.25,5.875),
+ 's15':(0.375,7.625),'s16':(1.75,6.584),'s17':(0.625,5.375),'s18':(0.625,6.625),'s19':(0.125,6.375),'s20':(0.25,5.875),
  's21':(0.75,5.375),'s22':(1.75,6.584),'s23':(0.125,5.25),'s24':(0.5,8.0),'s25':(1.5,6.125),'s26':(1.0,7.875),'s27':(1.0,7.584),
  's28':(1.875,6.375),'s29':(0.875,6.584),'s30':(0,5.5),'s31':(1.5,7.75),'s32':(0.75,0),'s33':(0.5,5.0),'s34':(1.0,4.5),
  's35':(2.5,6.584),'s36':(1.5,4.5),'s37':(0.375,7.875),'s38':(0.875,8.0),'s39':(1.0,8.0),'s40':(1.5,5.5),'s41':(1.5,6.25),

@@ -114,21 +114,21 @@
    "file": "Wind",
    "at": "s10",
    "off": 0,
-   "gain": -16,
+   "gain": -11,
    "to": "s14"
   },
   {
    "file": "wind1",
    "at": "s10",
    "off": 1.75,
-   "gain": -16,
+   "gain": -11,
    "to": "s14"
   },
   {
    "file": "fire-1",
    "at": "s10",
    "off": 0,
-   "gain": -34,
+   "gain": -30,
    "to": "s14"
   },
   {
@@ -177,49 +177,49 @@
    "file": "impactSoft_heavy_000",
    "at": "s01",
    "off": 0.15,
-   "gain": -16
+   "gain": -13
   },
   {
    "file": "impactWood_heavy_001",
    "at": "s01",
    "off": 0.15,
-   "gain": -22
+   "gain": -19
   },
   {
    "file": "impactSoft_heavy_000",
    "at": "s01",
    "off": 0.95,
-   "gain": -16
+   "gain": -13
   },
   {
    "file": "impactWood_heavy_001",
    "at": "s01",
    "off": 0.95,
-   "gain": -22
+   "gain": -19
   },
   {
    "file": "impactSoft_heavy_000",
    "at": "s01",
    "off": 1.75,
-   "gain": -9
+   "gain": -5
   },
   {
    "file": "impactWood_heavy_001",
    "at": "s01",
    "off": 1.75,
-   "gain": -15
+   "gain": -11
   },
   {
    "file": "impactWood_heavy_000",
    "at": "s18",
    "off": 0.73,
-   "gain": -12
+   "gain": -8
   },
   {
    "file": "splash_01",
    "at": "s18",
    "off": 0.75,
-   "gain": -22
+   "gain": -18
   },
   {
    "file": "impactPlate_light_000",
@@ -231,19 +231,19 @@
    "file": "impactBell_heavy_001",
    "at": "s35",
    "off": 3.0,
-   "gain": -8
+   "gain": -3
   },
   {
    "file": "gong_02",
    "at": "s42",
    "off": 5.08,
-   "gain": -8
+   "gain": -3
   },
   {
    "file": "impactSoft_heavy_000",
    "at": "s42",
    "off": 5.08,
-   "gain": -6
+   "gain": -1
   },
   {
    "file": "drawKnife2",
@@ -525,7 +525,9 @@
  "frame_round": true,
  "clip_voice": true,
  "voice_skip": {
-  "s18": 1.1
+  "s11": 0.4,
+  "s18": 1.1,
+  "s41": 0.4
  },
  "voice_until": {},
  "clip_af": {
@@ -535,7 +537,7 @@
   },
   "s03": {
    "from": 0,
-   "af": "asendcmd=c='1.6 rubberband pitch 1.1',rubberband=pitch=0.88:formant=preserved"
+   "af": "asendcmd=c='1.6 rubberband pitch 1.1',rubberband=pitch=0.88:formant=preserved,volume=-2dB"
   },
   "s04": {
    "from": 0,
@@ -551,11 +553,11 @@
   },
   "s13": {
    "from": 0,
-   "af": "rubberband=pitch=1.22:formant=preserved"
+   "af": "rubberband=pitch=1.22:formant=preserved,volume=2dB,alimiter=limit=0.89:attack=1:release=50:level=false"
   },
   "s17": {
    "from": 0,
-   "af": "rubberband=pitch=0.65:formant=preserved"
+   "af": "rubberband=pitch=0.65:formant=preserved,volume=3dB,alimiter=limit=0.89:attack=1:release=50:level=false"
   },
   "s18": {
    "from": 0,
@@ -579,7 +581,7 @@
   },
   "s30": {
    "from": 0,
-   "af": "rubberband=pitch=0.65:formant=preserved"
+   "af": "rubberband=pitch=0.65:formant=preserved,volume=3dB,alimiter=limit=0.89:attack=1:release=50:level=false"
   },
   "s31": {
    "from": 0,
@@ -595,7 +597,7 @@
   },
   "s38": {
    "from": 0,
-   "af": "asendcmd=c='5.75 rubberband pitch 1.15',rubberband=pitch=1.0:formant=preserved"
+   "af": "asendcmd=c='5.75 rubberband pitch 1.15',rubberband=pitch=1.0:formant=preserved,volume=-2dB"
   },
   "s39": {
    "from": 0,

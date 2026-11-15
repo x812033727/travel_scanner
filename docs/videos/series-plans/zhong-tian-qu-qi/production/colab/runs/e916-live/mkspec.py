@@ -74,12 +74,23 @@ for sid in ["s03", "s20"]:
     shots[sid] = tang_back(ONLY_SHE, ALONE, True)
 for sid in ["s29", "s32", "s33", "s37"]:  # the scholars (and the far carriage) beyond her
     shots[sid] = tang_back(BESIDES_HER, CROWD, True)
-shots["s27"] = tang_back(ONLY_SHE, "Only her one hand in a peach-pink silk sleeve is in the frame; no second copy of anyone appears.", True)
-shots["s38"] = tang_back(ONLY_SHE, "Only her two hands in peach-pink silk sleeves are in the frame; no second copy of anyone appears.", True)
-# the hand inserts drop the two face sentences (e915 review 建議: they send the model looking for a face)
-for sid in ["s27", "s38"]:
-    shots[sid]["replace"] += [[FACES + " ", ""], [ACTING, HANDS]]
-shots["s12"] = {"replace": [[ACTING, HANDS]]}
+# review.md 必改 5 (the e915 s08 lesson: an insert that sends the set picture opens on the empty set and cuts inside the clip):
+# the four hand inserts send no set picture; one picture of the hands' owner stays, named only as the owner.
+def owner_insert(id_sentence, who, keep_drop, only_new):
+    return {"drop_set": True, "drop_pictures": keep_drop,
+            "replace": [[id_sentence, who], [ONLY_HE if "Xu Yan" in who else ONLY_SHE, only_new],
+                        [FACES + " ", ""], [ACTING, HANDS]]}
+
+
+TANG_ANGLES = ["tangxiaotang-angle-a-l1.png", "tangxiaotang-angle-b-l1.png"]
+XU_DROP = ["xuyan-portrait-l1.png", "xuyan-angle-b-l1.png"]
+shots["s27"] = owner_insert(TANG_ID, "The hand and sleeve belong to Tang Xiaotang shown in <Picture 1>, whose face stays out of the frame; ",
+                            TANG_ANGLES, "Only her one hand in a peach-pink silk sleeve is in the frame; no second copy of anyone appears.")
+shots["s38"] = owner_insert(TANG_ID, "The hands, sleeves and sash belong to Tang Xiaotang shown in <Picture 1>, whose face stays out of "
+                                     "the frame; the frame shows only her waist, her hands and the table edge; ",
+                            TANG_ANGLES, "Only her two hands in peach-pink silk sleeves are in the frame; no second copy of anyone appears.")
+shots["s12"] = owner_insert(XU_ID, "The hands and sleeves belong to Xu Yan shown in <Picture 2>, whose face stays out of the frame; ",
+                            XU_DROP, "Only his two hands and forearms are in the frame; no second copy of anyone appears.")
 # Her silent face (s01, s07, s11, s18, s34, s39): e907's neutral face sentences.
 for sid in ["s01", "s07", "s11", "s18", "s34", "s39"]:
     shots[sid] = {"replace": [list(NEUTRAL[0]), list(NEUTRAL[1])]}
@@ -103,8 +114,7 @@ shots["s10"] = {"replace": [[ONLY_HE, besides("him", "the back of the old man's 
 shots["s14"] = {"replace": [[ONLY_HE, besides("him", "the back of the young woman's head and her shoulder")]]}
 shots["s21"] = {"replace": [[ONLY_SHE, besides("her", "the back of the young woman with the pink ribbons and her shoulders").replace(
     "no second copy", f"{ONE_TANG}; no second copy")]]}
-shots["s25"] = {"replace": [[ONLY_HE, besides("him", "the back of the young woman's head and her shoulders").replace(
-    "no second copy", f"{ONE_TANG}; no second copy")]]}
+# s25 is a clean close-up of Xu Yan now (review 建議): no foreground back to admit.
 shots["s28"] = {"replace": [[ONLY_HE, besides("him", "the one slender hand in a peach-pink sleeve at the left edge")]]}
 shots["s36"] = {"replace": [[ONLY_HE, besides("him", "the peach-pink shoulder and one pink ribbon of the young woman at the right edge")]]}
 
@@ -113,7 +123,14 @@ shots["s09"] = {"replace": [[SPEAK_GAZE_HE, "his face lowered to the bamboo mat 
 shots["s19"] = {"replace": [[SPEAK_GAZE, "her face in three-quarter profile toward the water ahead, her eyes on the rock and the white water"]]}
 shots["s40"] = {"replace": [[SPEAK_GAZE, "her face in three-quarter profile up the river, her eyes on the smoke over the village"]]}
 # s35: inside the carriage; the academy picture is not sent (Sun Zhanggui's portrait stays), and he speaks to the driver off screen.
-shots["s35"] = {"drop_set": True, "replace": [[SPEAK_GAZE_HE, "his face turned toward the front of the carriage on screen left, his eyes lowered"]]}
+shots["s35"] = {"drop_set": True, "replace": [[SPEAK_GAZE_HE, "his face turned toward the front of the carriage on screen left, his eyes sliding back to the street through the gap"]]}
+# review.md 建議 (s36): he speaks to her on his right while his eyes stay on the carriage at the left.
+shots["s36"]["replace"].append([SPEAK_GAZE_HE, "his head turned toward her on his right only a little, speaking low out of the side of his mouth, his eyes staying on the carriage down the street at the left"])
+# review.md 必改 16 (s40): a medium shot on the raft against the sky; the landing picture is not sent (Qin Shuang's portrait stays).
+shots["s40"]["drop_set"] = True
+# review.md 必改 16 (s39): the raft going upstream has its bow on screen right, so it gets the mirrored raft picture. retake.py
+# cannot swap a picture; prep916.sh applies "swap_pictures" to colab-jobs.json after retake.py (the prompt text is the same).
+shots["s39"]["swap_pictures"] = {"set-zhufa-ye-l2.png": "set-zhufa-ye-l2-flip.png"}
 
 # s31: the brush insert. The academy picture is not sent (e915 s08: an insert opened on the set picture and cut inside the clip);
 # Xu Yan's side picture xuyan-angle-a-l1 stays as the only picture, named only as the owner of the hand and sleeve.
@@ -139,10 +156,12 @@ spec = {
               "recordings laid in): her three face pictures and her identity sentence go, and the 'only' sentence says she is seen "
               "from behind and appears only once (e915 s26/s41). s01, s07, s11, s18, s34, s39 are her silent face shots: e907's "
               "neutral face sentences. Lai San gives no face: s02, s08 drop his picture and identity sentence; s01, s07 admit his "
-              "unnamed back. s05, s10, s14, s21, s25, s28, s36: the 'only person' sentence admits the unnamed back, shoulder or hand. "
-              "s09 (Carpenter Shi, eyes on the mat), s19, s40 (Qin Shuang, eyes ahead), s35 (Sun Zhanggui to the driver): the speaking "
-              "gaze is not a listener. s31 (brush insert) and s35 (inside the carriage) send no academy picture; s31 sends only "
-              "xuyan-angle-a-l1. s12, s27, s31, s38 (hands only) lose the face sentences. s13, s34, s39: the shoe sentence keeps Qin "
+              "unnamed back. s05, s10, s14, s21, s28, s36: the 'only person' sentence admits the unnamed back, shoulder or hand. "
+              "s09 (Carpenter Shi, eyes on the mat), s19, s40 (Qin Shuang, eyes ahead), s35 (Sun Zhanggui to the driver), s36 (to her, eyes "
+              "on the carriage): the speaking gaze is not a listener. After review.md: the hand inserts send no set picture, only "
+              "the owner of the hands (s12, s31 xuyan-angle-a-l1; s27, s38 tangxiaotang-portrait-l1) and lose the face sentences; "
+              "s35 and s40 send no set picture; s39 sends the mirrored raft picture (swap_pictures, applied by prep916.sh); s25 is a "
+              "clean close-up. s13, s34, s39: the shoe sentence keeps Qin "
               "Shuang's boots. s01, s07 (seven pictures) drop Xu Yan's profile; s18, s34, s39 (eight) drop his and Tang Xiaotang's "
               "profiles. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9161101/9161102."),
     "seeds": [9161101, 9161102],
