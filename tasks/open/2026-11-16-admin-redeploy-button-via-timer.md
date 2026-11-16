@@ -49,7 +49,8 @@ API 容器不需要 Docker socket、SSH 金鑰或任何主機權限。設計：`
 
 - [ ] 設定 `DEPLOYMENT_EXECUTOR=host_timer|agent`（預設 `host_timer`；`agent` 保留現行代理路線）。
       `host_timer` 時不需要 `DEPLOY_AGENT_SOCKET`／`DEPLOY_AGENT_HMAC_KEY`，`deployments_configured` 也不再要求它們。
-- [ ] 按鈕：沿用現有 deployer/owner 角色、本機密碼重新驗證、`Idempotency-Key`、每小時 5 次限流。
+- [ ] 按鈕：**只有 owner 角色**能按（站主 2026-11-16；`host_timer` 下 deployer 角色看得到紀錄但按鈕停用、API 回 403），
+      本機密碼重新驗證、`Idempotency-Key`、每小時 5 次限流。
       兩個選項：「部署最新的綠色 main」（預設）與「重建目前版本」（腳本 `--force`）；
       一個勾選「有付費影片工作時先等」（預設勾）。
 - [ ] API 建立 `status=queued`、`metadata_json.executor="host_timer"` 的 run；`uq_deployment_one_active`
@@ -64,8 +65,12 @@ API 容器不需要 Docker socket、SSH 金鑰或任何主機權限。設計：`
       部署中 api 重啟約 8 秒 502，面板要把它當「部署中」而不是錯誤。
 - [ ] 超過 10 分鐘沒被認領（timer 沒裝、停了、主機掛了）的 queued run，overview 顯示「主機排程器沒有回應」，
       並讓下一筆請求可以取消它（標 `failed`／`executor_unavailable`）。
-- [ ] 後台面板在 `host_timer` 下顯示 timer 的最後一輪時間與決定（timer 每輪 upsert 一列心跳，或寫進 `deployment_runs` 以外的
-      一張小表——二選一在實作時決定，寫進 Notes）。
+- [ ] 後台面板在 `host_timer` 下顯示 timer 的狀態，這是站主目前**唯一的通知管道**（2026-11-16：先只看後台，
+      `AUTODEPLOY_NOTIFY_URL` 留空）：最後一輪時間與決定（action、gate、reason、SHA）、最後一次自動部署與 verify 結果、
+      今天的自動部署次數、`last_missed_window`（時段結束沒部署成）、自動部署暫停檔的第一行。
+      timer 每輪把這些 upsert 成一列心跳（新的一張小表，要 migration，照 skill `backend-conventions`）；
+      後台總覽（`apps/api/app/admin/operations_service.py` 的待辦卡）在暫停檔存在或錯過時段時顯示警示——
+      該檔不在本票 scope，實作時擴 scope 或另開小票。
 - [ ] 測試：API（建立、冪等、一筆進行中、權限、`host_timer` 不需代理設定）、`ops/autodeploy` 單元測試（認領、各種拒絕、
       成功寫回、失敗寫回、跳過靜默期與時段）、面板 vitest；五語系文案、`npm run check:i18n`。
 
@@ -99,4 +104,5 @@ run 標成 `failed`／`dry_run`；開啟後再按一次，看完整一輪 succee
 - 依賴 `2026-11-16-autodeploy-daily-window`：兩張都改 `ops/autodeploy/autodeploy.py`，先做小的那張避免衝突。
 - 主機上真正可用要等 `2026-10-07-autodeploy-rollout-and-skill-docs` 的安裝與開啟。
 - 按鈕的延遲最多一個 timer 間隔（5 分鐘）；若站主覺得太慢，可把 timer 改成每分鐘，但 `git fetch` 只在有請求或在部署時段內才做。
-- 站主待決：按鈕要不要能在自動部署暫停檔存在時強制部署（建議不行，先讀 log 再刪暫停檔，skill `deploy` 規則 10）。
+- 站主 2026-11-16 定案：按鈕只給 owner；自動部署暫停檔存在時**不能**強制部署（顯示原因，先讀 log 再刪暫停檔，skill `deploy` 規則 10）；
+  通知先只看後台。還沒定：按鈕延遲 5 分鐘能否接受（計畫文件第四節第 5 點）。
