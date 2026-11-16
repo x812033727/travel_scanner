@@ -13,7 +13,20 @@ Run: python3 -I mkspec.py
   Yan's medium shots facing screen left (s15, s27, s32) send no set picture.
 - Xu Yan's smirking angle-b only where he may smile (s27, s32: the cold mouth corner); the serious and crowded shots drop it.
 - The speaking gaze names the listener off screen, or the thing looked at.
-- No seed of this episode has been run. Seeds 9211101/9211102."""
+- No seed of this episode has been run. Seeds 9211101/9211102.
+
+After the independent review (writer-tools/e021-r2/review.md; r2.py 〈AFTER THE INDEPENDENT REVIEW〉, 2026-11-16):
+- s14b and s22b are new shots (s14, s22 split in two). s14b sends no set and no angle-b; s22b sends no set and allows the
+  one henchman, who lies on the floor.
+- s15, s27, s32: the person sentence is the review's ("Xu Yan appears only once, facing us beyond the blurred sapphire-blue
+  shoulder"); Xu Yan's smiling angle-b is sent nowhere (s27, s32 keep his portrait and angle-a).
+- s23: the rabbit leaves Xiaohe's identity sentence (her sash is plain; the one rabbit is in her hands).
+- s29: A-ling's front-facing portrait is dropped (angle-b and angle-a only; "order_pictures" puts angle-b first, applied by
+  prep921.sh), the back yard with the blank board painted out (set-xuji-houyuan-ye-l2); the person sentence allows the hand
+  and sleeve at the lower right edge. s29 and s31 lose "an aloof piercing gaze" from her identity sentence. s31 sends the
+  free crop without the door, set-xuji-houyuan-ye-nodoor-l1.
+- s21b has no talking sentence now (nospeak in r2.py: one shout written in the motion), so no speaking-gaze edit.
+- s26 is the reverse into the shop and sends no set picture; s28b's person sentence lets the staff in from the left edge."""
 import json
 from pathlib import Path
 
@@ -41,7 +54,12 @@ SPEAK_GAZE = "turned toward the person she is speaking to, face in profile or th
 SPEAK_GAZE_HE = "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person"
 SET_CLAUSE = "the location shown in <Picture 1> is the set, keeping its layout and props."
 SET_SRC = "set-xuji-pu-l1.png"
-DUSK, NIGHT, YARD, TOP = "set-xuji-pu-dusk-l1.png", "set-xuji-pu-ye-l1.png", "set-xuji-houyuan-ye-l1.png", "set-xuji-pu-cabinet-l1.png"
+DUSK, NIGHT, TOP = "set-xuji-pu-dusk-l1.png", "set-xuji-pu-ye-l1.png", "set-xuji-pu-cabinet-l1.png"
+# the back yard: l2 = l1 with the blank board on the well frame painted out; the crop without the door for s31 (refs-live/README.md)
+YARD, YARD_NODOOR = "set-xuji-houyuan-ye-l2.png", "set-xuji-houyuan-ye-nodoor-l1.png"
+XU_ONCE = "Xu Yan appears only once, facing us beyond the blurred sapphire-blue shoulder; no second copy of anyone appears."
+ALING_GAZE = [", a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze;",
+              ", a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves;"]
 
 
 def back(beyond):
@@ -65,8 +83,8 @@ def besides(pr, what):
     return f"Besides {pr}, only {what} the composition describes are in the frame; no second copy of anyone appears."
 
 
-ids = ([f"s{n:02d}" for n in range(1, 22)] + ["s21b"] + [f"s{n:02d}" for n in range(22, 29)] + ["s28b"]
-       + [f"s{n:02d}" for n in range(29, 38)])
+ids = ([f"s{n:02d}" for n in range(1, 15)] + ["s14b"] + [f"s{n:02d}" for n in range(15, 22)] + ["s21b", "s22", "s22b"]
+       + [f"s{n:02d}" for n in range(23, 29)] + ["s28b"] + [f"s{n:02d}" for n in range(29, 38)])
 shots = {sid: {} for sid in ids}
 
 # Tang Xiaotang from behind.
@@ -81,10 +99,10 @@ shots["s12"] = {"replace": [FACE, NO_ABACUS, RIBBON], "drop_pictures": ["tangxia
 add("s10", [ONLY_2, ("Only these 2 people and the young man seen only from behind in the foreground are in the frame; "
                      "no second copy of anyone appears.")])
 for sid in ["s15", "s27", "s32"]:
-    add(sid, [ONLY_HE, besides("him", "the back of the man's head and his shoulder in the foreground")])
+    add(sid, [ONLY_HE, XU_ONCE])  # review 必改: never a second Xu Yan in the foreground
 for sid in ["s28", "s37"]:
     add(sid, [ONLY_HE, besides("him", "the dark shoulder of the young man in the foreground")])
-for sid in ["s22", "s24"]:
+for sid in ["s22", "s22b", "s24"]:
     add(sid, [ONLY_SHE, besides("her", "the one burly man in black")])
 
 # Lines not said into a face on screen: the speaking gaze names the listener off screen or the thing looked at.
@@ -103,23 +121,32 @@ for sid, g in [
     ("s37", "his eyes on the counter beyond the right edge of the frame, over the young man's shoulder"),
 ]:
     add(sid, [SPEAK_GAZE_HE, g])
-add("s21b", [SPEAK_GAZE, "her face three-quarter to screen left, her eyes on the men who pushed her"])
+add("s28b", [ONLY_HE, "He is the only person in the frame; the staff comes in from beyond the left edge; no second copy of anyone appears."])
+# s23: the one rabbit is in her hands (review 必改)
+add("s23", ["a small woven straw rabbit tucked into the cloth sash at her waist", "a plain cloth sash at her waist"])
+# s29: the point of view (review 必改); s29, s31 without the gaze that pulls her eyes to the lens
+add("s29", [ONLY_SHE, "She is the only person in the frame, with only the hand and sleeve at the lower right edge besides her; no second copy of anyone appears."])
+for sid in ["s29", "s31"]:
+    add(sid, ALING_GAZE)
+drop("s29", "aling-portrait-l1.png")
+shots["s29"]["order_pictures"] = ["aling-angle-b-l1.png", "aling-angle-a-l1.png", YARD]
 
 # Xu Yan's smirking profile picture only where he may smile.
-for sid in ["s01", "s09", "s14", "s15", "s17", "s18", "s23", "s34", "s35"]:
-    drop(sid, "xuyan-angle-b-l1.png")
+for sid in ["s01", "s09", "s14", "s14b", "s15", "s17", "s18", "s23", "s27", "s32", "s34", "s35"]:
+    drop(sid, "xuyan-angle-b-l1.png")  # after the review: nowhere
 
 # Sets.
 DUSK_SET = ["s01", "s02", "s04", "s07", "s09", "s10", "s17", "s18"]
-NIGHT_SET = ["s20", "s21", "s22", "s24", "s25", "s26", "s28b", "s34", "s35", "s36", "s37"]
-NO_SET = ["s05", "s08", "s12", "s13", "s14", "s15", "s19", "s21b", "s23", "s27", "s28", "s30", "s32", "s33"]
+NIGHT_SET = ["s20", "s21", "s22", "s24", "s25", "s28b", "s34", "s35", "s36", "s37"]
+NO_SET = ["s05", "s08", "s12", "s13", "s14", "s14b", "s15", "s19", "s21b", "s22b", "s23", "s26", "s27", "s28", "s30", "s32",
+          "s33"]
 INSERTS = ["s03", "s06", "s11", "s16"]
 for sid in DUSK_SET:
     shots[sid]["swap_pictures"] = {SET_SRC: DUSK}
 for sid in NIGHT_SET:
     shots[sid]["swap_pictures"] = {SET_SRC: NIGHT}
-for sid in ["s29", "s31"]:
-    shots[sid]["swap_pictures"] = {SET_SRC: YARD}
+shots["s29"]["swap_pictures"] = {SET_SRC: YARD}
+shots["s31"]["swap_pictures"] = {SET_SRC: YARD_NODOOR}
 for sid in NO_SET:
     shots[sid]["drop_set"] = True
 for sid in INSERTS:
@@ -134,10 +161,13 @@ spec = {
     "_note": ("e921 live d1 (e920-live's way after its review and fix1, written by mkspec.py). Tang Xiaotang never shows her "
               "mouth: five back shots drop her three pictures and her identity sentence; s12 is her one silent face (softer face "
               "sentence, no abacus, short ribbons, no angle-b). Sets: set-xuji-pu-dusk-l1 (s01-s19), set-xuji-pu-ye-l1 (s20 on), "
-              "set-xuji-houyuan-ye-l1 (s29, s31), set-xuji-pu-cabinet-l1 for the four paper inserts (s03, s06, s11, s16); close "
+              "set-xuji-houyuan-ye-l2 (s29; the blank board painted out), the crop without the door set-xuji-houyuan-ye-nodoor-l1 (s31), set-xuji-pu-cabinet-l1 for the four paper inserts (s03, s06, s11, s16); close "
               "shots and Xu Yan's medium shots facing screen left send none (prep921.sh swaps with absolute paths). The unnamed "
               "backs and the henchmen are allowed in the 'only' sentence. The speaking gaze names the listener off screen. No "
-              "off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9211101/9211102."),
+              "off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). After the independent review: s14b and s22b "
+              "added (s14, s22 split), the review's person sentences for s15, s27, s32, s28b, s29, Xu Yan's angle-b nowhere, "
+              "s29 angle-b and angle-a only (order_pictures, applied by prep921.sh), one rabbit in s23, s26 without a set. "
+              "Seeds 9211101/9211102."),
     "seeds": [9211101, 9211102],
     "shots": shots,
 }

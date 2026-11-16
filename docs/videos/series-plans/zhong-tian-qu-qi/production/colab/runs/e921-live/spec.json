@@ -1,5 +1,5 @@
 {
- "_note": "e921 live d1 (e920-live's way after its review and fix1, written by mkspec.py). Tang Xiaotang never shows her mouth: five back shots drop her three pictures and her identity sentence; s12 is her one silent face (softer face sentence, no abacus, short ribbons, no angle-b). Sets: set-xuji-pu-dusk-l1 (s01-s19), set-xuji-pu-ye-l1 (s20 on), set-xuji-houyuan-ye-l1 (s29, s31), set-xuji-pu-cabinet-l1 for the four paper inserts (s03, s06, s11, s16); close shots and Xu Yan's medium shots facing screen left send none (prep921.sh swaps with absolute paths). The unnamed backs and the henchmen are allowed in the 'only' sentence. The speaking gaze names the listener off screen. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9211101/9211102.",
+ "_note": "e921 live d1 (e920-live's way after its review and fix1, written by mkspec.py). Tang Xiaotang never shows her mouth: five back shots drop her three pictures and her identity sentence; s12 is her one silent face (softer face sentence, no abacus, short ribbons, no angle-b). Sets: set-xuji-pu-dusk-l1 (s01-s19), set-xuji-pu-ye-l1 (s20 on), set-xuji-houyuan-ye-l2 (s29; the blank board painted out), the crop without the door set-xuji-houyuan-ye-nodoor-l1 (s31), set-xuji-pu-cabinet-l1 for the four paper inserts (s03, s06, s11, s16); close shots and Xu Yan's medium shots facing screen left send none (prep921.sh swaps with absolute paths). The unnamed backs and the henchmen are allowed in the 'only' sentence. The speaking gaze names the listener off screen. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). After the independent review: s14b and s22b added (s14, s22 split), the review's person sentences for s15, s27, s32, s28b, s29, Xu Yan's angle-b nowhere, s29 angle-b and angle-a only (order_pictures, applied by prep921.sh), one rabbit in s23, s26 without a set. Seeds 9211101/9211102.",
  "seeds": [
   9211101,
   9211102
@@ -186,11 +186,17 @@
    ],
    "drop_set": true
   },
+  "s14b": {
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "drop_set": true
+  },
   "s15": {
    "replace": [
     [
      "He is the only person in the frame; no second copy of anyone appears.",
-     "Besides him, only the back of the man's head and his shoulder in the foreground the composition describes are in the frame; no second copy of anyone appears."
+     "Xu Yan appears only once, facing us beyond the blurred sapphire-blue shoulder; no second copy of anyone appears."
     ],
     [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
@@ -255,12 +261,6 @@
    }
   },
   "s21b": {
-   "replace": [
-    [
-     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
-     "her face three-quarter to screen left, her eyes on the men who pushed her"
-    ]
-   ],
    "drop_set": true
   },
   "s22": {
@@ -274,7 +274,22 @@
     "set-xuji-pu-l1.png": "set-xuji-pu-ye-l1.png"
    }
   },
+  "s22b": {
+   "replace": [
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "Besides her, only the one burly man in black the composition describes are in the frame; no second copy of anyone appears."
+    ]
+   ],
+   "drop_set": true
+  },
   "s23": {
+   "replace": [
+    [
+     "a small woven straw rabbit tucked into the cloth sash at her waist",
+     "a plain cloth sash at her waist"
+    ]
+   ],
    "drop_pictures": [
     "xuyan-angle-b-l1.png"
    ],
@@ -303,16 +318,17 @@
    }
   },
   "s26": {
-   "swap_pictures": {
-    "set-xuji-pu-l1.png": "set-xuji-pu-ye-l1.png"
-   }
+   "drop_set": true
   },
   "s27": {
    "replace": [
     [
      "He is the only person in the frame; no second copy of anyone appears.",
-     "Besides him, only the back of the man's head and his shoulder in the foreground the composition describes are in the frame; no second copy of anyone appears."
+     "Xu Yan appears only once, facing us beyond the blurred sapphire-blue shoulder; no second copy of anyone appears."
     ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
    ],
    "drop_set": true
   },
@@ -326,13 +342,37 @@
    "drop_set": true
   },
   "s28b": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "He is the only person in the frame; the staff comes in from beyond the left edge; no second copy of anyone appears."
+    ]
+   ],
    "swap_pictures": {
     "set-xuji-pu-l1.png": "set-xuji-pu-ye-l1.png"
    }
   },
   "s29": {
+   "replace": [
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "She is the only person in the frame, with only the hand and sleeve at the lower right edge besides her; no second copy of anyone appears."
+    ],
+    [
+     ", a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze;",
+     ", a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves;"
+    ]
+   ],
+   "drop_pictures": [
+    "aling-portrait-l1.png"
+   ],
+   "order_pictures": [
+    "aling-angle-b-l1.png",
+    "aling-angle-a-l1.png",
+    "set-xuji-houyuan-ye-l2.png"
+   ],
    "swap_pictures": {
-    "set-xuji-pu-l1.png": "set-xuji-houyuan-ye-l1.png"
+    "set-xuji-pu-l1.png": "set-xuji-houyuan-ye-l2.png"
    }
   },
   "s30": {
@@ -345,16 +385,25 @@
    "drop_set": true
   },
   "s31": {
+   "replace": [
+    [
+     ", a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze;",
+     ", a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves;"
+    ]
+   ],
    "swap_pictures": {
-    "set-xuji-pu-l1.png": "set-xuji-houyuan-ye-l1.png"
+    "set-xuji-pu-l1.png": "set-xuji-houyuan-ye-nodoor-l1.png"
    }
   },
   "s32": {
    "replace": [
     [
      "He is the only person in the frame; no second copy of anyone appears.",
-     "Besides him, only the back of the man's head and his shoulder in the foreground the composition describes are in the frame; no second copy of anyone appears."
+     "Xu Yan appears only once, facing us beyond the blurred sapphire-blue shoulder; no second copy of anyone appears."
     ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
    ],
    "drop_set": true
   },

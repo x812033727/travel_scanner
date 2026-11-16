@@ -35,6 +35,48 @@ e920 picking lessons (colab/runs/e920-live/picks-merged.tsv and fix1/mkspec.py; 
   Every other face is a set expression (brows, eyes, jaw).
 - Nobody is flipped: every speaker wears a cross or round collar; sides are written as screen left/right.
 
+AFTER THE INDEPENDENT REVIEW (review.md in this folder: 10 必改 all applied as written, the cheap 建議 taken; 2026-11-16, the
+coordinator deciding for the owner; where this differs from the paragraphs above and below, this wins):
+- The register (必改 1-2): MINGCE is one thin flat packet of plain grey cloth the size of a hand, folded shut, the same
+  sentence in s10, s11 (the review's own first frame), s13; never "booklet", "stitched" or "cover". s10 holds it still in the
+  lamp light (no shake); s13 taps it on the counter edge (his right hand holds the fan). s28 (必改 7): one neat stack of
+  folded cream papers held flat against his chest, slipped into the front fold of his robe, the left hand coming out empty.
+- s06 (必改 3): the folded sheet slides an inch toward the lamp base and is tapped twice; never "smooths flat".
+- s22 (必改 4) is split into two 6 s shots, one big action each: s22 the low sweep and the fall, silent, the man lying to
+  the last frame; s22b (a24) the man already flat on his back in the lower foreground from the first frame, the staff's
+  rounded end already on his chest, Qin Shuang leaning on it and speaking. s14 (建議, the coordinator: two 8 s shots rather
+  than one 14 s) is split at the natural break: s14 the system's ruling and Xu Yan's first thought (a14, a15; the panel),
+  s14b, closer, the system's reply and his second thought (a16, a17). The sids s14b, s22b keep every later id unchanged;
+  mkspec.py, prep921.sh and clips-dh carry them, and the refine separators are in every shot exactly once.
+- s23 (必改 5): one rabbit, in her hands from the first frame; her sash is plain (XIAOHE_HOLD; mkspec.py removes the rabbit
+  from her identity sentence for s23).
+- s26 (必改 6): the reverse into the shop: the door post in the right foreground, Sun Zhanggui on the right at Wei Shaoqing's
+  ear, the dim shop, the two lamps and the white wall behind them; the street and Erniu are behind the camera. No set picture
+  (the shop picture looks at the doorway). His eyes flick once across the shop.
+- s29 (必改 8): the point of view with the door leaf at the RIGHT edge, as in the back-yard picture, a sapphire-sleeved right
+  hand at the lower right holding the fan tip against it; A-ling a little right of the middle, side-on, her face in profile to
+  screen left, eyes lowered, listening (never turning to the doorway, which is the lens). Pictures: angle-b, angle-a and the
+  back yard only (her front-facing portrait is not sent; prep921.sh orders angle-b first); "an aloof piercing gaze" is cut
+  from her identity sentence (s29, s31). The person sentence allows the hand and sleeve at the lower right edge.
+- s15, s27, s32 (必改 9): the foreground back is WEI_FG, the same sentence in all three (never "young man"); the person
+  sentence is "Xu Yan appears only once, facing us beyond the blurred sapphire-blue shoulder; no second copy of anyone
+  appears."; s27, s32 send Xu Yan's portrait and angle-a (angle-b, the smiling profile, is sent nowhere now); his cold mouth
+  corner is the expression sentence's.
+- Recording a13 (必改 10): re-recorded with the same text (audio/README-retakes.txt).
+- 建議 taken: s04 the fan closed (s02 snapped it shut); the inserts' own light sentence (LIGHT["insert"]); s12 the jacket
+  only, no skirt or bow (the short ribbons stay in mkspec.py; the portrait's long ribbons are accepted, as in e020 s37b);
+  s14 split (above); s21b one shout, then the lips pressed (nospeak: no talking sentence, the shout is written in the motion;
+  the cut keeps its first 2 s); s26 buys 8 s; s29/s31 the hair as the pictures have it (a small knot on the crown, the rest
+  long down her back); s30 the fan already in mid-air, one lean; s31 the bucket already on the rim, and the free crop
+  set-xuji-houyuan-ye-nodoor-l1 (the review's command, door and brick post cut away); the blank board on the well frame
+  painted out (set-xuji-houyuan-ye-l2, free, Pillow; s29 sends it, the crop is cut from it); s32 a push-in instead of a
+  tracking shot; s37 side-on, the left shoulder to the street; s28b the staff held from beyond the left edge; s10, s28, s37
+  Xu Yan's back a dark silhouette (XU_BACK); s19 the fan held before his chin in the first frame; the night's lantern red
+  (EAVE_N); LAMPS as the night picture draws them, in every shop shot with the one COUNTER sentence (the dusk picture has no
+  counter: accepted, compare s17, s18, s20 when picking).
+- Not taken: the paid one-change edit of Tang Xiaotang's portrait to short ribbons; re-recording a27 (門閂, read right with
+  the line as prompt) and a17 (its trailing 啊 is whisper's).
+
 THE AXIS (bible 接點 20->21, e020 review 必改 4-7): as in e020's closing scene, looking at the front doorway the counter is
 on screen RIGHT. Wei Shaoqing, Sun Zhanggui, the doorway, the henchmen and Erniu are on the LEFT and look screen right; Xu
 Yan in front of the counter and Tang Xiaotang behind it are on the RIGHT and look screen left. Reverse shots stay on the
@@ -75,17 +117,19 @@ MUSIC = "one cue per scene: low brooding suspense strings at dusk in a small sho
 # Places. gen-dh SET: "Xu family shop" for every shop prompt (dh-set-xuji-pu -> refs-live/set-xuji-pu-l1, swapped by spec.json).
 COUNTER = "one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front"
 THE_COUNTER = "the long waist-high dark wooden counter"
-LAMPS = "two small brass oil lamps with bare flames"
+LAMPS = "two small brass oil lamps on tall round bases with teardrop flames"  # the night picture's lamps (review 建議), every shop shot
 SHOP = ("tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the "
         "middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white "
         f"panelled walls on the right with {COUNTER} standing along them, {LAMPS} burning on its top, a floor of large grey "
         "stone tiles and dark wooden beams overhead")
 SHELF_EMPTY = "the shelves standing completely bare"
 EAVE = "one round plain paper lantern glowing warm orange under the eave beyond the doorway"
+# the night picture has a red lantern beyond the doorway (review 建議): every night shot
+EAVE_N = "one round red paper lantern glowing beyond the doorway"
 LOC = {
     "dusk": f"In the Xu family shop in the county town at dusk: {SHOP}; {SHELF_EMPTY}; the last low orange sunlight in thin bars across the grey floor, the street beyond the doorway turning deep blue with dusk, {EAVE}",
     "dusk_c": "In the Xu family shop in the county town at dusk, the shop dim and warm with the light of the oil lamps",
-    "night": f"In the Xu family shop in the county town at nightfall: {SHOP}; {SHELF_EMPTY}; the shop lit only by the two oil lamps on the counter, their warm light on the faces near it, the far corners dim and blue, the street beyond the doorway dark blue with night, {EAVE}",
+    "night": f"In the Xu family shop in the county town at nightfall: {SHOP}; {SHELF_EMPTY}; the shop lit only by the two oil lamps on the counter, their warm light on the faces near it, the far corners dim and blue, the street beyond the doorway dark blue with night, {EAVE_N}",
     "night_c": "In the Xu family shop in the county town at nightfall, the shop dim and warm with the light of the oil lamps",
     "insert": "In the Xu family shop in the county town, on the dark wooden counter top in warm oil-lamp light",
     "yard": "In the small back yard behind the Xu family shop at night: a round brick well with a wooden frame and crossbar under a short thatched roof on the right, a dark brick wall beside it, a narrow stone-paved path running away on the left between dark brick walls to one small glowing paper lantern at its far end, everything in deep blue moonlight",
@@ -93,6 +137,8 @@ LOC = {
 LIGHT = {
     "dusk": "the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
     "night": "the warm oil-lamp light and the dark blue night stay unchanged",
+    # the paper inserts show no window and no door (review 建議): only the lamp light on the wood
+    "insert": "the warm lamp light on the wood stays unchanged",
     "yard": "the deep blue moonlight and the one warm lantern stay unchanged",
 }
 # bible rule 15: no "<X> speaks off screen" / "the system voice speaks off screen".
@@ -102,20 +148,32 @@ OFFSCREEN_SPEECH = False
 XU = "Xu Yan, in his faded blue-grey scholar's robe patched at one elbow"
 QIN = ("her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, "
        "black trousers, leather boots and high ponytail tied with black cord")
-TANG = "in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow"
-ALING = "in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair in a high bun with one plain wooden hairpin"
+# s12 is a chest-up close-up: no skirt and no second ribbon (review 建議)
+TANG = "in her peach-pink cross-collared short jacket wrapped shut across her chest"
+# her pictures: a small knot on the crown, the rest long and straight down her back (review 建議)
+ALING = ("in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair pinned up on the crown with "
+         "one plain wooden hairpin, the rest falling long and straight down her back")
 XIAOHE = ("little Xiaohe, in her patched lilac cotton jacket, her two little pigtails tied with red string, one small woven straw "
           "rabbit tucked in her sash")
+# s23: the rabbit is in her hands, so her sash is plain (review 必改: one rabbit only)
+XIAOHE_HOLD = "little Xiaohe, in her patched lilac cotton jacket, her two little pigtails tied with red string, a plain cloth sash at her waist"
 ERNIU = "Wang Erniu, in his coarse brown hemp short jacket with the sleeves rolled up"
 SUN = "Sun Zhanggui, in his green satin robe with a jade belt hook"
 # bible rule 30 with the portrait's jade (e020 review 必改 7: a small green jade ornament at the front of his topknot)
 WEI = ("Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green "
        "jade ornament at the front of his topknot")
 WEI_BACK = ("one young man in a sapphire-blue brocade robe woven with gold thread seen only from behind, appearing only once")
-XU_BACK = "one young man in a faded blue-grey robe seen only from behind, appearing only once"
+# review 必改 (s15, s27, s32): not "young man" (Xu Yan is one), the shoulder fills a third, the head turned to Xu Yan
+WEI_FG = ("in the soft left foreground the man in sapphire-blue seen only from behind, appearing only once, his blurred "
+          "sapphire-blue brocade shoulder woven with gold thread filling the left third of the frame, his head turned toward Xu "
+          "Yan, only the black hair at the back of his head and his topknot showing")
+# review 建議 (s10, s28, s37): a dark silhouette, so there are never two men in blue
+XU_BACK = "one young man seen only from behind, appearing only once, a dark silhouette against the lamp light"
 FAN = "one folding fan of plain cream paper with a few large flakes of gold leaf"
 THUGS = ("two burly men in plain black cross-collared short jackets, black cloth head wraps and black cloth shoes, their hands "
          "open at their sides, seen only from the side and from behind, their faces turned away in shadow")
+THUG_DOWN = ("one burly man in a plain black cross-collared short jacket, a black cloth head wrap and black cloth shoes, already "
+             "lying flat on his back on the stone floor across the lower foreground from the first frame, his face turned away in shadow")
 THUG1 = ("one burly man in a plain black cross-collared short jacket, a black cloth head wrap and black cloth shoes, seen only from "
          "the side and from behind, his face turned away in shadow")
 STAFF = "one long plain wooden staff taller than a man, smooth and round from end to end"
@@ -123,7 +181,9 @@ BAR = "one long square plain wooden door bar"
 # bible rule 27 (fixed paper sentences; only folded, outside up, or closed)
 TIE = "one folded sheet of stiff cream paper, its outside plain"
 HUNSHU = "one folded sheet of cream paper with a thin gold edge, plain"
-MINGCE = "one thin stitched booklet bound in plain grey cloth, its cover one even grey all over with only the weave of the cloth on it"
+# review 必改 1: a stitched booklet grows a title slip and fake writing; one grey cloth packet, held still, never opened
+MINGCE = ("one thin flat packet of plain grey cloth the size of his hand, folded shut, the cloth smooth and even grey on every "
+          "side")
 RED = "one folded sheet of plain red paper"
 PACKET = "one small flat square packet of folded yellowish oiled paper"
 BUCKET = "one plain wooden bucket with a rope handle"
@@ -172,14 +232,14 @@ SHOTS = [
          motion=f"Sun Zhanggui bows a little and turns his left hand, the one on the screen-right side of his body nearest Wei Shaoqing, open and palm up toward him as he speaks; {quiet('Wei Shaoqing')}; after the last word Wei Shaoqing snaps the fan shut against his left palm",
          zh="中景、慢推（前景左虛焦門框）：孫掌櫃（綠緞袍、玉帶鉤）在門內畫左、側身，臉朝畫右的許硯（畫外），彎一下腰、左手（靠魏少卿那隻）掌心朝上往身旁的魏少卿一引，陪笑地說（本鏡可以笑）；魏少卿在門口正中、下巴微抬、嘴閉著，說完把摺扇『啪』地合在左掌"),
     # Insert: the chancellor's letter (rule 27). No person: the counter-top crop set-xuji-pu-cabinet-l1.
-    dict(loc="insert", cam="Insert close-up, slow push in", chars=[], night="dusk",
+    dict(loc="insert", cam="Insert close-up, slow push in", chars=[], night="insert",
          comp=f"insert close-up, the shot opens directly on a man's left hand in a wide sapphire-blue brocade sleeve woven with gold thread, already holding {TIE} a hand's height above the dark wooden counter top from its very first frame; only the hand, its sleeve cuff, the folded paper and the counter top are in the frame; the round brass base of a small oil lamp at the right edge, its warm light across the wood",
          lines=[("weishaoqing", "宰相府的帖子。她叫唐小棠，是我過了定的人。", "拖長音")],
          motion=NOBODY + "the hand slaps the folded paper flat onto the counter top, then two fingers press on it and push it slowly forward across the wood; the paper stays folded, its plain outside up",
          zh="插鏡、慢推（第一格就是手：寶藍織金袖口的左手已經拿著帖子在檯面上方一掌高；送木櫃面裁切 `set-xuji-pu-cabinet-l1` 當櫃檯面）：帖子照拍法 27 寫成一張摺著的硬米色紙、外面素的（稿子的紅封不寫）；『啪』地拍在櫃檯上，兩指按住往前推；紙一直摺著。魏少卿的台詞畫外"),
     # From behind her across the counter (rule 3): Wei Shaoqing's face takes it; she bumps the stool.
     dict(loc="dusk", cam="Over-the-shoulder medium shot, slow push in", chars=["tangxiaotang", "weishaoqing"], nospeak=["tangxiaotang"], night="dusk",
-         comp=counter_back(f"one tall plain wooden stool standing just behind her at the right edge of the frame; facing us beyond the counter a little left of the middle {WEI}, standing a few steps inside the shop, framed from the waist up with clear space above his head, the open fan in his right hand at his chest, his face three-quarter to screen right toward her, never the lens; smug: one brow raised, eyes narrowed, lips closed; behind him the doorway deep blue with dusk, soft; {HANDS}; exactly two people, the young woman in the foreground seen only from behind"),
+         comp=counter_back(f"one tall plain wooden stool standing just behind her at the right edge of the frame; facing us beyond the counter a little left of the middle {WEI}, standing a few steps inside the shop, framed from the waist up with clear space above his head, the closed fan in his right hand at his chest, his face three-quarter to screen right toward her, never the lens; smug: one brow raised, eyes narrowed, lips closed; behind him the doorway deep blue with dusk, soft; {HANDS}; exactly two people, the young woman in the foreground seen only from behind"),
          lines=[("tangxiaotang", "你怎麼找到這裡的？我躲了半年，誰都沒說。", "發抖")],
          motion=f"the young woman takes half a step back and bumps the tall stool behind her, which rocks on its legs; {HEADSTILL}; she looks straight ahead at Wei Shaoqing the whole shot; {quiet('Wei Shaoqing')}; one corner of his mouth curls",
          zh="【改背後拍】過肩中景、慢推：前景右唐小棠的背影在櫃檯後（兩顆高丸子、短粉緞帶、後頸露出），往後退半步碰到身後的高凳、高凳一晃；頭不動、一直看著魏少卿；櫃檯對面魏少卿挑眉瞇眼、嘴閉著，嘴角一勾。台詞 nospeak，剪接放錄音（原稿『抱著算盤』不寫：拍法 20 算盤只在插鏡）"),
@@ -190,11 +250,11 @@ SHOTS = [
          motion="Wei Shaoqing flicks his eyes once to the door post at screen left, then lets them sweep slowly across the bare shelves before they come back to her; after the last word he fans himself once, smiling",
          zh="中近景、慢推（不送場景圖：近鏡背景虛焦，第 20 集審稿建議 18）：魏少卿右手把摺扇開在下巴下（不遮嘴：要對嘴），眼光往畫左門柱的孫掌櫃一瞟、再慢慢掃過空了的架子，朝畫右的唐小棠（畫外）輕蔑地說（本鏡可以笑）；說完搧一下"),
     # Insert: the Tang marriage paper, folded (rule 27): the script's unfolded sheet with seal frames is never filmed.
-    dict(loc="insert", cam="Insert close-up, slow push in", chars=[], night="dusk",
+    dict(loc="insert", cam="Insert close-up, slow push in", chars=[], night="insert",
          comp=f"insert close-up, the shot opens directly on a man's left hand in a wide sapphire-blue brocade sleeve woven with gold thread, already laying {HUNSHU} on the dark wooden counter top from its very first frame, beside the round brass base of a small oil lamp burning at the right edge; only the hand, its sleeve cuff, the folded paper, the lamp base and the counter top are in the frame; warm lamp light across the wood",
          lines=[("weishaoqing", "這是唐萬金親筆簽的婚書，她爹親手按的印。", "得意")],
-         motion=NOBODY + "the hand smooths the folded sheet flat beside the lamp and taps it twice with two fingers; the sheet stays folded, its plain outside up, its thin gold edge catching the lamp light",
-         zh="插鏡、慢推（送木櫃面裁切）：魏少卿的左手（寶藍織金袖口）第一格已經把唐家婚書放在油燈座旁（拍法 27：米色紙細金邊、摺著、只見紙背；稿子『甩開、透出紅印框』不拍，拍法 7），兩指點兩下。台詞畫外"),
+         motion=NOBODY + "the hand slides the folded sheet an inch toward the lamp base and taps it twice with two fingers; the sheet stays folded in half, its plain outside up, its thin gold edge catching the lamp light",
+         zh="插鏡、慢推（送木櫃面裁切）：魏少卿的左手（寶藍織金袖口）第一格已經把唐家婚書放在油燈座旁（拍法 27：米色紙細金邊、摺著、只見紙背；稿子『甩開、透出紅印框』不拍，拍法 7），往燈座推一寸、兩指點兩下，紙一直對摺著（審稿必改：不寫『抹平』，會讀成攤開）。台詞畫外"),
     # From behind her: both palms slap the counter (the abacus is not written, rule 20; its click is a sound effect).
     dict(loc="dusk", cam="Over-the-shoulder medium shot, slow push in", chars=["tangxiaotang", "weishaoqing"], nospeak=["tangxiaotang"], night="dusk",
          comp=counter_back(f"both her hands already raised a little above the counter top from the first frame; facing us beyond the counter a little left of the middle {WEI}, framed from the waist up with clear space above his head, the closed fan in his right hand, his face three-quarter to screen right toward her, never the lens; cool: eyes half closed, chin lifted, lips closed; behind him the doorway deep blue with dusk, soft; {HANDS}; exactly two people, the young woman in the foreground seen only from behind"),
@@ -214,46 +274,51 @@ SHOTS = [
          zh="過肩中近景、慢推（從唐小棠背後越過櫃檯拍許硯；她不說話，照背影鏡的寫法）：許硯側過臉看她，左手輕輕放在櫃檯上、離她的手一指寬；全程嘴閉著（心裡話畫外）；她頭不動、低頭看櫃檯"),
     # Wide: Wei Shaoqing and Xiaohe; Xu Yan's unnamed back in the right foreground (rules 1, 2).
     dict(loc="dusk", cam="Wide shot, slow push in", chars=["weishaoqing", "xiaohe"], night="dusk",
-         comp=f"wide shot from inside the shop toward the wide front doorway, the near end of {THE_COUNTER} with {LAMPS} on it in the soft right foreground, and in the soft right foreground {XU_BACK}, standing in front of the counter, only his shoulders and the back of his head with a cloth-tied topknot showing; in the middle {WEI}, a few steps inside the doorway, framed full length, holding up at the height of his face in his left hand {MINGCE}, the closed fan in his right hand, his face three-quarter to screen right toward the counter, never the lens; smug: eyes narrowed, one corner of his mouth curling, lips moving between words; at the back by the bare shelves on the left {XIAOHE}, small, holding a bamboo broom in both hands, her face turned toward him, eyes wide, lips closed; behind them the doorway deep blue with dusk and {EAVE}; {HANDS}; exactly three people, the young man in the foreground seen only from behind",
+         comp=f"wide shot from inside the shop toward the wide front doorway, the near end of {THE_COUNTER} with {LAMPS} on it in the soft right foreground, and in the soft right foreground {XU_BACK}, standing in front of the counter, only his dark shoulders and the back of his head with a cloth-tied topknot showing; in the middle {WEI}, a few steps inside the doorway, framed full length, holding up at the height of his face in his left hand {MINGCE}, the closed fan in his right hand, his face three-quarter to screen right toward the counter, never the lens; smug: eyes narrowed, one corner of his mouth curling, lips moving between words; at the back by the bare shelves on the left {XIAOHE}, small, holding a bamboo broom in both hands, her face turned toward him, eyes wide, lips closed; behind them the doorway deep blue with dusk and {EAVE}; {HANDS}; exactly three people, the young man in the foreground seen only from behind",
          lines=[("weishaoqing", "還有這個，縣衙配婚名冊的抄本，我託人抄出來的。", "慢條斯理")],
-         motion=f"Wei Shaoqing lifts the grey booklet higher into the warm lamp light and gives it one shake as he speaks; {quiet('Xiaohe', 'her')}; Xiaohe's broom stops mid-sweep a little off the floor; the young man in the foreground stays still, the back of his head toward us the whole shot",
-         zh="全景、慢推（前景右是櫃檯一角、油燈與許硯的背影，不點名、不送圖，拍法 2）：魏少卿在門內幾步、全身，左手把名冊抄本（拍法 27：薄線裝冊、素灰布面，面上只有布紋）舉到臉的高度、往燈光一抖，得意地說（本鏡可以笑）；後面左邊空架子旁小禾兩手拿竹掃帚、掃帚停在半空、抬頭看他、嘴閉著。唐小棠在畫外（三張臉以內）"),
+         motion=f"Wei Shaoqing lifts the grey cloth packet higher into the warm lamp light and holds it there, still, as he speaks; {quiet('Xiaohe', 'her')}; Xiaohe's broom stops mid-sweep a little off the floor; the young man in the foreground stays still, the back of his head toward us the whole shot",
+         zh="全景、慢推（前景右是櫃檯一角、油燈與許硯的暗剪影背影，不點名、不送圖，拍法 2）：魏少卿在門內幾步、全身，左手把名冊抄本（審稿必改：素灰布包、摺好包著，不寫線裝冊）舉到臉的高度、舉在燈光裡不動，得意地說（本鏡可以笑）；後面左邊空架子旁小禾兩手拿竹掃帚、掃帚停在半空、抬頭看他、嘴閉著。唐小棠在畫外（三張臉以內）"),
     # Insert: the closed register under his finger (rule 7: the script's open page with the red ring is never filmed).
-    dict(loc="insert", cam="Insert close-up, slow push in", chars=[], night="dusk",
-         comp=f"insert close-up, the shot opens directly on a man's forefinger resting on the plain grey cover of {MINGCE}, lying closed on the dark wooden counter top from its very first frame; only the hand in its wide sapphire-blue brocade sleeve cuff, the closed grey booklet and the counter top are in the frame; warm oil-lamp light across the wood",
+    dict(loc="insert", cam="Insert close-up, slow push in", chars=[], night="insert",
+         comp="insert close-up, the shot opens directly on a man's forefinger resting on one thin flat packet of plain grey cloth the size of a hand, folded shut, lying on the dark wooden counter top from its very first frame, the cloth smooth and even grey on every side; only the hand in its wide sapphire-blue brocade sleeve cuff, the grey cloth packet and the counter top are in the frame; warm oil-lamp light across the wood",
          lines=[("weishaoqing", "配給許硯的第三個，名冊上寫的是林二丫。", "一字一字")],
-         motion=NOBODY + "the forefinger slides slowly down the closed grey cover, stops near its lower edge and taps the cover twice; the booklet stays closed",
-         zh="插鏡、慢推（送木櫃面裁切）：第一格就是指尖按在合著的素灰布面名冊上，順著封面往下滑、停住、點兩下（稿子『攤開的名冊、紅圈』不拍：紙上的字一律不拍，拍法 7、27）。台詞畫外"),
+         motion=NOBODY + "the forefinger slides slowly down the grey cloth, stops near its lower edge and taps it twice; the packet stays folded shut",
+         zh="插鏡、慢推（送木櫃面裁切）：第一格就是指尖按在名冊抄本的素灰布包上（審稿必改：布包、摺好包著），順著布面往下滑、停住、點兩下（稿子『攤開的名冊、紅圈』不拍：紙上的字一律不拍，拍法 7、27）。台詞畫外"),
     # Her one face (silent): e920 fix1's short ribbons, no long-ribbon angle-b; her hands below the frame (e919 fix1).
     dict(loc="dusk_c", cam="Close-up, slow push in", chars=["tangxiaotang"], night="dusk",
          comp=f"close-up of Tang Xiaotang {TANG}, standing behind the counter, framed from the chest up with space above her head, her hands below the bottom edge of the frame, her face three-quarter to screen left toward the doorway off screen left, never the lens; frightened: skin pale, eyes wide and fixed, inner brows squeezed up, lips pressed together and trembling; behind her only the plain white panelled wall in the dim dusk, the warm lamp glow on her cheek",
          lines=[("weishaoqing", "可林二丫，兩年前就病死了，墳都長草了。", "輕飄飄")],
          motion=f"in the first second the colour drains from her face, her cheeks and lips turning pale; she draws one sharp breath, her shoulders drawing up, her eyes fixed on the doorway; {quiet('Tang Xiaotang', 'her')}",
-         zh="近景、慢推（不送場景圖；本集唯一她的臉，不說話）：唐小棠在櫃檯後、胸口以上、兩手在畫面下緣外（稿子『手往後攥緊凳面』不入鏡：手出畫最穩），朝畫左門口看；第一秒臉上血色一下退掉、倒抽一口氣、肩膀一縮、嘴抿著發抖、不笑。魏少卿的台詞畫外"),
+         zh="近景、慢推（不送場景圖；本集唯一她的臉，不說話；只寫交領短襖包好在胸前，不寫裙子與蝴蝶結，緞帶寫短的：定妝照的長緞帶照第 20 集接受）：唐小棠在櫃檯後、胸口以上、兩手在畫面下緣外（稿子『手往後攥緊凳面』不入鏡：手出畫最穩），朝畫左門口看；第一秒臉上血色一下退掉、倒抽一口氣、肩膀一縮、嘴抿著發抖、不笑。魏少卿的台詞畫外"),
     # Low angle: he leans across toward her (rule 30: he may sneer).
     dict(loc="dusk_c", cam="Low-angle medium close-up, slow push in", chars=["weishaoqing"], night="dusk",
-         comp=f"low-angle medium close-up from the height of the counter top, the dark edge of the counter and the flame of one small brass oil lamp in the soft foreground: {WEI}, leaning over the counter toward screen right, framed from the chest up with space above his head, {MINGCE} closed in his left hand and the closed fan in his right, the lamp lighting his face from below, his face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; cold sneer: eyes narrowed, one corner of his mouth curled, lips moving low between words; behind him the dark beams of the shop, soft",
+         comp=f"low-angle medium close-up from the height of the counter top, the dark edge of the counter and the flame of one small brass oil lamp in the soft foreground: {WEI}, leaning over the counter toward screen right, framed from the chest up with space above his head, {MINGCE} in his left hand and the closed fan in his right, the lamp lighting his face from below, his face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; cold sneer: eyes narrowed, one corner of his mouth curled, lips moving low between words; behind him the dark beams of the shop, soft",
          lines=[("weishaoqing", "死人怎麼嫁人？除非有人冒了她的名。", "壓低聲音")],
-         motion="Wei Shaoqing taps the closed booklet once against his right palm and leans closer toward screen right as he speaks; after the last word he holds still, smiling coldly",
-         zh="低角度中近景、慢推（從櫃檯高度往上拍，前景虛焦櫃檯邊與一盞油燈的火；不送場景圖）：魏少卿越過櫃檯往畫右的唐小棠（畫外）湊，左手合著的名冊在右掌心敲一下，油燈從下面照臉，壓低聲音冷笑地說"),
+         motion="Wei Shaoqing taps the grey cloth packet once on the edge of the counter and leans closer toward screen right as he speaks; after the last word he holds still, smiling coldly",
+         zh="低角度中近景、慢推（從櫃檯高度往上拍，前景虛焦櫃檯邊與一盞油燈的火；不送場景圖）：魏少卿越過櫃檯往畫右的唐小棠（畫外）湊，左手的名冊布包在櫃檯邊上敲一下（右手拿著扇子，審稿建議），油燈從下面照臉，壓低聲音冷笑地說"),
     # The system's warning and the bickering (long shot). No blue light (rule 11): the panel is laid on in the cut.
     dict(loc="dusk_c", cam="Close-up, slow push in", chars=["xuyan"], night="dusk",
          comp=f"close-up of {XU}, standing in front of the counter, framed from the chest up with space above his head, his face three-quarter to screen left, his eyes on a point in the air in front of him, never the lens; shocked: eyes narrowing, jaw clenched, brows drawn low; behind him only the plain white panelled wall and the warm glow of the oil lamps, soft",
          lines=[("xitong", "叮。冒名入冊，按律流放。", "冷，宣布"),
-                ("xuyan", "流放？她一個姑娘家，要流放到哪裡去？", "心裡話", "inner"),
-                ("xitong", "三千里。本系統只報律條，不報辦法。", "冷"),
-                ("xuyan", "不用妳報辦法，辦法我自己想。", "心裡話，咬牙", "inner")],
+                ("xuyan", "流放？她一個姑娘家，要流放到哪裡去？", "心裡話", "inner")],
          panel=[("冒名入冊，按律流放", "penalty")],
-         motion=f"for the first two seconds Xu Yan's eyes narrow and his jaw tightens; then his brows knot and his eyes dart sideways, searching; from the seventh second his face hardens; from the tenth second he lets out one slow breath and his eyes settle, steady and resolved; {SILENT_HE}; he is listening and thinking, not speaking",
-         zh="近景、慢推（長鏡；拍法 11：不寫藍光，面板由剪接疊上；不送場景圖、不送帶笑的角度圖 b）：許硯眼睛一縮、下巴繃緊；接著眉頭一擰、眼睛往旁邊找（心裡問流放到哪）；第七秒起臉一沉（系統回嘴）；第十秒起吐一口氣、眼神定下來；全程嘴閉著（系統與心裡話都畫外）"),
+         motion=f"for the first two seconds Xu Yan's eyes narrow and his jaw tightens; then his brows knot and his eyes dart sideways, searching; {SILENT_HE}; he is listening and thinking, not speaking",
+         zh="近景、慢推（拍法 11：不寫藍光，面板由剪接疊上；不送場景圖、不送帶笑的角度圖 b；審稿建議：原本 12 秒一支拆成 s14、s14b 兩支 8 秒，在系統第一句與心裡話之後斷開）：許硯眼睛一縮、下巴繃緊；接著眉頭一擰、眼睛往旁邊找（心裡問流放到哪）；全程嘴閉著（系統與心裡話都畫外）"),
+    # The second half (review 建議 b): a little closer, one turn of the face.
+    dict(sid="s14b", loc="dusk_c", cam="Close-up, slow push in", chars=["xuyan"], night="dusk",
+         comp=f"tight close-up of {XU}, standing in front of the counter, framed from the shoulders up with a little space above his head, his face three-quarter to screen left, his eyes on a point in the air in front of him, never the lens; troubled: brows knotted, eyes searching, jaw clenched; behind him only the plain white panelled wall and the warm glow of the oil lamps, soft",
+         lines=[("xitong", "三千里。本系統只報律條，不報辦法。", "冷"),
+                ("xuyan", "不用妳報辦法，辦法我自己想。", "心裡話，咬牙", "inner")],
+         motion=f"Xu Yan's face hardens, his brows drawing low; then he lets out one slow breath and his eyes settle, steady and resolved; {SILENT_HE}; he is listening and thinking, not speaking",
+         zh="近景（比 s14 再近一點，肩以上）、慢推（不送場景圖）：系統回嘴時許硯臉一沉、下巴繃緊；接著吐一口氣、眼神定下來；全程嘴閉著（系統與心裡話都畫外）"),
     # Over Wei Shaoqing's unnamed back (rule 2). Xu Yan turns to the counter beyond the right edge (Tang Xiaotang off screen).
     dict(loc="dusk_c", cam="Over-the-shoulder medium shot, slow push in", chars=["xuyan"], night="dusk",
-         comp=f"over-the-shoulder medium shot from close behind {WEI_BACK}, in the left foreground, only the back of his head with a topknot and his shoulder showing, soft; facing us a little right of the middle {XU}, standing in front of {THE_COUNTER}, framed from the waist up with clear space above his head, his face turned three-quarter to screen right toward the far end of the counter beyond the right edge of the frame, never the lens; calm and decisive: brows level, eyes steady, lips moving evenly between words; behind him only the plain white panelled wall and the warm glow of the oil lamps, soft; {HANDS}; exactly two people, the man in the foreground seen only from behind",
+         comp=f"over-the-shoulder medium shot, {WEI_FG}; facing us a little right of the middle {XU}, standing in front of {THE_COUNTER}, framed from the waist up with clear space above his head, his face turned three-quarter to screen right toward the far end of the counter beyond the right edge of the frame, never the lens; calm and decisive: brows level, eyes steady, lips moving evenly between words; behind him only the plain white panelled wall and the warm glow of the oil lamps, soft; {HANDS}; exactly two people, the man in the foreground seen only from behind",
          lines=[("xuyan", "小棠，把我們的婚書拿出來，縣衙蓋了印的那張。", "沉著")],
          motion="Xu Yan turns his head toward the far end of the counter at screen right and holds out his left hand, the one on the screen-right side of his body, open and palm up, as he speaks; the man in the foreground keeps his head still, the back of his head toward us the whole shot; after the last word Xu Yan keeps his hand out, waiting",
-         zh="過肩中景、慢推（左右照真人軸線對調：前景左是魏少卿的後腦與肩，不點名、不送圖，拍法 2；不送場景圖：他身後是白色板牆與油燈光，圖上是大門）：許硯轉頭朝畫右櫃檯那頭（唐小棠在畫外），左手（他身體畫右那一側）掌心朝上一伸，沉著地說；說完手不收、等著（稿子『唐小棠點一下頭』交給 c16 她遞出婚書）"),
+         zh="過肩中景、慢推（左右照真人軸線對調：前景左是魏少卿虛焦的寶藍肩與後腦，不寫 young man、不點名、不送圖，拍法 2；不送場景圖：他身後是白色板牆與油燈光，圖上是大門）：許硯轉頭朝畫右櫃檯那頭（唐小棠在畫外），左手（他身體畫右那一側）掌心朝上一伸，沉著地說；說完手不收、等著（稿子『唐小棠點一下頭』交給 c16 她遞出婚書）"),
     # Insert: the county paper out of her oiled-paper packet into his palm (hands only).
-    dict(loc="insert", cam="Insert close-up, slow push in", chars=[], night="dusk", act=2,
+    dict(loc="insert", cam="Insert close-up, slow push in", chars=[], night="insert", act=2,
          comp=f"insert close-up, the shot opens directly on two hands above the dark wooden counter top from its very first frame: on the right a small hand in a light peach-pink silk sleeve cuff holding {PACKET}, its flap already folded open, and on the left a man's open palm held out flat in a faded blue-grey cotton sleeve cuff; only the two hands, their sleeve cuffs, the packet and the counter top are in the frame; warm oil-lamp light",
          lines=[],
          motion=NOBODY + f"the small hand draws {RED} out of the oiled packet and lays it in the open palm, and the palm closes gently round it; the red paper stays folded",
@@ -270,13 +335,13 @@ SHOTS = [
          zh="側面雙人中近景、慢推（兩人在櫃檯前面對面、鼻尖一尺，後面虛焦的油燈光在兩人之間）：畫右許硯側臉朝畫左，再湊近一寸、不眨眼、寸步不讓地說；畫左魏少卿摺扇遮住下半張臉、扇子上方瞇眼、嘴閉著"),
     # His smile freezes (rule 30: a losing beat, no smile).
     dict(loc="dusk_c", cam="Close-up, slow push in", chars=["weishaoqing"], night="dusk",
-         comp=f"close-up of {WEI}, framed from the chest up with space above his head, the open fan just lowered from his face in his right hand, his face three-quarter to screen right toward Xu Yan off screen right, never the lens; his smile frozen and gone: jaw clenched, a muscle twitching at the corner of his jaw, eyes cold, the corners of his mouth pulled down, lips moving tightly between words; behind him only the doorway deep blue with dusk, soft",
+         comp=f"close-up of {WEI}, framed from the chest up with space above his head, the open fan held up in front of his chin in his right hand, his face three-quarter to screen right toward Xu Yan off screen right, never the lens; his smile frozen and gone: jaw clenched, a muscle twitching at the corner of his jaw, eyes cold, the corners of his mouth pulled down, lips moving tightly between words; behind him only the doorway deep blue with dusk, soft",
          lines=[("weishaoqing", "說得好聽。冒名的人，我今天先帶走。", "笑沒了")],
          motion="Wei Shaoqing lowers the fan from his face, his jaw twitching, and snaps it shut with one flick of his right hand; then he speaks through tight lips; after the last word his eyes stay cold on him",
          zh="近景、慢推（不送場景圖；拍法 30：輸的一拍不笑）：魏少卿把扇子從臉上放下，笑容僵住、下顎一抽，扇子『啪』地合上，冷著臉說（結尾）"),
     # ---- scene 2: nightfall (set-xuji-pu-ye-l1). The henchmen come in from the doorway on the left.
     dict(chapter="一棍", loc="night", cam="Medium shot, slow push in", chars=["weishaoqing"], night="night",
-         comp=f"medium shot just inside the wide front doorway at nightfall, the dark door post in the soft left foreground: {WEI}, standing a little left of the middle, framed from the waist up with clear space above his head, the closed fan in his right hand pointing toward the counter beyond the right edge of the frame, his face three-quarter to screen right, never the lens; cold: eyes hard, lips moving crisply between words; behind him in the doorway {THUGS}, stepping in over the threshold, soft; behind them the street dark blue with night and {EAVE}; {HANDS}",
+         comp=f"medium shot just inside the wide front doorway at nightfall, the dark door post in the soft left foreground: {WEI}, standing a little left of the middle, framed from the waist up with clear space above his head, the closed fan in his right hand pointing toward the counter beyond the right edge of the frame, his face three-quarter to screen right, never the lens; cold: eyes hard, lips moving crisply between words; behind him in the doorway {THUGS}, stepping in over the threshold, soft; behind them the street dark blue with night and {EAVE_N}; {HANDS}",
          lines=[("weishaoqing", "來人，把櫃檯後那位唐姑娘請出來。", "扇子一指")],
          motion="Wei Shaoqing points the closed fan toward the counter at screen right as he speaks; behind him the two burly men step in over the threshold one after the other and stop just inside it",
          zh="中景、慢推（入夜，送 `set-xuji-pu-ye-l1`；前景左虛焦門框）：魏少卿用合起的摺扇往畫右外的櫃檯一指、冷著臉說；身後兩個打手（黑短打、黑布包頭、布鞋、兩手空著、只拍側面與背影、臉在暗處）從門口跨進來（小角色：不點名、不送圖）"),
@@ -288,22 +353,28 @@ SHOTS = [
          act=2,
          zh="全景、跟拍（前景左虛焦一疊靠牆的門板）：兩個打手從左邊門口往右邊櫃檯走；小禾（補丁淡紫短襖、紅繩小辮、草兔子塞在腰帶）兩手橫拿竹掃帚擋在他們前面、皺眉抿嘴；第一個打手手臂一撥，她往後倒、掃帚飛出去（原版必修：推倒那一下拆成兩鏡、拍短；無台詞）"),
     # The push, part two: she is already on the floor, crying (never a smile).
-    dict(sid="s21b", loc="night_c", cam="Low-angle medium close-up, slow push in", chars=["xiaohe"], night="night",
+    dict(sid="s21b", loc="night_c", cam="Low-angle medium close-up, slow push in", chars=["xiaohe"], nospeak=["xiaohe"], night="night",
          comp=f"low medium close-up at floor level: {XIAOHE}, already sitting on the grey stone floor from the first frame where she fell, framed from the waist up, both her hands flat on the floor at her sides, her face three-quarter to screen left, her eyes on the men who pushed her, never the lens; crying: tears welling and running down her cheeks, her chin trembling, the corners of her mouth pulled down; the bamboo broom lying on the floor beside her; behind her the dim shop and the warm glow of the lamps, soft",
          lines=[("xiaohe", "哥！", "短喊，嚇哭")],
-         motion="Xiaohe cries out once, her shoulders shaking, then her face crumples into sobs, the corners of her mouth pulled down hard, tears running",
-         zh="低角度中近景、慢推（不送場景圖）：小禾第一格已經跌坐在地上、兩手撐地、竹掃帚落在身旁，眼淚湧出、下巴發抖、嘴角往下拉，喊一聲『哥！』後抽泣（原版必修：被推後每鏡寫哭、不笑）"),
-    # Qin Shuang's sweep: the staff already in her hands (the grab is in the cut between s21b and s22).
-    dict(loc="night", cam="Low-angle medium-wide shot, slow push in", chars=["qinshuang"], night="night",
-         comp=f"low-angle medium-wide shot at floor level, the whole action in the frame: on screen right Qin Shuang, {QIN}, already gripping {STAFF} low in both hands from the first frame, framed full length, her face three-quarter to screen left toward the man, never the lens; cold: eyes hard, brows level, jaw set; in the middle {THUG1}, striding toward the counter; {HANDS}; exactly two people",
+         motion="Little Xiaohe cries out one single short word, 「哥！」, her mouth opening once; then her lips press together, trembling, and she sobs silently through her nose, tears running, the corners of her mouth pulled down",
+         zh="低角度中近景、慢推（不送場景圖）：小禾第一格已經跌坐在地上、兩手撐地、竹掃帚落在身旁，眼淚湧出、下巴發抖、嘴角往下拉，只喊一聲『哥！』、嘴張一次，之後嘴唇抿住發抖、從鼻子無聲地抽泣（審稿：nospeak，不給整鏡說話句；挑片只剪前 2 秒）（原版必修：被推後每鏡寫哭、不笑）"),
+    # Qin Shuang's sweep: the staff already in her hands (the grab is in the cut between s21b and s22). Review 必改: split in
+    # two 6 s shots, one big action each: s22 the sweep and the fall (silent), s22b the staff on his chest and her line.
+    dict(loc="night", cam="Low-angle medium-wide shot, slow push in", chars=["qinshuang"], night="night", act=2,
+         comp=f"low-angle medium-wide shot at floor level, the whole action in the frame: on screen right Qin Shuang, {QIN}, already gripping {STAFF} low in both hands from the first frame, framed full length, her face three-quarter to screen left toward the man, never the lens; cold: eyes hard, brows level, jaw set; in the middle {THUG1}, striding toward the counter at screen right; {HANDS}; exactly two people",
+         lines=[],
+         motion=f"Qin Shuang sweeps the staff low along the floor into the back of the man's ankles; his legs go out from under him and he lands flat on his back on the stone floor, and he stays lying there to the last frame; {quiet('Qin Shuang', 'her')}",
+         zh="低角度中全景、慢推（整個動作留在畫面裡；審稿必改：拆成兩支 6 秒，這支只掃倒、不說話）：秦霜（腰帶空著，拍法 5：柴刀不寫）第一格已經兩手低握一根比人高的素木長棍（剪接在 s21b 與 s22 之間交代她抄起棍子），貼地一掃打在打手腳踝後，他腳下一空、仰面倒在石地上、一直躺到最後一格；秦霜嘴閉著"),
+    dict(sid="s22b", loc="night_c", cam="Low-angle medium shot, slow push in", chars=["qinshuang"], night="night",
+         comp=f"low-angle medium shot at floor level: {THUG_DOWN}; above him Qin Shuang, {QIN}, standing, framed from the knees up, both her hands on {STAFF}, its rounded end already pressed down on the middle of his chest from the first frame, her face three-quarter to screen left, looking down at him, never the lens; cold: eyes hard, brows level, jaw set, lips moving crisply between words; behind her the dim shop and the warm glow of the lamps, soft; {HANDS}; exactly two people",
          lines=[("qinshuang", "再碰她一下，你就躺著出這個門。", "冷")],
-         motion="Qin Shuang sweeps the staff low along the floor into the back of the man's ankles; his feet fly up and he falls flat on his back on the stone floor; she presses the end of the staff down on his chest and holds it there, then speaks; after the last word the staff stays on his chest",
-         zh="低角度中全景、慢推（整個動作留在畫面裡）：秦霜（腰帶空著，拍法 5：柴刀不寫）第一格已經兩手低握一根比人高的素木長棍（剪接在 s21b 與 s22 之間交代她抄起棍子），貼地一掃打在打手腳踝後，他兩腳離地、仰面摔在地上；她棍頭往下一壓抵住他胸口，冷冷地說"),
+         motion="Qin Shuang leans her weight onto the staff and speaks, looking down at him; the staff stays on his chest to the last frame",
+         zh="低角度中景、慢推（不送場景圖）：打手第一格已經仰面躺在前景下方石地上、臉朝外在暗處；秦霜站在他上方、兩手握長棍，棍頭第一格已經壓在他胸口正中；她把重心壓上棍子，低頭看著他冷冷地說；棍子一直壓在胸口"),
     dict(loc="night_c", cam="Close two-shot, slow push in", chars=["xuyan", "xiaohe"], night="night",
-         comp=f"close two-shot near the floor: on screen left {XU}, down on one knee, framed from the chest up, both his hands on the little girl's shoulders, his face three-quarter to screen right toward her, never the lens; gentle and worried: brows drawn up, eyes soft, lips moving softly between words; on screen right {XIAOHE}, sitting up on the floor, framed from the chest up, the little straw rabbit already out of her sash and held against her chest in both hands, her face three-quarter to screen left toward him; tears on her cheeks, the corners of her mouth pulled down, lips closed; behind them the dim shop, soft; {HANDS}; exactly two people",
+         comp=f"close two-shot near the floor: on screen left {XU}, down on one knee, framed from the chest up, both his hands on the little girl's shoulders, his face three-quarter to screen right toward her, never the lens; gentle and worried: brows drawn up, eyes soft, lips moving softly between words; on screen right {XIAOHE_HOLD}, sitting up on the floor, framed from the chest up, the one small woven straw rabbit held against her chest in both hands from the first frame, her face three-quarter to screen left toward him; tears on her cheeks, the corners of her mouth pulled down, lips closed; behind them the dim shop, soft; {HANDS}; exactly two people",
          lines=[("xuyan", "小禾，摔疼哪裡沒有？哥哥看看。", "放軟")],
          motion=f"Xu Yan helps her sit up and touches the back of her head once with his right hand as he speaks; {quiet('Xiaohe', 'her')}; she shakes her head and holds the rabbit tighter, sniffing",
-         zh="近景雙人、慢推（不送場景圖）：許硯單膝蹲下、兩手扶著小禾的肩，摸一下她的後腦，放軟地說；小禾坐起、草兔子第一格已經從腰帶拿出來兩手按在胸前、臉上有淚、嘴角往下、嘴閉著，搖搖頭、把兔子按得更緊、吸鼻子"),
+         zh="近景雙人、慢推（不送場景圖）：許硯單膝蹲下、兩手扶著小禾的肩，摸一下她的後腦，放軟地說；小禾坐起、草兔子第一格已經兩手按在胸前（審稿必改：只有這一隻兔子，腰帶寫素的）、臉上有淚、嘴角往下、嘴閉著，搖搖頭、把兔子按得更緊、吸鼻子"),
     dict(loc="night", cam="Medium shot, slow push in", chars=["qinshuang"], night="night",
          comp=f"medium shot in the dim shop at night: on screen right Qin Shuang, {QIN}, standing, {STAFF} in both hands, framed from the knees up with clear space above her head, her face three-quarter to screen left, never the lens; cold and steady: eyes hard, jaw set, lips pressed together; on screen left {THUG1}, charging toward her with his right fist raised; {HANDS}; exactly two people",
          lines=[("weishaoqing", "一個村姑拿根棍子，也想攔宰相府的人？", "冷笑")],
@@ -311,55 +382,55 @@ SHOTS = [
          zh="中景、慢推：畫右秦霜兩手握長棍、冷著臉；畫左第二個打手（只拍側背）舉拳衝過來；她手腕一轉，棍頭反過來抵住他胸口，他衝到一半停住、拳頭放下；秦霜嘴閉著（魏少卿的冷笑畫外）"),
     # Erniu does not smile (bible 原版必修 for him; the script: 不笑).
     dict(loc="night", cam="Medium shot, slow push in", chars=["erniu"], night="night",
-         comp=f"medium shot at the wide front doorway at night, the black cloth shoes of a man lying on his back on the stone floor in the soft foreground: {ERNIU}, standing in the middle of the doorway, framed from the knees up with clear space above his head, {BAR} already held across his body in both hands from the first frame, one plain wooden shutter board leaning against the door post beside him, his face three-quarter to screen right toward the men, never the lens; fierce and serious: brows knotted, jaw set, eyes glaring, lips moving loudly between words; behind him the street dark blue with night and {EAVE}; {HANDS}",
+         comp=f"medium shot at the wide front doorway at night, the black cloth shoes of a man lying on his back on the stone floor in the soft foreground: {ERNIU}, standing in the middle of the doorway, framed from the knees up with clear space above his head, {BAR} already held across his body in both hands from the first frame, one plain wooden shutter board leaning against the door post beside him, his face three-quarter to screen right toward the men, never the lens; fierce and serious: brows knotted, jaw set, eyes glaring, lips moving loudly between words; behind him the street dark blue with night and {EAVE_N}; {HANDS}",
          lines=[("erniu", "攔不攔得住，先問問我這根門閂！", "大嗓門，不笑")],
          motion="Wang Erniu thumps one end of the door bar down on the stone floor and plants himself across the doorway as he shouts; after the last word he lifts the bar across his chest again, glaring",
          zh="中景、慢推（前景虛焦：倒地打手的布鞋）：二牛站在大門正中，兩手第一格已經橫握一根方木門閂（稿子『先把門板靠上門框再抽門閂』：門板已經靠在門柱邊），把門閂一頭往地上一頓、堵住門口，大嗓門、皺眉咬牙地喊（不笑）"),
-    dict(loc="night", cam="Medium close-up, slow push in", chars=["sunzhanggui", "weishaoqing"], night="night",
-         comp=f"medium close-up at the doorway at night, the dark door post in the soft left foreground: on screen left {WEI}, framed from the chest up, the open fan stopped at his chest in his right hand, his face three-quarter to screen right, never the lens; his eyes flicking sideways, lips pressed together; just behind him on screen right {SUN}, bending close to his ear, framed from the chest up, one hand cupped beside his mouth, his face three-quarter to screen left toward the young man's ear, never the lens; uneasy: brows pinched, lips moving quickly and low between words; behind them the street dark blue with night, soft; {HANDS}; exactly two people",
+    dict(loc="night_c", cam="Medium close-up, slow push in", chars=["sunzhanggui", "weishaoqing"], night="night",
+         comp=f"medium close-up just inside the doorway at night, facing into the shop, the dark door post in the soft right foreground: on screen left {WEI}, framed from the chest up, the open fan stopped at his chest in his right hand, his face three-quarter to screen right, never the lens; his eyes flicking sideways, lips pressed together; just behind him on screen right {SUN}, bending close to his ear, framed from the chest up, one hand cupped beside his mouth, his face three-quarter to screen left toward the young man's ear, never the lens; uneasy: brows pinched, lips moving quickly and low between words; behind them the dim shop, the warm glow of the two small brass oil lamps on the counter and the plain white panelled wall, soft; {HANDS}; exactly two people",
          lines=[("sunzhanggui", "公子，這裡是縣城，鬧大了，州府那邊不好說話。", "壓低聲音")],
-         motion=f"Sun Zhanggui leans to the young man's ear and whispers, his hand cupped beside his mouth; {quiet('Wei Shaoqing')}; Wei Shaoqing's eyes flick to screen right toward the staff and the door bar and back; the fan stays still",
-         zh="中近景、慢推（前景左虛焦門框）：畫左魏少卿扇子停在胸前、眼睛往畫右的棍子與門閂一掃再回來、嘴閉著；他身後畫右孫掌櫃彎腰湊到他耳邊、一手遮在嘴邊、皺眉壓低聲音說"),
+         motion=f"Sun Zhanggui leans to the young man's ear and whispers, his hand cupped beside his mouth; {quiet('Wei Shaoqing')}; Wei Shaoqing's eyes flick once across the shop and back; the fan stays still",
+         zh="中近景、慢推（審稿必改：反打，從門口朝店裡拍，前景右虛焦門框；街與二牛在鏡頭後面；不送場景圖：圖是看大門的方向）：畫左魏少卿扇子停在胸前、眼睛往店裡一掃再回來、嘴閉著；他身後畫右孫掌櫃彎腰湊到他耳邊、一手遮在嘴邊、皺眉壓低聲音說"),
     # Over Wei Shaoqing's unnamed back. His cold mouth corner is the script's.
     dict(loc="night_c", cam="Over-the-shoulder medium shot, slow push in", chars=["xuyan"], night="night",
-         comp=f"over-the-shoulder medium shot from close behind {WEI_BACK}, in the left foreground, only the back of his head with a topknot and his shoulder showing, soft; facing us a little right of the middle {XU}, standing at the near end of {THE_COUNTER}, framed from the waist up with clear space above his head, his face three-quarter to screen left toward the man, never the lens; cool and hard: eyes level, one corner of his mouth lifting coldly, lips moving evenly between words; on the counter top beside him {HUNSHU} and {RED}; behind him {LAMPS} on the counter and the plain white panelled wall, soft; {HANDS}; exactly two people, the man in the foreground seen only from behind",
+         comp=f"over-the-shoulder medium shot, {WEI_FG}; facing us a little right of the middle {XU}, standing at the near end of {THE_COUNTER}, framed from the waist up with clear space above his head, his face three-quarter to screen left toward the man, never the lens; cool and hard: eyes level, one corner of his mouth lifting coldly, lips moving evenly between words; on the counter top beside him {HUNSHU} and {RED}; behind him {LAMPS} on the counter and the plain white panelled wall, soft; {HANDS}; exactly two people, the man in the foreground seen only from behind",
          lines=[("xuyan", "魏公子，要講律，去官府講；要動手，門在那邊。", "嘴角一點冷笑")],
          motion="Xu Yan taps the folded red paper on the counter once with his left forefinger, then lifts his chin toward the doorway at screen left as he speaks; the man in the foreground keeps his head still, the back of his head toward us the whole shot; after the last word Xu Yan holds his gaze",
-         zh="過肩中景、慢推（前景左魏少卿的後腦與肩，不點名、不送圖；不送場景圖）：許硯第一格已經站在櫃檯這頭（稿子『把小禾交到秦霜身後再走回來』在剪接裡省掉），左手食指在紅紙婚書上點一下，再往畫左的門口一抬下巴，嘴角一點冷笑地說"),
+         zh="過肩中景、慢推（前景左魏少卿虛焦的寶藍肩與後腦，不寫 young man、不點名、不送圖；不送場景圖；不送許硯帶笑的角度圖 b，冷笑靠表情句）：許硯第一格已經站在櫃檯這頭（稿子『把小禾交到秦霜身後再走回來』在剪接裡省掉），左手食指在紅紙婚書上點一下，再往畫左的門口一抬下巴，嘴角一點冷笑地說"),
     # His smile comes back (rule 30). Xu Yan's unnamed dark shoulder in the right foreground.
     dict(loc="night_c", cam="Medium close-up, slow push in", chars=["weishaoqing"], night="night",
-         comp=f"medium close-up of {WEI}, standing in the shop at night, framed from the chest up with space above his head, holding together in his left hand from the first frame {HUNSHU}, {TIE} and {MINGCE}, the closed fan in his right hand; in the soft right foreground the dark shoulder of {XU_BACK}; his face three-quarter to screen right toward him, never the lens; his smile coming back: eyes narrowed, the corners of his mouth curling up, lips moving lazily between words; behind him the doorway dark blue with night, soft; {HANDS}; exactly two people, the young man in the foreground seen only from behind",
+         comp=f"medium close-up of {WEI}, standing in the shop at night, framed from the chest up with space above his head, holding flat against his chest in his left hand from the first frame one neat stack of folded cream papers, the closed fan in his right hand; in the soft right foreground the dark shoulder of {XU_BACK}; his face three-quarter to screen right toward him, never the lens; his smile coming back: eyes narrowed, the corners of his mouth curling up, lips moving lazily between words; behind him the doorway dark blue with night, soft; {HANDS}; exactly two people, the young man in the foreground seen only from behind",
          lines=[("weishaoqing", "好，那就照你說的，去官府講。", "笑回來")],
-         motion="Wei Shaoqing slides the papers away into his wide left sleeve, then flicks the fan open with his right hand and speaks, smiling; the young man in the foreground stays still, the back of his head toward us the whole shot",
-         zh="中近景、慢推（不送場景圖；前景右許硯的暗肩，不點名、不送圖）：魏少卿左手第一格已經把唐家婚書、帖子、名冊三樣疊在一起拿著，收進左袖，右手『唰』地打開扇子，笑回到臉上地說（本鏡可以笑）（結尾）"),
+         motion="Wei Shaoqing slips the stack of papers into the front fold of his robe at his chest, his left hand coming out empty and resting on his chest; then he flicks the fan open with his right hand and speaks, smiling; the young man in the foreground stays still, the back of his head toward us the whole shot",
+         zh="中近景、慢推（不送場景圖；前景右許硯的暗剪影肩，不點名、不送圖）：魏少卿左手第一格已經把一疊摺好的米色紙按在胸前（審稿必改：三樣併成一疊、不分開點名），收進衣襟、左手空著按在胸口，右手『唰』地打開扇子，笑回到臉上地說（本鏡可以笑）（結尾）"),
     # ---- scene 3: the bucket at the back door. No line.
     dict(sid="s28b", chapter="後門", loc="night", cam="Medium shot, slow tracking shot", chars=["weishaoqing"], night="night", act=3,
-         comp=f"medium shot in the shop at night, the rounded end of {STAFF} held level in the soft left foreground: {WEI}, standing in front of the counter, framed from the knees up with clear space above his head, the open fan in his right hand, his face three-quarter to screen right; alert: head lifting, eyes narrowing; beyond him in the far right corner of the white panelled wall one plain dark wooden back door, closed; {LAMPS} on the counter beside him; {HANDS}",
+         comp=f"medium shot in the shop at night, the rounded end of {STAFF} held level from just beyond the left edge of the frame in the soft left foreground: {WEI}, standing in front of the counter, framed from the knees up with clear space above his head, the open fan in his right hand, his face three-quarter to screen right; alert: head lifting, eyes narrowing; beyond him in the far right corner of the white panelled wall one plain dark wooden back door, closed; {LAMPS} on the counter beside him; {HANDS}",
          lines=[],
          motion=f"Wei Shaoqing stops and turns his head toward the back door at the right, then walks slowly toward it, fanning himself, his back turning to us; the end of the staff in the foreground swings round to follow him; {quiet('Wei Shaoqing')}",
          zh="中景、跟拍（前景左虛焦是秦霜長棍的棍尖，人在畫外）：後門外『咚』一聲（音效），魏少卿停住、轉頭看畫右遠角那扇素木後門（第 20 集 s33 阿令出去的那扇），一邊搖扇一邊往那裡走、背轉過去；棍尖跟著他轉（無台詞）"),
     # His point of view through the back door: the free crop set-xuji-houyuan-ye-l1. The fan tip pushes the door.
     dict(loc="yard", cam="Point-of-view medium shot, slow push in", chars=["aling"], night="yard", act=2,
-         comp=f"point-of-view shot through a back door being pushed open, the dark edge of the plain wooden door in the soft left foreground, the tip of a closed folding fan of plain cream paper pressing against it from the lower left edge of the frame: beyond it A-ling, {ALING}, standing at the round brick well on the right, framed from the knees up, both her hands on the well rope, {BUCKET} just set on the brick rim of the well, her face turned down toward the bucket, never the lens; still and wary: eyes lowered, lips closed; behind her the brick wall in deep blue shadow and the narrow stone path running away on the left to the small glowing lantern; {HANDS}",
+         comp=f"point-of-view shot through the back door as it swings open, the dark edge of the plain wooden door leaf at the right edge of the frame, a man's right hand in a wide sapphire-blue brocade sleeve at the lower right edge pressing the tip of one closed folding fan of plain cream paper against it: beyond it a little right of the middle A-ling, {ALING}, standing at the round brick well, framed from the knees up, side-on to us, both her hands on the well rope, {BUCKET} just set on the brick rim of the well, her face in profile to screen left, her eyes lowered to the bucket, never the lens; still and wary: eyes lowered, lips closed; behind her the brick wall in deep blue shadow and the narrow stone path running away on the left to the small glowing lantern; {HANDS}",
          lines=[],
-         motion=f"the door swings slowly open, pushed by the fan tip; A-ling's hands stop on the rope; she goes still, her head turning a little toward the doorway, her eyes still lowered, as if she feels someone watching; {quiet('A-ling', 'her')}",
-         zh="主觀（魏少卿推開後門往外看）、慢推（送免費裁切的後院夜圖 `set-xuji-houyuan-ye-l1`：磚井、木架、草頂、右邊磚牆、左邊石板小路盡頭一盞燈籠）：前景左虛焦是門板邊，一把合起的素米色紙摺扇的扇尖從左下把門推開；阿令（灰白布裙、木簪，沒戴面巾，拍法 21）在畫右井邊、兩手抓著井繩、木桶剛擱上井沿，手停住、頭微微轉向門口、眼睛仍垂著（不看鏡頭）（無台詞）"),
+         motion=f"the door swings slowly open, pushed by the fan tip; A-ling's hands stop on the rope; she goes still, her face staying in profile to screen left, her eyes lowered, listening; {quiet('A-ling', 'her')}",
+         zh="主觀（魏少卿推開後門往外看）、慢推（送後院夜圖 `set-xuji-houyuan-ye-l2`：l1 把井架上的空白木板塗掉；門在圖的畫右邊緣；阿令只送側面 angle-b、angle-a，不送正面直視的定妝照，審稿必改）：畫右邊緣是門板的暗邊，右下角一隻寶藍錦袖的右手拿著合起的素米色紙摺扇、扇尖抵著門板推開；阿令（灰白布裙，頭頂木簪小髻、其餘長髮垂到背後，沒戴面巾，拍法 21）在中間偏右的井邊、側身、側臉朝畫左、兩手抓著井繩、木桶剛擱上井沿，手停住、眼睛垂著聽（不轉向門口、不看鏡頭）（無台詞）"),
     dict(loc="night_c", cam="Medium close-up, slow push in", chars=["weishaoqing"], night="night",
-         comp=f"medium close-up of {WEI}, standing in the open back door of the shop at night, framed from the chest up with space above his head, the closed fan in his right hand still resting against the door edge, his body leaning out through the doorway, his face in profile to screen right toward the yard beyond the right edge of the frame, never the lens; intrigued: peach-blossom eyes narrowing, his smile half gone, lips moving slowly between words; behind him the dim shop and the warm lamp glow, soft; the cold blue night light from the yard on his face",
+         comp=f"medium close-up of {WEI}, standing in the open back door of the shop at night, framed from the chest up with space above his head, the closed fan already raised in mid-air in his right hand, his body leaning out through the open back door, his face in profile to screen right toward the yard beyond the right edge of the frame, never the lens; intrigued: peach-blossom eyes narrowing, his smile half gone, lips moving slowly between words; behind him the dim shop and the warm lamp glow, soft; the cold blue night light from the yard on his face",
          lines=[("weishaoqing", "等等，井邊那位姑娘，我們是不是在哪見過？", "笑收掉一半")],
-         motion="Wei Shaoqing stops the fan in mid-air, narrows his eyes and takes one step forward through the doorway as he speaks; after the last word he holds still, staring",
-         zh="中近景、慢推（不送場景圖）：魏少卿在推開的後門邊、扇子還抵著門板、身子往門外探，側臉朝畫右的後院，扇子停在半空、桃花眼瞇起、往前一步，笑收掉一半地問；說完盯著不動"),
+         motion="Wei Shaoqing narrows his eyes and leans a little further out as he speaks; after the last word he holds still, staring",
+         zh="中近景、慢推（不送場景圖）：魏少卿在推開的後門邊，第一格扇子已經停在半空、身子往門外探，側臉朝畫右的後院，桃花眼瞇起、再往外探一點，笑收掉一半地問（審稿建議：一鏡一個動作）；說完盯著不動"),
     dict(loc="yard", cam="Medium shot, slow push in", chars=["aling"], night="yard", act=3,
-         comp=f"medium shot in the small back yard at night: A-ling, {ALING}, standing at the round brick well, framed from the waist up with clear space above her head, {BUCKET} held in her right hand just above the brick rim of the well, her face three-quarter to screen left toward the back door off screen left, never the lens; cold and guarded: eyes lowered, brows level, lips pressed together; behind her the brick wall in deep blue shadow and the lantern glow far down the narrow path, soft; {HANDS}",
+         comp=f"medium shot in the small back yard at night: A-ling, {ALING}, standing at the round brick well, framed from the waist up with clear space above her head, {BUCKET} already resting on the brick rim of the well, her right hand on its handle, her face three-quarter to screen left toward the back door off screen left, never the lens; cold and guarded: eyes lowered, brows level, lips pressed together; behind her the brick wall in deep blue shadow and the lantern glow far down the narrow path, soft; {HANDS}",
          lines=[],
-         motion=f"A-ling sets the bucket down on the well rim, lowers her eyes and pulls her left sleeve down over her wrist with her right hand, then turns away and walks off into the dark shadow along the brick wall, her back to us; {quiet('A-ling', 'her')}",
-         zh="中景、慢推（送後院夜圖；稿子的近景改中景：她要走出去）：阿令把木桶放在井沿，垂下眼，右手把左袖往下拉蓋住手腕，轉身走進磚牆的影子裡、背對我們（原版建議：只轉身走、不甩頭）（無台詞）"),
+         motion=f"A-ling lets go of the bucket, lowers her eyes and pulls her left sleeve down over her wrist with her right hand, then turns away and walks off into the dark shadow along the brick wall, her back to us; {quiet('A-ling', 'her')}",
+         zh="中景、慢推（送不帶門的裁切 `set-xuji-houyuan-ye-nodoor-l1`：圖上的門在畫右，她卻朝畫左看後門，審稿建議；稿子的近景改中景：她要走出去）：木桶第一格已經擱在井沿、她右手扶著提把；她放開木桶，垂下眼，右手把左袖往下拉蓋住手腕，轉身走進磚牆的影子裡、背對我們（原版建議：只轉身走、不甩頭）（無台詞）"),
     # Over Wei Shaoqing's unnamed shoulder; his cold half-smile is the script's.
-    dict(loc="night_c", cam="Medium shot, slow tracking shot", chars=["xuyan"], night="night",
-         comp=f"medium shot at the back door of the shop at night: {XU}, standing with his back to one plain dark wooden back door in the white panelled wall, framed from the waist up with clear space above his head, his left hand behind him already on the edge of the half-open door, his face three-quarter to screen left toward the man in the foreground, never the lens; cold amusement: eyes hard, the corners of his mouth lifting a little, lips moving evenly between words; in the soft left foreground the sapphire-blue brocade shoulder and the back of the head of {WEI_BACK}; {HANDS}; exactly two people, the man in the foreground seen only from behind",
+    dict(loc="night_c", cam="Medium shot, slow push in", chars=["xuyan"], night="night",
+         comp=f"medium shot at the back door of the shop at night: {XU}, standing with his back to one plain dark wooden back door in the white panelled wall, framed from the waist up with clear space above his head, his left hand behind him already on the edge of the half-open door, his face three-quarter to screen left toward the man in the foreground, never the lens; cold amusement: eyes hard, the corners of his mouth lifting a little, lips moving evenly between words; {WEI_FG}; {HANDS}; exactly two people, the man in the foreground seen only from behind",
          lines=[("xuyan", "魏公子，看這邊。我家的人，你一個都不認得。", "嘴角帶笑、眼神冷")],
          motion="Xu Yan pulls the back door shut behind him with his left hand and squares his shoulders in front of it as he speaks; the man in the foreground keeps his head still, the back of his head toward us the whole shot",
-         zh="中景、跟拍（不送場景圖；前景左魏少卿的肩與後腦，不點名、不送圖）：許硯擋在後門前，左手第一格已經在半開的門邊，反手把後門闔上、站定，嘴角帶笑、眼神冷地說"),
+         zh="中景、慢推（審稿建議：他站著不走，不跟拍；不送場景圖；前景左魏少卿虛焦的寶藍肩與後腦，不寫 young man、不點名、不送圖；不送許硯帶笑的角度圖 b）：許硯擋在後門前，左手第一格已經在半開的門邊，反手把後門闔上、站定，嘴角帶笑、眼神冷地說"),
     dict(loc="night_c", cam="Close-up, slow push in", chars=["weishaoqing"], night="night",
          comp=f"close-up of {WEI}, framed from the chest up with space above his head, the closed fan in his right hand at his chest, his face three-quarter to screen right toward Xu Yan off screen right, never the lens; amused and dangerous: eyes narrowed, one corner of his mouth curling, lips moving lazily between words; behind him the dim shop, soft",
          lines=[("weishaoqing", "不認得？那我回去，慢慢想。", "瞇眼")],
@@ -378,30 +449,31 @@ SHOTS = [
          zh="過肩中近景、慢推（從唐小棠背後拍；左右照軸線，稿子『前景左』改右）：許硯兩手拿著摺好的紅紙婚書（第一格已經從櫃檯拿起摺好），放進她攤開的兩手裡，低而穩地說；她把婚書收到胸前（油紙包在剪接外）；頭不動"),
     # Wide: Erniu and Sun Zhanggui; Wei Shaoqing's unnamed back walks to the threshold (rules 1, 2). No line.
     dict(loc="night", cam="Wide shot, slow push in", chars=["erniu", "sunzhanggui"], night="night", act=3,
-         comp=f"wide shot from inside the shop toward the wide front doorway at night: in the middle {WEI_BACK}, walking toward the doorway, fanning himself, only his back and the back of his head with a topknot showing; ahead of him {THUGS}, stepping out over the threshold, the second one limping; at the left door post {ERNIU}, framed from the knees up, {BAR} upright in his right hand, his face three-quarter to screen right toward the men, never the lens; grim: brows knotted, lips pressed together; just outside the doorway on the left {SUN}, standing back, small, his face toward the doorway, lips closed; beyond them the street dark blue with night and {EAVE}; {HANDS}",
+         comp=f"wide shot from inside the shop toward the wide front doorway at night: in the middle {WEI_BACK}, walking toward the doorway, fanning himself, only his back and the back of his head with a topknot showing; ahead of him {THUGS}, stepping out over the threshold, the second one limping; at the left door post {ERNIU}, framed from the knees up, {BAR} upright in his right hand, his face three-quarter to screen right toward the men, never the lens; grim: brows knotted, lips pressed together; just outside the doorway on the left {SUN}, standing back, small, his face toward the doorway, lips closed; beyond them the street dark blue with night and {EAVE_N}; {HANDS}",
          lines=[],
          motion=f"the two burly men step out into the street first, the second one limping; the young man in blue walks to the threshold and stops on it; Wang Erniu steps one pace aside, the bar held upright; {quiet('Wang Erniu')}; {quiet('Sun Zhanggui')}",
          zh="全景、慢推（看大門）：中間魏少卿的背影一路搖扇走到門檻（不點名、不送圖，拍法 2）；兩個打手先出門、第二個一跛一跛；左邊門柱旁二牛右手直握門閂、讓開一步、皺眉；門外左邊孫掌櫃退在一旁。唐小棠、秦霜、小禾在畫外（三張臉以內）（無台詞）"),
     # The ending: on the threshold he turns back (rule 30: he may sneer). Xu Yan's unnamed shoulder in the right foreground.
     dict(loc="night", cam="Low-angle medium close-up, slow push in", chars=["weishaoqing"], night="night",
-         comp=f"low-angle medium close-up from the height of the threshold: {WEI}, standing on the threshold of the wide front doorway at night, framed from the waist up with clear space above his head, his body turned toward the street and his head turned back over his shoulder toward the shop, the closed fan in his right hand; the dark shoulder of {XU_BACK} in the soft right foreground; his face three-quarter to screen right, looking past the young man's shoulder toward the counter beyond the right edge of the frame, never the lens; cold sneer: eyes narrowed, one corner of his mouth curling, lips moving slowly between words; behind him the street dark blue with night and {EAVE} glowing behind his head; {HANDS}; exactly two people, the young man in the foreground seen only from behind",
+         comp=f"low-angle medium close-up from the height of the threshold: {WEI}, standing side-on on the threshold of the wide front doorway at night, framed from the waist up with clear space above his head, his left shoulder toward the street, his face turned back toward the shop, the closed fan in his right hand; the dark shoulder of {XU_BACK} in the soft right foreground; his face three-quarter to screen right, looking past the young man's shoulder toward the counter beyond the right edge of the frame, never the lens; cold sneer: eyes narrowed, one corner of his mouth curling, lips moving slowly between words; behind him the street dark blue with night and {EAVE_N} glowing behind his head; {HANDS}; exactly two people, the young man in the foreground seen only from behind",
          lines=[("weishaoqing", "三日後，州府來拿冒名犯。許老闆，記得開門。", "回頭，一字一字")],
          motion="Wei Shaoqing points the closed fan past the young man's shoulder toward the counter beyond the right edge of the frame and speaks one word at a time; after the last word he lowers the fan and holds the look, smiling coldly",
-         zh="低角度中近景、慢推（門檻高度往上拍；送入夜鋪子圖，正是看大門的視線）：魏少卿站在門檻上、身子朝街、回頭，用合起的摺扇越過前景右許硯的暗肩（不點名、不送圖）指向畫右外的櫃檯與唐小棠，一字一字冷笑地說（本鏡可以笑）；身後藍色夜街與屋簷下的燈籠逆光（結尾；懸念交給第 22 集）"),
+         zh="低角度中近景、慢推（門檻高度往上拍；送入夜鋪子圖，正是看大門的視線）：魏少卿側身站在門檻上、左肩朝街、臉轉回店裡（審稿建議：不寫整個人回頭），用合起的摺扇越過前景右許硯的暗剪影肩（不點名、不送圖）指向畫右外的櫃檯與唐小棠，一字一字冷笑地說（本鏡可以笑）；身後藍色夜街與屋簷下的燈籠逆光（結尾；懸念交給第 22 集）"),
 ]
 
 HEAD = [
-    "- 重製版 r2、真人版（站主 2026-11-11「之後都用真人版」）：照 `docs/videos/zhong-tian-qu-qi-e021-r2/script.md`（c01–c37 對應 s01–s37，c28b 是 s28b；c21 拆成 s21、s21b；含「這版改了什麼」「2026-11-06 審稿後的修改」與「真人版的改動（2026-11-16）」）；台詞一字不改，只改拍法；每鏡一個看得見的動作、一句一筆不拆半句、預設不笑。篇章設定 `production/r2-bible-e021-e030.md`（拍法 1–30 條）。第 3 篇章〈搶親〉第一集。",
+    "- 重製版 r2、真人版（站主 2026-11-11「之後都用真人版」）：照 `docs/videos/zhong-tian-qu-qi-e021-r2/script.md`（c01–c37 對應 s01–s37，c28b 是 s28b；c21 拆成 s21、s21b；審稿後 c14 拆成 s14、s14b，c22 拆成 s22、s22b；含「這版改了什麼」「2026-11-06 審稿後的修改」與「真人版的改動（2026-11-16）」）；台詞一字不改，只改拍法；每鏡一個看得見的動作、一句一筆不拆半句、預設不笑。篇章設定 `production/r2-bible-e021-e030.md`（拍法 1–30 條）。第 3 篇章〈搶親〉第一集。",
     "- 內部工作編號 921（`hailuo/{ff,clips}-dh-e921.json`、`colab/runs/e921/extras.json`、`colab/runs/e921-live/spec.json`，工作資料夾 `~/mokaair-work/videos/zhong-tian-qu-qi-e921-dh/`）；發布 slug `zhong-tian-qu-qi-e021-r2`。不放集數、不放片名卡；s01 接第 20 集 s38 同一刻、同一條軸線（**看大門時櫃檯在畫右**：魏少卿、孫掌櫃、門口、打手、二牛在畫左、朝畫右看；許硯在櫃檯前、唐小棠在櫃檯後，在畫右、朝畫左看；CG 稿的左右整集對調）。s37 交給第 22 集第一場（隔天近午，客棧上房）。",
-    "- 照第 20 集審稿後的寫法一開始就照做：`OFFSCREEN_SPEECH = False`；`quiet()` 只管嘴；背景寫在場的東西（拍法 18）；道具與接觸寫在第一格；不用手指指人（魏少卿用合起的扇子指）；紙照拍法 27 每鏡同一句：帖子＝摺著的硬米色紙、唐家婚書＝摺著的米色紙細金邊、名冊抄本＝合著的薄冊素灰布面、縣衙婚書＝摺著的紅紙、油紙包；稿子 c06 甩開的婚書與 c11 攤開的名冊都不拍（拍法 7）。",
+    "- 照第 20 集審稿後的寫法一開始就照做：`OFFSCREEN_SPEECH = False`；`quiet()` 只管嘴；背景寫在場的東西（拍法 18）；道具與接觸寫在第一格；不用手指指人（魏少卿用合起的扇子指）；紙照拍法 27 每鏡同一句：帖子＝摺著的硬米色紙、唐家婚書＝摺著的米色紙細金邊、名冊抄本＝素灰布包（審稿必改：不寫線裝冊）、縣衙婚書＝摺著的紅紙、油紙包；稿子 c06 甩開的婚書與 c11 攤開的名冊都不拍（拍法 7）。",
     "- **唐小棠不露嘴說話**：c04、c07、c34 三句與不說話的 c09、c35 都從她背後越過櫃檯拍（nospeak，spec 拿掉她三張圖與身分句；兩顆高丸子、短粉緞帶、後頸露出、頭不動）；她唯一的臉是 c12（不說話、臉色退掉；短緞帶、不送長緞帶的側面圖 angle-b；兩手在畫面外）。**小金算盤不入鏡**（拍法 20 只在插鏡）：c01 抱著與 c07 拍在櫃檯上改成她的兩掌，『喀』交給音效。",
     "- **一鏡最多三張臉**：c01 許硯、魏少卿、孫掌櫃（唐小棠、二牛、秦霜在畫外）；c10 魏少卿、小禾加前景許硯背影；c36 二牛、孫掌櫃加魏少卿背影。過肩與剪影前景都不點名、不送圖：許硯 c10、c28、c37，魏少卿 c15、c27、c32、c36。兩個打手只拍側面與背影、臉在暗處、空手；秦霜長棍、二牛門閂每鏡同一句；秦霜腰帶空著（柴刀不寫，拍法 5）。**小禾被推倒拆成 s21、s21b 兩鏡**，之後每鏡寫淚與嘴角往下（原版必修）。",
-    "- 場景（協調者 2026-11-16 決定，每張放大看過）：第一場 s01–s19 黃昏送 `set-xuji-pu-dusk-l1`（接第 20 集 s34–s38）；第二、三場入夜送 `set-xuji-pu-ye-l1`（篇章試鏡 37033：只改光，右牆前櫃檯上兩盞小銅油燈、門外紅光）；後院 s29、s31 送免費裁切 `set-xuji-houyuan-ye-l1`；四支紙的插鏡（s03、s06、s11、s16）送木櫃面裁切 `set-xuji-pu-cabinet-l1` 當檯面；近鏡與許硯朝畫左的中景（s15、s27、s32）不送場景圖。後門寫在右邊白板牆的遠角（第 20 集 s33 阿令出去的那扇；聖經寫『左牆木架盡頭』，但第 20 集已經拍在右邊）。**不需要試鏡**。",
-    "- 長鏡要買的秒數（BUY）：照 36 句錄音核過（`~/mokaair-work/videos/zhong-tian-qu-qi-e921-dh/audio`，faster-whisper 一次一支逐句聽寫；見 `r2.py` 的 BUY 註解）：**s14（系統、心裡話、系統、心裡話四句約 12.4 秒，一支裝得下、不拆）買 12 秒**；s02（孫掌櫃開頭一聲笑、約 6.5 秒）、s10（約 6.3 秒）、s22（先掃倒再說）、s28（先收紙開扇再說）、s37（一字一字約 6.4 秒）買 8 秒；其餘 6 秒。",
+    "- 場景（協調者 2026-11-16 決定，每張放大看過）：第一場 s01–s19 黃昏送 `set-xuji-pu-dusk-l1`（接第 20 集 s34–s38）；第二、三場入夜送 `set-xuji-pu-ye-l1`（篇章試鏡 37033：只改光，右牆前櫃檯上兩盞小銅油燈、門外紅光）；後院 s29 送 `set-xuji-houyuan-ye-l2`（l1 把井架上的空白木板塗掉）、s31 送不帶門的裁切 `set-xuji-houyuan-ye-nodoor-l1`；四支紙的插鏡（s03、s06、s11、s16）送木櫃面裁切 `set-xuji-pu-cabinet-l1` 當檯面；近鏡、許硯朝畫左的中景（s15、s27、s32）、反打朝店裡的 s26、s22b 不送場景圖。後門寫在右邊白板牆的遠角（第 20 集 s33 阿令出去的那扇；聖經寫『左牆木架盡頭』，但第 20 集已經拍在右邊）。**不需要試鏡**。",
+    "- **審稿後的修改（2026-11-16）**：獨立審稿 `writer-tools/e021-r2/review.md` 必改 10 條全部照改、建議挑便宜合理的照做（細節在 `r2.py` 開頭〈AFTER THE INDEPENDENT REVIEW〉與 script.md〈審稿後的修改〉）。名冊抄本改成素灰布包（s10 舉著不抖、s11、s13 敲在櫃檯邊）；s28 三樣併成一疊收進衣襟；s06 往燈座推一寸；s22 拆成掃倒與棍頭壓胸兩支；s23 只有一隻兔子；s26 反打朝店裡；s29 主觀鏡門在畫右、右下一隻寶藍袖的手拿扇；s15、s27、s32 前景寫寶藍肩、不寫 young man；a13 重錄。",
+    "- 長鏡要買的秒數（BUY）：照 36 句錄音核過（`~/mokaair-work/videos/zhong-tian-qu-qi-e921-dh/audio`，faster-whisper 一次一支逐句聽寫；見 `r2.py` 的 BUY 註解）：**審稿後 s14 拆成 s14、s14b 兩支 8 秒**（系統、心裡話｜系統、心裡話，各約 6.2、5.7 秒）；s02（孫掌櫃開頭一聲笑、約 6.5 秒）、s10（約 6.3 秒）、s26（a28 約 5.6–6.0 秒、整句對嘴）、s28（先收紙開扇再說）、s37（一字一字約 6.4 秒）買 8 秒；**s22 拆成 s22（掃倒、不說話）與 s22b（棍頭壓胸說話）兩支 6 秒**；其餘 6 秒。",
     "- **表上的「秒」欄是 lint 估法**，比錄音短；剪接以錄音長度＋0.5 秒為準。",
 ]
 FOOT = [
-    "- **參考圖**（`assets/refs-live/`）：許硯、唐小棠（l1 交領；只在 s12）、魏少卿、孫掌櫃、秦霜、小禾、二牛、阿令（l1，沒戴面巾，拍法 21）的 l1 與有的角度圖；許硯帶笑的 angle-b 只留在 s27、s32（嘴角冷笑）。場景見上面。",
+    "- **參考圖**（`assets/refs-live/`）：許硯、唐小棠（l1 交領；只在 s12）、魏少卿、孫掌櫃、秦霜、小禾、二牛、阿令（l1，沒戴面巾，拍法 21）的 l1 與有的角度圖；許硯帶笑的 angle-b 整集不送（審稿必改：s27、s32 也改送 angle-a，冷笑靠表情句）；阿令 s29 只送 angle-b、angle-a（不送正面直視的 l1）。場景見上面。",
     "- 共用檔：都沒改（說話的人都在 `build-r2.py` 的 `EN`；沒有新場景；`gen-dh.mjs`、`pilot.py`、`cast.json` 不動；打手不說話、沒有 `MINOR`）。",
     "- `colab/runs/e921/extras.json`（照第 20 集：畫面不放字幕那句；拿掉秦霜的柴刀；魏少卿外貌拿掉常帶冷笑與手上的扇子、玉冠改髮髻前一塊綠玉；小禾兔子塞在腰帶；二牛不寫空手；孫掌櫃拿掉否定名詞）與 `colab/runs/e921-live/spec.json`（`mkspec.py` 產生；種子 9211101／9211102）。",
     "- 免費準備：scratchpad `prep921.sh`（`DRY=1 … st1-ep.sh 921` → `pilot.py` → `retake.py` → `colab-jobs.json` 加 output_path、套 swap_pictures（絕對路徑）→ 逐鏡查送的場景圖與人物圖 → 精修用的分隔句（clips-dh 的『the set layout stays as it is. 』、d1 的『never the mood. 』與『One continuous shot.』各一次）→ `preflight-prompts.py` → 否定名詞與會長字的名詞掃描）。",
@@ -422,4 +494,8 @@ FOOT = [
 #       5.61 s); the silent shots s16, s21, s28b, s29, s31, s36 take gen-dh's 6 s.
 # Re-recorded once (first takes in audio/take1/): a11 (名冊 heard 名字), a17 (報 missing), a18 (縣衙 heard 信仰, an extra 一),
 # a26 (一個 heard 你個). The retakes read right (a17 with a trailing 啊 that whisper may add); see README-retakes.txt.
-BUY = {"s02": 8, "s10": 8, "s14": 12, "s22": 8, "s28": 8, "s37": 8}
+# After the review (2026-11-16): s14 is split at the natural break into s14 (a14 + a15 = 2.40 + 3.28 + 0.5 = 6.18 s) and
+# s14b (a16 + a17 = 2.49 + 2.75 + 0.5 = 5.74 s; the reviewer's silencedetect put the four lines at about 13.6 s, so one 12 s
+# clip did not hold them), 8 s each; s22 is split into the silent sweep s22 (gen-dh's 6 s) and s22b with a24 (6 s); s26 buys
+# 8 s (a28 5.61 s here, about 6.0 s by the reviewer's measure, against 6.27 s for 6 s: lip-synced throughout).
+BUY = {"s02": 8, "s10": 8, "s14": 8, "s14b": 8, "s26": 8, "s28": 8, "s37": 8}
