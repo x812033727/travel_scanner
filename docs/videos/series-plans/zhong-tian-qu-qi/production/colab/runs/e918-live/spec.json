@@ -1,5 +1,5 @@
 {
- "_note": "e918 live d1 (e917-live/spec.json's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth: s03, s06, s13 (Xu Yan across the table), s04 (at the window beside the bookkeeper) and s09 (alone) are from behind her (nospeak, recordings laid in): her three face pictures and her identity sentence go, and the 'only' sentence says she is seen from behind and appears once; s07 is Xu Yan's face with her line off screen. s01, s31, s33 are her silent face shots: e907's neutral face sentences. The bookkeeper has no picture: s05, s12 are his hands with the teahouse as the only picture; s01, s04, s11 admit his back. No set picture for the workshop at night (s15-s22) and the lane (s23, s27-s30); s24 swaps the manor hall for set-qianfu-houmen-ye-l1 (the passage inside the back gate), s31-s38 the yamen gate for set-xianya-gongtang-l1 (s37b too: the script's c37 is split into s37 and s37b) and s39-s40 for set-xianya-ceting-l1 (swap_pictures, applied by prep918.sh with absolute paths). Hand inserts: s16 (Xu Yan's angle-a), s25, s26 (Qian Yuanwai's portrait) send only the owner of the hands and lose the face sentences. By day (s31, s34, s36, s37, s39, s40) Qian Yuanwai's sentence loses the gold rings, his hands inside his sleeves. The speaking gaze names the listener off screen or the thing looked at (s10, s11, s14, s15, s18, s20-s22, s24, s31-s34, s36, s37, s37b). s01, s30, s31, s33, s39, s40 drop profile pictures. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9181101/9181102.",
+ "_note": "e918 live d1 (e917-live/spec.json's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth: s03, s06, s13 (Xu Yan across the table), s04 (at the window beside the bookkeeper) and s09 (alone) are from behind her (nospeak, recordings laid in): her three face pictures and her identity sentence go, and the 'only' sentence says she is seen from behind and appears once; s07 is Xu Yan's face with her line off screen. s01, s31, s33 are her silent face shots: e907's neutral face sentences. The bookkeeper has no picture: s05, s12 are his hands with the teahouse as the only picture, swapped for its bench crop set-chalou-bench-l1 (review 必改 3); s01, s04 admit his back (s11 is Xu Yan alone, 建議 4). No set picture for the workshop at night (s15-s22) and the lane (s23, s27-s30); s24 swaps the manor hall for set-qianfu-houmen-ye-l1 (the passage inside the back gate), the yamen gate for two crops of set-xianya-gongtang-l1 (review 必改 12, 13): the floor set-xianya-gongtang-floor-l1 for s31, s33-s38 and the dais set-xianya-gongtang-dais-l1 for Magistrate Hu's s32, s37b (the script's c37 is split into s37 and s37b), and s39-s40 for set-xianya-ceting-l1 (swap_pictures, applied by prep918.sh with absolute paths). Hand inserts: s16 (Xu Yan's angle-a), s25, s26 (Qian Yuanwai's portrait) send only the owner of the hands and lose the face sentences. By day (s31, s34, s36, s37, s39, s40) Qian Yuanwai's sentence loses the gold rings, his hands inside his sleeves. The speaking gaze names the listener off screen or the thing looked at (s10, s11, s14, s15, s18, s20-s22, s24, s31-s34, s36, s37, s37b). s01, s30, s31, s33, s39, s40 drop profile pictures. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9181101/9181102.",
  "seeds": [
   9181101,
   9181102
@@ -34,7 +34,7 @@
     ],
     [
      "Only these 2 people are in the frame; no second copy of anyone appears.",
-     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan facing us across the table; the young woman with the two buns and pink ribbons appears only once; no second copy of anyone appears."
+     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan facing us across the table; the young woman with the two high round buns appears only once; no second copy of anyone appears."
     ]
    ],
    "drop_pictures": [
@@ -51,7 +51,7 @@
     ],
     [
      "She is the only person in the frame; no second copy of anyone appears.",
-     "Besides her, seen only from behind, only the thin man on the bench the composition describes is in the frame, also seen only from behind with his face turned to the window; the young woman with the two buns and pink ribbons appears only once; no second copy of anyone appears."
+     "Besides her, seen only from behind, only the thin man on the bench the composition describes is in the frame, also seen only from behind with his face turned to the window; the young woman with the two high round buns appears only once; no second copy of anyone appears."
     ]
    ],
    "drop_pictures": [
@@ -68,9 +68,12 @@
     ],
     [
      "Natural, realistic human motion and acting of real actors: each person keeps the identity, hair and costume of their reference pictures, while every visible face acts the emotion written above and changes with it; the pictures are neutral studio portraits, never copy their blank expression.",
-     "Only one thin hand and its dark blue sleeve are in the frame; its owner's face is never seen; no second copy of anyone appears. Only hands move in this shot; the frame stays on the hands and what they hold from the first frame to the last."
+     "Only one thin hand and its dark green sleeve are in the frame; its owner's face is never seen; no second copy of anyone appears. Only hands move in this shot; the frame stays on the hands and what they hold from the first frame to the last."
     ]
-   ]
+   ],
+   "swap_pictures": {
+    "set-chalou-l1.png": "set-chalou-bench-l1.png"
+   }
   },
   "s06": {
    "replace": [
@@ -80,7 +83,7 @@
     ],
     [
      "Only these 2 people are in the frame; no second copy of anyone appears.",
-     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan facing us across the table; the young woman with the two buns and pink ribbons appears only once; no second copy of anyone appears."
+     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan facing us across the table; the young woman with the two high round buns appears only once; no second copy of anyone appears."
     ]
    ],
    "drop_pictures": [
@@ -106,7 +109,7 @@
     ],
     [
      "She is the only person in the frame; no second copy of anyone appears.",
-     "She is the only person in the frame, seen only from behind the whole shot; the young woman with the two buns and pink ribbons appears only once; no second copy of anyone appears."
+     "She is the only person in the frame, seen only from behind the whole shot; the young woman with the two high round buns appears only once; no second copy of anyone appears."
     ]
    ],
    "drop_pictures": [
@@ -126,12 +129,8 @@
   "s11": {
    "replace": [
     [
-     "He is the only person in the frame; no second copy of anyone appears.",
-     "Besides him, only the one thin man on the bench by the window, seen only from behind, is in the frame; no second copy of anyone appears."
-    ],
-    [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
-     "his face three-quarter to screen right toward the open window, his eyes on the man by the window"
+     "his face three-quarter to screen right toward the open window at the right, his eyes on it"
     ]
    ]
   },
@@ -143,9 +142,12 @@
     ],
     [
      "Natural, realistic human motion and acting of real actors: each person keeps the identity, hair and costume of their reference pictures, while every visible face acts the emotion written above and changes with it; the pictures are neutral studio portraits, never copy their blank expression.",
-     "Only one thin hand and its dark blue sleeve are in the frame; its owner's face is never seen; no second copy of anyone appears. Only hands move in this shot; the frame stays on the hands and what they hold from the first frame to the last."
+     "Only one thin hand and its dark green sleeve are in the frame; its owner's face is never seen; no second copy of anyone appears. Only hands move in this shot; the frame stays on the hands and what they hold from the first frame to the last."
     ]
-   ]
+   ],
+   "swap_pictures": {
+    "set-chalou-l1.png": "set-chalou-bench-l1.png"
+   }
   },
   "s13": {
    "replace": [
@@ -155,7 +157,7 @@
     ],
     [
      "Only these 2 people are in the frame; no second copy of anyone appears.",
-     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan facing us across the table; the young woman with the two buns and pink ribbons appears only once; no second copy of anyone appears."
+     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan facing us across the table; the young woman with the two high round buns appears only once; no second copy of anyone appears."
     ]
    ],
    "drop_pictures": [
@@ -365,11 +367,11 @@
     ],
     [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
-     "his face tipped up toward the magistrate's raised desk above the frame, his eyes on it"
+     "his face tipped up toward the high dais above the top of the frame, his eyes on it"
     ]
    ],
    "swap_pictures": {
-    "set-xianya-l1.png": "set-xianya-gongtang-l1.png"
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
    },
    "drop_pictures": [
     "xuyan-angle-b-l1.png",
@@ -378,7 +380,7 @@
   },
   "s32": {
    "swap_pictures": {
-    "set-xianya-l1.png": "set-xianya-gongtang-l1.png"
+    "set-xianya-l1.png": "set-xianya-gongtang-dais-l1.png"
    },
    "replace": [
     [
@@ -399,11 +401,11 @@
     ],
     [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
-     "his face tipped up toward the magistrate's raised desk above the frame, his eyes on it"
+     "his face tipped up toward the high dais above the top of the frame, his eyes on it"
     ]
    ],
    "swap_pictures": {
-    "set-xianya-l1.png": "set-xianya-gongtang-l1.png"
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
    },
    "drop_pictures": [
     "xuyan-angle-b-l1.png",
@@ -412,7 +414,7 @@
   },
   "s34": {
    "swap_pictures": {
-    "set-xianya-l1.png": "set-xianya-gongtang-l1.png"
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
    },
    "replace": [
     [
@@ -433,12 +435,12 @@
     ]
    ],
    "swap_pictures": {
-    "set-xianya-l1.png": "set-xianya-gongtang-l1.png"
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
    }
   },
   "s36": {
    "swap_pictures": {
-    "set-xianya-l1.png": "set-xianya-gongtang-l1.png"
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
    },
    "replace": [
     [
@@ -453,7 +455,7 @@
   },
   "s37": {
    "swap_pictures": {
-    "set-xianya-l1.png": "set-xianya-gongtang-l1.png"
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
    },
    "replace": [
     [
@@ -462,13 +464,13 @@
     ],
     [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
-     "his face tipped up toward the magistrate's raised desk above the frame, his eyes on it"
+     "his face tipped up toward the high dais above the top of the frame, his eyes on it"
     ]
    ]
   },
   "s38": {
    "swap_pictures": {
-    "set-xianya-l1.png": "set-xianya-gongtang-l1.png"
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
    }
   },
   "s39": {
@@ -503,7 +505,7 @@
   },
   "s37b": {
    "swap_pictures": {
-    "set-xianya-l1.png": "set-xianya-gongtang-l1.png"
+    "set-xianya-l1.png": "set-xianya-gongtang-dais-l1.png"
    },
    "replace": [
     [

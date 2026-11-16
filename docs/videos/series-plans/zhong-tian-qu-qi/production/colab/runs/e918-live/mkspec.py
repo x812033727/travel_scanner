@@ -133,7 +133,7 @@ for sid in ["s31", "s34", "s36", "s37", "s39", "s40"]:
 
 # Lines not said into a face on screen.
 add("s10", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen right toward Tang Xiaotang off screen right, his eyes on the bundle"])
-add("s11", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen right toward the open window off screen right, his eyes on it"])
+add("s11", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen right toward the open window at the right, his eyes on it"])
 add("s14", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen right toward Tang Xiaotang off screen right, his eyes on her"])
 add("s15", "replace", [SPEAK_GAZE_HE, "his face lowered toward the box, his eyes on the lid"])
 add("s18", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen right toward Qin Shuang off screen right, his eyes on her"])

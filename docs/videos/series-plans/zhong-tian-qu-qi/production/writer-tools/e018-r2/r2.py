@@ -158,7 +158,8 @@ LOC = {
     "dark": f"At the new timber frame of the papermaking workshop beside the Xu farmhouse late at night: {WORK}; {DARKBLUE}",
     "dark_c": f"At the new timber frame of the papermaking workshop late at night, {DARKBLUE}",
     "lane": f"In the lane behind the Qian manor late at night: {LANE}; deep dark night, the only light the thin warm line from the gap and the faint cool blue of the night",
-    "inner": f"Inside the back courtyard of the Qian manor late at night, seen through the gap of its back gate: {INNER}; the warm light of the lanterns",
+    # review.md 必改 8: the gate gap is an edit mask, so the place sentence no longer says "seen through the gap" (s24 only)
+    "inner": f"Inside the back courtyard of the Qian manor late at night: {INNER}; the warm light of the lanterns",
     "inner_c": "In the back courtyard of the Qian manor late at night, the warm light of round white lanterns with blank faces",
     "hall": f"In the court hall of the county yamen on a grey overcast morning: {HALL}; soft even grey daylight from the tall lattice windows",
     "dais": f"In the court hall of the county yamen on a grey overcast morning: {DAIS}; soft even grey daylight from the tall lattice windows",
@@ -277,7 +278,7 @@ SHOTS = [
          zh="【改背後拍】中景、從她左後方拍、慢推（窗邊）：前景左唐小棠的背影，第一格右手指間已經捏著一小塊碎銀，彎腰把它輕輕放在帳房的茶杯旁、收回手；畫右窗下長凳上帳房的背影（臉朝窗、永遠不轉過來），身旁一本合著的素藍布帳冊；窗外灰瓦。原稿的『窗邊小桌』照圖改成窗下長凳。台詞 nospeak，剪接放錄音"),
     # The bookkeeper's hands: the page is already torn and folded (paper is never read); one picture (the set) is all this job sends.
     dict(loc="tea_c", cam="Insert close-up, slow push in", chars=[], night="tea",
-         comp=f"insert close-up looking down onto the seat of the plain wooden bench under the window from its very first frame, the bench seat filling the lower two thirds of the frame, the window sill and grey roof tiles at the top edge; {CLERK_LEDGER}, and on its cover {SLIP}, held down under two thin long fingers of one hand in {CLERK_SLEEVE}, the frame cuts the dark green sleeve at the forearm at the right edge; beside the ledger {SILVER} next to one small clay cup; only the hand, the sleeve, the ledger, the slip, the cup and the silver are in the frame, lit from our side by the grey daylight",
+         comp=f"insert close-up, the shot opens directly on the seat of the plain wooden bench under the window from its very first frame, looking down onto it, the bench seat filling the lower two thirds of the frame, the window sill and grey roof tiles at the top edge; {CLERK_LEDGER}, and on its cover {SLIP}, held down under two thin long fingers of one hand in {CLERK_SLEEVE}, the frame cuts the dark green sleeve at the forearm at the right edge; beside the ledger {SILVER} next to one small clay cup; only the hand, the sleeve, the ledger, the slip, the cup and the silver are in the frame, lit from our side by the grey daylight",
          lines=[("zhangfang", "只此一頁。出了這個門，我不認得姑娘。", "很小聲，緊張")],
          motion="the fingers push the folded slip across the bench toward the left edge and let go of it, then the same hand sweeps the lump of silver off the bench into the dark green sleeve; the hand moves quickly and nervously",
          zh="插鏡、慢推（往下看窗下長凳的凳面，凳面佔下方三分之二、上緣是窗台與屋瓦；送茶樓的長凳裁切圖 `set-chalou-bench-l1`，審稿必改 3；袖子在前臂處被畫右緣切掉）：帳房（深綠青布袖、瘦長手指）手指第一格已經壓著一張摺兩摺的素紙（只見空白的外面），放在合著的素藍布帳冊上；把紙推過長凳往畫左、放手，再把碎銀一把攏進袖子（原稿撕頁、摺紙兩拍並進第一格：紙一律不拍字）。帳房的話畫外"),
@@ -310,13 +311,13 @@ SHOTS = [
          zh="近景、慢推（身後只有空白屏風）：許硯低頭，右手指尖在布包上慢慢敲，一個名字一下，沉聲說；說完手指停住、下巴一緊；不笑"),
     # review.md 建議 4 (a): Tang Xiaotang sits between him and the bench, so the shot is his alone; s12 takes the bookkeeper's start.
     dict(loc="tea_c", cam="Medium close-up, slow push in", chars=["xuyan"], night="tea",
-         comp=f"medium close-up of {XU}, sitting at the tea table, framed from the chest up with clear space above his head, one small clay cup in his right hand just above the table at the bottom of the frame, his face three-quarter to screen right toward the open window off screen right, never the lens; loud and deliberate: brows raised, eyes wide and bright, mouth wide between words; behind him only the plain cream-white panels of the folding screen",
+         comp=f"medium close-up of {XU}, sitting at the tea table, framed from the chest up with clear space above his head, one small clay cup in his right hand just above the table at the bottom of the frame, his face three-quarter to screen right toward the open window at the right, never the lens; loud and deliberate: brows raised, eyes wide and bright, mouth wide between words; behind him only the plain cream-white panels of the folding screen",
          lines=[("xuyan", "賣紙的銀子跟造紙方子，今晚都鎖進新紙坊的錢箱！", "故意大聲")],
-         motion="Xu Yan sets the cup down on the table with a knock and sits up straight, raising his voice toward the room; after the last word his eyes slide sideways toward the window off screen right and stay there",
+         motion="Xu Yan sets the cup down on the table with a knock and sits up straight, raising his voice toward the room; after the last word his eyes slide sideways toward the open window at the right and stay there",
          zh="中近景、慢推（身後只有空白屏風）：許硯把茶杯往桌上一放、坐直，提高聲音；說完眼睛斜到畫右的窗邊不動（審稿建議 4：唐小棠坐在他和長凳之間，所以只拍他一人；帳房一僵交給 s12 的手；唐小棠一愣那拍不拍）；不笑"),
     # The bookkeeper leaves: his hands only (no face; the staircase goes down toward the camera, so his walk is not shot).
     dict(loc="tea_c", cam="Insert close-up, slow push in", chars=[], night="tea", act=3,
-         comp=f"insert close-up looking down onto the seat of the plain wooden bench under the window from its very first frame, the bench seat filling the lower two thirds of the frame, the window sill and grey roof tiles at the top edge; one small clay cup standing on the bench and, beside it, {CLERK_LEDGER}; one thin hand in {CLERK_SLEEVE} still holding the cup by its rim, the frame cuts the dark green sleeve at the forearm at the right edge; only the hand, the sleeve, the cup and the ledger are in the frame, lit by the grey daylight from the window",
+         comp=f"insert close-up, the shot opens directly on the seat of the plain wooden bench under the window from its very first frame, looking down onto it, the bench seat filling the lower two thirds of the frame, the window sill and grey roof tiles at the top edge; one small clay cup standing on the bench and, beside it, {CLERK_LEDGER}; one thin hand in {CLERK_SLEEVE} still holding the cup by its rim, the frame cuts the dark green sleeve at the forearm at the right edge; only the hand, the sleeve, the cup and the ledger are in the frame, lit by the grey daylight from the window",
          lines=[],
          motion="the hand sets the cup down hard so the tea jumps, snatches up the ledger and pulls away out of the frame to the right; the cup is left alone on the bench, rocking once",
          zh="插鏡、慢推（往下看窗下長凳的凳面；送 `set-chalou-bench-l1`，審稿必改 3；袖子在前臂處被畫右緣切掉）：帳房的手把茶杯重重一放、茶濺一下，一把抓起合著的帳冊、往畫右抽出畫面（手從右緣伸進來，所以往右收）；長凳上只剩茶杯晃一下（原稿的主觀全景改插鏡：樓梯往鏡頭這邊下，走下去一定露臉）（無台詞）"),
@@ -386,7 +387,7 @@ SHOTS = [
     # review.md 必改 8: the picture has no gate leaves and the stone table is small in the far pavilion: the prompt follows the
     # picture (two small figures far away); the gap of the gate is made in the edit with two soft black masks.
     dict(loc="inner", cam="Point-of-view wide shot, slow push in", chars=["qianyuanwai", "laisan"], night="inner",
-         comp=f"point-of-view wide shot straight down the long passage inside the back gate: at the far end, in the small open pavilion under the warm lantern light, {QIAN}, standing at the round stone table, framed full length, small, half turned, {WIRE} in his right hand at the brass hasp of {BOX} lying on the stone table, his face three-quarter to screen right toward the box, never the lens; impatient and greedy: brows drawn, eyes narrowed on the box, lips moving between words; beside him on the left {LAI}, framed full length, small, standing still with his empty hands at his sides, his face toward the box, lips pressed together; the near half of the passage empty stone paving; {HANDS}; nobody else in the frame",
+         comp=f"point-of-view wide shot straight down the long passage inside the back gate: at the far end, in the small open pavilion under the warm lantern light, {QIAN}, standing at the round stone table, framed full length, small, with clear space above his head, half turned, {WIRE} in his right hand at the brass hasp of {BOX} lying on the stone table, his face three-quarter to screen right toward the box, never the lens; impatient and greedy: brows drawn, eyes narrowed on the box, lips moving between words; beside him on the left {LAI}, framed full length, small, standing still with his empty hands at his sides, his face toward the box, lips pressed together; the near half of the passage empty stone paving; {HANDS}; nobody else in the frame",
          lines=[("qianyuanwai", "造紙的方子？我倒要看看，他藏了什麼寶貝。", "不耐")],
          motion=f"Qian Yuanwai twists the wire in the hasp until it springs open, then lifts the lid of the box with both hands; {quiet('Lai San')}; after the last word Qian Yuanwai leans over the open box",
          zh="主觀全景、慢推（秦霜從門縫看進去；送 `set-qianfu-houmen-ye-l1`：左邊一整面白牆、右邊廊下一排亮著的白紙燈籠（紅流蘇）、走道盡頭小亭一張圓石桌，正是後門裡面看進去的樣子；牆上的屋簷影子寫成牆面均勻受光）：照圖拍，走道盡頭小亭裡兩個全身的小人——錢員外站在石桌邊，右手拿一根鐵絲撬開銅鎖扣、兩手掀開箱蓋；賴三站在左邊空著手、嘴閉著；近半段是空的石板走道。【剪接】門縫在剪接做（審稿必改 8，圖上沒有門板）：左右兩條柔邊黑遮罩（左約 18%、右約 22%、邊緣羽化、跟著推鏡輕微收窄），錢員外的臉被右遮罩擋一半由遮罩位置決定"),
@@ -523,8 +524,13 @@ FOOT = [
 # or tone guesses of whisper (錢府 潛伏, 紙坊 脂肪, 魏記 未計, 許硯 許燕, 縣衙 線牙, 五兩 無量: wǔ liǎng with the third-tone sandhi);
 # a32 知法 heard as 執法 but its 知 is level (130 Hz flat, first tone); a35 keeps the stutter 天、天 (two bursts 0.18-0.44 and
 # 0.72-0.86 s before 天冷).
-# 10 s: s02, the script's long shot (thought a02 4.76 + system a03 2.59 + thought a04 3.04 + 2 x 0.5 = 11.39 s with the edge
-# silences, 10.07 s of speech without them, under the 10.67 s a 10 s clip holds).
+# After the review (建議 16, 17; audio/README-retakes.txt): a03 re-processed from its raw take at atempo 1.2 instead of 1.3
+# (1.3 read 宿主甜甜合茶; 1.2 reads 甜甜喝茶, the 天天 level at ~300 Hz in the pitch track: whisper on the filtered voice), 2.81 s;
+# a34 is take1's 人證就在衙門外 (0-1.81 s) spliced to the new take's 錢員外… (1.73 s on), 0.5 s of silence at the join: whisper
+# 人證就在衙門外。前緣外…, 5.92 s (s35's 6 s clip holds 6.27 s). The replaced files are audio/take1/zq918a03.wav (1.3x) and
+# audio/take2/zq918a34.wav.
+# 10 s: s02, the script's long shot (thought a02 4.76 + system a03 2.81 + thought a04 3.04 + 2 x 0.5 = 11.61 s with the edge
+# silences, about 10.3 s of speech without them, under the 10.67 s a 10 s clip holds).
 # The script's c37 (a36 5.92 + a37 6.16 + 0.5 = 12.58 s, 11.39 s of speech) is more than a 10 s clip holds: it is split into
 # s37 (Qian Yuanwai asks, a36, 6 s) and s37b (Magistrate Hu grants it, a37 6.16 s after setting the block down: 8 s).
 # 8 s: s25 (a24 7.08 s, Qian Yuanwai's slow angry line with long pauses), s31 (a30 6.88 s), s36 (a35 6.40 s, the stutter).
