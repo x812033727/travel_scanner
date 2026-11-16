@@ -19,7 +19,7 @@
    "from": "s01",
    "to": "s04",
    "offset": 0.0,
-   "gain": -23,
+   "gain": -22,
    "fade_in": 1.0,
    "fade_out": 1.2,
    "tail": 0
@@ -42,7 +42,7 @@
    "gain": -21,
    "fade_in": 1.0,
    "fade_out": 1.5,
-   "tail": 0.3
+   "tail": 0.8
   },
   {
    "cue": "river",
@@ -50,7 +50,7 @@
    "to": "s23",
    "offset": 0.0,
    "gain": -21,
-   "fade_in": 1.5,
+   "fade_in": 0.8,
    "fade_out": 1.0,
    "tail": 0
   },
@@ -62,7 +62,7 @@
    "gain": -22,
    "fade_in": 0.4,
    "fade_out": 1.5,
-   "tail": 0.3
+   "tail": 0.6
   },
   {
    "cue": "market",
@@ -70,7 +70,7 @@
    "to": "s34",
    "offset": 0.0,
    "gain": -21,
-   "fade_in": 0.8,
+   "fade_in": 0.5,
    "fade_out": 1.0,
    "tail": 0
   },
@@ -100,21 +100,28 @@
    "file": "Wind",
    "at": "s01",
    "off": 0,
-   "gain": -13,
+   "gain": -9,
+   "to": "s08"
+  },
+  {
+   "file": "wind1",
+   "at": "s01",
+   "off": 1.75,
+   "gain": -10,
    "to": "s08"
   },
   {
    "file": "birds",
    "at": "s01",
    "off": 0,
-   "gain": -24,
+   "gain": -21,
    "to": "s08"
   },
   {
    "synth": "river",
    "at": "s01",
    "off": 0,
-   "gain": -30,
+   "gain": -14,
    "to": "s08",
    "fade": 0.6
   },
@@ -122,28 +129,28 @@
    "file": "birds",
    "at": "s09",
    "off": 0,
-   "gain": -19,
+   "gain": -18,
    "to": "s17"
   },
   {
    "file": "Wind",
    "at": "s09",
    "off": 0,
-   "gain": -12,
+   "gain": -9,
    "to": "s17"
   },
   {
    "file": "wind1",
    "at": "s09",
    "off": 1.25,
-   "gain": -13,
+   "gain": -9,
    "to": "s17"
   },
   {
    "synth": "river",
-   "at": "s18",
-   "off": 0,
-   "gain": -24,
+   "at": "s17",
+   "off": 6.0,
+   "gain": -8,
    "to": "s28",
    "fade": 0.6
   },
@@ -151,28 +158,35 @@
    "file": "wind1",
    "at": "s18",
    "off": 0,
-   "gain": -16,
+   "gain": -12,
    "to": "s28"
   },
   {
    "file": "Wind",
+   "at": "s28",
+   "off": 3.6,
+   "gain": -10,
+   "to": "s38"
+  },
+  {
+   "file": "wind1",
    "at": "s29",
-   "off": 0,
-   "gain": -15,
+   "off": 1.25,
+   "gain": -11,
    "to": "s38"
   },
   {
    "file": "birds",
    "at": "s29",
    "off": 0,
-   "gain": -22,
+   "gain": -19,
    "to": "s38"
   },
   {
    "synth": "river",
    "at": "s39",
    "off": 0,
-   "gain": -24,
+   "gain": -8,
    "to": "s42",
    "fade": 0.6
   },
@@ -180,14 +194,14 @@
    "file": "Wind",
    "at": "s39",
    "off": 0,
-   "gain": -13,
+   "gain": -10,
    "to": "s42"
   },
   {
    "file": "fire",
    "at": "s41",
    "off": 0,
-   "gain": -30,
+   "gain": -28,
    "to": "s42"
   },
   {
@@ -392,17 +406,21 @@
    "from": 0,
    "af": "asendcmd=c='2.7 rubberband pitch 1.0',rubberband=pitch=0.85:formant=preserved"
   },
+  "s07": {
+   "from": 0,
+   "af": "rubberband=pitch=0.93:formant=preserved"
+  },
   "s09": {
    "from": 0,
    "af": "rubberband=pitch=0.68:formant=preserved"
   },
   "s10": {
    "from": 0,
-   "af": "asendcmd=c='1.75 rubberband pitch 1.0',rubberband=pitch=0.88:formant=preserved"
+   "af": "asendcmd=c='1.75 rubberband pitch 1.0',rubberband=pitch=0.84:formant=preserved"
   },
   "s11": {
    "from": 0,
-   "af": "asendcmd=c='1.5 rubberband pitch 1.0',rubberband=pitch=0.66:formant=preserved"
+   "af": "asendcmd=c='1.5 rubberband pitch 1.0',rubberband=pitch=0.85:formant=preserved"
   },
   "s13": {
    "from": 0,
@@ -410,39 +428,23 @@
   },
   "s15": {
    "from": 0,
-   "af": "asendcmd=c='4.8 rubberband pitch 0.85',rubberband=pitch=0.73:formant=preserved"
-  },
-  "s17": {
-   "from": 0,
-   "af": "asendcmd=c='5.1 rubberband pitch 1.1',rubberband=pitch=1.0:formant=preserved"
+   "af": "asendcmd=c='2.1 rubberband pitch 1.0',rubberband=pitch=0.73:formant=preserved"
   },
   "s19": {
    "from": 0,
-   "af": "rubberband=pitch=0.75:formant=preserved"
-  },
-  "s21": {
-   "from": 0,
-   "af": "asendcmd=c='1.72 rubberband pitch 1.0',rubberband=pitch=0.9:formant=preserved"
-  },
-  "s22": {
-   "from": 0,
-   "af": "rubberband=pitch=1.15:formant=preserved"
+   "af": "rubberband=pitch=0.78:formant=preserved"
   },
   "s28": {
    "from": 0,
-   "af": "asendcmd=c='0.95 rubberband pitch 0.8;2.4 rubberband pitch 1.0',rubberband=pitch=1.0:formant=preserved"
+   "af": "asendcmd=c='0.95 rubberband pitch 0.86;2.4 rubberband pitch 1.0',rubberband=pitch=1.0:formant=preserved"
   },
   "s30": {
    "from": 0,
-   "af": "asendcmd=c='1.78 rubberband pitch 0.82',rubberband=pitch=0.66:formant=preserved"
-  },
-  "s35": {
-   "from": 0,
-   "af": "rubberband=pitch=1.12:formant=preserved"
+   "af": "asendcmd=c='1.78 rubberband pitch 0.8',rubberband=pitch=0.74:formant=preserved"
   },
   "s40": {
    "from": 0,
-   "af": "asendcmd=c='1.6 rubberband pitch 0.92',rubberband=pitch=1.0:formant=preserved"
+   "af": "asendcmd=c='1.6 rubberband pitch 0.92;2.85 rubberband pitch 1.0',rubberband=pitch=1.0:formant=preserved"
   }
  },
  "voice_off": [],
