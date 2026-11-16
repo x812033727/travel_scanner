@@ -309,4 +309,4 @@
   魏記夥計不列在 `chars`（沒有定妝照），他的兩句在 `video.json` 照規則標成「畫外」，畫面上他是側面、遠的吆喝。
 - **長度**（照 35 句錄音核過，見 `r2.py` 的 BUY）：上面長鏡清單「c15 買 12 秒」不照用（拆成 s15 6 秒、s15b 8 秒：系統吐槽加心裡話共 6.18 秒，6 秒只剩 0.09 秒）；c06（魏少卿拖長音 6.65 秒）、c19（二牛 6.64 秒）、c28（照清單）、c36（本集最後一鏡，留重音與懸念的尾）買 8 秒；插鏡 c08、c13、c16 5 秒；其餘 6 秒。
 - **精修要用的分隔句**：每鏡 `clips-dh-e924.json` 的文字都有一次「the set layout stays as it is. 」（算盤插鏡 s08 改用首格那句「keeps the first frame's set layout and props. 」一次），每支 d1 提示詞都有一次「never the mood. 」與「One continuous shot.」（`prep924.sh` 逐支檢查）。
-- **錄音**：35 句用 `lines.mjs` 錄好（`~/mokaair-work/videos/zhong-tian-qu-qi-e924-dh/audio`），每句 faster-whisper 一次一支聽寫兩次（不給提示、給上一句加本句當上下文），見 `audio/README-retakes.txt`。
+- **錄音**：35 句用 `lines.mjs` 錄好（`~/mokaair-work/videos/zhong-tian-qu-qi-e924-dh/audio`），每句 faster-whisper 一次一支聽寫兩次（不給提示、給上一句加本句當上下文），重錄 a18（拿它聽成哪怕）、a21（「變成白糖」兩次都沒聽到）、a34（二牛聽成而你又），留重錄的版本；見 `audio/README-retakes.txt`。

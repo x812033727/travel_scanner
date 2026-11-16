@@ -177,11 +177,11 @@
   },
   "s02": {
    "from": 0,
-   "af": "asendcmd=c='1.9 rubberband pitch 0.85',rubberband=pitch=1:formant=preserved,volume=-0.7dB"
+   "af": "asendcmd=c='1.9 rubberband pitch 0.85',rubberband=pitch=1:formant=preserved,volume=0.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s05": {
    "from": 0,
-   "af": "volume=-0.6dB"
+   "af": "volume=-0.6dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s08": {
    "from": 0,
@@ -193,7 +193,7 @@
   },
   "s13": {
    "from": 0,
-   "af": "volume=0.8dB"
+   "af": "volume=1.2dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s15": {
    "from": 0,
@@ -209,7 +209,7 @@
   },
   "s19": {
    "from": 0,
-   "af": "volume=-0.3dB"
+   "af": "volume=0.1dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s20": {
    "from": 0,
@@ -217,11 +217,11 @@
   },
   "s22b": {
    "from": 0,
-   "af": "rubberband=pitch=1.1:formant=preserved,volume=-0.4dB"
+   "af": "rubberband=pitch=1.1:formant=preserved,volume=-0.4dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s23": {
    "from": 0,
-   "af": "volume=-1.9dB"
+   "af": "volume=-1.5dB"
   },
   "s25": {
    "from": 0,
@@ -237,7 +237,7 @@
   },
   "s30": {
    "from": 0,
-   "af": "volume=-3.1dB"
+   "af": "volume=-2.7dB"
   },
   "s32": {
    "from": 0,
@@ -245,7 +245,7 @@
   },
   "s33": {
    "from": 0,
-   "af": "volume=-1.9dB"
+   "af": "volume=-1.5dB"
   },
   "s35": {
    "from": 0,
@@ -253,7 +253,7 @@
   },
   "s37": {
    "from": 0,
-   "af": "asendcmd=c='1.15 rubberband pitch 0.88',rubberband=pitch=0.68:formant=preserved,volume=-2.2dB"
+   "af": "asendcmd=c='1.15 rubberband pitch 0.88',rubberband=pitch=0.68:formant=preserved,volume=-1.8dB"
   }
  },
  "voice_off": [
