@@ -19,10 +19,10 @@
    "from": "s01",
    "to": "s03",
    "offset": 0.0,
-   "gain": -22,
+   "gain": -20,
    "fade_in": 1.0,
-   "fade_out": 1.2,
-   "tail": 0
+   "fade_out": 1.0,
+   "tail": 0.4
   },
   {
    "cue": "market",
@@ -30,7 +30,7 @@
    "to": "s14",
    "offset": 0.0,
    "gain": -23,
-   "fade_in": 0.5,
+   "fade_in": 0.3,
    "fade_out": 1.5,
    "tail": 0
   },
@@ -42,7 +42,7 @@
    "gain": -23,
    "fade_in": 1.0,
    "fade_out": 1.0,
-   "tail": 0,
+   "tail": 0.4,
    "from_off": 1.2
   },
   {
@@ -51,7 +51,7 @@
    "to": "s24",
    "offset": 2.5,
    "gain": -23,
-   "fade_in": 0.8,
+   "fade_in": 0.4,
    "fade_out": 1.2,
    "tail": 0.3
   },
@@ -81,42 +81,42 @@
    "file": "Wind",
    "at": "s01",
    "off": 0,
-   "gain": -12,
+   "gain": -8,
    "to": "s03"
   },
   {
    "file": "birds",
    "at": "s03",
-   "off": 5.6,
-   "gain": -17,
+   "off": 5.0,
+   "gain": -15,
    "to": "s24"
   },
   {
    "file": "Wind",
    "at": "s03",
-   "off": 5.6,
-   "gain": -14,
+   "off": 5.0,
+   "gain": -11,
    "to": "s24"
   },
   {
    "file": "wind1",
    "at": "s24",
    "off": 5.0,
-   "gain": -13,
+   "gain": -11,
    "to": "s33"
   },
   {
    "file": "Wind",
    "at": "s24",
    "off": 5.0,
-   "gain": -13,
+   "gain": -11,
    "to": "s33"
   },
   {
    "file": "Wind",
    "at": "s33",
    "off": 5.6,
-   "gain": -10,
+   "gain": -8,
    "to": "s38"
   },
   {
@@ -254,27 +254,75 @@
   },
   "s04": {
    "from": 0,
-   "af": "rubberband=pitch=0.88:formant=preserved"
+   "af": "rubberband=pitch=0.88:formant=preserved,volume=0.8dB"
+  },
+  "s05": {
+   "from": 0,
+   "af": "volume=-1.3dB"
+  },
+  "s07": {
+   "from": 0,
+   "af": "volume=-2.9dB"
   },
   "s09": {
    "from": 0,
-   "af": "rubberband=pitch=0.68:formant=preserved"
+   "af": "rubberband=pitch=0.68:formant=preserved,volume=1.4dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s10": {
    "from": 0,
-   "af": "rubberband=pitch=0.70:formant=preserved"
+   "af": "rubberband=pitch=0.7:formant=preserved,acompressor=threshold=-30dB:ratio=6:attack=5:release=80,volume=18dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s11": {
    "from": 0,
-   "af": "rubberband=pitch=0.85:formant=preserved"
+   "af": "rubberband=pitch=0.85:formant=preserved,volume=2.8dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s17": {
    "from": 0,
-   "af": "rubberband=pitch=0.88:formant=preserved"
+   "af": "rubberband=pitch=0.88:formant=preserved,volume=-1.9dB"
+  },
+  "s20": {
+   "from": 0,
+   "af": "volume=-1.1dB"
+  },
+  "s21": {
+   "from": 0,
+   "af": "volume=-2.0dB"
+  },
+  "s23": {
+   "from": 0,
+   "af": "volume=0.9dB"
+  },
+  "s29": {
+   "from": 0,
+   "af": "volume=-1.0dB"
+  },
+  "s30": {
+   "from": 0,
+   "af": "volume=-3.4dB"
+  },
+  "s31": {
+   "from": 0,
+   "af": "volume=1.3dB"
   },
   "s33": {
    "from": 0,
-   "af": "rubberband=pitch=0.68:formant=preserved"
+   "af": "rubberband=pitch=0.68:formant=preserved,volume=4.4dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s34": {
+   "from": 0,
+   "af": "volume=-0.6dB"
+  },
+  "s35": {
+   "from": 0,
+   "af": "volume=-1.2dB"
+  },
+  "s36": {
+   "from": 0,
+   "af": "volume=-1.1dB"
+  },
+  "s38": {
+   "from": 0,
+   "af": "volume=-2.6dB"
   }
  },
  "voice_off": [],
@@ -288,11 +336,11 @@
  },
  "panel_color": {},
  "vf": {
-  "s06": "split[taa][tab];[tab]crop=120:120:890:190,gblur=sigma=5,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/24\\,0\\,1)'[tac];[taa]format=rgba[tad];[tad][tac]overlay=890:190,format=yuv420p",
-  "s15": "split[tba][tbb];[tbb]crop=1000:800:460:160,format=gbrp,split=3[tbc][tbd][tbe];[tbd]extractplanes=r+g[tbr][tbu];[tbr][tbu]blend=all_expr='clip((A-B-90)*8\\,0\\,255)',gblur=sigma=3,format=gray[tbm];[tbe]hue=s=0.6,eq=brightness=-0.10,format=gbrp[tbg];[tbg][tbm]alphamerge[tbh];[tbc][tbh]overlay,format=yuv420p[tbo];[tba][tbo]overlay=460:160",
+  "s06": "split[taa][tab];[tab]crop=95:95:905:200,gblur=sigma=4,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/22\\,0\\,1)'[tac];[taa]format=rgba[tad];[tad][tac]overlay=905:200,format=yuv420p",
+  "s15": "split[tba][tbb];[tbb]crop=1000:800:460:160,format=gbrp,split=3[tbc][tbd][tbe];[tbd]extractplanes=r+g[tbr][tbu];[tbr][tbu]blend=all_expr='clip((A-B-75)*8\\,0\\,255)',gblur=sigma=3,format=gray[tbm];[tbe]hue=s=0.5,eq=brightness=-0.16,format=gbrp[tbg];[tbg][tbm]alphamerge[tbh];[tbc][tbh]overlay,format=yuv420p[tbo];[tba][tbo]overlay=460:160",
   "s19": "split[tca][tcb];[tcb]crop=440:110:1480:970,gblur=sigma=10,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(X/40\\,0\\,1)*clip(Y/30\\,0\\,1)'[tcc];[tca]format=rgba[tcd];[tcd][tcc]overlay=1480:970:enable='gte(t,4.4)',format=yuv420p",
   "s36": "split[tda][tdb];[tdb]crop=1400:380:260:700,split[tdc][tdd];[tdd]format=gray,lut=y='clip((val-120)*6\\,0\\,255)',gblur=sigma=8,geq=lum='lum(X\\,Y)*clip(min(min(X\\,W-X)\\,Y)/60\\,0\\,1)'[tdm];[tdc]colorchannelmixer=rr=0.78:gg=0.86:bb=1.02,eq=brightness=-0.03,format=gbrp[tdg];[tdg][tdm]alphamerge[tdh];[tda]format=gbrp[tdi];[tdi][tdh]overlay=260:700,format=yuv420p",
-  "s38": "split[tea][teb];[teb]crop=560:280:1100:310,format=gbrp,split=3[tec][ted][tee];[ted]geq=r='255*gt(r(X\\,Y)\\,140)*gt(b(X\\,Y)\\,95)*lt(r(X\\,Y)-b(X\\,Y)\\,75)':g='0':b='0',extractplanes=r,gblur=sigma=7,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/20\\,0\\,1)'[tem];[tee]gblur=sigma=2.5,format=gbrp[teg];[teg][tem]alphamerge[teh];[tec][teh]overlay,format=yuv420p[teo];[tea][teo]overlay=1100:310,fade=t=out:st=3.850:d=0.50"
+  "s38": "split[tea][teb];[teb]crop=560:280:1100:310,format=gbrp,split=3[tec][ted][tee];[ted]geq=r='255*gt(r(X\\,Y)\\,140)*gt(b(X\\,Y)\\,95)*lt(r(X\\,Y)-b(X\\,Y)\\,75)':g='0':b='0',extractplanes=r,gblur=sigma=7,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/20\\,0\\,1)'[tem];[tee]gblur=sigma=3.5,format=gbrp[teg];[teg][tem]alphamerge[teh];[tec][teh]overlay,format=yuv420p[teo];[tea][teo]overlay=1100:310,fade=t=out:st=3.850:d=0.50"
  },
  "subtitle_lines": [],
  "_note": "draft"

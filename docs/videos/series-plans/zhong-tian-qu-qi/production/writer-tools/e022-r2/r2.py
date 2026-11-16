@@ -1,5 +1,5 @@
 """Episode 22 remake (r2): the writer spec for ../e001-r2/build-r2.py. Source: docs/videos/zhong-tian-qu-qi-e022-r2/script.md
-(c01-c41 = s01-s41; the CG-era r2 script), including its sections 「這版改了什麼」, 「2026-11-06 審稿後的修改」 and
+(c01-c41 = s01-s41, c35 split into s35 and s35b; the CG-era r2 script), including its sections 「這版改了什麼」, 「2026-11-06 審稿後的修改」 and
 「真人版的改動（2026-11-16）」, which override the tables. Every line is the script's, word for word; only the staging changes.
 Bible: production/r2-bible-e021-e030.md (rules 1-30, the 21->22 and 22->23 hand-overs, the picture table). The second episode
 of arc 3 〈搶親〉: the next day at the county inn, dinner at the Xu house, Tang Xiaotang's empty room, the ferry landing.
@@ -52,8 +52,8 @@ THE AXES (rule 29: the set picture decides; the script's CG sides are re-placed 
 PLACES (the coordinator's decisions, 2026-11-16; every picture looked at full size; script.md 〈真人版的改動〉):
 - Inn s01, s03, s05, s10, s12: set-kezhan-l1; the three inserts s04, s07, s11: the free crop set-kezhan-table-l1 (the
   table top, teapot and cups); close shots (s02, s06, s08, s09) none.
-- Dinner s13, s14, s17, s24, s25: set-xujia-wu-ye-l1 (swapped for set-xujia-wu-l1); the insert s19: prop-jinsuanpan-l1 in
-  the set slot (rule 20); close shots and s20 none.
+- Dinner s13, s14, s17, s20, s24, s25: set-xujia-wu-ye-l1 (swapped for set-xujia-wu-l1; s20 because her back alone would
+  send no picture); the insert s19: prop-jinsuanpan-l1 in the set slot (rule 20); close shots none.
 - Corridor s27: set-xujia-zoulang-l1. Her room s28, s34, s37: set-xujia-tangfang-l1 (a placeholder link for the CG id in the
   refs-dh-e922 folder, as e909); the inserts s29, s31: the free crop set-xujia-tangfang-table-l1; close shots none.
 - Yard s38: set-xujia-yuan-ye-l2. Ferry s39, s41: set-dukou-ye-l1 (swapped for set-dukou-l2); boat s40: set-chuan-ye-l1
@@ -140,8 +140,8 @@ QIN = ("Qin Shuang, in her dark brown cross-collared short jacket, wide plain le
 # her pictures: a small knot on the crown, the rest long and straight down her back (e021 review 建議)
 ALING = ("A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair pinned up on the crown "
          "with one plain wooden hairpin, the rest falling long and straight down her back")
-XIAOHE = ("little Xiaohe, in her patched lilac cotton jacket, her two little pigtails tied with red string, one small woven straw "
-          "rabbit tucked in her sash")
+# the rabbit is in her identity sentence already (extras.json: tucked into her sash); written once, so one rabbit is drawn
+XIAOHE = "little Xiaohe, in her patched lilac cotton jacket, her two little pigtails tied with red string"
 # bible rule 30 with the portrait's jade (e020 review 必改 7)
 WEI = ("Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green "
        "jade ornament at the front of his topknot")
@@ -181,8 +181,10 @@ def quiet(who, pr="his", plural=False):
     return f"{who} {verb} nothing in this shot: {pr} lips stay pressed together from the first frame to the last, no talking, no mouthing words"
 
 
-def only_tang(side):
-    """e915 s26/s41: a second Tang appeared beside her back. One person with buns, one fixed side."""
+def only_tang(side=None):
+    """e915 s26/s41: a second Tang appeared beside her back. One person with buns, one fixed side (none when she walks off)."""
+    if not side:
+        return "she is the only young woman with two high round buns in the frame"
     return (f"she is the only young woman with two high round buns in the frame, and she stays in the {side} "
             f"foreground from the first frame to the last")
 
@@ -257,7 +259,7 @@ SHOTS = [
          motion=NOBODY + "the right fingers slide the gold ingots one at a time over the edge of the table into the open pouch until the table is bare, then both hands pull the drawstring tight",
          zh="插鏡、慢推（第一格就是金錠與布袋；送客棧桌面裁切）：唐小棠的手把五錠金子一錠一錠撥回布袋、拉緊袋口繩；嘴不入鏡，台詞畫外"),
     dict(loc="inn", cam="Medium shot, slow push in", chars=["weishaoqing", "tangxiaotang"], nospeak=["tangxiaotang"], night="inn",
-         comp=f"medium shot from beside the near corner of the table, the corner of {TABLE_INN} in the soft foreground: on screen left {WEI}, sitting on {BENCH}, framed from the knees up, {FAN} open in his right hand, his face three-quarter to screen right toward the door, never the lens; satisfied: eyes half closed, a thin smile; on the right, further back, {TBACK}, already walking toward the closed double door in the right wall from the first frame, the pouch in her left hand; {only_tang('right back')}; {HANDS}; exactly two people, the young woman seen only from behind",
+         comp=f"medium shot from beside the near corner of the table, the corner of {TABLE_INN} in the soft foreground: on screen left {WEI}, sitting on {BENCH}, framed from the knees up, {FAN} open in his right hand, his face three-quarter to screen right toward the door, never the lens; satisfied: eyes half closed, a thin smile; on the right, further back, {TBACK}, already walking toward the closed double door in the right wall from the first frame, the pouch in her left hand; {only_tang()}; {HANDS}; exactly two people, the young woman seen only from behind",
          lines=[("weishaoqing", "一言為定。三日之內，我在碼頭等妳。", "搖扇，得意")],
          motion=f"the young woman pulls one leaf of the double door open and steps out through it, and the door swings shut behind her; {WALKAWAY}; Wei Shaoqing fans himself slowly at the shut door as he speaks",
          zh="中景、慢推（前景是桌角；送客棧圖）：畫左魏少卿坐在窗下長凳搖扇，對著關上的門得意地說（本鏡可以笑）；右後唐小棠的背影提著布袋拉開右牆的雙扇門出去，門闔上；她一路背對鏡頭、不回頭（拍法 3）。剪接剪在門闔上的一半"),
@@ -269,7 +271,7 @@ SHOTS = [
          zh="過肩中全景、慢推（送夜裡的屋內圖 `set-xujia-wu-ye-l1`：一支紅燭在桌上，稿子的『一對紅燭、一盞油燈』照圖寫一支）：前景右唐小棠的背影把一大盤滷肉放到桌中間、拿起筷子；桌對面畫左秦霜挑眉、阿令垂眼（不戴面巾），兩人對看一眼。台詞 nospeak。拍法 1：小禾、許硯不入鏡（三張臉以內）"),
     # Her one face (silent; spec: l1 and angle-a, the short ribbons). She may smile (script c13-c25); Xiaohe may smile.
     dict(loc="wu", cam="Low-angle medium shot, slow push in", chars=["xiaohe", "tangxiaotang"], night="wu",
-         comp=f"low-angle medium two-shot from a child's eye height at the table: on screen left {XIAOHE}, kneeling up on a low stool at the table, framed from the waist up, a clay bowl in front of her, both cheeks puffed full of food, her face three-quarter to screen right toward the young woman, never the lens; delighted: eyes shining wide, lips moving around her food; on screen right Tang Xiaotang, {TANG}, leaning in from the right over the table, framed from the waist up, a pair of chopsticks in her right hand, her face three-quarter to screen left toward the little girl, never the lens; a sweet smile, the rims of her eyes red, lips closed; the red candle soft between them; {HANDS}; exactly two people",
+         comp=f"low-angle medium shot from a child's eye height at the table: on screen left {XIAOHE}, kneeling up on a low stool at the table, framed from the waist up, a clay bowl in front of her, both cheeks puffed full of food, her face three-quarter to screen right toward the young woman, never the lens; delighted: eyes shining wide, lips moving around her food; on screen right Tang Xiaotang, {TANG}, leaning in from the right over the table, framed from the waist up, a pair of chopsticks in her right hand, her face three-quarter to screen left toward the little girl, never the lens; a sweet smile, the rims of her eyes red, lips closed; the red candle soft between them; {HANDS}; exactly two people",
          lines=[("xiaohe", "棠姐姐，今天是過年嗎？這麼多肉！", "嘴裡塞滿，眼睛發亮")],
          motion=f"Tang Xiaotang drops a big piece of braised pork into the little girl's bowl with her chopsticks, then pinches her cheek once with her left hand; {quiet('Tang Xiaotang', 'her')}; she keeps smiling with reddened eyes",
          zh="低角度中景（小禾的高度）、慢推（送屋內夜圖）：畫左小禾跪在凳子上、腮幫子塞得鼓鼓的、眼睛發亮地說（可以笑）；畫右唐小棠（**本集唯一一張臉**，不說話：甜笑、眼眶紅；只送 l1 與 angle-a、短緞帶）夾一大塊滷肉進小禾碗裡、捏一下她的臉"),
@@ -301,10 +303,10 @@ SHOTS = [
          motion=NOBODY + "the hand suddenly clamps tight around the long gold abacus, the knuckles going pale, and holds on, trembling a little; the abacus stays flat across her lap",
          zh="插鏡（桌下）、慢推（第一格就是手與算盤；送算盤道具圖 `prop-jinsuanpan-l1` 當唯一一張圖，拍法 20）：唐小棠擱在膝上的手猛地握緊橫在膝上的長金算盤、指節發白（稿子『腰間』照道具圖的長算盤改成橫在膝上；e920 fix1 長算盤的寫法）；臉不入鏡，台詞畫外"),
     dict(loc="wu_c", cam="Medium shot, tracking shot that follows the subject", chars=["tangxiaotang"], nospeak=["tangxiaotang"], night="wu",
-         comp=f"medium shot following close behind {TBACK}, standing up from the table, holding in both hands one empty dark clay soup pot from the first frame; {only_tang('middle')}; ahead of her the dark mud-brick wall and a dark open doorway at the right, soft; {HANDS}; exactly one person, the young woman seen only from behind",
+         comp=f"medium shot following close behind {TBACK}, standing up from the table, holding in both hands one empty dark clay soup pot from the first frame; {only_tang()}; ahead of her the dark mud-brick wall and a dark open doorway at the right, soft; {HANDS}; exactly one person, the young woman seen only from behind",
          lines=[("tangxiaotang", "湯也熱好了，我去灶房盛一鍋來。", "笑，輕快")],
          motion=f"the young woman walks away from us toward the dark doorway at the right carrying the empty pot and goes out through it; {WALKAWAY}",
-         zh="中景、跟拍（不送場景圖：圖上沒有門）：唐小棠的背影端起空湯鍋，往右邊暗暗的門口（灶房）走出去，一路背對鏡頭。台詞 nospeak"),
+         zh="中景、跟拍（送屋內夜圖：她的圖拿掉後 Ref2VA 至少要一張圖；圖上沒有門，門口寫在畫右）：唐小棠的背影端起空湯鍋，往右邊暗暗的門口（灶房）走出去，一路背對鏡頭。台詞 nospeak"),
     dict(loc="wu_c", cam="Close-up, slow push in", chars=["aling"], night="wu",
          comp=f"close-up of {ALING}, sitting at the table, framed from the chest up with space above her head, her face three-quarter to screen left toward Xu Yan off screen left, never the lens; grave and quiet: brows level, eyes steady, lips moving softly between words; behind her only the dark mud-brick wall and the candlelight, soft",
          lines=[("aling", "她今晚會走。下午我在渡口洗衣，看見她問船家時辰。", "很輕")],
@@ -325,11 +327,11 @@ SHOTS = [
          lines=[("qinshuang", "還能有誰？昨晚那個搖扇子的，說的就是三日。", "冷")],
          motion="Qin Shuang drops her chopsticks onto the table, folds her arms across her chest and glares toward the doorway beyond the right edge of the frame as she speaks; after the last word she keeps glaring",
          zh="中景、慢推（前景是桌上的紅燭；送屋內夜圖）：秦霜把筷子往桌上一擱、雙手抱胸、往畫右的灶房門口瞪一眼，冷冷地說，不笑"),
-    dict(loc="wu", cam="Medium-wide shot, slow push in", chars=["tangxiaotang", "xuyan", "qinshuang", "aling"], nospeak=["tangxiaotang"], night="wu",
-         comp=f"medium-wide shot from behind {TBACK}, in the middle foreground, standing just past the near side of the low table, a steaming dark clay soup pot already set down on the table beside her from the first frame; {only_tang('middle')}; at the table beyond her, all three seated on low stools and framed from the waist up: on screen left {XU}, his face turned toward her, never the lens; beside him {QIN}, her face turned toward her, never the lens; on screen right {ALING}, her face turned toward her, never the lens; all three watching her, unsmiling, lips closed; a dark open passage in the back left corner; {HANDS}; exactly four people, the young woman seen only from behind",
-         lines=[("tangxiaotang", "湯來了。我今天走累了，先回房歇著。", "笑得勉強，尾音往下掉")],
+    dict(loc="wu", cam="Wide shot, slow push in", chars=["xuyan", "qinshuang", "aling"], night="wu",
+         comp=f"wide shot from behind {TBACK}, in the middle foreground, standing just past the near side of the low table, a steaming dark clay soup pot already set down on the table beside her from the first frame; {only_tang()}; at the table beyond her, all three seated on low stools, seen full figure, small in the frame: on screen left {XU}, his face turned toward her, never the lens; beside him {QIN}, her face turned toward her, never the lens; on screen right {ALING}, her face turned toward her, never the lens; all three watching her, unsmiling, lips closed; a dark open passage in the back left corner; {HANDS}; exactly four people, the young woman seen only from behind",
+         lines=[("tangxiaotang", "湯來了。我今天走累了，先回房歇著。", "畫外，笑得勉強，尾音往下掉")],
          motion=f"the young woman unties a cloth strip from her sleeve and walks away from us past the table toward the dark passage in the back left corner; {WALKAWAY}; {quiet('Xu Yan')}; {quiet('Qin Shuang', 'her')}; {quiet('A-ling', 'her')}; their eyes follow her",
-         zh="中全景、慢推（送屋內夜圖）：湯鍋第一格已經放在桌上；唐小棠的背影解下袖口的布條、往左後暗暗的走廊口走去，一路背對鏡頭；桌邊許硯、秦霜、阿令三張臉（拍法 1）嘴閉著、目光跟著她。台詞 nospeak；小禾不入鏡"),
+         zh="全景、慢推（送屋內夜圖；唐小棠不列 characters：拍法 1 與 lint 一鏡最多三個 id，她的背影不送圖）：湯鍋第一格已經放在桌上；唐小棠的背影解下袖口的布條、往左後暗暗的走廊口走去，一路背對鏡頭；桌邊許硯、秦霜、阿令三張臉（拍法 1）嘴閉著、目光跟著她。台詞 nospeak；小禾不入鏡"),
     dict(loc="wu_c", cam="Close-up, slow push in", chars=["xuyan"], night="wu",
          comp=f"close-up of {XU}, sitting at the table, framed from the chest up with space above his head, his face three-quarter to screen left toward the dark passage beyond the left edge of the frame, never the lens; quietly resolved: brows drawn, eyes steady and dark, lips pressed shut; at the lower right edge a small child's hand in a patched lilac sleeve lifting from the table, and his right hand coming down over it; behind him only the dark mud-brick wall and the candlelight, soft",
          lines=[("xuyan", "子時才開船……等小禾睡了，我就去敲她的門。", "心裡話，低", "inner")],
@@ -341,7 +343,7 @@ SHOTS = [
          lines=[("xuyan", "小棠，睡了嗎？我有話跟妳說，就幾句。", "放輕聲音")],
          motion="Xu Yan knocks twice on the door with the knuckles of his right hand as he speaks, and the unlatched door swings in a finger's width at the touch; after the last word he frowns at the gap",
          zh="中景、跟拍（前景左虛焦走廊木柱；送走廊夜圖 `set-xujia-zoulang-l1`，門在右牆）：許硯外披舊灰外衣、左手提一盞小陶油燈，第一格已經站在右牆一扇關著的木門前，指節敲兩下、輕聲說；門沒閂、一碰就開了一條縫，他皺眉"),
-    dict(loc="room", cam="Point-of-view shot, slow push in", chars=[], night="room",
+    dict(loc="room", cam="Medium-wide shot, slow push in", chars=[], night="room",
          comp=f"point-of-view shot from the open doorway of the small bedroom, a man's left hand in a grey cloth sleeve holding {LAMP} coming in at the lower left edge of the frame from its very first frame: the bedroom empty of people, the bed with its smooth flat pink cover, the glowing paper window above it, and on the small table in the right foreground {PACKS}, {XIUSHU} lying on the nearer stack, {CANDLE_LOW} beside them",
          motion=NOBODY + "the lamp in the hand sways a little and its light slides across the plaster walls; the candle flame on the table leans in the draught from the door",
          zh="主觀（許硯從門口看進房間）、慢推（送唐小棠的房間圖 `set-xujia-tangfang-l1`：門在左、床在後牆、窗在床上方、小桌在右前，第 29 條照圖）：房裡沒人，床上粉被平平整整，窗是關著的（圖上是關的，稿子的開窗不寫）；小桌上兩疊素布小包（稿子的十本帳冊照圖寫，不寫帳冊）、最上面一張摺三摺的紙、一支快燒完的蠟燭（聖經：她走前點著）；畫左下許硯提燈的手伸進來"),
@@ -374,22 +376,28 @@ SHOTS = [
          comp=f"wide shot from just inside the door, two young women seen only from behind blurred in the soft left foreground, appearing only once each: {XU_N}, standing by the small table on the right, framed from the knees up with clear space above his head, {XIUSHU} unfolded in both hands at his chest, its plain blank back toward us, {PACKS} and {CANDLE_LOW} on the table beside him, his face lowered to the paper, never the lens; grim: jaw set, lips pressed shut; {HANDS}; exactly three people, the two women in the foreground seen only from behind",
          motion=f"Xu Yan tears the paper in two with both hands, puts the halves together and tears them again, and lets the pieces drop onto the stacks on the table, one piece sliding off the edge to the floor; {SILENT_HE}; the two women in the foreground keep still",
          zh="全景、慢推（前景左是門口虛焦的兩個背影：秦霜、阿令，不點名、不送圖；送房間圖）：許硯在右邊小桌旁兩手把休書撕成兩半、再撕一次，碎紙落在桌上的素布小包上、一片滑下桌緣；沒有人說話"),
-    # Long shot: the system and his thought. Rule 11: no blue light written; the panel is the cut's.
+    # The script's long shot (c35, 9.5 s; the three takes 2.21 + 2.86 + 3.22 s of speech + 2 x 0.5 = 9.3 s) is split at the
+    # natural break, one change of face each (e021 review: s14 split rather than one long face): s35 the system's two lines
+    # (the panel), s35b, closer, his thought. Rule 11: no blue light written; the panel is the cut's.
     dict(loc="room_c", cam="Close-up, slow push in", chars=["xuyan"], night="room",
-         comp=f"close-up of {XU_N}, standing by the small table, framed from the shoulders up with a little space above his head, his face three-quarter to screen left, his eyes on a point in the air in front of him, never the lens; jolted, then set: brows drawn hard, eyes wide, jaw clenched; behind him only the dark plaster wall and the low candlelight, soft",
+         comp=f"close-up of {XU_N}, standing by the small table, framed from the chest up with space above his head, his face three-quarter to screen left, his eyes on a point in the air in front of him, never the lens; jolted: eyes wide, brows up, lips pressed shut; behind him only the dark plaster wall and the low candlelight, soft",
          lines=[("xitong", "叮。警告，唐小棠正在遠離。", "冷，宣布"),
-                ("xitong", "休書撕了，人也不會自己走回來，宿主。", "冷"),
-                ("xuyan", "不用妳說，我這就去把她追回來。", "心裡話，咬牙", "inner")],
+                ("xitong", "休書撕了，人也不會自己走回來，宿主。", "冷")],
          panel=[("警告，唐小棠正在遠離", "penalty")],
-         motion=f"Xu Yan's head snaps up and his breath catches; he stays frozen a moment, then his jaw tightens and his eyes harden and settle, fixed ahead; {SILENT_HE}; he is listening and thinking, not speaking",
-         zh="近景、慢推（長鏡；不送場景圖；拍法 11 不寫藍光，面板由剪接疊上）：許硯猛地抬頭、一口氣卡住，停一下，下巴一繃、眼神定下來；全程嘴閉著（系統兩句與心裡話都畫外）。稿子『抓起油燈又放下』不拍（一鏡一個動作；燈一直在小桌上）"),
+         motion=f"Xu Yan's head snaps up and his breath catches; he stays frozen, staring at the point in the air, his chest rising once; {SILENT_HE}; he is listening, not speaking",
+         zh="近景、慢推（稿子 c35 的長鏡在系統兩句之後拆開；不送場景圖；拍法 11 不寫藍光，面板由剪接疊上）：系統『叮』時許硯猛地抬頭、一口氣卡住，愣著聽；全程嘴閉著（系統兩句畫外）。稿子『抓起油燈又放下』不拍（一鏡一個動作；燈一直在小桌上）"),
+    dict(sid="s35b", loc="room_c", cam="Close-up, slow push in", chars=["xuyan"], night="room",
+         comp=f"tight close-up of {XU_N}, standing by the small table, framed from the shoulders up with a little space above his head, his face three-quarter to screen left, his eyes on a point in the air in front of him, never the lens; set: brows drawn hard, eyes narrowing, jaw clenched, lips pressed shut; behind him only the dark plaster wall and the low candlelight, soft",
+         lines=[("xuyan", "不用妳說，我這就去把她追回來。", "心裡話，咬牙", "inner")],
+         motion=f"Xu Yan's jaw tightens and his eyes harden and settle, fixed ahead; then he draws one quick breath through his nose, ready to move; {SILENT_HE}; he is thinking, not speaking",
+         zh="近景（比 s35 再近一點，肩以上）、慢推（不送場景圖）：許硯下巴一繃、眼神定下來，鼻子吸一口氣、要動了；全程嘴閉著（心裡話畫外）"),
     dict(loc="room_c", cam="Close-up, slow push in", chars=["aling"], night="room",
          comp=f"close-up of {ALING}, standing in the open door, framed from the chest up with space above her head, the blurred dark brown shoulder of one young woman seen only from behind at the left edge of the frame, appearing only once, her face three-quarter to screen right toward Xu Yan off screen right, never the lens; urgent but calm: eyes lifted and steady, lips moving softly between words; behind her the dark doorway, soft",
          lines=[("aling", "快去。船家說子時開船，現在已經亥時末了。", "很輕")],
          motion="A-ling lifts her eyes to him and tips her head once toward the dark doorway behind her as she speaks; after the last word she holds his gaze",
          zh="近景、慢推（不送場景圖）：阿令在門口抬眼看許硯（畫右外），頭往身後黑黑的門外一偏，很輕地說，不笑；畫左緣虛焦是秦霜的肩（不點名、不送圖）"),
     dict(loc="room", cam="Medium shot, tracking shot that follows the subject", chars=["qinshuang", "xuyan"], night="room",
-         comp=f"medium two-shot in the small bedroom: on screen right {XU_N}, standing by the small table, framed from the waist up with clear space above his head, his face three-quarter to screen left toward her, never the lens; stunned: eyes wide, lips closed; on screen left {QIN}, already striding in from the door in the left wall from the first frame, framed from the waist up, her face three-quarter to screen right toward him, never the lens; fierce: brows down, eyes blazing, lips moving hard between words; {HANDS}; exactly two people",
+         comp=f"medium shot in the small bedroom: on screen right {XU_N}, standing by the small table, framed from the waist up with clear space above his head, his face three-quarter to screen left toward her, never the lens; stunned: eyes wide, lips closed; on screen left {QIN}, already striding in from the door in the left wall from the first frame, framed from the waist up, her face three-quarter to screen right toward him, never the lens; fierce: brows down, eyes blazing, lips moving hard between words; {HANDS}; exactly two people",
          lines=[("qinshuang", "還愣著幹嘛？追啊！燈籠就在屋簷下！", "推他一把，吼")],
          motion=f"Qin Shuang shoves Xu Yan hard on the shoulder with her right hand, turning him toward the door at screen left, and jerks her chin at the doorway as she speaks; {quiet('Xu Yan')}; he stumbles one step toward the door",
          zh="中景、跟拍（送房間圖）：畫左秦霜第一格已經從左牆的門大步走進來，右手一把推在許硯肩上、把他往畫左的門口送、下巴往門外一抬，吼著說；畫右許硯愣住、被推得往門口踉蹌一步、嘴閉著。剪接剪在推肩的一半"),
@@ -406,24 +414,24 @@ SHOTS = [
     # Her back on the boat; her thought (lips unseen). No picture, no name: the boat picture alone.
     dict(loc="boat", cam="Medium shot, slow push in", chars=[], night="ferry",
          comp=f"medium shot from the water's edge, the dark wet side of the boat and the drifting fog in the soft foreground: {BOAT}, just pushed off, its prow pointing away to the right into the fog, one round paper lantern glowing on a bamboo pole at the far end; at that far end {BOATMAN}, standing, both hands on one long bamboo pole; under the arched canopy, sitting low with her arms wrapped around her drawn-up knees, one young woman in a light peach-pink silk jacket with her black hair in two round buns set high on her head, a short pink silk ribbon wrapped around each bun, seen only from behind, her back to us; exactly two people, both seen only from behind",
-         lines=[("tangxiaotang", "別回頭，唐小棠。回頭，就走不了了。", "心裡話，嘴閉著", "inner")],
+         lines=[("tangxiaotang", "別回頭，唐小棠。回頭，就走不了了。", "心裡話，忍著", "inner")],
          motion=NOBODY + "the boatman leans his weight on the pole and the boat glides slowly away from us into the fog; the young woman under the canopy lowers her head onto her knees and her shoulders shake once; she keeps her back to us the whole shot",
          zh="中景、慢推（前景是船舷與霧；送夜霧小船圖 `set-chuan-ye-l1`：拱形竹篷、船頭竹竿上一盞燈）：船夫（斗笠蓑衣，背影，不點名、不送圖）一撐篙，船滑進霧裡；竹篷下唐小棠抱著膝、背對鏡頭，把頭埋進膝蓋、肩膀抖一下（不送她的圖、不寫名字：背影只靠兩顆高丸子與桃粉衣；心裡話畫外）"),
     dict(loc="ferry", cam="Wide shot, slow push in", chars=[], night="ferry",
          comp=f"wide shot from behind on the pier, the old planks in the soft foreground: one young man in an old grey cloth outer coat seen only from behind, standing at the very end of the pier a little left of the middle, framed full length, holding {LANTERN} high above his head in his right hand; beyond him on the right {BOAT}, already ten metres out on the flat water, sliding into the thick fog, one small peach-pink figure sitting hunched under its canopy with her back to the pier; exactly three people, all seen only from behind",
-         lines=[("xuyan", "休書我撕了！妳寫的不算，聽見沒有！", "背對鏡頭，喊，聲音發抖")],
+         lines=[("xuyan", "休書我撕了！妳寫的不算，聽見沒有！", "喊，聲音發抖")],
          motion=NOBODY + "the young man holds the lantern higher, his shoulders heaving as he shouts toward the boat, the back of his head toward us the whole shot; the boat keeps sliding away into the fog, and the small figure on it never turns round",
          zh="全景、慢推（從棧橋後方拍，前景是棧橋木板；送渡口夜霧圖）：許硯的背影（不送圖，背影鏡不送臉）站在棧橋盡頭、燈籠高舉、胸口起伏，背對鏡頭喊；右邊小船在十來公尺外滑進白霧，船上那個桃粉色的小小背影抱著膝，沒有回頭（結尾；懸念交給第 23 集涉水）"),
 ]
 
 HEAD = [
-    "- 重製版 r2、真人版（站主 2026-11-11「之後都用真人版」）：照 `docs/videos/zhong-tian-qu-qi-e022-r2/script.md`（c01–c41 對應 s01–s41；含「這版改了什麼」「2026-11-06 審稿後的修改」與「真人版的改動（2026-11-16）」）；台詞一字不改，只改拍法；每鏡一個看得見的動作、一句一筆不拆半句、預設不笑。篇章設定 `production/r2-bible-e021-e030.md`（拍法 1–30 條）。第 3 篇章〈搶親〉第二集。",
+    "- 重製版 r2、真人版（站主 2026-11-11「之後都用真人版」）：照 `docs/videos/zhong-tian-qu-qi-e022-r2/script.md`（c01–c41 對應 s01–s41；c35 拆成 s35、s35b，共 42 鏡；含「這版改了什麼」「2026-11-06 審稿後的修改」與「真人版的改動（2026-11-16）」）；台詞一字不改，只改拍法；每鏡一個看得見的動作、一句一筆不拆半句、預設不笑。篇章設定 `production/r2-bible-e021-e030.md`（拍法 1–30 條）。第 3 篇章〈搶親〉第二集。",
     "- 內部工作編號 922（`hailuo/{ff,clips}-dh-e922.json`、`colab/runs/e922/extras.json`、`colab/runs/e922-live/spec.json`，工作資料夾 `~/mokaair-work/videos/zhong-tian-qu-qi-e922-dh/`）；發布 slug `zhong-tian-qu-qi-e022-r2`。不放集數、不放片名卡；s01 接第 21 集隔天近午（聖經接點 21→22：唐小棠一個人推門進客棧，魏少卿坐在窗邊）；s41 交給第 23 集第一場（同一刻：許硯把燈籠插在岸邊泥裡涉水追船）。",
     "- 照第 21 集審稿後的寫法一開始就照做：`OFFSCREEN_SPEECH = False`；`quiet()` 只管嘴；背景寫在場的東西（拍法 18）；道具與接觸寫在第一格；只寫要畫出來的東西（e920 fix1：寫 books 就畫出書）：稿子的十本帳冊照房間圖寫成兩疊素布小包，休書照拍法 27 寫成「一張摺三摺的白紙」，只拍摺著或空白的紙背（拍法 7）。",
     "- **唐小棠不露嘴說話**（拍法 3）：她在畫面上的台詞全部從背後拍（s01、s03、s05、s09、s12 客棧；s13、s15、s17、s20、s25 晚飯；nospeak，spec 拿掉她的圖與身分句；兩顆高丸子、短粉緞帶、後頸露出、頭不動）；她唯一的臉是 **s14**（不說話：甜笑、眼眶紅，小禾說話；只送 l1 與 angle-a、短緞帶）。s40 船上只拍背影、不送圖。**小金算盤只在 s19 插鏡**（拍法 20：送道具圖、照 e920 fix1 寫長金算盤，橫在膝上）。",
     "- **一鏡最多三張臉**（拍法 1）：s13 秦霜、阿令加唐小棠背影（小禾、許硯不入鏡）；s25 許硯、秦霜、阿令加唐小棠背影（小禾不入鏡）。前景不點名、不送圖（拍法 2）：s23 許硯的肩、s34 門口兩個背影、s36 秦霜的肩、s38 屋門口小小的秦霜、s41 許硯的背影。秦霜腰帶空著（柴刀不寫，拍法 5）；阿令不戴面巾（拍法 21）；小禾兔子塞在腰帶。",
     "- **場景圖說了算**（拍法 29，協調者 2026-11-16 決定，每張放大看過）：客棧 `set-kezhan-l1`（窗與長凳在左、方桌在中、雙扇門在右牆；魏少卿坐窗下長凳）；晚飯 `set-xujia-wu-ye-l1`（土磚屋、桌上一支紅燭；灶房門在畫右外、往房間的走廊在畫左外）；走廊 `set-xujia-zoulang-l1`；唐小棠的房間 `set-xujia-tangfang-l1`（**門在左、小桌在右前、窗關著**，稿子的房門在右、開窗照圖改：許硯在右邊小桌旁，秦霜、阿令在左邊門口）；夜院 `set-xujia-yuan-ye-l2`（院門上的小瓦簷掛燈籠）；渡口 `set-dukou-ye-l1`（棧橋從左來、圖上沒有船）；小船 `set-chuan-ye-l1`。插鏡：客棧桌面 `set-kezhan-table-l1`、房間桌面 `set-xujia-tangfang-table-l1`（兩張都是免費裁切、新 id 自帶 l1）、算盤 `prop-jinsuanpan-l1`。近鏡不送場景圖。**不需要試鏡**。",
-    "- 長鏡要買的秒數（BUY）：照 38 句錄音核過（`~/mokaair-work/videos/zhong-tian-qu-qi-e922-dh/audio`，faster-whisper 一次一支逐句聽寫；見 `r2.py` 的 BUY 註解）。",
+    "- 長鏡要買的秒數（BUY）：照 37 句錄音核過（`~/mokaair-work/videos/zhong-tian-qu-qi-e922-dh/audio`，faster-whisper 一次一支逐句聽寫；見 `r2.py` 的 BUY 註解）：s06（a05 約 6.9 秒，輕飄飄、停頓長）、s08（約 6.3 秒）、s10（約 6.2 秒，先開扇再說）、s17（約 6.1 秒，背後拍、一筷一筷堆）、s30（念休書約 6.9 秒，畫外）買 8 秒；**稿子 c35 的長鏡（三句約 9.3 秒）拆成 s35（系統兩句、面板）與 s35b（心裡話）兩支 6 秒**；其餘 6 秒（s31 從 5 秒改 6 秒）。",
     "- **表上的「秒」欄是 lint 估法**，比錄音短；剪接以錄音長度＋0.5 秒為準。",
 ]
 FOOT = [
@@ -434,5 +442,16 @@ FOOT = [
     "- 配樂：客棧冷的稀疏弦樂，s07 金子推回、s10「三日」各一個重音；晚飯暖的家常 cue，s21 阿令開口時抽掉只剩低音，s26 一個輕重音；房間風聲與鋼片琴，s33「律上不算」重音、s35 電子音，s37 起鼓點；渡口一把二胡長音，s41 喊完一個重音後收。音效見 script.md〈音樂與音效〉（s01 推門、闔門；s19 算盤珠被握住；s38 扯燈籠的鉤子聲交給剪接）。",
 ]
 
-# Long shots: seconds to buy (filled in after the recordings; see the BUY comment below).
-BUY = {}
+# Long shots: seconds to buy. Measured 2026-11-16 against the 37 recordings (~/mokaair-work/videos/zhong-tian-qu-qi-e922-dh/audio;
+# wave length and silencedetect -35 dB speech span; e013's test: a shot holds (buy - 0.3) x 1.1 s of speech, half a second
+# between lines, so 6 s holds 6.27 s and 8 s 8.47 s). faster-whisper medium read every take back, one clip per process,
+# numpy input, once plain and once with the previous line and the line as context (scratchpad fw922.txt; audio/README-retakes.txt).
+# 8 s:  s06 (a05 6.93 s of speech, 「輕飄飄」 with long pauses; lip-synced), s08 (a06 6.33 s), s10 (a08 6.19 s after the fan
+#       flicks open, lip-synced; e921 bought 8 s for 6.31 s), s17 (a15 6.09 s, retake, while the bowl is heaped, from behind),
+#       s30 (a26 6.93 s, retake, her letter read off screen over his face).
+# Re-recorded (first takes in audio/take1/; audio/README-retakes.txt): a15 (晚 heard 完), a16 (又 heard 就, an extra 啊),
+# a21 (班 heard 半), a25 (幾句 heard 繼續), a26 (今立 heard 經歷), a29 (twice: 妻子 and 這張紙作不了數 garbled; take2/),
+# a37 (休書 heard 小鼠). The retakes read right but for homophones.
+# 6 s:  every other shot (0.98-5.30 s of speech); s35 (a30 2.21 + a31 2.86 + 0.5 = 5.57 s) and s35b (a32 3.22 s) split the
+#       script's 9.5 s long shot; s31 (a27 4.55 s over the insert) buys 6 s instead of gen-dh's 5.
+BUY = {"s06": 8, "s08": 8, "s10": 8, "s17": 8, "s30": 8, "s31": 6}

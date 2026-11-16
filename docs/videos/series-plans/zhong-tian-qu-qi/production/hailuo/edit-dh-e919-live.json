@@ -1,0 +1,333 @@
+{
+ "tempo": 1.0,
+ "grades": {},
+ "default_grade": "dh",
+ "finish": "vignette=angle=PI/5,format=yuv420p",
+ "names": {},
+ "punch": false,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+ ],
+ "name_whoosh": "swish-9",
+ "music": [
+  {
+   "cue": "suspense",
+   "from": "s01",
+   "to": "s03",
+   "offset": 0,
+   "gain": -22,
+   "fade_in": 1.0,
+   "fade_out": 1.0,
+   "tail": 0
+  },
+  {
+   "cue": "tension",
+   "from": "s04",
+   "to": "s21",
+   "offset": 0,
+   "gain": -22,
+   "fade_in": 1.0,
+   "fade_out": 1.5,
+   "tail": 0
+  },
+  {
+   "cue": "suspense",
+   "from": "s22",
+   "to": "s27",
+   "offset": 42,
+   "gain": -21,
+   "fade_in": 1.0,
+   "fade_out": 1.5,
+   "tail": 0.5
+  },
+  {
+   "cue": "warm",
+   "from": "s28",
+   "to": "s34",
+   "offset": 0,
+   "gain": -21,
+   "fade_in": 1.0,
+   "fade_out": 0.6,
+   "tail": 0
+  },
+  {
+   "cue": "warm",
+   "from": "s35",
+   "to": "s37",
+   "offset": 36,
+   "gain": -21,
+   "fade_in": 0.8,
+   "fade_out": 1.5,
+   "tail": 0.3,
+   "from_off": 1.0
+  },
+  {
+   "cue": "night",
+   "from": "s38",
+   "to": "s40",
+   "offset": 0,
+   "gain": -21,
+   "fade_in": 1.5,
+   "fade_out": 2.0,
+   "tail": 1.0
+  }
+ ],
+ "sfx": [
+  {
+   "file": "Wind",
+   "at": "s01",
+   "off": 0,
+   "gain": -12,
+   "to": "s03"
+  },
+  {
+   "file": "Wind",
+   "at": "s03",
+   "off": 6.0,
+   "gain": -9,
+   "to": "s27"
+  },
+  {
+   "file": "birds",
+   "at": "s27",
+   "off": 3.5,
+   "gain": -16,
+   "to": "s37"
+  },
+  {
+   "file": "wind1",
+   "at": "s27",
+   "off": 3.5,
+   "gain": -8,
+   "to": "s37"
+  },
+  {
+   "file": "wind1",
+   "at": "s37",
+   "off": 4.1,
+   "gain": -7,
+   "to": "s41"
+  },
+  {
+   "file": "Wind",
+   "at": "s37",
+   "off": 4.1,
+   "gain": -13,
+   "to": "s41"
+  },
+  {
+   "file": "impactWood_heavy_001",
+   "at": "s05",
+   "off": 0.45,
+   "gain": -14
+  },
+  {
+   "file": "cloth1",
+   "at": "s04",
+   "off": 0.3,
+   "gain": -24
+  },
+  {
+   "file": "cloth2",
+   "at": "s10",
+   "off": 5.5,
+   "gain": -26
+  },
+  {
+   "file": "cloth1",
+   "at": "s12",
+   "off": 3.0,
+   "gain": -22
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s13",
+   "off": 0.0,
+   "gain": -10
+  },
+  {
+   "file": "impactBell_heavy_001",
+   "at": "s13",
+   "off": 0.05,
+   "gain": -20
+  },
+  {
+   "file": "cloth1",
+   "at": "s16",
+   "off": 0.2,
+   "gain": -24
+  },
+  {
+   "file": "paper_03",
+   "at": "s18",
+   "off": 0.5,
+   "gain": -28
+  },
+  {
+   "file": "paper_02",
+   "at": "s19",
+   "off": 0.3,
+   "gain": -28
+  },
+  {
+   "file": "impactWood_heavy_001",
+   "at": "s22",
+   "off": 1.15,
+   "gain": -14
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s23",
+   "off": 0.0,
+   "gain": -8
+  },
+  {
+   "file": "impactWood_heavy_001",
+   "at": "s24",
+   "off": 0.45,
+   "gain": -14
+  },
+  {
+   "file": "handleCoins2",
+   "at": "s28",
+   "off": 0.3,
+   "gain": -26
+  },
+  {
+   "file": "handleCoins",
+   "at": "s37",
+   "off": 0.3,
+   "gain": -28
+  },
+  {
+   "file": "gong_02",
+   "at": "s41",
+   "off": 5.15,
+   "gain": -6
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s41",
+   "off": 5.15,
+   "gain": -8
+  }
+ ],
+ "frame_round": true,
+ "clip_voice": true,
+ "voice_skip": {
+  "s05": 2.5,
+  "s22": 1.4,
+  "s24": 1.2,
+  "s29": 0.3
+ },
+ "voice_until": {},
+ "clip_af": {
+  "s03": {
+   "from": 0,
+   "af": "asendcmd=c='3.4 rubberband pitch 1.0',rubberband=pitch=0.86:formant=preserved"
+  },
+  "s04": {
+   "from": 0,
+   "af": "rubberband=pitch=0.92:formant=preserved"
+  },
+  "s06": {
+   "from": 0,
+   "af": "rubberband=pitch=0.8:formant=preserved"
+  },
+  "s12": {
+   "from": 0,
+   "af": "rubberband=pitch=0.88:formant=preserved"
+  },
+  "s14": {
+   "from": 0,
+   "af": "rubberband=pitch=0.92:formant=preserved"
+  },
+  "s16": {
+   "from": 0,
+   "af": "rubberband=pitch=0.86:formant=preserved"
+  },
+  "s20": {
+   "from": 0,
+   "af": "rubberband=pitch=0.8:formant=preserved"
+  },
+  "s24": {
+   "from": 0,
+   "af": "rubberband=pitch=0.85:formant=preserved"
+  },
+  "s26": {
+   "from": 0,
+   "af": "rubberband=pitch=1.25:formant=preserved"
+  },
+  "s29": {
+   "from": 0,
+   "af": "rubberband=pitch=0.92:formant=preserved"
+  },
+  "s37": {
+   "from": 0,
+   "af": "rubberband=pitch=0.75:formant=preserved"
+  }
+ },
+ "voice_off": [
+  "s09",
+  "s34"
+ ],
+ "move_lines": {},
+ "min": {
+  "s41": 8.6
+ },
+ "slow_shot": {
+  "s41": 1.0
+ },
+ "line_at": {
+  "zq919a08": 0.05,
+  "zq919a39": 0.06
+ },
+ "panel_y": {
+  "s25": 840,
+  "s33": 840,
+  "s34": 16,
+  "s35": 16
+ },
+ "panel_from": {
+  "s35": 3.2
+ },
+ "panel_color": {},
+ "vf": {
+  "s02": "split[faa][fab];[fab]crop=140:110:1060:970,gblur=sigma=6,eq=brightness=-0.08:saturation=0.5,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,Y)/20\\,0\\,1)',fade=t=out:st=0.400:d=0.15:alpha=1[fac];[faa]format=rgba[fad];[fad][fac]overlay=1060:970,format=yuv420p",
+  "s06": "split[gaa][gab];[gab]crop=125:250:1415:540,gblur=sigma=4,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/20\\,0\\,1)'[gac];[gaa]format=rgba[gad];[gad][gac]overlay=1415:540,format=yuv420p,colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s07": "split[gba][gbb];[gbb]crop=w=100:h=200:x='(459-36*t)-50':y='(532+24*t)-100',gblur=sigma=4,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/20\\,0\\,1)'[gbc];[gba]format=rgba[gbd];[gbd][gbc]overlay=x='(459-36*t)-50':y='(532+24*t)-100',format=yuv420p,colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s27": "split[paa][pab];[pab]crop=w=84:h=1080:x='if(lt(t\\,1)\\,344-4*t\\,if(lt(t\\,2)\\,340-30*(t-1)\\,if(lt(t\\,3)\\,310-64*(t-2)\\,246-62*(t-3))))+88-42':y=0,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(X\\,W-X)/26\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=x='if(lt(t\\,1)\\,344-4*t\\,if(lt(t\\,2)\\,340-30*(t-1)\\,if(lt(t\\,3)\\,310-64*(t-2)\\,246-62*(t-3))))-42':y=0,format=yuv420p,split[kaa][kab];[kab]crop=280:200:1080:880,format=gbrp,split[kac][kad];[kad]extractplanes=r+b[kar][kau];[kar][kau]blend=all_expr='clip((A-B-8)*7\\,0\\,255)',gblur=sigma=3,lut=y='clip(val*2.2\\,0\\,255)',format=gray[kam];[kac]colorchannelmixer=rr=0.11:rg=0.17:rb=0.05:gr=0.14:gg=0.21:gb=0.06:br=0.18:bg=0.28:bb=0.09,noise=alls=6:allf=t,gblur=sigma=1,format=gbrp[kat];[kat][kam]alphamerge,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='alpha(X\\,Y)*clip(min(min(X\\,W-X)\\,Y)/24\\,0\\,1)'[kah];[kaa]format=rgba[kae];[kae][kah]overlay=1080:880,format=yuv420p,colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s33": "split[kba][kbb];[kbb]crop=220:220:1060:860,format=gbrp,split[kbc][kbd];[kbd]extractplanes=r+b[kbr][kbu];[kbr][kbu]blend=all_expr='clip((A-B-8)*7\\,0\\,255)',gblur=sigma=3,lut=y='clip(val*2.2\\,0\\,255)',format=gray[kbm];[kbc]colorchannelmixer=rr=0.11:rg=0.17:rb=0.05:gr=0.14:gg=0.21:gb=0.06:br=0.18:bg=0.28:bb=0.09,noise=alls=6:allf=t,gblur=sigma=1,format=gbrp[kbt];[kbt][kbm]alphamerge,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='alpha(X\\,Y)*clip(min(min(X\\,W-X)\\,Y)/24\\,0\\,1)'[kbh];[kba]format=rgba[kbe];[kbe][kbh]overlay=1060:860,format=yuv420p",
+  "s34": "split[kca][kcb];[kcb]crop=330:220:1060:860,format=gbrp,split[kcc][kcd];[kcd]extractplanes=r+b[kcr][kcu];[kcr][kcu]blend=all_expr='clip((A-B-8)*7\\,0\\,255)',gblur=sigma=3,lut=y='clip(val*2.2\\,0\\,255)',format=gray[kcm];[kcc]colorchannelmixer=rr=0.11:rg=0.17:rb=0.05:gr=0.14:gg=0.21:gb=0.06:br=0.18:bg=0.28:bb=0.09,noise=alls=6:allf=t,gblur=sigma=1,format=gbrp[kct];[kct][kcm]alphamerge,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='alpha(X\\,Y)*clip(min(min(X\\,W-X)\\,Y)/24\\,0\\,1)'[kch];[kca]format=rgba[kce];[kce][kch]overlay=1060:860,format=yuv420p",
+  "s38": "format=gbrp,split[taa][tab];[tab]split[tac][tad];[tad]scale=480:270,format=gbrp,geq=g='clip((b(X\\,Y)-g(X\\,Y)-8)*10\\,0\\,255)*clip((r(X\\,Y)-g(X\\,Y)+6)*12\\,0\\,255)/255':b='0':r='0',format=gbrp,extractplanes=g,gblur=sigma=1.5,scale=1920:1080:flags=bilinear,format=gray[tam];[tac]hue=s=0.3,eq=contrast=0.8:brightness=-0.02,gblur=sigma=1.5,format=gbrp[tat];[tat][tam]alphamerge[tah];[taa][tah]overlay,format=yuv420p",
+  "s39": "format=gbrp,split[tba][tbb];[tbb]split[tbc][tbd];[tbd]scale=480:270,format=gbrp,geq=g='clip((b(X\\,Y)-g(X\\,Y)-8)*10\\,0\\,255)*clip((r(X\\,Y)-g(X\\,Y)+6)*12\\,0\\,255)/255':b='0':r='0',format=gbrp,extractplanes=g,gblur=sigma=1.5,scale=1920:1080:flags=bilinear,format=gray[tbm];[tbc]hue=s=0.3,eq=contrast=0.8:brightness=-0.02,gblur=sigma=1.5,format=gbrp[tbt];[tbt][tbm]alphamerge[tbh];[tba][tbh]overlay,format=yuv420p",
+  "s04": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s05": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s08": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s09": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s10": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s11": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s12": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s13": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s14": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s15": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s16": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s17": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s18": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s19": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s20": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s21": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s22": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s23": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s24": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s25": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s26": "colorbalance=rm=0.04:bm=-0.04:rh=0.02:bh=-0.02,eq=saturation=1.06",
+  "s41": "fade=t=out:st=5.300:d=0.50"
+ },
+ "subtitle_lines": [],
+ "_note": "draft"
+}
