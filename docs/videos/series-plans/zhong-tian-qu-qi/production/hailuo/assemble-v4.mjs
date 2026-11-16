@@ -65,10 +65,11 @@ const FINISH = edit.finish ?? "vignette=angle=PI/4.6,noise=alls=5:allf=t,format=
 
 const COLORS = { panel: "0x5ec8ff", task: "0xffd75e", affection: "0xff8fb8", reward: "0xffe08a", penalty: "0xff6b6b" };
 function panelFilters(shot) {
-  // Up to three rows (e912 cut review: e012 s02's third affection row 唐小棠 +2 was dropped while the system read it out);
-  // a longer list keeps the old first-two cut (e006 s30 has four items and its cuts were made with two rows)
-  const all = overlays[shot] ?? [];
-  const items = all.slice(0, all.length > 3 ? 2 : 3);
+  // Every row (e912 cut review: e012 s02's third affection row 唐小棠 +2 was dropped while the system read it out; e919
+  // live REVIEW 3: s33's four affection rows were cut to the first two -- 阿令 +2 and 三人好感，突破二十 only heard -- by the
+  // old "more than three keeps the first two" rule, which also cut e006 s30 to two). A panel of n rows is 70 + 64n tall,
+  // so a four-row panel low in the frame needs its `panel_y` raised to fit (326 px).
+  const items = overlays[shot] ?? [];
   if (!items.length) return "";
   // `at` on the first overlay item: when the panel appears (e907 cut review: a fixed 0.15 put "已賺 6 兩" two seconds before the money went in)
   // `panel_y: {"s02": 690}` in the edit list: the panel's top edge for that shot (e912: off the faces); 120 otherwise
@@ -112,7 +113,7 @@ const subtitle = (name, text, a, b, color = "0xffffff") =>
   `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(name, text)}':fontsize=60:fontcolor=${color}:borderw=4:bordercolor=0x000000@0.9:shadowcolor=0x000000@0.6:shadowx=2:shadowy=3:x=(w-text_w)/2:y=h-160:enable='between(t,${a.toFixed(3)},${b.toFixed(3)})'`;
 const stillMove = (id, f) => { const k = [...id].reduce((a, c) => a + c.charCodeAt(0), 0) % 4; if (k === 0) return `z='1+0.16*on/${f}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'`; if (k === 1) return `z='1.16-0.14*on/${f}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'`; if (k === 2) return `z='1.14':x='(iw-iw/zoom)*on/${f}':y='ih/2-(ih/zoom/2)'`; return `z='1.14':x='(iw-iw/zoom)*(1-on/${f})':y='ih/2-(ih/zoom/2)'`; };
 
-const report = [], segs = [], starts = {}, lineAt = [], srt = [];
+const report = [], segs = [], starts = {}, lineAt = [], srt = [], leadLines = [];
 let t = 0;
 for (const scene of video.scenes) {
   if (scene.template !== "shot") continue;
@@ -120,15 +121,29 @@ for (const scene of video.scenes) {
   // system's second line, so it opens s38, a point-of-view shot with no mouth on screen)
   const moved = edit.move_lines ?? {};
   const incoming = video.scenes.flatMap((s) => s.lines ?? []).filter((l) => moved[l.id] === scene.id && !(scene.lines ?? []).includes(l));
-  const lines = [...incoming, ...(scene.lines ?? []).filter((l) => !moved[l.id] || moved[l.id] === scene.id)]
+  const shotLines = [...incoming, ...(scene.lines ?? []).filter((l) => !moved[l.id] || moved[l.id] === scene.id)]
     .map((l) => ({ ...l, wav: path.join(work, "audio", `${l.id}.wav`) }));
   // Each line is trimmed of its own leading/trailing silence and sped up into its own file first:
   // atempo inside the segment graph (before adelay) silently cut every segment's audio to 0.12 s.
-  for (const l of lines) {
+  for (const l of shotLines) {
     const fast = path.join(fastDir, `${l.id}.wav`);
     execFileSync("ffmpeg", ["-v", "error", "-y", "-i", l.wav, "-af", `silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.03,areverse,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.08,areverse,atempo=${TEMPO}`, "-ar", "48000", "-ac", "2", fast]);
     l.wav = fast;
     l.len = probe(fast);
+  }
+  // `line_lead`: {line id: seconds} starts a recorded line that many seconds before its shot's first frame, over the end
+  // of the shot before, at its own length (e919 live REVIEW 3: s12's off-screen a11 had been squeezed x1.11 in front of
+  // 放肆 with 0.1 s to spare; laid from s11 c4.92 instead, after a10, it plays at its own speed and leaves a breath). A
+  // segment's audio stops at its own last frame, so such a line is left out of its shot's placement and mixed into the
+  // dialogue bus over the joined cut (before the music's ducking key and loudnorm); lines.json and the srt keep it under
+  // its own shot with its real start. Shots without a lead line are built exactly as before.
+  const lines = shotLines.filter((l) => edit.line_lead?.[l.id] === undefined);
+  for (const l of shotLines.filter((l) => edit.line_lead?.[l.id] !== undefined)) {
+    const start = t - Number(edit.line_lead[l.id]);
+    if (start < 0) throw new Error(`${l.id}: line_lead starts it before the cut`);
+    leadLines.push({ wav: l.wav, start });
+    lineAt.push({ id: l.id, shot: scene.id, speaker: l.speaker, start, len: l.len, subtitled: l.speaker !== "xitong" });
+    if (l.speaker !== "xitong") srt.push({ start, end: start + l.len, text: l.text });
   }
   const src = scene.data?.source;
   const clip = src ? firstTake(path.join(work, "clips"), src.shot) : pick(path.join(work, "clips"), scene.id);
@@ -338,6 +353,9 @@ const dubbed = DUB ? (await import("./dub-track.mjs")).dubDialogue({ locale: DUB
 const inputs = ["-i", DUB ? dubbed.dialogue : joined];
 const parts = [], musicParts = [], sfxParts = [];
 let n = 1;
+// `line_lead` lines join the dialogue bus here (the dub keeps its own dialogue track)
+const leadMix = DUB ? [] : leadLines.map((l) => { inputs.push("-i", l.wav); const ms = Math.round(l.start * 1000); return `[${n++}:a]aresample=48000,aformat=channel_layouts=stereo,adelay=${ms}|${ms}[ll${ms}]`; });
+const dlgIn = leadMix.length ? `[0:a]aresample=48000,aformat=channel_layouts=stereo[d0];${leadMix.join(";")};[d0]${leadMix.map((x) => x.match(/\[ll\d+\]$/)[0]).join("")}amix=inputs=${leadMix.length + 1}:normalize=0:duration=first` : "[0:a]aresample=48000";
 const tAt = (shot, off = 0) => starts[shot].start + off;
 const tEnd = (shot) => starts[shot].start + starts[shot].dur;
 for (const [i, m] of (edit.music ?? []).entries()) {
@@ -375,7 +393,7 @@ for (const [i, c] of cues.entries()) {
   sfxParts.push(`[x${i}]`);
 }
 const graph = [
-  `[0:a]aresample=48000,asplit=2[dlg][key]`,
+  `${dlgIn},asplit=2[dlg][key]`,
   ...parts,
   `${musicParts.join("")}amix=inputs=${musicParts.length}:normalize=0:duration=longest[mus]`,
   // Music ducking under dialogue: `duck_ratio` and `duck_release_ms` in the edit list (defaults 8 and 350 ms, as before).
