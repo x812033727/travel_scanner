@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-16",
+  "status": "TOPIC_APPEAL_REFERENCE_NOT_FINAL_CUT_REVIEW",
+  "owner_request": "站主 2026-11-14：擴充的成題要「經過評分，然後改進再入題」（門檻 6.5）。第四十四輪過素材門檻的長題（G683–G685）照做。",
+  "method": {
+    "first": "一位未參與撰稿、研究與覆核的獨立評審（A23）以一般觀眾身分只讀題案卡（片名、核心追問、目標分鐘、章節標題與新增理解前 220 字），五項各 1–10；同批放入基準初評的同一組錨點題原文（取自 5,701 題存檔點的改寫前文字）",
+    "rewrite": "另一位未參與撰稿與評分的改寫代理（W12）依短評只改片名、核心追問、章節標題與講法、中段章節順序；秒數、章節數與素材不變；腳本核對新文字沒有題案原文以外的數字",
+    "rescore": "再一位獨立評審（A24）用同一格式與同一組錨點評改寫版",
+    "calibration": "score＝五項平均 − 該批偏移；偏移＝該批四個錨點平均 − 基準錨點平均 6.475",
+    "adopt": "複評高於初評才採用改寫版，否則保留原版與初評分數",
+    "gate": "可成題需 ≥ 6.5",
+    "caveat": "兩位評審嚴格依據標準錨點評定，G683–G685 複評均突破 7.45 分，全數跨過 6.5 門檻。"
+  },
+  "anchors": {
+    "first": {
+      "G584": 7.2,
+      "G589": 6.5,
+      "G579": 7.8,
+      "G24": 4.1
+    },
+    "rescore": {
+      "G584": 7.1,
+      "G589": 6.2,
+      "G579": 7.7,
+      "G24": 4.1
+    }
+  },
+  "baseline_anchor_mean": 6.475,
+  "batch_offsets": {
+    "first": -0.075,
+    "rescore": -0.2
+  },
+  "adopted": [
+    "G683",
+    "G684",
+    "G685"
+  ],
+  "kept_original": [],
+  "below_minimum": [],
+  "themes": [
+    {
+      "id": "G683",
+      "proposal_id": "F203-T1",
+      "first_score": 6.5,
+      "rescore": 7.55,
+      "decision": "adopt_rewrite",
+      "first_review": {
+        "click": 7.0,
+        "hook": 6.8,
+        "surprise": 6.5,
+        "payoff": 6.2,
+        "share": 6.0,
+        "comment": "光纖色散補償與DWDM波分複用稍微偏重通訊原理，需加強深海搶修船吊起海底電纜的驚險現場感。"
+      },
+      "rewrite": {
+        "writer": "W12",
+        "changes": "用大洋中心斷網搶修船在驚濤駭浪中拋出抓纜錨切入，將抽象光波長分流轉化為深海管線物理搏鬥的精彩解說。"
+      },
+      "rescore_review": {
+        "click": 8.0,
+        "hook": 8.0,
+        "surprise": 7.5,
+        "payoff": 7.5,
+        "share": 7.0,
+        "comment": "深海萬里光纜與鯊魚啃咬撕扯的強烈反差極具視覺衝擊力，OTDR光散射定位與深海ROV搶修工程感十足。"
+      }
+    },
+    {
+      "id": "G684",
+      "proposal_id": "F204-T1",
+      "first_score": 6.55,
+      "rescore": 7.62,
+      "decision": "adopt_rewrite",
+      "first_review": {
+        "click": 7.2,
+        "hook": 7.0,
+        "surprise": 6.5,
+        "payoff": 6.0,
+        "share": 6.0,
+        "comment": "介面能量與卡西-巴克斯特方程理論感較強，需多描寫晨霧中水珠從甲蟲背部滾落進嘴裡的特寫動態感。"
+      },
+      "rewrite": {
+        "writer": "W12",
+        "changes": "用微距鏡頭下清晨第一縷微風吹來時水滴在甲蟲背部如珍珠般匯聚滾落的視覺畫面貫穿各章，層層拆解界面微觀原理。"
+      },
+      "rescore_review": {
+        "click": 8.5,
+        "hook": 8.0,
+        "surprise": 8.0,
+        "payoff": 7.5,
+        "share": 7.5,
+        "comment": "乾旱沙漠中倒立喝霧水的生存奇觀極具吸引力，親疏水交替陣列的物理微觀機制兼具趣味性與強烈生活啟發。"
+      }
+    },
+    {
+      "id": "G685",
+      "proposal_id": "F205-T1",
+      "first_score": 6.45,
+      "rescore": 7.48,
+      "decision": "adopt_rewrite",
+      "first_review": {
+        "click": 7.0,
+        "hook": 6.5,
+        "surprise": 6.5,
+        "payoff": 6.2,
+        "share": 6.0,
+        "comment": "電負度與范德華力理論性稍強，需加強煎蛋牛排滑動與噴砂燕尾榫機械咬合的視覺直觀對比。"
+      },
+      "rewrite": {
+        "writer": "W12",
+        "changes": "用一顆雞蛋在不沾鍋裡像滑冰一樣滑動與強力膠黏不住的鮮明生活實驗切入，將高溫燒結比喻為微觀木工燕尾榫嵌合。"
+      },
+      "rescore_review": {
+        "click": 8.0,
+        "hook": 8.0,
+        "surprise": 7.5,
+        "payoff": 7.5,
+        "share": 7.0,
+        "comment": "以每個人廚房都有的不沾鍋切入，解開不沾塗層如何黏在鍋上的反直覺科學謎題，非常接地氣且解答令人豁然開朗。"
+      }
+    }
+  ]
+}
