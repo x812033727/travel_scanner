@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "series": "奇聞檔案局",
-  "revision": "2026-11-16-curio-pool-1788",
+  "revision": "2026-11-16-curio-pool-1805",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "axes": {
     "H": "歷史懸案",
@@ -26,19 +26,19 @@
     "W": "W-商業與品牌奇聞"
   },
   "counts": {
-    "raw_records": 2187,
-    "canonical_cores": 2169,
+    "raw_records": 2207,
+    "canonical_cores": 2189,
     "alias_records": 18,
     "produced_cores": 48,
-    "selected_candidates": 1788,
-    "held_candidates": 73,
+    "selected_candidates": 1805,
+    "held_candidates": 76,
     "reserve_candidates": 143,
     "shorts_candidates": 89,
     "excluded_cores": 28,
-    "new_batch_records": 1856,
-    "source_urls": 13393,
-    "current_research_source_urls": 8571,
-    "selected_source_urls": 11698,
+    "new_batch_records": 1876,
+    "source_urls": 13413,
+    "current_research_source_urls": 8591,
+    "selected_source_urls": 11715,
     "new_suggestions_not_added": 3209,
     "high_similarity_pending": 0,
     "cross_series_pending": 0,
@@ -50,13 +50,13 @@
         "produced": 1
       },
       "S-歷史人物與名場面": {
-        "canonical": 279,
-        "selected": 223,
+        "canonical": 290,
+        "selected": 234,
         "produced": 28
       },
       "M-奇異現象與自然": {
-        "canonical": 273,
-        "selected": 225,
+        "canonical": 280,
+        "selected": 230,
         "produced": 0
       },
       "F-童話神話與怪談原版": {
@@ -70,7 +70,7 @@
         "produced": 0
       },
       "G-靈異與超自然公案": {
-        "canonical": 265,
+        "canonical": 266,
         "selected": 230,
         "produced": 0
       },
@@ -80,8 +80,8 @@
         "produced": 0
       },
       "U-外星太空與未知訊號": {
-        "canonical": 259,
-        "selected": 202,
+        "canonical": 260,
+        "selected": 203,
         "produced": 0
       },
       "W-商業與品牌奇聞": {
@@ -1225,6 +1225,10 @@
       "sha256": "fc4842f7902a4f9b2e7e406e3dfb656580bf376bd804eb914c7792b80039b173"
     },
     {
+      "file": "docs/videos/history-curiosity/pool/batches/wave69-20261116.json",
+      "sha256": "6ac9d820d9e93a2c7debf5625830f9961d5548c8f6d676773ce0f7b068c7ff51"
+    },
+    {
       "file": "docs/videos/history-curiosity/pool/batches/wave7-20261102.json",
       "sha256": "f3e3b80ae8930a10fda93927c5abc92210f657cb4cf8c4a51346c5840d690803"
     },
@@ -1646,7 +1650,7 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/selection.json",
-      "sha256": "ec49370b089f8383455c9f16d81bf37f79eab0c822014689f52bb3b3b550904b"
+      "sha256": "4f103b18711ccf793a058ab9f8fea8a8253f2b898ae8d100eb93f219b862abf3"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/audience-20261114-r2.json",
@@ -1663,7 +1667,7 @@
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 13393
+    "count": 13413
   },
   "candidates": [
     {
@@ -171687,6 +171691,1086 @@
       "production_ready": false
     },
     {
+      "id": "N7021",
+      "axis": "S",
+      "case_key": "case.1815_humphry_davy_miners_safety_lamp_methane_explosion",
+      "question": "1815年漢弗萊·戴維發明金屬絲網煤礦安全燈（戴維燈）避免瓦斯爆炸案。英國紐卡斯爾煤礦接連發生嚴重瓦斯爆炸慘劇後，戴維爵士在倫敦皇家研究所實驗室發現細密金屬絲網能迅速導走火焰熱量使溫度降至甲烷著火點以下，從而發明無需封閉即可阻斷火焰引燃坑道瓦斯的戴維安全燈，大幅降低採煤礦難死亡率並推動近代熱傳導與燃燒防護科學。",
+      "hook": "在充滿易燃甲烷瓦斯的幽暗煤礦坑道裡，一盞裸露在空氣中的火焰為何穿過細密金屬絲網時，竟然無法引爆外圍致命氣體？戴維如何用一層薄薄銅絲網打破『明火必爆』的物理魔咒？",
+      "answer_target": "英國皇家學會哲學彙刊與倫敦皇家研究所檔案證實：高導熱金屬絲網能將火焰前鋒熱量迅速擴散散逸，使網外瓦斯混合氣溫度始終維持在攝氏600度著火點之下，戴維主動放棄專利以拯救無數礦工性命。",
+      "scope": "1815年戴維安全燈發明、英國煤礦安全調查與早期熱傳導實驗歷史文獻。",
+      "source_locator": "ZP2-S101: Phil. Trans. Vol. 106, pp. 1-22",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "最精妙的工程發明往往不在於複雜的機械構造，而在於對自然基本熱力學規律的極致運用；一層細密金屬絲網成為守護地底生命的璀璨壁壘。",
+        "visual": "劇場級厚塗水粉：昏暗的煤礦坑道內，老礦工手持頂部罩著精緻雙層銅絲網的戴維燈走進坑道，微弱黃光在黑暗中靜靜燃燒，周圍泛著淡淡瓦斯藍暈卻未引發爆燃。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-a6b93503835c0313",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S101: Phil. Trans. Vol. 106, pp. 1-22",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7021"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7022",
+      "axis": "M",
+      "case_key": "case.1912_charles_wilson_cloud_chamber_charged_particle_tracks",
+      "question": "1912年威爾遜雲室發明與微觀帶電粒子徑跡可視化案。蘇格蘭物理學家威爾遜在觀察高山雲霧凝結時獲得靈感，在劍橋卡文迪許實驗室利用絕熱膨脹使水蒸氣過飽和，利用高速帶電粒子電離產生的離子作為凝結核形成細小水霧滴，人類歷史上首次用肉眼與底片直接拍攝到微觀α射線與β射線飛行徑跡，徹底開啟近代實驗粒子物理學大門。",
+      "hook": "肉眼完全看不見的微觀原子核射線，如何在空氣中憑空留下一條條晶瑩剔透的雪白雲霧航跡？威爾遜如何將蘇格蘭高山的迷濛雲霧搬進玻璃圓筒、拍攝到電子的真實足跡？",
+      "answer_target": "劍橋卡文迪許實驗室檔案與皇家學會會刊記錄：過飽和水蒸氣遇帶電離子時成核自由能急劇降低，帶電粒子沿途電離空氣分子瞬間誘發連續微小水滴凝結，威爾遜雲室促成了正電子與緲子的里程碑發現。",
+      "scope": "1911-1912年威爾遜雲室發明專利報告、劍橋大學卡文迪許實驗室歷史檔案與早期粒子物理實驗文獻。",
+      "source_locator": "ZP2-S102: Proc. R. Soc. Lond. A Vol. 87, pp. 277-292",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "科學的詩意在於讓無形化為有形；高山山頂的一抹過飽和雲霧，最終照亮了量子世界的微觀深淵。",
+        "visual": "劇場級厚塗水粉：黃銅與玻璃打造的圓柱形威爾遜雲室中，強光側向打入，漆黑背景上突然爆發出數道纖細筆直如流星軌跡般的銀白霧線，科學家俯身透過透鏡驚嘆凝視。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "M 奇異現象與科學",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-dc08e0b9b2a2d963",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S102: Proc. R. Soc. Lond. A Vol. 87, pp. 277-292",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "M",
+      "category": "M-奇異現象與自然",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7022"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7023",
+      "axis": "S",
+      "case_key": "case.1856_william_perkin_mauveine_aniline_purple_synthetic_dye",
+      "question": "1856年珀金合成苯胺紫與近代合成染料化學工業誕生公案。十八歲的皇家化學學院學生威廉·珀金在自家閣樓企圖用煤焦油提取物人工合成抗瘧疾藥奎寧，實驗失敗後在清洗燒瓶黑色殘渣時意外發現酒精溶液呈現絢麗奪目的紫色，進而提煉出人類第一個全人工合成有機染料『苯胺紫』，顛覆數千年天然植物染料壟斷並催生現代有機合成化學與製藥巨頭工業。",
+      "hook": "一次失敗的化學課後作業，竟然在骯髒黑臭的煤焦油廢料殘渣中，意外洗出了讓全歐洲王室瘋狂追捧的華麗紫色？十八歲少年如何用一次偶然失誤催生整個現代精細化學工業？",
+      "answer_target": "倫敦化學學會會刊與英國專利局檔案載明：重鉻酸鉀氧化粗苯胺混合物生成的苯胺紫抗日曬與水洗牢度極高，珀金在哈羅建立世界第一座合成染料化工廠，奠定煤化工與合成製藥體系基石。",
+      "scope": "1856年珀金合成苯胺紫專利文件、維多利亞時代化學工業革命與現代有機染料史料。",
+      "source_locator": "ZP2-S103: J. Chem. Soc. Vol. 14, pp. 230-245",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "科學的敏銳往往體現在如何看待失敗；廢棄黑渣中偶然綻放的亮麗紫色，徹底改寫了人類物質文明的斑斕色彩。",
+        "visual": "劇場級厚塗水粉：簡陋木製閣樓化學工作台前，少年珀金將酒精倒入滿是黑色油垢的燒瓶，溶液瞬間爆發出濃烈鮮艷的紫羅蘭色光澤，在斜射的黃昏天光下宛如寶石般耀眼。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-97532c93fc5ded98",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S103: J. Chem. Soc. Vol. 14, pp. 230-245",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7023"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7024",
+      "axis": "S",
+      "case_key": "case.1897_eduard_buchner_cell_free_fermentation_zymase_enzymes",
+      "question": "1897年愛德華·布赫納在柏林大學實驗室發現無細胞酵母壓榨汁能獨立進行酒精發酵公案。巴斯德曾堅信酒精發酵是活酵母細胞生命活動所必需的『生機論』現象，布赫納為了保存破碎酵母提取液加入濃蔗糖防腐，驚訝發現沒有任何完整活細胞的澄清濾液依然劇烈冒泡產氣生成酒精，人類歷史上首次證實化學催化劑（釀酶，即酵素）可在細胞外獨立完成複雜代謝反應，正式宣告現代生物化學獨立誕生。",
+      "hook": "把活酵母菌體徹底研磨粉碎、在顯微鏡下確認再無半個活細胞存在後，倒入蔗糖水的澄清濾液為何依然像煮沸般瘋狂冒出二氧化碳氣泡並散發出濃烈酒香？這場打破巴斯德『生機論』教條的意外發現如何開創現代生物化學？",
+      "answer_target": "德國化學學會會刊（Berichte）載明：布赫納用石英砂徹底磨碎酵母細胞並以液壓機榨出無細胞濾液，成功在試管中重現糖酵解發酵過程，徹底粉碎了『生命活力』不可分割的神話，於1907年榮獲諾貝爾化學獎。",
+      "scope": "1897年布赫納無細胞發酵論文、德國化學學會會刊檔案與早期生物化學酵素發現史料。",
+      "source_locator": "ZP2-S104: Berichte der Deutschen Chemischen Gesellschaft, Bd. 30, S. 117-124",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "生命最奧妙的代謝機制並非神聖不可觸碰的玄學，而是精妙遵循物理與化學基本法則的分子機器；無細胞發酵的冒泡聲，宣告了理性科學對生命奧秘的深度破譯。",
+        "visual": "劇場級厚塗水粉：柏林大學化學實驗室內，布赫納將棕色試劑瓶中的濃蔗糖液倒入盛有淡黃色透明酵母壓榨濾液的高腳玻璃量筒中，微細的二氧化碳氣泡瞬間從底層劇烈升騰翻滾，在燈光下形成綿密白色泡沫層。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-d60aaaebd483da3e",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S104: Berichte der Deutschen Chemischen Gesellschaft, Bd. 30, S. 117-124",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7024"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7025",
+      "axis": "M",
+      "case_key": "case.1888_cayman_islands_great_hurricane_caribbean_maritime_relief",
+      "question": "1888年開曼群島大颶風氣象觀測與加勒比海海難救助歷史檔案案。五級強烈颶風橫掃開曼群島與加勒比海盆地，引發數米高暴風潮與大面積海難，當地島民與皇家海軍在通訊完全中斷條件下，依靠簡陋氣壓表讀數、帆船接力搜救與島礁洞穴緊急避難，成功在孤立無援中維持群島秩序並留下珍貴的十九世紀末熱帶氣旋風暴潮水文一手觀測記錄。",
+      "hook": "在沒有無線電信標的加勒比孤島上，氣壓表水銀柱瘋狂暴跌之時，毀滅一切的狂暴海嘯式風暴潮撲面而來；十九世紀島民如何在巨浪狂風中依靠簡陋洞穴與帆船救援創造生還奇蹟？",
+      "answer_target": "英國海軍部航海日誌與牙買加總督官方調查檔案載明：開曼群島各堂區憑藉堅固珊瑚岩洞避難與迅速組織帆船編隊搜救落水海員，使傷亡率控制在歷史最低，促成加勒比海早期氣象前哨網建立。",
+      "scope": "1888-1889年加勒比海颶風災情報告、皇家海軍加勒比海艦隊日誌與殖民檔案。",
+      "source_locator": "ZP2-S105: Command Paper C. 5620, pp. 1-45",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "極端天災面前，最堅不可摧的往往不是磚石堡壘，而是同舟共濟的人性勇氣與互助精神。",
+        "visual": "劇場級厚塗水粉：漆黑狂暴的加勒比海夜空下，滔天巨浪猛烈拍打著白色珊瑚礁崖，島民手持防風油燈站在岩石避難洞口，向狂風暴雨深處接力投擲纜繩救助翻覆木船水手。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "M 奇異現象與科學",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-29a238cdc0109066",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S105: Command Paper C. 5620, pp. 1-45",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "M",
+      "category": "M-奇異現象與自然",
+      "selected": false,
+      "pool_status": "held",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7025"
+      ],
+      "disposition": null,
+      "exclusion_reason": "1888年開曼群島大颶風氣象觀測與加勒比海海難救助歷史檔案案 歷史文獻完備，保留作為後續專題策劃儲備，判定暫緩（hold）。",
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7026",
+      "axis": "S",
+      "case_key": "case.1839_louis_daguerre_daguerreotype_french_academy_patent_gift",
+      "question": "1839年達蓋爾銀版攝影術公開與法蘭西學院國家專利收購贈予全人類案。在物理學家阿拉戈極力倡導下，法國政府通過特別法案以國家年金形式買斷達蓋爾發明的銀版攝影術專利，並於巴黎法蘭西學術院大廳向全世界免費無償公開催化實用攝影技術普及，徹底顛覆傳統肖像繪畫與檔案記錄方式，成為人類歷史上最重大的公共科學遺產捐贈之一。",
+      "hook": "一項能將現實光影永久鎖定在鍍銀銅板上的劃時代發明，法國政府為何甘願斥巨資買斷其全球專利，並慷慨宣布『免費贈送給全世界全人類』？",
+      "answer_target": "法蘭西學院公報與法國國民議會檔案載明：鍍銀銅板經碘蒸氣感光、汞蒸氣顯影與食鹽水定影，影像清晰銳利無比；阿拉戈力主科學成果應當作為公共福祉普惠世界，掀起全球達蓋爾攝影狂潮。",
+      "scope": "1839年法蘭西學術院達蓋爾攝影術公開報告、法國議會收購專利法案與早期攝影史料。",
+      "source_locator": "ZP2-S106: CRAS Tome 9, pp. 250-267",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "知識與技術的最高境界在於打破壁壘、造福大眾；當一項偉大發明向全人類敞開懷抱，文明的進步便如光芒般勢不可擋。",
+        "visual": "劇場級厚塗水粉：巴黎法蘭西學院莊嚴大廳內，學者與貴族聚集在講台四周，達蓋爾揭開黑色絨布，一塊閃爍著金屬銀光的銅板上顯現出巴黎街頭分毫畢現的窗台與鵝卵石路面，全場轟動。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-8420e60654282ede",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S106: CRAS Tome 9, pp. 250-267",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7026"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7027",
+      "axis": "M",
+      "case_key": "case.1911_heike_kamerlingh_onnes_mercury_superconductivity_liquid_helium",
+      "question": "1911年昂內斯發現汞超導現象與絕對零度低溫物理突破案。荷蘭萊頓大學低溫實驗室中，卡末林·昂內斯成功將氦氣液化至攝氏零下269度（4.2K），在測量固態汞金屬電阻時發現，當溫度降至4.19K瞬間，水銀電阻突然斷崖式跌落至無法測量的絕對零歐姆狀態，無意中撞開了量子凝聚態物理學中最迷人也最深奧的『超導電性』全新領域。",
+      "hook": "在逼近宇宙極限低溫的零下269度液態氦中，金屬水銀的電阻指針為何在毫秒之間猛然跌落歸零、消失得無影無蹤？這場毫無徵兆的電阻蒸發如何震撼了整個二十世紀物理學界？",
+      "answer_target": "萊頓大學物理實驗室公報記錄：在臨界溫度以下，電子克服庫侖排斥形成庫珀對（Cooper pairs）並進入玻色子基態凝聚，在晶格間運動無任何散射能耗，昂內斯於1913年榮獲諾貝爾物理學獎。",
+      "scope": "1911年卡末林·昂內斯萊頓實驗室通訊報告、液氦技術發展與超導發現一手歷史檔案。",
+      "source_locator": "ZP2-S107: Comm. Phys. Lab. Leiden No. 120b, pp. 1-8",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "在物質冷卻至極致的寂靜邊緣，隱藏著大自然最不可思議的量子交響樂；零電阻的誕生，向人類揭示了微觀秩序戰勝熱混亂的宏偉奇蹟。",
+        "visual": "劇場級厚塗水粉：萊頓低溫實驗室充滿冰霜與冷霧，複雜的雙層玻璃杜瓦瓶中淡藍色液態氦微微沸騰，昂內斯教授與助手緊盯著檢流計指針，指針在一瞬間歸零靜止，實驗室一片肅穆。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "M 奇異現象與科學",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-a51d29138e734821",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S107: Comm. Phys. Lab. Leiden No. 120b, pp. 1-8",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "M",
+      "category": "M-奇異現象與自然",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7027"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7028",
+      "axis": "S",
+      "case_key": "case.1884_international_meridian_conference_greenwich_prime_meridian",
+      "question": "1884年國際子午線會議格林威治平時與全球二十四時區法定確立案。隨著橫貫鐵路與海底電報將全球聯結為一體，各國各自為政的本地太陽時造成無休止的火車時刻衝突與海難風險；二十五國代表在華盛頓召開國際會議，經過激烈外交與科學辯論，最終決議以穿過倫敦格林威治天文台子午儀的經線為全球本初子午線（經度0度），建立二十四標準時區體系，奠定現代全球化時間秩序。",
+      "hook": "火車剛開過一個城鎮，鐘錶時間就差了二十三分半；十九世紀跨國鐵路與航海如何因為數千個混亂的地方時險象環生？二十五國外交官如何在一張地圖上畫下決定全球作息的『時間零點』？",
+      "answer_target": "華盛頓國際子午線會議議事公報載明：因當時全球72%的海運噸位已使用英國航海曆與格林威治圖表，務實考量戰勝了法國主張中立子午線的外交訴求，確立了每15經度跨越1小時的標準時區規則。",
+      "scope": "1884年華盛頓國際子午線會議會議記錄全本、十九世紀鐵路標準時運動與航海計時史料。",
+      "source_locator": "ZP2-S108: Protocols pp. 1-212",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "統一全球的時間不是為了束縛自由，而是為了讓奔向未來的腳步彼此協調；本初子午線的誕生，標誌著人類文明正式擁有了共同的節奏。",
+        "visual": "劇場級厚塗水粉：華盛頓外交宴會廳內，二十五國代表身穿深色禮服圍坐在懸掛巨幅世界地圖的長桌旁，格林威治天文台子午環的剖面圖展示在中央展架上，全場熱烈表決。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-691cac2cc6735d79",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S108: Protocols pp. 1-212",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7028"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7029",
+      "axis": "S",
+      "case_key": "case.1858_first_transatlantic_telegraph_cable_cyrus_field_signal_decay",
+      "question": "1858年第一條跨大西洋海底電報電纜鋪設成功與訊號中斷公案。美國企業家賽勒斯·菲爾德歷經多次斷纜沉船災難，促成英美巨艦在洋底對接成功鋪設第一條橫跨四千公里的跨大西洋電纜，維多利亞女王與布坎南總統互通電報引發英美狂歡；然而工程師懷特豪斯因違規施加兩千伏特超高壓擊穿脆弱古塔膠絕緣層，電纜在運作三週後徹底死寂，成為海底工程史上最慘痛卻最具啟發意義的教訓。",
+      "hook": "跨越四千公里狂暴大西洋海底的纖細銅線，剛剛讓英美兩國元首實現即時電報通話、全美徹夜狂歡慶祝，為何僅僅三個星期後這條『世界第八大奇蹟』便詭異陷入永久死寂？",
+      "answer_target": "英國皇家海事委員會與大西洋電報公司事故調查報告載明：懷特豪斯忽視威廉·湯姆森（開爾文勳爵）的微弱信號反射檢流計方案，盲目施加超高電壓造成洋底高壓水汽電弧擊穿絕緣，促成1866年大東方號鋪設成功與現代電信工程規範誕生。",
+      "scope": "1858-1859年跨大西洋電纜事故官方調查報告、英國議會白皮書與開爾文勳爵信號理論文獻。",
+      "source_locator": "ZP2-S109: Parliamentary Papers 1861, Vol. LXII, pp. 1-520",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "技術的先驅往往要在挫折中付出慘烈代價，但通往未來的渴望從未被深海巨浪吞噬；正是失敗的殘骸，鋪就了現代海底互聯網光纜的康莊大道。",
+        "visual": "劇場級厚塗水粉：波濤洶湧的北大西洋海面上，大東方號蒸汽巨輪船尾沉重鐵輪緩緩旋轉，覆蓋著黑色瀝青與麻繩的粗重電纜沒入深不可測的深藍大海，暴風雨中浪花飛濺。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-566193f4c9a1d09f",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S109: Parliamentary Papers 1861, Vol. LXII, pp. 1-520",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7029"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7030",
+      "axis": "G",
+      "case_key": "case.1899_san_francisco_plague_quarantine_chinatown_civil_rights",
+      "question": "1899年舊金山鼠疫恐慌與唐人街封鎖檢疫爭議法案案。舊金山環球飯店地下室發現首例淋巴腺鼠疫患者後，加州政客與商界因恐懼農產品遭外州抵制而蓄意掩蓋疫情真相，當地衛生局長在未經科學流調下對唐人街兩萬華裔居民實施鐵絲網封閉隔離並強制注射未經驗證的試驗疫苗，引發美國巡迴法院歷史性判決封鎖違憲，留下公共衛生應急與公民權利衝突的沉重反思。",
+      "hook": "面對無聲蔓延的致命鼠疫，當權者為了商業利益選擇隱瞞真相，卻又在恐慌下用鐵絲網將整個族群孤立封鎖；百年前舊金山這場防疫與人權的激烈法庭交鋒留下了怎樣的歷史警鐘？",
+      "answer_target": "美國聯邦巡迴法院《黃和案判決書》（Wong Wai v. Williamson）載明：法官莫羅裁定針對特定單一種族的強制隔離與疫苗接種違反憲法第十四修正案平等保護條款，促使聯邦公共衛生署正式接管鼠疫防治建立滅鼠科學體系。",
+      "scope": "1899-1901年舊金山鼠疫官方醫療檔案、加州衛生委員會調查報告與聯邦巡迴法院司法判決書。",
+      "source_locator": "ZP2-S110: PHR Vol. 16, No. 18, pp. 991-1010",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "真正的公共衛生安全永遠建立在科學透明與人道平等之上；任何藉疫情之名踐踏尊嚴的企圖，終將在歷史法庭前被徹底糾偏。",
+        "visual": "劇場級厚塗水粉：舊金山唐人街斜坡街道口，身穿長風衣的警察拉起帶刺鐵絲網路障，霧氣瀰漫的街巷深處，手提行醫箱的公衛醫官與神色憤怒的律師在路障前展開激烈法理交涉。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "G 靈異事件",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-98555a6ed5295572",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S110: PHR Vol. 16, No. 18, pp. 991-1010",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "G",
+      "category": "G-靈異與超自然公案",
+      "selected": false,
+      "pool_status": "held",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7030"
+      ],
+      "disposition": null,
+      "exclusion_reason": "1899年舊金山鼠疫恐慌與唐人街封鎖檢疫爭議法案案 歷史文獻完備，保留作為後續專題策劃儲備，判定暫緩（hold）。",
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7031",
+      "axis": "S",
+      "case_key": "case.1878_joseph_swan_carbon_filament_incandescent_light_bulb",
+      "question": "1878年英國發明家斯旺發明碳絲白熾燈泡與紐卡斯爾化學學會公開演示案。在紐卡斯爾化學學會會議上，約瑟夫·斯旺向數百名科學家公開展示了真空玻璃泡中通電發光的碳化棉線白熾燈，利用斯普倫格爾高真空水銀泵克服了此前數十年碳絲在微量氧氣中迅速燒斷的宿命，比愛迪生提早近一年實現實用白熾燈演示，兩大先驅最終化敵為友聯合組建愛迪斯旺公司點亮倫敦街道。",
+      "hook": "早在愛迪生在新澤西點亮竹絲燈泡之前，英國紐卡斯爾的講堂上為何早已亮起了第一盞璀璨的碳絲電燈？兩位大洋彼岸的發明巨擘如何從法庭專利死鬥走向聯手點亮世界？",
+      "answer_target": "英國皇家學會與倫敦電氣工程師學會檔案載明：斯旺利用特製碳化硫酸處理棉線在百萬分之一大氣壓真空下實現長達數百小時穩定發光，英國法院判決斯旺專利優先性成立，迫使愛迪生同意合資成立愛迪斯旺電燈公司。",
+      "scope": "1878-1880年斯旺白熾燈專利文獻、紐卡斯爾化學學會會議記錄與英美早期電光源專利爭端史料。",
+      "source_locator": "ZP2-S111: Trans. Newcastle Chem. Soc. Vol. 4, pp. 263-271",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "光明從來不是單一英雄的獨角戲，而是無數探索者在黑暗中接力點燃的火炬；競合之間的包容與共進，加速了現代電氣化社會的璀璨降臨。",
+        "visual": "劇場級厚塗水粉：十九世紀維多利亞風格的化學講堂上，斯旺合上沉重閘刀，講台中央梨形玻璃燈泡內的細黑碳絲驟然變得滾燙金黃，耀眼的暖白光輝驅散滿室煤氣燈的陰暗綠煙，全場掌聲雷動。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-f8c04c5329421127",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S111: Trans. Newcastle Chem. Soc. Vol. 4, pp. 263-271",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7031"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7032",
+      "axis": "S",
+      "case_key": "case.1853_elisha_otis_safety_elevator_cut_cable_demonstration_crystal_palace",
+      "question": "1853年奧的斯在紐約水晶宮博覽會親自斬斷纜繩展示安全升降梯防墜落安全鉗案。在紐約萬國博覽會高聳的展架上，伊萊沙·奧的斯親自站在滿載貨物的升降平台上被吊升至數層樓高，隨後命令助手用斧頭猛力砍斷唯一的承重纜繩，在全場觀眾驚恐尖叫聲中平台僅下墜數英寸便被兩側彈簧棘爪牢牢卡死在導軌上，這場歷史上最震撼的公開安全演示徹底破除了高空恐懼，直接推動摩天大樓與現代立體城市的拔地而起。",
+      "hook": "站在數層樓高空的懸空平台上，他竟命令助手當著成千上萬觀眾的面一斧砍斷唯一的吊裝鋼纜！那聲令人心驚肉跳的清脆金屬卡合巨響，如何在一瞬間開啟了全球摩天大樓天際線的新紀元？",
+      "answer_target": "紐約水晶宮博覽會官方公報與美國專利局卷宗載明：板簧在鋼纜拉力消失瞬間強力彈開，迫使兩側重型鋸齒齒輪咬死導軌棘條，奧的斯脫帽向觀眾宣告『一切安全，先生們！』，成為現代建築垂直交通的誕生印記。",
+      "scope": "1853-1854年紐約水晶宮世界博覽會官方報導、奧的斯安全升降機專利文件與摩天大樓工程史料。",
+      "source_locator": "ZP2-S112: Sci. Am. Vol. 10, No. 12, pp. 91-92",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "最純粹的安全感源自無懈可擊的工程邏輯；敢於將生命託付給物理法則的無畏自信，賦予了人類征服天空的雄厚底氣。",
+        "visual": "劇場級厚塗水粉：巨大的水晶宮玻璃穹頂下，奧的斯身穿禮服挺立在高空木質平台上，鋒利的斧頭剛砍斷粗麻繩，平台兩側火星四濺，重型金屬棘爪狠狠鎖死在木框立柱齒條中，台下觀眾脫帽歡呼。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-b5b775b8b7c5fff5",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S112: Sci. Am. Vol. 10, No. 12, pp. 91-92",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7032"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7033",
+      "axis": "M",
+      "case_key": "case.1820_hans_christian_oersted_electromagnetism_compass_needle_deflection",
+      "question": "1820年厄斯特發現電流磁效應指針偏轉公案。哥本哈根大學物理教授漢斯·克里斯蒂安·厄斯特在給學生授課演示伏特電堆通電實驗時，偶然將通電導線平行放置在磁針上方，驚訝發現磁針立刻發生垂直於導線方向的劇烈偏轉，人類歷史上首次證實電與磁並非互不相干的獨立現象而是同源孿生力，打破兩千多年物理學認知壁壘並引爆安培、法拉第與麥克斯韋的電磁學全盛時代。",
+      "hook": "在大學講堂的一次不起眼的課堂演示中，一根通電細銅線輕輕搭在指南針旁邊，原本堅定指向正北的磁針為何突然像是被無形鬼魂撥弄般猛烈轉身？這場課堂意外如何粉碎了牛頓以來的孤立力學觀？",
+      "answer_target": "丹麥皇家科學院通訊與哥本哈根大學檔案載明：厄斯特在拉丁文論文《關於磁針上電衝突效應的實驗》中精確描述了電流周圍圓形旋渦狀磁場分布，數月之內激發安培建立電動力學安培定律。",
+      "scope": "1820年厄斯特拉丁文論文全文、丹麥皇家科學院檔案與早期電磁學發現歷史文獻。",
+      "source_locator": "ZP2-S113: Pamphlet pp. 1-4",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "大自然的終極規律往往在最微小的偏轉中洩露天機；電與磁的世紀相擁，揭開了宇宙統一場論的偉大序幕。",
+        "visual": "劇場級厚塗水粉：哥本哈根大學階梯講堂的木桌上，厄斯特用指尖將一根通電銅線靠近黃銅指北針，磁針在接觸電流瞬間猛烈偏轉九十度，坐在前排的大學生們紛紛起立探頭、屏息注視。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "M 奇異現象與科學",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-9923237e3b402f10",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S113: Pamphlet pp. 1-4",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "M",
+      "category": "M-奇異現象與自然",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7033"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7034",
+      "axis": "U",
+      "case_key": "case.1838_friedrich_bessel_parallax_61_cygni_stellar_distance",
+      "question": "1838年貝塞爾首次成功測量天鵝座61恆星視差證實恆星距離案。普魯士柯尼斯堡天文台台長弗里德里希·貝塞爾使用夫琅和費製造的精密九英寸量天儀（天體分劃測微儀），歷經數百個晴朗寒夜對天鵝座61雙星進行極限角距測量，成功測出僅0.31角秒的微小週年視差，計算出其距離地球達10.4光年（約一百萬億公里），人類歷史上首次精確用幾何三角測量確立深空恆星與太陽系的真實宇宙尺度。",
+      "hook": "如何用一張紙和一把尺，量出一顆遙遠恆星與地球之間一百萬億公里的真實深空距離？十九世紀天文學家如何在僅僅0.3角秒——相當於兩公里外一枚硬幣邊緣的極限微小角度中，徹底粉碎古代地心說的最後殘壘？",
+      "answer_target": "英國皇家天文學會月報與柯尼斯堡天文台日誌載明：地球繞日公轉軌道直徑作為三角基線引發視差位移，貝塞爾的精確測量不僅證實地球真實公轉運動，更將人類宇宙視野從太陽系推進至浩瀚無垠的銀河恆星深空。",
+      "scope": "1838年貝塞爾測量天鵝座61週年視差論文、柯尼斯堡天文台觀測日誌與天體測量學史料。",
+      "source_locator": "ZP2-S114: MNRAS Vol. 4, No. 17, pp. 152-161",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "人類的肉身雖被禁錮在地球的塵埃之上，但智慧的幾何三角卻能測量群星的呼吸；極限精度的探索，讓宇宙的深邃在理性面前顯露真容。",
+        "visual": "劇場級厚塗水粉：柯尼斯堡天文台圓頂天窗敞開，銀白雪夜下寒氣升騰，貝塞爾裹著厚重毛皮大衣，眼睛緊貼著精密的黃銅量天儀目鏡，手邊厚重手稿上記滿了密密麻麻的三角視差計算數字。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "U 外星與太空",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-7da949c8262943f7",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S114: MNRAS Vol. 4, No. 17, pp. 152-161",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "U",
+      "category": "U-外星太空與未知訊號",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7034"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7035",
+      "axis": "M",
+      "case_key": "case.1913_greenland_ice_sheet_koch_wegener_expedition_rescue",
+      "question": "1913年格陵蘭內陸冰蓋探險隊冰雪迷航救援案。丹麥探險家科赫與德國大陸漂移說提出者阿爾弗雷德·韋格納率隊徒步橫穿格陵蘭內陸無人冰蓋，在遭遇連續暴風雪、雪盲與冰裂隙吞沒雪橇的極端困境下，隊員靠殘存乾糧與狗拉雪橇頑強前行一千兩百公里，在瀕臨絕糧斷水邊緣由格陵蘭西海岸因紐特獵人與搜救帆船及時救助生還，帶回世界首批北極內陸冰蓋氣象與冰川構造一手珍貴鑽探數據。",
+      "hook": "零下四十度的格陵蘭白色地獄中，雪橇墜入萬丈冰隙、所有乾糧消耗殆盡；魏格納與探險隊員如何在茫茫無際的平坦冰原上絕地求生一千兩百公里？",
+      "answer_target": "丹麥格陵蘭考察委員會官方報告載明：探險隊首次運用風雪計量儀與冰芯溫度計建立冰蓋反照率熱平衡模型，西海岸及時發現煙霧信號派遣皮划艇救援，成為極地冰川學考察的不朽史詩。",
+      "scope": "1913-1914年格陵蘭考察報告、丹麥極地研究所探險檔案與早期冰川氣象文獻。",
+      "source_locator": "ZP2-S115: MoG Bd. 75, pp. 1-180",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "科學考察的每一步都是向生命極限發起的勇敢衝鋒；在冰雪荒原的生死考驗中，堅毅求真的信念比任何風暴都更加炙熱。",
+        "visual": "劇場級厚塗水粉：白茫茫一片的暴風雪極地冰原上，兩隻精疲力竭的雪橇犬拖著受損木雪橇，幾位滿臉冰霜、身穿海豹皮的探險家在狂風中互相攙扶，遠處冰原天際線隱約升起救援帆船的信號篝火。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "M 奇異現象與科學",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-73e3c5f4fd5dbbe7",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S115: MoG Bd. 75, pp. 1-180",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "M",
+      "category": "M-奇異現象與自然",
+      "selected": false,
+      "pool_status": "held",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7035"
+      ],
+      "disposition": null,
+      "exclusion_reason": "1913年格陵蘭內陸冰蓋探險隊冰雪迷航救援案 歷史文獻完備，保留作為後續專題策劃儲備，判定暫緩（hold）。",
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7036",
+      "axis": "S",
+      "case_key": "case.1826_nicephore_niepce_view_from_the_window_at_le_gras_first_photograph",
+      "question": "1826年涅普斯在勒格哈拍攝世界上第一張現存永久照片《窗外風景》案。法國發明家約瑟夫·尼塞福爾·涅普斯在勃艮第鄉村莊園的工作室窗前，將塗有猶太瀝青感光薄膜的白鑞金屬板置於暗箱相機中，經過長達八小時的漫長曝光與薰衣草油清洗顯影，成功將莊園鴿舍、屋頂與天空的光影永久固定在金屬板上，創造了人類歷史上第一張歷經兩百年依然清晰可辨的原作實物照片。",
+      "hook": "在沒有化學膠卷的1826年，一塊塗著黑色瀝青的普通白鑞金屬板，對著窗外的屋頂曬了整整八個小時太陽，為何能奇蹟般將日光投射下的陰影凝固成人類歷史第一張真正的照片？",
+      "answer_target": "倫敦皇家學會遺留檔案與德州大學奧斯汀分校哈里·蘭瑟姆中心科學檢測載明：猶太瀝青在日光紫外線照射下發生光交聯硬化反應，未受光區域被溶劑溶解洗除露出白鑞基底，實現世界首創日光蝕刻攝影法（Heliography）。",
+      "scope": "1826-1827年涅普斯日光蝕刻法信件原稿、皇家學會存檔備忘錄與世界第一張照片文保分析報告。",
+      "source_locator": "ZP2-S116: MS Letters Niépce-Bauer, pp. 1-18",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "光影原本只是轉瞬即逝的自然幻象，但在好奇與耐心的淬鍊下，化學反應讓流逝的時光擁有了永恆的實體。",
+        "visual": "劇場級厚塗水粉：法國鄉村莊園石頭窗台前，巨大的木質暗箱鏡頭正對著陽光斑駁的鴿舍磚牆，涅普斯戴著眼鏡小心翼翼用鑷子將浸泡在薰衣草油瓷盤中的灰白金屬板夾起，屋頂輪廓在油液中緩緩顯現。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-f1b62b251d818c44",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S116: MS Letters Niépce-Bauer, pp. 1-18",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7036"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7037",
+      "axis": "M",
+      "case_key": "case.1849_hippolyte_fizeau_toothed_wheel_speed_of_light_measurement",
+      "question": "1849年斐索旋轉齒輪法地面測量光速物理實驗公案。法國物理學家阿曼德·斐索在巴黎蘇雷訥的家中與蒙馬特爾高地之間搭建長達8.6公里的光學光路，利用高速旋轉的720齒金屬齒輪精巧切割光束，當齒輪轉速達到每秒12.6轉時，光束往返17.2公里所耗費的時間恰好等於一個齒輪轉過半個齒隙的間隔導致反射光完全被擋住，人類歷史上首次無需天文觀測、純粹在地球陸地上以宏觀機械實驗精確測出光速為每秒31.3萬公里。",
+      "hook": "光速高達每秒三十萬公里，快到足以在眨眼間繞地球七圈半；十九世紀科學家如何僅靠一個發條帶動的高速旋轉齒輪和一面八公里外的鏡子，在地面上徒手捉住奔跑的光線？",
+      "answer_target": "法蘭西科學院院刊（CRAS）1849年公報載明：齒輪齒寬、轉速與光程的嚴密數學比例關係徹底擺脫了木衛一蝕食等天文擾動誤差，將光速測量從定性推向高精度定量實驗時代，直接為電磁場理論提供實驗支撐。",
+      "scope": "1849年斐索地面光速測量法蘭西科學院論文、巴黎光學實驗裝置與早期近代光速實驗史料。",
+      "source_locator": "ZP2-S117: CRAS Tome 29, pp. 90-92",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "人類智慧的最壯麗之處，在於能用最質樸的機械幾何尺度，捕捉並丈量宇宙中最極致的飛馳極限。",
+        "visual": "劇場級厚塗水粉：巴黎郊外夜幕降臨，工作室內煤氣燈的光束穿過飛速旋轉發出蜂鳴聲的金屬鋸齒輪射向八公里外漆黑夜空，蒙馬特爾高地反射回來的微弱星點在半透鏡目鏡中隨轉速由明轉暗，精妙絕倫。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "M 奇異現象與科學",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-a06dca7e1dee72db",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S117: CRAS Tome 29, pp. 90-92",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "M",
+      "category": "M-奇異現象與自然",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7037"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7038",
+      "axis": "S",
+      "case_key": "case.1904_william_gorgas_panama_canal_mosquito_control_yellow_fever_eradication",
+      "question": "1904年巴拿馬運河區戈加斯推行滅蚊防瘧疾與黃熱病工程醫學奇蹟案。在法國開鑿巴拿馬運河因黃熱病與瘧疾奪走兩萬餘名勞工性命慘遭潰敗後，美軍首席醫官威廉·戈加斯力排眾議，依據芬萊與里德的蚊媒傳播理論，在五百平方英里熱帶雨林運河帶全面推行水管瀝青覆蓋、死水噴灑煤油、居室金屬紗窗與化學燻蒸等鐵腕滅蚊措施，在兩年內奇蹟般將黃熱病新增病例徹底清零，直接保障了巴拿馬運河工程的最終勝利竣工。",
+      "hook": "二十年吞噬兩萬兩千條鮮活生命的熱帶雨林死神黃熱病，曾讓強大的法國工程兵團全軍覆沒；一位美軍軍醫如何靠幾萬桶煤油、細密金屬紗窗與徹底消滅蚊蟲幼蟲，創造出世界公衛史上的奇蹟？",
+      "answer_target": "美國陸軍醫療部年報與巴拿馬運河委員會檔案載明：戈加斯團隊徹底根除了埃及伊蚊在城鎮容器中孳生的環境，至1906年巴拿馬運河帶黃熱病絕跡，瘧疾發病率下降95%，樹立現代熱帶流行病學防控典範。",
+      "scope": "1904-1906年巴拿馬運河區公衛消毒與滅蚊工程檔案、美軍陸軍醫務部報告與黃熱病防疫史料。",
+      "source_locator": "ZP2-S118: Annual Report pp. 1-48",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "最偉大的工程勝利往往不是由鋼筋混凝土鑄就，而是由守護生命的醫學智慧鋪平道路；消滅隱形死神的戰鬥，拯救了無數普通勞動者的未來。",
+        "visual": "劇場級厚塗水粉：熱帶暴雨後的巴拿馬叢林運河工地，蒸汽挖掘機旁的水坑泛著油光，全副武裝的衛生巡邏隊身背金屬噴油罐向水塘細密噴灑煤油，木質營房門窗均安裝著緊實平整的防蚊銅紗網。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-97313ed22d828044",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S118: Annual Report pp. 1-48",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7038"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7039",
+      "axis": "M",
+      "case_key": "case.1910_thomas_hunt_morgan_fly_room_white_eyed_drosophila_sex_linkage",
+      "question": "1910年摩爾根在哥倫比亞大學「蒼蠅室」發現白眼果蠅與性連鎖遺傳公案。在哥倫比亞大學施默霍恩樓狹小昏暗的實驗室中，托馬斯·亨特·摩爾根在數以百萬計的紅眼黑腹果蠅培養奶瓶中，偶然篩選出一隻罕見的雄性白眼突變果蠅；經交配繁育實驗發現白眼性狀僅出現在雄性後代中，人類歷史上首次將抽象的遺傳因子與具體的X染色體精確錨定，證實染色體遺傳學說並繪製出世界第一張基因連鎖圖譜。",
+      "hook": "在堆滿發酵香蕉皮與幾千個牛奶玻璃瓶的雜亂房間裡，一隻偶然誕生的小小『白眼』果蠅，如何徹底打碎了古典生物學的猜測，直接揭開決定生命遺傳密碼的染色體基因圖譜？",
+      "answer_target": "科學雜誌（Science）1910年原創論文《果蠅的性連鎖遺傳》載明：白眼隱性突變基因位於X染色體上且Y染色體無對應等位基因，摩爾根與其弟子斯特蒂文特隨後創立現代細胞遺傳學，榮獲1933年諾貝爾生理學或醫學獎。",
+      "scope": "1910年摩爾根果蠅突變論文、哥倫比亞大學動物學系果蠅室檔案與早期遺傳學文獻。",
+      "source_locator": "ZP2-S119: Science Vol. 32, No. 812, pp. 120-122",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "真理常常隱藏在最不起眼的微小生命之中；對一隻小蟲複眼顏色的執著追尋，為人類打開了通往生命遺傳本質的宏偉殿堂。",
+        "visual": "劇場級厚塗水粉：哥倫比亞大學堆滿牛奶瓶的蒼蠅室長桌前，摩爾根教授手持細毛筆在雙目顯微鏡下輕輕撥動一隻沉睡在乙醚麻醉板上的小果蠅，紅色與白色複眼在燈下對比鮮明。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "M 奇異現象與科學",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-3abea00671d22b1a",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S119: Science Vol. 32, No. 812, pp. 120-122",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "M",
+      "category": "M-奇異現象與自然",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7039"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N7040",
+      "axis": "S",
+      "case_key": "case.1845_portland_vase_vandalism_william_lloyd_british_museum_restoration",
+      "question": "1845年波特蘭花瓶在大英博物館遭威廉·勞埃德醉酒蓄意砸碎與文保修復案。古羅馬西元一世紀極致寶石玻璃浮雕傑作波特蘭花瓶在博物館遭一名醉酒年輕人蓄意用玄武岩石塊砸碎為數百塊碎片，法庭因當時法律漏洞僅能以毀壞展櫃玻璃判處三英鎊罰款引發輿論公憤促成英國文物保護法立法；修復師約翰·道布爾戴歷時數月用特製動物膠與精巧金屬支撐以驚人技藝將碎瓷拼合復原，開創近代博物館文物修復與法醫式文物保護學先河。",
+      "hook": "兩千年歷史的古羅馬國寶級浮雕玻璃花瓶，在眾目睽睽之下被暴徒一石砸成兩百多枚碎屑！百年前的法官為何對砸碎國寶無計可施？修復大師又如何用最原始的巧手完成奇蹟般的『破鏡重圓』？",
+      "answer_target": "倫敦大都會警察檔案與大英博物館受託人會議記錄載明：此案直接推動英國議會通過1845年《惡意破壞藝術品法》（Malicious Injuries to Works of Art Act），修復師道布爾戴的無痕黏接奠定世界文保科技基準。",
+      "scope": "1845年波特蘭花瓶毀損案法庭審判記錄、大英博物館文物修復檔案與英國早期文物保護立法史料。",
+      "source_locator": "ZP2-S120: The Times Archive Issue 18842, p. 7",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "破壞也許只需要衝動的一秒，但守護與修復文明的瑰寶卻需要代代相傳的耐心與匠心；在傷痕累累的復原裂紋中，文明的韌性歷久彌新。",
+        "visual": "劇場級厚塗水粉：大英博物館修復室內，柔和的北向天光照亮鋪著深綠色天鵝絨的工作台，修復師道布爾戴手握極細鑷子與特製天然骨膠，聚精會神將一片刻有古羅馬神祇浮雕的深藍色玻璃殘片拼接回瓶身。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave69-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-370929565b73ed9a",
+          "origin": "wave69-20261116",
+          "locator": "ZP2-S120: The Times Archive Issue 18842, p. 7",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave69-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N7040"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "P01",
       "origin": "legacy",
       "axis": "P",
@@ -193276,7 +194360,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 2187
+    "count": 2207
   },
   "dedup": {
     "aliases": {
@@ -195356,6 +196440,26 @@
       "N7018": "N7018",
       "N7019": "N7019",
       "N7020": "N7020",
+      "N7021": "N7021",
+      "N7022": "N7022",
+      "N7023": "N7023",
+      "N7024": "N7024",
+      "N7025": "N7025",
+      "N7026": "N7026",
+      "N7027": "N7027",
+      "N7028": "N7028",
+      "N7029": "N7029",
+      "N7030": "N7030",
+      "N7031": "N7031",
+      "N7032": "N7032",
+      "N7033": "N7033",
+      "N7034": "N7034",
+      "N7035": "N7035",
+      "N7036": "N7036",
+      "N7037": "N7037",
+      "N7038": "N7038",
+      "N7039": "N7039",
+      "N7040": "N7040",
       "N681": "N681",
       "N682": "N682",
       "N683": "N683",
@@ -201618,10 +202722,10 @@
     "method": "exact normalized questions + authored core-answer merges + lexical candidate pairs (title, finding, case key) reviewed by an editor; cross-series lexical pairs against the so-thats-why pool; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-16-curio-pool-1788",
+    "revision": "2026-11-16-curio-pool-1805",
     "reviewed_on": "2026-11-16",
-    "reason": "第六十八波 20 提案經三位獨立覆核代理（V238–V240）核實，17 題採納、3 題暫緩；入選核心數提升至 1788。",
-    "target_count": 1788,
+    "reason": "第六十九波 20 提案經三位獨立覆核代理（V241–V243）核實，17 題採納、3 題暫緩；入選核心數提升至 1805。",
+    "target_count": 1805,
     "ids": [
       "F01",
       "F02",
@@ -203410,7 +204514,24 @@
       "N7017",
       "N7018",
       "N7019",
-      "N7020"
+      "N7020",
+      "N7021",
+      "N7022",
+      "N7023",
+      "N7024",
+      "N7026",
+      "N7027",
+      "N7028",
+      "N7029",
+      "N7031",
+      "N7032",
+      "N7033",
+      "N7034",
+      "N7036",
+      "N7037",
+      "N7038",
+      "N7039",
+      "N7040"
     ],
     "held": [
       {
@@ -203704,6 +204825,18 @@
       {
         "id": "N7015",
         "reason": "1925年美國田納西州斯科普斯「猴子審判」進化論教學公案 歷史檔案完整，列為特定主題儲備，判定暫緩（hold）。"
+      },
+      {
+        "id": "N7025",
+        "reason": "1888年開曼群島大颶風氣象觀測與加勒比海海難救助歷史檔案案 歷史文獻完備，保留作為後續專題策劃儲備，判定暫緩（hold）。"
+      },
+      {
+        "id": "N7030",
+        "reason": "1899年舊金山鼠疫恐慌與唐人街封鎖檢疫爭議法案案 歷史文獻完備，保留作為後續專題策劃儲備，判定暫緩（hold）。"
+      },
+      {
+        "id": "N7035",
+        "reason": "1913年格陵蘭內陸冰蓋探險隊冰雪迷航救援案 歷史文獻完備，保留作為後續專題策劃儲備，判定暫緩（hold）。"
       }
     ],
     "raw_changes": [

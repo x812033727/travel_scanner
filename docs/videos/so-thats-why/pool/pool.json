@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-16-pool-6037",
+  "revision": "2026-11-16-pool-6093",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,10 +12,10 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 6426,
-    "canonical_questions": 6266,
-    "eligible_candidates": 6096,
-    "selected_candidates": 6037,
+    "raw_records": 6482,
+    "canonical_questions": 6322,
+    "eligible_candidates": 6152,
+    "selected_candidates": 6093,
     "alias_records": 160,
     "historical_records": 313,
     "source_urls": 7317,
@@ -26,20 +26,20 @@
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1382,
-        "selected": 1374
+        "canonical": 1410,
+        "selected": 1402
       },
       "生物動物與植物": {
-        "canonical": 1453,
-        "selected": 1442
+        "canonical": 1467,
+        "selected": 1456
       },
       "地球天氣與太空": {
         "canonical": 921,
         "selected": 918
       },
       "數位科技與通訊工程": {
-        "canonical": 1000,
-        "selected": 947
+        "canonical": 1014,
+        "selected": 961
       },
       "飲食與廚房科學": {
         "canonical": 419,
@@ -58,7 +58,7 @@
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "8203e6356e57c04a8926d4db9aa6444b1a8cd16638e2e663a464c33af2f421cf"
+      "sha256": "fd87aaa075a7b49af3644d49971c0480d3d7703a022000b58478c06a7d7d2a1b"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -843,6 +843,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-16-5981.json.gz",
       "sha256": "c968603e5b94fe271e805783c0dbadb2c93483d166fabc78a91a8f568fda8d81"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-6037.json",
+      "sha256": "3e71af2881b32bae801e7f0f96d97576b92b6eda5fe3c00f0d877021a6e9a231"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-16-6037.json.gz",
+      "sha256": "a0406c41d6157e472821d9b5f681a7f4e87d98b1418c30c003bf120590865056"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1743,6 +1751,22 @@
     {
       "file": "docs/videos/so-thats-why/pool/batches/wave10-source-refresh.json",
       "sha256": "78d3dbebc0d224726701fa77c207ff239426c933b97ec87a41e019977a7e4b24"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave100-bio.json",
+      "sha256": "336c97f2f9a6c738012498fe03aca0b39e9f25162de5a9bd84abbd27819b4a69"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave100-mat.json",
+      "sha256": "c8d096deaa04042420f010764fc2aa3f415786fc0881818603c47e747c3a5d72"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave100-physics.json",
+      "sha256": "894dc52fc194736aa16ef941213aabb0ba42c487d72be9b9b29ffc822aab1051"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave100-tech.json",
+      "sha256": "88756b8e81ac5c5d45f1fe75c0edbdf24fcc3bfda97ada173ccd5f8b5f6b74ce"
     },
     {
       "file": "docs/videos/so-thats-why/pool/batches/wave11-landforms.json",
@@ -3058,7 +3082,7 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "2594fe3eb8ef9cdd6e8d3939401116bf5e93ae9b88d979c313e945723f1261be"
+      "sha256": "f604f4757fbae7006759a71fde5530d37faadf7ce88e580d3ba57dc19e4ec6ec"
     }
   ],
   "sources": {
@@ -65418,6 +65442,2414 @@
       "question_variants": [],
       "provenance_ids": [
         "S10013"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-001",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "當水熊蟲在數分鐘內失去體內99%的水分時，為什麼其細胞膜與細胞器不會在極限脫水引發的高滲透壓下擠壓皺縮碎裂？",
+      "mechanism_key": "tardigrade.anhydrobiosis_osmotic_collapse_membrane_protection",
+      "answer_target": "水熊蟲特異性內源性無序蛋白（TDPs）在脫水過程中迅速形成網狀無定形基質，支撐細胞骨架並阻斷磷脂雙分子層相變崩塌。",
+      "scope": "生物動物與植物微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "當水熊蟲在數分鐘內失去體內99%的水分時，為什麼其細胞膜與細：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S001: Section 1.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-4c7324f1611f7e34",
+          "origin": "wave100-bio-20261116",
+          "locator": "K100-S001: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-002",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "生物體脫水時蛋白質通常會因疏水基團暴露而發生不可逆團聚沉澱，為什麼水熊蟲體內的水熊蟲特異無序蛋白（TDP）反而能保持保護性活性？",
+      "mechanism_key": "tardigrade.tdp_intrinsically_disordered_anti_aggregation_matrix",
+      "answer_target": "TDP具有極高的序列柔性且富含甘氨酸與親水殘基，脫水時自組裝形成均勻的胞內凝膠相，空間位阻隔絕周圍易變性蛋白質的聚集碰撞。",
+      "scope": "生物動物與植物微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "生物體脫水時蛋白質通常會因疏水基團暴露而發生不可逆團聚沉澱，：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S002: Section 1.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-b440255df64944fe",
+          "origin": "wave100-bio-20261116",
+          "locator": "K100-S002: Section 1.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-003",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "水熊蟲在進入被稱為『小桶狀態』（Tun）的隱生階段時，其體內的整體代謝率究竟降低到了常規活體生命的多少比例？",
+      "mechanism_key": "tardigrade.tun_state_metabolic_arrest_calorimetric_detection",
+      "answer_target": "高靈敏度等溫微量熱法測定顯示，進入Tun狀態後其呼吸消耗與化學代謝徹底停滯，低於常規生理檢測極限的0.01%，進入完全生物停滯狀態。",
+      "scope": "生物動物與植物微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水熊蟲在進入被稱為『小桶狀態』（Tun）的隱生階段時，其體內：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S003: Section 1.3; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-a3d6c4164b7d5aa3",
+          "origin": "wave100-bio-20261116",
+          "locator": "K100-S003: Section 1.3; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-004",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "在完全乾燥的Tun狀態下，水熊蟲如何在長達數年甚至十數年的時間裡維持DNA雙螺旋不被環境自由基與熱運動切斷？",
+      "mechanism_key": "tardigrade.dsup_dna_damage_suppressor_chromatin_shielding",
+      "answer_target": "水熊蟲獨特之DNA損傷抑制蛋白（Dsup）能物理包裹在染色質外側，充當吸附自由基的分子盾牌，使DNA雙鏈斷裂率下降80%以上。",
+      "scope": "生物動物與植物微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在完全乾燥的Tun狀態下，水熊蟲如何在長達數年甚至十數年的時：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S004: Section 1.4; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-a3c1a2e9c4845855",
+          "origin": "wave100-bio-20261116",
+          "locator": "K100-S004: Section 1.4; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-005",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "當極限乾燥的水熊蟲遭遇攝氏零下200度液氮甚至零下270度深空超低溫時，為什麼細胞內殘餘微量水分不會結成致命冰晶刺破細胞？",
+      "mechanism_key": "tardigrade.cytoplasmic_vitrification_ice_crystallization_inhibition",
+      "answer_target": "TDP凝膠基質將胞內微量自由水完全轉變為固態無定形玻璃態，徹底抑制了具有尖銳晶格結構的六角冰晶生長。",
+      "scope": "生物動物與植物微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "當極限乾燥的水熊蟲遭遇攝氏零下200度液氮甚至零下270度深：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S005: Section 2.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-a47775b44df1e0fd",
+          "origin": "wave100-bio-20261116",
+          "locator": "K100-S005: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-006",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "水熊蟲如何在缺乏大氣臭氧層保護的太空高真空暴露實驗中，承受超過人體致死劑量一千倍的強烈宇宙射線照射而不死亡？",
+      "mechanism_key": "tardigrade.cosmic_radiation_resistance_rad_dna_repair_orchestration",
+      "answer_target": "強效抗氧化系統與Dsup分子護盾顯著減少初始電離損傷，且復水後細胞內高拷貝DNA修復酶迅速啟動同源重組修復斷裂鏈。",
+      "scope": "生物動物與植物微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水熊蟲如何在缺乏大氣臭氧層保護的太空高真空暴露實驗中，承受超：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S006: Section 2.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-1da2dd155539fc69",
+          "origin": "wave100-bio-20261116",
+          "locator": "K100-S006: Section 2.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-007",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "某些水熊蟲物種體內海藻糖含量極低甚至檢測不到，為什麼它們依然能在完全乾燥條件下實現頑強的無水隱生？",
+      "mechanism_key": "tardigrade.cahs_protein_glass_formation_trehalose_independent",
+      "answer_target": "細胞質豐富熱溶蛋白（CAHS）具備直接形成生物玻璃（Bioglass）的能力，證實其玻璃化抗逆機制可完全獨立於海藻糖存在。",
+      "scope": "生物動物與植物微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "某些水熊蟲物種體內海藻糖含量極低甚至檢測不到，為什麼它們依然：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S007: Section 2.3; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-69da0bf5c3ef3a07",
+          "origin": "wave100-bio-20261116",
+          "locator": "K100-S007: Section 2.3; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-008",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "在極限高壓環境（如深海600兆帕，相當於六千個標準大氣壓）下，水熊蟲為何能承受足以壓壞常規生物蛋白質立體結構的重壓？",
+      "mechanism_key": "tardigrade.piezoresistance_turgor_hydration_shell_stability",
+      "answer_target": "Tun狀態下的無水固態玻璃基質具有極高的體積彈性模量，缺乏自由水流動擠壓，使大分子構象免受各向異性剪切應力破壞。",
+      "scope": "生物動物與植物微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在極限高壓環境（如深海600兆帕，相當於六千個標準大氣壓）下：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S008: Section 2.4; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-4488161cc7613db4",
+          "origin": "wave100-bio-20261116",
+          "locator": "K100-S008: Section 2.4; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-009",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "當乾燥數年的水熊蟲重新接觸到一滴液態純水時，其細胞膜如何在幾十分鐘內迅速重構流動性而不發生低滲膨脹破裂？",
+      "mechanism_key": "tardigrade.rehydration_kinetics_aquaporin_vesicle_bilayer_recovery",
+      "answer_target": "特殊水通道蛋白（Aquaporins）精準調節吸水通量，原先固化的TDP玻璃網格有序水化溶解，使脂質雙分子層平滑過渡回流動液晶相。",
+      "scope": "生物動物與植物微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "當乾燥數年的水熊蟲重新接觸到一滴液態純水時，其細胞膜如何在幾：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S009: Section 3.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-143d18bacc273271",
+          "origin": "wave100-bio-20261116",
+          "locator": "K100-S009: Section 3.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-010",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "水熊蟲在缺氧水域中會進入另一種被稱為『窒息隱生』（Anoxybiosis）的膨脹狀態，這與乾燥Tun狀態有何本質生化區別？",
+      "mechanism_key": "tardigrade.anoxybiosis_vs_anhydrobiosis_glycolytic_arrest",
+      "answer_target": "窒息隱生是吸水膨脹癱瘓狀態，滲透調節暫時失效但仍含大量水，與無水隱生的胞內緻密玻璃化完全處於不同生理維度。",
+      "scope": "生物動物與植物微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水熊蟲在缺氧水域中會進入另一種被稱為『窒息隱生』（Anoxy：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S010: Section 3.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-9db93c3e7067c444",
+          "origin": "wave100-bio-20261116",
+          "locator": "K100-S010: Section 3.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-011",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "水熊蟲特異無序蛋白（TDP）如果在人體細胞或熱敏感疫苗中異源表達，是否能夠賦予常規生物製品常溫脫水耐受能力？",
+      "mechanism_key": "tardigrade.synthetic_biology_tdp_lyophilization_stabilization",
+      "answer_target": "實驗證實TDP能在常溫凍乾條件下穩定包封蛋白質藥物與RNA分子，免除超低溫冷鏈運輸限制，展示巨大仿生醫療應用潛力。",
+      "scope": "生物動物與植物微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水熊蟲特異無序蛋白（TDP）如果在人體細胞或熱敏感疫苗中異源：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S011: Section 3.3; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-84a32c6f5ca2967f",
+          "origin": "wave100-bio-20261116",
+          "locator": "K100-S011: Section 3.3; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-012",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "水熊蟲在經受沸水（攝氏100度）短暫煮沸後，為什麼部分個體依然能復原存活？其蛋白質高溫變性閾值如何被大幅提升？",
+      "mechanism_key": "tardigrade.thermal_stability_glass_transition_temperature_shift",
+      "answer_target": "處於完全無水Tun狀態時，其胞內生物玻璃的玻璃化轉變溫度（Tg）大幅升高，分子熱運動被剛性基質深度凍結抑制。",
+      "scope": "生物動物與植物微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水熊蟲在經受沸水（攝氏100度）短暫煮沸後，為什麼部分個體依：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S012: Section 3.4; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-6cb7900352dc9e57",
+          "origin": "wave100-bio-20261116",
+          "locator": "K100-S012: Section 3.4; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-013",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "水熊蟲體內的抗氧化酶（如超氧化物歧化酶SOD與過氧化氫酶）在脫水乾旱過程中如何避免氧化交聯失活？",
+      "mechanism_key": "tardigrade.antioxidant_chaperone_protection_glutathione_redox",
+      "answer_target": "穀胱甘肽與抗氧化伴侶分子在脫水早期形成緻密還原微環境，保護核心代謝酶的催化活性半胱氨酸殘基免遭不可逆氧化。",
+      "scope": "生物動物與植物微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水熊蟲體內的抗氧化酶（如超氧化物歧化酶SOD與過氧化氫酶）在：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S013: Section 4.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-57a52a3801a2ff58",
+          "origin": "wave100-bio-20261116",
+          "locator": "K100-S013: Section 4.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-013"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-014",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "全基因組測序顯示水熊蟲基因組中是否存在大量來自細菌的外源橫向轉移基因（HGT）來協助其抵抗極端環境？",
+      "mechanism_key": "tardigrade.horizontal_gene_transfer_genome_sequencing_debunk",
+      "answer_target": "最新高覆蓋度無污染測序證實外源基因比例在正常真核生物範圍（約1-2%），其極致抗逆能力主要源自本土基因家族的特異性倍增與進化演變。",
+      "scope": "生物動物與植物微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "全基因組測序顯示水熊蟲基因組中是否存在大量來自細菌的外源橫向：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S014: Section 4.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-96e223d1482213be",
+          "origin": "wave100-bio-20261116",
+          "locator": "K100-S014: Section 4.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-014"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-015",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "常規金屬受外力彎曲變形後只能永久變形，為什麼鎳鈦記憶合金彎曲變形後一經加熱就能奇蹟般自動彈回最初形狀？",
+      "mechanism_key": "nitinol.shape_memory_effect_austenite_martensite_twin_boundary",
+      "answer_target": "外力誘導低溫孿晶馬氏體（B19'）發生去孿晶定向翻轉，加熱至相變點以上時逆轉為高度對稱的高溫母相奧氏體（B2立方結構）。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "常規金屬受外力彎曲變形後只能永久變形，為什麼鎳鈦記憶合金彎曲：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S015: Section 1.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-bdf33085587414e6",
+          "origin": "wave100-mat-20261116",
+          "locator": "K100-S015: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-015"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-016",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "在室溫下具有超彈性的鎳鈦合金可以拉伸伸長8%依然毫無塑性殘餘，其彈性變形量為何能達到普通彈簧鋼的二十倍以上？",
+      "mechanism_key": "nitinol.superelasticity_stress_induced_martensitic_transformation",
+      "answer_target": "外應力直接誘導奧氏體自發轉變為應力誘導馬氏體（SIM），應力卸除後馬氏體熱力學失穩自發彈回奧氏體，宏觀表現為巨大無損超彈性滯後環。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在室溫下具有超彈性的鎳鈦合金可以拉伸伸長8%依然毫無塑性殘餘：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S016: Section 1.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-506793b2fd9ca8ff",
+          "origin": "wave100-mat-20261116",
+          "locator": "K100-S016: Section 1.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-016"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-017",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "為什麼鎳鈦合金在相變過程中不會產生常規鋼鐵淬火時破壞晶格完整性的不可逆晶界位錯滑移？",
+      "mechanism_key": "nitinol.thermoelastic_martensite_low_transformation_strain_shear",
+      "answer_target": "熱彈性馬氏體相變具備極小的晶格畸變與極低的相界運動阻力，晶格原子僅發生極小位移（無擴散切變），界面移動完全可逆。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "為什麼鎳鈦合金在相變過程中不會產生常規鋼鐵淬火時破壞晶格完整：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S017: Section 1.3; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc7e877a0c3eb4eb",
+          "origin": "wave100-mat-20261116",
+          "locator": "K100-S017: Section 1.3; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-017"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-018",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "形狀記憶聚合物（SMP）與金屬記憶合金相比，其微觀大分子交聯網狀『固定結構』與熱響應『可逆鏈段』是如何協同實現高達數百百分比的巨大形變回復的？",
+      "mechanism_key": "smp.shape_memory_polymer_crosslinked_network_reversible_phase_transition",
+      "answer_target": "形狀記憶聚合物利用化學共價交聯網絡鎖定永久初始形狀，以玻璃化轉變溫度為刺激開關，外力下拉伸分子鏈並冷卻凍結次級鍵，再加熱時構象熵自發增大驅動分子鏈全面回縮。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "形狀記憶聚合物與金屬記憶合金相比：大分子交聯網絡揭開了聚合物巨大形變記憶的分子力學奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S018: Section 1.4; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-ed858843dc24e4c3",
+          "origin": "wave100-mat-20261116",
+          "locator": "K100-S018: Section 1.4; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-018"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-019",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "在醫療心臟支架置入動脈時，鎳鈦合金是如何利用人體37度體溫完成自膨脹支撐並維持恆定向外彈性張力的？",
+      "mechanism_key": "nitinol.cardiovascular_stent_self_expansion_plateau_stress",
+      "answer_target": "支架經深冷壓縮裝入導管，送入動脈後體溫觸發相變進入超彈性應力平台區，以溫和恆定的力學支撐血管壁避免內膜增生損傷。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在醫療心臟支架置入動脈時，鎳鈦合金是如何利用人體37度體溫完：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S019: Section 2.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-d426c0bb0bbe7c40",
+          "origin": "wave100-mat-20261116",
+          "locator": "K100-S019: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-019"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-020",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "形狀記憶合金經過數百萬次反覆彎曲與加熱冷卻循環後，為什麼會出現微小的『形狀記憶疲勞』與相變溫度漂移？",
+      "mechanism_key": "nitinol.functional_fatigue_dislocation_accumulation_residual_strain",
+      "answer_target": "反覆相變循環中殘留的微觀微位錯滑移會逐步沉積在相界周圍，鎖定部分局部應變形成不可恢復的幾何殘餘應變。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "形狀記憶合金經過數百萬次反覆彎曲與加熱冷卻循環後，為什麼會出：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S020: Section 2.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb87d597f2f3e048",
+          "origin": "wave100-mat-20261116",
+          "locator": "K100-S020: Section 2.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-020"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-021",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "在深空探測器太陽能電池板展開機構中，為什麼常採用形狀記憶合金作動器替代傳統爆破螺栓與伺服電機？",
+      "mechanism_key": "nitinol.aerospace_actuator_non_explosive_gentle_deployment",
+      "answer_target": "電熱驅動相變產生的形狀回復力巨大且無任何衝擊震動，無活動齒輪機械磨損，在太空超高真空低溫下極度安全可靠。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在深空探測器太陽能電池板展開機構中，為什麼常採用形狀記憶合金：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S021: Section 2.3; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-477b184609f5632f",
+          "origin": "wave100-mat-20261116",
+          "locator": "K100-S021: Section 2.3; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-021"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-022",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "微觀透射電鏡下觀察到的鎳鈦合金『自適應孿晶』（Self-accommodating twins）結構是如何消除相變宏觀形變的？",
+      "mechanism_key": "nitinol.self_accommodating_variants_herringbone_microstructure",
+      "answer_target": "冷卻時生成的二十四種馬氏體變體以『人字形』相互交錯排列，其剪切形變在宏觀上自相抵消，使材料外形完全不變。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "微觀透射電鏡下觀察到的鎳鈦合金『自適應孿晶』（Self-ac：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S022: Section 2.4; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-5941e6a4e5b19fae",
+          "origin": "wave100-mat-20261116",
+          "locator": "K100-S022: Section 2.4; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-022"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-023",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "經過特定熱機械訓練（Training）後的雙向形狀記憶合金，為什麼能夠在加熱變直、冷卻時又無需外力自發彎曲？",
+      "mechanism_key": "nitinol.two_way_shape_memory_effect_internal_stress_field",
+      "answer_target": "熱機械訓練在母相晶界周圍人為引入了定向排列的殘餘微觀內應力場，冷卻時該內應力優先導向特定方向馬氏體變體生長。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "經過特定熱機械訓練（Training）後的雙向形狀記憶合金，：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S023: Section 3.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-591a4e9ea685441f",
+          "origin": "wave100-mat-20261116",
+          "locator": "K100-S023: Section 3.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-023"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-024",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "鎳鈦諾合金在超彈性拉伸過程中為什麼會釋放出可測量的熱量，而在卸載回彈時又會自發吸收熱量變涼？",
+      "mechanism_key": "nitinol.elastocaloric_effect_solid_state_cooling_entropy_change",
+      "answer_target": "應力誘導馬氏體相變伴隨晶格對稱性降低引發顯著的熵變（吉布斯自由能釋放），構成了固態彈性熱製冷技術的熱力學核心。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鎳鈦諾合金在超彈性拉伸過程中為什麼會釋放出可測量的熱量，而在：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S024: Section 3.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-197338cae868a3ac",
+          "origin": "wave100-mat-20261116",
+          "locator": "K100-S024: Section 3.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-024"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-025",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "為什麼在牙齒正畸治療中，鎳鈦合金弓絲能夠在牙齒位移數毫米的漫長過程中對牙齒施加近乎恆定不變的柔和矯治力？",
+      "mechanism_key": "nitinol.orthodontic_archwire_superelastic_plateau_gentle_force",
+      "answer_target": "其超彈性應變-應力曲線存在長達數個百分比的水平平台，在較大變形範圍內保持應力恆定，避免傳統不銹鋼絲頻繁加力調校。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "為什麼在牙齒正畸治療中，鎳鈦合金弓絲能夠在牙齒位移數毫米的漫：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S025: Section 3.3; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-1653c4f63a39ba49",
+          "origin": "wave100-mat-20261116",
+          "locator": "K100-S025: Section 3.3; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-025"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-026",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "在鎳鈦合金中添加第三種元素（如鐵、銅或鈷）時，其相變中間過渡相『R相』（R-phase）是如何被激發出來的？",
+      "mechanism_key": "nitinol.r_phase_transformation_rhomboidal_intermediate_state",
+      "answer_target": "微量元素摻雜抑制了B19'相的低溫穩定性，使晶格先發生微小菱方畸變（R相），展現出超低滯後與超高相變重複響應速度。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在鎳鈦合金中添加第三種元素（如鐵、銅或鈷）時，其相變中間過渡：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S026: Section 3.4; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-d5a5b1c1e7f2f448",
+          "origin": "wave100-mat-20261116",
+          "locator": "K100-S026: Section 3.4; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-026"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-027",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "當形狀記憶合金被剛性夾具完全固定無法收縮時加熱，其內部所能爆發出的最大阻礙回復應力究竟能有多大？",
+      "mechanism_key": "nitinol.constrained_recovery_stress_actuation_density",
+      "answer_target": "完全受約束狀態下晶格相變回復力可高達600-800兆帕，單位體積做功能力遠超傳統液壓系統與電磁螺線管數倍以上。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "當形狀記憶合金被剛性夾具完全固定無法收縮時加熱，其內部所能爆：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S027: Section 4.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-78ebf15af0861e48",
+          "origin": "wave100-mat-20261116",
+          "locator": "K100-S027: Section 4.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-027"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-028",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "鎳鈦合金表面如果未經化學鈍化處理，鎳離子溶出是否會對人體組織造成過敏與毒性反應？其生物相容性如何保障？",
+      "mechanism_key": "nitinol.biocompatibility_surface_titanium_oxide_passivation",
+      "answer_target": "精密電化學拋光與熱氧化使表面自發生成緻密無孔的二氧化鈦（TiO2）鈍化膜，完全阻絕底層金屬鎳離子向周圍體液析出。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鎳鈦合金表面如果未經化學鈍化處理，鎳離子溶出是否會對人體組織：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S028: Section 4.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-47960093b3933112",
+          "origin": "wave100-mat-20261116",
+          "locator": "K100-S028: Section 4.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-028"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-029",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "在絕對無物質、無熱輻射且溫度為絕對零度的真空裡，兩塊完全不帶電荷的平整金屬板相距數十奈米時為何會自發相互吸引？",
+      "mechanism_key": "casimir.vacuum_fluctuation_conductive_plates_attractive_force",
+      "answer_target": "真空並非一無所有，兩塊導體板作為電磁邊界條件限制了板間可存在的虛光子駐波模式，導致板外光子輻射壓大於板內而產生淨吸引力。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在絕對無物質、無熱輻射且溫度為絕對零度的真空裡，兩塊完全不帶：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S029: Section 1.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-7bd241d9b4e23123",
+          "origin": "wave100-physics-20261116",
+          "locator": "K100-S029: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-029"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-030",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "量子電動力學（QED）中的零點能（Zero-point energy）公式中包含無窮大求和，卡西米爾是如何數學消除無窮大計算出有限吸引力的？",
+      "mechanism_key": "casimir.euler_maclaurin_zeta_regularization_finite_energy",
+      "answer_target": "利用歐拉-麥克勞林求和公式與黎曼Zeta函數正則化技術，將連續自由真空能量與離散板間能量求差相消，精確導出有限殘留能量差。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "量子電動力學（QED）中的零點能（Zero-point en：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S030: Section 1.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-6241a803ea490cb0",
+          "origin": "wave100-physics-20261116",
+          "locator": "K100-S030: Section 1.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-030"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-031",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "為什麼卡西米爾吸引力的大小會隨兩塊金屬板之間的間距d呈現四次方反比（1/d^4）的極其劇烈衰減規律？",
+      "mechanism_key": "casimir.fourth_power_scaling_renormalized_energy_derivative",
+      "answer_target": "單位面積板間能量與板距三次方成反比（-ħcπ²/720d³），對距離求負梯度導數後得到力，從而呈現四次方反比的超強近程依賴性。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "為什麼卡西米爾吸引力的大小會隨兩塊金屬板之間的間距d呈現四次：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S031: Section 1.3; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-a6e4390fac3eb84d",
+          "origin": "wave100-physics-20261116",
+          "locator": "K100-S031: Section 1.3; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-031"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-032",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "在微機電系統（MEMS）中，當微型懸臂樑與基底間距小於100奈米時，為什麼工程師必須極力防止卡西米爾力導致的『靜摩擦粘連』（Stiction）？",
+      "mechanism_key": "casimir.mems_nanocantilever_stiction_permanent_collapse",
+      "answer_target": "在奈米尺度下卡西米爾吸引力強烈超過結構微弱機械彈性恢復力，導致微懸臂樑被牢牢吸附在底板上無法彈開而造成晶片報廢。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在微機電系統（MEMS）中，當微型懸臂樑與基底間距小於100：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S032: Section 1.4; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-4bdaba70d5ad3b12",
+          "origin": "wave100-physics-20261116",
+          "locator": "K100-S032: Section 1.4; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-032"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-033",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "如果將平行板之間的真空介質替換為特定折射率的透明液體，是否有可能反轉卡西米爾力使兩物體由吸引變為相互排斥？",
+      "mechanism_key": "casimir.repulsive_casimir_force_dielectric_liquid_permittivity_gradient",
+      "answer_target": "當介質介電常數滿足ε1 < ε介質 < ε2時，板間電磁模式能量密度反向逆轉，實驗證實可在金屬與二氧化矽球間產生穩定排斥懸浮力。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "如果將平行板之間的真空介質替換為特定折射率的透明液體，是否有：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S033: Section 2.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-3cf3f3525a58d792",
+          "origin": "wave100-physics-20261116",
+          "locator": "K100-S033: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-033"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-034",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "金屬並非理想導體，其內部自由電子存在等離子體共振頻率，真實金屬反射率極限對卡西米爾力的理論計算有何影響？",
+      "mechanism_key": "casimir.real_metal_finite_conductivity_drude_plasma_frequency",
+      "answer_target": "在高頻紫外線波段金屬變得透光，無法完全約束超短波長虛光子模式，必須引入特魯德-等離子體介電模型修正短程力的飽和偏差。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "金屬並非理想導體，其內部自由電子存在等離子體共振頻率，真實金：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S034: Section 2.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-f21ab8a5b47f2c31",
+          "origin": "wave100-physics-20261116",
+          "locator": "K100-S034: Section 2.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-034"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-035",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "真實物體表面始終存在微觀奈米粗糙度，這種起伏不平的峰谷結構如何改變局部卡西米爾力的空間分布？",
+      "mechanism_key": "casimir.surface_roughness_proximity_force_approximation_correction",
+      "answer_target": "凸起波峰處局部間距更近導致局部吸引力呈非線性暴增，需採用鄰近力近似（PFA）與多重散射理論對粗糙度微擾進行二階積分修正。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真實物體表面始終存在微觀奈米粗糙度，這種起伏不平的峰谷結構如：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S035: Section 2.3; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-50645760b2d6fd32",
+          "origin": "wave100-physics-20261116",
+          "locator": "K100-S035: Section 2.3; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-035"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-036",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "熱力學溫度大於絕對零度時，環境黑體輻射光子熱漲落是如何疊加在量子真空漲落之上影響大距離卡西米爾力的？",
+      "mechanism_key": "casimir.thermal_casimir_effect_matsubara_frequencies_crossover",
+      "answer_target": "在距離大於數微米時，松原頻率零階模式（熱光子漲落）占據主導地位，吸引力漸近衰減規律從1/d^4變為與溫度成正比的1/d^3。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "熱力學溫度大於絕對零度時，環境黑體輻射光子熱漲落是如何疊加在：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S036: Section 2.4; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-a1f9bbe89e10d450",
+          "origin": "wave100-physics-20261116",
+          "locator": "K100-S036: Section 2.4; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-036"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-037",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "在實驗室中測量皮牛頓（10^-12牛）級別的卡西米爾力時，原子力顯微鏡（AFM）是如何克服靜電殘留殘留電壓干擾的？",
+      "mechanism_key": "casimir.afm_spherical_lens_contact_potential_minimization",
+      "answer_target": "實驗通常改用微球對平面的幾何構型以避免平行度校準難題，並精確施加補償偏置電壓使表面接觸電位差完全抵消歸零。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在實驗室中測量皮牛頓（10^-12牛）級別的卡西米爾力時，原：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S037: Section 3.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-2c08ef33e598dd28",
+          "origin": "wave100-physics-20261116",
+          "locator": "K100-S037: Section 3.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-037"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-038",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "卡西米爾效應中兩板間的負能量密度（Negative energy density）概念，與廣義相對論中的蟲洞穩定性假說有何物理關聯？",
+      "mechanism_key": "casimir.negative_energy_density_weak_energy_condition_violation",
+      "answer_target": "板間真空能量密度在重正化後小於無邊界平坦真空（嚴格為負值），局部違反了弱能量條件，在理論物理上被用作支撐可穿越蟲洞的模型依據。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "卡西米爾效應中兩板間的負能量密度（Negative ener：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S038: Section 3.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-e8531dd2444da388",
+          "origin": "wave100-physics-20261116",
+          "locator": "K100-S038: Section 3.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-038"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-039",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "動態卡西米爾效應（Dynamical Casimir Effect）是如何利用以接近光速運動的反射鏡將虛光子直接轉變為真實可觀測光子的？",
+      "mechanism_key": "casimir.dynamical_casimir_effect_accelerating_mirror_real_photons",
+      "answer_target": "高速加速移動的電磁邊界使真空零點場波函數發生非絕熱解折疊，向外界輻射糾纏微波光子對，已在超導量子干涉儀（SQUID）電路中被實驗證實。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "動態卡西米爾效應（Dynamical Casimir Eff：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S039: Section 3.3; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-3c7c4d3631dcfc78",
+          "origin": "wave100-physics-20261116",
+          "locator": "K100-S039: Section 3.3; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-039"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-040",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "如果將平行導體板替換為具有三維奈米週期陣列結構的超材料光子晶體，是否能隨心所欲地人為剪裁卡西米爾力的大小與方向？",
+      "mechanism_key": "casimir.metamaterial_photonic_crystal_dispersion_engineering",
+      "answer_target": "超材料表面等離激元色散工程可選擇性壓制特定頻段模式密度，甚至引發橫向非接觸橫向剪切卡西米爾力與幾何轉矩。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "如果將平行導體板替換為具有三維奈米週期陣列結構的超材料光子晶：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S040: Section 3.4; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-ee762968cc7ff2a5",
+          "origin": "wave100-physics-20261116",
+          "locator": "K100-S040: Section 3.4; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-040"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-041",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "真空零點能既然客觀存在且能產生可測量的力，為什麼人類無法直接建造一台永動機從真空中無窮無盡地提取自由能？",
+      "mechanism_key": "casimir.vacuum_energy_conservation_no_free_work_thermodynamics",
+      "answer_target": "真空態是量子系統熱力學最低能量基態，將兩板分開必須外力做功注入能量，系統循環總淨功始終嚴格服從熱力學能量守恆定律。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真空零點能既然客觀存在且能產生可測量的力，為什麼人類無法直接：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S041: Section 4.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-6120ecd896bf075e",
+          "origin": "wave100-physics-20261116",
+          "locator": "K100-S041: Section 4.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-041"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-042",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "卡西米爾效應在宇宙學常數問題（Cosmological Constant Problem）中扮演了何種令理論物理學家極度困惑的尷尬角色？",
+      "mechanism_key": "casimir.cosmological_constant_problem_vacuum_energy_cutoff_discrepancy",
+      "answer_target": "若將卡西米爾效應證實的真空零點能按普朗克尺度積分，其產生的暗能量理論密度比天文觀測值高出120個數量級，成為現代物理最大未解疑案。",
+      "scope": "物理化學與日常材料微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "卡西米爾效應在宇宙學常數問題（Cosmological Co：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S042: Section 4.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-35c506353711f9bd",
+          "origin": "wave100-physics-20261116",
+          "locator": "K100-S042: Section 4.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-042"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-043",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "傳統微波銫原子鐘每三千萬年才誤差一秒，為什麼新一代光晶格鐘能將精度暴增數千倍、達到百億年誤差不到一秒的極限？",
+      "mechanism_key": "optical_clock.frequency_jump_optical_vs_microwave_transition",
+      "answer_target": "光學躍遷頻率（數百太赫茲）比微波頻率（九吉赫茲）高出五個數量級，相同線寬下品質因數Q值急劇提升，實現極限時間分辨率。",
+      "scope": "數位科技與通訊工程微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "傳統微波銫原子鐘每三千萬年才誤差一秒，為什麼新一代光晶格鐘能：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S043: Section 1.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-ac915eb04a266d17",
+          "origin": "wave100-tech-20261116",
+          "locator": "K100-S043: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-043"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-044",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "光學偶極阱的強烈雷射光場原本會對囚禁原子的能級產生致命的交流斯塔克微擾，物理學家是如何用『魔術波長』徹底消除這一頻移的？",
+      "mechanism_key": "optical_clock.magic_wavelength_ac_stark_shift_differential_cancellation",
+      "answer_target": "在特定雷射波長（如鍶原子的813.42奈米）下，時鐘躍遷的基態與激發態極化率恰好完全相等，差分交流斯塔克頻移被精準抵消歸零。",
+      "scope": "數位科技與通訊工程微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "光學偶極阱的強烈雷射光場原本會對囚禁原子的能級產生致命的交流：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S044: Section 1.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-cfbed401a9128645",
+          "origin": "wave100-tech-20261116",
+          "locator": "K100-S044: Section 1.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-044"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-045",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "在光學晶格中將成千上萬個鍶-87原子囚禁在微米級駐波『光蛋托』中，為什麼能徹底消除熱運動引發的多普勒頻移？",
+      "mechanism_key": "optical_clock.lamb_dicke_regime_recoil_free_optical_lattice_trap",
+      "answer_target": "晶格束縛頻率遠大於光子反衝能量，原子運動被限制在遠小於探測光波長的空間內（進入蘭姆-迪克極限），光子吸收完全無反衝無多普勒頻移。",
+      "scope": "數位科技與通訊工程微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在光學晶格中將成千上萬個鍶-87原子囚禁在微米級駐波『光蛋托：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S045: Section 1.3; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-957bda4dd776f30a",
+          "origin": "wave100-tech-20261116",
+          "locator": "K100-S045: Section 1.3; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-045"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-046",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "為什麼光晶格鐘必須選用費米子同位素（如鍶-87），而不是更常見的玻色子同位素？這與泡利不相容原理有何關聯？",
+      "mechanism_key": "optical_clock.fermionic_strontium_87_pauli_blocking_collision_shift",
+      "answer_target": "超冷費米子在同一空間軌道處於相同自旋態時，泡利不相容原理禁止其發生s波低能散射碰撞，從而徹底消除了原子密度碰撞頻移。",
+      "scope": "數位科技與通訊工程微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "為什麼光晶格鐘必須選用費米子同位素（如鍶-87），而不是更常：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S046: Section 1.4; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-64c213ad3653059c",
+          "origin": "wave100-tech-20261116",
+          "locator": "K100-S046: Section 1.4; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-046"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-047",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "超窄線寬的時鐘探測雷射是如何在微赫茲（0.000001赫茲）級別維持光學相位穩定的？它需要怎樣的極限光學諧振腔？",
+      "mechanism_key": "optical_clock.ultra_narrow_clock_laser_cryogenic_silicon_cavity",
+      "answer_target": "探測雷射被鎖定在高純單晶矽超低溫低膨脹光學諧振腔上，在4開爾文低溫下熱布朗噪聲被壓制到極限，線寬壓縮至毫赫茲以下。",
+      "scope": "數位科技與通訊工程微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "超窄線寬的時鐘探測雷射是如何在微赫茲（0.000001赫茲）：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S047: Section 2.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-27a8dab4a397dea1",
+          "origin": "wave100-tech-20261116",
+          "locator": "K100-S047: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-047"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-048",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "光學頻率每秒振動數百萬億次，常規電子計數器根本無法直接計數，光學頻率梳（Frequency Comb）是如何將其轉化為可讀信號的？",
+      "mechanism_key": "optical_clock.optical_frequency_comb_gearbox_downconversion",
+      "answer_target": "飛秒光梳如同光學齒輪箱，通過自參考f-2f非線性倍頻技術建立百萬道等距梳齒，將數百太赫茲光頻直接鎖定轉換為微波射頻計數。",
+      "scope": "數位科技與通訊工程微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "光學頻率每秒振動數百萬億次，常規電子計數器根本無法直接計數，：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S048: Section 2.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-8d39ea6b3e54dd62",
+          "origin": "wave100-tech-20261116",
+          "locator": "K100-S048: Section 2.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-048"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-049",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "在地球表面將光晶格鐘垂直抬高僅僅一毫米，為什麼時鐘的走時速度就會發生可測量的變化？這如何驗證廣義相對論？",
+      "mechanism_key": "optical_clock.general_relativity_gravitational_redshift_millimeter_scale",
+      "answer_target": "地球重力場導致時間膨脹效應（重力紅移），高度每升高一釐米頻率便相對增加約10^-18，光晶格鐘極限靈敏度使其能直接探測毫米級大地水準面起伏。",
+      "scope": "數位科技與通訊工程微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在地球表面將光晶格鐘垂直抬高僅僅一毫米，為什麼時鐘的走時速度：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S049: Section 2.3; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-7b000a9e2d7e642c",
+          "origin": "wave100-tech-20261116",
+          "locator": "K100-S049: Section 2.3; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-049"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-050",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "環境周圍室溫黑體輻射（BBR）的紅外光子電場是如何微弱擾動鍶原子能級的？現代光晶格鐘如何克服這一主要系統誤差？",
+      "mechanism_key": "optical_clock.blackbody_radiation_shift_cryogenic_chamber_shielding",
+      "answer_target": "將鍶原子原子腔置於液氮冷卻的深冷真空熱輻射屏蔽罩（Cryogenic Chamber）內，精確控制均勻溫度使黑體輻射頻移降至10^-19不確定度。",
+      "scope": "數位科技與通訊工程微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "環境周圍室溫黑體輻射（BBR）的紅外光子電場是如何微弱擾動鍶：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S050: Section 2.4; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-2514d7efe0c03226",
+          "origin": "wave100-tech-20261116",
+          "locator": "K100-S050: Section 2.4; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-050"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-051",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "國際計量委員會（BIPM）為什麼計劃在2030年前後廢除自1967年沿用至今的銫原子秒定義，改由光學鐘正式重新定義『秒』？",
+      "mechanism_key": "optical_clock.bipm_si_second_redefinition_roadmap_closure",
+      "answer_target": "最頂尖光學鐘的系統不確定度與頻率穩定度已超越銫微波噴泉鐘100倍以上，國際跨國比對網絡即將完成最後閉環驗證。",
+      "scope": "數位科技與通訊工程微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "國際計量委員會（BIPM）為什麼計劃在2030年前後廢除自1：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S051: Section 3.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-3721addaab32d23b",
+          "origin": "wave100-tech-20261116",
+          "locator": "K100-S051: Section 3.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-051"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-052",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "跨大西洋乃至全球範圍內的多座光學鐘是如何進行超高精度遠程比對的？光纖鏈路與衛星通訊如何克服大氣湍流延遲？",
+      "mechanism_key": "optical_clock.intercontinental_optical_fiber_link_active_phase_noise_cancellation",
+      "answer_target": "數千公里地下專用低損耗光纖採用雙向主動噪聲相位消除技術（AOC），使時間傳遞不確定度達到10^-19，遠優於衛星自由空間鏈路。",
+      "scope": "數位科技與通訊工程微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "跨大西洋乃至全球範圍內的多座光學鐘是如何進行超高精度遠程比對：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S052: Section 3.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-1d7c684a72fdc3a9",
+          "origin": "wave100-tech-20261116",
+          "locator": "K100-S052: Section 3.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-052"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-053",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "光晶格鐘的高精度時間測量是否可以用於直接探測掠過地球的極輕質量暗物質超輕玻色子場（Dark Matter Bosons）？",
+      "mechanism_key": "optical_clock.dark_matter_search_fine_structure_constant_oscillation",
+      "answer_target": "標量暗物質波與標準模型粒子微弱耦合會引發精細結構常數α隨時間微小振盪，導致不同原子光鐘頻率比值發生同步週波波動。",
+      "scope": "數位科技與通訊工程微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "光晶格鐘的高精度時間測量是否可以用於直接探測掠過地球的極輕質：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S053: Section 3.3; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-ed4a2d06f93f17eb",
+          "origin": "wave100-tech-20261116",
+          "locator": "K100-S053: Section 3.3; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-053"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-054",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "利用光學鐘的極限引力紅移測量能力，地球物理學家是如何開創『相對論測地學』（Relativistic Geodesy）精確監測地殼形變與火山活動的？",
+      "mechanism_key": "optical_clock.relativistic_geodesy_magma_chamber_uplift_monitoring",
+      "answer_target": "地下岩漿房充填或板塊擠壓引發的毫米級地表垂直位移與局部重力勢變化，能被固定光鐘即時感測，擺脫傳統GNSS與水準測量累積漂移。",
+      "scope": "數位科技與通訊工程微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "利用光學鐘的極限引力紅移測量能力，地球物理學家是如何開創『相：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S054: Section 3.4; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-aad5583513643c01",
+          "origin": "wave100-tech-20261116",
+          "locator": "K100-S054: Section 3.4; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-054"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-055",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "利用量子糾纏技術（如自旋壓縮態 Spin-squeezed states）是否能進一步突破光晶格鐘的標準量子極限（SQL）？",
+      "mechanism_key": "optical_clock.quantum_entanglement_spin_squeezing_heisenberg_limit",
+      "answer_target": "利用原子間非線性相互作用製備多體量子糾纏態，將時鐘相位噪聲從1/√N標準極限進一步推向接近1/N的海森堡極限。",
+      "scope": "數位科技與通訊工程微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "利用量子糾纏技術（如自旋壓縮態 Spin-squeezed ：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S055: Section 4.1; Table 1",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-3e055e03ee92ff5f",
+          "origin": "wave100-tech-20261116",
+          "locator": "K100-S055: Section 4.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-055"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K100-056",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "未來將光晶格鐘發射到深空軌道（如日地拉格朗日點或近太陽軌道），將為基礎物理學帶來何種前所未有的檢驗機遇？",
+      "mechanism_key": "optical_clock.deep_space_gravitational_wave_general_relativity_test",
+      "answer_target": "在極低重力微擾深空中可檢驗等效原理極限、探測低頻引力波微弱多普勒調製，並精確測定太陽引力場時空彎曲偏折參數。",
+      "scope": "數位科技與通訊工程微觀機制與工程物理應用。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "未來將光晶格鐘發射到深空軌道（如日地拉格朗日點或近太陽軌道）：微觀分子與耐熱結構揭開了極端科學與工程的運行奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示微觀結構、相變演化與電磁場力學相互作用。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K100-S056: Section 4.2; Table 2",
+      "notes": "第五十輪候選。覆核 V241（2026-11-16）通過。",
+      "origin": "wave100-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-9ce954cd51cab287",
+          "origin": "wave100-tech-20261116",
+          "locator": "K100-S056: Section 4.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave100-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K100-056"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -276447,7 +278879,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 6426
+    "count": 6482
   },
   "dedup": {
     "aliases": {
@@ -277720,6 +280152,62 @@
       "R10001": "LEG-A20",
       "R10002": "LEG-A25",
       "R10003": "LEG-A35",
+      "K100-001": "K100-001",
+      "K100-002": "K100-002",
+      "K100-003": "K100-003",
+      "K100-004": "K100-004",
+      "K100-005": "K100-005",
+      "K100-006": "K100-006",
+      "K100-007": "K100-007",
+      "K100-008": "K100-008",
+      "K100-009": "K100-009",
+      "K100-010": "K100-010",
+      "K100-011": "K100-011",
+      "K100-012": "K100-012",
+      "K100-013": "K100-013",
+      "K100-014": "K100-014",
+      "K100-015": "K100-015",
+      "K100-016": "K100-016",
+      "K100-017": "K100-017",
+      "K100-018": "K100-018",
+      "K100-019": "K100-019",
+      "K100-020": "K100-020",
+      "K100-021": "K100-021",
+      "K100-022": "K100-022",
+      "K100-023": "K100-023",
+      "K100-024": "K100-024",
+      "K100-025": "K100-025",
+      "K100-026": "K100-026",
+      "K100-027": "K100-027",
+      "K100-028": "K100-028",
+      "K100-029": "K100-029",
+      "K100-030": "K100-030",
+      "K100-031": "K100-031",
+      "K100-032": "K100-032",
+      "K100-033": "K100-033",
+      "K100-034": "K100-034",
+      "K100-035": "K100-035",
+      "K100-036": "K100-036",
+      "K100-037": "K100-037",
+      "K100-038": "K100-038",
+      "K100-039": "K100-039",
+      "K100-040": "K100-040",
+      "K100-041": "K100-041",
+      "K100-042": "K100-042",
+      "K100-043": "K100-043",
+      "K100-044": "K100-044",
+      "K100-045": "K100-045",
+      "K100-046": "K100-046",
+      "K100-047": "K100-047",
+      "K100-048": "K100-048",
+      "K100-049": "K100-049",
+      "K100-050": "K100-050",
+      "K100-051": "K100-051",
+      "K100-052": "K100-052",
+      "K100-053": "K100-053",
+      "K100-054": "K100-054",
+      "K100-055": "K100-055",
+      "K100-056": "K100-056",
       "E11001": "E11001",
       "E11002": "E11002",
       "E11003": "E11003",
@@ -315018,6 +317506,20 @@
         ]
       },
       {
+        "id": "K100-019~K97-018",
+        "a": "K100-019",
+        "b": "K97-018",
+        "question_score": 0.452,
+        "answer_score": 0.182,
+        "key_score": 0.4,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在醫療心臟支架置入動脈時，鎳鈦合金是如何利用人體37度體溫完成自膨脹支撐並維持恆定向外彈性張力的？",
+          "在醫用自膨脹心臟支架中，鎳鈦合金如何利用人體37度體溫實現微創植入後的自適應錨定？"
+        ]
+      },
+      {
         "id": "H61-007~H67-004",
         "a": "H61-007",
         "b": "H67-004",
@@ -315550,6 +318052,20 @@
         ]
       },
       {
+        "id": "K100-023~K97-021",
+        "a": "K100-023",
+        "b": "K97-021",
+        "question_score": 0.222,
+        "answer_score": 0.333,
+        "key_score": 0.778,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "經過特定熱機械訓練（Training）後的雙向形狀記憶合金，為什麼能夠在加熱變直、冷卻時又無需外力自發彎曲？",
+          "雙向形狀記憶合金如何做到『低溫記住一種形狀，高溫記住另一種形狀』的雙重記憶本領？"
+        ]
+      },
+      {
         "id": "L58-001~R40008",
         "a": "R40008",
         "b": "L58-001",
@@ -315603,6 +318119,20 @@
         "questions": [
           "海底地震與濁流引發的泥石流滑坡，為什麼能將重達數十噸的雙層裝甲光纜瞬間撕斷？",
           "大洋中脊火山板塊運動引發海底大滑坡，崩塌的數百萬噸泥石濁流如何在一瞬間拉斷整條重型鋼纜？"
+        ]
+      },
+      {
+        "id": "K100-020~K97-020",
+        "a": "K100-020",
+        "b": "K97-020",
+        "question_score": 0.325,
+        "answer_score": 0.196,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "形狀記憶合金經過數百萬次反覆彎曲與加熱冷卻循環後，為什麼會出現微小的『形狀記憶疲勞』與相變溫度漂移？",
+          "形狀記憶合金經歷數百萬次形變-加熱循環後發生的『功能疲勞』，微觀上是由什麼晶格缺陷積累造成的？"
         ]
       },
       {
@@ -315911,6 +318441,20 @@
         "questions": [
           "超導體被冷卻到臨界溫度以下時，外部磁力線為什麼會被百分之百完全排出體外一絲不存？",
           "釔鋇銅氧陶瓷在浸入液氮降溫跨越臨界溫度時，為什麼會自發將內部磁力線徹底排出體外？"
+        ]
+      },
+      {
+        "id": "K100-024~K97-028",
+        "a": "K100-024",
+        "b": "K97-028",
+        "question_score": 0.099,
+        "answer_score": 0.263,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "鎳鈦諾合金在超彈性拉伸過程中為什麼會釋放出可測量的熱量，而在卸載回彈時又會自發吸收熱量變涼？",
+          "固態彈熱制冷技術如何利用鎳鈦合金在加壓與卸載相變時的巨大潛熱效應，顛覆傳統氟利昂壓縮機制冷？"
         ]
       },
       {
@@ -317244,6 +319788,20 @@
         ]
       },
       {
+        "id": "K100-025~K97-024",
+        "a": "K100-025",
+        "b": "K97-024",
+        "question_score": 0.113,
+        "answer_score": 0.165,
+        "key_score": 0.533,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "為什麼在牙齒正畸治療中，鎳鈦合金弓絲能夠在牙齒位移數毫米的漫長過程中對牙齒施加近乎恆定不變的柔和矯治力？",
+          "牙齒正畸矯正絲為什麼普遍選用鎳鈦超彈性絲，而非傳統的高強度不銹鋼絲？"
+        ]
+      },
+      {
         "id": "L328~L331",
         "a": "L328",
         "b": "L331",
@@ -317913,6 +320471,20 @@
         "questions": [
           "蛋白只是被攪進空氣，為什麼泡泡能堆成一座小山？",
           "蛋白越打越發，為什麼打過頭反而出水、變成小塊？"
+        ]
+      },
+      {
+        "id": "K100-049~K97-048",
+        "a": "K100-049",
+        "b": "K97-048",
+        "question_score": 0.145,
+        "answer_score": 0,
+        "key_score": 0.625,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在地球表面將光晶格鐘垂直抬高僅僅一毫米，為什麼時鐘的走時速度就會發生可測量的變化？這如何驗證廣義相對論？",
+          "衛星導航星曆中的相對論時鐘修正，為什麼每天必須精準補償廣義相對論引力時間膨脹與狹義相對論速度延遲？"
         ]
       },
       {
@@ -319134,6 +321706,20 @@
         ]
       },
       {
+        "id": "K100-043~K100-048",
+        "a": "K100-043",
+        "b": "K100-048",
+        "question_score": 0,
+        "answer_score": 0.117,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "傳統微波銫原子鐘每三千萬年才誤差一秒，為什麼新一代光晶格鐘能將精度暴增數千倍、達到百億年誤差不到一秒的極限？",
+          "光學頻率每秒振動數百萬億次，常規電子計數器根本無法直接計數，光學頻率梳（Frequency Comb）是如何將其轉化為可讀信號的？"
+        ]
+      },
+      {
         "id": "R43001~R43002",
         "a": "R43001",
         "b": "R43002",
@@ -319946,6 +322532,20 @@
         ]
       },
       {
+        "id": "K100-018~K94-055",
+        "a": "K100-018",
+        "b": "K94-055",
+        "question_score": 0.101,
+        "answer_score": 0.049,
+        "key_score": 0.556,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "形狀記憶聚合物（SMP）與金屬記憶合金相比，其微觀大分子交聯網狀『固定結構』與熱響應『可逆鏈段』是如何協同實現高達數百百分比的巨大形變回復的？",
+          "某些金屬合金在低溫形變彎曲後，只要用熱水稍微加熱，為什麼會像擁有記憶一樣自動彈回原始形狀？"
+        ]
+      },
+      {
         "id": "P64-017~P65-005",
         "a": "P64-017",
         "b": "P65-005",
@@ -320548,6 +323148,20 @@
         ]
       },
       {
+        "id": "K100-016~K97-015",
+        "a": "K100-016",
+        "b": "K97-015",
+        "question_score": 0.092,
+        "answer_score": 0.083,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在室溫下具有超彈性的鎳鈦合金可以拉伸伸長8%依然毫無塑性殘餘，其彈性變形量為何能達到普通彈簧鋼的二十倍以上？",
+          "將一根被揉成廢鐵團的鎳鈦合金絲扔進熱水中，它為什麼能在零點幾秒內瞬間彈回原本筆直的記憶形狀？"
+        ]
+      },
+      {
         "id": "K89-051~K89-052",
         "a": "K89-051",
         "b": "K89-052",
@@ -320615,6 +323229,20 @@
         "questions": [
           "上坡為什麼更早想跑？還有沒跑的『第三種走法』？",
           "小小孩也是走到某個速度『啪』一下改跑嗎？"
+        ]
+      },
+      {
+        "id": "K100-007~L78-008",
+        "a": "K100-007",
+        "b": "L78-008",
+        "question_score": 0.091,
+        "answer_score": 0.078,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "某些水熊蟲物種體內海藻糖含量極低甚至檢測不到，為什麼它們依然能在完全乾燥條件下實現頑強的無水隱生？",
+          "生物課本常說耐乾動物能活下來，是因為把細胞灌滿約兩成乾重的「海藻糖玻璃」取代水分——水熊蟲也是靠灌滿海藻糖嗎？"
         ]
       },
       {
@@ -320867,6 +323495,20 @@
         "questions": [
           "把 39 元改成 34 元，賣得比較多嗎？郵購目錄的第一個試驗",
           "9 結尾的效果，換個商品、加上『特價』字樣還在嗎？"
+        ]
+      },
+      {
+        "id": "K100-049~K100-056",
+        "a": "K100-049",
+        "b": "K100-056",
+        "question_score": 0.088,
+        "answer_score": 0.072,
+        "key_score": 0.588,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在地球表面將光晶格鐘垂直抬高僅僅一毫米，為什麼時鐘的走時速度就會發生可測量的變化？這如何驗證廣義相對論？",
+          "未來將光晶格鐘發射到深空軌道（如日地拉格朗日點或近太陽軌道），將為基礎物理學帶來何種前所未有的檢驗機遇？"
         ]
       },
       {
@@ -325238,6 +327880,20 @@
         ]
       },
       {
+        "id": "K100-012~P099",
+        "a": "P099",
+        "b": "K100-012",
+        "question_score": 0,
+        "answer_score": 0.029,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "發紅和發白的熱物體，光的顏色為什麼會隨溫度改變？",
+          "水熊蟲在經受沸水（攝氏100度）短暫煮沸後，為什麼部分個體依然能復原存活？其蛋白質高溫變性閾值如何被大幅提升？"
+        ]
+      },
+      {
         "id": "L285~T54-010",
         "a": "L285",
         "b": "T54-010",
@@ -325319,6 +327975,20 @@
         "questions": [
           "明明要撞小顆的，DART怎麼先朝比較大的那顆飛？",
           "撞上去的太空船沒了，地球上怎麼知道小伴星繞一圈少了半個多鐘頭？"
+        ]
+      },
+      {
+        "id": "K100-041~P309",
+        "a": "P309",
+        "b": "K100-041",
+        "question_score": 0,
+        "answer_score": 0.027,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "能量沒有消失，為什麼仍然要說機器有效率損失？",
+          "真空零點能既然客觀存在且能產生可測量的力，為什麼人類無法直接建造一台永動機從真空中無窮無盡地提取自由能？"
         ]
       },
       {
@@ -327650,10 +330320,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-16-pool-6037",
-    "target_count": 6037,
+    "revision": "2026-11-16-pool-6093",
+    "target_count": 6093,
     "reviewed_on": "2026-11-16",
-    "reason": "第四十九輪擴充：56 候選題與長題組 G698–G700 經雙輪評審核實入池；入選題數提升至 6037。",
+    "reason": "第五十輪擴充（波次100里程碑）：56 候選題與長題組 G701–G703 經雙輪評審核實入池；入選題數提升至 6093。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -333691,7 +336361,63 @@
       "K99-053",
       "K99-054",
       "K99-055",
-      "K99-056"
+      "K99-056",
+      "K100-001",
+      "K100-002",
+      "K100-003",
+      "K100-004",
+      "K100-005",
+      "K100-006",
+      "K100-007",
+      "K100-008",
+      "K100-009",
+      "K100-010",
+      "K100-011",
+      "K100-012",
+      "K100-013",
+      "K100-014",
+      "K100-015",
+      "K100-016",
+      "K100-017",
+      "K100-018",
+      "K100-019",
+      "K100-020",
+      "K100-021",
+      "K100-022",
+      "K100-023",
+      "K100-024",
+      "K100-025",
+      "K100-026",
+      "K100-027",
+      "K100-028",
+      "K100-029",
+      "K100-030",
+      "K100-031",
+      "K100-032",
+      "K100-033",
+      "K100-034",
+      "K100-035",
+      "K100-036",
+      "K100-037",
+      "K100-038",
+      "K100-039",
+      "K100-040",
+      "K100-041",
+      "K100-042",
+      "K100-043",
+      "K100-044",
+      "K100-045",
+      "K100-046",
+      "K100-047",
+      "K100-048",
+      "K100-049",
+      "K100-050",
+      "K100-051",
+      "K100-052",
+      "K100-053",
+      "K100-054",
+      "K100-055",
+      "K100-056"
     ],
     "overflow": [
       {
