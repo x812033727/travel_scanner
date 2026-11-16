@@ -21,6 +21,8 @@ now. Design and the owner's decisions: `docs/ops/auto-deploy-and-cloud-backup-pl
 | 1 | `/root/travel-scanner-autodeploy.paused` exists | `paused`: print its first line, do nothing |
 | 2 | `git fetch origin main`; live `HEAD` equals `origin/main` | `idle` |
 | 2b | live is not an ancestor of `origin/main` (the script's fast-forward would refuse) | `wait` for a person |
+| 2c | `AUTODEPLOY_DEPLOY_WINDOWS` is set and none of its windows is open (Asia/Taipei) | `wait` (gate `schedule`; GitHub is not asked) |
+| 2d | `AUTODEPLOY_MAX_AUTO_DEPLOYS_PER_DAY` successful automatic deploys already happened on this Asia/Taipei date | `wait` (gate `daily_limit`) |
 | 3 | newest commit younger than `AUTODEPLOY_QUIET_MINUTES` | `wait` (merges inside the period become one rebuild; every deploy restarts every container) |
 | 4 | the `CI` workflow run for that SHA is not `success` (pending, red, missing, API unreachable) | `wait` (a red main already opens an issue through `ci-red-main.yml`) |
 | 5 | an `AUTODEPLOY_BLOCKED_WINDOWS` window is open (Asia/Taipei) | `wait` |
@@ -52,13 +54,66 @@ claim that the timer or a paused receipt exists on today's production host.
 The child Docker stop may outlive the killed poller subprocess; an unresolved
 warm-drain marker blocks another signal until exact worker/RQ/DB readback.
 
+## Once a day: the deploy window
+
+The owner chose on 2026-11-16 to deploy at most once a day, between 04:30 and 06:00 Taipei
+time: `AUTODEPLOY_DEPLOY_WINDOWS=04:30-06:00` and `AUTODEPLOY_MAX_AUTO_DEPLOYS_PER_DAY=1`.
+The timer still ticks every five minutes. Outside the window a tick with a new commit stops
+at gate 2c; inside it the remaining gates run as before, so a CI run still in progress or a
+paid video job only delays the deploy to a later tick of the same window. A window may wrap
+midnight (`23:30-01:00`); a blocked window (gate 5) still wins inside a deploy window. The
+daily count is kept in `state.json` as `auto_deploys_today` and counts only automatic deploys
+that exited 0; a dry run never counts.
+
+When a window closes while a newer commit was still waiting on a gate (CI red, paid work, a
+hold, the lock), the first tick after it posts one notification naming the window, the SHA
+and the last gate, and keeps it in `state.json` as `last_missed_window`. A deploy, an idle
+tick or a failed deploy (which notifies on its own) inside the window clears the pending
+record; a paused tick leaves it alone. Both settings empty keep the old behaviour: deploy
+once the quiet period has passed. Background: `docs/ops/admin-redeploy-button-and-daily-autodeploy-plan.md`.
+
+## The admin button
+
+With `DEPLOYMENT_EXECUTOR=host_timer` and `DEPLOYMENTS_ENABLED=true` in the application
+environment, `/admin/deployments` has two buttons, "deploy latest" and "rebuild current
+version", which only the owner role can press (owner's decision, 2026-11-16) after typing
+their password. The API never touches the host: it inserts a `queued` `deployment_runs` row with
+`metadata_json = {"executor": "host_timer", "mode": "latest" | "rebuild", "wait_for_paid_work": ...}`.
+Every tick first looks for such a row and claims it with
+`UPDATE ... SET status = 'preflight' WHERE id = ... AND status = 'queued' RETURNING id`, so a
+request is picked up within one tick (about five minutes); a request nobody claims in ten
+minutes is marked `failed` (`deployment_executor_unavailable`) by the API.
+
+A request skips the schedule (quiet period, deploy windows, daily limit, blocked windows) and
+then walks the remaining gates. A gate that would make an automatic deploy wait **refuses** the
+request instead, with a fixed `failure_code` the page shows: `deployment_autodeploy_paused` (no
+forced deploys past the paused file, owner's decision), `deployment_already_current`,
+`deployment_not_fast_forward`, `deployment_ci_not_green` (not checked for a rebuild),
+`deployment_lock_held`, `deployment_hold_active`, `deployment_paid_work_running` (unless the
+request unticked it), `deployment_dry_run` (`AUTODEPLOY_ENABLED=false`: the request records what
+would have happened). Otherwise it runs the script (`--force` for a rebuild) with its log in
+`/root/deploy-logs/button-<ts>.log`, then `host-verify.sh`, writing stages and events to the row:
+`succeeded`, `manual_intervention_required` (`deployment_verify_failed`), or `failed`
+(`deploy_script_exit_<n>`). A failed button deploy writes the paused file exactly like an
+automatic one. Button deploys do not count toward the daily limit.
+
+## The heartbeat the admin page reads
+
+Every tick ends by upserting the single row of `deployment_host_status` (migration 0146): live
+and target SHA, the target's subject, the CI result it read for that target, the paused file's
+first line, whether it is a dry run, and a subset of `state.json` (last decision, last deploy,
+today's count, the last missed window, the deploy windows, the commits between live and target).
+With `AUTODEPLOY_NOTIFY_URL` empty (owner's choice, 2026-11-16) this page is the only place a
+failure, a pause or a missed window shows up. A row older than 15 minutes makes the page say the
+timer is not responding and refuse requests. A failed upsert is printed and never blocks a tick.
+
 ## Files on the host
 
 | Path | What |
 | --- | --- |
 | `/opt/travel-scanner-autodeploy/autodeploy.py`, `host-verify.sh`, `README.md` | The module and the verify script, copied by `install.sh`. A deploy must not change the poller underneath itself, so it does not run from the checkout; upgrading it is `sudo bash ops/autodeploy/install.sh` from a reviewed checkout, a manual host action like `ops/deployer`. |
 | `/etc/travel-scanner/autodeploy.env` (root, 0600) | Configuration, see `autodeploy.env.example`. Read on every tick: a change needs no restart. |
-| `/var/lib/travel-scanner-autodeploy/state.json` | Last tick, last decision (action, reason, gate, SHA), last deploy (SHA, previous, times, exit, log, verify result), how long paid work has been holding a deploy back. Never a secret. |
+| `/var/lib/travel-scanner-autodeploy/state.json` | Last tick, last decision (action, reason, gate, SHA), last deploy (SHA, previous, times, exit, log, verify result), how long paid work has been holding a deploy back, today's automatic deploy count (`auto_deploys_today`), a window still waiting (`window_miss`) and the last window that closed without a deploy (`last_missed_window`). Never a secret. |
 | `/root/travel-scanner-autodeploy.paused` | Written after a failed automatic deploy. Line 1 for people, 600 bytes at most; line 2 JSON (`sha`, `exit`, `log`, `created_at`). Only a person removes it, after reading the log. |
 | `/root/deploy-logs/auto-<ts>.log`, `auto-verify-<ts>.log` | The deploy script's output and the verification's output for each automatic run, next to the manual `wrapper-*.log` files. |
 | `/etc/systemd/system/travel-scanner-autodeploy.{service,timer}` | `Type=oneshot` every five minutes with 30 s jitter; systemd never starts a tick while the previous one is still running, so a long build cannot overlap the next tick. |
@@ -77,14 +132,15 @@ The token is a fine-grained personal access token for this repository with only
 
 Watch it for a week with `AUTODEPLOY_ENABLED=false`: `journalctl -u travel-scanner-autodeploy`
 and `autodeploy.py status` show one decision per tick, and every `would_deploy` must be a
-green merged SHA with no hold and nobody mid-release. Then set `AUTODEPLOY_ENABLED=true`.
+green merged SHA with no hold and nobody mid-release. With a deploy window set, a dry run prints `would_deploy` on every tick inside the window (a dry
+run never counts toward the daily limit) and `wait: schedule` outside it. Then set `AUTODEPLOY_ENABLED=true`.
 The checklist and the record of the first automatic deploy belong to
 `tasks/open/2026-10-07-autodeploy-rollout-and-skill-docs.md`.
 
 ## Reading it
 
 ```bash
-sudo python3 /opt/travel-scanner-autodeploy/autodeploy.py status
+sudo python3 /opt/travel-scanner-autodeploy/autodeploy.py status   # also: the deploy window, open or when it next opens
 journalctl -u travel-scanner-autodeploy --since -2h
 systemctl list-timers travel-scanner-autodeploy.timer
 ```
@@ -109,7 +165,8 @@ with `decision: <action>: <reason>`. Exit codes: 0 for every decision but a fail
 a Slack or Discord incoming webhook accepts as is and Telegram's
 `https://api.telegram.org/bot<token>/sendMessage?chat_id=<id>` accepts as well. Events: a
 deploy (with its verify result), a failed deploy (now paused), and paid work holding a deploy
-back for longer than `AUTODEPLOY_PAID_WORK_NOTIFY_HOURS`. A failed post is printed and
+back for longer than `AUTODEPLOY_PAID_WORK_NOTIFY_HOURS`, and a deploy window that closed without
+deploying a waiting commit (once per window). A failed post is printed and
 ignored; it never blocks a deploy.
 
 ## Tests

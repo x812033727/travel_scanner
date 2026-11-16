@@ -511,10 +511,13 @@ def require_capability(capability: str) -> Callable[..., Awaitable[User]]:
 def can_deploy_user(user: User, *, roles: Collection[str] | None = None) -> bool:
     settings = get_settings()
     assigned = set(roles) if roles is not None else cached_admin_roles(user)
+    # The host timer path runs the production deploy script as root, so the owner decided
+    # (2026-11-16) that only the owner role may press it; the agent path keeps `deployer`.
+    allowed = {"owner"} if settings.deployment_executor == "host_timer" else {"owner", "deployer"}
     return bool(
         settings.deployments_configured
         and user.email.lower() in settings.deploy_admin_email_set
-        and ("owner" in assigned or "deployer" in assigned)
+        and allowed & assigned
     )
 
 

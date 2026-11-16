@@ -3,16 +3,19 @@ import test from 'node:test';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { assemble, normalizeUrl, urlsIn, readPool, similarityPairs, validateEditorial, DIR, ROOT } from './core.mjs';
+import { assemble, normalizeUrl, urlsIn, readPool, similarityPairs, validateEditorial, CATEGORIES, classifyCandidate, DIR, ROOT, POOL_PARTS, splitPool, readSavedPool, writePool } from './core.mjs';
 import { readBaseline, compareBaseline, validateBaseline, validateCheckpoints, sourceImpact } from './history.mjs';
 import { openStore, ingest, assertSnapshot, search, lookup } from './store.mjs';
-import { validateThemes, renderHtml, readingsForCandidate } from './render.mjs';
+import { validateThemes, renderHtml, renderProducible, readingsForCandidate } from './render.mjs';
+import { validateAudience } from './render.mjs';
 
 const source = (id) => ({ id, url: `https://example.org/${id}`, readings: [{ origin: 'fixture', title: id, publisher: 'fixture', accessed_on: '2026-11-01', reading_scope: 'test fixture' }] });
 const record = (id, question, target = 'different mechanism') => ({ id, origin: 'fixture', question, domain: 'test', mechanism_key: id, answer_target: target, scope: 'fixture scope', source_refs: [{ source_id: id, locator: `section ${id}` }], premise_status: 'screened', eligible: true, notes: '', local_references: [] });
 const input = (rows) => ({ records: rows, sources: rows.map((row) => source(row.id)), inputs: [] });
 const empty = () => ({ merges: [], distinct: [], excluded: [] });
 const choose = (ids) => ({ ids, target_count: ids.length, reason: 'Test fixture selection' });
+
+const AUDIENCE = { score: 7, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json' };
 
 test('exact wording variants preserve both source histories and raw IDs', () => {
   const rows = [record('a', '門把為什麼會電人？', '電荷與放電'), record('b', '門把為什麼會電人?', '另一份資料')];
@@ -366,9 +369,32 @@ test('source-only refreshes reach their intended canonical topic without leaking
   assert.deepEqual(readingsForCandidate({ ...shared, id: 'unreferenced-source' }, row), []);
 });
 
+test('excluded_source_refs removes an inherited off-scope source reference with a reason while preserving raw records', () => {
+  const rows = [record('core', '核心問題'), record('alias', '合併進核心的別名', '同核心不同寫法')];
+  const mergeOnly = { ...empty(), merges: [{ duplicate_id: 'alias', canonical_id: 'core', reason: 'Same core question' }] };
+  const decisions = {
+    ...mergeOnly,
+    excluded_source_refs: [{ candidate_id: 'core', source_id: 'alias', reason: 'Alias source covers an unrelated subtopic not claimed by core' }],
+  };
+  const pool = assemble(input(rows), decisions, choose(['core']));
+  assert.deepEqual(pool.candidates[0].source_refs.map((ref) => ref.source_id), ['core']);
+  assert.deepEqual(pool.raw_records.find((row) => row.id === 'alias').source_refs.map((ref) => ref.source_id), ['alias']);
+  assert.equal(pool.counts.selected_source_urls, 1);
+  assert.throws(() => assemble(input(rows), { ...mergeOnly, excluded_source_refs: [{ candidate_id: 'alias', source_id: 'alias', reason: 'not canonical' }] }), /Invalid excluded_source_refs/);
+  assert.throws(() => assemble(input(rows), { ...mergeOnly, excluded_source_refs: [{ candidate_id: 'core', source_id: 'alias', reason: ' ' }] }), /Invalid excluded_source_refs/);
+  assert.throws(() => assemble(input(rows), { ...mergeOnly, excluded_source_refs: [{ candidate_id: 'core', source_id: 'core', origin: 'wrong-origin', reason: 'unmatched filter' }] }), /Stale excluded_source_refs/);
+  assert.throws(() => assemble(input(rows), {
+    ...mergeOnly,
+    excluded_source_refs: [
+      { candidate_id: 'core', source_id: 'core', reason: 'drop first' },
+      { candidate_id: 'core', source_id: 'alias', reason: 'drop last' },
+    ],
+  }), /cannot remove every source reference/);
+});
+
 test('themes cannot reference excluded records or masquerade as approved scripts; HTML contains inert escaped data', () => {
   const pool = assemble(input([record('a', '</script><script>alert(1)</script>')]), empty(), choose(['a']));
-  const theme = { id: 'G01', title: 'fixture', core_question: 'fixture', connection: 'fixture', boredom_risk: 'fixture', drop_if: 'fixture', evidence_gaps: 'fixture', production_ready: false, status: 'EDITORIAL_THEME_NOT_SCRIPT', candidate_ids: ['a'], target_minutes: 10, range_minutes: [9, 11], chapters: Array.from({ length: 4 }, () => ({ title: 'fixture', new_information: 'fixture', candidate_ids: ['a'], seconds: 150 })) };
+  const theme = { id: 'G01', audience: AUDIENCE, title: 'fixture', core_question: 'fixture', connection: 'fixture', boredom_risk: 'fixture', drop_if: 'fixture', evidence_gaps: 'fixture', production_ready: false, status: 'EDITORIAL_THEME_NOT_SCRIPT', candidate_ids: ['a'], target_minutes: 10, range_minutes: [9, 11], chapters: Array.from({ length: 4 }, () => ({ title: 'fixture', new_information: 'fixture', candidate_ids: ['a'], seconds: 150 })) };
   validateThemes({ episodes: [theme] }, pool);
   assert.ok(!renderHtml(pool, { episodes: [theme] }).includes('</script><script>alert(1)</script>'));
   assert.throws(() => validateThemes({ episodes: [{ ...theme, candidate_ids: ['missing'] }] }, pool), /unselected/);
@@ -388,4 +414,57 @@ test('themes cannot reference excluded records or masquerade as approved scripts
   assert.throws(() => validateThemes({ episodes: [{ ...theme, material: { ...review, verdict: 'reserve', est_minutes: 7.2 } }] }, pool), /says what is missing/);
   assert.throws(() => validateThemes({ episodes: [{ ...theme, material: { ...review, verdict: 'merge', est_minutes: 7.2, missing: 'x' } }] }, pool), /names what it merges with/);
   assert.throws(() => validateThemes({ episodes: [{ ...theme, material: { ...review, verdict: 'maybe', est_minutes: 9 } }] }, pool), /needs a verdict/);
+  assert.throws(() => validateThemes({ episodes: [{ ...theme, category: '不存在的分類' }] }, pool), /unknown category/);
+  assert.ok(!renderProducible(pool, { episodes: [theme] }).includes('</script><script>alert(1)</script>'));
+});
+
+test('every committed candidate and theme carries one of the 7 Drive categories', () => {
+  assert.equal(CATEGORIES.length, 7);
+  assert.equal(classifyCandidate({ id: 'LEG-S46', domain: 'science', question: '為什麼煮義大利麵要在水裡加鹽？' }), '飲食與廚房科學');
+  assert.equal(classifyCandidate({ id: 'L60-001', domain: '動物社會資訊與群體決策', question: '文化學習' }), '生物動物與植物');
+  assert.equal(classifyCandidate({ id: 'S52-001', domain: '量測與地圖', question: '海拔高度' }), '地球天氣與太空');
+  const pool = readPool();
+  assert.ok(pool.candidates.every((row) => CATEGORIES.includes(row.category)));
+  const themes = JSON.parse(fs.readFileSync(path.join(ROOT, DIR, 'themes.json'), 'utf8'));
+  assert.ok(themes.episodes.every((episode) => CATEGORIES.includes(episode.category)));
+  validateThemes(themes, pool);
+});
+
+test('audience scores on a theme are 1–10 on five dimensions, ranked, and point at their review record', () => {
+  const good = { score: 7.5, rank: 1, of: 3, click: 8, hook: 7, surprise: 7.5, payoff: 7, share: 8, comment: '想看', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json' };
+  assert.doesNotThrow(() => validateAudience('T1', good));
+  assert.doesNotThrow(() => validateAudience('T1', undefined));
+  assert.throws(() => validateAudience('T1', { ...good, hook: 11 }), /between 1 and 10/);
+  assert.throws(() => validateAudience('T1', { ...good, rank: 4 }), /rank/);
+  assert.throws(() => validateAudience('T1', { ...good, review: 'notes.md' }), /reviews\/audience/);
+});
+
+test('a theme scored after the baseline must be improved and rescored to at least the audience minimum', () => {
+  const base = { score: 7, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-20', review: 'reviews/audience-20261120.json' };
+  const round = { score: 5.5, comment: '片名太長', changes: '縮短片名、刪掉術語章', reviewed_on: '2026-11-19', review: 'reviews/audience-20261119.json' };
+  assert.throws(() => validateAudience('T1', { ...base, rounds: [{ ...round, changes: '' }] }), /changes made after it/);
+  assert.doesNotThrow(() => validateAudience('T1', { ...base, rounds: [round] }));
+});
+
+test('the pool is written as three files and reads back as the same object', () => {
+  const rows = [record('a', '門把為什麼會電人？', '電荷與放電')];
+  const pool = assemble(input(rows), empty(), choose(['a']));
+  const { main } = splitPool(pool);
+  assert.deepEqual(Object.keys(main), Object.keys(pool));
+  assert.deepEqual(main.sources, { file: 'pool-sources.json', count: pool.sources.length });
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'stw-split-test-'));
+  try {
+    assert.deepEqual(writePool(root, pool), ['pool.json', 'pool-sources.json', 'pool-records.json']);
+    assert.equal(JSON.stringify(readSavedPool(root)), JSON.stringify(pool));
+    const stale = path.join(root, DIR, 'pool-records.json');
+    fs.writeFileSync(stale, JSON.stringify({ revision: 'older', raw_records: pool.raw_records }));
+    assert.throws(() => readSavedPool(root), /does not belong to this pool\.json/);
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
+
+test('the committed pool export is internally consistent and each file is < 45 MB', () => {
+  const pool = readSavedPool();
+  for (const name of ['pool.json', ...Object.values(POOL_PARTS)]) assert.ok(fs.statSync(path.join(ROOT, DIR, name)).size < 45 * 1024 * 1024, `${name} is near GitHub's 50 MB warning; split it further`);
+  assert.equal(pool.counts.high_similarity_pending, 0);
+  assert.equal(pool.counts.approved_scripts, 0);
 });

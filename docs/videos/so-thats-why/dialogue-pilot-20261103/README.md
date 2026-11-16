@@ -49,50 +49,37 @@
 - 片尾的「原來如此！」由小問說，同時答案卡蓋印章（look.md 的結尾蓋章）。
 - 「說給一個人聽」照舊：所長每章至少一句轉向觀眾的「你」，不只對小問講。
 
-## 3. 畫面：兩個角色怎麼進插圖
+## 3. 畫面：兩個角色怎麼進插圖，以及無人純機制鏡比例（2026-11-14 更新定案）
 
-MiniMax `image-01` 讀得懂**一個**角色參考圖，讀不懂多人互動（奇聞 skill：「兩三個人同框互動 → 試圖被退」）。所以：
+早期 MiniMax `image-01` 在無人空景常把人臉亂畫到物件上，才讓舊集塞進過多角色鏡頭；**2026-11-14 改用內建 `generate_image` 後，無人物件／機制景完全乾淨，站主明確指定「不一定每一個畫面都要有人」**：
 
-1. **兩個角色一律分鏡，不同框**。對話用正反打：小問發問的鏡頭、所長回答的鏡頭，各自「一個人做一件事、臉朝鏡頭」。
-   需要交代兩人在同一個空間時，用一張沒有人的事務所空景，或卡片。
-2. **小問就是內容插圖裡的那「一個人」**。奇聞要求插圖是「一個人在那個地方做一件事」；這集由小問來做：
-   她在陽台抬頭看積雲、手貼冰杯看水珠、在騎樓下看雨打在地上。這樣內容插圖和角色是同一條線，不會變成「角色鏡頭 vs 內容鏡頭」兩套畫面。
-3. 所長多半在事務所（白板、放大鏡、檔案夾、印章），少數到現場；所長鏡頭佔全片約 15–20%。
-4. 純機制畫面（一滴水的放大、上升氣流箭頭、雲滴 vs 雨滴大小比例）不放人，寫成卡通裡會有的樣子；數字與比例畫成圖，不用卡片（§1「畫面上的字」）。
-5. 2026-11-05 起正文不用卡片；只有片尾訂閱卡還有字（見 §3.2 待決）。
+1. **全集約 45%–65% 為純機制／物件／場景鏡頭（`"nobody": true`、`characters: []`）**：原理解構、結構剖面、數量與比例對照、日常物件微距（飲料杯、收據、冰箱門膠條）一律不放人，讓觀眾視線 100% 集中在機制本身，**嚴禁連續十幾鏡都是角色站在桌前揮手講話**。
+2. **全集約 35%–55% 為角色鏡頭（兩個角色一律正反打不同框）**：只在**開場怪事反應、小問拋出錯誤直覺或追問、所長點破關鍵盲點、驚訝恍然反應與片尾互動**時讓角色出場；各自「一個人做一件事、臉朝鏡頭」，兩人不同框。
+3. **兩系列人物造型徹底分家（嚴禁混用）**：本系列固定為 **2.5 頭身圓頭大眼 Q 版比例（`2.5-head chibi`）**，與《奇聞檔案局》的 3.5 頭身修長比例研究員 `Ada`（暗紅細圓框眼鏡＋褪色青風衣）完全不同；有角色鏡 `ImagePaths` 必傳 Repo 內正式 V2 設定圖（見 [`../series-sheets/README.md`](../series-sheets/README.md)）。
+4. 2026-11-05 起正文與片尾皆不用文字卡，數字與比例全部畫成無字視覺對照（§1「畫面上的字」）。
 
-### 3.1 插圖提示詞怎麼寫（2026-11-06，借自 PR #2027 奇聞的 W03 實測，加上 P02／P05 自己的教訓）
+### 3.1 插圖提示詞怎麼寫（2026-11-06 起草；2026-11-14 升級版見 §10.7–10.8）
 
-- **短、動作在前、角色描述在後**：景別 → 地點 → 一個角色做一個動作 → 一兩個道具；角色外觀（`KIDDESC`、`CHIEFDESC`）接在最後。
-  動作越簡單越容易過：P05 第一輪 113 張裡 24 張三次不過，幾乎都是複雜的手部動作或一手一物的對照。
-- **白天、明亮**：檯燈、夜晚、`soft lamp light` 常被畫成 3D 公仔（P05 重畫時「3D CGI」「clay figurine」是最常見的退件原因）。新集光線寫 bright morning、daylight。
-- **不寫 no、not、without、text、blank**：模型沒有反向提示詞，寫了反而畫出來。P02 的 `BLANK`（「every sign … is plain and blank」）新集不要再用。
-- **會冒字的道具換掉**：日曆、招牌、報紙、白板上的字、筆記本都會長出亂碼。**小問的設定寫著拿筆記本**，兩集都一直冒出筆記本與假字（見 §3.2）。
+- **短、動作在前、角色描述在後**：景別 → 地點 → 一個角色做一個動作（或 `nobody: true` 純物件對照）→ 一兩個道具；有角色時必寫明 `2.5-head chibi` 並傳入 Repo 正式 V2 設定圖。
+- **白天、明亮＋冷暖色溫呼吸**：室內暖金窗光每 6–8 鏡穿插清涼藍天窗景、薄荷綠植栽或淺冷灰白／奶油白桌面調節色溫。
+- **不寫 no、not、without、text、blank**：`video.json` 的 `scene.data.prompt` 避免觸發 lint 禁用詞；生圖用正向 `clean blank surfaces`。
+- **會冒字的道具換掉**：日曆、招牌、報紙、白板上的字、筆記本都會長出亂碼；小問空手不拿筆記本。
 - **螢幕寫出畫面內容**：「a phone showing a simple map with a blue route line」，不寫空白螢幕。
 - **數字畫成圖**：「一滴雨要一百萬顆雲滴」畫成一顆大雨滴被無數小點圍住（P02 `kid-million`）。
-- **眼睛**：關鍵影格評審 2026-11-05 起問眼睛（`tools/video/media/keyframes.mjs` 的 anatomy 題），但輕微的鬥雞眼它仍會放過，
-  分鏡給站主前另外請一個代理逐張放大看眼睛。三次都畫不好的臉，改成閉眼笑（「her eyes closed as two happy curved lines」）、
-  背影，或沒有人的物件特寫——這三種畫法沒有瞳孔可以歪。
-- **改評審題目會讓整集重評**：評審的題目是每張圖評分紀錄的一部分，題目一改，已核准的圖下次跑 `keyframes` 會全部重評、
-  不過的重畫（P05 因此被換掉 49 張已核准的圖，救回花了半天）。已核准分鏡的集數要重畫少數幾張時，只讓那幾張用新題目
-  （做法記在任務票 `2026-11-05-keyframe-judge-checks-the-eyes-mismatched`）。
-- 已付錢的圖提示詞逐字不動（吃快取）；這一節只管新畫的景。
+- **眼睛與手指**：匯入前切四格 2 倍放大圖由獨立子代理逐張審過（雙眼對焦同向、雙手各 5 指分明）。
 - **英文名稱照原文念**（借自 PR #2027）：台詞裡的品牌、產品、單位照英文原文念，不寫中文音譯的 `say`；台灣慣用的正式中文名例外（例如維基百科）。新詞記進 `docs/videos/lexicon.json`。
 
-### 3.2 待站主決定（2026-11-06）
+### 3.2 標準角色造型定案（2026-11-14 鎖死 V2 設定圖，停用舊版 MiniMax 失敗檔）
 
-- **小問的設定拿掉筆記本**（站主 2026-11-06 核准）：設定原本寫「holding a small plain blank notebook in both hands」，P02、P05 有幾十張因此被退或冒假字。
-  從下一集起改用 `a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, both hands free`，
-  開拍時先重畫小問的設定圖給站主選（約 US$0.05）；P02、P05 已付錢的圖不動。
-- **片尾訂閱卡**：奇聞與品牌故事 2026-11-05 起片尾也不用卡片（PR #2027，結尾檢查另開票 `2026-11-06-story-series-close-without-outro-card`）。
-  原來如此的片尾卡還有「原來如此！」和一句總結的中文字；要不要也改成一張小問蓋章的插圖，由站主決定。
+- **標準設定圖路徑（`ImagePaths` 必傳）**：
+  - 所長 `chief`：`docs/videos/so-thats-why/series-sheets/characters/chief/chief-canon-v2.png`
+  - 小問 `kid`：`docs/videos/so-thats-why/series-sheets/characters/kid/kid-canon-v2.png`
+  - （同資料夾舊檔 `0c3a400c8e981d84.png` 耳垂掛著像耳環的黃鉛筆、`f8dac008f296a6a3.png` 為半閉豆豆眼與無指圓手，兩張當年 `judge.passed` 皆為 `false`，**新集嚴禁傳入 `ImagePaths`**。）
+- **標準英文角色描述（固定 2.5 頭身 Q 版比例，移除所長舊版耳後鉛筆）**：
+  - 所長 `chief`：`2.5-head chibi friendly Taiwanese office chief woman (big round head, compact cute body), dark brown-black hair with one clear silver-grey streak tied in a low side ponytail over her right shoulder, bold round black-framed glasses over large expressive warm brown aligned eyes, clean uncovered round ears with bare earlobes (zero earrings, zero ear-pencil), warm welcoming smile, mustard-yellow chunky knitted button cardigan over a crisp white collared shirt, dark ink-navy trousers, warm brown leather loafers, five clean fingers on each hand`
+  - 小問 `kid`：`2.5-head chibi curious 8-year-old girl (big round child head, compact cute body), short glossy black bob haircut with straight bangs and one playful cowlick on top, large wide-open bright round dark brown aligned eyes with white catchlights and rosy cheeks, dark ink-navy toggle raincoat jacket with bright mustard-yellow hood resting down around the collar, dark navy trousers, clean white sneakers, both hands free with five clean fingers on each hand`
 
-角色設定（英文 `appearance`，設定圖與每張關鍵影格都用；開拍前先畫設定圖給站主選）：
-
-- 所長 `chief`（2026-11-03 站主指出 Sulafat 是女聲，改成女性）：`a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear`（原本的紅色小印章讓模型一直畫出假字印記，拿掉）
-- 小問 `kid`：`a curious eight-year-old girl with a short bob haircut and a small cowlick, wearing a navy raincoat-style jacket with a mustard-yellow hood, carrying a small notebook`（P02 起實際用的是 `build_scenes.py` 裡更詳細的版本，仍寫「holding a small plain blank notebook in both hands」；§3.2）
-
-（「小問」取「發問」的意思。設定圖改用單人全身的 `sheet_prompt`：預設的三視圖跟系列畫風「中央一個主體」互相衝突，第一輪 12 張全被評審退。）
+（「小問」取「發問」的意思。設定圖固定採用單人全身正面置中無字肖像，不畫多視角分割框，以免生圖時把分割框帶進分鏡。）
 
 ## 4. 聲音與語速（2026-11-13 更新定案）
 
@@ -190,11 +177,12 @@ MiniMax `image-01` 讀得懂**一個**角色參考圖，讀不懂多人互動（
 | 重畫少數幾張 | 只改那幾張的提示詞；評審題目改過時，只讓那幾張用新題目（§3.1）；畫完拿總覽圖跟核准的分鏡比一次 | P05 一次意外重評換掉 49 張已核准的圖 |
 | 配樂 | `video.json` 的 `music` 用系列配樂床 `sothatswhy-p02-bed.m4a`（sha256 `54169439…`，放在工作目錄的 `_music/`），不另生 | P05 第一次合成沒有配樂：`build_scenes.py` 漏了 `music` |
 | 合成與品管 | `qa` 11 項全過；片尾同一個畫面 ≤ 15 秒 | P05 片尾 15.1 秒：把片尾最後一句縮短 |
+| 成片觀眾視角評分（2026-11-14 起必過） | 成片組裝與 `qa` 11 項通過後，**嚴禁直接備份或送審**；必派未參與製作的獨立子代理模擬真實 YouTube 觀眾審視成片全鏡、繁中（含 A/B 變體）＋八語全部縮圖與標題說明欄，寫出 `review/audience-review.md`（六項觀眾體驗指標每項 ≥ 7.5／10、總均 ≥ 8.0／10）。凡挑出縮圖裁切、色溫疲勞、低對比物件、無字圖解難懂或角色破綻，**一律先修完並重跑 `assemble`＋`qa` 11/11，最後才執行 Google Drive 備份與 `review-push --gate final`** | P12 機械 `qa` 全過，獨立觀眾審片才抓出 `subject: "right"` 搭配 `on the right third` 造成縮圖右緣斷頭與連續暖黃桌面疲勞（2026-11-14 站主：「把觀眾評分加入流程，修完後才推後台跟備份」） |
 | 送審順序 | 成片（`final`）→ 上架確認（`publish`）**等站主核准之後**才送附配音的語言包（`languages`） | P02 先送語言包、後送上架確認，後台擋下「已選取的 en 配音尚未核准」（票 `2026-10-07-the-worker-sends-a-language-batch`） |
-| 八語縮圖 | `i18n-merge` 之後一定跑 `render --thumbnails-only`，確認 `thumbnails/` 有八張（en ja ko es pt id th vi）並逐張看過，才 `package`、送語言包 | P07／P14 漏了，站主上傳時發現上傳包沒有八語縮圖（2026-11-07 站主：「之後要記得」） |
-| 清工作目錄 | 站主 2026-11-07：「不是叫你都要備份到分支嗎?」——**整個工作目錄全部備份到分支，不挑檔**（含 `dubs/`、`audio/`、`*.wav`、`final.mp4`）；超過 90 MB 的檔案用 `split -b 90M` 切塊，附還原指令（`cat x.part* > x`）。逐檔核對雜湊後才刪。 | P07／P14 備份時自行排除了配音與錄音，刪掉後重送語言包整批沒有音檔，差點要整條重錄（2026-11-07） |
-| 補檔也要備份 | 站主 2026-11-07：「之後要記得備份」——備份分支做好之後，凡是後來才產生或補上的檔案（八語縮圖、重錄的配音、重送的語言包、站上 `review-files` 抓回來的檔案）都要再加進同一個備份分支並逐檔核對；交付給站主或送上後台的檔案，一律先進分支。 | P07／P14 補了八語縮圖、交了配音檔，卻沒有先放進備份分支（2026-11-07） |
-| 縮圖人物不被字擋 | 站主 2026-11-08：「縮圖的人可以盡量不要被字擋住嗎?」——關鍵影格的人物多半置中，整張鋪滿會被左邊的文字欄蓋住。`thumbnail.data` 加 `"subject": "right"`：插圖縮到畫面右側 38%，人物整個在文字欄右邊。挑縮圖鏡頭時選人物大、表情清楚、手上有主題物件的鏡頭 | P08 起 |
+| 八語縮圖 | `i18n-merge` 之後一定跑 `render --thumbnails-only`，確認 `thumbnails/` 有八張（en ja ko es pt id th vi）並連同 `thumbnail.jpg`／`thumbnail-b.jpg`／`thumbnail-c.jpg` 逐張看過，才 `package`、送語言包 | P07／P14 漏了，站主上傳時發現上傳包沒有八語縮圖（2026-11-07 站主：「之後要記得」） |
+| 清工作目錄 | 站主 2026-11-07：「不是叫你都要備份到分支嗎?」——**整個工作目錄全部備份到雲端硬碟（2026-11-10 起改傳 Google Drive），不挑檔**（含 `dubs/`、`audio/`、`*.wav`、`final.mp4`）；超過 90 MB 的檔案若需切塊附還原指令，逐檔核對雜湊後才刪。 | P07／P14 備份時自行排除了配音與錄音，刪掉後重送語言包整批沒有音檔，差點要整條重錄（2026-11-07） |
+| 補檔也要備份 | 站主 2026-11-07：「之後要記得備份」——雲端備份做好之後，凡是後來才產生或補上的檔案（八語縮圖、重錄的配音、重送的語言包、站上 `review-files` 抓回來的檔案、`review-push` 更新的核准檔）都要同步補進雲端備份並逐檔核對；送上後台的檔案一律有完整備份。 | P07／P14 補了八語縮圖、交了配音檔，卻沒有先放進備份（2026-11-07） |
+| 縮圖人物不被字擋與防斷頭裁切 | 站主 2026-11-08：「縮圖的人可以盡量不要被字擋住嗎?」——`thumbnail.data` 加 `"subject": "right"` 會把 16:9 關鍵影格放進右側 38% 直立框並以 `object-fit: cover` **水平置中裁切（只保留原圖水平 `x ≈ 31%–69%` 區段）**。因此縮圖鏡頭的主角表情大臉與關鍵道具**必須緊湊排在 16:9 畫面的水平中央（`x = 35%–65%`）**，**嚴禁在生圖 Prompt 寫 `on the right third`**（否則臉會被裁出右緣變成斷頭縮圖！） | P08 起；P12 抓出 `on the right third` 右緣裁切（2026-11-14） |
 | 品管前先報到站上 | 第一次 `qa` 之前先跑 `review-push --report-only`：「有示範」看的是站上那一列的類別，集數還沒報到站上就被當成教學片要示範（P08 第一次 0.16 沒過，報到後顯示「不適用（解說）」） | P08（2026-11-07） |
 | 備份範圍（P08 起） | 站主 2026-11-07：「要把如果真的需要重製的檔案跟所有上傳的檔案都備份起來」——(1) 重製要用的：整個工作目錄，含 `audio/` 逐句旁白與快取、`dubs/<locale>/` 逐句配音與時間軸、`keyframes/` 每一張候選、`characters/`、`frames/`、`clips/`、`build/`、`timeline.json`、各種清單與核准紀錄；(2) 上傳的：`upload/` 全部（成片、八語配音、字幕、說明、縮圖、`metadata.json`）。每過一關（分鏡、成片、上架、語言）就把當下的工作目錄推進 `claude/backup-<slug>` 一次，超過 90 MB 切塊，逐檔核對 | |
 | 配音 | 時間軸一動（換鏡、改句）就 `dub` 八語重跑：沿用快取不重錄，只重對齊 | P02 把一鏡拆成兩鏡，後面全部晚 0.7 秒 |
@@ -255,7 +243,7 @@ PR #2028 合併後已補（2026-11-06）：`scene()` 的鏡頭加 `nobody: true`
 
 - **停用 MiniMax 生圖，全面改由代理內建 `generate_image`（16:9 滿版）＋外部匯入**：
   - 每一鏡關鍵影格皆用內建 `generate_image`（`AspectRatio: "16:9"`）生成後，以 `node tools/video/cli.mjs keyframes import --slug <slug> --shot <id> --file <path> --provider external --usd 0` 匯入；**嚴禁執行 `keyframes` 呼叫 MiniMax 生圖**。
-  - 有角色的鏡頭，`ImagePaths` 必傳系列角色設定圖（`characters/chief/*.png` 或 `characters/kid/*.png`）鎖定五官與服裝；重繪既有鏡頭時一併傳入原構圖圖檔鎖定骨架與道具位置。遇到 `gemini-3.1-flash-image` 配額冷卻時，先執行八語翻譯與 MiniMax 配音或分批等待，絕不退回 MiniMax。
+  - 有角色的鏡頭，`ImagePaths` **必傳 Repo 內 V2 標準角色設定圖**（所長傳 `docs/videos/so-thats-why/series-sheets/characters/chief/chief-canon-v2.png`、小問傳 `docs/videos/so-thats-why/series-sheets/characters/kid/kid-canon-v2.png`，鎖死 **2.5 頭身圓頭大眼 Q 版比例 `2.5-head chibi`**，與《奇聞檔案局》3.5 頭身修長比例研究員 `Ada` 徹底分家；禁用同資料夾早期 MiniMax 失敗檔），重繪既有鏡頭時一併傳入原構圖圖檔鎖定骨架與道具位置。**畫面不必每鏡都有人**：全集約 **45%–65%** 設為 `"nobody": true` 純機制／物件鏡，角色鏡頭約 **35%–55%** 只放在開場怪事、提問猜測、轉折點破與收束拍。遇到 `gemini-3.1-flash-image` 配額冷卻時，先執行八語翻譯與 MiniMax 配音或分批等待，絕不退回 MiniMax。
 - **「劇場級動畫光影 × 厚塗水粉質感」五大配方**（完整規範與英文基底句見 [`../look.md`](../look.md)）：
   1. **線條**：主體改用暖深褐色（warm-sepia）有粗細收尖變化的細膩墨線，嚴禁粗黑死板平塗框線；背景完全不畫黑框線。
   2. **光影**：窗邊斜射暖金陽光，在髮絲、眼鏡框、連帽與道具倒角打出明亮金邊輪廓光（glowing rim light），空氣帶微細光塵（dust motes）。
@@ -264,3 +252,11 @@ PR #2028 合併後已補（2026-11-06）：`scene()` 的鏡頭加 `nobody: true`
   5. **零出錯硬規則**：全圖 100% 滿版無黑邊；零文字與零黑板粉筆亂碼；單人正反打不同框，`nobody: true` 純機制鏡頭零路人殘肢；手指數（5 指）、眼神對焦與旁白道具數量／幾何比例 100% 吻合；匯入後必切 2 倍放大檢視圖交由獨立子代理審過才鎖定分鏡。
 - **語音與配樂固定配置**：中文（`zh-TW`）用 Gemini（`Sulafat`＋`Leda`）；八語配音（`en,ja,ko,es,pt,id,vi,th`）用 MiniMax（`dub --provider minimax`）；配樂床用 `sothatswhy-bed-r2.m4a`（sha256 `9bb4ba6f…`）。
 
+### 10.8 成片觀眾視角評分、縮圖裁切、色溫節奏與八語 MiniMax 配音防呆（2026-11-14 P12 實戰定案）
+
+- **成片獨立觀眾視角體驗關卡（先修完再推後台與備份）**：機械 `qa`（11/11）全過後，**嚴禁直接備份或送審**；必派未參與撰稿與生圖的獨立子代理模擬真實 YouTube 觀眾審視成片全鏡、全部渲染縮圖（繁中含 A/B 變體＋八語共 9–11 張）與標題說明欄，依 [`SCORECARD.md`](SCORECARD.md) §三寫出 `review/audience-review.md`（六項指標每項 ≥ 7.5、總均 ≥ 8.0）。凡挑出縮圖裁切、色溫疲勞、低對比物件、無字圖解難懂或角色破綻，**一律先修完並重跑 `assemble`＋`qa` 11/11 通過，最後才執行 Google Drive 完整備份與 `review-push --gate final`**。
+- **縮圖 `"subject": "right"` 必將主角與道具排在水平中央（`x = 35%–65%`）**：`subject: "right"` 會將 16:9 關鍵影格塞入右側 38% 直立框並以 `object-fit: cover` **水平置中裁切（僅保留原圖水平 `x ≈ 31%–69%`）**。若生圖 Prompt 寫 `on the right third`（`x = 67%–98%`），渲染出的 `thumbnail.jpg` 會把角色大臉整顆切出右緣！縮圖鏡頭生圖必讓主角大臉與關鍵道具緊湊排在 16:9 畫面水平中央，渲染後必逐張打開 `thumbnail.jpg`、`thumbnail-b.jpg`、`thumbnail-c.jpg` 與八語 `thumbnails/*.jpg` 親眼確認零裁切。
+- **厚塗水粉冷暖色溫呼吸與淺冷底高對比**：連續 20–30 鏡都在暖金陽光＋棕木桌會造成暖黃視覺疲勞，且深色小污點（咖啡滴、墨點）在暖木紋上對比太低。每 3–4 鏡必須穿插清涼藍天窗景、薄荷綠植栽或淺冷灰白／奶油白桌面調節色溫；凡要讓手機觀眾一眼看清微小深色碎點或格數差異，一律改放在淺冷灰白／米白乾淨表面上。
+- **無字比例／救援圖解跨鏡幾何鎖定**：全片零文字下，比例對照（如 `1:1:3:1:1`）必把實體結構與對應寬度色塊做**上下垂直投影對齊**；抽象因果救援（如「兩個救援盒救一個壞盒」）禁用蹺蹺板／天秤（多盒一側較重往下沉，視覺暗示與「救援成功」相反），改用「1 個污損盒 → 雙箭頭指向 2 個不同分工救援盒（放大鏡找位置＋發光積木補數值）」；同一組單位盒跨鏡必鎖死同一格數與外觀（如統一 `2×4` 八孔盒）；禁止無關背景箭頭海報誤導推理。
+- **所長移除耳後鉛筆防漂移與口語詞上限**：舊版所長耳後黃鉛筆極易被模型誤畫成耳垂耳環或臉旁懸空雙頭尖鉛筆，V2 標準設定圖（`chief-canon-v2.png`）已正式移除耳後鉛筆、雙耳乾淨露出，且生圖仍限制所長雙手停在胸口或桌面高度；全集對白口語「剛剛／剛才」合計控制在 **≤ 3 次**，避免聽覺重複。
+- **八語 MiniMax 配音四大防呆**：(1) 印尼文 `id` 嚴禁寫 `&`（MiniMax 會誤讀成 `"FT"`），一律展開為 `dan`；(2) 越南文 `vi` 千分位嚴禁寫句點 `.`（如 `3.000` 會被唸成小數 `ba chấm không`），改寫空格 `ba nghìn` 或純數字，全大寫縮寫改小寫音讀（如 `mã qui rờ`）；(3) 西文 `es`／葡文 `pt` 單字母等級（如 `nivel L`、`nível M`）前避開同母音連音吞字，加冠詞或破折號隔開；(4) 泰文 `th` 在 `< 1.2 秒` 極短窗內將音節過長的 `คิวอาร์โค้ด` 精簡為 `โค้ดนี้`，避免 `fit.json` 超時。

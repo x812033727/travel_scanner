@@ -1,0 +1,2090 @@
+{
+  "reviewed_on": "2026-11-13",
+  "round": 30,
+  "previous_round": "docs/videos/so-thats-why/pool/reviews/material-20261113-round29.json",
+  "owner_instruction": [
+    "PR2093 這邊有未完成的工作 繼續完成後 繼續擴充 持續用同一個PR就好",
+    "奇聞檔案局與原來如此事務所每輪同步擴充、經非作者覆核、依覆核建議直接採用並推送（第三輪）"
+  ],
+  "bar": "同前幾輪：可成題要有至少 8.5 分鐘素材（≥11.4 條加權事實）與兩個改變結論的轉折；只算有可讀紀錄的外部全文來源；只讀到摘要或簡報的不計；來源必須循公開連結取得；直接合著即併入同一研究網、每網封頂 2.0。",
+  "method": "第三十輪：在 4,957 題存檔點上續跑。四位作者（F148–F151）各在全池與季別週別去重後的新領域，動筆前先以 Europe PMC／Crossref（polite pool）／OpenAlex 逐對確認研究網互不合著，再從零研究四個新長題：蜘蛛絲液態紡絲與遇水超收縮（F148-T1）、墨西哥鈍口螈斷肢再生位置記憶與神經／巨噬細胞開關（F149-T1）、荷葉與超疏水微奈米雙層氣墊、凝結水滴自彈射除塵與雨滴／蒸氣刺穿失效（F150-T1）、槍蝦與螳螂蝦水下超高速彈射、空蝕氣泡與自體減震護甲（F151-T1）。四位未參與撰寫的獨立覆核者（V168–V171）逐筆核對本機快取雜湊、重抓關鍵來源、查驗存取與限流紀錄、獨立重查全數作者配對合著關係、修正機制誤讀並重算分鐘；覆核結論優先。",
+  "policies": {
+    "source_access": "全數來源均循公開連結與開放全文庫（Europe PMC JATS XML、arXiv 預印本與機構典藏開放 PDF）取得，帶 Mokaair-editorial/1.0 標頭；對任何 429、403、驗證頁或付費牆均第一次即停、零重試、零繞過、零換同庫主機。全數新來源皆確認為含完整方法與數據的同儕審查或預印本全文論文（零會議摘要）。",
+    "common": "嚴格排除醫療、臨床再生醫學、幹細胞療法、手術縫線、外用藥物、軍武防彈、抗菌塗層與危險自製實驗；在世與 1956 年後過世研究者及現代冠名（如 Cassie-Baxter、Wenzel、Ohnesorge、Raman、Bouligand、Hill、Plesset 等）在正稿與畫面中一律不具名、不入畫。",
+    "ready_conditions": "G638（F148-T1，9.2 分）、G639（F149-T1，9.59 分）、G640（F150-T1，9.72 分）",
+    "close_or_split": "後備題：F151-T1（經 V171 查獲兩組跨網直接合著橋樑並修正曝氣對照細節，10 網併為 8 網，誠實下修為 10.75 條／8.17 分，不硬湊，14 個開放全文核心入池備用）。"
+  },
+  "counts": {
+    "research_proposals": 56,
+    "research_proposals_by_author": {
+      "F148": 14,
+      "F149": 14,
+      "F150": 14,
+      "F151": 14
+    },
+    "research_sources_read": 56,
+    "cores_added": 56,
+    "cores_rejected": 0,
+    "verdicts": {
+      "ADOPT_WITH_CHANGES": 56,
+      "ADOPT": 0
+    },
+    "not_added_records": 37,
+    "targets_ready": [
+      "G638",
+      "G639",
+      "G640"
+    ],
+    "targets_reserve": [
+      "F151-T1"
+    ],
+    "ready_long_themes_before_after": [
+      96,
+      99
+    ],
+    "pool_selected_before_after": [
+      4957,
+      5013
+    ],
+    "raw_records_before_after": [
+      5346,
+      5402
+    ],
+    "source_urls_before_after": [
+      6280,
+      6336
+    ],
+    "not_added_before_after": [
+      3112,
+      3149
+    ],
+    "themes_before_after": [
+      637,
+      640
+    ]
+  },
+  "core_id_mapping": {
+    "F148-001": "L80-001",
+    "F148-002": "L80-002",
+    "F148-003": "L80-003",
+    "F148-004": "L80-004",
+    "F148-005": "L80-005",
+    "F148-006": "L80-006",
+    "F148-007": "L80-007",
+    "F148-008": "L80-008",
+    "F148-009": "L80-009",
+    "F148-010": "L80-010",
+    "F148-011": "L80-011",
+    "F148-012": "L80-012",
+    "F148-013": "L80-013",
+    "F148-014": "L80-014",
+    "F149-001": "L80-015",
+    "F149-002": "L80-016",
+    "F149-003": "L80-017",
+    "F149-004": "L80-018",
+    "F149-005": "L80-019",
+    "F149-006": "L80-020",
+    "F149-007": "L80-021",
+    "F149-008": "L80-022",
+    "F149-009": "L80-023",
+    "F149-010": "L80-024",
+    "F149-011": "L80-025",
+    "F149-012": "L80-026",
+    "F149-013": "L80-027",
+    "F149-014": "L80-028",
+    "F150-001": "P80-001",
+    "F150-002": "P80-002",
+    "F150-003": "P80-003",
+    "F150-004": "P80-004",
+    "F150-005": "P80-005",
+    "F150-006": "P80-006",
+    "F150-007": "P80-007",
+    "F150-008": "P80-008",
+    "F150-009": "P80-009",
+    "F150-010": "P80-010",
+    "F150-011": "P80-011",
+    "F150-012": "P80-012",
+    "F150-013": "P80-013",
+    "F150-014": "P80-014",
+    "F151-001": "L80-029",
+    "F151-002": "L80-030",
+    "F151-003": "L80-031",
+    "F151-004": "L80-032",
+    "F151-005": "L80-033",
+    "F151-006": "L80-034",
+    "F151-007": "L80-035",
+    "F151-008": "L80-036",
+    "F151-009": "L80-037",
+    "F151-010": "L80-038",
+    "F151-011": "L80-039",
+    "F151-012": "L80-040",
+    "F151-013": "L80-041",
+    "F151-014": "L80-042"
+  },
+  "rejected_core_mapping": {},
+  "source_id_mapping": {
+    "F148-S001": [
+      "L80-S001"
+    ],
+    "F148-S002": [
+      "L80-S002"
+    ],
+    "F148-S003": [
+      "L80-S003"
+    ],
+    "F148-S004": [
+      "L80-S004"
+    ],
+    "F148-S005": [
+      "L80-S005"
+    ],
+    "F148-S006": [
+      "L80-S006"
+    ],
+    "F148-S007": [
+      "L80-S007"
+    ],
+    "F148-S008": [
+      "L80-S008"
+    ],
+    "F148-S009": [
+      "L80-S009"
+    ],
+    "F148-S010": [
+      "L80-S010"
+    ],
+    "F148-S011": [
+      "L80-S011"
+    ],
+    "F148-S012": [
+      "L80-S012"
+    ],
+    "F148-S013": [
+      "L80-S013"
+    ],
+    "F148-S014": [
+      "L80-S014"
+    ],
+    "F149-S001": [
+      "L80-S015"
+    ],
+    "F149-S002": [
+      "L80-S016"
+    ],
+    "F149-S003": [
+      "L80-S017"
+    ],
+    "F149-S004": [
+      "L80-S018"
+    ],
+    "F149-S005": [
+      "L80-S019"
+    ],
+    "F149-S006": [
+      "L80-S020"
+    ],
+    "F149-S007": [
+      "L80-S021"
+    ],
+    "F149-S008": [
+      "L80-S022"
+    ],
+    "F149-S009": [
+      "L80-S023"
+    ],
+    "F149-S010": [
+      "L80-S024"
+    ],
+    "F149-S011": [
+      "L80-S025"
+    ],
+    "F149-S012": [
+      "L80-S026"
+    ],
+    "F149-S013": [
+      "L80-S027"
+    ],
+    "F149-S014": [
+      "L80-S028"
+    ],
+    "F150-S001": [
+      "P80-S001"
+    ],
+    "F150-S002": [
+      "P80-S002"
+    ],
+    "F150-S003": [
+      "P80-S003"
+    ],
+    "F150-S004": [
+      "P80-S004"
+    ],
+    "F150-S005": [
+      "P80-S005"
+    ],
+    "F150-S006": [
+      "P80-S006"
+    ],
+    "F150-S007": [
+      "P80-S007"
+    ],
+    "F150-S008": [
+      "P80-S008"
+    ],
+    "F150-S009": [
+      "P80-S009"
+    ],
+    "F150-S010": [
+      "P80-S010"
+    ],
+    "F150-S011": [
+      "P80-S011"
+    ],
+    "F150-S012": [
+      "P80-S012"
+    ],
+    "F150-S013": [
+      "P80-S013"
+    ],
+    "F150-S014": [
+      "P80-S014"
+    ],
+    "F151-S001": [
+      "L80-S029"
+    ],
+    "F151-S002": [
+      "L80-S030"
+    ],
+    "F151-S003": [
+      "L80-S031"
+    ],
+    "F151-S004": [
+      "L80-S032"
+    ],
+    "F151-S005": [
+      "L80-S033"
+    ],
+    "F151-S006": [
+      "L80-S034"
+    ],
+    "F151-S007": [
+      "L80-S035"
+    ],
+    "F151-S008": [
+      "L80-S036"
+    ],
+    "F151-S009": [
+      "L80-S037"
+    ],
+    "F151-S010": [
+      "L80-S038"
+    ],
+    "F151-S011": [
+      "L80-S039"
+    ],
+    "F151-S012": [
+      "L80-S040"
+    ],
+    "F151-S013": [
+      "L80-S041"
+    ],
+    "F151-S014": [
+      "L80-S042"
+    ]
+  },
+  "not_added_mapping": {
+    "F148-NA001": "L80-NA001",
+    "F148-NA002": "L80-NA002",
+    "F148-NA003": "L80-NA003",
+    "F148-NA004": "L80-NA004",
+    "F148-NA005": "L80-NA005",
+    "F148-NA006": "L80-NA006",
+    "F148-NA007": "L80-NA007",
+    "F148-NA008": "L80-NA008",
+    "F148-NA009": "L80-NA009",
+    "F148-NA010": "L80-NA010",
+    "F149-NA001": "L80-NA011",
+    "F149-NA002": "L80-NA012",
+    "F149-NA003": "L80-NA013",
+    "F149-NA004": "L80-NA014",
+    "F149-NA005": "L80-NA015",
+    "F149-NA006": "L80-NA016",
+    "F149-NA007": "L80-NA017",
+    "F149-NA008": "L80-NA018",
+    "F150-NA001": "P80-NA001",
+    "F150-NA002": "P80-NA002",
+    "F150-NA003": "P80-NA003",
+    "F150-NA004": "P80-NA004",
+    "F150-NA005": "P80-NA005",
+    "F150-NA006": "P80-NA006",
+    "F150-NA007": "P80-NA007",
+    "F150-NA008": "P80-NA008",
+    "F150-NA009": "P80-NA009",
+    "F151-NA001": "L80-NA019",
+    "F151-NA002": "L80-NA020",
+    "F151-NA003": "L80-NA021",
+    "F151-NA004": "L80-NA022",
+    "F151-NA005": "L80-NA023",
+    "F151-NA006": "L80-NA024",
+    "F151-NA007": "L80-NA025",
+    "F151-NA008": "L80-NA026",
+    "F151-NA009": "L80-NA027",
+    "F151-NA010": "L80-NA028"
+  },
+  "new_themes": [
+    {
+      "id": "G638",
+      "proposal_id": "F148-T1",
+      "title": "肚子裡的蛋白質濃湯怎麼一拉就變比鋼還韌的絲？為什麼蜘蛛絲淋雨縮短一半卻不會扯破網？",
+      "target_minutes": 9,
+      "est_minutes": 9.2
+    },
+    {
+      "id": "G639",
+      "proposal_id": "F149-T1",
+      "title": "整隻手斷掉竟能照原位長回來，為什麼六角恐龍不會從手腕長出手肘，切斷神經或少掉巨噬細胞卻只剩疤痕？",
+      "target_minutes": 9,
+      "est_minutes": 9.59
+    },
+    {
+      "id": "G640",
+      "proposal_id": "F150-T1",
+      "title": "荷葉把水珠托在空氣墊上滾走灰塵，為什麼一場高速暴雨或冷霧水蒸氣就能把它刺穿？自然界怎麼救回這層隱形氣墊？",
+      "target_minutes": 9.5,
+      "est_minutes": 9.72
+    }
+  ],
+  "reserve_records": {
+    "F151-T1": {
+      "proposal_id": "F151-T1",
+      "target": "F151-T1",
+      "title": "水那麼黏又那麼重，槍蝦跟螳螂蝦怎麼在水底打出空蝕電漿泡，自己的螯跟身體卻不會震碎？",
+      "reviewer": "V171",
+      "author": "F151",
+      "verdict": "reserve",
+      "theme_id": null,
+      "disjoint_networks": 8,
+      "final_core_ids": [
+        "F151-001",
+        "F151-002",
+        "F151-003",
+        "F151-004",
+        "F151-005",
+        "F151-006",
+        "F151-007",
+        "F151-008",
+        "F151-009",
+        "F151-010",
+        "F151-011",
+        "F151-012",
+        "F151-013",
+        "F151-014"
+      ],
+      "recount_facts": "10.75 條（作者 F151 自算 10 網 14.00 條／9.85 分；V171 查獲兩組跨網直接合著強制併為 8 個互不合著研究網並修正 F151-006 後重算為 10.75 條／8.17 分）：NET_01_DUKE_LINCOLN_UCSB_CHARLESTON（F151-001 1.00＋F151-008 1.00＋F151-014 獨立 1.00／邊際 0.00，因 2022 專書章節 DOI 10.4324/9781003091868-15 合著合併封頂）＝2.00；NET_02_FREIBERG_BONN_CITY（F151-002 1.00＋F151-003 0.75）＝1.75；NET_03_TAMU_MECH（F151-006 校正曝氣條件後由 1.25 下修為 1.00）＝1.00；NET_04_TOHOKU_FINEMECH（F151-004）＝1.00；NET_05_CARDC_HEBEI（F151-005）＝1.00；NET_06_NCSU_CMAST（F151-007）＝1.00；NET_07_NTU_PURDUE_UCR_IHEP_QMUL（F151-009 1.25＋F151-011 獨立 1.00／邊際 0.75＋F151-012 獨立 0.75／邊際 0.00＋F151-013 獨立 1.00／邊際 0.00，因 2014 Biomaterials Science DOI 10.1039/c3bm60264h 合著合併封頂）＝2.00；NET_08_CSU_CUBOULDER（F151-010）＝1.00。合計 2.00＋1.75＋1.00＋1.00＋1.00＋1.00＋2.00＋1.00＝10.75 條；((10.75×140)＋700)÷270＝8.17 分，未達 8.50 分可成題門檻。",
+      "recount_fact_count": 10.75,
+      "recount_minutes": 8.17,
+      "planned_minutes": null,
+      "cuts": "14 則候選本身皆具完整開放全文實證並全數保留入素材池；題內計分依單一研究網 2.00 硬上限將 NET_01 第 3 篇 F151-014（邊際 0.00）及 NET_07 第 3、4 篇 F151-012、F151-013（邊際 0.00）封頂扣除，並依 PMC6420313 全文刪除原稿誤植之『真空除氣蒸餾水／溶氬增亮 3 倍』將 F151-006 由 1.25 下修至 1.00；未開放全文之槍蝦透明眼罩論文（F151-NA004）與 1 頁會議展演短摘 arXiv:0712.2257（F151-NA003）嚴格排除零引用。",
+      "turns": [
+        "轉折一結構已齊（5 個獨立研究網共 5.75 條）：由 28% 線性彈簧儲能上限與雙層雙曲馬鞍蓄力出發，推進至槍蝦漸縮噴嘴最佳渦環形成數 ≈ 4（F151-002）、每秒 8 萬–17 萬弧度甜甜圈空蝕渦環離心撕裂常溫水（F151-003）、0.35 mm³ 水滴放大 30 倍且因無熱蒸氣緩衝墊而潰縮峰值勝過脈衝雷射（F151-004）、8 mm 小螯角速度反勝大螯與定向前射微噴流（F151-005）、以及 36.1% 效率點燃平均 15 ns 水下電漿閃光（F151-006），並接上 321 天牡蠣礁聲景與每月蛻皮雌雄反向異速生長（F151-007、008）。",
+        "轉折二機制清晰惟受兩組跨網合著封頂限制總時長（差 0.33 分）：槍蝦端有真實蛻殼 CT 25° 噴嘴立體偏角推離潰縮奇異點（F151-006），螳螂蝦端有 200,000 fps 同步輻射水合止裂 20 倍（F151-011）、螺旋層狀纖維百萬赫茲剪力波聲子能隙（F151-012）、尾節凸脊零孔洞配溝谷介觀孔洞與 600 nm 纖維鉚釘（F151-013）及活體懸空捲尾 69%→90% 全身卸力（F151-014）；因 S009..S013 四篇併入單一 NET_07 封頂 2.00 且 S014 併入 NET_01 封頂 2.00，全題總加權事實停在 10.75 條（8.17 分），待補 1–2 個零合著獨立開放全文研究網即可成題。"
+      ],
+      "chapter_outline": [],
+      "core_question": "海水的密度約為空氣的八百倍、黏滯與慣性阻力驚人，體長只有幾公分的槍蝦（Alpheus）與螳螂蝦（Odontodactylus、Neogonodactylus）憑什麼突破肌肉收縮速限，在水底撕裂常溫海水打出破百巴衝擊波與奈秒電漿閃光？當空蝕微噴流與百萬赫茲高頻震波足以侵蝕堅硬固體時，牠們的彈簧、重槌與尾盾又靠什麼流體幾何、水合微結構與全身懸空姿態全身而退？",
+      "connection": "（後備，待補約 0.65–0.75 條零合著開放全文核心跨過 8.50 分後排產。）開場破迷思（為什麼大狗不用彈簧，小蝦卻非用不可？）：骨骼肌配線性彈簧受長度—張力曲線失配拖累，最多只能存下 28% 肌肉功（4.2/15.0 J/kg），但在體重小於約 2.5 公克或僅幾公釐的水下短行程裡，直接收縮肌肉出力暴跌，犧牲七成能量換次毫秒瞬發的卡榫彈簧反而逆轉勝出（F151-001）；孔雀螳螂蝦更把儲能彈簧做成『外層生物陶瓷受壓、內層類彈力蛋白拉長逾三成』的雙層複合弓，順向彎曲斷裂功比反折高出約 83 倍（F151-009），並摺成前後與左右反曲的洋芋片狀雙曲馬鞍面讓剛度橫跨四個數量級，同時遷就掠肢長節外殼高度上限而停在中等橫向曲率（F151-010） → 轉折一（槍蝦不必直接夾中獵物！一滴 0.35 立方公釐的水怎麼撕裂常溫海水變電漿閃光？）：大螯最後小於 20° 閉合變成漸縮噴嘴，剛好在 96% 閉合瞬間吐出無因次渦環形成數約等於 4 的最佳飽和渦環（F151-002）；三維可壓縮多相流揭露這不是靜止圓氣泡，而是核心每秒狂轉 8 萬–17 萬弧度的『甜甜圈空蝕渦環』，靠離心力拉出約兩個大氣壓壓降把常溫海水撕開、潰縮迸發逾 80–100 巴衝擊波（F151-003）；僅 0.35 立方公釐水腔竟撐出體積大 30 倍的 3 公釐空蝕泡，且因缺乏高溫煮沸殘留的熱蒸氣緩衝軟墊，同尺寸下潰縮峰值力道反而勝過脈衝雷射空蝕泡（F151-004）；跨物種 99,000 格實拍更發現大凹槽排水阻力讓 8 公釐小螯閉合角速度（4,392–4,500 rad/s）反勝大螯三至四倍，氣泡尾部高壓還把穿泡微噴流穩穩推向背離蝦體的正前方（F151-005），內縮奇異點更將水中飽和溶解氣體絕熱壓縮出平均 15 奈秒的水下電漿閃光——在未額外曝氣的新開封蒸餾水中測不到顯著閃光，須通入空氣或氬氣曝氣飽和才穩定點燃（F151-006）；放大到整片河口牡蠣礁，海水從 7 °C 升到 30 °C 會讓群體爆音狂飆 15–20 倍以上（墊高淺海高頻背景聲壓約 15 分貝）並在隆冬反轉成白天比夜晚多響達 25%（F151-007），連母蝦都會趁非繁殖季單身守洞免抱卵時，藉每月蛻皮把大螯改裝得比繁殖季更大號（F151-008） → 轉折二（空蝕與百巴震波為什麼不會震爛自己的螯尖與內臟？）：首先槍蝦大螯噴水通道天生歪離突齒旋轉平面約 25°，物理上把主空蝕潰縮奇異點導離螯尖安全距離外（F151-006）；而正面敲擊硬殼的孔雀螳螂蝦重槌，每秒 20 萬格同步輻射 X 光透視證實『天然含水』讓內部三維主裂紋體積比 30 °C 溫和乾燥 6 小時縮小約 20 倍，並靠淺表三維互鎖人字形波紋柱與礦物奈米粒微孔道網鎖死微裂紋（F151-011）；內層 30–50 個半週期漸變螺距的螺旋層狀纖維則像聲子反射鏡，專門在百萬赫茲頻段打開橫向剪力波能隙、反射最高約三成破壞性剪力脈衝能量（F151-012）；輪到同類搶洞互毆挨打時，尾節盾牌把 6–12 微米吸震孔洞全藏進凹陷溝谷界面帶（凸脊內部零大孔洞硬扛穿刺，外加 600 奈米垂直幾丁質纖維束鉚釘縫合防脫層）（F151-013），活蝦更把尾盾抬離海底懸空捲在胸前帶著整副軀幹順勢彎曲後仰，把平均衝擊能量消散率從離體固定尾節的約 69% 一口氣推高到約 90%（F151-014） → 收尾回扣：水底最猛烈的瞬發流體力學與最柔韌的多尺度減震，全寫在壓降相變、雙層馬鞍、水合螺旋甲殼與懸空退讓的自然物理裡。",
+      "boredom_risk": "低：前半段若連講四條槍蝦流體力學容易變成數據轟炸。壓法是用『一滴 0.35 mm³ 常溫海水 → 漸縮噴嘴捲成形成數約 4 的甜甜圈渦環 → 無熱蒸氣軟墊全速內縮點燃 15 奈秒電漿閃光』串成單一微秒慢動作鏡頭推進，接著立刻切到整座牡蠣礁夏天飆高 15 分貝與母蝦換殼改裝大螯尺寸的生態反差，再轉入『溫和烘乾蝦槌裂縫暴增 20 倍、反折雙層馬鞍脆化 83 倍、懸空捲尾卸掉 90% 能量』三個強烈視覺對照。",
+      "drop_if": "稿中若出現以下任一失準或越界說法，該句必刪：（1）在正稿或畫面出現任何在世或 1956 年後過世學者姓名與現代冠名（包含以 2011 年過世法國生物學家冠名螺旋層狀纖維結構、以 1977 年過世生理學家冠名肌肉力速關係、以 1991 年過世流體力學家冠名氣泡潰縮方程、以 1970 年過世物理學家冠名振動散射光譜、或以當代學者冠名渦環形成數與固態週期波定理，一律改用中文物理描述詞）；（2）引入未取得開放全文之槍蝦透明眼罩（orbital hood）減震數據（2022 篇非開放全文未抓、2026 延伸篇機構典藏 HTTP 403 首次即停零重試，已嚴格隔離於 F151-NA004）；（3）在德州農工團隊電漿實驗誤寫原文未做之『真空除氣蒸餾水閃光歸零』或『溶入氬氣增亮 3 倍』（實為未額外曝氣的新開封蒸餾水無顯著發光，通入壓縮空氣或氬氣曝氣 30 分鐘飽和後穩定點燃，且須誠實標明電漿與效率係於匹配無因次數之 5 倍大螯模型實測、25° 立體偏角量自真實蛻殼顯微 CT）；（4）照抄 F151-S012 第 12 頁筆誤把約百萬赫茲（MHz）空蝕脈衝頻率說成 10^14 Hz，或隱瞞 F151-011 為離體同步輻射 160 m/s 高速撞擊即時透視；（5）把槍蝦說成主要靠大螯直接夾碎獵物（實為突齒壓入凹槽射出高速空蝕渦環水柱）；（6）出現任何人工工程防護板材、複合載荷測試、工業表面強化加工、生物膜沖洗或任何醫療器材與人體護具延伸宣稱，或畫面出現任何人物面孔。",
+      "evidence_gaps": "（1）南卡羅來納大學團隊 2022 年 Current Biology（DOI 10.1016/j.cub.2022.06.042）槍蝦透明眼罩減震論文在 Europe PMC 為非開放全文（isOpenAccess=N），其 2026 年延伸論文（DOI 10.1098/rsif.2025.0769）於機構典藏連結返回 HTTP 403 後已依規第一次即停、零重試（詳見 F151-NA004），故轉折二之槍蝦防自傷100% 建立在已讀開放全文 F151-S006 之『真實蛻殼顯微 CT 25° 噴嘴立體偏角導離潰縮奇異點』與 F151-S005 之『氣泡尾部高壓將穿泡微噴流推向背離蝦體前方』，絕不夾帶半句眼罩宣稱；（2）2000 年 Science、2001 年 Nature 早期蝦光短文、2004 年 Nature、2012 年 Science 與 2018 年 Current Biology 槍蝦滑動卡榫演化論文均為非開放全文（isOpenAccess=N，見 F151-NA003、NA005），1 頁流體力學影片展演短摘 arXiv:0712.2257 已依零會議短摘鐵律退除；（3）因 V171 查獲兩組跨網直接合著（DOI 10.4324/9781003091868-15 與 DOI 10.1039/c3bm60264h）將 10 網合併為 8 個互不合著獨立研究網並修正 F151-006 為 1.00 條，封頂後總計 10.75 條（8.17 分 < 8.50 分），誠實列為 reserve 後備，待補入 1–2 個零合著獨立開放全文研究網後升格。",
+      "still_missing": "尚缺約 0.65–0.75 條加權核心事實（目前 8 個互不合著研究網封頂後合計 10.75 條、8.17 分，距可成題 8.50 分門檻差 0.33 分）：需補入 1–2 篇與現有 8 個研究網（NET_01 至 NET_08）完全零直接合著之開放取用完整研究論文——例如待槍蝦透明眼罩衝擊波緩衝研究（F151-NA004）或槍蝦滑動卡榫關節演化形態研究（DOI 10.1016/j.cub.2017.11.044，F151-NA005）開放全文授權，或另覓零合著獨立團隊之螳螂蝦接觸式空蝕／甲殼水下聲學開放全文原研究。",
+      "note": "本題經 V171 抓獲兩組跨網直接合著（DOI 10.4324/9781003091868-15 與 DOI 10.1039/c3bm60264h）強制併網封頂 2.00，並校正 PMC6420313 氣體曝氣實驗條件下修 F151-006（-0.25 條），由作者自評 14.00 條（9.85 分）下修為 10.75 條（8.17 分 < 8.50 分門檻），誠實改判為 reserve（後備）；14 則高品質候選全數入池保留。",
+      "reason": "F151 自報 ready（14.00 條、9.85 分，10 網）不成立，改判 reserve（10.75 條、8.17 分，8 網）。三大下修依據：（1）查獲 F151-S014 單一作者與 F151-S008 通訊作者合著 2022 比較心理學手冊章節（DOI 10.4324/9781003091868-15），NET_01 與 NET_07 合併封頂 2.00（-1.00 條）；（2）查獲 F151-S009 通訊作者與 F151-S011 共同作者合著 2014 Biomaterials Science（DOI 10.1039/c3bm60264h），NET_08 與 NET_10 四篇合併封頂 2.00（-2.00 條）；（3）PMC6420313 原文並未進行真空除氣亦無氬氣增亮 3 倍數據，校正為未額外曝氣新開封蒸餾水無顯著閃光 vs 通空氣或氬氣曝氣飽和穩定發光，F151-006 由 1.25 下修為 1.00（-0.25 條）。即使放寬不扣 F151-006 之 0.25 條亦僅 11.00 條＝8.30 分，仍低於 8.50 分硬門檻。"
+    }
+  },
+  "reviews_summary": {
+    "V168": {
+      "author": "F148",
+      "target": "F148-T1",
+      "verdict": "ready",
+      "author_fact_count": 13.75,
+      "author_minutes": 9.72,
+      "recount_fact_count": 12.75,
+      "recount_minutes": 9.2,
+      "sensitivity_notes": "基準重算：將 V168 新抓獲跨網直接合著（Anna Rising × Frauke Gräter 2019 DOI 10.1364/oma.2019.at3e.3）之 NET06 併入 NET01 嚴格封頂 2.00 後，全題共 9 個互不合著獨立研究網，封頂後合計 12.75 條，（12.75×140＋700）÷270＝9.20 分（高於 8.50 分門檻 +0.70 分，即 +1.36 條安全餘裕）。敏感度測試：（1）若將全部三個 1.25 條獨立網核心（F148-003、F148-006、F148-010）從嚴全部壓至 1.00 條 → 12.00 條＝8.81 分（仍高於 8.50 分門檻 +0.31 分）；（2）若假設將任一 1.00 條獨立網再折減為 0.75 條 → 12.50 條＝9.07 分（仍高於門檻 +0.57 分）。雙轉折與生態收尾反轉完整成立，判定為 ready。",
+      "coauthorship_audit": {
+        "pairs_checked": 45,
+        "databases_used": [
+          "OpenAlex REST API (`/works` & `/authors` with `mailto=support@mokaair.com`, resolving all 111 unique included authors across 138 split OpenAlex author IDs — including `Frauke Gräter` [`A5041098407`, `A5103401403`] & `Jiangyu Zheng` — across all 45 original / 36 merged network pairs + external spider-silk hubs; persisted in `V168/cache/oa_<name>.json`)",
+          "Crossref Polite Pool REST API (`mailto=support@mokaair.com`, 23 targeted pairwise & hub queries in `V168/cache/cr_<name>.json` + 60 full author bibliographies in `F148/cache/cr_<name>.json`)",
+          "Europe PMC REST API (`AUTH` boolean queries in `V168/cache/epmc_<name>.json` + 59 pairwise caches in `F148/cache/epmc_pair_<name>.json` + JATS XML `<contrib>` role verification)",
+          "Google Search (`google_search` 4 targeted cross-network & hub queries verifying `Rising/Johansson × Gräter/Neuweiler/Schniepp/Numata`, `Numata/Asakura × Blanford/Buehler/Blackledge`, `Vollrath/Scheibel/Blamires`)"
+        ],
+        "merges_added_by_reviewer": [
+          {
+            "merged_networks": [
+              "NET01_SWU_CAS_DONGHUA_SLU",
+              "NET06_HITS_RWTH"
+            ],
+            "into_network": "NET01_SWU_CAS_DONGHUA_SLU_HITS",
+            "coauthors": [
+              "Anna Rising（F148-S002，OpenAlex A5064378135，ORCID 0000-0002-1872-1207）",
+              "Frauke Gräter / Frauke Graeter（F148-S009，OpenAlex A5103401403，ORCID 0000-0003-2891-3381）"
+            ],
+            "evidence_work": "Mojica-Benavides M, Herrera A, Rising A, Graeter F, Adiels CB (2019) Spider silk self-assembly for micro-fiber formation using optical tweezers and microfluidics, Biophotonics Congress: Optics in the Life Sciences Congress 2019 (OSA Technical Digest), paper AT3E.3, DOI 10.1364/oma.2019.at3e.3 (OpenAlex W2982053080, cached in V168/cache/oa_xnet_01_c1x2.json)",
+            "score_impact": "F148 因於 seq=69 遇 OpenAlex 429 停手而漏查拼寫變體 Frauke Graeter（A5103401403）；V168 抓出該筆跨網直接共同掛名後立即將 NET06（F148-009，1.00）併入已滿 2.00 上限之 NET01（原始合計 4.25 → 封頂 2.00），全題事實數誠實下修 -1.00 條（13.75 → 12.75 條，9.72 → 9.20 分）。"
+          }
+        ],
+        "editorial_non_coauthor_verifications": [
+          "PLOS Biology 學術編輯 `Gregory A. Petsko`（`F148-S002`, `PMC4122339`, JATS `contrib-type=\"editor\"`）確認為期刊學術編輯而非共同作者。",
+          "PLOS Computational Biology 編輯 `Emanuele Paci`（`F148-S009`, `PMC4132047`, JATS `contrib-type=\"editor\"`）確認為期刊編輯而非共同作者。",
+          "Biomolecules 學術編輯 `Peter R. Laity`（`F148-S011`, `PMC9739919`, JATS `contrib-type=\"editor\"`）確認為期刊學術編輯而非共同作者（註：Laity 雖曾與牛津 Vollrath 群合著蠶絲／蛛絲流變論文，因在本篇僅任期刊編輯非作者，不產生跨網作者連結）。",
+          "退題快取 `PMC2939878`（`F148-NA004`）之 `Carles Lalueza-Fox`（JATS `contrib-type=\"editor\"`）確認為期刊編輯。"
+        ],
+        "indirect_external_links_logged": [
+          {
+            "hub": "Fritz Vollrath（英國牛津大學，題外已排除樞紐學者，於 F148-T1 入題論文數為 0；列於 F148-NA001、NA006、NA009）",
+            "connected_active_networks": [
+              "NET01_SWU_CAS_DONGHUA_SLU_HITS",
+              "NET05_WM_NIH",
+              "NET07_WUHAN_MIT"
+            ],
+            "evidence_dois": [
+              "10.2108/zsj.22.273 ( Vollrath, Rising et al. 2005 Zoological Science )",
+              "10.1021/bm201509b & 10.1002/adma.201302740 ( Vollrath & Schniepp et al. 2012 Biomacromolecules, 2013 Adv. Mater. )",
+              "10.1038/s41563-022-01384-1 ( Vollrath & Buehler et al. 2022/2023 Nature Materials )"
+            ],
+            "handling": "F148-T1 零採用任何 Fritz Vollrath 共同掛名論文（NA001 Elettro 2016 與 NA009 Vollrath 2001 均已排除），NET01、NET05、NET07 三網之入題作者彼此直接合著數嚴格為 0，依規則不跨題外第三人併網；已於 NA001、NA009 加註嚴禁日後將任何 Vollrath 合著論文補入本題。"
+          },
+          {
+            "hub": "Sean J. Blamires（澳洲新南威爾斯大學，題外學者，於 F148-T1 入題論文數為 0；與 F148-S013 麥覺理大學為不同團隊）",
+            "connected_active_networks": [
+              "NET03_RIKEN_KEIO",
+              "NET09_AKRON_MACQUARIE"
+            ],
+            "evidence_dois": [
+              "10.1126/sciadv.abo6043 ( Craig, Blamires, Malay, Arakawa, Numata et al. 2022 Science Advances )",
+              "10.1098/rsif.2012.0277 & 10.1146/annurev-ento-031616-035615 ( Blamires, Blackledge, Dhinojwala et al. 2012, 2017 )"
+            ],
+            "handling": "F148-S013 四位入題作者為 Harmer、Clausen、Wroe、Madin（不含 Blamires），故 NET03 與 NET09 全體入題作者之間直接合著數嚴格為 0，依規則不跨題外第三人併網。"
+          },
+          {
+            "hub": "Thomas Scheibel（德國拜羅伊特大學，題外已排除樞紐學者，於 F148-T1 入題論文數為 0；列於 F148-NA008）",
+            "connected_active_networks": [
+              "NET03_RIKEN_KEIO"
+            ],
+            "evidence_dois": [
+              "10.1039/d5lc00551e ( Scheibel, Numata, Shintaku et al. 2025 Lab on a Chip )",
+              "10.1016/b978-0-323-96017-5.00034-0 ( 2023 專書全書撰稿人名單同列不同章節作者，非合著研究論文 )"
+            ],
+            "handling": "Scheibel 所有論文已於 NA008 排除，且僅與單一活躍網 NET03 存在 2025 題外合著，與其餘 8 個活躍網皆為 0 合著，不影響任何活躍研究網獨立性。"
+          },
+          {
+            "hub": "Ingi Agnarsson（題外已排除學者，於 F148-T1 入題論文數為 0；列於 F148-NA004）",
+            "connected_active_networks": [
+              "NET07_WUHAN_MIT",
+              "NET09_AKRON_MACQUARIE",
+              "NET10_UBC_BUTANTAN"
+            ],
+            "evidence_dois": [
+              "10.1371/journal.pone.0011234 ( Agnarsson, Kuntner, Blackledge 2010 PLOS ONE, F148-NA004 )",
+              "10.1111/j.0014-3820.2006.tb01869.x ( Agnarsson, Avilés et al. 2006 Evolution )"
+            ],
+            "handling": "作者動筆前已主動排除 PMC2939878（NA004），成功確保 NET07（Jie Liu）、NET09（Blackledge）與 NET10（Avilés）三網之間直接合著數嚴格為 0。"
+          }
+        ],
+        "network_totals": {
+          "NET01_SWU_CAS_DONGHUA_SLU_HITS": {
+            "candidate_ids": [
+              "F148-001",
+              "F148-002",
+              "F148-007",
+              "F148-009"
+            ],
+            "standalone_sum": 4.25,
+            "capped_facts": 2,
+            "cap_applied": true
+          },
+          "NET02_WUERZBURG_MAINZ": {
+            "candidate_ids": [
+              "F148-003"
+            ],
+            "standalone_sum": 1.25,
+            "capped_facts": 1.25,
+            "cap_applied": false
+          },
+          "NET03_RIKEN_KEIO": {
+            "candidate_ids": [
+              "F148-004",
+              "F148-005"
+            ],
+            "standalone_sum": 2,
+            "capped_facts": 2,
+            "cap_applied": false
+          },
+          "NET04_MANCHESTER": {
+            "candidate_ids": [
+              "F148-006"
+            ],
+            "standalone_sum": 1.25,
+            "capped_facts": 1.25,
+            "cap_applied": false
+          },
+          "NET05_WM_NIH": {
+            "candidate_ids": [
+              "F148-008"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET07_WUHAN_MIT": {
+            "candidate_ids": [
+              "F148-010"
+            ],
+            "standalone_sum": 1.25,
+            "capped_facts": 1.25,
+            "cap_applied": false
+          },
+          "NET08_TUAT_FUKUI": {
+            "candidate_ids": [
+              "F148-011"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET09_AKRON_MACQUARIE": {
+            "candidate_ids": [
+              "F148-012",
+              "F148-013"
+            ],
+            "standalone_sum": 2,
+            "capped_facts": 2,
+            "cap_applied": false
+          },
+          "NET10_UBC_BUTANTAN": {
+            "candidate_ids": [
+              "F148-014"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          }
+        },
+        "remaining_36_active_network_pairs_direct_coauthorships": 0,
+        "split_openalex_profiles_included": 138
+      },
+      "core_verdicts": [
+        {
+          "id": "F148-001",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET01_SWU_CAS_DONGHUA_SLU_HITS",
+          "changed_fields": [
+            "answer_target",
+            "source_locator",
+            "notes",
+            "F148-S001.reading_scope",
+            "F148-S001.locator",
+            "F148-S001.summary",
+            "F148-S001.limitations"
+          ],
+          "reason": "PMC9932165（即時重抓 byte-for-byte 一致）逐節核對：28 種牽引絲蛋白（10 種 spidroins＋18 種 SpiCE/輔助蛋白）、黃尿酸金黃色素、9,349 顆細胞與空間轉錄組尾 47.49%→囊 34.33%→管 0.76% 轉開 V-ATPase 質子幫浦全數相符；更正作者把 40 µm 篩網全細胞 scRNA-seq 誤寫為『單細胞核轉錄組』並釐清 10 個全腺細胞群跨段共享關係，維持 1.00。"
+        },
+        {
+          "id": "F148-002",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1.25,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1.25,
+          "network": "NET01_SWU_CAS_DONGHUA_SLU_HITS",
+          "changed_fields": [
+            "answer_target",
+            "notes",
+            "F148-S002.locator",
+            "F148-S002.limitations"
+          ],
+          "reason": "PMC4122339（即時重抓 byte-for-byte 一致）逐節核對：活體雙管微電極 pH 7.6±0.1→7.2±0.1→7.0±0.1→管中段 5.7±0.0、HCO3- 5→21 mM、0.1 mM methazolamide 可逆瓦解梯度及 NT 反平行二聚化 vs CT 展開成 5–10 nm 原纖維全數相符；更正 Table 1 遠端囊部標準差為 192±8 mM Na+、164±7 mM Cl-（原寫 ±9 為尾部 Location 1）並更正重組結構域採用蛛種（移除原文未用之 A. aurantia），確認 Gregory A. Petsko 為 JATS Academic Editor，與 F148-001 並列占滿 NET01 2.00 上限，題內計 1.00。"
+        },
+        {
+          "id": "F148-003",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.25,
+          "author_standalone_facts": 1.25,
+          "reviewer_facts": 1.25,
+          "reviewer_standalone_facts": 1.25,
+          "network": "NET02_WUERZBURG_MAINZ",
+          "changed_fields": [
+            "notes",
+            "F148-S003.limitations"
+          ],
+          "reason": "PMC6763431（即時重抓 byte-for-byte 一致）逐節核對：E. australis MaSp1 N 端核心 7.4% 甲硫胺酸（6 顆）、白胺酸置換 L1–L6 使單體 Tm 61→81 °C（+20 °C）且解摺疊自由能 5.6→8.0 kcal/mol，但 pH 6.0 二聚體 Kd 由 1.1 nM 退化千倍至 1.1 µM 並鎖死螺旋擺動構形變化全數精確無誤；獨立研究網確認零跨網合著，維持 1.25。"
+        },
+        {
+          "id": "F148-004",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET03_RIKEN_KEIO",
+          "changed_fields": [
+            "answer_target",
+            "source_locator",
+            "notes",
+            "editorial.visual",
+            "F148-S004.reading_scope",
+            "F148-S004.locator",
+            "F148-S004.summary",
+            "F148-S004.limitations"
+          ],
+          "reason": "PMC7591501 全文核對：磷酸鉀等多價陰離子誘導 MaSp2 液—液相分離濃縮逾 100 倍、pH 5.5 酸化使零剪黏度由 0.029 暴升 ~3,700 倍至 106 Pa·s 形成奈米原纖維網，且未經機械拉扯前完全無 β-sheet 結晶峰全數相符；將正稿 1970 年過世學者冠名光譜詞彙統一改寫為『雷射振動散射光譜』，維持 1.00。"
+        },
+        {
+          "id": "F148-005",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET03_RIKEN_KEIO",
+          "changed_fields": [
+            "answer_target",
+            "scope",
+            "source_locator",
+            "notes",
+            "F148-S005.reading_scope",
+            "F148-S005.locator",
+            "F148-S005.summary",
+            "F148-S005.limitations"
+          ],
+          "reason": "PMC10789810（即時重抓 byte-for-byte 一致）核對：三入口負壓拉擠 -40/-50 kPa 僅成團塊、跨過 -60 kPa 即臨界壁面剪應力 72 Pa（52,282 s^-1）始成連續纖維、β-sheet 由 17.8% 升至 111 Pa 的 29.2%（A→B→C 12.5%→22.5%→29.2%）及 xA 突變體仍相分離卻零結晶斷裂全數相符；刪除未單獨抓取之補充表韌性數字並移除光譜現代冠名，與 F148-004 合計 2.00 封頂，維持 1.00。"
+        },
+        {
+          "id": "F148-006",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.25,
+          "author_standalone_facts": 1.25,
+          "reviewer_facts": 1.25,
+          "reviewer_standalone_facts": 1.25,
+          "network": "NET04_MANCHESTER",
+          "changed_fields": [
+            "notes",
+            "F148-S006.limitations"
+          ],
+          "reason": "PMC7327021 全文核對：黑寡婦迷你絲蛋白 30% w/v 溶解度、200 mg/mL pH 8.0 於剪率 >0.02 s^-1 冪律指數 -0.77±0.10 剪切變稀逾百倍（9.0±2.2→0.037–0.085 Pa·s，正向力 0.082±0.022 N），及 pH 5.0 × >300 mM（500 mM）磷酸鉀雙因子濕紡化學及閘與 4.8×2.0 nm 晶粒全數精確相符；獨立網零跨網合著，維持 1.25。"
+        },
+        {
+          "id": "F148-007",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 0,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 0,
+          "reviewer_standalone_facts": 1,
+          "network": "NET01_SWU_CAS_DONGHUA_SLU_HITS",
+          "changed_fields": [
+            "answer_target",
+            "scope",
+            "source_locator",
+            "notes",
+            "editorial.payoff",
+            "editorial.visual",
+            "F148-S007.locator",
+            "F148-S007.summary",
+            "F148-S007.limitations"
+          ],
+          "reason": "PMC13096554（即時重抓 byte-for-byte 一致）核對：<=100 nm 原位玻璃化 cryo-FIB/cryo-ET 重建證實腺管內人字形層狀排列與成絲後天然蜘蛛絲軸向平行無孔隙排列（勝過局部留縫蠶絲與無序人工絲）；精確修正表述，標明子斷層平均直徑 3.6±0.8 nm 係於天然家蠶絲素蛋白定量之同源積木，屬 NET01 封頂網邊際計 0.00。"
+        },
+        {
+          "id": "F148-008",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET05_WM_NIH",
+          "changed_fields": [
+            "answer_target",
+            "source_locator",
+            "notes",
+            "F148-S008.reading_scope",
+            "F148-S008.locator",
+            "F148-S008.summary",
+            "F148-S008.limitations"
+          ],
+          "reason": "PMC6256776 全文核對：50 nm 厚無外皮天然扁帶絲四重偏振波譜解析 β-sheet 總占 42.9%（晶區 ~32%＋取向無定形 β 鏈 ~11%）、α 螺旋（13.9%, +0.708）與 3_1 螺旋（11.5%, -0.733）正負偏振抵銷及真正無規捲曲僅 9.1% 全數相符；移除正稿光譜現代學者冠名，維持獨立網 1.00。"
+        },
+        {
+          "id": "F148-009",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 0,
+          "reviewer_standalone_facts": 1,
+          "network": "NET01_SWU_CAS_DONGHUA_SLU_HITS",
+          "changed_fields": [
+            "notes",
+            "F148-S009.limitations"
+          ],
+          "reason": "PMC4132047 全文數值核對（約 31 萬原子十字園蛛模型 η_aa = 1±0.5×10^4 vs η_ca = 2±0.2×10^2 N·s/m^2 低近百倍及 10° 傾角卡阻，確認 Emanuele Paci 為 JATS Editor）完全正確；惟 V168 補查 F148 於 seq=69 遇 429 中斷之 OpenAlex 分裂作者檔 A5103401403，抓出 Frauke Gräter 與 F148-S002 之 Anna Rising 直接合著 2019 Biophotonics Congress 論文（DOI 10.1364/oma.2019.at3e.3），依法將 NET06 併入 NET01 封頂 2.00，本條邊際分數由 1.00 下修為 0.00。"
+        },
+        {
+          "id": "F148-010",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.25,
+          "author_standalone_facts": 1.25,
+          "reviewer_facts": 1.25,
+          "reviewer_standalone_facts": 1.25,
+          "network": "NET07_WUHAN_MIT",
+          "changed_fields": [
+            "answer_target",
+            "source_locator",
+            "notes",
+            "F148-S010.reading_scope",
+            "F148-S010.locator",
+            "F148-S010.summary",
+            "F148-S010.limitations"
+          ],
+          "reason": "PMC6397028（即時重抓 byte-for-byte 一致）核對：>70% RH 超收縮門檻觸發單向扭轉（N. pilipes 255±38 °/mm，峰值 >300 °/mm；蠶絲與合成纖維零反應）及 MaSp2 Pro17 環氫鍵密度 ~0.4 低於 MaSp1 ~0.6–0.7 全數精確無誤；移除正稿光譜現代學者冠名，維持獨立網 1.25。"
+        },
+        {
+          "id": "F148-011",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET08_TUAT_FUKUI",
+          "changed_fields": [
+            "notes",
+            "F148-S011.limitations"
+          ],
+          "reason": "PMC9739919 全文核對：重組蛛絲纖維水合收縮 28%、斷裂伸長率由 19% 暴增逾三倍至 62%（模數 5.2→1.0 GPa、強度 236→122 MPa），及浸沒液態水 13C CP/MAS 晶粒峰不變 vs r-INEPT 水合移動軟鏈峰劇增全數相符；確認 Peter R. Laity 為 JATS Academic Editor，維持獨立網 1.00。"
+        },
+        {
+          "id": "F148-012",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET09_AKRON_MACQUARIE",
+          "changed_fields": [
+            "notes",
+            "F148-S012.limitations"
+          ],
+          "reason": "PMC5964112（即時重抓 byte-for-byte 一致）核對：10→90% RH 黏珠體積膨脹 ~100%、ATR-IR 本體含 ~50% 液態水、重水 SFG 藍寶石接觸界面 2400–2500 cm^-1 零液態水峰及洗除 LMMCs 吸水跌剩 ~20% 失黏全數相符；與池內短題 G174／B16005 完全不同機制，維持 1.00。"
+        },
+        {
+          "id": "F148-013",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET09_AKRON_MACQUARIE",
+          "changed_fields": [
+            "answer_target",
+            "scope",
+            "source_locator",
+            "notes",
+            "F148-S013.reading_scope",
+            "F148-S013.locator",
+            "F148-S013.summary",
+            "F148-S013.limitations"
+          ],
+          "reason": "PMC4570981 全文核對：N=16 隻拉氏金蛛 25×25 vs 50×50 cm 配對結網、放射絲 8,022–8,074 MPa 對捕獲螺旋絲 25.1–25.3 MPa 差逾 320 倍、放射絲增長 71%（10.7→18.3 cm）吸能翻倍（~600→~1,200 µJ）及單根受撞放射絲峰值應力隔離（t14=13.99, 7.78, p<0.001）皆正確；抓出並更正作者將『野外 1 m 飛行通道 300 fps 拍攝 N=40 隻飛蟲量測動能（103.6±18.9 µJ）設定有限元素撞擊模擬』誤寫為『40 次活蟲撞擊實驗網』之實驗流程誤讀，維持 1.00。"
+        },
+        {
+          "id": "F148-014",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET10_UBC_BUTANTAN",
+          "changed_fields": [
+            "notes",
+            "F148-S014.limitations"
+          ],
+          "reason": "PMC7487872 全文核對：厄瓜多安地斯東坡 960–3,440 m 共 207 張野外蛛網＋亞蘇尼雨林 31 擋雨棚對 55 對照共 86 張網、二維圓網承受 2–3 倍雨強致破損機率最高（χ^2=38.0, p<0.001；擋雨棚降損 p=0.015），但換算單位蜘蛛乾重損失絲質量（χ^2=25.8, p<0.001）反由三維皿網賠最慘（圓網單位體重用絲少約 100 倍且食絲回收）全數相符，維持獨立網 1.00。"
+        }
+      ]
+    },
+    "V169": {
+      "author": "F149",
+      "target": "F149-T1",
+      "verdict": "ready",
+      "author_fact_count": 13.75,
+      "author_minutes": 9.72,
+      "recount_fact_count": 13.5,
+      "recount_minutes": 9.59,
+      "sensitivity_notes": "基準重算（向下修正優先）：10 個互不合著研究網封頂後合計 13.50 條（較作者自評 13.75 條下修 0.25 條，因清除 F149-007 未實測皮膚膠原切片宣稱並下修為 0.50），（13.50×140＋700）÷270＝9.59 分（高於 8.50 分門檻 +1.09 分，即 +2.11 條安全餘裕）。極端敏感度壓力測試：（1）若將 F149-007 完全歸零刪除 → 9 個獨立網、13.00 條＝9.33 分（仍高於門檻 +0.83 分）；（2）若再將體外膜生物物理重構 F149-009（1.00）與古生物化石 F149-014（1.00）雙雙從嚴打七五折壓至 0.75 → 12.50 條＝9.07 分（仍高於門檻 +0.57 分）；（3）即便假設性將題外第三人 Monaghan 各自合作過之 NET_01_TANAKA（2.00）與 NET_02_MCCUSKER（2.00）強制合併封頂 2.00（扣減整整 2.00 條）→ 11.50 條＝8.56 分（依然跨過 8.50 分門檻）。",
+      "coauthorship_audit": {
+        "pairs_checked": 45,
+        "databases_used": [
+          "JATS XML Ground-Truth `<contrib>` & `<fn>` Parser（V169 自 14 份入題 JATS XML 直接解析全部 71 位不重複具名作者，修正 6 份未標 `contrib-type` 屬性之 XML 作者擷取，並逐一分離期刊學術編輯與公開審稿人）",
+          "Europe PMC REST API（V169 獨立執行 7 筆高敏作者與跨網全配對 `AUTH` 查詢存於 `V169/cache/epmc_...json`，並全量程式化複驗 `F149/cache/audit55_epmc_p01..p55.json` 全部 45 組活躍跨網配對）",
+          "Crossref Polite Pool REST API（`mailto=support@mokaair.com`，間隔 >=1.68s，V169 獨立執行 13 筆核心作者完整書目與跨網雙人配對查詢存於 `V169/cache/cr_...json`，並全量掃描 `F149/cache/audit55_cr_...json` 與 `cr_verify_...json`）",
+          "OpenAlex REST API（`mailto=support@mokaair.com`：V169 於首筆測試 `oa_upper_NET_01_TANAKA_c1.json` 遇 HTTP 429 立即停用該站零重試，並全量程式化掃描 F149 限流前已合法取得之 118 筆 OpenAlex 作者與著作快取）",
+          "Google Search（`google_search` 獨立交叉查驗 `Kaylee M. Wells`、`Stephanie L. Tsai`、`Prayag Murawala × Akira Satoh`、`Catherine D. McCusker × James W. Godwin` 及 `Wang et al. 2019 PMID 30826398`）"
+        ],
+        "merges_added_by_reviewer": [],
+        "editorial_non_coauthor_verifications": [
+          "eLife 審稿編輯與資深編輯：`Prayag Murawala`（`NET_01_TANAKA` 之 `F149-S001` 第四作者）與 `Didier Y. R. Stainier` 在 `NET_03_SATOH` 之 `F149-S011`（`PMC12875611`）JATS `<contrib contrib-type=\"editor\">` 分任 Reviewing Editor 與 Senior Editor；V169 核驗 Crossref 與 Europe PMC 書目確認 `Murawala` 與岡山大學 `Satoh／Morishita／Yamamoto／Furukawa／Ohashi／Hamada` 6 人之間共同研究論文數嚴格為 0。",
+          "Frontiers 公開同儕審稿人與學術編輯：`Süleyman Yıldırım`（`NET_11_DEMIRCAN` 之 `F149-S007` 末位作者）與 `Joshua Currie` 在 `NET_04_GODWIN_DELGADO` 之 `F149-S004`（`PMC9458980`）JATS `<fn fn-type=\"edited-by\">` 列為 `Reviewed by` 同儕審稿人（學術編輯為 `Pamela Imperadore`）；V169 核驗 Crossref 與 Europe PMC 確認 `Süleyman Yıldırım` 與哥倫比亞／蒙納許群 8 位作者之間共同著作數嚴格為 0。",
+          "其餘入題 JATS 列名之期刊編輯與審稿人：`Phillip A. Newmark`、`Anna Akhmanova`（`F149-S003`, `PMC6959999`）；`K. VijayRaghavan`、公開審稿人 `Matthew Harris`（`F149-S013`, `PMC8716110`）；`De-Li Shi`（`F149-S006`, `PMC8143519`）；`Miguel Constancia`、公開審稿人 `Jessica Lehoczky`、`Ken Poss`（`F149-S005`, `PMC8456783`）——全數確認為期刊編輯或同儕審稿人而非合著者。"
+        ],
+        "indirect_external_links_logged": [
+          {
+            "hub": "James R. Monaghan、S. Randal Voss、Jessica L. Whited & Nicholas D. Leigh（美國東北大學／肯塔基大學／哈佛群，題外已排除學者，於 F149-T1 入題論文數為 0；列於 F149-NA003..005）",
+            "connected_active_networks": [
+              "NET_01_TANAKA",
+              "NET_02_MCCUSKER",
+              "NET_04_GODWIN_DELGADO"
+            ],
+            "evidence_dois": [
+              "10.1038/nature25458 (Nowoshilow et al. 2018 Nature)",
+              "10.1038/s41467-018-07604-0 (Leigh et al. 2018 Nat. Commun.)",
+              "10.1016/j.ydbio.2019.04.008 (Vieira, Wells, Raymond, De Souza, Garcia, Monaghan & McCusker 2019 Dev. Biol.)",
+              "10.1016/j.exer.2022.109070 (Sousounis, Wells, Monaghan et al. 2022 Exp. Eye Res.)"
+            ],
+            "handling": "所有含 Monaghan／Voss／Whited／Leigh 之橋接論文已於動筆前全數排除於 F149-NA003..005（於 F149-T1 入題論文數為 0）；NET_01_TANAKA、NET_02_MCCUSKER 與 NET_04_GODWIN_DELGADO 入題作者之間直接合著數經三庫全檢嚴格為 0，依規則不跨題外第三人併網，並於 NA003..004 加註永久禁入鎖定。"
+          },
+          {
+            "hub": "David L. Stocum & Stéphane Roy（題外已排除學者，於 F149-T1 入題論文數為 0；列於 F149-NA007、NA008）",
+            "connected_active_networks": [
+              "NET_10_MELTON",
+              "NET_03_SATOH"
+            ],
+            "evidence_dois": [
+              "10.1002/jez.1402010312 (Stocum DL & Melton DA 1977 J. Exp. Zool. 201:477–481)"
+            ],
+            "handling": "相關論文（PMC4476796、PMC2082079、PMC6362101）已全數排除於題外，確保 NET_10_MELTON 與 NET_03_SATOH 獨立。"
+          },
+          {
+            "hub": "Jeremy P. Brockes（英國倫敦大學學院，題內已主動執行強制併網 NET_04_GODWIN_DELGADO）",
+            "connected_active_networks": [
+              "NET_04_GODWIN_DELGADO"
+            ],
+            "evidence_dois": [
+              "10.1371/journal.pone.0154176 (Grassme, Garza-Garcia, Delgado, Godwin, Kumar, Gates, Driscoll & Brockes 2016 PLOS ONE)"
+            ],
+            "handling": "因 F149-S004（Jean Paul Delgado）與 F149-S005（James W. Godwin）曾於 2016 年直接合著，作者已於動筆前將哥倫比亞群與蒙納許／MDIBL 群強制合併為單一 NET_04_GODWIN_DELGADO（1.00 + 1.00 = 2.00 <= 2.00）；V169 另查驗 Nadia A. Rosenthal 與 NET_10_MELTON（Douglas A. Melton）及 NET_01_TANAKA（Elly M. Tanaka）確認直接合著數為 0。"
+          }
+        ],
+        "network_totals": {
+          "NET_01_TANAKA": {
+            "candidate_ids": [
+              "F149-001",
+              "F149-010"
+            ],
+            "standalone_sum": 2.5,
+            "capped_facts": 2,
+            "cap_applied": true
+          },
+          "NET_05_CHIBA": {
+            "candidate_ids": [
+              "F149-002"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_10_MELTON": {
+            "candidate_ids": [
+              "F149-003"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_04_GODWIN_DELGADO": {
+            "candidate_ids": [
+              "F149-004",
+              "F149-005"
+            ],
+            "standalone_sum": 2,
+            "capped_facts": 2,
+            "cap_applied": false
+          },
+          "NET_07_NTU_LIN_LEE": {
+            "candidate_ids": [
+              "F149-006"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_11_DEMIRCAN": {
+            "candidate_ids": [
+              "F149-007"
+            ],
+            "standalone_sum": 0.5,
+            "capped_facts": 0.5,
+            "cap_applied": false
+          },
+          "NET_02_MCCUSKER": {
+            "candidate_ids": [
+              "F149-008",
+              "F149-013"
+            ],
+            "standalone_sum": 2,
+            "capped_facts": 2,
+            "cap_applied": false
+          },
+          "NET_08_SHIMAMOTO": {
+            "candidate_ids": [
+              "F149-009"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_03_SATOH": {
+            "candidate_ids": [
+              "F149-011",
+              "F149-012"
+            ],
+            "standalone_sum": 2,
+            "capped_facts": 2,
+            "cap_applied": false
+          },
+          "NET_09_FROBISCH": {
+            "candidate_ids": [
+              "F149-014"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          }
+        },
+        "remaining_45_active_network_pairs_direct_coauthorships": 0,
+        "homonym_false_positives_verified_zero_overlap": "V169 程式化全量掃描雙邊快取抓出 107 筆表面姓氏縮寫命中（含 95 筆 LHC ATLAS／Fermilab CDF 逾五百人高能物理粒子對撞論文，以及 12 筆非高能物理縮寫碰撞：2003 長庚兒科林奏延 T. Y. Lin、1988 肝癌與 1965 外傷性膽道出血臨床病例、1984 放射性碘滲漏、1992/1998 順天堂大學白井俊一 T. Shirai、2001 犬瘟熱病毒、2007–2009 東京農大綿羊染色體輻射雜交圖譜 K. Nomura & C. H. Wu），逐筆核對全名、年代與學科確認 100% 為同名異人，全名精確跨網命中數嚴格為 0。"
+      },
+      "core_verdicts": [
+        {
+          "id": "F149-001",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.25,
+          "author_standalone_facts": 1.25,
+          "reviewer_facts": 1.25,
+          "reviewer_standalone_facts": 1.25,
+          "network": "NET_01_TANAKA",
+          "changed_fields": [
+            "question",
+            "answer_target",
+            "source_locator",
+            "notes",
+            "editorial.payoff",
+            "editorial.visual",
+            "F149-S001.reading_scope",
+            "F149-S001.locator",
+            "F149-S001.summary",
+            "F149-S001.limitations"
+          ],
+          "reason": "PMC8140481（V169 即時重抓 byte-for-byte 一致）逐字核對：爪蟾 St. 66 再生芽 Prrx1+ 68.2%±3.0%（n=3）、scRNA-seq 3,817 顆細胞中 85.3% 結締組織／84.6% prrx1+、真皮僅貢獻軟骨 3.8% vs 間質 85.6% 與肌腱 10.6%、15,014 顆細胞時序最高僅 ~60% vs 六角恐龍 ~100% 重返 St. 52 肢芽，及異時移植進 St. 50 蝌蚪肢芽 n=5 p<0.001 拒長趾軟骨全數精確相符；抓出作者將手術部位『後肢（hindlimb）與腳趾軟骨』誤寫為『前肢與手指』，並混併 28 dpa 免疫染色（68.2%）與 14 dpa scRNA-seq（85.3%）時間點，已全數更正，維持 1.25。"
+        },
+        {
+          "id": "F149-002",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_05_CHIBA",
+          "changed_fields": [
+            "answer_target",
+            "source_locator",
+            "notes",
+            "editorial.visual",
+            "F149-S002.reading_scope",
+            "F149-S002.locator",
+            "F149-S002.limitations"
+          ],
+          "reason": "PMC9343386 全文核對：紅腹蠑螈肌核標記 30.8±4.8%（Pax7+ 0%）、3 cm 幼體與 3–4 cm 剛變態幼蠑螈無單核肌源細胞、~6 cm 亞成體大量動員（88.2±2.2% PCNA+，n=4）、12 °C 限縮 3.5 cm 滿 1 歲（n=1 縱向追蹤）無去分化而回溫 6.8 cm 恢復、0.2 g/L 硫脲 ~6 cm 巨型幼體 n=8 無去分化、St. 57 幼體肌束離體培養 23 天 3/4 與 4/5 自發芽生全數相符；補明硫脲撤除後約 2 個月組係於掌指成形期（n=6）動員（變態 >6 個月組芽期 n=2 即現），並補齊視覺結尾『不畫任何人物面孔。』，維持 1.00。"
+        },
+        {
+          "id": "F149-003",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_10_MELTON",
+          "changed_fields": [
+            "answer_target",
+            "source_locator",
+            "notes",
+            "editorial.visual",
+            "F149-S003.reading_scope",
+            "F149-S003.locator"
+          ],
+          "reason": "PMC6959999 全文核對：全厚皮瓣縫合 5 dpa 4N 分裂細胞僅 596 條轉錄本改變 vs 2N 殘肢細胞 3,911 條失調、72 hpa 起 midkine 富集於 AEC 基層、iMDK 4/4 於 60 dpa 零再生骨、CRISPR >99% 突變 n=5 vs n=14 p<0.005 顯著延遲縮小且表皮 TUNEL+ 凋亡與 NSE+ 單核球滯留（3 dpa 電穿孔可救援）、病毒過表現 17/20（85%）失敗或發育不全並壓抑 EdU+ 分裂全數相符；校正 JATS 六小節標題並補齊視覺結尾『不畫任何人物面孔。』，維持 1.00。"
+        },
+        {
+          "id": "F149-004",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_04_GODWIN_DELGADO",
+          "changed_fields": [
+            "answer_target",
+            "notes",
+            "editorial.visual",
+            "F149-S004.reading_scope",
+            "F149-S004.locator",
+            "F149-S004.summary",
+            "F149-S004.limitations"
+          ],
+          "reason": "PMC9458980 全文核對：1–3 dpa 與 7–15 dpa 雙波 NOX 活性氧（每時點 10 肢）、400 μM apocynin 阻斷 0–11 dpa（n=10）致 124 dpa 肢體縮小、70% 腕骨減至 5–6 塊、80% 肘關節異常、90% 新舊肱骨接合失敗，外加 50 μM H2O2 分別救回 30%/30%/40% 並恢復 CD45+/CD11b+ 吞噬募集（p=0.0005）全數相符；將易生歧義之『懸空』精確改寫為『骨膜與軟骨膜錯角斷開無法連續癒合接軌』，確認 JATS 公開審稿人非共同作者，維持 1.00。"
+        },
+        {
+          "id": "F149-005",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_04_GODWIN_DELGADO",
+          "changed_fields": [
+            "answer_target",
+            "scope",
+            "source_locator",
+            "notes",
+            "editorial.visual",
+            "F149-S005.reading_scope",
+            "F149-S005.locator",
+            "F149-S005.summary",
+            "F149-S005.limitations"
+          ],
+          "reason": "PMC8456783（V169 即時重抓 byte-for-byte 一致）核對：無造血骨髓、4 月齡肝臟骨髓系細胞 3.8%±0.83% vs 脾臟 1.34%±0.28%、12 月齡達脾臟約 5 倍、GFP 肝脾移植 N=4、50 萬顆單細胞過繼轉移 N=12（p<=0.01）、DiI 2–10 dpa、連續轉移 N=16 及無脾手術 N=8 全數 8/8 長齊四指前肢相符；精確區分 Fig. 2（18 h–7 dpa 斷尾模型）與 Fig. 3–7（斷肢模型）並正名『肝臟包膜下造血帶』，維持 1.00。"
+        },
+        {
+          "id": "F149-006",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_07_NTU_LIN_LEE",
+          "changed_fields": [
+            "answer_target",
+            "scope",
+            "source_locator",
+            "notes",
+            "editorial.visual",
+            "F149-S006.reading_scope",
+            "F149-S006.locator",
+            "F149-S006.summary",
+            "F149-S006.limitations"
+          ],
+          "reason": "PMC8143519（V169 即時重抓 byte-for-byte 一致）與前導論文 Wang et al. 2019 Dev. Biol.（PMID 30826398）雙重核對：確認 MS-275 濃度單位確為『25 mM』無誤——實驗並非水浴浸泡，而是每兩天在殘肢傷口表皮下『局部微量注射 2 μL 之 25 mM MS-275』（單次 50 nmol；同時抓出 PMC8143519 Animal Handling 將『2 μL』誤排為『2 ml』、而同頁 Local Injection 明載『Two microliters』之排版筆誤）；40 肢 RNA-seq（37,798 與 39,581 條轉錄本）、60 肢 qPCR（5/6 基因）及 30 肢加注 1 μM Wnt 抑制劑於 26 dpa 將成芽率由 1/10 救回 9/10 全數精確相符，維持 1.00。"
+        },
+        {
+          "id": "F149-007",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 0.75,
+          "author_standalone_facts": 0.75,
+          "reviewer_facts": 0.5,
+          "reviewer_standalone_facts": 0.5,
+          "network": "NET_11_DEMIRCAN",
+          "changed_fields": [
+            "answer_target",
+            "scope",
+            "source_locator",
+            "notes",
+            "editorial.payoff",
+            "editorial.visual",
+            "F149-S007.reading_scope",
+            "F149-S007.locator",
+            "F149-S007.summary",
+            "F149-S007.limitations"
+          ],
+          "reason": "PMC6054665（V169 即時重抓 byte-for-byte 一致）逐字稽核抓出重要失誤並向下修正：同胎 48 隻對半拆組（50 nM T4 誘導變態減重 33% vs 天然幼態）各取 n=15 右上臂截肢，幼態 64 dpa 15/15（100%）四指再生 vs 變態 150 dpa 僅 2/15（13%）四指、4/15 三指、4/15 二指、5/15（33%）零再生，以及皮膚菌相 α 多樣性下降（p=0.0005）與 Proteobacteria 5.2%→41.8%（PERMANOVA p=0.0001）全數屬實；惟作者原稿捏造了四個非原文 Results 標題，並誤把討論段引用他人文獻之『皮膚真皮緻密膠原增厚、杯狀細胞減少』寫成本文切片結果（本文唯一組織切片為腸道 Suppl. Fig. S9，且變態後腸道杯狀細胞反而更豐富）。V169 已徹底清除未實測皮膚切片宣稱、更正 JATS 標題，並依向下修正優先原則將本條由 0.75 下修為 0.50。"
+        },
+        {
+          "id": "F149-008",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_02_MCCUSKER",
+          "changed_fields": [
+            "answer_target",
+            "notes",
+            "editorial.visual",
+            "F149-S008.reading_scope",
+            "F149-S008.locator",
+            "F149-S008.summary"
+          ],
+          "reason": "PMC10272535（V169 即時重抓 byte-for-byte 一致）核對：前側 ALM 於 7–9 dps 腹腔注射 150 μg/g RA 誘發 80% 異位肢、基部無肌軟骨球狀基塊於 2–3 週軟組織收縮脫鉤（N=13）、GFP+ 基塊回植後側傷口 12/20（60%）與 9/25（36%）穩固整合 vs 前側傷口 0/13 與 0/12、11 週 qRT-PCR（n=4）高 Tbx5 但 Chrdl1/HoxA9/11 錯位及肢基部 Alx4/Grem1 主導全數相符；校正 JATS 3.1–3.4 與 4 Conclusion 標題並補明異位軟骨自始未與宿主肱骨融合，維持 1.00。"
+        },
+        {
+          "id": "F149-009",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_08_SHIMAMOTO",
+          "changed_fields": [
+            "notes",
+            "editorial.visual",
+            "F149-S009.reading_scope"
+          ],
+          "reason": "PMC6681110 全文核對：無脂錨游離 Prod1 ~5 mM 仍為單體、GB1 脂錨對照不聚簇、Sortase A 接 GPI 模擬脂錨於平面脂雙層 17 h 形成 250–1,700 分子同側聚簇、跨膜黏合 ~123–169 nm 脂質體暴增十倍至 1,537 nm，及 13 kHz MAS ssNMR 2D DARR 證實天然凹盤摺疊非變性聚集全數精確相符；移除 JATS 快訊格式不存在之 Experimental Section 標題並補齊視覺結尾句，維持 1.00。"
+        },
+        {
+          "id": "F149-010",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 0.75,
+          "author_standalone_facts": 1.25,
+          "reviewer_facts": 0.75,
+          "reviewer_standalone_facts": 1.25,
+          "network": "NET_01_TANAKA",
+          "changed_fields": [
+            "notes",
+            "editorial.visual",
+            "F149-S010.reading_scope"
+          ],
+          "reason": "PMC12176643（V169 即時重抓 byte-for-byte 一致）核對：ZRS>TFP 標記 72.7±18.3%（n=9）、再生 Shh+ 76.9% 源自非胚胎 Shh 譜系（n=10）、切除 88.7±6.1%（n=6）仍正常再生、Hand2 先升 2.3±0.2 倍峰值 5.9±0.4 倍、CRISPants 50/112（45%）缺陷且 ALM 0/6（P=0.03）、前側異位表現 8/8 誘發新肢而全芽表現致無指／無肢、雙色移植與單次 SAG 脈衝 n=5/5 跨二次截肢永久後側化（壓低 60.1%=578/961 前側基因、開啟 22.5%=78/346 後側基因）而後側移前側 n=3/3 抗拒改寫全數 100% 相符；與 F149-001（1.25）同屬 NET_01_TANAKA 封頂 2.00，本條題內邊際計 0.75。"
+        },
+        {
+          "id": "F149-011",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_03_SATOH",
+          "changed_fields": [
+            "notes",
+            "editorial.visual",
+            "F149-S011.reading_scope",
+            "F149-S011.locator",
+            "F149-S011.limitations"
+          ],
+          "reason": "PMC12875611（V169 即時重抓 byte-for-byte 一致）核對：純背側芽 1/12、純腹側芽 0/22 長肢（皆開 Fgf8 卻缺 Shh 5/6、6/6）、補對側背腹皮 7/14 與 7/11 恢復、強表現 Shh 6/18 與 8/14 長雙背／雙腹對稱肢、背側 Wnt10b 在腹芽 4/5 點亮 Shh（3/12 長肢）與腹側 Fgf2 在背芽 5/7 點亮 Shh（5/10 長肢），及無神經偏轉單埋 BMP2+FGF2+FGF8 珠於背側 8/8 點亮 Shh、12/20 長肢 vs 腹側 0/5 Shh、0/17 長肢全數相符；確認 Prayag Murawala 為 eLife Reviewing Editor 非合著者並補註圖 2 圖註細微差異，維持 1.00。"
+        },
+        {
+          "id": "F149-012",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_03_SATOH",
+          "changed_fields": [
+            "source_locator",
+            "notes",
+            "editorial.visual",
+            "F149-S012.reading_scope",
+            "F149-S012.locator"
+          ],
+          "reason": "PMC11574362 全文核對：正常肢 α=0.90/0.91（n=33）、再生芽負異速 α=0.61±0.03（n=43）、31 顆 500–3,000 μm 再生芽中 Shh(+) α=0.69±0.07、蛋白擴散間隔 ~170 μm（R=-0.05，n=15）、Fgf8(+) α=0.44±0.09、合併場 ΩSF（α=0.66±0.06）維持 47%:53% 尺度不變對分、Col2a+ 第二指（n=11，CV=0.126）錨定於 ~60% 及初期指期再生肢 α=0.43±0.07（n=24）全數相符；校正 JATS 五小節標題與 Fig. 1–6 圖號對應並補齊視覺結尾句，維持 1.00。"
+        },
+        {
+          "id": "F149-013",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_02_MCCUSKER",
+          "changed_fields": [
+            "scope",
+            "source_locator",
+            "notes",
+            "editorial.visual",
+            "F149-S013.reading_scope",
+            "F149-S013.locator",
+            "F149-S013.limitations"
+          ],
+          "reason": "PMC8716110 全文核對：140 天追蹤（n=10）ETL 0.04 cm/天與 LTL 0.02 cm/天雙相追趕（EdU+ 高 2.4–3.7 倍、TUNEL+ 低 3.0–20.8 倍、肌纖維小 4.5 倍追平；去神經生長跌 9 倍、凋亡飆 21.6–25.7 倍）、6 cm 與 12 cm 互換移植 18 天拉平隨宿主體型、NM-ALM 14 cm DRG 植於 14 cm（n=12）vs 7 cm（n=19）宿主尺寸相同排除體液，及離體 14 cm（n=12）vs 7 cm（n=16）DRG 植回約 14 cm 宿主雖軸突更密（p=0.0079）卻因脫離中樞而尺寸無差全數相符；刪除作者原稿未見於原文之『停在 86%–90%』臆測（原文證明 140 dpa 已達對側尺寸等價無顯著差異），維持 1.00。"
+        },
+        {
+          "id": "F149-014",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_09_FROBISCH",
+          "changed_fields": [
+            "question",
+            "answer_target",
+            "scope",
+            "source_locator",
+            "notes",
+            "editorial.payoff",
+            "editorial.visual",
+            "F149-S014.reading_scope",
+            "F149-S014.locator",
+            "F149-S014.summary",
+            "F149-S014.limitations"
+          ],
+          "reason": "PMC4211449（V169 即時重抓 byte-for-byte 一致）逐字核對抓出解剖部位筆誤並更正：石炭紀晚期—二疊紀早期約 300 Ma 基幹離片椎類 Micromelerpeton credneri 正常指趾式為手四指（2-2-3-3）、足五趾（2-2-3-4-3），標本 SSN GwK-34（Fig. 2d）實為『左後足』五趾正中央多夾一根纖細贅生趾形成『六趾左足』（作者原稿誤寫為正常四指間夾出六指手），SSN 1102（Fig. 2a）為右手掌骨肥大與第一指節近端癒合（非遠端分叉），並移除未見於本文之鰓龍科『逾六百件』外溢數字，維持 1.00。"
+        }
+      ]
+    },
+    "V170": {
+      "author": "F150",
+      "target": "F150-T1",
+      "verdict": "ready",
+      "author_fact_count": 13.75,
+      "author_minutes": 9.72,
+      "recount_fact_count": 13.75,
+      "recount_minutes": 9.72,
+      "sensitivity_notes": "基準重算：V170 獨立完成全部 12 個活躍研究網（60 位不重複入題作者）共 66 組跨網配對三庫與精準書目核驗（掃描 9,764 筆唯一作品並逐筆排除 102 筆同名異人／縮寫碰撞，如 UIUC vs 浙江工大 Jie Feng 不同 ORCID、新加坡南洋理工 T. N. Wong vs 賓州州大 Tak-Sing Wong），確認跨網直接合著數嚴格為 0；同網內共享作者已正確合併於 NET_02_BONN_DRESDEN（1.00+1.00=2.00 封頂）與 NET_10_ESPCI_UCL（1.00+1.00=2.00 封頂），全題封頂後合計 13.75 條核心事實，（13.75×140＋700）÷270＝9.72 分（高於 8.50 分門檻 +1.22 分，即 +2.36 條安全餘裕）。敏感度壓力測試：（1）就算假設將同處法國巴黎之 NET_07_CURIE_ENS 與 NET_10_ESPCI_UCL 保守視為同一學派封頂 2.00（實測兩群 16 位作者直接合著數為 0），仍達 12.75 條＝9.20 分（高於門檻 +0.70 分）；（2）就算再將純模擬相圖核心 F150-006（0.75）額外下壓至 0.50，仍達 12.50 條＝9.07 分（高於門檻 +0.57 分）。雙轉折與自然演化取捨收尾完整成立，判定為 ready。",
+      "coauthorship_audit": {
+        "pairs_checked": 66,
+        "unique_included_authors": 60,
+        "author_count_correction_note": "核對 14 篇入題全文 JATS XML `<contrib>` 與 arXiv PDF 作者欄：總掛名槽位 62 個，扣除 `NET_02_BONN_DRESDEN` 內部共享作者 Christoph Neinhuis（`S002`＋`S004`）與 `NET_10_ESPCI_UCL` 內部共享作者 David Quéré（`S011`＋`S012`）後，12 個活躍研究網共計 `2+7+2+7+3+6+6+4+7+10+4+2 = 60` 位不重複具名作者（更正 F150 `protocol` 文字將 12 網人數總和心算誤寫為 56 位之筆誤；名單本身 60 人完全一致，並確認剔除 `PMC3148040` 純編輯 Kerstin Koch 與 `PMC3184130` 純編輯 Richard Haverkamp）。",
+        "databases_used": [
+          "Crossref Polite Pool REST API（`mailto=support@mokaair.com`，V170 獨立補抓 71 份精準雙作者配對與 ORCID 完整書目 `V170/cache/cr_〈配對或作者〉.json` 全數 HTTP 200，結合 F150 快取 64 份作者書目 `F150/cache/cr_au_〈作者〉.json`）",
+          "Europe PMC REST API（V170 獨立補抓 8 份跨網 `AUTH` 布林交集 `V170/cache/epmc_〈配對〉.json` 全數 HTTP 200，結合 F150 快取 67 份跨網與單網查詢，並逐篇解析 JATS `<contrib>` 區分作者與學術編輯）",
+          "OpenAlex REST API（完整解析 F150 快取 29 份 HTTP 200 作者與論文唯一 ID／ORCID 紀錄；V170 單筆探針 `oa_v170_paris_probe.json` 遇共享 IP 429 即停零重試）",
+          "Google Search（8 組針對性跨網合著查證，特別鎖定巴黎群 `NET_07_CURIE_ENS` × `NET_10_ESPCI_UCL`、美國群 `NET_01_MIT` × `NET_08_PSU` × `NET_11_UIUC`、英國群 `NET_04_LEEDS_KEW` × `NET_05_EDINBURGH` 與印度群 `NET_03_IITB` × `NET_12_IITGN`）"
+        ],
+        "merges_added_by_reviewer": [],
+        "intra_network_merges_verified": [
+          "確認 `NET_02_BONN_DRESDEN` 已將共同掛名 Christoph Neinhuis（ORCID 0000-0001-9965-4394）之 `F150-S002`（`F150-002`）與 `F150-S004`（`F150-004`）合併為單一研究網（1.00 + 1.00 = 2.00 <= 2.00 封頂）。",
+          "確認 `NET_10_ESPCI_UCL` 已將共同掛名 David Quéré 之 `F150-S011`（`F150-011`）與 `F150-S012`（`F150-012`）合併為單一研究網（1.00 + 1.00 = 2.00 <= 2.00 封頂）；另核實巴黎 `NET_07_CURIE_ENS`（Bartolo, Bouamrirene, Verneuil, Buguin, Silberzan, Moulinet）僅於 `S008` 致謝欄感謝討論，6 位作者與 `NET_10_ESPCI_UCL` 全部 10 位作者在全庫 9,764 筆唯一書目與精準配對查詢中直接合著數嚴格為 0。"
+        ],
+        "editorial_non_coauthor_verifications": [
+          "`Beilstein Journal of Nanotechnology` 編輯 `Kerstin Koch`（`F150-S002`, `PMC3148040`, JATS 僅標 `contrib-type=\"editor\"`）確認為期刊編輯而非本文作者（同篇 `Wilhelm Barthlott` 同時具 `author` 與 `editor` 標籤，保留為 `NET_02_BONN_DRESDEN` 作者；且核驗 Koch 與其餘 11 網亦為 0 合著）。",
+          "`PLOS ONE` 學術編輯 `Richard Haverkamp`（`F150-S004`, `PMC3184130`, JATS `contrib-type=\"editor\"`）確認為期刊編輯而非共同作者。"
+        ],
+        "homonym_and_initial_collisions_resolved": [
+          "`Jie Feng` 同名異人核實：`Nenad Miljkovic`（`NET_11_UIUC`）合著之 `ACS Nano` 2020/2022、`Adv. Mater.` 2025、`Nat. Phys.` 2026 等論文共同作者為伊利諾大學香檳分校機械系學者 `Jie Feng`（ORCID `0000-0002-3636-6428`），而 `F150-S007`（`NET_06_ZJUT`）通訊作者為浙江工業大學材料學院 `Jie Feng`（JATS 內嵌 ORCID `0000-0001-7228-117X`），ORCID 與機構完全不同。",
+          "`T. N. Wong` vs `Tak-Sing Wong` 核實：`Int. J. Heat Mass Transfer` 2021（DOI `10.1016/j.ijheatmasstransfer.2021.121149`、`121092`）與 `Miljkovic` 合著者為新加坡南洋理工大學 `T. N. Wong`（Tee-Ngai Wong），並非賓州州立大學 `NET_08_PSU` 之 `Tak-Sing Wong`。",
+          "`Ruosong Wang` vs `Ruoxi Wang`、`Donghan Lee` vs `Dong Woog Lee`、CERN CMS 逾兩千人高能物理聯盟縮寫碰撞（`M. Kumar`、`J. Zhang`、`J. Wang`、`L. Wang`、`J. Lee`、`J. Park`、`T. Li`）及社會科學翻譯／心臟外科中文拼音同名紀錄共 102 筆表面命中逐筆核驗，100% 排除直接合著。"
+        ],
+        "indirect_external_links_logged": [
+          {
+            "hub": "PMC6226286（Vahabi, Wang, Mabry & Kota 2018 Science Advances，列於 F150-NA003 已排除）",
+            "connected_active_networks": [
+              "NET_01_MIT",
+              "NET_11_UIUC"
+            ],
+            "evidence_dois": [
+              "10.1021/am1006035 ( Mabry & Varanasi et al. 2010 ACS Appl. Mater. Interfaces )",
+              "10.1126/sciadv.aax0746 & 10.1021/acs.langmuir.0c02272 ( Vahabi, Wang, Kota & Miljkovic 2019 Sci. Adv., 2020 Langmuir )"
+            ],
+            "handling": "F150 動筆前已主動排除 `PMC6226286`（`NA003`），於 `F150-T1` 入題論文數為 0；`NET_01_MIT` 與 `NET_11_UIUC` 入題作者彼此直接合著數嚴格為 0，依規則不跨題外第三人併網，並加註永久禁止將 `PMC6226286` 補入本題。"
+          },
+          {
+            "hub": "PMC4698694（Chen, Patel, Weibel & Garimella 2016 Scientific Reports，列於 F150-NA004 已排除）",
+            "connected_active_networks": [
+              "NET_01_MIT"
+            ],
+            "evidence_dois": [
+              "10.1021/la304264g ( Paxson, Chen & Varanasi 2013 Langmuir )"
+            ],
+            "handling": "F150 動筆前已主動排除 `PMC4698694`（`NA004`），確保全題 12 個活躍研究網獨立。"
+          }
+        ],
+        "network_totals": {
+          "NET_01_MIT": {
+            "candidate_ids": [
+              "F150-001"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_02_BONN_DRESDEN": {
+            "candidate_ids": [
+              "F150-002",
+              "F150-004"
+            ],
+            "standalone_sum": 2,
+            "capped_facts": 2,
+            "cap_applied": false
+          },
+          "NET_03_IITB": {
+            "candidate_ids": [
+              "F150-003"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_04_LEEDS_KEW": {
+            "candidate_ids": [
+              "F150-005"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_05_EDINBURGH": {
+            "candidate_ids": [
+              "F150-006"
+            ],
+            "standalone_sum": 0.75,
+            "capped_facts": 0.75,
+            "cap_applied": false
+          },
+          "NET_06_ZJUT": {
+            "candidate_ids": [
+              "F150-007"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_07_CURIE_ENS": {
+            "candidate_ids": [
+              "F150-008"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_08_PSU": {
+            "candidate_ids": [
+              "F150-009"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_09_UNIST_CAU": {
+            "candidate_ids": [
+              "F150-010"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_10_ESPCI_UCL": {
+            "candidate_ids": [
+              "F150-011",
+              "F150-012"
+            ],
+            "standalone_sum": 2,
+            "capped_facts": 2,
+            "cap_applied": false
+          },
+          "NET_11_UIUC": {
+            "candidate_ids": [
+              "F150-013"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_12_IITGN": {
+            "candidate_ids": [
+              "F150-014"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          }
+        },
+        "remaining_66_active_network_pairs_direct_coauthorships": 0,
+        "indexed_unique_works_swept": 9764
+      },
+      "core_verdicts": [
+        {
+          "id": "F150-001",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_01_MIT",
+          "changed_fields": [
+            "answer_target",
+            "scope",
+            "source_locator",
+            "notes",
+            "editorial.visual",
+            "F150-S001.publisher",
+            "F150-S001.locator",
+            "F150-S001.summary",
+            "F150-S001.limitations"
+          ],
+          "reason": "PMC3586717（即時重抓 byte-for-byte 一致）逐節核實：矽奈米草釘扎線比例 φ2 = 0.18 ± 0.05、微柱頂局部後退角 86° ± 5° → 140° ± 5°（平面奈米草 145° ± 3°）與 Φ0 = φ1·φ2 於柱距 <30 µm（φ1 >= 1.5）反超單層奈米草全數精確；精細區分平坦矽烷化矽面（前進 120° ± 2°、後退 90° ± 3°）與 10 µm 方柱面微觀後退角（86° ± 5°），更正微毛細液橋長度隨微柱半寬（~5 µm）標度（取代籠統 1–10 µm），並補明電鏡 10 µL、2 µm/s 與張力儀 3 µL、0.5 mm/min 條件，維持 1.00。"
+        },
+        {
+          "id": "F150-002",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_02_BONN_DRESDEN",
+          "changed_fields": [
+            "question",
+            "mechanism_key",
+            "answer_target",
+            "scope",
+            "source_locator",
+            "notes",
+            "editorial.visual",
+            "F150-S002.publisher",
+            "F150-S002.locator",
+            "F150-S002.summary",
+            "F150-S002.limitations"
+          ],
+          "reason": "PMC3148040（即時重抓 byte-for-byte 一致）逐節核對抓出三處關鍵誤讀並修正：（1）原文 Fig. 10b、11 明載荷葉正反兩面皆超疏水（葉背無氣孔且為 53% 二十九烷-10-醇構成之較粗長蠟管［每 10 µm² 約 63 根］；僅永久沉水植物才親水），徹底移除作者『荷葉葉背完全親水』之錯誤敘述；（2）Table 1 荷葉正面乳突密度為精確值 3,431 顆/mm²（移除作者自加之 ± 316，並修正芋頭葉為 2,662 顆/mm²）；（3）二十九烷二醇（~65%）與二十九烷-10-醇（22%）係靠『晶格內分子間氫鍵』將羥基深埋雙分子層晶格並推升熔點至 90–95 °C（更正『分子內氫鍵』筆誤），並釐清 50 cm 靜水浸泡 2 h 與 3 m/s 雨滴 0.9 MPa 水錘壓 vs >1.4 MPa 蠟管毛細抗壓及 2.5 cm² 上 1 N 摩擦，維持 1.00。"
+        },
+        {
+          "id": "F150-003",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_03_IITB",
+          "changed_fields": [
+            "answer_target",
+            "scope",
+            "source_locator",
+            "notes",
+            "editorial.visual",
+            "F150-S003.publisher",
+            "F150-S003.reading_scope",
+            "F150-S003.locator",
+            "F150-S003.summary",
+            "F150-S003.limitations"
+          ],
+          "reason": "PMC6976613（即時重抓 byte-for-byte 一致）核實抓出三處數據／製程誤植並修正：（1）真芋頭葉多邊形微腔平均邊長約 50 µm、壁厚約 3 µm 覆片狀蠟質奈米片（移除原文未載之『直徑 10–25 µm、厚 30–50 nm』）；（2）單層仿生六角微腔為矽晶圓上硬烤 SU-8-2025 光阻（高 29 ± 1 µm、邊長 50–200 µm、b/a = 0.65–0.98），並未鍍八氟環丁烷（C4F8 僅見於文獻回顧他組微柱）；（3）次生小液滴拉斷噴射（4%–8% 體積）僅在 We = 15.9（v = 0.82 m/s）且 b/a > 0.85 發生（We = 1.1–9.1 零斷裂，更正 We >= 5.3 誤讀）。180° 倒懸 2.57 µL 水滴 Fγ = 1.44 × 10^-4 N 對重力 Fg = 2.52 × 10^-5 N 近六倍完全精確，維持 1.00。"
+        },
+        {
+          "id": "F150-004",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_02_BONN_DRESDEN",
+          "changed_fields": [
+            "F150-S004.publisher",
+            "F150-S004.limitations"
+          ],
+          "reason": "PMC3184130 本機 JATS 全文逐節核實：橫跨 4 目 16 科共 35 種彈尾蟲、200–300 nm 初級顆粒與連桿負曲率內凹懸挑、抗乙醇 22.1 與十三烷 25.6 mJ/m²（十二烷 24.9 至正己烷 18.0 mJ/m² 浸潤）、水下呼吸氣膜抗 >3.5–4.0 bar 且 <=1 min 卸壓自發復原全數 100% 精確，並嚴格排除末段微生物內容；與 F150-002 合併於 NET_02_BONN_DRESDEN 合計 2.00 封頂，維持 1.00。"
+        },
+        {
+          "id": "F150-005",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_04_LEEDS_KEW",
+          "changed_fields": [
+            "mechanism_key",
+            "answer_target",
+            "scope",
+            "source_locator",
+            "notes",
+            "editorial.visual",
+            "F150-S005.publisher",
+            "F150-S005.locator",
+            "F150-S005.summary",
+            "F150-S005.limitations"
+          ],
+          "reason": "PMC12490185（即時重抓 byte-for-byte 一致）核實抓出兩處重要誤讀並修正：（1）水耕小麥草學名為普通小麥初生草葉 Triticum aestivum（搭配邱園梯牧草 Phleum hirsutum、芒草 Miscanthus sinensis、濱草 Ammophila arenaria），更正 F150-005 誤寫為中間偃麥草 Thinopyrum intermedium 及 mechanism_key 前綴；（2）正交晶系二十八烷醇奈米蠟片（厚約 50 nm、長 0.5–1 µm、高 0.5–2 µm）覆蓋率 >65% 時靜態接觸角為 >=150°（鮮葉正面尖端約 155°），更正『衝破 160°』之誇大。10 s 氯仿脫蠟 55° ± 5°、平滑蠟膜 115° ± 2°、聚併前半徑 7.7 ± 1.3 µm、初速 0.3–0.5 m/s、彈高 2–3 mm、排露 ~5 mg/cm²·h 全數相符，維持 1.00。"
+        },
+        {
+          "id": "F150-006",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 0.75,
+          "author_standalone_facts": 0.75,
+          "reviewer_facts": 0.75,
+          "reviewer_standalone_facts": 0.75,
+          "network": "NET_05_EDINBURGH",
+          "changed_fields": [
+            "answer_target",
+            "scope",
+            "source_locator",
+            "F150-S006.publisher",
+            "F150-S006.locator",
+            "F150-S006.limitations"
+          ],
+          "reason": "PMC10214492（即時重抓 byte-for-byte 一致）核實：300 K 分子動力學直接模擬奈米液滴（R = 7.2–15.1 nm、微粒 ~1.5 nm）並耦合毛細彈簧連續體標度律（無因次變形上限 Δ ≈ 2、瑞利—普拉托頸縮斷裂 δ ≈ πl）外推至 1 mm 液滴與 80 nm 親水二氧化矽污染物（大於 Rmax 液頸先斷遺留原地或橫移約 1 個液滴半徑 R）全數相符；精確區分 MD 直接模擬尺度與連續外推尺度，並更正黏滯—毛細無因次數冠名學者卒年描述，保守維持 0.75。"
+        },
+        {
+          "id": "F150-007",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_06_ZJUT",
+          "changed_fields": [
+            "question",
+            "answer_target",
+            "source_locator",
+            "notes",
+            "editorial.payoff",
+            "editorial.visual",
+            "F150-S007.publisher",
+            "F150-S007.locator",
+            "F150-S007.summary",
+            "F150-S007.limitations"
+          ],
+          "reason": "PMC9933225 本機 JATS 全文逐節核實抓出兩處機制誤植並修正：（1）傾斜交錯銅氧化物／氫氧化物奈米帶（直徑約 100 nm、縫寬 300–1,000 nm、接觸角 159.0° ± 0.3°、滾落角 2°、每秒跳躍 69–72 滴）形成的是『上窄下寬』腔體（更正 F150-007 顛倒寫成『上寬下窄』）；（2）Fig. 4e,f 與 Fig. 6b,d 顯示 7.5 kPa、750 mL/min 加壓水沖 1 h 其實也能帶走多數 100 nm 微球（凝結 1 h 靠縫內成核包裹浮升清得更徹底），真正戲劇性逆轉在『1 µm 大微球』——凝結 1 h 100% 清光，7.5 kPa 水沖反而把大量 1 µm 顆粒硬壓塞進奈米帶縫隙卡死！而等寬 300 nm 微粒則機械楔死於上窄下寬夾縫，連 2.5 h 凝結與 1 h 水沖皆難清除，維持 1.00。"
+        },
+        {
+          "id": "F150-008",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_07_CURIE_ENS",
+          "changed_fields": [
+            "answer_target",
+            "scope",
+            "source_locator",
+            "F150-S008.title",
+            "F150-S008.publisher",
+            "F150-S008.locator",
+            "F150-S008.limitations"
+          ],
+          "reason": "arXiv:cond-mat/0510773v1（即時重抓 391,945 位元組 PDF byte-for-byte 一致）核實：柱高 h = 2.7–75 µm、固體面積比 ~0.15、h < 20 µm 觸底彎垂與 h = 20–75 µm 柱頂脫釘沿壁滑落飽和及三實驗主曲線坍縮完全相符；修正 F150-008 誤把『聚二甲基矽氧烷（PDMS）彈性體微米圓柱』寫成『疏水矽微米柱』，標明 ~450 µm 為 S1 基板（r = 11 µm、p = 50 µm、h = 20 µm）蒸發臨界接觸半徑，並去除 S008 標題開頭多餘空白，維持 1.00。"
+        },
+        {
+          "id": "F150-009",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_08_PSU",
+          "changed_fields": [
+            "scope",
+            "F150-S009.publisher",
+            "F150-S009.limitations"
+          ],
+          "reason": "PMC7439615（即時重抓 byte-for-byte 一致）核實：昆蟲表皮 100–300 nm 高固體面積比 0.25–0.64、4.0 m/s 終端雨滴（R = 1.15 mm, We ≈ 505.5）水錘壓 1.2 MPa >> 動壓 8 kPa 僅 200 nm／Φs = 0.44 守住氣墊，及 100 nm 啟動正吉布斯線張力（~10^-9 J/m、接觸線密度 ~10^7 m^-1）使滯後角 41.2° ± 0.4° → 29.0° ± 0.5°、接觸時間 18.8 ± 0.4 → 16.2 ± 0.2 ms（縮短 2.6 ms，少墜 7.5–12.7 mm 即 2–5 倍蚊身長）全數精確；修正 F150-009.scope 誤寫『聚碳酸酯精密複製』為原文真實製程『熱氧化矽晶圓兩步電漿蝕刻並氟矽烷化之內凹微奈米柱陣』，維持 1.00。"
+        },
+        {
+          "id": "F150-010",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_09_UNIST_CAU",
+          "changed_fields": [
+            "F150-S010.publisher",
+            "F150-S010.limitations"
+          ],
+          "reason": "PMC11707565（即時重抓 byte-for-byte 一致）核實：仿葉甲 Gastrophysa atrocyanea 足墊於 20 µm 矽柱頂氫氧化鉀異向性蝕刻 ~54.5° 倒金字塔凹坑（超音波震除奈米草），臨界撞擊數由平頭柱 17.0（削角錐柱 22.3）升至 D/L = 0.5 之 27.6（1.6 倍）與 D/L = 0.56 之 38.2，水下 1,440 min（24 h）0.98 kPa 保氣 ~92.5%（凸面氣帽 ΔPL ≈ 1.17 kPa、p_init ≈ 1.07 kPa，全濕壓 1.96 → 2.94 kPa）及 -10 °C 過冷表面 We ≈ 4.2 釘死全數 100% 精確，維持 1.00。"
+        },
+        {
+          "id": "F150-011",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_10_ESPCI_UCL",
+          "changed_fields": [
+            "answer_target",
+            "scope",
+            "source_locator",
+            "F150-S011.publisher",
+            "F150-S011.limitations"
+          ],
+          "reason": "PMC8187394（即時重抓 byte-for-byte 一致）核實：奈米圓柱大滴前進角 167° ± 3° 但蒸氣凝結 5,600 核/mm² 陷落至 141° ± 3°、整體彈跳率僅 0.2%，而間距 52–110 nm、高 88–420 nm、全頂角 15°–38° 尖奈米錐（57° ± 2° 鈍錐失效）將 >1.5 µm 微滴擠上錐尖達 171° ± 3°（高於公釐滴 164° ± 3°）、總彈跳率 88%、對稱雙滴彈跳率普適 99% ± 1%，及截頂錐雙滴 0% 但三／四／五滴於 ~20 µm 恢復 >50% 全數精確；將 F150-011.scope 誤稱『黑矽蝕刻』修正為『嵌段共聚物自組裝與氯氣電漿蝕刻』並統一高度範圍 88–420 nm，與 F150-012 合計 2.00 封頂，維持 1.00。"
+        },
+        {
+          "id": "F150-012",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_10_ESPCI_UCL",
+          "changed_fields": [
+            "mechanism_key",
+            "answer_target",
+            "scope",
+            "F150-S012.publisher",
+            "F150-S012.limitations"
+          ],
+          "reason": "PMC4918367 本機 JATS 全文核實：R = 1.3 mm 水滴平坦面接觸時間 τ0 = 13.0 ± 0.8 ms，加半徑 100 µm 疏水細絲觸發等加速度軸向退水（1.0 m/s 時 160 ± 10 m/s²、0.5 m/s 時 51 ± 3 m/s²），隨撞速呈離散階梯切 2 瓣（9.8 ± 0.3 ms ≈ τ0/√2）、跨半徑撞擊數 7.5 ± 1.5 切蝴蝶 4 瓣（7.3 ± 0.2 ms ≈ τ0/2）與 120° Y 字三叉切 3 瓣（7.7 ± 0.3 ms ≈ τ0/√3）全數精確；修正 F150-012.scope 誤寫『疏水銅細絲』為原文『塗覆約 20 nm 疏水奈米微粒之半徑 100 µm 鎳細絲（對照 25–250 µm）』並將『量子階梯式』改為物理精確之『離散階梯式』，維持 1.00。"
+        },
+        {
+          "id": "F150-013",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_11_UIUC",
+          "changed_fields": [
+            "notes",
+            "F150-S013.publisher",
+            "F150-S013.limitations"
+          ],
+          "reason": "PMC4962083 本機 JATS 全文核實：橫跨 k = 0.5–7,630 N/m 超疏水彈性薄膜與懸臂樑、9,500 fps 實拍 20 < k < 150 N/m（如 107 N/m、325 Hz）於撞速 v >= 2.1/D0^0.6（1.5 mm 滴 We > 40）且基底福祿數 Fr >= 1 時觸發彈簧床扁餅提前起飛使接觸時間最多縮短 2 倍，及過軟樑 2.2 N/m、11 Hz（~100 ms）失配零減時全數 100% 精確，並明文區隔既有短題 G128／I12013 之剛性錐柱毛細儲能機制，維持 1.00。"
+        },
+        {
+          "id": "F150-014",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_12_IITGN",
+          "changed_fields": [
+            "question",
+            "answer_target",
+            "scope",
+            "source_locator",
+            "notes",
+            "editorial.payoff",
+            "editorial.visual",
+            "F150-S014.publisher",
+            "F150-S014.limitations"
+          ],
+          "reason": "PMC11223265 本機 JATS 全文核實：Bauhinia variegata 葉微米凸起 ~13 × 8 µm、高 ~3.3 µm、深寬比 0.21，覆 741 ± 164 × 59 ± 5 nm 蠟質奈米片、粗糙度比 2.15 ± 0.1、三液體表面自由能 9.5 ± 0.03 mJ/m²，自然乾燥 186 天仍保 157° ± 1°／滾落角 9° ± 1°／滯後角 12° ± 4°，扛過 13.058 m 落滴（We ≈ 2,990）、11.9 m/s 水柱（We ≈ 4,240）與季風暴雨（We ≈ 4,500），但 20 cm 水底（1.96 kPa）30 min 失銀光、3 h 全濕輸給深寬比 1.25 荷葉（>7 h）全數精確；將 F150-014 誤混稱香港市花雜交種『洋紫荊（Bauhinia × blakeana）』全面統一修正為正確物種中文名『羊蹄甲（宮粉羊蹄甲，Bauhinia variegata）』，維持 1.00。"
+        }
+      ]
+    },
+    "V171": {
+      "author": "F151",
+      "target": "F151-T1",
+      "verdict": "reserve",
+      "author_fact_count": 14,
+      "author_minutes": 9.85,
+      "recount_fact_count": 10.75,
+      "recount_minutes": 8.17,
+      "sensitivity_notes": "基準重算（向下修正優先）：V171 獨立清查 14 篇全文 63 位不重複研究作者，新抓獲兩組 F151 漏查之跨網直接合著——（1）F151-S014 單一作者與 F151-S008 通訊作者共同發表 2022 比較心理學手冊章節（DOI 10.4324/9781003091868-15），使 NET_01 與 NET_07 合併為 NET_01_DUKE_LINCOLN_UCSB_CHARLESTON（3 篇原始 3.00 條封頂為 2.00 條，-1.00 條）；（2）F151-S009 通訊作者與 F151-S011 共同作者共同發表 2014 Biomaterials Science 論文（DOI 10.1039/c3bm60264h，PMID 32481845），使 NET_08 與 NET_10 合併為 NET_07_NTU_PURDUE_UCR_IHEP_QMUL（4 篇原始 4.00 條封頂為 2.00 條，-2.00 條）；外加（3）逐字核對 PMC6420313（F151-S006）抓出作者原稿誇大寫入原文未做之『真空除氣蒸餾水閃光歸零／溶入氬氣亮度暴增 3 倍』及不存在之 Fig. 6、Table 1，如實校正為『未額外曝氣的新開封蒸餾水測不到顯著閃光，須通入空氣或氬氣曝氣 30 分鐘飽和（35,000 ppm 食鹽水通空氣 19/20 次發光，通氬與通空氣趨勢相似）』並將 F151-006 由 1.25 下修為 1.00（-0.25 條）。合併與修正後，全題實為 8 個互不合著獨立研究網，封頂後合計 2.00 + 1.75 + 1.00 + 1.00 + 1.00 + 1.00 + 2.00 + 1.00 = 10.75 條，代入公式 ((10.75 × 140) + 700) ÷ 270 = 8.17 分，低於可成題 ready 長題硬門檻 8.50 分（差 -0.33 分，約 0.65–0.75 條核心事實）。敏感度測試：（1）即便假設不扣 F151-006 之 0.25 條而維持 1.25 條，兩組鐵證跨網合著合併後上限亦僅 11.00 條＝8.30 分，依然低於 8.50 分門檻；（2）若再從嚴考慮 F151-002、F151-003、F151-004、F151-005 四條同在拆解槍蝦螯口空蝕水柱與渦環生成潰縮，將純數值模擬 F151-003 由 0.75 壓至 0.50，則為 10.50 條＝8.04 分。因此無論採基準或放寬估計，本題均誠實未過 8.50 分門檻，依法改判 reserve（後備），絕不放水升為 ready；14 則修正後高品質候選全數保留入池，待日後補入 1–2 個與現有 8 網零合著之獨立開放全文研究網（約 +0.75 至 +1.50 條）即可穩健升格成題。",
+      "coauthorship_audit": {
+        "ground_truth_authors_extracted": 63,
+        "ground_truth_author_slots": 69,
+        "pairs_checked": 45,
+        "merged_disjoint_networks_count": 8,
+        "merged_network_pairs_checked": 28,
+        "databases_used": [
+          "JATS XML contrib-type=\"author\" 與 arXiv 預印本首頁作者欄精確解析（14 篇共 69 個作者席次、63 位不重複具名研究作者；嚴格剔除 JATS 內標記為期刊編輯之非作者席次）",
+          "Crossref Polite Pool REST API（mailto=support@mokaair.com，F151 已抓 88 筆雙姓交集與 3,300 筆深度書目＋V171 新增 12 筆獨立深度書目與精確 DOI 查證，存於 V171/cache/）",
+          "Europe PMC REST API（AUTH 布林跨網配對查詢，F151 已抓 55 筆＋V171 新增 4 筆跨合併網全覆蓋複查，存於 V171/cache/）",
+          "OpenAlex REST API（mailto=support@mokaair.com，交叉複驗 F151 已存 10 筆與 V171 單筆 DOI 查核 oa_probe_c3bm60292k.json）",
+          "Google Search（google_search 4 組跨網精確合著搜尋，直接抓獲作者漏查之 2 組跨網真實合著並核銷同名異人假陽性）"
+        ],
+        "merges_added_by_reviewer": [
+          {
+            "merged_author_networks": [
+              "NET_01 (F151-S001, F151-S014)",
+              "NET_07 (F151-S008)"
+            ],
+            "new_institutional_network_id": "NET_01_DUKE_LINCOLN_UCSB_CHARLESTON",
+            "shared_work_doi": "10.4324/9781003091868-15",
+            "shared_work_citation": "Caves EM, Green PA, Hughes M (2022) 'Communication', in Freeberg TM, Ridley AR, d'Ettorre P (eds.) The Routledge International Handbook of Comparative Psychology, Routledge, pp. 147–159.",
+            "bridging_authors": [
+              "Patrick A. Green (F151-S014 單一作者)",
+              "Melissa Hughes (F151-S008 通訊作者)"
+            ],
+            "verification_cache": "V171/cache/cr_work_bridge1_green_hughes_2022.json (seq=12, HTTP 200) & V171/cache/cr_deep_v171_Patrick_Green.json (seq=16, HTTP 200)",
+            "scoring_impact": "F151 作者漏抓此 2022 專書章節合著（其腳本對 Patrick Green 漏拉深度書目，且對雙姓配對僅取前 20 筆被醫學同名者擠出）；合併後 F151-001（1.00）＋F151-008（1.00）＋F151-014（1.00）原始合計 3.00 條，依單一研究網硬上限封頂為 2.00 條（淨扣減 -1.00 條）。"
+          },
+          {
+            "merged_author_networks": [
+              "NET_08 (F151-S009, F151-S012)",
+              "NET_10 (F151-S011, F151-S013)"
+            ],
+            "new_institutional_network_id": "NET_07_NTU_PURDUE_UCR_IHEP_QMUL",
+            "shared_work_doi": "10.1039/c3bm60264h",
+            "shared_work_citation": "Guerette PA, Tay GZ, Hoon S, Loke JJ, Hermawan AF, Schmitt CNZ, Harrington MJ, Masic A, Karunaratne A, Gupta HS, Tan KS, Schwaighofer A, Nowak C, Miserez A (2014) 'Integrative and comparative analysis of coiled-coil based marine snail egg cases – a model for biomimetic elastomers', Biomaterials Science 2(5):723–739 (PMID 32481845).",
+            "bridging_authors": [
+              "Ali Miserez (F151-S009 通訊作者，新加坡南洋理工大學)",
+              "Himadri S. Gupta (F151-S011 共同作者，英國倫敦瑪麗王后大學)"
+            ],
+            "verification_cache": "V171/cache/cr_search_bridge2_gupta_miserez_2014.json (seq=13), V171/cache/cr_work_bridge2_exact.json (seq=23) & V171/cache/epmc_v171_biomaterials_vs_others.json (seq=24, PMID 32481845)",
+            "scoring_impact": "F151 作者雖在 F151/cache/epmc_pair_NET_08_NET_10.json 抓回該筆紀錄，卻因 Europe PMC 搜尋摘要將超過 10 人之末位通訊作者 Ali Miserez 截斷顯示，導致作者後處理腳本漏判；V171 查獲並核實完整 14 人名單與 ORCID 後強制合併，F151-009（1.25）＋F151-011（1.00）＋F151-012（0.75）＋F151-013（1.00）原始合計 4.00 條，依單一研究網硬上限封頂為 2.00 條（淨扣減 -2.00 條）。"
+          }
+        ],
+        "editorial_non_coauthor_verifications": [
+          "PLOS ONE 學術編輯 Tom Waigh（F151-S002, PMC3828329, JATS contrib-type=\"editor\"）確認為期刊編輯而非研究作者。",
+          "Biomimetics 學術編輯 Marc Weissburg（F151-S004, PMC10813229, JATS contrib-type=\"editor\"）確認為期刊學術編輯而非研究作者。",
+          "PLOS ONE 學術編輯 Craig A. Radford（F151-S007, PMC4711987, JATS contrib-type=\"editor\"）確認為期刊編輯而非研究作者。",
+          "退題 PMC10234628 之 eLife 審稿與資深編輯 Lauren A. O'Connell、George H. Perry 均確認非研究共同作者。"
+        ],
+        "indirect_external_links_logged": [
+          {
+            "hub": "Edwin P. Chan（NIST，退題 F151-NA006 PMC12107085 通訊作者，於本題入選論文數為 0）與 Jennifer R. A. Taylor（UCSD，退題 F151-NA008 PMC5156921 通訊作者，入選論文數為 0）",
+            "connected_active_networks": [
+              "NET_01_DUKE_LINCOLN_UCSB_CHARLESTON"
+            ],
+            "evidence_dois": [
+              "10.1111/j.1558-5646.2010.01133.x (Claverie, Chan & Patek 2011 Evolution)",
+              "10.1242/jeb.047233 (Taylor & Patek 2010 J. Exp. Biol.)"
+            ],
+            "handling": "兩篇均已主動退入 reviewed_not_added 不納入計分，且僅連向單一活躍網 NET_01_DUKE_LINCOLN_UCSB_CHARLESTON，不構成任何跨網橋接。"
+          },
+          {
+            "hub": "論文致謝欄非合著互動（Ashlee Lillis 2022 論文致謝欄感謝 Melissa Hughes 提供槍蝦飼養建議）",
+            "connected_active_networks": [
+              "NET_06_NCSU_CMAST",
+              "NET_01_DUKE_LINCOLN_UCSB_CHARLESTON"
+            ],
+            "evidence_dois": [],
+            "handling": "經 V171 拉取兩網完整 Crossref 與 Europe PMC 書目（V171/cache/cr_deep_v171_Ashlee_Lillis.json、epmc_v171_ncsu_vs_duke_charleston.json），確認兩網全體作者間共同掛名論文數嚴格為 0；致謝欄口頭感謝非共同作者，依規不併網。"
+          }
+        ],
+        "homonym_false_positives_verified_zero_overlap": [
+          "化學同名異人：Garret M. Miyake（NET_08_CSU_CUBOULDER）於 2010 Angew. Chem.（10.1002/anie.201005534, seq=15）及 2012 Dalton Trans.（10.1039/c2dt30427a, seq=14）之合著者為科羅拉多州立大學有機金屬高分子化學家 Yuetao Zhang（張越濤，現任吉林大學化學學院），絕非 NET_07_NTU_PURDUE_UCR_IHEP_QMUL 之中科院高能所北京同步輻射裝置物理學家 Yi Zhang（張毅，ORCID 0000-0002-7196-5143）或西南交大 Yiyang Zhang。",
+          "醫學／微生物／水下仿生同名異人：奧古斯塔大學中風神經科醫師 David C. Hess × 腎臟學者 Zheng Dong（非弗萊貝格工業大學 David Hess × 高能所 Zheng Dong）；江南大學益生菌學者 Xin Tang × Jianxin Zhao（非德州農工機械系 Xin Tang）；伊利諾大學人工側線工程師 Y. Yang × 波昂大學 Horst Bleckmann（非中國空氣動力研究與發展中心 Yuliang Yang）；魯汶大學外科醫師 Marc Miserez（非南洋理工 Ali Miserez）；德國癲癇中心 A. M. Staack（非德州農工 David Staack）。"
+        ],
+        "network_totals": {
+          "NET_01_DUKE_LINCOLN_UCSB_CHARLESTON": {
+            "candidate_ids": [
+              "F151-001",
+              "F151-008",
+              "F151-014"
+            ],
+            "standalone_sum": 3,
+            "capped_facts": 2,
+            "cap_applied": true
+          },
+          "NET_02_FREIBERG_BONN_CITY": {
+            "candidate_ids": [
+              "F151-002",
+              "F151-003"
+            ],
+            "standalone_sum": 1.75,
+            "capped_facts": 1.75,
+            "cap_applied": false
+          },
+          "NET_03_TAMU_MECH": {
+            "candidate_ids": [
+              "F151-006"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_04_TOHOKU_FINEMECH": {
+            "candidate_ids": [
+              "F151-004"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_05_CARDC_HEBEI": {
+            "candidate_ids": [
+              "F151-005"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_06_NCSU_CMAST": {
+            "candidate_ids": [
+              "F151-007"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          },
+          "NET_07_NTU_PURDUE_UCR_IHEP_QMUL": {
+            "candidate_ids": [
+              "F151-009",
+              "F151-011",
+              "F151-012",
+              "F151-013"
+            ],
+            "standalone_sum": 4,
+            "capped_facts": 2,
+            "cap_applied": true
+          },
+          "NET_08_CSU_CUBOULDER": {
+            "candidate_ids": [
+              "F151-010"
+            ],
+            "standalone_sum": 1,
+            "capped_facts": 1,
+            "cap_applied": false
+          }
+        },
+        "remaining_28_active_network_pairs_direct_coauthorships": 0
+      },
+      "core_verdicts": [
+        {
+          "id": "F151-001",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_01_DUKE_LINCOLN_UCSB_CHARLESTON",
+          "changed_fields": [
+            "source_locator",
+            "notes",
+            "F151-S001.publisher",
+            "F151-S001.locator",
+            "F151-S001.limitations"
+          ],
+          "reason": "PMC6907395（V171 即時重抓 byte-for-byte 一致）逐字核對：骨骼肌輸入功上限 15.0 J/kg、線性彈簧受肌肉長度—張力曲線失配拖累最多儲能 28%（4.2 J/kg）、1 kg 直接肌肉輸出 11.25 J/kg vs 1 g 跌至 3.6 J/kg、約 2.5 g 體重交叉點（推進肌佔體重 10%–20%）、家犬 1.54 m 為彈簧上限 0.49 m 之 3.1 倍全數精確無誤；依 JATS 全文校正圖號為 Fig. 1–2（原文共 2 張圖，無 Fig. 3），清除 publisher 與 notes 內在世學者姓氏，並與查獲 2022 專書合著之 F151-008、F151-014 併入同一研究網封頂 2.00，本條維持 1.00。"
+        },
+        {
+          "id": "F151-002",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_02_FREIBERG_BONN_CITY",
+          "changed_fields": [
+            "source_locator",
+            "notes",
+            "F151-S002.publisher",
+            "F151-S002.reading_scope",
+            "F151-S002.locator",
+            "F151-S002.limitations"
+          ],
+          "reason": "PMC3828329（V171 即時重抓 byte-for-byte 一致）核對：細紋槍蝦大螯最大張角 81.5°、最後 <20° 突齒入槽構成漸縮噴嘴、等效孔徑 1.41 mm、閉合 500 µs、噴速 17 m/s、雷諾數 24,000、70:1 模型於 t/T=0.96 脫離且無因次渦環形成數約 4、下偏 30°，及 2:1 模型空蝕數 <0.2 壓降約 10^5 Pa 與軸向微噴流全數相符；依 JATS 全文校正節名與圖表號（Results and Discussion、Table 1、Figure 1–13，移除作者自擬子標題），清除在世學者與編輯姓氏，維持 1.00。"
+        },
+        {
+          "id": "F151-003",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 0.75,
+          "author_standalone_facts": 0.75,
+          "reviewer_facts": 0.75,
+          "reviewer_standalone_facts": 0.75,
+          "network": "NET_02_FREIBERG_BONN_CITY",
+          "changed_fields": [
+            "source_locator",
+            "notes",
+            "F151-S003.publisher",
+            "F151-S003.reading_scope",
+            "F151-S003.locator",
+            "F151-S003.limitations"
+          ],
+          "reason": "PMC5656667（V171 即時重抓 byte-for-byte 一致）逐字核對：特徵長 1.41 mm、0.3–0.5 ms 閉合（模擬突齒角速度 4,000–7,000 rad/s；原文並註明實蝦閉合角速度約 3,500 rad/s）噴速 28–31 m/s、渦核半徑約 0.11 mm、由渦量換算剛體近似漩渦角速度 Ω 約 80,000–170,000 rad/s、壓降約 2×10^5 Pa 形成環狀空蝕渦環，及 32–70 µs 潰縮回彈局部峰值逾 80–100 bar（距頸口 1.4 mm 處逾 10 bar）全數屬實；校正 JATS 實際圖表定位為 Results（無子標題）、Table 1 與 Figure 1–10（80 bar 與 1.4 mm 壓力曲線見 Figure 8–9），補註實蝦閉合角速度對照並清除在世學者姓氏，純數值模擬維持 0.75（與 F151-002 合計 1.75 <= 2.00）。"
+        },
+        {
+          "id": "F151-004",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_04_TOHOKU_FINEMECH",
+          "changed_fields": [
+            "scope",
+            "source_locator",
+            "notes",
+            "F151-S004.publisher",
+            "F151-S004.reading_scope",
+            "F151-S004.locator",
+            "F151-S004.limitations"
+          ],
+          "reason": "PMC10813229（V171 即時重抓 byte-for-byte 一致）核對：體長 35 mm 蘭氏槍蝦蛻殼 14.64 µm 顯微 CT 咬合排開水腔約 0.35 mm³（動能約 0.16 mJ）、活蝦水聽器擊發與潰縮間隔約 300 µs 對應直徑約 2.7–3 mm 空蝕泡（體積約 10 mm³，放大約 30 倍）、90 mm 處 7.7 kPa（折算 50 mm 約 25 kPa），以及同氣泡壽命下因冷減壓泡無雷射局部加熱殘留之熱蒸氣緩衝墊效應而潰縮峰值勝過脈衝雷射全數相符；校正 JATS 小節與圖號定位為 Section 2（Figure 2–5）與 Section 3.1（Figure 8–13；原稿誤將 3.1 雷射對照歸入 3.2 人造壓電噴嘴節並誤標圖號），並徹底清除工業加工與清潔敏感字眼，維持獨立網 1.00。"
+        },
+        {
+          "id": "F151-005",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_05_CARDC_HEBEI",
+          "changed_fields": [
+            "scope",
+            "source_locator",
+            "notes",
+            "F151-S005.publisher",
+            "F151-S005.reading_scope",
+            "F151-S005.locator",
+            "F151-S005.limitations"
+          ],
+          "reason": "PMC7525291（V171 即時重抓 byte-for-byte 一致）核對：99,000 fps 實測 3 種共 6 隻雄性槍蝦，大螯長 8 mm 之 Alpheus macroskeles 於 885 µs 閉合達 4,392–4,500 rad/s（角加速度約 10^7 rad/s²），大螯物種短脊槍蝦與動指長 12 mm 之尖脊槍蝦因凹槽排水阻力跌至約 1,000 與 1,400 rad/s；6.52 µm 顯微 CT 動網格流場顯示噴口渦核 150,000 rad/s 壓降 259.2 kPa 主空蝕＋動指急停槽底慣性二次空蝕，及尾部高壓驅動由泡尾穿向泡頭（背離蝦身）之定向微噴流全數相符；校正 JATS 實際章節與圖表號為 Section 2–4、Figure 1–6 與 Table 1–3（原文共 6 張圖，無 Fig. 7–11），改用純機構網代號並清除敏感詞，維持獨立網 1.00。"
+        },
+        {
+          "id": "F151-006",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.25,
+          "author_standalone_facts": 1.25,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_03_TAMU_MECH",
+          "changed_fields": [
+            "question",
+            "answer_target",
+            "scope",
+            "source_locator",
+            "notes",
+            "editorial.payoff",
+            "editorial.visual",
+            "F151-S006.publisher",
+            "F151-S006.reading_scope",
+            "F151-S006.locator",
+            "F151-S006.summary",
+            "F151-S006.limitations"
+          ],
+          "reason": "PMC6420313（V171 即時重抓 byte-for-byte 一致）逐字稽核抓出氣體摻雜實驗條件誇大與圖表誤植並從嚴向下修正：真實美東槍蝦蛻殼 CT 之 25° 噴水通道立體偏角、5 倍等無因次數模型 36.1% 機械彈簧轉空蝕位能效率、衝擊波速 1,487.9±39.7 m/s、10–100 µm 發光區與半高寬 8–24 ns（平均 15 ns）水下慣性約束電漿閃光皆屬實；惟作者原稿誤寫為『真空除氣蒸餾水閃光歸零、溶入氬氣亮度暴增約 3 倍』並引用不存在之 Fig. 6 與 Table 1——原文實測完全未做真空除氣（degas／vacuum 為 0 次），而是指出『未額外曝氣摻雜氣體的新開封蒸餾水』在 ICCD 下測不到顯著閃光，須以氣泡盤通入壓縮空氣或氬氣曝氣 30 分鐘達溶解飽和（於 35,000 ppm 食鹽水通空氣 20 次擊發有 19 次超過 9 倍背景標準差門檻，蒸餾水通空氣或通氬氣亦呈相似發光趨勢，原文從未宣稱氬氣增亮 3 倍，且正文僅 Fig. 1–5 無 Table 1）。V171 已徹底清除『真空除氣』與『增亮 3 倍』不實宣稱、校正真實小節與圖號 Fig. 1–5，並依向下修正優先原則將本條由 1.25 下修為 1.00。"
+        },
+        {
+          "id": "F151-007",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_06_NCSU_CMAST",
+          "changed_fields": [
+            "source_locator",
+            "notes",
+            "F151-S007.publisher",
+            "F151-S007.reading_scope",
+            "F151-S007.locator",
+            "F151-S007.limitations"
+          ],
+          "reason": "PMC4711987 全文核對：河口亞潮帶牡蠣礁單一水聽器測站分 8 次布放連續監聽 321 天（每 15–30 分鐘錄 30–60 秒，共 27,565 段錄音，搭配兩座鄰近水文氣象測站水溫紀錄），水溫與擊發率高度線性相關（r=0.81–0.93，R²=0.65–0.86），由 7 °C 每分鐘 <100 響飆升至 30 °C 每分鐘 1,500–2,000 響（1.5–20 kHz 聲壓級由約 105 升至 120 dB re 1 µPa，+15 dB），且日夜偏好由盛夏夜間多響 5%–12% 隨季節反轉為隆冬白晝多響達 25%（日間高 5–6 dB）全數精確無誤；校正 JATS 實際節名為 Observations〈Seasonal Trends〉與〈Daily Trends〉（Fig. 1–11、Table 1），並清除 publisher 與 limitations 內在世學者姓氏（含時頻分析方法當代學者冠名），維持獨立網 1.00。"
+        },
+        {
+          "id": "F151-008",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_01_DUKE_LINCOLN_UCSB_CHARLESTON",
+          "changed_fields": [
+            "question",
+            "source_locator",
+            "notes",
+            "editorial.payoff",
+            "editorial.visual",
+            "F151-S008.publisher",
+            "F151-S008.reading_scope",
+            "F151-S008.locator",
+            "F151-S008.summary",
+            "F151-S008.limitations"
+          ],
+          "reason": "PMC6509379 全文核對：連續 22 個月野調量測 1,555 隻稜角槍蝦（780 雄、775 雌），成蝦約每月蛻皮一次，雄蝦繁殖季大螯異速斜率 1.142 高於非繁殖季 1.059，雌蝦反於非繁殖季單身守洞免抱卵時長出相對更大號大螯（斜率 0.932 > 繁殖季 0.773）全數相符；依 JATS 全文校正為無編號 MATERIALS AND METHODS、RESULTS 及 Figure 1–2、Table 1、附錄 Figure A1–A2（原文無 Fig. 3–4），並因 V171 查獲通訊作者與 F151-S014 作者共同發表 2022 專書章節（DOI 10.4324/9781003091868-15）而強制併入 NET_01_DUKE_LINCOLN_UCSB_CHARLESTON（與 F151-001 1.00 合計達 2.00 封頂，本條計 1.00）。"
+        },
+        {
+          "id": "F151-009",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.25,
+          "author_standalone_facts": 1.25,
+          "reviewer_facts": 1.25,
+          "reviewer_standalone_facts": 1.25,
+          "network": "NET_07_NTU_PURDUE_UCR_IHEP_QMUL",
+          "changed_fields": [
+            "source_locator",
+            "notes",
+            "F151-S009.publisher",
+            "F151-S009.locator",
+            "F151-S009.summary",
+            "F151-S009.limitations"
+          ],
+          "reason": "PMC6204534（V171 即時重抓 byte-for-byte 一致）核對：孔雀螳螂蝦馬鞍彈簧外層無定形碳酸鈣／磷酸鈣生物陶瓷（水合 E≈10 GPa、tan δ=0.06±0.01）受壓、內層幾丁質搭疏水類彈力蛋白（E≈0.9 GPa、可逆拉伸應變 30%–34.5%，去蛋白純幾丁質 8.6% 頸縮）受拉、20 N 三維有限元素證實零應力中性面貼合雙層交界，及皮秒雷射微懸臂梁順向斷裂功 647.9±86.4 vs 逆向 7.8±0.6 J/m²（差約 83 倍）全數精確無誤；依 JATS 校正真實小節標題（Figure 1–5、Table 1）、清除摘要內 1970 年過世學者光譜冠名，並因查獲通訊作者與 F151-S011 共同作者合著 2014 Biomaterials Science（DOI 10.1039/c3bm60264h）併入四篇合併網封頂 2.00，本條維持 1.25。"
+        },
+        {
+          "id": "F151-010",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 1,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_08_CSU_CUBOULDER",
+          "changed_fields": [
+            "source_locator",
+            "notes",
+            "F151-S010.publisher",
+            "F151-S010.reading_scope",
+            "F151-S010.locator",
+            "F151-S010.limitations"
+          ],
+          "reason": "PMC8300870（V171 即時重抓 byte-for-byte 一致）核對：雙曲拋物面 z=x²/α−y²/β 光固化 3D 列印剛性與柔性試片壓縮剛度跨越 4 個數量級（0.659–1,740 N/mm）、剛性樹脂高 α 低 β 增剛逾 2,000 N/mm 而軟樹脂早早飽和，及真實孔雀螳螂蝦標本取高 α（13.51–16.39）卻受限於長節外骨骼垂直高度而停在中等 β（2.11–7.81）全數相符；依 JATS 校正為無編號 Materials and Methods、Results and Discussion 及 Figure 1–4、Table 1–3（原文共 4 張圖，無 Fig. 5–6），核銷化學同名者假陽性並清除在世學者姓氏，維持獨立網 1.00。"
+        },
+        {
+          "id": "F151-011",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 0.75,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_07_NTU_PURDUE_UCR_IHEP_QMUL",
+          "changed_fields": [
+            "scope",
+            "source_locator",
+            "notes",
+            "F151-S011.publisher",
+            "F151-S011.reading_scope",
+            "F151-S011.locator",
+            "F151-S011.limitations"
+          ],
+          "reason": "PMC9070693（V171 即時重抓 byte-for-byte 一致）核對：200,000 fps 同步輻射即時 X 光透視 160 m/s 高速撞擊證實天然含水掠肢槌三維主裂紋體積比 30 °C 溫和乾燥 6 h 縮小約 20 倍（撞擊點下方形成奈米塑性變形緩衝區），64 nm 奈米 CT 揭露約 100 µm 深淺表三維互鎖人字形波紋柱（E1=70 GPa、E2=35 GPa）、鑲嵌礦物奈米顆粒互穿微孔道網（比表面積約 7.73×10^5 m^-1）與 3–4 nm 幾丁質原纖維橋接全數相符；依 JATS 校正節名 Experimental、Results and discussion 與 Figure 1–6（原文無 Fig. 7）；單篇獨立池值 1.00，惟因共同作者與 F151-S009 通訊作者合著 2014 論文（DOI 10.1039/c3bm60264h）併入 NET_07_NTU_PURDUE_UCR_IHEP_QMUL（F151-009 已計 1.25，全網硬上限 2.00），本條題內邊際分數下修為 0.75。"
+        },
+        {
+          "id": "F151-012",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 0.75,
+          "author_standalone_facts": 0.75,
+          "reviewer_facts": 0,
+          "reviewer_standalone_facts": 0.75,
+          "network": "NET_07_NTU_PURDUE_UCR_IHEP_QMUL",
+          "changed_fields": [
+            "mechanism_key",
+            "source_locator",
+            "notes",
+            "F151-S012.publisher",
+            "F151-S012.reading_scope",
+            "F151-S012.locator",
+            "F151-S012.limitations"
+          ],
+          "reason": "arXiv:1505.04203 完整 19 頁 PDF 核對：30–50 個螺旋半週期單元、螺距由 140 µm 漸變至 <10 µm、脈衝 0.014–0.16 ms、縱波無頻散通過而橫向剪力波於 N>10 在無因次波數 D/λ≈0.005–0.23（約百萬赫茲 MHz 頻段；作者已正確避開原文第 12 頁將約 1.14 MHz 誤印為 11.4×10^14 Hz 之筆誤）打開剪力波聲子能隙，使單次脈衝透射能量比降至 η≈0.7（濾除約 30%）全數屬實；校正 PDF 真實節名為 Section 3 Results and Analysis 與 Figure 1–7（原文共 7 張圖，無 Fig. 8–9），同時徹底清除 mechanism_key 內殘留之 2011 年過世法國生物學家姓氏；單篇獨立池值 0.75，因所屬合併網 NET_07_NTU_PURDUE_UCR_IHEP_QMUL 已由 F151-009（1.25）＋F151-011（0.75）滿 2.00 硬上限，本條題內邊際計 0.00。"
+        },
+        {
+          "id": "F151-013",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 0,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_07_NTU_PURDUE_UCR_IHEP_QMUL",
+          "changed_fields": [
+            "scope",
+            "source_locator",
+            "notes",
+            "F151-S013.publisher",
+            "F151-S013.reading_scope",
+            "F151-S013.locator",
+            "F151-S013.limitations"
+          ],
+          "reason": "PMC12951240 全文核對：孔雀螳螂蝦尾節背側隆起縱脊內部零介觀大孔洞抗穿刺、兩側凹陷溝谷於外內表皮約 5 µm 交界帶排布半徑 6–12 µm 介觀孔洞鈍化偏折裂紋、孔間直徑約 600 nm 垂直融合幾丁質纖維束上下縫合防脫層，及 5.6 m/s 原位 X 光落錘驗證全數相符（並已避開原文兩處 telson 誤植為 tether／tetrahedron 之英文校對筆誤）；依 JATS 校正無編號節名 Results and Discussion、Materials and Methods 與 Figure 1–5；單篇獨立池值 1.00，惟因與 F151-009、011、012 同屬已滿 2.00 硬上限之 NET_07_NTU_PURDUE_UCR_IHEP_QMUL，本條題內邊際分數下修為 0.00。"
+        },
+        {
+          "id": "F151-014",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1,
+          "author_standalone_facts": 1,
+          "reviewer_facts": 0,
+          "reviewer_standalone_facts": 1,
+          "network": "NET_01_DUKE_LINCOLN_UCSB_CHARLESTON",
+          "changed_fields": [
+            "source_locator",
+            "notes",
+            "F151-S014.publisher",
+            "F151-S014.reading_scope",
+            "F151-S014.locator",
+            "F151-S014.limitations"
+          ],
+          "reason": "PMC11128283（V171 即時重抓 byte-for-byte 一致）核對：30,000–40,000 fps 實拍自由活動布氏新齒指蝦 12 場搶洞互毆共 28 記伴隨空蝕氣泡之有效重擊，防守方抬離海底擺出懸空捲尾姿態帶著全身順勢彎曲退讓，使平均衝擊能量消散率由離體固定尾節之約 69% 拉高至約 90%（最低約 75%，n=19 雙體位移追蹤確認），且撞擊越快、掠肢越重則恢復係數越低、消散率越高全數相符；依 JATS 補齊完整圖表定位 Fig. 1–6 與 Table 1–3；單篇獨立池值 1.00，惟因單一作者與 F151-S008 通訊作者合著 2022 專書章節（DOI 10.4324/9781003091868-15），併入已由 F151-001（1.00）＋F151-008（1.00）滿 2.00 硬上限之 NET_01_DUKE_LINCOLN_UCSB_CHARLESTON，本條題內邊際分數下修為 0.00。"
+        }
+      ]
+    }
+  }
+}

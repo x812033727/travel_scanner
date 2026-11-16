@@ -1,0 +1,775 @@
+{
+  "batch_id": "wave85-tech-20261115",
+  "created_on": "2026-11-15",
+  "scope": "第三十五輪：補強入選核心與可成題長題數最少的分類，從零研究新長題：數位科技與通訊工程——手錶背面那顆綠燈，為什麼你一動它就數錯心跳？（F171／V191）。動筆前先以 JATS 作者群＋Europe PMC（Crossref 可用時補查）逐對確認研究網互不合著，再由非作者覆核重抓來源、補查合著、逐卡對全文並重算分鐘。",
+  "sources": [
+    {
+      "id": "T85-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:5491979&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.3390/jpm7020003",
+      "title": "Accuracy in Wrist-Worn, Sensor-Based Measurements of Heart Rate and Energy Expenditure in a Diverse Cohort",
+      "publisher": "Journal of Personalized Medicine 7(2):3（2017）；美國史丹佛大學醫學院心血管醫學部、統計系，與瑞典斯德哥爾摩一所體育與健康科學學院",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=7，HTTP 200，71229 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Abstract、1 Introduction、2 Methods（2.1 Devices、2.2 Protocol、2.3 Device Data Collection 各裝置小節、2.4 Statistical Analysis、2.5 Error）、3 Results（3.1 Heart Rate、3.2 Energy Expenditure、3.3 Error、3.4 Predictor Variable Associations）、4 Discussion、Limitations、5 Conclusions、Figure 1–4 圖說、Table 1、作者貢獻；補充資料（Figure S1–S3、Table S1–S6）未下載，只讀正文對它們的文字描述。能量消耗的結果讀過但不引用；裝置品牌與型號一律不用。",
+      "locator": "2 Methods 2.1（60 名健康成人、29 男 31 女，共做 80 次測試；7 款腕戴裝置分兩批；手腕膚色由兩位研究者依色卡評分）、2.2 Protocol（坐 5 分鐘 → 跑步機走路時速 3.0 與 4.0 英里 → 慢跑平均時速 5.7 英里 → 快跑平均時速 6.9 英里 → 踩固定式腳踏車平均 88 瓦與 160 瓦；全程 12 導程心電圖；每一階段只取最後一分鐘）、2.4（誤差＝（裝置讀數−心電圖）÷心電圖）、3.1（各裝置合計的誤差中位數：踩車 1.8%（95% 信賴區間 0.9–2.7%）最低、走路 5.5%（3.9–7.1%）最高；踩車時 7 款裝置有 6 款的誤差中位數低於 5%，其餘一款 5.1%；跨活動各裝置誤差中位數 2.0% 至 6.8%）、3.3–3.4（廣義估計方程：活動強度、性別是顯著預測因子；以坐著為基準，踩車的效果量 −0.041、p = 2.96 × 10⁻³）、4 Discussion（「跑步的誤差低於走路」「深膚色、手腕較粗、身體質量指數較高與誤差正相關」為作者的文字敘述）",
+      "summary": "手腕上的裝置量心跳到底準不準？美國史丹佛大學的心血管醫學團隊找來 60 位年齡、體型、膚色、體能各不相同的健康成人，讓他們同時戴上最多四款市售腕戴裝置，並全程接著醫院用的 12 導程心電圖當標準答案，依序坐著、在跑步機上走路與跑步、再踩固定式腳踏車，每個階段只取最後一分鐘來比。把七款裝置合起來看，誤差最小的是踩腳踏車（中位數 1.8%），最大的不是跑步，而是走路（5.5%）；踩車時七款裡有六款的誤差中位數在 5% 以內。統計模型裡，活動的種類與強度是顯著的誤差來源。也就是說，同一個人、同一支裝置，只是換一種動法，準確度就不一樣。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實驗室條件、每階段只取最後一分鐘的穩定讀數（活動剛切換時的誤差沒有算進來）；裝置是 2016 年前後的機種與韌體，作者自己強調結果不能外推到後來的版本。部分裝置的心率是從應用程式的靜態圖形描點取得、解析度只有每分鐘一筆。3.1 節「走路時有三款裝置誤差中位數低於 5%」所列的第三款數字是 5.6%，原文前後不一致，本卡不引用這一句。Discussion 說深膚色、手腕較粗、身體質量指數較高與誤差正相關，但正文只在補充表格交代、沒有列出數字（補充資料未下載），後來的研究也指出這一點缺乏可核對的數據，本卡不把它當成結果。能量消耗（熱量）的結果與任何健康用途的討論不引用。研究群：NET_01（與 T85-S002、T85-S003 併網，三篇封頂 2.00 條）；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：重抓（OAI，V191 seq=2）正文與作者快取逐字相同。補記：摘要與 Discussion 的膚色、腕圍、身體質量指數說法在 Results 3.3–3.4 沒有對應數據（迴歸的顯著項不含膚色），屬原文自身不一致，題案已在 evidence_gaps 交代為「另一種說法」而非忽略。",
+      "author_cache": {
+        "file": "F171/cache/PMC5491979.xml",
+        "sha256_prefix": "eec33080fa89419b",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=7，71229 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "T85-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:7010823&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.1038/s41746-020-0226-6",
+      "title": "Investigating sources of inaccuracy in wearable optical heart rate sensors",
+      "publisher": "npj Digital Medicine 3:18（2020）；美國北卡羅來納州一所大學的生物醫學工程系與生物統計系",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=6，HTTP 200，114101 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Abstract、Introduction（含 Table 1 各廠商自述的影響因素）、Results（Study summary、Table 2、Wearables accuracy across skin tones、at rest and during physical activity、during rhythmic activity、Signal alignment、cost/market/release year）、Discussion、Methods（Study population、Sample size、Devices and data collection protocol、Time syncing、Mixed effects modeling、Differences algorithm、Calculations of error／Missingness／HRV、Lag time analysis、Activity level disparity statistical testing）、Figure 1–3 圖說、致謝與作者貢獻；補充資料（Supplementary Fig. 1–7、Table 1–10）未下載，只讀正文對它們的文字描述。裝置品牌與型號一律不用。",
+      "locator": "Methods「Study population」（招募 56 人、53 人完成；六級膚色分類各 7、8、10、9、9、10 人；另以分光儀量手腕膚色）、「Devices and data collection protocol」（四款消費型與兩款研究用裝置，心電圖貼片為標準；每一輪：靜坐 4 分鐘 → 跟著影片深呼吸 1 分鐘 → 跑步機走路 5 分鐘（時速 2.5–4 英里，心率拉到最大值的五成）→ 休息約 2 分鐘 → 在鍵盤上打字 1 分鐘；共三輪以輪流測完六款）、Results Table 2（混合效應模型的概似比檢定：膚色 p = 0.634；活動狀態 p < 2.20 × 10⁻¹⁶；裝置 p < 2.20 × 10⁻¹⁶；膚色 × 裝置交互作用 p = 2.80 × 10⁻⁵，來自一款戴在上臂的研究用裝置）、Abstract（活動時的絕對誤差平均比靜止時高 30%）、「at rest and during physical activity」（消費型裝置平均絕對誤差：靜止 7.2 ± 5.4、活動 10.2 ± 7.5 次／分；研究用 13.9 ± 7.8、15.9 ± 8.1 次／分）、「during rhythmic activity」（走路時裝置讀數偏高、打字時偏低；打字的誤差多半接近走路；「把步伐當成心跳」的鎖定現象是引用前人文獻的說法）、「Signal alignment」（裝置與心電圖之間有 0–43 秒不固定的延遲）",
+      "summary": "大家最常懷疑的兩個兇手——膚色深、手在動——誰才是真的？美國北卡羅來納州一所大學的生物醫學工程團隊刻意找齊六級膚色、每級七到十人，共 53 位受試者完成實驗；每個人戴著心電圖貼片當標準，輪流換上六款裝置（四款消費型、兩款研究用），依序靜坐、深呼吸、在跑步機上走五分鐘、休息、再打字一分鐘。結果統計模型裡膚色這一項不顯著（p = 0.634），活動狀態與裝置種類卻都極為顯著；活動時的絕對誤差平均比靜止時高出三成。更有意思的是方向：走路時裝置報的心跳偏高，打字時反而偏低；只是手指在鍵盤上敲，多數裝置的誤差就幾乎追上走路。研究者還發現裝置的讀數和心電圖之間有零到四十三秒、時長不固定的落差。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "活動只有低強度走路（心率拉到最大值五成）與一分鐘打字，沒有跑步或高強度動作；六款裝置分三輪配戴，不是同時量。平均絕對誤差的絕對值偏大（靜止時消費型也有 7.2 次／分），含有裝置與心電圖之間 0–43 秒延遲造成的錯位；作者以兩種對齊方法重算後結論不變，但本卡不拿這些絕對數字當成「手錶差幾下」。「膚色無顯著差異」是整體模型的結果：膚色 × 裝置的交互作用顯著（來自一款上臂式研究用裝置），而且活動時六款裡有五款的最大平均偏差落在膚色最深的兩級，作者仍判定膚色不是誤差的主因。「裝置會鎖定步伐頻率」是引用前人文獻的說法，本篇沒有量頻譜。作者推測走路時讀數偏高可能是廠商刻意的安全設計，純屬臆測，不引用。裝置為 2018 年前後的機種。研究群：NET_01（本篇通訊作者與 T85-S001 的三位作者有 2019、2021 年的期刊合著，本篇第二作者與 T85-S001 的三位作者有 2014、2015、2017 年的合著；本篇通訊作者另與 T85-S003 的通訊作者在 2026 年一篇 71 位作者的路線圖論文同列作者，故三篇併為一網、封頂 2.00 條）；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：OAI 重抓（V191 seq=3）正文與作者快取逐字相同；Europe PMC 版（seq=1）內容相同、僅標記差異。2023 年一篇 51 位作者的穿戴光學脈波路線圖論文（PMID 37494945）也同列本篇通訊作者與 T85-S003 的通訊作者及另一位作者，NET_01 併網有兩篇獨立依據。",
+      "author_cache": {
+        "file": "F171/cache/PMC7010823.xml",
+        "sha256_prefix": "11c01778ceb629db",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=6，114101 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "T85-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:6412091&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.3389/fphys.2019.00198",
+      "title": "Quantitative Comparison of Photoplethysmographic Waveform Characteristics: Effect of Measurement Site",
+      "publisher": "Frontiers in Physiology 10:198（2019）；英國安格里亞魯斯金大學健康學院與中國深圳南方科技大學電子與電氣工程系",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=19，HTTP 200，71345 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Abstract、Introduction、Materials and Methods（Subjects、Table 1、Measurement Protocol and Procedure、PPG Waveform Analysis、Statistical Analysis）、Results（Analyzability、Effect of Measurement Site on Mean Amplitude／Tp／Tn／RI、Effects of Gender and Age）、Discussion and Conclusion、Figure 1–7 圖說、資料可得性、倫理、作者貢獻、經費；血壓與年齡對波形指標的影響讀過但不引用。",
+      "locator": "Materials and Methods「Subjects」（36 名健康成人，24 女 12 男，32.7 ± 12.3 歲）、「Measurement Protocol and Procedure」（同一顆反射式光學感測器，光源峰值波長約 880 奈米的近紅外光；平躺不動，依隨機順序輪流放在手指、手腕內側、手腕背側、上臂、耳垂、額頭，每處錄 1 分鐘；正常呼吸與深呼吸各一輪）、Results「Analyzability」（正常呼吸時四項波形指標都分析得出來的比例：手指 95%（36 筆中 34 筆）、手腕內側 86%、上臂 83%、耳垂 81%、手腕背側 67%、額頭 61%）、「Effect of Measurement Site on Mean Amplitude」（量測部位的效應 p < 0.001；手指的平均脈動振幅顯著高於其他五處（皆 p < 0.001）；最低的平均振幅出現在手腕背側）、Figure 4",
+      "summary": "手錶貼著的那塊皮膚——手腕背面——是量脈搏的好位置嗎？英國安格里亞魯斯金大學與深圳南方科技大學的團隊拿同一顆反射式光學感測器，請 36 位健康成人平躺不動，輪流貼在手指、手腕內側、手腕背側、上臂、耳垂和額頭六個地方各錄一分鐘。結果手指的脈動訊號振幅明顯比其他五處都大，而六處裡振幅最小的，正是手腕背側；波形清楚到四項特徵都分析得出來的比例，手指有 95%，手腕背側只有 67%，六處裡排倒數第二。也就是說，人還躺著不動，戴錶的位置拿到的訊號就已經是最弱的一批。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "光源是約 880 奈米的近紅外光，不是手錶常用的綠光；受試者平躺不動，沒有任何運動條件；量的是波形振幅與「波形特徵能否分析」，不是心率準不準，卡片不得寫成「手腕背側量心跳的錯誤率」。振幅以電壓表示、沒有換算成佔總訊號的比例，本卡不引用絕對數值。Discussion 有一句說振幅最低的是耳垂與額頭，與 Results「最低的平均振幅出現在手腕背側」不一致，本卡採 Results 與 Figure 4 的說法，並在此註明原文前後不一。各部位依序量測、不是同時。年齡、性別與臨床診斷用途的討論不引用。研究群：NET_01（本篇通訊作者與 T85-S002 的通訊作者在 2026 年一篇 71 位作者的路線圖論文同列作者，依規則併網；與 T85-S001、T85-S002 三篇封頂 2.00 條）；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：Europe PMC 重抓（seq=8）內容與作者快取相同。核對 Results「Analyzability」「Effect of Measurement Site on Mean Amplitude」與 Discussion 的不一致屬實，卡片採 Results。",
+      "author_cache": {
+        "file": "F171/cache/PMC6412091.xml",
+        "sha256_prefix": "9769b959eb1c169b",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=19，71345 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "T85-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:3949790&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0091205",
+      "title": "iPhone 4s Photoplethysmography: Which Light Color Yields the Most Accurate Heart Rate and Normalized Pulse Volume Using the iPhysioMeter Application in the Presence of Motion Artifact?",
+      "publisher": "PLoS ONE 9(3):e91205（2014）；日本金澤大學理工學域與自然科學研究科、中國哈爾濱工業大學自動化測試與控制系（另有一位作者任職於英國一家顧問公司）",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=8，HTTP 200，110945 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Abstract、Introduction、Methods（Ethics Statement、Participants、Procedure、Apparatus and Measures：Laboratory devices／Smartphone、Data Reduction、Statistical Analysis）、Results（Motion artifact during BL／HMA／VMA、Table 1–3、HR 與脈波容積的一致性、S/N ratio）、Discussion、Limitations of the study、Conclusions、Figure 1–7 圖說、致謝；補充表格（Table S1–S7 個別資料）未下載。手機型號與應用程式名稱一律不用。",
+      "locator": "Methods「Participants」（12 名男大學生，20.6 ± 0.76 歲）、「Procedure」（坐姿；左手握著手機、食指蓋住相機與閃光燈，手放在膝上的墊子上；實驗者以約 6 赫茲的節奏用手搖晃墊子，水平搖與垂直搖各 20 秒、另有不搖的基準，各重複一次；右手指另接穿透式近紅外光感測器與心電圖當不受搖晃影響的標準）、「Smartphone」（相機每秒 30 格，同一處同時取紅、綠、藍三色的平均亮度）、Table 1（加速度中位數：水平搖時水平方向 0.34 G、垂直搖時垂直方向 0.42 G、不搖時約 0.01 G）、Table 3（三色算出的心率與心電圖的相關係數 0.9960、0.9991、0.9975，固定偏差 −0.12 至 0.10 次／分）、Results「S/N ratio」與 Figure 7（不搖時三色訊噪比無差別，p = 0.378；水平搖 p = 0.003、垂直搖 p < 0.001，事後比較綠光與藍光都高於紅光）、Discussion（研究者推測紅光穿得較深、探到的是容易被推擠位移的組織；手指用力壓到相機上時脈波會消失）",
+      "summary": "手錶背面為什麼幾乎都是綠燈？日本金澤大學的團隊用一個很巧的辦法比較顏色：手機相機的每一格畫面本來就同時記錄紅、綠、藍三色，所以讓 12 位大學生把食指蓋在手機的相機與閃光燈上，就等於在同一塊皮膚上同時做了三種顏色的量測。接著實驗者用手以每秒約六下的節奏搖晃受試者拿手機的那隻手。不搖的時候，三種顏色的訊號一樣乾淨；一搖起來，綠光和藍光裡「脈搏對雜訊」的比值就明顯高過紅光。算出來的心跳三色都還準（那是因為搖晃的節奏刻意選得離心跳很遠），但脈動大小只有綠光量得最接近標準。研究者推測，紅光穿得比較深，照到的是一推就位移的深層組織，所以更容易被動作攪亂。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "量的是手指壓在手機相機上，不是手腕上的手錶；受試者只有 12 位年輕男性。搖晃是實驗者用手施加、固定約 6 赫茲，刻意選在心跳頻率之外以便在頻譜上分開，和走路跑步那種與心跳頻率重疊的動作不同——所以「三色算出的心率都準」不能推論成運動時也準。相機的紅綠藍三個頻道頻寬很寬、彼此重疊，作者自己提醒不能當成精確的波長比較。「紅光探到較深、較易位移的組織」是作者依文獻所作的推測（原文用語是 most likely、seems reasonable），沒有量深度。原文說不搖時三色訊噪比「約 30 分貝」，但其公式定義為功率比的常用對數，單位前後不一致，本卡不引用這個數值。脈波容積作為壓力或情緒指標的說法不引用。研究群：NET_03_Kanazawa 獨立網（1.00 條）；本篇作者之一與 T85-S005 的第一作者姓氏與名字縮寫相同，經查全名與單位不同（見 coauthorship_audit），不併網；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：Europe PMC 重抓（seq=9）內容與作者快取相同。Discussion 把綠光訊號歸於真皮淺層小動脈與微血管叢的血量變化，是與 T85-S006／S008 不同的傳統解釋，題案已並列。",
+      "author_cache": {
+        "file": "F171/cache/PMC3949790.xml",
+        "sha256_prefix": "905c56b8b2ab9751",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=8，110945 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "T85-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:7085621&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.3390/s20051493",
+      "title": "Motion Artifact Reduction in Wearable Photoplethysmography Based on Multi-Channel Sensors with Multiple Wavelengths",
+      "publisher": "Sensors 20(5):1493（2020）；韓國漢陽大學生物醫學工程系與家庭醫學科",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=18，HTTP 200，92372 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Abstract、1 Introduction、2 Materials and Methods（2.1 Wearable Multi-Channel PPG System、2.2 Data Acquisition、2.3 Motion Artifact Reduction Algorithm Based on Multi-Sensors）、3 Experimental Results、4 Discussion、Figure 1–9 圖說、Table 1–2、作者貢獻與經費。零件廠牌與型號一律不用。",
+      "locator": "2.1（自製腕戴系統：四組感測器朝上下左右四個方向排列，每組各有綠、紅、紅外三顆發光二極體與一顆光偵測器，共 12 個頻道，每秒取樣 100 次；另有加速度計）、2.2（8 名 20–30 歲健康成人，7 男 1 女；胸帶式心電量測為標準；在 20 公尺走廊來回：走路約每秒 1 公尺、快走約 1.8 公尺、跑步約 2.2 公尺，各 2 分鐘，每人做兩次，共 16 組資料；心跳總數走路 2,757、快走 2,913、跑步 3,563，合計 9,233 次）、Table 1（各頻道未經多頻道演算法處理的偵測結果：四個綠光頻道的靈敏度，走路 93.66–97.07%、快走 84.17–93.69%、跑步 72.48–77.28%；紅光與紅外頻道走路 88.33–92.22%、跑步 66.14–69.36%；跑步時各頻道的陽性預測值 98.75–99.69%）、3 Experimental Results（動作越劇烈，漏掉的心跳大幅增加，誤判的假心跳反而略減）、Table 2（作者提出的多頻道演算法：靈敏度走路 99.00%、快走 96.28%、跑步 82.49%）",
+      "summary": "把感測器真的戴在手腕上跑起來，心跳是「多數了」還是「少數了」？韓國漢陽大學的團隊自己做了一條有十二個頻道的腕帶：四組感測器朝四個方向，每組都有綠、紅、紅外三種光。八位年輕人戴著它在走廊走路、快走、跑步，胸前另有電極式的量測當標準，總共比對了九千多次心跳。單看每個頻道，綠光都比紅光和紅外光抓得到更多心跳；但不管哪種顏色，越動越漏：綠光頻道走路時抓得到 94–97% 的心跳，快走剩 84–94%，跑步只剩 72–77%。有趣的是，抓到的幾乎都是真的（跑步時九成九以上），也就是動作造成的主要是「漏掉」而不是「多出來」。即使用上他們把十二個頻道合起來的演算法，跑步時也只救回到約 82%。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 8 位受試者（7 男 1 女），每種速度 2 分鐘；自製的研究用系統，不是市售手錶，各頻道的數字反映的是這套硬體與一種固定的波峰偵測法，不能直接當成市售手錶的漏跳率。標準是胸帶式心電量測，不是醫院心電圖。「跑步」的速度只有約每秒 2.2 公尺（原文另處寫約時速 8 公里）。靈敏度是「標準心跳中被偵測到的比例」，不是心率讀數的誤差百分比，兩者不可混用。Discussion 有一句把穿透深度與波長的關係寫反了（寫成波長越短穿得越深），與同篇 Introduction 及一般文獻相反，本卡不引用該句。作者的演算法細節（獨立成分分析、奇異值分解）不引用。研究群：NET_04_Hanyang 獨立網（1.00 條）；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：Europe PMC 重抓（seq=10）內容與作者快取相同；2.3 節與 Discussion 的波長／穿透深度寫反已核實。",
+      "author_cache": {
+        "file": "F171/cache/PMC7085621.xml",
+        "sha256_prefix": "96516c554c8a8b53",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=18，92372 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "T85-S006",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:4440202&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.1038/srep10494",
+      "title": "A new look at the essence of the imaging photoplethysmography",
+      "publisher": "Scientific Reports 5:10494（2015）；東芬蘭大學應用物理系、俄羅斯聖彼得堡資訊技術機械與光學大學、聖彼得堡國立大學醫學院、海參崴的遠東聯邦大學與俄羅斯科學院遠東分院自動化與控制過程研究所（另有一位作者任職於芬蘭一家儀器公司）",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=20，HTTP 200，78113 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Abstract、導言各段、Results（Mapping the areas with maximal PPG amplitude、Counter phase PPG waveforms、Influence of the external local pressure）、Discussion、Methods（Participants、Measurement system、Experimental protocol、Mapping the PPG amplitude）、Author Contributions、Figure 1–5 圖說、致謝。儀器廠牌與型號一律不用。",
+      "locator": "Methods「Participants」（58 名健康受試者，20–89 歲，17 女 41 男）、「Measurement system」（兩顆 525 奈米綠光發光二極體照手掌與手腕，黑白相機每秒 30 格錄 24 秒；光源與鏡頭前各加一片互相垂直的偏振片，濾掉表面直接反射）、Results「Mapping the areas…」（每位受試者脈動最強的點幾乎都落在橈動脈或尺動脈附近；最強點的脈動幅度（隨心跳起伏的部分除以平均亮度）介於 0.7% 與 5.7%，左手平均 2.2%（標準差 0.9%）、右手 2.1%（標準差 1.0%））、「Counter phase PPG waveforms」（所有受試者都找得到相鄰而反相的區域；所舉的例子兩個最強點只相距 3.3 公釐）、「Influence of the external local pressure」（所示的一位受試者小指末節同一點：手懸空時 1.1%、波形像雜訊；手靠自身重量輕貼玻璃 2.96%；再壓上 1.7 公斤（約每平方公分 0.3 牛頓）4.1%）、Discussion（綠光在皮膚的穿透深度估計 0.4–0.9 公釐，手腕的動脈通常在表皮下 3 公釐以上；依傳統模型估計脈動幅度不會超過 0.7%，實測平均 2.1%，約三倍；新模型：動脈內隨心跳起伏的壓力推擠真皮，改變微血管的疏密，進而改變光的吸收與散射；吸收與散射何者為主尚不清楚）",
+      "summary": "教科書說，光學心率計看的是「動脈裡的血一脹一縮」。東芬蘭大學與俄羅斯幾所大學的物理團隊覺得不對勁：綠光在皮膚裡只走得了不到一公釐，手腕的動脈卻埋在三公釐以下，光根本照不到。他們用綠光照 58 個人的手掌，拿相機拍下每一小塊皮膚隨心跳明暗起伏的程度。最亮眼的點幾乎都在動脈附近，起伏平均約 2%，是「光直接照到動脈」所能解釋的上限（約 0.7%）的三倍；更怪的是，相距只有三公釐的兩塊皮膚，可以一塊變暗時另一塊變亮。他們的解釋是：動脈每跳一下，就把上方的真皮擠一下，擠得微血管變密、光被多吃掉一些——相機看到的是皮膚被擠壓的痕跡。支持這個說法的觀察是：手懸空時某一點的起伏只有 1.1%，輕輕貼上玻璃變成 2.96%，再加壓到 4.1%。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "量測方式是相機隔空拍手掌（非接觸成像），不是貼在手腕上的感測器；「真皮被動脈壓力推擠」是作者為解釋反相區域與接觸效應而提出的模型，原文用語是 we propose，並自陳吸收與散射何者為主尚不清楚——卡片必須寫成研究者的主張。接觸加壓的 1.1%、2.96%、4.1% 是文中所示一位受試者、小指上一個點的數值，不是 58 人的平均（群體數據見 T85-S007）；三段錄影之間隔了一到兩分鐘。「上限 0.7%」是作者依穿透深度與文獻光學參數所作的估算，不是量測。穿透深度 0.4–0.9 公釐與動脈深度為引用前人。脈動幅度的平均是「每人最強的那一點」，不是整隻手的平均。研究群：NET_05_Kuopio_ITMO（與 T85-S007 作者重疊，兩篇封頂 2.00 條）；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：Europe PMC 重抓（seq=11）內容與作者快取逐段相同。導言明寫一般共識是動脈搏動造成的組織光學密度變化，本篇是挑戰此共識的新模型。",
+      "author_cache": {
+        "file": "F171/cache/PMC4440202.xml",
+        "sha256_prefix": "ade95d1e81b14631",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=20，78113 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "T85-S007",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:5074491&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0165413",
+      "title": "Origin of Infrared Light Modulation in Reflectance-Mode Photoplethysmography",
+      "publisher": "PLoS ONE 11(10):e0165413（2016）；俄羅斯聖彼得堡資訊技術機械與光學大學、海參崴的俄羅斯科學院遠東分院自動化與控制過程研究所與遠東聯邦大學、海參崴一所海軍醫院、東芬蘭大學神經生物學系、喀山聯邦大學",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=27，HTTP 200，66439 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Abstract、Introduction、Subjects and Methods（Participants、Experimental setup、Experimental procedure、Data processing）、Results（Effect of the skin-glass contact、Correlation of the data at green and NIR illumination）、Discussion、Conclusions、Fig 1–4 圖說。儀器廠牌與型號一律不用。",
+      "locator": "Subjects and Methods「Participants」（34 名健康受試者，25 男 9 女，18–66 歲）、「Experimental setup」（525 奈米綠光與 810 奈米近紅外光各兩顆發光二極體，相機每秒 60 格、逐格輪流切換兩種光，等於兩種顏色各每秒 30 格、幾乎同時拍；交叉偏振）、「Experimental procedure」（先拍手掌懸空 24 秒，再拍手掌貼在玻璃上並壓 2.0 公斤重物 24 秒；每人的平均接觸壓力 27–55 毫米汞柱，平均 35）、「Data processing」（貼玻璃時脈動最強的點，與懸空時同一解剖位置比較）、Results（左右手各算一筆，共 68 筆；綠光脈動幅度由懸空的 0.61 ± 0.04% 升到貼玻璃的 2.12 ± 0.21%，近紅外光由 0.48 ± 0.03% 升到 0.84 ± 0.08%；貼玻璃對懸空的倍數平均綠光 3.63 ± 0.41、近紅外光 1.82 ± 0.19，最高分別約 7 倍與 3.6 倍；兩種光的最強點平均只差約 1.5 公釐；兩種光的增幅相關係數 0.85，p < 0.001）、Discussion（引用前人：綠光穿透約 0.3–0.8 公釐、近紅外光 1.5–2.5 公釐）",
+      "summary": "上一篇的「皮膚被擠」只在一個人身上示範了加壓的效果。同一批研究者隔年在海參崴找了 34 位健康受試者，把實驗做成整組的比較：相機一格綠光、一格近紅外光輪流拍手掌，先拍手懸空，再拍手掌貼在玻璃上並壓著兩公斤重物（接觸壓力平均約 35 毫米汞柱）。只是讓皮膚貼上一塊硬的東西，綠光量到的脈動就從 0.61% 變成 2.12%，平均放大三點六倍；穿得較深的近紅外光也放大了，但只有一點八倍。兩種光的最強點幾乎在同一個位置，放大的程度也高度相關。研究者認為這表示兩種光讀到的是同一件事——皮膚被動脈的壓力擠壓——而且越淺的光越吃這一套。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "量測方式仍是相機拍手掌（非接觸成像加一片玻璃），不是腕戴感測器；接觸條件只有「懸空」與「貼玻璃並壓 2 公斤」兩種，沒有中間的壓力梯度。懸空與貼玻璃的比較靠人工在兩張圖上找同一解剖位置，作者自陳不很精確（估計誤差在 20% 以內、平均 8%）；最強點是先在貼玻璃的圖上挑出來的，對放大倍數有選擇偏差。貼玻璃時平均亮度也比懸空高（綠光 1.15 倍、近紅外光 1.09 倍），作者歸因於手離光源較近。「兩種光都來自真皮形變」是作者由相關性所作的推論（原文用語 suggests、we suggest）。穿透深度為引用前人。皮膚老化與皮膚病診斷的應用展望不引用。研究群：NET_05_Kuopio_ITMO（與 T85-S006 有三位共同作者，兩篇封頂 2.00 條）；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：覆核重抓兩次 Europe PMC 全文皆回 HTTP 500（V191 seq=12、13，第一次重試即停），PMC OAI 主機本輪已對覆核回 429（seq=4）而停用，故本篇只以作者快取核對（位元組 66,439 與 sha256 前 16 碼與作者紀錄相符）。",
+      "author_cache": {
+        "file": "F171/cache/PMC5074491.xml",
+        "sha256_prefix": "6e3e5982d4519eef",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=27，66439 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "T85-S008",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:11085639&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.3390/s24092692",
+      "title": "Evaluating Vascular Depth-Dependent Changes in Multi-Wavelength PPG Signals Due to Contact Force",
+      "publisher": "Sensors 24(9):2692（2024）；比利時布魯塞爾自由大學（荷語）電子與資訊系、古巴聖地牙哥東方大學生物醫學工程系與醫學生物物理中心",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=25，HTTP 200，116107 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Abstract、1 Introduction、2 Related Work、3 Materials and Methods（3.1 Experimental Platform、3.2 Data Collection、3.3 Data Analysis）、4 Results（4.1 與 4.1.1–4.1.3、4.2 與 4.2.1–4.2.3、4.3 與 Evolution of AC Pulse Contours）、5 Discussion、6 Future Research Directions、7 Conclusions、Figure 1–11 圖說、Table 1、致謝、作者貢獻、倫理聲明。儀器廠牌與型號一律不用。",
+      "locator": "3.1（指夾式量測模組內建五種波長的發光二極體：470、525、590、631、940 奈米，另有力量感測器與溫度感測器；以調整螺絲控制夾在指尖上的力量；每秒取樣 100 次）、3.2（11 名健康成人，8 男 3 女，32.1 ± 8.2 歲；平躺；左右手食指尖，共 21 筆紀錄、約 7.5 小時；先不加力記錄至少 1 分鐘，再逐步加力直到 940 奈米的脈動幅度小到可忽略，然後逐步放鬆）、4.1（21 筆中 17 筆的力量感測器上看得到隨脈搏起伏的壓力波）、4.1.3（力量加大時指尖局部溫度明顯下降，放鬆後慢慢回升）、4.2（除 631 奈米外，各波長的平均亮度都隨力量上升；放鬆時走的路徑和加壓時不同，即遲滯）、4.3（加壓過程中，短波長（470、525、590 奈米）的脈動幅度在較小的力量就達到最大，長波長較晚；短波長的脈動消失之後，940 奈米在部分受試者身上仍看得到微弱而不穩定的脈動；放鬆過程達到最大幅度所需的力量和加壓過程不同）、5 Discussion（適度的力量有利於脈動訊號，力量太大會壓扁微血管）",
+      "summary": "既然訊號和「擠壓」有關，那感測器壓在皮膚上的力道一變，訊號會怎麼變？比利時布魯塞爾自由大學與古巴東方大學的團隊做了一個指夾，裡面同時有藍、綠、黃、紅、近紅外五種光，還有一顆量力道的感測器。11 位受試者平躺，研究者用螺絲慢慢把指夾鎖緊、再慢慢放鬆，全程記錄五種光的訊號。結果每種光的脈動都是先變大、再變小，但各有各的最佳力道：穿得淺的藍光、綠光在力道還小時就達到最大，再壓下去最先消失；穿得深的近紅外光要壓得更緊才到頂，淺色光的脈動都不見了，它在部分受試者身上還看得到一點。更麻煩的是，放鬆時訊號不會照原路回來——同樣的力道，鎖緊途中和放鬆途中量到的大小不一樣，研究者說這反映皮膚被壓過之後會留下一段時間的變形。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "量的是指尖、受試者平躺不動，不是手腕也不是運動中；只有 11 人、21 筆紀錄。力量靠手動轉螺絲調整，加壓與放鬆的速度不一致，作者自列為主要限制。結果多以正規化後的曲線與個別紀錄的圖呈現，正文沒有給出「最佳力量是幾牛頓」的群體數字，本卡因此只寫方向（誰先到頂、誰先消失、有遲滯），不寫數值。沒有量心率誤差。「遲滯反映皮膚的黏彈性與殘留變形」「631 奈米的特殊行為可能與含氧血紅素有關」是作者的解釋與推測（原文用語 suggests、could indicate）。以平均亮度反推接觸力量的應用構想不引用；右手最大力量高於左手的觀察與本題無關。研究群：NET_06_VUB 獨立網（1.00 條）；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：Europe PMC 重抓（seq=14 回 500，seq=15 重試一次成功）內容與作者快取相同。",
+      "author_cache": {
+        "file": "F171/cache/PMC11085639.xml",
+        "sha256_prefix": "47e9fa9753948525",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=25，116107 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "T85-S009",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:7570982&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.3390/s20185052",
+      "title": "A Study on the Effect of Contact Pressure during Physical Activity on Photoplethysmographic Heart Rate Measurements",
+      "publisher": "Sensors 20(18):5052（2020）；義大利巴勒摩大學工程系、英國羅浮堡大學機械電機與製造工程學院、巴勒摩一所心胸疾病與移植專科研究醫院",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=9，HTTP 200，108742 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Abstract、1 Introduction、2 Materials and Methods（2.1 Measurement Device、2.2 Human Study Protocol、2.3 Data Analysis）、3 Results、4 Discussion、5 Conclusions、Figure 1–7 圖說、Table 1–4、致謝、作者貢獻、縮寫表。零件與胸帶的廠牌型號一律不用。",
+      "locator": "2.1（自製腕戴裝置：520 奈米綠光感測器正上方疊一顆荷重元，量感測器壓在皮膚上的壓力；接觸面積 473 平方公釐，接近市售產品；三種壓力 12、33、54 毫米汞柱，取自五位手錶使用者戴成「舒服、正常、偏緊」時的實測；作者說在這個接觸面積下再緊就會不舒服）、2.2（17 名 22–55 歲受試者，12 男 5 女，其中 16 人為同一級較淺膚色；面對 22.5 公分高的台階，跟著節拍器以每分鐘 90、120、140 拍上下台階各 60 秒；三種鬆緊 × 三種節奏共 9 段、順序隨機；胸帶式心電量測為標準）、Table 2（平均百分比誤差：12 毫米汞柱時 8.9%、10.3%、11.8%；33 毫米汞柱時 2.4%、3.5%、4.6%；54 毫米汞柱時 2.4%、2.7%、3.8%，依序為 90、120、140 拍）、Table 1（與標準的相關係數：0.56、0.32、0.28；0.93、0.89、0.76；0.95、0.94、0.81）、Table 3（各人誤差最低的鬆緊：90 拍時 0、9、8 人；120 拍時 1、4、12 人；140 拍時 0、6、11 人）、4 Discussion（最鬆最慢的誤差是最緊最快的 2.34 倍；作者結論：鬆緊的影響大於 90 到 140 拍之間運動強度的影響；不能斷言 54 毫米汞柱就是最佳值）",
+      "summary": "錶帶鬆一點、緊一點，差多少？義大利巴勒摩大學與英國羅浮堡大學的團隊做了一支「會量自己戴多緊」的腕戴裝置：綠光感測器上面疊一顆小磅秤，隨時知道感測器壓在皮膚上的壓力。17 位受試者戴著它跟節拍器上下台階，慢、中、快三種節奏，各用鬆、普通、偏緊三種鬆緊做一遍，胸前的電極式量測當標準。最鬆的時候，不管動得快或慢，誤差都在 9% 到 12%，讀數和真正的心跳幾乎不相關；調到普通或偏緊，誤差立刻掉到 2% 到 5%。把兩個極端相比，「最鬆、動得最慢」的誤差竟然是「偏緊、動得最快」的二點三倍——研究者的結論是，在他們測的範圍裡，戴多緊比動多快更要緊。但每個人最準的鬆緊不一樣，他們也不敢說偏緊就是最好。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 17 人，且 16 人膚色同一級（作者刻意控制）；活動只有跟節拍器上下台階 60 秒一種，手臂動作相對規律，作者自己建議日後補做走路、慢跑、跑步。標準是胸帶式心電量測，作者自列為次佳的參考。壓力上限 54 毫米汞柱是舒適度的上限，沒有測更緊的情況，原文明說不能斷言它是最佳點（理論上再緊訊號會變小、甚至壓住血流）。百分比誤差的標準差與平均同量級，個人差異大。自製裝置的心率用固定的濾波與波峰偵測算出，不是市售手錶的演算法。文中「節拍 90、120、140」是節拍器每分鐘的拍數，不是心率。5 女對 5 男的比較作者自認沒有統計意義，不引用。本卡是研究結果的描述，不是配戴建議。研究群：NET_07_Palermo 獨立網（1.00 條）；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：Europe PMC 重抓（seq=16）內容與作者快取相同（多一個表格標記，正文相同）。",
+      "author_cache": {
+        "file": "F171/cache/PMC7570982.xml",
+        "sha256_prefix": "07db25e8427a1aee",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=9，108742 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "T85-S010",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:4732043&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.3390/s16010010",
+      "title": "A Novel Time-Varying Spectral Filtering Algorithm for Reconstruction of Motion Artifact Corrupted Heart Rate Signals During Intense Physical Activities Using a Wearable Photoplethysmogram Sensor",
+      "publisher": "Sensors 16(1):10（2015 年 12 月線上出版、2016 年卷期）；美國康乃狄克大學生物醫學工程系與麻薩諸塞州伍斯特理工學院生物醫學工程系",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=17，HTTP 200，132748 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Abstract、1 Introduction、2 Materials and Methods（2.1 Datasets、Table 1、2.2 Methodology 與 2.2.1–2.2.5、Table 2）、3 Results（Table 3–5）、4 Discussion and Conclusions、Figure 1–10 圖說、致謝、作者貢獻。演算法與競賽演算法的名稱不用。",
+      "locator": "2.1（三組資料：一項訊號處理競賽公開的訓練資料，12 名 18–35 歲男性，手腕上的光學感測器加三軸加速度計與胸前心電圖，在跑步機上依序以時速 1–2、6–8、12–15、6–8、12–15、1–2 公里走跑，並刻意擺動戴腕帶的手；同一競賽的測試資料 11 筆，為前臂與上臂的各種動作（握手、伸展、推物、跳躍、伏地挺身、拳擊等）；作者實驗室自錄的 10 人額頭感測資料，跑步機時速 3、5、7 英里）、2.2.1 與 Figure 1（跑步時手腕光學訊號的時頻圖上有三條主要成分，其中一條是心率，另外兩條和加速度計的頻譜落在同樣的位置）、2.2.2（訊號乾淨時最高的頻譜峰就是心率；有規律動作時，動作造成一到兩個主峰，心率退到第二或第三高；感測器與皮膚之間出現空隙時則抓不到心率）、2.2.3–2.2.4（做法：每 8 秒一段、每 2 秒移動一次，保留 0.5–3 赫茲內最高的三個峰，剔除與加速度計主峰同頻者，並限制相鄰兩段的心率變化不超過每分鐘 10 次）、Abstract 與 Table 3（平均絕對誤差：競賽訓練資料 12 筆 0.89 次／分、自錄資料 10 筆 1.38 次／分；摘要稱第二組資料 1.93 次／分，但 Table 3 中 1.93 是前兩組 23 筆的合計、第二組 11 筆單獨為 3.36 次／分；33 筆合計 1.86 次／分；只算跑步機 22 筆為 1.11 次／分；誤差最大的一筆 7.29 次／分，出現在心率與動作都快速變化的跳躍類動作）、4 Discussion（突然、不規則的動作最難追蹤；感測器與皮膚間有空隙時表現差）",
+      "summary": "手一擺動，雜訊到底長什麼樣子，演算法又怎麼對付？美國康乃狄克大學與伍斯特理工學院的團隊把人在跑步機上跑步時手腕光學訊號的頻譜攤開來看：裡面不是一條、而是三條明顯的節奏。把它和腕帶裡加速度計量到的手臂擺動節奏一比，就發現其中兩條和手臂的擺動落在同一個位置，剩下那一條才是心跳——而且手擺得厲害時，擺動那條常常比心跳那條還強，心跳只排得上第二或第三。他們的做法是：每幾秒看一次頻譜，把和加速度計「同一個節奏」的峰剔掉，再規定心跳在相鄰兩段之間不能跳太多。這樣在 33 筆資料上，平均只和心電圖差每分鐘不到兩次；最難的是突然的跳躍、拳擊這類動作，以及感測器被晃到離開皮膚的時候。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是一篇演算法論文，33 筆資料裡 23 筆是競賽公開的二手資料（其中 12 筆要求受試者刻意擺動手），只有 10 筆是作者自錄、而且感測器在額頭不在手腕——依規則以 0.75 條計。「三條主要成分」是以一位受試者（競賽訓練資料第 8 筆）的時頻圖為代表例所作的描述，不是每筆資料的統計。原文資料表把競賽訓練資料的光源寫成「綠光（波長 609 奈米）」，波長與顏色對不上，本卡不引用波長。誤差數字是作者的演算法在這些資料上的表現，不是任何市售手錶的準確度；市售裝置的演算法並未公開，卡片不得說成「手錶就是這樣做的」。摘要的三個分組誤差與 Table 3 的分列方式略有出入（表中另列純手臂動作 3.36 次／分），本卡採摘要與表中合計列一致的數字。心率變異分析與疾病偵測的展望不引用。研究群：NET_08_UConn 獨立網（0.75 條）；通訊作者與一位同姓、同名字縮寫的學者合著多篇，經查全名並非 T85-S004 或 T85-S005 的作者（見 coauthorship_audit）；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：Europe PMC 重抓（seq=17）內容與作者快取相同；分組數字與光源波長（609 與 515 奈米並列為綠光）的不一致已核實。",
+      "author_cache": {
+        "file": "F171/cache/PMC4732043.xml",
+        "sha256_prefix": "37f4a2260de0778b",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=17，132748 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "T85-S011",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:12912460&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.2196/85186",
+      "title": "Accuracy of Optical Heart Rate Measurements for 10 Commercial Wearables in Different Climate Conditions and Activities: Instrument Validation Study",
+      "publisher": "JMIR Formative Research 10:e85186（2026）；比利時魯汶大學生物系統系，與比利時一所應用科技大學的照護與福祉專業中心",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=16，HTTP 200，124041 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Abstract、Introduction、Methods（Wearables、Study Design and Participants、Ethical Considerations、Experimental Protocol、Data Collection and Processing、Accuracy Metrics、Statistical Analysis）、Results（Table 1–3 與相關段落）、Discussion（Principal Results、Comparison With the State of the Art、Physiological and Technical Considerations、Study Limitations、Implications、Conclusions）、Figure 1–2 圖說、致謝、經費、作者貢獻。裝置品牌與型號一律不用。",
+      "locator": "Methods「Study Design and Participants」（45 名健康成人，23 男 22 女，21–68 歲；10 款市售裝置（9 款手錶、1 款指環），每款由 10 位受試者各測一次，共 100 場；每次左右手腕各戴一款；胸帶式心電紀錄器為標準）、「Experimental Protocol」（三間相鄰的氣候艙：23 °C／相對溼度 50%、36 °C／70%、10 °C／40%，順序平衡；每間 22 分鐘：靜坐 6 分鐘、心算壓力作業 4 分鐘、靜坐 2 分鐘、跑步機時速 6 公里穩定走 4 分鐘、走 30 秒停 30 秒的間歇走 4 分鐘、站立 2 分鐘）、Results Table 1（全程平均絕對誤差的中位數，各款介於 4.5 與 14.3 次／分）、Table 2 與正文（每款裝置以三種氣候作檢定並校正多重比較後，沒有任何一款達顯著）、Table 3 與正文（活動類型在 10 款中有 4 款達顯著；例：某一款心算 4.3、穩定走 4.5、間歇走 6.3 次／分，前兩者皆與間歇走有顯著差異；另一款心算 5.9、穩定走 11.8、間歇走 12.0 次／分）、Discussion（作者：10–36 °C 可能還不夠極端、暴露時間短，或裝置的演算法已補償；未量皮膚溫度與血流；受試者膚色偏淺）",
+      "summary": "天冷手錶就不準嗎？還是走走停停才不準？比利時魯汶大學與一所應用科技大學的團隊蓋了三間相連的氣候艙——舒適的 23 度、悶熱的 36 度、偏冷的 10 度——讓 45 位成人戴著十款市售裝置（九款手錶、一款指環），在每一間裡做同一套流程：靜坐、心算、在跑步機上穩定地走、再走三十秒停三十秒地間歇走，胸前的心電紀錄器當標準。十款裝置彼此差很多（全程誤差的中位數從每分鐘 4.5 次到 14.3 次都有），但換了溫度，沒有任何一款的準確度出現統計上顯著的改變。反倒是「怎麼走」有差：十款裡有四款，活動類型造成顯著差異，走走停停比穩穩地走更容易出錯。研究者原本預期冷熱會有影響，結果沒有；他們自己說，可能是這個溫度範圍還不夠極端、時間也不夠長。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "每款裝置只由 10 位受試者測過，統計檢定力有限；「氣候無顯著影響」是多重比較校正後的結果，有幾款在悶熱艙的誤差中位數看起來較高（例如其中一款由 9.6 升到 20.8 次／分）但未達顯著，卡片不得寫成「溫度完全沒有影響」。每個溫度只待 22 分鐘、室內、10–36 °C，作者自列為限制（延遲的熱效應看不到），也沒有量皮膚溫度或周邊血流，無法知道手是否真的變冷。六項作業的順序固定（間歇走永遠在穩定走之後），順序效應分不開。受試者為較淺膚色。標準是胸帶式心電紀錄器。10 款裝置的排名與品牌比較不引用；認知壓力與心理健康應用的討論不引用。研究群：NET_09_Leuven 獨立網（1.00 條）；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：Europe PMC 重抓（seq=18）內容與作者快取相同。Table 3 註腳 f／g 逐款核對：顯著者為四款（Friedman，α＝.005），其中只有一款是間歇走對穩定走達顯著；摘要「intermittent walking increased errors for multiple devices」強於表格，屬原文摘要與表格的落差。",
+      "author_cache": {
+        "file": "F171/cache/PMC12912460.xml",
+        "sha256_prefix": "2f0758850e207854",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=16，124041 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "T85-S012",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:7458324&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0238569",
+      "title": "Concurrent heart rate validity of wearable technology devices during trail running",
+      "publisher": "PLoS ONE 15(8):e0238569（2020）；美國內華達大學拉斯維加斯分校運動機能與營養科學系，與伊利諾州、加州、猶他州三所大學的運動機能相關科系",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=14，HTTP 200，102857 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Abstract、Introduction、Methods（Participants、Protocol 與各裝置說明、Statistical analysis）、Results（Table 1–3、Fig 1–2 圖說）、Discussion 全部段落。裝置品牌與型號、步道名稱一律不用。",
+      "locator": "Methods「Participants」（21 名健康受試者，10 名女性，31 ± 11 歲）、「Protocol」（自訂配速的 3.22 公里野外步道折返跑：去程 1.61 公里大致上坡、回程下坡；三條步道的高度變化 48、55、104 公尺；同時配戴胸帶式心率帶當標準，另戴：腕戴光學手錶、光學耳機、光學指環、前臂光學臂帶，以及一支接收另一條胸帶訊號的手錶）、Results（全程平均 21 分 56 秒；Table 1 全程平均百分比誤差：腕戴光學手錶 13.5%、光學耳機 21.3%、光學指環 15.9%、前臂光學臂帶 5.6%、搭配胸帶的手錶 1.9%；一致性係數依序 0.316、0.384、0.293、0.780、0.955；Table 2–3 前臂臂帶上坡 6.2%、下坡 3.8%，腕戴手錶上坡 13.7%、下坡 13.4%）、Discussion（所有光學裝置都未達作者預設的標準（誤差 5% 以內且一致性係數 0.90 以上等）；作者推測動作造成的假訊號是主因，戶外環境光也可能有影響；上坡時臂帶較差可能與裝置晃動較大有關，有待驗證）",
+      "summary": "實驗室的跑步機太平、太規律。美國內華達大學拉斯維加斯分校的團隊把 21 位受試者帶到野外，在三公里多、先上坡再下坡的步道上照自己的步調跑，身上同時戴著五種裝置：手腕上的光學手錶、光學耳機、光學指環、綁在前臂的光學臂帶，以及一支靠胸帶電極取得心跳的手錶，再用另一條胸帶當標準。二十多分鐘跑下來，唯一過關的是那支「靠胸口電訊號」的手錶，平均只差 1.9%；所有「靠光」的裝置都沒過關：前臂臂帶差 5.6%，手腕手錶 13.5%，指環 15.9%，耳機 21.3%。同樣是光，綁在前臂的比戴在手腕、手指的好得多；而它自己在上坡時（6.2%）又比下坡時（3.8%）差。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "標準是胸帶式心率帶而不是心電圖，且「搭配胸帶的手錶」與標準屬同一類量測、彼此一致並不意外（作者自己指出）。每種裝置只測一款，位置與裝置（廠牌、演算法）的效應分不開：不能把「前臂優於手腕」完全歸因於位置（位置的對照見 T85-S015）。指環只有一個尺寸、由受試者自選手指且未記錄；指環每分鐘一筆、其餘每秒一筆。摘要中的誤差數字與 Table 1 略有出入（摘要：13%、23%、16%、6%、2%；表：13.5%、21.3%、15.9%、5.6%、1.9%），本卡採表格。偏差的標準差與一致性界限數值異常地大（例如數百次／分），可能含訊號中斷的極端值，本卡不引用這些欄位。「動作假訊號是主因」「上坡晃動較大」「環境光」都是作者的推測，沒有量加速度或光。作者建議戶外用胸帶，屬使用建議，不引用。研究群：NET_10_UNLV_Alabama（本篇與 T85-S014 同一通訊作者；該作者另與 T85-S013 的通訊作者有 2018 年的期刊合著，三篇併網、封頂 2.00 條）；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：Europe PMC 重抓（seq=19）內容與作者快取相同（標記不同）。摘要 13／23／16／6／2% 對 Table 1 的 13.5／21.3／15.9／5.6／1.9%，耳機一項不一致已核實。",
+      "author_cache": {
+        "file": "F171/cache/PMC7458324.xml",
+        "sha256_prefix": "dc21d84f5acd2982",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=14，102857 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "T85-S013",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:12948776&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.1007/s00421-025-05977-x",
+      "title": "Influence of skin pigmentation on the accuracy and data quality of photoplethysmographic heart rate measurement during exercise",
+      "publisher": "European Journal of Applied Physiology 126:1057（2025 年線上出版、2026 年卷期）；美國阿拉巴馬大學運動機能系與喬治亞州一所大學的運動科學系",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=12，HTTP 200，124125 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Abstract、Introduction、Methods（Experimental design、Participants、Experimental procedures、Device setup and data cleaning、Data analysis）、Results（Table 1、Data quality、Responses during rest/exercise/recovery、Table 2、Device accuracy、Table 3、Fig. 1–4 圖說、Influence of skin pigmentation on device accuracy、Table 4）、Discussion、致謝、作者貢獻、經費（其中一款裝置的廠商提供裝置與軟體）、利益衝突聲明；線上補充資料（Online Resource 1–3）未下載。裝置品牌與型號一律不用。",
+      "locator": "Methods「Participants」「Experimental procedures」（28 名 18–59 歲健康成人完成實驗，54% 為女性，自述白人 16、黑人 10、其他 2；以色度計在手腕背側與上臂外側各量三次，換算成與表皮黑色素含量高度相關的膚色角度指標；該指標低於 10 度定義為深膚色，共 10 人、占 36%；兩款腕戴手錶與一款上臂式臂帶同時配戴，胸帶式心率帶為標準；靜坐 5 分鐘 → 固定式腳踏車四階各 10 分鐘（目標心率為預估最大值的 50、60、70、80%）→ 坐著恢復 10 分鐘；選踩車是為了把動作干擾降到最低；資料以 30 秒為一段平均）、Results「Data quality」（不明原因的缺漏資料中，來自深膚色受試者的比例：兩款手錶之一 50%、臂帶 85%、另一款手錶 33%；被判為離群的資料中來自深膚色受試者的比例 61%、56%、62%）、Table 3（平均偏差 0.0、0.4、0.7 次／分；95% 一致性界限 −2.2 至 2.1、−3.6 至 4.4、−6.5 至 8.0 次／分）、Table 4 與正文（膚色指標對兩款手錶的誤差沒有預測力，P = 0.62 與 0.29；對臂帶有，係數 −0.011、P = 0.001，從最淺到最深約差每分鐘 1 次；各裝置在心率越高時誤差略小）、Discussion（作者推測：算心跳靠的是波形的起伏而不是亮度的絕對值，所以光被黑色素多吃掉一些仍數得出心跳；不能排除加上動作干擾後，深膚色會受到不成比例的影響）",
+      "summary": "「膚色不影響」那個結論，是用肉眼分類膚色得來的。美國阿拉巴馬大學的團隊改用色度計，在每位受試者戴錶的那塊皮膚上實際量出深淺，再讓 28 位受試者（其中 10 位屬深膚色）同時戴兩款手錶和一款上臂臂帶去踩固定式腳踏車——特地選踩車，就是要讓手幾乎不動，只看膚色本身的作用。結果兩款手錶的誤差和膚色深淺沒有關係；臂帶有關，但從最淺到最深只差每分鐘大約一下。然而研究者注意到另一件事：那些不明原因消失的資料，以及被判為離譜值的資料，來自深膚色受試者的比例明顯偏高——深膚色的人只占 36%，卻占了離譜值的五成六到六成二。也就是說，顏色沒有讓「報出來的數字」變得不準，卻讓裝置比較常報不出數字或報出怪數字。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 28 人、踩固定式腳踏車（動作干擾最小的條件），作者明說不能排除膚色與動作之間有交互作用，尤其是跑步等手會動的運動；卡片不得寫成「膚色在任何情況都不影響」。標準是胸帶式心率帶。無法取得裝置內部的原始光學訊號，所以不知道深膚色者的訊號是否真的較弱，「靠波形不靠亮度」是作者的推測。資料先剔除離群值再算誤差，而離群值多來自深膚色者，這可能使「無影響」的結論偏樂觀（作者自己提到）。缺漏資料的比例是「缺漏資料中有多少來自深膚色者」，不是「深膚色者有多少資料缺漏」，分母不可寫反。其中一款裝置的廠商提供了裝置與軟體。三款裝置的版本在研究期間被強制更新。研究群：NET_10_UNLV_Alabama（本篇通訊作者與 T85-S012、T85-S014 的通訊作者有 2018 年的期刊合著，三篇併網、封頂 2.00 條）；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：Europe PMC 重抓（seq=20）內容與作者快取相同。導言整理的先前文獻（4 篇無差異、4 篇深膚色較不準、2 篇混合）屬二手轉述，只作為「文獻不一致」的背景，不當成本題的事實條數。",
+      "author_cache": {
+        "file": "F171/cache/PMC12948776.xml",
+        "sha256_prefix": "37a01d9ab5c7854b",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=12，124125 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "T85-S014",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:12656504&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.3390/s25226896",
+      "title": "The Effect of Tattoos on Heart Rate Validity in the Polar Verity Sense Commercial Wearable Device",
+      "publisher": "Sensors 25(22):6896（2025）；美國內華達大學拉斯維加斯分校運動機能與營養科學系，與德州一所州立大學的健康科學院",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=13，HTTP 200，115095 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Highlights 與 Abstract、1 Introduction、2 Materials and Methods（2.1 Participants、2.2 Protocol、2.3 Data Analysis）、3 Results、4 Discussion、Figure 1–5 圖說、Table 1–5、致謝、作者貢獻、倫理聲明、資料可得性。裝置品牌與型號（含論文標題中的型號）、應用程式名稱一律不用。",
+      "locator": "2.1（25 名手臂上有刺青、且同一手臂另有未刺青皮膚的成人；33.7 ± 11.4 歲；刺青年齡 7.7 ± 8.5 年）、2.2（同一款光學臂帶兩條，一條蓋在刺青覆蓋最多處、一條放在同一手臂鄰近的未刺青皮膚；胸帶式心率帶為標準；靜坐 5 分鐘 → 自選速度走 5 分鐘（平均每分鐘 56.1 公尺）→ 自選速度跑 5 分鐘（平均每分鐘 110.5 公尺）；逐秒資料；以拍照與影像軟體量刺青區的明暗，並以十級膚色色票比對未刺青皮膚）、Table 1（刺青皮膚：靜坐誤差 22.9%、一致性係數 0.25；走路 7.5%、0.68；跑步 5.1%、0.83；未刺青皮膚：2.9%、0.96；2.7%、0.97；2.0%、0.98）、3 Results（25 人中 9 人在靜坐時，刺青上的讀數曾掉到零；剔除這 1,486 筆後靜坐誤差為 4.2%、一致性係數 0.91；刺青年齡與明暗都不是顯著預測因子；膚色在靜坐（p = 0.046）與走路（p = 0.045）顯著、跑步不顯著）、4 Discussion（作者推測運動時血流增加讓感測器較容易透過刺青取得訊號；許多個別受試者的刺青完全不影響讀數）",
+      "summary": "如果擋在光路上的不是天生的黑色素，而是刺青的墨水呢？美國內華達大學拉斯維加斯分校的團隊找了 25 位手臂有刺青的人，在同一隻手臂上綁兩條一模一樣的光學臂帶：一條壓在刺青上，一條放在旁邊沒刺青的皮膚上，再用胸帶當標準，靜坐、走路、跑步各五分鐘。沒刺青的那條從頭到尾都準（誤差 2% 到 3%）。壓在刺青上的那條，最慘的竟然是坐著不動的時候：誤差 22.9%，25 人裡有 9 人的讀數一度直接掉到零；走路時 7.5%，跑步時反而最好（5.1%）。這和沒刺青的人「越動越不準」的規律正好相反。研究者猜測，運動時血流變多，訊號大到足以穿過墨水；但刺青的新舊、深淺都預測不了誤差，而且不少人的刺青根本沒有影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 25 人、只測一款臂帶（戴在上臂或前臂，不是手腕手錶）；活動固定依靜坐、走、跑的順序，沒有隨機，「越動越準」可能混有時間或暖身的效應。標準是胸帶式心率帶。兩條臂帶無法每次都緊鄰，位置差異作者自列為限制。靜坐的 22.9% 主要來自 9 人讀數掉到零的時段，剔除後為 4.2%——所以是「常常讀不到」而不是「一直讀錯」，卡片要這樣講。「運動時血流增加所以較容易讀到」是作者的推測，沒有量血流。刺青明暗用手機照片估計，膚色用色票肉眼比對，方法粗略；墨水顏色、成分、深度都沒有分析。膚色在靜坐與走路達顯著的 p 值都貼近 0.05。Table 4 的膚色變項名稱有錯字。刺青文化史與族群公平的討論不引用。研究群：NET_10_UNLV_Alabama（與 T85-S012 同一通訊作者；三篇封頂 2.00 條）；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：Europe PMC 重抓（seq=21）內容與作者快取相同。Discussion 沒有量測墨水吸光，只說訊號可能受墨水影響、機制待研究。",
+      "author_cache": {
+        "file": "F171/cache/PMC12656504.xml",
+        "sha256_prefix": "385d275196d1eb4d",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=13，115095 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "T85-S015",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:12788198&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.3390/s26010176",
+      "title": "Impact of Anatomical Placement on the Accuracy of Wearable Heart Rate Monitors During Rest and Various Exercise Intensities",
+      "publisher": "Sensors 26(1):176（2025 年 12 月線上出版、2026 年卷期）；美國馬里蘭大學東岸分校物理治療系",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=15，HTTP 200，140676 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Abstract、1 Introduction、2 Methodology（2.1 Experimental Design、2.2 Participants、2.3 Statistical Analysis）、3 Results（3.1–3.4）、4 Discussion（4.1–4.5）、5 Limitations、6 Practical Implications、7 Conclusions、Figure 1–7 圖說、Table 1–5、致謝、作者貢獻、倫理聲明。裝置品牌與型號、運動測試的冠名一律不用。",
+      "locator": "2.1（每位受試者同時配戴六個裝置：三條完全相同的光學腕帶分別戴在左手腕、左前臂、左上臂；另一款光學臂帶戴右前臂；一款光學手錶戴右手腕；胸帶式心率帶為標準；四個階段：暗室仰臥 5 分鐘、固定式腳踏車每分鐘 50 轉暖身 5 分鐘、30 秒全力的全身連續跳躍動作（趴下、撐起再跳起）加 1 分鐘恢復、分級加速加坡的跑步機測試前五級）、2.2（28 名健康成人，14 男 14 女，23.75 ± 1.11 歲）、Table 2（三條相同腕帶的平均百分比誤差，上臂／前臂／手腕：仰臥 2.50／2.81／2.93%；踩車暖身 2.91／3.51／5.59%；全身跳躍 12.07／17.75／17.23%；跑步機 1.92／2.55／5.95%；右手腕的光學手錶四階段 2.11／6.88／25.48／4.29%）、3.1–3.4（四個階段裝置間差異皆顯著，p < 0.001）、4.2 與 4.5（作者的解釋：上臂軟組織厚、相對位移小；手腕皮薄、肌腱與骨頭多、關節常動）",
+      "summary": "前面山路的實驗裡，前臂的臂帶比手腕的手錶準，但那是兩種不同的裝置。美國馬里蘭大學東岸分校的團隊把這個變數拿掉：同一款光學腕帶買三條，同時戴在同一隻手的手腕、前臂和上臂，硬體、演算法一模一樣，只有位置不同。28 位年輕人戴著它們躺著休息、踩腳踏車暖身、做三十秒全力的趴下再跳起，最後上跑步機逐級加速加坡。躺著時三個位置差不多（誤差都在 3% 以內）；一動起來差別就出現——跑步機上，上臂 1.92%、前臂 2.55%、手腕 5.95%；踩車暖身時手腕也是最差的（5.59% 對上臂的 2.91%）。只有在全身猛烈跳躍時，三個位置一起垮掉（12% 到 18%）。研究者的解釋是手腕皮薄、底下多是肌腱和骨頭，關節又一直在動。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "28 位都是年輕、健康、有運動習慣的成人，作者自陳結果應看成位置之間的相對比較。三條腕帶都戴在左手、未平衡慣用手。標準是胸帶式心率帶。全身跳躍階段把 30 秒動作與 1 分鐘恢復合成一段分析，標準差比平均還大（例如 12.07 ± 24.26%），卡片不得把它說成精確數字。Table 4 的一致性係數有明顯的排版或抄錄問題（前臂在兩個階段都是 0.1021，與正文的 0.985 不符），Table 5 也有兩列數字完全相同，本卡不引用這兩張表。「軟組織厚、血管深、位移小」是作者依文獻所作的解釋，本研究沒有量組織厚度或感測器位移。各款裝置的光學設計與演算法比較（4.3 節）是作者對廠商規格的轉述，不引用。臨床與復健用途、配戴位置的建議不引用。運動測試與跳躍動作的冠名不用。研究群：NET_11_UMES 獨立網（1.00 條）；本篇一位作者與美國史丹佛大學一位營養學者姓氏與名字首字母相同，經查全名不同（見 coauthorship_audit），不併網；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：Europe PMC 重抓（seq=22）內容與作者快取相同；Table 4 錯植已核實。",
+      "author_cache": {
+        "file": "F171/cache/PMC12788198.xml",
+        "sha256_prefix": "55539bff61380277",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=15，140676 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    },
+    {
+      "id": "T85-S016",
+      "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:11951816&metadataPrefix=pmc",
+      "canonical_url": "https://doi.org/10.2196/67110",
+      "title": "Wrist-Worn and Arm-Worn Wearables for Monitoring Heart Rate During Sedentary and Light-to-Vigorous Physical Activities: Device Validation Study",
+      "publisher": "JMIR Cardio 9:e67110（2025）；瑞士聯邦體育學院（馬格林根）監測與評估部門",
+      "version": "出版社開放取用版（CC BY 4.0；PMC 開放取用子集，官方 OAI-PMH 提供完整 JATS XML 全文）",
+      "accessed_on": "2026-11-14",
+      "read_via": "PMC 官方 OAI-PMH（文件記載 API）verb=GetRecord、metadataPrefix=pmc，Mokaair-editorial/1.0 標頭下載（F171 seq=22，HTTP 200，110114 位元組），本機解析完整 JATS XML 後逐節全讀（含表格與圖說）",
+      "reading_scope": "Abstract、Introduction、Methods（Participants、Experimental Procedure、Devices and Instruments、Data Processing and Cleaning、Statistical Analysis、Ethical Considerations）、Results（Participants、Missing Values/Artifacts/Outliers、Accuracy and Reliability：Arm-Worn 與 Wrist-Worn 兩小節）、Discussion（Principal Findings 兩小節、Strengths/Limitations/Recommendations、Conclusions）、Figure 1–2 圖說、致謝、作者貢獻；補充資料（Multimedia Appendix 1–2 各活動的完整數值表）未下載，各活動數字只採正文明列者。裝置品牌與型號一律不用。",
+      "locator": "Methods「Participants」「Experimental Procedure」（16 名健康成人，7 女 9 男，27.4 ± 5.8 歲，13 人右手慣用；體育館內依序做九種活動：躺 5 分鐘、坐 5 分鐘、走路 15 分鐘、撿拾物品 8 分鐘、慢跑 8 分鐘、重量訓練 8 分鐘、固定式腳踏車 8 分鐘、高強度間歇障礙跑 8 分鐘、運動後靜坐 20 分鐘；整套做兩次）、「Devices」（一款光學臂帶分別戴上臂與前臂；一款光學手錶左右手腕各一支；胸帶式心電量測為標準）、Results（清理後共 14,653 個 10 秒資料點、40.7 小時；上臂：平均偏差 −0.05 次／分、平均百分比誤差 1.35%；前臂：偏差 −0.91 次／分；手錶：慣用手腕偏差 2.93 次／分、非慣用手腕 2.56 次／分、非慣用手腕平均絕對誤差 6.41 次／分、平均百分比誤差 6.82%；手錶各活動的百分比誤差（慣用／非慣用）：踩車 1.17／2.06%、慢跑 3.84／3.55%、運動後靜坐 2.15／2.07%；躺著、走路、撿拾物品都超過 10%；上臂臂帶誤差最高的活動是靜坐 2.48% 與撿拾物品 2.34%）、「Missing Values…」（標準胸帶本身有 3 位受試者共 10% 的原始資料因異常被剔除）、Discussion（作者的解釋：手腕皮薄、骨頭肌腱多、血流較少，且心率低、血流少時手部一動訊號更難辨識）",
+      "summary": "最後一個問題：手腕不準的時候，到底是在做什麼？瑞士聯邦體育學院的團隊讓 16 位受試者在體育館裡做了九種活動、整套做兩遍，從躺著、坐著、走路、彎腰撿東西，到慢跑、重量訓練、踩腳踏車和高強度的障礙跑，左右手腕各戴一支光學手錶，上臂和前臂各綁一條光學臂帶，總共累積了四十多個小時的資料。上臂的臂帶幾乎貼著標準走（整體只差 1.35%）。手腕的手錶整體差 6.82%，而且它最準的時候是踩腳踏車（約 1% 到 2%）和慢跑，最不準的反而是躺著、慢慢走路、彎腰撿東西這些「不累」的時候，誤差都超過一成。左右手、慣用不慣用差別不大。研究者的解釋是：心跳慢、血流少的時候訊號本來就弱，手再零零碎碎地動，就更難分辨。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 16 人，膚色都屬最淺的兩級、年輕健康；兩種位置用的是兩款不同的裝置（上臂與前臂是臂帶、手腕是手錶），所以「上臂優於手腕」同時含有裝置差異（同款裝置的位置對照見 T85-S015）。兩款受測裝置與標準胸帶出自同一家廠商。標準胸帶本身有約 10% 的原始資料因異常被剔除，作者自列為限制。九種活動順序固定、強度遞增。各活動的完整數值在補充資料（未下載），本卡只用正文明列的數字；「躺著、走路、撿拾物品超過 10%」是正文的文字敘述，沒有個別數值。「心率低、血流少所以訊號弱」「冷時末梢血管收縮」是作者依文獻的解釋，本研究沒有量血流。與其他廠牌裝置的比較、以臂帶取代胸帶的建議不引用。研究群：NET_12_Magglingen 獨立網（1.00 條）；合著審計見 coauthorship_audit。 覆核 V191（2026-11-14）：Europe PMC 重抓（seq=23）內容與作者快取相同。",
+      "author_cache": {
+        "file": "F171/cache/PMC11951816.xml",
+        "sha256_prefix": "3b37040a40e0ce4d",
+        "note": "第三十五輪 F171 本機完整 JATS XML 快取（seq=22，110114 位元組），只記雜湊前 16 碼；canonical_url 的 DOI 取自該 XML 的 article-id，doi.org 本身未請求。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "T85-001",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同一支手錶、同一個人，坐著、走路、跑步、踩腳踏車，哪一種時候心跳量得最準？",
+      "mechanism_key": "wearable_optical_heart_rate.lab_60_adults_7_wrist_devices_cycling_1p8_percent_walking_5p5_percent_vs_12_lead_ecg",
+      "answer_target": "踩固定式腳踏車最準，走路最不準——不是「越喘越不準」那麼簡單。美國史丹佛大學的心血管醫學團隊讓 60 位年齡、體型、膚色、體能各異的健康成人同時戴上最多四款市售腕戴裝置（共七款），全程接著 12 導程心電圖當標準，依序坐著、在跑步機上走路與跑步、再踩固定式腳踏車，每階段取最後一分鐘比較。七款合計的誤差中位數，踩車只有 1.8%（95% 信賴區間 0.9–2.7%），走路卻有 5.5%（3.9–7.1%）；踩車時七款裡有六款的誤差中位數低於 5%。統計模型中，活動種類與強度是顯著的誤差因子。研究者在討論裡還寫到跑步的誤差低於走路，但同一種活動內強度越高誤差越大。這些是實驗室裡每階段最後一分鐘的穩定讀數，活動剛切換的那一段並沒有算進去。",
+      "scope": "60 名健康成人（29 男 31 女）共 80 次測試；7 款 2016 年前後的市售腕戴光學心率裝置；12 導程心電圖為標準；坐、跑步機走路與跑步、固定式腳踏車各取最後一分鐘；誤差以相對心電圖的百分比表示。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一支手錶、同一個人，踩腳踏車時誤差中位數不到百分之二，走路時卻超過百分之五：手怎麼動，比心跳多快更要緊。",
+        "visual": "清爽可愛的機制剖面動畫：一隻圓滾滾的小手腕戴著手錶，旁邊並排四個小場景——坐著、走路、跑步、踩腳踏車；每個場景上方有兩條小波浪線，一條是胸口來的穩定心跳線，一條是手錶畫的線。踩腳踏車時兩條線幾乎重疊，手握著車把不動；走路時手臂前後擺盪，手錶那條線開始和心跳線錯開。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_ids": [
+        "T85-S001"
+      ],
+      "source_locator": "T85-S001 2 Methods 2.1–2.2、2.4、3 Results 3.1（踩車 1.8%（0.9–2.7%）、走路 5.5%（3.9–7.1%）；踩車 7 款中 6 款中位數低於 5%）、3.3–3.4、4 Discussion、Figure 2–3",
+      "notes": "算 0.75（研究網 NET_01 封頂 2.00 條，與 T85-002、T85-003 共用）：開場卡，先立一個觀眾有感的事實——準不準看你在做什麼，而且最不準的是走路不是跑步。不引用熱量估計、膚色與性別差異的說法（膚色見 T85-002、T85-013）。不出現任何裝置品牌。 覆核 V191（2026-11-14）：改算 1.00（實驗論文；NET_01 三篇仍封頂 2.00 條）。原文摘要與討論寫「膚色較深、腕圍較大、身體質量指數較高與誤差較大相關」，但它自己的 3.3–3.4 節迴歸列出的顯著因子只有性別、強度、活動與裝置，沒有膚色——這是原文自身的前後不一致；正稿不引用這句，但轉折二不能因此說「所有研究都看不到膚色的影響」。「跑步比走路誤差低」只是這篇實驗室跑步機的結果，不是通則。 原提案 F171-001（第三十五輪，作者 F171、覆核 V191）。"
+    },
+    {
+      "id": "T85-002",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把六級膚色的人各找一批來量：膚色深淺和手在不在動，哪一個和手錶心跳的誤差關係比較大？",
+      "mechanism_key": "wearable_optical_heart_rate.six_skin_tone_groups_53_people_no_significant_skin_effect_activity_error_30_percent_higher_typing_reads_low",
+      "answer_target": "這個實驗裡該怪的是手在動。美國北卡羅來納州一所大學的生物醫學工程團隊依六級膚色分類各找七到十人，共 53 人完成實驗，每人戴心電圖貼片當標準，輪流換上六款光學心率裝置，做靜坐、深呼吸、跑步機走路五分鐘、休息、打字一分鐘。混合效應模型中膚色不顯著（p = 0.634），活動狀態與裝置種類都極為顯著（p < 2.20 × 10⁻¹⁶）；活動時的絕對誤差平均比靜止時高 30%。誤差還有方向：走路時裝置報的心跳偏高，打字時偏低，而且只是敲鍵盤，六款裡就有四款的誤差常接近走路。各膚色組之間的資料缺漏比例也沒有顯著差別（只算得了四款消費型裝置）。不過膚色不是完全沒事：膚色與裝置的交互作用顯著（主要來自一款戴在上臂的研究用裝置），活動時六款裡有五款的最大平均偏差落在膚色最深的兩級，只是整體上沒有達到統計顯著。活動只測了低強度走路與打字，沒有跑步。",
+      "scope": "53 名完成者（六級膚色分類各 7–10 人）；四款消費型與兩款研究用光學心率裝置（2018 年前後）；心電圖貼片為標準；靜坐 4 分鐘、深呼吸 1 分鐘、跑步機走路 5 分鐘、打字 1 分鐘；混合效應模型與概似比檢定。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "六種膚色的人各找一批來比，膚色這一項沒有顯著差別；只要手開始動，誤差平均就多三成，連打字都算。",
+        "visual": "清爽可愛的機制剖面動畫：六隻深淺不同的小手腕排成一排，各戴一支手錶，手錶上方的小心跳線都平穩；接著六隻手一起開始在小鍵盤上敲、再一起擺盪走路，六條線一起開始抖動——抖的程度和手腕深淺無關，走路時線往上飄，敲鍵盤時線往下掉。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "source_ids": [
+        "T85-S002"
+      ],
+      "source_locator": "T85-S002 Methods「Study population」「Devices and data collection protocol」、Results Table 2（膚色 p = 0.634；活動狀態與裝置 p < 2.20 × 10⁻¹⁶；交互作用 p = 2.80 × 10⁻⁵）、Abstract（活動時絕對誤差平均高 30%）、「Wearables accuracy during rhythmic activity」「Signal alignment」（延遲 0–43 秒）、Fig. 2–3 圖說、Discussion",
+      "notes": "算 0.75（研究網 NET_01 封頂 2.00 條）：第一章用它的「一動就多三成、打字也算」，第五章再回頭用它的「膚色不顯著」當轉折二的第一塊證據。平均絕對誤差的絕對數字（7.2、10.2 次／分等）含對時延遲，正稿不念。不寫「廠商故意讓它偏高」。不出現品牌。 覆核 V191（2026-11-14）：改算 1.00（實驗論文；NET_01 封頂 2.00 條）。題目改成中性問法，不再用「該怪膚色深」；補上「缺漏比例各膚色組無顯著差別」與「六款裡四款」的分母（原文：除兩款外打字時常接近走路）。 原提案 F171-002（第三十五輪，作者 F171、覆核 V191）。"
+    },
+    {
+      "id": "T85-003",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同一顆光學感測器輪流貼在手指、手腕內側、手腕背面、上臂、耳垂、額頭，哪裡的脈動訊號最弱？",
+      "mechanism_key": "wearable_optical_heart_rate.same_reflective_sensor_six_body_sites_36_adults_dorsal_wrist_lowest_pulse_amplitude_67_percent_analyzable",
+      "answer_target": "最弱的是手腕背面，也就是手錶貼著的地方。英國安格里亞魯斯金大學與深圳南方科技大學的團隊用同一顆反射式光學感測器（近紅外光，約 880 奈米），請 36 位健康成人平躺不動，輪流在手指、手腕內側、手腕背側、上臂、耳垂、額頭各錄一分鐘。手指的平均脈動振幅顯著高於其他五處（皆 p < 0.001），六處之中平均振幅最低的是手腕背側。正常呼吸時，波形清楚到四項特徵都能分析的比例，手指 95%、手腕內側 86%、上臂 83%、耳垂 81%、手腕背側 67%、額頭 61%。這個實驗用的是近紅外光而不是手錶常用的綠光，而且人完全不動，量的是訊號的大小與波形清不清楚，不是心跳數得準不準；它說明的是：還沒開始動，戴錶的位置拿到的訊號就比較小。",
+      "scope": "36 名健康成人（24 女 12 男）；同一顆反射式近紅外光感測器（約 880 奈米）依隨機順序放在六個部位各 1 分鐘；平躺、正常呼吸與深呼吸；比較平均脈動振幅與波形指標可分析比例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一顆感測器輪流貼六個地方，手指的脈動最大，手錶所在的手腕背面最小——人還躺著沒動，訊號就先輸一截。",
+        "visual": "清爽可愛的機制剖面動畫：一顆小小的發光感測器像貼紙一樣，依序貼到手指尖、手腕內側、手腕背面、上臂、耳垂、額頭；每貼一處，旁邊就升起一條跟著脈搏起伏的小波浪。貼在手指尖時波浪又高又清楚，貼到手腕背面時波浪變得最矮，幾乎貼著底線。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "source_ids": [
+        "T85-S003"
+      ],
+      "source_locator": "T85-S003 Materials and Methods「Subjects」「Measurement Protocol and Procedure」、Results「Analyzability of PPG Signals」（手指 95%、手腕內側 86%、上臂 83%、耳垂 81%、手腕背側 67%、額頭 61%）、「Effect of Measurement Site on Mean Amplitude」（手指顯著最高，皆 p < 0.001；最低為手腕背側）、Figure 4",
+      "notes": "算 0.50（研究網 NET_01 封頂 2.00 條）：第二章的起點——訊號本來就小，而且手錶的位置是六處裡最小的。正稿必須交代這是近紅外光、靜止條件，不得說成綠光或運動時的結果；「可分析比例」不得說成心率準確率。 覆核 V191（2026-11-14）：改算 0.75（近紅外光、平躺不動、量的是訊號大小不是心率準確度，與題目距離較遠；NET_01 已由 T85-001、T85-002 封頂，不影響總數）。卡片採 Results 的版本（手腕背側振幅最低、可分析比例手腕內側 86% 第二）；Discussion 寫「手指與耳垂最可分析、耳垂與額頭振幅最低」與 Results 不一致，不引用。 原提案 F171-004（第三十五輪，作者 F171、覆核 V191）。"
+    },
+    {
+      "id": "T85-004",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "在同一塊皮膚上同時用紅、綠、藍三種光量脈搏，手一晃，哪種顏色最撐得住？",
+      "mechanism_key": "wearable_optical_heart_rate.phone_camera_three_colors_same_fingertip_12_students_6_hz_shaking_green_blue_higher_signal_to_noise_than_red",
+      "answer_target": "綠光和藍光撐得住，紅光最先被攪亂。日本金澤大學的團隊讓 12 位大學生把食指蓋在手機的相機與閃光燈上——相機每一格畫面同時記錄紅、綠、藍三色，等於在同一處皮膚同時做三種顏色的量測——再由實驗者以約 6 赫茲的節奏水平或垂直搖晃受試者拿手機的手（加速度中位數約 0.34 與 0.42 G）。不搖時三色的訊噪比沒有差別（p = 0.378）；一搖，顏色之間就出現顯著差異（水平搖 p = 0.003、垂直搖 p < 0.001），綠光與藍光的訊噪比都高於紅光。三色算出的心率和心電圖的相關係數都在 0.996 以上，但那是因為搖晃頻率刻意選在心跳頻率之外；脈動幅度則只有綠光與標準最接近。研究者推測紅光穿得較深、照到的是容易被推擠位移的組織，所以較怕晃——這是他們依文獻作的解釋，沒有直接量深度。他們對綠光的解讀是：它主要照到真皮淺層的小動脈與微血管網，量的是那裡血量的起伏——這是傳統的看法，和 T85-006 那組研究者「看的是皮膚被擠」的主張不同。",
+      "scope": "12 名男大學生；手機相機與閃光燈作反射式量測，左手食指，同處同時取紅綠藍三色；實驗者以約 6 赫茲手搖施加水平與垂直晃動各 20 秒；心電圖與另一手指的穿透式近紅外光量測為標準；訊噪比與一致性分析。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一根手指同時用三種顏色的光量脈搏：不動時一樣乾淨，手一晃，紅光最先亂掉，綠光和藍光還撐著。",
+        "visual": "清爽可愛的機制剖面動畫：一根圓圓的手指尖底下並排亮著紅、綠、藍三盞小燈，三條顏色對應的小波浪整齊地跟著脈搏起伏；接著整隻手被輕輕地左右、上下搖晃，紅色那條波浪立刻被搖得毛毛躁躁，綠色和藍色的波浪只是微微抖動，脈搏的形狀還看得出來。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_ids": [
+        "T85-S004"
+      ],
+      "source_locator": "T85-S004 Methods「Participants」「Procedure」「Smartphone」、Table 1（加速度中位數 0.34、0.42 G）、Table 3（相關係數 0.9960、0.9991、0.9975）、Results「S/N ratio…」與 Figure 7（基準 p = 0.378；水平搖 p = 0.003；垂直搖 p < 0.001；綠、藍高於紅）、Discussion",
+      "notes": "算 1.00（獨立研究網 NET_03_Kanazawa）：回答「為什麼是綠燈」，並替轉折一鋪路（綠光穿得淺）。正稿不得把 0.996 的相關係數說成「晃動時心跳照樣量得準」，要交代搖晃頻率刻意避開心跳；穿透深度的解釋要說是研究者的推測。不出現手機品牌、型號、應用程式名。 覆核 V191（2026-11-14）：改算 0.75（手機相機量指尖、搖晃由實驗者以手施加，離手腕穿戴較遠）。補上本篇對綠光訊號來源的傳統解讀，作為轉折一的對照觀點。 原提案 F171-005（第三十五輪，作者 F171、覆核 V191）。"
+    },
+    {
+      "id": "T85-005",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "戴在手腕上的光學感測器，人跑起來以後是多數了心跳，還是漏掉了心跳？",
+      "mechanism_key": "wearable_optical_heart_rate.custom_12_channel_wristband_8_adults_green_channel_sensitivity_94_97_walk_72_77_run_misses_not_false_beats",
+      "answer_target": "在這個實驗裡主要是漏掉。韓國漢陽大學的團隊自製了一條十二頻道的腕帶（四組感測器朝四個方向，每組綠、紅、紅外三種光），讓 8 位 20 到 30 歲的成人在走廊走路（約每秒 1 公尺）、快走（約 1.8 公尺）、跑步（約 2.2 公尺）各兩分鐘、做兩次，以胸帶式心電量測為標準，共比對 9,233 次心跳。還沒經過多頻道演算法處理時，四個綠光頻道的靈敏度（標準心跳中被抓到的比例）在走路是 93.66–97.07%，快走降到 84.17–93.69%，跑步只剩 72.48–77.28%；紅光與紅外頻道更低，跑步時 66.14–69.36%。但抓到的幾乎都是真的：跑步時各頻道的陽性預測值都在 98.75% 以上。研究者的描述是，動作越劇烈，漏掉的心跳大幅增加，誤判出來的假心跳反而略少。把十二個頻道合起來處理的演算法，跑步時的靈敏度也只回到 82.49%。這是自製的研究用硬體，不是市售手錶的數字。",
+      "scope": "8 名 20–30 歲健康成人（7 男 1 女）；自製 12 頻道腕戴光學系統（綠、紅、紅外各四個方向，每秒取樣 100 次）；胸帶式心電量測為標準；走路、快走、跑步各 2 分鐘 × 2 次，共 9,233 次心跳；以靈敏度、陽性預測值評估波峰偵測。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一條十二個頻道的腕帶跑起來：綠光頻道走路時抓得到九成五左右的心跳，跑步只剩七成多；抓到的幾乎都是真的，問題是漏掉的變多。",
+        "visual": "清爽可愛的機制剖面動畫：一條腕帶內側排著四組小燈，每組綠、紅、暗紅三顆；手腕靜靜走路時，每一下脈搏經過，綠燈上方就跳出一顆小圓點，一顆不漏。手腕開始跟著跑步擺動後，脈搏照樣一下一下經過，但有些小圓點沒有跳出來，像是被晃掉了；紅燈和暗紅燈上方漏掉的更多。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_ids": [
+        "T85-S005"
+      ],
+      "source_locator": "T85-S005 2.1、2.2（8 人；9,233 次心跳）、Table 1（綠光頻道靈敏度：走路 93.66–97.07%、快走 84.17–93.69%、跑步 72.48–77.28%；紅與紅外跑步 66.14–69.36%；跑步陽性預測值 98.75–99.69%）、3 Experimental Results、Table 2（演算法後跑步 82.49%）",
+      "notes": "算 1.00（獨立研究網 NET_04_Hanyang）：第二章收尾——把「訊號小、綠光較耐晃」接到「一跑就漏拍」。正稿要說「研究者自己做的腕帶」，不得說成市售手錶漏掉三成心跳；靈敏度不得說成心率誤差。 覆核 V191（2026-11-14）：數字逐項對 Table 1–2 無誤（綠光為 Ch1、Ch4、Ch7、Ch10）。原文 2.3 節寫「穿透深度隨波長增加」、Discussion 寫成「隨波長減少」，前後相反；卡片未引用任何一句，維持 1.00。覆核計 1.00 條。 原提案 F171-006（第三十五輪，作者 F171、覆核 V191）。"
+    },
+    {
+      "id": "T85-006",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "手錶的綠光在皮膚裡走不到一公釐，動脈卻埋在三公釐以下——那它看到的「脈搏」到底是什麼？",
+      "mechanism_key": "wearable_optical_heart_rate.green_camera_imaging_58_palms_pulsation_2_percent_three_times_classical_limit_counter_phase_3mm_dermis_compression_model",
+      "answer_target": "這是一組研究者對一般看法的挑戰。論文自己寫，一般公認脈搏訊號來自動脈搏動造成的組織血量變化；他們的主張是：它看到的不是動脈裡的血，而是皮膚被動脈一下一下擠壓的痕跡。東芬蘭大學與俄羅斯幾所大學的團隊用 525 奈米的綠光照 58 位健康受試者（20 到 89 歲）的手掌，以相機記錄每一小塊皮膚的亮度隨心跳起伏的幅度。每個人起伏最強的點幾乎都在橈動脈或尺動脈附近，幅度介於 0.7% 到 5.7%，左右手平均 2.2% 與 2.1%。但綠光的穿透深度估計只有 0.4 到 0.9 公釐，手腕動脈通常在表皮下 3 公釐以上；研究者依傳統模型估算，光直接被動脈血調變最多只能造成 0.7% 的起伏，實測約是三倍。而且所有受試者身上都找得到相鄰卻「反相」的區域（一塊變暗時另一塊變亮），所舉例子的兩個點只相距 3.3 公釐。他們提出的新模型是：動脈內的壓力每跳一下就推擠真皮，讓微血管變密，光的吸收與散射跟著變。文中另示一位受試者小指上的一點：懸空時起伏 1.1% 且像雜訊，輕貼玻璃變 2.96%，再壓上 1.7 公斤變 4.1%。這是研究者提出的解釋，吸收與散射哪個為主他們自己說還不清楚。",
+      "scope": "58 名健康受試者（20–89 歲）；525 奈米綠光照手掌與手腕，黑白相機每秒 30 格錄 24 秒，交叉偏振濾除表面反射；逐像素計算隨心跳起伏的幅度與相位；另以懸空、輕貼玻璃、加 1.7 公斤三種條件比較（文中示一位受試者）。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "綠光照不到手腕的動脈，量到的脈動卻比「光直接照到動脈血」估算的上限大三倍——這組研究者因此主張，它看的是皮膚被脈搏擠壓的樣子。",
+        "visual": "清爽可愛的機制剖面動畫：皮膚的剖面：最上面一層淺色表皮，底下是布滿細小紅色微血管的真皮，更深處橫著一條粗粗的動脈。綠色的光從上面照下來，只走到真皮淺處就折返，碰不到動脈。動脈每鼓起一下，就把上方的真皮往上頂、擠一下，細小的微血管被擠得彼此靠近，折返的綠光跟著暗一點；動脈放鬆，微血管散開，綠光又亮回來。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "source_ids": [
+        "T85-S006"
+      ],
+      "source_locator": "T85-S006 Methods「Participants」「Measurement system」、Results「Mapping the areas with maximal PPG amplitude」（0.7–5.7%；平均 2.2%、2.1%）、「Counter phase PPG waveforms」（3.3 公釐）、「Influence of the external local pressure」（1.1%、2.96%、4.1%；1.7 公斤、約 0.3 N/cm²）、Discussion（穿透 0.4–0.9 公釐、動脈深於 3 公釐、估算上限 0.7%）、Figure 1–4",
+      "notes": "算 1.00（研究網 NET_05_Kuopio_ITMO，兩篇合計 2.00 條、未超過封頂）：轉折一的核心卡——把「看血流」改成「看皮膚被擠」。正稿必須用「研究者主張」「他們提出的解釋」，不得說成定論；1.1%→2.96%→4.1% 要說是「其中一位受試者的一個點」。這是相機隔空拍手掌，不是手錶實測。 覆核 V191（2026-11-14）：改算 0.75（相機隔空拍手掌而非腕戴；核心論點「實測約為上限的三倍」建立在作者依文獻參數的估算與新提出的模型上；NET_05 兩篇合計 1.50）。「所有受試者都找得到反相區域」核對為本篇 58 人（Counter phase 一節「confirmed that all of them」），屬實。補上論文自述的「一般公認看法」，正稿必須說成一派研究者的主張，並與 T85-004、T85-008 的傳統解讀並列。 原提案 F171-007（第三十五輪，作者 F171、覆核 V191）。"
+    },
+    {
+      "id": "T85-007",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "只是讓皮膚貼上一塊硬玻璃，光量到的脈動會變多少？綠光和穿得更深的紅外光，誰變得多？",
+      "mechanism_key": "wearable_optical_heart_rate.alternate_frame_green_and_near_infrared_34_people_glass_contact_green_0p61_to_2p12_percent_3p6x_infrared_1p8x",
+      "answer_target": "綠光變得多：平均放大約三點六倍，近紅外光約一點八倍。俄羅斯與芬蘭的研究者（與提出「皮膚被擠」模型的是同一批人）找了 34 位健康受試者（18 到 66 歲），用相機一格綠光（525 奈米）、一格近紅外光（810 奈米）輪流拍手掌，先拍手懸空，再拍手掌貼在玻璃上並壓 2.0 公斤重物（每人的平均接觸壓力 27 到 55 毫米汞柱，平均 35）。左右手共 68 筆量測裡，脈動最強的點在綠光下由 0.61 ± 0.04% 升到 2.12 ± 0.21%，近紅外光由 0.48 ± 0.03% 升到 0.84 ± 0.08%；個別受試者最高放大約 7 倍與 3.6 倍。兩種光的最強點平均只差約 1.5 公釐，放大的倍數彼此高度相關（相關係數 0.85，p < 0.001）。研究者據此推論：兩種光讀到的是同一個來源——真皮被動脈壓力推擠而變形——而且穿得越淺的光受這件事影響越大。這是由相關性作的推論；比較懸空與貼玻璃要靠人工對位置，研究者自己說並不精確。",
+      "scope": "34 名健康受試者（25 男 9 女），左右手共 68 筆；525 奈米綠光與 810 奈米近紅外光逐格切換，相機每秒 60 格；手掌懸空與貼玻璃加 2.0 公斤（平均接觸壓力約 35 毫米汞柱）各錄 24 秒；比較最強點的脈動幅度。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "三十四個人的手掌一貼上玻璃，綠光量到的脈動平均變成三點六倍，穿得深的紅外光只變一點八倍：越淺的光，越是在看皮膚被擠。",
+        "visual": "清爽可愛的機制剖面動畫：同一塊皮膚剖面出現兩次：左邊皮膚上方是空的，動脈鼓起時皮膚表面跟著微微隆起，微血管只被輕輕擠一下，折返的綠光幾乎沒有變化；右邊皮膚上方壓著一片透明的硬板，動脈再鼓起時皮膚無處可退，微血管被用力擠密，折返的綠光明顯變暗又變亮。旁邊一束暗紅色的光穿得比較深，明暗的變化比綠光小。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_ids": [
+        "T85-S007"
+      ],
+      "source_locator": "T85-S007 Subjects and Methods「Participants」「Experimental setup」「Experimental procedure」（27–55 毫米汞柱，平均 35）、Results「Effect of the skin-glass contact」（綠光 0.61 ± 0.04% → 2.12 ± 0.21%；近紅外光 0.48 ± 0.03% → 0.84 ± 0.08%；3.63 ± 0.41 倍與 1.82 ± 0.19 倍；最高約 7 倍與 3.6 倍）、「Correlation…」（約 1.5 公釐；r = 0.85，p < 0.001）、Fig 3–4",
+      "notes": "算 1.00（研究網 NET_05_Kuopio_ITMO，兩篇合計 2.00 條）：替轉折一補上群體數據，並把線索交給下一張——既然訊號是「擠」出來的，錶帶鬆緊就會直接改變訊號。正稿要說「同一批研究者」，不得把兩篇講成互相獨立的驗證。 覆核 V191（2026-11-14）：改算 0.75（與 T85-006 同一批研究者、同一套相機隔空拍手掌的系統）。數字對 Results 與 Fig 3–4 無誤（0.48→0.84% 的比值是 1.75，原文另報逐人平均 1.82 ± 0.19 倍，兩者都對）。 原提案 F171-008（第三十五輪，作者 F171、覆核 V191）。"
+    },
+    {
+      "id": "T85-008",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把感測器在指尖上慢慢壓緊再慢慢放鬆，五種顏色的光量到的脈動，會照同一個力道一起變大變小嗎？",
+      "mechanism_key": "wearable_optical_heart_rate.fingertip_five_wavelengths_11_adults_force_ramp_short_wavelengths_peak_at_lower_force_and_vanish_first_hysteresis_on_release",
+      "answer_target": "不會，而且放鬆時不會照原路回來。比利時布魯塞爾自由大學與古巴東方大學的團隊做了一個內建五種波長（470、525、590、631、940 奈米）與力量感測器的指夾，讓 11 位健康成人平躺，在左右手食指尖上用螺絲逐步加壓到近紅外光的脈動幾乎消失，再逐步放鬆，共 21 筆紀錄。加壓途中，穿得淺的短波長（藍、綠、黃）大致上在較小的力道就達到最大脈動（原文以一筆代表紀錄示範、用「大致上」形容），再壓下去最先消失；穿得深的長波長較晚到頂，短波長的脈動不見之後，940 奈米在部分受試者身上還看得到微弱、不穩定的脈動。放鬆途中，各波長達到最大脈動所需的力道和加壓途中不同——也就是同樣的力道，量到的訊號大小要看皮膚剛才被壓成什麼樣。研究者把這個遲滯解釋為皮膚被壓之後殘留的變形；他們沿用傳統的分層看法，把三種短波長當成看淺層微血管、631 奈米看中層小動脈與小靜脈、940 奈米看更深的血管。另外，21 筆紀錄裡有 17 筆，力量感測器本身就感覺得到脈搏一下一下頂上來。這是指尖、靜止的量測，論文沒有給出最佳力道的群體數值。",
+      "scope": "11 名健康成人（8 男 3 女），左右手食指尖共 21 筆紀錄；指夾內建 470、525、590、631、940 奈米五種光、力量與溫度感測器；平躺，手動螺絲逐步加壓至 940 奈米脈動消失再放鬆；分析平均亮度與脈動幅度隨力量的變化。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把感測器慢慢壓緊：淺色的光先到最佳點、也先被壓到看不見；鬆開時訊號不照原路回來——同樣的力道，要看皮膚剛剛被壓過多久。",
+        "visual": "清爽可愛的機制剖面動畫：一根手指尖被一個小夾子輕輕夾住，夾子裡並排亮著藍、綠、黃、紅、暗紅五盞小燈，每盞燈上方各有一條脈搏波浪。夾子慢慢收緊：藍綠黃三條波浪先長高、接著縮小到消失，暗紅那條比較晚才長到最高。夾子再慢慢鬆開：波浪重新長出來，但長回來的時機和剛才縮小時不對稱，指尖的皮膚上還留著淺淺的壓痕。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "source_ids": [
+        "T85-S008"
+      ],
+      "source_locator": "T85-S008 3.1、3.2（11 人、21 筆）、4.1（17／21 筆有壓力脈波）、4.1.3、4.2.1–4.2.3、4.3 與「Evolution of AC Pulse Contours during CF Phases」、Figure 6、8–11、5 Discussion",
+      "notes": "算 1.00（獨立研究網 NET_06_VUB）：把「皮膚被擠」接到「戴多緊」，並補上遲滯——皮膚有記性，手一動、錶一滑，訊號基準就跟著飄。本卡刻意不放數字（原文沒有群體的最佳力道數值）。正稿要說是指尖、靜止的實驗。若覆核認為與題目所問現象距離較遠而折算，見 evidence_gaps。 覆核 V191（2026-11-14）：改算 0.50（指尖夾具、平躺不動、沒有心率或誤差，峰值先後是以代表紀錄示範的質性描述，與手腕運動中的心率誤差距離最遠）。補上「大致上／代表紀錄」與研究者的分層解讀。 原提案 F171-009（第三十五輪，作者 F171、覆核 V191）。"
+    },
+    {
+      "id": "T85-009",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同一支裝置、同一個人上下台階，錶帶戴鬆和戴緊，心跳的誤差差多少？鬆緊和動得快慢，誰影響大？",
+      "mechanism_key": "wearable_optical_heart_rate.custom_wrist_sensor_with_load_cell_17_people_step_test_12_mmhg_error_9_to_12_percent_vs_54_mmhg_2_to_4_percent",
+      "answer_target": "在這個實驗裡，鬆緊的影響比快慢大。義大利巴勒摩大學與英國羅浮堡大學的團隊自製了一支腕戴裝置，在 520 奈米綠光感測器正上方疊一顆荷重元，量得到感測器壓在皮膚上的壓力。17 位受試者以 12、33、54 毫米汞柱三種壓力（分別對應手錶使用者覺得舒服、正常、偏緊的戴法），跟著節拍器以每分鐘 90、120、140 拍上下一階 22.5 公分的台階各 60 秒，胸帶式心電量測為標準。最鬆時，三種節奏的平均百分比誤差是 8.9%、10.3%、11.8%，和標準的相關係數只有 0.56、0.32、0.28；33 毫米汞柱時誤差降到 2.4%、3.5%、4.6%；54 毫米汞柱時 2.4%、2.7%、3.8%。「最鬆、最慢」的誤差是「最緊、最快」的 2.34 倍。但個人差異很大：節奏最慢時，17 人裡有 9 人在中等壓力最準、8 人在最大壓力最準；研究者說不能斷言 54 毫米汞柱就是最佳值，因為更緊會不舒服、他們沒有測。",
+      "scope": "17 名 22–55 歲受試者（12 男 5 女）；自製腕戴綠光感測器加荷重元，接觸面積 473 平方公釐；接觸壓力 12、33、54 毫米汞柱；跟節拍器以每分鐘 90、120、140 拍上下 22.5 公分台階各 60 秒；胸帶式心電量測為標準。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "錶戴得最鬆時，誤差是九到十二個百分點；調緊一級就掉到二到五個百分點——「鬆鬆地慢慢動」比「戴緊了快快動」還不準。",
+        "visual": "清爽可愛的機制剖面動畫：一隻小手腕戴著手錶，錶背和皮膚之間夾著一顆扁扁的小磅秤。錶帶鬆的時候，手腕一上一下，錶背在皮膚上輕輕彈跳、時貼時離，手錶畫出的心跳線東歪西倒；錶帶收緊一格，錶背穩穩貼住皮膚，同樣的上下動作，心跳線就乖乖貼回胸口來的那條線。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "T85-S009"
+      ],
+      "source_locator": "T85-S009 2.1（473 平方公釐；12、33、54 毫米汞柱）、2.2（17 人；90、120、140 拍；台階 22.5 公分）、Table 1（相關係數）、Table 2（8.9／10.3／11.8%；2.4／3.5／4.6%；2.4／2.7／3.8%）、Table 3（0、9、8；1、4、12；0、6、11 人）、4 Discussion（2.34 倍）",
+      "notes": "算 1.00（獨立研究網 NET_07_Palermo）：轉折一的落點——訊號既然靠貼合與擠壓，鬆緊就成了頭號變數，而且動作正是在改變貼合。正稿只描述實驗，不寫成「手錶要戴緊一點」的建議；要交代每個人最準的鬆緊不同、沒有測更緊的情況；「拍」是節拍器的拍數不是心率。 覆核 V191（2026-11-14）：數字逐項對 Table 1–3 與 Discussion 無誤；原文摘要說「54 毫米汞柱最準」，Discussion 自己說不能斷言是最佳值，卡片採後者，維持 1.00。畫面中「錶背時貼時離」是示意，原文沒有量位移，旁白不得說成量到的。覆核計 1.00 條。 原提案 F171-010（第三十五輪，作者 F171、覆核 V191）。"
+    },
+    {
+      "id": "T85-010",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "跑步時把手腕光學訊號的頻譜攤開，裡面有幾種節奏？演算法怎麼知道哪一個才是心跳？",
+      "mechanism_key": "wearable_optical_heart_rate.running_wrist_optical_spectrum_three_dominant_peaks_two_match_accelerometer_remove_coherent_peaks_mean_error_under_2_bpm",
+      "answer_target": "所舉的例子裡有三種，其中兩種是手臂擺出來的。美國康乃狄克大學與伍斯特理工學院的團隊分析人在跑步機上跑步時的手腕光學訊號（一項訊號處理競賽公開的資料，受試者還被要求刻意擺動戴腕帶的手）：代表例的時頻圖上有三條主要成分，拿同一條腕帶裡加速度計的頻譜來對，其中兩條和手臂擺動落在同樣的位置，剩下一條才是心率。研究者歸納：訊號乾淨時最高的峰就是心跳；有規律動作時，動作會造成一到兩個主峰，心跳退到第二或第三高。他們的做法是每 8 秒算一次頻譜、每 2 秒更新，保留心跳可能範圍內最高的三個峰，剔掉和加速度計主峰同頻的，再限制相鄰兩段的心率變化不超過每分鐘 10 次。在 33 筆紀錄上，這個方法與心電圖的平均絕對誤差是每分鐘 1.86 次（只算跑步機的 22 筆是 1.11 次）；誤差最大的情況出現在跳躍這類心率與動作都變得很快的時候，以及感測器被晃到與皮膚之間出現空隙的時候。這是研究用演算法的成績，市售手錶內部怎麼做並未公開。",
+      "scope": "33 筆紀錄：訊號處理競賽公開資料 23 筆（手腕光學感測器、三軸加速度計、胸前心電圖；跑步機走跑與各種手臂動作）與作者自錄 10 筆（額頭感測器，跑步機）；時頻分析，每 8 秒一段、每 2 秒移動；以心電圖心率為標準計算平均絕對誤差。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "跑步時手腕的訊號裡可以拆出好幾個節奏，所舉的例子裡有兩個和手臂擺動同步——研究者的演算法靠加速度計認出哪些是「手」，把它們劃掉。",
+        "visual": "清爽可愛的機制剖面動畫：一條亂糟糟的手腕光學波浪被拆成三條乾淨的小波浪，疊在一起原來就是那條亂波浪。旁邊一顆小小的加速度計也畫出自己的波浪，節奏和其中兩條一模一樣；那兩條被輕輕擦掉，剩下的一條波浪節奏穩定，旁邊一顆小愛心跟著它一下一下跳。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "T85-S010"
+      ],
+      "source_locator": "T85-S010 2.1 Datasets、2.2.1 與 Figure 1（三條主要成分、兩條與加速度計同位置）、2.2.2、2.2.3–2.2.4 與 Table 2（8 秒視窗、2 秒移動、最高三峰、相鄰視窗不超過 10 次／分）、Abstract 與 Table 3（33 筆合計 1.86 次／分、跑步機 22 筆 1.11 次／分；誤差最大的一筆 7.29 次／分）、4 Discussion",
+      "notes": "算 0.75（獨立研究網 NET_08_UConn；演算法論文、多數為二手資料）：第四章的機制卡——把前一章的「貼合被動作改變」變成看得見的畫面：擺手的節奏混進訊號、還可能蓋過心跳。正稿要說「研究者的做法」，不得說成市售手錶的做法；「三種節奏」要說是所舉的例子。不出現演算法名稱。 覆核 V191（2026-11-14）：亮點句刪去「還常常比心跳更強」：那是演算法對有動作時頻譜的情境假設（心跳退居第二或第三高峰），不是統計出的頻率。原文分組數字前後不一（2.1 節寫第二組資料含第一、二類活動，Table 1 寫第二、三類；文字寫 11 人，表中寫 9 男 1 女），卡片只用三組合計 33 筆、腕部 23 筆、跑步機 22 筆這三個自洽的數字，維持 0.75。覆核計 0.75 條。 原提案 F171-011（第三十五輪，作者 F171、覆核 V191）。"
+    },
+    {
+      "id": "T85-011",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把人和十款手錶關進 10 度、23 度、36 度三間房，做一樣的事——準確度是跟著溫度變，還是跟著手在做什麼變？",
+      "mechanism_key": "wearable_optical_heart_rate.ten_wearables_45_adults_three_climate_chambers_10_23_36_c_no_significant_climate_effect_activity_type_significant_in_4_of_10",
+      "answer_target": "跟著手在做什麼變，溫度沒有造成顯著差別。比利時魯汶大學與一所應用科技大學的團隊讓 45 位健康成人（21 到 68 歲）在三間相連的氣候艙（23 °C、36 °C、10 °C）裡各做一套 22 分鐘的流程：靜坐、心算壓力作業、跑步機時速 6 公里穩定走 4 分鐘、走 30 秒停 30 秒的間歇走 4 分鐘；十款市售裝置（九款手錶、一款指環）各由 10 人測過，胸帶式心電紀錄器為標準。各款全程平均絕對誤差的中位數從每分鐘 4.5 次到 14.3 次不等；逐款檢定三種氣候，校正多重比較之後沒有任何一款達到顯著。活動類型則在十款中有四款達顯著，但方向不一：一款在間歇走時的誤差中位數（每分鐘 6.3 次）顯著高於心算與穩定走（4.3 與 4.5 次）；一款只有間歇走顯著高於心算（12.0 對 5.9 次；穩定走 11.8 次未標顯著）；另兩款則是穩定走與間歇走都顯著高於坐著心算。也就是說，四款都有至少一種走路方式顯著比坐著心算不準，「走走停停」比「穩穩走」更不準只在一款上達到顯著——研究者在摘要裡寫「間歇走讓多款裝置誤差增加」，比表格強。研究者原本預期冷熱會經由血管收縮或擴張影響訊號，結果沒有看到；他們提出的可能原因是 10 到 36 度還不夠極端、每間只待二十多分鐘，或裝置的演算法已經補償，而且他們沒有量皮膚溫度。",
+      "scope": "45 名健康成人；10 款市售光學心率裝置（9 款手錶、1 款指環）各測 10 人次，共 100 場；三間氣候艙 23 °C／50%、36 °C／70%、10 °C／40%；每間 22 分鐘含靜坐、心算、穩定走、間歇走；胸帶式心電紀錄器為標準；無母數檢定加多重比較校正。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "十款手錶在十度、二十三度、三十六度的房間裡各測一輪：換溫度，沒有哪一款明顯變差；一走起路，十款裡有四款就跟著變——但「走走停停」比「穩穩走」更糟，只在一款上站得住。",
+        "visual": "清爽可愛的機制剖面動畫：三間並排的小房間，一間飄著雪花、一間陽光溫和、一間熱得冒蒸氣；同一隻戴錶的小手腕依序走進每一間，坐在小桌前時，手錶的心跳線在三間裡差不多一樣穩。接著手腕在一條小跑步帶上擺動走路，心跳線開始輕輕抖動；走幾步、停下、再走幾步時，線抖動的樣子和穩穩走時差不多，只有偶爾在起步的瞬間多抖一下。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "T85-S011"
+      ],
+      "source_locator": "T85-S011 Methods「Study Design and Participants」「Experimental Protocol」、Results Table 1（4.5–14.3 次／分）、Table 2 與正文（氣候：無任何一款達顯著）、Table 3 與正文（4 款活動類型達顯著；4.3／4.5／6.3 與 5.9／11.8／12.0 次／分）、Discussion「Principal Results」「Comparison With the State of the Art」「Study Limitations」",
+      "notes": "算 1.00（獨立研究網 NET_09_Leuven）：一張卡兩個用途——第四章用「走走停停比穩穩走更糟」（節奏一變，演算法跟不上），並替轉折二先埋一個伏筆「溫度沒有顯著影響」。正稿不得說成「天氣冷熱完全不影響」，要帶上研究者自己的保留；不做裝置排名、不出現品牌。 覆核 V191（2026-11-14）：主要更正：原稿題目、亮點句與串講把「十款裡四款」說成「間歇走讓四款顯著變差」，與 Table 3 的顯著標記不符（f＝與間歇走顯著不同、g＝與心算顯著不同）：四款裡只有一款是間歇走顯著差於穩定走，一款是間歇走差於心算，兩款是走路（穩定與間歇）都差於心算。改成「走起來比坐著不準」，「走走停停更糟」只說一款，並註明摘要說法比表格強。溫度的部分無誤。覆核計 1.00 條。 原提案 F171-012（第三十五輪，作者 F171、覆核 V191）。"
+    },
+    {
+      "id": "T85-012",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "離開跑步機到山上的步道跑二十分鐘，戴在手腕、手指、耳朵、前臂的光學心率裝置，各差多少？",
+      "mechanism_key": "wearable_optical_heart_rate.trail_run_3p2_km_21_runners_optical_wrist_13p5_ring_15p9_earbud_21p3_forearm_5p6_percent_vs_chest_strap_watch_1p9",
+      "answer_target": "靠光的都沒過關，而且離手越遠的位置不一定越好。美國內華達大學拉斯維加斯分校的團隊讓 21 位受試者在 3.22 公里、先上坡後下坡的野外步道上自訂配速折返跑（平均 21 分 56 秒），同時配戴腕戴光學手錶、光學耳機、光學指環、前臂光學臂帶，以及一支接收胸帶電極訊號的手錶，另以一條胸帶式心率帶為標準。全程的平均百分比誤差：接胸帶的手錶 1.9%，前臂臂帶 5.6%，腕戴光學手錶 13.5%，光學指環 15.9%，光學耳機 21.3%。依研究者預設的標準（誤差 5% 以內、一致性係數 0.90 以上等），所有光學裝置都不合格。前臂臂帶在上坡段誤差 6.2%、下坡段 3.8%，腕戴手錶則上下坡都在 13% 多。研究者推測動作造成的假訊號是主因，戶外的環境光也可能有份，但這兩點他們都沒有直接量。每種位置只測了一款裝置，所以位置和裝置本身的差別在這個實驗裡分不開。",
+      "scope": "21 名健康受試者（10 名女性）；3.22 公里野外步道折返跑（上坡 1.61 公里、下坡 1.61 公里，高度變化 48–104 公尺），自訂配速；腕、耳、指、前臂四種光學裝置與一支搭配胸帶的手錶同時配戴；胸帶式心率帶為標準；逐秒比較。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "山路上跑二十分鐘：靠胸口電訊號的只差百分之二，綁在前臂的光學臂帶差百分之六，手腕上的光學手錶差到百分之十三以上。",
+        "visual": "清爽可愛的機制剖面動畫：一條彎彎曲曲、先上坡再下坡的小山路，路面有石頭和樹根。一個只畫出手臂與軀幹輪廓的小跑者沿路跑，胸口、前臂、手腕、手指各有一個小亮點，各拉出一條心跳線；胸口那條最平順，前臂那條偶爾抖一下，手腕和手指那兩條在踩到石頭、手臂亂擺時大幅跳動。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_ids": [
+        "T85-S012"
+      ],
+      "source_locator": "T85-S012 Methods「Participants」「Protocol」、Results（平均 21:56）、Table 1（13.5%、21.3%、15.9%、5.6%、1.9%；一致性係數 0.316、0.384、0.293、0.780、0.955）、Table 2–3（臂帶上坡 6.2%、下坡 3.8%；腕戴 13.7%、13.4%）、Discussion",
+      "notes": "算 0.50（研究網 NET_10_UNLV_Alabama 封頂 2.00 條，與 T85-013、T85-014 共用）：第四章的收束——把規律的跑步機換成真實地形，光學裝置集體失準。正稿不得把「前臂比手腕好」說成位置已被單獨證實（留給 T85-015）；不引用「戶外請用胸帶」的建議；不出現品牌與步道名。 覆核 V191（2026-11-14）：改算 1.00（實測論文；NET_10 三篇封頂 2.00 條）。數字採 Table 1–3（耳機 21.3%）；摘要的 23% 與表格不一致，不引用；表中偏差標準差與一致性界限的異常大數值不引用。「跑步也可以很糟」由本篇與 T85-005 支撐，題案已據此把「走路比跑步不準」改成只在部分實驗成立。 原提案 F171-013（第三十五輪，作者 F171、覆核 V191）。"
+    },
+    {
+      "id": "T85-013",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "不用肉眼分膚色，改用儀器量出戴錶那塊皮膚的深淺，再讓手幾乎不動——深膚色會讓手錶的心跳變不準嗎？",
+      "mechanism_key": "wearable_optical_heart_rate.colorimeter_measured_pigmentation_28_adults_cycling_no_effect_two_wrist_devices_1_bpm_armband_but_outliers_56_to_62_percent_dark_skin",
+      "answer_target": "報出來的數字沒有變不準，但深膚色的人比較常遇到「報不出來」或「報出怪數字」。美國阿拉巴馬大學的團隊用色度計量出 28 位健康成人手腕背側與上臂外側的膚色深淺（其中 10 位、36% 屬深膚色），讓他們同時戴兩款腕戴手錶與一款上臂臂帶，靜坐、踩固定式腳踏車四個強度各 10 分鐘、再坐著恢復；選踩車是為了讓動作干擾降到最低，標準是胸帶式心率帶。膚色指標對兩款手錶的誤差沒有預測力（P = 0.62 與 0.29）；對臂帶有（P = 0.001），但從最淺到最深只差每分鐘約 1 次。三款裝置與標準的平均偏差都在每分鐘 1 次以內。可是在資料品質上，被判為離群的資料有 56% 到 62% 來自深膚色受試者；不明原因缺漏的資料，其中兩款裝置有 50% 與 85% 來自深膚色受試者（第三款 33%）。研究者推測，數心跳靠的是訊號的起伏而不是亮度的絕對值，所以光被黑色素多吃掉一些仍數得出來；但他們寫明這是手幾乎不動的條件，不能排除加上動作等其他常見誤差來源之後，深膚色者的量測會受到不成比例的影響——這在本實驗沒有量。論文導言也整理到，先前十篇研究裡四篇沒看到膚色差異、四篇看到深膚色較不準、兩篇結果混合，文獻並不一致。",
+      "scope": "28 名健康成人（自述白人 16、黑人 10、其他 2；深膚色 10 人）；色度計量測配戴部位膚色；兩款腕戴手錶與一款上臂式臂帶；胸帶式心率帶為標準；靜坐 5 分鐘、固定式腳踏車四階各 10 分鐘、恢復 10 分鐘；30 秒平均；線性混合效應模型。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "用儀器量出膚色、讓手幾乎不動：兩款手錶的誤差和膚色深淺沒有關係；不過被判為離群的資料，有五成六到六成二來自占全體三成六的深膚色受試者。",
+        "visual": "清爽可愛的機制剖面動畫：兩隻深淺不同的小手腕穩穩握著腳踏車把手，各戴一支手錶。剖面裡，綠光照進皮膚：顏色較深的那隻，表層把一部分綠光吸走，折返的光比較少，但隨脈搏一明一暗的節奏一樣清楚；兩支手錶畫出的心跳線都貼著胸口來的標準線走。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "T85-S013"
+      ],
+      "source_locator": "T85-S013 Methods「Participants」「Experimental procedures」「Device setup and data cleaning」、Results「Data quality」（缺漏：50%、85%、33%；離群：61%、56%、62%）、Table 1、Table 3（偏差 0.0、0.4、0.7 次／分）、Table 4 與「Influence of skin pigmentation on device accuracy」（P = 0.62、0.29、0.001；約 1 次／分）、Discussion",
+      "notes": "算 0.75（研究網 NET_10_UNLV_Alabama 封頂 2.00 條）：轉折二的主卡——大家第一個懷疑的膚色，在手不動時幾乎不影響讀數，卻影響「有沒有讀數」。正稿不得說成「膚色完全沒影響」；缺漏與離群的比例要連同「深膚色者占 36%」一起講，分母不可寫反；不延伸成任何族群公平或醫療結論以外的主張。 覆核 V191（2026-11-14）：改算 1.00（實測論文；NET_10 封頂 2.00 條）。亮點句刪去「莫名消失」「離譜的數字」等帶評價的字；畫面改成只呈現光學（表層吸光較多、起伏仍在），不再畫深膚色手腕獨有的斷線，資料品質的差異只在旁白依數字陳述、連同分母。補上作者對動作情境的保留與導言整理的不一致文獻；正稿不得說「深膚色的人手錶比較不準」或任何族群結論。 原提案 F171-014（第三十五輪，作者 F171、覆核 V191）。"
+    },
+    {
+      "id": "T85-014",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "兩條一模一樣的光學臂帶綁在同一隻手臂上，一條壓著刺青、一條壓著旁邊的皮膚——刺青那條什麼時候最不準？",
+      "mechanism_key": "wearable_optical_heart_rate.identical_optical_armbands_over_tattoo_vs_adjacent_bare_skin_25_people_rest_22p9_percent_dropouts_9_of_25_run_5p1_percent",
+      "answer_target": "坐著不動的時候。美國內華達大學拉斯維加斯分校的團隊找了 25 位手臂有刺青的成人，在同一隻手臂上綁兩條同款光學臂帶，一條蓋在刺青最密的地方、一條放在鄰近沒有刺青的皮膚，胸帶式心率帶為標準，依序靜坐、自選速度走路、自選速度跑步各 5 分鐘。沒刺青那條三種狀態的誤差是 2.9%、2.7%、2.0%，一致性係數都在 0.96 以上。刺青那條靜坐時誤差 22.9%（一致性係數 0.25），走路 7.5%（0.68），跑步 5.1%（0.83）——越動反而越接近標準。靜坐的大誤差主要是「讀不到」：25 人中有 9 人的讀數曾掉到零，把這些時段剔除後，靜坐的誤差是 4.2%。刺青的年齡與明暗都預測不了誤差，研究者也強調不少受試者的刺青完全沒有影響；在同一個迴歸裡，受試者的膚色（十級色票）在靜坐與走路時是誤差的顯著預測因子（p = 0.046、0.045，都貼近 0.05），跑步時沒有。至於刺青為什麼會讓讀數掉到零，論文只說光必須穿過留在皮膚裡的墨水，墨水的顏色、成分與深度怎麼起作用還待研究。至於為什麼越動越好，他們猜是運動時血流增加、訊號變強，但沒有量血流；而且三種活動的順序是固定的。",
+      "scope": "25 名手臂有刺青的成人；兩條同款光學臂帶分置同一手臂的刺青處與鄰近未刺青皮膚；胸帶式心率帶為標準；靜坐、自選速度走路、自選速度跑步各 5 分鐘（順序固定）；逐秒比較誤差與一致性係數；複迴歸檢視刺青年齡、明暗與膚色。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一隻手臂上，壓著刺青的那條臂帶坐著不動時差了兩成多、九個人還一度讀到零；跑起來反而只差百分之五。",
+        "visual": "清爽可愛的機制剖面動畫：一隻手臂上並排綁著兩條一樣的小臂帶，一條底下的皮膚裡有一層深色的墨水小顆粒，另一條底下沒有。綠光照進去：沒有墨水的那邊，光穿過表層再折返，跟著脈搏一明一暗，心跳線穩穩畫出；有墨水的那邊，折返的光少了很多，心跳線斷斷續續、不時掉到底。手臂開始跑步擺動後，有墨水那條線斷掉的次數變少。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_ids": [
+        "T85-S014"
+      ],
+      "source_locator": "T85-S014 2.1、2.2（25 人；走 56.1、跑 110.5 公尺／分）、Table 1（刺青：22.9%／0.25、7.5%／0.68、5.1%／0.83；未刺青：2.9%／0.96、2.7%／0.97、2.0%／0.98）、3 Results（9／25 人讀數掉到零；剔除 1,486 筆後 4.2%、0.91）、Table 2–4、4 Discussion",
+      "notes": "算 0.75（研究網 NET_10_UNLV_Alabama 封頂 2.00 條）：轉折二的對照——擋光的東西確實會出事，但出事的樣子是「讀不到」，而且方向和動作造成的誤差相反。正稿要說是臂帶不是手錶；22.9% 要連同「剔除讀到零的時段後是 4.2%」一起講；血流的解釋要說是猜測。不出現品牌與型號。 覆核 V191（2026-11-14）：改算 1.00（實測論文；NET_10 封頂 2.00 條）。補上本篇自己的膚色結果（靜坐、走路 p 貼近 0.05），題案轉折二不再說膚色「不是主嫌」。畫面刪去「微血管變飽滿」——血流增加只是作者的猜測、沒有量；「墨水擋光」也改成論文的說法（光要穿過墨水、機制待研究）。只講光學，不涉及對刺青或身體的評價。 原提案 F171-015（第三十五輪，作者 F171、覆核 V191）。"
+    },
+    {
+      "id": "T85-015",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "三條一模一樣的光學腕帶同時戴在手腕、前臂、上臂——只差位置，準確度差多少？",
+      "mechanism_key": "wearable_optical_heart_rate.three_identical_bands_wrist_forearm_upper_arm_28_adults_treadmill_error_5p95_vs_2p55_vs_1p92_percent_all_fail_in_full_body_jumps",
+      "answer_target": "靜止時幾乎沒差，動起來手腕最差。美國馬里蘭大學東岸分校的團隊讓 28 位健康年輕人同時在左手腕、左前臂、左上臂各戴一條完全相同的光學腕帶（硬體與演算法都一樣），以胸帶式心率帶為標準，依序仰臥休息、踩固定式腳踏車暖身、做 30 秒全力的全身連續跳躍、再上逐級加速加坡的跑步機。平均百分比誤差（上臂／前臂／手腕）：仰臥 2.50／2.81／2.93%；踩車暖身 2.91／3.51／5.59%；跑步機 1.92／2.55／5.95%——手腕的誤差約是上臂的三倍。只有全身跳躍那一段，三個位置一起失準（12.07／17.75／17.23%，個人之間差異極大）。研究者的解釋是：上臂軟組織厚、感測器相對皮膚的位移小，手腕皮薄、底下多是肌腱與骨頭、關節又一直在動——這是他們依文獻作的解釋，實驗本身沒有量組織或位移。",
+      "scope": "28 名健康成人（14 男 14 女，約 24 歲）；三條同款光學腕帶同時戴在左手腕、前臂、上臂；胸帶式心率帶為標準；仰臥 5 分鐘、踩車暖身 5 分鐘、30 秒全身跳躍加 1 分鐘恢復、分級跑步機五級；平均絕對百分比誤差與無母數檢定。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一模一樣的三條腕帶，只差戴的位置：在跑步機上，上臂差不到百分之二，手腕差到將近百分之六。",
+        "visual": "清爽可愛的機制剖面動畫：一隻手臂從上到下戴著三條一樣的小腕帶：上臂、前臂、手腕。手臂剖面顯示上臂的腕帶底下是厚厚軟軟的肌肉，手腕的腕帶底下是細細的肌腱和硬硬的骨頭。手臂開始擺動，上臂的腕帶穩穩貼著，手腕的腕帶隨著肌腱滑動和手腕彎折一翹一翹；三條心跳線裡，手腕那條抖得最厲害。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_ids": [
+        "T85-S015"
+      ],
+      "source_locator": "T85-S015 2.1、2.2（28 人）、Table 2（上臂／前臂／手腕：2.50／2.81／2.93%；2.91／3.51／5.59%；12.07／17.75／17.23%；1.92／2.55／5.95%）、3.1–3.4（p < 0.001）、4.2、4.5、5 Limitations",
+      "notes": "算 1.00（獨立研究網 NET_11_UMES）：收尾章的主卡——把裝置差異拿掉，只剩位置，手腕仍然最差。正稿不得寫成「請改戴上臂」的建議；全身跳躍的數字只說「一起垮掉、都在一成以上」；解剖解釋要說是研究者的說法。不引用 Table 4、Table 5。跳躍動作與跑步機測試不用冠名。 覆核 V191（2026-11-14）：數字只用 Table 2，逐格核對無誤；Table 4 前臂在跑步機測試的一致性係數 0.1021 與全身跳躍一格相同，屬錶格錯植，與 Table 2 的 2.55% 及 3.4 節正文矛盾，不引用 Table 4、5。解剖解釋出現在 3.2 節與 Discussion，都是引用文獻的推論，維持 1.00。覆核計 1.00 條。 原提案 F171-016（第三十五輪，作者 F171、覆核 V191）。"
+    },
+    {
+      "id": "T85-016",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "手腕上的光學手錶，在九種活動裡哪些時候最準、哪些時候最不準？和綁在上臂的比起來呢？",
+      "mechanism_key": "wearable_optical_heart_rate.nine_activities_16_adults_wrist_optical_watch_error_under_4_percent_cycling_jogging_over_10_percent_lying_walking_picking_objects_upper_arm_1p35",
+      "answer_target": "最準的是踩腳踏車和慢跑，最不準的是躺著、走路和彎腰撿東西；綁在上臂的臂帶則全程都準。瑞士聯邦體育學院的團隊讓 16 位健康成人在體育館依序做九種活動（躺、坐、走路 15 分鐘、撿拾物品、慢跑、重量訓練、固定式腳踏車、高強度間歇障礙跑、運動後靜坐），整套做兩次，累積 14,653 個 10 秒資料點、共 40.7 小時；左右手腕各戴一支光學手錶，上臂與前臂各綁一條光學臂帶，胸帶式心電量測為標準。上臂臂帶整體的平均百分比誤差是 1.35%、平均偏差 −0.05 次／分；手錶在非慣用手腕整體誤差 6.82%、平均偏高 2.56 次／分，慣用手腕偏高 2.93 次／分，兩手差不多。手錶誤差最低的是踩車（1.17% 與 2.06%）、運動後靜坐（2.15% 與 2.07%）和慢跑（3.84% 與 3.55%）；躺著、走路、撿拾物品時都超過 10%。研究者的解釋是：心率低、血流少時訊號弱，手再有零碎的動作就更難辨識——這是依文獻作的解釋，沒有量血流。要注意臂帶和手錶是兩款不同的裝置，位置和裝置本身的差別在這個實驗裡分不開。",
+      "scope": "16 名健康成人（7 女 9 男）；九種活動 × 兩次，共 40.7 小時、14,653 個 10 秒資料點；一款光學臂帶戴上臂與前臂、一款光學手錶戴左右手腕；胸帶式心電量測為標準；偏差、平均絕對誤差、平均百分比誤差。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "手腕上的手錶踩腳踏車時只差百分之一二，慢慢走路、彎腰撿東西時卻差到一成以上；綁在上臂的那條，從頭到尾只差百分之一點多。",
+        "visual": "清爽可愛的機制剖面動畫：一排小場景：躺著、慢慢走、彎腰撿東西、慢跑、踩腳踏車。每個場景裡，上臂的小亮點拉出的心跳線都很穩；手腕的小亮點在踩腳踏車時線最穩，在慢慢走和彎腰撿東西時，手腕一彎一甩，線就歪歪扭扭。不放任何文字、數字，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_ids": [
+        "T85-S016"
+      ],
+      "source_locator": "T85-S016 Methods「Participants」「Experimental Procedure」「Devices and Instruments」、Results「Missing Values, Artifacts, and Outliers」（14,653 點、40.7 小時）、「Arm-Worn…」（上臂 −0.05 次／分、1.35%；前臂 −0.91 次／分）、「Wrist-Worn…」（2.93、2.56 次／分；6.41 次／分；6.82%；踩車 1.17／2.06%、慢跑 3.84／3.55%、運動後靜坐 2.15／2.07%；躺、走、撿拾物品超過 10%）、Discussion",
+      "notes": "算 1.00（獨立研究網 NET_12_Magglingen）：全片收束——回到開場的「走路比跑步還不準」，並用四十小時的資料說明手腕不準的時刻是「慢而零碎」的動作。正稿不得寫成選購或配戴建議；要交代臂帶與手錶是不同裝置；不出現品牌。 覆核 V191（2026-11-14）：數字逐項對 Results 無誤（14,653 點、40.7 小時、1.35%、6.82%、2.56／2.93 次／分、踩車 1.17／2.06%、慢跑 3.84／3.55%、運動後靜坐 2.15／2.07%）。「躺、走、撿拾超過 10%」只有文字敘述；本篇的「走路比慢跑不準」與 T85-001 同向，但 T85-005、T85-012 顯示跑步也可能很糟，正稿不得說成通則。覆核計 1.00 條。 原提案 F171-017（第三十五輪，作者 F171、覆核 V191）。"
+    }
+  ],
+  "not_added": [
+    {
+      "id": "T85-NA001",
+      "question": "全池去重：池內既有題案、入選核心、未收紀錄與另一系列（奇聞檔案局）是否已經回答過「手錶背面的綠燈怎麼量心跳、為什麼一動就不準、膚色與刺青有沒有影響、戴在哪裡比較準」？",
+      "existing_ids": [
+        "L137",
+        "L136",
+        "L229",
+        "LEG-A52",
+        "T82-015",
+        "T82-016",
+        "T82-017",
+        "X37-001",
+        "H84-006",
+        "T53-015",
+        "LEG-S86",
+        "P53-005",
+        "T84-020",
+        "G648",
+        "G652",
+        "G656",
+        "G644",
+        "T82-NA011",
+        "R42-NA012"
+      ],
+      "reentry_condition": "舊卡 L137（心臟每分鐘送出多少血）、L136（血管為何需要能伸縮）若日後擴成循環系統的長題，可借本題 T85-006、T85-007 說明「脈搏的壓力怎麼傳到皮膚」，但不得併成同一題；本題零借用任何舊卡，全部以本輪新讀的 17 篇開放取用全文建構。",
+      "reading_status": "2026-11-14 動筆前以 python 直接讀 themes.json（依分類列出「數位科技與通訊工程」全部 50 組題案）、pool.json（5,466 筆核心的題目、答案與機制鍵，其中入選 5,237 筆；未收 3,272 筆），並 grep THEMES.md、QUESTIONS.md 與奇聞池 QUESTIONS.md（關鍵字：心率、心跳、脈搏、血氧、光體積、photopleth、ppg、手錶、手環、智慧手錶、穿戴、綠光、加速度計、刺青、膚色、指紋、觸控、降噪、定位、虛擬實境、紙本、打字、語音辨識）；未使用 cli.mjs search（題庫背景重建中）",
+      "reason": "檢索結果：（1）池內沒有任何題案或入選核心談光學心率量測、穿戴裝置的心率準確度、動作假訊號、錶帶鬆緊、膚色或刺青對光學感測的影響；「光體積」「photopleth」「ppg」「手錶」「手環」「穿戴裝置」在核心題目與機制鍵中為 0 筆，「心率」只出現在藍鯨潛水（P33001）、黑熊冬眠（L78-029）等動物題。（2）鄰近舊卡與邊界：L137、L136 是循環生理的一般原理（流量與血管彈性），不談量測；L229 的「心跳訊號」是網路協定用語；LEG-A52（講電話時螢幕變黑）是紅外線距離感測，和本題同屬「手機／手錶上的光學感測器」，但量的是遮擋不是脈動；T82-015 至 T82-017 與題案 G648 是電容觸控，X37-001 是手指含水與摩擦，H84-006 是運動後的皮膚溫度知覺；T53-015 等十餘張是衛星定位（故未選「高樓間定位飄移」）；LEG-S86、P53-005 是降噪耳機；T84-020 是綠光 LED 的發光效率（本題只把綠光當光源，不談發光原理）。（3）近四輪本分類已做 G644（光纖）、G648（觸控螢幕）、G652（鋰電池低溫）、G656（LED 效率下降），本題不碰電池、LED、光纖，也不是它們的相鄰題。（4）派工建議的其他方向：衛星定位在高樓間飄移已有 T53 系列；螢幕閱讀、觸控打字（T82-017 已談鍵盤落點）、語音辨識口音（LEG-A72）、虛擬實境暈眩、邊走邊滑手機等，或已有舊卡、或主角是人的知覺而容易越界到「人體感官與日常行為」，故未選。（5）另一系列（奇聞檔案局）QUESTIONS.md 中「手錶」只出現在一題無關的歷史題，「心率、脈搏、穿戴」為 0 筆。（6）本題 17 篇的 PMCID 與 DOI 在 pool.json 與 273 個批次檔全文比對為 0 筆；17 個機制鍵皆以 wearable_optical_heart_rate. 開頭，池內既有機制鍵無一相同。（7）同輪平行作者 F168（飲食與廚房科學）、F169（人體感官與日常行為）、F170（建築交通與商業制度）分類不同；本題以裝置與感測原理為主角，不談心率本身的生理調節、運動訓練或任何健康判讀，不越界到人體分類。 覆核 V191（2026-11-14）：以 python 重讀 pool.json（5,466 筆核心）、themes.json，搜尋「心率、脈搏、穿戴、光學、血氧、手錶、心跳、綠光、刺青」與英文 photopleth／ppg／wearable：tech 分類只有 L137（心輸出量的一般原理）與 T84 系列（綠光 LED 發光效率），無撞題；奇聞池「手錶」只有一題歷史題；同輪 F168（油耗味）、F169（時間感）、F170（暈車）不相鄰。"
+    },
+    {
+      "id": "T85-NA002",
+      "question": "為什麼下載了德國多特蒙德與德勒斯登團隊的「冷刺激下光學脈波」研究（PMC10267461）卻沒有收？",
+      "existing_ids": [],
+      "reentry_condition": "若日後有在腕部、以穿戴式光學感測器、用不致痛的冷環境（而非冰水浸手）量測心率準確度的開放全文，再評；目前「天冷是否影響手錶心率」由 T85-011 的氣候艙實驗回答。",
+      "reading_status": "已下載完整 JATS XML（F171 seq=11，152,339 位元組，sha256 前 16 碼 957fcb87613b31ed），讀完摘要、導言、背景（文獻回顧與 Table 1）、材料與方法到統計評估一節；結果、討論未讀完，不計入",
+      "reason": "該研究的刺激是把手浸入約 4 °C 冰水的冷加壓試驗，論文自己定義為「疼痛刺激」，量的是手指、耳垂與臉部脈波形狀對疼痛引起的交感神經反應，依變項是波形特徵與血壓，不是穿戴裝置的心率準確度；量測部位也不含手腕。依工作單「依變項全是疼痛或臨床指標、沒有直接量到題目所問現象的論文不收」的規定，讀到方法即停止，不寫卡、不引用任何數字、不計條數。"
+    },
+    {
+      "id": "T85-NA003",
+      "question": "選題初篩時一併下載、但沒有讀也沒有用的四篇論文是哪些？",
+      "existing_ids": [],
+      "reentry_condition": "日後若要補強「錶帶鬆緊」或「光的顏色與溫度」兩段，可從這四篇讀起，但須重新做合著審計：其中一篇與 T85-S009 同一研究群（併網後該網仍在封頂 2.00 條以內），一篇與本題未採用的倫敦一所大學研究群有關。",
+      "reading_status": "四篇都只下載了完整 JATS XML（F171 seq=10、21、24、26），抽出題名、作者與單位後未閱讀正文；不計入任何條數",
+      "reason": "（1）PMC12300268（巴勒摩大學等，2025，接觸壓力與活動量對光學感測的影響）：與 T85-S009 同一研究群的後續研究，為了把閱讀量留給互不合著的研究網而未讀。（2）PMC5981460（荷蘭恩荷芬一所理工大學，2018，遠距脈波訊號來源）：非接觸攝影量測，與手腕穿戴距離較遠，且作者之一任職於企業附設研究部門。（3）PMC8233784（日本九州一所工業大學等，2021，藍光與綠光在兩種溫度下的心跳間期）：原擬作為溫度段的補充，後因 T85-011 的氣候艙實驗已直接回答而未讀。（4）PMC6338034（英國倫敦一所大學，2019，冷刺激下的交感神經活性評估）：與 T85-NA002 同屬冰水冷加壓試驗、主題是神經活性量化，未讀。四篇的任何內容都沒有進入卡片或題案。"
+    },
+    {
+      "id": "T85-NA004",
+      "question": "已採用的 17 篇裡，有哪些讀到了卻刻意不用的內容？",
+      "existing_ids": [],
+      "reentry_condition": "熱量估計若日後要成題，須另找以間接熱量測定為標準、且不涉及減重或健康建議的實測來源；心率變異與心律不整偵測屬醫療判讀，本系列不做。",
+      "reading_status": "相關段落均已讀完（T85-S001 的能量消耗結果、T85-S002 與 T85-S010 的心率變異分析、F171-S003 的醫療責任討論、T85-S012 與 T85-S015、T85-S016 的配戴與選購建議、T85-S013 與 T85-S014 的族群公平討論）",
+      "reason": "（1）T85-S001 量了七款裝置的熱量估計（全部誤差超過兩成），但那是由身高體重與活動推算的二次估計，容易被聽成減重或健康建議，且偏離「光學感測為何不準」的主線，不寫卡。（2）心率變異、心律不整偵測、血氧、血壓估計等延伸用途，各篇導言與討論都有提到，一律不引用（醫療判讀）。（3）「戶外請改用胸帶」「請戴在上臂」「選哪一款」等建議句不引用，正稿只描述實驗結果。（4）膚色與刺青兩篇關於研究納入標準與族群公平的討論不引用，只用量測結果。（5）各篇出現的商用品牌、型號、應用程式與零件廠牌全部以泛稱取代。"
+    },
+    {
+      "id": "T85-NA005",
+      "question": "為什麼「研究者背著心電圖過 24 小時、慣用手那支錶家務時差 13.70%、跑步只差 3.01%」那張卡（原 F171-003，PMC6431828）覆核後不收？",
+      "existing_ids": [],
+      "reentry_condition": "若日後有多人、兩支裝置取樣間隔相同（或左右手交換）的日常 24 小時實測，能把「家務的零碎動作」與「取樣稀疏」分開，再評；本篇本身不再以 1.00 或 0.50 回收。",
+      "reading_status": "作者快取（F171 seq=23，121,009 位元組，sha256 前 16 碼 758e2b6b74705ab5）與覆核 Europe PMC 重抓（V191 seq=7）內容相同，全文讀完（Methods、Results Table 1–2、Discussion）。",
+      "reason": "覆核 V191（2026-11-14）：只有一位受試者（第一作者本人）；卡片的亮點「家務 13.70% 對跑步 3.01%」來自戴在慣用手、走跑以外約每 10 分鐘才取樣一次的那一款（全日只有 394 筆對心電圖 1,424 筆），作者自己在 Discussion 指出取樣差異可能是原因；取樣接近每分鐘一筆的另一款方向相反（跑步 9.88%、走路 9.21% 高於家務 8.29%）。亮點的對比被自己的資料削弱，又無法分開裝置、手別與取樣，因此整張不計（0），不進題案。"
+    }
+  ]
+}

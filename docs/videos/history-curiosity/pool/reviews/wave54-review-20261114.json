@@ -1,0 +1,470 @@
+{
+  "batch": "batches/wave54-20261114.json",
+  "reviewed_on": "2026-11-14",
+  "method": "四位沒有參與研究的獨立覆核代理（R541–R544 依序覆核 ZJ1–ZJ4）逐題至少重新請求一個關鍵一手／機構來源、對照研究代理的請求紀錄逐筆核對網址出處與快取雜湊、grep 全池與跨系列核心去重、對照系列不收清單與 1956 真人規範及 8 分鐘門檻；修改直接寫進批次的題目與來源欄位，覆核補讀的來源編入該研究代理的來源序號，沒被引用的來源移除。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 19,
+    "NEEDS_CHECK": 1
+  },
+  "source_renames": {
+    "R541-S001": "ZJ1-S021",
+    "R541-S002": "ZJ1-S022",
+    "R541-S003": "ZJ1-S023",
+    "R541-S004": "ZJ1-S024",
+    "R541-S005": "ZJ1-S025",
+    "R541-S006": "ZJ1-S026",
+    "R542-S001": "ZJ2-S023",
+    "R542-S002": "ZJ2-S024",
+    "R542-S003": "ZJ2-S025",
+    "R542-S004": "ZJ2-S026",
+    "R542-S005": "ZJ2-S027",
+    "R542-S006": "ZJ2-S028",
+    "R542-S007": "ZJ2-S029",
+    "R542-S008": "ZJ2-S030",
+    "R542-S009": "ZJ2-S031",
+    "R542-S010": "ZJ2-S032",
+    "R542-S011": "ZJ2-S033",
+    "R543-S001": "ZJ3-S020",
+    "R543-S002": "ZJ3-S021",
+    "R543-S003": "ZJ3-S022",
+    "R543-S004": "ZJ3-S023",
+    "R543-S005": "ZJ3-S024",
+    "R543-S006": "ZJ3-S025",
+    "R543-S007": "ZJ3-S026",
+    "R543-S008": "ZJ3-S027",
+    "R543-S009": "ZJ3-S028",
+    "R543-S010": "ZJ3-S029",
+    "R543-S011": "ZJ3-S030",
+    "R544-S001": "ZJ4-S024",
+    "R544-S002": "ZJ4-S025",
+    "R544-S003": "ZJ4-S026",
+    "R544-S004": "ZJ4-S027",
+    "R544-S005": "ZJ4-S028",
+    "R544-S006": "ZJ4-S029",
+    "R544-S007": "ZJ4-S030"
+  },
+  "verdicts": [
+    {
+      "id": "N6001",
+      "agent": "ZJ1",
+      "reviewer": "R541",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZJ1-S001 https://archive.org/details/bim_eighteenth-century_the-history-of-whitby-a_charlton-lionel_1779 與 ZJ1-S002 https://archive.org/details/historyofwhitbys02youn、ZJ1-S003 DNB vol. 9（R541 先 GET /metadata，再下載逐頁文字檔 _hocr_searchtext.txt.gz、_hocr_pageindex.json.gz、_page_numbers.json，seq 1–9、59、61、66）；新讀 ZJ1-S022《Gentleman’s Magazine》1745 年 9 月號（seq 78 搜尋、81–82）與 ZJ1-S023《Tristram Shandy》vol. III 1761（seq 79、83–84）",
+      "reopen_result": "Charlton：木桶、賄賂、死罪、『the only thing of the kind then known in Europe』、詛咒英譯、『Vide the Ledger Book of the church of Rochester, now in the custody of the Dean and Chapter there』、Darcy 約 1600、Sands-End 約 1615 都在；頁碼是 pp. 305–307（頁眉 303、308 可辨），原稿『至 p. 309』是把 p. 307 頁眉的 OCR 誤讀當真；『is said to have been in words to the following effect』句尾在文字檔裡讀不出來，只留讀得到的部分。Young pp. 806–810 各項（Bourchier 1609、Aubrey『Germanie』、Russel、Belman Bank、1595／1608、『an assertion for which I can find no evidence』、Textus Roffensis、Ernulphus 卒 1124、Gent. Mag. 1745 p. 490、拉丁文『N.』與雙字尾、Latimer 註）都在；原稿漏了 p. 826 的註——Young 自己記下傳記辭典說工人是從 Rochelle 請來的 Walloon 人，『does not accord with the story of stealing these workmen』——也漏了他寫卒年是『1613 (or, according to some accounts, 1615)』、生年 1559。DNB p. 459 逐句相符（Puteoli、Rochelle、Yorkshire tradition、£12,500、800 工人、卒 1615-11-17）。原稿只經轉述的兩件原文都讀到了：Gent. Mag. 1745 p. 490 的標題是『The Pope’s dreadful curse: being the form of excommunication of the church of Rome. Taken out of the leger-book of the church of Rochester, now in the custody of the dean and chapter there. Writ by Ernulphus the bishop』，開頭與 Charlton 所印相同，名字處是『him or them, malefactor or malefactors』，全篇不提明礬；Tristram Shandy 第三卷用同樣的說明並印出拉丁原文。也就是說 Charlton 的文末出處與『dreadful curse』是 1745 年雜誌的字句。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：以 python 讀 pool.json（candidates 1,872、not_added 2,941）、legacy/w-axis.json、原來如此 QUESTIONS.md 查核心關鍵字均無此案；ZJ2、ZJ3、ZJ4 的 proposal.json 無重疊。（Tristram 只命中 N5845、開除教籍命中 N2644／N4804／N5143，皆不同案。）一手文本四份（1745 雜誌、1761 小說、1779 與 1817 兩部地方史）加 DNB，轉折三個（出處註→1745 年已刊且不提明礬→1817 年抄回的拉丁文名字欄是『N.』；外加工人來自 Rochelle 的矛盾），撐得起 9–11 分鐘。教廷題材：寫法只講這份文字的來歷，不朗讀全文、不點名教宗、不引 Young 的貶語；Young 並不否認有開除教籍，scope 已寫明。改掉頁碼、『腳趾甲』、hook／payoff 裡沒有出處的『兩百年來被當成工業間諜第一案的鐵證』『兩百年沒人去翻』後收。"
+    },
+    {
+      "id": "N6002",
+      "agent": "ZJ1",
+      "reviewer": "R541",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZJ1-S004 https://archive.org/details/daszeitalterderf01unse（R541 GET /metadata 後下載逐頁文字檔與頁碼檔，seq 10–12、60）；ZJ1-S005／S006 EB1911 vol. 11、vol. 5（seq 34–39、56、58）；新讀 ZJ1-S026 ADB Bd. 8（seq 80 搜尋、85–86）",
+      "reopen_result": "Ehrenberg：信文與背景在 S. 111–112（下一頁頁眉『— 113 —』），傳說一節在 S. 168–170，頁碼成立。415,000 fl.、152,000 杜卡特連利息共 198,121、Lucas Rem 18,310 fl. 賠五成、『Es ist auch bekannt und liegt am Tage…』、法國開價、1523-04-24 Valladolid、『Wir wissen nicht, wie Karl dieses kühne Schreiben aufnahm』、1530 年尚欠 112,200 fl.、『ganz bestimmt nicht und wahrscheinlich überhaupt nicht passirt』、Centurione／Daem／Dozzi、Journal des Savans 1685、Dr. Holtzapfel 筆記『zerrissen oder verbrannt』、Theatercoup 逐項都在。對不上的：（1）原稿說『這個慷慨的故事最早寫下來時，是家道中落的後人用來討債的』——寫筆記的是 Fugger 財團在西班牙的管理人，不是後人；Ehrenberg 也沒有說筆記是最早的文字（他說安到 Anton 身上最早見於 1685 年期刊）；（2）Ehrenberg 只引信的前半，引文裡沒有催款句，原稿反轉裡加了引號的『你的皇冠是我買的，請還錢』不是信上的話；（3）hook 的『皇帝親筆簽的借據』『丟進壁爐』『名畫』EB1911 沒有——它寫的是『lighting a fire of cinnamon with an imperial bond』、『the subject of a picture』。EB1911 p. 287–288、p. 899 相符。卒年：EB1911 是家族條；R541 補 ADB Bd. 8 S. 180–182『Er starb 1525』『Er starb 1560』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：以 python 讀 pool.json（candidates 1,872、not_added 2,941）、legacy/w-axis.json、原來如此 QUESTIONS.md 查核心關鍵字均無此案；ZJ2、ZJ3、ZJ4 的 proposal.json 無重疊。傳說（EB1911）對 1896 年的檔案考辨與 1523 年信，轉折三個（查無此夜→同一故事掛在三個富商名下→檔案裡的版本是討債筆記→真正的信），撐得起 9–11 分鐘（原稿 9–12 略寬）。改掉上述三處過度推論後收。仍缺信的原件（Greiff 1868），旁白要說『依 1896 年的轉寫』且不替信補催款原話。"
+    },
+    {
+      "id": "N6003",
+      "agent": "ZJ1",
+      "reviewer": "R541",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "新讀 ZJ1-S021 降獎公告全文 https://llds.ling-phil.ox.ac.uk/llds/xmlui/handle/20.500.14106/A73944?show=full（WebSearch 取得網址，curl GET 典藏頁 seq 69、HTML 全文 seq 70）；重開 ZJ1-S007 Kempe、ZJ1-S008 Ashton 逐頁文字檔（seq 13–18、64、67）；重新請求 ZJ1-S009 Surrey History Centre 頁面（seq 87，68,622 bytes，與 ZJ1 快取大小相同）",
+      "reopen_result": "研究代理沒讀到的公告本文讀到了：1569 年 1 月 9 日（紙上寫 1568，舊曆）Hampton Court，『the very certayne summe of Money Collected… is a Twelfth parte of the whole masse… and no more』，頭獎『Foure Hundred and Sixtene Pounds, Thirtene shillings and Foure pence, which is the iust Twelfth part of Fiue Thousand pounds』——『十二分之一』成立，而且是官方自己說的。但公告還有一句原稿不知道的：『euery person hauyng aduentured any one Lotte of the value of Tenne Shillings, shall be admitted to Twelue aduentures or hazardes』——每張籤抽十二次。所以原稿反轉『十先令買一籤、多數人領回一先令出頭』是錯的，已改。Kempe：五英尺告示、40 萬籤、頭獎 £5,000、第十二獎 £200、免逮捕七天、市長公告 9 月 13 日、樞密院信 1568-07-12、『not one parishe escape』、『prov’ked』、xx surveyors、1568–9 年 1 月 11 日至 5 月 6 日、poor maydens 1s. 2d.、二十個孩子 2s. 3d.、Video et taceo 1s. 3d.、『The twelfth great prise… 16l. 13s. 3d.』都在（頁碼以頁眉為準）。Ashton p. 10『made a jest of』、p. 22 Winchester／Wells、p. 24 Holinshed 相符。Surrey 頁面引句逐句相符。hook 的『兩年後真的開獎了』不對（1567 年 8 月告示、1569 年 1 月開讀），改『一年多後』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：以 python 讀 pool.json（candidates 1,872、not_added 2,941）、legacy/w-axis.json、原來如此 QUESTIONS.md 查核心關鍵字均無此案；ZJ2、ZJ3、ZJ4 的 proposal.json 無重疊。（彩票只有西班牙耶誕彩票、路易斯安那彩票兩筆 not_added。）與同批 N6005 不同型：一是官方文書交代獎為何縮成十二分之一，一是發財軼事在幾本書裡怎麼變；國別、世紀、機制都不同，兩題都收、排片錯開。告示、市長公告、樞密院信、督辦信、降獎公告、開獎冊六份當時文件加機構頁面，轉折夠（賣不動→逐堂區催繳→公告承認十二分之一並改成抽十二次→開獎冊對得上→免逮捕成笑話），9–12 分鐘成立。"
+    },
+    {
+      "id": "N6004",
+      "agent": "ZJ1",
+      "reviewer": "R541",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZJ1-S011 https://archive.org/details/historyofpostoff00joycuoft（R541 GET /metadata 後下載逐頁文字檔，seq 19–21、65），pp. 36–42 逐頁通讀；ZJ1-S012／S013 DNB vol. 15、39（seq 22–27、62–63）；新讀 ZJ1-S024 London Museum 頁面（WebSearch 取得網址，curl GET seq 71）",
+      "reopen_result": "Joyce pp. 36–42 的營運細節全部相符（1680-04-01、七區、四五百收信處、每小時、十到十二次、一磅／十鎊、賠十鎊、戳記『introduction of postmarks』、316 人、『no sooner had the balance turned』、Michaelmas term 1682、年金 £500、總管 £200、兩條指控、『has only now recovered a post』），p. 121 半便士郵遞、p. 188 四盎司也在。對不上的：（1）『預付』——這幾頁沒有一個字講郵資預付，原稿 question／answer_target／payoff／scope 都寫了，全刪；（2）Joyce p. 37 明寫約克公爵開辦前就『determined opposition』，原稿只引 p. 40『賠錢時 unmolested』，兩句要並陳；（3）hook『一早醒來』『王弟的律師就上門了』來源沒有；（4）visual 的『三角形』戳記沒有出處（Joyce 的戳記圖在文字檔讀不到）；（5）Dockwra 稱『發明它的人』與 Joyce『點子據說出自 Murray』相牴。DNB 兩條相符（d. 1702?、『In 1683』、slight damages and costs、1700-06-04、1635–1725?、9 Dec. 1681、1690 adjudged）。『1840 年才有』的流傳出處：London Museum 頁面導言『Introduced in 1840, the Penny Post transformed the postal system』、關鍵年份只列 1840，但同頁另有一節交代 1680 年的 Dockwra。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：以 python 讀 pool.json（candidates 1,872、not_added 2,941）、legacy/w-axis.json、原來如此 QUESTIONS.md 查核心關鍵字均無此案；ZJ2、ZJ3、ZJ4 的 proposal.json 無重疊。池內 S54（1840 年郵票晚四個月）主題不同。研究代理坦承『1840 年才有』沒有出處：R541 找到一個機構頁面可當『通行講法從 1840 年講起』的樣本，但它自己也講了 1680 年，所以這不是一個被推翻的錯誤說法，只能當開場對比；翻轉主力改放在『賠錢沒人動、轉盈就被判給王弟』與『被請回去、再被下屬告倒』。素材（營運細節、官司、復職與免職、半便士郵遞、1765 年法）夠一集，但沒有原稿寫的 10–12 分鐘那麼厚，改 9–11。只講 1680–1765 年，不評今天的郵政機構；兩位主角卒年帶問號，DNB 的說法並陳、旁白不念卒年。主幹是一部同情 Dockwra 的通史加兩條 DNB，沒有當年的說明單或法院紀錄，這一點留在 notes。"
+    },
+    {
+      "id": "N6005",
+      "agent": "ZJ1",
+      "reviewer": "R541",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "新讀 ZJ1-S025 Duvernet《La vie de Voltaire》（Genève 1786）https://archive.org/details/laviedevoltaire00duveuoft（seq 73 搜尋、74–75）；重開 ZJ1-S016 Barbier t. 2 與 ZJ1-S017 Desnoiresterres t. 1 逐頁文字檔（seq 28–33、52、68）並對全卷檢索；ZJ1-S015 以 ZJ1 快取逐字核對；Gallica 登記簿 https://gallica.bnf.fr/ark:/12148/btv1b86209147（網址取自 ZJ1-S020 頁面）curl GET 一次即 403 機器驗證頁（seq 72），停手",
+      "reopen_result": "原稿的翻轉『數學家、晚餐、五十萬是事後五十年到一百年才出現在紙上的』撐不住：1786 年（伏爾泰死後八年）Duvernet 已寫『Ce fut d’après un calcul que Voltaire fit en soupant chez madame du Fay avec la Condamine, qu’il emporta cette loterie』、conseil 判他勝並『blâma le contrôleur-général de n’avoir pas prévu le calcul』、躲到 Plombières、『L’administration des finances fut ôtée à M. Desfort』。但這本書寫的是伏爾泰做的計算；Desnoiresterres 1871 p. 410 引它，卻寫成『La Condamine, l’un des convives, fit cette observation』——主詞換了，原稿沒有發現。Barbier：p. 53、pp. 92–93 相符；原稿說這幾頁『沒有提伏爾泰』，但 pp. 96–97 Barbier 抄了一首刺向總監的詩並寫『C’est Arouet, fameux poëte… il en vouloit personnellement à M. le contrôleur-général Le Pelletier des Forts, qui, justement, a été chassé du ministère』；p. 103 又記掌璽大臣藉股票案把他換掉。全卷檢索 loterie 只有 p. 53 一處。Commentaire p. 9 引文相符，但『ce fut le commencement de sa fortune』後面接的是『Car』——認購的錢放進了彩票，原稿把它寫成兩件對立的事。『他晚年授意的小傳』『當事人自己說』沒有出處，改成『他在世時出版的小傳』。EB1911 兩條、部落格樣本相符。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：以 python 讀 pool.json（candidates 1,872、not_added 2,941）、legacy/w-axis.json、原來如此 QUESTIONS.md 查核心關鍵字均無此案；ZJ2、ZJ3、ZJ4 的 proposal.json 無重疊。（池內伏爾泰各題皆不同案。）與 N6003 不同型，可都收。翻轉經收窄後仍成立且比原稿準：1776 年『讀裁決』→1786 年『伏爾泰算的』→1871 年『La Condamine 的觀察』→今天『數學家看出漏洞』；一百萬是假設數、五十萬無佐證；總監去職在當時日記裡是股票案與掌璽大臣。五份文字、三個轉折，9–11 分鐘成立。保留意見：Gallica 登記簿與 2005 年現代傳記沒有讀到（403 即停），本集寫成『不採也不否定』，片名與封面不得下『沒靠彩票發財』『細節是後人編的』之類結論；Duvernet 引文與頁碼要對掃描頁。站主若要求先補齊登記簿再做，這題應降為 HOLD——R541 判斷以現有五份文字、照改後的 scope 寫已站得住，故給 ADOPT_WITH_CHANGES 而非 HOLD。"
+    },
+    {
+      "id": "N6021",
+      "agent": "ZJ2",
+      "reviewer": "R542",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "（1）維基文庫《舊唐書》《新唐書》《資治通鑑》目錄頁 https://zh.wikisource.org/wiki/舊唐書 等三頁（curl GET，R542 seq 1–3），確認 ZJ2-S001～S005 的卷頁網址是目錄所連；（2）ZJ2-S024 北京大學學報 2011 年論文 PDF https://ccj.pku.edu.cn/Article/DownLoad?id=271011458&type=ArticleFile（WebSearch 取得網址，curl GET，seq 60，逐頁轉影像閱讀頁 114–120、125–126），它並列三書的中華書局點校本原文；（3）漢典古籍《新唐書》本紀第二、方技傳（自卷頁的【目录】連結進入，seq 68、70、73）。",
+      "reopen_result": "引句對得上：《舊唐書》本傳『何物女子，如此勇猛』『與妖人員道信潛相謀結，將為不軌』『天授二年……以禮改葬』、《新唐書》『乃此健邪』『武后亦欲自詫』與贊語『蔽於謠讖，濫君羨之誅……引以自神』、《通鑑》『壬辰，君羨坐誅，籍沒其家』，論文所引點校本都有。對不上的：（a）維基文庫《舊唐書》的『女三昌』是錯字，點校本作『女主昌』；（b）原稿說『三部史書連哪一年都說不一樣』不成立——《新唐書》太宗本紀寫『七月甲申，太白晝見。壬辰，殺華州刺史李君羨』，與《通鑑》同一天，不清楚的只是兩《唐書》本傳（把星象謠言放在『貞觀初』、不寫死期）；（c）題目把罪名寫成『與妖人謀不軌』加了引號，三書都沒有這六個字；（d）《新唐書》方技傳的李淳風問答作『四十年』、讖文作『唐中弱，有女武代王』，原稿沒讀到；（e）『最早加上她也想誇耀一句的是宋人』超出所讀範圍，改成『本輪讀到的書裡只有《新唐書》』。李淳風問答與《舊唐書》史臣曰沒有對到第二個版本，改成轉述。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 的 candidates（1,872）與 not_added（2,941）用 python 檢索、grep legacy/w-axis.json 與原來如此 QUESTIONS.md、同批 ZJ1／ZJ3／ZJ4 的 proposal.json（三份覆核時都已產出），查李君羨、五娘、女主、李淳風、武則天、武后、讖，均無同案；最接近的 N2702（亡秦者胡）與 N1441 核心不同。與本批 N6022 同屬『當權者因讖語動了人、故事由受益的一方事後寫定』的類型，但本題的答案是『罪名另有其事、冤殺敘事在武周時寫定、平反者即受益者』，N6022 是『同一塊木頭在兩部史書裡長得不一樣』，證據與轉折都不同，判為可並收、排片不相鄰；若只留一題，留本題（有現代研究、引句對過點校本）。四個轉折加一篇論文的推論，撐得起 9–11 分鐘。不涉今日爭議；論文作者在世，片中不點名。"
+    },
+    {
+      "id": "N6022",
+      "agent": "ZJ2",
+      "reviewer": "R542",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "維基文庫《舊五代史》目錄頁請求回 429（R542 seq 4），照規定停，zh.wikisource.org 本輪不再請求；改以站外重開：ZJ2-S025 殆知閣《舊五代史》卷 119 https://daizhige.org/史藏/正史/旧五代史/卷119.html（WebSearch 取得，curl GET，seq 61）、ZJ2-S026 漢典古籍《長編》卷一 https://gj.zdic.net/shibu/70/1551.html（seq 59）、ZJ2-S027 Project Gutenberg《宋史》#24183（站內搜尋→書目頁→純文字檔，seq 9、16、19）。",
+      "reopen_result": "頁面上確實有：殆知閣本『一日，忽於地中得一木，長二三尺，如人之揭物者，其上卦全題云「點檢做」，觀者莫測何物也。至是，今上始受點檢之命，明年春，果自此職以副人望，則「點檢做」之言乃神符也』，與維基文庫相同；漢典本《長編》『時都下讙言，將以出軍之日策點檢為天子，士民恐怖……惟內庭晏然不知』等四條相同（爲／為之別）；Gutenberg 本《宋史》『得韋囊，中有木三尺餘，題雲「點檢作天子」，異之』（脫『永』字）、張永德傳『解兵柄』『每呼駙馬不名』『睢陽書生嘗言太祖受命之兆』都在。對不上的：hook『皇帝也沒有看到』——《舊五代史》只是沒說世宗看過，改成『也沒有說皇帝看過它』；『最早的紀錄』『最早的版本』超出所讀範圍，改成『本輪讀到的最早一部書』；《通鑑》的任命引句沒有第二個版本，改成轉述；小標『點檢做天子』不是任何來源的原文，拿掉引號。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 的 candidates（1,872）與 not_added（2,941）用 python 檢索、grep legacy/w-axis.json 與原來如此 QUESTIONS.md、同批 ZJ1／ZJ3／ZJ4 的 proposal.json（三份覆核時都已產出），查點檢、陳橋、趙匡胤、周世宗、張永德、黃袍，均無命中。與 N6021 的同型判斷見 N6021；本題是兩題中較弱的一題（沒有現代研究來源、《舊五代史》是清人輯本、三部書的維基文庫目錄頁因 429 沒能重現），但核心答案不同、實物兩個版本的對照很適合畫面，判收。四個轉折，9–11 分鐘可行。必須停在『成書越晚寫得越完整、最早一部由受益方寫成』，不能講成趙匡胤自導自演。"
+    },
+    {
+      "id": "N6023",
+      "agent": "ZJ2",
+      "reviewer": "R542",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZJ2-S011 https://archive.org/metadata/wheatproblembase00croorich → _page_numbers.json → metadata 所列的掃描 PDF（curl GET，R542 seq 26–28，11,447,946 bytes），把印刷頁 33、47、48 轉成影像閱讀；ZJ2-S012、S013 重取 metadata 與 page_numbers.json（seq 29–33）核頁碼，內文用研究代理快取的 _djvu.txt 逐段重讀；另補 ZJ2-S023 DNB 1912–1921（advancedsearch→metadata→_djvu.txt，seq 34–36）。",
+      "reopen_result": "掃描頁上確實印著：p. 33『till the year 1931』與腳註『in the year 1931 the bread-eaters will require 3,357,000,000 bushels. Thus there will be in 1931 a deficiency of 17,000,000 bushels, unless the average yield per acre be increased』；p. 47『£26』『not more than £5 per ton』；p. 48『electric nitrate at £5 a ton compares favourably with Chili nitrate at £7, 10s. a ton』——OCR 黏連的價格讀對了。序言『warning rather than of a prophecy』『stone me as a false prophet』、p. 3、p. 34、p. 40 腳註、傳記 p. 406 都在。對不上的三處：（a）1917 年版 p. 62『fulfilled perhaps sooner than was expected in 1898』的主詞是奧匈帝國，不是原稿說的美國；美國那一項（p. 60）是出口將停止的擔憂『seems likely to be realised』；（b）7 月 9 日信的『Do I bore you?』是問朋友自己一再寄稿煩不煩，原稿讀成『擔心小麥讓人無聊』；『my mathematical son』譯成『學數學的兒子』也不確；（c）尼加拉估價用的是另一位物理學家為分離氬氣做的放電實驗數字，不是 Crookes 自己的實驗。p. 367 那封信的日期在前一頁，是 1899 年 3 月 1 日。DNB 條目：『He died in London 4 April 1919』。",
+      "changed_fields": [
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 的 candidates（1,872）與 not_added（2,941）用 python 檢索、grep legacy/w-axis.json 與原來如此 QUESTIONS.md、同批 ZJ1／ZJ3／ZJ4 的 proposal.json（三份覆核時都已產出），Crookes 只有 N426 等靈媒題，小麥、wheat、氮、硝石、1931 無同案；N3162、N3165（科學家的錯誤預測）核心不同。一手書兩版加傳記書信，四個轉折，撐得起 9–12 分鐘。文稿沒有替他宣布準或不準（scope 與結語都寫明沒讀 1931 年統計），沒有碰今天的糧食或肥料政策；1917 年版點名的化工廠今天仍在營運，已寫明片中不點名。唯一點名人物的卒年有 DNB 一人一條確證。visual 拿掉『尖尖翹鬍子輪廓』（等於畫出可辨識的本人特徵）。"
+    },
+    {
+      "id": "N6024",
+      "agent": "ZJ2",
+      "reviewer": "R542",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "維基文庫已 429，改以 ZJ2-S028 Project Gutenberg《漢書》#23841（站內搜尋→書目頁→純文字檔，R542 seq 6、14、17，2,740,709 bytes）重讀眭弘傳、五行志兩條、宣帝紀；第二部書 ZJ2-S030《資治通鑑》卷二十三（WebSearch 取得的 OrientSmile 錄文，curl GET，seq 64）。",
+      "reopen_result": "Gutenberg 本確實有：『有蟲食樹葉成文字，曰「公孫病已立」』『孟意亦不知其所在』『求索賢人，禪以帝位，而退自封百里』『大將軍霍光秉政，惡之，下其書廷尉。奏賜、孟妄設襖言惑眾，大逆不道，皆伏誅。後五年，孝宣帝興於民間，即位，征孟子為郎』、霍光奏議『孝武皇帝曾孫病已……至今年十八』、『其更諱詢』、『號曰皇曾孫』『長安獄中有天子氣』『每買餅，所從買家輒大讎』，與維基文庫只有異體字之別。對不上的：題目的『妖言惑眾』加了引號但不是原文（原文『妄設祅言惑眾，大逆不道』）；五行志末句維基文庫作『帝本名病已』、Gutenberg 本作『宣帝本名病已』，改成只取『本名病已』；hook 的『一夜之間』『親手完成』、結語的『唯一公開解讀』來源都沒有，已改；ZJ2-S015 組出的網址『漢書/卷027中之下』其實被站上重新導向到『漢書/卷027』，已改成正式卷頁。《通鑑》把整件事縮成一條、結尾『弘坐設妖言惑眾伏誅』，沒有『不知其所在』也沒提霍光。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 的 candidates（1,872）與 not_added（2,941）用 python 檢索、grep legacy/w-axis.json 與原來如此 QUESTIONS.md、同批 ZJ1／ZJ3／ZJ4 的 proposal.json（三份覆核時都已產出），查病已、眭弘、公孫、宣帝、霍光，無同案；N2702 的答案裡帶到光武帝『圖讖言公孫，即宣帝也』一句，不是同一個核心。研究代理自己說最薄，我的判斷是撐得起但只到 8–9 分鐘（原寫 8–10，已下修）：異象與誤讀、上書與伏誅、霍光立病已與徵其子、獄中嬰兒到改名、《漢書》怎麼替他鋪陳徵兆，五個段落各一分半左右。第二部書補到了《資治通鑑》，但它取材自《漢書》，不是獨立見證，已寫明『這個故事只有一個源頭』；荀悅《漢紀》沒讀到。若池內 P 軸中國讖語題過多，三題裡優先擱置這一題。",
+      "coordinator_note": "覆核判可收（8–9 分鐘）；協調者改列待查：補到的第二部書《資治通鑑》取材自同一部《漢書》，全案只有一個源頭，且本批已收 N6021、N6022 兩題同類型的讖語題。重新收錄條件：找到獨立於《漢書》的見證或現代研究。"
+    },
+    {
+      "id": "N6025",
+      "agent": "ZJ2",
+      "reviewer": "R542",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "（1）維基文庫《新唐書》《舊唐書》目錄頁（R542 seq 1、2）確認 ZJ2-S017～S020、S022 的卷頁網址；（2）ZJ2-S033 漢典古籍《新唐書》志第十七下（自卷頁【目录】連結進入，seq 67–69）重讀〈日蝕議〉全篇；（3）ZJ2-S029 NASA 日食目錄 https://eclipse.gsfc.nasa.gov/SEcat5/SE0701-0800.html 與該頁兩列所連的全球圖（WebSearch 取得網址，curl GET，seq 40–42）；（4）ZJ2-S027 Gutenberg《宋史》司馬光傳。",
+      "reopen_result": "〈日蝕議〉引句在漢典本逐字相同（『於曆當蝕半強，自交趾至于朔方，候之不蝕』『於曆當蝕太半……日亦不蝕』『雖算術乖舛，不宜如此，然後知德之動天，不俟終日矣』『若因開元二蝕，曲變交限而從之，則差者益多』『使日蝕皆不可以常數求……』）；司馬光傳『故事食不滿分，或京師不見，皆表賀……不當賀。從之』在 Gutenberg 本相同。新查到的：NASA 目錄 0724 Jul 25 與 0726 Jan 08 各有一次日環食（最大食分別在北緯 66 度西經 142 度、北緯 18 度東經 37 度），我用儒略日換算，這兩天正是戊午與庚戌，並以 725 年 1 月 19 日＝丙辰（史書有記的閏十二月丙辰朔日食）驗算無誤——所以原稿的『太陽好好的』『預報落空』要改成『算到了交會、中原沒看到』。對不上的：『它承認算術乖舛』『在曆官自己的檢討裡叫算術乖舛』——原文是讓步句『雖算術乖舛，不宜如此』，已改；『派人守候』的『派人』來源沒有；『看不到就慶賀後來成了慣例，到了北宋才有人說不該賀』——《宋史》只說宋代有此『故事』、司馬光反對，看不出與唐代的承襲，也不能說『才有人』，已改。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 的 candidates（1,872）與 not_added（2,941）用 python 檢索、grep legacy/w-axis.json 與原來如此 QUESTIONS.md、同批 ZJ1／ZJ3／ZJ4 的 proposal.json（三份覆核時都已產出），查一行、大衍、日食、日蝕、不蝕、司馬光、開元、預報；N1661、N1581、N1781、N3321、N3322 都是別的日食案，核心不同。補上現代日食目錄後多一個轉折（那兩天真的有日環食），五個轉折撐得起 9–11 分鐘（原寫 8–11）。文稿沒有、也不能下『中國完全看不到』的結論——地方見食沒有算，已在 scope、risk 與來源 limitations 寫明。一行是僧人，只講曆算。"
+    },
+    {
+      "id": "N6041",
+      "agent": "ZJ3",
+      "reviewer": "R543",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZJ3-S002 https://archive.org/download/jstor-1411405/1411405_djvu.txt（curl GET，R543 seq 1，63,298 bytes，與 ZJ3 快取雜湊相同），逐句重讀 pp. 8–12；ZJ3-S001 的 PDF 文字以 ZJ3 快取全文重讀；另補讀 DNB vol. XXXVI『Maskelyne』（R543 seq 11–12）、EB1911 vol. 3『Bessel』（seq 20–21）、Holden 1881（seq 17）",
+      "reopen_result": "Sanford pp. 8–9 的 Maskelyne 引文、1816 年、Bessel 1820–21 年四組數字（1.145、0.985、1.010、1.025，平均 1.041）、『不可能改變哪怕十分之一秒』、1823 年 1.223 都在。Nature 短文裡 63 歲／24 歲、800 毫秒、1794 年 5 月到任、1794 年 10 月斷絲、1795 年 1 月斷鉛垂線、1795 年 11 月彗星信、12 月 17 日與 1796 年 1 月 10 日兩信、『Within a fortnight he was dismissed』、269／353／461 毫秒、『The pretext for his dismissal was sound』、1801–02 年計算員、1802 年 5 月卒於 Norwich 都在。對不上的：（1）hook 寫『上司替他安排的一場相親』、payoff 寫『他推掉的相親』，信裡是上司『極力勸他去見』，『兩位博士有個計畫』是他自己的猜測，兩位作者只並列、未言因果；（2）『被辭退前一年多數都是整秒』，原文是到任第一個秋天已湊整、『一年後、辭退前夕』多數湊整；（3）Maskelyne 引文的『今年』『去年 8 月』照文意是 1795 年，原稿沒交代；（4）『在老練的天文學家之間原來是常態』來源沒有，Sanford pp. 11–12 寫的是經間接比較與 Dorpat 的天文學家差 0.799／1.021 秒、而 1814 年直接比較只差 0.044 秒；（5）answer_target 點名了信裡的太太與『Bradley』，都沒有傳記來源。",
+      "changed_fields": [
+        "answer_target",
+        "editorial",
+        "hook",
+        "notes",
+        "question",
+        "risk",
+        "scope",
+        "source_ids",
+        "source_locator"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json candidates／not_added 只有 wave53 ZI2 一筆『沒讀來源』的 not_added（Kinnebrook／人差），legacy/w-axis.json、原來如此 QUESTIONS.md、ZJ1／ZJ2／ZJ4 提案都沒有同案（Maskelyne 另見 N5545 秤地球，別案）。不在不收清單。四個轉折（家書、尾數統計、事後又雇他、Bessel 自己差一秒且會變）撐得起 8–10 分鐘。改掉因果語氣與上述五點後收。仍有兩個缺口照實寫進 scope／risk：Maskelyne 原話只經 1888 年轉引、家書只經 1996 年短文轉引（Greenwich Observations 第三卷與 RGO 35 都沒讀到；劍橋檔案檢索頁回 403，第一次就停）；Kinnebrook 沒有任何傳記辭典條目，卒年只見於該短文所引的葬籍與報紙——年代上不可能越線，但嚴格說缺一人一頁傳記，是否保留姓名請編輯定奪。"
+    },
+    {
+      "id": "N6042",
+      "agent": "ZJ3",
+      "reviewer": "R543",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZJ3-S007 https://archive.org/download/philtrans01918637/01918637_djvu.txt（curl GET，R543 seq 2，102,357 bytes，雜湊相同）；另下載 ZJ3-S006、S007 同館藏的 PDF 掃描（seq 28、29）核對頁眉；ZJ3-S005、S006、S004 以 ZJ3 快取逐段核對；補讀 EB1911 vol. 24『Schröter』（seq 22–23）",
+      "reopen_result": "1792 年英譯 p. 336『flat spherical forms』、p. 337『4, 5, and even 6 times … Cimboraco』；Herschel 1793 年 pp. 201–203（1777 年 4 月起、『by what accident I came to overlook mountains』、腳註 23 英里、土星一段）、日誌（40 英尺鏡 1791-05-23、1720 倍 1793-04-22、5 月 12 日的『knotty』）、p. 214（首先指出之功）、p. 215（七英尺鏡 tarnished、projection table）、pp. 216–217（『no eye, which is not considerably better than mine』與『very considerable』）；Schröter 1795 年 p. 117（Read February 19, 1795）、pp. 118–119（公開聲明、abgeplattete Kugelgestalt、德文原稿在皇家學會）、p. 120（『never actually seen mountains』）、pp. 121–122（much too few、自己也常看不到）、p. 125（monopoly of discoveries）、p. 127（1793-02-26 助手）都在；掃描圖 p. 216、p. 119 的頁眉與 OCR 相符，兩篇終頁 219、176 也對上。Clerke pp. 252–253 的『unnecessary vehemence』『nearly twenty-seven miles』在。對不上的：question 把 Herschel 兩處文字併成一句引文『我怎麼會漏看了二十三英里高的山』；hook 寫『你們英國人譯錯的』『一封長信』，原文沒有說譯者是誰，那是一篇在學會宣讀的論文；『誤譯』只有 Schröter 一方的說法，原稿有幾處寫成定論。",
+      "changed_fields": [
+        "answer_target",
+        "editorial",
+        "hook",
+        "notes",
+        "question",
+        "risk",
+        "scope",
+        "source_ids",
+        "source_locator"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內只有 wave53 ZI2 一筆 not_added（沒讀原文），N4062（金星幽靈衛星）、N5565（Herschel 的天王星六衛星）、N4386（Linné）都是別案；ZJ1／ZJ2／ZJ4 無重疊。不在不收清單。片長：三篇一手論文各自有可引的原話，補上 Schröter 回敬『土星環亮點』一段後有三個回合加一個結局（1813 年大火、1902 年史書的評語），8–10 分鐘撐得起；弱點是不能講『今天的答案』，收尾要落在筆戰與譯文上，已寫進 notes。『誤譯』『對方收回前言』全部改成『Schröter 答辯稱』；補兩人各一頁傳記來源。"
+    },
+    {
+      "id": "N6043",
+      "agent": "ZJ3",
+      "reviewer": "R543",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZJ3-S009 https://d3itl75cn7661p.cloudfront.net/dogami/og/OBv26n07.pdf（curl GET，R543 seq 3，941,728 bytes，雜湊相同）；新讀學會原刊 Proceedings of the Boston Society of Natural History vol. VII（R543 seq 7–8）與 1861 年的 Evans 小傳 https://ajsonline.org/article/64674.pdf（seq 25，p. 317 轉圖檔放大核對）；ZJ3-S008 以 ZJ3 快取核對",
+      "reopen_result": "1964 年文章的『myth』、十一噸／$2,200,000 的 1963 年報導、三點觀察、1859 年三段紀錄都在；原刊 vol. VII pp. 160–161、174、175–176 的字句與照引相符，另有 p. 279（成立委員會）、p. 289（已向國會遞請願書）。1993 年專刊的 3,500／44,044／30,100／11,074 美元、3,574＋7,500、『add say $1000.00』、1917／1929／1937／1939／1964 年、FBI、缺 7 月 3–17 日、化驗師 1858 年 3 月做完、Imilac 1820–1822、編者序『mid 1970s … could not prove it』都在。1861 年小傳 p. 317 印『April 13th, 1861』（PDF 文字層誤辨為 18th，圖檔是 13th），生日 1812-02-14；1964 年文章的『5 月』是誤記。對不上／過頭的：hook 把『十噸』『值兩百萬美元』寫成事實（前者是後來的說法，學會紀錄與 Evans 的信都沒有；後者是 1937 年報紙的說法，博物館從沒出過價）；『每年幾十隊人帶著他的日誌進山』是兩句話併的；payoff 由旁白直接下結論；『這塊石頭不可能是 1856 年採的』是作者的推斷，原稿寫成事實。",
+      "changed_fields": [
+        "answer_target",
+        "editorial",
+        "hook",
+        "notes",
+        "question",
+        "risk",
+        "scope",
+        "source_ids",
+        "source_locator"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內只有 wave53 ZI2 一筆 not_added（當時 403 沒讀到），N5722（Willamette 隕石官司）是別案；ZJ1／ZJ2／ZJ4 無重疊。不在不收清單；Evans 沒有被指控、沒有自白，寫法已改成『1993 年的研究者依證據斷定』並保留留白，旁白不得定罪。1993 年研究的三位作者、1964 年兩位作者在 question／hook／answer_target／payoff／visual 都沒有點名（已逐欄檢索）。Evans 卒於 1861 年 4 月 13 日，有同年刊出的一人小傳為證。四個轉折（1964 年館員起疑、日誌是抄本與化驗師之別、帳本與那封信、金相檢驗）加一百年尋寶，9–11 分鐘撐得起。"
+    },
+    {
+      "id": "N6044",
+      "agent": "ZJ3",
+      "reviewer": "R543",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "新讀一手印本 Companion to the Botanical Magazine vol. II https://archive.org/download/mobot31753002286000/mobot31753002286000_djvu.txt（curl GET，R543 seq 9–10）；DNB vol. XV『Douglas, David』（seq 13–14）；Coleman 年表 https://library.vicu.utoronto.ca/apcoleman/timeline/timeline.html（seq 16）；ZJ3-S010、S011、S012 以 ZJ3 快取逐段核對",
+      "reopen_result": "1914 年版 Journal p. 259 的『may be about 5500 feet』、2750／500／1000／1250、五小時與一又四分之一小時、二十分鐘、18°、『and many higher』；Sketch pp. 71–72 的『exceeds 6000 feet, 17,000 feet above the level of the sea』、『the highest yet known in the northern continent of America』、『I was not on this mountain』；Preface 的第二份手稿，都在。Coleman 1911 pp. 79–80、201–203（8 月 19 日、不到兩百碼、『we did not even raise a cheer』『were frauds』）、pp. 206–208（5,710／9,050、6,025／9,365、『shrink seven thousand feet』）、pp. 217–218（附刊引文、『uncommonly active person』『nearly seventy years』）都在；1892 年 8 月 26 日筆記的三句與『13 ponies』在。附刊原文 p. 136 印『Its height does not appear to be less than 16,000 or 17,000 feet above the level of the sea』，與 Coleman 的轉引相符。對不上的：（1）『兩個數字相減，等於把隘口當成一萬一千英尺』是研究稿自己的推算，任何來源都沒有；（2）研究稿稱附刊為『1836 年』，Coleman 書裡沒有年份、還把卷次印成 vol. xi，館藏書目該卷作 1836–1837；（3）payoff 寫『他在整理遊記時多寫的一行』，哪份手稿先寫、數字誰加的，1914 年版沒有交代。",
+      "changed_fields": [
+        "answer_target",
+        "editorial",
+        "notes",
+        "risk",
+        "scope",
+        "source_ids",
+        "source_locator"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、legacy、原來如此與 ZJ1／ZJ2／ZJ4 以 Mount Brown、Hooker、Athabasca、David Douglas 檢索皆無；同型的 N3026（Kong 山脈）、N2781（Crocker Land）是不存在的地形，本題是真山被標高，核心不同。不在不收清單。Douglas 1834 年卒（DNB），Coleman 1939 年 2 月 26 日卒（大學年表）——早於 1956 年，可以具名；Coleman 沒有公有領域傳記條目，用機構頁，已註明。刪掉減法推算，改成並陳三種文字（當天日記、整理稿、死後印本），並補一個來源上有的新轉折：印本的主編就是 Mount Hooker 紀念的那位教授。三個夏天的尋找加三份文字的對照，8–10 分鐘撐得起。英國登山家 1903 年的書仍只經 Coleman 轉引。"
+    },
+    {
+      "id": "N6045",
+      "agent": "ZJ3",
+      "reviewer": "R543",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZJ3-S014 https://archive.org/download/chronologicalhis03burn/chronologicalhis03burn_djvu.txt（curl GET，R543 seq 30，1,085,440 bytes，雜湊相同）；新找到並讀了 1708 年原刊兩期：sim_monthly-miscellany-or-memoirs-for-the-curious_1708-04_1_7 與 _1708-06_1_9 的 _djvu.txt（IA 檢索 seq 31、metadata seq 32／34、下載 seq 33／35）；ZJ3-S013、S015 以 ZJ3 快取核對",
+      "reopen_result": "原刊 4 月號 p. 123 的標題（『then Admiral of New Spain and Peru, and now Prince of Chili … to find out if there was any North West Passage』）、1640 年 4 月 3 日出海；6 月號的 Lake de Fonte 160×60 里格、鑽戒 1200、海圖日誌 1000、『a quarter Cask of good Peruan Wine』、結尾『having found that there was no Passage … The Chart will make this much more demonstrable』與編者按，都與 Burney pp. 185–191 的照錄相符。Burney 卷首兩張書名頁印 1813。Dobbs pp. 122–130 的『As a farther Proof of this Passage』、自承刪節改人稱、『has all the Appearance of being authentick』、『desired to disguise it』、Shapley 之查都在；Burney p. 191（1750 年、『as adventurous a piece of geography』）、p. 192（科學院保留語、西班牙檔案）、p. 193（Pr.）、p. 194（Petiver、『cannot be determined』）在；Bancroft pp. 116–118 與註、pp. 267–268（Fonte Strait、『certain from the tides』、改名）在。對不上的：（1）hook『在一座大湖上遇見一艘波士頓來的船』——信裡是出了湖、過了海峽，在一個印第安鎮附近；（2）『全西班牙的檔案裡找不到這個人、這支艦隊、這道命令』——Burney 轉述的是找不到這趟航行的日誌、命令與文件，辯護者還舉過一位 1649 年的 de Fonta；（3）『最後一句是沒有航道』——其後還有一句講海圖；（4）『一桶秘魯酒』是四分之一桶；（5）『西班牙軍艦』，來源寫的是運輸艦；（6）『開到加拿大深處』是來源沒有的說法；（7）研究稿沒發現 Dobbs 連標題都改了（原刊是去查明有沒有航道，重印成去攔截找航道的船）。",
+      "changed_fields": [
+        "answer_target",
+        "editorial",
+        "hook",
+        "notes",
+        "question",
+        "risk",
+        "scope",
+        "source_ids",
+        "source_locator"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 以 de Fonte、西北航道、Fuca、Anian、Dobbs、Petiver、Delisle、Buache、Mer de l'Ouest 檢索，同案 0 筆；N5504（Juan de Fuca 海峽）講的是一條真實存在、被 Cook 否定又被找到的海峽，N3025 是加州是島，N4024／N4025 是 Saguenay、Quivira，H10 是 Franklin 探險隊，核心答案都不同；Anian 海峽沒有獨立題；ZJ1／ZJ2／ZJ4 無重疊。不在不收清單（無現存領土爭議；信中耶穌會士一語不展開）。四位點名人物各有 DNB／EB1911 一頁傳記。原刊補到後，證據鏈是 1708 原刊→1744 重印→1750 年科學院→1792 年搜尋→1813、1884 年兩種評斷，轉折足夠 9–11 分鐘。作者是誰、有無其人、是不是騙局都照來源並陳。"
+    },
+    {
+      "id": "N6061",
+      "agent": "ZJ4",
+      "reviewer": "R544",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZJ4-S001 https://www.gutenberg.org/ebooks/40872.txt.utf-8（curl GET，R544 seq 8，453,284 bytes，與 ZJ4 快取逐位元相同；seq 1 第一次連線被重置、非 429／403，重試一次成功）；新增 ZJ4-S024 https://archive.org/download/sim_illustrated-london-news_1853-01-22_22_604/sim_illustrated-london-news_1853-01-22_22_604_djvu.txt（識別碼由 archive.org identifier 前綴搜尋取得 seq 14，metadata seq 15，全文 seq 16）；ZJ4-S002 以 ZJ4 快取逐句核對",
+      "reopen_result": "頁面上確實有：Preface『early in the summer of 1849』Roxbury；首展定於 1849 年 11 月 Public Garden、『Thousands upon thousands visited it』『unknown, unhonored and unsung』；1849 年 12 月六隻（兩公四母）、『gross fable』『resembled giraffes』；Burrampooters 與各種拼法、『Burma Porters… Bahama Pudras』1851 年馬里蘭列獎；『wouldn't prove a very bad advertisement for me in this line』、九隻、黑胡桃木框籠、1852 年 12 月寄出、ILN 1853-01-22；『within sixty days afterwards, the price of \"Bother'ems\" went up from $12 and $15 to $50, $75, $100, and $150, the pair』；1853-03-15 白金漢宮回信與肖像；『nearly or quite twenty-two thousand dollars』；成本四千多、收入七萬多；『the hen fever, at last, subsided, too』。Wright 一書 p. 11『amusing and unscrupulous』、p. 19『owl is like a hawk』、p. 26『trading puff』與腳註引那句廣告、p. 27『to the other alone』都在。ILN 1853-01-22 原刊確有〈China Fowls Presented to the Queen〉一則，與雞商轉錄幾乎逐字相同（九隻、兩公七母、『considered, in America, the finest…』），沒有王室評語。對不上或過頭的：（1）hook『第一件事就是告訴大家：那是廣告』——那句在第 XV 章，不是書的開頭；（2）漲價只有雞商自報，hook 寫成事實；（3）answer_target 點名 1873 年那位英國作者，卻沒有傳記頁來源；（4）回信全文是他引 1853 年 4 月波士頓報紙的轉載；（5）ZJ4-S002 出版者只寫了題名頁並列的兩家之一。",
+      "changed_fields": [
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json candidates 無 Hen Fever／Burnham／Shanghae／母雞熱；not_added 有 wave53 一筆『母雞熱與 1855 年自白書』（當時未讀原書而未收，掛 S21），這次原書與反方專書都讀了，核心是『御賜是廣告、連自白都被對手說是廣告』，與 S21（鬱金香沒那麼瘋）答案不同；legacy w-axis、原來如此池與同批 ZJ1–ZJ3 無撞題。雞商、英國作者、醫生都不具名，女王只稱英國女王；家禽投機早已消失，不涉今天的品牌。補到畫報原刊後有三個來源（當事人、對手、當年報紙），但報紙只證明登過報；價格與收入仍只有當事人自報，文稿必須兩說並陳。三個轉折（泡沫一號是寓言→送女王是廣告→連自白也被說成廣告）撐得起 9–12 分。"
+    },
+    {
+      "id": "N6062",
+      "agent": "ZJ4",
+      "reviewer": "R544",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZJ4-S003 https://archive.org/download/cu31924021460369/cu31924021460369_djvu.txt（R544 metadata seq 4、全文 seq 5，494,079 bytes，與 ZJ4 快取逐位元相同）；新增 ZJ4-S025 https://archive.org/download/sim_niles-national-register_1830-09-04_39_990/sim_niles-national-register_1830-09-04_39_990_djvu.txt（搜尋 seq 13、metadata seq 17、全文 seq 18；次週一期 seq 19–20 檢索無）；新增 ZJ4-S030 https://archive.org/download/historydescripti00smit/historydescripti00smit_djvu.txt（搜尋 seq 12、metadata seq 21、全文 seq 22）；ZJ4-S004、S005、S006、S007 以 ZJ4 快取核對",
+      "reopen_result": "頁面上確實有：1871 年書 pp. 114–116 的逐哩計時（去程合計 1 小時 15 分；回程逐哩相加正好 57 分、另加水 4 分共 61 分；『a little, if any, over that of one horse』『working model』）；pp. 116–119 工程師 1830-08-28 的信（四噸半、26 哩 2 小時 10 分、過彎 15–18 哩）；pp. 119–122 Latrobe 1868 年演講（『fifty-seven minutes. This was in the summer of 1830』『on that occasion a gallant gray』、Relay House、『slipped from the drum』『lacerated his hands』）；插圖圖說『on the 28th August, 1830』；弟弟 1869 年信『July or August, 1830』。Semmes 傳記裡 Cooper 1855-06-09 的信（『having no record of it except in memory』、地產、『mere nominal value』、1 小時 12 分與 57 分）與 Latrobe 生卒日都在；博物館頁『never substantiated through documentation』『later given the name』、FHWA 頁的日期都在。新讀到的：《Niles' Weekly Register》1830-09-04 當週短報——二十四人由 Cooper 的火車頭載去看 Ellicott's Mills 高架橋的拱頂石典禮、約四噸半、61 分含加水 4 分、最快一哩 3 分 50 秒、去程 1 小時 15 分，沒有馬；數字與 1871 年轉錄一致（連『24 人加 4 人共 30 人』都一樣）。1853 年公司路史只在 1832 年條下一句提到 Cooper 的火車頭，全書無賽馬。對不上或過頭的：（1）『故事第一次出現是 1868 年』是研究稿自己的斷語，來源只能支持『目前讀到最早』；（2）『回程沒有任何一哩慢下來』——最慢一哩 5 分鐘，改成照數字寫；（3）answer_target 點名寫信的工程師，沒有傳記頁來源；（4）risk 寫『B&O 鐵路公司已不存在』沒有來源；（5）Cooper 那封信其實是 Latrobe 1855 年去函索取的回覆，研究稿沒點出這層。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json candidates／not_added、legacy w-axis、原來如此池檢索 Tom Thumb（火車頭）、Peter Cooper、Latrobe、Baltimore and Ohio 均無；同批無撞題。軸別：故事的翻轉點是『這趟車是為了救股票與地產的示範』，放 W 說得通；文稿只講 1830–1871 年的文件、不提今天的鐵路公司（後繼者是否仍在營運，本輪沒有查到可引的來源，所以乾脆不提），博物館只當來源。若本批 W 軸過多可改 H。點名的 Cooper（1791–1883）與 Latrobe（1803–1891）各有傳記來源。補上當週報紙後，『當天文件沒有馬』不再只靠 1871 年的轉錄；轉折夠（逐哩紀錄→當週報紙是去看橋→1855 年回信講的是護盤→1868 年演講與 1871 年圖說），9–12 分成立。結論停在『沒有文件、唯一出處晚了三十八年』，不說比賽是捏造的。"
+    },
+    {
+      "id": "N6063",
+      "agent": "ZJ4",
+      "reviewer": "R544",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZJ4-S008 https://archive.org/download/financialchapter00wachuoft/financialchapter00wachuoft_djvu.txt（R544 metadata seq 6、全文 seq 7，與 ZJ4 快取逐位元相同）＋同一 item 的 PDF 與 page_numbers.json（seq 23–24，轉圖看 pp. 21、30、36、45、157、158、160、168）；ZJ4-S009 的 PDF https://archive.org/download/guide-bombay-1876/GuideBombay1876.pdf（metadata seq 26、PDF seq 27，轉圖看 pp. 109、113、114）；新增 ZJ4-S026 https://archive.org/download/in.ernet.dli.2015.283215/2015.283215.The-Gazetteer_djvu.txt（metadata seq 39、全文 seq 40）",
+      "reopen_result": "對掃描頁逐一核對的盧比數字全部與原書相符：p. 21『50,000 for future delivery on the ill-fated 1st July 1865』；p. 36『2,000 shares of Rs. 10,000 each, on which Rs. 5,000 only were paid』『cent per cent premium』；p. 158『Rs. 5,000』（OCR 誤作 0,000）、400 股、20 lakh；p. 160『1¼ crore』『Rs. 1,06,19,774-10-5』；p. 168『Rs. 2,361… Rs. 5,200… Rs. 50,000』『the State got all the land for nothing』；p. 157 1864-06-24、1,500／300 英畝，但該頁『The shares were 200』是原書排錯、不是 OCR；p. 30 股份表實繳 104 lakh。Maclean p. 109 原書印『Rs. 25,000 a share on Rs. 4,000 paid up』，p. 113 原書印『spring of 1865』（OCR 誤 1866），p. 114『19½d.… 11d.』。所以『已繳四千或五千』是兩書原書印法不同。研究稿引用的段落（商會年報 pp. 7–8、time bargains、火把與電磁燈、Asiatic Bank 定存、600 英畝、1866-11-18、『One fool had made many』『added fuel to the fire』『dealing in one another's shares』『larger and more wholesome』）我都在文字檔讀到。對不上或過頭的：（1）『同兩張股票可以轉賣給半打人』是作者『Imagine…』的假設例子，被寫成事實；（2）answer_target 點名南軍將領，沒有傳記頁來源；（3）question『電報一到…幾乎倒光』把到 1866 年底的過程壓成一瞬；（4）『把特許交還政府』是轉引一位董事向調查委員會的陳述，原稿沒交代；（5）拍賣沒有確切日期。官修 1909 年方志照抄 Maclean 的拍賣一段（同樣印四千），另補特許由來。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json candidates 無 Back Bay／孟買股市；not_added 有 wave53 一筆同題（當時只確認有書可讀而未讀、existing_ids 空），這次兩書都讀了；legacy w-axis、原來如此池與同批無撞題（ZJ1 的泡沫題是歐洲十六到十八世紀）。公司 1870 年已不存在，文稿不念任何今天仍有後身的銀行，不點名任何人；題材只談 1863–1866 年一家公司的錢怎麼沒的，不評殖民統治、不涉今天的政治爭議。兩個主要來源各有立場且彼此相反，已並陳；官修方志不算第三個獨立說法，調查委員會報告與商會、公司年報原件仍未讀到，這是最弱的一環，但數字已對過原書。轉折夠（賣荒沙→海真的在填→錢存在同一條投機鏈的銀行→地全歸政府），10–13 分成立。"
+    },
+    {
+      "id": "N6064",
+      "agent": "ZJ4",
+      "reviewer": "R544",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZJ4-S010 https://www.gutenberg.org/ebooks/41006.txt.utf-8（R544 seq 2，1,229,939 bytes，與 ZJ4 快取逐位元相同）；ZJ4-S011 同一 item 的 PDF https://archive.org/download/fairylegendsand04crokgoog/fairylegendsand04crokgoog.pdf（檔名取自 ZJ4 快取的 metadata，R544 seq 25，轉圖看題名頁、Preface p. vii、p. 52、p. 55）；ZJ4-S012～S016 以 ZJ4 快取核對",
+      "reopen_result": "頁面上確實有：Keightley 增訂版註 [603] 全文（『We must here make an honest confession… our own pure invention. Yet we afterwards found that it was well-known on the coast of Cork and Wicklow… flower-pots… some traits by another hand』）、註 [602]、Preface『having most leisure, and, I may add, most knowledge』、Appendix『we contributed to the Irish Fairy Legends』。1828 年第二集圖檔：題名頁 MDCCCXXVIII；Preface p. vii『I have not (as has been insinuated) conjured up forgotten tales』；p. 52『…there is a story which has a striking resemblance to the foregoing; and it is accurately translated for the sake of comparison』；p. 55 Coomara『the sea-hound』與『if indeed it be not altogether the invention of the narrator』——研究代理最擔心的兩句都對。1834 年序『Forty tales… instead of fifty』『the omission of a portion of the ten immaterial tales will sufficiently answer doubts idly raised as to the question of authorship』、全書無 Soul Cages；葉慈選集目錄 p. 61、篇首署『T. CROFTON CROKER』；DNB Keightley（1789–1872、『aided Croker』）、Croker（1798–1854、『excluded all his friends' work』）；諾貝爾官網 Yeats 1939-01-28 卒。出入：（1）p. 52 那句的書名原書印成『Deutche Sagan』，研究稿當成逐字引文時寫成正確拼法；（2）正文到 p. 52 才結束，locator 寫 pp. 30–51；（3）葉慈導言『caught the very voice of the people』泛指前輩採集者，同段接著批評 Croker 與 Lover『saw everything humorised』『created the stage Irishman』，研究稿只引了稱讚的一半。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 檢索 Soul Cages、Coomara、Merrow 無；Croker 只在 N3624（Dullahan）、N4341、N4322、N3502 當別題的來源或同名他人，Keightley 只在 N3942 當來源；池內的偽作／編造題（N2602 Ossian、N2444 王后宮手稿、N4565 Kalevala、N2143 Rip Van Winkle）核心都不是『供稿人在腳註自白＋自稱後來在民間聽到』，不同型；同批無撞題。Keightley、Croker、Yeats 卒年各有一人一頁傳記來源，皆早於 1956。故事裡的靈魂與煉獄是故事內設定，不評教義。一手文本齊全，轉折夠（1828 年註說『驚人相似』→1850 年自白→自白後那句『花盆』→1834 年自己刪掉、1888 年仍被選入），9–11 分成立。仍要注意：1834 年版讀的是 1844 年費城重印本；『後來在海岸聽到』只有 Keightley 一句話。"
+    },
+    {
+      "id": "N6065",
+      "agent": "ZJ4",
+      "reviewer": "R544",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZJ4-S021 https://www.gutenberg.org/ebooks/8567.txt.utf-8（R544 seq 3，418,831 bytes，與 ZJ4 快取逐位元相同）；新增 ZJ4-S027 https://archive.org/download/onondagaorremini00clar/onondagaorremini00clar_djvu.txt（搜尋 seq 29、metadata seq 35、全文 seq 36）；ZJ4-S028 https://archive.org/download/bp_1739112/bp_1739112_djvu.txt（metadata seq 37、全文 seq 38；另 1846 年初版 notesiroquois00schorich seq 31–32 檢索）；ZJ4-S029 https://archive.org/download/historicalstatis03scho/historicalstatis03scho_djvu.txt（搜尋 seq 30、metadata seq 33、全文 seq 34）；ZJ4-S017～S020、S022、S023 以 ZJ4 快取核對",
+      "reopen_result": "頁面上確實有：日記 1854-06-22、25、26、27、28 各句（『…\"Hiawatha,\"—that being another name for the same personage』）、Kalevala 格律的編者註、1855-11-10『more than four thousand out of the five』、12-03『I can give chapter and verse for these legends』；詩註五個名字、Algic Researches Vol. I p. 134、『Iroquois form… Onondaga chief』『among the Ojibways on the southern shore of Lake Superior』；1839 年兩卷檢索無 Hiawatha、目錄 Manabozho 134；1856 年題獻、序署 1856-04-28、『literary and business garb』、首句『called Manabozho by the Algonquins, and Hiawatha by the Iroquois… first related to me in 1822』；Hale 各引句（『made confusion worse confounded…』『a grave Iroquois lawgiver…』、Alfred／Arthur／Odin）；Schoolcraft 1793-03-28—1864-12-10、Hale 1817-05-03—1896-12-28。對不上的：（1）方向問題——研究稿照 Hale 把『Schoolcraft 先把兩人劃等號、朗費羅照抄』寫成反轉的定論。我補讀的三本書：Clark 1849 Vol. I p. 30 腳註自己說 Schoolcraft《Notes》pp. 271–283 那篇『was framed from a MS. furnished by the author of this, to the Editor of the Commercial Advertiser of New York』（不是 Hale 說的交給 Schoolcraft）；Schoolcraft 1847 年版 pp. 271–283 確有該篇，但通篇是易洛魁傳述、沒有 Manabozho；朗費羅註引的第三卷 p. 314 也是『an Iroquois Tradition』、出自一位 Onondaga 首領口述、沒有 Manabozho。Schoolcraft 把等號印出來是 1856 年、在詩之後；讀到最早的等號是 1854-06-28 的日記。（2）Hale 寫『it is to this collection [The Hiawatha Legends] that we owe the charming poem of Longfellow』，先後寫反。（3）payoff 把『名字是易洛魁一位倡議聯盟的酋長』當事實寫，那是 Hale 的判斷。（4）朗費羅去世那句在 p. 472 不是 p. 473，月份（3 月）在同章前文。（5）visual 有『映在帳篷上的調皮大兔子影子』『被鄭重捧著的貝珠帶』『議事火堆』，與 risk 自己寫的『不畫聖物』矛盾。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes",
+        "editorial"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json candidates／not_added、legacy w-axis、原來如此池檢索 Hiawatha、Manabozho／Nanabozho、Schoolcraft、Horatio Hale 均無；Longfellow 只在 N343 等別題出現；N4565（Kalevala 怎麼編成）相鄰但核心不同；同批無撞題。不收清單判斷：兩個民族都是現存民族、傳述是活的傳統，但本題的核心是十九世紀幾本英文印本上名字的搬動，這件事今天不是兩群人還在爭的事，講它也不必評價任何一方的信仰內容；池內已有同一種講法的先例（N4903 Grey《Polynesian Mythology》怎麼編的、N4907 1930 年澳洲原住民神話集的作者欄）。研究稿原本的寫法有三處越線：替 Hiawatha 下了『歷史上的酋長』的定論、照 Hale 的話說口傳『早被混過』、畫面把傳述人物與聖物畫成插圖——都已改掉，scope 與 risk 加了硬條件（不重述兩邊傳述、不下定論、畫面只畫書）。在這些條件下判 ADOPT_WITH_CHANGES；這是政策判斷而非查證問題，若協調者從嚴，應改列 not_added，重新收錄的條件寫在 notes（找到當事民族機構自己談這個名字誤植的公開說法、以它為框架）。三位點名人物卒年各有傳記來源；Clark 與兩位首領不點名。補讀後紙本鏈完整（1839→1847→1849→1853→1854 日記→1855→1856→1883），轉折夠，9–12 分成立；『誰最先劃等號』照實寫成未定。"
+    }
+  ],
+  "reviewer_notes": {
+    "R541": "ZJ1 的稿子來源都是真的讀過、access_log 對得上，沒有自拼網址，也沒有未被引用的來源；去重與 1956 紅線做得乾淨。主要問題：（1）關鍵一手文件沒追到就先下反轉——N6003 的降獎公告其實讀得到（EEBO-TCP），讀到後發現每張籤抽十二次，原稿『十先令只領回一先令出頭』的結論是錯的；N6005 沒讀 1786 年的 Duvernet，就說晚餐與 La Condamine 是『五十到一百年後補上的』，實際是死後八年，而且沒看出 1786 寫『伏爾泰算的』、1871 改成『La Condamine 的觀察』。（2）只讀了來源的一部分就下全稱：Young p. 826 自己指出 Rochelle 說與木桶說矛盾、Barbier pp. 96–97 記伏爾泰與總監有私怨、Joyce p. 37 公爵開辦前就反對，三處都在同一本書裡被漏掉。（3）hook／payoff 加了來源沒有的戲劇化細節與過度推論：『兩百年來被當成工業間諜第一案的鐵證』『兩百年沒人去翻』『皇帝親筆簽的借據』『你的皇冠是我買的，請還錢』『後人用來討債』『一早醒來』『王弟的律師就上門了』『他晚年授意』『預付』『三角形戳記』『腳趾甲』『兩年後開獎』。（4）頁碼：Charlton 把 OCR 誤讀的頁眉 309 當成頁碼（實為 pp. 305–307）；EB1911 六條沒有頁碼，已逐條補上（vol. 11 pp. 287–288、vol. 5 p. 899、vol. 9 p. 282、vol. 15 p. 138、vol. 28 pp. 199–200、vol. 16 p. 51）；Ehrenberg、Joyce、DNB 的頁碼核對無誤。（5）N6004 的『1840 年才有』沒有流傳出處，R541 補了 London Museum 頁面當樣本，但該頁也講了 1680 年，題目因此改成開場對比而不是被推翻的錯誤說法。五題都給 ADOPT_WITH_CHANGES；N6005 帶保留（Gallica 登記簿 403、現代傳記未讀）。",
+    "R542": "（1）網址：十九個中文來源的網址全是依書名卷次組出來的。《舊唐書》《新唐書》《資治通鑑》三部書我從維基文庫目錄頁重現了連結（十一個來源）；第四個目錄頁請求回 429，照規定停，《舊五代史》《宋史》《長編》《漢書》八個來源沒能從目錄重現，只能確認快取頁的 canonical 是正式卷頁，並改用站外的第二個電子本核對內文。其中一個組出的網址（漢書/卷027中之下）其實是重新導向，已改。（2）把『來源沒寫』講成定論：N6021 說三部史書連年份都不一樣（《新唐書》本紀與《通鑑》其實同一天）；N6025 說太陽好好的、預報落空（現代目錄顯示那兩天地球上都有日環食）；N6022、N6021 的『最早』都超出所讀範圍。（3）主詞讀錯：N6023 把 1917 年版『比預期更早應驗』的奧匈帝國寫成美國，把『Do I bore you?』讀成擔心聽眾無聊，把別人的實驗數字寫成 Crookes 的。（4）不是原文卻加引號：『與妖人謀不軌』『妖言惑眾』『點檢做天子』；以及來源沒有的戲劇化用字『親手』『一夜之間』『唯一』『派人』。（5）維基文庫錄文的錯字（『女三昌』『乙太宗』『孽後』）研究代理有標出，但沒有去對第二個版本；覆核後能對到中華書局點校本引文的只有 N6021，其餘只對到另一個網路電子本（漢典、殆知閣、Gutenberg），有的與維基文庫明顯同源，製作前仍要對點校本。（6）not_added 有一筆 existing_ids 寫了不存在的題號 P19，已改。",
+    "R543": "（1）沒有拼湊網址：19 筆 sources[].url 在 ZJ3 access_log 都有 200 紀錄（唯一的 500、403、202 都沒有進來源，也沒有重試），19 筆全部被題目引用，沒有需要刪的來源；重新請求的四個檔雜湊與快取相同。引句、數字、日期絕大多數對得上，研究代理自己列的弱點也都屬實。（2）主要毛病是 hook／payoff 比來源多走一步：N6041 把『極力勸他去見一位太太』寫成『上司安排的相親』『他推掉的相親』，語氣接近因果；N6043 把『十噸』『值兩百萬美元』當事實、由旁白直接說石頭來自智利；N6045 寫『在大湖上遇見』『檔案裡找不到這個人』『最後一句』；N6042 把 Herschel 兩句話併成一句引文、把譯者說成『你們英國人』。（3）一處自行推算：N6044『兩數相減，等於把隘口當成一萬一千英尺』，來源沒有，已刪。（4）一方說法寫成定論：N6042 的『誤譯』只有 Schröter 的答辯；N6043『不可能是 1856 年採的』是 1993 年作者的推斷；都改成帶出處的說法。（5）1956 紅線的傳記來源不足：Maskelyne、Bessel、Herschel、Schröter、Douglas、Coleman、Evans 原本都靠史書一句、館藏條目或研究論文，已各補一頁（DNB、EB1911、一人傳記、1861 年小傳、大學年表）；Kinnebrook 查無傳記條目，照實標註。answer_target 裡還點名了沒有傳記來源的信中太太與『Bradley』，已改不具名。（6）該找而沒找到的原刊其實找得到：1859 年學會紀錄（IA 有 1861 年原卷）、Douglas 遊記的雜誌印本（IA 有第二卷）、1708 年《Monthly Miscellany》4 月與 6 月號（IA 期刊微縮掃描）都由覆核補讀；後者還顯示 Dobbs 1744 年重印時改了標題。Burney 卷三出版年對到書名頁是 1813。（7）頁碼：抽查 Phil. Trans. 兩篇的掃描圖（p. 216、p. 119、終頁 219／176）與各書 OCR 內的印刷頁眉，locator 無誤；1792 年那篇終頁未核對，標題已拿掉終頁；1708 年 6 月號頁碼混亂，不報。去重：五題在 pool.json、legacy、原來如此與 ZJ1／ZJ2／ZJ4 都沒有撞題；not_added 14 筆的 existing_ids（20 個，逐一對過題目內容）全部存在於池內。被擋：siarchives.si.edu、archivesearch.lib.cam.ac.uk 各回一次 403，第一次就停；沒有碰 en.wikisource.org 搜尋 API、founders.archives.gov、oregonencyclopedia.org。",
+    "R544": "（1）整體紮實：23 個來源的網址在 ZJ4 請求紀錄裡都有成功紀錄、都被題目引用，沒有需要刪除的來源；五題重開關鍵來源（四個檔與 ZJ4 快取逐位元相同）後，引句、日期、數字絕大多數相符，去重乾淨，not_added 的池內題號都存在（兩筆指向本批新題 N6064、N6065 的已拿掉）。（2）最大的問題在 N6065：把 1883 年一位學者的說法當成定論，方向因此寫得太死——補讀研究稿自承沒打開的三本書後，Schoolcraft 在 1847、1853 年都沒有把兩個名字劃等號，他印出等號是在詩出版之後，而那位學者自己還把詩與書的先後寫反；另外替活傳統裡的人物下了『歷史酋長』的定論、畫面畫了傳述人物與聖物，已改。（3）『只經轉錄』的地方其實找得到當年印本：N6061 的倫敦畫報原刊、N6062 試車當週的巴爾的摩週報都在 archive.org，補上後兩題的關鍵事實不再只靠當事人或四十年後的書。（4）把來源沒有的斷語寫成事實：N6062『故事第一次出現』（只能說目前讀到最早）、N6061 hook『第一件事就是告訴大家』、N6063 把作者假設的例子（同兩張股票轉賣半打人）當紀錄、question 把一年多的倒閉壓成『電報一到』。（5）不具名規則沒有貫徹到 answer_target：N6061 的英國作者、N6062 的工程師、N6063 電報裡的南軍將領都被點了名卻沒有傳記頁來源，已改；N6062 risk 的『B&O 鐵路公司已不存在』沒有出處，改成照實說沒查。（6）OCR 疑點經對圖檔後多數是 OCR 錯而非原書錯（N6063『0,000』原書 5,000、『1866 年春』原書 1865；N6064 兩句引文無誤），但也有反過來的：Wacha p. 157『200 股』是原書排錯，1828 年註裡格林的書名原書就拼成『Deutche Sagan』；頁碼錯兩處（N6064 正文到 p. 52、N6065 卒年在 p. 472）。網路：我沒有請求 en.wikisource.org 搜尋 API、www.nypl.org、adb.anu.edu.au、nnp.library.wustl.edu；全程沒有 429／403，唯一失敗是 seq 1 連線被重置（非狀態碼），同一網址重試一次成功。"
+  },
+  "process_notes": [
+    "研究代理 ZJ2 的中文來源都是 zh.wikisource.org 的卷頁，網址是依書名與卷次直接組的。覆核者 R542 從《舊唐書》《新唐書》《資治通鑑》三個目錄頁重新取得其中 11 個來源的卷頁連結；第四個目錄頁回 429 即停，該站之後沒再碰。其餘 8 個來源（《舊五代史》《宋史》《續資治通鑑長編》《漢書》）沒能從目錄重現，只確認研究代理快取頁的 canonical 是正式卷頁，內文改以站外電子本核對；協調者決定保留並在 read_via 照實寫明。",
+    "N6024（公孫病已立）覆核判可收，協調者改列待查（理由見該題 verdict 的 coordinator_note）。",
+    "N6065（Hiawatha）覆核判可收但屬系列不收清單的政策判斷，列暫緩等站主決定（selection.json 的 held）。",
+    "N6005（伏爾泰與 1729 年彩票）：gallica.bnf.fr 的登記簿回 403 機器驗證頁，第一次即停；翻轉收窄為「功勞的轉移」，題卡寫明登記簿與現代傳記沒讀到，片名不得下「沒靠彩票發財」之類的結論。",
+    "N6041（Kinnebrook）沒有傳記辭典條目，卒年（1802）只見於 1996 年短文所引葬籍；年代上不可能越過 1956，保留具名並在 risk 註明。2025 年有一篇研究這批書信的新論文兩輪都沒讀到，寫腳本前要先讀。"
+  ]
+}

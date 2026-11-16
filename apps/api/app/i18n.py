@@ -2555,6 +2555,50 @@ for _video_plan_locale, _video_plan_errors in _VIDEO_PLAN_ERRORS.items():
     ERROR_DETAILS[_video_plan_locale].update(_video_plan_errors)
 
 
+_VIDEO_POOL_ERRORS: dict[Locale, dict[str, str]] = {
+    "en": {
+        "video_pools_unavailable": (
+            "The topic pool bundle is missing or invalid. Check the deployed version."
+        ),
+        "video_pool_theme_not_found": "This topic theme was not found.",
+        "video_dramas_unavailable": (
+            "The AI drama script bundle is missing or invalid. Check the deployed version."
+        ),
+        "video_drama_not_found": "This drama, episode or document was not found.",
+    },
+    "ja": {
+        "video_pools_unavailable": (
+            "題材プールのデータが見つからないか、検証に失敗しました。"
+            "デプロイされたバージョンを確認してください"
+        ),
+        "video_pool_theme_not_found": "この企画テーマは見つかりません",
+        "video_dramas_unavailable": (
+            "AIドラマ台本のデータが見つからないか、検証に失敗しました。"
+            "デプロイされたバージョンを確認してください"
+        ),
+        "video_drama_not_found": "このドラマ、エピソード、または文書は見つかりません",
+    },
+    "ko": {
+        "video_pools_unavailable": (
+            "주제 풀 데이터가 없거나 검증에 실패했습니다. 배포된 버전을 확인해 주세요"
+        ),
+        "video_pool_theme_not_found": "이 주제 기획을 찾을 수 없습니다",
+        "video_dramas_unavailable": (
+            "AI 드라마 대본 데이터가 없거나 검증에 실패했습니다. 배포된 버전을 확인해 주세요"
+        ),
+        "video_drama_not_found": "이 드라마, 회차 또는 문서를 찾을 수 없습니다",
+    },
+    "zh-CN": {
+        "video_pools_unavailable": "题目池数据包缺失或验证失败，请检查部署版本",
+        "video_pool_theme_not_found": "找不到这个题案",
+        "video_dramas_unavailable": "剧本数据包缺失或验证失败，请检查部署版本",
+        "video_drama_not_found": "找不到这部剧、这一集或这份文件",
+    },
+}
+for _video_pool_locale, _video_pool_errors in _VIDEO_POOL_ERRORS.items():
+    ERROR_DETAILS[_video_pool_locale].update(_video_pool_errors)
+
+
 def active_locale() -> Locale:
     """The locale of the request being served, or the site default outside a request."""
 

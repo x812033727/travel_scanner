@@ -8,6 +8,19 @@
 這份會自動同步到雲端硬碟 `AI劇/奇聞檔案局/_規則與教訓/教訓/教訓.md`（docs/videos/rules-sync）。
 之前的教訓：`.agents/skills/curio-episode/references/w03-lessons.md`。
 
+## 2026-11-14 · curio-s10／s13／s23–s26-v2、w01、w02 · Claude（c14 重做收尾）
+八集都照 PR #2099（同節拍 2–3 句併一景、說明欄與縮圖新規則、八語系列後綴）與語速 4.4 重做完，八語 MiniMax 配音。這一輪學到的：
+- **先確認稿子版本**：W01、W02 在 main 上的 `video.json` 停在 11/04 舊稿，真正做成成片的稿子只在 Drive 製作檔的 `_repo/docs/videos/<slug>/`。拿舊稿併景、重錄會白花錢，而且 `status` 才會顯示「manifest 沒有圖」。重製前先跑 `status`：`keyframes drawn` 是 [x]、manifest 的 shot id 對得上 scene id，才動手。
+- **聲音指示**：「語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。」W01 實測 4.84、W02 4.58–4.61 字／秒，不用 `voice.tempo`。
+- **MiniMax 外語比 dub 的預算估得慢**：八語第一輪幾乎每語都有句子塞不進；縮過一輪剛好卡預算的句子，第二輪還會超。縮句時每句比預算再少 2–3 字（泰語 3–5 字）。日語一集常要縮 60–80 句。
+- **念法**（MiniMax）：越南語千分位點「35.000」念成 35 → 寫 35000；韓語千分位逗號與「2만 5000」會漏念「2」→ 寫「2만 5천」；印尼語月份或句首直接接年份會被聽成時間（「2019,」→「Twenty Four Seven」）→ 加 tahun；「NT$10 million」念成 19 million → 寫「10 million Taiwan dollars」；西語縮寫「EE. UU.」避免，寫全名。日語：「年報」念成「れんぽう」→ 寫「年次報告」；「家庭用」念錯 → 「かてい用」；「下がる」的「下」會念成「もと」→ 換「落ちる／低め」；數字與年份念錯（250→150、2400万→40万、2025→2015、61→11）就改假名；「年平均250」會被聽成「年平均に150」→ 寫「年平均で250」。
+- **改寫後一定量長度**：比預算長的句子 `--keep-fitting` 不會換掉，舊錄音留著但字幕已是新字，兩邊對不上。改完要看 dub 有沒有印 `do not fit`，有就再縮或改回原句。
+- **check-audio 的 Gemini 會限流**（「請求過於頻繁」），那一輪顯示的 0 flagged 是沒檢查到，要重跑；第二意見用 `--second-opinion "python3 tools/video/tts/whisper_second_opinion.py"`（WHISPER_MODEL=medium）。剩餘標記以人名、同音字為主時就收工。
+- **外語縮圖**：羅馬字人名或 Michelin 這種 8 個字母的詞單獨一行就只剩 23 px；第一行換短的主體詞（Stars、Guía、Sanada），第二行粗體 6–7 個字母內；日語問號用半形 `?`（全形會掉 2 px）。逐語用 `headlineSizeEstimate` 估過 24 px 才渲染。
+- **備份與配音不要同時跑**：配音在寫檔時 `todrive` 會報 differences，備份被判不乾淨；先排除 `dubs/` 備份、推成片，配音完成後隨上架包再整包備份。
+- **web.archive.org 從雲端容器連不上**（proxy 斷線），qa 的 links 會把存檔連結判成打不開；用 `https://archive.org/wayback/available?url=<原網址>&timestamp=<時間>` 查得到 200 就是連結沒壞。
+- **磁碟**：每集上架包推完、todrive 0 differences 後，刪該集 `build/`、`segments/`、`keyframes/`、`dubs/*/audio`（逐句錄音約 1 GB），留 `final.mp4`、`upload/`、各語合成好的音軌。
+
 ## 2026-11-13 · curio-s10／s13／s14／s23–s26-v2 · 站主發現、Claude 量
 設定都是新版，實測語速卻都不到 4.4：停頓（0／150 毫秒）與 beat 都對，聲音指示也寫了「一秒四到五個字」，七集實測只有 4.08–4.33 字／秒。站主定 4.4 為下限，不符合的全部重做，八語改用 MiniMax 重錄。
 - **怎麼量**：timeline.json 每句 `audio_samples` 加總 ÷ 48000 是純講話秒數；字數用稿子去掉空白與標點。全片長度除會把換景停頓算進去，偏低。

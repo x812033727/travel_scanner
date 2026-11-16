@@ -1,0 +1,402 @@
+{
+  "batch": "batches/wave49-20261113.json",
+  "reviewed_on": "2026-11-13",
+  "method": "四位沒有參與研究的獨立覆核代理（R491–R494 依序覆核 ZE1–ZE4）逐題至少重開一個關鍵一手／機構來源、讀研究代理的工具與任務紀錄逐筆核對網址出處與雜湊、grep 全池與跨系列核心去重、對照系列不收清單與 1956 真人視覺規範及 8 分鐘門檻；修改直接寫進批次的題目與來源欄位，覆核補讀的一手與傳記來源編入該研究代理的來源序號。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 20
+  },
+  "source_renames": {
+    "R492-S001": "ZE2-S016",
+    "R492-S002": "ZE2-S017",
+    "R493-S001": "ZE3-S035",
+    "R493-S002": "ZE3-S036",
+    "R493-S003": "ZE3-S037",
+    "R493-S004": "ZE3-S038",
+    "R493-S005": "ZE3-S039",
+    "R493-S006": "ZE3-S040",
+    "R494-S001": "ZE4-S030",
+    "R494-S002": "ZE4-S031",
+    "R494-S003": "ZE4-S032",
+    "R494-S004": "ZE4-S033"
+  },
+  "verdicts": [
+    {
+      "id": "N5501",
+      "agent": "ZE1",
+      "reviewer": "R491",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE1-S001 https://en.wikisource.org/wiki/Commentaries_on_the_Laws_of_England/Of_the_King%27s_Revenue、ZE1-S004 https://www.legislation.wa.gov.au/legislation/statutes.nsf/RedirectURL?OpenAgent&query=mrdoc_18882.htm、ZE1-S005 https://nilq.qub.ac.uk/index.php/nilq/article/download/591/449（三篇皆由 R491 獨立重抓，SHA-256 與 ZE1 快取 100% 一致）；並逐字核對快取 ZE1-S002（DNB Blackstone 1723–1780）、ZE1-S003（1911 大英百科〈Deodand〉）",
+      "reopen_result": "頁面上確實寫了：Blackstone Book I Ch. 8 Sec. XVI（ZE1-S001）載明 deodand 歸 king's almoner 或轉封莊園領主（franchises），靜止馬車摔死只沒收車輪、行進中馬車輾死依註 72 Bracton『Omnia, quae movent ad mortem, sunt Deo danda』連車帶貨全數沒收，未達辨識年齡幼童從靜止車馬摔死不構成 deodand，淡水內河沒收船隻但公海鹹水（『upon the high sea』『in salt water』，頁上未印拉丁文 in altum mare）豁免，起訴書標價舉例為『penknife, value sixpence』，陪審團常壓低估價。1911 大英百科〈Deodand〉（ZE1-S003）同樣舉『a certain penknife, of the value of sixpence』（非研究稿誤寫的『1 先令木棍』），補述 Britton 淡水停泊船不收貨、揚帆船船貨全收，並記 1846 年廢除與鐵路蒸汽機興起時間重疊。《9 & 10 Vict. c. 62》（ZE1-S004，1846-08-18 御准）明定自 1846-09-01 起廢除 deodand 與起訴書兇器標價。Kidner 1999《NILQ》pp. 318–330（ZE1-S005）：p. 318–319 & n.3–4 載 1808《Baker v. Bolton》（1 Camp 493）驛馬車翻車致酒館老闆之妻傷重過世（頁上僅寫『till the moment of her dissolution』，未印『一個月』或『瘀傷』），Lord Ellenborough 六行裁示判丈夫僅獲 100 鎊，且該案遲至 1833 年才由 Lord Campbell 印出、未鎖進他在 1838 年聖殿法學會大火燒毀的『bad Ellenborough law』抽屜（頁上未印 Campbell 名字 John 或生卒年 1779–1861）；p. 321 載 1838《S.S. Victoria》被判 £1,500 deodand、1841 倫敦與伯明罕鐵路被判 £2,000 deodand，及 1841《The Queen v. Polwart》（[1841] 1 QB 819）Lord Denman 撤銷《S.S. Manchester》£800 deodand，因 deodand 只適用 misadventure 而不適用 manslaughter／murder（頁上未寫『鍋爐爆炸』或『撞翻小船』）；pp. 320–325 載 Lord Lyttelton 1845 草案與 Campbell《Fatal Accidents Act 1846》（頁上未印 9 & 10 Vict. c. 93 章號）及 1846-05-07『they would not care one farthing』演說。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查 pool.json、batches/*.json、reviews/*.json、external/so-thats-why-cores.json、so-thats-why/pool/pool.json 與同波 ZE2–ZE4，均無英國普通法 Deodand、Baker v. Bolton、R v. Polwart 或 1846 年雙法案（既有 N4941、N4942 為法國教會審判老鼠與象鼻蟲傳說，法系與機制完全不同）。前提成立、法源極硬，覆核逐字清查後修正五處外部記憶混入：（1）刪去 Kidner 論文未印的《Baker v. Bolton》『重傷一個月』『皮肉瘀傷』及 Campbell 未印出的名字與生卒年『John（1779–1861）』，改照 p. 318 原文寫『1833 年由 Campbell 印出』；（2）刪去論文未印的《S.S. Victoria》『鍋爐爆炸』與《S.S. Manchester》『撞翻小船』情節描寫，嚴格照 p. 321 原文陳述判例金額與 misadventure vs. manslaughter 法理漏洞；（3）刪去 Kidner 文內未印出的章號『9 & 10 Vict. c. 93』，改用文內原名《Fatal Accidents Act 1846（Lord Campbell's Act）》；（4）修正 ZE1-S001 未印拉丁文『in altum mare』及 ZE1-S003 起訴書範例誤寫『1 先令木棍』（原文與 Blackstone 同為『價值六便士的小折刀 penknife, value sixpence』，並補入 Britton 淡水船貨區分）；（5）risk 明確鎖死僅 Blackstone（1723–1780）有印出卒年，Ellenborough、Campbell、Lyttelton、Denman 與當代學者 Kidner 一律不入畫。具體事實約 18 條，9–11 分鐘維持。"
+    },
+    {
+      "id": "N5502",
+      "agent": "ZE1",
+      "reviewer": "R491",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE1-S006 https://avalon.law.yale.edu/18th_century/blackstone_bk4ch28.asp、ZE1-S009 https://www.british-history.ac.uk/middx-county-records/vol4/p350、ZE1-S011 https://archive.org/download/trialofbritishso00wemm/trialofbritishso00wemm_djvu.txt（含先驗 metadata/trialofbritishso00wemm，三篇皆由 R491 獨立重抓，SHA-256 與 ZE1 快取 100% 一致）；並逐字核對快取 ZE1-S002、ZE1-S007、ZE1-S008、ZE1-S010、ZE1-S012、ZE1-S013",
+      "reopen_result": "頁面上確實寫了：Blackstone Book IV Ch. 28（ZE1-S006）詳載剃髮教士服→讀書測驗、《4 Hen. VII c. 13》非教士一生一次並烙左手拇指根部肉丘（murder 烙 M、其他 felony 烙 T）、主教滌罪宣誓 12 名助誓人淪為『solemn farce of a mock trial』於 1576 年（18 Eliz. c. 7）廢止、1547 年（1 Edw. VI c. 12）文盲上議院貴族免烙免死 vs 女性排除至 21 Jac. I c. 6 與 3 & 4 W. & M. c. 9、1706 年（5 Anne c. 6）廢除讀書考試，及《4 Geo. I c. 11》流放北美殖民地 7 年。1911 大英百科〈Clergy, Benefit of〉（ZE1-S007）記《詩篇》51:1 開頭字句『neck-verse』（頁上未印拉丁文 Miserere mei...），及 1827 年廢除卻漏掉 1547 貴族條款至 1841 年補廢（頁上未印 7 & 8 Geo. IV c. 28 或 4 & 5 Vict. c. 22 章號）。〈Branding〉（ZE1-S008）記蘭開夏法庭手環、『A fair mark, my lord』、1698–1707 年左臉頰近鼻烙印廢止（未印『找不到工作』字句）、1782 年德國旅人 Charles Moritz 記海德公園決鬥誤殺教士獲『with a cold iron』冷烙鐵儀式，及 1822 年廢除神職特權烙手（非研究稿誤寫的 1779 年）。《Middlesex County Records》Vol. 4 p. 350（ZE1-S009）印出 1598-09-22 拉丁縮寫起訴書（『Rapiour precii iiis』『Cogn' Indictament petit librum legit ut Cl'icus sign' cum lra T』），展開拉丁文、英譯、Henslowe 信件 Hoxton Fields 及《4 Henry VII. c. 13》『Tyburn T』法條考證則在 Vol. 1 Preface pp. xxxiii–xlii（ZE1-S010，兩頁皆未印 Jonson 生卒年 1572/3–1637）。波士頓英軍審判速記實錄 `trialofbritishso00wemm_djvu.txt`（ZE1-S011）書目頁（OCR lines 38–79）實為 **1807 年波士頓 Belcher and Armstrong 120 頁印本**（非研究稿誤植的 1824 William Emmons p. 216），判決在 p. 120（OCR lines 8434–8447）：『Killroy and Montgomery, prayed the Benefit of Clergy, which was allowed them, and thereupon they were each of tliera [them] burnt in the hand, in open Court, and discharged』；1770-12-05 宣判日期與烙『M for manslaughter』載於麻州歷史學會（ZE1-S013，僅記 35 歲 John Adams，未印卒年 1826），NPS（ZE1-S012）則記 10 月 Preston 無罪與士兵案九天審理（末句誤寫 right thumbs 已於 limitations 與 scope 排除）。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查全池、batches/*.json、reviews/*.json、跨系列核心與同波 ZE2–ZE4，均無 Benefit of Clergy、neck verse、Ben Jonson 1598 年審判或 1770 年波士頓慘案烙手釋放。一手拉丁文卷宗與 1770 年法庭速記原書極為精彩，覆核修正五處書目與文本越界：（1）更正 ZE1-S011 印本書目與頁碼——快取原檔實為 1807 年波士頓 Belcher and Armstrong 120 頁印本、判決在 p. 120，並非 1824 年 William Emmons 版 p. 216；（2）刪去 ZE1-S007 未印出的拉丁文經句『Miserere mei, Deus...』與 1827／1841 法案章號，並將《4 Geo. I c. 11》流放北美歸回實有記載的 ZE1-S006；（3）修正 ZE1-S008 外部記憶（刪去未印的『10 & 11 Will. III』『找不到工作』與『1779 年廢除』，改照原文寫 1698–1707 左頰烙印廢止、1782 年 Moritz 記決鬥教士冷烙鐵與 1822 年廢除烙手）；（4）精確分開 ZE1-S009（拉丁縮寫原件）與 ZE1-S010（展開英譯與 Tyburn T 考證），並註記排除 ZE1-S012 末句誤寫右手的筆誤；（5）刪去頁面未印出的 Ben Jonson（1572/3–1637）與 John Adams（1735–1826）生卒年，在 risk 將除 Blackstone 以外所有未印卒年人物一律鎖出畫面。具體事實約 19 條，9–12 分鐘維持。"
+    },
+    {
+      "id": "N5503",
+      "agent": "ZE1",
+      "reviewer": "R491",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE1-S014 https://www.british-history.ac.uk/statutes-realm/vol5/p598a、ZE1-S015 https://www.british-history.ac.uk/statutes-realm/vol5/pp885-886、ZE1-S017 https://journals.sas.ac.uk/fhs/article/download/3735/3686/6345（三篇皆由 R491 獨立重抓，SHA-256 與 ZE1 快取 100% 一致）；並逐字核對快取 ZE1-S016（Bailey 1937 PDF）、ZE1-S018（DNB Oldfield）、ZE1-S019（Pope 1734）、ZE1-S020（McDermott/Kellaway）、ZE1-S021（1814 年《54 Geo. III c. 108》_djvu.txt）",
+      "reopen_result": "頁面上確實寫了：1666 年《18 & 19 Cha. II c. 4》（ZE1-S014）罰 5 英鎊全歸窮人。1678 年《30 Cha. II st. 1 c. 3》（ZE1-S015，全法實為十條 ss. I–X，非研究稿所寫十一條）：第 I 條前言明寫『for the lessening the Importation of Linnen from beyond the Seas and the Encouragement of the Wollen and Paper Manufactures of this Kingdome』，禁亞麻、大麻、絲綢、毛髮或金銀線壽衣及『Coffin lined or faced with any sort of Cloath or Stuffe... but Sheeps Wooll onely』——全文並無『縫線（thread／縫壽衣的一根線）』字樣！同法規定 8 天宣誓書、5 英鎊優先於死者一切債務受償、對半獎賞檢舉人（informer），第 IV–V 條牧師與執事怠職連坐罰 5 英鎊。Bailey 1937（ZE1-S016）記 1682 Prescot 證明書與 1680《32 Cha. II c. 1》准向他教區教士宣誓。《J. Friends' Hist. Soc.》1921 pp. 105–106（ZE1-S017）：p. 105 為 1706 年貴格會宣誓證明書（『maketh Oath』）與 1678 年倫敦六週會議交信徒良心裁量之決議（非研究稿所寫 affirmation）；p. 106 引 Oliver Heywood（1630–1702）《Diaries》ii. 260 原文稱 Abraham Hodgson 為『a quaker』（貴格會信徒，非士紳），先交 50s 給救貧委員再向 Justice Farrer 自我檢舉，而搶後半筆 50s 檢舉費者原文僅寫『Dr. Hook after got hold of it, makes for that latter 50 sh to himself as informer, prosecutes the business with much zeal』（完全未寫 Dr. Hook 是教區牧師！）。DNB（ZE1-S018）記 Anne Oldfield（1683–1730）於 1730-10-23 逝世並葬於西敏寺（未印 10 月 27 日），穿布魯塞爾蕾絲、荷蘭細亞麻與小羊皮手套；Pope 1734（ZE1-S019，未印卒年）寫『Odious! in woollen!』。McDermott（ZE1-S020）引 Kellaway 記 1678 St Bartholomew the Great 貧民『buried in Herbs』、All Hallows Barking 牧師妻與 1737 Richard Brodrepp 實繳 5 鎊罰金、1678 Edmonton 牧師為搶 50s 扣押寡婦 5 鎊、蘇格蘭 1686 年相反亞麻喪葬法，以及 1814 年廢法後 Rivenhall 仍登記至 1821 年——全文完全未提『1813–1814 年職業檢舉人敲詐牧師』！1814-07-23《54 Geo. III c. 108》p. 756（ZE1-S021，OCR lines 316924–317035）全三條：第 I 條廢法、第 II 條免除 7 月 1 日前未訴罰鍰、第 III 條明定 7 月 1 日前已起訴追討罰金之案件停止訴訟，原告不准領罰金、僅能領回截至 7 月 1 日之訴訟工本費。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查全池、batches/*.json、reviews/*.json、跨系列核心與同波 ZE2–ZE4，均無英國《羊毛喪葬法》（Burying in Woollen Acts）、救造紙亞麻破布前言、Anne Oldfield 或 Abraham Hodgson 自我檢舉案。三部英國官方法令原文與日記史料極佳，覆核攔截並修正四處關鍵外部記憶混入：（1）研究稿在 question、hook、answer_target、payoff、visual 都寫『連縫壽衣／棺材的一根縫線都不准用亞麻』，但重讀 1678 年法條原文（ss. I–X 共十條），法條管的是『棺材內壁襯裡與表面裝飾布料（coffin lined or faced）』，隻字未提縫線，已全面改照原文並同步修正 visual；（2）研究稿把 1814 年廢法背景寫成『職業賞金檢舉人突襲敲詐各地牧師』並歸入 ZE1-S020，但 ZE1-S020 完全沒寫這段故事，已全面刪除無據敘事，嚴格立足於實讀之《54 Geo. III c. 108》第 II–III 條『一筆勾銷未訴罰款＋斬斷 7 月 1 日前已起訴賞金官司僅退訴訟工本費』；（3）修正 ZE1-S017 三處細節：Abraham Hodgson 原文是貴格會信徒（a quaker）而非士紳、搶告他的 Dr. Hook 原文未稱牧師（同步將 visual『戴黑帽的教區牧師』改為『戴圓框眼鏡的無名檢舉者』，另補入 ZE1-S020 確有記載的 1678 Edmonton 牧師搶獎金案），並更正 1706 年貴格會證明書實為宣誓（maketh Oath）；（4）刪去 ZE1-S018 未印的下葬日『10 月 27 日』與 ZE1-S019 未印的 Pope 生卒年，並在 risk 鎖緊所有未印卒年人物與當代作者不入畫。具體事實約 18 條，9–11 分鐘維持。"
+    },
+    {
+      "id": "N5504",
+      "agent": "ZE1",
+      "reviewer": "R491",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE1-S022 https://archive.org/download/dli.ernet.106874/106874-Hakluytus%20Posthumus%20Or%20Purchas%20His%20Pilgrimes%20Vol.14_djvu.txt（含先驗 metadata/dli.ernet.106874，SHA-256 100% 一致）、ZE1-S024 https://www.captaincooksociety.com/cooks-voyages/third-pacific-voyage/cook-drake-new-albion-and-juan-de-fuca（動態頁內文 100% 一致）、ZE1-S026 https://www.biographi.ca/en/bio/barkley_charles_william_6E.html（SHA-256 100% 一致）；並逐字核對快取 ZE1-S023（Wagner 1926 PDF）、ZE1-S025（Greenhow 1845 _djvu.txt）",
+      "reopen_result": "頁面上確實寫了：Purchas Vol. XIV pp. 415–421（ZE1-S022，完整書信至 OCR line 26770）：曾任土耳其公司駐阿勒坡領事的老 Michael Lok 於 1596 年 4 月在威尼斯經『John Dowglas, a famous English Mariner』（威尼斯大商船 Ragasona 號領航員，非研究稿誤寫的『英國領事』）介紹，結識 60 歲希臘凱法利尼亞島水手 Juan de Fuca（真名 Apostolos Valerianos），記下《Santa Ana》號被劫 6 萬杜卡特、1592 年北緯 47–48 度寬 30–40 里格尖塔岩海峽航行 20 餘天入北海（大西洋）與金銀珍珠之說、1596-09-24 與 1598-10-15 回信及 1602-06 在 Zante 探知 Fuca 重病垂危或已死。Wagner 1926（ZE1-S023，實際小節標題為 pp. 93–102〈The Strait of Anian〉）：p. 95 Gastaldi 1562 小冊誤搬馬可波羅東南亞 Ania 省、p. 97 Zaltieri 1566『Streto di Anian』地圖、pp. 100–101 西屬太平洋希臘領航員檔案與 Sanctotis 1589–1590 流產北探合約。Captain Cook Society（ZE1-S024，作者 David Nicandri & Robin Inglis，未印 Cook 生年 1728）引 1778-03-22 日誌『pretended Strait of Juan de Fuca... nor is there the least probability that iver such a thing exhisted』，並指海蝕柱岩實位於南岸。Greenhow 1845（ZE1-S025，未印 Greenhow、Navarrete、Vancouver 生卒年，p. 157 印明 Cook 卒於 1779-02-16，p. 150 印明 Cape Flattery 命名意為『in token of the improvement in his prospects』）：p. 84 記 Navarrete 為查 **Maldonado** 西北通道傳說奉命搜西印度總檔案館而挖出哥倫布文獻；pp. 88 & 241 fn 則記 **1802 年馬德里官方《Galiano 與 Valdes 日誌導言》**查遍檔案館 1592 年前後卷宗找不到半紙 Fuca 紀錄；pp. 238–241 記 1792 Vancouver 實測水道繞溫哥華島回太平洋。《加拿大傳記辭典》（ZE1-S026）確認 Charles William Barkley（1759–1832，前東印度公司海員首度任船長）與 17 歲妻子 Frances（1769–1845）駕奧斯坦德改掛奧地利旗的《Imperial Eagle》於 1787 年 7 月重現並命名海峽，其後合夥人在**加爾各答**（非模里西斯）賣船並把『charts and instruments』（海圖與航海儀器，非航海日誌）交給 John Meares（頁上未印 Meares 卒年 1756–1809），Barkley 獲庭外賠償 £5,000 且 Frances 日記保住真相。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查全池、batches/*.json、reviews/*.json、跨系列核心與同波 ZE2–ZE4，均無胡安．德．富卡海峽、阿尼安海峽、Apostolos Valerianos 或 Barkley 夫妻《Imperial Eagle》號。四重歷史反轉極具戲劇性，覆核修正五處精確度誤差與生卒年混入：（1）修正 Greenhow（ZE1-S025）p. 84 與 p. 88 的拼接——Navarrete 挖出哥倫布手稿是在查 Maldonado 傳說時，而查無 1592 年 Fuca 紀錄則是 1802 年馬德里官方導言翻遍西印度總檔案館的結論，已分開如實呈現；（2）修正 ZE1-S022 介紹人 John Dowglas 實為英國著名水手兼威尼斯商船領航員（曾任阿勒坡領事的是 Lok 本人），並將 OCR 行號擴至 26770 涵蓋 1602 年 Zante 打聽紀錄；（3）修正 ZE1-S026 合夥人是在加爾各答賣船並將『海圖與航海儀器』交給 Meares，且《Loudoun》是 Barkley 首度擔任船長；（4）修正 Cape Flattery 命名原意（照 ZE1-S025 p. 150『象徵前景好轉』，刪去無據的『虛假希望』）與 ZE1-S023 正確章節標題；（5）全面刪去頁面未印出的 Greenhow、Navarrete、Vancouver、Meares 與 Cook 出生年數字，並在 risk 嚴格鎖死 Wagner（1957 年卒）及當代學者 Gough、Nicandri、Inglis 與未印卒年歷史人物一律不入畫。具體事實約 19 條，9–12 分鐘維持。"
+    },
+    {
+      "id": "N5505",
+      "agent": "ZE1",
+      "reviewer": "R491",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE1-S027 https://archive.org/download/narrativeofunit02wilk/narrativeofunit02wilk_djvu.txt（含先驗 metadata/narrativeofunit02wilk，SHA-256 100% 一致）與 ZE1-S028 https://en.wikisource.org/wiki/A_Voyage_of_Discovery_and_Research_in_the_Southern_and_Antarctic_Regions/Volume_1/Chapter_9（SHA-256 100% 一致）；並逐字核對快取 ZE1-S029（1911 大英百科〈Wilkes〉）、ZE1-S030（〈Polar Regions〉）、ZE1-S031（Bryan 1939《IHR》PDF）、ZE1-S032（South-Pole.com）",
+      "reopen_result": "頁面上確實寫了：Wilkes 1849 Vol. II（ZE1-S027）：p. 295 記 1840-01-17『refraction above a low fog-bank』使《Peacock》看似在一英里外、實則看不見旗艦；p. 296 記 01-19 西南方約 3,000 呎雙層圓形劇場狀山體（Cape Hudson 名稱見 ZE1-S031 line 229）；Ringgold's Knoll 至 Enderby's Land 連航逾 1,500 英里總結實際印在 **p. 335**（OCR lines 18123–18138，研究稿把頁碼誤植成 p. 353）；Appendix XXIV p. 453 為 1840-04-05 寄給 Ross 的描圖信。Ross 1847 Vol. I Ch. 9（ZE1-S028，未印 Ross 生卒年 1800–1862）：1841-03-04 夜懼撞圖示 60 英里山脈，03-06 正午晴空（『a perfect Mediterranean day』）停在山脈中心 64°51'S, 164°45'E，瞭望六、七十英里無陸，放下測深索『with six hundred fathoms of line found no bottom』（頁上未印 3,600 英尺或 1,100 公尺換算），並刊出美海軍上校 J. H. Aulick 投書拆穿 Wilkes 推給 Bellamy／Balleny 的藉口。1911 大英百科〈Wilkes〉（ZE1-S029）確認 Wilkes 生卒年 1798–1877；〈Polar Regions〉（ZE1-S030）記 1902 年 2 月德國《Gauss》號在距 Termination Land 60 英里內測出 1,730 fathoms 深海（未印 3,160 公尺換算）、浮動冰舌（floating glacier tongues）斷裂為平頂冰山之機制，及南方真海岸與 Wilkes Land 命名（另提及 1958 年卒之 Mawson，已於 risk 鎖死）。Bryan 1939（ZE1-S031）記 01-16 三艦見陸影隆起、01-19 雙艦繪 Cape Hudson、01-22《Peacock》碎舵與極地海市蜃樓。South-Pole.com（ZE1-S032，未印 Dumont d'Urville 生卒年 1790–1842）記 01-19 改 01-16 爭議、1842-07 軍法審判（捏造陸地未成立，僅秘魯超額鞭打偷酒水兵超過 12 鞭受申誡）、國會限印 100 套本人僅分 1 套、Termination Land 即伸出海岸 180 英里之 Termination Ice Tongue／Shackleton Ice Shelf，以及『looming, or polar refraction』透過高層大氣投射海平線後真山脈（頁上未印『逆溫層』或『百餘英里』字樣）。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查全池、batches/*.json、reviews/*.json、跨系列核心與同波 ZE2–ZE4，均無 Charles Wilkes 南極幻影山脈、Ross 1841 年開船穿山測出 600 尋深海、1842 年軍法審判或 Termination 冰舌（既有 N2781 為北極 Crocker Land，N4202 為亞南極 Nimrod 四疑島）。英美兩位遠征隊長一手原書對質極為精采，覆核修正四處細節誤差與外部術語：（1）更正 ZE1-S027 頁碼筆誤——Ringgold's Knoll 與 1,500 英里總結在 Vol. II **p. 335**（OCR lines 18123–18138），而非 p. 353；（2）刪去 ZE1-S032 未印出的氣象術語『上暖下冷的逆溫層』與『百餘英里』，嚴格照原文寫『極地上蜃景／隆起折射（looming, or polar refraction）透過高層大氣將遠在海平線後方的真正南極山脈投射到半空中』，並將浮動冰舌崩裂機制精確扣合 ZE1-S030〈Antarctic Ice-Conditions〉；（3）刪去研究代理自行換算但原頁未印的公尺／英尺括號（1,100 公尺、3,160 公尺），保留一手精確尋數（600 尋、1,730 尋）；（4）刪去頁面未印出的 Ross（1800–1862）與 Dumont d'Urville（1790–1842）生卒年，並在 risk 嚴格鎖死 Douglas Mawson（1958 年卒）、G. S. Bryan、Hugh Robert Mill 及所有未印卒年歷史人物不入畫。具體事實約 18 條，9–12 分鐘維持。"
+    },
+    {
+      "id": "N5521",
+      "agent": "ZE2",
+      "reviewer": "R492",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE2-S002 https://archive.org/download/SpuriousMediumship/Spurious%20Mediumship_djvu.txt（R492 獨立先驗 metadata/SpuriousMediumship 再重抓全文 pp. 199–207）與 ZE2-S003 https://archive.org/download/proceedingsofsoc08soci/proceedingsofsoc08soci_djvu.txt（R492 獨立先驗 metadata/proceedingsofsoc08soci 再重抓 PSPR Vol. VIII pp. 253–310）；並逐行核對快取 ZE2-S001（PSPR Vol. IV pp. 381–495）與 ZE2-S004（Podmore Vol. II pp. 204–222）",
+      "reopen_result": "頁面上確實寫了：PSPR Vol. IV（ZE2-S001）pp. 381–495 詳載 S. J. Davey 化名『Mr. David Clifford』與 Richard Hodgson 合作舉辦二十餘場石板實驗，Sitting V–VIII 用附 Chatwood 專利鎖烏木雙層石板與書架抽書、Sitting XIII 由見證人自備石板鎖上三顆螺絲加麻繩火漆封印、Sitting II（pp. 431–432）倒扣在三只鹽盅上的玻璃杯內粉筆移動畫出『十字與幾何線條』（非寫英文字句！），且 p. 408 已記有靈學信徒反指 Davey 動用超越手法之力。惟重讀 ZE2-S002〈Spurious Mediumship〉（JSPR Jan. 1888 pp. 199–207）發現：該文實為 Davey 並排比對 1887-09-30 兩份紐卡索報紙對化名『Mr. Wilson』（Dr. Henry Slade）同一時期降神會的報導，證明第一名記者漏寫提問者事先出聲唸題，並在 p. 206 記『Mr. Wilson』剪開右腳襪子用腳趾夾石板被抓包——並非研究稿誤稱的『回應靈學界封 Davey 本人為真靈媒的公開信』（靈學派與 Alfred Russel Wallace 1891 年 3 月堅稱 Davey 本人是真靈媒之記載，實見於 ZE2-S001 p. 408、ZE2-S003 pp. 254–255, 307–309 與 ZE2-S004 p. 222）。PSPR Vol. VIII（ZE2-S003）p. 253 稱『the late S. J. Davey』（未印『23 歲』『27 歲』『1890 年 12 月染傷寒』）；p. 256 明寫頂針石筆套在『右手手指（如無名指），右手大拇指按在石板頂面明處』（非研究稿所寫『大拇指或食指』！）；pp. 268–270 明寫《Selections from Mrs. Browning》是『深藍書皮配燙金書背』（blue binding with gilt lettering，插在灰白《劍橋大學年曆》間），鮮紅書皮（bright red book）則是 H. Charlton Bastian《The Brain as an Organ of Mind》；pp. 272–275 明寫玻璃杯黑絲線黏紅蠟拉開粉筆露出預畫圖形，以及兩枚約 2 吋黃銅薄楔子撬開 1/4 吋細縫、從右褲腰兩只橡皮圈抽出 7–8 吋傘骨石筆伸入寫字。ZE2-S004 pp. 205–206 引 Harry Kellar 與『Professor Hoffmann (Mr. Angelo J. Lewis)』（未印《Modern Magic》書名，亦未提 Mrs. Sidgwick 粉筆碎片）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查 pool.json（與 N3804 萊比錫 Zöllner／Slade 繩結案、N3805 賓州大學 Seybert 委員會袖珍鏡調查案完全不同）、batches/*.json、reviews/*.json、跨系列核心與同波 ZE1/ZE3/ZE4，均無 S. J. Davey／David Clifford 石板記憶實驗。前提成立、三層反轉極精彩，覆核抓出並直接修正五處文本與外部記憶誤差：（1）更正 ZE2-S002〈Spurious Mediumship〉內容摘要與定位——該文實為比對 1887 年紐卡索兩報記者對『Mr. Wilson』（Henry Slade）漏記出聲唸題與右腳趾夾石板破綻，而靈學派及 Wallace 指稱 Davey 本人是真靈媒則精確歸回 ZE2-S001 p. 408、ZE2-S003 pp. 254–255, 307–309 與 ZE2-S004 p. 222；（2）修正頂針石筆穿戴位置：ZE2-S003 p. 256 原文為套在右手無名指等手指、大拇指按在板面明處，同步修正 answer_target、ZE2-S003 摘要與 visual（改掉『大拇指套著』）；（3）修正強迫選書封面顏色：Mrs. Browning 詩集實為深藍燙金皮、H. Charlton Bastian 專書才是鮮紅封面，並修正 Sitting II 玻璃杯粉筆是移動露出預畫十字／線條而非寫英文字句；（4）剔除四份來源均未印出的『23 歲』『27 歲』『1890 年 12 月染傷寒』『《Modern Magic》』及 ZE2-S004 摘要誤植的 Mrs. Sidgwick 粉筆碎片；（5）依實際頁面狀態收緊 risk：僅 Davey 於 1892 年前過世明印於 ZE2-S003 p. 253，刪除全部未印於頁面的生卒年區間，嚴守全片不畫任何真人面孔或姓名。具體史實逾 20 點，調整為 9–11 分鐘。"
+    },
+    {
+      "id": "N5522",
+      "agent": "ZE2",
+      "reviewer": "R492",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE2-S005 https://journals.openedition.org/terrain/2693（R492 獨立重抓 OpenEdition《Terrain》第 33 期全文 §§1–36）與 ZE2-S006 https://archive.org/download/proceedingsofsoc07soci/proceedingsofsoc07soci_djvu.txt（R492 獨立先驗 metadata/proceedingsofsoc07soci 再重抓 PSPR Vol. VII pp. 268–289）；並逐行核對快取 ZE2-S004（Podmore Vol. II pp. 120–124）",
+      "reopen_result": "頁面上確實寫了：Charuty《Terrain》第 33 期（ZE2-S005）載巴黎 Boulevard Montmartre 5 號攝影師 Édouard Isidore Buguet（警卷作 Jean Buguet）獲《Revue spirite》主編 Pierre-Gaëtan Leymarie 借款 3,500 法郎，每組 6 張售 20 法郎；1875-04-22 巴黎警察廳攝影科（Lombard 率隊）派警探坐上露台，快門未開即攔下暗盒洗出預曝兩尊鬼影，搜出暗房『祖先盒』（boîte aux ancêtres）：45 公分藍紗可動關節無頭木偶、綠紗孩童人偶、紙板骷髏、豎琴吉他及兩箱共 300 顆厚紙板人頭與假髮鬍鬚；1875-06-16/17 巴黎第七輕罪法庭審理時 Buguet 認罪示範，炮兵上校、畫商 Dessenon、Bullet 伯爵等顧客卻對著木偶宣誓堅稱拍到真亡親，最終判處 Buguet 與 Leymarie 各一年徒刑及 500 法郎罰金。PSPR Vol. VII（ZE2-S006）pp. 275–282 載 1874 年夏倫敦 33 Baker Street 測試：注意『自備新相機與底片』是光學商 Thomas Slater 1872 年測試另一攝影師 Hudson 的事（p. 275），Slater 在 1874 年對 Buguet 則是全程緊盯擦板到顯影並稱拍出宛如母親的亡姨母（『le portrait de ma tante, qui a été une mère pour moi』，p. 276），用鑽石刀切掉底片邊角做記號的是《Spiritualist》主編 W. H. Harrison（p. 277），另法國炮兵上校自選底片（p. 281 n.1）；p. 280 載過世十二年之 Édouard Poiret 照片被 Dreux 居民 M. Raymond 認出是仍在世的岳父，且同一女子頭像分賣三人充當亡姊、波爾多顧客亡母與亡友。至於 Stainton Moses『教權派介入（clerical origin）』與 William Howitt『耶穌會（Jesuits）收買真靈媒造假道具』陰謀論，實際印在 ZE2-S004 p. 123（非 ZE2-S006，且三文均無『前期百分之二十真通靈』字樣）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：已逐字核對池內 G02（1869 年紐約 William Mumler 預審因證據不足未能送交大陪審團而當庭放人）與 N2243（1878 年日本熊本士兵舊底板未擦淨），池內與跨系列完全沒有 1875 年巴黎 Édouard Buguet『祖先盒』案。覆核直接修正四處精確度與守則問題：（1）在 ZE2-S006 與 N5522 拆清 Hudson 與 Buguet 場次——光學商 Thomas Slater 自備新相機是 1872 年測 Hudson，1874 年測 Buguet 是全程盯顯影拍出『亡姨母』，鑽石刀切底片邊角則是主編 W. H. Harrison；（2）將 Stainton Moses 教權派介入說與 William Howitt 耶穌會陰謀論從 ZE2-S006 移回真正印出原句的 ZE2-S004 p. 123，並刪去三份來源均未印出的『前期百分之二十真通靈』；（3）修正 scope 與 notes 對池內 G02 的描述（G02 是預審證據不足不送大陪審團當庭放人，而非獲判無罪，避免與池內既有題矛盾）；（4）依實際頁面狀態重寫 risk：僅 Édouard Poiret（1875 年前已故十二年）印有卒年資訊，刪去全部未見於頁面的生卒年區間，確保當代學者 Giordana Charuty 與未印卒年人物私名不入正文、畫面零真人肖像。具體史實約 19 點，調整為 8.5–10.5 分鐘。"
+    },
+    {
+      "id": "N5523",
+      "agent": "ZE2",
+      "reviewer": "R492",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE2-S007 https://archive.org/download/proceedingsofsoc35soci/proceedingsofsoc35soci_djvu.txt（R492 獨立先驗 metadata/proceedingsofsoc35soci 再重抓 PSPR Vol. XXXV，核對 Séance No. 41 pp. 151–160，OCR 第 7751–8500 行）與 ZE2-S008 https://archive.org/download/reportofspiritua00lond/reportofspiritua00lond_djvu.txt（R492 獨立先驗 metadata/reportofspiritua00lond 再重抓 1871 倫敦辯證學會報告 pp. 206–215，OCR 第 8800–9180 行）；並逐行核對快取 ZE2-S004（Podmore Vol. II pp. 254–258）",
+      "reopen_result": "頁面上確實寫了：PSPR Vol. XXXV（ZE2-S007）pp. 151–156（實際 OCR 行號為第 7751–8500 行，非研究稿所標 5730–6090）完整收錄 Viscount Adare 事發三天內原始紀錄與 1924 年勘誤：確認『1868 年 12 月 16 日星期三、5, Buckingham Gate』只是 Adare 動筆寄信日期與住址，依首句『On Sunday last』實際降神會發生於 1868 年 12 月 13 日星期日晚間倫敦 Victoria Street 的 Ashley House 三樓；p. 151 編者註明引《Nautical Almanack of 1868》：『the moon was new at 13 h. 33.2 m., and could not therefore light the room however faintly!』，且 Dunraven 伯爵於 1924-05-06 覆函承認 Lindsay 月光記憶有誤（p. 152）；Adare 記房內沒點燈（no lights in the room，p. 152 編按推斷窗外微光『presumably from street lamps』）、Home 入隔壁房前嚴令三人（Adare、Master of Lindsay、Capt. Chas. Wynne）不准離席、Adare 轉頭見 Home『standing upright』立於窗外、實測兩窗相距 7 呎 4 吋且每扇窗外各有深 19 吋石陽台配 18 吋高石欄杆及相連的 4 吋與 3 吋石線腳（string-course），Home 當晚並示範窗戶推開不到一呎（not raised a foot）橫塞入屋。1871 辯證學會報告（ZE2-S008）p. 214（實際 OCR 第 9125–9160 行，非 7780–8150）記 Lindsay 1869-07-06 作證稱離地 85 呎、『the moon was shining full into the room』、窗外僅 1.5 吋線腳『not the slightest foothold』。Podmore（ZE2-S004）pp. 254–258 另引在場者 H. D. Jencken 證實 Home 數日前剛踩上同一道窗外線腳。惟三份文獻全文均未印出 Lindsay 日後出任『英國皇家天文學會會長』，亦未印出『第 26 代』『第四代』與各人生卒年。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查 pool.json（與 N3803 倫敦辯證學會第一小組餐桌移動紀錄與 Huxley 信件完全不同，已在 scope 明文切開；not_added 曾記『1855 年 Brewster 看 D. D. Home 抬桌』亦屬不同年份不同事件）、batches/*.json 與同波 ZE1/ZE3/ZE4，均無 1868 年 Ashley House 三樓窗外飄浮案。《1868 年航海曆》13h 33.2m 新月與 19 吋陽台／4 吋石線腳實測全部逐字核實！覆核修正四處細節：（1）剔除所讀三份來源均未印出的外部記憶頭銜『未來英國皇家天文學會會長』及『第 26 代』『第四代』伯爵屆數；（2）精確區分 Adare 原文只寫『房內未點燈（no lights in the room）』而『街燈微光』為 1924 年重印本編按推斷，並補出 ZE2-S004 p. 257 記錄數日前 Home 先踩窗外線腳之證人 H. D. Jencken；（3）修正 ZE2-S007 與 ZE2-S008 的實際 OCR 行號；（4）依實際頁面狀態刪去 risk 與來源摘要中未印於頁面的生卒年區間，確保 1924 年重印本編者姓名不入正文且畫面零真人肖像。具體史實約 18 點，調整為 8.5–10.5 分鐘。"
+    },
+    {
+      "id": "N5524",
+      "agent": "ZE2",
+      "reviewer": "R492",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE2-S010 https://koninklijkfriesgenootschap.nl/wp-content/uploads/2012/09/DVF_2013.pdf（R492 獨立重抓《De Vrije Fries》第 93 卷 PDF 全文 pp. 99–122）與 ZE2-S011 https://omroepzilt.nl/nieuws/algemeen/cultuur/de-vergeten-dominee-die-de-dag-des-oordeels-voorspelde-hy-wie-o-sa-rasjoneel/（R492 獨立重抓 Omroep Zilt 專訪全文）；並逐頁核對快取 ZE2-S009（皇家艾辛加天象儀 2024 UNESCO 官方英文專書 PDF 全書 pp. 4–55）",
+      "reopen_result": "頁面上確實寫了：皇家艾辛加天象儀 2024 官方專書（ZE2-S009）確認 Eise Eisinga 生卒年為 1744–1828（pp. 8, 29），15 歲起每週向曾赴弗拉訥克大學修習數學的『梳毛助手（a wool comber's assistant）』Willem Wytzes 學習歐幾里得幾何與日月食計算（非研究稿誤寫的『染匠數學家』！），少年兩冊手稿即達 665 頁（pp. 50–51 載總手稿約 1,500 頁），旺季僱用多達 40 名婦女與童工（p. 10）；1774-05-08 東方聚集木、火、水、月與金星（5 月 15 日火木極近），Boazum 牧師 Eelco Alta 以『真理愛好者』匿名發表小冊，呂伐登出版商 Abraham Ferwerda 刊登聳動末日廣告被 Alta 斥為『crazy and deceptive』（pp. 12–13），惟館方明確指出當時民間『並未爆發全面恐慌』（without widespread panic，pp. 10, 13）；天象儀於 1774–1781 年在父親 Jelte 與弟弟 Stephanus 協助下建成（pp. 10, 17 只寫父弟協助，並未寫『父親車製橡木齒圈、弟弟協助鍛鐵』！），比例尺 1:10^12（1 mm = 100 萬 km，pp. 18, 42），橡木箍盤鑲約 6,000 根手鍛鐵針、單一擺鐘配八顆重錘（pp. 17–19, 45），為避開樓下壁櫥床（closet-bed）將擺鐘從每分鐘 60 下截短改為 80 下（p. 19），1780-02-22 教授 Van Swinden 造訪、1787 流亡、1825 國王 William I 以 10,000 荷盾收購、2023-09-19 列入世界遺產（注意研究稿原標頁碼把 PDF 雙頁跨頁序誤當書頁碼，已全數校正）。《De Vrije Fries》（ZE2-S010）p. 110 與 p. 118 nn.41–44 載明『1773 年已動工』及『幾條街外弗拉訥克大學圖書館即藏有法國《Connoissance des Temps》星曆表』（此兩點出自 S010 而非 S009）。Omroep Zilt（ZE2-S011）確認 Eelco Alta 生卒年為 1723–1798、研究氣象與牛瘟接種實驗（veepest-inenting）且省府查扣部分印本。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查全池（P12/N5064 為 1524 年雙魚座行星聚合、P07 為末日時鐘、N3312 為 1186 年托萊多信件）、跨系列與同波 ZE1/ZE3/ZE4，均無 1774 年弗里斯蘭行星聚集或 Eise Eisinga 天花板天象儀。三層反轉與世界遺產實物極佳，覆核修正五處外部記憶與頁碼誤差：（1）修正 Willem Wytzes 身分：ZE2-S009 p. 9 原文是『曾赴弗拉訥克大學修習數學的梳毛助手（wool comber's assistant）』而非『染匠數學家』；（2）刪去 ZE2-S009 未印出的父弟具體分工『父親車製橡木齒圈、弟弟協助鍛鐵』，改照原文寫父親 Jelte 與弟弟 Stephanus 協助；（3）依 ZE2-S009 pp. 10, 13 明文澄清，將『瞬間陷入街頭騷動』收斂為地方議論與省府查扣部分印本、未爆發全面大恐慌，同步拿掉 visual 街頭驚慌人群；（4）校正 ZE2-S009 全部書頁碼（原稿誤把 PDF 跨頁序當頁碼），並將『1773 年已動工』與『弗拉訥克大學圖書館藏有法國《Connoissance des Temps》』精確歸回真正載明該考證的 ZE2-S010（p. 110 & p. 118 nn.41–44）；（5）risk 保留頁上明印之 Eelco Alta（1723–1798）與 Eise Eisinga（1744–1828）生卒，刪去其餘未印於頁面的生卒年區間，並確保六位當代學者館長姓名零入正文、畫面零真人肖像。具體史實約 20 點，調整為 9–11 分鐘。"
+    },
+    {
+      "id": "N5525",
+      "agent": "ZE2",
+      "reviewer": "R492",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE2-S012 https://archive.org/download/monthlynoticesr02socigoog/monthlynoticesr02socigoog_djvu.txt（R492 獨立先驗 metadata 再重抓《MNRAS》Vols. XXI–XXII）與 ZE2-S014 https://archive.org/download/storyofcometssim00chamuoft/storyofcometssim00chamuoft_djvu.txt（R492 獨立先驗 metadata 再重抓牛津出版 Chambers 1909《The Story of the Comets》）；逐行核對快取 ZE2-S013（Clerke 1885）與 ZE2-S015；並由 R492 新抓補入兩份 John Tebbutt 本人一手文獻：R492-S001→ZE2-S016（Tebbutt 1878《MNRAS》Vol. XXXVIII p. 412〈Note on the Great Comet of 1861〉）與 R492-S002→ZE2-S017（Tebbutt 1887《History and Description of Mr. Tebbutt's Observatory, Windsor, N.S.W.》）",
+      "reopen_result": "頁面上確實寫了：MNRAS（ZE2-S012）Vol. XXI p. 254 載雪梨天文台長 W. Scott 通報年輕農夫兼自學天文家 Tebbutt 1861-05-13 發現彗星、05-21 通報，且雪梨新裝 7 吋 Merz 赤道儀被自家過於突出的報時球塔（Time Ball Tower）擋住，只好架舊儀器在東窗搶測；pp. 242–243 載 Clifton 之 W. C. Burder 6 月 30 日凌晨 2:40 見亮如五車二之彗頭、都柏林 J. M. Stothard 驚呼『as yet we have heard nothing about it here』；Vol. XXII pp. 305–314 載 Rev. T. W. Webb 於 6 月 30 日 11h 45m 與利物浦觀測者把大熊座與仙后座急速收攏的彗尾透視光束誤當成卷雲（cirrus cloud）。Clerke（ZE2-S013）pp. 366–368 載里約台長 Emmanuel Liais 算出地球深入彗尾 30 萬英里、彗頭距地約 1,400 萬英里、尾長 1,500 萬英里、視長 118 度、the late Mr. Webb（證實 1885 年前已故）。Chambers（ZE2-S014）pp. 39, 141–145 載 Sir John Herschel 亮度比較、J. R. Hind 算距彗核三分之二穿尾、E. J. Lowe 日誌原文（日光無力、7:45 p.m. 白晝見彗、教區教堂牧師晚間 7 點太陽未落山點亮講道台蠟燭、黃色磷光如北極光）及 Warren De La Rue 兩張濕火棉膠底片拍出鄰星卻完全拍不出彗星。惟核對快取 ZE2-S015 發現：（a）四份原來源完全沒有任何一句提到『海底電報』或『蒸汽郵輪』！（b）澳洲端預測僅靠 2026 年部落格單證偏弱。R492 遂在 archive.org 檢索補抓 Tebbutt 本人 1878 年《MNRAS》Vol. 38 p. 412 一手聲明（ZE2-S016）與 1887 年自著專書（ZE2-S017），一手印證 Windsor Peninsula Estate、1 又 5/8 吋望遠鏡與六分儀、05-25 與 06-15《Sydney Morning Herald》及 06-22《Empire》預告 6 月 29 日迫近彗尾與白晝見彗，以及北半球不知情的真實原因：Tebbutt 當時『尚未與歐洲科學期刊建立聯繫（not in communication with the European scientific journals）』，預測僅刊於短暫流通的雪梨殖民地報紙！",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查全池（P06 為 1910 哈雷彗星氰氣恐慌、N2406/N3481 為 1832 比拉彗星軌道交點誤報）、跨系列與同波 ZE1/ZE3/ZE4，均無 1861 年大彗星或 John Tebbutt。題材極佳，覆核完成一項關鍵一手補強與三項修正：（1）新增兩份皇家天文學會與作者本人一手文獻 ZE2-S016（Tebbutt 1878《MNRAS》p. 412）與 ZE2-S017（Tebbutt 1887 專書 pp. 5, 26, 39），將 1 又 5/8 吋望遠鏡、Peninsula Estate 農場、6 月 15 日《Sydney Morning Herald》與 6 月 22 日《Empire》穿尾預測徹底錨定於一手史料，不再單靠 2026 年科普部落格；（2）全面剔除原稿在 question、hook、answer_target、payoff、visual 與 ZE2-S015 摘要中自行腦補、但所有來源均未提及的『當時澳歐沒有海底電報、警告信還在蒸汽郵輪上漂』，改依 Tebbutt 1878 年《MNRAS》原文寫『預測只刊在雪梨殖民地報紙、當時尚未與歐洲科學期刊建立聯繫』，同步把 visual 的蒸汽郵輪改為大洋兩岸觀測對比；（3）依實際頁面狀態重寫 risk：僅保留頁上明載卒年之 Tebbutt（1916 卒）與 T. W. Webb（1885 前卒），刪去其餘未印於頁面的生卒年區間，確保當代作者零入正文、畫面零真人肖像。具體史實逾 22 點，調整為 9–11.5 分鐘。"
+    },
+    {
+      "id": "N5541",
+      "agent": "ZE3",
+      "reviewer": "R493",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE3-S001 https://archive.org/download/bub_gb_LtpjVDmNC84C/bub_gb_LtpjVDmNC84C_djvu.txt、ZE3-S002 https://archive.org/download/jstor-105088/105088_djvu.txt、ZE3-S003 https://archive.org/download/essaytowardsnatu00elli/essaytowardsnatu00elli_djvu.txt、ZE3-S004 https://books.openedition.org/mnhn/3606（以上四份由 R493 獨立重抓且 SHA-256 與 ZE3 快取完全一致）；另逐行核對 ZE3 快取之 ZE3-S005（OpenEdition rives/5794）與 ZE3-S006–S009，並由 R493 新增抓取 ZE3-S035（EB1911 Jussieu）、ZE3-S036（EB1911 Linnaeus）、ZE3-S037（EB1911 Ovid）",
+      "reopen_result": "頁面上確實寫了：Marsigli 1725《Histoire physique de la mer》第四部 pp. 115–116（OCR 第 9899–9935 行）與 pp. 169–171〈Description des fleurs du Corail〉（第 12625–12761 行）記 Cassis 西方 6 浬 la grand Candelle 撈起紅珊瑚浸入同溫海水玻璃罐、隔晨綻放八瓣丁香狀白花、出水縮回並先刊於 1707 年 2 月《Supplément du Journal des Savans》（p. 170 誤排為『7 Décembre 1707』，Faget & Vielzeuf § 17 考實為 1706 年 12 月 7 日）。Watson 1752《Phil. Trans.》Vol. 47 pp. 445–469 詳載 Peyssonnel 逾 400 頁法文手稿《Traité du Corail》：回顧 Ovid／Pliny 迷思與 Boccone 海底硬珊瑚說，記紅珊瑚附生散落石塊、玻璃瓶與破陶罐，針觸滴酸縮回星形孔、皮層乾餾得 1/6 動物性揮發成分（與鹿角、人頭骨乾餾同類）與腐魚味，p. 454 微溫伸展後猛火煮沸使八瓣小體如燙熟貝類與章魚僵死孔外，1726 通報巴黎科學院遭拒，至 1740 Trembley 淡水螅、1741 Jussieu 諾曼第複驗與 1742 Réaumur 認錯。Ellis 1755 pp. v–x, 99–103 記 1751 年裱貼立體海底風景畫（sea-landscapes）時以放大鏡看穿管網、泡醋溶殼，1752 Sheppey 與 1754 Brighthelmstone 水生顯微鏡活體寫生。Cuvier MNHN mnhn/3606（實為第 20 章〈Invertebrate Zoology in the Eighteenth Century〉§§ 18–35）明記 Réaumur 1727 年因怕 Peyssonnel 淪為笑柄而好意隱去其名。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查 pool.json、batches/wave1–48、reviews/*.json、同波 ZE1／ZE2／ZE4 與《原來如此》雙池，均無珊瑚動物說論戰、Peyssonnel、Marsigli 或 John Ellis。前提完全成立、一手史料極紮實，覆核直接修正六處細節：（1）ZE3-S005 第一作者實為 Daniel Faget（非 Denis Faget），且原題名為〈Le vase et le microscope...〉（非研究稿自擬標題），Cuvier mnhn/3606 亦更正為第 20 章真標題；（2）ZE3-S005 § 19 僅稱 Peyssonnel 為『un contemporain de Marsili』（同時代馬賽醫師），並無『門生／師承／推翻恩師』字樣，已從 question、answer_target 與 S005 摘要全數移除；（3）釐清『人頭骨』出處：Boccone（1674，見 S005 § 12）觀察的是破陶片、貝殼與鵝卵石（比薩珊瑚人頭骨為更早 Peiresc 所見），而 Watson 1752（S002 pp. 453–456）記 Peyssonnel 見珊瑚附生玻璃瓶與破陶罐，並將珊瑚皮乾餾 1/6 揮發成分比擬鹿角與人頭骨乾餾物，已精確還原；（4）更正 Marsigli 1725 珊瑚花段落實際頁碼為第四部 pp. 115–116 與 pp. 169–171（原誤寫 pp. 109–114, 135–139），並更正 S007 Réaumur 卒地 La Bermondière 與 S009 Ellis 獲 1768 年 Copley 獎章及『bright star of natural history』原句；（5）S004 本頁未印出 Boccone、Jussieu、Linnaeus 與 Ovid 卒年（Boccone 1633–1704 見 S005 § 12），已由 R493 補抓公有領域《1911 大英百科》ZE3-S035（Jussieu 1699–1777）、ZE3-S036（Linnaeus 1707–1778）、ZE3-S037（Ovid 43 B.C.–A.D. 17）逐字印證，並將 visual『塗掉信封署名』改為收起小蠟封徽章以確保零文字；（6）修正 notes 誤引不存在題號 N5166，改列真實邊界對照（F15 與 B2077 等）。9–11 分鐘 episode_core 維持。"
+    },
+    {
+      "id": "N5542",
+      "agent": "ZE3",
+      "reviewer": "R493",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE3-S010 https://archive.org/download/transactionsofzo1183zool/transactionsofzo1183zool_djvu.txt、ZE3-S012 https://archive.org/download/10253277bsb/10253277bsb_djvu.txt、ZE3-S013 https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5345366/fullTextXML（以上三份由 R493 獨立重抓且 SHA-256 與 ZE3 快取完全一致）；另逐行核對 ZE3 快取之 ZE3-S011（Gosse 1860）、ZE3-S014、ZE3-S015，並由 R493 新增抓取 ZE3-S036（EB1911 Linnaeus）與 ZE3-S038（EB1911 Mignon 條內 Sibylle Merian 1647–1717）",
+      "reopen_result": "頁面上確實寫了：MacLeay 1835《Trans. Zool. Soc. London》Vol. 1 第 21 篇（1834-01-28 宣讀，pp. 179–194，OCR 第 9920–10763 行）在 p. 188 痛斥 Merian 蘇利南圖譜具『the dangerous worthlessness』，p. 189 註 1 記 1705 版早於 Merian 過世十二年，pp. 190–193 斥捕鳥圖抄自 Rochefort 1658 的『wilful inventions』與『pictorial lie』，將活蜂鳥（Trochilus pectoralis）與小 Anolis 放進古巴三呎深 Mygale 地洞而蜘蛛棄洞、花園馴鴉（Corvus jamaicensis）翻出蜘蛛吸乾體液（『sucking the entire juice out of their body. He did not, however, devour them』），並測試 Nephila clavipes 剪網丟掉小壁虎。Gosse 1860 pp. 233–241 拆解負面證據謬誤並刊出 Bates 1849 年 6 月 Cametá 目擊信。Bates 1863 初版 Vol. I pp. 160–162（第 7191–7258 行）記體長近 2 吋、張腿 7 吋之 Mygale avicularia 在大樹裂縫織白亞麻布般濃密絲幕纏住兩隻黃雀大小雀鳥，趕走蜘蛛救鳥（『I drove away the spider and took the birds』），點名為 Merian 與 Palisot de Beauvois 平反，並記首件捕殺標本腹部紅褐剛毛致奇癢三天與原住民孩童繫繩遛蛛。2017《ZooKeys》659（PMC5345366）確認 Merian 1705 圖版繪兩隻 Avicularia（一隻出巢吃螞蟻、一隻吃小鳥）、Linnaeus 1758 據以命名 Aranea avicularia、樹棲 Avicularia 棲位習性及秘魯新種 Avicularia merianae 致敬。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查既有池、各波批次、同波 ZE1／ZE2／ZE4 與《原來如此》雙池，均無 Maria Sibylla Merian、MacLeay 或 Bates 捕鳥蛛公案。前提完全成立、戲劇反轉極佳，覆核直接修正五處外部記憶滲入與書目誤差：（1）ZE3-S010 論文標題被研究稿誤寫成 MacLeay 1833 年另一篇林奈學會古巴鳥類解剖論文，且宣讀日期實為 1834 年 1 月 28 日（非 11 月 25 日），已更正為真標題〈A few Remarks tending to illustrate the Natural History of two Annulose Genera, viz. Urania of Fabricius, and Mygale of Walckenaer〉，並還原馴鴉『吸乾體液而不吞空殼』與 Nephila 剪網丟壁虎的精確實驗細節；（2）研究稿寫入的『52 歲自費遠航蘇利南（1699–1701）』『第 18 圖版』『番石榴枝頭』『行軍蟻』在 S010–S013 均未印出（S013 原文僅寫『feeding on ants』與『eating a small bird』），全數剔除外部記憶並改照 S013 原文；（3）Bates 1863 年初版快取（S012 pp. 160–162）僅印『nearly two inches in length of body, but the legs expanded seven inches』與『drove away the spider』，並無 1876 年節略本才改寫的『重可達 2 盎司』『小鳥體長 4 吋』『荷蘭女畫家沒畫出絲網』，已全數刪淨並更正為趕走蜘蛛救鳥、首件標本剛毛致癢三天；（4）更正 S014 DNB MacLeay 生日為 1792 年 7 月 30 日（原誤寫 7 月 21 日）並註明條目標題 1866 與內文 1865-01-26 排版差異；（5）S013 未印 Merian 與 Linnaeus 卒年，已由 R493 補抓 ZE3-S036（Linnaeus 1707–1778）與 ZE3-S038（Sibylle Merian 1647–1717）核實。9–11 分鐘 episode_core 維持。"
+    },
+    {
+      "id": "N5543",
+      "agent": "ZE3",
+      "reviewer": "R493",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE3-S016 https://archive.org/download/experimentsongen00redi/experimentsongen00redi_djvu.txt、ZE3-S017 https://archive.org/download/mobot31753000818671/mobot31753000818671_djvu.txt（以上兩份一手原典由 R493 獨立重抓且 SHA-256 與 ZE3 快取完全一致）；另逐頁核對 ZE3 快取之 ZE3-S018（Parke 2014 PDF）、ZE3-S019（EB1911 Malpighi）、ZE3-S020（American Cyclopædia Kircher）",
+      "reopen_result": "頁面上確實寫了：Redi 1668（Bigelow 1909 英譯本，ZE3-S016）導言 p. 8 載生卒 1626–1697（佛羅倫斯曆），pp. 31–40 載讀《伊利亞德》第 19 卷啟發，動用宮廷獅子肉、老虎肉、水牛肉、鹿肉、蛇魚鰻肉分批測試，實測反駁 Kircher《Mundus Subterraneus》死蠅泡蜂蜜水放溫銅板與搗碎羅勒變蠍配方，並以那不勒斯薄紗（fine Naples veil）封瓶加紗框阻絕母蠅，母蠅急得在外紗產卵甚至一次掉下六、七條活蛆；pp. 72, 91–99 載剖開逾兩萬顆橡樹蟲癭（more than twenty thousand galls），推翻自己早年春蠅產卵猜想，改稱活橡樹與果實由植物開花結果之生機／感覺靈魂直接生蟲。Malpighi 1687《Opera omnia》卷二〈De Gallis〉pp. 126–130（ZE3-S017，OCR 第 25720–26070 行）載顯微解剖造癭蜂蠅（Gallarum musca）腹部如細銼（lima）之彎曲產卵鑽管（terebra）與透明液滴，並在 p. 130（第 26034–26045 行）親記『Semel prope Junii finem vidi muscam...』：六月底親見母蟲停在萌發橡樹嫩芽上弓身（convulso in arcum corpore）刺入產卵管。Parke 2014《SHPBBS》pp. 34–42 完整解析室內實驗台對活樹長週期田野過程的時間差盲點與晚年手稿轉折。",
+      "changed_fields": [
+        "answer_target",
+        "editorial",
+        "risk"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查既有池、各波批次、同波 ZE1／ZE2／ZE4 與《原來如此》雙池，均無 Redi 1668 同書自我反轉（腐肉薄紗罐 vs 兩萬顆橡樹蟲癭植物靈魂說）或 Malpighi〈De Gallis〉破案。前提完全成立、原典核對高度精準，覆核僅做三項精修：（1）刪去未附生卒年來源的古希臘人名點名，改直引 S016 p. 33 原文所載《伊利亞德》第 19 卷詩句情節，並於 S016／risk 並列註明佛羅倫斯舊曆 1697 與現代公曆 1698 卒年；（2）在 answer_target 精確標出 Malpighi 1687 拉丁原典對四翅造癭昆蟲之稱呼『Gallarum musca（造癭蜂蠅，即今日所稱癭蜂）』，並將 editorial.payoff 的『春天橡樹枝頭』更正為與 Malpighi 原文（prope Junii finem）一致的『初夏六月底橡樹嫩芽上』；（3）將 editorial.visual 中的瓶身貼紙與奇想泡泡明確收緊為『無文字小圖騰』與『純圖案無文字奇想泡泡』，並更正 ZE3-S020 Kircher 出生地定位照原文寫『Fulda 附近』（原誤寫未印出的 Geisa）。9–11 分鐘 episode_core 維持。"
+    },
+    {
+      "id": "N5544",
+      "agent": "ZE3",
+      "reviewer": "R493",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE3-S021 https://archive.org/download/experimentanovau00gueruoft/experimentanovau00gueruoft_djvu.txt（R493 獨立重抓 1672 年阿姆斯特丹拉丁文初版，SHA-256 與 ZE3 快取完全一致，逐行核對 Cap. II–III 與 Cap. XXIII–XXIV pp. 103–106）；另逐行核對 ZE3 快取之 ZE3-S022（Dannemann 1894 德譯校註）、ZE3-S023（弗倫斯堡大學 PDF，R493 當日重抓遇伺服器 HTTP 503 即依規停手不重試，核對 ZE3 快取 SHA-256 無誤）與 ZE3-S024（EB1911 Guericke）",
+      "reopen_result": "頁面上確實寫了：Guericke 1672 拉丁原典《Experimenta Nova (ut vocantur) Magdeburgica de Vacuo Spatio》第三卷 Cap. II–III 記抽啤酒木桶時空氣穿過木孔嘶嘶作響、60–70 馬格德堡夸脫空心銅球因非正球體瞬間如手揉布巾（instar panni）猛烈壓扁；Cap. XXIII p. 104（OCR 第 15516–15640 行）記直徑 67/100 肘之銅半球（cupreas）夾浸蠟與松節油皮環、氣壓緊力約 2,686 磅，16 匹馬對拉時有時傾盡全力終能拉開並發出如火槍擊發巨響（『crepitum edunt instar sclopeti si explodatur』）；Cap. XXIV pp. 104–106（第 15669–15825 行）記每次被馬扯開掉地撞擊總會受損失圓，遂另造直徑 95/100 肘大銅半球（負載 5,399 磅、需 34 匹馬），改綁 24 匹馬再也拉不開。Dannemann 1894（S022）印證全部數據、兩萬塔勒花費及 Guericke（1602–1686）與 Caspar Schott（1608–1666）生卒年；弗倫斯堡大學專文（S023 pp. 4–9）考實 1654 雷根斯堡議會儀器售予美因茨選帝侯、Schott 1657 首書無馬拉半球，馬拉半球係 1656–1657 返馬格德堡後創製並首刊於 Schott 1664《Technica curiosa》，1663 柏林上演 24 匹馬。",
+      "changed_fields": [
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查既有池、各波批次、同波 ZE1／ZE2／ZE4 與《原來如此》雙池，均無馬格德堡半球四連迷思翻案、Guericke 或 Caspar Schott。前提完全成立，1672 年拉丁文原典第 23–24 章引文與數字逐字吻合；覆核在 ZE3-S023.limitations 與本題 scope 明確補註弗倫斯堡大學 PDF 第 2 頁導言有一處將半球誤寫為『sulphur hemispheres』（誤混硫磺靜電球）之筆誤，嚴格以 1672 拉丁原典 p. 104『cupreas』（銅製）為準。可核實事實充沛，9–11 分鐘 episode_core 維持。"
+    },
+    {
+      "id": "N5545",
+      "agent": "ZE3",
+      "reviewer": "R493",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE3-S025 https://archive.org/download/jstor-106220/106220_djvu.txt、ZE3-S026 https://archive.org/download/jstor-106344/106344_djvu.txt、ZE3-S027 https://archive.org/download/jstor-107350/107350_djvu.txt、ZE3-S028 https://royalsociety.org/blog/2022/08/song-of-schiehallion/（以上四份由 R493 獨立重抓且 SHA-256 與 ZE3 快取完全一致）；另逐頁核對 ZE3 快取之 ZE3-S029–S034，並由 R493 新增抓取 ZE3-S039（EB1911 Sir Isaac Newton 1642–1727）與 ZE3-S040（EB1911 Henry Cavendish 1731–1810）",
+      "reopen_result": "頁面上確實寫了：Maskelyne 1775《Phil. Trans.》Vol. 65 pp. 500–542（共 4,626 行 OCR）記王室撥用金星凌日餘款、南坡駐守十七週、p. 516 動員 12 人花一週抬 10 呎 Sisson 天頂儀翻越山脊、p. 519 兩側共測 43 顆恆星 337 次觀測、pp. 530–532 取兩站各 10 顆星 40 次觀測得視緯差 54.6\" 減 Rannoch 平原 5,880 呎基線三角測量真緯差 42.94\"（4,364.4 呎）＝11.6\" 偏折、p. 533 推翻地球空心拱殼說（great hollow shell of matter）。Hutton 1778《Phil. Trans.》Vol. 68 pp. 748–758, 781–785 記玄武岩柱／蜂巢網格（每站 20 同心圓×48 扇區＝960 柱）、Cavendish 計算尺建議省 3/4 工時、pp. 756–757『connecting together by a faint line all the points which were of the same relative altitude』首創陸地等高線、地球與山石密度比 9:5（17,804:9,933）得地球平均密度約水之 4.5 倍（4.481）。Playfair 1811《Phil. Trans.》Vol. 101 pp. 347–377 實測石英岩 2.6398 與片岩／石灰岩 2.81039，修正密度至 4.5588–4.867（均值 4.713）。皇家學會專文（S028）記 Newton 首倡高山偏折卻以為需行星級巨物、賣東印度公司股票與出租倫敦 Acton 磚牆籌款、威士忌慶功會失火燒琴與補寄倫敦新琴〈The Yellow London Lady〉（與 S029 氏族博物館互證）。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查既有池、各波批次、同波 ZE1／ZE2／ZE4 與《原來如此》雙池，均無 1774 年 Schiehallion 遠征、Maskelyne 或 Hutton 陸地等高線發明（N4281 僅半句帶過地球密度背景）。前提完全成立、三篇《哲學彙刊》原典極精彩，覆核直接修正七處外部記憶與細節誤差：（1）ZE3-S025 快取為第 49 篇本報告 pp. 500–542（共 4,626 行 OCR，非 1,864 行），不含第 48 篇導言，且 S025、S028、S030、S034 均未印出『不到 2 角分』與『Chimborazo 火山暴風雪／空洞』，已全數剔除外部記憶，改嚴格依 S028（Newton 提議測山卻以為需行星級巨物）與 S030／S034（Bouguer 1738 嘗試測鉛垂線偏折、1735 秘魯遠征）表述；（2）精確區分 S025 觀測數：全山累積 43 顆星 337 次觀測（p. 519），而 11.6 角秒初步偏折係取兩站各 10 顆星共 40 次觀測算出（pp. 530–532）；（3）更正傳記細節：S031（EB1911 Maskelyne）未提 1775 Copley 獎章已刪，S032（DNB Hutton）明載其 Copley 獎章係因 1776–1778 火藥彈道論文而非 Schiehallion 報告，S028 刪未印出的『ceilidh』、S029 刪未印出的『茅草』、S030 現代值照原文寫『約 5.5 g/cm³』（刪未印出的 5.515）；（4）將未附傳記來源的『國王 George III』改照 S025／S028 寫『英國王室准許動用 1769 年金星凌日遠征剩餘經費』，並由 R493 補抓 ZE3-S039（Newton 1642–1727）與 ZE3-S040（Cavendish 1731–1810，取代原誤標未印卒年的 S030）核實全部點名人物卒年；（5）將 editorial.visual 中可能帶文字的『貼著出租木牌』改為純動作插畫『紅磚牆前兩位十八世紀紳士握手交接錢袋』，確保畫面零文字；（6）修正 notes 與 not_added 誤引不存在題號 N5399，改列真實池內對照 N4281。9–11 分鐘 episode_core 維持。"
+    },
+    {
+      "id": "N5561",
+      "agent": "ZE4",
+      "reviewer": "R494",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE4-S002 https://archive.org/download/cu31924029909698/cu31924029909698_djvu.txt（Eckenstein 1906，獨立重抓核對 Ch. II pp. 7, 10–11 與 Ch. XII pp. 190–191）、ZE4-S004 https://archive.org/download/bim_early-english-books-1641-1700_the-accomplisht-cook-_may-robert_1685/bim_early-english-books-1641-1700_the-accomplisht-cook-_may-robert_1685_djvu.txt（Robert May 1685，獨立重抓 OCR lines 695–896）、ZE4-S005 https://en.wikisource.org/wiki/Dictionary_of_National_Biography,_1885-1900/Hudson,_Jeffery（DNB Vol. 28 pp. 150–151，獨立重抓全文）；另由 R494 新抓補入 R494-S001→ZE4-S030 https://www.gutenberg.org/files/22790/22790-h/22790-h.htm（Project Gutenberg #22790 同版人工校對本），並逐字核對快取 ZE4-S001（1930 原書 pp. 69–72）與 ZE4-S003（Halliwell 1886 pp. 90–91）",
+      "reopen_result": "頁面上確實寫了：1930 年《The Real Personages of Mother Goose》pp. 69–72 把國王數錢附會為 Henry VIII 清點修道院歲入、二十四隻黑鳥附會為 Newstead Abbey 二十四份莊園地契（兼黑袍修士）、王后吃著『the bread of England, thickly spread with the honey of Spain's cloying assurances』（p. 71，政治比喻西班牙保證她不會被休妻，非字面飲食嗜好）、侍女為 Anne Boleyn、啄鼻黑鳥為拆散她與 Lord Percy 婚約的 Cardinal Wolsey 與王室劊子手，全書未印作者卒年且無任何十六世紀歌詞證據。Eckenstein（1906，未印作者卒年）pp. 7, 10–11 列書名『1744. Tommy Thumb's Pretty Song Book.』與『c. 1783. Gammer Gurton's Garland.』，pp. 190–191 寫『The first verse of this rhyme appears in the collection of 1744, in which \"naughty boys\" stands for blackbirds』（未印出『Four and twenty naughty boys』整句原詞），c. 1783 三節版第二節為國王在 parlour、王后在 kitchen，咬鼻者為 magpie，並引『Empulano or the Italian Banquet of 1589』。Halliwell（書名頁印 1886 年，非 [c. 1853]）pp. 90–91 引《Bonduca》（Act v, sc. 2，無研究稿自添的『Whoa, there's a stir now!』引句）、《Twelfth Night》（印作 Act ii, sc. 2）『Come on; there is sixpence for you; let's have a song』，並引『Epulario, or, the Italian banquet, 1589』標題『to make pies so that the birds may be alive in them and fly out when it is cut up』；p. 91 第四節原文是『Jenny was so mad, / She didn't know what to do; / She put her finger in her ear, / And crackt it right in two』（氣得把耳朵掰成兩半，絕非『笑裂了耳朵』！）。Robert May（1685，ZE4-S004 因掃描右緣裁切漏字尾，由 R494 補抓 ZE4-S030 完整印證）sig. A6r 記『born in the year of our Lord 1588』，sig. A7v–A8r 記紙板船與城堡火藥對轟、玫瑰香水蛋殼互擲、拔箭流 claret 紅酒雄鹿，以及兩座填麩皮烤硬大派『being baked, make a hole in the bottom of your pyes, take out the bran, put in your Frogs, and Birds, and close up the holes with the same course paste』，掀蓋時活蛙使貴婦『skip and shreek』、活鳥『flying in the light, will put out the Candles』。DNB Vol. 28 p. 150 記 Jeffery Hudson（1619–1682）九歲不足 18 吋，在 Buckingham 公爵款待 Charles I 與 Henrietta Maria 晚宴上『was brought on the table concealed in a pie, from which he was released in sight of the company』——頁上完全沒有『冷派（cold pie）』與『身穿微型盔甲（armour）』！",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查全池與跨系列及同波 ZE1–ZE3，無〈Sing a Song of Sixpence〉、活鳥派食譜或 Jeffery Hudson。前提成立、反轉極精采，覆核直接修正七處外部記憶混入與人物紅線：（1）1930 年原書未印出 Katherine Elwes Thomas 卒年（研究稿自行填寫未印於頁面的 1857–1950），依規將 question、answer_target、scope、source_locator 與 not_added 中的個人姓名全面改寫為 1930 年專書《The Real Personages of Mother Goose》，同時一併移除 Eckenstein 與 Halliwell 未印於實讀頁之生卒年並嚴禁入畫；（2）刪去 DNB 原文完全沒有的『冷派』與『身穿全套微型盔甲／披甲小武士』外部傳說，改照原文寫藏於派中端上御桌當眾放出，並同步改掉 payoff 與 visual 的盔甲武士；（3）修正 Halliwell 版本年份為書名頁實印之 1886 年，刪去註中沒有的《Bonduca》英文引句，並糾正第四節 Jenny『笑裂耳朵』之誤讀（原文是氣得把手指塞進耳朵掰成兩半）；（4）Eckenstein 與 Halliwell 均將英譯《Epulario》印作 1589 年，刪去研究稿憑外部記憶硬改的『1598 年』；（5）精確區分 Eckenstein 所記 c. 1783《Gammer Gurton's Garland》（國王在 parlour、王后在 kitchen）與十九世紀通行詞，並刪去未印出的『Four and twenty naughty boys』整句引號；（6）澄清 1930 年書裡王后吃『塗滿西班牙保證蜂蜜的英國麵包』是政治修辭而非飲食習慣；（7）新增 Project Gutenberg #22790 人工校對本（R494-S001→ZE4-S030）補齊 ZE4-S004 右緣裁切字尾。具體事實逾 18 條，8.5–10.5 分鐘穩健。"
+    },
+    {
+      "id": "N5562",
+      "agent": "ZE4",
+      "reviewer": "R494",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE4-S007 https://archive.org/download/anmerkungenzuden01grim/anmerkungenzuden01grim_djvu.txt（Bolte & Polívka 1913 Band I pp. 237–259，獨立重抓核對 OCR lines 11379–12505）與 ZE4-S008 https://archive.org/download/11336230bsb/11336230bsb_djvu.txt（Rollenhagen《Froschmeuseler》1876 校本 pp. 154–161，獨立重抓核對 OCR lines 11226–11760）；並逐字核對快取 ZE4-S006（格林 1853 定本 pp. 120–125）與 ZE4-S009（Voigt 1884《Ysengrimus》）",
+      "reopen_result": "頁面上確實寫了：格林 1853 年版 Nr. 27 pp. 120–125 記老驢子邀獵狗去 Bremen 當 Stadtmusikanten（驢彈 Laute、狗打 Pauken、貓擅 Nachtmusik、公雞啼叫），半路破窗嚇跑強盜，午夜探子把貓眼當火炭被抓臉、門後狗咬腿、院裡驢踢倒、屋樑公雞喊『Kikeriki!』，探子回報女巫、刀客、黑怪物與屋頂法官『Bringt mir den Schelm her!』，四動物遂永居小屋未進 Bremen。《格林童話註釋》Band I p. 237 記 1812 初版無此篇、1819 第二版據 Paderborn 兩則故事補入，Zwehrn 異文裡動物先為強盜奏樂獲請吃飯，等強盜外出搶劫午夜回屋取火才挨揍；pp. 238–240 全文轉錄 Hans Sachs『1551』年〈Das Kecklein unter zwölf Wölfen〉（頁上僅印 1551，未印『9 月 18 日』！），破曉前（gegen Morgen）狼探子 Kecklein 進屋挨揍，回報爐邊補鍋匠（Pfannenflicker）拿鼻夾夾鼻、乾草穀倉（Heustadel，非『門邊』！）胖農夫拿乾草叉刺倒、廄裡箍桶匠（Büttner）揮雙槌痛打、屋頂澡堂理髮匠（Bader）要梳頭並啄瞎眼睛；pp. 255–257 記約 1148 年根特 Magister Nivardus《Ysengrimus》卷四母狍 Bertiliana 率眾家畜去 Roma 朝聖夜宿痛擊惡狼，及歐洲各地去 Amsterdam、Brüssel、Roma（公雞想當教宗）異文。Rollenhagen《Froschmeuseler》pp. 154–161 記牛、驢、狗、貓、雞、鵝因客棧遭雷擊失火（donner, blitz und feur，非寒冬逃亡，木屋係伐木工昔日避冬所留）奪占獅豹狼熊木屋，午夜狼探子挨狗咬頸、廚童貓吹灰抓眼、牛驢拿草叉與鐵梳刷（Kratzbürste）猛刮、鐵匠鵝拿火鉗夾尾、屋樑守夜雞喊『Wacht auf!』。Voigt 1884《Ysengrimus》成書年代（1146–1148）實際位於導言 S. CVI–CXII（OCR lines 6818–6981，非研究稿所標 S. LVIII–LIX），Liber IV 開篇位於 pp. 194–196。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：全池與跨系列及同波 ZE1–ZE3 均無〈不來梅的城市樂手〉、Hans Sachs 十二匹狼、《Froschmeuseler》或《Ysengrimus》。前提成立、八百年四層文本證據極硬，覆核修正五處細節與人物規範：（1）刪去 ZE4-S007 頁上未印的 Hans Sachs『9 月 18 日』外部記憶日期（只寫 1551 年），並將胖農夫拿乾草叉的位置從『門邊』更正為原詩的『乾草穀倉（Heustadel）』、探狼進屋時間更正為破曉前；（2）補齊 Zwehrn 異文後半段（強盜請吃完飯外出搶劫、午夜回屋取火仍挨揍）；（3）刪去 ZE4-S008 摘要中誤添的『寒冬森林』（原詩是客棧遭閃電雷擊失火逃入森林）；（4）修正 ZE4-S009 導言考證 1146–1148 年代之實際頁碼為 S. CVI–CXII（OCR lines 6818–6981）；（5）移除所有未印於實讀頁面的作者／編註者生卒年，且不在正文點名二十世紀編註者姓名、全片零真人入畫。具體事實約 18 條，8.5–10.5 分鐘穩健。"
+    },
+    {
+      "id": "N5563",
+      "agent": "ZE4",
+      "reviewer": "R494",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE4-S012 https://archive.org/download/anmerkungenzuden03grim/anmerkungenzuden03grim_djvu.txt（Bolte & Polívka 1918 Band III pp. 339–355，獨立重抓核對 Add. MS 11619 拉丁全詩與全球分類）、ZE4-S013 https://archive.org/download/amazoniantortoi00hartgoog/amazoniantortoi00hartgoog_djvu.txt（Hartt 1875 pp. 1–15，獨立重抓核對）、ZE4-S014 https://archive.org/download/uncleremushisson01harr/uncleremushisson01harr_djvu.txt（Harris 1881《Uncle Remus》Ch. XVIII pp. 80–84，獨立重抓核對）；並逐字核對快取 ZE4-S010（Aesopica Perry 226）與 ZE4-S011（La Fontaine 1678 法文原詩）",
+      "reopen_result": "頁面上確實寫了：Aesopica Perry 226 烏龜說『I will beat you in a race!』（並無研究稿自添的『就算你跑得像風一樣快』）。La Fontaine 1678 pp. 191–194 開篇『Rien ne sert de courir ; il faut partir à point』、四粒黑藜蘆草（quatre grains d'ellebore）、元老院議員步伐（train de Senateur）與背房子反問。《格林童話註釋》Band III p. 339 記 KHM 187 採自 Wilhelm Schröder（† 1878）於 1840 年《Hannoversches Volksblatt》（Jahrg. 1, nr. 51，頁上未印『4 月』、亦未印『第 74 趟』與『Ick bün all hier!』低地德語原句！）發表之故事（初設 Stade，1849 改 Buxtehude）；pp. 344–345 全文排印大英博物館 13 世紀拉丁詩 Add. MS 11619：雄鹿與公刺蝟合種莊稼（seges），野豬裁定『haec perfecta semper sit agri dominata, / quae citius sepis poterit percurrere prata』（第 9 節真原句，而非研究稿自行杜撰的拉丁句『Cuius cursus citior, illi cedat seges』！），且原詩第 10–12 節是公刺蝟哭著回家（flens domum perrexit）、由**母刺蝟（hericia）主動獻計**（consilium sanum tibi dabo）去終點埋伏喊『perveni citius!』（非公刺蝟教老婆！）。Hartt 1875 p. 3 明言故事為營火消遣民譚（simply to please, like a ballad，零神聖儀式），pp. 7–14 記 Jabuti 走樹林（matto）、鹿跑空曠原野（campo，非『空曠河岸』），排親戚喊『U'i suasú!』，並記壁蝨抓鹿尾、South Carolina 十哩求婚賽與暹羅 Garuda 賽跑。Harris 1881 pp. 80–84 記 50 美元五哩賭局：p. 82 起跑時箱龜太太在樹林邊喊『go』後直接回家、孩子們守中途木樁探頭應聲、老箱龜躲第五哩木樁領獎；p. 84 小男孩喊『that was cheating』後，Uncle Remus 真正原話是『De beastesses 'gun ter cheat, en den fokes tuck it up, en hit keep on spreadin'... dat somebody don't cheat you 'fo' yo' ha'r git gray』（動物先作弊、人類學去傳染開來，當心別在白頭前被騙——絕非研究稿憑空編造的『力氣跟快腿可比不上動腦筋』！）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：全池與跨系列及同波 ZE1–ZE3 均無〈龜兔賽跑〉、13 世紀 Add. MS 11619 刺蝟雄鹿詩、亞馬遜 Jabuti 賽跑或《Uncle Remus》箱龜賭局。前提極強，覆核揪出並修正五處關鍵原文出入：（1）糾正《Uncle Remus》結尾被研究稿憑空改寫的說教台詞，還原 p. 84 極具幽默反諷的原話『先是動物開始作弊，接著人類學了去還一路傳染開來，當心別在頭髮變白前被人騙了』，同時精確修正起跑分工（太太喊完 go 回家、孩子沿途守中途木樁）並將貨幣統一寫成中文『50 美元』；（2）糾正 13 世紀拉丁詩 Add. MS 11619 劇情與引句——刪去研究稿杜撰的拉丁文句子並換成第 9 節真原句，把『公刺蝟教母刺蝟』更正為原詩『公刺蝟哭著回家、母刺蝟主動獻計』，並將『麥田』改回拉丁原文泛指莊稼穀物（seges / agri）；（3）刪去未印於實讀頁面的 Schröder『4 月』『第 74 趟』與『Ick bün all hier!』外部記憶細節（保留頁上實印之 1840 年與 † 1878 卒年）；（4）將 Hartt 原文 campo 從『空曠河岸』更正為『空曠原野』，並確認 p. 3 明載純屬營火消遣民譚、零原住民神聖儀式禁忌；（5）移除未印於頁面之學者生卒年與二十世紀編註者正文點名。具體事實約 19 條，9–11.5 分鐘穩健。"
+    },
+    {
+      "id": "N5564",
+      "agent": "ZE4",
+      "reviewer": "R494",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE4-S015 https://archive.org/download/comptes-rendus-hebdomadaires-academie-des-sciences_1905-12-18_141_25/comptes-rendus-hebdomadaires-academie-des-sciences_1905-12-18_141_25_djvu.txt（1905-12-18 法國科學院《Comptes rendus》pp. 1072–1073，獨立重抓核對）與 ZE4-S019 https://archive.org/download/monthly-notices-of-the-royal-astronomical-society_1909-01-08_69_3/monthly-notices-of-the-royal-astronomical-society_1909-01-08_69_3_djvu.txt（1909-01 格林威治天文台《MNRAS》pp. 213–215，獨立重抓核對）；另由 R494 新抓補入 R494-S002→ZE4-S031 https://en.wikipedia.org/w/api.php?action=parse&page=Phoebe_(moon)&prop=wikitext&format=json（核實 Phoebe 逆行軌道），並逐字核對快取 ZE4-S016、S017、S018、S020、S021、S022",
+      "reopen_result": "頁面上確實寫了：1905-12-18《Comptes rendus》pp. 1072–1073 列出八位委員（Janssen、Lœwy、Wolf、Radau、Deslandres、Poincaré、Lippmann、Darboux；Bigourdan 報告，未印委員卒年），全票頒授 1905 Prix Lalande 予 W. H. Pickering，p. 1073 真實原句為『Plus récemment, M. W.-H. Pickering a découvert un dixième satellite de Saturne, qui présente cette particularité intéressante d'avoir son orbite très voisine de celle d'Hypérion』（並非研究稿改寫的法文假引句；且公報內文未印出『550 天』與『rétrograde』，550.44 天印於 ZE4-S016 p. 220，逆行軌道由 R494 補抓 ZE4-S031 實證）。1906-02《MNRAS》p. 220 記週期約 21 天、大離心率與大傾角近 Titan 及『The orbit, however, cannot be considered as definitely known till further observations are available』。《Nature》1905-05-25 p. 89 摘 Harvard Circular 97 記 24 吋 Bruce 望遠鏡極限達 17.0 或 17.5 等（全文完全沒有提到『乾版乳劑顆粒／底片雜點』！）。1909-01《MNRAS》pp. 213–215 記格林威治 30 吋反射鏡 15 晚拍得 23 張 Phœbé，搜尋 Themis 無果聲明實印於**第 215 頁結尾段**（OCR lines 3731–3740，非研究稿所標第 213 頁第一段！）：於 1908 年 8 月 25、28、29、30 日與 9 月 2、4 日六個挑選夜晚拍雙份 90–100 分鐘曝光，『could not be found on these photographs, although taken under favourable conditions』。1911《大英百科全書》〈Astronomy〉將 Phoebe 與 Themis 列入太陽系 26 顆衛星並寫『amid the thicket of stars imprinted on negatives』。Wikisource Author 頁（ZE4-S022）實印 William Henry Pickering（1858–1938）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：全池與跨系列及同波 ZE1–ZE3 均無土星幻影第十衛星 Themis、1905 Prix Lalande 烏龍頒獎或 1861 Chiron。一手公報糾正網路常見『1906 得獎』誤差極具價值，覆核修正五處精準度問題：（1）所有來源均未提及『乾版乳劑雜點／底片斑點』，全面刪除該無據臆測，改照實讀之 ZE4-S018（17.0–17.5 等極限暗星）、ZE4-S020（密如荊棘的繁星叢 thicket of stars）與 ZE4-S021 講誤連不同夜晚毫無關聯的背景微星；（2）新增 R494-S002→ZE4-S031 實證土衛九 Phoebe 的逆行軌道性質，並把 550.44 天週期精確歸屬回 ZE4-S016，同時將 ZE4-S015 摘要裡的法文改寫句換成 p. 1073 逐字原句、補齊八位審查委員；（3）將 ZE4-S019 搜尋 Themis 無果聲明的定位從『p. 213 第一段』修正為實際所在的『p. 215 結尾段（OCR lines 3731–3740）』；（4）明標 Themis 本身由 Pickering 算為順行高傾角軌道，與逆行的 Phoebe 區隔清楚；（5）法國科學院報告人 Bigourdan 與 Goldschmidt 因所讀頁未印卒年，移除研究稿自填生卒年並從正文／畫面排除。具體事實逾 17 條，8.5–10.5 分鐘穩健。"
+    },
+    {
+      "id": "N5565",
+      "agent": "ZE4",
+      "reviewer": "R494",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZE4-S023 https://archive.org/download/in.ernet.dli.2015.85132/2015.85132.The-Scientific-Papers-Of-Sir-William-Herschel-Vol-Ii_djvu.txt（Herschel《Scientific Papers》Vol. II，獨立重抓核對 Paper XL pp. 1–21 與 Paper LXVII pp. 542–574）與 ZE4-S027 https://archive.org/download/paper-doi-10_1093_mnras_35_1_22/paper-doi-10_1093_mnras_35_1_22_djvu.txt（Lassell 1874-11《MNRAS》pp. 22–27，獨立重抓核對）；另由 R494 補抓 ZE4 漏列之兩篇 DNB 傳記 R494-S003→ZE4-S032（Lassell 1799–1880）與 R494-S004→ZE4-S033（Herschel 1738–1822），並逐字核對快取 ZE4-S024、S025、S026、S028、S029",
+      "reopen_result": "頁面上確實寫了：Herschel《Scientific Papers》Vol. II 開篇實為 **Paper XL**（非研究稿所標 Paper XLIX！），p. 2（非 p. 11）宣告舊雙衛『their motion is retrograde』並放棄光環猜測，pp. 16–19 記舊雙衛通常在 18\" 與 20\" 消光（極例外曾於 13\".8 見一次），pp. 13, 20–21 宣布四顆額外衛星週期（5d 21h 25m、10d 23h 4m、38d 1h 49m、107d 16h 40m）；同卷 Paper LXVII（1815 論文，OCR line 55133）Herschel 本人更承認 1790-01-18 內衛觀測『unsupported』！Lassell 1851-11（ZE4-S024）與 1852-03（ZE4-S025）記 1851-10-24 在利物浦近郊 Starfield 首確兩顆內衛（約 2.51 天與 4.14 天）、將舊雙衛改編為 III 與 IV、11-02 環視無其他衛星。Holden 1874-11（ZE4-S026 pp. 16–22）主張 1790-01-18、1790-01-20、1794-03-27 三筆完全證實，並對 **1798-02-15**（該晚 Herschel 把真外衛 Oberon 誤認成第五衛星，另畫一顆內側光點，Holden 猜測方位顛倒 180°）提合理懷疑。Lassell 1874-11（ZE4-S027 pp. 22–27）引 Herschel 總結 Titania 於 18\".1、Oberon 於 25\".6 消光，對比亮度不到一半的 Ariel／Umbriel 最大離角僅約 14\"／19\"，並指出 1790-01-18 連大師自己都稱 unsupported、Holden 容忍 15°–34° 誤差且在連 Oberon 都認錯的 1798-02-15 硬猜 180° 顛倒，結論四顆額外衛星『proved to have been only imaginary』。Clerke 1885 pp. 113–114 記兩赴 Malta（1852–1853，及 1861–1865 與 Marth 用 4 呎鏡）與『telescopic \"ghosts\"』。DNB（ZE4-S032、S033）實頁印證 Lassell（1799–1880，1874 年 11 月確年滿 75 歲）與 Herschel（1738–1822）。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：與池中 N4262（天王星發現前恆星紀錄與彗星標題）完全不同，並正式兌現 wave41 O4 留下的天王星假衛星待查票。史料鏈極為厚實，覆核修正四處細節：（1）ZE4 雖曾在快取檢索 DNB 但漏列於 sources，致 Herschel（1738–1822）、Lassell（1799–1880）與『75 歲』缺已列實頁依據，由 R494 獨立重抓補入 ZE4-S032 與 ZE4-S033 完整閉環，同時移除其餘未印於實讀頁之學者生卒年並禁止繪入畫面；（2）修正 ZE4-S023 論文編號（Paper XLIX→Paper XL）、逆行宣告頁碼（p. 11→p. 2）與 1797／1815 眩光數字出處（1797 記 18\"／20\"，18\".1／25\".6 為 Lassell 引 1815 總結），並補入 Herschel 1815 自承 1790-01-18『unsupported』之關鍵鐵證；（3）釐清 ZE4-S027 摘要對 1797-09-28 與 1798-02-15 的混淆——Holden 猜測 180° 顛倒及 Herschel 誤認 Oberon 為第五衛星均發生在同一晚（1798-02-15），並非把 Oberon 當成 Umbriel；（4）明確區分 1851 年 Starfield 發現與 1852–1853、1861–1865 兩赴 Malta 巡天。具體事實約 20 條，9–11.5 分鐘穩健。"
+    }
+  ]
+}

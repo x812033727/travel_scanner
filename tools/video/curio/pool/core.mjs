@@ -119,6 +119,24 @@ export function splitLocator(text, localIds) {
 
 export const EPISODE_STATES = ['episode_dir', 'remake_dir', 'branch_draft', 'planned_w_axis', 'bank_scripted'];
 
+export const CATEGORIES = Object.freeze({
+  H: 'H-歷史懸案',
+  S: 'S-歷史人物與名場面',
+  M: 'M-奇異現象與自然',
+  F: 'F-童話神話與怪談原版',
+  L: 'L-都市傳說與消失地名',
+  G: 'G-靈異與超自然公案',
+  P: 'P-預言與末日',
+  U: 'U-外星太空與未知訊號',
+  W: 'W-商業與品牌奇聞',
+});
+export const CATEGORY_LIST = Object.freeze(Object.values(CATEGORIES));
+export const categoryCodeForAxis = (axis) => (axis === 'B' ? 'W' : axis);
+export const categoryForAxis = (axis) => {
+  const code = categoryCodeForAxis(axis);
+  return CATEGORIES[code] ?? `${code}-${axis}`;
+};
+
 function episodeDirs(root) {
   const base = path.join(root, 'docs/videos');
   if (!existsSync(base)) return [];
@@ -506,7 +524,7 @@ export function assemble(input, decisions = {}, selection = null) {
     const eligible = !main.locked && !disposition && members.some((record) => record.eligible);
     const status = main.locked ? 'produced' : disposition ? (disposition.disposition === 'shorts' ? 'shorts' : 'excluded') : selectedIds.has(id) ? 'selected' : eligible ? 'held' : 'reserve';
     return {
-      ...main, id, eligible, selected: status === 'selected', pool_status: status,
+      ...main, id, category_code: categoryCodeForAxis(main.axis), category: categoryForAxis(main.axis), eligible, selected: status === 'selected', pool_status: status,
       aliases: members.map((record) => record.id).filter((member) => member !== id),
       question_variants: members.filter((record) => record.id !== id).map((record) => ({ id: record.id, question: record.question, answer_target: record.answer_target, scope: record.scope })),
       source_refs: [...new Map(members.flatMap((record) => record.source_refs).map((ref) => [`${ref.source_id}:${ref.origin}:${ref.locator}`, ref])).values()],
@@ -549,9 +567,14 @@ export function assemble(input, decisions = {}, selection = null) {
   }
   const selected = candidates.filter((row) => row.selected);
   const count = (status) => candidates.filter((row) => row.pool_status === status).length;
+  const byCategory = Object.fromEntries(CATEGORY_LIST.map((cat) => [cat, {
+    canonical: candidates.filter((row) => row.category === cat).length,
+    selected: selected.filter((row) => row.category === cat).length,
+    produced: candidates.filter((row) => row.category === cat && row.pool_status === 'produced').length,
+  }]));
   return {
     schema_version: 1, series: '奇聞檔案局', revision: selection?.revision ?? 'unversioned-draft', status: selection ? 'CURATED_CANDIDATE_POOL_NOT_PRODUCTION' : 'DRAFT_INTAKE',
-    axes: input.axes,
+    axes: input.axes, categories: CATEGORIES,
     counts: {
       raw_records: input.records.length, canonical_cores: candidates.length, alias_records: input.records.length - candidates.length,
       produced_cores: count('produced'), selected_candidates: selected.length, held_candidates: count('held'), reserve_candidates: count('reserve'), shorts_candidates: count('shorts'), excluded_cores: count('excluded'),
@@ -559,6 +582,7 @@ export function assemble(input, decisions = {}, selection = null) {
       source_urls: input.sources.length, current_research_source_urls: input.sources.filter((source) => source.readings.some((reading) => !reading.origin.startsWith('legacy:'))).length,
       selected_source_urls: new Set(selected.flatMap((row) => row.source_refs.map((ref) => ref.source_id))).size,
       new_suggestions_not_added: input.not_added?.length ?? 0, high_similarity_pending: pending.length, cross_series_pending: crossPending.length, approved_scripts: 0,
+      by_category: byCategory,
     },
     inputs: input.inputs, sources: input.sources, candidates, raw_records: input.records,
     dedup: { aliases, merges: links, distinct: decisions.distinct ?? [], dispositions: decisions.dispositions ?? [], cross_series: decisions.cross_series ?? [], potential_pairs: pairs, required_pending: pending, cross_series_pairs: cross, cross_series_pending: crossPending, method: 'exact normalized questions + authored core-answer merges + lexical candidate pairs (title, finding, case key) reviewed by an editor; cross-series lexical pairs against the so-thats-why pool; no claim of exhaustive semantic equivalence' },
@@ -581,11 +605,70 @@ export function buildPool(root = ROOT) {
   const selection = parse(root, file);
   if (!selection.revision || !selection.reviewed_on) throw new Error('Selection needs a reviewed revision');
   input.inputs.push({ file, sha256: hash(readFileSync(path.join(root, file))) });
-  return assemble(input, decisions, selection);
+  const audience = readAudience(root, input);
+  const pool = assemble(input, decisions, selection);
+  for (const [id, score] of audience) {
+    const row = pool.candidates.find((candidate) => candidate.id === id);
+    if (!row?.selected || row.editorial?.role !== 'episode_core') throw new Error(`${id}: an audience score belongs to a selected single-episode core`);
+    row.audience = score;
+  }
+  return pool;
+}
+
+// 獨立觀眾評分（站主 2026-11-14「把分數寫回題目池」）：reviews/audience-*.json 的 candidates 掛到入選的單集題上，
+// 檔名排序較後的紀錄覆蓋較早的。題案（themes.json）的分數寫在題案自己身上，這裡只處理單集題。
+function readAudience(root, input) {
+  const directory = path.join(root, DIR, 'reviews');
+  const scores = new Map();
+  for (const name of existsSync(directory) ? readdirSync(directory).filter((file) => /^audience-[\w-]+\.json$/.test(file)).sort() : []) {
+    const file = `${DIR}/reviews/${name}`;
+    const record = parse(root, file);
+    input.inputs.push({ file, sha256: hash(readFileSync(path.join(root, file))) });
+    for (const row of record.candidates ?? []) {
+      const { id, rank, of, score, click, hook, surprise, payoff, share, comment } = row;
+      if (![score, click, hook, surprise, payoff, share].every((value) => Number.isFinite(value) && value >= 1 && value <= 10) || !Number.isInteger(rank) || rank < 1 || rank > of || !comment) throw new Error(`${file}: ${id} needs score, five dimensions, rank and comment`);
+      scores.set(id, { score, rank, of, click, hook, surprise, payoff, share, comment, reviewed_on: record.reviewed_on, review: `reviews/${name}` });
+    }
+  }
+  return scores;
+}
+
+// pool.json would pass GitHub's 50 MB warning as one file (100 MB is refused), so the two bulky
+// arrays live in their own files and pool.json keeps a pointer where each one was. Reading puts
+// them back in place, so every caller still sees one pool object with the same key order.
+export const POOL_PARTS = { sources: 'pool-sources.json', raw_records: 'pool-records.json' };
+
+export function splitPool(pool) {
+  const main = { ...pool };
+  const parts = {};
+  for (const [key, file] of Object.entries(POOL_PARTS)) {
+    parts[file] = { revision: pool.revision, [key]: pool[key] };
+    main[key] = { file, count: pool[key].length };
+  }
+  return { main, parts };
+}
+
+export function readSavedPool(root = ROOT) {
+  const saved = parse(root, `${DIR}/pool.json`);
+  for (const [key, file] of Object.entries(POOL_PARTS)) {
+    if (Array.isArray(saved[key])) continue; // a pool written before the split
+    if (saved[key]?.file !== file) throw new Error(`pool.json: ${key} must point at ${file}`);
+    const part = parse(root, `${DIR}/${file}`);
+    if (part.revision !== saved.revision || !Array.isArray(part[key]) || part[key].length !== saved[key].count) throw new Error(`${file}: does not belong to this pool.json; run build`);
+    saved[key] = part[key];
+  }
+  return saved;
+}
+
+export function writePool(root, pool) {
+  const { main, parts } = splitPool(pool);
+  writeJson(root, 'pool.json', main);
+  for (const [file, value] of Object.entries(parts)) writeJson(root, file, value);
+  return ['pool.json', ...Object.keys(parts)];
 }
 
 export function readPool(root = ROOT) {
-  const saved = parse(root, `${DIR}/pool.json`);
+  const saved = readSavedPool(root);
   const current = buildPool(root);
   if (JSON.stringify(saved) !== JSON.stringify(current)) throw new Error('Pool drift: the topic bank, episode folders, source files or decisions changed; re-review and run build');
   return saved;

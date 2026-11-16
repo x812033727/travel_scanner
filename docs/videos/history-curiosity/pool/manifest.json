@@ -1,24 +1,71 @@
 {
   "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
-  "revision": "2026-11-12-curio-pool-1412",
+  "revision": "2026-11-16-curio-pool-1720",
   "counts": {
-    "raw_records": 1768,
-    "canonical_cores": 1752,
-    "alias_records": 16,
+    "raw_records": 2107,
+    "canonical_cores": 2089,
+    "alias_records": 18,
     "produced_cores": 48,
-    "selected_candidates": 1412,
-    "held_candidates": 42,
-    "reserve_candidates": 134,
+    "selected_candidates": 1720,
+    "held_candidates": 61,
+    "reserve_candidates": 143,
     "shorts_candidates": 89,
-    "excluded_cores": 27,
-    "new_batch_records": 1437,
-    "source_urls": 11938,
-    "current_research_source_urls": 7114,
-    "selected_source_urls": 10314,
-    "new_suggestions_not_added": 2723,
+    "excluded_cores": 28,
+    "new_batch_records": 1776,
+    "source_urls": 13313,
+    "current_research_source_urls": 8491,
+    "selected_source_urls": 11630,
+    "new_suggestions_not_added": 3209,
     "high_similarity_pending": 0,
     "cross_series_pending": 0,
-    "approved_scripts": 0
+    "approved_scripts": 0,
+    "by_category": {
+      "H-歷史懸案": {
+        "canonical": 239,
+        "selected": 210,
+        "produced": 1
+      },
+      "S-歷史人物與名場面": {
+        "canonical": 262,
+        "selected": 208,
+        "produced": 28
+      },
+      "M-奇異現象與自然": {
+        "canonical": 255,
+        "selected": 209,
+        "produced": 0
+      },
+      "F-童話神話與怪談原版": {
+        "canonical": 228,
+        "selected": 200,
+        "produced": 0
+      },
+      "L-都市傳說與消失地名": {
+        "canonical": 266,
+        "selected": 200,
+        "produced": 0
+      },
+      "G-靈異與超自然公案": {
+        "canonical": 249,
+        "selected": 214,
+        "produced": 0
+      },
+      "P-預言與末日": {
+        "canonical": 248,
+        "selected": 212,
+        "produced": 0
+      },
+      "U-外星太空與未知訊號": {
+        "canonical": 255,
+        "selected": 200,
+        "produced": 0
+      },
+      "W-商業與品牌奇聞": {
+        "canonical": 87,
+        "selected": 67,
+        "produced": 19
+      }
+    }
   },
   "theme_count": 155,
   "inputs": [
@@ -367,6 +414,18 @@
       "sha256": "005bfb130c4b64729d8ab93e14e270cd692062f9de7d8c65b7eb772556e021fb"
     },
     {
+      "file": "docs/videos/curio-s10-v2/brief.md",
+      "sha256": "2b7a012047ca3ef9a02ab18b54c2fff9846dd3319f44228ae89433cca888bfd7"
+    },
+    {
+      "file": "docs/videos/curio-s10-v2/claims.md",
+      "sha256": "063406140e1845e245258b53ccde59d27d27eac1dd8026cae2b13847fdf9d3ba"
+    },
+    {
+      "file": "docs/videos/curio-s10-v2/video.json",
+      "sha256": "a810439181d83bef45d10648e30d1743a3877d25e6db1f64f8d6e7e0b7da4570"
+    },
+    {
       "file": "docs/videos/curio-s10/brief.md",
       "sha256": "38cf8e3f92b4aa19aef6eda2054e257cd7007defffc1049990a7114f876be7a5"
     },
@@ -401,6 +460,18 @@
     {
       "file": "docs/videos/curio-s12/video.json",
       "sha256": "1a5d790706505b66b98e840dc37dc61ccfd5e70407b2fed41e312916bc0e64af"
+    },
+    {
+      "file": "docs/videos/curio-s13-v2/brief.md",
+      "sha256": "73e3b83a1a1d733d577739d1529580ff32c6a58446fb55808e9c90bb248e6272"
+    },
+    {
+      "file": "docs/videos/curio-s13-v2/claims.md",
+      "sha256": "688c567971e5a5085586b7bc7ff7d4bab0058c16e1cfbcd693ecf576234ee5ae"
+    },
+    {
+      "file": "docs/videos/curio-s13-v2/video.json",
+      "sha256": "00cc059624b1f84e1390783e01a439312503dea57450b5eb2dc9e167aab019cf"
     },
     {
       "file": "docs/videos/curio-s13/brief.md",
@@ -511,6 +582,30 @@
       "sha256": "a83db0e7cd5c1920aaa5adbef203390abfbce2327933cee42d87a357db65c213"
     },
     {
+      "file": "docs/videos/curio-s23-v2/brief.md",
+      "sha256": "bfc03875bb4e4da8a5d50b16a12514ae5aa94601774285456d3eae2f478310dc"
+    },
+    {
+      "file": "docs/videos/curio-s23-v2/claims.md",
+      "sha256": "81104b34cc974f4028b51a35b5a2bb9b20d51a09490c7de5f54d83f8babb1bb6"
+    },
+    {
+      "file": "docs/videos/curio-s23-v2/video.json",
+      "sha256": "69cff6f933417e357d4df6ee6b25d9aa105f5f77a0fc96313f964dfce229c6a0"
+    },
+    {
+      "file": "docs/videos/curio-s24-v2/brief.md",
+      "sha256": "3307fe05ebfe34f9cf6b334f1422ccd58096d058bb0e44210c7cb9d41b0c29ac"
+    },
+    {
+      "file": "docs/videos/curio-s24-v2/claims.md",
+      "sha256": "eb09b2c5d80cd85f1b5d9f9c36e5c9258b5bdb59940c95d2c959b26210545e62"
+    },
+    {
+      "file": "docs/videos/curio-s24-v2/video.json",
+      "sha256": "025c57997539de02c98c9f7e8ba6dcd1ed5ec258863dbf5fc1a220f228393600"
+    },
+    {
       "file": "docs/videos/curio-s24/brief.md",
       "sha256": "cd293641d06a6bb103580ae1e4869764a568cd8ff5595fcf69fea70ebe4e4d2f"
     },
@@ -523,6 +618,18 @@
       "sha256": "3456c97a5b373d133840fb4ef62d7e12f550c558fbf5331b3dc0e86549dde9d9"
     },
     {
+      "file": "docs/videos/curio-s25-v2/brief.md",
+      "sha256": "6e0980910fe84aaaf96631c2afff5004cba72342cb18518737412eb72665d22d"
+    },
+    {
+      "file": "docs/videos/curio-s25-v2/claims.md",
+      "sha256": "03bf2be8f43d8d397652c069f4cbd579145e4b506d96db2f9bef8c6220221a27"
+    },
+    {
+      "file": "docs/videos/curio-s25-v2/video.json",
+      "sha256": "32e4947bd02b8868ec168ecb1f07e0f5b3ccef596638f16b30f8f78afc16a931"
+    },
+    {
       "file": "docs/videos/curio-s25/brief.md",
       "sha256": "dfe62b9fe43b5ccfcef199373e001475f4b2bd62040bf14d3b372452e1e00861"
     },
@@ -533,6 +640,18 @@
     {
       "file": "docs/videos/curio-s25/video.json",
       "sha256": "cc11b964f562a1db074359690b0a107154de8f0bad19500cedaaa5f7516bd755"
+    },
+    {
+      "file": "docs/videos/curio-s26-v2/brief.md",
+      "sha256": "65350d55d01deb68fd91bc5bc852e9d6dce7285f996e8a633a25b30d946545bc"
+    },
+    {
+      "file": "docs/videos/curio-s26-v2/claims.md",
+      "sha256": "39a736eda221ede41ea46f4033cbf2356c863882e3bb4fb947bbc52a3461098a"
+    },
+    {
+      "file": "docs/videos/curio-s26-v2/video.json",
+      "sha256": "18cc2bc0c4331cab1fd162ca95bf3dc0e9a7c49b54c1ac7431c6c672d7e24745"
     },
     {
       "file": "docs/videos/curio-s26/brief.md",
@@ -788,11 +907,11 @@
     },
     {
       "file": "docs/videos/curio-w01-dolby-licensing/claims.md",
-      "sha256": "67a8439c1425994989115f1069c3d72a4779ac28f8b4c5995f49c74919f724d8"
+      "sha256": "3dbf9f08ac2694d49c9e0c3363aef565f0ee74d8167a637255714b7d544f7edd"
     },
     {
       "file": "docs/videos/curio-w01-dolby-licensing/video.json",
-      "sha256": "5b1f0c9c7ad49dc0cb0f5987a4b719c271b1ac70e1d60a0de10f5ff93461e842"
+      "sha256": "73178a166bc474d94690be3848f6dd8b268ce84b12653f0f068b52d2a34047b6"
     },
     {
       "file": "docs/videos/curio-w02-michelin-guide-stars/brief.md",
@@ -804,7 +923,7 @@
     },
     {
       "file": "docs/videos/curio-w02-michelin-guide-stars/video.json",
-      "sha256": "bf2acef1564ce9660a63a166b03ffffcb2f3655211afcddcfbfbd9fade32bd03"
+      "sha256": "d165b72aa9b9884d41b79732cb3f5194c5ef2591ad257e57292b09d01679f430"
     },
     {
       "file": "docs/videos/curio-w03-garmin-smartphone-pivot/brief.md",
@@ -824,11 +943,11 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave10-20261102.json",
-      "sha256": "9ca061b0d8dd5ac390faead839cef394ea4a6841dd61bd2df5664ebc2b4176a3"
+      "sha256": "97d8cb091cb0be4fa481b7d7cce947356775705b285e3f3cd3c6952c58c85bc6"
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave11-20261102.json",
-      "sha256": "7ed068b53eb1da54c32c5babb9cdb745cbd6fe5bcf1d9391372e568dd42045e7"
+      "sha256": "82ea83e5b53410102f55aa7c61c411d443d241b53afcaed7e75ec7b1993457e2"
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave12-20261102.json",
@@ -844,7 +963,7 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave15-20261102.json",
-      "sha256": "a6422063172d89defe869561c8cd22e7073f4fa06a20a45201f0b13aa1c29b43"
+      "sha256": "fa7c2235f1dc55fae4de41f06ffb0ab3c83596c2864c1566476518954c728cda"
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave16-20261102.json",
@@ -860,19 +979,19 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave19-20261102.json",
-      "sha256": "479c93dc1ce92b27e12ce3c44c9a2d6c95032673ae88e8e07c1604e13d304cb7"
+      "sha256": "c201fb8157c66082f410d019cfb6053ca0a4b81ae8a7598364b23dd02d74233d"
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave2-legacy-20261101.json",
-      "sha256": "db156f70defc5a515a7c351cf47d6304c9fe22ebe60b0d426d98335340a44d66"
+      "sha256": "a2eab7e6915fd96ed984afca38ed144c40e0dcac92aacc48ef0e72fa0861c895"
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave20-20261102.json",
-      "sha256": "2d75bb1ff90e62931c7543c1b2ad6b9cb028fbcab242d284b12543ffff22c2a1"
+      "sha256": "10ed9e1a9192b91f0a8ef612b9f147b9e711c60e2bb3dd6ec8aabad95d79f215"
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave21-20261111.json",
-      "sha256": "d6f8fe56fdcdccc8f93e6f4cbe9cbd4da0bbbe938070e8f76ba24f4acd78f766"
+      "sha256": "ae8720274f497da48906d15e2aa90e25a90f3386feefab510ca62410241393ba"
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave22-20261111.json",
@@ -888,7 +1007,7 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave25-20261111.json",
-      "sha256": "7e0d6b12082cf836919919adb7b6015edd87d1f3cc0e32406b4f00633a46237a"
+      "sha256": "3977627d8c9282494d286dbfe44feb33787514bb974155aa4cb395f14826d074"
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave26-20261112.json",
@@ -976,7 +1095,7 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave45-20261112.json",
-      "sha256": "8e3ac7078559e1ad1acf52a43b09c91788685b9c1c3bccefbd5a140a60979fac"
+      "sha256": "cebb5673d127ea0d2d970bf2e2f52c289526e2bbe38f4e04dbfbdf156eee7c7b"
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave46-20261112.json",
@@ -984,19 +1103,87 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave47-20261112.json",
-      "sha256": "3b97db73c647b9388e80d34d56c8d7531cb3a5d2fb359837ad38c422194811d9"
+      "sha256": "48ed2eafdf19acb68a5b7a0345edade1143c541858bc1c7a61fe8dc831c8e4de"
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave47-decisions-20261112.json",
-      "sha256": "75f58af6963a24ce85139eb135f95355028484815a9b751dcaac704e49504a9a"
+      "sha256": "20150c93a554152264ab732a44e721faa34cb1d32e1cf303c66b5bcb77751baa"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave48-20261113.json",
+      "sha256": "d8b54c12c1701840c59eef1ad0efc8849429705bbff0720bdd624593ae9c4829"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave49-20261113.json",
+      "sha256": "496cb4aa0c2f3661dd021752bcf633e142f5af3ffab99c364d1143f05c3c6273"
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave5-20261102.json",
       "sha256": "d98622ca45a3708929bb9f71e515f5242d107fe4d48abdb9d4fdfa33ce34778e"
     },
     {
+      "file": "docs/videos/history-curiosity/pool/batches/wave50-20261113.json",
+      "sha256": "8253e5d7ee7b069bd832a8aa986e1756002b22e67893bc1b78cb8ce09ca11359"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave51-20261113.json",
+      "sha256": "8567976c2503fad7cd62f75c9c5cffeaad8df8769118023694aa68f1a1e2ab39"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave52-20261113.json",
+      "sha256": "7fa87f52a9350222a81705ebfdc21ddb64c69fa9b1eb600b4c95321c7d69ee0c"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave53-20261114.json",
+      "sha256": "9497d9eed42e7940a205234834e2f4a58cbb1505d8a1cb09389b87f8a2ee6ffa"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave54-20261114.json",
+      "sha256": "4da8685f6697f38fa3724cabfe927557986917dca4086f5446022a06a6c764af"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave55-20261114.json",
+      "sha256": "2a5a7adf29addbd5c4532853f18ef1c97803891cd32c40fcbfc67e0e3ae289a0"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave56-20261115.json",
+      "sha256": "275b1f81117f553f5c5575295ce5d00b8dda1b4f294be2fcca58f24d90e79b30"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave57-20261115.json",
+      "sha256": "668e82d99c132d40e96d7a323fc4f2a4ace15db286f311f4ff7a0ae26e9df7fb"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave58-20261115.json",
+      "sha256": "541c333f811a60baea283abe6a1d6b331f8e9671564e488b1c91f2d8bce0d0be"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave59-20261115.json",
+      "sha256": "4780d374d7e9ca4484f331fd1dec84ff5741d187a82054d678520d821e47612e"
+    },
+    {
       "file": "docs/videos/history-curiosity/pool/batches/wave6-20261102.json",
       "sha256": "9376fecb9b578810a27fa82965e27ce818b457212fefa70eabc512453d8a3c11"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave60-20261115.json",
+      "sha256": "f271667245fbfa710960e2d29ff1ea526f296210040c0121c7f761b829da2257"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave61-20261115.json",
+      "sha256": "7391bc82fd6dc7dd824db2d93e10e062be85dccbf9bdf6b37128a22ad44f42e5"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave62-20261115.json",
+      "sha256": "1e1a04bbc2a99973e216cbaf1ffd76f9b4afa9681eaa47935acaf757eb4e3e03"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave63-20261116.json",
+      "sha256": "5d376c93b79e6588e5d37e1ea183f82abf646dab8d89dd1e65d234ee465cb975"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave64-20261116.json",
+      "sha256": "d579d92caedbf9e907e88c7e63a539eb5756ce37817e01c830829f0b524a750c"
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave7-20261102.json",
@@ -1012,7 +1199,7 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/external/so-thats-why-cores.json",
-      "sha256": "63166b6212d89a26987dbd06b2c3dc1527db2d6421ea89c7c6011c2f8efd0bd4"
+      "sha256": "4150d35702313b5b261efa65a905250d10adbfd9cfa8ef54ad5c0a6555a3ace9"
     },
     {
       "file": "docs/videos/history-curiosity/pool/legacy/branch-episodes.json",
@@ -1384,19 +1571,19 @@
     },
     {
       "file": "docs/videos/history-curiosity/topics-fg.json",
-      "sha256": "2150f0d7f6540f1a309ecfb5aad227e598569dcc482ca7684e54806d05b4ec75"
+      "sha256": "b4dc0bb8cab3c9d7dc5aa9158d9daf3757403892e489504b8c67199373bcbf7f"
     },
     {
       "file": "docs/videos/history-curiosity/topics.json",
-      "sha256": "c4c9af8a898adcd36bc644ecfacf28ab14ae73b543e0d065ec95d9f66a4b56b4"
+      "sha256": "e300a6e3d4b927820d9ff0b334708f9d0c84cddf29f2fdf63221a53194768c43"
     },
     {
       "file": "tools/video/curio/pool/cli.mjs",
-      "sha256": "2cf655dc646c4f38bb542184af001868bd3c903fda5078a5b387d22350c2619d"
+      "sha256": "db4fa0f2fa57dda64c453d53635b37a66e44da155f0ee14687e1261ed305ce1a"
     },
     {
       "file": "tools/video/curio/pool/core.mjs",
-      "sha256": "d42d29f22467a5b893a51601194e36410cb76b582b0ace051c888963f816f39c"
+      "sha256": "300b4ca688569285d1ff0ece0335d44dd5022216cc4e858b76e5c6141f60cca3"
     },
     {
       "file": "tools/video/curio/pool/history.mjs",
@@ -1404,11 +1591,11 @@
     },
     {
       "file": "tools/video/curio/pool/render.mjs",
-      "sha256": "06de879bf642fb16d418079eba1e3c4182522b4a5088fcf2d4448925ef7b4371"
+      "sha256": "eaecd50d0b5eb9ccc230c5ad755387b8a001a7a4423c8afc3d351a9fbf818b23"
     },
     {
       "file": "tools/video/curio/pool/semantic.py",
-      "sha256": "22b19aef55f7f9bfbc6ef10b38cdbdb3f46a55aeb8e387f8f7e1fe49a9595be0"
+      "sha256": "d375f2ae60b264bb6ca0047f37d5b1f3440566bc144dfbeb88cce57b055a16f5"
     },
     {
       "file": "tools/video/curio/pool/store.mjs",
@@ -1416,42 +1603,62 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/dedup-decisions.json",
-      "sha256": "e1b055f47eef5e2fa5f523909c3cc09f8bd0523c90e64d308734b3d0f3fd6d3c"
+      "sha256": "4a17bb054130df64c42566d696f23ad48ec6d8c8f147bc105461bd7007721877"
     },
     {
       "file": "docs/videos/history-curiosity/pool/selection.json",
-      "sha256": "b1a5278cce9af18fcf58c8e17bcbb1fdb28cc1951fa35f4c215327863e6131ef"
+      "sha256": "ee70bd4616ebd19739766a80ccb51c8fb47f86d8701af54f52f86d30338376de"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261114-r2.json",
+      "sha256": "8791b579e073426c203a8da41d6bb186035bc4ae4d17c27b773bc5731a25f68b"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261114-r3.json",
+      "sha256": "febf608a5ccd9d34f8a3e007802252b1ea7cd6ef288075c0441e2c5912702938"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261114.json",
+      "sha256": "bc0eea6d9df4264194cf218fef7c1e5aaa65fbe0f96a6703de82caf7f35a5921"
     }
   ],
-  "theme_definition_sha256": "d8de4646c856ffd5f44f89ab085a42d354ab791ec17f9bb32a219b49250b7ea6",
+  "theme_definition_sha256": "09009dd72f5fedccb5419fc4c04efb6674eedc15a2c2ea4e7c5065eb2c1895f4",
   "files": [
     {
       "file": "pool.json",
-      "sha256": "89d82fcc443643f50f8ede5d049716442eddaa96d4dea56ce3ac12b750b38148"
+      "sha256": "7e79d1f6ec102f17efdd1fe3b48c855eb6ec3dc63f6583b760e52e8605842d32"
+    },
+    {
+      "file": "pool-sources.json",
+      "sha256": "a286f6e25dc1f04ec8c1945d4c07ef5d774172c03f9ffbbc6fb6cac2ee049ee1"
+    },
+    {
+      "file": "pool-records.json",
+      "sha256": "a9f8108e7547d599926ee39a63534acd0fba81d990cf22b3aa096ba35619f09a"
     },
     {
       "file": "QUESTIONS.md",
-      "sha256": "50802c52aefcc65a4c7705ec648491222a418d2d5eceabf6cc80a424ef2d1d89"
+      "sha256": "45378eacf42cdd365e9d62eb17dc2cc5af48b68149e963b5574d87aaed002ba1"
     },
     {
       "file": "SOURCES.md",
-      "sha256": "6fd19f5fd0098edc94b3ccf0ae52c5e66738ca0dd4ffaf3d7928f72fc4ed8926"
+      "sha256": "2d48e3cfa64d864f8589d00e61a04693f65612f0c0897f12cafe7eb9c740df2d"
     },
     {
       "file": "DEDUP.md",
-      "sha256": "d7e07209a674159a05dcffbab7416d8f34dc73c404a4e6de6213394215d19ab6"
+      "sha256": "bb249feb8c1396d4ac895e9b38bda2d738dadf8216cfd5f0fd7dd7ce3b1c1f65"
     },
     {
       "file": "THEMES.md",
-      "sha256": "2172e948a5ec6aa7162e856003e6e272e2f3856703643b6b2e2e1efccf74cf84"
+      "sha256": "bc7201d997cb1e611506b7443e9ce2435c8055f39422b99bcf4f51b152069f2c"
     },
     {
       "file": "index.html",
-      "sha256": "56e37041d6017a59afcd1c0901fa5e7d4ec6bcc1319587cb77f4e18335314e05"
+      "sha256": "f2e821c9cca823a1b2678c0b378f18106a0832d9671142db13c09d2b0b561d48"
     },
     {
       "file": "PRODUCIBLE.html",
-      "sha256": "2723b9af12313647a487f613df68372d31f8dae6cab7e13a9eac1ab9d0bd2e4c"
+      "sha256": "a384ed851d48822e1a3abd1dbff076c9279d585d96a7acbbdbd1232d138efe87"
     }
   ]
 }
