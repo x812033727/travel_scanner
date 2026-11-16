@@ -22,6 +22,11 @@ Run: python3 -I mkspec.py
   s36, s37, s40), its table crop set-kezhan-pm-table-l1 (s35, s39); close shots at the inn none. Every swap is sent with an
   absolute path by prep923.sh.
 - The speaking gaze names the listener off screen, or the thing looked at.
+- After the independent review (writer-tools/e023-r2/review.md, 2026-11-16; r2.py's docstring has the list): s31 and s36 put
+  Xu Yan back at her right shoulder (his coat sentence, his angle-b dropped, a three-person 'only' sentence); s28's gaze is
+  toward the people who have already come in (the elders stand inside the door). The two plates set-chuan-ye-wu-l1 and
+  set-chuan-chen-wu-l1 were regraded under the same ids, so nothing here changes for them. The window crop
+  set-kezhan-pm-chuang-l1 is not sent (s30, s32, s33, s34, s38 keep no set).
 - No seed of this episode has been run. Seeds 9231101/9231102.
 """
 import json
@@ -52,6 +57,7 @@ RIBBON = ["hair in two looped buns tied with pink silk ribbons and pearl pins",
 ONLY_HE = "He is the only person in the frame; no second copy of anyone appears."
 ONLY_SHE = "She is the only person in the frame; no second copy of anyone appears."
 ONLY_2 = "Only these 2 people are in the frame; no second copy of anyone appears."
+ONLY_3 = "Only these 3 people are in the frame; no second copy of anyone appears."
 ONE_TANG = "the young woman with the two high round buns appears only once"
 SPEAK_GAZE = "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person"
 SPEAK_GAZE_HE = "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person"
@@ -75,6 +81,11 @@ PROP = "prop-jinsuanpan-l1.png"
 def back(beyond, n=2):
     return (f"Only these {n} people are in the frame, the young woman with the buns seen only from behind and {beyond} facing us "
             f"beyond her; {ONE_TANG}; no second copy of anyone appears.")
+
+
+# e023 review 必改 10: s31, s36 keep Xu Yan at her right shoulder, as s29
+BACK_XU_WEI = ("Only these 3 people are in the frame, the young woman with the buns seen only from behind, Xu Yan at her right "
+               f"shoulder and Wei Shaoqing facing us beyond her; {ONE_TANG}; no second copy of anyone appears.")
 
 
 def add(sid, pair):
@@ -109,9 +120,9 @@ for sid, first, only in [
                            f"{ONE_TANG}; no second copy of anyone appears.")]),
     ("s28", 2, None),  # "old men": ref2manifest's 'Besides them' sentence stays
     ("s29", 1, None),
-    ("s31", 1, [ONLY_2, back("Wei Shaoqing")]),
+    ("s31", 1, [ONLY_3, BACK_XU_WEI]),
     ("s33", 1, [ONLY_2, back("Wei Shaoqing")]),
-    ("s36", 1, [ONLY_2, back("Wei Shaoqing")]),
+    ("s36", 1, [ONLY_3, BACK_XU_WEI]),
 ]:
     add(sid, [tang_id(first), ""])
     if only:
@@ -140,7 +151,7 @@ for sid, g, he in [
     ("s16", "his face three-quarter to screen right toward the young woman beyond the right edge of the frame, his eyes on her", True),
     ("s23", "his face three-quarter to screen right toward the young woman beyond the right edge of the frame, his eyes on her", True),
     ("s26", "his face three-quarter to screen right toward the young woman beyond the right edge of the frame, his eyes on her", True),
-    ("s28", "his face three-quarter to screen right toward the people coming in at the door, his eyes on the young woman", True),
+    ("s28", "his face three-quarter to screen right toward the people who have come in at the door, his eyes on the young woman", True),
     ("s30", "his face three-quarter to screen right toward the young woman beyond the right edge of the frame, his eyes on her", True),
     ("s32", "his face three-quarter to screen right toward the young woman beyond the right edge of the frame, his eyes on her", True),
     ("s34", "his face three-quarter to screen left toward the young woman at the left edge of the frame, his eyes on her", True),
@@ -151,7 +162,7 @@ for sid, g, he in [
 
 # Xu Yan in the old grey outer coat; his smirking angle-b nowhere.
 XU = ["s01", "s03", "s04", "s05", "s07", "s08", "s09", "s10", "s12", "s13", "s13b", "s14", "s16", "s18", "s19", "s20", "s23",
-      "s24", "s26", "s29", "s34", "s37", "s40"]
+      "s24", "s26", "s29", "s31", "s34", "s36", "s37", "s40"]
 for sid in XU:
     add(sid, XU_COAT)
     drop(sid, "xuyan-angle-b-l1.png")
@@ -205,7 +216,8 @@ spec = {
               "shots), prop-jinsuanpan-l1 (s11, s15, s25), set-chuan-chen-l1 (s19, s21), set-chuan-chen-wu-l1 (the sunrise close "
               "shots), set-kezhan-pm-l1 (s28, s29, s31, s36, s37, s40), set-kezhan-pm-table-l1 (s35, s39); inn close shots none "
               "(prep923.sh swaps with absolute paths). Xu Yan's grey outer coat everywhere, his angle-b nowhere. Fog s01-s18, "
-              "mist s19-s27. No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). Seeds 9231101/9231102."),
+              "mist s19-s27. No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). After the review: s31, s36 Xu Yan at her "
+              "right shoulder (three people). Seeds 9231101/9231102."),
     "seeds": [9231101, 9231102],
     "shots": shots,
 }
