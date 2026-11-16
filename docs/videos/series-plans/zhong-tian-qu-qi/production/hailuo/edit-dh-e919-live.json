@@ -22,7 +22,7 @@
    "gain": -22,
    "fade_in": 1.0,
    "fade_out": 1.0,
-   "tail": 0
+   "tail": 0.8
   },
   {
    "cue": "tension",
@@ -30,9 +30,10 @@
    "to": "s21",
    "offset": 0,
    "gain": -22,
-   "fade_in": 1.0,
+   "fade_in": 1.2,
    "fade_out": 1.5,
-   "tail": 0
+   "tail": 0,
+   "from_off": -0.6
   },
   {
    "cue": "suspense",
@@ -81,28 +82,28 @@
    "file": "Wind",
    "at": "s01",
    "off": 0,
-   "gain": -12,
+   "gain": -8,
    "to": "s03"
   },
   {
    "file": "Wind",
    "at": "s03",
-   "off": 6.0,
-   "gain": -9,
+   "off": 5.5,
+   "gain": -6,
    "to": "s27"
   },
   {
    "file": "birds",
    "at": "s27",
    "off": 3.5,
-   "gain": -16,
+   "gain": -14,
    "to": "s37"
   },
   {
    "file": "wind1",
    "at": "s27",
    "off": 3.5,
-   "gain": -8,
+   "gain": -6,
    "to": "s37"
   },
   {
@@ -116,7 +117,7 @@
    "file": "Wind",
    "at": "s37",
    "off": 4.1,
-   "gain": -13,
+   "gain": -11,
    "to": "s41"
   },
   {
@@ -232,43 +233,83 @@
   },
   "s04": {
    "from": 0,
-   "af": "rubberband=pitch=0.92:formant=preserved"
+   "af": "rubberband=pitch=0.92:formant=preserved,volume=-0.8dB"
+  },
+  "s05": {
+   "from": 0,
+   "af": "volume=-0.9dB"
   },
   "s06": {
    "from": 0,
-   "af": "rubberband=pitch=0.8:formant=preserved"
+   "af": "rubberband=pitch=0.8:formant=preserved,volume=1.2dB,alimiter=limit=0.89:attack=5:release=50:level=false"
+  },
+  "s10": {
+   "from": 0,
+   "af": "volume=-1dB"
   },
   "s12": {
    "from": 0,
-   "af": "rubberband=pitch=0.88:formant=preserved"
+   "af": "rubberband=pitch=0.88:formant=preserved,volume=1dB,alimiter=limit=0.89:attack=5:release=50:level=false"
   },
   "s14": {
    "from": 0,
-   "af": "rubberband=pitch=0.92:formant=preserved"
+   "af": "rubberband=pitch=0.92:formant=preserved,volume=-0.7dB"
+  },
+  "s15": {
+   "from": 0,
+   "af": "volume=-0.8dB"
   },
   "s16": {
    "from": 0,
    "af": "rubberband=pitch=0.86:formant=preserved"
   },
+  "s17": {
+   "from": 0,
+   "af": "volume=-0.6dB"
+  },
   "s20": {
    "from": 0,
    "af": "rubberband=pitch=0.8:formant=preserved"
   },
+  "s21": {
+   "from": 0,
+   "af": "volume=-1dB"
+  },
+  "s22": {
+   "from": 0,
+   "af": "volume=-1dB"
+  },
   "s24": {
    "from": 0,
-   "af": "rubberband=pitch=0.85:formant=preserved"
+   "af": "rubberband=pitch=0.85:formant=preserved,volume=1.4dB,alimiter=limit=0.89:attack=5:release=50:level=false"
   },
   "s26": {
    "from": 0,
-   "af": "rubberband=pitch=1.25:formant=preserved"
+   "af": "rubberband=pitch=1.25:formant=preserved,volume=2.6dB,alimiter=limit=0.89:attack=5:release=50:level=false"
   },
   "s29": {
    "from": 0,
-   "af": "rubberband=pitch=0.92:formant=preserved"
+   "af": "rubberband=pitch=0.92:formant=preserved,volume=-1.3dB"
+  },
+  "s30": {
+   "from": 0,
+   "af": "volume=-1dB"
+  },
+  "s31": {
+   "from": 0,
+   "af": "volume=-2.3dB"
+  },
+  "s32": {
+   "from": 0,
+   "af": "volume=0.5dB,alimiter=limit=0.89:attack=5:release=50:level=false"
   },
   "s37": {
    "from": 0,
    "af": "rubberband=pitch=0.75:formant=preserved"
+  },
+  "s38": {
+   "from": 0,
+   "af": "volume=0.6dB,alimiter=limit=0.89:attack=5:release=50:level=false"
   }
  },
  "voice_off": [
@@ -284,7 +325,9 @@
  },
  "line_at": {
   "zq919a08": 0.05,
-  "zq919a39": 0.06
+  "zq919a39": 0.06,
+  "zq919a13": 0.6,
+  "zq919a23": 0.4
  },
  "panel_y": {
   "s25": 840,
