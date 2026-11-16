@@ -1,5 +1,7 @@
 # e918-live 第三輪：兩份成片審查合併後的不花錢修改清單
 
+> **2026-11-16 已套用**，紀錄在 `hailuo/edit-dh-e918-live.json` 的 `_note` REVIEW 3。和本清單不同的地方：第 2 節 3、5 的做法在第一次重組後改了（量出來不對）——s11 的 +4.5 dB 被 limiter 吃掉（p75 −12.3，跟鄰句一樣），改成 `acompressor` −24 dB 4:1＋15 dB＋alimiter 0.89（p75 −9.9，鄰句 −12.4／−12.7）；s24 審查給的 `aecho=0.6:0.5`＋−4 dB 實際壓了 14 dB（p75 −21.3、聽寫把「方子」聽成「帮子」），改成 `lowpass=f=3500,aecho=0.8:0.88:35:0.2,volume=-1dB`（片段本身低 4 dB，p75 −15.6，聽寫一字不差）。成片 230.29 秒（原 237.21）；−14.0 LUFS、peak −2.6；loudnorm2 linear（pre −14.6 LUFS、−3.29 dBTP＋0.6 = −2.69）；cut-qa 只剩預期的 held／black（片尾）與 motion（說話鏡）；cut-jumps 0；audio-qa 39 句 0 問題。
+
 - 2026-11-16，從 `cut-review.md`（審查 1）與 `cut-review-2.md`（審查 2）合併、去重，照協調者的決定。套用結果寫在 `hailuo/edit-dh-e918-live.json` 的 `_note` REVIEW 3。
 - **不花錢**：沒有 Colab、RunPod、站台 TTS 重錄。錄音只從 `audio/orig/`（或 `raw-tts`）重跑同一套處理（`voice-post.json` 的系統音效；e909 的 acompressor 3:1＋volume＋alimiter 0.84，`level.py`）。
 - **時間一律寫草稿秒數**（`picks.json` 與 trims 檔的寫法）；`clip_af`、`sfx`、`vf`、`voice_until`、`min` 的時間是剪後的鏡內秒數 c。剪點都是整格（起點往下、終點往上取到 3 位小數），有台詞的鏡用 faster-whisper 字時間核對，不切字；沒台詞的鏡逐格看畫面。
