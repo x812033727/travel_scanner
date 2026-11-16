@@ -3,7 +3,7 @@ from __future__ import annotations
 import asyncio
 import json
 import math
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from typing import Any
 from uuid import UUID
 
@@ -30,6 +30,9 @@ from app.community.models import Job
 from app.config import get_settings
 from app.database_admin.agent import DatabaseAgentClient
 from app.deployments.agent import DeploymentAgentClient
+from app.deployments.host import EXECUTOR as HOST_EXECUTOR
+from app.deployments.host import read_host_status
+from app.deployments.schemas import HostTimerStatus
 from app.infra import get_redis
 from app.models import (
     ACTIVE_DEPLOYMENT_STATUSES,
@@ -51,105 +54,183 @@ from app.video_shorts.overview import owner_needs_count as shorts_owner_needs_co
 
 NAVIGATION_REGISTRY: tuple[AdminNavigationItem, ...] = (
     AdminNavigationItem(
-        id="dashboard", group="overview", href="/admin", label_key="dashboard",
+        id="dashboard",
+        group="overview",
+        href="/admin",
+        label_key="dashboard",
         capability="dashboard.read",
     ),
     # First-party travel intel and guides (guide_articles). No badge: ``guides_pending``
     # counts third-party HotspotGuide links, which belong to the hotspots workspace.
     AdminNavigationItem(
-        id="guides", group="content", href="/admin/guides", label_key="guides",
+        id="guides",
+        group="content",
+        href="/admin/guides",
+        label_key="guides",
         capability="content.read",
     ),
     AdminNavigationItem(
-        id="news", group="content", href="/admin/news", label_key="news",
-        capability="content.read", badge_key="news_review_pending",
+        id="news",
+        group="content",
+        href="/admin/news",
+        label_key="news",
+        capability="content.read",
+        badge_key="news_review_pending",
     ),
     # The video pipeline's drafts and finished videos, waiting for the owner's decision.
     AdminNavigationItem(
-        id="videos", group="content", href="/admin/videos", label_key="videos",
-        capability="content.read", badge_key="video_reviews_pending",
+        id="videos",
+        group="content",
+        href="/admin/videos",
+        label_key="videos",
+        capability="content.read",
+        badge_key="video_reviews_pending",
     ),
     AdminNavigationItem(
-        id="hotspots", group="content", href="/admin/hotspots", label_key="hotspots",
-        capability="content.read", badge_key="hotspots_pending",
+        id="hotspots",
+        group="content",
+        href="/admin/hotspots",
+        label_key="hotspots",
+        capability="content.read",
+        badge_key="hotspots_pending",
     ),
     AdminNavigationItem(
-        id="foods", group="content", href="/admin/foods", label_key="foods",
-        capability="content.read", badge_key="foods_pending",
+        id="foods",
+        group="content",
+        href="/admin/foods",
+        label_key="foods",
+        capability="content.read",
+        badge_key="foods_pending",
     ),
     AdminNavigationItem(
-        id="hotels", group="content", href="/admin/hotels", label_key="hotels",
-        capability="content.read", badge_key="hotels_pending",
+        id="hotels",
+        group="content",
+        href="/admin/hotels",
+        label_key="hotels",
+        capability="content.read",
+        badge_key="hotels_pending",
     ),
     AdminNavigationItem(
-        id="travel_services", group="content", href="/admin/travel-services",
-        label_key="travelServices", capability="content.read",
-    ),
-    AdminNavigationItem(
-        id="catalog_review", group="content", href="/admin/catalog-review",
-        label_key="catalogReview", capability="content.read",
-    ),
-    AdminNavigationItem(
-        id="community", group="community", href="/admin/community", label_key="community",
-        capability="community.read", badge_key="community_jobs_pending",
-    ),
-    AdminNavigationItem(
-        id="pet_friendly", group="community", href="/admin/pet-friendly",
-        label_key="petFriendly", capability="community.read",
-    ),
-    AdminNavigationItem(
-        id="users", group="operations", href="/admin/users", label_key="users",
-        capability="users.read",
-    ),
-    AdminNavigationItem(
-        id="analytics", group="operations", href="/admin/analytics", label_key="analytics",
-        capability="analytics.read",
-    ),
-    AdminNavigationItem(
-        id="partners", group="operations", href="/admin/partners", label_key="partners",
+        id="travel_services",
+        group="content",
+        href="/admin/travel-services",
+        label_key="travelServices",
         capability="content.read",
     ),
     AdminNavigationItem(
-        id="provider_settings", group="operations", href="/admin/settings",
-        label_key="providerSettings", capability="settings.read",
+        id="catalog_review",
+        group="content",
+        href="/admin/catalog-review",
+        label_key="catalogReview",
+        capability="content.read",
     ),
     AdminNavigationItem(
-        id="usage_settings", group="operations", href="/admin/usage-settings",
-        label_key="usageSettings", capability="settings.read",
+        id="community",
+        group="community",
+        href="/admin/community",
+        label_key="community",
+        capability="community.read",
+        badge_key="community_jobs_pending",
     ),
     AdminNavigationItem(
-        id="layout_settings", group="operations", href="/admin/layout-settings",
-        label_key="layoutSettings", capability="settings.read",
+        id="pet_friendly",
+        group="community",
+        href="/admin/pet-friendly",
+        label_key="petFriendly",
+        capability="community.read",
     ),
     AdminNavigationItem(
-        id="ui_text", group="operations", href="/admin/ui-text", label_key="uiText",
+        id="users",
+        group="operations",
+        href="/admin/users",
+        label_key="users",
+        capability="users.read",
+    ),
+    AdminNavigationItem(
+        id="analytics",
+        group="operations",
+        href="/admin/analytics",
+        label_key="analytics",
+        capability="analytics.read",
+    ),
+    AdminNavigationItem(
+        id="partners",
+        group="operations",
+        href="/admin/partners",
+        label_key="partners",
+        capability="content.read",
+    ),
+    AdminNavigationItem(
+        id="provider_settings",
+        group="operations",
+        href="/admin/settings",
+        label_key="providerSettings",
         capability="settings.read",
     ),
     AdminNavigationItem(
-        id="site_pages", group="operations", href="/admin/site-pages", label_key="sitePages",
+        id="usage_settings",
+        group="operations",
+        href="/admin/usage-settings",
+        label_key="usageSettings",
         capability="settings.read",
     ),
     AdminNavigationItem(
-        id="system_settings", group="system", href="/admin/system-settings",
-        label_key="systemSettings", capability="settings.read",
+        id="layout_settings",
+        group="operations",
+        href="/admin/layout-settings",
+        label_key="layoutSettings",
+        capability="settings.read",
     ),
     AdminNavigationItem(
-        id="database", group="system", href="/admin/database", label_key="database",
+        id="ui_text",
+        group="operations",
+        href="/admin/ui-text",
+        label_key="uiText",
+        capability="settings.read",
+    ),
+    AdminNavigationItem(
+        id="site_pages",
+        group="operations",
+        href="/admin/site-pages",
+        label_key="sitePages",
+        capability="settings.read",
+    ),
+    AdminNavigationItem(
+        id="system_settings",
+        group="system",
+        href="/admin/system-settings",
+        label_key="systemSettings",
+        capability="settings.read",
+    ),
+    AdminNavigationItem(
+        id="database",
+        group="system",
+        href="/admin/database",
+        label_key="database",
         capability="database.read",
     ),
     AdminNavigationItem(
-        id="deployments", group="system", href="/admin/deployments", label_key="deployments",
+        id="deployments",
+        group="system",
+        href="/admin/deployments",
+        label_key="deployments",
         capability="deploy.read",
     ),
     AdminNavigationItem(
-        id="audit", group="system", href="/admin/audit", label_key="audit",
+        id="audit",
+        group="system",
+        href="/admin/audit",
+        label_key="audit",
         capability="audit.read",
     ),
     # AI settings: the site's AI keys and models (settings.read, like /admin/settings) and
     # the host's subscription accounts, a tab the page shows the owner only because its
     # routes require roles.manage.
     AdminNavigationItem(
-        id="ai_accounts", group="system", href="/admin/ai-accounts", label_key="aiAccounts",
+        id="ai_accounts",
+        group="system",
+        href="/admin/ai-accounts",
+        label_key="aiAccounts",
         capability="settings.read",
     ),
 )
@@ -193,12 +274,10 @@ async def _live_pending_counts(session: AsyncSession) -> dict[str, int]:
             NewsSource.enabled.is_(True),
             NewsSource.last_status == "stuck",
         ).label("news_sources_stuck"),
-        _scalar_count(VideoReview, VideoReview.status == "pending").label(
-            "video_reviews_pending"
+        _scalar_count(VideoReview, VideoReview.status == "pending").label("video_reviews_pending"),
+        _scalar_count(DeploymentRun, DeploymentRun.status.in_(ACTIVE_DEPLOYMENT_STATUSES)).label(
+            "deployments_active"
         ),
-        _scalar_count(
-            DeploymentRun, DeploymentRun.status.in_(ACTIVE_DEPLOYMENT_STATUSES)
-        ).label("deployments_active"),
         _scalar_count(ProviderHealth, ProviderHealth.status != "healthy").label(
             "providers_unhealthy"
         ),
@@ -250,6 +329,49 @@ async def pending_counts(session: AsyncSession) -> dict[str, int]:
     return values
 
 
+# A deploy window that closed without a deploy stays on the overview for a day.
+MISSED_WINDOW_SHOWN_FOR = timedelta(hours=24)
+
+
+def host_deployment_component(
+    host: HostTimerStatus, live_sha: str | None, active_runs: int
+) -> AdminSystemComponent:
+    """The overview's deployment card on the host timer path (DEPLOYMENT_EXECUTOR=host_timer).
+
+    The owner reads failures here (2026-11-16: no webhook, the admin pages are the channel), so
+    the card turns red or amber for the three things that need a person: the timer is silent,
+    automatic deploys are paused after a failure, or a deploy window closed without deploying.
+    """
+    if host.reported_at is None:
+        return AdminSystemComponent(status="unavailable", detail="主機自動部署排程器尚未回報")
+    if not host.responding:
+        return AdminSystemComponent(
+            status="unavailable", detail="主機自動部署排程器超過 15 分鐘沒有回報"
+        )
+    if host.paused_reason:
+        return AdminSystemComponent(
+            status="degraded", detail=f"自動部署已暫停：{host.paused_reason}"[:300]
+        )
+    missed = host.last_missed_window
+    notified = missed.notified_at if missed else None
+    if notified is not None and notified.tzinfo is None:
+        notified = notified.replace(tzinfo=UTC)
+    if missed and notified and datetime.now(UTC) - notified <= MISSED_WINDOW_SHOWN_FOR:
+        return AdminSystemComponent(
+            status="degraded",
+            detail=(
+                f"部署時段 {missed.window or ''} 結束沒部署"
+                f"（{(missed.sha or '')[:7]} 卡在 {missed.gate or '?'}）"
+            ),
+        )
+    if active_runs:
+        return AdminSystemComponent(status="healthy", detail=f"{active_runs} 個部署進行中")
+    version = f"目前版本 {(live_sha or 'unknown')[:7]}"
+    return AdminSystemComponent(
+        status="healthy", detail=f"{version}（乾跑模式）" if host.dry_run else version
+    )
+
+
 async def _system_status(
     session: AsyncSession, pending: dict[str, int]
 ) -> dict[str, AdminSystemComponent]:
@@ -274,16 +396,17 @@ async def _system_status(
         ),
     )
     if not settings.deployments_configured:
-        deployment = AdminSystemComponent(
-            status="disabled", detail="部署功能尚未完成設定"
+        deployment = AdminSystemComponent(status="disabled", detail="部署功能尚未完成設定")
+    elif settings.deployment_executor == HOST_EXECUTOR:
+        row, host = await read_host_status(session)
+        deployment = host_deployment_component(
+            host, row.live_sha if row else None, pending.get("deployments_active", 0)
         )
     else:
         try:
             deployment_agent = await DeploymentAgentClient().overview()
         except AppError:
-            deployment = AdminSystemComponent(
-                status="unavailable", detail="部署 Agent 無法連線"
-            )
+            deployment = AdminSystemComponent(status="unavailable", detail="部署 Agent 無法連線")
         else:
             if not deployment_agent.connected:
                 deployment = AdminSystemComponent(
@@ -316,16 +439,12 @@ async def _system_status(
         and settings.deploy_agent_socket.startswith("/")
     )
     if not agent_transport_configured:
-        backup = AdminSystemComponent(
-            status="disabled", detail="資料庫備份 Agent 尚未設定"
-        )
+        backup = AdminSystemComponent(status="disabled", detail="資料庫備份 Agent 尚未設定")
     else:
         try:
             database_agent = await DatabaseAgentClient().overview()
         except AppError:
-            backup = AdminSystemComponent(
-                status="unavailable", detail="資料庫備份 Agent 無法連線"
-            )
+            backup = AdminSystemComponent(status="unavailable", detail="資料庫備份 Agent 無法連線")
         else:
             latest_backup = max(
                 database_agent.backups,
@@ -337,9 +456,7 @@ async def _system_status(
                     status="unavailable", detail="資料庫備份 Agent 尚未就緒"
                 )
             elif latest_backup is None:
-                backup = AdminSystemComponent(
-                    status="degraded", detail="尚無已驗證的資料庫備份"
-                )
+                backup = AdminSystemComponent(status="degraded", detail="尚無已驗證的資料庫備份")
             else:
                 source = "部署" if latest_backup.source == "deployment" else "手動"
                 verified_at = latest_backup.verified_at.astimezone(UTC).strftime(
@@ -400,9 +517,7 @@ def _audit_query(
         statement = statement.where(
             or_(
                 User.email.ilike(f"%{escaped}%", escape="\\"),
-                func.cast(AdminAuditLog.actor_user_id, String).ilike(
-                    f"%{escaped}%", escape="\\"
-                ),
+                func.cast(AdminAuditLog.actor_user_id, String).ilike(f"%{escaped}%", escape="\\"),
             )
         )
     if action:
