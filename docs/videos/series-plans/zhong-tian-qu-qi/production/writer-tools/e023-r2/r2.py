@@ -13,8 +13,8 @@ lessons (colab/runs/e921-live/{picks-merged.tsv,fix1/mkspec.py}, e920-live/revie
   at the inn. Her silent faces: s19 (the blush while he laughs), s37 (side by side with him), s40 (looking at Wei Shaoqing
   while the system speaks); l1 and angle-a only (her long-ribbon angle-b nowhere), no abacus in her identity sentence.
   s01 and s21 show her small and unnamed (peach-pink, two buns) on the boat, no picture.
-- The gold abacus (rule 20; the coordinator's 2026-11-16 decision in the bible's props row: from e022 on, the small
-  palm-sized abacus, inserts only): only in the three lap inserts s11, s15, s25, the prop picture prop-jinsuanpan-l1 in the
+- The gold abacus (rule 20 as corrected by the coordinator, 2026-11-16, the bible's props row: the long flat abacus of the
+  prop picture, as long as her forearm, inserts only; the palm-sized wording is withdrawn): only in the three lap inserts s11, s15, s25, the prop picture prop-jinsuanpan-l1 in the
   set slot and NOBODY_ABACUS (no "the set layout stays as it is": e022 必改 11, the prop picture's cabinet grew a second
   abacus in e920 s37b). The script's untying (c10), picking up (c22), holding (c24) and hanging it back (c27) are not shot;
   the sound effects carry them. Every other shot of her writes her hands in her lap or on the table, the abacus unnamed.
@@ -110,9 +110,9 @@ LOC = {
     "inn_t": "In the county inn guest room upstairs on a clear winter afternoon, on the dark-red wooden table top in warm light",
 }
 LIGHT = {
-    "ferry": "the thick cold grey-blue fog and the one warm lantern glow stay unchanged",
+    "ferry": "the thick cold grey fog and the one warm lantern glow stay unchanged",
     "ferry_w": "the cold grey-blue light and the dark water stay unchanged",
-    "boat": "the thick cold grey-blue fog and the warm glow of the one bow lantern stay unchanged",
+    "boat": "the thick cold grey fog and the warm glow of the one bow lantern stay unchanged",
     "boat_t": "the dim warm lantern light stays unchanged",
     "dawn": "the warm low gold morning light and the thin mist stay unchanged",
     "dawn_t": "the warm low morning light stays unchanged",
@@ -140,9 +140,11 @@ LANTERN = "one round plain white paper lantern on its bamboo handle"
 # bible rule 27: the wager (folded; the blank side only); the thumbprint in s39-s40 is a red smudge
 WAGER = "one sheet of plain paper folded in half"
 PASTE = "one small round shallow white dish of thick vermilion-red paste"
-# bible rule 20 (the palm-sized abacus) with e920 fix1's flat wording: it lies flat, never upright
-ABACUS = ("one small flat gold abacus the size of her palm lying flat on the skirt over her lap: a thin flat gold frame, one thin "
-          "gold crossbar along its length, small round gold beads above and below the crossbar on every rod")
+# bible rule 20 as corrected by the coordinator (2026-11-16, the props row): the series' abacus is the long flat one of
+# prop-jinsuanpan-l1 (e920, e922 drew it long); "the size of a palm" is withdrawn. Inserts only, the prop picture sent.
+ABACUS = ("one long flat gold abacus, as long as her forearm, a thin gold frame, lying flat across the skirt over her lap: a long "
+          "row of thin gold rods set close side by side across its width, one thin gold crossbar running along its whole length, "
+          "small round gold beads above and below the crossbar on every rod")
 BOATMAN = "one boatman in a conical bamboo hat and a straw rain cape, seen only from behind"
 # rule 25: the three elders, thin, never a front face, no picture
 ELDERS = ("three thin old men in long Song-dynasty silk robes, one grey, one brown, one dark blue, each with a black square cloth "
@@ -155,7 +157,7 @@ SILENT_HE = "He says nothing in this shot: his lips stay pressed together from t
 NOBODY = "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. "
 # the lap inserts (e022 必改 11): the prop picture's cabinet and shelves must not stay; refine-prep.py uses the clips-dh
 # first-frame phrase "keeps the first frame's set layout and props. " (once); "never the mood. " stays once in the d1 prompt.
-NOBODY_ABACUS = ("Throughout the shot the abacus keeps the flat shape it has in <Picture 1>, and the pleated peach-pink silk "
+NOBODY_ABACUS = ("Throughout the shot the abacus keeps the long flat shape it has in <Picture 1>, and the pleated peach-pink silk "
                  "skirt fills the rest of the frame. The pictures fix the place and the objects only, never the mood. ")
 # e916 fix1 / e918 review 必改 1 / e919 review 建議: two high round buns, a short ribbon round each, the nape bare.
 TBACK = ("one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered "
@@ -251,7 +253,7 @@ SHOTS = [
     dict(loc="boat_t", cam="Insert close-up, slow push in", chars=[], night="boat_t",
          comp=f"insert close-up, the shot opens directly on {ABACUS}, seated, resting on a pleated peach-pink silk skirt over her lap from its very first frame, two small fingertips in peach-pink silk sleeve cuffs already on its beads; only the fingertips, their sleeve cuffs, the abacus and the skirt are in the frame",
          motion=NOBODY_ABACUS + "the fingertips push the beads back one by one until every rod is cleared, and one small tear drops onto the gold frame and runs along it",
-         zh="插鏡、慢推（第一格就是算盤：坐著、膝上桃粉百褶裙上平放的巴掌小金算盤；送道具圖 `prop-jinsuanpan-l1`，不寫『set layout stays』，第 22 集必改 11）：指尖把算珠一顆一顆撥回去歸零，一滴淚落在算盤框上（無台詞）"),
+         zh="插鏡、慢推（第一格就是算盤：坐著、膝上桃粉百褶裙上平放的長金算盤（跟前臂一樣長；協調者更正，道具圖本身就是長的）；送道具圖 `prop-jinsuanpan-l1`，不寫『set layout stays』，第 22 集必改 11）：指尖把算珠一顆一顆撥回去歸零，一滴淚落在算盤框上（無台詞）"),
     dict(loc="boat_c", cam="Close-up, slow push in", chars=["xuyan"], night="boat",
          comp=f"close-up of {XU_N}, sitting under the canopy, framed from the chest up with space above his head, {WET}, his right arm already reaching down toward the lower right edge of the frame from the first frame, his face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; one side of his face lit warm by the far bow lantern, the other side in cold shadow; grave and certain: steady eyes, lips moving slowly between words; behind him the thick grey fog, soft",
          lines=[("xuyan", "妳不是我贏來的，也不是誰拿來抵的債。", "一字一字，冷得聲音帶抖")],
@@ -416,7 +418,7 @@ HEAD = [
     "- 重製版 r2、真人版（站主 2026-11-11「之後都用真人版」）：照 `docs/videos/zhong-tian-qu-qi-e023-r2/script.md`（c01–c40 對應 s01–s40；c13 拆成 s13、s13b，共 41 鏡；含「這版改了什麼」「2026-11-06 審稿後的修改」與「真人版的改動（2026-11-16）」）；台詞一字不改，只改拍法；每鏡一個看得見的動作、一句一筆不拆半句、預設不笑。篇章設定 `production/r2-bible-e021-e030.md`（拍法 1–30 條）。第 3 篇章〈搶親〉第三集。",
     "- 內部工作編號 923（`hailuo/{ff,clips}-dh-e923.json`、`colab/runs/e923/extras.json`、`colab/runs/e923-live/spec.json`，工作資料夾 `~/mokaair-work/videos/zhong-tian-qu-qi-e923-dh/`）；發布 slug `zhong-tian-qu-qi-e023-r2`。不放集數、不放片名卡；s01 接第 22 集 s41 同一刻（聖經接點 22→23：燈籠已插在岸邊泥裡、他已在水裡往船追）；s40 交給第 24 集第一場（聖經接點 23→24：拇指按在賭約上、商會三老在旁、系統紅框）。",
     "- 照第 22 集審稿後的寫法一開始就照做：`OFFSCREEN_SPEECH = False`；`quiet()` 只管嘴；背景寫在場的東西（拍法 18）；道具與接觸寫在第一格；只寫要畫出來的東西：賭約照拍法 27 寫「一張對摺的白紙」、只見素面；印泥只在 s39；商會三老、船夫不點名、不送圖。",
-    "- **唐小棠不露嘴說話**（拍法 3）：她在畫面上的台詞全部從背後拍（s03、s07、s10、s14、s17、s18、s20、s22、s24、s27 船上；s29、s31、s33、s36 客棧；nospeak，spec 拿掉她的圖與身分句；兩顆高丸子、短粉緞帶、後頸露出、頭不動）；她的臉只在**不說話**的 s19（臉紅）、s37（並肩站著）、s40（看著魏少卿），只送 l1 與 angle-a。**小金算盤只在 s11、s15、s25 三支膝上插鏡**（拍法 20 與聖經道具表協調者 2026-11-16：巴掌小算盤、只在插鏡；送道具圖、寫平放）；稿子 c10 解下、c22 拿起、c24 捧著、c27 掛回都不拍，交給音效。",
+    "- **唐小棠不露嘴說話**（拍法 3）：她在畫面上的台詞全部從背後拍（s03、s07、s10、s14、s17、s18、s20、s22、s24、s27 船上；s29、s31、s33、s36 客棧；nospeak，spec 拿掉她的圖與身分句；兩顆高丸子、短粉緞帶、後頸露出、頭不動）；她的臉只在**不說話**的 s19（臉紅）、s37（並肩站著）、s40（看著魏少卿），只送 l1 與 angle-a。**小金算盤只在 s11、s15、s25 三支膝上插鏡**（拍法 20 與聖經道具表協調者 2026-11-16 更正：道具圖那把跟前臂一樣長的扁長金算盤、只在插鏡；送道具圖、寫平放）；稿子 c10 解下、c22 拿起、c24 捧著、c27 掛回都不拍，交給音效。",
     "- **魏少卿的摺扇整集合著**（第 21 集 fix1：打開的扇面長出書法假字）：c28 半開、c30 搧兩下、c38 搖開都改成合著敲、豎著。",
     "- **場景圖說了算**（拍法 29，協調者 2026-11-16 決定，每張放大看過）：渡口 `set-dukou-ye-l1`（棧橋從左來、左下乾蘆葦、圖上沒有船）；夜裡的小船 `set-chuan-ye-l1`（竹篷在中、船頭與燈在右：許硯在左、唐小棠在右、船夫在船頭）；天亮 `set-chuan-chen-l1`（燈熄、右邊低日金光）；午後客棧 `set-kezhan-pm-l1`（窗與長凳在左、方桌在中、門在右牆、屏風在後；魏少卿坐長凳，唐小棠在桌子右邊、許硯在她右肩後，三老在屏風邊）。近鏡：夜裡送霧色底圖 `set-chuan-ye-wu-l1`、天亮送薄霧底圖 `set-chuan-chen-wu-l1`（第 21 集挑片：夜戲不送場景圖會長出夜市攤子）；客棧近鏡不送。插鏡：渡口棧橋下 `set-dukou-ye-shui-l1`、客棧午後桌面 `set-kezhan-pm-table-l1`、算盤 `prop-jinsuanpan-l1`。四張新圖都是免費裁切、新 id 自帶 l1。**不需要試鏡**。",
     "- 長鏡要買的秒數（BUY）：照 38 句錄音核過（見 `r2.py` 的 BUY 註解）；**稿子 c13 的長鏡（系統兩句＋心裡話）拆成 s13 與 s13b**。",
