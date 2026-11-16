@@ -421,7 +421,7 @@ HEAD = [
     "- **唐小棠不露嘴說話**（拍法 3）：她在畫面上的台詞全部從背後拍（s03、s07、s10、s14、s17、s18、s20、s22、s24、s27 船上；s29、s31、s33、s36 客棧；nospeak，spec 拿掉她的圖與身分句；兩顆高丸子、短粉緞帶、後頸露出、頭不動）；她的臉只在**不說話**的 s19（臉紅）、s37（並肩站著）、s40（看著魏少卿），只送 l1 與 angle-a。**小金算盤只在 s11、s15、s25 三支膝上插鏡**（拍法 20 與聖經道具表協調者 2026-11-16 更正：道具圖那把跟前臂一樣長的扁長金算盤、只在插鏡；送道具圖、寫平放）；稿子 c10 解下、c22 拿起、c24 捧著、c27 掛回都不拍，交給音效。",
     "- **魏少卿的摺扇整集合著**（第 21 集 fix1：打開的扇面長出書法假字）：c28 半開、c30 搧兩下、c38 搖開都改成合著敲、豎著。",
     "- **場景圖說了算**（拍法 29，協調者 2026-11-16 決定，每張放大看過）：渡口 `set-dukou-ye-l1`（棧橋從左來、左下乾蘆葦、圖上沒有船）；夜裡的小船 `set-chuan-ye-l1`（竹篷在中、船頭與燈在右：許硯在左、唐小棠在右、船夫在船頭）；天亮 `set-chuan-chen-l1`（燈熄、右邊低日金光）；午後客棧 `set-kezhan-pm-l1`（窗與長凳在左、方桌在中、門在右牆、屏風在後；魏少卿坐長凳，唐小棠在桌子右邊、許硯在她右肩後，三老在屏風邊）。近鏡：夜裡送霧色底圖 `set-chuan-ye-wu-l1`、天亮送薄霧底圖 `set-chuan-chen-wu-l1`（第 21 集挑片：夜戲不送場景圖會長出夜市攤子）；客棧近鏡不送。插鏡：渡口棧橋下 `set-dukou-ye-shui-l1`、客棧午後桌面 `set-kezhan-pm-table-l1`、算盤 `prop-jinsuanpan-l1`。四張新圖都是免費裁切、新 id 自帶 l1。**不需要試鏡**。",
-    "- 長鏡要買的秒數（BUY）：照 38 句錄音核過（見 `r2.py` 的 BUY 註解）；**稿子 c13 的長鏡（系統兩句＋心裡話）拆成 s13 與 s13b**。",
+    "- 長鏡要買的秒數（BUY）：照 38 句錄音核過（見 `r2.py` 的 BUY 註解）：**稿子 c13 的長鏡（系統兩句＋心裡話）拆成 s13 與 s13b 兩支 6 秒**；s40（系統兩句約 5.8 秒、本集最後一鏡，要留紅框與重音的尾）買 8 秒；s15、s35 插鏡 5 秒放得下畫外句；其餘 6 秒。重錄 a07、a10、a15、a29、a32、a36、a37（第一次的檔在 `audio/take1/`），a04 重錄較差、留第一次。",
     "- **表上的「秒」欄是 lint 估法**，比錄音短；剪接以錄音長度＋0.5 秒為準。",
 ]
 FOOT = [
@@ -432,8 +432,22 @@ FOOT = [
     "- 配樂：渡口接第 22 集的二胡長音加鼓點，s06 伸手一個輕重音；船上慢的鋼琴與二胡，s12 輕重音，s22 起轉亮，s27 重音；客棧算盤節奏的緊張 cue，s37「作證」重音、s40 紅框大重音後收。音效見 script.md〈音樂與音效〉（另外：s01 跳水與燈籠插泥、s10 解算盤、s22 算珠一串、s24 撥兩下、s27 算盤掛回腰間、s37 椅子後推，都交給音效）。",
 ]
 
-# Long shots: seconds to buy (see the BUY comment block below, filled after the recordings).
-BUY = {}
+# Long shots: seconds to buy. Measured 2026-11-16 against the 38 recordings (~/mokaair-work/videos/zhong-tian-qu-qi-e923-dh/audio;
+# wave length and silencedetect -35 dB speech span; e013's test: a shot holds (buy - 0.3) x 1.1 s of speech, half a second
+# between lines, so 5 s holds 5.17 s, 6 s 6.27 s, 8 s 8.47 s). faster-whisper medium read every take back, one clip per process,
+# numpy input, once plain and once with the previous line and the line as context (audio/fw923.txt, fw923-retake.txt;
+# audio/README-retakes.txt).
+# Re-recorded once (first takes in audio/take1/): a07 (魏家 heard 回家), a10 (宿主 heard 手作), a15 (媒婆 heard 梅伯),
+# a29 (比營收 heard 鼻音收; the retake still does, -ng and tone of the Taiwan voice, kept), a32 (魏記 heard 危機, 宰相府 heard
+# 宰相服務), a36 (花轎 heard 花架), a37 (勝出 heard 釋出). a04 was re-recorded too (照樣往縣城撐 heard 網線稱稱 plain) but the
+# retake was worse (撐 heard 捧), so the first take stays (the retake in audio/take2/).
+# 6 s: every speaking shot. The longest: s16 (a14 5.66 s of speech), s20 (a18 5.84 s), s37 (a35 5.58 s with the nod),
+#      s13 (a09 2.34 + a10 3.0 + 0.5 = 5.8 s; the script's 9 s long shot is split, his thought a11 3.2 s in s13b).
+# 5 s: the inserts with an off-screen line hold it: s15 (a13 3.35 s), s35 (a33 3.66 s).
+# 8 s: s40 (a37 3.2 + a38 2.07 + 0.5 = 5.8 s fits 6 s, but it is the episode's last shot: the thumb lifts, the red panel and
+#      its accent need a held tail, as e920 s38 and e921 s37 ended on a hold; the script's long-shot list buys 8 too).
+# No shot runs over about 10 s, so nothing more is split.
+BUY = {"s40": 8}
 
 
 # ---- e022 review 必改 12 (the refine text), the same here: hailuo/clips-dh-e923.json column 0 is the motion text refine-prep.py
