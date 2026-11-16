@@ -27,13 +27,14 @@
   },
   {
    "cue": "comedy",
-   "from": "s13",
+   "from": "s12",
    "to": "s14",
    "offset": 2.5,
    "gain": -23,
-   "fade_in": 0.6,
+   "fade_in": 1.0,
    "fade_out": 1.2,
-   "tail": 0
+   "tail": 0,
+   "from_off": 1.2
   },
   {
    "cue": "night",
@@ -49,7 +50,7 @@
    "cue": "suspense",
    "from": "s23",
    "to": "s30",
-   "offset": 31.0,
+   "offset": 31.5,
    "gain": -21,
    "fade_in": 1.0,
    "fade_out": 1.5,
@@ -71,49 +72,49 @@
    "file": "birds",
    "at": "s01",
    "off": 0,
-   "gain": -30,
+   "gain": -19,
    "to": "s14"
   },
   {
    "file": "Wind",
    "at": "s01",
    "off": 0,
-   "gain": -26,
+   "gain": -13,
    "to": "s14"
   },
   {
    "file": "wind1",
-   "at": "s15",
-   "off": 0,
-   "gain": -18,
+   "at": "s14",
+   "off": 5.9,
+   "gain": -10,
    "to": "s22"
   },
   {
    "file": "Wind",
-   "at": "s15",
-   "off": 1.0,
-   "gain": -22,
+   "at": "s14",
+   "off": 5.9,
+   "gain": -13,
    "to": "s22"
   },
   {
    "file": "wind1",
-   "at": "s23",
-   "off": 0,
-   "gain": -18,
+   "at": "s22",
+   "off": 3.6,
+   "gain": -9,
    "to": "s30"
   },
   {
    "file": "Wind",
-   "at": "s23",
-   "off": 1.0,
-   "gain": -24,
+   "at": "s22",
+   "off": 3.6,
+   "gain": -14,
    "to": "s30"
   },
   {
    "file": "Wind",
-   "at": "s31",
-   "off": 0,
-   "gain": -26,
+   "at": "s30",
+   "off": 5.6,
+   "gain": -11,
    "to": "s40"
   },
   {
@@ -245,7 +246,7 @@
   },
   "s11": {
    "from": 0,
-   "af": "rubberband=pitch=0.78:formant=preserved"
+   "af": "rubberband=pitch=0.78:formant=preserved,volume=2dB,alimiter=limit=0.89:attack=5:release=50:level=false"
   },
   "s17": {
    "from": 0,
@@ -257,7 +258,7 @@
   },
   "s33": {
    "from": 0,
-   "af": "rubberband=pitch=0.65:formant=preserved"
+   "af": "rubberband=pitch=0.65:formant=preserved,volume=0.7dB,alimiter=limit=0.89:attack=5:release=50:level=false"
   },
   "s34": {
    "from": 0,
@@ -265,7 +266,19 @@
   },
   "s40": {
    "from": 0,
-   "af": "rubberband=pitch=1.35:formant=preserved"
+   "af": "rubberband=pitch=1.35:formant=preserved,volume=0.8dB,alimiter=limit=0.89:attack=5:release=50:level=false"
+  },
+  "s15": {
+   "from": 0,
+   "af": "volume=-1dB"
+  },
+  "s32": {
+   "from": 0,
+   "af": "volume=-1.5dB"
+  },
+  "s37b": {
+   "from": 0,
+   "af": "volume=-1dB"
   }
  },
  "voice_off": [
