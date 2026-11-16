@@ -31,6 +31,8 @@ scope:
   - .env.example
   - apps/api/tests/test_deployment_host_timer.py
   - apps/api/tests/test_migration_0145_video_youtube_reports.py
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Admin redeploy button runs the host deploy script through the auto deploy timer
@@ -139,3 +141,7 @@ run 標成 `failed`／`dry_run`；開啟後再按一次，看完整一輪 succee
     綁在已關閉 loop 上的連線（"attached to a different loop"）。main 上兩者分在第 2、第 4 片所以沒露出來。修法：0145 測試
     結尾 `await engine.dispose()`（一行，該檔在 `2026-11-02-youtube-reporting-api` 的過期認領 scope 裡，照站主「強制認領」的決定處理），
     0146 測試改用自己的 engine 並 dispose。
+  - CI web-checks／video-tests 紅：`tools/video/long-form/review.mjs` 用 SHA-256 綁住五個 `admin.json`（影片長度審查），
+    改任何文案都要一份獨立的 DURATION_ONLY 增補審查。由另一個代理 `claude-review-deploy-panel-20261116` 審完
+    （PASS：新鍵全在 `deploymentsPanel`，「15 分鐘／5 分鐘／8 秒」都不是影片長度），寫進 `docs/videos/long-form/review.md`
+    與 `review.json`；`node tools/video/long-form/cli.mjs check` PASS。往後任何改 admin.json 的 PR 都要做這一步。
