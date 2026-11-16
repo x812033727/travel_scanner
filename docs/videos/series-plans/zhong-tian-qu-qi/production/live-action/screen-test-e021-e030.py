@@ -31,11 +31,18 @@ Every pick gets a NEW id with its own l1 (never a new l-number of a set id an e9
 newest l-version of a set id, and those episodes must rebuild byte for byte); episodes send them by spec.json
 swap_pictures with absolute paths (the e915-e917 relative-path lesson).
 
-Round 2 (--r2, after the round-1 picks are filed in refs-live): 2 pictures x seeds 37035/37036 = 4 jobs, OUT_DIR/r2.json:
-set-chuan-chen-l1 (the picked boat relit to dawn mist with gold sunrise bands, e023 c19-c27) and set-tangfang-ye-l1 (the
-picked sugar shed relit to night by one oil lamp and the stove fire, e024 c19-c23). Try a free ffmpeg grade of the picks
-first; run round 2 only if the grade still reads as day (bible 拍法 8).
-
+Round 2 (--r2, after the round-1 picks are filed in refs-live, 2026-11-16): 3 pictures x seeds 37035/37036 = 6 jobs,
+OUT_DIR/r2.json:
+- set-guangchang-l1 again: both round-1 seeds came out as a fish-eye panorama with a bent horizon (and a person's shadow
+  in 37034). Round 2 draws it fresh on the grey canvas once more but with its own style line: a 35 mm lens at eye height,
+  a level straight horizon, the buildings upright and parallel, the square empty; the 24 mm "wide establishing" words of
+  STYLE/PLACE are left out of it (they are what bent it). A one-change edit of the picked street set-xianjie-l1 was
+  considered and not used: a street into a square is the whole picture changing, not one thing, and xianjie's 24 mm
+  verticals lean too.
+- set-chuan-chen-l1 (the picked boat set-chuan-ye-l1 relit to dawn mist with gold sunrise bands, e023 c19-c27) and
+  set-tangfang-ye-l1 (the picked sugar shed set-tangfang-l1 relit to night by the stove fire and one oil lamp, e024
+  c19-c23). The free ffmpeg grades were tried first (refs-live/README.md 第 3 篇章): the boat only turned grey-teal with
+  the lantern still burning, the shed still read as a low winter sun on snow, so both go to round 2 (bible 拍法 8).
 The positive prompts are written only as what is there (bible 拍法 18); the things to keep out are in the negative files.
 The portraits keep screen-test.py's HEAD frame, which arc 2's faces were drawn with.
 """
@@ -295,20 +302,51 @@ else:
     for p in (boat, shed):
         assert p.is_file(), f"refs-live/{p.name} is missing: round 2 relights the round-1 picks"
     dawn = ("Image 1 is a photograph of a small river ferry boat: keep exactly everything in it - the camera position, the boat, "
-            "its plank deck, its woven bamboo canopy, the punting pole, the little lantern pole at the bow, the water and the "
-            "banks. Change only one thing, the time and the light: it is sunrise after a foggy night; the fog has thinned to a "
-            "soft pale mist, the sky pale gold and grey-blue, and the low sun from the right sends long bands of warm golden "
-            "light through the mist across the water and the boat; the little lantern is out." + KEEP_TAIL)
-    night = ("Image 1 is a photograph of a thatched sugar workshop: keep exactly everything in it - the camera position, the "
-             "thatched roof and posts, the back wall, the mud-brick stove with its two iron woks, the rack of clay funnels, the "
-             "stone mill and the bucket, the low table with its bamboo trays and the open right side. Change only one thing, the "
-             "time and the light: it is night; through the open right side the path and the stream are dark under a black sky; "
-             "inside, a red glow of fire burns in the stove mouths and one small clay oil lamp stands on the low table, their "
-             "warm orange light the only light, white steam rising from the left wok, deep shadows under the roof." + KEEP_TAIL)
-    pictures += [("set-chuan-chen-l1", "e023 c19", boat, dawn, NEG + ", night, black sky, moon, lantern flame, second boat",
+            "its plank deck, its arched woven bamboo canopy, the folded grey blanket on the deck, the long bamboo punting pole, "
+            "the paper lantern on its bamboo pole at the bow, the still water, the boat's reflection and the reeds on the far "
+            "bank at the top right. Change only one thing, the time and the light: it is sunrise after a foggy night; the fog "
+            "has thinned to a soft pale mist, the sky pale gold and grey-blue, and the low sun from the right sends long bands "
+            "of warm golden light through the mist across the water and the boat; the paper lantern hangs dark and unlit, its "
+            "paper pale in the daylight." + KEEP_TAIL)
+    night = ("Image 1 is a photograph of a long open-sided thatched sugar workshop: keep exactly everything in it - the camera "
+             "position, the thatched roof on its timber posts and beams, the plain earthen back wall on the left, the mud-brick "
+             "stove blocks at the front left with the black iron wok on top, the wooden rack of clay funnels along the back wall, "
+             "the round stone mill and the wooden bucket in the middle, the stack of round bamboo trays on the railing post, the "
+             "wooden railing along the open right side, and outside it the path, the stream, the bare willows and the snow. "
+             "Change only one thing, the time and the light: it is deep night; outside the open right side the snowy path, the "
+             "stream and the willows lie in dim cold blue under a black sky; inside, a low red fire glows in the stove at the "
+             "front left and one small clay oil lamp stands on the rim of the stone mill, their warm orange light the only light, "
+             "white steam rising from the wok, the back of the shed and the underside of the roof in deep shadow." + KEEP_TAIL)
+    # the square, drawn fresh again: round 1's STYLE ("24mm wide-angle") and PLACE ("wide establishing") bent it into a
+    # fish-eye panorama, so this one has its own lens line and keeps its framing words plain
+    square = (CANVAS + "A photograph of a real location taken at eye height with a 35mm lens, the camera level and square to the "
+              "scene: the town square of an ancient Chinese Song-dynasty county town at noon on a clear early-winter day. A "
+              "flat open square of packed earth edged with grey stone slabs, its far edge a straight level line across the "
+              "picture. In the middle distance, in the centre of the frame, a square wooden platform about waist high, seen "
+              "straight from the front, with three wooden steps at its front left and its top covered with a plain red cloth; "
+              "at the back of the platform a long dark wooden judgement desk with one flat rectangular wooden block and a "
+              "shallow wooden tray on it and a plain chair behind it; on the right side of the platform one carved wooden "
+              "armchair; at the left foot of the platform one plain wooden crate with two crossed strips of plain white paper "
+              "pasted over its lid. Behind the square a straight row of low one-storey grey-tiled shops and whitewashed walls "
+              "with plain bare lintels and closed wooden shutters, their walls and posts standing straight up and parallel, "
+              "their roof lines level; two bare trees by the walls; at the right edge a dirt road leading into the square. The "
+              "sun is high overhead above the frame, a strong even noon light, a clear blue sky; the square is empty and still, "
+              "the only shadows the short dark shadows under the platform, the desk, the chairs and the eaves. Style: a "
+              "photorealistic live-action photograph of a real location for a Chinese historical costume drama, shot on a "
+              "cinema camera with a normal 35mm lens, natural perspective, straight lines, natural light, real wood, stone, "
+              "earth, plaster and tile textures, deep focus; a clean natural film image that fills the whole frame edge to edge.")
+    pictures += [("set-guangchang-l1", "e028 c33", grey_s, square,
+                  NEG + ", mallet, gavel, hammer, stage curtains, flags, banners, stalls, gallows, cage, lanterns, fisheye, "
+                        "fish-eye lens, ultra wide angle, wide-angle distortion, barrel distortion, curved horizon, bent "
+                        "horizon, curved lines, tilted buildings, leaning walls, 360 panorama, spherical panorama, little "
+                        "planet, dutch angle, sun disc, lens flare, shadow of a person, human shadow, footprints", 1312, 736,
+                  "fresh place on the grey canvas, 35mm"),
+                 ("set-chuan-chen-l1", "e023 c19", boat, dawn,
+                  NEG + ", night, black sky, moon, stars, lit lantern, glowing lantern, lantern flame, second boat",
                   1312, 736, "relight of the round-1 boat"),
-                 ("set-tangfang-ye-l1", "e024 c19", shed, night, NEG + NIGHT_NEG + ", lantern, torch, candles, frost in sunlight",
-                  1312, 736, "relight of the round-1 sugar shed")]
+                 ("set-tangfang-ye-l1", "e024 c19", shed, night,
+                  NEG + NIGHT_NEG + ", sunset, golden sunlight, orange sky, bars of sunlight on the wall, frost in sunlight, "
+                                    "lantern, torch, candles, many lamps", 1312, 736, "relight of the round-1 sugar shed")]
     name = "r2"
 
 jobs, summary = [], []
