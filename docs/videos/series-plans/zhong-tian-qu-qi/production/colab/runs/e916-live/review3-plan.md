@@ -1,5 +1,7 @@
 # e916-live 第三輪：兩份成片審查合併後的不花錢修改清單
 
+> **2026-11-16 已套用**，紀錄在 `hailuo/edit-dh-e916-live.json` 的 `_note` REVIEW 3。和本清單不同的地方：s09 加 **5.5 dB** 不是 3 dB（0.68 降調吃掉約 4 dB 響度，+3 還比 s11 小 2.9 dB）；唐小棠加大後 loudnorm2 把整片壓低約 0.3 dB，工棚、書院門口的環境床各加 2 dB，工棚與回程的 Wind 提前到上一鏡尾巴起（補剪點上的淡入淡出洞）；重做的錄音頭尾底噪變大、讓六句變長 0.1–0.3 秒（s20、s33 第一次重剪被放慢），所以每個重做的錄音都裁回原本 −45 dB 的頭尾。成片 204.58 秒。
+
 - 2026-11-16，從 `cut-review.md`（審查 1）與 `cut-review-2.md`（審查 2）合併、去重，照協調者的決定。套用結果寫在 `hailuo/edit-dh-e916-live.json` 的 `_note` REVIEW 3。
 - **不花錢**：沒有 Colab、RunPod、站台 TTS 重錄。錄音只從 `audio/orig/` 重跑同一套處理（e909 的 acompressor 3:1＋volume＋alimiter 0.84）。
 - **時間一律寫草稿秒數**（`picks.json` 與 trims 檔的寫法）；`clip_af`、`sfx` 的時間是剪後的鏡內秒數 c。剪點都是整格（起點往下、終點往上取到 3 位小數），每一刀都用 faster-whisper 字時間加 50 ms RMS 核對，不切字。
