@@ -1,5 +1,11 @@
 # e920-live 第三輪：兩份成片審查合併後的修改清單
 
+> **2026-11-16 已套用**，紀錄在 `hailuo/edit-dh-e920-live.json` 的 `_note` REVIEW 3。跟本清單不同的地方：
+> - 第 2 節第 1 項的 s01 −2 dB 在成片量不出差別（p75 −13.0、最大 −9.0；原本 −9.2）。組片程式最後那道單次 loudnorm 是動態的，會把片頭幾秒拉回來。試過 −5 dB，人聲還是一樣響，只有字與字之間的風聲大了約 3 dB，所以照協調者寫的留 −2 dB。要真的調輕得改混音，`clip_af` 做不到。
+> - s17、s30、s31 有降：p75 −13.6／−15.1／−15.2，最大 −11.7／−12.7／−10.8，比同場鄰句低 2–3 dB，仍在環境聲之上。
+>
+> 成片 205.64 秒（原 210.81）。−14.0 LUFS，peak −2.8；loudnorm2 linear（pre −14.48 LUFS、−3.24 dBTP＋0.48＝−2.76）。cut-qa 只剩預期的 held／black（片尾）與 motion（說話鏡）；cut-jumps 0；audio-qa 38 句 0 問題。
+
 - 2026-11-16，從 `cut-review.md`（審查 1）與 `cut-review-2.md`（審查 2）合併、去重，照協調者的決定。套用結果寫在 `hailuo/edit-dh-e920-live.json` 的 `_note` REVIEW 3。
 - **只花一次錢**：s23 改回 d1 草稿 1101，由協調者在 Colab 精修一次（`q-e920s23refine.sh`，`refine.py --only s23`）。其餘都不花錢：沒有 RunPod，也沒有重錄站台 TTS（沒有哪一句明顯念錯）。
 - **時間一律寫草稿秒數**（`picks.json` 與 trims 檔的寫法）；`clip_af`、`sfx`、`vf`、`min`、`panel_from` 的時間是剪後的鏡內秒數 c。剪點都是整格（起點往下、終點往上取到 3 位小數），有台詞的鏡用 faster-whisper 字時間核對，不切字；沒台詞的鏡逐格看精修片。
