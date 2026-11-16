@@ -12,18 +12,18 @@ stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=o
 [ -z "$stale" ] || { echo "staging (stale: $stale)"; python3 $P/live-action/stage.py 19 || exit 1; }
 # e919 trims and seeds the edit table assumes (edit-dh-e919-live.json _note): picks.json as refine-prep.py 19 builds it from
 # picks-merged.tsv and fix1/review-picks.tsv in that order (run in colab/runs/e919-live) -- the fix1 retakes s09 s16
-# (9191201) and s34 (9191202). The first cut has no review3-trims.tsv; if one is written later: refine-prep.py 19
-# picks-merged.tsv fix1/review-picks.tsv review3-trims.tsv (a fallback is never written with @), stage.py 19, this table.
+# (9191201) and s34 (9191202), then review3-trims.tsv (REVIEW 3, review3-plan.md: s08 s09 s29 s33 s35 s36 s38 tails):
+# refine-prep.py 19 picks-merged.tsv fix1/review-picks.tsv review3-trims.tsv (a fallback is never written with @), stage.py 19.
 # Whole frames: a start rounded DOWN and an end-before rounded UP to 3 decimals, tolerance 0.001; 0 = no end. Warn (not
 # stop) if picks.json differs.
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
 want={'s01':(1.5,5.875),'s02':(1.125,8),'s03':(0,6.584),'s04':(2.25,6.584),'s05':(0.5,10.125),'s06':(0,7.375),'s07':(0.75,5.125),
- 's08':(0.5,4),'s09':(0.875,6.584),'s10':(0,6),'s11':(0.875,6.375),'s12':(0,10.125),'s13':(0.5,5.25),'s14':(0.25,6.584),
+ 's08':(0.5,3),'s09':(0.875,5.25),'s10':(0,6),'s11':(0.875,6.375),'s12':(0,10.125),'s13':(0.5,5.25),'s14':(0.25,6.584),
  's15':(0.75,6.584),'s16':(0.75,8),'s17':(1.625,8),'s18':(1.375,6.5),'s19':(0.375,7.875),'s20':(0,6.584),'s21':(0.5,6.584),
  's22':(0,6.584),'s23':(0.25,8),'s24':(0.75,8),'s25':(3,6.584),'s26':(1.875,8),'s27':(2.5,6.584),'s28':(1.875,6.584),
- 's29':(0.75,5.5),'s30':(0.5,6.125),'s31':(1,6.584),'s32':(0.5,6.584),'s33':(0,6.584),'s34':(0,10.125),'s35':(0,8),
- 's36':(0,8),'s37':(1.958,6.584),'s38':(0,8),'s39':(0.5,6),'s40':(0.375,6.125),'s41':(0.75,6.584)}
+ 's29':(0.75,5),'s30':(0.5,6.125),'s31':(1,6.584),'s32':(0.5,6.584),'s33':(0,5.833),'s34':(0,10.125),'s35':(0,7),
+ 's36':(0,6.5),'s37':(1.958,6.584),'s38':(0,7),'s39':(0.5,6),'s40':(0.375,6.125),'s41':(0.75,6.584)}
 seed={'s01':9191102,'s02':9191102,'s09':9191201,'s11':9191102,'s15':9191102,'s16':9191201,'s17':9191102,'s18':9191102,
  's23':9191102,'s24':9191102,'s26':9191102,'s28':9191102,'s30':9191102,'s31':9191102,'s32':9191102,'s33':9191102,
  's34':9191202,'s36':9191102,'s37':9191102,'s38':9191102}
@@ -41,8 +41,9 @@ cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ
 # a sample-peak limiter before loudnorm2 keeps it linear (e908-e912: attack 5 ms, limit 0.6 = -4.4 dBFS; the AAC encode
 # after it overshoots at shorter attacks and loudnorm2 then goes dynamic and clicks). e913 on: attack 8 ms.
 # END: s41 is Tang's question a45 laid on her back (nospeak, the take's own murmur muted); the gong at c5.15 after
-# 讓嗎 ends, the picture fades over c5.30-5.80 (vf fade) and min 8.6 holds ~2.8 s of black (slow_shot s41 1.0: the
-# picture is not slowed to fill it) so the gong rings out in the dark. The sound fades over the last 1.5 s.
+# 讓嗎 ends, the picture freezes on c4.458 (REVIEW 3: his mouth opens from c4.5, over 讓嗎) and fades over c5.30-5.80
+# (vf), and min 8.6 holds ~2.8 s of black (slow_shot s41 1.0: the picture is not slowed to fill it) so the gong rings out
+# in the dark. The sound fades over the last 1.5 s.
 D=$(ffprobe -v error -show_entries format=duration -of csv=p=0 $E/cut/e919-live.mp4); FS=$(python3 -c "print(f'{$D-1.5:.3f}')")
 ffmpeg -v error -y -i $E/cut/e919-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.6:attack=8:release=60:level=false,aresample=48000,afade=t=out:st=$FS:d=1.5" $E/cut/e919-live.lim.mp4 && mv $E/cut/e919-live.lim.mp4 $E/cut/e919-live.mp4
 # loudnorm2 is linear only when the measured true peak plus the gain to -14 LUFS stays at or under -2.2 dBTP: print it
