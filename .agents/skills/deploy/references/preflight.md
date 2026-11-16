@@ -42,8 +42,9 @@ cd /root/travel_scanner && python3 ops/release/hold.py clear <release_dir> <sha4
 ## 自動部署的暫停檔（`AUTO DEPLOY PAUSED`）
 
 跟上面兩條規則無關的第三種檔：`/root/travel-scanner-autodeploy.paused`，由 `ops/autodeploy` 的 timer 在
-一次自動部署以非零結束（腳本已自己回滾）時寫下，只擋 **timer 自己**，手動部署照常。兩行：第一行給人看
-（哪個 SHA、退出碼、哪支 `/root/deploy-logs/auto-<ts>.log`），第二行 JSON（`sha`、`exit`、`log`、`created_at`）。
+一次自動部署或後台按鈕部署以非零結束（腳本已自己回滾）時寫下，擋 **timer 自己**與**後台按鈕**（站主 2026-11-16：
+不能強制部署），SSH 手動部署照常。兩行：第一行給人看（哪個 SHA、退出碼、哪支 `/root/deploy-logs/auto-<ts>.log`
+或 `button-<ts>.log`），第二行 JSON（`sha`、`exit`、`log`、`created_at`）。後台部署頁與總覽「部署」卡會顯示它的第一行。
 
 | 看什麼 | 怎麼做 |
 | --- | --- |
