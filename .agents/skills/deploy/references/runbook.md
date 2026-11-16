@@ -28,7 +28,7 @@ MSYS_NO_PATHCONV=1 <SSH> "bash -s -- [--force] [--no-rollback] [--ignore-hold]" 
 
 包裝腳本先自己檢查：暫停檔存在而沒帶 `--ignore-hold` 就 `exit 9`；鎖被佔就 `exit 9`。然後用 nohup 起部署腳本、等它結束、把 buildkit 的 `#N` 行濾掉印最後 60 行、印 `DEPLOY_EXIT=<code>`。SSH 中途斷線時部署照樣跑完，log 在 `/root/deploy-logs/wrapper-<ts>.log`。
 
-同一個目錄裡的 `auto-<ts>.log` 與 `auto-verify-<ts>.log` 是自動部署 timer（`ops/autodeploy/README.md`）跑同一支腳本與 `host-verify.sh` 留下的，內容格式一樣；分辨一次部署是人跑的還是 timer 跑的，看檔名前綴。`journalctl -u travel-scanner-autodeploy` 有每一輪的關卡決定。
+同一個目錄裡的 `auto-<ts>.log` 與 `auto-verify-<ts>.log` 是自動部署 timer（`ops/autodeploy/README.md`）跑同一支腳本與 `host-verify.sh` 留下的，`button-<ts>.log` 是 timer 替後台按鈕跑的，內容格式一樣；分辨一次部署是人跑的、時段內自動的還是按鈕的，看檔名前綴。`journalctl -u travel-scanner-autodeploy` 有每一輪的關卡決定。
 
 一定用 Bash 工具的 `run_in_background`，等完成通知；輸出檔在結束前是空的（`tail` 會緩衝），空檔不代表卡住。
 
@@ -42,11 +42,27 @@ auto 模式的分類器自 2026-09-18 起會擋部署呼叫，不管是 `-m 檔�
 
 ## 跟自動部署 timer 共存
 
-timer 開著時，main 合併後最多約 25 分鐘（靜默期 20 分鐘加輪詢 5 分鐘）就會自動部署並驗證，多數「部署某個已合併的 PR」不必手動做：看 `state.json` 的 `last_deploy.sha`，或等預檢的 `last auto deploy` 出現那個 SHA。要手動部署時：
+timer 開著時，合併的 commit 在下一個部署時段（`AUTODEPLOY_DEPLOY_WINDOWS`，站主定案台灣 04:30–06:00，一天最多一次）自動部署並驗證；時段外的 tick 記 `wait: schedule`，當天已部署過記 `wait: daily_limit`。多數「部署某個已合併的 PR」不必手動做：看 `state.json` 的 `last_deploy.sha`，或等預檢的 `last auto deploy` 出現那個 SHA。等不到時段時，先請站主在 `/admin/deployments` 按「部署最新版本」（只有 owner 能按；timer 約 5 分鐘內接手，跳過時段與每日上限，其餘關卡照走），這比開 SSH 少一次被分類器擋的機會。要手動部署時：
+
+0. 後台按鈕的請求在跑時，`deployment_runs` 有一筆 `preflight`／`building`／`verifying` 的 run，timer 也持有部署鎖；等它結束。
 
 1. 預檢的 `tick=active` 代表一輪正在部署，等它結束（它持有部署鎖，`host-deploy.sh` 本來就會拒絕）。
 2. `--force` 重建目前 commit、`--ignore-hold` 這類 timer 不會做的事才需要手動；手動跑完 timer 的下一輪看到 live 等於 origin/main 就什麼都不做。
 3. 分階段發布：驅動的暫停檔（`hold.py acquire`）同樣擋 timer（它跑 `--dry-run` 看到 exit 3 就等），不用另外關 timer；但 `clear` 之後下一輪 timer 就會部署當時的 main，發布目錄的基準就對不上了，所以 `clear` 要在最後一個階段成功之後，不要提早。
+
+### 後台按鈕被拒絕時怎麼讀
+
+按鈕請求的 run 標成 `failed` 時，`failure_code` 是固定字串（全表在 `ops/autodeploy/README.md` "The admin button"）。最常見的幾個：
+
+| failure_code | 意思 | 怎麼辦 |
+| --- | --- | --- |
+| `deployment_autodeploy_paused` | 自動部署暫停檔存在 | 照 `preflight.md` 的「自動部署的暫停檔」讀 log、修好、刪檔；站主規定不能強制部署 |
+| `deployment_hold_active` | 部署暫停檔或規則 1（分階段發布） | 照 `preflight.md` 判斷那個發布是活的還是被遺棄的 |
+| `deployment_ci_not_green` | main 的 CI 還沒綠或紅了 | 等 CI，或先修紅燈 |
+| `deployment_paid_work_running` | 有付費影片工作在跑 | 等它結束，或站主取消勾選「先等」再按 |
+| `deployment_dry_run` | timer 還在乾跑（`AUTODEPLOY_ENABLED=false`） | 正常；detail 寫著會部署哪個 SHA |
+| `deployment_executor_unavailable` | 10 分鐘沒人接單 | timer 沒裝、停了或主機有事：`systemctl status travel-scanner-autodeploy.timer` |
+| `deploy_script_exit_<n>` | 腳本失敗，已回滾並寫暫停檔 | 讀 `button-<ts>.log`，同自動部署失敗 |
 
 ## 回滾
 

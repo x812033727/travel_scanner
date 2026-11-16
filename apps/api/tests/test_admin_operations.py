@@ -19,7 +19,7 @@ from app.database_admin.agent import DatabaseAgentClient
 from app.database_admin.schemas import AgentDatabaseOverview, AgentVerifiedBackup
 from app.db import Base, get_session
 from app.deployments.agent import DeploymentAgentClient
-from app.deployments.schemas import AgentOverview
+from app.deployments.schemas import AgentOverview, HostTimerStatus
 from app.models import AdminAuditLog, User
 from app.news_automation.models import NewsSource
 from app.problems import AppError, app_error_handler
@@ -62,10 +62,7 @@ def test_audit_metadata_redacts_nested_credentials_and_bounds_values() -> None:
                 "api_secret": "never expose either",
                 "detail": "Authorization: Bearer exposed-value " + "x" * 1200,
                 "dsn": "postgresql://travel:database-secret@postgres/db",
-                "jwt": (
-                    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0."
-                    "signature0123456789"
-                ),
+                "jwt": ("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.signature0123456789"),
                 "assignment": "api-key=exposed-api-key",
             },
             "events": list(range(120)),
@@ -192,9 +189,7 @@ async def test_audit_list_rejects_naive_dates_and_normalizes_aware_boundaries(
     async def override_session() -> Any:
         yield AsyncMock()
 
-    listing = AsyncMock(
-        return_value=AdminAuditPage(items=[], total=0, page=1, limit=50, pages=0)
-    )
+    listing = AsyncMock(return_value=AdminAuditPage(items=[], total=0, page=1, limit=50, pages=0))
     monkeypatch.setattr(operations_router, "list_audit_logs", listing)
     application = FastAPI()
     application.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
@@ -205,9 +200,7 @@ async def test_audit_list_rejects_naive_dates_and_normalizes_aware_boundaries(
     async with AsyncClient(
         transport=ASGITransport(app=application), base_url="http://test"
     ) as client:
-        naive = await client.get(
-            "/api/v1/admin/audit?date_from=2026-09-01T00:00:00"
-        )
+        naive = await client.get("/api/v1/admin/audit?date_from=2026-09-01T00:00:00")
         mixed = await client.get(
             "/api/v1/admin/audit?date_from=2026-09-01T00:00:00&date_to=2026-09-02T00:00:00Z"
         )
@@ -363,9 +356,7 @@ async def test_system_health_uses_exact_rollback_schema_compatibility(
             deploy_agent_socket="",
         ),
     )
-    monkeypatch.setattr(
-        operations_service, "get_redis", lambda: SimpleNamespace(ping=AsyncMock())
-    )
+    monkeypatch.setattr(operations_service, "get_redis", lambda: SimpleNamespace(ping=AsyncMock()))
     session = AsyncMock()
     session.scalar.return_value = revision
     result = await operations_service._system_status(session, {})  # noqa: SLF001
@@ -396,9 +387,7 @@ async def test_system_health_never_turns_missing_agents_into_success(
     monkeypatch.setattr(
         DatabaseAgentClient,
         "overview",
-        AsyncMock(
-            side_effect=AppError(503, "database_agent_unavailable", "offline")
-        ),
+        AsyncMock(side_effect=AppError(503, "database_agent_unavailable", "offline")),
     )
 
     result = await operations_service._system_status(  # noqa: SLF001
@@ -420,9 +409,7 @@ async def test_system_health_treats_disconnected_agent_snapshots_as_stale(
     monkeypatch.setattr(settings, "deploy_agent_socket", "/run/deployer.sock")
     session = AsyncMock()
     session.scalar.return_value = expected_schema_revision()
-    monkeypatch.setattr(
-        operations_service, "get_redis", lambda: SimpleNamespace(ping=AsyncMock())
-    )
+    monkeypatch.setattr(operations_service, "get_redis", lambda: SimpleNamespace(ping=AsyncMock()))
     monkeypatch.setattr(
         DeploymentAgentClient,
         "overview",
@@ -431,9 +418,7 @@ async def test_system_health_treats_disconnected_agent_snapshots_as_stale(
     monkeypatch.setattr(
         DatabaseAgentClient,
         "overview",
-        AsyncMock(
-            return_value=AgentDatabaseOverview(connected=False, available=False)
-        ),
+        AsyncMock(return_value=AgentDatabaseOverview(connected=False, available=False)),
     )
 
     result = await operations_service._system_status(  # noqa: SLF001
@@ -559,9 +544,7 @@ async def test_the_counts_are_cached_under_a_key_no_older_count_used(
         assert ex == 15
         stored[key] = value
 
-    monkeypatch.setattr(
-        operations_service, "get_redis", lambda: SimpleNamespace(get=get, set=put)
-    )
+    monkeypatch.setattr(operations_service, "get_redis", lambda: SimpleNamespace(get=get, set=put))
     live = AsyncMock(return_value={"video_reviews_pending": 5})
     monkeypatch.setattr(operations_service, "_live_pending_counts", live)
 
@@ -571,3 +554,85 @@ async def test_the_counts_are_cached_under_a_key_no_older_count_used(
     assert first == second == {"video_reviews_pending": 5}
     assert stored["admin:operations:pending:v5"] == '{"video_reviews_pending":5}'
     live.assert_awaited_once()
+
+
+def _host(**fields: object) -> HostTimerStatus:
+    values: dict[str, object] = {
+        "reported_at": datetime.now(UTC),
+        "responding": True,
+        "dry_run": False,
+    }
+    values.update(fields)
+    return HostTimerStatus.model_validate(values)
+
+
+@pytest.mark.parametrize(
+    ("host", "active", "status", "fragment"),
+    [
+        (_host(reported_at=None, responding=False), 0, "unavailable", "尚未回報"),
+        (_host(responding=False), 0, "unavailable", "超過 15 分鐘沒有回報"),
+        (_host(paused_reason="deploy of bbbbbbbbbbbb exited 1"), 0, "degraded", "exited 1"),
+        (
+            _host(
+                last_missed_window={
+                    "window": "04:30-06:00",
+                    "gate": "ci",
+                    "sha": "b" * 40,
+                    "notified_at": datetime.now(UTC) - timedelta(hours=3),
+                }
+            ),
+            0,
+            "degraded",
+            "04:30-06:00 結束沒部署（bbbbbbb 卡在 ci）",
+        ),
+        (
+            _host(
+                last_missed_window={
+                    "window": "04:30-06:00",
+                    "gate": "ci",
+                    "notified_at": datetime.now(UTC) - timedelta(hours=30),
+                }
+            ),
+            0,
+            "healthy",
+            "目前版本 aaaaaaa",
+        ),
+        (_host(), 1, "healthy", "1 個部署進行中"),
+        (_host(dry_run=True), 0, "healthy", "（乾跑模式）"),
+    ],
+)
+def test_host_timer_deployment_card_warns_about_what_needs_a_person(
+    host: HostTimerStatus, active: int, status: str, fragment: str
+) -> None:
+    card = operations_service.host_deployment_component(host, "a" * 40, active)
+    assert card.status == status
+    assert card.detail is not None and fragment in card.detail
+
+
+@pytest.mark.asyncio
+async def test_system_health_reads_the_host_timer_instead_of_the_agent(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    settings = get_settings()
+    monkeypatch.setattr(settings, "deployments_enabled", True)
+    monkeypatch.setattr(settings, "deployment_executor", "host_timer")
+    monkeypatch.setattr(settings, "deploy_admin_emails", "owner@example.com")
+    monkeypatch.setattr(settings, "deploy_agent_hmac_key", None)
+    session = AsyncMock()
+    session.scalar.return_value = expected_schema_revision()
+    redis = SimpleNamespace(ping=AsyncMock(return_value=True))
+    monkeypatch.setattr(operations_service, "get_redis", lambda: redis)
+    agent = AsyncMock(side_effect=AssertionError("the agent must not be asked"))
+    monkeypatch.setattr(DeploymentAgentClient, "overview", agent)
+    row = SimpleNamespace(live_sha="c" * 40)
+    monkeypatch.setattr(
+        operations_service,
+        "read_host_status",
+        AsyncMock(return_value=(row, _host(paused_reason="deploy exited 2"))),
+    )
+    result = await operations_service._system_status(  # noqa: SLF001
+        session, {"deployments_active": 0, "community_jobs_pending": 0}
+    )
+    assert result["deployment"].status == "degraded"
+    assert result["deployment"].detail == "自動部署已暫停：deploy exited 2"
+    agent.assert_not_called()

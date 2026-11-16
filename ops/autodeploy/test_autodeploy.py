@@ -83,6 +83,8 @@ def green_runner(**overrides: Completed) -> FakeRunner:
         "rev-parse refs/remotes/origin/main": Completed(0, TARGET + "\n"),
         "merge-base --is-ancestor": Completed(0, ""),
         "log -1 --format=%ct": Completed(0, f"{OLD_ENOUGH}\n"),
+        "log -1 --format=%s": Completed(0, "feat: the target\n"),
+        "log --format=%H": Completed(0, f"{TARGET}\x1ffeat: the target\n"),
         "flock -n": Completed(0, ""),
         "--dry-run": Completed(0, "would deploy\n"),
         "psql": Completed(0, ""),
@@ -93,7 +95,7 @@ def green_runner(**overrides: Completed) -> FakeRunner:
     return FakeRunner(responses)
 
 
-class PollerCase(unittest.TestCase):
+class PollerBase(unittest.TestCase):
     def setUp(self) -> None:
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
@@ -114,7 +116,13 @@ class PollerCase(unittest.TestCase):
         self.lines: list[str] = []
 
     def poller(
-        self, runner: FakeRunner, *, enabled: bool = True, dry_run: bool = False, **config
+        self,
+        runner: FakeRunner,
+        *,
+        enabled: bool = True,
+        dry_run: bool = False,
+        at: dt.datetime = NOW,
+        **config,
     ) -> Poller:
         return Poller(
             Config(enabled=enabled, github_token="t" * 40, **config),
@@ -122,7 +130,7 @@ class PollerCase(unittest.TestCase):
             runner=runner,
             github=self.github,
             notifier=self.notifier,
-            clock=lambda: NOW,
+            clock=lambda: at,
             dry_run=dry_run,
             out=self.lines.append,
         )
@@ -130,6 +138,8 @@ class PollerCase(unittest.TestCase):
     def state(self) -> dict:
         return json.loads(self.paths.state.read_text(encoding="utf-8"))
 
+
+class PollerCase(PollerBase):
     # -- gates -----------------------------------------------------------------
 
     def test_paused_file_stops_everything(self) -> None:
@@ -140,7 +150,9 @@ class PollerCase(unittest.TestCase):
         decision = self.poller(runner).tick()
         self.assertEqual(decision.action, "paused")
         self.assertIn("exited 1", decision.reason)
-        self.assertEqual(runner.calls, [])
+        # only the request lookup and the heartbeat, both in the database: no git, no deploy
+        self.assertTrue(runner.calls)
+        self.assertTrue(all("psql" in call for call in runner.calls))
         self.assertEqual(self.state()["last_decision"]["action"], "paused")
 
     def test_nothing_new_is_idle(self) -> None:
@@ -206,7 +218,7 @@ class PollerCase(unittest.TestCase):
         decision = self.poller(runner).tick()
         self.assertEqual((decision.action, decision.details["gate"]), ("wait", "hold"))
         self.assertIn("正在發布", decision.reason)
-        self.assertFalse(runner.ran("psql"))
+        self.assertFalse(runner.ran("video_stage_jobs"))
 
     def test_other_dry_run_failure_waits(self) -> None:
         runner = green_runner(**{"--dry-run": Completed(1, "cd: no such directory\n")})
@@ -258,7 +270,7 @@ class PollerCase(unittest.TestCase):
         runner = green_runner(psql=Completed(0, "running|1|x\n"))
         decision = self.poller(runner, wait_for_paid_work=False).tick()
         self.assertEqual(decision.action, "deployed")
-        self.assertFalse(runner.ran("psql"))
+        self.assertFalse(runner.ran("video_stage_jobs"))
 
     # -- dry run ---------------------------------------------------------------
 
@@ -349,12 +361,14 @@ class PollerCase(unittest.TestCase):
         )
         self.assertEqual(len(self.notifier.posts), 1)
         self.assertIn("FAILED", self.notifier.posts[0])
-        self.assertIn("deployment and video-ai-worker state require readback", self.notifier.posts[0])
+        self.assertIn(
+            "deployment and video-ai-worker state require readback", self.notifier.posts[0]
+        )
         self.assertNotIn("rolled back", self.notifier.posts[0])
         # The next tick does nothing until a person removes the file.
         runner = green_runner()
         self.assertEqual(self.poller(runner).tick().action, "paused")
-        self.assertEqual(runner.calls, [])
+        self.assertTrue(all("psql" in call for call in runner.calls))
         self.paths.paused.unlink()
         self.assertEqual(self.poller(green_runner()).tick().action, "deployed")
 
@@ -381,7 +395,9 @@ class PollerCase(unittest.TestCase):
         self.assertNotIn("rolled back", first)
         self.assertEqual(receipt["sha"], TARGET)
         self.assertEqual(len(self.notifier.posts), 1)
-        self.assertIn("deployment and video-ai-worker state require readback", self.notifier.posts[0])
+        self.assertIn(
+            "deployment and video-ai-worker state require readback", self.notifier.posts[0]
+        )
         self.assertNotIn("rolled back", self.notifier.posts[0])
         self.assertFalse(runner.ran("bash "))  # no success verification
 
@@ -393,6 +409,325 @@ class PollerCase(unittest.TestCase):
         self.assertEqual(len(lines), 3)
         self.assertEqual(lines[2], "")
         json.loads(lines[1])
+
+
+def taipei(hour: int, minute: int = 0, day: int = 17) -> dt.datetime:
+    return dt.datetime(2026, 11, day, hour, minute, tzinfo=autodeploy.TAIPEI).astimezone(dt.UTC)
+
+
+def old_commit(at: dt.datetime) -> dict[str, Completed]:
+    return {
+        "log -1 --format=%ct": Completed(0, f"{int((at - dt.timedelta(hours=1)).timestamp())}\n")
+    }
+
+
+class DeployWindowCase(PollerBase):
+    WINDOW = tuple(autodeploy.parse_windows("04:30-06:00", "AUTODEPLOY_DEPLOY_WINDOWS"))
+
+    def daily(self, runner: FakeRunner, at: dt.datetime, **config) -> Poller:
+        return self.poller(
+            runner, at=at, deploy_windows=self.WINDOW, max_auto_deploys_per_day=1, **config
+        )
+
+    def test_outside_the_window_waits_without_asking_github(self) -> None:
+        at = taipei(11)
+        runner = green_runner(**old_commit(at))
+        decision = self.daily(runner, at).tick()
+        self.assertEqual((decision.action, decision.details["gate"]), ("wait", "schedule"))
+        self.assertIn("04:30-06:00", decision.reason)
+        self.assertIn("next opens 2026-11-18 04:30", decision.reason)
+        self.assertEqual(self.github.asked, [])
+        self.assertFalse(runner.ran("deploy-travel-scanner.sh"))
+
+    def test_nothing_new_is_idle_even_outside_the_window(self) -> None:
+        at = taipei(11)
+        runner = green_runner(**{"rev-parse refs/remotes/origin/main": Completed(0, LIVE + "\n")})
+        self.assertEqual(self.daily(runner, at).tick().action, "idle")
+
+    def test_inside_the_window_deploys_and_counts_the_day(self) -> None:
+        at = taipei(4, 35)
+        decision = self.daily(green_runner(**old_commit(at)), at).tick()
+        self.assertEqual(decision.action, "deployed")
+        self.assertEqual(self.state()["auto_deploys_today"], {"date": "2026-11-17", "count": 1})
+
+    def test_second_deploy_the_same_day_waits_for_tomorrow(self) -> None:
+        at = taipei(4, 35)
+        self.daily(green_runner(**old_commit(at)), at).tick()
+        later = taipei(5, 10)
+        runner = green_runner(**old_commit(later))
+        decision = self.daily(runner, later).tick()
+        self.assertEqual((decision.action, decision.details["gate"]), ("wait", "daily_limit"))
+        self.assertFalse(runner.ran("deploy-travel-scanner.sh"))
+        # the next day's window deploys again
+        tomorrow = taipei(4, 35, day=18)
+        self.assertEqual(
+            self.daily(green_runner(**old_commit(tomorrow)), tomorrow).tick().action, "deployed"
+        )
+        self.assertEqual(self.state()["auto_deploys_today"], {"date": "2026-11-18", "count": 1})
+
+    def test_dry_run_inside_the_window_would_deploy_and_does_not_count(self) -> None:
+        at = taipei(4, 35)
+        decision = self.daily(green_runner(**old_commit(at)), at, enabled=False).tick()
+        self.assertEqual(decision.action, "would_deploy")
+        self.assertNotIn("auto_deploys_today", self.state())
+
+    def test_window_wrapping_midnight_deploys_after_midnight(self) -> None:
+        windows = tuple(autodeploy.parse_windows("23:30-01:00", "AUTODEPLOY_DEPLOY_WINDOWS"))
+        at = taipei(0, 15)
+        decision = self.poller(green_runner(**old_commit(at)), at=at, deploy_windows=windows).tick()
+        self.assertEqual(decision.action, "deployed")
+
+    def test_blocked_window_still_wins_inside_a_deploy_window(self) -> None:
+        at = taipei(5)
+        blocked = tuple(autodeploy.parse_windows("04:45-05:15"))
+        decision = self.daily(green_runner(**old_commit(at)), at, blocked_windows=blocked).tick()
+        self.assertEqual((decision.action, decision.details["gate"]), ("wait", "window"))
+
+    def test_a_window_that_closes_without_deploying_notifies_once(self) -> None:
+        self.github.status = "failure"
+        for minute in (35, 40):
+            at = taipei(4, minute)
+            self.daily(green_runner(**old_commit(at)), at).tick()
+        miss = self.state()["window_miss"]
+        self.assertEqual((miss["gate"], miss["window"]), ("ci", "04:30-06:00"))
+        self.assertEqual(miss["since"], autodeploy._iso(taipei(4, 35)))
+        self.assertEqual(self.notifier.posts, [])
+        for minute in (5, 10):
+            at = taipei(6, minute)
+            self.daily(green_runner(**old_commit(at)), at).tick()
+        self.assertEqual(len(self.notifier.posts), 1)
+        self.assertIn("closed without deploying bbbbbbbbbbbb", self.notifier.posts[0])
+        self.assertIn("last gate ci", self.notifier.posts[0])
+        state = self.state()
+        self.assertNotIn("window_miss", state)
+        self.assertEqual(state["last_missed_window"]["gate"], "ci")
+
+    def test_a_deploy_later_in_the_window_clears_the_miss(self) -> None:
+        self.github.status = "in_progress"
+        at = taipei(4, 35)
+        self.daily(green_runner(**old_commit(at)), at).tick()
+        self.github.status = "success"
+        at = taipei(4, 50)
+        self.daily(green_runner(**old_commit(at)), at).tick()
+        self.assertNotIn("window_miss", self.state())
+        at = taipei(6, 5)
+        self.daily(green_runner(**{"rev-parse HEAD": Completed(0, TARGET + "\n")}), at).tick()
+        self.assertEqual([post for post in self.notifier.posts if "closed without" in post], [])
+
+    def test_next_window_start(self) -> None:
+        windows = autodeploy.parse_windows("04:30-06:00, 13:00-13:30")
+        local = dt.datetime(2026, 11, 17, 7, 0, tzinfo=autodeploy.TAIPEI)
+        self.assertEqual(
+            autodeploy.next_window_start(windows, local),
+            dt.datetime(2026, 11, 17, 13, 0, tzinfo=autodeploy.TAIPEI),
+        )
+        local = dt.datetime(2026, 11, 17, 14, 0, tzinfo=autodeploy.TAIPEI)
+        self.assertEqual(
+            autodeploy.next_window_start(windows, local),
+            dt.datetime(2026, 11, 18, 4, 30, tzinfo=autodeploy.TAIPEI),
+        )
+        self.assertIsNone(autodeploy.next_window_start([], local))
+
+
+RUN_ID = "0b6f3c7e-6d2a-4c11-9a51-2f0f6b1d8e44"
+
+
+def request_runner(mode: str = "latest", wait: str = "true", **overrides: Completed) -> FakeRunner:
+    """A queued admin request that the claim wins, then every gate open."""
+    responses = {
+        "from deployment_runs where status = 'queued'": Completed(0, f"{RUN_ID}|{mode}|{wait}\n"),
+        "returning id": Completed(0, f"{RUN_ID}\n"),
+    }
+    # Overrides go first: the fake answers with the first fragment that matches, and the
+    # generic "psql" would otherwise answer every database call.
+    responses.update(overrides)
+    for fragment, response in green_runner().responses.items():
+        responses.setdefault(fragment, response)
+    return FakeRunner(responses)
+
+
+def sql(runner: FakeRunner) -> list[str]:
+    return [call[-1] for call in runner.calls if "psql" in call]
+
+
+class AdminRequestCase(PollerBase):
+    def run_updates(self, runner: FakeRunner) -> str:
+        return "\n".join(s for s in sql(runner) if s.startswith("update deployment_runs set"))
+
+    def test_latest_request_skips_the_schedule_and_deploys(self) -> None:
+        recent = int((NOW - dt.timedelta(minutes=2)).timestamp())
+        runner = request_runner(**{"log -1 --format=%ct": Completed(0, f"{recent}\n")})
+        windows = tuple(autodeploy.parse_windows("04:30-06:00"))
+        decision = self.poller(runner, deploy_windows=windows, max_auto_deploys_per_day=1).tick()
+        self.assertEqual(decision.action, "deployed")
+        self.assertEqual(decision.details["request"], RUN_ID)
+        deploys = [c for c in runner.calls if c and c[0].endswith("deploy-travel-scanner.sh")]
+        self.assertEqual([c[1:] for c in deploys], [["--dry-run"], []])
+        updates = self.run_updates(runner)
+        self.assertIn("status = 'preflight'", updates)
+        self.assertIn("status = $ad$building$ad$", updates)
+        self.assertIn("status = $ad$succeeded$ad$", updates)
+        self.assertIn(f"target_sha = $ad${TARGET}$ad$", updates)
+        self.assertIn("finished_at = now()", updates)
+        events = [s for s in sql(runner) if s.startswith("insert into deployment_events")]
+        self.assertGreaterEqual(len(events), 4)
+        self.assertTrue(all(f"'{RUN_ID}'" in e for e in events))
+        state = self.state()
+        self.assertNotIn("auto_deploys_today", state)  # a button deploy is not an automatic one
+        self.assertEqual(state["last_deploy"]["request"], RUN_ID)
+        self.assertEqual(self.github.asked, [TARGET])
+        self.assertTrue(any(p.name.startswith("button-") for p in self.paths.log_dir.iterdir()))
+
+    def test_rebuild_forces_the_live_commit_without_asking_ci(self) -> None:
+        runner = request_runner(mode="rebuild")
+        decision = self.poller(runner).tick()
+        self.assertEqual(decision.action, "deployed")
+        self.assertIn([str(self.paths.deploy_script), "--force"], runner.calls)
+        self.assertEqual(self.github.asked, [])
+        self.assertIn(f"target_sha = $ad${LIVE}$ad$", self.run_updates(runner))
+
+    def assert_refused(self, runner: FakeRunner, code: str, **config) -> Decision:
+        decision = self.poller(runner, **config).tick()
+        self.assertEqual(decision.action, "refused")
+        updates = self.run_updates(runner)
+        self.assertIn("status = $ad$failed$ad$", updates)
+        self.assertIn(f"failure_code = $ad${code}$ad$", updates)
+        self.assertNotIn([str(self.paths.deploy_script)], runner.calls)
+        self.assertNotIn([str(self.paths.deploy_script), "--force"], runner.calls)
+        return decision
+
+    def test_paused_file_refuses_the_request(self) -> None:
+        autodeploy.write_paused(
+            self.paths.paused, sha=TARGET, exit_code=1, log=Path("/x.log"), instant=NOW
+        )
+        runner = request_runner()
+        self.assert_refused(runner, "deployment_autodeploy_paused")
+        self.assertFalse(runner.ran("fetch"))
+
+    def test_red_ci_refuses_a_latest_request(self) -> None:
+        self.github.status = "failure"
+        self.assert_refused(request_runner(), "deployment_ci_not_green")
+
+    def test_nothing_new_refuses_a_latest_request(self) -> None:
+        runner = request_runner(**{"rev-parse refs/remotes/origin/main": Completed(0, LIVE + "\n")})
+        self.assert_refused(runner, "deployment_already_current")
+
+    def test_hold_and_lock_refuse(self) -> None:
+        self.assert_refused(
+            request_runner(**{"--dry-run": Completed(3, "NOT DEPLOYING: hold\n")}),
+            "deployment_hold_active",
+        )
+        self.assert_refused(
+            request_runner(**{"flock -n": Completed(1, "")}), "deployment_lock_held"
+        )
+
+    def test_paid_work_refuses_unless_the_request_says_not_to_wait(self) -> None:
+        busy = {"video_stage_jobs": Completed(0, "running|1|2026-10-07 02:00:00+00\n")}
+        self.assert_refused(request_runner(**busy), "deployment_paid_work_running")
+        decision = self.poller(request_runner(wait="false", **busy)).tick()
+        self.assertEqual(decision.action, "deployed")
+
+    def test_dry_run_refuses_with_what_it_would_do(self) -> None:
+        decision = self.assert_refused(request_runner(), "deployment_dry_run", enabled=False)
+        self.assertIn("would deploy bbbbbbbbbbbb", decision.reason)
+
+    def test_failed_deploy_pauses_like_an_automatic_one(self) -> None:
+        runner = request_runner(
+            **{"--dry-run": Completed(0, ""), "deploy-travel-scanner.sh": Completed(1, "boom\n")}
+        )
+        decision = self.poller(runner).tick()
+        self.assertEqual(decision.action, "failed")
+        self.assertTrue(self.paths.paused.exists())
+        self.assertIn("failure_code = $ad$deploy_script_exit_1$ad$", self.run_updates(runner))
+
+    def test_failed_verification_needs_a_person(self) -> None:
+        runner = request_runner(**{"bash ": Completed(0, "TOTAL pass=3 fail=1\n")})
+        decision = self.poller(runner).tick()
+        self.assertEqual(decision.action, "deployed")
+        updates = self.run_updates(runner)
+        self.assertIn("status = $ad$manual_intervention_required$ad$", updates)
+        self.assertIn("failure_code = $ad$deployment_verify_failed$ad$", updates)
+
+    def test_a_request_another_tick_claimed_falls_through_to_the_normal_tick(self) -> None:
+        runner = request_runner(**{"returning id": Completed(0, "")})
+        decision = self.poller(runner).tick()
+        self.assertEqual(decision.action, "deployed")
+        self.assertNotIn("request", decision.details)
+
+    def test_an_unreadable_request_row_is_ignored(self) -> None:
+        runner = request_runner(
+            **{
+                "from deployment_runs where status = 'queued'": Completed(
+                    0, "x'; drop|latest|true\n"
+                )
+            }
+        )
+        self.poller(runner).tick()
+        self.assertFalse(runner.ran("returning id"))
+
+
+class HeartbeatCase(PollerBase):
+    def heartbeat(self, runner: FakeRunner) -> str:
+        rows = [s for s in sql(runner) if s.startswith("insert into deployment_host_status")]
+        self.assertEqual(len(rows), 1)
+        return rows[0]
+
+    def test_every_tick_reports_what_it_saw(self) -> None:
+        runner = green_runner()
+        self.poller(runner, deploy_windows=tuple(autodeploy.parse_windows("04:30-06:00"))).tick()
+        row = self.heartbeat(runner)
+        self.assertIn(f"$ad${LIVE}$ad$", row)
+        self.assertIn(f"$ad${TARGET}$ad$", row)
+        self.assertIn("$ad$feat: the target$ad$", row)
+        self.assertIn("on conflict (id) do update", row)
+        state = json.loads(row.split("$ad$")[-2])
+        self.assertEqual(state["deploy_windows"], ["04:30-06:00"])
+        self.assertEqual(state["last_decision"]["gate"], "schedule")
+        self.assertEqual(state["commits"], [{"sha": TARGET, "subject": "feat: the target"}])
+
+    def test_ci_result_is_reported_only_for_the_target(self) -> None:
+        runner = green_runner()
+        self.poller(runner, enabled=False).tick()
+        self.assertIn("$ad$success$ad$", self.heartbeat(runner))
+
+    def test_paused_tick_reports_the_paused_reason(self) -> None:
+        autodeploy.write_paused(
+            self.paths.paused, sha=TARGET, exit_code=2, log=Path("/y.log"), instant=NOW
+        )
+        runner = green_runner()
+        self.poller(runner).tick()
+        row = self.heartbeat(runner)
+        self.assertIn("exited 2", row)
+        self.assertIn("NULL, NULL", row)  # no SHAs read: the upsert keeps the previous ones
+
+    def test_a_heartbeat_failure_is_only_printed(self) -> None:
+        runner = green_runner()
+        runner.responses = {
+            "insert into deployment_host_status": Completed(1, "no table\n"),
+            **runner.responses,
+        }
+        decision = self.poller(runner).tick()
+        self.assertEqual(decision.action, "deployed")
+        self.assertTrue(
+            any("could not write deployment_host_status" in line for line in self.lines)
+        )
+
+
+class SqlLiteralCase(unittest.TestCase):
+    def test_literals(self) -> None:
+        self.assertEqual(autodeploy.sql_literal(None), "NULL")
+        self.assertEqual(autodeploy.sql_literal("it's"), "$ad$it's$ad$")
+        tricky = autodeploy.sql_literal("x$ad$; drop table users; --")
+        tag = tricky[: tricky.index("$", 1) + 1]
+        self.assertNotEqual(tag, "$ad$")
+        self.assertTrue(tricky.endswith(tag))
+        self.assertEqual(tricky.count(tag), 2)
+        for text in ("x$ad", "x$", "$", "x$a"):
+            literal = autodeploy.sql_literal(text)
+            tag = literal[: literal.index("$", 1) + 1]
+            self.assertEqual(literal, f"{tag}{text}{tag}")
+            self.assertEqual(literal.find(tag, len(tag)), len(tag) + len(text))
+        self.assertEqual(autodeploy.sql_literal("a\x00b"), "$ad$ab$ad$")
 
 
 class ConfigCase(unittest.TestCase):
@@ -412,6 +747,19 @@ class ConfigCase(unittest.TestCase):
         self.assertEqual([str(w) for w in config.blocked_windows], ["09:00-12:00", "23:00-01:00"])
         self.assertTrue(config.wait_for_paid_work)
         self.assertEqual(config.notify_url, "")
+        self.assertEqual(config.deploy_windows, ())
+        self.assertEqual(config.max_auto_deploys_per_day, 0)
+
+    def test_deploy_window_settings(self) -> None:
+        config = Config.from_mapping(
+            {
+                "AUTODEPLOY_GITHUB_TOKEN": "t",
+                "AUTODEPLOY_DEPLOY_WINDOWS": "04:30-06:00",
+                "AUTODEPLOY_MAX_AUTO_DEPLOYS_PER_DAY": "1",
+            }
+        )
+        self.assertEqual([str(w) for w in config.deploy_windows], ["04:30-06:00"])
+        self.assertEqual(config.max_auto_deploys_per_day, 1)
 
     def test_missing_env_file(self) -> None:
         with self.assertRaises(ConfigError):
@@ -428,6 +776,9 @@ class ConfigCase(unittest.TestCase):
             {"AUTODEPLOY_BLOCKED_WINDOWS": "9-12"},
             {"AUTODEPLOY_BLOCKED_WINDOWS": "25:00-26:00"},
             {"AUTODEPLOY_PAID_WORK_NOTIFY_HOURS": "x"},
+            {"AUTODEPLOY_DEPLOY_WINDOWS": "4:30-6"},
+            {"AUTODEPLOY_DEPLOY_WINDOWS": "05:00-05:00"},
+            {"AUTODEPLOY_MAX_AUTO_DEPLOYS_PER_DAY": "-1"},
         ):
             with self.subTest(env=env), self.assertRaises(ConfigError):
                 Config.from_mapping({"AUTODEPLOY_GITHUB_TOKEN": "t", **env})
@@ -471,6 +822,14 @@ class CliCase(unittest.TestCase):
             with redirect_stdout(out):
                 autodeploy.main(["status"], paths=paths)
             self.assertIn("PAUSED", out.getvalue())
+            paths.env_file.write_text(
+                "AUTODEPLOY_GITHUB_TOKEN=t\nAUTODEPLOY_DEPLOY_WINDOWS=04:30-06:00\n",
+                encoding="utf-8",
+            )
+            out = io.StringIO()
+            with redirect_stdout(out):
+                autodeploy.main(["status"], paths=paths)
+            self.assertIn("deploy window: 04:30-06:00 Asia/Taipei", out.getvalue())
             paths.env_file.write_text("AUTODEPLOY_ENABLED=true\n", encoding="utf-8")
             self.assertEqual(autodeploy.main(["tick"], paths=paths), 2)
 
