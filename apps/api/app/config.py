@@ -121,6 +121,11 @@ class Settings(BaseSettings):
     community_smtp_password: str | None = None
     community_mail_from: str = ""
     deployments_enabled: bool = False
+    # host_timer: the admin button queues a deployment_runs row that the host's root auto deploy
+    # timer (ops/autodeploy) claims and runs through /root/deploy-travel-scanner.sh; only the
+    # owner role may press it. agent: the deployment agent (ops/deployer) over its socket, which
+    # production cannot use yet (ops/deployer/README.md). Production sets host_timer.
+    deployment_executor: Literal["host_timer", "agent"] = "agent"
     deploy_admin_emails: str = ""
     database_admin_emails: str = ""
     admin_database_maintenance_enabled: bool = False
@@ -576,18 +581,14 @@ class Settings(BaseSettings):
     # Gemini narration uses the site's Gemini key (hotspot_guide_gemini_*). Its month counts
     # the text characters sent: 300,000 is about a hundred 10-minute videos, roughly US$13 at
     # the 2026 price of gemini-3.8-flash-tts.
-    video_speech_gemini_monthly_character_limit: int = Field(
-        default=300_000, ge=0, le=100_000_000
-    )
+    video_speech_gemini_monthly_character_limit: int = Field(default=300_000, ge=0, le=100_000_000)
     video_speech_gemini_timeout_seconds: float = Field(default=150.0, ge=5, le=280)
     # MiniMax narration (app/video_speech/minimax.py) uses the site's MiniMax key and base URL
     # (minimax_api_*), the ones image-01 uses. Its month counts the text characters sent; an
     # M Plan subscription also caps speech per day or per window, which MiniMax enforces.
     # Zero (the default) counts without blocking: the plan's own windows are the limit, and
     # every curio episode's eight dubs go through MiniMax. Set a number to cap the month.
-    video_speech_minimax_monthly_character_limit: int = Field(
-        default=0, ge=0, le=100_000_000
-    )
+    video_speech_minimax_monthly_character_limit: int = Field(default=0, ge=0, le=100_000_000)
     video_speech_minimax_timeout_seconds: float = Field(default=150.0, ge=5, le=280)
     # Stock photos for the illustrated slides (docs/videos/ILLUSTRATED.md §圖庫照片): the
     # pipeline searches Pexels and Pixabay through POST /api/v1/video/media/stock/* with a video
@@ -717,6 +718,8 @@ class Settings(BaseSettings):
 
     @property
     def deployments_configured(self) -> bool:
+        if self.deployment_executor == "host_timer":
+            return bool(self.deployments_enabled and self.deploy_admin_email_set)
         return bool(
             self.deployments_enabled
             and self.deploy_admin_email_set
@@ -872,6 +875,7 @@ class Settings(BaseSettings):
         if self.deployments_enabled:
             if not self.deploy_admin_email_set:
                 errors.append("DEPLOY_ADMIN_EMAILS must contain at least one email")
+        if self.deployments_enabled and self.deployment_executor == "agent":
             if not self.deploy_agent_hmac_key or len(self.deploy_agent_hmac_key) < 32:
                 errors.append("DEPLOY_AGENT_HMAC_KEY must be set to at least 32 characters")
             if self.deploy_agent_socket != "/run/travel-scanner-deployer/deployer.sock":

@@ -27,6 +27,23 @@ whether to run it now. The gates, in order:
 ``AUTODEPLOY_ENABLED=false`` and ``tick --dry-run`` walk every gate and print what
 would happen, which is how the timer is watched for a week before it is enabled.
 
+Two more duties (docs/ops/admin-redeploy-button-and-daily-autodeploy-plan.md):
+
+- **Admin button requests.** Before the gates, a tick looks for a ``queued``
+  ``deployment_runs`` row whose ``metadata_json.executor`` is ``host_timer`` (the admin
+  page inserts it; only the owner role can). It claims the row with a conditional
+  ``UPDATE``, walks the same gates minus the schedule (quiet period, deploy windows, daily
+  limit, blocked windows), runs the same script (``--force`` to rebuild the live commit),
+  and writes stages, events and the result back to the row. A gate that holds refuses the
+  request instead of waiting; the paused file refuses it too (no forced deploys).
+- **Heartbeat.** Every tick ends by upserting ``deployment_host_status`` (one row) with what
+  it saw, so the admin page can show the timer's decision, its last deploy and a window
+  that closed without a deploy. The page is the owner's notification channel.
+
+Both use ``psql`` in the postgres container, which a deploy never restarts. SQL is built from
+fixed statements; a value is either checked against a UUID or SHA pattern or passed as a
+dollar-quoted literal (``sql_literal``).
+
 Standard library only and no ``fcntl`` (the host runs Python 3.14; the tests also run
 on Windows). Every host command goes through ``CommandRunner`` and every GitHub call
 through ``GitHubClient`` so the tests need neither the host nor the network. The state
@@ -40,6 +57,7 @@ import datetime as dt
 import json
 import os
 import re
+import secrets
 import subprocess
 import sys
 import tempfile
@@ -67,6 +85,9 @@ _SHA = re.compile(r"[0-9a-f]{40}")
 _WINDOW = re.compile(r"^(\d{2}):(\d{2})-(\d{2}):(\d{2})$")
 _TOTAL = re.compile(r"^TOTAL pass=(\d+) fail=(\d+)", re.MULTILINE)
 _ONE_LINE = re.compile(r"[^\x00-\x1f\x7f]+")
+_UUID = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
+REQUEST_MODES = {"latest", "rebuild"}
+HOST_EXECUTOR = "host_timer"
 
 
 # --------------------------------------------------------------------------- paths
@@ -384,6 +405,19 @@ def one_line(text: str, limit: int = FIRST_LINE_LIMIT) -> str:
     return encoded.decode("utf-8", errors="ignore")
 
 
+def sql_literal(value: Any) -> str:
+    """A PostgreSQL literal for ``value``: NULL, or dollar-quoted with a tag the text lacks."""
+    if value is None:
+        return "NULL"
+    text = str(value).replace("\x00", "")
+    tag = "ad"
+    # With "$tag" nowhere in the text, the first "$tag$" after the opening one is the closing
+    # one: no match can start inside the text or straddle its end.
+    while f"${tag}" in text:
+        tag = f"ad{secrets.token_hex(4)}"
+    return f"${tag}${text}${tag}$"
+
+
 def write_paused(path: Path, *, sha: str, exit_code: int, log: Path, instant: dt.datetime) -> None:
     """Two lines like the deploy hold: one for people within 600 bytes, one JSON."""
     first = one_line(
@@ -451,6 +485,8 @@ class Poller:
         self.dry_run = dry_run or not config.enabled
         self.out = out
         self.state = read_state(paths.state)
+        # What this tick saw, for the heartbeat row the admin page reads.
+        self.report: dict[str, Any] = {}
 
     # -- helpers --------------------------------------------------------------
 
@@ -496,6 +532,7 @@ class Poller:
         self._track_window(decision, instant)
         write_state(self.paths.state, self.state)
         self._say("decision", f"{decision.action}: {decision.reason}")
+        self._heartbeat()
         return decision
 
     def _wait(self, gate: str, reason: str, **details: Any) -> Decision:
@@ -518,6 +555,8 @@ class Poller:
         """
         if not self.config.deploy_windows or decision.action == "paused":
             return
+        if decision.details.get("request"):
+            return  # an admin button request says nothing about the automatic schedule
         local = instant.astimezone(TAIPEI)
         window = self._open_deploy_window(local)
         if window is not None:
@@ -575,9 +614,309 @@ class Poller:
             )
         return None
 
+    # -- what the tick saw, for the admin page ----------------------------------
+
+    def _describe(self, live: str, target: str) -> None:
+        """Live and target SHA, the target's subject and the commits between them."""
+        self.report.update(live=live, target=target)
+        subject = self._git("log", "-1", "--format=%s", target)
+        if subject.code == 0:
+            self.report["subject"] = one_line(subject.output, 255)
+        if live == target:
+            self.report["commits"] = []
+            return
+        listed = self._git("log", "--format=%H%x1f%s", "-20", f"{live}..{target}")
+        commits = []
+        if listed.code == 0:
+            for line in listed.output.splitlines():
+                sha, _, text = line.partition("\x1f")
+                if _SHA.fullmatch(sha):
+                    commits.append({"sha": sha, "subject": one_line(text, 255)})
+        self.report["commits"] = commits
+
+    def _ci(self, sha: str) -> tuple[str, str | None]:
+        status, url = self.github.ci_status(sha)
+        self._say("ci", f"{WORKFLOW_NAME} for {sha[:12]} is {status}{f' ({url})' if url else ''}")
+        self.report.update(ci_sha=sha, ci_status=status[:64], ci_url=url)
+        return status, url
+
+    def _heartbeat(self) -> None:
+        """Upsert ``deployment_host_status`` with this tick's view; a failure is only printed."""
+        paused = read_paused(self.paths.paused)
+        state = {
+            key: self.state[key]
+            for key in ("last_decision", "last_deploy", "auto_deploys_today", "last_missed_window")
+            if key in self.state
+        }
+        state["deploy_windows"] = [str(window) for window in self.config.deploy_windows]
+        if "commits" in self.report:
+            state["commits"] = self.report["commits"]
+        live = self.report.get("live")
+        target = self.report.get("target")
+        ci_status = self.report.get("ci_status") if self.report.get("ci_sha") == target else None
+        values = ", ".join(
+            [
+                "1",
+                "now()",
+                "true" if self.dry_run else "false",
+                sql_literal(live if live and _SHA.fullmatch(live) else None),
+                sql_literal(target if target and _SHA.fullmatch(target) else None),
+                sql_literal(self.report.get("subject")),
+                sql_literal(ci_status),
+                sql_literal(self.report.get("ci_url") if ci_status else None),
+                sql_literal(paused[0] if paused else None),
+                f"{sql_literal(json.dumps(state, sort_keys=True))}::json",
+            ]
+        )
+        table = "deployment_host_status"
+        # Fixed SQL; every value is a checked UUID or SHA, or comes from sql_literal().
+        result = self._psql(
+            f"insert into {table} (id, reported_at, dry_run, live_sha, target_sha, "  # noqa: S608
+            "target_commit_subject, ci_status, ci_url, paused_reason, state_json) "
+            f"values ({values}) on conflict (id) do update set "
+            "reported_at = excluded.reported_at, dry_run = excluded.dry_run, "
+            f"live_sha = coalesce(excluded.live_sha, {table}.live_sha), "
+            f"target_sha = coalesce(excluded.target_sha, {table}.target_sha), "
+            "target_commit_subject = coalesce(excluded.target_commit_subject, "
+            f"{table}.target_commit_subject), "
+            # A CI result belongs to one SHA: keep the last one only while the target is the same.
+            "ci_status = case when excluded.ci_status is not null then excluded.ci_status "
+            f"when excluded.target_sha is distinct from {table}.target_sha "
+            f"and excluded.target_sha is not null then null else {table}.ci_status end, "
+            "ci_url = case when excluded.ci_status is not null then excluded.ci_url "
+            f"when excluded.target_sha is distinct from {table}.target_sha "
+            f"and excluded.target_sha is not null then null else {table}.ci_url end, "
+            "paused_reason = excluded.paused_reason, state_json = excluded.state_json"
+        )
+        if result.code != 0:
+            self._say("heartbeat", f"could not write {table}: {one_line(result.output, 200)}")
+
+    # -- admin button requests -----------------------------------------------------
+
+    def _claim_request(self) -> tuple[str, str, bool] | None:
+        """The oldest queued admin request, claimed; None when there is none or it went away."""
+        # Fixed SQL; every value is a checked UUID or SHA, or comes from sql_literal().
+        found = self._psql(
+            "select id, coalesce(metadata_json->>'mode', 'latest'), "  # noqa: S608
+            "coalesce(metadata_json->>'wait_for_paid_work', 'true') from deployment_runs "
+            f"where status = 'queued' and metadata_json->>'executor' = '{HOST_EXECUTOR}' "
+            "order by created_at limit 1"
+        )
+        if found.code != 0 or not found.output.strip():
+            return None
+        fields = found.output.strip().splitlines()[0].split("|")
+        if len(fields) != 3 or not _UUID.fullmatch(fields[0]):
+            self._say(
+                "request", f"ignoring an unreadable request row: {one_line(found.output, 120)}"
+            )
+            return None
+        run_id, mode, wait = fields
+        # Fixed SQL; every value is a checked UUID or SHA, or comes from sql_literal().
+        claimed = self._psql(
+            "update deployment_runs set status = 'preflight', stage = 'preflight', "  # noqa: S608
+            f"started_at = now(), updated_at = now() where id = '{run_id}' and status = 'queued' "
+            "returning id"
+        )
+        if claimed.code != 0 or run_id not in claimed.output:
+            return None
+        self._say("request", f"claimed admin request {run_id} (mode {mode})")
+        return run_id, mode, wait.strip().lower() != "false"
+
+    def _event(self, run_id: str, stage: str, status: str, message: str) -> None:
+        # Fixed SQL; every value is a checked UUID or SHA, or comes from sql_literal().
+        self._psql(
+            "insert into deployment_events (id, run_id, sequence, stage, status, message, "  # noqa: S608
+            f"created_at) select gen_random_uuid(), '{run_id}', coalesce(max(sequence), 0) + 1, "
+            f"{sql_literal(stage)}, {sql_literal(status)}, {sql_literal(one_line(message, 500))}, "
+            f"now() from deployment_events where run_id = '{run_id}'"
+        )
+
+    def _update_run(self, run_id: str, *, finished: bool = False, **fields: Any) -> None:
+        allowed = {
+            "status",
+            "stage",
+            "previous_sha",
+            "target_sha",
+            "target_commit_subject",
+            "ci_url",
+            "rollback_status",
+            "failure_code",
+            "failure_detail",
+        }
+        sets = [f"{key} = {sql_literal(value)}" for key, value in fields.items() if key in allowed]
+        sets.append("updated_at = now()")
+        if finished:
+            sets.append("finished_at = now()")
+        # Columns come from the fixed set above, values from sql_literal, the id is a checked UUID.
+        statement = f"update deployment_runs set {', '.join(sets)} where id = '{run_id}'"  # noqa: S608
+        self._psql(statement)
+
+    def _refuse(self, run_id: str, code: str, detail: str) -> Decision:
+        detail = one_line(detail, 500)
+        self._update_run(
+            run_id, status="failed", failure_code=code[:64], failure_detail=detail, finished=True
+        )
+        self._event(run_id, "preflight", "failed", detail)
+        return self._finish(
+            Decision("refused", f"admin request {run_id}: {code}: {detail}", {"request": run_id})
+        )
+
+    def _serve_request(self, run_id: str, mode: str, wait_for_paid_work: bool) -> Decision:
+        """An admin button request: the gates minus the schedule, then the same script.
+
+        A gate that would make an automatic deploy wait refuses the request instead, with a
+        fixed failure code the admin page shows; the person presses again later.
+        """
+        self._event(run_id, "preflight", "running", "主機排程器已接手，開始檢查")
+        if mode not in REQUEST_MODES:
+            return self._refuse(run_id, "deployment_request_invalid", f"unknown mode {mode!r}")
+        paused = read_paused(self.paths.paused)
+        if paused is not None:
+            return self._refuse(
+                run_id,
+                "deployment_autodeploy_paused",
+                f"上一次自動部署失敗、已暫停，先讀 log 再刪暫停檔：{paused[0]}",
+            )
+        fetched = self._git("fetch", "--quiet", "origin", BRANCH, timeout=120)
+        if fetched.code != 0:
+            return self._refuse(
+                run_id, "deployment_preflight_failed", f"git fetch failed: {fetched.output}"
+            )
+        live = self._git("rev-parse", "HEAD").output.strip()
+        latest = self._git("rev-parse", f"refs/remotes/origin/{BRANCH}").output.strip()
+        if not _SHA.fullmatch(live) or not _SHA.fullmatch(latest):
+            return self._refuse(
+                run_id, "deployment_preflight_failed", "could not read live or main"
+            )
+        self._describe(live, latest)
+        if mode == "rebuild":
+            target = live
+            self._update_run(run_id, previous_sha=live, target_sha=live)
+        else:
+            target = latest
+            if live == target:
+                return self._refuse(
+                    run_id, "deployment_already_current", f"live is already {live[:12]}"
+                )
+            if self._git("merge-base", "--is-ancestor", live, target).code != 0:
+                return self._refuse(
+                    run_id,
+                    "deployment_not_fast_forward",
+                    f"live {live[:12]} is not an ancestor of main {target[:12]}",
+                )
+            status, url = self._ci(target)
+            self._update_run(
+                run_id,
+                previous_sha=live,
+                target_sha=target,
+                target_commit_subject=self.report.get("subject"),
+                ci_url=url,
+            )
+            if status != "success":
+                return self._refuse(
+                    run_id,
+                    "deployment_ci_not_green",
+                    f"{WORKFLOW_NAME} for {target[:12]} is {status}",
+                )
+        if self.runner.run(["flock", "-n", str(self.paths.lock), "true"]).code != 0:
+            return self._refuse(
+                run_id, "deployment_lock_held", "另一個部署正在執行（部署鎖被佔用）"
+            )
+        probe = self.runner.run([str(self.paths.deploy_script), "--dry-run"], timeout=300)
+        if probe.code == REFUSED_EXIT:
+            return self._refuse(run_id, "deployment_hold_active", probe.output)
+        if probe.code != 0:
+            return self._refuse(
+                run_id,
+                "deployment_preflight_failed",
+                f"--dry-run exited {probe.code}: {probe.output}",
+            )
+        if wait_for_paid_work:
+            running_job, error = self._running_paid_work()
+            if error is not None:
+                return self._refuse(run_id, "deployment_preflight_failed", error)
+            if running_job is not None:
+                return self._refuse(
+                    run_id,
+                    "deployment_paid_work_running",
+                    f"有付費影片工作正在執行（{running_job}），部署會中斷它",
+                )
+        if self.dry_run:
+            return self._refuse(
+                run_id,
+                "deployment_dry_run",
+                f"排程器在乾跑模式（AUTODEPLOY_ENABLED=false）：would deploy {target[:12]}",
+            )
+
+        self._update_run(run_id, status="building", stage="building")
+        self._event(run_id, "building", "running", f"開始部署 {target[:12]}（約 1 到 8 分鐘）")
+        result, log, started, finished = self._run_script(
+            live, target, prefix="button", force=mode == "rebuild"
+        )
+        record: dict[str, Any] = {
+            "sha": target,
+            "previous": live,
+            "started_at": _iso(started),
+            "finished_at": _iso(finished),
+            "seconds": int((finished - started).total_seconds()),
+            "exit": result.code,
+            "log": str(log),
+            "request": run_id,
+        }
+        if result.code != 0:
+            # Same rule as an automatic deploy: the script rolled back or stopped midway, and
+            # the timer stops until a person has read the log and removed the paused file.
+            write_paused(
+                self.paths.paused, sha=target, exit_code=result.code, log=log, instant=finished
+            )
+            self.state["last_deploy"] = record
+            detail = f"部署腳本結束碼 {result.code}，已暫停自動部署；log {log}"
+            self._update_run(
+                run_id,
+                status="failed",
+                failure_code=f"deploy_script_exit_{result.code}"[:64],
+                failure_detail=detail,
+                finished=True,
+            )
+            self._event(run_id, "building", "failed", detail)
+            return self._finish(
+                Decision(
+                    "failed", f"admin request {run_id}: deploy exited {result.code}; paused", record
+                )
+            )
+        self._update_run(run_id, status="verifying", stage="verifying")
+        self._event(run_id, "verifying", "running", "部署完成，執行 host-verify.sh")
+        record["verify"] = self._verify(target)
+        self.state["last_deploy"] = record
+        verdict = record["verify"]["result"]
+        if verdict == "FAIL":
+            verify = record["verify"]
+            detail = f"部署完成但驗證失敗：{verify.get('reason') or ''} {verify.get('log') or ''}"
+            self._update_run(
+                run_id,
+                status="manual_intervention_required",
+                failure_code="deployment_verify_failed",
+                failure_detail=detail,
+                finished=True,
+            )
+            self._event(run_id, "verifying", "failed", detail)
+        else:
+            self._update_run(run_id, status="succeeded", finished=True)
+            self._event(run_id, "verifying", "succeeded", f"已部署 {target[:12]}，驗證 {verdict}")
+        return self._finish(
+            Decision(
+                "deployed",
+                f"admin request {run_id}: deployed {target[:12]}, verify {verdict}",
+                record,
+            )
+        )
+
     # -- the tick -------------------------------------------------------------
 
     def tick(self) -> Decision:
+        request = self._claim_request()
+        if request is not None:
+            return self._serve_request(*request)
         paused = read_paused(self.paths.paused)
         if paused is not None:
             first, _ = paused
@@ -600,6 +939,7 @@ class Poller:
                 "git", f"could not read live ({live[:12]!r}) or origin/{BRANCH} ({target[:12]!r})"
             )
         self._say("git", f"live {live[:12]}, origin/{BRANCH} {target[:12]}")
+        self._describe(live, target)
         if live == target:
             return self._finish(
                 Decision("idle", f"live is origin/{BRANCH} ({live[:12]})", {"sha": live})
@@ -632,10 +972,7 @@ class Poller:
                 sha=target,
             )
 
-        status, url = self.github.ci_status(target)
-        self._say(
-            "ci", f"{WORKFLOW_NAME} for {target[:12]} is {status}{f' ({url})' if url else ''}"
-        )
+        status, url = self._ci(target)
         if status != "success":
             return self._wait(
                 "ci", f"{WORKFLOW_NAME} for {target[:12]} is {status}", sha=target, ci_url=url
@@ -675,7 +1012,8 @@ class Poller:
             )
         return self._deploy(live, target)
 
-    def _paid_work(self) -> Decision | None:
+    def _running_paid_work(self) -> tuple[str | None, str | None]:
+        """(the first running paid stage job, or None; an error reading the table, or None)."""
         stage = self._psql(
             "select status, count(*), min(created_at) from video_stage_jobs "
             "where status in ('queued', 'running', 'uncertain') group by status"
@@ -687,12 +1025,17 @@ class Poller:
         self._say("paid work", f"stage jobs: {one_line(stage.output, 200) or 'none'}")
         self._say("paid work", f"media jobs: {one_line(media.output, 200) or 'none'}")
         if stage.code != 0:
-            return self._wait(
-                "paid_work", f"could not read video_stage_jobs: {one_line(stage.output, 200)}"
-            )
+            return None, f"could not read video_stage_jobs: {one_line(stage.output, 200)}"
         running = [line for line in stage.output.splitlines() if line.startswith("running|")]
-        if not running:
+        return (running[0] if running else None), None
+
+    def _paid_work(self) -> Decision | None:
+        running_job, error = self._running_paid_work()
+        if error is not None:
+            return self._wait("paid_work", error)
+        if running_job is None:
             return None
+        running = [running_job]
         instant = self.clock()
         since = _parse_iso(self.state.get("paid_work_since")) or instant
         self.state["paid_work_since"] = _iso(since)
@@ -714,18 +1057,22 @@ class Poller:
             f"worker restarted; waiting since {_iso(since)}",
         )
 
-    def _deploy(self, live: str, target: str) -> Decision:
+    def _run_script(
+        self, live: str, target: str, *, prefix: str, force: bool = False
+    ) -> tuple[Completed, Path, dt.datetime, dt.datetime]:
         started = self.clock()
         self.paths.log_dir.mkdir(parents=True, exist_ok=True)
-        log = self.paths.log_dir / f"auto-{started:%Y%m%d_%H%M%S}.log"
+        log = self.paths.log_dir / f"{prefix}-{started:%Y%m%d_%H%M%S}.log"
         self._say("deploy", f"{live[:12]} -> {target[:12]}, log {log}")
+        argv = [str(self.paths.deploy_script), *(["--force"] if force else [])]
         try:
-            result = self.runner.run(
-                [str(self.paths.deploy_script)], timeout=DEPLOY_TIMEOUT, log_path=log
-            )
+            result = self.runner.run(argv, timeout=DEPLOY_TIMEOUT, log_path=log)
         except subprocess.TimeoutExpired:
             result = Completed(124, f"deploy script did not finish within {DEPLOY_TIMEOUT} s")
-        finished = self.clock()
+        return result, log, started, self.clock()
+
+    def _deploy(self, live: str, target: str) -> Decision:
+        result, log, started, finished = self._run_script(live, target, prefix="auto")
         record: dict[str, Any] = {
             "sha": target,
             "previous": live,

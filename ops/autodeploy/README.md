@@ -72,6 +72,41 @@ tick or a failed deploy (which notifies on its own) inside the window clears the
 record; a paused tick leaves it alone. Both settings empty keep the old behaviour: deploy
 once the quiet period has passed. Background: `docs/ops/admin-redeploy-button-and-daily-autodeploy-plan.md`.
 
+## The admin button
+
+With `DEPLOYMENT_EXECUTOR=host_timer` and `DEPLOYMENTS_ENABLED=true` in the application
+environment, `/admin/deployments` has two buttons, "deploy latest" and "rebuild current
+version", which only the owner role can press (owner's decision, 2026-11-16) after typing
+their password. The API never touches the host: it inserts a `queued` `deployment_runs` row with
+`metadata_json = {"executor": "host_timer", "mode": "latest" | "rebuild", "wait_for_paid_work": ...}`.
+Every tick first looks for such a row and claims it with
+`UPDATE ... SET status = 'preflight' WHERE id = ... AND status = 'queued' RETURNING id`, so a
+request is picked up within one tick (about five minutes); a request nobody claims in ten
+minutes is marked `failed` (`deployment_executor_unavailable`) by the API.
+
+A request skips the schedule (quiet period, deploy windows, daily limit, blocked windows) and
+then walks the remaining gates. A gate that would make an automatic deploy wait **refuses** the
+request instead, with a fixed `failure_code` the page shows: `deployment_autodeploy_paused` (no
+forced deploys past the paused file, owner's decision), `deployment_already_current`,
+`deployment_not_fast_forward`, `deployment_ci_not_green` (not checked for a rebuild),
+`deployment_lock_held`, `deployment_hold_active`, `deployment_paid_work_running` (unless the
+request unticked it), `deployment_dry_run` (`AUTODEPLOY_ENABLED=false`: the request records what
+would have happened). Otherwise it runs the script (`--force` for a rebuild) with its log in
+`/root/deploy-logs/button-<ts>.log`, then `host-verify.sh`, writing stages and events to the row:
+`succeeded`, `manual_intervention_required` (`deployment_verify_failed`), or `failed`
+(`deploy_script_exit_<n>`). A failed button deploy writes the paused file exactly like an
+automatic one. Button deploys do not count toward the daily limit.
+
+## The heartbeat the admin page reads
+
+Every tick ends by upserting the single row of `deployment_host_status` (migration 0146): live
+and target SHA, the target's subject, the CI result it read for that target, the paused file's
+first line, whether it is a dry run, and a subset of `state.json` (last decision, last deploy,
+today's count, the last missed window, the deploy windows, the commits between live and target).
+With `AUTODEPLOY_NOTIFY_URL` empty (owner's choice, 2026-11-16) this page is the only place a
+failure, a pause or a missed window shows up. A row older than 15 minutes makes the page say the
+timer is not responding and refuse requests. A failed upsert is printed and never blocks a tick.
+
 ## Files on the host
 
 | Path | What |
