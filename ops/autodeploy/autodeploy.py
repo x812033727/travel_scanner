@@ -99,7 +99,7 @@ class ConfigError(RuntimeError):
 
 @dataclass(frozen=True)
 class Window:
-    """A daily window in Asia/Taipei during which no deploy starts; may wrap midnight."""
+    """A daily window in Asia/Taipei (a blocked or an allowed one); may wrap midnight."""
 
     start: int  # minutes after midnight
     end: int
@@ -109,6 +109,15 @@ class Window:
         if self.start <= self.end:
             return self.start <= minute < self.end
         return minute >= self.start or minute < self.end
+
+    def next_start(self, local: dt.datetime) -> dt.datetime:
+        """The first start of this window at or after ``local`` (same time zone)."""
+        start = local.replace(
+            hour=self.start // 60, minute=self.start % 60, second=0, microsecond=0
+        )
+        if start < local.replace(second=0, microsecond=0):
+            start += dt.timedelta(days=1)
+        return start
 
     def __str__(self) -> str:
         return (
@@ -125,6 +134,8 @@ class Config:
     blocked_windows: tuple[Window, ...] = ()
     notify_url: str = ""
     paid_work_notify_hours: float = 2.0
+    deploy_windows: tuple[Window, ...] = ()
+    max_auto_deploys_per_day: int = 0
 
     @classmethod
     def from_mapping(cls, env: Mapping[str, str]) -> Config:
@@ -139,7 +150,15 @@ class Config:
             github_token=token,
             quiet_minutes=_int(env, "AUTODEPLOY_QUIET_MINUTES", 20),
             wait_for_paid_work=_truthy(env.get("AUTODEPLOY_WAIT_FOR_PAID_WORK", "true")),
-            blocked_windows=tuple(parse_windows(env.get("AUTODEPLOY_BLOCKED_WINDOWS", ""))),
+            blocked_windows=tuple(
+                parse_windows(
+                    env.get("AUTODEPLOY_BLOCKED_WINDOWS", ""), "AUTODEPLOY_BLOCKED_WINDOWS"
+                )
+            ),
+            deploy_windows=tuple(
+                parse_windows(env.get("AUTODEPLOY_DEPLOY_WINDOWS", ""), "AUTODEPLOY_DEPLOY_WINDOWS")
+            ),
+            max_auto_deploys_per_day=_int(env, "AUTODEPLOY_MAX_AUTO_DEPLOYS_PER_DAY", 0),
             notify_url=env.get("AUTODEPLOY_NOTIFY_URL", "").strip(),
             paid_work_notify_hours=_float(env, "AUTODEPLOY_PAID_WORK_NOTIFY_HOURS", 2.0),
         )
@@ -175,7 +194,7 @@ def _float(env: Mapping[str, str], key: str, default: float) -> float:
     return value
 
 
-def parse_windows(raw: str) -> list[Window]:
+def parse_windows(raw: str, key: str = "AUTODEPLOY_BLOCKED_WINDOWS") -> list[Window]:
     windows: list[Window] = []
     for part in raw.split(","):
         part = part.strip()
@@ -183,12 +202,20 @@ def parse_windows(raw: str) -> list[Window]:
             continue
         match = _WINDOW.match(part)
         if not match:
-            raise ConfigError(f"AUTODEPLOY_BLOCKED_WINDOWS entry {part!r} is not HH:MM-HH:MM")
+            raise ConfigError(f"{key} entry {part!r} is not HH:MM-HH:MM")
         h1, m1, h2, m2 = (int(group) for group in match.groups())
         if h1 > 23 or h2 > 23 or m1 > 59 or m2 > 59:
-            raise ConfigError(f"AUTODEPLOY_BLOCKED_WINDOWS entry {part!r} is not a time of day")
+            raise ConfigError(f"{key} entry {part!r} is not a time of day")
+        if h1 * 60 + m1 == h2 * 60 + m2:
+            raise ConfigError(f"{key} entry {part!r} is empty (start equals end)")
         windows.append(Window(h1 * 60 + m1, h2 * 60 + m2))
     return windows
+
+
+def next_window_start(windows: Sequence[Window], local: dt.datetime) -> dt.datetime | None:
+    """The soonest start of any window at or after ``local``; None when there are none."""
+    starts = [window.next_start(local) for window in windows]
+    return min(starts) if starts else None
 
 
 def read_env_file(path: Path) -> dict[str, str]:
@@ -466,12 +493,87 @@ class Poller:
         if decision.action not in {"wait"} or decision.details.get("gate") != "paid_work":
             self.state.pop("paid_work_since", None)
             self.state.pop("paid_work_notified_at", None)
+        self._track_window(decision, instant)
         write_state(self.paths.state, self.state)
         self._say("decision", f"{decision.action}: {decision.reason}")
         return decision
 
     def _wait(self, gate: str, reason: str, **details: Any) -> Decision:
         return self._finish(Decision("wait", reason, {"gate": gate, **details}))
+
+    def _open_deploy_window(self, local: dt.datetime) -> Window | None:
+        for window in self.config.deploy_windows:
+            if window.contains(local):
+                return window
+        return None
+
+    def _track_window(self, decision: Decision, instant: dt.datetime) -> None:
+        """Remember why a deploy window is not deploying, so its end can say so once.
+
+        Inside an open deploy window, a ``wait`` (CI red, paid work, a hold...) records the
+        first time and the latest gate in ``window_miss``; a deploy, a failure (which notifies
+        on its own) or an idle tick clears it. Outside every window a pending ``window_miss``
+        is the window that ended without a deploy: notify once and keep it as
+        ``last_missed_window``. ``paused`` neither records nor clears: the paused file says why.
+        """
+        if not self.config.deploy_windows or decision.action == "paused":
+            return
+        local = instant.astimezone(TAIPEI)
+        window = self._open_deploy_window(local)
+        if window is not None:
+            if decision.action == "wait" and decision.details.get("gate") != "daily_limit":
+                previous = self.state.get("window_miss") or {}
+                self.state["window_miss"] = {
+                    "window": str(window),
+                    "since": previous.get("since") or _iso(instant),
+                    "gate": decision.details.get("gate"),
+                    "reason": decision.reason,
+                    "sha": decision.details.get("sha"),
+                }
+            else:
+                self.state.pop("window_miss", None)
+            return
+        miss = self.state.pop("window_miss", None)
+        if not miss:
+            return
+        sha = str(miss.get("sha") or "")[:12] or "main"
+        self.notifier.post(
+            f"mokaair autodeploy: deploy window {miss.get('window')} Asia/Taipei closed without "
+            f"deploying {sha}; last gate {miss.get('gate')}: {miss.get('reason')}"
+        )
+        self.state["last_missed_window"] = {**miss, "notified_at": _iso(instant)}
+
+    def _deploys_today(self, local: dt.datetime) -> int:
+        record = self.state.get("auto_deploys_today") or {}
+        if record.get("date") != local.date().isoformat():
+            return 0
+        try:
+            return int(record.get("count", 0))
+        except (TypeError, ValueError):
+            return 0
+
+    def _schedule(self, target: str) -> Decision | None:
+        """The deploy windows and the daily limit; None when neither holds the deploy back."""
+        local = self.clock().astimezone(TAIPEI)
+        if self.config.deploy_windows and self._open_deploy_window(local) is None:
+            upcoming = next_window_start(self.config.deploy_windows, local)
+            assert upcoming is not None
+            windows = ", ".join(str(window) for window in self.config.deploy_windows)
+            return self._wait(
+                "schedule",
+                f"outside the deploy window {windows} Asia/Taipei (now {local:%H:%M}); "
+                f"next opens {upcoming:%Y-%m-%d %H:%M}",
+                sha=target,
+            )
+        limit = self.config.max_auto_deploys_per_day
+        if limit and self._deploys_today(local) >= limit:
+            return self._wait(
+                "daily_limit",
+                f"already deployed {limit} time(s) automatically on {local.date().isoformat()} "
+                f"(Asia/Taipei); {target[:12]} waits for tomorrow's window",
+                sha=target,
+            )
+        return None
 
     # -- the tick -------------------------------------------------------------
 
@@ -509,6 +611,10 @@ class Poller:
                 "script's fast-forward would refuse, a person has to look",
                 sha=target,
             )
+
+        scheduled = self._schedule(target)
+        if scheduled is not None:
+            return scheduled
 
         committed = self._git("log", "-1", "--format=%ct", target).output.strip()
         try:
@@ -645,6 +751,11 @@ class Poller:
             )
         record["verify"] = self._verify(target)
         self.state["last_deploy"] = record
+        today = started.astimezone(TAIPEI).date().isoformat()
+        self.state["auto_deploys_today"] = {
+            "date": today,
+            "count": self._deploys_today(started.astimezone(TAIPEI)) + 1,
+        }
         verdict = record["verify"]["result"]
         self.notifier.post(
             f"mokaair autodeploy: deployed {target[:12]} in {record['seconds']} s, verify {verdict}"
@@ -699,8 +810,21 @@ class Poller:
 # ----------------------------------------------------------------------------- cli
 
 
-def status_text(paths: Paths) -> str:
+def status_text(paths: Paths, *, now: dt.datetime | None = None) -> str:
     lines = [f"state file: {paths.state}"]
+    try:
+        config: Config | None = Config.from_mapping(read_env_file(paths.env_file))
+    except (ConfigError, OSError):
+        config = None
+    if config is not None and config.deploy_windows:
+        local = (now or now_utc()).astimezone(TAIPEI)
+        upcoming = next_window_start(config.deploy_windows, local)
+        windows = ", ".join(str(window) for window in config.deploy_windows)
+        open_now = any(window.contains(local) for window in config.deploy_windows)
+        lines.append(
+            f"deploy window: {windows} Asia/Taipei, "
+            + ("open now" if open_now else f"next opens {upcoming:%Y-%m-%d %H:%M}")
+        )
     state = read_state(paths.state)
     if not state:
         lines.append("  (no tick recorded yet)")
