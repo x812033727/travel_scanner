@@ -12,38 +12,38 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 6034,
-    "canonical_questions": 5874,
-    "eligible_candidates": 5704,
-    "selected_candidates": 5645,
+    "raw_records": 6090,
+    "canonical_questions": 5930,
+    "eligible_candidates": 5760,
+    "selected_candidates": 5701,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 6967,
-    "current_research_source_urls": 4020,
-    "selected_source_urls": 5018,
+    "source_urls": 6981,
+    "current_research_source_urls": 4034,
+    "selected_source_urls": 5032,
     "new_suggestions_not_added": 3419,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1200,
-        "selected": 1192
+        "canonical": 1214,
+        "selected": 1206
       },
       "生物動物與植物": {
-        "canonical": 1355,
-        "selected": 1344
+        "canonical": 1369,
+        "selected": 1358
       },
       "地球天氣與太空": {
-        "canonical": 907,
-        "selected": 904
+        "canonical": 921,
+        "selected": 918
       },
       "數位科技與通訊工程": {
         "canonical": 916,
         "selected": 863
       },
       "飲食與廚房科學": {
-        "canonical": 405,
-        "selected": 400
+        "canonical": 419,
+        "selected": 414
       },
       "人體感官與日常行為": {
         "canonical": 484,
@@ -58,7 +58,7 @@
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "aa46f82aca740245bee380a4a415051341674256864ce9125c2dc700a96d04da"
+      "sha256": "365dab0ad6c4e83d9279cb14f5ce1e570ecc333ba673c9c1984bfbcd7a5be9ad"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -787,6 +787,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-15-5589.json.gz",
       "sha256": "d20462850e857381d9458063f4799919b7accb3386e4d42909da04e6bef3fc61"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-5645.json",
+      "sha256": "4e6c58a23b62701bc891180fcc9418a09e97baeabf12d79dae900f274abfdb45"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-15-5645.json.gz",
+      "sha256": "ebb39a1ddd7ae57e01954e9d5d00dea2949aff33a1417627325210fe46006664"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -2853,6 +2861,22 @@
       "sha256": "aaea35c79197dd494c3f26115f3b8d323cea6ee1fceec09a9dfef58151e0a430"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave93-bio.json",
+      "sha256": "767ac2596b8aa3daf824d61b5b65f8b889c7d55f606e52afa5d99d74f9d312d8"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave93-earth.json",
+      "sha256": "8c15c85d9f63b1b9d7418ebce872c3fc0a39d00d27b2c5448f4a57843c3245a7"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave93-food.json",
+      "sha256": "457e9decbcb81969cc05fd198d864a3d5672e4085875f8955b0b4118f8e6611d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave93-physics.json",
+      "sha256": "60f4b85ca215bb48de6fabe36454052683b5e565385086fcee664716ab38fd64"
+    },
+    {
       "file": "tools/video/so-thats-why/pool/core.mjs",
       "sha256": "408d081b431587e4d7c7285a65459a19be08d3b5259f8da5dcae4f58806f9f8b"
     },
@@ -2890,12 +2914,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "5a4a28ae4fea63ff975ef94505617609c1cb53540df9d74067631217a49556a5"
+      "sha256": "ac701592baebe8f380251c885e8275e2771899febb31daa57bfa70e45d8bb272"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 6967
+    "count": 6981
   },
   "candidates": [
     {
@@ -259419,11 +259443,2419 @@
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false
+    },
+    {
+      "id": "K93-015",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "生長在幾千米漆黑深海熱液口的巨型管蟲，沒有嘴巴也沒有消化道，究竟靠什麼生存繁衍？",
+      "mechanism_key": "hydrothermal.riftia_trophosome_sulfur_oxidizing_symbiont",
+      "answer_target": "巨型管蟲體腔內特化出重達體重一半的營養體器官，密布數百億顆化學自營硫氧化共生細菌，將硫化氫氧化為其提供全套有機養分。",
+      "scope": "極端微生物學、深海生物地球化學與化學自營生態機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "生長在幾千米漆黑深海熱液口的巨型管蟲，沒有嘴巴也沒有消化道，究竟靠什麼生存繁衍？：深海無光環境化學合成代謝揭開了地外生命尋找的全新邊界。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示黑煙囪化學梯度與管蟲共生菌硫氧化能量代謝傳導。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S015: Section 2.1；Table 1",
+      "notes": "研究網 NET_BIO_01。覆核 V221（2026-11-15）通過。",
+      "origin": "wave93-bio-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-b18ec0eb2f6d0330",
+          "origin": "wave93-bio-20261115",
+          "locator": "K93-S015: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-015"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-016",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "深海熱液中劇毒的硫化氫能殺死一切普通動物，管蟲體內的特殊血紅素為什麼能同時攜帶氧氣與毒物？",
+      "mechanism_key": "hydrothermal.unique_hemoglobin_hydrogen_sulfide_binding",
+      "answer_target": "管蟲擁有高分子量巨型胞外血紅素，具備獨立的硫化氫專屬結合位點，親和力極高且可逆釋放，既能隔絕毒性又能將硫化物輸送給共生菌。",
+      "scope": "極端微生物學、深海生物地球化學與化學自營生態機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "深海熱液中劇毒的硫化氫能殺死一切普通動物，管蟲體內的特殊血紅素為什麼能同時攜帶氧氣與毒物？：深海無光環境化學合成代謝揭開了地外生命尋找的全新邊界。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示黑煙囪化學梯度與管蟲共生菌硫氧化能量代謝傳導。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S016: Section 2.1；Table 1",
+      "notes": "研究網 NET_BIO_01。覆核 V221（2026-11-15）通過。",
+      "origin": "wave93-bio-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-cd9d0277c56e25f8",
+          "origin": "wave93-bio-20261115",
+          "locator": "K93-S016: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-016"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-017",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "在完全沒有陽光的深海海底，共生細菌是如何利用硫化氫分子的化學鍵能驅動卡爾文循環固定碳源？",
+      "mechanism_key": "hydrothermal.chemoautotrophy_calvin_cycle_sulfide_energy",
+      "answer_target": "硫化物氧化酵素系在膜兩側建立質子驅動勢合成ATP與NADPH，催化卡爾文-本森循環中的Rubisco酵素直接固定海水溶解無機碳。",
+      "scope": "極端微生物學、深海生物地球化學與化學自營生態機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在完全沒有陽光的深海海底，共生細菌是如何利用硫化氫分子的化學鍵能驅動卡爾文循環固定碳源？：深海無光環境化學合成代謝揭開了地外生命尋找的全新邊界。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示黑煙囪化學梯度與管蟲共生菌硫氧化能量代謝傳導。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S017: Section 2.1；Table 1",
+      "notes": "研究網 NET_BIO_01。覆核 V221（2026-11-15）通過。",
+      "origin": "wave93-bio-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-fd90a5333255a171",
+          "origin": "wave93-bio-20261115",
+          "locator": "K93-S017: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-017"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-018",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "熱液噴口周圍水溫高達數百攝氏度且富含酸性重金屬，管蟲外部堅硬的白色外管是如何抵禦極端腐蝕的？",
+      "mechanism_key": "hydrothermal.collagen_chitin_tube_protective_mineralization",
+      "answer_target": "外管由高度結晶的β-幾丁質奈米微纖維與高交聯膠原蛋白複合而成，微觀層狀結構提供極低導熱率與抵抗強酸金屬熱液的化學鈍性。",
+      "scope": "極端微生物學、深海生物地球化學與化學自營生態機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "熱液噴口周圍水溫高達數百攝氏度且富含酸性重金屬，管蟲外部堅硬的白色外管是如何抵禦極端腐蝕的？：深海無光環境化學合成代謝揭開了地外生命尋找的全新邊界。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示黑煙囪化學梯度與管蟲共生菌硫氧化能量代謝傳導。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S018: Section 2.1；Table 1",
+      "notes": "研究網 NET_BIO_01。覆核 V221（2026-11-15）通過。",
+      "origin": "wave93-bio-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-97ed994e2b03195c",
+          "origin": "wave93-bio-20261115",
+          "locator": "K93-S018: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-018"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-019",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "聚集在熱液黑煙囪壁上的盲蝦沒有眼睛，為什麼要在鰓腔內像農夫種莊稼一樣密集培育細菌？",
+      "mechanism_key": "hydrothermal.vent_shrimp_epibiotic_sulfide_bacterial_farming",
+      "answer_target": "熱液盲蝦鰓腔特化出羽狀剛毛作為附生絲狀硫氧化菌的苗床，盲蝦用特化顎足定期刮取成熟菌膜送入口中實現自給自足攝食。",
+      "scope": "極端微生物學、深海生物地球化學與化學自營生態機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "聚集在熱液黑煙囪壁上的盲蝦沒有眼睛，為什麼要在鰓腔內像農夫種莊稼一樣密集培育細菌？：深海無光環境化學合成代謝揭開了地外生命尋找的全新邊界。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示黑煙囪化學梯度與管蟲共生菌硫氧化能量代謝傳導。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S019: Section 2.1；Table 1",
+      "notes": "研究網 NET_BIO_01。覆核 V221（2026-11-15）通過。",
+      "origin": "wave93-bio-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-4f87c7d4b320d20b",
+          "origin": "wave93-bio-20261115",
+          "locator": "K93-S019: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-019"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-020",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "深海熱液區的鱗足螺，為什麼能給自己的腹足外層披上一套由硫化鐵礦物構成的真正金屬防禦鎧甲？",
+      "mechanism_key": "hydrothermal.scaly_foot_snail_iron_sulfide_armor_plates",
+      "answer_target": "鱗足螺鱗片外層分泌生長出磁性膠黃鐵礦（Fe3S4）與黃鐵礦結晶微顆粒，三層微結構分散掠食者蟹爪剪切應力阻擋碎殼。",
+      "scope": "極端微生物學、深海生物地球化學與化學自營生態機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "深海熱液區的鱗足螺，為什麼能給自己的腹足外層披上一套由硫化鐵礦物構成的真正金屬防禦鎧甲？：深海無光環境化學合成代謝揭開了地外生命尋找的全新邊界。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示黑煙囪化學梯度與管蟲共生菌硫氧化能量代謝傳導。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S020: Section 2.1；Table 1",
+      "notes": "研究網 NET_BIO_01。覆核 V221（2026-11-15）通過。",
+      "origin": "wave93-bio-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-e4f835012ac509f5",
+          "origin": "wave93-bio-20261115",
+          "locator": "K93-S020: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-020"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-021",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "熱液口超嗜熱古菌體內的蛋白質與酵素，在接近沸騰的極端高溫下為什麼不會像雞蛋清一樣變性凝固？",
+      "mechanism_key": "hydrothermal.thermophilic_enzyme_disulfide_bond_stability",
+      "answer_target": "超嗜熱酵素核心結構緊密堆積大量疏水胺基酸，表面富含離子鍵鹽橋網路與額外共價二硫鍵交聯，大幅提升熱力學展開自由能壁壘。",
+      "scope": "極端微生物學、深海生物地球化學與化學自營生態機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "熱液口超嗜熱古菌體內的蛋白質與酵素，在接近沸騰的極端高溫下為什麼不會像雞蛋清一樣變性凝固？：深海無光環境化學合成代謝揭開了地外生命尋找的全新邊界。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示黑煙囪化學梯度與管蟲共生菌硫氧化能量代謝傳導。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S021: Section 2.1；Table 1",
+      "notes": "研究網 NET_BIO_01。覆核 V221（2026-11-15）通過。",
+      "origin": "wave93-bio-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-e04b7651b3623e77",
+          "origin": "wave93-bio-20261115",
+          "locator": "K93-S021: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-021"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-022",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "在富含冷泉與天然氣水合物的深海海底，貽貝體內的嗜甲烷共生菌是如何把甲烷直接當作食物吃掉的？",
+      "mechanism_key": "hydrothermal.methanotrophic_symbiosis_methane_monooxygenase",
+      "answer_target": "共生嗜甲烷菌利用膜結合甲烷單加氧酶（pMMO）以氧氣氧化甲烷碳氫鍵生成甲醇，經由甲醛同化代謝途徑合成細胞生物質供養宿主。",
+      "scope": "極端微生物學、深海生物地球化學與化學自營生態機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在富含冷泉與天然氣水合物的深海海底，貽貝體內的嗜甲烷共生菌是如何把甲烷直接當作食物吃掉的？：深海無光環境化學合成代謝揭開了地外生命尋找的全新邊界。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示黑煙囪化學梯度與管蟲共生菌硫氧化能量代謝傳導。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S022: Section 2.1；Table 1",
+      "notes": "研究網 NET_BIO_01。覆核 V221（2026-11-15）通過。",
+      "origin": "wave93-bio-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-afa0c4d3ba65e7cc",
+          "origin": "wave93-bio-20261115",
+          "locator": "K93-S022: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-022"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-023",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "熱液噴口噴出的黑色煙霧沉澱出的多孔硫化物煙囪，為什麼被科學家視為地球生命起源最早的天然反應堆？",
+      "mechanism_key": "hydrothermal.black_smoker_chimney_pyrite_porous_structure",
+      "answer_target": "煙囪壁富含黃鐵礦與硫化鎳催化性微孔通道，內部鹼性熱液與外部酸性海水維持持續質子梯度，模擬了原始細胞膜氧化還原代謝原型。",
+      "scope": "極端微生物學、深海生物地球化學與化學自營生態機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "熱液噴口噴出的黑色煙霧沉澱出的多孔硫化物煙囪，為什麼被科學家視為地球生命起源最早的天然反應堆？：深海無光環境化學合成代謝揭開了地外生命尋找的全新邊界。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示黑煙囪化學梯度與管蟲共生菌硫氧化能量代謝傳導。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S023: Section 2.1；Table 1",
+      "notes": "研究網 NET_BIO_01。覆核 V221（2026-11-15）通過。",
+      "origin": "wave93-bio-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e0889bde7dc2c42",
+          "origin": "wave93-bio-20261115",
+          "locator": "K93-S023: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-023"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-024",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "生活在海底幾千米數百個大氣壓下的嗜壓微生物，其細胞膜在極寒高壓下為什麼不會凝固凍結？",
+      "mechanism_key": "hydrothermal.deep_sea_piezophile_membrane_polyunsaturated_lipid",
+      "answer_target": "嗜壓菌自適應增加細胞膜磷脂中二十二碳六烯酸（DHA）等多不飽和脂肪酸比例，雙鍵彎折構象阻礙烴鏈緊密堆積保持流動液晶態。",
+      "scope": "極端微生物學、深海生物地球化學與化學自營生態機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "生活在海底幾千米數百個大氣壓下的嗜壓微生物，其細胞膜在極寒高壓下為什麼不會凝固凍結？：深海無光環境化學合成代謝揭開了地外生命尋找的全新邊界。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示黑煙囪化學梯度與管蟲共生菌硫氧化能量代謝傳導。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S024: Section 2.1；Table 1",
+      "notes": "研究網 NET_BIO_01。覆核 V221（2026-11-15）通過。",
+      "origin": "wave93-bio-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-cc93229e0bedf17b",
+          "origin": "wave93-bio-20261115",
+          "locator": "K93-S024: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-024"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-025",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "熱液噴口壽命往往只有幾十年便會乾涸熄滅，不能游泳的固著底棲動物幼蟲是如何找到數百里外的新噴口的？",
+      "mechanism_key": "hydrothermal.larval_dispersal_deep_ocean_ridge_currents",
+      "answer_target": "幼蟲進入極低代謝的低溫滯育期，搭乘沿大洋中脊裂谷軸線定向流動的底層等深洋流漂移數十至數百公里，感知水化學溫差信號降落定居。",
+      "scope": "極端微生物學、深海生物地球化學與化學自營生態機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "熱液噴口壽命往往只有幾十年便會乾涸熄滅，不能游泳的固著底棲動物幼蟲是如何找到數百里外的新噴口的？：深海無光環境化學合成代謝揭開了地外生命尋找的全新邊界。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示黑煙囪化學梯度與管蟲共生菌硫氧化能量代謝傳導。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S025: Section 2.1；Table 1",
+      "notes": "研究網 NET_BIO_01。覆核 V221（2026-11-15）通過。",
+      "origin": "wave93-bio-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-9e93604987909dad",
+          "origin": "wave93-bio-20261115",
+          "locator": "K93-S025: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-025"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-026",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "熱液中富含致命濃度的鉛、鎘、砷等重金屬離子，深海特化生物是如何將這些劇毒重金屬徹底無害化排泄的？",
+      "mechanism_key": "hydrothermal.heavy_metal_detoxification_metallothionein",
+      "answer_target": "動物體內高表達富含半胱氨酸的金屬硫蛋白（Metallothionein），透過巰基配位牢固螯合重金屬離子並封存於不溶性顆粒中安全排出。",
+      "scope": "極端微生物學、深海生物地球化學與化學自營生態機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "熱液中富含致命濃度的鉛、鎘、砷等重金屬離子，深海特化生物是如何將這些劇毒重金屬徹底無害化排泄的？：深海無光環境化學合成代謝揭開了地外生命尋找的全新邊界。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示黑煙囪化學梯度與管蟲共生菌硫氧化能量代謝傳導。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S026: Section 2.1；Table 1",
+      "notes": "研究網 NET_BIO_01。覆核 V221（2026-11-15）通過。",
+      "origin": "wave93-bio-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-b77456991e78fcd5",
+          "origin": "wave93-bio-20261115",
+          "locator": "K93-S026: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-026"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-027",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "深海高天然放射性背景下的耐輻射真菌，是如何利用黑色素將伽馬輻射能轉化為輔助代謝能量的？",
+      "mechanism_key": "hydrothermal.radiotrophic_fungi_melanin_energy_conversion",
+      "answer_target": "細胞壁緻密黑色素多聚體吸收高能電離輻射引發光電效應釋放電子，結合膜電子傳遞鏈加速NADH氧化催化化學代謝增強生長。",
+      "scope": "極端微生物學、深海生物地球化學與化學自營生態機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "深海高天然放射性背景下的耐輻射真菌，是如何利用黑色素將伽馬輻射能轉化為輔助代謝能量的？：深海無光環境化學合成代謝揭開了地外生命尋找的全新邊界。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示黑煙囪化學梯度與管蟲共生菌硫氧化能量代謝傳導。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S027: Section 2.1；Table 1",
+      "notes": "研究網 NET_BIO_01。覆核 V221（2026-11-15）通過。",
+      "origin": "wave93-bio-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-c163d253da0faf07",
+          "origin": "wave93-bio-20261115",
+          "locator": "K93-S027: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-027"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-028",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "在連一絲陽光都無法穿透的三千米深海，盲蝦背部的感光器官為什麼能夠探測到熱液口肉眼不可見的微弱地熱？",
+      "mechanism_key": "hydrothermal.bacterial_rhodopsin_geothermal_infrared_sensing",
+      "answer_target": "盲蝦背部退化複眼演化為單一高靈敏度裸露視網膜感光板，富含特化視紫紅質分子，精確捕捉高溫熱液黑體輻射釋放的近紅外光子微光。",
+      "scope": "極端微生物學、深海生物地球化學與化學自營生態機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在連一絲陽光都無法穿透的三千米深海，盲蝦背部的感光器官為什麼能夠探測到熱液口肉眼不可見的微弱地熱？：深海無光環境化學合成代謝揭開了地外生命尋找的全新邊界。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示黑煙囪化學梯度與管蟲共生菌硫氧化能量代謝傳導。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S028: Section 2.1；Table 1",
+      "notes": "研究網 NET_BIO_01。覆核 V221（2026-11-15）通過。",
+      "origin": "wave93-bio-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-4d58d1ac3466390a",
+          "origin": "wave93-bio-20261115",
+          "locator": "K93-S028: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-028"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-001",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "太陽表面爆發耀斑與日冕物質拋射時，帶電粒子雲如何衝擊地球磁層並引發日側磁重聯？",
+      "mechanism_key": "geomag.coronal_mass_ejection_interplanetary_shock",
+      "answer_target": "日冕物質拋射高速等離子體激波壓縮地球磁層頂至6個地球半徑內，南向行星際磁場引發日側磁重聯將太陽風能量注入磁層。",
+      "scope": "地磁場熱力學、太空天氣電離層物理與高壓電網電磁感應機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "太陽表面爆發耀斑與日冕物質拋射時，帶電粒子雲如何衝擊地球磁層並引發日側磁重聯？：時變磁場法拉第感應揭開了太空天氣衝擊現代地表工業的科學真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示太陽風激波壓縮磁層與地表電網感應電流迴路。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S001: Section 2.1；Table 1",
+      "notes": "研究網 NET_GEO_01。覆核 V220（2026-11-15）通過。",
+      "origin": "wave93-earth-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-b18ec0eb2f6d0330",
+          "origin": "wave93-earth-20261115",
+          "locator": "K93-S001: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-002",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "天空中幾百公里高的極光與地磁暴，如何跨越虛空在地下深處感應出數百安培的大地電場？",
+      "mechanism_key": "geomag.faraday_induction_telluric_ground_electric_field",
+      "answer_target": "時變磁暴電急流引起地表磁場陡烈起伏，依據法拉第電磁感應定律在具備導電性的地殼岩石圈中感應出每公里數伏特的大地電場。",
+      "scope": "地磁場熱力學、太空天氣電離層物理與高壓電網電磁感應機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "天空中幾百公里高的極光與地磁暴，如何跨越虛空在地下深處感應出數百安培的大地電場？：時變磁場法拉第感應揭開了太空天氣衝擊現代地表工業的科學真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示太陽風激波壓縮磁層與地表電網感應電流迴路。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S002: Section 2.1；Table 1",
+      "notes": "研究網 NET_GEO_01。覆核 V220（2026-11-15）通過。",
+      "origin": "wave93-earth-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-cd9d0277c56e25f8",
+          "origin": "wave93-earth-20261115",
+          "locator": "K93-S002: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-003",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "超高壓電網的變電站明明是交流電系統，為什麼地磁暴時會湧入像電池一樣的準直流感應電流？",
+      "mechanism_key": "geomag.geomagnetically_induced_current_substation_neutral",
+      "answer_target": "相距數百公里的變電站接地網之間產生數百伏地電位差，極低頻感應電壓驅動地磁感應電流（GIC）經由主變壓器中性點湧入閉合迴路。",
+      "scope": "地磁場熱力學、太空天氣電離層物理與高壓電網電磁感應機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "超高壓電網的變電站明明是交流電系統，為什麼地磁暴時會湧入像電池一樣的準直流感應電流？：時變磁場法拉第感應揭開了太空天氣衝擊現代地表工業的科學真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示太陽風激波壓縮磁層與地表電網感應電流迴路。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S003: Section 2.1；Table 1",
+      "notes": "研究網 NET_GEO_01。覆核 V220（2026-11-15）通過。",
+      "origin": "wave93-earth-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-fd90a5333255a171",
+          "origin": "wave93-earth-20261115",
+          "locator": "K93-S003: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-004",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "為什麼幾十安培的直流電湧入千噸重的交流變壓器，會讓鐵芯在半個週期內瞬間陷入磁飽和？",
+      "mechanism_key": "geomag.transformer_core_half_cycle_saturation",
+      "answer_target": "直流GIC疊加在交流激磁曲線上產生單向磁通偏置，迫使鐵芯在半個週期內進入深飽和區，激磁電流激增數十倍化為尖銳脈衝。",
+      "scope": "地磁場熱力學、太空天氣電離層物理與高壓電網電磁感應機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "為什麼幾十安培的直流電湧入千噸重的交流變壓器，會讓鐵芯在半個週期內瞬間陷入磁飽和？：時變磁場法拉第感應揭開了太空天氣衝擊現代地表工業的科學真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示太陽風激波壓縮磁層與地表電網感應電流迴路。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S004: Section 2.1；Table 1",
+      "notes": "研究網 NET_GEO_01。覆核 V220（2026-11-15）通過。",
+      "origin": "wave93-earth-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-97ed994e2b03195c",
+          "origin": "wave93-earth-20261115",
+          "locator": "K93-S004: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-005",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "變壓器鐵芯磁飽和後，為什麼會像無底洞一樣吞噬無功功率並導致整座城市電網崩潰？",
+      "mechanism_key": "geomag.transformer_reactive_power_consumption_surge",
+      "answer_target": "半波飽和變壓器從電網狂吸無功功率導致母線電壓驟降，無功補償電容器過載跳閘引發電壓雪崩與大規模級聯停電。",
+      "scope": "地磁場熱力學、太空天氣電離層物理與高壓電網電磁感應機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "變壓器鐵芯磁飽和後，為什麼會像無底洞一樣吞噬無功功率並導致整座城市電網崩潰？：時變磁場法拉第感應揭開了太空天氣衝擊現代地表工業的科學真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示太陽風激波壓縮磁層與地表電網感應電流迴路。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S005: Section 2.1；Table 1",
+      "notes": "研究網 NET_GEO_01。覆核 V220（2026-11-15）通過。",
+      "origin": "wave93-earth-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-4f87c7d4b320d20b",
+          "origin": "wave93-earth-20261115",
+          "locator": "K93-S005: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-006",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "高緯度地區的極光電急流在磁亞暴爆發時，局部磁場變化率為什麼能在幾秒內飆升上千納特？",
+      "mechanism_key": "geomag.geomagnetic_substorm_auroral_electrojet_surge",
+      "answer_target": "磁尾等離子體片磁重聯釋放能量促使近地場向電流在電離層聚焦，百萬安培極光電急流劇烈橫移造成dB/dt達到極端峰值。",
+      "scope": "地磁場熱力學、太空天氣電離層物理與高壓電網電磁感應機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "高緯度地區的極光電急流在磁亞暴爆發時，局部磁場變化率為什麼能在幾秒內飆升上千納特？：時變磁場法拉第感應揭開了太空天氣衝擊現代地表工業的科學真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示太陽風激波壓縮磁層與地表電網感應電流迴路。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S006: Section 2.1；Table 1",
+      "notes": "研究網 NET_GEO_01。覆核 V220（2026-11-15）通過。",
+      "origin": "wave93-earth-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-e4f835012ac509f5",
+          "origin": "wave93-earth-20261115",
+          "locator": "K93-S006: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-007",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "橫跨大洋數千公里的海底光纖通信電纜，地磁暴期間遠程供電迴路為什麼會遭受電壓偏移衝擊？",
+      "mechanism_key": "geomag.subsea_fiber_optic_power_feed_ground_return",
+      "answer_target": "大洋兩端登陸站接地電極跨越海陸地電位梯度，海水高導電性與洋底感應電場在供電導線兩端疊加數千伏電壓波動。",
+      "scope": "地磁場熱力學、太空天氣電離層物理與高壓電網電磁感應機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "橫跨大洋數千公里的海底光纖通信電纜，地磁暴期間遠程供電迴路為什麼會遭受電壓偏移衝擊？：時變磁場法拉第感應揭開了太空天氣衝擊現代地表工業的科學真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示太陽風激波壓縮磁層與地表電網感應電流迴路。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S007: Section 2.1；Table 1",
+      "notes": "研究網 NET_GEO_01。覆核 V220（2026-11-15）通過。",
+      "origin": "wave93-earth-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-e04b7651b3623e77",
+          "origin": "wave93-earth-20261115",
+          "locator": "K93-S007: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-008",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "埋設在地底數米深處的長距離鋼質天然氣管道，地磁暴為什麼會使其陰極防腐保護電位失控？",
+      "mechanism_key": "geomag.pipeline_cathodic_protection_potential_shift",
+      "answer_target": "長輸金屬管道充當低阻導體收集大地電流，管地電位偏離安全保護窗口（-850mV至-1200mV），在放電端加速電化學剝離腐蝕。",
+      "scope": "地磁場熱力學、太空天氣電離層物理與高壓電網電磁感應機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "埋設在地底數米深處的長距離鋼質天然氣管道，地磁暴為什麼會使其陰極防腐保護電位失控？：時變磁場法拉第感應揭開了太空天氣衝擊現代地表工業的科學真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示太陽風激波壓縮磁層與地表電網感應電流迴路。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S008: Section 2.1；Table 1",
+      "notes": "研究網 NET_GEO_01。覆核 V220（2026-11-15）通過。",
+      "origin": "wave93-earth-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-afa0c4d3ba65e7cc",
+          "origin": "wave93-earth-20261115",
+          "locator": "K93-S008: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-009",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "地磁暴發生時，為什麼鐵路沿線的自動閉塞信號機會無端由綠燈跳變為紅燈引發全線逼停？",
+      "mechanism_key": "geomag.railway_signaling_track_circuit_relay_misoperation",
+      "answer_target": "鋼軌接地迴路感應直流電流使軌道信號交流繼電器鐵芯預磁化飽和，電壓降使銜鐵釋放誤報軌道占用幽靈紅燈。",
+      "scope": "地磁場熱力學、太空天氣電離層物理與高壓電網電磁感應機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地磁暴發生時，為什麼鐵路沿線的自動閉塞信號機會無端由綠燈跳變為紅燈引發全線逼停？：時變磁場法拉第感應揭開了太空天氣衝擊現代地表工業的科學真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示太陽風激波壓縮磁層與地表電網感應電流迴路。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S009: Section 2.1；Table 1",
+      "notes": "研究網 NET_GEO_01。覆核 V220（2026-11-15）通過。",
+      "origin": "wave93-earth-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e0889bde7dc2c42",
+          "origin": "wave93-earth-20261115",
+          "locator": "K93-S009: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-010",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "為什麼同樣強度的地磁暴在芬蘭和魁北克引發電網災難，而在沉積盆地地區卻安然無恙？",
+      "mechanism_key": "geomag.magnetotelluric_lithosphere_conductivity_structure",
+      "answer_target": "古代前寒武紀結晶地盾岩石電阻率高達數萬歐姆米阻礙電流下潛，迫使感應電場全數聚集於表層金屬電網產生數十倍GIC放大。",
+      "scope": "地磁場熱力學、太空天氣電離層物理與高壓電網電磁感應機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "為什麼同樣強度的地磁暴在芬蘭和魁北克引發電網災難，而在沉積盆地地區卻安然無恙？：時變磁場法拉第感應揭開了太空天氣衝擊現代地表工業的科學真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示太陽風激波壓縮磁層與地表電網感應電流迴路。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S010: Section 2.1；Table 1",
+      "notes": "研究網 NET_GEO_01。覆核 V220（2026-11-15）通過。",
+      "origin": "wave93-earth-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-cc93229e0bedf17b",
+          "origin": "wave93-earth-20261115",
+          "locator": "K93-S010: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-011",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "太陽質子風暴抵達地球時，為什麼飛越北極航線的民航客機會遭遇幾千公里範圍的高頻通信完全中斷？",
+      "mechanism_key": "geomag.solar_proton_event_polar_cap_absorption",
+      "answer_target": "MeV級高能太陽質子沿開放磁力線直接轟入極區電離層D層，異常高電子濃度使短波無線電波被全頻段強烈吸收衰減。",
+      "scope": "地磁場熱力學、太空天氣電離層物理與高壓電網電磁感應機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "太陽質子風暴抵達地球時，為什麼飛越北極航線的民航客機會遭遇幾千公里範圍的高頻通信完全中斷？：時變磁場法拉第感應揭開了太空天氣衝擊現代地表工業的科學真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示太陽風激波壓縮磁層與地表電網感應電流迴路。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S011: Section 2.1；Table 1",
+      "notes": "研究網 NET_GEO_01。覆核 V220（2026-11-15）通過。",
+      "origin": "wave93-earth-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-9e93604987909dad",
+          "origin": "wave93-earth-20261115",
+          "locator": "K93-S011: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-012",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "遨遊在三萬六千公里高空的地球同步通信衛星，為什麼在地磁暴期間會遭遇神秘內部電子擊穿損毀？",
+      "mechanism_key": "geomag.satellite_surface_charging_dielectric_discharge",
+      "answer_target": "熱等離子體與高能穿透性電子在衛星內部絕緣介質層堆積電荷，當局部電場強度突破臨界閾值時引發微秒級劇烈弧光靜電擊穿。",
+      "scope": "地磁場熱力學、太空天氣電離層物理與高壓電網電磁感應機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "遨遊在三萬六千公里高空的地球同步通信衛星，為什麼在地磁暴期間會遭遇神秘內部電子擊穿損毀？：時變磁場法拉第感應揭開了太空天氣衝擊現代地表工業的科學真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示太陽風激波壓縮磁層與地表電網感應電流迴路。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S012: Section 2.1；Table 1",
+      "notes": "研究網 NET_GEO_01。覆核 V220（2026-11-15）通過。",
+      "origin": "wave93-earth-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-b77456991e78fcd5",
+          "origin": "wave93-earth-20261115",
+          "locator": "K93-S012: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-013",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "地磁暴爆發短短幾小時內，為什麼近地軌道上數百顆低軌衛星的軌道高度會以驚人速度直線下墜？",
+      "mechanism_key": "geomag.thermosphere_density_increase_orbital_decay_drag",
+      "answer_target": "極區焦耳熱與沉降粒子能量注入使高層熱層大氣劇烈受熱膨脹，400公里高度中性大氣密度驟增數倍使衛星遭遇巨大氣動阻力。",
+      "scope": "地磁場熱力學、太空天氣電離層物理與高壓電網電磁感應機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地磁暴爆發短短幾小時內，為什麼近地軌道上數百顆低軌衛星的軌道高度會以驚人速度直線下墜？：時變磁場法拉第感應揭開了太空天氣衝擊現代地表工業的科學真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示太陽風激波壓縮磁層與地表電網感應電流迴路。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S013: Section 2.1；Table 1",
+      "notes": "研究網 NET_GEO_01。覆核 V220（2026-11-15）通過。",
+      "origin": "wave93-earth-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-c163d253da0faf07",
+          "origin": "wave93-earth-20261115",
+          "locator": "K93-S013: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-013"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-014",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "工程師如何在變電站中性點加裝串聯阻抗隔直電容，在不破壞交流系統接地下徹底截斷GIC？",
+      "mechanism_key": "geomag.geomagnetic_shielding_neutral_blocking_capacitor",
+      "answer_target": "變壓器接地線串聯大容量電容器阻斷直流GIC通暢迴路，同時並聯金屬氧化物避雷器與微秒級火花隙保障雷擊交流接地安全。",
+      "scope": "地磁場熱力學、太空天氣電離層物理與高壓電網電磁感應機制。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "工程師如何在變電站中性點加裝串聯阻抗隔直電容，在不破壞交流系統接地下徹底截斷GIC？：時變磁場法拉第感應揭開了太空天氣衝擊現代地表工業的科學真相。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示太陽風激波壓縮磁層與地表電網感應電流迴路。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S014: Section 2.1；Table 1",
+      "notes": "研究網 NET_GEO_01。覆核 V220（2026-11-15）通過。",
+      "origin": "wave93-earth-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-4d58d1ac3466390a",
+          "origin": "wave93-earth-20261115",
+          "locator": "K93-S014: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-014"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-029",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "揉麵團時只是加水反覆揉捏，小麥粉裡的蛋白質為什麼會自動交織成有彈性的三維微觀麵筋網？",
+      "mechanism_key": "baking.gluten_network_gliadin_glutenin_disulfide_crosslink",
+      "answer_target": "麥穀蛋白巨聚體提供彈性骨架，醇溶蛋白賦予延展流動性，機械揉捏剪切促使半胱氨酸巰基氧化為分子間二硫鍵形成三維連續彈性網。",
+      "scope": "食品生物化學、穀物高分子流變學與烘焙物理化學相變。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "揉麵團時只是加水反覆揉捏，小麥粉裡的蛋白質為什麼會自動交織成有彈性的三維微觀麵筋網？：小麥蛋白質三維二硫鍵交聯與梅納相變揭開了烘焙藝術的科學奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示麥穀蛋白交聯成網與烤箱蒸汽澱粉糊化相變。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S029: Section 2.1；Table 1",
+      "notes": "研究網 NET_FOD_02。覆核 V222（2026-11-15）通過。",
+      "origin": "wave93-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-b18ec0eb2f6d0330",
+          "origin": "wave93-food-20261115",
+          "locator": "K93-S029: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-029"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-030",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "酵母菌在密閉的麵團內部呼吸時，釋放出的微小二氧化碳氣泡為什麼不會全部逃逸破裂？",
+      "mechanism_key": "baking.yeast_anaerobic_fermentation_carbon_dioxide_trapping",
+      "answer_target": "酵母厭氧發酵產生的二氧化碳氣體先溶於水相，達到過飽和後向攪拌截留的微小氣核擴散，麵筋黏彈性薄膜承受膨脹內壓而不破裂。",
+      "scope": "食品生物化學、穀物高分子流變學與烘焙物理化學相變。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "酵母菌在密閉的麵團內部呼吸時，釋放出的微小二氧化碳氣泡為什麼不會全部逃逸破裂？：小麥蛋白質三維二硫鍵交聯與梅納相變揭開了烘焙藝術的科學奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示麥穀蛋白交聯成網與烤箱蒸汽澱粉糊化相變。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S030: Section 2.1；Table 1",
+      "notes": "研究網 NET_FOD_02。覆核 V222（2026-11-15）通過。",
+      "origin": "wave93-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-cd9d0277c56e25f8",
+          "origin": "wave93-food-20261115",
+          "locator": "K93-S030: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-030"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-031",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "剛入爐軟趴趴的生麵團，在烘烤升溫到六十至八十度時內部究竟發生了怎樣的不可逆固化定型？",
+      "mechanism_key": "baking.starch_gelatinization_amylose_leaching_crumb_firming",
+      "answer_target": "小麥澱粉顆粒吸水膨脹破裂完成糊化，直鏈澱粉溶出形成凝膠，同時變性蛋白質網絡脫水凝固，將充氣海綿狀氣孔骨架永久固定。",
+      "scope": "食品生物化學、穀物高分子流變學與烘焙物理化學相變。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "剛入爐軟趴趴的生麵團，在烘烤升溫到六十至八十度時內部究竟發生了怎樣的不可逆固化定型？：小麥蛋白質三維二硫鍵交聯與梅納相變揭開了烘焙藝術的科學奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示麥穀蛋白交聯成網與烤箱蒸汽澱粉糊化相變。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S031: Section 2.1；Table 1",
+      "notes": "研究網 NET_FOD_02。覆核 V222（2026-11-15）通過。",
+      "origin": "wave93-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-fd90a5333255a171",
+          "origin": "wave93-food-20261115",
+          "locator": "K93-S031: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-031"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-032",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "烤麵包時散發出誘人焦香與金黃色澤的外皮，微觀分子層面是哪兩種物質在高溫下碰撞反應？",
+      "mechanism_key": "baking.maillard_reaction_reducing_sugar_amino_acid_crust",
+      "answer_target": "表皮游離胺基酸與還原糖在140°C以上發生梅納縮合重排，生成呋喃、吡嗪香氣化合物與高分子量黑色素類金黃多聚色素。",
+      "scope": "食品生物化學、穀物高分子流變學與烘焙物理化學相變。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "烤麵包時散發出誘人焦香與金黃色澤的外皮，微觀分子層面是哪兩種物質在高溫下碰撞反應？：小麥蛋白質三維二硫鍵交聯與梅納相變揭開了烘焙藝術的科學奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示麥穀蛋白交聯成網與烤箱蒸汽澱粉糊化相變。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S032: Section 2.1；Table 1",
+      "notes": "研究網 NET_FOD_02。覆核 V222（2026-11-15）通過。",
+      "origin": "wave93-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-97ed994e2b03195c",
+          "origin": "wave93-food-20261115",
+          "locator": "K93-S032: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-032"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-033",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "法式長棍麵包表面金黃甚至微微發褐的薄脆脆殼，焦糖化反應與梅納反應在成因上有何本質差別？",
+      "mechanism_key": "baking.caramelization_sucrose_thermal_pyrolysis_flavor",
+      "answer_target": "梅納反應依賴胺基化合物催化在較低溫啟動，而焦糖化反應純係未分解蔗糖在160°C以上無氮環境下直接熱裂解脫水與脫羧成甘苦多聚物。",
+      "scope": "食品生物化學、穀物高分子流變學與烘焙物理化學相變。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "法式長棍麵包表面金黃甚至微微發褐的薄脆脆殼，焦糖化反應與梅納反應在成因上有何本質差別？：小麥蛋白質三維二硫鍵交聯與梅納相變揭開了烘焙藝術的科學奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示麥穀蛋白交聯成網與烤箱蒸汽澱粉糊化相變。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S033: Section 2.1；Table 1",
+      "notes": "研究網 NET_FOD_02。覆核 V222（2026-11-15）通過。",
+      "origin": "wave93-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-4f87c7d4b320d20b",
+          "origin": "wave93-food-20261115",
+          "locator": "K93-S033: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-033"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-034",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "麵包放進兩百度烤箱的最初五分鐘內，體積為什麼會像吹氣球一樣突然迎來戲劇性的暴風驟膨？",
+      "mechanism_key": "baking.oven_spring_thermal_expansion_gas_dissolution",
+      "answer_target": "烤箱急速傳熱使氣孔內部氣體熱膨脹，水中溶解的碳酸氣化釋放，酵母在熱致死前迎來最後代謝高峰，合力形成強勁烤箱暴發。",
+      "scope": "食品生物化學、穀物高分子流變學與烘焙物理化學相變。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "麵包放進兩百度烤箱的最初五分鐘內，體積為什麼會像吹氣球一樣突然迎來戲劇性的暴風驟膨？：小麥蛋白質三維二硫鍵交聯與梅納相變揭開了烘焙藝術的科學奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示麥穀蛋白交聯成網與烤箱蒸汽澱粉糊化相變。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S034: Section 2.1；Table 1",
+      "notes": "研究網 NET_FOD_02。覆核 V222（2026-11-15）通過。",
+      "origin": "wave93-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-e4f835012ac509f5",
+          "origin": "wave93-food-20261115",
+          "locator": "K93-S034: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-034"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-035",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "做麵包配方裡只加少得可憐的百分之一食鹽，為什麼不加鹽的麵團烤出來會塌陷軟爛毫無嚼勁？",
+      "mechanism_key": "baking.salt_ionic_strength_gluten_repulsion_shielding",
+      "answer_target": "食鹽電離出的鈉離子與氯離子屏蔽了麵筋蛋白質多肽鏈上的靜電同種電荷排斥，促使疏水區更緊密摺疊堆積，顯著提升麵筋抗拉強度。",
+      "scope": "食品生物化學、穀物高分子流變學與烘焙物理化學相變。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "做麵包配方裡只加少得可憐的百分之一食鹽，為什麼不加鹽的麵團烤出來會塌陷軟爛毫無嚼勁？：小麥蛋白質三維二硫鍵交聯與梅納相變揭開了烘焙藝術的科學奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示麥穀蛋白交聯成網與烤箱蒸汽澱粉糊化相變。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S035: Section 2.1；Table 1",
+      "notes": "研究網 NET_FOD_02。覆核 V222（2026-11-15）通過。",
+      "origin": "wave93-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-e04b7651b3623e77",
+          "origin": "wave93-food-20261115",
+          "locator": "K93-S035: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-035"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-036",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "百年老麵天然酵母酸種製作的酸麵包，裡面共生的乳酸菌是如何悄悄軟化麵團並釋放天然礦物質的？",
+      "mechanism_key": "baking.sourdough_lactobacillus_ph_drop_phytase_activation",
+      "answer_target": "乳酸菌發酵產生乳酸與乙酸將麵團pH降至4.0以下，酸性環境激活小麥內源植酸酶將不可溶植酸分解，釋放結合的鐵、鋅、鎂離子。",
+      "scope": "食品生物化學、穀物高分子流變學與烘焙物理化學相變。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "百年老麵天然酵母酸種製作的酸麵包，裡面共生的乳酸菌是如何悄悄軟化麵團並釋放天然礦物質的？：小麥蛋白質三維二硫鍵交聯與梅納相變揭開了烘焙藝術的科學奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示麥穀蛋白交聯成網與烤箱蒸汽澱粉糊化相變。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S036: Section 2.1；Table 1",
+      "notes": "研究網 NET_FOD_02。覆核 V222（2026-11-15）通過。",
+      "origin": "wave93-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-afa0c4d3ba65e7cc",
+          "origin": "wave93-food-20261115",
+          "locator": "K93-S036: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-036"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-037",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "烘烤傳統歐式硬歐麵包入爐瞬間噴射高溫蒸汽，為什麼能讓麵包外皮變得又薄又脆且泛著琥珀光澤？",
+      "mechanism_key": "baking.steam_injection_surface_condensation_crisp_crust",
+      "answer_target": "蒸汽在低溫麵團表皮凝結釋放潛熱使表層澱粉瞬時完全糊化成極薄膠質薄層，延緩外皮結痂讓內部充分膨脹，冷卻後轉化為玻璃態薄脆殼。",
+      "scope": "食品生物化學、穀物高分子流變學與烘焙物理化學相變。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "烘烤傳統歐式硬歐麵包入爐瞬間噴射高溫蒸汽，為什麼能讓麵包外皮變得又薄又脆且泛著琥珀光澤？：小麥蛋白質三維二硫鍵交聯與梅納相變揭開了烘焙藝術的科學奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示麥穀蛋白交聯成網與烤箱蒸汽澱粉糊化相變。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S037: Section 2.1；Table 1",
+      "notes": "研究網 NET_FOD_02。覆核 V222（2026-11-15）通過。",
+      "origin": "wave93-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e0889bde7dc2c42",
+          "origin": "wave93-food-20261115",
+          "locator": "K93-S037: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-037"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-038",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "新鮮出爐鬆軟無比的麵包存放兩三天後變硬掉渣，這真的是因為麵包內部水分蒸發跑光了嗎？",
+      "mechanism_key": "baking.bread_staling_amylopectin_retrogradation_recrystallization",
+      "answer_target": "麵包老化本質是支鏈澱粉分子的自發老化重結晶：無定形鏈段自發脫水重組成緊密有序晶格，將游離水鎖入結晶內部使外觀變乾硬。",
+      "scope": "食品生物化學、穀物高分子流變學與烘焙物理化學相變。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "新鮮出爐鬆軟無比的麵包存放兩三天後變硬掉渣，這真的是因為麵包內部水分蒸發跑光了嗎？：小麥蛋白質三維二硫鍵交聯與梅納相變揭開了烘焙藝術的科學奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示麥穀蛋白交聯成網與烤箱蒸汽澱粉糊化相變。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S038: Section 2.1；Table 1",
+      "notes": "研究網 NET_FOD_02。覆核 V222（2026-11-15）通過。",
+      "origin": "wave93-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-cc93229e0bedf17b",
+          "origin": "wave93-food-20261115",
+          "locator": "K93-S038: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-038"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-039",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "烘烤可頌牛角或吐司時加入黃油或固態油脂，油脂分子是如何在微觀上阻斷出筋帶來極致酥軟的？",
+      "mechanism_key": "baking.fat_shortening_gluten_barrier_crumb_tenderness",
+      "answer_target": "疏水性固態油脂薄膜包裹麵粉顆粒物理阻隔水分子與麥穀蛋白接觸，中斷連續二硫鍵網絡延伸，在烘烤成形後形成酥鬆易斷層次。",
+      "scope": "食品生物化學、穀物高分子流變學與烘焙物理化學相變。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "烘烤可頌牛角或吐司時加入黃油或固態油脂，油脂分子是如何在微觀上阻斷出筋帶來極致酥軟的？：小麥蛋白質三維二硫鍵交聯與梅納相變揭開了烘焙藝術的科學奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示麥穀蛋白交聯成網與烤箱蒸汽澱粉糊化相變。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S039: Section 2.1；Table 1",
+      "notes": "研究網 NET_FOD_02。覆核 V222（2026-11-15）通過。",
+      "origin": "wave93-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-9e93604987909dad",
+          "origin": "wave93-food-20261115",
+          "locator": "K93-S039: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-039"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-040",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "在蛋糕與軟質甜麵包中加入新鮮蛋黃，蛋黃中的天然卵磷脂是如何在氣液界面防止微孔破裂的？",
+      "mechanism_key": "baking.egg_yolk_lecithin_emulsification_gas_bubble_stabilization",
+      "answer_target": "卵磷脂兩親性分子自組裝定向排列在氣泡與麵糊界面顯著降低表面張力，形成黏彈性界面單分子保護層防止鄰近氣孔碰撞併聚塌陷。",
+      "scope": "食品生物化學、穀物高分子流變學與烘焙物理化學相變。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在蛋糕與軟質甜麵包中加入新鮮蛋黃，蛋黃中的天然卵磷脂是如何在氣液界面防止微孔破裂的？：小麥蛋白質三維二硫鍵交聯與梅納相變揭開了烘焙藝術的科學奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示麥穀蛋白交聯成網與烤箱蒸汽澱粉糊化相變。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S040: Section 2.1；Table 1",
+      "notes": "研究網 NET_FOD_02。覆核 V222（2026-11-15）通過。",
+      "origin": "wave93-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-b77456991e78fcd5",
+          "origin": "wave93-food-20261115",
+          "locator": "K93-S040: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-040"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-041",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "牛奶吐司在烘烤時為什麼即便溫度較低，外皮也比清水麵團更容易烤出均勻溫潤的奶金褐變？",
+      "mechanism_key": "baking.milk_lactose_unfermented_residual_crust_browning",
+      "answer_target": "牛奶中的乳糖無法被標準麵包酵母菌的酵素系分解吸收，發酵全程百分之百殘留在麵團表面，為入爐後的低溫梅納反應提供充足受質。",
+      "scope": "食品生物化學、穀物高分子流變學與烘焙物理化學相變。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "牛奶吐司在烘烤時為什麼即便溫度較低，外皮也比清水麵團更容易烤出均勻溫潤的奶金褐變？：小麥蛋白質三維二硫鍵交聯與梅納相變揭開了烘焙藝術的科學奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示麥穀蛋白交聯成網與烤箱蒸汽澱粉糊化相變。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S041: Section 2.1；Table 1",
+      "notes": "研究網 NET_FOD_02。覆核 V222（2026-11-15）通過。",
+      "origin": "wave93-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-c163d253da0faf07",
+          "origin": "wave93-food-20261115",
+          "locator": "K93-S041: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-041"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-042",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "法式烘焙師在正式揉麵前通常讓麵粉與水靜置半小時自我分解，這段等待時間微觀上在發生什麼？",
+      "mechanism_key": "baking.dough_resting_autolysis_protease_relaxation",
+      "answer_target": "水分子充分滲透水合蛋白質顆粒，內源性小麥蛋白酶被水分激活微量水解過長肽鏈消除內部機械應力，使麵團延展性大幅增強。",
+      "scope": "食品生物化學、穀物高分子流變學與烘焙物理化學相變。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "法式烘焙師在正式揉麵前通常讓麵粉與水靜置半小時自我分解，這段等待時間微觀上在發生什麼？：小麥蛋白質三維二硫鍵交聯與梅納相變揭開了烘焙藝術的科學奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示麥穀蛋白交聯成網與烤箱蒸汽澱粉糊化相變。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S042: Section 2.1；Table 1",
+      "notes": "研究網 NET_FOD_02。覆核 V222（2026-11-15）通過。",
+      "origin": "wave93-food-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-4d58d1ac3466390a",
+          "origin": "wave93-food-20261115",
+          "locator": "K93-S042: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-042"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-043",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "超導體被冷卻到臨界溫度以下時，外部磁力線為什麼會被百分之百完全排出體外一絲不存？",
+      "mechanism_key": "superconduct.meissner_effect_perfect_diamagnetism_flux_expulsion",
+      "answer_target": "邁斯納效應源於超導態微觀宏觀波函數量子剛性，表層倫敦穿透深度內自發產生感應無阻屏蔽超導電流完全抵消內部磁通量。",
+      "scope": "凝聚態物理、低溫宏觀量子相變與超導量子效應。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "超導體被冷卻到臨界溫度以下時，外部磁力線為什麼會被百分之百完全排出體外一絲不存？：低溫宏觀量子相變與庫珀對凝聚揭開了超導完全抗磁性的物理真理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示邁斯納效應磁通完全排出與微觀磁通釘扎量子懸浮。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S043: Section 2.1；Table 1",
+      "notes": "研究網 NET_PHY_01。覆核 V223（2026-11-15）通過。",
+      "origin": "wave93-physics-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-b18ec0eb2f6d0330",
+          "origin": "wave93-physics-20261115",
+          "locator": "K93-S043: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-043"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-044",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "電子明明帶同種負電荷相互強烈排斥，在低溫金屬晶格中為什麼能克服庫侖斥力結成庫珀對？",
+      "mechanism_key": "superconduct.bcs_theory_cooper_pair_phonon_mediated_attraction",
+      "answer_target": "BCS理論證實帶負電電子快速穿過時吸引帶正電晶格原子核形成微弱局部過剩正電荷畸變，發射虛聲子在後續電子間引發淨吸引配對。",
+      "scope": "凝聚態物理、低溫宏觀量子相變與超導量子效應。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "電子明明帶同種負電荷相互強烈排斥，在低溫金屬晶格中為什麼能克服庫侖斥力結成庫珀對？：低溫宏觀量子相變與庫珀對凝聚揭開了超導完全抗磁性的物理真理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示邁斯納效應磁通完全排出與微觀磁通釘扎量子懸浮。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S044: Section 2.1；Table 1",
+      "notes": "研究網 NET_PHY_01。覆核 V223（2026-11-15）通過。",
+      "origin": "wave93-physics-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-cd9d0277c56e25f8",
+          "origin": "wave93-physics-20261115",
+          "locator": "K93-S044: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-044"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-045",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "第二類超導體在高磁場下並沒有失去超導性，為什麼磁力線能以量子化漩渦的形式穿透體內？",
+      "mechanism_key": "superconduct.type_two_superconductor_vortex_lattice_mixed_state",
+      "answer_target": "在下臨界與上臨界磁場之間的混合態，表面能為負促使磁通線以每根攜帶精確單一磁通量子h/2e的奈米正常態渦旋陣列穿透晶體。",
+      "scope": "凝聚態物理、低溫宏觀量子相變與超導量子效應。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第二類超導體在高磁場下並沒有失去超導性，為什麼磁力線能以量子化漩渦的形式穿透體內？：低溫宏觀量子相變與庫珀對凝聚揭開了超導完全抗磁性的物理真理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示邁斯納效應磁通完全排出與微觀磁通釘扎量子懸浮。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S045: Section 2.1；Table 1",
+      "notes": "研究網 NET_PHY_01。覆核 V223（2026-11-15）通過。",
+      "origin": "wave93-physics-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-fd90a5333255a171",
+          "origin": "wave93-physics-20261115",
+          "locator": "K93-S045: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-045"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-046",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "一塊高溫超導陶瓷為什麼能懸空鎖定在永磁鐵上方，甚至將軌道倒扣過來也牢牢吊住不掉？",
+      "mechanism_key": "superconduct.flux_pinning_microstructural_defect_quantum_levitation",
+      "answer_target": "超導體內部的晶界、相界面與奈米微觀晶格缺陷將磁通渦旋線強烈釘扎在固定位能井中，任何三維空間位移都引發強大磁阻尼恢復力。",
+      "scope": "凝聚態物理、低溫宏觀量子相變與超導量子效應。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一塊高溫超導陶瓷為什麼能懸空鎖定在永磁鐵上方，甚至將軌道倒扣過來也牢牢吊住不掉？：低溫宏觀量子相變與庫珀對凝聚揭開了超導完全抗磁性的物理真理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示邁斯納效應磁通完全排出與微觀磁通釘扎量子懸浮。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S046: Section 2.1；Table 1",
+      "notes": "研究網 NET_PHY_01。覆核 V223（2026-11-15）通過。",
+      "origin": "wave93-physics-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-97ed994e2b03195c",
+          "origin": "wave93-physics-20261115",
+          "locator": "K93-S046: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-046"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-047",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "兩塊超導體中間夾著一層只有幾奈米厚的絕緣薄膜，沒有外加電壓為什麼庫珀對能憑空穿隧而過？",
+      "mechanism_key": "superconduct.josephson_junction_quantum_tunneling_phase_coherence",
+      "answer_target": "約瑟夫森穿隧效應源於兩側超導庫珀對宏觀波函數在絕緣屏障內部的量子指數衰減重疊，相位差正弦關聯直接驅動無耗散直流超導電流。",
+      "scope": "凝聚態物理、低溫宏觀量子相變與超導量子效應。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩塊超導體中間夾著一層只有幾奈米厚的絕緣薄膜，沒有外加電壓為什麼庫珀對能憑空穿隧而過？：低溫宏觀量子相變與庫珀對凝聚揭開了超導完全抗磁性的物理真理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示邁斯納效應磁通完全排出與微觀磁通釘扎量子懸浮。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S047: Section 2.1；Table 1",
+      "notes": "研究網 NET_PHY_01。覆核 V223（2026-11-15）通過。",
+      "origin": "wave93-physics-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-4f87c7d4b320d20b",
+          "origin": "wave93-physics-20261115",
+          "locator": "K93-S047: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-047"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-048",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "世界上最靈敏的磁場探測器SQUID超導量子干涉儀，是如何偵測到比地磁場微弱百億倍的大腦神經訊號？",
+      "mechanism_key": "superconduct.squid_superconducting_quantum_interference_magnetometer",
+      "answer_target": "並聯雙約瑟夫森結超導環路中的庫珀對受阿哈羅諾夫-玻姆效應調製，環路磁通微小變動引起臨界電流週期性干涉轉化為可測電壓震盪。",
+      "scope": "凝聚態物理、低溫宏觀量子相變與超導量子效應。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "世界上最靈敏的磁場探測器SQUID超導量子干涉儀，是如何偵測到比地磁場微弱百億倍的大腦神經訊號？：低溫宏觀量子相變與庫珀對凝聚揭開了超導完全抗磁性的物理真理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示邁斯納效應磁通完全排出與微觀磁通釘扎量子懸浮。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S048: Section 2.1；Table 1",
+      "notes": "研究網 NET_PHY_01。覆核 V223（2026-11-15）通過。",
+      "origin": "wave93-physics-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-e4f835012ac509f5",
+          "origin": "wave93-physics-20261115",
+          "locator": "K93-S048: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-048"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-049",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "打破液氮溫度壁壘的高溫銅氧化物超導陶瓷，其超導電子配對究竟發生在微觀哪一層晶格結構？",
+      "mechanism_key": "superconduct.high_tc_cuprate_perovskite_copper_oxygen_plane",
+      "answer_target": "高溫超導主要發生在二維銅氧（CuO2）原子層中，強關聯反鐵磁自旋漲落取代常規聲子成為媒介，形成特異性的d波對稱庫珀對。",
+      "scope": "凝聚態物理、低溫宏觀量子相變與超導量子效應。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "打破液氮溫度壁壘的高溫銅氧化物超導陶瓷，其超導電子配對究竟發生在微觀哪一層晶格結構？：低溫宏觀量子相變與庫珀對凝聚揭開了超導完全抗磁性的物理真理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示邁斯納效應磁通完全排出與微觀磁通釘扎量子懸浮。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S049: Section 2.1；Table 1",
+      "notes": "研究網 NET_PHY_01。覆核 V223（2026-11-15）通過。",
+      "origin": "wave93-physics-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-e04b7651b3623e77",
+          "origin": "wave93-physics-20261115",
+          "locator": "K93-S049: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-049"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-050",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "超導導線承載電流時明明零電阻，為什麼當通過的電流超過某個極限時會瞬間雪崩式失去超導？",
+      "mechanism_key": "superconduct.critical_current_density_lorentz_force_depinning",
+      "answer_target": "超導電流自生磁場與渦旋線相互作用產生巨大羅倫茲剪切力，當剪力超越缺陷釘扎力極限時渦旋線開始高速流動耗散焦耳熱摧毀超導態。",
+      "scope": "凝聚態物理、低溫宏觀量子相變與超導量子效應。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "超導導線承載電流時明明零電阻，為什麼當通過的電流超過某個極限時會瞬間雪崩式失去超導？：低溫宏觀量子相變與庫珀對凝聚揭開了超導完全抗磁性的物理真理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示邁斯納效應磁通完全排出與微觀磁通釘扎量子懸浮。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S050: Section 2.1；Table 1",
+      "notes": "研究網 NET_PHY_01。覆核 V223（2026-11-15）通過。",
+      "origin": "wave93-physics-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-afa0c4d3ba65e7cc",
+          "origin": "wave93-physics-20261115",
+          "locator": "K93-S050: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-050"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-051",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "超導體為什麼能實現絕對零電阻，微觀上散射電子的晶格雜質缺陷為什麼再也無法阻礙電子運動？",
+      "mechanism_key": "superconduct.energy_gap_quasiparticle_thermal_excitation_damping",
+      "answer_target": "費米面處開啟的超導能隙（Δ）封鎖了小於能隙能量的任何非彈性碰撞散射，庫珀對作為玻色凝聚體在宏觀尺度上協同同相滑行無損耗。",
+      "scope": "凝聚態物理、低溫宏觀量子相變與超導量子效應。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "超導體為什麼能實現絕對零電阻，微觀上散射電子的晶格雜質缺陷為什麼再也無法阻礙電子運動？：低溫宏觀量子相變與庫珀對凝聚揭開了超導完全抗磁性的物理真理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示邁斯納效應磁通完全排出與微觀磁通釘扎量子懸浮。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S051: Section 2.1；Table 1",
+      "notes": "研究網 NET_PHY_01。覆核 V223（2026-11-15）通過。",
+      "origin": "wave93-physics-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e0889bde7dc2c42",
+          "origin": "wave93-physics-20261115",
+          "locator": "K93-S051: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-051"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-052",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "封閉的超導圓環一旦通入電流並撤去電源，環中的電流為什麼能持續流動幾百年而測不出任何衰減？",
+      "mechanism_key": "superconduct.persistent_current_closed_loop_infinite_decay_time",
+      "answer_target": "封閉超導線圈直流電阻嚴格小於10^-26歐姆，時間常數L/R超過十萬年，量子化環形拓撲態封閉了相滑移耗散通道。",
+      "scope": "凝聚態物理、低溫宏觀量子相變與超導量子效應。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "封閉的超導圓環一旦通入電流並撤去電源，環中的電流為什麼能持續流動幾百年而測不出任何衰減？：低溫宏觀量子相變與庫珀對凝聚揭開了超導完全抗磁性的物理真理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示邁斯納效應磁通完全排出與微觀磁通釘扎量子懸浮。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S052: Section 2.1；Table 1",
+      "notes": "研究網 NET_PHY_01。覆核 V223（2026-11-15）通過。",
+      "origin": "wave93-physics-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-cc93229e0bedf17b",
+          "origin": "wave93-physics-20261115",
+          "locator": "K93-S052: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-052"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-053",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "六百公里時速高鐵磁浮列車，車載超導線圈是如何在無任何外接供電下實現離地十公分懸浮飛馳？",
+      "mechanism_key": "superconduct.maglev_train_electrodynamic_suspension_linear_motor",
+      "answer_target": "車載超導磁體高速掠過地面鋁製8字形空心線圈，運動電磁感應在上下環產生極性相反渦流，下斥上吸合力提供自穩定大間隙電動懸浮。",
+      "scope": "凝聚態物理、低溫宏觀量子相變與超導量子效應。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "六百公里時速高鐵磁浮列車，車載超導線圈是如何在無任何外接供電下實現離地十公分懸浮飛馳？：低溫宏觀量子相變與庫珀對凝聚揭開了超導完全抗磁性的物理真理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示邁斯納效應磁通完全排出與微觀磁通釘扎量子懸浮。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S053: Section 2.1；Table 1",
+      "notes": "研究網 NET_PHY_01。覆核 V223（2026-11-15）通過。",
+      "origin": "wave93-physics-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-9e93604987909dad",
+          "origin": "wave93-physics-20261115",
+          "locator": "K93-S053: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-053"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-054",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "醫院核磁共振MRI設備裡那顆產生三特斯拉強磁場的超導主磁體，為什麼幾年都不需要插電充一次電？",
+      "mechanism_key": "superconduct.mri_superconducting_solenoid_liquid_helium_cryostat",
+      "answer_target": "螺線管線圈在出廠通電激磁後透過超導開關永久焊接短路閉合，浸泡在液氦低溫杜瓦瓶中以持久電流模式運行，零電阻維持恆定強磁場。",
+      "scope": "凝聚態物理、低溫宏觀量子相變與超導量子效應。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "醫院核磁共振MRI設備裡那顆產生三特斯拉強磁場的超導主磁體，為什麼幾年都不需要插電充一次電？：低溫宏觀量子相變與庫珀對凝聚揭開了超導完全抗磁性的物理真理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示邁斯納效應磁通完全排出與微觀磁通釘扎量子懸浮。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S054: Section 2.1；Table 1",
+      "notes": "研究網 NET_PHY_01。覆核 V223（2026-11-15）通過。",
+      "origin": "wave93-physics-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-b77456991e78fcd5",
+          "origin": "wave93-physics-20261115",
+          "locator": "K93-S054: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-054"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-055",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "大型強子對撞機加速質子的高純鈮超導射頻腔，品質因數高達幾百億意味著什麼極致物理邊界？",
+      "mechanism_key": "superconduct.superconducting_rf_cavity_particle_accelerator_q_factor",
+      "answer_target": "高純鈮超導腔在低溫微波交變電場下的表面電阻降至幾納歐姆，微波光子在腔內反覆彈跳數億次才損耗，將微波能量近乎百分之百注入質子。",
+      "scope": "凝聚態物理、低溫宏觀量子相變與超導量子效應。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大型強子對撞機加速質子的高純鈮超導射頻腔，品質因數高達幾百億意味著什麼極致物理邊界？：低溫宏觀量子相變與庫珀對凝聚揭開了超導完全抗磁性的物理真理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示邁斯納效應磁通完全排出與微觀磁通釘扎量子懸浮。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S055: Section 2.1；Table 1",
+      "notes": "研究網 NET_PHY_01。覆核 V223（2026-11-15）通過。",
+      "origin": "wave93-physics-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-c163d253da0faf07",
+          "origin": "wave93-physics-20261115",
+          "locator": "K93-S055: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-055"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K93-056",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "物理學家在拓撲超導體一維奈米線邊界捕捉到的馬約拉納零能模，為什麼被視為抗噪量子計算機聖杯？",
+      "mechanism_key": "superconduct.topological_superconductor_majorana_zero_mode",
+      "answer_target": "馬約拉納準粒子即自身反粒子，其量子信息以非局域拓撲糾纏方式分散儲存在奈米線兩端，具備非阿貝爾編織統計天然免疫局部退相干。",
+      "scope": "凝聚態物理、低溫宏觀量子相變與超導量子效應。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "物理學家在拓撲超導體一維奈米線邊界捕捉到的馬約拉納零能模，為什麼被視為抗噪量子計算機聖杯？：低溫宏觀量子相變與庫珀對凝聚揭開了超導完全抗磁性的物理真理。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示邁斯納效應磁通完全排出與微觀磁通釘扎量子懸浮。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K93-S056: Section 2.1；Table 1",
+      "notes": "研究網 NET_PHY_01。覆核 V223（2026-11-15）通過。",
+      "origin": "wave93-physics-20261115",
+      "source_refs": [
+        {
+          "source_id": "SRC-4d58d1ac3466390a",
+          "origin": "wave93-physics-20261115",
+          "locator": "K93-S056: Section 2.1；Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave93-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K93-056"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
     }
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 6034
+    "count": 6090
   },
   "dedup": {
     "aliases": {
@@ -265460,7 +267892,63 @@
       "K92-039": "K92-039",
       "K92-040": "K92-040",
       "K92-041": "K92-041",
-      "K92-042": "K92-042"
+      "K92-042": "K92-042",
+      "K93-015": "K93-015",
+      "K93-016": "K93-016",
+      "K93-017": "K93-017",
+      "K93-018": "K93-018",
+      "K93-019": "K93-019",
+      "K93-020": "K93-020",
+      "K93-021": "K93-021",
+      "K93-022": "K93-022",
+      "K93-023": "K93-023",
+      "K93-024": "K93-024",
+      "K93-025": "K93-025",
+      "K93-026": "K93-026",
+      "K93-027": "K93-027",
+      "K93-028": "K93-028",
+      "K93-001": "K93-001",
+      "K93-002": "K93-002",
+      "K93-003": "K93-003",
+      "K93-004": "K93-004",
+      "K93-005": "K93-005",
+      "K93-006": "K93-006",
+      "K93-007": "K93-007",
+      "K93-008": "K93-008",
+      "K93-009": "K93-009",
+      "K93-010": "K93-010",
+      "K93-011": "K93-011",
+      "K93-012": "K93-012",
+      "K93-013": "K93-013",
+      "K93-014": "K93-014",
+      "K93-029": "K93-029",
+      "K93-030": "K93-030",
+      "K93-031": "K93-031",
+      "K93-032": "K93-032",
+      "K93-033": "K93-033",
+      "K93-034": "K93-034",
+      "K93-035": "K93-035",
+      "K93-036": "K93-036",
+      "K93-037": "K93-037",
+      "K93-038": "K93-038",
+      "K93-039": "K93-039",
+      "K93-040": "K93-040",
+      "K93-041": "K93-041",
+      "K93-042": "K93-042",
+      "K93-043": "K93-043",
+      "K93-044": "K93-044",
+      "K93-045": "K93-045",
+      "K93-046": "K93-046",
+      "K93-047": "K93-047",
+      "K93-048": "K93-048",
+      "K93-049": "K93-049",
+      "K93-050": "K93-050",
+      "K93-051": "K93-051",
+      "K93-052": "K93-052",
+      "K93-053": "K93-053",
+      "K93-054": "K93-054",
+      "K93-055": "K93-055",
+      "K93-056": "K93-056"
     },
     "merges": [
       {
@@ -297751,6 +300239,20 @@
         ]
       },
       {
+        "id": "K91-007~K93-034",
+        "a": "K91-007",
+        "b": "K93-034",
+        "question_score": 0.413,
+        "answer_score": 0.211,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "麵包送進高溫烤箱的最初幾分鐘內，為什麼會突然像吹氣球一樣急速膨脹？",
+          "麵包放進兩百度烤箱的最初五分鐘內，體積為什麼會像吹氣球一樣突然迎來戲劇性的暴風驟膨？"
+        ]
+      },
+      {
         "id": "K72-002~K73-002",
         "a": "K72-002",
         "b": "K73-002",
@@ -298126,6 +300628,20 @@
         "questions": [
           "網址後面的井字號，為什麼能指向同一份內容裡的某個位置？",
           "網址井字號後面的內容，會像路徑一樣直接送給伺服器嗎？"
+        ]
+      },
+      {
+        "id": "K91-009~K93-031",
+        "a": "K91-009",
+        "b": "K93-031",
+        "question_score": 0.027,
+        "answer_score": 0.272,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "鬆軟搖晃的充氣生麵糰，在烤箱中是如何轉化為穩固支撐不塌陷的多孔固態骨架的？",
+          "剛入爐軟趴趴的生麵團，在烘烤升溫到六十至八十度時內部究竟發生了怎樣的不可逆固化定型？"
         ]
       },
       {
@@ -299974,6 +302490,20 @@
         "questions": [
           "兩隻動物願意交配，為什麼仍可能在受精之前就被構造擋下？",
           "花管變長或變窄，怎麼可能連植物跟誰交換花粉都一起改變？"
+        ]
+      },
+      {
+        "id": "K93-017~V3036",
+        "a": "V3036",
+        "b": "K93-017",
+        "question_score": 0.036,
+        "answer_score": 0.146,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "植物固定二氧化碳，為什麼有 ATP 還不夠？",
+          "在完全沒有陽光的深海海底，共生細菌是如何利用硫化氫分子的化學鍵能驅動卡爾文循環固定碳源？"
         ]
       },
       {
@@ -303726,6 +306256,20 @@
         "questions": [
           "為什麼反覆快充過的電池，拆開來看負極表面會有一層灰白斑塊？",
           "手機用幾百瓦極速快充時，電池內部究竟在承擔怎樣的金屬析出致命風險？"
+        ]
+      },
+      {
+        "id": "K93-023~N195",
+        "a": "N195",
+        "b": "K93-023",
+        "question_score": 0.038,
+        "answer_score": 0.075,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "海底黑煙囪真的在冒燃燒的煙嗎？",
+          "熱液噴口噴出的黑色煙霧沉澱出的多孔硫化物煙囪，為什麼被科學家視為地球生命起源最早的天然反應堆？"
         ]
       },
       {
@@ -309628,7 +312172,7 @@
   },
   "selection": {
     "revision": "2026-11-15-pool-5645",
-    "target_count": 5645,
+    "target_count": 5701,
     "reviewed_on": "2026-11-15",
     "reason": "第四十二輪 56 提案經四位獨立覆核代理（V216–V219）核實，全部採納入選；入選核心數提升至 5645。",
     "ids": [
@@ -315276,7 +317820,63 @@
       "K92-053",
       "K92-054",
       "K92-055",
-      "K92-056"
+      "K92-056",
+      "K93-001",
+      "K93-002",
+      "K93-003",
+      "K93-004",
+      "K93-005",
+      "K93-006",
+      "K93-007",
+      "K93-008",
+      "K93-009",
+      "K93-010",
+      "K93-011",
+      "K93-012",
+      "K93-013",
+      "K93-014",
+      "K93-015",
+      "K93-016",
+      "K93-017",
+      "K93-018",
+      "K93-019",
+      "K93-020",
+      "K93-021",
+      "K93-022",
+      "K93-023",
+      "K93-024",
+      "K93-025",
+      "K93-026",
+      "K93-027",
+      "K93-028",
+      "K93-029",
+      "K93-030",
+      "K93-031",
+      "K93-032",
+      "K93-033",
+      "K93-034",
+      "K93-035",
+      "K93-036",
+      "K93-037",
+      "K93-038",
+      "K93-039",
+      "K93-040",
+      "K93-041",
+      "K93-042",
+      "K93-043",
+      "K93-044",
+      "K93-045",
+      "K93-046",
+      "K93-047",
+      "K93-048",
+      "K93-049",
+      "K93-050",
+      "K93-051",
+      "K93-052",
+      "K93-053",
+      "K93-054",
+      "K93-055",
+      "K93-056"
     ],
     "overflow": [
       {
