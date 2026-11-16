@@ -1,5 +1,5 @@
 {
- "_note": "e922 live d1 (e921-live's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth: nine back shots drop her three pictures and her identity sentence, s25 does not list her; s14 is her one silent face (softer face sentence, no abacus, short ribbons, no angle-b). s40, s41 send no person. Sets: set-kezhan-l1 (s01, s03, s05, s10, s12), set-kezhan-table-l1 (s04, s07, s11), set-xujia-wu-ye-l1 (s13, s14, s17, s20, s24, s25), prop-jinsuanpan-l1 (s19), set-xujia-zoulang-l1 (s27), set-xujia-tangfang-l1 (s28, s34, s37), set-xujia-tangfang-table-l1 (s29, s31), set-xujia-yuan-ye-l2 (s38), set-dukou-ye-l1 (s39, s41), set-chuan-ye-l1 (s40); close shots none (prep922.sh swaps with absolute paths). Xu Yan's angle-b nowhere, A-ling's piercing gaze nowhere, Xu Yan's grey outer coat from s27. The unnamed backs are allowed in the 'only' sentence; the speaking gaze names the listener off screen. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9221101/9221102.",
+ "_note": "e922 live d1 (e921-live's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth: nine back shots drop her three pictures and her identity sentence, s25 does not list her; s14 is her one silent face (softer face sentence, no abacus, short ribbons, no angle-b). s40, s41 send no person. Sets: set-kezhan-l1 (s01, s03, s05, s10, s12), set-kezhan-table-l1 (s04, s07, s11), set-xujia-wu-ye-table-l1 (s13, s14, s17, s24), set-xujia-wu-ye-l1 (s20, s25), prop-jinsuanpan-l1 (s19), set-xujia-zoulang-l1 (s27), set-xujia-tangfang-l2 (s28, s34, s37), set-xujia-tangfang-table-l2 (s29, s31), set-xujia-yuan-ye-nolantern-l1 (s38), set-dukou-ye-l1 (s39, s41), set-chuan-ye-l1 (s40); close shots none (prep922.sh swaps with absolute paths). Xu Yan's angle-b nowhere, A-ling's piercing gaze nowhere, Xu Yan's grey outer coat from s27. The unnamed backs are allowed in the 'only' sentence; the speaking gaze names the listener off screen. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9221101/9221102.",
  "seeds": [
   9221101,
   9221102
@@ -150,11 +150,11 @@
     ],
     [
      "Only these 2 people are in the frame; no second copy of anyone appears.",
-     "Only these 2 people are in the frame, Wei Shaoqing on the bench and the young woman with the buns seen only from behind walking to the door; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+     "Only these 2 people are in the frame, Wei Shaoqing on the bench and the young woman with the buns seen only from behind walking out through the open doorway; the young woman with the two high round buns appears only once; no second copy of anyone appears."
     ],
     [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
-     "his face three-quarter to screen right toward the shut door, his eyes on it"
+     "his face three-quarter to screen right toward the open doorway, his eyes on it"
     ]
    ],
    "drop_pictures": [
@@ -184,7 +184,7 @@
     "tangxiaotang-angle-b-l1.png"
    ],
    "swap_pictures": {
-    "set-xujia-wu-l1.png": "set-xujia-wu-ye-l1.png"
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-table-l1.png"
    }
   },
   "s14": {
@@ -206,7 +206,7 @@
     "tangxiaotang-angle-b-l1.png"
    ],
    "swap_pictures": {
-    "set-xujia-wu-l1.png": "set-xujia-wu-ye-l1.png"
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-table-l1.png"
    }
   },
   "s15": {
@@ -229,6 +229,10 @@
   },
   "s16": {
    "replace": [
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "She is the only person in the frame; only a small hand in a peach-pink sleeve cuff with the chopsticks comes in from beyond the right edge."
+    ],
     [
      "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
      "her face three-quarter to screen right toward the young woman beyond the right edge of the frame, her eyes on her"
@@ -254,7 +258,7 @@
     "xuyan-angle-b-l1.png"
    ],
    "swap_pictures": {
-    "set-xujia-wu-l1.png": "set-xujia-wu-ye-l1.png"
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-table-l1.png"
    }
   },
   "s18": {
@@ -336,6 +340,9 @@
      ", a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves;"
     ]
    ],
+   "drop_pictures": [
+    "aling-portrait-l1.png"
+   ],
    "drop_set": true
   },
   "s24": {
@@ -346,7 +353,7 @@
     ]
    ],
    "swap_pictures": {
-    "set-xujia-wu-l1.png": "set-xujia-wu-ye-l1.png"
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-table-l1.png"
    }
   },
   "s25": {
@@ -354,6 +361,10 @@
     [
      "Only these 3 people are in the frame; no second copy of anyone appears.",
      "Only these 3 people and the young woman with the buns seen only from behind are in the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "Every person in the frame has dark shoes or boots on both feet."
     ],
     [
      ", a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze;",
@@ -383,6 +394,10 @@
   "s27": {
    "replace": [
     [
+     "Besides him, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "He is the only person in the frame; no second copy of anyone appears."
+    ],
+    [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
      "his face in profile to screen right toward the door, his eyes on it"
     ],
@@ -405,7 +420,7 @@
   },
   "s29": {
    "swap_pictures": {
-    "set-xujia-tangfang-l1.png": "set-xujia-tangfang-table-l1.png"
+    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-table-l2.png"
    },
    "replace": [
     [
@@ -428,7 +443,7 @@
   },
   "s31": {
    "swap_pictures": {
-    "set-xujia-tangfang-l1.png": "set-xujia-tangfang-table-l1.png"
+    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-table-l2.png"
    },
    "replace": [
     [
@@ -447,6 +462,9 @@
      ", a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze;",
      ", a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves;"
     ]
+   ],
+   "drop_pictures": [
+    "aling-portrait-l1.png"
    ],
    "drop_set": true
   },
@@ -468,6 +486,14 @@
   },
   "s34": {
    "replace": [
+    [
+     "Besides him, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Exactly three people are in the frame: Xu Yan by the table and the two women seen only from behind in the left foreground; no second copy of anyone appears."
+    ],
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "Every person in the frame has dark shoes or boots on both feet."
+    ],
     [
      "a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
      "an old plain grey cloth outer coat worn open over a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes"
@@ -542,10 +568,17 @@
    ],
    "drop_pictures": [
     "xuyan-angle-b-l1.png"
-   ]
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-yuan-ye-nolantern-l1.png"
+   }
   },
   "s39": {
    "replace": [
+    [
+     "the air is clear and still, a clean natural film image",
+     "the fog hangs thick and drifts slowly and evenly over the water, a clean natural film image"
+    ],
     [
      "a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
      "an old plain grey cloth outer coat worn open over a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes"
@@ -559,26 +592,34 @@
    }
   },
   "s40": {
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image",
+     "the fog hangs thick and drifts slowly and evenly over the water, a clean natural film image"
+    ],
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The location shown in <Picture 1> is the set, keeping its layout and props."
+    ]
+   ],
    "swap_pictures": {
     "set-dukou-l2.png": "set-chuan-ye-l1.png"
-   },
-   "replace": [
-    [
-     "the location shown in <Picture 1> is the set, keeping its layout and props.",
-     "The location shown in <Picture 1> is the set, keeping its layout and props."
-    ]
-   ]
+   }
   },
   "s41": {
-   "swap_pictures": {
-    "set-dukou-l2.png": "set-dukou-ye-l1.png"
-   },
    "replace": [
+    [
+     "the air is clear and still, a clean natural film image",
+     "the fog hangs thick and drifts slowly and evenly over the water, a clean natural film image"
+    ],
     [
      "the location shown in <Picture 1> is the set, keeping its layout and props.",
      "The location shown in <Picture 1> is the set, keeping its layout and props."
     ]
-   ]
+   ],
+   "swap_pictures": {
+    "set-dukou-l2.png": "set-dukou-ye-l1.png"
+   }
   }
  }
 }
