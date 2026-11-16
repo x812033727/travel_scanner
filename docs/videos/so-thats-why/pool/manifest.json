@@ -1,10 +1,10 @@
 {
   "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 6482,
-    "canonical_questions": 6322,
-    "eligible_candidates": 6152,
-    "selected_candidates": 6093,
+    "raw_records": 6538,
+    "canonical_questions": 6378,
+    "eligible_candidates": 6208,
+    "selected_candidates": 6149,
     "alias_records": 160,
     "historical_records": 313,
     "source_urls": 7317,
@@ -15,20 +15,20 @@
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1410,
-        "selected": 1402
+        "canonical": 1438,
+        "selected": 1430
       },
       "生物動物與植物": {
-        "canonical": 1467,
-        "selected": 1456
+        "canonical": 1481,
+        "selected": 1470
       },
       "地球天氣與太空": {
         "canonical": 921,
         "selected": 918
       },
       "數位科技與通訊工程": {
-        "canonical": 1014,
-        "selected": 961
+        "canonical": 1028,
+        "selected": 975
       },
       "飲食與廚房科學": {
         "canonical": 419,
@@ -44,11 +44,11 @@
       }
     }
   },
-  "theme_count": 703,
+  "theme_count": 706,
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "fd87aaa075a7b49af3644d49971c0480d3d7703a022000b58478c06a7d7d2a1b"
+      "sha256": "d1c53bb120a13672e47e0c20cfee7f3a6d077aa2e1773bbe81ada7d0a55d0d34"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -841,6 +841,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-16-6037.json.gz",
       "sha256": "a0406c41d6157e472821d9b5f681a7f4e87d98b1418c30c003bf120590865056"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-6093.json",
+      "sha256": "4a00b89338c9866640fdaf5614501ceeffb3ceb00d45f22c31d6ee8a9e4aec32"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-16-6093.json.gz",
+      "sha256": "9b112162631f69b3159db7714c7c1d18306573adb12a05fbc711291fa270d12e"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1757,6 +1765,22 @@
     {
       "file": "docs/videos/so-thats-why/pool/batches/wave100-tech.json",
       "sha256": "88756b8e81ac5c5d45f1fe75c0edbdf24fcc3bfda97ada173ccd5f8b5f6b74ce"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave101-bio.json",
+      "sha256": "41dd3019d0fe4b3a48b38065ce3ab72bc4f40c81cbd6770261c28d9cfce04f8b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave101-mat.json",
+      "sha256": "bcf0894dd267b276cbac686b03fe5943519a627a18db71e70c4566a4c25a661c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave101-physics.json",
+      "sha256": "46540c9a7e0d5e457c73e7667a44b5c9eefe98515dc2420dba024495fbf1fafc"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave101-tech.json",
+      "sha256": "f7a5dabd11aaabafafe8b0e419b7520340db701115c93caf2fb748bfe9c49fad"
     },
     {
       "file": "docs/videos/so-thats-why/pool/batches/wave11-landforms.json",
@@ -3072,46 +3096,46 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "f604f4757fbae7006759a71fde5530d37faadf7ce88e580d3ba57dc19e4ec6ec"
+      "sha256": "a8af40b5b39b28bc38512ecc0684f1638526417503f0195642a111ba251fd5b2"
     }
   ],
-  "theme_definition_sha256": "b4ddf80954ccd0fdc0ba26ee36f66f838e508696cf420204ec07a2b9c171e622",
+  "theme_definition_sha256": "692799a65f74c1e06f75426d711e704f52e04ef2fe0522c3407a3d553d3cc3c6",
   "files": [
     {
       "file": "pool.json",
-      "sha256": "92dd664fdbc1808fca6645481c9966ce54fea0461833930f4a7a558b5cc88f27"
+      "sha256": "b761ced5426fb37b7fc153669db074beab87bd1041b62a7e7b7a10f74ed2887f"
     },
     {
       "file": "pool-sources.json",
-      "sha256": "02dbe293fced7e82f776c7a8208c74ce6c4fc2550d914a0c49107e3e726eb0de"
+      "sha256": "3d7c5b04578cf23547a61b907dfc7de06cc9c65eeefd60c9d49d9a3767b10e03"
     },
     {
       "file": "pool-records.json",
-      "sha256": "ac607288a5ea86d93642c87ff95197d0550e3be8423c491ef9095395efb4dcc0"
+      "sha256": "f4339074b4b59aeaee0f5824389f923b569184e65a638b57e4d5d67a2b758199"
     },
     {
       "file": "QUESTIONS.md",
-      "sha256": "6158fc347ac7124c79840b1042ede77544ccbf2b19ae629bfd902c3ce4e35a18"
+      "sha256": "6794095cfdef0c322bf85a8b345f1d742391b6588c3e99562867ed3b8e9c0fb7"
     },
     {
       "file": "SOURCES.md",
-      "sha256": "517b846415a1dd0d184fb935c5c6b0418faef1dad86e9f1991ab00407a23dae3"
+      "sha256": "1416ec0a5b6160d47110243c5d71ec7881e087e6df0b1dbf1aa8c8fdddc0c179"
     },
     {
       "file": "DEDUP.md",
-      "sha256": "3c51d66433f92041f0d455d2a8e7539013d7cd42738fc9734c640096d719bced"
+      "sha256": "4e2dec07860758c15dcac5738e35ddc0710b038b9973139cf89fc4ccda67ca53"
     },
     {
       "file": "THEMES.md",
-      "sha256": "7a256b30d4d14f2eba1bf4b904279c0c853c7b46919089f561fc904c2be7d2c7"
+      "sha256": "47158f0d9f264d8aaca40b13b0af2ab9aab6aa0fdd3a7d5a8bb34fc5a1893410"
     },
     {
       "file": "index.html",
-      "sha256": "3f2bfa3d6a522c742147064698cb64f47fea7b862a7982c355f71709a12d9bcb"
+      "sha256": "bccb5bbbba8fc81d90a2095f65afcf59789049186108cab5673c88e955c99aac"
     },
     {
       "file": "PRODUCIBLE.html",
-      "sha256": "d4f8283ba320a158d194c5d27a647bbc395d3ca323fc1e7a832483126b912e15"
+      "sha256": "a014315c492e11a3bd0fed17bffe448a271f7f0a940e7c42b82ebfaf3b950971"
     }
   ]
 }
