@@ -56,3 +56,10 @@
 `set-xianya-steps-l2` = `set-xianya-steps-l1` 加 `drawbox=x=952:y=424:w=98:h=48:color=0x0c0a0a@1:t=fill`：鼓架後面門裡那塊紅色方塊放大 4 倍是一排黑色字形筆畫（第 16 集 s29 木牌假字的教訓），塗成近黑；放大 4 倍看過，一筆都沒留，看起來是門裡暗處的一塊平的黑，跟上面的暗門內接得上（下緣貼著白色門檻，左右蓋到一點兩邊暗青色的門板邊）。門楣上一排小亮點、石座上的方形雕花不是字形，留著。第 19 集 s28–s37。
 `set-wuding-eave-l2` = `set-wuding-l1` `crop=800:450:0:96,scale=1312:736:flags=lanczos`：l1 下緣一排有字形浮雕的瓦當切掉；左下留著竹梯的兩根頂端，屋脊從左上角斜到右緣中間，右上是黑夜空與薄雲，滿月與柿子樹不在。仍是 3D 渲染、偏藍；只給第 19 集 s38（全景），s39–s41 不送屋頂圖。若挑片時 3D 感太明顯，退路是以它為底「只改一件事」：`make it a real night photograph of old clay roof tiles`（付費，還沒做）。
 `qianyuanwai-sleeve-l1` = `qianyuanwai-portrait-l1` `crop=864:472:0:680`（領口以下：暗金團花綢袍的前襟與兩袖上段、頂端一點白色內領，沒有下巴、沒有臉；團花中間的方形花紋原圖就有）、`laisan-sleeve-l1` = `laisan-portrait-l1` `crop=864:412:0:740`（灰褐格紋麻布交領短褂、米白內領與一小段頸子，沒有下巴、沒有臉）：不縮放（864 寬，同定妝照）。給手部插鏡當「手的主人的衣料」：第 19 集 s13（兩張）與 s11（賴三一張）。教訓：手部插鏡送胸像定妝照，兩張臉都可能被畫出來（第 15 集 s02「四隻手＝兩個許硯」）；只要袖口的布料，就送沒有臉的裁切。
+
+第 20 集（2026-11-16，`writer-tools/e020-r2/r2.py`，協調者照站主授權做，全圖放大看過）：一張**免費的裁切衍生圖**，做法同第 18、19 集（`ffmpeg -i <來源>.png -vf "crop=<參數>,scale=1312:736:flags=lanczos"`）。
+`set-xuji-pu-floor-l1` = `set-xuji-pu-l1` `crop=400:225:430:511`（鋪子地上那塊青石磚與大門照進來的三道光條；放大 3.3 倍偏軟；沒有門、架子、人與字）。給小金算盤的兩支插鏡 s16、s37 當地面：手部插鏡不送整間鋪子（第 15 集 s08「全景送給插鏡會硬切回全景」）。
+新的場景 id、自帶 l1，`pilot.py` 找 `set-xuji-pu` 最新 l 版（`set-<id>-l<N>` 全名比對）時不會拿到；由 `colab/runs/e920-live/spec.json` 的 `swap_pictures` 用絕對路徑送（`prep920.sh`）。
+`set-xuji-pu-l1` 本身照用（空店：架子在左牆、臨街大門在後牆正中、右邊白色板牆；稿子的櫃檯寫在右牆前）。大街圖 `set-shiji-l1` 第 20 集不送（菜市；右邊招牌與左邊掛牌有假字，中段裁切左上角還有一個像冷氣機的方盒、上方一條像電線的線）。
+**還沒做的道具圖**：唐小棠的小金算盤沒有參考圖（定妝照腰間是金色結飾），`../../live-action/screen-test-e020.py` 以 `set-xuji-pu-l1` `crop=448:252:0:400`（左牆下那排深色矮櫃的櫃面）為底、Qwen 只加一把巴掌大的小金算盤，種子 37031／37032，清單在 `~/mokaair-work/videos/_series/zhong-tian-qu-qi/live-screen-test-e020/abacus.json`（檢查 0 錯誤）。挑定後存成 `prop-jinsuanpan-l1.png`，`e920-live/mkspec.py` 自動把它放進 s16、s37 的場景圖位置。
+行會會長 `hanghui-huizhang-portrait-l1` 第一次用：`pilot.py` 只認一個字的人物 id，所以 `colab/runs/e920/extras.json` 先用 `mianshiguan-portrait-t1` 佔位，`spec.json` 的 `swap_pictures` 換成會長的真人定妝照（`prep920.sh` 檢查每支會長鏡送的是會長、不是佔位圖）。

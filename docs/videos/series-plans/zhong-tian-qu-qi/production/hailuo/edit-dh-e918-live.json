@@ -1,0 +1,322 @@
+{
+ "tempo": 1.0,
+ "grades": {},
+ "default_grade": "dh",
+ "finish": "vignette=angle=PI/5,format=yuv420p",
+ "names": {},
+ "punch": false,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
+  "<VIDEO_WORKDIR>/_live-e918/zhong-tian-qu-qi-e918-dh/sfx"
+ ],
+ "name_whoosh": "swish-9",
+ "music": [
+  {
+   "cue": "suspense",
+   "from": "s01",
+   "to": "s11",
+   "offset": 0.0,
+   "gain": -22,
+   "fade_in": 1.0,
+   "fade_out": 0.5,
+   "tail": 0
+  },
+  {
+   "cue": "comedy",
+   "from": "s13",
+   "to": "s14",
+   "offset": 2.5,
+   "gain": -23,
+   "fade_in": 0.6,
+   "fade_out": 1.2,
+   "tail": 0
+  },
+  {
+   "cue": "night",
+   "from": "s15",
+   "to": "s22",
+   "offset": 0.0,
+   "gain": -21,
+   "fade_in": 1.0,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "suspense",
+   "from": "s23",
+   "to": "s30",
+   "offset": 31.0,
+   "gain": -21,
+   "fade_in": 1.0,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "tension",
+   "from": "s31",
+   "to": "s40",
+   "offset": 0.0,
+   "gain": -22,
+   "fade_in": 1.0,
+   "fade_out": 1.0,
+   "tail": 0
+  }
+ ],
+ "sfx": [
+  {
+   "file": "birds",
+   "at": "s01",
+   "off": 0,
+   "gain": -30,
+   "to": "s14"
+  },
+  {
+   "file": "Wind",
+   "at": "s01",
+   "off": 0,
+   "gain": -26,
+   "to": "s14"
+  },
+  {
+   "file": "wind1",
+   "at": "s15",
+   "off": 0,
+   "gain": -18,
+   "to": "s22"
+  },
+  {
+   "file": "Wind",
+   "at": "s15",
+   "off": 1.0,
+   "gain": -22,
+   "to": "s22"
+  },
+  {
+   "file": "wind1",
+   "at": "s23",
+   "off": 0,
+   "gain": -18,
+   "to": "s30"
+  },
+  {
+   "file": "Wind",
+   "at": "s23",
+   "off": 1.0,
+   "gain": -24,
+   "to": "s30"
+  },
+  {
+   "file": "Wind",
+   "at": "s31",
+   "off": 0,
+   "gain": -26,
+   "to": "s40"
+  },
+  {
+   "file": "handleCoins",
+   "at": "s04",
+   "off": 0.3,
+   "gain": -26
+  },
+  {
+   "file": "handleCoins2",
+   "at": "s05",
+   "off": 3.3,
+   "gain": -26
+  },
+  {
+   "file": "paper_02",
+   "at": "s06",
+   "off": 0.2,
+   "gain": -30
+  },
+  {
+   "file": "paper_03",
+   "at": "s09",
+   "off": 4.6,
+   "gain": -30
+  },
+  {
+   "file": "paper_04",
+   "at": "s12",
+   "off": 1.0,
+   "gain": -28
+  },
+  {
+   "file": "rustle03",
+   "at": "s15",
+   "off": 0.3,
+   "gain": -30
+  },
+  {
+   "file": "splash_02",
+   "at": "s16",
+   "off": 0.35,
+   "gain": -32
+  },
+  {
+   "file": "blowout",
+   "at": "s18",
+   "off": 5.55,
+   "gain": -4
+  },
+  {
+   "file": "wooden_01",
+   "at": "s19",
+   "off": 5.85,
+   "gain": -26
+  },
+  {
+   "file": "metalLatch",
+   "at": "s20",
+   "off": 0.4,
+   "gain": -28
+  },
+  {
+   "file": "creak3",
+   "at": "s23",
+   "off": 0.5,
+   "gain": -28
+  },
+  {
+   "file": "wooded_box_open",
+   "at": "s24",
+   "off": 5.5,
+   "gain": -24
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s26",
+   "off": 0.0,
+   "gain": -10
+  },
+  {
+   "file": "impactBell_heavy_001",
+   "at": "s26",
+   "off": 0.05,
+   "gain": -20
+  },
+  {
+   "file": "impactWood_medium_000",
+   "at": "s26",
+   "off": 2.75,
+   "gain": -22
+  },
+  {
+   "file": "cloth1",
+   "at": "s28",
+   "off": 0.3,
+   "gain": -24
+  },
+  {
+   "file": "impactWood_heavy_001",
+   "at": "s32",
+   "off": 1.05,
+   "gain": -10
+  },
+  {
+   "file": "gong_02",
+   "at": "s40",
+   "off": 5.75,
+   "gain": -4
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s40",
+   "off": 5.75,
+   "gain": -6
+  }
+ ],
+ "frame_round": true,
+ "clip_voice": true,
+ "voice_skip": {
+  "s32": 1.5,
+  "s37b": 1.5
+ },
+ "voice_until": {},
+ "clip_af": {
+  "s08": {
+   "from": 0,
+   "af": "rubberband=pitch=0.85:formant=preserved"
+  },
+  "s11": {
+   "from": 0,
+   "af": "rubberband=pitch=0.78:formant=preserved"
+  },
+  "s17": {
+   "from": 0,
+   "af": "rubberband=pitch=0.82:formant=preserved"
+  },
+  "s21": {
+   "from": 0,
+   "af": "asendcmd=c='4.0 rubberband pitch 0.85',rubberband=pitch=1.0:formant=preserved,volume=4dB,alimiter=limit=0.89:attack=5:release=50:level=false"
+  },
+  "s33": {
+   "from": 0,
+   "af": "rubberband=pitch=0.65:formant=preserved"
+  },
+  "s34": {
+   "from": 0,
+   "af": "rubberband=pitch=0.8:formant=preserved"
+  },
+  "s40": {
+   "from": 0,
+   "af": "rubberband=pitch=1.35:formant=preserved"
+  }
+ },
+ "voice_off": [
+  "s10",
+  "s14",
+  "s22",
+  "s28",
+  "s30",
+  "s31",
+  "s35",
+  "s36",
+  "s37"
+ ],
+ "move_lines": {},
+ "min": {
+  "s40": 9.0
+ },
+ "line_at": {
+  "zq918a12": 0.28,
+  "zq918a15": 0.22,
+  "zq918a22": 0.36,
+  "zq918a27": 0.58,
+  "zq918a29": 0.18,
+  "zq918a30": 0.18,
+  "zq918a34": 0.68,
+  "zq918a35": 0.8,
+  "zq918a25": 0.6
+ },
+ "panel_y": {
+  "s01": 16,
+  "s29": 820
+ },
+ "panel_color": {
+  "s01": "red"
+ },
+ "vf": {
+  "s06": "split[taa][tab];[tab]crop=340:340:900:560,gblur=sigma=3,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/30\\,0\\,1)'[tac];[taa]format=rgba[tad];[tad][tac]overlay=900:560:enable='gte(t,3.0)',format=yuv420p",
+  "s07": "split[tba][tbb];[tbb]crop=380:540:1540:540,gblur=sigma=6,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(X/40\\,0\\,1)*clip(Y/40\\,0\\,1)'[tbc];[tba]format=rgba[tbd];[tbd][tbc]overlay=1540:540,format=yuv420p",
+  "s12": "split[tca][tcb];[tcb]crop=400:140:1100:620,gblur=sigma=5,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/24\\,0\\,1)'[tcc];[tca]format=rgba[tcd];[tcd][tcc]overlay=1100:620,format=yuv420p",
+  "s33": "split[tda][tdb];[tdb]crop=160:260:280:640,gblur=sigma=5,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/20\\,0\\,1)'[tdc];[tda]format=rgba[tdd];[tdd][tdc]overlay=280:640:enable='lt(t,4.0)',format=yuv420p,split[tea][teb];[teb]crop=180:260:150:820,gblur=sigma=5,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/20\\,0\\,1)'[tec];[tea]format=rgba[ted];[ted][tec]overlay=150:820:enable='gte(t,4.0)',format=yuv420p",
+  "s24": "split[tfa][tfb];[tfb]crop=760:620:260:460,gblur=sigma=30,eq=gamma=1.25,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/80\\,0\\,1)'[tfc];[tfa]format=rgba[tfd];[tfd][tfc]overlay=260:460,format=yuv420p,null[tga];color=black:s=480x270:r=24,format=gray,geq=lum='255*max(clip((346+(-40)*min(T/6.56\\,1)-X*4)/110+0.5\\,0\\,1)\\,clip((X*4-(1498+(40)*min(T/6.56\\,1)))/110+0.5\\,0\\,1))',scale=1920:1080:flags=bilinear[tgm];color=black:s=1920x1080:r=24,format=rgba[tgk];[tgk][tgm]alphamerge[tgh];[tga][tgh]overlay=shortest=1,format=yuv420p",
+  "s26": "split[hba][hbb];[hbb]crop=440:560:1340:280,format=gbrp,split=3[hbc][hbd][hbe];[hbd]extractplanes=r+g[hbr][hbu];[hbr][hbu]blend=all_expr='clip((A-B-100)*8\\,0\\,255)',gblur=sigma=22,lut=y='clip(val*4.0\\,0\\,255)',format=gray[hbm];[hbe]colorchannelmixer=rr=1.0:gg=0.42:bb=0.12,hue=s=0.8,format=gbrp[hbg];[hbg][hbm]alphamerge[hbh];[hbc][hbh]overlay,format=yuv420p[hbo];[hba][hbo]overlay=1340:280:enable='between(t,2.2,2.8)',split[haa][hab];[hab]crop=1300:880:200:200,format=gbrp,split=3[hac][had][hae];[had]extractplanes=r+g[har][hau];[har][hau]blend=all_expr='clip((A-B-100)*8*1.0\\,0\\,255)',gblur=sigma=2,format=gray[ham];[hae]hue=h=6:s=0.65,eq=brightness=0.0,format=gbrp[hag];[hag][ham]alphamerge[hah];[hac][hah]overlay,format=yuv420p[hao];[haa][hao]overlay=200:200",
+  "s28": "split[hca][hcb];[hcb]crop=320:480:0:330,format=gbrp,split=3[hcc][hcd][hce];[hcd]extractplanes=r+g[hcr][hcu];[hcr][hcu]blend=all_expr='clip((A-B-100)*8*1.0\\,0\\,255)',gblur=sigma=2,format=gray[hcm];[hce]hue=h=6:s=0.65,eq=brightness=0.0,format=gbrp[hcg];[hcg][hcm]alphamerge[hch];[hcc][hch]overlay,format=yuv420p[hco];[hca][hco]overlay=0:330",
+  "s29": "split[hda][hdb];[hdb]crop=380:440:190:350,format=gbrp,split=3[hdc][hdd][hde];[hdd]extractplanes=r+g[hdr][hdu];[hdr][hdu]blend=all_expr='clip((A-B-80)*8*1.0\\,0\\,255)',gblur=sigma=2,format=gray[hdm];[hde]hue=h=20:s=0.6,eq=brightness=0.05,format=gbrp[hdg];[hdg][hdm]alphamerge[hdh];[hdc][hdh]overlay,format=yuv420p[hdo];[hda][hdo]overlay=190:350",
+  "s30": "split[hea][heb];[heb]crop=320:360:820:660,format=gbrp,split=3[hec][hed][hee];[hed]extractplanes=r+g[her][heu];[her][heu]blend=all_expr='clip((A-B-100)*8*1.0\\,0\\,255)',gblur=sigma=2,format=gray[hem];[hee]hue=h=6:s=0.65,eq=brightness=0.0,format=gbrp[heg];[heg][hem]alphamerge[heh];[hec][heh]overlay,format=yuv420p[heo];[hea][heo]overlay=820:660",
+  "s34": "split[faa][fab];[fab]crop=110:270:815:770,gblur=sigma=6,eq=brightness=-0.06,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/30\\,0\\,1)'[fac];[faa]format=rgba[fad];[fad][fac]overlay=815:770,format=yuv420p",
+  "s36": "split[fba][fbb];[fbb]crop=110:240:995:730,gblur=sigma=6,eq=brightness=-0.06,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/30\\,0\\,1)'[fbc];[fba]format=rgba[fbd];[fbd][fbc]overlay=995:730,format=yuv420p",
+  "s40": "split[fca][fcb];[fcb]crop=80:160:588:465,gblur=sigma=3,hue=s=0.5,eq=brightness=-0.06,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip((1-pow((X-W/2)/(W/2)\\,2)-pow((Y-H/2)/(H/2)\\,2))*3\\,0\\,1)'[fcc];[fca]format=rgba[fcd];[fcd][fcc]overlay=588:465:enable='gte(t,1.9)',format=yuv420p,fade=t=out:st=5.500:d=0.50",
+  "s35": "colorbalance=rm=0.04:bm=-0.04,eq=saturation=1.08",
+  "s37": "colorbalance=rm=0.04:bm=-0.04,eq=saturation=1.08"
+ },
+ "subtitle_lines": [],
+ "_note": "draft"
+}
