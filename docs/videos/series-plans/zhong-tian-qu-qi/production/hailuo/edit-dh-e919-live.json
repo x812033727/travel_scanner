@@ -32,7 +32,7 @@
    "gain": -22,
    "fade_in": 1.2,
    "fade_out": 1.5,
-   "tail": 0,
+   "tail": 0.5,
    "from_off": -0.6
   },
   {
@@ -41,9 +41,10 @@
    "to": "s27",
    "offset": 42,
    "gain": -21,
-   "fade_in": 1.0,
+   "fade_in": 1.2,
    "fade_out": 1.5,
-   "tail": 0.5
+   "tail": 0.5,
+   "from_off": -0.8
   },
   {
    "cue": "warm",
@@ -82,7 +83,14 @@
    "file": "Wind",
    "at": "s01",
    "off": 0,
-   "gain": -8,
+   "gain": -7,
+   "to": "s03"
+  },
+  {
+   "file": "wind1",
+   "at": "s01",
+   "off": 0,
+   "gain": -14,
    "to": "s03"
   },
   {
@@ -90,6 +98,13 @@
    "at": "s03",
    "off": 5.5,
    "gain": -6,
+   "to": "s27"
+  },
+  {
+   "file": "wind1",
+   "at": "s03",
+   "off": 5.5,
+   "gain": -12,
    "to": "s27"
   },
   {
@@ -285,7 +300,7 @@
   },
   "s26": {
    "from": 0,
-   "af": "rubberband=pitch=1.25:formant=preserved,volume=2.6dB,alimiter=limit=0.89:attack=5:release=50:level=false"
+   "af": "rubberband=pitch=1.25:formant=preserved,acompressor=threshold=-24dB:ratio=3:attack=5:release=80,volume=11.3dB,alimiter=limit=0.89:attack=5:release=50:level=false"
   },
   "s29": {
    "from": 0,
@@ -372,5 +387,5 @@
   "s41": "fade=t=out:st=5.300:d=0.50"
  },
  "subtitle_lines": [],
- "_note": "draft"
+ "_note": "Live action, written 2026-11-16 from edit-dh-e918-live.json (its form, REVIEW 3 keys, panel_color/panel_from, voice_skip, the red-hand/fingertip key-and-replace masks) on the refined, staged clips (_live-e919/zhong-tian-qu-qi-e919-dh/clips/sNN-t1.mp4, 41 shots, every one used): clip_voice, no punch-in, slow-down <= 1.1, interpolate off, frame_round, no title card, names {}. Every offset is seconds from the first frame of the trimmed shot (c). SOURCES: script/storyboard/video.json/overlays.json in docs/videos/zhong-tian-qu-qi-e019-r2; picks.json from refine-prep.py 19 (picks-merged.tsv, fix1/review-picks.tsv: s09 s16 the fix1 retakes 9191201, s34 9191202), staged with stage.py 19 (first stage of this episode, 41 staged, 0 missing); e919cut.sh's want table holds every trim and seed. LINKS: zhong-tian-qu-qi-e919-dh/music -> ../_series/zhong-tian-qu-qi/music (by hand, the e917/e918 way); stage.py links _live-e919/.../audio and music. One sfx dir (the series library): no synthesized sound this episode. Recordings are taken at audio/'s current lengths (README-retakes.txt: a15 a23 a41 a43 re-recorded, a42 = take4 5.48 s).\nTRIMS: none changed, no review3-trims.tsv. Every trim is whole frames (start floor / end ceil to 3 decimals). faster-whisper medium (scratchpad fw env, numpy input, one clip per process) on every clip-voiced staged clip plus 50 ms RMS at both ends: heads -58..-91 dB (s29 -46..-49 is a breath before 他 at c0.48; s37 -44 in the first 50 ms: the draft's 走 starts at draft 1.99 > the 1.958 cut), tails -49..-76 dB (s04 三 decays -16/-32/-66 over c4.17-4.27 in a 4.31 clip: not cut). Whisper heard every clip line except homophones and tone guesses of the script (堂上 唐尚, 升堂 生堂, 錢員外 前緣外/前人外, 箱面 香面, 染布 染不, 偷箱 偷香, 那晚 那碗, 錢某 前某, 杖 賬, 秦霜 秦雙) and s31's 一點兒都 (Aling adds 兒; the subtitle keeps the script's 一點都). s38 (the post list: 十本帳 heard 石本章): the take alone reads 石本章 with a prompt, 十本章 on the 4.7-6.1 piece without one (十/石 one sound, 章/帳 a tone), and the cut in context reads 十本賬又不對了 -> the take's voice is kept (a wide low-angle shot, his face small and turned away until c4); the fallback is voice_off s38 + line_at zq919a42 2.0 (take4, 4.89 s laid, its 十本帳 at ~c4.75-6.85 against the take's 4.84-5.83).\nVOICE_OFF s09 s34 (the post list): s09 the fix1 chest-up take speaks quietly (-15.8 LUFS), a08 laid at 0.05 on its mouth (0.05); s34 (fix1, hand over the mouth to the last frame) the take has only breath (whisper invents 是), the recordings a34 + a35 + a36 laid one after another: the silence-trimmed lengths 3.40 + 4.05 + 1.72 + gaps = 9.75 s fit the 10.13 s clip, so nothing moves into s35 and nothing overlaps (the post list's 10.32 s were the file lengths). Off-screen / nospeak lines laid by rule: s07 a07, s11 a10, s12 a11 (before 放肆 at c4.27: fitted by the assembler x1.11), s13 a13 (line_at 0.6, after the red-hand accent), s18 a18, s19 a19, s23 a23 (line_at 0.4 after the confession accent; 7.30 s laid in the 7.75 s clip, 0.05 s tail -- the post list's 0.39 s shortfall was the file length, so no hold and no spill into s24), s25 a25, s27 a27, s28 a28, s33 a33, s35 a37 a38, s36 a39 (line_at 0.06: ends c2.09, his 沒 starts at c2.30 by RMS -- whisper's 2.06 is early; the post list's 0.1 s overlap is gone), s39 a43, s41 a45 (the take's own murmur at c1.65-3.45/5.30-6.15 is muted because a45 is nospeak). s16 keeps the fix1 take's own voice (lips; the 4.6-6.5 pause between the two sentences is the take's).\nVOICE (clip_af, rubberband formant preserved; f0 by autocorrelation per speech span on the staged clip, raw -> processed; whisper on every processed take, word for word as raw): Xu 106-145 (shouts higher): s03 0.86 to c3.4 then 1.0 (161/163 -> ~140; 午後，堂上見 already 102-125), s06 0.8 (170/184/170), s14 0.92 (160/141/144/141), s16 0.86 (147/161/171), s20 0.8 (213/237/230/301: 大聲 in court, a shout still ~170-240 -- listen); kept s01 (143/109), s10, s21, s30, s32, s38, s40, s36 a40. Qin 219-255: s04 0.92 (239/263/264), s29 0.92 (274/203), s37 0.75 (304/333/310 -> ~230-250). Qian (measured this episode: takes s02 168-253, s15 146-190, s17 232-289; recordings a08 146, a23 160): s12 0.88 (放肆 362, 201/275 -> ~320/177/242), s26 1.25 (113/119, the cold slow line, -> ~140-150, nearer his speaking voice; the recording a26 is also 113); kept s02 s15 s17. Magistrate Hu (takes s05 233-294 升堂, s22 162-234; recording a11 153): s24 0.85 (235/287/320/315 -> 200-270, e918's 官腔 195-271), a11 pitched x1.3 from audio/orig (153 -> 191 Hz; whisper 前園外 for 錢員外 as the raw TTS); kept s05 s22. Aling s31 kept (224/204; e914 195-203, recording a31 189). Lai San (a10 164) and Tang (a18 a19 a27 a28 a39 a43 a45, 172-283) recordings only, at their recorded pitch.\nRECORDINGS (audio/, originals in audio/orig/ (20 files), e909's recipe through the scratchpad lvl.py -- acompressor 3:1 at -20 dB + volume + alimiter 0.84 -- then cut to the source's -45 dB span, integrated LUFS before -> after): court -13.1 (a07 -16.3, a08 -18.2, a10 -16.1, a11 -12.6 after x1.3, a13 -16.5, a18 -16.2, a19 -15.1, a23 -18.5, a27 -18.4), -14.5 a25 -18.6 (system), a43 -16.4, a45 -18.2 (roof); outside -14.2 (a28 -16.6, a33 -17.4, a34 -17.6, a35 -15.7, a36 -19.7, a37 -17.2, a39 -16.0); a38 re-made from zq919a38.raw-tts.wav at atempo 1.2 (not the season's 1.3) + voice-post.json's system filter, -14.2: whisper without a prompt reads x1.3 首先任务开启 天下归星 (天下彗星 in the cut), x1.2 主席任务开启 天下归心, x1.15 主線人物開啟 天下歸心, raw 主線人物開啟 天下歸心 -> x1.2 (歸心 right, 主席 for 主線 one tone-ish step); the x1.3 file kept as audio/take2/zq919a38-x1.3.wav. a36 (宿主覺得好笑) reads 宋主 raw, processed and at x1.2/x1.15 alike: kept (listen). Untouched: every clip-voiced line's file, a42 (take4, unused), raw-tts files, take1-4/."
 }

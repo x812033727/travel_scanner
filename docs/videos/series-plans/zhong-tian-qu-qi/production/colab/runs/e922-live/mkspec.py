@@ -20,7 +20,19 @@ Run: python3 -I mkspec.py
   set-chuan-ye-l1 for set-dukou-l2 (s40). Every swap is sent with an absolute path by prep922.sh. Close shots send none.
 - The speaking gaze names the listener off screen, or the thing looked at.
 - s35b (his thought) is the second half of the script's long c35, split after the system's two lines (r2.py BUY).
-- No seed of this episode has been run. Seeds 9221101/9221102."""
+- No seed of this episode has been run. Seeds 9221101/9221102.
+
+After the independent review (writer-tools/e022-r2/review.md; r2.py docstring 〈AFTER THE INDEPENDENT REVIEW〉, 2026-11-16):
+- s38 sends set-xujia-yuan-ye-nolantern-l1 (the gate lantern painted out; one lantern, his); s39-s41 replace extras' "the air
+  is clear and still" with a slow even thick fog over the water (the yard s38 keeps it: a clear night there).
+- Her room: pilot.py takes the newest set-xujia-tangfang, now l2 (the window at night, the label-like line painted out), for
+  s28, s34, s37; s29, s31 swap it for set-xujia-tangfang-table-l2 (the same crop of l2).
+- Dinner: s13, s14, s17, s24 swap set-xujia-wu-l1 for the free crop set-xujia-wu-ye-table-l1 (the roof hole cut away);
+  s20, s25 keep the whole night room set-xujia-wu-ye-l1.
+- s12: the door already open, the speaking gaze and the 'only' sentence say "the open doorway".
+- s25, s34: extras_patch's wide-shot shoes sentence says "dark shoes or boots" (Qin Shuang wears boots). s34's people
+  sentence names the three; s27's is "He is the only person"; s16's allows the small cuffed hand with the chopsticks.
+- s23, s32: A-ling's front-facing portrait is not sent (her face is three-quarter there; angle-a and angle-b only)."""
 import json
 from pathlib import Path
 
@@ -66,7 +78,10 @@ XU_COAT = ["a faded blue-grey cotton scholar's robe patched at one elbow, cloth 
 INN, INN_TOP = "set-kezhan-l1.png", "set-kezhan-table-l1.png"
 WU, WU_NIGHT = "set-xujia-wu-l1.png", "set-xujia-wu-ye-l1.png"
 PROP = "prop-jinsuanpan-l1.png"
-ROOM, ROOM_TOP = "set-xujia-tangfang-l1.png", "set-xujia-tangfang-table-l1.png"
+# the room: pilot.py takes the newest l-version of set-xujia-tangfang, l2 since the review; its crop is the l2 table crop
+ROOM, ROOM_TOP = "set-xujia-tangfang-l2.png", "set-xujia-tangfang-table-l2.png"
+WU_TABLE = "set-xujia-wu-ye-table-l1.png"
+YARD, YARD_NOLANTERN = "set-xujia-yuan-ye-l2.png", "set-xujia-yuan-ye-nolantern-l1.png"
 DUKOU, DUKOU_NIGHT, BOAT = "set-dukou-l2.png", "set-dukou-ye-l1.png", "set-chuan-ye-l1.png"
 
 
@@ -97,7 +112,7 @@ for sid, first, only in [
     ("s05", 1, [ONLY_2, back("Wei Shaoqing")]),
     ("s09", 1, [ONLY_2, back("Wei Shaoqing")]),
     ("s12", 2, [ONLY_2, ("Only these 2 people are in the frame, Wei Shaoqing on the bench and the young woman with the buns seen "
-                         f"only from behind walking to the door; {ONE_TANG}; no second copy of anyone appears.")]),
+                         f"only from behind walking out through the open doorway; {ONE_TANG}; no second copy of anyone appears.")]),
     ("s13", 1, [ONLY_3, back("Qin Shuang and A-ling", 3)]),
     ("s15", 1, [ONLY_2, back("little Xiaohe")]),
     ("s17", 1, [ONLY_2, back("Xu Yan")]),
@@ -118,6 +133,20 @@ add("s23", [ONLY_SHE, besides("her", "the blurred shoulder of the man in the for
 add("s26", [ONLY_HE, besides("him", "the small child's hand at the lower right edge")])
 # s34: the composition says "exactly three people, the two women in the foreground seen only from behind"; no person sentence is added
 add("s36", [ONLY_SHE, besides("her", "the blurred shoulder at the left edge")])
+# review 建議 s16, s27; 必改 s34 (the people sentence names the three)
+add("s16", [ONLY_SHE, "She is the only person in the frame; only a small hand in a peach-pink sleeve cuff with the chopsticks comes "
+                      "in from beyond the right edge."])
+BESIDES_NAMES = "Besides him, only the other people the composition names are in the frame; no second copy of anyone appears."
+add("s27", [BESIDES_NAMES, ONLY_HE])
+add("s34", [BESIDES_NAMES, "Exactly three people are in the frame: Xu Yan by the table and the two women seen only from behind in "
+                           "the left foreground; no second copy of anyone appears."])
+# 必改 s25, s34: extras_patch.py's wide-shot shoes sentence; Qin Shuang wears boots
+for sid in ["s25", "s34"]:
+    add(sid, ["Every person in the frame wears dark cloth shoes on both feet.", "Every person in the frame has dark shoes or boots on both feet."])
+# 必改 s39-s41: fog is meant there; extras' clear-air sentence would fight it (s38's yard is a clear night and keeps it)
+for sid in ["s39", "s40", "s41"]:
+    add(sid, ["the air is clear and still, a clean natural film image",
+              "the fog hangs thick and drifts slowly and evenly over the water, a clean natural film image"])
 add("s38", [ONLY_HE, besides("him", "the small dim young woman in the house doorway")])
 
 # Lines not said into a face on screen: the speaking gaze names the listener off screen, or the thing looked at.
@@ -126,7 +155,7 @@ for sid, g, he in [
     ("s06", "his face three-quarter to screen right toward the young woman beyond the right edge of the frame, his eyes on her", True),
     ("s08", "his face three-quarter to screen right toward the young woman beyond the right edge of the frame, close, his eyes on her", True),
     ("s10", "his face three-quarter to screen right toward the young woman beyond the right edge of the frame, his eyes on her", True),
-    ("s12", "his face three-quarter to screen right toward the shut door, his eyes on it", True),
+    ("s12", "his face three-quarter to screen right toward the open doorway, his eyes on it", True),
     ("s16", "her face three-quarter to screen right toward the young woman beyond the right edge of the frame, her eyes on her", False),
     ("s18", "his face three-quarter to screen right toward the young woman beyond the right edge of the frame, his eyes on her", True),
     ("s21", "her face three-quarter to screen left toward the young man beyond the left edge of the frame, her eyes on him", False),
@@ -149,15 +178,22 @@ for sid in ["s27", "s30", "s33", "s34", "s35", "s35b", "s37", "s38", "s39"]:
 for sid in ["s17", "s18", "s22", "s25", "s26", "s27", "s30", "s33", "s34", "s35", "s35b", "s37", "s38", "s39"]:
     drop(sid, "xuyan-angle-b-l1.png")
 drop("s25", "aling-angle-b-l1.png")
+# review 建議 s23, s32: her face is three-quarter there; the front-facing portrait pulls the eyes to the lens (e921 s29)
+drop("s23", "aling-portrait-l1.png")
+drop("s32", "aling-portrait-l1.png")
 
 # Sets.
-KEEP = ["s01", "s03", "s05", "s10", "s12", "s27", "s28", "s34", "s37", "s38"]
+KEEP = ["s01", "s03", "s05", "s10", "s12", "s27", "s28", "s34", "s37"]
 SWAP = {}
 for sid in ["s04", "s07", "s11"]:
     SWAP[sid] = {INN: INN_TOP}
 # s20 sends nothing else once her pictures go (Ref2VA needs one): the night room
-for sid in ["s13", "s14", "s17", "s20", "s24", "s25"]:
+for sid in ["s20", "s25"]:
     SWAP[sid] = {WU: WU_NIGHT}
+# review 必改: the medium shots get the table crop without the roof hole
+for sid in ["s13", "s14", "s17", "s24"]:
+    SWAP[sid] = {WU: WU_TABLE}
+SWAP["s38"] = {YARD: YARD_NOLANTERN}
 SWAP["s19"] = {WU: PROP}
 for sid in ["s29", "s31"]:
     SWAP[sid] = {ROOM: ROOM_TOP}
@@ -182,9 +218,9 @@ spec = {
     "_note": ("e922 live d1 (e921-live's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth: nine "
               "back shots drop her three pictures and her identity sentence, s25 does not list her; s14 is her one silent face "
               "(softer face sentence, no abacus, short ribbons, no angle-b). s40, s41 send no person. Sets: set-kezhan-l1 (s01, s03, "
-              "s05, s10, s12), set-kezhan-table-l1 (s04, s07, s11), set-xujia-wu-ye-l1 (s13, s14, s17, s20, s24, s25), prop-jinsuanpan-l1 "
-              "(s19), set-xujia-zoulang-l1 (s27), set-xujia-tangfang-l1 (s28, s34, s37), set-xujia-tangfang-table-l1 (s29, s31), "
-              "set-xujia-yuan-ye-l2 (s38), set-dukou-ye-l1 (s39, s41), set-chuan-ye-l1 (s40); close shots none (prep922.sh swaps "
+              "s05, s10, s12), set-kezhan-table-l1 (s04, s07, s11), set-xujia-wu-ye-table-l1 (s13, s14, s17, s24), set-xujia-wu-ye-l1 (s20, s25), prop-jinsuanpan-l1 "
+              "(s19), set-xujia-zoulang-l1 (s27), set-xujia-tangfang-l2 (s28, s34, s37), set-xujia-tangfang-table-l2 (s29, s31), "
+              "set-xujia-yuan-ye-nolantern-l1 (s38), set-dukou-ye-l1 (s39, s41), set-chuan-ye-l1 (s40); close shots none (prep922.sh swaps "
               "with absolute paths). Xu Yan's angle-b nowhere, A-ling's piercing gaze nowhere, Xu Yan's grey outer coat from s27. "
               "The unnamed backs are allowed in the 'only' sentence; the speaking gaze names the listener off screen. No "
               "off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9221101/9221102."),
