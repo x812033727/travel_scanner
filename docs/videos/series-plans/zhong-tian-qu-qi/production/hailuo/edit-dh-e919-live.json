@@ -256,7 +256,7 @@
  "clip_af": {
   "s01": {
    "from": 0,
-   "af": "pan=stereo|c0=0.5*c0+0.5*c1|c1=0.5*c0+0.5*c1,volume=-1.5dB"
+   "af": "pan=stereo|c0=0.5*c0+0.5*c1|c1=0.5*c0+0.5*c1,volume=-1.5dB,alimiter=limit=0.6:attack=1:release=40:level=false"
   },
   "s03": {
    "from": 0,
