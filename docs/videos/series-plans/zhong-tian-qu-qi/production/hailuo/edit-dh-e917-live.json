@@ -70,14 +70,14 @@
    "file": "fire",
    "at": "s01",
    "off": 0,
-   "gain": -12,
+   "gain": -17,
    "to": "s16"
   },
   {
    "file": "fire-1",
    "at": "s01",
    "off": 2.0,
-   "gain": -14,
+   "gain": -19,
    "to": "s16"
   },
   {
@@ -98,7 +98,7 @@
    "file": "wind1",
    "at": "s17",
    "off": 0,
-   "gain": -12,
+   "gain": -10,
    "to": "s26"
   },
   {
@@ -110,30 +110,30 @@
   },
   {
    "file": "fire-1",
-   "at": "s27",
-   "off": 0,
-   "gain": -20,
+   "at": "s26",
+   "off": 7.15,
+   "gain": -18,
    "to": "s35"
   },
   {
    "file": "wind1",
    "at": "s27",
-   "off": 0.5,
+   "off": 0.0,
    "gain": -16,
    "to": "s35"
   },
   {
    "file": "birds",
-   "at": "s36",
-   "off": 0,
-   "gain": -18,
+   "at": "s35",
+   "off": 7.4,
+   "gain": -16,
    "to": "s40"
   },
   {
    "file": "Wind",
-   "at": "s36",
-   "off": 0,
-   "gain": -14,
+   "at": "s35",
+   "off": 7.4,
+   "gain": -12,
    "to": "s40"
   },
   {
@@ -253,7 +253,7 @@
  "clip_af": {
   "s06": {
    "from": 0,
-   "af": "rubberband=pitch=0.72:formant=preserved"
+   "af": "rubberband=pitch=0.72:formant=preserved,volume=4dB,alimiter=limit=0.89:attack=5:release=50:level=false"
   },
   "s07": {
    "from": 0,
@@ -265,7 +265,7 @@
   },
   "s15": {
    "from": 0,
-   "af": "rubberband=pitch=0.65:formant=preserved"
+   "af": "rubberband=pitch=0.65:formant=preserved,volume=3dB,alimiter=limit=0.89:attack=5:release=50:level=false"
   },
   "s22": {
    "from": 0,
@@ -273,23 +273,43 @@
   },
   "s24": {
    "from": 0,
-   "af": "asendcmd=c='2.3 rubberband pitch 0.85',rubberband=pitch=0.75:formant=preserved"
+   "af": "asendcmd=c='2.3 rubberband pitch 0.85',rubberband=pitch=0.75:formant=preserved,volume=1.5dB"
   },
   "s26": {
    "from": 0,
-   "af": "asendcmd=c='2.2 rubberband pitch 1.0',rubberband=pitch=0.86:formant=preserved"
+   "af": "asendcmd=c='2.2 rubberband pitch 1.0',rubberband=pitch=0.86:formant=preserved,volume=1.5dB"
   },
   "s27": {
    "from": 0,
-   "af": "rubberband=pitch=0.7:formant=preserved"
+   "af": "rubberband=pitch=0.7:formant=preserved,volume=5dB,alimiter=limit=0.89:attack=5:release=50:level=false"
   },
   "s28": {
    "from": 0,
-   "af": "rubberband=pitch=0.72:formant=preserved"
+   "af": "rubberband=pitch=0.72:formant=preserved,volume=2.5dB"
   },
   "s36": {
    "from": 0,
-   "af": "asendcmd=c='2.3 rubberband pitch 0.65',rubberband=pitch=0.75:formant=preserved"
+   "af": "asendcmd=c='2.3 rubberband pitch 0.65',rubberband=pitch=0.75:formant=preserved,volume=4dB,alimiter=limit=0.89:attack=5:release=50:level=false"
+  },
+  "s16": {
+   "from": 0,
+   "af": "volume=5dB,alimiter=limit=0.89:attack=5:release=50:level=false"
+  },
+  "s25": {
+   "from": 0,
+   "af": "volume=3.5dB,alimiter=limit=0.89:attack=5:release=50:level=false"
+  },
+  "s29": {
+   "from": 0,
+   "af": "volume=-1.5dB"
+  },
+  "s34": {
+   "from": 0,
+   "af": "volume=-2dB"
+  },
+  "s37": {
+   "from": 0,
+   "af": "volume=3dB,alimiter=limit=0.89:attack=5:release=50:level=false"
   }
  },
  "voice_off": [
