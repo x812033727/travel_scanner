@@ -244,8 +244,8 @@ SHOTS = [
                 ("xitong", "三千里。本系統只報律條，不報辦法。", "冷"),
                 ("xuyan", "不用妳報辦法，辦法我自己想。", "心裡話，咬牙", "inner")],
          panel=[("冒名入冊，按律流放", "penalty")],
-         motion=f"for the first two seconds Xu Yan's eyes narrow and his jaw tightens; then his brows knot and his eyes dart sideways, searching; from the sixth second his face hardens; near the end he lets out one slow breath and his eyes settle, steady and resolved; {SILENT_HE}; he is listening and thinking, not speaking",
-         zh="近景、慢推（長鏡；拍法 11：不寫藍光，面板由剪接疊上；不送場景圖、不送帶笑的角度圖 b）：許硯眼睛一縮、下巴繃緊；接著眉頭一擰、眼睛往旁邊找（心裡問流放到哪）；第六秒起臉一沉（系統回嘴）；最後吐一口氣、眼神定下來；全程嘴閉著（系統與心裡話都畫外）"),
+         motion=f"for the first two seconds Xu Yan's eyes narrow and his jaw tightens; then his brows knot and his eyes dart sideways, searching; from the seventh second his face hardens; from the tenth second he lets out one slow breath and his eyes settle, steady and resolved; {SILENT_HE}; he is listening and thinking, not speaking",
+         zh="近景、慢推（長鏡；拍法 11：不寫藍光，面板由剪接疊上；不送場景圖、不送帶笑的角度圖 b）：許硯眼睛一縮、下巴繃緊；接著眉頭一擰、眼睛往旁邊找（心裡問流放到哪）；第七秒起臉一沉（系統回嘴）；第十秒起吐一口氣、眼神定下來；全程嘴閉著（系統與心裡話都畫外）"),
     # Over Wei Shaoqing's unnamed back (rule 2). Xu Yan turns to the counter beyond the right edge (Tang Xiaotang off screen).
     dict(loc="dusk_c", cam="Over-the-shoulder medium shot, slow push in", chars=["xuyan"], night="dusk",
          comp=f"over-the-shoulder medium shot from close behind {WEI_BACK}, in the left foreground, only the back of his head with a topknot and his shoulder showing, soft; facing us a little right of the middle {XU}, standing in front of {THE_COUNTER}, framed from the waist up with clear space above his head, his face turned three-quarter to screen right toward the far end of the counter beyond the right edge of the frame, never the lens; calm and decisive: brows level, eyes steady, lips moving evenly between words; behind him only the plain white panelled wall and the warm glow of the oil lamps, soft; {HANDS}; exactly two people, the man in the foreground seen only from behind",
@@ -266,7 +266,7 @@ SHOTS = [
     dict(loc="dusk", cam="Side two-shot medium close-up, slow push in", chars=["xuyan", "weishaoqing"], night="dusk",
          comp=f"side-on medium close-up of two men face to face in front of the counter, a foot apart, the warm glow of the oil lamps on the counter between them in the soft background: on screen right {XU}, framed from the chest up, his face in profile to screen left toward the other man, never the lens; unyielding: eyes level and unblinking, jaw set, lips moving firmly between words; on screen left {WEI}, framed from the chest up, the open fan held up in his right hand covering the lower half of his face, his face in profile to screen right toward him, never the lens; his eyes narrowed above the fan; {HANDS}; exactly two people",
          lines=[("xuyan", "縣衙的婚書在先，配不配婚，是官府的事，不是你家的事。", "寸步不讓")],
-         motion=f"Xu Yan leans in an inch closer and speaks without blinking; {quiet('Wei Shaoqing')}; above the fan Wei Shaoqing's eyes narrow further",
+         motion=f"Xu Yan leans in an inch closer and speaks, his eyes fixed and unblinking; {quiet('Wei Shaoqing')}; above the fan Wei Shaoqing's eyes narrow further",
          zh="側面雙人中近景、慢推（兩人在櫃檯前面對面、鼻尖一尺，後面虛焦的油燈光在兩人之間）：畫右許硯側臉朝畫左，再湊近一寸、不眨眼、寸步不讓地說；畫左魏少卿摺扇遮住下半張臉、扇子上方瞇眼、嘴閉著"),
     # His smile freezes (rule 30: a losing beat, no smile).
     dict(loc="dusk_c", cam="Close-up, slow push in", chars=["weishaoqing"], night="dusk",
@@ -397,7 +397,7 @@ HEAD = [
     "- **唐小棠不露嘴說話**：c04、c07、c34 三句與不說話的 c09、c35 都從她背後越過櫃檯拍（nospeak，spec 拿掉她三張圖與身分句；兩顆高丸子、短粉緞帶、後頸露出、頭不動）；她唯一的臉是 c12（不說話、臉色退掉；短緞帶、不送長緞帶的側面圖 angle-b；兩手在畫面外）。**小金算盤不入鏡**（拍法 20 只在插鏡）：c01 抱著與 c07 拍在櫃檯上改成她的兩掌，『喀』交給音效。",
     "- **一鏡最多三張臉**：c01 許硯、魏少卿、孫掌櫃（唐小棠、二牛、秦霜在畫外）；c10 魏少卿、小禾加前景許硯背影；c36 二牛、孫掌櫃加魏少卿背影。過肩與剪影前景都不點名、不送圖：許硯 c10、c28、c37，魏少卿 c15、c27、c32、c36。兩個打手只拍側面與背影、臉在暗處、空手；秦霜長棍、二牛門閂每鏡同一句；秦霜腰帶空著（柴刀不寫，拍法 5）。**小禾被推倒拆成 s21、s21b 兩鏡**，之後每鏡寫淚與嘴角往下（原版必修）。",
     "- 場景（協調者 2026-11-16 決定，每張放大看過）：第一場 s01–s19 黃昏送 `set-xuji-pu-dusk-l1`（接第 20 集 s34–s38）；第二、三場入夜送 `set-xuji-pu-ye-l1`（篇章試鏡 37033：只改光，右牆前櫃檯上兩盞小銅油燈、門外紅光）；後院 s29、s31 送免費裁切 `set-xuji-houyuan-ye-l1`；四支紙的插鏡（s03、s06、s11、s16）送木櫃面裁切 `set-xuji-pu-cabinet-l1` 當檯面；近鏡與許硯朝畫左的中景（s15、s27、s32）不送場景圖。後門寫在右邊白板牆的遠角（第 20 集 s33 阿令出去的那扇；聖經寫『左牆木架盡頭』，但第 20 集已經拍在右邊）。**不需要試鏡**。",
-    "- 長鏡要買的秒數（BUY）：照 39 句錄音核過（`~/mokaair-work/videos/zhong-tian-qu-qi-e921-dh/audio`，faster-whisper 一次一支逐句聽寫；見 `r2.py` 的 BUY 註解）。",
+    "- 長鏡要買的秒數（BUY）：照 36 句錄音核過（`~/mokaair-work/videos/zhong-tian-qu-qi-e921-dh/audio`，faster-whisper 一次一支逐句聽寫；見 `r2.py` 的 BUY 註解）：**s14（系統、心裡話、系統、心裡話四句約 12.4 秒，一支裝得下、不拆）買 12 秒**；s02（孫掌櫃開頭一聲笑、約 6.5 秒）、s10（約 6.3 秒）、s22（先掃倒再說）、s28（先收紙開扇再說）、s37（一字一字約 6.4 秒）買 8 秒；其餘 6 秒。",
     "- **表上的「秒」欄是 lint 估法**，比錄音短；剪接以錄音長度＋0.5 秒為準。",
 ]
 FOOT = [
@@ -408,5 +408,18 @@ FOOT = [
     "- 配樂：第一場低沉的 suspense，c11『林二丫』、c18『官府的事』各一個重音；第二場短促的打鬥 cue，c22 一棍一個重音、c28 收住；第三場冷的低音弦，c30『見過？』一個輕的重音、c37 一個大重音後收。音效見 script.md〈音樂與音效〉（c04 高凳、c07 算盤『喀』改成兩掌拍櫃檯、c28b 水桶『咚』）。",
 ]
 
-# Long shots: seconds to buy (filled in after the recordings; see the comment below).
-BUY = {}
+# Long shots: seconds to buy. Measured 2026-11-16 against the 36 recordings (~/mokaair-work/videos/zhong-tian-qu-qi-e921-dh/audio;
+# wave length and silencedetect -35 dB; e013's test: a shot holds (buy - 0.3) x 1.1 s of speech, half a second between lines,
+# so 6 s holds 6.27 s, 8 s 8.47 s and 12 s 12.87 s). faster-whisper medium read every take back, one clip per process,
+# numpy input (scratchpad fw921.txt; audio/README-retakes.txt).
+# 12 s: s14 (the system a14 2.40 + Xu Yan's thought a15 3.28 + the system a16 2.49 + his thought a17 2.75 + 3 x 0.5 =
+#       12.42 s; one clip, no split; the script's long-shot list buys 12 too). His beats follow the lines: a15 from about
+#       2.9 s, a16 from about 6.7 s, a17 from about 9.7 s (the motion's "seventh" and "tenth second").
+# 8 s:  s02 (a02 6.46 s: Sun Zhanggui opens with a short laugh, then the fan snaps shut after the line), s10 (a10 6.31 s),
+#       s22 (a24 3.12 s after the sweep and the fall, about 2.5 s of action first), s28 (a30 3.86 s after the papers go into
+#       the sleeve and the fan opens), s37 (a36 6.40 s, said one word at a time).
+# 6 s:  every other line (0.37-6.06 s of speech; the tightest s06 a06 6.06 s over the insert, s12 a12 5.89 s, s26 a28
+#       5.61 s); the silent shots s16, s21, s28b, s29, s31, s36 take gen-dh's 6 s.
+# Re-recorded once (first takes in audio/take1/): a11 (名冊 heard 名字), a17 (報 missing), a18 (縣衙 heard 信仰, an extra 一),
+# a26 (一個 heard 你個). The retakes read right (a17 with a trailing 啊 that whisper may add); see README-retakes.txt.
+BUY = {"s02": 8, "s10": 8, "s14": 12, "s22": 8, "s28": 8, "s37": 8}
