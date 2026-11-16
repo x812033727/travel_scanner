@@ -1,6 +1,6 @@
 {
- "_note": "e920 live d1 (e919-live's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth: twelve back shots drop her three face pictures and her identity sentence; s37b is her silent face (neutral sentences, the abacus in her hands). The guild master's portrait goes in under the placeholder stem mianshiguan-portrait-t1 (extras.json) and is swapped for hanghui-huizhang-portrait-l1 (prep920.sh, absolute paths). Sets: no picture on the roof (s01-s03), the street (s04, s11) and the close-ups s13, s26, s27; in the shop set-xuji-pu-l1 in the morning, then graded by the time of day (-pm-l1 s14-s24, -eve-l1 s25-s33, -dusk-l1 s34-s38, s37b); the inserts s16, s37 send the gold abacus prop picture prop-jinsuanpan-l1 when it exists, s16 with the warm floor set-xuji-pu-floor-pm-l1 as its second picture (it does NOT yet: the warm floor crop stands in for s16 and the cabinet-top crop set-xuji-pu-cabinet-l1 for s37, and prep920.sh holds both shots in colab-jobs-wait.json). The speaking gaze names the listener off screen or the thing looked at. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9201101/9201102.",
- "have_prop": false,
+ "_note": "e920 live d1 (e919-live's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth: twelve back shots drop her three face pictures and her identity sentence; s37b is her silent face (neutral sentences, the abacus in her hands). The guild master's portrait goes in under the placeholder stem mianshiguan-portrait-t1 (extras.json) and is swapped for hanghui-huizhang-portrait-l1 (prep920.sh, absolute paths). Sets: no picture on the roof (s01-s03), the street (s04, s11) and the close-ups s13, s26, s27; in the shop set-xuji-pu-l1 in the morning, then graded by the time of day (-pm-l1 s14-s24, -eve-l1 s25-s33, -dusk-l1 s34-s38, s37b); the inserts s16, s37 send the gold abacus prop picture prop-jinsuanpan-l1 when it exists, s16 with the warm floor set-xuji-pu-floor-pm-l1 as its second picture (it does). The speaking gaze names the listener off screen or the thing looked at. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9201101/9201102.",
+ "have_prop": true,
  "seeds": [
   9201101,
   9201102
@@ -183,13 +183,20 @@
   },
   "s16": {
    "swap_pictures": {
-    "set-xuji-pu-l1.png": "set-xuji-pu-floor-pm-l1.png"
+    "set-xuji-pu-l1.png": "prop-jinsuanpan-l1.png"
    },
    "replace": [
     [
      "the location shown in <Picture 1> is the set, keeping its layout and props.",
-     "The location shown in <Picture 1> is the set, keeping its layout and props."
+     "The small gold abacus shown in <Picture 1> is the one abacus in this shot, keeping exactly its shape, its thin gold frame, its rods and its rows of small round gold beads; the grey stone floor shown in <Picture 2> is the floor it falls onto."
+    ],
+    [
+     "For the target video, <Picture 1> is referenced throughout.",
+     "For the target video, <Picture 1> and <Picture 2> are referenced throughout."
     ]
+   ],
+   "add_pictures": [
+    "set-xuji-pu-floor-pm-l1.png"
    ]
   },
   "s17": {
@@ -479,12 +486,12 @@
   },
   "s37": {
    "swap_pictures": {
-    "set-xuji-pu-l1.png": "set-xuji-pu-cabinet-l1.png"
+    "set-xuji-pu-l1.png": "prop-jinsuanpan-l1.png"
    },
    "replace": [
     [
      "the location shown in <Picture 1> is the set, keeping its layout and props.",
-     "The location shown in <Picture 1> is the set, keeping its layout and props."
+     "The small gold abacus shown in <Picture 1> is the one abacus in this shot, keeping exactly its shape, its thin gold frame, its rods and its rows of small round gold beads; it lies on the dark wooden counter top shown in <Picture 1>."
     ]
    ]
   },
