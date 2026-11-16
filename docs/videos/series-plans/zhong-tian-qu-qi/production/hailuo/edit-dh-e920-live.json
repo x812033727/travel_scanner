@@ -1,0 +1,299 @@
+{
+ "tempo": 1.0,
+ "grades": {},
+ "default_grade": "dh",
+ "finish": "vignette=angle=PI/5,format=yuv420p",
+ "names": {},
+ "punch": false,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+ ],
+ "name_whoosh": "swish-9",
+ "music": [
+  {
+   "cue": "night",
+   "from": "s01",
+   "to": "s03",
+   "offset": 0.0,
+   "gain": -22,
+   "fade_in": 1.0,
+   "fade_out": 1.2,
+   "tail": 0
+  },
+  {
+   "cue": "market",
+   "from": "s04",
+   "to": "s14",
+   "offset": 0.0,
+   "gain": -23,
+   "fade_in": 0.5,
+   "fade_out": 1.5,
+   "tail": 0
+  },
+  {
+   "cue": "suspense",
+   "from": "s15",
+   "to": "s18",
+   "offset": 0.0,
+   "gain": -23,
+   "fade_in": 1.0,
+   "fade_out": 1.0,
+   "tail": 0,
+   "from_off": 1.2
+  },
+  {
+   "cue": "comedy",
+   "from": "s19",
+   "to": "s24",
+   "offset": 2.5,
+   "gain": -23,
+   "fade_in": 0.8,
+   "fade_out": 1.2,
+   "tail": 0.3
+  },
+  {
+   "cue": "warm",
+   "from": "s25",
+   "to": "s33",
+   "offset": 0.45,
+   "gain": -21,
+   "fade_in": 1.0,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "tension",
+   "from": "s34",
+   "to": "s38",
+   "offset": 0.0,
+   "gain": -22,
+   "fade_in": 1.0,
+   "fade_out": 1.0,
+   "tail": 0
+  }
+ ],
+ "sfx": [
+  {
+   "file": "Wind",
+   "at": "s01",
+   "off": 0,
+   "gain": -12,
+   "to": "s03"
+  },
+  {
+   "file": "birds",
+   "at": "s03",
+   "off": 5.6,
+   "gain": -17,
+   "to": "s24"
+  },
+  {
+   "file": "Wind",
+   "at": "s03",
+   "off": 5.6,
+   "gain": -14,
+   "to": "s24"
+  },
+  {
+   "file": "wind1",
+   "at": "s24",
+   "off": 5.0,
+   "gain": -13,
+   "to": "s33"
+  },
+  {
+   "file": "Wind",
+   "at": "s24",
+   "off": 5.0,
+   "gain": -13,
+   "to": "s33"
+  },
+  {
+   "file": "Wind",
+   "at": "s33",
+   "off": 5.6,
+   "gain": -10,
+   "to": "s38"
+  },
+  {
+   "file": "cloth1",
+   "at": "s03",
+   "off": 0.3,
+   "gain": -26
+  },
+  {
+   "file": "cloth2",
+   "at": "s04",
+   "off": 0.1,
+   "gain": -18
+  },
+  {
+   "file": "paper_02",
+   "at": "s06",
+   "off": 0.7,
+   "gain": -28
+  },
+  {
+   "file": "handleCoins",
+   "at": "s06",
+   "off": 2.0,
+   "gain": -26
+  },
+  {
+   "file": "paper_03",
+   "at": "s08",
+   "off": 0.9,
+   "gain": -26
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s15",
+   "off": 0.0,
+   "gain": -12
+  },
+  {
+   "file": "hooves_trot",
+   "at": "s15",
+   "off": 0.0,
+   "gain": -20,
+   "to": "s15"
+  },
+  {
+   "file": "creak2",
+   "at": "s15",
+   "off": 0.6,
+   "gain": -30
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s16",
+   "off": 1.95,
+   "gain": -16
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "s16",
+   "off": 1.95,
+   "gain": -24
+  },
+  {
+   "file": "cloth1",
+   "at": "s19",
+   "off": 6.5,
+   "gain": -26
+  },
+  {
+   "file": "handleCoins2",
+   "at": "s28",
+   "off": 0.5,
+   "gain": -26
+  },
+  {
+   "file": "impactWood_medium_000",
+   "at": "s28",
+   "off": 5.6,
+   "gain": -24
+  },
+  {
+   "file": "door_open",
+   "at": "s33",
+   "off": 2.55,
+   "gain": -28
+  },
+  {
+   "file": "door_close_01",
+   "at": "s33",
+   "off": 4.05,
+   "gain": -30
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s37",
+   "off": 1.2,
+   "gain": -24
+  },
+  {
+   "file": "swish-11",
+   "at": "s38",
+   "off": 0.0,
+   "gain": -12
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s38",
+   "off": 0.0,
+   "gain": -10
+  },
+  {
+   "file": "gong_02",
+   "at": "s38",
+   "off": 3.85,
+   "gain": -4
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s38",
+   "off": 3.85,
+   "gain": -6
+  }
+ ],
+ "frame_round": true,
+ "clip_voice": true,
+ "voice_skip": {},
+ "voice_until": {
+  "s38": 3.85
+ },
+ "clip_af": {
+  "s01": {
+   "from": 0,
+   "af": "rubberband=pitch=0.93:formant=preserved"
+  },
+  "s04": {
+   "from": 0,
+   "af": "rubberband=pitch=0.88:formant=preserved"
+  },
+  "s09": {
+   "from": 0,
+   "af": "rubberband=pitch=0.68:formant=preserved"
+  },
+  "s10": {
+   "from": 0,
+   "af": "rubberband=pitch=0.70:formant=preserved"
+  },
+  "s11": {
+   "from": 0,
+   "af": "rubberband=pitch=0.85:formant=preserved"
+  },
+  "s17": {
+   "from": 0,
+   "af": "rubberband=pitch=0.88:formant=preserved"
+  },
+  "s33": {
+   "from": 0,
+   "af": "rubberband=pitch=0.68:formant=preserved"
+  }
+ },
+ "voice_off": [],
+ "move_lines": {},
+ "min": {
+  "s38": 7.375
+ },
+ "line_at": {},
+ "panel_y": {
+  "s26": 840
+ },
+ "panel_color": {},
+ "vf": {
+  "s06": "split[taa][tab];[tab]crop=120:120:890:190,gblur=sigma=5,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/24\\,0\\,1)'[tac];[taa]format=rgba[tad];[tad][tac]overlay=890:190,format=yuv420p",
+  "s15": "split[tba][tbb];[tbb]crop=1000:800:460:160,format=gbrp,split=3[tbc][tbd][tbe];[tbd]extractplanes=r+g[tbr][tbu];[tbr][tbu]blend=all_expr='clip((A-B-90)*8\\,0\\,255)',gblur=sigma=3,format=gray[tbm];[tbe]hue=s=0.6,eq=brightness=-0.10,format=gbrp[tbg];[tbg][tbm]alphamerge[tbh];[tbc][tbh]overlay,format=yuv420p[tbo];[tba][tbo]overlay=460:160",
+  "s19": "split[tca][tcb];[tcb]crop=440:110:1480:970,gblur=sigma=10,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(X/40\\,0\\,1)*clip(Y/30\\,0\\,1)'[tcc];[tca]format=rgba[tcd];[tcd][tcc]overlay=1480:970:enable='gte(t,4.4)',format=yuv420p",
+  "s36": "split[tda][tdb];[tdb]crop=1400:380:260:700,split[tdc][tdd];[tdd]format=gray,lut=y='clip((val-120)*6\\,0\\,255)',gblur=sigma=8,geq=lum='lum(X\\,Y)*clip(min(min(X\\,W-X)\\,Y)/60\\,0\\,1)'[tdm];[tdc]colorchannelmixer=rr=0.78:gg=0.86:bb=1.02,eq=brightness=-0.03,format=gbrp[tdg];[tdg][tdm]alphamerge[tdh];[tda]format=gbrp[tdi];[tdi][tdh]overlay=260:700,format=yuv420p",
+  "s38": "split[tea][teb];[teb]crop=560:280:1100:310,format=gbrp,split=3[tec][ted][tee];[ted]geq=r='255*gt(r(X\\,Y)\\,140)*gt(b(X\\,Y)\\,95)*lt(r(X\\,Y)-b(X\\,Y)\\,75)':g='0':b='0',extractplanes=r,gblur=sigma=7,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/20\\,0\\,1)'[tem];[tee]gblur=sigma=2.5,format=gbrp[teg];[teg][tem]alphamerge[teh];[tec][teh]overlay,format=yuv420p[teo];[tea][teo]overlay=1100:310,fade=t=out:st=3.850:d=0.50"
+ },
+ "subtitle_lines": [],
+ "_note": "draft"
+}
