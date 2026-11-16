@@ -1,0 +1,340 @@
+{
+ "tempo": 1.0,
+ "grades": {},
+ "default_grade": "dh",
+ "finish": "vignette=angle=PI/5,format=yuv420p",
+ "names": {},
+ "punch": false,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+ ],
+ "name_whoosh": "swish-9",
+ "music": [
+  {
+   "cue": "tension",
+   "from": "s01",
+   "to": "s16",
+   "offset": 0.0,
+   "gain": -22,
+   "fade_in": 1.0,
+   "fade_out": 1.5,
+   "tail": 0
+  },
+  {
+   "cue": "suspense",
+   "from": "s17",
+   "to": "s26",
+   "offset": 0.0,
+   "gain": -21,
+   "fade_in": 1.2,
+   "fade_out": 1.5,
+   "tail": 0.5
+  },
+  {
+   "cue": "night",
+   "from": "s27",
+   "to": "s35",
+   "offset": 0.0,
+   "gain": -21,
+   "fade_in": 1.0,
+   "fade_out": 1.5,
+   "tail": 0.5
+  },
+  {
+   "cue": "warm",
+   "from": "s36",
+   "to": "s37",
+   "offset": 0.0,
+   "gain": -21,
+   "fade_in": 0.8,
+   "fade_out": 1.0,
+   "tail": 0
+  },
+  {
+   "cue": "tension",
+   "from": "s38",
+   "to": "s40",
+   "offset": 30.0,
+   "gain": -22,
+   "fade_in": 0.8,
+   "fade_out": 1.0,
+   "tail": 0
+  }
+ ],
+ "sfx": [
+  {
+   "file": "fire",
+   "at": "s01",
+   "off": 0,
+   "gain": -12,
+   "to": "s16"
+  },
+  {
+   "file": "fire-1",
+   "at": "s01",
+   "off": 2.0,
+   "gain": -14,
+   "to": "s16"
+  },
+  {
+   "file": "Wind",
+   "at": "s01",
+   "off": 0,
+   "gain": -14,
+   "to": "s16"
+  },
+  {
+   "file": "fire-1",
+   "at": "s17",
+   "off": 0,
+   "gain": -30,
+   "to": "s26"
+  },
+  {
+   "file": "wind1",
+   "at": "s17",
+   "off": 0,
+   "gain": -12,
+   "to": "s26"
+  },
+  {
+   "file": "Wind",
+   "at": "s17",
+   "off": 1.5,
+   "gain": -15,
+   "to": "s26"
+  },
+  {
+   "file": "fire-1",
+   "at": "s27",
+   "off": 0,
+   "gain": -20,
+   "to": "s35"
+  },
+  {
+   "file": "wind1",
+   "at": "s27",
+   "off": 0.5,
+   "gain": -16,
+   "to": "s35"
+  },
+  {
+   "file": "birds",
+   "at": "s36",
+   "off": 0,
+   "gain": -18,
+   "to": "s40"
+  },
+  {
+   "file": "Wind",
+   "at": "s36",
+   "off": 0,
+   "gain": -14,
+   "to": "s40"
+  },
+  {
+   "file": "wind1",
+   "at": "s36",
+   "off": 0.75,
+   "gain": -15,
+   "to": "s40"
+  },
+  {
+   "file": "splash_02",
+   "at": "s03",
+   "off": 0.4,
+   "gain": -26
+  },
+  {
+   "file": "cloth1",
+   "at": "s03",
+   "off": 2.2,
+   "gain": -26
+  },
+  {
+   "file": "splash_01",
+   "at": "s07",
+   "off": 3.6,
+   "gain": -20
+  },
+  {
+   "file": "splash_02",
+   "at": "s09",
+   "off": 1.5,
+   "gain": -24
+  },
+  {
+   "file": "splash_01",
+   "at": "s09",
+   "off": 4.0,
+   "gain": -24
+  },
+  {
+   "file": "cloth2",
+   "at": "s11",
+   "off": 0.4,
+   "gain": -24
+  },
+  {
+   "file": "creak2",
+   "at": "s15",
+   "off": 2.9,
+   "gain": -24
+  },
+  {
+   "file": "impactWood_heavy_001",
+   "at": "s15",
+   "off": 3.22,
+   "gain": -16
+  },
+  {
+   "file": "crow-caw",
+   "at": "s17",
+   "off": 0.5,
+   "gain": -26
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s19",
+   "off": 5.45,
+   "gain": -26
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "s20",
+   "off": 0.8,
+   "gain": -28
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s27",
+   "off": 5.35,
+   "gain": -24
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "s28",
+   "off": 4.75,
+   "gain": -18
+  },
+  {
+   "file": "creak1",
+   "at": "s28",
+   "off": 5.0,
+   "gain": -26
+  },
+  {
+   "file": "bookFlip1",
+   "at": "s31",
+   "off": 0.4,
+   "gain": -30
+  },
+  {
+   "file": "gong_02",
+   "at": "s40",
+   "off": 4.25,
+   "gain": -4
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s40",
+   "off": 4.25,
+   "gain": -4
+  }
+ ],
+ "frame_round": true,
+ "clip_voice": true,
+ "voice_skip": {},
+ "voice_until": {},
+ "clip_af": {
+  "s06": {
+   "from": 0,
+   "af": "rubberband=pitch=0.72:formant=preserved"
+  },
+  "s07": {
+   "from": 0,
+   "af": "rubberband=pitch=0.85:formant=preserved"
+  },
+  "s12": {
+   "from": 0,
+   "af": "rubberband=pitch=0.9:formant=preserved"
+  },
+  "s15": {
+   "from": 0,
+   "af": "rubberband=pitch=0.65:formant=preserved"
+  },
+  "s22": {
+   "from": 0,
+   "af": "asendcmd=c='3.1 rubberband pitch 1.2',rubberband=pitch=1.0:formant=preserved"
+  },
+  "s24": {
+   "from": 0,
+   "af": "asendcmd=c='2.3 rubberband pitch 0.85',rubberband=pitch=0.75:formant=preserved"
+  },
+  "s26": {
+   "from": 0,
+   "af": "asendcmd=c='2.2 rubberband pitch 1.0',rubberband=pitch=0.86:formant=preserved"
+  },
+  "s27": {
+   "from": 0,
+   "af": "rubberband=pitch=0.7:formant=preserved"
+  },
+  "s28": {
+   "from": 0,
+   "af": "rubberband=pitch=0.72:formant=preserved"
+  },
+  "s36": {
+   "from": 0,
+   "af": "asendcmd=c='2.3 rubberband pitch 0.65',rubberband=pitch=0.75:formant=preserved"
+  }
+ },
+ "voice_off": [
+  "s02",
+  "s08",
+  "s19"
+ ],
+ "move_lines": {},
+ "min": {
+  "s40": 6.55
+ },
+ "line_at": {
+  "zq917a01": 0.45,
+  "zq917a08": 0.6,
+  "zq917a17": 0.35,
+  "zq917a38": 2.4
+ },
+ "panel_y": {
+  "s14": 700,
+  "s38": 820,
+  "s39": 820
+ },
+ "panel_until": {
+  "s39": 2.3
+ },
+ "vf": {
+  "s17": "split[qaa][qab];[qab]crop=920:660:1000:420,format=gbrp,split=3[qac][qad][qae];[qad]extractplanes=r+b[qar][qau];[qar][qau]blend=all_expr='clip((A-B-75)*10\\,0\\,255)*clip((A-100)/30\\,0\\,1)'[qam0];color=black:s=330x920:r=24,format=gray[qak0];[qam0][qak0]overlay=x='60+(0)*min(t/6.56\\,1)':y='-250+(-10)*min(t/6.56\\,1)':eval=frame:shortest=1,gblur=sigma=3,format=gray[qam];[qae]hue=s=0,eq=brightness=-0.07,gblur=sigma=1.5,format=gbrp[qag];[qag][qam]alphamerge[qah];[qac][qah]overlay,format=yuv420p[qao];[qaa][qao]overlay=1000:420,split[qna][qnb];[qnb]crop=440:220:560:420,format=gbrp,split=3[qnc][qnd][qne];[qnd]extractplanes=r+b[qnr][qnu];[qnr][qnu]blend=all_expr='clip((A-B-75)*10\\,0\\,255)*clip((A-100)/30\\,0\\,1)',gblur=sigma=3,format=gray[qnm];[qne]hue=s=0,eq=brightness=-0.07,gblur=sigma=1.5,format=gbrp[qng];[qng][qnm]alphamerge[qnh];[qnc][qnh]overlay,format=yuv420p[qno];[qna][qno]overlay=560:420",
+  "s18": "split[qba][qbb];[qbb]crop=480:340:1440:420,format=gbrp,split=3[qbc][qbd][qbe];[qbd]extractplanes=r+b[qbr][qbu];[qbr][qbu]blend=all_expr='clip((A-B-75)*10\\,0\\,255)*clip((A-100)/30\\,0\\,1)',gblur=sigma=3,format=gray[qbm];[qbe]hue=s=0,eq=brightness=-0.07,gblur=sigma=1.5,format=gbrp[qbg];[qbg][qbm]alphamerge[qbh];[qbc][qbh]overlay,format=yuv420p[qbo];[qba][qbo]overlay=1440:420,split[qca][qcb];[qcb]crop=480:140:0:0,format=gbrp,split=3[qcc][qcd][qce];[qcd]extractplanes=r+b[qcr][qcu];[qcr][qcu]blend=all_expr='clip((A-B-75)*10\\,0\\,255)*clip((A-100)/30\\,0\\,1)',gblur=sigma=3,format=gray[qcm];[qce]hue=s=0,eq=brightness=-0.07,gblur=sigma=1.5,format=gbrp[qcg];[qcg][qcm]alphamerge[qch];[qcc][qch]overlay,format=yuv420p[qco];[qca][qco]overlay=0:0,split[qoa][qob];[qob]crop=100:500:0:280,format=gbrp,split=3[qoc][qod][qoe];[qod]extractplanes=r+b[qor][qou];[qor][qou]blend=all_expr='clip((A-B-75)*10\\,0\\,255)*clip((A-100)/30\\,0\\,1)',gblur=sigma=3,format=gray[qom];[qoe]hue=s=0,eq=brightness=-0.07,gblur=sigma=1.5,format=gbrp[qog];[qog][qom]alphamerge[qoh];[qoc][qoh]overlay,format=yuv420p[qoo];[qoa][qoo]overlay=0:280,split[qda][qdb];[qdb]crop=380:320:1540:760,format=gbrp,split=3[qdc][qdd][qde];[qdd]extractplanes=r+b[qdr][qdu];[qdr][qdu]blend=all_expr='clip((A-B-55)*10\\,0\\,255)*clip((A-100)/30\\,0\\,1)',gblur=sigma=3,format=gray[qdm];[qde]hue=s=0,eq=brightness=-0.15,gblur=sigma=1.5,format=gbrp[qdg];[qdg][qdm]alphamerge[qdh];[qdc][qdh]overlay,format=yuv420p[qdo];[qda][qdo]overlay=1540:760",
+  "s19": "split[qea][qeb];[qeb]crop=160:1080:0:0,format=gbrp,split=3[qec][qed][qee];[qed]extractplanes=r+b[qer][qeu];[qer][qeu]blend=all_expr='clip((A-B-75)*10\\,0\\,255)*clip((A-100)/30\\,0\\,1)',gblur=sigma=3,format=gray[qem];[qee]hue=s=0,eq=brightness=-0.07,gblur=sigma=1.5,format=gbrp[qeg];[qeg][qem]alphamerge[qeh];[qec][qeh]overlay,format=yuv420p[qeo];[qea][qeo]overlay=0:0,split[qfa][qfb];[qfb]crop=220:760:420:0,format=gbrp,split=3[qfc][qfd][qfe];[qfd]extractplanes=r+b[qfr][qfu];[qfr][qfu]blend=all_expr='clip((A-B-75)*10\\,0\\,255)*clip((A-100)/30\\,0\\,1)',gblur=sigma=3,format=gray[qfm];[qfe]hue=s=0,eq=brightness=-0.07,gblur=sigma=1.5,format=gbrp[qfg];[qfg][qfm]alphamerge[qfh];[qfc][qfh]overlay,format=yuv420p[qfo];[qfa][qfo]overlay=420:0,split[qga][qgb];[qgb]crop=240:320:1420:0,format=gbrp,split=3[qgc][qgd][qge];[qgd]extractplanes=r+b[qgr][qgu];[qgr][qgu]blend=all_expr='clip((A-B-75)*10\\,0\\,255)*clip((A-100)/30\\,0\\,1)',gblur=sigma=3,format=gray[qgm];[qge]hue=s=0,eq=brightness=-0.07,gblur=sigma=1.5,format=gbrp[qgg];[qgg][qgm]alphamerge[qgh];[qgc][qgh]overlay,format=yuv420p[qgo];[qga][qgo]overlay=1420:0",
+  "s22": "split[qha][qhb];[qhb]crop=260:260:400:0,format=gbrp,split=3[qhc][qhd][qhe];[qhd]extractplanes=r+b[qhr][qhu];[qhr][qhu]blend=all_expr='clip((A-B-75)*10\\,0\\,255)*clip((A-100)/30\\,0\\,1)',gblur=sigma=3,format=gray[qhm];[qhe]hue=s=0,eq=brightness=-0.07,gblur=sigma=1.5,format=gbrp[qhg];[qhg][qhm]alphamerge[qhh];[qhc][qhh]overlay,format=yuv420p[qho];[qha][qho]overlay=400:0,split[qia][qib];[qib]crop=120:180:740:380,format=gbrp,split=3[qic][qid][qie];[qid]extractplanes=r+b[qir][qiu];[qir][qiu]blend=all_expr='clip((A-B-75)*10\\,0\\,255)*clip((A-100)/30\\,0\\,1)',gblur=sigma=3,format=gray[qim];[qie]hue=s=0,eq=brightness=-0.07,gblur=sigma=1.5,format=gbrp[qig];[qig][qim]alphamerge[qih];[qic][qih]overlay,format=yuv420p[qio];[qia][qio]overlay=740:380,split[qja][qjb];[qjb]crop=440:240:740:840,gblur=sigma=3,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/30\\,0\\,1)'[qjc];[qja]format=rgba[qjd];[qjd][qjc]overlay=740:840,format=yuv420p",
+  "s24": "split[qka][qkb];[qkb]crop=1920:1080:0:0,format=gbrp,split=3[qkc][qkd][qke];[qkd]extractplanes=r+b[qkr][qku];[qkr][qku]blend=all_expr='clip((A-B-75)*10\\,0\\,255)*clip((A-100)/30\\,0\\,1)'[qkm0];color=black:s=260x520:r=24,format=gray[qkk0];[qkm0][qkk0]overlay=x='940+(-150)*min(t/4.5\\,1)':y='100+(0)*min(t/4.5\\,1)':eval=frame:shortest=1[qkm1];color=black:s=240x260:r=24,format=gray[qkk1];[qkm1][qkk1]overlay=x='720+(-240)*min(t/4.5\\,1)':y='360+(80)*min(t/4.5\\,1)':eval=frame:shortest=1[qkm2];color=black:s=300x380:r=24,format=gray[qkk2];[qkm2][qkk2]overlay=x='1180+(0)*min(t/4.5\\,1)':y='700+(0)*min(t/4.5\\,1)':eval=frame:shortest=1,gblur=sigma=3,format=gray[qkm];[qke]hue=s=0,eq=brightness=-0.07,gblur=sigma=1.5,format=gbrp[qkg];[qkg][qkm]alphamerge[qkh];[qkc][qkh]overlay,format=yuv420p[qko];[qka][qko]overlay=0:0",
+  "s27": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s28": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s29": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s30": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s32": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s34": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s35": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s31": "split[qla][qlb];[qlb]crop=240:160:1220:920,gblur=sigma=4,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/24\\,0\\,1)'[qlc];[qla]format=rgba[qld];[qld][qlc]overlay=1220:920,format=yuv420p,eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s33": "split[qma][qmb];[qmb]crop=440:520:0:560,hue=s=0.45,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip((W-X)/40\\,0\\,1)*clip(Y/40\\,0\\,1)'[qmc];[qma]format=rgba[qmd];[qmd][qmc]overlay=0:560,format=yuv420p,eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s37": "crop=1714:964:103:0,scale=1920:1080:flags=lanczos,setsar=1",
+  "s40": "fade=t=out:st=4.500:d=0.55"
+ },
+ "subtitle_lines": [
+  "zq917a39"
+ ],
+ "_note": "draft"
+}
