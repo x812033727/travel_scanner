@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-16-pool-5757",
+  "revision": "2026-11-16-pool-5813",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,34 +12,34 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 6146,
-    "canonical_questions": 5986,
-    "eligible_candidates": 5816,
-    "selected_candidates": 5757,
+    "raw_records": 6202,
+    "canonical_questions": 6042,
+    "eligible_candidates": 5872,
+    "selected_candidates": 5813,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 7037,
-    "current_research_source_urls": 4090,
-    "selected_source_urls": 5088,
+    "source_urls": 7093,
+    "current_research_source_urls": 4146,
+    "selected_source_urls": 5144,
     "new_suggestions_not_added": 3419,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1242,
-        "selected": 1234
+        "canonical": 1270,
+        "selected": 1262
       },
       "生物動物與植物": {
-        "canonical": 1383,
-        "selected": 1372
+        "canonical": 1397,
+        "selected": 1386
       },
       "地球天氣與太空": {
         "canonical": 921,
         "selected": 918
       },
       "數位科技與通訊工程": {
-        "canonical": 930,
-        "selected": 877
+        "canonical": 944,
+        "selected": 891
       },
       "飲食與廚房科學": {
         "canonical": 419,
@@ -58,7 +58,7 @@
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "3c25ec81b87528b5be592c224fc63bf48b0a94017043be795bfe64bfb928c931"
+      "sha256": "56d00929d612637056654a78d75f3ba90386ddbc74574540f31238af2a1b42a8"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -803,6 +803,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-15-5701.json.gz",
       "sha256": "40761ded93a1f5e75cc970bb464626059fdad37df7817d502c0d18a7d30d2c4a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-5757.json",
+      "sha256": "396cdab018a5375dc70ab32fb96ef4478c7f434a445af8718ff443f54b0f1d05"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-16-5757.json.gz",
+      "sha256": "729718b9870803cbaa611dae6fea61c0f2d7ae382016f9ad9bced755f5ec55d1"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -2901,6 +2909,22 @@
       "sha256": "a7fb83e5adeeee410d641350b63bfce45ca2d5baf40dc6cedad0a5e6c251f6ea"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave95-bio.json",
+      "sha256": "b04dc029bad0eb4d04b3cf5e4915e76fd3e78dfb1ccb920bf66bdf60d303994d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave95-mat.json",
+      "sha256": "96f8c3ab69e04cbc384972a6b94a996a12878090d261b8a4f975230420a49db1"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave95-physics.json",
+      "sha256": "6c85aca43b2b2a94c9b758f59cd6428db8f8584740942091279eb55a95ec7291"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave95-tech.json",
+      "sha256": "79a76609a1d47696c1003c06bc80675bb06d7061bd78fa012cd2374dc465f8e8"
+    },
+    {
       "file": "tools/video/so-thats-why/pool/core.mjs",
       "sha256": "408d081b431587e4d7c7285a65459a19be08d3b5259f8da5dcae4f58806f9f8b"
     },
@@ -2938,12 +2962,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "55318b00fabc6cd207e94be47ffc914b0451c5f9f7f574e9c9b6637c456194e8"
+      "sha256": "8219b0867c0e9837b4e4775f92ade5573d8ed03b1b7e44a982754dcfb1092f2e"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 7037
+    "count": 7093
   },
   "candidates": [
     {
@@ -264283,11 +264307,2419 @@
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false
+    },
+    {
+      "id": "K95-001",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "捕蠅草感覺毛在受到獵物第一次觸碰時，為什麼不會立刻合攏，而是啟動內部鈣離子瞬態信號計數？",
+      "mechanism_key": "flytrap.calcium_wave_first_trigger_subthreshold_polarization",
+      "answer_target": "單次偏折引發的鈣離子流尚未達到觸發葉片力學失穩的臨界濃度閾值，細胞質將信號轉化為短暫衰減的化學計時緩衝。",
+      "scope": "植物生理學、細胞電信號與力敏離子通道。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "捕蠅草感覺毛在受到獵物第一次觸碰時，為什麼不會立刻合攏，而是啟動內部鈣離子瞬態信號計數？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S001: Section 1.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V226（2026-11-16）通過。",
+      "origin": "wave95-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-149d51e1d924433e",
+          "origin": "wave95-bio-20261116",
+          "locator": "K95-S001: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-002",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "捕蠅草感覺毛基部的力敏離子通道如何將微米級機械彎曲轉化為跨膜去極化動作電位？",
+      "mechanism_key": "flytrap.mechanosensitive_channel_membrane_stretch_depolarization",
+      "answer_target": "膜張力改變誘發 MSL/PIEZO 類似通道構象改變，大量陽離子快速內流引發胞膜去極化並產生全或無動作電位。",
+      "scope": "植物生理學、細胞電信號與力敏離子通道。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "捕蠅草感覺毛基部的力敏離子通道如何將微米級機械彎曲轉化為跨膜去極化動作電位？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S002: Section 2.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V226（2026-11-16）通過。",
+      "origin": "wave95-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-fccc82e0a7a0f5f6",
+          "origin": "wave95-bio-20261116",
+          "locator": "K95-S002: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-003",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "捕蠅草兩次觸發之間的「記憶時間窗口」最長能維持多久？胞質內未衰減的鈣離子濃度如何作為計時器？",
+      "mechanism_key": "flytrap.calcium_decay_kinetics_memory_window_twenty_seconds",
+      "answer_target": "胞質鈣泵將游離鈣回收到液泡與內質網需約20至30秒，在此窗口內第二次峰值疊加跨過臨界閾值形成短暫記憶。",
+      "scope": "植物生理學、細胞電信號與力敏離子通道。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "捕蠅草兩次觸發之間的「記憶時間窗口」最長能維持多久？胞質內未衰減的鈣離子濃度如何作為計時器？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S003: Section 3.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V226（2026-11-16）通過。",
+      "origin": "wave95-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-f51ef87a322243e2",
+          "origin": "wave95-bio-20261116",
+          "locator": "K95-S003: Section 3.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-004",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "當感覺毛在20秒內受到第二次觸碰時，觸發的第二個動作電位如何跨越中脈並誘發捕蟲夾瞬間閉合？",
+      "mechanism_key": "flytrap.second_action_potential_midrib_transmission_triggering",
+      "answer_target": "胞間連絲構成的高電導合胞體網絡在數十毫秒內將去極化波擴散至兩側葉瓣運動細胞層，觸發水通道蛋白與離子外流。",
+      "scope": "植物生理學、細胞電信號與力敏離子通道。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "當感覺毛在20秒內受到第二次觸碰時，觸發的第二個動作電位如何跨越中脈並誘發捕蟲夾瞬間閉合？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S004: Section 1.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V226（2026-11-16）通過。",
+      "origin": "wave95-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-ef64711b303d1d6a",
+          "origin": "wave95-bio-20261116",
+          "locator": "K95-S004: Section 1.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-005",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "捕蠅草葉片閉合在十分之一秒內完成，這種超快運動如何利用葉片幾何雙穩態釋放彈性應變能？",
+      "mechanism_key": "flytrap.bistable_elastic_snap_buckling_instability_millisecond_closure",
+      "answer_target": "葉瓣在靜止張開時處於高彈性應變的凸面亞穩態，運動細胞膨壓微小釋放瞬間誘發彈性失穩跳躍至凹面穩態。",
+      "scope": "植物生理學、細胞電信號與力敏離子通道。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "捕蠅草葉片閉合在十分之一秒內完成，這種超快運動如何利用葉片幾何雙穩態釋放彈性應變能？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S005: Section 2.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V226（2026-11-16）通過。",
+      "origin": "wave95-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-11284fceff6a44eb",
+          "origin": "wave95-bio-20261116",
+          "locator": "K95-S005: Section 2.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-006",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "捕蠅草閉合初期葉緣刺毛像柵欄般交錯，為什麼特意留下微小縫隙讓極小的昆蟲逃逸？",
+      "mechanism_key": "flytrap.interlocking_cilia_size_selection_energetic_efficiency",
+      "answer_target": "消化微小昆蟲獲得的氮磷收益不足以抵消密封消化與合成消化酶的巨大能量代價，幾何縫隙實現最優能量投資篩選。",
+      "scope": "植物生理學、細胞電信號與力敏離子通道。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "捕蠅草閉合初期葉緣刺毛像柵欄般交錯，為什麼特意留下微小縫隙讓極小的昆蟲逃逸？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S006: Section 3.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V226（2026-11-16）通過。",
+      "origin": "wave95-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-d5f2ac5cec69fa65",
+          "origin": "wave95-bio-20261116",
+          "locator": "K95-S006: Section 3.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-007",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "獵物在夾內掙扎觸發第三次至第五次刺激後，捕蠅草如何啟動茉莉酸信號通路進入密封消化期？",
+      "mechanism_key": "flytrap.repeated_mechanical_trigger_jasmonate_pathway_hermetic_seal",
+      "answer_target": "持續機械刺激激發大量動作電位誘導茉莉酸異亮氨酸（JA-Ile）級聯合成，促使葉緣邊緣細胞緊密壓緊形成密封腔體。",
+      "scope": "植物生理學、細胞電信號與力敏離子通道。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "獵物在夾內掙扎觸發第三次至第五次刺激後，捕蠅草如何啟動茉莉酸信號通路進入密封消化期？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S007: Section 1.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V226（2026-11-16）通過。",
+      "origin": "wave95-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-6e1c18279eeae843",
+          "origin": "wave95-bio-20261116",
+          "locator": "K95-S007: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-008",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "捕蠅草密閉「綠色胃室」後，消化腺體如何分泌高濃度鹽酸與酸性蛋白酶分解昆蟲幾丁質與蛋白質？",
+      "mechanism_key": "flytrap.acid_growth_proton_pump_secretory_gland_protease_cocktail",
+      "answer_target": "質子泵 V-ATPase 與 H+-ATPase 主動將 H+ 泵入密閉胃腔將 pH 降至 2 以下，啟動天冬氨酸蛋白酶與幾丁質酶水解昆蟲。",
+      "scope": "植物生理學、細胞電信號與力敏離子通道。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "捕蠅草密閉「綠色胃室」後，消化腺體如何分泌高濃度鹽酸與酸性蛋白酶分解昆蟲幾丁質與蛋白質？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S008: Section 2.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V226（2026-11-16）通過。",
+      "origin": "wave95-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-aa582ed372a429b7",
+          "origin": "wave95-bio-20261116",
+          "locator": "K95-S008: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-009",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "捕蠅草細胞膜上的銨根轉運蛋白與氨基酸載體如何定向逆濃度梯度吸收分解後的氮磷養分？",
+      "mechanism_key": "flytrap.ammonium_transporter_amino_acid_symporter_nutrient_uptake",
+      "answer_target": "利用強跨膜質子電動勢，質子偶聯同向轉運載體（symporter）主動將胜肽、氨基酸及無機磷酸根高效率攝入腺體細胞。",
+      "scope": "植物生理學、細胞電信號與力敏離子通道。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "捕蠅草細胞膜上的銨根轉運蛋白與氨基酸載體如何定向逆濃度梯度吸收分解後的氮磷養分？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S009: Section 3.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V226（2026-11-16）通過。",
+      "origin": "wave95-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-2451070e43bd3bbc",
+          "origin": "wave95-bio-20261116",
+          "locator": "K95-S009: Section 3.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-010",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "雨滴連續敲擊感覺毛時，捕蠅草為什麼能區分水滴與獵物掙扎從而避免空耗珍貴的閉合能量？",
+      "mechanism_key": "flytrap.rain_filtration_viscoelastic_damping_temporal_frequency_discrimination",
+      "answer_target": "感覺毛關節處黏彈性阻尼濾除高頻柔性水衝擊，且缺少活體昆蟲持續的低頻大角度機械偏轉，電位幅值未達觸發閾值。",
+      "scope": "植物生理學、細胞電信號與力敏離子通道。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雨滴連續敲擊感覺毛時，捕蠅草為什麼能區分水滴與獵物掙扎從而避免空耗珍貴的閉合能量？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S010: Section 1.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V226（2026-11-16）通過。",
+      "origin": "wave95-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-786b720193415c80",
+          "origin": "wave95-bio-20261116",
+          "locator": "K95-S010: Section 1.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-011",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "捕蠅草在缺乏氮素的貧瘠酸性泥炭沼澤中演化，為什麼合成消化酶的能量代價遠高於一般綠色植物？",
+      "mechanism_key": "flytrap.acid_bog_nitrogen_scarcity_protease_synthesis_atp_cost",
+      "answer_target": "酸性泥炭地陽離子交換量低且缺少共生根瘤菌，捕蠅草必須以高耗能的光合腺苷三磷酸（ATP）驅動消化酶合成與跨膜泵運。",
+      "scope": "植物生理學、細胞電信號與力敏離子通道。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "捕蠅草在缺乏氮素的貧瘠酸性泥炭沼澤中演化，為什麼合成消化酶的能量代價遠高於一般綠色植物？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S011: Section 2.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V226（2026-11-16）通過。",
+      "origin": "wave95-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-5d4df2149f8a12a3",
+          "origin": "wave95-bio-20261116",
+          "locator": "K95-S011: Section 2.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-012",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "捕蟲夾在完成一次消化循環後重新張開，葉片背腹兩側細胞如何通過不對稱生長與水動力膨壓重置幾何凸面？",
+      "mechanism_key": "flytrap.trap_reopening_differential_growth_turgor_reset_curvature",
+      "answer_target": "消化結束後內表皮細胞在生長素誘導下不可逆擴展，疊加外表皮細胞水分重吸收，以差速生長將葉瓣反向彎折推回凸面。",
+      "scope": "植物生理學、細胞電信號與力敏離子通道。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "捕蟲夾在完成一次消化循環後重新張開，葉片背腹兩側細胞如何通過不對稱生長與水動力膨壓重置幾何凸面？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S012: Section 3.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V226（2026-11-16）通過。",
+      "origin": "wave95-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-ea83b4ecfee730a6",
+          "origin": "wave95-bio-20261116",
+          "locator": "K95-S012: Section 3.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-013",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "每個捕蠅草捕蟲夾在一生中通常只能閉合與消化3到5次，為什麼頻繁的假觸發會加速葉片衰老死亡？",
+      "mechanism_key": "flytrap.limited_closure_cycles_cellular_senescence_futile_cycle_exhaustion",
+      "answer_target": "每次開合依賴的差速不可逆生長耗盡了葉肉細胞伸長極限，無獵物補償的腺體分泌進一步造成局部養分枯竭與程序性衰老。",
+      "scope": "植物生理學、細胞電信號與力敏離子通道。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每個捕蠅草捕蟲夾在一生中通常只能閉合與消化3到5次，為什麼頻繁的假觸發會加速葉片衰老死亡？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S013: Section 1.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V226（2026-11-16）通過。",
+      "origin": "wave95-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-08c83aee030fa9e6",
+          "origin": "wave95-bio-20261116",
+          "locator": "K95-S013: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-013"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-014",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "仿生微型機器人與柔性抓取器如何借鑒捕蠅草的彈性失穩幾何結構實現無電機毫秒級抓握？",
+      "mechanism_key": "flytrap.biomimetic_soft_gripper_bistable_shell_snap_through_robotics",
+      "answer_target": "利用預應力雙層彈性薄殼的鞍形曲率，微小氣壓或熱刺激即可誘發非線性失穩跳變，實現超輕量高速被動夾持。",
+      "scope": "植物生理學、細胞電信號與力敏離子通道。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "仿生微型機器人與柔性抓取器如何借鑒捕蠅草的彈性失穩幾何結構實現無電機毫秒級抓握？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S014: Section 2.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V226（2026-11-16）通過。",
+      "origin": "wave95-bio-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-49a98e7f970fd27d",
+          "origin": "wave95-bio-20261116",
+          "locator": "K95-S014: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-014"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-015",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "釔鋇銅氧陶瓷在浸入液氮降溫跨越臨界溫度時，為什麼會自發將內部磁力線徹底排出體外？",
+      "mechanism_key": "superconductor.meissner_effect_diamagnetism_spontaneous_field_expulsion",
+      "answer_target": "跨越相變溫度時庫珀對玻色凝聚形成超流體，自發感應無阻表面屏蔽電流產生反向磁場完全抵消體內磁感應強度。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "釔鋇銅氧陶瓷在浸入液氮降溫跨越臨界溫度時，為什麼會自發將內部磁力線徹底排出體外？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S015: Section 1.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-4ca832ab7f06eab4",
+          "origin": "wave95-mat-20261116",
+          "locator": "K95-S015: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-015"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-016",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "超導體內部的庫珀電子對如何凝聚為巨觀量子基態並維持零電阻超導電流？",
+      "mechanism_key": "superconductor.cooper_pairs_macroscopic_quantum_wavefunction_zero_resistance",
+      "answer_target": "費米子電子通過微觀有效吸引力配對化為自旋為零的複合玻色子，簡併至同一單一巨觀波函數免受晶格雜質碰撞散射。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "超導體內部的庫珀電子對如何凝聚為巨觀量子基態並維持零電阻超導電流？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S016: Section 2.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-de8bcc5758ad1a1b",
+          "origin": "wave95-mat-20261116",
+          "locator": "K95-S016: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-016"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-017",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "倫敦穿透深度如何決定超導體表面屏蔽電流層的納米級厚度？",
+      "mechanism_key": "superconductor.london_penetration_depth_surface_screening_exponential_decay",
+      "answer_target": "磁場並非在超導體表面突變為零，而是在由超導載流子密度決定的納米特徵深度內呈指數衰減。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "倫敦穿透深度如何決定超導體表面屏蔽電流層的納米級厚度？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S017: Section 3.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-4c035557b1261567",
+          "origin": "wave95-mat-20261116",
+          "locator": "K95-S017: Section 3.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-017"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-018",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "第二類超導體在高於下臨界磁場時，磁力線為什麼能以量子化渦旋的形式貫穿超導體？",
+      "mechanism_key": "superconductor.type_ii_mixed_state_abrikosov_vortex_quantized_flux",
+      "answer_target": "當金茲堡-朗道參數大於臨界比值時，超導-正常界面能為負，磁力線以帶有單個磁通量子的細絲束貫通體系以降低總自由能。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第二類超導體在高於下臨界磁場時，磁力線為什麼能以量子化渦旋的形式貫穿超導體？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S018: Section 1.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-bb3c5a5ba0b4a920",
+          "origin": "wave95-mat-20261116",
+          "locator": "K95-S018: Section 1.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-018"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-019",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "磁通量釘扎效應如何將磁力線鎖定在高溫超導晶體內部的微觀缺陷與晶界處？",
+      "mechanism_key": "superconductor.flux_pinning_microscopic_defects_potential_well",
+      "answer_target": "非超導缺陷處序參量本來即為零，渦旋核心落入此處無需額外付出凝聚破壞能，形成微觀位能深阱阻止渦旋移動。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磁通量釘扎效應如何將磁力線鎖定在高溫超導晶體內部的微觀缺陷與晶界處？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S019: Section 2.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-8006d864fe8a512c",
+          "origin": "wave95-mat-20261116",
+          "locator": "K95-S019: Section 2.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-019"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-020",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "為什麼被釘扎的高溫超導塊材不僅能穩定懸浮在磁鐵上方，倒置時也能穩固懸掛在軌道下方而不掉落？",
+      "mechanism_key": "superconductor.quantum_levitation_suspension_bidirectional_restoring_force",
+      "answer_target": "釘扎位能深阱對任何空間位移與磁場變化均產生抵抗恢復力，超導體被鎖定在凝固冷卻時的磁力線構型中。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "為什麼被釘扎的高溫超導塊材不僅能穩定懸浮在磁鐵上方，倒置時也能穩固懸掛在軌道下方而不掉落？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S020: Section 3.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-660790cb5cf08633",
+          "origin": "wave95-mat-20261116",
+          "locator": "K95-S020: Section 3.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-020"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-021",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "超導磁懸浮與傳統抗磁性磁懸浮相比，為什麼具備天然的三維空間剛度與自穩定性而無需主動電控反饋？",
+      "mechanism_key": "superconductor.three_dimensional_stiffness_self_stability_earnshaw_bypass",
+      "answer_target": "強磁通釘扎產生的被動磁滯恢復剛度突破恩紹定理限制，在六個自由度上同時提供位移阻抗實現本徵穩定。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "超導磁懸浮與傳統抗磁性磁懸浮相比，為什麼具備天然的三維空間剛度與自穩定性而無需主動電控反饋？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S021: Section 1.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-611bd6b8750b96e1",
+          "origin": "wave95-mat-20261116",
+          "locator": "K95-S021: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-021"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-022",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "高溫超導體中的銅氧原子平面如何為d波配對對稱性提供二維關聯電子通道？",
+      "mechanism_key": "superconductor.cuo2_planes_strong_correlation_d_wave_symmetry",
+      "answer_target": "反鐵磁自旋漲落媒介了平面內強關聯電子間的非傳統吸引交互作用，導致能隙函數在動量空間具有四重節點符號反轉。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "高溫超導體中的銅氧原子平面如何為d波配對對稱性提供二維關聯電子通道？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S022: Section 2.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-442113df1a1d605a",
+          "origin": "wave95-mat-20261116",
+          "locator": "K95-S022: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-022"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-023",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "當外加磁場或溫度超過臨界範圍時，高溫超導體內的量子渦旋液化如何導致耗散電阻劇增？",
+      "mechanism_key": "superconductor.vortex_glass_liquid_melting_thermal_fluctuations_resistance",
+      "answer_target": "強熱漲落克服釘扎位能深阱使有規則的渦旋晶格融化為自由流動的渦旋液體，在電流洛倫茲力驅動下滑移產生焦耳熱。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "當外加磁場或溫度超過臨界範圍時，高溫超導體內的量子渦旋液化如何導致耗散電阻劇增？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S023: Section 3.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-f21f9f50157ec7f9",
+          "origin": "wave95-mat-20261116",
+          "locator": "K95-S023: Section 3.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-023"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-024",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "醫用磁共振成像與核融合托卡馬克強磁場線圈為什麼必須採用超導材料來維持永久閉環電流？",
+      "mechanism_key": "superconductor.persistent_current_mode_mri_tokamak_high_field_stability",
+      "answer_target": "超導閉合線圈在穩態下完全無歐姆耗散，數千安培超導電流經持久開關閉合後能在零外接電源下維持極高均勻度恆定強磁場。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "醫用磁共振成像與核融合托卡馬克強磁場線圈為什麼必須採用超導材料來維持永久閉環電流？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S024: Section 1.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-d11679b30c404af2",
+          "origin": "wave95-mat-20261116",
+          "locator": "K95-S024: Section 1.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-024"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-025",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "高溫超導無損輸電電纜在傳輸巨大交流電流時，交流損耗來源於哪些微觀磁滯機制？",
+      "mechanism_key": "superconductor.ac_loss_hysteresis_eddy_current_flux_motion",
+      "answer_target": "隨時間交變的自生磁場迫使超導體邊緣渦旋週期性反向進出與穿透，微觀磁通運動克服釘扎勢能引發磁滯耗散。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "高溫超導無損輸電電纜在傳輸巨大交流電流時，交流損耗來源於哪些微觀磁滯機制？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S025: Section 2.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-304798ce406231ae",
+          "origin": "wave95-mat-20261116",
+          "locator": "K95-S025: Section 2.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-025"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-026",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "超導量子干涉儀如何利用約瑟夫森效應探測人體大腦微弱至皮特斯拉級的極微磁場？",
+      "mechanism_key": "superconductor.squid_josephson_junction_phase_interference_magnetoencephalography",
+      "answer_target": "磁通量子穿過雙約瑟夫森結超導環時調節兩側波函數相位差，干涉調製臨界電流轉化為可高靈敏測量的電壓擺動。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "超導量子干涉儀如何利用約瑟夫森效應探測人體大腦微弱至皮特斯拉級的極微磁場？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S026: Section 3.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-558949074917efa9",
+          "origin": "wave95-mat-20261116",
+          "locator": "K95-S026: Section 3.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-026"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-027",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "為什麼目前的銅氧化物高溫超導體仍需依靠液氮冷卻，追求室溫常壓超導的微觀晶格瓶頸在哪裡？",
+      "mechanism_key": "superconductor.room_temperature_bottleneck_phonon_frequency_spin_fluctuation",
+      "answer_target": "晶格熱振動在室溫下過於劇烈易打散庫珀對，且高配對結合能往往要求超高聲子頻率或極強關聯態導致晶格結構相不穩定。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "為什麼目前的銅氧化物高溫超導體仍需依靠液氮冷卻，追求室溫常壓超導的微觀晶格瓶頸在哪裡？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S027: Section 1.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-b7e84c7c130b7a12",
+          "origin": "wave95-mat-20261116",
+          "locator": "K95-S027: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-027"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-028",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "高溫超導磁浮列車在低真空管道內高速行駛時，低熱負載與磁阻尼如何突破陸地交通時速極限？",
+      "mechanism_key": "superconductor.evactuated_tube_maglev_low_magnetic_drag_passive_stability",
+      "answer_target": "真空環境消除了超音速氣動阻力與激波，超導被動釘扎軌道消除機械接觸與受電弓摩擦，磁滯阻尼在勻速時趨近於零。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "高溫超導磁浮列車在低真空管道內高速行駛時，低熱負載與磁阻尼如何突破陸地交通時速極限？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S028: Section 2.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-mat-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-532ce29de6189d67",
+          "origin": "wave95-mat-20261116",
+          "locator": "K95-S028: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-mat.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-028"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-029",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "在第二類超導體中，阿布里科索夫渦旋晶格為什麼會自發排布成微觀正六角形幾何陣列？",
+      "mechanism_key": "superconductor.abrikosov_triangular_vortex_lattice_repulsion_energy_minimization",
+      "answer_target": "相鄰同向磁通渦旋周圍的超導環流互相排斥，二維平面內等向斥力相互作用在正三角配位下使總自由能最小化。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在第二類超導體中，阿布里科索夫渦旋晶格為什麼會自發排布成微觀正六角形幾何陣列？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S029: Section 1.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-0c29123389f0ae12",
+          "origin": "wave95-physics-20261116",
+          "locator": "K95-S029: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-029"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-030",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "單個量子化磁通量通道的核心內部超導序參量為什麼會歸零並退化為正常態金屬？",
+      "mechanism_key": "superconductor.vortex_core_order_parameter_phase_singularity_coherence_length",
+      "answer_target": "環繞渦旋中心的波函數相位環路積分為 2π，中心點存在拓撲相位奇點使得超導波函數振幅必須精確縮減至零。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "單個量子化磁通量通道的核心內部超導序參量為什麼會歸零並退化為正常態金屬？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S030: Section 2.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-c02a3ccb0152fda2",
+          "origin": "wave95-physics-20261116",
+          "locator": "K95-S030: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-030"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-031",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "每個磁通量子為什麼具有嚴格固定的物理常數數值約 2.07×10^-15 韋伯？",
+      "mechanism_key": "superconductor.flux_quantum_single_valued_wavefunction_pairing_charge_2e",
+      "answer_target": "巨觀波函數單值性要求封閉超導環路相移為 2π 整數倍，配合載流子為雙電子庫珀對（電荷 2e）精確推導出 h/2e 常數。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每個磁通量子為什麼具有嚴格固定的物理常數數值約 2.07×10^-15 韋伯？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S031: Section 3.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-79b0d176455c0d98",
+          "origin": "wave95-physics-20261116",
+          "locator": "K95-S031: Section 3.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-031"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-032",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "人工引入的納米級柱狀缺陷如何顯著提高超導線材在高磁場下的臨界電流密度？",
+      "mechanism_key": "superconductor.columnar_defects_correlated_pinning_critical_current_enhancement",
+      "answer_target": "離子輻照產生的連續圓柱非晶缺陷與磁通線幾何維度精確匹配，提供沿全線長度的強關聯釘扎防止磁通蠕變。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人工引入的納米級柱狀缺陷如何顯著提高超導線材在高磁場下的臨界電流密度？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S032: Section 1.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-f77c60511b58faac",
+          "origin": "wave95-physics-20261116",
+          "locator": "K95-S032: Section 1.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-032"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-033",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "當傳輸電流通過帶有渦旋的超導體時，洛倫茲力如何驅動渦旋橫向蠕變並產生耗散電壓？",
+      "mechanism_key": "superconductor.lorentz_force_flux_creep_flow_dissipation_faraday_law",
+      "answer_target": "傳輸電流密度與磁通線正交產生橫向驅動力，渦旋越過位能障滑移時伴隨的磁通剪切依據法拉第定律感應出耗散電場。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "當傳輸電流通過帶有渦旋的超導體時，洛倫茲力如何驅動渦旋橫向蠕變並產生耗散電壓？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S033: Section 2.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-b1b2c6cc3292e3c2",
+          "origin": "wave95-physics-20261116",
+          "locator": "K95-S033: Section 2.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-033"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-034",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "單通量量子（SFQ）超導邏輯電路為什麼能以百吉赫茲時脈運行且功耗僅為半導體的千分之一？",
+      "mechanism_key": "superconductor.single_flux_quantum_logic_sub_picosecond_picowatt_switching",
+      "answer_target": "以單個磁通量子的有無或運動作為數位脈衝，約瑟夫森結皮秒級相翻轉過程僅消耗阿焦耳級的磁能。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "單通量量子（SFQ）超導邏輯電路為什麼能以百吉赫茲時脈運行且功耗僅為半導體的千分之一？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S034: Section 3.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-c5d7017ee3b8cfd8",
+          "origin": "wave95-physics-20261116",
+          "locator": "K95-S034: Section 3.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-034"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-035",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "富氫化合物如十氫化鑭在百萬大氣壓下展現近室溫超導特性的聲子媒介強耦合機制是什麼？",
+      "mechanism_key": "superconductor.hydride_high_pressure_light_hydrogen_phonon_strong_coupling",
+      "answer_target": "極輕的氫原子核在高壓晶格中提供超高特徵聲子頻率，配合緊密成鍵帶來的高電子態密度誘發強 BCS 電-聲子配對。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "富氫化合物如十氫化鑭在百萬大氣壓下展現近室溫超導特性的聲子媒介強耦合機制是什麼？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S035: Section 1.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb3d7ee3a8a84617",
+          "origin": "wave95-physics-20261116",
+          "locator": "K95-S035: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-035"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-036",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "魔角雙層石墨烯為什麼在約1.1度特定扭轉角下會自發湧現出非常規超導電性？",
+      "mechanism_key": "superconductor.magic_angle_twisted_bilayer_graphene_flat_band_correlation",
+      "answer_target": "長週期莫爾超晶格使費米面處費米速度歸零形成極平能帶，動能被大幅壓制讓電子庫侖關聯效應主導並誘發配對相變。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "魔角雙層石墨烯為什麼在約1.1度特定扭轉角下會自發湧現出非常規超導電性？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S036: Section 2.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-83bda4d9288b945f",
+          "origin": "wave95-physics-20261116",
+          "locator": "K95-S036: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-036"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-037",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "拓撲超導體渦旋核心中的馬約拉納零能模如何為容錯量子計算提供非阿貝爾編織基礎？",
+      "mechanism_key": "superconductor.majorana_zero_modes_vortex_core_non_abelian_braiding",
+      "answer_target": "零能束縛態由自共軛準粒子構成，其量子基態簡併度在多個渦旋空間交換編織時演生非對易么正矩陣操作具備抗雜訊拓撲保護。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "拓撲超導體渦旋核心中的馬約拉納零能模如何為容錯量子計算提供非阿貝爾編織基礎？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S037: Section 3.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-dcea1872394319b6",
+          "origin": "wave95-physics-20261116",
+          "locator": "K95-S037: Section 3.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-037"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-038",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "熱漲落與量子隧穿如何引發超導薄膜中磁通雪崩式跳躍並導致超導態局部熱失控？",
+      "mechanism_key": "superconductor.thermomagnetic_instability_flux_avalanche_local_quench",
+      "answer_target": "局部磁通快速運動釋放的焦耳熱降低局部臨界電流，進一步誘發更多磁通湧入形成正反饋熱磁不穩定雪崩。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "熱漲落與量子隧穿如何引發超導薄膜中磁通雪崩式跳躍並導致超導態局部熱失控？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S038: Section 1.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-13a0c84d018c24cb",
+          "origin": "wave95-physics-20261116",
+          "locator": "K95-S038: Section 1.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-038"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-039",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "在液氦溫區運行的超導重力儀為什麼能靈敏監測到地球固體潮引起的高達十億分之一的微小重力加速度波動？",
+      "mechanism_key": "superconductor.superconducting_gravimeter_meissner_levitation_niobium_sphere",
+      "answer_target": "高純鈮金屬球在持久超導電流磁場中完全無機械彈簧滯後懸浮，重力微小變化由超導電容傳感器精確解調無零點漂移。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在液氦溫區運行的超導重力儀為什麼能靈敏監測到地球固體潮引起的高達十億分之一的微小重力加速度波動？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S039: Section 2.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-61f2c6c99988ca85",
+          "origin": "wave95-physics-20261116",
+          "locator": "K95-S039: Section 2.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-039"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-040",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "超導射頻共振腔在粒子加速器中如何實現超高品質因數Q值並極大降低高能粒子加速的微波損耗？",
+      "mechanism_key": "superconductor.srf_cavity_bcs_surface_resistance_high_quality_factor",
+      "answer_target": "純鈮腔壁表面超低 BCS 表面電阻將微波功率耗散降低四個數量級，腔內得以建立極高加速電場梯度而無冷卻過載。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "超導射頻共振腔在粒子加速器中如何實現超高品質因數Q值並極大降低高能粒子加速的微波損耗？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S040: Section 3.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-7ed50a51e2dd2fbe",
+          "origin": "wave95-physics-20261116",
+          "locator": "K95-S040: Section 3.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-040"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-041",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "鐵基高溫超導體的發現如何打破了鐵磁性元素與高溫超導性絕對互斥的傳統認知？",
+      "mechanism_key": "superconductor.iron_based_superconductor_antiferromagnetic_spin_fluctuations",
+      "answer_target": "鐵原子3d軌道未填滿電子在Fe-As層中通過反鐵磁自旋漲落媒介多帶 s± 波配對，證實磁相互作用本身可成為超導配對黏合劑。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鐵基高溫超導體的發現如何打破了鐵磁性元素與高溫超導性絕對互斥的傳統認知？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S041: Section 1.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc5a913321b621c0",
+          "origin": "wave95-physics-20261116",
+          "locator": "K95-S041: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-041"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-042",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "巨觀量子相干態下的玻色-愛因斯坦凝聚與超導庫珀對凝聚在相變統計力學上有哪些深層微觀共通性？",
+      "mechanism_key": "superconductor.bcs_bec_crossover_unitary_fermi_gas_macroscopic_phase_coherence",
+      "answer_target": "兩者皆源於全同微觀粒子自發破缺 U(1) 規範對稱性並簡併至單一宏觀相干態，可在強相互作用超冷費米氣體中連續平滑過渡。",
+      "scope": "凝聚態物理、超導電性與電磁界面物理。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "巨觀量子相干態下的玻色-愛因斯坦凝聚與超導庫珀對凝聚在相變統計力學上有哪些深層微觀共通性？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S042: Section 2.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V227（2026-11-16）通過。",
+      "origin": "wave95-physics-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e3104fe882b7678",
+          "origin": "wave95-physics-20261116",
+          "locator": "K95-S042: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-042"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-043",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "固態硬碟斷電後數據能保存數年不丟失，浮閘如何利用超薄氧化層將電子電荷長期封閉禁錮？",
+      "mechanism_key": "nand.floating_gate_charge_storage_potential_barrier_isolation",
+      "answer_target": "多晶矽浮閘四周完全被高質量二氧化矽與 ONO 絕緣層包覆，高達 3.1 eV 的能量勢壘使常溫下電子熱激發逃逸率極低。",
+      "scope": "半導體微電子學、固態量子存儲與演算法架構。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "固態硬碟斷電後數據能保存數年不丟失，浮閘如何利用超薄氧化層將電子電荷長期封閉禁錮？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S043: Section 1.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V228（2026-11-16）通過。",
+      "origin": "wave95-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-14193a93182abe53",
+          "origin": "wave95-tech-20261116",
+          "locator": "K95-S043: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-043"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-044",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "福勒-諾德海姆量子穿隧效應如何在高壓電場下引導電子穿透二氧化矽三角勢壘注入浮閘？",
+      "mechanism_key": "nand.fowler_nordheim_quantum_tunneling_triangular_barrier_programming",
+      "answer_target": "控制閘極施加約 20V 強電場使絕緣氧化層導帶傾斜呈三角勢壘，電子波函數有限衰減長度實現無損傷量子隧穿注入。",
+      "scope": "半導體微電子學、固態量子存儲與演算法架構。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "福勒-諾德海姆量子穿隧效應如何在高壓電場下引導電子穿透二氧化矽三角勢壘注入浮閘？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S044: Section 2.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V228（2026-11-16）通過。",
+      "origin": "wave95-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-7d3af847b73ad648",
+          "origin": "wave95-tech-20261116",
+          "locator": "K95-S044: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-044"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-045",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "為什麼快閃記憶體必須以「頁」為單位讀取寫入，卻只能以整個「區塊」為單位高壓擦除？",
+      "mechanism_key": "nand.page_program_block_erase_substrate_sharing_architecture",
+      "answer_target": "同區塊內所有單元共享同一個 P 井襯底，擦除時向襯底施加全局高壓脈衝迫使整個物理區塊內所有浮閘電子同時被抽離。",
+      "scope": "半導體微電子學、固態量子存儲與演算法架構。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "為什麼快閃記憶體必須以「頁」為單位讀取寫入，卻只能以整個「區塊」為單位高壓擦除？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S045: Section 3.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V228（2026-11-16）通過。",
+      "origin": "wave95-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-c196af7ca9bc4a1e",
+          "origin": "wave95-tech-20261116",
+          "locator": "K95-S045: Section 3.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-045"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-046",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "每次高壓擦寫過程如何對穿隧氧化層造成不可逆的微觀晶格缺陷與電子陷阱累積？",
+      "mechanism_key": "nand.oxide_fatigue_trap_assisted_tunneling_endurance_degradation",
+      "answer_target": "高能熱載流子衝擊打斷 Si-O 鍵產生界面態與體缺陷陷阱，引發應力感生漏電（SILC）使存儲電荷逐步洩漏喪失保持力。",
+      "scope": "半導體微電子學、固態量子存儲與演算法架構。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每次高壓擦寫過程如何對穿隧氧化層造成不可逆的微觀晶格缺陷與電子陷阱累積？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S046: Section 1.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V228（2026-11-16）通過。",
+      "origin": "wave95-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-b95d4d69c395809f",
+          "origin": "wave95-tech-20261116",
+          "locator": "K95-S046: Section 1.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-046"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-047",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "主控晶片如何通過動態與靜態損耗平衡演算法將擦寫磨損均勻分攤到全盤所有物理區塊？",
+      "mechanism_key": "nand.wear_leveling_dynamic_static_ftl_block_cycle_equalization",
+      "answer_target": "快閃記憶體轉換層（FTL）將冷靜態數據主動搬移至高磨損區塊，騰出低磨損健康區塊承擔動態頻繁寫入，防止局部過早壞死。",
+      "scope": "半導體微電子學、固態量子存儲與演算法架構。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "主控晶片如何通過動態與靜態損耗平衡演算法將擦寫磨損均勻分攤到全盤所有物理區塊？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S047: Section 2.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V228（2026-11-16）通過。",
+      "origin": "wave95-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-66ad68d5ad30844a",
+          "origin": "wave95-tech-20261116",
+          "locator": "K95-S047: Section 2.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-047"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-048",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "固態硬碟在頻繁小檔案隨機寫入時產生的「寫入放大」現象在微觀架構層面是如何形成的？",
+      "mechanism_key": "nand.write_amplification_factor_page_migration_garbage_collection",
+      "answer_target": "由於不能原地覆蓋，更新零散頁面必須將原區塊有效數據複製至新區塊再擦除舊區塊，導致主控實際寫入字節數倍增於主機請求。",
+      "scope": "半導體微電子學、固態量子存儲與演算法架構。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "固態硬碟在頻繁小檔案隨機寫入時產生的「寫入放大」現象在微觀架構層面是如何形成的？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S048: Section 3.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V228（2026-11-16）通過。",
+      "origin": "wave95-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-092c9f54bb603297",
+          "origin": "wave95-tech-20261116",
+          "locator": "K95-S048: Section 3.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-048"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-049",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "垃圾回收機制與操作系統 TRIM 指令如何協同工作以精確釋放含有無效數據的髒區塊？",
+      "mechanism_key": "nand.garbage_collection_trim_command_lba_invalidation_clean_pages",
+      "answer_target": "TRIM 通知 FTL 邏輯位址對應文件已刪除無效，垃圾回收挑選無效頁最多區塊搬移剩餘有效數據並擦除重置，減輕寫入放大。",
+      "scope": "半導體微電子學、固態量子存儲與演算法架構。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "垃圾回收機制與操作系統 TRIM 指令如何協同工作以精確釋放含有無效數據的髒區塊？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S049: Section 1.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V228（2026-11-16）通過。",
+      "origin": "wave95-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-c3a2cfab6770d4a5",
+          "origin": "wave95-tech-20261116",
+          "locator": "K95-S049: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-049"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-050",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "從 SLC 發展到 TLC、QLC，單個存儲單元如何通過精密劃分微小電壓閾值窗口來區分多個比特狀態？",
+      "mechanism_key": "nand.multi_level_cell_threshold_voltage_distribution_ispp_programming",
+      "answer_target": "採用增量步進脈衝編程（ISPP）控制注入電子數量，將閾值電壓細緻分割為 8 個（TLC）或 16 個（QLC）窄分佈狀態。",
+      "scope": "半導體微電子學、固態量子存儲與演算法架構。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "從 SLC 發展到 TLC、QLC，單個存儲單元如何通過精密劃分微小電壓閾值窗口來區分多個比特狀態？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S050: Section 2.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V228（2026-11-16）通過。",
+      "origin": "wave95-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-1a13591d17793a10",
+          "origin": "wave95-tech-20261116",
+          "locator": "K95-S050: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-050"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-051",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "電荷捕獲型快閃記憶體相比傳統多晶矽浮閘如何有效避免單點缺陷漏電並實現垂直3D堆疊？",
+      "mechanism_key": "nand.charge_trap_flash_silicon_nitride_insulating_layer_localized_electrons",
+      "answer_target": "氮化矽層中電子被局域禁錮在離散陷阱中不自由流動，即便氧化層出現單個微觀針孔缺陷也不會導致全體電荷瞬間流失。",
+      "scope": "半導體微電子學、固態量子存儲與演算法架構。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "電荷捕獲型快閃記憶體相比傳統多晶矽浮閘如何有效避免單點缺陷漏電並實現垂直3D堆疊？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S051: Section 3.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V228（2026-11-16）通過。",
+      "origin": "wave95-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-9aca410f14f441ea",
+          "origin": "wave95-tech-20261116",
+          "locator": "K95-S051: Section 3.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-051"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-052",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "現代3D NAND快閃記憶體如何通過沉積數百層氧化矽與氮化矽並蝕刻深寬比極高微孔來實現垂直字線通道？",
+      "mechanism_key": "nand.3d_nand_vertical_channel_high_aspect_ratio_macat_etching",
+      "answer_target": "採用交替介質疊層與低溫等離子體超高深寬比乾法蝕刻一體成型貫穿數百層微孔，在圓柱內壁沉積多晶矽形成環抱式垂直通道。",
+      "scope": "半導體微電子學、固態量子存儲與演算法架構。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "現代3D NAND快閃記憶體如何通過沉積數百層氧化矽與氮化矽並蝕刻深寬比極高微孔來實現垂直字線通道？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S052: Section 1.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V228（2026-11-16）通過。",
+      "origin": "wave95-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-a061d32eba927e70",
+          "origin": "wave95-tech-20261116",
+          "locator": "K95-S052: Section 1.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-052"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-053",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "低密度奇偶校驗碼（LDPC）硬判決與軟判決糾錯演算法如何從雜訊與串擾嚴重的模擬讀取電壓中恢復正確數據？",
+      "mechanism_key": "nand.ldpc_soft_decision_decoding_log_likelihood_ratio_cross_talk_recovery",
+      "answer_target": "多次偏移參考電壓採樣獲取對數似然比（LLR）軟信息，利用稀疏校驗矩陣在坦納圖上進行置信度傳播反覆迭代修正翻轉錯誤。",
+      "scope": "半導體微電子學、固態量子存儲與演算法架構。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "低密度奇偶校驗碼（LDPC）硬判決與軟判決糾錯演算法如何從雜訊與串擾嚴重的模擬讀取電壓中恢復正確數據？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S053: Section 2.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V228（2026-11-16）通過。",
+      "origin": "wave95-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-a77ceaa64d36b7ae",
+          "origin": "wave95-tech-20261116",
+          "locator": "K95-S053: Section 2.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-053"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-054",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "長期高溫存放為什麼會加速浮閘內部電子的熱激發洩漏並導致未通電硬碟數據自發損壞？",
+      "mechanism_key": "nand.thermal_activation_charge_loss_arrhenius_relation_data_retention",
+      "answer_target": "依據阿倫尼烏斯定律，高溫賦予被捕獲電子足夠熱能跨越或穿隧過缺陷降低的氧化層勢壘，導致閾值電壓左移越界產生讀取錯誤。",
+      "scope": "半導體微電子學、固態量子存儲與演算法架構。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "長期高溫存放為什麼會加速浮閘內部電子的熱激發洩漏並導致未通電硬碟數據自發損壞？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S054: Section 3.2; Table 2",
+      "notes": "第四十五輪候選。覆核 V228（2026-11-16）通過。",
+      "origin": "wave95-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb6cdf5f2ce8b8d4",
+          "origin": "wave95-tech-20261116",
+          "locator": "K95-S054: Section 3.2; Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-054"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-055",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "當固態硬碟檢測到壞塊時，主控預留空間（OP）中的備用區塊如何實現透明的動態物理重映射？",
+      "mechanism_key": "nand.over_provisioning_bad_block_management_dynamic_remapping",
+      "answer_target": "主控在壞塊標記表中登錄失效物理位址，利用預留區塊無縫接替該邏輯區塊映射，主機操作系統完全無感知無中斷。",
+      "scope": "半導體微電子學、固態量子存儲與演算法架構。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "當固態硬碟檢測到壞塊時，主控預留空間（OP）中的備用區塊如何實現透明的動態物理重映射？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S055: Section 1.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V228（2026-11-16）通過。",
+      "origin": "wave95-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-2432aa050632a5fb",
+          "origin": "wave95-tech-20261116",
+          "locator": "K95-S055: Section 1.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-055"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K95-056",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "未來基於相變材料或阻變式存儲器的存內計算架構如何打破馮·諾依曼存算分離架構能效瓶頸？",
+      "mechanism_key": "nand.computing_in_memory_rram_pcm_crossbar_analog_matrix_multiplication",
+      "answer_target": "利用交叉陣列單元的非揮發可調電導直接依據基爾霍夫定律與歐姆定律完成類比矩陣乘加運算，消除了總線數據搬移能耗。",
+      "scope": "半導體微電子學、固態量子存儲與演算法架構。純粹科學解說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "未來基於相變材料或阻變式存儲器的存內計算架構如何打破馮·諾依曼存算分離架構能效瓶頸？：微觀結構與電化學相變揭開了自然與工程的底層物理奧秘。",
+        "visual": "劇場級三維高清微觀科學動畫，動態展示分子原子微觀排布與能量相變過程。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "K95-S056: Section 2.1; Table 1",
+      "notes": "第四十五輪候選。覆核 V228（2026-11-16）通過。",
+      "origin": "wave95-tech-20261116",
+      "source_refs": [
+        {
+          "source_id": "SRC-e64e12821dafce0e",
+          "origin": "wave95-tech-20261116",
+          "locator": "K95-S056: Section 2.1; Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave95-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K95-056"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
     }
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 6146
+    "count": 6202
   },
   "dedup": {
     "aliases": {
@@ -270436,7 +272868,63 @@
       "K94-011": "K94-011",
       "K94-012": "K94-012",
       "K94-013": "K94-013",
-      "K94-014": "K94-014"
+      "K94-014": "K94-014",
+      "K95-001": "K95-001",
+      "K95-002": "K95-002",
+      "K95-003": "K95-003",
+      "K95-004": "K95-004",
+      "K95-005": "K95-005",
+      "K95-006": "K95-006",
+      "K95-007": "K95-007",
+      "K95-008": "K95-008",
+      "K95-009": "K95-009",
+      "K95-010": "K95-010",
+      "K95-011": "K95-011",
+      "K95-012": "K95-012",
+      "K95-013": "K95-013",
+      "K95-014": "K95-014",
+      "K95-015": "K95-015",
+      "K95-016": "K95-016",
+      "K95-017": "K95-017",
+      "K95-018": "K95-018",
+      "K95-019": "K95-019",
+      "K95-020": "K95-020",
+      "K95-021": "K95-021",
+      "K95-022": "K95-022",
+      "K95-023": "K95-023",
+      "K95-024": "K95-024",
+      "K95-025": "K95-025",
+      "K95-026": "K95-026",
+      "K95-027": "K95-027",
+      "K95-028": "K95-028",
+      "K95-029": "K95-029",
+      "K95-030": "K95-030",
+      "K95-031": "K95-031",
+      "K95-032": "K95-032",
+      "K95-033": "K95-033",
+      "K95-034": "K95-034",
+      "K95-035": "K95-035",
+      "K95-036": "K95-036",
+      "K95-037": "K95-037",
+      "K95-038": "K95-038",
+      "K95-039": "K95-039",
+      "K95-040": "K95-040",
+      "K95-041": "K95-041",
+      "K95-042": "K95-042",
+      "K95-043": "K95-043",
+      "K95-044": "K95-044",
+      "K95-045": "K95-045",
+      "K95-046": "K95-046",
+      "K95-047": "K95-047",
+      "K95-048": "K95-048",
+      "K95-049": "K95-049",
+      "K95-050": "K95-050",
+      "K95-051": "K95-051",
+      "K95-052": "K95-052",
+      "K95-053": "K95-053",
+      "K95-054": "K95-054",
+      "K95-055": "K95-055",
+      "K95-056": "K95-056"
     },
     "merges": [
       {
@@ -302391,6 +304879,20 @@
         ]
       },
       {
+        "id": "K93-045~K95-018",
+        "a": "K93-045",
+        "b": "K95-018",
+        "question_score": 0.531,
+        "answer_score": 0.175,
+        "key_score": 0.625,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "第二類超導體在高磁場下並沒有失去超導性，為什麼磁力線能以量子化漩渦的形式穿透體內？",
+          "第二類超導體在高於下臨界磁場時，磁力線為什麼能以量子化渦旋的形式貫穿超導體？"
+        ]
+      },
+      {
         "id": "D2244~L77-002",
         "a": "D2244",
         "b": "L77-002",
@@ -302811,6 +305313,20 @@
         ]
       },
       {
+        "id": "K90-034~K95-051",
+        "a": "K90-034",
+        "b": "K95-051",
+        "question_score": 0.3,
+        "answer_score": 0.4,
+        "key_score": 0.588,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "電荷陷阱快閃記憶體（Charge Trap Flash）相較傳統多晶矽浮閘，為何能抗局部微裂縫漏電？",
+          "電荷捕獲型快閃記憶體相比傳統多晶矽浮閘如何有效避免單點缺陷漏電並實現垂直3D堆疊？"
+        ]
+      },
+      {
         "id": "L318~T55-021",
         "a": "L318",
         "b": "T55-021",
@@ -302864,6 +305380,20 @@
         "questions": [
           "大象鼻子沒有骨頭，伸長去拿東西時是整條平均拉長嗎？",
           "舌頭沒有骨頭，豬嚼東西時，舌頭是整條拉長再縮回嗎？"
+        ]
+      },
+      {
+        "id": "K90-039~K95-052",
+        "a": "K90-039",
+        "b": "K95-052",
+        "question_score": 0.375,
+        "answer_score": 0.036,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "3D NAND 快閃記憶體垂直堆疊超過兩百層時，超深高深寬比蝕刻為何面臨錐度塌陷？",
+          "現代3D NAND快閃記憶體如何通過沉積數百層氧化矽與氮化矽並蝕刻深寬比極高微孔來實現垂直字線通道？"
         ]
       },
       {
@@ -302948,6 +305478,20 @@
         "questions": [
           "太空網路中間斷線，資料能先在半路等下一班嗎？",
           "太空網路斷線時，資料怎麼不會掉？"
+        ]
+      },
+      {
+        "id": "K94-049~K95-036",
+        "a": "K94-049",
+        "b": "K95-036",
+        "question_score": 0.113,
+        "answer_score": 0.33,
+        "key_score": 0.842,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "將兩層只有一個碳原子厚度的石墨烯旋轉精確的一點一度「魔角」，絕緣體為什麼會奇蹟般轉化為高溫超導體？",
+          "魔角雙層石墨烯為什麼在約1.1度特定扭轉角下會自發湧現出非常規超導電性？"
         ]
       },
       {
@@ -303217,6 +305761,20 @@
         ]
       },
       {
+        "id": "K93-043~K95-015",
+        "a": "K93-043",
+        "b": "K95-015",
+        "question_score": 0.265,
+        "answer_score": 0.206,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "超導體被冷卻到臨界溫度以下時，外部磁力線為什麼會被百分之百完全排出體外一絲不存？",
+          "釔鋇銅氧陶瓷在浸入液氮降溫跨越臨界溫度時，為什麼會自發將內部磁力線徹底排出體外？"
+        ]
+      },
+      {
         "id": "P71-006~P71-007",
         "a": "P71-006",
         "b": "P71-007",
@@ -303410,6 +305968,20 @@
         "questions": [
           "大象鼻子上的皺紋是天生的，還是用出來的？",
           "大象的左撇右撇，是鼻子用久了才練出來的嗎？"
+        ]
+      },
+      {
+        "id": "K90-033~K95-044",
+        "a": "K90-033",
+        "b": "K95-044",
+        "question_score": 0.164,
+        "answer_score": 0.226,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "快閃記憶體中微縮至十納米的浮閘（Floating Gate），電子如何藉由量子穿隧逃逸？",
+          "福勒-諾德海姆量子穿隧效應如何在高壓電場下引導電子穿透二氧化矽三角勢壘注入浮閘？"
         ]
       },
       {
@@ -305426,6 +307998,20 @@
         "questions": [
           "那溪裡的『舊水』到底多舊？幾週、幾個月？",
           "春天融雪讓西部的河暴漲，那些水是今年冬天的雪嗎？"
+        ]
+      },
+      {
+        "id": "K95-003~R6017",
+        "a": "R6017",
+        "b": "K95-003",
+        "question_score": 0.136,
+        "answer_score": 0.098,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "捕蠅草兩次被碰的間隔，為什麼會影響要不要關起來？",
+          "捕蠅草兩次觸發之間的「記憶時間窗口」最長能維持多久？胞質內未衰減的鈣離子濃度如何作為計時器？"
         ]
       },
       {
@@ -309990,6 +312576,20 @@
         "questions": [
           "宇宙已經有原子，為什麼還會有沒有星光的年代？",
           "已經替暗能量取了名字，為什麼仍不知道它是什麼？"
+        ]
+      },
+      {
+        "id": "E2146~K95-025",
+        "a": "E2146",
+        "b": "K95-025",
+        "question_score": 0,
+        "answer_score": 0.06,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "銅片不會被磁鐵黏住，穿過磁場邊界卻為什麼會被煞住？",
+          "高溫超導無損輸電電纜在傳輸巨大交流電流時，交流損耗來源於哪些微觀磁滯機制？"
         ]
       },
       {
@@ -314715,10 +317315,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-16-pool-5757",
-    "target_count": 5757,
+    "revision": "2026-11-16-pool-5813",
+    "target_count": 5813,
     "reviewed_on": "2026-11-16",
-    "reason": "第四十四輪 56 提案經三位獨立覆核代理（V223–V225）核實，全部採納入選；入選核心數提升至 5757。",
+    "reason": "第四十五輪 56 提案經三位獨立覆核代理（V226–V228）核實，全部採納入選；入選核心數提升至 5813。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -320476,7 +323076,63 @@
       "K94-053",
       "K94-054",
       "K94-055",
-      "K94-056"
+      "K94-056",
+      "K95-001",
+      "K95-002",
+      "K95-003",
+      "K95-004",
+      "K95-005",
+      "K95-006",
+      "K95-007",
+      "K95-008",
+      "K95-009",
+      "K95-010",
+      "K95-011",
+      "K95-012",
+      "K95-013",
+      "K95-014",
+      "K95-015",
+      "K95-016",
+      "K95-017",
+      "K95-018",
+      "K95-019",
+      "K95-020",
+      "K95-021",
+      "K95-022",
+      "K95-023",
+      "K95-024",
+      "K95-025",
+      "K95-026",
+      "K95-027",
+      "K95-028",
+      "K95-029",
+      "K95-030",
+      "K95-031",
+      "K95-032",
+      "K95-033",
+      "K95-034",
+      "K95-035",
+      "K95-036",
+      "K95-037",
+      "K95-038",
+      "K95-039",
+      "K95-040",
+      "K95-041",
+      "K95-042",
+      "K95-043",
+      "K95-044",
+      "K95-045",
+      "K95-046",
+      "K95-047",
+      "K95-048",
+      "K95-049",
+      "K95-050",
+      "K95-051",
+      "K95-052",
+      "K95-053",
+      "K95-054",
+      "K95-055",
+      "K95-056"
     ],
     "overflow": [
       {

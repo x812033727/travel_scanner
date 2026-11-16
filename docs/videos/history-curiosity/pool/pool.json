@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "series": "奇聞檔案局",
-  "revision": "2026-11-15-curio-pool-1652",
+  "revision": "2026-11-16-curio-pool-1720",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "axes": {
     "H": "歷史懸案",
@@ -26,19 +26,19 @@
     "W": "W-商業與品牌奇聞"
   },
   "counts": {
-    "raw_records": 2087,
-    "canonical_cores": 2069,
+    "raw_records": 2107,
+    "canonical_cores": 2089,
     "alias_records": 18,
     "produced_cores": 48,
-    "selected_candidates": 1703,
-    "held_candidates": 58,
+    "selected_candidates": 1720,
+    "held_candidates": 61,
     "reserve_candidates": 143,
     "shorts_candidates": 89,
     "excluded_cores": 28,
-    "new_batch_records": 1756,
-    "source_urls": 13293,
-    "current_research_source_urls": 8471,
-    "selected_source_urls": 11613,
+    "new_batch_records": 1776,
+    "source_urls": 13313,
+    "current_research_source_urls": 8491,
+    "selected_source_urls": 11630,
     "new_suggestions_not_added": 3209,
     "high_similarity_pending": 0,
     "cross_series_pending": 0,
@@ -50,13 +50,13 @@
         "produced": 1
       },
       "S-歷史人物與名場面": {
-        "canonical": 257,
-        "selected": 204,
+        "canonical": 262,
+        "selected": 208,
         "produced": 28
       },
       "M-奇異現象與自然": {
-        "canonical": 250,
-        "selected": 205,
+        "canonical": 255,
+        "selected": 209,
         "produced": 0
       },
       "F-童話神話與怪談原版": {
@@ -70,13 +70,13 @@
         "produced": 0
       },
       "G-靈異與超自然公案": {
-        "canonical": 244,
-        "selected": 209,
+        "canonical": 249,
+        "selected": 214,
         "produced": 0
       },
       "P-預言與末日": {
-        "canonical": 243,
-        "selected": 208,
+        "canonical": 248,
+        "selected": 212,
         "produced": 0
       },
       "U-外星太空與未知訊號": {
@@ -1205,6 +1205,10 @@
       "sha256": "5d376c93b79e6588e5d37e1ea183f82abf646dab8d89dd1e65d234ee465cb975"
     },
     {
+      "file": "docs/videos/history-curiosity/pool/batches/wave64-20261116.json",
+      "sha256": "d579d92caedbf9e907e88c7e63a539eb5756ce37817e01c830829f0b524a750c"
+    },
+    {
       "file": "docs/videos/history-curiosity/pool/batches/wave7-20261102.json",
       "sha256": "f3e3b80ae8930a10fda93927c5abc92210f657cb4cf8c4a51346c5840d690803"
     },
@@ -1626,7 +1630,7 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/selection.json",
-      "sha256": "f3c91a8be94cc2e91f725016672eff1d6c8a7610fb516a9ff3577a06f97cdadb"
+      "sha256": "ee70bd4616ebd19739766a80ccb51c8fb47f86d8701af54f52f86d30338376de"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/audience-20261114-r2.json",
@@ -1643,7 +1647,7 @@
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 13293
+    "count": 13313
   },
   "candidates": [
     {
@@ -166267,6 +166271,1086 @@
       "production_ready": false
     },
     {
+      "id": "N6921",
+      "axis": "S",
+      "case_key": "case.bounty_1789_mutiny_pitcairn_isolation",
+      "question": "1789年英國皇家海軍邦蒂號軍艦叛變與皮特凱恩島隔離社群公案。1789年大副弗萊徹·克里斯蒂安發動軍艦叛變將船長布萊放逐太平洋，叛變者攜大溪地原住民登陸荒無人煙的皮特凱恩島焚毀軍艦隱匿十九年，直至1808年美國捕鯨船意外發現島上唯一倖存水手約翰·亞當斯與混血社群，為航海史上最傳奇的孤島烏托邦流變案。",
+      "hook": "1789年大溪地滿載麵包樹苗的英國軍艦邦蒂號爆發大叛變，叛變水手燒毀戰艦徹底人間蒸發，為什麼十九年後捕鯨船登上南太平洋無人荒島時，竟發現一座講著古英語、以《聖經》為唯一法律的神秘後裔村落？",
+      "answer_target": "英國海軍部軍事法庭檔案與1808年美國黃玉號捕鯨船航海日誌證實：九名叛變者登島後因土地與配偶矛盾爆發血腥內訌自相殘殺，僅亞當斯一人倖存並教導混血遺孤成長為虔誠社群，最終獲得英國王室赦免。",
+      "scope": "1789-1808年邦蒂號海軍部調查審訊與皮特凱恩島社群演變一手史料；聚焦隔離社群社會組織與法庭審訊，不延伸大溪地殖民全史。",
+      "source_locator": "ZP2-S001: Pitcairn Papers Vol. 1",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "衝動的軍事叛變原本走向自相殘殺的人性地獄，卻在最後一名倖存水手翻開《聖經》的一刻，意外轉變成大洋孤島上與世隔絕的奇蹟公社。",
+        "visual": "劇場級厚塗水粉：南太平洋險峻火山孤島黑礁前，熊熊烈火正吞噬著擱淺的雙桅軍艦邦蒂號，岸上幾名疲憊的水手與大溪地男女背對火光凝視未知的荒原密林。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-e020e817d519b342",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S001: Pitcairn Papers Vol. 1",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6921"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6922",
+      "axis": "S",
+      "case_key": "case.baltimore_plot_1861_pinkerton_lincoln_covert_transit",
+      "question": "1861年巴爾的摩暗殺陰謀：平克頓偵探社深夜化裝轉移保護林肯就職案。1861年2月即將就職的美國總統林肯搭乘專列前往華盛頓，私家偵探阿蘭·平克頓探員臥底查清巴爾的摩分離派民兵策劃在火車站轉乘時刺殺，安排林肯喬裝深夜提前搭乘民用列車穿城而過成功粉碎陰謀，開創現代要員安保特勤先河。",
+      "hook": "1861年南北戰爭爆發前夕，林肯總統前往白宮就職的路線被報紙大肆公開，為什麼在途經巴爾的摩前夜，私家偵探平克頓卻強行要求身高一米九三的新總統換上破舊軟帽、扮作病殘乘客在黑夜中悄悄改乘普通慢車？",
+      "answer_target": "平克頓偵探社調查手稿與美國鐵路公司電報記錄證實：臥底探員查出親南方民兵組織「國民衛隊」企圖在巴爾的摩火車站月台引發混亂拔槍刺殺，夜行切斷電報線的緊急安保方案成功讓林肯避開埋伏。",
+      "scope": "1861年2月巴爾的摩暗殺陰謀檔案與平克頓特勤報告；聚焦南北戰爭前夕要員保衛機制，不延伸戰後刺殺案。",
+      "source_locator": "ZP2-S002: Pinkerton Casebook pp. 45–70",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "美國歷史上最驚險的深夜護送證明：即便是一米九三的高大巨人，只要隱沒在普通綠皮車廂的幽暗角落，情報與時間差就能戰勝最周密的暗殺網絡。",
+        "visual": "劇場級厚塗水粉：霧氣籠罩的費城深夜月台，林肯身著寬大羊毛斗篷、壓低寬簷軟帽，在平克頓偵探與佩槍警衛的低調簇擁下迅速步入漆黑的客車後門。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-dfdbb079e55b4c05",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S002: Pinkerton Casebook pp. 45–70",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6922"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6923",
+      "axis": "S",
+      "case_key": "case.munster_rebellion_1534_anabaptist_theocracy_cages",
+      "question": "1534年德國明斯特重洗派千年王國狂熱圍城公案。1534年激進重洗派信徒奪取天主教明斯特主教領地，萊頓的約翰自封為新大衛王建立末世神權公社，實行強制共有財產與一夫多妻制，遭到主教軍隊長達一年的殘酷圍城，城破後三位領袖被處死並將屍體懸掛於聖蘭伯特教堂鐵籠中展示數百年。",
+      "hook": "1534年德意志明斯特城的市民為何突然將主教逐出城外，擁立一名二十五歲的裁縫為「新大衛王」，並在全城實施強制財產共有與一夫多妻制，直至城破後屍骨被鎖在教堂鐵籠懸掛了近五百年？",
+      "answer_target": "明斯特市議會審訊公文與當代圍城日記證實：宗教改革極端思潮結合千禧年末日預言引爆群體狂熱，封閉城池內糧食斷絕後演變為恐怖統治，主教聯軍攻陷後鐵籠至今仍懸掛於鐘樓成為歷史警示。",
+      "scope": "1534-1536年明斯特圍城戰與宗教法庭筆錄；聚焦重洗派公社政治實踐與末日狂熱演變，不延伸後續宗派史。",
+      "source_locator": "ZP2-S003: Münster Archive Codex 42",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "宗教狂熱許諾的地上天國，在絕對封閉與偏執神權下迅速蛻變成人間地獄；鐘樓上搖晃五百年的銹蝕鐵籠，永遠定格了盲從烏托邦的沉重代價。",
+        "visual": "劇場級厚塗水粉：陰雲密佈的明斯特聖蘭伯特教堂哥德式高聳尖塔，灰暗石牆外側懸掛著三具斑駁生鏽的重型鐵籠，下方廣場擠滿了全副武裝的主教僱傭軍。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-bf260f424a866386",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S003: Münster Archive Codex 42",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6923"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6924",
+      "axis": "S",
+      "case_key": "case.tchaikovsky_1893_death_cholera_vs_honor_court",
+      "question": "1893年柴可夫斯基猝死案：聖彼得堡霍亂感染與法律學校「榮譽法庭」服毒傳聞考證。1893年11月俄國偉大作曲家柴可夫斯基在第六交響曲首演九天後猝逝，官方醫療報告宣布其因在餐廳飲用未煮沸生水感染霍亂，但民間長期流傳其因同性戀醜聞遭帝國法律學校校友「榮譽法庭」裁定服毒自盡，引發百年法醫學爭端。",
+      "hook": "創做出無數經典旋律的音樂巨匠柴可夫斯基，在第六《悲愴》交響曲震撼首演僅九天後暴斃，為什麼一份官方確診為霍亂的病例，卻引發長達百年的「貴族榮譽法庭祕密賜死」陰謀論爭辯？",
+      "answer_target": "聖彼得堡帝國醫療檔案與主治醫生貝爾滕森病程記錄證實其符合典型霍亂重症脫水與尿毒症死徵，但因其生前備受皇室寵遇且最後悼念被允許親吻面頰，反常防疫處置令「砒霜服毒說」持續流傳至今。",
+      "scope": "1893年柴可夫斯基病歷檔案與俄羅斯音樂界回憶錄；聚焦霍亂傳染病流行病學與貴族名譽體系，不作無根據定罪推測。",
+      "source_locator": "ZP2-S004: RGIA Fund 1125, Opis 1",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "醫學紀錄冷靜揭示了十九世紀末席捲沙俄的恐怖霍亂瘟疫本質，但作曲家生前極度敏感的個人命運，讓歷史更願相信那是一曲主動走向終局的悲愴輓歌。",
+        "visual": "劇場級厚塗水粉：聖彼得堡深秋華麗的公寓臥室內，大理石壁爐燃燒著幽微火焰，病榻旁散落著《悲愴》交響曲未乾墨跡的手稿與幾支醫用玻璃藥瓶。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-e49526afdd5eebbd",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S004: RGIA Fund 1125, Opis 1",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6924"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6925",
+      "axis": "S",
+      "case_key": "case.new_york_to_paris_1908_race_thomas_flyer",
+      "question": "1908年紐約至巴黎環球汽車拉力賽橫跨白令海峽傳奇。1908年六輛早期燃油汽車從紐約時代廣場出發挑戰橫跨北美、穿越冰凍白令海峽再橫跨西伯利亞抵達巴黎，美國托馬斯飛行者號歷經169天艱苦跋涉奪冠，成為人類機械耐力史上最宏大的探險競賽。",
+      "hook": "1908年在公路網尚未建立、汽車連擋風玻璃都沒有的年代，六輛老爺車如何敢誇下海口從紐約出發、開過冰封的白令海峽一路把車開進巴黎凱旋門？",
+      "answer_target": "賽事官方日誌與報業聯盟檔案證實由於白令海峽冰層解凍融化無法通車，組委會臨時改為海運轉移阿拉斯加至海參崴，賽程規則變動引發法國與美國車隊長達數月的判罰爭議。",
+      "scope": "1908年紐約巴黎汽車拉力賽一手日誌；聚焦早期汽車工程機械極限與地理勘探。",
+      "source_locator": "ZP2-S005: Raid Record Vol. 2",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "早期機械探險的粗獷與勇氣，將原本不可能的全球陸路狂想刻進現代交通歷史。",
+        "visual": "劇場級厚塗水粉：白雪皚皚的西伯利亞泥濘原野上，一輛滿是泥漿的敞篷托馬斯飛行者賽車在木板路上顛簸前行，車手裹著厚重皮毛風鏡專注駕駛。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "S 歷史人物與名場面",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-570c3248e26aea78",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S005: Raid Record Vol. 2",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "S",
+      "category": "S-歷史人物與名場面",
+      "selected": false,
+      "pool_status": "held",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6925"
+      ],
+      "disposition": null,
+      "exclusion_reason": "第六十四批覆核 R641 判定 NEEDS_CHECK：跨國自駕拉力賽存在部分媒體探險炒作與未核實傳聞，暫緩入選。",
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6926",
+      "axis": "M",
+      "case_key": "case.cleveland_clinic_fire_1929_nitrocellulose_xray_film",
+      "question": "1929年克里夫蘭診所硝酸纖維X光膠片自燃釋放一氧化氮毒氣災難調查報告。1929年5月克里夫蘭診所地下檔案室存放的三噸硝酸纖維素X光底片因靠近漏熱蒸氣管道發生無氧低溫分解自燃，釋放出黃褐色劇毒二氧化氮與一氧化碳混合氣體，順著管線豎井迅速瀰漫整棟四層大樓致123人窒息遇難，引發全球醫院膠片防火革命。",
+      "hook": "1929年俄亥俄州頂級現代化醫院裡，一場沒有出現明火的地下室小火災，為什麼會在幾分鐘內釋放出一股帶有強烈甜味的致命黃褐色濃煙，瞬間奪走123位醫生和病人的生命？",
+      "answer_target": "國家火災保險商委員會與法醫調查證實：硝酸纖維素在自帶氧化劑條件下於攝氏100度即可自持悶燃熱解，產生高濃度二氧化氮遇肺部水分生成強腐蝕性硝酸液，迫使美國公共衛生局全面立法強制採用乙酸安全膠片。",
+      "scope": "1929年克里夫蘭診所火災官方調查報告與化學分析文卷；聚焦硝酸酯熱解毒理學與公共安全標準演進。",
+      "source_locator": "ZP2-S006: NBFU Report 1929",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "最先進的現代醫療診斷科技，因忽視了底片化學載體的自我熱解物理特性而釀成地獄；這場黃褐色毒煙催生了全球醫療影像的安全底線。",
+        "visual": "劇場級厚塗水粉：1929年克里夫蘭診所灰白色大樓外，消防員手持水槍衝破瀰漫著淡淡黃褐色詭異毒霧的大門，地上散落著燒焦融化的黑色X光底片。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "M 奇異現象與科學",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-3b1600529d1ea4f6",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S006: NBFU Report 1929",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "M",
+      "category": "M-奇異現象與自然",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6926"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6927",
+      "axis": "M",
+      "case_key": "case.surtsey_1963_volcanic_island_primary_succession",
+      "question": "1963年冰島敘爾特塞火山島誕生：海洋火山口噴發與原初無菌生態演替監測公案。1963年11月冰島南岸海底火山爆發衝破大西洋洋面，歷經三年噴發冷卻凝固出一座近3平方公里的玄武岩新島敘爾特塞，科學界隨即將其列為嚴格禁區，完整記錄生命在完全無菌的火山熔岩表面如何依靠風力、海浪與候鳥實現從零開始的原生演替。",
+      "hook": "1963年冰島漁民在海面上目擊滾滾黑煙從大西洋海底噴湧而出，三天後海平面憑空升起一座完全沒有任何生命的全新陸地；科學家為何立刻下令全島封鎖禁絕人類涉足，連一顆番茄種子都不准帶進去？",
+      "answer_target": "冰島自然歷史博物館與敘爾特塞研究協會半世紀長期追蹤證實：最初抵達的是真菌與苔蘚，隨後海甘藍藉海流漂抵發芽，黑背鷗築巢排泄物帶來氮磷營養，揭示了島嶼生物地理學的極致純淨法則。",
+      "scope": "1963-1970年敘爾特塞火山島生成與生態考察報告；聚焦原初演替生物學機制，排除外星生命類比。",
+      "source_locator": "ZP2-S007: Surtsey Report Vol. I-IV",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "在冰冷的大西洋波濤之中，一座灼熱焦黑的火山岩石孤島，向全人類實時展示了四十億年前生命是如何在死寂的地球表面踩下第一枚頑強的綠色腳印。",
+        "visual": "劇場級厚塗水粉：大西洋狂濤駭浪中，一座剛冷卻的黑色火山島冒著裊裊白汽，黑褐色岩石裂縫中頑強綻放出一朵嫩黃色的野生海甘藍花朵，一隻白色海鷗展翅掠過海面。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "M 奇異現象與科學",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-bf5dc70200dcb9f1",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S007: Surtsey Report Vol. I-IV",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "M",
+      "category": "M-奇異現象與自然",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6927"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6928",
+      "axis": "M",
+      "case_key": "case.pont_saint_esprit_1951_ergot_mass_poisoning",
+      "question": "1951年法國蓬聖埃斯普里麵包黑麥麥角中毒集體狂亂流行病學調查報告。1951年8月法國加爾省蓬聖埃斯普里小鎮突然爆發詭異集體精神失常狂潮，近三百名村民出現劇烈失眠、恐怖幻覺、肢體灼痛甚至跳樓自殘，醫學調查證實為當地一家麵包店使用了受黑麥麥角菌（Claviceps purpurea）生物鹼污染的走私變質麵粉。",
+      "hook": "1951年法國南部一個平靜古老的小鎮上，為什麼一夜之間有近三百名村民突然陷入瘋狂狂暴狀態，有人看見自己心臟被毒蛇吞噬，有人堅信自己長出了紅色翅膀跳出窗外？",
+      "answer_target": "法國國家醫學科學院調查報告證實：麵粉廠購入低價發霉黑麥含有高濃度麥角酸生物鹼，引發強烈血管痙攣壞疽與中樞神經血清素受體激動幻覺，並非民間傳聞的美軍中情局秘密LSD試驗。",
+      "scope": "1951年蓬聖埃斯普里集體中毒官方醫療檔案；聚焦麥角生物鹼藥理學與歷史公共衛生，排除冷戰陰謀論渲染。",
+      "source_locator": "ZP2-S008: BMJ 1951; 2: 650–653",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "中世紀被稱為「聖安東尼之火」的古老詛咒，在現代工藝化磨坊偷工減料的縫隙中猝然還魂；一條香脆的法式長棍麵包，殘酷丈量出化學生物毒素對人類神經防線的輕易擊穿。",
+        "visual": "劇場級厚塗水粉：夜幕低垂的南法石板街巷內，古老麵包店櫥窗透出溫暖燈光，門前橫七豎八擺著未賣完的長棍麵包，巡邏警員驚恐地攙扶著神志混亂的村民。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "M 奇異現象與科學",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-cd6d54e4c20fbb40",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S008: BMJ 1951; 2: 650–653",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "M",
+      "category": "M-奇異現象與自然",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6928"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6929",
+      "axis": "M",
+      "case_key": "case.monongah_mining_disaster_1907_coal_dust_explosion",
+      "question": "1907年西維吉尼亞蒙納加煤礦煤塵鏈式爆炸案官方調查白皮書。1907年12月西維吉尼亞蒙納加六號與八號聯通煤礦地下深處因一次小規模炸藥引爆，瞬間激起沈積煤塵形成空氣懸浮可燃雲團，引發連環超音速爆震波摧毀數英里巷道奪走362名礦工生命，地質調查局研究徹底奠定了現代粉塵爆炸力學理論。",
+      "hook": "1907年西維吉尼亞地下數百米深處一聲不起眼的微弱引爆，為什麼能在幾秒鐘之內演變成衝出井口摧毀地面升降塔的狂暴火風暴，把整座地下煤礦瞬間化為熔爐？",
+      "answer_target": "美國地質調查局特派工程師調查證實：瓦斯小爆炸產生的壓力前鋒將巷道四壁與地面的乾燥微米級煤塵吹揚成均勻懸浮氣溶膠，其巨大比表面積讓燃燒速度呈指數級飆升演變為爆轟，打破了『僅瓦斯會爆炸』的百年盲點。",
+      "scope": "1907年蒙納加礦難地質調查局官方技術白皮書；聚焦粉塵爆轟物理學與礦山安全通風改進。",
+      "source_locator": "ZP2-S009: USGS Bulletin 383",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "肉眼幾乎看不見的細微黑色塵埃，在流體空氣動力學吹揚下化作比烈性炸藥更迅猛的毀滅火海；362條礦工生命的代價，換來了全世界地下工程嚴格的岩粉鈍化防護標竿。",
+        "visual": "劇場級厚塗水粉：大雪紛飛的西維吉尼亞山谷中，蒙納加煤礦高聳的木質井架被地下噴出的黑煙與氣浪炸得扭曲變形，井口聚集著手提風燈焦急守候的礦工家屬。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "M 奇異現象與科學",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-3c9810af25238877",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S009: USGS Bulletin 383",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "M",
+      "category": "M-奇異現象與自然",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6929"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6930",
+      "axis": "M",
+      "case_key": "case.charles_hatfield_1916_san_diego_rainmaker_dam_burst",
+      "question": "1916年查爾斯·哈特菲爾德聖地牙哥造雨術與奧泰大壩潰決洪水案。1916年加州聖地牙哥遭遇大旱，市議會與「造雨師」哈特菲爾德簽約承諾若填滿水庫將支付一萬美元，哈特菲爾德在高塔燃燒神秘化學物後當地隨即遭遇百年不遇的毀滅性特大暴雨導致大壩潰決，引發市政賠償長達數十年的法庭拉鋸。",
+      "hook": "1916年聖地牙哥乾旱連年，市議會急病亂投醫請來神秘造雨師，造雨塔點火幾天後為何會引爆一場摧毀大壩、淹沒整座城鎮的滔天洪水，市議會又為何拒絕付錢？",
+      "answer_target": "聖地牙哥市議會會議紀錄與加州最高法院訴訟文卷證實：法庭最終裁定特大暴雨為不可抗力之「天災（Act of God）」，造雨師化學氣體未被證明具備控制降雨能力，合約無效免除雙方賠償責任。",
+      "scope": "1916年聖地牙哥洪水司法訴訟檔案；聚焦早期偽科學大氣干預爭議。",
+      "source_locator": "ZP2-S010: City Council Minutes 1916",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "人類試圖扮演造物主的狂妄契約，在真實自然的氣象風暴面前顯得荒誕可笑。",
+        "visual": "劇場級厚塗水粉：暴雨傾盆的山谷木質高塔頂端，化學煙霧在狂風中翻滾，遠處下奧泰大壩水浪翻滾即將漫過壩頂，泥濘道路上狂奔撤離的馬車。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "M 奇異現象與科學",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-67fa8e00c18495a5",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S010: City Council Minutes 1916",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "M",
+      "category": "M-奇異現象與自然",
+      "selected": false,
+      "pool_status": "held",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6930"
+      ],
+      "disposition": null,
+      "exclusion_reason": "第六十四批覆核 R642 判定 NEEDS_CHECK：化學人工降雨造雨塔配方與水文暴雨因果關係缺乏嚴謹受控實驗，暫緩入選。",
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6931",
+      "axis": "P",
+      "case_key": "case.bath_school_disaster_1927_dynamite_inquest",
+      "question": "1927年密西根州巴斯學校爆炸案：全美首起校園定向炸藥爆破慘案調查。1927年5月密西根州巴斯鎮校董會司庫安德魯·基霍因抵押貸款破產心懷怨恨，在農場與學校地下室祕密埋設數百磅硝化甘油與軍用炸藥並定時引爆，奪走45條生命，法醫與治安官勘驗報告徹底揭開了全美歷史上傷亡最慘重校園襲擊案的犯罪心理軌跡。",
+      "hook": "1927年密西根州平靜小鎮的一所嶄新現代化小學，清晨為何會被預先埋設在樓底下的數百磅軍用炸藥瞬間炸成廢墟，而策劃這場慘劇的竟是學校自己的財務董事？",
+      "answer_target": "密西根州檢察長調查記錄與驗屍官聽證筆錄證實：凶手利用校董身分以維修電線為名在天花板敷設長達數百米引爆導線，若非地下室南翼炸藥引信受潮啞火，傷亡規模本將倍增。",
+      "scope": "1927年巴斯學校爆炸案法庭與刑事檔案；聚焦法醫爆炸物殘留物分析與公共安全法規改革，不渲染血腥暴力。",
+      "source_locator": "ZP2-S011: Inquest Clinton County pp. 1–45",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "現代公共建築安全檢查制度與化學爆破品管控法規的基石，正是在這起近百年前源於個人非理性報復的校園悲劇灰燼中沉痛奠定。",
+        "visual": "劇場級厚塗水粉：1927年晨光下巴斯小學廢墟的磚石瓦礫間，消防員與小鎮志願者在一輛破舊的福特卡車殘骸旁奮力清理碎磚，地上散落著未引爆的黑色炸藥筒與電線圈。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "P 預言與末日",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-e986ade20ec98680",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S011: Inquest Clinton County pp. 1–45",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "P",
+      "category": "P-預言與末日",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6931"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6932",
+      "axis": "P",
+      "case_key": "case.cane_toads_australia_1935_biological_control_failure",
+      "question": "1935年澳大利亞引進夏威夷甘蔗蟾蜍失控：生物防治演變為大陸級生態災難公案。1935年昆士蘭甘蔗實驗局為消滅摧毀甘蔗根系的灰背金龜子，未經嚴格隔離評估引進102隻夏威夷甘蔗蟾蜍，不料蟾蜍因跳躍高度有限根本捕食不到高處甘蔗桿上的成蟲，反而因劇毒耳後腺在澳洲大陸毫無天敵大肆繁殖數億隻，摧毀本土袋鼬與巨蜥種群。",
+      "hook": "1935年澳洲政府寄予厚望引進的102隻「治蟲神蛙」，為什麼放生後連一隻甘蔗害蟲都沒抓到，反而在幾十年內繁衍出兩億隻巨毒毒蛙橫掃整個大陸，把本土的猛禽、鱷魚和巨蜥毒死大半？",
+      "answer_target": "昆士蘭農業部1935-1940年官方報告與現代生態學演化追蹤證實：外來物種完全脫離了原產地寄生蟲與天敵控制，前線入侵種群甚至在八十年間演化出更長四肢與更強跳躍奔跑能力，成為生物入侵教科書經典反面教材。",
+      "scope": "1935年引進檔案與澳洲聯邦科學與工業研究組織評估報告；聚焦生物防治決策盲區與演化生態學，不作獵奇調侃。",
+      "source_locator": "ZP2-S012: Bureau of Sugar Exp. Bull. 1935",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "人類自以為聰明地引入「完美天敵」來修正自然，結果卻親手釋放出一場無法召回的生態海嘯；這隻跳不過甘蔗桿的毒蛙給全球生態干預上了最沉重的一課。",
+        "visual": "劇場級厚塗水粉：昆士蘭茂密的熱帶甘蔗田暮色中，一隻肥碩灰褐色的巨型甘蔗蟾蜍蹲在紅土小徑上，後方甘蔗葉片上金龜子依然悠哉啃食，泥水窪裡密密麻麻擠滿了蟾蜍卵帶。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "P 預言與末日",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-2bb93738b4249a45",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S012: Bureau of Sugar Exp. Bull. 1935",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "P",
+      "category": "P-預言與末日",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6932"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6933",
+      "axis": "P",
+      "case_key": "case.manchester_beer_poisoning_1900_arsenic_sulfuric_acid",
+      "question": "1900年英國曼徹斯特砷中毒毒啤酒大流行：硫酸製程污染與皇家委員會調查報告。1900年下半年英國曼徹斯特與索爾福德數千名工人突發嚴重周圍神經炎、皮膚黑變與心臟衰竭，醫學界最初誤診為普通酒精中毒，直到雷諾茲醫生檢驗出啤酒中含有致死劑量砒霜（三氧化二砷），英國國會皇家委員會調查追溯出源於低成本硫鐵礦硫酸製造的人工轉化糖漿。",
+      "hook": "1900年英國曼徹斯特的酒館裡，每天喝幾杯啤酒的普通工人為何會成百上千地四肢癱瘓、皮膚長滿黑斑、心臟衰竭暴斃，原本放鬆解乏的國民飲料怎麼變成了劇毒砒霜？",
+      "answer_target": "1901-1903年皇家調查委員會正式白皮書證實：供應多家酒廠的博斯托克糖業公司購入含高濃度砷雜質的廉價工業硫酸水解玉米澱粉製造釀造糖，致使六千餘人中毒、至少七十人死亡，直接推動英國制定首部現代食品純度安全法案。",
+      "scope": "1900-1903年曼徹斯特毒啤酒公衛危機皇家委員會報告；聚焦工業化學分析與公共食品安全監管變革，不延伸一般釀酒史。",
+      "source_locator": "ZP2-S013: Command Paper Cd. 1848, 1903",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "維多利亞時代工業擴張追求降本增效的盲目化學代工，把致命劇毒注入了最日常的麥芽香氣；現代食品安全中「重金屬限量標準」的防線，正是在這場工人階級的集體中毒慘劇中建立。",
+        "visual": "劇場級厚塗水粉：煙雨濛濛的曼徹斯特工業酒館吧台前，疲憊的棉紡織工人端著琥珀色啤酒杯，背後酒館後巷排列著印有黑色標記的木製糖漿桶與滴落的化學試劑瓶。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "P 預言與末日",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-581fa9bf2bd725d6",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S013: Command Paper Cd. 1848, 1903",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "P",
+      "category": "P-預言與末日",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6933"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6934",
+      "axis": "P",
+      "case_key": "case.london_beer_flood_1814_meux_brewery_vat_rupture",
+      "question": "1814年倫敦啤酒淹城災難：繆克斯釀酒廠巨型發酵木桶鐵箍崩裂洪流公案。1814年10月倫敦托特納姆法院路的繆克斯馬蹄鐵釀酒廠內，一個高達6.7公尺、儲存超過60萬公升黑啤酒的巨型木桶鐵箍突然斷裂炸開，巨大衝擊波引爆相鄰發酵桶形成高達4.5公尺的啤酒洪流沖垮外牆淹沒聖吉爾斯貧民窟地下室，造成八人遇難，驗屍陪審團最終裁定為「天災不可抗力」。",
+      "hook": "1814年倫敦聖吉爾斯貧民窟的街道上，為什麼會突然湧出一道四米多高的黑色濁浪，把兩棟磚房砸塌、吞沒地下室居民，而奪走八條生命的滔天洪水，居然是剛釀好的烈性黑啤酒？",
+      "answer_target": "倫敦聖吉爾斯教區驗屍官調查筆錄與老貝利法院檔案證實：重達700噸的液體靜壓瞬間衝垮薄弱磚牆，釀酒廠督造員在數小時前已發現重達700磅的鐵箍脫落卻認為「安全無虞延後維修」，法庭最終因同情企業損失裁定免罪並退還已繳酒稅。",
+      "scope": "1814年倫敦啤酒洪災法庭驗屍筆錄與土木工程報告；聚焦早期工業木桶應力力學與維多利亞前夜司法制度。",
+      "source_locator": "ZP2-S014: LMA P82/GEO1/014",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "追求巨型規模效應的早期工業怪獸，在金屬材料疲勞與巨大流體靜壓的物理法則面前轟然解體；這場荒誕而悲慘的黑啤洪水，永遠終結了木桶無上限擴張的釀造神話。",
+        "visual": "劇場級厚塗水粉：昏暗破敗的倫敦聖吉爾斯狹窄街巷內，殘破的磚木倒塌房屋前湧淌著冒著白色泡沫的深黑色啤酒洪流，街道上漂浮著破裂木桶板與泥濘的破舊傢俱。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "P 預言與末日",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-5c49f0e4cb639e2c",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S014: LMA P82/GEO1/014",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "P",
+      "category": "P-預言與末日",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6934"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6935",
+      "axis": "P",
+      "case_key": "case.serum_run_to_nome_1925_togo_balto_dispute",
+      "question": "1925年諾姆白喉血清雪橇犬接力極限救援案。1925年冬天阿拉斯加偏遠小鎮諾姆爆發致命白喉疫情，暴風雪阻斷所有海空交通，二十支雪橇犬隊在零下五十度嚴寒中進行接力將救命血清送達，但媒體宣傳與雕像榮譽集中於最後一棒領頭犬巴爾托，而完成最險峻長途路段的功勳領頭犬多哥長期遭到忽視引發爭議。",
+      "hook": "1925年阿拉斯加狂暴暴風雪中拯救整座瀕死城鎮的雪橇犬接力，為什麼衝過終點線的巴爾托在紐約中央公園立起了青銅雕像，而真正跑過最致命冰海長途的功勳犬多哥，卻在榮譽中被雪藏了半個世紀？",
+      "answer_target": "阿拉斯加領地總督府通訊電報與雪橇犬隊原始交接航海圖證實：塞帕拉帶領的多哥完成了最危險的跨越諾頓灣海冰路段（共261英里），而卡森帶領的巴爾托完成最後53英里直達終點，媒體對終點衝線者的偏好塑造了公共記憶偏向。",
+      "scope": "1925年血清接力各棒實際里程日誌考證；聚焦公共記憶塑造與歷史事實比對。",
+      "source_locator": "ZP2-S015: Territorial Gov. Records Box 44",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "在極寒荒野中超越生理極限的忠誠生命，不應被簡化為商業宣傳的片面符號；歷史的真相終將還原每一滴在暴風雪中淌下的熱血。",
+        "visual": "劇場級厚塗水粉：零下五十度冰封雪原的狂風暴雪中，毛髮掛滿冰霜的雪橇領頭犬多哥在破裂浮冰邊緣狂奔領航，後方雪橇駕駛員戴著厚重防風皮帽奮力抓穩韁繩。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "P 預言與末日",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-36d3167078c35a41",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S015: Territorial Gov. Records Box 44",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "P",
+      "category": "P-預言與末日",
+      "selected": false,
+      "pool_status": "held",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6935"
+      ],
+      "disposition": null,
+      "exclusion_reason": "第六十四批覆核 R643 判定 NEEDS_CHECK：英雄雪橇犬媒體包裝與真實接力賽程各隊里程劃分存在商業宣傳爭議，暫緩入選。",
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6936",
+      "axis": "G",
+      "case_key": "case.arnold_paole_1732_visum_et_repertum_vampire_inquest",
+      "question": "1732年塞爾維亞梅德韋賈阿諾德·保羅吸血鬼恐慌：奧地利帝國軍醫開棺驗屍官方報告公案。1731-1732年奧地利帝國邊境塞爾維亞村莊爆發集體暴斃恐慌，村民指控已故民兵阿諾德·保羅化為吸血鬼作祟，帝國陸軍派出資深軍醫格拉瑟與弗盧金格爾展開官方開棺法醫驗屍，寫下轟動歐洲啟蒙學界的正式公文《目驗與勘驗報告》（Visum et Repertum），催生現代法醫屍體腐敗現象學研究。",
+      "hook": "1732年啟蒙運動初期的歐洲各國科學界，為何會被一份蓋有哈布斯堡帝國軍隊印章的官方解剖報告震動：嚴肅的軍醫親自開棺，竟正式簽署文件聲稱「屍體埋葬四十天毫無腐爛、指甲毛髮生長且刺穿心臟時鮮血噴湧狂號」？",
+      "answer_target": "奧地利國家檔案館軍事衛生局原始手稿分析證實：冬季低溫少氧的黏土土壤阻緩了屍體自溶分解，嫌氣性細菌產氣導致腹腔膨脹、將液化血紅蛋白自口鼻壓出（假性鮮血），缺乏法醫病理學知識的軍醫誤將正常腐敗休止期讀作超自然不死身。",
+      "scope": "1732年哈布斯堡軍事法庭與衛生檔案公文考證；聚焦早期法醫屍體腐爛化學病理學，排除民俗封建迷信。",
+      "source_locator": "ZP2-S016: Kriegsarchiv Wien Feldakten 1732",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "啟蒙時代最著名的「官方吸血鬼證據」，恰恰是未成熟的早期科學面對屍體自然腐敗物理化學規律時的集體誤讀；打破吸血鬼迷信的不是木樁與大蒜，而是嚴謹的現代法醫病理學。",
+        "visual": "劇場級厚塗水粉：陰冷泥濘的塞爾維亞鄉村墓地裡，身著十八世紀奧地利帝國深藍色軍醫制服的官員手持燭台與解剖刀審視剛挖出的木棺，周圍圍滿了神色驚恐手持十字架的村民。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "G 靈異事件",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-69f9cbd3df2506de",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S016: Kriegsarchiv Wien Feldakten 1732",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "G",
+      "category": "G-靈異與超自然公案",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6936"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6937",
+      "axis": "G",
+      "case_key": "case.great_moon_hoax_1835_richard_adams_locke_sun",
+      "question": "1835年紐約太陽報「偉大月球騙局」：虛構約翰·赫歇爾天文望遠鏡發現翼人公案。1835年8月紐約《太陽報》連續六天以頭版刊登特稿，聲稱英國頂級天文學家約翰·赫歇爾在好望角利用革命性巨型光學望遠鏡觀測到月球表面存在紫水晶山脈、雙足海狸與長著蝙蝠翅膀的穴居「翼人」，報紙發行量暴增至全球第一，記者理查·亞當斯·洛克以諷刺科學狂熱為名的惡作劇演變為傳播史上首場大型假新聞狂歡。",
+      "hook": "1835年紐約街頭的報紙為什麼會在一夜之間被瘋搶一空，連耶魯大學的科學家都興奮得連夜搭馬車趕來，只為搶看英國皇家天文學會聲稱「在月球上拍到了長著蝙蝠翅膀洗澡的智慧鳥人」？",
+      "answer_target": "《太陽報》原始排版特刊與約翰·赫歇爾致劍橋大學私人書信證實：遠在南非觀測雙星的赫歇爾本人對此毫不知情，作者洛克原本意在嘲弄托馬斯·迪克等神學科學家將所有天體賦予生命的偽學說，卻意外引發社會公眾未經查證的集體盲信。",
+      "scope": "1835年大眾媒體傳播史一手版面與通信；聚焦大眾科學普及中的假新聞機制與傳媒倫理，不延伸當代登月陰謀論。",
+      "source_locator": "ZP2-S017: The Sun Aug 25–31, 1835",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "傳播史上最成功的科普假新聞揭示：當荒誕的謊言包裹在權威科學家名諱與精密的技術術語外衣之下時，大眾對奇蹟的盲目渴望會瞬間摧毀所有理性防線。",
+        "visual": "劇場級厚塗水粉：1835年喧囂的紐約百老匯街頭報攤前，穿著長燕尾服與高筒帽的紳士們揮舞著硬幣爭搶剛出爐的《太陽報》，頭版插畫清晰印著月球環形山下飛翔的蝙蝠翼人。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "G 靈異事件",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-b1dcf0d4f72d1cbe",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S017: The Sun Aug 25–31, 1835",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "G",
+      "category": "G-靈異與超自然公案",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6937"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6938",
+      "axis": "G",
+      "case_key": "case.greely_arctic_expedition_1881_starvation_cannibalism",
+      "question": "1881年美國格里利北極探險隊「富蘭克林夫人灣」孤立三年與食人殘骸官方調查公案。1881年美國陸軍中尉阿道夫斯·格里利帶領25名探險隊員抵達北緯81度富蘭克林夫人灣建立首座國際極地觀測站，由於補給船連續兩年因海冰受阻無法抵達，全隊在塞賓角冰天雪地中飢寒交迫被困三年，1884年救援艦隊抵達時僅剩6人生還，隨後法醫對死者遺骸的勘驗引發震撼全美的食人同類相食秘密調查。",
+      "hook": "1884年當美國海軍救援船終於破冰抵達北極塞賓角狂風呼嘯的孤島時，二十五名原本健康的精銳陸軍探險隊員只剩下六名奄奄一息的活死人，為什麼隨後運回華盛頓的烈士棺木被軍方緊急下令封鎖、嚴禁家屬開棺瞻仰？",
+      "answer_target": "美國陸軍部軍事調查檔案與外科軍醫格林上尉勘驗筆錄證實：多具掘出的遺體肌肉與大腿肉有精確利刃切割刮除痕跡，證明在最後瀕臨死亡的幾個月裡陷入殘酷的同類相食求生慘境，軍方出於國家榮譽長年隱瞞真相。",
+      "scope": "1881-1884年美國陸軍格里利遠征隊調查庭筆錄與海軍搜救日誌；聚焦極限生存醫學與軍事歷史考證，不渲染血腥驚悚。",
+      "source_locator": "ZP2-S018: NARA RG 27 Greely Relief Report",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "征服世界之巔的浪漫科學雄心，在補給線被浮冰無情掐斷的三個寒冬裡退化至最殘酷的生物本能；緊鎖的棺木銘刻著人類在自然極限面前最卑微而慘烈的求生悲歌。",
+        "visual": "劇場級厚塗水粉：塞賓角呼嘯的冰冷暴風雪中，一頂被狂風撕裂的破舊帆布帳篷歪斜在亂石堆裡，兩名包裹著骯髒獸皮的乾枯倖存者無力地望著遠處海面破冰而來的黑色蒸汽救援艦。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "G 靈異事件",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-10646501ce465f2a",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S018: NARA RG 27 Greely Relief Report",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "G",
+      "category": "G-靈異與超自然公案",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6938"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6939",
+      "axis": "G",
+      "case_key": "case.eastland_disaster_1915_seamen_act_top_heavy_capsizing",
+      "question": "1915年芝加哥河伊斯特蘭號客輪側翻慘案：過度加裝救生艇重心失穩海事法庭調查筆錄。1915年7月芝加哥河畔滿載2500名電氣公司野餐員工的伊斯特蘭號客輪尚未離岸便突然向港側劇烈傾斜並在兩分鐘內完全翻扣，海事法庭調查證實該船為遵守《海員法案》在頂層盲目增設重型救生艇與鋼製吊架，導致船舶穩心過低（Metacentric height接近零）引發悲劇。",
+      "hook": "一艘緊靠在芝加哥鬧市區碼頭邊、距離岸邊石堤只有幾米遠的豪華平底客輪，為什麼在風平浪靜的早晨連纜繩都還沒解開，就會在兩分鐘內當著岸上上萬親屬的面轟然向外側翻覆？",
+      "answer_target": "美國聯邦地區法院海事調查與造船工程師驗證證實：該船本身設計為高速平底船、吃水淺，泰坦尼克號慘案後立法的救生艇強裝條例讓頂層甲板驟增數十噸重物，壓載水艙調配不及釀成了五大湖航運史上最慘痛的非海難溺亡事故。",
+      "scope": "1915年伊斯特蘭號海事法庭聽證記錄；聚焦船舶流體靜力學初穩性與公共政策安全悖論。",
+      "source_locator": "ZP2-S019: US District Court No. 32087",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "初衷為了拯救生命的「全員救生艇」法規，在缺乏整體流體工程嚴謹計算下，反向變成了壓垮整艘客輪的致命鉛塊；這座倒在碼頭邊的巨輪是官僚決策最諷刺的沉船銘碑。",
+        "visual": "劇場級厚塗水粉：芝加哥清晨熱鬧的城市河流碼頭旁，龐大的白色雙煙囪客輪龐大灰黑色船底完全翻向水面，岸邊散落著野餐籃與女士草帽，碼頭工人奮力跳入渾濁河水中救援。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "G 靈異事件",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-2c74025c98774e34",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S019: US District Court No. 32087",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "G",
+      "category": "G-靈異與超自然公案",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6939"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "N6940",
+      "axis": "G",
+      "case_key": "case.kaspar_hauser_1828_nuremberg_foundling_enigma",
+      "question": "1828年紐倫堡卡斯帕·豪澤爾地牢囚徒迷宮公案：無名少年身世調查與醫學解剖報告。1828年聖靈降臨節德國紐倫堡街頭突然出現一名十六歲蹣跚少年，手持兩封給騎兵連長的神秘信件，只會說幾句破碎單詞並只接受麵包與清水，聲稱自幼被單獨囚禁於黑暗地牢中從未見過任何人，巴伐利亞最高法院刑法學家費爾巴哈親自主持身世調查，引發巴登大公國王室繼承人被調包奪權世紀懸案。",
+      "hook": "1828年紐倫堡市集上為何會憑空冒出一名十六歲卻幾乎不會說話的少年，手中攥著一封信寫著「請將他培養成騎兵，或者吊死他」；他聲稱自己一輩子被關在一間只能坐著的黑暗地牢裡，他的真實身分難道真的是被偷換的王國儲君？",
+      "answer_target": "紐倫堡市立檔案館審訊記錄與巴伐利亞皇家法醫1833年遇刺屍檢報告證實：少年腿部關節與大腦發育確實存在長期嚴重感官剝奪特徵，但現代DNA粒線體比對巴登王室後裔樣本未得出排他性定論，成為歐洲近代最著名的身世迷案。",
+      "scope": "1828-1833年紐倫堡警方公文與費爾巴哈法律評估報告；聚焦感官剝奪醫學特徵與巴登王室司法爭端，不作臆造定論。",
+      "source_locator": "ZP2-S020: Staatsarchiv Nürnberg Rep. 212",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "一具在黑暗地牢中被剝奪了整個人性開端的孤獨身軀，即便走進啟蒙時代燦爛的陽光下，也始終無法擺脫宮廷權謀陰影的終生追逐。",
+        "visual": "劇場級厚塗水粉：1828年紐倫堡鵝卵石街道旁的一間昏暗警署小室內，神色茫然的卡斯帕·豪澤爾赤著長繭的雙腳坐在木凳上凝視一塊粗黑麥麵包，窗外陽光投射出斑駁的光柱。",
+        "minutes": [
+          8.5,
+          11
+        ]
+      },
+      "origin": "wave64-20261116",
+      "domain": "G 靈異事件",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-92a74505795fd7d1",
+          "origin": "wave64-20261116",
+          "locator": "ZP2-S020: Staatsarchiv Nürnberg Rep. 212",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "notes": "",
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave64-20261116.json"
+      ],
+      "category_code": "G",
+      "category": "G-靈異與超自然公案",
+      "selected": true,
+      "pool_status": "selected",
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "N6940"
+      ],
+      "disposition": null,
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "P01",
       "origin": "legacy",
       "axis": "P",
@@ -187856,7 +188940,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 2087
+    "count": 2107
   },
   "dedup": {
     "aliases": {
@@ -189836,6 +190920,26 @@
       "N6918": "N6918",
       "N6919": "N6919",
       "N6920": "N6920",
+      "N6921": "N6921",
+      "N6922": "N6922",
+      "N6923": "N6923",
+      "N6924": "N6924",
+      "N6925": "N6925",
+      "N6926": "N6926",
+      "N6927": "N6927",
+      "N6928": "N6928",
+      "N6929": "N6929",
+      "N6930": "N6930",
+      "N6931": "N6931",
+      "N6932": "N6932",
+      "N6933": "N6933",
+      "N6934": "N6934",
+      "N6935": "N6935",
+      "N6936": "N6936",
+      "N6937": "N6937",
+      "N6938": "N6938",
+      "N6939": "N6939",
+      "N6940": "N6940",
       "N681": "N681",
       "N682": "N682",
       "N683": "N683",
@@ -196084,10 +197188,10 @@
     "method": "exact normalized questions + authored core-answer merges + lexical candidate pairs (title, finding, case key) reviewed by an editor; cross-series lexical pairs against the so-thats-why pool; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-15-curio-pool-1652",
-    "reviewed_on": "2026-11-15",
-    "reason": "第六十批 20 提案經四位獨立覆核代理（R601–R604）核實，採納 17 題、2 題待核、1 題退回；入選核心數提升至 1652。",
-    "target_count": 1703,
+    "revision": "2026-11-16-curio-pool-1720",
+    "reviewed_on": "2026-11-16",
+    "reason": "第六十四批 20 提案經四位獨立覆核代理（R641–R644）核實，採納 17 題、3 題暫緩；入選核心數提升至 1720。",
+    "target_count": 1720,
     "ids": [
       "F01",
       "F02",
@@ -197791,7 +198895,24 @@
       "N6917",
       "N6918",
       "N6919",
-      "N6920"
+      "N6920",
+      "N6921",
+      "N6922",
+      "N6923",
+      "N6924",
+      "N6926",
+      "N6927",
+      "N6928",
+      "N6929",
+      "N6931",
+      "N6932",
+      "N6933",
+      "N6934",
+      "N6936",
+      "N6937",
+      "N6938",
+      "N6939",
+      "N6940"
     ],
     "held": [
       {
@@ -198025,6 +199146,18 @@
       {
         "id": "N6915",
         "reason": "第六十三批覆核 R633 判定 REJECT／暫緩：倫敦大火宗教末日恐慌與其他倫敦歷史題材稍顯接近，暫緩入選。"
+      },
+      {
+        "id": "N6925",
+        "reason": "第六十四批覆核 R641 判定 NEEDS_CHECK：跨國自駕拉力賽存在部分媒體探險炒作與未核實傳聞，暫緩入選。"
+      },
+      {
+        "id": "N6930",
+        "reason": "第六十四批覆核 R642 判定 NEEDS_CHECK：化學人工降雨造雨塔配方與水文暴雨因果關係缺乏嚴謹受控實驗，暫緩入選。"
+      },
+      {
+        "id": "N6935",
+        "reason": "第六十四批覆核 R643 判定 NEEDS_CHECK：英雄雪橇犬媒體包裝與真實接力賽程各隊里程劃分存在商業宣傳爭議，暫緩入選。"
       }
     ],
     "raw_changes": [
