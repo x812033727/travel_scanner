@@ -1,5 +1,5 @@
 {
- "_note": "e918 live d1 (e917-live/spec.json's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth: s03, s06, s13 (Xu Yan across the table), s04 (at the window beside the bookkeeper) and s09 (alone) are from behind her (nospeak, recordings laid in): her three face pictures and her identity sentence go, and the 'only' sentence says she is seen from behind and appears once; s07 is Xu Yan's face with her line off screen. s01, s31, s33 are her silent face shots: e907's neutral face sentences. The bookkeeper has no picture: s05, s12 are his hands with the teahouse as the only picture; s01, s04, s11 admit his back. No set picture for the workshop at night (s15-s22) and the lane (s23, s27-s30); s24 swaps the manor hall for set-qianfu-houmen-ye-l1 (the passage inside the back gate), s31-s38 the yamen gate for set-xianya-gongtang-l1 and s39-s40 for set-xianya-ceting-l1 (swap_pictures, applied by prep918.sh with absolute paths). Hand inserts: s16 (Xu Yan's angle-a), s25, s26 (Qian Yuanwai's portrait) send only the owner of the hands and lose the face sentences. By day (s31, s34, s36, s39, s40) Qian Yuanwai's sentence loses the gold rings, his hands inside his sleeves. The speaking gaze names the listener off screen or the thing looked at (s10, s11, s14, s15, s18, s20-s22, s24, s31-s34, s36, s37). s01, s30, s31, s33, s39, s40 drop profile pictures. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9181101/9181102.",
+ "_note": "e918 live d1 (e917-live/spec.json's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth: s03, s06, s13 (Xu Yan across the table), s04 (at the window beside the bookkeeper) and s09 (alone) are from behind her (nospeak, recordings laid in): her three face pictures and her identity sentence go, and the 'only' sentence says she is seen from behind and appears once; s07 is Xu Yan's face with her line off screen. s01, s31, s33 are her silent face shots: e907's neutral face sentences. The bookkeeper has no picture: s05, s12 are his hands with the teahouse as the only picture; s01, s04, s11 admit his back. No set picture for the workshop at night (s15-s22) and the lane (s23, s27-s30); s24 swaps the manor hall for set-qianfu-houmen-ye-l1 (the passage inside the back gate), s31-s38 the yamen gate for set-xianya-gongtang-l1 (s37b too: the script's c37 is split into s37 and s37b) and s39-s40 for set-xianya-ceting-l1 (swap_pictures, applied by prep918.sh with absolute paths). Hand inserts: s16 (Xu Yan's angle-a), s25, s26 (Qian Yuanwai's portrait) send only the owner of the hands and lose the face sentences. By day (s31, s34, s36, s37, s39, s40) Qian Yuanwai's sentence loses the gold rings, his hands inside his sleeves. The speaking gaze names the listener off screen or the thing looked at (s10, s11, s14, s15, s18, s20-s22, s24, s31-s34, s36, s37, s37b). s01, s30, s31, s33, s39, s40 drop profile pictures. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9181101/9181102.",
  "seeds": [
   9181101,
   9181102
@@ -447,7 +447,7 @@
     ],
     [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
-     "his face three-quarter to screen left toward Xu Yan off screen left, his eyes darting"
+     "his face three-quarter to screen left toward Xu Yan off screen left, his eyes on him and then darting away"
     ]
    ]
   },
@@ -457,8 +457,12 @@
    },
    "replace": [
     [
+     ", three gold rings on his fingers;",
+     ", wide sleeves, his hands hidden inside them;"
+    ],
+    [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
-     "his face three-quarter to screen right toward Qian Yuanwai off screen right, his eyes on him"
+     "his face tipped up toward the magistrate's raised desk above the frame, his eyes on it"
     ]
    ]
   },
@@ -495,6 +499,17 @@
    "drop_pictures": [
     "xuyan-angle-b-l1.png",
     "qianyuanwai-angle-b-l1.png"
+   ]
+  },
+  "s37b": {
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-l1.png"
+   },
+   "replace": [
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen right toward Qian Yuanwai off screen right, his eyes on him"
+    ]
    ]
   }
  }

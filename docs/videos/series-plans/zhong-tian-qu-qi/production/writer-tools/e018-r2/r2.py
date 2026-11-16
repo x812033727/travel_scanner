@@ -1,6 +1,7 @@
 """Episode 18 remake (r2): the writer spec for ../e001-r2/build-r2.py. Source: docs/videos/zhong-tian-qu-qi-e018-r2/script.md
 (c01-c40 = s01-s40; the CG-era r2 script of PR #2024), including its sections 「這版改了什麼」, 「2026-11-06 審稿後的修改」 and
-「真人版的改動（2026-11-16）」, which override the tables. Every line is the script's, word for word; only the staging changes.
+「真人版的改動（2026-11-16）」, which override the tables. Every line is the script's, word for word; only the staging changes (the script's c37 is two shots here, s37 and s37b: its two
+recordings run 11.4 s of speech, more than one 10 s clip holds; see BUY).
 Bible: production/r2-bible-e011-e020.md (rules 1-18).
 
 Live action from the first draft, written the way e017-r2/r2.py stands AFTER its independent review (review.md in ../e017-r2:
@@ -69,7 +70,7 @@ No screen test is needed: every place has a usable picture or is written without
 EP = 918  # internal working number; the published slug is zhong-tian-qu-qi-e018-r2
 SLUG = "zhong-tian-qu-qi-e018-r2"
 EP_TITLE = "一頁帳、一只錢箱、一雙紅手（重製版 r2）"
-OUTLINE_SECONDS = 207.5  # script.md: 207.5 s, 40 shots (14 + 16 + 10)
+OUTLINE_SECONDS = 207.5  # script.md: 207.5 s, 40 shots (14 + 16 + 10); live: 41 (c37 split into s37 and s37b)
 TARGET_MINUTES = [3, 4]
 TITLE = "一雙紅手｜種田娶妻打天下 第18集（重製版）"
 DESCRIPTION = "兩天後，縣城茶樓。強制任務只剩五日，賴三躲在錢府不出門。唐小棠用一兩銀子向錢府的帳房買下帳上一頁：收魏記，銀三百兩；紙坊起火前一天，付賴三，五兩。錢員外背後還有人出錢。許硯故意大聲說，賣紙的銀子跟造紙方子今晚都鎖進新紙坊的錢箱，帳房放下茶杯就走。當夜，箱面刷薑黃水、鎖扣抹草木灰水，裡面只有三塊石頭。賴三果然來偷，一路抱進錢府後門；秦霜從門縫看見錢員外親手撬開鎖扣，兩手從指尖紅到手腕，擦都擦不掉。巷口，秦霜按住賴三：人贓俱獲。隔天公堂上，錢員外反告許硯賣紙逃稅，兩手卻一直縮在袖子裡：天、天冷。側廳裡，他用手腕勾住許硯的袖子：放我一馬，告訴你誰推你下河。《種田娶妻打天下》第 18 集（重製版）。"
@@ -422,12 +423,19 @@ SHOTS = [
          lines=[("qianyuanwai", "天、天冷……老夫一到秋天就怕冷。", "結巴，乾笑")],
          motion="Qian Yuanwai hugs his joined sleeves tighter into his belly and pulls his neck down into his collar; after the last word the forced laugh drops off his face and his eyes slide away",
          zh="近景、慢推：錢員外把併在肚前的兩隻袖子往懷裡一攏、縮脖子乾笑（本鏡可以乾笑），結巴地說；說完笑一下子掉下來、眼睛溜開；手始終在袖裡"),
-    # His line comes after Qian Yuanwai's (off screen): he first listens with his lips closed.
-    dict(loc="hall", cam="Low-angle medium close-up, slow push in", chars=["huxianling"], night="hall",
-         comp=f"low-angle medium close-up from below the platform: Magistrate Hu, {HU}, sitting behind the long dark desk, framed from the chest up with clear space above his hat, his right hand resting on {GAVEL} on the desk, his face three-quarter to screen right toward Qian Yuanwai off screen right, never the lens; shifty: eyes sliding sideways, brows twitching, lips pressed together at first; behind him only the plain white panels",
-         lines=[("qianyuanwai", "大人，老夫頭暈得很，求您午後再審。", "畫外，急"), ("huxianling", "准了。午後升堂，兩案一起審，都到側廳候著！", "官腔，打發")],
-         motion="first Magistrate Hu only listens, his lips closed and his eyes sliding toward screen right; then he lifts the wooden block a little and sets it down lightly on the desk, waves his left sleeve once toward the side door and speaks; after the last word he looks away and smooths his sleeve",
-         zh="低角度中近景、慢推（身後只有空白屏板）：胡縣令先聽（錢員外畫外那句，嘴閉著、眼睛往畫右一瞟），再把驚堂木輕輕一放、左袖往側門一揮，官腔打發；說完別開眼撫袖（長鏡）"),
+    # The script's c37 (Qian Yuanwai's line off screen, then Magistrate Hu's, 9 s) is two shots: the two recordings run 11.4 s
+    # of speech, more than a 10 s clip holds (r2.py BUY). s37: Qian Yuanwai asks on screen (his hands stay in his sleeves);
+    # s37b: Magistrate Hu grants it. Hu and Qian Yuanwai stay in separate frames.
+    dict(loc="hall_c", cam="Close-up, slow push in", chars=["qianyuanwai"], night="hall",
+         comp=f"close-up of {QIAN}, kneeling, framed from the chest up with space above his head, both his hands hidden inside his wide dark gold sleeves, the back of his left sleeve-covered wrist already pressed to his forehead, his face tipped up three-quarter to screen left toward the magistrate's raised desk above the frame, never the lens; pleading and sly: brows drawn up, eyes half closed, mouth drooping between words; behind him only a dark red-brown pillar and the grey daylight",
+         lines=[("qianyuanwai", "大人，老夫頭暈得很，求您午後再審。", "急")],
+         motion="Qian Yuanwai sways a little on his knees with his sleeve-covered wrist against his forehead, then lowers the wrist and bows his head toward the desk; after the last word he stays bowed, his eyes sliding sideways",
+         zh="【原稿 c37 拆成兩鏡之一】近景、慢推：錢員外跪著，左手腕連手縮在袖裡、第一格就已經抵在額頭上，身子晃一下，放下手腕朝上面的公案低頭求（原稿這句是胡縣令鏡頭裡的畫外音；兩句錄音共 11.4 秒，一支 10 秒裝不下）；說完低著頭、眼睛往旁邊溜；手始終在袖裡"),
+    dict(sid="s37b", loc="hall", cam="Low-angle medium close-up, slow push in", chars=["huxianling"], night="hall",
+         comp=f"low-angle medium close-up from below the platform: Magistrate Hu, {HU}, sitting behind the long dark desk, framed from the chest up with clear space above his hat, his right hand resting on {GAVEL} on the desk, his face three-quarter to screen right toward Qian Yuanwai off screen right, never the lens; impatient and dismissive: brows lifted, eyes half lidded, mouth drawn long between words; behind him only the plain white panels",
+         lines=[("huxianling", "准了。午後升堂，兩案一起審，都到側廳候著！", "官腔，打發")],
+         motion="Magistrate Hu lifts the wooden block a little and sets it down lightly on the desk, then waves his left sleeve once toward the side door; after the last word he looks away and smooths his sleeve",
+         zh="【原稿 c37 拆成兩鏡之二】低角度中近景、慢推（身後只有空白屏板）：胡縣令把驚堂木輕輕一放、左袖往側門一揮，官腔打發；說完別開眼撫袖"),
     dict(loc="hall_c", cam="Close-up, slow push in", chars=["xuyan"], night="hall",
          comp=f"close-up of {XU_POUCH}, framed from the chest up with space above his head, his head turned toward screen right, his face three-quarter to screen right, his eyes following Qian Yuanwai off screen right as he goes out, never the lens; cold and knowing: eyes narrowing slowly, brows drawn low, lips pressed flat; behind him only a dark red-brown pillar and the grey lattice window",
          lines=[("xuyan", "他想拖到午後，好把那雙手洗乾淨。", "冷，心裡話", "inner")],
@@ -456,7 +464,7 @@ HEAD = [
     "- **紅手**（拍法 12）：均勻的橘紅、像染料、皮膚完好，不是血也不是傷；寫成第一格就已經的狀態（s26 錢員外、s28 起賴三），不演『慢慢變紅』。白天 s31–s40 錢員外兩手整場縮在寬袖裡、袖口併在肚前，spec 拿掉他身分句的金戒指；s40 用袖子包著的手腕勾許硯的右前臂。胡縣令與錢員外不同框。",
     "- **不拍兵器與衙役**：秦霜腰帶空著，s21 原稿『右手按上柴刀柄』改成按在柴堆上；公堂整場不拍衙役（拍法 16–18：背景寫了人就會配刀或長棍），『威武』只留音效；驚堂木是扁長方的木塊。",
     "- 場景（協調者 2026-11-16 決定，每張放大看過）：茶樓 `set-chalou-l1`（s01–s14；原稿窗邊小桌照圖改成窗下長凳）；新紙坊夜景**不送圖**（s15–s22；`set-zhifang-gujia-ye-l2` 是第 17 集正在立、有篝火的狀態，`-chen-l1` 是天亮，寫在文字裡）；錢府後巷**不送圖**（s23、s27–s30）；門縫裡看進去的後院 s24 送 `set-qianfu-houmen-ye-l1`（它畫的正是後門裡面的走道、燈籠與石桌）；公堂 s31–s38 送 `set-xianya-gongtang-l1`；側廳 s39–s40 送 `set-xianya-ceting-l1`。三張後者由 spec 的 `swap_pictures` 換進去（`gen-dh.mjs` 不加行）。**不用試鏡**。",
-    "- 長鏡要買的秒數（BUY）：照 39 句錄音核過（`~/mokaair-work/videos/zhong-tian-qu-qi-e918-dh/audio`，見 `r2.py` 的 BUY 註解）。",
+    "- 長鏡要買的秒數（BUY）：照 39 句錄音核過（`~/mokaair-work/videos/zhong-tian-qu-qi-e918-dh/audio`，faster-whisper 逐句聽寫，a05、a21、a34 重錄一次，第一次的檔在 `audio/take1/`；見 `r2.py` 的 BUY 註解）：s02 買 10 秒（心裡話兩句加系統，約 10.1 秒）；**原稿 c37 拆成 s37（錢員外求午後再審，6 秒）與 s37b（胡縣令准了，8 秒）**——兩句錄音約 11.4 秒，一支 10 秒裝不下；s25（錢員外 7.1 秒）、s31（6.9 秒）、s36（結巴乾笑 6.4 秒）買 8 秒；其餘 6 秒。",
     "- **表上的「秒」欄是 lint 估法**，比錄音短；剪接以錄音長度＋0.5 秒為準。",
 ]
 FOOT = [
@@ -467,5 +475,18 @@ FOOT = [
     "- 配樂：茶樓俏皮的懸疑小調（s06 唸帳一個重音、s11 大聲那句後停一拍）；紙坊與後巷壓著的懸疑曲（低音撥弦，s26 紅手一個重音、s29 叮）；縣衙沉的鼓（s32 驚堂木一個重音、s40 一個低音後收）。音效表見 script.md〈音樂與音效〉（s05 改成紙推過木凳、收碎銀；s12 茶杯重放、抓帳冊；s31 衙役的『威武』低聲留著，人不入鏡）。",
 ]
 
-# Long shots: seconds to buy (measured against the recordings; see the comment filled in after recording).
-BUY = {"s02": 10, "s37": 10}
+# Long shots: seconds to buy. Measured 2026-11-16 against the 39 recordings (~/mokaair-work/videos/zhong-tian-qu-qi-e918-dh/audio;
+# wave length and silencedetect -35 dB; e013's test: a shot holds (buy - 0.3) x 1.1 s of speech, half a second between lines).
+# faster-whisper medium read every take back (scratchpad fw918.txt): three were re-recorded once, a05 (靠窗 heard as 靠床, 青衫 as
+# 秦山), a21 (他要跑了 heard as 他又跑了: a different meaning) and a34 (錢員外 heard as 秦雲外); the first takes are in audio/take1/.
+# The new takes read 靠窗／青山 (a homophone), 他要跑了, 前院外 (qián right, yuán read as yuàn by whisper). The rest are homophones
+# or tone guesses of whisper (錢府 潛伏, 紙坊 脂肪, 魏記 未計, 許硯 許燕, 縣衙 線牙, 五兩 無量: wǔ liǎng with the third-tone sandhi);
+# a32 知法 heard as 執法 but its 知 is level (130 Hz flat, first tone); a35 keeps the stutter 天、天 (two bursts 0.18-0.44 and
+# 0.72-0.86 s before 天冷).
+# 10 s: s02, the script's long shot (thought a02 4.76 + system a03 2.59 + thought a04 3.04 + 2 x 0.5 = 11.39 s with the edge
+# silences, 10.07 s of speech without them, under the 10.67 s a 10 s clip holds).
+# The script's c37 (a36 5.92 + a37 6.16 + 0.5 = 12.58 s, 11.39 s of speech) is more than a 10 s clip holds: it is split into
+# s37 (Qian Yuanwai asks, a36, 6 s) and s37b (Magistrate Hu grants it, a37 6.16 s after setting the block down: 8 s).
+# 8 s: s25 (a24 7.08 s, Qian Yuanwai's slow angry line with long pauses), s31 (a30 6.88 s), s36 (a35 6.40 s, the stutter).
+# Every other line is 2.42-6.08 s and fits 6 s (s30's a29 6.08 s, s32's a31 6.04 s the tightest: 5.41 and 5.51 s of speech).
+BUY = {"s02": 10, "s25": 8, "s31": 8, "s36": 8, "s37b": 8}

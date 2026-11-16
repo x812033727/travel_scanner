@@ -61,6 +61,7 @@ def drop(sid, *names):
 
 
 shots = {f"s{n:02d}": {} for n in range(1, 41)}
+shots["s37b"] = {}  # the script's c37 split in two (r2.py): s37 Qian Yuanwai asks, s37b Magistrate Hu grants it
 
 # Tang Xiaotang's five on-screen lines (bible rule 3): from behind her; the 'only' sentence says so and that she appears once.
 for sid in ["s03", "s06", "s13"]:
@@ -114,14 +115,14 @@ for sid in ["s15", "s17", "s18", "s19", "s20", "s21", "s22", "s23", "s27", "s28"
 # retake.py cannot swap a picture; prep918.sh applies "swap_pictures" to colab-jobs.json after retake.py (absolute paths; the
 # prompt text is unchanged). gen-dh gives the hall of the manor for "Qian manor" and the gate for "county yamen".
 shots["s24"]["swap_pictures"] = {"set-qianfu-ting-l1.png": "set-qianfu-houmen-ye-l1.png"}
-for n in range(31, 39):
-    shots[f"s{n}"]["swap_pictures"] = {"set-xianya-l1.png": "set-xianya-gongtang-l1.png"}
+for sid in [f"s{n}" for n in range(31, 39)] + ["s37b"]:
+    shots[sid]["swap_pictures"] = {"set-xianya-l1.png": "set-xianya-gongtang-l1.png"}
 for sid in ["s39", "s40"]:
     shots[sid]["swap_pictures"] = {"set-xianya-l1.png": "set-xianya-ceting-l1.png"}
 
 # By day Qian Yuanwai's hands are inside his sleeves: his cast sentence loses the rings (s31, s34, s36, s39, s40; s35 shows only
 # his back, unnamed).
-for sid in ["s31", "s34", "s36", "s39", "s40"]:
+for sid in ["s31", "s34", "s36", "s37", "s39", "s40"]:
     add(sid, "replace", list(RINGS))
 
 # Lines not said into a face on screen.
@@ -139,7 +140,8 @@ add("s32", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen left tow
 add("s33", "replace", [SPEAK_GAZE_HE, "his face tipped up toward the magistrate's raised desk above the frame, his eyes on it"])
 add("s34", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen left toward Xu Yan off screen left, his eyes on him"])
 add("s36", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen left toward Xu Yan off screen left, his eyes on him and then darting away"])
-add("s37", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen right toward Qian Yuanwai off screen right, his eyes on him"])
+add("s37", "replace", [SPEAK_GAZE_HE, "his face tipped up toward the magistrate's raised desk above the frame, his eyes on it"])
+add("s37b", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen right toward Qian Yuanwai off screen right, his eyes on him"])
 
 # The crowded shots: Xu Yan's profile picture goes (e014-e017), and Tang Xiaotang's or Qian Yuanwai's profile beside it.
 drop("s01", "xuyan-angle-b-l1.png", "tangxiaotang-angle-b-l1.png")
@@ -157,11 +159,11 @@ spec = {
               "shots: e907's neutral face sentences. The bookkeeper has no picture: s05, s12 are his hands with the teahouse as the "
               "only picture; s01, s04, s11 admit his back. No set picture for the workshop at night (s15-s22) and the lane (s23, "
               "s27-s30); s24 swaps the manor hall for set-qianfu-houmen-ye-l1 (the passage inside the back gate), s31-s38 the yamen "
-              "gate for set-xianya-gongtang-l1 and s39-s40 for set-xianya-ceting-l1 (swap_pictures, applied by prep918.sh with "
+              "gate for set-xianya-gongtang-l1 (s37b too: the script's c37 is split into s37 and s37b) and s39-s40 for set-xianya-ceting-l1 (swap_pictures, applied by prep918.sh with "
               "absolute paths). Hand inserts: s16 (Xu Yan's angle-a), s25, s26 (Qian Yuanwai's portrait) send only the owner of the "
-              "hands and lose the face sentences. By day (s31, s34, s36, s39, s40) Qian Yuanwai's sentence loses the gold rings, his "
+              "hands and lose the face sentences. By day (s31, s34, s36, s37, s39, s40) Qian Yuanwai's sentence loses the gold rings, his "
               "hands inside his sleeves. The speaking gaze names the listener off screen or the thing looked at (s10, s11, s14, s15, "
-              "s18, s20-s22, s24, s31-s34, s36, s37). s01, s30, s31, s33, s39, s40 drop profile pictures. No off-screen sentence is in "
+              "s18, s20-s22, s24, s31-s34, s36, s37, s37b). s01, s30, s31, s33, s39, s40 drop profile pictures. No off-screen sentence is in "
               "these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9181101/9181102."),
     "seeds": [9181101, 9181102],
     "shots": shots,
