@@ -4,7 +4,7 @@
 
 ## 稿子怎麼產生
 
-整份 [`video.json`](video.json)（scenes、loops、角色、聲音、youtube、縮圖、sources）與 [`build_scenes.py`](build_scenes.py) 完全逐位元對應（`sha256 e9a536d794df`）：
+整份 [`video.json`](video.json)（scenes、loops、角色、聲音、youtube、縮圖、sources）與 [`build_scenes.py`](build_scenes.py) 完全逐位元對應（`sha256 6ef7f31208f3`）：
 
 - **角色與聲音**：`chief`（Gemini `Sulafat`）與 `kid`（Gemini `Leda`）沿用系列已核准的設定圖快取（`look` 0 次生圖呼叫），實錄平均語速 **`5.11 字／秒`**（高於系列下限 `4.4 字／秒`）；[`docs/videos/lexicon.json`](../lexicon.json) 新增 `"QR Code": "Q R Code"`、`"QR": "Q R"`、`"CD": "C D"`、`"Reed-Solomon": "Reed Solomon"`，避免共用詞表把 `"Code"` 念成 `"扣德"`。
 - **V2 標準人物造型與無人機制鏡比例**：
@@ -12,7 +12,7 @@
   - 43 鏡（`53.75%`）為《原來如此事務所》專屬 **2.5 頭身 Q 版**角色鏡（對齊 [`chief-canon-v2.png`](../so-thats-why/series-sheets/characters/chief-canon-v2.png) 雙耳無鉛筆、[`kid-canon-v2.png`](../so-thats-why/series-sheets/characters/kid-canon-v2.png) 圓亮大眼，與《奇聞檔案局》3.5 頭身修長 `Ada` 完全區隔）；37 鏡（`46.25%`）為 `nobody: true` 無人機制與實物特寫（落於系列 `45%–65%` 區間）。
 - **運鏡凍結在 [`cameras.json`](cameras.json)**：80 鏡全數無連續三鏡重複運鏡，搭配 `pauses: {line_ms: 0, scene_ms: 150}` 與 `still_motion: "beat"`。
 
-## 2026-11-14 完製與審核紀錄
+## 2026-11-14～11-15 完製、審核與上架紀錄
 
 - **撰稿、查核與盲評**：
   - 6 章、80 鏡、159 句、0 張字卡（100% 插圖）、`loops` 19 個全數回收；片頭後 15 秒內拋出飲料店沾冰咖啡照樣嗶 vs 花邊貼太近掃不過的核心問題。
@@ -25,6 +25,6 @@
 - **成片組裝、觀眾視角獨立評分（[`review/audience-review.md`](review/audience-review.md)）與修正**：
   - `final.mp4`（`sha256 b9a7b1839d315c74ebfa28d2850403a01e0c7e4b3bdaa0ad32336e6f991140fc`，`18,187 frames`，`606.26 s`，`-14.0 LUFS`）組裝完成後，交由全新獨立代理以一般 YouTube 觀眾視角檢視 21 張成片抽格總表、9 語字幕與 11 張縮圖。
   - 80 鏡正片與音訊 **0 處待修瑕疵**；初審抓出 `thumbnail-c.jpg` 副標單行與 `en/es/pt/id` 外語縮圖主標單行壓邊共 2 項零成本排版問題，已全數改為雙行斷行重繪並複驗左側文字安全區（`< 794px`），最終六維度平均 **`9.13 / 10`**、技術七項 **`64.3 / 70`**，並通過 **`qa` 11／11**。
-- **Google Drive 完整備份與後台送審**：
-  - 完整製作目錄（含 `_raw_keyframes/`、`_repo_docs/`、`final.mp4`、8 語 `dubs/`、9 語 `captions/`、`review/`、`upload/` 全套上架包、`SHA256SUMS`，排除任何權杖密鑰）已備份至 `AI/備份/AI劇/原來如此事務所/數位科技與通訊工程/P12/製作檔/sothatswhy-p12-qr-code/`（資料夾 ID：`1kMdSO7TbqNqoTayAhSlB5c7Xo_Kln7EO`），並經獨立代理涵蓋核對 `0` 差異。
-  - 站主核准 `final` 後，已完成 `review-pull`、`package`（`4/4` 通過，`metadata.json sha256 f8c6814d945d`）、`review-push --gate publish`（`pending`）與 `review-push --gate languages`（`pending`；`review-files --dry-run --gate languages` 確認 8 配音、8 縮圖、8 字幕、8 說明、`metadata.json`、`languages_manifest.json` 共 34 檔全數在站上）。待站主核准 `publish` 與 `languages` 並貼回 YouTube 網址後結案。
+- **Google Drive 完整備份、後台三關核准與 YouTube 同步結案**：
+  - 完整製作目錄（含 `_raw_keyframes/`、`_repo_docs/`、`final.mp4`、8 語 `dubs/`、9 語 `captions/`、`review/`、`upload/` 全套上架包、最終 `approvals.json`、`SHA256SUMS`，共 `2,994` 檔，排除任何權杖密鑰）已備份至 `AI/備份/AI劇/原來如此事務所/數位科技與通訊工程/P12/製作檔/sothatswhy-p12-qr-code/`（資料夾 ID：`1kMdSO7TbqNqoTayAhSlB5c7Xo_Kln7EO`），並經獨立代理涵蓋核對 `0` 差異。
+  - 站主已於 `/admin/videos` 全數核准 `final`（`2026-11-15T03:44:13Z`）、`languages`（`2026-11-15T04:18:08Z`，`languages_manifest.json sha256 964688406c1f`）與 `publish`（`2026-11-15T04:18:12Z`，`metadata.json sha256 f8c6814d945d`），並完成 YouTube 上傳與同步（YouTube 影片 ID：`2ouKXqeC05A`，9 語標題說明、9 語 CC 字幕、縮圖與揭露於 `2026-11-15T11:20:38Z` 全數 `done`）。

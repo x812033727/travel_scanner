@@ -1,13 +1,13 @@
 ---
 id: 2026-11-14-sothatswhy-p12-dialogue-qr-code-damage
 title: "sothatswhy P12 dialogue: QR Code damage and error correction"
-status: blocked
+status: done
 priority: P2
 area: docs
 owner: antigravity-sothatswhy-p12
 claimed_at: 2026-11-14T04:05:46Z
 created_at: 2026-11-14T04:05:32Z
-completed_at:
+completed_at: 2026-11-16T00:08:36Z
 branch: video/sothatswhy-p12-qr-code
 depends_on: []
 scope:
@@ -38,7 +38,7 @@ Produce episode P12 (〈QR Code 缺一塊，為什麼還讀得出來？〉, slug
 - [x] Run `look` (reusing series sheets) + generate & import all 80 V2 keyframes (`keyframes import --provider external --usd 0`) + independent 2x quadrant inspection (`68/70`).
 - [x] Run `render`, `clips`, `assemble`, 8-locale MiniMax `dub` + `check-audio --locale`, `captions`, post-assembly independent audience review (`9.13/10`), and `qa` (`11/11`).
 - [x] Back up full workdir + `upload/` + `_repo_docs/` snapshot to Google Drive (`1kMdSO7TbqNqoTayAhSlB5c7Xo_Kln7EO`), pull owner `final` approval, run `package` (`4/4` passed, `metadata.json sha256 f8c6814d945d`), and submit `review-push --gate publish` (`pending`) and `review-push --gate languages` (`pending`, 34 files verified via `review-files --dry-run --gate languages`) to `/admin/videos`.
-- [ ] After owner approves `publish` + `languages` on `/admin/videos` and links YouTube URL: run `npm run tasks -- done 2026-11-14-sothatswhy-p12-dialogue-qr-code-damage`.
+- [x] After owner approves `publish` + `languages` on `/admin/videos` and links YouTube URL: run `npm run tasks -- done 2026-11-14-sothatswhy-p12-dialogue-qr-code-damage`.
 
 ## How to verify
 
@@ -51,7 +51,7 @@ npm run check:tasks && npm run test:docs-videos
 
 ## Notes
 
-- **Blocker (external owner gate)**: `final` approved by owner (`final.mp4 sha256 b9a7b1839d315c74ebfa28d2850403a01e0c7e4b3bdaa0ad32336e6f991140fc`); `publish` (`metadata.json sha256 f8c6814d945d`) and `languages` (`languages_manifest.json sha256 964688406c1f`, 8 dubs + 8 thumbnails + 8 captions + 8 descriptions) submitted (`pending`) on `/admin/videos`. Waiting for owner to approve `publish` & `languages` and upload/link on YouTube.
-- Google Drive full production + `upload/` backup verified at `AI/備份/AI劇/原來如此事務所/數位科技與通訊工程/P12/製作檔/sothatswhy-p12-qr-code/` (Drive folder ID `1kMdSO7TbqNqoTayAhSlB5c7Xo_Kln7EO`).
+- **2026-11-15 Completed**: `final` (`2026-11-15T03:44:13Z`), `languages` (`2026-11-15T04:18:08Z`), and `publish` (`2026-11-15T04:18:12Z`) all approved on `/admin/videos`; uploaded and synced to YouTube as `2ouKXqeC05A` (`https://youtu.be/2ouKXqeC05A`, 9-locale metadata + 9-locale CC captions + thumbnail synced `done` at `2026-11-15T11:20:38Z`; 8-locale dubs & localized thumbnails recorded).
+- Google Drive full production + `upload/` + final `approvals.json` backup verified (`2,994` files, `0` differences) at `AI/備份/AI劇/原來如此事務所/數位科技與通訊工程/P12/製作檔/sothatswhy-p12-qr-code/` (Drive folder ID `1kMdSO7TbqNqoTayAhSlB5c7Xo_Kln7EO`).
 - Pairing token approved by owner (`antigravity-sothatswhy`).
 - Shared `docs/videos/lexicon.json` has `"Code": "扣德"`, so `"QR Code": "Q R Code"` (plus `"QR": "Q R"`, `"CD": "C D"`, `"Reed-Solomon": "Reed Solomon"`) is appended so longest-match substitution reads `"QR Code"` naturally instead of `"扣德"`.
