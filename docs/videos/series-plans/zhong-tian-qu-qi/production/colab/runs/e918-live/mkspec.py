@@ -35,7 +35,8 @@ ACTING = ("Natural, realistic human motion and acting of real actors: each perso
           "reference pictures, while every visible face acts the emotion written above and changes with it; the pictures are "
           "neutral studio portraits, never copy their blank expression.")
 HANDS = "Only hands move in this shot; the frame stays on the hands and what they hold from the first frame to the last."
-ONE_TANG = "the young woman with the two buns and pink ribbons appears only once"
+# review.md 必改 1: e916 fix1's hair (two high round buns, short ribbons), as r2.py TBACK.
+ONE_TANG = "the young woman with the two high round buns appears only once"
 BACK2 = (f"Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan facing us across the "
          f"table; {ONE_TANG}; no second copy of anyone appears.")
 
@@ -78,15 +79,13 @@ for sid in ["s01", "s31", "s33"]:
 # The bookkeeper's hands (s05, s12): no person picture at all, the set is the one picture; hands only.
 for sid in ["s05", "s12"]:
     shots[sid] = {"replace": [["shot on a cinema camera. the location shown in <Picture 1>", "shot on a cinema camera. The location shown in <Picture 1>"],
-                              [ACTING, "Only one thin hand and its dark blue sleeve are in the frame; its owner's face is never seen; "
+                              [ACTING, "Only one thin hand and its dark green sleeve are in the frame; its owner's face is never seen; "
                                        "no second copy of anyone appears. " + HANDS]]}
 
 # The unnamed backs, heads and hands the compositions describe.
 add("s01", "replace", [ONLY_2, "Only these 2 people and the one thin man on the bench by the window, seen only from behind, are in "
                                "the frame; no second copy of anyone appears."])
 add("s08", "replace", [ONLY_HE, besides("him", "the back of the young woman's head and her shoulders in the foreground")])
-add("s11", "replace", [ONLY_HE, "Besides him, only the one thin man on the bench by the window, seen only from behind, is in the "
-                                "frame; no second copy of anyone appears."])
 add("s17", "replace", [ONLY_SHE, besides("her", "the back of the young man's head and his shoulder in the foreground")])
 add("s19", "replace", [ONLY_HE, "Besides him, only the tops of the two heads behind the woodpile the composition describes are in "
                                 "the frame, their faces hidden; no second copy of anyone appears."])
@@ -115,8 +114,15 @@ for sid in ["s15", "s17", "s18", "s19", "s20", "s21", "s22", "s23", "s27", "s28"
 # retake.py cannot swap a picture; prep918.sh applies "swap_pictures" to colab-jobs.json after retake.py (absolute paths; the
 # prompt text is unchanged). gen-dh gives the hall of the manor for "Qian manor" and the gate for "county yamen".
 shots["s24"]["swap_pictures"] = {"set-qianfu-ting-l1.png": "set-qianfu-houmen-ye-l1.png"}
-for sid in [f"s{n}" for n in range(31, 39)] + ["s37b"]:
-    shots[sid]["swap_pictures"] = {"set-xianya-l1.png": "set-xianya-gongtang-l1.png"}
+# review.md 必改 3, 12, 13: free crops (refs-live/README.md, new set ids with their own l1, so pilot.py's newest-l lookup of
+# set-chalou and set-xianya-gongtang is untouched): the inserts s05, s12 get the bench; the floor shots get the hall without
+# its desk, armchair and board; Magistrate Hu's two shots get the dais with the board out of the frame.
+for sid in ["s05", "s12"]:
+    shots[sid]["swap_pictures"] = {"set-chalou-l1.png": "set-chalou-bench-l1.png"}
+for sid in ["s31", "s33", "s34", "s35", "s36", "s37", "s38"]:
+    shots[sid]["swap_pictures"] = {"set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"}
+for sid in ["s32", "s37b"]:
+    shots[sid]["swap_pictures"] = {"set-xianya-l1.png": "set-xianya-gongtang-dais-l1.png"}
 for sid in ["s39", "s40"]:
     shots[sid]["swap_pictures"] = {"set-xianya-l1.png": "set-xianya-ceting-l1.png"}
 
@@ -127,7 +133,7 @@ for sid in ["s31", "s34", "s36", "s37", "s39", "s40"]:
 
 # Lines not said into a face on screen.
 add("s10", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen right toward Tang Xiaotang off screen right, his eyes on the bundle"])
-add("s11", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen right toward the open window, his eyes on the man by the window"])
+add("s11", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen right toward the open window off screen right, his eyes on it"])
 add("s14", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen right toward Tang Xiaotang off screen right, his eyes on her"])
 add("s15", "replace", [SPEAK_GAZE_HE, "his face lowered toward the box, his eyes on the lid"])
 add("s18", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen right toward Qin Shuang off screen right, his eyes on her"])
@@ -135,12 +141,12 @@ add("s20", "replace", [SPEAK_GAZE_HE, "his face lowered toward the box in his ar
 add("s21", "replace", [SPEAK_GAZE, "her face three-quarter to screen right toward Xu Yan off screen right, her eyes on him"])
 add("s22", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen left toward Qin Shuang off screen left, his eyes on her"])
 add("s24", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen right toward the box, his eyes on it"])
-add("s31", "replace", [SPEAK_GAZE_HE, "his face tipped up toward the magistrate's raised desk above the frame, his eyes on it"])
+add("s31", "replace", [SPEAK_GAZE_HE, "his face tipped up toward the high dais above the top of the frame, his eyes on it"])
 add("s32", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen left toward Xu Yan off screen left below him, his eyes on him"])
-add("s33", "replace", [SPEAK_GAZE_HE, "his face tipped up toward the magistrate's raised desk above the frame, his eyes on it"])
+add("s33", "replace", [SPEAK_GAZE_HE, "his face tipped up toward the high dais above the top of the frame, his eyes on it"])
 add("s34", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen left toward Xu Yan off screen left, his eyes on him"])
 add("s36", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen left toward Xu Yan off screen left, his eyes on him and then darting away"])
-add("s37", "replace", [SPEAK_GAZE_HE, "his face tipped up toward the magistrate's raised desk above the frame, his eyes on it"])
+add("s37", "replace", [SPEAK_GAZE_HE, "his face tipped up toward the high dais above the top of the frame, his eyes on it"])
 add("s37b", "replace", [SPEAK_GAZE_HE, "his face three-quarter to screen right toward Qian Yuanwai off screen right, his eyes on him"])
 
 # The crowded shots: Xu Yan's profile picture goes (e014-e017), and Tang Xiaotang's or Qian Yuanwai's profile beside it.
@@ -157,9 +163,10 @@ spec = {
               "(nospeak, recordings laid in): her three face pictures and her identity sentence go, and the 'only' sentence says she "
               "is seen from behind and appears once; s07 is Xu Yan's face with her line off screen. s01, s31, s33 are her silent face "
               "shots: e907's neutral face sentences. The bookkeeper has no picture: s05, s12 are his hands with the teahouse as the "
-              "only picture; s01, s04, s11 admit his back. No set picture for the workshop at night (s15-s22) and the lane (s23, "
-              "s27-s30); s24 swaps the manor hall for set-qianfu-houmen-ye-l1 (the passage inside the back gate), s31-s38 the yamen "
-              "gate for set-xianya-gongtang-l1 (s37b too: the script's c37 is split into s37 and s37b) and s39-s40 for set-xianya-ceting-l1 (swap_pictures, applied by prep918.sh with "
+              "only picture, swapped for its bench crop set-chalou-bench-l1 (review 必改 3); s01, s04 admit his back (s11 is Xu Yan alone, 建議 4). No set picture for the workshop at night (s15-s22) and the lane (s23, "
+              "s27-s30); s24 swaps the manor hall for set-qianfu-houmen-ye-l1 (the passage inside the back gate), the yamen gate for two crops of "
+              "set-xianya-gongtang-l1 (review 必改 12, 13): the floor set-xianya-gongtang-floor-l1 for s31, s33-s38 and the dais "
+              "set-xianya-gongtang-dais-l1 for Magistrate Hu's s32, s37b (the script's c37 is split into s37 and s37b), and s39-s40 for set-xianya-ceting-l1 (swap_pictures, applied by prep918.sh with "
               "absolute paths). Hand inserts: s16 (Xu Yan's angle-a), s25, s26 (Qian Yuanwai's portrait) send only the owner of the "
               "hands and lose the face sentences. By day (s31, s34, s36, s37, s39, s40) Qian Yuanwai's sentence loses the gold rings, his "
               "hands inside his sleeves. The speaking gaze names the listener off screen or the thing looked at (s10, s11, s14, s15, "
