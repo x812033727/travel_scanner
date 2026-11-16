@@ -11,17 +11,17 @@ rm -rf $E/segments-v4
 stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=os.path.getmtime(e+'/picks.json');print(' '.join(s for s in p if not os.path.exists(f'{e}/clips/{s}-t1.mp4') or os.path.getmtime(f'{e}/clips/{s}-t1.mp4')<t))")
 [ -z "$stale" ] || { echo "staging (stale: $stale)"; python3 $P/live-action/stage.py 21 || exit 1; }
 # e921 trims and seeds the edit table assumes (edit-dh-e921-live.json _note): picks.json as refine-prep.py 21 builds it from
-# picks-merged.tsv and fix1/review-picks.tsv (run in colab/runs/e921-live) -- the fix1 retakes s28 s37 (9211201) and s36
-# (9211202). No review3-trims.tsv yet: when one is written, run refine-prep.py 21 picks-merged.tsv fix1/review-picks.tsv
-# review3-trims.tsv, stage.py 21, then this table. Whole frames: a start rounded DOWN and an end-before rounded UP to 3
+# picks-merged.tsv, fix1/review-picks.tsv and review3-trims.tsv (REVIEW 3, review3-plan.md; run in colab/runs/e921-live:
+# refine-prep.py 21 picks-merged.tsv fix1/review-picks.tsv review3-trims.tsv, then stage.py 21) -- the fix1 retakes s28 s37
+# (9211201) and s36 (9211202); REVIEW 3 trims s03 s04 s05 s07 s09 s14 s14b (tails) and s28 (head, start 3.333). Whole frames: a start rounded DOWN and an end-before rounded UP to 3
 # decimals, tolerance 0.001; 0 = no end. Warn (not stop) if picks.json differs.
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
-want={'s01':(1.25,6.584),'s02':(0,8),'s03':(0,6.584),'s04':(0,6.584),'s05':(0.75,6.584),'s06':(0,6.584),'s07':(0.5,5),
- 's08':(0,6.584),'s09':(1,6.584),'s10':(1,8),'s11':(0.5,6.584),'s12':(0,6.584),'s13':(0.75,6.584),'s14':(0,8),'s14b':(0,8),
+want={'s01':(1.25,6.584),'s02':(0,8),'s03':(0,5.75),'s04':(0,5.5),'s05':(0.75,6.083),'s06':(0,6.584),'s07':(0.5,4.5),
+ 's08':(0,6.584),'s09':(1,5.75),'s10':(1,8),'s11':(0.5,6.584),'s12':(0,6.584),'s13':(0.75,6.584),'s14':(0,6.75),'s14b':(0,6.25),
  's15':(1.916,6.584),'s16':(1.5,4.75),'s17':(0.5,6.584),'s18':(0,6.584),'s19':(0.666,6.584),'s20':(2.5,6.584),'s21':(3.5,6),
  's21b':(0,2),'s22':(3.25,6),'s22b':(1.916,5.917),'s23':(1,5.25),'s24':(0.75,6.584),'s25':(0.25,4),'s26':(0.5,7.584),
- 's27':(0,6.584),'s28':(2.875,8),'s28b':(2,5.5),'s29':(0,2.5),'s30':(0.583,6.584),'s31':(1.75,5.5),'s32':(0,6.584),
+ 's27':(0,6.584),'s28':(3.333,8),'s28b':(2,5.5),'s29':(0,2.5),'s30':(0.583,6.584),'s31':(1.75,5.5),'s32':(0,6.584),
  's33':(0.75,6.584),'s34':(1,5.5),'s35':(0.75,6.584),'s36':(0,3),'s37':(1.166,8)}
 seed={'s01':9211102,'s02':9211102,'s04':9211102,'s07':9211102,'s10':9211102,'s11':9211102,'s12':9211102,'s13':9211102,
  's14':9211102,'s14b':9211102,'s16':9211102,'s20':9211102,'s21':9211102,'s21b':9211102,'s22':9211102,'s23':9211102,
