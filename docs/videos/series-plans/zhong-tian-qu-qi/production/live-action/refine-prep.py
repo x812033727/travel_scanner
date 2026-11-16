@@ -10,7 +10,9 @@ live episode is refined from ~/mokaair-work/videos/_live-e90N/zhong-tian-qu-qi-e
   runpod/live/fixN/prompts/ref-sNN-SEED.txt after "never the mood. " and before "One continuous shot." replaces the part
   of the clips-dh column-0 text after "the set layout stays as it is. " and before it (e919: the d1 wording put back the
   lantern cage, the talking mouth and the sleeves the fix1 retakes had taken out); each separator must occur exactly
-  once, and picks.json records "motion_from" (d1 or fixN) per shot;
+  once, and picks.json records "motion_from" (d1 or fixN) per shot. A shot whose set comes only from the first frame
+  (insert shots and some extras' shots, e.g. e920 s23) has "keeps the first frame's set layout and props. " in place of
+  "the set layout stays as it is. "; that one is used only when the standard phrase does not occur at all;
 - route_a_st2.py then writes st2/st2-*.json with each shot's own draft seed, and first_frame / prompt_file are made
   absolute (they used to be relative to the manifest folder and were hand-converted every run).
 The draft files are looked up in runpod/live/{d1,fix1,fix2,...}/out. Prints the h3r.sh refine command to run.
@@ -59,6 +61,8 @@ STYLE = [("[Shot 1] 3D CG.", "[Shot 1] Photorealistic live-action film footage o
 clips = json.loads((REPO / f"docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/clips-dh-e{900 + N}.json").read_text(encoding="utf-8"))
 # a retake's motion + camera text: after RETAKE_FROM in its prompt, after CLIPS_FROM in the clips-dh text, up to UNTIL
 RETAKE_FROM, CLIPS_FROM, UNTIL = "never the mood. ", "the set layout stays as it is. ", "One continuous shot."
+# e920 s23: the generator writes this instead of CLIPS_FROM when the set comes only from the first frame
+CLIPS_FROM_FIRST_FRAME = "keeps the first frame's set layout and props. "
 
 
 def between(text: str, start: str, where: str) -> tuple[str, str, str]:
@@ -85,7 +89,8 @@ for key, row in clips.items():
         if not retake.is_file():
             sys.exit(f"{shot}: picked from {src} but its retake prompt {retake} is missing")
         motion = between(retake.read_text(encoding="utf-8"), RETAKE_FROM, str(retake))[1]
-        head, _, tail = between(text, CLIPS_FROM, f"clips-dh-e{900 + N}.json {key}")
+        start = CLIPS_FROM if CLIPS_FROM in text else CLIPS_FROM_FIRST_FRAME
+        head, _, tail = between(text, start, f"clips-dh-e{900 + N}.json {key}")
         text = head + motion + tail
     for a, b in STYLE:
         text = text.replace(a, b)

@@ -1,0 +1,942 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e021-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "weishaoqing",
+      "name": "魏少卿",
+      "appearance": "East Asian man of twenty-six, handsome but frivolous, peach-blossom eyes, thin lips always curled in a scornful smile, fair skin, tall and slender, a sapphire-blue brocade robe woven with gold thread, a fine white jade pendant at his waist, a gold-flecked folding fan in his hand, hair in a neat topknot with a small jade crown",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algieba",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十六歲的宰相之子，男聲、輕佻慵懶、拖著尾音、帶著居高臨下的笑意"
+      }
+    },
+    {
+      "id": "sunzhanggui",
+      "name": "孫掌櫃",
+      "appearance": "East Asian man of forty-five, tall and lean with a long narrow face and hollow cheeks, a thin grey-streaked beard and moustache, narrow smiling eyes that are always half closed, a green satin robe with a jade belt hook, both hands empty (no jade balls)",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的商行掌櫃，笑咪咪、慢條斯理、話裡藏刀"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, empty-handed",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      },
+      "shot_looks": [
+        {
+          "id": "pole",
+          "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a plain wooden carrying pole over one shoulder with nothing hanging from it"
+        }
+      ]
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene: low brooding suspense strings at dusk in a small shop, one heavy accent on a name, one on a firm reply; then a short sharp fight cue of drums, one hard accent on a staff striking, settling at once; then cold low held strings at night, one light accent on a question and one big accent on a final threat before it stops; ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "三日後，州府來拿冒名犯｜種田娶妻打天下 第21集（重製版）",
+    "description": "許記打烊前，宰相府的公子魏少卿搖著灑金摺扇跨進門：我的未婚妻，在你家？許硯擋在櫃檯前：我這裡只有我的妻子。魏少卿亮出宰相府的帖子、唐萬金親筆簽的婚書，再拿出縣衙配婚名冊的抄本：配給許硯的第三個叫林二丫，可林二丫兩年前就病死了，除非有人冒名。系統冷冷報出律條：冒名入冊，按律流放。許硯叫唐小棠拿出縣衙蓋印的婚書：配不配婚，是官府的事。打手推倒小禾，秦霜一棍掃倒一個，二牛抄起門閂堵住門口。魏少卿要走時推開後門，看見井邊打水的阿令：我們是不是在哪見過？他在門檻上回頭：三日後，州府來拿冒名犯。《種田娶妻打天下》第 21 集（重製版）。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "三日後，州府來拿冒名犯",
+      "tag": "種田娶妻打天下",
+      "shot": "s37"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "帖子與婚書",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a01",
+          "speaker": "xuyan",
+          "text": "我這裡只有我的妻子，沒有誰的未婚妻。",
+          "emotion": "擋在櫃檯前，很穩"
+        }
+      ],
+      "data": {
+        "camera": "Medium-wide shot, slow push in",
+        "prompt": "In the Xu family shop in the county town at dusk: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the last low orange sunlight in thin bars across the grey floor, the street beyond the doorway turning deep blue with dusk, one round plain paper lantern glowing warm orange under the eave beyond the doorway: medium-wide shot from inside the shop at eye level, the near end of the long waist-high dark wooden counter with two small brass oil lamps with bare flames on it in the soft right foreground: Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, standing just in front of the counter on the right, framed from the knees up with clear space above his head, his face three-quarter to screen left toward the doorway, never the lens; firm and steady: brows level, eyes hard, jaw set, lips moving evenly between words; beyond him the wide front doorway at the back: in the middle of the doorway Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, one step over the threshold, framed from the knees up, holding open in his right hand at his chest one folding fan of plain cream paper with a few large flakes of gold leaf, his face three-quarter to screen right toward the young man, never the lens; amused: eyes narrowed, lips closed; at the left door post Sun Zhanggui, in his green satin robe with a jade belt hook, standing aside, framed from the knees up, his face three-quarter to screen right, eyes half closed, lips closed; behind them the street deep blue with dusk and one round plain paper lantern glowing warm orange under the eave beyond the doorway; their hands hold only what is described here; exactly three people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「我這裡只有我的妻子，沒有誰的未婚妻」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan takes one firm step toward the doorway and sweeps his left arm, the one on the screen-right side of his body, back toward the counter behind him; Wei Shaoqing stops, the open fan halted at his chest; Wei Shaoqing says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; Sun Zhanggui says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": [
+          "xuyan",
+          "weishaoqing",
+          "sunzhanggui"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a02",
+          "speaker": "sunzhanggui",
+          "text": "許老闆，這位是宰相府的公子，魏少卿魏公子。",
+          "emotion": "笑咪咪"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the Xu family shop in the county town at dusk: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the last low orange sunlight in thin bars across the grey floor, the street beyond the doorway turning deep blue with dusk, one round plain paper lantern glowing warm orange under the eave beyond the doorway: medium shot at the wide front doorway at dusk, the dark door post in the soft left foreground: on screen left Sun Zhanggui, in his green satin robe with a jade belt hook, standing just inside the doorway, turned side-on, framed from the waist up with clear space above his head, his face three-quarter to screen right toward Xu Yan off screen right, never the lens; ingratiating: eyes creased, a thin fawning smile, lips moving smoothly between words; beside him in the middle of the doorway Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, framed from the waist up, holding open in his right hand at his chest one folding fan of plain cream paper with a few large flakes of gold leaf, his face three-quarter to screen right, never the lens; haughty: chin lifted, eyes half closed, lips closed; behind them the street deep blue with dusk and one round plain paper lantern glowing warm orange under the eave beyond the doorway; their hands hold only what is described here; exactly two people",
+        "motion": "Sun Zhanggui speaks a short Mandarin line, 「許老闆，這位是宰相府的公子，魏少卿魏公子」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Sun Zhanggui bows a little and turns his left hand, the one on the screen-right side of his body nearest Wei Shaoqing, open and palm up toward him as he speaks; Wei Shaoqing says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; after the last word Wei Shaoqing snaps the fan shut against his left palm, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": [
+          "sunzhanggui",
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a03",
+          "speaker": "weishaoqing",
+          "text": "宰相府的帖子。她叫唐小棠，是我過了定的人。",
+          "emotion": "畫外，拖長音"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town, on the dark wooden counter top in warm oil-lamp light: insert close-up, the shot opens directly on a man's left hand in a wide sapphire-blue brocade sleeve woven with gold thread, already holding one folded sheet of stiff cream paper, its outside plain a hand's height above the dark wooden counter top from its very first frame; only the hand, its sleeve cuff, the folded paper and the counter top are in the frame; the round brass base of a small oil lamp at the right edge, its warm light across the wood",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the hand slaps the folded paper flat onto the counter top, then two fingers press on it and push it slowly forward across the wood; the paper stays folded, its plain outside up, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a04",
+          "speaker": "tangxiaotang",
+          "text": "你怎麼找到這裡的？我躲了半年，誰都沒說。",
+          "emotion": "發抖"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the Xu family shop in the county town at dusk: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the last low orange sunlight in thin bars across the grey floor, the street beyond the doorway turning deep blue with dusk, one round plain paper lantern glowing warm orange under the eave beyond the doorway: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing behind the long waist-high dark wooden counter in the right foreground, framed from the waist up, facing across the counter; she is the only young woman in the frame and the only one with two high round buns, and she stays in the right foreground from the first frame to the last; one tall plain wooden stool standing just behind her at the right edge of the frame; facing us beyond the counter a little left of the middle Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, standing a few steps inside the shop, framed from the waist up with clear space above his head, the open fan in his right hand at his chest, his face three-quarter to screen right toward her, never the lens; smug: one brow raised, eyes narrowed, lips closed; behind him the doorway deep blue with dusk, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman takes half a step back and bumps the tall stool behind her, which rocks on its legs; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; she looks straight ahead at Wei Shaoqing the whole shot; Wei Shaoqing says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; one corner of his mouth curls, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "weishaoqing"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a05",
+          "speaker": "weishaoqing",
+          "text": "孫掌櫃在書院門口見過妳，早報給我了。",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at dusk, the shop dim and warm with the light of the oil lamps: medium close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, standing a few steps inside the shop, framed from the chest up with space above his head, holding open in his right hand just below his chin one folding fan of plain cream paper with a few large flakes of gold leaf, his face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; contemptuous amusement: eyes narrowed, one corner of his mouth curling up, lips moving lazily between words; behind him the doorway and the street deep blue with dusk, one round plain paper lantern glowing warm orange under the eave beyond the doorway, soft",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「孫掌櫃在書院門口見過妳，早報給我了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing flicks his eyes once to the door post at screen left, then lets them sweep slowly across the bare shelves before they come back to her; after the last word he fans himself once, smiling, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a06",
+          "speaker": "weishaoqing",
+          "text": "這是唐萬金親筆簽的婚書，她爹親手按的印。",
+          "emotion": "畫外，得意"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town, on the dark wooden counter top in warm oil-lamp light: insert close-up, the shot opens directly on a man's left hand in a wide sapphire-blue brocade sleeve woven with gold thread, already laying one folded sheet of cream paper with a thin gold edge, plain on the dark wooden counter top from its very first frame, beside the round brass base of a small oil lamp burning at the right edge; only the hand, its sleeve cuff, the folded paper, the lamp base and the counter top are in the frame; warm lamp light across the wood",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the hand smooths the folded sheet flat beside the lamp and taps it twice with two fingers; the sheet stays folded, its plain outside up, its thin gold edge catching the lamp light, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a07",
+          "speaker": "tangxiaotang",
+          "text": "那是你們魏家逼我爹簽的，我爹不肯也得肯！",
+          "emotion": "眼眶紅，氣到發抖"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the Xu family shop in the county town at dusk: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the last low orange sunlight in thin bars across the grey floor, the street beyond the doorway turning deep blue with dusk, one round plain paper lantern glowing warm orange under the eave beyond the doorway: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing behind the long waist-high dark wooden counter in the right foreground, framed from the waist up, facing across the counter; she is the only young woman in the frame and the only one with two high round buns, and she stays in the right foreground from the first frame to the last; both her hands already raised a little above the counter top from the first frame; facing us beyond the counter a little left of the middle Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, framed from the waist up with clear space above his head, the closed fan in his right hand, his face three-quarter to screen right toward her, never the lens; cool: eyes half closed, chin lifted, lips closed; behind him the doorway deep blue with dusk, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman slaps both palms flat down on the counter top and leans forward over them, her shoulders shaking; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; she looks straight ahead at Wei Shaoqing the whole shot; Wei Shaoqing says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; he lifts his chin a little higher, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "weishaoqing"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a08",
+          "speaker": "weishaoqing",
+          "text": "逼的也是簽了。婚書只認字和印，不認委屈。",
+          "emotion": "笑出聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at dusk, the shop dim and warm with the light of the oil lamps: close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, framed from the chest up with space above his head, the fan half closed in his right hand just under his chin, his face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; sneering: nostrils flaring, eyes narrowed, one corner of his mouth curled, lips moving lazily between words; behind him only the doorway deep blue with dusk, soft",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「逼的也是簽了。婚書只認字和印，不認委屈」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing snorts once through his nose and taps the half-closed fan lightly under his chin as he speaks; after the last word he smiles thinly, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a09",
+          "speaker": "xuyan",
+          "text": "宰相府……原來她說躲的那個人，就是他。",
+          "emotion": "內心獨白，嘴閉著，心裡話"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at dusk: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the last low orange sunlight in thin bars across the grey floor, the street beyond the doorway turning deep blue with dusk, one round plain paper lantern glowing warm orange under the eave beyond the doorway: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing behind the long waist-high dark wooden counter in the right foreground, framed from the waist up, facing across the counter; she is the only young woman in the frame and the only one with two high round buns, and she stays in the right foreground from the first frame to the last; her right hand resting flat on the counter top; facing us across the counter a little left of the middle Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, standing in front of the counter, framed from the chest up with space above his head, his left hand resting on the counter top a finger's width from hers, his face three-quarter to screen right toward her, never the lens; grave and thinking: brows drawn together, eyes searching her, lips pressed together; behind him the dim shop in the dusk, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "Xu Yan turns his face to her and lays his left hand on the counter a finger's width from hers; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; she looks down at the counter the whole shot, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a10",
+          "speaker": "weishaoqing",
+          "text": "還有這個，縣衙配婚名冊的抄本，我託人抄出來的。",
+          "emotion": "慢條斯理"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the Xu family shop in the county town at dusk: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the last low orange sunlight in thin bars across the grey floor, the street beyond the doorway turning deep blue with dusk, one round plain paper lantern glowing warm orange under the eave beyond the doorway: wide shot from inside the shop toward the wide front doorway, the near end of the long waist-high dark wooden counter with two small brass oil lamps with bare flames on it in the soft right foreground, and in the soft right foreground one young man in a faded blue-grey robe seen only from behind, appearing only once, standing in front of the counter, only his shoulders and the back of his head with a cloth-tied topknot showing; in the middle Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, a few steps inside the doorway, framed full length, holding up at the height of his face in his left hand one thin stitched booklet bound in plain grey cloth, its cover one even grey all over with only the weave of the cloth on it, the closed fan in his right hand, his face three-quarter to screen right toward the counter, never the lens; smug: eyes narrowed, one corner of his mouth curling, lips moving between words; at the back by the bare shelves on the left little Xiaohe, in her patched lilac cotton jacket, her two little pigtails tied with red string, one small woven straw rabbit tucked in her sash, small, holding a bamboo broom in both hands, her face turned toward him, eyes wide, lips closed; behind them the doorway deep blue with dusk and one round plain paper lantern glowing warm orange under the eave beyond the doorway; their hands hold only what is described here; exactly three people, the young man in the foreground seen only from behind",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「還有這個，縣衙配婚名冊的抄本，我託人抄出來的」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing lifts the grey booklet higher into the warm lamp light and gives it one shake as he speaks; Xiaohe says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words; Xiaohe's broom stops mid-sweep a little off the floor; the young man in the foreground stays still, the back of his head toward us the whole shot, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": [
+          "weishaoqing",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a11",
+          "speaker": "weishaoqing",
+          "text": "配給許硯的第三個，名冊上寫的是林二丫。",
+          "emotion": "畫外，一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town, on the dark wooden counter top in warm oil-lamp light: insert close-up, the shot opens directly on a man's forefinger resting on the plain grey cover of one thin stitched booklet bound in plain grey cloth, its cover one even grey all over with only the weave of the cloth on it, lying closed on the dark wooden counter top from its very first frame; only the hand in its wide sapphire-blue brocade sleeve cuff, the closed grey booklet and the counter top are in the frame; warm oil-lamp light across the wood",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the forefinger slides slowly down the closed grey cover, stops near its lower edge and taps the cover twice; the booklet stays closed, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a12",
+          "speaker": "weishaoqing",
+          "text": "可林二丫，兩年前就病死了，墳都長草了。",
+          "emotion": "畫外，輕飄飄"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at dusk, the shop dim and warm with the light of the oil lamps: close-up of Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, standing behind the counter, framed from the chest up with space above her head, her hands below the bottom edge of the frame, her face three-quarter to screen left toward the doorway off screen left, never the lens; frightened: skin pale, eyes wide and fixed, inner brows squeezed up, lips pressed together and trembling; behind her only the plain white panelled wall in the dim dusk, the warm lamp glow on her cheek",
+        "motion": "in the first second the colour drains from her face, her cheeks and lips turning pale; she draws one sharp breath, her shoulders drawing up, her eyes fixed on the doorway; Tang Xiaotang says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a13",
+          "speaker": "weishaoqing",
+          "text": "死人怎麼嫁人？除非有人冒了她的名。",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at dusk, the shop dim and warm with the light of the oil lamps: low-angle medium close-up from the height of the counter top, the dark edge of the counter and the flame of one small brass oil lamp in the soft foreground: Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, leaning over the counter toward screen right, framed from the chest up with space above his head, one thin stitched booklet bound in plain grey cloth, its cover one even grey all over with only the weave of the cloth on it closed in his left hand and the closed fan in his right, the lamp lighting his face from below, his face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; cold sneer: eyes narrowed, one corner of his mouth curled, lips moving low between words; behind him the dark beams of the shop, soft",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「死人怎麼嫁人？除非有人冒了她的名」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing taps the closed booklet once against his right palm and leans closer toward screen right as he speaks; after the last word he holds still, smiling coldly, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a14",
+          "speaker": "xitong",
+          "text": "叮。冒名入冊，按律流放。",
+          "emotion": "冷，宣布"
+        },
+        {
+          "id": "zq921a15",
+          "speaker": "xuyan",
+          "text": "流放？她一個姑娘家，要流放到哪裡去？",
+          "emotion": "內心獨白，嘴閉著，心裡話"
+        },
+        {
+          "id": "zq921a16",
+          "speaker": "xitong",
+          "text": "三千里。本系統只報律條，不報辦法。",
+          "emotion": "冷"
+        },
+        {
+          "id": "zq921a17",
+          "speaker": "xuyan",
+          "text": "不用妳報辦法，辦法我自己想。",
+          "emotion": "內心獨白，嘴閉著，心裡話，咬牙"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at dusk, the shop dim and warm with the light of the oil lamps: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, standing in front of the counter, framed from the chest up with space above his head, his face three-quarter to screen left, his eyes on a point in the air in front of him, never the lens; shocked: eyes narrowing, jaw clenched, brows drawn low; behind him only the plain white panelled wall and the warm glow of the oil lamps, soft",
+        "motion": "for the first two seconds Xu Yan's eyes narrow and his jaw tightens; then his brows knot and his eyes dart sideways, searching; from the sixth second his face hardens; near the end he lets out one slow breath and his eyes settle, steady and resolved; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is listening and thinking, not speaking, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a18",
+          "speaker": "xuyan",
+          "text": "小棠，把我們的婚書拿出來，縣衙蓋了印的那張。",
+          "emotion": "沉著"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the Xu family shop in the county town at dusk, the shop dim and warm with the light of the oil lamps: over-the-shoulder medium shot from close behind one young man in a sapphire-blue brocade robe woven with gold thread seen only from behind, appearing only once, in the left foreground, only the back of his head with a topknot and his shoulder showing, soft; facing us a little right of the middle Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, standing in front of the long waist-high dark wooden counter, framed from the waist up with clear space above his head, his face turned three-quarter to screen right toward the far end of the counter beyond the right edge of the frame, never the lens; calm and decisive: brows level, eyes steady, lips moving evenly between words; behind him only the plain white panelled wall and the warm glow of the oil lamps, soft; their hands hold only what is described here; exactly two people, the man in the foreground seen only from behind",
+        "motion": "Xu Yan speaks a short Mandarin line, 「小棠，把我們的婚書拿出來，縣衙蓋了印的那張」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan turns his head toward the far end of the counter at screen right and holds out his left hand, the one on the screen-right side of his body, open and palm up, as he speaks; the man in the foreground keeps his head still, the back of his head toward us the whole shot; after the last word Xu Yan keeps his hand out, waiting, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town, on the dark wooden counter top in warm oil-lamp light: insert close-up, the shot opens directly on two hands above the dark wooden counter top from its very first frame: on the right a small hand in a light peach-pink silk sleeve cuff holding one small flat square packet of folded yellowish oiled paper, its flap already folded open, and on the left a man's open palm held out flat in a faded blue-grey cotton sleeve cuff; only the two hands, their sleeve cuffs, the packet and the counter top are in the frame; warm oil-lamp light",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the small hand draws one folded sheet of plain red paper out of the oiled packet and lays it in the open palm, and the palm closes gently round it; the red paper stays folded, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a19",
+          "speaker": "xuyan",
+          "text": "唐老爺簽的是兩家的私約，從來沒進過官府的名冊。",
+          "emotion": "一字一句"
+        }
+      ],
+      "data": {
+        "camera": "Medium two-shot, slow push in",
+        "prompt": "In the Xu family shop in the county town at dusk: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the last low orange sunlight in thin bars across the grey floor, the street beyond the doorway turning deep blue with dusk, one round plain paper lantern glowing warm orange under the eave beyond the doorway: medium two-shot across the near end of the counter, the dark counter top in the soft right foreground with one folded sheet of cream paper with a thin gold edge, plain lying on it: on screen right Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, standing in front of the counter, framed from the waist up with clear space above his head, one folded sheet of plain red paper in his left hand, the one on the screen-right side of his body nearest the counter, his face three-quarter to screen left toward the other man, never the lens; calm and hard: eyes level, jaw set, lips moving firmly between words; on screen left Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, framed from the waist up, the open fan held still at his chest in his right hand, his face three-quarter to screen right toward him, never the lens; wary: eyes narrowed, lips closed; behind them the shop dim in the dusk; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「唐老爺簽的是兩家的私約，從來沒進過官府的名冊」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan slaps the folded red paper down on the counter beside the cream sheet and presses it forward with his fingers as he speaks; Wei Shaoqing says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; the fan stops moving, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": [
+          "xuyan",
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a20",
+          "speaker": "xuyan",
+          "text": "縣衙的婚書在先，配不配婚，是官府的事，不是你家的事。",
+          "emotion": "寸步不讓"
+        }
+      ],
+      "data": {
+        "camera": "Side two-shot medium close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at dusk: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the last low orange sunlight in thin bars across the grey floor, the street beyond the doorway turning deep blue with dusk, one round plain paper lantern glowing warm orange under the eave beyond the doorway: side-on medium close-up of two men face to face in front of the counter, a foot apart, the warm glow of the oil lamps on the counter between them in the soft background: on screen right Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, framed from the chest up, his face in profile to screen left toward the other man, never the lens; unyielding: eyes level and unblinking, jaw set, lips moving firmly between words; on screen left Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, framed from the chest up, the open fan held up in his right hand covering the lower half of his face, his face in profile to screen right toward him, never the lens; his eyes narrowed above the fan; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「縣衙的婚書在先，配不配婚，是官府的事，不是你家的事」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan leans in an inch closer and speaks without blinking; Wei Shaoqing says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; above the fan Wei Shaoqing's eyes narrow further, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": [
+          "xuyan",
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a21",
+          "speaker": "weishaoqing",
+          "text": "說得好聽。冒名的人，我今天先帶走。",
+          "emotion": "笑沒了"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at dusk, the shop dim and warm with the light of the oil lamps: close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, framed from the chest up with space above his head, the open fan just lowered from his face in his right hand, his face three-quarter to screen right toward Xu Yan off screen right, never the lens; his smile frozen and gone: jaw clenched, a muscle twitching at the corner of his jaw, eyes cold, the corners of his mouth pulled down, lips moving tightly between words; behind him only the doorway deep blue with dusk, soft",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「說得好聽。冒名的人，我今天先帶走」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing lowers the fan from his face, his jaw twitching, and snaps it shut with one flick of his right hand; then he speaks through tight lips; after the last word his eyes stay cold on him, and the last low sunlight, the blue dusk and the warm lamp light stay unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "chapter": "一棍",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a22",
+          "speaker": "weishaoqing",
+          "text": "來人，把櫃檯後那位唐姑娘請出來。",
+          "emotion": "扇子一指"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the Xu family shop in the county town at nightfall: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the shop lit only by the two oil lamps on the counter, their warm light on the faces near it, the far corners dim and blue, the street beyond the doorway dark blue with night, one round plain paper lantern glowing warm orange under the eave beyond the doorway: medium shot just inside the wide front doorway at nightfall, the dark door post in the soft left foreground: Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, standing a little left of the middle, framed from the waist up with clear space above his head, the closed fan in his right hand pointing toward the counter beyond the right edge of the frame, his face three-quarter to screen right, never the lens; cold: eyes hard, lips moving crisply between words; behind him in the doorway two burly men in plain black cross-collared short jackets, black cloth head wraps and black cloth shoes, their hands open at their sides, seen only from the side and from behind, their faces turned away in shadow, stepping in over the threshold, soft; behind them the street dark blue with night and one round plain paper lantern glowing warm orange under the eave beyond the doorway; their hands hold only what is described here",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「來人，把櫃檯後那位唐姑娘請出來」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing points the closed fan toward the counter at screen right as he speaks; behind him the two burly men step in over the threshold one after the other and stop just inside it, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow tracking shot",
+        "prompt": "In the Xu family shop in the county town at nightfall: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the shop lit only by the two oil lamps on the counter, their warm light on the faces near it, the far corners dim and blue, the street beyond the doorway dark blue with night, one round plain paper lantern glowing warm orange under the eave beyond the doorway: wide shot across the dim shop at night, a stack of plain wooden shutter boards leaning against the wall by the doorway in the soft left foreground: two burly men in plain black cross-collared short jackets, black cloth head wraps and black cloth shoes, their hands open at their sides, seen only from the side and from behind, their faces turned away in shadow, walking from the doorway on the left toward the counter on the right; in the middle little Xiaohe, in her patched lilac cotton jacket, her two little pigtails tied with red string, one small woven straw rabbit tucked in her sash, standing in their path with a bamboo broom held across her body in both hands, framed full length, her face three-quarter to screen left toward the men, never the lens; scared but stubborn: brows drawn together, lips pressed tight; the counter with its two oil lamps at the right edge; their hands hold only what is described here",
+        "motion": "Xiaohe plants her feet and holds the broom out across the first man's path; he sweeps her aside with one swing of his forearm and she topples backward toward the floor, the broom flying from her hands; Xiaohe says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s21b",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a23",
+          "speaker": "xiaohe",
+          "text": "哥！",
+          "emotion": "短喊，嚇哭"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at nightfall, the shop dim and warm with the light of the oil lamps: low medium close-up at floor level: little Xiaohe, in her patched lilac cotton jacket, her two little pigtails tied with red string, one small woven straw rabbit tucked in her sash, already sitting on the grey stone floor from the first frame where she fell, framed from the waist up, both her hands flat on the floor at her sides, her face three-quarter to screen left, her eyes on the men who pushed her, never the lens; crying: tears welling and running down her cheeks, her chin trembling, the corners of her mouth pulled down; the bamboo broom lying on the floor beside her; behind her the dim shop and the warm glow of the lamps, soft",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「哥！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xiaohe cries out once, her shoulders shaking, then her face crumples into sobs, the corners of her mouth pulled down hard, tears running, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a24",
+          "speaker": "qinshuang",
+          "text": "再碰她一下，你就躺著出這個門。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium-wide shot, slow push in",
+        "prompt": "In the Xu family shop in the county town at nightfall: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the shop lit only by the two oil lamps on the counter, their warm light on the faces near it, the far corners dim and blue, the street beyond the doorway dark blue with night, one round plain paper lantern glowing warm orange under the eave beyond the doorway: low-angle medium-wide shot at floor level, the whole action in the frame: on screen right Qin Shuang, her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, already gripping one long plain wooden staff taller than a man, smooth and round from end to end low in both hands from the first frame, framed full length, her face three-quarter to screen left toward the man, never the lens; cold: eyes hard, brows level, jaw set; in the middle one burly man in a plain black cross-collared short jacket, a black cloth head wrap and black cloth shoes, seen only from the side and from behind, his face turned away in shadow, striding toward the counter; their hands hold only what is described here; exactly two people",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「再碰她一下，你就躺著出這個門」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang sweeps the staff low along the floor into the back of the man's ankles; his feet fly up and he falls flat on his back on the stone floor; she presses the end of the staff down on his chest and holds it there, then speaks; after the last word the staff stays on his chest, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a25",
+          "speaker": "xuyan",
+          "text": "小禾，摔疼哪裡沒有？哥哥看看。",
+          "emotion": "放軟"
+        }
+      ],
+      "data": {
+        "camera": "Close two-shot, slow push in",
+        "prompt": "In the Xu family shop in the county town at nightfall, the shop dim and warm with the light of the oil lamps: close two-shot near the floor: on screen left Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, down on one knee, framed from the chest up, both his hands on the little girl's shoulders, his face three-quarter to screen right toward her, never the lens; gentle and worried: brows drawn up, eyes soft, lips moving softly between words; on screen right little Xiaohe, in her patched lilac cotton jacket, her two little pigtails tied with red string, one small woven straw rabbit tucked in her sash, sitting up on the floor, framed from the chest up, the little straw rabbit already out of her sash and held against her chest in both hands, her face three-quarter to screen left toward him; tears on her cheeks, the corners of her mouth pulled down, lips closed; behind them the dim shop, soft; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「小禾，摔疼哪裡沒有？哥哥看看」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan helps her sit up and touches the back of her head once with his right hand as he speaks; Xiaohe says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words; she shakes her head and holds the rabbit tighter, sniffing, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a26",
+          "speaker": "weishaoqing",
+          "text": "一個村姑拿根棍子，也想攔宰相府的人？",
+          "emotion": "畫外，冷笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the Xu family shop in the county town at nightfall: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the shop lit only by the two oil lamps on the counter, their warm light on the faces near it, the far corners dim and blue, the street beyond the doorway dark blue with night, one round plain paper lantern glowing warm orange under the eave beyond the doorway: medium shot in the dim shop at night: on screen right Qin Shuang, her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, standing, one long plain wooden staff taller than a man, smooth and round from end to end in both hands, framed from the knees up with clear space above her head, her face three-quarter to screen left, never the lens; cold and steady: eyes hard, jaw set, lips pressed together; on screen left one burly man in a plain black cross-collared short jacket, a black cloth head wrap and black cloth shoes, seen only from the side and from behind, his face turned away in shadow, charging toward her with his right fist raised; their hands hold only what is described here; exactly two people",
+        "motion": "Qin Shuang turns her wrists and swings the staff round, and its end stops flat against the man's chest; he halts mid-charge and his fist drops; Qin Shuang says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a27",
+          "speaker": "erniu",
+          "text": "攔不攔得住，先問問我這根門閂！",
+          "emotion": "大嗓門，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the Xu family shop in the county town at nightfall: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the shop lit only by the two oil lamps on the counter, their warm light on the faces near it, the far corners dim and blue, the street beyond the doorway dark blue with night, one round plain paper lantern glowing warm orange under the eave beyond the doorway: medium shot at the wide front doorway at night, the black cloth shoes of a man lying on his back on the stone floor in the soft foreground: Wang Erniu, in his coarse brown hemp short jacket with the sleeves rolled up, standing in the middle of the doorway, framed from the knees up with clear space above his head, one long square plain wooden door bar already held across his body in both hands from the first frame, one plain wooden shutter board leaning against the door post beside him, his face three-quarter to screen right toward the men, never the lens; fierce and serious: brows knotted, jaw set, eyes glaring, lips moving loudly between words; behind him the street dark blue with night and one round plain paper lantern glowing warm orange under the eave beyond the doorway; their hands hold only what is described here",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「攔不攔得住，先問問我這根門閂！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu thumps one end of the door bar down on the stone floor and plants himself across the doorway as he shouts; after the last word he lifts the bar across his chest again, glaring, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a28",
+          "speaker": "sunzhanggui",
+          "text": "公子，這裡是縣城，鬧大了，州府那邊不好說話。",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at nightfall: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the shop lit only by the two oil lamps on the counter, their warm light on the faces near it, the far corners dim and blue, the street beyond the doorway dark blue with night, one round plain paper lantern glowing warm orange under the eave beyond the doorway: medium close-up at the doorway at night, the dark door post in the soft left foreground: on screen left Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, framed from the chest up, the open fan stopped at his chest in his right hand, his face three-quarter to screen right, never the lens; his eyes flicking sideways, lips pressed together; just behind him on screen right Sun Zhanggui, in his green satin robe with a jade belt hook, bending close to his ear, framed from the chest up, one hand cupped beside his mouth, his face three-quarter to screen left toward the young man's ear, never the lens; uneasy: brows pinched, lips moving quickly and low between words; behind them the street dark blue with night, soft; their hands hold only what is described here; exactly two people",
+        "motion": "Sun Zhanggui speaks a short Mandarin line, 「公子，這裡是縣城，鬧大了，州府那邊不好說話」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Sun Zhanggui leans to the young man's ear and whispers, his hand cupped beside his mouth; Wei Shaoqing says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; Wei Shaoqing's eyes flick to screen right toward the staff and the door bar and back; the fan stays still, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "sunzhanggui",
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a29",
+          "speaker": "xuyan",
+          "text": "魏公子，要講律，去官府講；要動手，門在那邊。",
+          "emotion": "嘴角一點冷笑"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the Xu family shop in the county town at nightfall, the shop dim and warm with the light of the oil lamps: over-the-shoulder medium shot from close behind one young man in a sapphire-blue brocade robe woven with gold thread seen only from behind, appearing only once, in the left foreground, only the back of his head with a topknot and his shoulder showing, soft; facing us a little right of the middle Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, standing at the near end of the long waist-high dark wooden counter, framed from the waist up with clear space above his head, his face three-quarter to screen left toward the man, never the lens; cool and hard: eyes level, one corner of his mouth lifting coldly, lips moving evenly between words; on the counter top beside him one folded sheet of cream paper with a thin gold edge, plain and one folded sheet of plain red paper; behind him two small brass oil lamps with bare flames on the counter and the plain white panelled wall, soft; their hands hold only what is described here; exactly two people, the man in the foreground seen only from behind",
+        "motion": "Xu Yan speaks a short Mandarin line, 「魏公子，要講律，去官府講；要動手，門在那邊」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan taps the folded red paper on the counter once with his left forefinger, then lifts his chin toward the doorway at screen left as he speaks; the man in the foreground keeps his head still, the back of his head toward us the whole shot; after the last word Xu Yan holds his gaze, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a30",
+          "speaker": "weishaoqing",
+          "text": "好，那就照你說的，去官府講。",
+          "emotion": "笑回來"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at nightfall, the shop dim and warm with the light of the oil lamps: medium close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, standing in the shop at night, framed from the chest up with space above his head, holding together in his left hand from the first frame one folded sheet of cream paper with a thin gold edge, plain, one folded sheet of stiff cream paper, its outside plain and one thin stitched booklet bound in plain grey cloth, its cover one even grey all over with only the weave of the cloth on it, the closed fan in his right hand; in the soft right foreground the dark shoulder of one young man in a faded blue-grey robe seen only from behind, appearing only once; his face three-quarter to screen right toward him, never the lens; his smile coming back: eyes narrowed, the corners of his mouth curling up, lips moving lazily between words; behind him the doorway dark blue with night, soft; their hands hold only what is described here; exactly two people, the young man in the foreground seen only from behind",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「好，那就照你說的，去官府講」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing slides the papers away into his wide left sleeve, then flicks the fan open with his right hand and speaks, smiling; the young man in the foreground stays still, the back of his head toward us the whole shot, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s28b",
+      "chapter": "後門",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow tracking shot",
+        "prompt": "In the Xu family shop in the county town at nightfall: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the shop lit only by the two oil lamps on the counter, their warm light on the faces near it, the far corners dim and blue, the street beyond the doorway dark blue with night, one round plain paper lantern glowing warm orange under the eave beyond the doorway: medium shot in the shop at night, the rounded end of one long plain wooden staff taller than a man, smooth and round from end to end held level in the soft left foreground: Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, standing in front of the counter, framed from the knees up with clear space above his head, the open fan in his right hand, his face three-quarter to screen right; alert: head lifting, eyes narrowing; beyond him in the far right corner of the white panelled wall one plain dark wooden back door, closed; two small brass oil lamps with bare flames on the counter beside him; their hands hold only what is described here",
+        "motion": "Wei Shaoqing stops and turns his head toward the back door at the right, then walks slowly toward it, fanning himself, his back turning to us; the end of the staff in the foreground swings round to follow him; Wei Shaoqing says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Point-of-view medium shot, slow push in",
+        "prompt": "In the small back yard behind the Xu family shop at night: a round brick well with a wooden frame and crossbar under a short thatched roof on the right, a dark brick wall beside it, a narrow stone-paved path running away on the left between dark brick walls to one small glowing paper lantern at its far end, everything in deep blue moonlight: point-of-view shot through a back door being pushed open, the dark edge of the plain wooden door in the soft left foreground, the tip of a closed folding fan of plain cream paper pressing against it from the lower left edge of the frame: beyond it A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair in a high bun with one plain wooden hairpin, standing at the round brick well on the right, framed from the knees up, both her hands on the well rope, one plain wooden bucket with a rope handle just set on the brick rim of the well, her face turned down toward the bucket, never the lens; still and wary: eyes lowered, lips closed; behind her the brick wall in deep blue shadow and the narrow stone path running away on the left to the small glowing lantern; their hands hold only what is described here",
+        "motion": "the door swings slowly open, pushed by the fan tip; A-ling's hands stop on the rope; she goes still, her head turning a little toward the doorway, her eyes still lowered, as if she feels someone watching; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the deep blue moonlight and the one warm lantern stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a31",
+          "speaker": "weishaoqing",
+          "text": "等等，井邊那位姑娘，我們是不是在哪見過？",
+          "emotion": "笑收掉一半"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at nightfall, the shop dim and warm with the light of the oil lamps: medium close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, standing in the open back door of the shop at night, framed from the chest up with space above his head, the closed fan in his right hand still resting against the door edge, his body leaning out through the doorway, his face in profile to screen right toward the yard beyond the right edge of the frame, never the lens; intrigued: peach-blossom eyes narrowing, his smile half gone, lips moving slowly between words; behind him the dim shop and the warm lamp glow, soft; the cold blue night light from the yard on his face",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「等等，井邊那位姑娘，我們是不是在哪見過？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing stops the fan in mid-air, narrows his eyes and takes one step forward through the doorway as he speaks; after the last word he holds still, staring, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the small back yard behind the Xu family shop at night: a round brick well with a wooden frame and crossbar under a short thatched roof on the right, a dark brick wall beside it, a narrow stone-paved path running away on the left between dark brick walls to one small glowing paper lantern at its far end, everything in deep blue moonlight: medium shot in the small back yard at night: A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair in a high bun with one plain wooden hairpin, standing at the round brick well, framed from the waist up with clear space above her head, one plain wooden bucket with a rope handle held in her right hand just above the brick rim of the well, her face three-quarter to screen left toward the back door off screen left, never the lens; cold and guarded: eyes lowered, brows level, lips pressed together; behind her the brick wall in deep blue shadow and the lantern glow far down the narrow path, soft; their hands hold only what is described here",
+        "motion": "A-ling sets the bucket down on the well rim, lowers her eyes and pulls her left sleeve down over her wrist with her right hand, then turns away and walks off into the dark shadow along the brick wall, her back to us; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the deep blue moonlight and the one warm lantern stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a32",
+          "speaker": "xuyan",
+          "text": "魏公子，看這邊。我家的人，你一個都不認得。",
+          "emotion": "嘴角帶笑、眼神冷"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow tracking shot",
+        "prompt": "In the Xu family shop in the county town at nightfall, the shop dim and warm with the light of the oil lamps: medium shot at the back door of the shop at night: Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, standing with his back to one plain dark wooden back door in the white panelled wall, framed from the waist up with clear space above his head, his left hand behind him already on the edge of the half-open door, his face three-quarter to screen left toward the man in the foreground, never the lens; cold amusement: eyes hard, the corners of his mouth lifting a little, lips moving evenly between words; in the soft left foreground the sapphire-blue brocade shoulder and the back of the head of one young man in a sapphire-blue brocade robe woven with gold thread seen only from behind, appearing only once; their hands hold only what is described here; exactly two people, the man in the foreground seen only from behind",
+        "motion": "Xu Yan speaks a short Mandarin line, 「魏公子，看這邊。我家的人，你一個都不認得」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan pulls the back door shut behind him with his left hand and squares his shoulders in front of it as he speaks; the man in the foreground keeps his head still, the back of his head toward us the whole shot, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a33",
+          "speaker": "weishaoqing",
+          "text": "不認得？那我回去，慢慢想。",
+          "emotion": "瞇眼"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at nightfall, the shop dim and warm with the light of the oil lamps: close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, framed from the chest up with space above his head, the closed fan in his right hand at his chest, his face three-quarter to screen right toward Xu Yan off screen right, never the lens; amused and dangerous: eyes narrowed, one corner of his mouth curling, lips moving lazily between words; behind him the dim shop, soft",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「不認得？那我回去，慢慢想」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing gives one short laugh through his nose, turns the closed fan half a circle in his palm and speaks; after the last word his eyes stay narrowed on him, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a34",
+          "speaker": "tangxiaotang",
+          "text": "他說要去官府講，許硯，我們拿什麼擋？",
+          "emotion": "小聲"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at nightfall: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the shop lit only by the two oil lamps on the counter, their warm light on the faces near it, the far corners dim and blue, the street beyond the doorway dark blue with night, one round plain paper lantern glowing warm orange under the eave beyond the doorway: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing behind the long waist-high dark wooden counter in the right foreground, framed from the waist up, facing across the counter; she is the only young woman in the frame and the only one with two high round buns, and she stays in the right foreground from the first frame to the last; her right hand already holding the edge of his left sleeve across the counter from the first frame; facing us across the counter a little left of the middle Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, standing in front of the counter, framed from the chest up with space above his head, his face three-quarter to screen right toward her, never the lens; worried: brows drawn together, eyes on her, lips pressed together; behind him the dim shop and the dark blue doorway, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman tugs at his sleeve and leans a little over the counter toward him; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; she looks straight ahead at him the whole shot; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; his eyes soften, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a35",
+          "speaker": "xuyan",
+          "text": "先別怕。他要走官府，就得照律來，不能搶。",
+          "emotion": "低，很穩"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at nightfall: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the shop lit only by the two oil lamps on the counter, their warm light on the faces near it, the far corners dim and blue, the street beyond the doorway dark blue with night, one round plain paper lantern glowing warm orange under the eave beyond the doorway: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing behind the long waist-high dark wooden counter in the right foreground, framed from the waist up, facing across the counter; she is the only young woman in the frame and the only one with two high round buns, and she stays in the right foreground from the first frame to the last; both her hands held out open, palms up, just above the counter; facing us across the counter a little left of the middle Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, standing in front of the counter, framed from the chest up with space above his head, one folded sheet of plain red paper held in both his hands, his face three-quarter to screen right toward her, never the lens; steady and gentle: eyes calm, brows level, lips moving low between words; behind him the dim shop and the dark blue doorway, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "Xu Yan speaks a short Mandarin line, 「先別怕。他要走官府，就得照律來，不能搶」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan lays the folded red paper in her open hands as he speaks, and she draws it in against her chest; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; she looks straight ahead at him the whole shot, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the Xu family shop in the county town at nightfall: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the shop lit only by the two oil lamps on the counter, their warm light on the faces near it, the far corners dim and blue, the street beyond the doorway dark blue with night, one round plain paper lantern glowing warm orange under the eave beyond the doorway: wide shot from inside the shop toward the wide front doorway at night: in the middle one young man in a sapphire-blue brocade robe woven with gold thread seen only from behind, appearing only once, walking toward the doorway, fanning himself, only his back and the back of his head with a topknot showing; ahead of him two burly men in plain black cross-collared short jackets, black cloth head wraps and black cloth shoes, their hands open at their sides, seen only from the side and from behind, their faces turned away in shadow, stepping out over the threshold, the second one limping; at the left door post Wang Erniu, in his coarse brown hemp short jacket with the sleeves rolled up, framed from the knees up, one long square plain wooden door bar upright in his right hand, his face three-quarter to screen right toward the men, never the lens; grim: brows knotted, lips pressed together; just outside the doorway on the left Sun Zhanggui, in his green satin robe with a jade belt hook, standing back, small, his face toward the doorway, lips closed; beyond them the street dark blue with night and one round plain paper lantern glowing warm orange under the eave beyond the doorway; their hands hold only what is described here",
+        "motion": "the two burly men step out into the street first, the second one limping; the young man in blue walks to the threshold and stops on it; Wang Erniu steps one pace aside, the bar held upright; Wang Erniu says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; Sun Zhanggui says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "erniu",
+          "sunzhanggui"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq921a36",
+          "speaker": "weishaoqing",
+          "text": "三日後，州府來拿冒名犯。許老闆，記得開門。",
+          "emotion": "回頭，一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town at nightfall: tall dark wooden shelves along the left wall above a long low dark wooden cabinet, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the county town street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, two small brass oil lamps with bare flames burning on its top, a floor of large grey stone tiles and dark wooden beams overhead; the shelves standing completely bare; the shop lit only by the two oil lamps on the counter, their warm light on the faces near it, the far corners dim and blue, the street beyond the doorway dark blue with night, one round plain paper lantern glowing warm orange under the eave beyond the doorway: low-angle medium close-up from the height of the threshold: Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, standing on the threshold of the wide front doorway at night, framed from the waist up with clear space above his head, his body turned toward the street and his head turned back over his shoulder toward the shop, the closed fan in his right hand; the dark shoulder of one young man in a faded blue-grey robe seen only from behind, appearing only once in the soft right foreground; his face three-quarter to screen right, looking past the young man's shoulder toward the counter beyond the right edge of the frame, never the lens; cold sneer: eyes narrowed, one corner of his mouth curling, lips moving slowly between words; behind him the street dark blue with night and one round plain paper lantern glowing warm orange under the eave beyond the doorway glowing behind his head; their hands hold only what is described here; exactly two people, the young man in the foreground seen only from behind",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「三日後，州府來拿冒名犯。許老闆，記得開門」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing points the closed fan past the young man's shoulder toward the counter beyond the right edge of the frame and speaks one word at a time; after the last word he lowers the fan and holds the look, smiling coldly, and the warm oil-lamp light and the dark blue night stay unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    }
+  ]
+}
