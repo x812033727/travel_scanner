@@ -14,7 +14,18 @@ Run: python3 -I mkspec.py
   set-xuji-pu-floor-l1, and prep920.sh keeps the two shots in colab-jobs-wait.json.
 - Xu Yan's smirking angle-b goes from the serious shots (preflight smile-ref: s01, s02, s03, s31, s32, s35) and from the
   crowded ones (s12, s24, s33); A-ling's angle-b from s18 and s33.
-- Sun Zhanggui's cast sentence loses "(no jade balls)" in extras.json (a negated noun, bible rule 18)."""
+- Sun Zhanggui's cast sentence loses "(no jade balls)" in extras.json (a negated noun, bible rule 18).
+
+After the independent review (writer-tools/e020-r2/review.md, 2026-11-16; refs-live/README.md, last paragraph):
+- 必改 11 / 建議 3: the shop picture graded by the time of day, swapped in with absolute paths: set-xuji-pu-pm-l1 (s14, s15,
+  s17-s24), set-xuji-pu-eve-l1 (s25, s28-s33), set-xuji-pu-dusk-l1 (s34-s36, s37b, s38); the morning keeps set-xuji-pu-l1.
+- 建議 18: the close-ups s13, s26, s27 send no set picture (the background is soft; the 3D set only brings its 3D look,
+  e019 review 必改 15). 建議 19: s27 drops Xu Yan's smiling angle-b.
+- 必改 10: before the prop pick s37 sends the cabinet-top crop set-xuji-pu-cabinet-l1 and s16 the warm floor crop
+  set-xuji-pu-floor-pm-l1. After it s37 sends the prop alone (its clause names the dark wooden top it lies on, as in the
+  prop picture), s16 the prop as <Picture 1> plus set-xuji-pu-floor-pm-l1 as <Picture 2> ("add_pictures": prep920.sh appends
+  it, absolute; the header is rewritten here).
+- 必改 4-7: the closing scene's speaking gazes turned with the axis (s34, s36 to screen right; s38 beyond the right edge)."""
 import json
 from pathlib import Path
 
@@ -40,8 +51,18 @@ ONE_TANG = "the young woman with the two high round buns appears only once"
 SPEAK_GAZE = "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person"
 SPEAK_GAZE_HE = "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person"
 SET_CLAUSE = "the location shown in <Picture 1> is the set, keeping its layout and props."
-PROP_CLAUSE = ("The small gold abacus shown in <Picture 1> is the one abacus in this shot, keeping exactly its shape, its thin gold "
-               "frame, its rods and its rows of small round gold beads; the location is the grey stone floor of a shop.")
+PROP_KEEP = ("The small gold abacus shown in <Picture 1> is the one abacus in this shot, keeping exactly its shape, its thin gold "
+             "frame, its rods and its rows of small round gold beads; ")
+# review 必改 10: the prop picture's ground is the dark wooden top of the cabinet (crop=448:252:0:400), not a stone floor.
+PROP_CLAUSE = {"s37": PROP_KEEP + "it lies on the dark wooden counter top shown in <Picture 1>.",
+               "s16": PROP_KEEP + "the grey stone floor shown in <Picture 2> is the floor it falls onto."}
+HEADER_1 = "For the target video, <Picture 1> is referenced throughout."
+HEADER_2 = "For the target video, <Picture 1> and <Picture 2> are referenced throughout."
+# The free pictures before the pick (review 必改 10) and the shop graded by the time of day (必改 11, 建議 3).
+PRE_PROP = {"s16": "set-xuji-pu-floor-pm-l1.png", "s37": "set-xuji-pu-cabinet-l1.png"}
+SHOP_GRADE = {**{s: "set-xuji-pu-pm-l1.png" for s in ["s14", "s15", "s17", "s18", "s19", "s20", "s21", "s22", "s23", "s24"]},
+              **{s: "set-xuji-pu-eve-l1.png" for s in ["s25", "s28", "s29", "s30", "s31", "s32", "s33"]},
+              **{s: "set-xuji-pu-dusk-l1.png" for s in ["s34", "s35", "s36", "s37b", "s38"]}}
 GUILD_SWAP = {"mianshiguan-portrait-l1.png": "hanghui-huizhang-portrait-l1.png"}
 
 
@@ -81,7 +102,9 @@ shots["s25"] = tang_back(ONLY_2, (f"Only these 2 people are in the frame, the yo
 shots["s06"] = tang_back(ONLY_SHE, (f"Besides her, seen only from behind the whole shot, only the three customers across the counter "
                                     f"and the people behind them the composition describes are in the frame; {ONE_TANG}; no second "
                                     f"copy of anyone appears."), True)
-shots["s14"] = tang_back(ONLY_SHE, (f"Besides her, seen only from behind the whole shot, only the two customers by the shelves are in "
+# review 必改 12: the two customers are now "two women" in the composition, so pilot.py writes its "Besides her" sentence
+BESIDES_HER = "Besides her, only the other people the composition names are in the frame; no second copy of anyone appears."
+shots["s14"] = tang_back(BESIDES_HER, (f"Besides her, seen only from behind the whole shot, only the two customers by the shelves are in "
                                     f"the frame; {ONE_TANG}; no second copy of anyone appears."), True)
 shots["s28"] = tang_back(ONLY_SHE, (f"She is the only person in the frame, seen only from behind the whole shot; {ONE_TANG}; no second "
                                     f"copy of anyone appears."), True)
@@ -114,9 +137,9 @@ add("s38", "replace", [ONLY_2, ("Only these 2 people and the young man seen only
 for sid, g in [
     ("s01", "his face three-quarter to screen right toward the young woman beyond the right edge of the frame, his eyes on her"),
     ("s09", "his face lifted toward the crowd, his eyes on them"),
-    ("s34", "his face three-quarter to screen left, his eyes on the shop past the big young man"),
-    ("s36", "his face three-quarter to screen left toward Xu Yan off screen left, his eyes on him"),
-    ("s38", "his eyes on the counter beyond the left edge of the frame, over the young man's shoulder"),
+    ("s34", "his face three-quarter to screen right, his eyes on the counter past the big young man"),
+    ("s36", "his face three-quarter to screen right toward Xu Yan off screen right, his eyes on him"),
+    ("s38", "his eyes on the counter beyond the right edge of the frame, over the young man's shoulder"),
     ("s04", "his face three-quarter to screen left toward the crowd, his eyes on them"),
     ("s11", "his face three-quarter to screen left toward the queue, his eyes on it"),
     ("s19", "his face three-quarter to screen right toward the counter beyond the right edge of the frame, his eyes on it"),
@@ -135,7 +158,7 @@ for sid, g in [
     add(sid, "replace", [SPEAK_GAZE, g])
 
 # Profile pictures: the serious Xu Yan shots (smile-ref) and the crowded ones.
-for sid in ["s01", "s02", "s03", "s12", "s24", "s31", "s32", "s33", "s35"]:
+for sid in ["s01", "s02", "s03", "s12", "s24", "s27", "s31", "s32", "s33", "s35"]:
     drop(sid, "xuyan-angle-b-l1.png")
 drop("s18", "aling-angle-b-l1.png")
 drop("s33", "aling-angle-b-l1.png")
@@ -143,16 +166,24 @@ drop("s33", "aling-angle-b-l1.png")
 # Sets: the roof (e919 review 必改 15: no 3D roof picture in the close shots) and the street drop the set picture.
 for sid in ["s01", "s02", "s03", "s04", "s11"]:
     shots[sid]["drop_set"] = True
+# review 建議 18: the close-ups with a soft background send no set picture.
+for sid in ["s13", "s26", "s27"]:
+    shots[sid]["drop_set"] = True
+for sid, pic in SHOP_GRADE.items():
+    shots[sid].setdefault("swap_pictures", {})["set-xuji-pu-l1.png"] = pic
 # The inserts: the abacus prop picture once picked, else the free floor crop (its set clause unchanged).
 for sid in ["s16", "s37"]:
     if HAVE_PROP:
         shots[sid]["swap_pictures"] = {"set-xuji-pu-l1.png": PROP}
-        add(sid, "replace", [SET_CLAUSE, PROP_CLAUSE])
+        add(sid, "replace", [SET_CLAUSE, PROP_CLAUSE[sid]])
+        if sid == "s16":  # the warm floor as <Picture 2> (prep920.sh appends it with an absolute path)
+            add(sid, "replace", [HEADER_1, HEADER_2])
+            shots[sid]["add_pictures"] = [PRE_PROP["s16"]]
     else:
-        shots[sid]["swap_pictures"] = {"set-xuji-pu-l1.png": "set-xuji-pu-floor-l1.png"}
+        shots[sid]["swap_pictures"] = {"set-xuji-pu-l1.png": PRE_PROP[sid]}
         add(sid, "replace", [SET_CLAUSE, "T" + SET_CLAUSE[1:]])  # no person in the shot: the clause opens the sentence
 for v in shots.values():
-    for k in v.get("swap_pictures", {}).values():
+    for k in list(v.get("swap_pictures", {}).values()) + v.get("add_pictures", []):
         assert (Path(L) / k).is_file(), k
 
 spec = {
@@ -160,9 +191,12 @@ spec = {
               "back shots drop her three face pictures and her identity sentence; s37b is her silent face (neutral sentences, the "
               "abacus in her hands). The guild master's portrait goes in under the placeholder stem mianshiguan-portrait-t1 "
               "(extras.json) and is swapped for hanghui-huizhang-portrait-l1 (prep920.sh, absolute paths). Sets: no picture on "
-              "the roof (s01-s03) and the street (s04, s11); set-xuji-pu-l1 in the shop; the inserts s16, s37 send the gold "
-              "abacus prop picture prop-jinsuanpan-l1 when it exists (" + ("it does" if HAVE_PROP else "it does NOT yet: the "
-              "floor crop set-xuji-pu-floor-l1 stands in and prep920.sh holds both shots in colab-jobs-wait.json") + "). The "
+              "the roof (s01-s03), the street (s04, s11) and the close-ups s13, s26, s27; in the shop set-xuji-pu-l1 in the "
+              "morning, then graded by the time of day (-pm-l1 s14-s24, -eve-l1 s25-s33, -dusk-l1 s34-s38, s37b); the inserts "
+              "s16, s37 send the gold abacus prop picture prop-jinsuanpan-l1 when it exists, s16 with the warm floor "
+              "set-xuji-pu-floor-pm-l1 as its second picture (" + ("it does" if HAVE_PROP else "it does NOT yet: the warm "
+              "floor crop stands in for s16 and the cabinet-top crop set-xuji-pu-cabinet-l1 for s37, and prep920.sh holds both "
+              "shots in colab-jobs-wait.json") + "). The "
               "speaking gaze names the listener off screen or the thing looked at. No off-screen sentence is in these prompts "
               "(r2.py OFFSCREEN_SPEECH = False). Seeds 9201101/9201102."),
     "have_prop": HAVE_PROP,

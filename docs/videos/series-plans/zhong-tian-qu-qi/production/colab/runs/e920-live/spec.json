@@ -1,5 +1,5 @@
 {
- "_note": "e920 live d1 (e919-live's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth: twelve back shots drop her three face pictures and her identity sentence; s37b is her silent face (neutral sentences, the abacus in her hands). The guild master's portrait goes in under the placeholder stem mianshiguan-portrait-t1 (extras.json) and is swapped for hanghui-huizhang-portrait-l1 (prep920.sh, absolute paths). Sets: no picture on the roof (s01-s03) and the street (s04, s11); set-xuji-pu-l1 in the shop; the inserts s16, s37 send the gold abacus prop picture prop-jinsuanpan-l1 when it exists (it does NOT yet: the floor crop set-xuji-pu-floor-l1 stands in and prep920.sh holds both shots in colab-jobs-wait.json). The speaking gaze names the listener off screen or the thing looked at. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9201101/9201102.",
+ "_note": "e920 live d1 (e919-live's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth: twelve back shots drop her three face pictures and her identity sentence; s37b is her silent face (neutral sentences, the abacus in her hands). The guild master's portrait goes in under the placeholder stem mianshiguan-portrait-t1 (extras.json) and is swapped for hanghui-huizhang-portrait-l1 (prep920.sh, absolute paths). Sets: no picture on the roof (s01-s03), the street (s04, s11) and the close-ups s13, s26, s27; in the shop set-xuji-pu-l1 in the morning, then graded by the time of day (-pm-l1 s14-s24, -eve-l1 s25-s33, -dusk-l1 s34-s38, s37b); the inserts s16, s37 send the gold abacus prop picture prop-jinsuanpan-l1 when it exists, s16 with the warm floor set-xuji-pu-floor-pm-l1 as its second picture (it does NOT yet: the warm floor crop stands in for s16 and the cabinet-top crop set-xuji-pu-cabinet-l1 for s37, and prep920.sh holds both shots in colab-jobs-wait.json). The speaking gaze names the listener off screen or the thing looked at. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9201101/9201102.",
  "have_prop": false,
  "seeds": [
   9201101,
@@ -153,7 +153,8 @@
      "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
      "her face three-quarter to screen left toward Xu Yan off screen left, her eyes on him"
     ]
-   ]
+   ],
+   "drop_set": true
   },
   "s14": {
    "replace": [
@@ -162,7 +163,7 @@
      "The location"
     ],
     [
-     "She is the only person in the frame; no second copy of anyone appears.",
+     "Besides her, only the other people the composition names are in the frame; no second copy of anyone appears.",
      "Besides her, seen only from behind the whole shot, only the two customers by the shelves are in the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
     ]
    ],
@@ -170,12 +171,19 @@
     "tangxiaotang-portrait-l1.png",
     "tangxiaotang-angle-a-l1.png",
     "tangxiaotang-angle-b-l1.png"
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-pm-l1.png"
+   }
   },
-  "s15": {},
+  "s15": {
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-pm-l1.png"
+   }
+  },
   "s16": {
    "swap_pictures": {
-    "set-xuji-pu-l1.png": "set-xuji-pu-floor-l1.png"
+    "set-xuji-pu-l1.png": "set-xuji-pu-floor-pm-l1.png"
    },
    "replace": [
     [
@@ -190,7 +198,10 @@
      "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
      "her face turned toward the counter beyond the right edge of the frame, her eyes on it"
     ]
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-pm-l1.png"
+   }
   },
   "s18": {
    "replace": [
@@ -208,11 +219,15 @@
     "tangxiaotang-angle-a-l1.png",
     "tangxiaotang-angle-b-l1.png",
     "aling-angle-b-l1.png"
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-pm-l1.png"
+   }
   },
   "s19": {
    "swap_pictures": {
-    "mianshiguan-portrait-l1.png": "hanghui-huizhang-portrait-l1.png"
+    "mianshiguan-portrait-l1.png": "hanghui-huizhang-portrait-l1.png",
+    "set-xuji-pu-l1.png": "set-xuji-pu-pm-l1.png"
    },
    "replace": [
     [
@@ -227,11 +242,15 @@
      "He is the only person in the frame; no second copy of anyone appears.",
      "Besides him, only the back of the thin man's head and his shoulder in the foreground the composition describes are in the frame; no second copy of anyone appears."
     ]
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-pm-l1.png"
+   }
   },
   "s21": {
    "swap_pictures": {
-    "mianshiguan-portrait-l1.png": "hanghui-huizhang-portrait-l1.png"
+    "mianshiguan-portrait-l1.png": "hanghui-huizhang-portrait-l1.png",
+    "set-xuji-pu-l1.png": "set-xuji-pu-pm-l1.png"
    },
    "replace": [
     [
@@ -257,12 +276,14 @@
     "tangxiaotang-angle-b-l1.png"
    ],
    "swap_pictures": {
-    "mianshiguan-portrait-l1.png": "hanghui-huizhang-portrait-l1.png"
+    "mianshiguan-portrait-l1.png": "hanghui-huizhang-portrait-l1.png",
+    "set-xuji-pu-l1.png": "set-xuji-pu-pm-l1.png"
    }
   },
   "s23": {
    "swap_pictures": {
-    "mianshiguan-portrait-l1.png": "hanghui-huizhang-portrait-l1.png"
+    "mianshiguan-portrait-l1.png": "hanghui-huizhang-portrait-l1.png",
+    "set-xuji-pu-l1.png": "set-xuji-pu-pm-l1.png"
    },
    "replace": [
     [
@@ -287,7 +308,10 @@
     "tangxiaotang-angle-a-l1.png",
     "tangxiaotang-angle-b-l1.png",
     "xuyan-angle-b-l1.png"
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-pm-l1.png"
+   }
   },
   "s25": {
    "replace": [
@@ -304,10 +328,20 @@
     "tangxiaotang-portrait-l1.png",
     "tangxiaotang-angle-a-l1.png",
     "tangxiaotang-angle-b-l1.png"
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-eve-l1.png"
+   }
   },
-  "s26": {},
-  "s27": {},
+  "s26": {
+   "drop_set": true
+  },
+  "s27": {
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "drop_set": true
+  },
   "s28": {
    "replace": [
     [
@@ -323,7 +357,10 @@
     "tangxiaotang-portrait-l1.png",
     "tangxiaotang-angle-a-l1.png",
     "tangxiaotang-angle-b-l1.png"
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-eve-l1.png"
+   }
   },
   "s29": {
    "replace": [
@@ -331,7 +368,10 @@
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
      "his face turned back three-quarter to screen right, his eyes on the counter beyond the right edge of the frame"
     ]
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-eve-l1.png"
+   }
   },
   "s30": {
    "replace": [
@@ -339,7 +379,10 @@
      "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
      "her face three-quarter to screen right toward Tang Xiaotang off screen right, her eyes on her"
     ]
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-eve-l1.png"
+   }
   },
   "s31": {
    "replace": [
@@ -357,7 +400,10 @@
     "tangxiaotang-angle-a-l1.png",
     "tangxiaotang-angle-b-l1.png",
     "xuyan-angle-b-l1.png"
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-eve-l1.png"
+   }
   },
   "s32": {
    "replace": [
@@ -375,7 +421,10 @@
     "tangxiaotang-angle-a-l1.png",
     "tangxiaotang-angle-b-l1.png",
     "xuyan-angle-b-l1.png"
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-eve-l1.png"
+   }
   },
   "s33": {
    "replace": [
@@ -387,15 +436,21 @@
    "drop_pictures": [
     "xuyan-angle-b-l1.png",
     "aling-angle-b-l1.png"
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-eve-l1.png"
+   }
   },
   "s34": {
    "replace": [
     [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
-     "his face three-quarter to screen left, his eyes on the shop past the big young man"
+     "his face three-quarter to screen right, his eyes on the counter past the big young man"
     ]
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-dusk-l1.png"
+   }
   },
   "s35": {
    "replace": [
@@ -406,19 +461,25 @@
    ],
    "drop_pictures": [
     "xuyan-angle-b-l1.png"
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-dusk-l1.png"
+   }
   },
   "s36": {
    "replace": [
     [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
-     "his face three-quarter to screen left toward Xu Yan off screen left, his eyes on him"
+     "his face three-quarter to screen right toward Xu Yan off screen right, his eyes on him"
     ]
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-dusk-l1.png"
+   }
   },
   "s37": {
    "swap_pictures": {
-    "set-xuji-pu-l1.png": "set-xuji-pu-floor-l1.png"
+    "set-xuji-pu-l1.png": "set-xuji-pu-cabinet-l1.png"
    },
    "replace": [
     [
@@ -437,7 +498,10 @@
      "flowing sleeves, a small gold abacus hanging at her waist",
      "flowing sleeves, her resting face composed, her lips closed"
     ]
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-dusk-l1.png"
+   }
   },
   "s38": {
    "replace": [
@@ -447,9 +511,12 @@
     ],
     [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
-     "his eyes on the counter beyond the left edge of the frame, over the young man's shoulder"
+     "his eyes on the counter beyond the right edge of the frame, over the young man's shoulder"
     ]
-   ]
+   ],
+   "swap_pictures": {
+    "set-xuji-pu-l1.png": "set-xuji-pu-dusk-l1.png"
+   }
   }
  }
 }
