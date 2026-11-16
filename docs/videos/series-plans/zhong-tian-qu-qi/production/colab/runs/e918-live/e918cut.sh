@@ -12,20 +12,21 @@ rm -rf $E/segments-v4
 stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=os.path.getmtime(e+'/picks.json');print(' '.join(s for s in p if not os.path.exists(f'{e}/clips/{s}-t1.mp4') or os.path.getmtime(f'{e}/clips/{s}-t1.mp4')<t))")
 [ -z "$stale" ] || { echo "staging (stale: $stale)"; python3 $P/live-action/stage.py 18 || exit 1; }
 # e918 trims and seeds the edit table assumes (edit-dh-e918-live.json _note): picks.json as refine-prep.py 18 builds it from
-# picks-merged.tsv, fix1/review-picks.tsv and fix2/review-picks.tsv (run in colab/runs/e918-live) -- the fix1 retakes s35 s40
-# (9181202) and the fix2 retake s37 (9181302, the kneeling back view; the fix1 refine is kept as
-# runpod/a/st2/refined/s37-9181202.mp4); s20's fixed crop 834:472:126:0 is in picks.json. No review3-trims.tsv yet: every
-# clip-voiced head and tail checked with faster-whisper and 50 ms RMS (no word cut). After any change: refine-prep.py 18 ...
-# review3-trims.tsv, stage.py 18 (s37 must stay 9181302), this table. Whole frames: a start rounded DOWN and an end-before
+# picks-merged.tsv, fix1/review-picks.tsv, fix2/review-picks.tsv and review3-trims.tsv in that order (run in
+# colab/runs/e918-live) -- the fix1 retakes s35 s40 (9181202) and the fix2 retake s37 (9181302, the kneeling back view; the
+# fix1 refine is kept as runpod/a/st2/refined/s37-9181202.mp4); s20's fixed crop 834:472:126:0 and s09's 640:362:300:50
+# (REVIEW 3) are in picks.json. The first cut had no review3-trims.tsv; REVIEW 3 (review3-plan.md, both cut reviews) trims
+# s01 s05 s12 s16 s19 s23 s39, each checked frame by frame and, where a line runs, against faster-whisper word times (no
+# word cut). After any change: refine-prep.py 18 ... review3-trims.tsv, stage.py 18 (s37 must stay 9181302), this table. Whole frames: a start rounded DOWN and an end-before
 # rounded UP to 3 decimals, tolerance 0.001; 0 = no end. Warn (not stop) if picks.json differs.
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
-want={'s01':(1,6.584),'s02':(0,10.125),'s03':(0.5,5.5),'s04':(0.25,4.25),'s05':(0.5,6),'s06':(0.5,6),'s07':(1.875,6.584),
- 's08':(1.25,6.584),'s09':(0,5.042),'s10':(0.25,6.5),'s11':(0.125,6.584),'s12':(0,2.75),'s13':(0.5,4.5),'s14':(0.125,6.584),
- 's15':(0.375,6.25),'s16':(0.75,6.584),'s17':(0.5,4.584),'s18':(0,6),'s19':(0.5,6.584),'s20':(0.25,6.25),'s21':(0.625,6.25),
- 's22':(0.375,4.625),'s23':(0,5),'s24':(0,6.584),'s25':(0.25,8),'s26':(0,6.584),'s27':(1.5,6.584),'s28':(0.875,4.625),
+want={'s01':(1,4),'s02':(0,10.125),'s03':(0.5,5.5),'s04':(0.25,4.25),'s05':(0.5,5),'s06':(0.5,6),'s07':(1.875,6.584),
+ 's08':(1.25,6.584),'s09':(0,5.042),'s10':(0.25,6.5),'s11':(0.125,6.584),'s12':(0,2),'s13':(0.5,4.5),'s14':(0.125,6.584),
+ 's15':(0.375,6.25),'s16':(0.75,6),'s17':(0.5,4.584),'s18':(0,6),'s19':(1.5,6.584),'s20':(0.25,6.25),'s21':(0.625,6.25),
+ 's22':(0.375,4.625),'s23':(0,4.625),'s24':(0,6.584),'s25':(0.25,8),'s26':(0,6.584),'s27':(1.5,6.584),'s28':(0.875,4.625),
  's29':(0.5,4),'s30':(0.375,6.584),'s31':(0.25,7.5),'s32':(0.25,6.584),'s33':(0.125,6.584),'s34':(1,6.584),'s35':(0,6.584),
- 's36':(1.25,8),'s37':(0,6.584),'s37b':(1.25,7.75),'s38':(0.25,4.75),'s39':(0,6.584),'s40':(0.75,6.584)}
+ 's36':(1.25,8),'s37':(0,6.584),'s37b':(1.25,7.75),'s38':(0.25,4.75),'s39':(0,5.5),'s40':(0.75,6.584)}
 seed={'s02':9181102,'s03':9181102,'s05':9181102,'s09':9181102,'s12':9181102,'s14':9181102,'s15':9181102,'s16':9181102,
  's17':9181102,'s18':9181102,'s19':9181102,'s21':9181102,'s22':9181102,'s25':9181102,'s32':9181102,'s35':9181202,'s36':9181102,
  's37':9181302,'s37b':9181102,'s40':9181202}
@@ -42,8 +43,8 @@ cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ
 [ -f $E/cut/e918-live.mp4 ] || exit 1
 # a sample-peak limiter before loudnorm2 keeps it linear (e908-e912: attack 5 ms, limit 0.6 = -4.4 dBFS; the AAC encode
 # after it overshoots at shorter attacks and loudnorm2 then goes dynamic and clicks). e913 REVIEW 3 on: attack 8 ms.
-# END: s40 is Qian's whisper a39 on his own take (clip voice, x1.35); the gong at c5.75 after 下河 (5.68), the picture fades
-# over c5.50-6.00 (vf fade) and min 9.0 holds ~3 s of black so the gong and the cue ring out in the dark. The sound fades
+# END: s40 is Qian's whisper a39 on his own take (clip voice, x1.35); the gong at c5.75 after 河 (ends c5.73), the picture
+# fades over c5.75-6.25 (vf fade, REVIEW 3; was 5.50) and min 9.25 holds ~3 s of black (voice_until 5.75 ends the subtitle on 河) so the gong and the cue ring out in the dark. The sound fades
 # over the last 1.5 s.
 D=$(ffprobe -v error -show_entries format=duration -of csv=p=0 $E/cut/e918-live.mp4); FS=$(python3 -c "print(f'{$D-1.5:.3f}')")
 ffmpeg -v error -y -i $E/cut/e918-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.6:attack=8:release=60:level=false,aresample=48000,afade=t=out:st=$FS:d=1.5" $E/cut/e918-live.lim.mp4 && mv $E/cut/e918-live.lim.mp4 $E/cut/e918-live.mp4
