@@ -42,7 +42,7 @@
     唐小棠的小金算盤 `prop-jinsuanpan-l1`（已有）、阿令的灰紗面巾 `aling-veil-portrait-l1`、對著太陽的柳葉水印紙 `prop-liuye-zhi-l1`（試鏡）。
     **送圖一律用新 id、自帶 l1**，由每集 `spec.json` 的 `swap_pictures` 用**絕對路徑**送（第 15–17 集相對路徑上傳失敗的教訓）；
     不給第 1–20 集用過的場景 id 加新的 l 版（`pilot.py` 取最新 l 版，第 18–20 集還在做，重建要逐位元一樣）。
-20. **小金算盤**：只在插鏡入鏡，插鏡送 `prop-jinsuanpan-l1` 當場景圖（第 20 集 `e920-live/mkspec.py` 的做法），寫「one small gold abacus the size of a palm,
+20. **小金算盤**：只在插鏡入鏡，插鏡送 `prop-jinsuanpan-l1` 當場景圖（第 20 集 `e920-live/mkspec.py` 的做法），寫「one long flat gold abacus, as long as her forearm,（2026-11-16 更正：道具圖本來就是長的，原寫的 one small gold abacus the size of a palm 作廢）
     a thin gold frame, one thin crossbar, one bead above and four below on every rod」；中景以上的唐小棠不寫算盤（定妝照腰間是金色結飾，寫了會長出第二把）。
     插鏡的地面或檯面照場景：鋪子櫃面 `set-xuji-pu-cabinet-l1`、地 `set-xuji-pu-floor-l1`；船上（第 23 集 c11、c15，她的膝上）不送場景圖，寫「peach-pink pleated silk skirt」。
 21. **阿令的面巾**（第 27、28 集整集，第 30 集 c09 起；第 21、22 集不戴）：戴面巾的鏡送 `aling-veil-portrait-l1` 代替 `aling-portrait-l1`，角度圖不送（角度圖沒面巾，送了會掉）。
@@ -184,7 +184,7 @@
 
 | 道具 | 樣子 | 誰拿著、從哪集到哪集 |
 | --- | --- | --- |
-| 小金算盤 | `prop-jinsuanpan-l1` | 唐小棠；第 21 集 c01 抱著（第 20 集 s37b 抱的是前臂長大把；**協調者 2026-11-16 定案：第 21 集已照第 20 條拍成全集不出算盤，接受這個跳接；第 22 集起一律照第 20 條的巴掌小算盤、只在插鏡入鏡**）、c07 拍在櫃檯上、之後掛回腰間；第 22 集 c19 腰間插鏡；第 23 集 c10–c15 解下放在膝上撥珠、c24 捧著；一直跟著她 |
+| 小金算盤 | `prop-jinsuanpan-l1` | 唐小棠；第 21 集 c01 抱著（第 20 集 s37b 抱的是前臂長大把；**協調者 2026-11-16 定案（修正）：道具圖 `prop-jinsuanpan-l1` 本身就是前臂長的扁長金算盤，第 20 集 s37b 與第 22 集 s19 草稿都照它畫成長的；系列道具就是這把長金算盤，第 20 條「巴掌大」的字句作廢，寫成 one long flat gold abacus, as long as her forearm, a thin gold frame。仍只在插鏡入鏡、中景以上不寫。第 21 集全集不出算盤，接受這個跳接**）、c07 拍在櫃檯上、之後掛回腰間；第 22 集 c19 腰間插鏡；第 23 集 c10–c15 解下放在膝上撥珠、c24 捧著；一直跟著她 |
 | 宰相府帖子 | 硬米色紙，摺著、只見背面 | 第 21 集魏少卿左袖抽出 |
 | 唐萬金簽的婚書（給魏家） | 米色紙細金邊，摺著，只見紙背 | 第 21 集魏少卿拿出、c28 收回左袖；第 30 集 c15 起在他手上，唐萬金撕成兩半 |
 | 名冊抄本（林二丫） | 薄線裝冊、灰素封面 | 第 21 集魏少卿手上 |
