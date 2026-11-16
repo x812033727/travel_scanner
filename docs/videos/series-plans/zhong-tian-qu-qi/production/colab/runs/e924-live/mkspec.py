@@ -8,8 +8,8 @@ Run: python3 -I mkspec.py
   s16 (hands), s11 (the Wei shop boy, unnamed, bible 〈小角色〉), s21, s24 (funnel mouths), s33 (two Wei men). The set clause
   opens the sentence.
 - The unnamed people the compositions describe (rule 2, 25) are named in the 'only' sentence so they are allowed in frame:
-  the young woman with the plank and the shop boy s01, the six customers s02, the customers' shoulders s14, the two men
-  across the street s29, her buns at the left edge s35; s12 the two customers beyond the counter; s09 the passers-by.
+  the shop boy across the street s01 (review 必改 1: she is not in s01), the six customers s02, the customers' shoulders
+  s14, the two men across the street s29, her buns at the right edge s35 (必改 9); s12 the two customers beyond the counter; s09 the passers-by.
 - Xu Yan's smirking angle-b nowhere (e921 review). Where gen-dh sent him only angle-a and angle-b (the close shots s15, s26,
   s31), angle-b is swapped for his portrait l1 instead of dropped (two pictures of him, as in his other shots). His old grey
   outer coat at night and first light in the workshop (s19, s20, s23, s26, s27, s28; the script).
@@ -22,6 +22,10 @@ Run: python3 -I mkspec.py
   (s08); the workshop at night set-tangfang-ye-l1 (s19) and its crop set-tangfang-ye-jia-l1 (s20-s23); at first light
   set-tangfang-l1 (gen-dh's, kept: s27, s28) and its crop set-tangfang-jia-l1 (s24-s26). Every swap is sent with an absolute
   path by prep924.sh.
+- After the independent review (writer-tools/e024-r2/review.md, 2026-11-16): s01 drops the young woman from its 'only'
+  sentence (必改 1), s35 puts her buns at the right edge and his eyes past her (必改 9), s33's two men are just inside the
+  doorway, small and side-on (建議). The funnel sentence (必改 3) is r2.py's SHED itself, so no replace is needed here;
+  set-xianjie-lou-l1 was regraded under the same id (refs-live/README.md).
 - No seed of this episode has been run. Seeds 9241101/9241102.
 """
 import json
@@ -104,14 +108,14 @@ for sid, only in [
     drop(sid, *TANG_PICS)
 
 # The unnamed people the compositions describe.
-add("s01", [ONLY_HE, besides("him", "the young woman seen only from behind with her plank and the shop boy across the street")])
+add("s01", [ONLY_HE, "Besides him, only the shop boy across the street the composition describes is in the frame; no second copy of anyone appears."])  # review 必改 1
 add("s02", [ONLY_HE, besides("him", "the six customers in the line")])
 add("s14", [ONLY_HE, besides("him", "the soft shoulders of the two customers in the foreground")])
 add("s29", [BESIDES_HIM, besides("him", "the two men carrying sacks across the street")])
-add("s35", [ONLY_HE, besides("him", "the back of the young woman's head at the left edge")])
+add("s35", [ONLY_HE, besides("him", "the back of the young woman's head at the right edge")])  # review 必改 9
 for sid in ["s19", "s27", "s28"]:
     add(sid, [BESIDES_THEM, ONLY_2])
-add("s33", [BESIDES_THEM, "Only the two men at the doors across the street, seen from behind, are in the frame; no second copy of anyone appears."])
+add("s33", [BESIDES_THEM, "Only the two men just inside the doorway across the street, small and side-on, are in the frame; no second copy of anyone appears."])
 
 # Lines not said into a face on screen: the speaking gaze names the listener off screen, or the thing looked at.
 for sid, g in [
@@ -125,7 +129,7 @@ for sid, g in [
     ("s23", "his face three-quarter to screen left toward Wang Erniu off screen left, his eyes on him"),
     ("s25", "his face three-quarter to screen right toward Xu Yan off screen right, his eyes on him"),
     ("s31", "his face three-quarter to screen right toward the young woman beyond the right edge of the frame, his eyes on her"),
-    ("s35", "his face three-quarter to screen right and tilted up toward the upper floor of the shop across the street, his eyes on it"),
+    ("s35", "his face three-quarter to screen right and tilted up past her toward the upper floor of the shop across the street, his eyes on it"),
     ("s36", "his face three-quarter to screen left looking down toward the Xu shop below, his eyes on it"),
 ]:
     add(sid, [SPEAK_GAZE_HE, g])
