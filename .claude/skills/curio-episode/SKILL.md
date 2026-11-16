@@ -28,7 +28,7 @@ metadata:
 | 長度 | **2026-11-01 站主改為看內容決定：至少 8 分鐘、最多 13 分鐘**（「≥8 分鐘都可以」）。片長跟著素材走：撐不住就剪短，或跟同一個核心問題的兄弟題排成一集，不用重述、停頓或慢唸補時間。後台建立單集時照題案的 `target_minutes` 選（`docs/videos/history-curiosity/pool/THEMES.md`；沒有題案的單題照題卡素材估，至少 8 分鐘），正文約 4.5 字／秒：8 分鐘約 2,100 字、13 分鐘約 3,500 字。2026-10-25 曾定一律 13 分鐘（參考頻道中位 13–31 分，§跟高點閱頻道的差距），已被這條取代；已製作與製作中的集照原本的長度 | `docs/videos/long-form/README.md`；`docs/videos/channel-review-20261025-story-series/README.md` |
 | 片頭片尾 | 頻道片頭放在第一章（鉤子＋承諾句）之後（`intro_at` = after_first_chapter）；片尾 v4-endscreen，旁白不提下一支 | `docs/videos/BRANDING.md` |
 | 語速與停頓 | **2026-11-13 站主：實測語速至少 4.4 字／秒**（字數不含標點，除以每句錄音長度加總，不算句間空白）；停頓照 PR #2069：`"pauses": {"line_ms": 0, "scene_ms": 150}`、`"still_motion": "beat"`。**不符合的集數一律重做**，連已核准、待上傳的也重做；重錄旁白時八語配音一起改用 MiniMax（PR #2085），中文旁白維持 Gemini `Sulafat`。聲音指示寫「一秒四到五個字」只念到約 4.1–4.3（Gemini 會打折扣），要寫得比目標快（見 §稿子 的語速） | 站主 2026-11-13「不符合的都要重製」「重錄的話八語就用 minimax」 |
-| 八語 | **2026-11-13 起每集預設八語都做**（en、ja、ko、es、pt、id、vi、th：標題說明、CC、配音）。工具的 `DEFAULT_LOCALES` 仍只有 zh-TW、en、ja、ko，所以每集要明確選這八個語言（站台的語言勾選／`languages.json`，`i18n-sheet --locale en,ja,ko,es,pt,id,vi,th`、`dub --locale <loc>` 逐一跑），不能靠預設；外語配音固定用 MiniMax；外語標題要在手機清單寬度內（lint `at most 36`），外語縮圖標題手機寬度 ≥ 24 px 且副標 `sub` 避免單字孤行換行；外語（尤其泰文，每字 3 bytes）組完說明欄壓在 `< 4,500` UTF-8 bytes 安全區間 | 站主 2026-11-13、2026-11-14 |
+| 八語與可上架狀態 | **2026-11-15 站主定案：預設八語（文案、字幕、配音、縮圖）全數完成並直接做到可上架狀態**。繁中之外的 8 語系（en、ja、ko、es、pt、id、vi、th）之標題說明欄、字幕（`captions`）、配音（MiniMax `dub`）與縮圖（`thumbnails/<loc>.jpg`）全部都要做完；寫入 `languages.json`（8 語皆設 `metadata: true, captions: true, dub: true`），跑 `package` 打包 8 語縮圖、9 語字幕、9 語說明欄與 8 語配音軌（4/4 檢查通過）；依序推送 `review-push --gate publish`（上架確認包）與 `review-push --gate languages`（八語審核包），使後台直接進入可上架狀態（`waiting for the owner`），不可只推 `final` 就停頓 | 站主 2026-11-13、2026-11-15「之後預設都是八語都要完成然後要直接做到可以上架的狀態，八語的縮圖也是；要記住規則」 |
 | 語言 | zh-TW 先做完（Gemini `Sulafat`）；外語照上一列「八語」全做（MiniMax） | `docs/videos/DUBS.md` |
 | 鉤子 | 跟品牌故事一樣密：正文每 30–45 秒一個懸念，沒有超過 45 秒的空檔；`loops` 十分鐘至少 8 個；每章停在一個沒解的問題上 | 站主 2026-10-19「品牌故事比較順也有比較多鉤子」；lint 的 `TIGHT_CADENCE`（`tools/video/core/narrative.mjs`） |
 | 架構與口吻 | **2026-11-05 起照黑猫研究院十步**：鉤子（問句或情境＋終點多大×起點多小，最多 1–2 個高潮標籤，不講過程、不先濃縮劇情）→ 承諾句「今天我們就來聊聊…」（約 0:40–1:05）→ 時代與起源 → 第一次起落 → 升級關卡 2–4 個 → 最大危機或反轉 → 翻身與揭曉（「還記得…嗎？」顯性提示全片留頭尾最多 2 次，中段直接講事實）→ 尾聲「故事還沒結束」→ 主題收束（最後一章章名寫總結收束句，不拿花絮當最後章名）→ 提問＋訂閱；大方向照時間順序，倒敘只做小段且有時間提示；全片不能沒頭沒尾。說給一個人聽：每章至少一句「你」、一句旁白自己的反應，lint 低於每千字 2 個「你」警告；標題公式見 §標題與縮圖 | 站主 2026-11-05；`script-writing.md` §奇聞檔案局與品牌故事的架構；`register.mjs` `STORY_OPENING_RULE`、`TOLD_TO_ONE_VIEWER` |
@@ -192,7 +192,7 @@ metadata:
 2. `node tools/video/cli.mjs lint --slug <SLUG>`：**0 錯誤、0 警告**。
 3. 中文旁白（Gemini `Sulafat`，實測語速 ≥ 4.4 字／秒；拼讀不一致的英文姓氏先在 `story-lexicon` 補音標式英文讀法）→ `check-audio` → 送 `audio` 關卡；`music`（不足片長時 `--loop`）。
 4. 八語翻譯（`en,ja,ko,es,pt,id,vi,th`，獨立審校，泰文說明欄壓在 `< 4,500` UTF-8 bytes）→ `i18n-merge` → `dub --provider minimax`（0 fit overflow）→ 逐語 `check-audio` 並修正誤讀（若遇 `generate_image` 配額冷卻，優先把第 3–4 步全部跑完）。
-5. 角色設定圖＋全集關鍵影格以內建 `generate_image`（`16:9`）生成 → 四格 2x 放大獨立子代理逐張審過 → `keyframes import --provider external --usd 0` → `render`（逐張檢查繁中與八語全部縮圖）→ `clips` → `assemble` → `captions` → `qa`（11/11）→ **獨立子代理成片觀眾視角評分（`review/audience-review.md`，六項各 ≥ 7.5、總均 ≥ 8.0；挑出縮圖裁切、色溫疲勞、低對比或無字圖解破綻一律先修完並重過 `assemble`＋`qa` 11/11）** → `package`（4/4）→ 雲端硬碟備份與獨立位元組核對 → `review-push --gate final`。
+5. 角色設定圖＋全集關鍵影格以內建 `generate_image`（`16:9`）生成 → 四格 2x 放大獨立子代理逐張審過 → `keyframes import --provider external --usd 0` → `render`（逐張檢查繁中與八語全部縮圖）→ `clips` → `assemble` → `captions` → `qa`（11/11）→ **獨立子代理成片觀眾視角評分（`review/audience-review.md`，六項各 ≥ 7.5、總均 ≥ 8.0；挑出縮圖裁切、色溫疲勞、低對比或無字圖解破綻一律先修完並重過 `assemble`＋`qa` 11/11）** → **直接推進至可上架狀態**：寫入 `languages.json`（8 語皆選）→ `captions`（8 語字幕）→ `package`（4/4 檢查通過，含 8 語縮圖、字幕與配音軌）→ 雲端硬碟備份（依分類結構）與獨立位元組核對 → `review-push --gate final` → `review-push --gate publish`（推送上架確認包）→ `review-push --gate languages`（推送八語審核包）（站主 2026-11-15 定案：預設八語全數完成並直接做到可上架狀態，八語縮圖也是）。
 6. Shorts：`docs/videos/SHORTS.md`。Shorts 一律 `from-episode`（頻道聲音）；手動 `build --redo` 一定帶 `--speech server`。
 
 ## 在雲端環境做旁白、配音與插圖匯入
@@ -229,7 +229,7 @@ metadata:
 
 1. `music --slug <SLUG>`（`--dry-run` 先看價，一首約 US$0.08；不足片長加 `--loop`）→ `render` → `clips`（全是靜圖加運鏡，不花錢，
    但 `assemble` 一定要它的 manifest）→ `assemble`（一集約 15 分鐘，4 核心一次跑一集）→ `captions` → `qa`（11/11）
-   → **獨立子代理成片觀眾視角評分（`review/audience-review.md`，問題全數修完並重過 `qa` 11/11）** → `package` → 雲端硬碟完整備份與獨立核對 → `review-push --gate final`（站主 2026-11-14 定案：修完觀眾評分問題後才推後台跟備份）。
+   → **獨立子代理成片觀眾視角評分（`review/audience-review.md`，問題全數修完並重過 `qa` 11/11）** → 寫入 `languages.json`（8 語皆選）→ `captions`（8 語字幕）→ `package`（含 8 語縮圖、字幕、配音，4/4 通過）→ 雲端硬碟完整備份（依系列分類如 `H-歷史懸案`）與獨立核對 → `review-push --gate final` → `review-push --gate publish`（推送上架確認包）→ `review-push --gate languages`（推送八語審核包）（站主 2026-11-15 定案：預設八語全數完成並直接做到可上架狀態，八語縮圖也是）。
 2. `render` 用 Playwright 開瀏覽器。容器預裝的 Chromium 版本可能比 repo 的 Playwright 舊，報「Executable doesn't
    exist」時不要 `playwright install`：在暫存目錄建一個 `PLAYWRIGHT_BROWSERS_PATH`，把預裝的 headless shell
    接成 Playwright 要的版本號資料夾（`chrome-headless-shell-linux64/chrome-headless-shell` 指到預裝的
