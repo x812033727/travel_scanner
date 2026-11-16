@@ -1,13 +1,13 @@
 ---
 id: 2026-11-16-autodeploy-daily-window
 title: Auto deploy: deploy at most once a day inside an allowed Taipei window
-status: review
+status: done
 priority: P1
 area: ops
 owner: claude-opus-5-5-autodeploy
 claimed_at: 2026-11-16T01:28:42Z
 created_at: 2026-11-16T01:12:56Z
-completed_at:
+completed_at: 2026-11-16T05:23:39Z
 branch: claude/fervent-wright-70jrlh
 depends_on: []
 scope:

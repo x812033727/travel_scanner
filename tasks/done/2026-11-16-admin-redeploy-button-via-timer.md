@@ -1,13 +1,13 @@
 ---
 id: 2026-11-16-admin-redeploy-button-via-timer
 title: Admin redeploy button runs the host deploy script through the auto deploy timer
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-autodeploy
 claimed_at: 2026-11-16T01:45:13Z
 created_at: 2026-11-16T01:12:57Z
-completed_at:
+completed_at: 2026-11-16T05:23:39Z
 branch: claude/fervent-wright-70jrlh
 depends_on:
   - 2026-11-16-autodeploy-daily-window

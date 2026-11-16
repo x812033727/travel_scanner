@@ -1,13 +1,13 @@
 ---
 id: 2026-11-16-deploy-skill-host-timer-button
 title: Deploy skill: admin button and daily window run through the auto deploy timer
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-autodeploy
 claimed_at: 2026-11-16T04:15:42Z
 created_at: 2026-11-16T01:58:55Z
-completed_at:
+completed_at: 2026-11-16T05:23:41Z
 branch: claude/fervent-wright-70jrlh
 depends_on:
   - 2026-11-16-admin-redeploy-button-via-timer

@@ -1,13 +1,13 @@
 ---
 id: 2026-11-16-admin-overview-autodeploy-warning
 title: Admin overview warns when auto deploy is paused or a deploy window was missed
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-autodeploy
 claimed_at: 2026-11-16T02:38:40Z
 created_at: 2026-11-16T01:58:54Z
-completed_at:
+completed_at: 2026-11-16T05:23:40Z
 branch: claude/fervent-wright-70jrlh
 depends_on:
   - 2026-11-16-admin-redeploy-button-via-timer
