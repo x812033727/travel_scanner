@@ -83,3 +83,7 @@ async def test_upgrade_and_downgrade_are_idempotent() -> None:
         tables = await connection.run_sync(lambda sync: sa.inspect(sync).get_table_names())
         assert not set(TABLES) & set(tables)
         await connection.run_sync(run, "upgrade")
+    # The shared engine's pool now holds connections bound to this test's event loop, which
+    # closes when the test ends; a later module-scoped test in the same shard would check one out
+    # and fail with "attached to a different loop". Drop them here.
+    await engine.dispose()

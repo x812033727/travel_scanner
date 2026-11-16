@@ -30,6 +30,7 @@ scope:
   - ops/deployer/README.md
   - .env.example
   - apps/api/tests/test_deployment_host_timer.py
+  - apps/api/tests/test_migration_0145_video_youtube_reports.py
 ---
 
 # Admin redeploy button runs the host deploy script through the auto deploy timer
@@ -133,3 +134,8 @@ run 標成 `failed`／`dry_run`；開啟後再按一次，看完整一輪 succee
   - 沒做、另開票：後台總覽的警示卡（`operations_service.py`）、skill `deploy` 的主機表與規則。
   - 驗證：`python -m unittest discover -s ops/autodeploy`（58）、`pytest tests/test_deployment_host_timer.py`（12）與
     `test_migration_0146_*`、既有部署／RBAC／設定測試、`ruff`、`mypy app`、web lint／check:i18n／typecheck、面板 vitest（7）。
+  - CI api-tests (3/4) 第一次推上去時紅：新測試檔讓分片重排，`test_migration_0145_*`（函式範圍 event loop、用共用
+    `app.db.engine`）第一次和 `test_video_drama_request_image_model.py`（module 範圍 loop）同一個分片，後者從連線池拿到
+    綁在已關閉 loop 上的連線（"attached to a different loop"）。main 上兩者分在第 2、第 4 片所以沒露出來。修法：0145 測試
+    結尾 `await engine.dispose()`（一行，該檔在 `2026-11-02-youtube-reporting-api` 的過期認領 scope 裡，照站主「強制認領」的決定處理），
+    0146 測試改用自己的 engine 並 dispose。

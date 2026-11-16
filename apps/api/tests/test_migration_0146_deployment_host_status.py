@@ -13,8 +13,9 @@ import pytest
 import sqlalchemy as sa
 from alembic.migration import MigrationContext
 from alembic.operations import Operations
+from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 
-from app.db import engine
+from app.config import get_settings
 from app.deployments.models import DeploymentHostStatus
 
 MIGRATION = "0146_deployment_host_status"
@@ -60,6 +61,16 @@ def test_model_and_migration_agree() -> None:
 
 @POSTGRES
 async def test_upgrade_and_downgrade_are_idempotent() -> None:
+    # Its own engine, disposed here: the shared app engine would keep pooled connections bound
+    # to this test's event loop, and the next module-scoped test in the shard would inherit them.
+    engine = create_async_engine(get_settings().database_url)
+    try:
+        await _upgrade_and_downgrade(engine)
+    finally:
+        await engine.dispose()
+
+
+async def _upgrade_and_downgrade(engine: AsyncEngine) -> None:
     migration = load_migration()
 
     def run(connection: sa.Connection, direction: str) -> None:
