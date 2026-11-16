@@ -85,3 +85,8 @@
 試過但不放進 refs-live（`set-chuan-chen-l1`、`set-tangfang-ye-l1` 的 id 留給第二輪）：船 `eq=gamma=1.2` 加暖色高光——整張變灰青色、燈籠仍亮，像黎明前，不是日出金光；糖坊用 `set-xuji-pu-dusk-l1` 的命令——仍是低斜陽照雪地，像夕陽，不像夜。試做檔在 scratchpad `arc3/free/`。
 `set-guangchang-pm-l1` 等廣場重拍挑定後再做（命令見聖經）。
 **第二輪**（`screen-test-e021-e030.py --r2`，種子 37035／37036，3 張 × 2＝6 支，清單 `.../live-screen-test-e021-e030/r2.json`，`check_images_manifest.py` 0 錯誤 0 警告；跑法 scratchpad `st-arc3-r2.sh`，每次只送還沒出圖的，還沒跑）：`set-guangchang-l1` 灰底重畫，自己的鏡頭句（35 mm、人眼高度、相機水平、地平線平直、房子垂直平行、廣場空著、只有台子與屋簷下的短影子），拿掉第一輪的 24 mm 與 "wide establishing"，負面詞加魚眼、彎地平線、全景、人影；用挑定的大街 `set-xianjie-l1` 只改一件事的做法考慮過、不用（街改廣場不是一件事，而且大街本身也是廣角往外倒）。`set-chuan-chen-l1` = `set-chuan-ye-l1` 只改光成日出（薄霧、右邊低日的金色光帶、燈籠熄了）；`set-tangfang-ye-l1` = `set-tangfang-l1` 只改光成夜（灶裡低低的紅火、石磨邊一盞小油燈、外面雪地與溪在冷藍裡）。
+
+第 3 篇章第二輪（2026-11-16，`screen-test-e021-e030.py --r2`，種子 37035／37036，協調者挑，全圖放大看過）：
+- `set-guangchang-l1`：兩個種子仍是全景式彎曲（拿掉「24mm wide-angle」也一樣）。取 37036 中央免費裁切 `crop=720:405:296:110` 放大回 1312×736：廣場、台子、紅布案、木箱、兩棵禿樹、後面三排房子大致水平。中間堂屋門口兩塊黃板可能長字，挑片時留意；偏 CG。
+- `set-chuan-chen-l1` = 37036（篷船、薄霧、右邊日出金光、燈籠熄了；37035 也可，光較淡）。
+- `set-tangfang-ye-l1` = 37035（灶裡紅火、油燈、雪地與溪在冷藍裡；37036 右邊多一根像告示牌的木柱，可能長字）。
