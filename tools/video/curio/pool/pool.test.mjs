@@ -418,4 +418,20 @@ test('a single-episode core carries its demand answers, and an audience score on
   assert.throws(() => build([{ id: 'N101', answers, demand: 10, reason: 'fixture' }]), /demand must be 5.5/);
   assert.throws(() => build([{ id: 'N101', answers: { east_asia: true }, demand: 3.25 }]), /true or false/);
   assert.throws(() => build([{ id: 'N103', answers, demand: 5.5 }]), /selected single-episode core/);
+  const brand = { have: true, why: true, standard: false, lose_or_jp: false };
+  assert.throws(() => build([{ id: 'N101', answers: brand, demand: 5.5 }]), /answers east_asia/, 'a history core is not scored on the brand questions');
+});
+
+test('a business and brand core answers the brand questions, not the history ones', () => {
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '一條線為什麼有人收過路費？', { axis: 'W' })] };
+  const selection = { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 1, ids: ['N101'] };
+  const build = (answers) => {
+    const root = fixture({ batch, selection });
+    write(root, `${DIR}/reviews/demand-20261117-w.json`, { reviewed_on: '2026-11-17', candidates: [{ id: 'N101', answers, demand: 5.5, reason: 'fixture' }] });
+    return buildPool(root);
+  };
+  const row = build({ have: true, why: false, standard: true, lose_or_jp: false }).candidates.find((item) => item.id === 'N101');
+  assert.equal(row.category, 'W-商業與品牌奇聞');
+  assert.equal(row.demand.demand, 5.5);
+  assert.throws(() => build({ east_asia: true, prophecy_ghost: true, ancient_alien: false, famous: false }), /answers have, why, standard, lose_or_jp/);
 });

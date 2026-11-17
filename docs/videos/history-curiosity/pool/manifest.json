@@ -1,20 +1,20 @@
 {
   "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
-  "revision": "2026-11-17-curio-pool-1652",
+  "revision": "2026-11-17-curio-pool-1601",
   "counts": {
     "raw_records": 2247,
     "canonical_cores": 2229,
     "alias_records": 18,
     "produced_cores": 48,
-    "selected_candidates": 1652,
-    "held_candidates": 269,
+    "selected_candidates": 1601,
+    "held_candidates": 320,
     "reserve_candidates": 143,
     "shorts_candidates": 89,
     "excluded_cores": 28,
     "new_batch_records": 1916,
     "source_urls": 13453,
     "current_research_source_urls": 8631,
-    "selected_source_urls": 11562,
+    "selected_source_urls": 11511,
     "new_suggestions_not_added": 3209,
     "high_similarity_pending": 0,
     "cross_series_pending": 0,
@@ -22,7 +22,7 @@
     "by_category": {
       "H-歷史懸案": {
         "canonical": 243,
-        "selected": 210,
+        "selected": 197,
         "produced": 1
       },
       "S-歷史人物與名場面": {
@@ -32,7 +32,7 @@
       },
       "M-奇異現象與自然": {
         "canonical": 280,
-        "selected": 196,
+        "selected": 194,
         "produced": 0
       },
       "F-童話神話與怪談原版": {
@@ -47,22 +47,22 @@
       },
       "G-靈異與超自然公案": {
         "canonical": 266,
-        "selected": 195,
+        "selected": 194,
         "produced": 0
       },
       "P-預言與末日": {
         "canonical": 263,
-        "selected": 204,
+        "selected": 193,
         "produced": 0
       },
       "U-外星太空與未知訊號": {
         "canonical": 260,
-        "selected": 196,
+        "selected": 186,
         "produced": 0
       },
       "W-商業與品牌奇聞": {
         "canonical": 87,
-        "selected": 67,
+        "selected": 53,
         "produced": 19
       }
     }
@@ -1611,7 +1611,7 @@
     },
     {
       "file": "tools/video/curio/pool/core.mjs",
-      "sha256": "56fdb69341a5c0eb5bced0cbcbf8ce0585f028d4cf979f64fd064be3f48f1279"
+      "sha256": "f50ade82d0879708cfbf64d2aa998f86bca847ab891415cc3776820d5918e9bf"
     },
     {
       "file": "tools/video/curio/pool/history.mjs",
@@ -1619,7 +1619,7 @@
     },
     {
       "file": "tools/video/curio/pool/render.mjs",
-      "sha256": "4b35b2920eb7920a3c9c27c4d221f7234b20bd4a85eb8f172f7d04f397d9c758"
+      "sha256": "1062f369144e05b0dd1911fae9f8d75848be4b49c41b24870e2848d8c6660e31"
     },
     {
       "file": "tools/video/curio/pool/semantic.py",
@@ -1635,7 +1635,7 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/selection.json",
-      "sha256": "72e659ae4ee43de64d0f4cd832cd145a6d113be09ae05162899b4ddb1fa047b5"
+      "sha256": "be5681a7d7d0f81798386eb6be61cc8a05906f59f6205fb1e83f114665d2d767"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/audience-20261114-r2.json",
@@ -1651,11 +1651,15 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/audience-20261117-rest.json",
-      "sha256": "096a58e457833ec298001c4399a477c91c3636a6fd552f676e92ef82b622384c"
+      "sha256": "eb273268c234bedc8d512aca615276474c6a834df658a65262b921605be92c78"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/audience-20261117-two.json",
-      "sha256": "a06b2f348942f51592c1330c8b6f0dc852a173548c585a83e38aef19b4baeee2"
+      "sha256": "0282bfb13da2b6ace9077ea7c38c22ea77e08c9d1cc9d0e15e6393d14f92de55"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261117-w.json",
+      "sha256": "03339237f215b1b527a2906219222650fb0e5ac09aa7ee946b894bf4ebb7dcba"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/audience-20261117.json",
@@ -1663,11 +1667,15 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/demand-20261117-cores.json",
-      "sha256": "6d2596c8bb222b31fcde4eaa7b15374f3a627ded570cc0230130daab92c474f3"
+      "sha256": "ad0885cce24c65eb540a9ab2ea45cbfc1af06aa0cc9f675a4d491a5569651add"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/demand-20261117-rest.json",
-      "sha256": "b9a0a7e75f9ca2d304e401794840d3e1b96531eb0c4b7eee6b5819a56a08c79f"
+      "sha256": "48f75650b8ea001681e4c68a7a3722c6e6aace2077e2c39cc2449168d703e9a3"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261117-w.json",
+      "sha256": "308824b59bf444cf28fd0adedb1f7879e05be0a81481767b337af5986aa0b616"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/demand-20261117.json",
@@ -1678,27 +1686,27 @@
   "files": [
     {
       "file": "pool.json",
-      "sha256": "7c3ddd29edc9203c64820825592091a9f34eab6df7b23705fe637190eed5591a"
+      "sha256": "d120dd9a1a6799ae85a394361d00c92d2945be5f3a6b2bb26c3a46d1e5e6d5d2"
     },
     {
       "file": "pool-sources.json",
-      "sha256": "41d0c769fc4954c38d8e72336fa793285fb28c5111654e523b59253d1ec30718"
+      "sha256": "cef3eb33be77cf918a221cd1c47d7f71c3ecd7030890030c24df8809a317c4e8"
     },
     {
       "file": "pool-records.json",
-      "sha256": "ce503de3859ce08412cc690fe1043347a5cd8235f7c805f85ff11db359f6004d"
+      "sha256": "4d6426fec9edd7f55243fe69eff833d26327958911399fe0c17cb0094359c4ce"
     },
     {
       "file": "QUESTIONS.md",
-      "sha256": "7226c6ff40872797a1969a9f33080f808d263c57f873567a5483be7127c7e1d5"
+      "sha256": "ff8dd30d4e66e20618a7bd4b54a74af16c56ee577cd356a053a49cab2b53dd9d"
     },
     {
       "file": "SOURCES.md",
-      "sha256": "be2c023aa433e65cb73c12eb92345ec05acfb4882e83f1246549a4b9b49aa55b"
+      "sha256": "22b175eb51622720fbffb4bcaff14e462187750ea9d40e734444572b27985bac"
     },
     {
       "file": "DEDUP.md",
-      "sha256": "247c5c685d5f15da7c069c1e0ba9e224dfdb6a03c64e09e9407822e3727b3a83"
+      "sha256": "c4bd5fec713794d8fbb2dadcae568d383c2caf09ef1e4e936a8331e6ab743075"
     },
     {
       "file": "THEMES.md",
@@ -1706,11 +1714,11 @@
     },
     {
       "file": "index.html",
-      "sha256": "6901b4bfdadf0740a7df1f4422baf3d1d44cd2633f85cd4f89b77db513a0eedd"
+      "sha256": "7c81dea2ea9f85ab135a4dfaff47522f179c23dbc2a956079e81ecadb23a6164"
     },
     {
       "file": "PRODUCIBLE.html",
-      "sha256": "3e7e4e212a756ec4cdd872bd11bb01e01613df3798b82d1fbd7019fbbc45ff1a"
+      "sha256": "f552620b6905b0f039707afe7e1091f5526ea38b5bf8d3de42d0570fcb568213"
     }
   ]
 }

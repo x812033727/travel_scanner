@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "series": "奇聞檔案局",
-  "revision": "2026-11-17-curio-pool-1652",
+  "revision": "2026-11-17-curio-pool-1601",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "axes": {
     "H": "歷史懸案",
@@ -30,15 +30,15 @@
     "canonical_cores": 2229,
     "alias_records": 18,
     "produced_cores": 48,
-    "selected_candidates": 1652,
-    "held_candidates": 269,
+    "selected_candidates": 1601,
+    "held_candidates": 320,
     "reserve_candidates": 143,
     "shorts_candidates": 89,
     "excluded_cores": 28,
     "new_batch_records": 1916,
     "source_urls": 13453,
     "current_research_source_urls": 8631,
-    "selected_source_urls": 11562,
+    "selected_source_urls": 11511,
     "new_suggestions_not_added": 3209,
     "high_similarity_pending": 0,
     "cross_series_pending": 0,
@@ -46,7 +46,7 @@
     "by_category": {
       "H-歷史懸案": {
         "canonical": 243,
-        "selected": 210,
+        "selected": 197,
         "produced": 1
       },
       "S-歷史人物與名場面": {
@@ -56,7 +56,7 @@
       },
       "M-奇異現象與自然": {
         "canonical": 280,
-        "selected": 196,
+        "selected": 194,
         "produced": 0
       },
       "F-童話神話與怪談原版": {
@@ -71,22 +71,22 @@
       },
       "G-靈異與超自然公案": {
         "canonical": 266,
-        "selected": 195,
+        "selected": 194,
         "produced": 0
       },
       "P-預言與末日": {
         "canonical": 263,
-        "selected": 204,
+        "selected": 193,
         "produced": 0
       },
       "U-外星太空與未知訊號": {
         "canonical": 260,
-        "selected": 196,
+        "selected": 186,
         "produced": 0
       },
       "W-商業與品牌奇聞": {
         "canonical": 87,
-        "selected": 67,
+        "selected": 53,
         "produced": 19
       }
     }
@@ -1634,7 +1634,7 @@
     },
     {
       "file": "tools/video/curio/pool/core.mjs",
-      "sha256": "56fdb69341a5c0eb5bced0cbcbf8ce0585f028d4cf979f64fd064be3f48f1279"
+      "sha256": "f50ade82d0879708cfbf64d2aa998f86bca847ab891415cc3776820d5918e9bf"
     },
     {
       "file": "tools/video/curio/pool/history.mjs",
@@ -1642,7 +1642,7 @@
     },
     {
       "file": "tools/video/curio/pool/render.mjs",
-      "sha256": "4b35b2920eb7920a3c9c27c4d221f7234b20bd4a85eb8f172f7d04f397d9c758"
+      "sha256": "1062f369144e05b0dd1911fae9f8d75848be4b49c41b24870e2848d8c6660e31"
     },
     {
       "file": "tools/video/curio/pool/semantic.py",
@@ -1658,7 +1658,7 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/selection.json",
-      "sha256": "72e659ae4ee43de64d0f4cd832cd145a6d113be09ae05162899b4ddb1fa047b5"
+      "sha256": "be5681a7d7d0f81798386eb6be61cc8a05906f59f6205fb1e83f114665d2d767"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/audience-20261114-r2.json",
@@ -1674,11 +1674,15 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/audience-20261117-rest.json",
-      "sha256": "096a58e457833ec298001c4399a477c91c3636a6fd552f676e92ef82b622384c"
+      "sha256": "eb273268c234bedc8d512aca615276474c6a834df658a65262b921605be92c78"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/audience-20261117-two.json",
-      "sha256": "a06b2f348942f51592c1330c8b6f0dc852a173548c585a83e38aef19b4baeee2"
+      "sha256": "0282bfb13da2b6ace9077ea7c38c22ea77e08c9d1cc9d0e15e6393d14f92de55"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261117-w.json",
+      "sha256": "03339237f215b1b527a2906219222650fb0e5ac09aa7ee946b894bf4ebb7dcba"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/audience-20261117.json",
@@ -1686,11 +1690,15 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/demand-20261117-cores.json",
-      "sha256": "6d2596c8bb222b31fcde4eaa7b15374f3a627ded570cc0230130daab92c474f3"
+      "sha256": "ad0885cce24c65eb540a9ab2ea45cbfc1af06aa0cc9f675a4d491a5569651add"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/demand-20261117-rest.json",
-      "sha256": "b9a0a7e75f9ca2d304e401794840d3e1b96531eb0c4b7eee6b5819a56a08c79f"
+      "sha256": "48f75650b8ea001681e4c68a7a3722c6e6aace2077e2c39cc2449168d703e9a3"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261117-w.json",
+      "sha256": "308824b59bf444cf28fd0adedb1f7879e05be0a81481767b337af5986aa0b616"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/demand-20261117.json",
@@ -1785,8 +1793,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.58,
-        "rank": 82,
-        "of": 319,
+        "rank": 86,
+        "of": 329,
         "click": 8,
         "hook": 8.5,
         "surprise": 6,
@@ -4290,8 +4298,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.19,
-        "rank": 29,
-        "of": 319,
+        "rank": 31,
+        "of": 329,
         "click": 8.5,
         "hook": 6.5,
         "surprise": 6.25,
@@ -4795,7 +4803,7 @@
       "audience": {
         "score": 7.43,
         "rank": 14,
-        "of": 319,
+        "of": 329,
         "click": 8.5,
         "hook": 8.25,
         "surprise": 6.5,
@@ -5141,8 +5149,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.41,
-        "rank": 98,
-        "of": 319,
+        "rank": 103,
+        "of": 329,
         "click": 7.5,
         "hook": 8.5,
         "surprise": 6,
@@ -6012,8 +6020,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.85,
-        "rank": 163,
-        "of": 319,
+        "rank": 171,
+        "of": 329,
         "click": 6.5,
         "hook": 6.25,
         "surprise": 5,
@@ -10460,8 +10468,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.53,
-        "rank": 86,
-        "of": 319,
+        "rank": 91,
+        "of": 329,
         "click": 8.5,
         "hook": 9,
         "surprise": 6.5,
@@ -15444,8 +15452,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.9,
-        "rank": 152,
-        "of": 319,
+        "rank": 160,
+        "of": 329,
         "click": 7,
         "hook": 7.5,
         "surprise": 6.5,
@@ -15541,8 +15549,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.92,
-        "rank": 150,
-        "of": 319,
+        "rank": 158,
+        "of": 329,
         "click": 6.75,
         "hook": 6,
         "surprise": 5,
@@ -15651,7 +15659,7 @@
       "audience": {
         "score": 7.38,
         "rank": 17,
-        "of": 319,
+        "of": 329,
         "click": 8,
         "hook": 7.75,
         "surprise": 7,
@@ -15742,7 +15750,7 @@
       "audience": {
         "score": 7.4,
         "rank": 16,
-        "of": 319,
+        "of": 329,
         "click": 8,
         "hook": 7.5,
         "surprise": 7.5,
@@ -16301,8 +16309,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.15,
-        "rank": 32,
-        "of": 319,
+        "rank": 35,
+        "of": 329,
         "click": 8.5,
         "hook": 7.25,
         "surprise": 4.75,
@@ -16486,8 +16494,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.08,
-        "rank": 132,
-        "of": 319,
+        "rank": 139,
+        "of": 329,
         "click": 7.25,
         "hook": 6.5,
         "surprise": 5.5,
@@ -16762,8 +16770,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.37,
-        "rank": 103,
-        "of": 319,
+        "rank": 108,
+        "of": 329,
         "click": 7.5,
         "hook": 8,
         "surprise": 6.5,
@@ -23046,8 +23054,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.73,
-        "rank": 5,
-        "of": 319,
+        "rank": 6,
+        "of": 329,
         "click": 9,
         "hook": 8,
         "surprise": 7.25,
@@ -23350,8 +23358,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.48,
-        "rank": 93,
-        "of": 319,
+        "rank": 98,
+        "of": 329,
         "click": 8,
         "hook": 8,
         "surprise": 6.5,
@@ -23809,8 +23817,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.32,
-        "rank": 109,
-        "of": 319,
+        "rank": 114,
+        "of": 329,
         "click": 7,
         "hook": 8,
         "surprise": 7.5,
@@ -31450,8 +31458,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.17,
-        "rank": 31,
-        "of": 319,
+        "rank": 34,
+        "of": 329,
         "click": 8,
         "hook": 7.75,
         "surprise": 6.5,
@@ -32644,8 +32652,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.54,
-        "rank": 84,
-        "of": 319,
+        "rank": 89,
+        "of": 329,
         "click": 7.5,
         "hook": 7.2,
         "surprise": 6.9,
@@ -32884,8 +32892,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.07,
-        "rank": 134,
-        "of": 319,
+        "rank": 141,
+        "of": 329,
         "click": 6.5,
         "hook": 7,
         "surprise": 6.5,
@@ -33322,8 +33330,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.91,
-        "rank": 50,
-        "of": 319,
+        "rank": 54,
+        "of": 329,
         "click": 7.5,
         "hook": 7.5,
         "surprise": 5.25,
@@ -33901,8 +33909,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.28,
-        "rank": 111,
-        "of": 319,
+        "rank": 116,
+        "of": 329,
         "click": 7.5,
         "hook": 7,
         "surprise": 6,
@@ -34080,8 +34088,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.73,
-        "rank": 6,
-        "of": 319,
+        "rank": 7,
+        "of": 329,
         "click": 7.75,
         "hook": 8,
         "surprise": 7.75,
@@ -34180,8 +34188,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.71,
-        "rank": 7,
-        "of": 319,
+        "rank": 8,
+        "of": 329,
         "click": 8,
         "hook": 8.5,
         "surprise": 8,
@@ -34411,8 +34419,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.28,
-        "rank": 21,
-        "of": 319,
+        "rank": 22,
+        "of": 329,
         "click": 8,
         "hook": 8,
         "surprise": 8,
@@ -34584,8 +34592,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.64,
-        "rank": 8,
-        "of": 319,
+        "rank": 9,
+        "of": 329,
         "click": 7.75,
         "hook": 7.5,
         "surprise": 8,
@@ -34678,8 +34686,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.73,
-        "rank": 4,
-        "of": 319,
+        "rank": 5,
+        "of": 329,
         "click": 8.5,
         "hook": 8.5,
         "surprise": 7.5,
@@ -34778,8 +34786,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.6,
-        "rank": 194,
-        "of": 319,
+        "rank": 204,
+        "of": 329,
         "click": 5.5,
         "hook": 6,
         "surprise": 5.75,
@@ -35389,8 +35397,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.95,
-        "rank": 44,
-        "of": 319,
+        "rank": 47,
+        "of": 329,
         "click": 7.5,
         "hook": 8,
         "surprise": 6.5,
@@ -35483,8 +35491,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.91,
-        "rank": 2,
-        "of": 319,
+        "rank": 3,
+        "of": 329,
         "click": 8.5,
         "hook": 8,
         "surprise": 7.5,
@@ -35583,8 +35591,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.29,
-        "rank": 110,
-        "of": 319,
+        "rank": 115,
+        "of": 329,
         "click": 7,
         "hook": 7.25,
         "surprise": 6,
@@ -35671,8 +35679,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.03,
-        "rank": 38,
-        "of": 319,
+        "rank": 41,
+        "of": 329,
         "click": 7.5,
         "hook": 6.5,
         "surprise": 6.75,
@@ -36519,8 +36527,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.87,
-        "rank": 3,
-        "of": 319,
+        "rank": 4,
+        "of": 329,
         "click": 9,
         "hook": 8,
         "surprise": 7.5,
@@ -36686,8 +36694,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.25,
-        "rank": 24,
-        "of": 319,
+        "rank": 25,
+        "of": 329,
         "click": 7.75,
         "hook": 7.5,
         "surprise": 7.25,
@@ -36859,8 +36867,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.78,
-        "rank": 56,
-        "of": 319,
+        "rank": 60,
+        "of": 329,
         "click": 7,
         "hook": 6.75,
         "surprise": 6.25,
@@ -37032,8 +37040,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.03,
-        "rank": 39,
-        "of": 319,
+        "rank": 42,
+        "of": 329,
         "click": 8,
         "hook": 7.5,
         "surprise": 6,
@@ -37126,8 +37134,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.79,
-        "rank": 54,
-        "of": 319,
+        "rank": 58,
+        "of": 329,
         "click": 7.5,
         "hook": 7.5,
         "surprise": 6,
@@ -37451,8 +37459,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.03,
-        "rank": 254,
-        "of": 319,
+        "rank": 263,
+        "of": 329,
         "click": 5.5,
         "hook": 6,
         "surprise": 6,
@@ -37606,8 +37614,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.28,
-        "rank": 302,
-        "of": 319,
+        "rank": 312,
+        "of": 329,
         "click": 4,
         "hook": 5.5,
         "surprise": 5.5,
@@ -37968,8 +37976,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.24,
-        "rank": 25,
-        "of": 319,
+        "rank": 26,
+        "of": 329,
         "click": 8,
         "hook": 8,
         "surprise": 8,
@@ -38445,8 +38453,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.73,
-        "rank": 64,
-        "of": 319,
+        "rank": 68,
+        "of": 329,
         "click": 6.5,
         "hook": 7.25,
         "surprise": 6.75,
@@ -38551,8 +38559,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.73,
-        "rank": 65,
-        "of": 319,
+        "rank": 69,
+        "of": 329,
         "click": 6.25,
         "hook": 6.75,
         "surprise": 7,
@@ -38718,8 +38726,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.6,
-        "rank": 9,
-        "of": 319,
+        "rank": 10,
+        "of": 329,
         "click": 7.5,
         "hook": 7.75,
         "surprise": 7.5,
@@ -38976,8 +38984,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.1,
-        "rank": 131,
-        "of": 319,
+        "rank": 138,
+        "of": 329,
         "click": 6.2,
         "hook": 7.1,
         "surprise": 7.8,
@@ -39508,8 +39516,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.98,
-        "rank": 41,
-        "of": 319,
+        "rank": 44,
+        "of": 329,
         "click": 7.25,
         "hook": 6.75,
         "surprise": 6.75,
@@ -39596,8 +39604,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.65,
-        "rank": 74,
-        "of": 319,
+        "rank": 78,
+        "of": 329,
         "click": 6.5,
         "hook": 7,
         "surprise": 6.75,
@@ -39836,8 +39844,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.63,
-        "rank": 76,
-        "of": 319,
+        "rank": 80,
+        "of": 329,
         "click": 7,
         "hook": 6.75,
         "surprise": 6.75,
@@ -40739,8 +40747,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.33,
-        "rank": 108,
-        "of": 319,
+        "rank": 113,
+        "of": 329,
         "click": 6.5,
         "hook": 6,
         "surprise": 6.75,
@@ -40833,8 +40841,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.88,
-        "rank": 156,
-        "of": 319,
+        "rank": 164,
+        "of": 329,
         "click": 5.5,
         "hook": 6.25,
         "surprise": 6.25,
@@ -41304,8 +41312,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.48,
-        "rank": 207,
-        "of": 319,
+        "rank": 217,
+        "of": 329,
         "click": 5.25,
         "hook": 6.75,
         "surprise": 5.5,
@@ -41471,8 +41479,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.97,
-        "rank": 42,
-        "of": 319,
+        "rank": 45,
+        "of": 329,
         "click": 7.5,
         "hook": 7.75,
         "surprise": 7,
@@ -42344,8 +42352,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.87,
-        "rank": 266,
-        "of": 319,
+        "rank": 276,
+        "of": 329,
         "click": 5.5,
         "hook": 6,
         "surprise": 6.5,
@@ -42450,8 +42458,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.63,
-        "rank": 77,
-        "of": 319,
+        "rank": 81,
+        "of": 329,
         "click": 6.5,
         "hook": 7,
         "surprise": 7.25,
@@ -42641,8 +42649,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.94,
-        "rank": 1,
-        "of": 319,
+        "rank": 2,
+        "of": 329,
         "click": 8.25,
         "hook": 7.75,
         "surprise": 8.25,
@@ -42966,8 +42974,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.2,
-        "rank": 27,
-        "of": 319,
+        "rank": 29,
+        "of": 329,
         "click": 8.5,
         "hook": 8,
         "surprise": 7.5,
@@ -43619,8 +43627,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.66,
-        "rank": 71,
-        "of": 319,
+        "rank": 75,
+        "of": 329,
         "click": 7.5,
         "hook": 7,
         "surprise": 6.5,
@@ -44108,8 +44116,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.04,
-        "rank": 140,
-        "of": 319,
+        "rank": 147,
+        "of": 329,
         "click": 6,
         "hook": 6.5,
         "surprise": 6.5,
@@ -44729,7 +44737,7 @@
       "audience": {
         "score": 7.31,
         "rank": 20,
-        "of": 319,
+        "of": 329,
         "click": 8,
         "hook": 7.5,
         "surprise": 7.5,
@@ -44822,8 +44830,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.12,
-        "rank": 34,
-        "of": 319,
+        "rank": 37,
+        "of": 329,
         "click": 7,
         "hook": 7,
         "surprise": 7.5,
@@ -46083,8 +46091,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.87,
-        "rank": 267,
-        "of": 319,
+        "rank": 277,
+        "of": 329,
         "click": 5,
         "hook": 6,
         "surprise": 6,
@@ -46517,8 +46525,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.61,
-        "rank": 78,
-        "of": 319,
+        "rank": 82,
+        "of": 329,
         "click": 7,
         "hook": 7.5,
         "surprise": 7.5,
@@ -46708,8 +46716,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.43,
-        "rank": 96,
-        "of": 319,
+        "rank": 101,
+        "of": 329,
         "click": 7.25,
         "hook": 7,
         "surprise": 6,
@@ -47045,8 +47053,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.48,
-        "rank": 206,
-        "of": 319,
+        "rank": 216,
+        "of": 329,
         "click": 5.5,
         "hook": 6.5,
         "surprise": 7,
@@ -47546,8 +47554,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.58,
-        "rank": 198,
-        "of": 319,
+        "rank": 208,
+        "of": 329,
         "click": 4,
         "hook": 7,
         "surprise": 7,
@@ -47780,8 +47788,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.87,
-        "rank": 158,
-        "of": 319,
+        "rank": 166,
+        "of": 329,
         "click": 7,
         "hook": 7,
         "surprise": 6.5,
@@ -48418,8 +48426,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.22,
-        "rank": 117,
-        "of": 319,
+        "rank": 122,
+        "of": 329,
         "click": 6.5,
         "hook": 7.25,
         "surprise": 7,
@@ -48518,8 +48526,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.85,
-        "rank": 164,
-        "of": 319,
+        "rank": 172,
+        "of": 329,
         "click": 5.25,
         "hook": 7.25,
         "surprise": 6.25,
@@ -49028,8 +49036,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.07,
-        "rank": 36,
-        "of": 319,
+        "rank": 39,
+        "of": 329,
         "click": 7,
         "hook": 8,
         "surprise": 7,
@@ -49128,8 +49136,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.68,
-        "rank": 183,
-        "of": 319,
+        "rank": 193,
+        "of": 329,
         "click": 5.25,
         "hook": 7,
         "surprise": 5.5,
@@ -49319,8 +49327,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.38,
-        "rank": 100,
-        "of": 319,
+        "rank": 105,
+        "of": 329,
         "click": 6.5,
         "hook": 7.25,
         "surprise": 7,
@@ -49650,8 +49658,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.66,
-        "rank": 186,
-        "of": 319,
+        "rank": 196,
+        "of": 329,
         "click": 6,
         "hook": 6.5,
         "surprise": 7,
@@ -50178,8 +50186,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.79,
-        "rank": 170,
-        "of": 319,
+        "rank": 179,
+        "of": 329,
         "click": 6.5,
         "hook": 6.5,
         "surprise": 5.25,
@@ -50539,8 +50547,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.74,
-        "rank": 176,
-        "of": 319,
+        "rank": 186,
+        "of": 329,
         "click": 6,
         "hook": 6.5,
         "surprise": 7,
@@ -51412,8 +51420,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.61,
-        "rank": 79,
-        "of": 319,
+        "rank": 83,
+        "of": 329,
         "click": 7,
         "hook": 7.5,
         "surprise": 7.5,
@@ -51506,8 +51514,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.15,
-        "rank": 124,
-        "of": 319,
+        "rank": 130,
+        "of": 329,
         "click": 6.75,
         "hook": 5.5,
         "surprise": 5.25,
@@ -51673,8 +51681,8 @@
       "production_ready": false,
       "audience": {
         "score": 5,
-        "rank": 260,
-        "of": 319,
+        "rank": 269,
+        "of": 329,
         "click": 5.25,
         "hook": 4.75,
         "surprise": 4.75,
@@ -51961,8 +51969,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.6,
-        "rank": 195,
-        "of": 319,
+        "rank": 205,
+        "of": 329,
         "click": 6,
         "hook": 6.75,
         "surprise": 6,
@@ -52067,8 +52075,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.72,
-        "rank": 181,
-        "of": 319,
+        "rank": 191,
+        "of": 329,
         "click": 6.5,
         "hook": 6.25,
         "surprise": 5.75,
@@ -52167,8 +52175,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.58,
-        "rank": 199,
-        "of": 319,
+        "rank": 209,
+        "of": 329,
         "click": 5,
         "hook": 6.5,
         "surprise": 6.5,
@@ -53123,8 +53131,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.02,
-        "rank": 40,
-        "of": 319,
+        "rank": 43,
+        "of": 329,
         "click": 7,
         "hook": 7.75,
         "surprise": 7.25,
@@ -53326,8 +53334,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.12,
-        "rank": 127,
-        "of": 319,
+        "rank": 134,
+        "of": 329,
         "click": 6.5,
         "hook": 8,
         "surprise": 7,
@@ -54332,8 +54340,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.03,
-        "rank": 311,
-        "of": 319,
+        "rank": 321,
+        "of": 329,
         "click": 4.5,
         "hook": 5.5,
         "surprise": 6,
@@ -55458,8 +55466,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.18,
-        "rank": 118,
-        "of": 319,
+        "rank": 123,
+        "of": 329,
         "click": 6.5,
         "hook": 7,
         "surprise": 6.5,
@@ -55546,8 +55554,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.78,
-        "rank": 174,
-        "of": 319,
+        "rank": 183,
+        "of": 329,
         "click": 6.25,
         "hook": 6.5,
         "surprise": 5.5,
@@ -55710,8 +55718,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.77,
-        "rank": 175,
-        "of": 319,
+        "rank": 184,
+        "of": 329,
         "click": 5.5,
         "hook": 6.75,
         "surprise": 6,
@@ -56229,8 +56237,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.66,
-        "rank": 72,
-        "of": 319,
+        "rank": 76,
+        "of": 329,
         "click": 6,
         "hook": 7.5,
         "surprise": 7,
@@ -57385,8 +57393,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.38,
-        "rank": 101,
-        "of": 319,
+        "rank": 106,
+        "of": 329,
         "click": 6.5,
         "hook": 6.5,
         "surprise": 6.75,
@@ -57540,8 +57548,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.12,
-        "rank": 245,
-        "of": 319,
+        "rank": 254,
+        "of": 329,
         "click": 6,
         "hook": 6.5,
         "surprise": 7,
@@ -57719,8 +57727,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.36,
-        "rank": 220,
-        "of": 319,
+        "rank": 229,
+        "of": 329,
         "click": 5.5,
         "hook": 6.5,
         "surprise": 6,
@@ -57983,8 +57991,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.39,
-        "rank": 99,
-        "of": 319,
+        "rank": 104,
+        "of": 329,
         "click": 5,
         "hook": 8,
         "surprise": 6.25,
@@ -58420,8 +58428,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.92,
-        "rank": 48,
-        "of": 319,
+        "rank": 52,
+        "of": 329,
         "click": 7.5,
         "hook": 7,
         "surprise": 6.5,
@@ -58994,8 +59002,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.83,
-        "rank": 271,
-        "of": 319,
+        "rank": 281,
+        "of": 329,
         "click": 4.25,
         "hook": 5.5,
         "surprise": 4.5,
@@ -59088,8 +59096,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.86,
-        "rank": 161,
-        "of": 319,
+        "rank": 169,
+        "of": 329,
         "click": 5.25,
         "hook": 6,
         "surprise": 6,
@@ -59188,8 +59196,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.87,
-        "rank": 159,
-        "of": 319,
+        "rank": 167,
+        "of": 329,
         "click": 6.5,
         "hook": 6,
         "surprise": 7,
@@ -59950,8 +59958,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.31,
-        "rank": 226,
-        "of": 319,
+        "rank": 235,
+        "of": 329,
         "click": 6,
         "hook": 6.5,
         "surprise": 6.5,
@@ -60153,8 +60161,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.62,
-        "rank": 191,
-        "of": 319,
+        "rank": 201,
+        "of": 329,
         "click": 5.5,
         "hook": 6,
         "surprise": 5.5,
@@ -61097,8 +61105,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.33,
-        "rank": 224,
-        "of": 319,
+        "rank": 233,
+        "of": 329,
         "click": 5,
         "hook": 6,
         "surprise": 6,
@@ -61410,8 +61418,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.03,
-        "rank": 253,
-        "of": 319,
+        "rank": 262,
+        "of": 329,
         "click": 6,
         "hook": 7,
         "surprise": 5.5,
@@ -61929,8 +61937,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.73,
-        "rank": 282,
-        "of": 319,
+        "rank": 292,
+        "of": 329,
         "click": 4.5,
         "hook": 6,
         "surprise": 6,
@@ -62041,8 +62049,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.15,
-        "rank": 243,
-        "of": 319,
+        "rank": 252,
+        "of": 329,
         "click": 5,
         "hook": 7,
         "surprise": 6.5,
@@ -62153,8 +62161,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.45,
-        "rank": 294,
-        "of": 319,
+        "rank": 304,
+        "of": 329,
         "click": 5,
         "hook": 6,
         "surprise": 6,
@@ -62241,8 +62249,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.2,
-        "rank": 305,
-        "of": 319,
+        "rank": 315,
+        "of": 329,
         "click": 4,
         "hook": 5.5,
         "surprise": 5.5,
@@ -62511,8 +62519,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.66,
-        "rank": 187,
-        "of": 319,
+        "rank": 197,
+        "of": 329,
         "click": 6.5,
         "hook": 6.5,
         "surprise": 7,
@@ -62793,8 +62801,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.02,
-        "rank": 142,
-        "of": 319,
+        "rank": 149,
+        "of": 329,
         "click": 6.5,
         "hook": 7.25,
         "surprise": 6.5,
@@ -62887,8 +62895,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.78,
-        "rank": 171,
-        "of": 319,
+        "rank": 180,
+        "of": 329,
         "click": 5.5,
         "hook": 7.5,
         "surprise": 6.5,
@@ -63506,8 +63514,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.53,
-        "rank": 291,
-        "of": 319,
+        "rank": 301,
+        "of": 329,
         "click": 3.5,
         "hook": 6,
         "surprise": 5.5,
@@ -63606,8 +63614,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.48,
-        "rank": 12,
-        "of": 319,
+        "rank": 13,
+        "of": 329,
         "click": 8,
         "hook": 8.25,
         "surprise": 7.25,
@@ -63785,8 +63793,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.2,
-        "rank": 238,
-        "of": 319,
+        "rank": 247,
+        "of": 329,
         "click": 5,
         "hook": 7.5,
         "surprise": 6,
@@ -64823,8 +64831,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.79,
-        "rank": 274,
-        "of": 319,
+        "rank": 284,
+        "of": 329,
         "click": 4.25,
         "hook": 5,
         "surprise": 5.25,
@@ -65086,8 +65094,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.61,
-        "rank": 80,
-        "of": 319,
+        "rank": 84,
+        "of": 329,
         "click": 6.75,
         "hook": 8,
         "surprise": 6.75,
@@ -65997,8 +66005,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.58,
-        "rank": 287,
-        "of": 319,
+        "rank": 297,
+        "of": 329,
         "click": 4,
         "hook": 5,
         "surprise": 5.5,
@@ -66188,8 +66196,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.49,
-        "rank": 91,
-        "of": 319,
+        "rank": 96,
+        "of": 329,
         "click": 6.5,
         "hook": 7,
         "surprise": 7.5,
@@ -67296,8 +67304,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.15,
-        "rank": 307,
-        "of": 319,
+        "rank": 317,
+        "of": 329,
         "click": 3.5,
         "hook": 6,
         "surprise": 5.5,
@@ -67645,8 +67653,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.69,
-        "rank": 69,
-        "of": 319,
+        "rank": 73,
+        "of": 329,
         "click": 6.75,
         "hook": 7.5,
         "surprise": 6.75,
@@ -67882,8 +67890,8 @@
       "production_ready": false,
       "audience": {
         "score": 3.53,
-        "rank": 319,
-        "of": 319,
+        "rank": 329,
+        "of": 329,
         "click": 4,
         "hook": 5,
         "surprise": 4.5,
@@ -68511,8 +68519,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.48,
-        "rank": 94,
-        "of": 319,
+        "rank": 99,
+        "of": 329,
         "click": 6.75,
         "hook": 7.25,
         "surprise": 6.25,
@@ -69398,8 +69406,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.37,
-        "rank": 298,
-        "of": 319,
+        "rank": 308,
+        "of": 329,
         "click": 5,
         "hook": 6,
         "surprise": 6,
@@ -70055,8 +70063,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.74,
-        "rank": 177,
-        "of": 319,
+        "rank": 187,
+        "of": 329,
         "click": 7,
         "hook": 7,
         "surprise": 6,
@@ -70449,8 +70457,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.9,
-        "rank": 153,
-        "of": 319,
+        "rank": 161,
+        "of": 329,
         "click": 5.75,
         "hook": 6.75,
         "surprise": 6.5,
@@ -70549,8 +70557,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.15,
-        "rank": 123,
-        "of": 319,
+        "rank": 129,
+        "of": 329,
         "click": 6.25,
         "hook": 7,
         "surprise": 6.25,
@@ -70740,8 +70748,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.24,
-        "rank": 304,
-        "of": 319,
+        "rank": 314,
+        "of": 329,
         "click": 4.5,
         "hook": 5.5,
         "surprise": 5,
@@ -71034,8 +71042,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.98,
-        "rank": 143,
-        "of": 319,
+        "rank": 150,
+        "of": 329,
         "click": 6,
         "hook": 7.5,
         "surprise": 6,
@@ -71207,8 +71215,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.73,
-        "rank": 62,
-        "of": 319,
+        "rank": 66,
+        "of": 329,
         "click": 6.75,
         "hook": 7.5,
         "surprise": 7,
@@ -71565,8 +71573,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.53,
-        "rank": 203,
-        "of": 319,
+        "rank": 213,
+        "of": 329,
         "click": 5,
         "hook": 6.5,
         "surprise": 6.5,
@@ -72825,8 +72833,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.7,
-        "rank": 67,
-        "of": 319,
+        "rank": 71,
+        "of": 329,
         "click": 7,
         "hook": 8,
         "surprise": 7.5,
@@ -72925,8 +72933,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.84,
-        "rank": 268,
-        "of": 319,
+        "rank": 278,
+        "of": 329,
         "click": 4.25,
         "hook": 6,
         "surprise": 5.25,
@@ -73025,8 +73033,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.48,
-        "rank": 208,
-        "of": 319,
+        "rank": 218,
+        "of": 329,
         "click": 5.25,
         "hook": 6.5,
         "surprise": 5.5,
@@ -73320,8 +73328,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.83,
-        "rank": 270,
-        "of": 319,
+        "rank": 280,
+        "of": 329,
         "click": 4,
         "hook": 6,
         "surprise": 5.5,
@@ -73493,8 +73501,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.9,
-        "rank": 154,
-        "of": 319,
+        "rank": 162,
+        "of": 329,
         "click": 5.75,
         "hook": 7,
         "surprise": 6,
@@ -73593,8 +73601,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.64,
-        "rank": 189,
-        "of": 319,
+        "rank": 199,
+        "of": 329,
         "click": 5,
         "hook": 6.5,
         "surprise": 6.5,
@@ -74209,8 +74217,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.62,
-        "rank": 286,
-        "of": 319,
+        "rank": 296,
+        "of": 329,
         "click": 4,
         "hook": 6,
         "surprise": 6.5,
@@ -76093,8 +76101,8 @@
       "production_ready": false,
       "audience": {
         "score": 3.61,
-        "rank": 317,
-        "of": 319,
+        "rank": 327,
+        "of": 329,
         "click": 3,
         "hook": 4.5,
         "surprise": 4,
@@ -76357,8 +76365,8 @@
       "production_ready": false,
       "audience": {
         "score": 3.62,
-        "rank": 316,
-        "of": 319,
+        "rank": 326,
+        "of": 329,
         "click": 4,
         "hook": 5,
         "surprise": 5,
@@ -76445,8 +76453,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.96,
-        "rank": 261,
-        "of": 319,
+        "rank": 271,
+        "of": 329,
         "click": 4.25,
         "hook": 6,
         "surprise": 5.25,
@@ -76630,8 +76638,8 @@
       "production_ready": false,
       "audience": {
         "score": 3.62,
-        "rank": 315,
-        "of": 319,
+        "rank": 325,
+        "of": 329,
         "click": 3,
         "hook": 4.5,
         "surprise": 5,
@@ -77558,8 +77566,8 @@
       "production_ready": false,
       "audience": {
         "score": 3.95,
-        "rank": 313,
-        "of": 319,
+        "rank": 323,
+        "of": 329,
         "click": 3.5,
         "hook": 5,
         "surprise": 5,
@@ -77688,8 +77696,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.23,
-        "rank": 26,
-        "of": 319,
+        "rank": 27,
+        "of": 329,
         "click": 6,
         "hook": 7.75,
         "surprise": 7,
@@ -78022,8 +78030,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.32,
-        "rank": 225,
-        "of": 319,
+        "rank": 234,
+        "of": 329,
         "click": 5.25,
         "hook": 6,
         "surprise": 5.5,
@@ -78192,8 +78200,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.12,
-        "rank": 33,
-        "of": 319,
+        "rank": 36,
+        "of": 329,
         "click": 7,
         "hook": 8.5,
         "surprise": 7,
@@ -79592,8 +79600,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.9,
-        "rank": 264,
-        "of": 319,
+        "rank": 274,
+        "of": 329,
         "click": 3.75,
         "hook": 5.25,
         "surprise": 5,
@@ -80157,8 +80165,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.82,
-        "rank": 53,
-        "of": 319,
+        "rank": 57,
+        "of": 329,
         "click": 7,
         "hook": 7.5,
         "surprise": 7,
@@ -80327,8 +80335,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.12,
-        "rank": 128,
-        "of": 319,
+        "rank": 135,
+        "of": 329,
         "click": 6.5,
         "hook": 7,
         "surprise": 7,
@@ -81038,8 +81046,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.5,
-        "rank": 88,
-        "of": 319,
+        "rank": 93,
+        "of": 329,
         "click": 6.8,
         "hook": 7.6,
         "surprise": 7.2,
@@ -81466,8 +81474,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.35,
-        "rank": 221,
-        "of": 319,
+        "rank": 230,
+        "of": 329,
         "click": 5,
         "hook": 6.75,
         "surprise": 5.75,
@@ -81675,8 +81683,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.78,
-        "rank": 275,
-        "of": 319,
+        "rank": 285,
+        "of": 329,
         "click": 4.5,
         "hook": 6.5,
         "surprise": 6,
@@ -82747,8 +82755,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.37,
-        "rank": 104,
-        "of": 319,
+        "rank": 109,
+        "of": 329,
         "click": 6.5,
         "hook": 7,
         "surprise": 6.25,
@@ -83105,8 +83113,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.06,
-        "rank": 138,
-        "of": 319,
+        "rank": 145,
+        "of": 329,
         "click": 4.75,
         "hook": 7,
         "surprise": 6.25,
@@ -84967,8 +84975,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.78,
-        "rank": 172,
-        "of": 319,
+        "rank": 181,
+        "of": 329,
         "click": 5.5,
         "hook": 7,
         "surprise": 7,
@@ -85195,8 +85203,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.11,
-        "rank": 250,
-        "of": 319,
+        "rank": 259,
+        "of": 329,
         "click": 4.75,
         "hook": 6,
         "surprise": 5.25,
@@ -85301,8 +85309,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.58,
-        "rank": 10,
-        "of": 319,
+        "rank": 11,
+        "of": 329,
         "click": 7.75,
         "hook": 8,
         "surprise": 7.25,
@@ -85401,8 +85409,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.74,
-        "rank": 60,
-        "of": 319,
+        "rank": 64,
+        "of": 329,
         "click": 7,
         "hook": 7.5,
         "surprise": 7.5,
@@ -85665,8 +85673,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.24,
-        "rank": 231,
-        "of": 319,
+        "rank": 240,
+        "of": 329,
         "click": 4.5,
         "hook": 6,
         "surprise": 6.5,
@@ -85771,8 +85779,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.76,
-        "rank": 59,
-        "of": 319,
+        "rank": 63,
+        "of": 329,
         "click": 7,
         "hook": 8,
         "surprise": 7.5,
@@ -85980,8 +85988,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.07,
-        "rank": 135,
-        "of": 319,
+        "rank": 142,
+        "of": 329,
         "click": 6,
         "hook": 7,
         "surprise": 7,
@@ -86141,8 +86149,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.66,
-        "rank": 285,
-        "of": 319,
+        "rank": 295,
+        "of": 329,
         "click": 5,
         "hook": 5.5,
         "surprise": 6,
@@ -86247,8 +86255,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.23,
-        "rank": 116,
-        "of": 319,
+        "rank": 121,
+        "of": 329,
         "click": 6,
         "hook": 7,
         "surprise": 6.5,
@@ -86371,8 +86379,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.23,
-        "rank": 115,
-        "of": 319,
+        "rank": 120,
+        "of": 329,
         "click": 7,
         "hook": 7.25,
         "surprise": 5.5,
@@ -87420,8 +87428,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.47,
-        "rank": 210,
-        "of": 319,
+        "rank": 220,
+        "of": 329,
         "click": 5.25,
         "hook": 6.75,
         "surprise": 6.25,
@@ -87532,8 +87540,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.74,
-        "rank": 61,
-        "of": 319,
+        "rank": 65,
+        "of": 329,
         "click": 7,
         "hook": 7.5,
         "surprise": 7.5,
@@ -87650,8 +87658,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.94,
-        "rank": 262,
-        "of": 319,
+        "rank": 272,
+        "of": 329,
         "click": 4.25,
         "hook": 6.5,
         "surprise": 5,
@@ -87774,8 +87782,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.02,
-        "rank": 257,
-        "of": 319,
+        "rank": 266,
+        "of": 329,
         "click": 4.75,
         "hook": 6.75,
         "surprise": 5.75,
@@ -88202,8 +88210,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.95,
-        "rank": 147,
-        "of": 319,
+        "rank": 154,
+        "of": 329,
         "click": 7.5,
         "hook": 7.5,
         "surprise": 6.5,
@@ -88296,8 +88304,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.03,
-        "rank": 141,
-        "of": 319,
+        "rank": 148,
+        "of": 329,
         "click": 7,
         "hook": 7,
         "surprise": 8,
@@ -89204,8 +89212,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.89,
-        "rank": 51,
-        "of": 319,
+        "rank": 55,
+        "of": 329,
         "click": 7,
         "hook": 8,
         "surprise": 7.5,
@@ -89480,8 +89488,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.06,
-        "rank": 37,
-        "of": 319,
+        "rank": 40,
+        "of": 329,
         "click": 7.5,
         "hook": 6.75,
         "surprise": 8,
@@ -89695,8 +89703,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.02,
-        "rank": 256,
-        "of": 319,
+        "rank": 265,
+        "of": 329,
         "click": 5.5,
         "hook": 5,
         "surprise": 5,
@@ -89819,8 +89827,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.6,
-        "rank": 196,
-        "of": 319,
+        "rank": 206,
+        "of": 329,
         "click": 5.75,
         "hook": 6.25,
         "surprise": 5.5,
@@ -90071,8 +90079,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.73,
-        "rank": 63,
-        "of": 319,
+        "rank": 67,
+        "of": 329,
         "click": 7,
         "hook": 6.5,
         "surprise": 7.5,
@@ -90457,8 +90465,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.78,
-        "rank": 57,
-        "of": 319,
+        "rank": 61,
+        "of": 329,
         "click": 5.75,
         "hook": 7.5,
         "surprise": 7.25,
@@ -90855,8 +90863,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.12,
-        "rank": 248,
-        "of": 319,
+        "rank": 257,
+        "of": 329,
         "click": 6,
         "hook": 7,
         "surprise": 6.5,
@@ -91811,8 +91819,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.07,
-        "rank": 133,
-        "of": 319,
+        "rank": 140,
+        "of": 329,
         "click": 6.5,
         "hook": 7.5,
         "surprise": 7,
@@ -92160,8 +92168,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.7,
-        "rank": 66,
-        "of": 319,
+        "rank": 70,
+        "of": 329,
         "click": 7,
         "hook": 8,
         "surprise": 8,
@@ -93225,8 +93233,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.19,
-        "rank": 30,
-        "of": 319,
+        "rank": 32,
+        "of": 329,
         "click": 7.5,
         "hook": 8,
         "surprise": 7,
@@ -93337,8 +93345,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.97,
-        "rank": 145,
-        "of": 319,
+        "rank": 152,
+        "of": 329,
         "click": 6.25,
         "hook": 7,
         "surprise": 6.25,
@@ -93498,8 +93506,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.81,
-        "rank": 273,
-        "of": 319,
+        "rank": 283,
+        "of": 329,
         "click": 3.75,
         "hook": 5.75,
         "surprise": 5.25,
@@ -93610,8 +93618,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.28,
-        "rank": 303,
-        "of": 319,
+        "rank": 313,
+        "of": 329,
         "click": 5,
         "hook": 5.5,
         "surprise": 6,
@@ -94468,8 +94476,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.38,
-        "rank": 102,
-        "of": 319,
+        "rank": 107,
+        "of": 329,
         "click": 6.5,
         "hook": 6.5,
         "surprise": 6.5,
@@ -94726,8 +94734,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.49,
-        "rank": 92,
-        "of": 319,
+        "rank": 97,
+        "of": 329,
         "click": 6,
         "hook": 7.5,
         "surprise": 7.5,
@@ -94839,7 +94847,7 @@
       "audience": {
         "score": 7.33,
         "rank": 19,
-        "of": 319,
+        "of": 329,
         "click": 7.5,
         "hook": 8.5,
         "surprise": 8.5,
@@ -95612,8 +95620,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.49,
-        "rank": 90,
-        "of": 319,
+        "rank": 95,
+        "of": 329,
         "click": 6.5,
         "hook": 7.5,
         "surprise": 7.5,
@@ -95730,8 +95738,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.64,
-        "rank": 190,
-        "of": 319,
+        "rank": 200,
+        "of": 329,
         "click": 5.75,
         "hook": 6,
         "surprise": 5.5,
@@ -96650,8 +96658,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.24,
-        "rank": 113,
-        "of": 319,
+        "rank": 118,
+        "of": 329,
         "click": 6,
         "hook": 7.5,
         "surprise": 7,
@@ -96877,8 +96885,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.17,
-        "rank": 242,
-        "of": 319,
+        "rank": 251,
+        "of": 329,
         "click": 5,
         "hook": 5.9,
         "surprise": 5.9,
@@ -97627,8 +97635,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.74,
-        "rank": 178,
-        "of": 319,
+        "rank": 188,
+        "of": 329,
         "click": 5.5,
         "hook": 6.5,
         "surprise": 6.5,
@@ -97964,8 +97972,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.83,
-        "rank": 165,
-        "of": 319,
+        "rank": 173,
+        "of": 329,
         "click": 7,
         "hook": 6.5,
         "surprise": 7,
@@ -98325,8 +98333,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.11,
-        "rank": 249,
-        "of": 319,
+        "rank": 258,
+        "of": 329,
         "click": 4.5,
         "hook": 6.5,
         "surprise": 6,
@@ -98431,8 +98439,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.15,
-        "rank": 122,
-        "of": 319,
+        "rank": 128,
+        "of": 329,
         "click": 5.5,
         "hook": 7,
         "surprise": 6.5,
@@ -98810,8 +98818,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.01,
-        "rank": 258,
-        "of": 319,
+        "rank": 267,
+        "of": 329,
         "click": 5,
         "hook": 5.75,
         "surprise": 5.5,
@@ -99007,8 +99015,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.37,
-        "rank": 300,
-        "of": 319,
+        "rank": 310,
+        "of": 329,
         "click": 5,
         "hook": 6,
         "surprise": 6,
@@ -99787,8 +99795,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.23,
-        "rank": 233,
-        "of": 319,
+        "rank": 242,
+        "of": 329,
         "click": 5,
         "hook": 6.5,
         "surprise": 7,
@@ -100142,8 +100150,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.93,
-        "rank": 46,
-        "of": 319,
+        "rank": 49,
+        "of": 329,
         "click": 7.75,
         "hook": 7.25,
         "surprise": 7,
@@ -100825,8 +100833,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.61,
-        "rank": 193,
-        "of": 319,
+        "rank": 203,
+        "of": 329,
         "click": 5.75,
         "hook": 5.25,
         "surprise": 6.25,
@@ -101010,8 +101018,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.36,
-        "rank": 106,
-        "of": 319,
+        "rank": 111,
+        "of": 329,
         "click": 5.25,
         "hook": 5.25,
         "surprise": 6.75,
@@ -101134,8 +101142,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.78,
-        "rank": 55,
-        "of": 319,
+        "rank": 59,
+        "of": 329,
         "click": 7,
         "hook": 7.5,
         "surprise": 8,
@@ -101246,8 +101254,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.18,
-        "rank": 119,
-        "of": 319,
+        "rank": 124,
+        "of": 329,
         "click": 6,
         "hook": 6.25,
         "surprise": 6.25,
@@ -101990,8 +101998,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.53,
-        "rank": 201,
-        "of": 319,
+        "rank": 211,
+        "of": 329,
         "click": 6,
         "hook": 6.5,
         "surprise": 7,
@@ -102345,8 +102353,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.88,
-        "rank": 157,
-        "of": 319,
+        "rank": 165,
+        "of": 329,
         "click": 6,
         "hook": 6.75,
         "surprise": 6,
@@ -102785,8 +102793,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.53,
-        "rank": 200,
-        "of": 319,
+        "rank": 210,
+        "of": 329,
         "click": 6,
         "hook": 7,
         "surprise": 6.5,
@@ -102915,8 +102923,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.28,
-        "rank": 301,
-        "of": 319,
+        "rank": 311,
+        "of": 329,
         "click": 4,
         "hook": 5,
         "surprise": 5.5,
@@ -103118,8 +103126,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.7,
-        "rank": 284,
-        "of": 319,
+        "rank": 294,
+        "of": 329,
         "click": 5,
         "hook": 5,
         "surprise": 6,
@@ -103600,8 +103608,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.98,
-        "rank": 144,
-        "of": 319,
+        "rank": 151,
+        "of": 329,
         "click": 6.5,
         "hook": 5,
         "surprise": 6,
@@ -103724,8 +103732,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.13,
-        "rank": 125,
-        "of": 319,
+        "rank": 132,
+        "of": 329,
         "click": 6.75,
         "hook": 6.5,
         "surprise": 6.5,
@@ -103836,8 +103844,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.27,
-        "rank": 112,
-        "of": 319,
+        "rank": 117,
+        "of": 329,
         "click": 6.25,
         "hook": 6.5,
         "surprise": 6.25,
@@ -105192,8 +105200,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.27,
-        "rank": 227,
-        "of": 319,
+        "rank": 236,
+        "of": 329,
         "click": 3.75,
         "hook": 7,
         "surprise": 5.5,
@@ -105292,8 +105300,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.82,
-        "rank": 169,
-        "of": 319,
+        "rank": 177,
+        "of": 329,
         "click": 4,
         "hook": 8,
         "surprise": 6,
@@ -105404,8 +105412,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.96,
-        "rank": 146,
-        "of": 319,
+        "rank": 153,
+        "of": 329,
         "click": 5.5,
         "hook": 7,
         "surprise": 5.25,
@@ -105631,8 +105639,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.06,
-        "rank": 139,
-        "of": 319,
+        "rank": 146,
+        "of": 329,
         "click": 4,
         "hook": 7.5,
         "surprise": 5.75,
@@ -105749,8 +105757,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.83,
-        "rank": 269,
-        "of": 319,
+        "rank": 279,
+        "of": 329,
         "click": 5,
         "hook": 5.5,
         "surprise": 6.5,
@@ -106249,8 +106257,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.77,
-        "rank": 280,
-        "of": 319,
+        "rank": 290,
+        "of": 329,
         "click": 3.25,
         "hook": 6,
         "surprise": 5,
@@ -107010,8 +107018,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.33,
-        "rank": 222,
-        "of": 319,
+        "rank": 231,
+        "of": 329,
         "click": 5,
         "hook": 6,
         "surprise": 6,
@@ -107292,8 +107300,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.93,
-        "rank": 47,
-        "of": 319,
+        "rank": 50,
+        "of": 329,
         "click": 7.5,
         "hook": 8.5,
         "surprise": 7.25,
@@ -108630,8 +108638,8 @@
       "production_ready": false,
       "audience": {
         "score": 5,
-        "rank": 259,
-        "of": 319,
+        "rank": 268,
+        "of": 329,
         "click": 4.8,
         "hook": 6.6,
         "surprise": 6.6,
@@ -109379,8 +109387,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.73,
-        "rank": 283,
-        "of": 319,
+        "rank": 293,
+        "of": 329,
         "click": 4.75,
         "hook": 4.5,
         "surprise": 5.25,
@@ -109503,8 +109511,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.24,
-        "rank": 114,
-        "of": 319,
+        "rank": 119,
+        "of": 329,
         "click": 6.5,
         "hook": 5.75,
         "surprise": 6.5,
@@ -109809,8 +109817,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.59,
-        "rank": 197,
-        "of": 319,
+        "rank": 207,
+        "of": 329,
         "click": 5.75,
         "hook": 6.25,
         "surprise": 6.25,
@@ -110212,8 +110220,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.43,
-        "rank": 97,
-        "of": 319,
+        "rank": 102,
+        "of": 329,
         "click": 5.75,
         "hook": 6.75,
         "surprise": 7,
@@ -110421,8 +110429,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.24,
-        "rank": 229,
-        "of": 319,
+        "rank": 238,
+        "of": 329,
         "click": 5,
         "hook": 6.5,
         "surprise": 6,
@@ -110811,8 +110819,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.9,
-        "rank": 155,
-        "of": 319,
+        "rank": 163,
+        "of": 329,
         "click": 6,
         "hook": 5.75,
         "surprise": 6.5,
@@ -110929,8 +110937,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.27,
-        "rank": 22,
-        "of": 319,
+        "rank": 23,
+        "of": 329,
         "click": 7.75,
         "hook": 8,
         "surprise": 7.5,
@@ -111345,8 +111353,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.61,
-        "rank": 192,
-        "of": 319,
+        "rank": 202,
+        "of": 329,
         "click": 5.5,
         "hook": 6.5,
         "surprise": 6.5,
@@ -111931,8 +111939,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.08,
-        "rank": 310,
-        "of": 319,
+        "rank": 320,
+        "of": 329,
         "click": 3.25,
         "hook": 3.5,
         "surprise": 4.75,
@@ -112128,8 +112136,8 @@
       "production_ready": false,
       "audience": {
         "score": 3.53,
-        "rank": 318,
-        "of": 319,
+        "rank": 328,
+        "of": 329,
         "click": 3,
         "hook": 4,
         "surprise": 5,
@@ -112811,8 +112819,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.77,
-        "rank": 278,
-        "of": 319,
+        "rank": 288,
+        "of": 329,
         "click": 4.25,
         "hook": 6.25,
         "surprise": 4.75,
@@ -112929,8 +112937,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.72,
-        "rank": 182,
-        "of": 319,
+        "rank": 192,
+        "of": 329,
         "click": 6,
         "hook": 7.5,
         "surprise": 5.75,
@@ -113029,8 +113037,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.7,
-        "rank": 68,
-        "of": 319,
+        "rank": 72,
+        "of": 329,
         "click": 6.5,
         "hook": 8,
         "surprise": 6.5,
@@ -113141,8 +113149,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.27,
-        "rank": 23,
-        "of": 319,
+        "rank": 24,
+        "of": 329,
         "click": 7,
         "hook": 8,
         "surprise": 7,
@@ -113653,8 +113661,8 @@
       "production_ready": false,
       "audience": {
         "score": 3.87,
-        "rank": 314,
-        "of": 319,
+        "rank": 324,
+        "of": 329,
         "click": 4,
         "hook": 6,
         "surprise": 5,
@@ -114434,8 +114442,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.51,
-        "rank": 204,
-        "of": 319,
+        "rank": 214,
+        "of": 329,
         "click": 5.5,
         "hook": 6.25,
         "surprise": 6.25,
@@ -114595,8 +114603,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.06,
-        "rank": 136,
-        "of": 319,
+        "rank": 143,
+        "of": 329,
         "click": 6.25,
         "hook": 5.25,
         "surprise": 6.75,
@@ -115035,8 +115043,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.15,
-        "rank": 308,
-        "of": 319,
+        "rank": 318,
+        "of": 329,
         "click": 3.5,
         "hook": 6,
         "surprise": 5.5,
@@ -115129,8 +115137,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.86,
-        "rank": 160,
-        "of": 319,
+        "rank": 168,
+        "of": 329,
         "click": 6.5,
         "hook": 5.5,
         "surprise": 7,
@@ -116024,8 +116032,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.91,
-        "rank": 151,
-        "of": 319,
+        "rank": 159,
+        "of": 329,
         "click": 6.5,
         "hook": 7,
         "surprise": 7,
@@ -116524,8 +116532,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.78,
-        "rank": 173,
-        "of": 319,
+        "rank": 182,
+        "of": 329,
         "click": 5.5,
         "hook": 6.5,
         "surprise": 6,
@@ -116897,8 +116905,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.13,
-        "rank": 126,
-        "of": 319,
+        "rank": 133,
+        "of": 329,
         "click": 6.75,
         "hook": 7,
         "surprise": 6.25,
@@ -117495,8 +117503,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.38,
-        "rank": 218,
-        "of": 319,
+        "rank": 227,
+        "of": 329,
         "click": 5.25,
         "hook": 6.5,
         "surprise": 5.5,
@@ -117855,8 +117863,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.19,
-        "rank": 240,
-        "of": 319,
+        "rank": 249,
+        "of": 329,
         "click": 4.5,
         "hook": 7,
         "surprise": 6,
@@ -118143,8 +118151,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.49,
-        "rank": 293,
-        "of": 319,
+        "rank": 303,
+        "of": 329,
         "click": 5,
         "hook": 5.5,
         "surprise": 5.5,
@@ -118668,8 +118676,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.41,
-        "rank": 216,
-        "of": 319,
+        "rank": 225,
+        "of": 329,
         "click": 6,
         "hook": 7,
         "surprise": 6.5,
@@ -119065,8 +119073,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.12,
-        "rank": 247,
-        "of": 319,
+        "rank": 256,
+        "of": 329,
         "click": 6,
         "hook": 6.5,
         "surprise": 6.5,
@@ -119359,8 +119367,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.45,
-        "rank": 295,
-        "of": 319,
+        "rank": 305,
+        "of": 329,
         "click": 4,
         "hook": 6,
         "surprise": 5,
@@ -119641,8 +119649,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.54,
-        "rank": 85,
-        "of": 319,
+        "rank": 90,
+        "of": 329,
         "click": 6.5,
         "hook": 8,
         "surprise": 7,
@@ -119741,8 +119749,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.24,
-        "rank": 230,
-        "of": 319,
+        "rank": 239,
+        "of": 329,
         "click": 5.5,
         "hook": 6.5,
         "surprise": 6.5,
@@ -120053,8 +120061,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.23,
-        "rank": 234,
-        "of": 319,
+        "rank": 243,
+        "of": 329,
         "click": 5,
         "hook": 6.75,
         "surprise": 5,
@@ -120177,8 +120185,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.06,
-        "rank": 137,
-        "of": 319,
+        "rank": 144,
+        "of": 329,
         "click": 6.5,
         "hook": 6.5,
         "surprise": 6,
@@ -120489,8 +120497,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.12,
-        "rank": 129,
-        "of": 319,
+        "rank": 136,
+        "of": 329,
         "click": 6,
         "hook": 6.5,
         "surprise": 6,
@@ -120662,8 +120670,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.91,
-        "rank": 263,
-        "of": 319,
+        "rank": 273,
+        "of": 329,
         "click": 5,
         "hook": 6,
         "surprise": 6.5,
@@ -121169,8 +121177,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.12,
-        "rank": 246,
-        "of": 319,
+        "rank": 255,
+        "of": 329,
         "click": 6.5,
         "hook": 7.5,
         "surprise": 6,
@@ -121754,8 +121762,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.39,
-        "rank": 297,
-        "of": 319,
+        "rank": 307,
+        "of": 329,
         "click": 2.5,
         "hook": 5,
         "surprise": 5,
@@ -123383,8 +123391,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.58,
-        "rank": 81,
-        "of": 319,
+        "rank": 85,
+        "of": 329,
         "click": 6.5,
         "hook": 7.5,
         "surprise": 7.5,
@@ -124218,8 +124226,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.33,
-        "rank": 223,
-        "of": 319,
+        "rank": 232,
+        "of": 329,
         "click": 5,
         "hook": 7,
         "surprise": 5.5,
@@ -124342,8 +124350,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.94,
-        "rank": 149,
-        "of": 319,
+        "rank": 156,
+        "of": 329,
         "click": 6,
         "hook": 7.25,
         "surprise": 5.75,
@@ -124660,8 +124668,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.77,
-        "rank": 279,
-        "of": 319,
+        "rank": 289,
+        "of": 329,
         "click": 5,
         "hook": 5.25,
         "surprise": 4.5,
@@ -125646,8 +125654,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.82,
-        "rank": 168,
-        "of": 319,
+        "rank": 176,
+        "of": 329,
         "click": 6.5,
         "hook": 7,
         "surprise": 7,
@@ -125885,8 +125893,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.07,
-        "rank": 252,
-        "of": 319,
+        "rank": 261,
+        "of": 329,
         "click": 5.5,
         "hook": 7,
         "surprise": 6,
@@ -125973,8 +125981,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.2,
-        "rank": 237,
-        "of": 319,
+        "rank": 246,
+        "of": 329,
         "click": 6,
         "hook": 7,
         "surprise": 6,
@@ -126688,8 +126696,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.73,
-        "rank": 179,
-        "of": 319,
+        "rank": 189,
+        "of": 329,
         "click": 6,
         "hook": 7,
         "surprise": 7,
@@ -127497,8 +127505,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.74,
-        "rank": 281,
-        "of": 319,
+        "rank": 291,
+        "of": 329,
         "click": 4,
         "hook": 6,
         "surprise": 5,
@@ -127688,8 +127696,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.82,
-        "rank": 272,
-        "of": 319,
+        "rank": 282,
+        "of": 329,
         "click": 4.75,
         "hook": 5.25,
         "surprise": 5,
@@ -127794,8 +127802,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.95,
-        "rank": 148,
-        "of": 319,
+        "rank": 155,
+        "of": 329,
         "click": 5.5,
         "hook": 6.5,
         "surprise": 6.5,
@@ -127967,8 +127975,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.86,
-        "rank": 162,
-        "of": 319,
+        "rank": 170,
+        "of": 329,
         "click": 5,
         "hook": 6.75,
         "surprise": 6,
@@ -128333,8 +128341,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.49,
-        "rank": 11,
-        "of": 319,
+        "rank": 12,
+        "of": 329,
         "click": 7,
         "hook": 7.5,
         "surprise": 7.5,
@@ -128463,8 +128471,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.11,
-        "rank": 130,
-        "of": 319,
+        "rank": 137,
+        "of": 329,
         "click": 6.5,
         "hook": 7.5,
         "surprise": 6,
@@ -128593,8 +128601,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.95,
-        "rank": 45,
-        "of": 319,
+        "rank": 48,
+        "of": 329,
         "click": 6.5,
         "hook": 7.5,
         "surprise": 7.25,
@@ -128705,8 +128713,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.66,
-        "rank": 73,
-        "of": 319,
+        "rank": 77,
+        "of": 329,
         "click": 6,
         "hook": 8,
         "surprise": 6.75,
@@ -128981,8 +128989,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.45,
-        "rank": 95,
-        "of": 319,
+        "rank": 100,
+        "of": 329,
         "click": 7.5,
         "hook": 7,
         "surprise": 7,
@@ -129323,8 +129331,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.2,
-        "rank": 306,
-        "of": 319,
+        "rank": 316,
+        "of": 329,
         "click": 6,
         "hook": 5,
         "surprise": 5.5,
@@ -130067,8 +130075,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.2,
-        "rank": 239,
-        "of": 319,
+        "rank": 248,
+        "of": 329,
         "click": 5,
         "hook": 6.5,
         "surprise": 6.5,
@@ -130816,8 +130824,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.21,
-        "rank": 235,
-        "of": 319,
+        "rank": 244,
+        "of": 329,
         "click": 5,
         "hook": 6,
         "surprise": 5.25,
@@ -131043,8 +131051,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.18,
-        "rank": 241,
-        "of": 319,
+        "rank": 250,
+        "of": 329,
         "click": 4.75,
         "hook": 6.25,
         "surprise": 5.75,
@@ -131944,8 +131952,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.03,
-        "rank": 312,
-        "of": 319,
+        "rank": 322,
+        "of": 329,
         "click": 3.5,
         "hook": 5,
         "surprise": 5,
@@ -132214,8 +132222,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.16,
-        "rank": 120,
-        "of": 319,
+        "rank": 126,
+        "of": 329,
         "click": 7,
         "hook": 6.5,
         "surprise": 6.5,
@@ -133983,8 +133991,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.12,
-        "rank": 244,
-        "of": 319,
+        "rank": 253,
+        "of": 329,
         "click": 5.5,
         "hook": 6.5,
         "surprise": 6.5,
@@ -134659,8 +134667,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.49,
-        "rank": 205,
-        "of": 319,
+        "rank": 215,
+        "of": 329,
         "click": 5,
         "hook": 7,
         "surprise": 6.5,
@@ -134777,8 +134785,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.52,
-        "rank": 87,
-        "of": 319,
+        "rank": 92,
+        "of": 329,
         "click": 6.25,
         "hook": 7.25,
         "surprise": 7,
@@ -135131,8 +135139,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.44,
-        "rank": 214,
-        "of": 319,
+        "rank": 224,
+        "of": 329,
         "click": 5.5,
         "hook": 7,
         "surprise": 5,
@@ -135644,8 +135652,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.57,
-        "rank": 289,
-        "of": 319,
+        "rank": 299,
+        "of": 329,
         "click": 4.5,
         "hook": 6,
         "surprise": 6,
@@ -136885,8 +136893,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.68,
-        "rank": 70,
-        "of": 319,
+        "rank": 74,
+        "of": 329,
         "click": 6.75,
         "hook": 7.5,
         "surprise": 7,
@@ -137306,8 +137314,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.78,
-        "rank": 277,
-        "of": 319,
+        "rank": 287,
+        "of": 329,
         "click": 5.5,
         "hook": 6,
         "surprise": 6.5,
@@ -137424,8 +137432,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.37,
-        "rank": 219,
-        "of": 319,
+        "rank": 228,
+        "of": 329,
         "click": 6.5,
         "hook": 7,
         "surprise": 6.5,
@@ -137809,8 +137817,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.78,
-        "rank": 276,
-        "of": 319,
+        "rank": 286,
+        "of": 329,
         "click": 5,
         "hook": 6,
         "surprise": 6,
@@ -138722,8 +138730,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.03,
-        "rank": 255,
-        "of": 319,
+        "rank": 264,
+        "of": 329,
         "click": 5,
         "hook": 6,
         "surprise": 5.5,
@@ -140667,8 +140675,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.35,
-        "rank": 107,
-        "of": 319,
+        "rank": 112,
+        "of": 329,
         "click": 6.5,
         "hook": 7,
         "surprise": 6.25,
@@ -141252,8 +141260,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.23,
-        "rank": 232,
-        "of": 319,
+        "rank": 241,
+        "of": 329,
         "click": 4.5,
         "hook": 7,
         "surprise": 7,
@@ -141958,8 +141966,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.45,
-        "rank": 211,
-        "of": 319,
+        "rank": 221,
+        "of": 329,
         "click": 6,
         "hook": 7,
         "surprise": 6.5,
@@ -143204,8 +143212,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.58,
-        "rank": 288,
-        "of": 319,
+        "rank": 298,
+        "of": 329,
         "click": 3.75,
         "hook": 5,
         "surprise": 5.5,
@@ -143558,8 +143566,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.44,
-        "rank": 212,
-        "of": 319,
+        "rank": 222,
+        "of": 329,
         "click": 5.5,
         "hook": 7,
         "surprise": 6,
@@ -144308,8 +144316,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.53,
-        "rank": 202,
-        "of": 319,
+        "rank": 212,
+        "of": 329,
         "click": 6.5,
         "hook": 6.5,
         "surprise": 7.5,
@@ -144924,8 +144932,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.4,
-        "rank": 217,
-        "of": 319,
+        "rank": 226,
+        "of": 329,
         "click": 5.5,
         "hook": 6.5,
         "surprise": 6.5,
@@ -146360,8 +146368,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.51,
-        "rank": 292,
-        "of": 319,
+        "rank": 302,
+        "of": 329,
         "click": 4.25,
         "hook": 5.25,
         "surprise": 4.75,
@@ -146557,8 +146565,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.08,
-        "rank": 251,
-        "of": 319,
+        "rank": 260,
+        "of": 329,
         "click": 4.5,
         "hook": 6,
         "surprise": 5.5,
@@ -148127,8 +148135,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.24,
-        "rank": 228,
-        "of": 319,
+        "rank": 237,
+        "of": 329,
         "click": 4.5,
         "hook": 6.5,
         "surprise": 6.5,
@@ -148658,8 +148666,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.5,
-        "rank": 89,
-        "of": 319,
+        "rank": 94,
+        "of": 329,
         "click": 5.75,
         "hook": 7.5,
         "surprise": 7.25,
@@ -148782,8 +148790,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.21,
-        "rank": 236,
-        "of": 319,
+        "rank": 245,
+        "of": 329,
         "click": 4.5,
         "hook": 6,
         "surprise": 5.75,
@@ -148876,8 +148884,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.91,
-        "rank": 49,
-        "of": 319,
+        "rank": 53,
+        "of": 329,
         "click": 7,
         "hook": 7.5,
         "surprise": 8,
@@ -149037,8 +149045,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.54,
-        "rank": 290,
-        "of": 319,
+        "rank": 300,
+        "of": 329,
         "click": 4,
         "hook": 4.5,
         "surprise": 4.75,
@@ -150718,8 +150726,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.36,
-        "rank": 105,
-        "of": 319,
+        "rank": 110,
+        "of": 329,
         "click": 5.25,
         "hook": 6.5,
         "surprise": 7.25,
@@ -150836,8 +150844,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.57,
-        "rank": 83,
-        "of": 319,
+        "rank": 87,
+        "of": 329,
         "click": 6,
         "hook": 7.5,
         "surprise": 7,
@@ -151525,8 +151533,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.15,
-        "rank": 309,
-        "of": 319,
+        "rank": 319,
+        "of": 329,
         "click": 2,
         "hook": 5.5,
         "surprise": 4.5,
@@ -151983,8 +151991,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.65,
-        "rank": 188,
-        "of": 319,
+        "rank": 198,
+        "of": 329,
         "click": 6.5,
         "hook": 7,
         "surprise": 6.5,
@@ -152751,8 +152759,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.83,
-        "rank": 167,
-        "of": 319,
+        "rank": 175,
+        "of": 329,
         "click": 6,
         "hook": 6.5,
         "surprise": 6.5,
@@ -152863,8 +152871,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.4,
-        "rank": 296,
-        "of": 319,
+        "rank": 306,
+        "of": 329,
         "click": 3.75,
         "hook": 5,
         "surprise": 4.5,
@@ -154266,8 +154274,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.66,
-        "rank": 185,
-        "of": 319,
+        "rank": 195,
+        "of": 329,
         "click": 7,
         "hook": 6,
         "surprise": 6.5,
@@ -154925,8 +154933,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.68,
-        "rank": 184,
-        "of": 319,
+        "rank": 194,
+        "of": 329,
         "click": 5,
         "hook": 6.5,
         "surprise": 5.25,
@@ -155268,8 +155276,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.89,
-        "rank": 265,
-        "of": 319,
+        "rank": 275,
+        "of": 329,
         "click": 4,
         "hook": 6.5,
         "surprise": 6.5,
@@ -155520,8 +155528,8 @@
       "production_ready": false,
       "audience": {
         "score": 4.37,
-        "rank": 299,
-        "of": 319,
+        "rank": 309,
+        "of": 329,
         "click": 4.5,
         "hook": 6,
         "surprise": 7,
@@ -156160,8 +156168,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.83,
-        "rank": 166,
-        "of": 319,
+        "rank": 174,
+        "of": 329,
         "click": 5.5,
         "hook": 7,
         "surprise": 6.5,
@@ -161780,8 +161788,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.64,
-        "rank": 75,
-        "of": 319,
+        "rank": 79,
+        "of": 329,
         "click": 6.75,
         "hook": 7.25,
         "surprise": 7,
@@ -163221,17 +163229,32 @@
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false,
+      "audience": {
+        "score": 7.29,
+        "rank": 21,
+        "of": 329,
+        "click": 7.75,
+        "hook": 7.25,
+        "surprise": 7,
+        "payoff": 7.5,
+        "share": 7,
+        "comment": "把池塘冰賣到印度很爽快，魚販蹭冷氣好笑，但細節塞太滿。",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-w.json",
+        "base": 7.65,
+        "demand": 5.5
+      },
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": true,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 5.5,
+        "reason": "歷史冰塊貿易，廢物變黃金的賺法",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -163324,17 +163347,32 @@
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false,
+      "audience": {
+        "score": 7.17,
+        "rank": 33,
+        "of": 329,
+        "click": 7.25,
+        "hook": 7.25,
+        "surprise": 7.25,
+        "payoff": 7.25,
+        "share": 6.75,
+        "comment": "神祕公司不講做什麼也有人搶，南海公司自己打死自己很諷刺。",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-w.json",
+        "base": 7.5,
+        "demand": 5.5
+      },
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": true
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 5.5,
+        "reason": "南海公司取締對手反害自己崩盤",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -163433,17 +163471,32 @@
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false,
+      "audience": {
+        "score": 5.92,
+        "rank": 157,
+        "of": 329,
+        "click": 6,
+        "hook": 5.25,
+        "surprise": 6.5,
+        "payoff": 5.5,
+        "share": 5,
+        "comment": "賭陌生人何時死很猛，後半段判例四十七年就開始像上法律課。",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-w.json",
+        "base": 6,
+        "demand": 5.5
+      },
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": true,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 5.5,
+        "reason": "保險利益規定由來與反常判決",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -163536,17 +163589,32 @@
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false,
+      "audience": {
+        "score": 5.79,
+        "rank": 178,
+        "of": 329,
+        "click": 5.25,
+        "hook": 6,
+        "surprise": 6,
+        "payoff": 5.75,
+        "share": 4.5,
+        "comment": "磚商跟稅官鬥法有點趣味，但數學瓦我根本沒聽過，題目太長。",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-w.json",
+        "base": 5.85,
+        "demand": 5.5
+      },
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": true,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 5.5,
+        "reason": "磚稅制度與磚塊尺寸攻防",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -163639,17 +163707,32 @@
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false,
+      "audience": {
+        "score": 6.92,
+        "rank": 51,
+        "of": 329,
+        "click": 6.75,
+        "hook": 7.25,
+        "surprise": 7,
+        "payoff": 7,
+        "share": 6.25,
+        "comment": "專利蟑螂鼻祖對上福特很有戲，可惜題目長到我差點沒看完。",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-w.json",
+        "base": 7.2,
+        "demand": 5.5
+      },
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": true,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 5.5,
+        "reason": "紙上專利向全美車廠抽保護費",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -165421,15 +165504,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 3.25,
+        "reason": "木貓鑽琴酒法漏洞賣酒賺錢",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -165548,15 +165631,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 3.25,
+        "reason": "假死訊炒公債怎麼被追出",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -165679,17 +165762,32 @@
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false,
+      "audience": {
+        "score": 8.25,
+        "rank": 1,
+        "of": 329,
+        "click": 8.5,
+        "hook": 8,
+        "surprise": 8,
+        "payoff": 7.25,
+        "share": 8.25,
+        "comment": "手邊就有撲克牌，黑桃A竟然跟絞刑有關，一定點，只是題目太囉嗦。",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-w.json",
+        "base": 8.35,
+        "demand": 7.75
+      },
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": true
+          "have": true,
+          "why": true,
+          "standard": true,
+          "lose_or_jp": false
         },
-        "demand": 3.25,
-        "reason": "撲克牌黑桃A人人認得",
+        "demand": 7.75,
+        "reason": "撲克牌黑桃A花樣源自印花稅",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -165784,15 +165882,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 3.25,
+        "reason": "火險標章傳說與真相相反",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -165951,17 +166049,32 @@
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false,
+      "audience": {
+        "score": 7.21,
+        "rank": 28,
+        "of": 329,
+        "click": 7.25,
+        "hook": 7.25,
+        "surprise": 7.75,
+        "payoff": 7,
+        "share": 6.75,
+        "comment": "三十個小女孩搬空法國國庫很勾人，但唐提是什麼要先講清楚。",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-w.json",
+        "base": 7.55,
+        "demand": 5.5
+      },
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": true,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 5.5,
+        "reason": "唐提年金制度被合法搬空國庫",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -166697,8 +166810,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.47,
-        "rank": 209,
-        "of": 319,
+        "rank": 219,
+        "of": 329,
         "click": 5.25,
         "hook": 5.75,
         "surprise": 6,
@@ -166930,8 +167043,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.89,
-        "rank": 52,
-        "of": 319,
+        "rank": 56,
+        "of": 329,
         "click": 7.5,
         "hook": 6.75,
         "surprise": 6.5,
@@ -167260,15 +167373,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": true
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 3.25,
-        "reason": "愛迪生是家喻戶曉的名字",
+        "reason": "愛迪生洋娃娃一個月停產慘賠",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -167387,15 +167500,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 3.25,
+        "reason": "敗訴後反而加碼懸賞",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -167502,15 +167615,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 3.25,
+        "reason": "騙局拆穿受害者反罵政府",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -167823,15 +167936,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 3.25,
+        "reason": "化驗結果與拒收理由有反差",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -167914,15 +168027,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
-        "reason": "四問皆否",
+        "reason": "偷來的機密早已印在書裡",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -168005,15 +168118,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -168102,15 +168215,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
-        "reason": "四問皆否",
+        "reason": "一塊錢重近二十公斤才印鈔",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -168193,15 +168306,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 3.25,
+        "reason": "為肥皂官辦比賽，專賣憑什麼",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -169188,15 +169301,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -169267,15 +169380,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": true,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 3.25,
-        "reason": "主角是中國徽州外銷綠茶",
+        "reason": "綠茶為何染藍，答案與成見相反",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -169358,15 +169471,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 3.25,
+        "reason": "法規嚴密卻仍被同批金銀騙過",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -169619,15 +169732,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -169704,15 +169817,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -169795,15 +169908,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 3.25,
+        "reason": "保證有獎卻只發十二分之一",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -169884,17 +169997,32 @@
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false,
+      "audience": {
+        "score": 4.96,
+        "rank": 270,
+        "of": 329,
+        "click": 3.75,
+        "hook": 5.25,
+        "surprise": 5.25,
+        "payoff": 5,
+        "share": 3.25,
+        "comment": "一便士郵政跟我沒什麼關係，人名又陌生，滑過去不會停。",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-w.json",
+        "base": 4.85,
+        "demand": 5.5
+      },
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": true,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 5.5,
+        "reason": "好生意一賺錢就被王弟奪走",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -169989,15 +170117,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": true
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 3.25,
-        "reason": "伏爾泰是課本裡的名字",
+        "demand": 1,
+        "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -170098,8 +170226,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.11,
-        "rank": 35,
-        "of": 319,
+        "rank": 38,
+        "of": 329,
         "click": 6.75,
         "hook": 8,
         "surprise": 7.5,
@@ -170222,8 +170350,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.16,
-        "rank": 121,
-        "of": 319,
+        "rank": 127,
+        "of": 329,
         "click": 5.75,
         "hook": 7,
         "surprise": 6.25,
@@ -170562,8 +170690,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.44,
-        "rank": 213,
-        "of": 319,
+        "rank": 223,
+        "of": 329,
         "click": 4,
         "hook": 6,
         "surprise": 6.25,
@@ -171147,15 +171275,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -171250,15 +171378,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 3.25,
+        "reason": "名賽當天紀錄竟沒有馬",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -171329,15 +171457,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": true
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 3.25,
+        "reason": "孟買填海股泡沫破裂公司全倒",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -171620,15 +171748,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -171723,15 +171851,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -171806,17 +171934,32 @@
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false,
+      "audience": {
+        "score": 5.75,
+        "rank": 185,
+        "of": 329,
+        "click": 5.25,
+        "hook": 6,
+        "surprise": 5.75,
+        "payoff": 5.25,
+        "share": 5,
+        "comment": "揉麵板開活門偷麵團很有畫面，但一打十三個台灣人不太熟。",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-w.json",
+        "base": 5.8,
+        "demand": 5.5
+      },
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": true,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 5.5,
+        "reason": "一打為何十三個的規定由來",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -171899,15 +172042,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -171984,15 +172127,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -172553,7 +172696,7 @@
       "audience": {
         "score": 7.43,
         "rank": 15,
-        "of": 319,
+        "of": 329,
         "click": 8,
         "hook": 8.25,
         "surprise": 8,
@@ -172998,15 +173141,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -173131,15 +173274,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -173222,15 +173365,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -173465,15 +173608,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 3.25,
+        "reason": "酒專賣換醫院，總督自己破壞",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -173554,17 +173697,32 @@
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false,
+      "audience": {
+        "score": 6.13,
+        "rank": 131,
+        "of": 329,
+        "click": 6.25,
+        "hook": 6,
+        "surprise": 6.5,
+        "payoff": 5.5,
+        "share": 5.25,
+        "comment": "幕末黃金外流有興趣，假名胡說先生好笑，但貨幣細節容易看暈。",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-w.json",
+        "base": 6.25,
+        "demand": 5.5
+      },
       "demand": {
         "answers": {
-          "east_asia": true,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": true,
+          "lose_or_jp": false
         },
-        "demand": 3.25,
-        "reason": "幕末橫濱開港的日本金銀",
+        "demand": 5.5,
+        "reason": "幕末金銀比價套利誰沒算清",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -173647,15 +173805,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -173726,15 +173884,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 3.25,
+        "reason": "已能自種卻仍向阿拉伯買",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -173805,15 +173963,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
-        "reason": "四問皆否",
+        "reason": "首富反被開羅商人賺走",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -174660,15 +174818,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -174769,15 +174927,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -174866,15 +175024,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -175179,17 +175337,32 @@
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false,
+      "audience": {
+        "score": 6.17,
+        "rank": 125,
+        "of": 329,
+        "click": 5.75,
+        "hook": 6.75,
+        "surprise": 6.25,
+        "payoff": 6,
+        "share": 5,
+        "comment": "腳泡在香料油裡很有畫面，但題目太長像論文，結論猜得到是滯銷貨。",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-w.json",
+        "base": 6.3,
+        "demand": 5.5
+      },
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": true,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 5.5,
+        "reason": "燒值錢香料：獨占還是滯銷",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -175278,15 +175451,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 3.25,
+        "reason": "為破獨占取苗卻先立新獨占",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -175363,15 +175536,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": true,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 3.25,
-        "reason": "景德鎮中國瓷器的秘密",
+        "demand": 1,
+        "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -175448,15 +175621,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
-        "reason": "四問皆否",
+        "reason": "礦業熱公司泡沫失敗",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -175525,17 +175698,32 @@
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false,
+      "audience": {
+        "score": 6.54,
+        "rank": 88,
+        "of": 329,
+        "click": 6.25,
+        "hook": 6.75,
+        "surprise": 7,
+        "payoff": 6.5,
+        "share": 5.5,
+        "comment": "十三行原來是被朝廷榨乾的苦差事，有翻轉，但帳本味有點重。",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-w.json",
+        "base": 6.75,
+        "demand": 5.5
+      },
       "demand": {
         "answers": {
-          "east_asia": true,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": true,
+          "standard": true,
+          "lose_or_jp": false
         },
-        "demand": 3.25,
-        "reason": "清代廣州十三行行商",
+        "demand": 5.5,
+        "reason": "獨占行商富可敵國卻人人想逃",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -176419,15 +176607,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": true
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
-        "demand": 3.25,
-        "reason": "亞當斯密國富論課本必教",
+        "demand": 1,
+        "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -176510,15 +176698,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": false,
+          "lose_or_jp": false
         },
         "demand": 1,
         "reason": "四問皆否",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -176613,15 +176801,15 @@
       "production_ready": false,
       "demand": {
         "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
+          "have": false,
+          "why": false,
+          "standard": true,
+          "lose_or_jp": false
         },
-        "demand": 1,
-        "reason": "四問皆否",
+        "demand": 3.25,
+        "reason": "一碼這個單位的由來",
         "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
+        "review": "reviews/demand-20261117-w.json"
       }
     },
     {
@@ -176830,29 +177018,17 @@
       ],
       "category_code": "W",
       "category": "W-商業與品牌奇聞",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6401"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6402",
@@ -176896,29 +177072,17 @@
       ],
       "category_code": "W",
       "category": "W-商業與品牌奇聞",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6402"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6403",
@@ -176962,29 +177126,17 @@
       ],
       "category_code": "W",
       "category": "W-商業與品牌奇聞",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6403"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6404",
@@ -177028,29 +177180,17 @@
       ],
       "category_code": "W",
       "category": "W-商業與品牌奇聞",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6404"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6405",
@@ -177094,29 +177234,17 @@
       ],
       "category_code": "W",
       "category": "W-商業與品牌奇聞",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6405"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6421",
@@ -177160,29 +177288,17 @@
       ],
       "category_code": "U",
       "category": "U-外星太空與未知訊號",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6421"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": true,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 U-外星太空與未知訊號",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6422",
@@ -177226,44 +177342,17 @@
       ],
       "category_code": "U",
       "category": "U-外星太空與未知訊號",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6422"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "audience": {
-        "score": 5.43,
-        "rank": 215,
-        "of": 319,
-        "click": 5.5,
-        "hook": 6.25,
-        "surprise": 6,
-        "payoff": 6,
-        "share": 4.5,
-        "comment": "愛迪生加消失的行星有點意思，但題目太長像報告，兩場烏龍不夠炸。",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/audience-20261117-two.json",
-        "base": 5.41,
-        "demand": 5.5
-      },
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": true,
-          "famous": true
-        },
-        "demand": 5.5,
-        "reason": "分類 U-外星太空與未知訊號；愛迪生人人認得",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6423",
@@ -177307,29 +177396,17 @@
       ],
       "category_code": "U",
       "category": "U-外星太空與未知訊號",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6423"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": true,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 U-外星太空與未知訊號",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6424",
@@ -177373,29 +177450,17 @@
       ],
       "category_code": "M",
       "category": "M-奇異現象與自然",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6424"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6425",
@@ -177493,29 +177558,17 @@
       ],
       "category_code": "P",
       "category": "P-預言與末日",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6441"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": true,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 P-預言與末日",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6442",
@@ -177559,29 +177612,17 @@
       ],
       "category_code": "P",
       "category": "P-預言與末日",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6442"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": true,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 P-預言與末日",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6443",
@@ -177625,29 +177666,17 @@
       ],
       "category_code": "P",
       "category": "P-預言與末日",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6443"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": true,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 P-預言與末日",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6444",
@@ -177691,29 +177720,17 @@
       ],
       "category_code": "M",
       "category": "M-奇異現象與自然",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6444"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6445",
@@ -177811,29 +177828,17 @@
       ],
       "category_code": "H",
       "category": "H-歷史懸案",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6461"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6462",
@@ -177877,29 +177882,17 @@
       ],
       "category_code": "H",
       "category": "H-歷史懸案",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6462"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6463",
@@ -177943,29 +177936,17 @@
       ],
       "category_code": "H",
       "category": "H-歷史懸案",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6463"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6464",
@@ -178063,29 +178044,17 @@
       ],
       "category_code": "G",
       "category": "G-靈異與超自然公案",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6465"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": true,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 G-靈異與超自然公案",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6501",
@@ -178129,29 +178098,17 @@
       ],
       "category_code": "W",
       "category": "W-商業與品牌奇聞",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6501"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6502",
@@ -178195,29 +178152,17 @@
       ],
       "category_code": "W",
       "category": "W-商業與品牌奇聞",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6502"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6503",
@@ -178261,29 +178206,17 @@
       ],
       "category_code": "W",
       "category": "W-商業與品牌奇聞",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6503"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6504",
@@ -178327,29 +178260,17 @@
       ],
       "category_code": "W",
       "category": "W-商業與品牌奇聞",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6504"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6505",
@@ -178393,29 +178314,17 @@
       ],
       "category_code": "W",
       "category": "W-商業與品牌奇聞",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6505"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6521",
@@ -178459,29 +178368,17 @@
       ],
       "category_code": "U",
       "category": "U-外星太空與未知訊號",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6521"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": true,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 U-外星太空與未知訊號",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6522",
@@ -178525,29 +178422,17 @@
       ],
       "category_code": "U",
       "category": "U-外星太空與未知訊號",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6522"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": true,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 U-外星太空與未知訊號",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6523",
@@ -178591,29 +178476,17 @@
       ],
       "category_code": "U",
       "category": "U-外星太空與未知訊號",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6523"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": true,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 U-外星太空與未知訊號",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6524",
@@ -178765,29 +178638,17 @@
       ],
       "category_code": "P",
       "category": "P-預言與末日",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6541"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": true,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 P-預言與末日",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6542",
@@ -178831,29 +178692,17 @@
       ],
       "category_code": "P",
       "category": "P-預言與末日",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6542"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": true,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 P-預言與末日",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6543",
@@ -178951,29 +178800,17 @@
       ],
       "category_code": "P",
       "category": "P-預言與末日",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6544"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": true,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 P-預言與末日",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6545",
@@ -179017,29 +178854,17 @@
       ],
       "category_code": "P",
       "category": "P-預言與末日",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6545"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": true,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 P-預言與末日",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6561",
@@ -179083,29 +178908,17 @@
       ],
       "category_code": "H",
       "category": "H-歷史懸案",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6561"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6562",
@@ -179149,29 +178962,17 @@
       ],
       "category_code": "H",
       "category": "H-歷史懸案",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6562"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6563",
@@ -179215,29 +179016,17 @@
       ],
       "category_code": "H",
       "category": "H-歷史懸案",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6563"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6564",
@@ -179281,29 +179070,17 @@
       ],
       "category_code": "H",
       "category": "H-歷史懸案",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6564"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6565",
@@ -179347,29 +179124,17 @@
       ],
       "category_code": "H",
       "category": "H-歷史懸案",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6565"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6601",
@@ -179413,29 +179178,17 @@
       ],
       "category_code": "W",
       "category": "W-商業與品牌奇聞",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6601"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6602",
@@ -179479,29 +179232,17 @@
       ],
       "category_code": "W",
       "category": "W-商業與品牌奇聞",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6602"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6603",
@@ -179545,29 +179286,17 @@
       ],
       "category_code": "W",
       "category": "W-商業與品牌奇聞",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6603"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6604",
@@ -179611,44 +179340,17 @@
       ],
       "category_code": "W",
       "category": "W-商業與品牌奇聞",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6604"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "audience": {
-        "score": 7.44,
-        "rank": 13,
-        "of": 319,
-        "click": 7.75,
-        "hook": 8.5,
-        "surprise": 6.75,
-        "payoff": 7.5,
-        "share": 6.75,
-        "comment": "三萬八千人逃到空地反而全滅，很震撼，但題目寫得像論文摘要。",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/audience-20261117-rest.json",
-        "base": 7.83,
-        "demand": 5.5
-      },
-      "demand": {
-        "answers": {
-          "east_asia": true,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": true
-        },
-        "demand": 5.5,
-        "reason": "日本關東大地震廣為人知",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6605",
@@ -179746,29 +179448,17 @@
       ],
       "category_code": "U",
       "category": "U-外星太空與未知訊號",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6621"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": true,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 U-外星太空與未知訊號",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6622",
@@ -179812,29 +179502,17 @@
       ],
       "category_code": "U",
       "category": "U-外星太空與未知訊號",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6622"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": true,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 U-外星太空與未知訊號",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6623",
@@ -179878,29 +179556,17 @@
       ],
       "category_code": "U",
       "category": "U-外星太空與未知訊號",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6623"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": true,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 U-外星太空與未知訊號",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6624",
@@ -179998,29 +179664,17 @@
       ],
       "category_code": "U",
       "category": "U-外星太空與未知訊號",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6625"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": true,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 U-外星太空與未知訊號",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6641",
@@ -180064,29 +179718,17 @@
       ],
       "category_code": "P",
       "category": "P-預言與末日",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6641"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": true,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 P-預言與末日",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6642",
@@ -180130,29 +179772,17 @@
       ],
       "category_code": "P",
       "category": "P-預言與末日",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6642"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": true,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 P-預言與末日",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6643",
@@ -180196,29 +179826,17 @@
       ],
       "category_code": "P",
       "category": "P-預言與末日",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6643"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": true,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 P-預言與末日",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6644",
@@ -180262,29 +179880,17 @@
       ],
       "category_code": "P",
       "category": "P-預言與末日",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6644"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": true,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 3.25,
-        "reason": "分類 P-預言與末日",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-cores.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6645",
@@ -180382,29 +179988,17 @@
       ],
       "category_code": "H",
       "category": "H-歷史懸案",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6661"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": true
-        },
-        "demand": 3.25,
-        "reason": "蒙娜麗莎人人認得",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6662",
@@ -180448,29 +180042,17 @@
       ],
       "category_code": "H",
       "category": "H-歷史懸案",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6662"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6663",
@@ -180514,29 +180096,17 @@
       ],
       "category_code": "H",
       "category": "H-歷史懸案",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6663"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6664",
@@ -180580,29 +180150,17 @@
       ],
       "category_code": "H",
       "category": "H-歷史懸案",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6664"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": false
-        },
-        "demand": 1,
-        "reason": "四問皆否",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6665",
@@ -180646,29 +180204,17 @@
       ],
       "category_code": "H",
       "category": "H-歷史懸案",
-      "selected": true,
-      "pool_status": "selected",
+      "selected": false,
+      "pool_status": "held",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N6665"
       ],
       "disposition": null,
-      "exclusion_reason": null,
+      "exclusion_reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false,
-      "demand": {
-        "answers": {
-          "east_asia": false,
-          "prophecy_ghost": false,
-          "ancient_alien": false,
-          "famous": true
-        },
-        "demand": 3.25,
-        "reason": "龐氏騙局一詞廣為人知",
-        "reviewed_on": "2026-11-17",
-        "review": "reviews/demand-20261117-rest.json"
-      }
+      "production_ready": false
     },
     {
       "id": "N6701",
@@ -192637,8 +192183,8 @@
       "production_ready": false,
       "audience": {
         "score": 5.73,
-        "rank": 180,
-        "of": 319,
+        "rank": 190,
+        "of": 329,
         "click": 6.75,
         "hook": 6,
         "surprise": 4.5,
@@ -192728,8 +192274,8 @@
       "production_ready": false,
       "audience": {
         "score": 7.2,
-        "rank": 28,
-        "of": 319,
+        "rank": 30,
+        "of": 329,
         "click": 7,
         "hook": 7.5,
         "surprise": 7,
@@ -192902,7 +192448,7 @@
       "audience": {
         "score": 7.37,
         "rank": 18,
-        "of": 319,
+        "of": 329,
         "click": 8.5,
         "hook": 8.5,
         "surprise": 7.5,
@@ -205331,8 +204877,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.77,
-        "rank": 58,
-        "of": 319,
+        "rank": 62,
+        "of": 329,
         "click": 8.25,
         "hook": 7.75,
         "surprise": 5.25,
@@ -212633,8 +212179,8 @@
       "production_ready": false,
       "audience": {
         "score": 6.97,
-        "rank": 43,
-        "of": 319,
+        "rank": 46,
+        "of": 329,
         "click": 8,
         "hook": 8.5,
         "surprise": 6.25,
@@ -222819,10 +222365,10 @@
     "method": "exact normalized questions + authored core-answer merges + lexical candidate pairs (title, finding, case key) reviewed by an editor; cross-series lexical pairs against the so-thats-why pool; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-17-curio-pool-1652",
+    "revision": "2026-11-17-curio-pool-1601",
     "reviewed_on": "2026-11-17",
-    "reason": "站主 2026-11-17 決定先隔離來源查無的題：wave61–71 入選的 187 題移到暫緩，入選核心數 1839 → 1652。",
-    "target_count": 1652,
+    "reason": "站主 2026-11-17 決定先隔離來源查無的題：wave61–71 入選的 187 題與 wave58–60 入選的 51 題移到暫緩，入選核心數 1839 → 1601。",
+    "target_count": 1601,
     "ids": [
       "F01",
       "F02",
@@ -224424,58 +223970,7 @@
       "N6362",
       "N6363",
       "N6364",
-      "N6365",
-      "N6401",
-      "N6402",
-      "N6403",
-      "N6404",
-      "N6405",
-      "N6421",
-      "N6422",
-      "N6423",
-      "N6424",
-      "N6441",
-      "N6442",
-      "N6443",
-      "N6444",
-      "N6461",
-      "N6462",
-      "N6463",
-      "N6465",
-      "N6501",
-      "N6502",
-      "N6503",
-      "N6504",
-      "N6505",
-      "N6521",
-      "N6522",
-      "N6523",
-      "N6541",
-      "N6542",
-      "N6544",
-      "N6545",
-      "N6561",
-      "N6562",
-      "N6563",
-      "N6564",
-      "N6565",
-      "N6601",
-      "N6602",
-      "N6603",
-      "N6604",
-      "N6621",
-      "N6622",
-      "N6623",
-      "N6625",
-      "N6641",
-      "N6642",
-      "N6643",
-      "N6644",
-      "N6661",
-      "N6662",
-      "N6663",
-      "N6664",
-      "N6665"
+      "N6365"
     ],
     "held": [
       {
@@ -225553,6 +225048,210 @@
       {
         "id": "N7080",
         "reason": "2026-11-17 暫緩：這一題的來源（archive.org 網址與 DOI）不存在，wave61–71 整批如此（票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6401",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6402",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6403",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6404",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6405",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6421",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6422",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6423",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6424",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6441",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6442",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6443",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6444",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6461",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6462",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6463",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6465",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6501",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6502",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6503",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6504",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6505",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6521",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6522",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6523",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6541",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6542",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6544",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6545",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6561",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6562",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6563",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6564",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6565",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6601",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6602",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6603",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6604",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6621",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6622",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6623",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6625",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6641",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6642",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6643",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6644",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6661",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6662",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6663",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6664",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
+      },
+      {
+        "id": "N6665",
+        "reason": "2026-11-17 暫緩：wave58–60 的來源查無（抽查 11 個 archive.org 條目都不存在；票 2026-11-17-so-that-s-why-waves-89）。批次檔保留；重讀真實來源、覆核後才能移回入選。"
       }
     ],
     "raw_changes": [
