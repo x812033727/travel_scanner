@@ -47,6 +47,15 @@ export function isA01CompactStory(doc) {
     && doc.target_minutes[1] === 8;
 }
 
+/** Curio H18 Flight 19: measured spoken duration of 440.93s from approved 2,300-char script. */
+export function isH18CompactCurio(doc) {
+  return doc?.slug === "curio-h18-flight-19"
+    && doc.format === "drama"
+    && doc.category === "explainer"
+    && !doc.compilation
+    && doc.look?.preset === "cute-mystery";
+}
+
 /** The owner approved a short revision of C08 only, under the existing 20-episode series. */
 export function isC08ShortStory(value) {
   return value?.slug === "story-everyday-kikkoman-c08-short-v8"
@@ -165,9 +174,10 @@ export function knowledgeDurationProblems({ doc, timeline, presented = timeline,
     problems.push("knowledge long-video checked final frame count must match the current presentation timeline at 30 fps; run assemble again");
   }
   const compactA01 = isA01CompactStory(doc);
+  const compactH18 = isH18CompactCurio(doc);
   const shortC08 = isC08ApprovedShortStory(doc);
   const shortC20 = isC20ApprovedShortStory(doc);
-  const minimumSeconds = shortC08 ? C08_SHORT_MIN_BODY_SECONDS : shortC20 ? C20_SHORT_MIN_BODY_SECONDS : compactA01 ? A01_COMPACT_BODY_SECONDS[0] : KNOWLEDGE_MIN_SECONDS;
+  const minimumSeconds = shortC08 ? C08_SHORT_MIN_BODY_SECONDS : shortC20 ? C20_SHORT_MIN_BODY_SECONDS : (compactA01 || compactH18) ? A01_COMPACT_BODY_SECONDS[0] : KNOWLEDGE_MIN_SECONDS;
   const minimumFrames = minimumSeconds * FPS;
   if (timeline.total_frames < minimumFrames) {
     problems.push(`knowledge long-video body is ${timeline.total_frames} frames (${timeline.total_frames / FPS} s); needs at least ${minimumFrames} frames (${minimumSeconds} s), excluding intro and outro`);

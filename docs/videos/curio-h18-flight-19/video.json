@@ -1,0 +1,1469 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h18-flight-19",
+  "theme": "paper",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。揭曉前刻意停一拍，問句上揚，關鍵數字與時間點放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "從頭到尾像在跟一個朋友翻一份海軍的舊檔案：開場兩句對著觀眾講、帶一點神秘；無線電那幾段帶一點緊張、像在現場聽；六點零四分那句沉下來；救援機那章轉折要亮；母親那段放輕、收著；傳說怎麼被寫出來那章帶一點傻眼；NOAA 那段輕鬆；日本那章沉穩；七點零四分之後那句很輕；結尾提問對著觀眾、乾脆。"
+  },
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "youtube": {
+    "title": "百慕達三角頭號證據：1945 年 6 架飛機為何同一晚消失？｜奇聞檔案局",
+    "description": "一九四五年十二月五日，五架美國海軍訓練機和一架救援機、一共二十七個人，同一晚從佛羅里達外海消失。為什麼這一晚，會變成「百慕達三角」最有名的證據？\n給喜歡把傳說翻回原始紀錄的人。\n\n這一集照時間順序走一遍那天下午的無線電、救援機看到的火光、海軍的調查報告與一九四七年的更正，再看「百慕達三角」這個名字是哪一年、被哪一篇文章帶紅的；最後看美國海洋暨大氣總署 NOAA 怎麼回答：那片海真的比較危險嗎？每個時間與數字的出處列在下方參考資料。\n\n本集插圖由 AI 生成，畫面中的人物與場景是示意，不是真實照片。",
+    "tags": [
+      "百慕達三角",
+      "Flight 19",
+      "奇聞檔案局",
+      "百慕達三角真相",
+      "NOAA",
+      "海軍",
+      "飛機失蹤",
+      "歷史懸案",
+      "都市傳說",
+      "未解之謎"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "Flight 19\n**去哪了？**",
+      "tag": "歷史懸案",
+      "sub": "6 架飛機 27 人一夜消失",
+      "shot": "radio-compass",
+      "layout": "e",
+      "focus": 55
+    }
+  },
+  "assets": [],
+  "sources": [
+    {
+      "title": "Naval Air Station Fort Lauderdale Museum：Flight 19 the Lost Avengers",
+      "url": "https://www.nasflmuseum.com/flight-19",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Smithsonian Magazine：How the Disappearance of Flight 19 Fueled the Legend of the Bermuda Triangle（2025-12-05）",
+      "url": "https://www.smithsonianmag.com/history/how-the-disappearance-of-flight-19-a-navy-squadron-lost-in-1945-fueled-the-legend-of-the-bermuda-triangle-180987759/",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "美國國會紀錄 2005 年第 151 卷：H. Res. 500 紀念 Flight 19 六十週年",
+      "url": "https://www.govinfo.gov/content/pkg/CRECB-2005-pt19/html/CRECB-2005-pt19-Pg26365.htm",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "NOAA National Ocean Service：What is the Bermuda Triangle?",
+      "url": "https://oceanservice.noaa.gov/facts/bermudatri.html",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Skeptoid #337：The Bermuda Triangle and the Devil's Sea",
+      "url": "https://skeptoid.com/episodes/337",
+      "checked_on": "2026-11-14"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "t005",
+      "payoff": "t043",
+      "what": "五架訓練機為什麼沒回來"
+    },
+    {
+      "setup": "t006",
+      "payoff": "t047",
+      "what": "救援機怎麼了"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t027",
+      "what": "那句「不要來找我」"
+    },
+    {
+      "setup": "t008",
+      "payoff": "t079",
+      "what": "一個下午怎麼變成魔鬼海域"
+    },
+    {
+      "setup": "t009",
+      "payoff": "t081",
+      "what": "那片海是不是比較危險"
+    },
+    {
+      "setup": "t017",
+      "payoff": "t026",
+      "what": "領隊不熟這片海"
+    },
+    {
+      "setup": "t020",
+      "payoff": "t035",
+      "what": "在哪一個轉彎出錯"
+    },
+    {
+      "setup": "t024",
+      "payoff": "t026",
+      "what": "為什麼以為在 Florida Keys"
+    },
+    {
+      "setup": "t028",
+      "payoff": "t076",
+      "what": "快三十年後多加的半句"
+    },
+    {
+      "setup": "t030",
+      "payoff": "t031",
+      "what": "事情本該結束"
+    },
+    {
+      "setup": "t038",
+      "payoff": "t039",
+      "what": "為什麼不派飛機"
+    },
+    {
+      "setup": "t044",
+      "payoff": "t046",
+      "what": "這一晚更怪的事"
+    },
+    {
+      "setup": "t055",
+      "payoff": "t056",
+      "what": "海軍怎麼交代"
+    },
+    {
+      "setup": "t064",
+      "payoff": "t065",
+      "what": "事情還沒結束"
+    },
+    {
+      "setup": "t068",
+      "payoff": "t079",
+      "what": "這四個字被拿去證明什麼"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "open-sea",
+      "chapter": "一九四五年，一個下午變成傳說",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a calm turquoise ocean under a warm late-afternoon sky, small white clouds, a faint triangle of sunlight on the water",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "你一定聽過百慕達三角：佛羅里達、百慕達和波多黎各之間那片海。",
+          "emotion": "對觀眾說，帶一點神秘"
+        },
+        {
+          "id": "t002",
+          "text": "據說飛機和船進去，就出不來。"
+        }
+      ]
+    },
+    {
+      "id": "open-famous",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small 1970s movie theater at night with a glowing empty marquee and a line of anonymous moviegoers in silhouette",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "電影拍過它、歌唱過它，連卡通都演過它。",
+          "emotion": "列舉，越講越快"
+        }
+      ]
+    },
+    {
+      "id": "open-squadron",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of five stubby 1940s navy torpedo bombers flying in loose formation over the sea at golden hour",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "可是這麼大的傳說，頭號證據只是一個下午。"
+        },
+        {
+          "id": "t005",
+          "text": "一九四五年冬天，五架海軍訓練機起飛，再也沒有回來。",
+          "emotion": "年份放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-rescue",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a large gull-winged 1940s navy flying boat flying low over a dark evening sea",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "連去找他們的救援機，也沒有回來。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "open-radio",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a 1940s radio headset hanging on a hook beside a glowing green radio dial in a dim control room",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "中間還有一句無線電，後來被全世界引用：不要來找我。",
+          "emotion": "壓低，像在講鬼故事"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses at an archive desk, lifting the lid of an old cardboard file box, eyes wide",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "今天我們就來聊聊，一個下午，是怎麼變成全世界都在怕的魔鬼海域？",
+          "emotion": "承諾，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "open-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a calm turquoise sea under gathering evening clouds, a single small boat far away on the horizon",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "那片海，真的比較危險嗎？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "era-base",
+      "chapter": "Flight 19 起飛上最後一堂課",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a 1945 Florida naval air station with palm trees, a row of parked navy planes and a white control tower in midday sun",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "時間回到一九四五年十二月，第二次世界大戰才結束三個月。"
+        }
+      ]
+    },
+    {
+      "id": "era-trainees",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of young 1945 navy trainee airmen chatting beside parked torpedo bombers under palm trees in midday sun",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "佛羅里達的 Fort Lauderdale 海軍航空站，每天都有學員飛出去練習。"
+        }
+      ]
+    },
+    {
+      "id": "era-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of young navy trainee airmen in 1940s flight suits walking across a sunny tarmac toward their planes",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "那天下午排到第十九批，所以叫 Flight 19，是一堂結業前的導航課。"
+        }
+      ]
+    },
+    {
+      "id": "era-test",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young trainee pilot's hands buckling a parachute harness beside a plane, nervous smile",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "你可以把它想成，駕訓班的最後一次路考。",
+          "emotion": "輕鬆一點"
+        }
+      ]
+    },
+    {
+      "id": "era-planes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stubby dark blue 1940s navy torpedo bomber on a tarmac, a young gunner climbing into the rear turret",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "開頭說的那五架，是 Avenger 魚雷轟炸機，一共十四個人。"
+        },
+        {
+          "id": "t015",
+          "text": "有的才十七、八歲，有的剛從太平洋打完仗回來。"
+        }
+      ]
+    },
+    {
+      "id": "era-leader",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 28-year-old 1940s navy flight instructor with short dark brown side-parted hair and a brown leather flight jacket standing beside his plane, squinting at the bright horizon, a folded chart under his arm",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "帶隊的是二十八歲的教官 Charles Taylor 上尉，飛了兩千五百多個小時。"
+        }
+      ]
+    },
+    {
+      "id": "era-new",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an unfamiliar sunlit coastline of sandbars and scattered islets seen from a plane window",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "先記住一個細節：他兩個禮拜前才從邁阿密調過來，這一帶他還不熟。",
+          "emotion": "「先記住」放慢"
+        }
+      ]
+    },
+    {
+      "id": "era-route",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pilot's gloved hand tracing a pencil route across a plain nautical chart of sea and small islands on a clipboard",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "text": "下午兩點十分起飛。往東飛到巴哈馬附近練投彈，再往北，最後轉回基地。"
+        }
+      ]
+    },
+    {
+      "id": "era-triangle",
+      "template": "shot",
+      "data": {
+        "prompt": "Top-down close-up of three pencils laid on a plain sea chart forming a neat triangle, a brass compass beside them",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "我第一次看到這條航線還愣了一下：他們要飛的，本身就是一個三角形。",
+          "emotion": "自己的反應，帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "era-plan",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a 1940s wristwatch on a pilot's sleeve beside a plane's cockpit rim, the sea glittering below",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "預定不到三個小時就回來。到底是在哪一個轉彎出錯的？"
+        }
+      ]
+    },
+    {
+      "id": "radio-cox",
+      "chapter": "我的兩個羅盤都壞了",
+      "template": "shot",
+      "data": {
+        "prompt": "Interior close-up of a 1940s cockpit radio panel with glowing dials and a headset cable, afternoon light through the canopy",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "三點四十五分左右，附近的教官 Robert Cox，耳機裡傳來一個學員的聲音："
+        },
+        {
+          "id": "t022",
+          "text": "我不知道我們在哪裡。",
+          "emotion": "引述，慌"
+        }
+      ]
+    },
+    {
+      "id": "radio-compass",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a 28-year-old 1940s navy flight instructor with short dark brown side-parted hair and a brown leather flight jacket in a cockpit wearing a leather flight helmet, frowning at two compass dials, worried eyes",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "Cox 呼叫這支隊伍，帶隊的 Taylor 回答：「我的兩個羅盤都壞了。我確定我在 Florida Keys。」",
+          "emotion": "引述，帶點慌"
+        }
+      ]
+    },
+    {
+      "id": "radio-keys",
+      "template": "shot",
+      "data": {
+        "prompt": "Aerial wide shot of a chain of small green islands scattered across shallow turquoise water under scattered clouds",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "Florida Keys 是佛羅里達最南端那串小島。"
+        },
+        {
+          "id": "t025",
+          "text": "奇怪的是，起飛才一個多小時，照航線根本飛不到那麼南。",
+          "emotion": "「奇怪的是」亮起來"
+        }
+      ]
+    },
+    {
+      "id": "radio-why",
+      "template": "shot",
+      "data": {
+        "prompt": "Aerial wide shot of scattered low Bahamas islets and pale sandbanks under afternoon haze, very similar to a chain of keys",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "航空站博物館的館長認為，關鍵是剛剛那個細節：他剛調來，可能把巴哈馬的小島看成了 Florida Keys。"
+        }
+      ]
+    },
+    {
+      "id": "radio-dont",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone navy torpedo bomber flying away from the viewer over the sea toward a hazy horizon",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "Cox 說要飛過去帶路。Taylor 的回答，就是開頭那句：不用，我知道我在哪裡了，不要來找我。"
+        }
+      ]
+    },
+    {
+      "id": "radio-later",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old reel-to-reel radio recorder on a wooden shelf, its reels still, warm dusty window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "記住這句話。快三十年後，會有人在它後面，多加半句。",
+          "emotion": "壓低，留懸念"
+        }
+      ]
+    },
+    {
+      "id": "radio-west",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the low orange sun over the sea, its light path pointing toward a thin line of distant coast",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "地面告訴他們：往西飛，朝著太陽飛，一定會碰到佛羅里達的海岸。"
+        }
+      ]
+    },
+    {
+      "id": "radio-should",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a 1940s navy radio operator in a coastal station leaning back with a relieved half smile, headset around his neck",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "照理說，事情到這裡就該結束了，對吧？",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "turn-weak",
+      "chapter": "六點剛過，他下令轉回往東",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a navy radio operator in a 1940s coastal station leaning toward a crackling speaker, one hand on a dial, worried",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "沒想到，Taylor 的聲音越來越小。他們離岸越來越遠，不是越來越近。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "turn-north",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of five navy torpedo bombers flying north over open sea, long shadows of late afternoon on the water",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "四點四十五分，Taylor 說要往北飛，先確定自己不在墨西哥灣上空。"
+        }
+      ]
+    },
+    {
+      "id": "turn-west",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of five navy torpedo bombers in tight formation banking together over a darkening sea, sun low behind them",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "五點十五分，他好像想通了：往西飛，飛到碰到海灘，或是油用完為止。"
+        }
+      ]
+    },
+    {
+      "id": "turn-together",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of five navy torpedo bombers flying wingtip to wingtip low over a darkening sea, the last light on their canopies",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "他還交代大家不要散開，油不夠了就一起迫降。"
+        }
+      ]
+    },
+    {
+      "id": "turn-east",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a 28-year-old 1940s navy flight instructor with short dark brown side-parted hair and a brown leather flight jacket in a dim cockpit at dusk, jaw set, pushing the control stick to bank the plane",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "問題來了。六點剛過，他說了最關鍵的一句：我們往東飛得不夠遠，轉回去，再往東。",
+          "emotion": "放慢，沉下來"
+        }
+      ]
+    },
+    {
+      "id": "turn-lights",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the Florida coast at dusk, a row of airfield beacons and ship lights glowing along the shore, the sea darkening",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "這時候，沿岸的機場和船正把燈點亮，等他們回家；他們卻往反方向飛。",
+          "emotion": "收著，有點難過"
+        }
+      ]
+    },
+    {
+      "id": "turn-fix",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of 1940s naval officers leaning over a large plotting table with brass dividers and a single red pin on open sea",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "差不多同時，地面終於算出大概位置：巴哈馬北方，Daytona Beach 東邊的海上。"
+        }
+      ]
+    },
+    {
+      "id": "turn-why",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses at an archive desk looking up from a closed file with a puzzled frown",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "text": "你可能會問：那為什麼不派飛機過去？",
+          "emotion": "替觀眾問"
+        }
+      ]
+    },
+    {
+      "id": "turn-ready",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a single fueled navy plane waiting alone on an empty airfield apron at dusk, its propeller still",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "其實有。基地有一架待命的飛機，Cox 落地後主動說要開它出去找。"
+        }
+      ]
+    },
+    {
+      "id": "turn-no",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of pilot gloves and a leather helmet left on a hangar bench under a hanging lamp at dusk",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "負責訓練飛行的長官說不行。他後來作證：他確信這些人在油用完以前，一定會飛回海岸。",
+          "emotion": "平平的，帶一點可惜"
+        }
+      ]
+    },
+    {
+      "id": "turn-storm",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a stormy night sea with whitecaps and heavy clouds, a faint glow of moonlight breaking through",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "天黑了，海上起風，浪越來越大。"
+        },
+        {
+          "id": "t042",
+          "text": "七點零四分，有人聽到其中一架的駕駛員 Joseph Bossi，在呼叫 Taylor。"
+        }
+      ]
+    },
+    {
+      "id": "turn-silence",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a 1940s radio speaker grille glowing faintly in a dark room, a coffee cup gone cold beside it",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "沒有人回答。那是這支飛行隊，留下的最後一句話。",
+          "emotion": "很輕，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "mariner-takeoff",
+      "chapter": "去找他們的救援機也不見了",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a large twin-engine 1940s navy flying boat with gull wings lifting off a dark river at night, spray trailing",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "但這還不是這一晚最怪的事。",
+          "emotion": "轉折，亮起來"
+        },
+        {
+          "id": "t045",
+          "text": "七點二十七分，開頭說的救援機出發了：兩架 PBM Mariner 水上飛機。"
+        }
+      ]
+    },
+    {
+      "id": "mariner-silent",
+      "template": "shot",
+      "data": {
+        "prompt": "Interior medium shot of a 1940s flying boat cabin at night, crew members in life vests bent over a lit chart table and radio",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "text": "其中一架載著十三個人。起飛不到半小時，它也從無線電裡消失了。它去哪了？"
+        }
+      ]
+    },
+    {
+      "id": "mariner-fire",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from the deck of a 1940s merchant ship at night, a sailor at the rail pointing at a tall burst of orange fire on the distant sea",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "七點五十分，附近一艘商船 Gaines Mills，看到海面竄起一團大概三十公尺高的火。"
+        }
+      ]
+    },
+    {
+      "id": "mariner-oil",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a dark oily sheen spreading over the night sea under a ship's searchlight beam",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "之後，海上漂著一大片油。"
+        }
+      ]
+    },
+    {
+      "id": "mariner-tank",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the fat gull wing and engine of a 1940s navy flying boat with a fuel cap and oil streaks, harsh work lamp light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "怎麼會燒起來？這種飛機有個外號，叫「會飛的油箱」：油載得多，又容易起火。",
+          "emotion": "解釋的口氣"
+        }
+      ]
+    },
+    {
+      "id": "mariner-search",
+      "template": "shot",
+      "data": {
+        "prompt": "Aerial wide shot of many navy planes and a small aircraft carrier spread across a vast gray-blue sea in morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "那人呢？接下來五天，是當時和平時期最大的搜救。"
+        },
+        {
+          "id": "t051",
+          "text": "光是海軍，就派出兩百四十八架飛機，還有十八艘船。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "mariner-area",
+      "template": "shot",
+      "data": {
+        "prompt": "Aerial wide shot of a vast empty ocean stretching to the horizon, tiny search planes scattered like dots across it",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "搜過的範圍超過二十萬平方英里。我換算了一下，差不多是十四個台灣。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "mariner-rafts",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1940s searcher in a seaplane's open hatch scanning the empty sea with binoculars, wind in his collar",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "結果，四天後新聞說找到六艘救生筏；官方很快又說，是看錯了。"
+        }
+      ]
+    },
+    {
+      "id": "mariner-nothing",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a calm gray sea at dawn, perfectly empty, a single searchlight beam fading into the mist",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "最後，六架飛機、二十七個人，一塊確定的殘骸都沒有找到。",
+          "emotion": "落地"
+        },
+        {
+          "id": "t055",
+          "text": "這件事，海軍要怎麼交代？"
+        }
+      ]
+    },
+    {
+      "id": "report-1946",
+      "chapter": "一位母親，替兒子討回四個字",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses at an archive desk, frowning at a thick closed gray navy report bound with string",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "隔年一月，海軍的調查報告出來了。報告承認，搜救的協調有可以改進的地方。"
+        }
+      ]
+    },
+    {
+      "id": "report-blame",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a navy fountain pen resting on a closed leather report cover on a dark desk, a single ray of cold light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "可是海軍航空訓練的最高長官寫得更直接：領隊糊塗到，近似某種精神錯亂。",
+          "emotion": "引述，冷"
+        }
+      ]
+    },
+    {
+      "id": "report-mother",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty 1940s Texas schoolroom in warm afternoon light, a folded telegram lying on the teacher's desk, the door left open",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "Taylor 的母親 Katherine 收到電報時，正在德州的教室裡上課。"
+        },
+        {
+          "id": "t059",
+          "text": "她走出教室，從此沒有再回去教書。",
+          "emotion": "放輕"
+        }
+      ]
+    },
+    {
+      "id": "report-doubt",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded telegram and a pair of reading glasses on a kitchen table at night, a cup of tea beside them",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t060",
+          "text": "她不相信。飛機一架都沒找到，飛行員也沒辦法替自己說話，憑什麼全算在他頭上？"
+        }
+      ]
+    },
+    {
+      "id": "report-fight",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a stack of handwritten letters tied with ribbon beside a fountain pen and a train ticket on a wooden table, lamplight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "她跑到佛羅里達，找搜救的人一個一個問。"
+        },
+        {
+          "id": "t062",
+          "text": "還寫信給同機那位才十八歲的無線電員的媽媽。"
+        }
+      ]
+    },
+    {
+      "id": "report-unstable",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a navy rubber stamp and an ink pad on a heavy closed file folder on a dark wooden desk",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "海軍的紀錄怎麼寫她？情緒不穩定。",
+          "emotion": "冷冷的"
+        },
+        {
+          "id": "t064",
+          "text": "你覺得事情就這樣結束了嗎？還沒有。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "report-1947",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1947 navy review board, three officers at a long wooden table under a tall window, one closing a file",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "一九四七年，在她不停申訴之後，海軍的紀錄更正委員會改了結論："
+        }
+      ]
+    },
+    {
+      "id": "report-unknown",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed navy file folder with a fresh ink stamp mark beside it on a long wooden table, tall window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "這支飛行隊，是因為「原因不明」而失蹤。",
+          "emotion": "四個字一個字一個字放"
+        }
+      ]
+    },
+    {
+      "id": "report-meaning",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a mother's hands holding a closed official envelope against her chest beside a window, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "這四個字原本很單純：沒有證據，就不能把錯算在 Taylor 頭上。"
+        }
+      ]
+    },
+    {
+      "id": "report-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses at an archive desk, leaning toward the viewer with one raised eyebrow, a closed file under her hand",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "可是你猜，這四個字後來被拿去證明了什麼？",
+          "emotion": "壓低，留懸念"
+        }
+      ]
+    },
+    {
+      "id": "legend-1950",
+      "chapter": "一九六四年，一本雜誌讓這個名字紅了",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a 1950 newsroom desk with a typewriter, a cup of coffee and a pile of folded newspapers under a hanging lamp",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "一九五〇年，美聯社把美國東南外海幾次飛機和船的失蹤寫在一起。"
+        }
+      ]
+    },
+    {
+      "id": "legend-silent",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1950 reporter at a typewriter in a smoky newsroom, pausing with a raised eyebrow, hat pushed back",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "文章還寫錯，說這支飛行隊是在完全沒有無線電的狀態下消失的。"
+        }
+      ]
+    },
+    {
+      "id": "legend-really",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses at an archive desk, holding up an old folded newspaper and rolling her eyes",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "我們剛剛才聽完它三個多小時的無線電耶。",
+          "emotion": "自己的反應，有點傻眼"
+        }
+      ]
+    },
+    {
+      "id": "legend-1964",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a fanned stack of plain pulp adventure magazines with painted covers of stormy seas and a tiny plane, on a newsstand shelf",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "一九六四年，男性雜誌《Argosy》刊出作家 Vincent Gaddis 的文章〈The Deadly Bermuda Triangle〉。"
+        }
+      ]
+    },
+    {
+      "id": "legend-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a 1960s street newsstand at dusk with magazines clipped on wires and a small crowd of anonymous readers",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "致命的百慕達三角。這個名字，就是從 Gaddis 這一篇開始流行的。",
+          "emotion": "落地"
+        }
+      ]
+    },
+    {
+      "id": "legend-patrol",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of young navy trainee airmen in 1940s flight suits gathered around an instructor at a chalkboard with a sketched compass rose",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "更怪的是，他把他們叫做失蹤的巡邏隊。可剛剛那堂導航課，根本不是巡邏。"
+        }
+      ]
+    },
+    {
+      "id": "legend-1974",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick closed hardcover book with a dark sea-blue cover lying on a bookstore table beside a tall stack of copies",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "一九七四年，作家 Charles Berlitz 寫的《The Bermuda Triangle》成了暢銷書。"
+        }
+      ]
+    },
+    {
+      "id": "legend-added",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old radio headset lying on a closed book under a green desk lamp, a curl of cigarette smoke in the air",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "那句「不要來找我」，在他的書裡多了半句：他們看起來像外星來的。",
+          "emotion": "回呼，慢"
+        },
+        {
+          "id": "t077",
+          "text": "可是紀錄裡，沒有這半句。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "legend-mariner",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone gull-winged navy flying boat silhouetted against a dark night sky over the ocean",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "剛剛那架救援機，也被說成是同一股力量帶走的；可它本來就是被派去那裡找人的。"
+        }
+      ]
+    },
+    {
+      "id": "legend-twist",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed official envelope with a wax seal lying on a stack of sensational pulp magazines, dramatic side light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "而原因不明，從一個母親替兒子討回的清白，變成了神秘力量的證據。",
+          "emotion": "有點無奈"
+        }
+      ]
+    },
+    {
+      "id": "noaa-name",
+      "chapter": "NOAA 說：這片海沒有比較常出事",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses in a modern archive reading room, holding a rolled plain sea chart and raising one eyebrow",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "回到開頭的問題，美國海洋暨大氣總署 NOAA 說得很直接：它不是官方地名，也沒有官方地圖畫範圍。"
+        }
+      ]
+    },
+    {
+      "id": "noaa-rate",
+      "template": "shot",
+      "data": {
+        "prompt": "Aerial wide shot of a busy blue ocean crossed by many cargo ships and the white contrails of passing planes",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "而且，沒有證據顯示，那裡神秘失蹤的次數，比其他又大、船又多的海域更頻繁。",
+          "emotion": "「沒有證據」放慢"
+        }
+      ]
+    },
+    {
+      "id": "noaa-storm",
+      "template": "shot",
+      "data": {
+        "prompt": "Aerial wide shot of a swirling hurricane cloud band over a deep blue ocean",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "那為什麼還是一直有船出事？大西洋的熱帶風暴和颶風，大多會經過這一帶。"
+        }
+      ]
+    },
+    {
+      "id": "noaa-current",
+      "template": "shot",
+      "data": {
+        "prompt": "Aerial wide shot of a fast dark-blue ocean current cutting past pale turquoise shallows and sandbars under shifting clouds",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "再加上流得很快的灣流、說變就變的天氣，和很多淺灘。"
+        },
+        {
+          "id": "t084",
+          "text": "我覺得，是船多、天氣又難，不是詛咒。",
+          "emotion": "旁白自己的看法，輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "close-words",
+      "chapter": "那四個字，從來沒說是海帶走的",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed gray navy file folder resting on a windowsill above a calm sea at golden hour",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "回到剛剛那份一九四七年的結論：它從來沒有說，是海把人帶走的。",
+          "emotion": "主題句，慢"
+        }
+      ]
+    },
+    {
+      "id": "close-night",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet night ocean under a sky full of stars, a gentle moon path on the water",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t086",
+          "text": "真正不知道的，是他怎麼迷的路，和剛剛那個七點零四分之後，那些年輕人經歷了什麼。",
+          "emotion": "很輕"
+        }
+      ]
+    },
+    {
+      "id": "close-sad",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses at her desk in lamplight, looking down at a closed file with a quiet sad expression",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "這比外星人無聊，卻更讓我難過。",
+          "emotion": "很輕"
+        }
+      ]
+    },
+    {
+      "id": "close-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses at her desk resting her chin on one hand and smiling at the viewer, warm lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "問你一題：如果你是那天的 Cox，長官說不准飛，你會照命令留在地上，還是自己飛出去找？",
+          "emotion": "對觀眾說"
+        }
+      ]
+    },
+    {
+      "id": "close-vote",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses at her desk raising one finger and then two fingers toward the viewer, playful smile",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "留在地上打一，飛出去打二，留言告訴我。"
+        }
+      ]
+    },
+    {
+      "id": "close-sub",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses closing an old cardboard file box at her desk with a satisfied smile, warm lamplight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t090",
+          "text": "喜歡把傳說翻回原始紀錄，就訂閱奇聞檔案局。好啦，今天的檔案就到這裡。",
+          "emotion": "乾脆，收尾"
+        }
+      ]
+    }
+  ]
+}

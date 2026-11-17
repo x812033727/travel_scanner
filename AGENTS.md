@@ -77,9 +77,11 @@ checks, CI failures, Dependabot), `web-i18n-e2e` (messages and Playwright),
 rich-gouache keyframes via built-in `generate_image` + `keyframes import --provider external --usd 0`,
 never MiniMax images; distinct 3.5-head slender `Ada` sheet at
 `docs/videos/history-curiosity/series-sheets/characters/ada/ada-canon-v2.png` and ~45%-65%
-`nobody: true` object/scene shots; `zh-TW` Gemini `Sulafat` >= 4.4 chars/s; 8-locale dubs via MiniMax;
-2x-zoom independent audit, post-assembly independent audience review fixed before Drive backup
-and `review-push`, and the lint gate that keeps them),
+`nobody: true` object/scene shots; `zh-TW` Gemini `Sulafat` >= 4.4 chars/s; default 8-locale completion
+(descriptions, dubs via MiniMax, subtitles, and thumbnails); 2x-zoom independent audit,
+post-assembly independent audience review fixed before categorized Drive backup, then advancing
+directly to publish-ready state via package, review-push --gate publish and --gate languages, and
+the lint gate that keeps them),
 `brand-story` (any 品牌故事, a `story-` slug: the owner's fixed choices, how a batch is planned,
 fact-checked and imported, and what to do when the host worker stalls),
 `minimax-h3-runpod` (H3 clips on a RunPod pod the site starts, from a paired session),
@@ -97,7 +99,8 @@ read `docs/videos/so-thats-why/look.md`,
 theatrical-light rich-gouache keyframes via built-in image generation +
 `keyframes import --provider external --usd 0`, never MiniMax images; 2.5-head chibi canonical
 sheets `chief-canon-v2.png` + `kid-canon-v2.png` strictly distinct from Curio, and ~45%-65%
-`nobody: true` mechanism/object shots; `zh-TW` Gemini `Sulafat` + `Leda`; 8-locale dubs via MiniMax;
-independent post-assembly audience review in `review/audience-review.md` with all findings fixed
-and `qa` re-passed before Google Drive backup and `review-push --gate final`). Read the matching
-skill before re-deriving a workflow from the docs.
+`nobody: true` mechanism/object shots; `zh-TW` Gemini `Sulafat` + `Leda`; default 8-locale completion
+(descriptions, dubs via MiniMax, subtitles, and thumbnails); independent post-assembly audience review
+in `review/audience-review.md` with all findings fixed and `qa` re-passed before categorized Google Drive
+backup, then advancing directly to publish-ready state via package, review-push --gate publish and
+--gate languages). Read the matching skill before re-deriving a workflow from the docs.

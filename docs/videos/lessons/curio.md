@@ -8,6 +8,24 @@
 這份會自動同步到雲端硬碟 `AI劇/奇聞檔案局/_規則與教訓/教訓/教訓.md`（docs/videos/rules-sync）。
 之前的教訓：`.agents/skills/curio-episode/references/w03-lessons.md`。
 
+## 2026-11-15 · curio-h18 · 站主定案：真實航線海圖以厚塗水粉重繪無文字版本、通聯引入廣播濾鏡與真實原音（方案 A）
+站主在 H18 討論真實地圖與外流通話時確認採用方案 A（兼顧 8 語全球發行與厚塗水粉畫風）：
+- **真實航線／位置地圖**：不貼低解析度翻拍照片或充滿文字的現代圖表，而是**嚴格考據歷史真實坐標與海圖**，以「劇場級光影 × 厚塗水粉」重繪海圖桌（泛黃海圖、羅盤、尺規、關鍵虛線航跡與箭頭），**全畫面零文字與零標籤**，讓 8 語系觀眾直觀看懂空間位置與盲航路徑。
+- **外流通話與無線電音效**：若有公有領域解密真實通聯錄音，在關鍵節拍壓低配樂淡入 2–3 秒原音；若歷史僅存筆錄而無錄音（或外語通話），在旁白唸出關鍵呼救台詞時疊加 **1940 年代老舊無線電對講機濾鏡（Radio squelch / static SFX）**，營造緊張臨場感。
+- 已升為規則：`docs/videos/lessons/curio.md`、`.agents/skills/curio-episode/SKILL.md`。
+
+## 2026-11-15 · curio-h18 · 站主定案：預設八語（文案、字幕、配音、縮圖）全數完成並直接做到可上架狀態
+站主在 H18 審查時明確定案「之後預設都是八語都要完成然後要直接做到可以上架的狀態，八語的縮圖也是；要記住規則」：
+- **預設八語全數完成，禁止中途停頓**：繁中之外的 8 語系（en、ja、ko、es、pt、id、vi、th）之文案（`upload/description.<loc>.txt`）、字幕（`captions/<loc>.srt`）、配音（MiniMax `dubs/<loc>.m4a`）與縮圖（`thumbnails/<loc>.jpg`）全部都要做完，絕不只做前三語或漏做配音／縮圖。
+- **八語縮圖全數渲染並目視檢查**：8 語系縮圖必須全部產出，並逐張檢查手機寬度字級（≥ 24 px）、排版與外語副標題避免單字孤行（orphan wrap）。
+- **直接推進至可上架狀態（Publish ＋ Languages 兩關全送）**：
+  1. 寫入 `languages.json`（8 語皆設 `metadata: true, captions: true, dub: true`）。
+  2. 跑 `captions` 產出 8 語字幕，跑 `package` 打包 final.mp4、縮圖、8 語縮圖、9 語字幕、9 語說明欄與 8 語配音軌（4/4 檢查通過）。
+  3. 執行 `review-push --gate publish`（推送上架確認包）。
+  4. 執行 `review-push --gate languages`（推送八語審核包）。
+  完成後後台狀態必須為 `publish` 與 `languages` 皆已送達（`waiting for the owner`），不可只送 `final` 就收工，讓站主在後台一次核准即可直接上架。
+- 已升為規則：`AGENTS.md`、`.agents/skills/curio-episode/SKILL.md`、`docs/videos/lessons/curio.md`、`docs/videos/lessons/explainer.md`。
+
 ## 2026-11-14 · curio-s10／s13／s23–s26-v2、w01、w02 · Claude（c14 重做收尾）
 八集都照 PR #2099（同節拍 2–3 句併一景、說明欄與縮圖新規則、八語系列後綴）與語速 4.4 重做完，八語 MiniMax 配音。這一輪學到的：
 - **先確認稿子版本**：W01、W02 在 main 上的 `video.json` 停在 11/04 舊稿，真正做成成片的稿子只在 Drive 製作檔的 `_repo/docs/videos/<slug>/`。拿舊稿併景、重錄會白花錢，而且 `status` 才會顯示「manifest 沒有圖」。重製前先跑 `status`：`keyframes drawn` 是 [x]、manifest 的 shot id 對得上 scene id，才動手。

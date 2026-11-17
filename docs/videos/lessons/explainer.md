@@ -7,6 +7,18 @@
 
 這份會自動同步到雲端硬碟兩個系列的 `_規則與教訓/教訓/解說系列共用教訓.md`（docs/videos/rules-sync）。
 
+## 2026-11-15 · 解說系列共用（奇聞＋原來如此）· 站主定案：預設八語（文案、字幕、配音、縮圖）全數完成並直接做到可上架狀態
+站主在 `curio-h18` 審查時明確定案「之後預設都是八語都要完成然後要直接做到可以上架的狀態，八語的縮圖也是；要記住規則」：
+- **預設八語全數完成，禁止中途停頓**：繁中之外的 8 語系（en、ja、ko、es、pt、id、vi、th）之文案（`upload/description.<loc>.txt`）、字幕（`captions/<loc>.srt`）、配音（MiniMax `dubs/<loc>.m4a`）與縮圖（`thumbnails/<loc>.jpg`）全部都要做完，絕不只做前三語或漏做配音／縮圖。
+- **八語縮圖全數渲染並目視檢查**：8 語系縮圖必須全部產出，並逐張檢查手機寬度字級（≥ 24 px）、排版與外語副標題避免單字孤行（orphan wrap）。
+- **直接推進至可上架狀態（Publish ＋ Languages 兩關全送）**：
+  1. 寫入 `languages.json`（8 語皆設 `metadata: true, captions: true, dub: true`）。
+  2. 跑 `captions` 產出 8 語字幕，跑 `package` 打包 final.mp4、縮圖、8 語縮圖、9 語字幕、9 語說明欄與 8 語配音軌（4/4 檢查通過）。
+  3. 執行 `review-push --gate publish`（推送上架確認包）。
+  4. 執行 `review-push --gate languages`（推送八語審核包）。
+  完成後後台狀態必須為 `publish` 與 `languages` 皆已送達（`waiting for the owner`），不可只送 `final` 就收工，讓站主在後台一次核准即可直接上架。
+- 已升為規則：`AGENTS.md`、`.agents/skills/curio-episode/SKILL.md`、`docs/videos/lessons/curio.md`、`docs/videos/lessons/explainer.md`。
+
 ## 2026-11-14 · sothatswhy-p12-qr-code／奇聞檔案局 · 鎖死兩系列不同人物造型設定圖（2.5 頭身 vs 3.5 頭身）與無人物件鏡佔比（45%–65% `nobody: true`）
 站主指出「也不一定每一個畫面要都有人；另外原來如此系列幫我確定人的造型，因為別的對話畫得怪怪的；奇聞就是另外一個造型的人，兩系列不同」。追查根因有二：(1) 舊版 `docs/videos/so-thats-why/series-sheets/` 只放了兩張早期 MiniMax `passed: false` 失敗圖（所長耳垂掛黃鉛筆像耳環、小問半閉豆豆眼＋無指圓手），且《奇聞檔案局》在 Repo 內完全沒有正式設定圖檔，導致不同對話各自憑文字生圖或漏寫頭身比，在「劇場級動畫光影」下把 Q 版角色拉成 6–7 頭身寫實大人或兩系列撞臉；(2) 早期防 MiniMax 空景亂長人臉的舊規則寫「不要大量空景、物件交給人拿」，導致代理把超過六七成的原理解釋鏡都硬塞角色站樁講話。定案如下：
 - **兩系列標準角色設定圖正式進版控並徹底分家（嚴禁混用）**：
