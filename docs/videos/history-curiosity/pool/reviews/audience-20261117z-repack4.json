@@ -1,0 +1,286 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-17",
+  "status": "TOPIC_APPEAL_REFERENCE_NOT_FINAL_CUT_REVIEW",
+  "owner_request": "站主 2026-11-17 問怎麼有效率增加 6.5 分以上的題，選「先做 1 再做 2」：先改包裝總分 6.0–6.5 的單集題。",
+  "candidates_method": {
+    "scope": "總分 6.0–6.5 的入選單集題改包裝後的複評，第 4 輪 22 題：question、hook、payoff 由未參與研究與評分的改寫編輯重寫（問句 40–110 字、一個問號），事實與來源不動，新文字的數字與專名都在原題卡裡。複評的五項平均比原分高 0.5 以上（第 1–3 輪是「較高即採用」）的 10 題採用新包裝並以這份分數為準；其餘維持原文與原分。",
+    "persona": "台灣 25–45 歲、喜歡歷史懸案／奇聞／都市傳說長片的一般觀眾",
+    "card_fields": "題目、完整問題、開場鉤子、這集會揭曉（前 260 字）、畫面",
+    "reviewers": "兩位新評審各評一次，並放進同六題錨點；不讀 repo、不上網。各自用錨點平均與基準錨點平均的差扣掉鬆緊，再取兩人平均。五項欄位是兩人的原始平均，score 是校正後的五項平均；併入需求的總分由 build 計算。",
+    "sample_anchors": {
+      "P09": [
+        8.2,
+        7.9
+      ],
+      "N384": [
+        7.3,
+        7.6
+      ],
+      "N2843": [
+        4.1,
+        4.2
+      ],
+      "N2181": [
+        6.0,
+        6.1
+      ],
+      "N3266": [
+        5.8,
+        4.9
+      ],
+      "N142": [
+        6.5,
+        7.2
+      ]
+    },
+    "baseline_anchor_mean": 6.858,
+    "sample_offsets": {
+      "zr4-a": -0.51,
+      "zr4-b": -0.6
+    },
+    "caveat": "第 4 輪起每批除了六題錨點，另放 8 題剛評過、沒改動的對照題，用錨點與對照題的現有分數一起校正；N2501 的 answer_target 是一段覆核修訂註記而不是答案，題卡本身待修，不列入。",
+    "not_adopted": {
+      "N426": {
+        "previous": 6.68,
+        "rescored": 6.51
+      },
+      "N2905": {
+        "previous": 7.12,
+        "rescored": 6.86
+      },
+      "N5901": {
+        "previous": 6.87,
+        "rescored": 6.46
+      },
+      "N3022": {
+        "previous": 6.77,
+        "rescored": 7.16
+      },
+      "N6062": {
+        "previous": 7,
+        "rescored": 5.96
+      },
+      "N2304": {
+        "previous": 6.91,
+        "rescored": 6.91
+      },
+      "N205": {
+        "previous": 7.06,
+        "rescored": 7.31
+      },
+      "N702": {
+        "previous": 7.06,
+        "rescored": 7.41
+      },
+      "N6344": {
+        "previous": 6.78,
+        "rescored": 7.01
+      },
+      "N1381": {
+        "previous": 6.9,
+        "rescored": 6.86
+      },
+      "N1824": {
+        "previous": 6.65,
+        "rescored": 6.86
+      },
+      "N509": {
+        "previous": 6.66,
+        "rescored": 6.61
+      }
+    }
+  },
+  "candidates": [
+    {
+      "id": "N5741",
+      "rank": 1,
+      "of": 400,
+      "score": 8.91,
+      "raw": 8.35,
+      "click": 8.5,
+      "hook": 8.5,
+      "surprise": 7.5,
+      "payoff": 9.0,
+      "share": 8.25,
+      "comment": "皇儲設機關抓假鬼，靈媒穿襪子逃走，畫面感滿分超想看",
+      "previous": {
+        "score": 7.12,
+        "comment": "皇儲設機關活捉扮鬼靈媒很爽，但題目長到看不完。",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "把機關細節收成「門頂彈簧＋鎖在門後的皮靴」一個畫面，雙關妙語移到 payoff。"
+      }
+    },
+    {
+      "id": "N5622",
+      "rank": 2,
+      "of": 400,
+      "score": 8.56,
+      "raw": 8.0,
+      "click": 8.0,
+      "hook": 8.5,
+      "surprise": 7.75,
+      "payoff": 8.25,
+      "share": 7.5,
+      "comment": "魔術師變出鬼還輸官司，陪審團進戲院、靈媒跳窗都精彩",
+      "previous": {
+        "score": 6.61,
+        "comment": "華萊士出庭替鬼作證、陪審團進戲院驗貨很鬧，但題目亂成一團。",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "只留「演出來了卻倒賠 75 英鎊」這個離奇結局當問題，人名、年份與靈媒前科留給正片。"
+      }
+    },
+    {
+      "id": "N5745",
+      "rank": 3,
+      "of": 400,
+      "score": 8.36,
+      "raw": 7.8,
+      "click": 7.75,
+      "hook": 8.0,
+      "surprise": 8.0,
+      "payoff": 8.0,
+      "share": 7.25,
+      "comment": "預言拆巴士底的書竟主張燒書禁咖啡，烏托邦變恐怖很帶勁",
+      "previous": {
+        "score": 6.81,
+        "comment": "預言巴士底倒塌的烏托邦竟然燒書禁咖啡，反差夠大",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "拿掉譯者改書名、主角歲數等枝節，只留「預言巴士底 vs. 燒書禁咖啡」一組反差。"
+      }
+    },
+    {
+      "id": "N3442",
+      "rank": 4,
+      "of": 400,
+      "score": 8.21,
+      "raw": 7.65,
+      "click": 8.0,
+      "hook": 7.75,
+      "surprise": 7.75,
+      "payoff": 7.25,
+      "share": 7.5,
+      "comment": "天上掉錨、船員在空中游泳，畫面太奇幻，一定點",
+      "previous": {
+        "score": 7.05,
+        "comment": "天上掉下船錨的開場超有畫面，可惜後面是版本比對",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "觀眾嫌後段只是版本比對，題目改問故事本身最怪的一點（在空氣裡會淹死），payoff 把「空氣就是水」的讀法放進去。"
+      }
+    },
+    {
+      "id": "N1241",
+      "rank": 5,
+      "of": 400,
+      "score": 8.01,
+      "raw": 7.45,
+      "click": 7.5,
+      "hook": 7.25,
+      "surprise": 7.25,
+      "payoff": 7.75,
+      "share": 7.5,
+      "comment": "送戰象給林肯原來是誤會，信的日期一翻就破，乾淨俐落",
+      "previous": {
+        "score": 6.6,
+        "comment": "送戰象給林肯很可愛，拆穿後有點掃興但過程有趣",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "題目改問「信寫好時還沒開戰、收信人不是林肯」，出處年份與書名移到 payoff。"
+      }
+    },
+    {
+      "id": "N5223",
+      "rank": 6,
+      "of": 400,
+      "score": 7.76,
+      "raw": 7.2,
+      "click": 7.25,
+      "hook": 7.5,
+      "surprise": 7.5,
+      "payoff": 7.0,
+      "share": 6.75,
+      "comment": "預言是有人故意做紅衣嚇國王，惡作劇版應驗很有梗",
+      "previous": {
+        "score": 6.66,
+        "comment": "為了嚇國王真的去做紅衣服很妙，但題目一長串出處把人勸退。",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "題目只留「聽到預言的人自己去做紅衣服」這一個反常點，出處串與年份全部移到正片。"
+      }
+    },
+    {
+      "id": "N5723",
+      "rank": 7,
+      "of": 400,
+      "score": 7.71,
+      "raw": 7.15,
+      "click": 7.25,
+      "hook": 7.0,
+      "surprise": 6.75,
+      "payoff": 8.0,
+      "share": 6.75,
+      "comment": "每天早四分鐘的雜訊通到銀河中心，結局還有點心酸",
+      "previous": {
+        "score": 6.97,
+        "comment": "輪胎木馬天線聽到銀河很浪漫，但開場把結局講完了",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "題目只問「提早 4 分鐘為什麼指向銀河」；開場不再把冷遇與早逝的結局講完，改停在那道來源不明的嘶嘶聲。"
+      }
+    },
+    {
+      "id": "N4761",
+      "rank": 8,
+      "of": 400,
+      "score": 7.56,
+      "raw": 7.0,
+      "click": 7.5,
+      "hook": 7.0,
+      "surprise": 7.0,
+      "payoff": 6.75,
+      "share": 6.75,
+      "comment": "從小看的跨港巨像竟是中世紀聽來的，想知道，但題目有點繞",
+      "previous": {
+        "score": 6.86,
+        "comment": "跨港巨像原來是聽來的，顛覆印象，後半歌羅西太細",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "拿掉古代作者名與歌羅西的細節，題目只對比「古人只寫它倒下」與「聽來的跨港」。"
+      }
+    },
+    {
+      "id": "N524",
+      "rank": 9,
+      "of": 400,
+      "score": 7.46,
+      "raw": 6.9,
+      "click": 7.0,
+      "hook": 7.5,
+      "surprise": 6.5,
+      "payoff": 7.0,
+      "share": 6.5,
+      "comment": "外星石球被切半找黃金很吸引人，量法細節稍微乾",
+      "previous": {
+        "score": 6.91,
+        "comment": "完美石球其實沒量完，古文明謎題我會點",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "小修：加進「外星人留下」這個觀眾聽過的說法；開場改用「藏金迷信害石球被切半」。"
+      }
+    },
+    {
+      "id": "N174",
+      "rank": 10,
+      "of": 400,
+      "score": 7.31,
+      "raw": 6.75,
+      "click": 7.5,
+      "hook": 7.0,
+      "surprise": 5.25,
+      "payoff": 7.0,
+      "share": 7.0,
+      "comment": "大家都聽過的謠言所以會點，但早知道是假的，驚喜有限",
+      "previous": {
+        "score": 6.66,
+        "comment": "愛因斯坦數學不及格是假的早聽過，但看考卷不錯",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "觀眾說破解早聽過，題目改成追問「謠言從哪一次考試來」，開場用考卷上老師的批語。"
+      }
+    }
+  ]
+}
