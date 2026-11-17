@@ -36,8 +36,11 @@ hantian-yang, hantian-shou, shanjiao-qu-ye, then gucang-wai on the picked hantia
 round-1 picks were filed; the round-1 picks moved some of them (see --r2 and --r3 below).
 
 Round 2 (--r2, written 2026-11-17 after the round-1 picks were filed; live-action/screen-test-e031-e040-r1-picks.md):
-11 pictures x seeds 37039/37040 = 22 jobs, OUT_DIR/r2.json, images expected in OUT_DIR/out-r2/ (st31r2.sh).
-- 9 retakes of round-1 REDOs, same ids (none of them is in refs-live):
+12 pictures x seeds 37039/37040 = 24 jobs, OUT_DIR/r2.json, images expected in OUT_DIR/out-r2/ (st31r2.sh).
+- 10 retakes of round-1 REDOs, same ids (none of them is in refs-live):
+  * prop-zaohongma-l1 as an edit of OUT_DIR/out/prop-zaohongma-l1-37037.png, the only seed the no-star rerun made
+    (37038 timed out twice): the horse is kept, the modern English saddle on its quilted pad becomes a plain old-style
+    saddle on a square felt cloth, and the pale line down the front of the face goes;
   * two one-change edits of a round-1 seed that was right except for one thing: diaoqi-portrait-l1 from
     OUT_DIR/out/diaoqi-portrait-l1-37037.png (face, hair, light kept; the fresh red cut becomes a long pale healed scar from
     the brow to the cheek, and the knot-button tunic with the red sash becomes a crossed-collar tunic with a rope belt: two
@@ -412,6 +415,23 @@ if ROUND == 2:
                      NEG + NIGHT_NEG + ", hanging lantern, glass lantern, hurricane lamp, kerosene lamp, oil lantern with "
                                        "glass, chain, hook, bracket arm, candles, torches, many lamps", 1312, 736,
                      "one change of round-1 seed 37038"))
+    # prop-zaohongma-l1: the no-star rerun of round 1 made only 37037 (37038 timed out twice, 2026-11-17 20:00). 37037 has
+    # the right horse (side view, red-brown all over, mane and tail the same, close to e930 s36 take 9301101) but a modern
+    # English riding saddle on a quilted saddle pad, and a pale line along the front of the face; the edit keeps the horse.
+    horse2 = ("Image 1 is a photograph of one chestnut-red horse standing side-on in a plain grey photo studio: keep exactly "
+              "everything in it - the camera position and the framing, the whole horse from the tips of its ears to its "
+              "hooves, its pose, its glossy red-brown coat, its red-brown mane and tail, its dark hooves, the dark brown "
+              "leather bridle and reins, the grey backdrop, the soft light and the shadow under it. Change only the saddle "
+              "and the face: the saddle is one plain dark brown leather saddle of an old Chinese style, with a high rounded "
+              "front and a high rounded back, sitting on one plain dark brown felt cloth cut square, plain iron stirrups "
+              "hanging on plain dark leather straps; the whole face from the forelock to the nose is the same even "
+              "chestnut red as the neck." + KEEP_TAIL)
+    pictures.append(("prop-zaohongma-l1", "e038 c20", r1_seed("prop-zaohongma-l1", 37037), horse2,
+                     "3D render, CGI, game render, plastic, cartoon, anime, illustration, painting, toy horse, statue, text, "
+                     "writing, watermark, logo, people, rider, person, hands, English saddle, modern riding saddle, quilted "
+                     "saddle pad, saddle pad with piping, white star, blaze, white stripe on the face, white socks, black "
+                     "mane, black tail, tassels, bells, red ribbons, decorations, armour, cropped legs, cropped head, extra "
+                     "legs, black bars, border", 1312, 736, "one change of round-1 seed 37037"))
     # jingkeng: an edit of the filed dry field (eye height, real enough) instead of a fresh draw.
     jingkeng = ("Image 1 is a photograph of dry farm fields: keep exactly everything in it - the camera position, the dry "
                 "cracked earth of the fields and the low earth ridge across them, the big willow tree on the right, the "

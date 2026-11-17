@@ -13,7 +13,7 @@
 | 1 | `diaoqi-portrait-l1` | **REDO** | 37037 方臉濃眉、年紀對、跟二牛分得開，但疤是一道**新的紅色割傷**，只在顴骨一小段（規格：淡色舊疤從左眉骨斜到左顴骨），短褐是**盤扣斜襟**加紅腰帶、無袖毛邊；37038 臉年輕，褐色交領、髮髻、臉型都跟 `erniu-portrait-l1` 太像（同篇同框會撞臉），疤一樣是新紅傷。第二輪改寫：以 37037 為底圖編輯（臉、髮、光、灰底不動），改成「one long old scar, healed smooth and paler than the skin around it, a single slightly raised line that starts at the outer end of his left eyebrow and runs down across his left cheekbone to the middle of his cheek」與「a ragged earth-brown hemp tunic with a crossed collar wrapped left over right and tied shut with a plain rope belt, short ragged sleeves」；負面加 fresh wound、blood、red cut、knot buttons、frog buttons、red sash、sleeveless。不行就灰底重畫，人寫三十八歲、風吹日曬的粗皮膚、眼角深紋、粗脖子（跟二牛的年輕光臉分開） |
 | 2 | `baidaifu-portrait-l1` | **37037** | 寫實照片感、白髮小髻、白鬚修到下巴（跟韓伯垂胸長鬚、鄭伯灰鬚分得開）、眼神亮。毛病：衣服是米白絎縫**立領盤扣**短衣（沒有外面那件背心，像襖不像長衫；立領盤扣定妝照小禾、鄭伯也有，接受）；臉比「清瘦」圓；**嘴角微微上揚**，嚴肅的鏡（第 39 集救人）照第 1–30 集的做法寫 `lips pressed together`，草稿照笑就 `drop_pictures`。37038 交領對、鬍子尖長過下巴，但整張偏 3D 塑膠皮膚，不用 |
 | 3 | `duizhang-portrait-l1` | **37037** | 兩個種子同一張臉；37037 寫實、黑甲紅釘、盔頂一撮紅纓、內襯黑底暗花（放大看是布紋，沒有字）；37038 內襯是金色捲雲紋（大片花紋會長假字）、偏 CG。盔兩側有護耳片，臉露在外面，接受。跟錢員外（八字鬍、圓胖、黑帽）分得開 |
-| 4 | `prop-zaohongma-l1` | **跳過** | 正在重畫不帶白星的版本（第 30 集 s36 挑 9301101）；舊的白星版在 `../star/`，不用。兩張新 PNG 出來後另挑 |
+| 4 | `prop-zaohongma-l1` | **REDO**（以 37037 為底只改馬鞍與臉） | 第一輪的白星版移到 `../star/`、不用。不帶白星的重畫（2026-11-17 19:19–20:00）**只出了 37037**，37038 兩次都卡到 30 分鐘逾時，VM 已放掉。37037 跟第 30 集 s36 的 9301101 是同一匹：全身紅棕、鬃尾同色、深棕轡頭（顏色比 s36 略深紅），站姿正側面、四蹄著地；但鞍是**現代英式馬鞍**加一塊絎縫鞍墊（滾邊、格紋），臉前緣額頭到鼻樑有一道淺色細線，放大看像白鼻樑的邊。第二輪改寫（底圖 37037，馬不動）：「the saddle is one plain dark brown leather saddle of an old Chinese style, with a high rounded front and a high rounded back, sitting on one plain dark brown felt cloth cut square, plain iron stirrups…; the whole face from the forelock to the nose is the same even chestnut red as the neck」；負面加 English saddle、quilted saddle pad、white star、blaze、white stripe on the face |
 | 5 | `prop-changqiang-l1` | **37038** | 槍頭完整、素鐵、沒有纓，素木槍桿，地板較像實拍；槍尾出了左緣（參考圖只管形狀，接受）。37037 槍頭被右緣切掉、地板像貼圖 |
 | 6 | `set-xujia-yuan-han-l1` | **37038** | 只改了牆外：乾裂黃土、幾根枯桿，院子、屋、樹、井、木板、兩個陶罐跟底圖一樣（37037 多一塊木板、院門外多一塊石板地、整張更橘）。裂土塊大而規則、有點像鋪石，偏 CG（底圖本來就偏 CG）。佈局沒變，`-dong-*` 的裁切直接套用 |
 | 7 | `set-ganxi-l1` | **37038** | 溪床是一塊塊乾裂泥板、縫是黑的，放大看讀得出乾泥；木板橋、柳樹、兩岸不變。37037 的溪床變成六角形石板步道。毛病：溪床跟岸幾乎齊平、沒有「只剩石頭」；右岸金黃稻田照舊（底圖不變，第 31 集 c31 寫午後熱氣） |
@@ -42,19 +42,19 @@
 
 **程式已寫（2026-11-17）**：`screen-test-e031-e040.py --r2`（清單 `OUT_DIR/r2.json`、提示詞 `OUT_DIR/prompts-r2/`、出圖 `OUT_DIR/out-r2/`、比較圖 `--r2 --sheet` → `sheets/r2-NN.jpg`），
 跑法 scratchpad `st31r2.sh`（照 `st31r1.sh`：session `zt-live2`、每次只送還沒出圖的、一次加重試一次、放掉 VM、最後出比較圖）。
-`check_images_manifest.py`：0 錯誤、2 警告（刁七的直式畫布，跟第一輪一樣）；`DRY=1` 跑過，22/22 支待做、沒有開 VM。
+`check_images_manifest.py`：0 錯誤、2 警告（刁七的直式畫布，跟第一輪一樣）；`DRY=1` 跑過，24/24 支待做、沒有開 VM。
 第一輪的清單照跑過的留著；第一輪挑定的圖歸檔後，**第一輪不能再重新產生**（程式拒絕 refs-live 裡已有的 id），`--sheet` 照舊能用。
 
-第二輪（11 張 × 種子 37039／37040＝22 支）：
-- 以第一輪的種子為底只改那一處：`diaoqi-portrait-l1`（`out/diaoqi-portrait-l1-37037.png`：臉、髮、光不動，改疤與衣襟腰帶）、`set-gucang-ye-l1`（`out/set-gucang-ye-l1-37038.png`：吊著的玻璃燈換成柱上鐵片托著的陶油燈）。
+第二輪（12 張 × 種子 37039／37040＝24 支）：
+- 以第一輪的種子為底只改那一處：`prop-zaohongma-l1`（`out/prop-zaohongma-l1-37037.png`：馬不動，現代英式鞍與絎縫鞍墊換成老式素皮鞍加方氈，臉上那道淺線去掉）、`diaoqi-portrait-l1`（`out/diaoqi-portrait-l1-37037.png`：臉、髮、光不動，改疤與衣襟腰帶）、`set-gucang-ye-l1`（`out/set-gucang-ye-l1-37038.png`：吊著的玻璃燈換成柱上鐵片托著的陶油燈）。
 - 以挑定的 `set-hantian-l1` 為底：`set-jingkeng-l1`（只加一排井坑、土堆、竹筐、橫木與麻繩）、`set-hantian-yang-l1`、`set-hantian-shou-l1`（田埂前面那塊田灌水插秧／金黃稻穗，田埂後面照舊乾裂）。
 - 灰底重畫 6 張：`set-shangyou-ba-l1`、`set-shentan-l1`、`set-cunkou-l1`、`set-shanjiao-qu-l1`、`set-guandao-ye-l1`、`set-yiguan-men-ye-l1`。第一輪的提示詞其實已經寫了大部分規格，模型照樣畫成空拍、CG、魚眼，
   所以第二輪換了鏡頭句（`REAL_LENS`：「站在地上的人、眼睛高度、鏡頭朝前水平」），負面詞每張都加空拍、俯視、3D 插畫、概念圖、遊戲場景、過飽和、暗角，再加上表裡各張的毛病。
-- 重畫的 id 不變、仍是 l1（第一輪沒歸檔）。`prop-zaohongma-l1` 見下。
+- 重畫的 id 不變、仍是 l1（第一輪沒歸檔）。
 
 第三輪（`--r3`，3 張 × 2＝6 支，`r3.json`、`out-r3/`；`ROUND=3 bash st31r2.sh`）：`set-shentan-gongdi-l1`（底圖 `set-shentan-l1`）、`set-shanjiao-qu-ye-l1`（底圖 `set-shanjiao-qu-l1`）、`set-gucang-wai-l1`（底圖 `set-hantian-yang-l1`）。
 程式已寫；底圖還沒歸檔前它會停下來說缺哪張（用假底圖試過：6 支、0 錯誤）。第二輪還不行的重畫再加進第三輪。
 之後免費：`set-shentan-qu-l1`、`set-gucang-men-ye-l1`、各張的裁切。
 
 時程：第 31 集第二場要的 `-han`、乾溪床已經有，**壩（`set-shangyou-ba-l1`）還沒有，第 31 集 c32–c41 拍之前第二輪要跑完**；第 32 集要井坑、祠堂（祠堂已有）；第 33–34 集要水車。
-第二輪跟第一輪的馬重畫用同一個 session `zt-live2`：**等 `st31r1.sh` 那次重畫跑完、VM 放掉再跑**。
+第一輪的馬重畫 2026-11-17 20:00 收工（37/38，VM 已放掉），session `zt-live2` 空著，可以跑第二輪。
