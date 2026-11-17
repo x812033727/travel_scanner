@@ -176,7 +176,7 @@ VEIL_BLOWN = ("a long strip of soft, half-transparent pale grey gauze hangs from
               "free end blown out past her left cheek and shoulder in the wind, her nose, mouth and chin bare from the first frame")
 VEIL_LOOSE = "the loose strip of pale grey gauze"
 GAUZE_KNEE = "a folded square of pale grey gauze on her knee"
-ERNIU = "Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, sweat on his brow"
+ERNIU = "Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, his face flushed red from the sun"  # rule 12: no sweat on the skin (the bible: 臉曬得發紅)
 HOE = "one hoe with a plain wooden handle and an iron blade"
 QIAN = ("Qian Yuanwai, short and portly with a round face and a thin eight-shaped moustache, in his dark gold silk robe with "
         "roundel patterns, the front of the robe plain brocade, three gold rings on his fingers")
