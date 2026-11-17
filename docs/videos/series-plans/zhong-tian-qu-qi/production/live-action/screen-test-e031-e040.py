@@ -38,9 +38,10 @@ round-1 picks were filed; the round-1 picks moved some of them (see --r2 and --r
 Round 2 (--r2, written 2026-11-17 after the round-1 picks were filed; live-action/screen-test-e031-e040-r1-picks.md):
 12 pictures x seeds 37039/37040 = 24 jobs, OUT_DIR/r2.json, images expected in OUT_DIR/out-r2/ (st31r2.sh).
 - 10 retakes of round-1 REDOs, same ids (none of them is in refs-live):
-  * prop-zaohongma-l1 as an edit of OUT_DIR/out/prop-zaohongma-l1-37037.png, the only seed the no-star rerun made
-    (37038 timed out twice): the horse is kept, the modern English saddle on its quilted pad becomes a plain old-style
-    saddle on a square felt cloth, and the pale line down the front of the face goes;
+  * prop-zaohongma-l1 drawn fresh on the grey canvas again: the no-star rerun made only 37037 (37038 failed on a Colab
+    notebook glitch) and 37037 has a modern English saddle on a quilted pad, modern stirrups and a small white mark on
+    the forehead; the tack is now an old plain Chinese country saddle and a plain bridle, the coat matched to e930 s36
+    take 9301101 (red-brown all over, face, mane and tail included);
   * two one-change edits of a round-1 seed that was right except for one thing: diaoqi-portrait-l1 from
     OUT_DIR/out/diaoqi-portrait-l1-37037.png (face, hair, light kept; the fresh red cut becomes a long pale healed scar from
     the brow to the cheek, and the knot-button tunic with the red sash becomes a crossed-collar tunic with a rope belt: two
@@ -415,23 +416,32 @@ if ROUND == 2:
                      NEG + NIGHT_NEG + ", hanging lantern, glass lantern, hurricane lamp, kerosene lamp, oil lantern with "
                                        "glass, chain, hook, bracket arm, candles, torches, many lamps", 1312, 736,
                      "one change of round-1 seed 37038"))
-    # prop-zaohongma-l1: the no-star rerun of round 1 made only 37037 (37038 timed out twice, 2026-11-17 20:00). 37037 has
-    # the right horse (side view, red-brown all over, mane and tail the same, close to e930 s36 take 9301101) but a modern
-    # English riding saddle on a quilted saddle pad, and a pale line along the front of the face; the edit keeps the horse.
-    horse2 = ("Image 1 is a photograph of one chestnut-red horse standing side-on in a plain grey photo studio: keep exactly "
-              "everything in it - the camera position and the framing, the whole horse from the tips of its ears to its "
-              "hooves, its pose, its glossy red-brown coat, its red-brown mane and tail, its dark hooves, the dark brown "
-              "leather bridle and reins, the grey backdrop, the soft light and the shadow under it. Change only the saddle "
-              "and the face: the saddle is one plain dark brown leather saddle of an old Chinese style, with a high rounded "
-              "front and a high rounded back, sitting on one plain dark brown felt cloth cut square, plain iron stirrups "
-              "hanging on plain dark leather straps; the whole face from the forelock to the nose is the same even "
-              "chestnut red as the neck." + KEEP_TAIL)
-    pictures.append(("prop-zaohongma-l1", "e038 c20", r1_seed("prop-zaohongma-l1", 37037), horse2,
-                     "3D render, CGI, game render, plastic, cartoon, anime, illustration, painting, toy horse, statue, text, "
-                     "writing, watermark, logo, people, rider, person, hands, English saddle, modern riding saddle, quilted "
-                     "saddle pad, saddle pad with piping, white star, blaze, white stripe on the face, white socks, black "
-                     "mane, black tail, tassels, bells, red ribbons, decorations, armour, cropped legs, cropped head, extra "
-                     "legs, black bars, border", 1312, 736, "one change of round-1 seed 37037"))
+    # prop-zaohongma-l1: the no-star rerun of round 1 made only 37037 (37038 failed on a Colab notebook glitch,
+    # 2026-11-17 20:00), and 37037 is not usable (coordinator): a modern English saddle on a quilted pad with modern
+    # stirrups, and a small white mark on the forehead. Redrawn fresh on the grey canvas, its tack written as an old plain
+    # Chinese country saddle, its coat matched to the e930 s36 take 9301101 (a bright chestnut red-brown all over).
+    horse2 = (CANVAS + "A real photograph of one real horse standing in a plain mid-grey photo studio, the whole horse in "
+              "the frame from the tips of its ears to its four hooves, seen exactly from the side, its head to the left: "
+              "a strong chestnut horse with a glossy bright red-brown coat all over, its forehead, face and nose the "
+              "same even red-brown as its neck and body, its mane and tail the same red-brown, dark hooves; a plain dark "
+              "leather bridle of plain narrow straps and plain reins, the leather smooth and unadorned; on its back an "
+              "old plain Chinese country saddle, a simple wooden-tree saddle under one plain dark leather cover with a "
+              "low rounded front and back, one plain dark felt cloth cut square under it, simple round iron ring "
+              "stirrups hanging on plain dark leather straps; it stands calmly with all four hooves on the floor, its "
+              "weight even, its ears forward. The plain mid-grey backdrop runs behind it and under its hooves, soft even "
+              "studio light, a soft shadow under the horse. Style: a photorealistic live-action photograph of a real "
+              "horse for a Chinese historical costume drama, a normal 50mm lens at the height of the horse's shoulder, "
+              "natural perspective, real coat, hair, leather and felt textures, sharp focus; a clean natural film image "
+              "that fills the whole frame edge to edge.")
+    pictures.append(("prop-zaohongma-l1", "e038 c20", grey_s, horse2,
+                     "3D render, CGI, game render, plastic, glossy plastic coat, cartoon, anime, illustration, painting, "
+                     "toy horse, statue, text, writing, watermark, logo, people, rider, person, hands, English saddle, modern "
+                     "riding saddle, quilted saddle pad, saddle pad with piping, modern stirrups, metal studs, buckles with "
+                     "shine, brass fittings, white star, blaze, white stripe on the face, white mark on the forehead, white "
+                     "socks, white legs, black mane, black tail, grey horse, white horse, black horse, two horses, foal, "
+                     "tassels, bells, red ribbons, decorations, armour, rearing, galloping, cropped legs, cropped head, extra "
+                     "legs, five legs, black bars, border, outdoor field, fence", 1312, 736,
+                     "fresh prop on the grey canvas, round-2 tack"))
     # jingkeng: an edit of the filed dry field (eye height, real enough) instead of a fresh draw.
     jingkeng = ("Image 1 is a photograph of dry farm fields: keep exactly everything in it - the camera position, the dry "
                 "cracked earth of the fields and the low earth ridge across them, the big willow tree on the right, the "
