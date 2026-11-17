@@ -11,13 +11,13 @@ rm -rf $E/segments-v4
 stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=os.path.getmtime(e+'/picks.json');print(' '.join(s for s in p if not os.path.exists(f'{e}/clips/{s}-t1.mp4') or os.path.getmtime(f'{e}/clips/{s}-t1.mp4')<t))")
 [ -z "$stale" ] || { echo "staging (stale: $stale)"; python3 $P/live-action/stage.py 23 || exit 1; }
 # e923 trims and seeds the edit table assumes (edit-dh-e923-live.json _note): picks.json as refine-prep.py 23 builds it from
-# picks-merged.tsv and fix1/review-picks.tsv (first cut: no review3-trims.tsv yet; when one is written, run in
-# colab/runs/e923-live: refine-prep.py 23 picks-merged.tsv fix1/review-picks.tsv review3-trims.tsv, then stage.py 23, and
-# update this table) -- the fix1 retakes s17 (9231202), s31 (9231201) and s38 (9231201). Whole frames: a start rounded DOWN
+# picks-merged.tsv, fix1/review-picks.tsv and review3-trims.tsv (run in colab/runs/e923-live: refine-prep.py 23
+# picks-merged.tsv fix1/review-picks.tsv review3-trims.tsv, then stage.py 23) -- the fix1 retakes s17 (9231202), s31
+# (9231201) and s38 (9231201); review3-trims.tsv (first cut) shortens the silent tails of s10 s13 s17 s19 s20 s21 s35. Whole frames: a start rounded DOWN
 # and an end-before rounded UP to 3 decimals, tolerance 0.001; 0 = no end. Warn (not stop) if picks.json differs.
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
-want={'s01':(1.833,6.584),'s02':(0.5,2.959),'s03':(0,4.417),'s04':(0.5,3),'s05':(1,6.584),'s06':(2,4.459),'s07':(1.75,6.584),'s08':(1.833,6.584),'s09':(0.708,6.584),'s10':(0,4.5),'s11':(0,2.5),'s12':(1.208,6.584),'s13':(0,6.584),'s13b':(0,4.5),'s14':(0,5.584),'s15':(0,4.5),'s16':(0.958,6.584),'s17':(0.5,6.584),'s18':(0,4.417),'s19':(0.5,6.584),'s20':(0,7),'s21':(0,6.584),'s22':(0,5),'s23':(1.083,6.584),'s24':(0,4.459),'s25':(0,5.792),'s26':(1.625,6.584),'s27':(0,5.042),'s28':(0,6.584),'s29':(0,4.625),'s30':(1.625,6.584),'s31':(1,6.584),'s32':(1,6.584),'s33':(0,3.709),'s34':(0.875,6.584),'s35':(0.25,5.167),'s36':(0,6),'s37':(0,6.584),'s38':(0,6.584),'s39':(0.75,3.25),'s40':(0,8)}
+want={'s01':(1.833,6.584),'s02':(0.5,2.959),'s03':(0,4.417),'s04':(0.5,3),'s05':(1,6.584),'s06':(2,4.459),'s07':(1.75,6.584),'s08':(1.833,6.584),'s09':(0.708,6.584),'s10':(0,4.042),'s11':(0,2.5),'s12':(1.208,6.584),'s13':(0,5.875),'s13b':(0,4.5),'s14':(0,5.584),'s15':(0,4.5),'s16':(0.958,6.584),'s17':(0.5,5.292),'s18':(0,4.417),'s19':(0.5,6),'s20':(0,6.5),'s21':(0,6),'s22':(0,5),'s23':(1.083,6.584),'s24':(0,4.459),'s25':(0,5.792),'s26':(1.625,6.584),'s27':(0,5.042),'s28':(0,6.584),'s29':(0,4.625),'s30':(1.625,6.584),'s31':(1,6.584),'s32':(1,6.584),'s33':(0,3.709),'s34':(0.875,6.584),'s35':(0.25,4.709),'s36':(0,6),'s37':(0,6.584),'s38':(0,6.584),'s39':(0.75,3.25),'s40':(0,8)}
 seed={'s01':9231102,'s09':9231102,'s10':9231102,'s13':9231102,'s16':9231102,'s17':9231202,'s18':9231102,'s19':9231102,'s20':9231102,'s23':9231102,'s24':9231102,'s31':9231201,'s33':9231102,'s34':9231102,'s38':9231201,'s40':9231102}
 bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].get(\"end-before\",0)} (want {a} {b})' for s,(a,b) in want.items()
      if s in p and (abs(p[s]['trim'].get('start',0)-a)>0.001 or abs(p[s]['trim'].get('end-before',0)-b)>0.001)]
@@ -35,11 +35,13 @@ cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VL
 [ -f $E/cut/e923-live.mp4 ] || exit 1
 # a sample-peak limiter before loudnorm2 keeps it linear (e908-e912: attack 5 ms, limit 0.6 = -4.4 dBFS; the AAC encode
 # after it overshoots at shorter attacks and loudnorm2 then goes dynamic and clicks). e913 REVIEW 3 on: attack 8 ms.
-# END: s41 is the wide shot from behind on the pier; Xu's off-screen shout a37 ends at c2.77, a low hit and the gong at
-# c2.95, the picture fades over c3.60-4.20 (vf) and min 7.20 holds 3 s of black so the gong rings out (the take ends at
-# c4.50, so the black is the fade plus tpad). The sound fades over the last 1.5 s.
+# e923: limit 0.55 (-5.2 dBFS): at 0.6 the fourth run's AAC encode came back at 0.01 dBTP (s05's clip voice at 14.3 s, s28,
+# s36 at 0.86 sample peak) and loudnorm2 went dynamic; s05's clip voice also gets clip_af alimiter 0.89.
+# END: s40 is the inn wide shot after the thumbprint; the system pair a37+a38 (panel only, red frame) ends at c5.30, a low
+# hit and the gong at c5.60, the picture fades over c6.00-6.60 (vf) and min 9.00 holds ~2.4 s of black so the gong rings
+# out (the take ends at c8.00). The sound fades over the last 1.5 s.
 D=$(ffprobe -v error -show_entries format=duration -of csv=p=0 $E/cut/e923-live.mp4); FS=$(python3 -c "print(f'{$D-1.5:.3f}')")
-ffmpeg -v error -y -i $E/cut/e923-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.6:attack=8:release=60:level=false,aresample=48000,afade=t=out:st=$FS:d=1.5" $E/cut/e923-live.lim.mp4 && mv $E/cut/e923-live.lim.mp4 $E/cut/e923-live.mp4
+ffmpeg -v error -y -i $E/cut/e923-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.55:attack=8:release=60:level=false,aresample=48000,afade=t=out:st=$FS:d=1.5" $E/cut/e923-live.lim.mp4 && mv $E/cut/e923-live.lim.mp4 $E/cut/e923-live.mp4
 # loudnorm2 is linear only when the measured true peak plus the gain to -14 LUFS stays at or under -2.2 dBTP: print it
 ffmpeg -hide_banner -i $E/cut/e923-live.mp4 -map 0:a -af loudnorm=I=-14:TP=-2.2:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p' \
  | python3 -c "import json,sys;j=json.load(sys.stdin);i,tp=float(j['input_i']),float(j['input_tp']);print(f'pre-loudnorm2 {i} LUFS {tp} dBTP: {tp-14-i:+.2f} after the gain ->', 'linear' if tp-14-i<=-2.2 else 'DYNAMIC (lower the limiter or its attack)')"
