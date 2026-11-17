@@ -1,0 +1,993 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e025-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, empty-handed",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      },
+      "shot_looks": [
+        {
+          "id": "pole",
+          "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a plain wooden carrying pole over one shoulder with nothing hanging from it"
+        }
+      ]
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "zhengbo",
+      "name": "鄭伯",
+      "appearance": "East Asian man of sixty, a little plump, kind eyebrows and a gentle smile, a neat grey-white goatee, a dark brown silk-faced padded long robe, a small writing brush tucked at his cuff",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadaltager",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十歲的唐家老管事，男聲、溫厚穩重、說話客氣有禮，壓低聲音時帶著擔憂"
+      }
+    },
+    {
+      "id": "weijihuoji",
+      "name": "魏記夥計",
+      "appearance": "East Asian young man of about twenty, thin, an ancient Chinese Song-dynasty shop boy's dark red cloth short jacket and a black cloth head wrap, one plain wooden stick in his right hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲左右的店鋪夥計，男聲、年輕、嗓門大，帶人來攔船，兇巴巴地扯開喉嚨喊"
+      }
+    },
+    {
+      "id": "tangwanjin",
+      "name": "唐萬金",
+      "appearance": "East Asian man of fifty, a round lucky face, smiling narrowed eyes, a short neat beard, a little plump, a dark purple silk robe woven with gold ingot patterns, a string of gold keys hanging at his waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achird",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的江南首富，男聲、和氣生財、笑呵呵，哭窮時很誇張"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene: a low heavy piano in a quiet thatched sugar shed on a cold afternoon, one soft accent on a revealed name, strings joining as the mood turns tender, one bright electronic accent; then wind and low drums at night by misty water, one big accent when boats appear, fighting drums, opening into broad strings; then a single erhu over the strings, one low accent on a hidden secret, one soft accent on a small paper note before it ends; ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "一封信三船甘蔗，爹的字條「囡囡，吃飽沒」｜種田娶妻打天下 第25集（重製版）",
+    "description": "全州的紅糖被魏記買光了，二牛從鄰鎮回來，抖著空麻袋：一塊都買不到。許硯說沒有紅糖就拿甘蔗直接熬，可是甘蔗要到江南才有。唐小棠苦笑：江南的甘蔗，有一半姓唐。她寫一封信，三天就有船；可是信一到，唐家知道她在哪，魏家也會知道。許硯坐到她旁邊：妳選，寫或不寫，我都在。第六日夜裡，三船甘蔗靠近柳溪渡口，魏記夥計帶人拿木棍衝下河岸，秦霜帶著少年們護船。唐家老管事鄭伯跳下船，壓低聲音問：老爺跟宰相有一筆舊帳，小姐不知道吧？甘蔗捆裡夾著一張小紙條，是她爹的話：囡囡，吃飽沒？《種田娶妻打天下》第 25 集（重製版）。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "囡囡，吃飽沒",
+      "tag": "種田娶妻打天下",
+      "shot": "s40"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "柳溪糖坊",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a01",
+          "speaker": "erniu",
+          "text": "鄰鎮跑遍了，一塊紅糖都買不到！",
+          "emotion": "垂頭喪氣，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon: a long shed under a deep thatched roof on rough wooden posts, a brick stove with one wide cold iron pan in the left foreground, a long plaster wall on the left with a wooden rack high on it carrying a row of brown clay funnels set upside down, and a low wooden bench beneath, where a row of brown clay funnels stand points down, each in a squat clay jar, their wide mouths at chest height, wooden barrels along the wall, a round stone basin on a pedestal in the middle, the unwalled right side with a wooden railing, snow and the creek beyond it; low warm gold afternoon sunlight from the right across the snow and the dirt floor, long shadows: wide shot down the shed: on the left by the low bench along the wall Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, framed full figure, holding one shallow clay bowl heaped with fine white sugar like fresh snow in both hands at his chest from the first frame, his face three-quarter to screen right toward Wang Erniu, never the lens; listening: lips pressed shut; in the middle by the stone basin Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves, framed full figure, one empty hemp sack already held upside down by its bottom corners in both hands from the first frame, his face three-quarter to screen left toward Xu Yan, never the lens; crestfallen, not smiling: brows sagging, lips moving between words; their hands hold only what is described here; exactly two people",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「鄰鎮跑遍了，一塊紅糖都買不到！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu shakes the upside-down sack once, hard, and his shoulders slump as he speaks; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; Xu Yan holds the bowl still, and the low warm afternoon light stays unchanged",
+        "characters": [
+          "erniu",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: insert close-up, the shot opens directly on the mouth of one empty hemp sack held upside down by a big man's hands in coarse brown sleeve cuffs, from its very first frame, above the dirt floor; only the two hands, their sleeve cuffs and the sack are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the hands shake the sack twice and only a little grey dust drifts out of its mouth down to the dirt floor, and the low warm afternoon light stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a02",
+          "speaker": "xuyan",
+          "text": "沒有紅糖，就從頭來，拿甘蔗直接熬。",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: medium close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, standing by the low bench along the left wall, framed from the chest up with space above his head, one shallow clay bowl heaped with fine white sugar like fresh snow already set down on the bench beside him at the lower edge of the frame from the first frame, his right hand resting on the rim of one brown clay funnel standing in its jar on the bench, his face three-quarter to screen right toward Wang Erniu off screen right, never the lens; sure, not smiling: steady eyes, lips moving between words; behind him the plaster wall, soft; their hands hold only what is described here",
+        "motion": "Xu Yan speaks a short Mandarin line, 「沒有紅糖，就從頭來，拿甘蔗直接熬」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan raps the rim of the funnel twice with his knuckle as he speaks; after the last word he keeps his eyes on Erniu, and the low warm afternoon light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a03",
+          "speaker": "erniu",
+          "text": "甘蔗？咱們這邊不長，要到江南才有。",
+          "emotion": "不笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: medium shot of Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves, standing by the stone basin, framed from the waist up, one empty hemp sack already dropped in a heap on the dirt floor at his feet from the first frame, both open hands already spread at his sides, palms up, his face three-quarter to screen left toward Xu Yan off screen left, never the lens; glum, not smiling: brows drawn together, lips moving between words; behind him the shed in the low gold light, soft; their hands hold only what is described here",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「甘蔗？咱們這邊不長，要到江南才有」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu shrugs, his open hands spreading wider as he speaks; after the last word he lets them drop, and the low warm afternoon light stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a04",
+          "speaker": "tangxiaotang",
+          "text": "江南的甘蔗，有一半是姓唐的。",
+          "emotion": "苦笑"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, sitting at one plain wooden plank table in the right foreground, framed from the waist up, facing into the frame toward him; she is the only young woman with two high round buns in the frame, and she stays in the right foreground from the first frame to the last; both her hands resting on the table top; facing us beyond her by the stone basin, a little left of the middle, Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves, framed from the waist up, his face three-quarter to screen right toward her, never the lens; puzzled and listening: brows up, he says nothing, his lips closed; behind him the plaster wall and the brown clay funnels, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman's shoulders lift in one small rueful shrug as she speaks; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot; Wang Erniu says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; he listens, his brows rising, and the low warm afternoon light stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "erniu"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a05",
+          "speaker": "erniu",
+          "text": "姓、姓唐？是妳們唐家的甘蔗田？",
+          "emotion": "下巴掉下來"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle close-up, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: low-angle close-up from the height of the stove of Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves, framed from the chest up with space above his head, his face three-quarter to screen right toward the young woman beyond the right edge of the frame, never the lens; stunned: brows shot up, jaw dropping, lips moving between stammered words; behind him only the thatched roof and its rough wooden beams, soft",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「姓、姓唐？是妳們唐家的甘蔗田？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu's jaw drops and he leans toward her as he stammers; after the last word he stays gaping, and the low warm afternoon light stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a06",
+          "speaker": "tangxiaotang",
+          "text": "是。鄭伯跟了我爹三十年，管的就是甘蔗船。",
+          "emotion": "低頭看紙"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, sitting at one plain wooden plank table in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; one sheet of blank paper, plain and opaque already drawn out flat on the table top in front of her from the first frame, both her hands resting on it; beyond her, soft, the plaster wall and the brown clay funnels in the low gold light; their hands hold only what is described here",
+        "motion": "the young woman smooths the sheet flat with both palms, slowly, once; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the low warm afternoon light stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a07",
+          "speaker": "tangxiaotang",
+          "text": "我寫一封信給鄭伯，三天就有船。",
+          "emotion": "畫外，輕聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: medium close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, sitting on one upturned clay jar by the low bench, his elbows on his knees, framed from the chest up with space above his head, his right thumb already at his chin from the first frame, his face three-quarter to screen right toward the young woman beyond the right edge of the frame, never the lens; thinking, listening: one brow lifted a little, lips pressed shut; behind him the brown clay funnels in their jars on the bench, soft",
+        "motion": "Xu Yan slowly rubs his chin with his thumb, his eyes on her; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is listening, not speaking, and the low warm afternoon light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a08",
+          "speaker": "erniu",
+          "text": "三天就有船，那還等什麼？快寫啊！",
+          "emotion": "一拍大腿"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: medium shot of Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves, standing by the stone basin, framed from the knees up, his right hand already raised from the first frame, his face three-quarter to screen right toward the young woman beyond the right edge of the frame, never the lens; eager: brows up, eyes bright, a hopeful smile, lips moving fast between words; behind him the shed in the low gold light, soft; their hands hold only what is described here",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「三天就有船，那還等什麼？快寫啊！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu slaps his big hand down on his thigh as he speaks; after the last word he leans toward her, waiting, and the low warm afternoon light stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a09",
+          "speaker": "tangxiaotang",
+          "text": "信一到，唐家知道我在哪，魏家也會知道。",
+          "emotion": "笑容收起"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, sitting at one plain wooden plank table in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; her right hand resting on the table top beside the blank sheet from the first frame; beyond her, soft, the shed and the plaster wall in the low gold light; their hands hold only what is described here",
+        "motion": "her right hand slowly closes into a fist on the table top; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the low warm afternoon light stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a10",
+          "speaker": "tangxiaotang",
+          "text": "寫了，我爹就知道我在哪……他會不會派人來帶我回去？",
+          "emotion": "握著筆，聲音發抖"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, sitting at one plain wooden plank table in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; her right hand already raised from the first frame, holding one slim bamboo brush with a soft black tip just above the blank sheet on the table; beyond her, soft, the shed and the plaster wall in the low gold light; their hands hold only what is described here",
+        "motion": "her right hand pulls the brush back a hand's width from the sheet, unsteady, and holds it there above the sheet; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the low warm afternoon light stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "High-angle insert close-up, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: high-angle insert close-up, the shot opens directly on the wet tip of one slim bamboo brush with a soft black tip trembling just above one sheet of blank paper, plain and opaque weighed down by one smooth grey stone on one plain wooden plank table, from its very first frame, a small hand in a thick opaque peach-pink silk sleeve cuff holding the brush; only the hand, its sleeve cuff, the brush, the stone and the blank sheet are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the brush tip trembles and one round black drop falls from it onto the corner of the sheet and spreads into a small round blot, and the low warm afternoon light stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a11",
+          "speaker": "xuyan",
+          "text": "會不會，我不知道。妳選，寫或不寫，我都在。",
+          "emotion": "很輕"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, sitting at one plain wooden plank table in the right foreground, framed from the waist up, facing the table; she is the only young woman with two high round buns in the frame, and she stays in the right foreground from the first frame to the last; her hands resting on the table top beside the blank sheet; beside her at the left end of the table, a little left of the middle, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, sitting on a low bench, framed from the waist up, his right hand already laid flat on the table top a finger's width from her hand from the first frame, his face three-quarter to screen right toward her, never the lens; gentle and steady: steady eyes, lips moving softly between words; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "Xu Yan speaks a short Mandarin line, 「會不會，我不知道。妳選，寫或不寫，我都在」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan keeps his hand flat on the table and his eyes on her as he speaks, quietly; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot; the young woman says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low warm afternoon light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a12",
+          "speaker": "tangxiaotang",
+          "text": "你不勸我？鋪子要是輸了，你也要跟著賠。",
+          "emotion": "眼眶紅"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, sitting at one plain wooden plank table in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; beside her on the left, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, sitting on a low bench at the left end of the table, framed from the waist up, his right hand flat on the table top, his face three-quarter to screen right toward her, never the lens; listening: he says nothing, his lips closed, his eyes on her; their hands hold only what is described here; exactly two people, the young woman seen only from behind",
+        "motion": "the young woman's shoulders tremble once as she speaks; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; he listens, his eyes on her, and the low warm afternoon light stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a13",
+          "speaker": "xuyan",
+          "text": "那是妳的家，回不回、怎麼回，妳說了算。",
+          "emotion": "溫柔"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, sitting at the plank table, framed from the chest up with space above his head, his face three-quarter to screen right toward the young woman beyond the right edge of the frame, never the lens; tender: a small warm smile at the corners of his mouth, lips moving softly between words; behind him the brown clay funnels in the low gold light, soft",
+        "motion": "Xu Yan speaks a short Mandarin line, 「那是妳的家，回不回、怎麼回，妳說了算」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan nods to her once, gently, as he speaks; after the last word he keeps his eyes on her, and the low warm afternoon light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a14",
+          "speaker": "xitong",
+          "text": "叮。唐小棠，好感加六。",
+          "emotion": "冷，宣布"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, sitting at one plain wooden plank table in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; one slim bamboo brush with a soft black tip already in her right hand from the first frame, resting above the blank sheet on the table; beyond her, soft, the shed and the plaster wall in the low gold light; their hands hold only what is described here",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the young woman lifts the back of her left wrist to her eyes once and lowers it, and her right hand holds the brush steady over the sheet; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot; the young woman says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low warm afternoon light stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a15",
+          "speaker": "tangxiaotang",
+          "text": "二牛哥，連夜送到城外鏢局，說給江南唐家的鄭伯。",
+          "emotion": "畫外，囑咐"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: insert close-up, the shot opens directly on one sheet of plain paper folded twice, its outside blank lying on one plain wooden plank table from its very first frame, a small hand in a thick opaque peach-pink silk sleeve cuff holding one short stick of dark red wax just above its fold; only the hand, its sleeve cuff, the wax and the folded sheet are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the small hand presses the soft dark red wax onto the fold, leaving one round dab of dark red wax, then slides the folded sheet toward the left edge of the frame, and the low warm afternoon light stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a16",
+          "speaker": "erniu",
+          "text": "交給我，天亮前，一定送到鏢局手上！",
+          "emotion": "接過信"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek on a cold clear winter afternoon, under the thatched shed by the wall of brown clay funnels, in low warm gold afternoon sunlight from the right: medium shot of Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves, standing by the plank table, framed from the waist up, one sheet of plain paper folded twice and closed with one round dab of dark red wax, its outside blank already in his right hand from the first frame, his face three-quarter to screen right toward the young woman beyond the right edge of the frame, never the lens; earnest, not smiling: jaw set, lips moving between words; behind him the shed in the low gold light, soft; their hands hold only what is described here",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「交給我，天亮前，一定送到鏢局手上！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu tucks the folded sheet into the front of his jacket and pats it twice as he speaks; after the last word he turns toward the unwalled right side of the shed, and the low warm afternoon light stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "chapter": "柳溪渡口",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a17",
+          "speaker": "tangxiaotang",
+          "text": "信說三天，今天第三天了，船怎麼還不來？",
+          "emotion": "搓著手，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the old narrow wooden jetty: its weathered planks and tall bare wooden posts, thick drifting fog over the dark water; cold blue night light and the warm orange light of a torch burning on top of one post: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the jetty planks in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; facing the fog over the dark water, her hands already pressed together in front of her from the first frame; ahead of her at the far end of the jetty, small and soft, Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves seen from behind, one burning torch held high in his right hand; their hands hold only what is described here; exactly two people, both seen from behind",
+        "motion": "the young woman rubs her hands together against the cold as she speaks; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot; Wang Erniu says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; he stands still at the end of the jetty, holding the torch high, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "erniu"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a18",
+          "speaker": "xitong",
+          "text": "叮。鬥商第六日，落後兩成。",
+          "emotion": "冷，宣布"
+        },
+        {
+          "id": "zq925a19",
+          "speaker": "xitong",
+          "text": "落後兩成。宿主的白糖，到今天還是那一碗。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, in thick drifting fog: cold blue night light and the warm orange light of torches: close-up of Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, standing on the jetty, framed from the chest up with space above his head, his face three-quarter to screen right toward the fog over the water, never the lens; grim: brows drawn, lips pressed shut; warm torchlight flickering on one side of his face; behind him only the drifting fog in the cold blue night, soft",
+        "motion": "Xu Yan stares into the fog and his chin tucks down a little; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is listening, not speaking, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s20b",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a20",
+          "speaker": "xuyan",
+          "text": "一碗也是糖。船一到，就不只一碗。",
+          "emotion": "內心獨白，嘴閉著，心裡話，錄得近、輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, in thick drifting fog: cold blue night light and the warm orange light of torches: tight close-up of Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, framed from the shoulders up with a little space above his head, his face three-quarter to screen right toward the fog over the water, never the lens; dry and stubborn: one corner of his mouth tucked in, lips pressed shut; warm torchlight on one side of his face; behind him only the drifting fog, soft",
+        "motion": "Xu Yan lets out one short breath through his nose, a dry silent snort, and then his jaw sets firm; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a21",
+          "speaker": "erniu",
+          "text": "來了！三條船，船上全是甘蔗！",
+          "emotion": "舉著火把大叫"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the old narrow wooden jetty: its weathered planks and tall bare wooden posts, thick drifting fog over the dark water; cold blue night light and the warm orange light of a torch burning on top of one post: medium shot of Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves, standing at the far end of the jetty, framed from the waist up, one burning torch held high in his right hand from the first frame, his face three-quarter to screen right toward the water, never the lens; overjoyed: a huge grin, eyes wide, lips moving fast between shouted words; on the right, out of the fog over the dark water, the dark bow of one long flat-bottomed wooden cargo boat sitting low in the water, piled high with bundles of green-purple sugarcane tied with straw rope, one torch burning upright at its bow; behind him the drifting fog; their hands hold only what is described here",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「來了！三條船，船上全是甘蔗！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu swings the torch over his head and bounces once on his toes as he shouts; after the last word he keeps the torch high, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night: an old narrow wooden jetty running out from the left into the dark still water, tall bare wooden posts standing beside it, thick drifting fog over the water and a far bank of dry reeds on the right; three torches burning on top of three of the tall posts, fixed there, nobody holding them; cold blue night light, the warm orange glow of the torches on the fog: wide shot from the shore: the old narrow wooden jetty running out from the left into the dark water, three torches burning on top of three of the tall posts, fixed there, nobody holding them; on the right, three long flat-bottomed wooden cargo boats sitting low in the water, each piled high with bundles of green-purple sugarcane tied with straw rope, one torch burning upright at the bow of each, gliding one behind the other out of the thick fog toward the jetty, far and soft in the fog; at the stern of each boat one boatman in a conical straw hat and a short brown jacket seen from behind, pushing a long pole; exactly three boatmen, small and far",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the three boats glide slowly toward the jetty one after the other, the torch at each bow brightening as it comes out of the fog, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a22",
+          "speaker": "qinshuang",
+          "text": "右邊坡上下來九個人，都拿著棍子。",
+          "emotion": "畫外，冷"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the muddy bank at the foot of the jetty: a short slope of wet dark mud and dead grass rising to the right, thick drifting fog behind it; cold blue night light and the warm orange light of torches: wide shot looking along the muddy bank: down the slope of wet dark mud on the right come at the front one thin young shop boy in a dark red cloth short jacket and a black cloth head wrap, one plain wooden stick as long as his arm, smooth and round to its ends, in his right hand, seen side-on, his face in profile, and behind him eight men in grey cotton short jackets and black cloth head wraps, each holding one plain wooden stick as long as his arm, smooth and round to its ends, running down toward the left, everyone small in the frame and side-on, their lips closed; exactly nine men; in the foreground the dead grass on the bank, soft",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the shop boy and the eight men run down the slope toward the left, slipping in the mud, their lips closed, nobody speaking, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s23b",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a23",
+          "speaker": "weijihuoji",
+          "text": "魏記的人在此，這三船貨，誰也不准卸！",
+          "emotion": "畫外，揮著木棍，兇"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the muddy bank at the foot of the jetty: a short slope of wet dark mud and dead grass rising to the right, thick drifting fog behind it; cold blue night light and the warm orange light of torches: medium shot of one thin young shop boy in a dark red cloth short jacket and a black cloth head wrap, one plain wooden stick as long as his arm, smooth and round to its ends, in his right hand, seen side-on, his face in profile, standing at the foot of the muddy slope, framed from the waist up, his stick already raised and thrust out toward the jetty on the left from the first frame, fierce, not smiling: brows down, lips moving between shouted words; behind him on the slope, soft, three of the men in grey cotton short jackets and black cloth head wraps, each holding one plain wooden stick as long as his arm, smooth and round to its ends, side-on, their lips closed; exactly four men; behind them the fog",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the shop boy jabs his stick toward the jetty as he shouts, his mouth moving with the words; the three men behind him stand still with their sticks, their lips closed, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a24",
+          "speaker": "xuyan",
+          "text": "護船的事，全聽秦霜的。秦霜，妳說怎麼打？",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the old narrow wooden jetty: its weathered planks and tall bare wooden posts, thick drifting fog over the dark water; cold blue night light and the warm orange light of a torch burning on top of one post: medium shot of Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, standing on the jetty planks, framed from the waist up, his face three-quarter to screen right toward Qin Shuang off screen right, never the lens; firm, not smiling: steady eyes, lips moving between words; warm torchlight flickering on his face; behind him the tall bare posts and the drifting fog, soft",
+        "motion": "Xu Yan speaks a short Mandarin line, 「護船的事，全聽秦霜的。秦霜，妳說怎麼打？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan takes half a step back as he speaks, giving her the front; after the last word he waits for her answer, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a25",
+          "speaker": "xitong",
+          "text": "叮。秦霜，好感加六。",
+          "emotion": "冷，宣布"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, in thick drifting fog: cold blue night light and the warm orange light of torches: close-up of Qin Shuang, in her dark brown cross-collared short jacket, wide black leather belt and black leather bracers, her high black ponytail, standing on the jetty, framed from the chest up with space above her head, one plain long wooden staff, taller than she is, smooth and round to its ends upright in her right hand beside her from the first frame, her ponytail lifting in the river wind, her face three-quarter to screen left toward Xu Yan off screen left, never the lens; surprised: brows lifting, lips pressed shut; warm torchlight on her face; behind her only the drifting fog, soft",
+        "motion": "Qin Shuang's brows lift as she glances at him, and then one corner of her mouth curls up, her lips pressed together; Qin Shuang says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a26",
+          "speaker": "qinshuang",
+          "text": "五個拿棍在前擋人，五個去岸邊接纜繩拉纖！",
+          "emotion": "一聲令下"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the old narrow wooden jetty: its weathered planks and tall bare wooden posts, thick drifting fog over the dark water; cold blue night light and the warm orange light of a torch burning on top of one post: medium shot of Qin Shuang, in her dark brown cross-collared short jacket, wide black leather belt and black leather bracers, her high black ponytail, standing on the jetty planks, framed from the waist up, one plain long wooden staff, taller than she is, smooth and round to its ends in her right hand from the first frame, her face three-quarter to screen left toward the youths beyond the left edge of the frame, never the lens; commanding, not smiling: brows level, lips moving sharply between words; in the soft left foreground the upright round tips of two long plain wooden staves; behind her the fog over the dark water; their hands hold only what is described here",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「五個拿棍在前擋人，五個去岸邊接纜繩拉纖！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang swings the staff out level at her side as she gives the order; after the last word she holds it level, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot side-on, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the muddy bank at the foot of the jetty: a short slope of wet dark mud and dead grass rising to the right, thick drifting fog behind it; cold blue night light and the warm orange light of torches: wide shot side-on along the muddy bank, the whole action inside the frame: on the left three youths in plain Song-dynasty cross-collared hemp short jackets and cloth head wraps, shoulder to shoulder, each holding one plain long wooden staff level across his chest; on the right three men in grey cotton short jackets and black cloth head wraps, each holding one plain wooden stick as long as his arm, smooth and round to its ends, their sticks raised; everyone small in the frame, side-on, their lips closed; exactly six people",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the three youths push forward at a walking pace and sweep their staves across, the sticks of two of the men fly spinning out of their hands, and those two men stagger back and sit down hard in the mud, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Low-angle medium shot side-on, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the muddy bank at the foot of the jetty: a short slope of wet dark mud and dead grass rising to the right, thick drifting fog behind it; cold blue night light and the warm orange light of torches: low-angle medium shot side-on on the muddy bank, the whole action inside the frame: on the left Qin Shuang, in her dark brown cross-collared short jacket, wide black leather belt and black leather bracers, her high black ponytail, low in a crouch, framed from the knees up, one plain long wooden staff, taller than she is, smooth and round to its ends held in both hands from the first frame, her face in profile to screen right toward the shop boy, never the lens; fierce, not smiling: eyes narrowed, lips pressed shut; on the right one thin young shop boy in a dark red cloth short jacket and a black cloth head wrap, one plain wooden stick as long as his arm, smooth and round to its ends, in his right hand, seen side-on, his face in profile, his stick raised over his head, his face in profile to screen left, angry, his lips closed; their hands hold only what is described here; exactly two people",
+        "motion": "Qin Shuang's staff snaps up and knocks the stick out of his hands, the stick spinning away into the dark, and the shop boy stumbles back and sits down hard in the mud; Qin Shuang says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words; the shop boy says nothing, his lips closed, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a27",
+          "speaker": "weijihuoji",
+          "text": "你、你們等著，我回去告訴少爺！",
+          "emotion": "畫外，坐在泥裡往後退"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot side-on, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the muddy bank at the foot of the jetty: a short slope of wet dark mud and dead grass rising to the right, thick drifting fog behind it; cold blue night light and the warm orange light of torches: medium shot side-on of one thin young shop boy in a dark red cloth short jacket, his black cloth head wrap knocked crooked, sitting in the mud at the foot of the slope, empty-handed, framed from the waist up, both elbows already planted in the mud behind him from the first frame, his face in profile to screen left toward the jetty, never the lens; frightened and furious, not smiling: eyes wide, lips moving between stammered words; at the left edge of the frame the round tip of one plain long wooden staff held level; behind him the dark slope and the fog; he is the only person in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the shop boy scrabbles backward up the slope on his elbows and heels as he shouts, his mouth moving with the words, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a28",
+          "speaker": "qinshuang",
+          "text": "兩列，跟著我的口令，一起拉！",
+          "emotion": "手臂一揮"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the old narrow wooden jetty: its weathered planks and tall bare wooden posts, thick drifting fog over the dark water; cold blue night light and the warm orange light of a torch burning on top of one post: low-angle medium shot of Qin Shuang, in her dark brown cross-collared short jacket, wide black leather belt and black leather bracers, her high black ponytail, standing at the far end of the jetty, framed from the waist up, one plain long wooden staff, taller than she is, smooth and round to its ends in her right hand, her left arm already raised high from the first frame, her ponytail swinging in the firelight, her face three-quarter to screen left toward the youths on the bank beyond the left edge of the frame, never the lens; commanding, not smiling: lips moving sharply between words; beside her on the right the dark bow of one long flat-bottomed wooden cargo boat sitting low in the water, piled high with bundles of green-purple sugarcane tied with straw rope, one torch burning upright at its bow; behind her the fog; their hands hold only what is described here",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「兩列，跟著我的口令，一起拉！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang sweeps her raised left arm down toward the bank as she calls out; after the last word she holds her arm out toward the bank, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a29",
+          "speaker": "tangxiaotang",
+          "text": "三船都靠岸了，一根甘蔗都沒落水。",
+          "emotion": "畫外，鬆一口氣"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night: an old narrow wooden jetty running out from the left into the dark still water, tall bare wooden posts standing beside it, thick drifting fog over the water and a far bank of dry reeds on the right; three torches burning on top of three of the tall posts, fixed there, nobody holding them; cold blue night light, the warm orange glow of the torches on the fog: wide shot from the shore: the old narrow wooden jetty running out from the left into the dark water, three torches burning on top of three of the tall posts, fixed there, nobody holding them; in the foreground along the muddy near bank two rows of five youths in plain Song-dynasty cross-collared hemp short jackets and cloth head wraps, side-on and small, each row leaning back and hauling together on one thick taut rope that runs out over the water; on the right, three long flat-bottomed wooden cargo boats sitting low in the water, each piled high with bundles of green-purple sugarcane tied with straw rope, one torch burning upright at the bow of each, far and soft in the fog, coming in toward the jetty one behind the other; exactly ten youths; their lips closed",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the youths haul in step and the three boats glide in one after the other until the first one bumps gently against the posts of the jetty, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s32",
+      "chapter": "棧橋與字條",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a30",
+          "speaker": "tangxiaotang",
+          "text": "鄭伯！你這把年紀，還親自押船來！",
+          "emotion": "喊，紅了眼"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the old narrow wooden jetty: its weathered planks and tall bare wooden posts, thick drifting fog over the dark water; cold blue night light and the warm orange light of a torch burning on top of one post: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the jetty planks in the left foreground, framed from the waist up, facing into the frame toward him; she is the only young woman with two high round buns in the frame, and she stays in the left foreground from the first frame to the last; both her hands already holding his left forearm from the first frame; facing us close beyond her, a little right of the middle, Steward Zheng, the old steward, tall and thin in his dark brown satin long robe, his grey hair in a small topknot bound with a black cloth band, a neat grey-white goatee, standing on the jetty planks at the foot of a short gangplank, framed from the waist up, his face three-quarter to screen left toward her, never the lens; moved, saying nothing: his eyes wet, his lips closed, he listens; behind him the bow of one long flat-bottomed wooden cargo boat sitting low in the water, piled high with bundles of green-purple sugarcane tied with straw rope, one torch burning upright at its bow, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman grips his forearm with both hands, her shoulders shaking once as she speaks; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot; Steward Zheng says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; he steadies himself on the planks and looks down at her, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "zhengbo"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a31",
+          "speaker": "zhengbo",
+          "text": "小姐，老奴一接到信，連夜就裝船了。這位是許公子？",
+          "emotion": "拱手，紅了眼"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, in thick drifting fog: cold blue night light and the warm orange light of torches: medium close-up of Steward Zheng, the old steward, tall and thin in his dark brown satin long robe, his grey hair in a small topknot bound with a black cloth band, a neat grey-white goatee, standing on the jetty, framed from the chest up with space above his head, both hands already raised and clasped together before his chest from the first frame, his face three-quarter to screen left toward the young woman beyond the left edge of the frame, never the lens; moved: eyes wet and red, lips moving between words; warm torchlight on his grey goatee; behind him the dark bow of one cargo boat piled with green-purple sugarcane and its torch, soft in the fog; their hands hold only what is described here",
+        "motion": "Steward Zheng speaks a short Mandarin line, 「小姐，老奴一接到信，連夜就裝船了。這位是許公子？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Steward Zheng bows over his clasped hands as he speaks, then lifts his eyes past her toward the young man behind her, beyond the left edge of the frame; after the last word he waits, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "zhengbo"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a32",
+          "speaker": "xuyan",
+          "text": "我是許硯。鄭伯一路辛苦，三船甘蔗，救了許記。",
+          "emotion": ""
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the old narrow wooden jetty: its weathered planks and tall bare wooden posts, thick drifting fog over the dark water; cold blue night light and the warm orange light of a torch burning on top of one post: medium shot on the jetty planks: on the left Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, framed from the waist up, both hands already raised and cupped together before his chest from the first frame, his face three-quarter to screen right toward Steward Zheng, never the lens; warm and respectful, not smiling: lips moving between words; on the right Steward Zheng, the old steward, tall and thin in his dark brown satin long robe, his grey hair in a small topknot bound with a black cloth band, a neat grey-white goatee, framed from the waist up, his face three-quarter to screen left toward Xu Yan, never the lens; listening: he says nothing, his lips closed; behind them the tall bare posts and the fog, soft; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「我是許硯。鄭伯一路辛苦，三船甘蔗，救了許記」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan bows a little over his cupped hands as he speaks; Steward Zheng says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; he listens, his eyes on Xu Yan, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "xuyan",
+          "zhengbo"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a33",
+          "speaker": "zhengbo",
+          "text": "小姐，老爺跟宰相，有一筆舊帳，您不知道吧？",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the old narrow wooden jetty: its weathered planks and tall bare wooden posts, thick drifting fog over the dark water; cold blue night light and the warm orange light of a torch burning on top of one post: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the jetty planks in the left foreground, framed from the waist up, facing into the frame toward him; she is the only young woman with two high round buns in the frame, and she stays in the left foreground from the first frame to the last; her hands low at her sides; facing us close beyond her, a little right of the middle, Steward Zheng, the old steward, tall and thin in his dark brown satin long robe, his grey hair in a small topknot bound with a black cloth band, a neat grey-white goatee, leaning in toward her, framed from the chest up, his face three-quarter to screen left toward her, never the lens; worried: a deep crease between his kind brows, lips moving low between words; behind him the fog and the torch at the bow, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "Steward Zheng speaks a short Mandarin line, 「小姐，老爺跟宰相，有一筆舊帳，您不知道吧？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Steward Zheng leans a little closer to her and lowers his voice as he speaks; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot; the young woman says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "zhengbo"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a34",
+          "speaker": "tangxiaotang",
+          "text": "什麼舊帳？不就是八條鹽船嗎？",
+          "emotion": "愣住，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the old narrow wooden jetty: its weathered planks and tall bare wooden posts, thick drifting fog over the dark water; cold blue night light and the warm orange light of a torch burning on top of one post: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the jetty planks in the left foreground, framed from the waist up, facing into the frame toward him; she is the only young woman with two high round buns in the frame, and she stays in the left foreground from the first frame to the last; her hands low at her sides; facing us close beyond her, a little right of the middle, Steward Zheng, the old steward, tall and thin in his dark brown satin long robe, his grey hair in a small topknot bound with a black cloth band, a neat grey-white goatee, framed from the chest up, his face three-quarter to screen left toward her, never the lens; grave, listening: he says nothing, his lips closed, his eyes on her; behind him the fog and the torch at the bow, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman leans a little toward him as she speaks; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot; Steward Zheng says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; he listens, grave, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "zhengbo"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a35",
+          "speaker": "zhengbo",
+          "text": "不只是船。老爺說，等小姐見了他，親口說。",
+          "emotion": "換上笑臉"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the old narrow wooden jetty: its weathered planks and tall bare wooden posts, thick drifting fog over the dark water; cold blue night light and the warm orange light of a torch burning on top of one post: medium shot of Steward Zheng, the old steward, tall and thin in his dark brown satin long robe, his grey hair in a small topknot bound with a black cloth band, a neat grey-white goatee, standing straight on the jetty planks a step back from where he stood, framed from the waist up, his face three-quarter to screen left toward the young woman beyond the left edge of the frame, never the lens; politely smiling: a courteous closed smile that stays out of his eyes, lips moving between words; behind him the bow of one long flat-bottomed wooden cargo boat sitting low in the water, piled high with bundles of green-purple sugarcane tied with straw rope, one torch burning upright at its bow, soft; their hands hold only what is described here",
+        "motion": "Steward Zheng speaks a short Mandarin line, 「不只是船。老爺說，等小姐見了他，親口說」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Steward Zheng draws both hands into his wide sleeves as he speaks, smiling politely; after the last word he gives a small bow, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "zhengbo"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the old narrow wooden jetty: its weathered planks and tall bare wooden posts, thick drifting fog over the dark water; cold blue night light and the warm orange light of a torch burning on top of one post: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, crouching on the wet jetty planks in the middle of the frame, framed full figure, facing straight away from us; she is the only young woman with two high round buns in the frame; in front of her on the planks one bundle of green-purple sugarcane tied with straw rope, both her hands already on its knot from the first frame; beyond her, soft, the dark bow of one cargo boat and its torch in the fog; their hands hold only what is described here",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the young woman pulls the straw rope loose and the canes roll apart on the planks, and she goes still; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a36",
+          "speaker": "tangwanjin",
+          "text": "囡囡，吃飽沒？",
+          "emotion": "畫外，爹的聲音，慈愛"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the old narrow wooden jetty: its weathered planks and tall bare wooden posts, thick drifting fog over the dark water; cold blue night light and the warm orange light of a torch burning on top of one post: insert close-up, the shot opens directly on one small strip of plain paper folded twice, its outside blank wedged between two green-purple canes of a loosened bundle lying on the wet dark planks, from its very first frame, a small hand in a thick opaque peach-pink silk sleeve cuff reaching for it; only the hand, its sleeve cuff, the canes and the folded strip are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the small hand draws the folded strip out from between the canes and holds it, still folded, and one teardrop falls onto it, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a37",
+          "speaker": "tangxiaotang",
+          "text": "吃飽了……爹，囡囡吃得很飽。",
+          "emotion": "哽住，哭著"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, on the old narrow wooden jetty: its weathered planks and tall bare wooden posts, thick drifting fog over the dark water; cold blue night light and the warm orange light of a torch burning on top of one post: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, crouching on the wet jetty planks beside the loosened sugarcane in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; both her hands pressed to her chest; beside her on the left, Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, crouching on the planks, framed from the waist up, his right hand already resting gently on her back from the first frame, his face three-quarter to screen right toward her, never the lens; tender and grave, listening: he says nothing, his lips closed, his eyes on her; behind them the fog and the warm torchlight, soft; their hands hold only what is described here; exactly two people, the young woman seen only from behind",
+        "motion": "the young woman's shoulders shake as she sobs and speaks; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; his hand stays on her back, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s40b",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq925a38",
+          "speaker": "xuyan",
+          "text": "鄭伯不肯說的那筆舊帳，總有一天，會自己找上門來。",
+          "emotion": "內心獨白，嘴閉著，心裡話，錄得近、輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the ferry landing on the Liuxi creek at night, in thick drifting fog: cold blue night light and the warm orange light of torches: close-up of Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, crouching on the jetty, framed from the chest up with space above his head, his face three-quarter to screen right, never the lens; grave and wary: brows drawn, lips pressed shut; warm torchlight on one side of his face; behind him only the drifting fog, soft",
+        "motion": "Xu Yan slowly lifts his eyes toward the bow of the boat beyond the right edge of the frame, where the old steward stands; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking, and the cold blue night light and the warm torchlight stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}

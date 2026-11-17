@@ -1,5 +1,13 @@
 # e922-live 第三輪：兩份成片審查合併後的修改清單
 
+> **2026-11-17 已套用**，紀錄在 `hailuo/edit-dh-e922-live.json` 的 `_note` REVIEW 3。跟本清單原寫法不同的地方：
+> - s27 兩下敲門 c0.35／0.65 → **c0.15／0.40**：staged 片的「小棠」從 c0.65 起，第二下會壓在「小」上（第一次重組後發現，重組第二次）。
+> - s38 `end-before` 3.083 → **3.084**：`stage.py` 用 `-to`，3.083 只剪出 73 格，照「終點往上取」的寫法 3.084 才是 74 格。
+> - s14 取 **4.667** 而不是協調者寫的約 4.75（她的手 4.667 才起動，4.708 是半途的糊影）。
+> - s39 換段後最後約 0.5 秒右緣仍露出船頭與一角船篷（不是整條空船），列人眼。cut-qa 的 jitter 在成片量到 s39 0.16（片段本身 0.00；霧中低對比畫面的 ±1 px 與前景木樁，不是跳），不做防震。
+>
+> 成片 206.71 秒（原 208.96）。−14.0 LUFS，LRA 5.2，peak −3.0；loudnorm2 linear（pre −14.58 LUFS、−4.09 dBTP＋0.58＝−3.51）。cut-qa 只剩預期的 held／black（片尾）、motion（說話鏡）與上面的 s39 jitter；cut-jumps 0；audio-qa 37 句 0 問題；CC 36 條（加 a31）。
+
 - 2026-11-17，從 `cut-review.md`（審查 1）與 `cut-review-2.md`（審查 2）合併、去重，照協調者的決定。套用結果寫在 `hailuo/edit-dh-e922-live.json` 的 `_note` REVIEW 3。
 - **全部不花錢**：沒有 Colab、沒有 RunPod、沒有重錄站台 TTS（a23「湯來了」不給提示也聽成「湯」，見第 5 節）。錄音只在本機變調、調音量（原檔在 `audio/orig/`）。
 - **時間一律寫草稿秒數**（`picks.json` 與 trims 檔的寫法）；`clip_af`、`sfx`、`vf`、`line_at`、`panel_until` 的時間是剪後的鏡內秒數 c。剪點都是整格，有台詞的鏡對照成片的句子時間（`e922-live.lines.json`）與 faster-whisper 字時間，不切字；句後的畫面逐格看（精修片 `runpod/a/st2/refined/sNN.mp4`，草稿秒數）。
