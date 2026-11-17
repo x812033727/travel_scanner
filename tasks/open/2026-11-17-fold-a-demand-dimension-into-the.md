@@ -1,7 +1,7 @@
 ---
 id: 2026-11-17-fold-a-demand-dimension-into-the
 title: Fold a demand dimension into the pool audience score
-status: review
+status: in-progress
 priority: P2
 area: tools
 owner: claude-fable-heimao-topics
