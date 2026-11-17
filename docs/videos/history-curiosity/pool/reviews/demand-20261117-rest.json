@@ -1,0 +1,8793 @@
+{
+ "schema_version": 1,
+ "reviewed_on": "2026-11-17",
+ "method": {
+  "what": "擴充前的需求篩選，第二批：奇聞池其餘分類還沒進題案、還沒答過四問的入選單集題。",
+  "scope": "分類 S、M、H、L、F、W 且 editorial.role=episode_core、未列入任何題案的入選題，共 797 題。",
+  "questions": {
+   "east_asia": "台灣或東亞觀眾本來就認得",
+   "prophecy_ghost": "預言末日或鬼魂死後",
+   "ancient_alien": "古文明或外星",
+   "famous": "主角全世界叫得出名字"
+  },
+  "reviewers": "七位獨立評審各讀一批題卡（分類、追問、開場一句），四問逐題作答，不讀 repo、不上網，拿不準答否。每批放同三題，12／12 個題目層級的答案七人一致；重複題取多數。",
+  "formula": "demand = 1 + 2.25 × 答「是」的題數",
+  "basis": "docs/videos/channel-review-20261116/README.md"
+ },
+ "counts": {
+  "screened": 797,
+  "0_yes": 519,
+  "1_yes": 213,
+  "2_yes": 59,
+  "3_yes": 6
+ },
+ "candidates": [
+  {
+   "id": "H26",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "秦始皇陵與兵馬俑"
+  },
+  {
+   "id": "N2001",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "西鄉隆盛魂魄化星"
+  },
+  {
+   "id": "N2364",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "陰陽師安倍晴明與式神"
+  },
+  {
+   "id": "N3001",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "甲骨文的發現"
+  },
+  {
+   "id": "N3143",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "竇娥冤與鬼魂申冤"
+  },
+  {
+   "id": "N3145",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "牡丹亭杜麗娘還魂"
+  },
+  {
+   "id": "F34",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "吸血鬼屬靈異且人人認得"
+  },
+  {
+   "id": "H20",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "納斯卡線是知名古遺跡"
+  },
+  {
+   "id": "H21",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "復活節島摩艾是知名遺跡"
+  },
+  {
+   "id": "H22",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "巨石陣是知名古遺跡"
+  },
+  {
+   "id": "H28",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "鄭和下西洋人人知道"
+  },
+  {
+   "id": "L24",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "日本千里眼透視實驗"
+  },
+  {
+   "id": "N108",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "水晶頭骨偽古文明文物"
+  },
+  {
+   "id": "N181",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "孟姜女哭長城"
+  },
+  {
+   "id": "N182",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "白蛇傳家喻戶曉"
+  },
+  {
+   "id": "N187",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "德古拉吸血鬼人人認得"
+  },
+  {
+   "id": "N208",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "蘭亭序與唐太宗"
+  },
+  {
+   "id": "N209",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "秦始皇傳國玉璽"
+  },
+  {
+   "id": "N323",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "狸貓換太子家喻戶曉"
+  },
+  {
+   "id": "N325",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "李白人人知道"
+  },
+  {
+   "id": "N327",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "建文帝與朱棣"
+  },
+  {
+   "id": "N328",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "順治出家傳說"
+  },
+  {
+   "id": "N367",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "梁山伯與祝英台"
+  },
+  {
+   "id": "N368",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "哪吒家喻戶曉"
+  },
+  {
+   "id": "N381",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "瘋狗浪是台灣常見用語"
+  },
+  {
+   "id": "N404",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "希望鑽石的詛咒"
+  },
+  {
+   "id": "N405",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "日本數盤子女鬼怪談"
+  },
+  {
+   "id": "N408",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "徐福東渡人人知道"
+  },
+  {
+   "id": "N442",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "日本預言獸"
+  },
+  {
+   "id": "N443",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "日本妖怪轆轤首"
+  },
+  {
+   "id": "N490",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "句踐臥薪嘗膽"
+  },
+  {
+   "id": "N502",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "張衡地動儀課本必讀"
+  },
+  {
+   "id": "N543",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "爪哇人化石課本有教"
+  },
+  {
+   "id": "N742",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "明智光秀廣為人知"
+  },
+  {
+   "id": "N784",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "日本與那國島海底遺跡"
+  },
+  {
+   "id": "N786",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "亞特蘭提斯與考古調查"
+  },
+  {
+   "id": "N1022",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "馬丘比丘古城遺跡"
+  },
+  {
+   "id": "N1044",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "日本鬼怪故事渡邊綱"
+  },
+  {
+   "id": "N1063",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "血型性格說台灣人都熟"
+  },
+  {
+   "id": "N1085",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "日本富士山噴火"
+  },
+  {
+   "id": "N1383",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "坂本龍馬船中八策"
+  },
+  {
+   "id": "N1944",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "日本金太郎"
+  },
+  {
+   "id": "N2101",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "日本時代劇水戶黃門"
+  },
+  {
+   "id": "N2262",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "日本古代石鏃出土"
+  },
+  {
+   "id": "N2601",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "慈禧宮廷的偽日記"
+  },
+  {
+   "id": "N2745",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "端午粽子與屈原"
+  },
+  {
+   "id": "N3003",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "日本出土漢委奴國王金印"
+  },
+  {
+   "id": "N3042",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "龐貝古城"
+  },
+  {
+   "id": "N3141",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "雨月物語鬼魂赴約"
+  },
+  {
+   "id": "N3142",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "唐傳奇倩女離魂"
+  },
+  {
+   "id": "N3181",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "錢塘江大潮與伍子胥"
+  },
+  {
+   "id": "N3344",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "龐貝古城遺跡，名氣大"
+  },
+  {
+   "id": "N3421",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "芥川龍之介為日本名作家"
+  },
+  {
+   "id": "N3664",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "中國大禹古碑與古文字"
+  },
+  {
+   "id": "N3761",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "復活節島古文字木板"
+  },
+  {
+   "id": "N3842",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "老鼠嫁女兒故事耳熟能詳"
+  },
+  {
+   "id": "N4245",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "魯班為家喻戶曉人物"
+  },
+  {
+   "id": "N4763",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "巴比倫空中花園，古文明名勝"
+  },
+  {
+   "id": "N5021",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "牛郎織女，中國民間故事"
+  },
+  {
+   "id": "N5022",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "七仙女與董永，中國民間故事"
+  },
+  {
+   "id": "N5026",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "黃粱一夢，中文成語典故"
+  },
+  {
+   "id": "N5123",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "日本江戶鎖國，課本內容"
+  },
+  {
+   "id": "N5161",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "馬克白的女巫預言"
+  },
+  {
+   "id": "N5321",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "明朝把長頸鹿當麒麟"
+  },
+  {
+   "id": "N6604",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "日本關東大地震廣為人知"
+  },
+  {
+   "id": "F14",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "潘朵拉的盒子家喻戶曉"
+  },
+  {
+   "id": "F17",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "特洛伊木馬人人知道"
+  },
+  {
+   "id": "F31",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "阿拉丁神燈家喻戶曉"
+  },
+  {
+   "id": "H23",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "明代北京事件但不有名"
+  },
+  {
+   "id": "H34",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "非洲古遺跡但不有名"
+  },
+  {
+   "id": "M03",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "太空來的電波訊號"
+  },
+  {
+   "id": "N103",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "克里特出土古文物"
+  },
+  {
+   "id": "N109",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "死海古卷屬考古文物"
+  },
+  {
+   "id": "N111",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "惡魔島監獄廣為人知"
+  },
+  {
+   "id": "N124",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "馬可波羅人人知道"
+  },
+  {
+   "id": "N125",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "鑽到地獄錄到尖叫"
+  },
+  {
+   "id": "N161",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "哥倫布與地平說"
+  },
+  {
+   "id": "N163",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "旅鼠跳崖說法廣為人知"
+  },
+  {
+   "id": "N174",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "愛因斯坦人人知道"
+  },
+  {
+   "id": "N308",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "死海銅卷屬考古文物"
+  },
+  {
+   "id": "N309",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "獨角獸人人認得"
+  },
+  {
+   "id": "N342",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "威廉泰爾射蘋果"
+  },
+  {
+   "id": "N363",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "胡桃鉗廣為人知"
+  },
+  {
+   "id": "N364",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "哈姆雷特人人知道"
+  },
+  {
+   "id": "N365",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "羅密歐與茱麗葉"
+  },
+  {
+   "id": "N366",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "浮士德名字廣為人知"
+  },
+  {
+   "id": "N406",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本鬼王傳說"
+  },
+  {
+   "id": "N441",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本妖怪但需解釋"
+  },
+  {
+   "id": "N444",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本傳說但需解釋"
+  },
+  {
+   "id": "N501",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "宋史客星紀錄"
+  },
+  {
+   "id": "N503",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "西漢銅鏡與沈括"
+  },
+  {
+   "id": "N508",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "印尼疑似古金字塔"
+  },
+  {
+   "id": "N509",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "古人類骨骸遺址"
+  },
+  {
+   "id": "N524",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "哥斯大黎加古石球"
+  },
+  {
+   "id": "N526",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "偽古文明刻石"
+  },
+  {
+   "id": "N541",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "科摩多龍廣為人知"
+  },
+  {
+   "id": "N544",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "婆羅浮屠古遺跡"
+  },
+  {
+   "id": "N547",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "越南古螺考古出土"
+  },
+  {
+   "id": "N604",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "高句麗人物但不有名"
+  },
+  {
+   "id": "N622",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本魚津蜃氣樓"
+  },
+  {
+   "id": "N644",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本民間故事"
+  },
+  {
+   "id": "N645",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本民間故事"
+  },
+  {
+   "id": "N646",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本鶴妻故事"
+  },
+  {
+   "id": "N663",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本德川埋藏金"
+  },
+  {
+   "id": "N664",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "阿茲特克出土金條"
+  },
+  {
+   "id": "N741",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "滑鐵盧與威靈頓"
+  },
+  {
+   "id": "N743",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本源賴朝像"
+  },
+  {
+   "id": "N761",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "韓國民間故事仙女與樵夫"
+  },
+  {
+   "id": "N822",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本北枕禁忌"
+  },
+  {
+   "id": "N861",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本諏訪湖御神渡紀錄"
+  },
+  {
+   "id": "N921",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "東京赤斗篷流言"
+  },
+  {
+   "id": "N922",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本幸福連鎖信"
+  },
+  {
+   "id": "N1001",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "韓國聖德大王神鐘傳說"
+  },
+  {
+   "id": "N1002",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "韓國春香傳"
+  },
+  {
+   "id": "N1003",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "韓國洪吉童傳"
+  },
+  {
+   "id": "N1004",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "韓國薯童與彌勒寺"
+  },
+  {
+   "id": "N1005",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "韓國新羅處容傳說"
+  },
+  {
+   "id": "N1021",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "魯賓遜漂流記廣為人知"
+  },
+  {
+   "id": "N1082",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "達爾文家喻戶曉"
+  },
+  {
+   "id": "N1083",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "鬥魚是常見觀賞魚"
+  },
+  {
+   "id": "N1121",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "曼哈頓人人知道"
+  },
+  {
+   "id": "N1123",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本人山田長政"
+  },
+  {
+   "id": "N1143",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "西班牙出土古代雕像"
+  },
+  {
+   "id": "N1181",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "旅館留房給南海女王的靈異傳說"
+  },
+  {
+   "id": "N1241",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "林肯人人知道"
+  },
+  {
+   "id": "N1304",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "首爾南大門匾額"
+  },
+  {
+   "id": "N1345",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "江戶時代京都極光紀錄"
+  },
+  {
+   "id": "N1381",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本御宿海女救難"
+  },
+  {
+   "id": "N1423",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "韓國怪獸不可殺伊"
+  },
+  {
+   "id": "N1461",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "韓國兔子與鱉故事"
+  },
+  {
+   "id": "N1464",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本安珍與清姬"
+  },
+  {
+   "id": "N1501",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "韓國測雨器與蔣英實"
+  },
+  {
+   "id": "N1502",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "朝鮮讓寧大君"
+  },
+  {
+   "id": "N1581",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "江戶時代日食預報"
+  },
+  {
+   "id": "N1623",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "哥倫布人人知道"
+  },
+  {
+   "id": "N1624",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本毛利元就三支箭"
+  },
+  {
+   "id": "N1701",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "韓國雉岳山報恩傳說"
+  },
+  {
+   "id": "N1741",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "朝鮮肅宗的貓"
+  },
+  {
+   "id": "N1742",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "朝鮮李芳遠何如歌"
+  },
+  {
+   "id": "N1821",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本櫻島噴火石碑"
+  },
+  {
+   "id": "N1822",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本稻村之火"
+  },
+  {
+   "id": "N1823",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "聖嬰現象人人聽過"
+  },
+  {
+   "id": "N1824",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本幻蛇槌之子"
+  },
+  {
+   "id": "N1867",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本大岡越前裁判故事"
+  },
+  {
+   "id": "N1941",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "韓國沈清傳"
+  },
+  {
+   "id": "N1964",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "峇里島人人知道"
+  },
+  {
+   "id": "N1965",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "泰國班清考古遺址定年"
+  },
+  {
+   "id": "N1967",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "長崎越南公主遊行"
+  },
+  {
+   "id": "N1981",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "朝鮮流放大象"
+  },
+  {
+   "id": "N1982",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "高麗文益漸帶回棉花"
+  },
+  {
+   "id": "N2061",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本濃尾地震斷層"
+  },
+  {
+   "id": "N2064",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本福島磐梯山噴發"
+  },
+  {
+   "id": "N2084",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "紅毛猩猩是熟悉的動物"
+  },
+  {
+   "id": "N2089",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本歌舞伎人物"
+  },
+  {
+   "id": "N2145",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本民間故事分福茶釜"
+  },
+  {
+   "id": "N2184",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "阿茲特克古文明石刻"
+  },
+  {
+   "id": "N2201",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "暹羅貓是熟悉的貓種"
+  },
+  {
+   "id": "N2221",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "朝鮮王朝成語典故"
+  },
+  {
+   "id": "N2261",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本妖怪鎌鼬的解釋"
+  },
+  {
+   "id": "N2281",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本幕末神札騷動"
+  },
+  {
+   "id": "N2304",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "莎士比亞與世界書日"
+  },
+  {
+   "id": "N2328",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "朝鮮書生與詩人"
+  },
+  {
+   "id": "N2341",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "西班牙無敵艦隊"
+  },
+  {
+   "id": "N2463",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "東南亞難產母嬰鬼"
+  },
+  {
+   "id": "N2485",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "附在屍體上的印度鬼"
+  },
+  {
+   "id": "N2486",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "食屍鬼傳說的來源"
+  },
+  {
+   "id": "N2521",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "假福爾摩沙人寫台灣"
+  },
+  {
+   "id": "N2522",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "美洲墓葬土墩刻石"
+  },
+  {
+   "id": "N2525",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "史前人類頭骨真偽"
+  },
+  {
+   "id": "N2622",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "格林童話小紅帽睡美人"
+  },
+  {
+   "id": "N2624",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "浴火鳳凰人人知道"
+  },
+  {
+   "id": "N2626",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "鵝媽媽童謠"
+  },
+  {
+   "id": "N2682",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "古羅馬UFO目擊說"
+  },
+  {
+   "id": "N2742",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "復活節兔子"
+  },
+  {
+   "id": "N2746",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "羅馬競技場的拇指手勢"
+  },
+  {
+   "id": "N2761",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "邁錫尼黃金面具考古"
+  },
+  {
+   "id": "N2764",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "達文西蠟像真偽"
+  },
+  {
+   "id": "N2765",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "莎士比亞死亡面具"
+  },
+  {
+   "id": "N2766",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "笛卡兒的頭骨"
+  },
+  {
+   "id": "N2786",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "袋鼠名稱的由來"
+  },
+  {
+   "id": "N2985",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "戰場天使顯靈傳說"
+  },
+  {
+   "id": "N3004",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "羅馬出土古雕像拉奧孔"
+  },
+  {
+   "id": "N3005",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "尼尼微洪水泥板"
+  },
+  {
+   "id": "N3021",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "姆大陸失落文明"
+  },
+  {
+   "id": "N3022",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "沉沒大陸Lemuria"
+  },
+  {
+   "id": "N3101",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "倫敦鐵橋垮下來童謠"
+  },
+  {
+   "id": "N3144",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "死去戀人騎馬來接的詩"
+  },
+  {
+   "id": "N3184",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "哥倫布與馬尾藻海"
+  },
+  {
+   "id": "N3222",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "臺灣東邊海域落漈傳說"
+  },
+  {
+   "id": "N3343",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本淺間山噴發與鎌原村"
+  },
+  {
+   "id": "N3404",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "晚唐韋莊與敦煌寫本"
+  },
+  {
+   "id": "N3422",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "印加古文明始祖傳說"
+  },
+  {
+   "id": "N3561",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "以灰姑娘原型為題"
+  },
+  {
+   "id": "N3582",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "古埃及門農巨像遺跡"
+  },
+  {
+   "id": "N3661",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "偽造失落文明石板"
+  },
+  {
+   "id": "N3662",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "古土墩出土偽希伯來石"
+  },
+  {
+   "id": "N3763",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "偽造伊特拉斯坎古物"
+  },
+  {
+   "id": "N3841",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本牛若丸與弁慶傳說"
+  },
+  {
+   "id": "N3866",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "聖女貞德人人知道"
+  },
+  {
+   "id": "N3881",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "拿破崙人人知道"
+  },
+  {
+   "id": "N3901",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "瓦特與蒸汽機人人知道"
+  },
+  {
+   "id": "N3902",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "富蘭克林放風箏人人知道"
+  },
+  {
+   "id": "N3906",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "阿基米德人人知道"
+  },
+  {
+   "id": "N4046",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "歌德為知名文豪"
+  },
+  {
+   "id": "N4065",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本化學家小川正孝"
+  },
+  {
+   "id": "N4121",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "夜路靈異魔犬傳說"
+  },
+  {
+   "id": "N4184",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "法老墓出土古麥傳說"
+  },
+  {
+   "id": "N4242",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "笛卡兒為知名哲學家"
+  },
+  {
+   "id": "N4244",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "列子偃師與周穆王"
+  },
+  {
+   "id": "N4322",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "斷頭台人人知道"
+  },
+  {
+   "id": "N4323",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "富蘭克林與日光節約時間"
+  },
+  {
+   "id": "N4326",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "莫非定律廣為人知"
+  },
+  {
+   "id": "N4381",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "靈魂重量與死亡瞬間"
+  },
+  {
+   "id": "N4382",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "聖母峰人人知道"
+  },
+  {
+   "id": "N4523",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "法布爾昆蟲記廣為人知"
+  },
+  {
+   "id": "N4604",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "加拿大國名人人認得"
+  },
+  {
+   "id": "N4641",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "蘇格蘭裙一聽就懂"
+  },
+  {
+   "id": "N4761",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "古代七大奇蹟的羅德島巨像"
+  },
+  {
+   "id": "N4762",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "古代奇蹟亞歷山卓燈塔"
+  },
+  {
+   "id": "N4764",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "古代奇蹟阿提米絲神廟"
+  },
+  {
+   "id": "N4822",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "高斯一加到一百課本故事"
+  },
+  {
+   "id": "N4823",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "貝爾發明電話人人知道"
+  },
+  {
+   "id": "N4962",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "達文西人人叫得出"
+  },
+  {
+   "id": "N5002",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "伽利略人人叫得出"
+  },
+  {
+   "id": "N5003",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "海王星人人認得"
+  },
+  {
+   "id": "N5082",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "馬克吐溫名字響亮"
+  },
+  {
+   "id": "N5083",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "大腳怪一聽就知道"
+  },
+  {
+   "id": "N5126",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "梁書記載的中國和尚慧深"
+  },
+  {
+   "id": "N5282",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "凱撒與奧古斯都的曆法"
+  },
+  {
+   "id": "N5283",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "牛頓與伽利略"
+  },
+  {
+   "id": "N5384",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "亞歷山卓的古羅馬石柱遺跡"
+  },
+  {
+   "id": "N5385",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "亞瑟王圓桌人人知道"
+  },
+  {
+   "id": "N5423",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "彼得大帝名字響亮"
+  },
+  {
+   "id": "N5462",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "龍涎香一聽就認得"
+  },
+  {
+   "id": "N5481",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "安徒生豌豆公主"
+  },
+  {
+   "id": "N5482",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "螞蟻與蚱蜢寓言人人知道"
+  },
+  {
+   "id": "N5483",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "伊索寓言給貓掛鈴鐺"
+  },
+  {
+   "id": "N5544",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "馬德堡半球課本實驗"
+  },
+  {
+   "id": "N5562",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "格林童話不來梅樂隊"
+  },
+  {
+   "id": "N5563",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "龜兔賽跑人人知道"
+  },
+  {
+   "id": "N5661",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "瑪莉有隻小綿羊人人會唱"
+  },
+  {
+   "id": "N5662",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "聖誕老人與馴鹿人人認得"
+  },
+  {
+   "id": "N5761",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "愛麗絲夢遊仙境家喻戶曉"
+  },
+  {
+   "id": "N5803",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "撲克牌黑桃A人人認得"
+  },
+  {
+   "id": "N5861",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "愛迪生是家喻戶曉的名字"
+  },
+  {
+   "id": "N5962",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "主角是中國徽州外銷綠茶"
+  },
+  {
+   "id": "N6005",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "伏爾泰是課本裡的名字"
+  },
+  {
+   "id": "N6064",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "海妖囚禁溺死者靈魂的怪談"
+  },
+  {
+   "id": "N6202",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "幕末橫濱開港的日本金銀"
+  },
+  {
+   "id": "N6303",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "景德鎮中國瓷器的秘密"
+  },
+  {
+   "id": "N6305",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "清代廣州十三行行商"
+  },
+  {
+   "id": "N6361",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "亞當斯密國富論課本必教"
+  },
+  {
+   "id": "N6661",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "蒙娜麗莎人人認得"
+  },
+  {
+   "id": "N6665",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "龐氏騙局一詞廣為人知"
+  },
+  {
+   "id": "N6701",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "青蛙王子家喻戶曉"
+  },
+  {
+   "id": "N6702",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "小紅帽家喻戶曉"
+  },
+  {
+   "id": "N6703",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "安徒生豌豆公主家喻戶曉"
+  },
+  {
+   "id": "N6704",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "灰姑娘家喻戶曉"
+  },
+  {
+   "id": "N6723",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "魯賓遜漂流記家喻戶曉"
+  },
+  {
+   "id": "N6801",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "睡美人家喻戶曉"
+  },
+  {
+   "id": "N6802",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "小美人魚家喻戶曉"
+  },
+  {
+   "id": "N6804",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "白雪公主家喻戶曉"
+  },
+  {
+   "id": "N6904",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "馬丁路德是課本人物"
+  },
+  {
+   "id": "N6922",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "林肯人人認得"
+  },
+  {
+   "id": "N6923",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "末世千年王國狂熱"
+  },
+  {
+   "id": "N6924",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "柴可夫斯基是知名作曲家"
+  },
+  {
+   "id": "N6977",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "馬里亞納海溝名字耳熟"
+  },
+  {
+   "id": "N7001",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "柯達是知名品牌"
+  },
+  {
+   "id": "N7009",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "始祖鳥課本常見"
+  },
+  {
+   "id": "N7020",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "赫茲是熟悉的單位名"
+  },
+  {
+   "id": "N7028",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "格林威治時間人人聽過"
+  },
+  {
+   "id": "N7038",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "巴拿馬運河名字耳熟"
+  },
+  {
+   "id": "N7044",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "法拉第是課本人物"
+  },
+  {
+   "id": "N7061",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "歐姆定律課本必學"
+  },
+  {
+   "id": "N7062",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "法拉第是課本人物"
+  },
+  {
+   "id": "N7063",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "焦耳是熟悉的單位名"
+  },
+  {
+   "id": "N7066",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "元素週期表人人學過"
+  },
+  {
+   "id": "N7076",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "薛丁格因貓廣為人知"
+  },
+  {
+   "id": "H27",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "H29",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "H32",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "H35",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "H36",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "M22",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N101",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N102",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N104",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N105",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N106",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N107",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N110",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N126",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N127",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N128",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N130",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N166",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N167",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N168",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N301",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N302",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N303",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N304",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N305",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N306",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N307",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N343",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N382",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N383",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N385",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N542",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N546",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N548",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N565",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N606",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N608",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N609",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N611",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N625",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N649",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N665",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N725",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N727",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N744",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N746",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N749",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N763",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N864",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N865",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N866",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N884",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N885",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N901",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N903",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N904",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N905",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N908",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N924",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N965",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N982",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1025",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1061",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1065",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1081",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1122",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1125",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1226",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1242",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1243",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1262",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1264",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1303",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1341",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1346",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1361",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1364",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1365",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1366",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1382",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1421",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1424",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1466",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1467",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1481",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1483",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1543",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1582",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1583",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1585",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1602",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1663",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1702",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1721",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1724",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1726",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1727",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1744",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1825",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1841",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1846",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1847",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1848",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1865",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1942",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1983",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1984",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2062",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2063",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2065",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2081",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2103",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2105",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2143",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2146",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2203",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2225",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2322",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2383",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2442",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2443",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2444",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2462",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2523",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2524",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2528",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2582",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2602",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2603",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2607",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2608",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2621",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2623",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2625",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2662",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2663",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2684",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2741",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2743",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2744",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2781",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2783",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2784",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2785",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2821",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2822",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2823",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2824",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2825",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2922",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2924",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2925",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2926",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2941",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2942",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2944",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3023",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3024",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3027",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3045",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3063",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3065",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3102",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3104",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3182",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3185",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3186",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3241",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3242",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3261",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3262",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3263",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3264",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3341",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3345",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3402",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3403",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3424",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3501",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3503",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3505",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3562",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3565",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3581",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3583",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3742",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3743",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3821",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3823",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3824",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3825",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3861",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3862",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3863",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3864",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3865",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3882",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3883",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3884",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3885",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3981",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3982",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3983",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3984",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4001",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4002",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4021",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4024",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4025",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4043",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4062",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4063",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4064",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4122",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4181",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4183",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4201",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4202",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4203",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4204",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4221",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4223",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4241",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4243",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4281",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4282",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4285",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4301",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4303",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4325",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4361",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4362",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4363",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4383",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4386",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4401",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4402",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4403",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4405",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4441",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4442",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4443",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4445",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4481",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4483",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4484",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4485",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4486",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4521",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4522",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4526",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4541",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4542",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4544",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4561",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4562",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4563",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4565",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4585",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4606",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4642",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4643",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4644",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4681",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4682",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4685",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4703",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4704",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4721",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4724",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4725",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4726",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4765",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4803",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4804",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4805",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4824",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4881",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4882",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4883",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4905",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4944",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4945",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4963",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5004",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5042",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5043",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5081",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5122",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5141",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5181",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5183",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5201",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5202",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5203",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5241",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5242",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5245",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5281",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5323",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5324",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5342",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5343",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5344",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5361",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5362",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5381",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5421",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5422",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5424",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5425",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5461",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5463",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5464",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5465",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5501",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5502",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5503",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5504",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5505",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5541",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5542",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5543",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5545",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5561",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5601",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5602",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5603",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5604",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5605",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5641",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5642",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5643",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5644",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5645",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5701",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5702",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5703",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5704",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5705",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5762",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5763",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5764",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5765",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5801",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5802",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5804",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5805",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5862",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5863",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5901",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5902",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5903",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5904",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5905",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5961",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5963",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6001",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6002",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6003",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6004",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6044",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6045",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6061",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6062",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6063",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6101",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6102",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6103",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6104",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6105",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6161",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6162",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6163",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6164",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6201",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6203",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6204",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6205",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6244",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6245",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6261",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6262",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6263",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6264",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6265",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6301",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6302",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6304",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6324",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6362",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6363",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6364",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6365",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6401",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6402",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6403",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6404",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6405",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6424",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6444",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6461",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6462",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6463",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6501",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6502",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6503",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6504",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6505",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6561",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6562",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6563",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6564",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6565",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6601",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6602",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6603",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6662",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6663",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6664",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6721",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6722",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6725",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6761",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6762",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6763",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6764",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6765",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6803",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6821",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6822",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6823",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6824",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6901",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6902",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6903",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6906",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6907",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6908",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6909",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6921",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6926",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6927",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6928",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6929",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6941",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6942",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6946",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6947",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6951",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6952",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6956",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6957",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6960",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6961",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6962",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6966",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6967",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6971",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6972",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6976",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6980",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6981",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6982",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6986",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6989",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6993",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6994",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6997",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N6998",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7002",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7007",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7008",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7013",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7016",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7017",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7018",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7021",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7022",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7023",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7024",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7026",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7027",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7029",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7031",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7032",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7033",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7036",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7037",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7039",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7040",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7041",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7042",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7043",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7046",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7047",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7048",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7049",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7051",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7052",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7053",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7054",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7056",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7057",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7058",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7059",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7060",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7064",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7067",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7068",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7069",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7071",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7072",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7073",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7074",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7077",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7078",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7079",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N7080",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  }
+ ]
+}
