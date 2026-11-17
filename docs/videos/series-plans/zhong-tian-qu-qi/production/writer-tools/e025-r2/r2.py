@@ -14,8 +14,8 @@ pickers caught in e921-e924 (colab/runs/e92{1,2,3,4}-live/{review-picks-a,review
   "facing straight away from us", head still, just two round buns, one pink ribbon each, the nape bare (TBACK, e924 fix1's
   wording). Her lines: s05, s07, s10, s11, s14 (scene 1), s19 (scene 2), s32, s36, s40 (scene 3) from behind (nospeak;
   spec drops her pictures and identity sentence); s08, s17, s31 off screen; s13, s16, s38 her back in a shot with no line of
-  hers (not on chars: unnamed, no picture). The wide shots s01, s09, s22, s31 leave her out (e924 s01: in a wide she turns and
-  shows a cheek). The script's close-ups of her face (c05, c10, c11, c14, c16, c36), her tears, the bead she flicks (c05)
+  hers (not on chars: unnamed, no picture). The wide shots s01, s22, s31 leave her out, and the script's wide s09 becomes Erniu alone (e924 s01: in a
+  wide she turns and shows a cheek). The script's close-ups of her face (c05, c10, c11, c14, c16, c36), her tears, the bead she flicks (c05)
   and her turning to Xu Yan (c14) go to the recordings and the sound effects.
 - The abacus (rule 20) is in no shot: no insert of it in this script.
 - Name only what should be drawn: the paper is blank and plain (rule 17, 27), the letter is "one sheet of plain paper folded
@@ -114,7 +114,7 @@ OFFSCREEN_SPEECH = False
 # Repeated wording (each prop is one object, written the same way every time).
 XU_N = "Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms"
 # the script: the old grey outer coat at night (scenes 2 and 3)
-XU_C = "Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe"
+XU_C = "Xu Yan, in an old plain grey cloth outer coat worn loose over his faded blue-grey scholar's robe"
 ERNIU = "Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves"
 QIN = "Qin Shuang, in her dark brown cross-collared short jacket, wide black leather belt and black leather bracers, her high black ponytail"
 STAFF = "one plain long wooden staff, taller than she is, smooth and round to its ends"
@@ -186,9 +186,9 @@ SHOTS = [
          motion="Xu Yan raps the rim of the funnel twice with his knuckle as he speaks; after the last word he keeps his eyes on Erniu",
          zh="中近景、慢推（送糖坊裁切）：許硯站在左牆矮凳邊，那碗白糖第一格已經放在矮凳上（稿子『放在木板桌上』改放矮凳：一鏡一個動作，碗跟著他），手搭在立在陶罐裡的漏斗口，用指節敲兩下，朝畫右的二牛（畫外）篤定地說，不笑。稿子『走兩步放碗、退回、坐上陶罐』拿掉（一鏡一個動作）"),
     dict(loc="shed_c", cam="Medium shot, slow push in", chars=["erniu"], night="shed",
-         comp=f"medium shot of {ERNIU}, standing by the stone basin, framed from the waist up, {SACK} already dropped in a heap on the dirt floor at his feet from the first frame, both open hands already spread at his sides, palms up, his face three-quarter to screen left toward Xu Yan off screen left, never the lens; glum, not smiling: brows drawn together, lips moving between words; behind him the shed in the low gold light, soft; {HANDS}",
+         comp=f"medium shot of {ERNIU}, standing by the stone basin, framed from the waist up, {SACK} already dropped in a heap on the dirt floor at his feet from the first frame, both hands already spread at his sides, palms up, his face three-quarter to screen left toward Xu Yan off screen left, never the lens; glum, not smiling: brows drawn together, lips moving between words; behind him the shed in the low gold light, soft; {HANDS}",
          lines=[("erniu", "甘蔗？咱們這邊不長，要到江南才有。", "不笑")],
-         motion="Wang Erniu shrugs, his open hands spreading wider as he speaks; after the last word he lets them drop",
+         motion="Wang Erniu shrugs, his hands spreading wider as he speaks; after the last word he lets them drop",
          zh="中景、慢推（送糖坊裁切）：二牛的空麻袋第一格已經丟在腳邊，兩手攤開，朝畫左的許硯（畫外）不笑地說（報壞消息不笑）。稿子『把麻袋往灶邊一丟』不拍（一鏡一個動作，丟袋交給音效）"),
     dict(loc="shed_c", cam="Over-the-shoulder medium shot, slow push in", chars=["tangxiaotang", "erniu"], nospeak=["tangxiaotang"], night="shed",
          comp=back(f"both her hands resting on the table top; facing us beyond her by the stone basin, a little left of the middle, {ERNIU}, framed from the waist up, his face three-quarter to screen right toward her, never the lens; puzzled and listening: brows up, he says nothing, his lips closed; behind him the plaster wall and the brown clay funnels, soft; {HANDS}; exactly two people, the young woman in the foreground seen only from behind",
@@ -275,7 +275,7 @@ SHOTS = [
          motion=f"the young woman rubs her hands together against the cold as she speaks; {HEADSTILL}; {quiet('Wang Erniu')}; he stands still at the end of the jetty, holding the torch high",
          zh="中景（從背後）、慢推（送渡口棧橋的免費裁切 `set-dukou-ye-qiao-l1`）：唐小棠的背影在棧橋上、畫面正中，朝霧裡的水，兩手搓著說（nospeak）；棧橋盡頭二牛的背影小小的、右手高舉火把、嘴閉著。稿子的全景（許硯、秦霜、十個少年同框）改成兩個人的背影（人多容易多出分身與半個頭；拍法 25）；踮腳看霧不拍"),
     dict(loc="landing_w", cam="Close-up, slow push in", chars=["xuyan"], night="night",
-         comp=f"close-up of {XU_C}, standing on the jetty, framed from the chest up with space above his head, his face three-quarter to screen right toward the fog over the water, never the lens; grim: brows drawn, lips pressed shut; warm torchlight flickering on one side of his face; behind him only the drifting fog in the cold blue night, soft",
+         comp=f"close-up of {XU_C}, standing on the jetty, framed from the chest up with space above his head, his face three-quarter to screen right toward the fog over the water, never the lens; grim: brows drawn, lips pressed shut; warm torchlight dancing on one side of his face; behind him only the drifting fog in the cold blue night, soft",
          lines=[("xitong", "叮。鬥商第六日，落後兩成。", "冷，宣布"),
                 ("xitong", "落後兩成。宿主的白糖，到今天還是那一碗。", "冷")],
          panel=[("鬥商第六日，落後兩成", "task")],
@@ -306,7 +306,7 @@ SHOTS = [
          motion=NOBODY + "the shop boy jabs his stick toward the jetty as he shouts, his mouth moving with the words; the three men behind him stand still with their sticks, their lips closed",
          zh="中景、慢推（送渡口霧色裁切）：坡腳魏記夥計第一格已經把木棍往畫左的棧橋一指，兇、不笑地喊（原版建議 s19：不咧嘴笑）；身後坡上三個打手虛焦、側面、嘴閉著。拍法 25：夥計中景只拍側面，不拍正臉近景"),
     dict(loc="landing_q", cam="Medium shot, slow push in", chars=["xuyan"], night="night",
-         comp=f"medium shot of {XU_C}, standing on the jetty planks, framed from the waist up, his face three-quarter to screen right toward Qin Shuang off screen right, never the lens; firm, not smiling: steady eyes, lips moving between words; warm torchlight flickering on his face; behind him the tall bare posts and the drifting fog, soft",
+         comp=f"medium shot of {XU_C}, standing on the jetty planks, framed from the waist up, his face three-quarter to screen right toward Qin Shuang off screen right, never the lens; firm, not smiling: steady eyes, lips moving between words; warm torchlight dancing on his face; behind him the tall bare posts and the drifting fog, soft",
          lines=[("xuyan", "護船的事，全聽秦霜的。秦霜，妳說怎麼打？", "篤定")],
          motion="Xu Yan takes half a step back as he speaks, giving her the front; after the last word he waits for her answer",
          zh="中景、慢推（送棧橋裁切）：許硯在棧橋上，火光在臉上跳，往後退半步把前面讓給畫右的秦霜（畫外），篤定地說，不笑。稿子右前景的秦霜肩與長棍不拍（畫緣會多出半個頭）"),
@@ -330,7 +330,7 @@ SHOTS = [
          motion=f"Qin Shuang's staff snaps up and knocks the stick out of his hands, the stick spinning away into the dark, and the shop boy stumbles back and sits down hard in the mud; {quiet('Qin Shuang', 'her')}; the shop boy says nothing, his lips closed",
          zh="低角度中景（側面）、慢推（送渡口霧色裁切）：左邊秦霜壓低身子雙手持棍、右邊魏記夥計舉棍（側面）；她的棍子往上一挑把他的木棍挑飛，他往後一跌坐進泥裡；兩人嘴閉著（無台詞；整個動作留在畫面裡）。稿子『再一掃他腳踝、收棍站直』拿掉（一鏡一個動作）；剪在他坐下去的一半"),
     dict(loc="bank", cam="Medium shot side-on, slow push in", chars=[], night="night",
-         comp=f"medium shot side-on of one thin young shop boy in a dark red cloth short jacket, his black cloth head wrap knocked crooked, sitting in the mud at the foot of the slope, empty-handed, framed from the waist up, both elbows already planted in the mud behind him from the first frame, his face in profile to screen left toward the jetty, never the lens; frightened and furious, not smiling: eyes wide, lips moving between stammered words; at the left edge of the frame the round tip of one plain long wooden staff held level; behind him the dark slope and the fog; he is the only person in the frame",
+         comp=f"medium shot side-on of one thin young shop boy in a dark red cloth short jacket, his black cloth head wrap knocked crooked, sitting in the mud at the foot of the slope, his stick gone, framed from the waist up, both elbows already planted in the mud behind him from the first frame, his face in profile to screen left toward the jetty, never the lens; frightened and furious, not smiling: eyes wide, lips moving between stammered words; at the left edge of the frame the round tip of one plain long wooden staff held level; behind him the dark slope and the fog; he is the only person in the frame",
          lines=[("weijihuoji", "你、你們等著，我回去告訴少爺！", "坐在泥裡往後退")],
          motion=NOBODY + "the shop boy scrabbles backward up the slope on his elbows and heels as he shouts, his mouth moving with the words",
          zh="中景（側面）、慢推（送渡口霧色裁切）：魏記夥計坐在泥裡、黑布包頭歪了、兩肘撐地，往後手腳並用退上坡，朝畫左的棧橋結巴地喊，不笑；畫左緣是秦霜長棍的棍尖（不點名）。稿子『紅布條歪了』照聖經〈小角色〉寫黑布包頭；打手跟著爬走交給音效"),
@@ -405,9 +405,11 @@ HEAD = [
     "- 重製版 r2、真人版（站主 2026-11-11「之後都用真人版」）：照 `docs/videos/zhong-tian-qu-qi-e025-r2/script.md`（c01–c40 對應 s01–s40；c20、c23、c40 各拆成兩鏡 s20／s20b、s23／s23b、s40／s40b，共 43 鏡；含「這版改了什麼」「2026-11-06 審稿後的修改」與「真人版的改動（2026-11-17）」）；台詞一字不改，只改拍法；每鏡一個看得見的動作、一句一筆不拆半句、預設不笑。篇章設定 `production/r2-bible-e021-e030.md`（拍法 1–30 條）。第 3 篇章〈搶親〉第五集。",
     "- 內部工作編號 925（`hailuo/{ff,clips}-dh-e925.json`、`colab/runs/e925/extras.json`、`colab/runs/e925-live/spec.json`，工作資料夾 `~/mokaair-work/videos/zhong-tian-qu-qi-e925-dh/`）；發布 slug `zhong-tian-qu-qi-e025-r2`。不放集數、不放片名卡；s01 接第 24 集 s36 的同一天午後（聖經接點 24→25：糖坊 `set-tangfang-l1`，灶在左前、右邊沒牆；二牛從右邊進棚抖空麻袋；許硯捧著那碗白糖站在左牆矮凳邊）；s40 交給第 26 集（接點 25→26：渡口甘蔗堆，唐小棠蹲著捧字條哭，許硯蹲在她旁邊，火把）。",
     "- 照第 24 集審稿後的寫法與第 21–24 集挑片學到的一開始就照做：`OFFSCREEN_SPEECH = False`；`quiet()` 只管嘴；背影或畫外的人說話時，每張朝鏡頭的臉都寫不說話、嘴閉著、在聽，不寫會引人笑或開口的字；掛著的東西不點名（棧橋寫木板、漏斗寫倒放在木架上）；道具與接觸寫在第一格；紙一律空白、信與字條只見摺起的外面；寫人數。",
-    "- **唐小棠不露嘴說話、本集也不露臉**（拍法 3）：她的台詞全部從背後拍（s05、s07、s10、s11、s14 糖坊；s19 渡口；s32、s36、s40 棧橋；nospeak，spec 拿掉她的圖與身分句；兩顆高丸子各一條粉緞帶、後頸露出、頭不動、正背對鏡頭）；s08、s17、s31 畫外；s13、s16、s38 只有背影、不點名不送圖；全景 s01、s09、s22、s31 不拍她；她獨自的背影鏡放在畫面正中（挑片：畫緣的背影常露側頰）。**算盤本集沒有**（拍法 20：稿子 c05 撥算珠交給音效）。",
+    "- **唐小棠不露嘴說話、本集也不露臉**（拍法 3）：她的台詞全部從背後拍（s05、s07、s10、s11、s14 糖坊；s19 渡口；s32、s36、s40 棧橋；nospeak，spec 拿掉她的圖與身分句；兩顆高丸子各一條粉緞帶、後頸露出、頭不動、正背對鏡頭）；s08、s17、s31 畫外；s13、s16、s38 只有背影、不點名不送圖；全景 s01、s22、s31 不拍她，s09 改成二牛一個人的中景；她獨自的背影鏡放在畫面正中（挑片：畫緣的背影常露側頰）。**算盤本集沒有**（拍法 20：稿子 c05 撥算珠交給音效）。",
     "- **場景圖說了算**（拍法 29，協調者 2026-11-17 決定，每張放大看過）：糖坊 `set-tangfang-l1`（s01）與第 24 集的免費裁切 `set-tangfang-jia-l1`（其餘第一場）：灶在左前、漏斗在左牆、石盆在中、右邊沒牆是欄杆與雪溪；許硯在左牆矮凳邊、二牛在中、唐小棠在右前的木板桌（桌子寫在鏡頭裡）。渡口夜霧 `set-dukou-ye-l1`（全景 s22、s31）與兩張新的免費裁切：棧橋 `set-dukou-ye-qiao-l1`、霧色 `set-dukou-ye-wu-l1`（近鏡與泥岸）。棧橋從畫左伸進水裡，船從畫右的霧裡來，魏記的人從右邊泥坡往畫左衝下來。**不需要試鏡**。",
     "- **船、棍、火把**（拍法 23、25）：三條船只在全景 s22、s31（遠、在霧裡），近一點的鏡只寫一個船頭；船頭一支火把（聖經的空白紙燈籠改火把：掛著的燈籠會長字）；木樁上三支火把插著、沒人拿。魏記夥計與打手一律「一根素面木棍」（原版必修：木棍變銅鑼）；秦霜一根比人高的素木長棍，柴刀不寫；少年十人只在全景 s31。",
+    "- 長鏡要買的秒數（BUY）：照 38 句錄音核過（見 `r2.py` 的 BUY 註解）：**稿子 c20（約 10 秒）、c23、c40 各拆成兩鏡**（s20／s20b、s23／s23b、s40／s40b，各 6 秒；c23 拆開是為了夥計在秦霜的畫外句裡不張嘴）；s33（鄭伯重錄後 7.36 秒）與 s40b（本集最後一鏡，留懸念的尾）買 8 秒；插鏡 s17、s39 與 s02、s12、s22、s23、s27、s29、s31 5 秒；其餘 6 秒。沒有超過約 10 秒的鏡。重錄 a31、a38、a36（第一次的檔在 `audio/take1/`）。",
+    "- **表上的「秒」欄是 lint 估法**，比錄音短；剪接以錄音的人聲長度為準。",
     "- **鄭伯**第一次出場：送 `zhengbo-portrait-l1`（高瘦長臉、灰白山羊鬚與細鬍、灰髮小髻束黑布、深褐緞袍）；`cast.json` 的「微胖、慈眉笑、袖口小毛筆」由 `colab/runs/e925/extras.json` 換掉。只有 s37 可以客氣地笑（稿子）。",
 ]
 FOOT = [
@@ -418,8 +420,25 @@ FOOT = [
     "- 配樂：糖坊沉的鋼琴，s05「姓唐」輕重音，s13 起加弦樂，s16「叮」；渡口風聲與低鼓，s21 船出現重音，s23 起打鬥鼓點，s31 收成開闊的弦樂；棧橋二胡，s35「舊帳」低重音，s39 字條輕重音、s40b 收。音效見 script.md〈音樂與音效〉（另外：s04 麻袋丟地、s05 算珠、s14 轉頭、s18 跑出去、s19 踮腳、s25 長棍轉動、s28 掃腳踝、s29 打手爬走與兩支火把、s32 跑步與跳板、s34 扶穩，都交給音效）。",
 ]
 
-# Long shots: seconds to buy (filled in after the recordings; see BUY).
-BUY = {}
+# Long shots: seconds to buy. Measured 2026-11-17 against the 38 recordings (~/mokaair-work/videos/zhong-tian-qu-qi-e925-dh/audio;
+# wave length and silencedetect -35 dB speech span; e013's test: a shot holds (buy - 0.3) x 1.1 s of speech, half a second
+# between lines, so 5 s holds 5.17 s, 6 s 6.27 s, 8 s 8.47 s). faster-whisper medium read every take back, one clip per process,
+# numpy input, once plain and once with the previous line and the line as context (audio/fw925.txt; audio/README-retakes.txt).
+# The script's long shots are split where the face changes (e024 s15/s15b): c20 (about 10 s: a18 2.25 + 0.5 + a19 2.76 + 0.5 +
+# a20 3.83 = 9.84 s of speech, over 8.47) into s20 (the two system lines, 5.51 s) and s20b (his thought, 3.83 s); c23 into s23
+# (Qin Shuang off screen, a22 3.26 s, over the men running down) and s23b (the boy's shout, a23 3.32 s), so the boy's lips stay
+# closed under her line; c40 (a37 4.12 + 0.5 + a38 4.55 = 9.17 s, two speakers, two faces) into s40 and s40b.
+# 8 s: s33 (a31, Steward Zheng's slow, moved delivery: the first take ran 9.16 s with 8.50 s of speech, past even an 8 s clip;
+#      the one retake runs 7.36 s with 6.68 s of speech, inside 8.47);
+#      s40b (a38 4.55 s fits 6 s, but it is the episode's last shot: the hook needs a held tail, as e923 s40 and e924 s36).
+# 6 s: every other speaking shot. The tightest: s20 (5.51 s), s11 (a10 5.19 s, a back shot), s37 (a35 4.78 s), s13 (a11 4.91 s).
+# 5 s: s17 (the wax insert, a15 3.63 s off screen; gen-dh's two-beat rule would buy 6), s23 (a22 3.26 s off screen over the
+#      wide), s29 (a27 2.45 s), s39 (a36 1.59 s); the silent inserts s02, s12 and the wides s22, s27, s31 as gen-dh buys them.
+# No shot runs over about 10 s after the three splits.
+# Re-recorded once (first takes in audio/take1/): a31 (9.16 s, too long for any clip under 10 s), a38 (Xu Yan's thought at a
+# median 85 Hz, under his 96-145 Hz range; the retake reads 107 Hz), a36 (囡囡 heard as 奶奶 in both passes; the retake reads
+# 囡囡 in context, 2.60 s, inside 5 s).
+BUY = {"s17": 5, "s33": 8, "s40b": 8}
 
 
 # ---- the refine text (e022 review 必改 12, as e023, e024): hailuo/clips-dh-e925.json column 0 is the motion text
