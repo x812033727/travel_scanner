@@ -406,7 +406,7 @@ HEAD = [
     "- **唐小棠不露嘴說話、不露臉**（拍法 3）：她的五句（s02、s08、s14、s28、s33）與好感那一鏡（s20）全從背後拍、畫面正中、正背對鏡頭、頭不動、剛好兩顆丸子；最後的全景（s41）小小的背影；spec 拿掉她的圖與身分句。算盤本集不拍（拍法 20：只在插鏡；s33 的「喀」是音效）。",
     "- **魏少卿**扇子一直合著（拍法 30）；s26、s30、s34、s37、s40 不笑（撤婚、認出阿令是他輸的鏡）。**唐萬金**第一場哭、s25–s29 不笑（原版必修：說抵押時仰頭大笑），s35 可以笑。**鄭伯**照聖經跟唐萬金同鏡耳語（s24，高瘦，手擋著嘴、錄音）。**阿令**：s09 起戴面巾（送 `aling-veil-portrait-l1`），s38、s39、s41 第一格面巾已吹到左耳那一邊（送沒面巾的定妝照；拍法 21）。",
     "- **場景圖說了算**（拍法 29，協調者 2026-11-17 決定，每張放大看過）：廣場沿用第 29 集午後的 `-pm-you-wu-l1`、`-pm-shu-l1`；院子是聖經挑定的 `set-xujia-yuan-dong-l1`（柿子樹光禿；井在前右、院門在後牆中間、屋與柴堆在左），**免費修圖與裁切七張**：`set-xujia-yuan-dong-qing-l1`（塗掉屋牆上的空白木板、門楣的小紅點、樹上兩片像吊牌的葉子）與它的 `-men-l1`、`-jing-l1`、`-wu-l1`、`-qiang-l1`、`-shu-l1`、`-di-l1`（見 refs-live README）。圖上沒有柿子樹下的矮木桌與長凳：不寫，唐萬金站著、帳本與碗拿在手上。**不需要試鏡**。",
-    "- 長鏡要買的秒數（BUY）：照錄音核過（見 `r2.py` 的 BUY 註解）。",
+    "- 長鏡要買的秒數（BUY）：照錄音核過（見 `r2.py` 的 BUY 註解）：s10、s15、s21、s30、s41 買 8 秒；插鏡 s17、s22、s32、心裡話 s21b、懸念句 s40 與無台詞的 s09、s38、s39 買 5 秒；其餘 6 秒。稿子 c21 三句錄音 10.11 秒，拆成 s21／s21b。**s28 剪接用降調的新檔** `audio/zq930a28-p79.wav`（唐小棠背影、放的就是錄音；formant 保留，325→257 Hz，帶上下文聽寫 r1.00；`video.json` 的台詞 id 照舊）。",
     "- **表上的「秒」欄是 lint 估法**，比錄音短；剪接以錄音的人聲長度為準。",
 ]
 FOOT = [
@@ -417,8 +417,26 @@ FOOT = [
     "- 配樂：第一場溫暖又不安的弦（接第 29 集），s03 一個停頓；院子暖的家常 cue，s17–s21 轉甜，s24 耳語整段收掉，s25–s30 低沉的弦，s31 撕婚書一個大重音、回到暖 cue；第三場只剩風聲，s38 一個極輕的高音，s40 一個沉的大重音。音效見 script.md〈音樂與音效〉（另外：母雞拍翅、算盤「喀」、扇子收起、乾葉滾過土，都交給音效）。",
 ]
 
-# Long shots: seconds to buy. Filled in after the recordings are measured (see the comment written below at that time).
-BUY = {}
+# Long shots: seconds to buy. Measured 2026-11-17 against the 37 kept recordings (~/mokaair-work/videos/zhong-tian-qu-qi-e930-dh/audio;
+# wave length and silencedetect -35 dB speech span, scratchpad span930.sh; e013's test as e928, e929: a shot holds (buy - 0.3) x 1.1 s
+# of speech, half a second between lines, so 5 s holds 5.17 s, 6 s 6.27 s, 8 s 8.47 s). faster-whisper medium read every take back,
+# one clip per process, numpy input, once plain and once with the previous line and the line as context (audio/fw930.txt,
+# fw930-retake.txt, fw930-pitch.txt; audio/README-retakes.txt). c21's three recordings run 3.35 + 0.5 + 2.28 + 0.5 + 3.48 = 10.11 s
+# (over about 10 s): split into s21 (the system's two lines, 6.13 s) and s21b (his thought, 3.48 s), as e928 c15. No other shot runs
+# over about 10 s.
+# 8 s: s10 (a09 Wei Shaoqing's drawl, 7.64 s), s15 (a14 6.44 s), s30 (a30 6.32 s), s21 (6.13 s: the script's 長鏡 c21, two system
+#      lines and the panel), s41 (the episode's and the arc's last shot: the hook needs a held tail, as e923-e929).
+# 6 s: every other speaking shot; the tightest: s05 (a05 6.20 s), s23 (a23 5.92 s), s35 (a34 5.80 s), s34 (a33 5.76 s), s37 (a36
+#      5.76 s), s25 (a25 retake 5.64 s), s01 (a01 retake 5.40 s).
+# 5 s: the inserts s17 (a16 4.08 s), s22, s32; s21b (a22 3.48 s); s40 (a37 2.72 s: the hook line, the shot is the freeze); the
+#      no-line shots s09, s38, s39.
+# The cut uses audio/zq930a28-p79.wav for s28 (Tang Xiaotang from behind: the recording is what plays; take1 325 Hz sat 4.4
+# semitones over her same-scene a08 203, a13 253, a32 238; the retake was no better, 326 Hz): rubberband=pitch=0.79:formant=preserved,
+# 257 Hz, 3.77 s, context r1.00. video.json keeps the line id zq930a28 (a line has no file field). The on-screen speakers' clip
+# voices are primary; backups lowered or raised with formants kept, if a recording is ever used: zq930a17-p75 (Tang Wanjin, 233 ->
+# 178 Hz), zq930a29-p84 (205 -> 174), zq930a31-p71 (243 -> 177; his shout next to her a32 238), zq930a23-p126 (Wei Shaoqing 82 ->
+# 116 Hz); each read r1.00 in context except a23 (its leading 哈哈, in every take, r0.86).
+BUY = {"s10": 8, "s15": 8, "s21": 8, "s30": 8, "s41": 8, "s17": 5, "s22": 5, "s32": 5, "s21b": 5, "s40": 5, "s09": 5, "s38": 5, "s39": 5}
 
 
 # ---- the refine text (e022 review 必改 12, as e023-e029): hailuo/clips-dh-e930.json column 0 is the motion text
