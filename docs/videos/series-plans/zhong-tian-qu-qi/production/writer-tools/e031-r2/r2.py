@@ -508,6 +508,13 @@ FOOT = [
 #      episode's last shot: the hook needs a held tail, as e923-e930).
 # 5 s: s07 and s18 (no line), s16 and s29b (short thoughts), s21 (the insert, a three-character shout), s21b (the silent face).
 # 6 s (gen-dh's default for a spoken line): every other shot.
+# MEASURED 2026-11-17 after the recordings (audio/span931.txt, silencedetect -35 dB; e930's test: a shot holds (buy - 0.3) x 1.1 s
+# of speech, half a second between lines: 5 s 5.17, 6 s 6.27, 8 s 8.47). d1 was already running with these values, so they stay.
+# Every shot fits except s29: a29 (4.86 s, and 202 Hz, out of Xu Yan's range) + 0.5 + a30 3.20 = 8.56 s > 8.47: the cut lays the
+# system line in with a 0.4 s gap or lets it run 0.1 s into s29b (both voice-over, nobody's lips move), or a29 is re-recorded
+# (scratchpad rec931-retake.sh, not run). Tightest after it: s36 8.15/8.47 (Qian Yuanwai on screen, clip voice primary), s33
+# 5.07/6.27, s15 6.31/8.47. Longer than needed (could have been 6 s): s11 4.29, s19 5.21, s22 4.28, s28 5.85, s30 3.76, s37 5.36,
+# s38 4.26, s41 3.03 (the hook's held tail, kept on purpose). No shot needs a fix1 retake for length.
 BUY = {"s04": 8, "s11": 8, "s15": 8, "s19": 8, "s22": 8, "s28": 8, "s29": 8, "s30": 8, "s34": 8, "s36": 8, "s37": 8, "s38": 8, "s41": 8,
        "s07": 5, "s18": 5, "s16": 5, "s29b": 5, "s21": 5, "s21b": 5}
 
