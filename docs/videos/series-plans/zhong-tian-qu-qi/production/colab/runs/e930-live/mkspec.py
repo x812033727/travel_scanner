@@ -25,6 +25,14 @@ Run: python3 -I mkspec.py
   -dong-shu-l1 (s30), -dong-di-l1 (s17, s22, s32). gen-dh's set-guangchang-l1 and pilot.py's set-xujia-yuan-l3 are never sent.
   Every swap is sent with an absolute path by prep930.sh.
 - No seed of this episode has been run. Seeds 9301101/9301102.
+
+After the independent review (writer-tools/e030-r2/review.md, 2026-11-17; r2.py's paragraph AFTER THE INDEPENDENT REVIEW):
+- 必改 3: the three inserts (s17, s22, s32) lose the yard's place sentence in d1: "Initial composition: <Y0>: " becomes
+  "Initial composition: " and the composition opens on the light ("Warm golden low evening light from the right: insert close-up
+  seen from (slightly) above, looking down"). video.json keeps Y0 only so gen-dh's SET sends the yard picture (swapped for -di-l1).
+- 建議 7: s09's cast sentence: the veil "falling down to the middle of her chest" (the veil portrait).
+- 建議 1: the dot-free set-xujia-yuan-dong-qing2-l1 (s31, s37, s41) and its crops -men2-l1 (s07, s08, s10, s35, s36, s40) and
+  -wu2-l1 (s11, s16, s19, s21, s21b) replace -qing-l1, -men-l1, -wu-l1.
 """
 import json
 from pathlib import Path
@@ -49,7 +57,9 @@ ONE_TANG = "the young woman with the two high round buns appears only once"
 SET_CLAUSE = "the location shown in <Picture 1> is the set, keeping its layout and props."
 GC = "set-guangchang-l1.png"
 YD = "set-xujia-yuan-l3.png"  # pilot.py's newest set-xujia-yuan for gen-dh's dh-set-xujia-yuan-t1
-VEIL_CAST = "an aloof piercing gaze, a veil of soft, finely woven pale grey gauze over her nose, mouth and chin"
+VEIL_CAST = ("an aloof piercing gaze, a veil of soft, finely woven pale grey gauze over her nose, mouth and chin, falling down to "
+             "the middle of her chest")
+Y0 = "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west"
 
 
 def add(sid, pair):
@@ -90,6 +100,8 @@ for sid in ["s14", "s20", "s28", "s33"]:  # the set clause now opens the sentenc
 NOPERSON = ["s17", "s22", "s32"]
 for sid in NOPERSON:
     add(sid, [SET_CLAUSE, "T" + SET_CLAUSE[1:]])
+    # review 必改 3: no place sentence; the composition opens on the light and the subject
+    add(sid, [f"Initial composition: {Y0}: warm golden", "Initial composition: Warm golden"])
 
 # The unnamed the compositions describe, and s41's young woman from behind (no picture).
 add("s36", [ONLY_SHE, "She is the only person in the frame, beside the one horse the composition describes; no second copy of anyone appears."])
@@ -157,10 +169,10 @@ for sid in ["s01", "s02", "s03", "s04", "s06"]:
     SWAP[sid] = {GC: "set-guangchang-pm-you-wu-l1.png"}
 SWAP["s05"] = {GC: "set-guangchang-pm-shu-l1.png"}
 PLACE = {
-    "set-xujia-yuan-dong-qing-l1.png": ["s31", "s37", "s41"],
-    "set-xujia-yuan-dong-men-l1.png": ["s07", "s08", "s10", "s35", "s36", "s40"],
+    "set-xujia-yuan-dong-qing2-l1.png": ["s31", "s37", "s41"],
+    "set-xujia-yuan-dong-men2-l1.png": ["s07", "s08", "s10", "s35", "s36", "s40"],
     "set-xujia-yuan-dong-jing-l1.png": ["s09", "s38", "s39"],
-    "set-xujia-yuan-dong-wu-l1.png": ["s11", "s16", "s19", "s21", "s21b"],
+    "set-xujia-yuan-dong-wu2-l1.png": ["s11", "s16", "s19", "s21", "s21b"],
     "set-xujia-yuan-dong-qiang-l1.png": ["s12", "s13", "s14", "s15", "s18", "s20", "s23", "s24", "s25", "s26", "s27", "s28", "s29",
                                          "s33", "s34"],
     "set-xujia-yuan-dong-shu-l1.png": ["s30"],
@@ -189,10 +201,11 @@ spec = {
               "sentence; s41 names her only as the young woman seen from behind. No person sent in s17, s22, s32. A-ling: s09 the "
               "veil portrait, no angles; s38, s39, s41 her bare portrait, never angle-b. Xu Yan's angle-b nowhere (s21, s21b send "
               "his portrait then angle-a; s31, s41 his portrait only). Sets: scene 1 set-guangchang-pm-you-wu-l1 (s01-s04, s06), "
-              "-pm-shu-l1 (s05); the yard set-xujia-yuan-dong-qing-l1 (s31, s37, s41) and its crops -men-l1 (s07, s08, s10, s35, "
-              "s36, s40), -jing-l1 (s09, s38, s39), -wu-l1 (s11, s16, s19, s21, s21b), -qiang-l1 (s12-s15, s18, s20, s23-s29, s33, "
+              "-pm-shu-l1 (s05); the yard set-xujia-yuan-dong-qing2-l1 (s31, s37, s41; the review's dot-free paint) and the crops "
+              "-men2-l1 (s07, s08, s10, s35, s36, s40), -jing-l1 (s09, s38, s39), -wu2-l1 (s11, s16, s19, s21, s21b), -qiang-l1 (s12-s15, s18, s20, s23-s29, s33, "
               "s34), -shu-l1 (s30), -di-l1 (s17, s22, s32) (prep930.sh swaps with absolute paths). No off-screen sentence (r2.py "
-              "OFFSCREEN_SPEECH = False). Seeds 9301101/9301102."),
+              "OFFSCREEN_SPEECH = False). After the review: the inserts s17, s22, s32 have no place sentence (the composition "
+              "opens on the light); s09's veil falls to the middle of her chest. Seeds 9301101/9301102."),
     "seeds": [9301101, 9301102],
     "shots": shots,
 }

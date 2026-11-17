@@ -1,5 +1,5 @@
 {
- "_note": "e930 live d1 (e929-live's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth or her face: her eight back shots (s02, s08, s13, s14, s20, s28, s29, s33) drop her three pictures and her identity sentence; s41 names her only as the young woman seen from behind. No person sent in s17, s22, s32. A-ling: s09 the veil portrait, no angles; s38, s39, s41 her bare portrait, never angle-b. Xu Yan's angle-b nowhere (s21, s21b send his portrait then angle-a; s31, s41 his portrait only). Sets: scene 1 set-guangchang-pm-you-wu-l1 (s01-s04, s06), -pm-shu-l1 (s05); the yard set-xujia-yuan-dong-qing-l1 (s31, s37, s41) and its crops -men-l1 (s07, s08, s10, s35, s36, s40), -jing-l1 (s09, s38, s39), -wu-l1 (s11, s16, s19, s21, s21b), -qiang-l1 (s12-s15, s18, s20, s23-s29, s33, s34), -shu-l1 (s30), -di-l1 (s17, s22, s32) (prep930.sh swaps with absolute paths). No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). Seeds 9301101/9301102.",
+ "_note": "e930 live d1 (e929-live's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth or her face: her eight back shots (s02, s08, s13, s14, s20, s28, s29, s33) drop her three pictures and her identity sentence; s41 names her only as the young woman seen from behind. No person sent in s17, s22, s32. A-ling: s09 the veil portrait, no angles; s38, s39, s41 her bare portrait, never angle-b. Xu Yan's angle-b nowhere (s21, s21b send his portrait then angle-a; s31, s41 his portrait only). Sets: scene 1 set-guangchang-pm-you-wu-l1 (s01-s04, s06), -pm-shu-l1 (s05); the yard set-xujia-yuan-dong-qing2-l1 (s31, s37, s41; the review's dot-free paint) and the crops -men2-l1 (s07, s08, s10, s35, s36, s40), -jing-l1 (s09, s38, s39), -wu2-l1 (s11, s16, s19, s21, s21b), -qiang-l1 (s12-s15, s18, s20, s23-s29, s33, s34), -shu-l1 (s30), -di-l1 (s17, s22, s32) (prep930.sh swaps with absolute paths). No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). After the review: the inserts s17, s22, s32 have no place sentence (the composition opens on the light); s09's veil falls to the middle of her chest. Seeds 9301101/9301102.",
  "seeds": [
   9301101,
   9301102
@@ -110,7 +110,7 @@
   },
   "s07": {
    "swap_pictures": {
-    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-men-l1.png"
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-men2-l1.png"
    }
   },
   "s08": {
@@ -124,8 +124,8 @@
      "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Qin Shuang half a step beyond her in the left third of the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
     ],
     [
-     "never the mood. her right hand tugs once",
-     "never the mood. Her right hand tugs once"
+     "never the mood. her left hand tugs once ",
+     "never the mood. Her left hand tugs once "
     ]
    ],
    "drop_pictures": [
@@ -134,7 +134,7 @@
     "tangxiaotang-angle-b-l1.png"
    ],
    "swap_pictures": {
-    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-men-l1.png"
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-men2-l1.png"
    }
   },
   "s09": {
@@ -145,7 +145,7 @@
     ],
     [
      "an aloof piercing gaze",
-     "an aloof piercing gaze, a veil of soft, finely woven pale grey gauze over her nose, mouth and chin"
+     "an aloof piercing gaze, a veil of soft, finely woven pale grey gauze over her nose, mouth and chin, falling down to the middle of her chest"
     ]
    ],
    "drop_pictures": [
@@ -169,7 +169,7 @@
     ]
    ],
    "swap_pictures": {
-    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-men-l1.png"
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-men2-l1.png"
    }
   },
   "s11": {
@@ -184,7 +184,7 @@
     ]
    ],
    "swap_pictures": {
-    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-wu-l1.png"
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-wu2-l1.png"
    }
   },
   "s12": {
@@ -280,7 +280,7 @@
     "xuyan-angle-b-l1.png"
    ],
    "swap_pictures": {
-    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-wu-l1.png"
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-wu2-l1.png"
    }
   },
   "s17": {
@@ -288,6 +288,10 @@
     [
      "the location shown in <Picture 1> is the set, keeping its layout and props.",
      "The location shown in <Picture 1> is the set, keeping its layout and props."
+    ],
+    [
+     "Initial composition: In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west: warm golden",
+     "Initial composition: Warm golden"
     ]
    ],
    "swap_pictures": {
@@ -324,7 +328,7 @@
     "xuyan-angle-b-l1.png"
    ],
    "swap_pictures": {
-    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-wu-l1.png"
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-wu2-l1.png"
    }
   },
   "s20": {
@@ -342,8 +346,8 @@
      "cinema camera. The location shown in <Picture 4>"
     ],
     [
-     "never the mood. her shoulders rise a lit",
-     "never the mood. Her shoulders rise a lit"
+     "never the mood. her clasped fingers twis",
+     "never the mood. Her clasped fingers twis"
     ]
    ],
    "drop_pictures": [
@@ -363,7 +367,7 @@
     ]
    ],
    "swap_pictures": {
-    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-wu-l1.png",
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-wu2-l1.png",
     "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
     "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
    }
@@ -380,7 +384,7 @@
     ]
    ],
    "swap_pictures": {
-    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-wu-l1.png",
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-wu2-l1.png",
     "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
     "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
    }
@@ -390,6 +394,10 @@
     [
      "the location shown in <Picture 1> is the set, keeping its layout and props.",
      "The location shown in <Picture 1> is the set, keeping its layout and props."
+    ],
+    [
+     "Initial composition: In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west: warm golden",
+     "Initial composition: Warm golden"
     ]
    ],
    "swap_pictures": {
@@ -526,7 +534,7 @@
     "xuyan-angle-a-l1.png"
    ],
    "swap_pictures": {
-    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-qing-l1.png"
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-qing2-l1.png"
    }
   },
   "s32": {
@@ -534,6 +542,10 @@
     [
      "the location shown in <Picture 1> is the set, keeping its layout and props.",
      "The location shown in <Picture 1> is the set, keeping its layout and props."
+    ],
+    [
+     "Initial composition: In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west: warm golden",
+     "Initial composition: Warm golden"
     ]
    ],
    "swap_pictures": {
@@ -588,7 +600,7 @@
     "xuyan-angle-b-l1.png"
    ],
    "swap_pictures": {
-    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-men-l1.png"
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-men2-l1.png"
    }
   },
   "s36": {
@@ -603,7 +615,7 @@
     ]
    ],
    "swap_pictures": {
-    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-men-l1.png"
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-men2-l1.png"
    }
   },
   "s37": {
@@ -614,7 +626,7 @@
     ]
    ],
    "swap_pictures": {
-    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-qing-l1.png"
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-qing2-l1.png"
    }
   },
   "s38": {
@@ -656,7 +668,7 @@
     ]
    ],
    "swap_pictures": {
-    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-men-l1.png"
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-men2-l1.png"
    }
   },
   "s41": {
@@ -677,7 +689,7 @@
     "aling-angle-b-l1.png"
    ],
    "swap_pictures": {
-    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-qing-l1.png"
+    "set-xujia-yuan-l3.png": "set-xujia-yuan-dong-qing2-l1.png"
    }
   }
  }
