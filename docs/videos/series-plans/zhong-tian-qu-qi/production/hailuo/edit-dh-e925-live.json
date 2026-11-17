@@ -118,19 +118,19 @@
   {
    "file": "cloth2",
    "at": "s01",
-   "off": 1.3,
+   "off": 1.675,
    "gain": 11
   },
   {
    "file": "rustle03",
    "at": "s02",
-   "off": 0.4,
+   "off": 0.0,
    "gain": 11
   },
   {
    "file": "cloth2",
    "at": "s02",
-   "off": 1.4,
+   "off": 0.65,
    "gain": 6
   },
   {
@@ -149,12 +149,12 @@
    "file": "paper_01",
    "at": "s07",
    "off": 0.05,
-   "gain": -12
+   "gain": -4
   },
   {
    "file": "impactWood_light_000",
    "at": "s12",
-   "off": 0.5,
+   "off": 1.0,
    "gain": -16
   },
   {
@@ -239,7 +239,7 @@
    "file": "swish-11",
    "at": "s25",
    "off": 2.45,
-   "gain": -4
+   "gain": -12
   },
   {
    "file": "impactWood_heavy_000",
@@ -250,38 +250,38 @@
   {
    "file": "swish-3",
    "at": "s27",
-   "off": 0.9,
-   "gain": -6
+   "off": 0.3,
+   "gain": -2
   },
   {
    "file": "hit_01",
    "at": "s27",
-   "off": 1.5,
-   "gain": -14
+   "off": 0.583,
+   "gain": -4
   },
   {
    "file": "hit_02",
    "at": "s27",
-   "off": 1.62,
-   "gain": -16
+   "off": 0.667,
+   "gain": -5
   },
   {
    "file": "impactSoft_heavy_000",
    "at": "s27",
-   "off": 2.3,
-   "gain": -14
+   "off": 1.375,
+   "gain": -6
   },
   {
    "file": "splash_02",
    "at": "s27",
-   "off": 2.4,
+   "off": 1.42,
    "gain": -8
   },
   {
    "file": "impactWood_medium_000",
    "at": "s28",
-   "off": 1.45,
-   "gain": -14
+   "off": 1.75,
+   "gain": -10
   },
   {
    "file": "swish-7",
@@ -315,27 +315,27 @@
   },
   {
    "file": "footstep_wood_000",
-   "at": "s32",
-   "off": 0.0,
-   "gain": -20
+   "at": "s31",
+   "off": 4.75,
+   "gain": -10
   },
   {
    "file": "footstep_wood_000",
-   "at": "s32",
-   "off": 0.18,
-   "gain": -21
+   "at": "s31",
+   "off": 4.93,
+   "gain": -10
   },
   {
    "file": "footstep_wood_000",
-   "at": "s32",
-   "off": 0.36,
-   "gain": -20
+   "at": "s31",
+   "off": 5.1,
+   "gain": -10
   },
   {
    "file": "impactPlank_medium_000",
    "at": "s32",
-   "off": 0.55,
-   "gain": -18
+   "off": 0.1,
+   "gain": -10
   },
   {
    "file": "cloth1",
@@ -365,7 +365,7 @@
    "file": "impactSoft_heavy_000",
    "at": "s35",
    "off": 4.7,
-   "gain": -18
+   "gain": -12
   },
   {
    "file": "impactSoft_heavy_000",
@@ -391,7 +391,7 @@
   },
   "s09": {
    "from": 0,
-   "af": "volume=7dB,alimiter=limit=0.7:attack=3:release=40:level=false:latency=1"
+   "af": "volume=8.5dB,alimiter=limit=0.8:attack=3:release=40:level=false:latency=1"
   },
   "s13": {
    "from": 0,
@@ -434,11 +434,13 @@
  },
  "line_at": {
   "zq925a21": 0.2,
-  "zq925a24": 0.25,
+  "zq925a24": 0.65,
   "zq925a26": 0.2,
   "zq925a28": 0.2,
   "zq925a06": 0.35,
-  "zq925a19": 2.9
+  "zq925a19": 2.9,
+  "zq925a34": 0.3,
+  "zq925a30": 0.3
  },
  "line_lead": {},
  "panel_y": {},

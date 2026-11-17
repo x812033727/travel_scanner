@@ -1,0 +1,949 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e028-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "laisan",
+      "name": "賴三",
+      "appearance": "East Asian young man of twenty-eight, small and thin, pointed chin, shifty eyes, a slight limp, a grey-brown short jacket and an old cloth head wrap",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十八歲的家丁，油嘴滑舌、心虛"
+      }
+    },
+    {
+      "id": "zhaobutou",
+      "name": "趙捕頭",
+      "appearance": "East Asian man of forty, wiry and dark-skinned, narrow eyes, a thin two-stroke moustache, a black constable's hat and plain black official uniform with an iron ruler at his belt, always eyeing people sideways",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的捕頭，公事公辦、不耐煩、斜眼看人"
+      }
+    },
+    {
+      "id": "weishaoqing",
+      "name": "魏少卿",
+      "appearance": "East Asian man of twenty-six, handsome but frivolous, peach-blossom eyes, thin lips always curled in a scornful smile, fair skin, tall and slender, a sapphire-blue brocade robe woven with gold thread, a fine white jade pendant at his waist, a gold-flecked folding fan in his hand, hair in a neat topknot with a small jade crown",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algieba",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十六歲的宰相之子，男聲、輕佻慵懶、拖著尾音、帶著居高臨下的笑意"
+      }
+    },
+    {
+      "id": "huxianling",
+      "name": "胡縣令",
+      "appearance": "East Asian man of forty-eight, pale and plump with a double chin and narrow eyes, a black official gauze hat and a blue-green seventh-rank official robe with bulging sleeves, his cheeks shaking when he smiles",
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十八歲的貪官縣令，官腔、拖長音、假裝威嚴"
+      }
+    },
+    {
+      "id": "sunzhanggui",
+      "name": "孫掌櫃",
+      "appearance": "East Asian man of forty-five, tall and lean with a long narrow face and hollow cheeks, a thin grey-streaked beard and moustache, narrow smiling eyes that are always half closed, a green satin robe with a jade belt hook, both hands empty (no jade balls)",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的商行掌櫃，笑咪咪、慢條斯理、話裡藏刀"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene: short tense drum hits in a dark stone lane at night, one heavy beat when two wooden sticks hit the stones, then only the night wind; then a soft warm cue at a cold dawn that turns into dull low drums in a county court hall, one heavy accent when a date is set; then a low suspense pad and the crackle of torches at a jail gate, one heavy accent when silver is shown; then the murmur of a crowded square at noon with one low drum slowly building, one big hit at an accusation; ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "下次帶我，人證翻供｜種田娶妻打天下 第28集（重製版）",
+    "description": "巷口被兩根棍子堵住，阿令一個人放倒兩個打手，短匕連鞘都沒拔，把賴三和那錠銀子押回縣衙。天剛亮，許硯和唐小棠在縣衙門口等了一夜；銀子底下有魏記的戳。許硯不罵她，只說：昨天是我讓妳一個人去的，下次，帶我。她說你會拖累，好感卻加了七。公堂上賴三全招，胡縣令卻把公審訂在第三十日午時，讓許記封到賭約最後一天。第二十九日夜，許硯在大牢門外看見孫掌櫃提著食盒進去，下層滿滿是銀子。第三十日正午的廣場上，賴三舉起綁著的手，指向許硯：是許家逼我下的毒。《種田娶妻打天下》第 28 集（重製版）。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "下次，帶我",
+      "tag": "種田娶妻打天下",
+      "shot": "s13"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "後巷",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a01",
+          "speaker": "laisan",
+          "text": "就她一個，給我上，打完有賞！",
+          "emotion": "縮在打手身後，喊"
+        }
+      ],
+      "data": {
+        "camera": "Low medium shot, slow push in",
+        "prompt": "In the narrow lane behind the silk shop in the county town deep in the night: a narrow lane paved with worn stone slabs between dark blue-grey brick walls, running straight away from us; on the left a long bamboo pole with four plain cloths drying over it and two wooden tubs below, on the right a round brick well under a small thatched roof, and far down at the end of the lane one small warm light glowing on the wall above a dark wooden double door; cold blue moonlight from above, the small warm light far down the lane, the wet stones gleaming: low medium shot at knee height down the lane, like the picture: in the soft left foreground the back of one young woman's shoulder and the side of her high bun with one plain wooden hairpin, the thin tie of a pale grey gauze veil behind her ear, her grey-white cotton dress, out of focus, unnamed; further down the lane right of centre two broad men in plain black cross-collared short jackets, black cloth head wraps and cloth shoes, standing side by side across the stones facing her, the small warm light far behind them, their faces dark in shadow, each gripping one plain wooden stick as long as his arm, smooth and round to its ends in his right hand; at the right shoulder of the right-hand man Lai San, small and thin, in his checked grey-brown cross-collared short jacket, a coarse grey cloth apron tied at his waist, an old cloth head wrap below his topknot, framed from the waist up, his face three-quarter to screen left toward the woman in the left foreground, never the lens; cowardly and shrill, not smiling: eyes wide, brows up, lips moving fast in a shout between words; their hands hold only what is described here; exactly four people",
+        "motion": "Lai San speaks a short Mandarin line, 「就她一個，給我上，打完有賞！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Lai San ducks in behind the right-hand man's shoulder and peers out past it as he shouts; the two men stand their ground, gripping their sticks, their lips closed; the young woman's back stays still, and the cold moonlight and the deep night stay unchanged",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a02",
+          "speaker": "aling",
+          "text": "你們要先動手，那我就只還手。",
+          "emotion": "隔著面巾，平靜"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the narrow lane behind the silk shop in the county town deep in the night, dark blue-grey brick walls and worn wet stone slabs, cold blue moonlight from above: close-up of A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair in a high bun with one plain wooden hairpin, a veil of soft, finely woven pale grey gauze over her nose, mouth and chin, tied behind both ears, falling to just below her jaw, standing on the wet stones, framed from the chest up with space above her head, one short knife sheathed in plain dark wood, grip and sheath one closed piece of dark wood as long as her hand already held upright in her right hand before her chest from the first frame, her face three-quarter to screen right toward the two men down the lane beyond the right edge of the frame, never the lens; calm and cold: brows level, eyes steady; behind her the dark brick wall, soft",
+        "motion": "A-ling's eyes move once from one man to the next beyond the right edge of the frame and back; her lips stay still under the veil from the first frame to the last, and the cold moonlight and the deep night stay unchanged",
+        "characters": [
+          "aling"
+        ],
+        "nospeak": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the narrow lane behind the silk shop in the county town deep in the night: a narrow lane paved with worn stone slabs between dark blue-grey brick walls, running straight away from us; on the left a long bamboo pole with four plain cloths drying over it and two wooden tubs below, on the right a round brick well under a small thatched roof, and far down at the end of the lane one small warm light glowing on the wall above a dark wooden double door; cold blue moonlight from above, the small warm light far down the lane, the wet stones gleaming: wide shot down the lane at standing eye height, like the picture: in the middle of the wet stones A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair in a high bun with one plain wooden hairpin, a veil of soft, finely woven pale grey gauze over her nose, mouth and chin, tied behind both ears, falling to just below her jaw, side-on to us facing screen right, framed full figure, one short knife sheathed in plain dark wood, grip and sheath one closed piece of dark wood as long as her hand held low in her right hand at her side, never the lens; calm and quick: eyes on the man before her; on the right one broad man in a plain black cross-collared short jacket, a black cloth head wrap and cloth shoes, side-on to us facing her, framed full figure, one plain wooden stick as long as his arm, smooth and round to its ends already raised high over his head in both hands from the first frame, his face turned away from us toward her, dark in shadow; their hands hold only what is described here; exactly two people",
+        "motion": "The man brings his stick down in one hard stroke and A-ling sways aside, so the stick sweeps down past her shoulder through empty air; her lips stay still under the veil from the first frame to the last; nobody is hit, and the cold moonlight and the deep night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s03b",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the narrow lane behind the silk shop in the county town deep in the night: a narrow lane paved with worn stone slabs between dark blue-grey brick walls, running straight away from us; on the left a long bamboo pole with four plain cloths drying over it and two wooden tubs below, on the right a round brick well under a small thatched roof, and far down at the end of the lane one small warm light glowing on the wall above a dark wooden double door; cold blue moonlight from above, the small warm light far down the lane, the wet stones gleaming: medium shot on the wet stones of the lane: one broad man in a plain black cross-collared short jacket, a black cloth head wrap and cloth shoes, side-on to us facing screen left, framed from the knees up, already doubled over from the first frame, his face turned down toward the stones, dark in shadow, his right hand loosening on one plain wooden stick as long as his arm, smooth and round to its ends; at the left edge of the frame only a slender hand in a long grey-white cotton sleeve reaching in from beyond the edge, holding one short knife sheathed in plain dark wood, grip and sheath one closed piece of dark wood as long as her hand low; their hands hold only what is described here; exactly one man and one grey-white sleeved hand",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the stick slips from the man's fingers and he sinks slowly to his knees on the wet stones, his head down; the grey-white sleeved hand stays still, and the cold moonlight and the deep night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Low-angle insert close-up, slow push in",
+        "prompt": "In the narrow lane behind the silk shop in the county town deep in the night, low over the worn wet stone slabs, cold blue moonlight from above: low-angle insert close-up, the shot opens directly on the worn wet stone slabs of the lane in the cold moonlight, from its very first frame, two plain wooden sticks, each as long as a man's arm, smooth and round to their ends already falling a hand's height above the stones; only the stones and the two sticks are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the two sticks clatter down onto the wet stones, bounce once and lie still, and the cold moonlight and the deep night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a03",
+          "speaker": "laisan",
+          "text": "姑奶奶饒命！銀子給妳，放我走吧！",
+          "emotion": "哀叫"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the narrow lane behind the silk shop in the county town deep in the night, dark blue-grey brick walls and worn wet stone slabs, cold blue moonlight from above: medium shot of Lai San, small and thin, in his checked grey-brown cross-collared short jacket, a coarse grey cloth apron tied at his waist, an old cloth head wrap below his topknot, sitting on the wet stones, framed from the waist up, a slender hand in a long grey-white cotton sleeve reaching in from the left edge of the frame already gripping the front of his jacket at the collar from the first frame, both his hands already raised before his chest with the palms out, his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; terrified and pleading, not smiling: brows up and pinched, eyes wide, lips moving fast in a wail between words; behind him the dark brick wall, soft; their hands hold only what is described here; exactly one person and one grey-white sleeved hand",
+        "motion": "Lai San speaks a short Mandarin line, 「姑奶奶饒命！銀子給妳，放我走吧！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Lai San shakes his raised hands as he pleads; the grey-white sleeved hand keeps its grip on his collar, and the cold moonlight and the deep night stay unchanged",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the narrow lane behind the silk shop in the county town deep in the night: a narrow lane paved with worn stone slabs between dark blue-grey brick walls, running straight away from us; on the left a long bamboo pole with four plain cloths drying over it and two wooden tubs below, on the right a round brick well under a small thatched roof, and far down at the end of the lane one small warm light glowing on the wall above a dark wooden double door; cold blue moonlight from above, the small warm light far down the lane, the wet stones gleaming: wide shot down the lane at standing eye height, like the picture: in the middle of the lane A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair in a high bun with one plain wooden hairpin, a veil of soft, finely woven pale grey gauze over her nose, mouth and chin, tied behind both ears, falling to just below her jaw, standing, framed full figure, her left hand already gripping the collar of Lai San, small and thin, in his checked grey-brown cross-collared short jacket, a coarse grey cloth apron tied at his waist, an old cloth head wrap below his topknot, who sits on the stones at her feet, his face three-quarter to screen right, never the lens, his lips closed; her face three-quarter to screen right, her eyes down on him, never the lens; cold and calm: brows level; further down the lane two men in plain black short jackets and black head wraps lying curled on their sides on the stones, their faces turned down to the stones, each holding his own wrist, two plain wooden sticks lying on the stones beside them; their hands hold only what is described here; exactly four people",
+        "motion": "A-ling pulls one small silver ingot, its top smooth and plain out from the front of Lai San's jacket with her right hand; Lai San keeps his lips closed and stays where he sits; her lips stay still under the veil from the first frame to the last, and the cold moonlight and the deep night stay unchanged",
+        "characters": [
+          "aling",
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a04",
+          "speaker": "aling",
+          "text": "銀子是證物，你也是。走，去縣衙。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the narrow lane behind the silk shop in the county town deep in the night, dark blue-grey brick walls and worn wet stone slabs, cold blue moonlight from above: close-up of A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair in a high bun with one plain wooden hairpin, a veil of soft, finely woven pale grey gauze over her nose, mouth and chin, tied behind both ears, falling to just below her jaw, one loose strand of black hair fallen across her forehead, framed from the chest up with space above her head, her head bowed, her eyes lowered to the lower edge of the frame, never the lens, where two thin wrists in checked grey-brown sleeve cuffs are held together before her with a strip of grey cloth wound round them, both her hands already gripping the two ends of the strip from the first frame; cold and set: eyes narrowed, brows level; behind her the dark brick wall, soft; their hands hold only what is described here",
+        "motion": "A-ling pulls the two ends of the grey cloth strip hard into a tight knot round the two wrists; her lips stay still under the veil from the first frame to the last, and the cold moonlight and the deep night stay unchanged",
+        "characters": [
+          "aling"
+        ],
+        "nospeak": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "chapter": "縣衙門口",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a05",
+          "speaker": "tangxiaotang",
+          "text": "天都亮了，阿令跟了一整夜，怎麼還不回來？",
+          "emotion": "擔心，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "Before the gate of the county yamen at first light on a cold clear winter dawn: a deep porch with one thick round red pillar in the middle, on the left a white wall above grey brick with one dark arched doorway, on the right tall dark red doors behind one big round drum on a red wooden stand, a floor of pale grey stone paving and broad pale stone steps going down toward us; cold soft grey dawn light: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the pale stone paving at the top of the steps, in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; one thick stack of plain blank paper sheets stitched along one edge with cord already held in her left arm against her chest from the first frame, only its pale edge showing at her side; beyond her, a little right of the middle, at the edge of the top step by the thick red pillar, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, framed from the waist up, his face three-quarter to screen right, his eyes down the steps beyond the right edge of the frame, never the lens; tired and tense after a long wait without sleep, not smiling: brows drawn, lips pressed shut; their hands hold only what is described here; exactly two people, the young woman in the middle seen only from behind",
+        "motion": "Xu Yan comes to a stop at the edge of the top step and looks down toward the street; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the cold grey dawn light stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a06",
+          "speaker": "aling",
+          "text": "回來了。下藥的人，還有他收的銀子。",
+          "emotion": "隔著面巾"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "Before the gate of the county yamen at first light on a cold clear winter dawn: a deep porch with one thick round red pillar in the middle, on the left a white wall above grey brick with one dark arched doorway, on the right tall dark red doors behind one big round drum on a red wooden stand, a floor of pale grey stone paving and broad pale stone steps going down toward us; cold soft grey dawn light: low-angle medium shot from lower down the steps: at the head of the steps A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair in a high bun with one plain wooden hairpin, a veil of soft, finely woven pale grey gauze over her nose, mouth and chin, tied behind both ears, falling to just below her jaw, one loose strand of black hair fallen across her forehead, standing, framed from the waist up, her right hand already gripping the back of the collar of Lai San, small and thin, in his checked grey-brown cross-collared short jacket, a coarse grey cloth apron tied at his waist, an old cloth head wrap below his topknot, both his hands tied together before him at the wrists with a strip of his own grey cloth sash, who stands one step below her, bent forward, from the first frame, her face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; cool and tired: eyes level, brows still; Lai San's face three-quarter to screen left, never the lens, scared, his lips pressed shut; behind them the thick red pillar and the dark red doors, soft; their hands hold only what is described here; exactly two people",
+        "motion": "A-ling pushes Lai San down by the collar and he drops to his knees on the top step; her lips stay still under the veil from the first frame to the last; Lai San keeps his lips closed, and the cold grey dawn light stays unchanged",
+        "characters": [
+          "aling",
+          "laisan"
+        ],
+        "nospeak": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a07",
+          "speaker": "xuyan",
+          "text": "底下有戳……這是魏記的銀子。",
+          "emotion": "畫外，低"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "Before the gate of the county yamen at first light on a cold clear winter dawn, above the broad pale stone steps, cold soft grey dawn light: insert close-up, the shot opens directly on one man's right hand in a faded blue-grey sleeve cuff held up palm up in the cold dawn air above the pale stone steps, from its very first frame, one small silver ingot, its top smooth and plain already falling into it from above; the pale stone steps soft and out of focus below; only the hand, its sleeve cuff and the ingot are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the hand catches the silver ingot and closes round it, weighing it once, and the cold grey dawn light stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a08",
+          "speaker": "tangxiaotang",
+          "text": "妳一個人跟了他一整夜？不要命啦！",
+          "emotion": "又驚又氣"
+        }
+      ],
+      "data": {
+        "camera": "Close-up from behind, slow push in",
+        "prompt": "Before the gate of the county yamen at first light on a cold clear winter dawn, the thick red pillar, the white wall and the dark red doors of the porch, cold soft grey dawn light: close-up from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the pale stone paving, in the middle of the frame, framed from the shoulders up, facing straight away from us; she is the only young woman with two high round buns in the frame; both her hands low at her sides; beyond her, soft, the thick red pillar and the dark red doors of the porch; their hands hold only what is described here",
+        "motion": "her shoulders jerk up once, sharp and angry; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the cold grey dawn light stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a09",
+          "speaker": "aling",
+          "text": "兩個打手，一個跛子，不費事。",
+          "emotion": "淡淡地"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Before the gate of the county yamen at first light on a cold clear winter dawn, the thick red pillar, the white wall and the dark red doors of the porch, cold soft grey dawn light: close-up of A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair in a high bun with one plain wooden hairpin, a veil of soft, finely woven pale grey gauze over her nose, mouth and chin, tied behind both ears, falling to just below her jaw, one loose strand of black hair fallen across her forehead, framed from the chest up with space above her head, her left hand already holding the cuff of her right sleeve from the first frame, her face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, where only the soft red pillar reaches the edge, never the lens; she is the only person in the frame; cool and offhand: eyes half lidded, brows level; behind her the dark red doors, soft",
+        "motion": "A-ling tugs her right sleeve down over her right hand with her left hand; her lips stay still under the veil from the first frame to the last, and the cold grey dawn light stays unchanged",
+        "characters": [
+          "aling"
+        ],
+        "nospeak": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a10",
+          "speaker": "xuyan",
+          "text": "昨天是我讓妳一個人去的。下次，帶我。",
+          "emotion": "很穩"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "Before the gate of the county yamen at first light on a cold clear winter dawn, the thick red pillar, the white wall and the dark red doors of the porch, cold soft grey dawn light: over-the-shoulder medium shot: in the soft right foreground the back of one young woman's shoulder and the side of her high bun with one plain wooden hairpin, the thin tie of a pale grey gauze veil behind her ear, her grey-white cotton dress, out of focus, unnamed; facing us beyond her Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, framed from the waist up, one small silver ingot, its top smooth and plain already held in his right hand at his chest from the first frame, his face three-quarter to screen right toward her, never the lens; steady and quiet, not smiling and not angry: level eyes, lips moving calmly between words; behind him the white wall and the dark arched doorway, soft; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「昨天是我讓妳一個人去的。下次，帶我」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan slips the silver ingot into his right sleeve as he speaks, his eyes staying on her; the young woman's back stays still, and the cold grey dawn light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a11",
+          "speaker": "aling",
+          "text": "你會拖累。我還得分神顧你。",
+          "emotion": "別開臉，不帶笑"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder close-up, slow push in",
+        "prompt": "Before the gate of the county yamen at first light on a cold clear winter dawn, the thick red pillar, the white wall and the dark red doors of the porch, cold soft grey dawn light: over-the-shoulder close-up: in the soft left foreground the back of one young man's shoulder in a faded blue-grey scholar's robe and the back of his black topknot, out of focus, unnamed; facing us beyond him A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair in a high bun with one plain wooden hairpin, a veil of soft, finely woven pale grey gauze over her nose, mouth and chin, tied behind both ears, falling to just below her jaw, one loose strand of black hair fallen across her forehead, framed from the chest up, her face three-quarter to screen left toward him, never the lens; taken aback and wary: brows a little drawn, eyes wavering; behind her the dark red doors, soft; their hands hold only what is described here; exactly two people",
+        "motion": "A-ling turns her face away from him a little and lowers her eyes; her lips stay still under the veil from the first frame to the last; the young man's back stays still, and the cold grey dawn light stays unchanged",
+        "characters": [
+          "aling"
+        ],
+        "nospeak": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a12",
+          "speaker": "xitong",
+          "text": "叮。阿令，好感加七。",
+          "emotion": "冷，宣布"
+        },
+        {
+          "id": "zq928a13",
+          "speaker": "xitong",
+          "text": "她嫌你拖累，還加七。宿主的運氣比本事好。",
+          "emotion": "冷，嫌棄"
+        },
+        {
+          "id": "zq928a14",
+          "speaker": "xuyan",
+          "text": "被嫌也加分，這筆帳我記住了。",
+          "emotion": "內心獨白，嘴閉著，心裡話，錄得近、輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Before the gate of the county yamen at first light on a cold clear winter dawn, the thick red pillar, the white wall and the dark red doors of the porch, cold soft grey dawn light: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, framed from the chest up with space above his head, his face three-quarter to screen right, his eyes lowered a little, never the lens; tired, then quietly touched: brows easing, lips pressed shut; behind him the thick red pillar and the dark red doors, soft; he is the only person in the frame",
+        "motion": "Xu Yan blinks once and the corners of his mouth slowly lift into a small closed-lip smile; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking, and the cold grey dawn light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a15",
+          "speaker": "tangxiaotang",
+          "text": "她嫌你拖累，你還笑得出來？",
+          "emotion": "皺眉"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "Before the gate of the county yamen at first light on a cold clear winter dawn: a deep porch with one thick round red pillar in the middle, on the left a white wall above grey brick with one dark arched doorway, on the right tall dark red doors behind one big round drum on a red wooden stand, a floor of pale grey stone paving and broad pale stone steps going down toward us; cold soft grey dawn light: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the pale stone paving, in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; her right hand already raised toward his arm from the first frame, her left arm holding one thick stack of plain blank paper sheets stitched along one edge with cord against her chest; beyond her, a little right of the middle, close, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, framed from the waist up, his face three-quarter to screen left toward her, never the lens; still pleased: a small closed-lip smile, eyes soft; behind him the thick red pillar, soft; their hands hold only what is described here; exactly two people, the young woman in the middle seen only from behind",
+        "motion": "she prods his upper arm with the tips of her fingers; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the cold grey dawn light stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a16",
+          "speaker": "xuyan",
+          "text": "笑她肯說實話。走，帶人進去見縣太爺。",
+          "emotion": "平靜"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "Before the gate of the county yamen at first light on a cold clear winter dawn: a deep porch with one thick round red pillar in the middle, on the left a white wall above grey brick with one dark arched doorway, on the right tall dark red doors behind one big round drum on a red wooden stand, a floor of pale grey stone paving and broad pale stone steps going down toward us; cold soft grey dawn light: medium shot on the top step: on the left Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, standing, framed from the waist up, his right hand already gripping the back of the collar of Lai San, small and thin, in his checked grey-brown cross-collared short jacket, a coarse grey cloth apron tied at his waist, an old cloth head wrap below his topknot, both his hands tied together before him at the wrists with a strip of his own grey cloth sash, who kneels on the top step on the right with his head down, from the first frame; Xu Yan's face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; dry and steady, not smiling: one brow a little raised, lips moving between words; Lai San's face turned down toward the stones, his lips pressed shut; behind them the dark red doors, soft; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「笑她肯說實話。走，帶人進去見縣太爺」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan hauls Lai San up to his feet by the collar as he speaks; Lai San says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the cold grey dawn light stays unchanged",
+        "characters": [
+          "xuyan",
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "chapter": "縣衙公堂",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a17",
+          "speaker": "huxianling",
+          "text": "大清早就押人上堂。賴三，你下了什麼藥？",
+          "emotion": "官腔"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "In the court hall of the county yamen early on a cold clear winter morning: at the back one long dark wooden desk with one dark wooden armchair behind it, before a wall of plain white panels; on the desk one flat oblong block of dark wood at the left and one small dark wooden rack at the right; clear cold daylight from the tall lattice windows: low-angle medium shot from the floor of the court hall: in the soft left foreground the back of one small thin man in a checked grey-brown short jacket and an old cloth head wrap, kneeling on the grey stone tiles, his hands tied before him, seen only from behind, unnamed; beyond him Magistrate Hu, in his black gauze futou hat with two short stiff flat wings and his blue-green round-collared official robe, sitting behind the long dark desk, framed from the waist up, his right hand already gripping one flat oblong block of dark polished wood the size of half a brick, plain on every side raised a hand's height above the desk from the first frame, his shoulders square to the desk like the picture, only his head turned three-quarter to screen left toward the kneeling man, never the lens; pompous and stern, not smiling: chin up, brows lifted, mouth drawn long between words; behind him only the plain white panels; their hands hold only what is described here; exactly two people",
+        "motion": "Magistrate Hu speaks a short Mandarin line, 「大清早就押人上堂。賴三，你下了什麼藥？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Magistrate Hu brings the wooden block down flat on the desk with one sharp knock and speaks; the kneeling man stays still, and the clear cold daylight from the lattice windows stays unchanged",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a18",
+          "speaker": "laisan",
+          "text": "瀉藥！小的全招，是有人給銀子叫我下的！",
+          "emotion": "磕頭"
+        }
+      ],
+      "data": {
+        "camera": "High-angle medium close-up, slow push in",
+        "prompt": "In the court hall of the county yamen early on a cold clear winter morning, dark red-brown pillars and tall lattice windows, clear cold daylight: high-angle medium close-up of Lai San, small and thin, in his checked grey-brown cross-collared short jacket, a coarse grey cloth apron tied at his waist, an old cloth head wrap below his topknot, both his hands tied together before him at the wrists with a strip of his own grey cloth sash, kneeling on the grey stone tiles, framed from the chest up, his head wrap pushed askew, his tied hands raised before his chest, his face three-quarter to screen right toward someone out of sight beyond the upper right edge of the frame, where only the soft pillars and the lattice windows reach the edge, never the lens; he is the only person in the frame; cringing and shifty, not smiling: brows up, eyes darting sideways, lips moving fast between words; behind him the grey stone tiles, soft",
+        "motion": "Lai San speaks a short Mandarin line, 「瀉藥！小的全招，是有人給銀子叫我下的！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Lai San bobs his head down in two quick bows as he speaks, and the clear cold daylight from the lattice windows stays unchanged",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a19",
+          "speaker": "huxianling",
+          "text": "既然招了，第三十日午時，縣城廣場公審！",
+          "emotion": "眼珠一轉"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the court hall of the county yamen early on a cold clear winter morning: at the back one long dark wooden desk with one dark wooden armchair behind it, before a wall of plain white panels; on the desk one flat oblong block of dark wood at the left and one small dark wooden rack at the right; clear cold daylight from the tall lattice windows: medium close-up from below the desk: Magistrate Hu, in his black gauze futou hat with two short stiff flat wings and his blue-green round-collared official robe, sitting behind the long dark desk, framed from the chest up with clear space above his hat, his right hand already resting on one flat oblong block of dark polished wood the size of half a brick, plain on every side on the desk from the first frame, his shoulders square to the desk like the picture, only his head turned three-quarter to screen left toward the floor below the desk, never the lens; sly and uneasy, not smiling: eyes sliding sideways, then narrowing, lips moving between words; behind him only the plain white panels",
+        "motion": "Magistrate Hu speaks a short Mandarin line, 「既然招了，第三十日午時，縣城廣場公審！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Magistrate Hu lifts the wooden block and brings it down once on the desk as he names the day, and the clear cold daylight from the lattice windows stays unchanged",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a20",
+          "speaker": "tangxiaotang",
+          "text": "第三十日？那許記就得封到賭約最後一天！",
+          "emotion": "不笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up from behind, slow push in",
+        "prompt": "In the court hall of the county yamen early on a cold clear winter morning, dark red-brown pillars and tall lattice windows, clear cold daylight: close-up from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the grey stone tiles, in the middle of the frame, framed from the shoulders up, facing straight away from us; she is the only young woman with two high round buns in the frame; both her hands low at her sides; beyond her, soft, the dark red-brown pillars and the bright lattice windows; their hands hold only what is described here",
+        "motion": "her shoulders square sharply once; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the clear cold daylight from the lattice windows stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a21",
+          "speaker": "huxianling",
+          "text": "公審要全城百姓都來看，急什麼？退堂！",
+          "emotion": "假笑"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle close-up, slow push in",
+        "prompt": "In the court hall of the county yamen early on a cold clear winter morning: at the back one long dark wooden desk with one dark wooden armchair behind it, before a wall of plain white panels; on the desk one flat oblong block of dark wood at the left and one small dark wooden rack at the right; clear cold daylight from the tall lattice windows: low-angle close-up from below the desk: Magistrate Hu, in his black gauze futou hat with two short stiff flat wings and his blue-green round-collared official robe, already leaning back in the dark wooden armchair behind the long dark desk from the first frame, framed from the chest up with clear space above his hat, one flat oblong block of dark polished wood the size of half a brick, plain on every side on the desk before him, his shoulders square to the desk like the picture, only his head turned three-quarter to screen left toward the floor below, never the lens; falsely genial: a broad false smile, heavy cheeks shaking, eyes cold, lips moving between words; behind him only the plain white panels",
+        "motion": "Magistrate Hu speaks a short Mandarin line, 「公審要全城百姓都來看，急什麼？退堂！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Magistrate Hu gives his bulging left sleeve one lazy flick toward the right edge of the frame as he speaks, and the clear cold daylight from the lattice windows stays unchanged",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a22",
+          "speaker": "xuyan",
+          "text": "他故意拖到最後一天。拖得越久，越好動手腳。",
+          "emotion": "低聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the court hall of the county yamen early on a cold clear winter morning, dark red-brown pillars and tall lattice windows, clear cold daylight: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, standing on the grey stone tiles, framed from the chest up with space above his head, his left hand already pressed over the cuff of his right sleeve at his chest from the first frame, his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the soft dark red-brown pillar and the lattice windows all the way to the edge, and he is the only person in the frame; low and hard, not smiling: eyes narrowed, lips moving low between words",
+        "motion": "Xu Yan speaks a short Mandarin line, 「他故意拖到最後一天。拖得越久，越好動手腳」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan leans his head a little toward the left as he speaks low, his left hand staying on his right sleeve, and the clear cold daylight from the lattice windows stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a23",
+          "speaker": "aling",
+          "text": "家裡只剩小禾和秦霜，我回柳溪守著。",
+          "emotion": "隔著面巾"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the court hall of the county yamen early on a cold clear winter morning: a floor of large grey stone tiles, thick round dark red-brown wooden pillars, tall dark wooden lattice windows along the side wall above a low white panel; clear cold daylight from the tall lattice windows: medium shot of A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair in a high bun with one plain wooden hairpin, a veil of soft, finely woven pale grey gauze over her nose, mouth and chin, tied behind both ears, falling to just below her jaw, one loose strand of black hair fallen across her forehead, standing beside a thick dark red-brown pillar on the grey stone tiles, framed from the waist up, her right sleeve falling down over her right hand, her face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; she is the only person in the frame; quiet and decided: eyes level, brows still; behind her the bright lattice windows and the low white panel, soft; their hands hold only what is described here",
+        "motion": "A-ling tips her head once toward the left, toward the way out; her lips stay still under the veil from the first frame to the last, and the clear cold daylight from the lattice windows stays unchanged",
+        "characters": [
+          "aling"
+        ],
+        "nospeak": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a24",
+          "speaker": "xuyan",
+          "text": "好。銀子我收著不交。今晚明晚，我都去牢外守著。",
+          "emotion": "平靜"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the court hall of the county yamen early on a cold clear winter morning, dark red-brown pillars and tall lattice windows, clear cold daylight: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, standing on the grey stone tiles, framed from the chest up with space above his head, his left hand already resting over his right sleeve from the first frame, his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the soft dark red-brown pillar and the lattice windows all the way to the edge, and he is the only person in the frame; resolved, not smiling: steady eyes, lips moving clearly between words",
+        "motion": "Xu Yan speaks a short Mandarin line, 「好。銀子我收著不交。今晚明晚，我都去牢外守著」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan gives one small nod as he begins to speak, his eyes staying on that spot beyond the left edge, and the clear cold daylight from the lattice windows stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "chapter": "大牢門外",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a25",
+          "speaker": "xuyan",
+          "text": "第二夜了……魏家要動手，就是今晚。",
+          "emotion": "內心獨白，嘴閉著，心裡話，錄得近、輕"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the gate of the county jail deep in the night: a gate of thick square dark bars filling the frame from edge to edge, and beyond the bars a room of pale stone blocks with a round stone arch at the back and two torches burning in dark iron holders on its side walls; warm torchlight beyond the bars, the cold blue night on this side: wide shot at standing eye height, like the picture: on this side of the gate, pressed close against the bars at its left end, Xu Yan, in an old plain grey cotton outer coat over his faded blue-grey scholar's robe, one small clay oil lamp in his left hand, its small flame cupped behind his right palm, framed from the knees up, his body turned toward the bars, half his face already peering between two bars into the torchlit room from the first frame, never the lens; tense and watchful: brows drawn, eyes narrowed, lips pressed shut; he is the only person in the frame; their hands hold only what is described here",
+        "motion": "Xu Yan leans half his face a little closer to the gap between two bars; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking, and the warm torchlight and the deep night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a26",
+          "speaker": "sunzhanggui",
+          "text": "趙爺辛苦，少爺給賴三送頓飯。",
+          "emotion": "笑咪咪"
+        }
+      ],
+      "data": {
+        "camera": "Point-of-view medium shot through the bars, slow push in",
+        "prompt": "At the gate of the county jail deep in the night: a gate of thick square dark bars filling the frame from edge to edge, and beyond the bars a room of pale stone blocks with a round stone arch at the back and two torches burning in dark iron holders on its side walls; warm torchlight beyond the bars, the cold blue night on this side: point-of-view medium shot through the thick square dark bars of the gate, the bars soft in the foreground: beyond them in the torchlit stone room, on the left Sun Zhanggui, tall and lean with a long narrow face and a thin grey-streaked beard, in his green satin robe with a jade belt hook, standing, framed from the waist up, one two-tier round dark-lacquered wooden food box with a bent wooden handle, plain and smooth on every side carried in his right hand by its bent handle, his left hand already holding one small plain brown cloth pouch tied at its neck out from the first frame, his face three-quarter to screen right toward Zhao Butou, never the lens; smooth and genial: a thin pleasant smile, eyes half lidded, lips moving slowly between words; on the right Zhao Butou, in his soft black futou cap and plain black round-collared cotton robe, a plain black cloth sash tied at his waist, nothing else at his waist, standing, framed from the waist up, his right palm already held out under the pouch, his face three-quarter to screen left toward Sun Zhanggui, never the lens; sly, not smiling, his lips pressed shut; their hands hold only what is described here; exactly two people",
+        "motion": "Sun Zhanggui speaks a short Mandarin line, 「趙爺辛苦，少爺給賴三送頓飯」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Sun Zhanggui lays the cloth pouch in Zhao Butou's palm, and Zhao Butou's fingers close over it; Zhao Butou says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the warm torchlight and the deep night stay unchanged",
+        "characters": [
+          "sunzhanggui",
+          "zhaobutou"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "High-angle insert close-up, slow push in",
+        "prompt": "At the gate of the county jail deep in the night, looking down through the thick square dark bars at the pale stone just beyond them; warm torchlight: high-angle insert close-up looking down through the thick square dark bars, the shot opens directly on one two-tier round dark-lacquered wooden food box with a bent wooden handle, plain and smooth on every side standing on the pale stone just beyond the bars, from its very first frame, its top tier already lifted a hand's height off it by a thin hand in a green satin sleeve cuff, the lower tier below packed tight with small silver ingots, their tops smooth and plain, gleaming in the torchlight; only the bars, the box, the ingots, the hand and its sleeve cuff are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the green-sleeved hand lifts the top tier up and away out of the frame, leaving the lower tier full of silver in the torchlight, and the warm torchlight and the deep night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a27",
+          "speaker": "sunzhanggui",
+          "text": "明天公審，你照我教的說，這些全是你的。",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up through the bars, slow push in",
+        "prompt": "At the gate of the county jail deep in the night, close to the thick square dark bars, beyond them the pale stone blocks of the wall and one torch burning in a dark iron holder; warm torchlight: medium close-up through the thick square dark bars: beyond them Sun Zhanggui, tall and lean with a long narrow face and a thin grey-streaked beard, in his green satin robe with a jade belt hook, crouching on the stone floor, framed from the chest up with space above his head, his right hand already resting on the soft shoulder of one small thin man in a checked grey-brown jacket at the left edge of the frame, seen only from behind, his tied hands before him, unnamed, from the first frame, his face three-quarter to screen left, leaning close to that man's ear, never the lens; smooth and cold, not smiling: eyes half lidded, lips moving low and slow between words; behind him the torchlit pale stone wall, soft; their hands hold only what is described here; exactly two people",
+        "motion": "Sun Zhanggui speaks a short Mandarin line, 「明天公審，你照我教的說，這些全是你的」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Sun Zhanggui pats the thin man's shoulder twice as he speaks low into his ear; the thin man's back stays still, and the warm torchlight and the deep night stay unchanged",
+        "characters": [
+          "sunzhanggui"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up through the bars, slow push in",
+        "prompt": "At the gate of the county jail deep in the night, close to the thick square dark bars, beyond them the pale stone blocks of the wall and one torch burning in a dark iron holder; warm torchlight: close-up through the thick square dark bars: beyond them Lai San, small and thin, in his checked grey-brown cross-collared short jacket, a coarse grey cloth apron tied at his waist, an old cloth head wrap below his topknot, hunched on the stone floor, framed from the chest up with space above his head, flickering torchlight on his thin face, his face three-quarter to screen right, his eyes on something low below the lower edge of the frame, never the lens; greedy and afraid, not smiling: eyes wide and fixed, lips pressed shut; he is the only person in the frame; behind him the torchlit pale stone wall, soft",
+        "motion": "Lai San slowly nods twice, his eyes staying on the silver below the frame; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the warm torchlight and the deep night stay unchanged",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a28",
+          "speaker": "zhaobutou",
+          "text": "許秀才，探監的時辰過了，明天廣場見。",
+          "emotion": "斜眼"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the gate of the county jail deep in the night: a gate of thick square dark bars filling the frame from edge to edge, and beyond the bars a room of pale stone blocks with a round stone arch at the back and two torches burning in dark iron holders on its side walls; warm torchlight beyond the bars, the cold blue night on this side: medium shot on this side of the gate, the thick square dark bars behind them: on the left Xu Yan, in an old plain grey cotton outer coat over his faded blue-grey scholar's robe, standing, framed from the waist up, his face three-quarter to screen right toward Zhao Butou, never the lens; still and cool, not smiling, his lips pressed shut; on the right Zhao Butou, in his soft black futou cap and plain black round-collared cotton robe, a plain black cloth sash tied at his waist, nothing else at his waist, standing close, framed from the waist up, his left forearm already held straight out across Xu Yan's chest from the first frame, his face three-quarter to screen left toward Xu Yan, never the lens; sidelong and cold, not smiling: eyes narrowed sideways, lips moving between words; their hands hold only what is described here; exactly two people",
+        "motion": "Constable Zhao speaks a short Mandarin line, 「許秀才，探監的時辰過了，明天廣場見」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Zhao Butou presses his forearm a little firmer against Xu Yan's chest as he speaks; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the warm torchlight and the deep night stay unchanged",
+        "characters": [
+          "xuyan",
+          "zhaobutou"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a29",
+          "speaker": "xuyan",
+          "text": "好，明天廣場見。讓他說，說得越多越好。",
+          "emotion": "不笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the gate of the county jail deep in the night, close to the thick square dark bars, beyond them the pale stone blocks of the wall and one torch burning in a dark iron holder; warm torchlight: close-up of Xu Yan, in an old plain grey cotton outer coat over his faded blue-grey scholar's robe, framed from the chest up with space above his head, a forearm in a plain black cotton sleeve reaching in from the right edge of the frame, held across his chest at the lower edge from the first frame, the corner of one crumpled scrap of rough blank yellowish paper already showing at the edge of his right sleeve cuff, his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; calm and cold, not smiling: steady eyes, lips moving evenly between words; behind him the thick square dark bars and the torchlit stone beyond, soft",
+        "motion": "Xu Yan speaks a short Mandarin line, 「好，明天廣場見。讓他說，說得越多越好」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan lifts his eyes from the black-sleeved forearm to the man beyond the right edge of the frame as he speaks, and the warm torchlight and the deep night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "chapter": "縣城廣場",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the town square of the county town at noon on a cold clear winter day: a wide square of packed pale earth; in the middle one low square platform of grey stone slabs with a few steps up its front, one long desk draped in red cloth on it and one dark wooden armchair at its right side; one plain wooden chest standing on the ground at its left; two bare trees, and low tiled buildings and white walls all round; hard bright noon sunlight, short shadows: wide shot at standing eye height, like the picture: in the soft foreground, seen from behind and out of focus, eight townspeople in Song-dynasty cotton robes and head cloths, standing in a loose line behind a rope, each dressed differently: an old man in a brown robe, a woman in a dull blue jacket and long skirt, a young man in a grey short jacket, a stout man in an indigo robe, a woman in a faded green jacket, a thin old woman in dark brown, a boy in a patched tan jacket and a man in an ochre robe; beyond them on the low stone platform, small: Magistrate Hu, in his black gauze futou hat with two short stiff flat wings and his blue-green round-collared official robe, sitting behind the long desk draped in red cloth, his face turned down toward the kneeling man, never the lens; in the middle front of the platform the back of one small thin man in a checked grey-brown jacket kneeling, his hands tied, unnamed; on the left side of the platform Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, standing alone, his face three-quarter to screen right toward the desk, never the lens; the dark wooden armchair on the right of the platform empty; nobody on the platform is speaking, their lips closed; their hands hold only what is described here; exactly eleven people",
+        "motion": "the eight townspeople lean forward together and crane their necks toward the platform; the people on the platform stay still, and the hard noon sunlight stays unchanged",
+        "characters": [
+          "huxianling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a30",
+          "speaker": "tangxiaotang",
+          "text": "魏少卿也來了，就坐在台子右邊。",
+          "emotion": "小聲，抬頭對許硯"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "In the town square of the county town at noon on a cold clear winter day, on the packed pale earth below the left side of the low stone platform, one plain wooden chest beside it, the low tiled buildings beyond; hard bright noon sunlight, short shadows: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the packed pale earth below the left side of the platform, in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; one thick stack of plain blank paper sheets stitched along one edge with cord already held in her left arm against her chest from the first frame, only its pale edge showing at her side; beyond her, soft, the edge of the low stone platform and the plain wooden chest beside it in the noon sun; she is the only person in the frame, seen only from behind; their hands hold only what is described here",
+        "motion": "her left arm hugs the stack of paper tighter against her chest; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the hard noon sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a31",
+          "speaker": "weishaoqing",
+          "text": "許秀才，今天第三十日，你的鋪子還封著呢。",
+          "emotion": "懶懶地，本鏡可以笑"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium close-up, slow push in",
+        "prompt": "In the town square of the county town at noon on a cold clear winter day, the bare branches of a tree and the low tiled roofs against the clear blue sky, hard bright noon sunlight: low-angle medium close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, sitting in a dark wooden armchair, framed from the chest up with space above his head, one closed folding fan in his right hand, its dark bamboo ribs pressed tight together like a short slim stick, its tip already resting on his knee from the first frame, his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the bare branches and the clear blue sky all the way to the edge, and he is the only person in the frame; lazy and mocking: a thin lazy smile, eyes half lidded, lips moving slowly between drawled words; behind him the bare branches of a tree and the clear blue sky",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「許秀才，今天第三十日，你的鋪子還封著呢」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing taps the closed fan twice on his knee as he speaks, and the hard noon sunlight stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a32",
+          "speaker": "huxianling",
+          "text": "賴三！當著全城百姓，誰指使你下藥？",
+          "emotion": "拖長音"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle close-up, slow push in",
+        "prompt": "In the town square of the county town at noon on a cold clear winter day, the bare branches of a tree and the low tiled roofs against the clear blue sky, hard bright noon sunlight: low-angle close-up of Magistrate Hu, in his black gauze futou hat with two short stiff flat wings and his blue-green round-collared official robe, sitting behind the long desk draped in red cloth, framed from the chest up with clear space above his hat, his right hand already gripping one flat oblong block of dark polished wood the size of half a brick, plain on every side raised a hand's height above the red cloth from the first frame, his face three-quarter to screen right toward the middle of the platform below, never the lens; pompous and uneasy, not smiling: chin up, brows lifted, mouth drawn long between words; behind him the bare branches of a tree and the clear blue sky; he is the only person in the frame",
+        "motion": "Magistrate Hu speaks a short Mandarin line, 「賴三！當著全城百姓，誰指使你下藥？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Magistrate Hu brings the wooden block down hard on the desk with one loud knock and speaks, and the hard noon sunlight stays unchanged",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the town square of the county town at noon on a cold clear winter day, on the packed pale earth below the right side of the low stone platform, one bare tree and the low tiled buildings beyond; hard bright noon sunlight, short shadows: medium close-up of Sun Zhanggui, tall and lean with a long narrow face and a thin grey-streaked beard, in his green satin robe with a jade belt hook, standing on the packed pale earth below the right side of the platform, framed from the chest up with space above his head, both his hands already tucked into his wide sleeves before him from the first frame; in the soft left foreground the shoulder of one townsman in an ochre robe and a head cloth, seen from behind, out of focus, unnamed; his face turned up three-quarter to screen left toward the platform above beyond the upper left edge of the frame, never the lens; calm and cold, not smiling: eyes half closed, lips pressed shut; behind him one bare tree and the low tiled buildings, soft; their hands hold only what is described here; exactly two people",
+        "motion": "Sun Zhanggui gives one small slow nod up toward the platform; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the hard noon sunlight stays unchanged",
+        "characters": [
+          "sunzhanggui"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq928a33",
+          "speaker": "laisan",
+          "text": "是許家逼我下的毒，要栽贓給魏記！",
+          "emotion": "發抖，大聲"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle close-up, slow push in",
+        "prompt": "In the town square of the county town at noon on a cold clear winter day, the bare branches of a tree and the low tiled roofs against the clear blue sky, hard bright noon sunlight: low-angle close-up of Lai San, small and thin, in his checked grey-brown cross-collared short jacket, a coarse grey cloth apron tied at his waist, an old cloth head wrap below his topknot, both his hands tied together before him at the wrists with a strip of his own grey cloth sash, kneeling, framed from the chest up with space above his head, his tied hands already raised before his chest from the first frame, his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the bare branches and the clear blue sky all the way to the edge, and he is the only person in the frame; trembling and loud, not smiling: brows up, eyes wide, lips moving hard in a shout between words; behind him the bare branches of a tree and the clear blue sky",
+        "motion": "Lai San speaks a short Mandarin line, 「是許家逼我下的毒，要栽贓給魏記！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Lai San thrusts both his tied hands out together toward the left edge of the frame as he shouts, and the hard noon sunlight stays unchanged",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the town square of the county town at noon on a cold clear winter day: a wide square of packed pale earth; in the middle one low square platform of grey stone slabs with a few steps up its front, one long desk draped in red cloth on it and one dark wooden armchair at its right side; one plain wooden chest standing on the ground at its left; two bare trees, and low tiled buildings and white walls all round; hard bright noon sunlight, short shadows: wide shot at standing eye height, like the picture: in the soft foreground, seen from behind and out of focus, eight townspeople in Song-dynasty cotton robes and head cloths, standing in a loose line behind a rope, each dressed differently: an old man in a brown robe, a woman in a dull blue jacket and long skirt, a young man in a grey short jacket, a stout man in an indigo robe, a woman in a faded green jacket, a thin old woman in dark brown, a boy in a patched tan jacket and a man in an ochre robe; beyond them on the left side of the low stone platform Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, standing alone, framed full figure, his hands at his sides, his face three-quarter to screen right, never the lens; calm and still, not smiling: level eyes, lips pressed shut; their hands hold only what is described here; exactly nine people",
+        "motion": "several of the townspeople raise an arm and point toward the young man on the platform; Xu Yan stands still and does not move; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the hard noon sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}
