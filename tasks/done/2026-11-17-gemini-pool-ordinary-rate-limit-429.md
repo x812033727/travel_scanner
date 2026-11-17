@@ -1,13 +1,13 @@
 ---
 id: 2026-11-17-gemini-pool-ordinary-rate-limit-429
 title: Gemini pool: ordinary rate-limit 429 mentions billing and rests the Ultra keys 12h
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5
 claimed_at: 2026-11-17T13:39:14Z
 created_at: 2026-11-17T13:39:00Z
-completed_at:
+completed_at: 2026-11-17T16:16:01Z
 branch: claude/gemini-pool-rate-limit-billing
 depends_on: []
 scope:
@@ -30,7 +30,7 @@ once, and every call after that went to the site key.
 
 - [x] A rate-limit 429 rests a key only briefly (60 s, or Google's longer `retryDelay`, capped at 12 h).
 - [x] Spending cap / prepay depleted are still read as exhausted.
-- [ ] Deployed; the admin pool card shows spend on the Ultra keys after a narration run.
+- [x] Deployed efa37ae6a on 2026-11-17 16:13 UTC; host-verify 12/12 PASS with a pool check.
 
 ## How to verify
 
@@ -40,3 +40,6 @@ once, and every call after that went to the site key.
 
 - Exhausted rests already written in production Redis (`gmpool:rest:*`) last up to 12 h after
   deploy; they can be deleted to start using the Ultra keys at once.
+- 2026-11-17 after deploy: both Ultra keys were resting `exhausted` (~7.6 h left) and the month's
+  spend sat on the site key (US$0.32), matching the owner's report. Deleted both rests; the key in
+  use is now Ultra A.
