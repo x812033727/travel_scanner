@@ -1,0 +1,361 @@
+{
+ "tempo": 1.0,
+ "grades": {},
+ "default_grade": "dh",
+ "finish": "vignette=angle=PI/5,format=yuv420p",
+ "names": {},
+ "punch": false,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
+  "<VIDEO_WORKDIR>/zhong-tian-qu-qi-e929-dh/sfx"
+ ],
+ "name_whoosh": "swish-9",
+ "music": [
+  {
+   "cue": "tension",
+   "from": "s01",
+   "to": "s09",
+   "offset": 40.0,
+   "gain": -22,
+   "fade_in": 1.0,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "suspense",
+   "from": "s10",
+   "to": "s25",
+   "offset": 0.0,
+   "gain": -23,
+   "fade_in": 0.8,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "market",
+   "from": "s26",
+   "to": "s31",
+   "offset": 0.0,
+   "gain": -23,
+   "fade_in": 0.6,
+   "fade_out": 0.6,
+   "tail": -1.45
+  },
+  {
+   "cue": "suspense",
+   "from": "s31",
+   "from_off": 5.5,
+   "to": "s35",
+   "offset": 20.0,
+   "gain": -22,
+   "fade_in": 1.0,
+   "fade_out": 2.5,
+   "tail": 0
+  }
+ ],
+ "sfx": [
+  {
+   "file": "Wind",
+   "at": "s01",
+   "off": 0,
+   "gain": -8,
+   "to": "s26"
+  },
+  {
+   "file": "murmur929",
+   "at": "s01",
+   "off": 0,
+   "gain": -8,
+   "to": "s05"
+  },
+  {
+   "file": "murmur929",
+   "at": "s06",
+   "off": 0,
+   "gain": -20,
+   "to": "s26"
+  },
+  {
+   "file": "murmur929",
+   "at": "s12",
+   "off": 0,
+   "gain": -6,
+   "to": "s12"
+  },
+  {
+   "file": "Wind",
+   "at": "s26",
+   "off": 4.4,
+   "gain": -10,
+   "to": "s35"
+  },
+  {
+   "file": "murmur929",
+   "at": "s26",
+   "off": 4.4,
+   "gain": -15,
+   "to": "s35"
+  },
+  {
+   "file": "birds",
+   "at": "s26",
+   "off": 4.4,
+   "gain": -24,
+   "to": "s35"
+  },
+  {
+   "file": "paper_01",
+   "at": "s01",
+   "off": 0.3,
+   "gain": -14
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "s06",
+   "off": 5.458,
+   "gain": -6
+  },
+  {
+   "file": "paper_03",
+   "at": "s07",
+   "off": 3.04,
+   "gain": -12
+  },
+  {
+   "file": "paper_01",
+   "at": "s09",
+   "off": 0.5,
+   "gain": -16
+  },
+  {
+   "file": "impactBell_heavy_001",
+   "at": "s10",
+   "off": 0.8,
+   "gain": -18
+  },
+  {
+   "file": "cloth1",
+   "at": "s14",
+   "off": 0.4,
+   "gain": -14
+  },
+  {
+   "file": "paper_02",
+   "at": "s15",
+   "off": 1.2,
+   "gain": -18
+  },
+  {
+   "file": "bookPlace1",
+   "at": "s16",
+   "off": 3.125,
+   "gain": -4
+  },
+  {
+   "file": "cloth2",
+   "at": "s20",
+   "off": 0.2,
+   "gain": -10
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s20",
+   "off": 0.55,
+   "gain": -16
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "s21",
+   "off": 1.5,
+   "gain": -10
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "s25",
+   "off": 7.208,
+   "gain": -10
+  },
+  {
+   "file": "paper_04",
+   "at": "s26",
+   "off": 3.55,
+   "gain": -4
+  },
+  {
+   "file": "handleCoins2",
+   "at": "s27",
+   "off": 2.0,
+   "gain": -16
+  },
+  {
+   "file": "paper_02",
+   "at": "s28",
+   "off": 2.25,
+   "gain": -12
+  },
+  {
+   "file": "impactBell_heavy_001",
+   "at": "s29",
+   "off": 5.75,
+   "gain": -10
+  },
+  {
+   "file": "creak1",
+   "at": "s31",
+   "off": 5.1,
+   "gain": -14
+  },
+  {
+   "file": "cloth2",
+   "at": "s33",
+   "off": 2.0,
+   "gain": -12
+  },
+  {
+   "file": "bookPlace1",
+   "at": "s33",
+   "off": 3.15,
+   "gain": -8
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s34",
+   "off": 0.375,
+   "gain": -12
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s34",
+   "off": 0.9,
+   "gain": -12
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s34",
+   "off": 1.42,
+   "gain": -12
+  },
+  {
+   "file": "footstep_concrete_003",
+   "at": "s34",
+   "off": 1.94,
+   "gain": -12
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s34",
+   "off": 2.46,
+   "gain": -13
+  },
+  {
+   "file": "handleCoins2",
+   "at": "s34",
+   "off": 0.4,
+   "gain": -20
+  },
+  {
+   "file": "handleCoins2",
+   "at": "s34",
+   "off": 1.45,
+   "gain": -20
+  },
+  {
+   "file": "cloth1",
+   "at": "s35",
+   "off": 0.3,
+   "gain": -10
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s35",
+   "off": 3.6,
+   "gain": -6
+  },
+  {
+   "file": "gong_02",
+   "at": "s35",
+   "off": 3.6,
+   "gain": -2
+  }
+ ],
+ "frame_round": true,
+ "clip_voice": true,
+ "voice_skip": {},
+ "voice_until": {
+  "s34": 2.0
+ },
+ "clip_af": {
+  "s01": {
+   "from": 0,
+   "af": "rubberband=pitch=0.80:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s17": {
+   "from": 0,
+   "af": "rubberband=pitch=0.62:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s19": {
+   "from": 0,
+   "af": "rubberband=pitch=0.62:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s20": {
+   "from": 0,
+   "af": "rubberband=pitch=0.62:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s23": {
+   "from": 0,
+   "af": "rubberband=pitch=1.12:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s25": {
+   "from": 0,
+   "af": "rubberband=pitch=0.62:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  }
+ },
+ "voice_off": [],
+ "move_lines": {},
+ "min": {
+  "s35": 8.1
+ },
+ "line_at": {
+  "zq929a02": 0.3,
+  "zq929a04": 0.2,
+  "zq929a12": 0.2,
+  "zq929a13": 0.3,
+  "zq929a14": 0.2,
+  "zq929a10": 0.3,
+  "zq929a19": 0.3,
+  "zq929a22": 0.3,
+  "zq929a24": 0.2,
+  "zq929a25": 0.3,
+  "zq929a26": 0.3,
+  "zq929a27": 0.4,
+  "zq929a28": 0.15,
+  "zq929a30": 0.3,
+  "zq929a32": 0.3
+ },
+ "line_lead": {
+  "zq929a09": 0.3
+ },
+ "panel_y": {
+  "s29": 700
+ },
+ "panel_from": {
+  "s29": 0.9
+ },
+ "panel_color": {},
+ "panel_until": {},
+ "vf": {
+  "s19": "crop=1746:982:0:49,scale=1920:1080:flags=lanczos,setsar=1",
+  "s20": "crop=1746:982:174:49,scale=1920:1080:flags=lanczos,setsar=1",
+  "s29": "colorbalance=rs=0.035:gs=0.008:bs=-0.035:rm=0.025:bm=-0.025:rh=0.015:bh=-0.015",
+  "s30": "colorbalance=rs=0.035:gs=0.008:bs=-0.035:rm=0.025:bm=-0.025:rh=0.015:bh=-0.015",
+  "s32": "colorbalance=rs=0.035:gs=0.008:bs=-0.035:rm=0.025:bm=-0.025:rh=0.015:bh=-0.015",
+  "s31": "null[q31a];movie=filename=/root/mokaair-work/videos/_live-e929/zhong-tian-qu-qi-e929-dh/runpod/a/st2/refined/s32.mp4,trim=start=2.000:duration=1.459,setpts=PTS-STARTPTS,fps=24,scale=1920:1080:flags=lanczos,setsar=1,format=yuv420p,colorbalance=rs=0.035:gs=0.008:bs=-0.035:rm=0.025:bm=-0.025:rh=0.015:bh=-0.015,setpts=PTS+5.000/TB[q31b];[q31a][q31b]overlay=enable='gte(t,5.000)':eof_action=pass:format=auto",
+  "s35": "colorbalance=rs=0.035:gs=0.008:bs=-0.035:rm=0.025:bm=-0.025:rh=0.015:bh=-0.015,fade=t=out:st=4.267:d=0.40"
+ },
+ "subtitle_lines": [],
+ "_note": "First cut draft (note to be written)."
+}
