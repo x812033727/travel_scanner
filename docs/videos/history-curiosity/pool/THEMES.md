@@ -1027,7 +1027,7 @@
 **用到的題與來源：**
 
 - G04（入選）為什麼 1891 年拿到美國專利的通靈板，專利上寫的是「玩具或遊戲」？法拉第 1853 年的桌子怎麼解開它？；合併原題 G20 — [epsilon.ac.uk](https://epsilon.ac.uk/view/faraday/letters/Faraday2691)、[patents.google.com](https://patents.google.com/patent/US446054A/en)、[www.smithsonianmag.com](https://www.smithsonianmag.com/history/the-strange-and-mysterious-history-of-the-ouija-board-5860627/)
-- N129（入選）為什麼 1904 年柏林 13 位專家查不出「會算數的馬」有作弊，答案卻是連懷疑它的人都在不自覺地提示牠？ — [www.gutenberg.org](https://www.gutenberg.org/cache/epub/33936/pg33936.txt)、[opus.bibliothek.uni-wuerzburg.de](https://opus.bibliothek.uni-wuerzburg.de/files/11262/051_Gross_Biology.pdf)
+- N129（入選）1904 年柏林，一個委員會查不出會算數的馬漢斯有作弊，為什麼後來發現，連懷疑牠的陌生人、甚至破解謎團的心理學家自己，都會不知不覺把答案告訴牠？ — [www.gutenberg.org](https://www.gutenberg.org/cache/epub/33936/pg33936.txt)、[opus.bibliothek.uni-wuerzburg.de](https://opus.bibliothek.uni-wuerzburg.de/files/11262/051_Gross_Biology.pdf)
 
 **可能無聊的地方：** 三個場景是同一個機制；靠『誰被騙到』一步步升級推進：誠實的參加者→專利局→13 位專家與懷疑者→做實驗的人自己。轉桌熱潮一章素材薄，只留一分鐘。
 
@@ -1689,7 +1689,7 @@
 
 **用到的題與來源：**
 
-- N429（入選）1891 年康伯米爾修道院的『無腳椅中人』照片，拍的人自己說不能當證據，為什麼 1926 年柯南·道爾還說它是心靈研究史上證據最充分的一件？ — [archive.org](https://archive.org/details/journalofsociety07sociuoft)、[www.arthur-conan-doyle.com](https://www.arthur-conan-doyle.com/wiki/The_Combermere_Photograph)、[combermereabbey.co.uk](https://combermereabbey.co.uk/stories/ghost-combermere-abbey/)
+- N429（入選）康伯米爾修道院那張『無腳椅中人』鬼照片曝光了整整一小時，為什麼一位物理學教授找人進來在椅子上坐一下，就拍出幾乎一模一樣的老紳士？ — [archive.org](https://archive.org/details/journalofsociety07sociuoft)、[www.arthur-conan-doyle.com](https://www.arthur-conan-doyle.com/wiki/The_Combermere_Photograph)、[combermereabbey.co.uk](https://combermereabbey.co.uk/stories/ghost-combermere-abbey/)
 - N423（入選）1966 年格林威治女王宅鬱金香樓梯的鬼影照片，鬼魂俱樂部轉述柯達說底片沒動過手腳，為什麼扶手上的兩隻手卻都是左手？ — [www.rmg.co.uk](https://www.rmg.co.uk/queens-house/top-things-to-do/queens-house-ghost)、[peterunderwood.org](https://peterunderwood.org/the-tulip-staircase.html)
 
 **可能無聊的地方：** 兩段都是『照片→誰說是鬼→怎麼重現』，第二段要用兩隻左手與通宵守夜推進。
@@ -3965,7 +3965,7 @@
 **用到的題與來源：**
 
 - N2984（入選）1859 年一本德國雜誌打趣說，美國人的敲擊靈德國早就有了：1767 年 12 月 Braunschweig 附近 Dibbesdorf 村一戶農家的牆角就有『敲擊鬼』答得出來客衣服上有 36 顆鈕扣、口袋裡有 681 枚銅錢，連在位的公爵都來問過；1853 年招魂刊物說『最嚴密的調查也沒查出騙局』？同一批轉述自己寫著調查是怎麼收場的：公爵派的委員先說是地下泉水、把屋子鑽到淹水，再讓一個年輕女僕指認屋主夫婦、把兩人關了近三個月，女僕翻供也沒放人，最後呈報『沒有發現』；1898 年一篇文章補了一句——先前被懷疑的那名長工，和敲擊鬼同時離開了村子 — [archive.org](https://archive.org/details/IAPSOP-magikon_v5_1853)、[archive.org](https://archive.org/details/10132629bsb)、[archive.org](https://archive.org/details/11881279bsb)
-- N2983（入選）1888 年底柏林近郊只有六戶人家的 Resau，馬鈴薯、蕪菁、木鞋和一根火腿骨在屋裡亂飛，火腿骨還打中來查看的牧師擋臉的禮帽；招魂界到 20 世紀初仍把它當成『觀察最完整、最可信』的鬧鬼？1889 年 1 月 Werder 的法院把它當成一件毀損與滋擾案審：被告是 15 歲的長工 Karl Wolter，他在庭上始終不認，法院照檢方求刑判 14 天監禁加 4 週拘役，3 月波茨坦的上訴審駁回上訴；牧師寫信去問的 Helmholtz 回答『磁流搬不動馬鈴薯』，牧師卻在上訴審改口說自己現在相信那真的是 Spuk；而據 1906 年一位批評者，被告那年 4 月起站上了一位魔術師『反招魂』晚會的舞台 — [archive.org](https://archive.org/stream/dermodernespuku00henngoog/dermodernespuku00henngoog_djvu.txt)、[archive.org](https://archive.org/details/jbc.bj.uj.edu.pl.0024_NDIGCZAS042923_110478589)、[archive.org](https://archive.org/details/jbc.bj.uj.edu.pl.0123_NDIGCZAS042923_110478730)
+- N2983（入選）1888 年柏林近郊的小村裡，馬鈴薯、木鞋和火腿骨滿屋亂飛，連來查看的牧師都被打中，為什麼法院最後把這場鬧鬼判成一件少年毀損案？ — [archive.org](https://archive.org/stream/dermodernespuku00henngoog/dermodernespuku00henngoog_djvu.txt)、[archive.org](https://archive.org/details/jbc.bj.uj.edu.pl.0024_NDIGCZAS042923_110478589)、[archive.org](https://archive.org/details/jbc.bj.uj.edu.pl.0123_NDIGCZAS042923_110478730)
 
 **可能無聊的地方：** 兩段都是「怪聲→官府介入→結局」，第二段要用法庭上的證詞（火腿骨、Helmholtz 的回信、牧師改口）推進，不重講調查方法。
 
@@ -4887,7 +4887,7 @@
 **用到的題與來源：**
 
 - N4965（入選）納爾遜在特拉法加臨終說的是『吻我，Hardy』，還是後人說的『Kismet（天命），Hardy』？醫生 Beatty 1807 年的報告與牧師 Scott 1805 年 12 月的信，都寫了『Kiss me, Hardy』，Hardy 也真的跪下親了他；可是那不是最後一句——Beatty 記的最後是一再重複『感謝上帝，我盡了我的責任』，Scott 的傳記則說他最後聽到的是『上帝與我的國家』 — [gutenberg.org](https://gutenberg.org/files/15233/15233-h/15233-h.htm)、[archive.org](https://archive.org/download/dispatchesletter07nels/dispatchesletter07nels_djvu.txt)、[www.phrases.org.uk](https://www.phrases.org.uk/meanings/kiss-me-hardy.html)
-- N4961（入選）英國首相小 Pitt 1806 年臨終喊的是『噢，我的國家！我多麼愛我的國家！』？這句話出自他外甥 James H. Stanhope 寫的臨終筆記：Stanhope 伯爵 1861–62 年的傳記照他和抄寫員讀出的 love 出版，1862 年 4 月 24 日他自己寫信給《泰晤士報》，說借回原件細看，『毫無疑問』是 leave——『我多麼不捨地離開我的國家』；而 Pitt 的朋友 Rose 第二天早上收到 James Stanhope 與主教的便條後寫的日記，只說僕人聽到『My country! oh, my country!』，政敵 Lord Holland 則說 Pitt 最後二十四小時根本說不出話；Disraeli 愛講的版本更離譜：下議院一位老侍者說，Pitt 最後想吃的是一個 Bellamy 店的肉派 — [archive.org](https://archive.org/download/williampitt04stan/williampitt04stan_djvu.txt)、[archive.org](https://archive.org/download/lifeofrighthonou04stan/lifeofrighthonou04stan_djvu.txt)、[archive.org](https://archive.org/download/diariescorrespond02rose/diariescorrespond02rose_djvu.txt)
+- N4961（入選）英國首相小 Pitt 臨終那句『我多麼愛我的國家』流傳至今；為什麼出版它的伯爵同一年就寫信給《泰晤士報》，說那個字是他自己讀錯的？ — [archive.org](https://archive.org/download/williampitt04stan/williampitt04stan_djvu.txt)、[archive.org](https://archive.org/download/lifeofrighthonou04stan/lifeofrighthonou04stan_djvu.txt)、[archive.org](https://archive.org/download/diariescorrespond02rose/diariescorrespond02rose_djvu.txt)
 
 **可能無聊的地方：** 前段用艦上醫生與牧師的兩份紀錄，後段用傳記初版、作者的更正信與朋友的日記。
 
@@ -4917,7 +4917,7 @@
 **用到的題與來源：**
 
 - N4984（入選）19 世紀美國報紙一再轉載的『理髮師的鬼』：一家旅店有間沒人敢住的房，據說一個理髮師死在裡面，半夜會有顫抖的聲音問『你要刮鬍子嗎？』。1825 年的報紙標題寫『一件事實』，結尾還保證是從麻州一位可敬紳士口中聽來的；可是故事自己就把鬼拆穿了——那是一根刮著屋瓦的橡樹枝，而住進去的客人披上床單扮鬼，把樓下賭客的錢全掃走。到了 1889 年，同一則故事被放進了『幽默欄』。一個鬼是怎麼從『事實』變成笑話的？ — [www.goodreads.com](https://www.goodreads.com/author_blog_posts/23271367-the-barber-s-ghost-tracking-a-ghostly-folk-tale-in-print)、[www.loc.gov](https://www.loc.gov/resource/sn83025588/1825-01-04/ed-1/?sp=4)、[archive.org](https://archive.org/details/acollectionusef00demigoog)
-- N4983（入選）『1889 年巴黎萬國博覽會，一位英國小姐陪母親從印度回國，住進旅館 342 號房；她出門替母親拿藥四小時，回來時旅館說她是一個人來的，房間連壁紙都不一樣，她最後在精神病院度過餘生』——這個『消失的旅館房間』常被當成真事講。可是研究者追到最早的 1897 年報紙版本（本輪讀到的是 13 天後的轉載），母親是美國人、帶著兩個女兒，沒寫年份、沒有房號、沒有使館，最後是警探親口告訴她們真相；而『1889 年底特律報紙上有人隨手寫的』這個說法所指的作者，1889 年只有 14 歲左右。這個房間是誰蓋出來的？ — [quoteinvestigator.com](https://quoteinvestigator.com/2010/09/14/vanishing-lady/)、[www.folklore.ee](http://www.folklore.ee/FOAFtale/ftn76.htm)、[www.loc.gov](https://www.loc.gov/resource/sn86063034/1897-11-27/ed-1/?sp=3)
+- N4983（入選）『消失的旅館房間』說，母親在巴黎旅館一夜消失、連壁紙都換了，女兒最後在精神病院度過餘生；為什麼在查得到最早的報紙版本裡，卻是警探親口告訴她真相？ — [quoteinvestigator.com](https://quoteinvestigator.com/2010/09/14/vanishing-lady/)、[www.folklore.ee](http://www.folklore.ee/FOAFtale/ftn76.htm)、[www.loc.gov](https://www.loc.gov/resource/sn86063034/1897-11-27/ed-1/?sp=3)
 
 **可能無聊的地方：** 前段用 1825 年的〈A Fact〉與 1889 年的幽默欄版本，後段用 1897 年的轉載、Woollcott 的專欄與 1990 年的書。
 
