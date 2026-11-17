@@ -319,10 +319,6 @@
    "from": 0,
    "af": "volume=-0.7dB"
   },
-  "s19": {
-   "from": 0,
-   "af": "asetrate=40800,aresample=48000,atempo=1.176471,rubberband=pitch=0.73:formant=preserved,volume=0.9dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
-  },
   "s20": {
    "from": 0,
    "af": "rubberband=pitch=0.62:formant=preserved,volume=2.1dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
@@ -348,7 +344,9 @@
    "af": "volume=4.8dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   }
  },
- "voice_off": [],
+ "voice_off": [
+  "s19"
+ ],
  "move_lines": {},
  "min": {
   "s35": 7.1
@@ -368,7 +366,8 @@
   "zq929a27": 0.4,
   "zq929a28": 0.15,
   "zq929a30": 0.3,
-  "zq929a32": 0.3
+  "zq929a32": 0.3,
+  "zq929a17": 0.05
  },
  "line_lead": {
   "zq929a09": 0.3

@@ -40,15 +40,21 @@
 
 ## 第二輪要跑什麼
 
-`screen-test-e031-e040.py` 只有第一輪（文件字串寫「Rounds 2-3 … are not in this script yet」），**第二、三輪的程式還沒寫**；照 `screen-test-e021-e030.py --r2` 的做法加 `--r2`／`--r3`，種子 37039／37040，清單 `OUT_DIR/r2.json`（上限 40 支），跑前 `check_images_manifest.py`。
+**程式已寫（2026-11-17）**：`screen-test-e031-e040.py --r2`（清單 `OUT_DIR/r2.json`、提示詞 `OUT_DIR/prompts-r2/`、出圖 `OUT_DIR/out-r2/`、比較圖 `--r2 --sheet` → `sheets/r2-NN.jpg`），
+跑法 scratchpad `st31r2.sh`（照 `st31r1.sh`：session `zt-live2`、每次只送還沒出圖的、一次加重試一次、放掉 VM、最後出比較圖）。
+`check_images_manifest.py`：0 錯誤、2 警告（刁七的直式畫布，跟第一輪一樣）；`DRY=1` 跑過，22/22 支待做、沒有開 VM。
+第一輪的清單照跑過的留著；第一輪挑定的圖歸檔後，**第一輪不能再重新產生**（程式拒絕 refs-live 裡已有的 id），`--sheet` 照舊能用。
 
-第二輪（11 張 × 2＝22 支，馬另計）：
-- 重畫（上表的改寫）：`diaoqi-portrait-l1`（底圖 `out/diaoqi-portrait-l1-37037.png` 的編輯）、`set-shangyou-ba-l1`、`set-jingkeng-l1`（底圖挑定的 `set-hantian-l1`）、`set-shentan-l1`、`set-cunkou-l1`、`set-shanjiao-qu-l1`、`set-guandao-ye-l1`、`set-yiguan-men-ye-l1`（這六張灰底）、`set-gucang-ye-l1`（底圖 `out/set-gucang-ye-l1-37038.png` 的編輯）。
-  重畫的 id 不變、仍是 l1（第一輪沒歸檔，refs-live 裡沒有這些檔）。
-- 聖經原本的第二輪、底圖已經挑定的：`set-hantian-yang-l1`、`set-hantian-shou-l1`（底圖 `refs-live/set-hantian-l1.png`；「中間那塊方田」寫成前景田埂圍起來的那一塊）。
-- `prop-zaohongma-l1`：只有在重畫的兩張不行時才進第二輪。
+第二輪（11 張 × 種子 37039／37040＝22 支）：
+- 以第一輪的種子為底只改那一處：`diaoqi-portrait-l1`（`out/diaoqi-portrait-l1-37037.png`：臉、髮、光不動，改疤與衣襟腰帶）、`set-gucang-ye-l1`（`out/set-gucang-ye-l1-37038.png`：吊著的玻璃燈換成柱上鐵片托著的陶油燈）。
+- 以挑定的 `set-hantian-l1` 為底：`set-jingkeng-l1`（只加一排井坑、土堆、竹筐、橫木與麻繩）、`set-hantian-yang-l1`、`set-hantian-shou-l1`（田埂前面那塊田灌水插秧／金黃稻穗，田埂後面照舊乾裂）。
+- 灰底重畫 6 張：`set-shangyou-ba-l1`、`set-shentan-l1`、`set-cunkou-l1`、`set-shanjiao-qu-l1`、`set-guandao-ye-l1`、`set-yiguan-men-ye-l1`。第一輪的提示詞其實已經寫了大部分規格，模型照樣畫成空拍、CG、魚眼，
+  所以第二輪換了鏡頭句（`REAL_LENS`：「站在地上的人、眼睛高度、鏡頭朝前水平」），負面詞每張都加空拍、俯視、3D 插畫、概念圖、遊戲場景、過飽和、暗角，再加上表裡各張的毛病。
+- 重畫的 id 不變、仍是 l1（第一輪沒歸檔）。`prop-zaohongma-l1` 見下。
 
-第三輪（等第二輪挑定）：`set-shentan-gongdi-l1`（底圖重畫挑定的 `set-shentan-l1`）、`set-shanjiao-qu-ye-l1`（底圖重畫挑定的 `set-shanjiao-qu-l1`）、`set-gucang-wai-l1`（底圖 `set-hantian-yang-l1`），3 張 × 2＝6 支；加上第二輪還不行的重畫。
+第三輪（`--r3`，3 張 × 2＝6 支，`r3.json`、`out-r3/`；`ROUND=3 bash st31r2.sh`）：`set-shentan-gongdi-l1`（底圖 `set-shentan-l1`）、`set-shanjiao-qu-ye-l1`（底圖 `set-shanjiao-qu-l1`）、`set-gucang-wai-l1`（底圖 `set-hantian-yang-l1`）。
+程式已寫；底圖還沒歸檔前它會停下來說缺哪張（用假底圖試過：6 支、0 錯誤）。第二輪還不行的重畫再加進第三輪。
 之後免費：`set-shentan-qu-l1`、`set-gucang-men-ye-l1`、各張的裁切。
 
 時程：第 31 集第二場要的 `-han`、乾溪床已經有，**壩（`set-shangyou-ba-l1`）還沒有，第 31 集 c32–c41 拍之前第二輪要跑完**；第 32 集要井坑、祠堂（祠堂已有）；第 33–34 集要水車。
+第二輪跟第一輪的馬重畫用同一個 session `zt-live2`：**等 `st31r1.sh` 那次重畫跑完、VM 放掉再跑**。

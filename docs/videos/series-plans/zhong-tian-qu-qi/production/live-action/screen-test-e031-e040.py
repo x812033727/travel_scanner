@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""screen-test-e031-e040.py OUT_DIR [--with-chen] [--horse-star] | OUT_DIR --sheet : the round-1 screen test of arc 4
+"""screen-test-e031-e040.py OUT_DIR [--with-chen] [--horse-star] | OUT_DIR --r2 | OUT_DIR --r3 | OUT_DIR [--r2|--r3] --sheet :
+the screen test of arc 4
 (e031-e040 r2, 〈旱年〉), written 2026-11-17 before the arc's first episode, the way arc 3's was (screen-test-e021-e030.py).
 NOT run by the writer (Colab Qwen-Image-Edit, paid; the coordinator runs it, approved 2026-11-17, bible 待決事項 1).
 The manifest is meant for ~/mokaair-work/videos/_series/zhong-tian-qu-qi/live-screen-test-e031-e040/. Check before running:
@@ -31,12 +32,41 @@ one keeps set-xujia-tangfang-chen-l1).
              set-gucang-ye-l1.
 Every pick gets a NEW id with its own l1 (pilot.py takes the newest l-version of a set id, and e910-e930 must rebuild byte
 for byte); episodes send them by spec.json swap_pictures with absolute paths. Rounds 2-3 (seeds 37039/37040: shentan-gongdi,
-hantian-yang, hantian-shou, shanjiao-qu-ye, then gucang-wai on the picked hantian-yang) stay as specs in the bible until the
-round-1 picks are filed; they are not in this script yet.
+hantian-yang, hantian-shou, shanjiao-qu-ye, then gucang-wai on the picked hantian-yang) were specs in the bible until the
+round-1 picks were filed; the round-1 picks moved some of them (see --r2 and --r3 below).
+
+Round 2 (--r2, written 2026-11-17 after the round-1 picks were filed; live-action/screen-test-e031-e040-r1-picks.md):
+11 pictures x seeds 37039/37040 = 22 jobs, OUT_DIR/r2.json, images expected in OUT_DIR/out-r2/ (st31r2.sh).
+- 9 retakes of round-1 REDOs, same ids (none of them is in refs-live):
+  * two one-change edits of a round-1 seed that was right except for one thing: diaoqi-portrait-l1 from
+    OUT_DIR/out/diaoqi-portrait-l1-37037.png (face, hair, light kept; the fresh red cut becomes a long pale healed scar from
+    the brow to the cheek, and the knot-button tunic with the red sash becomes a crossed-collar tunic with a rope belt: two
+    things on one garment-and-face edit, the picks table's choice) and set-gucang-ye-l1 from
+    OUT_DIR/out/set-gucang-ye-l1-37038.png (only the hanging glass lantern on its arm becomes a clay oil lamp on an iron
+    plate on the post, rule 33);
+  * set-jingkeng-l1 as an edit of the filed set-hantian-l1 (an eye-height dry field that already reads right: only a row
+    of well pits, earth heaps, baskets and beams with ropes is added; round 1 drew a paved plaza with nooses and a blue
+    top-down painting);
+  * six fresh places on the grey canvas, redrawn with REAL_LENS (a person standing on the ground, eye height, level) and
+    an anti-aerial, anti-render negative, each description rewritten from what went wrong (picks table):
+    set-shangyou-ba-l1 (no cart, gentle hills), set-shentan-l1 (side view of the pond and a big wheel from the bank),
+    set-cunkou-l1 (no poles, no fish-eye), set-shanjiao-qu-l1 (empty ditch at a hill foot, no village),
+    set-guandao-ye-l1 (road crossing from the right, moon in front of the camera so no shadow of the photographer),
+    set-yiguan-men-ye-l1 (a stone hitching post, cold moonlight).
+- 2 of the bible's round-2 pictures whose base is filed: set-hantian-yang-l1 and set-hantian-shou-l1, one-change edits of
+  refs-live/set-hantian-l1 (seed 37038: the near field is the block in front of the low earth ridge that crosses the
+  picture; that block is flooded and planted / golden; everything beyond the ridge stays dry).
+Round 3 (--r3): 3 pictures x seeds 37039/37040 = 6 jobs, OUT_DIR/r3.json, images in OUT_DIR/out-r3/; each is a one-change
+edit of a round-2 pick and stops with a clear message until that pick is filed in refs-live: set-shentan-gongdi-l1
+(set-shentan-l1, the wheel half built), set-shanjiao-qu-ye-l1 (set-shanjiao-qu-l1 relit to a clear night with a thin
+setting moon) and set-gucang-wai-l1 (set-hantian-yang-l1 with a low plank granary added on the right, its door swung back).
+Round 1 can no longer be regenerated as it ran: its picks are filed and the job loop refuses an id that is already in
+refs-live; OUT_DIR/e031-e040.json stays as it was run (--sheet still works). Each round writes its prompt files to its own folder (OUT_DIR/prompts/, prompts-r2/, prompts-r3/), so a retaken id never
+overwrites the round-1 text that e031-e040.json still points at.
 The positive prompts are written only as what is there (bible 拍法 18); the things to keep out are in the negative files.
 
 --sheet: after the run, writes contact sheets OUT_DIR/sheets/r1-NN.jpg from OUT_DIR/out/<id>-<seed>.png and
-OUT_DIR/e031-e040-pictures.json: one row per picture, the base picture (for an edit) and the two seeds side by side at
+OUT_DIR/e031-e040-pictures.json (with --r2 / --r3: r2-NN.jpg / r3-NN.jpg from out-r2/ / out-r3/ and r2- / r3-pictures.json): one row per picture, the base picture (for an edit) and the two seeds side by side at
 656 px wide, each labelled; four rows per sheet; a missing seed is a dark tile marked MISSING.
 """
 import json
@@ -50,16 +80,21 @@ from pathlib import Path
 
 out = Path(sys.argv[1])
 FLAGS = set(sys.argv[2:])
-assert FLAGS <= {"--with-chen", "--horse-star", "--sheet"}, f"unknown flag(s): {FLAGS}"
+assert FLAGS <= {"--with-chen", "--horse-star", "--sheet", "--r2", "--r3"}, f"unknown flag(s): {FLAGS}"
+ROUND = 3 if "--r3" in FLAGS else 2 if "--r2" in FLAGS else 1
+assert not (ROUND > 1 and FLAGS & {"--with-chen", "--horse-star"}), "--with-chen / --horse-star are round-1 flags"
+assert not {"--r2", "--r3"} <= FLAGS, "one round at a time"
 here = Path(__file__).resolve().parent
 LIVE = here.parent / "assets" / "refs-live"
 NAME = "e031-e040"
-SEEDS = (37037, 37038)
+SEEDS = (37037, 37038) if ROUND == 1 else (37039, 37040)
+ROUND_NAME = NAME if ROUND == 1 else f"r{ROUND}"          # manifest OUT_DIR/<ROUND_NAME>.json
+ROUND_OUT = out / ("out" if ROUND == 1 else f"out-r{ROUND}")  # where the runner script puts the PNGs
 
 
 def sheet():
     from PIL import Image, ImageDraw, ImageFont
-    pics = json.loads((out / f"{NAME}-pictures.json").read_text(encoding="utf-8"))
+    pics = json.loads((out / f"{ROUND_NAME}-pictures.json").read_text(encoding="utf-8"))
     (out / "sheets").mkdir(exist_ok=True)
     font = ImageFont.load_default(size=22)
     tw, th, gap = 656, 368, 8  # a 1312x736 tile at half size; portraits are fitted into the same box
@@ -81,7 +116,7 @@ def sheet():
     for p in pics:
         base = p.get("base_path")
         cells = [tile(base, "base " + Path(base).stem)] if base and "grey" not in Path(base).name else []
-        cells += [tile(out / "out" / f"{p['picture']}-{s}.png", f"{p['picture']} {s}") for s in p["seeds"]]
+        cells += [tile(ROUND_OUT / f"{p['picture']}-{s}.png", f"{p['picture']} {s}") for s in p["seeds"]]
         rows.append(cells)
     per = 4
     for n in range(0, len(rows), per):
@@ -90,7 +125,7 @@ def sheet():
         for r, cells in enumerate(chunk):
             for c, t in enumerate(cells):
                 sh.paste(t, (gap + c * (tw + gap), gap + r * (th + gap)))
-        dst = out / "sheets" / f"r1-{n // per + 1:02d}.jpg"
+        dst = out / "sheets" / f"r{ROUND}-{n // per + 1:02d}.jpg"
         sh.save(dst, quality=88)
         print("sheet ->", dst)
 
@@ -99,7 +134,8 @@ if "--sheet" in FLAGS:
     sheet()
     sys.exit(0)
 
-(out / "prompts").mkdir(parents=True, exist_ok=True)
+PROMPTS = out / ("prompts" if ROUND == 1 else f"prompts-r{ROUND}")
+PROMPTS.mkdir(parents=True, exist_ok=True)
 (out / "base").mkdir(exist_ok=True)
 full = Path(tempfile.mkdtemp(prefix="st-full-"))  # screen-test.py writes its own manifests; keep them out of OUT_DIR
 argv, sys.argv = sys.argv, ["screen-test.py", str(full)]  # screen-test.py imports sys itself and writes to argv[1]
@@ -324,6 +360,188 @@ for pid, first, desc, extra in FRESH:
     pictures.append((pid, first, grey_s, CANVAS + LENS.format(desc=desc) + " " + STYLE, NEG + extra, 1312, 736,
                      "fresh place on the grey canvas, 35mm"))
 
+# --- rounds 2 and 3 (2026-11-17, after the round-1 picks: live-action/screen-test-e031-e040-r1-picks.md) -----------------
+# Round 1's list above is only built to keep its checks; a later round replaces it.
+REAL_LENS = ("A real photograph taken by a person standing on the ground, the camera at the height of a man's eyes with a "
+             "normal 35mm lens, pointing straight ahead and level, the horizon a straight level line across the upper part "
+             "of the frame, every wall, post and tree trunk standing upright: {desc}.")
+REAL_NEG = (", aerial view, drone shot, bird's-eye view, top-down view, high angle, looking down from above, 3D illustration, "
+            "concept art, matte painting, digital painting, video game scenery, toy model, miniature, oversaturated colours, "
+            "HDR, glossy surfaces, vignette, lens flare")
+
+
+def r1_seed(pid, seed):
+    p = out / "out" / f"{pid}-{seed}.png"
+    assert p.is_file(), f"{p} is missing: round 2 edits that round-1 seed"
+    return p
+
+
+def filed(pid, needed_by):
+    p = LIVE / f"{pid}.png"
+    assert p.is_file(), f"refs-live/{pid}.png is not filed yet: {needed_by} edits it (pick it first)"
+    return p
+
+
+if ROUND == 2:
+    pictures = []
+    # diaoqi: 37037 has the right face (35, square jaw, not erniu's twin); its cut is fresh and red and short, and its
+    # tunic has knot buttons and a red sash. The edit keeps the face and changes the scar and the tunic front.
+    diaoqi = ("Image 1 is a casting portrait of a man in front of a plain mid-grey studio backdrop: keep exactly everything "
+              "in it - the camera position and the framing, his face, his eyes, his thick eyebrows, his nose, his mouth "
+              "and his square jaw, his calm hard expression with the mouth closed, his black hair in a rough topknot "
+              "bound with a strip of torn cloth, his bare muscular arms, the grey backdrop and the soft light. Change only "
+              "the scar and the front of his tunic: the scar is one long old scar, healed smooth, a single slightly raised "
+              "line paler than the skin around it, starting at the outer end of his left eyebrow and running down across "
+              "his left cheekbone to the middle of his cheek; his tunic is the same ragged earth-brown hemp, now a "
+              "cross-collared tunic wrapped left over right across his chest and closed by its own overlap, a plain belt "
+              "of twisted hemp rope tied round his waist, the frayed short sleeves as they are." + KEEP_TAIL)
+    pictures.append(("diaoqi-portrait-l1", "e037 c18", r1_seed("diaoqi-portrait-l1", 37037), diaoqi,
+                     st["NEG"] + ", fresh wound, open cut, blood, red cut, red scar, scab, stitches, knot buttons, frog "
+                                 "buttons, toggles, Chinese buttons, red sash, red belt, coloured sash, sleeveless", 864, 1152,
+                     "edit of the round-1 portrait 37037"))
+    # gucang-ye: 37038 is right except the hanging glass lantern (a hung lantern and a kerosene lamp).
+    gucang = ("Image 1 is a photograph of the inside of a wooden granary at night: keep exactly everything in it - the "
+              "camera position, the plank walls, the stack of hemp grain sacks in the middle, the wooden ladder leaning "
+              "on the right, the three wooden tubs, the straw on the earth floor, the small barred window showing deep "
+              "blue night, the plank door at the right, the wooden post at the left edge and the warm low light. Change "
+              "only one thing: the hanging lamp and the wooden arm it hangs from at the upper left become one small open "
+              "clay oil lamp with a single small flame, sitting on a flat iron plate fixed to the side of the wooden post "
+              "at the height of a man's shoulder; its flame is the only light, warm on the sacks, the planks and the "
+              "straw." + KEEP_TAIL)
+    pictures.append(("set-gucang-ye-l1", "e040 c32", r1_seed("set-gucang-ye-l1", 37038), gucang,
+                     NEG + NIGHT_NEG + ", hanging lantern, glass lantern, hurricane lamp, kerosene lamp, oil lantern with "
+                                       "glass, chain, hook, bracket arm, candles, torches, many lamps", 1312, 736,
+                     "one change of round-1 seed 37038"))
+    # jingkeng: an edit of the filed dry field (eye height, real enough) instead of a fresh draw.
+    jingkeng = ("Image 1 is a photograph of dry farm fields: keep exactly everything in it - the camera position, the dry "
+                "cracked earth of the fields and the low earth ridge across them, the big willow tree on the right, the "
+                "low village houses and small trees in the distance, the hills, the clear sky and the low clear sunlight. "
+                "Add only one thing: a single row of twelve freshly dug square well pits runs across the cracked field "
+                "from the near left corner diagonally away to the far right; each pit is a dark square hole one stride "
+                "wide with a heap of fresh yellow earth and one round bamboo basket beside it, and one short wooden beam "
+                "laid across its rim with a thick hemp rope tied round the beam and hanging straight down into the "
+                "dark hole; the pit in the middle of the row is the deepest, with the biggest heap of earth; a thin low "
+                "haze of early morning lies over the ground." + KEEP_TAIL)
+    pictures.append(("set-jingkeng-l1", "e032 c12", filed("set-hantian-l1", "set-jingkeng-l1"), jingkeng,
+                     NEG + NO_WHEEL + ", noose, rope loop, hangman's knot, paving, tiles, stone slabs, street, plaza, new "
+                                      "houses in the field, people in the pits, head in the hole, ladder, water, flooded "
+                                      "field, green rice, top-down view, aerial view", 1312, 736,
+                     "one change of set-hantian-l1"))
+    FRESH2 = [
+        ("set-shangyou-ba-l1", "e031 c32",
+         "a dry stony stream bed in a farming valley of low rounded green hills on a hot hazy afternoon in early spring: "
+         "in the foreground the dry bed of grey cracked mud and loose rounded river stones runs straight away from the "
+         "camera between two low earth banks; in the middle distance a low dam about as high as a man's chest crosses "
+         "the bed from the left bank to the right bank, built of piled grey field stones and stacked brown hemp "
+         "sandbags, a flat path of packed earth along its top; behind the dam a still pool of brown water; on the right "
+         "bank a freshly dug earth ditch carries water off from the pool to one small field of bright green young rice; "
+         "the left bank dry bare earth; hazy white sunlight, dust in the air; " + QUIET,
+         NO_WHEEL + REAL_NEG + ", cart, wagon, wheelbarrow, mule, horse, karst peaks, steep pointed mountains, rice "
+                               "terraces, terraced hills, concrete, modern dam, metal sluice gate, pipes"),
+        ("set-shentan-l1", "e033 c27",
+         "a round deep pool at the bottom of a shallow gully at noon, seen from the dry bank on the left: the pool of dark "
+         "green still water fills the right half of the picture; standing in the pool near its left edge, seen from the "
+         "side, one large wooden water wheel as tall as three men, twelve flat wooden paddles evenly spaced round its rim, "
+         "a ring of small bamboo tubes tied along the rim, its thick round wooden axle resting on two heavy wooden "
+         "A-frames planted one on each side of the wheel; a short stone channel runs from a wooden sluice board on the "
+         "left side of the pool to under the wheel; from the top of the wheel a long open wooden trough on wooden posts "
+         "carries water to a narrow earth ditch that climbs away to the upper right toward dry cracked fields; on the "
+         "left bank a bare flat patch of earth; one big grey boulder on the right bank; a field ridge along the top right; "
+         "strong overhead noon light, short shadows; " + QUIET,
+         REAL_NEG + ", small wooden wheel, narrow wheel, tower, windmill, mill house, metal wheel, two wheels, broken wheel, "
+                    "straight canal, brick channel, paving stones, waterfall, modern machinery"),
+        ("set-cunkou-l1", "e035 c22",
+         "the entrance of a small poor farming village at dusk under an orange-red sky: on the left two heavy gates of "
+         "rough upright logs stand shut with one thick wooden bar laid across their middle, under a small gate roof of "
+         "dark grey tiles on two log posts; outside the gates a dirt road in the foreground leads to a short plank "
+         "footbridge over a dry ditch; beside the gates one old willow tree with long drooping branches; on the right a "
+         "dirt village lane goes away past three low mud-brick houses with thatched roofs; low hills behind; warm orange "
+         "light from the right, long soft shadows; " + QUIET,
+         REAL_NEG + ", poles with crossbars, utility poles, power lines, wires, red figures, red cloth, red strips, torches, "
+                    "fire, lanterns, writing on the gate, guards, horse, cart, render"),
+        ("set-shanjiao-qu-l1", "e036 c14",
+         "the foot of a steep brown scrubby hillside on a clear morning: a freshly dug empty irrigation ditch as deep as a "
+         "man is tall, its bottom of dry brown earth, runs from the near right of the picture away to the left and ends at "
+         "the foot of the hillside that fills the left background; near the hill end a raised earth bank three strides "
+         "wide crosses the ditch, one plain wooden sluice board standing in a slot in the bank and a heap of dry straw on "
+         "top of it; both banks are dry yellow earth cracked into plates, with fresh heaps of dug soil along them; far "
+         "away on the right one small patch of green young rice; flat white morning light; " + QUIET,
+         NO_WHEEL + REAL_NEG + ", water in the ditch, river, village, houses, rows of houses, pyramids, desert dunes, "
+                               "sand, concrete, pipes, tools, shovels, carts"),
+        ("set-guandao-ye-l1", "e038 c20",
+         "a wide country high road of packed yellow earth at night: the road comes in from the right foreground and runs "
+         "across the picture away to the far left; dry bare fields on both sides; a line of tall poplar trees along the "
+         "far side of the road, black shapes against the night sky; the moon high in the upper right of the picture, in "
+         "front of the camera; cold blue moonlight on the road and the fields, the long shadows of the poplars falling "
+         "toward the camera across the road; the moonlight is the only light; the road empty; " + QUIET,
+         NIGHT_NEG + REAL_NEG + ", the photographer's shadow, human shadow on the road, footprints, car lights, headlights, "
+                                "distant lights, street lamps, milestone, stone tablet, stele, road sign, signpost, torch, "
+                                "fire, houses, cart, horse"),
+        ("set-yiguan-men-ye-l1", "e038 c29",
+         "the front of a small old shop on a narrow stone-paved street of a Song-dynasty county town at night, the shop "
+         "front on the right of the picture: two plain wooden door boards shut, two worn stone steps up to them, the "
+         "lintel above the door plain bare wood; in front of the steps, at the edge of the street, one short plain stone "
+         "hitching post, a square grey stone pillar as high as a man's waist with a round hole through its top; on both "
+         "sides the next shops' door boards are shut, grey tiled eaves above; cold blue moonlight on the paving stones "
+         "and the shop fronts, the eaves throwing deep shadows; the moonlight is the only light; " + QUIET,
+         NIGHT_NEG + REAL_NEG + ", cross, crucifix, wooden post with a crossbar, signboard over the door, shop sign, hanging "
+                                "sign, notice board, lanterns, lit windows, red silk, torches, horse, warm orange light on "
+                                "the walls, Japanese architecture"),
+    ]
+    for pid, first, desc, extra in FRESH2:
+        pictures.append((pid, first, grey_s, CANVAS + REAL_LENS.format(desc=desc) + " " + STYLE, NEG + extra, 1312, 736,
+                         "fresh place on the grey canvas, 35mm, round-2 lens"))
+    # the bible's round 2, base filed: the near block in front of the ridge (seed 37038 of set-hantian-l1)
+    keep_field = ("Image 1 is a photograph of dry farm fields: keep exactly everything in it - the camera position, the low "
+                  "earth ridge that crosses the fields from the left to the willow, the dry cracked rows beyond the ridge, "
+                  "the big willow tree on the right, the low village houses and small trees in the distance, the hills, "
+                  "the clear sky and the low clear sunlight. Change only one thing: the near field, the block in front of "
+                  "the ridge that fills the lower half of the picture, ")
+    yang = (keep_field + "is flooded with a thin sheet of still shallow water that mirrors the sky, planted with straight "
+            "sparse rows of small young green rice seedlings standing in the water, the low earth ridges around it "
+            "wet and dark; every field beyond the ridge stays dry pale cracked earth." + KEEP_TAIL)
+    shou = (keep_field + "is a full field of ripe golden rice, the heavy golden heads bending low on yellow stalks, "
+            "standing thick right to the edges of the block; every field beyond the ridge stays dry pale cracked "
+            "earth." + KEEP_TAIL)
+    hantian = filed("set-hantian-l1", "set-hantian-yang-l1 and set-hantian-shou-l1")
+    pictures.append(("set-hantian-yang-l1", "e035 c09", hantian, yang,
+                     NEG + NO_WHEEL + ", flooded valley, every field flooded, water beyond the ridge, green fields beyond "
+                                      "the ridge, ripe grain, golden rice, flowers, rain, people, buffalo", 1312, 736,
+                     "one change of set-hantian-l1"))
+    pictures.append(("set-hantian-shou-l1", "e040 c13", hantian, shou,
+                     NEG + NO_WHEEL + ", green rice, water, flooded field, golden fields beyond the ridge, wheat, sheaves, "
+                                      "harvesters, sickles, people, buffalo, flowers", 1312, 736,
+                     "one change of set-hantian-l1"))
+elif ROUND == 3:
+    pictures = []
+    gongdi = ("Image 1 is a photograph of a deep pool in a gully with a wooden water wheel: keep exactly everything in it - "
+              "the camera position, the pool, its banks, the boulder, the field ridge, the dry fields, the stone channel, "
+              "the sluice board and the noon light. Change only one thing: the water wheel is half built: only its two "
+              "heavy wooden A-frames and the thick wooden axle laid across them stand there, with half of the spokes "
+              "fitted on one side and the rim and paddles still missing; a pile of sawn timber, planks and bamboo tubes "
+              "lies on the bare patch of the left bank." + KEEP_TAIL)
+    qu_ye = ("Image 1 is a photograph of a dry irrigation ditch at the foot of a hillside: keep exactly everything in it - "
+             "the camera position, the ditch, the earth bank across it with the sluice board and the straw, the heaps of "
+             "dug soil, the hillside, the far patch of rice. Change only one thing, the time and the light: it is a clear "
+             "night late in the night; a thin crescent moon low in the west at the upper left, its cold blue light faint "
+             "on the earth, the ditch bottom and the hillside in deep shadow, the sky dark blue with stars." + KEEP_TAIL)
+    wai = ("Image 1 is a photograph of farm fields with one flooded field of young rice: keep exactly everything in it - "
+           "the camera position, the flooded field and its young rice, the low ridge, the dry fields beyond, the willow, "
+           "the far village, the hills, the sky and the light. Change only one thing: on the right side of the picture, on "
+           "the dry ground beside the flooded field, stands one low granary of grey weathered wooden planks with a low "
+           "thatched roof, its one heavy plank door swung back against the wall, the inside dark." + KEEP_TAIL)
+    pictures += [
+        ("set-shentan-gongdi-l1", "e033 c14", filed("set-shentan-l1", "set-shentan-gongdi-l1"), gongdi,
+         NEG + ", finished water wheel, paddles on the rim, complete rim, two wheels, tower, crane, scaffolding with people",
+         1312, 736, "one change of set-shentan-l1"),
+        ("set-shanjiao-qu-ye-l1", "e037 c01", filed("set-shanjiao-qu-l1", "set-shanjiao-qu-ye-l1"), qu_ye,
+         NEG + NIGHT_NEG + ", full moon, bright moon, torch, fire, lamps, water in the ditch", 1312, 736,
+         "relight of set-shanjiao-qu-l1"),
+        ("set-gucang-wai-l1", "e039 c24", filed("set-hantian-yang-l1", "set-gucang-wai-l1"), wai,
+         NEG + NO_WHEEL + ", second building, many buildings, signboard on the granary, lanterns, carts, people, fence",
+         1312, 736, "one change of set-hantian-yang-l1"),
+    ]
+
 jobs, summary = [], []
 for pid, first, base, body, neg, w, h, how in pictures:
     assert Path(base).is_file(), f"{base} is missing"
@@ -332,15 +550,15 @@ for pid, first, base, body, neg, w, h, how in pictures:
     if "portrait" not in how:  # the portraits keep screen-test.py's HEAD frame (arc 2's faces were drawn with it)
         for bad in NEGATIVE_WORDS:
             assert bad not in body.lower(), f"{pid}: the positive prompt has '{bad.strip()}' (write what is there)"
-    prompt = out / "prompts" / f"{pid}.txt"
+    prompt = PROMPTS / f"{pid}.txt"
     prompt.write_text(body, encoding="utf-8")
-    negf = out / "prompts" / f"negative-{pid}.txt"
+    negf = PROMPTS / f"negative-{pid}.txt"
     negf.write_text(neg, encoding="utf-8")
     jobs += [{"id": f"{pid}-{s}", "reference_images": [str(Path(base).resolve())], "prompt_file": str(prompt.resolve()),
               "negative_file": str(negf.resolve()), "width": w, "height": h, "seed": s, "latent": "empty"} for s in SEEDS]
     summary.append({"picture": pid, "seeds": list(SEEDS), "base": how, "base_path": str(Path(base).resolve()),
                     "first_shot": first})
 assert len(jobs) <= 40, f"{len(jobs)} jobs: the batch cap is 40"
-(out / f"{NAME}.json").write_text(json.dumps({"jobs": jobs}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-(out / f"{NAME}-pictures.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-print(len(pictures), "pictures,", len(jobs), "jobs ->", out / f"{NAME}.json")
+(out / f"{ROUND_NAME}.json").write_text(json.dumps({"jobs": jobs}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+(out / f"{ROUND_NAME}-pictures.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+print(len(pictures), "pictures,", len(jobs), "jobs ->", out / f"{ROUND_NAME}.json")
