@@ -90,7 +90,7 @@ PM = "warm golden low afternoon sun from the upper right behind, long shadows st
 Y0 = "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west"
 YARD = ("a courtyard of packed earth: on the left a low thatched mud-and-stone farmhouse with a dark doorway, a small lattice "
         "window and split firewood stacked against its wall; in the middle of the low mud-and-stone back wall a yard gate of "
-        "weathered planks under a small tiled roof; one bare tree with no leaves just behind the wall at its right, a golden "
+        "weathered planks under a small tiled roof; one bare leafless tree just behind the wall at its right, a golden "
         "field beyond; one round stone well with a wooden windlass in the front right")
 DUSK = "low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth"
 LOC = {
@@ -195,7 +195,7 @@ SHOTS = [
          motion="Tang Wanjin drags his purple sleeve once across his eyes and lowers it, glaring, as he speaks",
          zh="近景、慢推（送瓦屋裁切）：唐萬金右袖第一格已經舉在眼邊，用紫袖抹一下眼淚、放下、瞪著朝畫左外看不到的人說（不點名許硯；那一側到邊緣只有黃土地與木板門）；不笑。稿子『抬起胖手指往許硯一戳』不拍（一鏡一個動作；單根手指會被讀成不雅的手勢）"),
     dict(loc="pm_r", cam="Medium close-up, slow push in", chars=["xuyan"], night="pm",
-         comp=f"medium close-up of {XU_D}, standing on the packed pale earth, framed from the chest up with space above his head, his two hands already joined in a cupped salute before his chest from the first frame, his face three-quarter to screen right {off('right', SIDE_SQ)}; steady and level, neither humble nor proud, not smiling: calm eyes, brows level, lips moving evenly between words; behind him, soft, the long low tiled building in the warm afternoon sun; {HANDS}",
+         comp=f"medium close-up of {XU_D}, standing on the packed pale earth, framed from the chest up with space above his head, his two hands already joined in a cupped salute before his chest from the first frame, his face three-quarter to screen right {off('right', SIDE_SQ)}; steady and level, polite but unbowed, not smiling: calm eyes, brows level, lips moving evenly between words; behind him, soft, the long low tiled building in the warm afternoon sun; {HANDS}",
          lines=[("xuyan", "晚輩許硯。窮是真的，婚書是縣衙蓋了印的。", "不卑不亢")],
          motion="Xu Yan gives one short bow over his joined hands and straightens as he speaks",
          zh="中近景、慢推（送瓦屋裁切）：許硯第一格已經兩手拱在胸前，一揖、直起身，不卑不亢地朝畫右外看不到的人說（唐萬金，不點名；那一側到邊緣只有黃土地與木板門）。稿子『畫面右邊緣是唐萬金的紫袖』『攤開兩隻空手』不拍（不描述畫外的人；一鏡一個動作）"),
@@ -287,11 +287,15 @@ SHOTS = [
     dict(loc="yard_w", cam="Close-up, slow push in", chars=["xuyan"], night="dusk",
          comp=f"close-up of {XU_D}, framed from the chest up with space above his head, his face three-quarter to screen right, his eyes level on a spot beyond the right edge of the frame, never the lens; he is the only person in the frame; quiet and dry: steady eyes, brows level, lips pressed shut; behind him, soft, the dark doorway and the mud-and-stone wall of the farmhouse in the low evening light",
          lines=[("xitong", "開箱獎勵：高產糧種一小袋，六十日可收。", "冷，宣布"),
-                ("xitong", "功勞送人，倒是送對了一次。", "冷"),
-                ("xuyan", "不是送她的，本來就是她算出來的。", "心裡話，錄得近、輕", "inner")],
+                ("xitong", "功勞送人，倒是送對了一次。", "冷")],
          panel=[("開箱獎勵：高產糧種一小袋，六十日可收", "reward")],
-         motion=f"Xu Yan's eyes settle and one corner of his mouth twitches once and is pressed straight again; {SILENT_HE}; he is listening and thinking, not speaking",
-         zh="近景、慢推（送屋前裁切；拍法 11 不寫藍光，稿子『臉被面前的淡藍光照亮』不照用）：許硯眼神一定、嘴角動一下又壓住（稿子），全程嘴閉著（系統兩句、心裡話一句：本集的鬥嘴）；面板「開箱獎勵：高產糧種一小袋，六十日可收」由剪接疊上"),
+         motion=f"Xu Yan's eyes settle on that spot and his brows lift a little, then level again; {SILENT_HE}; he is listening, not speaking",
+         zh="近景、慢推（送屋前裁切；拍法 11 不寫藍光，稿子『臉被面前的淡藍光照亮』不照用）：許硯聽系統兩句，眼神一定、眉毛輕輕一抬又放平，全程嘴閉著；面板「開箱獎勵：高產糧種一小袋，六十日可收」由剪接疊上。稿子 c21 三句錄音加起來 10.11 秒（超過約 10 秒），拆成 s21（系統兩句）與 s21b（心裡話），同第 28 集 s15／s15b"),
+    dict(sid="s21b", loc="yard_w", cam="Close-up, slow push in", chars=["xuyan"], night="dusk",
+         comp=f"close-up of {XU_D}, framed from the chest up with space above his head, his face three-quarter to screen right, his eyes lowered a little, never the lens; he is the only person in the frame; quiet and certain: steady eyes, brows level, lips pressed shut; behind him, soft, the dark doorway and the mud-and-stone wall of the farmhouse in the low evening light",
+         lines=[("xuyan", "不是送她的，本來就是她算出來的。", "心裡話，錄得近、輕", "inner")],
+         motion=f"one corner of Xu Yan's mouth twitches once and is pressed straight again; {SILENT_HE}; he is thinking, not speaking",
+         zh="近景、慢推（送屋前裁切）：許硯的心裡話（錄音，嘴閉著），嘴角動一下又壓住（稿子）；本集的鬥嘴。從 c21 拆出（見 s21）"),
     dict(loc="yard_e", cam="Insert close-up, slow push in", chars=[], night="dusk",
          comp=f"insert close-up from a low side angle, the very first frame is already a close view of a man's right hand in a faded blue-grey sleeve cuff, held low at his side, palm up, {SEEDS} lying on the palm; far below, soft and out of focus along the bottom edge, the packed earth of the yard with long evening shadows; only the hand, its sleeve cuff and the pouch are in the frame",
          act=3,
@@ -390,7 +394,7 @@ SHOTS = [
          motion="Wei Shaoqing's eyes go wide and his whole body freezes as he speaks, the closed fan slipping a little down through his fingers",
          zh="近景、慢推（送院門裁切；稿子『身後只有門外的斜陽』）：魏少卿在院門口半轉回身，桃花眼瞪大、整個人僵住、收起的扇子在指間往下滑一點，望著畫右外的井（不點名、不描述阿令；那一側到邊緣只有泥牆）、聲音發緊地說（拍法 30：認出阿令是他輸的鏡，NOSMILE；結尾懸念）"),
     dict(loc="yard", cam="Wide shot, slow push in", chars=["aling", "weishaoqing", "xuyan"], night="dusk",
-         comp=f"wide shot at standing eye height, like the picture: in the right foreground beside the round stone well {ALING}, standing, framed full figure, {BUCKET} hanging from her right hand, {VEIL_BLOWN}, her face three-quarter to screen left toward the yard gate, her lips closed, never the lens; far back in the yard gate in the middle of the back wall, small, {WEI}, framed full figure, half turned back toward the yard, frozen, his lips pressed shut, never the lens; in the middle of the yard, small, side by side with their backs to us, facing the yard gate, {XU_D} on the left and on his right {TBACK}, {STACK} held against her chest, {only_tang()}; {HANDS}; exactly four people",
+         comp=f"wide shot at standing eye height, like the picture: in the right foreground beside the round stone well {ALING}, standing, framed full figure, {BUCKET} held low in her right hand, {VEIL_BLOWN}, her face three-quarter to screen left toward the yard gate, her lips closed, never the lens; far back in the yard gate in the middle of the back wall, small, {WEI}, framed full figure, half turned back toward the yard, frozen, his lips pressed shut, never the lens; in the middle of the yard, small, side by side with their backs to us, facing the yard gate, {XU_D} on the left and on his right {TBACK}, {STACK} held against her chest, {only_tang()}; {HANDS}; exactly four people",
          motion=f"nobody moves; only the loose veil, a few strands of A-ling's hair and the hems of their clothes stir in the wind; {quiet('A-ling, Wei Shaoqing and Xu Yan', 'their', plural=True)}; {HEADSTILL}",
          zh="全景、慢推（人眼高、照圖；送塗過的整個院子；本集、也是第 3 篇章最後一鏡，接點 30→31）：右前景井邊的阿令（送沒戴面巾的 `aling-portrait-l1`）右手提著一桶水、面巾吹到左耳那一邊、臉朝畫左的院門；後牆中間院門口小小的魏少卿半轉身、僵著；院子中間背對我們、小小的許硯與他右邊的唐小棠背影（剛好兩顆丸子、抱著帳本）望著院門；風吹動面巾、頭髮與衣角，四個人都不動、嘴都閉著（無台詞）。稿子『柿子樹下、轉過頭』照真人圖改：樹在牆後、他們在院子中間背對鏡頭（她不露臉）；樹後的唐萬金、籬笆外的鄭伯與秦霜、屋門口的小禾都不寫（不描述畫外的人）；『乾葉滾過兩人之間』交給音效"),
 ]
