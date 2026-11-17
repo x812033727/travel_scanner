@@ -19,7 +19,7 @@ scope:
 ## Why
 
 站主 2026-11-17 要一套奇聞檔案局與原來如此事務所共用的底樂、短音樂、音效，存在雲端硬碟以後直接用。
-132 首已經用 Flow Music（Lyria 3.5）生成並備份（做法與結果見
+202 首（含第三波的轉場與情境音效）已經用 Flow Music（Lyria 3.5）生成並備份（做法與結果見
 [`docs/videos/explainer-series/music-library/README.md`](../../docs/videos/explainer-series/music-library/README.md)），
 但只有底樂能直接放進 `_music/` 用。短音樂要 3–10 秒卻都生成約 1 分鐘，音效也是約 1 分鐘、多段聲音夾靜音，
 還不能當產線的音效組用；也沒有人聽過任何一首。
