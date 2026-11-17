@@ -1283,7 +1283,7 @@
 **用到的題與來源：**
 
 - N146（入選）為什麼二戰盟軍飛行員把夜空裡跟著飛的光球，取了一個漫畫裡的無意義名字「foo fighter」？ — [www.smithsonianmag.com](https://www.smithsonianmag.com/air-space-magazine/what-were-mysterious-foo-fighters-sighted-ww2-night-flyers-180959847/)、[documents3.theblackvault.com](https://documents3.theblackvault.com/documents/UFOFiles/pdf/CIA-UAP-002_Scientific-Advisory-Panel-on-Unidentified-Flying-Objects_Report_1952-1953.pdf)
-- N145（入選）為什麼 1946 年瑞典人通報了近千次「幽靈火箭」，軍方撈了一座湖，最後公報卻說多半是流星？ — [riksarkivet.se](https://riksarkivet.se/resurser/spokraketer)、[documents3.theblackvault.com](https://documents3.theblackvault.com/documents/UFOFiles/pdf/DOW-UAP-D099_Intelligence-Review-of-Ghost-Rocket-Incidents_1947.pdf)
+- N145（入選）1946 年瑞典人通報了近千次天上的「幽靈火箭」，軍方從湖裡撈了約 3,500 份樣本卻什麼都沒有，8 月的公報說不可能是流星、10 月又改口說多半是天體現象，那些火箭到底是什麼？ — [riksarkivet.se](https://riksarkivet.se/resurser/spokraketer)、[documents3.theblackvault.com](https://documents3.theblackvault.com/documents/UFOFiles/pdf/DOW-UAP-D099_Intelligence-Review-of-Ghost-Rocket-Incidents_1947.pdf)
 
 **可能無聊的地方：** 兩段都是軍方報告，第二段要用瑞典撈湖與公報改口推進；N145 要壓到約 7 分鐘。
 
