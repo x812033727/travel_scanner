@@ -32,7 +32,7 @@ from redis.asyncio import Redis
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.ai import minimax_pool
+from app.ai import gemini_pool, minimax_pool
 from app.config import Settings
 from app.models import VideoProject
 from app.video_automation.models import (
@@ -158,6 +158,8 @@ def provider_for(runtime: Settings, vendor: str, kind: str) -> MediaProvider:
 # How long a pool lease (app.ai.minimax_pool) holds a key: a picture or a track is made inside
 # the submit call; a clip's task runs on until a poll sees it end, which a day bounds.
 POOL_SYNC_LEASE_SECONDS = 600
+# The fingerprint of the Gemini key a clip was submitted with, kept in the job's request.
+GEMINI_KEY_FIELD = "gemini_key_fp"
 POOL_CLIP_LEASE_SECONDS = 2 * 3600
 # The fields a pooled MiniMax job keeps in its request: which key made it (a fingerprint) and
 # its lease. A clip's task belongs to the account that made it, so its polls use that key.
@@ -274,10 +276,30 @@ class PooledMiniMax:
 
 
 def job_provider(ctx: MediaContext, job: VideoMediaJob) -> MediaProvider:
-    """The provider that advances ``job``: the pool's when the site has several MiniMax keys."""
+    """The provider that advances ``job``: the pool's when the site has several MiniMax keys.
+
+    A Gemini clip is a long-running operation of the project whose key submitted it, so once
+    submitted it is polled and fetched with that key (``gemini_key_fp``), whatever key the
+    Gemini pool would pick now.
+    """
     if job.provider == "minimax" and len(minimax_pool.pool_keys(ctx.runtime)) > 1:
         return PooledMiniMax(ctx, job)
+    pinned = str(job.request.get(GEMINI_KEY_FIELD) or "")
+    if job.provider == "gemini" and job.vendor_ref and pinned:
+        key = gemini_pool.key_by_fingerprint(ctx.runtime, pinned)
+        if key:
+            runtime = ctx.runtime.model_copy(update={"hotspot_guide_gemini_api_key": key})
+            return provider_for(runtime, job.provider, job.kind)
     return provider_for(ctx.runtime, job.provider, job.kind)
+
+
+def gemini_key_fp(ctx: MediaContext, job: VideoMediaJob) -> str | None:
+    """The fingerprint of the Gemini key this job was (or will be) sent with."""
+    if job.provider != "gemini":
+        return None
+    pinned = str(job.request.get(GEMINI_KEY_FIELD) or "")
+    key = ctx.runtime.hotspot_guide_gemini_api_key
+    return pinned or (gemini_pool.fingerprint(key) if key else None)
 
 
 async def series_image_model(session: AsyncSession, slug: str) -> str | None:
@@ -729,6 +751,9 @@ async def _settle(
     if submitted.download is not None:
         await _download(ctx, job, provider, submitted.download)
         return
+    fp = gemini_key_fp(ctx, job)
+    if fp and GEMINI_KEY_FIELD not in job.request:
+        job.request = {**job.request, GEMINI_KEY_FIELD: fp}
     job.status = "submitted"
     job.vendor_ref = submitted.vendor_ref
     job.submitted_at = now
@@ -861,6 +886,9 @@ async def _ready(
     job.error_code = None
     job.error_detail = None
     job.updated_at = now
+    fp = gemini_key_fp(ctx, job)
+    if fp:
+        await gemini_pool.record_spend(ctx.redis, fp, float(job.usd_estimate or 0))
     operation = str(job.request.get("pilot_budget_operation_id") or "")
     if is_pilot(job.slug) and operation:
         await ctx.session.commit()

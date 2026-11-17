@@ -1,0 +1,33 @@
+{
+  "fields": {
+    "hotspot_guide_gemini_key_budgets_usd": {
+      "label": "Gemini 各密钥月预算（USD）",
+      "help": "可留空。依次对应“其他 Gemini 密钥”再到上面那把，用逗号分隔，例如 95,95,0；0 或留空表示不设预算。真正换密钥的依据是 Google 的拒绝：预付制储值用完时返回 402，设了月花费上限时返回 429。"
+    }
+  },
+  "secrets": {
+    "hotspot_guide_gemini_api_keys_extra": {
+      "label": "其他 Gemini 密钥（Google AI Ultra 账号）",
+      "help": "可填多把，用逗号或换行分隔。系统会依次先用完这些密钥（Ultra 账号每月的 Google Cloud 抵用额度），全部被 Google 拒绝后才改用上面那把。"
+    }
+  },
+  "panel": {
+    "title": "Gemini 密钥池",
+    "intro": "依次使用；被 Google 以“额度或花费上限”拒绝的密钥会休息，最长 12 小时后再试。本月花费是系统按用量估算，实际余额以 AI Studio 账单页为准。",
+    "key": "密钥",
+    "order": "顺序",
+    "spent": "本月估计",
+    "budget": "预算",
+    "state": "状态",
+    "active": "使用中",
+    "ready": "待命",
+    "exhausted": "额度用完，休息到",
+    "busy": "繁忙，休息到",
+    "over": "已达预算",
+    "none": "未设",
+    "billing": "打开 AI Studio 账单页",
+    "error": "读取不到密钥池状态",
+    "single": "目前只有一把 Gemini 密钥；在上方“其他 Gemini 密钥”填入 Ultra 账号的密钥后，这里会列出每一把。",
+    "siteKey": "网站密钥"
+  }
+}
