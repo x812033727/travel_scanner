@@ -464,6 +464,14 @@ class Settings(BaseSettings):
     # never from model text; scoring stays with the existing structured assessment step.
     hotspot_guide_gemini_enabled: bool = False
     hotspot_guide_gemini_api_key: str | None = None
+    # More Gemini keys (Google AI Ultra accounts with monthly Cloud credit), separated by commas
+    # or white space. They are used up in order before hotspot_guide_gemini_api_key, which comes
+    # last (app.ai.gemini_pool).
+    hotspot_guide_gemini_api_keys_extra: str | None = None
+    # Optional monthly USD budget per key in the same order (extras, then the site key); blank
+    # or 0 is no budget. Google's own refusal (prepay balance out, or a spending cap) is what
+    # switches keys.
+    hotspot_guide_gemini_key_budgets_usd: str | None = None
     hotspot_guide_gemini_base_url: str = "https://generativelanguage.googleapis.com"
     # Flash-tier models refuse "list these sources" prompts on the grounded path, but
     # handle the schema-bound candidate list fine, and gemini-2.5-pro is closed to new

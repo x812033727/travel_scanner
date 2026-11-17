@@ -1,0 +1,325 @@
+"""Several Gemini API keys, used up one after another.
+
+The owner asked on 2026-11-17 to use two Google AI Ultra accounts besides the site's own key:
+each Ultra account comes with US$100 of Google Cloud credit a month that the Gemini API can
+spend. The extra keys are ``hotspot_guide_gemini_api_keys_extra`` (commas or white space); the
+site's own ``hotspot_guide_gemini_api_key`` comes last, so the free credit goes first and the
+paid key only takes over once every Ultra key is refused.
+
+Google publishes no API that reads what is left of the credit (only the AI Studio billing page
+shows it), so a key is judged by two signals:
+
+1. Google's own answer. The Ultra accounts are on prepay billing: once the balance and credit
+   are spent Google answers 402 ("prepayment credits are depleted"); a project on postpaid
+   billing with a monthly spending cap answers 429 "exceeded its monthly spending cap".
+   ``note_response`` reads either, and the key rests. A rest lasts at
+   most ``EXHAUSTED_PROBE_SECONDS`` and never past the next month: the credit renews on the
+   subscription's billing day, not on the first, so a rested key is tried again now and then.
+2. The site's own estimate. Each call's usage is priced and added to the key's tally for the
+   month (``record_spend``). It is shown on the admin page; when the owner writes a budget for a
+   key in ``hotspot_guide_gemini_key_budgets_usd`` the key is also skipped once over it.
+
+With one key nothing here touches Redis. Every Redis failure falls back to the first key, so a
+broken Redis costs the order, never a call. A key is named in Redis, logs and jobs by its
+fingerprint, never by itself.
+"""
+
+from __future__ import annotations
+
+import asyncio
+import hashlib
+import logging
+import re
+from collections.abc import Callable
+from dataclasses import dataclass
+from datetime import datetime, timedelta
+from typing import Any, Literal
+from urllib.parse import urlsplit
+from zoneinfo import ZoneInfo
+
+import httpx
+from redis.asyncio import Redis
+from redis.exceptions import RedisError
+
+from app.config import Settings
+
+logger = logging.getLogger(__name__)
+
+PREFIX = "gmpool"
+GEMINI_HOST = "generativelanguage.googleapis.com"
+BUSY_REST_SECONDS = 60
+EXHAUSTED_PROBE_SECONDS = 12 * 3600
+SPEND_KEEP_SECONDS = 40 * 24 * 3600
+PACIFIC = ZoneInfo("America/Los_Angeles")
+_SPLIT = re.compile(r"[\s,]+")
+_MODEL = re.compile(r"/models/([^/:]+):")
+# A refusal that says money ran out, not that the key is going too fast.
+_EXHAUSTED = re.compile(
+    r"spending cap|spend(?:ing)? limit|prepay|prepayment|credits? (?:are |is )?depleted|"
+    r"billing|insufficient (?:balance|funds|credit)",
+    re.IGNORECASE,
+)
+# USD per million tokens (input, output) from ai.google.dev/gemini-api/docs/pricing, read
+# 2026-11-17; thoughts are billed as output. Pictures, clips and tracks are priced per item in
+# app.video_media.catalog and tallied when their job is ready, so they are not here. A model
+# not listed is priced as the dearer default, so the estimate errs high, never low.
+TOKEN_PRICES: tuple[tuple[str, tuple[float, float]], ...] = (
+    ("tts", (0.50, 9.00)),
+    ("pro", (2.00, 12.00)),
+    ("flash", (0.75, 3.75)),
+)
+DEFAULT_TOKEN_PRICE = (2.00, 12.00)
+
+Verdict = Literal["exhausted", "busy"]
+_BACKGROUND: set[asyncio.Task[None]] = set()
+
+
+def fingerprint(key: str) -> str:
+    return hashlib.sha256(key.encode("utf-8")).hexdigest()[:12]
+
+
+def pool_keys(settings: Settings) -> list[str]:
+    """The extra keys in the order written, then the site's own key, each once."""
+    keys: list[str] = []
+    for key in [
+        *_SPLIT.split(settings.hotspot_guide_gemini_api_keys_extra or ""),
+        settings.hotspot_guide_gemini_api_key or "",
+    ]:
+        key = key.strip()
+        if key and key not in keys:
+            keys.append(key)
+    return keys
+
+
+def key_by_fingerprint(settings: Settings, fp: str) -> str | None:
+    return next((key for key in pool_keys(settings) if fingerprint(key) == fp), None)
+
+
+def budgets(settings: Settings) -> list[float | None]:
+    """Each key's monthly USD budget in pool order; None (blank, 0 or unreadable) means none."""
+    written = _SPLIT.split((settings.hotspot_guide_gemini_key_budgets_usd or "").strip())
+    found: list[float | None] = []
+    for index in range(len(pool_keys(settings))):
+        try:
+            value = float(written[index]) if index < len(written) and written[index] else 0.0
+        except ValueError:
+            value = 0.0
+        found.append(value if value > 0 else None)
+    return found
+
+
+def month_of(moment: datetime) -> str:
+    return moment.astimezone(PACIFIC).strftime("%Y-%m")
+
+
+def seconds_to_next_month(moment: datetime) -> int:
+    local = moment.astimezone(PACIFIC)
+    first = local.replace(day=1, hour=0, minute=0, second=0, microsecond=0) + timedelta(days=32)
+    first = first.replace(day=1)
+    return max(60, int((first - local).total_seconds()))
+
+
+def _names(fp: str, month: str) -> dict[str, str]:
+    return {"rest": f"{PREFIX}:rest:{fp}", "spend": f"{PREFIX}:spend:{fp}:{month}"}
+
+
+def classify(status: int, body: str) -> Verdict | None:
+    """What a Gemini refusal says about the key: out of money, merely busy, or neither."""
+    if status == 402:
+        return "exhausted"
+    if status != 429:
+        return None
+    return "exhausted" if _EXHAUSTED.search(body or "") else "busy"
+
+
+def error_message(response: httpx.Response) -> str:
+    """Google's own ``error.status: error.message``, cut short; it never echoes the key."""
+    try:
+        payload = response.json()
+    except (ValueError, httpx.ResponseNotRead):
+        return ""
+    error = payload.get("error") if isinstance(payload, dict) else None
+    if not isinstance(error, dict):
+        return ""
+    status = error.get("status") if isinstance(error.get("status"), str) else ""
+    message = error.get("message") if isinstance(error.get("message"), str) else ""
+    return f"{status}: {message}".strip(": ")[:300]
+
+
+def _redis() -> Redis | None:
+    try:
+        from app.infra import get_redis
+
+        return get_redis()
+    except Exception:  # no Redis configured (tests, a script): nothing to rest
+        return None
+
+
+def _schedule(coroutine: Any) -> None:
+    try:
+        task = asyncio.get_running_loop().create_task(coroutine)
+    except RuntimeError:
+        coroutine.close()
+        return
+    _BACKGROUND.add(task)
+    task.add_done_callback(_BACKGROUND.discard)
+
+
+def note_response(response: httpx.Response, payload: Any = None) -> Verdict | None:
+    """Read one Gemini answer for the pool: a refusal rests its key, a success adds its cost.
+
+    Call it on every answer from ``generativelanguage.googleapis.com`` before raising for the
+    status; answers from any other host (the Maps key shares a header name) are ignored. Pass the
+    parsed ``payload`` of a successful answer so its ``usageMetadata`` can be priced.
+    """
+    try:
+        request = response.request
+    except RuntimeError:  # a response built without its request (tests, a mock): not ours to read
+        return None
+    if urlsplit(str(request.url)).hostname != GEMINI_HOST:
+        return None
+    key = request.headers.get("x-goog-api-key") or ""
+    if not key:
+        return None
+    if response.status_code == 200:
+        usd = usd_for_usage(str(request.url), payload)
+        if usd > 0:
+            _schedule(record_spend(_redis(), fingerprint(key), usd))
+        return None
+    try:
+        body = response.text
+    except httpx.ResponseNotRead:
+        body = ""
+    verdict = classify(response.status_code, body)
+    if verdict is not None:
+        _schedule(rest(_redis(), fingerprint(key), verdict))
+    if verdict == "exhausted":
+        logger.warning(
+            "gemini pool: key %s refused for money: %s", fingerprint(key), error_message(response)
+        )
+    return verdict
+
+
+def usd_for_usage(url: str, payload: Any) -> float:
+    metadata = payload.get("usageMetadata") if isinstance(payload, dict) else None
+    if not isinstance(metadata, dict):
+        return 0.0
+    found = _MODEL.search(url)
+    model = found.group(1) if found else ""
+    if "image" in model or "veo" in model or "lyria" in model:
+        return 0.0  # priced per item when the media job is ready
+    price = next((p for part, p in TOKEN_PRICES if part in model), DEFAULT_TOKEN_PRICE)
+
+    def count(name: str) -> int:
+        value = metadata.get(name)
+        return value if isinstance(value, int) and value > 0 else 0
+
+    output = count("candidatesTokenCount") + count("thoughtsTokenCount")
+    return (count("promptTokenCount") * price[0] + output * price[1]) / 1_000_000
+
+
+async def record_spend(
+    redis: Redis | None, fp: str, usd: float, *, now: Callable[[], datetime] | None = None
+) -> None:
+    if redis is None or usd <= 0:
+        return
+    name = _names(fp, month_of((now or _utcnow)()))["spend"]
+    try:
+        await redis.incrbyfloat(name, usd)
+        await redis.expire(name, SPEND_KEEP_SECONDS)
+    except RedisError as error:
+        logger.warning("gemini pool: could not tally spend (%s)", type(error).__name__)
+
+
+async def rest(
+    redis: Redis | None,
+    fp: str,
+    verdict: Verdict,
+    *,
+    now: Callable[[], datetime] | None = None,
+) -> None:
+    """Rest a key: a minute when busy; when out of money, until it is worth trying again."""
+    if redis is None:
+        return
+    seconds = BUSY_REST_SECONDS
+    if verdict == "exhausted":
+        seconds = min(EXHAUSTED_PROBE_SECONDS, seconds_to_next_month((now or _utcnow)()))
+    try:
+        name = _names(fp, "")["rest"]
+        if verdict == "busy" and await redis.get(name) in ("exhausted", b"exhausted"):
+            return  # a later busy answer must not shorten an exhausted rest
+        await redis.set(name, verdict, ex=seconds)
+    except RedisError as error:
+        logger.warning("gemini pool: could not rest a key (%s)", type(error).__name__)
+
+
+def _utcnow() -> datetime:
+    return datetime.now(tz=ZoneInfo("UTC"))
+
+
+@dataclass(frozen=True)
+class KeyState:
+    fp: str
+    position: int
+    resting: str | None
+    rest_seconds: int
+    month_usd: float
+    budget_usd: float | None
+
+    @property
+    def usable(self) -> bool:
+        over = self.budget_usd is not None and self.month_usd >= self.budget_usd
+        return self.resting is None and not over
+
+
+async def states(
+    redis: Redis | None, settings: Settings, *, now: Callable[[], datetime] | None = None
+) -> list[KeyState]:
+    """Every key's state in pool order; raises RedisError for the caller to decide."""
+    month = month_of((now or _utcnow)())
+    found: list[KeyState] = []
+    for position, (key, budget) in enumerate(
+        zip(pool_keys(settings), budgets(settings), strict=True)
+    ):
+        fp = fingerprint(key)
+        names = _names(fp, month)
+        resting: str | None = None
+        ttl = 0
+        spent = 0.0
+        if redis is not None:
+            raw = await redis.get(names["rest"])
+            if raw:
+                resting = raw.decode() if isinstance(raw, bytes) else str(raw)
+                ttl = max(0, int(await redis.ttl(names["rest"])))
+            spent = float(await redis.get(names["spend"]) or 0)
+        found.append(KeyState(fp, position, resting, ttl, round(spent, 4), budget))
+    return found
+
+
+async def choose(
+    redis: Redis | None, settings: Settings, *, now: Callable[[], datetime] | None = None
+) -> str | None:
+    """The key to call Gemini with now: the first usable one in order, else the last."""
+    keys = pool_keys(settings)
+    if not keys:
+        return None
+    if len(keys) == 1 or redis is None:
+        return keys[0]
+    try:
+        current = await states(redis, settings, now=now)
+    except RedisError as error:
+        logger.warning("gemini pool: Redis failed (%s); using the first key", type(error).__name__)
+        return keys[0]
+    usable = next((state for state in current if state.usable), None)
+    # None usable: the last key (the site's own) takes the call and its error goes up as before.
+    return keys[usable.position] if usable else keys[-1]
+
+
+async def settings_with_key(redis: Redis | None, settings: Settings) -> Settings:
+    """``settings`` whose ``hotspot_guide_gemini_api_key`` is the key to use now."""
+    if len(pool_keys(settings)) < 2:
+        return settings
+    key = await choose(redis, settings)
+    if key is None or key == settings.hotspot_guide_gemini_api_key:
+        return settings
+    return settings.model_copy(update={"hotspot_guide_gemini_api_key": key})

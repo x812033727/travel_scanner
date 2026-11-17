@@ -18,6 +18,7 @@ from sqlalchemy import ColumnElement, Delete, Select, and_, case, delete, func, 
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.ai.gemini_pool import note_response
 from app.config import Settings
 from app.destinations.localized import (
     COUNTRY_BY_CODE,
@@ -431,8 +432,9 @@ class GeminiGuideProvider:
                 "tools": [{"google_search": {}}],
             },
         )
+        payload = response.json() if response.status_code == 200 else None
+        note_response(response, payload)
         response.raise_for_status()
-        payload = response.json()
         entries = payload.get("candidates") if isinstance(payload, dict) else None
         first = entries[0] if isinstance(entries, list) and entries else {}
         raw_metadata = first.get("groundingMetadata") if isinstance(first, dict) else None
