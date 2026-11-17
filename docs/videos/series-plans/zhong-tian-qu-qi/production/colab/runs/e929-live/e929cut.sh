@@ -40,14 +40,25 @@ print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # nothing is dropped in e929 (DROP empty; all 35 shots are cut in); $VL is video.json without the DROP shots.
 VL=$E/video-live.json; DROP=""
 python3 -c "import json,sys;v=json.load(open('$VJ'));d='$DROP'.split();v['scenes']=[s for s in v['scenes'] if s.get('id') not in d];json.dump(v,open('$VL','w'),ensure_ascii=False,indent=1)"
+# REVIEW 3 (review 2 medium 2): s29's first panel row 鬥商總帳：許記三百三十兩，魏記一百六十五兩 (21 characters at 52 px, ~1090 px)
+# ran past panelFilters()' fixed 1000 px box. $OV is overlays.json with that row split in two at the colon, words unchanged
+# (鬥商總帳 / 許記三百三十兩，魏記一百六十五兩 at ~830 px / 任務完成): three rows, 262 px tall, panel_y 700 -> bottom edge 962.
+# overlays.json is r2.py's and the animated cut's, so the live cut reads the split copy; panelFilters() is not changed. The
+# assembler draws a panel's rows together (0.1 s apart from panel_from), so 任務完成 comes in with the rest (accepted).
+OV=$E/overlays-live.json
+python3 -c "
+import json;o=json.load(open('$R/docs/videos/zhong-tian-qu-qi-e029-r2/overlays.json'));r=o['s29']
+assert r[0]['text']=='鬥商總帳：許記三百三十兩，魏記一百六十五兩' and r[1]['text']=='任務完成', r
+o['s29']=[{'text':'鬥商總帳','kind':'task'},{'text':'許記三百三十兩，魏記一百六十五兩','kind':'task'},r[1]]
+json.dump(o,open('$OV','w'),ensure_ascii=False,indent=1)"
 # jitter: cut-qa's jitter() on the staged clips is in the edit table's _note (no deshake unless a clip reads over the bar)
-cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VL $R/docs/videos/zhong-tian-qu-qi-e029-r2/overlays.json $P/hailuo/edit-dh-e929-live.json $E $E/cut/e929-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log
+cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VL $OV $P/hailuo/edit-dh-e929-live.json $E $E/cut/e929-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log
 [ -f $E/cut/e929-live.mp4 ] || exit 1
 # a sample-peak limiter before loudnorm2 keeps it linear (e908-e912: attack 5 ms, limit 0.6; the AAC encode after it
 # overshoots at shorter attacks and loudnorm2 then goes dynamic and clicks). e913 REVIEW 3 on: attack 8 ms; e923 on: limit 0.55.
 # END: s35 is the suspense tail (Tang Xiaotang behind Xu Yan, a32 ends ~c3.5, he turns his head): the low hit and gong_02 at
-# c3.6, the picture fades out over c4.267-4.667 (vf) and min 8.1 holds black while the gong rings out (gong_02 is 4.5 s, it
-# stops at c8.1); the sound fades over the last 1.0 s.
+# c3.6, the picture fades out over c4.267-4.667 (vf) and min holds black while the gong rings out; the sound fades over the
+# last 1.0 s. REVIEW 3: min 8.1 -> 7.1 (2.43 s of black; the gong, 4.5 s long, is faded over c6.1-7.1, 2.5-3.5 s into its ring).
 D=$(ffprobe -v error -show_entries format=duration -of csv=p=0 $E/cut/e929-live.mp4); FS=$(python3 -c "print(f'{$D-1.0:.3f}')")
 ffmpeg -v error -y -i $E/cut/e929-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.55:attack=8:release=60:level=false,aresample=48000,afade=t=out:st=$FS:d=1.0" $E/cut/e929-live.lim.mp4 && mv $E/cut/e929-live.lim.mp4 $E/cut/e929-live.mp4
 # loudnorm2 is linear only when the measured true peak plus the gain to -14 LUFS stays at or under -2.2 dBTP: print it
