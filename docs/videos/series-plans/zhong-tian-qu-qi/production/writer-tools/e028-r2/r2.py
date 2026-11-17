@@ -1,5 +1,5 @@
 """Episode 28 remake (r2): the writer spec for ../e001-r2/build-r2.py. Source: docs/videos/zhong-tian-qu-qi-e028-r2/script.md
-(c01-c39 = s01-s39, c03 split into s03 and s03b; the CG-era r2 script), including its sections 「這版改了什麼」,
+(c01-c39 = s01-s39, c03 split into s03 and s03b, c15 into s15 and s15b; the CG-era r2 script), including its sections 「這版改了什麼」,
 「2026-11-06 審稿後的修改」 and 「真人版的改動（2026-11-17）」, which override the tables. Every line is the script's, word for word;
 only the staging changes. Bible: production/r2-bible-e021-e030.md (rules 1-30, the 27->28 and 28->29 hand-overs, the props,
 people and picture tables). The eighth episode of arc 3 〈搶親〉: the lane behind the silk shop on the twenty-seventh night (the
@@ -222,7 +222,7 @@ SHOTS = [
          motion=f"The man brings his stick down in one hard stroke and A-ling sways aside, so the stick sweeps down past her shoulder through empty air; {UNDERVEIL}; nobody is hit",
          zh="全景、慢推（人眼高、照圖；送後巷圖）：稿子 c03『整個動作留在畫面裡』跟拍法 22『一鏡只拍一個打手的一個動作』衝突，照聖經拆成兩鏡：這一鏡只有一個打手（側身、臉朝她、在暗影裡）雙手舉棍第一格已經舉高，往下一砸，阿令側身一讓，棍子擦過她的肩落空（沒打到人）；木鞘短刀低握在身側"),
     dict(sid="s03b", loc="lane", cam="Medium shot, slow push in", chars=[], night="lane",
-         comp=f"medium shot on the wet stones of the lane: {MAN1}, side-on to us facing screen left, framed from the knees up, already doubled over from the first frame, his face turned down toward the stones, dark in shadow, his right hand loosening on {STICK}; at the left edge of the frame only a slender hand in a long grey-white cotton sleeve reaching in from beyond the edge, holding {KNIFE} low; {HANDS}; exactly one man and one grey-white sleeved hand",
+         comp=f"medium shot on the wet stones of the lane: {MAN1}, side-on to us facing screen left, framed from the knees up, already doubled over from the first frame, his face turned down toward the stones, dark in shadow, his right hand loosening on {STICK}; at the left edge of the frame only a slender hand in a long grey-white cotton sleeve reaching in from beyond the edge, holding {KNIFE}, low at her side; {HANDS}; exactly one man and one grey-white sleeved hand",
          motion=NOBODY + "the stick slips from the man's fingers and he sinks slowly to his knees on the wet stones, his head down; the grey-white sleeved hand stays still",
          zh="中景、慢推（送後巷圖；c03 的後半，拆鏡）：另一個打手第一格已經彎著腰、臉朝石板（暗影、不給臉），手裡的棍子滑落、慢慢跪倒；畫左緣只有阿令灰白長袖的手低握木鞘短刀（不點名、不送圖，刀不碰人；拍法 22：不拍刀刃碰到人，連鞘點穴也不拍，跪倒的原因交給 s03 與剪接）"),
     dict(loc="lane_s", cam="Low-angle insert close-up, slow push in", chars=[], night="lane",
@@ -284,11 +284,15 @@ SHOTS = [
     dict(loc="steps_c", cam="Close-up, slow push in", chars=["xuyan"], night="steps",
          comp=f"close-up of {XU_D}, framed from the chest up with space above his head, his face three-quarter to screen right, his eyes lowered a little, never the lens; tired, then quietly touched: brows easing, lips pressed shut; behind him the thick red pillar and the dark red doors, soft; he is the only person in the frame",
          lines=[("xitong", "叮。阿令，好感加七。", "冷，宣布"),
-                ("xitong", "她嫌你拖累，還加七。宿主的運氣比本事好。", "冷，嫌棄"),
-                ("xuyan", "被嫌也加分，這筆帳我記住了。", "心裡話，錄得近、輕", "inner")],
+                ("xitong", "她嫌你拖累，還加七。宿主的運氣比本事好。", "冷，嫌棄")],
          panel=[("阿令 好感 +7 → 28", "affection")],
-         motion=f"Xu Yan blinks once and the corners of his mouth slowly lift into a small closed-lip smile; {SILENT_HE}; he is thinking, not speaking",
-         zh="近景、慢推（送門口圖；拍法 11 不寫藍光，稿子『臉被淡藍光照亮』不照用）：許硯眨一下眼、嘴角慢慢往上（稿子『本鏡可以笑』，閉著嘴的笑）；全程嘴閉著（系統兩句、心裡話）。本集的鬥嘴；面板「阿令 好感 +7 → 28」由剪接疊上。稿子『身後虛焦是轉過身的阿令』拿掉（畫面裡只有他）"),
+         motion=f"Xu Yan blinks once and the corners of his mouth slowly lift into a small closed-lip smile; {SILENT_HE}; he is listening, not speaking",
+         zh="近景、慢推（送門口圖；拍法 11 不寫藍光，稿子『臉被淡藍光照亮』不照用）：許硯眨一下眼、嘴角慢慢往上（稿子『本鏡可以笑』，閉著嘴的笑）；全程嘴閉著（系統兩句）。本集的鬥嘴；面板「阿令 好感 +7 → 28」由剪接疊上。稿子『身後虛焦是轉過身的阿令』拿掉（畫面裡只有他）。稿子 c15 三句錄音加起來 10.17 秒（超過約 10 秒），拆成 s15（系統兩句）與 s15b（心裡話）"),
+    dict(sid="s15b", loc="steps_c", cam="Medium close-up, slow push in", chars=["xuyan"], night="steps",
+         comp=f"medium close-up of {XU_D}, framed from the chest up with space above his head, his left hand already resting lightly over the cuff of his right sleeve at his chest from the first frame, his face three-quarter to screen right, his eyes lowered to his sleeve, never the lens; wry and quietly pleased: a small closed-lip smile, one brow a little raised, lips pressed shut; behind him the white wall and the dark arched doorway, soft; he is the only person in the frame",
+         lines=[("xuyan", "被嫌也加分，這筆帳我記住了。", "心裡話，錄得近、輕", "inner")],
+         motion=f"Xu Yan pats his right sleeve once with his left hand, still smiling with his lips closed; {SILENT_HE}; he is thinking, not speaking",
+         zh="中近景、慢推（送門口圖；c15 拆出來的後半）：許硯左手第一格已經輕按在右袖上（袖裡是銀子），拍一下，仍閉著嘴笑（稿子 c15『本鏡可以笑』）；全程嘴閉著（心裡話：被嫌也加分）。換成中近景、背景換成白牆拱門，跟 s15 接起來不跳"),
     dict(loc="steps", cam="Medium shot from behind, slow push in", chars=["tangxiaotang", "xuyan"], nospeak=["tangxiaotang"], night="steps",
          comp=alone(f"her right hand already raised toward his arm from the first frame, her left arm holding {STACK} against her chest; beyond her, a little right of the middle, close, {XU_D}, framed from the waist up, his face three-quarter to screen left toward her, never the lens; still pleased: a small closed-lip smile, eyes soft; behind him the thick red pillar, soft; {HANDS}; exactly two people, the young woman in the middle seen only from behind",
                     "standing on the pale stone paving,"),
@@ -349,7 +353,7 @@ SHOTS = [
          motion=f"Xu Yan leans half his face a little closer to the gap between two bars; {SILENT_HE}; he is thinking, not speaking",
          zh="全景、慢推（人眼高、照圖；送大牢 `set-dalao-l1`，聖經拍法 24）：許硯（外披舊灰外衣、左手一盞小陶油燈、右手掌罩著火）貼在柵門左端，第一格已經探出半張臉往柵縫裡看，再湊近一點；全程嘴閉著（心裡話）。稿子『躲在石柱後』圖上沒有石柱：照圖改成貼在柵門左端（拍法 29）；柵欄照圖寫『粗方深色』、不寫材質（聖經寫木、圖是協調者挑定的深色柵，圖說了算）"),
     dict(loc="jail", cam="Point-of-view medium shot through the bars, slow push in", chars=["sunzhanggui", "zhaobutou"], night="jail",
-         comp=f"point-of-view medium shot through the thick square dark bars of the gate, the bars soft in the foreground: beyond them in the torchlit stone room, on the left {SUN}, standing, framed from the waist up, {FOODBOX} carried in his right hand by its bent handle, his left hand already holding {POUCH} out from the first frame, his face three-quarter to screen right toward Zhao Butou, never the lens; smooth and genial: a thin pleasant smile, eyes half lidded, lips moving slowly between words; on the right {ZHAO}, standing, framed from the waist up, his right palm already held out under the pouch, his face three-quarter to screen left toward Sun Zhanggui, never the lens; sly, not smiling, his lips pressed shut; {HANDS}; exactly two people",
+         comp=f"point-of-view medium shot through the thick square dark bars of the gate, the bars soft in the foreground: beyond them in the torchlit stone room, on the left {SUN}, standing, framed from the waist up, {FOODBOX}, carried in his right hand by its bent handle, his left hand already holding {POUCH} out from the first frame, his face three-quarter to screen right toward Zhao Butou, never the lens; smooth and genial: a thin pleasant smile, eyes half lidded, lips moving slowly between words; on the right {ZHAO}, standing, framed from the waist up, his right palm already held out under the pouch, his face three-quarter to screen left toward Sun Zhanggui, never the lens; sly, not smiling, his lips pressed shut; {HANDS}; exactly two people",
          lines=[("sunzhanggui", "趙爺辛苦，少爺給賴三送頓飯。", "笑咪咪")],
          motion=f"Sun Zhanggui lays the cloth pouch in Zhao Butou's palm, and Zhao Butou's fingers close over it; {quiet('Zhao Butou')}",
          zh="主觀（許硯從柵縫看進去）、慢推（送大牢圖）：柵欄虛焦在前景；柵門裡火光的石室，左邊孫掌櫃右手提著食盒（兩層圓形深色漆木、彎木提把、素的，聖經拍法 24），左手把一個小布袋放進趙捕頭攤開的手掌，趙捕頭握起來（嘴閉著）；孫掌櫃『笑咪咪』（稿子）說。賴三從牢裡往外看不拍（拍法 24：這場四個有名字的人，賴三只露背影與手，或拆鏡）；趙捕頭拿鑰匙串開牢門不拍（鑰匙聲交給音效；拍法 16、17 腰間什麼都沒掛）"),
@@ -413,7 +417,7 @@ SHOTS = [
 ]
 
 HEAD = [
-    "- 重製版 r2、真人版（站主 2026-11-11「之後都用真人版」）：照 `docs/videos/zhong-tian-qu-qi-e028-r2/script.md`（c01–c39 對應 s01–s39，c03 拆成 s03、s03b；含「這版改了什麼」「2026-11-06 審稿後的修改」與「真人版的改動（2026-11-17）」）；台詞一字不改，只改拍法；每鏡一個看得見的動作、一句一筆不拆半句、預設不笑。篇章設定 `production/r2-bible-e021-e030.md`（拍法 1–30 條）。第 3 篇章〈搶親〉第八集。",
+    "- 重製版 r2、真人版（站主 2026-11-11「之後都用真人版」）：照 `docs/videos/zhong-tian-qu-qi-e028-r2/script.md`（c01–c39 對應 s01–s39，c03 拆成 s03、s03b，c15 拆成 s15、s15b；含「這版改了什麼」「2026-11-06 審稿後的修改」與「真人版的改動（2026-11-17）」）；台詞一字不改，只改拍法；每鏡一個看得見的動作、一句一筆不拆半句、預設不笑。篇章設定 `production/r2-bible-e021-e030.md`（拍法 1–30 條）。第 3 篇章〈搶親〉第八集。",
     "- 內部工作編號 928（`hailuo/{ff,clips}-dh-e928.json`、`colab/runs/e928/extras.json`、`colab/runs/e928-live/spec.json`，工作資料夾 `~/mokaair-work/videos/zhong-tian-qu-qi-e928-dh/`）；發布 slug `zhong-tian-qu-qi-e028-r2`。不放集數、不放片名卡；s01 接第 27 集 s37（接點 27→28：同一刻，賴三往打手身後一縮；阿令的短刀一直套在木鞘裡）；s39 交給第 29 集（接點 28→29：同一刻，許硯平靜地舉起一塊糖糕）。",
     "- 照第 27 集審稿後的寫法與第 21–26 集挑片學到的一開始就照做：`OFFSCREEN_SPEECH = False`；背影、前景、面巾下或畫外的人說話時，每張朝鏡頭的臉都寫不說話、嘴閉著；**對畫外的人說話寫「朝畫左／右外看不到的人」，那一側到邊緣只有景、畫面裡只有他一個人，不點名、不描述不在畫裡的人**（提示詞與精修文字都一樣）；掛著的東西不點名；不寫 open；道具與接觸寫在第一格；紙一律空白；寫人數，群眾每人一套不同的衣服。",
     "- **唐小棠不露嘴說話、不露臉**（拍法 3）：她五句（s08、s11、s16、s21、s34）全從背後拍、畫面正中、正背對鏡頭、頭不動、剛好兩顆丸子；spec 拿掉她的圖與身分句。算盤本集沒有（拍法 20；c21 的「喀」交給音效）。",
@@ -432,7 +436,19 @@ FOOT = [
 ]
 
 # Long shots: seconds to buy. Filled in after the recordings (see the end of this comment block).
-BUY = {}
+# Measured 2026-11-17 against the 33 kept recordings (~/mokaair-work/videos/zhong-tian-qu-qi-e928-dh/audio; wave length and
+# silencedetect -35 dB speech span; e013's test: a shot holds (buy - 0.3) x 1.1 s of speech, half a second between lines, so
+# 5 s holds 5.17 s, 6 s 6.27 s, 8 s 8.47 s). faster-whisper medium read every take back, one clip per process, numpy input,
+# once plain and once with the previous line and the line as context (audio/fw928.txt, fw928-retake.txt; audio/README-retakes.txt).
+# The script's c15 (system 2.17 s + 0.5 + 3.98 s + 0.5 + his thought 3.02 s = 10.17 s) runs over about 10 s: split into s15 (the
+# system's two lines, 6.65 s: buy 8) and s15b (his thought, 3.02 s: 6).
+# 8 s: s18 (a17 Magistrate Hu's drawl, speech 6.35 s), s20 (a19, 7.06 s), s35 (a31 Wei Shaoqing's drawl, 6.60 s), s36 (a32,
+#      7.40 s), s15 (above), s39 (the episode's last shot: the hook needs a held tail, as e923-e927).
+# 6 s: every other speaking shot. The tightest: s22 (a21's retake 6.25 s; a short buy suits a shot that may laugh), s29 (a27 5.48 s),
+#      s25 (a24's retake 4.84 s), s21 (a20 4.72 s).
+# 5 s: the silent inserts s04, s10, s28 as gen-dh buys them, and the silent shots s03b (one fall), s30 (two nods), s37 (one nod).
+# s03 (the swing), s06 (the silver pulled out) and s33 (the wide) keep gen-dh's 6. No shot runs over about 10 s after the split.
+BUY = {"s15": 8, "s18": 8, "s20": 8, "s35": 8, "s36": 8, "s39": 8, "s03b": 5, "s30": 5, "s37": 5}
 
 
 # ---- the refine text (e022 review 必改 12, as e023-e027): hailuo/clips-dh-e928.json column 0 is the motion text

@@ -18,7 +18,7 @@ Run: python3 -I mkspec.py
 - The three inserts never say "open" (e926 review 必改 1): "the very first frame is already a close view of".
 - The speaking gaze never names an unsent listener (e927 必改 5): the person spoken to off screen is "someone out of sight beyond the
   left/right edge of the frame", or the gaze names the thing looked at.
-- Sets (r2.py PLACES): the lane set-chouduan-ye-xiang-l2 (s01-s07, s03b); the yamen steps set-xianya-steps-l2 (s08, s09, s11-s17)
+- Sets (r2.py PLACES): the lane set-chouduan-ye-xiang-l2 (s01-s07, s03b); the yamen steps set-xianya-steps-l2 (s08, s09, s11-s17, s15b)
   and set-xianya-steps-shi-l1 (s10); the court hall set-xianya-gongtang-dais-l1 (s18, s20, s22) and -floor-l1 (s19, s21, s23-s25);
   the jail set-dalao-l1 as gen-dh sends it (s26, s27, s31), set-dalao-di-l1 (s28), set-dalao-bi-l1 (s29, s30, s32); the square
   set-guangchang-tai-l1 (s33, s39), -zuo-l1 (s34), -shu-l1 (s35, s36, s38), -you-l1 (s37). gen-dh's set-chouduan-l1, set-xianya-l1
@@ -75,7 +75,7 @@ def back(beyond, n=2):
             f"beyond her; {ONE_TANG}; no second copy of anyone appears.")
 
 
-ids = ["s01", "s02", "s03", "s03b"] + [f"s{n:02d}" for n in range(4, 40)]
+ids = ["s01", "s02", "s03", "s03b"] + [f"s{n:02d}" for n in range(4, 16)] + ["s15b"] + [f"s{n:02d}" for n in range(16, 40)]
 shots = {sid: {} for sid in ids}
 
 # Tang Xiaotang from behind, speaking: her identity sentence and her three pictures leave.
@@ -114,7 +114,7 @@ add("s33", [ONLY_2, only("these 2 named people, the back of the kneeling man and
 add("s37", [ONLY_HE, besides("him", "the soft shoulder of the townsman in the foreground")])
 add("s39", [ONLY_HE, besides("him", "the eight townspeople in the foreground")])
 # the composition already says it (e927 review 建議: no doubled 'only' sentence)
-for sid, sent in [("s12", ONLY_SHE), ("s15", ONLY_HE), ("s19", ONLY_HE), ("s23", ONLY_HE), ("s24", ONLY_SHE), ("s25", ONLY_HE),
+for sid, sent in [("s12", ONLY_SHE), ("s15", ONLY_HE), ("s15b", ONLY_HE), ("s19", ONLY_HE), ("s23", ONLY_HE), ("s24", ONLY_SHE), ("s25", ONLY_HE),
                   ("s26", ONLY_HE), ("s30", ONLY_HE), ("s35", ONLY_HE), ("s36", ONLY_HE), ("s38", ONLY_HE)]:
     add(sid, [sent, NO_COPY])
 
@@ -150,7 +150,7 @@ for sid in ALING_ALL:
         drop(sid, "aling-angle-a-l1.png", "aling-angle-b-l1.png")
 
 # Xu Yan: his smirking angle-b nowhere; where he has only the two angle pictures, his portrait first and angle-a second.
-XU_ALL = ["s08", "s13", "s15", "s16", "s17", "s23", "s25", "s26", "s31", "s32", "s33", "s39"]
+XU_ALL = ["s08", "s13", "s15", "s15b", "s16", "s17", "s23", "s25", "s26", "s31", "s32", "s33", "s39"]
 XU_TWO = ["s15", "s23", "s25", "s32"]  # gen-dh sent angle-a and angle-b only (close-ups)
 for sid in XU_ALL:
     if sid not in XU_TWO:
@@ -160,7 +160,7 @@ for sid in XU_ALL:
 SWAP = {}
 for sid in ["s01", "s02", "s03", "s03b", "s04", "s05", "s06", "s07"]:
     SWAP[sid] = {CD: "set-chouduan-ye-xiang-l2.png"}
-for sid in ["s08", "s09", "s11", "s12", "s13", "s14", "s15", "s16", "s17"]:
+for sid in ["s08", "s09", "s11", "s12", "s13", "s14", "s15", "s15b", "s16", "s17"]:
     SWAP[sid] = {YA: "set-xianya-steps-l2.png"}
 SWAP["s10"] = {YA: "set-xianya-steps-shi-l1.png"}
 for sid in ["s18", "s20", "s22"]:
@@ -198,7 +198,7 @@ spec = {
     "_note": ("e928 live d1 (e927-live's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth or her "
               "face: her five speaking back shots (s08, s11, s16, s21, s34) drop her three pictures and her identity sentence. "
               "A-ling wears the veil: aling-veil-portrait-l1 for her portrait, her angle pictures dropped. No person sent in s03b, "
-              "s04, s10, s28. Sets: set-chouduan-ye-xiang-l2 (s01-s07, s03b), set-xianya-steps-l2 (s08, s09, s11-s17), "
+              "s04, s10, s28. Sets: set-chouduan-ye-xiang-l2 (s01-s07, s03b), set-xianya-steps-l2 (s08, s09, s11-s17, s15b), "
               "set-xianya-steps-shi-l1 (s10), set-xianya-gongtang-dais-l1 (s18, s20, s22), -floor-l1 (s19, s21, s23-s25), "
               "set-dalao-l1 (s26, s27, s31), set-dalao-di-l1 (s28), set-dalao-bi-l1 (s29, s30, s32), set-guangchang-tai-l1 (s33, "
               "s39), -zuo-l1 (s34), -shu-l1 (s35, s36, s38), -you-l1 (s37) (prep928.sh swaps with absolute paths). Xu Yan's angle-b "

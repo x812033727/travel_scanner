@@ -1,5 +1,5 @@
 {
- "_note": "e928 live d1 (e927-live's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth or her face: her five speaking back shots (s08, s11, s16, s21, s34) drop her three pictures and her identity sentence. A-ling wears the veil: aling-veil-portrait-l1 for her portrait, her angle pictures dropped. No person sent in s03b, s04, s10, s28. Sets: set-chouduan-ye-xiang-l2 (s01-s07, s03b), set-xianya-steps-l2 (s08, s09, s11-s17), set-xianya-steps-shi-l1 (s10), set-xianya-gongtang-dais-l1 (s18, s20, s22), -floor-l1 (s19, s21, s23-s25), set-dalao-l1 (s26, s27, s31), set-dalao-di-l1 (s28), set-dalao-bi-l1 (s29, s30, s32), set-guangchang-tai-l1 (s33, s39), -zuo-l1 (s34), -shu-l1 (s35, s36, s38), -you-l1 (s37) (prep928.sh swaps with absolute paths). Xu Yan's angle-b nowhere (s15, s23, s25, s32 send his portrait then angle-a). The three inserts never say 'open'. No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). Seeds 9281101/9281102.",
+ "_note": "e928 live d1 (e927-live's way after its review, written by mkspec.py). Tang Xiaotang never shows her mouth or her face: her five speaking back shots (s08, s11, s16, s21, s34) drop her three pictures and her identity sentence. A-ling wears the veil: aling-veil-portrait-l1 for her portrait, her angle pictures dropped. No person sent in s03b, s04, s10, s28. Sets: set-chouduan-ye-xiang-l2 (s01-s07, s03b), set-xianya-steps-l2 (s08, s09, s11-s17, s15b), set-xianya-steps-shi-l1 (s10), set-xianya-gongtang-dais-l1 (s18, s20, s22), -floor-l1 (s19, s21, s23-s25), set-dalao-l1 (s26, s27, s31), set-dalao-di-l1 (s28), set-dalao-bi-l1 (s29, s30, s32), set-guangchang-tai-l1 (s33, s39), -zuo-l1 (s34), -shu-l1 (s35, s36, s38), -you-l1 (s37) (prep928.sh swaps with absolute paths). Xu Yan's angle-b nowhere (s15, s23, s25, s32 send his portrait then angle-a). The three inserts never say 'open'. No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). Seeds 9281101/9281102.",
  "seeds": [
   9281101,
   9281102
@@ -245,6 +245,20 @@
     "set-xianya-l1.png": "set-xianya-steps-l2.png",
     "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
     "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
+   }
+  },
+  "s15b": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-steps-l2.png"
    }
   },
   "s16": {
