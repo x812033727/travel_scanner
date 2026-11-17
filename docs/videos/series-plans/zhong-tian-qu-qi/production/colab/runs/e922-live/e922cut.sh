@@ -14,16 +14,17 @@ stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=o
 # picks-merged.tsv, fix1/review-picks.tsv and review3-trims.tsv (run in colab/runs/e922-live: refine-prep.py 22
 # picks-merged.tsv fix1/review-picks.tsv review3-trims.tsv, then stage.py 22) -- the fix1 retakes s09 (9221201) and s32
 # (9221202); review3-trims.tsv (first cut) shortens the silent tails of s01 s03 s05 s09 s11 s13 s14 s15 s17 s19 s20 s26
-# s30 s31 s35 s35b s40 s41. Whole frames: a start rounded DOWN and an end-before rounded UP to 3 decimals, tolerance
+# s30 s31 s35 s35b s40 s41; REVIEW 3 (review3-plan.md) re-trims s07 (end 3.5), s14 (end 4.667), s33 (start 2.0), s38
+# (end 3.084) and moves s39 to 1.5-3.5 (the empty moored boat out). Whole frames: a start rounded DOWN and an end-before rounded UP to 3 decimals, tolerance
 # 0.001; 0 = no end. Warn (not stop) if picks.json differs.
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
-want={'s01':(1.25,5.875),'s02':(1.916,6.584),'s03':(0,4.625),'s04':(0.75,3.5),'s05':(0,5.542),'s06':(0,8),'s07':(0,4),
- 's08':(0.75,8),'s09':(0,3.583),'s10':(0.75,8),'s11':(0,4),'s12':(1.25,6.584),'s13':(0,4.333),'s14':(0,5.208),
+want={'s01':(1.25,5.875),'s02':(1.916,6.584),'s03':(0,4.625),'s04':(0.75,3.5),'s05':(0,5.542),'s06':(0,8),'s07':(0,3.5),
+ 's08':(0.75,8),'s09':(0,3.583),'s10':(0.75,8),'s11':(0,4),'s12':(1.25,6.584),'s13':(0,4.333),'s14':(0,4.667),
  's15':(0.5,4.958),'s16':(2,6.584),'s17':(0,6.708),'s18':(0.625,6.584),'s19':(0,4.125),'s20':(0.75,3.667),
  's21':(0.5,6.584),'s22':(0.5,6.584),'s23':(0.416,6.584),'s24':(0.5,6.584),'s25':(0.5,5),'s26':(0,5.833),
- 's27':(0,6.584),'s28':(0.75,3),'s29':(0,2.5),'s30':(0,7.542),'s31':(0,5.25),'s32':(0.5,5.25),'s33':(1.708,6.584),
- 's34':(1.25,4.5),'s35':(0,5.958),'s35b':(0,4),'s36':(0.916,6.584),'s37':(1.25,6),'s38':(0,4),'s39':(3,5),
+ 's27':(0,6.584),'s28':(0.75,3),'s29':(0,2.5),'s30':(0,7.542),'s31':(0,5.25),'s32':(0.5,5.25),'s33':(2,6.584),
+ 's34':(1.25,4.5),'s35':(0,5.958),'s35b':(0,4),'s36':(0.916,6.584),'s37':(1.25,6),'s38':(0,3.084),'s39':(1.5,3.5),
  's40':(0.5,4.667),'s41':(0,4.5)}
 seed={'s02':9221102,'s04':9221102,'s06':9221102,'s09':9221201,'s13':9221102,'s14':9221102,'s15':9221102,'s17':9221102,
  's20':9221102,'s24':9221102,'s27':9221102,'s29':9221102,'s30':9221102,'s31':9221102,'s32':9221202,'s41':9221102}

@@ -103,6 +103,12 @@
    "to": "s41"
   },
   {
+   "file": "door_close_01",
+   "at": "s01",
+   "off": 0.1,
+   "gain": -26
+  },
+  {
    "file": "handleCoins2",
    "at": "s04",
    "off": 0.3,
@@ -145,10 +151,10 @@
    "gain": -21
   },
   {
-   "file": "door_close_01",
+   "file": "footstep_wood_000",
    "at": "s12",
-   "off": 2.6,
-   "gain": -24
+   "off": 2.3,
+   "gain": -26
   },
   {
    "file": "dishes_01",
@@ -193,6 +199,18 @@
    "gain": -20
   },
   {
+   "file": "impactWood_light_000",
+   "at": "s27",
+   "off": 0.35,
+   "gain": -20
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s27",
+   "off": 0.65,
+   "gain": -20
+  },
+  {
    "file": "creak1",
    "at": "s27",
    "off": 5.3,
@@ -213,7 +231,7 @@
   {
    "file": "impactSoft_heavy_000",
    "at": "s33",
-   "off": 2.85,
+   "off": 2.558,
    "gain": -18
   },
   {
@@ -259,9 +277,21 @@
    "gain": -18
   },
   {
+   "file": "footstep_grass_000",
+   "at": "s38",
+   "off": 2.1,
+   "gain": -18
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s38",
+   "off": 2.5,
+   "gain": -18
+  },
+  {
    "file": "creak2",
    "at": "s38",
-   "off": 3.0,
+   "off": 2.6,
    "gain": -22
   },
   {
@@ -286,13 +316,13 @@
    "file": "impactSoft_heavy_000",
    "at": "s41",
    "off": 2.95,
-   "gain": -8
+   "gain": -6
   },
   {
    "file": "gong_02",
    "at": "s41",
    "off": 2.95,
-   "gain": -5
+   "gain": -2
   }
  ],
  "frame_round": true,
@@ -375,7 +405,7 @@
   "s41": 7.2
  },
  "line_at": {
-  "zq922a35": 0.3,
+  "zq922a35": 0.5,
   "zq922a01": 0.5
  },
  "line_lead": {},
@@ -386,13 +416,19 @@
  "panel_color": {
   "s35": "red"
  },
+ "panel_until": {
+  "s35": 2.33
+ },
  "vf": {
   "s15": "crop=1904:1071:8:4,scale=1920:1080:flags=lanczos,setsar=1",
   "s07": "crop=1560:878:180:202,scale=1920:1080:flags=lanczos,setsar=1",
   "s30": "split[paa][pab];[pab]crop=600:610:600:470,format=gbrp,split=4[pac][pad][pak][pae];[pad]geq=r='255*gt(r(X\\,Y)\\,110)*lt(g(X\\,Y)\\,215)*lt(r(X\\,Y)-g(X\\,Y)\\,34)*lt(r(X\\,Y)-b(X\\,Y)\\,75)':g='0':b='0',extractplanes=r,gblur=sigma=6,lut=y='if(gt(val\\,150)\\,255\\,0)'[pap];[pak]geq=r='255*1':g='0':b='0',extractplanes=r[paq];[pap][paq]blend=all_mode=multiply,gblur=sigma=3,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip((min(min(X\\,W-X)\\,Y))/16\\,0\\,1)'[pam];[pae]gblur=sigma=10,format=gbrp[pag];[pag][pam]alphamerge[pah];[pac][pah]overlay,format=yuv420p[pao];[paa][pao]overlay=600:470",
   "s33": "split[pba][pbb];[pbb]crop=720:420:120:660,format=gbrp,split=4[pbc][pbd][pbk][pbe];[pbd]geq=r='255*gt(r(X\\,Y)\\,110)*lt(g(X\\,Y)\\,215)*lt(r(X\\,Y)-g(X\\,Y)\\,34)*lt(r(X\\,Y)-b(X\\,Y)\\,75)':g='0':b='0',extractplanes=r,gblur=sigma=6,lut=y='if(gt(val\\,150)\\,255\\,0)'[pbp];[pbk]geq=r='255*1':g='0':b='0',extractplanes=r[pbq];[pbp][pbq]blend=all_mode=multiply,gblur=sigma=3,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip((min(min(X\\,W-X)\\,Y))/16\\,0\\,1)'[pbm];[pbe]gblur=sigma=10,format=gbrp[pbg];[pbg][pbm]alphamerge[pbh];[pbc][pbh]overlay,format=yuv420p[pbo];[pba][pbo]overlay=120:660",
-  "s41": "fade=t=out:st=3.600:d=0.60"
+  "s41": "fade=t=out:st=3.600:d=0.60",
+  "s10": "crop=1120:630:300:260,scale=1920:1080:flags=lanczos,setsar=1"
  },
- "subtitle_lines": [],
+ "subtitle_lines": [
+  "zq922a31"
+ ],
  "_note": "Live action, written 2026-11-16/17 from edit-dh-e921-live.json (its form: panel_color, voice_until, line_at, line_lead, clip_af, keyed masks that blur only what they key) on the refined, staged clips (_live-e922/zhong-tian-qu-qi-e922-dh/clips/sNN-t1.mp4, 42 shots with s35b, every one used, nothing dropped): clip_voice, no punch-in, slow-down <= 1.1, interpolate off, frame_round, no title card, names {}. Episode 22 is arc 3 (r2-bible-e021-e030.md); the long gold abacus appears only in the s19 insert, as the bible says. It follows episode 21's close (Wei Shaoqing on the threshold, 三日後，州府來拿冒名犯): s01 is the next late morning in the county inn, so the first cut is a new scene under a cold cue, not a continuation. Every offset is seconds from the first frame of the trimmed shot (c). SOURCES: script/storyboard/video.json/overlays.json in docs/videos/zhong-tian-qu-qi-e022-r2; picks.json from refine-prep.py 22 picks-merged.tsv fix1/review-picks.tsv review3-trims.tsv (s09 is the fix1 retake 9221201, s32 the fix1 retake 9221202, no crop= anywhere), staged with stage.py 22 (42 staged, 0 missing); e922cut.sh's want and seed tables hold every trim and seed. LINKS: zhong-tian-qu-qi-e922-dh/music -> ../_series/zhong-tian-qu-qi/music (by hand, the e921 way); stage.py links _live-e922/.../audio and music. Every effect is in the series library (one sfx dir). No new music, no paid service.\nTRIMS: the pickers' trims stand (checked against the clip voices: faster-whisper medium, scratchpad fw env, numpy f32le input, one clip per process, plain and with the line as the prompt, word times -- no clip-voiced word is cut at either end). review3-trims.tsv (new, first cut) shortens every silent tail over ~1 s, measured on the first assembly's lines.json, to ~0.55 s after the last line, end rounded UP to a whole frame: s01 5.875, s03 4.625, s05 5.542, s09 3.583 (the pouch slides off after 4.25), s11 4.0, s13 4.333, s14 5.208 (kept ~1 s for the start of the cheek pinch), s15 4.958, s17 6.708, s19 4.125, s20 3.667 (before she reaches the dark), s26 5.833 (accent moved to c5.35), s30 7.542, s31 5.25, s35 5.958, s35b 4.0, s40 4.667, s41 4.5 (the end, see END). Starts unchanged. Laid lines start at LEAD 0.12, so no word moves.\nVOICE: every on-screen speaker keeps the take's own voice (s02 s06 s08 s10 s12 Wei; s14 Xiaohe; s16 s24 s32 s37 Qin; s18 s22 s27 s33 Xu; s21 s23 s36 A-ling), voice_off []. Whisper heard every clip line right but for homophones (她/他, 妳/你, 棠→唐, 休→修, 錠→定, 紙坊→紙方, 夾→加, 亥→害, 數→書). The post list's lip-sync notes (s06 s08 s10 s14 s33 s37: recording longer than the mouth; s22 s27: mouth longer than the recording) were written for laying recordings; with the clip voice the lips match by construction, so nothing is split. s09 a07 is laid on Tang's back (Wei soft-focus, mouth shut, the fix1 take is silent). s39 a35 line_at 0.30: the shout lands on his open mouth (open c0.2-1.9). s41 a37 off screen over his back; the take's own shout is muted (no on-screen line). Laid recordings: a01 (line_at 0.50, see LEVELS), a03, a04, a07, a09, a11, a13, a15, a17, a18, a23, a24 (inner), a26, a27, a30+a31 (system, panel), a32 (inner), a35, a36 (inner), a37.\nPITCH (rubberband formant preserved; autocorrelation median): Wei 110-157: s02 110, s06 126, s08 109, s10 140, s12 131 kept. Xu 96-145: s18 127, s22 116, s27 104, s33 137 kept; recordings a24 103, a32 112 (inner, in range, not shifted); the shouts a35 216-333 (rising call 小棠——) and a37 165 kept at the voice's own shout pitch (e918: Xu shouts higher). Qin 219-255: s16 235, s24 246 kept; s32 330 -> x0.72 (~238-254, whisper as the raw); s37 the shout 344 -> x0.78 (~286): x0.72 made whisper hear 等我 for 燈籠, x0.78 reads word for word. A-ling (186-254 in e920): s21 208, s23 203, s36 242 kept. Xiaohe (child, e917 333-363): s14 308 kept. Tang: recordings at their recorded pitch.\nRECORDINGS (audio/, originals in audio/orig/ (15 files), file lengths unchanged; lev922.py = e921's lev2.py: zeroed outside the source's -45 dB span -0.03/+0.10 s, integrated LUFS on that span): acompressor 3:1 at -20 dB + volume + alimiter 0.84 to ~-14.5: a03 -16.0, a04 -18.9, a09 -17.3, a13 -17.7, a17 -15.5, a24 -19.3, a26 -16.3, a27 -15.5, a32 -17.2, a36 -17.9 -> -14.5/-14.6; system a30 -20.7 and a31 -16.8 -> -14.6 with volume + alimiter 0.89 attack 10, no compressor; a11 -12.5 -> -14.5 (volume only, 2 dB over the scene); a35 -10.4 -> -12.0 (the shout, volume only); a01 -15.4 -> -15.5 (tried lower, see LEVELS). Untouched: a07 -14.1, a15 -14.9, a18 -13.9, a23 -15.1, a37 -14.0, every clip-voiced line's file, raw-tts files, take1/ take2/ take3-pause/.\nLEVELS (clip voices brought to the recordings with clip_af volume; 0.4 s momentary p75 over each line's span in the cut): s02 +0.2, s06 -2.3, s08 -2, s10 -3.7, s12 -2.2, s14 -3.8, s16 -0.4, s18 -2.2, s21 -3.5, s22 +1.3, s23 -4, s24 -3, s27 +1.8, s32 x0.72 +1, s33 -2.2, s36 -3.3, s37 x0.78 +2 (each over -1 dB ends in alimiter 0.89). OPENING: a01 sits ~1 dB over the inn scene (-11.8 against -12.3..-13.4): lowering its file 1.1 dB, starting it at c0.50 instead of 0.12, the suspense cue from -23/fade 0.6 to -21/fade 0.2 and the inn wind from -14 to -10 each left it at -11.8 -- the final one-pass loudnorm's lift of the first seconds (e920/e921) -- accepted, listen. Floor: beds Wind -10 (inn) / -11 (dinner), wind1 -10 (room, yard), Wind -12 + synth river -18 (ferry) keep the gaps over -40 M except 0.3-0.9 s dips at cuts and pauses (the 8 s bed loops start quiet) and the end fade.\nPANELS (no burned subtitles; soft CC at the bottom): s35 the overlay 警告，唐小棠正在遠離 (penalty) with panel_color red and panel_y 880: at the default 120 or e921's 16 it sat on his topknot and forehead through the push-in; at 880 it covers only his robe at the chest and the system lines carry no CC, so nothing overlaps (checked at c0.3 and c5.2).\nMUSIC (library cues only, the script's plan): (1) suspense s01-s12 + 0.3 from 0 (-21, 0.2/1.5): the cold inn; accents impactSoft_heavy_000 s07 c2.6 -20 (the gold pushed back) and s10 c1.78 -16 (after the first 三日); (2) warm s13-s20 + 0.3 (-21, 0.8/1.5): the dinner; (3) night s21-s36 + 0.2 (-23, 1.5/1.2): from A-ling's quiet warning (the warm cue drops out) through the letter, the tearing and the system; accents s26 c5.35 -20 (after 敲她的門), s33 c2.85 -18 (after 律上不算); the system's ding is the electronic sting; (4) tension s37-s38 + 0.2 (-21, 0.3/0.8): 追啊 and the run; (5) river s39-s41 (-22, 0.8/2.5): the landing and the boat. Ducked 3.5 : 1, release 900 ms.\nSFX: s04 handleCoins2 0.3 -17 (the ingots spill), s06 impactWood_light_001 2.0 -24 (the fan shut), s07 handleCoins 0.8 -22, s10 swish-7 0.15 -22 (the fan opens), s11 handleCoins 1.0 -21 (into the pouch), s12 door_close_01 2.6 -24, s13 dishes_01 0.4 -24, s14 dishes_02 0.2 -28, s19 impactWood_light_000 0.6 -24 (the abacus gripped), s20 footstep_wood_000 1.6 -26, s24 impactWood_light_001 0.3 -26 (chopsticks down), s25 metalPot2 0.25 -24, s27 creak1 5.3 -20 (the door opens a crack), s29 impactPlate_light_000 0.9 -26 (the lamp set down), s30 paper_02 0.3 -24, s34 paper_03 0.25 -14 + paper_04 2.5 -14 (the two tears), s37 cloth2 2.9 -16 (the shove), s38 footstep_grass x4 0.3-1.65 -18 + creak2 3.0 -22 (the gate), s39 footstep_wood_000 0.1/0.55 -20, s40 splash_01 0.5 -26 (the pole), s41 impactSoft_heavy_000 -8 + gong_02 -5 at 2.95.\nVF (on the 1920x1080 picture before the grade; vf922.py in the scratchpad, built on vf921r3.py's kb/kb_in; nothing boxed dark): s15 crop=1904:1071:8:4 + scale (the refined picture has a thin orange line down both edges, x 0-6 and 1914-1920; no other clip has one, measured on every clip's edge columns); s07 crop=1560:878:180:202 + scale (1.23x: the light-blue seated body across the table along the top edge goes, the fan, the gold and her hand stay; a sliver of blue remains top left at c0.1); s30 and s33 the faint rows of characters on the letter's back: kb_in with the paper key R>110, G<215, R-G<34, R-B<75 (hands have R-G > 40 and drop out; G<215 keeps the candle flame out), thresholded at 150 after sigma 6 so the paper's own edges stay sharp, the inside blurred sigma 10 (sigma 5 still showed dot rows) -- boxes s30 x 600-1200 y 470-1080, s33 x 120-840 y 660-1080; the folds go soft, the grey robe inside the boxes softens a little. Checked, not masked: the fans of s01 s02 s06 s07 s08 s10 s12 (gold leaf and bird shapes, no character strokes at full size), s31 (the paper is plain; the red thumbprint is a fingerprint, as written, not a seal -- a sigma 3.5 try was dropped), s32 (plain paper, red cords, accepted). Accepted (post list): s08 the right-edge cheek, s26 the eyeline, s29 cut before 2.5, s39/s41 the boat close and the blue dusk, s04/s07 the ingot count, s32 the cords and half-open paper.\nJITTER: cut-qa's jitter() on every staged clip 0.00-0.01 (s39 0.06): no deshake. END: s41 the wide shot from behind on the pier; a37 ends at c2.77, a low hit and the gong at c2.95, the picture fades over c3.60-4.20 (vf fade) and min 7.20 holds ~3 s of black (the take ends at c4.50; the hold is the faded last frame) while the gong rings out; e922cut.sh fades the sound over the last 1.5 s.\nRESULT (e922cut.sh, third run; the first had beds at -14/-12 and the clip levels of the test assembly, the second was killed by a container restart and re-run): 208.96 s (42 shots; the first assembly before the tail trims 230.37); -14.0 LUFS, peak -3.4 dBFS; loudnorm2 linear (pre -14.6 LUFS, -3.97 dBTP + 0.6 = -3.37 <= -2.2); cut-qa: fps 24, jitter ok (42 shots steady), motion FAIL 4.5 / static 25 % on the clips (3.6 / 37 % after grade and vignette: a talking episode), held FAIL s41 2.26 s and black FAIL 3.08 s -- the intended end; cut-jumps 0; audio-qa 37 lines 0 problems (gap notes before a06, a26, a35: s04 s07, s28 s29 and s38 have no lines, on purpose). LEVELS (0.4 s momentary p75 per line): -12.3..-13.6 for 33 of 37 (median -12.9); a01 -11.8 (OPENING), a35 -11.1 (the shout), a25 -14.0 (放輕聲音, long pauses in its span; max -10.7), a20 -13.6 (pauses; max -9.4). Whisper on the cut (medium, numpy, one span per process): a01 魏公子，我一個人來的 (plain 桂公子); s32 他寫修書 他是妻子 修的是誰啊; s35 叮(聽) 警告 唐小唐正在遠離 修書撕了 人也不會自己走回來宿主; s37 還愣著幹嘛 追啊 燈籠就在屋簷下; s39 小棠; s41 小叔我撕了 你寫的不算 聽見沒有 (plain: 小叔 for 休書; in context 休書).\nBY EAR / EYE: 0.0-4.63 s01 a01 a little loud (the opening lift); 158.42-163.17 s32 Qin x0.72; 186.83-191.58 s37 Qin's shout x0.78 (~286 Hz, higher than her 219-255); 195.58-197.58 s39 小棠 on the mouth and its pitch (Xu's recorded shout 216-333); 201.75-208.96 s41 休書 (whisper heard 小叔 without context), the fade, the gong in the black; 171.25-177.21 s35 the system pair and the red panel at the bottom; 145.63-153.17 s30 and 163.17-168.0 s33 the blurred letter backs; 30.17-34.17 s07 the 1.23x crop; 71.08-75.54 s15 the edge crop; 134.33-140.88 s27 (quiet on purpose, +1.8 dB); 105.79-111.83 s22 (long pauses in the take); the shortened tails of s01 (4.63), s03 (13.88), s05, s09 (45.0), s11, s13, s14, s15, s17, s19, s20, s26, s30, s31, s35, s35b, s40."
 }
