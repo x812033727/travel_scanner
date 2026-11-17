@@ -485,6 +485,9 @@ FOOT = [
 #      s25 (a24's retake 4.84 s), s21 (a20 4.72 s).
 # 5 s: the silent inserts s04, s10, s28 as gen-dh buys them, and the silent shots s03b (one fall), s30 (two nods), s37 (one nod).
 # s03 (the swing), s06 (the silver pulled out) and s33 (the wide) keep gen-dh's 6. No shot runs over about 10 s after the split.
+# After the independent review (必改 13, 建議 11): a06 re-recorded once with "他 shōu 的 yín 子" in the scratch copy (plain now r1.00
+# 他收的銀子, 188 Hz, speech 3.98 s; the old take in audio/take1/); the cut uses audio/zq928a14-low3.wav (a14 lowered 3 semitones,
+# formants kept: 131 Hz next to a25's 113, plain r0.92, context r1.00). a08, a01, a03 stay (audio/README-retakes.txt).
 BUY = {"s15": 8, "s18": 8, "s20": 8, "s35": 8, "s36": 8, "s39": 8, "s03b": 5, "s30": 5, "s37": 5}
 
 

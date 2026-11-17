@@ -45,6 +45,7 @@ TANG_PICS = ["tangxiaotang-portrait-l1.png", "tangxiaotang-angle-a-l1.png", "tan
 ONLY_HE = "He is the only person in the frame; no second copy of anyone appears."
 ONLY_SHE = "She is the only person in the frame; no second copy of anyone appears."
 ONLY_2 = "Only these 2 people are in the frame; no second copy of anyone appears."
+S39_ONLY = "Only these 3 people are in the frame; no second copy of anyone appears."
 BESIDES_HIM = "Besides him, only the other people the composition names are in the frame; no second copy of anyone appears."
 BESIDES_HER = "Besides her, only the other people the composition names are in the frame; no second copy of anyone appears."
 BESIDES_THEM = "Besides them, only the other people the composition names are in the frame; no second copy of anyone appears."
@@ -107,7 +108,7 @@ for sid in NOPERSON:
 
 # The unnamed people the compositions describe, with their counts.
 add("s01", [BESIDES_HIM, besides("him", "the soft back of the young woman in the left foreground and the two men with sticks")])
-add("s02", [BESIDES_HER, ONLY_SHE])
+# s02: after the review (必改 3) its composition no longer says "two men", so ref2manifest writes "She is the only person" itself
 add("s03", [ONLY_SHE, besides("her", "the one man with the stick")])
 add("s05", [ONLY_HE, besides("him", "the one grey-white sleeved hand at the left edge")])
 add("s06", [BESIDES_THEM, besides("them", "the two men lying on the stones further down the lane")])
