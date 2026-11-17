@@ -44,49 +44,69 @@ Written from the start the way e030-r2/r2.py stands AFTER its independent review
   the sky, s21 the ground), and mkspec.py strips "H0: " from their d1 prompts (as e030 s17/s22/s32). A shot sending no picture
   at all fails Ref2VA (the pseudo preflight's picture-list ERROR on a first draft of s18), so s18 sends a branches crop.
 
+AFTER THE INDEPENDENT REVIEW (review.md in this folder, 2026-11-17; the coordinator deciding for the owner: all 7 必改 applied,
+plan A for the dam, s21b kept, the important 建議 taken; where this differs from the paragraphs above and below, this wins):
+- 必改 1 (the dam): the filed set-shangyou-ba-l1 (37042 + clean_shangyou_box.py) is a long bank of brown hemp sacks with the pond
+  behind it, no dry bed, no rocks, no path on the crest, and its left/right are the bible's mirror. Plan A: the free horizontal
+  flip set-shangyou-ba-fx-l1 (live-action/free-e031-e040/shangyou_fx.sh; rule 9 is about cross-collared people only) and five
+  crops of it: -fx-ding (s34, s36), -fx-tang (s37), -fx-jiao (s35), -fx-lu (s38, s40), -fx-shan (s33, s39); s32, s41 the full
+  -fx. B0, DAM, ba_c, SIDE_GULLY and s32-s41 are written to it (the stone-edged path at the foot of the bank on the LEFT, the bank
+  rising on the RIGHT, the pond behind it, bamboo hills); s32 counts the carter (fourteen people); s41's twelve men stand on the
+  far half of the crest, small; GAZE_REFINE s40 looks at the bank of sacks. The bible's 31->32 row keeps its left/right and
+  gets the terrain words (r2-bible-e031-e040.md).
+- 必改 2 (the night axis): Xu Yan comes from the house on the LEFT, so at the well he is at A-ling's LEFT: s09, s11, s17 she looks
+  screen left; s12 turns away to the right; s14 turns back to the left; s10 her back is cut by the RIGHT edge, Xu Yan in the left
+  half looking screen right; s13, s15 he looks screen right; s16 Xu Yan left, A-ling right. GAZE_REFINE follows.
+- 必改 3: s07, s08 send set-xujia-yuan-ye-dong2-l1 (ye_dong2.py: the blank board and the bodiless lantern glow by the right gate
+  post painted out).
+- 必改 4: s06 his eyes lift from the earth (the house door is inside -dong-wu2's frame, behind him).
+- 必改 5: s31 walks AWAY from us along the bed (set-ganxi-l1 runs straight away from the camera), right of the long plank walk
+  laid down the middle of the bed (no bridge in the picture).
+- 必改 6: s18 sends set-xujia-yuan-han-shu-l1 = crop 320:180:480:0 (the sun outside the frame); SKY_LIGHT says so.
+- 必改 7: the five villagers wear five colours none of the leads wear (hemp-beige, charcoal, faded indigo, dull olive, dark grey;
+  never grey-blue, which reads as Xu Yan's blue-grey); s33's two the same; the bible's 〈小角色〉 row follows.
+- 建議 taken: s11, s19 buy 8 s (slow, quiet lines; re-check against the recordings); s24 sends Xu Yan's l1 (chars); s30 the gate
+  is inside the frame at the right, Erniu just left of it; s19 her hands on the windlass handle; s21b kept with the review's
+  fallback written into extras.json's note (both seeds must show two buns and closed lips, else the shot is cut, not retaken);
+  s32 the count with the carter; s18/s21 no place words in d1 (mkspec.py, scanned by prep931.sh). Declined: s05's foreground
+  re-placing (the review says either is fine; the 30->31 layout stays), s01's refine wording (picking decides), s31's light
+  (picking decides). The full list is at the end of review.md.
+
 THE AXES (rules 29, 42: the pictures decide):
-- Scene 1, the yard at dusk and the same night (set-xujia-yuan-dong-qing2-l1 / set-xujia-yuan-ye-dong-l1): the house and the
+- Scene 1, the yard at dusk and the same night (set-xujia-yuan-dong-qing2-l1 / set-xujia-yuan-ye-dong2-l1): the house and the
   firewood on the LEFT, the gate in the MIDDLE of the back wall, the bare tree behind the wall right of the gate, the low wall
   and leaning planks on the RIGHT, the well in the FRONT RIGHT; the low sun at the upper right behind. The hand-over (bible
   30->31 corrected 2026-11-17, e030 s41 fix2 9301301): Tang Xiaotang in the middle foreground, her back to us, a flat wooden box
   held against her chest (BOX); A-ling at the well front right, her hand on the windlass, the gauze on her left ear; Xu Yan at
   the left before the house, two-thirds back, facing the gate; Wei Shaoqing in the gate. So A-ling looks screen LEFT to the gate
   and Wei screen RIGHT to the well (as e030 s39/s40); Xu Yan, before the house, looks screen right to Tang Xiaotang and the
-  well. At night A-ling sits on the well's rim, Xu Yan crouches and then sits at her right (screen right of her in the
-  two-shot, she looks screen right to him, he screen left to her).
+  well. At night A-ling sits on the well's rim and Xu Yan, come from the house on the left, crouches and then sits at her LEFT
+  (review 必改 2): she looks screen left to him, he screen right to her; in the two-shot he is left, she right.
 - Scene 2, three months later (set-xujia-yuan-han-l1, filed 37038: only the field beyond the wall changed to cracked bare earth;
   the picture's sun is low and golden, so the script's 「正午」 is written "hot hazy afternoon, low sun from the upper right"
   (bible 〈還沒解決的〉 6). The bare tree stays bare (the buds only in the s18 insert). Tang Xiaotang draws water at the well
   (front right); Xu Yan stands before the house (left) with the red clay bowl in his hands: the picture has no low table and no
   bench, so they are not written (as e030); Wang Erniu comes in through the gate in the middle of the back wall and stops at Xu
   Yan's right. Xu Yan looks screen right to them; Erniu and Tang Xiaotang look screen left to him.
-- Scene 3: the dry stream bed (set-ganxi-l1, filed 37038: dry mud plates, the plank bridge, willows): the group walks from the
-  left toward the right (upstream). The dam (set-shangyou-ba-l1, NOT FILED in refs-live when this was written: round 3 of the
-  screen test. Its out-r3 seed 37042, looked at half size, and live-action/free-e031-e040/clean_shangyou_box.py (another
-  session's, 20:38, "from seed 37042") suggest that is the pick: a long dam of stacked brown hemp sacks on a fieldstone footing
-  running from the left foreground diagonally to the middle right, the muddy pond behind it on the left, a ditch of water along
-  its right end, bright green rice on the right, wooded hills; no dry bed in the frame). DAM is written to fit both the round-3
-  prompt and that picture. Close shots keep the bible's 31->32 axis: the Liuxi side LEFT, the dam RIGHT: Xu Yan and Erniu look
-  screen right to the dam, Qian Yuanwai on the dam looks screen left and down; the wides s32, s41 look at the dam "like the
-  picture". When the picture is filed, check its left/right against this and the 31->32 row (bible: 照圖改這張表), cut its
-  close crops, then fix LOC["ba"]/["ba_c"] and the s32/s41 compositions to the picture before the d1 prompts are made.
+- Scene 3: the dry stream bed (set-ganxi-l1, filed 37038: dry mud plates running straight away from the camera, a long plank
+  walk down the middle, willows and roofs on the left bank): the group walks away from us (upstream). The dam
+  (set-shangyou-ba-fx-l1, the flipped pick): the Liuxi side LEFT on the stone-edged path at the foot of the bank, the bank of
+  sacks RIGHT: Xu Yan and Erniu look screen right to it, Qian Yuanwai on its crest looks screen left and down (the bible's
+  31->32 axis, kept).
 
 PLACES (gen-dh SET takes the FIRST pattern in its list order that matches; spec.json swaps with absolute paths):
 - "courtyard" (scenes 1 and 2) gives set-xujia-yuan-l3, swapped per shot for: -dong-qing2-l1 (s04), -dong-jing-l1 (s01, s03),
   -dong-men2-l1 (s02, s05), -dong-wu2-l1 (s06); -han-l1 (s24), -han-jing-l1 (s19), -han-wu-l1 (s20, s22, s23, s26, s28, s29,
-  s29b, s30), -han-qiang-l1 (s21b, s27), -han-men-l1 (s25), and for the s21 insert a cleaned ground crop
-  set-xujia-yuan-han-di2-l1 (NOT MADE: refs-live README warns -han-di-l1 has the leaf-shaped stone that turned e030 s32's paper
-  into a leaf; make it free with colab/runs/e930-live/fix1/clean_di.py's method before s21's d1).
-- "night yard of the Xu farmhouse" (s07-s17) gives dh-set-xujia-yuan-ye-t1, swapped for set-xujia-yuan-ye-dong-l1 (s07, s08) and
-  -ye-dong-jing-l1 (s09-s17). -ye-dong-l1 still has the dark blank board right of the doorway (README): s07, s08 write "the plain
-  stone wall of the farmhouse"; or paint a -ye-dong2-l1 with clean_yard.py (a) before d1 (free).
-- "stream" (scene 3) gives dh-set-liuxi-he-t1, swapped for set-ganxi-l1 (s31) and set-shangyou-ba-l1 (s32-s41; after the pick its
-  close crops, free, as the bible says, for s33-s40). No "channel", "sluice", "pool", "spring field" in any prompt (other SET rows).
-- s18: set-xujia-yuan-han-shu-l1 (NOT MADE: free, -han-l1 cropped as -dong-shu-l1, crop=480:270:560:0: the bare branches
-  against the glowing sky, a corner of the gate roof at the lower left; looked at in scratchpad, usable).
+  s29b, s30), -han-qiang-l1 (s21b, s27), -han-men-l1 (s25); the inserts s18 set-xujia-yuan-han-shu-l1 (the branches and the sky)
+  and s21 set-xujia-yuan-han-di2-l1 (the ground, the leaf-shaped chips painted out: han_di2.py).
+- "night yard of the Xu farmhouse" (s07-s17) gives dh-set-xujia-yuan-ye-t1, swapped for set-xujia-yuan-ye-dong2-l1 (s07, s08) and
+  -ye-dong-jing-l1 (s09-s17).
+- "stream" (scene 3: G0 and B0 both say it) gives dh-set-liuxi-he-t1, swapped for set-ganxi-l1 (s31) and the flipped dam
+  set-shangyou-ba-fx-l1 (s32, s41) and its crops (s33-s40, above). No "channel", "sluice", "pool", "spring field", "bamboo grove"
+  in any prompt (other SET rows).
 Shared files: none changed (build-r2.py's EN has "A-ling", "Wang Erniu", "Qian Yuanwai", "Wei Shaoqing"; gen-dh.mjs, pilot.py,
-cast.json untouched). Not written here (the prep step after this, as e930): colab/runs/e931/extras.json, colab/runs/e931-live/
-{mkspec.py,spec.json} (swap_pictures, drop_pictures, the d1 gaze sentences), prep931.sh, recordings.
+cast.json untouched). The prep (as e930): colab/runs/e931/extras.json, colab/runs/e931-live/{mkspec.py,spec.json}, the
+scratchpad's prep931.sh and e931d1.sh.
 """
 EP = 931  # internal working number; the published slug is zhong-tian-qu-qi-e031-r2
 SLUG = "zhong-tian-qu-qi-e031-r2"
@@ -270,7 +290,7 @@ SHOTS = [
          motion=f"Xu Yan bends and sets the clay oil lamp down on the stone doorstep, its little flame steady; A-ling sits still; {quiet('Xu Yan and A-ling', 'their', plural=True)}",
          zh="全景、慢推（人眼高、照圖；送免費的 `set-xujia-yuan-ye-dong2-l1`：審稿必改 3，`-ye-dong-l1` 屋門右邊的空白木板與院門右柱一帶沒有燈體的燈籠光已塗掉）：天已經黑了（第一格），許硯（外披舊灰外衣）從屋門出來、左手一盞陶油燈，彎身把燈放在門前石階上；右前井沿上阿令一個人坐著、仰頭、膝上一方摺好的灰紗（聖經道具表）。無台詞。稿子『屋簷下的燈籠、唐家大車與車燈籠駛遠』不拍（拍法 33：不掛燈籠；不描述畫外的車與人，唐家回縣城交給遠處車輪與馬蹄的音效）；『錢箱、帳本』照稿子是畫外交代，不拍"),
     dict(loc="night", cam="Wide shot, slow push in", chars=["xuyan", "aling"], night="night",
-         comp=f"wide shot at standing eye height, like the picture, the yard by night: in the middle of the yard {XU_COAT}, framed full figure, small, already halfway from the house toward the well from the first frame, {SOUP} carried carefully in both hands before his chest, his face three-quarter to screen right toward the young woman at the well, never the lens; gentle, not smiling: soft eyes, lips moving quietly between words; behind him on the stone doorstep of the farmhouse {LAMP} standing on the stone, nobody holding it; in the front right {ALING}, her face bare, sitting on the stone rim of the round well, framed full figure, {GAUZE_KNEE}, her face turned a little toward him, her lips closed, never the lens; {HANDS}; exactly two people",
+         comp=f"wide shot at standing eye height, like the picture, the yard by night: in the middle of the yard {XU_COAT}, framed full figure, small, already halfway from the house toward the well from the first frame, {SOUP} carried carefully in both hands before his chest, his face three-quarter to screen right toward A-ling at the well, never the lens; gentle, not smiling: soft eyes, lips moving quietly between words; behind him on the stone doorstep of the farmhouse {LAMP} standing on the stone, nobody holding it; in the front right {ALING}, her face bare, sitting on the stone rim of the round well, framed full figure, {GAUZE_KNEE}, her face turned a little toward him, her lips closed, never the lens; {HANDS}; exactly two people",
          lines=[("xuyan", "還沒睡？夜裡風冷，喝口熱湯再進屋。", "輕聲")],
          motion=f"Xu Yan walks slowly on toward the well, careful of the steaming bowl, as he speaks; {quiet('A-ling', 'her')}",
          zh="全景、慢推（送 `-ye-dong2-l1`）：許硯第一格已經走到院子中間，兩手端著冒熱氣的粗陶湯碗、小心地往右前的井走、輕聲說；陶油燈放在身後屋門石階上（沒人拿）；井沿上的阿令沒戴面巾（送 `aling-portrait-l1`），臉微微轉向他、嘴閉著。稿子『從屋門走出來』在第一格已經完成；跟拍改慢推；前景矮木桌一角不拍（圖上沒有）"),
@@ -306,7 +326,7 @@ SHOTS = [
          motion=f"A-ling turns her face back toward the left edge of the frame and her eyes rest there a moment; {quiet('A-ling', 'her')}",
          zh="中景（腰以上）、慢推（送 `-ye-dong-jing-l1`）：阿令把別開的臉轉回畫左（看畫外的許硯，不寫他），眼睛停一下；全程嘴閉著（系統畫外）。面板「阿令 好感 +4 → 32」由剪接疊上（好感帳第 31 集）。稿子『畫面右邊緣許硯的肩』不拍（拍法 31）；『低頭吹一口湯』不拍（一鏡一個動作；吹湯會動嘴）"),
     dict(loc="night_j", cam="Close-up, slow push in", chars=["xuyan"], night="night",
-         comp=f"close-up of {XU_COAT}, crouching, framed from the chest up with space above his head, his face three-quarter to screen right, his eyes on a spot beyond the right edge of the frame, never the lens; he is the only person in the frame; amused with himself, not smiling: brows lifting a little, eyes bright, lips pressed shut; moonlight on his face; behind him, soft, the dark low mud-and-stone wall",
+         comp=f"close-up of {XU_COAT}, crouching, framed from the chest up with space above his head, his face three-quarter to screen right, his eyes on a spot beyond the right edge of the frame, never the lens; he is the only person in the frame; wry and thoughtful, not smiling: brows lifting a little, eyes bright, lips pressed shut; moonlight on his face; behind him, soft, the dark low mud-and-stone wall",
          lines=[("xuyan", "不問反而加分……那我是不是該少問一點？", "心裡話，錄得近、輕", "inner"),
                 ("xitong", "宿主少說話，比少問有用。", "冷")],
          motion=f"one corner of Xu Yan's mouth starts to rise and is pressed flat again, his eyes flicking to the right edge of the frame and back; {SILENT_HE}; he is thinking, not speaking",
@@ -462,32 +482,33 @@ SHOTS = [
 ]
 
 HEAD = [
-    "- 重製版 r2、真人版（站主 2026-11-11「之後都用真人版」）：照 `docs/videos/zhong-tian-qu-qi-e031-r2/script.md`（c01–c41 對應 s01–s41；含「這版改了什麼」「2026-11-06 審稿後的修改」）；台詞一字不改，只改拍法；每鏡一個看得見的動作、一句一筆不拆半句、預設不笑。篇章設定 `production/r2-bible-e031-e040.md`（拍法 1–43 條、〈場景〉〈接點〉），帳照 `r2-bible-e011-e060.md`。**第 4 篇章〈旱年〉第一集**。",
-    "- 內部工作編號 931（`hailuo/{ff,clips}-dh-e931.json`；之後的 `colab/runs/e931/extras.json`、`colab/runs/e931-live/spec.json`、工作資料夾 `~/mokaair-work/videos/zhong-tian-qu-qi-e931-dh/` 還沒做）；發布 slug `zhong-tian-qu-qi-e031-r2`。不放集數、不放片名卡；s01 接第 30 集 s41（接點 30→31，2026-11-17 照實拍更正：唐小棠在前景正中背對鏡頭抱木盒、阿令在前右井邊手扶轆轤、灰紗掛在左耳、許硯在畫左屋前朝院門、魏少卿在後牆中間的院門口）；s41 交給第 32 集（接點 31→32：同一刻，十二根棍子舉起）。",
+    "- 重製版 r2、真人版（站主 2026-11-11「之後都用真人版」）：照 `docs/videos/zhong-tian-qu-qi-e031-r2/script.md`（c01–c41 對應 s01–s41；含「這版改了什麼」「2026-11-06 審稿後的修改」「真人版的改動」）；台詞一字不改，只改拍法；每鏡一個看得見的動作、一句一筆不拆半句、預設不笑。篇章設定 `production/r2-bible-e031-e040.md`（拍法 1–43 條、〈場景〉〈接點〉），帳照 `r2-bible-e011-e060.md`。**第 4 篇章〈旱年〉第一集**。",
+    "- 內部工作編號 931（`hailuo/{ff,clips}-dh-e931.json`、`colab/runs/e931/extras.json`、`colab/runs/e931-live/spec.json`，工作資料夾 `~/mokaair-work/videos/zhong-tian-qu-qi-e931-dh/`）；發布 slug `zhong-tian-qu-qi-e031-r2`。不放集數、不放片名卡；s01 接第 30 集 s41（接點 30→31，2026-11-17 照實拍更正：唐小棠在前景正中背對鏡頭抱木盒、阿令在前右井邊手扶轆轤、灰紗掛在左耳、許硯在畫左屋前朝院門、魏少卿在後牆中間的院門口）；s41 交給第 32 集（接點 31→32：同一刻，十二根棍子舉起）。",
     "- 照第 30 集審稿後的寫法一開始就照做（聖經拍法 31–39 條）：`OFFSCREEN_SPEECH = False`；背影、系統與心裡話的鏡，每張朝鏡頭的臉都寫不說話、嘴閉著；**對畫外的人說話寫「朝畫左／右外看不到的人」，那一側到邊緣只有景、畫面裡只有他一個人，不點名、不描述不在畫裡的人**（唐家大車、唐萬金、鄭伯、秦霜、小禾、魏少卿的白馬、畫外的家丁都不寫）；不掛東西（沒有燈籠：s07 許硯提一盞陶油燈出屋門）；不寫 open；道具與接觸寫在第一格；寫人數。",
-    "- **唐小棠**（拍法 40）：說話的三鏡（s05、s19、s22）與聽的兩鏡（s20、s30）從背後拍、畫面正中、正背對、頭不動、剛好兩顆丸子；全景 s04、s24 小小的背影（不送圖）。**本集唯一一鏡正臉是 s21b**（看到稻芽、不說話、嘴閉著小小地笑；送 `tangxiaotang-portrait-l1` 與角度圖），跟背影 s22 不同景別。稿子的 t2 高立領、「下巴以上」、「袖子用粉帶束起」、腰間金算盤不寫（拍法 4、20）。",
-    "- **阿令**（拍法 21）：s01 送沒面巾的定妝照＋angle-a，灰紗寫成實物、第一格掛在左耳，她左手拉回遮住口鼻；s03、s04 送 `aling-veil-portrait-l1`；夜裡（s07–s17）摘下、摺好放在膝上（送沒面巾的定妝照）。**魏少卿**（拍法 30）只在 s02–s04，扇子合著、三鏡都不笑；**白馬不拍**（聖經〈還沒解決的〉第 2 條），s04 他沿後牆外往右走出畫、馬蹄交給音效。**王二牛**每鏡不笑（原版必修），全集只有他一把鋤頭；村民灰藍、五人各自年紀與擔子不同（拍法 34）。**錢員外**錦袍胸前素的；s34 可以假笑、s36 可以冷笑（稿子）。家丁只在遠景（s32、s41）。",
-    "- **場景圖說了算**（拍法 29、42）：第一場同第 30 集那組（`-dong-qing2-l1`、`-dong-jing-l1`、`-dong-men2-l1`、`-dong-wu2-l1`），夜裡送免費的 `set-xujia-yuan-ye-dong-l1` 與 `-ye-dong-jing-l1`；第二場送試鏡一挑定的 `set-xujia-yuan-han-l1` 與它的免費裁切 `-han-jing`／`-han-wu`／`-han-qiang`／`-han-men`（圖是低斜陽，稿子的「正午」照聖經改「午後斜陽、熱風捲塵」；圖上沒有矮木桌，碗拿在許硯手上）；第三場乾溪床送 `set-ganxi-l1`（已歸檔），**壩 `set-shangyou-ba-l1` 還在試鏡第三輪，s32–s41 共 10 鏡要等它（近鏡再等它的免費裁切）**；s21 插鏡要的乾淨地面 `set-xujia-yuan-han-di2-l1` 與 s18 插鏡的禿枝 `set-xujia-yuan-han-shu-l1` 還沒做（免費）。本集畫面上沒有水車（原版必修）。",
-    "- 長鏡要買的秒數（BUY，錄音還沒錄，照字數估；錄好後照第 30 集量人聲長度重核）：s04、s15、s22、s28、s29、s30、s34、s36、s37、s38 與最後一鏡 s41 買 8 秒；s07、s16、s18、s21、s21b、s29b 買 5 秒；其餘照 `gen-dh.mjs` 的預設（說話 6 秒）。稿子 c29 三句估約 11 秒，拆成 s29／s29b。",
+    "- **唐小棠**（拍法 40）：說話的三鏡（s05、s19、s22）與聽的兩鏡（s20、s30）從背後拍、畫面正中、正背對、頭不動、剛好兩顆丸子；全景 s04、s24 小小的背影（不送圖）。**本集唯一一鏡正臉是 s21b**（看到稻芽、不說話、嘴閉著小小地笑；送 `tangxiaotang-portrait-l1` 與角度圖），跟背影 s22 不同景別；挑片時兩個種子都不是雙丸子、嘴閉著就整鏡拿掉，不重拍。稿子的 t2 高立領、「下巴以上」、「袖子用粉帶束起」、腰間金算盤不寫（拍法 4、20）。",
+    "- **阿令**（拍法 21）：s01 送沒面巾的定妝照＋angle-a，灰紗寫成實物、第一格掛在左耳，她左手拉回遮住口鼻；s03、s04 送 `aling-veil-portrait-l1`；夜裡（s07–s17）摘下、摺好放在膝上（送沒面巾的定妝照）；夜裡許硯從畫左的屋門過來，**近鏡他在她左邊**（審稿必改 2）。**魏少卿**（拍法 30）只在 s02–s04，扇子合著、三鏡都不笑；**白馬不拍**（聖經〈還沒解決的〉第 2 條），s04 他沿後牆外往右走出畫、馬蹄交給音效。**王二牛**每鏡不笑（原版必修），全集只有他一把鋤頭；村民五人五種衣色（本色麻、炭灰、褪色靛藍、暗橄欖綠、深灰，都不是主角的顏色，審稿必改 7）、各自年紀與擔子不同（拍法 34）。**錢員外**錦袍胸前素的；s34 可以假笑、s36 可以冷笑（稿子）。家丁只在遠景（s32、s41）。",
+    "- **場景圖說了算**（拍法 29、42）：第一場同第 30 集那組（`-dong-qing2-l1`、`-dong-jing-l1`、`-dong-men2-l1`、`-dong-wu2-l1`），夜裡送免費的 `set-xujia-yuan-ye-dong2-l1`（木板與燈籠光塗掉，審稿必改 3）與 `-ye-dong-jing-l1`；第二場送 `set-xujia-yuan-han-l1` 與它的免費裁切 `-han-jing`／`-han-wu`／`-han-qiang`／`-han-men`，插鏡 s18 送 `-han-shu-l1`、s21 送 `-han-di2-l1`（都是免費新圖；圖是低斜陽，稿子的「正午」照聖經改「午後斜陽、熱風捲塵」；圖上沒有矮木桌，碗拿在許硯手上）；第三場乾溪床送 `set-ganxi-l1`（照圖一行人沿溪床往遠方走，審稿必改 5），**壩送免費左右翻轉的 `set-shangyou-ba-fx-l1` 與五張裁切**（審稿必改 1 做法 A：柳溪的人在左邊壩腳的石邊土路上、麻袋土埂在右、水塘在後）。本集畫面上沒有水車（原版必修）。",
+    "- 長鏡要買的秒數（BUY，錄音還沒錄，照字數估；錄好後照第 30 集量人聲長度重核）：s04、s11、s15、s19、s22、s28、s29、s30、s34、s36、s37、s38 與最後一鏡 s41 買 8 秒；s07、s16、s18、s21、s21b、s29b 買 5 秒；其餘照 `gen-dh.mjs` 的預設（說話 6 秒）。稿子 c29 三句估約 11 秒，拆成 s29／s29b。",
     "- **表上的「秒」欄是 lint 估法**，比錄音短；剪接以錄音的人聲長度為準。",
+    "- **獨立審稿後的修改**（`writer-tools/e031-r2/review.md`，協調者 2026-11-17 代站主決定；必改 7 條全照改）：(1) 壩照歸檔的圖左右翻轉成 `set-shangyou-ba-fx-l1`、五張裁切，s32–s41 的地形照圖改（石邊土路、麻袋土埂、水塘、竹林山谷），s32 算進車夫共十四人；(2) 夜裡 s09–s17 左右對調（許硯在阿令左邊）；(3) 夜圖塗掉木板與燈籠光成 `-ye-dong2-l1`；(4) s06 眼睛從地上抬起；(5) s31 沿溪床往遠方走、木板走道不是橋；(6) s18 換 crop `320:180:480:0`；(7) 村民五種衣色、不穿灰藍。建議照收：s11、s19 買 8 秒；s24 送許硯 l1；s30 院門在畫面右邊裡；s19 手扶轆轤木柄；s21b 留、挑片退路寫進 `extras.json`。",
 ]
 FOOT = [
-    "- **參考圖**（`assets/refs-live/`）：許硯 l1、angle-a（帶笑的 angle-b 整集不送；全景只送 l1）；阿令（s01 `aling-portrait-l1`＋`aling-angle-a-l1`；s03、s04 `aling-veil-portrait-l1`、不送角度圖；s07–s17 `aling-portrait-l1`＋angle-a）；魏少卿 l1；王二牛 l1、angle-a；錢員外 l1、angle-a；唐小棠只在 s21b 送 l1 與角度圖，其餘整集不送。過肩前景的背影（s10、s26、s27、s35、s36）、s41 二牛的背影、s32 壩上的胖子、車夫、村民、家丁都不送圖。場景見上面。",
-    "- **還沒有的圖**（寫的時候照名字寫，挑定、歸檔後才能開拍那幾鏡）：`set-shangyou-ba-l1`（試鏡第三輪，s32、s34、s36、s37、s41 送整張或壩頂；s33、s35、s38、s39、s40 送挑定後的免費近景裁切）；`set-xujia-yuan-han-di2-l1`（免費，`-han-di-l1` 塗掉葉形石片，s21）；`set-xujia-yuan-han-shu-l1`（免費，`-han-l1` 照 `-dong-shu-l1` 的 crop 裁，s18）。可選：`set-xujia-yuan-ye-dong2-l1`（免費，塗掉夜圖屋門右邊的空白木板，s07、s08）。其他第三輪重畫的圖（`set-shentan-l1`、`set-shanjiao-qu-l1`、`diaoqi-portrait-l1`、`prop-zaohongma-l1`、`set-gucang-wai-l1`）本集不用。",
+    "- **參考圖**（`assets/refs-live/`）：許硯 l1、angle-a（帶笑的 angle-b 整集不送；全景 s04、s24、s31 只送 l1）；阿令（s01 `aling-portrait-l1`＋`aling-angle-a-l1`；s03、s04 `aling-veil-portrait-l1`、不送角度圖；s07–s17 `aling-portrait-l1`＋angle-a，全景只送 l1）；魏少卿 l1；王二牛 l1、angle-a；錢員外 l1、angle-a；唐小棠只在 s21b 送 l1 與 angle-a，其餘整集不送。過肩前景的背影（s10、s26、s27、s35、s36）、s41 二牛的背影、s32 壩上的胖子與車夫、s37 的車夫、村民、家丁都不送圖。場景見上面。",
+    "- **本集新做的免費圖**（2026-11-17，`live-action/free-e031-e040/`，各跑兩次逐位元一樣，寫進 refs-live README）：`set-shangyou-ba-fx-l1` 與 `-fx-ding`／`-fx-tang`／`-fx-jiao`／`-fx-lu`／`-fx-shan`（`shangyou_fx.sh`）、`set-xujia-yuan-han-shu-l1`（`han_extra.sh`）、`set-xujia-yuan-han-di2-l1`（`han_di2.py`）、`set-xujia-yuan-ye-dong2-l1`（`ye_dong2.py`）。**不需要試鏡**。",
     "- 共用檔：沒有改（`build-r2.py` 的 `EN` 已有每個名字）；`gen-dh.mjs`、`pilot.py`、`cast.json` 不動。精修文字的 CG 立領句與背影鏡唐小棠的名字由本檔結尾的 `live_clips()` 在 build 後從 `clips-dh-e931.json` 換掉（s21b 是正臉，留名字、只拿掉立領句）；對畫外說話的鏡把通用的說話視線換成 d1 的方向句（`GAZE_REFINE`）。",
-    "- 之後的免費準備（照 `prep930.sh`）：`extras.json`、`mkspec.py`／`spec.json`（swap_pictures 絕對路徑、drop_pictures、d1 的方向句、s21 拿掉地點句）、`DRY=1 … st1-ep.sh 931` → `pilot.py` → `retake.py`、`preflight-prompts.py` 與否定名詞、open、燈籠、掛著的東西、『畫外的人』、精修句外漏的掃描；錄音 39 句（`lines.mjs`，聽寫帶上下文、YIN 量音高，聖經第 43 條）。",
-    "- 配樂：第一場傍晚低沉的 suspense（接第 30 集），s04 馬蹄遠去時收；夜裡溫柔的夜曲，s14「叮」一個輕重音；第二場乾、熱的 drone，s21 出芽一個亮的輕音，s24 喊斷流時切掉，s28「叮」一個重音；第三場低鼓，s32 看到壩一個重音，s40 起鼓點、s41 停在最高點。音效見 script.md〈音樂與音效〉（另外：馬蹄遠去、遠處車輪與馬蹄、滾過裂泥的空木桶、騾車鞭響與車輪、丟下鐵鍬，都交給音效）。",
+    "- `colab/runs/e931/extras.json`（照第 30 集）與 `colab/runs/e931-live/spec.json`（`mkspec.py` 產生；種子 9311101／9311102）。免費準備：scratchpad `prep931.sh`（照 `prep930.sh`：先把精修句拆成錨點的形式給第一段、再把 live 文字放回；`DRY=1 … st1-ep.sh 931` → `pilot.py` → `retake.py` → `colab-jobs.json` 加 output_path、套 swap_pictures（絕對路徑）→ 逐鏡查送的場景圖與人物圖 → 精修用的分隔句 → `preflight-prompts.py` → 否定名詞、會長字的名詞、掛著的東西、open、『畫外的年輕女子』、『點名的畫外人』與精修句外漏掃描）；草稿 scratchpad `e931d1.sh`。",
+    "- 配樂：第一場傍晚低沉的 suspense（接第 30 集），s04 馬蹄遠去時收；夜裡溫柔的夜曲，s14「叮」一個輕重音；第二場乾、熱的 drone，s21 出芽一個亮的輕音，s24 喊斷流時切掉，s28「叮」一個重音；第三場低鼓，s32 看到壩一個重音，s40 起鼓點、s41 停在最高點。音效見 script.md〈音樂與音效〉（另外：馬蹄遠去、遠處車輪與馬蹄、乾裂泥上的腳步、騾車鞭響與車輪、丟下鐵鍬，都交給音效）。",
 ]
 
 # Seconds to buy. No recordings yet (e931 has none): estimated from the characters (a 6 s shot holds about 5.9 s of speech;
 # e930's recordings ran about 3.1-3.7 characters a second for 15-19 characters, so 19 or more characters, two-line shots and
 # the drawled lines buy 8). Re-check against the recordings' speech spans as e930 did (span930.sh) before d1.
-# 8 s: s04 (script 長鏡, 15 characters and a walk out), s15 (thought + system, script 長鏡), s22 (19), s28 (two system lines,
+# 8 s: s04 (script 長鏡, 15 characters and a walk out), s11 and s19 (review 建議: slow, quiet lines, 14 and 18 characters), s15 (thought + system, script 長鏡), s22 (19), s28 (two system lines,
 #      script 長鏡), s29 (thought + system, 31), s30 (21), s34 (17, drawled), s36 (21), s37 (15, drawled), s38 (20), s41 (the
 #      episode's last shot: the hook needs a held tail, as e923-e930).
 # 5 s: s07 and s18 (no line), s16 and s29b (short thoughts), s21 (the insert, a three-character shout), s21b (the silent face).
 # 6 s (gen-dh's default for a spoken line): every other shot.
-BUY = {"s04": 8, "s15": 8, "s22": 8, "s28": 8, "s29": 8, "s30": 8, "s34": 8, "s36": 8, "s37": 8, "s38": 8, "s41": 8,
+BUY = {"s04": 8, "s11": 8, "s15": 8, "s19": 8, "s22": 8, "s28": 8, "s29": 8, "s30": 8, "s34": 8, "s36": 8, "s37": 8, "s38": 8, "s41": 8,
        "s07": 5, "s18": 5, "s16": 5, "s29b": 5, "s21": 5, "s21b": 5}
 
 
