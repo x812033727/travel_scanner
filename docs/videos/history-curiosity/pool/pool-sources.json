@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-17-curio-pool-1612",
+  "revision": "2026-11-17-curio-pool-1622",
   "sources": [
     {
       "id": "SRC-00003441dc8ac27d",
@@ -5076,6 +5076,25 @@
       ]
     },
     {
+      "id": "SRC-0570e0fc90d5fd72",
+      "url": "https://www.sec.gov/Archives/edgar/data/1737450/000143774919007403/opra20181231_20f.htm",
+      "readings": [
+        {
+          "title": "Opera Limited Form 20-F（2018 會計年度）",
+          "publisher": "Opera Limited 向美國證管會申報，2019 年（SEC EDGAR）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 13（200，4,287,633 bytes）下載 20-F 的 HTML，python 去標籤成文字後以關鍵字找段落讀",
+          "reading_scope": "讀了 Item 4.A（History and Development）、Item 4.B 業務概述中使用者數與產品段落、風險因素裡競爭與開源兩段、財報附註『Predecessor』；其餘財報沒有讀",
+          "locator": "Item 4.A『We trace our history back to 1996…』『for a consideration of US$575.0 million』；Item 4.B『326.7 million average MAUs in 2018』『users in Africa and Asia』；附註『Otello Corporation ASA, formerly Opera Software ASA』",
+          "summary": "公司寫自己的歷史從 1996 年第一版瀏覽器算起。2016-11-03，一家投資方公司（Kunhoo Software LLC）向挪威上市的原母公司買下經營瀏覽器的子公司（『消費者業務』），對價 5.75 億美元；原母公司後來改名。2018 年平均每月活躍使用者 3.267 億，其中智慧型手機 1.926 億、電腦 5,850 萬；公司認為非洲與亞洲的使用者是看上手機瀏覽器設計有效率、好用（efficient design and usability），並引 StatCounter 的市占率說自己在南亞、東南亞、非洲屬於領先者之一。瀏覽器已採用開源的 Chromium 技術；競爭者列出三家大公司的瀏覽器。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "公司自己的申報與自己的統計口徑（MAU 含新聞 App）；讀到的段落沒有各地區的使用者人數；沒有寫誰先做分頁或速撥。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.sec.gov/Archives/edgar/data/1737450/000143774919007403/opra20181231_20f.htm"
+        }
+      ]
+    },
+    {
       "id": "SRC-05725b2b1f783bc5",
       "url": "https://archive.org/details/FromTheOldWorldToTheNewOrAChristmasStoryOfTheChicagoExhibition",
       "readings": [
@@ -6456,6 +6475,25 @@
           "limitations": "轉錄本。",
           "origin": "wave24-20261111",
           "original_url": "https://zh.wikisource.org/wiki/%E6%BC%A2%E6%9B%B8/%E5%8D%B7099%E4%B8%8B"
+        }
+      ]
+    },
+    {
+      "id": "SRC-063718fa5b23c51a",
+      "url": "https://makezine.com/article/technology/computers-mobile/gorilla-glass",
+      "readings": [
+        {
+          "title": "Gorilla Glass",
+          "publisher": "Make: 雜誌網站，2012-01-24",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 8（200，192,313 bytes）下載 HTML，以 python 去標籤後讀正文中提到 Chemcor 的段落",
+          "reading_scope": "只讀了正文提到 Corning／Chemcor 的兩段；其餘未細讀",
+          "locator": "『The exact formulation of Gorilla Glass is a trade secret, but Corning acknowledges that its 1960s-era Chemcor aluminosilicate glass formulation was used as a starting point』",
+          "summary": "文章寫：手機蓋板玻璃的確切配方是營業祕密，但康寧承認 1960 年代的 Chemcor 鋁矽酸鹽配方是『起點』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手轉述康寧的說法，沒有連到原始聲明；康寧官網的沿革頁本輪回 403，沒有讀到。",
+          "origin": "wave73-20261117",
+          "original_url": "https://makezine.com/article/technology/computers-mobile/gorilla-glass"
         }
       ]
     },
@@ -7943,6 +7981,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://commons.wikimedia.org/wiki/File:Catherine_Palace_interior_-_Amber_Room_(1).jpg"
+        }
+      ]
+    },
+    {
+      "id": "SRC-07a1457726dd8662",
+      "url": "https://googlepress.blogspot.com/2004/04/google-gets-message-launches-gmail.html",
+      "readings": [
+        {
+          "title": "Google Gets the Message, Launches Gmail",
+          "publisher": "Google Inc. 新聞稿（News from Google 官方新聞存檔），發稿地與日期寫『MOUNTAIN VIEW, Calif. – April 1, 2004 UTC』",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 8（200，13,151 bytes）下載 HTML，以 python 去標籤後讀新聞稿全文；網址來自搜尋結果",
+          "reading_scope": "新聞稿全文（標題、兩行副標、正文九段、公司簡介）",
+          "locator": "副標『Heck, Yeah, Say Google Founders』；第 1 段（『eight billion bits…500,000 pages of email. Per user.』）；第 2 段（『four megabyte limit』）；第 3 段（『Millions of M&Ms later』）；〈Storage〉條（『more than 100 times』）；倒數第 2 段（『a small number of email aficionados』）",
+          "summary": "新聞稿日期寫成『2004 年 4 月 1 日 UTC』，說公司『正在測試 Gmail 的預覽版』：免費、以搜尋為核心的網頁信箱，容量『八十億位元、相當於五十萬頁電子郵件——每人』。副標引創辦人說『Heck, Yeah』；正文說點子來自一位抱怨信箱『四 MB 上限』的使用者，一名工程師用『20% 時間』做，『吃掉幾百萬顆 M&M 之後』做出來；儲存空間 1,000 MB（1 GB），『是多數免費網頁信箱的 100 倍以上』；還說它會把垃圾郵件『變成罐頭肉』。當天只有『少數使用者』開始測試，會開放給『少數電子郵件愛好者』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的新聞稿，語氣刻意俏皮；沒有寫測試人數，也沒有解釋為什麼選這一天。",
+          "origin": "wave73-20261117",
+          "original_url": "https://googlepress.blogspot.com/2004/04/google-gets-message-launches-gmail.html"
         }
       ]
     },
@@ -9668,6 +9725,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3384657/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-099128fcdf1d6458",
+      "url": "https://www.slashgear.com/995581/this-surprising-feature-wasnt-a-part-of-steams-launch-in-2003",
+      "readings": [
+        {
+          "title": "This Surprising Feature Wasn't A Part Of Steam's Launch In 2003",
+          "publisher": "SlashGear，2022-09-06",
+          "accessed_on": "2026-11-17",
+          "read_via": "覆核者 R731 的 fetch.sh seq 10（200，56,170 bytes）下載 HTML，以 python 去標籤後全文讀完（網址取自搜尋結果）",
+          "reading_scope": "全文讀完",
+          "locator": "第 1 段『one of the most well-known platforms for buying and playing video games』；第 3 段末『a defining feature…that many users likely can't imagine the video game client without actually wasn't available at launch』；〈The birth of Steam's storefront〉第 1–2 段",
+          "summary": "流傳印象的樣本兼二手整理：文章說它今天以『買遊戲、玩遊戲』聞名，許多使用者『大概無法想像沒有』買遊戲這個功能，但 2003 年上線時『沒有辦法透過它買任何遊戲』，當時只是用來更新、啟動自家遊戲；文中也提到 2002 年那份新聞稿（調查顯示七成五玩家已有寬頻），並說第三方遊戲『大約從 2006 年起』才大量加入。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二十年後的科技網站文章，除了新聞稿與論壇貼文沒有列出處；『2003 年上線時不能買遊戲』沒有一手文件對照；它寫的『2006 年起』與官方 2005 年 10 月的公告（ZR1-S015）有出入，以官方公告為準。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.slashgear.com/995581/this-surprising-feature-wasnt-a-part-of-steams-launch-in-2003"
         }
       ]
     },
@@ -21059,6 +21135,25 @@
       ]
     },
     {
+      "id": "SRC-13e0a7fed88f2ab7",
+      "url": "https://www.apple.com/newsroom/2003/01/07Apple-Unveils-Safari/",
+      "readings": [
+        {
+          "title": "Apple Unveils Safari（新聞稿）",
+          "publisher": "Apple，2003-01-07（Apple Newsroom 存檔）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 21（200，124,004 bytes）下載 HTML，以 scripts/txt.py 去標籤後全文閱讀",
+          "reading_scope": "新聞稿全文",
+          "locator": "第 1 段『loads pages over three times faster than Microsoft’s Internet Explorer for the Mac』；第 2 段執行長引言『the first all new browser created in many years』；功能條列最後一條『rendering engine based on KHTML, from KDE’s Konqueror open source project』",
+          "summary": "官方新聞稿：2003-01-07 在舊金山 Macworld Expo 發表 Safari，稱載入網頁比麥金塔版 Internet Explorer 快三倍以上；執行長的引言說這是『多年來第一個全新打造的瀏覽器』；但同一篇稿子的功能條列最後一條寫明，排版引擎『以 KDE 的 Konqueror 開源專案的 KHTML 為基礎』，蘋果做了大幅強化並會回饋開源社群。公開測試版當天免費下載，正式版 2003 年稍晚推出。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司的宣傳稿；『快三倍』是公司自己的測試說法，正片不採用為事實。引言的執行長卒於 1956 年之後，不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.apple.com/newsroom/2003/01/07Apple-Unveils-Safari/"
+        }
+      ]
+    },
+    {
       "id": "SRC-13e0dc036878e3e4",
       "url": "https://archive.org/download/viepriveedelouis02mouf/viepriveedelouis02mouf_djvu.txt",
       "readings": [
@@ -25702,6 +25797,25 @@
       ]
     },
     {
+      "id": "SRC-169aeeb1e6b991b2",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular466.pdf",
+      "readings": [
+        {
+          "title": "Circular of the National Bureau of Standards C466：American Standard Specification for Dry Cells and Batteries (Leclanché Type)（C18-1947）",
+          "publisher": "美國商務部國家標準局，1947-12-01 發行；美國標準協會 1947-08-06 核准",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 27（200，2,080,804 bytes）下載 PDF，以 pdftotext -layout 轉文字後讀封面、序、〈History of the Project〉、命名法 Table 1 與單顆電池尺寸表",
+          "reading_scope": "封面、序、沿革、〈2. Nomenclature〉、單顆電池（unit cells）表、電池類別清單；性能表沒有讀",
+          "locator": "序（『fifth edition』『begun about 30 years ago』）；〈History of the Project〉第 1–3 段（1912、1917、1919、1921 年 12 月、1924、1926、『1928, 1930, 1937, 1941, and 1947』）；Table 1；unit cells 表（D、C、BF、AA）；A batteries 條（『filament current for vacuum tubes』）",
+          "summary": "標準自己寫的沿革：1912 年美國電化學會的委員會建議了測試法；1917 年因為一次大戰開始擬全國性規格，交給含廠商、戰時工業委員會與政府部門的委員會，1919 年刊在標準局通告的附錄；1921 年 12 月的會議定下尺寸標準化計畫；『1924 年』一個由政府、電池廠商與大用戶組成的委員會『同意了一套乾電池的標準命名法』；1926 年起由美國標準協會的分組委員會負責，修訂版分別在 1928、1930、1937、1941、1947 年成為美國標準——1947 年版是第五版。這一版的圓筒電池表列有 No. 6、J、G、F、E、D、CD、CL、C、B、BR、BF、A、AA、R、P、N、NS、U，表上沒有 AAA 這一列（其餘各表以 OCR 文字搜尋也找不到）；手電筒用的單顆標準（Table 4 的 unit cells）只有 D、C、BF、AA 四種。A batteries 一條寫明那是供真空管燈絲電流用的。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "沿革是標準局自己的摘要，1924 年那套命名法的原文沒有讀到；1947 年以後的版本（AAA 何時以今天的尺寸進表）沒有讀。",
+          "origin": "wave73-20261117",
+          "original_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular466.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-169e0ec257231d3f",
       "url": "https://archive.org/download/dispatchesletter07nels/dispatchesletter07nels_djvu.txt",
       "readings": [
@@ -27702,6 +27816,25 @@
           "limitations": "OCR 長 s 與破字很多，引句已逐句對照前後文判讀；證明書日期在這份 OCR 裡看不清（同頁前一案署 1775 年 5 月 27 日），本題不寫判決的日。被告書商的卒年沒有讀到傳記頁，片中不點名（見 risk）。",
           "origin": "wave56-20261115",
           "original_url": "https://archive.org/details/bim_eighteenth-century_reports-of-cases-determi_blackstone-william-sir_1781_2"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1839806539e81b02",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/0001047469-97-006960.txt",
+      "readings": [
+        {
+          "title": "Apple Computer, Inc. Form 10-K（1997 會計年度，截至 1997-09-26）",
+          "publisher": "Apple Computer, Inc. 向美國證管會申報，1997-12-05（SEC EDGAR）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 20（200，639,342 bytes）下載申報全文文字檔，用關鍵字 Microsoft／Internet Explorer／default 找段落讀（檔案路徑來自 seq 19 的 EDGAR 公司申報清單）",
+          "reading_scope": "讀了 MD&A 風險因素中談這項協議的一段、〈Microsoft is an important developer…〉一段，以及財報附註談優先股的一段；協議附件與其餘內容未讀",
+          "locator": "文字檔第 1495–1511 行『In August 1997, the Company and Microsoft entered into patent cross licensing and technology agreements…』；第 3267–3274 行優先股附註",
+          "summary": "蘋果自己的申報：1997 年 8 月與另一家軟體公司簽了專利交互授權與技術協議；『自 1997 年 8 月起五年』，對方會替 Mac OS 推出日後各版的辦公軟體與 Internet Explorer，蘋果則把 Internet Explorer 隨 Mac OS 系統軟體一起出貨，並『讓它成為這些版本的預設網路瀏覽器』；對方另以 1.5 億美元買進 15 萬股無表決權可轉換特別股（2000-08-05 前不得出售）。申報同時提醒這層關係有期限、不涵蓋雙方競爭的許多領域。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "是蘋果單方的申報摘要，不是協議全文；協議期滿後實際怎麼處理、是否延長，這份文件不會有。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.sec.gov/Archives/edgar/data/320193/0001047469-97-006960.txt"
         }
       ]
     },
@@ -33603,6 +33736,25 @@
       ]
     },
     {
+      "id": "SRC-1dc593451abe22a3",
+      "url": "https://www.makeuseof.com/tag/which-browser-invented-tabs-3-common-myths-debunked/",
+      "readings": [
+        {
+          "title": "Which Browser Invented Tabs? 3 Common Myths Debunked",
+          "publisher": "MakeUseOf，2015-10-19",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 21（200，247,273 bytes）下載 HTML，python 去標籤後讀正文前段",
+          "reading_scope": "談分頁的前三段讀過；其餘兩個迷思只掃過",
+          "locator": "開頭三段『Opera also helped to promote tabs in the early 2000s, but it wasn’t the first either』",
+          "summary": "流傳版本的樣本：文章說很多人以為分頁是某個開源瀏覽器發明的，Opera 在 2000 年代初也推了一把，但都不是第一個；它把功勞歸給 1990 年代初一個叫 InternetWorks 的瀏覽器。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手文章，沒有附當年的文件；本輪想讀 1990 年代的雜誌與 FAQ 來核對（seq 18、19），兩個網站都出驗證頁，沒有讀到。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.makeuseof.com/tag/which-browser-invented-tabs-3-common-myths-debunked/"
+        }
+      ]
+    },
+    {
       "id": "SRC-1dc6a4fae5c12c17",
       "url": "https://archive.org/details/malayarchipelago00wall_1",
       "readings": [
@@ -34677,6 +34829,25 @@
           "limitations": "OCR 文字；Murray 把《Complaynt of Scotland》寫成 1529 年（一般作 1549 年），年份不採用。",
           "origin": "wave21-20261111",
           "original_url": "https://archive.org/download/romanceprophecie00thomuoft/romanceprophecie00thomuoft_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1eaca4965faee471",
+      "url": "https://content.time.com/time/magazine/article/0,9171,940122,00.html",
+      "readings": [
+        {
+          "title": "Corporations: Built on Glass",
+          "publisher": "TIME 雜誌，1962-09-28（頁面 datePublished 1962-09-28；time.com 線上典藏）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 9（200，221,203 bytes）下載 HTML，以 python 去標籤後全文讀完",
+          "reading_scope": "全文（約七段）讀完；頁面其他推薦連結未讀",
+          "locator": "第 1 段『Last week Corning announced…Chemcor』、〈Challenge to Steel〉一段『has so far been used only for a virtually unbreakable tableware called Centura』",
+          "summary": "1962 年 9 月的當期報導：康寧『上週』在紐約一家飯店發表化學強化玻璃 Chemcor，主管當場彎、扭、敲玻璃板；耐壓寫 100,000 磅／平方吋，對比一般玻璃 7,000；起因是五年前總裁要研究主管『把玻璃會破這件事修好』。報導寫這種玻璃可望當便宜而強的塑膠替代品，但『到目前只用在一種幾乎打不破的餐具』上；公司 1851 年創立、前一年營收 2.3 億美元、研發一年 1,300 萬美元。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "雜誌報導，數字是公司發表會上的說法；只寫到 1962 年，沒有後來賣得如何。",
+          "origin": "wave73-20261117",
+          "original_url": "https://content.time.com/time/magazine/article/0,9171,940122,00.html"
         }
       ]
     },
@@ -43381,6 +43552,25 @@
       ]
     },
     {
+      "id": "SRC-27c8b40070d86804",
+      "url": "https://www.cna.com.tw/news/firstnews/201709210106.aspx",
+      "readings": [
+        {
+          "title": "宏達電20年興衰史 成也手機敗也手機",
+          "publisher": "中央通訊社，2017-09-21",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 32（200，130,079 bytes）下載 HTML，python 去標籤後讀正文",
+          "reading_scope": "報導正文讀到 2010 年一段為止",
+          "locator": "第 1–5 段『出售手機代工部門』『HTC將收到11億美元』『2000年與康柏電腦…iPAQ』",
+          "summary": "流傳版本的樣本：通訊社報導用『成也手機、敗也手機』『出售手機代工部門』描述這筆交易，並寫公司將收到 11 億美元（約新台幣 330 億元）；同一篇內文也寫 Google 延攬的是參與打造 Pixel 手機的成員、智慧財產是非專屬授權、公司仍保有自有品牌手機的研發人員；也回顧它初期以代工起家。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞報導；樣本只撐『出售手機代工部門』這個說法，『整家被買走、消失』不在這篇裡。『2011 年股價』等行情內容正片不用。文中點名的經營者在世，正片不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.cna.com.tw/news/firstnews/201709210106.aspx"
+        }
+      ]
+    },
+    {
       "id": "SRC-27cca7e6a0ee1e34",
       "url": "https://dcollection.lib.thu.edu.tw/wp-content/uploads/2024/12/%E7%AC%AC40%E6%9C%9F%E9%A4%A8%E5%88%8A30-45.pdf%EF%BC%88%E6%90%9C%E5%B0%8B%E7%B5%90%E6%9E%9C%EF%BC%89",
       "readings": [
@@ -46704,6 +46894,25 @@
           "summary": "保留分支草稿研究的來源指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/054.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2add758725e74ff0",
+      "url": "https://www.mnopedia.org/group/3m-minnesota-mining-and-manufacturing-company",
+      "readings": [
+        {
+          "title": "3M (Minnesota Mining and Manufacturing Company)",
+          "publisher": "MNopedia（明尼蘇達歷史學會的線上百科；條目未標年份）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 14（200，368,068 bytes）下載 HTML，以 python 去標籤後讀條目正文、圖說與年表",
+          "reading_scope": "正文、圖說、年表全讀；書目只看標題",
+          "locator": "正文第 1–2 段（『anorthosite rather than corundum』『In 1916, 3M turned its first profit』）；年表 1902、1905、1910、1916、1921、1925、1980 各條；斜長岩標本圖說",
+          "summary": "歷史學會的條目：公司 1902 年在明尼蘇達州 Two Harbors 成立，想開採做砂紙用的剛玉，結果礦床是斜長岩、『沒用的石頭』，採礦計畫放棄；1905 年被投資人買下、搬到 Duluth 改做砂紙；1910 年靠一位聖保羅投資人大筆注資才沒倒；1916 年 8 月 11 日終於還清債務，靠一種研磨布第一次獲利、第一次配息——成立後十四年。1921 年買下防水砂紙專利並雇用發明人；1925 年一名員工在改良防水砂紙時做出給汽車業用的遮蔽膠帶；1980 年便利貼上市。條目也說有些產品『甚至是意外』做出來的，舉的例子是 1953 年一杯藥劑灑在鞋上而來的布料防污劑。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "百科條目（二手，但由州歷史學會編），很簡略；沒有金額與產量。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.mnopedia.org/group/3m-minnesota-mining-and-manufacturing-company"
         }
       ]
     },
@@ -52986,6 +53195,25 @@
       ]
     },
     {
+      "id": "SRC-2fd5a5e6ee906245",
+      "url": "https://www.musicradar.com/news/marshall-amps-sold-to-zound-industries",
+      "readings": [
+        {
+          "title": "Marshall has been sold to Swedish speaker company Zound, ending over 60 years of family ownership",
+          "publisher": "MusicRadar（Future plc），2023 年 3 月報導",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 31（200，1,847,791 bytes）下載 HTML，以 scripts/txt.py 去標籤後讀報導本文",
+          "reading_scope": "報導本文全讀；側欄與推薦文章未讀",
+          "locator": "副標『Zound Industries made its name making Marshall licensed speakers and now owns the legendary British brand』；『under a 2010 licensing deal』；『owning a 24 per cent stake』；『for the past 12 years』",
+          "summary": "樂器媒體的報導：英國音箱公司在 60 多年的家族經營後賣給瑞典的喇叭公司，兩者合稱新集團；雙方最早是依『2010 年的一份授權協議』合作，推出掛這個牌子的耳機與藍牙喇叭，讓品牌走出吉他手圈子；創辦家族成為新集團最大股東、持股 24%；買方一併取得鼓、唱片與演出經紀等子公司；合計營收超過 3.6 億美元。報導轉述另一家報紙：音箱仍在英國布萊切利與越南的工廠生產；買方執行長說，過去 12 年他們做的產品都要讓音箱公司的聲學部門滿意。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手報導，交易細節（24%、營收、工廠）轉述自公司與另一家報紙，本輪沒有讀到交易公告原件；2010 年授權協議的原始公告也沒有讀到。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.musicradar.com/news/marshall-amps-sold-to-zound-industries"
+        }
+      ]
+    },
+    {
       "id": "SRC-2fe030aee0f0b002",
       "url": "https://www.gutenberg.org/ebooks/12325",
       "readings": [
@@ -54137,6 +54365,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.scientificamerican.com/article/fact-or-fiction-archimede/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3116e237000d4cdc",
+      "url": "http://www.qrcode.com/en/history/",
+      "readings": [
+        {
+          "title": "History of QR Code",
+          "publisher": "DENSO WAVE INCORPORATED 官方網站 QRcode.com（頁面無日期）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 10（200，19,453 bytes）下載 HTML，以 scripts/txt.py 去標籤後全文閱讀（網址來自 seq 8 首頁上的連結）",
+          "reading_scope": "Section 1–4 全讀",
+          "locator": "Section 2『Although DENSO WAVE would retain the patent rights to the QR Code, it declared that it would not exercise them.』；Section 3 標準化年份；Section 4 Good Design Award；Section 4『had the foresight to place its technologies in the public domain from the early stages of development』（2012 年 Good Design Award 得獎理由的引文）",
+          "summary": "開發公司自己的沿革：兩人小組花一年半做出來，1994 年發表；被汽車業用在電子看板，之後食品、藥品、隱形眼鏡業跟進。公司決定公開規格讓任何人自由使用——原句是『保留 QR Code 的專利權，但宣布不行使』，並說這個方針從開發之初就定了。1997 年成為 AIM 標準、1999 年成為 JIS、2000 年成為 ISO 標準；2002 年日本出現能讀碼的手機後才在一般大眾間普及。 Section 4 引用 2012 年設計獎的得獎理由，寫開發者『從開發初期就把技術放進公有領域』——與同頁 Section 2『保留專利權但不行使』的寫法不同，本題拿它當流傳說法的樣本。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的說法；『宣布不行使』的那份聲明本身（日期、文字）頁面沒有附。開發者在世，正片不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "http://www.qrcode.com/en/history/"
         }
       ]
     },
@@ -56627,6 +56874,25 @@
       ]
     },
     {
+      "id": "SRC-338a4fad71a9931c",
+      "url": "https://news.microsoft.com/source/1999/07/21/microsoft-launches-msn-messenger-service/",
+      "readings": [
+        {
+          "title": "Microsoft Launches MSN Messenger Service",
+          "publisher": "Microsoft 新聞稿，1999-07-21（Microsoft Source 存檔）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 6（200，144,835 bytes）下載 HTML，python 去標籤後讀全文",
+          "reading_scope": "新聞稿正文全讀",
+          "locator": "第 1 段『REDMOND, Wash., July 21, 1999』；小節『Interoperable; Tightest Integration With Communications Tools』",
+          "summary": "微軟宣布推出免費的 MSN Messenger Service，7 月 22 日零時開放下載；主打可以和 4,000 多萬個 Hotmail 使用者、以及『使用 AOL Instant Messenger 的人』互傳訊息，自稱這是消費者第一次能用一個程式和 AIM 使用者通訊；並說就像不同電話要能互打，不同即時通訊也該互通。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司新聞稿。之後 AOL 是否、如何封鎖連線，這份文件沒有寫，本輪也沒有讀到一手紀錄。文中點名的主管在世，正片不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://news.microsoft.com/source/1999/07/21/microsoft-launches-msn-messenger-service/"
+        }
+      ]
+    },
+    {
       "id": "SRC-338ce40f7c13b363",
       "url": "https://zh.wikisource.org/wiki/%E9%99%B6%E6%B7%B5%E6%98%8E%E9%9B%86/%E5%8D%B7%E5%9B%9B",
       "readings": [
@@ -57265,6 +57531,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.britannica.com/event/dancing-plague-of-1518"
+        }
+      ]
+    },
+    {
+      "id": "SRC-34211f20483a0531",
+      "url": "https://www.sec.gov/Archives/edgar/data/24741/000119312511030621/d10k.htm",
+      "readings": [
+        {
+          "title": "Corning Incorporated Form 10-K（2010 會計年度）",
+          "publisher": "Corning Incorporated 向美國證管會申報，2011-02-10（SEC EDGAR）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 6（200，3,666,240 bytes）下載 10-K 的 HTML（網址取自 seq 4 的 EDGAR 公司申報清單與 seq 5 的申報索引頁），以 python 去標籤後用關鍵字 Gorilla／1851 找段落讀",
+          "reading_scope": "Item 1〈General〉與〈Specialty Materials Segment〉、Item 7 中 Specialty Materials 的說明讀了；其餘財報未讀",
+          "locator": "Item 1 General『traces its origins to a glass business established in 1851』；Specialty Materials『designed specifically to function as a protective cover glass』『approximately 9% of Corning’s sales for 2010』；Item 7『Sales in our Specialty Materials segment in 2010 increased 75%』『The net loss for 2009…manufacturing development costs for Corning Gorilla glass』",
+          "summary": "公司自己的申報：康寧源自 1851 年成立的玻璃生意，現行公司 1936 年在紐約州設立。保護蓋板玻璃是『專為』顯示裝置（筆電、電視、手機）蓋板設計的薄板玻璃，在肯塔基、日本、台灣生產；所屬的特殊材料部門 2010 年約占全公司營收 9%，該部門 2010 年營收比前一年增 75%，但 2009 年因這種玻璃的製造開發成本而虧損、2010 年虧損縮小。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "公司自己的申報；沒有寫 1960 年代的計畫，也沒有寫哪家手機客戶。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.sec.gov/Archives/edgar/data/24741/000119312511030621/d10k.htm"
         }
       ]
     },
@@ -59274,6 +59559,25 @@
           "limitations": "Abdullah 與 Gleaner 經 Skeat 轉引，Gleaner 原刊與 Abdullah 原書未見；採集地以雪蘭莪為主。",
           "origin": "wave21-20261111",
           "original_url": "https://www.gutenberg.org/cache/epub/47873/pg47873.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-35bad77ac47738f7",
+      "url": "https://www.redbull.com/us-en/energydrink/questions/where-is-red-bull-energy-drink-produced",
+      "readings": [
+        {
+          "title": "Q&A：Where is Red Bull Energy Drink produced?",
+          "publisher": "Red Bull 官方網站（美國版），頁面無日期",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 22（200，198,990 bytes）下載 HTML，以 scripts/txt.py 去標籤後閱讀",
+          "reading_scope": "問答本文一段；其餘是產品選單",
+          "locator": "『Red Bull's main production sites for the world are in Austria, Switzerland and the US.』",
+          "summary": "官方問答：供應全球的主要生產據點在奧地利、瑞士與美國；裝罐後多數罐子用鐵路運到港口再運往各地。頁面沒有說這些據點是誰的。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的一句話說明，沒有說工廠由誰擁有、誰經營。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.redbull.com/us-en/energydrink/questions/where-is-red-bull-energy-drink-produced"
         }
       ]
     },
@@ -62374,6 +62678,25 @@
           "rights": "Public Domain",
           "origin": "wave59-20261115",
           "original_url": "https://archive.org/details/passageberezina1812eber"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3867ba9f172e08a3",
+      "url": "https://hallapproved.com/us/cases/ca5/1918/8824713",
+      "readings": [
+        {
+          "title": "McIlhenny Co. v. Gaidry, 253 F. 613 (5th Cir. 1918)",
+          "publisher": "美國聯邦第五巡迴上訴法院，1918-07-29 判決；判決書全文由 HallApproved.com 轉載",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 17（200，43,100 bytes）下載 HTML，以 python 去標籤後全文讀完",
+          "reading_scope": "判決書全文讀完",
+          "locator": "『As above stated, the patent issued in 1870…』及所引專利請求項；『The process thus patented was abandoned by Edmund McIlhenny shortly after the patent was issued』；事實段『Several years prior to 1868…until his death in 1890』『from 1868 until 1896』",
+          "summary": "上訴法院判決：1870 年的專利是『一種調製辣椒醬的方法』及其產品；下級審認定『這個專利製程在核發後不久就被創辦人放棄，此後他和後繼者都沒有再用』；法院因此說專利到期與『Tabasco』這個名字無關，因為名字一直用在『不是照專利製程做的醬』上。事實段：創辦人 1868 年開始產銷，經營到 1890 年過世；1868 到 1896 年沒有別人用這個名字賣醬，1896 年起德州等地出現同名產品；1870 年的專利申請書把辣椒稱為『市場上叫 Tabasco 的辣椒』；商標註冊曾因競爭者異議被撤銷，但法院認為撤銷註冊不影響普通法上的權利。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "第三方網站轉載的判決全文，有 OCR 錯字（下級審認定裡的『1896』印成亂碼）；覆核者已用判決匯編掃描 ZR1-S018 對過本題引用的句子；判決沒有寫專利配方的成分。",
+          "origin": "wave73-20261117",
+          "original_url": "https://hallapproved.com/us/cases/ca5/1918/8824713"
         }
       ]
     },
@@ -69214,6 +69537,25 @@
       ]
     },
     {
+      "id": "SRC-3f4311e00af7fb78",
+      "url": "https://microsoft.com/en-us/microsoft-365/blog/2025/02/28/the-next-chapter-moving-from-skype-to-microsoft-teams",
+      "readings": [
+        {
+          "title": "The next chapter: Moving from Skype to Microsoft Teams",
+          "publisher": "Microsoft 365 官方部落格，2025-02-28",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 12（200，239,805 bytes）下載 HTML，python 去標籤後讀正文前半",
+          "reading_scope": "公告正文前半（退役說明與使用者的兩個選項）讀過；常見問答沒有細讀",
+          "locator": "第 2 段『we will be retiring Skype in May 2025 to focus on Microsoft Teams (free)』；〈What’s next for Skype users〉『Skype will remain available until May 5, 2025』",
+          "summary": "微軟 2025-02-28 宣布 2025 年 5 月讓 Skype 退役（服務維持到 2025-05-05），把免費的消費者通訊集中到 Teams；使用者可以用 Skype 帳號登入 Teams，聊天與聯絡人會自動出現，也可以匯出資料。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司公告；沒有寫 Skype 當時的使用者人數。",
+          "origin": "wave73-20261117",
+          "original_url": "https://microsoft.com/en-us/microsoft-365/blog/2025/02/28/the-next-chapter-moving-from-skype-to-microsoft-teams"
+        }
+      ]
+    },
+    {
       "id": "SRC-3f51a02bbb3c4673",
       "url": "https://archive.org/details/dictionaryofnati0045sidn",
       "readings": [
@@ -69664,6 +70006,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://api.crossref.org/works?filter=updates:10.1111/j.1445-2197.2007.04323.x"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3fae130ffe8bf50d",
+      "url": "https://physicsworld.com/a/gorilla-glass-the-unsung-hero-of-the-smartphone/",
+      "readings": [
+        {
+          "title": "Gorilla Glass: the unsung hero of the smartphone",
+          "publisher": "Physics World（英國物理學會 IOP Publishing），2022-06-29 專欄",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 2（200，129,829 bytes）下載 HTML，以 python 去標籤後讀正文",
+          "reading_scope": "正文讀到 Project Muscle、Chemcor、2007 年手機一段；後段各代產品規格只略讀",
+          "locator": "『Meanwhile, as part of an initiative…Project Muscle』起三段；『Corning sold this glass under the brand name Chemcor and it was used until the early 1990s』；『which the company had just started studying again for smartphone use』",
+          "summary": "專欄把手機玻璃的故事講成一連串意外：1960 年代康寧在 Project Muscle 裡找到離子交換強化法，以 Chemcor 品牌出售，並『一直用到 1990 年代初』（原文 was used until the early 1990s，說的是使用，不是停產年份），用在車窗、飛機、藥瓶、監獄窗、安全眼鏡、電話亭，商業成績『有好有壞』；2007 年 1 月手機發表後，手機公司要求六月上市時改用玻璃，康寧執行長提議用公司『剛重新開始研究、準備用在手機上』的 Chemcor，兩家公司趕了幾個月『把 Chemcor 變成』能上市的東西。本題把它當成流傳版本的樣本（舊玻璃直接變成手機玻璃），同時取它『用到 1990 年代初』一句。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "專欄文章、二手轉述，沒有列出處；人物對話出自當事公司主管事後回憶。",
+          "origin": "wave73-20261117",
+          "original_url": "https://physicsworld.com/a/gorilla-glass-the-unsung-hero-of-the-smartphone/"
         }
       ]
     },
@@ -71035,6 +71396,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.nashuatelegraph.com/news/local-news/2021/09/18/wishing-a-happy-60th-anniversary-to-n-h-s-contribution-to-the-flying-saucer-craze-of-the-50s-and-60s/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-410b09cd2029cc7d",
+      "url": "https://www.denso-wave.com/en/system/qr/qr30th/",
+      "readings": [
+        {
+          "title": "QR Code 30th anniversary",
+          "publisher": "DENSO WAVE INCORPORATED，2024 年",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 5（200，37,334 bytes）下載 HTML，以 scripts/txt.py 去標籤後閱讀",
+          "reading_scope": "〈History of QR Code〉與〈QR Code Standardization〉年表全讀；〈Today〉〈Future〉只掃過",
+          "locator": "『QR Code® was standardized as a code that can be used free of charge』；標準化年表 1997 AIM International／1998 JEIDA／1999 JIS／2000 ISO/IEC18004",
+          "summary": "官方 30 週年頁：1994 年在愛知縣刈谷誕生，第一個任務是管理汽車零件生產；之後『被標準化為可以免費使用的碼』；第一個用在一般商品上的是隱形眼鏡包裝；2002 年能掃碼的手機上市。標準化年表：1997 AIM、1998 JEIDA、1999 JIS、2000 ISO/IEC 18004，之後中、韓、越、新加坡國家標準。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司的紀念頁，敘述簡略，沒有談專利。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.denso-wave.com/en/system/qr/qr30th/"
         }
       ]
     },
@@ -92447,6 +92827,25 @@
       ]
     },
     {
+      "id": "SRC-5318a4e48e308479",
+      "url": "https://www.segasammy.co.jp/cms/wp-content/uploads/2023/01/sega_annual_tuuki_2001.pdf",
+      "readings": [
+        {
+          "title": "SEGA CORPORATION Annual Report 2001（2001 年 3 月期英文年報）",
+          "publisher": "SEGA CORPORATION，2001 年（現由 SEGA SAMMY HOLDINGS 的 IR 檔案庫提供）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 1（200，1,451,830 bytes）下載 PDF，以 pdftotext -layout 轉文字後用關鍵字 Dreamcast／hardware／structural reform／net loss 找段落逐段讀（pdftotext 對日文字型有警告，英文正文可讀）",
+          "reading_scope": "讀了〈To Our Stakeholders〉、〈Structural Reform Targets〉框架表、〈Review of Operations〉消費性產品一節、財務回顧〈Overview〉〈Net Sales〉與附註 22；財務報表只看淨損列，其餘附註與子公司清單未讀",
+          "locator": "〈To Our Stakeholders〉『on January 31, 2001, we discontinued the production of Dreamcast』；〈Structural Reform Targets〉表『Withdrawal from Hardware Operations』；Review of Operations『Since entering the home video game unit market in 1983』『8.20 million units』；財務回顧 Overview；附註 22〈Restructuring of Business Lines and Assets Donation〉",
+          "summary": "公司自己寫：1983 年進入家用遊戲機市場；Dreamcast 在年底旺季失去動能，2001-01-31 董事會決定停止生產 Dreamcast 主機，資源集中到內容（軟體）與遊樂場事業，並改採『多平台』策略、替其他公司的主機供應軟體（文中列出三家對手的主機）。2001 年 3 月期 Dreamcast 全球賣出 339 萬台（日本 47 萬、美國 178 萬、歐洲 93 萬、亞洲 21 萬），上市以來累計 820 萬台，『遠低於目標』；消費性產品營收減 37.8% 至 1,157.5 億日圓、營業損失 691.9 億日圓；合併淨損 517 億日圓，前兩期淨損各約 429 億日圓（連續三期淨損）；存貨（主要是 Dreamcast 主機與周邊）減損或處分損失 524 億日圓；已故前會長兼社長捐贈個人資產，認列 779 億日圓利益。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的年報，只有 Dreamcast 與當期數字；沒有 Mega Drive／Genesis 的累計銷量，也沒有 1990 年代市占的說法。停產日的寫法是『1 月 31 日決定停止生產』，實際最後生產日年報沒寫。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.segasammy.co.jp/cms/wp-content/uploads/2023/01/sega_annual_tuuki_2001.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-531b17fa7dda4a8d",
       "url": "https://archive.org/details/magistrivincent00kadgoog",
       "readings": [
@@ -97311,6 +97710,25 @@
       ]
     },
     {
+      "id": "SRC-57f5130593b17a7c",
+      "url": "https://www.win-rar.com/faq0.html",
+      "readings": [
+        {
+          "title": "Frequently asked questions (FAQ) for WinRAR",
+          "publisher": "win.rar GmbH 官方網站（讀取日 2026-11-17）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 10（200，51,648 bytes）下載 HTML，以 python 去標籤後讀授權相關問答",
+          "reading_scope": "授權、試用、永久授權、網路安裝幾則問答讀了；壓縮操作教學未讀",
+          "locator": "〈Where can I find WinRAR's End User License Agreement〉、〈Are WinRAR Licenses Perpetual or is There a Subscription?〉『WinRAR is not a free product…after which time the use of WinRAR without a valid license is in violation of』",
+          "summary": "官方問答：『WinRAR 不是免費產品』，所有人有 40 天免費試用，之後沒有有效授權繼續用就違反授權條款；授權是買斷、終身有效，要持續拿到更新得另購一年期的維護方案；網路環境每個工作站要一份授權。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的說法；沒有營收或付費比例的數字。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.win-rar.com/faq0.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-57f5a86234a8436f",
       "url": "https://www.outsideonline.com/culture/books-media/man-who-created-bigfoot/",
       "readings": [
@@ -97420,6 +97838,25 @@
           "limitations": "短文，沒有列出處或講 Montalembert。",
           "origin": "wave7-20261102",
           "original_url": "https://collections.etoncollege.com/?p=2720"
+        }
+      ]
+    },
+    {
+      "id": "SRC-580721ab6d87077f",
+      "url": "https://homepages.dcc.ufmg.br/~camarao/cursos/fp/fp-unsl/ex/san-luis/alejandro/rar/order.htm",
+      "readings": [
+        {
+          "title": "How to buy WinRAR and RAR license（隨軟體附的 order.htm 舊版副本）",
+          "publisher": "RAR 軟體套件所附說明檔（提到 2.60 版以前的金鑰格式與 OS X 版，年份頁面未載）；副本放在巴西一所大學教師的課程網頁目錄",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 13（200，3,043 bytes）下載 HTML，全文讀完",
+          "reading_scope": "全文讀完",
+          "locator": "首句『If you wish to use WinRAR and RAR after the evaluation period of 40 days, you need to purchase its license』",
+          "summary": "隨軟體散布的舊版購買說明：過了 40 天評估期還要用，就得向各地區經銷商買授權；付款後會收到與使用者名稱對應的金鑰檔 rarreg.key，放進安裝資料夾即完成註冊。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "第三方網站上的舊檔副本，沒有版本號與日期，只能說明『40 天後要買』這句話在舊版套件裡就有。",
+          "origin": "wave73-20261117",
+          "original_url": "https://homepages.dcc.ufmg.br/~camarao/cursos/fp/fp-unsl/ex/san-luis/alejandro/rar/order.htm"
         }
       ]
     },
@@ -98351,6 +98788,25 @@
           "limitations": "部落格，沒有任何出處，只當流傳說法的例子。",
           "origin": "wave42-20261112",
           "original_url": "https://questionsnthat.blogspot.com/2010/09/crows-court.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-58f25a6041cd4122",
+      "url": "https://www.nintendo.co.jp/ir/library/historical_data/pdf/consolidated_sales_e1412.pdf",
+      "readings": [
+        {
+          "title": "Consolidated Sales Transition by Region（各地區合併銷售台數推移，截至 2014 年 12 月）",
+          "publisher": "Nintendo Co., Ltd. IR 資料庫，2015 年",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 2（200，26,735 bytes）下載 PDF，以 pdftotext -layout 轉文字後讀『Super Family Computer/SNES』硬體各列",
+          "reading_scope": "只讀了第 2 頁舊機種表中 Super Family Computer/SNES 硬體的 Japan／The Americas／Other／Total 四列的累計欄；其他機種與軟體列未用",
+          "locator": "第 2 頁（units in ten thousands）『Super Family Computer/SNES　Hardware』：Japan 1,717、The Americas 2,335、Other 858、Total 4,910",
+          "summary": "任天堂自己的累計出貨帳：Super Famicom／SNES 主機全球 4,910 萬台，其中日本 1,717 萬、美洲 2,335 萬、其他地區 858 萬。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是任天堂自己的出貨（sell-in）口徑、只到地區層級，沒有逐年美國零售市占；表裡沒有對手的數字。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.nintendo.co.jp:443/ir/library/historical_data/pdf/consolidated_sales_e1412.pdf"
         }
       ]
     },
@@ -104259,6 +104715,25 @@
           "limitations": "人名資料庫轉錄 1911 年 EB；生年各書有約 165–175 年之差，片中只說『西元 2 到 3 世紀』或『約 175–235 年』。",
           "origin": "wave46-20261112",
           "original_url": "https://www.grubstreetproject.net/people/40821/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5eb7afc9299b527a",
+      "url": "https://www.invent.org/blog/inventors/art-fry-post-it-notes",
+      "readings": [
+        {
+          "title": "Blog：Inductee Stories（便利貼共同發明人的故事）",
+          "publisher": "National Inventors Hall of Fame（美國國家發明家名人堂官網部落格；未標年份）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 24（200，164,539 bytes）下載 HTML，以 python 去標籤後讀文章正文",
+          "reading_scope": "正文全讀；影片未看",
+          "locator": "正文『In 1970…』『In 1974…』『in 1977…Press 'n Peel』三段",
+          "summary": "名人堂的版本和『失敗的強力膠』不一樣：寫那位資深化學家 1970 年是在改良醫療、工業與消費膠帶用的丙烯酸酯黏著劑，做出一種微球黏著劑，『黏性與耐久都令人印象深刻』，只是不適合一般膠帶；他在公司內到處簡報。1974 年另一位員工在教會唱詩班因書籤老是掉而想到用途，先做成書籤，再拿來和主管互傳便條。1977 年以 Press 'n Peel 之名在四個城市上市；改名並大力行銷後，1980 年全美推出。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "名人堂的介紹文（機構來源但屬二手敘述），年份與歷史學會條目略有出入（1970／1968、1974／1973）。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.invent.org/blog/inventors/art-fry-post-it-notes"
         }
       ]
     },
@@ -111050,6 +111525,25 @@
       ]
     },
     {
+      "id": "SRC-65c954d4375cc879",
+      "url": "https://hoaxes.org/af_database/display/category/google",
+      "readings": [
+        {
+          "title": "The April Fool Archive：Google 分類",
+          "publisher": "Museum of Hoaxes（hoaxes.org，愚人節惡作劇資料庫；未標日期）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 12（200，44,653 bytes）下載 HTML，以 python 去標籤後讀 2000 與 2004 年條目",
+          "reading_scope": "只讀〈Google Mentalplex (2000)〉〈Google Copernicus Center (2004)〉兩條與 Gmail 相關的後續條目標題",
+          "locator": "〈Google Copernicus Center (2004)〉條",
+          "summary": "同一家公司在 2004 年愚人節確實另外發了一則假消息：徵人去『哥白尼中心』——月球上的主機代管與研究中心，應徵者要能忍受沒有低脂豆奶拿鐵、影集和穩定的氧氣；預定 2007 年春天啟用，容納 35 名工程師、27,000 台低價伺服器、兩名按摩師和一名壽司師傅。2000 年的第一個玩笑是『讀心搜尋』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "惡作劇愛好者網站整理的二手資料庫；沒有附原始徵人頁；『2004 年』只有這個資料庫這樣標，美聯社回顧只說『有一年』。35 名工程師、27,000 台伺服器等數字在覆核者讀到的公司存檔頁第一頁裡沒有。",
+          "origin": "wave73-20261117",
+          "original_url": "https://hoaxes.org/af_database/display/category/google"
+        }
+      ]
+    },
+    {
       "id": "SRC-65ca89625ac32bd0",
       "url": "https://www.port.ac.uk/news-events-and-blogs/news/new-study-finds-dinosaur-fossils-did-not-inspire-the-mythological-griffin",
       "readings": [
@@ -113312,6 +113806,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-legacy-20261101",
           "original_url": "https://www.loc.gov/resource/sn83045462/1936-11-02/ed-1/?sp=5"
+        }
+      ]
+    },
+    {
+      "id": "SRC-675592171b8f449a",
+      "url": "https://segaretro.org/Press_release:_1994-12-20:_Sega_declares_third_straight_holiday_season_victory_with_robust_Christmas_sales",
+      "readings": [
+        {
+          "title": "Press release: 1994-12-20: Sega declares third straight holiday season victory with robust Christmas sales",
+          "publisher": "Sega of America 新聞稿（Business Wire，1994-12-20）；Sega Retro 維基依 The Free Library 留存的『未更動副本』",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 3（200，33,242 bytes）下載 HTML，以自寫 scripts/txt.py 去標籤後全文閱讀",
+          "reading_scope": "新聞稿全文都讀了；頁面的站台導覽不算",
+          "locator": "第 1–2 段『will make 1994 the third straight year Sega wins the holiday season sales battle』『Sega has 55 percent of all 16-bit hardware sales for 1994』；末段『Sega bases its predictions on a combination of TRST data from… NPD Group… its own internal data』",
+          "summary": "世嘉美國子公司 1994 年 12 月 20 日自己發的新聞稿：宣稱 1994 年是它連續第三年贏得年底旺季銷售戰；『依獨立銷售數字』它占 1994 年 16 位元主機銷量的 55%、16 位元軟體的 55%，10 月單月 56%；Genesis 當年賣出超過 400 萬台，整個業界當年將賣出近 800 萬台 16 位元主機。稿末寫明這些是『預測』，依據是 NPD 的 TRST 資料加上公司內部資料與預購量。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是維基站轉存的副本（註明原出處 The Free Library），不是 Business Wire 原件；內容是當事公司的宣傳稿，數字是它自己挑的口徑（16 位元、單一年度、含預測），稿中沒有明寫地區，從發稿單位與 NPD 資料只能推定是美國市場。",
+          "origin": "wave73-20261117",
+          "original_url": "https://segaretro.org/Press_release:_1994-12-20:_Sega_declares_third_straight_holiday_season_victory_with_robust_Christmas_sales"
         }
       ]
     },
@@ -120468,6 +120981,25 @@
       ]
     },
     {
+      "id": "SRC-6e424ca6a056c374",
+      "url": "https://www.qrcode-tiger.com/zh-tw/qr-code-patent",
+      "readings": [
+        {
+          "title": "企業防範QR碼專利流氓：指南",
+          "publisher": "QR TIGER（商業 QR 碼產生器業者）部落格，繁體中文版",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 16（200，219,187 bytes）下載 HTML，以 scripts/txt.py 去標籤後用關鍵字 專利／Denso 找段落讀",
+          "reading_scope": "讀了目錄與〈Denso Wave的立場〉〈專利侵權的界限〉幾段；其餘行銷內容未讀",
+          "locator": "小標『在未受專利保護的QR碼領域中導航』『QR碼解決方案的專利缺席』；段落『並沒有對使用這項技術的公司提出專利侵權的主張』",
+          "summary": "流傳版本的樣本：業者文章用『未受專利保護的 QR 碼領域』『專利缺席』這類小標，說發明公司『沒有對使用這項技術的公司提出專利侵權主張』，意思是 QR 碼的基本概念不受專利主張影響。 同一篇文章也寫到該公司『註冊的原始專利涵蓋特定的創新元素』，並沒有用『放棄專利』這個詞。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "商業業者的行銷文（機器翻譯腔），沒有出處，只當『QR 碼沒有專利』這種說法的樣本；不採用它的任何數字。 文中沒有『放棄專利』的字面說法，只能當『QR 碼沒有專利問題』這種印象的樣本。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.qrcode-tiger.com/zh-tw/qr-code-patent"
+        }
+      ]
+    },
+    {
       "id": "SRC-6e44c1035e2c4b03",
       "url": "https://encykorea.aks.ac.kr/Article/E0045384",
       "readings": [
@@ -122477,6 +123009,25 @@
           "limitations": "只讀了 Vicky 的開頭，後段（打大象、老虎、軍隊）只經 p.409 的摘要；Vicky 打妻子一段不用。",
           "origin": "wave46-20261112",
           "original_url": "https://archive.org/download/wideawakestorie00unkngoog/wideawakestorie00unkngoog_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-70651fa5c9430914",
+      "url": "https://investors.htc.com/documents/648/2010_Annual_Report_M.pdf",
+      "readings": [
+        {
+          "title": "宏達國際電子股份有限公司 2010 年度年報",
+          "publisher": "宏達電，2011 年（公司投資人網站）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 24（200，7,000,033 bytes）下載 PDF；pdftotext 缺中文字型包，改用 python pdfminer 逐頁抽文字，讀了第 1–30 頁（全份 111 頁）",
+          "reading_scope": "作者：PDF 第 1–30 頁（致股東報告書、公司簡介、公司沿革、營運概況）讀過，第 31 頁以後沒有讀。覆核 R733：重抓後另以 pdftotext -layout 掃全份 111 頁找營業收入，核對了 p.19、p.42、p.55、p.87 四處的同一個數字；其餘頁沒有讀",
+          "locator": "PDF p.4 致股東報告書（『達到 2,467 萬支，較 2009 年成長超過一倍』）；p.5（『2010 年合併營業收入為新台幣 2,788 億元』）；p.8〈公司沿革〉（Windows CE、Compaq iPAQ、2002 年歐洲電信業者）；p.15（『2008 年領先業界率先推出 Android 智慧型手機』）；p.18（『第一支 Windows Mobile 手機、第一支 Android 手機』）；p.87 合併損益表（營業收入合計 278,761,244 仟元）",
+          "summary": "年報寫：1997 年成立不久就取得微軟 Windows CE 授權，自稱做出世界第一台以它為基礎的掌上型裝置；2000 年替一家美國電腦公司設計、研發、製造的掌上電腦一上市就大受歡迎；2002 年起替歐洲電信業者做客製化手機；2008 年率先推出 Android 智慧型手機。2010 年智慧型手機出貨 2,467 萬支、比前一年多一倍以上，合併營業收入新台幣 2,788 億元（合併損益表為 278,761,244 仟元）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的年報；只讀前 30 頁。2011 年的營收高點本輪沒有讀到一手文件。文中點名的主管在世，正片不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://investors.htc.com/documents/648/2010_Annual_Report_M.pdf"
         }
       ]
     },
@@ -127765,6 +128316,25 @@
       ]
     },
     {
+      "id": "SRC-74cb43122bb0d7ff",
+      "url": "http://www.mp3-history.com/en/timeline.html",
+      "readings": [
+        {
+          "title": "The mp3 History – Timeline",
+          "publisher": "Fraunhofer IIS（研究所設的 mp3 歷史網站；未標日期，時間表寫到 2025 年以後）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 7（200，99,827 bytes）；網址來自 seq 6 首頁（seq 1 頁面連到 www.mp3-history.com）的選單；以 python 去標籤後讀整份時間表",
+          "reading_scope": "Pre-1987 到 2017 各年條目全讀；2018 以後只掃過",
+          "locator": "各年條目：1994、1995、1996、1998、2010、2017",
+          "summary": "研究所自己的年表：1994 年做出第一台沒有活動零件的播放器原型，只存得下約一分鐘的音樂；1995 年 Fraunhofer 協會與 Thomson 建立共同授權計畫，同年研究員內部投票一致選 .mp3 當副檔名，並釋出第一個個人電腦用的編解碼共享軟體；1996 年開始在網路上賣 mp3 軟體，不久一名澳洲學生用盜來的信用卡號買下並公開散布，『被偷的軟體很快傳遍全世界』；1998 年出現最早的攜帶式快閃記憶體播放器；2010 年條目寫研究所把約 6,000 萬歐元的 mp3 授權收入再投資；2017 年條目：授權計畫結束、計畫內最後一件核心專利到期。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "研究所自述，只講自己的貢獻（網站自己也這樣聲明）；1996 年盜刷事件只有這一句，沒有姓名與細節。",
+          "origin": "wave73-20261117",
+          "original_url": "http://www.mp3-history.com/en/timeline.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-74d51ec211edacfa",
       "url": "https://thehistorypress.co.uk/article/the-ongoing-mystery-of-the-mary-celeste/%EF%BD%9C2026-10-10%EF%BD%9Cdeveau-recalled",
       "readings": [
@@ -130181,6 +130751,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://archive.org/download/11355646bsb/11355646bsb_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7719124a12205e01",
+      "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/3691140",
+      "readings": [
+        {
+          "title": "U.S. Patent 3,691,140：Acrylate Copolymer Microspheres",
+          "publisher": "美國專利商標局；1970-03-09 申請、1972-09-12 核准",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 22（200，473,738 bytes）下載 7 頁掃描 PDF（無文字層）；以 pdftoppm 轉成圖後直接看圖閱讀。專利號來自搜尋結果；下載端點的網址格式只見於搜尋結果裡別的專利號，本件是把號碼代入（作者自述，覆核者重做搜尋確認屬實；作者的 cache 與 access_log 裡沒有任何頁面記載這個端點）——Google Patents（seq 20，503）與 uspto.report（seq 21，403）都讀不到",
+          "reading_scope": "讀了首頁書目與摘要、說明書第 1 欄全部（背景與發明摘要）與第 2 欄前 8 行；實施例與 19 項請求項沒有讀。覆核者 R732 以 cache 檔重新轉圖，逐句核對過首頁與第 1–2 欄的引文",
+          "locator": "首頁（Inventor、Filed: March 9, 1970、[45] Sept. 12, 1972、19 Claims, No Drawings）；說明書第 1 欄〈Background of the Invention〉（約 6–31 行）與〈Summary〉（約 32–44 行）；第 2 欄 1–8 行",
+          "summary": "專利把發明放在『噴霧式黏著劑』的脈絡：背景說這類噴膠在美術設計上很有商業價值，能讓紙從底材上撕下而不破，『但不能再貼回去』，而且現有配方不好噴。發明摘要說這種本身帶黏性的彈性微球『非常適合做噴霧黏著劑』，能把紙貼在各種底材上、『輕易撕下而不撕破』，而且『不必再上膠就能重新貼上』；第 2 欄說它允許被黏物『分開、重新定位、再黏合』，膠本身的膜強度很低（不到約 10 psi）。首頁列的發明人只有一位，地址寫公司總部；首頁沒有受讓人欄。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "專利只說這種材料『是什麼、能做什麼』，不說它是怎麼被做出來的，所以不能證明或否定『意外』；也沒有提到便條紙。掃描檔沒有文字層，引文是看圖抄錄的短句。 網址是代入專利號得到的、不是搜尋結果或讀到的頁面直接給的連結，覆核時暫不計入本題的來源條件（見 N7221 notes）。",
+          "origin": "wave73-20261117",
+          "original_url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/3691140"
         }
       ]
     },
@@ -133790,6 +134379,25 @@
       ]
     },
     {
+      "id": "SRC-7a4cb2d61ed4254b",
+      "url": "https://kakakumag.com/hobby/?id=10959",
+      "readings": [
+        {
+          "title": "初代デジモンが20年の時を経て超進化して復刻！",
+          "publisher": "価格.com マガジン，2017-09-30",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 29（200，87,376 bytes）下載 HTML（Shift_JIS），python 以 cp932 解碼去標籤後讀導言",
+          "reading_scope": "導言兩段讀過；商品評測內文沒有細讀",
+          "locator": "導言第 1 段『戦う「たまごっち」をコンセプトした「デジタルモンスター」』",
+          "summary": "日本的商品評測寫：1996 年上市的電子寵物大流行，帶出一堆攜帶型液晶玩具，其中一款就是以『會戰鬥的電子寵物』為概念的『數碼怪獸』，1997 年 6 月誕生，因為能養又能對戰而走紅、辦過官方大賽。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手的評測文章，『會戰鬥的電子寵物』是記者的描述，不是萬代文件的原句。",
+          "origin": "wave73-20261117",
+          "original_url": "https://kakakumag.com/hobby/?id=10959"
+        }
+      ]
+    },
+    {
       "id": "SRC-7a4da554118d840e",
       "url": "https://unwritten-record.blogs.archives.gov/wp-content/uploads/sites/6/2017/06/342-b-nd-075-4-163134ac-box-1474-scaled.jpg",
       "readings": [
@@ -134557,6 +135165,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave45-20261112",
           "original_url": "https://sites.google.com/view/jerusha-howe-exhibit/remembrances"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7adfd5a265939ae7",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular414.pdf",
+      "readings": [
+        {
+          "title": "Circular of the National Bureau of Standards C414：American Standard Specification for Dry Cells and Batteries（C18-1937）",
+          "publisher": "美國商務部國家標準局，1937-03-01 發行；美國標準協會 1937-01-04 核准",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 29（200，1,596,084 bytes）下載 PDF，以 pdftotext -layout 轉文字後讀封面、沿革、第 II 節命名法與手電筒電池表",
+          "reading_scope": "封面、〈History of the Project〉、〈II. Nomenclature〉Table 1、Table 4 與其附註讀完；性能表只查了 AA、AAA 兩列是否存在",
+          "locator": "〈II. Nomenclature〉Table 1（『AAA…13 by 25』『AA…13 by 48』）；Table 4 附註（『Types T2AA, T2C, T2D…have been eliminated…replaced by the unit cells AA, C, and D』）與 AA 列（最大 14 by 50）",
+          "summary": "1937 年版的字母表（鋅筒，公釐）變成：AAA 13×25、AA 13×48、A 16×48、B 19×54、C 24×46、CD 25×86、D 32×57、E 32×73、F 32×87、G 32×102。也就是 AA 已經在 1937 年 1 月核准的美國標準裡；當時叫 AAA 的那一顆直徑和 AA 一樣、高度只有約一半（25 公釐）。手電筒表的附註說前一版的筒狀電池組型號（T2AA、T2C、T2D 等）取消，建議改用單顆的 AA、C、D；單顆 AA 的外形上限是 14×50 公釐。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "附註提到『前一版的 T2AA』，表示 AA 這個字母在 1930 與 1937 之間的某份規格就出現了，但本輪讀到的 1930 年版 Table 1 沒有它；確切的第一次出現沒有查到。OCR 的英制欄不可靠，只用公制欄。",
+          "origin": "wave73-20261117",
+          "original_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular414.pdf"
         }
       ]
     },
@@ -136531,6 +137158,25 @@
       ]
     },
     {
+      "id": "SRC-7cce11955de65d86",
+      "url": "https://mail.kde.org/pipermail/kfm-devel/2003-January/002446.html",
+      "readings": [
+        {
+          "title": "(fwd) Greetings from the Safari team at Apple Computer",
+          "publisher": "KDE 專案 kfm-devel 郵件論壇存檔，2003-01-07",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 17（200，6,310 bytes）下載 HTML，以 scripts/txt.py 去標籤後全文閱讀",
+          "reading_scope": "整封信（含轉寄者的兩行說明）",
+          "locator": "『Apple Computer's new web browser built upon KHTML and KJS』；『they were also less than 140,000 lines of code』；『KWQ (and pronounced \"quack\")』；『a little over half the code in Safari, are being released as open source today』",
+          "summary": "發表當天，蘋果瀏覽器團隊的工程經理寫給 KDE 開發者的信（由 KDE 開發者原樣轉貼到公開論壇）：Safari『建立在 KHTML 與 KJS 之上』，寫信是為了道謝並說明怎麼用了他們的技術；一年多前評估時選它們，因為合乎標準、而且兩者合計不到 14 萬行程式碼、設計乾淨；因為 KHTML 依賴 KDE 與 Qt 的元件，團隊自己寫了一個轉接程式庫 KWQ（念作『quack』）取代，包成 WebCore，另一個框架叫 JavaScriptCore；這兩個框架『占 Safari 一半多一點的程式碼』，當天以開放原始碼釋出，並承諾把修改回饋給原作者。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是論壇上的轉貼（轉貼者說除了刪掉電郵地址外未更動）；寫信的人與收信的人多數在世，正片不點名。信裡沒有提 1997 年的協議。",
+          "origin": "wave73-20261117",
+          "original_url": "https://mail.kde.org/pipermail/kfm-devel/2003-January/002446.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-7cd097dccda5c975",
       "url": "https://en.wikipedia.org/wiki/Gauss%27s_Pythagorean_right_triangle_proposal",
       "readings": [
@@ -138453,6 +139099,25 @@
           "limitations": "Kent 的重點是美國；1999 年後的新敘事她只用一句帶過，本輪沒讀到檔案本身或 Kollerstrom 等人的論文（Sky & Telescope 403）。",
           "origin": "wave45-20261112",
           "original_url": "https://aip.brightspotcdn.com/PTO.v64.i12.46_1.online.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7e9d4a5dca2f2916",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular435.pdf",
+      "readings": [
+        {
+          "title": "Circular of the National Bureau of Standards C435：American Standard Specification for Dry Cells and Batteries（C18-1941）",
+          "publisher": "美國商務部國家標準局，1942-02-18 發行；美國標準協會 1941-11-28 核准",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 28（200，1,609,170 bytes）下載 PDF，以 pdftotext -layout 轉文字後讀封面、命名法 Table 1 與性能表目錄",
+          "reading_scope": "封面、〈2. Nomenclature〉Table 1（OCR 錯位嚴重，作者只確認各列名稱；覆核者 R732 把第 7 頁轉成圖看過列名）、性能表目錄；其餘沒有讀",
+          "locator": "〈2. Nomenclature〉Table 1 的列名（No. 6、J、G、F、E、D、CD、C、B、BB、A、AA、R、P、N、M、K）；性能表目錄（Table 14『B batteries』、Table 15『A batteries』、Table 16『C batteries』）",
+          "summary": "1941 年版的標準圓筒電池表（Table 1）仍列有 A、B 與 AA，沒有 AAA 這一列；比 AA 更小的幾種叫 R、P、N、M、K。同一份標準的性能表另有『A batteries』『B batteries』『C batteries』三張——那是收音機真空管電路用的電池組類別，和尺寸字母是兩套東西卻用同樣的字母。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "這一份的表格 OCR 錯位，尺寸數字讀不出來，只用來確認『哪些名稱在 Table 1 上』（列名經覆核者看掃描圖確認）；其餘各表有沒有 AAA 只做過 OCR 文字搜尋。",
+          "origin": "wave73-20261117",
+          "original_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular435.pdf"
         }
       ]
     },
@@ -140595,6 +141260,25 @@
       ]
     },
     {
+      "id": "SRC-8064cd8f4c7d9a7f",
+      "url": "https://www.history.com/articles/nintendo-sega-rivalry-1990s-consoles",
+      "readings": [
+        {
+          "title": "Nintendo vs. Sega: The 1990s Console Wars（文章）",
+          "publisher": "HISTORY（A&E Television Networks），網站文章",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 4（200，511,270 bytes）下載 HTML，以 scripts/txt.py 去標籤後用關鍵字 share／percent／Dreamcast／2001 找段落讀",
+          "reading_scope": "讀了談市占與結局的幾段（『By 1992, Sega had surpassed…』『In 2001, they exited…』）；其餘段落只掃過",
+          "locator": "『By 1992, Sega had surpassed Nintendo’s North American market share.』；『In 2001, they exited the console hardware market.』",
+          "summary": "流傳版本的樣本：文章寫『到 1992 年，世嘉在北美的市占已超過任天堂』，沒有給數字、口徑與出處；又寫 1999 年推出 Dreamcast 後擠不進兩家對手之間，2001 年退出主機硬體市場。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手的通俗歷史文章，市占一句沒有出處，只當『流傳的說法』樣本。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.history.com/articles/nintendo-sega-rivalry-1990s-consoles"
+        }
+      ]
+    },
+    {
       "id": "SRC-8071c175b2ec19cb",
       "url": "https://archive.org/download/b30334652/b30334652_djvu.txt",
       "readings": [
@@ -142514,6 +143198,25 @@
       ]
     },
     {
+      "id": "SRC-8296305f72787bd2",
+      "url": "https://patents.google.com/patent/US7666511B2/en",
+      "readings": [
+        {
+          "title": "US 7,666,511 B2：Down-drawable, chemically strengthened glass for cover plate",
+          "publisher": "美國專利商標局核發（2010-02-23），權利人 Corning Inc.；Google Patents 轉載全文",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 3（200，794,401 bytes）下載 Google Patents 頁面，以 python 去標籤後讀書目欄、背景、發明摘要與請求項開頭",
+          "reading_scope": "書目（優先權日、申請日、核准日）、Background、Summary 讀完；實施例表格與全部請求項未逐條讀",
+          "locator": "說明書首段『claims the benefit of U.S. Provisional Application No. 60/930,808, filed May 18, 2007』；書目欄 Priority 2007-05-18、Application filed 2007-07-31、granted 2010-02-23；Background 第 2 段『are typically chemically-strengthened, ion-exchangeable “soda-lime” type glasses…cannot be formed by…fusion draw and slot draw』；Summary『liquidus viscosity of at least 130 kpoise』",
+          "summary": "康寧的專利：一種可以用下拉法（fusion draw／slot draw）拉成薄板、又能用離子交換化學強化的鹼鋁矽酸鹽玻璃，用途寫明是行動電子裝置（手機、PDA、手錶、筆電）的蓋板。背景說當時的蓋板玻璃多半是可化學強化的『鈉鈣』類玻璃，能用浮法做，卻因液相黏度太低不能下拉成形；本發明給出一組成分範圍（例如 SiO2 64–68 mol%、Na2O 12–16、Al2O3 8–12），液相黏度至少 130 kpoise，離子交換深度至少 30 微米。說明書首段自己寫明主張 2007 年 5 月 18 日提出的臨時申請案；正式申請 2007-07-31，核准 2010-02-23。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "專利寫的是請求保護的成分範圍，不等於實際量產配方；文件沒有提到 Chemcor，也沒有說哪支手機用了它。『優先權日』欄是 Google Patents 推定的（頁面註明不是法律結論），但 2007-05-18 這個日期在專利說明書首段就有。覆核者 R731 重抓同一網址（R731 seq 2，200，794,401 bytes，雜湊與作者相同）核對過。",
+          "origin": "wave73-20261117",
+          "original_url": "https://patents.google.com/patent/US7666511B2/en"
+        }
+      ]
+    },
+    {
       "id": "SRC-8298d15ef5afa10c",
       "url": "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Valerius_Maximus",
       "readings": [
@@ -143165,6 +143868,25 @@
           "limitations": "1936 年教師用書的說法（『らしい』），不當作傳播路線的證據；中國版本本輪沒讀。",
           "origin": "wave38-20261112",
           "original_url": "https://lab.ndl.go.jp/dl/api/book/fulltext-json/1030324"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8336ad8fa92adffd",
+      "url": "https://news.microsoft.com/source/2006/06/19/launch-of-windows-live-messenger-marks-significant-progress-for-microsofts-windows-live-era/",
+      "readings": [
+        {
+          "title": "Launch of Windows Live Messenger Marks Significant Progress for Microsoft’s Windows Live Era",
+          "publisher": "Microsoft 新聞稿，2006-06-19",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 8（200，148,709 bytes）下載 HTML，python 去標籤後讀全文",
+          "reading_scope": "新聞稿正文全讀",
+          "locator": "第 1–2 段『240 million people』；『MSN Messenger and Windows Live Messenger have more than 20 million active video conversation users』",
+          "summary": "微軟宣布隔天（6 月 20 日）推出 Windows Live Messenger，稱這個『世界最大的即時通訊服務』連著 2.4 億人；文中把 MSN Messenger 與 Windows Live Messenger 並列（兩者合計每月 2,000 多萬個視訊通話使用者），新版掛的是 Windows Live 品牌。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司新聞稿；『2.4 億人』沒有說是帳號數還是活躍人數；文中沒有『改名』字樣，新舊關係是從品牌並列讀出來的。文中點名的主管在世，正片不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://news.microsoft.com/source/2006/06/19/launch-of-windows-live-messenger-marks-significant-progress-for-microsofts-windows-live-era/"
         }
       ]
     },
@@ -144299,6 +145021,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://commons.wikimedia.org/wiki/File:Annus_mirabilis-_..._1667_(IA_bim_early-english-books-1641-1700_annus-mirabilis-_dryden-john_1667).pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8463c88307a42a22",
+      "url": "https://learn.microsoft.com/en-us/archive/blogs/educloud/skype-is-replacing-messenger-for-instant-messaging-and-presence",
+      "readings": [
+        {
+          "title": "Skype is Replacing Messenger for Instant Messaging and Presence",
+          "publisher": "Microsoft 教育雲端團隊部落格，2012-11-07（Microsoft Learn 封存）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 11（200，38,919 bytes）下載 HTML，python 去標籤後讀全文；日期取自頁面 ms.date 中繼資料",
+          "reading_scope": "貼文正文全讀",
+          "locator": "第 1 段『Skype and Messenger are coming together…We will retire Messenger in all countries worldwide in the first quarter of 2013, with the exception of mainland China』；『Messenger Client』小節",
+          "summary": "微軟自己的部落格寫：Skype 與 Messenger 合而為一，2013 年第一季在全世界（中國大陸除外）讓 Messenger 退役；使用者改裝 Skype，聯絡人會跟著過去，但 Messenger 裡建的群組要在 Skype 重建，兩邊之間不能傳檔。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是對學校客戶的說明，轉述 Skype 部落格的公告；Skype 部落格原文本輪沒有讀到。中國大陸後來何時停止，這裡沒有寫。",
+          "origin": "wave73-20261117",
+          "original_url": "https://learn.microsoft.com/en-us/archive/blogs/educloud/skype-is-replacing-messenger-for-instant-messaging-and-presence"
         }
       ]
     },
@@ -146741,6 +147482,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave39-20261112",
           "original_url": "https://archive.org/details/bub_gb_zntF9eRa2BEC"
+        }
+      ]
+    },
+    {
+      "id": "SRC-86a59bb163d33f73",
+      "url": "https://www.seroundtable.com/archives/000298.html",
+      "readings": [
+        {
+          "title": "GMail - Google Email Service to Offer 1GB Mail for Free - Not a Hoax",
+          "publisher": "Search Engine Roundtable（搜尋業界部落格），頁面標示 2004-04-01 上午 11:42（未標時區）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 34（200，104,947 bytes）下載 HTML，以 python 去標籤後讀貼文",
+          "reading_scope": "貼文全文（三段）",
+          "locator": "貼文第 1–3 段（『many forums say its a big April Fools day hoax』）",
+          "summary": "當天的現場樣本：貼文說消息滿天飛，但『很多論壇都說這是愚人節的大騙局』；另一個論壇有人貼出官方的說明頁才止住謠言。貼文引那一頁：目前只是預覽版與小規模測試，何時開放還沒有細節。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "單一業界部落格的即時貼文，只能證明『當天確實有人當成玩笑』，不代表有多普遍。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.seroundtable.com/archives/000298.html"
         }
       ]
     },
@@ -149976,6 +150736,25 @@
           "limitations": "1906 年活字本的 OCR；段落編號（通行本第 156 段）是我依通說補的，頁面未標。",
           "origin": "wave13-20261102",
           "original_url": "https://lab.ndl.go.jp/dl/api/book/fulltext-json/991356"
+        }
+      ]
+    },
+    {
+      "id": "SRC-89e73a5c75fd2486",
+      "url": "https://www.mnhs.org/mnopedia/search/index/thing/post-it-notes",
+      "readings": [
+        {
+          "title": "Post-it Notes",
+          "publisher": "MNopedia（明尼蘇達歷史學會的線上百科；條目未標年份）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 19（200，220,726 bytes）；網址來自 seq 14 頁面上的連結（seq 18 請求搜尋結果給的另一個網址回 404）；以 python 去標籤後讀條目正文與年表",
+          "reading_scope": "正文五段、圖說、年表全讀；書目只看標題（其中一條是 2021-05-13 的訃聞標題）",
+          "locator": "正文第 2 段（『was working to create a strong adhesive. Accidentally, he developed…』『spent five years』）、第 4 段（『3M almost decided to stop producing』『About 90 percent』）；書目中的訃聞標題",
+          "summary": "流傳版本的樣本，同時也是後半段的紀錄：條目寫 1968 年一位公司科學家『想做強力黏著劑，意外做出一種輕到可以輕易撕下的新材料』，他覺得有用卻找不到用途，花了五年在公司內到處找人；另一位員工因為夾在詩歌本裡的紙片書籤老是掉，才想到這種膠。產品原名 Press n' Peel，在幾個大城市試賣成績不一，公司『差點決定停產』，最後在愛達荷州 Boise 直接發免費樣品，約九成試用者說會買；1980 年全美上市。書目列有那位科學家 2021 年 5 月的訃聞（標題寫享年 80）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "百科條目；『想做強力膠』這句沒有註明出處；圖說把另一位員工的點子寫成 1973 年，和名人堂的 1974 年不同。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.mnhs.org/mnopedia/search/index/thing/post-it-notes"
         }
       ]
     },
@@ -155354,6 +156133,25 @@
       ]
     },
     {
+      "id": "SRC-8f2cf776d7468cc9",
+      "url": "https://www.win-rar.com/winrarlicense.html",
+      "readings": [
+        {
+          "title": "RAR and WinRAR END USER LICENSE AGREEMENT (EULA)",
+          "publisher": "win.rar GmbH（柏林）官方網站，頁尾 © 2026",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 11（200，29,261 bytes）下載 HTML，以 python 去標籤後全文讀完；覆核者 R731 重抓同一網址（R731 seq 8，200，29,261 bytes）逐句核對",
+          "reading_scope": "授權條款全文讀完",
+          "locator": "第 1 段（授權人與著作權人）、『The software is distributed as try before you buy…maximum of 40 days…must purchase a license』、『registration reminder dialog』一段、兩種授權類型、末段『you must remove all software files』",
+          "summary": "官方授權條款：授權人是柏林的 win.rar GmbH，擁有全球獨家使用權；軟體以『先試後買』散布，任何人可免費試用最多 40 天，『試用期後必須購買授權才能繼續使用』；試用版可以顯示註冊提醒視窗，內容可含廣告；授權分單機與多機兩種，企業每台電腦要一份；不同意條款就必須移除軟體；條款依德國法解釋。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是現行條款，不是 1990 年代的版本；條款沒有說公司實際上怎麼執行。條款裡寫了著作權人的個人姓名，正片不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.win-rar.com/winrarlicense.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-8f2de50670ce2a30",
       "url": "https://archive.org/download/enquiryintoplan01theo/enquiryintoplan01theo_djvu.txt",
       "readings": [
@@ -155463,6 +156261,25 @@
           "limitations": "維基只當卒年索引；Nature 1938 年訃聞 PDF 在搜尋結果中，但 curl 回 JavaScript 頁，沒有繞過。",
           "origin": "wave35-20261112",
           "original_url": "https://en.wikipedia.org/wiki/Robert_Sutherland_Rattray"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8f433d97620f2f83",
+      "url": "https://themusicnetwork.com/news/mp3s-mighty-reign-according-creators",
+      "readings": [
+        {
+          "title": "The MP3's mighty reign is over, according to its creators",
+          "publisher": "The Music Network（澳洲音樂產業媒體），2017-05-16",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 5（200，144,388 bytes）下載 HTML，以 python 去標籤後讀報導正文",
+          "reading_scope": "報導正文全讀（導言三段與轉貼的研究所聲明）；其後的時間表只掃過",
+          "locator": "導言第 1–3 段（『officially dead, according to its creators』『discontinuing their licensing program』）",
+          "summary": "流傳版本的樣本：報導開頭寫這個格式『依它的創造者所說，正式死亡』，說研究所『宣布停止 mp3 的授權計畫，並指出 AAC 等新格式更好』，還引研究所發言人對美國一家公共電台說 AAC 是手機下載音樂與影片的『事實上的標準』。報導接著全文轉貼研究所的聲明——聲明本身只寫 4 月 23 日授權計畫終止。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手報導，當成『流傳版本』的樣本；它轉述的電台報導本輪沒有讀到。",
+          "origin": "wave73-20261117",
+          "original_url": "https://themusicnetwork.com/news/mp3s-mighty-reign-according-creators"
         }
       ]
     },
@@ -157498,6 +158315,25 @@
       ]
     },
     {
+      "id": "SRC-911a0b0c997da22a",
+      "url": "https://www.atpress.ne.jp/news/119279",
+      "readings": [
+        {
+          "title": "携帯型育成ゲーム「デジタルモンスター」20周年記念復刻版 予約受付開始（新聞稿）",
+          "publisher": "株式会社バンダイ（透過 @Press 發布），2017-01",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 26（200，278,951 bytes）下載 HTML，python 去標籤後讀全文",
+          "reading_scope": "新聞稿正文全讀",
+          "locator": "〈商品特長〉第 1 段；〈「デジタルモンスターシリーズ」について〉",
+          "summary": "萬代的新聞稿寫：『數碼怪獸』是 1997-06-26 由萬代與另一家玩具企劃公司合作推出的攜帶型液晶玩具，可以隨身養、讓養大的怪獸互相對戰，全世界累計賣出 800 萬個以上；之後才陸續有電玩、卡片、漫畫，1999 年動畫化。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司新聞稿，銷量是公司自己的數字；沒有提到另一款電子寵物，也沒有和別的系列比較。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.atpress.ne.jp/news/119279"
+        }
+      ]
+    },
+    {
       "id": "SRC-911c31b620547f5e",
       "url": "https://adaderana.lk/news/20545",
       "readings": [
@@ -157949,6 +158785,25 @@
           "limitations": "官方博物館的簡介，沒有出處註；發現船名 Bratvaag 不在此頁。",
           "origin": "wave25-20261111",
           "original_url": "https://svalbardmuseum.no/en/the-andre-expedition"
+        }
+      ]
+    },
+    {
+      "id": "SRC-917accffe6f2ad0e",
+      "url": "https://googleblog.blogspot.ch/2009/09/teaching-computers-to-read-google.html",
+      "readings": [
+        {
+          "title": "Teaching computers to read: Google acquires reCAPTCHA",
+          "publisher": "Google 官方部落格，2009-09-16",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 2（200，117,297 bytes）下載 HTML，python 去標籤後讀全文",
+          "reading_scope": "貼文正文全讀；留言與側欄沒有讀",
+          "locator": "第 1–2 段『Google has acquired reCAPTCHA…』『But there’s a twist』",
+          "summary": "Google 宣布買下 reCAPTCHA，稱它替 10 萬個以上的網站擋垃圾與詐欺；寫明許多驗證碼裡的字『來自掃描的舊報紙與舊書』，大家把字打出來等於教電腦讀掃描文字，Google 要把這項技術用在自己的書籍與報紙掃描上。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的公告；沒有寫收購金額。署名的兩位都在世，正片不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://googleblog.blogspot.ch/2009/09/teaching-computers-to-read-google.html"
         }
       ]
     },
@@ -160246,6 +161101,25 @@
           "limitations": "古典籍 OCR（『舌』讀成『古』）；初刊年份沒查，只說享保四年刊本。",
           "origin": "wave38-20261112",
           "original_url": "https://lab.ndl.go.jp/dl/api/book/fulltext-json/2554357"
+        }
+      ]
+    },
+    {
+      "id": "SRC-93b61b923b94bf43",
+      "url": "https://hallapproved.com/la/cases/federal/district/1920/8831259",
+      "readings": [
+        {
+          "title": "McIlhenny Co. v. Bulliard, 265 F. 705 (W.D. La. 1920)",
+          "publisher": "美國聯邦路易斯安那西區地方法院，1920 年判決；判決書全文由 HallApproved.com 轉載",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 18（200，44,514 bytes）下載 HTML，以 python 去標籤後讀事實陳述、商標部分與主文",
+          "reading_scope": "事實陳述、商標爭點、主文讀完；不公平競爭一節引用的先例略讀",
+          "locator": "『The case was submitted on a statement of facts…』兩段：『in 1866 made a pepper-sauce…“Petite Anse Sauce”』『There was then on the market a similar sauce, manufactured in New Orleans』『In 1870…vinegar, rock salt, and alcohol, with a small amount of bisulphate of lime added to prevent fermentation…until 1875 or 1876』『registered…1906…canceled…1910』；末段『A decree will be entered…』",
+          "summary": "依兩造合意的事實陳述：創辦人 1865 或 1866 年拿到幾顆辣椒，1866 年做出醬、先叫『Petite Anse Sauce』（島的法文名）；1868 年決定當成生意，當時市面上已有紐奧良一位同業做的類似辣椒醬；他改用『Tabasco』為名，辣椒是後來才因這瓶醬得名。1870 年的專利製程是把辣椒果肉取出，與醋、岩鹽、酒精混合，並加少量 bisulphate of lime 防止發酵；他照專利做到 1875 或 1876 年，之後放棄這項『改良』，此後家族與公司都只用碾碎的辣椒果肉加醋和鹽。1906 年創辦人之子註冊『Tabasco』商標，1910 年依華盛頓特區上訴法院的裁決被撤銷；1897 年以前沒有別家用這個名字，之後約有 25 家。法院依 1918 年第五巡迴的見解，判准禁止被告使用這個名字與相似包裝。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "第三方網站轉載，有 OCR 錯字；覆核者已用判決匯編掃描 ZR1-S019 對過本題引用的句子；事實是兩造合意陳述，不是法院獨立查證；放棄專利製程的時間（1875 或 1876）與 ZR1-S012 的『核發後不久』寫法不同。沒有寫熟成多久。",
+          "origin": "wave73-20261117",
+          "original_url": "https://hallapproved.com/la/cases/federal/district/1920/8831259"
         }
       ]
     },
@@ -172069,6 +172943,25 @@
       ]
     },
     {
+      "id": "SRC-9dff509bef9da556",
+      "url": "https://tcp.com/en/about-tcp/company-history",
+      "readings": [
+        {
+          "title": "Company History",
+          "publisher": "T.C. Pharmaceutical Industries Company Limited（TCP 集團，泰國）官方網站",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 27（200，68,960 bytes）下載 HTML，以 scripts/txt.py 去標籤後全文閱讀",
+          "reading_scope": "全頁沿革",
+          "locator": "『Its trademark with two red bulls colliding… earned the brand a nickname “Red Bull”』『launch of ‘Red Bull’ 150cc energy drink』『On August 28, 1978』『holding 51% and 49% of the shares respectively』",
+          "summary": "泰國那一方自己的沿革：創辦人 1956-03-27 開藥廠；後來推出一款 100cc 的糖漿，商標是兩頭相撞的紅牛，因此被叫『紅牛』，接著推出 150cc 的同名能量飲料，在泰國大賣；1978-08-28 另設製造與出口公司，第一個外銷市場是新加坡。之後，一位身為公司『事業夥伴兼代表』的奧地利商人想在歐洲賣它，雙方合作在奧地利成立公司，泰國創辦人家族與這位商人分別持股 51% 與 49%。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的沿革，沒有寫奧地利公司成立的年份，也沒有寫配方做了哪些改動。泰國創辦人卒於 1956 年之後，不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://tcp.com/en/about-tcp/company-history"
+        }
+      ]
+    },
+    {
       "id": "SRC-9e04bb0f6f808997",
       "url": "https://zh.wikisource.org/wiki/%E8%88%8A%E5%94%90%E6%9B%B8/%E5%8D%B768",
       "readings": [
@@ -176798,6 +177691,25 @@
       ]
     },
     {
+      "id": "SRC-a21c7f38dee3a6c3",
+      "url": "https://brucelawson.co.uk/2013/opera-and-webkit-a-personal-perspective/",
+      "readings": [
+        {
+          "title": "Opera and WebKit: a personal perspective",
+          "publisher": "當時 Opera 員工（網頁標準推廣者）的個人網站，2013-02-13",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 17（200，100,613 bytes）下載 HTML，python 去標籤後讀正文",
+          "reading_scope": "貼文正文全讀；留言沒有讀",
+          "locator": "第 1 段『I wrote the announcement』；『Opera has 300 million active users』一段",
+          "summary": "作者說公司宣布今後的瀏覽器改用 WebKit 排版引擎，那份公告是他寫的；他個人的看法是自家引擎 Presto 原本是小公司對抗大公司的手段，如今各家引擎已高度互通，再自己做一套不划算；並寫公司有 3 億活躍使用者，其中很多人沒有它就上不了網。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "個人部落格，明說不代表公司；公司的正式公告本輪請求兩個舊網址（seq 15、16）都被導到今天的新聞列表，沒有讀到。作者在世，正片只稱身分。",
+          "origin": "wave73-20261117",
+          "original_url": "https://brucelawson.co.uk/2013/opera-and-webkit-a-personal-perspective/"
+        }
+      ]
+    },
+    {
       "id": "SRC-a22176a48bad612a",
       "url": "https://www.dml.cz/bitstream/handle/10338.dmlcz/143458/PokrokyMFA_58-2013-3_6.pdf",
       "readings": [
@@ -179240,6 +180152,25 @@
       ]
     },
     {
+      "id": "SRC-a49fe09beb4b89a9",
+      "url": "https://archive.org/download/gov.uscourts.f1.253/253.f1_djvu.txt",
+      "readings": [
+        {
+          "title": "Federal Reporter 第 253 卷（West Publishing）：McIlhenny Co. v. Gaidry，253 F. 613–620",
+          "publisher": "West Publishing Co. 判決匯編（1918–1919）；掃描由 Public.Resource.Org 上傳 Internet Archive（條目 gov.uscourts.f1.253，註明公共領域）",
+          "accessed_on": "2026-11-17",
+          "read_via": "覆核者 R731 的 fetch.sh：seq 3（200，364 bytes）archive.org advancedsearch 找到條目、seq 4（200，4,384 bytes）讀 /metadata、seq 5（200，3,332,701 bytes）下載 253.f1_djvu.txt，以 python 搜尋本案段落",
+          "reading_scope": "只讀 613–620 頁本案（案由、摘要、判決理由）；同卷其他判決未讀",
+          "locator": "613–614 頁案由（『Reversed, and rendered for defendant』）；615–616 頁『[3] As above stated, the patent issued in 1870…』與下級審認定；618 頁『[6] There was uncontroverted evidence…』",
+          "summary": "判決匯編的掃描文字，用來對照 ZR1-S012 的轉載。逐句對上的有：專利兩項請求項；下級審認定『The process thus patented was abandoned by Edmund McIlhenny shortly after the patent was issued, and has not been used since by him, or his successors in title』；創辦人 1868 年開始產銷、經營到『his death in 1890』；『from 1868 until 1896』沒有別家用這個名字，1896 年德州出現同名產品；1870 年專利申請書稱『the pepper known in the market as Tabasco pepper』。轉載版把下級審認定裡的年份印成亂碼之處，匯編作『until the year 1896』。案由載上訴結果：原判撤銷、改判公司勝訴。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "是 OCR 文字檔（有重音符號與錯字），沒有逐頁看影像；摘要（headnote）是出版社編的，不是法院的話。",
+          "origin": "wave73-20261117",
+          "original_url": "https://archive.org/download/gov.uscourts.f1.253/253.f1_djvu.txt"
+        }
+      ]
+    },
+    {
       "id": "SRC-a4a0b5c5e5ff5c07",
       "url": "https://documents3.theblackvault.com/documents/UFOFiles/pdf/DOW-UAP-D099_Intelligence-Review-of-Ghost-Rocket-Incidents_1947.pdf",
       "readings": [
@@ -179556,6 +180487,25 @@
           "limitations": "OCR 有一頁版面破損；這是 1992 年 7 月 23 日在倫敦的演講稿（標題從 1792 寫到 1992），對 Iolo 的評價語氣友善，評價語句當作者立場讀；Iolo 卒年本文沒寫。",
           "origin": "wave43-20261112",
           "original_url": "https://peoplescollection.wales/sites/default/files/chs06547IoloMorganwgpublication1993GeraintBowen_0.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a4db4b57efb76d6a",
+      "url": "https://www.bwb.gv.at/en/merger-control/2022/6155",
+      "readings": [
+        {
+          "title": "Merger Notification：Red Bull GmbH; Rauch Fruchtsäfte GmbH（BWB/Z-6126）",
+          "publisher": "奧地利聯邦競爭局（Bundeswettbewerbsbehörde），2022-11-17 公告",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 24（200，29,676 bytes）下載 HTML，以 scripts/txt.py 去標籤後閱讀公告本文",
+          "reading_scope": "公告本文全讀",
+          "locator": "『each intend to acquire a non-controlling interest of 47.5 % in Cawingredients Limited, United Kingdom』『Economic Sector: filling and packaging』『standstill obligation… ends with effect from 16.12.2022』",
+          "summary": "主管機關的結合申報公告：2022-11-17 收到申報，飲料公司與果汁公司各自要取得一家英國公司 47.5% 的非控制性股權，行業別寫『裝填與包裝』；競爭局與卡特爾檢察官沒有聲請法院審查，等待義務在 2022-12-16 解除。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有幾行公告，沒有交易金額與目的；只能證明兩家公司在『裝填與包裝』上是共同投資的夥伴。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.bwb.gv.at/en/merger-control/2022/6155"
         }
       ]
     },
@@ -181539,6 +182489,25 @@
       ]
     },
     {
+      "id": "SRC-a6276ff0354a254f",
+      "url": "https://investors.htc.com/documents/1418/HTC_2024_Annual_Report_mn.pdf",
+      "readings": [
+        {
+          "title": "宏達國際電子股份有限公司 2024 年度年報",
+          "publisher": "宏達電，2025 年（公司投資人網站）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 25（200，5,879,899 bytes）下載 PDF，以 python pdfminer 抽出全部 88 頁文字，用關鍵字找段落讀",
+          "reading_scope": "讀了致股東報告書（PDF p.5–6）、4.2〈公司沿革〉（p.54–55）、董事會重要決議中與 Google 有關的一條（p.27）；財務報表細目沒有讀",
+          "locator": "p.5『智慧型手機』一段；p.6『2024 年 HTC 營收為新台幣 30.8 億元』；p.55〈跨足智慧生活連結裝置及虛擬實境新領域〉『2018 年 1 月與 Google 完成此 11 億美元的合作協議』",
+          "summary": "年報寫：2024 年營收新台幣 30.8 億元、營業淨損 46.4 億元；致股東報告書仍介紹『最新的 U 系列智慧型手機』一款（沒有寫上市日期）。沿革寫：2016 年公司內一個團隊與 Google 合作開發第一款 Pixel 手機；雙方合作始於 2008 年、做出全球首款 Android 智慧型手機；2017 年宣布 Google 延攬這個團隊，2018 年 1 月完成這筆 11 億美元的合作協議。2025 年初又與 Google 簽了一份 XR 協議。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的年報；『全球首款』是公司與 Google 雙方的說法。XR 協議的金額這份年報的這幾頁沒有寫。",
+          "origin": "wave73-20261117",
+          "original_url": "https://investors.htc.com/documents/1418/HTC_2024_Annual_Report_mn.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-a62e0de983b8d09b",
       "url": "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB434/docs/U2%20-%20Chapter%206.pdf",
       "readings": [
@@ -183261,6 +184230,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.foxnews.com/us/doomsday-preacher-harold-camping-dies-at-92"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a7bdf71245049abb",
+      "url": "http://www.qrcode.com/en/faq.html",
+      "readings": [
+        {
+          "title": "FAQ（含〈QR Code's intellectual property right〉）",
+          "publisher": "DENSO WAVE INCORPORATED 官方網站 QRcode.com（頁面無日期）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 11（200，24,427 bytes）下載 HTML，以 scripts/txt.py 去標籤後閱讀",
+          "reading_scope": "讀了〈About the QR Code〉與〈QR Code's intellectual property right〉兩節全部；掃描器、印刷等技術問答只掃過",
+          "locator": "〈QR Code's intellectual property right〉：『No application is necessary』『Is there a fee… No.』『The word “QR Code” is registered trademark of DENSO WAVE INCORPORATED in Japan and other countries.』『applies only for the word… not for the QR Code pattern (image)』",
+          "summary": "官方問答：用 QR Code 不必申請、不收費、商業用途也不必簽授權契約，前提是遵守 JIS 或 ISO 標準；但『QR Code』這個詞是該公司在日本與其他國家的註冊商標，刊物或網站用到這個詞時請加註商標聲明；商標只及於文字，不及於碼的圖形，名片上只印碼的圖不必加註。另一題寫規格『2004 年 11 月』成為 JIS X 0510（與沿革頁的 1999 年不同，照實並列）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的說明；JIS 年份與同站沿革頁（ZR4-S005）寫法不一致，本輪沒有讀到 JIS 原件可以判斷。",
+          "origin": "wave73-20261117",
+          "original_url": "http://www.qrcode.com/en/faq.html"
         }
       ]
     },
@@ -189557,6 +190545,25 @@
       ]
     },
     {
+      "id": "SRC-ad4751df5c78d973",
+      "url": "https://www.redbull.com/int-en/energydrink/company-profile",
+      "readings": [
+        {
+          "title": "Red Bull Company（公司簡介）",
+          "publisher": "Red Bull 官方網站（國際版），載有 2025 年底數字",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 25（200，71,638 bytes）下載 HTML，以 scripts/txt.py 去標籤後全文閱讀（seq 26 的印度版 history-of-red-bull 頁內容相同，未另列）",
+          "reading_scope": "全頁",
+          "locator": "『Inspired by functional drinks from East Asia… founded Red Bull in the mid-1980s』『from 1984 to 1987… worked on the formula』『On April 1, 1987… launched in Austria』『13.969 billion cans… 2025』",
+          "summary": "官方簡介：創辦人『受東亞機能飲料啟發』，1980 年代中期創立公司；1984 到 1987 年花了將近三年做配方、品牌定位、包裝與行銷概念；1987-04-01 在奧地利上市。2025 年底員工 21,924 人、在 178 國銷售，2025 年全球賣出 139.69 億罐，集團營收 121.96 億歐元。頁面沒有提泰國、沒有提股權、也沒有提誰負責裝填。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的簡介；對『東亞的哪一種飲料』『誰持股』『誰生產』都沒寫。創辦人卒於 1956 年之後，不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.redbull.com/int-en/energydrink/company-profile"
+        }
+      ]
+    },
+    {
       "id": "SRC-ad4b63fb214b203f",
       "url": "https://wordorigins.org/harmless-drudge/esquivalence-and-other-mountweazels",
       "readings": [
@@ -191464,6 +192471,25 @@
       ]
     },
     {
+      "id": "SRC-aeb962dc6ff24524",
+      "url": "https://archive.org/download/gov.uscourts.f1.265/265.f1_djvu.txt",
+      "readings": [
+        {
+          "title": "Federal Reporter 第 265 卷（West Publishing）：McIlhenny Co. v. Bulliard，265 F. 705–714",
+          "publisher": "West Publishing Co. 判決匯編（1920）；掃描由 Public.Resource.Org 上傳 Internet Archive（條目 gov.uscourts.f1.265）",
+          "accessed_on": "2026-11-17",
+          "read_via": "覆核者 R731 的 fetch.sh：seq 6（200，4,384 bytes）讀 /metadata（條目代號比照 seq 3 搜到的第 253 卷）、seq 7（200，3,508,638 bytes）下載 265.f1_djvu.txt，以 python 搜尋本案段落",
+          "reading_scope": "只讀 705–708 頁（案由、摘要、事實陳述、商標爭點開頭）與 714 頁主文；不公平競爭一節未細讀",
+          "locator": "705 頁案由『(District Court, W. D. Louisiana. May 17, 1920.) No. 22』；706–707 頁『The case was submitted on a statement of facts…』兩段；714 頁『A decree will be entered…』",
+          "summary": "判決匯編的掃描文字，用來對照 ZR1-S013 的轉載。逐句對上的有：1865 或 1866 年拿到辣椒、1866 年做出『Petite Anse Sauce』、1868 年決定當成生意、當時市面上已有紐奧良一位同業的類似辣椒醬；1870 年專利的製程是辣椒果肉加『vinegar, rock salt, and alcohol, with a small amount of bisulphate of lime added to prevent fermentation』；照專利做到『1875 or 1876』後放棄，此後只用碾碎的辣椒果肉加醋和鹽；1906 年註冊、1910 年依華盛頓特區上訴法院的裁決撤銷；1897 年以前沒有別家用這個名字、之後約 25 家；主文准許禁止被告使用這個名字與相似包裝。出版社編的摘要另寫『after four years abandoned its use』，與判決正文的『1875 or 1876』不同。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "是 OCR 文字檔（判決日期的年份被辨識成『1020』，依卷次與轉載版為 1920）；事實出自兩造合意陳述；摘要不是法院的話。",
+          "origin": "wave73-20261117",
+          "original_url": "https://archive.org/download/gov.uscourts.f1.265/265.f1_djvu.txt"
+        }
+      ]
+    },
+    {
       "id": "SRC-aebab7b5a7a76678",
       "url": "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Silliman,_Benjamin",
       "readings": [
@@ -192174,6 +193200,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave45-20261112",
           "original_url": "https://gutenberg.org/cache/epub/44625/pg44625-images.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-af4d05012843097f",
+      "url": "https://www.todayifoundout.com/?p=10205",
+      "readings": [
+        {
+          "title": "Why are There No B Batteries?",
+          "publisher": "Today I Found Out（冷知識網站），2012-05-09",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 30（200，103,563 bytes）下載 HTML，以 python 去標籤後讀文章正文",
+          "reading_scope": "正文全讀；留言未讀",
+          "locator": "正文第 2–3 段（『in 1928, the American Standards Association…』『A would be the smallest』『AAA…wasn't adopted into the standard until 1959』）、談真空管 B 電池的一段",
+          "summary": "流傳版本的樣本：說一次大戰後戰時工業委員會等機關想訂規格，1928 年美國標準協會正式採用，字母的規矩是『A 最小、字母越後面越大』；AA、AAA 是後來才加的，『AAA 到 1959 年才進標準』；A、B 看不到是因為沒有在消費市場流行起來。文章也分辨了收音機真空管用的『B 電池』和尺寸字母的 B 不是同一回事。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手冷知識文，沒有列出處；當成流傳版本的樣本。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.todayifoundout.com/?p=10205"
         }
       ]
     },
@@ -196313,6 +197358,25 @@
       ]
     },
     {
+      "id": "SRC-b353c3590e154784",
+      "url": "https://corp.toei-anim.co.jp/ja/ir/news/auto_20260513529444/pdfFile.pdf",
+      "readings": [
+        {
+          "title": "決算補足資料 2026年3月期 通期決算",
+          "publisher": "東映アニメーション株式会社，2026-05",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 27（200，3,569,014 bytes）下載 PDF，python pdfminer 抽出 27 頁文字後讀版權事業各頁",
+          "reading_scope": "p.4 決算摘要、p.10–13 版權事業讀過；其餘沒有細讀；圖表裡的數值抽不出來",
+          "locator": "p.10『「ワンピース」、「デジモンアドベンチャー」シリーズの商品化権・ゲーム化権販売が好調』；p.12 海外版権；p.13 トピックス",
+          "summary": "動畫公司的決算補充資料寫：海外版權收入因兩個系列的商品化權、遊戲化權賣得好而小幅成長，其中一個就是『數碼寶貝』系列，新的家用主機遊戲表現好；但資料裡單獨畫出營收走勢的只有另外兩個系列，沒有它。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有文字敘述，沒有這個系列的金額；也沒有和別家公司的系列比較。",
+          "origin": "wave73-20261117",
+          "original_url": "https://corp.toei-anim.co.jp/ja/ir/news/auto_20260513529444/pdfFile.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-b354ca21074e539c",
       "url": "https://www.boxleyparishcouncil.gov.uk/media/Parish%20council%20leaflet/Boxley_Village_Inter_board.pdf",
       "readings": [
@@ -196734,6 +197798,25 @@
       ]
     },
     {
+      "id": "SRC-b3dac041d96d5f21",
+      "url": "https://blogs.opera.com/desktop/2013/07/the-vision-behind-opera-15-and-beyond/",
+      "readings": [
+        {
+          "title": "The vision behind Opera 15 and beyond",
+          "publisher": "Opera 桌面版團隊部落格，2013-07",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 14（200，84,769 bytes）下載 HTML，python 去標籤後讀正文",
+          "reading_scope": "貼文正文中 Speed Dial、Stash、Discover、Off-road Mode 四節讀過；留言沒有讀",
+          "locator": "小節『Speed Dial』：『We introduced the Speed Dial concept in 2007』",
+          "summary": "公司自己寫：速撥（開新頁時的一格格捷徑）的概念是它在 2007 年推出的；Opera 10 推出壓縮網頁的 Turbo 模式。這篇是換引擎後第一個新版的說明。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的說法，只說『我們在 2007 年推出』，沒有說別人有沒有更早做。",
+          "origin": "wave73-20261117",
+          "original_url": "https://blogs.opera.com/desktop/2013/07/the-vision-behind-opera-15-and-beyond/"
+        }
+      ]
+    },
+    {
       "id": "SRC-b3eb3f6958a66995",
       "url": "https://www.planetary.org/articles/tpr-2001-1-editorial",
       "readings": [
@@ -197003,6 +198086,25 @@
           "limitations": "PDF 是掃描 OCR，條文以頁面標題與可辨讀字句為準；Vicente Clavel 提議一事本輪只見搜尋摘要，條文裡沒讀到他的名字。",
           "origin": "wave20-20261102",
           "original_url": "https://www.boe.es/buscar/doc.php?id=BOE-A-1926-1342"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b437f43874736069",
+      "url": "https://www.pcgamer.com/games/fighting/the-first-ever-third-party-game-to-come-to-steam-probably-doesnt-get-the-respect-it-deserves-mostly-because-no-one-remembers-it",
+      "readings": [
+        {
+          "title": "The first ever third-party game to come to Steam probably doesn't get the respect it deserves…",
+          "publisher": "PC Gamer，2025-05-16",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 23（200，2,094,218 bytes）下載 HTML，以 python 去標籤後讀正文",
+          "reading_scope": "正文讀完",
+          "locator": "『the first ever third-party game to come to Steam, back in 2005…back then it was basically just a launcher for Half-Life 2』『there was very much a time when it was seen as annoying and pointless』",
+          "summary": "報導寫：那款 2005 年的格鬥小遊戲是第一款登上 Steam 的第三方遊戲，當時 Steam『基本上只是某款射擊遊戲的啟動器』；又說現在大家把它在 PC 遊戲的主導地位視為理所當然，但確實有一段時間它被認為『又煩又沒用』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二十年後的回顧報導，『又煩又沒用』是記者的概括，沒有引當年的資料。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.pcgamer.com/games/fighting/the-first-ever-third-party-game-to-come-to-steam-probably-doesnt-get-the-respect-it-deserves-mostly-because-no-one-remembers-it"
         }
       ]
     },
@@ -198518,6 +199620,25 @@
       ]
     },
     {
+      "id": "SRC-b5b8aa738724cd21",
+      "url": "https://group.marshall.com/2023/06/13/zound-is-now-marshall-group-and-set-to-take-the-company-to-the-next-level/",
+      "readings": [
+        {
+          "title": "Zound is now Marshall Group, and set to take the company to the next level",
+          "publisher": "Marshall Group 官方新聞，2023-06-13",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 28（200，56,230 bytes）下載 HTML，以 scripts/txt.py 去標籤後全文閱讀",
+          "reading_scope": "新聞稿全文",
+          "locator": "第 1 段『Zound Industries is formally changing its name to Marshall Group』；『Since 2010, Zound Industries has brought the Marshall brand… with its range of headphones and wireless speakers』；『The Group’s head office will remain in Stockholm』",
+          "summary": "官方公告：一家瑞典的音訊公司在當年春天與英國吉他音箱公司合併後，正式把自己的名字改成後者的品牌名加『Group』。稿中寫：2010 年起，是這家瑞典公司用它的耳機與無線喇叭，把這個牌子從大舞台帶到 90 多國的一般消費者面前；新集團約 800 名員工、8 個據點、年營收 3.6 億美元；總部留在斯德哥爾摩，英國米爾頓凱恩斯仍是音箱的家。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的公告，用『partnership』『fusion』，沒有用『授權』一詞，也沒有交易條件。稿中點名的創辦人卒於 2012 年，正片不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://group.marshall.com/2023/06/13/zound-is-now-marshall-group-and-set-to-take-the-company-to-the-next-level/"
+        }
+      ]
+    },
+    {
       "id": "SRC-b5b92a769aba7870",
       "url": "https://archive.org/download/per_witchcraft-in-europe-and-america_the-story-of-grace-sherwood_sherwood-grace_1900_893/per_witchcraft-in-europe-and-america_the-story-of-grace-sherwood_sherwood-grace_1900_893_djvu.txt",
       "readings": [
@@ -199337,6 +200458,25 @@
       ]
     },
     {
+      "id": "SRC-b67dbec2f3de5621",
+      "url": "https://aibusiness.com/companies/-i-m-not-a-robot-google-s-anti-robot-recaptcha-trains-their-robots-to-see",
+      "readings": [
+        {
+          "title": "“I’m Not A Robot”: Google’s Anti-Robot reCAPTCHA Trains Their Robots To See",
+          "publisher": "AI Business（Informa），2017-10-25",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 30（200，469,211 bytes）下載 HTML，python 去標籤後讀正文",
+          "reading_scope": "報導正文前半（到引用官方網站那一句為止）讀過；後半沒有細讀",
+          "locator": "第 1–5 段『they are unwittingly training Google’s machine learning datasets』與引用的官網句子",
+          "summary": "流傳版本的樣本：報導說你每做一次驗證，就是『不知不覺替 Google 訓練機器學習資料集』，點橋、獅子、路牌就是在教 Google 的 AI 認這些東西；並引用當時 reCAPTCHA 官網的一句：每次解題的人力『幫忙把文字數位化、標註圖片、建立機器學習資料集』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手的產業媒體報導，不是官方文件；『不知不覺替 Google 訓練』是記者的寫法。它引用的官網句子，本輪請求今天的官網（seq 5，200，已轉到雲端產品頁）時頁面上已經沒有，所以那句只能算『2017 年報導的轉述』，題卡不得寫成官方說法或事實。",
+          "origin": "wave73-20261117",
+          "original_url": "https://aibusiness.com/companies/-i-m-not-a-robot-google-s-anti-robot-recaptcha-trains-their-robots-to-see"
+        }
+      ]
+    },
+    {
       "id": "SRC-b67df9ef618de281",
       "url": "https://www.loc.gov/resource/sn86092557/1907-01-30/ed-1/?sp=7",
       "readings": [
@@ -199940,6 +201080,25 @@
           "limitations": "OCR；沒查到 Law 以前印出的版本，屬『目前讀到最早』。",
           "origin": "wave8-20261102",
           "original_url": "https://archive.org/details/historyofhampton01lawe_0"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b7010f630162835b",
+      "url": "https://www.iis.fraunhofer.de/en/ff/amm/consumer-electronics/mp3.html",
+      "readings": [
+        {
+          "title": "mp3（Fraunhofer IIS 音訊與媒體技術部門的產品頁）",
+          "publisher": "Fraunhofer Institute for Integrated Circuits IIS（研究所官網；頁面未標日期，內容為 2017 年授權計畫終止後的版本）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 1（200，99,897 bytes）下載 HTML，以 python 去標籤後讀正文（導覽選單以下〈mp3〉一節全文）",
+          "reading_scope": "正文全讀（公告兩句、背景一段、給廠商與消費者的說明）；導覽選單與頁尾未細讀",
+          "locator": "正文開頭『On April 23, 2017, Technicolor's mp3 licensing program…has been terminated.』與下一段『The development of mp3 started in the late 80s…』",
+          "summary": "研究所的官方說明只有一件事：2017 年 4 月 23 日，Technicolor 針對『Technicolor 與 Fraunhofer IIS 的部分 mp3 相關專利與軟體』的授權計畫終止；並感謝被授權廠商二十年來讓 mp3 成為事實上的標準。下一段說 mp3 的開發始於 1980 年代後期，雖然現在有效率更高的編碼，mp3『在消費者之間仍然很受歡迎』，只是多數新的串流與廣播服務改用 AAC 家族或 MPEG-H。頁面沒有任何『mp3 已死』或停止使用的字眼。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "研究所自己的說法；頁面沒有列出是哪幾件專利、何時到期，也沒有公告的原始發布日期。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.iis.fraunhofer.de/en/ff/amm/consumer-electronics/mp3.html"
         }
       ]
     },
@@ -202845,6 +204004,25 @@
       ]
     },
     {
+      "id": "SRC-b97f7e62f29c8171",
+      "url": "https://www.pbs.org/newshour/nation/20-years-ago-people-thought-googles-gmail-launch-was-an-april-fools-day-joke",
+      "readings": [
+        {
+          "title": "20 years ago, people thought Google's Gmail launch was an April Fool's Day joke",
+          "publisher": "美聯社報導，PBS News 網站轉載，2024-03-31",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 9（200，294,540 bytes）下載 HTML，以 python 去標籤後讀報導全文",
+          "reading_scope": "報導全文讀完",
+          "locator": "第 2–4 段（『13,500 emails…30 to 60 emails…250 to 500 times』）、『readers began calling and emailing』一段、『300 machines…10,000 users』一段、『$250 apiece on eBay』『Valentine's Day…2007』『Gmail Paper』各段",
+          "summary": "二十週年的回顧，也是流傳版本的樣本：說兩位創辦人因為每年愚人節都惡搞、大家習慣一笑置之，所以『決定在愚人節公布一個沒人相信做得到的東西』；1 GB 約可存 13,500 封信，當時雅虎與微軟的信箱只存得下 30 到 60 封，『等於 250 到 500 倍』。美聯社當天下午發稿後，讀者打電話、寫信來說通訊社被耍了；記者是被臨時請到公司總部看展示才知道是真的。做這個信箱的前工程師受訪說，上線時只有 300 台沒人要的舊機器，只夠 10,000 名使用者；邀請函一度在拍賣網站喊到 250 美元；到 2007 年情人節才開放所有人註冊；同年愚人節公司真的開了個玩笑（把信印成紙本寄給你）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二十年後的回顧與當事人訪談，不是當年的報導；『250 到 500 倍』是記者的換算。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.pbs.org/newshour/nation/20-years-ago-people-thought-googles-gmail-launch-was-an-april-fools-day-joke"
+        }
+      ]
+    },
+    {
       "id": "SRC-b985d80883309e4b",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4625006/",
       "readings": [
@@ -204926,6 +206104,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://archive.org/details/centuryapopular00woolgoog"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bad870f55351fa47",
+      "url": "https://avclub.com/here-s-why-you-can-keep-using-winrar-even-after-its-40-1798259171",
+      "readings": [
+        {
+          "title": "Here’s why you can keep using WinRAR even after its 40-day trial ends",
+          "publisher": "The A.V. Club，2017-03-16（頁面署 March 16, 2017）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 12（200，173,083 bytes）下載 HTML，以 python 去標籤後讀正文兩段",
+          "reading_scope": "正文兩段讀完；它介紹的那支影片沒有看",
+          "locator": "第 1 段『you can continue using WinRAR basically forever. And it turns out, the company is pretty much okay if you do』、第 2 段『makes its money from businesses, not from individual home users』",
+          "summary": "流傳版本的樣本：40 天到了什麼事都不會發生，除了常跳出購買提醒，『基本上可以永遠用下去，而且公司大致上也無所謂』；它真正的收入來自企業而不是個人，企業比較有動機合法取得軟體。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "轉述一支網路影片的說法，沒有引用公司文件或財報；『靠企業賺錢』本輪沒有在任何一手文件上讀到。",
+          "origin": "wave73-20261117",
+          "original_url": "https://avclub.com/here-s-why-you-can-keep-using-winrar-even-after-its-40-1798259171"
         }
       ]
     },
@@ -211484,6 +212681,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://commons.wikimedia.org/wiki/File:Lady_Be_Good_Nose_Section.jpg"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c12ff248973fdba3",
+      "url": "https://group.marshall.com/this-is-marshall-group/",
+      "readings": [
+        {
+          "title": "This is Marshall Group（集團簡介）",
+          "publisher": "Marshall Group 官方網站",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 30（200，52,844 bytes）下載 HTML，以 scripts/txt.py 去標籤後閱讀",
+          "reading_scope": "簡介本文全讀",
+          "locator": "『Marshall Group was born in 2023 following the fusion of Stockholm-based Zound Industries and Marshall Amplification of Milton Keynes.』『the two companies have collaborated since 2010』",
+          "summary": "官方簡介：集團 2023 年由斯德哥爾摩的音訊公司與米爾頓凱恩斯的音箱公司合併而生；兩家公司從 2010 年開始合作，那一年第一次用耳機與無線喇叭把品牌帶給一般消費者；業務橫跨專業音樂器材、消費電子、現場活動與唱片廠牌。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司簡介，沒有細節與數字出處。",
+          "origin": "wave73-20261117",
+          "original_url": "https://group.marshall.com/this-is-marshall-group/"
         }
       ]
     },
@@ -221506,6 +222722,25 @@
       ]
     },
     {
+      "id": "SRC-cae5c08d147de6ec",
+      "url": "https://worthplaying.com/article/2004/11/13/news/20575-half-life-2-on-sale-but-vivendi-blocks-authentication",
+      "readings": [
+        {
+          "title": "'Half-Life 2' On Sale But Vivendi Blocks Authentication",
+          "publisher": "Worthplaying，2004-11-13",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 21（200，18,949 bytes）下載 HTML，以 python 去標籤後讀新聞正文",
+          "reading_scope": "新聞正文一段讀完",
+          "locator": "『The lucky ones who managed to purchase a copy will get a major disappointment…anybody who bought HL2 can't play it yet』",
+          "summary": "2004 年 11 月的當期新聞：一款大作在美國幾家大賣場提前開賣，但發行商要求開發商不得開啟 Steam 的認證伺服器，『買到的人還不能玩』；開發商聲明這不是它的決定，發行商以違約相脅。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "遊戲新聞站的短訊，轉述雙方說法；只是一個事件，不能代表玩家整體反應。",
+          "origin": "wave73-20261117",
+          "original_url": "https://worthplaying.com/article/2004/11/13/news/20575-half-life-2-on-sale-but-vivendi-blocks-authentication"
+        }
+      ]
+    },
+    {
       "id": "SRC-cae6eb346b7e4184",
       "url": "https://www.thelatinlibrary.com/isidore/19.shtml",
       "readings": [
@@ -224321,6 +225556,25 @@
       ]
     },
     {
+      "id": "SRC-cd2739117f19c788",
+      "url": "http://www.audioblog.iis.fraunhofer.com/mp3-software-patents-licenses/",
+      "readings": [
+        {
+          "title": "Alive and Kicking – mp3 Software, Patents and Licenses",
+          "publisher": "Fraunhofer Audio Blog（Fraunhofer IIS 官方部落格），2017-05-18",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 2（200，155,621 bytes）；網址來自 seq 1 頁面上『available here』的連結；以 python 去標籤後讀全文與前三則留言",
+          "reading_scope": "文章全文讀完；留言只看前兩則",
+          "locator": "標題下第 1–2 段（『does this mean that mp3 is really dead now…Of course not!』）、〈What changed since April 23?〉、〈What does the future hold?〉",
+          "summary": "研究所在消息傳開後自己出面澄清：『這幾天常讀到 mp3 死了，當然不是』。授權計畫結束是因為『計畫裡的最後一件專利到期』，不代表使用許可結束；決定 mp3『死不死』的只有使用者。自 1990 年代起由 Technicolor（原 Thomson）負責專利授權與研究所 mp3 軟體的授權；既有被授權廠商可以繼續使用，Technicolor 在 2017 年初已通知他們。文章也提醒：計畫結束不等於所有 mp3 技術都自動免授權，可能還有實作上的專利沒到期。授權金曾是研究所發展後續音訊技術的重要財源。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "研究所的官方立場文；沒有列專利號與到期日，也沒有授權金數字。",
+          "origin": "wave73-20261117",
+          "original_url": "http://www.audioblog.iis.fraunhofer.com/mp3-software-patents-licenses/"
+        }
+      ]
+    },
+    {
       "id": "SRC-cd28fd591c9aa39f",
       "url": "https://zh.wikisource.org/wiki/%E5%AE%8B%E5%8F%B2_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)/%E5%8D%B7056",
       "readings": [
@@ -225229,6 +226483,25 @@
           "limitations": "同上：OCR 小寫、缺字，僅作當時報導的佐證；客戶名單是她自己的說法。",
           "origin": "wave53-20261114",
           "original_url": "https://tile.loc.gov/text-services/word-coordinates-service?segment=/service/ndnp/dlc/batch_dlc_american_ver01/data/sn83045433/00294558196/1914122601/0669.xml&format=alto_xml"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cdf7084e68db10e6",
+      "url": "https://blog.google/inside-google/company-announcements/google-signs-agreement-htc-continuing-our-big-bet-hardware/",
+      "readings": [
+        {
+          "title": "Google signs agreement with HTC, continuing our big bet on hardware",
+          "publisher": "Google 官方部落格，2017-09-21",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 22（200，336,876 bytes）下載 HTML，python 去標籤後讀全文",
+          "reading_scope": "貼文正文全讀",
+          "locator": "第 3–4 段『a team of HTC talent will join Google…The deal also includes a non-exclusive license for HTC intellectual property』『the first ever Android smartphone, the HTC Dream, also known as the T-Mobile G1』",
+          "summary": "Google 寫：與宏達電簽了協議，一組一直合作做 Pixel 手機的宏達電人員將加入 Google 的硬體部門，另含宏達電智慧財產的『非專屬』授權；並回顧雙方十年合作，包括第一支 Android 手機、2010 年與 2014 年的兩款 Nexus、前一年的第一支 Pixel。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司公告；沒有寫金額與人數。署名主管在世，正片不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://blog.google/inside-google/company-announcements/google-signs-agreement-htc-continuing-our-big-bet-hardware/"
         }
       ]
     },
@@ -232789,6 +234062,25 @@
       ]
     },
     {
+      "id": "SRC-d52248bdde179f41",
+      "url": "https://news.microsoft.com/source/2009/02/16/microsoft-and-gemalto-partner-to-bring-windows-live-messenger-to-the-mass-market-of-mobile-subscribers/",
+      "readings": [
+        {
+          "title": "Microsoft and Gemalto Partner to Bring Windows Live Messenger to the Mass Market of Mobile Subscribers",
+          "publisher": "Microsoft 新聞稿，2009-02-16",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 7（200，143,831 bytes）下載 HTML，python 去標籤後讀全文",
+          "reading_scope": "新聞稿正文全讀",
+          "locator": "合作夥伴主管引言『With more than 320 million active Windows Live Messenger accounts worldwide』",
+          "summary": "2009 年 2 月的新聞稿裡，合作的智慧卡公司主管在引言中說全球有『超過 3.2 億個活躍的 Windows Live Messenger 帳號』。這是本輪在微軟新聞稿上讀到最接近『三億』的數字。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "數字出自合作夥伴主管的引言、不是微軟自己的統計表，單位是『活躍帳號』不是人；是不是歷來最高沒有文件；常見的『3.3 億』本輪沒有讀到一手出處。引言者在世，正片不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://news.microsoft.com/source/2009/02/16/microsoft-and-gemalto-partner-to-bring-windows-live-messenger-to-the-mass-market-of-mobile-subscribers/"
+        }
+      ]
+    },
+    {
       "id": "SRC-d52c473a7ba0cb74",
       "url": "http://web.archive.org/web/20250217054121/https://rowman.com/ISBN/9780759105393/Bigfoot-Exposed-An-Anthropologist-Examines-Americas-Enduring-Legend",
       "readings": [
@@ -233579,6 +234871,25 @@
           "limitations": "官方節目但內容多為受訪者（Rutkowski、Campagna、Michalak 之子，皆在世）的說法，旁白要標『誰說的』；LAC 檔號節目沒給。",
           "origin": "wave21-20261111",
           "original_url": "https://www.canada.ca/en/library-archives/collection/engage-learn/podcasts/discover/episode-054.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d634aa7f5d81ffd0",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular390.pdf",
+      "readings": [
+        {
+          "title": "Circular of the Bureau of Standards No. 390：American Standard Specifications for Dry Cells and Batteries（C18-1930）",
+          "publisher": "美國商務部標準局，1930-12-10 發行；美國標準協會 1930-09-09 核准",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 26（200，1,236,425 bytes）下載 PDF，以 pdftotext -layout 轉文字後讀封面、前言、委員名單與第 II 節命名法",
+          "reading_scope": "封面、前言、〈II. Nomenclature〉與 Table 1 全讀；性能與測試各節只掃過",
+          "locator": "前言（『American Standard, February 27, 1928』）；〈II. Nomenclature〉(a) 與 Table 1；(b) style letters",
+          "summary": "前言說規格最早是 79 號通告的附錄，後來單獨發行，第二版在 1928-02-27 被核准為美國標準。命名法寫明：大顆圓筒乾電池叫 No. 6，『較小的電池以字母 A 到 F 稱呼』。Table 1（鋅筒標稱尺寸，公制欄）：A 16×48、B 19×54、C 24×46、D 32×57、E 32×73、F 32×87 公釐。表上有 A、有 B，沒有 AA，也沒有 AAA。多顆組成的手電筒與收音機電池另用『形狀字母＋顆數＋電池字母』編號。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "只讀到 1930 年版；1928 年版（139 號通告第二版）沒有讀，不能說字母表在 1928 年長什麼樣。尺寸是鋅筒，不含外殼。",
+          "origin": "wave73-20261117",
+          "original_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular390.pdf"
         }
       ]
     },
@@ -237722,6 +239033,25 @@
       ]
     },
     {
+      "id": "SRC-d94c4fc668991205",
+      "url": "https://www.site.uottawa.ca/~stan/csi2911/reCaptcha_Science.pdf",
+      "readings": [
+        {
+          "title": "reCAPTCHA: Human-Based Character Recognition via Web Security Measures（Science 321, 1465–1468）",
+          "publisher": "Science（AAAS），2008-09-12；本檔是渥太華大學一門課程網頁上的期刊版 PDF 副本",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 1（200，153,370 bytes）下載 PDF，以 pdftotext 轉文字後全文讀過",
+          "reading_scope": "四頁正文全讀；supporting online text 與參考文獻沒有讀",
+          "locator": "摘要；p.1465『According to our estimates…』『reCAPTCHA gives the user two words』；p.1466『control word』『unknown word』；p.1466–1467 New York Times 抽樣；p.1467『After exactly 1 year…』",
+          "summary": "卡內基美隆大學的五位作者估計全世界每天有人打超過 1 億次驗證碼、合計每天數十萬小時；他們的系統每次給兩個字：一個是被標成『可疑』、答案未知的掃描字（兩套 OCR 讀出來不同，或不在英文字典裡），另一個是答案已知的『控制字』，使用者打對控制字就放行，同時把另一個字的輸入記成一個猜測；每個人的答案算一票、每套 OCR 的猜測算半票，至少 2.5 票才採用，前三位使用者答案一致且與兩套 OCR 都不同時，該字轉為控制字。以《紐約時報》檔案五個年份、50 篇、24,080 字抽樣，準確率 99.1%（216 個錯），一般 OCR 只有 83.5%。上線滿一年解了 12 億次以上、認出 4.4 億個以上的字，約等於 17,600 本書；用在 4 萬多個網站。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "期刊正式版的課程網頁副本（4 頁、頁碼 1465–1468，頁邊有『Downloaded from www.sciencemag.org on September 12, 2008』），不是出版社網站；覆核 R733 重抓，位元組與作者的檔相同，確是該論文全文。有著作權，只連結與摘要。數字是作者自己的統計；supporting online text 沒有讀。作者都在世，正片不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.site.uottawa.ca/~stan/csi2911/reCaptcha_Science.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-d94f69fb92d03e3a",
       "url": "https://archive.org/details/india.history.resource.77685",
       "readings": [
@@ -240519,6 +241849,25 @@
       ]
     },
     {
+      "id": "SRC-dbc719f920f6045f",
+      "url": "https://thenextweb.com/news/microsoft-to-retire-its-messenger-im-service-in-q1-2013-moving-100mm-users-to-skype-in-single-move",
+      "readings": [
+        {
+          "title": "Confirmed: Microsoft to retire its Messenger IM service in Q1 2013, moving 100M+ users to Skype in single act",
+          "publisher": "The Next Web，2012-11-06",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 10（200，186,489 bytes）下載 HTML，python 去標籤後讀正文",
+          "reading_scope": "報導正文全讀；頁面上其他文章的標題不算",
+          "locator": "第 1–3 段『Messenger’s 100 million+ users – that figure confirmed to TNW by Microsoft this morning』",
+          "summary": "報導說微軟當天早上向記者確認 Messenger 有『1 億以上』使用者要併進 Skype，Skype 則向記者說自己每月活躍約 2.8 億人；記者並轉述另一家媒體報過 Messenger 2011 年每月活躍使用者超過 3 億。這篇同時是『三億人』流傳說法的樣本。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手報導；『1 億以上』是記者轉述微軟的確認，沒有說明口徑；『2011 年超過 3 億』是再轉述別家媒體，那篇原報導本輪沒有讀到。記者在世，正片不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://thenextweb.com/news/microsoft-to-retire-its-messenger-im-service-in-q1-2013-moving-100mm-users-to-skype-in-single-move"
+        }
+      ]
+    },
+    {
       "id": "SRC-dbc7824742c8c166",
       "url": "https://www.loc.gov/resource/sn85042373/1911-01-04/ed-1/?sp=5",
       "readings": [
@@ -242239,6 +243588,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.britannica.com/biography/Amelia-Earhart"
+        }
+      ]
+    },
+    {
+      "id": "SRC-dddaf67889d76472",
+      "url": "https://archive.google/jobs/lunar_job.html",
+      "readings": [
+        {
+          "title": "Google Copernicus Center is hiring",
+          "publisher": "Google（公司自己的歷史存檔站 archive.google；頁尾標 ©2011，沒有刊登日期）",
+          "accessed_on": "2026-11-17",
+          "read_via": "覆核者 R732 的 fetch.sh seq 2（200，4,361 bytes）；網址來自 ZR2-S007（美聯社回顧）內文『posted a job opening』的連結；以 python 去標籤後讀全文",
+          "reading_scope": "第一頁全文（兩段）；『Next>>』之後的頁面沒有讀",
+          "locator": "標題〈Google Copernicus Center is hiring〉下第 1 段（『lunar hosting and research center, opening late in the spring of 2007』『a steady supply of oxygen』）",
+          "summary": "公司存檔的玩笑徵人頁：為月球上的主機代管與研究中心徵工程師，中心預定 2007 年春末啟用，應徵者要願意長期外派、體能良好，能忍受沒有低脂豆奶拿鐵、一部影集和『穩定的氧氣供應』。第二段用一串誇張的縮寫介紹這個中心。頁面沒有寫它是哪一天登出的。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只證明這則玩笑徵人存在與它的內容；沒有刊登日期，不能單獨證明它和信箱新聞稿是同一天。只讀了第一頁。",
+          "origin": "wave73-20261117",
+          "original_url": "https://archive.google/jobs/lunar_job.html"
         }
       ]
     },
@@ -246357,6 +247725,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://commons.wikimedia.org/wiki/File:Andrey_Zeest_-_Amber_Room_(autochrome).jpg"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e19cf6291c003b53",
+      "url": "https://torrentfreak.com/winrar-locks-pirate-keygen-but-the-good-guy-towards-regular-users-191207/",
+      "readings": [
+        {
+          "title": "WinRAR Nukes Pirate Keygen But is a “Good Guy” Towards Regular Users",
+          "publisher": "TorrentFreak，2019-12-07",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 15（200，66,032 bytes）下載 HTML，以 python 去標籤後全文讀完",
+          "reading_scope": "全文讀完",
+          "locator": "『This week we spotted a lawyer for the company Win.rar GmbH filing a complaint with…Github』；引述行銷代表『From a legal perspective, everybody should buy at the end of the trial』；『Since 2015…completely free version…in China』",
+          "summary": "報導寫：這套軟體『看起來像免費、技術上是付費軟體』，試用 40 天後不會失效；公司對一般人過期繼續用幾乎不處理，但那一週它的律師向程式碼託管網站提出下架通知，對象是一個序號產生器，理由是規避授權金鑰的技術保護措施（美國著作權法第 1201 條）。公司行銷代表對記者說：對一般使用者的授權政策『沒有其他軟體商那麼嚴』，重要的是軟體有人用，『即使試用期可能已經過了』；又說『從法律上看，每個人試用期結束都該購買』。公司另說自己在個人使用者這一塊『一直是好人』，沒有對每個過期繼續用的人提告。另載公司 2015 年起對中國個人使用者提供完全免費的簡體中文版，並稱約有 5 億使用者（報導稱為『最新估計』）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞報導；公司說法是記者引述一位未具名的行銷代表；使用者數是估計。",
+          "origin": "wave73-20261117",
+          "original_url": "https://torrentfreak.com/winrar-locks-pirate-keygen-but-the-good-guy-towards-regular-users-191207/"
         }
       ]
     },
@@ -259209,6 +260596,25 @@
       ]
     },
     {
+      "id": "SRC-eb8043dd1beea24f",
+      "url": "https://security.googleblog.com/2014/04/street-view-and-recaptcha-technology.html",
+      "readings": [
+        {
+          "title": "Street View and reCAPTCHA technology just got smarter",
+          "publisher": "Google Online Security Blog，2014-04-16",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 4（200，138,067 bytes）下載 HTML，python 去標籤後讀正文",
+          "reading_scope": "貼文正文全讀；文中連到的 ICLR 論文沒有讀",
+          "locator": "第 1–4 段『This technology finds and reads street numbers…』『over 99% accuracy』",
+          "summary": "Google 寫：街景與 reCAPTCHA 兩個團隊合作的新系統能找出並讀出街景照片裡的門牌號碼、對到地圖上的地址，難讀的門牌準確率 90%；同一套演算法拿去解 reCAPTCHA 最難的扭曲文字題，準確率超過 99%。所以『打對字』不能再是分辨人和機器的唯一依據，前一年已改用風險分析。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的說明。這篇只說演算法讀門牌、兩個團隊合作，沒有寫『使用者在驗證碼裡輸入的門牌被拿去標地圖』這句話。",
+          "origin": "wave73-20261117",
+          "original_url": "https://security.googleblog.com/2014/04/street-view-and-recaptcha-technology.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-eb8a610670d670df",
       "url": "https://www.jstage.jst.go.jp/article/tja1942/1/1/1_1_147/_article/-char/ja",
       "readings": [
@@ -261670,6 +263076,25 @@
       ]
     },
     {
+      "id": "SRC-edb94580fa1439ec",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular79e2.pdf",
+      "readings": [
+        {
+          "title": "Circular of the Bureau of Standards No. 79：Electrical Characteristics and Testing of Dry Cells（2d Edition）",
+          "publisher": "美國商務部標準局，1923-01-19（NIST 數位典藏）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 25（200，5,235,246 bytes）下載 PDF，以 pdftotext -layout 轉文字後讀前言、第 II 章手電筒電池一節與附錄規格",
+          "reading_scope": "讀了前言、〈Flash-light and miniature batteries〉一節（含 Table 5）、附錄規格的〈Standard Sizes, Flash-light Cells〉；電化學與測試方法各章沒有讀。文字層是舊掃描的 OCR，表格裡的分數多半辨識錯誤",
+          "locator": "前言第 2–4 段（『December 5 and 6, 1921』『30 different sizes…adopted 8』『approximately 150,000,000 per year』）；p.18〈3. Flash-light and miniature batteries〉（『No designation of size can be given, since each manufacturer has his own system of numbering them』）；Table 5",
+          "summary": "第一版與規格是戰時由標準局擬的，1918-10-31 交給廠商、戰時工業委員會、陸軍部與標準局的委員會。1921 年 12 月 5–6 日標準局召集廠商、政府部門與大用戶開會：17 種乾電池尺寸留 7 種；30 種手電筒電池留 8 種；另定了兩種收音機用電池。前言估計民眾一年買約 1.5 億顆。正文談手電筒用的電池組（多顆組成的 batteries）時直說『沒辦法給尺寸名稱，因為每家廠商各有一套編號』；標準手電筒單顆電池的表只列直徑與高度（公制約 1.6×4.8、1.9×5.4、2.4×4.5、3.2×5.7、3.2×7.3 公分），正文說這五種單顆電池在圖 3 標成 C、D、E、F、G，是對照插圖的記號。大顆的則用鋅筒高度的英寸數叫『No. 6』。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "OCR 品質差，英制分數讀不準，本卡只用公制欄與文字敘述；1919 年第一版沒有讀。",
+          "origin": "wave73-20261117",
+          "original_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular79e2.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-edc2add028e4d744",
       "url": "https://www.jstage.jst.go.jp/article/ase1911/47/12/47_12_470/_article/-char/ja/",
       "readings": [
@@ -262380,6 +263805,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.aerotechnews.com/davis-monthanafb/2016/12/02/162nd-fighter-wing-arizona-air-national-guard/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ee70d0179f6fcb14",
+      "url": "https://rauch.cc/company/100-x-rauch-1919-2019/posts/the-smell-of-gummi-bears-instead-of-blackcurrant",
+      "readings": [
+        {
+          "title": "The smell of Gummi Bears instead of blackcurrant（100 x Rauch 1919–2019 百年故事之一）",
+          "publisher": "Rauch Fruchtsäfte（奧地利果汁公司）官方網站，2019 年百年專題",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 23（200，49,908 bytes）下載 HTML，以 scripts/txt.py 去標籤後全文閱讀",
+          "reading_scope": "全文四段",
+          "locator": "『in the spring of 1987… Rauch was filling the first batches of Red Bull』『whether Rauch could fill 250 ml cans and 175 ml bottles』『their exclusive filling partner』",
+          "summary": "果汁公司自己的回憶：平常辦公室聞到的是蘋果、柳橙、黑醋栗，1987 年春天卻飄來一股小熊軟糖味——他們正在替一個新客戶裝填第一批能量飲料。前一年對方來問能不能裝 250 毫升罐與 175 毫升瓶；公司裡有人不看好『這麼小一罐賣這麼貴』，但『小的代工單也是錢』。這個客戶對品質極挑，罐上幾乎看不見的刮痕、瓶標歪一點都會被退。文末寫：此後它一直是對方的『獨家裝填夥伴』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "代工方的紀念文，帶宣傳口吻；沒有產量與合約條件。文中點名的兩位當事人不入正片。",
+          "origin": "wave73-20261117",
+          "original_url": "https://rauch.cc/company/100-x-rauch-1919-2019/posts/the-smell-of-gummi-bears-instead-of-blackcurrant"
         }
       ]
     },
@@ -266145,6 +267589,25 @@
       ]
     },
     {
+      "id": "SRC-f1ed7b99cfc16e32",
+      "url": "https://www.iis.fraunhofer.de/en/magazin/panorama/2025/30-years-of-mp3.html",
+      "readings": [
+        {
+          "title": "30 Years of .mp3: Three Letters That Changed the World",
+          "publisher": "Fraunhofer IIS 線上雜誌，2025-07-04",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 3（200，143,789 bytes）；網址來自 seq 1 頁面的連結；以 python 去標籤後讀正文",
+          "reading_scope": "正文全讀；影片未看",
+          "locator": "〈A Clever Trick Optimizes Storage〉末段（『chosen on July 14, 1995, through an internal email poll』）、〈A Growth Engine for Fraunhofer IIS〉",
+          "summary": "『mp3』是『MPEG-1 Audio Layer-3』的簡稱，這個名字是 1995 年 7 月 14 日研究所內部用電子郵件投票選出的副檔名。壓縮後的檔案最多可小到十分之一。這項技術在專利存續期間替整個 Fraunhofer 協會帶來『數億歐元』的授權收入，研究所因此成長為協會裡最大的一所；主管表示專利到期後的缺口已由後續幾代編碼補上。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "三十週年的宣傳性文章，數字是概數（『hundreds of millions of euros』），沒有逐年金額。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.iis.fraunhofer.de/en/magazin/panorama/2025/30-years-of-mp3.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-f1f1105de8fb083c",
       "url": "https://www.nytimes.com/1991/09/10/world/2-jovial-con-men-demystify-those-crop-circles-in-britain.html%EF%BD%9C2026-10-10%EF%BD%9Clegend-bullets",
       "readings": [
@@ -266727,6 +268190,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.nobelprize.org/uploads/2018/06/hewish-lecture.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f268ba85426f73aa",
+      "url": "https://gamespy-archives.quaddicted.com/sites/www.planetfortress.com/features/articles/steampr/index.html",
+      "readings": [
+        {
+          "title": "Valve Unveils Steam – Official Press Release",
+          "publisher": "Valve, L.L.C. 新聞稿（San Jose，2002-03-21），由 GameSpy 旗下愛好者網站 PlanetFortress 當年轉載；現存於 quaddicted.com 的 GameSpy 網站存檔",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 19（200，30,048 bytes）下載 HTML，以 python 去標籤後全文讀完",
+          "reading_scope": "新聞稿全文讀完",
+          "locator": "副標『Broadband Business Platform Opens New Channel for Software Developers, Publishers and Service Providers』；第 1–3 段；『Currently, there are over 75,000 Steam beta testers』",
+          "summary": "2002 年 3 月 21 日的新聞稿：公司在遊戲開發者大會宣布 Steam，稱它是『直接遞送軟體與管理內容的寬頻商業平台』；第 2 段寫有寬頻的消費者可以『購買並啟動』應用程式、比從光碟安裝快，省掉實體通路的成本；核心是『分散式檔案系統加一組共用技術元件，可以裝進任何軟體』，提供開發者直接發行、彈性計費、版本控管、防盜版等工具，並免去補丁與更新的麻煩。稿中說它調查了一百多萬名線上玩家、七成五以上已從撥接換成寬頻；合作對象有另一家遊戲工作室（現場示範一款測試版遊戲）、一家顯示卡公司（要用它自動更新驅動程式）、電信與寬頻業者（負責代管）；當時有七萬五千多名測試者，SDK 已可取得。新聞稿正文沒有 store／shop 這兩個字，但有 purchase。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是愛好者網站當年轉載的新聞稿，不是公司官網原件；轉載頁有亂碼引號。稿中人物（公司主管與合作廠商主管）都在世，正片不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://gamespy-archives.quaddicted.com/sites/www.planetfortress.com/features/articles/steampr/index.html"
         }
       ]
     },
@@ -267615,6 +269097,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.upi.com/Odd_News/2010/08/23/2-foot-long-crocodile-captured-in-New-York/UPI-47151282591950/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f33e4534888766db",
+      "url": "https://store.steampowered.com/news/446/?l=english",
+      "readings": [
+        {
+          "title": "Announcement（Rag Doll Kung Fu 將於 2005-10-12 透過 Steam 發售）",
+          "publisher": "Valve 官方 Steam 新聞頁，2005-09-19",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 20（200，41,533 bytes）下載 HTML，以 python 去標籤後讀公告全文；覆核者 R731 重抓同一網址（R731 seq 1，200，41,533 bytes）核對日期、價格與 550 萬",
+          "reading_scope": "公告全文讀完",
+          "locator": "首句『will be made available to gamers everywhere on October 12, 2005 via Steam』；末段『a direct distribution channel to over 5.5 million customers…for $12.95』",
+          "summary": "官方公告（2005-09-19）：一位在別家工作室當美術的設計師用業餘時間做的格鬥小遊戲，2005 年 10 月 12 日起在 Steam 以 12.95 美元發售；起因是他前一年在開發者大會上展示，幾位 Valve 員工當場邀他來談。公告說 Steam 給開發者與發行商『通往 550 多萬名顧客的直接通路』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公告本身沒有寫『第一款第三方遊戲』，那個說法來自 ZR1-S016；設計師在世，正片不點名。",
+          "origin": "wave73-20261117",
+          "original_url": "https://store.steampowered.com/news/446/?l=english"
         }
       ]
     },
@@ -273578,6 +275079,25 @@
       ]
     },
     {
+      "id": "SRC-f90ac24df72e5b7c",
+      "url": "https://security.googleblog.com/2013/10/recaptcha-just-got-easier-but-only-if.html",
+      "readings": [
+        {
+          "title": "reCAPTCHA just got easier (but only if you’re human)",
+          "publisher": "Google Online Security Blog，2013-10-25",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 3（200，160,868 bytes）下載 HTML，python 去標籤後讀正文",
+          "reading_scope": "貼文正文全讀；33 則留言只掃過",
+          "locator": "第 1–3 段『For over a decade…』『the distorted letters serve less as a test of humanity and more as a medium of engagement』",
+          "summary": "Google 寫：這幾年人工智慧縮小了人和機器讀扭曲文字的差距，所以系統改看使用者和驗證碼互動『之前、之中、之後』的整段過程；扭曲的字『與其說是測驗，不如說是引出各種線索的媒介』。對多數人改出容易的數字題，機器人則看到更難的題。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的說明，沒有公開判斷用的訊號細節。",
+          "origin": "wave73-20261117",
+          "original_url": "https://security.googleblog.com/2013/10/recaptcha-just-got-easier-but-only-if.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-f90c040cfa5d1c62",
       "url": "https://newengland.com/?p=73157",
       "readings": [
@@ -275440,6 +276960,25 @@
           "limitations": "1855 年當代評論原篇（1883 年文集重印）；文集編者 Nathan Sheppard 卒年未印於文內，不在正片文稿點名。",
           "origin": "wave52-20261113",
           "original_url": "https://www.gutenberg.org/files/28289/28289-h/28289-h.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-faec4b6344f8b329",
+      "url": "https://www.tabasco.com/our-history/",
+      "readings": [
+        {
+          "title": "The History of TABASCO® Brand",
+          "publisher": "McIlhenny Company 官方網站（讀取日 2026-11-17）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 16（200，140,587 bytes）下載 HTML，以 python 去標籤後讀沿革正文",
+          "reading_scope": "沿革正文讀完；產品與永續段落略讀",
+          "locator": "『McIlhenny grew his first commercial pepper crop in 1868…658 bottles』『secured a patent in 1870』『Today, over 150 years later…remain virtually unchanged. Now the aging process for the mash is longer – up to three years in white oak barrels』",
+          "summary": "公司自己的沿革：創辦人 1868 年種出第一批商用辣椒，隔年以每瓶一美元批發價送出 658 瓶，1870 年取得專利；裝在古龍水式小瓶裡。頁面寫『150 多年後，基本配方、製程與原料幾乎沒有改變』，緊接著說『現在』辣椒泥的熟成比較久——在白橡木桶裡最多三年——醋也改用蒸餾醋。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的說法；沒有寫專利的內容，也沒有寫熟成時間是哪一年拉長的。",
+          "origin": "wave73-20261117",
+          "original_url": "https://www.tabasco.com/our-history/"
         }
       ]
     },
@@ -280807,6 +282346,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.ucl.ac.uk/news/2021/mar/experts-recreate-mechanical-cosmos-worlds-first-computer"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ffe01f4a853dbcea",
+      "url": "http://www.qrcode.com/en/patent.html",
+      "readings": [
+        {
+          "title": "About the patent",
+          "publisher": "DENSO WAVE INCORPORATED 官方網站 QRcode.com（頁面無日期）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 9（200，3,553 bytes）下載 HTML，以 scripts/txt.py 去標籤後全文閱讀（網址來自 seq 8 首頁上的連結）",
+          "reading_scope": "全頁",
+          "locator": "首段『has a number of patents on QR Code』『Everyone can use the QR Code freely as long as following the standards for QR Codes in JIS or ISO.』；專利清單；末行『(Other many hundreds of patents)』",
+          "summary": "官方專利頁：公司『持有多項 QR Code 專利』，列出 6 件日本專利與 3 件美國專利為例（含 JP2938338、US5726435），並註『另有數百件』；任何人只要遵守 JIS 或 ISO 的 QR Code 標準就可以自由使用；若要用『偏離標準』的 QR Code，請先聯絡專利權人。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只列專利號，沒有寫各件的到期日與現況；『數百件』是公司自述。",
+          "origin": "wave73-20261117",
+          "original_url": "http://www.qrcode.com/en/patent.html"
         }
       ]
     },
