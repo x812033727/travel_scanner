@@ -1,0 +1,501 @@
+{
+ "tempo": 1.0,
+ "grades": {},
+ "default_grade": "dh",
+ "finish": "vignette=angle=PI/5,format=yuv420p",
+ "names": {},
+ "punch": false,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
+  "<VIDEO_WORKDIR>/zhong-tian-qu-qi-e927-dh/sfx"
+ ],
+ "name_whoosh": "swish-9",
+ "music": [
+  {
+   "cue": "tension",
+   "from": "s01",
+   "to": "s13",
+   "offset": 0.0,
+   "gain": -22,
+   "fade_in": 0.5,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "suspense",
+   "from": "s14",
+   "to": "s24",
+   "offset": 0.0,
+   "gain": -23,
+   "fade_in": 0.8,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "night",
+   "from": "s25",
+   "to": "s33",
+   "offset": 0.0,
+   "gain": -23,
+   "fade_in": 1.0,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "suspense",
+   "from": "s34",
+   "to": "s37",
+   "offset": 40.0,
+   "gain": -21,
+   "fade_in": 1.0,
+   "fade_out": 2.5,
+   "tail": 0
+  }
+ ],
+ "sfx": [
+  {
+   "file": "Wind",
+   "at": "s01",
+   "off": 0,
+   "gain": -8,
+   "to": "s13"
+  },
+  {
+   "file": "birds",
+   "at": "s01",
+   "off": 0,
+   "gain": -22,
+   "to": "s13"
+  },
+  {
+   "file": "Wind",
+   "at": "s14",
+   "off": 0,
+   "gain": -14,
+   "to": "s24"
+  },
+  {
+   "file": "Wind",
+   "at": "s25",
+   "off": 0,
+   "gain": -9,
+   "to": "s26"
+  },
+  {
+   "file": "Wind",
+   "at": "s34",
+   "off": 0,
+   "gain": -9,
+   "to": "s37"
+  },
+  {
+   "file": "Wind",
+   "at": "s27",
+   "off": 0,
+   "gain": -12,
+   "to": "s33"
+  },
+  {
+   "synth": "river",
+   "at": "s27",
+   "off": 0,
+   "gain": -20,
+   "to": "s33",
+   "fade": 0.6
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s01",
+   "off": 0.2,
+   "gain": -10
+  },
+  {
+   "file": "cloth1",
+   "at": "s01",
+   "off": 0.6,
+   "gain": -8
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s01",
+   "off": 1.6,
+   "gain": -10
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s01",
+   "off": 2.8,
+   "gain": -10
+  },
+  {
+   "file": "cloth2",
+   "at": "s02",
+   "off": 0.15,
+   "gain": -10
+  },
+  {
+   "file": "impactWood_medium_001",
+   "at": "s03",
+   "off": 0.25,
+   "gain": -12
+  },
+  {
+   "file": "footstep_concrete_003",
+   "at": "s03",
+   "off": 3.6,
+   "gain": -14
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s03",
+   "off": 4.4,
+   "gain": -15
+  },
+  {
+   "file": "paper_02",
+   "at": "s04",
+   "off": 0.15,
+   "gain": -4
+  },
+  {
+   "file": "paper_03",
+   "at": "s04",
+   "off": 1.8,
+   "gain": -10
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s05",
+   "off": 0.15,
+   "gain": -10
+  },
+  {
+   "file": "handleCoins",
+   "at": "s05",
+   "off": 0.9,
+   "gain": -14
+  },
+  {
+   "file": "swish-7",
+   "at": "s06",
+   "off": 0.35,
+   "gain": -18
+  },
+  {
+   "file": "swish-3",
+   "at": "s07",
+   "off": 0.08,
+   "gain": -16
+  },
+  {
+   "file": "cloth2",
+   "at": "s08",
+   "off": 0.4,
+   "gain": -8
+  },
+  {
+   "file": "rustle03",
+   "at": "s09",
+   "off": 1.6,
+   "gain": -8
+  },
+  {
+   "file": "cloth1",
+   "at": "s10",
+   "off": 1.0,
+   "gain": -14
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s11",
+   "off": 0.15,
+   "gain": -14
+  },
+  {
+   "file": "cloth1",
+   "at": "s13",
+   "off": 0.2,
+   "gain": -10
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s13",
+   "off": 0.4,
+   "gain": -10
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s13",
+   "off": 1.2,
+   "gain": -10
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s13",
+   "off": 2.0,
+   "gain": -11
+  },
+  {
+   "file": "footstep_concrete_003",
+   "at": "s13",
+   "off": 2.8,
+   "gain": -12
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s13",
+   "off": 3.5,
+   "gain": -13
+  },
+  {
+   "file": "impactWood_heavy_002",
+   "at": "s14",
+   "off": 0.02,
+   "gain": -14
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "s14",
+   "off": 0.8,
+   "gain": -8
+  },
+  {
+   "file": "paper_01",
+   "at": "s16",
+   "off": 6.2,
+   "gain": -12
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "s18",
+   "off": 5.6,
+   "gain": -6
+  },
+  {
+   "file": "snort927",
+   "at": "s21",
+   "off": 0.02,
+   "gain": -4
+  },
+  {
+   "file": "swish-11",
+   "at": "s21",
+   "off": 4.55,
+   "gain": -16
+  },
+  {
+   "file": "paper_02",
+   "at": "s22",
+   "off": 0.75,
+   "gain": -8
+  },
+  {
+   "file": "paper_04",
+   "at": "s22",
+   "off": 2.75,
+   "gain": -8
+  },
+  {
+   "file": "paper_03",
+   "at": "s23",
+   "off": 1.0,
+   "gain": -14
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "s24",
+   "off": 5.5,
+   "gain": -16
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s25",
+   "off": 0.3,
+   "gain": -12
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s25",
+   "off": 1.25,
+   "gain": -13
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s25",
+   "off": 2.2,
+   "gain": -12
+  },
+  {
+   "file": "footstep_concrete_003",
+   "at": "s25",
+   "off": 3.1,
+   "gain": -13
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s26",
+   "off": 0.5,
+   "gain": -24
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s26",
+   "off": 2.0,
+   "gain": -24
+  },
+  {
+   "file": "splash_02",
+   "at": "s27",
+   "off": 0.5,
+   "gain": -24
+  },
+  {
+   "file": "cloth2",
+   "at": "s28",
+   "off": 0.3,
+   "gain": -12
+  },
+  {
+   "file": "handleCoins",
+   "at": "s29",
+   "off": 0.4,
+   "gain": -8
+  },
+  {
+   "file": "splash_01",
+   "at": "s29",
+   "off": 1.6,
+   "gain": -24
+  },
+  {
+   "file": "cloth1",
+   "at": "s31",
+   "off": 1.6,
+   "gain": -8
+  },
+  {
+   "file": "wind1",
+   "at": "s32",
+   "off": 0.2,
+   "gain": -16
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s34",
+   "off": 5.2,
+   "gain": -14
+  },
+  {
+   "file": "footstep_concrete_003",
+   "at": "s35",
+   "off": 0.3,
+   "gain": -20
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s37",
+   "off": 4.3,
+   "gain": -10
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s37",
+   "off": 4.8,
+   "gain": -10
+  },
+  {
+   "file": "swish-9",
+   "at": "s37",
+   "off": 5.4,
+   "gain": -12
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s37",
+   "off": 5.5,
+   "gain": -6
+  },
+  {
+   "file": "gong_02",
+   "at": "s37",
+   "off": 5.5,
+   "gain": -2
+  }
+ ],
+ "frame_round": true,
+ "clip_voice": true,
+ "voice_skip": {},
+ "voice_until": {
+  "s34": 5.2,
+  "s16": 6.55
+ },
+ "clip_af": {
+  "s01": {
+   "from": 0,
+   "af": "asplit=2[z1][z2];[z1]atrim=end=1.200,asetpts=PTS-STARTPTS,rubberband=pitch=0.70:formant=preserved[z3];[z2]atrim=start=1.200,asetpts=PTS-STARTPTS[z4];[z3][z4]concat=n=2:v=0:a=1"
+  },
+  "s14": {
+   "from": 0,
+   "af": "rubberband=pitch=0.70:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s16": {
+   "from": 0,
+   "af": "rubberband=pitch=0.90:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s25": {
+   "from": 0,
+   "af": "rubberband=pitch=1.25:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  }
+ },
+ "voice_off": [
+  "s02",
+  "s03",
+  "s18",
+  "s20",
+  "s21",
+  "s24",
+  "s36"
+ ],
+ "move_lines": {},
+ "min": {
+  "s37": 10.0
+ },
+ "line_at": {
+  "zq927a02": 0.39,
+  "zq927a03": 0.34,
+  "zq927a04": 0.3,
+  "zq927a08": 0.3,
+  "zq927a10": 0.3,
+  "zq927a14": 0.2,
+  "zq927a15": 0.15,
+  "zq927a16": 0.4,
+  "zq927a19": 0.35,
+  "zq927a20": 0.21,
+  "zq927a21": 0.15,
+  "zq927a22": 0.22,
+  "zq927a28": 0.2,
+  "zq927a31": 0.22,
+  "zq927a32": 1.0
+ },
+ "line_lead": {},
+ "panel_y": {
+  "s19": 860
+ },
+ "panel_from": {
+  "s19": 0.4
+ },
+ "panel_color": {},
+ "panel_until": {
+  "s19": 4.0
+ },
+ "vf": {
+  "s30": "crop=1680:945:240:68,scale=1920:1080:flags=lanczos,setsar=1",
+  "s37": "fade=t=out:st=7.600:d=0.40"
+ },
+ "subtitle_lines": [],
+ "_note": "draft"
+}
