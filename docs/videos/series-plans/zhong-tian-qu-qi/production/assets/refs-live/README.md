@@ -132,3 +132,7 @@
 - `set-dukou-ye-qiao-l1` = `set-dukou-ye-l1` `crop=640:360:0:200,scale=1312:736:flags=lanczos`：棧橋——從左下斜斜伸進水裡的木板棧橋、四根高高的素木樁、濃霧、暗水與倒影，右上遠處一抹蘆葦。沒有船、沒有燈、沒有字。第 25 集在棧橋上的鏡（s19、s21、s24、s26、s30、s32、s34–s40）送它；木樁頂的火把、船頭、甘蔗與人寫在鏡頭裡。放大 2 倍偏軟。
 - `set-dukou-ye-wu-l1` = `set-dukou-ye-l1` `crop=480:270:800:0,scale=1312:736:flags=lanczos`：右上只有夜霧的那一角，左下偏亮的灰藍漸到右上的深藍，沒有任何物件（做法同第 23 集的 `set-chuan-ye-wu-l1`）。第 25 集的近鏡與泥岸上的鏡（s20、s20b、s23、s23b、s25、s27–s29、s33、s40b）送它：近鏡背後只要霧，泥岸不在任何一張圖上，寫在鏡頭裡。放大 2.7 倍，本來就是霧。
 - 第 25 集不送的：`set-chuan-ye-l1`（帶竹篷的小船；三條貨船照拍法 23 用文字寫，送了會畫成篷船）、`set-dukou-l2`（`gen-dh` 的 SET 句給的白天圖，每鏡都換掉）。糖坊照用第 24 集的 `set-tangfang-l1`（s01）與 `set-tangfang-jia-l1`（其餘第一場），母圖的低斜陽從右來，正是稿子的午後斜陽從棚外（畫右）照進來。
+
+第 26 集的一張免費裁切（2026-11-17，協調者照站主授權決定，全尺寸看過；`writer-tools/e026-r2/r2.py`）：新的場景 id、自帶 l1，`pilot.py` 找 `set-tangfang` 最新 l 版時拿不到（`prep926.sh` 查過 `set-tangfang`、`set-xuji-pu`、`set-shiji` 最新仍是 l1），由 `colab/runs/e926-live/spec.json` 的 `swap_pictures` 用絕對路徑送。
+- `set-tangfang-lu-l1` = `set-tangfang-l1` `crop=640:360:672:240,scale=1312:736:flags=lanczos`：糖坊右邊沒有牆的那一側——左邊一截棚下泥地與兩三根木柱、斜斜往遠處去的木欄杆、欄杆柱上一疊圓竹匾，欄杆外是一條兩邊積雪的土路、禿柳、亮亮的溪，右上低低的金色朝陽。沒有人、沒有字。第 26 集賴三隔著欄杆討飯的四鏡（s08 主觀全景、s09、s11、s14）送它：稿子的「棚口」在真人圖上就是這道欄杆。放大 2 倍偏軟。
+- 第 26 集其餘的圖都已有、照用：糖坊 `set-tangfang-l1`（全景 s02、s17）與 `set-tangfang-jia-l1`（近鏡）、鋪子 `set-xuji-pu-l1` 與櫃面 `set-xuji-pu-cabinet-l1`、後間 `set-xuji-pu-houjian-l1`（圖上只有暗的空木架，桌、竹匾、竹籃、油燈寫在鏡頭裡）、大街 `set-xianjie-l1` 與第 24 集的三張裁切；人物 `laisan`、`weishaoqing`、`xiaohe` 的 l1。不送的：`set-shiji-l1`（`gen-dh` 的 SET 句給的，每鏡都換掉）。

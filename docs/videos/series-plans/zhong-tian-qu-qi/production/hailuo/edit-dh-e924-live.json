@@ -1,0 +1,460 @@
+{
+ "tempo": 1.0,
+ "grades": {},
+ "default_grade": "dh",
+ "finish": "vignette=angle=PI/5,format=yuv420p",
+ "names": {},
+ "punch": false,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+ ],
+ "name_whoosh": "swish-9",
+ "music": [
+  {
+   "cue": "market",
+   "from": "s01",
+   "to": "s18",
+   "offset": 0.0,
+   "gain": -23,
+   "fade_in": 0.3,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "night",
+   "from": "s19",
+   "to": "s23",
+   "offset": 0.0,
+   "gain": -23,
+   "fade_in": 1.0,
+   "fade_out": 1.2,
+   "tail": 0.3
+  },
+  {
+   "cue": "warm",
+   "from": "s24",
+   "to": "s29",
+   "offset": 0.6,
+   "gain": -21,
+   "fade_in": 1.0,
+   "fade_out": 1.2,
+   "tail": 0
+  },
+  {
+   "cue": "suspense",
+   "from": "s30",
+   "to": "s36",
+   "offset": 0.0,
+   "gain": -21,
+   "fade_in": 0.3,
+   "fade_out": 2.5,
+   "tail": 0
+  }
+ ],
+ "sfx": [
+  {
+   "file": "Wind",
+   "at": "s01",
+   "off": 0,
+   "gain": -10,
+   "to": "s18"
+  },
+  {
+   "file": "fire",
+   "at": "s19",
+   "off": 0,
+   "gain": -22,
+   "to": "s23"
+  },
+  {
+   "file": "Wind",
+   "at": "s19",
+   "off": 0,
+   "gain": -13,
+   "to": "s23"
+  },
+  {
+   "synth": "river",
+   "at": "s23",
+   "off": 4.3,
+   "gain": -19,
+   "to": "s28",
+   "fade": 0.6
+  },
+  {
+   "file": "birds",
+   "at": "s23",
+   "off": 4.3,
+   "gain": -22,
+   "to": "s28"
+  },
+  {
+   "file": "Wind",
+   "at": "s23",
+   "off": 4.3,
+   "gain": -14,
+   "to": "s28"
+  },
+  {
+   "file": "Wind",
+   "at": "s29",
+   "off": 0,
+   "gain": -9,
+   "to": "s36"
+  },
+  {
+   "file": "birds",
+   "at": "s29",
+   "off": 0,
+   "gain": -22,
+   "to": "s29"
+  },
+  {
+   "file": "hooves_trot",
+   "at": "s29",
+   "off": 0.6,
+   "gain": -30,
+   "to": "s29"
+  },
+  {
+   "file": "gong_01",
+   "at": "s01",
+   "off": 0.0,
+   "gain": -26
+  },
+  {
+   "file": "impactWood_medium_000",
+   "at": "s01",
+   "off": 0.1,
+   "gain": -28
+  },
+  {
+   "file": "gong_01",
+   "at": "s01",
+   "off": 5.0,
+   "gain": -26
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s02",
+   "off": 0.2,
+   "gain": -30
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s02",
+   "off": 0.45,
+   "gain": -30
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s02",
+   "off": 0.7,
+   "gain": -30
+  },
+  {
+   "file": "footstep_concrete_003",
+   "at": "s02",
+   "off": 0.95,
+   "gain": -30
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s02",
+   "off": 1.2,
+   "gain": -30
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s02",
+   "off": 1.5,
+   "gain": -30
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s04",
+   "off": 0.05,
+   "gain": -32
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s04",
+   "off": 0.17,
+   "gain": -32
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s04",
+   "off": 0.29,
+   "gain": -32
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s08",
+   "off": 1.05,
+   "gain": -22
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s08",
+   "off": 1.05,
+   "gain": -21
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s10",
+   "off": 0.6,
+   "gain": -26
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s11",
+   "off": 0.25,
+   "gain": -32
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s11",
+   "off": 0.6,
+   "gain": -32
+  },
+  {
+   "file": "footstep_concrete_003",
+   "at": "s11",
+   "off": 0.95,
+   "gain": -32
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s11",
+   "off": 1.3,
+   "gain": -32
+  },
+  {
+   "file": "gong_01",
+   "at": "s11",
+   "off": 0.0,
+   "gain": -30
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s12",
+   "off": 0.02,
+   "gain": -32
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s12",
+   "off": 0.1,
+   "gain": -32
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s12",
+   "off": 0.18,
+   "gain": -32
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s12",
+   "off": 0.26,
+   "gain": -32
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s12",
+   "off": 0.34,
+   "gain": -32
+  },
+  {
+   "file": "rustle03",
+   "at": "s16",
+   "off": 2.1,
+   "gain": -16
+  },
+  {
+   "file": "splash_01",
+   "at": "s21",
+   "off": 0.4,
+   "gain": -24
+  },
+  {
+   "file": "splash_02",
+   "at": "s21",
+   "off": 1.3,
+   "gain": -30
+  },
+  {
+   "file": "cloth2",
+   "at": "s23",
+   "off": 3.9,
+   "gain": -20
+  },
+  {
+   "file": "door_open",
+   "at": "s29",
+   "off": 0.25,
+   "gain": -22
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s30",
+   "off": 0.0,
+   "gain": -26
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s30",
+   "off": 0.14,
+   "gain": -26
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s30",
+   "off": 0.24,
+   "gain": -28
+  },
+  {
+   "file": "door_close_01",
+   "at": "s33",
+   "off": 0.3,
+   "gain": -18
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "s33",
+   "off": 1.1,
+   "gain": -24
+  },
+  {
+   "file": "cloth2",
+   "at": "s34",
+   "off": 3.85,
+   "gain": -16
+  },
+  {
+   "file": "handleCoins2",
+   "at": "s34",
+   "off": 3.95,
+   "gain": -24
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s36",
+   "off": 6.62,
+   "gain": -6
+  },
+  {
+   "file": "gong_02",
+   "at": "s36",
+   "off": 6.62,
+   "gain": -2
+  }
+ ],
+ "frame_round": true,
+ "clip_voice": true,
+ "voice_skip": {},
+ "voice_until": {},
+ "clip_af": {
+  "s19": {
+   "from": 0,
+   "af": "rubberband=pitch=1.35:formant=preserved,volume=1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s28": {
+   "from": 0,
+   "af": "asplit[s28a][s28b];[s28a]atrim=end=4.6,asetpts=PTS-STARTPTS,volume=-1.9dB[s28c];[s28b]atrim=start=4.6,asetpts=PTS-STARTPTS,rubberband=pitch=0.7:formant=preserved,volume=0.6dB[s28d];[s28c][s28d]concat=n=2:v=0:a=1"
+  },
+  "s36": {
+   "from": 0,
+   "af": "rubberband=pitch=0.92:formant=preserved,volume=2.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s03": {
+   "from": 0,
+   "af": "volume=-1.6dB"
+  },
+  "s05": {
+   "from": 0,
+   "af": "volume=-0.6dB"
+  },
+  "s06": {
+   "from": 0,
+   "af": "volume=-1.5dB"
+  },
+  "s07": {
+   "from": 0,
+   "af": "volume=-1.0dB"
+  },
+  "s14": {
+   "from": 0,
+   "af": "volume=-2.1dB"
+  },
+  "s18": {
+   "from": 0,
+   "af": "volume=-0.9dB"
+  },
+  "s20": {
+   "from": 0,
+   "af": "volume=-1.3dB"
+  },
+  "s22": {
+   "from": 0,
+   "af": "volume=-1.7dB"
+  },
+  "s23": {
+   "from": 0,
+   "af": "volume=0.4dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s27": {
+   "from": 0,
+   "af": "volume=-0.5dB"
+  },
+  "s31": {
+   "from": 0,
+   "af": "volume=-0.8dB"
+  },
+  "s35": {
+   "from": 0,
+   "af": "volume=-0.5dB"
+  }
+ },
+ "voice_off": [],
+ "move_lines": {},
+ "min": {
+  "s28": 8.25,
+  "s36": 11.0
+ },
+ "line_at": {
+  "zq924a01": 0.3,
+  "zq924a09": 0.0,
+  "zq924a03": 0.45,
+  "zq924a10": 0.4,
+  "zq924a11": 0.7,
+  "zq924a25": 0.4,
+  "zq924a29": 0.6,
+  "zq924a30": 0.35
+ },
+ "line_lead": {},
+ "panel_y": {
+  "s15": 880,
+  "s26": 880
+ },
+ "panel_from": {
+  "s13": 0.7,
+  "s26": 0.4,
+  "s15": 3.2
+ },
+ "panel_color": {},
+ "panel_until": {},
+ "vf": {
+  "s28": "fade=t=out:st=7.850:d=0.40",
+  "s29": "crop=1792:1008:0:36,scale=1920:1080:flags=lanczos,setsar=1,fade=t=in:st=0:d=0.40",
+  "s33": "crop=1856:1044:0:18,scale=1920:1080:flags=lanczos,setsar=1",
+  "s36": "fade=t=out:st=6.600:d=0.40"
+ },
+ "subtitle_lines": [],
+ "_note": "draft"
+}
