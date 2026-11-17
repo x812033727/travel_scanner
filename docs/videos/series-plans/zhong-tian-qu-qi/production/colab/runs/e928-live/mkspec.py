@@ -20,9 +20,13 @@ Run: python3 -I mkspec.py
   left/right edge of the frame", or the gaze names the thing looked at.
 - Sets (r2.py PLACES): the lane set-chouduan-ye-xiang-l2 (s01-s07, s03b); the yamen steps set-xianya-steps-l2 (s08, s09, s11-s17, s15b)
   and set-xianya-steps-shi-l1 (s10); the court hall set-xianya-gongtang-dais-l1 (s18, s20, s22) and -floor-l1 (s19, s21, s23-s25);
-  the jail set-dalao-l1 as gen-dh sends it (s26, s27, s31), set-dalao-di-l1 (s28), set-dalao-bi-l1 (s29, s30, s32); the square
-  set-guangchang-tai-l1 (s33, s39), -zuo-l1 (s34), -shu-l1 (s35, s36, s38), -you-l1 (s37). gen-dh's set-chouduan-l1, set-xianya-l1
+  the jail set-dalao-l1 as gen-dh sends it (s26), set-dalao-di-zuo-l1 (s28), set-dalao-bi-l1 (s27, s29-s32); the square
+  set-guangchang-tai-l1 (s33, s39), -zuo-l1 (s34), -shu-l1 (s35, s36, s38), -you-wu-l1 (s37). gen-dh's set-chouduan-l1, set-xianya-l1
   and set-guangchang-l1 are never sent. Every swap is sent with an absolute path by prep928.sh.
+- After the independent review (writer-tools/e028-r2/review.md, 2026-11-17): s08's 'only' sentence puts Xu Yan beside the red pillar;
+  s11, s16, s21, s34 open their motion with a capital (the refine anchor is split off again, 必改 1); s39 sends Magistrate Hu, Wei
+  Shaoqing and Xu Yan's portrait (his angle-a dropped) and names the twelve; s27, s31 send set-dalao-bi-l1 (no lock), s28
+  set-dalao-di-zuo-l1, s37 set-guangchang-you-wu-l1 (no empty chair).
 - No seed of this episode has been run. Seeds 9281101/9281102.
 """
 import json
@@ -81,7 +85,7 @@ shots = {sid: {} for sid in ids}
 # Tang Xiaotang from behind, speaking: her identity sentence and her three pictures leave.
 ALONE = f"She is the only person in the frame, seen only from behind; {ONE_TANG}; no second copy of anyone appears."
 for sid, onl in [
-    ("s08", [ONLY_2, back("Xu Yan at the edge of the top step")]),
+    ("s08", [ONLY_2, back("Xu Yan beside the red pillar")]),
     ("s11", [ONLY_SHE, ALONE]),
     ("s16", [ONLY_2, back("Xu Yan close by")]),
     ("s21", [ONLY_SHE, ALONE]),
@@ -90,6 +94,9 @@ for sid, onl in [
     add(sid, [TANG_ID, ""])
     add(sid, onl)
     drop(sid, *TANG_PICS)
+# e928 review 必改 1: with the refine anchor split off again, the motion of these four opens a sentence ("her ..." -> "Her ...")
+for sid in ["s11", "s16", "s21", "s34"]:
+    add(sid, ["never the mood. her ", "never the mood. Her "])
 for sid in ["s11", "s21", "s34"]:  # the set clause now opens the sentence (renumbered to 1 by the drop)
     add(sid, ["cinema camera. the location shown in <Picture 4>", "cinema camera. The location shown in <Picture 4>"])
 
@@ -112,7 +119,8 @@ add("s29", [ONLY_HE, besides("him", "the soft shoulder of the thin man at the le
 add("s32", [ONLY_HE, besides("him", "the one black-sleeved forearm at the lower edge")])
 add("s33", [ONLY_2, only("these 2 named people, the back of the kneeling man and the eight townspeople the composition describes")])
 add("s37", [ONLY_HE, besides("him", "the soft shoulder of the townsman in the foreground")])
-add("s39", [ONLY_HE, besides("him", "the eight townspeople in the foreground")])
+# e928 review 必改 2: Magistrate Hu, the kneeling man's back and Wei Shaoqing back on the platform (hand-over 28->29), twelve people
+add("s39", [S39_ONLY, only("these 3 named people, the back of the kneeling man and the eight townspeople the composition describes")])
 # the composition already says it (e927 review 建議: no doubled 'only' sentence)
 for sid, sent in [("s12", ONLY_SHE), ("s15", ONLY_HE), ("s15b", ONLY_HE), ("s19", ONLY_HE), ("s23", ONLY_HE), ("s24", ONLY_SHE), ("s25", ONLY_HE),
                   ("s26", ONLY_HE), ("s30", ONLY_HE), ("s35", ONLY_HE), ("s36", ONLY_HE), ("s38", ONLY_HE)]:
@@ -155,6 +163,7 @@ XU_TWO = ["s15", "s23", "s25", "s32"]  # gen-dh sent angle-a and angle-b only (c
 for sid in XU_ALL:
     if sid not in XU_TWO:
         drop(sid, "xuyan-angle-b-l1.png")
+drop("s39", "xuyan-angle-a-l1.png")  # e928 review 必改 2: the wide needs no angle picture; four pictures (Hu, Wei, Xu Yan, the set)
 
 # Sets.
 SWAP = {}
@@ -167,9 +176,10 @@ for sid in ["s18", "s20", "s22"]:
     SWAP[sid] = {YA: "set-xianya-gongtang-dais-l1.png"}
 for sid in ["s19", "s21", "s23", "s24", "s25"]:
     SWAP[sid] = {YA: "set-xianya-gongtang-floor-l1.png"}
-for sid in ["s26", "s27", "s31"]:
-    SWAP[sid] = {}  # set-dalao-l1 as gen-dh sends it
-SWAP["s28"] = {DL: "set-dalao-di-l1.png"}
+SWAP["s26"] = {}  # set-dalao-l1 as gen-dh sends it
+for sid in ["s27", "s31"]:  # e928 review 必改 6: the left part without the lock and the doors
+    SWAP[sid] = {DL: "set-dalao-bi-l1.png"}
+SWAP["s28"] = {DL: "set-dalao-di-zuo-l1.png"}  # e928 review 必改 7 + 建議 4: more floor
 for sid in ["s29", "s30", "s32"]:
     SWAP[sid] = {DL: "set-dalao-bi-l1.png"}
 for sid in ["s33", "s39"]:
@@ -177,7 +187,7 @@ for sid in ["s33", "s39"]:
 SWAP["s34"] = {GC: "set-guangchang-zuo-l1.png"}
 for sid in ["s35", "s36", "s38"]:
     SWAP[sid] = {GC: "set-guangchang-shu-l1.png"}
-SWAP["s37"] = {GC: "set-guangchang-you-l1.png"}
+SWAP["s37"] = {GC: "set-guangchang-you-wu-l1.png"}  # e928 review 必改 9: no empty armchair
 for sid in XU_TWO:
     SWAP[sid]["xuyan-angle-a-l1.png"] = "xuyan-portrait-l1.png"
     SWAP[sid]["xuyan-angle-b-l1.png"] = "angles/xuyan-angle-a-l1.png"
@@ -200,8 +210,8 @@ spec = {
               "A-ling wears the veil: aling-veil-portrait-l1 for her portrait, her angle pictures dropped. No person sent in s03b, "
               "s04, s10, s28. Sets: set-chouduan-ye-xiang-l2 (s01-s07, s03b), set-xianya-steps-l2 (s08, s09, s11-s17, s15b), "
               "set-xianya-steps-shi-l1 (s10), set-xianya-gongtang-dais-l1 (s18, s20, s22), -floor-l1 (s19, s21, s23-s25), "
-              "set-dalao-l1 (s26, s27, s31), set-dalao-di-l1 (s28), set-dalao-bi-l1 (s29, s30, s32), set-guangchang-tai-l1 (s33, "
-              "s39), -zuo-l1 (s34), -shu-l1 (s35, s36, s38), -you-l1 (s37) (prep928.sh swaps with absolute paths). Xu Yan's angle-b "
+              "set-dalao-l1 (s26), set-dalao-di-zuo-l1 (s28), set-dalao-bi-l1 (s27, s29-s32), set-guangchang-tai-l1 (s33, "
+              "s39), -zuo-l1 (s34), -shu-l1 (s35, s36, s38), -you-wu-l1 (s37) (prep928.sh swaps with absolute paths). Xu Yan's angle-b "
               "nowhere (s15, s23, s25, s32 send his portrait then angle-a). The three inserts never say 'open'. No off-screen "
               "sentence (r2.py OFFSCREEN_SPEECH = False). Seeds 9281101/9281102."),
     "seeds": [9281101, 9281102],

@@ -49,6 +49,42 @@ review-picks-b,picks-merged}.tsv) and the lessons in the task file (e921-e925):
 - One visible action per shot, props and contacts in the first frame; the script's follows, tracks, rises, falls and pans are
   slow push-ins.
 
+AFTER THE INDEPENDENT REVIEW (review.md in this folder: the 13 必改 all applied as written, the 建議 the coordinator chose;
+2026-11-17, the coordinator deciding for the owner; where this differs from the paragraphs above and below, this wins):
+- d1 refine-sentence leak (必改 1): live_clips() writes "..., the young woman's back to us" / "keeps the same hair, ... her back to
+  us" into the refine text of the five back shots (s08, s11, s16, s21, s34), so ref2manifest.mjs's ANCHOR_FF no longer matched
+  and the refine sentence "<who> shown in <Picture 1> keep(s) the same ...; the set layout stays as it is." stayed in their d1
+  prompts (s08/s16's <Picture 1> is Xu Yan). The text of clips-dh stays as live_clips() writes it; prep928.sh now runs stage 1
+  (the anchor split) on gen-dh's anchor form of these five texts (anchor_form() below) and puts the live text back after it,
+  then checks that no d1 prompt holds the refine wording. mkspec.py capitalises the motion that now opens the sentence
+  (s11, s16, s21, s34: "Her"). e926 and e927 never had it (their live_clips() kept gen-dh's anchor; their d1 checked: 0).
+- s39 (必改 2, hand-over 28->29): Magistrate Hu behind the red desk, the back of the kneeling man centre front (unnamed, no
+  picture, as s33), Wei Shaoqing in the armchair on the right, all still, lips closed; Xu Yan "standing apart" on the left;
+  exactly twelve people; pictures Hu, Wei, Xu Yan's portrait and the set (his angle-a dropped); the refine text says the three
+  stay still.
+- s02, s32 (必改 3): nobody off screen is described: "someone out of sight beyond the right edge of the frame, where only the dark
+  brick wall reaches the edge"; the eyes move "from one spot beyond the right edge of the frame to another"; s32 "to that spot".
+- s03 (必改 4): A-ling "her back three-quarter to us, facing down the lane", the man two steps beyond her facing her and us, the
+  small warm light behind him (backlit, his face dark); the stick "comes down a full arm's length to her right and cracks onto
+  the empty wet stones"; nobody is hit. s03b (必改 5): "his left hand clutching his right wrist from the first frame".
+- s27, s31 (必改 6): set-dalao-bi-l1 (no lock, no doors), LOC jail_g (the bars, the torchlit wall, the small lattice window, the
+  torch). s28 (必改 7 + 建議 4): eye level, the food box "standing on the stone floor just beyond the bars and filling the gap
+  between the two bars in the lower half of the frame"; the new free crop set-dalao-di-zuo-l1 (set-dalao-l1
+  crop=288:162:236:410, gamma 1.3; full size: three bars, the stone wall, the floor in the lower third, no lock) is sent.
+- The square (必改 8): "hard bright low winter sun from the upper right behind, long shadows falling to the left across the
+  earth" (s35, s36, s38: "from the right, the clear blue sky"), "the hard winter sunlight stays unchanged"; the line's 午時 stays.
+- s37 (必改 9): the new free crop set-guangchang-you-wu-l1 (set-guangchang-you-l1 crop=812:457:500:0: the review's x 480 still
+  caught the tip of the platform corner at the left edge, so its own fallback x 500; a row of tiled rooms with plank doors, the
+  earth and the long tree shadows, no chair, no platform); "the long low tiled building with its plank doors".
+- s08 (必改 10): Xu Yan "standing on the porch paving beside the thick red pillar", only his eyes move down toward the street;
+  she stays in the middle, her shoulders square to us. s16 (必改 11): Xu Yan "half a step beyond her right shoulder", her hand
+  raised at shoulder height, "only her forearm moving". s09 (必改 12): Lai San "bent forward beside her on the top step".
+- a06 (必改 13): see the BUY comment (the recording).
+- 建議 taken: the townsman's grey short jacket is dark blue (s33, s39); s28's crop (above); a14 lowered 3 semitones with the
+  formants kept (BUY comment). Not taken: s01's half step, s15/s15b's background, s31's lamp, s32's hand, s34's doubled
+  sentence, s26's lock line and paint-out, the square grain test, Zhao Butou's cap; a01/a03 stay (the clip voice is primary;
+  lower 3 semitones only if a recording is used), a08 stays (the editor's ear).
+
 THE AXES (rule 29: the set picture decides):
 - The lane (set-chouduan-ye-xiang-l2, e027's): the lane runs straight away from us; A-ling stands in the near part of the lane on
   the LEFT facing screen right down it, the two men further down right of centre facing her, the small warm light behind them;
@@ -72,15 +108,15 @@ spec.json swaps each for the picture below with an absolute path.
 - The yamen steps: set-xianya-steps-l2 (e019's; s08, s09, s11-s17) and the new free crop set-xianya-steps-shi-l1 (the steps
   only; s10, the ingot caught).
 - The court hall: set-xianya-gongtang-dais-l1 (Hu: s18, s20, s22) and set-xianya-gongtang-floor-l1 (the floor: s19, s21, s23-s25).
-- The jail: set-dalao-l1 (s26, s27, s31) and two new free crops: set-dalao-bi-l1 (the bars before the torchlit wall: s29, s30,
-  s32) and set-dalao-di-l1 (the bars and the stone beyond, brightened: s28).
+- The jail: set-dalao-l1 (s26) and new free crops: set-dalao-bi-l1 (the bars before the torchlit wall: s27, s29-s32 after the
+  review) and set-dalao-di-zuo-l1 (the bars and the floor beyond, brightened: s28 after the review; set-dalao-di-l1 unused).
 - The square: five new free pictures from set-guangchang-l1 with the two yellow boards and the yellow stand at the hall doorway
   painted dark (they had stroke-like marks): set-guangchang-tai-l1 (the wide, the sun cropped off: s33, s39), -tai-zhong-l1 (the
   platform: unused this episode, made for e029), -shu-l1 (a bare tree and roofs against the sky: s35, s36, s38), -zuo-l1 (below
-  the platform's left: s34), -you-l1 (below its right: s37).
+  the platform's left: s34), -you-l1 (below its right: unused after the review), and -you-wu-l1 (the review's crop: s37).
 - Inserts and shots with nobody named (s03b, s04, s10, s28) open their motion with NOBODY.
-- Shared files: no code changed (every on-screen speaker is in build-r2.py's EN; no minor role speaks). refs-live gets eight new
-  free pictures (new ids, own l1; rule 19) and a README paragraph.
+- Shared files: no code changed (every on-screen speaker is in build-r2.py's EN; no minor role speaks). refs-live gets ten new
+  free pictures (new ids, own l1; rule 19; two after the review) and a README paragraph.
 """
 EP = 928  # internal working number; the published slug is zhong-tian-qu-qi-e028-r2
 SLUG = "zhong-tian-qu-qi-e028-r2"
@@ -424,13 +460,13 @@ HEAD = [
     "- **唐小棠不露嘴說話、不露臉**（拍法 3）：她五句（s08、s11、s16、s21、s34）全從背後拍、畫面正中、正背對鏡頭、頭不動、剛好兩顆丸子；spec 拿掉她的圖與身分句。算盤本集沒有（拍法 20；c21 的「喀」交給音效）。",
     "- **阿令整集戴面巾**（拍法 21）：送 `aling-veil-portrait-l1`、不送角度圖；台詞全放錄音（nospeak）；短刀只在打鬥三鏡（s02、s03、s03b），一律寫「套在素木鞘裡、刀柄連鞘一整塊閉著的深色木頭」（接點 27→28：從頭到尾不出鞘；不寫 dagger、blade、draw）。打鬥照拍法 22 拆鏡：一鏡一個打手、一個動作，不給打手正臉，刀不碰人。",
     "- **衙役與趙捕頭**（拍法 16、17）：不寫職稱字；鐵尺改前臂、鑰匙串交給音效；門口打呵欠的衙役、公堂與廣場的兩排衙役不拍（音效）。**胡縣令每鏡都戴有帽翅的黑紗幞頭**，公堂只送公案裁切、肩膀正對桌子只轉頭；跟孫掌櫃不同鏡。**大牢**（拍法 24）：送挑定的 `set-dalao-l1`，柵欄照圖寫粗方深色、不寫材質；整場在柵門內外拍，賴三的臉只在 s30 單人。",
-    "- **場景圖說了算**（拍法 29，協調者 2026-11-17 決定，每張放大看過）：後巷 `set-chouduan-ye-xiang-l2`（第 27 集）；縣衙門口 `set-xianya-steps-l2`（第 19 集）；公堂地面與公案裁切（第 18 集）；大牢 `set-dalao-l1`；**新的免費圖八張**：`set-xianya-steps-shi-l1`、`set-dalao-bi-l1`、`set-dalao-di-l1`、廣場的 `set-guangchang-tai-l1`、`-tai-zhong-l1`（給第 29 集）、`-shu-l1`、`-zuo-l1`、`-you-l1`（廣場圖先塗掉堂屋門口兩塊有筆畫的黃板與黃色架子）。**不需要試鏡**。",
+    "- **場景圖說了算**（拍法 29，協調者 2026-11-17 決定，每張放大看過）：後巷 `set-chouduan-ye-xiang-l2`（第 27 集）；縣衙門口 `set-xianya-steps-l2`（第 19 集）；公堂地面與公案裁切（第 18 集）；大牢 `set-dalao-l1`（審稿後只剩 s26）；**新的免費圖十張**：`set-xianya-steps-shi-l1`、`set-dalao-bi-l1`（審稿後 s27、s31 也送）、`set-dalao-di-l1`（審稿後不送）、`set-dalao-di-zuo-l1`（審稿後 s28）、`set-guangchang-you-wu-l1`（審稿後 s37）、廣場的 `set-guangchang-tai-l1`、`-tai-zhong-l1`（給第 29 集）、`-shu-l1`、`-zuo-l1`、`-you-l1`（廣場圖先塗掉堂屋門口兩塊有筆畫的黃板與黃色架子）。**不需要試鏡**。",
     "- 長鏡要買的秒數（BUY）：照錄音核過（見 `r2.py` 的 BUY 註解）。",
     "- **表上的「秒」欄是 lint 估法**，比錄音短；剪接以錄音的人聲長度為準。",
 ]
 FOOT = [
     "- **參考圖**（`assets/refs-live/`）：許硯（l1、angle-a；帶笑的 angle-b 整集不送）、阿令（面巾 `aling-veil-portrait-l1`，不送角度圖）、賴三 l1、趙捕頭 l1、魏少卿 l1、胡縣令 l1、孫掌櫃 l1。唐小棠整集不送圖。兩個打手、鎮民、前景的肩與背影、手都不送圖。場景見上面。",
-    "- 共用檔：程式都沒改（畫面上說話的人都在 `build-r2.py` 的 `EN`；本集沒有小角色說話）；`gen-dh.mjs`、`pilot.py`、`cast.json` 不動；`refs-live` 加八張免費圖（都是新 id）與 README 一段。趙捕頭的職稱字、胡縣令的帽子、孫掌櫃的笑眼、阿令的紅唇由 `colab/runs/e928/extras.json` 換掉；精修文字的 CG 立領句、唐小棠的名字與『Constable Zhao』由本檔結尾的 `live_clips()` 在 build 後從 `clips-dh-e928.json` 換掉。",
+    "- 共用檔：程式都沒改（畫面上說話的人都在 `build-r2.py` 的 `EN`；本集沒有小角色說話）；`gen-dh.mjs`、`pilot.py`、`cast.json` 不動；`refs-live` 加十張免費圖（都是新 id；審稿後加 `set-dalao-di-zuo-l1`、`set-guangchang-you-wu-l1`）與 README 一段。趙捕頭的職稱字、胡縣令的帽子、孫掌櫃的笑眼、阿令的紅唇由 `colab/runs/e928/extras.json` 換掉；精修文字的 CG 立領句、唐小棠的名字與『Constable Zhao』由本檔結尾的 `live_clips()` 在 build 後從 `clips-dh-e928.json` 換掉。",
     "- `colab/runs/e928/extras.json`（照第 27 集）與 `colab/runs/e928-live/spec.json`（`mkspec.py` 產生；種子 9281101／9281102）。",
     "- 免費準備：scratchpad `prep928.sh`（`DRY=1 … st1-ep.sh 928` → `pilot.py` → `retake.py` → `colab-jobs.json` 加 output_path、套 swap_pictures（絕對路徑）→ 逐鏡查送的場景圖與人物圖 → 精修用的分隔句 → `preflight-prompts.py` → 否定名詞、會長字的名詞、掛著的東西、open、『畫外的年輕女子』與『點名的畫外人』掃描）。",
     "- 配樂：後巷短促的打鬥鼓點，s04 木棍落地一個重拍、之後只剩夜風；縣衙門口晨光的暖 cue（s13–s16 輕輕的），公堂轉低鼓，s20 訂日子一個重音；大牢低的懸疑 pad 與火把劈啪，s28 食盒一個重音；廣場人聲 bed 加慢慢壓上來的低鼓，s38 指認一個大重音。音效見 script.md〈音樂與音效〉（另外：打手往前一步、門口的雞叫與打呵欠、s11 跺腳、s21 算盤「喀」、鑰匙串與牢門、兩排衙役與水火棍、人群嘩然，都交給音效）。",
@@ -490,6 +526,26 @@ def live_clips(path):
         row[0] = text
         row[1] = hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
     open(path, "w", encoding="utf-8").write(json.dumps(clips, ensure_ascii=False, separators=(",", ":")))
+
+
+# e928 review 必改 1: ref2manifest.mjs (stage 1 of prep928.sh) strips gen-dh's refine anchor with ANCHOR_FF, "<who> shown in
+# <Picture 1> keep(s) the same face, hair, costume and props as the first frame; the set layout stays as it is.", and the back-shot
+# wording live_clips() writes no longer matches it, so the sentence stayed in five d1 prompts. prep928.sh hands stage 1 the
+# anchor form of the live file (this), then puts the live file back; the refine text (clips-dh) keeps live_clips()'s wording.
+def anchor_form(text):
+    text = text.replace(", the young woman's back to us; the set layout stays as it is.", "; the set layout stays as it is.")
+    text = text.replace("keeps the same hair, costume and props as the first frame, her back to us; the set layout stays as it is.",
+                        "keeps the same face, hair, costume and props as the first frame; the set layout stays as it is.")
+    assert "back to us; the set layout" not in text
+    return text
+
+
+def anchor_form_file(src, dst):
+    import json
+    clips = json.load(open(src, encoding="utf-8"))
+    for row in clips.values():
+        row[0] = anchor_form(row[0])
+    open(dst, "w", encoding="utf-8").write(json.dumps(clips, ensure_ascii=False, separators=(",", ":")))
 
 
 if __name__ == "r2spec":
