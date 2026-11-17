@@ -15,12 +15,13 @@ stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=o
 # picks-merged.tsv and review3-trims.tsv (run in colab/runs/e927-live: refine-prep.py 27 picks-merged.tsv review3-trims.tsv,
 # then stage.py 27; no fix round in e927). review3-trims.tsv (first cut): s01 end 3.500 -> 6.375, s12 end 4.917 -> 6.584 and
 # s27 end 5.125 -> 6.584 (the picks were cut to lay recordings; the takes' own voices go on to 誰家的糖，吃倒了人, 去綢緞莊等我
-# and 沒讓人看見吧), s21 start 1.208 -> 1.000 (a20-trim and the snort fit without a held frame). s19 keeps its crop
+# and 沒讓人看見吧), s21 start 1.208 -> 1.000 (a20-trim and the snort fit without a held frame); REVIEW 3 (review3-plan.md): s03 end
+# 6.209 -> 5.500, s10 end 3.500 -> 3.000, s16 start 0.791 -> 1.291, s26 end 4.000 -> 3.250, s29 end 4.000 -> 3.000. s19 keeps its crop
 # 800:452:0:0 from picks-merged.tsv (stage.py crops and scales it 1.2x; the white banner with false characters is out).
 # Whole frames: a start rounded DOWN and an end-before rounded UP to 3 decimals, tolerance 0.001; 0 = no end. Warn (not stop).
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
-want={'s01':(0.083,6.375),'s02':(0.0,3.584),'s03':(0.75,6.209),'s04':(0.0,3.0),'s05':(0.5,4.5),'s06':(0.541,7.792),'s07':(1.541,6.375),'s08':(0.875,5.0),'s09':(0.0,3.0),'s10':(0.5,3.5),'s11':(0.5,5.0),'s12':(1.208,6.584),'s13':(0.5,4.5),'s14':(0.0,6.459),'s15':(0.333,6.584),'s16':(0.791,8.0),'s17':(0.5,5.667),'s18':(0.25,6.584),'s19':(0.0,8.0),'s20':(0.333,4.709),'s21':(1.0,5.875),'s22':(1.0,4.5),'s23':(0.25,6.334),'s24':(0.75,6.459),'s25':(1.125,4.667),'s26':(0.0,4.0),'s27':(0.291,6.584),'s28':(1.5,6.584),'s29':(0.0,4.0),'s30':(0.375,6.292),'s31':(2.5,6.584),'s32':(0.5,5.917),'s33':(2.125,6.584),'s34':(0.583,6.584),'s35':(0.0,3.0),'s36':(2.166,6.167),'s37':(0.0,8.0)}
+want={'s01':(0.083,6.375),'s02':(0.0,3.584),'s03':(0.75,5.5),'s04':(0.0,3.0),'s05':(0.5,4.5),'s06':(0.541,7.792),'s07':(1.541,6.375),'s08':(0.875,5.0),'s09':(0.0,3.0),'s10':(0.5,3.0),'s11':(0.5,5.0),'s12':(1.208,6.584),'s13':(0.5,4.5),'s14':(0.0,6.459),'s15':(0.333,6.584),'s16':(1.291,8.0),'s17':(0.5,5.667),'s18':(0.25,6.584),'s19':(0.0,8.0),'s20':(0.333,4.709),'s21':(1.0,5.875),'s22':(1.0,4.5),'s23':(0.25,6.334),'s24':(0.75,6.459),'s25':(1.125,4.667),'s26':(0.0,3.25),'s27':(0.291,6.584),'s28':(1.5,6.584),'s29':(0.0,3.0),'s30':(0.375,6.292),'s31':(2.5,6.584),'s32':(0.5,5.917),'s33':(2.125,6.584),'s34':(0.583,6.584),'s35':(0.0,3.0),'s36':(2.166,6.167),'s37':(0.0,8.0)}
 seed={'s01':9271102,'s05':9271102,'s06':9271102,'s08':9271102,'s09':9271102,'s11':9271102,'s12':9271102,'s13':9271102,'s15':9271102,'s17':9271102,'s20':9271102,'s22':9271102,'s24':9271102,'s25':9271102,'s26':9271102,'s28':9271102,'s29':9271102,'s31':9271102,'s33':9271102,'s34':9271102,'s35':9271102}
 bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].get(\"end-before\",0)} (want {a} {b})' for s,(a,b) in want.items()
      if s in p and (abs(p[s]['trim'].get('start',0)-a)>0.001 or abs(p[s]['trim'].get('end-before',0)-b)>0.001)]
@@ -38,9 +39,9 @@ cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VL
 [ -f $E/cut/e927-live.mp4 ] || exit 1
 # a sample-peak limiter before loudnorm2 keeps it linear (e908-e912: attack 5 ms, limit 0.6; the AAC encode after it
 # overshoots at shorter attacks and loudnorm2 then goes dynamic and clicks). e913 REVIEW 3 on: attack 8 ms; e923 on: limit 0.55.
-# END: s37 is the suspense tail (8 s): A-ling's cold a32 under the veil, two sticks slapped, the sheathed knife slides out,
-# the low hit and the gong at c5.5, the picture fades out over c7.60-8.00 (vf) and min 10.0 holds black while the gong rings
-# out; the sound fades over the last 1.0 s.
+# END: s37 is the suspense tail (8 s): A-ling's cold a32 under the veil, the swish as she raises the sheathed knife (c1.0; the stick slaps are out, REVIEW 3),
+# the low hit and the gong at c5.5; REVIEW 3: a slow 1.00 -> 1.06 push, the picture fades out over c5.60-6.00 (vf, while the
+# knife is still in frame) and min 10.0 holds black while the gong rings out (gong_02 ends at c10.0); the sound fades over the last 1.0 s.
 D=$(ffprobe -v error -show_entries format=duration -of csv=p=0 $E/cut/e927-live.mp4); FS=$(python3 -c "print(f'{$D-1.0:.3f}')")
 ffmpeg -v error -y -i $E/cut/e927-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.55:attack=8:release=60:level=false,aresample=48000,afade=t=out:st=$FS:d=1.0" $E/cut/e927-live.lim.mp4 && mv $E/cut/e927-live.lim.mp4 $E/cut/e927-live.mp4
 # loudnorm2 is linear only when the measured true peak plus the gain to -14 LUFS stays at or under -2.2 dBTP: print it
