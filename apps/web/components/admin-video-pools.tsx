@@ -9,7 +9,8 @@ import { api } from "@/lib/api";
 import { videoPoolsCopy, videoPoolsText } from "@/lib/video-pools-copy";
 
 const SERIES = ["curio", "so-thats-why"] as const;
-const VIEWS = ["themes", "published", "expansions"] as const;
+const VIEWS = ["themes", "cores", "published", "expansions"] as const;
+const CORE_STATUSES = ["passing", "scored", "unscored", "all"] as const;
 const EPISODE_STATUSES = ["published", "unpublished", "all"] as const;
 const STATUSES = ["producible", "reserve", "short", "all"] as const;
 const DIMS = ["click", "hook", "surprise", "payoff", "share"] as const;
@@ -18,7 +19,7 @@ type Series = (typeof SERIES)[number];
 type Copy = ReturnType<typeof videoPoolsCopy>;
 type Verdict = keyof Copy["verdicts"];
 export type PoolAudience = {
-  score: number; rank: number; of: number; click: number; hook: number; surprise: number; payoff: number; share: number;
+  score: number; rank: number; of: number; click: number; hook: number; surprise: number; payoff: number; share: number; demand: number | null; base: number | null;
   comment: string; reviewed_on: string; rounds: { score: number; comment: string; changes: string; reviewed_on: string }[];
 };
 export type PoolTheme = {
@@ -30,6 +31,12 @@ export type PoolThemeDetail = PoolTheme & {
 };
 export type PoolOverview = { series: { key: Series; name: string; revision: string; audience_min: number; themes_sha256: string; counts: Record<keyof Copy["counts"] | "raw_records" | "themes" | "long_themes", number> }[] };
 export type PoolThemePage = { items: PoolTheme[]; total: number; page: number; page_size: number; categories: { category: string; count: number }[] };
+/** A selected topic that carries an episode on its own. It sits in no theme, so it has no place in the themes view. */
+export type PoolCore = {
+  id: string; category: string | null; question: string; hook: string; payoff: string; minutes: [number, number];
+  audience: PoolAudience | null; demand: number | null; produced: boolean;
+};
+export type PoolCorePage = { items: PoolCore[]; total: number; page: number; page_size: number; categories: { category: string; count: number }[] };
 export type PoolEpisode = {
   key: string; code: string | null; title: string; category: string | null; slugs: string[]; candidate_ids: string[];
   published: boolean; youtube_id: string | null; youtube_url: string | null; youtube_source: "site" | "catalog" | null;
@@ -46,6 +53,7 @@ const isSeries = oneOf(SERIES);
 const isView = oneOf(VIEWS);
 const isEpisodeStatus = oneOf(EPISODE_STATUSES);
 const isStatus = oneOf(STATUSES);
+const isCoreStatus = oneOf(CORE_STATUSES);
 const isMinScore = oneOf(MIN_SCORES);
 const isPage = (value: string) => /^[1-9]\d{0,5}$/.test(value);
 const isShort = (value: string) => value.length <= 200;
@@ -75,7 +83,7 @@ function Score({ audience, copy }: { audience: PoolAudience | null; copy: Copy }
   return <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
     <span className="text-2xl font-black tabular-nums" aria-label={copy.score}>{audience.score.toFixed(2)}</span>
     <span className="text-sm font-semibold">{videoPoolsText(copy.rank, { rank: audience.rank, of: audience.of })}</span>
-    <span className="text-xs text-[var(--muted)]">{DIMS.map((dim) => `${copy.dims[dim]} ${audience[dim]}`).join("・")}</span>
+    <span className="text-xs text-[var(--muted)]">{[...DIMS.map((dim) => `${copy.dims[dim]} ${audience[dim]}`), ...(audience.demand === null ? [] : [`${copy.dims.demand} ${audience.demand}`])].join("・")}</span>
   </div>;
 }
 
@@ -195,6 +203,81 @@ function Themes({ series, copy }: { series: Series; copy: Copy }) {
   </>;
 }
 
+function Core({ core, copy }: { core: PoolCore; copy: Copy }) {
+  return <article className="min-w-0 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 sm:p-5">
+    <div className="flex flex-wrap items-center gap-2 text-xs text-[var(--muted)]">
+      <span className="font-mono">{core.id}</span>{core.category && <span>{core.category}</span>}
+      <span>{videoPoolsText(copy.minutesRange, { from: core.minutes[0], to: core.minutes[1] })}</span>
+      {core.produced && <AdminStatusPill status="active">{copy.produced}</AdminStatusPill>}
+    </div>
+    <h3 className="mt-2 break-words text-lg font-bold [overflow-wrap:anywhere]">{core.question}</h3>
+    <div className="mt-3 flex flex-wrap items-center gap-3">
+      <Score audience={core.audience} copy={copy} />
+      {!core.audience && core.demand !== null && <span className="text-xs text-[var(--muted)]">{copy.dims.demand} {core.demand}</span>}
+    </div>
+    {core.audience && <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{core.audience.comment}</p>}
+    {(core.hook || core.payoff) && <details className="mt-4 text-sm">
+      <summary className="min-h-11 cursor-pointer content-center font-bold text-[var(--teal)]">{copy.coreDetails}</summary>
+      <div className="grid min-w-0 gap-4 pt-3">
+        {([["hook", core.hook], ["payoff", core.payoff]] as const).map(([label, text]) => text && <section key={label}>
+          <h4 className="mb-2 font-bold">{copy[label]}</h4><p className="whitespace-pre-wrap break-words leading-7 [overflow-wrap:anywhere]">{text}</p>
+        </section>)}
+      </div>
+    </details>}
+  </article>;
+}
+
+function Cores({ series, copy }: { series: Series; copy: Copy }) {
+  const [status] = useAdminQueryValue("pool_core_status", "passing", isCoreStatus);
+  const [category] = useAdminQueryValue("pool_category", "", isShort);
+  const [minScore] = useAdminQueryValue("pool_min", "", isMinScore);
+  const [query] = useAdminQueryValue("pool_q", "", isShort);
+  const [pageValue] = useAdminQueryValue("pool_page", "1", isPage);
+  const page = Number(pageValue);
+  const params = new URLSearchParams({ status, page: String(page), page_size: String(PAGE_SIZE) });
+  if (category) params.set("category", category);
+  if (minScore) params.set("min_score", minScore);
+  if (query) params.set("q", query);
+  const { data, error, retry } = useLoad<PoolCorePage>(`/admin/video-pools/${series}/cores?${params}`, (value) => Array.isArray(value.items) && Number.isInteger(value.total));
+  const pages = data ? Math.max(1, Math.ceil(data.total / PAGE_SIZE)) : 1;
+  const set = (values: Record<string, string>) => updateAdminQuery({ ...values, pool_page: "" });
+  return <>
+    <AdminFilterBar>
+      <label className="grid min-w-0 gap-1 text-sm font-semibold">{copy.statusLabel}
+        <select value={status} onChange={(event) => set({ pool_core_status: event.target.value === "passing" ? "" : event.target.value, pool_category: "" })} className={selectClass}>
+          {CORE_STATUSES.map((value) => <option key={value} value={value}>{copy.coreStatuses[value]}</option>)}
+        </select>
+      </label>
+      <label className="grid min-w-0 gap-1 text-sm font-semibold">{copy.category}
+        <select value={category} onChange={(event) => set({ pool_category: event.target.value })} className={selectClass}>
+          <option value="">{copy.allCategories}</option>
+          {data?.categories.map((facet) => <option key={facet.category} value={facet.category}>{facet.category} ({facet.count})</option>)}
+        </select>
+      </label>
+      <label className="grid min-w-0 gap-1 text-sm font-semibold">{copy.minScore}
+        <select value={minScore} onChange={(event) => set({ pool_min: event.target.value })} className={selectClass}>
+          <option value="">{copy.anyScore}</option>
+          {MIN_SCORES.map((value) => <option key={value} value={value}>≥ {value}</option>)}
+        </select>
+      </label>
+      <ThemeSearch key={query} query={query} copy={copy} />
+      {(status !== "passing" || category || minScore || query) && <Button secondary onClick={() => set({ pool_core_status: "", pool_category: "", pool_min: "", pool_q: "" })}>{copy.clear}</Button>}
+    </AdminFilterBar>
+    {error ? <AdminErrorState title={copy.error} detail={copy.errorDetail} retry={retry} retryLabel={copy.retry} />
+      : !data ? <AdminSkeleton label={copy.loading} />
+        : <>
+          <p role="status" className="text-sm text-[var(--muted)]">{videoPoolsText(copy.coreResults, { count: data.total })}</p>
+          {data.items.length ? <div className="grid min-w-0 gap-3">{data.items.map((core) => <Core key={core.id} core={core} copy={copy} />)}</div>
+            : <AdminEmptyState title={copy.coreEmpty} detail={copy.coreEmptyDetail} />}
+          {pages > 1 && <nav aria-label={copy.pageLabel} className="flex flex-wrap items-center justify-between gap-3">
+            <Button secondary disabled={page <= 1} onClick={() => updateAdminQuery({ pool_page: page - 1 === 1 ? "" : String(page - 1) })}>{copy.previous}</Button>
+            <span className="text-sm">{videoPoolsText(copy.pagination, { page, pages })}</span>
+            <Button secondary disabled={page >= pages} onClick={() => updateAdminQuery({ pool_page: String(page + 1) })}>{copy.next}</Button>
+          </nav>}
+        </>}
+  </>;
+}
+
 function Published({ series, copy }: { series: Series; copy: Copy }) {
   const [status] = useAdminQueryValue("pool_published", "published", isEpisodeStatus);
   const [query] = useAdminQueryValue("pool_q", "", isShort);
@@ -274,19 +357,19 @@ export function AdminVideoPools() {
     </header>
     <AdminFilterBar>
       <label className="grid min-w-0 gap-1 text-sm font-semibold">{copy.seriesLabel}
-        <select value={series} onChange={(event) => updateAdminQuery({ pool_series: event.target.value === "curio" ? "" : event.target.value, pool_status: "", pool_category: "", pool_min: "", pool_q: "", pool_page: "" })} className={selectClass}>
+        <select value={series} onChange={(event) => updateAdminQuery({ pool_series: event.target.value === "curio" ? "" : event.target.value, pool_status: "", pool_core_status: "", pool_category: "", pool_min: "", pool_q: "", pool_page: "" })} className={selectClass}>
           {SERIES.map((value) => <option key={value} value={value}>{copy.series[value]}</option>)}
         </select>
       </label>
       <label className="grid min-w-0 gap-1 text-sm font-semibold">{copy.viewLabel}
-        <select value={view} onChange={(event) => updateAdminQuery({ pool_view: event.target.value === "themes" ? "" : event.target.value })} className={selectClass}>
+        <select value={view} onChange={(event) => updateAdminQuery({ pool_view: event.target.value === "themes" ? "" : event.target.value, pool_category: "", pool_min: "", pool_q: "", pool_page: "" })} className={selectClass}>
           {VIEWS.map((value) => <option key={value} value={value}>{copy.views[value]}</option>)}
         </select>
       </label>
     </AdminFilterBar>
     {overview.error ? <AdminErrorState title={copy.error} detail={copy.errorDetail} retry={overview.retry} retryLabel={copy.retry} />
       : current && <div className="grid gap-2">
-        <dl className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+        <dl className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-7">
           {(Object.keys(copy.counts) as (keyof Copy["counts"])[]).map((name) => <div key={name} className="rounded-xl border border-[var(--line)] bg-[var(--surface)] p-3">
             <dt className="text-xs text-[var(--muted)]">{copy.counts[name]}</dt><dd className="text-xl font-black tabular-nums">{current.counts[name].toLocaleString()}</dd>
           </div>)}
@@ -294,6 +377,6 @@ export function AdminVideoPools() {
         <p className="text-xs text-[var(--muted)]">{videoPoolsText(copy.revision, { revision: current.revision })}</p>
         <p className="text-sm">{videoPoolsText(copy.minimum, { min: current.audience_min })}</p>
       </div>}
-    {view === "themes" ? <Themes key={series} series={series} copy={copy} /> : view === "published" ? <Published key={series} series={series} copy={copy} /> : <Expansions key={series} series={series} copy={copy} />}
+    {view === "themes" ? <Themes key={series} series={series} copy={copy} /> : view === "cores" ? <Cores key={series} series={series} copy={copy} /> : view === "published" ? <Published key={series} series={series} copy={copy} /> : <Expansions key={series} series={series} copy={copy} />}
   </section>;
 }

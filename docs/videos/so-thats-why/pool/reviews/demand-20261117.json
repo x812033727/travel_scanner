@@ -1,0 +1,2567 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-17",
+  "method": {
+    "what": "需求：照參考頻道觀看數歸納的四個是非題，併進獨立觀眾評分當第六項。",
+    "questions": {
+      "have": "這集主打的東西，台灣一般觀眾現在手上、家裡或每天生活裡就有、就在用",
+      "local": "講的是台灣或東亞觀眾自己生活圈裡特有的事",
+      "standard": "在講一個規格、標準、制度或規定為什麼長這樣，或一門生意誰在收錢、怎麼賺",
+      "lose_or_jp": "主角是一家大公司或大品牌的興衰，或一個日本的品牌、公司、產品"
+    },
+    "formula": "demand = 1 + 2.25 × 答「是」的題數；score = (五項平均 base × 5 + demand) ÷ 6",
+    "basis": "黑猫研究院（@qiqiqushi0）361 支與 cheap（@cheapaoe）最新 200 支；見 docs/videos/channel-review-20261116/README.md",
+    "reviewers": "4 位獨立評審各讀一批題案卡（片名、追問、章名），不讀 repo、不上網；拿不準答否。每批放同三組題，12 個答案全部一致。重複題取多數。",
+    "gate": "站主 2026-11-17：門檻維持 6.5 看總分；可成題總分低於 6.5 改成後備，基準初評的題案也一樣。",
+    "scope": "只評素材可成題且已有觀眾評分的題案。"
+  },
+  "counts": {
+    "scored": 154,
+    "demoted": 70
+  },
+  "themes": [
+    {
+      "id": "G01",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.6,
+      "score": 5.67,
+      "reason": "通用的導電實驗，主打的是蒸餾水與探棒量測，不是家中日常用品，也無在地、規格或品牌主題",
+      "reviewers": [
+        "stw-1",
+        "stw-2",
+        "stw-3",
+        "stw-4"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G02",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": true,
+        "lose_or_jp": false
+      },
+      "demand": 5.5,
+      "base": 6.88,
+      "score": 6.65,
+      "reason": "have：假網址、釣魚網站是每天上網會碰到的；standard：在講 Unicode 字元編碼與正規化規則為何讓「相同」有多種定義",
+      "reviewers": [
+        "stw-1",
+        "stw-2",
+        "stw-3",
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G03",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.77,
+      "score": 5.81,
+      "reason": "地下水與地層下陷是通用地科現象，案例是美國聖華金谷，不是手邊日常物，也非規格或品牌",
+      "reviewers": [
+        "stw-1",
+        "stw-2",
+        "stw-3",
+        "stw-4"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G05",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7,
+      "score": 6.38,
+      "reason": "have：家裡的 Wi-Fi 與手機上網位址是每天在用的東西",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G06",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.8,
+      "score": 7.04,
+      "reason": "have：家裡的盆栽澆水是一般人日常就有的事",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G07",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.3,
+      "score": 6.25,
+      "reason": "深空通訊只在太空任務中存在，與日常、在地、規格、品牌都無關",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G08",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.95,
+      "score": 7.17,
+      "reason": "have：家裡的抽屜櫃會不會倒，是家中現成的家具",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G09",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.45,
+      "score": 6.38,
+      "reason": "日食是通用天文現象，不是日常用品，也無在地、規格或品牌主題",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G10",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.75,
+      "score": 5.79,
+      "reason": "冰河在國外野外才看得到，屬通用地科現象",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G11",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 6.77,
+      "score": 6.18,
+      "reason": "have：辦公轉椅與自己收手變快的身體體驗是日常就有的",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G12",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.7,
+      "score": 6.58,
+      "reason": "離岸流是海邊的通用物理現象，不是每天生活裡在用的東西，也不限台灣",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G13",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": true,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 6.7,
+      "score": 6.12,
+      "reason": "standard：在講「一公斤」這個單位的定義為什麼改成常數、校正鏈怎麼訂",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G14",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.95,
+      "score": 5.96,
+      "reason": "統計摘要與作圖是通用的數學觀念，四題都不符合",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G15",
+      "answers": {
+        "have": false,
+        "local": true,
+        "standard": true,
+        "lose_or_jp": false
+      },
+      "demand": 5.5,
+      "base": 7.25,
+      "score": 6.96,
+      "reason": "local：主角是台灣的玉山與台灣的高程測量；standard：在講海拔零點、高程基準這套測量規定為什麼讓數字不同",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G16",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.7,
+      "score": 5.75,
+      "reason": "黑洞影像是天文觀測，日常碰不到，也無在地、規格或品牌主題",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G17",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.45,
+      "score": 6.75,
+      "reason": "have：SSD、隨身硬碟是一般人家裡就有的儲存裝置",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G18",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.1,
+      "score": 6.46,
+      "reason": "have：筆電睡眠時的細微叫聲是自己手邊筆電就有的現象",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G20",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.88,
+      "score": 6.73,
+      "reason": "清潔魚的行為是野外珊瑚礁生態，四題都不符合",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G21",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 8.1,
+      "score": 6.92,
+      "reason": "電鰻捕食是國外野外的動物行為，四題都不符合",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G22",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.55,
+      "score": 6.46,
+      "reason": "林蛙耐凍是北美野外的生理現象，四題都不符合",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G24",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 6.5,
+      "score": 5.96,
+      "reason": "have：家裡隨手可見的塑膠盒上的凹痕與結合線",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G25",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.1,
+      "score": 6.46,
+      "reason": "have：牛奶、奶油、鮮奶油、冰淇淋都是家中冰箱裡的東西",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G26",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.85,
+      "score": 7.08,
+      "reason": "have：講的是自己的注意力與記憶，屬於自己的身體反應",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G29",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.5,
+      "score": 5.58,
+      "reason": "光合作用的氧來源是通用的實驗室科學史，四題都不符合",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G33",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.7,
+      "score": 6.96,
+      "reason": "have：手機上的雷達回波 App 與自己家門口的雨，是日常在用的",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G38",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.1,
+      "score": 6.46,
+      "reason": "have：每天在用的加密通訊軟體，伺服器還知道什麼",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G42",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 6.97,
+      "score": 6.35,
+      "reason": "have：開冷氣的家裡牆面、壁紙發霉是居家日常會遇到的",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G43",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.57,
+      "score": 6.85,
+      "reason": "have：家裡隔音差、貼吸音泡棉沒用，是居住日常的東西",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G52",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7,
+      "score": 6.38,
+      "reason": "have：圍巾、針織衣物是家裡就有、每天在穿的",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G576",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.9,
+      "score": 6.75,
+      "reason": "動物導航（沙漠螞蟻等）是野外研究，四題都不符合",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G577",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.75,
+      "score": 6.62,
+      "reason": "動物睡眠的判定是野外與實驗室研究，四題都不符合",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G578",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.6,
+      "score": 6.88,
+      "reason": "have：手指觸覺是自己的身體反應",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G579",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 8.15,
+      "score": 7.33,
+      "reason": "have：聽話時被嘴形與預期帶走，是自己的聽覺反應",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G580",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.1,
+      "score": 6.08,
+      "reason": "古足跡研究是野外考古，四題都不符合",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G581",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.4,
+      "score": 6.33,
+      "reason": "動物偽裝是野外生態，四題都不符合",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G582",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.9,
+      "score": 5.92,
+      "reason": "種子傳播是通用的植物生態，不是手邊在用的東西",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G583",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.77,
+      "score": 6.64,
+      "reason": "花與授粉者的訊號是野外生態，雖用「做生意」比喻但不是真的生意",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G584",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.35,
+      "score": 6.67,
+      "reason": "have：閱讀時眼睛的跳動是自己每天的身體反應",
+      "reviewers": [
+        "stw-1"
+      ]
+    },
+    {
+      "id": "G585",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.8,
+      "score": 5.83,
+      "reason": "白蟻丘通風是國外野外的現象，四題都不符合",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G586",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.95,
+      "score": 5.96,
+      "reason": "考古食物殘留是實驗室與遺址研究，四題都不符合",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G588",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.05,
+      "score": 6.04,
+      "reason": "小行星結構是太空探測，四題都不符合",
+      "reviewers": [
+        "stw-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G589",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.77,
+      "score": 5.81,
+      "reason": "講火星與月球探測儀器的怪讀數，一般人碰不到，也無關在地、規格或品牌。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G590",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.1,
+      "score": 6.08,
+      "reason": "講管樂與弦的聲學物理，屬通用科學，非日常必備之物，也非規格或品牌。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G591",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.97,
+      "score": 6.81,
+      "reason": "講非視線成像等實驗室光學技術，一般人碰不到，也無關在地、規格或品牌。",
+      "reviewers": [
+        "stw-2"
+      ]
+    },
+    {
+      "id": "G592",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 8.07,
+      "score": 7.27,
+      "reason": "have：塞車與公車一次來兩台是一般人每天通勤就遇到的事。",
+      "reviewers": [
+        "stw-2"
+      ]
+    },
+    {
+      "id": "G593",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.67,
+      "score": 5.73,
+      "reason": "講冰雪尖刺、雪塔等自然現象，多在野外或高山，屬通用科學。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G597",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.9,
+      "score": 6.75,
+      "reason": "講古物鑑定的材料科學，屬博物館與實驗室範疇，無關日常、在地、規格或品牌。",
+      "reviewers": [
+        "stw-2"
+      ]
+    },
+    {
+      "id": "G598",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.47,
+      "score": 6.39,
+      "reason": "講不拆封讀出古信與舊唱片的掃描技術，屬實驗室範疇。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G599",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.27,
+      "score": 6.22,
+      "reason": "講考古石器痕跡判讀，屬野外與實驗室，無關日常、在地、規格或品牌。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G601",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.15,
+      "score": 6.12,
+      "reason": "講螢火蟲、椋鳥、魚群的群體同步，屬野外的通用生物現象。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G602",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.75,
+      "score": 6.62,
+      "reason": "講選擇盲視等心理學實驗及其可信度，主打的是實驗而非手邊之物，也非規格或品牌。",
+      "reviewers": [
+        "stw-2"
+      ]
+    },
+    {
+      "id": "G603",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.07,
+      "score": 6.06,
+      "reason": "講化石埋藏學的判讀，屬野外與實驗室範疇。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G604",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.8,
+      "score": 5.83,
+      "reason": "講摺紙力學與可變形結構，屬通用力學研究，非日常在用之物。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G605",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.4,
+      "score": 6.33,
+      "reason": "講沙漏與顆粒流的物理，沙漏非一般人日常在用，屬通用科學。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G606",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.9,
+      "score": 7.12,
+      "reason": "have：咖啡滴乾掉留一圈是家裡桌上就看得到的日常現象。",
+      "reviewers": [
+        "stw-2"
+      ]
+    },
+    {
+      "id": "G608",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.9,
+      "score": 5.92,
+      "reason": "講球拍球棒擊球瞬間的力學，運動器材非一般人每天在用，屬通用物理。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G609",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.8,
+      "score": 6.67,
+      "reason": "講乾麵條與氣球等的斷裂力學，主打裂縫物理而非日常用品，屬通用科學。",
+      "reviewers": [
+        "stw-2"
+      ]
+    },
+    {
+      "id": "G610",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.5,
+      "score": 6.42,
+      "reason": "講樹木導水與栓塞的植物生理，屬野外與實驗室範疇。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G612",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.83,
+      "score": 7.07,
+      "reason": "have：主打自己吃東西時的味覺感受，洋芋片等日常食物與自身感官反應。",
+      "reviewers": [
+        "stw-2"
+      ]
+    },
+    {
+      "id": "G613",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.45,
+      "score": 6.38,
+      "reason": "講太陽風暴造成國外電網停電與衛星墜落，非手邊之物，也非在地、規格或品牌。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G614",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 6.65,
+      "score": 6.08,
+      "reason": "have：手沖咖啡是許多觀眾每天在喝、在家就會沖的東西。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G615",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.85,
+      "score": 5.88,
+      "reason": "講捕蠅草、噴瓜等植物快速運動，一般人家裡沒有，屬通用科學。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G616",
+      "answers": {
+        "have": false,
+        "local": true,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 6.8,
+      "score": 6.21,
+      "reason": "local：章節以七股沙洲、外傘頂洲等台灣海岸為主要案例。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G617",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 8.1,
+      "score": 7.29,
+      "reason": "have：蜂蜜與「檢驗合格」標示是家裡食品上就看得到的東西。",
+      "reviewers": [
+        "stw-2"
+      ]
+    },
+    {
+      "id": "G618",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.75,
+      "score": 5.79,
+      "reason": "講鸚鵡、熊蜂等動物社會學習的研究，案例在國外野外與實驗室。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G619",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.1,
+      "score": 6.08,
+      "reason": "講行人群體動力學的實驗，主打通用的群體物理而非特定日常用品，也無關在地或規格。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G620",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 8,
+      "score": 7.21,
+      "reason": "have：主打自己碰自己感覺較弱的身體反應，人人身上都有。",
+      "reviewers": [
+        "stw-2"
+      ]
+    },
+    {
+      "id": "G621",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.57,
+      "score": 5.64,
+      "reason": "講雨滴撞擊與飛濺傳播的流體研究，屬通用科學，非手邊在用之物。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G622",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.7,
+      "score": 5.75,
+      "reason": "講雲滴長成雨滴的雲物理，屬通用氣象科學，非手邊之物。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G623",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.72,
+      "score": 5.77,
+      "reason": "講各種動物視覺的構造與行為測驗，屬實驗室與野外範疇。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G624",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": true,
+        "lose_or_jp": false
+      },
+      "demand": 5.5,
+      "base": 6.9,
+      "score": 6.67,
+      "reason": "have：黃燈是每天過路口都會遇到的；standard：整集在講黃燈與全紅秒數這個規定是怎麼算出來、為什麼這樣定。",
+      "reviewers": [
+        "stw-2"
+      ]
+    },
+    {
+      "id": "G625",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7,
+      "score": 6.38,
+      "reason": "have：雨天開車打滑是一般駕駛日常就會遇到的情況。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G626",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.25,
+      "score": 6.21,
+      "reason": "講濕沙黏結的顆粒物理，沙堡非日常生活之物，屬通用科學。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G627",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.9,
+      "score": 7.12,
+      "reason": "have：雙手交叉後說反先後是自己身體就能試的感知反應。",
+      "reviewers": [
+        "stw-2"
+      ]
+    },
+    {
+      "id": "G628",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.35,
+      "score": 6.67,
+      "reason": "have：冷凍肉解凍出水、冰過的番茄沒味道，都是家裡冰箱每天發生的事。",
+      "reviewers": [
+        "stw-2"
+      ]
+    },
+    {
+      "id": "G629",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 8.1,
+      "score": 6.92,
+      "reason": "講向日葵螺旋與費氏數的植物發育，屬通用科學，非手邊在用之物。",
+      "reviewers": [
+        "stw-2"
+      ]
+    },
+    {
+      "id": "G630",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 8.2,
+      "score": 7.0,
+      "reason": "講寄生蟲操控宿主的研究證據，屬野外與實驗室範疇。",
+      "reviewers": [
+        "stw-2"
+      ]
+    },
+    {
+      "id": "G631",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.85,
+      "score": 6.71,
+      "reason": "講水熊蟲的耐受機制，一般人接觸不到，屬通用科學。",
+      "reviewers": [
+        "stw-2"
+      ]
+    },
+    {
+      "id": "G632",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.88,
+      "score": 5.9,
+      "reason": "講地松鼠等冬眠動物的生理，屬國外野外與實驗室範疇。",
+      "reviewers": [
+        "stw-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G633",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.57,
+      "score": 5.64,
+      "reason": "全 false：貽貝與藤壺的水下黏著是海邊生物機制，日常碰不到，也非在地、規格或品牌題。",
+      "reviewers": [
+        "stw-3"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G634",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.55,
+      "score": 6.46,
+      "reason": "全 false：生物發光是野外才看得到的通用自然現象。",
+      "reviewers": [
+        "stw-3"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G635",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.9,
+      "score": 6.75,
+      "reason": "全 false：黏菌是實驗室與野外的生物，通用科學題。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G636",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.77,
+      "score": 7.02,
+      "reason": "have：主打自家廚房熱鍋上水珠滾動不乾的現象。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G637",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 8.2,
+      "score": 7.0,
+      "reason": "全 false：週期蟬是北美才有的生物，日常碰不到。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G638",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.1,
+      "score": 6.08,
+      "reason": "全 false：蜘蛛絲的材料機制屬野外與實驗室題材，通用科學。",
+      "reviewers": [
+        "stw-3"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G639",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.95,
+      "score": 5.96,
+      "reason": "全 false：六角恐龍的再生是實驗室生物學題材。",
+      "reviewers": [
+        "stw-3"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G640",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.65,
+      "score": 5.71,
+      "reason": "全 false：荷葉超疏水是通用自然現象，不是家裡日常在用的東西。",
+      "reviewers": [
+        "stw-3"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G641",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.77,
+      "score": 7.02,
+      "reason": "have：麵包和冰箱是家裡每天都有的東西。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G642",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.07,
+      "score": 6.43,
+      "reason": "have：講自己耳朵與大腦辨別聲音方向的身體反應。",
+      "reviewers": [
+        "stw-3"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G643",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.15,
+      "score": 6.5,
+      "reason": "have：每天走的柏油路與雨後坑洞；但結冰撒鹽等內容是通用道路工程，不算在地。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G644",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7,
+      "score": 6.0,
+      "reason": "全 false：主打長途光纖傳輸的物理極限，屬電信工程與實驗室層級，不是觀眾手上在操作的東西。",
+      "reviewers": [
+        "stw-3"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G645",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 8.18,
+      "score": 7.36,
+      "reason": "have：炸物是日常常吃、家裡也會做的食物。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G646",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.4,
+      "score": 6.71,
+      "reason": "have：講自己站立時身體晃動與輕碰就穩的身體反應。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G647",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.85,
+      "score": 5.88,
+      "reason": "全 false：石灰與羅馬古建築的耐久是歷史材料題，日常不會碰到。",
+      "reviewers": [
+        "stw-3"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G648",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.47,
+      "score": 6.77,
+      "reason": "have：手機觸控螢幕是人人手上每天在用的東西。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G649",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 8.78,
+      "score": 7.86,
+      "reason": "have：巧克力放久長白霜是家裡常見的零食現象。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G650",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 9.57,
+      "score": 8.52,
+      "reason": "have：講自己轉眼珠與眨眼時的視覺身體反應。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G651",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 8.55,
+      "score": 7.67,
+      "reason": "have：都會觀眾每天搭捷運，在月台會遇到進站前的風；內容是各國地鐵通用的現象，不算在地。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G652",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 9.28,
+      "score": 8.28,
+      "reason": "have：手機與電動車的鋰電池天冷掉電是日常經驗。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G653",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 8.97,
+      "score": 8.02,
+      "reason": "have：蜂蜜結晶是家裡櫥櫃常見的現象。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G654",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 9.18,
+      "score": 8.19,
+      "reason": "have：講自己皮膚的冷熱感覺與錯覺。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G655",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 6.8,
+      "score": 5.83,
+      "reason": "全 false：粗木頭燒炭層與木構件耐火是營火與實驗室題材，不是日常在用的東西。",
+      "reviewers": [
+        "stw-3"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G657",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.23,
+      "score": 6.57,
+      "reason": "have：堅果、洋芋片、食用油放久的油耗味是家裡常遇到的事。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G658",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 8.85,
+      "score": 7.92,
+      "reason": "have：講自己每天對時間快慢的主觀感受。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G659",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 8.15,
+      "score": 7.33,
+      "reason": "have：智慧手錶量心跳是很多人手上每天在用的功能。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G660",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 8.17,
+      "score": 7.35,
+      "reason": "have：講自己每天走路、上下樓梯時眼睛與腳的配合。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G661",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 8.22,
+      "score": 7.39,
+      "reason": "have：看影片時嘴型與聲音不同步是每天看螢幕會遇到的感受。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G662",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.25,
+      "score": 6.21,
+      "reason": "全 false：沙漠沙塵長距離傳輸是通用大氣現象，題案寫的是屋頂與雪地的泛例，未指向台灣或東亞。",
+      "reviewers": [
+        "stw-3"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G663",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.85,
+      "score": 6.71,
+      "reason": "全 false：路殺與動物通道是道路生態研究題，非觀眾手上的東西，題案也未指明是台灣的事。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G665",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 6.95,
+      "score": 6.33,
+      "reason": "have：夏天走在街上的熱是每天的切身感受；內容是通用的都市熱環境，不算在地特有。",
+      "reviewers": [
+        "stw-3"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G666",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.45,
+      "score": 6.75,
+      "reason": "have：煮乾豆子是家裡廚房的日常。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G667",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.25,
+      "score": 6.58,
+      "reason": "have：蘋果切開變褐是家裡每天看得到的現象。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G668",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.35,
+      "score": 6.67,
+      "reason": "have：油炸油是家裡與日常外食都在用的東西。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G669",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.45,
+      "score": 6.75,
+      "reason": "have：閉眼單腳站不穩是自己的身體反應。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G670",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.15,
+      "score": 6.5,
+      "reason": "have：手機快充是每天都在做的事。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G671",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.35,
+      "score": 6.67,
+      "reason": "have：義式濃縮是日常喝的拿鐵、美式的基底，屬每天生活裡的飲品。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G672",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.45,
+      "score": 6.75,
+      "reason": "have：轉圈後頭暈眼球亂跳是自己的身體反應。",
+      "reviewers": [
+        "stw-3"
+      ]
+    },
+    {
+      "id": "G673",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.25,
+      "score": 6.21,
+      "reason": "5G 毫米波在台灣一般手機幾乎用不到，講的是通用電波物理，無關在地、制度或品牌。",
+      "reviewers": [
+        "stw-4"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G674",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.4,
+      "score": 6.71,
+      "reason": "have：麵包是台灣觀眾日常就在吃的食物；其餘為通用烘焙科學，無關制度或品牌。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G675",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.5,
+      "score": 6.79,
+      "reason": "have：傷口快好了一碰仍痛是自己身體的反應；其餘為通用生理現象。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G676",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.3,
+      "score": 6.62,
+      "reason": "have：固態硬碟就在自己的電腦裡、每天在用；講的是通用技術原理，不是規格制度或品牌。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G677",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.45,
+      "score": 6.38,
+      "reason": "主打頂級手工巧克力的調溫工藝，是職人工坊的事而非一般人家裡在做的，拿不準故答否；屬通用材料科學。",
+      "reviewers": [
+        "stw-4"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G678",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.55,
+      "score": 6.83,
+      "reason": "have：週末補覺、週一更累是自己每週的身體經驗；屬通用生理節律。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G679",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.35,
+      "score": 6.67,
+      "reason": "have：手機快充與電池是人人手上每天在用的東西；屬通用電化學原理。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G680",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.5,
+      "score": 6.42,
+      "reason": "極光與地磁暴燒毀高壓變壓器是高緯度電網的事，不在日常生活裡；屬通用物理。",
+      "reviewers": [
+        "stw-4"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G681",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.6,
+      "score": 6.5,
+      "reason": "深海熱液口的管蟲只在深海才有，屬通用生物學。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G682",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.4,
+      "score": 6.71,
+      "reason": "have：麵包是日常食物；講通用的烘焙化學，無關在地、制度或品牌。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G683",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.55,
+      "score": 6.46,
+      "reason": "海底光纜雖承載網路，但纜線本身在深海、觀眾碰不到；屬通用工程。",
+      "reviewers": [
+        "stw-4"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G684",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.62,
+      "score": 6.52,
+      "reason": "納米比沙漠甲蟲只在國外野外才有，屬通用仿生科學。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G685",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.48,
+      "score": 6.78,
+      "reason": "have：不沾鍋是家裡廚房就有的用具；講通用材料科學。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G686",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.52,
+      "score": 6.43,
+      "reason": "捕蠅草不是一般家庭日常會有的東西，屬通用植物生理。",
+      "reviewers": [
+        "stw-4"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G687",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.55,
+      "score": 6.46,
+      "reason": "高溫超導體磁浮只在實驗室看得到，屬通用物理。",
+      "reviewers": [
+        "stw-4"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G688",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "base": 7.5,
+      "score": 6.79,
+      "reason": "have：固態硬碟斷電保存資料是自己電腦、手機每天在用的功能；屬通用半導體原理。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G689",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.55,
+      "score": 6.46,
+      "reason": "貽貝足絲的水下黏附是野外生物與材料研究，屬通用科學。",
+      "reviewers": [
+        "stw-4"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G690",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.58,
+      "score": 6.48,
+      "reason": "氣凝膠只在實驗室與航太工業出現，屬通用材料科學。",
+      "reviewers": [
+        "stw-4"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G691",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.51,
+      "score": 6.42,
+      "reason": "主打奈奎斯特採樣與雜訊整形的訊號理論，是抽象原理而非手上某樣東西，拿不準故答否；也不是在講某個規格制度為何如此。",
+      "reviewers": [
+        "stw-4"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G692",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.56,
+      "score": 6.47,
+      "reason": "變色龍不在一般觀眾生活圈內，屬通用生物光學。",
+      "reviewers": [
+        "stw-4"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G693",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.59,
+      "score": 6.49,
+      "reason": "鎳鈦記憶合金的熱水復原是示範實驗，一般人手上未必有，拿不準故答否；屬通用材料科學。",
+      "reviewers": [
+        "stw-4"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G694",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.53,
+      "score": 6.44,
+      "reason": "公分級差分 GPS 用於測量與精準農業，不是一般手機定位的日常體驗；屬通用技術。",
+      "reviewers": [
+        "stw-4"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "G695",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.78,
+      "score": 6.65,
+      "reason": "深海熱泉管蟲只在深海才有，屬通用生物學。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G696",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.82,
+      "score": 6.68,
+      "reason": "氣凝膠只在實驗室與航太工業出現，屬通用材料科學。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G697",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.76,
+      "score": 6.63,
+      "reason": "主打 3D NAND 的晶圓廠製程（蝕刻、沉積、鍵合），是工廠裡的事；未以特定公司興衰為主角。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G698",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.8,
+      "score": 6.67,
+      "reason": "超嗜熱古菌只在深海熱液與熱泉，屬通用微生物學。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G699",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.84,
+      "score": 6.7,
+      "reason": "塊體非晶合金是實驗室與特殊工業材料，屬通用材料科學。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G700",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.86,
+      "score": 6.72,
+      "reason": "EUV 光刻機只在晶圓廠與設備廠，主打物理與工程原理，未以公司興衰或日本品牌為主角。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G701",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.82,
+      "score": 6.68,
+      "reason": "水熊蟲的脫水玻璃化是實驗室觀察的微生物現象，屬通用生物學。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G702",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.85,
+      "score": 6.71,
+      "reason": "鎳鈦記憶合金的相變原理偏材料實驗與醫療航太應用，一般人手上未必有，拿不準故答否。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G703",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.88,
+      "score": 6.73,
+      "reason": "鍶原子光晶格鐘只在計量實驗室；雖提到重定義秒，但主打的是原子鐘物理而非單位制度為何如此。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G704",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.95,
+      "score": 6.79,
+      "reason": "水通道蛋白是分子層級的細胞機制，不是觀眾能感受到的身體反應；屬通用生物化學。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G705",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 7.88,
+      "score": 6.73,
+      "reason": "氣凝膠只在實驗室與航太工業出現，屬通用材料科學。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G706",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 8.02,
+      "score": 6.85,
+      "reason": "拓撲絕緣體只在凝態物理實驗室，屬通用物理。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G707",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 8.1,
+      "score": 6.92,
+      "reason": "深海熱泉管蟲只在深海才有，屬通用生物學。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G708",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 8.05,
+      "score": 6.88,
+      "reason": "形狀記憶合金的相變原理偏材料示範與醫療航太應用，一般人手上未必有，拿不準故答否。",
+      "reviewers": [
+        "stw-4"
+      ]
+    },
+    {
+      "id": "G709",
+      "answers": {
+        "have": false,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 1.0,
+      "base": 8.08,
+      "score": 6.9,
+      "reason": "主打量子點的奈米發光物理，雖有量子點電視但並非家家都有，拿不準故答否；未以品牌為主角。",
+      "reviewers": [
+        "stw-4"
+      ]
+    }
+  ]
+}

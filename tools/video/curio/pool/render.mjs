@@ -1,6 +1,6 @@
 // 奇聞檔案局素材池的題案檢查與輸出頁；照原來如此事務所素材池的 render.mjs。
 // 題案（themes.json）照這個池的片長規則：長片 8–13 分鐘，看內容決定，不為了片長硬湊。
-import { LONG_MIN, LONG_MAX, CATEGORIES, CATEGORY_LIST, categoryForAxis } from './core.mjs';
+import { LONG_MIN, LONG_MAX, CATEGORIES, CATEGORY_LIST, categoryForAxis, DEMAND_QUESTIONS, DEMAND_QUESTIONS_W, DEMAND_FLOOR, DEMAND_STEP, demandScore, blendedScore, demandQuestionsFor, demandQuestionsOf } from './core.mjs';
 
 const cell = (value) => String(value ?? '').replaceAll('|', '／').replaceAll('\n', ' ');
 const STATUS = { selected: '入選', held: '暫緩', reserve: '候補（待研究）', produced: '已製作／製作中', shorts: '轉 Shorts', excluded: '淘汰／轉出' };
@@ -37,7 +37,22 @@ export const AUDIENCE_DIMENSIONS = Object.freeze({ click: '點擊', hook: '鉤�
 // 2026-11-14 那一次全池初評（AUDIENCE_BASELINE）是基準線，不受這道關卡限制；其他紀錄（含同日的改進後複評）都要過。
 export const AUDIENCE_MIN = 6.5;
 export const AUDIENCE_BASELINE = 'reviews/audience-20261114.json';
-export function validateAudience(owner, audience) {
+// 需求（站主 2026-11-17「跟池子裡的評分機制整合、併成一個總分」）：照參考頻道觀看數歸納的四個是非題
+// （docs/videos/channel-review-20261116/README.md），由獨立評審只讀題案卡回答，紀錄在 reviews/demand-*.json。
+// demand = DEMAND_FLOOR + DEMAND_STEP × 答「是」的題數；它是事實型判斷，不做錨點校正。
+// 有 demand 的題案 score = (五項平均 base × 5 + demand) ÷ 6；base 留著，拿掉 demand 就還原。
+export { DEMAND_QUESTIONS, DEMAND_QUESTIONS_W, DEMAND_FLOOR, DEMAND_STEP, demandScore, blendedScore, demandQuestionsFor };
+function validateDemand(owner, audience, category) {
+  if (audience.demand === undefined && audience.base === undefined && audience.demand_answers === undefined && audience.demand_review === undefined) return;
+  const answers = audience.demand_answers;
+  const questions = category === undefined ? demandQuestionsOf(answers) : demandQuestionsFor(category);
+  if (!questions || demandQuestionsOf(answers) !== questions) throw new Error(`${owner}: demand_answers needs true or false for ${Object.keys(questions ?? DEMAND_QUESTIONS).join(', ')}`);
+  if (audience.demand !== demandScore(answers)) throw new Error(`${owner}: demand must be ${demandScore(answers)} for these answers`);
+  if (!Number.isFinite(audience.base) || audience.base < 1 || audience.base > 10) throw new Error(`${owner}: a theme with demand keeps its five-dimension score in audience.base`);
+  if (Math.abs(audience.score - blendedScore(audience.base, audience.demand)) > 0.01) throw new Error(`${owner}: audience score must be (base × 5 + demand) ÷ 6 = ${blendedScore(audience.base, audience.demand).toFixed(2)}`);
+  if (!audience.demand_reason || !/^reviews\/demand-[\w-]+\.json$/.test(audience.demand_review ?? '')) throw new Error(`${owner}: demand needs a reason and its reviews/demand-*.json record`);
+}
+export function validateAudience(owner, audience, category) {
   if (audience === undefined) return;
   for (const round of audience?.rounds ?? []) {
     if (!Number.isFinite(round.score) || round.score < 1 || round.score > 10 || !round.comment || !round.changes || !/^\d{4}-\d{2}-\d{2}$/.test(round.reviewed_on ?? '') || !/^reviews\/audience-[\w-]+\.json$/.test(round.review ?? '')) throw new Error(`${owner}: each earlier audience round needs score, comment, the changes made after it, reviewed_on and review`);
@@ -46,13 +61,14 @@ export function validateAudience(owner, audience) {
   if (!audience || !inRange(audience.score) || Object.keys(AUDIENCE_DIMENSIONS).some((key) => !inRange(audience[key]))) throw new Error(`${owner}: audience needs score and ${Object.keys(AUDIENCE_DIMENSIONS).join(', ')} between 1 and 10`);
   if (!Number.isInteger(audience.rank) || !Number.isInteger(audience.of) || audience.rank < 1 || audience.rank > audience.of) throw new Error(`${owner}: audience rank must be 1..of`);
   if (!audience.comment || !/^\d{4}-\d{2}-\d{2}$/.test(audience.reviewed_on ?? '') || !/^reviews\/audience-[\w-]+\.json$/.test(audience.review ?? '')) throw new Error(`${owner}: audience needs a comment, reviewed_on and its reviews/audience-*.json record`);
+  validateDemand(owner, audience, category);
 }
-const audienceLine = (audience) => `**獨立觀眾評分：** ${audience.score.toFixed(2)}／10（第 ${audience.rank}／${audience.of} 名；${Object.entries(AUDIENCE_DIMENSIONS).map(([key, label]) => `${label} ${audience[key]}`).join('、')}）— ${cell(audience.comment)}（${audience.reviewed_on}，[${audience.review}](${audience.review})）${(audience.rounds ?? []).map((round) => `；先前 ${round.reviewed_on} 評 ${round.score.toFixed(2)}，改了：${cell(round.changes)}`).join('')}`;
+const audienceLine = (audience) => `**獨立觀眾評分：** ${audience.score.toFixed(2)}／10（第 ${audience.rank}／${audience.of} 名；${Object.entries(AUDIENCE_DIMENSIONS).map(([key, label]) => `${label} ${audience[key]}`).join('、')}、${audience.demand === undefined ? '需求未評' : `需求 ${audience.demand}（${Object.entries(demandQuestionsOf(audience.demand_answers) ?? DEMAND_QUESTIONS).filter(([key]) => audience.demand_answers[key]).map(([, label]) => label).join('、') || '四問皆否'}；五項平均 ${audience.base.toFixed(2)}）`}）— ${cell(audience.comment)}（${audience.reviewed_on}，[${audience.review}](${audience.review})）${(audience.rounds ?? []).map((round) => `；先前 ${round.reviewed_on} 評 ${round.score.toFixed(2)}，改了：${cell(round.changes)}`).join('')}`;
 function audienceRanking(episodes) {
   const scored = episodes.filter((episode) => episode.audience).sort((a, b) => a.audience.rank - b.audience.rank);
   if (!scored.length) return [];
   const { reviewed_on: on, review } = scored[0].audience;
-  return ['', `## 獨立觀眾評分排名（${on}）`, '', `${scored.length} 組長題由未參與撰稿的評審以一般觀眾的角度讀題案打分（點擊、鉤子、驚喜、兌現、分享各 1–10，取平均；共同錨點題校正評審鬆緊；紀錄在 [${review}](${review})）。這是題案吸引力的參考，不是成片評分，也不是點閱率預測。`, '', '| 名次 | ID | 題案 | 分數 | 觀眾短評 |', '| --- | --- | --- | --- | --- |', ...scored.map((episode) => `| ${episode.audience.rank} | ${episode.id} | ${cell(episode.title)} | ${episode.audience.score.toFixed(2)} | ${cell(episode.audience.comment)} |`)];
+  return ['', `## 獨立觀眾評分排名（${on}）`, '', `${scored.length} 組長題由未參與撰稿的評審以一般觀眾的角度讀題案打分（點擊、鉤子、驚喜、兌現、分享各 1–10，取平均；共同錨點題校正評審鬆緊；可成題的題案再併入第六項「需求」，四個是非題換算 1–10；紀錄在 [${review}](${review})）。這是題案吸引力的參考，不是成片評分，也不是點閱率預測。`, '', '| 名次 | ID | 題案 | 分數 | 觀眾短評 |', '| --- | --- | --- | --- | --- |', ...scored.map((episode) => `| ${episode.audience.rank} | ${episode.id} | ${cell(episode.title)} | ${episode.audience.score.toFixed(2)} | ${cell(episode.audience.comment)} |`)];
 }
 
 export function validateThemes(themes, pool) {
@@ -64,9 +80,12 @@ export function validateThemes(themes, pool) {
     for (const key of ['id', 'title', 'core_question', 'connection', 'boredom_risk', 'drop_if', 'evidence_gaps']) if (!episode[key]) throw new Error(`${episode.id}: missing ${key}`);
     if (episode.category !== undefined && !CATEGORY_LIST.includes(episode.category)) throw new Error(`${episode.id}: unknown category ${episode.category}`);
     if (episode.production_ready !== false || episode.status !== 'EDITORIAL_THEME_NOT_SCRIPT') throw new Error('A theme cannot grant production approval');
-    validateAudience(episode.id, episode.audience);
+    validateAudience(episode.id, episode.audience, episode.category);
     // 站主 2026-11-14：之後擴充出的可成題長題也要補獨立觀眾評分，沒評分不能進池。
     if (episode.audience === undefined && materialReady(episode)) throw new Error(`${episode.id}: a producible long theme needs an independent audience score (theme.audience, recorded in reviews/audience-*.json); see the pool README`);
+    if (episode.audience && episode.audience.demand === undefined && materialReady(episode)) throw new Error(`${episode.id}: a producible long theme needs a demand score (audience.demand, recorded in reviews/demand-*.json); see the pool README`);
+    // 站主 2026-11-17「維持 6.5 看總分」：併入需求後，基準初評的題案也一樣要過門檻。
+    if (episode.audience?.demand !== undefined && episode.audience.score < AUDIENCE_MIN && materialReady(episode)) throw new Error(`${episode.id}: audience ${episode.audience.score} with demand is below ${AUDIENCE_MIN}; improve it and score again, or keep it out of the producible list (material reserve)`);
     if (episode.audience && episode.audience.review !== AUDIENCE_BASELINE && materialReady(episode)) {
       if (!episode.audience.rounds?.length) throw new Error(`${episode.id}: a new producible theme is scored, improved from the feedback, then scored again; record the first round in audience.rounds`);
       if (episode.audience.score < AUDIENCE_MIN) throw new Error(`${episode.id}: audience ${episode.audience.score} is below ${AUDIENCE_MIN}; improve it and score again, or keep it out of the producible list (material reserve)`);
@@ -224,7 +243,9 @@ export function producibleData(pool, themes) {
   return {
     revision: pool.revision, axes: pool.axes, categories: CATEGORY_LIST,
     themes: ready.map((episode) => ({ id: episode.id, category: themeCategory(episode, byId), title: episode.title, minutes: episode.target_minutes, q: episode.core_question, chapters: episode.chapters.length, cores: episode.candidate_ids.map((id) => ({ id, axis: byId.get(id).axis, category: rowCategory(byId.get(id)), q: byId.get(id).question })) })),
-    solo: pool.candidates.filter((row) => row.selected && !used.has(row.id)).map((row) => ({ id: row.id, axis: row.axis, category: rowCategory(row), q: row.question, hook: short(row.hook, 110), min: row.editorial ? row.editorial.minutes : null, src: new Set(row.source_refs.map((ref) => ref.source_id)).size, kind: row.id.startsWith('N') ? 'new' : row.screened_in ? 'screened' : 'checked' })),
+    solo: pool.candidates.filter((row) => row.selected && !used.has(row.id)).map((row) => ({ id: row.id, axis: row.axis, category: rowCategory(row), q: row.question, hook: short(row.hook, 110), min: row.editorial ? row.editorial.minutes : null, src: new Set(row.source_refs.map((ref) => ref.source_id)).size, kind: row.id.startsWith('N') ? 'new' : row.screened_in ? 'screened' : 'checked', score: row.audience?.score ?? null, demand: row.demand?.demand ?? null }))
+      // 2026-11-17：評過分的排前面（併入需求的總分高到低），其次是只答過需求四問的，其餘照原順序。
+      .map((row, index) => ({ row, index })).sort((a, b) => (b.row.score ?? -1) - (a.row.score ?? -1) || (b.row.demand ?? -1) - (a.row.demand ?? -1) || a.index - b.index).map(({ row }) => row),
   };
 }
 
@@ -335,6 +356,7 @@ function render(){
       if(term&&!(s.id+s.category+s.q+s.hook).toLowerCase().includes(term))continue;n++;
       const c=el('article','card');const m=el('div','meta');
       m.append(el('span','id',s.id),el('span','pill',s.category),el('span','pill min',s.min?('素材 '+s.min.join('–')+' 分'):'片長待企劃'),el('span','pill min',KIND[s.kind]+' · '+s.src+' 來源'));
+      if(s.score!=null)m.append(el('span','pill','觀眾 '+s.score.toFixed(2)));if(s.demand!=null)m.append(el('span','pill min','需求 '+s.demand));
       c.append(m,el('h2',null,s.q));if(s.hook)c.append(el('p',null,s.hook));list.append(c);
     }
   }
