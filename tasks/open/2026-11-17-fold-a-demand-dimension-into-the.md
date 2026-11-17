@@ -1,7 +1,7 @@
 ---
 id: 2026-11-17-fold-a-demand-dimension-into-the
 title: Fold a demand dimension into the pool audience score
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: claude-fable-heimao-topics
@@ -69,3 +69,4 @@ cd apps/web && npx vitest run components/admin-video-pools.test.tsx
 - 2026-11-17 續：需求分接到奇聞池的單集題（`core.mjs` 的 `readDemand`）。篩了 G、P、U 三類還沒用到的 536 題（中三題 18、中兩題 109），
   替中三題的 16 題補五項評分（另兩題已評過），並替先前已評的 106 題補答四問，172 題已評的單集題都用併分排名。
   單集題沒有門檻。原來如此池的單題層沒有動。下一步可做：中兩題的 109 題補五項評分；其他分類 969 題與原來如此池照同樣方式篩。
+- 2026-11-17 再續：中兩題的 109 題補五項評分（94 題新評）。127 題候選裡 42 題總分在 6.5 以上。已評單集題 266 題。
