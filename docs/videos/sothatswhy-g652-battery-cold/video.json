@@ -1,0 +1,2167 @@
+{
+  "schema_version": 1,
+  "slug": "sothatswhy-g652-battery-cold",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8.5,
+    11.5
+  ],
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-cartoon"
+  },
+  "series": {
+    "slug": "sothatswhy",
+    "episode": 652,
+    "chapter": 1
+  },
+  "characters": [
+    {
+      "id": "chief",
+      "name": "所長",
+      "appearance": "a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, clean uncovered ears with zero pencil",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速輕快流暢，一秒五個字以上，句與句緊接、不拖長尾音。",
+        "tempo": 1.08
+      },
+      "sheet_prompt": "character reference: one single full-body 2.5-head chibi figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+    },
+    {
+      "id": "kid",
+      "name": "小問",
+      "appearance": "a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes with white highlights, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, empty hands with zero notebook",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快俐落，一秒五個字以上，句與句緊接、不拖長尾音。",
+        "tempo": 1.12
+      },
+      "sheet_prompt": "character reference: one single full-body 2.5-head chibi figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+    }
+  ],
+  "music": {
+    "track": "sothatswhy-p02-bed.m4a",
+    "sha256": "54169439df49a00bc3ad993a148690be9f79d1dff8a4ea5143e64e583001b20c",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "p002",
+      "payoff": "p012",
+      "what": "冬天手機跳崖掉電到底跑去哪了"
+    },
+    {
+      "setup": "p004",
+      "payoff": "p007",
+      "what": "冷天的電池放電為什麼自己反而發更多熱"
+    },
+    {
+      "setup": "p014",
+      "payoff": "p020",
+      "what": "真的是電解液變稠像糖漿離子才游不動嗎"
+    },
+    {
+      "setup": "p027",
+      "payoff": "p031",
+      "what": "石墨內部走廊那麼窄真的不是快充瓶頸嗎"
+    },
+    {
+      "setup": "p039",
+      "payoff": "p046",
+      "what": "為什麼冬天回暖電就回來卻千萬不能插快充"
+    },
+    {
+      "setup": "p052",
+      "payoff": "p065",
+      "what": "鍍在石墨外面的金屬鋰真的能自己鑽回去嗎"
+    },
+    {
+      "setup": "p074",
+      "payoff": "p084",
+      "what": "不拆開電池怎麼即時知道裡面在鍍鋰"
+    },
+    {
+      "setup": "p097",
+      "payoff": "p107",
+      "what": "既要防冷鍍鋰又要防熱衰退該怎麼平衡"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "天一冷電池就沒電，電跑去哪了？｜原來如此事務所",
+    "description": "天一冷，手機在戶外拿出來沒幾分鐘就突然沒力甚至關機，電動車的續航里程也像打了折。奇怪的是，只要拿回溫暖的室內，電量又自己悄悄浮了回來——那些電剛才到底跑去哪了？既然冷天放不出電只是暫時的，為什麼專家都警告：天冷千萬不要直接快充？\n\n這一集，所長和小問帶你拆開鋰電池在零下低溫的微觀真相：從脫溶劑外衣的能障、界面膜阻抗暴增 34 倍，一路看到金屬鋰鍍在表面、甚至自發回嵌的神奇過程！\n\n本集插圖由 AI 生成。所有科學事實與實驗數據均核對自第一手同儕評審研究論文，詳細出處列於下方參考資料。\n\n資料截至 2026-11-17",
+    "tags": [
+      "鋰電池",
+      "冬天掉電",
+      "低溫充電",
+      "鍍鋰",
+      "電池壽命",
+      "電動車",
+      "原來如此事務所",
+      "科普"
+    ]
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "天一冷\n**電跑哪**去了？",
+      "sub": "不是凍掉是進不了門",
+      "shot": "kid-freezing-phone",
+      "subject": "right",
+      "tag": "科學"
+    }
+  },
+  "sources": [
+    {
+      "id": "T83-S015",
+      "title": "Influence of low temperature conditions on lithium-ion batteries and the application of an insulation material",
+      "url": "https://doi.org/10.1039/c9ra00490d",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "T83-S016",
+      "title": "Superior Low-Temperature Power and Cycle Performances of Na-Ion Battery over Li-Ion Battery",
+      "url": "https://doi.org/10.1021/acsomega.6b00551",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "T83-S017",
+      "title": "Direct Molecular Evidence for Desolvation-Controlled Lithium-Ion Insertion at Graphite Electrodes in Highly Concentrated Electrolytes",
+      "url": "https://doi.org/10.1021/acs.jpclett.5c02274",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "T83-S018",
+      "title": "Kinetic Limits of Graphite Anode for Fast-Charging Lithium-Ion Batteries",
+      "url": "https://doi.org/10.1007/s40820-023-01183-6",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "T83-S019",
+      "title": "Revealing the roles of the solid–electrolyte interphase in designing stable, fast-charging, low-temperature Li-ion batteries",
+      "url": "https://doi.org/10.1073/pnas.2420398122",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "T83-S020",
+      "title": "Mechanistic Understanding of Lithium-Ion Adsorption, Intercalation, and Plating during Charging of Graphite Electrodes",
+      "url": "https://doi.org/10.1021/acselectrochem.4c00079",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "T83-S021",
+      "title": "Resolution of Lithium Deposition versus Intercalation of Graphite Anodes in Lithium Ion Batteries: An In Situ Electron Paramagnetic Resonance Study",
+      "url": "https://doi.org/10.1002/anie.202106178",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "T83-S022",
+      "title": "Study on low-temperature cycle failure mechanism of a ternary lithium ion battery",
+      "url": "https://doi.org/10.1039/d2ra02518c",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "T83-S023",
+      "title": "Low-Temperature Charging and Aging Mechanisms of Si/C Composite Anodes in Li-Ion Batteries: An Operando Neutron Scattering Study",
+      "url": "https://doi.org/10.1002/cssc.201903139",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "T83-S024",
+      "title": "Multiscale dynamics of charging and plating in graphite electrodes coupling operando microscopy and phase-field modelling",
+      "url": "https://doi.org/10.1038/s41467-023-40574-6",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "T83-S025",
+      "title": "Operando visualisation of lithium plating by ultrasound imaging of battery cells",
+      "url": "https://doi.org/10.1038/s41467-024-54319-6",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "T83-S026",
+      "title": "Nondestructive Electrochemical Identification of Lithium Plating in High-Energy Automotive Batteries",
+      "url": "https://doi.org/10.1021/acsomega.4c10805",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "T83-S027",
+      "title": "Expansion Force-Based Adaptive Multistage Constant Current Fast Charging with Lithium Plating Detection for Lithium-Ion Batteries",
+      "url": "https://doi.org/10.1002/advs.202504580",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "T83-S028",
+      "title": "Extreme fast charging of commercial Li-ion batteries via combined thermal switching and self-heating approaches",
+      "url": "https://doi.org/10.1038/s41467-023-38823-9",
+      "checked_on": "2026-11-17"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "kid-freezing-phone",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the cozy question office in winter morning, soft cold blue daylight streaming through window with frost crystals on glass corners, the curious eight-year-old girl with short black bob haircut, straight bangs and playful cowlick, wearing navy toggle raincoat with bright mustard hood, standing by the wooden desk rubbing hands together with a comically shocked expression, cold breath mist, empty hands, clean five fingers",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p001",
+          "speaker": "kid",
+          "text": "所長！我剛在寒風中拿手機出來，",
+          "pause_after_ms": 850,
+          "emotion": "搓著手，哈著熱氣"
+        },
+        {
+          "id": "p002",
+          "speaker": "kid",
+          "text": "才兩分鐘，電量直接從百分之七十跳崖關機！",
+          "pause_after_ms": 1050,
+          "emotion": "委屈驚呼"
+        }
+      ],
+      "chapter": "冷天消失的電，其實還在電池裡"
+    },
+    {
+      "id": "kid-warm-puzzle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the curious eight-year-old girl with short black bob haircut and playful cowlick, navy raincoat jacket with mustard hood, holding a glowing smartphone replica on desk, staring in total bewilderment at the battery percentage jumping back up, soft warm office interior lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p003",
+          "speaker": "kid",
+          "text": "一回暖氣房插電，電量竟然自己彈回百分之六十八！",
+          "pause_after_ms": 950,
+          "emotion": "驚奇疑惑"
+        },
+        {
+          "id": "p004",
+          "speaker": "kid",
+          "text": "剛才那些電到底是去哪裡避寒了？",
+          "pause_after_ms": 1050,
+          "emotion": "滿臉問號"
+        }
+      ]
+    },
+    {
+      "id": "chief-enters-cell",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the friendly office chief woman, dark brown hair with grey streak in low ponytail, round black glasses, mustard-yellow cardigan over white blouse, holding a cutaway cylindrical metallic battery model, smiling warmly and gently pushing glasses up, clean uncovered ears with zero pencil",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p005",
+          "speaker": "chief",
+          "text": "電根本沒有被凍掉！",
+          "pause_after_ms": 850,
+          "emotion": "推眼鏡，溫和揭密"
+        },
+        {
+          "id": "p006",
+          "speaker": "chief",
+          "text": "中國科大火災科學國家重點實驗室，",
+          "pause_after_ms": 900,
+          "emotion": "說明實驗出處"
+        }
+      ]
+    },
+    {
+      "id": "cell-thermal-contrast",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the friendly office chief woman in mustard cardigan, pointing toward a clear desktop hologram comparing two cylindrical batteries at 20°C and 0°C with gentle, scholarly smile",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p007",
+          "speaker": "chief",
+          "text": "把千三毫安時電芯拿去測：",
+          "pause_after_ms": 850,
+          "emotion": "指著對照"
+        },
+        {
+          "id": "p008",
+          "speaker": "chief",
+          "text": "二十度放電表面只升溫七點五七度；",
+          "pause_after_ms": 1050,
+          "emotion": "清楚列出常溫數據"
+        }
+      ]
+    },
+    {
+      "id": "subzero-heat-spike",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro cutaway view of the battery core under 0°C chilling air: internal winding layers glowing intensely with fiery orange thermal friction heat rising upwards, unaccompanied by characters",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p009",
+          "speaker": "chief",
+          "text": "但在零度放電，表面溫升反而衝到十點四四度！",
+          "pause_after_ms": 1100,
+          "emotion": "強調反常識高熱"
+        }
+      ]
+    },
+    {
+      "id": "internal-resistance-heat",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific mechanism cross-section of battery jelly roll layers: tightly wound copper and aluminum foils, glowing amber heat waves trapped inside winding layers, electrical resistance barrier blocking flow, unaccompanied by characters",
+        "camera": "static",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p010",
+          "speaker": "chief",
+          "text": "因為低溫讓電池內阻暴增，",
+          "pause_after_ms": 850,
+          "emotion": "解析物理機制"
+        },
+        {
+          "id": "p011",
+          "speaker": "chief",
+          "text": "一部分電能直接在裡面轉化成熱，",
+          "pause_after_ms": 950,
+          "emotion": "解釋熱能轉化"
+        }
+      ]
+    },
+    {
+      "id": "trapped-charge-glow",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the curious eight-year-old girl with short black bob haircut, navy raincoat, leaning close over desk watching glowing battery animation, round eyes full of curiosity",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p012",
+          "speaker": "chief",
+          "text": "剩下的電被困住出不來。",
+          "pause_after_ms": 1050,
+          "emotion": "點出電量本質"
+        }
+      ]
+    },
+    {
+      "id": "insulation-wrap-test-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cylindrical battery snugly wrapped in a 10mm thick fluffy cream-colored thermal insulation blanket, test cables connected, digital capacity meter reading rising numbers, unaccompanied by characters",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p013",
+          "speaker": "chief",
+          "text": "實驗人員包上十公釐保溫層，",
+          "pause_after_ms": 900,
+          "emotion": "描述保溫實驗"
+        }
+      ]
+    },
+    {
+      "id": "insulation-wrap-test-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro detailed view of the scientific mechanism: Close-up of a cylindrical battery snugly wrapped in a 10mm thick fluffy cream-co, high contrast lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p014",
+          "speaker": "chief",
+          "text": "放電容量立刻從一千零九十七毫安時，",
+          "pause_after_ms": 950,
+          "emotion": "數據對比"
+        }
+      ]
+    },
+    {
+      "id": "capacity-recovered-meter",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot of digital laboratory instrument screen displaying capacity jumping back to 1179 mAh, clean minimal gouache style, unaccompanied by characters",
+        "camera": "static",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p015",
+          "speaker": "chief",
+          "text": "救回一千一百七十九毫安時！",
+          "pause_after_ms": 1100,
+          "emotion": "展示挽回成果"
+        }
+      ]
+    },
+    {
+      "id": "kid-viscous-trope",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the curious eight-year-old girl with short black bob haircut, navy raincoat jacket with mustard hood, holding a bottle of thick honey or syrup, looking curiously at the chief, cozy warm question office",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p016",
+          "speaker": "kid",
+          "text": "大家都說冬天電池沒力，",
+          "pause_after_ms": 850,
+          "emotion": "提出民間主流說法"
+        },
+        {
+          "id": "p017",
+          "speaker": "kid",
+          "text": "是因為電解液像糖漿一樣變稠、離子游不動，",
+          "pause_after_ms": 1000,
+          "emotion": "比喻糖漿"
+        }
+      ]
+    },
+    {
+      "id": "kid-wonder-viscosity",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the curious eight-year-old girl with short black bob haircut and cowlick, large round dark eyes, tilting head with earnest curiosity, empty clean hands",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p018",
+          "speaker": "kid",
+          "text": "難道不是這樣嗎？",
+          "pause_after_ms": 1050,
+          "emotion": "純真追問"
+        }
+      ]
+    },
+    {
+      "id": "na-vs-li-race",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the friendly office chief woman holding up two battery electrolyte vials, one with sodium symbol and one with lithium, explaining with calm clarity",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p019",
+          "speaker": "chief",
+          "text": "豐田中央研究所做了配方相同、",
+          "pause_after_ms": 850,
+          "emotion": "引用豐田實驗"
+        },
+        {
+          "id": "p020",
+          "speaker": "chief",
+          "text": "只差鈉和鋰的兩種電池。",
+          "pause_after_ms": 1050,
+          "emotion": "嚴謹對照組"
+        }
+      ]
+    },
+    {
+      "id": "electrolyte-conductivity",
+      "template": "shot",
+      "data": {
+        "prompt": "Graphic chart on workbench: two identical smooth curves showing electrolyte conductivity from -30°C to 60°C perfectly overlapping without deviation, unaccompanied by characters",
+        "camera": "static",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p021",
+          "speaker": "chief",
+          "text": "在零下三十度到六十度之間，",
+          "pause_after_ms": 850,
+          "emotion": "溫區範圍"
+        },
+        {
+          "id": "p022",
+          "speaker": "chief",
+          "text": "兩種電解液的導電能力幾乎一模一樣！",
+          "pause_after_ms": 1100,
+          "emotion": "打破電解液變稠迷思"
+        }
+      ]
+    },
+    {
+      "id": "solvation-jacket-bind-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Microscopic view of a single tiny purple lithium ion tightly surrounded by four bulky translucent solvent molecules forming a tight heavy coat, trying to squeeze into a narrow graphite slit, unaccompanied by characters",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p023",
+          "speaker": "chief",
+          "text": "但在零下三十度，鋰電池出力卻比鈉電池硬生生少了兩成！",
+          "pause_after_ms": 1100,
+          "emotion": "指出實測出力落差"
+        }
+      ]
+    },
+    {
+      "id": "solvation-jacket-bind-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro detailed view of the scientific mechanism: Microscopic view of a single tiny purple lithium ion tightly surrounded by four , high contrast lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p024",
+          "speaker": "chief",
+          "text": "因為鋰離子跟身邊四個溶劑分子的結合能高達四點三一電子伏特，",
+          "pause_after_ms": 1150,
+          "emotion": "給出精確結合能數值"
+        }
+      ]
+    },
+    {
+      "id": "binding-energy-contrast",
+      "template": "shot",
+      "data": {
+        "prompt": "Diagram comparing lithium binding energy 4.31 eV with sodium binding energy 3.47 eV, sodium easily shedding its outer shell while lithium clings tightly, unaccompanied by characters",
+        "camera": "static",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p025",
+          "speaker": "chief",
+          "text": "遠高於鈉的三點四七。",
+          "pause_after_ms": 850,
+          "emotion": "對比鈉離子"
+        },
+        {
+          "id": "p026",
+          "speaker": "chief",
+          "text": "卡住的不是在路上游泳，而是進門前脫衣服那一步！",
+          "pause_after_ms": 1100,
+          "emotion": "總結脫溶劑本質"
+        }
+      ]
+    },
+    {
+      "id": "six-solvents-line-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific mechanism diagram: six different chemical solvent molecules lined up on a laboratory graph, activation energy plotted linearly against solvent binding energy forming a straight diagonal line, unaccompanied by characters",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p027",
+          "speaker": "chief",
+          "text": "日本山口大學試了六種抓鋰離子鬆緊不同的溶劑，",
+          "pause_after_ms": 950,
+          "emotion": "引入山口大學實驗"
+        }
+      ],
+      "chapter": "卡住的不是路，是進門前脫外衣那一步"
+    },
+    {
+      "id": "six-solvents-line-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro detailed view of the scientific mechanism: Scientific mechanism diagram: six different chemical solvent molecules lined up , high contrast lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p028",
+          "speaker": "chief",
+          "text": "發現進石墨的活化能障礙，跟溶劑結合能排成一條筆直的斜線！",
+          "pause_after_ms": 1100,
+          "emotion": "完美的線性動力學規律"
+        }
+      ]
+    },
+    {
+      "id": "tight-solvent-jam",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the curious eight-year-old girl with short black bob haircut, frowning in concentration as she tries to fit a large coat onto a doll, humorous visual metaphor",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p029",
+          "speaker": "chief",
+          "text": "抓最緊的那種溶劑，鋰離子根本脫不掉大衣，",
+          "pause_after_ms": 950,
+          "emotion": "形容極端結合力"
+        },
+        {
+          "id": "p030",
+          "speaker": "chief",
+          "text": "完全量不到進出電流。",
+          "pause_after_ms": 1050,
+          "emotion": "零電流實驗事實"
+        }
+      ]
+    },
+    {
+      "id": "kid-graphite-inside",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the curious eight-year-old girl with short black bob haircut, navy raincoat, leaning over desk looking at a graphite crystal model with multiple stacked layers, finger gently touching the model, clean five fingers",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p031",
+          "speaker": "kid",
+          "text": "那脫掉大衣之後呢？",
+          "pause_after_ms": 850,
+          "emotion": "推進思維"
+        },
+        {
+          "id": "p032",
+          "speaker": "kid",
+          "text": "會不會是石墨裡面的走廊太擠了？",
+          "pause_after_ms": 1050,
+          "emotion": "直覺提問"
+        }
+      ]
+    },
+    {
+      "id": "graphite-bulk-fast-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Microscopic cross-section inside graphite bulk layers: clean spacious graphene tunnels, glowing purple lithium ions zipping smoothly and freely through the carbon layers, unaccompanied by characters",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p033",
+          "speaker": "chief",
+          "text": "石墨內部其實夠快！",
+          "pause_after_ms": 800,
+          "emotion": "肯定內部傳輸"
+        }
+      ]
+    },
+    {
+      "id": "graphite-bulk-fast-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro detailed view of the scientific mechanism: Microscopic cross-section inside graphite bulk layers: clean spacious graphene t, high contrast lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p034",
+          "speaker": "chief",
+          "text": "中科院物理所量到擴散係數最慢也有每秒二點六四乘以十的負十次方平方公分，",
+          "pause_after_ms": 1150,
+          "emotion": "精確擴散係數量測"
+        }
+      ]
+    },
+    {
+      "id": "seven-minute-diffusion",
+      "template": "shot",
+      "data": {
+        "prompt": "Mechanism schematic of a 10 micrometer graphite spherical particle: a glowing trajectory showing an ion traveling from outer edge to core in 7.89 minutes, accompanied by a small stop-watch dial, unaccompanied by characters",
+        "camera": "static",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p035",
+          "speaker": "chief",
+          "text": "十微米顆粒七點八九分鐘就能走完全程，",
+          "pause_after_ms": 950,
+          "emotion": "時間尺度"
+        },
+        {
+          "id": "p036",
+          "speaker": "chief",
+          "text": "足夠十分鐘充飽的六倍率充電！",
+          "pause_after_ms": 1050,
+          "emotion": "證明內部不是瓶頸"
+        }
+      ]
+    },
+    {
+      "id": "surface-film-bottleneck-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the friendly office chief woman pointing with open hand to a large poster of graphite surface and SEI interface film on office wall",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p037",
+          "speaker": "chief",
+          "text": "但六倍率充電時，鋰竟然全堵在表面五奈米以內！",
+          "pause_after_ms": 1050,
+          "emotion": "揭露表面堆積真相"
+        }
+      ]
+    },
+    {
+      "id": "surface-film-bottleneck-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the friendly office chief woman in round black glasses, explaining with thoughtful smile, warm office light",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p038",
+          "speaker": "chief",
+          "text": "真正慢的，是門口那層幾十奈米薄的固態電解質界面膜，也就是 界面膜。",
+          "pause_after_ms": 1150,
+          "emotion": "引出關鍵角色 SEI 膜"
+        }
+      ]
+    },
+    {
+      "id": "sei-resistance-drop-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Side-by-side comparison of modified SEI film: left side high-resistance 13.77 ohm film blocking flow, right side engineered low-resistance 4.67 ohm film allowing smooth ion passage, unaccompanied by characters",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p039",
+          "speaker": "chief",
+          "text": "只要換掉配方把膜電阻從十三點七七降到四點六七歐姆，",
+          "pause_after_ms": 1050,
+          "emotion": "阻抗調控數據"
+        }
+      ]
+    },
+    {
+      "id": "sei-resistance-drop-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro detailed view of the scientific mechanism: Side-by-side comparison of modified SEI film: left side high-resistance 13.77 oh, high contrast lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p040",
+          "speaker": "chief",
+          "text": "快充容量立刻從六十二暴增到兩百七十六點二毫安時！",
+          "pause_after_ms": 1100,
+          "emotion": "容量飛躍對比"
+        }
+      ]
+    },
+    {
+      "id": "freeze-sei-explosion-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Chilling microscopic scene: icy blue frost engulfing the SEI surface layer, resistance arrows shooting upwards by 10x to 34x under freezing -20°C conditions, unaccompanied by characters",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p041",
+          "speaker": "chief",
+          "text": "溫度從二十三度降到零下二十度，",
+          "pause_after_ms": 850,
+          "emotion": "溫度驟降條件"
+        }
+      ]
+    },
+    {
+      "id": "freeze-sei-explosion-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro detailed view of the scientific mechanism: Chilling microscopic scene: icy blue frost engulfing the SEI surface layer, resi, high contrast lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p042",
+          "speaker": "chief",
+          "text": "這層膜的阻抗會直接放大十到三十四倍！",
+          "pause_after_ms": 1100,
+          "emotion": "阻抗劇烈暴增"
+        }
+      ]
+    },
+    {
+      "id": "dispersed-vs-dense",
+      "template": "shot",
+      "data": {
+        "prompt": "TEM transmission electron microscope style illustration: left shows a thick dense monolithic barrier of lithium fluoride blocking everything; right shows nanoscale 20nm dispersed crystalline grains with easy percolation pathways between them, unaccompanied by characters",
+        "camera": "static",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p043",
+          "speaker": "chief",
+          "text": "盲目加氟結成緻密厚板磚，低溫連充放電平台都消失；",
+          "pause_after_ms": 1100,
+          "emotion": "指出錯誤設計弊端"
+        },
+        {
+          "id": "p044",
+          "speaker": "chief",
+          "text": "只有讓氟化鋰分散成二十奈米微晶粒，",
+          "pause_after_ms": 950,
+          "emotion": "正確微觀結構"
+        }
+      ]
+    },
+    {
+      "id": "subzero-capacity-retained",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot of battery test curve at -20°C maintaining a solid 340 mAh/g flat plateau, clear gouache style, unaccompanied by characters",
+        "camera": "static",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p045",
+          "speaker": "chief",
+          "text": "才能在零下二十度保住每公克三百四十毫安時的容量！",
+          "pause_after_ms": 1100,
+          "emotion": "守住低溫容量"
+        }
+      ]
+    },
+    {
+      "id": "kid-turn-to-charge",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the curious eight-year-old girl with short black bob haircut, navy raincoat jacket with mustard hood, holding a white EV charging cable replica, looking alert and concerned towards the chief",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p046",
+          "speaker": "kid",
+          "text": "放電受阻只是暫時關機，回暖電就回來了。",
+          "pause_after_ms": 900,
+          "emotion": "總結放電特徵"
+        },
+        {
+          "id": "p047",
+          "speaker": "kid",
+          "text": "那為什麼專家都警告，冬天千萬不要隨便插上快充？",
+          "pause_after_ms": 1100,
+          "emotion": "引出最核心危機"
+        }
+      ]
+    },
+    {
+      "id": "chief-charge-warning",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the friendly office chief woman, dark hair in low ponytail, round glasses, looking serious and focused, hands resting calmly on the wooden desk",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p048",
+          "speaker": "chief",
+          "text": "因為冷天充電是永久損傷！",
+          "pause_after_ms": 950,
+          "emotion": "敲響警鐘"
+        },
+        {
+          "id": "p049",
+          "speaker": "chief",
+          "text": "德國亞琛工大用參比電極監測：",
+          "pause_after_ms": 850,
+          "emotion": "引入亞琛工大實驗"
+        }
+      ],
+      "chapter": "冷天充電，鋰擠不進去就鍍在外面"
+    },
+    {
+      "id": "three-electrode-cliff",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the friendly office chief woman in round glasses, pointing seriously to a steep descending capacity graph at subzero temperatures",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p050",
+          "speaker": "chief",
+          "text": "石墨電位跌破零伏特前能收下的鋰，",
+          "pause_after_ms": 850,
+          "emotion": "零伏特安全紅線"
+        },
+        {
+          "id": "p051",
+          "speaker": "chief",
+          "text": "零下二十度還有四百一十二毫安時，",
+          "pause_after_ms": 900,
+          "emotion": "低溫梯度數據"
+        }
+      ]
+    },
+    {
+      "id": "steep-capacity-cliff",
+      "template": "shot",
+      "data": {
+        "prompt": "Data plot showing capacity dropping sharply from 412 mAh/g at -20°C down to 160 at -30°C and 106 at -40°C, cold blue glowing visual, unaccompanied by characters",
+        "camera": "static",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p052",
+          "speaker": "chief",
+          "text": "零下三十度跌到一百六十，零下四十度只剩一百零六！",
+          "pause_after_ms": 1100,
+          "emotion": "斷崖式下跌數值"
+        }
+      ]
+    },
+    {
+      "id": "dendrite-plating-zoom-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Dramatic microscopic view of graphite surface: ions blocked from entering the gate, forced to capture incoming electrons directly on outer foil surface, transforming into bright metallic silver lithium needle crystals (dendrites), unaccompanied by characters",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p053",
+          "speaker": "chief",
+          "text": "通道凍結，但外面電流還在硬塞電子。",
+          "pause_after_ms": 900,
+          "emotion": "外來電子強行湧入"
+        }
+      ]
+    },
+    {
+      "id": "dendrite-plating-zoom-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro detailed view of the scientific mechanism: Dramatic microscopic view of graphite surface: ions blocked from entering the ga, high contrast lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p054",
+          "speaker": "chief",
+          "text": "進不去門的鋰離子，只能在石墨表面直接搶電子，就地變成銀白色的金屬鋰！",
+          "pause_after_ms": 1200,
+          "emotion": "金屬鋰析出過程"
+        }
+      ]
+    },
+    {
+      "id": "epr-cambridge-rig",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific illustration of an Electron Paramagnetic Resonance (EPR) cavity resonator bathed in gentle cyan laboratory light, detecting unpaired electron spins from metallic lithium deposits, unaccompanied by characters",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p055",
+          "speaker": "chief",
+          "text": "劍橋大學用電子順磁共振發現，",
+          "pause_after_ms": 850,
+          "emotion": "劍橋原位觀測"
+        },
+        {
+          "id": "p056",
+          "speaker": "chief",
+          "text": "甚至不需要過充，石墨平均電位在正的零點零五到零點一伏特，",
+          "pause_after_ms": 1050,
+          "emotion": "打破必須過充迷思"
+        }
+      ]
+    },
+    {
+      "id": "dead-lithium-shed",
+      "template": "shot",
+      "data": {
+        "prompt": "Microscopic view of mossy metallic lithium dendrites: during subsequent cycle, root of the dendrite dissolves away leaving a loose metallic cluster floating disconnected as 'dead lithium', unaccompanied by characters",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p057",
+          "speaker": "chief",
+          "text": "金屬鋰就已經在微觀角落偷偷生長，",
+          "pause_after_ms": 900,
+          "emotion": "局部微觀析鋰"
+        },
+        {
+          "id": "p058",
+          "speaker": "chief",
+          "text": "第二次充放電就有四分之一變成再也無法使用的死鋰！",
+          "pause_after_ms": 1100,
+          "emotion": "死鋰形成與不可逆損耗"
+        }
+      ]
+    },
+    {
+      "id": "kit-battery-cycling-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the friendly office chief woman holding up a simulated metallic pouch cell from the subzero cycling test",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p059",
+          "speaker": "chief",
+          "text": "卡爾斯魯厄理工學院拿二十五安時電池在零下十度充放五百次，",
+          "pause_after_ms": 1050,
+          "emotion": "卡爾斯魯厄理工長循環"
+        }
+      ]
+    },
+    {
+      "id": "kit-battery-cycling-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the friendly office chief woman in round black glasses, explaining with thoughtful smile, warm office light",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p060",
+          "speaker": "chief",
+          "text": "回到常溫仍永久損失四分之一容量，",
+          "pause_after_ms": 1000,
+          "emotion": "永久容量損失"
+        }
+      ]
+    },
+    {
+      "id": "pouch-swelling-gas",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the pouch battery resting on bench at 25°C after 48 hours: noticeable puffing and swelling like a little cushion, gas syringe extraction measuring gas composition, unaccompanied by characters",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p061",
+          "speaker": "chief",
+          "text": "放兩天還鼓脹發胖，",
+          "pause_after_ms": 850,
+          "emotion": "電池產氣鼓脹現象"
+        },
+        {
+          "id": "p062",
+          "speaker": "chief",
+          "text": "測出百分之三十二點六一的氫氣與百分之二十五點七九的一氧化碳！",
+          "pause_after_ms": 1150,
+          "emotion": "副反應氣體化學成分"
+        }
+      ]
+    },
+    {
+      "id": "tem-lithium-spots",
+      "template": "shot",
+      "data": {
+        "prompt": "High-resolution TEM dark-field micrograph showing 1-5 nanometer dark lattice spots of metallic lithium on graphite flakes, unaccompanied by characters",
+        "camera": "static",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p063",
+          "speaker": "chief",
+          "text": "拆開負極一看，上面布滿了一到五奈米大小的金屬鋰黑斑。",
+          "pause_after_ms": 1100,
+          "emotion": "電顯直接觀測證據"
+        }
+      ]
+    },
+    {
+      "id": "kid-dendrite-fear",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the curious eight-year-old girl with short black bob haircut, eyes wide with apprehension, looking nervously at a separator membrane diagram",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p064",
+          "speaker": "kid",
+          "text": "表面長出金屬鋰，一旦刺破隔離膜，後果不堪設想！",
+          "pause_after_ms": 1050,
+          "emotion": "直指短路隱患"
+        },
+        {
+          "id": "p065",
+          "speaker": "kid",
+          "text": "這難道完全沒得救了嗎？",
+          "pause_after_ms": 950,
+          "emotion": "絕境提問"
+        }
+      ]
+    },
+    {
+      "id": "chief-hope-smile",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the friendly office chief woman, dark hair tied in low ponytail with grey streak, mustard cardigan, smiling with calm confidence, warm office daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p066",
+          "speaker": "chief",
+          "text": "神奇的是，鍍在表面的鋰其實會自己鑽回去！",
+          "pause_after_ms": 1050,
+          "emotion": "帶來巨大轉折希望"
+        },
+        {
+          "id": "p067",
+          "speaker": "chief",
+          "text": "澳洲核科學組織用穿透外殼的中子射線觀察，",
+          "pause_after_ms": 950,
+          "emotion": "中子繞射技術"
+        }
+      ],
+      "chapter": "鍍上去的鋰，停一下會自己回去"
+    },
+    {
+      "id": "neutron-beam-scan",
+      "template": "shot",
+      "data": {
+        "prompt": "Stylized scientific diagram of intense penetrating neutron beam piercing cleanly through a sealed metal battery casing without damaging it, illuminating internal crystal phases, unaccompanied by characters",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p068",
+          "speaker": "chief",
+          "text": "發現充電切斷後，",
+          "pause_after_ms": 800,
+          "emotion": "切斷電流瞬間"
+        },
+        {
+          "id": "p069",
+          "speaker": "chief",
+          "text": "石墨裡塞滿鋰的晶體相竟然還在繼續增加！",
+          "pause_after_ms": 1100,
+          "emotion": "自發回嵌現象"
+        }
+      ]
+    },
+    {
+      "id": "relaxation-time-stretch-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the curious eight-year-old girl with short black bob haircut, staring wide-eyed at a stopwatch marking over 60 minutes, round dark eyes",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p070",
+          "speaker": "chief",
+          "text": "在零點七五倍率下，這段回嵌過程在零下十度要九點二分鐘，",
+          "pause_after_ms": 1050,
+          "emotion": "各溫區回嵌時間"
+        }
+      ]
+    },
+    {
+      "id": "relaxation-time-stretch-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the curious eight-year-old girl with short black bob haircut, expressive face reacting with keen interest, cozy warm question office",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p071",
+          "speaker": "chief",
+          "text": "零下十八度要四十五點一分鐘，到了零下二十三度長達六十一點七分鐘！",
+          "pause_after_ms": 1200,
+          "emotion": "極低溫下動力學延遲"
+        }
+      ]
+    },
+    {
+      "id": "optical-microscope-gold-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Operando optical microscopy view of graphite electrode cross-section: bright golden band (fully lithiated phase) slowly creeping inward into grey graphite during 1.5 hours of post-charge rest, unaccompanied by characters",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p072",
+          "speaker": "chief",
+          "text": "柏克萊在光學顯微鏡下也拍到了：",
+          "pause_after_ms": 850,
+          "emotion": "柏克萊光學顯微實測"
+        }
+      ]
+    },
+    {
+      "id": "optical-microscope-gold-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro detailed view of the scientific mechanism: Operando optical microscopy view of graphite electrode cross-section: bright gol, high contrast lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p073",
+          "speaker": "chief",
+          "text": "停充後頭一點五小時，代表飽和嵌鋰的金色區域依然在往內部推進！",
+          "pause_after_ms": 1150,
+          "emotion": "肉眼可見的金色相推進"
+        }
+      ]
+    },
+    {
+      "id": "relaxation-window-test",
+      "template": "shot",
+      "data": {
+        "prompt": "Charging protocol diagram showing a 3-minute rest break inserted at exactly 45% state of charge: the curve shows onset of plating delayed by 5% of total capacity, unaccompanied by characters",
+        "camera": "static",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p074",
+          "speaker": "chief",
+          "text": "研究人員在充到百分之四十五電量時故意暫停三分鐘，",
+          "pause_after_ms": 1000,
+          "emotion": "精準中途休息策略"
+        },
+        {
+          "id": "p075",
+          "speaker": "chief",
+          "text": "鍍鋰起點就被往後推遲了百分之五電量；",
+          "pause_after_ms": 1000,
+          "emotion": "延後析鋰起點"
+        }
+      ]
+    },
+    {
+      "id": "wrong-timing-fail",
+      "template": "shot",
+      "data": {
+        "prompt": "Comparative diagram showing resting at premature 28% or late 52.5% charge state: curves showing zero postponement of plating onset, marked with red dashed outline, unaccompanied by characters",
+        "camera": "static",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p076",
+          "speaker": "chief",
+          "text": "但在太早的百分之二十八或太晚的百分之五十二點五休息，完全無效。",
+          "pause_after_ms": 1100,
+          "emotion": "強調時機精準度"
+        }
+      ]
+    },
+    {
+      "id": "kid-break-insight",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the curious eight-year-old girl with short black bob haircut, navy raincoat with mustard hood, hands clapping together in delight as an idea clicks, bright expressive face",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p077",
+          "speaker": "kid",
+          "text": "要在它快喘不過氣的關鍵節點踩煞車，",
+          "pause_after_ms": 900,
+          "emotion": "生動比喻踩煞車"
+        },
+        {
+          "id": "p078",
+          "speaker": "kid",
+          "text": "堆在門口的鋰才會自己排隊進去！",
+          "pause_after_ms": 1050,
+          "emotion": "理解回嵌本質"
+        }
+      ]
+    },
+    {
+      "id": "kid-how-to-see",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the curious eight-year-old girl with short black bob haircut, navy raincoat, leaning forward against desk, tapping an opaque silver EV battery pack, puzzled expression",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p079",
+          "speaker": "kid",
+          "text": "可是車載電池封得死死的，",
+          "pause_after_ms": 850,
+          "emotion": "提出實用難題"
+        },
+        {
+          "id": "p080",
+          "speaker": "kid",
+          "text": "不拆開電池，怎麼知道裡面有沒有在鍍鋰？",
+          "pause_after_ms": 1050,
+          "emotion": "追問無損檢測"
+        }
+      ],
+      "chapter": "不拆電池，怎麼知道裡面在鍍鋰？"
+    },
+    {
+      "id": "ultrasound-probe-scan",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific setup of high-frequency 25 MHz acoustic ultrasonic transducer gliding smoothly over a flat battery cell surface in a water-coupling immersion tank, clean laboratory lighting, unaccompanied by characters",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p081",
+          "speaker": "chief",
+          "text": "科學家有三招。第一招是給電池照超音波！",
+          "pause_after_ms": 950,
+          "emotion": "引出超音波聲學成像"
+        },
+        {
+          "id": "p082",
+          "speaker": "chief",
+          "text": "亞琛工大用二十五兆赫茲超音波每五十六秒掃一張，",
+          "pause_after_ms": 950,
+          "emotion": "高頻高解析掃描"
+        }
+      ]
+    },
+    {
+      "id": "ultrasound-bright-spots-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Ultrasonic acoustic impedance map of battery electrode: at 4.0V charging cutoff, distinct bright glowing white acoustic reflection spots bloom on graphite surface, unaccompanied by characters",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p083",
+          "speaker": "chief",
+          "text": "在誘發析鋰的電池上，電壓一到四伏特，鍍鋰處立刻亮成白點；",
+          "pause_after_ms": 1100,
+          "emotion": "聲阻抗突變成像"
+        }
+      ]
+    },
+    {
+      "id": "ultrasound-bright-spots-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro detailed view of the scientific mechanism: Ultrasonic acoustic impedance map of battery electrode: at 4.0V charging cutoff,, high contrast lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p084",
+          "speaker": "chief",
+          "text": "停充靜置十分鐘，白點肉眼可見地縮小消退！",
+          "pause_after_ms": 1050,
+          "emotion": "聲學直擊回嵌消退"
+        }
+      ]
+    },
+    {
+      "id": "voltage-plateau-tail-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Precision voltage curve during post-charge relaxation: normal cell smoothly decaying downwards, whereas cell with plated lithium displays a distinct horizontal flat shoulder holding voltage high, unaccompanied by characters",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p085",
+          "speaker": "chief",
+          "text": "第二招連探頭都不用，只盯著充完電的電壓回落曲線！",
+          "pause_after_ms": 1050,
+          "emotion": "純電化學訊號判讀"
+        }
+      ]
+    },
+    {
+      "id": "voltage-plateau-tail-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro detailed view of the scientific mechanism: Precision voltage curve during post-charge relaxation: normal cell smoothly deca, high contrast lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p086",
+          "speaker": "chief",
+          "text": "格拉茲工大拿車用六十四點六安時大軟包測試：",
+          "pause_after_ms": 900,
+          "emotion": "車規大電芯實測"
+        }
+      ]
+    },
+    {
+      "id": "graz-car-battery",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro view of a massive 64.6 Ah automotive pouch battery on test bench, digital screen highlighting the subtle voltage plateau, unaccompanied by characters",
+        "camera": "static",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p087",
+          "speaker": "chief",
+          "text": "表面有鍍鋰回嵌時，電壓回落會多撐出一小段水平平台！",
+          "pause_after_ms": 1100,
+          "emotion": "解釋電壓平台由來"
+        }
+      ]
+    },
+    {
+      "id": "rate-paradox-3c",
+      "template": "shot",
+      "data": {
+        "prompt": "Comparison chart of automotive cell at 0°C: 2C charge curve with larger plateau vs 3C charge curve with surprisingly shorter plateau and smaller stripped lithium peak, unaccompanied by characters",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p088",
+          "speaker": "chief",
+          "text": "他們發現一點五倍率以上到處都鍍，",
+          "pause_after_ms": 850,
+          "emotion": "高倍率普遍現象"
+        },
+        {
+          "id": "p089",
+          "speaker": "chief",
+          "text": "但零度衝到三倍率組，溶出的鋰反而比兩倍率少！",
+          "pause_after_ms": 1100,
+          "emotion": "拋出極速充電悖論"
+        }
+      ]
+    },
+    {
+      "id": "polarization-cutoff-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Voltage and current timeline of 3C charging: voltage spikes instantly to upper safety limit due to massive ohmic polarization, drastically truncating constant-current duration to only 34.3 Ah compared to 40.6 Ah at 2C, unaccompanied by characters",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p090",
+          "speaker": "chief",
+          "text": "因為三倍率極化電壓太大，一瞬間頂到保護上限，",
+          "pause_after_ms": 1000,
+          "emotion": "極化截止機制"
+        }
+      ]
+    },
+    {
+      "id": "polarization-cutoff-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro detailed view of the scientific mechanism: Voltage and current timeline of 3C charging: voltage spikes instantly to upper s, high contrast lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p091",
+          "speaker": "chief",
+          "text": "只充進三十四點三安時，兩倍率充了四十點六安時，總量少所以鍍得反而少。",
+          "pause_after_ms": 1200,
+          "emotion": "容量受限導致總鍍鋰量反減"
+        }
+      ]
+    },
+    {
+      "id": "four-times-volume",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the friendly office chief woman, gesturing with both hands spread wide apart to demonstrate a four-fold volume expansion",
+        "camera": "static",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p092",
+          "speaker": "chief",
+          "text": "第三招直接量電池頂外殼的力氣！",
+          "pause_after_ms": 850,
+          "emotion": "引入力學傳感第三招"
+        },
+        {
+          "id": "p093",
+          "speaker": "chief",
+          "text": "金屬鋰堆在表面佔的體積，是嵌進石墨層間的四倍以上！",
+          "pause_after_ms": 1100,
+          "emotion": "比容差四倍以上物理依據"
+        }
+      ]
+    },
+    {
+      "id": "tongji-expansion-rig",
+      "template": "shot",
+      "data": {
+        "prompt": "Laboratory setup at Tongji University: a 33.3 Ah pouch cell mounted tightly inside a heavy-duty mechanical fixture with piezoelectric load cell measuring mechanical expansion force, unaccompanied by characters",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p094",
+          "speaker": "chief",
+          "text": "同濟大學量到正常充電膨脹力只有五百九十牛頓，",
+          "pause_after_ms": 950,
+          "emotion": "正常充電膨脹基準"
+        },
+        {
+          "id": "p095",
+          "speaker": "chief",
+          "text": "一旦鍍鋰立刻飆到一千兩百三十牛頓！",
+          "pause_after_ms": 1050,
+          "emotion": "力急遽暴衝至1230牛頓"
+        }
+      ]
+    },
+    {
+      "id": "closed-loop-control-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Dynamic chart showing closed-loop control: the instant force rate spikes, charging current automatically throttles back from 1.0C to 0.5C, force stabilizes immediately, accompanied by 100-cycle pristine anode photograph, unaccompanied by characters",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p096",
+          "speaker": "chief",
+          "text": "系統一感應到應力暴增，立刻把電流降到零點五倍率，",
+          "pause_after_ms": 1000,
+          "emotion": "智慧降速防鍍"
+        }
+      ]
+    },
+    {
+      "id": "closed-loop-control-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro detailed view of the scientific mechanism: Dynamic chart showing closed-loop control: the instant force rate spikes, chargi, high contrast lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p097",
+          "speaker": "chief",
+          "text": "頂力回落，循環一百次完全零鍍鋰！",
+          "pause_after_ms": 1050,
+          "emotion": "閉環控制完美成效"
+        }
+      ]
+    },
+    {
+      "id": "kid-sensor-cheer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the curious eight-year-old girl with short black bob haircut, navy raincoat with mustard hood, clenching small fists excitedly with admiring smile, warm question office backdrop",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p098",
+          "speaker": "kid",
+          "text": "從超音波、電壓平台到外殼膨脹力，",
+          "pause_after_ms": 900,
+          "emotion": "讚嘆三大黑科技"
+        },
+        {
+          "id": "p099",
+          "speaker": "kid",
+          "text": "根本逃不過科學家的眼睛！",
+          "pause_after_ms": 1000,
+          "emotion": "欽佩科研智慧"
+        }
+      ]
+    },
+    {
+      "id": "kid-dilemma-puzzle-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the curious eight-year-old girl with short black bob haircut, frowning in deep contemplation, holding hands open weighing two imaginary choices, questioning gaze",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p100",
+          "speaker": "kid",
+          "text": "可是冷天充電會鍍鋰，如果一年四季都把電池包著保溫，",
+          "pause_after_ms": 1000,
+          "emotion": "剖析工程兩難困境"
+        }
+      ],
+      "chapter": "研究者的解法反過來：只在充電時讓它熱"
+    },
+    {
+      "id": "kid-dilemma-puzzle-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the curious eight-year-old girl with short black bob haircut, expressive face reacting with keen interest, cozy warm question office",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p101",
+          "speaker": "kid",
+          "text": "高溫又會加速電池老化衰退，這到底該怎麼辦？",
+          "pause_after_ms": 1100,
+          "emotion": "提出核心衝突"
+        }
+      ]
+    },
+    {
+      "id": "thermal-switch-intro-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the friendly office chief woman, dark hair in low ponytail with grey streak, mustard cardigan, displaying a tiny smart thermal switch assembly between a battery pouch and cooling plate, smiling warmly",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p102",
+          "speaker": "chief",
+          "text": "柏克萊團隊做了一個反常理的熱開關！",
+          "pause_after_ms": 950,
+          "emotion": "亮出終極發明"
+        }
+      ]
+    },
+    {
+      "id": "thermal-switch-intro-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the friendly office chief woman in round black glasses, explaining with thoughtful smile, warm office light",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p103",
+          "speaker": "chief",
+          "text": "平時開車放電，熱開關緊貼散熱板維持三十度最佳長壽區間。",
+          "pause_after_ms": 1100,
+          "emotion": "常規放電貼合散熱"
+        }
+      ]
+    },
+    {
+      "id": "fast-charge-disconnect-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro mechanism cutaway: a slender shape-memory alloy (Nitinol) wire actuated by pulse heating, popping the battery cell 0.5 mm away from the chilling cold plate, air gap insulating the cell, unaccompanied by characters",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p104",
+          "speaker": "chief",
+          "text": "但一插上快充，鎳鈦合金線立刻把電池頂開零點五公釐斷開散熱，",
+          "pause_after_ms": 1100,
+          "emotion": "形狀記憶合金斷開散熱"
+        }
+      ]
+    },
+    {
+      "id": "fast-charge-disconnect-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro detailed view of the scientific mechanism: Macro mechanism cutaway: a slender shape-memory alloy (Nitinol) wire actuated by, high contrast lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p105",
+          "speaker": "chief",
+          "text": "電池靠自己的內阻自發熱，",
+          "pause_after_ms": 850,
+          "emotion": "轉化內阻劣勢為自熱優勢"
+        }
+      ]
+    },
+    {
+      "id": "self-heating-boost",
+      "template": "shot",
+      "data": {
+        "prompt": "Microscopic view of battery interior under self-heated 42.2°C warmth: solvent jackets shedding instantaneously like autumn leaves, purple lithium ions diving seamlessly into wide open graphite layers, unaccompanied by characters",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p106",
+          "speaker": "chief",
+          "text": "幾分鐘內把表面推升到四十二點二度，",
+          "pause_after_ms": 900,
+          "emotion": "極速自熱爬坡"
+        },
+        {
+          "id": "p107",
+          "speaker": "chief",
+          "text": "脫溶劑能障大降，鋰離子暢通鑽進晶格！",
+          "pause_after_ms": 1050,
+          "emotion": "高溫通暢嵌鋰"
+        }
+      ]
+    },
+    {
+      "id": "switch-reconnect-cool",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro mechanism cutaway: the instant battery hits 80% charge, Nitinol wire snaps back, pressing battery firmly onto the cold heat sink, pulling temperature rapidly back to 30°C within minutes, unaccompanied by characters",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p108",
+          "speaker": "chief",
+          "text": "充到八成那一秒，熱開關立刻接回散熱板迅速降溫！",
+          "pause_after_ms": 1050,
+          "emotion": "精準降溫保護壽命"
+        }
+      ]
+    },
+    {
+      "id": "975-cycles-triumph-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Infographic visual: comparison bar chart showing thermally modulated cell achieving 975 cycles at 6C fast charge vs 665 cycles for permanently insulated cell and severe dendrite failure for chilled cell, unaccompanied by characters",
+        "camera": "static",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p109",
+          "speaker": "chief",
+          "text": "五安時電池用六倍率在十五分鐘充到八成，",
+          "pause_after_ms": 950,
+          "emotion": "15分鐘充飽8成"
+        }
+      ]
+    },
+    {
+      "id": "975-cycles-triumph-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro detailed view of the scientific mechanism: Infographic visual: comparison bar chart showing thermally modulated cell achiev, high contrast lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p110",
+          "speaker": "chief",
+          "text": "維持了九百七十五次循環壽命，遠勝過全程保溫組的六百六十五次！",
+          "pause_after_ms": 1200,
+          "emotion": "975圈對比665圈大獲全勝"
+        }
+      ]
+    },
+    {
+      "id": "kid-full-circle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the curious eight-year-old girl with short black bob haircut, navy raincoat jacket with mustard hood, smiling broadly in understanding, cozy warm question office",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p111",
+          "speaker": "kid",
+          "text": "需要熱的時候留住自己的熱，充飽立刻散掉！",
+          "pause_after_ms": 1000,
+          "emotion": "提煉全片精髓"
+        },
+        {
+          "id": "p112",
+          "speaker": "kid",
+          "text": "這下徹底把開場的保溫與發熱串聯起來了！",
+          "pause_after_ms": 1050,
+          "emotion": "完美首尾呼應"
+        }
+      ]
+    },
+    {
+      "id": "chief-outro-call-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the friendly office chief woman standing beside the wooden desk, hands resting gently on desk, smiling kindly toward the camera, warm golden office afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p113",
+          "speaker": "chief",
+          "text": "所以冬天手機掉電關機別慌，電只是在門口避寒。",
+          "pause_after_ms": 1050,
+          "emotion": "親切溫馨安撫觀眾"
+        }
+      ]
+    },
+    {
+      "id": "chief-outro-call-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the friendly office chief woman in round black glasses, explaining with thoughtful smile, warm office light",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p114",
+          "speaker": "chief",
+          "text": "進屋暖和後給它一點時間適應，千萬別急著立刻插上超級快充哦！",
+          "pause_after_ms": 1200,
+          "emotion": "實用科學思維建議"
+        }
+      ]
+    },
+    {
+      "id": "kid-final-hook-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of both the curious eight-year-old girl and the friendly chief smiling side by side in the cozy question office, kid waving hand cheerfully towards the camera",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief",
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p115",
+          "speaker": "kid",
+          "text": "你的手機在冬天最低溫能撐多久？",
+          "pause_after_ms": 850,
+          "emotion": "拋出互動問題"
+        }
+      ]
+    },
+    {
+      "id": "kid-final-hook-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the friendly office chief woman and the curious eight-year-old girl side by side in the cozy question office",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief",
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p116",
+          "speaker": "kid",
+          "text": "你有過進屋電量又彈回來的經歷嗎？快在留言區告訴我們吧！",
+          "pause_after_ms": 1100,
+          "emotion": "留言引導與收尾"
+        }
+      ]
+    }
+  ]
+}

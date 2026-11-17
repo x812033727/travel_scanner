@@ -1,0 +1,78 @@
+{
+  "ok": false,
+  "final_sha256": "b2ef2cc393019668029f0f7187ff6845c23ec148ce89c1b4e5617c64c48dfe24",
+  "items": [
+    {
+      "id": "assemble",
+      "ok": true,
+      "detail": "15336 frames, -14 LUFS, 0 frames matched their slides; every check passed"
+    },
+    {
+      "id": "render",
+      "ok": true,
+      "detail": "0 slide states drawn with no layout, glyph or font problem, thumbnail included"
+    },
+    {
+      "id": "narration",
+      "ok": true,
+      "detail": "timeline.json approved at 2026-11-17T17:31:15.408Z"
+    },
+    {
+      "id": "pace",
+      "ok": true,
+      "detail": "84 slide states, the longest 9.4 s; none over 15 s"
+    },
+    {
+      "id": "captions",
+      "ok": true,
+      "detail": "caption files for zh-TW, en, ja, ko, es, pt, id, vi, th, every translation current",
+      "warnings": [
+        "id: cue 107 (p104): 18.7 characters a second, above 17",
+        "id: cue 120 (p116): 18.2 characters a second, above 17",
+        "vi: cue 4 (p004): 18.8 characters a second, above 17",
+        "vi: cue 26 (p026): 18.5 characters a second, above 17",
+        "vi: cue 28 (p028): 17.5 characters a second, above 17",
+        "vi: cue 55 (p054): 18.1 characters a second, above 17",
+        "vi: cue 79 (p077): 18.8 characters a second, above 17",
+        "vi: cue 118 (p115): 18.2 characters a second, above 17",
+        "vi: cue 119 (p116): 17.8 characters a second, above 17",
+        "vi: cue 120 (p116): 17.5 characters a second, above 17"
+      ]
+    },
+    {
+      "id": "metadata",
+      "ok": true,
+      "detail": "title, description and tags within YouTube's limits for zh-TW, en, ja, ko, es, pt, id, vi, th; 6 chapters"
+    },
+    {
+      "id": "facts",
+      "ok": true,
+      "detail": "verify-1.md marks no claim NOT FOUND"
+    },
+    {
+      "id": "links",
+      "ok": true,
+      "detail": "14 links open; 10 refuse automated checks and were not opened: https://doi.org/10.1039/c9ra00490d (HTTP 403), https://doi.org/10.1021/acsomega.6b00551 (HTTP 403), https://doi.org/10.1021/acs.jpclett.5c02274 (HTTP 403), https://doi.org/10.1073/pnas.2420398122 (HTTP 403), https://doi.org/10.1021/acselectrochem.4c00079 (HTTP 403), https://doi.org/10.1002/anie.202106178 (HTTP 403), https://doi.org/10.1039/d2ra02518c (HTTP 403), https://doi.org/10.1002/cssc.201903139 (HTTP 403), https://doi.org/10.1021/acsomega.4c10805 (HTTP 403), https://doi.org/10.1002/advs.202504580 (HTTP 403)"
+    },
+    {
+      "id": "thumbnail",
+      "ok": true,
+      "detail": "1280x720 JPEG, 162 KB; the headline is about 36 px tall at 320 px wide; language thumbnails checked: en, ja, ko, es, pt, id, vi, th"
+    },
+    {
+      "id": "policy",
+      "ok": false,
+      "detail": "Jev：符合立場 0.66、有示範 0.45、建議 0.01、業配 0.02；沒過（有示範低於 0.6）"
+    },
+    {
+      "id": "disclosure",
+      "ok": true,
+      "detail": "tick altered or synthetic content: a drama: AI-generated shots and music are always disclosed; upload/metadata.json already says so"
+    }
+  ],
+  "policy_judged": {
+    "request_sha256": "107b6c92b72c80b7acd77b863cc5a0f30cf1acdf765674d5965508c102986244",
+    "ok": false,
+    "detail": "Jev：符合立場 0.66、有示範 0.45、建議 0.01、業配 0.02；沒過（有示範低於 0.6）"
+  }
+}
