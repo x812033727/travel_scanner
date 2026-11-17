@@ -393,3 +393,29 @@ test('demand is four yes-or-no answers folded into the audience score as a sixth
   assert.throws(() => validateAudience('T1', { ...five, ...DEMAND, score: 6.75, demand_review: 'notes.md' }), /reviews\/demand/);
   assert.throws(() => validateAudience('T1', { ...five, demand: 5.5 }), /true or false/);
 });
+
+test('a single-episode core carries its demand answers, and an audience score on it is blended with demand', () => {
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '貝奇莫號為什麼漂了幾十年？'), candidate('N102', 'Carroll Deering 號的船員去哪了？'), candidate('N103', '第三題？', { editorial: { role: 'chapter', payoff: 'a', visual: 'b', minutes: [3, 5] } })] };
+  const selection = { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 3, ids: ['N101', 'N102', 'N103'] };
+  const answers = { east_asia: true, prophecy_ghost: true, ancient_alien: false, famous: false };
+  const scored = (id, score) => ({ id, rank: 1, of: 2, score, click: score, hook: score, surprise: score, payoff: score, share: score, comment: 'fixture' });
+  const build = (demandRows, audienceRows = [scored('N101', 7), scored('N102', 7.2)]) => {
+    const root = fixture({ batch, selection });
+    write(root, `${DIR}/reviews/audience-20261114.json`, { reviewed_on: '2026-11-14', candidates: audienceRows });
+    write(root, `${DIR}/reviews/demand-20261117-cores.json`, { reviewed_on: '2026-11-17', candidates: demandRows });
+    return buildPool(root);
+  };
+  const pool = build([{ id: 'N101', answers, demand: 5.5, reason: 'fixture' }]);
+  const [first, second] = ['N101', 'N102'].map((id) => pool.candidates.find((row) => row.id === id));
+  assert.deepEqual(first.demand, { answers, demand: 5.5, reason: 'fixture', reviewed_on: '2026-11-17', review: 'reviews/demand-20261117-cores.json' });
+  assert.equal(first.audience.base, 7);
+  assert.equal(first.audience.score, 6.75);
+  assert.equal(second.audience.base, undefined, 'a core with no demand answers keeps its five-item score');
+  assert.deepEqual([first.audience.rank, second.audience.rank, first.audience.of], [2, 1, 2], 'scored cores are ranked again on the blended score');
+  const unscored = build([{ id: 'N102', answers, demand: 5.5, reason: 'fixture' }], [scored('N101', 7)]).candidates.find((row) => row.id === 'N102');
+  assert.equal(unscored.demand.demand, 5.5);
+  assert.equal(unscored.audience, undefined, 'demand alone does not invent an audience score');
+  assert.throws(() => build([{ id: 'N101', answers, demand: 10, reason: 'fixture' }]), /demand must be 5.5/);
+  assert.throws(() => build([{ id: 'N101', answers: { east_asia: true }, demand: 3.25 }]), /true or false/);
+  assert.throws(() => build([{ id: 'N103', answers, demand: 5.5 }]), /selected single-episode core/);
+});

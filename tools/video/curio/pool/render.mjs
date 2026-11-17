@@ -1,6 +1,6 @@
 // 奇聞檔案局素材池的題案檢查與輸出頁；照原來如此事務所素材池的 render.mjs。
 // 題案（themes.json）照這個池的片長規則：長片 8–13 分鐘，看內容決定，不為了片長硬湊。
-import { LONG_MIN, LONG_MAX, CATEGORIES, CATEGORY_LIST, categoryForAxis } from './core.mjs';
+import { LONG_MIN, LONG_MAX, CATEGORIES, CATEGORY_LIST, categoryForAxis, DEMAND_QUESTIONS, DEMAND_FLOOR, DEMAND_STEP, demandScore, blendedScore } from './core.mjs';
 
 const cell = (value) => String(value ?? '').replaceAll('|', '／').replaceAll('\n', ' ');
 const STATUS = { selected: '入選', held: '暫緩', reserve: '候補（待研究）', produced: '已製作／製作中', shorts: '轉 Shorts', excluded: '淘汰／轉出' };
@@ -41,11 +41,7 @@ export const AUDIENCE_BASELINE = 'reviews/audience-20261114.json';
 // （docs/videos/channel-review-20261116/README.md），由獨立評審只讀題案卡回答，紀錄在 reviews/demand-*.json。
 // demand = DEMAND_FLOOR + DEMAND_STEP × 答「是」的題數；它是事實型判斷，不做錨點校正。
 // 有 demand 的題案 score = (五項平均 base × 5 + demand) ÷ 6；base 留著，拿掉 demand 就還原。
-export const DEMAND_QUESTIONS = Object.freeze({ east_asia: '台灣或東亞觀眾本來就認得', prophecy_ghost: '預言末日或鬼魂死後', ancient_alien: '古文明或外星', famous: '主角全世界叫得出名字' });
-export const DEMAND_FLOOR = 1;
-export const DEMAND_STEP = 2.25;
-export const demandScore = (answers) => DEMAND_FLOOR + DEMAND_STEP * Object.keys(DEMAND_QUESTIONS).filter((key) => answers?.[key] === true).length;
-export const blendedScore = (base, demand) => (base * Object.keys(AUDIENCE_DIMENSIONS).length + demand) / (Object.keys(AUDIENCE_DIMENSIONS).length + 1);
+export { DEMAND_QUESTIONS, DEMAND_FLOOR, DEMAND_STEP, demandScore, blendedScore };
 function validateDemand(owner, audience) {
   if (audience.demand === undefined && audience.base === undefined && audience.demand_answers === undefined && audience.demand_review === undefined) return;
   const answers = audience.demand_answers;
@@ -246,7 +242,9 @@ export function producibleData(pool, themes) {
   return {
     revision: pool.revision, axes: pool.axes, categories: CATEGORY_LIST,
     themes: ready.map((episode) => ({ id: episode.id, category: themeCategory(episode, byId), title: episode.title, minutes: episode.target_minutes, q: episode.core_question, chapters: episode.chapters.length, cores: episode.candidate_ids.map((id) => ({ id, axis: byId.get(id).axis, category: rowCategory(byId.get(id)), q: byId.get(id).question })) })),
-    solo: pool.candidates.filter((row) => row.selected && !used.has(row.id)).map((row) => ({ id: row.id, axis: row.axis, category: rowCategory(row), q: row.question, hook: short(row.hook, 110), min: row.editorial ? row.editorial.minutes : null, src: new Set(row.source_refs.map((ref) => ref.source_id)).size, kind: row.id.startsWith('N') ? 'new' : row.screened_in ? 'screened' : 'checked' })),
+    solo: pool.candidates.filter((row) => row.selected && !used.has(row.id)).map((row) => ({ id: row.id, axis: row.axis, category: rowCategory(row), q: row.question, hook: short(row.hook, 110), min: row.editorial ? row.editorial.minutes : null, src: new Set(row.source_refs.map((ref) => ref.source_id)).size, kind: row.id.startsWith('N') ? 'new' : row.screened_in ? 'screened' : 'checked', score: row.audience?.score ?? null, demand: row.demand?.demand ?? null }))
+      // 2026-11-17：評過分的排前面（併入需求的總分高到低），其次是只答過需求四問的，其餘照原順序。
+      .map((row, index) => ({ row, index })).sort((a, b) => (b.row.score ?? -1) - (a.row.score ?? -1) || (b.row.demand ?? -1) - (a.row.demand ?? -1) || a.index - b.index).map(({ row }) => row),
   };
 }
 
@@ -357,6 +355,7 @@ function render(){
       if(term&&!(s.id+s.category+s.q+s.hook).toLowerCase().includes(term))continue;n++;
       const c=el('article','card');const m=el('div','meta');
       m.append(el('span','id',s.id),el('span','pill',s.category),el('span','pill min',s.min?('素材 '+s.min.join('–')+' 分'):'片長待企劃'),el('span','pill min',KIND[s.kind]+' · '+s.src+' 來源'));
+      if(s.score!=null)m.append(el('span','pill','觀眾 '+s.score.toFixed(2)));if(s.demand!=null)m.append(el('span','pill min','需求 '+s.demand));
       c.append(m,el('h2',null,s.q));if(s.hook)c.append(el('p',null,s.hook));list.append(c);
     }
   }
