@@ -81,7 +81,7 @@
       },
       "audience": {
         "score": 6.57,
-        "rank": 27,
+        "rank": 50,
         "of": 155,
         "click": 8.0,
         "hook": 7.5,
@@ -297,7 +297,7 @@
       },
       "audience": {
         "score": 6.41,
-        "rank": 46,
+        "rank": 63,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -321,8 +321,8 @@
     {
       "id": "T04",
       "category": "U-外星太空與未知訊號",
-      "title": "總統都出面宣布了，火星生命為什麼還沒定案？",
-      "core_question": "1976 年的探測器實驗、1996 年南極撿到的火星隕石，兩次『火星可能有生命』，為什麼都被反駁、卻到今天還有人不服？",
+      "title": "火星的土吃了養分還冒出氣體，為什麼不算生命？",
+      "core_question": "1976 年探測器往火星土裡滴養分，土真的冒出氣體，設計實驗的人到過世都不服；為什麼這樣還不能算找到生命？",
       "connection": "兩題答的是同一個問題（火星生命的證據），證據與反駁都不同；排成前後兩案，第二案剛好接第一案留下的疑問。",
       "boredom_risk": "兩段都是『宣布→反駁』，要用設計者到 2021 年過世都堅持、與 2009 年 JSC 仍主張生物說推進。",
       "drop_if": "任一案的反駁論文讀不到，縮成 8 分鐘；不補火星人臉（U12 是獨立題）。",
@@ -340,42 +340,42 @@
       ],
       "chapters": [
         {
-          "title": "開場：兩次差一點就證明了",
+          "title": "火星的土冒了氣，卻不算數",
           "seconds": 60,
-          "new_information": "1976 年與 1996 年，兩次『火星可能有生命』的消息，兩次都沒能算數。",
+          "new_information": "1976 年火星的土冒了氣，1996 年又有一顆火星隕石：兩次『可能有生命』，兩次都沒算數。",
           "candidate_ids": [
             "U29",
             "U41"
           ]
         },
         {
-          "title": "維京號：滴下養分，土裡冒出氣體",
+          "title": "滴下養分，土裡冒出氣體",
           "seconds": 150,
-          "new_information": "實驗的結果看起來像有東西在吃養分；NASA 認為是化學反應，設計實驗的 Levin 到 2021 年過世都不同意。",
+          "new_information": "結果看起來就像土裡有東西在吃養分；NASA 說那只是化學反應，設計實驗的 Levin 一直到 2021 年過世都不同意。",
           "candidate_ids": [
             "U29"
           ]
         },
         {
-          "title": "幾十年後才補上的線索",
+          "title": "幾十年後，那些氣體有了解釋",
           "seconds": 120,
-          "new_information": "2008 年鳳凰號在火星土裡找到過氯酸鹽；2013 年 Quinn 等人提出的次氯酸鹽，才終於接得上當年冒出的氣體。",
+          "new_information": "2008 年鳳凰號在火星土裡找到一種鹽，叫過氯酸鹽；到 2013 年 Quinn 等人提出次氯酸鹽，才終於對得上當年冒出來的氣體。",
           "candidate_ids": [
             "U29"
           ]
         },
         {
-          "title": "火星隕石：總統聲明比論文早九天",
+          "title": "南極撿到的石頭，總統先開口",
           "seconds": 150,
-          "new_information": "1984 年在南極撿到的石頭，1996-08-07 總統先發了聲明；論文裡的證據包括有機物、礦物，和長得像細菌的形狀。",
+          "new_information": "1984 年在南極撿到的一顆石頭，1996-08-07 總統搶先發了聲明，比論文早九天；論文拿出的證據有有機物、礦物，還有長得像細菌的形狀。",
           "candidate_ids": [
             "U41"
           ]
         },
         {
-          "title": "結檔：為什麼還沒吵完",
+          "title": "所以火星到底有沒有？",
           "seconds": 60,
-          "new_information": "2009 年原團隊仍主張是生物留下的，2022 年有研究說是不靠生物也做得出來的有機物；兩邊都還有人。",
+          "new_information": "2009 年原團隊還是說那是生物留下的，2022 年有研究說不靠生物也做得出這種有機物。兩次都卡在同一點：化學也做得出來。",
           "candidate_ids": [
             "U29",
             "U41"
@@ -383,24 +383,22 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.40 低於 6.5（五項平均 6.58、需求 5.5）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.4,
-        "rank": 48,
+        "score": 7.92,
+        "rank": 4,
         "of": 155,
-        "click": 6.5,
-        "hook": 6.0,
-        "surprise": 6.0,
-        "payoff": 6.0,
-        "share": 5.5,
-        "comment": "火星生命題材大，但沒定論的收尾少了爆點，過氯酸鹽段有點硬。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114-r2.json",
+        "click": 8.0,
+        "hook": 7.5,
+        "surprise": 7.25,
+        "payoff": 7.5,
+        "share": 7.0,
+        "comment": "土冒氣卻不算生命，這問題我真的想知道答案，節奏也短",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
         "rounds": [
           {
             "score": 6.11,
@@ -408,9 +406,16 @@
             "changes": "依『少了揭曉快感』把總統搶先宣布的戲劇點放進片名，刪掉 GCMS、PAHs 等術語，結尾講清楚兩派各說什麼。",
             "reviewed_on": "2026-11-14",
             "review": "reviews/audience-20261114.json"
+          },
+          {
+            "score": 6.58,
+            "comment": "火星生命題材大，但沒定論的收尾少了爆點，過氯酸鹽段有點硬。",
+            "changes": "片名從『總統宣布』換成最反常的畫面：土吃了養分真的冒氣卻不算生命；結尾補上兩案共同卡住的那一點。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114-r2.json"
           }
         ],
-        "base": 6.58,
+        "base": 8.4,
         "demand": 5.5,
         "demand_answers": {
           "east_asia": false,
@@ -425,8 +430,8 @@
     {
       "id": "T06",
       "category": "U-外星太空與未知訊號",
-      "title": "沒有來的空襲：防空怎麼自己製造出目標？",
-      "core_question": "1915 年渥太華為「三架飛機」熄燈、1942 年洛杉磯的一千四百發高射炮與 1952 年華盛頓的雷達光點，目標到底在哪？",
+      "title": "一千四百發高射炮打向洛杉磯夜空，天上有什麼？",
+      "core_question": "1942 年洛杉磯朝夜空打了一千四百發高射炮，1915 年渥太華、1952 年華盛頓也都響過警報：天上到底有沒有東西？",
       "connection": "U14 與 U39 是說書版單人主角長片，單做。U03 與 U23 是同一種情境：戰時與冷戰的雷達、防空自己製造了目標，答案不同。撤案條件（陸軍航空軍官方戰史讀不到）沒有觸發（RE 重開 pp. 283–286）。 第二十六批覆核 R261 建議加入 N2805（1915 年渥太華熄燈）當第一章：同一種情境在雷達出現以前的版本，隔天就查出是對岸放的煙火氣球，第二晚國會與官署仍熄燈。U23 與 U03 兩章合計只有 7–9 分鐘，N2805 補足而不靠補料。",
       "boredom_risk": "三段都是「警報→熄燈、開火或起飛→什麼都沒有」，每段只講它獨有的那一步：1915 年是查明以後仍熄燈，1942 年是兩個官方說法，1952 年是民航局的重現觀測與 Condon 重算。",
       "drop_if": "1952 年的民航局報告讀不到就縮短華盛頓章；總長不足 8 分鐘時撤回，不補新的目擊。",
@@ -445,9 +450,9 @@
       ],
       "chapters": [
         {
-          "title": "開場：警報響了，天上有東西",
+          "title": "警報響了，天上到底有什麼",
           "seconds": 60,
-          "new_information": "三次警報，相隔三十七年：一次靠肉眼，一次靠探照燈，一次靠雷達。",
+          "new_information": "三次警報，相隔三十七年：一次靠肉眼，一次靠探照燈，一次靠雷達，都說天上有東西。",
           "candidate_ids": [
             "N2805",
             "U23",
@@ -455,41 +460,41 @@
           ]
         },
         {
-          "title": "1915 渥太華：為三架飛機熄燈",
+          "title": "渥太華：為三架飛機熄燈",
           "seconds": 150,
-          "new_information": "邊境小鎮報告有飛機朝首都去，國會與官署熄燈；隔天查出是對岸年輕人放的煙火氣球，第二晚國會、鑄幣廠與總督官邸仍然熄燈。",
+          "new_information": "1915 年，邊境小鎮通報有飛機往首都飛，國會和官署立刻熄燈；隔天查出是對岸年輕人放的煙火氣球，第二晚國會、鑄幣廠和總督官邸卻照樣熄燈。",
           "candidate_ids": [
             "N2805"
           ]
         },
         {
-          "title": "1942 洛杉磯：一千四百發高射炮",
+          "title": "洛杉磯：一千四百發打向夜空",
           "seconds": 180,
-          "new_information": "珍珠港後兩個半月的那一夜；那張有名的照片是修過的。",
+          "new_information": "珍珠港後兩個半月的那一夜；那張有名的照片，其實修過。",
           "candidate_ids": [
             "U23"
           ]
         },
         {
-          "title": "事後的兩種說法",
+          "title": "到底幾架？軍方自己兜不攏",
           "seconds": 90,
-          "new_information": "陸軍先說沒有飛機、聽證後改成一到五架；海軍部長另一個說法（1948 年官方戰史）。",
+          "new_information": "陸軍先說沒有飛機，聽證後改口成一到五架；海軍部長講的又是另一套（1948 年官方戰史）。",
           "candidate_ids": [
             "U23"
           ]
         },
         {
-          "title": "1952 華盛頓：連續兩個週末",
+          "title": "華盛頓：雷達光點連兩個週末",
           "seconds": 180,
-          "new_information": "7 月 19–20 日與 26–27 日的光點、追不到的戰鬥機；同年 8 月民航局的重現觀測。",
+          "new_information": "7 月 19–20 日與 26–27 日雷達上出現光點，戰鬥機升空卻追不到；同年 8 月，民航局做了重現觀測。",
           "candidate_ids": [
             "U03"
           ]
         },
         {
-          "title": "結檔：目標是誰製造的",
+          "title": "打了半天，目標是誰做出來的",
           "seconds": 60,
-          "new_information": "溫度逆增讓雷達看到地面的東西；儀器與人怎麼一起把雜訊讀成敵機。",
+          "new_information": "溫度逆增會讓雷達照到地面的東西；儀器加上人，就這樣一起把雜訊讀成了敵機。",
           "candidate_ids": [
             "N2805",
             "U23",
@@ -498,25 +503,23 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.26 低於 6.5（五項平均 7.31、需求 1.0）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.26,
-        "rank": 62,
+        "score": 7.21,
+        "rank": 16,
         "of": 155,
-        "click": 7.5,
-        "hook": 7.0,
-        "surprise": 7.5,
-        "payoff": 7.0,
+        "click": 8.5,
+        "hook": 8.0,
+        "surprise": 6.75,
+        "payoff": 7.25,
         "share": 7.0,
-        "comment": "洛杉磯一千四百發高射炮打空氣，加雷達鬼影，三次假空襲串得很有張力。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114.json",
-        "base": 7.31,
+        "comment": "朝夜空亂打一千四百發超有畫面，結局是雷達雜訊稍洩氣",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
+        "base": 8.45,
         "demand": 1.0,
         "demand_answers": {
           "east_asia": false,
@@ -525,14 +528,23 @@
           "famous": false
         },
         "demand_reason": "主題是北美防空誤報，題案卡沒有主打 UFO，三起事件在台灣都需要解釋。",
-        "demand_review": "reviews/demand-20261117.json"
+        "demand_review": "reviews/demand-20261117.json",
+        "rounds": [
+          {
+            "score": 7.31,
+            "comment": "洛杉磯一千四百發高射炮打空氣，加雷達鬼影，三次假空襲串得很有張力。",
+            "changes": "片名與追問改用評審最有感的『一千四百發高射炮打向夜空』畫面，不再用抽象的『防空製造目標』。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114.json"
+          }
+        ]
       }
     },
     {
       "id": "T09",
       "category": "H-歷史懸案",
-      "title": "北歐人比哥倫布早到美洲：兩件假證據與一件真證據",
-      "core_question": "文蘭地圖與肯辛頓石碑為什麼站不住，真正的證據又是什麼？",
+      "title": "一根木頭加一場宇宙射線，定出維京人在美洲砍樹那一年",
+      "core_question": "地圖是假的、石碑是照抄的，北歐人比哥倫布早到美洲的真證據，為什麼是一根被宇宙射線標上年份的木頭？",
       "connection": "同一個問題的兩面：H37 文蘭地圖與 H38 肯辛頓石碑是兩件被拆穿的假證據（拆穿理由不同：墨水 vs 敘事來源），S22 是蘭塞奧茲牧草地與 1021 年的木頭。先假後真，答案才完整。",
       "boredom_risk": "石碑段要壓到 120 秒以內。",
       "drop_if": "三題都已有可讀來源；製作前重開時對不上的那章刪掉，剩不到兩章撤回。",
@@ -552,9 +564,9 @@
       ],
       "chapters": [
         {
-          "title": "開場：一張地圖、一塊石頭、一根木頭",
+          "title": "一張地圖、一塊石頭、一根木頭",
           "seconds": 60,
-          "new_information": "三件『北歐人到過美洲』的證據。",
+          "new_information": "三件證據，都說北歐人到過美洲。",
           "candidate_ids": [
             "H37",
             "H38",
@@ -564,47 +576,47 @@
         {
           "title": "文蘭地圖：耶魯吵了 56 年",
           "seconds": 150,
-          "new_information": "1965 年公布、1985 年的反駁，2021 年耶魯自己宣布是 20 世紀的墨水。",
+          "new_information": "1965 年公布，1985 年有人反駁，到 2021 年耶魯自己宣布：墨水是 20 世紀的。",
           "candidate_ids": [
             "H37"
           ]
         },
         {
-          "title": "肯辛頓石碑：判假、判真、照抄薩迦",
+          "title": "肯辛頓石碑：先判假，又判真",
           "seconds": 120,
-          "new_information": "1899 年專家判假、1910 年州歷史學會判真、後來指出內容照《格陵蘭人薩迦》寫。",
+          "new_information": "1899 年專家判假，1910 年州歷史學會判真，後來才有人指出，內容是照《格陵蘭人薩迦》寫的。",
           "candidate_ids": [
             "H38"
           ]
         },
         {
-          "title": "Yarmouth 石：同一行刻痕，四種語言",
+          "title": "同一行刻痕，讀出四種語言",
           "seconds": 120,
-          "new_information": "新斯科細亞 1812 年的一塊石頭，被讀成維京符文、古日文、巴斯克文、邁錫尼文；1897 年一哩外又翻出前 13 個記號相同的第二塊。館方記下，最早發現它的醫生家族一直說那是他開的玩笑，挪威符文學者判定那不是符文。",
+          "new_information": "新斯科細亞 1812 年的一塊 Yarmouth 石，同一行刻痕被讀成維京符文、古日文、巴斯克文、邁錫尼文；1897 年一哩外又翻出第二塊，前 13 個記號一模一樣。館方記下：最早發現它的醫生，家族一直說那是他開的玩笑；挪威符文學者也判定，那不是符文。",
           "candidate_ids": [
             "N3665"
           ]
         },
         {
-          "title": "蘭塞奧茲牧草地：真的遺址",
+          "title": "蘭塞奧茲牧草地：真的挖到房子",
           "seconds": 150,
-          "new_information": "1960 年代挖到的北歐房屋遺址。",
+          "new_information": "1960 年代，挖到北歐人的房屋遺址。",
           "candidate_ids": [
             "S22"
           ]
         },
         {
-          "title": "1021 年：一次宇宙射線事件定出的年份",
+          "title": "宇宙射線替一根木頭標上年份",
           "seconds": 120,
-          "new_information": "993 年的碳十四尖峰定出砍樹那年；1021 是砍樹年，不是抵達年。",
+          "new_information": "靠 993 年的碳十四尖峰，算出砍樹是 1021 年；是砍樹那年，不是抵達那年。",
           "candidate_ids": [
             "S22"
           ]
         },
         {
-          "title": "結檔：真假證據差在哪",
+          "title": "真證據和假證據差在哪",
           "seconds": 60,
-          "new_information": "三件證據放在一起看。",
+          "new_information": "三件證據擺在一起比。",
           "candidate_ids": [
             "H37",
             "H38",
@@ -613,25 +625,23 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.26 低於 6.5（五項平均 6.86、需求 3.25）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.26,
-        "rank": 63,
+        "score": 7.42,
+        "rank": 9,
         "of": 155,
-        "click": 7.0,
-        "hook": 6.5,
-        "surprise": 7.0,
-        "payoff": 7.0,
-        "share": 6.0,
-        "comment": "維京人到美洲的假證據跟真證據一起講很完整，宇宙射線定年那段真的會讓人『哇』。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114.json",
-        "base": 6.86,
+        "click": 7.25,
+        "hook": 6.75,
+        "surprise": 7.75,
+        "payoff": 7.5,
+        "share": 7.25,
+        "comment": "宇宙射線幫木頭標年份太酷，假地圖假石碑鋪陳也好看",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
+        "base": 8.25,
         "demand": 3.25,
         "demand_answers": {
           "east_asia": false,
@@ -640,7 +650,16 @@
           "famous": false
         },
         "demand_reason": "ancient_alien：主題是考古遺址與真假文物證據；主角是北歐人、文蘭地圖與肯辛頓石碑，哥倫布只是對照，故 famous 為 false。",
-        "demand_review": "reviews/demand-20261117.json"
+        "demand_review": "reviews/demand-20261117.json",
+        "rounds": [
+          {
+            "score": 6.86,
+            "comment": "維京人到美洲的假證據跟真證據一起講很完整，宇宙射線定年那段真的會讓人『哇』。",
+            "changes": "把評審會『哇』的宇宙射線定年從第六章拉進片名與追問，假證據退成鋪陳。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114.json"
+          }
+        ]
       }
     },
     {
@@ -717,7 +736,7 @@
       },
       "audience": {
         "score": 6.61,
-        "rank": 26,
+        "rank": 48,
         "of": 155,
         "click": 7.5,
         "hook": 7.0,
@@ -751,8 +770,8 @@
     {
       "id": "T11",
       "category": "L-都市傳說與消失地名",
-      "title": "電梯從 39 樓跳到 60 樓，少掉的樓層去哪了？",
-      "core_question": "十三號星期五和消失的四樓、十三樓，各是從哪一份文件開始的？",
+      "title": "聖殿騎士被捕那天，真的是十三號星期五的由來嗎？",
+      "core_question": "電梯跳過不吉利的樓層、大家怕十三號星期五，這些忌諱是聖殿騎士那時就有，還是近代才被人寫進書、報紙和建築規則？",
       "connection": "L06 與 L14 回答同一個問題：一個吉凶符號什麼時候被寫進文件，一個追到 19 世紀後半、一個是香港的建築法規。黑貓（L07）答案不同，另列 Shorts。",
       "boredom_risk": "兩段都在找『最早出處』，第二段要用香港的法規文件推進。",
       "drop_if": "製作前重開 1869 年傳記與 1907 年小說原書對不上時，縮成 8 分鐘；L14 可獨立成集。",
@@ -770,41 +789,41 @@
       ],
       "chapters": [
         {
-          "title": "開場：電梯少了幾個按鈕",
+          "title": "39 樓的上面，直接是 60 樓",
           "seconds": 60,
-          "new_information": "同一棟樓的 39 樓，下一個按鈕直接是 60 樓。",
+          "new_information": "同一棟樓，39 樓的下一個按鈕直接跳到 60 樓。",
           "candidate_ids": [
             "L14"
           ]
         },
         {
-          "title": "香港真的有規則准你跳樓層",
+          "title": "香港：跳樓層是白紙黑字准的",
           "seconds": 180,
-          "new_information": "2009 年有人質詢，2010 年屋宇署改寫規則：哪些樓層可以不編號，寫得清清楚楚。",
+          "new_information": "2009 年有人質詢，2010 年屋宇署把規則改寫：哪些樓層可以不編號，寫得清清楚楚。",
           "candidate_ids": [
             "L14"
           ]
         },
         {
-          "title": "聖殿騎士的說法",
+          "title": "聖殿騎士大逮捕：日期是真的",
           "seconds": 60,
-          "new_information": "1307 年 10 月 13 日的大逮捕是真的，但把它跟十三號星期五連起來，什麼時候開始流行，找不到來源。",
+          "new_information": "1307 年 10 月 13 日的大逮捕確有其事；可是把它說成十三號星期五的由來，是什麼時候開始流行的，找不到來源。",
           "candidate_ids": [
             "L06"
           ]
         },
         {
-          "title": "1907 年的小說，自己說這是傳統",
+          "title": "1907 年的小說只是放大器",
           "seconds": 180,
-          "new_information": "1869 年的羅西尼傳記、1901 與 1905 年的報紙已經有這個說法；小說只是把它放大，不是起點。",
+          "new_information": "1869 年的羅西尼傳記、1901 與 1905 年的報紙，早就有這個說法；小說自稱這是傳統，其實只是把它放大，不是起點。",
           "candidate_ids": [
             "L06"
           ]
         },
         {
-          "title": "結檔：文件比傳說晚",
+          "title": "兩個忌諱，各有一份文件",
           "seconds": 60,
-          "new_information": "十三號星期五追得到 19 世紀後半的書和報紙，比小說早；跳樓層則是寫進香港建築規則的。",
+          "new_information": "十三號星期五追得到 19 世紀後半的書和報紙，比小說早，卻接不上聖殿騎士；少掉的樓層，是香港建築規則准的。",
           "candidate_ids": [
             "L06",
             "L14"
@@ -812,24 +831,22 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.05 低於 6.5（五項平均 6.61、需求 3.25）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.05,
-        "rank": 86,
+        "score": 6.67,
+        "rank": 42,
         "of": 155,
-        "click": 7.5,
+        "click": 7.0,
         "hook": 7.0,
-        "surprise": 5.5,
-        "payoff": 5.0,
-        "share": 6.0,
-        "comment": "電梯少樓層一看就想點，但香港規則跟十三號星期五接得很散。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114-r2.json",
+        "surprise": 5.75,
+        "payoff": 6.0,
+        "share": 6.25,
+        "comment": "跳樓層開場很生活，但結論是找不到來源有點空",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
         "rounds": [
           {
             "score": 6.16,
@@ -837,9 +854,16 @@
             "changes": "依『結論太含糊』把結尾改成兩個明確答案，片名改用跳樓層的畫面，並把香港規則移到開場後。",
             "reviewed_on": "2026-11-14",
             "review": "reviews/audience-20261114.json"
+          },
+          {
+            "score": 6.61,
+            "comment": "電梯少樓層一看就想點，但香港規則跟十三號星期五接得很散。",
+            "changes": "用『怕一個數字的忌諱是誰寫下來的』把兩段串成同一個問題，片名改打最有名的聖殿騎士傳說。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114-r2.json"
           }
         ],
-        "base": 6.61,
+        "base": 7.35,
         "demand": 3.25,
         "demand_answers": {
           "east_asia": false,
@@ -854,8 +878,8 @@
     {
       "id": "T12",
       "category": "F-童話神話與怪談原版",
-      "title": "格林兄弟的初版，後來改掉了什麼？",
-      "core_question": "白雪公主、長髮公主、糖果屋與青蛙王子，1812 年初版跟後來的版本差在哪？",
+      "title": "格林兄弟改了七版，青蛙王子卻每一版都被摔上牆",
+      "core_question": "白雪公主、長髮公主、糖果屋都被格林兄弟改過，青蛙王子的摔牆卻從 1812 留到 1857：他們到底改掉什麼、又留下什麼？",
       "connection": "四題答案相同（初版與後來各版的差異），每題單做只有一兩個事實；排成『一個改版的故事』才有推進。F01 灰姑娘是站主定的試播集，單做。",
       "boredom_risk": "四段容易變成『原來初版更黑暗』的清單；每章講一個改版的年份與理由。四章研究估計 11–15 分鐘，要照秒數壓。",
       "drop_if": "原文讀不到的少於三題就撤回。",
@@ -875,9 +899,9 @@
       ],
       "chapters": [
         {
-          "title": "開場：一本書改了七版",
+          "title": "同一本童話，改了七版",
           "seconds": 60,
-          "new_information": "1812 到 1857 年，格林兄弟一直在改。",
+          "new_information": "從 1812 到 1857 年，格林兄弟一直在改同一本書。",
           "candidate_ids": [
             "F02",
             "F03",
@@ -886,9 +910,9 @@
           ]
         },
         {
-          "title": "白雪公主：1819 年改成繼母",
+          "title": "白雪公主：壞人本來是親媽",
           "seconds": 150,
-          "new_information": "初版的親生母親，要獵人帶回女兒的肺和肝。",
+          "new_information": "初版要害她的是親生母親；1819 年才改成繼母。",
           "candidate_ids": [
             "F02"
           ]
@@ -896,15 +920,15 @@
         {
           "title": "長髮公主：一句『衣服變緊』",
           "seconds": 150,
-          "new_information": "1812 年那句台詞與 1819 年的改法；雙胞胎留到 1857 年。",
+          "new_information": "1812 年那句台詞，1819 年換了講法；雙胞胎卻一路留到 1857 年。",
           "candidate_ids": [
             "F03"
           ]
         },
         {
-          "title": "糖果屋：1840 年才出現繼母",
+          "title": "糖果屋：繼母 1840 年才登場",
           "seconds": 150,
-          "new_information": "第四版才改，1857 年版還留著兩處『母親』；大饑荒是 1843 年加的。",
+          "new_information": "第四版才把母親改成繼母，1857 年版還留著兩處『母親』；大饑荒是 1843 年才加的。",
           "candidate_ids": [
             "F04"
           ]
@@ -912,15 +936,15 @@
         {
           "title": "青蛙王子：每一版都是摔牆",
           "seconds": 120,
-          "new_information": "德文版從 1812 到 1857 都是摔牆；1823 年第一本英譯改成睡三夜。",
+          "new_information": "德文版從 1812 到 1857，每一版都是摔牆；改掉它的是 1823 年第一本英譯，換成睡三夜。",
           "candidate_ids": [
             "F07"
           ]
         },
         {
-          "title": "結檔：為什麼要改",
+          "title": "他們自己說為什麼要改",
           "seconds": 60,
-          "new_information": "1819 年前言自述刪去不適合兒童的說法；四次改動放在一起看。",
+          "new_information": "1819 年的前言自己說，刪去了不適合兒童的說法；四次改動擺在一起看。",
           "candidate_ids": [
             "F02",
             "F03",
@@ -930,25 +954,23 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.01 低於 6.5（五項平均 6.56、需求 3.25）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.01,
-        "rank": 96,
+        "score": 7.67,
+        "rank": 6,
         "of": 155,
-        "click": 7.5,
-        "hook": 7.0,
-        "surprise": 5.0,
-        "payoff": 6.5,
-        "share": 6.0,
-        "comment": "格林童話黑暗原版大家都想點，但親生母親、長髮公主懷孕這些網路上早就講爛了。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114.json",
-        "base": 6.56,
+        "click": 8.0,
+        "hook": 7.25,
+        "surprise": 7.25,
+        "payoff": 7.75,
+        "share": 7.75,
+        "comment": "親媽改繼母、青蛙被摔牆，每段都有料，會想留言",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
+        "base": 8.55,
         "demand": 3.25,
         "demand_answers": {
           "east_asia": false,
@@ -957,14 +979,23 @@
           "famous": true
         },
         "demand_reason": "famous：格林童話、白雪公主、糖果屋、青蛙王子都是人人認得的名字。",
-        "demand_review": "reviews/demand-20261117.json"
+        "demand_review": "reviews/demand-20261117.json",
+        "rounds": [
+          {
+            "score": 6.56,
+            "comment": "格林童話黑暗原版大家都想點，但親生母親、長髮公主懷孕這些網路上早就講爛了。",
+            "changes": "評審嫌親生母親、長髮公主懷孕講爛了，片名改打較少人知道的反例：青蛙王子七版都是摔牆，改掉它的是英譯。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114.json"
+          }
+        ]
       }
     },
     {
       "id": "T13",
       "category": "F-童話神話與怪談原版",
-      "title": "童話裡的獵人和王子之吻，是誰後來加的？",
-      "core_question": "小紅帽、睡美人、藍鬍子與穿長靴的貓，佩羅 1697 年的原版，跟今天大家講的版本差在哪？",
+      "title": "睡美人醒來後還有半本：一個想吃掉孫子的太后",
+      "core_question": "睡美人不是被吻醒的、小紅帽沒有獵人來救；佩羅 1697 年寫給大人看的原版，被後人刪掉了哪半本、又加上了什麼？",
       "connection": "四題的出處相同（佩羅 1697《鵝媽媽故事集》），答案都是原版的結局或寓意後來被改；單做都撐不滿一集。",
       "boredom_risk": "結局揭曉的節奏相同，第三段要換成講佩羅附在故事後的教訓詩。",
       "drop_if": "原文讀不到的少於三題就撤回。藍鬍子那章只講「原型說」出現的年代，不講吉爾·德·雷的罪行細節，也不談翻案爭議。",
@@ -984,9 +1015,9 @@
       ],
       "chapters": [
         {
-          "title": "開場：一本寫給大人看的童話",
+          "title": "一本寫給大人看的童話",
           "seconds": 60,
-          "new_information": "1697 年的巴黎沙龍，每個故事後面都附一首教訓詩。",
+          "new_information": "1697 年的巴黎沙龍裡，每個故事後面都附一首教訓詩。",
           "candidate_ids": [
             "F05",
             "F06",
@@ -995,25 +1026,25 @@
           ]
         },
         {
-          "title": "小紅帽：故事停在狼把她吃掉",
+          "title": "小紅帽：故事停在被狼吃掉",
           "seconds": 150,
-          "new_information": "原版沒有獵人；獵人是後來加上的：1800 年蒂克、1812 年格林。",
+          "new_information": "原版沒有獵人來救；獵人是後人加的：1800 年蒂克、1812 年格林。",
           "candidate_ids": [
             "F05"
           ]
         },
         {
-          "title": "睡美人：沒有吻，醒來之後還有半本",
+          "title": "睡美人：自己醒來，後面還有半本",
           "seconds": 150,
-          "new_information": "一百年到了，她是自己醒的；後半本還有一位想吃掉孫子、孫女和媳婦的太后。",
+          "new_information": "一百年到了，她是自己醒的，沒有吻；後半本還有一位太后，想吃掉孫子、孫女和媳婦。",
           "candidate_ids": [
             "F06"
           ]
         },
         {
-          "title": "藍鬍子：一扇不准開的門，和兩個太晚的『原型』",
+          "title": "藍鬍子：兩個『原型』都比故事晚",
           "seconds": 150,
-          "new_information": "鑰匙、安妮姊姊和兩首教訓詩；常被說是原型的兩個來源，其實都比故事晚：吉爾·德·雷的說法，最早讀得到的印刷文字在 1820 年代，當時已經是傳說；蓬蒂維教堂的康莫爾壁畫，畫於 1700 年代初。",
+          "new_information": "一扇不准開的門、鑰匙、安妮姊姊和兩首教訓詩；常被說是原型的兩個來源，其實都比故事晚：吉爾·德·雷的說法，最早讀得到的印刷文字在 1820 年代，當時已經是傳說；蓬蒂維教堂的康莫爾壁畫，畫於 1700 年代初。",
           "candidate_ids": [
             "F12"
           ]
@@ -1021,15 +1052,15 @@
         {
           "title": "穿長靴的貓：靠說謊成功",
           "seconds": 120,
-          "new_information": "佩羅附的兩首教訓詩互相矛盾；再對照 Straparola 與 Basile 的版本。",
+          "new_information": "佩羅附的兩首教訓詩，自己就互相矛盾；再拿 Straparola 與 Basile 的版本來對照。",
           "candidate_ids": [
             "F13"
           ]
         },
         {
-          "title": "結檔：被加上的與被刪掉的",
+          "title": "被加上的，和被刪掉的",
           "seconds": 60,
-          "new_information": "四個故事的改動放在一起看，有什麼共同點。",
+          "new_information": "四個故事被加上的、被刪掉的擺在一起，看共同點。",
           "candidate_ids": [
             "F05",
             "F06",
@@ -1039,24 +1070,22 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.19 低於 6.5（五項平均 6.78、需求 3.25）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.19,
-        "rank": 70,
+        "score": 8.0,
+        "rank": 3,
         "of": 155,
-        "click": 7.5,
-        "hook": 6.5,
-        "surprise": 5.5,
-        "payoff": 6.5,
-        "share": 6.5,
-        "comment": "格林原版很黑暗是老梗，睡美人想吃孫子的太后還是有點衝擊。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114-r2.json",
+        "click": 8.5,
+        "hook": 8.0,
+        "surprise": 7.5,
+        "payoff": 8.0,
+        "share": 8.0,
+        "comment": "太后想吃孫子超獵奇，童話黑暗原版永遠想看也想分享",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
         "rounds": [
           {
             "score": 6.73,
@@ -1064,9 +1093,16 @@
             "changes": "評審說黑暗童話不算新，片名改從『獵人和王子之吻是後來加的』切入，藍鬍子段把『原型比故事晚』這個較新的發現寫進標題。",
             "reviewed_on": "2026-11-14",
             "review": "reviews/audience-20261114.json"
+          },
+          {
+            "score": 6.78,
+            "comment": "格林原版很黑暗是老梗，睡美人想吃孫子的太后還是有點衝擊。",
+            "changes": "『獵人和吻是後加的』已試過，這次片名改打評審唯一說有衝擊的事實：睡美人醒來後還有半本與想吃孫子的太后。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114-r2.json"
           }
         ],
-        "base": 6.78,
+        "base": 8.95,
         "demand": 3.25,
         "demand_answers": {
           "east_asia": false,
@@ -1081,8 +1117,8 @@
     {
       "id": "T14",
       "category": "F-童話神話與怪談原版",
-      "title": "安徒生寫完又改的三個結局",
-      "core_question": "小美人魚、國王的新衣與醜小鴨，安徒生自己的版本跟流傳的差在哪？",
+      "title": "國王的新衣裡那個小孩，是安徒生最後一刻才加的",
+      "core_question": "小美人魚沒有嫁給王子、國王的新衣原本沒有那個小孩、醜小鴨原名叫小天鵝；安徒生自己寫的結局，跟我們聽到的差在哪？",
       "connection": "三題都是安徒生的原作與流傳版的差異，國王新衣的結尾是他送印前才加的；單做都太薄。",
       "boredom_risk": "醜小鴨要用他 1869 年的信推進，不然會無聊。",
       "drop_if": "三題都已有可讀來源；製作前重開對不上的那章刪掉，剩兩題不成集時撤回。",
@@ -1101,9 +1137,9 @@
       ],
       "chapters": [
         {
-          "title": "開場：鞋匠的兒子",
+          "title": "十四歲獨闖哥本哈根的鞋匠之子",
           "seconds": 60,
-          "new_information": "十四歲一個人去哥本哈根。",
+          "new_information": "十四歲，一個人去哥本哈根。",
           "candidate_ids": [
             "F10"
           ]
@@ -1111,31 +1147,31 @@
         {
           "title": "小美人魚：她沒有嫁給王子",
           "seconds": 180,
-          "new_information": "1837 年的結局、1836 年的工作標題『空氣的女兒』。",
+          "new_information": "1837 年的結局；1836 年的工作標題是『空氣的女兒』。",
           "candidate_ids": [
             "F08"
           ]
         },
         {
-          "title": "國王的新衣：最後一刻加的小孩",
+          "title": "國王的新衣：小孩是最後才加的",
           "seconds": 150,
-          "new_information": "1837 年 3 月 25 日寫給 Edvard Collin 的信；原本的結尾是皇帝說以後遊行都要穿。",
+          "new_information": "1837 年 3 月 25 日寫給 Edvard Collin 的信；原本的結尾，是皇帝說以後遊行都要穿。",
           "candidate_ids": [
             "F09"
           ]
         },
         {
-          "title": "醜小鴨：他在寫自己嗎",
+          "title": "醜小鴨原名小天鵝：他在寫自己嗎",
           "seconds": 120,
-          "new_information": "1869 年給布蘭戴斯的信，原名『小天鵝』。",
+          "new_information": "1869 年給布蘭戴斯的信；原名『小天鵝』。",
           "candidate_ids": [
             "F10"
           ]
         },
         {
-          "title": "結檔：安徒生自己改的與別人改的",
+          "title": "哪些是他自己改的，哪些是別人改的",
           "seconds": 60,
-          "new_information": "三題放在一起看。",
+          "new_information": "三個結局並排看。",
           "candidate_ids": [
             "F08",
             "F09",
@@ -1144,25 +1180,23 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.22 低於 6.5（五項平均 6.81、需求 3.25）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.22,
-        "rank": 68,
+        "score": 7.04,
+        "rank": 22,
         "of": 155,
-        "click": 7.0,
-        "hook": 6.5,
-        "surprise": 7.0,
-        "payoff": 6.5,
-        "share": 6.5,
-        "comment": "國王的新衣小孩是最後才加的，這種童話原版題材很有轉傳力。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114.json",
-        "base": 6.81,
+        "click": 7.5,
+        "hook": 5.25,
+        "surprise": 6.75,
+        "payoff": 6.75,
+        "share": 7.0,
+        "comment": "童話原版差異會想轉給朋友，可是開場講生平抓不住我",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
+        "base": 7.8,
         "demand": 3.25,
         "demand_answers": {
           "east_asia": false,
@@ -1171,7 +1205,16 @@
           "famous": true
         },
         "demand_reason": "famous：安徒生、小美人魚、國王的新衣、醜小鴨人人認得。",
-        "demand_review": "reviews/demand-20261117.json"
+        "demand_review": "reviews/demand-20261117.json",
+        "rounds": [
+          {
+            "score": 6.81,
+            "comment": "國王的新衣小孩是最後才加的，這種童話原版題材很有轉傳力。",
+            "changes": "片名改用觀眾最想轉傳的『小孩是最後一刻才加的』，追問直接列出三個猜不到的原版細節。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114.json"
+          }
+        ]
       }
     },
     {
@@ -1248,7 +1291,7 @@
       },
       "audience": {
         "score": 6.13,
-        "rank": 75,
+        "rank": 83,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -1342,7 +1385,7 @@
       },
       "audience": {
         "score": 7.13,
-        "rank": 7,
+        "rank": 17,
         "of": 155,
         "click": 7.5,
         "hook": 6.5,
@@ -1436,7 +1479,7 @@
       },
       "audience": {
         "score": 7.22,
-        "rank": 6,
+        "rank": 15,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -1540,7 +1583,7 @@
       },
       "audience": {
         "score": 6.48,
-        "rank": 31,
+        "rank": 52,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -1645,7 +1688,7 @@
       },
       "audience": {
         "score": 6.83,
-        "rank": 16,
+        "rank": 33,
         "of": 155,
         "click": 7.5,
         "hook": 7.0,
@@ -1732,7 +1775,7 @@
       },
       "audience": {
         "score": 6.03,
-        "rank": 87,
+        "rank": 90,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -1819,7 +1862,7 @@
       },
       "audience": {
         "score": 6.38,
-        "rank": 50,
+        "rank": 66,
         "of": 155,
         "click": 7.5,
         "hook": 6.0,
@@ -1909,7 +1952,7 @@
       },
       "audience": {
         "score": 6.48,
-        "rank": 32,
+        "rank": 53,
         "of": 155,
         "click": 7.5,
         "hook": 7.0,
@@ -1994,7 +2037,7 @@
       },
       "audience": {
         "score": 6.23,
-        "rank": 65,
+        "rank": 75,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -2101,7 +2144,7 @@
       },
       "audience": {
         "score": 7.11,
-        "rank": 8,
+        "rank": 18,
         "of": 155,
         "click": 7.0,
         "hook": 7.0,
@@ -2235,7 +2278,7 @@
       },
       "audience": {
         "score": 7.36,
-        "rank": 4,
+        "rank": 12,
         "of": 155,
         "click": 7.5,
         "hook": 7.5,
@@ -2341,7 +2384,7 @@
       },
       "audience": {
         "score": 6.11,
-        "rank": 79,
+        "rank": 85,
         "of": 155,
         "click": 6.5,
         "hook": 6.0,
@@ -2439,7 +2482,7 @@
       },
       "audience": {
         "score": 6.38,
-        "rank": 51,
+        "rank": 67,
         "of": 155,
         "click": 7.5,
         "hook": 7.0,
@@ -2470,8 +2513,8 @@
     {
       "id": "T31",
       "category": "L-都市傳說與消失地名",
-      "title": "未知生物的證據送去驗，結果是什麼？",
-      "core_question": "雪人的骨頭毛皮、博德明野獸的頭骨與德州的卓柏卡布拉，送進實驗室或政府報告之後怎麼說？",
+      "title": "雪人的九件證據送去驗 DNA：八件是熊，一件是狗牙",
+      "core_question": "雪人的骨頭毛皮、博德明野獸的頭骨、德州的卓柏卡布拉，送進實驗室和政府報告之後，為什麼驗出來是熊、狗牙、地毯和郊狼？",
       "connection": "三案答案不同，排在一起才有『證據能證明到哪裡』的推進。L38 有下議院議事錄、1995 年 AP 電稿與報告掃描頁；L32 的德州樣本 DNA 是郊狼（非作者覆核 RC 建議併入）。",
       "boredom_risk": "三段都是『送驗→結果』，第三段要從一部電影的外星人講到 DNA。",
       "drop_if": "製作前任一案的一手紀錄對不上就刪該章；剩兩章不足 8 分鐘時撤回。",
@@ -2490,9 +2533,9 @@
       ],
       "chapters": [
         {
-          "title": "開場：一顆牙、一顆頭骨、一隻沒毛的動物",
+          "title": "一顆牙、一顆頭骨、一隻沒毛的動物",
           "seconds": 60,
-          "new_information": "三件送去驗的證據。",
+          "new_information": "三件證據，都送去驗了。",
           "candidate_ids": [
             "L21",
             "L38",
@@ -2500,33 +2543,33 @@
           ]
         },
         {
-          "title": "雪人：九件樣本的 DNA",
+          "title": "雪人：八件是熊，一件是狗牙",
           "seconds": 150,
-          "new_information": "骨、牙、皮、毛與糞；八件是熊，一件是博物館標本上的狗牙。",
+          "new_information": "骨牙皮毛與糞九件驗 DNA：八件是熊，一件是博物館標本上的狗牙。",
           "candidate_ids": [
             "L21"
           ]
         },
         {
-          "title": "博德明野獸：政府查了六個月",
+          "title": "博德明野獸：豹頭骨來自一張地毯",
           "seconds": 150,
-          "new_information": "ADAS 的調查，『無法證明不存在』是報告一開始就承認的方法限制；豹頭骨來自地毯。",
+          "new_information": "政府的 ADAS 查了六個月；『無法證明不存在』是報告一開始就承認的方法限制；那顆豹頭骨，來自地毯。",
           "candidate_ids": [
             "L38"
           ]
         },
         {
-          "title": "卓柏卡布拉：兩條腿變成四條腿",
+          "title": "卓柏卡布拉：證人說看過那部電影",
           "seconds": 180,
-          "new_information": "1995 年證人說看過電影《Species》；2004 年德州的樣本 DNA 是郊狼。",
+          "new_information": "1995 年的證人說自己看過電影《Species》；2004 年德州的樣本，DNA 是郊狼。",
           "candidate_ids": [
             "L32"
           ]
         },
         {
-          "title": "結檔：證據能證明到哪裡",
+          "title": "驗得出是什麼，驗不出『沒有』",
           "seconds": 60,
-          "new_information": "排除與證明是兩回事。",
+          "new_information": "排除和證明，是兩回事。",
           "candidate_ids": [
             "L21",
             "L38",
@@ -2535,25 +2578,23 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.01 低於 6.5（五項平均 7.01、需求 1.0）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.01,
-        "rank": 95,
+        "score": 7.25,
+        "rank": 13,
         "of": 155,
-        "click": 7.5,
+        "click": 8.0,
         "hook": 7.0,
-        "surprise": 6.5,
-        "payoff": 7.0,
-        "share": 6.5,
-        "comment": "雪人、卓柏卡布拉拿去驗 DNA 很好點，證人看過《Species》那段是亮點。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114.json",
-        "base": 7.01,
+        "surprise": 7.0,
+        "payoff": 7.5,
+        "share": 7.25,
+        "comment": "豹頭骨來自地毯太好笑，三案節奏快，結論略說教",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
+        "base": 8.5,
         "demand": 1.0,
         "demand_answers": {
           "east_asia": false,
@@ -2562,7 +2603,16 @@
           "famous": false
         },
         "demand_reason": "主題是未知生物的鑑定，不屬靈異或外星；雪人只是三例之一，博德明野獸與卓柏卡布拉需要解釋。",
-        "demand_review": "reviews/demand-20261117.json"
+        "demand_review": "reviews/demand-20261117.json",
+        "rounds": [
+          {
+            "score": 7.01,
+            "comment": "雪人、卓柏卡布拉拿去驗 DNA 很好點，證人看過《Species》那段是亮點。",
+            "changes": "片名從籠統的『結果是什麼』換成最具體的化驗結果（八件熊、一顆狗牙），各章小標直接亮出反差。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114.json"
+          }
+        ]
       }
     },
     {
@@ -2630,7 +2680,7 @@
       },
       "audience": {
         "score": 5.98,
-        "rank": 101,
+        "rank": 99,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -2732,7 +2782,7 @@
       },
       "audience": {
         "score": 5.76,
-        "rank": 122,
+        "rank": 120,
         "of": 155,
         "click": 7.5,
         "hook": 6.5,
@@ -2840,7 +2890,7 @@
       },
       "audience": {
         "score": 7.23,
-        "rank": 5,
+        "rank": 14,
         "of": 155,
         "click": 8.0,
         "hook": 8.0,
@@ -2949,7 +2999,7 @@
       },
       "audience": {
         "score": 6.63,
-        "rank": 24,
+        "rank": 46,
         "of": 155,
         "click": 7.5,
         "hook": 7.0,
@@ -3051,7 +3101,7 @@
       },
       "audience": {
         "score": 6.48,
-        "rank": 33,
+        "rank": 54,
         "of": 155,
         "click": 6.5,
         "hook": 6.0,
@@ -3154,7 +3204,7 @@
       },
       "audience": {
         "score": 6.27,
-        "rank": 61,
+        "rank": 74,
         "of": 155,
         "click": 6.8,
         "hook": 6.7,
@@ -3247,7 +3297,7 @@
       },
       "audience": {
         "score": 6.48,
-        "rank": 29,
+        "rank": 55,
         "of": 155,
         "click": 8.0,
         "hook": 7.5,
@@ -3433,7 +3483,7 @@
       },
       "audience": {
         "score": 6.65,
-        "rank": 23,
+        "rank": 45,
         "of": 155,
         "click": 7.5,
         "hook": 6.5,
@@ -3467,8 +3517,8 @@
     {
       "id": "T41",
       "category": "M-奇異現象與自然",
-      "title": "極光會出聲？地震會發光？科學追到哪了",
-      "core_question": "被當成傳聞幾百年的怪光與怪聲，科學家真的抓到證據了嗎？",
+      "title": "會飄的火球被當傳聞幾百年，2012 年意外被拍下來了",
+      "core_question": "會飄的火球、劈啪響的極光、地震前後的光，傳了幾百年，哪一個已經被儀器抓到，哪一個守了三週還是等不到？",
       "connection": "三題都是很多人說看過或聽過、科學家曾經不信的大氣現象；各自只撐得起 5–8 分鐘。答案不同：一次意外的光譜、一組有爭議的錄音、一份 65 案的統計。第三輪補到 Laine 團隊以外的評述（京大團隊 2020、Polar Record 1974）。",
       "boredom_risk": "三段都是『目擊→儀器→答案』，第二段要講清楚 Laine 的定位還沒有獨立重現。",
       "drop_if": "任一章的關鍵來源在製作前重開時對不上就刪那章，總長不足 8 分鐘時撤回。",
@@ -3487,7 +3537,7 @@
       ],
       "chapters": [
         {
-          "title": "開場：被當成傳聞的三種現象",
+          "title": "傳了幾百年的三種怪光怪聲",
           "seconds": 60,
           "new_information": "會飄的火球、會劈啪響的極光、地震前後的光，傳了幾百年，到底有沒有人抓到過？",
           "candidate_ids": [
@@ -3497,15 +3547,15 @@
           ]
         },
         {
-          "title": "球狀閃電：2012 年青海意外拍到",
+          "title": "球狀閃電：青海那次是意外拍到",
           "seconds": 150,
-          "new_information": "不只是照片，而是第一份光譜；5 公尺、100 赫茲閃爍，就在電線附近。",
+          "new_information": "2012 年青海拍到的不只照片，還有第一份光譜；5 公尺、100 赫茲閃爍，就在電線附近。",
           "candidate_ids": [
             "M05"
           ]
         },
         {
-          "title": "極光真的會劈啪響嗎",
+          "title": "極光的劈啪聲：守了三週沒聽到",
           "seconds": 150,
           "new_information": "1973 年的回顧找到 1563 年以來至少 198 份記載；2013 年有了錄音，還有 75 公尺的推論；但京大團隊 2017 年在阿拉斯加守了三週沒聽到，還不能說聲音就來自極光。",
           "candidate_ids": [
@@ -3513,17 +3563,17 @@
           ]
         },
         {
-          "title": "地震光：松代拍下的照片",
+          "title": "地震光：松代留下的照片",
           "seconds": 150,
-          "new_information": "1960 年代松代留下照片；65 個案例統計，多出現在裂谷、近乎垂直的斷層附近。",
+          "new_information": "1960 年代松代留下照片；65 個案例的統計，多出現在裂谷、近乎垂直的斷層附近。",
           "candidate_ids": [
             "M21"
           ]
         },
         {
-          "title": "結檔：哪個解開了、哪個還沒",
+          "title": "三種傳聞，誰先被抓到",
           "seconds": 60,
-          "new_information": "三種現象放在一起排名：哪個已有硬證據、哪個還在爭。",
+          "new_information": "排名：球狀閃電有光譜，地震光有照片統計，極光聲有錄音卻還在爭。",
           "candidate_ids": [
             "M05",
             "M20",
@@ -3532,24 +3582,22 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.23 低於 6.5（五項平均 7.28、需求 1.0）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.23,
-        "rank": 64,
+        "score": 6.88,
+        "rank": 30,
         "of": 155,
-        "click": 7.0,
-        "hook": 6.5,
-        "surprise": 7.0,
-        "payoff": 6.5,
+        "click": 7.5,
+        "hook": 7.0,
+        "surprise": 6.5,
+        "payoff": 7.0,
         "share": 6.5,
-        "comment": "極光有聲音、地震會發光這種「原來是真的」題材很新鮮，有科學證據收尾。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114-r2.json",
+        "comment": "球狀閃電真的被拍到很想看，三題排名收尾清楚",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
         "rounds": [
           {
             "score": 5.86,
@@ -3557,9 +3605,16 @@
             "changes": "評審嫌結論平，把片名改成兩個問句，結尾改成三種現象『解開程度』的比較，術語改白話。",
             "reviewed_on": "2026-11-14",
             "review": "reviews/audience-20261114.json"
+          },
+          {
+            "score": 7.28,
+            "comment": "極光有聲音、地震會發光這種「原來是真的」題材很新鮮，有科學證據收尾。",
+            "changes": "片名改用最硬的一個成果（火球 2012 年被意外拍到）當鉤子，追問用『抓到／等不到』把三種現象串成一場比賽，結尾直接給出排名。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114-r2.json"
           }
         ],
-        "base": 7.28,
+        "base": 8.05,
         "demand": 1.0,
         "demand_answers": {
           "east_asia": false,
@@ -3574,8 +3629,8 @@
     {
       "id": "T42",
       "category": "U-外星太空與未知訊號",
-      "title": "UFO 傳說是誰寫出來的？黑騎士衛星與黑衣人",
-      "core_question": "一顆一萬三千年的外星衛星與上門的黑衣人，各是誰在哪一年寫出來的？",
+      "title": "一萬三千年的外星衛星？算出它的人後來自己收回了",
+      "core_question": "繞著地球一萬三千年的外星衛星、上門警告的黑衣人，這兩個 UFO 傳說各是誰寫出來的，寫的人後來又怎麼說？",
       "connection": "U32 與 U34 都是 chapter（5–8 分鐘），答案同屬『傳說的作者鏈』：一位作家自己撤回的推算加一片隔熱罩；一個社團的停刊理由被兩本書寫成黑衣人。",
       "boredom_risk": "兩段都在追作者，第二段要用 1953 年的停刊與 1956、1962 年兩本書的順序推進。",
       "drop_if": "製作前重開 FBI 檔與 1973 年的推算原文對不上就撤回。",
@@ -3593,40 +3648,40 @@
       ],
       "chapters": [
         {
-          "title": "開場：兩個網路上流傳的故事",
+          "title": "外星衛星，和上門警告的三個人",
           "seconds": 60,
-          "new_information": "繞著地球的外星衛星與上門警告的三個人。",
+          "new_information": "一顆繞著地球的外星衛星，三個上門警告的人。",
           "candidate_ids": [
             "U32",
             "U34"
           ]
         },
         {
-          "title": "黑騎士：1973 年的推算與 1974 年的撤回",
+          "title": "1973 年算出來，1974 年自己收回",
           "seconds": 150,
-          "new_information": "Lunan 的計算從哪來、他自己怎麼收回。",
+          "new_information": "Lunan 的計算怎麼來的，他自己又怎麼收回。",
           "candidate_ids": [
             "U32"
           ]
         },
         {
-          "title": "黑騎士：1998 年的照片",
+          "title": "那張照片，NASA 只標『太空碎片』",
           "seconds": 120,
-          "new_information": "NASA 照片目錄只標『太空碎片』；隔熱罩的說法出自太空人的訪談。",
+          "new_information": "1998 年的 NASA 照片目錄只標『太空碎片』；隔熱罩的說法，出自太空人的訪談。",
           "candidate_ids": [
             "U32"
           ]
         },
         {
-          "title": "黑衣人：1953 年一個社團的停刊",
+          "title": "黑衣人：從一個社團停刊開始",
           "seconds": 150,
-          "new_information": "停刊報告、1956 年 Barker 的書、1962 年 Bender 自己的書。",
+          "new_information": "1953 年的停刊報告、1956 年 Barker 的書、1962 年 Bender 自己的書。",
           "candidate_ids": [
             "U34"
           ]
         },
         {
-          "title": "結檔：傳說的作者鏈",
+          "title": "兩個傳說，各有一串作者",
           "seconds": 60,
           "new_information": "兩個故事各是誰、在哪一年寫出來的。",
           "candidate_ids": [
@@ -3636,25 +3691,23 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.09 低於 6.5（五項平均 6.66、需求 3.25）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.09,
-        "rank": 81,
+        "score": 6.67,
+        "rank": 43,
         "of": 155,
         "click": 7.5,
-        "hook": 7.0,
+        "hook": 6.0,
         "surprise": 6.0,
-        "payoff": 6.0,
+        "payoff": 5.5,
         "share": 6.0,
-        "comment": "黑騎士衛星跟黑衣人是 UFO 圈經典，揭出處有看頭，不過網路上已經有人拆過。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114.json",
-        "base": 6.66,
+        "comment": "黑騎士衛星有名，可是章節只列年份書名看不出爆點",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
+        "base": 7.35,
         "demand": 3.25,
         "demand_answers": {
           "east_asia": false,
@@ -3663,7 +3716,16 @@
           "famous": false
         },
         "demand_reason": "ancient_alien：主題是 UFO 傳說與外星衛星；黑騎士衛星需要解釋，拿不準故 famous 為 false。",
-        "demand_review": "reviews/demand-20261117.json"
+        "demand_review": "reviews/demand-20261117.json",
+        "rounds": [
+          {
+            "score": 6.66,
+            "comment": "黑騎士衛星跟黑衣人是 UFO 圈經典，揭出處有看頭，不過網路上已經有人拆過。",
+            "changes": "觀眾說出處網路上有人拆過，片名改打較少人知道的『提出推算的人自己收回』，追問加上『寫的人後來怎麼說』。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114.json"
+          }
+        ]
       }
     },
     {
@@ -3849,7 +3911,7 @@
       },
       "audience": {
         "score": 8.11,
-        "rank": 1,
+        "rank": 2,
         "of": 155,
         "click": 9.0,
         "hook": 8.5,
@@ -3925,7 +3987,7 @@
       },
       "audience": {
         "score": 6.81,
-        "rank": 18,
+        "rank": 37,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -4011,7 +4073,7 @@
       },
       "audience": {
         "score": 7.57,
-        "rank": 3,
+        "rank": 7,
         "of": 155,
         "click": 8.0,
         "hook": 7.5,
@@ -4107,7 +4169,7 @@
       },
       "audience": {
         "score": 6.11,
-        "rank": 77,
+        "rank": 86,
         "of": 155,
         "click": 6.5,
         "hook": 6.0,
@@ -4228,7 +4290,7 @@
       },
       "audience": {
         "score": 6.94,
-        "rank": 12,
+        "rank": 27,
         "of": 155,
         "click": 8.0,
         "hook": 7.0,
@@ -4262,8 +4324,8 @@
     {
       "id": "T49",
       "category": "G-靈異與超自然公案",
-      "title": "最有名的兩張鬼照，鏡頭到底拍到了誰？",
-      "core_question": "兩張被說是史上最好的鬼照，背後都有很長的曝光時間，畫面裡的人影是怎麼來的？",
+      "title": "樓梯扶手上的鬼影，為什麼兩隻都是左手？",
+      "core_question": "一張照片裡椅子上坐著沒有腳的人影，一張的樓梯扶手上搭著兩隻左手；兩張最有名的鬼照，鏡頭拍到的到底是誰？",
       "connection": "兩題都是長曝光裡的半透明人影（N429 撐得起一集，N423 只撐得起 3–5 分鐘）。第二章的新理解是『底片沒被動過，不等於畫面裡沒有人經過』，不是重講同一套原理。",
       "boredom_risk": "兩段都是『照片→誰說是鬼→怎麼重現』，第二段要用兩隻左手與通宵守夜推進。",
       "drop_if": "任一章的一手紀錄在製作前重開時對不上就刪那章；剩一章時撤回，N429 單獨成集、N423 轉 Shorts。",
@@ -4281,34 +4343,34 @@
       ],
       "chapters": [
         {
-          "title": "開場：兩張「最好的鬼照」",
+          "title": "沒有腳的人影，和兩隻左手",
           "seconds": 60,
-          "new_information": "這兩張照片都要很長的曝光才拍得出來，這就是線索。",
+          "new_information": "一張的人影沒有腳，一張兩隻都是左手；這兩個怪地方就是線索。",
           "candidate_ids": [
             "N429",
             "N423"
           ]
         },
         {
-          "title": "1891：椅子上的無腳人影",
+          "title": "1891：坐在椅子上的無腳人影",
           "seconds": 330,
-          "new_information": "拍照者筆記寫著下午 2 到 3 點、曝光 60 分鐘、門沒鎖；Barrett 找人進來坐 20–30 秒，就拍出一樣的無腳人影；柯南·道爾 1926 年卻還說它最有說服力。",
+          "new_information": "拍照者的筆記寫著下午 2 到 3 點、曝光 60 分鐘、門沒鎖；Barrett 找人進來坐 20–30 秒，就拍出一樣的無腳人影；柯南·道爾 1926 年卻還說它最有說服力。",
           "candidate_ids": [
             "N429"
           ]
         },
         {
-          "title": "1966：樓梯扶手上的兩隻左手",
+          "title": "1966：扶手上的兩隻左手",
           "seconds": 150,
-          "new_information": "博物館說沒找到確定答案；柯達說底片沒被動過，最合理的是樓梯上真有人；而兩隻都是左手，可能是同一個人被拍到兩次。",
+          "new_information": "博物館說沒找到確定答案；柯達說底片沒被動過，最合理的是樓梯上真的有人；而兩隻都是左手，可能是同一個人被拍到兩次。",
           "candidate_ids": [
             "N423"
           ]
         },
         {
-          "title": "結檔：照片拍到的是時間",
+          "title": "照片拍到的是時間，不是靈魂",
           "seconds": 60,
-          "new_information": "長曝光會把短暫經過的人拍成半透明，照片證明的是時間，不是靈魂。",
+          "new_information": "長曝光會把短暫經過的人拍成半透明；這兩張照片證明的是時間，不是靈魂。",
           "candidate_ids": [
             "N429",
             "N423"
@@ -4316,24 +4378,22 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.02 低於 6.5（五項平均 6.58、需求 3.25）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.02,
-        "rank": 91,
+        "score": 8.29,
+        "rank": 1,
         "of": 155,
-        "click": 7.0,
-        "hook": 6.5,
-        "surprise": 5.5,
-        "payoff": 5.5,
-        "share": 5.5,
-        "comment": "史上最好鬼照一定有人點，但長曝光解答太快猜到，兩段又太短。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114-r2.json",
+        "click": 9.0,
+        "hook": 8.5,
+        "surprise": 7.5,
+        "payoff": 7.75,
+        "share": 8.0,
+        "comment": "兩隻左手這個細節太勾人，鬼照破解一定看完",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
         "rounds": [
           {
             "score": 6.43,
@@ -4341,9 +4401,16 @@
             "changes": "評審分數接近及格，主要把片名改成懸念問句、避免開頭就講出長曝光，章節標題改得更有畫面。",
             "reviewed_on": "2026-11-14",
             "review": "reviews/audience-20261114.json"
+          },
+          {
+            "score": 6.58,
+            "comment": "史上最好鬼照一定有人點，但長曝光解答太快猜到，兩段又太短。",
+            "changes": "觀眾嫌長曝光太快猜到，片名、追問與開場都改用『兩隻左手、沒有腳』當謎面，把長曝光留到章節裡才揭曉。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114-r2.json"
           }
         ],
-        "base": 6.58,
+        "base": 9.3,
         "demand": 3.25,
         "demand_answers": {
           "east_asia": false,
@@ -4418,7 +4485,7 @@
       },
       "audience": {
         "score": 6.69,
-        "rank": 20,
+        "rank": 40,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -4514,7 +4581,7 @@
       },
       "audience": {
         "score": 6.02,
-        "rank": 92,
+        "rank": 94,
         "of": 155,
         "click": 6.5,
         "hook": 6.0,
@@ -4609,7 +4676,7 @@
       },
       "audience": {
         "score": 6.43,
-        "rank": 39,
+        "rank": 58,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -4691,7 +4758,7 @@
       },
       "audience": {
         "score": 6.13,
-        "rank": 76,
+        "rank": 84,
         "of": 155,
         "click": 7.0,
         "hook": 6.0,
@@ -4954,7 +5021,7 @@
       },
       "audience": {
         "score": 6.81,
-        "rank": 19,
+        "rank": 38,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -4969,8 +5036,8 @@
     {
       "id": "T57",
       "category": "F-童話神話與怪談原版",
-      "title": "皮諾丘被吊在樹上就完結？故事怎麼又續下去",
-      "core_question": "皮諾丘和泰國的人魚故事，都寫到過結局又被要求寫下去；是誰要求的，角色的命運又被怎麼改？",
+      "title": "被吊在樹上的皮諾丘、被砍掉魚尾的人魚：誰改了結局？",
+      "core_question": "皮諾丘被吊在橡樹上、那一期直接印了『完』，泰國長詩裡的人魚寫到最後才有名字、還被砍掉魚尾；是誰要故事繼續寫下去？",
       "connection": "兩題的核心問題相同：一部原本要結束的作品被要求續寫。N186（撐得起一集）剪到 8 分鐘當主章；N550 只撐得起 4–6 分鐘，給的新理解是另一種續寫壓力：不是讀者而是贊助人委託，後半文風不像一人所寫，無名的人魚到最後一章才得到名字、失去魚尾。",
       "boredom_risk": "兩段都是『結局→續寫』，第二段要用丹隆親王的考證（原定在第 64 章出家收尾）推進。",
       "drop_if": "N186 剪不到 8 分鐘就不併，N186 單獨成集、N550 轉 Shorts；任一章的原文在製作前重開時對不上就刪那章。",
@@ -4988,7 +5055,7 @@
       ],
       "chapters": [
         {
-          "title": "開場：已經印上『完』的故事",
+          "title": "明明寫到了結局，故事卻沒完",
           "seconds": 45,
           "new_information": "一個是全世界都知道的木偶，一個是泰國的長篇詩《帕阿派瑪尼》；兩部都已經寫到結局，又被要求寫下去。",
           "candidate_ids": [
@@ -4997,15 +5064,15 @@
           ]
         },
         {
-          "title": "皮諾丘：1881 年 10 月 27 日，印上『Fine』",
+          "title": "皮諾丘：吊在橡樹上，印上『Fine』",
           "seconds": 480,
-          "new_information": "連載到第 15 章，皮諾丘被吊在橡樹上，那一期直接標上『Fine』（完）；1882 年 2 月連載又重開，藍髮女孩把他救了下來。為什麼續寫？流行的說法是讀者抗議，研究者更強調編輯和雜誌。",
+          "new_information": "1881 年 10 月 27 日，連載到第 15 章，皮諾丘被吊在橡樹上，那一期直接標上『Fine』（完）；1882 年 2 月連載又重開，藍髮女孩把他救了下來。為什麼續寫？流行的說法是讀者抗議，研究者更強調編輯和雜誌。",
           "candidate_ids": [
             "N186"
           ]
         },
         {
-          "title": "泰國的人魚：寫到最後一章才有名字",
+          "title": "泰國人魚：最後才有名字，沒了魚尾",
           "seconds": 210,
           "new_information": "照丹隆親王的說法，詩人原本想寫到第 49 卷、以第 64 章出家收尾，後來受贊助人委託，一路擴寫到第 94 卷；到第 132 章，這條人魚才被叫作 Suphanmatcha，還被因陀羅砍掉魚尾、變成人。",
           "candidate_ids": [
@@ -5013,7 +5080,7 @@
           ]
         },
         {
-          "title": "結檔：續寫改了誰的命運",
+          "title": "誰要故事續下去，結局就跟著換",
           "seconds": 45,
           "new_information": "兩題放在一起：要求續寫的，可能是讀者、編輯，也可能是贊助人；角色的結局，就跟著換了。",
           "candidate_ids": [
@@ -5023,24 +5090,22 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.07 低於 6.5（五項平均 6.63、需求 3.25）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.07,
-        "rank": 82,
+        "score": 6.58,
+        "rank": 49,
         "of": 155,
-        "click": 7.0,
-        "hook": 7.0,
-        "surprise": 7.0,
-        "payoff": 6.0,
-        "share": 6.5,
-        "comment": "皮諾丘本來被吊死就完結這點真的很哇，泰國人魚那段比較冷。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114-r3.json",
+        "click": 6.75,
+        "hook": 6.25,
+        "surprise": 6.75,
+        "payoff": 5.25,
+        "share": 5.5,
+        "comment": "皮諾丘被吊死有衝擊，泰國長詩那半完全陌生會跳出",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
         "rounds": [
           {
             "score": 6.23,
@@ -5048,9 +5113,16 @@
             "changes": "片名改用評審最想分享的皮諾丘第一次完結，泰國那段先交代作品名稱，並用「同樣被要求續寫」接上前半。",
             "reviewed_on": "2026-11-14",
             "review": "reviews/audience-20261114.json"
+          },
+          {
+            "score": 6.63,
+            "comment": "皮諾丘本來被吊死就完結這點真的很哇，泰國人魚那段比較冷。",
+            "changes": "觀眾嫌泰國那半冷，片名把『人魚被砍掉魚尾』和皮諾丘並列成兩個畫面，讓後半也有鉤子。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114-r3.json"
           }
         ],
-        "base": 6.63,
+        "base": 7.25,
         "demand": 3.25,
         "demand_answers": {
           "east_asia": false,
@@ -5126,7 +5198,7 @@
       },
       "audience": {
         "score": 6.18,
-        "rank": 72,
+        "rank": 80,
         "of": 155,
         "click": 6.5,
         "hook": 5.5,
@@ -5210,7 +5282,7 @@
       },
       "audience": {
         "score": 6.69,
-        "rank": 21,
+        "rank": 41,
         "of": 155,
         "click": 7.5,
         "hook": 7.0,
@@ -5251,8 +5323,8 @@
     {
       "id": "T60",
       "category": "F-童話神話與怪談原版",
-      "title": "英國兩個「三」的童話，最早印出來時主角是誰？三隻熊與三隻小豬",
-      "core_question": "三隻熊與三隻小豬，最早印出來的版本裡，主角換過人、換過物種？",
+      "title": "三隻熊最早的版本：闖進來的是罵髒話的老太婆",
+      "core_question": "三隻熊裡闖進來的原本是罵髒話的老太婆，1853 年一本書裡蓋屋子的故事配的是小精靈和狐狸；這兩個童話最早印出來時主角是誰？",
       "connection": "兩題都是英國的『三』字童話，答案都是最早的印本跟今天不同：闖進熊家的是老太婆；常說的 1843 年 Halliwell 版裡根本找不到三隻小豬（N642 只撐得起 5–7 分鐘）。",
       "boredom_risk": "兩段都是『今天的版本→最早的印本』，第二段要用 Dartmoor 版的小精靈與鐵屋推進。",
       "drop_if": "任一章的原文在製作前重開時對不上就刪那章；剩一章時撤回，撐得起一集的那題單獨成集、另一題轉 Shorts。",
@@ -5270,32 +5342,32 @@
       ],
       "chapters": [
         {
-          "title": "開場",
+          "title": "兩個『三』字開頭的英國童話",
           "seconds": 60,
-          "new_information": "兩個英國小孩都聽過的『三』字故事。",
+          "new_information": "英國小孩都聽過的兩個『三』字故事。",
           "candidate_ids": [
             "N362",
             "N642"
           ]
         },
         {
-          "title": "三隻熊：沒禮貌的老太婆",
+          "title": "三隻熊：被丟上教堂尖塔的老太婆",
           "seconds": 330,
-          "new_information": "1837 年 Southey 的版本裡三隻熊不是一家三口，闖進來的是罵髒話的老太婆；1831 年手繪本裡熊把她丟上教堂尖塔；1850 年才換成小女孩。",
+          "new_information": "1837 年 Southey 的版本裡，三隻熊不是一家三口，闖進來的是罵髒話的老太婆；1831 年的手繪本裡，熊把她丟上教堂尖塔；到 1850 年才換成小女孩。",
           "candidate_ids": [
             "N362"
           ]
         },
         {
-          "title": "三隻小豬：1843 年的書裡沒有",
+          "title": "三隻小豬：小精靈、鐵屋和狐狸",
           "seconds": 270,
-          "new_information": "Halliwell 1843 年兩份印本和 1849 年續編都沒有；讀得到的版本在第五版；1853 年一本森林書記下 Dartmoor 的小精靈、木屋石屋鐵屋與狐狸。",
+          "new_information": "Halliwell 1843 年的兩份印本和 1849 年的續編裡都沒有；讀得到的版本在第五版；1853 年一本森林書記下的，是 Dartmoor 的小精靈、木屋石屋鐵屋與狐狸。",
           "candidate_ids": [
             "N642"
           ]
         },
         {
-          "title": "結檔",
+          "title": "第一版的主角，常常不是現在這位",
           "seconds": 60,
           "new_information": "兩題放在一起：童話印出來的第一個版本，常常不是今天這個主角。",
           "candidate_ids": [
@@ -5305,25 +5377,23 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.07 低於 6.5（五項平均 6.63、需求 3.25）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.07,
-        "rank": 83,
+        "score": 6.75,
+        "rank": 39,
         "of": 155,
-        "click": 7.0,
-        "hook": 6.5,
-        "surprise": 7.5,
-        "payoff": 6.5,
-        "share": 7.0,
-        "comment": "三隻熊原本闖進來的是罵髒話的老太婆還被丟上教堂尖塔，這反轉會想跟朋友講。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114.json",
-        "base": 6.63,
+        "click": 7.25,
+        "hook": 5.25,
+        "surprise": 7.25,
+        "payoff": 5.5,
+        "share": 6.25,
+        "comment": "罵髒話老太婆很有畫面，三隻小豬那段版本考據會出戲",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
+        "base": 7.45,
         "demand": 3.25,
         "demand_answers": {
           "east_asia": false,
@@ -5332,7 +5402,16 @@
           "famous": true
         },
         "demand_reason": "famous：三隻小豬與三隻熊人人認得。",
-        "demand_review": "reviews/demand-20261117.json"
+        "demand_review": "reviews/demand-20261117.json",
+        "rounds": [
+          {
+            "score": 6.63,
+            "comment": "三隻熊原本闖進來的是罵髒話的老太婆還被丟上教堂尖塔，這反轉會想跟朋友講。",
+            "changes": "片名拿掉『英國兩個三』的說明腔，改用觀眾最想講給朋友聽的『罵髒話的老太婆』，章節小標補上尖塔與小精靈的畫面。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114.json"
+          }
+        ]
       }
     },
     {
@@ -5486,7 +5565,7 @@
       },
       "audience": {
         "score": 6.43,
-        "rank": 40,
+        "rank": 59,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -5694,8 +5773,8 @@
     {
       "id": "T65",
       "category": "L-都市傳說與消失地名",
-      "title": "人魚乾是什麼做的？巴納姆的斐濟美人魚與岡山寺的人魚",
-      "core_question": "1842 年巴納姆的斐濟美人魚與岡山一座寺裡的人魚乾，一個靠宣傳、一個靠斷層掃描，各揭開了什麼？",
+      "title": "岡山寺裡的人魚乾送去斷層掃描，裡面是布、紙和河豚皮",
+      "core_question": "岡山一座寺裡的人魚乾和 1842 年轟動紐約的斐濟美人魚，都被當成真人魚展出；斷層掃描和一本自傳，各揭開了什麼？",
       "connection": "兩題都是『人魚的標本』，答案不同（N721 只撐得起 4–6 分鐘）：前半講巴納姆怎麼替一件道具編故事、13 年後自己招認；後半講 CT 與碳 14 怎麼驗出道具本身的材料。",
       "boredom_risk": "兩段都是『標本→真相』，第二段要用材料清單（布、紙、棉、河豚皮、石首魚）推進，不重講宣傳。",
       "drop_if": "任一章的原文在製作前重開時對不上就刪那章；剩一章時撤回，撐得起一集的那題單獨成集、另一題轉 Shorts。",
@@ -5713,7 +5792,7 @@
       ],
       "chapters": [
         {
-          "title": "開場",
+          "title": "兩具被當成真人魚的標本",
           "seconds": 60,
           "new_information": "兩具被當成真人魚展出的標本。",
           "candidate_ids": [
@@ -5722,23 +5801,23 @@
           ]
         },
         {
-          "title": "斐濟美人魚：報上那三封信是他寫的",
+          "title": "斐濟美人魚：三封讀者來信是他寫的",
           "seconds": 330,
-          "new_information": "1842 年轟動紐約；13 年後巴納姆在自傳裡招認，報上的三封讀者來信都是他自己寫的。",
+          "new_information": "1842 年轟動紐約；13 年後，巴納姆在自傳裡招認，報上那三封讀者來信都是他自己寫的。",
           "candidate_ids": [
             "N310"
           ]
         },
         {
-          "title": "岡山寺的人魚：斷層掃描裡的材料",
+          "title": "岡山人魚乾：掃出布、紙和河豚皮",
           "seconds": 210,
-          "new_information": "書付說元文年間在土佐外海落網；2023 年的掃描與碳 14 顯示上半身是布、紙、棉與河豚皮，魚身是石首魚科，鱗片在 1800 年代後半。",
+          "new_information": "書付說牠是元文年間在土佐外海落網的；2023 年的掃描與碳 14 顯示，上半身是布、紙、棉與河豚皮，魚身是石首魚科，鱗片在 1800 年代後半。",
           "candidate_ids": [
             "N721"
           ]
         },
         {
-          "title": "結檔",
+          "title": "一具靠故事撐著，一具被材料拆開",
           "seconds": 60,
           "new_information": "兩題放在一起：一具靠故事撐起來，一具靠材料拆開來。",
           "candidate_ids": [
@@ -5748,25 +5827,23 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.42 低於 6.5（五項平均 7.51、需求 1.0）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.42,
-        "rank": 42,
+        "score": 7.38,
+        "rank": 10,
         "of": 155,
-        "click": 8.0,
-        "hook": 7.5,
+        "click": 8.5,
+        "hook": 7.25,
         "surprise": 7.0,
-        "payoff": 7.0,
+        "payoff": 7.25,
         "share": 7.5,
-        "comment": "人魚乾一定點，斷層掃描拆出河豚皮和紙超有畫面，巴納姆自寫讀者信也好笑。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114.json",
-        "base": 7.51,
+        "comment": "人魚乾送斷層掃描超想點，但片名已經把答案講完了",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
+        "base": 8.65,
         "demand": 1.0,
         "demand_answers": {
           "east_asia": false,
@@ -5775,7 +5852,16 @@
           "famous": false
         },
         "demand_reason": "人魚乾標本的鑑定，片名先打美國巴納姆的斐濟美人魚，岡山寺只佔一半，拿不準答 false，兩者都需要解釋。",
-        "demand_review": "reviews/demand-20261117.json"
+        "demand_review": "reviews/demand-20261117.json",
+        "rounds": [
+          {
+            "score": 7.51,
+            "comment": "人魚乾一定點，斷層掃描拆出河豚皮和紙超有畫面，巴納姆自寫讀者信也好笑。",
+            "changes": "片名改由最有畫面的掃描結果（布、紙、河豚皮）帶頭，並把日本那具放到前面，去掉『一個靠宣傳一個靠掃描』的說明腔。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114.json"
+          }
+        ]
       }
     },
     {
@@ -5842,7 +5928,7 @@
       },
       "audience": {
         "score": 6.03,
-        "rank": 88,
+        "rank": 91,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -5934,7 +6020,7 @@
       },
       "audience": {
         "score": 5.68,
-        "rank": 128,
+        "rank": 127,
         "of": 155,
         "click": 5.5,
         "hook": 5.0,
@@ -6038,7 +6124,7 @@
       },
       "audience": {
         "score": 5.68,
-        "rank": 129,
+        "rank": 128,
         "of": 155,
         "click": 6.0,
         "hook": 5.5,
@@ -6131,7 +6217,7 @@
       },
       "audience": {
         "score": 6.07,
-        "rank": 84,
+        "rank": 88,
         "of": 155,
         "click": 7.0,
         "hook": 7.0,
@@ -6315,7 +6401,7 @@
       },
       "audience": {
         "score": 6.06,
-        "rank": 85,
+        "rank": 89,
         "of": 155,
         "click": 6.5,
         "hook": 6.5,
@@ -6390,7 +6476,7 @@
       },
       "audience": {
         "score": 6.86,
-        "rank": 15,
+        "rank": 32,
         "of": 155,
         "click": 7.5,
         "hook": 7.0,
@@ -6492,7 +6578,7 @@
       },
       "audience": {
         "score": 7.07,
-        "rank": 10,
+        "rank": 21,
         "of": 155,
         "click": 7.5,
         "hook": 7.0,
@@ -6595,7 +6681,7 @@
       },
       "audience": {
         "score": 5.68,
-        "rank": 130,
+        "rank": 129,
         "of": 155,
         "click": 5.5,
         "hook": 5.0,
@@ -6681,7 +6767,7 @@
       },
       "audience": {
         "score": 5.76,
-        "rank": 120,
+        "rank": 121,
         "of": 155,
         "click": 6.0,
         "hook": 6.5,
@@ -6877,7 +6963,7 @@
       },
       "audience": {
         "score": 5.73,
-        "rank": 124,
+        "rank": 123,
         "of": 155,
         "click": 6.5,
         "hook": 6.5,
@@ -6968,7 +7054,7 @@
       },
       "audience": {
         "score": 6.82,
-        "rank": 17,
+        "rank": 36,
         "of": 155,
         "click": 6.5,
         "hook": 6.5,
@@ -7072,7 +7158,7 @@
       },
       "audience": {
         "score": 5.98,
-        "rank": 99,
+        "rank": 100,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -7175,7 +7261,7 @@
       },
       "audience": {
         "score": 6.18,
-        "rank": 73,
+        "rank": 81,
         "of": 155,
         "click": 6.5,
         "hook": 6.0,
@@ -7268,7 +7354,7 @@
       },
       "audience": {
         "score": 6.18,
-        "rank": 74,
+        "rank": 82,
         "of": 155,
         "click": 6.5,
         "hook": 6.0,
@@ -7299,8 +7385,8 @@
     {
       "id": "T82",
       "category": "U-外星太空與未知訊號",
-      "title": "1919 年那場日食，真的證明了愛因斯坦嗎？",
-      "core_question": "1919 年和 1929 年兩次日食，天文學家去量星光被太陽拉彎了多少；結果各是多少，當時的人又怎麼看？",
+      "title": "證明愛因斯坦的那場日食，有一組資料被丟掉了",
+      "core_question": "1919 年那場日食被說成證明了愛因斯坦，可是其中一組資料被丟掉了；是誰丟的，那組資料後來重新量過又說了什麼？",
       "connection": "N1444 只撐得起一章，跟 N1203 是同一個核心問題：日食觀測怎麼被說成一次就證實或推翻相對論。新理解不同：1919 年是最大權重給了 Sobral 的鏡子、捨棄資料的決定看來是 Dyson 的；1929 年蘇門答臘隊量到偏大的值，Freundlich 說相對論『原則上對、數量上不對』，日食法本身常量到偏大。",
       "boredom_risk": "兩段都是『觀測→解讀』，第二段要用 1929 年的器材上山與十萬次量測推進，不重講 1919 年的爭議。",
       "drop_if": "N1444 的 1931 年演講報導在製作前重開時對不上，就刪那章，N1203 回到單集；不補別次日食湊時間。",
@@ -7318,16 +7404,16 @@
       ],
       "chapters": [
         {
-          "title": "開場：一顆星，被太陽推開了多少",
+          "title": "星光經過太陽旁邊，會被推開一點",
           "seconds": 60,
-          "new_information": "日食時，太陽旁邊的星星看起來會被推開一點點；1919 和 1929 年，兩支隊伍各去量了一次。",
+          "new_information": "日食的時候，太陽旁邊的星星看起來會被推開一點點；1919 和 1929 年，兩支隊伍各去量了一次。",
           "candidate_ids": [
             "N1203",
             "N1444"
           ]
         },
         {
-          "title": "1919：一邊下大雨，一邊靠一面鏡子",
+          "title": "一邊下大雷雨，一邊靠一台 4 吋鏡",
           "seconds": 210,
           "new_information": "報告說，Príncipe 在日全食前下大雷雨，只拍到少數幾顆星；最後的結論，最相信的是巴西 Sobral 那台 4 吋鏡拍到的資料。",
           "candidate_ids": [
@@ -7335,7 +7421,7 @@
           ]
         },
         {
-          "title": "是誰丟掉了那一組資料？",
+          "title": "丟掉那組資料的，是誰的筆跡？",
           "seconds": 180,
           "new_information": "史學家翻 Greenwich 的檔案發現，Sobral 的資料由 Dyson 的團隊整理，丟掉其中一組的筆跡看起來是 Dyson 自己的；1978 年重新量過之後，被丟掉的那組反而更接近愛因斯坦預測的值。",
           "candidate_ids": [
@@ -7343,15 +7429,15 @@
           ]
         },
         {
-          "title": "1929：量到的值，比愛因斯坦預測的還大",
+          "title": "15 噸器材運上高原，量出來卻太大",
           "seconds": 210,
-          "new_information": "Potsdam 的隊伍把約 15 噸器材運上蘇門答臘亞齊的高原；1931 年 Freundlich 說量到 2.24 角秒，相對論『原則上對、數量上不對』，但他也說還需要再確認；後來要等到電波望遠鏡，才把愛因斯坦的值量準。",
+          "new_information": "1929 年，Potsdam 的隊伍把約 15 噸器材運上蘇門答臘亞齊的高原；1931 年 Freundlich 說量到的值比愛因斯坦預測的還大，相對論『原則上對、數量上不對』，但他也說還需要再確認；後來要等到電波望遠鏡，才把愛因斯坦的值量準。",
           "candidate_ids": [
             "N1444"
           ]
         },
         {
-          "title": "結檔：一次日食證明不了什麼",
+          "title": "一次日食，證明不了什麼",
           "seconds": 60,
           "new_information": "兩次放在一起：日食量法的誤差一直很大，不管是證實還是質疑，都比流傳的說法慢得多。",
           "candidate_ids": [
@@ -7361,24 +7447,22 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.27 低於 6.5（五項平均 6.88、需求 3.25）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.27,
-        "rank": 60,
+        "score": 6.96,
+        "rank": 25,
         "of": 155,
         "click": 7.0,
-        "hook": 6.0,
-        "surprise": 7.0,
+        "hook": 5.5,
+        "surprise": 7.5,
         "payoff": 6.5,
-        "share": 6.5,
-        "comment": "愛因斯坦被『丟掉的資料』反咬一口很有戲，但角秒數字一般人會暈。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114-r2.json",
+        "share": 6.25,
+        "comment": "資料被丟掉又反而更準很意外，但物理門檻偏高",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
         "rounds": [
           {
             "score": 5.23,
@@ -7386,9 +7470,16 @@
             "changes": "片名改成『真的證明了愛因斯坦嗎』的問句，把『最大權重』『歸約』等術語改成『最相信』『整理』『丟掉』，只在一處保留角秒數字。",
             "reviewed_on": "2026-11-14",
             "review": "reviews/audience-20261114.json"
+          },
+          {
+            "score": 6.88,
+            "comment": "愛因斯坦被『丟掉的資料』反咬一口很有戲，但角秒數字一般人會暈。",
+            "changes": "片名與追問改打觀眾覺得最有戲的『被丟掉的那組資料』，並把角秒數字整個拿掉，改成『比預測的還大』。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114-r2.json"
           }
         ],
-        "base": 6.88,
+        "base": 7.7,
         "demand": 3.25,
         "demand_answers": {
           "east_asia": false,
@@ -7547,7 +7638,7 @@
       },
       "audience": {
         "score": 6.23,
-        "rank": 66,
+        "rank": 76,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -7999,7 +8090,7 @@
       },
       "audience": {
         "score": 6.63,
-        "rank": 25,
+        "rank": 47,
         "of": 155,
         "click": 7.5,
         "hook": 7.0,
@@ -8074,7 +8165,7 @@
       },
       "audience": {
         "score": 6.92,
-        "rank": 13,
+        "rank": 28,
         "of": 155,
         "click": 7.5,
         "hook": 7.0,
@@ -8261,7 +8352,7 @@
       },
       "audience": {
         "score": 6.38,
-        "rank": 52,
+        "rank": 68,
         "of": 155,
         "click": 5.5,
         "hook": 5.5,
@@ -8606,7 +8697,7 @@
       },
       "audience": {
         "score": 5.68,
-        "rank": 131,
+        "rank": 130,
         "of": 155,
         "click": 5.0,
         "hook": 5.0,
@@ -8698,7 +8789,7 @@
       },
       "audience": {
         "score": 7.11,
-        "rank": 9,
+        "rank": 19,
         "of": 155,
         "click": 7.5,
         "hook": 7.0,
@@ -9251,7 +9342,7 @@
       },
       "audience": {
         "score": 6.38,
-        "rank": 53,
+        "rank": 69,
         "of": 155,
         "click": 6.5,
         "hook": 6.0,
@@ -9344,7 +9435,7 @@
       },
       "audience": {
         "score": 6.01,
-        "rank": 98,
+        "rank": 97,
         "of": 155,
         "click": 6.5,
         "hook": 6.0,
@@ -9616,7 +9707,7 @@
       },
       "audience": {
         "score": 6.02,
-        "rank": 93,
+        "rank": 95,
         "of": 155,
         "click": 6.0,
         "hook": 5.5,
@@ -9887,7 +9978,7 @@
       },
       "audience": {
         "score": 6.03,
-        "rank": 89,
+        "rank": 92,
         "of": 155,
         "click": 6.5,
         "hook": 6.0,
@@ -9902,8 +9993,8 @@
     {
       "id": "T111",
       "category": "L-都市傳說與消失地名",
-      "title": "土用丑吃鰻魚、節分吃惠方卷，是誰帶起來的？",
-      "core_question": "夏天吃鰻魚、冬天咬一整條壽司卷，都說是江戶商人或古人傳下來的，最早寫下來的文字其實是哪一年、誰寫的？",
+      "title": "『惠方卷』這名字，據說是 1989 年便利商店開始叫的",
+      "core_question": "土用丑吃鰻魚、節分咬惠方卷，都說是老祖宗傳下來的；為什麼追到最早的文字，卻是一張壽司公會的傳單和一個換過主角的招牌故事？",
       "connection": "N2302 只撐得起一章，跟 N2301 是同一個核心問題：一個今天日本全國都在做的節日飲食，被說成有一位發明人或幾百年的傳承，目前讀到最早的文字卻晚得多、也沒有那個人。新理解不同：鰻那章是 1822 年的《明和誌》沒寫是誰，招牌故事 1911 年的主角是蜀山人、1913 年才換成源內；恵方巻那章是目前最早有日期的是 1932 年壽司商組合的傳單，戰後重推據研究者整理是為了跟土用丑的鰻搶生意，名字一般說是 1989 年才在便利商店出現。第二章正好接上第一章。兩題都是本批新題，N2301 壓到約 6 分鐘（覆核 R202 建議）。",
       "boredom_risk": "兩段都是『節日飲食→最早的文字』，第二段要用 1932、1977、1989 年三個時間點推進，不重講招牌故事。",
       "drop_if": "任一章的關鍵來源在製作前重開時對不上就刪那章；剩 N2301 時讓它獨立成 8–10 分鐘一集，N2302 轉 Shorts。",
@@ -9921,34 +10012,34 @@
       ],
       "chapters": [
         {
-          "title": "開場：兩樣節日食物",
+          "title": "兩樣『老祖宗傳下來』的食物",
           "seconds": 60,
-          "new_information": "夏天土用丑日吃鰻魚，冬天節分咬一整條壽司卷：兩樣都說是江戶商人或老祖宗傳下來的，真的嗎？",
+          "new_information": "夏天土用丑日吃鰻魚，冬天節分咬一整條壽司卷：都說是江戶商人或老祖宗傳下來的，可是最早的文字怎麼寫？",
           "candidate_ids": [
             "N2301",
             "N2302"
           ]
         },
         {
-          "title": "土用丑的鰻魚：招牌故事的主角換過人",
+          "title": "鰻魚招牌故事，主角換過人",
           "seconds": 360,
-          "new_information": "1822 年寫序的《明和誌》只說『安永、天明年間開始』，沒有人名，也沒有招牌；1911 年的招牌故事，主角是太田蜀山人，到 1913 年《神田の伝説》才換成平賀源內，還加了『據說』；1936 年的書仍寫『源內（一說蜀山人）』，並說這是俗說。",
+          "new_information": "1822 年寫序的《明和誌》只說『安永、天明年間開始』，沒有人名，也沒有招牌；1911 年的招牌故事，主角是太田蜀山人，1913 年的《神田の伝説》才換成平賀源內，還加了一句『據說』；到 1936 年，書上仍寫『源內（一說蜀山人）』，並說這是俗說。",
           "candidate_ids": [
             "N2301"
           ]
         },
         {
-          "title": "惠方卷：1932 年的傳單與 1989 年的名字",
+          "title": "惠方卷：傳單寫規矩，超商取名字",
           "seconds": 240,
-          "new_information": "目前最早有日期的，是 1932 年大阪壽司商公會後援會的傳單，上面已經寫好規矩：朝吉利方位、不說話、整條咬。據岩崎竹彥的研究，戰後重新推廣，是為了跟土用丑的鰻魚搶生意；1977 年道頓堀還辦過整條咬的比賽。『惠方卷』這個名字，一般說是 1989 年廣島一家便利商店開始用的。",
+          "new_information": "目前最早有日期的，是 1932 年大阪壽司商公會後援會的一張傳單，規矩已經寫好：朝吉利方位、不說話、整條咬。據岩崎竹彥的研究，戰後重新推廣，是為了跟土用丑的鰻魚搶生意；1977 年道頓堀還辦過整條咬的比賽。至於『惠方卷』這個名字，一般說是 1989 年廣島一家便利商店開始用的。",
           "candidate_ids": [
             "N2302"
           ]
         },
         {
-          "title": "結檔：古老的習俗，其實是近代的生意",
+          "title": "老習俗，其實是近代的生意",
           "seconds": 60,
-          "new_information": "一個靠招牌故事、一個靠傳單和便利商店：今天的節日食物，都是近代的生意長出來的。留言問題：你身邊有沒有類似的節日行銷？",
+          "new_information": "一個靠招牌故事，一個靠傳單和便利商店：今天的節日食物，都是近代的生意養大的。留言問題：你身邊有沒有類似的節日行銷？",
           "candidate_ids": [
             "N2301",
             "N2302"
@@ -9956,24 +10047,22 @@
         }
       ],
       "material": {
-        "verdict": "reserve",
+        "verdict": "ready",
         "reviewed_on": "2026-11-11",
-        "review": "reviews/material-20261111.json",
-        "was": "ready",
-        "missing": "併入需求後總分 6.44 低於 6.5（五項平均 7.08、需求 3.25）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "review": "reviews/material-20261111.json"
       },
       "audience": {
-        "score": 6.44,
-        "rank": 36,
+        "score": 7.04,
+        "rank": 23,
         "of": 155,
         "click": 7.0,
-        "hook": 6.5,
+        "hook": 6.25,
         "surprise": 7.0,
-        "payoff": 6.5,
-        "share": 7.0,
-        "comment": "惠方卷是 1989 年便利商店、鰻魚是生意，跟台灣節日行銷一比很想留言。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114-r2.json",
+        "payoff": 6.75,
+        "share": 7.25,
+        "comment": "惠方卷是超商炒出來的，很生活、很適合轉給愛日本的朋友",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
         "rounds": [
           {
             "score": 6.66,
@@ -9981,9 +10070,16 @@
             "changes": "片名改成台灣觀眾熟悉的惠方卷與口語問句，日文術語（鮓商組合、恵方、丸咬）換成白話，結尾加上貼近台灣的留言問題。",
             "reviewed_on": "2026-11-14",
             "review": "reviews/audience-20261114.json"
+          },
+          {
+            "score": 7.08,
+            "comment": "惠方卷是 1989 年便利商店、鰻魚是生意，跟台灣節日行銷一比很想留言。",
+            "changes": "片名從『是誰帶起來的』換成最反常的單一事實：惠方卷的名字據說出自 1989 年的便利商店；追問點出傳單與換主角的招牌故事。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114-r2.json"
           }
         ],
-        "base": 7.08,
+        "base": 7.8,
         "demand": 3.25,
         "demand_answers": {
           "east_asia": true,
@@ -10162,7 +10258,7 @@
       ],
       "audience": {
         "score": 6.4,
-        "rank": 49,
+        "rank": 65,
         "of": 155,
         "click": 6.5,
         "hook": 6.0,
@@ -10203,8 +10299,8 @@
     {
       "id": "T114",
       "category": "H-歷史懸案",
-      "title": "博物館說是真古董，做的人怎麼證明是他做的？",
-      "core_question": "博物館認定是真的古物，做假的人要怎麼證明，東西其實是他親手做的？",
+      "title": "老工匠掏出一隻陶拇指，博物館的『古董』當場對上了",
+      "core_question": "羅浮宮的金冠、大都會的武士，專家都認定是真古物；做的人要怎麼證明那是自己做的，為什麼最後靠的是一隻收了多年的陶拇指？",
       "connection": "N2526 與 N2527 回答同一個問題：偽作最後都由做的人親手證明。羅浮宮金冠 1896 年一買進就有人斥為偽作，1903 年先有冒認者，再由奧德薩金匠說出做法、當場示範，報導卻各說各話；大都會的伊特拉斯坎武士 1936 年就有寫了人名的警告信，1961 年由老工匠拿出陶拇指合上石膏模。兩案都是早有警告、專家不聽，最後靠示範定案（覆核 R224 建議）。",
       "boredom_risk": "兩段都是『買進→警告→認領』，第二段要用化驗與陶拇指的實物證據推進，不重講冒認者。",
       "drop_if": "任一章的關鍵報導在製作前重開對不上就刪那章；剩一章時 N2526 單獨做 8–10 分鐘版，N2527 不單獨成題。",
@@ -10222,9 +10318,9 @@
       ],
       "chapters": [
         {
-          "title": "開場：兩件博物館收藏，兩個自己跳出來的工匠",
+          "title": "兩件館藏，兩個自己站出來的工匠",
           "seconds": 55,
-          "new_information": "羅浮宮的金冠、大都會的武士：都被專家認定是真的、都早有人警告是假的，最後都由做的人親手證明。",
+          "new_information": "羅浮宮的金冠、大都會的武士：專家都認定是真的，也都早有人警告是假的，最後都靠做的人親手證明。",
           "candidate_ids": [
             "N2526",
             "N2527"
@@ -10233,47 +10329,47 @@
         {
           "title": "1896：羅浮宮花了 20 萬法郎",
           "seconds": 130,
-          "new_information": "金冠上的銘文說是獻給斯基泰國王的禮物；同一年 Furtwängler 就在出版品裡說它是假的，博物館照樣展出。",
+          "new_information": "金冠上的銘文說，這是獻給斯基泰國王的禮物；同一年 Furtwängler 就在出版品裡說它是假的，博物館還是照樣展出。",
           "candidate_ids": [
             "N2526"
           ]
         },
         {
-          "title": "1903：誰來認領這頂金冠",
+          "title": "1903：誰來認領這頂金冠？",
           "seconds": 150,
-          "new_information": "第一個跳出來說是自己做的蒙馬特畫家在說謊；奧德薩金匠 Rouchomovsky 說得出參考了哪些書、分三段焊接，被要求當場做給大家看。",
+          "new_information": "第一個跳出來認領的蒙馬特畫家在說謊；奧德薩金匠 Rouchomovsky 卻說得出參考了哪些書、分三段焊接，於是被要求當場做給大家看。",
           "candidate_ids": [
             "N2526"
           ]
         },
         {
-          "title": "同一場示範，兩種報導",
+          "title": "當場做給你看，還是有人不信",
           "seconds": 130,
-          "new_information": "《紐約先驅報》說疑問一掃而空，另一家通訊社說專家仍然不信；示範只能證明他有這個手藝，不一定能證明就是那一頂。",
+          "new_information": "《紐約先驅報》說疑問一掃而空，另一家通訊社卻說專家還是不信；示範只能證明他有這手藝，不一定能證明就是那一頂。",
           "candidate_ids": [
             "N2526"
           ]
         },
         {
-          "title": "1936：一封寫了名字的警告信",
+          "title": "1936：點名的警告信被當成傳聞",
           "seconds": 120,
-          "new_information": "古董商 Tozzi 寫信給策展人 Richter，直接寫出做假的人是誰，卻被當成荒謬的傳聞；後來化驗才發現，黑色的釉裡有現代的著色劑。",
+          "new_information": "古董商 Tozzi 寫信給策展人 Richter，直接寫出做假的人是誰，卻被當成荒謬的傳聞；後來一化驗才發現，黑色的釉裡有現代的著色劑。",
           "candidate_ids": [
             "N2527"
           ]
         },
         {
-          "title": "1961：一隻陶土拇指",
+          "title": "1961：陶拇指放上去，剛好合上",
           "seconds": 140,
-          "new_information": "Parsons 自己去追查，拿到宣誓書；博物館拿出缺了拇指的手部石膏模，老工匠掏出收藏多年的陶拇指，一放上去剛好合上。",
+          "new_information": "Parsons 自己去追查，拿到了宣誓書；博物館拿出缺了拇指的手部石膏模，老工匠掏出收藏多年的陶拇指，一放上去，剛好合上。",
           "candidate_ids": [
             "N2527"
           ]
         },
         {
-          "title": "收尾：怎麼證明東西是你做的",
+          "title": "怎麼證明東西是你做的",
           "seconds": 55,
-          "new_information": "兩件案子都早有人警告，最後靠的都是做的人親手示範。留言問題：你覺得哪一種證據最難造假？",
+          "new_information": "兩個案子都早有人警告，最後靠的都是做的人親手示範。留言問題：你覺得哪一種證據最難造假？",
           "candidate_ids": [
             "N2526",
             "N2527"
@@ -10281,17 +10377,17 @@
         }
       ],
       "audience": {
-        "score": 6.48,
-        "rank": 30,
+        "score": 7.08,
+        "rank": 20,
         "of": 155,
         "click": 7.5,
-        "hook": 7.0,
-        "surprise": 7.5,
-        "payoff": 7.5,
-        "share": 7.0,
-        "comment": "假古董要做的人自己證明，陶土拇指一放剛好合上，超有爽感。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114-r2.json",
+        "hook": 7.5,
+        "surprise": 7.75,
+        "payoff": 7.25,
+        "share": 6.75,
+        "comment": "陶拇指合上那一刻很爽，但兩個案子人名多、中段有點繞",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
         "rounds": [
           {
             "score": 7.31,
@@ -10299,9 +10395,16 @@
             "changes": "評審已給高分，保留結構與陶拇指結尾，只把片名改得更短更口語、去掉人名，章節講法稍微白話。",
             "reviewed_on": "2026-11-14",
             "review": "reviews/audience-20261114.json"
+          },
+          {
+            "score": 7.58,
+            "comment": "假古董要做的人自己證明，陶土拇指一放剛好合上，超有爽感。",
+            "changes": "把兩位評審都說最爽的陶拇指畫面直接放進片名與追問，章節小標改成更像節目口白。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114-r2.json"
           }
         ],
-        "base": 7.58,
+        "base": 8.3,
         "demand": 1.0,
         "demand_answers": {
           "east_asia": false,
@@ -10315,9 +10418,7 @@
       "material": {
         "reviewed_on": "2026-11-17",
         "review": "reviews/demand-20261117.json",
-        "verdict": "reserve",
-        "was": "ready",
-        "missing": "併入需求後總分 6.48 低於 6.5（五項平均 7.58、需求 1.0）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "verdict": "ready"
       }
     },
     {
@@ -10394,7 +10495,7 @@
       ],
       "audience": {
         "score": 5.73,
-        "rank": 125,
+        "rank": 124,
         "of": 155,
         "click": 5.5,
         "hook": 6.0,
@@ -10494,7 +10595,7 @@
       ],
       "audience": {
         "score": 6.02,
-        "rank": 94,
+        "rank": 96,
         "of": 155,
         "click": 6.5,
         "hook": 6.0,
@@ -10614,7 +10715,7 @@
       ],
       "audience": {
         "score": 6.51,
-        "rank": 28,
+        "rank": 51,
         "of": 155,
         "click": 7.0,
         "hook": 7.0,
@@ -10639,8 +10740,8 @@
     {
       "id": "T118",
       "category": "M-奇異現象與自然",
-      "title": "天上下血雨、水窪撿到魚，兩位學者親自去查",
-      "core_question": "說是『從天上掉下來』的血和魚，親自去查的學者看到了什麼，結論又推到多遠？",
+      "title": "忘在盒子裡的毛蟲，怎麼破了全城都信的血雨？",
+      "core_question": "牆上的紅點說是天上下的血、水窪的鯰魚說是天上掉的；親自去查的兩位學者，一個靠一條毛蟲找到答案，另一個為什麼只敢說不確定？",
       "connection": "N2685 與 N2686 是同一個問題的正反兩面：1608 年 Peiresc 靠盒中毛蟲的偶然觀察，再用分布（屋頂沒有、只在石頭凹處、靠田的牆、蝴蝶飛的高度）驗證而破案，卻把同一套推論套到 Gregory of Tours 記的落在衣服上、屋內的血雨，推過了頭；1861 年 Castelnau 沒看到魚落下，用自家院牆排除了『魚自己爬來』，最後只敢『戰戰兢兢』提出水柱假說。兩位都是親自去看的學者，當地人各有超自然解釋（魔鬼女巫／山中矮人）。和 T 題案裡 N123＋M14（樣本進了實驗室怎麼吵）是不同的共同問題（覆核 R243 建議）。",
       "boredom_risk": "兩段都是『傳聞→親自去看→結論』，第二段要用他排除自己解釋的過程推進，不重講血雨的分布檢查。",
       "drop_if": "任一章的關鍵原文在製作前重開對不上就刪那章；剩一章時不單獨成題。",
@@ -10658,58 +10759,58 @@
       ],
       "chapters": [
         {
-          "title": "開場：天上掉下來的東西",
+          "title": "牆上的紅點，水窪裡的魚",
           "seconds": 55,
-          "new_information": "一座城的牆上滿是紅點，另一座城的水窪裡全是鯰魚：兩地的人都說是從天上掉下來的。",
+          "new_information": "一座城的牆上滿是紅點，另一座城的水窪裡全是鯰魚：兩邊的人都說，是從天上掉下來的。",
           "candidate_ids": [
             "N2685",
             "N2686"
           ]
         },
         {
-          "title": "1608：全城都信的血雨",
+          "title": "1608：全城都信天上下了血",
           "seconds": 110,
-          "new_information": "紅點出現在墓園、城牆和村莊的牆上；有人說是魔鬼與女巫殺了孩子，自然學家說是紅土蒸氣凝成的紅雨。",
+          "new_information": "紅點出現在墓園、城牆和村莊的牆上；有人說是魔鬼與女巫作祟，自然學家則說，是紅土蒸氣凝成的紅雨。",
           "candidate_ids": [
             "N2685"
           ]
         },
         {
-          "title": "忘在盒子裡的毛蟲",
+          "title": "忘在盒子裡的那條毛蟲",
           "seconds": 115,
-          "new_information": "Peiresc 忘了的一條毛蟲在盒裡羽化飛走，盒底留下一枚錢幣大的紅滴；他接著去查屋頂、牆的高度和石頭凹處，紅點只在蝴蝶停得到的地方。",
+          "new_information": "Peiresc 忘在盒子裡的一條毛蟲羽化飛走了，盒底留下一枚錢幣大的紅滴；他接著去查屋頂、牆的高度和石頭凹處，紅點只出現在蝴蝶停得到的地方。",
           "candidate_ids": [
             "N2685"
           ]
         },
         {
-          "title": "推過頭的一步",
+          "title": "查對了，卻多推了一步",
           "seconds": 90,
-          "new_information": "他回頭用同一套說法解釋一千年前巴黎的血雨；可是那份紀錄寫的是血落在衣服上、屋子裡，跟『只在石頭凹處』對不上。",
+          "new_information": "他回頭拿同一套說法，去解釋一千年前巴黎的血雨；可是那份紀錄寫的是血落在衣服上、屋子裡，跟『只在石頭凹處』對不起來。",
           "candidate_ids": [
             "N2685"
           ]
         },
         {
-          "title": "1861：窗下撿魚的人",
+          "title": "1861：窗下有人在撿魚",
           "seconds": 95,
-          "new_information": "Castelnau 從窗口看見有人在水窪撿鯰魚，問從哪來，答『從天上掉下來的』；他自己沒看到魚落下。",
+          "new_information": "Castelnau 從窗口看見有人在水窪裡撿鯰魚，問魚從哪來，對方答『從天上掉下來的』；他自己沒看到魚落下。",
           "candidate_ids": [
             "N2686"
           ]
         },
         {
-          "title": "先排除自己的解釋",
+          "title": "他先把自己的解釋排除掉",
           "seconds": 90,
-          "new_information": "這種鯰魚會在地上爬，可是他的院子四面有牆、附近沒有河；信的最後，他才『戰戰兢兢』問：會不會是龍捲水柱從遠處大河吸上來的？",
+          "new_information": "這種鯰魚會在地上爬，可是他的院子四面有牆、附近沒有河；到信的最後，他才『戰戰兢兢』地問：會不會是龍捲水柱，從遠處的大河吸上來的？",
           "candidate_ids": [
             "N2686"
           ]
         },
         {
-          "title": "收尾：驗得出來與驗不出來",
+          "title": "一個有答案，一個老實說不知道",
           "seconds": 45,
-          "new_information": "一個驗出了答案卻推過頭，一個驗不出來就老實說不確定；留言問題：你聽過哪一種『天上掉下來』的東西？",
+          "new_information": "血雨驗出了答案，是羽化留下的紅滴，查的人卻推過頭；掉魚驗不出來，就老實說不確定。留言問題：你聽過哪一種『天上掉下來』的東西？",
           "candidate_ids": [
             "N2685",
             "N2686"
@@ -10717,17 +10818,17 @@
         }
       ],
       "audience": {
-        "score": 6.09,
-        "rank": 80,
+        "score": 6.83,
+        "rank": 34,
         "of": 155,
         "click": 7.0,
         "hook": 7.0,
-        "surprise": 6.5,
-        "payoff": 7.0,
-        "share": 6.0,
-        "comment": "毛蟲羽化留下紅滴解開血雨，有偵探感，天上掉魚也接得順。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114-r2.json",
+        "surprise": 7.5,
+        "payoff": 7.25,
+        "share": 6.5,
+        "comment": "忘在盒子的毛蟲破解血雨，小故事有推理感，看得舒服",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
         "rounds": [
           {
             "score": 6.46,
@@ -10735,9 +10836,16 @@
             "changes": "依評審喜歡的『自然奇觀加偵探查證』讓片名同時點出血雨與天降魚，並刪掉部分人名與地名讓故事更好跟。",
             "reviewed_on": "2026-11-14",
             "review": "reviews/audience-20261114.json"
+          },
+          {
+            "score": 7.11,
+            "comment": "毛蟲羽化留下紅滴解開血雨，有偵探感，天上掉魚也接得順。",
+            "changes": "片名從『兩位學者親自去查』換成破案的關鍵畫面：一條忘在盒子裡的毛蟲；結尾把血雨的答案直接講出來。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114-r2.json"
           }
         ],
-        "base": 7.11,
+        "base": 8.0,
         "demand": 1.0,
         "demand_answers": {
           "east_asia": false,
@@ -10751,9 +10859,7 @@
       "material": {
         "reviewed_on": "2026-11-17",
         "review": "reviews/demand-20261117.json",
-        "verdict": "reserve",
-        "was": "ready",
-        "missing": "併入需求後總分 6.09 低於 6.5（五項平均 7.11、需求 1.0）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "verdict": "ready"
       }
     },
     {
@@ -10838,7 +10944,7 @@
       ],
       "audience": {
         "score": 7.02,
-        "rank": 11,
+        "rank": 24,
         "of": 155,
         "click": 7.5,
         "hook": 7.0,
@@ -11076,7 +11182,7 @@
       ],
       "audience": {
         "score": 6.01,
-        "rank": 97,
+        "rank": 98,
         "of": 155,
         "click": 6.0,
         "hook": 6.5,
@@ -11108,8 +11214,8 @@
     {
       "id": "T122",
       "category": "U-外星太空與未知訊號",
-      "title": "「最古老的飛碟紀錄」有人見過原件嗎？法老的火圈與修道院的銀盤",
-      "core_question": "被 UFO 書當成古代目擊的「Tulli 紙草」與「Byland 修院抄本」，原件在哪裡、最早是誰印出來的？",
+      "title": "修道院上空的銀色飛碟，原來是兩個學生的玩笑？",
+      "core_question": "法老看見的火圈、修士晚餐時飛過的銀盤，被 UFO 書當成最古老的目擊；可是有人發電報去問原件在哪，得到的是什麼答案？",
       "connection": "N2961 與 N2962 回答同一個問題（覆核 R281 建議）：兩則都是 1953 年才第一次印出來的「古文獻」，也都被 1968 年 Condon 報告的同一章連著查過——一封電報問梵蒂岡，一封電報問學校。N2962 只有 3.5–5 分鐘，當第二章。",
       "boredom_risk": "兩段都是「古文獻→1953 年才出現→一封電報」，第二段要用假拉丁文、譯者註裡那句「有兩個人向我承認」與學校的回電推進，不重講查證方法。",
       "drop_if": "N2962 的《泰晤士報》原版面與當事人的說法在製作前仍讀不到時，只用 Condon 報告裡的四樣（假拉丁文、1965 年譯者註、電報、1967 年加料版）；撐不住就刪那章，N2961 自己當單集（8.5–10 分鐘），N2962 轉 Shorts。",
@@ -11127,18 +11233,18 @@
       ],
       "chapters": [
         {
-          "title": "開場：三千五百年前的飛碟？",
+          "title": "三千五百年前的飛碟？",
           "seconds": 55,
-          "new_information": "UFO 書裡最古老的兩筆「目擊」，一筆在法老的年鑑裡，一筆在修道院的抄本裡；先問原件現在在哪。",
+          "new_information": "UFO 書裡最古老的兩筆「目擊」，一筆說在法老的年鑑裡，一筆說在修道院的抄本裡；我們先問一件事：原件現在在哪？",
           "candidate_ids": [
             "N2961",
             "N2962"
           ]
         },
         {
-          "title": "法老與火圈：流傳的版本",
+          "title": "流傳的版本：法老與天上的火圈",
           "seconds": 90,
-          "new_information": "1966 年的書說梵蒂岡前館長的遺物裡有一張紙草，記著圖特摩斯三世與全軍看見天上的火圈。",
+          "new_information": "1966 年的一本書說，梵蒂岡前館長的遺物裡有一張 Tulli 紙草，記著圖特摩斯三世和全軍一起看見天上的火圈。",
           "candidate_ids": [
             "N2961"
           ]
@@ -11146,7 +11252,7 @@
         {
           "title": "1953：一封寄給奇聞會刊的信",
           "seconds": 125,
-          "new_information": "目前讀到最早的出處是一本美國會刊登的來信：寄信人寄去的是自己抄成象形文字的轉寫與英譯，沒有照片；把它叫做飛碟的是他自己的評註。",
+          "new_information": "目前讀到最早的出處，是美國一本會刊登的來信：寄信人寄去的，是他自己抄成象形文字的轉寫和英譯，沒有照片；把它叫做飛碟的，也是他自己的評註。",
           "candidate_ids": [
             "N2961"
           ]
@@ -11154,7 +11260,7 @@
         {
           "title": "1968：發電報去問梵蒂岡",
           "seconds": 100,
-          "new_information": "美國空軍委託的調查得到的回答是：不是本館的東西，已經散失，無從追查。",
+          "new_information": "美國空軍委託的調查發電報去問，得到的回答是：不是本館的東西，已經散失，無從追查。",
           "candidate_ids": [
             "N2961"
           ]
@@ -11162,7 +11268,7 @@
         {
           "title": "1970：館長只是看過，嫌貴沒買",
           "seconds": 110,
-          "new_information": "再有人去信，轉回來的說法是那位館長 1934 年在開羅古董商手上看過；轉寫是別人做的，那人認為寫的是隕石。真假到今天沒有定論。",
+          "new_information": "又有人去信，轉回來的說法是：那位館長 1934 年在開羅古董商手上看過；轉寫是別人做的，那個人認為寫的是隕石。真假到今天沒有定論。",
           "candidate_ids": [
             "N2961"
           ]
@@ -11170,23 +11276,23 @@
         {
           "title": "修道院的銀盤：1290 年的晚餐",
           "seconds": 90,
-          "new_information": "六本 UFO 書都收的「中世紀抄本」：修士正要開飯，一個銀色大圓盤飛過，院長趁機罵人。",
+          "new_information": "六本 UFO 書都收的 Byland 修院「中世紀抄本」：修士正要開飯，一個銀色大圓盤飛過，院長還趁機罵人。",
           "candidate_ids": [
             "N2962"
           ]
         },
         {
-          "title": "一封電報與一條譯者註",
+          "title": "回電說：是兩個學生的玩笑",
           "seconds": 125,
-          "new_information": "1968 年同一份調查託人去問學校，回電說那是兩個學生用假名投給報社的玩笑；而 1965 年一本書的英譯者早在註裡寫過有兩個人向他承認。",
+          "new_information": "1968 年同一份調查託人去問學校，回電說：那是兩個學生用假名投給報社的玩笑；而 1965 年一本書的英譯者，早就在註裡寫過，有兩個人向他承認。",
           "candidate_ids": [
             "N2962"
           ]
         },
         {
-          "title": "收尾：先問原件在哪",
+          "title": "下次看到古代飛碟，先問原件",
           "seconds": 55,
-          "new_information": "兩筆「古代紀錄」都是 1953 年才第一次印出來的，原件都沒有人拿得出來。留言問題：你看過哪一則「古文獻記載的飛碟」，它的出處查得到嗎？",
+          "new_information": "兩筆「古代紀錄」都是 1953 年才第一次印出來的，原件到今天沒有人拿得出來。留言問題：你看過哪一則「古文獻記載的飛碟」，它的出處查得到嗎？",
           "candidate_ids": [
             "N2961",
             "N2962"
@@ -11194,18 +11300,18 @@
         }
       ],
       "audience": {
-        "score": 6.34,
-        "rank": 57,
+        "score": 7.5,
+        "rank": 8,
         "of": 155,
-        "click": 7.0,
-        "hook": 7.0,
-        "surprise": 7.0,
-        "payoff": 6.5,
-        "share": 6.5,
-        "comment": "古埃及火圈紙草沒人見過原件、修道院飛碟是學生惡作劇，這種拆穿最爽。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114.json",
-        "base": 6.96,
+        "click": 7.5,
+        "hook": 7.25,
+        "surprise": 7.75,
+        "payoff": 7.25,
+        "share": 7.25,
+        "comment": "古代飛碟原來是學生惡作劇，打臉感十足會想轉給朋友",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
+        "base": 8.35,
         "demand": 3.25,
         "demand_answers": {
           "east_asia": false,
@@ -11214,21 +11320,28 @@
           "famous": false
         },
         "demand_reason": "主題是被當成古代飛碟目擊的紙草與抄本，屬 UFO；Tulli 紙草需要解釋",
-        "demand_review": "reviews/demand-20261117.json"
+        "demand_review": "reviews/demand-20261117.json",
+        "rounds": [
+          {
+            "score": 6.96,
+            "comment": "古埃及火圈紙草沒人見過原件、修道院飛碟是學生惡作劇，這種拆穿最爽。",
+            "changes": "原片名過長又是考據腔，改成評審覺得最爽的拆穿點：修道院飛碟是兩個學生的玩笑；追問改成『發電報去問原件』的動作。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114.json"
+          }
+        ]
       },
       "material": {
         "reviewed_on": "2026-11-17",
         "review": "reviews/demand-20261117.json",
-        "verdict": "reserve",
-        "was": "ready",
-        "missing": "併入需求後總分 6.34 低於 6.5（五項平均 6.96、需求 3.25）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "verdict": "ready"
       }
     },
     {
       "id": "T123",
       "category": "G-靈異與超自然公案",
-      "title": "火腿骨打中牧師的帽子，這樁鬧鬼案怎麼判？",
-      "core_question": "屋裡東西亂飛、牆角有敲擊聲，嫌疑都落在年輕長工身上：相隔一百二十年的兩個德國村子，官府怎麼處理？",
+      "title": "法院審鬧鬼案：被告是 15 歲長工，牧師卻改口信鬼",
+      "core_question": "屋裡東西亂飛、嫌疑都落在年輕長工身上：一個村子的官府關錯了人，另一個把長工送上法院定了罪；到底有沒有人查出東西是怎麼飛的？",
       "connection": "N2984 與 N2983 回答同一個問題（覆核 R282 建議）：1767–68 年 Dibbesdorf 的調查鑽到屋子淹水、逼出假證詞、把屋主夫婦關了近三個月，沒再查那名長工；1888–89 年 Resau 把 15 歲的長工兩審定罪，他始終不認。N2984 只有 6.5–8 分鐘，壓成前情一章。",
       "boredom_risk": "兩段都是「怪聲→官府介入→結局」，第二段要用法庭上的證詞（火腿骨、Helmholtz 的回信、牧師改口）推進，不重講調查方法。",
       "drop_if": "N2984 的來源都是 1811 年同一份摘錄的下游；製作前重開對不上就刪那章，N2983 自己當單集（9–11 分鐘），N2984 轉 Shorts。",
@@ -11246,9 +11359,9 @@
       ],
       "chapters": [
         {
-          "title": "開場：鬧鬼的屋子裡都有一個長工",
+          "title": "鬧鬼的屋子，都有一個長工",
           "seconds": 55,
-          "new_information": "一根火腿骨在屋裡飛過，打中來查看的牧師的帽子；兩個德國村子、相隔一百二十年，同樣的怪事、同樣的嫌疑人，官府卻做了相反的事。",
+          "new_information": "兩個德國村子、相隔一百二十年，屋裡同樣東西亂飛、牆角有聲音，嫌疑同樣落在年輕長工身上；官府卻一次關錯了人，一次把人送上法院。",
           "candidate_ids": [
             "N2984",
             "N2983"
@@ -11257,13 +11370,13 @@
         {
           "title": "1767：會答題的敲牆鬼",
           "seconds": 120,
-          "new_information": "Dibbesdorf 一戶農家的牆角，答得出客人衣服上有幾顆鈕扣，連在位的公爵都來問過；後來的招魂刊物說，最嚴密的調查也沒查出騙局。",
+          "new_information": "Dibbesdorf 一戶農家的牆角會敲擊答題，連客人衣服上有幾顆鈕扣都答得出來，在位的公爵也來問過；後來的招魂刊物說，最嚴密的調查也沒查出騙局。",
           "candidate_ids": [
             "N2984"
           ]
         },
         {
-          "title": "調查怎麼收場：關錯了人",
+          "title": "查到最後，關錯了人",
           "seconds": 120,
           "new_information": "委員先說是地下泉水，把屋子鑽到淹水；再讓一個女僕指認屋主夫婦，把兩人關了將近三個月。而先前被懷疑的長工，和敲擊聲同時離開了村子。",
           "candidate_ids": [
@@ -11271,9 +11384,9 @@
           ]
         },
         {
-          "title": "1888：只有六戶人家的 Resau",
+          "title": "1888：火腿骨打中牧師的帽子",
           "seconds": 105,
-          "new_information": "馬鈴薯、木鞋和一根火腿骨在屋裡亂飛，火腿骨還打中來查看的牧師擋在臉前的禮帽；每次鬧的時候，15 歲的長工都在附近。",
+          "new_information": "只有六戶人家的 Resau，馬鈴薯、木鞋和一根火腿骨在屋裡亂飛，火腿骨還打中來查看的牧師擋在臉前的禮帽；每次鬧起來，15 歲的長工都在附近。",
           "candidate_ids": [
             "N2983"
           ]
@@ -11281,31 +11394,31 @@
         {
           "title": "上法院：磁流搬不動馬鈴薯",
           "seconds": 135,
-          "new_information": "法院把它當成毀損和滋擾案來審，傳了十四名證人；牧師寫信問過的物理學家回答，磁流不可能搬動馬鈴薯；被告從頭到尾不認。",
+          "new_information": "法院把它當成毀損和滋擾案來審，傳了十四名證人；牧師寫信問過的物理學家回答：磁流不可能搬動馬鈴薯。被告從頭到尾不認。",
           "candidate_ids": [
             "N2983"
           ]
         },
         {
-          "title": "判決、上訴，和改口的牧師",
+          "title": "判了有罪，牧師卻改口信鬼",
           "seconds": 110,
-          "new_information": "一審照求刑判了監禁與拘役，上訴被駁回；牧師卻在上訴審說，他現在相信那真的是鬧鬼。",
+          "new_information": "一審照求刑判了監禁與拘役，上訴也被駁回；牧師卻在上訴審上說，他現在相信，那真的是鬧鬼。",
           "candidate_ids": [
             "N2983"
           ]
         },
         {
-          "title": "之後：招魂界與魔術師",
+          "title": "招魂界的說法，和魔術師的舞台",
           "seconds": 80,
-          "new_information": "招魂界到二十世紀初，仍把它當成最可信的案例；據 1906 年一位批評者的說法，被告那年站上了一位魔術師『反招魂』晚會的舞台。",
+          "new_information": "招魂界一直到二十世紀初，還把它當成最可信的案例；而據 1906 年一位批評者的說法，被告那一年站上了一位魔術師『反招魂』晚會的舞台。",
           "candidate_ids": [
             "N2983"
           ]
         },
         {
-          "title": "收尾：查了誰，沒查誰",
+          "title": "一次關錯人，一次沒人認",
           "seconds": 55,
-          "new_information": "一次關錯了人、沒再查嫌疑人，一次定了罪卻沒有自白；兩次都沒有人說清楚東西是怎麼飛的。留言問題：你覺得哪一次的官府做得比較對？",
+          "new_information": "一次關錯了人、沒再查嫌疑人，一次定了罪卻沒有自白；兩次都沒有人說清楚，東西到底是怎麼飛的。留言問題：你覺得哪一次的官府做得比較對？",
           "candidate_ids": [
             "N2984",
             "N2983"
@@ -11313,17 +11426,17 @@
         }
       ],
       "audience": {
-        "score": 6.44,
-        "rank": 37,
+        "score": 7.38,
+        "rank": 11,
         "of": 155,
-        "click": 6.5,
-        "hook": 6.5,
-        "surprise": 7.0,
-        "payoff": 6.5,
-        "share": 6.0,
-        "comment": "鬧鬼案上法院、火腿骨打中牧師帽子很有畫面，關錯人的轉折也不錯。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114-r2.json",
+        "click": 7.75,
+        "hook": 7.75,
+        "surprise": 7.25,
+        "payoff": 7.0,
+        "share": 6.5,
+        "comment": "鬧鬼上法院、牧師改口很戲劇，但到底怎麼飛的沒講清",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
         "rounds": [
           {
             "score": 6.63,
@@ -11331,9 +11444,16 @@
             "changes": "片名換成評審最喜歡的火腿骨畫面加懸念問句，並把這個畫面提到開場講法裡先抓人。",
             "reviewed_on": "2026-11-14",
             "review": "reviews/audience-20261114.json"
+          },
+          {
+            "score": 7.08,
+            "comment": "鬧鬼案上法院、火腿骨打中牧師帽子很有畫面，關錯人的轉折也不錯。",
+            "changes": "火腿骨片名已用過，這次改打『鬧鬼案真的上法院、15 歲被告、牧師改口』的反差，追問直接問有沒有人查出東西怎麼飛。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114-r2.json"
           }
         ],
-        "base": 7.08,
+        "base": 8.2,
         "demand": 3.25,
         "demand_answers": {
           "east_asia": false,
@@ -11347,9 +11467,7 @@
       "material": {
         "reviewed_on": "2026-11-17",
         "review": "reviews/demand-20261117.json",
-        "verdict": "reserve",
-        "was": "ready",
-        "missing": "併入需求後總分 6.44 低於 6.5（五項平均 7.08、需求 3.25）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "verdict": "ready"
       }
     },
     {
@@ -11442,7 +11560,7 @@
       ],
       "audience": {
         "score": 6.23,
-        "rank": 67,
+        "rank": 77,
         "of": 155,
         "click": 6.5,
         "hook": 6.5,
@@ -11472,8 +11590,8 @@
     {
       "id": "T125",
       "category": "S-歷史人物與名場面",
-      "title": "亞歷山大的兩個名場面，古書上到底怎麼寫？",
-      "core_question": "「一劍砍斷 Gordium 繩結」與「飛盾轟垮泰爾城牆」：翻開現存的古代作者，是寫了兩個版本而且作者自己說不確定，還是根本沒有人寫過？",
+      "title": "亞歷山大一劍砍斷繩結？隨軍的人說他只拔了木栓",
+      "core_question": "一劍砍斷繩結、飛盾轟垮泰爾城牆，亞歷山大這兩個名場面，為什麼翻開古書，一個變成拔木栓，另一個只找到從城牆倒下的熱沙？",
       "connection": "N3046 與 N2964 回答同一個問題（覆核 R291 建議）：同一位主角的兩個名場面，一個古書裡有兩個版本、作者自己說不敢斷言，一個古書裡根本沒有、是二十世紀中葉才寫出來的。兩章共用同一位古代作者 Curtius（卷三的繩結、卷四的泰爾圍城），不靠補料。N2964 原本因為要接既有單集 N2682 而暫緩，這個組合不動任何既有單集，所以移出暫緩。",
       "boredom_risk": "兩段都是「名場面→古書原文」，第二段要用 1959 年奇聞書、1966 年飛碟刊物與英譯者多加的一層錯推進，再回到守軍從城牆上倒下燒紅的盾。",
       "drop_if": "合計 11.5–13 分鐘、沒有餘裕，兩章都不能再加料；任一章的關鍵原文在製作前重開對不上就刪那章，剩下的一章留池等兄弟題，不單獨成集。",
@@ -11491,26 +11609,26 @@
       ],
       "chapters": [
         {
-          "title": "開場：兩個名場面",
+          "title": "兩個名場面，古書找得到嗎",
           "seconds": 50,
-          "new_information": "一個是課本裡的一劍兩斷，一個是 UFO 書裡的飛盾；先問古書上找得到嗎。",
+          "new_information": "一個是課本裡的一劍兩斷，一個是 UFO 書裡的飛盾；先問：古書上找得到嗎？",
           "candidate_ids": [
             "N3046",
             "N2964"
           ]
         },
         {
-          "title": "Gordium：只有一把劍嗎",
+          "title": "Gordium 繩結：只有一劍嗎",
           "seconds": 110,
-          "new_information": "流傳的版本是拔劍一揮；寫得最細的 Arrian 與 Plutarch 都並排寫了兩個版本：多數作者說他用劍砍。",
+          "new_information": "大家聽到的版本是拔劍一揮；可是寫得最細的 Arrian 與 Plutarch，都把兩個版本並排寫下來：多數作者說他用劍砍。",
           "candidate_ids": [
             "N3046"
           ]
         },
         {
-          "title": "隨軍的人說：拔了一根木栓",
+          "title": "隨軍的人說：他拔了一根木栓",
           "seconds": 110,
-          "new_information": "跟著出征的 Aristobulus 說他只是拔出車轅上的木栓、把軛抽下來；Arrian 寫到這裡說，他到底怎麼做的，我不敢斷言。",
+          "new_information": "跟著出征的 Aristobulus 說，他只是拔出車轅上的木栓，把軛抽了下來；Arrian 寫到這裡還補一句：他到底怎麼做的，我不敢斷言。",
           "candidate_ids": [
             "N3046"
           ]
@@ -11518,39 +11636,39 @@
         {
           "title": "只寫「砍」的兩位羅馬作者",
           "seconds": 100,
-          "new_information": "Curtius 說他不是躲過了神諭就是應驗了它，Justin 說他對神諭用得太硬；替大家定案的是當晚的雷。",
+          "new_information": "Curtius 說他不是躲過了神諭，就是應驗了它；Justin 說他對神諭用得太硬。替大家定案的，是當晚的雷。",
           "candidate_ids": [
             "N3046"
           ]
         },
         {
-          "title": "飛盾：流傳的版本",
+          "title": "飛盾轟垮城牆：流傳的版本",
           "seconds": 85,
-          "new_information": "渡河時被兩面噴火的銀色飛盾攔下，圍攻泰爾時五面飛盾轟垮城牆——常被當成古代史料。",
+          "new_information": "渡河時被兩面噴火的銀色飛盾攔下，圍攻泰爾時又有五面飛盾轟垮城牆——這段常被當成古代史料。",
           "candidate_ids": [
             "N2964"
           ]
         },
         {
-          "title": "往回找：1959 與 1966",
+          "title": "往回找，只追到 1959 與 1966",
           "seconds": 130,
-          "new_information": "目前追到最早的文字是 1959 年一本美國奇聞書與 1966 年一份義大利飛碟刊物，都沒有交代出處；英譯者還把它寫成引自十九世紀德國史家。",
+          "new_information": "目前追到最早的文字，是 1959 年一本美國奇聞書和 1966 年一份義大利飛碟刊物，都沒交代出處；英譯者還把它寫成引自十九世紀的德國史家。",
           "candidate_ids": [
             "N2964"
           ]
         },
         {
-          "title": "Curtius 卷四：盾是從城牆上倒下來的",
+          "title": "古書裡的盾，是從城牆倒下來的",
           "seconds": 115,
-          "new_information": "古書裡最接近的一句，寫的是泰爾守軍把燒紅的青銅盾裝滿熱沙從城牆上倒下去。",
+          "new_information": "Curtius 卷四裡最接近的一句是：泰爾守軍把燒紅的青銅盾裝滿熱沙，從城牆上往下倒。",
           "candidate_ids": [
             "N2964"
           ]
         },
         {
-          "title": "收尾：有兩個版本，和一個都沒有",
+          "title": "一個有兩版，一個一版都沒有",
           "seconds": 50,
-          "new_information": "繩結在古書裡有兩個版本、作者自己說不確定；飛盾在古書裡一個也沒有。留言問題：你還聽過哪個亞歷山大的故事，想知道古書上怎麼寫？",
+          "new_information": "繩結在古書裡有兩個版本，作者自己說不確定；飛盾在古書裡一個也沒有，有的只是倒熱沙的盾。留言問題：你還聽過哪個亞歷山大的故事，想知道古書上怎麼寫？",
           "candidate_ids": [
             "N3046",
             "N2964"
@@ -11558,18 +11676,18 @@
         }
       ],
       "audience": {
-        "score": 6.42,
-        "rank": 44,
+        "score": 6.92,
+        "rank": 29,
         "of": 155,
         "click": 7.0,
-        "hook": 7.0,
+        "hook": 6.5,
         "surprise": 7.0,
-        "payoff": 7.0,
+        "payoff": 6.5,
         "share": 6.5,
-        "comment": "亞歷山大飛盾是 UFO 書亂編、古書寫的是倒熱沙，這反轉很爽；繩結其實可能是拔木栓也很有梗。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114.json",
-        "base": 7.06,
+        "comment": "名場面被打臉有趣，飛盾其實是倒熱沙那段最好笑",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
+        "base": 7.65,
         "demand": 3.25,
         "demand_answers": {
           "east_asia": false,
@@ -11578,14 +11696,21 @@
           "famous": true
         },
         "demand_reason": "亞歷山大大帝是一聽就認得的名字；主題是古書文獻比對而非古文明遺跡之謎",
-        "demand_review": "reviews/demand-20261117.json"
+        "demand_review": "reviews/demand-20261117.json",
+        "rounds": [
+          {
+            "score": 7.06,
+            "comment": "亞歷山大飛盾是 UFO 書亂編、古書寫的是倒熱沙，這反轉很爽；繩結其實可能是拔木栓也很有梗。",
+            "changes": "片名從『古書到底怎麼寫』換成具體的反轉：砍繩結其實可能只是拔木栓；追問把飛盾變熱沙的反轉也點出來。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114.json"
+          }
+        ]
       },
       "material": {
         "reviewed_on": "2026-11-17",
         "review": "reviews/demand-20261117.json",
-        "verdict": "reserve",
-        "was": "ready",
-        "missing": "併入需求後總分 6.42 低於 6.5（五項平均 7.06、需求 3.25）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "verdict": "ready"
       }
     },
     {
@@ -11678,7 +11803,7 @@
       ],
       "audience": {
         "score": 6.67,
-        "rank": 22,
+        "rank": 44,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -11799,7 +11924,7 @@
       ],
       "audience": {
         "score": 5.98,
-        "rank": 100,
+        "rank": 101,
         "of": 155,
         "click": 6.5,
         "hook": 6.5,
@@ -11919,7 +12044,7 @@
       ],
       "audience": {
         "score": 6.11,
-        "rank": 78,
+        "rank": 87,
         "of": 155,
         "click": 7.0,
         "hook": 7.0,
@@ -12054,7 +12179,7 @@
       ],
       "audience": {
         "score": 6.38,
-        "rank": 54,
+        "rank": 70,
         "of": 155,
         "click": 6.5,
         "hook": 6.0,
@@ -12201,7 +12326,7 @@
       ],
       "audience": {
         "score": 7.77,
-        "rank": 2,
+        "rank": 5,
         "of": 155,
         "click": 7.0,
         "hook": 7.5,
@@ -12337,7 +12462,7 @@
       ],
       "audience": {
         "score": 6.22,
-        "rank": 69,
+        "rank": 78,
         "of": 155,
         "click": 7.0,
         "hook": 7.0,
@@ -12604,7 +12729,7 @@
       ],
       "audience": {
         "score": 6.42,
-        "rank": 45,
+        "rank": 61,
         "of": 155,
         "click": 7.5,
         "hook": 7.0,
@@ -12715,7 +12840,7 @@
       ],
       "audience": {
         "score": 5.73,
-        "rank": 126,
+        "rank": 125,
         "of": 155,
         "click": 6.5,
         "hook": 6.0,
@@ -12831,7 +12956,7 @@
       ],
       "audience": {
         "score": 6.32,
-        "rank": 58,
+        "rank": 72,
         "of": 155,
         "click": 7.5,
         "hook": 7.0,
@@ -13071,7 +13196,7 @@
       ],
       "audience": {
         "score": 6.46,
-        "rank": 35,
+        "rank": 57,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -13599,7 +13724,7 @@
       ],
       "audience": {
         "score": 5.68,
-        "rank": 127,
+        "rank": 131,
         "of": 155,
         "click": 6.5,
         "hook": 6.0,
@@ -13711,7 +13836,7 @@
       ],
       "audience": {
         "score": 6.41,
-        "rank": 47,
+        "rank": 64,
         "of": 155,
         "click": 6.5,
         "hook": 6.5,
@@ -14024,7 +14149,7 @@
       ],
       "audience": {
         "score": 6.03,
-        "rank": 90,
+        "rank": 93,
         "of": 155,
         "click": 7.0,
         "hook": 6.5,
@@ -14133,7 +14258,7 @@
       ],
       "audience": {
         "score": 6.43,
-        "rank": 41,
+        "rank": 60,
         "of": 155,
         "click": 7.0,
         "hook": 7.0,
@@ -14239,7 +14364,7 @@
       ],
       "audience": {
         "score": 6.38,
-        "rank": 55,
+        "rank": 71,
         "of": 155,
         "click": 6.0,
         "hook": 5.5,
@@ -14369,8 +14494,8 @@
     {
       "id": "T150",
       "category": "M-奇異現象與自然",
-      "title": "替老鼠辯護、判決書被蟲吃掉，是誰編的？",
-      "core_question": "動物官司最常被講的兩個細節——律師說路上有貓埋伏、判決書被蟲吃掉——最早的文字到底寫了什麼？",
+      "title": "村民劃一塊地給象鼻蟲，蟲的代理人卻嫌太貧瘠？",
+      "core_question": "法庭上真的有人替蟲嫌地太貧瘠，那『老鼠怕貓不能出庭』和『判決書被蟲吃掉』這兩個最有名的細節，又是從哪裡來的？",
       "connection": "N4941 與 N4942 回答同一個問題（覆核 R448 建議）：同一批來源、Evans 1906 是兩題共同的節點；一題往回追到一段私下談話，一題拆 Evans 自己的玩笑怎麼變成直述。兩題都只撐 4.5–8 分鐘，不單獨成集。",
       "boredom_risk": "前段追 Chassenée 的老鼠辯詞從 De Thou 到 Evans 的年份怎麼長出來，後段讀 Evans 照印的最後一頁拉丁文殘文。",
       "drop_if": "N4941 取 7.5 分鐘、N4942 取 5 分鐘；照覆核 R448 的界線：不評價逐出教會、詛咒、彌撒、遊行或教會法，不講儀式怎麼做、不引咒文、不畫聖體聖水，祈禱與遊行只用一句「法庭下令公開祈禱」帶過，笑點只放在文書與後來的作者身上。",
@@ -14388,50 +14513,50 @@
       ],
       "chapters": [
         {
-          "title": "開場：替老鼠辯護的律師",
+          "title": "路上有貓埋伏，老鼠沒辦法出庭",
           "seconds": 45,
-          "new_information": "流傳的說法：律師 Chassenée 說路上到處有貓埋伏，所以老鼠沒辦法出庭；Saint-Julien 的象鼻蟲官司，判決書被蟲吃掉了。",
+          "new_information": "流傳的說法有兩個：律師 Chassenée 說路上到處有貓埋伏，所以老鼠沒辦法出庭；Saint-Julien 的象鼻蟲官司，判決書最後被蟲吃掉了。",
           "candidate_ids": [
             "N4941",
             "N4942"
           ]
         },
         {
-          "title": "最早的出處：一段私下談話",
+          "title": "最早的出處，是朋友的一句提醒",
           "seconds": 150,
-          "new_information": "目前讀到最早的文字不是開庭紀錄，而是一位朋友私下提醒已經當上院長的他：『你當律師時替老鼠辯護過』——沒有年份，也沒有判決。",
+          "new_information": "目前讀到最早的文字不是開庭紀錄，而是他當上院長以後，一位朋友私下提醒他：『你當律師時替老鼠辯護過』。沒有年份，也沒有判決。",
           "candidate_ids": [
             "N4941"
           ]
         },
         {
-          "title": "年份和辯詞，是一步步加上去的",
+          "title": "年份和辯詞，是後人一步步補上的",
           "seconds": 165,
-          "new_information": "他自己 1531 年的書，只提到 Autun 一帶審過老鼠；1734 年的譯註說辯詞印在另一本書裡，這早就被指出是錯的；『1522 年』是 1828 年的辭典和 1906 年的附表加上去的。",
+          "new_information": "他自己 1531 年的書，只提到 Autun 一帶審過老鼠；1734 年的譯註說辯詞印在另一本書裡，這早就被指出是錯的；『1522 年』則是 1828 年的辭典和 1906 年的附表加上去的。",
           "candidate_ids": [
             "N4941"
           ]
         },
         {
-          "title": "Saint-Julien：一場八個多月的官司",
+          "title": "蟲的代理人：這塊地太貧瘠，不收",
           "seconds": 90,
-          "new_information": "1587 年葡萄農重新提告，村民開會劃出一塊地給蟲，蟲的代理人卻說那塊地太貧瘠、不收；官員只好指派專家去勘查。",
+          "new_information": "這場官司打了八個多月。1587 年葡萄農重新提告，村民開會劃出一塊地給蟲，蟲的代理人卻說那塊地太貧瘠、不收；官員只好指派專家去勘查。",
           "candidate_ids": [
             "N4942"
           ]
         },
         {
-          "title": "被蟲吃掉的，其實是一句玩笑",
+          "title": "『被蟲吃掉』其實是一句玩笑",
           "seconds": 135,
-          "new_information": "目前讀到最早說紙被毀的是 1906 年的 Evans，原話是『被老鼠或某種蟲毀了』，後面再接上他自己的玩笑；而他書末照印的最後一頁其實還在，寫的是判決前先勘查那塊地，還記著日期。",
+          "new_information": "目前讀到最早說紙被毀的是 1906 年的 Evans，原話是『被老鼠或某種蟲毀了』，後面接的是他自己的玩笑；而他書末照印的最後一頁其實還在，寫的是判決前先勘查那塊地，還記著日期。",
           "candidate_ids": [
             "N4942"
           ]
         },
         {
-          "title": "收尾：最有名的細節出自誰",
+          "title": "最好笑的是後加的，最離奇的是真的",
           "seconds": 165,
-          "new_information": "貓的埋伏出自一段私下談話，被蟲吃掉的判決出自一句玩笑。留言問題：你聽過哪個『真實的荒謬官司』？",
+          "new_information": "貓的埋伏出自私下談話，被蟲吃掉出自一句玩笑；真有紙可看的，反而是勘查那塊地。留言問題：你聽過哪個『真實的荒謬官司』？",
           "candidate_ids": [
             "N4941",
             "N4942"
@@ -14439,17 +14564,17 @@
         }
       ],
       "audience": {
-        "score": 6.34,
-        "rank": 56,
+        "score": 6.83,
+        "rank": 35,
         "of": 155,
-        "click": 7.5,
-        "hook": 7.0,
-        "surprise": 7.0,
-        "payoff": 6.5,
-        "share": 7.0,
-        "comment": "律師說路上有貓所以老鼠不能出庭，這個太荒謬一定會轉。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114-r2.json",
+        "click": 6.5,
+        "hook": 7.5,
+        "surprise": 7.25,
+        "payoff": 6.25,
+        "share": 6.75,
+        "comment": "替蟲嫌地貧瘠的官司超荒謬，可惜中段在追出處年份",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
         "rounds": [
           {
             "score": 6.81,
@@ -14457,9 +14582,16 @@
             "changes": "片名去掉冗長地名改成兩個好笑細節加『是誰編的』，把『本輪讀到』改成白話，並拿掉『轉折』編號。",
             "reviewed_on": "2026-11-14",
             "review": "reviews/audience-20261114.json"
+          },
+          {
+            "score": 7.41,
+            "comment": "律師說路上有貓所以老鼠不能出庭，這個太荒謬一定會轉。",
+            "changes": "片名從『兩個細節是誰編的』換成有文字可查、也更反常的『劃地給蟲、代理人嫌貧瘠』，收尾補上『後加的與真的』對照。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114-r2.json"
           }
         ],
-        "base": 7.41,
+        "base": 8.0,
         "demand": 1.0,
         "demand_answers": {
           "east_asia": false,
@@ -14473,9 +14605,7 @@
       "material": {
         "reviewed_on": "2026-11-17",
         "review": "reviews/demand-20261117.json",
-        "verdict": "reserve",
-        "was": "ready",
-        "missing": "併入需求後總分 6.34 低於 6.5（五項平均 7.41、需求 1.0）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "verdict": "ready"
       }
     },
     {
@@ -14552,7 +14682,7 @@
       ],
       "audience": {
         "score": 5.76,
-        "rank": 121,
+        "rank": 122,
         "of": 155,
         "click": 6.5,
         "hook": 6.5,
@@ -14655,7 +14785,7 @@
       ],
       "audience": {
         "score": 6.88,
-        "rank": 14,
+        "rank": 31,
         "of": 155,
         "click": 8.0,
         "hook": 7.5,
@@ -14689,8 +14819,8 @@
     {
       "id": "T153",
       "category": "L-都市傳說與消失地名",
-      "title": "海盜真的會埋寶嗎？黑鬍子船上翻出來的是糖",
-      "core_question": "Kidd 船長和黑鬍子的埋寶傳說，當年的官方文件到底怎麼寫？",
+      "title": "黑鬍子的埋寶傳說，最早只是他被殺前一晚的醉話",
+      "core_question": "Kidd 船長的金銀被總督一樣樣記下重量，黑鬍子船上只找到糖和可可；那『海盜埋寶』這件事，到底是誰、在什麼時候說出來的？",
       "connection": "N5041 與 N5045 回答同一個問題（覆核 R455 建議）：Kidd 有一批被追回、過秤的收據，Blackbeard 只有一句酒後轉述的回答；1911 年 Paine 的尋寶書同時寫了兩人，正好收尾。N5045 只有 4–5.5 分鐘，不單獨成集。",
       "boredom_risk": "前段用 1699 年 Bellomont 的信與委員會清單，後段用 1724 年《海盜通史》與 1718 年 Spotswood 的信。",
       "drop_if": "N5041 取 8 分鐘、N5045 取 4.5 分鐘；不講處決與戰鬥細節。",
@@ -14708,7 +14838,7 @@
       ],
       "chapters": [
         {
-          "title": "開場：挖遍東岸的海灘",
+          "title": "只有他和魔鬼知道的藏寶處",
           "seconds": 45,
           "new_information": "傳說 Kidd 船長把寶藏埋在東岸，黑鬍子把錢埋在只有他和魔鬼知道的地方。",
           "candidate_ids": [
@@ -14717,31 +14847,31 @@
           ]
         },
         {
-          "title": "1699 年：總督搶先一步",
+          "title": "有人要租船上島，總督搶先一步",
           "seconds": 150,
-          "new_information": "總督 Bellomont 一聽說有人要租船去 Gardiner 島，馬上派人命令島主交出寄放的東西；委員會簽名的清單，把金銀一樣樣記下重量。",
+          "new_information": "1699 年，總督 Bellomont 一聽說有人要租船去 Gardiner 島，馬上派人命令島主把寄放的東西交出來；委員會簽了名的清單上，金銀一樣樣記下重量。",
           "candidate_ids": [
             "N5041"
           ]
         },
         {
-          "title": "反轉一：不只一批，也沒埋在沙裡",
+          "title": "Kidd 的金銀有帳可查，不在沙裡",
           "seconds": 150,
-          "new_information": "那張清單是 Kidd 全部金銀的總帳，Gardiner 島那批只是其中一部分；同一封信裡，總督還在追三艘單桅船載走的東西。",
+          "new_information": "那張清單是 Kidd 全部金銀的總帳，Gardiner 島那批只是其中一部分，也沒埋在沙裡；同一封信裡，總督還在追三艘單桅船載走的東西。",
           "candidate_ids": [
             "N5041"
           ]
         },
         {
-          "title": "黑鬍子被殺前一晚的醉話",
+          "title": "喝到天亮時，隨口回的一句話",
           "seconds": 90,
-          "new_information": "「埋錢」那句話，目前讀到最早出自 1724 年《海盜通史》第二版：他被殺前一夜喝酒喝到天亮，隨口回答手下的問題。",
+          "new_information": "黑鬍子「埋錢」那句話，目前讀到最早出自 1724 年《海盜通史》第二版：他被殺前一夜喝酒喝到天亮，手下問起，他隨口回了一句。",
           "candidate_ids": [
             "N5045"
           ]
         },
         {
-          "title": "反轉二：船上找到的是糖和可可",
+          "title": "船上找到的，是糖和可可",
           "seconds": 135,
           "new_information": "同一本書和 1718 年 Spotswood 總督的信都記下：船上找到的是糖、可可、靛藍和棉花。埋寶傳說要到 1875 年的遊記才出現，1911 年的尋寶書還說「可以放心，他至少埋過一箱」。",
           "candidate_ids": [
@@ -14749,9 +14879,9 @@
           ]
         },
         {
-          "title": "收尾：收據與醉話",
+          "title": "一張過秤的收據，一句醉話",
           "seconds": 180,
-          "new_information": "一個留下過秤的收據，一個只有一句轉述的醉話，後來都變成了埋寶傳說。留言問題：你聽過哪個藏寶傳說？",
+          "new_information": "Kidd 留下的是過秤的收據，黑鬍子留下的只是一句被轉述的醉話，後來卻都變成了埋寶傳說。留言問題：你聽過哪個藏寶傳說？",
           "candidate_ids": [
             "N5041",
             "N5045"
@@ -14759,17 +14889,17 @@
         }
       ],
       "audience": {
-        "score": 6.44,
-        "rank": 38,
+        "score": 6.96,
+        "rank": 26,
         "of": 155,
-        "click": 7.0,
-        "hook": 6.5,
-        "surprise": 6.5,
-        "payoff": 6.5,
-        "share": 6.0,
-        "comment": "海盜寶藏大家都愛，黑鬍子船上只有糖和可可的反差有趣，但官方清單段偏乾。",
-        "reviewed_on": "2026-11-14",
-        "review": "reviews/audience-20261114-r2.json",
+        "click": 7.25,
+        "hook": 6.75,
+        "surprise": 6.75,
+        "payoff": 6.25,
+        "share": 5.75,
+        "comment": "海盜埋寶是醉話有趣，但清單過秤那兩章偏悶",
+        "reviewed_on": "2026-11-17",
+        "review": "reviews/audience-20261117-repack-themes.json",
         "rounds": [
           {
             "score": 6.46,
@@ -14777,9 +14907,16 @@
             "changes": "片名把評審覺得好笑的「船上只有糖」反差拉到前面，用問句開頭；章節用語改口語。",
             "reviewed_on": "2026-11-14",
             "review": "reviews/audience-20261114.json"
+          },
+          {
+            "score": 7.08,
+            "comment": "海盜寶藏大家都愛，黑鬍子船上只有糖和可可的反差有趣，但官方清單段偏乾。",
+            "changes": "片名改打『埋寶最早只是一句醉話』，Kidd 清單那兩章從文件口吻改成『總督搶先一步、有帳可查』的情節講法。",
+            "reviewed_on": "2026-11-14",
+            "review": "reviews/audience-20261114-r2.json"
           }
         ],
-        "base": 7.08,
+        "base": 7.7,
         "demand": 3.25,
         "demand_answers": {
           "east_asia": false,
@@ -14793,9 +14930,7 @@
       "material": {
         "reviewed_on": "2026-11-17",
         "review": "reviews/demand-20261117.json",
-        "verdict": "reserve",
-        "was": "ready",
-        "missing": "併入需求後總分 6.44 低於 6.5（五項平均 7.08、需求 3.25）；站主 2026-11-17 定門檻維持 6.5 看總分。改寫題案讓四問多中一題或提高五項平均，複評達標再改回可成題。"
+        "verdict": "ready"
       }
     },
     {
@@ -14872,7 +15007,7 @@
       ],
       "audience": {
         "score": 5.73,
-        "rank": 123,
+        "rank": 126,
         "of": 155,
         "click": 6.0,
         "hook": 6.0,
@@ -14984,7 +15119,7 @@
       ],
       "audience": {
         "score": 6.31,
-        "rank": 59,
+        "rank": 73,
         "of": 155,
         "click": 6.5,
         "hook": 6.0,
@@ -15085,7 +15220,7 @@
       ],
       "audience": {
         "score": 6.42,
-        "rank": 43,
+        "rank": 62,
         "of": 155,
         "click": 7.0,
         "hook": 7.5,
@@ -15308,7 +15443,7 @@
       ],
       "audience": {
         "score": 6.48,
-        "rank": 34,
+        "rank": 56,
         "of": 155,
         "click": 5.5,
         "hook": 6.0,
@@ -15409,7 +15544,7 @@
       ],
       "audience": {
         "score": 6.19,
-        "rank": 71,
+        "rank": 79,
         "of": 155,
         "click": 6.0,
         "hook": 6.0,
