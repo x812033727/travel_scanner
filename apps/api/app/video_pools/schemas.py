@@ -36,6 +36,10 @@ class Audience(PoolModel):
     surprise: Score
     payoff: Score
     share: Score
+    # Demand (2026-11-17): the sixth item folded into score, and the five-item mean
+    # before it. Both are null until the theme is scored for demand.
+    demand: Score | None
+    base: Score | None
     comment: NonEmptyText
     reviewed_on: Day
     rounds: list[AudienceRound]
@@ -44,6 +48,8 @@ class Audience(PoolModel):
     def _rank_within_total(self) -> Self:
         if self.rank > self.of:
             raise ValueError("audience rank exceeds the scored total")
+        if (self.demand is None) != (self.base is None):
+            raise ValueError("audience demand and base come together")
         return self
 
 

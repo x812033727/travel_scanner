@@ -1,0 +1,361 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-17",
+  "status": "TOPIC_APPEAL_REFERENCE_NOT_FINAL_CUT_REVIEW",
+  "owner_request": "站主 2026-11-17 問怎麼有效率增加 6.5 分以上的題，選「先做 1 再做 2」：先改包裝總分 6.0–6.5 的單集題。",
+  "candidates_method": {
+    "scope": "總分 6.0–6.5 的入選單集題改包裝後的複評，第 6 輪 22 題：question、hook、payoff 由未參與研究與評分的改寫編輯重寫（問句 40–110 字、一個問號），事實與來源不動，新文字的數字與專名都在原題卡裡。複評的五項平均比原分高 0.5 以上（第 1–3 輪是「較高即採用」）的 15 題採用新包裝並以這份分數為準；其餘維持原文與原分。",
+    "persona": "台灣 25–45 歲、喜歡歷史懸案／奇聞／都市傳說長片的一般觀眾",
+    "card_fields": "題目、完整問題、開場鉤子、這集會揭曉（前 260 字）、畫面",
+    "reviewers": "兩位新評審各評一次，並放進同六題錨點；不讀 repo、不上網。各自用錨點平均與基準錨點平均的差扣掉鬆緊，再取兩人平均。五項欄位是兩人的原始平均，score 是校正後的五項平均；併入需求的總分由 build 計算。",
+    "sample_anchors": {
+      "P09": [
+        8.1,
+        7.9
+      ],
+      "N384": [
+        7.3,
+        7.3
+      ],
+      "N2843": [
+        4.1,
+        4.4
+      ],
+      "N2181": [
+        5.7,
+        6.0
+      ],
+      "N3266": [
+        5.1,
+        5.2
+      ],
+      "N142": [
+        6.8,
+        6.8
+      ]
+    },
+    "baseline_anchor_mean": 6.858,
+    "sample_offsets": {
+      "zr6-a": -0.79,
+      "zr6-b": -0.62
+    },
+    "caveat": "第 4 輪起每批除了六題錨點，另放 8 題剛評過、沒改動的對照題，用錨點與對照題的現有分數一起校正；N2501 的 answer_target 是一段覆核修訂註記而不是答案，題卡本身待修，不列入。",
+    "not_adopted": {
+      "N3122": {
+        "previous": 6.88,
+        "rescored": 5.81
+      },
+      "N508": {
+        "previous": 6.87,
+        "rescored": 6.71
+      },
+      "N1882": {
+        "previous": 6.58,
+        "rescored": 5.26
+      },
+      "N4663": {
+        "previous": 6.7,
+        "rescored": 6.56
+      },
+      "N2765": {
+        "previous": 6.56,
+        "rescored": 5.76
+      },
+      "N2425": {
+        "previous": 6.91,
+        "rescored": 7.01
+      },
+      "N922": {
+        "previous": 6.78,
+        "rescored": 6.11
+      }
+    }
+  },
+  "candidates": [
+    {
+      "id": "N4822",
+      "rank": 1,
+      "of": 400,
+      "score": 8.41,
+      "raw": 7.7,
+      "click": 8.0,
+      "hook": 7.5,
+      "surprise": 7.5,
+      "payoff": 7.5,
+      "share": 8.0,
+      "comment": "從小聽到大的高斯故事數字竟是後人加的，一定轉給同學",
+      "previous": {
+        "score": 7.02,
+        "comment": "高斯 1 加到 100 是後人加料？人人聽過所以想知道。",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "題目從『人人聽過的 5050』切入，拿掉 Sartorius、Bell 等人名與年份；Gauss 寫成觀眾熟悉的『高斯』；payoff 把『誰加的』放最前面。"
+      }
+    },
+    {
+      "id": "N5722",
+      "rank": 2,
+      "of": 400,
+      "score": 8.31,
+      "raw": 7.6,
+      "click": 8.0,
+      "hook": 8.0,
+      "surprise": 6.75,
+      "payoff": 8.0,
+      "share": 7.25,
+      "comment": "天上掉下來的石頭算誰的，問題一聽就懂，判決理由也夠意外",
+      "previous": {
+        "score": 6.72,
+        "comment": "隕石掉下來歸誰打到最高法院有趣，棒球賽那段多餘。",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "照觀眾短評把棒球賽與假隕石撤稿移出題目，只問『天上掉下來的石頭歸誰』這場官司；人名與判例名留給正片。"
+      }
+    },
+    {
+      "id": "N4323",
+      "rank": 3,
+      "of": 400,
+      "score": 8.26,
+      "raw": 7.55,
+      "click": 7.5,
+      "hook": 8.0,
+      "surprise": 7.25,
+      "payoff": 7.25,
+      "share": 7.75,
+      "comment": "富蘭克林是在開玩笑還要放炮叫人起床，好笑又長知識",
+      "previous": {
+        "score": 7,
+        "comment": "日光節約是富蘭克林的玩笑，還被拿來打臉別人，有梗",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "把『放炮叫人起床、從沒碰時鐘』放進題目當反常點，改問撥鐘到底是誰提的；1895 年會議上的批評留到 payoff。"
+      }
+    },
+    {
+      "id": "N4764",
+      "rank": 4,
+      "of": 400,
+      "score": 8.21,
+      "raw": 7.5,
+      "click": 8.0,
+      "hook": 8.0,
+      "surprise": 6.5,
+      "payoff": 7.5,
+      "share": 7.5,
+      "comment": "想抹掉名字反而流傳千古，天生好故事，雖然不少人聽過",
+      "previous": {
+        "score": 6.81,
+        "comment": "想被遺忘的人反而留名，鉤子很聰明，細節略學究",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "題目只留『全城禁提他的名字，我們卻還是知道』這個反差；接生笑話與四位古代作者的對照移到 payoff。"
+      }
+    },
+    {
+      "id": "N5864",
+      "rank": 5,
+      "of": 400,
+      "score": 8.16,
+      "raw": 7.45,
+      "click": 7.5,
+      "hook": 8.0,
+      "surprise": 7.0,
+      "payoff": 7.75,
+      "share": 7.0,
+      "comment": "暗室變出小鯊魚太荒謬了，史丹佛真的做一萬次猜牌也很絕",
+      "previous": {
+        "score": 7.12,
+        "comment": "靈媒變出小鯊魚和假泥板很鬧，史丹佛出錢更荒謬。",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "題目收成『出錢想做心靈研究的人，最後被自己資助的實驗說服改遺囑』，拿掉鳥店、博物館等並列細節與人名；hook 用降神會的現場開場。"
+      }
+    },
+    {
+      "id": "N5664",
+      "rank": 6,
+      "of": 400,
+      "score": 8.06,
+      "raw": 7.35,
+      "click": 7.0,
+      "hook": 7.75,
+      "surprise": 7.0,
+      "payoff": 8.5,
+      "share": 6.5,
+      "comment": "水一洗黑泥掉了，像偵探破案，鑑定細節很過癮",
+      "previous": {
+        "score": 6.97,
+        "comment": "懸賞引來造假下顎骨，鋸骨刷石斧抓包很精彩，題目太冗長",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "拿掉六個外文人名與『跨國陪審團』的鋪陳，題目只留懸賞、鋸骨與洗石斧；hook 用『一洗就白』的石斧開場，payoff 直接講怎麼認出來、怎麼抓到。"
+      }
+    },
+    {
+      "id": "N161",
+      "rank": 7,
+      "of": 400,
+      "score": 8.01,
+      "raw": 7.3,
+      "click": 7.25,
+      "hook": 7.25,
+      "surprise": 7.0,
+      "payoff": 7.5,
+      "share": 7.5,
+      "comment": "地平說是十九世紀才編的，打臉常識，很適合轉給朋友",
+      "previous": {
+        "score": 6.8,
+        "comment": "地平說是後人編的，聽過但仍想看，哥倫布算錯是亮點",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "把『反對者嫌地球太大、而且算得比哥倫布準』這個亮點放到最前面，題目改成一個完整問句，年份與書名留到 payoff。"
+      }
+    },
+    {
+      "id": "N2641",
+      "rank": 8,
+      "of": 400,
+      "score": 7.91,
+      "raw": 7.2,
+      "click": 7.5,
+      "hook": 8.5,
+      "surprise": 6.5,
+      "payoff": 7.0,
+      "share": 6.5,
+      "comment": "踩馬鐙像踩燒紅的鐵，畫面感滿分，像聽中世紀鬼故事",
+      "previous": {
+        "score": 6.57,
+        "comment": "牽鬼馬臉上留手印的開場超讚，後半變成文本演變較散",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "照觀眾短評把最強的開場（笑鬼故事、牽鬼馬、臉上手印）變成整個題目，後面的文本演變只在 payoff 收一句。"
+      }
+    },
+    {
+      "id": "N2704",
+      "rank": 9,
+      "of": 400,
+      "score": 7.81,
+      "raw": 7.1,
+      "click": 6.5,
+      "hook": 7.5,
+      "surprise": 7.25,
+      "payoff": 7.5,
+      "share": 6.75,
+      "comment": "改一個字預言就能重複用，怎樣都算中的設計很好笑",
+      "previous": {
+        "score": 6.6,
+        "comment": "預言詩改一個字再用兩百年，概念好玩但人名生",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "照短評『人名生』把作者名單全拿掉，題目只留無敵艦隊與『改一個拉丁字再用一次』；payoff 先回答它為什麼老是命中。"
+      }
+    },
+    {
+      "id": "N526",
+      "rank": 10,
+      "of": 400,
+      "score": 7.76,
+      "raw": 7.05,
+      "click": 7.5,
+      "hook": 7.25,
+      "surprise": 7.25,
+      "payoff": 6.5,
+      "share": 6.75,
+      "comment": "承認造假反而安全這角度新鮮，可惜結尾又說自白沒被證實有點虛",
+      "previous": {
+        "score": 7.03,
+        "comment": "人騎恐龍的石頭，承認造假反而安全，這角度新鮮",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "小修：原 hook 的『承認是假的反而比較安全』移到題目當問句；原卡的『人類騎恐龍』『醫生』不在查核文字裡，改用『人類與恐龍共存』『收藏者』。"
+      }
+    },
+    {
+      "id": "N5623",
+      "rank": 11,
+      "of": 400,
+      "score": 7.76,
+      "raw": 7.05,
+      "click": 7.0,
+      "hook": 8.0,
+      "surprise": 6.25,
+      "payoff": 7.5,
+      "share": 6.5,
+      "comment": "被拆穿了還捨不得那幅畫，有點心酸，濕海綿顯影很有戲",
+      "previous": {
+        "score": 6.9,
+        "comment": "大律師被靈畫騙走豪宅很好看，題目長到嚇人",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "把一長串人名與三段拆穿過程拿掉，只留『把戲被當庭拆穿，他仍留著那幅祖先畫』這個反常點；hook 改用法官水杯與濕海綿的畫面開場。"
+      }
+    },
+    {
+      "id": "N141",
+      "rank": 12,
+      "of": 400,
+      "score": 7.61,
+      "raw": 6.9,
+      "click": 7.0,
+      "hook": 6.5,
+      "surprise": 7.0,
+      "payoff": 7.5,
+      "share": 6.5,
+      "comment": "學童臨摹實驗很有說服力，眼睛自己連線的解釋我喜歡",
+      "previous": {
+        "score": 6.68,
+        "comment": "火星運河聽過但細節不熟，富豪蓋天文台畫滿運河很有畫面",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "把最反常的學童臨摹實驗放進題目，取代原題的年份對比；原卡的『波士頓富豪』不在查核文字裡，拿掉。"
+      }
+    },
+    {
+      "id": "N3164",
+      "rank": 13,
+      "of": 400,
+      "score": 7.61,
+      "raw": 6.9,
+      "click": 6.75,
+      "hook": 7.0,
+      "surprise": 7.0,
+      "payoff": 7.0,
+      "share": 6.75,
+      "comment": "名言其實是笑話台詞，查謠言過程清楚，但這句話台灣人不太熟",
+      "previous": {
+        "score": 6.56,
+        "comment": "名言是假的不意外，但源頭是漫畫小弟蠻有梗",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "把『名言出自虛構短劇裡的小弟』這個最有梗的點放進題目，原題的五層流傳鏈留給正片；hook 直接演那段對白。"
+      }
+    },
+    {
+      "id": "N523",
+      "rank": 14,
+      "of": 400,
+      "score": 7.56,
+      "raw": 6.85,
+      "click": 6.5,
+      "hook": 7.5,
+      "surprise": 6.75,
+      "payoff": 7.25,
+      "share": 6.25,
+      "comment": "真的掉過帶放射源的火箭比傳說還精彩，寂靜區是編來攬客的",
+      "previous": {
+        "score": 6.82,
+        "comment": "墨西哥寂靜區加真火箭墜落，真假對照好看",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "小修：把真火箭與 60 桶土往前放，問『為什麼出名的反而是傳說』；原卡的 1970 年、Mapimí、400 海里不在查核文字裡，拿掉。"
+      }
+    },
+    {
+      "id": "N2681",
+      "rank": 15,
+      "of": 400,
+      "score": 7.41,
+      "raw": 6.7,
+      "click": 6.25,
+      "hook": 7.0,
+      "surprise": 7.0,
+      "payoff": 7.25,
+      "share": 6.0,
+      "comment": "主教明明在闢謠卻被寫進UFO書，加料者抓得到很滿意",
+      "previous": {
+        "score": 6.73,
+        "comment": "史上第一宗外星綁架原來是主教在罵迷信，追源頭很爽",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "拿掉沒有來源的『840 年』與『史上第一宗外星綁架』，題目直接對比 UFO 書版本與主教原文，問奇景那段是誰加的；payoff 開頭就給答案。"
+      }
+    }
+  ]
+}

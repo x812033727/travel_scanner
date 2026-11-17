@@ -38,7 +38,8 @@ const theme = (id, ids, minutes = 10, extra = {}) => {
   return { id, title: `題案 ${id}`, core_question: '追問', connection: '同一個核心', boredom_risk: '重複', drop_if: '撤案', evidence_gaps: '待補', status: 'EDITORIAL_THEME_NOT_SCRIPT', production_ready: false, target_minutes: minutes, range_minutes: [8, 13], candidate_ids: ids, chapters, audience: AUDIENCE, ...extra };
 };
 
-const AUDIENCE = { score: 7, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json' };
+const DEMAND = { base: 7, demand: 5.5, demand_answers: { east_asia: true, prophecy_ghost: true, ancient_alien: false, famous: false }, demand_reason: 'fixture', demand_review: 'reviews/demand-20261117.json' };
+const AUDIENCE = { score: 6.75, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json', ...DEMAND };
 
 test('topic-check files are read whole: every URL in a table cell is kept and non-200 link checks become limitations', () => {
   const urls = ['https://example.org/a', 'https://example.org/b', 'https://archive.example.net/c?utm_source=x'];
@@ -181,8 +182,10 @@ test('themes are 8–13 minutes, add up exactly, use each core once and never pl
   const later = { ...AUDIENCE, reviewed_on: '2026-11-20', review: 'reviews/audience-20261120.json' };
   assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: later })] }, pool), /scored again/);
   const rounds = [{ score: 5, comment: '太硬', changes: '改片名', reviewed_on: '2026-11-19', review: 'reviews/audience-20261119.json' }];
-  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: { ...later, score: 6, rounds } })] }, pool), /below 6.5/);
+  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: { ...later, base: 6.5, score: 6.33, rounds } })] }, pool), /below 6.5/);
   assert.doesNotThrow(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: { ...later, rounds } })] }, pool));
+  const { demand: _demand, demand_answers: _answers, demand_reason: _reason, demand_review: _record, base: _base, ...five } = AUDIENCE;
+  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: { ...five, score: 7 } })] }, pool), /needs a demand score/);
   assert.doesNotThrow(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: undefined, material: { verdict: 'reserve', reviewed_on: '2026-11-11', review: 'fixture', missing: 'fixture' } })] }, pool));
   assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101'], 10)] }, pool), /N102.*cannot stand alone/);
   assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 7, { range_minutes: [7, 9] })] }, pool), /8–13 minutes/);
@@ -378,4 +381,57 @@ test('a theme scored after the baseline must be improved and rescored to at leas
   const round = { score: 5.5, comment: '片名太長', changes: '縮短片名、刪掉術語章', reviewed_on: '2026-11-19', review: 'reviews/audience-20261119.json' };
   assert.throws(() => validateAudience('T1', { ...base, rounds: [{ ...round, changes: '' }] }), /changes made after it/);
   assert.doesNotThrow(() => validateAudience('T1', { ...base, rounds: [round] }));
+});
+
+test('demand is four yes-or-no answers folded into the audience score as a sixth item', () => {
+  const five = { score: 7, rank: 1, of: 3, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: '想看', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json' };
+  assert.doesNotThrow(() => validateAudience('T1', five), 'a theme not yet scored for demand keeps its five-item score');
+  assert.doesNotThrow(() => validateAudience('T1', { ...five, ...DEMAND, score: 6.75 }));
+  assert.throws(() => validateAudience('T1', { ...five, ...DEMAND }), /base × 5 \+ demand/);
+  assert.throws(() => validateAudience('T1', { ...five, ...DEMAND, score: 6.75, demand: 10 }), /demand must be 5.5/);
+  assert.throws(() => validateAudience('T1', { ...five, ...DEMAND, score: 6.75, demand_answers: {} }), /true or false/);
+  assert.throws(() => validateAudience('T1', { ...five, ...DEMAND, score: 6.75, demand_review: 'notes.md' }), /reviews\/demand/);
+  assert.throws(() => validateAudience('T1', { ...five, demand: 5.5 }), /true or false/);
+});
+
+test('a single-episode core carries its demand answers, and an audience score on it is blended with demand', () => {
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '貝奇莫號為什麼漂了幾十年？'), candidate('N102', 'Carroll Deering 號的船員去哪了？'), candidate('N103', '第三題？', { editorial: { role: 'chapter', payoff: 'a', visual: 'b', minutes: [3, 5] } })] };
+  const selection = { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 3, ids: ['N101', 'N102', 'N103'] };
+  const answers = { east_asia: true, prophecy_ghost: true, ancient_alien: false, famous: false };
+  const scored = (id, score) => ({ id, rank: 1, of: 2, score, click: score, hook: score, surprise: score, payoff: score, share: score, comment: 'fixture' });
+  const build = (demandRows, audienceRows = [scored('N101', 7), scored('N102', 7.2)]) => {
+    const root = fixture({ batch, selection });
+    write(root, `${DIR}/reviews/audience-20261114.json`, { reviewed_on: '2026-11-14', candidates: audienceRows });
+    write(root, `${DIR}/reviews/demand-20261117-cores.json`, { reviewed_on: '2026-11-17', candidates: demandRows });
+    return buildPool(root);
+  };
+  const pool = build([{ id: 'N101', answers, demand: 5.5, reason: 'fixture' }]);
+  const [first, second] = ['N101', 'N102'].map((id) => pool.candidates.find((row) => row.id === id));
+  assert.deepEqual(first.demand, { answers, demand: 5.5, reason: 'fixture', reviewed_on: '2026-11-17', review: 'reviews/demand-20261117-cores.json' });
+  assert.equal(first.audience.base, 7);
+  assert.equal(first.audience.score, 6.75);
+  assert.equal(second.audience.base, undefined, 'a core with no demand answers keeps its five-item score');
+  assert.deepEqual([first.audience.rank, second.audience.rank, first.audience.of], [2, 1, 2], 'scored cores are ranked again on the blended score');
+  const unscored = build([{ id: 'N102', answers, demand: 5.5, reason: 'fixture' }], [scored('N101', 7)]).candidates.find((row) => row.id === 'N102');
+  assert.equal(unscored.demand.demand, 5.5);
+  assert.equal(unscored.audience, undefined, 'demand alone does not invent an audience score');
+  assert.throws(() => build([{ id: 'N101', answers, demand: 10, reason: 'fixture' }]), /demand must be 5.5/);
+  assert.throws(() => build([{ id: 'N101', answers: { east_asia: true }, demand: 3.25 }]), /true or false/);
+  assert.throws(() => build([{ id: 'N103', answers, demand: 5.5 }]), /selected single-episode core/);
+  const brand = { have: true, why: true, standard: false, lose_or_jp: false };
+  assert.throws(() => build([{ id: 'N101', answers: brand, demand: 5.5 }]), /answers east_asia/, 'a history core is not scored on the brand questions');
+});
+
+test('a business and brand core answers the brand questions, not the history ones', () => {
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '一條線為什麼有人收過路費？', { axis: 'W' })] };
+  const selection = { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 1, ids: ['N101'] };
+  const build = (answers) => {
+    const root = fixture({ batch, selection });
+    write(root, `${DIR}/reviews/demand-20261117-w.json`, { reviewed_on: '2026-11-17', candidates: [{ id: 'N101', answers, demand: 5.5, reason: 'fixture' }] });
+    return buildPool(root);
+  };
+  const row = build({ have: true, why: false, standard: true, lose_or_jp: false }).candidates.find((item) => item.id === 'N101');
+  assert.equal(row.category, 'W-商業與品牌奇聞');
+  assert.equal(row.demand.demand, 5.5);
+  assert.throws(() => build({ east_asia: true, prophecy_ghost: true, ancient_alien: false, famous: false }), /answers have, why, standard, lose_or_jp/);
 });

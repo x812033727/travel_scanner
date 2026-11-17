@@ -18,7 +18,7 @@ type Series = (typeof SERIES)[number];
 type Copy = ReturnType<typeof videoPoolsCopy>;
 type Verdict = keyof Copy["verdicts"];
 export type PoolAudience = {
-  score: number; rank: number; of: number; click: number; hook: number; surprise: number; payoff: number; share: number;
+  score: number; rank: number; of: number; click: number; hook: number; surprise: number; payoff: number; share: number; demand: number | null; base: number | null;
   comment: string; reviewed_on: string; rounds: { score: number; comment: string; changes: string; reviewed_on: string }[];
 };
 export type PoolTheme = {
@@ -75,7 +75,7 @@ function Score({ audience, copy }: { audience: PoolAudience | null; copy: Copy }
   return <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
     <span className="text-2xl font-black tabular-nums" aria-label={copy.score}>{audience.score.toFixed(2)}</span>
     <span className="text-sm font-semibold">{videoPoolsText(copy.rank, { rank: audience.rank, of: audience.of })}</span>
-    <span className="text-xs text-[var(--muted)]">{DIMS.map((dim) => `${copy.dims[dim]} ${audience[dim]}`).join("・")}</span>
+    <span className="text-xs text-[var(--muted)]">{[...DIMS.map((dim) => `${copy.dims[dim]} ${audience[dim]}`), ...(audience.demand === null ? [] : [`${copy.dims.demand} ${audience.demand}`])].join("・")}</span>
   </div>;
 }
 
