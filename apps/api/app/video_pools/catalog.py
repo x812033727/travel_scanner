@@ -13,6 +13,9 @@ from app.models import VideoProject
 from app.problems import AppError
 from app.video_pools.schemas import (
     CategoryCount,
+    CorePage,
+    CoreStatus,
+    CoreSummary,
     EpisodePage,
     EpisodeStatus,
     EpisodeStatusRow,
@@ -133,6 +136,66 @@ def list_themes(
     categories = Counter(theme.category for theme in in_status if theme.category)
     return ThemePage(
         items=[_summary(theme) for theme in matches[offset : offset + page_size]],
+        total=len(matches),
+        page=page,
+        page_size=page_size,
+        categories=[
+            CategoryCount(category=name, count=count) for name, count in sorted(categories.items())
+        ],
+    )
+
+
+def _core_in_status(core: CoreSummary, status: CoreStatus, minimum: float) -> bool:
+    if status == "all":
+        return True
+    if status == "unscored":
+        return core.audience is None
+    if core.audience is None:
+        return False
+    return status == "scored" or core.audience.score >= minimum
+
+
+def list_cores(
+    key: SeriesKey,
+    *,
+    status: CoreStatus = "passing",
+    category: str | None = None,
+    min_score: float | None = None,
+    q: str | None = None,
+    sort: ThemeSort = "rank",
+    page: int = 1,
+    page_size: int = 25,
+) -> CorePage:
+    """Single-episode cores: selected topics that stand alone and sit in no theme."""
+    series = _series(load_bundle(), key)
+    query = (q or "").strip().casefold()
+    in_status = [
+        core for core in series.cores if _core_in_status(core, status, series.audience_min)
+    ]
+    matches = [
+        core
+        for core in in_status
+        if (category is None or core.category == category)
+        and (min_score is None or (core.audience is not None and core.audience.score >= min_score))
+        and (
+            not query
+            or any(query in text.casefold() for text in (core.id, core.question, core.hook))
+        )
+    ]
+    if sort == "rank":
+        matches.sort(
+            key=lambda core: (
+                core.audience is None,
+                core.audience.rank if core.audience else 0,
+                core.id,
+            )
+        )
+    else:
+        matches.sort(key=lambda core: core.id)
+    offset = (page - 1) * page_size
+    categories = Counter(core.category for core in in_status if core.category)
+    return CorePage(
+        items=matches[offset : offset + page_size],
         total=len(matches),
         page=page,
         page_size=page_size,

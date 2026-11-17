@@ -15,7 +15,8 @@ const input = (rows) => ({ records: rows, sources: rows.map((row) => source(row.
 const empty = () => ({ merges: [], distinct: [], excluded: [] });
 const choose = (ids) => ({ ids, target_count: ids.length, reason: 'Test fixture selection' });
 
-const AUDIENCE = { score: 7, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json' };
+const DEMAND = { base: 7, demand: 5.5, demand_answers: { have: true, local: true, standard: false, lose_or_jp: false }, demand_reason: 'fixture', demand_review: 'reviews/demand-20261117.json' };
+const AUDIENCE = { score: 6.75, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json', ...DEMAND };
 
 test('exact wording variants preserve both source histories and raw IDs', () => {
   const rows = [record('a', '門把為什麼會電人？', '電荷與放電'), record('b', '門把為什麼會電人?', '另一份資料')];
@@ -467,4 +468,15 @@ test('the committed pool export is internally consistent and each file is < 45 M
   for (const name of ['pool.json', ...Object.values(POOL_PARTS)]) assert.ok(fs.statSync(path.join(ROOT, DIR, name)).size < 45 * 1024 * 1024, `${name} is near GitHub's 50 MB warning; split it further`);
   assert.equal(pool.counts.high_similarity_pending, 0);
   assert.equal(pool.counts.approved_scripts, 0);
+});
+
+test('demand is four yes-or-no answers folded into the audience score as a sixth item', () => {
+  const five = { score: 7, rank: 1, of: 3, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: '想看', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json' };
+  assert.doesNotThrow(() => validateAudience('T1', five), 'a theme not yet scored for demand keeps its five-item score');
+  assert.doesNotThrow(() => validateAudience('T1', { ...five, ...DEMAND, score: 6.75 }));
+  assert.throws(() => validateAudience('T1', { ...five, ...DEMAND }), /base × 5 \+ demand/);
+  assert.throws(() => validateAudience('T1', { ...five, ...DEMAND, score: 6.75, demand: 10 }), /demand must be 5.5/);
+  assert.throws(() => validateAudience('T1', { ...five, ...DEMAND, score: 6.75, demand_answers: {} }), /true or false/);
+  assert.throws(() => validateAudience('T1', { ...five, ...DEMAND, score: 6.75, demand_review: 'notes.md' }), /reviews\/demand/);
+  assert.throws(() => validateAudience('T1', { ...five, demand: 5.5 }), /true or false/);
 });

@@ -599,6 +599,20 @@ export function loadDraft(root = ROOT) {
   return { input, decisions, draft: assemble(input, decisions) };
 }
 
+// 需求四問與併分（站主 2026-11-17）：題案與單集題共用；render.mjs 轉出同一組名稱。五項平均乘 5 加需求再除以 6。
+export const DEMAND_QUESTIONS = Object.freeze({ east_asia: '台灣或東亞觀眾本來就認得', prophecy_ghost: '預言末日或鬼魂死後', ancient_alien: '古文明或外星', famous: '主角全世界叫得出名字' });
+export const DEMAND_FLOOR = 1;
+export const DEMAND_STEP = 2.25;
+// 商業與品牌類（W）用另一套四問（站主 2026-11-17：品牌故事與黑猫來的題都歸奇聞）：這一類的需求是從黑猫研究院的觀看數歸納的，
+// 歷史懸案那套（東亞、預言鬼魂、古文明外星、名字認得）評不出它們的高下。其他八類不變。
+export const DEMAND_QUESTIONS_W = Object.freeze({ have: '觀眾手上或家裡就有', why: '能問出反常的為什麼', standard: '規格、標準或誰在收錢', lose_or_jp: '大公司輸掉或日本品牌' });
+export const demandQuestionsFor = (category) => (String(category ?? '').startsWith('W') ? DEMAND_QUESTIONS_W : DEMAND_QUESTIONS);
+const sameKeys = (answers, questions) => Boolean(answers) && Object.keys(answers).length === Object.keys(questions).length && Object.keys(questions).every((key) => typeof answers[key] === 'boolean');
+/** The question set these answers were given to, or null when they fit neither. */
+export const demandQuestionsOf = (answers) => [DEMAND_QUESTIONS, DEMAND_QUESTIONS_W].find((questions) => sameKeys(answers, questions)) ?? null;
+export const demandScore = (answers) => DEMAND_FLOOR + DEMAND_STEP * Object.values(answers ?? {}).filter((value) => value === true).length;
+export const blendedScore = (base, demand) => (base * 5 + demand) / 6;
+
 export function buildPool(root = ROOT) {
   const { input, decisions } = loadDraft(root);
   const file = `${DIR}/selection.json`;
@@ -612,7 +626,38 @@ export function buildPool(root = ROOT) {
     if (!row?.selected || row.editorial?.role !== 'episode_core') throw new Error(`${id}: an audience score belongs to a selected single-episode core`);
     row.audience = score;
   }
+  // 單集題的需求分（reviews/demand-*.json 的 candidates）：沒有觀眾分的題只帶 demand；有觀眾分的把五項平均留在 base、score 改成併分。
+  const demand = readDemand(root, input);
+  for (const [id, entry] of demand) {
+    const row = pool.candidates.find((candidate) => candidate.id === id);
+    if (!row?.selected || row.editorial?.role !== 'episode_core') throw new Error(`${id}: a demand score belongs to a selected single-episode core`);
+    const questions = demandQuestionsFor(row.category);
+    if (!sameKeys(entry.answers, questions)) throw new Error(`${id}: a ${row.category} core answers ${Object.keys(questions).join(', ')}`);
+    row.demand = entry;
+    if (row.audience) row.audience = { ...row.audience, base: row.audience.score, score: Math.round(blendedScore(row.audience.score, entry.demand) * 100) / 100, demand: entry.demand };
+  }
+  if (demand.size) {
+    const scored = pool.candidates.filter((row) => row.audience).sort((a, b) => b.audience.score - a.audience.score || a.audience.rank - b.audience.rank);
+    scored.forEach((row, index) => { row.audience = { ...row.audience, rank: index + 1, of: scored.length }; });
+  }
   return pool;
+}
+
+function readDemand(root, input) {
+  const directory = path.join(root, DIR, 'reviews');
+  const scores = new Map();
+  for (const name of existsSync(directory) ? readdirSync(directory).filter((file) => /^demand-[\w-]+\.json$/.test(file)).sort() : []) {
+    const file = `${DIR}/reviews/${name}`;
+    const record = parse(root, file);
+    input.inputs.push({ file, sha256: hash(readFileSync(path.join(root, file))) });
+    for (const row of record.candidates ?? []) {
+      const { id, answers, demand, reason } = row;
+      if (!demandQuestionsOf(answers)) throw new Error(`${file}: ${id} needs true or false for ${Object.keys(DEMAND_QUESTIONS).join(', ')} (or ${Object.keys(DEMAND_QUESTIONS_W).join(', ')} for a W core)`);
+      if (demand !== demandScore(answers)) throw new Error(`${file}: ${id} demand must be ${demandScore(answers)} for these answers`);
+      scores.set(id, { answers, demand, reason: reason ?? '', reviewed_on: record.reviewed_on, review: `reviews/${name}` });
+    }
+  }
+  return scores;
 }
 
 // 獨立觀眾評分（站主 2026-11-14「把分數寫回題目池」）：reviews/audience-*.json 的 candidates 掛到入選的單集題上，

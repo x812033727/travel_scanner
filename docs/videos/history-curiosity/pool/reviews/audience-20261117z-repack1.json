@@ -1,0 +1,413 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-17",
+  "status": "TOPIC_APPEAL_REFERENCE_NOT_FINAL_CUT_REVIEW",
+  "owner_request": "站主 2026-11-17 問怎麼有效率增加 6.5 分以上的題，選「先做 1 再做 2」：先改包裝總分 6.0–6.5 的單集題。",
+  "candidates_method": {
+    "scope": "總分 6.0–6.5 的入選單集題改包裝後的複評，第 1 輪 20 題：question、hook、payoff 由未參與研究與評分的改寫編輯重寫（問句 40–110 字、一個問號），事實與來源不動，新文字的數字與專名都在原題卡裡。複評的五項平均高於原分的 19 題採用新包裝並以這份分數為準；其餘維持原文與原分。",
+    "persona": "台灣 25–45 歲、喜歡歷史懸案／奇聞／都市傳說長片的一般觀眾",
+    "card_fields": "題目、完整問題、開場鉤子、這集會揭曉（前 260 字）、畫面",
+    "reviewers": "兩位新評審各評一次，並放進同六題錨點；不讀 repo、不上網。各自用錨點平均與基準錨點平均的差扣掉鬆緊，再取兩人平均。五項欄位是兩人的原始平均，score 是校正後的五項平均；併入需求的總分由 build 計算。",
+    "sample_anchors": {
+      "P09": [
+        8.0,
+        7.9
+      ],
+      "N384": [
+        7.1,
+        7.1
+      ],
+      "N2843": [
+        3.9,
+        4.1
+      ],
+      "N2181": [
+        6.1,
+        6.6
+      ],
+      "N3266": [
+        4.8,
+        5.3
+      ],
+      "N142": [
+        6.8,
+        6.8
+      ]
+    },
+    "baseline_anchor_mean": 6.858,
+    "sample_offsets": {
+      "zr1-a": -0.74,
+      "zr1-b": -0.56
+    },
+    "caveat": "錨點題和短問句排在一起時，評審給錨點的分數比先前幾批低 0.1–0.25，校正後新題的分數可能因此偏高約 0.2；總分只比 6.5 高一點的題要當成邊緣題看。",
+    "not_adopted": {
+      "N6202": {
+        "previous": 6.25,
+        "rescored": 6.2
+      }
+    }
+  },
+  "candidates": [
+    {
+      "id": "N2643",
+      "rank": 1,
+      "of": 400,
+      "score": 9.0,
+      "raw": 8.35,
+      "click": 8.25,
+      "hook": 8.5,
+      "surprise": 8.5,
+      "payoff": 8.25,
+      "share": 8.25,
+      "comment": "開庭把鬼判出門？這個太絕了，一定看完還會轉。",
+      "previous": {
+        "score": 6.64,
+        "comment": "開庭審判鬼魂、母牛舔骨灰，怪得很有記憶點。",
+        "review": "reviews/audience-20261114.json",
+        "changes": "原題本來就夠怪，只把兩個故事縮成一個（審判亡者），母牛與老人的支線拿出問句。"
+      }
+    },
+    {
+      "id": "N2841",
+      "rank": 2,
+      "of": 400,
+      "score": 8.2,
+      "raw": 7.55,
+      "click": 7.75,
+      "hook": 7.5,
+      "surprise": 7.5,
+      "payoff": 7.75,
+      "share": 7.25,
+      "comment": "沒念的論文引發末日恐慌，越闢謠越糟很有現代感。",
+      "previous": {
+        "score": 6.84,
+        "comment": "一篇沒念的論文引爆世界末日恐慌，跟現代假新聞很像，蠻有共鳴。",
+        "review": "reviews/audience-20261114.json",
+        "changes": "原角度已經很好，只把問句縮成『恐慌的起因是一篇沒念的論文』，闢謠反效果與金星放 payoff。"
+      }
+    },
+    {
+      "id": "N3001",
+      "rank": 3,
+      "of": 400,
+      "score": 7.95,
+      "raw": 7.3,
+      "click": 7.75,
+      "hook": 7.0,
+      "surprise": 7.5,
+      "payoff": 6.75,
+      "share": 7.5,
+      "comment": "課本故事被拆穿我會點，可惜最後還是沒定論。",
+      "previous": {
+        "score": 6.08,
+        "comment": "甲骨文藥包故事是編的有料，但整題像在排引用出處。",
+        "review": "reviews/audience-20261117-rest.json",
+        "changes": "改從『那家藥店當時還沒開』這個破綻切入，出處排列收進 payoff 並先講『兩個版本拼起來』。"
+      }
+    },
+    {
+      "id": "N6301",
+      "rank": 4,
+      "of": 400,
+      "score": 7.6,
+      "raw": 6.95,
+      "click": 7.25,
+      "hook": 7.75,
+      "surprise": 6.5,
+      "payoff": 7.0,
+      "share": 6.25,
+      "comment": "腳泡在香料油裡很有感，答案是滯銷貨算合理不算驚。",
+      "previous": {
+        "score": 6.3,
+        "comment": "腳泡在香料油裡很有畫面，但題目太長像論文，結論猜得到是滯銷貨。",
+        "review": "reviews/audience-20261117-w.json",
+        "changes": "把現場畫面放進問句、問『妙計還是滯銷』，名著改版與少將的帳留給 payoff。"
+      }
+    },
+    {
+      "id": "N3543",
+      "rank": 5,
+      "of": 400,
+      "score": 7.6,
+      "raw": 6.95,
+      "click": 7.0,
+      "hook": 8.0,
+      "surprise": 6.75,
+      "payoff": 6.5,
+      "share": 6.5,
+      "comment": "想印五萬只印五百很好笑，愛倫坡講宇宙有新鮮感。",
+      "previous": {
+        "score": 6.17,
+        "comment": "愛倫坡預見大霹靂？有點驚訝，但開場講堂那句很平。",
+        "review": "reviews/audience-20261117-two.json",
+        "changes": "問句改問『他為什麼自己否定那個解法』，hook 加上五萬本對 500 本的反差，補強原本偏平的開場。"
+      }
+    },
+    {
+      "id": "N3085",
+      "rank": 6,
+      "of": 400,
+      "score": 7.3,
+      "raw": 6.65,
+      "click": 6.75,
+      "hook": 7.25,
+      "surprise": 6.5,
+      "payoff": 6.75,
+      "share": 6.0,
+      "comment": "宣統四十三年這個點很好笑，但題材偏冷。",
+      "previous": {
+        "score": 6.42,
+        "comment": "清朝小說預言上海世博當年真的聽過，原來年號是宣統四十三年。",
+        "review": "reviews/audience-20261117-two.json",
+        "changes": "問句只留『宣統四十三年』一個細節當鉤子，梁啟超與地鐵的原因留給 payoff。"
+      }
+    },
+    {
+      "id": "N3782",
+      "rank": 7,
+      "of": 400,
+      "score": 7.25,
+      "raw": 6.6,
+      "click": 7.5,
+      "hook": 6.5,
+      "surprise": 6.5,
+      "payoff": 6.0,
+      "share": 6.5,
+      "comment": "林肯臥室不是臥室蠻妙，但鬼故事本身不夠毛。",
+      "previous": {
+        "score": 6.17,
+        "comment": "白宮鬧鬼有興趣，但題目長到像論文，林肯沒睡過那間房倒是有梗。",
+        "review": "reviews/audience-20261117-two.json",
+        "changes": "把短評說有梗的『那張床他沒睡過』提到問句，問鬼故事從哪裡傳起，三份報紙留給 payoff。"
+      }
+    },
+    {
+      "id": "N4662",
+      "rank": 8,
+      "of": 400,
+      "score": 7.25,
+      "raw": 6.6,
+      "click": 7.0,
+      "hook": 8.0,
+      "surprise": 6.25,
+      "payoff": 5.75,
+      "share": 6.0,
+      "comment": "蛾影攔火車畫面超強，結果只是傳說搬家，略失落。",
+      "previous": {
+        "score": 6.52,
+        "comment": "救了女王的蛾很有畫面，可惜拆到最後只是報紙轉載史。",
+        "review": "reviews/audience-20261117-two.json",
+        "changes": "從『女王的蛾』這個聽過的傳說切入，只留『車上沒有女王』一個反差，轉載年份串移到 payoff。"
+      }
+    },
+    {
+      "id": "N6022",
+      "rank": 9,
+      "of": 400,
+      "score": 7.25,
+      "raw": 6.6,
+      "click": 7.0,
+      "hook": 7.5,
+      "surprise": 6.5,
+      "payoff": 6.0,
+      "share": 6.0,
+      "comment": "趙匡胤木牌我有興趣，但誰放的沒答案有點悶。",
+      "previous": {
+        "score": 5.84,
+        "comment": "趙匡胤木牌的故事聽過，版本比對有趣但史書名太多。",
+        "review": "reviews/audience-20261117.json",
+        "changes": "問句只對比『五個字』與『三個字』，四部史書的名字移到 payoff，並把張永德的下場補進來。"
+      }
+    },
+    {
+      "id": "N4142",
+      "rank": 10,
+      "of": 400,
+      "score": 7.25,
+      "raw": 6.6,
+      "click": 8.0,
+      "hook": 8.0,
+      "surprise": 5.75,
+      "payoff": 5.0,
+      "share": 6.25,
+      "comment": "金眼黑氣滿城追超想看，結果說不猜是什麼，有點掃興。",
+      "previous": {
+        "score": 6.23,
+        "comment": "明朝京城黑眚夜襲很有都市傳說味，但題目像論文摘要，結論又模糊。",
+        "review": "reviews/audience-20261117-two.json",
+        "changes": "拿掉書名串，問句只留御史那句『不知被何物所傷』，問恐慌怎麼接上西廠。"
+      }
+    },
+    {
+      "id": "N3084",
+      "rank": 11,
+      "of": 400,
+      "score": 7.2,
+      "raw": 6.55,
+      "click": 6.5,
+      "hook": 5.75,
+      "surprise": 6.5,
+      "payoff": 7.0,
+      "share": 7.0,
+      "comment": "狗當差、蘋果大的草莓這些落空預言反而最好笑。",
+      "previous": {
+        "score": 6.26,
+        "comment": "百年神預言原來是日本報紙照抄美國雜誌，想知道哪些沒中。",
+        "review": "reviews/audience-20261117-two.json",
+        "changes": "只留『雪茄形火車頭』一組對照，問『誰說的、哪些沒人提』，不寫抄襲也不寫比例。"
+      }
+    },
+    {
+      "id": "N3003",
+      "rank": 12,
+      "of": 400,
+      "score": 7.2,
+      "raw": 6.55,
+      "click": 7.0,
+      "hook": 6.5,
+      "surprise": 6.25,
+      "payoff": 7.25,
+      "share": 5.75,
+      "comment": "國寶金印真假我好奇，這集至少有給明確答案。",
+      "previous": {
+        "score": 6.32,
+        "comment": "金印真偽我有興趣，可是重點埋在誰挖的這種小事後面。",
+        "review": "reviews/audience-20261117-rest.json",
+        "changes": "照短評把真偽之爭提到最前面，『誰挖的』降成 payoff 的第二層。"
+      }
+    },
+    {
+      "id": "N3145",
+      "rank": 13,
+      "of": 400,
+      "score": 7.15,
+      "raw": 6.5,
+      "click": 6.5,
+      "hook": 7.0,
+      "surprise": 6.5,
+      "payoff": 7.0,
+      "share": 5.5,
+      "comment": "開棺太早回不來那段很淒美，但整體偏文學課。",
+      "previous": {
+        "score": 5.72,
+        "comment": "「有一座墳開得太早」很勾人，但牡丹亭出處考太文青。",
+        "review": "reviews/audience-20261117-rest.json",
+        "changes": "把短評稱讚的『開得太早的墳』從 hook 提到問句，三個出處的引文全部移走。"
+      }
+    },
+    {
+      "id": "N4321",
+      "rank": 14,
+      "of": 400,
+      "score": 6.95,
+      "raw": 6.3,
+      "click": 7.0,
+      "hook": 6.5,
+      "surprise": 5.75,
+      "payoff": 5.75,
+      "share": 6.5,
+      "comment": "三明治由來人人聽過，被打臉可以聊，但不算震撼。",
+      "previous": {
+        "score": 6.74,
+        "comment": "三明治伯爵故事人人知道，最早版本沒寫名字算小反轉，但標題又臭又長，揭曉偏考據。",
+        "review": "reviews/audience-20261114.json",
+        "changes": "保留人人知道的賭桌傳說，只用『24 小時』一個細節，問兩個破綻；人名與日記日期移到 payoff。"
+      }
+    },
+    {
+      "id": "N4163",
+      "rank": 15,
+      "of": 400,
+      "score": 6.8,
+      "raw": 6.15,
+      "click": 7.0,
+      "hook": 6.0,
+      "surprise": 6.25,
+      "payoff": 5.75,
+      "share": 5.75,
+      "comment": "諾查丹瑪斯會點，可是大麥文字遊戲我聽不太懂。",
+      "previous": {
+        "score": 6.64,
+        "comment": "諾查丹瑪斯最有名的預言其實是後人對上去的，好題，但版本比對可能太細。",
+        "review": "reviews/audience-20261114.json",
+        "changes": "問句只對比『最有名的命中』與『當年的評註者沒選這首』，詩的編號全部拿掉。"
+      }
+    },
+    {
+      "id": "N3642",
+      "rank": 16,
+      "of": 400,
+      "score": 6.75,
+      "raw": 6.1,
+      "click": 6.75,
+      "hook": 6.25,
+      "surprise": 6.0,
+      "payoff": 6.0,
+      "share": 5.5,
+      "comment": "預知夢被自己的信打臉，有意思但偏文獻比對。",
+      "previous": {
+        "score": 6.26,
+        "comment": "馬克吐溫預知夢越講越神，當年信裡根本沒提，還算有說服力。",
+        "review": "reviews/audience-20261117-two.json",
+        "changes": "從夢的畫面直接接到『當年的信沒提、花送給別人』，把牧師的刺繡與家人版本放進 payoff。"
+      }
+    },
+    {
+      "id": "N3785",
+      "rank": 17,
+      "of": 400,
+      "score": 6.75,
+      "raw": 6.1,
+      "click": 7.0,
+      "hook": 7.0,
+      "surprise": 5.5,
+      "payoff": 5.5,
+      "share": 5.5,
+      "comment": "倫敦塔鬼故事會點，但又是哪年才出現的考據套路。",
+      "previous": {
+        "score": 6.24,
+        "comment": "安妮博林鬼魂我有聽過，刺刀穿過去的故事是後來編的，普通好看。",
+        "review": "reviews/audience-20261114.json",
+        "changes": "用刺刀穿過鬼魂的畫面開場，問『1897 年的電報為什麼還沒有這一段』，小說與演講留給 payoff。"
+      }
+    },
+    {
+      "id": "N3322",
+      "rank": 18,
+      "of": 400,
+      "score": 6.65,
+      "raw": 6.0,
+      "click": 6.5,
+      "hook": 6.75,
+      "surprise": 6.0,
+      "payoff": 5.75,
+      "share": 5.0,
+      "comment": "康熙比影子有畫面，但結尾變成誰記錯人，有點虛。",
+      "previous": {
+        "score": 5.94,
+        "comment": "康熙記錯自己的往事有點意思，但開場直接丟一段文言文很勸退。",
+        "review": "reviews/audience-20261117.json",
+        "changes": "拿掉開場的文言引文，從『三人比影子、對手隔天說不會算』的場景切入，康熙的回憶改放 payoff 收尾。"
+      }
+    },
+    {
+      "id": "N5123",
+      "rank": 19,
+      "of": 400,
+      "score": 6.55,
+      "raw": 5.9,
+      "click": 6.25,
+      "hook": 4.75,
+      "surprise": 6.75,
+      "payoff": 6.0,
+      "share": 5.75,
+      "comment": "鎖國是翻譯加的很顛覆，但開場全是年份，想滑走。",
+      "previous": {
+        "score": 6.53,
+        "comment": "「鎖國」是翻譯造出來的詞蠻新鮮，但轉譯三手那段好學究。",
+        "review": "reviews/audience-20261117-rest.json",
+        "changes": "問句只留『1801 年、一位通詞加的名稱』與『原文其實在叫好』兩個反差，轉譯三手改用白話放 payoff。"
+      }
+    }
+  ]
+}
