@@ -10,7 +10,8 @@ Round 1 (no flag): 19 pictures x seeds 37037/37038 = 38 jobs, one manifest OUT_D
 every picture is r2-bible-e031-e040.md 〈試鏡〉 第一輪 (one line each, numbered 1-20 there); the inventory of what is reused,
 cropped or graded for free is 〈盤點〉 above it. Picture 9 of the bible (set-xujia-tangfang-chen-l1) is NOT in: its free grade
 (free-e031-e040/tangfang_chen.py, refs-live README 第 4 篇章) reads as grey morning light and is filed. --with-chen puts it
-back (40 jobs) if the coordinator rejects the free picture.
+back (40 jobs) if the coordinator rejects the free picture, under the id set-xujia-tangfang-chen2-l1 (the free
+one keeps set-xujia-tangfang-chen-l1).
 - 3 faces (fresh, screen-test.py HEAD on the grey canvas, calm, mouth closed, hands and props out):
              diaoqi-portrait-l1 (e037 c18), baidaifu-portrait-l1 (e039 c01), duizhang-portrait-l1 (e038 c23; ONE-word id:
              pilot.py only reads one-word person ids, the e020 guild-master lesson).
@@ -151,7 +152,7 @@ FACES = [
      "open-faced round black iron helmet with one small tuft of red horsehair fixed at its very top"),
 ]
 for pid, first, desc in FACES:
-    assert not re.search(r"smil|grin|knife|sword|spear|chest\b|lamp", desc), f"{pid}: a smile or a prop is in the portrait"
+    assert not re.search(r"smil|grin|knife|sword|spear|medicine|lamp", desc), f"{pid}: a smile or a prop is in the portrait"
     body = st["BLANK"] + st["HEAD"].format(desc=re.sub(st["FEET"], "", desc)) + " " + st["STYLE"]
     neg = st["NEG"] + (", helmet without plume, red cloth hanging, red ribbons, red tassel on the shoulders, cape"
                        if pid.startswith("duizhang") else "")
@@ -230,7 +231,7 @@ if "--with-chen" in FLAGS:
             "time and the light: it is early morning; the window paper glows a soft pale white with grey dawn light, a "
             "soft cool grey-white light from the window falls on the bed, the walls and the table, the white candle on the "
             "table is cold and unlit with a black wick." + KEEP_TAIL)
-    pictures.append(("set-xujia-tangfang-chen-l1", "e038 c01", LIVE / "set-xujia-tangfang-l2.png", chen,
+    pictures.append(("set-xujia-tangfang-chen2-l1", "e038 c01", LIVE / "set-xujia-tangfang-l2.png", chen,
                      NEG + ", night, dark blue window, candle flame, lit candle, glowing candle, warm orange light, moon, "
                            "oil lamp", 1312, 736, "relight of set-xujia-tangfang-l2"))
 
