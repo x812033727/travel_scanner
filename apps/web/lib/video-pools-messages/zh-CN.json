@@ -14,12 +14,15 @@
     "producible": "可成题",
     "long_reserve": "长题后备",
     "scored": "已评分题案",
-    "improved": "改进过的题案"
+    "improved": "改进过的题案",
+    "cores": "单集题",
+    "cores_passing": "过门槛的单集题"
   },
   "minimum": "入题门槛：独立观众评分 {min} 分以上；新成题要经过评分、改进、复评才入题。",
   "viewLabel": "查看",
   "views": {
     "themes": "成题列表",
+    "cores": "单集题",
     "published": "上架状态",
     "expansions": "扩池记录"
   },
@@ -29,6 +32,12 @@
     "reserve": "长题后备",
     "short": "短题",
     "all": "全部题案"
+  },
+  "coreStatuses": {
+    "passing": "过门槛",
+    "scored": "已评分",
+    "unscored": "未评分",
+    "all": "全部单集题"
   },
   "category": "分类",
   "allCategories": "全部分类",
@@ -103,5 +112,13 @@
   },
   "privacy": "公开状态：{privacy}",
   "publishAt": "预定公开：{date}",
-  "stage": "制作阶段：{stage}"
+  "stage": "制作阶段：{stage}",
+  "coreResults": "符合条件的单集题：{count} 题",
+  "coreEmpty": "没有符合条件的单集题",
+  "coreEmptyDetail": "这个系列可能没有可单独成集的题，或请换个分类、状态或关键词。",
+  "coreDetails": "查看开场与揭晓",
+  "hook": "开场",
+  "payoff": "这集会揭晓",
+  "minutesRange": "约 {from}–{to} 分钟",
+  "produced": "已制作"
 }
