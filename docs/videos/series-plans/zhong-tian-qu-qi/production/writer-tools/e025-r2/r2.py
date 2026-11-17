@@ -106,7 +106,7 @@ LOC = {
 }
 LIGHT = {
     "shed": "the low warm afternoon light stays unchanged",
-    "night": "the cold blue night light and the warm torchlight stay unchanged",
+    "night": "the warm torchlight and the cold dark of the night stay unchanged",  # no "blue" near "eyes" (preflight eye-glow)
 }
 # bible rule 15: no "<X> speaks off screen" / "the system voice speaks off screen".
 OFFSCREEN_SPEECH = False
