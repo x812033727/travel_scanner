@@ -13,6 +13,8 @@ Each check is a mistake this season paid for at least once (lessons.md §11-§12
 - warn crowd: a crowd, guards, riders or thugs with no dynasty clothing written (e055 s11 drew modern green uniforms);
 - warn wine: wine bottles, wine cups or wine jars named (the e050 inn grew modern glass bottles; write pottery cups and clay jars);
 - warn insert: an insert or extreme close-up that does not open directly on itself (opens on the empty set, e054 s03, e056 s04);
+  "the very first frame is already a close view of ..." counts too (e026 r2 review: the word "open" before a stack of sheets
+  reads as a book opened, so e926 writes the inserts without it);
 - warn skin: small bits written onto skin (wood chips on his hands came out as dark specks stuck to the skin, e003-r2 s06);
 - warn smile: Tang Xiaotang "unsmiling" with no other expression written (she smiled anyway in both drafts, e005-r2 s39);
 - warn glow: a blue glow "from the empty air" or "no panel drawn" outside an eye extreme close-up (the model drew a glowing panel with fake text, e004-r2 s03);
@@ -87,7 +89,7 @@ def check(manifest):
         if re.search(r"Tang Xiaotang[^.]{0,300}\bunsmiling\b", comp) and not SMILE_OK.search(comp):
             found.append(("warn", "smile", "Tang Xiaotang unsmiling with no other expression"))
         body = comp.split(":", 1)[-1]
-        if INSERT.search(body) and "opens directly" not in text:
+        if INSERT.search(body) and "opens directly" not in text and "the very first frame is already" not in text:
             found.append(("warn", "insert", "insert without 'opens directly on this ... from its very first frame'"))
         onscreen = [name for name in NAMES if re.search(rf"\b{name}\b(?! off screen)(?![^.]{{0,25}}off screen)", comp)]
         for name in onscreen:

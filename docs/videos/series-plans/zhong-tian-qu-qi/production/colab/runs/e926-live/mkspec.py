@@ -23,6 +23,15 @@ Run: python3 -I mkspec.py
   set-xianjie-shi-l1 (s36, s38, s39). gen-dh's set-shiji-l1 is never sent. Every swap is sent with an absolute path by
   prep926.sh.
 - No seed of this episode has been run. Seeds 9261101/9261102.
+
+After the independent review (writer-tools/e026-r2/review.md; 2026-11-17, the coordinator deciding for the owner; r2.py's
+docstring AFTER THE INDEPENDENT REVIEW has the wording changes):
+- 必改 1: the seven inserts (s06, s18, s22, s31, s33, s36, s39) replace r2.py's "the shot opens directly on" with "the very
+  first frame is already a close view of": no d1 prompt says "open" (s18's stitched sheets read as a book opened).
+- 必改 3 + 建議: s40 has five customers backing away (with the man in grey, s35's six); "exactly seven people" is r2.py's.
+- 必改 8: s04 sends angles/xiaohe-angle-a-l1 after her portrait (add_pictures; prep926.sh inserts it with an absolute path);
+  the header, her identity sentence and the set clause are renumbered here (e925-live's way for Qin Shuang).
+- 建議 1: the back room s30-s34 sends the free brightened set-xuji-houjian-deng-l1 instead of the dark set-xuji-pu-houjian-l1.
 """
 import json
 from pathlib import Path
@@ -115,7 +124,20 @@ add("s28", [ONLY_HE, besides("him", "the young man in dark red on the step behin
 add("s35", [BESIDES_THEM, besides("them", "the six customers in the line")])
 add("s37", [ONLY_HE, besides("him", "the man in grey and the soft shoulder of the woman in the foreground")])
 add("s38", [" Initial composition:", " " + only("the man in grey and the two customers beside him,") + " Initial composition:"])
-add("s40", [ONLY_HE, besides("him", "the man on the ground and the six customers backing away")])
+add("s40", [ONLY_HE, besides("him", "the man on the ground and the five customers backing away")])
+
+# review 必改 1: no "open" in any d1 prompt; the inserts start on themselves in other words
+INSERTS = ["s06", "s18", "s22", "s31", "s33", "s36", "s39"]
+for sid in INSERTS:
+    add(sid, ["the shot opens directly on", "the very first frame is already a close view of"])
+
+# review 必改 8: her angle-a (face three-quarter to screen left, as in s04) after her portrait, before the set
+XIAOHE_A = "angles/xiaohe-angle-a-l1.png"
+shots["s04"]["add_pictures"] = [XIAOHE_A]
+add("s04", ["For the target video, <Picture 1> and <Picture 2> are referenced throughout.",
+            "For the target video, <Picture 1>, <Picture 2> and <Picture 3> are referenced throughout."])
+add("s04", ["little Xiaohe shown in <Picture 1> keeps", "little Xiaohe shown in <Picture 1> and <Picture 2> (the same girl from several angles) keeps"])
+add("s04", ["the location shown in <Picture 2> is the set", "the location shown in <Picture 3> is the set"])
 
 # Lines not said into a face on screen: the speaking gaze names the listener off screen, or the thing looked at.
 for sid, g in [
@@ -155,7 +177,7 @@ for sid in ["s08", "s09", "s11", "s14"]:
 for sid in ["s18", "s22"]:
     SWAP[sid] = {PU: "set-xuji-pu-cabinet-l1.png"}
 for sid in ["s30", "s30b", "s31", "s32", "s33", "s34"]:
-    SWAP[sid] = {PU: "set-xuji-pu-houjian-l1.png"}
+    SWAP[sid] = {PU: "set-xuji-houjian-deng-l1.png"}  # review 建議 1: the free brightened back room
 for sid in ["s25", "s40"]:
     SWAP[sid] = {SHIJI: "set-xianjie-l1.png"}
 for sid in ["s26", "s27", "s28", "s29"]:
@@ -180,10 +202,10 @@ spec = {
               "face: five speaking back shots (s01, s07, s12, s21, s24) drop her three pictures and her identity sentence; the "
               "silent back shot s23 never lists her. No person sent in s06, s18, s22, s25, s27, s31, s33, s36, s38, s39. Sets: "
               "set-tangfang-l1 (s02, s17), set-tangfang-jia-l1 (workshop close shots), set-tangfang-lu-l1 (s08, s09, s11, s14), "
-              "set-xuji-pu-l1 (s19-s21, s23, s24), set-xuji-pu-cabinet-l1 (s18, s22), set-xuji-pu-houjian-l1 (s30-s34), "
+              "set-xuji-pu-l1 (s19-s21, s23, s24), set-xuji-pu-cabinet-l1 (s18, s22), set-xuji-houjian-deng-l1 (s30-s34), "
               "set-xianjie-l1 (s25, s40), set-xianjie-weiji-l1 (s26-s29), set-xianjie-xuji-l1 (s35, s37), set-xianjie-shi-l1 "
               "(s36, s38, s39) (prep926.sh swaps with absolute paths). Xu Yan's angle-b nowhere (s15, s20 send his portrait then "
-              "angle-a). Steam under the workshop roof. No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). Seeds "
+              "angle-a). s04 adds Xiaohe's angle-a. The seven inserts never say 'open'. Steam under the workshop roof. No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). Seeds "
               "9261101/9261102."),
     "seeds": [9261101, 9261102],
     "shots": shots,
