@@ -14,7 +14,7 @@ const overview: PoolOverview = { series: [
   { key: "curio", name: "奇聞檔案局", revision: "2026-11-13-curio-pool-1512", audience_min: 6.5, themes_sha256: "a".repeat(64), counts },
   { key: "so-thats-why", name: "原來如此事務所", revision: "2026-11-13-pool-5125", audience_min: 6.5, themes_sha256: "b".repeat(64), counts: { ...counts, producible: 95 } },
 ] };
-const audience = { score: 7.08, rank: 3, of: 155, click: 7, hook: 7.5, surprise: 7, payoff: 7, share: 7, comment: "鬼故事對史書很過癮", reviewed_on: "2026-11-14", rounds: [{ score: 4.51, comment: "太冷門", changes: "片名改成問句", reviewed_on: "2026-11-14" }] };
+const audience = { score: 7.08, rank: 3, of: 155, click: 7, hook: 7.5, surprise: 7, payoff: 7, share: 7, demand: 7.75, base: 6.95, comment: "鬼故事對史書很過癮", reviewed_on: "2026-11-14", rounds: [{ score: 4.51, comment: "太冷門", changes: "片名改成問句", reviewed_on: "2026-11-14" }] };
 const theme = (fields: Partial<PoolTheme> = {}): PoolTheme => ({ id: "T78", title: "鬼故事裡的人名都是真的？", category: "G-靈異與超自然公案", core_question: "筆記裡的鬼拿實錄一對會怎樣？", target_minutes: 10, long: true, producible: true, material: { verdict: "ready", missing: null }, candidates: 3, audience, ...fields });
 const detail: PoolThemeDetail = { ...theme(), chapters: [{ title: "開場：一本筆記", seconds: 60, new_information: "筆記裡的鬼有名有姓" }], boredom_risk: "三段結構重複", drop_if: "來源對不上就刪章", evidence_gaps: "實錄卷數待補" };
 const themes = (items = [theme()]): PoolThemePage => ({ items, total: items.length, page: 1, page_size: 25, categories: [{ category: "G-靈異與超自然公案", count: 1 }] });

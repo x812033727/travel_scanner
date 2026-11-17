@@ -27,6 +27,8 @@ function audience(value) {
   const { score, rank, of, click, hook, surprise, payoff, share, comment, reviewed_on: reviewedOn } = value;
   return {
     score, rank, of, click, hook, surprise, payoff, share, comment, reviewed_on: reviewedOn,
+    // 需求（2026-11-17）：四個是非題換算的第六項與併分前的五項平均；還沒評的題案兩個都是 null。
+    demand: value.demand ?? null, base: value.base ?? null,
     rounds: (value.rounds ?? []).map((round) => ({ score: round.score, comment: round.comment, changes: round.changes, reviewed_on: round.reviewed_on })),
   };
 }

@@ -19,12 +19,23 @@
 
 站主 2026-11-14：「把分數寫回題目池」「之後擴充如果有成題的也要補評分」。
 
-- **評什麼：** 每一組可成 8 分鐘以上一集的長題案。分數寫在 `themes.json` 的 `audience`（`score`、`rank`／`of`、點擊／鉤子／驚喜／兌現／分享五項、短評、`reviewed_on`、`review`），排名表在 [THEMES.md](THEMES.md) 開頭。 入選的單集長題（`editorial.role` 為 `episode_core`、片長下限 ≥ 8 分鐘）同日抽樣評了 156 題，分數在 `reviews/audience-20261114.json` 的 `candidates`，build 會掛到 `pool.json` 該題的 `audience`；還沒評的單集題不擋。
+- **評什麼：** 每一組可成 8 分鐘以上一集的長題案。分數寫在 `themes.json` 的 `audience`（`score`、`rank`／`of`、點擊／鉤子／驚喜／兌現／分享五項、2026-11-17 起併入的第六項需求、短評、`reviewed_on`、`review`），排名表在 [THEMES.md](THEMES.md) 開頭。 入選的單集長題（`editorial.role` 為 `episode_core`、片長下限 ≥ 8 分鐘）同日抽樣評了 156 題，分數在 `reviews/audience-20261114.json` 的 `candidates`，build 會掛到 `pool.json` 該題的 `audience`；還沒評的單集題不擋。
 - **檢查會擋：** 素材審視為可成題（或未審）的題案沒有 `audience` 的可成題長題，`cli.mjs build`／`check` 直接失敗。擴充新增長題時，要先補評分再 build。
 - **怎麼補：** 派**沒參與該輪撰稿、研究與覆核的獨立子代理**，以第一次滑到的一般觀眾身分，只讀題案卡（片名、核心追問、目標分鐘、章節標題與新增理解），不讀 repo 其他檔案、不上網，五項各打 1–10 分。每批都放進 `reviews/audience-20261114.json` 的同一組 `anchors` 錨點題，用錨點平均的差扣掉該評審的鬆緊，再併入全池重排 `rank`／`of`。新紀錄存成 `reviews/audience-<日期>.json`，題案的 `review` 指向它。
-- **擴充的成題要「初評 → 改進 → 複評」才入題（站主 2026-11-14，門檻 6.5）：** 新長題先照上面的方法初評，再交給沒參與撰稿與評分的改寫代理，依短評只改包裝：片名、核心追問、章節標題與講法、章節順序（開場與收尾不動）。秒數、章節數、用到的素材都不變，新文字不得出現原文沒有的數字。改完另派獨立評審複評，複評比原分高才採用；複評 ≥ 6.5 才算可成題。`audience.rounds` 記錄先前各輪的分數、短評和改了什麼。除了 `reviews/audience-20261114.json` 這份基準初評，其他評分紀錄只要缺 `rounds` 或低於 6.5，`build`／`check` 都會擋。最多改兩輪，還不到門檻就把素材審視改成「後備」，並寫明分數。
+- **擴充的成題要「初評 → 改進 → 複評」才入題（站主 2026-11-14，門檻 6.5）：** 新長題先照上面的方法初評，再交給沒參與撰稿與評分的改寫代理，依短評只改包裝：片名、核心追問、章節標題與講法、章節順序（開場與收尾不動）。秒數、章節數、用到的素材都不變，新文字不得出現原文沒有的數字。改完另派獨立評審複評，複評比原分高才採用；複評 ≥ 6.5 才算可成題（2026-11-17 起，這個 6.5 看的是併入需求後的總分）。`audience.rounds` 記錄先前各輪的分數、短評和改了什麼。除了 `reviews/audience-20261114.json` 這份基準初評，其他評分紀錄只要缺 `rounds` 或低於 6.5，`build`／`check` 都會擋。最多改兩輪，還不到門檻就把素材審視改成「後備」，並寫明分數。
 - **2026-11-14 現有可成題全部跑過一次：** 不論初評高低，全部改寫、複評一輪（`reviews/audience-20261114-r2.json`），未達 6.5 的再改一輪（`reviews/audience-20261114-r3.json`），兩輪後仍未達的改成後備。
 - **後台：** 影片後台的「題目池」分頁（`/admin/videos?tab=pools`）唯讀顯示兩池的成題、分數、改進紀錄與擴池批次。資料包 `apps/api/app/video_pools/data/pools.json` 由 `cli.mjs build` 自動重產，記得一起提交。
+- **第六項「需求」（站主 2026-11-17：「跟池子裡的評分機制整合」「併成一個總分」「門檻維持 6.5 看總分」）：** 照參考頻道觀看數歸納的四個是非題：台灣或東亞觀眾本來就認得（`east_asia`）、預言末日或鬼魂死後（`prophecy_ghost`）、古文明或外星（`ancient_alien`）、主角全世界叫得出名字（`famous`）。依據是馬臉姐與 cheap 最新 200 支的題材分組，量測在 [channel-review-20261116](../../channel-review-20261116/README.md)。
+  - **換算與併分：** `demand = 1 + 2.25 × 答「是」的題數`（0 題 1 分、4 題 10 分）；`score =（五項平均 × 5 + demand）÷ 6`。五項平均留在 `audience.base`，四個答案在 `demand_answers`，一句理由在 `demand_reason`，紀錄在 `demand_review` 指的 `reviews/demand-<日期>.json`。需求是事實型判斷，不做錨點校正。四問與公式寫在 `tools/video/curio/pool/render.mjs` 的 `DEMAND_QUESTIONS`、`demandScore`、`blendedScore`。
+  - **檢查會擋：** 可成題的題案沒有 `audience.demand`、`demand` 跟答案對不上、`score` 不等於併分公式，`build`／`check` 都失敗。還不是可成題的題案可以沒有需求分，`score` 就是五項平均。
+  - **門檻：** 6.5 看的是併入需求後的 `score`。2026-11-17 第一次併分評了 77 組，54 組掉到 6.5 以下，改成後備（`material.was` 記著原本是可成題，`missing` 寫總分），剩 23 組可成題。基準初評 `reviews/audience-20261114.json` 的題案只豁免「要有 `rounds`」那一條；有了需求分之後，總分一樣要到 6.5。
+- **擴充時的順序（2026-11-17 起）：**
+  1. **選方向時先看四問。** 一個題案四問全否，需求只有 1 分，五項平均要 7.6 以上總分才到 6.5；中一題要 7.15、中兩題要 6.7。開新一批前先挑至少中一題的方向，不要等評完才發現過不了。
+  2. 組好題案、過素材審視後，照上面「怎麼補」做五項初評。
+  3. 另派**沒參與撰稿與五項評分的獨立子代理**答四問：只讀題案卡的片名、核心追問、章名，不讀 repo、不上網，拿不準答否，每題附一句理由。每批放三組已評過的題案當重複題，答案跟舊紀錄不一致就停下來對四問的寫法，不硬寫回。
+  4. 併分，寫進 `audience`，全池重排 `rank`／`of`。
+  5. 總分不到 6.5 的照「初評 → 改進 → 複評」改包裝再評。改寫只能提高五項；四問的答案只有題案的主題真的換了才會變，改片名去湊四問不算。兩輪後仍不到 6.5 的改成後備。
+  6. `build`，把 `reviews/demand-<日期>.json`、`themes.json` 與重產的輸出一起提交。
 - **它不是什麼：** 題案吸引力的參考，不是成片評分（成片仍要走 `review/audience-review.md` 的觀眾審片關卡），也不是點閱率預測。
 
 ## 目前的結果（2026-11-15，revision `2026-11-15-curio-pool-1669`）
@@ -1793,6 +1804,7 @@ python -X utf8 tools/video/curio/pool/semantic.py --input docs/videos/history-cu
 **下一批**
 - 新題寫成 `batches/<wave>.json` 的 `candidates`；舊題的研究寫 `legacy_updates`。
 - 處置寫進 `dedup-decisions.json`，選入名單寫進 `selection.json`。
+- 新組的長題案要有五項觀眾評分與需求分才能 build，順序照上面〈獨立觀眾評分〉的「擴充時的順序」；選題方向先看需求四問。
 - 題庫被別的票改過時，`check` 會報漂移：
   - 重新 build；
   - 改動的原始紀錄要在 `selection.json` 的 `raw_changes` 寫理由；
