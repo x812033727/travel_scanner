@@ -75,28 +75,28 @@
    "file": "Wind",
    "at": "s14",
    "off": 0,
-   "gain": -8,
+   "gain": -5,
    "to": "s24"
   },
   {
    "file": "Wind",
    "at": "s25",
    "off": 0,
-   "gain": -7,
+   "gain": -6,
    "to": "s26"
   },
   {
    "file": "Wind",
    "at": "s34",
    "off": 0,
-   "gain": -7,
+   "gain": -6,
    "to": "s37"
   },
   {
    "file": "Wind",
    "at": "s27",
    "off": 0,
-   "gain": -10,
+   "gain": -8,
    "to": "s33"
   },
   {
@@ -461,6 +461,10 @@
   "s31": {
    "from": 0,
    "af": "volume=1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s34": {
+   "from": 0,
+   "af": "volume=-1.0dB"
   }
  },
  "voice_off": [

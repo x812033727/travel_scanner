@@ -24,6 +24,10 @@ Run: python3 -I mkspec.py
   prop-huangzhi-l1 (s11), set-guangchang-di-l1 (s15), set-guangchang-an-l1 (s21); afternoon (the bible's free grade):
   set-guangchang-pm-zuo-l1 (s27, s29), -pm-di-l1 (s28), -pm-tai-l1 (s30), -pm-shu-l1 (s31), -pm-you-wu-l1 (s32-s35). gen-dh's
   set-guangchang-l1 is never sent. Every swap is sent with an absolute path by prep929.sh.
+- After the independent review (writer-tools/e029-r2/review.md, 2026-11-17): s27's 'only' sentence no longer counts her as named
+  and says she is the only young woman in the frame (必改 5); s35 Xu Yan "one step before her in the right third" (必改 6); s30 Wei
+  "beyond her right shoulder" (建議 1); s20 the hands "gripping his shoulders" (建議 4); s25's gaze "toward the square below at the
+  lower right" (建議 5). The rest of the review is in r2.py (video.json) and prop-huangzhi-l1 (redone, same id).
 - No seed of this episode has been run. Seeds 9291101/9291102.
 """
 import json
@@ -83,11 +87,12 @@ for sid, onl in [
     ("s16", [ONLY_SHE, ALONE]),
     ("s24", [ONLY_SHE, ALONE]),
     ("s26", [ONLY_SHE, ALONE]),
-    ("s27", [ONLY_2, "Only these 2 named people, the young woman seen only from behind and Xu Yan at her right, and the six "
-                     f"customers the composition describes are in the frame; {ONE_TANG}; no second copy of anyone appears."]),
-    ("s30", [ONLY_2, back("Wei Shaoqing small on the platform beyond her")]),
+    # e029 review 必改 5: she is not a "named" person, and she is the only young woman (the customers are each an age)
+    ("s27", [ONLY_2, "Only Xu Yan, the young woman seen only from behind and the six customers the composition describes are in "
+                     f"the frame; she is the only young woman in the frame; {ONE_TANG}; no second copy of anyone appears."]),
+    ("s30", [ONLY_2, back("Wei Shaoqing small on the platform beyond her right shoulder")]),
     ("s33", [ONLY_SHE, ALONE]),
-    ("s35", [ONLY_2, back("Xu Yan half a step before her")]),
+    ("s35", [ONLY_2, back("Xu Yan one step before her in the right third of the frame")]),  # e029 review 必改 6
 ]:
     add(sid, [TANG_ID, ""])
     add(sid, onl)
@@ -105,7 +110,7 @@ add("s01", [ONLY_3, only("these 3 named people and the back of the kneeling man 
 for sid in ["s05", "s12"]:
     add(sid, [ONLY_3, only("these 3 named people, the back of the kneeling man and the eight townspeople the composition describes")])
 add("s18", [BESIDES_THEM, ONLY_2])
-add("s20", [ONLY_HE, besides("him", "the two hands on his back")])
+add("s20", [ONLY_HE, besides("him", "the two hands gripping his shoulders")])  # e029 review 建議 4
 add("s23", [ONLY_HE, besides("him", "the two black-sleeved hands at the edges")])
 # the composition already says it (e927 review 建議: no doubled 'only' sentence)
 for sid in ["s03", "s04", "s06", "s07", "s08", "s09", "s13", "s17", "s19", "s22", "s25", "s29", "s31", "s32", "s34"]:
@@ -128,7 +133,7 @@ for sid, g in [
     ("s20", UP_LEFT),
     ("s22", "his face turned down three-quarter to screen right toward the earth below the platform beyond the lower right edge of the frame, his eyes on it"),
     ("s23", UP_LEFT),
-    ("s25", "his face three-quarter to screen right toward the middle of the platform below, his eyes on it"),
+    ("s25", "his face three-quarter to screen right toward the square below at the lower right, his eyes on it"),  # e029 review 建議 5
     ("s31", LEFT), ("s34", LEFT),
 ]:
     add(sid, [SPEAK_GAZE_HE, g])
