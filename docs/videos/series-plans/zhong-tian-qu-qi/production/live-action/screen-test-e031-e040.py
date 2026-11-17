@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""screen-test-e031-e040.py OUT_DIR [--with-chen] [--horse-star] | OUT_DIR --r2|--r3|--r4 | OUT_DIR [--r2|--r3|--r4] --sheet :
+"""screen-test-e031-e040.py OUT_DIR [--with-chen] [--horse-star] | OUT_DIR --r2|--r3|--r4|--r5 | OUT_DIR [--r2..--r5] --sheet :
 the screen test of arc 4
 (e031-e040 r2, 〈旱年〉), written 2026-11-17 before the arc's first episode, the way arc 3's was (screen-test-e021-e030.py).
 NOT run by the writer (Colab Qwen-Image-Edit, paid; the coordinator runs it, approved 2026-11-17, bible 待決事項 1).
@@ -66,11 +66,15 @@ buttons and drew the scar as fresh red cuts), prop-zaohongma-l1 with its tack wr
 horse pictures drew an English saddle on a quilted pad), set-shangyou-ba-l1, set-shentan-l1 and set-shanjiao-qu-l1 with
 TRIPOD_LENS (round 2's "taken by a person standing on the ground" put people into three pictures) - and
 set-gucang-wai-l1 (the filed set-hantian-yang-l1 with a low plank granary added on the right, its door swung back).
-Round 4 (--r4): seeds 37043/37044, OUT_DIR/r4.json, out-r4/: set-shentan-gongdi-l1 (set-shentan-l1, the wheel half built)
-and set-shanjiao-qu-ye-l1 (set-shanjiao-qu-l1 relit to a clear night with a thin setting moon); it stops with a clear
-message until those round-3 picks are filed in refs-live.
+Round 4 (--r4, rewritten 2026-11-17 after the round-3 picks): 4 pictures x seeds 37043/37044 = 8 jobs, OUT_DIR/r4.json,
+out-r4/: prop-zaohongma-l1 (round-3 seed 37042 with its back made bare: every horse so far drew an English saddle on a
+quilted pad), set-shanjiao-qu-l1 (round-3 seed 37041 with the ditch dry and an earth bank with a sluice board where its
+plank bridge was), set-shentan-gongdi-l1 (the filed set-shentan-l1 with the wheel half built) and set-shentan-qu-l1 (a
+free crop of set-shentan-l1's pale strip, made into OUT_DIR/base/, with one edit digging a ditch in it).
+Round 5 (--r5): seeds 37045/37046, set-shanjiao-qu-ye-l1 (the round-4 set-shanjiao-qu-l1 relit to night); it stops until
+that pick is filed.
 Round 1 can no longer be regenerated as it ran: its picks are filed and the job loop refuses an id that is already in
-refs-live; OUT_DIR/e031-e040.json stays as it was run (--sheet still works). Each round writes its prompt files to its own folder (OUT_DIR/prompts/, prompts-r2/ ... prompts-r4/), so a retaken id never
+refs-live; OUT_DIR/e031-e040.json stays as it was run (--sheet still works). Each round writes its prompt files to its own folder (OUT_DIR/prompts/, prompts-r2/ ... prompts-r5/), so a retaken id never
 overwrites the round-1 text that e031-e040.json still points at.
 The positive prompts are written only as what is there (bible 拍法 18); the things to keep out are in the negative files.
 
@@ -89,14 +93,14 @@ from pathlib import Path
 
 out = Path(sys.argv[1])
 FLAGS = set(sys.argv[2:])
-assert FLAGS <= {"--with-chen", "--horse-star", "--sheet", "--r2", "--r3", "--r4"}, f"unknown flag(s): {FLAGS}"
-ROUND = 4 if "--r4" in FLAGS else 3 if "--r3" in FLAGS else 2 if "--r2" in FLAGS else 1
+assert FLAGS <= {"--with-chen", "--horse-star", "--sheet", "--r2", "--r3", "--r4", "--r5"}, f"unknown flag(s): {FLAGS}"
+ROUND = 5 if "--r5" in FLAGS else 4 if "--r4" in FLAGS else 3 if "--r3" in FLAGS else 2 if "--r2" in FLAGS else 1
 assert not (ROUND > 1 and FLAGS & {"--with-chen", "--horse-star"}), "--with-chen / --horse-star are round-1 flags"
-assert len(FLAGS & {"--r2", "--r3", "--r4"}) <= 1, "one round at a time"
+assert len(FLAGS & {"--r2", "--r3", "--r4", "--r5"}) <= 1, "one round at a time"
 here = Path(__file__).resolve().parent
 LIVE = here.parent / "assets" / "refs-live"
 NAME = "e031-e040"
-SEEDS = {1: (37037, 37038), 2: (37039, 37040), 3: (37041, 37042), 4: (37043, 37044)}[ROUND]
+SEEDS = {1: (37037, 37038), 2: (37039, 37040), 3: (37041, 37042), 4: (37043, 37044), 5: (37045, 37046)}[ROUND]
 ROUND_NAME = NAME if ROUND == 1 else f"r{ROUND}"          # manifest OUT_DIR/<ROUND_NAME>.json
 ROUND_OUT = out / ("out" if ROUND == 1 else f"out-r{ROUND}")  # where the runner script puts the PNGs
 
@@ -643,27 +647,77 @@ elif ROUND == 3:
                      NEG + NO_WHEEL + ", second building, many buildings, signboard on the granary, lanterns, carts, "
                                       "people, fence", 1312, 736, "one change of set-hantian-yang-l1"))
 elif ROUND == 4:
-    # Round 4: one-change edits of round-3 picks; stops until those are filed.
+    # Round 4 (2026-11-17, after the round-3 picks: screen-test-e031-e040-r1-picks.md 〈第三輪挑片〉). Three of them are
+    # one-change edits of a round-3 seed that was right except for one thing; set-shentan-gongdi-l1 and set-shentan-qu-l1
+    # build on the filed set-shentan-l1 (37041). set-shanjiao-qu-ye-l1 moves to round 5: its base is a round-4 edit.
     pictures = []
-    gongdi = ("Image 1 is a photograph of a deep pool in a gully with a wooden water wheel: keep exactly everything in it - "
-              "the camera position, the pool, its banks, the boulder, the field ridge, the dry fields, the stone channel, "
-              "the sluice board and the noon light. Change only one thing: the water wheel is half built: only its two "
-              "heavy wooden A-frames and the thick wooden axle laid across them stand there, with half of the spokes "
-              "fitted on one side and the rim and paddles still missing; a pile of sawn timber, planks and bamboo tubes "
-              "lies on the bare patch of the left bank." + KEEP_TAIL)
-    qu_ye = ("Image 1 is a photograph of a dry irrigation ditch at the foot of a hillside: keep exactly everything in it - "
-             "the camera position, the ditch, the earth bank across it with the sluice board and the straw, the heaps of "
-             "dug soil, the hillside, the far patch of rice. Change only one thing, the time and the light: it is a clear "
-             "night late in the night; a thin crescent moon low in the west at the upper left, its cold blue light faint "
-             "on the earth, the ditch bottom and the hillside in deep shadow, the sky dark blue with stars." + KEEP_TAIL)
-    pictures += [
-        ("set-shentan-gongdi-l1", "e033 c14", filed("set-shentan-l1", "set-shentan-gongdi-l1"), gongdi,
-         NEG + ", finished water wheel, paddles on the rim, complete rim, two wheels, tower, crane, scaffolding with people",
-         1312, 736, "one change of set-shentan-l1"),
-        ("set-shanjiao-qu-ye-l1", "e037 c01", filed("set-shanjiao-qu-l1", "set-shanjiao-qu-ye-l1"), qu_ye,
-         NEG + NIGHT_NEG + ", full moon, bright moon, torch, fire, lamps, water in the ditch", 1312, 736,
-         "relight of set-shanjiao-qu-l1"),
-    ]
+
+    def r3_seed(pid, seed):
+        p = out / "out-r3" / f"{pid}-{seed}.png"
+        assert p.is_file(), f"{p} is missing: round 4 edits that round-3 seed"
+        return p
+
+    shentan = filed("set-shentan-l1", "set-shentan-gongdi-l1 and set-shentan-qu-l1")
+    # horse: 37042 is the most real horse of the six (matte coat, plain forehead, red-brown mane and tail like e930 s36
+    # 9301101) but carries an English saddle on a quilted pad again, with or without the word. Its back is made bare: a
+    # bareback reference makes no saddle shape win over the shot's own words for the old plain saddle.
+    horse4 = ("Image 1 is a photograph of one chestnut horse standing side-on in a plain grey photo studio: keep exactly "
+              "everything in it - the camera position and the framing, the whole horse, its pose, its red-brown coat, its "
+              "red-brown mane and tail, its plain forehead and face, its hooves, the dark leather bridle and reins, the "
+              "grey backdrop, the light and the shadow under it. Change only one thing: its back is bare, the smooth "
+              "red-brown coat running unbroken from the withers over the back to the croup and down its sides and belly, "
+              "the bare coat and its glossy hair all that is there." + KEEP_TAIL)
+    pictures.append(("prop-zaohongma-l1", "e038 c20", r3_seed("prop-zaohongma-l1", 37042), horse4,
+                     "3D render, CGI, glossy plastic coat, cartoon, illustration, text, writing, watermark, logo, people, "
+                     "rider, saddle, English saddle, saddle pad, quilted pad, blanket, girth, stirrups, straps on the back, "
+                     "white star, blaze, white socks, black mane, black tail, two horses, black bars, border", 1312, 736,
+                     "one change of round-3 seed 37042 (bare back)"))
+    # shanjiao-qu: 37041 is the only real-looking empty ditch (no people, no village); the ditch holds water and a plank
+    # bridge crosses where the earth bank with its sluice board should be. One spot changes.
+    qu4 = ("Image 1 is a photograph of an irrigation ditch in dry fields: keep exactly everything in it - the camera "
+           "position, the ditch running away from the camera, the heaps of dug brown earth along its left side, the heap "
+           "of dry straw, the trees and the bank on the left, the green rice field on the right, the far fields and the "
+           "sky and the light. Change only the ditch: its bottom is dry brown earth from end to end, cracked and bare; "
+           "where the wooden planks lie across it, a raised bank of packed earth three strides wide crosses the ditch "
+           "instead, one plain wooden sluice board standing upright in a slot in the middle of the bank." + KEEP_TAIL)
+    pictures.append(("set-shanjiao-qu-l1", "e036 c14", r3_seed("set-shanjiao-qu-l1", 37041), qu4,
+                     NEG + NO_WHEEL + ", water, puddle, wet mud, reflection, planks across the ditch, footbridge, bridge, "
+                                      "village, houses, people, concrete, pipes", 1312, 736,
+                     "one change of round-3 seed 37041"))
+    gongdi = ("Image 1 is a photograph of a wooden water wheel beside a small pond in dry fields: keep exactly everything "
+              "in it - the camera position, the pond and its stone-edged banks, the wooden steps and the little plank "
+              "landing on the left, the tall wooden post frame on the left with its rope, the overhead wooden beam on "
+              "posts on the right, the big grey boulder at the lower right, the dry fields, the sky and the light. Change "
+              "only one thing: the water wheel is half built: its heavy wooden support frame and the thick round wooden "
+              "axle laid on it stand there, half of the spokes fitted on one side, the rim still missing; a pile of sawn "
+              "timber, planks and long bamboo poles lies on the bare earth bank beside it." + KEEP_TAIL)
+    pictures.append(("set-shentan-gongdi-l1", "e033 c14", shentan, gongdi,
+                     NEG + ", finished water wheel, complete rim, paddles on the rim, two wheels, tower, crane, people, "
+                           "workers", 1312, 736, "one change of set-shentan-l1"))
+    # shentan-qu: set-shentan-l1 has no earth ditch to crop (its trough is a flat beam on posts and the pale strip on the
+    # right is a raised path), so the crop of that strip is made here for free and one edit digs the ditch in it.
+    qu_base = out / "base" / "set-shentan-l1-qu-crop.png"
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(shentan), "-vf",
+                    "crop=412:232:900:330,scale=1312:736:flags=lanczos", str(qu_base)], check=True)
+    qu = ("Image 1 is a photograph of the edge of dry fields beside a pond: keep exactly everything in it - the camera "
+          "position, the two tall wooden posts, the dry furrowed field and the far flat land, the big grey boulder and the "
+          "stones at the bottom, the short wooden fence at the right, the hard sunlight and the shadows. Change only one "
+          "thing: the pale flat strip of ground running across the middle of the picture is a narrow freshly dug earth "
+          "ditch, about a stride wide and knee deep, its sides cut sharp in brown earth, its bottom dry, running from "
+          "the posts on the left away to the upper right toward the fields." + KEEP_TAIL)
+    pictures.append(("set-shentan-qu-l1", "e034 c26", qu_base, qu,
+                     NEG + NO_WHEEL + ", water, concrete channel, stone channel, pipes, road, path, people", 1312, 736,
+                     "one change of a crop of set-shentan-l1"))
+elif ROUND == 5:
+    pictures = []
+    qu_ye = ("Image 1 is a photograph of a dry irrigation ditch: keep exactly everything in it - the camera position, the "
+             "ditch, the earth bank across it with the sluice board, the heaps of dug soil and the straw, the trees on the "
+             "left, the far fields. Change only one thing, the time and the light: it is a clear night late in the night; "
+             "a thin crescent moon low at the upper left, its cold blue light faint on the earth, the ditch bottom and the "
+             "trees in deep shadow, the sky dark blue with stars." + KEEP_TAIL)
+    pictures.append(("set-shanjiao-qu-ye-l1", "e037 c01", filed("set-shanjiao-qu-l1", "set-shanjiao-qu-ye-l1"), qu_ye,
+                     NEG + NIGHT_NEG + ", full moon, bright moon, torch, fire, lamps, water in the ditch", 1312, 736,
+                     "relight of set-shanjiao-qu-l1"))
 
 jobs, summary = [], []
 for pid, first, base, body, neg, w, h, how in pictures:
