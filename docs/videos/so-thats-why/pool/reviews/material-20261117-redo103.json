@@ -1,0 +1,1764 @@
+{
+  "reviewed_on": "2026-11-17",
+  "round": "redo103",
+  "owner_instruction": "站主 2026-11-17「原來如此也要擴充」選「重做被隔離的 30 組 (Recommended)」。",
+  "bar": "同第三十八輪：可成題要有至少 8.5 分鐘素材（≥11.4 條加權事實）與兩個改變結論的轉折；只算有可讀紀錄的外部全文來源；同一研究網（直接合著）封頂 2.0；可成題長題另要經獨立觀眾評分 ≥ 6.5。本輪另定：OpenStax 不計入來源（頁面條款寫明不得被大型語言模型攝取，授權為 CC BY-NC-SA，頻道是商業用途）。",
+  "method": "30 組裡主題重複的 14 組（快充電池、固態硬碟、深海熱泉、氣凝膠、記憶合金、麵包各有 2–3 組）每類只留分數最高的一組，其餘 8 組不重做。22 組分給 11 個研究代理（SR0–SR10，每位兩組），舊卡只當未查證的方向，用同一支會記錄請求的抓取工具讀開放全文，寫新卡（K103-xxxx，問句與 mechanism_key 都不同於舊卡）與新章節；11 位非作者覆核（SV0–SV10）對照請求紀錄與快取雜湊、每組重抓 3 篇關鍵全文、用 Europe PMC 作者查詢查研究網合著並重算加權事實。覆核判 ready 的 11 組做觀眾複評（兩位評審、六組未改動題案校正），未達 6.5 的 9 組做一輪改包裝再複評。",
+  "dropped_as_duplicate": {
+    "G670": "G679",
+    "G676": "G688",
+    "G697": "G688",
+    "G681": "G707",
+    "G695": "G707",
+    "G696": "G705",
+    "G702": "G708",
+    "G682": "G674"
+  },
+  "verdicts": {
+    "G668": {
+      "reviewer": "SV0",
+      "author": "SR0",
+      "verdict": "ready",
+      "est_minutes": 9.32,
+      "fact_count": 12.5,
+      "networks": 8,
+      "missing": "",
+      "changes": [
+        "K103-0007：外殼停在 100 °C 的時間從「約 20 秒」改成原文的約 25 秒",
+        "K103-0005：葵花油與高油酸葵花油的氧化單體 7.7–9.2% 改成 7.7–9.0%",
+        "K103-0006：標明脂肪酸降幅合併了兩個產季，2.3% 游離脂肪酸屬另一個產季",
+        "K103-0004：問句「老到該換」改成劣化刻度的說法（避免用油建議語氣）",
+        "第三章標題改成「劣化刻度」；第一、五、六章 new_information 加上實驗條件（烘箱加熱、補油差異、空鍋加熱）"
+      ],
+      "unverified": [
+        "24–25% 的上限只來自三篇論文的整理（24–30%、24–27%、歐盟 24%），沒有直接讀任何法規原文；口播要說成「論文整理的各國上限」",
+        "33／17／4 小時是綜述轉述作者自家前作",
+        "吸油斷層掃描用的是模型麵糰加新油，「老油附著較多」只有綜述轉述",
+        "連續和間歇油炸兩篇結論不一致，只能並陳",
+        "合著只查了 CSIC 那一網（0 筆），其他網只比對作者列"
+      ],
+      "note": "19 個來源的請求紀錄、雜湊和全文都對得上，PMC 編號都能在作者自己的搜尋回應裡找到；逐卡核對後只有三個小數字和一處語氣要改，八網 12.5 條、兩個轉折都成立，判 ready。第五關改寫掉丙烯醯胺是對的（避開食安），但「24–25% 線」那章要守住化學刻度的口吻，不能講成可不可以吃。",
+      "refetched": [
+        {
+          "seq": 1,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11911452/fullTextXML",
+          "status": 200,
+          "bytes": 168239,
+          "for": "G668",
+          "checked": "SR0-S005；與作者 seq=8 位元組數與雜湊完全相同（168239，b7a1593fcd26aca6）"
+        },
+        {
+          "seq": 2,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8701874/fullTextXML",
+          "status": 200,
+          "bytes": 191289,
+          "for": "G668",
+          "checked": "SR0-S006；與作者 seq=10 完全相同（191289，e396f1452fa9fcb3）"
+        },
+        {
+          "seq": 3,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9002916/fullTextXML",
+          "status": 200,
+          "bytes": 112256,
+          "for": "G668",
+          "checked": "SR0-S003；與作者 seq=5 完全相同（112256，80820cbddcb64a01）"
+        },
+        {
+          "seq": 8,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28AUTH%3A%22Marquez-Ruiz%20G%22%20OR%20AUTH%3A%22Ruiz-Mendez%20MV%22%20OR%20AUTH%3A%22Velasco%20J%22%29%20AND%20%28AUTH%3A%22Goicoechea%20E%22%20OR%20AUTH%3A%22Nieva-Echevarria%20B%22%20OR%20AUTH%3A%22Guillen%20MD%22%20OR%20AUTH%3A%22Szydlowska-Czerniak%20A%22%20OR%20AUTH%3A%22Blanchard%20CL%22%20OR%20AUTH%3A%22Prenzler%20PD%22%20OR%20AUTH%3A%22Nicolai%20BM%22%20OR%20AUTH%3A%22Verboven%20P%22%20OR%20AUTH%3A%22Poklar%20Ulrih%20N%22%20OR%20AUTH%3A%22Marklund%20M%22%29&format=json&pageSize=50&resultType=lite",
+          "status": 200,
+          "bytes": 498,
+          "for": "G668",
+          "checked": "合著查詢：CSIC 作者群和其他網作者，0 筆"
+        },
+        {
+          "seq": 9,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28AUTH%3A%22Goicoechea%20E%22%20OR%20AUTH%3A%22Nieva-Echevarria%20B%22%20OR%20AUTH%3A%22Szydlowska-Czerniak%20A%22%20OR%20AUTH%3A%22Blanchard%20CL%22%20OR%20AUTH%3A%22Prenzler%20PD%22%29%20AND%20%28AUTH%3A%22Nicolai%20BM%22%20OR%20AUTH%3A%22Verboven%20P%22%20OR%20AUTH%3A%22Poklar%20Ulrih%20N%22%20OR%20AUTH%3A%22Marklund%20M%22%20OR%20AUTH%3A%22Wu%20JHY%22%20OR%20AUTH%3A%22Szydlowska-Czerniak%20A%22%20OR%20AUTH%3A%22Blanchard%20CL%22%20OR%20AUTH%3A%22Yu%20X%22%20OR%20AUTH%3A%22Albergamo%20A%22%29&format=json&pageSize=50&resultType=lite",
+          "status": 200,
+          "bytes": 42986,
+          "for": "G668",
+          "checked": "合著查詢：查詢式寫法有誤（OR 自身命中），共 209 筆都是各自的論文，第一頁沒有交叉合著，只能當參考"
+        }
+      ]
+    },
+    "G669": {
+      "reviewer": "SV0",
+      "author": "SR0",
+      "verdict": "reserve",
+      "est_minutes": 5.22,
+      "fact_count": 7.0,
+      "networks": 6,
+      "missing": "加權只有 7.0 條（約 5.2 分鐘），差 4.4 條：OpenStax 不計（主編規則）後，需要一個非 OpenStax 的內耳機制來源（前庭器官如何感覺重力與轉動）；另外三個研究網因直接合著併成一網、封頂 2.0，需再補至少 3 個和 SR0-S009／S010／S011／S017／S018 作者群沒有直接合著的開放全文研究，最好有真正單腳閉眼的量測。片名已改，需重新做觀眾評分。",
+      "changes": [
+        "依主編規則 OpenStax 不計：K103-0108 改 needs_check 並移出章節（另外更正它「耳石只對速度變化有反應」的錯誤），K103-0109 刪除",
+        "合著查詢發現 NET_I、NET_J、NET_P 有直接合著，三網合併、封頂 2.0",
+        "片名改成「閉上眼單腳站，身體為什麼馬上晃起來？」，核心追問加上「站立」（需重新評分）",
+        "轉折一改以泡棉資料為主卡（視覺 5–12% 只在視野傾斜的條件量得）；轉折二改寫成「內耳是最後才上場的備援」（原寫法和太空人資料方向相反）",
+        "K103-0110：刪掉沒有根據的「睜眼」，更正電極種類",
+        "K103-0101、K103-0107 的 payoff 改寫；章節 candidate_ids 與 new_information 跟著重排"
+      ],
+      "unverified": [
+        "單腳閉眼的權重沒有直接量測，權重和泡棉研究都是雙腳站",
+        "「約 2 秒開始晃」來自雙腳站的綜述統計估計",
+        "內耳感知門檻引自他人文獻"
+      ],
+      "note": "來源都是真的，數字也大多對得上，但 OpenStax 不計之後，再加上三網因合著併成一網，加權只剩 7.0 條（約 5.2 分鐘），撐不到 8.5 分鐘；原片名「幾秒就站不穩」有反證，一定要改，所以判 reserve。",
+      "refetched": [
+        {
+          "seq": 4,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6277541/fullTextXML",
+          "status": 200,
+          "bytes": 119566,
+          "for": "G669",
+          "checked": "SR0-S010；與作者 seq=15 完全相同（119566，5ad2b363fdb71f35）"
+        },
+        {
+          "seq": 5,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5476729/fullTextXML",
+          "status": 200,
+          "bytes": 109019,
+          "for": "G669",
+          "checked": "SR0-S017；與作者 seq=25 完全相同（109019，f9043090bd0fef84）"
+        },
+        {
+          "seq": 6,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6300494/fullTextXML",
+          "status": 200,
+          "bytes": 208594,
+          "for": "G669",
+          "checked": "SR0-S009；與作者 seq=14 完全相同（208594，1d01688c0d554561）"
+        },
+        {
+          "seq": 7,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=AUTH%3A%22Peterka%20RJ%22%20AND%20%28AUTH%3A%22Paloski%20WH%22%20OR%20AUTH%3A%22Reschke%20MF%22%20OR%20AUTH%3A%22Jeka%20JJ%22%20OR%20AUTH%3A%22Schieppati%20M%22%20OR%20AUTH%3A%22Mulavara%20AP%22%20OR%20AUTH%3A%22Agrawal%20Y%22%20OR%20AUTH%3A%22Wood%20SJ%22%20OR%20AUTH%3A%22Bloomberg%20JJ%22%20OR%20AUTH%3A%22Goel%20R%22%20OR%20AUTH%3A%22Oddsson%20L%22%29&format=json&pageSize=50&resultType=lite",
+          "status": 200,
+          "bytes": 3229,
+          "for": "G669",
+          "checked": "合著查詢：SR0-S009 的作者和 SR0-S017 的作者（2024–2026 三篇）、和 SR0-S010／S011 的作者（1999 一篇）有直接合著，三網合併"
+        }
+      ]
+    },
+    "G671": {
+      "reviewer": "SV1",
+      "author": "SR1",
+      "verdict": "reserve",
+      "est_minutes": 8.2,
+      "fact_count": 11.0,
+      "networks": 7,
+      "missing": "加權 11.00 條（約 8.20 分），離門檻 11.4 條差 0.40 條。拿掉 OpenStax 背景卡（K103-0313）後低於門檻：需要補一個非 OpenStax、與既有七網都沒有直接合著的開放全文來源，至少撐 0.5 條（最好 1.0 條）；最自然的位置是第四章，換一份講氣體溶解度隨壓力與溫度變化的非教科書開放來源（或標準機構文件），或一篇直接量測濃縮咖啡泡沫中二氧化碳的論文。",
+      "changes": [
+        "K103-0313（OpenStax）改 needs_check、加權 0、移出第四章（主編規則）；NET_OPENSTAX 不計。",
+        "K103-0312：30 秒泡沫指數最高的是 CO2/N2 混合氣 88.8%，不是 CO2 與笑氣；刪掉未核對的「七比三」；崩塌時間補正文「不到 90 秒」；第五章與轉折二的「泡沫最多」改「很多」。",
+        "K103-0310：刪掉正文找不到的「約 5 個百分點」。",
+        "K103-0305：「差一個數量級」「兩處幾乎不透水」標為讀表推算並附數值。",
+        "K103-0308：中焙最高的是泡沫稠度（consistence），改字。",
+        "K103-0304：末句改成事實陳述，不讀成沖煮建議；K103-0303 拿掉以人名命名的粒徑術語。",
+        "K103-0314：「二點比較」改為未受訓練品嘗者的 duo–trio。"
+      ],
+      "unverified": [
+        "SR1-S003 的蒸發使液膜失穩、K103-0308 的分子量數字只抽查到 34,000–47,000 與 8,500–17,000，沒有逐句對全節。",
+        "SR1-S005 arXiv 版是否等同期刊接受稿未比對。",
+        "合著稽核只用 Europe PMC 作者查詢，未查 ORCID／Crossref。"
+      ],
+      "note": "來源全部真實、紀錄與雜湊相符，卡大致撐得住，兩個轉折成立（轉折二帶「回顧作者任職咖啡公司、成泡機制是假說」的限制）；但 OpenStax 不計後只剩 11.00 條，差 0.40 條，補一個非 OpenStax 來源即可回到可成題。",
+      "refetched": [
+        {
+          "seq": 7,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7762973/fullTextXML",
+          "status": 200,
+          "bytes": 85929,
+          "sha256_prefix": "e0f29b55e4bfa8f9",
+          "for": "G671",
+          "checked": "SR1-S008：與作者 seq 16 位元組數與雜湊完全相同（e0f29b55e4bfa8f9）；表 1 讀到 30 秒泡沫指數最高為 CO2/N2 混合氣 88.80%，修正 K103-0312。"
+        },
+        {
+          "seq": 8,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10541431/fullTextXML",
+          "status": 200,
+          "bytes": 143718,
+          "sha256_prefix": "54a1ada2ddfd6a44",
+          "for": "G671",
+          "checked": "SR1-S004：與作者 seq 8 完全相同（54a1ada2ddfd6a44）；表 2–5、萃後掃描段、16.8 µm、97 ± 3 °C／13 ± 1 bar 對上；「差一個數量級」為讀表推算。"
+        },
+        {
+          "seq": 9,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10418593/fullTextXML",
+          "status": 200,
+          "bytes": 252776,
+          "sha256_prefix": "f7439c16fbde5551",
+          "for": "G671",
+          "checked": "SR1-S002：與作者 seq 5 完全相同（f7439c16fbde5551）；28.3／26.9／29.2 µm、3.8／7.4／9.3 bar、2.9→8.0 與 2.8→3.6 bar、38 g 對 40 g 約 1 秒對上。"
+        }
+      ]
+    },
+    "G672": {
+      "reviewer": "SV1",
+      "author": "SR1",
+      "verdict": "reserve",
+      "est_minutes": 4.1,
+      "fact_count": 5.5,
+      "networks": 5,
+      "missing": "加權只剩 5.50 條（約 4.10 分），差 5.90 條。原因三個：（1）OpenStax 依主編規則不計（-2.0），第一、四章的半規管解剖與幾何需要一個非 OpenStax 的開放來源；（2）蘇黎世回顧的作者與西奈山團隊（2003、2011、2019）及杜賓根團隊（2021 年四人合著的暈動論文）有直接合著，三網併為一網（-3.0）；（3）倫敦帝國學院作者與蘇黎世作者同列 2021 年 24 人國際共識文件，從嚴再併（-2.0；若主編認定大型共識文件不算直接合著，總數是 7.50 條、約 5.59 分，仍不足）。要回到 11.4 條，至少再補 4 個與上述人員無直接合著的研究網（例如另一個獨立團隊的人體急停後眼震或速度儲存研究、暈動機制研究、半規管生物力學的非教科書來源），並可讓 NET_LMU、NET_IAF 各再撐一張不同事實的卡。",
+      "changes": [
+        "K103-0401、K103-0402（OpenStax）改 needs_check、加權 0、移出第一、四章（主編規則）。",
+        "併網：蘇黎世回顧與西奈山（三篇直接合著）、杜賓根（一篇四人合著）併網；倫敦帝國學院經 2021 年 24 人共識文件從嚴再併；合併網封頂 2.0。",
+        "K103-0407：受試者改「15 人參與、眼動分析報告 13 人」。",
+        "K103-0412：「約短兩成」標明是由平均值推算。"
+      ],
+      "unverified": [
+        "若主編判定大型共識文件不算直接合著，倫敦網獨立，總數為 7.50 條（約 5.59 分），判定不變。",
+        "SR1-S016、SR1-S018、SR1-S019 只對了關鍵數字，沒有逐句對全文。"
+      ],
+      "note": "來源真實、卡的數字幾乎都對得上，轉折一（猴子實驗）成立，轉折二只能用縮小版；但 OpenStax 不計、蘇黎世與西奈山、杜賓根直接合著後只剩 5.50 條，遠低於門檻。",
+      "refetched": [
+        {
+          "seq": 10,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4380084/fullTextXML",
+          "status": 200,
+          "bytes": 105876,
+          "sha256_prefix": "cd5ea2461f70235d",
+          "for": "G672",
+          "checked": "SR1-S013：與作者 seq 27 完全相同（cd5ea2461f70235d）；90°/s、0.5 s、60 s、約 15 s 與 3 倍、11.7 對 14.9 s、7.24 對 8.89 s、r = 0.46 對 0.11 對上。"
+        },
+        {
+          "seq": 11,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4753518/fullTextXML",
+          "status": 200,
+          "bytes": 198790,
+          "sha256_prefix": "45c006971fb4afe5",
+          "for": "G672",
+          "checked": "SR1-S015：與作者 seq 23 完全相同（45c006971fb4afe5）；無前庭功能不暈動、感覺不符最廣被接受、不討論演化、減速期較強、微重力效果減弱、時間常數短者可做更多次對上。"
+        },
+        {
+          "seq": 12,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5561016/fullTextXML",
+          "status": 200,
+          "bytes": 205485,
+          "sha256_prefix": "b3c08f071d304106",
+          "for": "G672",
+          "checked": "SR1-S012：與作者 seq 22 完全相同（b3c08f071d304106）；約 4.5 s、3–5 s、15–25 s、0.31 ± 0.25、p = 0.561、打瞌睡時 VO 神經元照常衰減、中線切斷消失對上。"
+        }
+      ]
+    },
+    "G708": {
+      "reviewer": "SV10",
+      "author": "SR10",
+      "verdict": "ready",
+      "est_minutes": 8.95,
+      "fact_count": 12.0,
+      "networks": 7,
+      "missing": "",
+      "changes": [
+        "片名改為『金屬的超彈性記憶密碼：被扭彎變形的合金為何一泡溫水就彈回原形？』：『肆意揉搓』與來源衝突（折角可能不可逆、可回復約 7–8%），『瞬間』無來源",
+        "核心追問改為『原子不搬家、在限度內也不打斷原子鍵…限度又在哪裡？』：『完全不破壞晶格原子排列』不成立；新寫法由 S006 引言撐住",
+        "K103-2801 刪『出廠狀態室溫就會自己彈回』（推論），補『低於彈性限度不滑移、不斷原子鍵』",
+        "K103-2807 與第三章的倍數標明為推算",
+        "K103-2813 逐句核對後 needs_check 改 screened；刪『只有少數在歐洲上市』『以美國市場為準』（原文未寫）",
+        "K103-2816 與第六章刪『最成功』，『多半』改『很多情況下』",
+        "S004、S006 作者數更正為 8 人"
+      ],
+      "unverified": [
+        "NiTi 相關網只做 Europe PMC 作者交叉查詢，未查 ORCID 完整著作清單",
+        "S006 的 42.8 °C 在摘要寫成『austenite transformation temperature』，正文以圖 6 呈現 Af，未讀圖"
+      ],
+      "note": "來源全部真實、全文、雜湊相符；12.0 條加權事實、兩個轉折都有原文撐。片名與核心追問改成來源撐得住的寫法，進製作前要重評觀眾分數。",
+      "refetched": [
+        {
+          "seq": 1,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10573343/fullTextXML",
+          "status": 200,
+          "bytes": 109640,
+          "for": "G708",
+          "checked": "雜湊 ef06a53af950aaf0 與作者 seq=11 相同；Af 13.7 °C、42.8→24.39 °C、治具定形、低於彈性限度不斷原子鍵、折角不可逆都在正文"
+        },
+        {
+          "seq": 2,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6025441/fullTextXML",
+          "status": 200,
+          "bytes": 64897,
+          "for": "G708",
+          "checked": "雜湊 e64872a56488b106 與作者 seq=9 相同；『only stents that are commercially available for PCI today』、自膨式多數鎳鈦、鎳鈦模數低、外部擠壓非冠狀動脈問題都在正文"
+        },
+        {
+          "seq": 3,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9103138/fullTextXML",
+          "status": 200,
+          "bytes": 92915,
+          "for": "G708",
+          "checked": "雜湊 43266a26c1e41e7c 與作者 seq=7 相同；表 3 Af 30.39→40.53 °C、約 10 °C、0.72 g、約 80%、65%、約 23 dB 都在原文"
+        },
+        {
+          "seq": 9,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(G708 七網錨點作者兩兩交叉)",
+          "status": 200,
+          "bytes": 21413,
+          "for": "G708",
+          "checked": "合著查詢：27 筆全是各網自己的論文，無跨網合著"
+        }
+      ]
+    },
+    "G709": {
+      "reviewer": "SV10",
+      "author": "SR10",
+      "verdict": "reserve",
+      "est_minutes": 7.46,
+      "fact_count": 10.0,
+      "networks": 5,
+      "missing": "差 1.4 條加權事實：需要第六個與現有五網皆無合著的研究網、至少兩張全加權卡（例如開放教科書的量子侷限一節，或另一團隊的量子點色轉換／藍光壽命一手研究）。",
+      "changes": [
+        "NET_SUSTECH（S010）與 NET_QLED_SZ（S011、S012）因 2026 年直接合著橋樑併為 NET_SZ_CITYU，5 張卡合計封頂 2.0，fact_count 12.0 → 10.0",
+        "K103-2911 補 S010『電致發光顯示尚未全面上市』一句並加年份，needs_check 改 screened",
+        "K103-2905 與第三章『今天』改『到 2020 年』；第五章加年份",
+        "K103-2907 與第四章的倍數標明為推算（337→1,500 約 4.5 倍）",
+        "S011／S012 重疊作者數更正為 5 人"
+      ],
+      "unverified": [
+        "洛斯阿拉莫斯群的跨網查詢第 2 頁（178 筆中後 78 筆）未看",
+        "KVA PDF 的網址出處是作者的網頁搜尋，cache 中沒有搜尋回應；文件本身確為諾貝爾委員會科學背景"
+      ],
+      "note": "來源與卡的事實都對得上原文，兩個轉折成立；但 S010 與 S011/S012 之間有直接合著，從嚴併網後只剩 5 網 10.0 條，未達 8.5 分鐘門檻。若主編判定 2026 年、與主題無關的合著不算橋樑，就回到 12.0 條、可 ready。",
+      "refetched": [
+        {
+          "seq": 4,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7118149/fullTextXML",
+          "status": 200,
+          "bytes": 85912,
+          "for": "G709",
+          "checked": "雜湊 1e2b64bce65148a9 與作者 seq=17 相同；EQE 16.6%、首次 > 15%、LT95 > 196 h、1,833 h、36 顆 1,769 h、LT50@100 cd/m² 1,721,000 h 都在原文"
+        },
+        {
+          "seq": 5,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11219984/fullTextXML",
+          "status": 200,
+          "bytes": 137904,
+          "for": "G709",
+          "checked": "雜湊 ad67e1a51132a85c 與作者 seq=19 相同；79 km、25.49 dB、130 km 等效、QBER 約 0.65%、35 h、1555.9 nm、trusted nodes、g(2) 6.24%→4.75%、108.36 kbit/s 都在原文"
+        },
+        {
+          "seq": 6,
+          "url": "https://www.kva.se/app/uploads/2023/11/scibackkeen23.pdf",
+          "status": 200,
+          "bytes": 1391633,
+          "for": "G709",
+          "checked": "雜湊 db4245982d015de4 與作者 seq=13 相同；1.8 eV、幾個百分點→約 10%→約 50%、1979 年 CuCl 玻璃、與半徑平方成反比都在作者的 pdftotext 文字中"
+        },
+        {
+          "seq": 7,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=AUTH:\"Tsang SW\" AND (AUTH:\"He JH\" OR AUTH:\"Kuo HC\" OR AUTH:\"Sher CW\" OR AUTH:\"Liu Z\" OR AUTH:\"Hyun BR\")",
+          "status": 200,
+          "bytes": 2071,
+          "for": "G709",
+          "checked": "合著查詢（新請求，非重抓）：2 筆，其一為 S011/S012 作者與 S010 作者在 2026 年直接合著 → 併網"
+        },
+        {
+          "seq": 8,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(浙大/洛斯阿拉莫斯作者) AND (S010-S012 作者) AND quantum dot",
+          "status": 200,
+          "bytes": 1185,
+          "for": "G709",
+          "checked": "合著查詢：1 筆為同名不同人（碲化汞光偵測器），無橋樑"
+        },
+        {
+          "seq": 10,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:42555145 AND SRC:MED&resultType=core",
+          "status": 200,
+          "bytes": 11253,
+          "for": "G709",
+          "checked": "確認橋樑論文作者單位：香港城市大學材料系（ORCID 0000-0003-0788-4905）與鴻海研究院"
+        },
+        {
+          "seq": 11,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(洛斯阿拉莫斯/漢諾威作者) AND (其他網作者)",
+          "status": 200,
+          "bytes": 79746,
+          "for": "G709",
+          "checked": "合著查詢：前 100 筆（共 178）內無跨網橋樑；第 2 頁未查"
+        }
+      ]
+    },
+    "G674": {
+      "reviewer": "SV2",
+      "author": "SR2",
+      "verdict": "ready",
+      "est_minutes": 8.8,
+      "fact_count": 11.75,
+      "networks": 6,
+      "missing": "",
+      "changes": [
+        "依主編規則刪除 OpenStax 兩卡 K103-0508（氣體溶解度）、K103-0509（30–100 °C 熱脹約 23%，作者自算）與來源 SR2-S008、S009；NET_G 不計，13.5→11.75",
+        "章節由 6 章改為 5 章（115+100+130+120+165=630 秒）：第四章改成 0510+0512（水蒸氣與二氧化碳的拉扯、麵心卡在 100 °C），轉折二章合併 0511、0514、0513；溶解度下降改以 S002 前言的整理帶過、不計分",
+        "K103-0512：「氣孔在 71–81 °C 被撐破」改寫為模型開孔參數 76 °C、寬 10 °C 的換算",
+        "K103-0514：「剪切模量」改為複數模量 |G*|、約 45–46 °C；50 °C 前應變硬化寫法對齊原文"
+      ],
+      "unverified": [
+        "酵母存活 5.8%/42.1% 與 12 分鐘後急降（轉引同組 2025 年）、膨脹停在 72 °C（轉引 2021 年）、6–8 分鐘上升窗與 60–85 °C（綜述轉引）、50 °C 開始受損（轉引）：皆原文確有其句，但原始論文未讀，卡上已標轉引",
+        "研究網合著只做 Europe PMC 作者查詢抽查，未查 ORCID 全著作"
+      ],
+      "note": "六個來源全文與雜湊都對得上，兩個轉折有不同團隊實驗撐；刪教科書後 11.75 條剛好過線、餘裕 0.35，可成題但不能再掉卡。",
+      "refetched": [
+        {
+          "seq": 1,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13551867/fullTextXML",
+          "status": 200,
+          "bytes": 133482,
+          "for": "G674",
+          "checked": "雜湊 5cfce015570c8501 與 SR2 seq=3 完全相同；JATS 有 body；23.3%、5.8%/42.1%（轉引 2025）、10.8 min、424/289、R²=0.78、乙醇到 12 min 後下降、72 °C（轉引 2021）皆在原文"
+        },
+        {
+          "seq": 2,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9990920/fullTextXML",
+          "status": 200,
+          "bytes": 135336,
+          "for": "G674",
+          "checked": "雜湊 d74da71eb9d1b8a3 與 SR2 seq=20 相同；0.104/0.027/0.035 min⁻¹、50 °C 前陡升、60 °C 達最大、無酵母 70 °C 才長、60 °C 以上網絡碎片化皆在原文；|G*| 約 45–46 °C 為複數模量"
+        },
+        {
+          "seq": 3,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12071401/fullTextXML",
+          "status": 200,
+          "bytes": 187721,
+          "for": "G674",
+          "checked": "雜湊 829ae90d2554a4d8 與 SR2 seq=7 相同；80%/100 s、約 70%、1100 Pa/750 s、1.9 倍、900/1300 s、100 °C 平台、DSC 76.0 °C、15.8%、1.3–18.7% 皆在原文；71–81 °C 是模型參數 T_open=76、ΔT=10 的換算"
+        },
+        {
+          "seq": 10,
+          "url": "Europe PMC 作者查詢：(Courtin|Verstrepen|Vandenbosch|De Bondt) × (Jekle|Becker|Alpers)",
+          "status": 200,
+          "bytes": 324,
+          "for": "G674",
+          "checked": "0 筆：魯汶與慕尼黑工大無合著，兩網分開成立"
+        },
+        {
+          "seq": 11,
+          "url": "Europe PMC 作者查詢：CREA／波蘭科學院／斯里蘭卡／中國科大作者 × 魯汶／慕尼黑工大",
+          "status": 200,
+          "bytes": 636,
+          "for": "G674",
+          "checked": "0 筆（抽查）"
+        }
+      ]
+    },
+    "G675": {
+      "reviewer": "SV2",
+      "author": "SR2",
+      "verdict": "reserve",
+      "est_minutes": 6.0,
+      "fact_count": 8.0,
+      "networks": 5,
+      "missing": "約 6.0 分鐘、8.0 條加權事實；還差至少 3.4 條，需再補至少 2 個與歐洲痛覺作者群（魯汶／INSERM、倫敦大學學院、克萊蒙費朗、漢堡／埃森）沒有直接合著的研究網，最好是人體觸覺異痛或傷口周圍次級痛覺過敏研究，每網 1.5–2.0 條；核心追問改了，補完後要重新評分。",
+      "changes": [
+        "合著查核：S011（魯汶／INSERM）與 S012（倫敦大學學院）2010–2013 直接合著 5 篇；S011 作者與 S013（克萊蒙費朗）1995、1996 直接合著；S012 作者與 S014／S016（漢堡、埃森）2013、2016、2017 直接合著；四網併為 NET_PX_EU_PAIN，封頂 2.0，13.0→8.0",
+        "核心追問刪掉撐不住的「刀割般的極致劇痛」，改為「把無害的輕碰當成痛」；片名保留（快好了、輕碰還痛有紀錄撐，「痛徹心扉」為修辭），核心追問改動需重新評分",
+        "K103-0601 補上兩個部位是腳背與小腿",
+        "SR2-S010 補記網址出處：作者 cache 無，覆核者以篇名查詢找回"
+      ],
+      "unverified": [
+        "轉移痛、上發條、中樞敏化、甘胺酸抑制、ON／OFF 細胞、潛伏敏化都是動物研究；人體只有熱致敏、雷射觸碰、睡眠剝奪與安慰劑影像",
+        "人體熱致敏是實驗室加熱、沒有開放傷口，「結痂、快痊癒」只能類比"
+      ],
+      "note": "卡上的事實逐條找得到，但四個歐洲研究網彼此直接合著，併網後素材遠低於 8.5 分鐘；核心追問的劇痛說法撐不住，已改並需重評。",
+      "refetched": [
+        {
+          "seq": 4,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4050052/fullTextXML",
+          "status": 200,
+          "bytes": 160955,
+          "for": "G675",
+          "checked": "雜湊 bad1991e52972854 與 SR2 seq=37 相同；41/83 cm²、45.4→44.4 °C、+65%、24 h 皆在原文"
+        },
+        {
+          "seq": 5,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2043493/fullTextXML",
+          "status": 200,
+          "bytes": 167994,
+          "for": "G675",
+          "checked": "雜湊 ed8443488342c1b8 與 SR2 seq=32 相同；PKCγ、3.2 分、約 68%、血壓、吹氣皆在原文"
+        },
+        {
+          "seq": 6,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2859063/fullTextXML",
+          "status": 200,
+          "bytes": 241773,
+          "for": "G675",
+          "checked": "雜湊 72396bb89f21d2a9 與 SR2 seq=29 相同；13 與 0.8 m/s、430 mm、45.7/43.0 °C 差 2.6 °C、2.5–3 °C 雙重警報、約五秒皆在原文"
+        },
+        {
+          "seq": 7,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE%3A%22Path%20to%20Discovery%20of%20Windup%22&format=json&pageSize=5&resultType=lite",
+          "status": 200,
+          "bytes": 951,
+          "for": "G675",
+          "checked": "作者 cache 找不到 PMC8915729 出處；以篇名查回 PMC8915729 與 DOI 10.3389/fpain.2022.833104，來源存在"
+        },
+        {
+          "seq": 8,
+          "url": "Europe PMC 作者查詢：Plaghki × (Iannetti|Haggard|Mancini)",
+          "status": 200,
+          "bytes": 4208,
+          "for": "G675",
+          "checked": "5 篇直接合著（2010–2013）：S011 與 S012 同網"
+        },
+        {
+          "seq": 9,
+          "url": "Europe PMC 作者查詢：(Dallel|Voisin|Miraucourt) × (Plaghki|Le Bars|Iannetti|Haggard|Mancini)",
+          "status": 200,
+          "bytes": 2040,
+          "for": "G675",
+          "checked": "Dallel 與 Le Bars 1995、1996 直接合著 2 篇：S013 與 S011 同網"
+        },
+        {
+          "seq": 12,
+          "url": "Europe PMC 作者查詢：(Magerl|May|Bingel|Wager|Zunhammer|Jürgens) × (Plaghki|Iannetti|Haggard|Dallel|Le Bars|Petersen|Heinricher|Mendell|Safronov)",
+          "status": 200,
+          "bytes": 3618,
+          "for": "G675",
+          "checked": "4 篇：Iannetti 與 Magerl（2013）、Wager（2016、2017）、Haggard 與 Bingel（2016）直接合著：S012 與 S014/S016 同網"
+        },
+        {
+          "seq": 13,
+          "url": "Europe PMC 作者查詢：(Mendell|Heinricher|Petersen|Safronov|Szucs) × 歐洲痛覺群",
+          "status": 200,
+          "bytes": 961,
+          "for": "G675",
+          "checked": "0 筆：P1、P6、P7、P8 未見與歐洲群合著（抽查）"
+        }
+      ]
+    },
+    "G678": {
+      "reviewer": "SV3",
+      "author": "SR3",
+      "verdict": "reserve",
+      "est_minutes": 5.96,
+      "fact_count": 8.0,
+      "networks": 4,
+      "missing": "併網後只有 8.0 條加權事實（約 5.96 分鐘），差約 3.4 條。需要至少兩個新研究網，各撐 2 張全文卡，且作者與 Roenneberg、Skene、Deboer、Crowley/Eastman、Madrid/Rol 這幾群都查無合著（另避開 Hastings、Shea 以防最嚴讀法）。最需要補的是：直接量週末作息後週一警覺度或表現的人類原始研究（目前沒有任何卡直接量週一疲憊），以及能撐第二關、第六關的獨立來源。",
+      "changes": [
+        "併網：NET_LMU、NET_SURREY、NET_BASEL、NET_MURCIA、NET_RUSH 之間查到直接合著（LMU–薩里 2019 年 10 人、2016 年 14 人、2022 年 18 人；萊登–LMU 2019 年 16 人原始研究、ORCID 相同；穆爾西亞–薩里 2015–2020 年 6–8 人論文至少四篇；Rush–LMU 2024 年 6 人研究），合併封頂 2.0，13.25 → 8.0 條",
+        "第三章標題刪去『肝臟的午夜背叛』（人類肝臟未量、實驗是三餐延後 5 小時而非午夜），第六章標題改成研究描述，避免讀成光療建議",
+        "K103-0814、0815：『睡眠時間』改寫為入睡與起床的時刻，補上睡眠長度約兩天回到基線、<15 分鐘是第 2–4 天往東的平均",
+        "核心追問刪去『比熬夜還要嚴重』：同意，沒有來源比較過；片名維持"
+      ],
+      "unverified": [
+        "週一早上的疲憊沒有任何來源直接量測，只能說研究者認為",
+        "人類肝臟時鐘沒有量測（只有血糖節律與脂肪 PER2）；肝臟 10 小時是齧齒類",
+        "LMB 與 OHSU 只在 93 人方法指引、24 人共識各與這一群同列，本覆核未併網"
+      ],
+      "note": "16 張卡的數字逐一對過全文都對，兩個轉折成立；但五個所謂獨立的研究網其實互有合著，併網後素材只剩約 6 分鐘，留後備。",
+      "refetched": [
+        {
+          "seq": 1,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11417015/fullTextXML",
+          "status": 200,
+          "bytes": 139077,
+          "for": "G678",
+          "checked": "與作者 seq=3 位元組數（139077）與 sha256 前 16 碼（f31f9f5f5488a79f）完全相同"
+        },
+        {
+          "seq": 2,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6784249/fullTextXML",
+          "status": 200,
+          "bytes": 174994,
+          "for": "G678",
+          "checked": "與作者 seq=4 位元組數（174994）與 sha256 前 16 碼（a22e0fafc50b349a）完全相同"
+        },
+        {
+          "seq": 3,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12246376/fullTextXML",
+          "status": 200,
+          "bytes": 114731,
+          "for": "G678",
+          "checked": "與作者 seq=17 位元組數（114731）與 sha256 前 16 碼（95d2934e3ef53528）完全相同"
+        },
+        {
+          "seq": 11,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=AUTH:%22Hastings%20MH%22%20AND%20(AUTH:%22Skene%20DJ%22%20OR%20AUTH:%22Johnston%20JD%22%20OR%20AUTH:%22Roenneberg%20T%22%20OR%20AUTH:%22Shea%20SA%22%20OR%20AUTH:%22Landolt%20HP%22%20OR%20AUTH:%22Eastman%20CI%22%20OR%20AUTH:%22Chee%20MWL%22%20OR%20AUTH:%22Madrid%20JA%22)&format=json&pageSize=25",
+          "status": 200,
+          "bytes": 2129,
+          "for": "G678",
+          "checked": "Europe PMC 合著查詢：劍橋作者 × G678 其他各網：只有 2017 年 93 人方法指引"
+        },
+        {
+          "seq": 12,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(AUTH:%22Roenneberg%20T%22%20OR%20AUTH:%22Hastings%20MH%22)%20AND%20(AUTH:%22Skene%20DJ%22%20OR%20AUTH:%22Johnston%20JD%22%20OR%20AUTH:%22Wehrens%20SMT%22%20OR%20AUTH:%22Archer%20SN%22)&format=json&pageSize=50",
+          "status": 200,
+          "bytes": 4781,
+          "for": "G678",
+          "checked": "Europe PMC 合著查詢：LMU／劍橋 × 薩里：2016 年 14 人、2019 年 10 人、2022 年 18 人，LMU 與薩里直接合著"
+        },
+        {
+          "seq": 13,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(AUTH:%22Landolt%20HP%22%20OR%20AUTH:%22Reichert%20CF%22%20OR%20AUTH:%22Deboer%20T%22%20OR%20AUTH:%22Shea%20SA%22%20OR%20AUTH:%22Thosar%20SS%22)%20AND%20(AUTH:%22Roenneberg%20T%22%20OR%20AUTH:%22Skene%20DJ%22%20OR%20AUTH:%22Hastings%20MH%22%20OR%20AUTH:%22Eastman%20CI%22%20OR%20AUTH:%22Crowley%20SJ%22%20OR%20AUTH:%22Chee%20MWL%22%20OR%20AUTH:%22Rol%20MA%22%20OR%20AUTH:%22Madrid%20JA%22%20OR%20AUTH:%22Johnston%20JD%22)&format=json&pageSize=50",
+          "status": 200,
+          "bytes": 4207,
+          "for": "G678",
+          "checked": "Europe PMC 合著查詢：巴塞爾／萊登／奧勒岡 × 其他各網：萊登作者與 LMU 作者合著 2019 年 16 人研究；奧勒岡與薩里同列 2022 年 24 人共識"
+        },
+        {
+          "seq": 14,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE:%22Time-restricted%20feeding%20improves%20adaptation%20to%20chronically%20alternating%22&format=json&resultType=core",
+          "status": 200,
+          "bytes": 10913,
+          "for": "G678",
+          "checked": "Europe PMC 合著查詢：確認 2019 年 16 人研究（PMC6536683）的 LMU 作者 ORCID 與 SR3-S002 相同"
+        },
+        {
+          "seq": 15,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(AUTH:%22Eastman%20CI%22%20OR%20AUTH:%22Crowley%20SJ%22%20OR%20AUTH:%22Chee%20MWL%22%20OR%20AUTH:%22Willoughby%20AR%22%20OR%20AUTH:%22Madrid%20JA%22%20OR%20AUTH:%22Rol%20MA%22)%20AND%20(AUTH:%22Roenneberg%20T%22%20OR%20AUTH:%22Skene%20DJ%22%20OR%20AUTH:%22Hastings%20MH%22%20OR%20AUTH:%22Shea%20SA%22%20OR%20AUTH:%22Landolt%20HP%22%20OR%20AUTH:%22Deboer%20T%22%20OR%20AUTH:%22Reichert%20CF%22%20OR%20AUTH:%22McHill%20AW%22%20OR%20AUTH:%22Archer%20SN%22%20OR%20AUTH:%22Eastman%20CI%22%20OR%20AUTH:%22Chee%20MWL%22%20OR%20AUTH:%22Madrid%20JA%22)&format=json&pageSize=100",
+          "status": 200,
+          "bytes": 87809,
+          "for": "G678",
+          "checked": "Europe PMC 合著查詢：Rush／新加坡／穆爾西亞 × 其他各網：穆爾西亞與薩里 2015–2020 年至少四篇 6–8 人論文；Rush 與 LMU 2024 年 6 人研究"
+        },
+        {
+          "seq": 16,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:37935914%20AND%20SRC:MED&format=json&resultType=core",
+          "status": 200,
+          "bytes": 7270,
+          "for": "G678",
+          "checked": "Europe PMC 合著查詢：確認 2024 年 6 人研究的 Rush 作者單位與 SR3-S001 相同"
+        }
+      ]
+    },
+    "G679": {
+      "reviewer": "SV3",
+      "author": "SR3",
+      "verdict": "ready",
+      "est_minutes": 11.18,
+      "fact_count": 15.0,
+      "networks": 9,
+      "missing": "",
+      "changes": [
+        "片名刪去沒有來源撐的『天天用幾百瓦』，改為『手機快充越來越快，電池內部到底在經歷什麼致命危險？』（片名改了，需要重評觀眾分）",
+        "杜塞道夫與上海交大：該作者屬輕合金實驗室，Europe PMC 名下 3 筆都沒有與預鋰化綜述作者合著；亞琛與烏爾姆：Europe PMC 查無合著。兩對都不併",
+        "K103-0909、0914 刪去電芯尺寸代號；K103-0907 的『十倍』、K103-0916 的『五倍』標成推算"
+      ],
+      "unverified": [
+        "Europe PMC 對電池工程期刊收錄不全，合著查無不等於確定沒有；保守併兩對仍有 13.0 條",
+        "轉折二只有 4 顆同型號鈕扣電池，作者沒有分析原因"
+      ],
+      "note": "17 篇全文的雜湊與內容都對得上，卡上數字逐一在原文找到；片名去掉幾百瓦後就是可成題，等新片名重評。",
+      "refetched": [
+        {
+          "seq": 4,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11599900/fullTextXML",
+          "status": 200,
+          "bytes": 115784,
+          "for": "G679",
+          "checked": "與作者 seq=21 位元組數（115784）與 sha256 前 16 碼（3be735f41ae83a54）完全相同"
+        },
+        {
+          "seq": 5,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13102695/fullTextXML",
+          "status": 200,
+          "bytes": 171023,
+          "for": "G679",
+          "checked": "與作者 seq=24 位元組數（171023）與 sha256 前 16 碼（69751fc2a8251de7）完全相同"
+        },
+        {
+          "seq": 6,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7136228/fullTextXML",
+          "status": 200,
+          "bytes": 93978,
+          "for": "G679",
+          "checked": "與作者 seq=29 位元組數（93978）與 sha256 前 16 碼（ef60f78e673d5bc5）完全相同"
+        },
+        {
+          "seq": 7,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=AUTH:%22Sauer%20DU%22%20AND%20(AUTH:%22Wohlfahrt-Mehrens%20M%22%20OR%20AUTH:%22Waldmann%20T%22)&format=json&pageSize=25",
+          "status": 200,
+          "bytes": 238,
+          "for": "G679",
+          "checked": "Europe PMC 合著查詢：亞琛主要作者 × 烏爾姆作者（縮寫名）：0 筆"
+        },
+        {
+          "seq": 8,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=AUTH:%22Liu%20Chuanlai%22&format=json&pageSize=50&resultType=core",
+          "status": 200,
+          "bytes": 20447,
+          "for": "G679",
+          "checked": "Europe PMC 合著查詢：杜塞道夫論文的上海交大作者全名：3 筆，皆與杜塞道夫研究所合作，無預鋰化綜述作者"
+        },
+        {
+          "seq": 9,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(AUTH:%22Waldmann%20Thomas%22%20OR%20AUTH:%22Wohlfahrt-Mehrens%20Margret%22)&format=json&pageSize=100",
+          "status": 200,
+          "bytes": 113635,
+          "for": "G679",
+          "checked": "Europe PMC 合著查詢：烏爾姆兩位作者全名的著作清單（前 100 筆）：未見亞琛作者"
+        },
+        {
+          "seq": 10,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=AUTH:%22Sauer%20Dirk%20Uwe%22%20AND%20(AUTH:%22Wohlfahrt-Mehrens%22%20OR%20AUTH:%22Waldmann%20Thomas%22%20OR%20AUTH:%22Gilles%20Ralph%22%20OR%20AUTH:%22Hofmann%20Michael%22)&format=json&pageSize=25",
+          "status": 200,
+          "bytes": 300,
+          "for": "G679",
+          "checked": "Europe PMC 合著查詢：亞琛主要作者全名 × 烏爾姆、慕尼黑中子源作者：0 筆"
+        },
+        {
+          "seq": 17,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(AUTH:%22Sauer%20DU%22%20OR%20AUTH:%22Wohlfahrt-Mehrens%20M%22%20OR%20AUTH:%22Raabe%20D%22%20OR%20AUTH:%22Dehm%20G%22%20OR%20AUTH:%22Scheu%20C%22%20OR%20AUTH:%22Gault%20B%22%20OR%20AUTH:%22Gilles%20R%22)%20AND%20(AUTH:%22Stimming%20U%22%20OR%20AUTH:%22Lee%20AA%22%20OR%20AUTH:%22Madsen%20LA%22%20OR%20AUTH:%22Basaran%20C%22%20OR%20AUTH:%22Mun%20J%22%20OR%20AUTH:%22Choi%20JW%22%20OR%20AUTH:%22Lin%20F%22%20OR%20AUTH:%22Xiong%20H%22%20OR%20AUTH:%22Sauer%20DU%22%20OR%20AUTH:%22Wohlfahrt-Mehrens%20M%22%20OR%20AUTH:%22Hu%20Y%22%20OR%20AUTH:%22Li%20Y%22%20OR%20AUTH:%22Kim%20KJ%22%20OR%20AUTH:%22Rao%20LC%22)&format=json&pageSize=100",
+          "status": 200,
+          "bytes": 48731,
+          "for": "G679",
+          "checked": "Europe PMC 合著查詢：杜塞道夫作者 × 劍橋、維吉尼亞、韓國、上海交大等作者：只有同名同姓的金屬材料論文"
+        },
+        {
+          "seq": 18,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:40998821%20AND%20SRC:MED&format=json&resultType=core",
+          "status": 200,
+          "bytes": 7172,
+          "for": "G679",
+          "checked": "Europe PMC 合著查詢：確認上一筆的同名作者是杜塞道夫研究所的另一人，不是上海交大預鋰化綜述作者"
+        }
+      ]
+    },
+    "G684": {
+      "reviewer": "SV4",
+      "author": "SR4",
+      "verdict": "reserve",
+      "est_minutes": 7.08,
+      "fact_count": 9.5,
+      "networks": 6,
+      "missing": "差 1.90 條加權事實（約 1.4 分鐘）：需補至少一個與 Henschel、Seely、Mitchell、Nørgaard、Dacke、Duncan、Kaseke、Wang 都沒有直接合著、撐滿 2.0 條的研究網，或兩個各 1.0 的網。兩個轉折本身成立（S001、S002 全文支持）。",
+      "changes": [
+        "併網：隆德（S001）、戈巴貝布（S004、S010）、金山大學呼吸（S005）、IUPUI（S006）四網經 Europe PMC 查到直接合著（SV4 seq 7、8、11），併為 NET_NAMIB 封頂 2.0；作者原 13.25 條、9.88 分 → 9.50 條、7.08 分。",
+        "作者列為待查的維吉尼亞理工兩篇（S008／S009）與伊利諾兩校區（S002／S003）查無合著，不併。",
+        "K103-1201「完全不相關」改「不相關」。K103-1202 scope「飼養兩週」改為原文的「實驗前兩週沒有給水」。K103-1203 補上 Red O 與作者對分歧原因的推測。K103-1208 去掉研究者性別代稱。",
+        "K103-1209「幾分鐘就會到致死的 51 °C」原文沒有，改為「熱散不掉時每分鐘升 4–6 °C；死標本 0.5–8 分鐘到 46.5 °C；致死 51 °C」。",
+        "K103-1210「原本是農業遮陰網」原文沒有，改為「拉舍爾網並不是為了抓霧而開發」。K103-1211「從來不堵」改為「都沒有堵」。",
+        "核心追問的改寫（親疏水陣列前提被 S001、S002 直接反駁）判定必要，保留作者版本。片名不改，但「常年滴雨不下」與年雨量約 25 mm 不符，已寫進 evidence_gaps，要求口播照 K103-1201 落地。"
+      ],
+      "unverified": [
+        "2001 年原始論文未讀；K103-1203 對它的描述全部來自 S001 的轉述。",
+        "K103-1201 的幼蟲阻霧實驗是 S010 轉引前人（Rössl）。",
+        "K103-1213 的「跳躍型超疏水面約三分之一被冰橋接上」是 S008 引言轉述前人。"
+      ],
+      "note": "卡上的事實大致都在原文裡，只有兩處超出原文已改；但四個納米布研究網經查有直接合著，併網後只剩 7.08 分鐘，改列後備。",
+      "refetched": [
+        {
+          "seq": 1,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2918599/fullTextXML",
+          "status": 200,
+          "bytes": 54644,
+          "sha256_prefix": "d3d45395d4208b43",
+          "for": "G684",
+          "checked": "SR4-S001（SR4 seq 3）重抓：位元組與 sha256 前 16 碼完全相同；完整 JATS 全文。逐句核對 K103-1202–1204 的 200 種中兩種、22.7°、114.5 秒、0/12 與 6/12、Sudan III、0.5 mm 溝、p = 0.26、0.22／0.27／0.14 ml 與結論句。"
+        },
+        {
+          "seq": 2,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10903646/fullTextXML",
+          "status": 200,
+          "bytes": 148056,
+          "sha256_prefix": "8d67730a6ef6fc50",
+          "for": "G684",
+          "checked": "SR4-S002（SR4 seq 4）重抓：雜湊相同。核對 St ≲ 0.01、r ∼ 2 μm、約 3 倍、2.1×／1.5×／3.6×、20 nm 金膜、指甲油抹平降約 2 與 1.5 倍、200 μm 脊、uniformly waxy 一句。"
+        },
+        {
+          "seq": 3,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12401538/fullTextXML",
+          "status": 200,
+          "bytes": 128476,
+          "sha256_prefix": "eb20d05793beaee9",
+          "for": "G684",
+          "checked": "SR4-S004（SR4 seq 6）重抓：雜湊相同。核對 51 °C、6／4 °C/min、n = 46、−1.5 °C、39.7 °C、12.7 °C、15 mm 與 10–15 °C；發現「幾分鐘就會到致死 51 °C」原文沒有，已改寫。"
+        },
+        {
+          "seq": 7,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=AUTH%3A%22Duncan%20FD%22%20AND%20%28AUTH%3A%22Seely%20MK%22%20OR%20AUTH%3A%22Henschel%20JR%22%20OR%20AUTH%3A%22Mitchell%20D%22%20OR%20AUTH%3A%22Roberts%20CS%22%20OR%20AUTH%3A%22McClain%20E%22%29&format=json&pageSize=50&resultType=lite",
+          "status": 200,
+          "bytes": 1019,
+          "sha256_prefix": "d07fd9b5733b45ce",
+          "for": "G684",
+          "checked": "合著查詢：Duncan FD（S005）× Henschel／Seely／Mitchell／Roberts／McClain → 1 筆：2024 Henschel JR, Duncan FD 等（褐色蝗蟲）。NET_E 與 NET_D 直接合著。"
+        },
+        {
+          "seq": 8,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28AUTH%3A%22Kaseke%20KF%22%20OR%20AUTH%3A%22Wang%20L%22%29%20AND%20%28AUTH%3A%22Seely%20MK%22%20OR%20AUTH%3A%22Henschel%20JR%22%20OR%20AUTH%3A%22Mitchell%20D%22%20OR%20AUTH%3A%22Duncan%20FD%22%29&format=json&pageSize=50&resultType=lite",
+          "status": 200,
+          "bytes": 33753,
+          "sha256_prefix": "a57512a02a7063ab",
+          "for": "G684",
+          "checked": "合著查詢：Kaseke KF／Wang L（S006）× Seely／Henschel／Mitchell／Duncan → 2017 Kaseke KF, Wang L, Seely MK「Nonrainfall water origins and formation mechanisms」、2016 Li B, Wang L, Kaseke KF, Li L, Seely MK。NET_F 與 NET_D（S004 的 Seely MK）直接合著；其餘命中為同名不同人。"
+        },
+        {
+          "seq": 9,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28AUTH%3A%22Pitchumani%20R%22%20OR%20AUTH%3A%22Hatte%20S%22%29%20AND%20%28AUTH%3A%22Boreyko%20JB%22%20OR%20AUTH%3A%22Collier%20CP%22%20OR%20AUTH%3A%22Retterer%20ST%22%20OR%20AUTH%3A%22Hansen%20RR%22%20OR%20AUTH%3A%22Nath%20S%22%20OR%20AUTH%3A%22Murphy%20KR%22%29&format=json&pageSize=50&resultType=lite",
+          "status": 200,
+          "bytes": 342,
+          "sha256_prefix": "3985e938bc237654",
+          "for": "G684",
+          "checked": "合著查詢：Pitchumani R／Hatte S（S009）× S008 全部六位作者 → 0 筆；NET_H 與 NET_I 不併。"
+        },
+        {
+          "seq": 10,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=AUTH%3A%22Megaridis%20CM%22%20AND%20%28AUTH%3A%22Gazzola%20M%22%20OR%20AUTH%3A%22King%20H%22%20OR%20AUTH%3A%22Shahrokhian%20A%22%20OR%20AUTH%3A%22Chan%20FK%22%20OR%20AUTH%3A%22Feng%20J%22%20OR%20AUTH%3A%22Amon%20C%22%20OR%20AUTH%3A%22Paoli%20R%22%29&format=json&pageSize=50&resultType=lite",
+          "status": 200,
+          "bytes": 1106,
+          "sha256_prefix": "9af9adaf64f40d97",
+          "for": "G684",
+          "checked": "合著查詢：Megaridis CM（S003）× S002 作者 → 只有 S003 本身；NET_B 與 NET_C 不併。"
+        },
+        {
+          "seq": 11,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28AUTH%3A%22Dacke%20M%22%20OR%20AUTH%3A%22Norgaard%20T%22%20OR%20AUTH%3A%22N%C3%B8rgaard%20T%22%29%20AND%20%28AUTH%3A%22Seely%20MK%22%20OR%20AUTH%3A%22Henschel%20JR%22%20OR%20AUTH%3A%22Mitchell%20D%22%20OR%20AUTH%3A%22Duncan%20FD%22%20OR%20AUTH%3A%22Kaseke%20KF%22%20OR%20AUTH%3A%22King%20H%22%20OR%20AUTH%3A%22Megaridis%20CM%22%29&format=json&pageSize=50&resultType=lite",
+          "status": 200,
+          "bytes": 3584,
+          "sha256_prefix": "af33add239cce09b",
+          "for": "G684",
+          "checked": "合著查詢：Dacke M／Nørgaard T（S001）× 戈巴貝布與其他網作者 → 4 筆：2003、2006、2007、2008 Nørgaard T, Henschel JR, Wehner R（納米布遊走蜘蛛）。NET_A 與 NET_D 直接合著。"
+        },
+        {
+          "seq": 12,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28AUTH%3A%22Boreyko%20JB%22%20OR%20AUTH%3A%22Pitchumani%20R%22%29%20AND%20%28AUTH%3A%22King%20H%22%20OR%20AUTH%3A%22Gazzola%20M%22%20OR%20AUTH%3A%22Megaridis%20CM%22%20OR%20AUTH%3A%22Kim%20HY%22%20OR%20AUTH%3A%22Moon%20MW%22%20OR%20AUTH%3A%22Kim%20SJ%22%20OR%20AUTH%3A%22Shahrokhian%20A%22%20OR%20AUTH%3A%22Paoli%20R%22%20OR%20AUTH%3A%22Kaseke%20KF%22%29&format=json&pageSize=50&resultType=lite",
+          "status": 200,
+          "bytes": 404,
+          "sha256_prefix": "fae76378de9623a6",
+          "for": "G684",
+          "checked": "合著查詢：Boreyko JB／Pitchumani R × King H、Gazzola M、Megaridis CM、Kim HY、Moon MW、Kim SJ、Shahrokhian A、Paoli R、Kaseke KF → 0 筆。"
+        },
+        {
+          "seq": 13,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28AUTH%3A%22Kim%20HY%22%20OR%20AUTH%3A%22Moon%20MW%22%29%20AND%20%28AUTH%3A%22Megaridis%20CM%22%20OR%20AUTH%3A%22Gazzola%20M%22%20OR%20AUTH%3A%22Shahrokhian%20A%22%20OR%20AUTH%3A%22King%20H%22%20OR%20AUTH%3A%22Dacke%20M%22%29&format=json&pageSize=50&resultType=lite",
+          "status": 200,
+          "bytes": 315,
+          "sha256_prefix": "896721532c0f1168",
+          "for": "G684",
+          "checked": "合著查詢：Kim HY／Moon MW（S007）× Megaridis、Gazzola、Shahrokhian、King H、Dacke → 0 筆。"
+        }
+      ]
+    },
+    "G685": {
+      "reviewer": "SV4",
+      "author": "SR4",
+      "verdict": "ready",
+      "est_minutes": 8.95,
+      "fact_count": 12.0,
+      "networks": 7,
+      "missing": "",
+      "changes": [
+        "補讀專利第 4、7 頁：表 1 續的鹽水測試中，比較例的底漆也評到 3（光滑）與 2（噴砂）。K103-1310 改寫為逐項陳述（膠帶與沸水測試受損多在面漆，鹽水測試底漆也受損），並由 0.75 折為 0.5。",
+        "轉折二與第四章的「膠帶測試最先失效的多半是面漆與底漆之間」改寫：表 1 只分層記錄損傷，沒有指明剝離的是哪個界面。",
+        "K103-1312 由 1.0 折為 0.75：材料是 FEP 不是 PTFE，詳細機制又轉引未讀的報告。",
+        "K103-1314 的缺陷一句在 Discussion 找到（引義大利支座資料庫研究），改成「常見缺陷之一」、刪去「業界改用」後改 screened，加權仍 0.5；第六章 new_information 同步改寫。",
+        "K103-1302 轉移膜厚度補註論文內部的兩組數字（150–250 與 100–200 nm；40–100 與 50–100 nm）。K103-1301 問句「軸承」改為原文撐得住的「耐磨零件」。",
+        "重算：作者 12.50 條、9.32 分 → 12.00 條、8.95 分，七網互不合著（抽查 SV4 seq 14、15），比門檻多 0.60 條。"
+      ],
+      "unverified": [
+        "PTFE 表面能的教科書值（約 18 mN/m）沒有來源，唯一量測 S011 為 38.75 mJ/m²，口播只能說「極低」。",
+        "轉折二只靠一份非同儕審查的專利（申請人自選的測試）；專利第 8 頁未讀。",
+        "片名與卡上的「鐵氟龍」是商標的通用譯名，是否違反「不出現商用品牌」請編輯決定；本覆核沒有改片名。"
+      ],
+      "note": "事實都在原文裡，轉折一有兩篇同儕審查論文撐，轉折二只靠一份專利但寫法已收斂；折算後 8.95 分鐘，仍可成題。",
+      "refetched": [
+        {
+          "seq": 4,
+          "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/7462667",
+          "status": 200,
+          "bytes": 710851,
+          "sha256_prefix": "141937691bfd46e4",
+          "for": "G685",
+          "checked": "SR4-S013 專利 PDF（SR4 seq 21）重抓：位元組相同、sha256 不同；cmp 只有 3 個位元組不同，皆在 PDF 的 /CreationDate（伺服器即時產生），內容一致。覆核目讀第 2、4、5、6、7 頁，補讀作者沒讀的第 4、7 頁。"
+        },
+        {
+          "seq": 5,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12521565/fullTextXML",
+          "status": 200,
+          "bytes": 105142,
+          "sha256_prefix": "e8c4307d4f9699b1",
+          "for": "G685",
+          "checked": "SR4-S011（SR4 seq 17）重抓：雜湊相同。核對對稱抵消偶極、101.5／51.1／37.5／34.9°、極性分量 0.23→28.65、Wa 58.2→132.5、PE 59.5→99.2、去氟與搭接剪切 PTFE 優於 PE。"
+        },
+        {
+          "seq": 6,
+          "url": "https://ntrs.nasa.gov/api/citations/19980237247/downloads/19980237247.pdf",
+          "status": 200,
+          "bytes": 1146466,
+          "sha256_prefix": "63328724aaa37da7",
+          "for": "G685",
+          "checked": "SR4-S015 NASA 報告（SR4 seq 24）重抓：雜湊相同。核對 598 km、6.8 年、33,638 ESH、1.64×10²⁰、over 80 percent、5 mil、裂縫面近無特徵、應力腐蝕類比、去氟、吸收率與在軌天數相關、40,000 次熱循環、原子氧可侵蝕 FEP。"
+        },
+        {
+          "seq": 14,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28AUTH%3A%22Wang%20Tingmei%22%20OR%20AUTH%3A%22Wang%20Qihua%22%20OR%20AUTH%3A%22Yap%20Kian%20Kun%22%20OR%20AUTH%3A%22Lv%20Weixuan%22%29%20AND%20%28AUTH%3A%22Li%20Guangxian%22%20OR%20AUTH%3A%22Niu%20Yanhua%22%20OR%20AUTH%3A%22Armstrong%20Roly%20J%22%20OR%20AUTH%3A%22Hopkinson%20Matthew%20N%22%20OR%20AUTH%3A%22Kamenskikh%20Anna%20A%22%20OR%20AUTH%3A%22Jamali%20Soolmaz%22%20OR%20AUTH%3A%22Luo%20Cong%22%29&format=json&pageSize=50&resultType=lite",
+          "status": 200,
+          "bytes": 447,
+          "sha256_prefix": "08a649145e643f91",
+          "for": "G685",
+          "checked": "合著查詢（全名）：S014 四位 × S017、S012、S016、S011 作者 → 0 筆。"
+        },
+        {
+          "seq": 15,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=AUTH%3A%22Li%20Guangxian%22%20AND%20AUTH%3A%22Niu%20Yanhua%22&format=json&pageSize=5&resultType=lite",
+          "status": 200,
+          "bytes": 4152,
+          "sha256_prefix": "63173175cce49db5",
+          "for": "G685",
+          "checked": "查詢方式驗證：AUTH:\"Li Guangxian\" AND AUTH:\"Niu Yanhua\" → 8 筆，證明 seq 14 的全名查詢有效。"
+        }
+      ]
+    },
+    "G688": {
+      "reviewer": "SV5",
+      "author": "SR5",
+      "verdict": "ready",
+      "est_minutes": 8.68,
+      "fact_count": 11.75,
+      "networks": 9,
+      "missing": "",
+      "changes": [
+        "核心追問刪「數百億」（無來源、推算也不符）",
+        "K103-1401 刪「牆讓電子平常出不去」的延伸",
+        "K103-1407「市售」改「原始晶片」（原文 Raw chip）",
+        "K103-1409 標明 6.7 倍為推算",
+        "K103-1411 補「多數廠商的 3D NAND 用電荷捕獲電晶體」直接出處",
+        "第六章標題由「現代硬碟其實不太用浮閘」改「多數 3D NAND 改用電荷捕獲層」（也有 3D 浮閘陣列）",
+        "第七章把「深寬比超過 100」與 3D NAND 分開寫",
+        "est_minutes 依第三十八輪換算由 8.5 改 8.68（11.75 條）",
+        "evidence_gaps 更正：S001 4.3 有阿倫尼烏斯方程的定性一句"
+      ],
+      "unverified": [
+        "浦項（NET_POSTECH）與成均館／高麗（NET_SKKU_KU）或慶北／弘益／成均館（NET_KR_NEURO）之間的合著：Europe PMC 只見同名異人，IEEE 系元件論文收錄不全，OpenAlex 429；若有合著會降 0.5 條、跌破門檻",
+        "史丹佛與 SLAC 的問題不在本組"
+      ],
+      "note": "19 個來源請求紀錄、雜湊、全文全部相符，抽查的數字都在原文；兩個轉折有直接來源；只比門檻多 0.35 條，唯一的風險是韓國三網之間能否完全排除合著。",
+      "refetched": [
+        {
+          "seq": 1,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5455833/fullTextXML",
+          "status": 200,
+          "bytes": 181351,
+          "for": "G688",
+          "checked": "SR5-S002：雜湊 9329f82a87b45b76 與作者 seq15 相同；3.2 eV、表 2 的 6–7 nm 與 17–19／15–17 V、85 °C 24 h、10^3–10^4 電子、20%、SONOS 單一缺陷句逐字找到"
+        },
+        {
+          "seq": 2,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11678287/fullTextXML",
+          "status": 200,
+          "bytes": 139695,
+          "for": "G688",
+          "checked": "SR5-S003：雜湊 9c41b266cb46d223 相同；300 K 至約 15 K、FN 穿隧溫度依賴 very weak、GIDL the only viable option 找到"
+        },
+        {
+          "seq": 3,
+          "url": "https://arxiv.org/pdf/1711.11427",
+          "status": 200,
+          "bytes": 8974265,
+          "for": "G688",
+          "checked": "SR5-S001：雜湊 cfbce2eb5bba1f20 相同、pdftotext 輸出與作者 006.txt 逐位元相同；網址出處以搜尋補證（搜尋結果第一筆即此 PDF）；~100 electrons、10,000/3,000/1,000 P/E、+15 V、24–96 層、300–512 層、早期流失幾秒、耐久提高一個數量級以上、WA 可趨近 1、多數廠商 3D 用電荷捕獲 找到"
+        },
+        {
+          "seq": 12,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(AUTH:\"Shin C\" AND 元件關鍵字) AND (S010 與浦項作者)",
+          "status": 200,
+          "bytes": 4705,
+          "for": "G688",
+          "checked": "5 筆全為醫學同名異人"
+        },
+        {
+          "seq": 13,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(S010 作者) AND (浦項作者) AND 元件關鍵字",
+          "status": 200,
+          "bytes": 142983,
+          "for": "G688",
+          "checked": "15 筆全為同名異人"
+        },
+        {
+          "seq": 14,
+          "url": "https://api.openalex.org/works?filter=doi:…四篇韓國論文",
+          "status": 429,
+          "bytes": 802,
+          "for": "G688",
+          "checked": "第一次即 429，該網域停用、未重試"
+        },
+        {
+          "seq": 15,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(浦項作者) AND (NAND/flash/charge trap/ferroelectric/synaptic)",
+          "status": 200,
+          "bytes": 83439,
+          "for": "G688",
+          "checked": "前 100 筆中浦項兩組的元件論文合著者沒有 S008、S010 作者"
+        }
+      ]
+    },
+    "G698": {
+      "reviewer": "SV5",
+      "author": "SR5",
+      "verdict": "ready",
+      "est_minutes": 8.68,
+      "fact_count": 11.75,
+      "networks": 8,
+      "missing": "",
+      "changes": [
+        "核心追問改寫：刪無來源的「80 度以上 DNA 便會解旋」「超過 100 度」「強酸熱泉」，改為「高溫會把 DNA 雙股拆開、把鹼基泡壞……在接近一百度的深海熱泉」，保留逆旋酶與共價單分子膜的鉤子，片名不動",
+        "K103-1810 刪「流感」，病毒只當實驗工具",
+        "K103-1802 註明兩項剔除實驗原出京都與喬治亞的實驗室（引文，不併網）",
+        "合著實際查證：喬治亞與 SLAC 紅氧還蛋白篇 59 篇合著（併網正確）；SLAC 篇與史丹佛 0 筆；科羅拉多州立與巴黎、京都、喬治亞 0 筆；巴黎與京都 0 筆",
+        "est_minutes 由 8.5 改 8.68"
+      ],
+      "unverified": [
+        "122 °C 上限只有 S019 摘要引文，稿中最多一句背景",
+        "嗜酸超嗜熱古菌沒有一手資料，所以核心追問不再提強酸熱泉",
+        "DIP 的保護機制沒有來源（只寫合成酵素有反應）"
+      ],
+      "note": "來源與卡片逐一核對無誤，作者擔心的三組合著實際查過，都不改變網數；核心追問原句有三處卡撐不住，已改成卡撐得住的版本；11.75 條、兩個轉折成立，但核心追問的改寫要在觀眾複評時重打分。",
+      "refetched": [
+        {
+          "seq": 4,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11894792/fullTextXML",
+          "status": 200,
+          "bytes": 282050,
+          "for": "G698",
+          "checked": "SR5-S011：雜湊 9b9bf7dc94ca2c2f 相同；93 °C 停長、σ −0.03 對 −0.06、約 30% 體積、1.76%、26 個 σ 值、all hyperthermophiles never in mesophiles、兩種負超螺旋質體 找到"
+        },
+        {
+          "seq": 5,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11320390/fullTextXML",
+          "status": 200,
+          "bytes": 138276,
+          "for": "G698",
+          "checked": "SR5-S013：雜湊 75e4ad9841ce18ed 相同；38–40 Å、98.45 莫耳比、1 與 0.5 mol% 仍融合、動力學 comparable、高溫與 highly acidic pH 不滲漏（引言）找到"
+        },
+        {
+          "seq": 6,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8415708/fullTextXML",
+          "status": 200,
+          "bytes": 100236,
+          "for": "G698",
+          "checked": "SR5-S018：雜湊 6345290a6d598d50 相同；7.7 ± 1.0 對 4.6 ± 1.3 μg/h、p = 0.016、MbhL 剔除無法生長、primary role disposing of reductant 找到"
+        },
+        {
+          "seq": 7,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(AUTH:\"Doukov T\" OR AUTH:\"Jenney FE\" OR AUTH:\"Cramer SP\") AND (AUTH:\"Weiss TM\" OR AUTH:\"Boxer SG\" OR AUTH:\"Burns NZ\" OR AUTH:\"Moss FR\" OR AUTH:\"Bhattacharya A\")",
+          "status": 200,
+          "bytes": 339,
+          "for": "G698",
+          "checked": "合著：SR5-S019 對 SR5-S013 0 筆"
+        },
+        {
+          "seq": 8,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(AUTH:\"Adams MW\" OR AUTH:\"Adams MWW\" OR AUTH:\"Haja DK\") AND (AUTH:\"Doukov T\" OR AUTH:\"Jenney FE\" OR AUTH:\"Cramer SP\" OR AUTH:\"Turpin TF\")",
+          "status": 200,
+          "bytes": 55198,
+          "for": "G698",
+          "checked": "合著：SR5-S018 對 SR5-S019 59 筆，併網正確（也證明查詢語法有效）"
+        },
+        {
+          "seq": 9,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(Santangelo/Fluke/Robb/Correa) AND (Basta/Villain/Takemata/Adams/Haja)",
+          "status": 200,
+          "bytes": 382,
+          "for": "G698",
+          "checked": "合著：NET_CSU 對巴黎、京都、喬治亞 0 筆"
+        },
+        {
+          "seq": 10,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(Basta/Villain) AND (Takemata/Adams/Bhattacharya/Boxer/Zhang L/Xiao X/Kuznetsov NA/Doukov/Jenney) OR Takemata AND (...)",
+          "status": 200,
+          "bytes": 1618,
+          "for": "G698",
+          "checked": "合著：1 筆為同名異人（國際癌症研究署的 Villain P），實質 0 筆"
+        },
+        {
+          "seq": 11,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(揚州 Zhang L & Yang Z 古菌) AND (上海交大、科羅拉多州立、喬治亞、新西伯利亞)",
+          "status": 200,
+          "bytes": 577,
+          "for": "G698",
+          "checked": "合著 0 筆（即使揚州與上海交大併網也只 1.75，不影響總數）"
+        }
+      ]
+    },
+    "G699": {
+      "reviewer": "SV6",
+      "author": "SR6",
+      "verdict": "ready",
+      "est_minutes": 8.57,
+      "fact_count": 11.5,
+      "networks": 7,
+      "missing": "",
+      "changes": [
+        "K103-1906 加權 1.0→0.75（主體屬已封頂 NET_MG_A），NET_MG_C 1.75→1.50，總加權 11.75→11.50、8.76→8.57 分鐘",
+        "K103-1912、第 6 章與附加轉折：高純度批不是『幾乎沒反應』（塑性也增約 91%），改為衝擊韌性與弛豫焓無明顯變化，並補高純度批鑄態衝擊韌性 3.86 J/cm²",
+        "K103-1901 刪『所以只能是薄帶』",
+        "K103-1905『908 K 以上』改『約 908 K』",
+        "K103-1910 scope 寫明 3.2 節的對應矛盾與只引的三點",
+        "K103-1914 分開 t25 試樣的 500→485 HV 與 16 HV/mm 那組"
+      ],
+      "unverified": [
+        "合著只能用 Europe PMC 作者查詢（收錄不全、未核 ORCID）",
+        "K103-1904 的 20–40 K 是論文自己按比例換算的示意",
+        "K103-1908 的局部非晶化與 10^3–10^4 /s 屬作者推論與公式估算"
+      ],
+      "note": "來源全數真實、全文、雜湊相符；兩個轉折（等原子配方、剪切帶溫度）都有原文撐，但加權 11.50 只比門檻多 0.1，以 9.0 分鐘製作沒有刪卡餘地。",
+      "refetched": [
+        {
+          "seq": 4,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6218505/fullTextXML",
+          "status": 200,
+          "bytes": 90582,
+          "for": "G699（SR6-S002：K103-1904/1905/1906/1915）",
+          "checked": "sha256 前 16 碼 11863909dde9f705，與作者 seq=4 完全相同；逐項核對 2.2%、0.11%、75 ms、110 ms、4.3/30.3 µm、743/908 K、approach 1000 K、33 ms、Saffman–Taylor、1–6 K、3400–8600 K。"
+        },
+        {
+          "seq": 5,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10821324/fullTextXML",
+          "status": 200,
+          "bytes": 155070,
+          "for": "G699（SR6-S004：K103-1901/1902 轉折一）",
+          "checked": "sha256 前 16 碼 bb06707eebe6e570，與作者 seq=9 相同；核對 80 mm、兩個五元 >50 mm、等原子 3 mm、2315 MPa 脆斷無塑性、加 Nb 1.5 mm／加 Hf 15 mm、10 倍與 refreshes our cognition。"
+        },
+        {
+          "seq": 6,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7288125/fullTextXML",
+          "status": 200,
+          "bytes": 69609,
+          "for": "G699（SR6-S005：K103-1906/1910）",
+          "checked": "sha256 前 16 碼 4a27b200e785ebd2，與作者 seq=5 相同；確認 3.2 節溫度與 133/102/147/132/76 的對應矛盾屬實，623 K 不斷、無剪切帶、均勻塑性變形，各溫度皆有脈紋、134 K 有韌窩。"
+        }
+      ]
+    },
+    "G700": {
+      "reviewer": "SV6",
+      "author": "SR6",
+      "verdict": "ready",
+      "est_minutes": 8.95,
+      "fact_count": 12.0,
+      "networks": 7,
+      "missing": "",
+      "changes": [
+        "K103-2005 加權 1.0→0.5（0.67／12 面屬已滿的 NET_EUV_B，0.8% 為推算），NET_EUV_C 2.0→1.5，總加權 12.5→12.0、9.32→8.95 分鐘",
+        "target_minutes 9.5→9.0、range [8.5,9.5]，章節秒數改為 60/105/80/90/75/75/55＝540",
+        "轉折二與 K103-2012：『微笑曲線』是粗糙度對線條間距而非對劑量；改用兩種隨機性同時計入時 40→60 mJ/cm² 由 3.09 升到 4.35 nm",
+        "K103-2004 與第 2 章補上 2.5 µs 也有內流但效率最低",
+        "K103-2006 刪『氬會吸收 EUV、要取捨』（來源沒寫）",
+        "K103-2010 刪『更難被偵測』，改為高數值孔徑容忍度較高",
+        "K103-2009 問句改成來源答得出的版本；K103-2014 問句刪『比銅還好』"
+      ],
+      "unverified": [
+        "K103-2008 為純計算（DFT），K103-2009–2012 為模擬，口播須說『計算／模擬顯示』",
+        "K103-2005 的約 0.8% 是作者自行相乘的推算",
+        "合著查核同樣只用 Europe PMC，未核 ORCID"
+      ],
+      "note": "來源全數真實、全文、雜湊相符；轉折一（預脈衝間隔有最佳值）有實驗數據，轉折二修正後由模擬支持；扣掉掛網灌分後 12.0 條、約 9 分鐘可成題。",
+      "refetched": [
+        {
+          "seq": 7,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9892586/fullTextXML",
+          "status": 200,
+          "bytes": 133921,
+          "for": "G700（SR6-S012：K103-2003/2004/2005 轉折一）",
+          "checked": "sha256 前 16 碼 73c0d827ca687d40，與作者 seq=17 相同；核對 0.67、12 面、26 µm、2 mJ/14 ps、100 mJ/15 ns、3.1/4.0/2.8%、>10^4 m/s 內流、>60% 離子流失、Te 未達 25 eV；另發現 2.5 µs 也有內流。"
+        },
+        {
+          "seq": 8,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12695894/fullTextXML",
+          "status": 200,
+          "bytes": 82025,
+          "for": "G700（SR6-S016：K103-2011/2012 轉折二）",
+          "checked": "sha256 前 16 碼 fe190daea55c72cf，與作者 seq=22 相同；核對 92 eV、14 倍、0.3 nm、2.15→7.89、2.14→7.54、2.15→2.93、兩者皆計 3.09→4.35 nm；微笑曲線是 LWR 對 space CD（節距 <42 nm），不是對劑量。"
+        },
+        {
+          "seq": 9,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13584219/fullTextXML",
+          "status": 200,
+          "bytes": 303663,
+          "for": "G700（SR6-S011：K103-2001/2002/2006）",
+          "checked": "sha256 前 16 碼 ed91934f74bd76fe，與作者 seq=16 相同；核對 >40 kW、500 W、約 100 Pa、被空氣與所有介質吸收、glint、圓頂／雲、數十 km/s、超音速氫動態氣鎖、降電荷、1996 年 10^5 倍、氬在特定壓力較能減速；未找到『氬會吸收 EUV』。"
+        }
+      ]
+    },
+    "G701": {
+      "reviewer": "SV7",
+      "author": "SR7",
+      "verdict": "reserve",
+      "est_minutes": 7.27,
+      "fact_count": 9.75,
+      "networks": 6,
+      "missing": "缺約 1.65 條加權事實（至少 11.4）。東京網（SR7-S001、S006）經 SR7-S001 的共同作者與摩德納團隊直接合著（2018 年 Proc. R. Soc. B 一篇節肢／泛節肢動物視覺演化論文，Europe PMC SV7 seq=4），依作者自己併波茲南網的同一標準併入 NET_MODENA_WIDE，少 2.0。最省的補法：從已讀全文的 SR7-S011（格勒諾布爾）與 SR7-S012（杜布納）各再寫一張不同事實的卡（兩網目前各只 1.0），或找一個與上述各網都無合著的新研究網寫兩張卡；補完須再交非作者覆核。",
+      "changes": [
+        "東京網（SR7-S001、S006）併入 NET_MODENA_WIDE：SR7-S001 的一位共同作者與 SR7-S003 的兩位摩德納作者合著 2018 年論文（Europe PMC，SV7 seq=4）；四張東京卡改記於摩德納網、不增加總分，總分 11.75 → 9.75。",
+        "第一章「多數物種只剩 1–6%」改為「五個族群中有三個只剩 1–6%」（原文四物種五族群：6%、1%、1%、38%、43%）。",
+        "K103-2104 補上原文回顧的太空實驗：真空暴露兩週可復活、乾燥兩年且暴露宇宙輻射者無一復活（標為引述），讓片名的「真空」有卡撐。",
+        "轉折二「保水說已被直接量測否定」改為「受到一組直接量測的挑戰（只測一種 CAHS）」。",
+        "PMC9592077、PMC9299615 的出處其實在作者 seq=1 的搜尋結果（作者寫 seq=3），網址出處成立，只是序號標錯。"
+      ],
+      "unverified": [
+        "CAHS、SAHS、Dsup 的功能實驗都不是在乾燥水熊蟲身上做（試管、人類／果蠅細胞、細菌），K103-2101 的成桶實驗也沒有真正乾燥；卡上已寫明，口播須保留這些限定。",
+        "Europe PMC 作者查詢不收所有期刊，除東京—摩德納外的「零合著」不是窮盡結論。",
+        "片名改寫（去「永生」、改成「真的能……嗎？」）有必要（drop_if 禁永生炒作，紀錄也撐不住），鉤子「不死玻璃」保留；但觀眾分數是對舊片名打的，須重評分。"
+      ],
+      "note": "來源全部真實、雜湊相符、卡上數字逐一找得到，兩個轉折成立；但東京網與摩德納網有直接合著，併網後只剩 9.75 條（約 7.3 分鐘），轉為後備；從已讀的格勒諾布爾與杜布納全文各補一張卡就可能回到門檻。",
+      "refetched": [
+        {
+          "seq": 9,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10793892/fullTextXML",
+          "status": 200,
+          "bytes": 143739,
+          "for": "G701",
+          "checked": "SR7-S008：位元組與 sha256 前 16 碼 ff539f64027373dc 與作者 seq=12 完全相同；7.6／4.0%、91%／99%、12.5% 甲醇等數字在原文找到。",
+          "sha256_prefix": "ff539f64027373dc"
+        },
+        {
+          "seq": 10,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11233135/fullTextXML",
+          "status": 200,
+          "bytes": 335133,
+          "for": "G701",
+          "checked": "SR7-S003：雜湊 6a52399560cbdedb 與作者 seq=7 相同；0.05–0.1 對 0.17 SSB/Gy/Mb、421 個基因、P. fairbanksi 等在原文找到。",
+          "sha256_prefix": "6a52399560cbdedb"
+        },
+        {
+          "seq": 11,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9833599/fullTextXML",
+          "status": 200,
+          "bytes": 189819,
+          "for": "G701",
+          "checked": "SR7-S009：雜湊 bc144196024255fb 與作者 seq=13 相同；240 天 6%／1%／1%／38%／43% 與太空實驗回顧段在原文找到（據此改寫 K103-2104 與第一章）。",
+          "sha256_prefix": "bc144196024255fb"
+        },
+        {
+          "seq": 4,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28AUTH%3A%22Kunieda%20T%22%20OR%20AUTH%3A%22Arakawa%20K%22%20OR%20AUTH%3A%22Horikawa%20DD%22%20OR%20AUTH%3A%22Hashimoto%20T%22%29%20AND%20%28AUTH%3A%22Kadonaga%20JT%22%20OR%20AUTH%3A%22Kassavetis%20GA%22%20OR%20AUTH%3A%22Kolling%20DRJ%22%20OR%20AUTH%3A%22Hicks%20LM%22%20OR%20AUTH%3A%22Smythers%20AL%22%20OR%20AUTH%3A%22Silver%20PA%22%20OR%20AUTH%3A%22Way%20JC%22%20OR%20AUTH%3A%22Marelli%20B%22%20OR%20AUTH%3A%22Blackledge%20M%22%20OR%20AUTH%3A%22Pellequer%20JL%22%20OR%20AUTH%3A%22Malki%20A%22%20OR%20AUTH%3A%22Zarubin%20M%22%20OR%20AUTH%3A%22Kravchenko%20E%22%20OR%20AUTH%3A%22Rebecchi%20L%22%20OR%20AUTH%3A%22Guidetti%20R%22%20OR%20AUTH%3A%22Mobjerg%20N%22%20OR%20AUTH%3A%22Kaczmarek%20L%22%20OR%20AUTH%3A%22Boothby%20TC%22%20OR%20AUTH%3A%22Concordet%20JP%22%20OR%20AUTH%3A%22Giovannangeli%20C%22%20OR%20AUTH%3A%22Roszkowska%20M%22%29&format=json&pageSize=100&resultType=lite",
+          "status": 200,
+          "bytes": 1701,
+          "for": "G701",
+          "checked": "1 筆：2018〈Molecular palaeontology illuminates the evolution of ecdysozoan vision〉，作者含 SR7-S001 共同作者與 SR7-S003 的兩位摩德納作者 → NET_KUNIEDA_TOKYO 併入 NET_MODENA_WIDE。seq=3、5–8（聖地牙哥、馬歇爾、哈佛、格勒諾布爾、杜布納對其他網）皆 0 筆。",
+          "sha256_prefix": "abe999a9aba57aeb"
+        }
+      ]
+    },
+    "G703": {
+      "reviewer": "SV7",
+      "author": "SR7",
+      "verdict": "reserve",
+      "est_minutes": 5.78,
+      "fact_count": 7.75,
+      "networks": 4,
+      "missing": "缺約 3.65 條加權事實。（1）主編決定 OpenStax 不計（條款禁止 LLM 攝取、授權為 CC BY-NC-SA 非商業），K103-2311、2312 已刪、NET_OPENSTAX 0；（2）MIT 網併入時鐘實驗室網：MIT 通訊作者與 JILA 主持人直接合著 arXiv:1603.06258〈Quantum network of neutral atom clocks〉（SV7 seq=2），NET_MIT 0。需要至少兩個與 JILA／NIST、東京／理研、PTB／INRIM、華東師大、MIT 都無直接合著的新研究網各兩張卡（例如重力紅移或衛星導航相對論修正的政府或標準機構文件、獨立的大地測量機構文件），並重寫第五章被刪掉的大樓實驗與 GPS 段。",
+      "changes": [
+        "最優先項查證屬實：MIT（SR7-S021）通訊作者與 JILA 主持人直接合著 arXiv:1603.06258（SV7 seq=2），NET_MIT 併入 NET_CLOCKLABS，−2.0。",
+        "主編決定 OpenStax 不計：刪 K103-2311（1959 大樓紅移）、K103-2312（GPS 38 微秒）與來源 SR7-S022，NET_OPENSTAX 不計，−2.0；第五章改為只用 K103-2313、2314。",
+        "作者憑記憶的兩項合著已實證（PTB–JILA：arXiv:1702.04669；華東師大–JILA：Europe PMC 14 筆），合併維持。",
+        "K103-2303：原寫「穩定度與 ω0 成反比」方向相反，改為「不穩定度」；「所有利用量子關聯的實驗」縮回原文「所有自旋壓縮實驗」。",
+        "K103-2316：限制因素原寫「LO 相位雜訊與 Dick 雜訊」，原文是增益主要受狀態偵測雜訊限制，已改。",
+        "總分 11.75 → 7.75（約 5.8 分鐘）。"
+      ],
+      "unverified": [
+        "arXiv 編號、JILA 實驗室 PDF、BIPM、諾貝爾、ESA 網址作者寫「取自網頁搜尋結果」，搜尋回應不在 cache，出處無法從紀錄核對；論文本身身分已由重抓與內文確認。",
+        "國際度量衡局人員曾與華東師大作者合著一篇梳齒比對論文；SR7-S018／S019 為無具名作者的機構頁，覆核判斷仍各自成網，若主編從嚴則再 −2.0。"
+      ],
+      "note": "卡上數字都在原文、轉折成立，但 MIT 網確認與 JILA 合著、OpenStax 依主編決定不計，只剩 4 網 7.75 條，須補至少兩個獨立研究網才能回到門檻，判後備。",
+      "refetched": [
+        {
+          "seq": 12,
+          "url": "https://arxiv.org/pdf/2109.12238",
+          "status": 200,
+          "bytes": 726034,
+          "for": "G703",
+          "checked": "SR7-S013：雜湊 5e8cea4af4a6dae2 與作者 seq=16 相同；−1.09×10^-19/mm、−9.8(2.3)×10^-20、7.6×10^-21、37 s、三個數量級、宇宙年齡內不到 1 秒在原文找到。",
+          "sha256_prefix": "5e8cea4af4a6dae2"
+        },
+        {
+          "seq": 13,
+          "url": "https://www.bipm.org/faq-redefinition-second",
+          "status": 200,
+          "bytes": 232194,
+          "for": "G703",
+          "checked": "SR7-S018：位元組與雜湊（91b79e2ca6f2a573）與作者 seq=21（230715、8da9f2a06c0afe2d）不同，但兩份去標籤後的正文逐字相同（20235 字元，差異只在 HTML 標記），判定相符。",
+          "sha256_prefix": "91b79e2ca6f2a573"
+        },
+        {
+          "seq": 14,
+          "url": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/ACES_Atomic_Clock_Ensemble_in_Space",
+          "status": 200,
+          "bytes": 268668,
+          "for": "G703",
+          "checked": "SR7-S024：雜湊 9658be64f32ba0d4 與作者 seq=28 相同；三億年一秒、30 個月、25 天、400 km、one part in 10^18／10^17、current satellite systems cannot achieve 在原文找到。",
+          "sha256_prefix": "9658be64f32ba0d4"
+        },
+        {
+          "seq": 2,
+          "url": "http://export.arxiv.org/api/query?search_query=au:Vuletic&max_results=300",
+          "status": 200,
+          "bytes": 387655,
+          "for": "G703",
+          "checked": "合著稽核（最優先項）：SR7-S021 通訊作者共 167 筆 arXiv 紀錄，其中 arXiv:1603.06258〈Quantum network of neutral atom clocks〉與 JILA 主持人（SR7-S013、S016 作者）直接合著 → NET_MIT 併入 NET_CLOCKLABS。seq=1 的布林查詢因姓名比對格式回 0 筆，不採。",
+          "sha256_prefix": "c1523ed589d24599"
+        },
+        {
+          "seq": 16,
+          "url": "http://export.arxiv.org/api/query?search_query=ti:%22Sub-10%20mHz%20Linewidth%22&max_results=10",
+          "status": 200,
+          "bytes": 4252,
+          "for": "G703",
+          "checked": "arXiv:1702.04669 作者含 SR7-S017 的兩位 PTB 作者與 JILA 主持人：作者憑記憶的 PTB–JILA 合著屬實（seq=15 的姓名布林查詢回 0，屬比對格式問題）。",
+          "sha256_prefix": "91295702c3123246"
+        },
+        {
+          "seq": 17,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=AUTH%3A%22Ma%20LS%22%20AND%20(AUTH%3A%22Zucco%20M%22%20OR%20AUTH%3A%22Ye%20J%22%20OR%20AUTH%3A%22Diddams%20SA%22%20OR%20AUTH%3A%22Oates%20CW%22)&format=json&pageSize=50&resultType=lite",
+          "status": 200,
+          "bytes": 10237,
+          "for": "G703",
+          "checked": "14 筆：SR7-S023 作者與 JILA 主持人 1994–2005 多篇合著，另與 SR7-S017 的 INRIM 作者合著 2004 Science：作者憑記憶的華東師大–JILA 合著屬實。",
+          "sha256_prefix": "420e0a3300518fc4"
+        }
+      ]
+    },
+    "G704": {
+      "reviewer": "SV8",
+      "author": "SR8",
+      "verdict": "ready",
+      "est_minutes": 8.76,
+      "fact_count": 11.75,
+      "networks": 7,
+      "missing": "",
+      "changes": [
+        "NET_URMC 由 2.0 折為 1.5：羅徹斯特篇的一位日本合作實驗室作者分別與舊金山篇通訊作者、圖賓根篇第一作者有無關主題的合著（SV8 seq=2、3）；兩篇主題論文沒有共同作者，故不併網。K103-2413 由 1.0 改 0.5",
+        "植物兩張卡維持 needs_check 並降權：K103-2406 1.0→0.75、K103-2407 0.75→0.5，answer_target 明寫「電腦模擬」；NET_LYON 合計 1.25",
+        "fact_count 12.75→11.75、est_minutes 9.51→8.76（仍 ≥ 8.5，餘裕小）"
+      ],
+      "unverified": [
+        "SR8-S002（PMC 頁）因 pmc.ncbi.nlm.nih.gov 已封鎖無法重抓，以作者 cache 比對雜湊與正文（0.99 ± 0.07、約 20 萬個 AQP1、5 kcal/mol、45/26 nm/s、completely blocked 均在）",
+        "研究網只查到 Europe PMC 收錄範圍，未查完整著作清單"
+      ],
+      "note": "來源全部真實、全文、雜湊相符，卡上數字逐一在原文找到；扣掉弱合著與計算研究後仍有 11.75 條（8.76 分鐘，餘裕小），兩個轉折有來源。",
+      "refetched": [
+        {
+          "seq": 7,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7517714/fullTextXML",
+          "status": 200,
+          "bytes": 689089,
+          "for": "G704",
+          "checked": "與 SR8 seq=3 位元組數與 sha256 前 16 碼完全相同（892be59b66731897）；NPA 偶極轉向、相對貢獻「some debate」、約 3 個水分子/ns 原文逐句對過"
+        },
+        {
+          "seq": 8,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6307855/fullTextXML",
+          "status": 200,
+          "bytes": 277158,
+          "for": "G704",
+          "checked": "與 SR8 seq=10 相同（a137b9f53c30e5ee）；32.7%、47.06%、42.4%、13 組 144 隻、I² 73.1%、20 nl 玻璃吸管皆在原文"
+        },
+        {
+          "seq": 9,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6025908/fullTextXML",
+          "status": 200,
+          "bytes": 148466,
+          "for": "G704",
+          "checked": "與 SR8 seq=15 相同（6dbb07fbe8718b62）；20–65%、0.1–10%、<10^-7% 對約 0.5%、硼 0.1% 對 10%、log Kow −0.2、80 Da 皆在原文"
+        },
+        {
+          "seq": 1,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=AUTH%3A%22Verkman%20AS%22%20AND%20AUTH%3A%22Nedergaard%20M%22&format=json&pageSize=25&resultType=lite",
+          "status": 200,
+          "bytes": 208,
+          "for": "G704",
+          "checked": "研究網抽查：Europe PMC 作者查詢舊金山篇與羅徹斯特篇兩位通訊作者，0 筆"
+        },
+        {
+          "seq": 2,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=AUTH%3A%22Verkman%20AS%22%20AND%20(AUTH%3A%22Iliff%20JJ%22%20OR%20AUTH%3A%22Thrane%20AS%22%20OR%20AUTH%3A%22Mestre%20H%22%20OR%20AUTH%3A%22Hirase%20H%22%20OR%20AUTH%3A%22Yasui%20M%22%20OR%20AUTH%3A%22Xiao%20M%22%20OR%20AUTH%3A%22Lundgaard%20I%22%20OR%20AUTH%3A%22Plog%20BA%22)&format=json&pageSize=25&resultType=lite",
+          "status": 200,
+          "bytes": 1261,
+          "for": "G704",
+          "checked": "研究網抽查：舊金山篇通訊作者與羅徹斯特篇多位作者，1 筆（2020 無關主題，與日本合作實驗室作者）"
+        },
+        {
+          "seq": 3,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(AUTH%3A%22Beitz%20E%22%20OR%20AUTH%3A%22Zeuthen%20T%22)%20AND%20(AUTH%3A%22Sansom%20MS%22%20OR%20AUTH%3A%22Verkman%20AS%22%20OR%20AUTH%3A%22Nedergaard%20M%22%20OR%20AUTH%3A%22Auguin%20D%22%20OR%20AUTH%3A%22Elimelech%20M%22%20OR%20AUTH%3A%22Kwon%20TH%22%20OR%20AUTH%3A%22Yasui%20M%22)&format=json&pageSize=25&resultType=lite",
+          "status": 200,
+          "bytes": 2958,
+          "for": "G704",
+          "checked": "研究網抽查：圖賓根／哥本哈根篇作者與其他各網作者，3 筆（皆與同一位日本合作實驗室作者，2002–2006）"
+        }
+      ]
+    },
+    "G705": {
+      "reviewer": "SV8",
+      "author": "SR8",
+      "verdict": "ready",
+      "est_minutes": 9.32,
+      "fact_count": 12.5,
+      "networks": 7,
+      "missing": "",
+      "changes": [
+        "片名「…如何在千度烈焰下完好保護嬌嫩鮮花？」改為「…如何在七百多度高溫下擋熱，又為何到千度就變成玻璃？」：噴燈燒花沒有任何讀到的紀錄；新片名由 K103-2510 與 K103-2511 撐住。題案需重評分",
+        "核心追問與第一章「九成以上」改為「約九成」（來源寫 ∼90%）",
+        "K103-2501 刪去以 1990 年過世學者命名的偵測器名稱；K103-2512 刪去以 2014 年過世發現者命名的彗星名，改寫編號 81P",
+        "K103-2505：空氣平均自由程在瓦拉多利德綜論是 66 nm（70 nm 出自西安交大）；「幾毫米」改為來源寫的 1 毫米",
+        "K103-2513、第六章與轉折二：「三分之一軌跡碎成多顆」過度，改為 B 型約 33%、其中多數末端有兩顆以上顆粒（推算約六分之一軌跡）",
+        "K103-2507、K103-2510 把作者自己的連結與相除標成推論、推算",
+        "NET_HAUST 維持 1.5；Europe PMC 查無它與 NET_XJTU 合著，也查無 NET_KENT 與 NET_JPL_MPF 合著"
+      ],
+      "unverified": [
+        "噴燈燒花與後續火星車的氣凝膠用途：噴射推進實驗室網域 403，未讀到",
+        "西安交大與河南科大的合著查詢因中文姓名同名雜訊多，只能說查無，不能排除"
+      ],
+      "note": "來源真實且雜湊相符，修正幾處誇大與兩處人名紅線後仍有 12.5 條加權事實；片名已改成來源撐得住的寫法，需重評分後才能當定案。",
+      "refetched": [
+        {
+          "seq": 10,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9722935/fullTextXML",
+          "status": 200,
+          "bytes": 205111,
+          "for": "G705",
+          "checked": "與 SR8 seq=19 相同（08d2e80fcdc13e70）；<0.02 與約 0.004 W/m·K、62%、約 30%、108 nm 對 5–6 倍、0.2→1.7 MPa 約 10 倍皆在原文"
+        },
+        {
+          "seq": 11,
+          "url": "https://ntrs.nasa.gov/api/citations/20070025132/downloads/20070025132.pdf",
+          "status": 200,
+          "bytes": 2774929,
+          "for": "G705",
+          "checked": "與 SR8 seq=20 相同（054a5e19bd88bbc8）；6.1 km/s、100–200 倍、256 與約 1200、65/33/2%、86%、熔融包覆與燒蝕皆在原文；B 型末端單顆不到一半"
+        },
+        {
+          "seq": 12,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6225116/fullTextXML",
+          "status": 200,
+          "bytes": 83260,
+          "for": "G705",
+          "checked": "與 SR8 seq=24 相同（048359a4a9623ea3）；3–8 µm、25.7% 與 9.3%、0.0357、750 °C 0.0792 為純纖維氈一半、修正因子 1.11、氮氣氣氛皆在原文"
+        },
+        {
+          "seq": 13,
+          "url": "https://ntrs.nasa.gov/api/citations/19970019968/downloads/19970019968.pdf",
+          "status": 200,
+          "bytes": 1539358,
+          "for": "G705",
+          "checked": "與 SR8 seq=22 相同（729e9bc786a8c2d1）；外界 −85 °C 時箱內不低於 −40 °C、28–35%、3.5–4 °C、有風時係數加倍約冷 4 °C 皆在原文"
+        },
+        {
+          "seq": 4,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(AUTH%3A%22Tao%20W%22%20OR%20AUTH%3A%22Tao%20WQ%22%20OR%20AUTH%3A%22Zhang%20H%22%20OR%20AUTH%3A%22Ji%20W%22)%20AND%20(AUTH%3A%22Yu%20H%22%20OR%20AUTH%3A%22Liu%20J%22%20OR%20AUTH%3A%22Park%20CB%22%20OR%20AUTH%3A%22Buahom%20P%22)%20AND%20aerogel&format=json&pageSize=25&resultType=lite",
+          "status": 200,
+          "bytes": 21845,
+          "for": "G705",
+          "checked": "研究網抽查：西安交大與河南科大／哈工大作者寬查詢，同名雜訊過多，不採用"
+        },
+        {
+          "seq": 5,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=AUTH%3A%22Tao%20WQ%22%20AND%20(AUTH%3A%22Yu%20H%22%20OR%20AUTH%3A%22Liu%20J%22%20OR%20AUTH%3A%22Park%20CB%22%20OR%20AUTH%3A%22Lu%20C%22%20OR%20AUTH%3A%22Buahom%20P%22)&format=json&pageSize=25&resultType=lite",
+          "status": 200,
+          "bytes": 4497,
+          "for": "G705",
+          "checked": "研究網抽查：西安交大通訊作者與河南科大／哈工大篇作者，5 筆皆為同名的醫學與材料論文，查無氣凝膠合著"
+        },
+        {
+          "seq": 6,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=AUTH%3A%22Tsou%20P%22%20AND%20(AUTH%3A%22Johnson%20KR%22%20OR%20aerogel%20OR%20Stardust)&format=json&pageSize=25&resultType=lite",
+          "status": 200,
+          "bytes": 24505,
+          "for": "G705",
+          "checked": "研究網抽查：肯特篇的噴射推進實驗室作者，查無與探路者報告作者合著（多為星塵號團隊論文）"
+        }
+      ]
+    },
+    "G706": {
+      "reviewer": "SV9",
+      "author": "SR9",
+      "verdict": "reserve",
+      "est_minutes": 8.2,
+      "fact_count": 11.0,
+      "networks": 6,
+      "missing": "加權事實 11.0，低於 11.4（差 0.4，約 0.3 分鐘）。原 NET_T2_OPENSTAX（2.0）依主編規則不計；K103-2601 改用 S012／S011 重寫但兩網已封頂，K103-2602（超導需邁斯納效應）改 needs_check。要回到 ready，需要一個與 T1／T4–T7 都無直接合著的新研究網，至少撐 0.5 條：例如非 OpenStax、允許商用的開放教科書或標準機構對超導定義的說明（可救回 K103-2602），或可讀全文的三維拓撲絕緣體 ARPES／STM 原始實驗（不得是 PSU／維爾茨堡團隊）。",
+      "changes": [
+        "依主編規則移除 OpenStax（S008、S009），NET_T2（原 2.0）不計；未請求 openstax.org。",
+        "K103-2601 改用 S012＋S011 原文重寫（兩網已封頂，加權 0）；K103-2602 改 needs_check、移出章節。",
+        "K103-2614 由 needs_check 改 screened、加權 0.5→1.0：S015 原文明寫兩端電阻由霍爾電阻主導、接近 h/e²，不是作者自己串的；刪去原文沒有的「四端縱向近零」「論文未拆分」。",
+        "K103-2612 刪去 S016 沒寫的「費米能落在導帶」，加權 0.75→1.0（T7 合計 2.0）。",
+        "K103-2603 刪去原文沒有的「非磁性雜質不破壞、磁性會」。",
+        "K103-2605 刪去 S012 沒寫的「2013 年」（年份在 S011）。",
+        "K103-2608 刪去 BIPM 沒寫的「一條邊緣通道對應的電阻」。",
+        "K103-2610 畫面移除問號。",
+        "第一章改寫標題與 new_information；轉折一不再依賴超導定義。"
+      ],
+      "unverified": [
+        "原始 ARPES、HgTe 量子自旋霍爾、2013 年 QAH 原始論文都只有回顧或機構文件轉述（作者已承認）。",
+        "被質疑的 2017 年馬約拉納研究的撤稿聲明未讀，卡片不寫撤稿（正確做法）。",
+        "超導需要邁斯納效應的定義目前無可計來源（K103-2602）。",
+        "S014 補充材料（約 30 個元件細節）未讀。"
+      ],
+      "note": "來源都真實、全文、雜湊相符，卡片大多照原文；但拿掉 OpenStax 後只有 11.0 條（約 8.2 分鐘），差一個獨立研究網，交 reserve。題名改動有必要（表面是金屬態不是超導），新題名仍保留「邊界魔法」與反差問句，吸引力只略降。",
+      "refetched": [
+        {
+          "seq": 4,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5630236/fullTextXML",
+          "status": 200,
+          "bytes": 82963,
+          "for": "G706",
+          "checked": "5aaa5bbc088d42b7，與作者 seq=39 相同；全文"
+        },
+        {
+          "seq": 5,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4640587/fullTextXML",
+          "status": 200,
+          "bytes": 90795,
+          "for": "G706",
+          "checked": "fbd45c56a22112db，與作者 seq=28 相同；全文"
+        },
+        {
+          "seq": 6,
+          "url": "https://www.bipm.org/utils/en/pdf/si-mep/SI-App2-ampere.pdf",
+          "status": 200,
+          "bytes": 192453,
+          "for": "G706",
+          "checked": "4026bb7a7f42970e，與作者 seq=30 相同；官方 PDF 全文"
+        },
+        {
+          "seq": 10,
+          "url": "Europe PMC search：(Samarth N|Chang CZ|Zeldov E|Molenkamp LW) AND (Tokura Y|Kawasaki M|Holleitner AW|Felser C|Tsukazaki A)",
+          "status": 200,
+          "bytes": 368,
+          "for": "G706",
+          "checked": "0 筆，與作者 seq=38、41、43 一致"
+        }
+      ]
+    },
+    "G707": {
+      "reviewer": "SV9",
+      "author": "SR9",
+      "verdict": "reserve",
+      "est_minutes": 7.83,
+      "fact_count": 10.5,
+      "networks": 6,
+      "missing": "加權事實 10.5，低於 11.4（差 0.9）。原因：Europe PMC（SV9 seq=7；作者 seq=18 也已撈到同一筆但未處理）顯示 NASA 路線圖作者 German CR 署名的 2011 年 PLoS ONE 深海化合成生態系普查論文，把 S001 第一作者 Bright M 列在 ChEss 科學指導委員會的團體作者名單，維也納網（2.0）與 NASA 網（1.5）依「直接合著」合併封頂 2.0，少 1.5。要回 ready，需要一個與現有六網都無直接合著的新研究網、至少撐 1.0 條（例如另一團隊的開放全文熱泉管蟲生理或共生菌研究，或另一份機構文件談冰下海洋熱液）。若主編裁定團體作者名單裡的委員不算直接合著，則兩網分開計，本組為 12.0 條、約 8.95 分鐘，可判 ready。",
+      "changes": [
+        "維也納網（S001）與 NASA 路線圖網（S007）因 2011 年 ChEss 普查論文（German CR 署名、Bright M 列於團體作者委員名單）合併，合計封頂 2.0（原 3.5）。",
+        "K103-2702 更正：7.0 °C 是唯一沒有動物的洞穴，不是「有管蟲的洞穴」。",
+        "K103-2703／主題第三章：鋅位點晶體結構的物種在來源中未寫明，改為「一種熱泉管蟲」。",
+        "K103-2704 措辭對齊原文（13 種胺基酸相關基因、15 個溶酶體蛋白酶相關蛋白）。",
+        "K103-2706 更正 hemerythrin 是蚓血紅蛋白而非血藍素，並補原文「是否參與攝氧仍未知」。",
+        "K103-2708 逐句核對無誤，needs_check 改 screened。",
+        "K103-2710 更正：28.5–35 Ma 是海嶺分開時間，分子鐘估計是約 33.7 Ma；加權 0.5→0.75。",
+        "K103-2712 把「而不是玄武岩黑煙囪」改為原文撐得住的「類比裡沒有」；畫面移除問號形狀。"
+      ],
+      "unverified": [
+        "巨型管蟲本身的血紅素晶體結構原始論文未讀（只見 S002 引用題名）。",
+        "S001 引言的幼蟲存活約一個月、經皮膚感染共生菌等為引用既有研究，本篇沒重做（卡上已註明）。",
+        "合著查核只查主要作者，未涵蓋每位共同作者。"
+      ],
+      "note": "來源全部真實且雜湊相符，卡片內容扎實，只有少數錯置數字與一個譯名錯誤；但主要網之間有一條作者沒處理的團體作者連結，合併後 10.5 條（約 7.8 分鐘），交 reserve；若主編不把委員名單算合著，即為 12.0 條、ready。題名「永生→黑暗」有必要（壽命估計不到 10 年），且與核心追問用詞一致，吸引力不減。",
+      "refetched": [
+        {
+          "seq": 1,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11480316/fullTextXML",
+          "status": 200,
+          "bytes": 127571,
+          "for": "G707",
+          "checked": "sha256 前 16 碼 c46b633e5687b22d，與作者 seq=5 完全相同；完整 JATS 全文（body 約 2.6 萬字元）"
+        },
+        {
+          "seq": 2,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6862839/fullTextXML",
+          "status": 200,
+          "bytes": 173867,
+          "for": "G707",
+          "checked": "1313a03319c950e2，與作者 seq=7 相同；全文"
+        },
+        {
+          "seq": 3,
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9921365/fullTextXML",
+          "status": 200,
+          "bytes": 181631,
+          "for": "G707",
+          "checked": "055408bc37da3ddc，與作者 seq=25 相同；全文"
+        },
+        {
+          "seq": 7,
+          "url": "Europe PMC search：(Bright M|Gollner S|Sievert SM|Hourdez S) AND (German CR|Hoehler TM|Hendrix AR|Vance SD|Barge LM|Bowman JS|Cable ML|Hurford TA)，resultType=core",
+          "status": 200,
+          "bytes": 8579,
+          "for": "G707",
+          "checked": "1 筆：PMID 21829722（2011，PLoS ONE），署名 German CR 等＋ChEss 科學指導委員會，investigator 名單含 Bright M → 維也納與 NASA 網合併"
+        },
+        {
+          "seq": 8,
+          "url": "Europe PMC search：Halanych KM AND (Qian PY|Qiu JW|Shinzato C|Bright M|Gollner S|Sievert SM|Hourdez S|German CR|Hoehler TM|Ruan L)",
+          "status": 200,
+          "bytes": 400,
+          "for": "G707",
+          "checked": "0 筆"
+        },
+        {
+          "seq": 9,
+          "url": "Europe PMC search：(Qian PY|Qiu JW|Shinzato C) AND (Bright M|Gollner S|Sievert SM|Hourdez S|German CR|Hoehler TM|Hendrix AR|Vance SD)",
+          "status": 200,
+          "bytes": 447,
+          "for": "G707",
+          "checked": "0 筆"
+        }
+      ]
+    }
+  },
+  "final": {
+    "G668": "ready，觀眾 6.78",
+    "G669": "reserve（素材未達門檻）",
+    "G671": "reserve（素材未達門檻）",
+    "G672": "reserve（素材未達門檻）",
+    "G708": "reserve（素材達標，但觀眾分數 5.07 → 改包裝後 5.46，未達 6.5）",
+    "G709": "reserve（素材未達門檻）",
+    "G674": "reserve（素材達標，但觀眾分數 5.9 → 改包裝後 6.08，未達 6.5）",
+    "G675": "reserve（素材未達門檻）",
+    "G678": "reserve（素材未達門檻）",
+    "G679": "ready，改包裝後觀眾 6.62",
+    "G684": "reserve（素材未達門檻）",
+    "G685": "ready，觀眾 6.57",
+    "G688": "reserve（素材達標，但觀眾分數 5.44 → 改包裝後 6.25，未達 6.5）",
+    "G698": "reserve（素材達標，但觀眾分數 4.48 → 改包裝後 4.58，未達 6.5）",
+    "G699": "reserve（素材達標，但觀眾分數 4.07 → 改包裝後 4.54，未達 6.5）",
+    "G700": "reserve（素材達標，但觀眾分數 5.57 → 改包裝後 5.54，未達 6.5）",
+    "G701": "reserve（素材未達門檻）",
+    "G703": "reserve（素材未達門檻）",
+    "G704": "reserve（素材達標，但觀眾分數 3.61 → 改包裝後 3.96，未達 6.5）",
+    "G705": "reserve（素材達標，但觀眾分數 4.48 → 改包裝後 5.83，未達 6.5）",
+    "G706": "reserve（素材未達門檻）",
+    "G707": "reserve（素材未達門檻）"
+  },
+  "audience": {
+    "rescore": {
+      "off": {
+        "a": -0.10666666666666647,
+        "b": -0.056666666666665755
+      },
+      "res": {
+        "G705": {
+          "old_base": 7.88,
+          "new_base": 5.18,
+          "demand": 1.0,
+          "old": 6.73,
+          "new": 4.48
+        },
+        "G674": {
+          "old_base": 7.4,
+          "new_base": 6.43,
+          "demand": 3.25,
+          "old": 6.71,
+          "new": 5.9
+        },
+        "G685": {
+          "old_base": 7.48,
+          "new_base": 7.23,
+          "demand": 3.25,
+          "old": 6.78,
+          "new": 6.57
+        },
+        "G679": {
+          "old_base": 7.35,
+          "new_base": 6.48,
+          "demand": 3.25,
+          "old": 6.67,
+          "new": 5.94
+        },
+        "G668": {
+          "old_base": 7.35,
+          "new_base": 7.48,
+          "demand": 3.25,
+          "old": 6.67,
+          "new": 6.78
+        },
+        "G700": {
+          "old_base": 7.86,
+          "new_base": 6.48,
+          "demand": 1.0,
+          "old": 6.72,
+          "new": 5.57
+        },
+        "G688": {
+          "old_base": 7.5,
+          "new_base": 5.88,
+          "demand": 3.25,
+          "old": 6.79,
+          "new": 5.44
+        },
+        "G699": {
+          "old_base": 7.84,
+          "new_base": 4.68,
+          "demand": 1.0,
+          "old": 6.7,
+          "new": 4.07
+        },
+        "G704": {
+          "old_base": 7.95,
+          "new_base": 4.13,
+          "demand": 1.0,
+          "old": 6.79,
+          "new": 3.61
+        },
+        "G708": {
+          "old_base": 8.05,
+          "new_base": 5.88,
+          "demand": 1.0,
+          "old": 6.88,
+          "new": 5.07
+        },
+        "G698": {
+          "old_base": 7.8,
+          "new_base": 5.18,
+          "demand": 1.0,
+          "old": 6.67,
+          "new": 4.48
+        }
+      }
+    },
+    "after_repack": {
+      "off": {
+        "a": -0.1566666666666663,
+        "b": -0.23999999999999932
+      },
+      "res": {
+        "G708": {
+          "base": 6.35,
+          "total": 5.46,
+          "prev": 5.88
+        },
+        "G688": {
+          "base": 6.85,
+          "total": 6.25,
+          "prev": 5.88
+        },
+        "G674": {
+          "base": 6.65,
+          "total": 6.08,
+          "prev": 6.43
+        },
+        "G700": {
+          "base": 6.45,
+          "total": 5.54,
+          "prev": 6.48
+        },
+        "G679": {
+          "base": 7.3,
+          "total": 6.62,
+          "prev": 6.48
+        },
+        "G704": {
+          "base": 4.55,
+          "total": 3.96,
+          "prev": 4.13
+        },
+        "G699": {
+          "base": 5.25,
+          "total": 4.54,
+          "prev": 4.68
+        },
+        "G705": {
+          "base": 6.8,
+          "total": 5.83,
+          "prev": 5.18
+        },
+        "G698": {
+          "base": 5.3,
+          "total": 4.58,
+          "prev": 5.18
+        }
+      }
+    }
+  },
+  "findings": [
+    "研究代理只比對作者名單判斷研究網獨立，覆核用 Europe PMC 作者查詢在 8 組裡查到跨網直接合著，合併後素材不足；研究網的合著必須實查。",
+    "從論文重寫的題案術語密度高，觀眾分數從 7 分以上掉到 4–6 分；改包裝後平均升 0.6，只有 1 組因此過關。原本的高分建立在編造的誇張說法上（例如「千度烈焰下保護鮮花」「幾百瓦快充」），換成來源撐得住的寫法後吸引力明顯下降。",
+    "22 組全部來源屬實：覆核共重抓 66 篇以上，雜湊或正文與研究代理快取相符，沒有發現編造的來源。"
+  ]
+}
