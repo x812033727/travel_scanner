@@ -206,6 +206,7 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "anthropic_api_base_url",
             "minimax_api_base_url",
             "hotspot_guide_gemini_base_url",
+            "hotspot_guide_gemini_key_budgets_usd",
             "jev_api_base_url",
             "jev_daily_call_budget",
         ),
@@ -215,6 +216,7 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "minimax_api_key",
             "minimax_api_keys_extra",
             "hotspot_guide_gemini_api_key",
+            "hotspot_guide_gemini_api_keys_extra",
             "jev_api_key",
         ),
     ),
@@ -654,15 +656,25 @@ def apply_runtime_overrides(base: Settings, rows: list[ProviderConfig]) -> Setti
 
 async def load_runtime_settings(session: AsyncSession) -> Settings:
     settings = apply_runtime_overrides(get_settings(), await provider_rows(session))
-    if not settings.minimax_api_keys_extra:
+    if not settings.minimax_api_keys_extra and not settings.hotspot_guide_gemini_api_keys_extra:
         return settings
-    # Several M Plan keys: every text call made with these settings (planner, trip parser,
-    # guide search and review, intros, news, video stages) uses the key the pool picks now.
-    # Video media and speech pick their own per call (app.ai.minimax_pool).
-    from app.ai.minimax_pool import settings_with_key
     from app.infra import get_redis
 
-    return await settings_with_key(get_redis(), settings)
+    redis = get_redis()
+    if settings.minimax_api_keys_extra:
+        # Several M Plan keys: every text call made with these settings (planner, trip parser,
+        # guide search and review, intros, news, video stages) uses the key the pool picks now.
+        # Video media and speech pick their own per call (app.ai.minimax_pool).
+        from app.ai.minimax_pool import settings_with_key
+
+        settings = await settings_with_key(redis, settings)
+    if settings.hotspot_guide_gemini_api_keys_extra:
+        # Several Gemini keys: every Gemini call made with these settings uses the first key
+        # that is neither resting nor over its budget (app.ai.gemini_pool).
+        from app.ai import gemini_pool
+
+        settings = await gemini_pool.settings_with_key(redis, settings)
+    return settings
 
 
 async def effective_registration_enabled(session: AsyncSession) -> bool:

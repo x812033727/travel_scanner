@@ -1,0 +1,33 @@
+{
+  "fields": {
+    "hotspot_guide_gemini_key_budgets_usd": {
+      "label": "Gemini 키별 월 예산(USD)",
+      "help": "비워 둘 수 있습니다. '추가 Gemini 키' 순서, 마지막으로 위의 키에 대응하며 쉼표로 구분합니다(예: 95,95,0). 0 또는 빈칸은 예산 없음입니다. 실제로 키를 바꾸는 기준은 Google의 거부입니다: 선불 잔액이 떨어지면 402, 월 지출 한도를 설정했다면 그 한도에서 429."
+    }
+  },
+  "secrets": {
+    "hotspot_guide_gemini_api_keys_extra": {
+      "label": "추가 Gemini 키(Google AI Ultra 계정)",
+      "help": "여러 개 입력 가능하며 쉼표나 줄바꿈으로 구분합니다. 이 키들(Ultra 계정의 매월 Google Cloud 크레딧)을 순서대로 먼저 다 쓰고, 모두 Google에 거부된 뒤에야 위의 키를 사용합니다."
+    }
+  },
+  "panel": {
+    "title": "Gemini 키 풀",
+    "intro": "순서대로 사용합니다. 크레딧 또는 지출 한도로 Google에 거부된 키는 쉬었다가 최대 12시간 뒤 다시 시도합니다. 이번 달 지출은 사이트의 추정치이며, 실제 잔액은 AI Studio 결제 페이지에서 확인하세요.",
+    "key": "키",
+    "order": "순서",
+    "spent": "이번 달(추정)",
+    "budget": "예산",
+    "state": "상태",
+    "active": "사용 중",
+    "ready": "대기",
+    "exhausted": "크레딧 소진, 휴식 종료",
+    "busy": "혼잡, 휴식 종료",
+    "over": "예산 초과",
+    "none": "없음",
+    "billing": "AI Studio 결제 페이지 열기",
+    "error": "키 풀 상태를 읽을 수 없습니다",
+    "single": "Gemini 키가 하나뿐입니다. 위의 '추가 Gemini 키'에 Ultra 계정 키를 넣으면 여기에 하나씩 표시됩니다.",
+    "siteKey": "사이트 키"
+  }
+}
