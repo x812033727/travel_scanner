@@ -58,3 +58,32 @@
 
 時程：第 31 集第二場要的 `-han`、乾溪床已經有，**壩（`set-shangyou-ba-l1`）還沒有，第 31 集 c32–c41 拍之前第二輪要跑完**；第 32 集要井坑、祠堂（祠堂已有）；第 33–34 集要水車。
 第一輪的馬重畫 2026-11-17 20:00 收工（37/38，VM 已放掉），session `zt-live2` 空著，可以跑第二輪。
+
+## 第二輪挑片（2026-11-17，`--r2`，種子 37039／37040，`out-r2/`，比較圖 `sheets/r2-01`–`03.jpg`）
+
+24/24 支都出圖。每張兩個種子都全尺寸看過，放大看臉、邊緣、像字的痕跡與人影；刁七跟 refs-live 的定妝照（二牛、許硯）比過，馬跟第 30 集 s36 的 9301101 抽格比過。
+挑定的照抄成 `../assets/refs-live/<id>.png`（1312×736 RGB，保留 PNG 的 prompt 欄）。**7 張挑定、5 張進第三輪。**
+
+| id | 挑 | 理由 |
+| --- | --- | --- |
+| `diaoqi-portrait-l1` | **REDO**（第三輪灰底重畫） | 以第一輪 37037 為底的編輯**兩張都沒有換掉盤扣**（只有紅腰帶變成麻繩）。37039 的疤變成額頭到臉頰好幾道紅色抓痕；37040 是一道暗紅的新傷，在他的**右**臉頰、從眼下開始，另一側臉頰原本的疤被抹掉，留下一片灰色顆粒。第三輪改灰底重畫：三十八歲、粗脖子、眼角深紋、風吹日曬的皮膚（跟二牛的年輕光臉分開），疤寫成「a thin pale line lighter than his skin」從左眉尾到左顴骨，短褐寫成交領、靠衣襟自己闔上、麻繩腰帶；負面加 knot buttons、frog buttons、toggles、buttons、red cut、claw marks、several scars、young man |
+| `prop-zaohongma-l1` | **REDO**（第三輪） | 兩張的毛色都對（全身紅棕、鬃尾同色、額頭素的，接近 s36 9301101），但**又是英式馬鞍加絎縫鞍墊**（37040 鞍墊藍色滾邊）、現代馬鐙，整匹像數位繪圖、塑膠亮面。第一、二輪四張馬只要寫到 saddle 就畫英式鞍，所以第三輪**不寫 saddle 這個字**：背上「one thick square of dark brown felt folded double, and on the felt a low old Chinese riding seat of dark leather stretched over a wooden frame, with one low rounded wooden arch at the front and one at the back, held on by one plain leather strap round its belly; two round iron rings hang on plain leather straps」，畫風寫「documentary photograph on film… natural matte coat with real hair and a little dust」；負面加 English／western／dressage saddle、saddle pad、numnah、piping、modern stirrup irons、glossy plastic coat、digital painting |
+| `set-gucang-ye-l1` | **37039** | 玻璃提燈變成**陶碗油燈放在圓鐵盤上**、一盞火，麻袋、木梯、木桶、稻草地、小窗都跟第一輪 37038 一樣。毛病：燈盤仍用一條細繩**吊在**左上的木臂下（不是釘在柱子上的鐵片）；陶碗沒有可以長字的面，接受，鏡頭寫「one small clay oil lamp on a round iron plate hanging from a wooden arm on the post」。37040 是一只帶把手的茶杯，左下牆角一團像人影的黑影，不用 |
+| `set-jingkeng-l1` | **37040** | 一排井坑從左前斜到右後、每口一堆褐色土，前面一口有橫木與垂下的麻繩、一個木桶；田、柳樹、遠處村子跟 `set-hantian-l1` 一樣。毛病：坑壁像磚砌的、裂土像磚（底圖本來就偏 CG）；只有第一口有橫木麻繩，其他的寫在鏡頭。37039 的土堆是黃色顆粒、像一堆馬鈴薯 |
+| `set-shangyou-ba-l1` | **REDO**（第三輪，**最急**：第 31 集 c32 起） | 37039 畫面正中站著一個藍袍男人；37040 沒有人，但乾溪床又畫成**鵝卵石鋪的路**，壩是一道水泥似的矮牆、中間一個現代水泥溢洪口，後面是一大片湖。第一輪 37037、乾溪床 37037 也都是「riverbed … stones」畫成鋪石路，所以第三輪寫「a dry gully … bare brown earth split by deep dry cracks, with a few loose fist-sized rocks」，壩寫成「a rough farmers' dam … a long heaped bank of brown earth faced with piled rough fieldstones and stacked brown hemp sacks, uneven and handmade」；負面加 paved road、cobblestones、flagstones、concrete、spillway、sluice gate、modern dam、retaining wall、lake、reservoir |
+| `set-shentan-l1` | **REDO**（第三輪） | 兩張又是**空拍**，而且都有現代人（37039 兩個、37040 一個穿藍 T 恤的）；潭是石砌圓池。第三輪把水車當主體寫成「seen exactly from the side, from the bank of a small pond, the wheel filling the middle of the frame」（馬、長槍正側面都畫對了），負面加 stone-lined pool、round stone basin、tourist、man in a blue shirt |
+| `set-cunkou-l1` | **37040** | 左邊一座小瓦頂木柵門、斜撐木條、柳樹、門外一座木板小橋跨乾溝、右邊土路與三間泥屋、遠山、橘紅天；沒有魚眼、沒有木桿、沒有人。毛病：柵門是單獨一座、兩邊沒有籬笆；偏 3D 算圖。放大看第一間屋門邊一條亮塊是半開的門板，不是牌子。37039 柳枝像一串串珠子、門開著 |
+| `set-shanjiao-qu-l1` | **REDO**（第三輪） | **兩張都有人**（37039 俯拍、正中一個穿藍襯衫的；37040 左前一個穿長袍的男人），37040 還有村子。第二輪的鏡頭句「A real photograph taken by a person standing on the ground」把人叫進畫裡（壩 37039 也是），第三輪改成「from a camera on a tripod at standing eye height … the place empty and still」 |
+| `set-guandao-ye-l1` | **37039** | 月夜、楊樹兩排黑影、土路、楊樹影子橫過路面、沒有人影、沒有車燈。毛病：路仍直直往畫面中間消失（不是由右往左），整張像 3D 算圖；騎馬的側面鏡從這張裁一段路面或寫在鏡頭。37040 路面是磚、更像算圖 |
+| `set-yiguan-men-ye-l1` | **37039** | 窄石板街、右邊一排關著的木門板、兩級石階、門前兩根**方石拴馬樁**（頂上有圓孔）、冷藍月光，沒有十字架、沒有人影、沒有暖光、門楣素木。毛病：偏 3D 算圖；門板很長一排，醫館是哪一間要在鏡頭寫（靠近鏡頭、有石階的那一間）。37040 右上角一個白色小圓圈、樁上刻紋像字 |
+| `set-hantian-yang-l1` | **37039** | 只有田埂前那塊田灌了淺水、稀疏青秧倒映著天與柳樹，田埂後面照舊乾裂；跟 `set-hantian-l1` 同一個格局。37040 水漫過左邊的田埂、秧苗發黃 |
+| `set-hantian-shou-l1` | **37039** | 同一塊田長滿金黃稻穗，田埂後面仍是乾的褐土。37040 金黃一路延伸到左後、看不出四周乾裂。兩張的稻穗都偏卡通 |
+
+免費衍生圖：這輪挑定的沒有聖經列在〈免費圖〉等它的（`set-shentan-qu-l1` 要等 `set-shentan-l1`、`set-gucang-men-ye-l1` 要等 `set-gucang-wai-l1`）；各張的門閂、石階、穀袋等裁切等到用的那一集再做。
+
+## 第三輪要跑什麼（程式已改，`ROUND=3 DRY=1` 跑過）
+
+`screen-test-e031-e040.py --r3` 改寫成第二輪的 5 張 REDO 加 `set-gucang-wai-l1`（底圖已歸檔的 `set-hantian-yang-l1`）：6 張 × 種子 **37041／37042**＝12 支，`r3.json`、`prompts-r3/`、`out-r3/`、`sheets/r3-NN.jpg`。
+`check_images_manifest.py` 0 錯誤 2 警告（刁七直式）；`DRY=1`：12/12 支待做、沒有開 VM。約 15–30 分鐘、2.5–5 CU。
+原本第三輪的 `set-shentan-gongdi-l1`、`set-shanjiao-qu-ye-l1` 移到 `--r4`（種子 37043／37044，`ROUND=4`），要等第三輪挑定 `set-shentan-l1`、`set-shanjiao-qu-l1` 歸檔；沒歸檔時程式會停下來說缺哪張。
+第二輪的 `--r2` 現在不能再產生清單（挑定的已在 refs-live），`--r2 --sheet` 照舊能用。
