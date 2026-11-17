@@ -94,7 +94,9 @@ FIX1_SENTENCES = {
     "s41": ["the camera locked off: from the first frame to the last the same four people stand in the same four places",
             "nobody walks into or out of the frame",
             "small and both the same size, standing shoulder to shoulder with their backs to us",
-            "and at his right shoulder, as tall as his shoulder, one young woman seen only from behind",
+            "and at his right shoulder, the same distance from the camera as he is, the top of her buns at the height of his ear",
+            "every strand is up in the two buns, so the bare nape of her neck shows smooth and clear from the hairline all the "
+            "way down to the pink inner collar",
             "half turned toward the well at the front right",
             "standing at Xu Yan's right shoulder",
             "The camera is locked off and holds still the whole shot."],

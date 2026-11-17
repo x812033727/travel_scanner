@@ -138,8 +138,13 @@ S["s41"]["replace"] += [
           "and on his right one young woman seen only from behind, appearing only once:"),
      "in the middle of the yard, small and both the same size, standing shoulder to shoulder with their backs to us, both "
      "facing the yard gate: on the left Xu Yan, the back of his head and his topknot toward us, in his faded blue-grey "
-     "scholar's robe patched at one elbow, its sleeves down, and at his right shoulder, as tall as his shoulder, one young "
-     "woman seen only from behind, appearing only once:"],
+     "scholar's robe patched at one elbow, its sleeves down, and at his right shoulder, the same distance from the camera "
+     "as he is, the top of her buns at the height of his ear, one young woman seen only from behind, appearing only once:"],
+    [once("s41", "one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner "
+                 "collar,"),
+     "one short pink silk ribbon wound tight round the base of each bun with its ends tucked in; every strand is up in the "
+     "two buns, so the bare nape of her neck shows smooth and clear from the hairline all the way down to the pink inner "
+     "collar,"],
     [once("s41", "Nobody moves; only the loose strip"),
      "Nobody walks into or out of the frame and all four stay in their places; only the loose strip"],
     [once("s41", "the back of her head toward us the whole shot, and the low golden evening sunlight stays unchanged."),
