@@ -22,11 +22,19 @@ Run: python3 -I mkspec.py
 - extras' "the air is clear and still" becomes still mist over the water at the bridge (s27-s33).
 - Sets (r2.py PLACES): the street set-xianjie-weiji-l1 (s01, s03, s05), set-xianjie-xuji-l1 (s02, s04), set-xianjie-shi-l1
   (s06-s12), set-xianjie-l1 (s13); the court hall set-xianya-gongtang-floor-l1 (Xu Yan: s15, s19, s20, s22, s23) and
-  set-xianya-gongtang-dais-l1 (Magistrate Hu: s14, s16-s18, s21, s24); the lane set-chouduan-ye-xiang-l1 (s25, s26, s34-s37); the
+  set-xianya-gongtang-dais-l1 (Magistrate Hu: s14, s16-s18, s21, s24); the lane set-chouduan-ye-xiang-l2 (s25, s26, s34-s37); the
   bridge set-shiqiao-ye-l1 (s27), set-shiqiao-ye-dong-l1 (s28, s30, s31, s33), set-shiqiao-ye-shui-l1 (s29),
   set-shiqiao-ye-qiao-l1 (s32). gen-dh's set-shiji-l1, set-xianya-l1, set-chouduan-l1 and set-shiqiao-l2 are never sent. Every
   swap is sent with an absolute path by prep927.sh.
 - No seed of this episode has been run. Seeds 9271101/9271102.
+
+After the independent review (writer-tools/e027-r2/review.md; 2026-11-17, the coordinator deciding for the owner; r2.py's
+docstring AFTER THE INDEPENDENT REVIEW has the wording changes):
+- 必改 5: the speaking gaze never names an unsent listener: s03, s30, s33 "toward someone out of sight beyond the left edge of
+  the frame", s28, s31 the same beyond the right edge "where only the dark stone of the arch and the mist reach the edge",
+  "his eyes on that spot".
+- 必改 6: s08's gaze "his eyes darting to the empty street on the right and back" (no men in black).
+- 必改 8: the lane shots send the free set-chouduan-ye-xiang-l2 (l1's painted-out board left a hard-edged dark box).
 """
 import json
 from pathlib import Path
@@ -92,7 +100,7 @@ add("s01", [BESIDES_HIM, besides("him", "the two onlookers in the foreground")])
 add("s02", [ONLY_HE, besides("him", "the man lying on the paving and the soft shoulder of the man in black in the foreground")])
 add("s03", [BESIDES_HIM, besides("him", "the two men in black carrying the plank and the man lying on it, all small and soft,")])
 add("s07", [ONLY_HE, besides("him", "the soft shoulder of the man in sapphire brocade in the foreground")])
-add("s08", [BESIDES_HIM, ONLY_HE])
+# s08: build-r2 now writes ONLY_HE itself (review 必改 6: "standing alone", no onlookers)
 add("s11", [ONLY_HE, besides("him", "the soft back of the young woman's head in the foreground and the one black-sleeved hand at the right edge")])
 add("s13", [BESIDES_THEM, only("the two men walking away and the four onlookers, all small,")])
 add("s14", [ONLY_HE, besides("him", "the soft back of the young man in the foreground")])
@@ -106,8 +114,8 @@ for sid in ["s04", "s09", "s22", "s29", "s35"]:
 # Lines not said into a face on screen: the speaking gaze names the listener off screen, or the thing looked at.
 for sid, g in [
     ("s01", "his face three-quarter to screen left, his eyes on the paving beyond the lower left edge of the frame"),
-    ("s03", "his face three-quarter to screen left toward Xu Yan off screen left, his eyes on him"),
-    ("s08", "muttering to himself, his face turned toward screen right, his eyes on the street and the men in black by turns"),
+    ("s03", "his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, his eyes on that spot"),
+    ("s08", "muttering to himself, his face turned toward screen right, his eyes darting to the empty street on the right and back"),
     ("s12", "his face turned toward someone out of sight beyond the right edge of the frame, his eyes on that spot"),
     ("s15", "his face three-quarter to screen right toward the dais beyond the upper right edge of the frame, his eyes on it"),
     ("s16", "his face three-quarter to screen left toward the floor below the dais, his eyes on it"),
@@ -116,10 +124,10 @@ for sid, g in [
     ("s21", "his face three-quarter to screen left toward the floor below the dais, his eyes on it"),
     ("s24", "his face three-quarter to screen left toward the far end of the hall beyond the left edge of the frame, his eyes on it"),
     ("s25", "muttering to himself, his head turned half back toward the far end of the lane, his eyes on it"),
-    ("s28", "his face three-quarter to screen right toward Sun Zhanggui off screen right, his eyes on him"),
-    ("s30", "his face three-quarter to screen left toward Lai San off screen left, his eyes on him"),
-    ("s31", "his face three-quarter to screen right toward Sun Zhanggui off screen right, his eyes on him"),
-    ("s33", "his face three-quarter to screen left toward Lai San off screen left, his eyes on him"),
+    ("s28", "his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, where only the dark stone of the arch and the mist reach the edge, his eyes on that spot"),
+    ("s30", "his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, his eyes on that spot"),
+    ("s31", "his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, where only the dark stone of the arch and the mist reach the edge, his eyes on that spot"),
+    ("s33", "his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, his eyes on that spot"),
     ("s34", "talking to himself, his face three-quarter to screen left, his eyes on the silver ingot in his hand"),
     ("s36", "his face turned toward the dark doorways beyond the right edge of the frame, his eyes on them"),
 ]:
@@ -156,7 +164,7 @@ for sid in ["s15", "s19", "s20", "s22", "s23"]:
 for sid in ["s14", "s16", "s17", "s18", "s21", "s24"]:
     SWAP[sid] = {YA: "set-xianya-gongtang-dais-l1.png"}
 for sid in ["s25", "s26", "s34", "s35", "s36", "s37"]:
-    SWAP[sid] = {CD: "set-chouduan-ye-xiang-l1.png"}
+    SWAP[sid] = {CD: "set-chouduan-ye-xiang-l2.png"}  # review 必改 8: the painted-out box redone as brick
 SWAP["s27"] = {SQ: "set-shiqiao-ye-l1.png"}
 for sid in ["s28", "s30", "s31", "s33"]:
     SWAP[sid] = {SQ: "set-shiqiao-ye-dong-l1.png"}
@@ -181,7 +189,7 @@ spec = {
               "aling-veil-portrait-l1 for her portrait, her angle pictures dropped (s10, s26, s32, s37). No person sent in s04, s09, "
               "s13, s22, s29, s35. Sets: set-xianjie-weiji-l1 (s01, s03, s05), set-xianjie-xuji-l1 (s02, s04), set-xianjie-shi-l1 "
               "(s06-s12), set-xianjie-l1 (s13), set-xianya-gongtang-floor-l1 (s15, s19, s20, s22, s23), set-xianya-gongtang-dais-l1 "
-              "(s14, s16-s18, s21, s24), set-chouduan-ye-xiang-l1 (s25, s26, s34-s37), set-shiqiao-ye-l1 (s27), set-shiqiao-ye-dong-l1 "
+              "(s14, s16-s18, s21, s24), set-chouduan-ye-xiang-l2 (s25, s26, s34-s37), set-shiqiao-ye-l1 (s27), set-shiqiao-ye-dong-l1 "
               "(s28, s30, s31, s33), set-shiqiao-ye-shui-l1 (s29), set-shiqiao-ye-qiao-l1 (s32) (prep927.sh swaps with absolute "
               "paths). Xu Yan's angle-b nowhere (s12, s19, s23 send his portrait then angle-a). The five inserts never say 'open'. "
               "Still mist at the bridge. No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). Seeds 9271101/9271102."),
