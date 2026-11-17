@@ -8,6 +8,8 @@ from app.db import get_session
 from app.models import User
 from app.video_pools import catalog
 from app.video_pools.schemas import (
+    CorePage,
+    CoreStatus,
     EpisodePage,
     EpisodeStatus,
     ExpansionPage,
@@ -41,6 +43,30 @@ def get_themes(
     page_size: Annotated[int, Query(ge=1, le=100)] = 25,
 ) -> ThemePage:
     return catalog.list_themes(
+        series,
+        status=status,
+        category=category,
+        min_score=min_score,
+        q=q,
+        sort=sort,
+        page=page,
+        page_size=page_size,
+    )
+
+
+@router.get("/{series}/cores", response_model=CorePage)
+def get_cores(
+    _user: ContentReader,
+    series: SeriesKey,
+    status: Annotated[CoreStatus, Query()] = "passing",
+    category: Annotated[str | None, Query(max_length=100)] = None,
+    min_score: Annotated[float | None, Query(ge=1, le=10)] = None,
+    q: Annotated[str | None, Query(max_length=200)] = None,
+    sort: Annotated[ThemeSort, Query()] = "rank",
+    page: Annotated[int, Query(ge=1)] = 1,
+    page_size: Annotated[int, Query(ge=1, le=100)] = 25,
+) -> CorePage:
+    return catalog.list_cores(
         series,
         status=status,
         category=category,

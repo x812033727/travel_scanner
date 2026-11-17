@@ -8,6 +8,7 @@ from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_vali
 SeriesKey = Literal["curio", "so-thats-why"]
 ThemeStatus = Literal["producible", "reserve", "short", "all"]
 ThemeSort = Literal["rank", "id"]
+CoreStatus = Literal["passing", "scored", "unscored", "all"]
 EpisodeStatus = Literal["published", "unpublished", "all"]
 MaterialVerdict = Literal["ready", "merge", "reserve", "drop"]
 NonEmptyText = Annotated[str, StringConstraints(min_length=1, pattern=r"\S")]
@@ -84,6 +85,20 @@ class ThemeDetail(ThemeSummary):
     evidence_gaps: NonEmptyText
 
 
+class CoreSummary(PoolModel):
+    """A selected topic that carries an episode on its own; it sits in no theme."""
+
+    id: NonEmptyText
+    category: str | None
+    question: NonEmptyText
+    hook: str
+    payoff: str
+    minutes: tuple[Annotated[float, Field(gt=0)], Annotated[float, Field(gt=0)]]
+    audience: Audience | None
+    demand: Score | None
+    produced: bool
+
+
 class Expansion(PoolModel):
     batch_id: NonEmptyText
     created_on: Day | None
@@ -128,6 +143,9 @@ class SeriesCounts(PoolModel):
     long_reserve: Annotated[int, Field(ge=0)]
     scored: Annotated[int, Field(ge=0)]
     improved: Annotated[int, Field(ge=0)]
+    cores: Annotated[int, Field(ge=0)]
+    cores_scored: Annotated[int, Field(ge=0)]
+    cores_passing: Annotated[int, Field(ge=0)]
 
 
 class SourceHashes(PoolModel):
@@ -142,6 +160,7 @@ class SeriesBundle(PoolModel):
     counts: SeriesCounts
     audience_min: Annotated[float, Field(ge=1, le=10)]
     themes: list[ThemeDetail]
+    cores: list[CoreSummary]
     episodes: list[PoolEpisode]
     expansions: list[Expansion]
     checkpoints: list[Checkpoint]
@@ -155,6 +174,22 @@ class SeriesBundle(PoolModel):
             raise ValueError("producible count does not match the themes")
         if len({theme.id for theme in self.themes}) != len(self.themes):
             raise ValueError("duplicate theme id")
+        return self
+
+    @model_validator(mode="after")
+    def _counts_match_cores(self) -> Self:
+        scored = [core for core in self.cores if core.audience is not None]
+        passing = [
+            core for core in scored if core.audience and core.audience.score >= self.audience_min
+        ]
+        if (self.counts.cores, self.counts.cores_scored, self.counts.cores_passing) != (
+            len(self.cores),
+            len(scored),
+            len(passing),
+        ):
+            raise ValueError("core counts do not match the cores")
+        if len({core.id for core in self.cores}) != len(self.cores):
+            raise ValueError("duplicate core id")
         return self
 
 
@@ -190,6 +225,14 @@ class CategoryCount(PoolModel):
 
 class ThemePage(PoolModel):
     items: list[ThemeSummary]
+    total: int
+    page: int
+    page_size: int
+    categories: list[CategoryCount]
+
+
+class CorePage(PoolModel):
+    items: list[CoreSummary]
     total: int
     page: int
     page_size: int
