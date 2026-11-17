@@ -11,19 +11,22 @@ rm -rf $E/segments-v4
 # murmur928.wav (the square's crowd: twelve of this episode's recordings reversed and filtered, unintelligible;
 # zhong-tian-qu-qi-e928-dh/sfx, the edit table's second sfx dir).
 stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=os.path.getmtime(e+'/picks.json');print(' '.join(s for s in p if not os.path.exists(f'{e}/clips/{s}-t1.mp4') or os.path.getmtime(f'{e}/clips/{s}-t1.mp4')<t))")
-[ -z "$stale" ] || { echo "staging (stale: $stale)"; python3 $P/live-action/stage.py 28 || exit 1; }
+[ -z "$stale" ] || { echo "staging (stale: $stale)"; python3 $P/live-action/stage.py 28 --draft-picture s07 || exit 1; }
 # e928 trims and seeds the edit table assumes (edit-dh-e928-live.json _note): picks.json as refine-prep.py 28 builds it from
 # picks-merged.tsv, fix1/review-picks.tsv and review3-trims.tsv (run in colab/runs/e928-live: refine-prep.py 28 picks-merged.tsv
 # fix1/review-picks.tsv review3-trims.tsv, then stage.py 28; fix1 replaced s03, s07 and s26). review3-trims.tsv (first cut):
 # ends brought in where a laid recording left more than ~1 s of the shot without a line -- s02 4.500 -> 3.750, s07 6.584 -> 6.250,
 # s14 5.000 -> 4.584, s15 8.000 -> 7.000, s16 5.250 -> 4.209, s24 5.500 -> 5.000, s26 4.500 -> 3.709, s32 6.584 -> 4.917 (s32's
 # take is muted and a29 laid from its mouth). The post list's s08 4.625, s11 4.0, s12 0.875, s15b 4.0, s16 0.708, s28 1.125 were
-# already in the picks. No crop in e928.
+# already in the picks. No crop in e928. REVIEW 3 (review3-plan.md; rows in review3-trims.tsv): s04 end 3.000 -> 2.000, s06 4.750 -> 4.000,
+# s07 back to the d1 fallback 9281101 3.500 -> 6.584 (her face; fix1's knot was tied by a man's hands in Lai San's sleeves), s28 4.625 -> 3.875,
+# s30 3.000 -> 2.250, s32 end back to 6.584 (a29 laid in four pieces on the mouth), s33 5.000 -> 4.000. s07's d1 take was never refined
+# (the refine was of the fix1 pick, refined/s07.mp4 stays), so stage.py stages it with --draft-picture s07: the draft itself, lanczos to 1312x736.
 # Whole frames: a start rounded DOWN and an end-before rounded UP to 3 decimals, tolerance 0.001; 0 = no end. Warn (not stop).
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
-want={'s01':(2.041,6.584),'s02':(0.0,3.75),'s03':(0.0,2.25),'s03b':(0.0,3.0),'s04':(0.0,3.0),'s05':(1.583,6.584),'s06':(1.25,4.75),'s07':(1.0,6.25),'s08':(0.0,4.625),'s09':(0.0,5.0),'s10':(0.0,3.5),'s11':(0.0,4.0),'s12':(0.875,5.584),'s13':(0.75,6.584),'s14':(1.0,4.584),'s15':(0.0,7.0),'s15b':(0.0,4.0),'s16':(0.708,4.209),'s17':(0.25,5.667),'s18':(0.416,7.834),'s19':(0.541,6.5),'s20':(1.083,8.0),'s21':(0.0,5.5),'s22':(1.416,6.584),'s23':(0.25,6.584),'s24':(0.0,5.0),'s25':(0.458,6.5),'s26':(0.0,3.709),'s27':(0.75,5.5),'s28':(1.125,4.625),'s29':(0.625,6.584),'s30':(0.0,3.0),'s31':(0.75,6.584),'s32':(0.416,4.917),'s33':(0.0,5.0),'s34':(0.0,4.0),'s35':(1.25,8.0),'s36':(0.0,8.0),'s37':(0.0,2.5),'s38':(1.25,6.584),'s39':(0.0,4.0)}
-seed={'s01':9281102,'s02':9281102,'s08':9281102,'s09':9281102,'s10':9281102,'s11':9281102,'s19':9281102,'s20':9281102,'s25':9281102,'s29':9281102,'s32':9281102,'s34':9281102,'s36':9281102,'s38':9281102,'s39':9281102,'s03':9281202,'s07':9281201,'s26':9281201}
+want={'s01':(2.041,6.584),'s02':(0.0,3.75),'s03':(0.0,2.25),'s03b':(0.0,3.0),'s04':(0.0,2.0),'s05':(1.583,6.584),'s06':(1.25,4.0),'s07':(3.5,6.584),'s08':(0.0,4.625),'s09':(0.0,5.0),'s10':(0.0,3.5),'s11':(0.0,4.0),'s12':(0.875,5.584),'s13':(0.75,6.584),'s14':(1.0,4.584),'s15':(0.0,7.0),'s15b':(0.0,4.0),'s16':(0.708,4.209),'s17':(0.25,5.667),'s18':(0.416,7.834),'s19':(0.541,6.5),'s20':(1.083,8.0),'s21':(0.0,5.5),'s22':(1.416,6.584),'s23':(0.25,6.584),'s24':(0.0,5.0),'s25':(0.458,6.5),'s26':(0.0,3.709),'s27':(0.75,5.5),'s28':(1.125,3.875),'s29':(0.625,6.584),'s30':(0.0,2.25),'s31':(0.75,6.584),'s32':(0.416,6.584),'s33':(0.0,4.0),'s34':(0.0,4.0),'s35':(1.25,8.0),'s36':(0.0,8.0),'s37':(0.0,2.5),'s38':(1.25,6.584),'s39':(0.0,4.0)}
+seed={'s01':9281102,'s02':9281102,'s08':9281102,'s09':9281102,'s10':9281102,'s11':9281102,'s19':9281102,'s20':9281102,'s25':9281102,'s29':9281102,'s32':9281102,'s34':9281102,'s36':9281102,'s38':9281102,'s39':9281102,'s03':9281202,'s26':9281201}
 bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].get(\"end-before\",0)} (want {a} {b})' for s,(a,b) in want.items()
      if s in p and (abs(p[s]['trim'].get('start',0)-a)>0.001 or abs(p[s]['trim'].get('end-before',0)-b)>0.001)]
 bad+=[f'{s} seed {p[s][\"seed\"]} (want {v})' for s,v in seed.items() if s in p and p[s]['seed']!=v]
@@ -41,7 +44,8 @@ cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VL
 # a sample-peak limiter before loudnorm2 keeps it linear (e908-e912: attack 5 ms, limit 0.6; the AAC encode after it
 # overshoots at shorter attacks and loudnorm2 then goes dynamic and clicks). e913 REVIEW 3 on: attack 8 ms; e923 on: limit 0.55.
 # END: s39 is the suspense tail (4 s of the crowd pointing at the stage): the low hit and gong_02 at c3.5, the picture fades out over
-# c3.60-4.00 (vf) and min 8.0 holds black while the gong rings out (gong_02 is 4.5 s, it stops at c8.0); the sound fades over the last 1.0 s.
+# c3.60-4.00 (vf); REVIEW 3: the crowd (murmur928end) and the wind (wind928end) fade over c3.6-4.1 so the gong rings out alone, and
+# min 7.0 holds 3.0 s of black (gong_02 is down ~24 dB from its peak at c7.0); the sound fades over the last 1.0 s.
 D=$(ffprobe -v error -show_entries format=duration -of csv=p=0 $E/cut/e928-live.mp4); FS=$(python3 -c "print(f'{$D-1.0:.3f}')")
 ffmpeg -v error -y -i $E/cut/e928-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.55:attack=8:release=60:level=false,aresample=48000,afade=t=out:st=$FS:d=1.0" $E/cut/e928-live.lim.mp4 && mv $E/cut/e928-live.lim.mp4 $E/cut/e928-live.mp4
 # loudnorm2 is linear only when the measured true peak plus the gain to -14 LUFS stays at or under -2.2 dBTP: print it
