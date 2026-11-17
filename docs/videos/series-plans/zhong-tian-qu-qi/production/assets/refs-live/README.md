@@ -138,3 +138,10 @@
 - `set-xuji-houjian-deng-l1` = `set-xuji-pu-houjian-l1` `eq=gamma=1.9:contrast=1.15:saturation=1.1`（只調色，不裁不縮，1312×736）：同一面左牆的深色空木格架與下面的矮櫃，格子後的牆面讀得出暖黃，仍是油燈下的暖橘夜色；沒有人、沒有字、沒有門洞。母圖平均亮度 16／255（中位 10）、幾乎全黑，送了片子會整支偏黑、賴三的臉糊（第 26 集獨立審稿建議 1；第 23 集「全暗的圖會自己長出室內」）；提亮後平均約 44／255。第 26 集後間的六鏡（s30、s30b、s31–s34）送它，不送母圖；長桌、三只竹匾、桌角竹籃、油燈照舊寫在鏡頭裡。
 - `laisan-sleeve-l1` 放大看是胸口交領與一小段頸子的裁切、不是袖口：**不當手部插鏡用**（第 26 集 s31、s33、s36 賴三的手不送它，只寫 `checked grey-brown sleeve cuff`；送了會長出胸口）。
 - 第 26 集其餘的圖都已有、照用：糖坊 `set-tangfang-l1`（全景 s02、s17）與 `set-tangfang-jia-l1`（近鏡）、鋪子 `set-xuji-pu-l1` 與櫃面 `set-xuji-pu-cabinet-l1`、大街 `set-xianjie-l1` 與第 24 集的三張裁切；人物 `laisan`、`weishaoqing`、`xiaohe` 的 l1。不送的：`set-shiji-l1`（`gen-dh` 的 SET 句給的，每鏡都換掉）。
+
+第 27 集的四張免費衍生圖（2026-11-17，協調者照站主授權決定，每張全尺寸看過；`writer-tools/e027-r2/r2.py`）：都是新的場景 id、自帶 l1，`pilot.py` 找 `set-chouduan`、`set-shiqiao` 最新 l 版時拿不到（`prep927.sh` 查過 `set-chouduan` 最新仍是 l1、`set-shiqiao` 仍是 l2），由 `colab/runs/e927-live/spec.json` 的 `swap_pictures` 用絕對路徑送。夜戲一律送夜圖（拍法 8）。
+- `set-chouduan-ye-xiang-l1` = `set-chouduan-ye-l1` 先用 Pillow 塗掉門楣下那塊斜掛的小空白牌子（x 728–784、y 260–339：每一列換成同一列 x 786–800 的暗牆平均色，邊緣高斯 1.5 px 柔化），再 `crop=960:540:352:196,scale=1312:736:flags=lanczos`（裁掉左上角那塊大空白招牌與月亮）。全尺寸看：往深處去的窄巷、左邊竹竿上晾著的四塊素布與兩個木桶、右邊草頂下的圓磚井、巷底門上一盞暖黃的小燈；塗掉的地方在簷下讀起來像一段暗的樑影，沒有方塊感。沒有人、沒有字。仍偏 3D（母圖本來就是）。第 27 集後巷六鏡（s25、s26、s34–s37）送它；聖經寫的「巷子往裡走、盡頭一盞小燈籠」照圖，提示詞不寫燈籠（寫「一盞暖黃的小燈」）。放大 1.37 倍。
+- `set-shiqiao-ye-dong-l1` = `set-shiqiao-ye-l1` `crop=480:270:330:230,scale=1312:736:flags=lanczos`：石拱橋的整個拱、拱下的霧與水、左下的石頭、右邊一角有暖窗的屋子。橋下近鏡（s28、s30、s31、s33）送它（只送霧會長出室內，第 23 集）。放大 2.7 倍偏軟。
+- `set-shiqiao-ye-qiao-l1` = `set-shiqiao-ye-l1` `crop=640:360:300:20,scale=1312:736:flags=lanczos`：月亮、竹子、橋面與矮石欄、右下有暖窗的屋簷。阿令伏在橋上那一鏡（s32）送它；月亮在圖上，提示詞不寫。放大 2 倍偏軟。
+- `set-shiqiao-ye-shui-l1` = `set-shiqiao-ye-l1` `crop=480:270:430:466,scale=1312:736:flags=lanczos`：暗水面、月光碎成的亮點、屋窗的暖色倒影、左下的草。銀子交手的插鏡（s29）送它。放大 2.7 倍偏軟。
+- 第 27 集不送的：`set-chouduan-ye-l1`（左上一塊大空白招牌、門楣下一塊小空白牌子，都會長字）、`set-xianya-gongtang-l1`（案上方掛著一塊匾；胡縣令只送 `-dais-l1`、許硯只送 `-floor-l1`，同第 18、19 集）、`set-shiqiao-l2`（白天）。大街照用第 24 集的 `set-xianjie-l1` 與三張裁切。
