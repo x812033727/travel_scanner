@@ -383,8 +383,19 @@ FOOT = [
     "- 配樂：公審的低鼓延續，s10 柳葉一個亮的鈴音、之後上揚的弦，s19 崩潰一個重拍，s26 撕封條一個大的釋放；午後明亮的市集 cue，s29 總帳一個勝利重音，s32 大車到停一拍、轉成溫暖又不安的弦。音效見 script.md〈音樂與音效〉（另外：衙役放低水火棍、人群嗡嗡、台板與跪地、胡縣令退堂下台、馬蹄車輪，都交給音效）。",
 ]
 
-# Long shots: seconds to buy. Filled in after the recordings (see the end of this comment block).
-BUY = {}
+# Long shots: seconds to buy. Measured 2026-11-17 against the 32 kept recordings (~/mokaair-work/videos/zhong-tian-qu-qi-e929-dh/audio;
+# wave length and silencedetect -35 dB speech span, scratchpad span929.sh; e013's test as e928: a shot holds (buy - 0.3) x 1.1 s of
+# speech, half a second between lines, so 5 s holds 5.17 s, 6 s 6.27 s, 8 s 8.47 s). faster-whisper medium read every take back, one
+# clip per process, numpy input, once plain and once with the previous line and the line as context (audio/fw929.txt,
+# fw929-retake.txt; audio/README-retakes.txt). No shot runs over about 10 s, so none is split (the longest: s25, a23 7.12 s).
+# 8 s: s06 (a06 Magistrate Hu, 6.44 s), s25 (a23 Hu, 7.12 s), s31 (a29 Wei Shaoqing's slow drawl, 7.08 s), s29 (the system's tally,
+#      5.42 s: the script's 長鏡 c29, the long breath, the slow smile and two panels one after the other), s35 (the episode's last
+#      shot: the hook needs a held tail, as e923-e928).
+# 6 s: every other speaking shot, and s10 (a09's retake 5.56 s) and s21 (a19's retake 5.28 s), inserts that would be 5 s. The
+#      tightest: s07 (a07 5.92 s), s22 (a20 5.84 s), s04 (system 2.50 + 0.5 + his thought 2.60 = 5.60 s).
+# 5 s: the inserts s11 (a10 4.20 s), s15 (a13 4.60 s), s28 (a26 4.16 s), and the one-action shots s09 (the sheet raised), s32 (the
+#      bow), s34 (「囡囡！」 1.56 s). The wides s05, s12 keep gen-dh's 6.
+BUY = {"s06": 8, "s25": 8, "s29": 8, "s31": 8, "s35": 8, "s10": 6, "s21": 6, "s15": 5, "s09": 5, "s32": 5, "s34": 5}
 
 
 # ---- the refine text (e022 review 必改 12, as e023-e028): hailuo/clips-dh-e929.json column 0 is the motion text
