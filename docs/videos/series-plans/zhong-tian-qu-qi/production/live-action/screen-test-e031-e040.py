@@ -71,8 +71,9 @@ out-r4/: prop-zaohongma-l1 (round-3 seed 37042 with its back made bare: every ho
 quilted pad), set-shanjiao-qu-l1 (round-3 seed 37041 with the ditch dry and an earth bank with a sluice board where its
 plank bridge was), set-shentan-gongdi-l1 (the filed set-shentan-l1 with the wheel half built) and set-shentan-qu-l1 (a
 free crop of set-shentan-l1's pale strip, made into OUT_DIR/base/, with one edit digging a ditch in it).
-Round 5 (--r5): seeds 37045/37046, set-shanjiao-qu-ye-l1 (the round-4 set-shanjiao-qu-l1 relit to night); it stops until
-that pick is filed.
+Round 5 (--r5, after the round-4 picks): 2 pictures x seeds 37045/37046 = 4 jobs, OUT_DIR/r5.json, out-r5/:
+set-shentan-gongdi-l1 again (round 4 kept the whole wheel; now the wheel is taken away and its parts laid on the bank)
+and set-shanjiao-qu-ye-l1 (the filed set-shanjiao-qu-l1, round-4 seed 37044, relit to a clear night, thin moon).
 Round 1 can no longer be regenerated as it ran: its picks are filed and the job loop refuses an id that is already in
 refs-live; OUT_DIR/e031-e040.json stays as it was run (--sheet still works). Each round writes its prompt files to its own folder (OUT_DIR/prompts/, prompts-r2/ ... prompts-r5/), so a retaken id never
 overwrites the round-1 text that e031-e040.json still points at.
@@ -709,12 +710,28 @@ elif ROUND == 4:
                      NEG + NO_WHEEL + ", water, concrete channel, stone channel, pipes, road, path, people", 1312, 736,
                      "one change of a crop of set-shentan-l1"))
 elif ROUND == 5:
+    # Round 5 (2026-11-17, after the round-4 picks). set-shentan-gongdi-l1 again: asked to make the wheel "half built",
+    # both round-4 seeds kept the whole wheel and only laid bamboo poles on the bank, so the wheel is now taken away
+    # outright (a removal edits more reliably than a partial one) and its parts are laid out instead.
+    # set-shanjiao-qu-ye-l1 relights the filed round-4 set-shanjiao-qu-l1 (37044).
     pictures = []
+    gongdi = ("Image 1 is a photograph of a wooden water wheel beside a small pond in dry fields: keep exactly everything "
+              "in it - the camera position, the pond and its stone-edged banks, the wooden steps and the little plank "
+              "landing on the left, the tall wooden post frame on the left with its rope, the overhead wooden beam on "
+              "posts on the right, the big grey boulder at the lower right, the dry fields, the sky and the light. Change "
+              "only one thing: the big round wheel is taken away; where it stood, only its short wooden A-frame rises "
+              "out of the water with one thick bare round wooden axle resting on it; on the bare earth bank at the right "
+              "lie its parts, three long curved wooden rim pieces, a bundle of straight wooden spokes and a stack of flat "
+              "wooden paddles." + KEEP_TAIL)
+    pictures.append(("set-shentan-gongdi-l1", "e033 c14", filed("set-shentan-l1", "set-shentan-gongdi-l1"), gongdi,
+                     NEG + ", whole wheel, round wheel, complete rim, wheel with spokes standing, two wheels, tower, crane, "
+                           "people, workers", 1312, 736, "one change of set-shentan-l1 (the wheel taken away)"))
     qu_ye = ("Image 1 is a photograph of a dry irrigation ditch: keep exactly everything in it - the camera position, the "
-             "ditch, the earth bank across it with the sluice board, the heaps of dug soil and the straw, the trees on the "
-             "left, the far fields. Change only one thing, the time and the light: it is a clear night late in the night; "
-             "a thin crescent moon low at the upper left, its cold blue light faint on the earth, the ditch bottom and the "
-             "trees in deep shadow, the sky dark blue with stars." + KEEP_TAIL)
+             "dry cracked ditch, the plank walk across it with the upright wooden sluice board, the heaps of dug soil and "
+             "the straw, the trees on the left, the rice field on the right, the far fields. Change only one thing, the "
+             "time and the light: it is a clear night late in the night; a thin crescent moon low at the upper left, its "
+             "cold blue light faint on the earth, the ditch bottom and the trees in deep shadow, the sky dark blue with "
+             "stars." + KEEP_TAIL)
     pictures.append(("set-shanjiao-qu-ye-l1", "e037 c01", filed("set-shanjiao-qu-l1", "set-shanjiao-qu-ye-l1"), qu_ye,
                      NEG + NIGHT_NEG + ", full moon, bright moon, torch, fire, lamps, water in the ditch", 1312, 736,
                      "relight of set-shanjiao-qu-l1"))

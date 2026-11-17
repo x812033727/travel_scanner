@@ -30,7 +30,7 @@ Written from the start the way e030-r2/r2.py stands AFTER its independent review
   is NOT shot (bible 〈還沒解決的〉 2): s02's background is the gate and the mud wall beside it; s04 he turns away to the right
   behind the back wall and out of the frame; the hoofbeats are a sound.
 - Wang Erniu (原版必修: laughing at bad news; two Erniu in the background): not smiling in every shot (brows knotted, panting, jaw
-  set); one hoe in the whole episode, his (HOE); the five villagers are grey-blue, each a different age and burden, and carry
+  set); one hoe in the whole episode, his (HOE); the five villagers each wear a different colour (none of the leads'), are each a different age and burden, and carry
   no hoe (VILLAGERS). Qian Yuanwai: his robe's front plain brocade (原版第 35 集 tag); s34 may fake-smile, s36 may sneer (the
   script); the retainers (rule 34) are one uniform, only far, side-on or in a row on the dam, never in a close shot.
 - One visible action per shot (rule 32); the previous action done in the first frame; the hand's action in a frame where it is
@@ -108,10 +108,12 @@ NIGHT = "cool silver moonlight from above, the yard dark and still"
 H0 = "In the courtyard of the Xu farmhouse three months later, on a hot dry early-spring afternoon in a time of drought"
 HOT = "hazy low afternoon sun from the upper right behind, long shadows toward the lower left across the cracked earth, fine dust drifting on the hot wind"
 G0 = "On the dry bed of the Liuxi stream on the same hot afternoon"
-B0 = "At the upper end of the dry stream bed on the same hot afternoon, before the Qian family's dam"
-DAM = ("a long rough farmers' dam of stacked brown hemp sacks of earth on a footing of rough fieldstones across the stream bed, "
-       "uneven and handmade; behind it a still pond of muddy brown water; along its right end a narrow freshly dug ditch carrying "
-       "water off to a field of bright green young rice on the right; wooded green hills beyond")
+B0 = "In the bamboo valley upstream of the dry Liuxi stream on the same hot afternoon, at the Qian family's dam"
+DAM = ("a long rough bank of stacked brown hemp sacks of earth on a footing of rough fieldstones, running from the right "
+       "foreground away to the far left of the valley, uneven and handmade, its top a row of round lumpy sacks; behind it on the "
+       "right a wide still pond of muddy brown water held back to a low line of stones at its far end; along its left foot a "
+       "narrow stone-edged earth path and beside it a narrow ditch of muddy water flowing toward us, and at the left edge a strip "
+       "of bright green young rice; steep green bamboo hills on both sides")  # e031 review 必改 1: set-shangyou-ba-fx-l1 as it is
 BAKE = "hazy white afternoon sunlight, dust in the hot air"
 LOC = {
     "yard": f"{Y0}: the yard exactly as in the picture: the farmhouse on the left, the yard gate in the middle of the back wall, the well in the front right; {DUSK}",
@@ -126,9 +128,9 @@ LOC = {
     "han_w": f"{H0}, before the thatched mud-and-stone farmhouse on the left of the yard, its dark doorway and split firewood stacked against its wall; {HOT}",
     "han_q": f"{H0}, before the low mud-and-stone wall of the yard with cracked bare earth and a few dead stalks beyond it, hazy low afternoon sun from the right",
     "han_e": H0,  # rule 35: kept only so gen-dh's SET ("courtyard") sends the yard picture; spec.json strips it from s21's d1
-    "ganxi": f"{G0}: the stream bed exactly as in the picture: plates of dry cracked mud where the water ran, the low plank bridge with nothing under it, the willows on the banks; {BAKE}",
+    "ganxi": f"{G0}: the stream bed exactly as in the picture: plates of dry cracked mud where the water ran, the long plank walk laid down the middle of the bed, the willows and village roofs on the left bank, the grass bank and the field on the right; {BAKE}",
     "ba": f"{B0}: {DAM}; {BAKE}",
-    "ba_c": f"{B0}, on the cracked earth of the gully floor below the dam of fieldstones and brown hemp sacks; {BAKE}",
+    "ba_c": f"{B0}, on the narrow stone-edged earth path at the foot of the bank of brown hemp sacks; {BAKE}",
 }
 LIGHT = {
     "dusk": "the low golden evening sunlight stays unchanged",
@@ -158,12 +160,13 @@ ERNIU = "Wang Erniu, in his coarse brown cross-collared short jacket with the sl
 HOE = "one hoe with a plain wooden handle and an iron blade"
 QIAN = ("Qian Yuanwai, short and portly with a round face and a thin eight-shaped moustache, in his dark gold silk robe with "
         "roundel patterns, the front of the robe plain brocade, three gold rings on his fingers")
-# rule 34: five villagers, grey-blue (never Erniu's brown), each a different age and burden; no hoe among them (原版必修)
-VILLAGERS = ("five more people in Song-dynasty grey-blue cross-collared homespun short jackets, cloth head wraps and cloth shoes: a "
-             "white-haired old man in faded grey-blue and a lean middle-aged man in dark grey-blue, each with one wooden carrying "
-             "pole on his shoulder and an empty wooden bucket at each end of it; a thin boy of fifteen in pale grey-blue, a broad "
-             "middle-aged man in slate blue and a middle-aged woman in grey-blue with a faded indigo head cloth, each with one "
-             "bamboo basket on the back and one wooden spade in hand")
+# rule 34 (e031 review 必改 7): five villagers, each a different colour that is none of the leads' (not Xu Yan's blue-grey, Erniu's
+# brown, Qin Shuang's dark brown, A-ling's grey-white, Tang Xiaotang's peach), age and burden; no hoe among them (原版必修)
+VILLAGERS = ("five more people in Song-dynasty cross-collared homespun short jackets, each a different colour, cloth head wraps and "
+             "cloth shoes: a white-haired old man in a faded undyed hemp-beige jacket and a lean middle-aged man in a dark charcoal "
+             "jacket, each with one wooden carrying pole on his shoulder and an empty wooden bucket at each end of it; a thin boy of "
+             "fifteen in a faded indigo jacket, a broad middle-aged man in a dull olive-green jacket and a middle-aged woman in a "
+             "dark grey jacket with a faded indigo head cloth, each with one bamboo basket on the back and one wooden spade in hand")
 RETAINERS = ("twelve men in identical Song-dynasty black cross-collared short jackets, black cloth head wraps and cloth shoes, each "
              "holding one plain wooden staff")
 BOX = "one flat plain wooden box"  # the hand-over: e030 s41 fix2 drew her holding it
@@ -179,7 +182,7 @@ SACKS = "five brown hemp grain sacks stacked on a plain wooden cart bed"
 MULE = "the head and neck of one grey mule at the right edge of the frame"
 HANDS = "their hands hold only what is described here"
 INSERT_LIGHT = "hazy low afternoon light from the right"
-SKY_LIGHT = "hazy low afternoon sun from the upper right behind the branches"
+SKY_LIGHT = "bright hazy afternoon light from the right, the sun beyond the right edge of the frame"
 SILENT_HE = "He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words"
 NOBODY = "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. "
 TBACK = ("one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair "
@@ -192,7 +195,7 @@ HEADSTILL = "the young woman with the two high round buns keeps her head still, 
 TANG_FACE = ("Tang Xiaotang, a young woman of eighteen with a round soft face and big round eyes, in her peach-pink silk "
              "cross-collared short jacket closed at the neck, her black hair in two round buns tied with short pink ribbons")
 # rule 2: over-the-shoulder backs, unnamed, no picture
-BACK_ALING = ("at the left edge of the frame, cut by it, soft and out of focus, only the back of one grey-white cotton shoulder and "
+BACK_ALING = ("at the right edge of the frame, cut by it, soft and out of focus, only the back of one grey-white cotton shoulder and "
               "the back of a high black bun with one plain wooden hairpin, the back of her head toward us the whole shot")
 BACK_ERNIU = ("at the right edge of the frame, cut by it, soft and out of focus, only the back of one broad shoulder in a coarse "
               "brown jacket with a wooden hoe handle resting on it and the back of a man's head, toward us the whole shot")
@@ -204,7 +207,7 @@ BACK_QIAN = ("at the right edge of the frame, cut by it, soft and out of focus, 
 SIDE_WALL = "the low mud-and-stone wall and the leaning planks"
 SIDE_NWALL = "the dark low mud-and-stone wall"
 SIDE_EARTH = "the cracked bare earth of the yard"
-SIDE_GULLY = "the cracked earth of the dry gully"
+SIDE_GULLY = "the soft green bamboo slope of the valley"
 
 
 def quiet(who, pr="his", plural=False):
@@ -257,78 +260,78 @@ SHOTS = [
          motion=f"her left hand tugs once at his right sleeve, only her arm moving; {quiet('Xu Yan')}; {HEADSTILL}",
          zh="中景（從背後）、慢推（送 `-dong-men2-l1`）：唐小棠背影在畫面正中、頭不動，右臂抱著木盒（接第 30 集 s41），左手拉一下前面許硯的右袖（只動手臂，拿東西的手不越過身體，拍法 32）；許硯在她前方一步、畫面左三分之一、三分之二背面朝院門、嘴閉著（nospeak，拍法 40）。稿子『下巴以上、高立領、踮腳看馬跑遠』改背影（拍法 4、40），踮腳不拍"),
     dict(loc="yard_w", cam="Medium shot from behind, slow push in", chars=["tangxiaotang", "xuyan"], nospeak=["tangxiaotang"], night="dusk",
-         comp=alone(f"{BOX} held against her chest in both arms from the first frame; one step beyond her in the left third of the frame, his whole figure clear of her head and shoulders, {XU_D}, standing before the thatched farmhouse, framed from the waist up, his face three-quarter to screen right toward her, never the lens, his eyes on the house door beyond the left edge of the frame at first; calm and level, not smiling: steady eyes, brows level, lips moving evenly between words; beyond them, soft, the dark doorway and the split firewood against the farmhouse wall in the low evening sun; she stays in the middle of the frame the whole shot; {HANDS}; exactly two people, the young woman in the middle seen only from behind",
+         comp=alone(f"{BOX} held against her chest in both arms from the first frame; one step beyond her in the left third of the frame, his whole figure clear of her head and shoulders, {XU_D}, standing before the thatched farmhouse, framed from the waist up, his face three-quarter to screen right toward her, his eyes lowered to the earth between them at first, never the lens; calm and level, not smiling: steady eyes, brows level, lips moving evenly between words; beyond them, soft, the dark doorway and the split firewood against the farmhouse wall in the low evening sun; she stays in the middle of the frame the whole shot; {HANDS}; exactly two people, the young woman in the middle seen only from behind",
                     "standing on the packed earth of the yard,"),
          lines=[("xuyan", "不知道。她想說的時候，自然會說。", "平靜，不笑")],
-         motion=f"Xu Yan's eyes come back from the house door beyond the left edge of the frame to the young woman as he speaks; {HEADSTILL}",
-         zh="中景（從背後）、慢推（送 `-dong-wu2-l1`）：唐小棠背影在畫面正中抱著木盒、頭不動、不說話（拍法 40：背影過肩）；許硯在畫左三分之一、屋前，眼睛從畫左外的屋門（阿令進屋，不寫她）收回來看她、平靜地說，不笑。稿子『從肩上拈下乾柿葉、在指間轉一圈讓風帶走』不拍（一鏡一個動作；葉子交給音效）；『聽完點一下頭』不拍"),
+         motion=f"Xu Yan's eyes lift from the earth to the young woman as he speaks; {HEADSTILL}",
+         zh="中景（從背後）、慢推（送 `-dong-wu2-l1`）：唐小棠背影在畫面正中抱著木盒、頭不動、不說話（拍法 40：背影過肩）；許硯在畫左三分之一、屋前，眼睛從地上抬起來看她（審稿必改 4：屋門就在他身後的畫面裡，不寫畫外的屋門；阿令進屋不寫）、平靜地說，不笑。稿子『從肩上拈下乾柿葉、在指間轉一圈讓風帶走』不拍（一鏡一個動作；葉子交給音效）；『聽完點一下頭』不拍"),
     dict(loc="night", cam="Wide shot, slow push in", chars=["xuyan", "aling"], night="night", act=3,
          comp=f"wide shot at standing eye height, like the picture, the yard by night: at the left on the stone doorstep of the farmhouse {XU_COAT}, framed full figure, small, already stepping out of the dark doorway from the first frame, {LAMP} in his left hand, its small warm light on his robe, his face three-quarter to screen right toward the well, his lips pressed shut, never the lens; in the front right {ALING}, her face bare, sitting on the stone rim of the round well, framed full figure, small, {GAUZE_KNEE}, her face tipped up toward the night sky, her lips closed, never the lens; {HANDS}; exactly two people",
          motion=f"Xu Yan bends and sets the clay oil lamp down on the stone doorstep, its little flame steady; A-ling sits still; {quiet('Xu Yan and A-ling', 'their', plural=True)}",
-         zh="全景、慢推（人眼高、照圖；送免費的 `set-xujia-yuan-ye-dong-l1`，柿子已塗掉；屋門右邊那塊深色空白木板這張還在，提示詞寫素的石牆，或開拍前照 `clean_yard.py` (a) 免費再塗一版）：天已經黑了（第一格），許硯（外披舊灰外衣）從屋門出來、左手一盞陶油燈，彎身把燈放在門前石階上；右前井沿上阿令一個人坐著、仰頭、膝上一方摺好的灰紗（聖經道具表）。無台詞。稿子『屋簷下的燈籠、唐家大車與車燈籠駛遠』不拍（拍法 33：不掛燈籠；不描述畫外的車與人，唐家回縣城交給遠處車輪與馬蹄的音效）；『錢箱、帳本』照稿子是畫外交代，不拍"),
+         zh="全景、慢推（人眼高、照圖；送免費的 `set-xujia-yuan-ye-dong2-l1`：審稿必改 3，`-ye-dong-l1` 屋門右邊的空白木板與院門右柱一帶沒有燈體的燈籠光已塗掉）：天已經黑了（第一格），許硯（外披舊灰外衣）從屋門出來、左手一盞陶油燈，彎身把燈放在門前石階上；右前井沿上阿令一個人坐著、仰頭、膝上一方摺好的灰紗（聖經道具表）。無台詞。稿子『屋簷下的燈籠、唐家大車與車燈籠駛遠』不拍（拍法 33：不掛燈籠；不描述畫外的車與人，唐家回縣城交給遠處車輪與馬蹄的音效）；『錢箱、帳本』照稿子是畫外交代，不拍"),
     dict(loc="night", cam="Wide shot, slow push in", chars=["xuyan", "aling"], night="night",
          comp=f"wide shot at standing eye height, like the picture, the yard by night: in the middle of the yard {XU_COAT}, framed full figure, small, already halfway from the house toward the well from the first frame, {SOUP} carried carefully in both hands before his chest, his face three-quarter to screen right toward the young woman at the well, never the lens; gentle, not smiling: soft eyes, lips moving quietly between words; behind him on the stone doorstep of the farmhouse {LAMP} standing on the stone, nobody holding it; in the front right {ALING}, her face bare, sitting on the stone rim of the round well, framed full figure, {GAUZE_KNEE}, her face turned a little toward him, her lips closed, never the lens; {HANDS}; exactly two people",
          lines=[("xuyan", "還沒睡？夜裡風冷，喝口熱湯再進屋。", "輕聲")],
          motion=f"Xu Yan walks slowly on toward the well, careful of the steaming bowl, as he speaks; {quiet('A-ling', 'her')}",
-         zh="全景、慢推（送 `-ye-dong-l1`）：許硯第一格已經走到院子中間，兩手端著冒熱氣的粗陶湯碗、小心地往右前的井走、輕聲說；陶油燈放在身後屋門石階上（沒人拿）；井沿上的阿令沒戴面巾（送 `aling-portrait-l1`），臉微微轉向他、嘴閉著。稿子『從屋門走出來』在第一格已經完成；跟拍改慢推；前景矮木桌一角不拍（圖上沒有）"),
+         zh="全景、慢推（送 `-ye-dong2-l1`）：許硯第一格已經走到院子中間，兩手端著冒熱氣的粗陶湯碗、小心地往右前的井走、輕聲說；陶油燈放在身後屋門石階上（沒人拿）；井沿上的阿令沒戴面巾（送 `aling-portrait-l1`），臉微微轉向他、嘴閉著。稿子『從屋門走出來』在第一格已經完成；跟拍改慢推；前景矮木桌一角不拍（圖上沒有）"),
     dict(loc="night_j", cam="Medium shot, slow push in", chars=["aling"], night="night",
-         comp=f"medium shot of {ALING}, her face bare, sitting on the stone rim of the round well, framed from the waist up, {SOUP} already held in both her hands on her knees from the first frame, {GAUZE_KNEE} beside it, her face three-quarter to screen right {off('right', 'the dark wooden windlass and the low wall', he='she')}; quiet and guarded, not smiling: cool moonlight on her pale face, brows level, lips moving slowly between words; behind her, soft, the dark low mud-and-stone wall; {HANDS}",
+         comp=f"medium shot of {ALING}, her face bare, sitting on the stone rim of the round well, framed from the waist up, {SOUP} already held in both her hands on her knees from the first frame, {GAUZE_KNEE} beside it, her face three-quarter to screen left {off('left', 'the bare earth of the yard and the low wall', he='she')}; quiet and guarded, not smiling: cool moonlight on her pale face, brows level, lips moving slowly between words; behind her, soft, the dark low mud-and-stone wall; {HANDS}",
          lines=[("aling", "你端湯過來，是想問傍晚那個人。", "不看他，慢")],
-         motion="A-ling's eyes rise once to the moon above the right edge of the frame and slowly drop to the dark mouth of the well as she speaks",
-         zh="中景（腰以上，碗在框裡）、慢推（送免費的 `set-xujia-yuan-ye-dong-jing-l1`）：阿令第一格已經兩手捧著湯碗放在膝上，眼睛先往上看月亮、再慢慢垂到井口，朝畫右外看不到的人說（不看他；不點名許硯）。稿子『畫面右下許硯的雙手與湯碗』不拍（不寫畫面邊緣別人的手，拍法 31）；『伸雙手接過』在第一格已經完成"),
+         motion="A-ling's eyes rise once to the moon above and slowly drop to the dark mouth of the well as she speaks",
+         zh="中景（腰以上，碗在框裡）、慢推（送免費的 `set-xujia-yuan-ye-dong-jing-l1`）：阿令第一格已經兩手捧著湯碗放在膝上，眼睛先往上看月亮、再慢慢垂到井口，朝畫左外看不到的人說（不看他；不點名許硯；審稿必改 2：許硯從畫左的屋門過來，夜裡近鏡他在她左邊）。稿子『畫面右下許硯的雙手與湯碗』不拍（不寫畫面邊緣別人的手，拍法 31）；『伸雙手接過』在第一格已經完成"),
     dict(loc="night_j", cam="Medium shot over the shoulder, slow push in", chars=["xuyan"], night="night",
-         comp=f"medium shot over a shoulder: {BACK_ALING}; one step beyond it in the right half of the frame {XU_COAT}, already crouching beside the well from the first frame, framed from the waist up, his eyes level with hers, his face three-quarter to screen left toward the woman in the foreground, never the lens; frank and gentle, not smiling: moonlight on half his face, steady eyes, lips moving quietly between words; behind him, soft, the dark low mud-and-stone wall; {HANDS}; exactly two people, the one in the foreground seen only from behind",
+         comp=f"medium shot over a shoulder: {BACK_ALING}; one step beyond it in the left half of the frame {XU_COAT}, already crouching beside the well from the first frame, framed from the waist up, his eyes level with hers, his face three-quarter to screen right toward the woman in the foreground, never the lens; frank and gentle, not smiling: moonlight on half his face, steady eyes, lips moving quietly between words; behind him, soft, the dark low mud-and-stone wall; {HANDS}; exactly two people, the one in the foreground seen only from behind",
          lines=[("xuyan", "想問。可我看得出來，妳不想說。", "坦白，不逼")],
          motion="Xu Yan rests his forearms on his knees as he speaks",
-         zh="過肩中景、慢推（送 `-ye-dong-jing-l1`）：前景左是被畫框切掉、虛焦的灰白肩背與高髻木簪（不點名、不送圖，拍法 2；寫後腦朝我們，免得轉成側臉）；許硯第一格已經蹲在井邊、跟她平視，兩手肘擱到膝上、坦白地說，月光照半張臉，不笑"),
+         zh="過肩中景、慢推（送 `-ye-dong-jing-l1`）：前景右是被畫框切掉、虛焦的灰白肩背與高髻木簪（審稿必改 2：左右對調）（不點名、不送圖，拍法 2；寫後腦朝我們，免得轉成側臉）；許硯第一格已經蹲在井邊、跟她平視，兩手肘擱到膝上、坦白地說，月光照半張臉，不笑"),
     dict(loc="night_j", cam="Close-up, slow push in", chars=["aling"], night="night",
-         comp=f"close-up of {ALING}, her face bare, framed from the shoulders up, her eyes lowered from the first frame, her face three-quarter to screen right {off('right', SIDE_NWALL, he='she')}; still and grave, not smiling: cool moonlight on her face, brows level, lips moving slowly and softly between words, one word at a time; behind her, soft, only the dark night sky above the low wall",
+         comp=f"close-up of {ALING}, her face bare, framed from the shoulders up, her eyes lowered from the first frame, her face three-quarter to screen left {off('left', SIDE_NWALL, he='she')}; still and grave, not smiling: cool moonlight on her face, brows level, lips moving slowly and softly between words, one word at a time; behind her, soft, only the dark night sky above the low wall",
          lines=[("aling", "他是在一道很高的牆裡，見過我的。", "很輕，一字一字")],
-         motion="A-ling's eyes rise slowly to that spot beyond the right edge of the frame as she speaks",
-         zh="近景、慢推（送 `-ye-dong-jing-l1`）：阿令眼睛慢慢抬起、朝畫右外看不到的人一字一字地說（伏筆：很高的牆）。稿子『手指在碗邊收緊、吸一口氣』不拍（近景看不到碗；一鏡一個動作）"),
+         motion="A-ling's eyes rise slowly to that spot beyond the left edge of the frame as she speaks",
+         zh="近景、慢推（送 `-ye-dong-jing-l1`）：阿令眼睛慢慢抬起、朝畫左外看不到的人一字一字地說（伏筆：很高的牆）。稿子『手指在碗邊收緊、吸一口氣』不拍（近景看不到碗；一鏡一個動作）"),
     dict(loc="night_j", cam="Close-up, slow push in", chars=["aling"], night="night",
-         comp=f"close-up of {ALING}, her face bare, framed from the shoulders up, the tips of her ears flushed pink, her face three-quarter to screen right toward someone out of sight beyond the right edge of the frame at first, never the lens; that side of the frame is only {SIDE_NWALL} all the way to the edge, and she is the only person in the frame; closed and a little shy, not smiling: brows level, lips moving softly between words; behind her, soft, only the dark night sky above the low wall",
+         comp=f"close-up of {ALING}, her face bare, framed from the shoulders up, the tips of her ears flushed pink, her face three-quarter to screen left toward someone out of sight beyond the left edge of the frame at first, never the lens; that side of the frame is only {SIDE_NWALL} all the way to the edge, and she is the only person in the frame; closed and a little shy, not smiling: brows level, lips moving softly between words; behind her, soft, only the dark night sky above the low wall",
          lines=[("aling", "就這一句。別再問了，好不好？", "很輕")],
-         motion="A-ling turns her face away toward the left edge of the frame and tucks her chin down as she speaks",
-         zh="近景、慢推（送 `-ye-dong-jing-l1`）：阿令耳尖微紅（拍法 12：不寫皮膚上的細點，寫整片泛紅），把臉別到畫左、下巴一收地說"),
+         motion="A-ling turns her face away toward the right edge of the frame and tucks her chin down as she speaks",
+         zh="近景、慢推（送 `-ye-dong-jing-l1`）：阿令耳尖微紅（拍法 12：不寫皮膚上的細點，寫整片泛紅），把臉別到畫右、下巴一收地說"),
     dict(loc="night_j", cam="Close-up, slow push in", chars=["xuyan"], night="night",
-         comp=f"close-up of {XU_COAT}, crouching, framed from the chest up with space above his head, his face three-quarter to screen left {off('left', SIDE_NWALL)}; steady and calm, not smiling: moonlight on his face, steady eyes, brows level, lips moving evenly between words; behind him, soft, the dark low mud-and-stone wall",
+         comp=f"close-up of {XU_COAT}, crouching, framed from the chest up with space above his head, his face three-quarter to screen right {off('right', SIDE_NWALL)}; steady and calm, not smiling: moonlight on his face, steady eyes, brows level, lips moving evenly between words; behind him, soft, the dark low mud-and-stone wall",
          lines=[("xuyan", "好，不問。妳什麼時候想說，我都聽。", "很穩")],
          motion="Xu Yan gives one slow nod as he speaks",
-         zh="近景、慢推（送 `-ye-dong-jing-l1`）：許硯蹲著，點一下頭，朝畫左外看不到的人很穩地說（本集好感的原因，好感帳：「好，不問」），不笑。稿子『雙手在膝上鬆開』不拍（一鏡一個動作）"),
+         zh="近景、慢推（送 `-ye-dong-jing-l1`）：許硯蹲著，點一下頭，朝畫右外看不到的人很穩地說（本集好感的原因，好感帳：「好，不問」），不笑。稿子『雙手在膝上鬆開』不拍（一鏡一個動作）"),
     dict(loc="night_j", cam="Medium shot, slow push in", chars=["aling"], night="night",
-         comp=f"medium shot of {ALING}, her face bare, sitting on the stone rim of the round well, framed from the waist up, {SOUP} held in both her hands on her knees, her face turned away toward screen left at first, never the lens; she is the only person in the frame; softened, not smiling: brows easing, eyes quiet; behind her, soft, the dark low mud-and-stone wall; {HANDS}",
+         comp=f"medium shot of {ALING}, her face bare, sitting on the stone rim of the round well, framed from the waist up, {SOUP} held in both her hands on her knees, her face turned away toward screen right at first, never the lens; she is the only person in the frame; softened, not smiling: brows easing, eyes quiet; behind her, soft, the dark low mud-and-stone wall; {HANDS}",
          lines=[("xitong", "叮。阿令，好感加四。", "冷，宣布")],
          panel=[("阿令 好感 +4 → 32", "affection")],
-         motion=f"A-ling turns her face back toward the right edge of the frame and her eyes rest there a moment; {quiet('A-ling', 'her')}",
-         zh="中景（腰以上）、慢推（送 `-ye-dong-jing-l1`）：阿令把別開的臉轉回畫右（看畫外的許硯，不寫他），眼睛停一下；全程嘴閉著（系統畫外）。面板「阿令 好感 +4 → 32」由剪接疊上（好感帳第 31 集）。稿子『畫面右邊緣許硯的肩』不拍（拍法 31）；『低頭吹一口湯』不拍（一鏡一個動作；吹湯會動嘴）"),
+         motion=f"A-ling turns her face back toward the left edge of the frame and her eyes rest there a moment; {quiet('A-ling', 'her')}",
+         zh="中景（腰以上）、慢推（送 `-ye-dong-jing-l1`）：阿令把別開的臉轉回畫左（看畫外的許硯，不寫他），眼睛停一下；全程嘴閉著（系統畫外）。面板「阿令 好感 +4 → 32」由剪接疊上（好感帳第 31 集）。稿子『畫面右邊緣許硯的肩』不拍（拍法 31）；『低頭吹一口湯』不拍（一鏡一個動作；吹湯會動嘴）"),
     dict(loc="night_j", cam="Close-up, slow push in", chars=["xuyan"], night="night",
-         comp=f"close-up of {XU_COAT}, crouching, framed from the chest up with space above his head, his face three-quarter to screen left, his eyes on a spot beyond the left edge of the frame, never the lens; he is the only person in the frame; amused with himself, not smiling: brows lifting a little, eyes bright, lips pressed shut; moonlight on his face; behind him, soft, the dark low mud-and-stone wall",
+         comp=f"close-up of {XU_COAT}, crouching, framed from the chest up with space above his head, his face three-quarter to screen right, his eyes on a spot beyond the right edge of the frame, never the lens; he is the only person in the frame; amused with himself, not smiling: brows lifting a little, eyes bright, lips pressed shut; moonlight on his face; behind him, soft, the dark low mud-and-stone wall",
          lines=[("xuyan", "不問反而加分……那我是不是該少問一點？", "心裡話，錄得近、輕", "inner"),
                 ("xitong", "宿主少說話，比少問有用。", "冷")],
-         motion=f"one corner of Xu Yan's mouth starts to rise and is pressed flat again, his eyes flicking to the left edge of the frame and back; {SILENT_HE}; he is thinking, not speaking",
-         zh="近景、慢推（送 `-ye-dong-jing-l1`；拍法 11 不寫藍光，稿子『臉被面前的淡藍光照亮』不照用）：許硯的心裡話與系統的吐槽（本集鬥嘴之一），嘴角想動又壓住、眼睛往畫左瞄一下又收回，全程嘴閉著。長鏡"),
+         motion=f"one corner of Xu Yan's mouth starts to rise and is pressed flat again, his eyes flicking to the right edge of the frame and back; {SILENT_HE}; he is thinking, not speaking",
+         zh="近景、慢推（送 `-ye-dong-jing-l1`；拍法 11 不寫藍光，稿子『臉被面前的淡藍光照亮』不照用）：許硯的心裡話與系統的吐槽（本集鬥嘴之一），嘴角想動又壓住、眼睛往畫右瞄一下又收回，全程嘴閉著。長鏡"),
     dict(loc="night_j", cam="Medium shot, slow push in", chars=["aling", "xuyan"], night="night",
-         comp=f"medium shot of two people sitting side by side on the stone rim of the round well, both framed from the waist up: on the left {ALING}, her face bare, {SOUP} held in both her hands on her knees, her head bowed a little over it, her lips closed, never the lens; on the right, a little apart from her, {XU_COAT}, already sitting on the rim from the first frame, his hands on the stone behind him, his face tipped up three-quarter to screen right toward the moon, his lips pressed shut, never the lens; quiet and easy, neither smiling; moonlight on both; behind them, soft, the dark low mud-and-stone wall; {HANDS}; exactly two people",
+         comp=f"medium shot of two people sitting side by side on the stone rim of the round well, both framed from the waist up: on the left {XU_COAT}, already sitting on the rim from the first frame, his hands on the stone behind him, his face tipped up three-quarter to screen left toward the moon, his lips pressed shut, never the lens; on the right, a little apart from him, {ALING}, her face bare, {SOUP} held in both her hands on her knees, her head bowed a little over it, her lips closed, his lips pressed shut, never the lens; quiet and easy, neither smiling; moonlight on both; behind them, soft, the dark low mud-and-stone wall; {HANDS}; exactly two people",
          lines=[("xuyan", "好，閉嘴。今晚就陪她坐著。", "心裡話，錄得近、輕", "inner")],
          motion=f"Xu Yan leans back on his hands and breathes out slowly, looking up at the moon; {quiet('A-ling and Xu Yan', 'their', plural=True)}",
-         zh="中景（雙人）、慢推（送 `-ye-dong-jing-l1`）：井沿上，阿令在左捧著湯碗低頭，許硯在右、第一格已經坐下，兩手撐在身後、吐一口氣看月亮；兩人嘴都閉著（心裡話）。稿子『挨著井沿坐下來』在第一格已經完成；前景木轆轤不寫；『阿令低頭喝湯』改捧碗低頭（喝湯會動嘴）"),
+         zh="中景（雙人）、慢推（送 `-ye-dong-jing-l1`）：井沿上，許硯在左、第一格已經坐下，阿令在右捧著湯碗低頭（審稿必改 2），兩手撐在身後、吐一口氣看月亮；兩人嘴都閉著（心裡話）。稿子『挨著井沿坐下來』在第一格已經完成；前景木轆轤不寫；『阿令低頭喝湯』改捧碗低頭（喝湯會動嘴）"),
     dict(loc="night_j", cam="Medium close-up, slow push in", chars=["aling"], night="night",
-         comp=f"medium close-up of {ALING}, her face bare, sitting on the stone rim of the well, framed from the chest up with space above her head, {EMPTY_BOWL} in both her hands before her chest from the first frame, her face three-quarter to screen right {off('right', SIDE_NWALL, he='she')}; softened: the corners of her mouth easing a little, not a smile, eyes warm and quiet, lips moving softly between words; cool moonlight on her face; behind her, soft, the dark low wall; {HANDS}",
+         comp=f"medium close-up of {ALING}, her face bare, sitting on the stone rim of the well, framed from the chest up with space above her head, {EMPTY_BOWL} in both her hands before her chest from the first frame, her face three-quarter to screen left {off('left', SIDE_NWALL, he='she')}; softened: the corners of her mouth easing a little, not a smile, eyes warm and quiet, lips moving softly between words; cool moonlight on her face; behind her, soft, the dark low wall; {HANDS}",
          lines=[("aling", "湯還是熱的。許硯，謝謝你沒問。", "很輕")],
-         motion="A-ling holds the empty bowl out toward the right edge of the frame in both hands as she speaks",
-         zh="中近景、慢推（送 `-ye-dong-jing-l1`）：阿令兩手把空湯碗往畫右外遞出去、輕輕地說；嘴角可以鬆一點、不算笑（稿子）（第一場結尾）。稿子『許硯的手接過去』不拍（不寫畫面邊緣別人的手）"),
+         motion="A-ling holds the empty bowl out toward the left edge of the frame in both hands as she speaks",
+         zh="中近景、慢推（送 `-ye-dong-jing-l1`）：阿令兩手把空湯碗往畫左外遞出去、輕輕地說；嘴角可以鬆一點、不算笑（稿子）（第一場結尾）。稿子『許硯的手接過去』不拍（不寫畫面邊緣別人的手）"),
     # ---- scene 2: three months later, early spring in a drought, the same yard in the hot afternoon (set-xujia-yuan-han-l1).
     dict(chapter="三個月後，許家院子", loc="han_e", cam="Insert close-up, slow push in", chars=[], night="hot", act=3,
          comp=f"{SKY_LIGHT}: insert close-up seen from slightly below, the very first frame is already a close view of the tip of one bare grey twig with a few tiny pale green buds just breaking on it, one last curled dry brown leaf still holding on; beyond it, soft and out of focus, only the hazy bright sky and a few thin bare branches fill the background to every edge; only the twig, its buds, the dry leaf and the sky are in the frame",
          motion=NOBODY + "A gust of hot wind shakes the twig and the dry brown leaf breaks off and drops out of the bottom of the frame",
-         zh="插鏡、慢推（第一格就是枝頭新芽，拍法 10、35；d1 不寫地點句，背景只有發亮的天與枯枝；送 `set-xujia-yuan-han-shu-l1`：**還沒做**，免費照 `-dong-shu-l1` 的 crop `480:270:560:0` 從 `-han-l1` 裁，禿枝映著發亮的天、左下一角瓦簷。Ref2VA 一張圖都不送不行（預檢 picture-list）；圖上的天是金黃的，聖經寫的藍天照圖改）：一陣熱風搖一下樹枝，最後一片乾枯的舊葉斷下、往下掉出畫面（無台詞）。稿子『往下搖到地面、跟著葉子落到裂開的地』改慢推（一鏡一個運鏡；乾裂的地交給下一鏡）。三個月的跳接就在這一刀"),
+         zh="插鏡、慢推（第一格就是枝頭新芽，拍法 10、35；d1 不寫地點句，背景只有發亮的天與枯枝；送免費的 `set-xujia-yuan-han-shu-l1`（`-han-l1` `crop=320:180:480:0`，審稿必改 6：太陽在框外右邊，新芽不會逆光成黑剪影）：禿枝映著發亮的淡奶油色天、左下一角瓦簷。Ref2VA 一張圖都不送不行（預檢 picture-list）；圖上的天是金黃的，聖經寫的藍天照圖改）：一陣熱風搖一下樹枝，最後一片乾枯的舊葉斷下、往下掉出畫面（無台詞）。稿子『往下搖到地面、跟著葉子落到裂開的地』改慢推（一鏡一個運鏡；乾裂的地交給下一鏡）。三個月的跳接就在這一刀"),
     dict(loc="han_j", cam="Medium shot from behind, slow push in", chars=["tangxiaotang"], nospeak=["tangxiaotang"], night="hot",
-         comp=alone(f"both her hands already on the rope of the wooden windlass from the first frame; just beyond her on the round stone rim of the well {MUD_BUCKET}; beyond the well, soft, the low mud-and-stone wall and the cracked bare earth beyond it in the hazy afternoon sun; {HANDS}; she is the only person in the frame",
+         comp=alone(f"both her hands resting on the wooden handle of the windlass from the first frame; just beyond her on the round stone rim of the well {MUD_BUCKET}; beyond the well, soft, the low mud-and-stone wall and the cracked bare earth beyond it in the hazy afternoon sun; {HANDS}; she is the only person in the frame",
                     "standing at the round stone well,"),
          lines=[("tangxiaotang", "三個月了，一滴雨都沒下，井裡只剩半桶泥水。", "聲音悶，不笑")],
          motion=f"her shoulders rise and sink once in a long sigh, only her shoulders moving; {HEADSTILL}",
-         zh="中景（從背後）、慢推（送 `set-xujia-yuan-han-jing-l1`）：唐小棠背影在畫面正中、頭不動，兩手第一格已經握著轆轤的井繩，井沿上半桶黃泥水已經提上來；肩膀一提一落嘆口氣（只動肩），說話放錄音（nospeak，拍法 40）。稿子『在井邊（畫面左）』照圖在前右（拍法 42）；『額上有汗』不寫（拍法 12）；『低頭看渾水』不拍（頭不動）"),
+         zh="中景（從背後）、慢推（送 `set-xujia-yuan-han-jing-l1`）：唐小棠背影在畫面正中、頭不動，兩手第一格已經扶在轆轤的木柄上（審稿建議），井沿上半桶黃泥水已經提上來；肩膀一提一落嘆口氣（只動肩），說話放錄音（nospeak，拍法 40）。稿子『在井邊（畫面左）』照圖在前右（拍法 42）；『額上有汗』不寫（拍法 12）；『低頭看渾水』不拍（頭不動）"),
     dict(loc="han_w", cam="Medium shot from behind, slow push in", chars=["tangxiaotang", "xuyan"], nospeak=["tangxiaotang"], night="hot",
          comp=alone(f"both her hands empty at her sides; one step beyond her in the left third of the frame, his whole figure clear of her head and shoulders, {XU_UP}, standing before the thatched farmhouse, framed from the waist up, {REDBOWL} held in his left hand at his chest, his flat right hand already resting on the wet cloth from the first frame, his face three-quarter to screen right toward her, never the lens; quietly hopeful: a faint warm look in his eyes, lips moving evenly between words; beyond them, soft, the dark doorway and the split firewood against the farmhouse wall in the hazy afternoon sun; she stays in the middle of the frame the whole shot; {HANDS}; exactly two people, the young woman in the middle seen only from behind",
                     "standing on the cracked earth of the yard,"),
@@ -356,11 +359,11 @@ SHOTS = [
          lines=[("xuyan", "芽是醒了，可田裡沒水，插下去也活不了。", "不笑")],
          motion="Xu Yan's eyes lift from the bowl to the cracked earth beyond the right edge of the frame as he speaks, his brows drawing together",
          zh="中近景、慢推（送 `-han-wu-l1`）：許硯一個人入鏡，眼睛從碗抬到畫右外乾裂的地、眉頭收起來地說（嘴角的笑收掉，不笑）。稿子『拈起一粒、放回碗裡』不拍（一鏡一個動作，小東西在手指間會長錯）；『唐小棠的笑也收了』不拍：她的臉不入鏡（拍法 40）"),
-    dict(loc="han", cam="Wide shot, slow push in", chars=["erniu"], night="hot",
+    dict(loc="han", cam="Wide shot, slow push in", chars=["erniu", "xuyan"], night="hot",
          comp=f"wide shot at standing eye height, like the picture: in the yard gate in the middle of the back wall {ERNIU}, framed full figure, small, already through the swung-back plank gate from the first frame and running toward us, {HOE} on his right shoulder, his left fist clenched, not smiling: mouth wide and panting, brows knotted, never the lens; in the left foreground before the farmhouse, side by side, their backs three-quarter to us, facing the yard gate: on the left {XU_UP}, {REDBOWL} in his left hand, his lips pressed shut, and on his right {TBACK}, {only_tang()}; {HANDS}; exactly three people; the only hoe in the frame is his",
          lines=[("erniu", "許大哥！柳溪斷了，河床全裂開了！", "先在門外喊，喘，急，不笑")],
          motion=f"Wang Erniu runs across the cracked earth toward the two of them and stops, panting, as he shouts; {quiet('Xu Yan')}; {HEADSTILL}",
-         zh="全景、慢推（人眼高、照圖；送 `set-xujia-yuan-han-l1`）：二牛第一格已經從後牆中間的院門衝進來，扛著鋤頭、左拳攥著一把乾泥，跑過乾裂的地停在兩人面前、喘著喊（不笑，原版必修）；左前景屋前許硯與他右邊的唐小棠背影（不在 chars、不送圖）朝院門、嘴閉著、頭不動。稿子『院門被撞開』在第一格已經完成，門外的喊聲交給錄音前半句；『前景籬笆、跟拍』照圖不拍；『許硯、唐小棠轉頭』不拍（她的頭不轉）"),
+         zh="全景、慢推（人眼高、照圖；送 `set-xujia-yuan-han-l1`）：二牛第一格已經從後牆中間的院門衝進來，扛著鋤頭、左拳攥著一把乾泥，跑過乾裂的地停在兩人面前、喘著喊（不笑，原版必修）；左前景屋前許硯（審稿建議：送 `xuyan-portrait-l1`、不送角度圖，同 s04、s31）與他右邊的唐小棠背影（不在 chars、不送圖）朝院門、嘴閉著、頭不動。稿子『院門被撞開』在第一格已經完成，門外的喊聲交給錄音前半句；『前景籬笆、跟拍』照圖不拍；『許硯、唐小棠轉頭』不拍（她的頭不轉）"),
     dict(loc="han_m", cam="Close-up, slow push in", chars=["erniu"], night="hot",
          comp=f"close-up of {ERNIU}, standing, framed from the chest up with space above his head, {HOE} on his right shoulder, his left fist already raised before his chest from the first frame, clenched round a lump of dry earth, his face three-quarter to screen left {off('left', SIDE_EARTH)}; desperate, not smiling: brows knotted hard, eyes wide, chest heaving, lips moving fast between panting words; behind him, soft, the plank gate under its small tiled roof and the cracked bare earth beyond it in the hazy afternoon sun; {HANDS}",
          lines=[("erniu", "上游一滴水都不來，田全要乾死了！", "急，不笑")],
@@ -395,67 +398,67 @@ SHOTS = [
          motion=f"Xu Yan's eyes turn toward the right edge of the frame, upstream, and narrow; {SILENT_HE}; he is thinking, not speaking",
          zh="近景、慢推（送 `-han-wu-l1`）：許硯的心裡話（錄音，嘴閉著），眼睛往畫右（上游的方向）一轉、瞇起來（稿子）。從 c29 拆出（見 s29）"),
     dict(loc="han_w", cam="Medium shot from behind, slow push in", chars=["tangxiaotang", "xuyan", "erniu"], nospeak=["tangxiaotang"], night="hot",
-         comp=alone(f"both her hands empty at her sides; one step beyond her, both clear of her head and shoulders: in the left third of the frame {XU_UP}, standing before the thatched farmhouse, framed from the waist up, {REDBOWL} in his left hand, the wet cloth already laid back over it, his face three-quarter to screen right toward her, never the lens; set and urgent, not smiling: jaw set, brows pressed down, lips moving hard between words; in the right third of the frame {ERNIU}, standing, framed from the waist up, {HOE} on his right shoulder, his face three-quarter to screen left toward Xu Yan, his lips pressed shut, not smiling, never the lens; beyond them, soft, the farmhouse wall and the split firewood in the hazy afternoon sun; she stays in the middle of the frame the whole shot; {HANDS}; exactly three people, the young woman in the middle seen only from behind",
+         comp=alone(f"both her hands empty at her sides; one step beyond her, both clear of her head and shoulders: in the left third of the frame {XU_UP}, standing before the thatched farmhouse, framed from the waist up, {REDBOWL} in his left hand, the wet cloth already laid back over it, his face three-quarter to screen right toward her, never the lens; set and urgent, not smiling: jaw set, brows pressed down, lips moving hard between words; in the right third of the frame, just left of the yard gate, {ERNIU}, standing, framed from the waist up, {HOE} on his right shoulder, his face three-quarter to screen left toward Xu Yan, his lips pressed shut, not smiling, never the lens; beyond them, soft, the farmhouse wall and the split firewood in the hazy afternoon sun; she stays in the middle of the frame the whole shot; {HANDS}; exactly three people, the young woman in the middle seen only from behind",
                     "standing on the cracked earth of the yard,"),
          lines=[("xuyan", "二牛叫人去上游。小棠，去田裡叫秦霜到上游找我們。", "咬牙，下令")],
-         motion=f"Xu Yan sweeps his flat right hand once toward the yard gate beyond the right edge of the frame as he speaks; {quiet('Wang Erniu')}; {HEADSTILL}",
-         zh="中景（從背後）、慢推（送 `-han-wu-l1`）：唐小棠背影在畫面正中、頭不動；畫左三分之一許硯（濕布已蓋回碗上，第一格完成）咬牙下令，右手平掌往畫右外的院門一揮；畫右三分之一二牛扛鋤頭、嘴閉著、不笑（三個人兩張臉）。稿子『二牛點頭轉身、唐小棠提裙跑出院門』不拍（一鏡一個動作；剪接交代；第三場她不在）；前景紅陶碗在矮木桌上不拍（圖上沒有桌子）（第二場結尾）"),
+         motion=f"Xu Yan sweeps his flat right hand once toward the yard gate at the right of the frame as he speaks; {quiet('Wang Erniu')}; {HEADSTILL}",
+         zh="中景（從背後）、慢推（送 `-han-wu-l1`）：唐小棠背影在畫面正中、頭不動；畫左三分之一許硯（濕布已蓋回碗上，第一格完成）咬牙下令，右手平掌往畫右的院門一揮（審稿建議：`-han-wu-l1` 的院門在畫面右緣裡面）；畫右三分之一、院門左邊二牛扛鋤頭、嘴閉著、不笑（三個人兩張臉）。稿子『二牛點頭轉身、唐小棠提裙跑出院門』不拍（一鏡一個動作；剪接交代；第三場她不在）；前景紅陶碗在矮木桌上不拍（圖上沒有桌子）（第二場結尾）"),
     # ---- scene 3: the same afternoon, the dry stream bed (set-ganxi-l1), then the Qian dam upstream (set-shangyou-ba-l1, NOT FILED).
     dict(chapter="乾溪床，上游的壩", loc="ganxi", cam="Wide shot, slow push in", chars=["erniu", "xuyan"], night="hot",
-         comp=f"wide shot at standing eye height, like the picture, on the dry cracked bed of the stream: walking from the left toward the right in a loose line, all framed full figure, small: in front {ERNIU}, {HOE} on his right shoulder, his head turned back over his shoulder toward the others, not smiling: panting, brows knotted, lips moving between words, never the lens; just behind him {XU_UP}, his face toward Wang Erniu, his lips pressed shut, never the lens; behind them {VILLAGERS}, their lips closed, never the lens; {HANDS}; exactly seven people; the only hoe in the frame is Wang Erniu's",
+         comp=f"wide shot at standing eye height, like the picture, on the dry cracked bed of the stream: walking away from us along the dry bed toward its far misty end, on the cracked mud plates to the right of the plank walk, in a loose line, all framed full figure, small: at the front {ERNIU}, {HOE} on his right shoulder, his head turned back over his left shoulder toward the others, his face in profile, not smiling: panting, brows knotted, lips moving between words, never the lens; just behind him {XU_UP}, his face toward Wang Erniu, his lips pressed shut, never the lens; behind them {VILLAGERS}, their lips closed, never the lens; {HANDS}; exactly seven people; the only hoe in the frame is Wang Erniu's",
          lines=[("erniu", "再往上走一里，就是錢家的地界了。", "喘，不笑")],
-         motion=f"the seven of them walk steadily from the left toward the right across the cracked mud of the stream bed; {quiet('Xu Yan and the five others', 'their', plural=True)}",
-         zh="全景、慢推（人眼高、照圖；送 `set-ganxi-l1`，試鏡一 37038 已歸檔：乾裂泥板的溪床、木板橋、柳樹）：一行七人由左往右走在乾裂的溪床上（往上游）：最前面二牛扛鋤頭、回頭說話（不笑）；許硯在他後面；五個村民灰藍短打、各自年紀與擔子不同（白髮老漢與瘦中年各挑扁擔兩頭空桶、十五歲少年、壯中年與包靛藍頭巾的中年婦人各背竹筐拿木鍬；拍法 34），只有二牛一把鋤頭（原版必修）。稿子『低角度跟拍、前景一個滾動的空木桶』改人眼高慢推（一鏡一個運鏡、一個動作；木桶交給音效）；溪床跟岸幾乎齊平、右岸稻田仍金黃（歸檔時記的毛病），提示詞照圖寫、不寫『只剩石頭』"),
+         motion=f"the seven of them walk steadily away from us along the cracked mud of the stream bed; {quiet('Xu Yan and the five others', 'their', plural=True)}",
+         zh="全景、慢推（人眼高、照圖；送 `set-ganxi-l1`，試鏡一 37038 已歸檔：乾裂泥板的溪床、木板橋、柳樹）：一行七人沿乾裂的溪床往遠方走（往上游；審稿必改 5：圖上溪床從前景直直往遠處延伸，由左往右等於橫越溪床）、走在木板走道右邊的裂泥上：最前面二牛扛鋤頭、從左肩回頭說話（不笑）；許硯在他後面；五個村民各自衣色、年紀與擔子不同（白髮老漢本色麻、瘦中年炭灰各挑扁擔兩頭空桶，十五歲少年褪色靛藍、壯中年暗橄欖綠、包靛藍頭巾的中年婦人深灰各背竹筐拿木鍬；拍法 34，審稿必改 7：不穿灰藍，免得撞許硯的藍灰），只有二牛一把鋤頭（原版必修）。稿子『低角度跟拍、前景一個滾動的空木桶』改人眼高慢推（一鏡一個運鏡、一個動作；木桶交給音效）；溪床跟岸幾乎齊平、右岸稻田仍金黃（歸檔時記的毛病），提示詞照圖寫、不寫『只剩石頭』；圖上沒有橫過溪的木板橋，中間是一條長木板走道（照圖寫）；圖是粉紫晨霧，光寫午後，挑片時看"),
     dict(loc="ba", cam="Point-of-view wide shot, slow push in", chars=[], night="hot",
-         comp=f"point-of-view wide shot at standing eye height toward the dam, like the picture: the long dam of stacked brown hemp sacks with the muddy pond behind it; along its top, small and far, two men in identical Song-dynasty black cross-collared short jackets and black cloth head wraps stacking brown hemp sacks with iron spades, and ten more men dressed the same, each holding one plain wooden staff, standing in a loose row; at the right end of the dam top five brown hemp grain sacks stacked on a plain wooden cart bed, and beside them one stout man in a dark gold brocade robe; exactly thirteen people, all small and far; the dam and the pond as in the picture",
+         comp=f"point-of-view wide shot at standing eye height toward the dam, like the picture: the long bank of stacked brown hemp sacks with the muddy pond behind it; on the far half of its crest, small and far, two men in identical Song-dynasty black cross-collared short jackets and black cloth head wraps shovelling earth onto the sacks with iron spades, and ten more men dressed the same, each holding one plain wooden staff, standing in a loose row; on the crest a little right of the middle, one plain wooden cart bed with five brown hemp grain sacks, one carter seen only from behind at its front, and beside it one stout man in a dark gold brocade robe; exactly fourteen people, all small and far; the bank, the pond and the valley as in the picture",
          lines=[("xuyan", "水沒斷，是被人用土袋截在這裡了。", "畫外，低")],
          motion=f"the men on the dam lift their heads and turn toward us, all at once; {quiet('the men on the dam', 'their', plural=True)}",
-         zh="主觀全景、慢推（許硯看上游；送 `set-shangyou-ba-l1`：**試鏡第三輪，還沒歸檔**；第三輪的圖是站在溝底往上游看、壩在約三十步外橫過溝、壩後一窪泥水、右岸新溝引水到一小塊青田）：壩頂兩個家丁拿鐵鍬堆土袋、十個拿木棍站著（同一身黑短打，遠景，拍法 34），右端一輛騾車的車板上五袋糧、旁邊一個穿深金錦袍的胖子（遠、小，不送錢員外的圖）；家丁一起抬頭看過來（一個動作）。許硯的台詞是畫外（主觀，嘴不入鏡）。稿子『前景岸邊垂下的柳枝』不拍（圖上不一定有，柳枝也會被讀成掛著的東西）。**沒有水車**（原版必修）"),
+         zh="主觀全景、慢推（許硯看上游；送整張免費翻轉的 `set-shangyou-ba-fx-l1`，審稿必改 1 做法 A：麻袋土埂從右前往左後退到山谷遠處、黃泥水塘在右後、左邊石邊土路與小溝與青秧、竹林山谷）：土埂遠段頂上兩個家丁拿鐵鍬往麻袋上鏟土、十個拿木棍站著（同一身黑短打，遠景，拍法 34），中間偏右一輛騾車的車板上五袋糧、車前車夫的背影、旁邊一個穿深金錦袍的胖子（遠、小，不送錢員外的圖；十四人，車夫算進去）；家丁一起抬頭看過來（一個動作）。許硯的台詞是畫外（主觀，嘴不入鏡）。稿子『前景岸邊垂下的柳枝』不拍（圖上不一定有，柳枝也會被讀成掛著的東西）。**沒有水車**（原版必修）"),
     dict(loc="ba_c", cam="Medium shot, slow push in", chars=["erniu"], night="hot",
-         comp=f"medium shot of {ERNIU}, standing on the cracked earth of the gully floor, framed from the waist up, {HOE} on his right shoulder from the first frame, his face three-quarter to screen right toward the dam beyond the right edge of the frame, his eyes on it, never the lens; furious, not smiling: a vein standing on his forehead, jaw clenched, teeth set, lips moving hard between shouted words; behind him, soft and out of focus, two more people in grey-blue homespun jackets, a white-haired old man with an empty bucket on a carrying pole and a thin boy of fifteen with a bamboo basket on his back and a wooden spade, their lips closed, never the lens; {HANDS}; exactly three people; the only hoe in the frame is Wang Erniu's",
+         comp=f"medium shot of {ERNIU}, standing on the narrow stone-edged earth path, framed from the waist up, {HOE} on his right shoulder from the first frame, his face three-quarter to screen right toward the dam beyond the right edge of the frame, his eyes on it, never the lens; furious, not smiling: a vein standing on his forehead, jaw clenched, teeth set, lips moving hard between shouted words; behind him, soft and out of focus, two more people in homespun jackets, a white-haired old man in a faded undyed hemp-beige jacket with an empty bucket on a carrying pole and a thin boy of fifteen in a faded indigo jacket with a bamboo basket on his back and a wooden spade, their lips closed, never the lens; behind them only the soft green bamboo slope of the valley; {HANDS}; exactly three people; the only hoe in the frame is Wang Erniu's",
          lines=[("erniu", "是錢員外！他把最後的水，全引進自家田了！", "吼，不笑")],
          motion=f"Wang Erniu swings the hoe down off his shoulder into both hands as he shouts; {quiet('the old man and the boy', 'their', plural=True)}",
-         zh="中景、慢推（送 `set-shangyou-ba-l1` 挑定後的近景裁切，免費；**圖還沒歸檔**）：二牛把鋤頭從肩上甩到兩手握著、朝畫右外的壩吼（不笑，原版必修）；身後虛焦兩個村民（白髮老漢挑空桶、十五歲少年背竹筐拿木鍬），嘴閉著、沒有鋤頭（原版必修：背景兩個二牛）。稿子『一手指著壩頂的胖子』不拍（單指會讀錯，拍法 32；一鏡一個動作）"),
+         zh="中景、慢推（送免費裁切 `set-shangyou-ba-fx-shan-l1`：虛焦的竹坡）：二牛把鋤頭從肩上甩到兩手握著、朝畫右外的壩吼（不笑，原版必修）；身後虛焦兩個村民（本色麻衣的白髮老漢挑空桶、褪色靛藍的十五歲少年背竹筐拿木鍬），嘴閉著、沒有鋤頭（原版必修：背景兩個二牛）。稿子『一手指著壩頂的胖子』不拍（單指會讀錯，拍法 32；一鏡一個動作）"),
     dict(loc="ba", cam="Low-angle medium shot, slow push in", chars=["qianyuanwai"], night="hot",
-         comp=f"low-angle medium shot of {QIAN}, standing on the beaten earth path along the top of the dam, framed from the waist up, his right hand already resting on {SACKS} beside him from the first frame, his face three-quarter to screen left, looking down toward someone out of sight beyond the lower left edge of the frame, never the lens; that side of the frame is only the hazy white sky and the edge of the dam all the way to the edge, and he is the only person in the frame; oily and smug: a sly fake smile, small eyes narrowed, lips moving slowly between drawled words; behind him, soft, the still muddy pond and the bright green field beyond it; {HANDS}",
+         comp=f"low-angle medium shot of {QIAN}, standing on the flat crest of the bank of brown hemp sacks, framed from the waist up, his right hand already resting on {SACKS} beside him from the first frame, his face three-quarter to screen left, looking down toward someone out of sight beyond the lower left edge of the frame, never the lens; that side of the frame is only the hazy white sky and the green bamboo slope all the way to the edge, and he is the only person in the frame; oily and smug: a sly fake smile, small eyes narrowed, lips moving slowly between drawled words; behind him, soft, only the hazy white sky and the green bamboo slopes of the valley; {HANDS}",
          lines=[("qianyuanwai", "許秀才，來得正好。今年的糧價，再漲三成。", "油滑，拖長音，本鏡可以假笑")],
          motion="Qian Yuanwai pats the top grain sack twice with his right hand, a little puff of dust rising, as he speaks",
-         zh="低角度中景、慢推（送 `set-shangyou-ba-l1` 的壩頂裁切，**圖還沒歸檔**）：錢員外（胸前素的錦袍、三個金戒指，原版第 35 集的吊牌不寫）站在壩頂，右手拍兩下車板上的糧袋、揚起一點灰，往畫左下外看不到的人（許硯，不點名）拖長音地說（稿子『本鏡可以假笑』）。稿子『身後兩個家丁』不拍（拍法 34：家丁不進近鏡；畫面裡只有他）；騾子在這鏡不寫"),
+         zh="低角度中景、慢推（送免費裁切 `set-shangyou-ba-fx-ding-l1`：霧白的天與竹林山谷）：錢員外（胸前素的錦袍、三個金戒指，原版第 35 集的吊牌不寫）站在麻袋土埂平的一段頂上，右手拍兩下車板上的糧袋、揚起一點灰，往畫左下外看不到的人（許硯，不點名）拖長音地說（稿子『本鏡可以假笑』）。稿子『身後兩個家丁』不拍（拍法 34：家丁不進近鏡；畫面裡只有他）；騾子在這鏡不寫"),
     dict(loc="ba_c", cam="High-angle medium shot over the shoulder, slow push in", chars=["xuyan"], night="hot",
-         comp=f"high-angle medium shot over a shoulder: {BACK_QIAN}; below and beyond it in the left half of the frame {XU_UP}, already standing on a big rough rock before the dam from the first frame, framed from the waist up, his face tipped up three-quarter to screen right toward the man in the foreground, never the lens; holding his anger down, not smiling: jaw set, eyes hard, brows low, lips moving evenly between words; behind him, soft, the cracked earth of the gully floor in the hazy white sun; {HANDS}; exactly two people, the one in the foreground seen only from behind",
+         comp=f"high-angle medium shot over a shoulder: {BACK_QIAN}; below and beyond it in the left half of the frame {XU_UP}, already standing on the narrow stone-edged earth path at the foot of the bank of sacks from the first frame, framed from the waist up, his face tipped up three-quarter to screen right toward the man in the foreground, never the lens; holding his anger down, not smiling: jaw set, eyes hard, brows low, lips moving evenly between words; behind and below him, soft, the narrow ditch of muddy water beside the path in the hazy white sun; {HANDS}; exactly two people, the one in the foreground seen only from behind",
          lines=[("xuyan", "上游截水，下游一村人喝什麼？", "壓著火")],
          motion="Xu Yan's hands close slowly into fists at his sides as he speaks",
-         zh="俯角過肩中景、慢推（送壩的近景裁切，**圖還沒歸檔**）：前景右是虛焦的深金錦袍肩背與圓圓的後腦（不點名、不送圖，拍法 2）；許硯第一格已經站上壩前的大石，仰頭、兩手慢慢握成拳、壓著火問，不笑"),
+         zh="俯角過肩中景、慢推（送免費裁切 `set-shangyou-ba-fx-jiao-l1`：泥水小溝、石邊土路、麻袋坡）：前景右是虛焦的深金錦袍肩背與圓圓的後腦（不點名、不送圖，拍法 2）；許硯第一格已經站在壩腳的石邊土路上，仰頭、兩手慢慢握成拳、壓著火問，不笑"),
     dict(loc="ba", cam="Low-angle medium shot over the shoulder, slow push in", chars=["qianyuanwai"], night="hot",
-         comp=f"low-angle medium shot over a shoulder: {BACK_XU}; above and beyond it in the right half of the frame {QIAN}, already sitting on the front of a plain wooden cart bed among brown hemp grain sacks on top of the dam from the first frame, framed from the waist up, his face turned back three-quarter to screen left down toward the man in the foreground, never the lens; {MULE}; cold and pleased with himself: a cold thin sneer, small eyes narrowed, lips moving lazily between words; behind him the hazy white sky; {HANDS}; exactly two people, the one in the foreground seen only from behind",
+         comp=f"low-angle medium shot over a shoulder: {BACK_XU}; above and beyond it in the right half of the frame {QIAN}, already sitting on the front of a plain wooden cart bed among brown hemp grain sacks on the crest of the bank of sacks from the first frame, framed from the waist up, his face turned back three-quarter to screen left down toward the man in the foreground, never the lens; {MULE}; cold and pleased with himself: a cold thin sneer, small eyes narrowed, lips moving lazily between words; behind him the hazy white sky; {HANDS}; exactly two people, the one in the foreground seen only from behind",
          lines=[("qianyuanwai", "天不下雨，老天幫我數錢。你們喝什麼，是你們的事。", "冷笑，本鏡可以冷笑")],
          motion="Qian Yuanwai leans back against the grain sacks, at his ease, as he speaks",
-         zh="仰角反打過肩中景、慢推（送壩的近景裁切，**圖還沒歸檔**）：前景左是虛焦的藍灰肩背與髮髻（不點名）；錢員外第一格已經坐上騾車（灰騾只見頭頸、在畫右緣，聖經第 41 條），往糧袋上一靠、回頭冷笑地說（稿子『本鏡可以冷笑』）。稿子『扶著車轅爬上騾車』在第一格已經完成"),
+         zh="仰角反打過肩中景、慢推（送 `set-shangyou-ba-fx-ding-l1`：霧白的天與竹林山谷）：前景左是虛焦的藍灰肩背與髮髻（不點名）；錢員外第一格已經坐上騾車（灰騾只見頭頸、在畫右緣，聖經第 41 條），往糧袋上一靠、回頭冷笑地說（稿子『本鏡可以冷笑』）。稿子『扶著車轅爬上騾車』在第一格已經完成"),
     dict(loc="ba", cam="Medium shot, slow push in", chars=["qianyuanwai"], night="hot",
-         comp=f"medium shot along the top of the dam: {QIAN}, sitting on the front of a plain wooden cart bed among brown hemp grain sacks, framed from the waist up, his body facing screen right, his face turned back over his left shoulder toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the beaten earth path along the dam top and the hazy sky all the way to the edge; beside him at the front of the cart one carter seen only from behind, in a plain grey-brown short jacket and a grey cloth head wrap, the reins in his hands, his face never in the frame; {MULE}; smug and lazy: a thin satisfied smile, eyes half lidded, lips moving slowly between drawled words; {HANDS}; exactly two people, the carter seen only from behind",
+         comp=f"medium shot along the crest of the bank of sacks: {QIAN}, sitting on the front of a plain wooden cart bed among brown hemp grain sacks, framed from the waist up, his body facing screen right, his face turned back over his left shoulder toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the crest of the bank of sacks and the muddy pond all the way to the edge; beside him at the front of the cart one carter seen only from behind, in a plain grey-brown short jacket and a grey cloth head wrap, the reins in his hands, his face never in the frame; {MULE}; smug and lazy: a thin satisfied smile, eyes half lidded, lips moving slowly between drawled words; {HANDS}; exactly two people, the carter seen only from behind",
          lines=[("qianyuanwai", "看好壩。誰敢動一袋土，就給我打回去。", "拖長音")],
          motion="Qian Yuanwai sweeps his flat right hand once back toward the left edge of the frame as he speaks; the carter's back stays to us",
-         zh="中景、慢推（送壩的近景裁切，**圖還沒歸檔**）：錢員外坐在車板前、身體朝畫右，回頭朝畫左外看不到的人（家丁，不寫）平掌一揮、拖長音地吩咐；車夫只見背影（灰褐短打、灰布包頭：**不寫草帽**，紅繩草帽是落水真相的線索）；灰騾只見頭頸。稿子『車夫一甩鞭、騾車往右走、家丁一起點頭握緊棍子、兩人丟下鐵鍬拔起木棍』不拍（一鏡一個動作；家丁不進近鏡；車走交給鞭響、蹄聲與車輪的音效，家丁拿棍子在 s41 第一格已經完成）"),
+         zh="中景、慢推（送免費裁切 `set-shangyou-ba-fx-tang-l1`：竹坡、遠端石線、黃泥水塘、左下一角麻袋頂）：錢員外坐在車板前、身體朝畫右，回頭朝畫左外看不到的人（家丁，不寫）平掌一揮、拖長音地吩咐；車夫只見背影（灰褐短打、灰布包頭：**不寫草帽**，紅繩草帽是落水真相的線索）；灰騾只見頭頸。稿子『車夫一甩鞭、騾車往右走、家丁一起點頭握緊棍子、兩人丟下鐵鍬拔起木棍』不拍（一鏡一個動作；家丁不進近鏡；車走交給鞭響、蹄聲與車輪的音效，家丁拿棍子在 s41 第一格已經完成）"),
     dict(loc="ba_c", cam="Medium shot, slow push in", chars=["xuyan", "erniu"], night="hot",
-         comp=f"medium shot on the cracked earth of the gully floor, both men framed from the waist up, side-on to us: on the left {XU_UP}, his left hand already gripping the other man's right forearm from the first frame, facing screen right, never the lens; urgent and low, not smiling: brows drawn, eyes steady, lips moving low between words; on the right {ERNIU}, {HOE} gripped in both his hands, facing screen left, never the lens, his chest heaving, his jaw clenched, his lips pressed shut, not smiling; behind them, soft, the dry gully and its low banks in the hazy white sun; {HANDS}; exactly two people",
+         comp=f"medium shot on the narrow stone-edged earth path at the foot of the bank of sacks, both men framed from the waist up, side-on to us: on the left {XU_UP}, his left hand already gripping the other man's right forearm from the first frame, facing screen right, never the lens; urgent and low, not smiling: brows drawn, eyes steady, lips moving low between words; on the right {ERNIU}, {HOE} gripped in both his hands, facing screen left, never the lens, his chest heaving, his jaw clenched, his lips pressed shut, not smiling; behind them, soft, the bank of brown hemp sacks rising at the right and the narrow muddy ditch at the left in the hazy white sun; {HANDS}; exactly two people",
          lines=[("xuyan", "二牛，別衝動。秦霜還沒到，先數清他們有幾個人。", "壓低聲音")],
          motion=f"Xu Yan leans in close to Wang Erniu as he speaks low; {quiet('Wang Erniu')}",
-         zh="中景（雙人、側面）、慢推（送壩的近景裁切，**圖還沒歸檔**）：許硯在畫左、第一格已經抓住二牛的右前臂，壓低身子湊近他說；二牛在畫右兩手握鋤頭、胸口起伏、咬牙、嘴閉著（不笑）"),
+         zh="中景（雙人、側面）、慢推（送免費裁切 `set-shangyou-ba-fx-lu-l1`：石邊土路、左邊泥水小溝、右邊麻袋坡）：許硯在畫左、第一格已經抓住二牛的右前臂，壓低身子湊近他說；二牛在畫右兩手握鋤頭、胸口起伏、咬牙、嘴閉著（不笑）"),
     dict(loc="ba_c", cam="Close-up, slow push in", chars=["erniu"], night="hot",
-         comp=f"close-up of {ERNIU}, framed from the chest up with space above his head, {HOE} already gripped in both hands before his chest from the first frame, his face three-quarter to screen left {off('left', SIDE_GULLY)}; past caring, not smiling: red-rimmed eyes, jaw clenched, teeth set, lips moving hard between words; behind him, soft, only the dry cracked bank of the gully in the hazy white sun; {HANDS}",
+         comp=f"close-up of {ERNIU}, framed from the chest up with space above his head, {HOE} already gripped in both hands before his chest from the first frame, his face three-quarter to screen left {off('left', SIDE_GULLY)}; past caring, not smiling: red-rimmed eyes, jaw clenched, teeth set, lips moving hard between words; behind him, soft, only the green bamboo slope of the valley in the hazy white sun; {HANDS}",
          lines=[("erniu", "等不了！我娘的菜地，昨天就乾死了！", "豁出去，不笑")],
          motion="Wang Erniu heaves the hoe up onto his right shoulder as he speaks",
-         zh="近景、慢推（送壩的近景裁切，**圖還沒歸檔**）：二牛眼睛發紅、咬牙，把鋤頭一把扛上右肩、朝畫左外看不到的人（許硯，不點名）說（不笑）。稿子『甩開許硯的手』在剪接裡交代（第一格手已經甩開；不寫畫面邊緣別人的手）"),
+         zh="近景、慢推（送 `set-shangyou-ba-fx-shan-l1`：虛焦的竹坡）：二牛眼睛發紅、咬牙，把鋤頭一把扛上右肩、朝畫左外看不到的人（許硯，不點名）說（不笑）。稿子『甩開許硯的手』在剪接裡交代（第一格手已經甩開；不寫畫面邊緣別人的手）"),
     dict(loc="ba_c", cam="Low-angle wide shot, slow push in", chars=["erniu", "xuyan"], night="hot",
-         comp=f"low-angle wide shot from the side, close to the cracked earth of the gully floor: {ERNIU}, framed full figure, already running hard toward the right from the first frame, {HOE} raised above his head in both hands, not smiling: mouth wide in a roar, brows knotted, never the lens; a few steps behind him at the left {XU_UP}, framed full figure, his right arm already stretched out after him, his mouth wide in a shout, not smiling, never the lens; ahead at the right a low heap of rough rocks before the dam, the dam beyond them, soft, its top out of the frame; {HANDS}; exactly two people",
+         comp=f"low-angle wide shot from the side, close to the stone-edged earth path: {ERNIU}, framed full figure, already running hard toward the right from the first frame, {HOE} raised above his head in both hands, not smiling: mouth wide in a roar, brows knotted, never the lens; a few steps behind him at the left {XU_UP}, framed full figure, his right arm already stretched out after him, his mouth wide in a shout, not smiling, never the lens; ahead at the right the slope of the bank of brown hemp sacks rising from the path, its crest out of the frame; {HANDS}; exactly two people",
          lines=[("erniu", "還我們水！", "短喊，不笑"), ("xuyan", "二牛！", "短喊")],
-         motion="Wang Erniu charges on toward the rocks at the right, the hoe held high, as he shouts; Xu Yan stays where he is, his arm still reaching",
-         zh="低角度全景（側面）、慢推（送壩的近景裁切，**圖還沒歸檔**）：二牛第一格已經舉著鋤頭往右衝，衝向壩前的石堆、吼；許硯在左後幾步、手臂伸著沒抓到、喊（兩人都在喊，不笑）。整個衝的動作留在畫面裡（稿子）；村民不入鏡（全景只拍兩人，壩頂出畫，家丁不在這一格）；跟拍改慢推。剪在衝上石堆的一半（稿子〈剪接〉）"),
+         motion="Wang Erniu charges on toward the bank of sacks at the right, the hoe held high, as he shouts; Xu Yan stays where he is, his arm still reaching",
+         zh="低角度全景（側面）、慢推（送 `set-shangyou-ba-fx-lu-l1`）：二牛第一格已經舉著鋤頭沿土路往右衝，衝向麻袋坡、吼；許硯在左後幾步、手臂伸著沒抓到、喊（兩人都在喊，不笑）。整個衝的動作留在畫面裡（稿子）；村民不入鏡（全景只拍兩人，壩頂出畫，家丁不在這一格）；跟拍改慢推。剪在衝上麻袋坡的一半（稿子〈剪接〉的「石堆」照圖改）"),
     dict(loc="ba", cam="Wide shot, slow push in", chars=[], night="hot",
-         comp=f"wide shot at standing eye height toward the dam, like the picture: in the left foreground, cut at the waist by the bottom of the frame, one big young man seen only from behind, in a coarse brown cross-collared short jacket with the sleeves rolled up, {HOE} raised above his head in both hands from the first frame, the back of his head toward us the whole shot; ahead, standing in one row along the top of the dam of brown hemp sacks, {RETAINERS}, facing us, their staffs held low; {HANDS}; exactly thirteen people; the only hoe in the frame is the young man's",
+         comp=f"wide shot at standing eye height toward the dam, like the picture: in the lower left foreground, on the stone-edged path at the foot of the bank of sacks, cut at the waist by the bottom of the frame, one big young man seen only from behind, in a coarse brown cross-collared short jacket with the sleeves rolled up, {HOE} raised above his head in both hands from the first frame, the back of his head toward us the whole shot; ahead, standing in one row along the far half of the crest of the bank of sacks, from the middle of the frame away to the left, all small and far, {RETAINERS}, facing us, their staffs held low; {HANDS}; exactly thirteen people; the only hoe in the frame is the young man's",
          lines=[("xuyan", "二牛，回來！對面是十二根棍子！", "畫外，大喊")],
          motion=f"the twelve men on the dam raise their twelve wooden staffs at the same moment and take one step forward; the young man's hoe stays raised; {quiet('the twelve men', 'their', plural=True)}",
-         zh="全景、慢推（人眼高、照圖；送整張 `set-shangyou-ba-l1`，**圖還沒歸檔**）：左前景被畫框切到腰的二牛背影（不點名、不送圖，鋤頭還舉在半空、沒落下）；壩頂一排十二個家丁（同一身黑短打、每人一根木棍，遠景正面，拍法 34）同時舉起棍子、往前壓一步；許硯的喊聲是畫外錄音，畫面上的人嘴都閉著。本集最後一鏡、懸念交給第 32 集（接點 31→32：同一刻，秦霜從二牛身後一扁擔挑飛鋤頭）"),
+         zh="全景、慢推（人眼高、照圖；送整張 `set-shangyou-ba-fx-l1`）：左下前景、壩腳土路上被畫框切到腰的二牛背影（不點名、不送圖，鋤頭還舉在半空、沒落下）；麻袋土埂遠段頂上一排十二個家丁（從畫面中間往左後排，前景右邊那段麻袋頂不站人；同一身黑短打、每人一根木棍，遠景正面，拍法 34）同時舉起棍子、往前壓一步；許硯的喊聲是畫外錄音，畫面上的人嘴都閉著。本集最後一鏡、懸念交給第 32 集（接點 31→32：同一刻，秦霜從二牛身後一扁擔挑飛鋤頭）"),
 ]
 
 HEAD = [
@@ -504,22 +507,22 @@ GAZE_GEN = {"he": "turned toward the person he is speaking to, face in profile o
             "she": "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person"}
 _L = "his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, his eyes on that spot"
 _R = "his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, his eyes on that spot"
-_HR = "her face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, her eyes on that spot"
+_HL = "her face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, her eyes on that spot"
 # sid -> (pronoun, the direction sentence); s40 has two speakers: only the first (Wang Erniu, shouting at the dam) is replaced
 GAZE_REFINE = {
     "s01": ("she", "her face three-quarter to screen left toward the yard gate beyond the left edge of the frame, her eyes on it"),
     "s02": ("he", "his face three-quarter to screen right toward the well beyond the right edge of the frame, his eyes on it"),
     "s03": ("she", "her face turning away from the yard gate beyond the left edge of the frame toward the right edge, her eyes on the earth"),
-    "s09": ("she", _HR), "s11": ("she", _HR),
-    "s12": ("she", "her face turning away toward the left edge of the frame, her chin tucked down, her eyes on the earth"),
-    "s13": ("he", _L), "s17": ("she", _HR),
+    "s09": ("she", _HL), "s11": ("she", _HL),
+    "s12": ("she", "her face turning away toward the right edge of the frame, her chin tucked down, her eyes on the earth"),
+    "s13": ("he", _R), "s17": ("she", _HL),
     "s23": ("he", "his face three-quarter to screen right, his eyes on the cracked earth beyond the right edge of the frame, lifted from the bowl"),
     "s25": ("he", _L),
     "s33": ("he", "his face three-quarter to screen right toward the dam beyond the right edge of the frame, his eyes on it"),
     "s34": ("he", "his face three-quarter to screen left, looking down toward someone out of sight beyond the lower left edge of the frame, his eyes on that spot"),
     "s37": ("he", "his face turned back over his left shoulder toward someone out of sight beyond the left edge of the frame, his eyes on that spot"),
     "s39": ("he", _L),
-    "s40": ("he", "his face toward the rocks and the dam at the right of the frame, his eyes on them"),
+    "s40": ("he", "his face toward the bank of sacks at the right of the frame, his eyes on it"),
 }
 BACK_NAME = "the young woman seen only from behind"
 
