@@ -1,13 +1,13 @@
 ---
 id: 2026-11-17-fold-a-demand-dimension-into-the
 title: Fold a demand dimension into the pool audience score
-status: review
+status: done
 priority: P2
 area: tools
 owner: claude-fable-heimao-topics
 claimed_at: 2026-11-17T01:16:15Z
 created_at: 2026-11-17T01:16:15Z
-completed_at:
+completed_at: 2026-11-17T11:45:41Z
 branch: claude/wizardly-albattani-is0lls
 depends_on: []
 scope:
@@ -94,3 +94,4 @@ cd apps/web && npx vitest run components/admin-video-pools.test.tsx
   沒做：舊題庫檔裡 6.0–6.5 的 14 題（寫回位置與批次檔不同）；N2501 的 answer_target 被覆核註記蓋掉，題卡待修。
 - 2026-11-17 十續：上一輪沒採用的 46 題放寬規則（可沿用原問句的名稱與地名）重做，平均升幅 0.03，只有 8 題升 0.5 以上並採用。
   入選單集題 6.5 以上 298 題。剩下 38 題不建議再改；沿用的名稱逐題記在批次檔 notes，寫劇本前補出處。
+- 2026-11-17 結案：PR #2136。沒做完、又不屬於別張票的事移到票 `2026-11-17-curio-pool-leftovers-after-the-demand`（N2501 題卡待修、舊題庫 14 題、沒出處的字眼、參考頻道第 81 名以後）；來源查無的批次在票 `2026-11-17-so-that-s-why-waves-89`。
