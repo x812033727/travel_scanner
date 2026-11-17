@@ -18,7 +18,9 @@ stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=o
 # refine-prep.py 30 picks-merged.tsv fix1/review-picks.tsv fix2/review-picks.tsv review3-trims.tsv, then stage.py 30; fix1
 # replaced s29 and s32, fix2 s41). review3-trims.tsv (first cut): s01 1.333 -> 1.875 (the take keeps its own voice: whisper
 # hears 窮 and 秀才 short of its tone only, so zq930a01 is not laid and the pick's own cut comes back; picks-merged.tsv's s01 row
-# carries both pairs and refine-prep keeps the last one, the laid-recording fallback).
+# carries both pairs and refine-prep keeps the last one, the laid-recording fallback); s15 start 2.917 -> 2.708 and s26 end
+# 6.208 -> 6.542 (their spliced voices are laid with voice_off, and a laid line longer than the picture would slow it, lips
+# drifting); s21 end 7.000 -> 6.583 and s21b 4.500 -> 4.042 (a laid line left more than ~1 s of the shot without a line).
 # Whole frames: a start rounded DOWN and an end-before rounded UP to 3 decimals, tolerance 0.001; 0 = no end. Warn (not stop).
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
