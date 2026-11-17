@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-17-curio-pool-1601",
+  "revision": "2026-11-17-curio-pool-1612",
   "sources": [
     {
       "id": "SRC-00003441dc8ac27d",
@@ -524,6 +524,25 @@
           "limitations": "注釋是後來編者（人民文學出版社版）所加，不是魯迅原文；鄒弢書的刊刻年份這裡沒寫。",
           "origin": "wave2-legacy-20261101",
           "original_url": "https://www.gutenberg.org/ebooks/25559"
+        }
+      ]
+    },
+    {
+      "id": "SRC-007e5da3f48f95b4",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001003214/000110465904007359/a04-3314_110k.htm",
+      "readings": [
+        {
+          "title": "Silicon Image, Inc. Form 10-K（2003 會計年度）",
+          "publisher": "Silicon Image, Inc. 向美國證管會申報，2004 年（SEC EDGAR）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 2（200，2,293,401 bytes）下載 HTML，python 去標籤後以關鍵字 HDMI 找段落讀",
+          "reading_scope": "只讀 Item 1 中〈High-Definition Multimedia Interface (HDMI)〉一節與公司簡介提到 HDMI 的段落；其餘未讀",
+          "locator": "Item 1〈…Multimedia Interface (HDMI)〉：『We, together with Sony, Matsushita (Panasonic), Philips, Thomson (RCA), Hitachi and Toshiba, entered into a Founder’s Agreement…』起至『As of December 31, 2003, sixty companies have signed…』",
+          "summary": "七家公司簽了創始成員協議、組工作小組；HDMI 1.0 規格 2002 年 12 月發布，建立在這家晶片公司的 TMDS 訊號技術上（也是 DVI 1.0 的底層）。協議約定：對所有 adopter 收『相同的年費與按量權利金』，指定授權代理人 HDMI Licensing LLC（括號註明是這家晶片公司的全資子公司）簽 Adopter Agreement、提供必要專利授權並收取年費與權利金；首次使用 HDMI 前強制相容性測試；以 HDMI 名稱與標誌建立辨識。到 2003 年底有 60 家公司簽約。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "公司自己的說法；協議原文不在此文件內。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.sec.gov/Archives/edgar/data/0001003214/000110465904007359/a04-3314_110k.htm"
         }
       ]
     },
@@ -6456,6 +6475,25 @@
           "limitations": "判決抄文是作者轉引 1996 年 Trancoso 市政府出版的古文書解讀本，原卷（Torre do Tombo）本輪沒開到；digitarq 搜尋網址回 404。",
           "origin": "wave5-20261102",
           "original_url": "https://periodicos.unb.br/index.php/textos/article/download/27879/23967/58466"
+        }
+      ]
+    },
+    {
+      "id": "SRC-06438b348d79d777",
+      "url": "https://bokksu.com/blogs/news/the-history-of-japanese-kit-kats",
+      "readings": [
+        {
+          "title": "The History of Japanese Kit Kats（零食電商部落格）",
+          "publisher": "Bokksu（日期不明）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 40（200，523,796 bytes）下載 HTML，以 python 去標籤後讀正文",
+          "reading_scope": "正文談日本的兩段實讀",
+          "locator": "「The Kit Kat found its way to Japan in 1973 when Nestlé took on production…」與下一段「up to 300 versions」",
+          "summary": "流傳版本的樣本：寫 1973 年由現在的母公司開始在日本生產；因諧音成為好運象徵；2000 年以來「up to 300 versions」。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "電商部落格，無出處；1973 年由誰生產的說法本輪沒有一手來源可核對，只當樣本。",
+          "origin": "wave72-20261117",
+          "original_url": "https://bokksu.com/blogs/news/the-history-of-japanese-kit-kats"
         }
       ]
     },
@@ -13776,6 +13814,25 @@
       ]
     },
     {
+      "id": "SRC-0dc8bfb148b96a65",
+      "url": "https://www.widescreenreview.com/blog_detail.php?id=81",
+      "readings": [
+        {
+          "title": "Philips Cinema 21:9 (2.33:1) Widescreen LCD HDTV",
+          "publisher": "Widescreen Review（Gary Reber，2009-03-05）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 24（200，20,845 bytes）；下載 HTML，以 python 去標籤後讀全文",
+          "reading_scope": "全文實讀",
+          "locator": "全文；引用 Philips 聲明的一段『With our unique Cinema 21:9…』",
+          "summary": "2009 年 3 月的評論：Philips 發表 56 吋、2560 x 1080 的『Cinema 21:9』，預定 2009 年春上市；引 Philips 電視行銷主管的聲明：『we have launched the world's first cinema-proportioned TV screen』；Philips 說 DVD 與藍光上 65% 的電影是 2.35:1。作者指出 21:9 換算是 2.33:1，『pertains to no standard widescreen format』，電影業的比例一向寫成『幾比一』，現行寬銀幕發行拷貝是 2.40:1（他寫實際值 2.39075:1）；而且光碟與廣播上的寬銀幕電影是連黑邊一起裝在 16:9 畫面裡送出來的，電視得把畫面放大才能把黑邊推出螢幕；一般 16:9 節目則會在左右留黑邊。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "評論文章，Philips 的聲明是轉引；2.39075 與『1972 年以來的 SMPTE 標準』是作者的說法，本輪沒有讀 SMPTE 文件。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.widescreenreview.com/blog_detail.php?id=81"
+        }
+      ]
+    },
+    {
       "id": "SRC-0dd0178bc2836938",
       "url": "https://lasvegassun.com/news/1996/apr/09/las-vegas-legends-lack-facts/",
       "readings": [
@@ -14958,6 +15015,25 @@
       ]
     },
     {
+      "id": "SRC-0ef85a0dfafda42d",
+      "url": "https://www.techradar.com/news/phone-and-communications/mobile-phones/sony-ericsson-refutes-rumours-of-split-528544",
+      "readings": [
+        {
+          "title": "Sony Ericsson refutes rumours of split",
+          "publisher": "TechRadar（2009-02-11）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 20（200，1,821,487 bytes）；下載 HTML，以 python 去標籤後讀正文",
+          "reading_scope": "正文前三段實讀",
+          "locator": "第 1–2 段",
+          "summary": "流傳版本的樣本：報導說『recent stories』稱母公司 Sony 不讓 Sony Ericsson 用 PSP 品牌，『have led to tensions within the camp』、兩家要拆夥；Sony Ericsson 一位資深行銷經理否認，說兩家關係和以往一樣穩固、『neither plan to walk away』（原文前半句是『is a strong as it ever has been』，有缺字，不逐字引），並說合資之前兩邊的手機部門都在虧錢。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手報導，只當『不和、要拆夥』傳言當年怎麼被講、怎麼被否認的樣本；不能證明內部有沒有不和。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.techradar.com/news/phone-and-communications/mobile-phones/sony-ericsson-refutes-rumours-of-split-528544"
+        }
+      ]
+    },
+    {
       "id": "SRC-0ef937dab0f2acd4",
       "url": "https://www.accesson.kr/ksq/v.32/3/255/40707",
       "readings": [
@@ -16067,6 +16143,25 @@
           "limitations": "注釋沒有署名；不說注是 Byron 本人或 Hobhouse 寫的（本輪沒讀到分工的來源）。",
           "origin": "wave47-20261112",
           "original_url": "https://archive.org/download/childeharoldspil30byro/childeharoldspil30byro_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0ff15d0de0055253",
+      "url": "https://www.logitech.com/blog/2026/10/02/45-years-of-iconic/",
+      "readings": [
+        {
+          "title": "45 years of iconic（公司部落格）",
+          "publisher": "Logitech，2026-10-02",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 22（200，146,728 bytes）下載 HTML，以 python 去標籤後讀 1980 年代一節",
+          "reading_scope": "只讀「The 1980s」一節；其餘年代未細讀",
+          "locator": "「Logitech’s first mouse was the P4 (launched in 1982)…」一段",
+          "summary": "公司自述：第一隻滑鼠 P4 於 1982 年推出，原設計是 1970 年代末由 EPFL 的兩位研究者（一位教授與一位工程師）完成，「inspired by Doug Engelbart’s original mouse invented in the mid 60s」；當時是供 DEC、HP、AT&T 等電腦廠的 OEM 硬體。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司部落格的回顧文；沒有提製造者。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.logitech.com/blog/2026/10/02/45-years-of-iconic/"
         }
       ]
     },
@@ -19270,6 +19365,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://tile.loc.gov/text-services/word-coordinates-service?segment=/service/ndnp/txdn/batch_txdn_elizabethtown_ver01/data/sn86090439/00517175158/1897041701/0889.xml&format=alto_xml&full_text=1"
+        }
+      ]
+    },
+    {
+      "id": "SRC-128a70e0feb88aab",
+      "url": "https://developers.google.com/maps/billing-and-pricing/faq?hl=en",
+      "readings": [
+        {
+          "title": "Google Maps Platform billing and pricing FAQ（March 1, 2025 changes）",
+          "publisher": "Google（Google Maps Platform 官方文件，讀取時的現行版）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 23（200，205,888 bytes）下載 HTML，以 python 去標籤後用關鍵字（200、March 1, 2025、free）讀相關段落。",
+          "reading_scope": "只讀與 200 美元額度及 2025 年 3 月 1 日變更有關的段落與範例；其餘問答沒有讀。",
+          "locator": "頁首摘要『The previous $200 monthly credit is replaced with free usage thresholds for each Core Services SKU』；範例『Prior to March 1, 2025, a customer using 20,000 Geocoding requests per month receives a $200 monthly recurring credit…』",
+          "summary": "官方說明：2025 年 3 月 1 日起，每月 200 美元的循環抵用額度改成『每一個核心服務項目各有每月免費用量』，並分成 Essentials、Pro、Enterprise 三級；例如地理編碼這類 Essentials 項目每月 10,000 次免費，同時擴大自動的量大折扣。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "現行文件，會隨時改版；只讀了片段。",
+          "origin": "wave72-20261117",
+          "original_url": "https://developers.google.com/maps/billing-and-pricing/faq?hl=en"
         }
       ]
     },
@@ -27011,6 +27125,25 @@
       ]
     },
     {
+      "id": "SRC-17d9ae7b3aa02e6a",
+      "url": "https://www.nippon.com/en/articles/-/12300",
+      "readings": [
+        {
+          "title": "Lasting Popularity for a Tough Watch",
+          "publisher": "Nippon.com（Nippon Communications Foundation），2011-10-03",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 31（200，74,837 bytes）下載，去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "〈In Pursuit of the “Triple 10”〉〈G-Shock Goes to America〉",
+          "summary": "報導：設計者的出發點是做一支掉了不會壞的錶；目標是『三個 10』（10 公尺落下、10 氣壓防水、電池 10 年）。他從公司一棟偏僻建築三樓的洗手間窗口把試作品往下丟，『試了一百多個』仍不成，看到小孩玩橡皮球才想到讓機芯懸在空腔裡、只靠幾個點支撐。1983 年上市後，日本消費者當時要薄而正式的錶，『銷售低迷』；美國分公司播了冰球廣告，起初觀眾不信、打電話指控廣告不實，一個新聞節目做了測試，才打開名聲。2009 年累計銷量過 5,000 萬支。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手報導；文中寫專案小組『1983 年成立』、試作『一百多個』，與公司新聞稿的『1981 年開始開發』『超過 200 個』不一致，本輪無法判定哪個對。設計者在世，正片不點名。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.nippon.com/en/articles/-/12300"
+        }
+      ]
+    },
+    {
       "id": "SRC-17d9badf863e81c7",
       "url": "https://archive.org/download/historyoflloydso00martuoft/historyoflloydso00martuoft_djvu.txt",
       "readings": [
@@ -29522,6 +29655,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.thegazette.co.uk/all-notices/notice?text=%22Denis+Gordon+Osborne%22"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1a068022a10c3aa9",
+      "url": "https://www.hdmi.org/register/adopterregister",
+      "readings": [
+        {
+          "title": "Registration to receive the HDMI Adopter Agreement（含 HDMI Adopter Overview 頁）",
+          "publisher": "HDMI Licensing Administrator, Inc. 官方網站（2026 年讀取時的版本）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 15（200，76,110 bytes）下載登記頁；seq 12（200，50,245 bytes）下載 https://www.hdmi.org/adopter/index 概覽頁；seq 16（200，47,822 bytes）下載 /docs/royaltydiscount（只是一張索取文件的表單）；都以 python 去標籤後讀",
+          "reading_scope": "登記頁的協議類型選項、概覽頁全文；權利金折扣文件要填表以電子郵件索取，沒有讀到",
+          "locator": "登記頁協議選項：『US$ 10,000 fixed annual license fee plus royalty』『US$ 5,000 annual license fee plus US$ 1.00 administration fee per licensed product plus royalty』；概覽頁〈Process to become an Adopter〉",
+          "summary": "現任代理人的公開頁面只寫到：終端產品廠商可選『年費 10,000 美元加權利金』，或『年費 5,000 美元、每件授權產品另加 1 美元管理費、再加權利金』；另有測試設備商與嵌入式裝置的同額年費選項。繳了年費與首期授權費才啟用資格、才能進專區看規格。概覽頁同時寫『近 1,700 家』與『超過 1,900 家』廠商是 adopter。每台權利金的金額不在公開頁面上。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "官方頁面但不含權利金費率；『1,700／1,900』兩個數字同頁並存，正片不引確切家數。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.hdmi.org/register/adopterregister"
         }
       ]
     },
@@ -35869,6 +36021,25 @@
       ]
     },
     {
+      "id": "SRC-20160460ce7dc23f",
+      "url": "https://patents.google.com/patent/US3584667A/en",
+      "readings": [
+        {
+          "title": "US 3,584,667 “Coupling arrangement and tools for same”（Bernard F. Reiland，1971-06-15 核准，讓與 Textron Inc.）",
+          "publisher": "United States Patent Office，1971（Google Patents 轉錄）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 19（200，638,220 bytes）下載後以 python 去標籤，讀書目欄與說明書開頭",
+          "reading_scope": "書目欄與發明背景談六角形的一段實讀；其餘未讀",
+          "locator": "說明書「a hexagonal configuration commonly employed for transmitting torque…」一段與摘要",
+          "summary": "專利原文：常用的六角形是六個平面，因驅動角大、相鄰面是點接觸，扭力傳遞沒效率；新形狀用兩組弧面排成六瓣，讓「higher torques than heretofore possible」可以傳過去而不傷兩邊。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "只讀開頭；申請日以維基索引（1967-03-21）為線索，本輪沒有在專利頁上逐字核對申請日，正片只說 1971 年核准。專利裡沒有 Torx 這個商品名。",
+          "origin": "wave72-20261117",
+          "original_url": "https://patents.google.com/patent/US3584667A/en"
+        }
+      ]
+    },
+    {
       "id": "SRC-201696f6143d88b2",
       "url": "https://archive.org/details/whenprophecyfail00fest_0",
       "readings": [
@@ -36130,6 +36301,25 @@
           "limitations": "只用來確認生卒。",
           "origin": "wave42-20261112",
           "original_url": "https://www.ccel.org/ccel/ccel/eee/files/wesleyj.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-207ee74f76019095",
+      "url": "https://www.sec.gov/Archives/edgar/data/717826/000119312511283294/d248421d6k.htm",
+      "readings": [
+        {
+          "title": "LM Ericsson Telephone Co., Form 6-K（2011-10-27）：SONY to acquire Ericsson’s share of Sony Ericsson",
+          "publisher": "美國證券交易委員會 EDGAR（Ericsson 申報，Acc-no 0001193125-11-283294，2011-10-27）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 16（200，31,690 bytes）、seq 17（200，7,566 bytes）、seq 18（200，27,807 bytes）；seq 16 以公司名查 6-K 清單、seq 17 讀申報索引、seq 18 下載 d248421d6k.htm，以 python 去標籤後讀全文",
+          "reading_scope": "6-K 封面與所附新聞稿全文實讀",
+          "locator": "新聞稿四個要點；第 1–2 段；『When Sony Ericsson started its operations on October 1, 2001…』一段；『During its ten years in operation…』一句；『The transaction… is expected to close in January 2012』一段",
+          "summary": "Sony 將買下 Ericsson 持有的 Sony Ericsson 50% 股權，使它成為 Sony 的全資子公司；Ericsson 收現金 10.5 億歐元；Sony 另取得廣泛的專利交互授權與五個必要專利家族。新聞稿自己寫的沿革：2001 年 10 月 1 日開業時『it combined the unprofitable handset operations from Ericsson and Sony』，之後轉虧為盈；到 2011 年第三季在 Android 手機市場（按金額）占 11%，Android 機占該季銷售 80%；『During its ten years in operation Sony Ericsson has generated approximately EUR 1.5 billion of profit and paid dividends totalling approximately EUR 1.9 billion to its parent companies』。Ericsson 的理由：市場從一般手機轉到智慧型手機，同時擁有電信設備與手機業務的綜效在下降。預計 2012 年 1 月完成。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "向 SEC 申報的公司新聞稿，沿革與理由是兩家公司自己的寫法；ericsson.com 原頁本輪回 403（seq 11），改讀 SEC 申報本。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.sec.gov/Archives/edgar/data/717826/000119312511283294/d248421d6k.htm"
         }
       ]
     },
@@ -37073,6 +37263,25 @@
           "limitations": "摘要型抓取，未逐字讀全頁；1858 只當『該頁標示』。",
           "origin": "wave44-20261112",
           "original_url": "https://www.hwlongfellow.org/poems_poem.php?pid=87"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2174857b1ed30f27",
+      "url": "https://ykkamericas.com/wp-content/uploads/2022/12/This_is_YKK_2022_all_en.pdf",
+      "readings": [
+        {
+          "title": "This is YKK 2022（YKK CORPORATION Integrated Report，英文版）",
+          "publisher": "YKK Corporation，2022 年（PDF 放在 YKK Americas 官方網站）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 25（200，9,479,612 bytes）下載 PDF（56 頁），以 pdftotext -layout 轉文字後依關鍵字讀",
+          "reading_scope": "讀了事業概況頁、社長訊息中的拉鍊事業數字、〈The History of YKK’s Value Creation〉年表、〈Technology & Manufacturing Capability〉、第六次中期計畫的銷量圖、合併財務資料表與附註；永續章節只略讀",
+          "locator": "印刷頁 p. 19 年表（PDF 第 20 頁）；p. 13 與 p. 28 的〈Units Sold (100 million)〉圖（PDF 第 14、29 頁）；p. 51 合併財務資料附註 3（PDF 第 52 頁）；p. 53〈Number of Zippers Sold (in billions)〉（PDF 第 54 頁）",
+          "summary": "公司自己的年表：1934 年在東京日本橋蠣殼町創立，『從事金屬拉鍊的加工與販賣』；1939 年第 1 號新型專利（金屬拉鍊頭）；1950 年『從手工業到機械化：自美國進口四台拉鍊鏈機』；1952 年『確立一貫生產體制』；1953 年第 1 號專利（間歇式鏈機）；1964 年以 YKK-CM6 開始高速生產；1959 年起海外設點。拉鍊銷量：p. 53 的表（十億條）FY2018 10.07、FY2019 9.55、FY2020 7.79、FY2021 10.29；p. 28 的圖（億條）另有 FY2017 95.3 與 FY2022–2024 計畫值 107.3、113.3、121.0（內文寫 2022 年度計畫 107.3 億條、2024 年度 121 億條）。財務資料附註：『Price earnings ratio is not presented because the stock is not listed.』全報告沒有給全球市占率。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的報告；是 2022 年版，不是最新一期（『未上市』與銷量都只到這一版）。FY2017 的 95.3 億條只見於圖的文字層（圖下有年度標籤），FY2018–2021 另有 p. 53 的表可互證。",
+          "origin": "wave72-20261117",
+          "original_url": "https://ykkamericas.com/wp-content/uploads/2022/12/This_is_YKK_2022_all_en.pdf"
         }
       ]
     },
@@ -40503,6 +40712,25 @@
       ]
     },
     {
+      "id": "SRC-24dedb94d53689ae",
+      "url": "https://news.cision.com/ericsson/r/sony-and-ericsson-boards-approve-joint-venture,c47749",
+      "readings": [
+        {
+          "title": "Sony and Ericsson Boards approve Joint Venture",
+          "publisher": "Ericsson 新聞稿（Cision 新聞稿庫，2001-09-11）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 13（200，22,282 bytes）；下載 HTML，以 python 去標籤後讀全文",
+          "reading_scope": "全文實讀",
+          "locator": "第 1 段與第 3 段（『On August 28, both companies signed an agreement…』）",
+          "summary": "兩家母公司董事會批准合資；新公司 Sony Ericsson Mobile Communications AB 將於 2001 年 10 月 1 日開始營運（待主管機關核准）；8 月 28 日簽約成立『equally owned Joint venture』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司新聞稿；10 月 1 日當天的開業公告本輪沒有讀到。",
+          "origin": "wave72-20261117",
+          "original_url": "https://news.cision.com/ericsson/r/sony-and-ericsson-boards-approve-joint-venture,c47749"
+        }
+      ]
+    },
+    {
       "id": "SRC-24e4c98e50d0fc4a",
       "url": "https://archive.org/details/das-dalmatische",
       "readings": [
@@ -40711,6 +40939,25 @@
       ]
     },
     {
+      "id": "SRC-2515106432f8f512",
+      "url": "https://www.foodnavigator.com/Article/2018/12/10/KitKat-Japan-350/",
+      "readings": [
+        {
+          "title": "KitKat Japanが累計350種類のフレーバーを開発。一番人気は抹茶味",
+          "publisher": "FoodNavigator（William Reed），2018-12-10",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 34（200，896,622 bytes）下載 HTML，以 python 去標籤後讀正文",
+          "reading_scope": "正文全讀",
+          "locator": "正文第 1–4 段與「限定商品」一節",
+          "summary": "業界媒體訪問日本公司公關：45 年間累計賣過超過 350 種口味；每年平均新推 20–30 種，多的年份 40–50 種、少的不到 10 種；當下國內在售約 40 種；商品 1935 年起源於英國、1973 年引進日本；銷售額最大的是原味與抹茶。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手報導（引公司公關口述）；「350」截至 2018 年，計算口徑（是否含包裝差異）沒有說明。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.foodnavigator.com/Article/2018/12/10/KitKat-Japan-350/"
+        }
+      ]
+    },
+    {
       "id": "SRC-2521834031d42ca2",
       "url": "https://archive.org/metadata/whenprophecyfail00fest_0",
       "readings": [
@@ -40783,6 +41030,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=text&COMMAND='799'&OBJ_DATA='NO'&MAKE_EPHEM='YES'&EPHEM_TYPE='VECTORS'&CENTER='500@10'&START_TIME='1982-01-01'&STOP_TIME='1982-06-30'&STEP_SIZE='1%20d'&REF_PLANE='ECLIPTIC'&REF_SYSTEM='ICRF'&VEC_TABLE='1'&OUT_UNITS='AU-D'&CSV_FORMAT='YES'"
+        }
+      ]
+    },
+    {
+      "id": "SRC-253defe0ff837530",
+      "url": "https://global.yamaha-motor.com/about/history/stories/0001.html",
+      "readings": [
+        {
+          "title": "Our Stories 01：1953-1955 Entering the Motorcycle Market and Establishing Yamaha Motor Co., Ltd.",
+          "publisher": "Yamaha Motor Co., Ltd.（公司官網〈Yamaha Motor History〉）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 17（200，64,132 bytes）下載 HTML，以 python 去標籤後讀全文；seq 39（200，70,897 bytes）讀同系列的目錄頁確認篇目。",
+          "reading_scope": "第 01 篇全文；第 02 篇以後只看了目錄標題。",
+          "locator": "『On November 7, 1953, a confidential directive…』至『…did not sell very well in the initial period following its launch.』",
+          "summary": "公司史：1953 年 11 月 7 日，樂器公司的社長向主管下達一道機密指示，要試作機車引擎，一年內量產。當時日本機車廠一度多達 204 家，淘汰已經開始，公司內有人懷疑這麼晚進場行不行。社長事後說明：他自己去歐洲看過、技術主管也做了研究；另外，木材資源限制了樂器增產，樂器生意往後不會那麼容易。車型以德國 DKW 的 125 cc RT125 為藍本（『全世界被仿得最多的機車』），但改成四段變速等。頭幾個汽缸是用鑄鋼琴鐵骨的技術做的，像一坨鐵，被戲稱『茶壺』。1955 年 2 月 11 日第一輛完成，從開發到出貨八個月；工廠 80 名員工在門口列隊送技術部長親自騎去濱松的營業所。同級車均價 11–12 萬日圓，它賣 13.8 萬，上市初期賣得不太好。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己寫的社史，引用的社長談話沒有註明出處與年份。",
+          "origin": "wave72-20261117",
+          "original_url": "https://global.yamaha-motor.com/about/history/stories/0001.html"
         }
       ]
     },
@@ -42523,6 +42789,25 @@
           "limitations": "只讀到搜尋摘要，正文在付費牆後，沒有繞過；只能當『學者的讀法』用，不當事實。",
           "origin": "wave24-20261111",
           "original_url": "https://www.cambridge.org/core/product/identifier/9781139016360%23C3/type/BOOK_PART"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2735e9fc16b56b47",
+      "url": "https://www.court.gov.cn/shenpan/xiangqing/14245.html",
+      "readings": [
+        {
+          "title": "指导案例47号：意大利费列罗公司诉蒙特莎（张家港）食品有限公司、天津经济技术开发区正元行销有限公司不正当竞争纠纷案",
+          "publisher": "中华人民共和国最高人民法院（官網指導案例頁，2015-04-23 發布；所摘判決為 2008 年 3 月 24 日（2006）民三提字第 3 号）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 20（200，28,334 bytes）下載 HTML，以 python 去標籤後讀全文",
+          "reading_scope": "全頁實讀：裁判要點、基本案情（原被告主張、法院查明）、裁判結果、裁判理由三點",
+          "locator": "「法院经审理查明：费列罗公司于 1946 年在意大利成立…」一段；「蒙特莎公司是 1991 年 12 月…」一段；「裁判结果」；「裁判理由」一、二、三",
+          "summary": "法院查明：該巧克力 1982 年投放市場；在台灣與香港取名「金莎」，1990 年 6 月在台灣、1993 年在香港註冊「金莎」商標；1984 年 2 月經中國糧油食品進出口總公司以寄售方式進入中國境內，主要在免稅店與機場商店販售，延續到 1993 年前；1986 年 10 月在中國註冊 FERRERO ROCHER 等商標；1993 年起以廣東、上海、北京為核心加大廣告、設專櫃。另一方：張家港市乳品一廠 1990 年開始生產「金莎」巧克力，1990 年 4 月 23 日申請、1991 年 4 月獲准註冊「金莎」文字商標，2002–2004 年轉讓給合資公司。一審（天津二中院 2005-02-07）駁回原告；二審（天津高院 2006-01-09）改判停止使用並賠 70 萬元；最高法院再審（2008-03-24）維持不正當競爭的認定，賠償改為 50 萬元。理由：只用錫箔包球形巧克力、透明盒這類簡單組合不具特有性，屬行業通用元素；但各要素的獨特排列組合形成的整體形象可受保護；國際知名的商品仍須在中國境內為相關公眾所知悉。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是最高法院發布的指導案例摘要，不是判決書全文；銷量、銷售額等證據細節沒有列出。只處理包裝裝潢，不處理「金莎」商標歸屬的對錯。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.court.gov.cn/shenpan/xiangqing/14245.html"
         }
       ]
     },
@@ -52511,6 +52796,25 @@
       ]
     },
     {
+      "id": "SRC-2fbcefe17eb14092",
+      "url": "http://tech.mit.edu/V131/N24/boseglobe.html",
+      "readings": [
+        {
+          "title": "MIT now the new majority owner of Bose Corporation",
+          "publisher": "The Tech（MIT 學生報），2011 年 5 月 3 日，第 131 卷第 24 期；署名記者稿，文末註『This article was originally published April 29』，頁面沒有寫原刊媒體（網址代稿名為 boseglobe）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 16（200，13,875 bytes）下載 HTML，以 python 去標籤後讀全文。",
+          "reading_scope": "全文。",
+          "locator": "第 1–3 段（『has just gone into the consumer electronics business — as the new majority owner』）；末兩段（慈善紀事報編輯的評語）",
+          "summary": "流傳版本的樣本：報導開頭寫 MIT『剛剛跨進消費電子業，成了新的過半數股東（majority owner）』，下一段就說明股份沒有表決權、學校對經營沒有發言權、也不得出售，只在公司決定配息時拿現金股利。公司發言人不評論，MIT 發言人拒絕估計這筆捐贈的價值；報導說公司申報 2010 年營收超過 20 億美元。一位慈善專業刊物的編輯說，找不到別的例子是創辦人把過半股份捐給單一大學。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "報紙報導（依文末註記是他處稿件的再刊，原刊媒體頁面未寫明），營收數字是報導引述、未見公司文件。",
+          "origin": "wave72-20261117",
+          "original_url": "http://tech.mit.edu/V131/N24/boseglobe.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-2fbe14fd86fb8935",
       "url": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?mission=STS088&roll=724&frame=66",
       "readings": [
@@ -57383,6 +57687,25 @@
       ]
     },
     {
+      "id": "SRC-345cecf99f91960d",
+      "url": "https://patents.google.com/patent/US3541541A/en",
+      "readings": [
+        {
+          "title": "US 3,541,541 “X-Y position indicator for a display system”（Douglas C. Engelbart，1967-06-21 申請，1970-11-17 核准，讓與 Stanford Research Institute）",
+          "publisher": "United States Patent Office，1970（Google Patents 轉錄）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 23（200，462,744 bytes）下載後以 python 去標籤，讀書目欄、摘要與發明概要",
+          "reading_scope": "書目欄、摘要、summary 一段實讀；詳細電路說明未讀",
+          "locator": "書目欄；「The foregoing and other objects are realized by an X-Y position indicator control mechanism comprising a small housing adapted to be held in the hand and having two wheels…」",
+          "summary": "專利原文：一個可握在手裡的小殼，底下兩個互相垂直的輪子加一顆惰輪滾珠，各輪接電位計，把位置變化送給顯示器；專利名稱裡沒有 mouse 這個字。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "OCR 轉錄；專利全文是否出現 mouse 一字沒有逐頁確認，正片只說「標題裡沒有」。",
+          "origin": "wave72-20261117",
+          "original_url": "https://patents.google.com/patent/US3541541A/en"
+        }
+      ]
+    },
+    {
       "id": "SRC-345fefd32c3037bd",
       "url": "https://api.crossref.org/works/10.1353/mns.2020.0011",
       "readings": [
@@ -58733,6 +59056,25 @@
       ]
     },
     {
+      "id": "SRC-35960e6616095f85",
+      "url": "https://www.cultofmac.com/apple-history/steve-jobs-thoughts-on-flash",
+      "readings": [
+        {
+          "title": "Today in Apple history: Steve Jobs trashes Adobe Flash in devastatingly blunt open letter",
+          "publisher": "Cult of Mac（每年 4 月 29 日重刊的回顧文，本輪讀到的版本標 2026-04-29）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 9（200，312,060 bytes）；下載 HTML，以 python 去標籤後讀正文",
+          "reading_scope": "正文全文實讀（其中也附了公開信全文）",
+          "locator": "第 1 段『The letter marks the beginning of the end…』；倒數第 3 段『In actuality, Flash was already pretty much dead…』",
+          "summary": "流傳版本的樣本：這封信『marks the beginning of the end for the once-omnipresent plugin』；文末說這封『scathing letter』最後『made the internet a better place for everyone』。同一篇也寫 2017 年 7 月 Adobe 才確認 2020 年終止、2021 年 1 月才真正拔掉，並說那封信『today… no longer appears to be part of the site』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "回顧文，沒有出處註；只當流傳說法的樣本。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.cultofmac.com/apple-history/steve-jobs-thoughts-on-flash"
+        }
+      ]
+    },
+    {
       "id": "SRC-359ce43776c1be5f",
       "url": "https://fr.wikipedia.org/wiki/Tour_Eiffel",
       "readings": [
@@ -59581,6 +59923,25 @@
       ]
     },
     {
+      "id": "SRC-366c5e5d58d685a7",
+      "url": "https://time.com/archive/6951818/the-ultimate-game-freak",
+      "readings": [
+        {
+          "title": "The Ultimate Game Freak（對寶可夢創作者的訪談）",
+          "publisher": "TIME（1999 年 11 月的訪談，time.com 檔案庫頁面）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 26（200，274,319 bytes）下載 HTML，以 python 去標籤後讀導言與問答全文。檔案庫頁面的提問行有缺漏（多數只剩回答），個別行順序錯亂。",
+          "reading_scope": "導言與全部回答讀過；提問文字多數缺漏，沒有另找紙本核對。",
+          "locator": "導言第 1 段『After first coming up with the idea…in 1990』；回答『The place where I grew up…』『Yes. Places to catch insects are rare…』『The communication aspect of Game Boy…』『Yes, this was done on purpose. Mew…』『Not at first. They didn’t expect much…』",
+          "summary": "流傳版本的出處樣本：創作者本人說他長大的東京郊區原本有田、河、樹林，開發後昆蟲被趕走，他小時候熱中採集昆蟲；『我小時候做過的事全捲在一起，就是 Pokémon』——同一句裡他還列了打電玩、看電視、特攝片裡的膠囊怪獸。他說看到 Game Boy 的連線線時想到『真的生物在線裡來回移動』。導言寫他 1990 年有了構想、為第一作花了將近六年。談第 151 隻時他說『是故意這樣做的』，它造成很多謠言與神話、讓熱度延續。被問任天堂起初看不看好，他答：起初沒有，Game Boy 人氣在下滑。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞訪談，檔案庫版本文字有缺漏；關於第 151 隻『是故意的』的說法與 ZQ3-S001 裡程式設計師的回憶不一致，正片兩邊都照說、不裁決。創作者在世，只引他對作品的說明，不引文中對他作息、外貌與家人的描寫。",
+          "origin": "wave72-20261117",
+          "original_url": "https://time.com/archive/6951818/the-ultimate-game-freak"
+        }
+      ]
+    },
+    {
       "id": "SRC-36713b70dafa327e",
       "url": "http://www.loc.gov/resource/sn85038531/1918-05-01/ed-1/?sp=3",
       "readings": [
@@ -59798,6 +60159,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.nsa.gov/portals/75/documents/about/cryptologic-heritage/historical-figures-publications/publications/misc/voynich_manuscript.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-36a17f6860947e47",
+      "url": "https://prnewswire.com/news-releases/casio-announces-shipment-of-100-millionth-g-shock-watch-300514167.html",
+      "readings": [
+        {
+          "title": "Casio Announces Shipment of 100 Millionth G-SHOCK Watch",
+          "publisher": "Casio 新聞稿，2017-09-05（由美國子公司 Casio America, Inc. 經 PR Newswire 發布，內文以 Casio Computer Co., Ltd. 名義宣布）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 32（200，196,051 bytes）下載，去標籤後讀全文",
+          "reading_scope": "全文（含型號年表）",
+          "locator": "第 1 段；〈A Hit in the United States (1984 to 1990)〉〈A Hit in Japan (Early-1990s)〉〈Lineup Expansion…〉〈Back to the Basics…〉",
+          "summary": "公司自己的數字：全球累計出貨 2017 年 8 月破 1 億支。品牌『1981 年開始開發』，『超過 200 個試作』後想出中空錶殼、只在幾個點支撐機芯的結構，1983 年推出第一款。1984 年美國一支廣告拍冰球員把錶當球打，一個電視節目重做實驗驗證後才在美國出名；1990 年在日本的出貨量約 1 萬支，1995 年約 70 萬支，是美國街頭流行經雜誌傳回日本、原本只在海外賣的型號以進口飾品出現在服飾店之後的事；1997 年全球賣 600 萬支（日本 240 萬支）是高峰，之後出貨下滑。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司新聞稿；1990 與 1995 年的日本出貨量是約數，沒有逐年資料。",
+          "origin": "wave72-20261117",
+          "original_url": "https://prnewswire.com/news-releases/casio-announces-shipment-of-100-millionth-g-shock-watch-300514167.html"
         }
       ]
     },
@@ -60399,6 +60779,25 @@
           "limitations": "只讀結論兩頁。本筆為修正 N2443 年份引述而重列。",
           "origin": "wave47-decisions-20261112",
           "original_url": "https://archive.org/details/quarterlyjournal11864lond"
+        }
+      ]
+    },
+    {
+      "id": "SRC-374bcd2195635dae",
+      "url": "https://www.hdtvmagazine.com/columns/2012/03/hdtv-expert-a-niche-too-small-pete-putman/",
+      "readings": [
+        {
+          "title": "HDTV Expert - A Niche Too Small",
+          "publisher": "HDTV Magazine（Pete Putman 專欄，2012-03-14）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 25（200，14,844 bytes）；下載 HTML，以 python 去標籤後讀全文",
+          "reading_scope": "全文實讀",
+          "locator": "第 1–5 段",
+          "summary": "2012 年 3 月：傳了兩個月說 Philips 要停掉 Cinema 21:9，『apparently the last manufacturing run… has been completed』；2009 年推出的 56PFL9954H 解析度 2560x1080；問題是除了劇情長片幾乎沒有這種比例的內容，一般 HDTV 節目左右留黑邊，4:3 節目更像『a tiny square in a sea of black』；作者認為停產主要出於液晶電視的削價與買氣低迷。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "專欄評論，『apparently』是作者聽來的，不是公司公告。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.hdtvmagazine.com/columns/2012/03/hdtv-expert-a-niche-too-small-pete-putman/"
         }
       ]
     },
@@ -63026,6 +63425,25 @@
       ]
     },
     {
+      "id": "SRC-394902db685c1ec6",
+      "url": "https://blog.adobe.com/en/publish/2017/07/25/adobe-flash-update",
+      "readings": [
+        {
+          "title": "Flash & the Future of Interactive Content",
+          "publisher": "Adobe（Adobe Blog，2017-07-25）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 2（200，9,603 bytes）；下載 HTML，以 python 去標籤後讀全文",
+          "reading_scope": "全文實讀（約九段）",
+          "locator": "第 3 段『Given this progress, and in collaboration with several of our technology partners…』；頁尾 CardDate 2017-07-25",
+          "summary": "Adobe 自己宣布：因為 HTML5、WebGL、WebAssembly 等開放標準成熟、瀏覽器廠商把外掛的功能做進瀏覽器並逐步淘汰外掛，Adobe『is planning to end-of-life Flash』，『will stop updating and distributing the Flash Player at the end of 2020』；公告點名與 Apple、Facebook、Google、Microsoft、Mozilla 合作；到 2020 年前繼續出安全修補；還說遊戲、教育、影片等產業是建立在 Flash 上的。全文沒有提 2010 年的公開信。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的公告，理由是它自己的說法；沒有使用量數字。",
+          "origin": "wave72-20261117",
+          "original_url": "https://blog.adobe.com/en/publish/2017/07/25/adobe-flash-update"
+        }
+      ]
+    },
+    {
       "id": "SRC-394a5581060cb0c7",
       "url": "https://lab.ndl.go.jp/dl/book/1049354?page=69",
       "readings": [
@@ -63153,6 +63571,25 @@
           "limitations": "維基文庫錄文，有少數錄入錯字；正史成書與刊刻晚於事件（1479 年吳士連編、1697 年刻）。",
           "origin": "wave16-20261102",
           "original_url": "https://zh.wikisource.org/wiki/%E5%A4%A7%E8%B6%8A%E5%8F%B2%E8%A8%98%E5%85%A8%E6%9B%B8/%E6%9C%AC%E7%B4%80%E5%8D%B7%E4%B9%8B%E5%8D%81%E4%B8%80"
+        }
+      ]
+    },
+    {
+      "id": "SRC-396bfb2b51234fe6",
+      "url": "https://www.philips.co.uk/c-p/56PFL9954H_12/cinema-219-lcd-tv-with-ambilight-spectra-3-and-perfect-pixel-hd-engine",
+      "readings": [
+        {
+          "title": "Cinema 21:9 LCD TV 56PFL9954H/12（產品頁）",
+          "publisher": "Philips 英國官網（philips.co.uk）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 22（200，310,085 bytes）；下載 HTML；頁面是指令碼渲染，只讀到內嵌資料裡的 meta description 與標籤字串",
+          "reading_scope": "只讀到頁面 meta 描述與『Discontinued』標籤字串；規格區塊沒有渲染出來",
+          "locator": "meta name=description",
+          "summary": "官網產品頁描述：142 公分／56 吋超寬螢幕，『perfectly matched to the original 21:9 (2.39:1) film format』；頁面資料裡有『Discontinued』的標籤字串。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀到 meta 描述；『Discontinued』只是頁面語系字串，本輪不能確認它是否顯示在這一型上，正片不引用。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.philips.co.uk/c-p/56PFL9954H_12/cinema-219-lcd-tv-with-ambilight-spectra-3-and-perfect-pixel-hd-engine"
         }
       ]
     },
@@ -69822,6 +70259,25 @@
       ]
     },
     {
+      "id": "SRC-40436c90dfe06a4a",
+      "url": "https://www.sdcard.org/wp-content/uploads/2020/11/SD_Association_Introduces_App_Performance_Class.pdf",
+      "readings": [
+        {
+          "title": "SD Association Introduces App Performance Class and New SD Memory Card Symbol",
+          "publisher": "SD Association 新聞稿（San Ramon, Calif.，2016-11-21；PDF）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 31（200，132,039 bytes）；下載 PDF，以 pdftotext -layout 轉文字後讀全文",
+          "reading_scope": "全文實讀",
+          "locator": "第 1 段；『Google released Android Marshmallow in Fall 2015…』一段；A1 三項門檻的條列",
+          "summary": "SD 規格 5.1 新設『Application Performance Class』，讓記憶卡除了存照片影片，也能『run and store applications』；新聞稿自己寫的背景：Google 2015 年秋的 Android Marshmallow 把 SD 卡納為『Adoptable Storage Devices』並會測最低執行速度，而『some SD memory cards in the market may not pass the test because they were developed for optimal image and video capture, not application-running』；『mobile device manufacturers raised the need for such a performance class』；第一級 A1 的門檻：隨機讀取 1500 IOPS、寫入 500 IOPS、持續循序 10MB/s。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "標準組織的新聞稿；講的是卡的效能分級，不評論任何手機廠的決定。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.sdcard.org/wp-content/uploads/2020/11/SD_Association_Introduces_App_Performance_Class.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-40451525c1304e7e",
       "url": "https://archive.org/details/reminiscenciass00camagoog",
       "readings": [
@@ -72272,6 +72728,25 @@
       ]
     },
     {
+      "id": "SRC-428c322aa8033654",
+      "url": "https://nerdlypleasures.blogspot.be/2017/05/guard-to-hd-nirvana-hdmi-licensing.html",
+      "readings": [
+        {
+          "title": "Guard to HD Nirvana : HDMI Licensing",
+          "publisher": "個人部落格 Nerdly Pleasures，2017-05-30",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 22（200，143,537 bytes）下載，去標籤後讀正文前半",
+          "reading_scope": "讀到〈How HDMI is Licensed〉一節結束；後半談個別遊戲周邊的部分略讀",
+          "locator": "〈How HDMI is Licensed〉第 5 段：『There are two pricing plans…』",
+          "summary": "流傳版本的樣本：寫 HDMI『不是免費的』，授權由 HDMI Licensing, LLC 管；年費 10,000 美元，或小量方案每年 5,000 美元加每台 1 美元管理費；每件產品權利金 0.15 美元，產品與包裝用了標誌降到 0.05 美元，再做 HDCP 降到 0.04 美元。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "個人部落格，沒有註明費率出處；每台 0.15／0.05／0.04 美元這組數字本輪沒有在任何一手文件上讀到。",
+          "origin": "wave72-20261117",
+          "original_url": "https://nerdlypleasures.blogspot.be/2017/05/guard-to-hd-nirvana-hdmi-licensing.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-428de9379cdaf784",
       "url": "https://www.cobeps.org/fr/catalogue-des-observations-belges",
       "readings": [
@@ -72603,6 +73078,25 @@
           "limitations": "愛好者網站的轉錄，不是報紙版面掃描；只當流傳版本。",
           "origin": "wave29-20261112",
           "original_url": "https://ufology.patrickgross.org/press/nyt29jan1934.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-42e90dddabd08b6f",
+      "url": "https://global.canon/en/ir/finance/business-unit.html",
+      "readings": [
+        {
+          "title": "Sales by Business Unit（Consolidated）",
+          "publisher": "Canon Inc.（公司官網投資人關係，頁面標示 Last Updated: October 27, 2026）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 37（200，77,679 bytes）下載 HTML，以 python 去標籤後讀整張表。",
+          "reading_scope": "整張年度表（2025 年實績與 2026 年預估）；季度頁沒有讀。",
+          "locator": "表『Sales by Business Unit (Consolidated)』2025 欄",
+          "summary": "公司公布的 2025 年合併營收結構：Printing 2 兆 4,944 億日圓（54%）、Imaging 1 兆 549 億（23%）、Medical 5,806 億（13%）、Industrial 3,611 億（8%）、其他與總部 2,371 億（5%）、內部沖銷 −1,034 億（−3%），合計 4 兆 6,247 億日圓。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司 IR 網頁的摘要表，沒有說明各事業部包含哪些產品（相機在 Imaging、半導體曝光設備在 Industrial 是依公司其他頁面的分類，本輪沒有讀事業部定義頁），也不是經會計師簽證的申報文件原文。公司 2023 年已自紐約證交所下市；data.sec.gov 的索引（seq 34，200）只用來確認最後一份 20-F 申報於 2023 年 3 月。",
+          "origin": "wave72-20261117",
+          "original_url": "https://global.canon/en/ir/finance/business-unit.html"
         }
       ]
     },
@@ -73627,6 +74121,25 @@
           "limitations": "讀的是 1886 年英譯（取自 1819–21 年《Serapionsbrüder》合集重收版），不是 1816 年《Kinder-Mährchen》德文初刊；德文原刊在 archive.org 只找到 LibriVox 錄音與後代版本，未讀。",
           "origin": "wave4-20261102",
           "original_url": "https://www.gutenberg.org/ebooks/31820"
+        }
+      ]
+    },
+    {
+      "id": "SRC-43c6b6bab6cbfb98",
+      "url": "https://ykkamericas.com/our-history",
+      "readings": [
+        {
+          "title": "History of YKK Group",
+          "publisher": "YKK Americas 官方網站（2026 年讀取時的版本）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 5（200，165,896 bytes）下載，去標籤後讀年表前半",
+          "reading_scope": "讀到 1977 年為止的條目",
+          "locator": "年表 1934、1942、1955、1959 各條",
+          "summary": "1934 年 1 月創辦人在東京東日本橋創立 San-es Shokai；1942 年改組為有限公司；1955 年黑部工廠開工；1959 年在紐西蘭設第一家海外公司。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "美洲子公司的年表，偏重美洲據點；創立地寫『東日本橋』，整合報告寫『日本橋蠣殼町』，兩處寫法不同。",
+          "origin": "wave72-20261117",
+          "original_url": "https://ykkamericas.com/our-history"
         }
       ]
     },
@@ -79371,6 +79884,25 @@
       ]
     },
     {
+      "id": "SRC-481d36f184c2eb14",
+      "url": "https://skift.com/2019/08/30/google-maps-poised-to-be-an-11-billion-business-in-4-years/",
+      "readings": [
+        {
+          "title": "Google Maps Poised to Be an $11 Billion Business in 4 Years",
+          "publisher": "Skift（旅遊產業媒體，2019 年 8 月 30 日）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 24（200，250,419 bytes）下載 HTML，以 python 去標籤後讀可見的正文開頭三段（其餘在付費牆後）。",
+          "reading_scope": "只讀到標題與開頭三段。",
+          "locator": "標題；第 3 段『according to a research note from Morgan Stanley analyst…grow its maps revenue 64 percent to $4.86 billion in 2020』",
+          "summary": "流傳數字的出處樣本：報導說，依一家投資銀行分析師的研究報告，地圖的一些廣告產品將在 2019 年第四季到 2020 年結束測試，推估地圖營收 2020 年成長 64% 到 48.6 億美元；標題寫『四年內成為 110 億美元的生意』。文章自己說，超過十億用戶的地圖在賺大錢這件事上還是『剛起步』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手報導，轉述一份本輪沒有讀到的分析師報告；只讀到開頭。",
+          "origin": "wave72-20261117",
+          "original_url": "https://skift.com/2019/08/30/google-maps-poised-to-be-an-11-billion-business-in-4-years/"
+        }
+      ]
+    },
+    {
       "id": "SRC-4825d731caa6e717",
       "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Hooke/",
       "readings": [
@@ -84025,6 +84557,25 @@
       ]
     },
     {
+      "id": "SRC-4bfc95f4504dce50",
+      "url": "https://global.canon/en/intellectual-property/history/index.html",
+      "readings": [
+        {
+          "title": "History｜Landmark moments in intellectual property history",
+          "publisher": "Canon Inc.（公司官網，智慧財產沿革）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 3（200，61,022 bytes）與 seq 8（https://global.canon/en/intellectual-property/history/imaging.html，200，52,802 bytes）下載 HTML，以 python 去標籤後讀 1935–1960 年代條目與影像篇第 1 段。",
+          "reading_scope": "讀 1935 年商標、1943 年第一件專利、1960 年代影印機專利戰三條，以及 imaging.html 的開頭兩段；其餘只瀏覽。",
+          "locator": "『1935 First trademark registration』『1943 First patent registration』『1960s The start of patent battles』；imaging.html 首段『The Hansa Canon had a distinctive viewfinder that popped out from the top…』",
+          "summary": "公司的說法：1934 年第一台試作機取名 Kwanon，隔年註冊『Canon』商標；公司的智財活動始於取得一件『不侵害 Leica 專利』的相機新型；第一台上市機種那個從頂部彈出的觀景窗，就是為了不侵害那家德國公司的專利而設計的；1943 年登記第一件相機專利。1960 年代公司開發影印機，1965 年做出繞開當時壟斷者專利的方式、1967 年開始影印機事業。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自述；這一頁稱 1934 年的試作機是『公司第一台相機試作機』，沒有提 ZQ3-S017 說的『沒有人見過實機』。",
+          "origin": "wave72-20261117",
+          "original_url": "https://global.canon/en/intellectual-property/history/index.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-4bfe8f044342c61a",
       "url": "https://archive.org/download/journeytoteacoun00fort/journeytoteacoun00fort_djvu.txt",
       "readings": [
@@ -88191,6 +88742,25 @@
       ]
     },
     {
+      "id": "SRC-4fa271465b3fff52",
+      "url": "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf",
+      "readings": [
+        {
+          "title": "Alphabet Inc. Form 10-K for the fiscal year ended December 31, 2025",
+          "publisher": "Alphabet Inc.（向美國證管會申報的年報，2026 年 2 月；公司投資人關係網站的 PDF）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 35（200，940,068 bytes）下載 PDF，以 pdftotext -layout 轉文字後搜尋『Maps』全部 5 處，並讀 Item 7 的營收定義與營收表、Note 15。data.sec.gov 的申報索引（seq 33）回 429，沒有從 EDGAR 讀。",
+          "reading_scope": "讀 Item 1 的 Google Services 段、Item 7『Revenues』的定義與表、Note 15；其餘沒有讀。",
+          "locator": "年報頁尾頁碼 4（Item 1 產品列舉）、29（Item 7『Google Advertising』：Google Search & other 的定義）、30（Paid clicks 的定義）、33（營收表）、53（合併報表附註的營收說明）、86（Note 15 分部）",
+          "summary": "年報全文提到 Google Maps 只有 5 處，沒有任何一處給它單獨的營收：廣告收入裡的『Google Search & other』定義為搜尋產品『以及 Gmail、Google Maps、Google Play 等自有產品』上產生的收入；『付費點擊』也把在 Maps 上的廣告點擊算在內；分部上 Maps 屬於 Google Services。2025 年『Google Search & other』2,245.32 億美元、總營收 4,028.36 億美元。年報沒有出現『Google Maps Platform』這個名稱。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "年報不拆 Maps 的數字，所以只能證明『公司沒有公布』，不能證明任何一個外部估計的對錯；給開發者的地圖 API 收入記在哪一個分部，年報沒有明寫。",
+          "origin": "wave72-20261117",
+          "original_url": "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-4fa786290436760d",
       "url": "https://nationalhumanitiescenter.org/pds/amerbegin/exploration/text6/white.pdf%EF%BD%9C2026-10-10%EF%BD%9Chis-own-sign",
       "readings": [
@@ -88453,6 +89023,25 @@
           "limitations": "條目沒有寫先知的名字。",
           "origin": "wave21-20261111",
           "original_url": "https://www.londonmuseum.org.uk/collections/v/object-93638/the-military-prophet-or-a-flight-from-providence"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4fdcdc634a46de44",
+      "url": "https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/1-Just-Making-The-Last-Train/1-Just-Making-The-Last-Train-225842.html",
+      "readings": [
+        {
+          "title": "Iwata Asks – Pokémon HeartGold Version & SoulSilver Version：1. Just Making The Last Train",
+          "publisher": "Nintendo（Nintendo UK 網站刊載的官方英譯，『社長が訊く』系列；頁面沒有標訪談日期）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 6（200，88,259 bytes）下載 HTML，以 python 去標籤後讀完第 1 節全文（約 1.3 萬字元）。同一訪談的 iwataasks.nintendo.com 版（seq 1）因 TLS 憑證錯誤沒有讀到。",
+          "reading_scope": "只讀第 1 節全文；第 2–6 節沒有讀。",
+          "locator": "第 1 節，從『Now, planning for Pokémon began in…』到『That’s exactly what it was like!』；編註 4、8",
+          "summary": "任天堂當時的社長訪問紅綠版的製作人與一位程式設計師。製作人說企劃始於 1990 年，紅綠版 1996 年 2 月 27 日在日本發售（編註 4），開發拖了六年；遊戲其實在發售前一年的 10 月就做完，錯過年底檔期，拖到 2 月底『一年裡最糟的時間』；當時有 Game Boy 壽命將盡的氣氛，他覺得可能『趕不上末班車』。社長說首批出貨量比他預期的少，卻也沒有被搶光；製作人說每週銷量只在前十名邊緣徘徊，『真的是很安靜的開始』。程式設計師說第 151 隻是除錯功能移除後、在空出的約 300 位元組裡偷偷塞進去的『惡作劇』，本來不打算公開，卻因為一個沒料到的 bug 在玩家的遊戲裡出現；『看起來像我們計畫好的，其實不是』。1996 年 4 月號的兒童漫畫月刊辦了抽選 20 名的活動，約 78,000 人報名（編註 8）；之後原本一個月的銷量變成一週就賣到，再變成三倍四倍；登上週銷量第一名時，距發售已超過一年半。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司方當事人多年後的回憶（頁面沒有標訪談日期），沒有給首批出貨量或銷量的實際數字；讀的是官方英譯，不是日文原文。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/1-Just-Making-The-Last-Train/1-Just-Making-The-Last-Train-225842.html"
         }
       ]
     },
@@ -94762,6 +95351,25 @@
       ]
     },
     {
+      "id": "SRC-55e10adef5dcebde",
+      "url": "https://patents.google.com/patent/US2046837A/en",
+      "readings": [
+        {
+          "title": "US 2,046,837 “Means for uniting a screw with a driver”（Henry F. Phillips，1934-07-03 申請，1936-07-07 核准）",
+          "publisher": "United States Patent Office，1936（Google Patents 轉錄）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 15（200，192,922 bytes；seq 2 第一次請求回 503，約 2 分鐘後重試一次成功）下載後以 python 去標籤、關鍵詞定位閱讀",
+          "reading_scope": "說明書中談一字螺絲缺點、發明目的與「camming」兩處的段落實讀；圖說與請求項未逐條讀",
+          "locator": "說明書「In applying screws of the slotted type…」「Such failure of the slotted screw to retain the blade-driver…」「…what might be termed a camming action…」各段",
+          "summary": "專利原文：一字螺絲要兩手扶、動力起子滑出槽外對工人危險又傷工件（點名家具）；新螺絲可先卡在起子尖端、自動對中；只需兩種尺寸的起子就能配 5 到 16 號螺絲，一字起子要六種以上。文中的「camming action／camming out」指的是起子壓入時把卡在凹槽裡的異物擠出去，不是起子自己滑出。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "同上，OCR 轉錄；全文沒有逐段讀完。",
+          "origin": "wave72-20261117",
+          "original_url": "https://patents.google.com/patent/US2046837A/en"
+        }
+      ]
+    },
+    {
       "id": "SRC-55e94a87e4d80ded",
       "url": "https://spectator.com/article/how-scientists-misled-the-world-about-faith/",
       "readings": [
@@ -96969,6 +97577,25 @@
       ]
     },
     {
+      "id": "SRC-5824698e092912a2",
+      "url": "https://www.webdevelopersnotes.com/?p=30670",
+      "readings": [
+        {
+          "title": "First company to sell the modern computer mouse",
+          "publisher": "Web Developers Notes（網站「Quick Facts」短文，日期不明）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 36（200，21,225 bytes）下載 HTML，以 python 去標籤後讀全文",
+          "reading_scope": "全文實讀（兩段）",
+          "locator": "正文第一、二段",
+          "summary": "流傳版本的樣本：「Logitech was the first company to sell the modern computer mouse」，並說「From 1985 to 2008, the company sold a billion of these devices」。同一篇也寫：這隻有光學編碼器、兩顆按鍵、單一滾球的滑鼠是 EPFL 的兩位研究者做的，是對原創者那隻滑鼠的重大改良，最初由另一家瑞士公司 Dubois Depraz SA 製造。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "無出處的趣聞短文，只當流傳版本樣本；它沒有說這家公司發明滑鼠。請求的是 ?p=30670 短網址，頁面 canonical 為 https://www.webdevelopersnotes.com/first-company-to-sell-the-modern-computer-mouse。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.webdevelopersnotes.com/?p=30670"
+        }
+      ]
+    },
+    {
       "id": "SRC-5824d987407575bd",
       "url": "https://archive.org/details/smithsonianmisce1021942smit",
       "readings": [
@@ -97212,6 +97839,25 @@
           "limitations": "EB1911 把宣讀日期寫成 1675 年 11 月 22 日，與 ZL2-S001 英譯稿『去年 11 月 9 日』的觀測（依刊出年份為 1676 年）對不上；兩者並陳，不擇一。",
           "origin": "wave56-20261115",
           "original_url": "https://archive.org/download/Encyclopaediabri23chisrich_201303/encyclopaediabri23chisrich_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5871b6e56961b6f1",
+      "url": "https://yamaha-motor.com/origins-of-the-yamaha-logo",
+      "readings": [
+        {
+          "title": "Origin of the Yamaha Logo",
+          "publisher": "Yamaha Motor Corporation, U.S.A.（美國銷售公司網站）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 5（200，931,474 bytes）下載 HTML，以 python 找出正文段落後讀全文（正文很短）。",
+          "reading_scope": "正文全文。",
+          "locator": "『Early Beginnings』『Evolution of the Tuning Fork Mark』兩節",
+          "summary": "流傳版本的樣本：這一頁說三支音叉『原本象徵技術、生產、銷售三者的合作，以及音樂的三要素：旋律、和聲、節奏』。另寫：1898 年（樂器公司設立隔年）決定以音叉為社章，商標是『口銜音叉的鳳凰』；1916 年單獨以音叉申請商標；1967 年統一標誌。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "海外銷售公司的行銷頁，沒有出處；年表的各年條目本輪沒有在樂器公司的官方頁面核對到。",
+          "origin": "wave72-20261117",
+          "original_url": "https://yamaha-motor.com/origins-of-the-yamaha-logo"
         }
       ]
     },
@@ -97477,6 +98123,25 @@
           "limitations": "晚年回憶（約 40 年後），他自己說好幾處『我忘了』；把 Ban Saphue 一戰寫成『พ.ศ. ๒๔๔๔ 年 4 月 4 日』，與 Murdoch 依泰國史家寫的 1902 年 4 月 3–4 日差了一年（當時泰曆新年在 4 月 1 日），需再核。描寫砲擊的句子血腥，不可照念。",
           "origin": "wave14-20261102",
           "original_url": "https://vajirayana.org/v2/books/%E0%B8%99%E0%B8%B4%E0%B8%97%E0%B8%B2%E0%B8%99%E0%B9%82%E0%B8%9A%E0%B8%A3%E0%B8%B2%E0%B8%93%E0%B8%84%E0%B8%94%E0%B8%B5/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-58c725b5ad7c09cd",
+      "url": "https://lawreview.uchicago.edu/sites/default/files/78-1-Razors-and-Blades%20Myth(s)-Picker.pdf",
+      "readings": [
+        {
+          "title": "The Razors-and-Blades Myth(s)（全文 PDF）",
+          "publisher": "Randal C. Picker，University of Chicago Law Review 78:225–255（2011），期刊官方網站",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 44（200，3,326,612 bytes）從期刊自己的官方網站下載 PDF（31 頁，頁碼 225–255；網址取自 repo 舊查核包 B20.md 的來源表），以 pdftotext -layout 轉文字後讀導論、第 IV 節與相關註腳。覆核 R721 重抓同一網址：200、位元組與雜湊相同，確認是全文。",
+          "reading_scope": "導論（pp. 225–228）與第 IV 節〈The End of the 1904 Patents〉（pp. 244–247）逐段讀；第 I–III、V 節只以關鍵字查價格與年份",
+          "locator": "p. 225（1927 年 Time 引文與 2009 年暢銷書的說法）；p. 227 與註 4、5（5 美元、三分之一週薪、盯經銷商）；p. 244（專利 1904-11-15 核發、1921 年 11 月到期）；p. 245（舊款改名、定價 1 美元）",
+          "summary": "作者先引流傳版本：1927 年 Time 一篇談仿冒刀片的文章寫『人人都知道，安全刮鬍刀廠商的利潤多半來自可替換的刀片』；2009 年一本商業暢銷書說創辦人把刮鬍刀便宜賣給會拿去贈送的夥伴、靠刀片的高毛利賺錢。再查紀錄：兩件關鍵專利 1904-11-15 核發，涵蓋刀架、薄型雙面刀片與兩者的組合；專利期間刮鬍刀附一組刀片定價 5 美元（約當時工業平均週薪的三分之一），並（註 5 轉引 1978 年一本創辦人傳記）在紙盒上印警告、盯經銷商的廣告與櫥窗，不准賣低於 5 美元；專利將在 1921 年 11 月到期，公司提前半年（1921-05-17 的報紙廣告）推出新專利的新款，仍賣 5 美元，同時把舊款改名、廣告定價 1 美元；1921 年秋季一家郵購公司的型錄上，舊款整組（刀架、三片刀片與盒子）賣 85 美分。作者的結論：專利期間沒有『送刀架賺刀片』，專利到期才被推著走向類似作法，之後裝機量與獲利反而上升。",
+          "rights": "OPEN_ACCESS_ACADEMIC",
+          "limitations": "法學期刊論文，依老廣告、郵購型錄與公司資料推論；作者自己的用語是『現有最好的證據顯示』。1927 年雜誌與 2009 年暢銷書兩句是經本文轉引。創辦人的卒年不在本輪讀到的段落裡，正片不點名。取得經過：機構典藏站 chicagounbound 的全文連結回 403 後，改向期刊官方站（正本發行處，非鏡像）下載；覆核判定可接受並已重抓核對。",
+          "origin": "wave72-20261117",
+          "original_url": "https://lawreview.uchicago.edu/sites/default/files/78-1-Razors-and-Blades%20Myth(s)-Picker.pdf"
         }
       ]
     },
@@ -98541,6 +99206,25 @@
           "limitations": "OCR 有亂碼；直義 1345 年寄進神護寺的願文內容在這裡沒寫，未親讀。",
           "origin": "wave7-20261102",
           "original_url": "https://www.jstage.jst.go.jp/article/shigaku/116/12/116_KJ00004944366/_article/-char/ja/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-59e136a4314dd1b8",
+      "url": "http://www.v8register.net/FilesRV8WN/RV8NOTE320%20Phillips%20and%20Posidrive%20drives%20GW2%202701109.pdf",
+      "readings": [
+        {
+          "title": "What are the differences between the two types of drive – Phillips and Posidriv®?（RV8NOTE320）",
+          "publisher": "V8 Register（英國車主社團的工作筆記 PDF；檔名帶「2701109」，確切日期本輪未確認）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 26（200，73,171 bytes）下載 PDF，以 pdfminer 轉文字讀全文（1 頁）",
+          "reading_scope": "全文實讀",
+          "locator": "「Phillips Drive」一節",
+          "summary": "流傳版本的樣本：「The Phillips system was invented for use in assembling aluminium aircraft, with the aim of preventing assemblers from tightening screws so tightly that the aluminium threads strip. The driver will cam out before that happens.」並註明內容取自一個手作網站。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "車主社團的轉述筆記，沒有出處；只當流傳版本樣本。網址是從維基百科 Cam out 條目的註腳取得。",
+          "origin": "wave72-20261117",
+          "original_url": "http://www.v8register.net/FilesRV8WN/RV8NOTE320%20Phillips%20and%20Posidrive%20drives%20GW2%202701109.pdf"
         }
       ]
     },
@@ -99884,6 +100568,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://tighar.org/Projects/Earhart/Archives/Research/ResearchPapers/Coloradosearch.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5af7ea7c98513e5a",
+      "url": "https://www.itpro.com/605244/whats-happened-to-sony-ericsson",
+      "readings": [
+        {
+          "title": "What's happened to Sony Ericsson?",
+          "publisher": "IT Pro（2008-08-11）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 21（200，819,991 bytes）；下載 HTML，以 python 去標籤後讀第 1 頁",
+          "reading_scope": "第 1 頁正文實讀；第 2 頁未讀",
+          "locator": "『The history』『What's gone wrong』兩節",
+          "summary": "2008 年的回顧：合資前 Sony 懂設計不懂通訊、Ericsson 技術強但手機『had seen heavy losses』；2004 年中已連四季獲利；2008 年第一季獲利掉 98%、7 月宣布裁 2,000 人、排名從第四掉到第五；公司一位策略主管把原因歸給景氣與沒有現成的入門機種，分析師則提到三星、LG、RIM 與 Apple 的競爭。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手報導與受訪者說法；只讀第 1 頁。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.itpro.com/605244/whats-happened-to-sony-ericsson"
         }
       ]
     },
@@ -109063,6 +109766,25 @@
       ]
     },
     {
+      "id": "SRC-64550980ee7372e7",
+      "url": "https://www.post.japanpost.jp/notification/pressrelease/2009/document/3001_00_04_9120302.pdf",
+      "readings": [
+        {
+          "title": "「郵便局 × キットカット 2010 年受験生応援企画」が始動（共同新聞稿）",
+          "publisher": "郵便局株式会社・ネスレコンフェクショナリー株式会社，2009-12-03（日本郵政網站）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 6（200，66,630 bytes）下載 PDF（3 頁），以 pdfminer 轉文字讀全文",
+          "reading_scope": "全文實讀",
+          "locator": "p.1 正文；p.2「共同企画商品の発売」；p.3【ご参考】「『キットカット』と受験の関わり」",
+          "summary": "兩家公司的共同新聞稿：合作從 2009 年度開始；2009 年 1 月把「4 條裝」外盒做成可以寫上訊息與地址、直接投進郵筒的「キットメール」，在全國約 20,000 間郵局（不含簡易郵便局）限量販售；2009-12-08 從太宰府天滿宮發車的「サクラサク受験生応援バス」約兩個月開到東京大學旁的本鄉郵便局。參考欄寫：把它當護身符的現象，是因為九州方言「きっと勝つとぉ」和商品名相近，「九州を中心に受験生の間で自然に生まれ」，約 2002 年起靠口耳相傳擴散；公司 2004 年推出「受験生応援パック」；文中寫商品「1937 年にイギリスで発売」、在 70 多個國家地區販售；引一份消費者調查說「考生四人裡有一人帶進考場」。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞稿是當事公司自己的說法；「自然發生」沒有附獨立調查；引用的調查沒有樣本數與年份。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.post.japanpost.jp/notification/pressrelease/2009/document/3001_00_04_9120302.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-645729c9c93a06ad",
       "url": "https://commons.wikimedia.org/wiki/File:Cornelius_de_Bruyn,_view_of_Pompey%27s_Pillar_with_Alexandria_in_the_background,_1681.jpg",
       "readings": [
@@ -112383,6 +113105,25 @@
           "limitations": "傳說集，不是紀錄；出版年頁面上沒寫（德文維基條目記 1853 年）。熱石頭、現形、Nicolai 是屋主三點在 Q2-S001 的筆錄裡都沒有。 覆核 R282（2026-11-12）：出版年：archive.org 書目有兩個《Deutsches Sagenbuch》掃描本（deutschessagenb00bechgoog、bub_gb_z8xUAAAAcAAJ）都記 1853 年；書名頁本身沒有逐字讀。內文覆核無誤：Bechstein 自己寫 Tegel 是『大選帝侯的舊獵屋，為了和 Tegel 村區別，當地叫 Schloß Tegel』，並稱書商 Nicolai 是『當時這座小獵宮的主人』。",
           "origin": "wave28-20261112",
           "original_url": "https://projekt-gutenberg.org/authors/ludwig-bechstein/books/deutsches-sagenbuch/chapter/358"
+        }
+      ]
+    },
+    {
+      "id": "SRC-672fec4d8e174ad6",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001003214/000100321415000017/simg-20141231x10k.htm",
+      "readings": [
+        {
+          "title": "Silicon Image, Inc. Form 10-K（2014 會計年度）",
+          "publisher": "Silicon Image, Inc. 向美國證管會申報，2015 年（SEC EDGAR）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 1（200，2,523,577 bytes）下載 10-K 的 HTML，以 python 去標籤成文字後，用關鍵字 HDMI／royalty／adopter fee 找段落逐段讀",
+          "reading_scope": "讀了 Item 1（業務、競爭）、Item 1A 風險因素中與 HDMI／MHL 聯盟有關的四段、MD&A 授權收入說明、收入認列附註、法律程序附註；其餘財報未讀",
+          "locator": "Item 1A：〈Our participation in consortiums…〉〈Our participation in HDMI and MHL includes our acting as agent…〉〈With respect to royalties, after an initial period…〉〈As the agent for the HDMI specification…〉各段；附註〈Revenue Recognition〉『HDMI royalty revenue is determined by an allocation formula…』",
+          "summary": "這家晶片公司寫明：它透過全資子公司 HDMI Licensing, LLC 擔任 HDMI 規格的代理人，『收到 adopter 繳的全部年費（adopter fees）』，用來抵銷推廣與管理的成本；權利金（royalties）起初全歸它，2007 年創始成員依各家貢獻的智財重新分配後它約占 62%，2010 年再降，2013 年為 35%–39%，2014 年為 30%–31%，分配公式每三年檢討一次。2014 年有超過 85% 的營收來自 HDMI 與 MHL 產品及授權。另載 2014 年 3 月中國發改委通知 HDMI Licensing, LLC 正依反壟斷法調查其在中國的授權活動（結果此文件未載）。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "這是公司自己的申報，只給它自己拿到的比例，沒有列出其他創始成員各拿多少，也沒有寫每台裝置的權利金費率。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.sec.gov/Archives/edgar/data/0001003214/000100321415000017/simg-20141231x10k.htm"
         }
       ]
     },
@@ -123777,6 +124518,25 @@
       ]
     },
     {
+      "id": "SRC-7221abdd167c7ae6",
+      "url": "https://ykkamericas.com/why-choose-ykk/vertically-integrated-production/",
+      "readings": [
+        {
+          "title": "Vertically Integrated Production",
+          "publisher": "YKK Americas 官方網站（2026 年讀取時的版本）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 26（200，149,353 bytes）下載，去標籤後讀正文",
+          "reading_scope": "正文全讀",
+          "locator": "正文第 1–2 段",
+          "summary": "官方說法：『total vertically integrated manufacturing system』要求公司『從原料、機器到成品都在內部生產』；CM6 鏈機是這套體系的基礎；『1950 年，集團把一台美國製鏈機（a U.S.-made chain machine）引進日本以提高生產力與品質』，1953 年實用化、因改良零件拿到第一件專利；『幾年後』開始從頭開發自己的機器，1959 年開發出 CM3，1964 年開發出 CM6。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司行銷頁；進口機用單數（可能指機種而非台數），與整合報告的『四台』寫法不同，正片說『公司報告寫四台』並交代兩頁寫法不一。",
+          "origin": "wave72-20261117",
+          "original_url": "https://ykkamericas.com/why-choose-ykk/vertically-integrated-production/"
+        }
+      ]
+    },
+    {
       "id": "SRC-7226ec1381509b82",
       "url": "https://link.springer.com/chapter/10.1007/978-1-4614-8403-5_3",
       "readings": [
@@ -124190,6 +124950,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sec.gov/Archives/edgar/data/1121788/000114420411010322/v212200_ex99-1.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7278ecbbf7f74c7a",
+      "url": "https://www.post.japanpost.jp/notification/pressrelease/2008/document/3001_00_04_8121606.pdf",
+      "readings": [
+        {
+          "title": "郵便局×キットカット「受験生応援企画」1 月 8 日から開始（共同新聞稿）",
+          "publisher": "郵便局株式会社・郵便事業株式会社・ネスレコンフェクショナリー株式会社，2008-12-16",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 9（200，158,445 bytes）下載 PDF（4 頁），以 pdfminer 轉文字讀全文",
+          "reading_scope": "全文實讀",
+          "locator": "p.1 正文；參考欄「『キットカット』と受験の関わり」",
+          "summary": "第一年的三社共同新聞稿：2009-01-08 起實施；主打「キットメール e-センスカードセット」（可投郵的 4 條裝＋140 日圓郵票＋卡片 2 張），全國約 20,000 間郵局限定販售；東京大學正門前的本鄉郵便局包成滿開櫻花的「サクラサク郵便局」。參考欄同樣寫九州方言、自然發生、2002 年左右口耳相傳、2004 年「受験生応援パック」。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "同上，公司與郵局的自述。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.post.japanpost.jp/notification/pressrelease/2008/document/3001_00_04_8121606.pdf"
         }
       ]
     },
@@ -128626,6 +129405,25 @@
       ]
     },
     {
+      "id": "SRC-765c99fa527215fd",
+      "url": "https://www.areadvd.de/news/ifa-vorerst-keine-neuen-cinema-219-tvs-von-philips/",
+      "readings": [
+        {
+          "title": "IFA: Vorerst keine neuen „Cinema 21:9“-TVs von Philips",
+          "publisher": "AREA DVD（德國，2012-08-30）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 29（200，149,185 bytes）；下載 HTML，以 python 去標籤後讀正文（德文）",
+          "reading_scope": "正文一段實讀",
+          "locator": "正文全段",
+          "summary": "2012 年 8 月 30 日：一位 Philips 發言人向 FlatpanelsHD 說『暫時』不會有新的 21:9 機型，理由是需求對量產的要求來說太低；IFA 上沒有發表新的 21:9 機型；當時產品線上還有 50 吋與 58 吋兩款，會再生產多久不清楚。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手報導，與 ZQ2-S018 同一個上游來源；公司自己的書面公告本輪沒有找到。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.areadvd.de/news/ifa-vorerst-keine-neuen-cinema-219-tvs-von-philips/"
+        }
+      ]
+    },
+    {
       "id": "SRC-765dd0e4c52f6305",
       "url": "https://archive.org/details/dictionaryofnati15stepuoft",
       "readings": [
@@ -130869,6 +131667,25 @@
       ]
     },
     {
+      "id": "SRC-785a5f1695c8056b",
+      "url": "https://toolguyd.com/truth-about-phillips-screws/",
+      "readings": [
+        {
+          "title": "The Truth About Phillips Screws（工具評論網站文章）",
+          "publisher": "ToolGuyd（刊出日期本輪未抄到）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 14（200，176,727 bytes）下載 HTML，以 python 去標籤後讀正文與前幾則留言",
+          "reading_scope": "正文全讀；留言只讀前段",
+          "locator": "正文「If you’re looking for the short answer…」到「Thus, Phillips screws were designed to resist cam-out」",
+          "summary": "二手整理：作者稱「designed to cam-out」是 popular belief，逐份讀 2,046,837、2,046,839、2,046,840 等早期專利後，找不到把起子滑出當成功能的文字，反而找到「不會 cam out」；一則留言指出誤解可能來自後來規格「比 Phillips 更不易滑出」這類比較句。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "個人網站文章；它沒有讀到 1942 年申請的後續專利（ZQ4-S006）。",
+          "origin": "wave72-20261117",
+          "original_url": "https://toolguyd.com/truth-about-phillips-screws/"
+        }
+      ]
+    },
+    {
       "id": "SRC-785e16b927e72df3",
       "url": "https://www.pnas.org/doi/10.1073/pnas.1522130113",
       "readings": [
@@ -131717,6 +132534,25 @@
       ]
     },
     {
+      "id": "SRC-78f8e626294e96d2",
+      "url": "https://www.techradar.com/news/phone-and-communications/mobile-phones/why-samsung-dropped-microsd-on-the-galaxy-s6-then-brought-it-back-1315978",
+      "readings": [
+        {
+          "title": "Why Samsung dropped microSD on the Galaxy S6, then brought it back",
+          "publisher": "TechRadar（2016-02-29）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 30（200，2,169,207 bytes）；下載 HTML，以 python 去標籤後讀正文",
+          "reading_scope": "正文全文實讀",
+          "locator": "第 1–5 段",
+          "summary": "三星一位負責技術與上市管理的主管受訪時的說法：推出 S6 時把內部儲存升級到 UFS 2.0、記憶體升級到 DDR4，『we believed that having a memory card slot would slow down the performance of the device』；S7 則『the best of both worlds』，把卡槽加回來又做到 IP68 防水，並承認很多人對 S6 沒有卡槽很失望。同一篇也記下流傳的說法：S6 的大容量版本把價格拉得很高，『many commenters claiming that Samsung was just trying to ape Apple in the way it sold phones』；記者註明這位主管沒有回答為什麼別家做得到。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞訪談，不是三星的書面公告；只有一家公司、一個機種的說法；流傳版本只是記者轉述的『許多留言者』。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.techradar.com/news/phone-and-communications/mobile-phones/why-samsung-dropped-microsd-on-the-galaxy-s6-then-brought-it-back-1315978"
+        }
+      ]
+    },
+    {
       "id": "SRC-7902a1c36d53d30f",
       "url": "https://fgh.perseids.org/read/greekLit/tlg0003/tlg001/perseus-eng6/7.50.1-7.50.4",
       "readings": [
@@ -132286,6 +133122,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave15-20261102",
           "original_url": "https://db.itkc.or.kr/dir/node?dataId=ITKC_BT_1300A_0050_010_0050&viewSync=TR"
+        }
+      ]
+    },
+    {
+      "id": "SRC-798d0a6ca2d42921",
+      "url": "https://world.casio.com/corporate/history1/",
+      "readings": [
+        {
+          "title": "Casio 公司沿革（Corporate History，創業期）",
+          "publisher": "Casio Computer Co., Ltd. 官方網站（2026 年讀取時的版本）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 6（200，244,880 bytes）下載，去標籤後讀 1946–1965 年各條的展開說明",
+          "reading_scope": "1946、1954、1957、1965 年各條全讀；之後年代未讀",
+          "locator": "〈April 1946: Kashio Seisakujo founded in Mitaka, Tokyo〉〈December 1954: Prototype of all-electric compact calculator〉〈June 1957…〉",
+          "summary": "公司自己的沿革：1946 年 4 月在東京三鷹設立的是一家『做顯微鏡零件與齒輪的小型下包工廠』。弟弟辭掉遞信省技術員的工作來幫忙，點子之一是『yubiwa（指環）pipe』：戰後物資短缺，人們把香菸抽到最短，他做了一個裝在戒指上的香菸夾，好邊工作邊抽；哥哥用車床做、父親出去賣，成了熱賣品，利潤後來成為開發計算機的資金。1949 年在銀座第一屆商業展看到外國電動計算機後轉向；1954 年完成試作，1957 年 6 月發售 14-A 並成立公司。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的敘事。本題只取『下包工廠、顯微鏡零件與齒輪』『1949 年商業展』『1957 年 6 月』幾點；沿革裡的戒指式吸菸夾具沒有銷量與確切年份，且屬吸菸用具，正片最多一句沿革事實、不入畫。world.casio.com 與其他 casio 網域在作者遇到 403 後本輪不再請求，覆核以作者 cache（seq 6）核對。",
+          "origin": "wave72-20261117",
+          "original_url": "https://world.casio.com/corporate/history1/"
         }
       ]
     },
@@ -141205,6 +142060,25 @@
       ]
     },
     {
+      "id": "SRC-8237c8d028e85ff1",
+      "url": "https://design-reuse.com/news/13854/hdmi-annual-fee-reduced-hdmi-growth-fee-reduction-making-hdmi-even-more-affordable-all.html",
+      "readings": [
+        {
+          "title": "HDMI Annual Fee Reduced; HDMI Growth Enables Fee Reduction, Making HDMI Even More Affordable for All（新聞稿轉載）",
+          "publisher": "HDMI Licensing, LLC 新聞稿，2006-07-21（Design & Reuse 網站轉載）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 3（200，21,879 bytes）下載轉載頁，去標籤後讀新聞稿全文；另以 fetch.sh seq 21（200，768,483 bytes）讀 TV Technology 同一則消息的短訊對照",
+          "reading_scope": "新聞稿正文全讀；轉載站的其他欄位未讀",
+          "locator": "正文第 1–2 段（『BEIJING and SUNNYVALE, Calif., July 21, 2006』起）與文末〈About HDMI Licensing〉",
+          "summary": "代理人宣布把 adopter 的『年度管理費』從 15,000 美元降到 10,000 美元，適用 2006-11-01 以後到期的年費；當時全球有 400 多家廠商採用。文末自述：HDMI Licensing, LLC 是 Silicon Image 的全資子公司，是負責授權、推廣與教育的代理人；規格由七家公司開發。TV Technology 的短訊寫降幅 33%，內容相符。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是新聞稿的第三方轉載，原始發布頁本輪沒有找到；只談年費，沒談每台權利金。",
+          "origin": "wave72-20261117",
+          "original_url": "https://design-reuse.com/news/13854/hdmi-annual-fee-reduced-hdmi-growth-fee-reduction-making-hdmi-even-more-affordable-all.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-823bd0bdfeb333cb",
       "url": "https://archive.org/details/sim_naturwissenschaften_1918-10-11_6_41",
       "readings": [
@@ -143943,6 +144817,25 @@
       ]
     },
     {
+      "id": "SRC-84e88f80887aefee",
+      "url": "https://www.mynewsdesk.com/sony-europe/pressreleases/sony-completes-full-acquisition-of-sony-ericsson-1024412",
+      "readings": [
+        {
+          "title": "Sony Completes Full Acquisition of Sony Ericsson",
+          "publisher": "Sony Europe 新聞室（Mynewsdesk，2012-02-16）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 14（200，38,340 bytes）；下載 HTML，以 python 去標籤後讀全文",
+          "reading_scope": "全文實讀",
+          "locator": "第 1–2 段與『Company Overview』",
+          "summary": "Sony 宣布收購 Ericsson 所持 50% 股權的交易已於 2012 年 2 月 15 日（中歐時間）完成，Sony Ericsson 成為全資子公司，將改名 Sony Mobile Communications AB；總部倫敦，研發據點北京、Lund、矽谷、東京；2012 年 2 月 1 日員工約 8,000 人；主要業務仍是手機的設計、開發、製造與銷售。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司新聞稿；sony.net 原頁本輪沒有請求。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.mynewsdesk.com/sony-europe/pressreleases/sony-completes-full-acquisition-of-sony-ericsson-1024412"
+        }
+      ]
+    },
+    {
       "id": "SRC-84f0005533876a10",
       "url": "https://gutenberg.org/files/2850/2850-h/2850-h.htm",
       "readings": [
@@ -145700,6 +146593,25 @@
       ]
     },
     {
+      "id": "SRC-8681fd99d0d6ac99",
+      "url": "https://www.law.cornell.edu/supremecourt/text/466/485",
+      "readings": [
+        {
+          "title": "Bose Corp. v. Consumers Union of United States, Inc., 466 U.S. 485 (1984)",
+          "publisher": "美國聯邦最高法院判決（1984 年 4 月 30 日）；Cornell Law School Legal Information Institute 轉錄",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 40（200，138,242 bytes）下載 HTML，以 python 去標籤後讀 Syllabus 與法院意見第 I 部分（事實與下級審經過）。同案的 supreme.justia.com 頁（seq 36）回 403，沒有讀。",
+          "reading_scope": "讀 Syllabus、法院意見開頭與第 I 部分、註 7 與註 8；第 II–IV 部分的法律論證只讀關鍵段，協同與不同意見沒有讀。",
+          "locator": "Syllabus 第 1 段、Held 1（Pp. 498-511）與 Held 2（Pp. 511-513）；意見第 I 部分（LII 段碼 2–7）『In the May 1970 issue of its magazine…』『Worse, individual instruments heard through the Bose system seemed to grow to gigantic proportions…』『Petitioner took exception to numerous statements…』；註 7『A separate trial before a different judge on the issue of damages…』；註 8",
+          "summary": "判決書記載：1970 年 5 月號的消費者雜誌用七頁評比中價位喇叭，在『特別值得注意』的框內評了剛上市的 901，寫道透過這套系統聽，個別樂器『似乎變得巨大，而且會在房間裡到處游移』，『小提琴像有 10 呎寬，鋼琴從這面牆伸到那面牆』。公司要求更正被拒，在麻州聯邦地方法院提起商品誹謗訴訟；地院認定公司是『公眾人物』、須證明『實質惡意』，就責任開了 19 天的審理，1981 年依撰文工程師的證詞認定：聲音其實是『沿著牆』移動，不是『滿房間』，那句話不實且出於實質惡意，判公司勝；另一位法官審損害，認定少賣 824 套、每套淨利 129 美元，損害 106,296 美元，另加 9,000 美元減損費用（註 7）。第一巡迴上訴法院 1982 年改判；最高法院 1984 年 4 月 30 日維持上訴法院：說錯與『明知是錯』之間有重大差別，紀錄裡沒有清楚而令人信服的證據證明雜誌出刊時知道那句話不實；上訴法院審『實質惡意』要自己獨立檢視紀錄。公司算不算『公眾人物』，上訴法院與最高法院都沒有審（註 8）。法院自己把這件事叫作『一篇評論裡一個不尋常的比喻』引出的訴訟。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "公版判決文的轉錄本（LII），頁碼以 466 U.S. 485 起算；本輪沒有對官方 U.S. Reports 掃描，內文頁碼只有 Syllabus 自己標的範圍。判決書沒有寫起訴的年份。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.law.cornell.edu/supremecourt/text/466/485"
+        }
+      ]
+    },
+    {
       "id": "SRC-86826e33dd7b6459",
       "url": "https://archive.org/details/bim_early-english-books-1641-1700_flagellum-or-the-life-_heath-james_1663",
       "readings": [
@@ -146758,6 +147670,25 @@
           "limitations": "OCR 全文；只讀了這兩頁前後，Thorndike 討論《書信》真偽與年代的其他段落沒有讀。",
           "origin": "wave29-20261112",
           "original_url": "https://archive.org/download/historyofmagicex02thor/historyofmagicex02thor_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-87957500f5bfbf23",
+      "url": "https://news.cision.com/ericsson/r/ericsson-and-sony-to-create-world-leader-in-mobile-phones,c41118",
+      "readings": [
+        {
+          "title": "Ericsson and Sony to create world leader in mobile phones",
+          "publisher": "Ericsson 新聞稿（Cision 新聞稿庫，2001-04-24）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 12（200，25,517 bytes）；下載 HTML，以 python 去標籤後讀全文",
+          "reading_scope": "全文實讀（含文末『Outline of the New Company based on MoU』）",
+          "locator": "第 1–2 段；文末 Outline：Capital、Start of operation、Size of business、Estimated number of employees",
+          "summary": "兩家公司簽備忘錄，要把各自全球的手機業務併成一家新公司 Sony Ericsson Mobile Communications，各持股 50%，預定 2001 年 10 月 1 日開始營運，總部倫敦；合計 2000 會計年度出貨約 5,000 萬支（約 72 億美元），員工約 3,500 人；董事會兩邊各 4 席。Ericsson 的手機技術平台部門不併入。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司新聞稿，『world leader』是當時的期望；沒寫兩邊手機部門當時的盈虧。",
+          "origin": "wave72-20261117",
+          "original_url": "https://news.cision.com/ericsson/r/ericsson-and-sony-to-create-world-leader-in-mobile-phones,c41118"
         }
       ]
     },
@@ -149768,6 +150699,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://star.ettoday.net/news/860805"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8aa2f0add21c80d0",
+      "url": "https://www.adobe.com/uk/products/flashplayer/enterprise-end-of-life.html",
+      "readings": [
+        {
+          "title": "Adobe Flash Player EOL General Information Page（企業版頁面）",
+          "publisher": "Adobe（adobe.com/uk，頁面寫明 2021 年 1 月更新後的狀態）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 8（200，40,074 bytes）；下載 HTML，以 python 去標籤後讀全部問答",
+          "reading_scope": "全頁問答實讀",
+          "locator": "問答『When is the Flash Player End-of-Life (EOL)?』『Why did Adobe decide to EOL Flash Player…』『Why is Adobe blocking Flash content…』",
+          "summary": "Adobe 自 2020 年 12 月 31 日（EOL Date）起停止支援 Flash Player，『as previously announced in July 2017』；自 2021 年 1 月 12 日起封鎖 Flash 內容在 Flash Player 裡執行；理由再寫一次：開放標準成熟、主要瀏覽器廠商淘汰外掛；說提前三年多通知、時間與主要瀏覽器廠商協調。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的說明頁；請求的是英國站的企業版頁面，日期寫法為英式。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.adobe.com/uk/products/flashplayer/enterprise-end-of-life.html"
         }
       ]
     },
@@ -156752,6 +157702,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://zh.wikipedia.org/wiki/%E7%94%95"
+        }
+      ]
+    },
+    {
+      "id": "SRC-91425781ecaff057",
+      "url": "https://hdmiforum.org/about/faq",
+      "readings": [
+        {
+          "title": "HDMI Forum FAQ",
+          "publisher": "HDMI Forum, Inc. 官方網站（2026 年讀取時的版本）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 4（200，66,536 bytes）下載，去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "〈What is the HDMI Forum〉〈Why was it created〉〈Members pay an annual fee…〉與〈Questions about HDMI 1.x Adopters, the Annual Fee, and Royalties〉",
+          "summary": "HDMI Forum 是創始成員 2011 年 10 月設立的非營利互益法人，讓更多公司參與後續規格；會員年費 12,500 美元（選上董事另繳 5,000 美元），與 adopter 年費是兩回事。要用 2.x 規格仍須先成為 adopter 再簽附約，不另收年費；1.x 產品的權利金照原協議。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "官方問答，沒有費率數字。",
+          "origin": "wave72-20261117",
+          "original_url": "https://hdmiforum.org/about/faq"
         }
       ]
     },
@@ -165016,6 +165985,25 @@
       ]
     },
     {
+      "id": "SRC-9866cf4ace48ef16",
+      "url": "https://www.tek.no/nyheter/nyhet/i/LAeq91/philips-dreper-cinema-21-9",
+      "readings": [
+        {
+          "title": "Philips dreper Cinema 21:9",
+          "publisher": "Tek.no（挪威，2012-08-29）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 26（200，92,484 bytes）；下載 HTML，以 python 去標籤後讀全文（挪威文）",
+          "reading_scope": "全文實讀",
+          "locator": "『For lav etterspørsel til masseproduksjon』一節",
+          "summary": "2012 年 8 月 29 日報導：Philips 2009 年推出第一台 21:9 電視，幾年間一共出了四款；Philips 向 FlatpanelsHD 表示沒有更新這個系列的計畫，原因是銷售不振、需求不足以維持量產；市面上的存貨賣完為止。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手報導，轉述 Philips 對另一家媒體（FlatpanelsHD）的說法；FlatpanelsHD 原文本輪沒有找到網址。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.tek.no/nyheter/nyhet/i/LAeq91/philips-dreper-cinema-21-9"
+        }
+      ]
+    },
+    {
       "id": "SRC-986795e7034a2266",
       "url": "https://db.itkc.or.kr/dir/node?dataId=ITKC_BT_0011B_0050_010_0490",
       "readings": [
@@ -165778,6 +166766,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://thehistorypress.co.uk/article/the-ongoing-mystery-of-the-mary-celeste/｜2026-10-10｜main-hatch-closed"
+        }
+      ]
+    },
+    {
+      "id": "SRC-99342db86d0ccc9f",
+      "url": "https://in.marketscreener.com/quote/stock/SONY-GROUP-CORPORATION-6492482/news/Sony-Corporation-Sony-Ericsson-Reports-Fourth-Quarter-and-Full-Year-2011-Results-and-U-S-GAAP-Equ-13976045",
+      "readings": [
+        {
+          "title": "Sony Corporation: Sony Ericsson Reports Fourth Quarter and Full Year 2011 Results（含 Sony Ericsson 2012-01-19 新聞稿全文）",
+          "publisher": "MarketScreener 轉載 Sony Corporation 公告（2012-01-19）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 15（200，335,844 bytes）；下載 HTML，以 python 去標籤後讀 Sony Ericsson 新聞稿與損益表",
+          "reading_scope": "新聞稿正文前半與『CONSOLIDATED INCOME STATEMENT』『ISOLATED QUARTERS』兩張表實讀；Sony 自己的美國會計準則換算段未細讀",
+          "locator": "『PRESS RELEASE January 19, 2012』以下；損益表 Jan-Dec 欄",
+          "summary": "2011 全年出貨 3,440 萬支（2010 年 4,310 萬支），銷售 52.12 億歐元（2010 年 62.94 億），營業損失 2.06 億歐元，淨損 2.47 億歐元（2010 年淨利 0.90 億）；第四季出貨 900 萬支、淨損 2.07 億歐元；公司自己列的原因：競爭激烈、價格下滑、重整費用、景氣與泰國洪水；Xperia 智慧型手機占第四季銷售約 80%，累計出貨 2,800 萬支。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "轉載站上的公司公告，不是 Sony 或 Ericsson 自己的網域；ericsson.com 的原頁被擋。",
+          "origin": "wave72-20261117",
+          "original_url": "https://in.marketscreener.com/quote/stock/SONY-GROUP-CORPORATION-6492482/news/Sony-Corporation-Sony-Ericsson-Reports-Fourth-Quarter-and-Full-Year-2011-Results-and-U-S-GAAP-Equ-13976045"
         }
       ]
     },
@@ -171763,6 +172770,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://en.wikisource.org/wiki/Dictionary_of_National_Biography,_1885-1900/Russell,_John_(1486%3F-1555)"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9ebcf7bf471bf2d3",
+      "url": "https://macdailynews.com/2010/04/29/steve_jobs_posts_rare_open_letter_thoughts_on_flash/",
+      "readings": [
+        {
+          "title": "Steve Jobs posts rare open letter: Thoughts on Flash（公開信全文轉載）",
+          "publisher": "MacDailyNews，2010-04-29（轉載 Apple 網站上署名 Steve Jobs、落款 April, 2010 的公開信）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 7（200，465,821 bytes）；下載 HTML，以 python 去標籤後讀全文（cache/007.txt）",
+          "reading_scope": "公開信轉載全文（從『Apple has a long relationship with Adobe』到落款）實讀；轉載站自己的評語與 129 則留言未讀",
+          "locator": "正文『Here it is verbatim:』之後；六點分別以 First, there’s “Open”／Second…／Sixth, the most important reason 起頭；結尾段『Conclusions.』",
+          "summary": "信一開頭說寫這封信是為了讓人明白『why we do not allow Flash on iPhones, iPods and iPads』，講的是自家行動裝置不放 Flash 的六個理由：Flash 是封閉的專有產品；影片多半已有 H.264 版本；可靠性、安全與行動裝置效能；電池（硬體解碼的 H.264 影片可播到 10 小時、軟體解碼不到 5 小時）；觸控（網站靠滑鼠 rollover）；第六點『最重要』：不願讓第三方跨平台開發層擋在平台與開發者之間。信裡還寫 Apple 曾持有 Adobe 約 20% 股份多年、Adobe 說 Flash 會在 2009 年初上智慧型手機卻一再延後。結論承認『Flash is a successful business for Adobe』，預言 HTML5 等開放標準『will win on mobile devices (and PCs too)』，最後一句勸 Adobe 多做 HTML5 工具。全信沒有要求任何人停用電腦上的 Flash。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "不是 Apple 原頁：apple.com/hotnews/thoughts-on-flash/ 本輪回 404（seq 1），web.archive.org 被出口政策擋下（seq 5，403），只讀到發表當天的全文轉載；逐字是否與原頁完全一致本輪無法對照。信的內容是一家公司的單方說法，其中的數字（40%、75%、10 小時）都是它自己的主張。 覆核 R722 補：與 ZQ2-S005 所附全文逐字比對，只差一處（App Store 的 app 數：本頁 200,000、ZQ2-S005 為 250,000），哪一個是原頁的數字無法確認，正片不要引這個數字。",
+          "origin": "wave72-20261117",
+          "original_url": "https://macdailynews.com/2010/04/29/steve_jobs_posts_rare_open_letter_thoughts_on_flash/"
         }
       ]
     },
@@ -178157,6 +179183,25 @@
       ]
     },
     {
+      "id": "SRC-a489467e217f1eb6",
+      "url": "https://news.cision.com/ericsson/r/sony-ericsson-sells-over-100-million-handsets-in-2007,c2246617",
+      "readings": [
+        {
+          "title": "Sony Ericsson sells over 100 million handsets in 2007",
+          "publisher": "Ericsson 新聞稿（Cision 新聞稿庫，2008-01-16）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 19（200，30,325 bytes）；下載 HTML，以 python 去標籤後讀全文（頁面上的財務摘要表欄位在純文字裡錯位，依欄序重排後讀）；覆核 R722 另以 fetch.sh（R722 seq 1，200，111,257 bytes）下載該頁所連 PDF https://mb.cision.com/Main/15448/2246617/662592.pdf，pdftotext 後讀第 1–4 頁",
+          "reading_scope": "標題、要點、財務摘要表與前兩段實讀；覆核另讀 PDF 的 CONSOLIDATED INCOME STATEMENT（Oct-Dec 與 Jan-Dec 兩張）",
+          "locator": "『2007 Highlights』；PDF 第 4 頁『CONSOLIDATED INCOME STATEMENT Jan-Dec』（全年數字以這張表為準，首頁摘要表的 2007FY 欄錯位）",
+          "summary": "2007 全年出貨 1.034 億支（2006 年 7,480 萬支），銷售 129.16 億歐元（2006 年 109.59 億），營業利益 15.44 億歐元，稅前 15.74 億，淨利 11.14 億歐元（2006 年 9.97 億）；第四季出貨 3,080 萬支、淨利 3.73 億歐元；累計賣出 1.45 億支可播音樂的手機。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司新聞稿；首頁『consolidated financial summary』表原件就印錯位（HTML 與 PDF 都是 2007FY 欄整欄下移一列，另有一格印成『50li2』），不要引那張表；全年數字已由覆核對過同一份 PDF 內的全年損益表，相符。",
+          "origin": "wave72-20261117",
+          "original_url": "https://news.cision.com/ericsson/r/sony-ericsson-sells-over-100-million-handsets-in-2007,c2246617"
+        }
+      ]
+    },
+    {
       "id": "SRC-a48bfef13003b288",
       "url": "https://www.thelatinlibrary.com/livy/liv.21.shtml",
       "readings": [
@@ -180881,6 +181926,25 @@
       ]
     },
     {
+      "id": "SRC-a6867987802ac6e4",
+      "url": "https://www.sec.gov/Archives/edgar/data/47217/000004721725000071/hpq-20251031.htm",
+      "readings": [
+        {
+          "title": "HP Inc. Form 10-K（2025 會計年度，截至 2025-10-31）",
+          "publisher": "HP Inc. 向美國證管會申報，2025 年 12 月（SEC EDGAR）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 41（200，3,530,506 bytes）下載 HTML，python 去標籤後以關鍵字 Supplies／high margin／Dynamic Security／Earnings from operations 找段落讀",
+          "reading_scope": "讀了 Item 1 的 Printing 與 Supplies 定義、Item 1A 中談墨水槽機的一句、Item 7 分部營收與營業利益表、訴訟附註〈Legal Proceedings re Authentication of Supplies〉；其餘未讀",
+          "locator": "Item 1〈Supplies comprises…〉；Item 7 Printing 表（Supplies 10,916／Total Printing 16,702 百萬美元）與分部損益；Item 1A『While our big tank printers typically have a higher initial margin…』；訴訟附註",
+          "summary": "2025 會計年度印表機部門淨營收 167.02 億美元，其中耗材（Supplies）109.16 億美元，約 65%；耗材的定義包含『墨水匣與碳粉匣、紙材、工業圖像耗材、3D 列印耗材』。印表機部門營業利益 31.18 億美元、利益率 18.7%；個人電腦部門營業利益 20.54 億美元、利益率 5.3%。風險因素自述：大容量墨水槽機『起初的毛利通常高於傳統墨水匣機』，但不會帶來後續『高毛利的傳統墨水匣』銷售。訴訟附註：2016 年起因部分機型的耗材驗證機制（Dynamic Security）在美、義、荷等地涉訟或受調查；荷蘭上訴法院 2024-11-19 判其使用不違法，對造 2025-02-18 上訴最高法院；伊利諾州 2024 年 1 月的集體訴訟 2025-09-30 遭全案駁回（後續此文件所載到此為止）。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "公司自己的申報；耗材不只墨水；沒有揭露單台印表機賠或賺。訴訟只到申報日。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.sec.gov/Archives/edgar/data/47217/000004721725000071/hpq-20251031.htm"
+        }
+      ]
+    },
+    {
       "id": "SRC-a68686280256ba76",
       "url": "https://dreamlandresort.com/pete/no_secret_03.jpg",
       "readings": [
@@ -183474,6 +184538,25 @@
       ]
     },
     {
+      "id": "SRC-a7f1f6e9efa9e811",
+      "url": "https://www.ferrerorocher.com/uk/en/about-ferrero-rocher/the-history-of-ferrero-rocher",
+      "readings": [
+        {
+          "title": "The History of Ferrero Rocher（品牌官網英國版沿革頁）",
+          "publisher": "Ferrero（官網，頁尾 © Ferrero 2026）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 3（200，57,675 bytes）下載 HTML，以 python 去標籤後讀全文",
+          "reading_scope": "全頁實讀：開頭段與 1982–2021 年表全部條目",
+          "locator": "開頭段「One of the most iconic brands…」；年表 1982、1983、1988、1994、1996 各條",
+          "summary": "公司自己的說法：1982 年在義大利 Alba 創出，初衷是讓一顆「奢華精緻」的夾心巧克力「available to everyone」；1982 在歐洲數國上市，提到 high quality ingredients 與「distinctive golden wrappers」；1983 第一支電視廣告；1988 美國全國上市；年表寫「1994 Launch in China」；1996 俄羅斯；今天在 140 國販售。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自述的行銷沿革頁，沒有銷量、沒有香港與台灣、沒有提 1984 年寄售；「Launch in China 1994」的定義沒有說明。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.ferrerorocher.com/uk/en/about-ferrero-rocher/the-history-of-ferrero-rocher"
+        }
+      ]
+    },
+    {
       "id": "SRC-a7f793daac998932",
       "url": "https://www.loc.gov/resource/sn93053726/1903-06-05/ed-1/?sp=2%EF%BC%88loc.gov%20%E6%90%9C%E5%B0%8B%20Sylbaris%20%E7%B5%90%E6%9E%9C%EF%BC%9B%E5%85%A8%E6%96%87%E5%8F%96%E8%87%AA%20fulltext_file%EF%BC%89",
       "readings": [
@@ -185959,6 +187042,25 @@
           "limitations": "專欄，數字未附出處，只當流傳版本樣本；原標題沒有抄下。",
           "origin": "wave15-20261102",
           "original_url": "https://www.hangyo.com/news/article.html?no=93061"
+        }
+      ]
+    },
+    {
+      "id": "SRC-aa5e785e08f7c798",
+      "url": "https://www.swissinfo.ch/eng/of-mice-and-men/2312960",
+      "readings": [
+        {
+          "title": "Of mice and men",
+          "publisher": "swissinfo.ch（瑞士廣播公司國際部），2001-10-28",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 31（200，2,071,260 bytes）下載 HTML，以 python 去標籤後讀正文",
+          "reading_scope": "正文全讀（約 2 分鐘長的短訊）",
+          "locator": "正文「At the Xerox Palo Alto research centre on Wednesday…」到「Nicoud developed the Depraz Mouse, initially sold by Logitech…」",
+          "summary": "2001 年報導一場談滑鼠誕生的研討會：第一隻滑鼠 1960 年代在 Stanford Research Institute 做出；全球已賣出超過 5 億隻；Logitech 的創辦人們 1980 年代初在做文書處理系統，第一個上市的商品是滑鼠；EPFL 的一位教授開發了「Depraz Mouse, initially sold by Logitech」。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞短訊；「超過 5 億隻」是全球數字、非單一公司。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.swissinfo.ch/eng/of-mice-and-men/2312960"
         }
       ]
     },
@@ -195746,6 +196848,25 @@
       ]
     },
     {
+      "id": "SRC-b417a6f0f4e65d72",
+      "url": "https://www.japan-experience.com/to-know/chopsticks-at-the-ready/japanese-kat-kits",
+      "readings": [
+        {
+          "title": "Japanese Kit Kats（旅遊網站介紹文）",
+          "publisher": "Japan Experience（旅行社網站，日期不明）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 39（200，175,497 bytes）下載 HTML，以 python 去標籤後讀正文",
+          "reading_scope": "正文實讀",
+          "locator": "「Kitto Katsu: you’ll definitely eat it!」一節與「The history of the brand in Japan…」一段",
+          "summary": "流傳版本的樣本：品牌在日本「more than 300 different flavors」；因名字像「Kitto Katsu」而走運，「That was all it took for the brand to seize the opportunity and market itself as “lucky chocolate”」。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "旅遊網站文章，無出處；只當流傳版本樣本。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.japan-experience.com/to-know/chopsticks-at-the-ready/japanese-kat-kits"
+        }
+      ]
+    },
+    {
       "id": "SRC-b4191537ff4b6881",
       "url": "https://archive.org/details/athanasiikircher00kirc_8",
       "readings": [
@@ -197295,6 +198416,25 @@
           "limitations": "英譯；5.7.3 開頭有脫文。",
           "origin": "wave30-20261112",
           "original_url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0160:book=5:chapter=7:section=3"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b5a8735b54bb54e1",
+      "url": "https://www.infoq.com/news/2011/11/No-More-Flash",
+      "readings": [
+        {
+          "title": "Adobe Will No Longer Develop Flash for Mobile Browsers",
+          "publisher": "InfoQ（2011-11-09）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 3（200，188,170 bytes）；下載 HTML，以 python 去標籤後讀正文",
+          "reading_scope": "正文全文實讀；它連出去的 Adobe 新聞稿與部落格原頁本輪讀不到（blogs.adobe.com 回 500『unknown domain』，seq 6；adobe.com 舊新聞稿網址轉到新聞室首頁，seq 10）",
+          "locator": "正文第 1–4 段（含引用的 Adobe 給合作夥伴的信與新聞稿一句）",
+          "summary": "2011 年 11 月 9 日報導：Adobe 決定不再替行動瀏覽器開發 Flash；引 Adobe 當天新聞稿一句：把 Flash 資源集中在『the most advanced PC web experiences, including gaming and premium video, as well as mobile apps』；引 Adobe 給合作夥伴的信：『We will no longer adapt Flash Player for mobile devices to new browser, OS version or device configurations』，但繼續替現有 Android 與 PlayBook 出重大錯誤與安全修補；Adobe 另說會出 Flash Player 11.1、桌面版繼續做、已在做第 12 版。報導並記：Adobe 的行動版 Flash 是 2010 年 6 月才在 Android 上推出的。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手報導，引文是轉引；Adobe 2011 年的原始新聞稿與部落格本輪沒有讀到原頁。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.infoq.com/news/2011/11/No-More-Flash"
         }
       ]
     },
@@ -207668,6 +208808,25 @@
       ]
     },
     {
+      "id": "SRC-bec4d95fbff13d52",
+      "url": "https://source.android.com/docs/core/storage/adoptable",
+      "readings": [
+        {
+          "title": "Adoptable storage",
+          "publisher": "Android Open Source Project 文件（source.android.com，Google）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 33（200，153,943 bytes）；下載 HTML，以 python 去標籤後讀正文前半",
+          "reading_scope": "開頭到『Security』一節開頭實讀；之後的實作細節未讀",
+          "locator": "第 1–4 段",
+          "summary": "Android 官方文件：Android 一直支援 SD 卡這類外接儲存，但它們『were historically limited to simple file storage, due to their expected impermanence and the minimal data protection』；Android 6.0 起可以把外接儲存『adopt』成內部儲存——格式化並加密、只能配這一台裝置用，才可以安全地放 App 與私人資料；App 要開發者聲明支援才能搬過去；Android 7.0–8.1 上檔案級加密不能和它並用。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "平台文件，講的是系統怎麼設計，不是任何手機廠拿掉卡槽的理由。",
+          "origin": "wave72-20261117",
+          "original_url": "https://source.android.com/docs/core/storage/adoptable"
+        }
+      ]
+    },
+    {
       "id": "SRC-bec8018fe97b4706",
       "url": "https://archive.org/details/bulletindelasoci28soci",
       "readings": [
@@ -209406,6 +210565,25 @@
       ]
     },
     {
+      "id": "SRC-c044cdaf66ca6915",
+      "url": "https://www.sec.gov/Archives/edgar/data/855658/000085565818000027/lscc201710-k.htm",
+      "readings": [
+        {
+          "title": "Lattice Semiconductor Corporation Form 10-K（2017 會計年度）",
+          "publisher": "Lattice Semiconductor 向美國證管會申報，2018 年（SEC EDGAR）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 23（200，2,590,521 bytes）下載 HTML，python 去標籤後以關鍵字 HDMI 找段落讀",
+          "reading_scope": "讀了 Item 1 授權業務說明、Item 1A 與 HDMI 聯盟有關的四段、Item 7 授權與服務營收說明；其餘未讀",
+          "locator": "Item 1A：『Through our wholly owned subsidiary, HDMI Licensing, LLC, we acted as agent of the HDMI consortium until December 31, 2016…』『We share HDMI royalties with the other HDMI founders…』；Item 7：『Licensing and Services revenue decreased by 19% in fiscal 2017…』；公司沿革句『We acquired Silicon Image, Inc. in March 2015』",
+          "summary": "買下原代理人母公司（2015 年 3 月）的公司寫明：它透過全資子公司擔任 HDMI 代理人到 2016-12-31，期間『收到全部 adopter 年費』；2016 年 9 月創始成員修改協議，2017-01-01 起由『一個新的獨立實體』接任代理人，負責授權並把權利金分給創始成員，它此後只拿到較少的年費份額。權利金份額 2015 年 24%–25%、2016 年 20%。失去代理人角色使 2017 年營收比 2016 年少約 1,100 萬美元。另載：另一位聯盟成員主張，它擔任代理人期間沒用在推廣上的年費應分給其他創始成員，但從未正式追索。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "公司自己的申報；沒有點名新的代理人，也沒有寫費率。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.sec.gov/Archives/edgar/data/855658/000085565818000027/lscc201710-k.htm"
+        }
+      ]
+    },
+    {
       "id": "SRC-c0452d0a0a7efe6a",
       "url": "https://educdome.puy-de-dome.fr/fileadmin/ressources/fichiers/934-1656487290-ProjetEAC_BeteGevaudan.pdf",
       "readings": [
@@ -209706,6 +210884,25 @@
           "limitations": "廣播稿；把 Rogers 的劍名意譯。",
           "origin": "wave42-20261112",
           "original_url": "https://stardate.org/podcast/2021-04-19"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c0ac242684d37996",
+      "url": "https://www.hdmi.org/blog/detail/187",
+      "readings": [
+        {
+          "title": "HDMI LA Celebrates a Landmark Court Victory Upholding the Brand and Its Licensing Program",
+          "publisher": "HDMI Licensing Administrator, Inc. 官方部落格，2026-05-12",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 13（200，40,680 bytes）下載，去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "〈About HDMI Technology〉〈The Court’s Summary Judgment Ruling〉〈Outcome〉三節",
+          "summary": "代理人自述：技術由七家創始公司 2002 年開發，創始公司指定代理人以單一、無差別的方案授權規格、必要專利、著作權、營業秘密與商標；現有 2,100 多家公司取得授權。並稱加州北區聯邦地院 2025-12-31 在 HDMI Licensing Administrator, Inc. v. Availink, Inc.（No. 5:22-cv-06947-EKL）以即決判決認定一家晶片商違反授權契約、駁回其反壟斷與商標反訴，該晶片商同意 1,400 萬美元的判決並重簽協議；法院確認晶片賣給非 adopter 時由晶片商付權利金。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "勝訴一方自己的文章，判決書本輪沒有讀；正片若提只說『代理人自己的公告說』。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.hdmi.org/blog/detail/187"
         }
       ]
     },
@@ -211586,6 +212783,25 @@
       ]
     },
     {
+      "id": "SRC-c2912ab32adc4b35",
+      "url": "https://global.canon/en/c-museum/history/story01.html",
+      "readings": [
+        {
+          "title": "Canon Camera Museum｜History Hall：1933-1936",
+          "publisher": "Canon Inc.（公司官網 Canon Camera Museum）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 28（200，23,993 bytes）下載 HTML，以 python 去標籤後讀全文。",
+          "reading_scope": "全文。",
+          "locator": "『A total of three Kwanon camera variations appeared in ads…』『After agonizing deliberations, the laboratory decided to elicit cooperation from Nippon Kogaku…』『The first Canon camera under this joint development was introduced to the market in February 1936』『Hansa Canon camera… Canon is a Leica imitation made in Japan』",
+          "summary": "公司自己的相機博物館頁：1932–33 年德國兩大品牌的 35mm 相機是世界頂級，當時日本名校畢業進銀行的起薪每月約 70 日圓，其中 Leica 一台要 420 日圓。一位修理電影攝影機的技師把一台拆開來看，說裡面沒有鑽石，只是黃銅、鋁、鐵和橡膠，卻賣那麼貴，『這讓我生氣』。1933 年 11 月他與姻親等三人在東京六本木一棟公寓的一間房裡成立研究所。試作機取名自觀音，鏡頭取名自佛陀的弟子迦葉。但是：廣告裡出現過三種『Kwanon』，都只是插圖或木頭模型，『Kwanon 從來沒有真的上市』；技師自稱做了十台，沒有人見過；1955 年前後在大阪發現的一台『Kwanon D 型』是那款德國相機的仿製品，不是他做的，製造者至今不明。他 1934 年秋天離開研究所。研究所弄不到鏡頭與測距儀，改向日本光學工業（今日另一家相機大廠的前身，當時是以軍用品為主的最大光學廠）求助；第一台上市的相機 1936 年 2 月發售（也有人說 1935 年 10 月），鏡頭、鏡頭座、觀景窗光學系統與測距機構由對方負責，研究所做機身、焦平面快門與組裝。因為沒有銷售通路，機身上掛的是代理商的商標，研究所的名字不在上面。當年攝影雜誌的介紹寫它是『日本製的 Leica 仿製品』，售價 275 日圓。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自述；技師晚年的談話與上海軼事是轉述（原文用『A story was told』）。",
+          "origin": "wave72-20261117",
+          "original_url": "https://global.canon/en/c-museum/history/story01.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-c292f6e3bab6c8f9",
       "url": "https://archive.org/details/lgendesetarchi00funcuoft",
       "readings": [
@@ -212457,6 +213673,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.marfapublicradio.org/podcast/wonders/2019-08-12/a-curiosity-tour-come-search-for-the-marfa-lights-with-west-texas-wonders"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c36737815d5f0aae",
+      "url": "https://news.mit.edu/2013/obit-amar-bose-0712",
+      "readings": [
+        {
+          "title": "Amar Bose ’51, SM ’52, ScD ’56, Bose Corporation’s founder, has died at 83",
+          "publisher": "MIT News Office（2013 年 7 月 12 日）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 15（200，116,513 bytes）下載 HTML，以 python 去標籤後讀正文。",
+          "reading_scope": "正文全文讀過（後段悼詞只瀏覽）。",
+          "locator": "首段『has died. He was 83』；『In 1956, he started a research program in physical acoustics and psychoacoustics』；『In 2011, to fulfill his lifelong dream…』",
+          "summary": "MIT 的訃聞：創辦人 2013 年過世，享年 83；1956 年起在 MIT 做物理聲學與心理聲學的研究計畫；1964 年以在 MIT 做的研究為基礎創立公司，公司自始私有；2011 年把過半數股票以無表決權股贈與 MIT，MIT 不能賣、不參與經營治理。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "校方訃聞，沒有產品與銷售細節；文中沒有出現『紙巾』或『買了一套音響很失望』之類的起源軼事。",
+          "origin": "wave72-20261117",
+          "original_url": "https://news.mit.edu/2013/obit-amar-bose-0712"
         }
       ]
     },
@@ -214554,6 +215789,25 @@
       ]
     },
     {
+      "id": "SRC-c5b9e6d63d2d88d7",
+      "url": "https://patents.google.com/patent/US2046839A/en",
+      "readings": [
+        {
+          "title": "US 2,046,839 “Screw”（H. F. Phillips 與 T. M. Fitzpatrick，1935-01-15 申請，1936-07-07 核准，讓與 Phillips Screw Company）",
+          "publisher": "United States Patent Office，1936（Google Patents 轉錄）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 1（200，80,673 bytes）下載 Google Patents 頁，以 python 去標籤後讀說明書文字",
+          "reading_scope": "書目欄與說明書前半（發明目的各段）實讀；請求項未逐條讀",
+          "locator": "說明書第 1 頁「Heretofore, the manufacture of screws with a cruciform…」起三段",
+          "summary": "專利原文：此前十字或其他形狀凹槽的螺絲要鑄造或拉削，成本高或讓螺絲頭變脆；本發明的主要目的之一是讓凹槽與同形起子「firm engagement」，而且「there will be no tendency of the driver to cam out of the recess」；另一目的是凹槽可用簡單的沖壓做出、螺絲頭外緣更強、起子自動對中。是 1933-05-09 申請案（Serial No. 670,118）的部分延續案。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "Google Patents 的 OCR 轉錄有錯字與斷行；沒有下載原始掃描 PDF 逐頁核對。",
+          "origin": "wave72-20261117",
+          "original_url": "https://patents.google.com/patent/US2046839A/en"
+        }
+      ]
+    },
+    {
       "id": "SRC-c5c03286a46c106c",
       "url": "https://www.kokushikan.ac.jp/gs/department/hs/docs/07_015.pdf",
       "readings": [
@@ -215418,6 +216672,25 @@
           "limitations": "維基文庫是轉錄本，非校訂本；用之前要對國史大系或新編日本古典文學全集。注意：這一條解釋的是『火國』的國名，原文沒有『不知火』三個字；720 年是文本成書年，不是事件年代，景行天皇的巡狩屬傳說。熊本日日新聞 2024-08-25〈燃ゆる火はどこへ㊥〉把它稱為最古紀錄，但該文付費牆後的正文沒讀到。",
           "origin": "wave6-20261102",
           "original_url": "https://zh.wikisource.org/wiki/%E6%97%A5%E6%9C%AC%E6%9B%B8%E7%B4%80/%E5%8D%B7%E7%AC%AC%E4%B8%83"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c689668eecc33713",
+      "url": "https://global.canon/en/c-museum/product/film1.html",
+      "readings": [
+        {
+          "title": "KWANON (Prototype) – Canon Camera Museum",
+          "publisher": "Canon Inc.（公司官網）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 38（200，15,871 bytes）下載 HTML，以 python 去標籤後讀說明文字。",
+          "reading_scope": "產品說明全文（兩段）。",
+          "locator": "『The advertisement about “Kwanon”…appeared in the Asahi Camera magazine. It was June 1934』『There were supposedly four variants…none is thought to exist today』",
+          "summary": "同一家公司的產品頁：1934 年 6 月攝影雜誌上刊出『Kwanon』的廣告；『據說有四種』，『一般認為現今一台都不存在』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與 ZQ3-S017 的『廣告裡出現三種』寫法不同（一說三種、一說四種），正片照說兩頁寫的不一樣。",
+          "origin": "wave72-20261117",
+          "original_url": "https://global.canon/en/c-museum/product/film1.html"
         }
       ]
     },
@@ -219263,6 +220536,25 @@
       ]
     },
     {
+      "id": "SRC-c9ff79a7537d6247",
+      "url": "https://www.foxbusiness.com/technology/google-maps-app-projected-earn-11-billion-ads-revenue",
+      "readings": [
+        {
+          "title": "Google Maps plots course for billion dollar payday with ads",
+          "publisher": "Fox Business（2019 年 8 月 30 日）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 25（200，181,255 bytes）下載 HTML，以 python 去標籤後讀正文。",
+          "reading_scope": "正文全文（短文）。",
+          "locator": "第 1–3 段（『an estimated $11 billion in revenue over the next four years』『as high as $11 billion in 2023』）",
+          "summary": "流傳數字怎麼被轉述的樣本：這篇依 Skift 的報導再轉述，第一段寫成『未來四年帶進約 110 億美元』，第三段又寫行動裝置最多 98.2 億、桌面 12.3 億，『2023 年高到 110 億美元』——同一篇裡，一個是四年合計的說法，一個是 2023 單年的說法。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "三手轉述；數字是 2019 年的預測，不是公司公布的實績。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.foxbusiness.com/technology/google-maps-app-projected-earn-11-billion-ads-revenue"
+        }
+      ]
+    },
+    {
       "id": "SRC-ca0c832d17fce3d4",
       "url": "https://www.rsc.org/news/2013/january/erasto-mpemba-announces-rsc-competition-winner",
       "readings": [
@@ -220176,6 +221468,25 @@
       ]
     },
     {
+      "id": "SRC-cad8a554bc070039",
+      "url": "https://corporate.pokemon.co.jp/en/aboutus/history/",
+      "readings": [
+        {
+          "title": "History | The Pokémon Company（公司沿革）",
+          "publisher": "The Pokémon Company（公司官網，讀取時的現行版）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 27（200，222,406 bytes）下載 HTML，以 python 去標籤後用關鍵字（1996、1998、2000、Red）讀年表條目與頁首說明。",
+          "reading_scope": "只讀 1996–2000 年的條目與頁首公司說明；之後的年表沒有逐條讀。",
+          "locator": "年表 1996 年『“Pokémon Red Version and Pokémon Green Version” for the Game Boy are launched in Japan』；頁首『In April 1998, Pokémon Center Co., Ltd. is established…』",
+          "summary": "公司自己的年表：1996 年紅綠版在日本上市，之後紅藍版在美國上市；1998 年 4 月由任天堂、Creatures 與 GAME FREAK 三家原作者公司成立 Pokémon Center Co., Ltd.，2000 年 10 月改名 The Pokémon Company。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自述的年表，只有事件與年月，沒有銷量。",
+          "origin": "wave72-20261117",
+          "original_url": "https://corporate.pokemon.co.jp/en/aboutus/history/"
+        }
+      ]
+    },
+    {
       "id": "SRC-cadb99618b74db51",
       "url": "https://archive.org/download/hemenwaysouthwe00bandgoog/hemenwaysouthwe00bandgoog_djvu.txt",
       "readings": [
@@ -220755,6 +222066,25 @@
           "limitations": "英譯；拉丁原文沒對。",
           "origin": "wave44-20261112",
           "original_url": "https://lexundria.com/suet_ves/23/r"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cb6b7c1f6d57af2d",
+      "url": "https://radii.co/?p=39233",
+      "readings": [
+        {
+          "title": "How Ferrero Rocher Became a Chinese New Year Tradition",
+          "publisher": "RADII（網路媒體；頁面 metadata 的 datePublished 為 2025-01-31）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 37（200，647,925 bytes）下載 HTML，以 python 去標籤後讀正文",
+          "reading_scope": "正文實讀（品牌沿革段與進入中國段）；圖說與相關文章未細讀",
+          "locator": "正文「Ferrero entered China in the 1980s, initially through Hong Kong…」一段與下一段「There’s also a widely believed rumor…」",
+          "summary": "流傳版本的樣本：寫 1982 年推出、1980 年代先經香港進入中國、金色包裝很快成為春節與情人節的體面禮物；並提到「金箔含真金」這個廣為流傳的說法。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手網媒，無出處標註；只當「大家怎麼講」的樣本。 請求的是 ?p=39233 短網址，頁面 canonical 為 https://radii.co/article/how-ferrero-rocher-became-a-chinese-new-year-tradition。",
+          "origin": "wave72-20261117",
+          "original_url": "https://radii.co/?p=39233"
         }
       ]
     },
@@ -223330,6 +224660,25 @@
           "limitations": "無。",
           "origin": "wave48-20261113",
           "original_url": "https://archive.org/download/paper-doi-10_1093_mnras_46_1_19/paper-doi-10_1093_mnras_46_1_19_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cd8a33b4fada11e3",
+      "url": "https://www.carryology.com/liking/the-company-that-zips-the-world-ykks-ninety-year-obsession/",
+      "readings": [
+        {
+          "title": "The Company That Zips the World: YKK’s Ninety-Year Obsession",
+          "publisher": "Carryology（包袋愛好者網站），2025-10-23",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 39（200，158,746 bytes）下載，去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "開頭『YKK produces roughly half of all zippers made globally. Seven billion zippers a year.』；戰後一段『much of it designed in-house, because imported equipment was prohibitively expensive』",
+          "summary": "流傳版本的樣本：說這家公司生產全球約一半的拉鍊、一年七十億條、在日本市占近九成、1990 年代握有約 50% 全球市場；說創辦人從一開始就堅持零件全部自己做，戰後重建的機器『多半是自己設計的，因為進口設備貴得買不起』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "愛好者網站的品牌文章，數字都沒有註明出處。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.carryology.com/liking/the-company-that-zips-the-world-ykks-ninety-year-obsession/"
         }
       ]
     },
@@ -226044,6 +227393,25 @@
       ]
     },
     {
+      "id": "SRC-d00696cbf44bd25f",
+      "url": "https://global.yamaha-motor.com/revsplus/news/202506/gnl_25.html",
+      "readings": [
+        {
+          "title": "Looking Back on Yamaha Motor’s Beginnings 70 Years Ago（Global Newsletter）",
+          "publisher": "Yamaha Motor Co., Ltd.（公司官網通訊，2025 年 6 月）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 18（200，9,430 bytes）下載 HTML，以 python 去標籤後讀全文。",
+          "reading_scope": "全文。",
+          "locator": "第 2–4 段（『One was making effective use of the machining tools…』）；末段（『Does the exhaust sing do, re, mi, fa?』）",
+          "summary": "公司 70 週年通訊：機車公司 1955 年 7 月 1 日成立，是把樂器公司的機車部門分出去、另立獨立公司；樂器公司 1897 年設立。選機車的理由之一是活用樂器公司的工作機械——戰時公司開發製造過飛機螺旋槳，機械戰後被占領軍接收而閒置；另一個理由是車輛駕照制度在變、預期需求成長。當時日本已有約 180 家機車廠。第一款車 1955 年 1 月發售，售價 138,000 日圓（當時大學畢業起薪約 1 萬日圓），三年共賣約 11,000 輛。文中記下 1950 年代的反應：『樂器廠做機車？排氣管會唱 do re mi fa 嗎？』『彈鋼琴的手指是乾淨的，為什麼要去沾油？』該文也寫出當時社長的生卒年（1912–2002）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自述；『約 180 家』與社史的『一度 204 家』、『1 月發售』與社史的『2 月 11 日第一輛完成』寫法不同，正片兩個數字都說明出處。1950 年代的反應是公司轉述，沒有原始報刊。",
+          "origin": "wave72-20261117",
+          "original_url": "https://global.yamaha-motor.com/revsplus/news/202506/gnl_25.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-d00d7b03583eed52",
       "url": "https://archive.org/details/memoriasparaserv00sant_0",
       "readings": [
@@ -226376,6 +227744,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://commons.wikimedia.org/wiki/Category:Mount_Tambora"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d03fecde2f37e266",
+      "url": "https://global.yamaha-motor.com/about/philosophy/index.html",
+      "readings": [
+        {
+          "title": "Corporate Philosophy（含 Brand：Symbol mark and logo mark）",
+          "publisher": "Yamaha Motor Co., Ltd.（公司官網）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 7（200，60,304 bytes）下載 HTML，以 python 去標籤後讀 Brand 一節。",
+          "reading_scope": "只讀商標與標誌的三段說明；企業理念部分只瀏覽。",
+          "locator": "『The Symbol mark (company crest and trademark) of Yamaha Motor Co., Ltd. is the “tuning fork mark.”』以下三段",
+          "summary": "機車公司對商標的說明：三支樂器用的音叉排成讓人聯想到機車輪子的形狀，基本造型沿用母公司（1897 年設立的樂器公司）的音叉標誌，創立以來就使用。三支音叉『最初』被賦予的意思是『製造、銷售、技術三者緊密結合，勇敢走上世界舞台』，後來機車公司又加上『顧客、社會、個人』。和樂器公司的標誌相比有三處不同：音叉尖端與外圈重疊、字樣裡 M 的中間那一筆落到底、每個字母左右對稱。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "機車公司一方的說明；樂器公司自己的標誌沿革頁（www.yamaha.com）本輪回 403，沒有讀到。",
+          "origin": "wave72-20261117",
+          "original_url": "https://global.yamaha-motor.com/about/philosophy/index.html"
         }
       ]
     },
@@ -229254,6 +230641,25 @@
       ]
     },
     {
+      "id": "SRC-d2ce292754a5f14c",
+      "url": "https://www.hdmi.org/adopter/founders",
+      "readings": [
+        {
+          "title": "HDMI Founders（Founding HDMI Adopters 名單）",
+          "publisher": "HDMI Licensing Administrator, Inc. 官方網站（2026 年讀取時的版本）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 17（200，58,785 bytes）下載，去標籤後讀名單",
+          "reading_scope": "名單全讀",
+          "locator": "〈Founding HDMI Adopters〉",
+          "summary": "現在的創始成員名單列出：Koninklijke Philips、Lattice Semiconductor、Maxell、Panasonic Holdings、Sony Group、Toshiba，以及隸屬 Vantiva 的 Arris 兩家公司等——原本那家晶片公司的位置已由收購它的公司承接。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有名單，沒有沿革說明；誰繼受誰的席次是本輪依 ZQ1-S004 推定，頁面本身沒寫。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.hdmi.org/adopter/founders"
+        }
+      ]
+    },
+    {
       "id": "SRC-d2d9a417aedb5ed2",
       "url": "https://archive.org/details/englandunderseve01fonbuoft",
       "readings": [
@@ -229397,6 +230803,25 @@
           "limitations": "OCR 有零星缺字（如訴訟費一句辨識不清，以 M2-S014 為準）；1861 年曆書本身仍沒讀到，原文是透過這篇 1863 年評論的引文。Morrison 自述 1804 年入伍，與 DNB 的 1806 年不同。Otho 何時退位不在本頁。 覆核 R272（2026-11-12）：summary 的『四月說倫敦恐有大火或重大事故』改『四月說倫敦恐有嚴重的公共事故（中間幾個字 OCR 讀不出）、內閣可能突然垮台』；Otho 見於六、八、十月三條，評者的『過期』註有兩處；週刊印的是『R. I. Morrison』；『顯要人物即親王』是 Zadkiel 事後的主張；親王生於 1819 年 8 月 26 日也在本頁。",
           "origin": "wave27-20261112",
           "original_url": "https://archive.org/stream/sim_reader-a-review-of-literature-science-and-art_1863-07-04_2_27/sim_reader-a-review-of-literature-science-and-art_1863-07-04_2_27_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d2fa5940e8c6eabd",
+      "url": "https://jsme.or.jp/kikaiisan/heritage_049_en.html",
+      "readings": [
+        {
+          "title": "Mechanical Engineering Heritage No. 49: Zipper chain machine (YKK-CM6)",
+          "publisher": "日本機械學會（JSME）機械遺產網頁",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 24（200，6,072 bytes）下載，去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "正文三段",
+          "summary": "學會的說明：創辦人 1953 年獨自開發把鏈齒間歇植入的機構並裝上鏈機，成為公司第 1 號專利；CM6 型『完全自行開發』，1964 年開始製造（保存機為 1981 年製）；從扁線沖出鏈齒再間歇植上；『從材料到製品的一貫製造』帶來高品質與低成本。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "學會網頁的簡介，篇幅很短，沒有談 1950 年的進口機。",
+          "origin": "wave72-20261117",
+          "original_url": "https://jsme.or.jp/kikaiisan/heritage_049_en.html"
         }
       ]
     },
@@ -229847,6 +231272,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://commons.wikimedia.org/wiki/File:Andrey_Zeest_-_Amber_Room_2_(autochrome).jpg"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d38fa158d6c1871f",
+      "url": "https://news.mit.edu/2011/bose-gift",
+      "readings": [
+        {
+          "title": "Amar Bose ’51 makes stock donation to MIT",
+          "publisher": "MIT News Office（MIT 官方新聞，2011 年 4 月 29 日）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 14（200，93,973 bytes）下載 HTML，以 python 去標籤後讀正文全文。",
+          "reading_scope": "正文全文。",
+          "locator": "正文第 1–3 段（『has given to MIT the majority of the stock…in the form of non-voting shares』『MIT cannot sell its Bose shares and will not participate in the management or governance』）、第 5 段（1964 年創立）",
+          "summary": "MIT 的公告：創辦人把公司過半數的股票以『無表決權股』贈與 MIT；公司配息時 MIT 才收到現金股利，用在教育與研究；依贈與條件，MIT 不得出售這些股份，也不參與公司的經營或治理；公司維持私有、獨立，策略與領導不變，創辦人續任董事長兼技術總監。他在 MIT 拿到學士、碩士、博士，1956 年受邀任教，原打算最多教兩年，結果教到 2001 年；1964 年創立公司。校長說他請學校『不要把聚光燈打得太亮』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "受贈方的新聞稿，沒有股數、比例與金額。",
+          "origin": "wave72-20261117",
+          "original_url": "https://news.mit.edu/2011/bose-gift"
         }
       ]
     },
@@ -232714,6 +234158,25 @@
       ]
     },
     {
+      "id": "SRC-d6d81925885c3510",
+      "url": "https://www.sdcard.org/press/thoughtleadership/celebrating-20-years-of-microsd/",
+      "readings": [
+        {
+          "title": "Celebrating 20 Years of microSD",
+          "publisher": "SD Association（sdcard.org『Articles by Our Experts』，2025-08-18）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 32（200，108,857 bytes）；下載 HTML，以 python 去標籤後讀正文",
+          "reading_scope": "正文時間線到 2019 年一節實讀；之後的 SD Express 段落只略讀",
+          "locator": "『2005: Birth of microSD』『2006-2010: Early Years』",
+          "summary": "標準組織自己的沿革：這張卡原名 TransFlash 或 T-Flash，由 SanDisk 開發，2005 年被 SD 協會採納並正式標準化時改名 microSD，動機是手機市場需要更小的儲存；早期容量 32、64、128 MB；2006 年 microSDHC 把上限拉到 32GB；SD 協會 2000 年 1 月由 Panasonic、SanDisk、Toshiba 成立。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "協會的紀念文章，帶宣傳性質；沒有寫任何手機廠拿掉卡槽的事。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.sdcard.org/press/thoughtleadership/celebrating-20-years-of-microsd/"
+        }
+      ]
+    },
+    {
       "id": "SRC-d6df6e5da3037195",
       "url": "https://commons.wikimedia.org/wiki/File:Patterson_Gimlin_film.webm",
       "readings": [
@@ -235357,6 +236820,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://commons.wikimedia.org/wiki/Category:Loch_Ness_Monster"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d87c05ec75942b85",
+      "url": "https://global.canon/en/intellectual-property/history/industrial.html",
+      "readings": [
+        {
+          "title": "The history of Canon’s intellectual properties in the industrial field",
+          "publisher": "Canon Inc.（公司官網）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 30（200，46,317 bytes）下載 HTML，以 python 去標籤後讀半導體曝光設備相關段落。公司的〈半導體曝光設備 50 週年〉沿革頁（seq 20）已下架、只剩轉址說明；美國公司新聞稿（seq 31）回 403。",
+          "reading_scope": "讀 1960 年代至 1994 年的四段；之後的段落沒有讀。",
+          "locator": "『Canon’s history of entering the industrial field began in the 1960s…』『In 1970, Canon announced the PPC-1…This product was the first semiconductor lithography equipment made in Japan.』",
+          "summary": "公司的說法：1960 年代起為半導體製造開發鏡頭，1967 年完成一支高解析鏡頭；1970 年在日本與美國同時發表等倍投影式的 PPC-1，是日本製的第一台半導體曝光設備；1978 年的機種首次用上雷射自動對位；1983 年發表公司第一台步進機；1986 年推出第一台平面顯示器曝光設備。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自述的『第一』；日本半導體史料館的頁面（seq 21）連線被重設，沒有讀到第三方對這台機器的評價。",
+          "origin": "wave72-20261117",
+          "original_url": "https://global.canon/en/intellectual-property/history/industrial.html"
         }
       ]
     },
@@ -245615,6 +247097,25 @@
           "limitations": "OCR 中段有一欄破碎，部分句子讀不出；只引讀得出的部分。",
           "origin": "wave34-20261112",
           "original_url": "https://www.loc.gov/resource/sn85033673/1877-01-23/ed-1/?sp=2"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e23a5f7215238b62",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001003214/000089161808000126/f38342e10vk.htm",
+      "readings": [
+        {
+          "title": "Silicon Image, Inc. Form 10-K（2007 會計年度）",
+          "publisher": "Silicon Image, Inc. 向美國證管會申報，2008 年（SEC EDGAR）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 19（200，1,350,302 bytes）下載 HTML，python 去標籤後以關鍵字找段落讀",
+          "reading_scope": "只讀風險因素中談 HDMI 年費調降與權利金分配的一段，以及業務概述中 adopter 家數一句；其餘未讀",
+          "locator": "Item 1A：『The HDMI founders decided to reduce the annual license fee payable by HDMI adopters from $15,000 to $10,000 per year effective on November 1, 2006…』一段；Item 1：『more than 750 manufacturers…』",
+          "summary": "創始成員決定把 adopter 年費從 15,000 美元降到 10,000 美元（2006-11-01 起）；『子公司 HDMI Licensing, LLC 收到的年費由我們認列為營收』；2007 年一次創始成員會議決定把權利金分給各創始成員，公司『不再收到 100% 的 HDMI adopter 權利金』。到 2007 年底有 750 多家製造商成為 adopter。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "同上，是公司自己的申報。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.sec.gov/Archives/edgar/data/0001003214/000089161808000126/f38342e10vk.htm"
         }
       ]
     },
@@ -257085,6 +258586,25 @@
       ]
     },
     {
+      "id": "SRC-eaf57f2970a05450",
+      "url": "https://www.documents.philips.com/assets/20230307/aab9fe2ea03d42f984b2afbe008d5e04.pdf",
+      "readings": [
+        {
+          "title": "Philips Cinema 21:9 LCD TV with Ambilight Spectra 3 and Perfect Pixel HD Engine — 56PFL9954H 產品型錄（leaflet）",
+          "publisher": "Philips（documents.philips.com；PDF 頁尾 Issue date 2019-06-25，Version 8.1.5）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 27（200，678,422 bytes）；下載 PDF，以 pdftotext -layout 轉文字後讀全文（cache/027.txt）",
+          "reading_scope": "全份型錄實讀（三頁）",
+          "locator": "首頁標語；『21:9 movie aspect ratio』一段；規格欄『Aspect ratio: 2.39:1, 21:9』『Panel resolution: 2560 x 1080p』",
+          "summary": "Philips 自己的說法：多數電視是 16:9（1.78:1）、好萊塢大片通常以 2.39:1 拍攝，Cinema 21:9『perfectly match the original movie format used by directors with a 21:9 (2.39:1) aspect ratio』，看電影『without the black bars』；規格：56 吋、面板解析度 2560 x 1080、長寬比欄寫『2.39:1, 21:9』。（以面板像素計算 2560÷1080≈2.370；21÷9≈2.333——兩個都不是 2.39，這是本輪自己的算術，不是型錄寫的。）",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司的行銷型錄，頁尾日期是 2019 年重新發行的版本，不是 2009 年的原版；沒有價格與銷量。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.documents.philips.com/assets/20230307/aab9fe2ea03d42f984b2afbe008d5e04.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-eaf9f5e8757c98a5",
       "url": "https://www.loc.gov/resource/sn82015104/1896-11-19/ed-1/?sp=8&fo=json",
       "readings": [
@@ -262537,6 +264057,25 @@
       ]
     },
     {
+      "id": "SRC-efcf8739000d43ac",
+      "url": "https://www.hdtvmagazine.com/hdtv-origins/how-16-9-became-the-hdtv-aspect-ratio-standard-dr-kerns-powers-and-the-smpte/",
+      "readings": [
+        {
+          "title": "How 16:9 Became the HDTV Aspect Ratio Standard: Dr. Kerns Powers and the SMPTE Decision",
+          "publisher": "HDTV Magazine『HDTV Origins』檔案（Dale Cripps，約 1999 年；原刊 ilovehdtv.com，站方註明『Source document circa 1999 preserved as-is』）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 28（200，14,778 bytes）；下載 HTML，以 python 去標籤後讀全文",
+          "reading_scope": "全文實讀",
+          "locator": "引文『The aspect ratios in common use are normalized to equal area…』與『After a very short debate…』兩段",
+          "summary": "提案人自己的回憶：把當時常用的各種長寬比換成面積相等的長方形、疊在同一個中心，發現它們全部落在一個 1.77 的外框之內、又全部蓋住一個同樣是 1.77 的內框，於是可以用同一個畫面『拍攝並保護』1.33 到 2.35 之間任何比例的發行版本；『After a very short debate… the 1.77 value was rounded up to 16:9』，工作小組一致通過；約一年後再表決確認，美國以此向 CCIR 提案；日本與歐洲原本偏好 1.67，被說服改採。文末另記：好萊塢製作界後來批評這個選擇，而當時的小組主席回憶曾多次請他們來開會表達意見。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "當事人事後的回憶與轉錄，不是 SMPTE 的會議紀錄；沒有寫年份（常見的『1984 年』本輪沒有在一手文件上讀到）。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.hdtvmagazine.com/hdtv-origins/how-16-9-became-the-hdtv-aspect-ratio-standard-dr-kerns-powers-and-the-smpte/"
+        }
+      ]
+    },
+    {
       "id": "SRC-efd2fd5fa2d54b77",
       "url": "https://de.wikisource.org/wiki/Das_spiritistische_Medium_Anna_Rothe",
       "readings": [
@@ -266194,6 +267733,25 @@
       ]
     },
     {
+      "id": "SRC-f34caaa17a17cae7",
+      "url": "https://museum.ipsj.or.jp/en/computer/dawn/0069.html",
+      "readings": [
+        {
+          "title": "Casio 14-A（IPSJ Computer Museum）",
+          "publisher": "日本資訊處理學會（IPSJ）電腦博物館網頁",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 45（200，12,297 bytes）下載，去標籤後讀正文",
+          "reading_scope": "正文全讀",
+          "locator": "正文第 1 段",
+          "summary": "學會的說明：Kashio Seisakujo 1946 年成立，起初生產顯微鏡零件、齒輪等；1949 年看到商業展上的外國電動計算機後投入繼電器計算機，1956 年完成第一台試作，1957 年 6 月完成 14-A 並同時成立公司。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只談計算機，沒有談戒指香菸夾與手錶。",
+          "origin": "wave72-20261117",
+          "original_url": "https://museum.ipsj.or.jp/en/computer/dawn/0069.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-f34ef6b3bc961d80",
       "url": "https://archive.org/download/michiganasprovin03utle/michiganasprovin03utle_djvu.txt",
       "readings": [
@@ -267836,6 +269394,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.cna.com.tw/news/amov/201804270300.aspx"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f4e95b4cada461dc",
+      "url": "https://chicagounbound.uchicago.edu/uclrev/vol78/iss1/12/",
+      "readings": [
+        {
+          "title": "The Razors-and-Blades Myth(s)（期刊典藏頁與摘要）",
+          "publisher": "Randal C. Picker，University of Chicago Law Review vol. 78 no. 1（2011），Chicago Unbound 機構典藏",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 40（200，89,192 bytes）下載典藏頁，去標籤後讀摘要與引用資訊；該站的全文下載連結（seq 42）回 403，即停止向該網域請求",
+          "reading_scope": "摘要與書目資訊",
+          "locator": "〈Abstract〉",
+          "summary": "摘要：『刮鬍刀與刀片』的標準故事是低價賣甚至送刀架、再高價賣刀片；但在最能這樣做的 1904–1921 年原始專利期間，這家刮鬍刀公司並沒有這樣做，專利到期後才改採近似的作法，而且只是為了跟上市場。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有摘要；細節見 ZQ1-S029。該站全文連結（seq 42）回 403，本輪不再請求此網域；覆核以作者 cache（seq 40）核對摘要。",
+          "origin": "wave72-20261117",
+          "original_url": "https://chicagounbound.uchicago.edu/uclrev/vol78/iss1/12/"
         }
       ]
     },
@@ -270411,6 +271988,25 @@
       ]
     },
     {
+      "id": "SRC-f7aff67df23a88c9",
+      "url": "https://www.logitech.com/assets/41043/logitechs-top-30-moments-july-2011.pdf",
+      "readings": [
+        {
+          "title": "Logitech’s Top 30 Defining Moments",
+          "publisher": "Logitech（公司自己的沿革文件，檔名標 2011-07）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 13（200，391,826 bytes）下載 PDF（4 頁），以 pdfminer 轉文字讀全文",
+          "reading_scope": "全文實讀（第 3 頁 PDF 文字層有重疊，逐句比對後讀）",
+          "locator": "p.1：1981、1982、1984、1985、1986、1987 各條；p.2：1989、1992；p.3：2003；p.4：2008",
+          "summary": "公司自述：1981-10-02 公司成立，第一間辦公室在瑞士 Apples，第一份合約是替日本 Ricoh 開發桌面排版軟體；1982 在 Comdex 展出第一隻滑鼠 P4 的原型；1984 拿到第一個大 OEM 客戶 HP，之後約每年 25,000 隻；1985 推出第一隻零售滑鼠 C7（美國售價不到 100 美元）；1986 在台灣新竹設製造中心；1987 與 Apple 達成 OEM 協議，替歐洲販售的 Macintosh 做滑鼠；1989 拿到 IBM 合約；1992 贏得 Compaq OEM；2003 宣布出貨第 5 億隻滑鼠，創辦人與「the inventor of the mouse, Dr. Douglas Engelbart」同場慶祝；2008 出貨第 10 億隻。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自述，未經審計；沒有說 P4 是誰設計、誰製造；10 億是出貨累計（含 OEM）。",
+          "origin": "wave72-20261117",
+          "original_url": "https://www.logitech.com/assets/41043/logitechs-top-30-moments-july-2011.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-f7b3b0a01508bde4",
       "url": "https://donnachaidh.com/The-Yellow-London-Lady",
       "readings": [
@@ -271263,6 +272859,25 @@
       ]
     },
     {
+      "id": "SRC-f866d4e9f39a183f",
+      "url": "https://computerhistory.org/profile/jean-daniel-nicoud/",
+      "readings": [
+        {
+          "title": "Jean-Daniel Nicoud（人物簡介）",
+          "publisher": "Computer History Museum",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 25（200，81,494 bytes）下載 HTML，以 python 去標籤後讀簡介",
+          "reading_scope": "簡介全段實讀",
+          "locator": "「He developed the Logidules; the Smaky family…the Depraz Mouse, initially sold by Logitech…」一句",
+          "summary": "博物館簡介：這位 EPFL 教授開發了 Smaky 系列個人電腦與「the Depraz Mouse, initially sold by Logitech」。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有一句；沒有年份與製造細節，也沒有說 Depraz Mouse 就是 P4。此人在世，正片不點名。",
+          "origin": "wave72-20261117",
+          "original_url": "https://computerhistory.org/profile/jean-daniel-nicoud/"
+        }
+      ]
+    },
+    {
       "id": "SRC-f86909248a25edda",
       "url": "https://www.jasoncolavito.com/the-1909-grand-canyon-hoax.html",
       "readings": [
@@ -271712,6 +273327,25 @@
           "limitations": "OCR 有錯字；中文意思為研究者據拉丁文自譯，覆核請對原文。正文沒寫處死。",
           "origin": "wave43-20261112",
           "original_url": "https://archive.org/download/valeriusmaximus00lykogoog/valeriusmaximus00lykogoog_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f8dd99df9a4acbd3",
+      "url": "https://patents.google.com/patent/US2474994A/en",
+      "readings": [
+        {
+          "title": "US 2,474,994 “Screw socket”（Joseph J. Tomalis，1942-12-30 申請，1949-07-05 核准，讓與 American Screw Company）",
+          "publisher": "United States Patent Office，1949（Google Patents 轉錄）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 18（200，184,685 bytes）下載後以 python 去標籤，全文搜尋 clutch／throw-out 並讀前後段",
+          "reading_scope": "書目欄、發明背景談 Phillips 凹槽一段、throw-out 與離合器兩段實讀；圖說與請求項只讀第 1 項",
+          "locator": "說明書「…that known as the Phillips…」「Axial thrust endeavoring to force a screw driver out…is usually referred to as throw-out」「Most power screw-drivers are provided with a slipping clutch…」",
+          "summary": "專利原文：Phillips 凹槽「has now become almost standard」，尤其在裝配線與動力起子上，並引 Phillips 專利 2,046,839；把起子往外推的軸向力叫 throw-out；動力起子的打滑離合器設定不穩、工人又愛調得太緊，所以本設計「保留少量 throw-out」，在扭力過大時把起子推出凹槽，免得凹槽被鉸壞或起子受損；若動力起子完美、離合器不出毛病就可用零垂直角（此句之後的轉錄殘缺）；同一段也寫本設計把 throw-out 減到「the lowest factor consistent with good engineering principles and commercial operation」。也就是說：「滑出來是保護」的說法，文件上出現在 1942 年申請的這份後續專利，申請人是另一家公司。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "OCR 有錯字（如 “Ii power screw drivers were perfect”）；引文以可辨識的部分為準。這份專利沒有提飛機或鋁。",
+          "origin": "wave72-20261117",
+          "original_url": "https://patents.google.com/patent/US2474994A/en"
         }
       ]
     },
@@ -278927,6 +280561,25 @@
           "limitations": "個人電子報，不是 HRP 官方頁；hrp.org.uk 的 'Historic hauntings' 頁與部落格對 curl 與 WebFetch 都回 403，沒讀到。",
           "origin": "wave8-20261102",
           "original_url": "https://lucyworsley.substack.com/p/have-you-ever-seen-a-ghost-at-hampton"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ff9c32ca61e89e94",
+      "url": "https://developers.googleblog.com/en/introducing-google-maps-platform/",
+      "readings": [
+        {
+          "title": "Introducing Google Maps Platform",
+          "publisher": "Google Developers Blog（Google 官方部落格，2018 年 5 月 3 日）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 22（200，29,404 bytes）下載 HTML，以 python 去標籤後讀正文全文。",
+          "reading_scope": "正文全文。",
+          "locator": "『We’re simplifying our 18 individual APIs into three core products』『developers will receive the first $200 of monthly usage for free』『Beginning June 11, you’ll need a valid API key and a Google Cloud Platform billing account』",
+          "summary": "官方公告：把 18 支 API 併成地圖、路線、地點三類產品；把原本的標準版與進階版方案合併成一種用多少付多少的方案；每月前 200 美元的用量免費，『我們估計你們大多數人的月用量會落在免費範圍內』；沒有年約、預付、解約金或用量上限；自 6 月 11 日起，使用核心產品必須有有效的 API 金鑰與一個 Google Cloud 的帳單帳戶。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司公告，沒有列各 API 的單價，也沒有寫新價格哪一天開始計費（坊間說 7 月 16 日，本輪沒有在官方頁面讀到）。",
+          "origin": "wave72-20261117",
+          "original_url": "https://developers.googleblog.com/en/introducing-google-maps-platform/"
         }
       ]
     },
