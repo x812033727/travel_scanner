@@ -53,12 +53,17 @@ SPEND_KEEP_SECONDS = 40 * 24 * 3600
 PACIFIC = ZoneInfo("America/Los_Angeles")
 _SPLIT = re.compile(r"[\s,]+")
 _MODEL = re.compile(r"/models/([^/:]+):")
-# A refusal that says money ran out, not that the key is going too fast.
+# A refusal that says money ran out, not that the key is going too fast. Not a bare "billing":
+# Google's ordinary rate-limit 429 opens with "You exceeded your current quota, please check your
+# plan and billing details", and reading that as "out of money" rested the Ultra keys for 12 hours
+# whenever narration outran the TTS models' per-minute limit, so every call fell to the site key.
 _EXHAUSTED = re.compile(
     r"spending cap|spend(?:ing)? limit|prepay|prepayment|credits? (?:are |is )?depleted|"
-    r"billing|insufficient (?:balance|funds|credit)",
+    r"insufficient (?:balance|funds|credit)",
     re.IGNORECASE,
 )
+# How long a busy refusal asks to wait: RetryInfo's "retryDelay": "27s", or "Please retry in 27.6s".
+_RETRY = re.compile(r'"retryDelay"\s*:\s*"(\d+(?:\.\d+)?)s"|retry in (\d+(?:\.\d+)?)\s*s', re.I)
 # USD per million tokens (input, output) from ai.google.dev/gemini-api/docs/pricing, read
 # 2026-11-17; thoughts are billed as output. Pictures, clips and tracks are priced per item in
 # app.video_media.catalog and tallied when their job is ready, so they are not here. A model
@@ -132,6 +137,14 @@ def classify(status: int, body: str) -> Verdict | None:
     return "exhausted" if _EXHAUSTED.search(body or "") else "busy"
 
 
+def retry_seconds(body: str) -> int | None:
+    """The wait a busy refusal asks for, in whole seconds, if it names one."""
+    match = _RETRY.search(body or "")
+    if not match:
+        return None
+    return int(float(match.group(1) or match.group(2)) + 0.999)
+
+
 def error_message(response: httpx.Response) -> str:
     """Google's own ``error.status: error.message``, cut short; it never echoes the key."""
     try:
@@ -192,7 +205,7 @@ def note_response(response: httpx.Response, payload: Any = None) -> Verdict | No
         body = ""
     verdict = classify(response.status_code, body)
     if verdict is not None:
-        _schedule(rest(_redis(), fingerprint(key), verdict))
+        _schedule(rest(_redis(), fingerprint(key), verdict, retry_after=retry_seconds(body)))
     if verdict == "exhausted":
         logger.warning(
             "gemini pool: key %s refused for money: %s", fingerprint(key), error_message(response)
@@ -236,12 +249,14 @@ async def rest(
     fp: str,
     verdict: Verdict,
     *,
+    retry_after: int | None = None,
     now: Callable[[], datetime] | None = None,
 ) -> None:
-    """Rest a key: a minute when busy; when out of money, until it is worth trying again."""
+    """Rest a key: when busy, a minute or the longer wait Google asks for (a daily quota); when
+    out of money, until it is worth trying again."""
     if redis is None:
         return
-    seconds = BUSY_REST_SECONDS
+    seconds = max(BUSY_REST_SECONDS, min(retry_after or 0, EXHAUSTED_PROBE_SECONDS))
     if verdict == "exhausted":
         seconds = min(EXHAUSTED_PROBE_SECONDS, seconds_to_next_month((now or _utcnow)()))
     try:
