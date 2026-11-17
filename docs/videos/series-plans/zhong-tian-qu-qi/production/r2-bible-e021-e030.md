@@ -58,9 +58,9 @@
     - 第 22 集 c39–c41「小船剛離岸」：渡口圖 `set-dukou-ye-l1` 本身沒有船，船寫在鏡頭裡（「one small boat with an arched woven-bamboo canopy, already ten metres out in the fog」）。
       第 16 集教訓：場景圖上有的東西會壓過文字，所以渡口圖特地做成沒有船的版本。
     - 第 23 集涉水：水寫到他的大腿（「the water up to his thighs」），每鏡同一個水位；他兩手空著、舉高；不游泳、不潛水。上船後衣襬濕、深色一截，寫到第 23 集 c21。
-    - 第 25 集三條貨船：只有全景寫三條（遠、在霧裡），近一點的鏡只寫一條船頭；每條船頭一盞空白紙燈籠（第 18 條燈籠的寫法）；不寫帆、不寫槳以外的東西。
+    - 第 25 集三條貨船：只有全景寫三條（遠、在霧裡），近一點的鏡只寫一條船頭；~~每條船頭一盞空白紙燈籠~~ **真人版改成船頭一支插在鐵架上的火把、沒人拿**：「one torch fixed upright in an iron holder at its bow, nobody holding it」（全景三條寫「at the bow of each, nobody holding them」；e925 審稿必改 5）。掛著的燈籠會長字或破圖（第 21 集 s37、第 22–24 集挑片的吊燈籠），沒寫「沒人拿」船頭會多出一個舉火把的人；不寫帆、不寫篷、不寫槳以外的東西。
       魏記的人拿的寫「plain wooden sticks」（第 17 條有木棍的寫法），秦霜與少年也是木棍與繩子（原版必修：木棍變銅鑼）。
-    - 岸邊插在泥裡的燈籠（第 22→23 集）、木樁上插的三支火把（第 25 集）是插著的，例外於「每支火把拿在一個人手裡」；寫「stuck upright in the mud／on the post, nobody holding it」。
+    - 岸邊插在泥裡的燈籠（第 22→23 集）、木樁上插的三支火把與船頭鐵架上的火把（第 25 集）是插著的，例外於「每支火把拿在一個人手裡」；寫「stuck upright in the mud／on the post, nobody holding it」「fixed upright in an iron holder at its bow, nobody holding it」。
 24. **大牢**（第 28 集 c26 起）：送 `set-dalao-l1`。柵欄寫「thick square wooden bars」，不寫鐵；牆上兩支火把在鐵架上（圖上就有），例外於第 8 條。
     這場有四個有名字的人（許硯在柵外；趙捕頭、孫掌櫃、賴三在柵內）：照第 1 條，賴三只露牢裡的背影與手、不給臉，或拆鏡。
     孫掌櫃的食盒固定寫「a two-tier round dark-lacquered wooden food box with a bent wooden handle, plain, no pattern」（第 28、29 集同一個）。
