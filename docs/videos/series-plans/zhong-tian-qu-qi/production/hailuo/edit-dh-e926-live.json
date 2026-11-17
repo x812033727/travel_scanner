@@ -1,0 +1,521 @@
+{
+ "tempo": 1.0,
+ "grades": {},
+ "default_grade": "dh",
+ "finish": "vignette=angle=PI/5,format=yuv420p",
+ "names": {},
+ "punch": false,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+ ],
+ "name_whoosh": "swish-9",
+ "music": [
+  {
+   "cue": "warm",
+   "from": "s01",
+   "to": "s07",
+   "offset": 0.0,
+   "gain": -22,
+   "fade_in": 0.3,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "night",
+   "from": "s08",
+   "to": "s17",
+   "offset": 0.0,
+   "gain": -23,
+   "fade_in": 0.8,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "market",
+   "from": "s18",
+   "to": "s25",
+   "offset": 0.0,
+   "gain": -23,
+   "fade_in": 0.5,
+   "fade_out": 1.2,
+   "tail": 0.3
+  },
+  {
+   "cue": "tension",
+   "from": "s26",
+   "to": "s29",
+   "offset": 0.0,
+   "gain": -22,
+   "fade_in": 0.3,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "suspense",
+   "from": "s30",
+   "to": "s34",
+   "offset": 20.0,
+   "gain": -24,
+   "fade_in": 1.0,
+   "fade_out": 1.5,
+   "tail": 0.2
+  },
+  {
+   "cue": "market",
+   "from": "s35",
+   "to": "s37",
+   "offset": 40.0,
+   "gain": -23,
+   "fade_in": 0.8,
+   "fade_out": 0.3,
+   "tail": 0.0
+  },
+  {
+   "cue": "suspense",
+   "from": "s40",
+   "to": "s40",
+   "offset": 0.0,
+   "gain": -21,
+   "fade_in": 0.8,
+   "fade_out": 2.5,
+   "tail": 0
+  }
+ ],
+ "sfx": [
+  {
+   "file": "Wind",
+   "at": "s01",
+   "off": 0,
+   "gain": -8,
+   "to": "s17"
+  },
+  {
+   "file": "fire",
+   "at": "s01",
+   "off": 0,
+   "gain": -22,
+   "to": "s17"
+  },
+  {
+   "file": "Wind",
+   "at": "s18",
+   "off": 0,
+   "gain": -7,
+   "to": "s24"
+  },
+  {
+   "file": "Wind",
+   "at": "s25",
+   "off": 0,
+   "gain": -6,
+   "to": "s29"
+  },
+  {
+   "file": "birds",
+   "at": "s25",
+   "off": 0,
+   "gain": -20,
+   "to": "s29"
+  },
+  {
+   "file": "Wind",
+   "at": "s35",
+   "off": 0,
+   "gain": -6,
+   "to": "s40"
+  },
+  {
+   "file": "birds",
+   "at": "s35",
+   "off": 0,
+   "gain": -20,
+   "to": "s40"
+  },
+  {
+   "file": "fire",
+   "at": "s30",
+   "off": 0,
+   "gain": -20,
+   "to": "s34"
+  },
+  {
+   "file": "Wind",
+   "at": "s30",
+   "off": 0,
+   "gain": -18,
+   "to": "s34"
+  },
+  {
+   "file": "paper_02",
+   "at": "s01",
+   "off": 0.4,
+   "gain": -10
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s01",
+   "off": 3.4,
+   "gain": -9
+  },
+  {
+   "file": "metalLatch",
+   "at": "s01",
+   "off": 3.7,
+   "gain": -6
+  },
+  {
+   "file": "impactWood_heavy_001",
+   "at": "s02",
+   "off": 1.85,
+   "gain": -10
+  },
+  {
+   "file": "splash_01",
+   "at": "s03",
+   "off": 1.0,
+   "gain": -28
+  },
+  {
+   "file": "rustle03",
+   "at": "s06",
+   "off": 0.4,
+   "gain": -8
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s08",
+   "off": 0.3,
+   "gain": -2
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s08",
+   "off": 1.2,
+   "gain": -2
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s08",
+   "off": 2.1,
+   "gain": -2
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s08",
+   "off": 3.0,
+   "gain": 6
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s12",
+   "off": 2.4,
+   "gain": -12
+  },
+  {
+   "file": "cloth1",
+   "at": "s13",
+   "off": 0.4,
+   "gain": 0
+  },
+  {
+   "file": "cloth2",
+   "at": "s14",
+   "off": 4.2,
+   "gain": 0
+  },
+  {
+   "file": "bookFlip1",
+   "at": "s18",
+   "off": 0.8,
+   "gain": -6
+  },
+  {
+   "file": "bookFlip2",
+   "at": "s18",
+   "off": 1.8,
+   "gain": -6
+  },
+  {
+   "file": "bookFlip1",
+   "at": "s18",
+   "off": 2.6,
+   "gain": -6
+  },
+  {
+   "file": "bookFlip2",
+   "at": "s18",
+   "off": 3.3,
+   "gain": -6
+  },
+  {
+   "file": "bookFlip1",
+   "at": "s18",
+   "off": 4.0,
+   "gain": -6
+  },
+  {
+   "file": "bookFlip2",
+   "at": "s18",
+   "off": 4.6,
+   "gain": -6
+  },
+  {
+   "file": "bookFlip1",
+   "at": "s18",
+   "off": 5.2,
+   "gain": -6
+  },
+  {
+   "file": "bookFlip2",
+   "at": "s18",
+   "off": 5.7,
+   "gain": -6
+  },
+  {
+   "file": "bookFlip1",
+   "at": "s18",
+   "off": 6.15,
+   "gain": -6
+  },
+  {
+   "file": "impactWood_medium_000",
+   "at": "s19",
+   "off": 5.2,
+   "gain": -14
+  },
+  {
+   "file": "rustle03",
+   "at": "s20",
+   "off": 1.6,
+   "gain": -12
+  },
+  {
+   "file": "paper_02",
+   "at": "s22",
+   "off": 0.5,
+   "gain": -10
+  },
+  {
+   "file": "paper_03",
+   "at": "s22",
+   "off": 2.0,
+   "gain": -10
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "s28",
+   "off": 0.95,
+   "gain": -4
+  },
+  {
+   "file": "wooden_01",
+   "at": "s28",
+   "off": 1.15,
+   "gain": -10
+  },
+  {
+   "file": "impactWood_medium_001",
+   "at": "s28",
+   "off": 1.25,
+   "gain": -10
+  },
+  {
+   "file": "cloth1",
+   "at": "s30",
+   "off": 0.5,
+   "gain": -6
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s31",
+   "off": 0.4,
+   "gain": -8
+  },
+  {
+   "file": "creak1",
+   "at": "s31",
+   "off": 0.9,
+   "gain": -6
+  },
+  {
+   "file": "rustle03",
+   "at": "s33",
+   "off": 0.4,
+   "gain": 6
+  },
+  {
+   "file": "impactBell_heavy_001",
+   "at": "s33",
+   "off": 1.0,
+   "gain": -12
+  },
+  {
+   "file": "cloth1",
+   "at": "s34",
+   "off": 5.2,
+   "gain": 0
+  },
+  {
+   "file": "paper_02",
+   "at": "s36",
+   "off": 0.3,
+   "gain": -9
+  },
+  {
+   "file": "paper_04",
+   "at": "s37",
+   "off": 0.5,
+   "gain": -8
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s38",
+   "off": 1.9,
+   "gain": -6
+  },
+  {
+   "file": "wooden_01",
+   "at": "s38",
+   "off": 2.2,
+   "gain": -14
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s39",
+   "off": 0.1,
+   "gain": -6
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s39",
+   "off": 0.6,
+   "gain": -6
+  },
+  {
+   "file": "paper_03",
+   "at": "s39",
+   "off": 1.5,
+   "gain": -11
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s40",
+   "off": 1.2,
+   "gain": -7
+  },
+  {
+   "file": "footstep_concrete_003",
+   "at": "s40",
+   "off": 1.6,
+   "gain": -7
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s40",
+   "off": 2.1,
+   "gain": -7
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s40",
+   "off": 2.7,
+   "gain": -7
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s40",
+   "off": 5.0,
+   "gain": -6
+  },
+  {
+   "file": "gong_02",
+   "at": "s40",
+   "off": 5.0,
+   "gain": -2
+  }
+ ],
+ "frame_round": true,
+ "clip_voice": true,
+ "voice_skip": {},
+ "voice_until": {},
+ "clip_af": {
+  "s02": {
+   "from": 0,
+   "af": "rubberband=pitch=0.80:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s10": {
+   "from": 0,
+   "af": "rubberband=pitch=1.25:formant=preserved,volume=3.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s16": {
+   "from": 0,
+   "af": "rubberband=pitch=1.25:formant=preserved,volume=3.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s03": {
+   "from": 0,
+   "af": "volume=-2.8dB"
+  },
+  "s04": {
+   "from": 0,
+   "af": "volume=-2.0dB"
+  },
+  "s05": {
+   "from": 0,
+   "af": "volume=-1.0dB"
+  },
+  "s26": {
+   "from": 0,
+   "af": "volume=-1.5dB"
+  },
+  "s29": {
+   "from": 0,
+   "af": "volume=-1.0dB"
+  },
+  "s30b": {
+   "from": 0,
+   "af": "volume=-0.8dB"
+  },
+  "s32": {
+   "from": 0,
+   "af": "volume=-0.6dB"
+  },
+  "s34": {
+   "from": 0,
+   "af": "volume=-0.6dB"
+  }
+ },
+ "voice_off": [
+  "s17",
+  "s35"
+ ],
+ "move_lines": {},
+ "min": {
+  "s40": 10.0
+ },
+ "line_at": {
+  "zq926a34": 0.4,
+  "zq926a36": 0.3,
+  "zq926a18": 0.03,
+  "zq926a28": 0.45
+ },
+ "line_lead": {},
+ "panel_y": {
+  "s20": 860
+ },
+ "panel_from": {},
+ "panel_color": {},
+ "panel_until": {},
+ "vf": {
+  "s05": "crop=1840:1035:0:22,scale=1920:1080:flags=lanczos,setsar=1",
+  "s22": "crop=1632:918:144:162,scale=1920:1080:flags=lanczos,setsar=1",
+  "s28": "split[a][b];[b]crop=280:232:1490:0,boxblur=24:2[bb];[a][bb]overlay=1490:0",
+  "s35": "crop=1824:1026:0:27,scale=1920:1080:flags=lanczos,setsar=1",
+  "s40": "fade=t=out:st=7.600:d=0.40"
+ },
+ "subtitle_lines": [],
+ "_note": "Live action, written 2026-11-17 from edit-dh-e925-live.json (its REVIEW 3 form: clip_af, voice_until/min for the end, vf crop-and-scale, effects judged by 20 ms RMS) on the refined, staged clips (_live-e926/zhong-tian-qu-qi-e926-dh/clips/sNN-t1.mp4, 41 shots with s30b, every one used, nothing dropped): clip_voice, no punch-in, slow-down <= 1.1, interpolate off, frame_round, no title card, names {}. Episode 26 is arc 3 (r2-bible-e021-e030.md). It picks up episode 25's close (the night ferry, three boats of cane, the note 囡囡，吃飽沒; e925's last shot has no Tang) the next morning in the Liuxi sugar shed: s01 is Tang from behind putting the folded note into her money box. Every offset is seconds from the first frame of the trimmed shot (c). SOURCES: script/storyboard/video.json/overlays.json in docs/videos/zhong-tian-qu-qi-e026-r2 (script.md's last two sections rule); picks.json from refine-prep.py 26 picks-merged.tsv fix1/review-picks.tsv review3-trims.tsv (fix1 retakes s28 9261201, s35 9261202, s40 9261201; the h3r.sh refine it prints was NOT run -- the 41 refined clips were already there, including s30b), staged with stage.py 26 (41 staged, 0 missing); e926cut.sh's want and seed tables hold every trim and seed; DROP empty; no crop= in the tsv. LINKS: zhong-tian-qu-qi-e926-dh/music -> ../_series/zhong-tian-qu-qi/music (by hand, the e925 way); stage.py links _live-e926/.../audio and music. Every effect is in the series library (one sfx dir). No new music, no paid service (no Colab, no RunPod, no site TTS). Work files: session scratchpad e926c/ (mkov.py wrote the first overrides.json; mkedit926.py + overrides.json + note.txt write this file; overrides.run1-3.json are the earlier states; lev926.py, meas.py, f0b.py (YIN), fw2.py, env.py, runclips.sh, runpt.sh, runct.sh, runfw.sh, mom.py, floor.py, sfxlev.py; whisper logs fwclips.txt, fwdrafts.txt, fwpt.txt, fwct.txt, fwcut.txt; mom1-5.txt, run1-5.log; frame sheets img/).\nTRIMS (review3-trims.tsv, new, first cut; one start@/end-before@ pair per row, no @ in the reasons; whole frames, a start rounded DOWN, an end UP). The picks were cut to lay recordings; four takes had the second half of their line cut off and one its first word, so the cut moved to the takes' own voices: s10 end 5.375 -> 6.584 (還有臉來討飯 back; draft whisper word for word, 飯 ends raw 6.46), s11 end 5.459 -> 6.584 (也被趕出來了, raw 6.44), s16 end 5.750 -> 6.584 (我盯著他, raw 6.52), s23 end 5.167 -> 6.584 (是妳的主意吧, raw 6.44), s30b start 1.000 -> 0.708 (放心 at raw 0.75-1.21 had been cut in half), s09 start 1.000 -> 0.333 (the first 是我 at raw 0.38-0.98 had been cut; frames raw 0.3-1.1 checked: he bows with joined hands). Silent tails over ~1 s cut: s01 end 4.875 (a01 ends c3.39; the lid closing stays), s15 end 7.125 (a16 ends c6.00), s25 end 3.875, s26 end 4.083, s27 end 4.792 (a28 laid from c0.45), s35 end 4.667. First assembly 202.29 s -> 201.13 s.\nVOICE: voice_off s17 s35 (the recording laid, the take muted): s35 (fix1 9261202) speaks the whole line word for word but at 276 Hz (Xu 96-148; x0.48 needed, beyond 0.62): a34 laid at line_at 0.40 (the lips run c0.33-4.04, the recording c0.40-3.45: the mouth closes ~0.6 s after the voice, as the post list warned); s17 Lai San's take is 235 Hz against his 127-165 in the other takes: x0.70 and x0.74 made whisper plain hear 卸取秀才, x0.78 was clean but 190 Hz, so a18 (172 Hz, -14.5 LUFS) is laid at line_at 0.03 (the take speaks c0.0-3.78, the recording 3.84 s). Every other on-screen speaker keeps the take's own voice: Erniu s02 s10 s16 s19; Xu s03 s05 s14 s23 s37; Xiaohe s04; Lai San s09 s11 s30b s32 s34; Wei Shaoqing s26 s29. faster-whisper medium on every voiced staged clip (numpy f32le, one clip per process, plain and with the line (or previous line + line) as context): every kept clip line word for word in context; plain homophones only (潛伏/前輔 for 錢府, 脂肪, 園外, 肝著/肝者, 竹扁, 柳西, 煲糖, 唐紡, 歸 for 閂, 現 for 限, 賬). Laid recordings: a01 a07 a12 a22 a25 (Tang from behind, nospeak), a06 (Xiaohe off), a08 (Erniu off), a13 a16 (Xu inner), a15 a21 (system), a17 not laid (s16 is the take), a18 (voice_off), a19 a23 a26 (Tang off), a28 (the Wei shop boy, off/profile), a30 (Xu off from the front room), a34 (voice_off), a36 (the queueing woman, off). line_at: a18 0.03, a28 0.45, a34 0.40, a36 0.30.\nPITCH (YIN 60-450 Hz, threshold 0.15, f0b.py; gate 0.01 for clips): Xu 96-148: s03 136, s05 103, s14 113, s23 122, s37 130; recordings a13 116, a16 113, a30 143, a34 138 -- kept. Erniu 180-250: s19 195 kept; s02 296 -> clip_af x0.80 (239; x0.72 made plain hear 三層桿子, x0.80 word for word); s10 165 (126 on the short pick) -> x1.25 (193) and s16 165 -> x1.25 (186), both word for word plain and in context; a08 182 kept. Lai San (first measured here: takes s09 138, s11 150, s30b 162, s32 133, s34 127; recordings a18 172) -- s17 above. Wei Shaoqing ~110-157: s26 147, s29 125 kept. Xiaohe (child): s04 333, a06 320 kept. Tang (same scene): scene 1 a01 250, a07 213, a12 190 kept as recorded (README); scene 2 a19 250, a22 246, a23 254, a25 262, a26 360 -> x0.8409 (-3 semitones, formant kept; 311 Hz): whisper plain (二牛,你看,隊伍排到結尾了) and context unchanged from the original, so the lowered one is used. Wei shop boy (e924/e925 221-235): a28 154 -> x1.30 (200; x1.40 made plain hear 店面 for 對面, x1.30 plain 全區對面, context word for word). a36 (the scream, 421 Hz): the README's third take -- plain 唐玲有毒 (first syllable tang, not cang), context 糖裡有毒; kept, 裡 by ear (take2/ has a clean 裡 but reads 藏).\nRECORDINGS (audio/, originals in audio/orig/ (17 files), file lengths unchanged; lev926.py = lev925.py: zeroed outside the source's -45 dB span -0.03/+0.10 s, integrated LUFS on that span; acompressor 3:1 at -20 dB + volume + alimiter 0.84, PRE rubberband for the shifts): to -14.5: a07 -18.0, a12 -19.7, a13 -16.8, a16 -19.4, a18 -17.3, a19 -15.6, a22 -17.1, a30 -16.3, a34 -15.9; a26 (x0.8409) and a28 (x1.30) after their shifts; a06 -11.5 -> -14.0 and a08 -17.3 -> -14.0 (their scene's takes sit at -12.5..-13); a25 -13.9 -> -14.8; a01 -15.3 -> -16.5 (the first line read 1 dB over its scene after loudnorm2, as e922's a01); system a15 -18.1, a21 -16.7 -> -14.6 with volume + alimiter 0.89 attack 10, no compressor. Untouched: a23 -14.6, a36 -12.3 (the scream), the clip-voiced lines, raw-tts files, take1/, take2/.\nLEVELS (clip voices toward the laid lines with clip_af; 0.4 s momentary p75 per line in the cut, mom5.txt): -11.3..-13.4 (a36 scream -10.5): s03 -2.8 dB (Xu's take is loud and fast: -11.3, the loudest line), s04 -2.0, s05 -1.0, s26 -1.5, s29 -1.0, s30b -0.8, s32 -0.6, s34 -0.6, s10 +3.5 and s16 +3.0 after their shifts (the alimiter 0.89 after each rubberband). Floor beds: the shed s01-s17 Wind -8 + fire -22 (the stove); the shop s18-s24 Wind -7; the street s25-s29 and s35-s40 Wind -6 + birds -20; the back room s30-s34 fire -20 (the oil lamp) + Wind -18. Floor dips under -40 M: 0.1-0.5 s at three scene changes (87.4 shed -> shop -46, 124.7-125.2 shop -> street -42, 171.3 back room -> street -42) and 0.1 s at 130.4, 143.2, 184.4 (-41); the end from 199.\nPANELS (no burned subtitles; soft CC at the bottom; light-blue frames): only s20 has one (白糖量產，達成 / 鬥商第二十六日，許記是魏記兩倍) with a21, panel_y 860 -- at the default 120 it sat on Xu's face (his head fills y 140-480); at 860 it covers the sugar box, nothing else on the bottom (a21 is panel only, no CC). a15 (s15, no overlay) gets a CC.\nMUSIC (library cues only, the script's plan approximated): (1) warm s01-s07 + 0.3 (-22, 0.3/1.5): the work cue in the shed; (2) night s08-s17 + 0.3 (-23, 0.8/1.5): turns low when the limping man appears; (3) market s18-s25 + 0.3 (-23, 0.5/1.2): the Xu shop doing well, the queue; (4) tension s26-s29 + 0.3 (-22, 0.3/1.5): Wei, the table; (5) suspense from 20 s, s30-s34 + 0.2 (-24, 1.0/1.5): the back room at dusk, low and without melody; (6) market from 40 s, s35-s37 (-23, 0.8/0.3, tail 0): the bright cue again, cut away at the fall -- s38 and s39 have no music; (7) suspense s40 (-21, 0.8/2.5). Ducked 3.5 : 1, release 900 ms. The system's ding is the assembler's synth before each system line (the s15 cold note).\nSFX (20 ms RMS in the cut, sfxlev.py; key effects with no line under them -22 or more): s01 paper_02 0.4 -10 + impactWood_light_000 3.4 -9 (-18.5) + metalLatch 3.7 -6 (-20.7) (the note in, the lid, the clasp); s02 impactWood_heavy_001 1.85 -10 (-11.8, the cane bundle); s03 splash_01 1.0 -28 (the pour, kept under Xu's line); s06 rustle03 0.4 -8 (sugar falling); s08 footstep_grass x4 0.3-3.0 (the limp); s12 impactWood_light_001 2.4 -12 (the box); s13 cloth1 0.4 0; s14 cloth2 4.2 0 (the apron handed over); s18 bookFlip1/2 x9 0.8-6.15 -6, closer and closer (-11..-22); s19 impactWood_medium_000 5.2 -14 (a crate down); s20 rustle03 1.6 -12 (sugar through his fingers); s22 paper_02 0.5 + paper_03 2.0 -10; s28 impactWood_heavy_000 0.95 -4 (-11.7, the table over) + wooden_01 1.15 + impactWood_medium_001 1.25 -10 (soap and cakes on the paving); s30 cloth1 0.5 -6 (wiping); s31 impactWood_light_001 0.4 -8 (-20.2) + creak1 0.9 -6 (-22.5) (the bar); s33 rustle03 0.4 +6 (-24, the fine powder) + impactBell_heavy_001 1.0 -12 (-21.8, the faint bell); s34 cloth1 5.2 0 (the pat on his chest); s36 paper_02 0.3 -9 (-21.7); s37 paper_04 0.5 -8 (-21.9); s38 impactSoft_heavy_000 1.9 -6 (-10.8, the fall) + wooden_01 2.2 -14 (-19.9, the cake rolls); s39 footstep_concrete x2 0.1/0.6 -6 (-13) + paper_03 1.5 -11 (-20.6); s40 footstep_concrete x4 1.2-2.7 -7 (the crowd backing off, -19..-20) + impactSoft_heavy_000 -6 + gong_02 -2 at c5.0 (-11.3).\nVF (on the 1920x1080 picture before the grade; nothing darkened): s05 crop=1840:1035:0:22 + scale (1.04x: Xiaohe's cheek at the right edge, raw 0.4-1.0, x 1876-1920 -- gone; her hands with the bowl stay); s22 crop=1632:918:144:162 + scale (1.18x, bottom: the false characters on the out-of-focus booklets at y 100-140 go); s28 boxblur 24 on x 1490-1770, y 0-232 (the 萬 banner face; its 10 px swing is after the trim); s35 crop=1824:1026:0:27 + scale (1.05x: the dark green sign with gold false characters at x 1840-1920 goes); s40 fade=t=out:st=7.600:d=0.40. Checked on the cut's frames (19.2, 19.6, 101.5, 110.1, 136.8, 137.6, 171.0, 196.0). s19's last frames: Erniu's hair clears the top edge, no change.\nJITTER: cut-qa's jitter() -- 41 shots steady, no deshake.\nEND: s40 is the fix1 suspense tail (8 s): a36 「糖裡有毒！」 off screen at c0.30 (ends c1.66), the crowd backs away (footsteps), the low hit and the gong at c5.0, the picture fades over c7.60-8.00 and min 10.0 holds 2.0 s of black while the gong rings out; e926cut.sh fades the sound over the last 1.0 s. The last clip-voiced line is s37's a35 (吧 ends c5.96 of 5.96): its CC ends with the shot, so voice_until stays empty; a36 is laid, its CC ends with the recording.\nACCEPTED (post list, no action): s21/s23 a little of Tang's left ear and cheek line; s11/s14/s23/s27/s34/s37/s05 smiles; s20 the far out-of-focus sign; s26 the shop boy facing us, the red bead strings; s29 bead strings behind; s14 the apron handed, not thrown; s33 the powder on top, white on the nails; s39 the round cake; s25 low camera, about seven customers; s18 the orange lining in her sleeve (1101); s40 all five customers back off to screen right; s19 Erniu speaks from c2.1 (the take's own voice: the lips follow it).\nRESULT (e926cut.sh, fifth run): 201.13 s (41 shots; first run 202.29); -14.0 LUFS, LRA 5.4, peak -3.2 dBFS; loudnorm2 linear (pre -15.06 LUFS, -4.27 dBTP + 1.06 = -3.21 <= -2.2); cut-qa: fps 24, loudness ok, motion 8.1 / static 3 % on the clips (6.6 / 7 % after grade and vignette), jitter ok, held FAIL s40 1.20 s and black FAIL 2 s -- the intended end under the black; cut-jumps 0; audio-qa 36 lines 0 problems (notes: 5.0 s without a line before a35 -- s35's tail and the s36 insert; 7.4 s before a36 -- the fall s37-s39); 35 CC entries (a21 panel only). Whisper on the cut (fwcut.txt; one span per process, plain and with the CC text as context): 0-13.7, 38.2-45.2, 38.8-55.7, 73.9-86.7, 109.5-119.3, 118.7-137.1, 170.4-192.5 -- every line word for word in context; plain homophones (這條, 肝者, 石困, 前輔/潛伏, 脂肪, 柳西, 許季, 結尾, 全區, 糖靈 for 糖裡) and plain 三長肝子 for s02's 三船甘蔗 and 店面 for a28's 對面 under the music (each clean alone).\nBY EAR / EYE: 4.38-8.88 s02 Erniu x0.80 (三船甘蔗 under the music); 8.88-13.29 s03 Xu loud and fast (-11.3); 38.54-44.75 s09 the new head (是我，是我); 44.75-49.92 s10 x1.25 +3.5 dB; 77.58-83.04 s16 x1.25 +3 dB; 83.04-87.37 s17 a18 laid on the take's mouth; 114.62-119.58 s23 the full take; 125.08-128.96 a26 at -3 semitones (still high, a happy call across the street); 133.04-137.33 a28 x1.30 on the shop boy's profile; 150.42-154.67 s30b 放心 at the new head; 171.00-175.33 s35 a34 laid (the mouth closes ~0.6 s late); 191.43-192.79 a36 糖裡有毒 (裡?); 196.13 the gong, black from 199.13; 0.12-3.32 a01 (-12.0, 1 dB over its scene)."
+}
