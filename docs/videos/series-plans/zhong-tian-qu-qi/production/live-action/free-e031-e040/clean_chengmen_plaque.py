@@ -1,7 +1,8 @@
 """clean_chengmen_plaque.py SRC DST [DX] [SLOPE] : paint the blank-looking plaque with faint fake characters out of
 screen-test seed 37038 of set-chengmen-ye-l1 (arc 4, 2026-11-17; rule 33: no hung signs, plaques grow writing).
-The plaque is the parallelogram at the top edge above the gate arch (x 246-406; its frame's lower edge runs from
-y 24 at x 262 to y 80 at x 398, following the brick courses). Each masked pixel (x, y) takes the wall pixel
+The plaque is masked as the parallelogram at the top edge above the gate arch, x 246-406, its lower edge from y 26 at
+x 246 to y 86 at x 406, following the brick courses (DX 132 was tried first: its source reaches the plaque's own
+lower-right orange frame and leaves an L-shaped mark, so DX is 160). Each masked pixel (x, y) takes the wall pixel
 (x + DX, y + SLOPE * DX), i.e. the same brick course further right, so the courses run on; the patch is scaled
 per colour channel to the mean of a 6 px ring of wall around the mask, and the mask is feathered 4 px."""
 import sys
