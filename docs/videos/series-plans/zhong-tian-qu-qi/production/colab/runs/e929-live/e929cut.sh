@@ -10,7 +10,8 @@ rm -rf $E/segments-v4
 # ../_series/zhong-tian-qu-qi/music (made by hand for e929, the e927/e928 way). stage.py also applies s10's crop=870:493:45:25
 # (fix1: the paper fills every frame from the crop on). Every effect is in the series library except murmur929.wav (the
 # square's crowd: twelve of this episode's recordings reversed and filtered, unintelligible; zhong-tian-qu-qi-e929-dh/sfx,
-# the edit table's second sfx dir). s31's vf reads the refined s32 picture directly (runpod/a/st2/refined/s32.mp4).
+# the edit table's second sfx dir; REVIEW 3 adds hooves929.wav there: hooves_trot 0-3.959 s, -24 dB rising to -16 by 1.7 s, faded
+# out over the last 0.6 s, laid at s31 c3.3 to s32 c0.8). s31's vf reads the refined s32 picture directly (runpod/a/st2/refined/s32.mp4).
 stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=os.path.getmtime(e+'/picks.json');print(' '.join(s for s in p if not os.path.exists(f'{e}/clips/{s}-t1.mp4') or os.path.getmtime(f'{e}/clips/{s}-t1.mp4')<t))")
 [ -z "$stale" ] || { echo "staging (stale: $stale)"; python3 $P/live-action/stage.py 29 || exit 1; }
 # e929 trims and seeds the edit table assumes (edit-dh-e929-live.json _note): picks.json as refine-prep.py 29 builds it from
