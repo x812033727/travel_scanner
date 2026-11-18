@@ -114,6 +114,25 @@ describe("Codex articles on the shared page", () => {
 });
 
 describe("further reading", () => {
+  it("keeps the chapter navigation beside a news story and moves trending links after it", async () => {
+    const slug = "ai-news-field-notes";
+    mocks.article.mockResolvedValue({
+      ...state, slug, series: null, news_date: "2026-11-17",
+      document: { ...document, title: "Field notes" },
+    });
+    mocks.trending.mockResolvedValueOnce({
+      articles: [{ kind: "life", slug: "another-story", title: "Another story", topics: [] }],
+      next_cursor: null, available: true,
+    });
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug }));
+    const story = container.querySelector("article[data-news-reading]")!;
+    expect(story.querySelector(":scope > header h1")?.textContent).toBe("Field notes");
+    expect(story.querySelector(":scope > aside nav")).not.toBeNull();
+    const trending = screen.getByRole("link", { name: "Another story" });
+    expect(story.compareDocumentPosition(trending) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(story.contains(trending)).toBe(false);
+  });
+
   const ref = (slug: string, title: string, kind: "life" | "howto" = "life") =>
     ({ kind, slug, title, description: `${title} 的描述` });
 

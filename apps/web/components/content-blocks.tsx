@@ -76,13 +76,26 @@ export function ImageCreditLine({ credit, prefix }: { credit: ImageCredit; prefi
 
 /** The article's answer, as a card: the two to five sentences a reader takes away. `id` is
  *  the article page's, so its speakable selector points here; the preview passes none. */
-export function SummaryCard({ items, heading, id }: { items: readonly string[]; heading?: string; id?: string }) {
+export function SummaryCard({ items, heading, id, moreLabel }: {
+  items: readonly string[]; heading?: string; id?: string; moreLabel?: string;
+}) {
+  const hasMore = Boolean(moreLabel && items.length > 1);
   return (
     <aside id={id} aria-label={heading} className="app-summary-card rounded-2xl p-4 md:p-5">
       {heading ? <p className="text-[length:var(--text-xs)] font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">{heading}</p> : null}
       <ul className="mt-2.5 list-disc space-y-2 pl-5 marker:text-[var(--teal)]">
-        {items.map((item, index) => <li key={index}>{item}</li>)}
+        {(hasMore ? items.slice(0, 1) : items).map((item, index) => <li key={index}>{item}</li>)}
       </ul>
+      {hasMore ? (
+        <details className="mt-1">
+          <summary className="min-h-11 w-fit cursor-pointer content-center rounded-sm pr-2 text-sm font-semibold text-[var(--teal-dark)] underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2">
+            {moreLabel}
+          </summary>
+          <ul className="list-disc space-y-2 pl-5 marker:text-[var(--teal)]">
+            {items.slice(1).map((item, index) => <li key={index}>{item}</li>)}
+          </ul>
+        </details>
+      ) : null}
     </aside>
   );
 }
