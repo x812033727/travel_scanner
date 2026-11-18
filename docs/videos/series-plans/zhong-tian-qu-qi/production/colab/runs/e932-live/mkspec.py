@@ -11,9 +11,11 @@ Run: python3 -I mkspec.py
   qinshuang-portrait-l1 only; r2.py FOOT is corrected to say so. Elder Han and Carpenter Shi: their portraits only.
 - The inserts s16 (the hands and the pick at the bottom of the shaft, review 必改 2) and s25b (the hanging hand, review 建議):
   r2.py wants no picture at all, but the H3 reference mode takes 1-9 pictures (check_manifest.py: "reference_images must list
-  1-9 images"; h3r.sh check and preflight refuse an empty list). So each sends ONE neutral picture, the free close crop of the
-  dry earth set-jingkeng-di-l1 (no pit mouth, no rim, no field edge, nobody: the review's danger in s16 was -kou's brick pit seen
-  from above, which grows "a head out of the ground"), and the sentence that would make it the place is rewritten: the set clause
+  1-9 images"; h3r.sh check and preflight refuse an empty list). So each sends ONE neutral picture (coordinator, 2026-11-18):
+  s25b the free close crop of the dry earth set-jingkeng-di-l1, s16 the free set-jingkeng-jingdi-l1 (jingkeng_jingdi.py: only
+  -di's soil colour, damp and dark, seeded grain, a narrow warm orange gradient along the top edge; no furrows, no pit mouth, no
+  bricks, nobody: the review's danger in s16 was -kou's brick pit seen from above, which grows "a head out of the ground", and
+  -di's bright orange furrows would grow a lit field), and the sentence that would make it the place is rewritten: the set clause
   becomes "The dry earth shown in <Picture 1> gives only the colour and grain of the soil." and the standard insert sentence
   "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood." becomes
   "Throughout the shot the framing stays as it is. The picture gives the colour of the earth only, never the mood." (the
@@ -36,7 +38,7 @@ Run: python3 -I mkspec.py
 - Sets (r2.py PLACES): the flipped dam set-shangyou-ba-fx (s01) and its crops -fx-lu (s02, s04, s07, s08, s10), -fx-shan (s03,
   s06), -fx-jiao (s05), -fx-ding (s09); the pits at dawn set-jingkeng-chen (s11), -kou-chen (s12, s14, s15), -dui-chen (s13); at
   dusk set-jingkeng (s20, gen-dh's own pick, not swapped), -kou (s17, s18, s19, s22), -dui (s23, s25), -tian (s24, s26, s26b),
-  -di (s21; and the two inserts s16, s25b as above); the hall at dusk set-citang-huang (s36), -huang-men (s27, s28, s30, s31, s37),
+  -di (s21; and the insert s25b), -jingdi (the insert s16); the hall at dusk set-citang-huang (s36), -huang-men (s27, s28, s30, s31, s37),
   -huang-qiang (s29), -huang-liang (s32), -huang-tang (s33), -huang-zuo (s34), -huang-zuo2 (s35). gen-dh's/pilot.py's
   set-liuxi-he-l1 and set-citang-l1 are never sent; set-citang-huang-zhuo-l1 is not sent (review 必改 6). Every swap is sent with
   an absolute path by prep932.sh.
@@ -92,7 +94,7 @@ LOC_ET = R2.LOC["jk_et"]
 add("s16", [f"Initial composition: {LOC_EC}: high-angle close shot", "Initial composition: High-angle close shot"])
 add("s25b", [f"Initial composition: {LOC_ET}: low orange evening light", "Initial composition: Low orange evening light"])
 for sid in INSERTS:
-    add(sid, [SET_CLAUSE, SOIL_CLAUSE])
+    add(sid, [SET_CLAUSE, SOIL_CLAUSE.replace("dry earth", "damp earth") if sid == "s16" else SOIL_CLAUSE])
     add(sid, [NOBODY_OLD, NOBODY_SOIL])
 # No person sent (s32): the set clause opens the sentence.
 add("s32", [SET_CLAUSE, "T" + SET_CLAUSE[1:]])
@@ -173,7 +175,7 @@ PLACE = {
     JK: {"set-jingkeng-chen-l1.png": ["s11"], "set-jingkeng-kou-chen-l1.png": ["s12", "s14", "s15"],
          "set-jingkeng-dui-chen-l1.png": ["s13"], "set-jingkeng-l1.png": ["s20"],
          "set-jingkeng-kou-l1.png": ["s17", "s18", "s19", "s22"], "set-jingkeng-dui-l1.png": ["s23", "s25"],
-         "set-jingkeng-tian-l1.png": ["s24", "s26", "s26b"], "set-jingkeng-di-l1.png": ["s21", "s16", "s25b"]},
+         "set-jingkeng-tian-l1.png": ["s24", "s26", "s26b"], "set-jingkeng-di-l1.png": ["s21", "s25b"], "set-jingkeng-jingdi-l1.png": ["s16"]},
     CT: {"set-citang-huang-l1.png": ["s36"], "set-citang-huang-men-l1.png": ["s27", "s28", "s30", "s31", "s37"],
          "set-citang-huang-qiang-l1.png": ["s29"], "set-citang-huang-liang-l1.png": ["s32"],
          "set-citang-huang-tang-l1.png": ["s33"], "set-citang-huang-zuo-l1.png": ["s34"],
@@ -202,8 +204,8 @@ for v in shots.values():
 
 spec = {
     "_note": ("e932 live d1 (e931-live's way, with e032's independent review applied; written by mkspec.py). No Tang Xiaotang or "
-              "A-ling. The inserts s16, s25b have no place sentence and send one neutral picture only, the dry-earth crop "
-              "set-jingkeng-di-l1, written as the colour of the soil, never the place (H3's reference mode needs 1-9 pictures; "
+              "A-ling. The inserts s16, s25b have no place sentence and send one neutral picture only (s16 the damp dark "
+              "set-jingkeng-jingdi-l1, s25b the dry-earth crop set-jingkeng-di-l1), written as the colour of the soil, never the place (H3's reference mode needs 1-9 pictures; "
               "r2.py's 'no picture' cannot be sent). No person sent in s32. Xu Yan's angle-b nowhere; the wides s10, s11, s36 his "
               "portrait only; s26, s26b his portrait then angle-a. Wang Erniu's close-ups s03, s06, s18 his portrait; the wides "
               "s10, s20, s23, s25 his portrait only. Qin Shuang her portrait only (no angle crop exists in refs-dh). Sets: see "

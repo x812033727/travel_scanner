@@ -53,7 +53,8 @@
 | `-kou-l1` | s17 s18 s19 s22 |
 | `-dui-l1` | s23 s25 |
 | `-tian-l1` | s24 s26 s26b |
-| `-di-l1` | s21；**插鏡 s16、s25b**（見下） |
+| `-di-l1` | s21；**插鏡 s25b**（見下） |
+| `set-jingkeng-jingdi-l1`（本集新做） | **插鏡 s16**（見下） |
 | `set-citang-huang-l1` | s36 |
 | `-huang-men-l1` | s27 s28 s30 s31 s37 |
 | `-huang-qiang`／`-liang`／`-tang`／`-zuo`／`-zuo2` | s29／s32／s33／s34／s35 |
@@ -64,19 +65,21 @@
 
 ### 插鏡 s16、s25b：「不送任何圖」做不到
 
+**協調者決定（2026-11-18 第二輪）**：s25b 送 `-di` 可以；s16 不送亮橘田壟，改送本集新做的免費圖 `set-jingkeng-jingdi-l1`：`live-action/free-e031-e040/jingkeng_jingdi.py`（只取 `-di` 的土色平均，壓成潮濕暗黃褐，固定種子 932016 的三層雜訊顆粒、四邊壓暗、上緣一道窄的暖橘光漸層；沒有田壟、裂紋、坑口、磚、人）。跑兩次逐位元相同（md5 `a4e2ac8c…`），全尺寸看過，已寫進 `assets/refs-live/README.md` 與 `r2.py`（docstring PLACES、s16 zh、FOOT）。s16 的 d1 場景句寫 `The damp earth shown in <Picture 1> gives only the colour and grain of the soil.`，s25b 寫 `The dry earth …`。`prep932.sh` 的免費圖重建比對加進這張（現在 23 張）。下面是第一輪的說明：
+
 `r2.py` 與任務要 s16、s25b「spec 不送任何圖」。但 H3 參考模式**一定要 1–9 張圖**：`check_manifest.py` 與 `h3r.sh check` 都報 `reference_images must list 1-9 images`，`retake.py` 的 `drop_set` 拿掉最後一張也會在改圖頭時出錯。所以每鏡只送**一張中性的圖**：乾裂土地的免費近裁 `set-jingkeng-di-l1`（俯看的乾田壟，沒有坑口、沒有坑邊、沒有人；審稿必改 2 擔心的是 `-kou` 從高處斜看磚坑，會長出「地上一顆人頭」），並把 d1 裡會讓它變成地點的兩句改掉：
 
 - 場景句 `the location shown in <Picture 1> is the set, keeping its layout and props.` → `The dry earth shown in <Picture 1> gives only the colour and grain of the soil.`
 - 插鏡標準句 → `Throughout the shot the framing stays as it is. The picture gives the colour of the earth only, never the mood.`（分隔句仍只出現一次）
 - d1 的地點句拿掉（同第 31 集 s18、s21）：s16 從 `High-angle close shot looking straight down` 開頭，s25b 從 `Low orange evening light from the left` 開頭。
 
-`prep932.sh` 掃這兩鏡：`well pit(s)`、`field`、`village`，再加 `pit`、`furrow`、`heap`、`willow`、`rim`、`row`、`Liuxi`、`the set`、`set layout`、`place`，都是 0。**風險**：s16 要的是暗的井底，`-di` 是亮橘色的乾田壟，草稿可能長出田壟；兩個種子都不像井底就請協調者決定：接受、改送別的圖，或照 `r2.py` s26 的備案改拍法。這是本集唯一跟 `r2.py` 原意不同的地方，**要協調者點頭**。
+`prep932.sh` 掃這兩鏡：`well pit(s)`、`field`、`village`，再加 `pit`、`furrow`、`heap`、`willow`、`rim`、`row`、`Liuxi`、`the set`、`set layout`、`place`，都是 0。（第一輪的風險：s16 送亮橘田壟會長出田壟，已由上面的新圖解決。）
 
 ### 檢查結果（`tools/prep932.log`，最後一次 2026-11-18，連跑三次結果相同）
 
 | 項目 | 結果 |
 | --- | --- |
-| 免費圖 | 22 張（壩 6、井坑 4＋清晨 3、祠堂 8＋整張）照 `shangyou_fx.sh`、`jingkeng_crops.sh`、`jingkeng_chen.sh`、`citang_huang.sh` 重建，跟 `refs-live` **逐位元相同**（這個容器原本沒有 scipy，`pip install scipy` 1.18.1 後才跑得動 `jingkeng_chen.py`、`citang_huang.py`；重建仍逐位元一樣） |
+| 免費圖 | 23 張（含 s16 的 `-jingdi`）（壩 6、井坑 4＋清晨 3、祠堂 8＋整張）照 `shangyou_fx.sh`、`jingkeng_crops.sh`、`jingkeng_chen.sh`、`citang_huang.sh` 重建，跟 `refs-live` **逐位元相同**（這個容器原本沒有 scipy，`pip install scipy` 1.18.1 後才跑得動 `jingkeng_chen.py`、`citang_huang.py`；重建仍逐位元一樣） |
 | 第一段 st1 DRY | 吃錨點形式；`check_manifest` 兩份 0 錯 0 警告；preflight 0 錯（8＋6 警告：扁擔、圖卷的紙、s36 的鋤頭、s07／s31 送了許硯帶笑的 angle-b——d1 已拿掉；石木匠的 skin 警告已由 extras 修掉）；精修文字放回且相符（`clips-dh-e932.json` sha256 開頭 `87c306f43af025e4`） |
 | 支數秒數 | **78 支**＝39 鏡 × 2 種子；5 秒 12 支、6 秒 40 支、8 秒 26 支，共 **508 秒**；每支秒數＝`clips-dh` 的 BUY |
 | 分隔句 | 78 支每支 `never the mood. ` 與 `One continuous shot.` 各剛好一次、順序對；`clips-dh` 39 鏡 `the set layout stays as it is. ` 各一次，三支沒人的鏡（s16、s25b、s32）`keeps the first frame's set layout and props.` 各一次 |
@@ -102,6 +105,13 @@
 - 第 32 集照支數與秒數比例（78/86、508/556）：約 **2.2–2.6 小時、22–26 CU，約 US$2.2–2.6**。餘額接近 400 CU 要先問站主（聖經〈還沒解決的〉1）。
 
 ## 4. 錄音待辦（沒錄：要站台 TTS）
+
+**第二輪狀態**：協調者要求現在錄，錄音腳本與讀音提示都已備好，但執行 `tools/rec932.sh`（站台付費 TTS）時被 Claude Code 的自動權限分類器拒絕：最初的任務明說「不用站台 TTS 錄音」，協調者後來的訊息不算使用者本人的同意。**要使用者本人允許（或自己執行）**。已備好：
+
+- scratchpad `tools/rec932.sh`：`lines.mjs` 錄 `zq932a01`–`zq932a36` 到 `/root/mokaair-work/videos/zhong-tian-qu-qi-e932-dh/audio/`，一句一次呼叫，已存在的檔會跳過。
+- scratchpad `tools/e932-tts-hints.json`：`video.json` 的暫存副本，只給 TTS 的拼音：a06「一擔擔」→`一dàndàn`、a11「待會」→`dāi會`、a19「得馬上」→`děi馬上`（`video.json` 與字幕不動）。faster-whisper 聽寫分不出聲調，所以多音字先用拼音指定。
+- 這個容器已裝 `faster-whisper` 1.2.1（medium 模型已在 HF 快取）與 scipy；`f0y931.py`、`fw931.py`、`span931.sh` 改成 932 的路徑即可用。
+- 錄完的順序：YIN 先量韓伯 a10、a12、a33–a36，跟石木匠 a27、a29、a31 比，差不到 3 個半音就把韓伯（或石木匠）用 `rubberband=pitch=…:formant=preserved` 移開（第 43 條），變調後帶上下文再聽寫；每句兩種聽寫（單句、帶上下文），念錯的移到 `take1/` 重錄；寫 `audio/README-retakes.txt`；`span` 量人聲長度重核 BUY（6 秒鏡 5.9 秒以內、8 秒鏡約 7.9 秒以內），超的改 `r2.py` 的 BUY、重 build、重跑 `prep932.sh`。
 
 36 句、6 個聲音（`video.json` 的 `voice`；音高範圍是聖經〈人物〉表的 YIN 中位數，第 43 條）：
 
@@ -164,8 +174,8 @@
 
 ## 5. 還擋著開拍的事
 
-1. **協調者要點頭插鏡 s16、s25b 的做法**：送一張 `-di` 乾土圖當「土的顏色」，不是 `r2.py` 寫的「不送任何圖」（H3 做不到）。
+1. ~~插鏡做法~~：協調者已決定（s16 新圖 `-jingdi`、s25b `-di`），已做完、prep 0 錯。
 2. **花錢的決定**：`e932d1.sh` 約 22–26 CU（約 US$2.2–2.6），要站主或協調者同意，並確認 Colab 餘額與 `zt-live2` 沒有別集在跑（第 31 集正在剪：工作樹裡有別人的 `e931cut.sh`、`edit-dh-e931-live.json`、`assemble-v4.mjs` 改動，跟本集無關，我沒碰）。
-3. **錄音沒錄**（站台 TTS）：不擋 d1 草稿，但擋挑片的對嘴與剪接；韓伯的音高還沒量。BUY 錄音後要照 `span931.sh` 重核，放不下就改 BUY 重跑 prep。
-4. s01 的家丁人數照實拍寫十四人（稿子十二人）：如果協調者要守稿子的十二人，改回 `RETAINERS` 並把 `exactly sixteen people` 改 fourteen，重 build、重跑 prep。
+3. **錄音沒錄**（站台 TTS，自動權限擋下，要使用者本人允許）：不擋 d1 草稿，但擋挑片的對嘴與剪接；韓伯的音高還沒量。BUY 錄音後要照 `span931.sh` 重核，放不下就改 BUY 重跑 prep。
+4. ~~家丁人數~~：協調者接受十四人照實拍。
 5. 備註：`colab/runs/e932/extras.json` 在別人的 WIP commit `0483945fa` 裡是第一次試跑時產生的佔位 `{}`；現在工作樹裡是真的版本，還沒 commit。
