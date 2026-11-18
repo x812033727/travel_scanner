@@ -18,6 +18,7 @@ from uuid import UUID, uuid4
 import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
+from pydantic import ValidationError
 from sqlalchemy import event, select
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
@@ -35,7 +36,8 @@ from app.problems import AppError, app_error_handler
 from app.video_backup import admin_api
 from app.video_backup import admin_settings as settings
 from app.video_backup import admin_status as status
-from app.video_backup.schemas import LockIn, ProbeAnswerIn, ReportIn, SettingsIn
+from app.video_backup.drive_links import drive_links, needs_drive_ids
+from app.video_backup.schemas import DriveIdsIn, LockIn, ProbeAnswerIn, ReportIn, SettingsIn
 from app.video_backup.target import (
     CURIO_THEME_CATEGORIES,
     SOTHATSWHY_CODE_CATEGORIES,
@@ -617,6 +619,64 @@ async def test_a_complete_report_is_done_and_one_missing_a_chosen_dub_is_partial
     )
 
 
+async def test_the_worker_files_the_drive_ids_of_a_backed_up_folder_and_the_admin_links_them(
+    site: Site,
+) -> None:
+    """Owner, 2026-11-18: open a video's Drive folder and its final cut from the admin
+    (app/video_backup/drive_links.py)."""
+    await site.add(project("curio-h01"))
+    folder = "AI劇/奇聞檔案局/H-歷史懸案/H01"
+
+    async def ids(**fields: Any) -> Any:
+        async with site.factory() as session:
+            return await status.record_drive_ids(session, "curio-h01", DriveIdsIn(**fields))
+
+    async def config_row() -> Any:
+        async with site.factory() as session:
+            config = await status.worker_config(session)
+        return next(video for video in config.videos if video.slug == "curio-h01")
+
+    assert (await config_row()).needs_drive_ids is False, "nothing in Drive to link yet"
+    with pytest.raises(AppError) as early:
+        await ids(folder=folder, folder_id="F" * 20)
+    assert early.value.code == "video_backup_not_done"
+
+    await report(site, "curio-h01", **done(folder))
+    assert (await config_row()).needs_drive_ids is True
+    with pytest.raises(AppError) as elsewhere:
+        await ids(folder="AI劇/奇聞檔案局/H01", folder_id="F" * 20)
+    assert elsewhere.value.code == "video_backup_folder_changed"
+
+    view = await ids(folder=folder, folder_id="1AbC_dEf-" + "x" * 20, final_file_id="9" * 25)
+    assert view.drive_folder_url == f"https://drive.google.com/drive/folders/1AbC_dEf-{'x' * 20}"
+    assert view.drive_final_url == f"https://drive.google.com/file/d/{'9' * 25}/view"
+    assert (await config_row()).needs_drive_ids is False
+    # A later done report keeps the ids; the catalog row links them too.
+    await report(site, "curio-h01", **done(folder))
+    async with site.factory() as session:
+        again = await status.video_status(session, "curio-h01")
+    assert again.drive_folder_url == view.drive_folder_url
+    stored = await site.video("curio-h01")
+    assert drive_links(stored.backup, folder) == (view.drive_folder_url, view.drive_final_url)
+    # A folder with no final.mp4 links the folder alone.
+    no_cut = await ids(folder=folder, folder_id="G" * 20)
+    assert no_cut.drive_final_url is None and no_cut.drive_folder_url
+
+    # The ids belong to the folder they were read for: once the video is filed elsewhere they
+    # are not offered, and the worker is asked for the new folder's.
+    assert drive_links(stored.backup, "AI劇/奇聞檔案局/H-歷史懸案/H02") == (None, None)
+    moved = {**(stored.backup or {}), "drive": {"folder": "x", "folder_id": "G" * 20}}
+    assert needs_drive_ids(moved, folder)
+
+
+@pytest.mark.parametrize("bad", ["short", "has space in it here", "x" * 201, "a/b/c/d/e/f/g/h"])
+def test_a_drive_id_is_letters_digits_dash_and_underscore(bad: str) -> None:
+    with pytest.raises(ValidationError):
+        DriveIdsIn(folder="AI劇/x", folder_id=bad)
+    with pytest.raises(ValidationError):
+        DriveIdsIn(folder="AI劇/x", folder_id="F" * 20, extra="no")  # type: ignore[call-arg]
+
+
 async def test_a_done_backup_reads_stale_once_the_owner_chooses_another_language(
     site: Site,
 ) -> None:
@@ -1038,6 +1098,10 @@ async def test_the_owner_and_the_worker_go_through_the_routes(site: Site) -> Non
         missing = await client.post(
             "/api/v1/video/automation/backup/no-such-video/report", json=done("x")
         )
+        linked = await client.post(
+            "/api/v1/video/automation/backup/curio-route/drive",
+            json={"folder": "AI劇/奇聞檔案局/curio-route", "folder_id": "F" * 20},
+        )
     assert saved.status_code == 200 and saved.json()["path"] == "AI/備份"
     assert locked.status_code == 200 and locked.json()["problem"] is None
     assert config.status_code == 200 and config.json()["remote_prefix"] == ""
@@ -1045,3 +1109,5 @@ async def test_the_owner_and_the_worker_go_through_the_routes(site: Site) -> Non
     assert detail.status_code == 200 and detail.json()["complete"] is True
     assert stray.status_code == 422
     assert missing.status_code == 404 and missing.json()["code"] == "video_backup_video_not_found"
+    assert linked.status_code == 200
+    assert linked.json()["drive_folder_url"] == f"https://drive.google.com/drive/folders/{'F' * 20}"

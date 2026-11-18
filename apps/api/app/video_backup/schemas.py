@@ -20,6 +20,8 @@ SeriesKey = Annotated[str, StringConstraints(pattern=SERIES_KEY_PATTERN)]
 Locale = Annotated[str, StringConstraints(pattern=r"^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?$")]
 Sha256 = Annotated[str, StringConstraints(pattern=r"^[a-f0-9]{64}$")]
 MissingFile = Annotated[str, StringConstraints(min_length=1, max_length=300)]
+# A Google Drive file or folder id, as rclone lsjson reports it.
+DriveId = Annotated[str, StringConstraints(pattern=r"^[A-Za-z0-9_-]{10,200}$")]
 
 
 class SettingsIn(BaseModel):
@@ -109,6 +111,17 @@ class ReportIn(BaseModel):
     total_bytes: int | None = Field(default=None, ge=0)
 
 
+class DriveIdsIn(BaseModel):
+    """The Drive ids the worker read for a backed-up video's folder (drive_links.py): the
+    folder's, and its final.mp4's when the folder holds one."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    folder: str = Field(min_length=1, max_length=500)
+    folder_id: DriveId
+    final_file_id: DriveId | None = None
+
+
 class BackupView(BaseModel):
     slug: str
     title: str
@@ -135,6 +148,10 @@ class BackupView(BaseModel):
     missing: list[str] = Field(default_factory=list)
     # Queued for longer than OVERDUE_HOURS without a finished backup.
     overdue: bool = False
+    # Links that open the folder and its final.mp4 in Google Drive, once the worker read their
+    # ids for this folder (drive_links.py); None until then.
+    drive_folder_url: str | None = None
+    drive_final_url: str | None = None
 
 
 class StatusView(BaseModel):
@@ -212,6 +229,9 @@ class WorkerVideo(BaseModel):
     backup: dict[str, object] | None
     # Set for an imported video only: the package the worker fetches from the review store.
     review_package: ReviewPackage | None = None
+    # Backed up, and the site has no Drive ids for its folder yet: the worker reads and reports
+    # them (POST {slug}/drive), whether or not the host still has the video's files.
+    needs_drive_ids: bool = False
 
 
 class WorkerProbe(BaseModel):

@@ -108,6 +108,8 @@ export type ProjectSummary = {
   series_slug?: string | null; episode_number?: number | null;
   // The show or drama the catalog files it under and an explainer show's topic (migration 0147).
   series_key?: string | null; topic?: string | null;
+  // Its Google Drive backup's folder and final.mp4, once the worker read their ids.
+  drive_folder_url?: string | null; drive_final_url?: string | null;
   // A binge series' compilation (docs/videos/BINGE.md): series_slug set, no episode number, and
   // a 1080p cut too big for the review store, downloaded from the worker's volume once it is there.
   compilation?: boolean; download_available?: boolean;

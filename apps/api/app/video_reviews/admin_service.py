@@ -84,6 +84,7 @@ from app.video_automation.settings import (
     look_pick_note,
     outline_demo_wanted,
 )
+from app.video_backup.drive_links import drive_links
 from app.video_media.meter import SlugSpend, spend_by_slug
 from app.video_reviews import admin_package_zip as package_zip
 from app.video_reviews import dub_retry, shelf
@@ -650,6 +651,10 @@ def _summary(
             )
             if code is not None:
                 retry_blocked[locale] = code
+    # The folder the worker last reported; its ids count only while they were read for it.
+    backup_record = project.backup if isinstance(project.backup, dict) else {}
+    folder = backup_record.get("folder")
+    drive = drive_links(backup_record, folder if isinstance(folder, str) else None)
     return {
         "dub_retries": retries,
         "dub_retry_blocked": retry_blocked,
@@ -701,6 +706,8 @@ def _summary(
         "series_slug": project.series_slug,
         "series_key": project.series_key,
         "topic": project.topic,
+        "drive_folder_url": drive[0],
+        "drive_final_url": drive[1],
         "episode_number": project.episode_number,
         "youtube_sync": public_state(project.youtube_sync),
     }

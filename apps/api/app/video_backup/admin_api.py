@@ -22,6 +22,7 @@ from app.video_backup import admin_settings as settings
 from app.video_backup import admin_status as status
 from app.video_backup.schemas import (
     BackupView,
+    DriveIdsIn,
     LockIn,
     ProbeAnswerIn,
     ProbeView,
@@ -105,3 +106,12 @@ async def answer_test(
 @tool_router.post("/{slug}/report", response_model=BackupView)
 async def report(slug: Slug, payload: ReportIn, tool: VideoTool, session: Session) -> BackupView:
     return await status.report(session, tool, slug, payload)
+
+
+@tool_router.post("/{slug}/drive", response_model=BackupView)
+async def report_drive_ids(
+    slug: Slug, payload: DriveIdsIn, tool: VideoTool, session: Session
+) -> BackupView:
+    """The Drive ids of a backed-up video's folder and final.mp4, for the admin's links."""
+    _ = tool
+    return await status.record_drive_ids(session, slug, payload)

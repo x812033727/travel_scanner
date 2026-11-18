@@ -21,9 +21,11 @@ from app.models import AdminAuditLog, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError
 from app.video_backup import admin_settings as backup_settings
 from app.video_backup.admin_settings import parse_time
+from app.video_backup.drive_links import BACKED_UP, drive_links, needs_drive_ids
 from app.video_backup.schemas import (
     BackupState,
     BackupView,
+    DriveIdsIn,
     ExpectedParts,
     ReportIn,
     ReviewPackage,
@@ -143,6 +145,7 @@ def backup_view(
                 if target.tier == "full" and copied_tier != "full":
                     missing.append("完整層級的 clips、keyframes、characters 等")
     queued_at = parse_time(record.get("queued_at"))
+    folder_url, final_url = drive_links(record, target.folder)
     return BackupView(
         slug=project.slug,
         title=project.title,
@@ -166,6 +169,8 @@ def backup_view(
         overdue=state in QUEUED
         and queued_at is not None
         and now - queued_at > timedelta(hours=OVERDUE_HOURS),
+        drive_folder_url=folder_url,
+        drive_final_url=final_url,
     )
 
 
@@ -364,6 +369,7 @@ async def worker_config(session: AsyncSession) -> WorkerConfig:
                 expected=ExpectedParts(**expected_parts(project)),
                 backup=project.backup if isinstance(project.backup, dict) else None,
                 review_package=packages.get(project.id),
+                needs_drive_ids=needs_drive_ids(project.backup, target.folder),
             )
         )
     return WorkerConfig(
@@ -472,5 +478,42 @@ async def report(
     record.setdefault("queued_at", now.isoformat())
     project.backup = record
     await backup_settings.record_space(session, payload.free_bytes, payload.total_bytes)
+    await session.commit()
+    return backup_view(project, config, now, superseded)
+
+
+async def record_drive_ids(
+    session: AsyncSession, slug: str, payload: DriveIdsIn
+) -> BackupView:
+    """The Drive ids the worker read for a backed-up video's folder (drive_links.py). Refused
+    for a folder that is no longer the video's, or one with no checked copy in it."""
+    project = await _project(session, slug)
+    row = await backup_settings.settings_row(session)
+    config = backup_settings.config_of(row)
+    superseded = await _superseded(session, project)
+    target = _target(project, config, superseded)
+    try:
+        folder = normalise_path(payload.folder)
+    except PathInvalid as error:
+        raise AppError(422, "video_backup_folder_invalid", str(error)) from None
+    if folder != target.folder:
+        raise AppError(
+            409,
+            "video_backup_folder_changed",
+            f"這支影片的備份資料夾是 {target.folder}，不是 {folder}；請重新讀取設定",
+        )
+    record = _record(project)
+    if record.get("state") not in BACKED_UP:
+        raise AppError(409, "video_backup_not_done", "這支影片還沒有備份完成，雲端資料夾還不能連結")
+    now = _now()
+    project.backup = {
+        **record,
+        "drive": {
+            "folder": folder,
+            "folder_id": payload.folder_id,
+            "final_file_id": payload.final_file_id,
+            "at": now.isoformat(),
+        },
+    }
     await session.commit()
     return backup_view(project, config, now, superseded)

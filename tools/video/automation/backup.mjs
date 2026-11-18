@@ -47,6 +47,11 @@ export const MAX_FAILURES = 3;
 export const FAILED_RETRY_MS = 6 * 60 * 60 * 1000;
 // Reports that only say "queued" or repeat a done the site missed; the token's window is 120 a minute.
 export const REPORTS_PER_ROUND = 10;
+// Backed-up videos whose Drive folder and final.mp4 ids the site asks for (needs_drive_ids), read
+// with two `rclone lsjson --stat` each, so the admin can link them (owner, 2026-11-18). Videos the
+// host already cleared count too: only Drive is read.
+export const DRIVE_LOOKUPS_PER_ROUND = 20;
+const DRIVE_ID = /^[A-Za-z0-9_-]{10,200}$/;
 // The full tier's extra files, beside upload/ (docs/videos/BACKUP.md §每一層備份哪些檔).
 // recordings/ holds an imported episode's line recordings (review-package.mjs, 2026-11-01).
 // Since 2026-11-03 the host clears a video whole once Drive holds it (tidy.mjs purge), so the full
@@ -337,6 +342,7 @@ export function backupClient(ctx) {
     lock: (body) => call("POST", "lock", body),
     answer: (id, body) => call("POST", `test/${id}`, body),
     report: (slug, body) => call("POST", `${slug}/report`, body),
+    drive: (slug, body) => call("POST", `${slug}/drive`, body),
     project: async (slug) => (await get(reviews(slug), "application/json")).json(),
     download: async (slug, sha256, target) => {
       const response = await get(`${reviews(slug)}/files/${sha256}`, "*/*");
@@ -799,7 +805,46 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     const next = await backUp(job, video, state);
     verdicts.set(video.slug, verdictOf(next));
   }
+  if (copy) await linkDriveIds(job, config.videos ?? []);
   return { lines, gate: withDeleted({ enabled: true, verdicts }) };
+}
+
+/** The Drive id rclone reports for one file or folder, or null when it is not there. */
+async function driveId(job, where) {
+  const found = await job.rclone(["lsjson", "--stat", where]);
+  if (found.code !== 0) return null;
+  try {
+    const item = JSON.parse(found.stdout);
+    return typeof item?.ID === "string" && DRIVE_ID.test(item.ID) ? item.ID : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * The Drive ids of backed-up videos the site has none for (apps/api/app/video_backup/drive_links.py):
+ * each folder's, and its final.mp4's when it holds one, at most DRIVE_LOOKUPS_PER_ROUND a round.
+ * A folder that cannot be read is tried again next round; nothing in Drive changes.
+ */
+export async function linkDriveIds(job, videos) {
+  let looked = 0;
+  for (const video of videos) {
+    if (!video?.needs_drive_ids || typeof video.slug !== "string" || !SLUG.test(video.slug) || typeof video.folder !== "string" || !video.folder) continue;
+    if (looked >= DRIVE_LOOKUPS_PER_ROUND) break;
+    looked += 1;
+    const where = `${job.remote}:${remoteJoin(job.prefix, video.folder)}`;
+    const folderId = await driveId(job, where);
+    if (!folderId) {
+      job.lines.push(`backup: ${video.slug}: the id of its Drive folder could not be read; the next round tries again`);
+      continue;
+    }
+    const finalId = await driveId(job, `${where}/final.mp4`);
+    try {
+      await job.client.drive(video.slug, { folder: video.folder, folder_id: folderId, ...(finalId ? { final_file_id: finalId } : {}) });
+    } catch (error) {
+      job.lines.push(`backup: ${video.slug}: the site did not take its Drive ids (${error.message}); they are read again next round`);
+    }
+  }
 }
 
 /** Whether the tidy may clear a video, from its backup state. */

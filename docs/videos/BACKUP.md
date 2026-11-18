@@ -230,6 +230,19 @@ Drive 裡把舊資料夾整個搬過去（伺服器端搬移、不重傳；若�
    送 10 筆「排入」或補送的回報。失敗的下一輪重試；連續失敗 3 次標記為 `failed`，寫入
    稽核紀錄，之後每 6 小時再試一次。工作根目錄的 `STOP` 檔也會停止備份。
 
+## 後台直接開雲端硬碟（2026-11-18）
+
+站主 2026-11-18：從後台直接點開每支影片在雲端硬碟的資料夾與成片。
+
+- 每一輪備份之後，worker 替站台說「還沒有連結」的影片（設定裡的 `needs_drive_ids`：備份 done 或 partial，
+  但站台沒有這個資料夾的 ID）各跑兩次 `rclone lsjson --stat`，讀資料夾和 `final.mp4` 的 Drive ID，
+  送到 `POST /api/v1/video/automation/backup/{slug}/drive`。一輪最多 `DRIVE_LOOKUPS_PER_ROUND`（20）支；
+  只讀 Drive，主機已經清掉檔案的舊影片也補得到。
+- 站台存在 `video_projects.backup["drive"]`，連同讀取時的資料夾（`apps/api/app/video_backup/drive_links.py`）。
+  資料夾換了（改名、搬家）就不再顯示舊連結，下一輪 worker 會讀新的。
+- 後台的備份清單和「全部影片」每一列顯示「在雲端硬碟開啟」與「開成片」，在新分頁打開。
+  資料夾裡沒有 `final.mp4` 的（例如只有製作檔）只給資料夾連結。
+
 ## 匯入的影片與手動推送的影片
 
 雲端 session 做的影片（例如第 31 集起在 Colab 做的種田娶妻打天下）用

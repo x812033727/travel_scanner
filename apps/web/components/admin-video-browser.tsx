@@ -8,6 +8,7 @@ import { AdminDataTable, AdminEmptyState, AdminErrorState, AdminFilterBar, Admin
 import {
   control, type FacetCount, isBlocked, type ProjectSummary, ProductionPill, PublishPill, publishState, REFRESH_MS, useWhen, VIDEO_CATEGORIES, type VideoCategory, type VideoPage, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
+import { DriveLinks } from "@/components/admin-video-backup";
 import { DeleteVideo } from "@/components/admin-video-delete";
 import { STORY_SERIES_SLUG } from "@/components/admin-video-stories";
 import { syncRunning } from "@/components/admin-video-youtube";
@@ -56,6 +57,7 @@ function VideoRow({ project, onOpen, onDeleted }: { project: ProjectSummary; onO
       <button type="button" className="text-left font-semibold underline-offset-2 hover:underline" onClick={() => onOpen(project.slug)}>{project.title}</button>
       <span className="block text-xs text-[var(--muted)]">{project.slug}</span>
       {project.series_slug && <span className="block text-xs text-[var(--muted)]">{project.compilation ? t("compilationOf", { series: project.series_slug }) : t("episodeOf", { series: project.series_slug, number: project.episode_number ?? 0 })}</span>}
+      <DriveLinks folder={project.drive_folder_url} final={project.drive_final_url} folderLabel={t("driveFolder")} finalLabel={t("driveFinal")} />
       {manage.allowed && <DeleteVideo project={project} compact onDeleted={onDeleted} />}
     </td>
     <td data-label={t("table.category")} className="px-4 py-3">

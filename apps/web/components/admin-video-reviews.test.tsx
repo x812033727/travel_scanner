@@ -1629,7 +1629,8 @@ describe("AdminVideoReviews", () => {
     const curio = (code: string, topic: string) => ({ ...summary, slug: `curio-${code}`, title: `奇聞 ${code}`, pending: 0, category: "explainer", series_key: "curio", topic });
     const drama = (series: string, number: number) => ({ ...summary, slug: `${series}-e00${number}`, title: `${series} ${number}`, pending: 0, category: "drama", series_key: series });
     const items: Item[] = [
-      curio("h01", "H-歷史懸案"), curio("h02", "H-歷史懸案"), curio("p01", "P-預言與末日"),
+      { ...curio("h01", "H-歷史懸案"), drive_folder_url: "https://drive.google.com/drive/folders/1AbCdEfGhIjKlMn", drive_final_url: "https://drive.google.com/file/d/9ZyXwVuTsRqPoNm/view" },
+      curio("h02", "H-歷史懸案"), curio("p01", "P-預言與末日"),
       { ...summary, slug: "sothatswhy-p17", title: "壁虎的腳", pending: 0, category: "explainer", series_key: "sothatswhy", topic: "生物動物與植物" },
       { ...summary, slug: "concept", title: "其他解說", pending: 0, category: "explainer" },
       drama("tai-nainai", 1), drama("tai-nainai", 2), drama("zhong-tian-qu-qi", 1),
@@ -1684,6 +1685,10 @@ describe("AdminVideoReviews", () => {
     expect(window.location.search).toBe(`?shelf=curio&topic=${encodeURIComponent("H-歷史懸案")}`);
     await waitFor(() => expect(tableRows(screen.getByRole("table", { name: "全部影片" }))).toHaveLength(2));
     expect(tableRows(screen.getByRole("table", { name: "全部影片" }))[0]).toContain("H-歷史懸案");
+    // A backed-up episode links its Drive folder and final cut from its row.
+    const linked = within(screen.getByRole("table", { name: "全部影片" })).getByRole("link", { name: "雲端資料夾" });
+    expect(linked.getAttribute("href")).toBe("https://drive.google.com/drive/folders/1AbCdEfGhIjKlMn");
+    expect(within(screen.getByRole("table", { name: "全部影片" })).getAllByRole("link", { name: "成片" })).toHaveLength(1);
 
     // 漫劇 offers its dramas by name; picking a show again clears the topic and the drama.
     fireEvent.click(within(screen.getByRole("group", { name: "節目" })).getByRole("button", { name: /^漫劇/ }));

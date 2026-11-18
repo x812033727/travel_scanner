@@ -396,6 +396,10 @@ class ProjectSummary(BaseModel):
     # The show or drama the catalog files it under and an explainer show's topic (migration 0147).
     series_key: str | None = None
     topic: str | None = None
+    # Its Google Drive backup's folder and final.mp4, once the worker read their ids
+    # (app/video_backup/drive_links.py); None until then.
+    drive_folder_url: str | None = None
+    drive_final_url: str | None = None
     # A compilation of a binge series (docs/videos/BINGE.md): its 1080p cut is too big for
     # the review store and is downloaded from the worker's volume when it is there.
     compilation: bool = False
