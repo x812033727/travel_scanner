@@ -4,7 +4,11 @@ The owner asked on 2026-11-17 to use two Google AI Ultra accounts besides the si
 each Ultra account comes with US$100 of Google Cloud credit a month that the Gemini API can
 spend. The extra keys are ``hotspot_guide_gemini_api_keys_extra`` (commas or white space); the
 site's own ``hotspot_guide_gemini_api_key`` comes last, so the free credit goes first and the
-paid key only takes over once every Ultra key is refused.
+paid key only takes over once every Ultra key is out of money (or over its budget). An Ultra key
+that is merely busy (Google's per-minute or per-day limit) keeps the call: the busy key that is
+free soonest is chosen, Google may refuse it for free, and the caller retries later. Sending the
+overflow to the site key instead (until 2026-11-18) put most narration on the paid key, because
+TTS on a Tier 1 project allows only a few calls a minute.
 
 Google publishes no API that reads what is left of the credit (only the AI Studio billing page
 shows it), so a key is judged by two signals:
@@ -325,9 +329,24 @@ async def choose(
     except RedisError as error:
         logger.warning("gemini pool: Redis failed (%s); using the first key", type(error).__name__)
         return keys[0]
-    usable = next((state for state in current if state.usable), None)
-    # None usable: the last key (the site's own) takes the call and its error goes up as before.
-    return keys[usable.position] if usable else keys[-1]
+    site = settings.hotspot_guide_gemini_api_key
+    extras = [state for state in current if keys[state.position] != site]
+    usable = next((state for state in extras if state.usable), None)
+    if usable:
+        return keys[usable.position]
+    # Every Ultra key is resting. One that is only busy still beats the paid key: take the one
+    # free soonest; Google's refusal costs nothing and the caller retries after Retry-After.
+    busy = [
+        state
+        for state in extras
+        if state.resting == "busy"
+        and not (state.budget_usd is not None and state.month_usd >= state.budget_usd)
+    ]
+    if busy:
+        return keys[min(busy, key=lambda state: state.rest_seconds).position]
+    # Every Ultra key is out of money: the site's own key (or, without one, the last key) takes the
+    # call and its error goes up as before.
+    return keys[-1]
 
 
 async def settings_with_key(redis: Redis | None, settings: Settings) -> Settings:
