@@ -1,0 +1,2848 @@
+{
+  "schema_version": 1,
+  "slug": "sothatswhy-g653-honey-crystallization",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8.5,
+    11.5
+  ],
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-cartoon"
+  },
+  "series": {
+    "slug": "sothatswhy",
+    "episode": 653,
+    "chapter": 1
+  },
+  "characters": [
+    {
+      "id": "chief",
+      "name": "所長",
+      "appearance": "a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, clean uncovered ears with zero pencil",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速輕快流暢，一秒五個字以上，句與句緊接、不拖長尾音。",
+        "tempo": 1.08
+      },
+      "sheet_prompt": "character reference: one single full-body 2.5-head chibi figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+    },
+    {
+      "id": "kid",
+      "name": "小問",
+      "appearance": "a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes with white highlights, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, empty hands with zero notebook",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快俐落，一秒五個字以上，句與句緊接、不拖長尾音。",
+        "tempo": 1.12
+      },
+      "sheet_prompt": "character reference: one single full-body 2.5-head chibi figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+    }
+  ],
+  "music": {
+    "track": "sothatswhy-p02-bed.m4a",
+    "sha256": "54169439df49a00bc3ad993a148690be9f79d1dff8a4ea5143e64e583001b20c",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "p001",
+      "payoff": "p012",
+      "what": "蜂蜜底部結出的白霜到底是什麼成分"
+    },
+    {
+      "setup": "p017",
+      "payoff": "p032",
+      "what": "為什麼洋槐蜜長年流動而油菜蜜迅速變硬"
+    },
+    {
+      "setup": "p037",
+      "payoff": "p052",
+      "what": "如果摻入假糖漿蜂蜜結晶會變快還是變慢"
+    },
+    {
+      "setup": "p057",
+      "payoff": "p072",
+      "what": "用熱水或微波溶晶會損失哪些微量活性成分"
+    },
+    {
+      "setup": "p077",
+      "payoff": "p094",
+      "what": "加熱過後看起來恢復透明的蜂蜜化學指標真的沒變嗎"
+    },
+    {
+      "setup": "p099",
+      "payoff": "p118",
+      "what": "奶油蜂蜜是怎麼做到細膩絲滑完全不刮舌頭的"
+    }
+  ],
+  "youtube": {
+    "title": "蜂蜜變白變硬，是被摻了糖嗎？｜原來如此事務所",
+    "description": "買回家的蜂蜜放一陣子底部結成白色硬膏，連湯匙都挖不動，真的是買到摻白糖的假蜜嗎？\n給曾經看著結晶蜂蜜猶豫要不要丟掉、或習慣泡熱水把蜂蜜融回液體的人。\n\n為什麼有的蜂蜜一年不結塊，有的幾週就硬化？把蜂蜜摻糖漿放兩年實測到底會怎樣？用熱水泡融真能「完好如初」嗎？本集由《原來如此事務所》所長與小問，用奈米原子探針、紅外光譜與食品流變學實驗，揭開蜂蜜結晶與頂級奶油蜜的真實奧祕！",
+    "tags": [
+      "蜂蜜",
+      "食品科學",
+      "原來如此事務所",
+      "結晶",
+      "奶油蜜",
+      "真假蜂蜜",
+      "科普",
+      "科學",
+      "生活科學",
+      "化學"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "heimao",
+      "headline": "變白結塊是**買到假蜜**？",
+      "sub": "純蜜跟糖漿實測，結果竟顛倒",
+      "asset": "docs/videos/sothatswhy-g653-honey-crystallization/thumbnail-bg.jpg"
+    },
+    "replaces": {
+      "template": "thumb",
+      "data": {
+        "headline": "蜂蜜變白變硬\n是被**摻了糖**嗎？",
+        "sub": "實驗結果竟然剛好相反",
+        "shot": "kid-hard-honey-a",
+        "subject": "right",
+        "tag": "科學"
+      }
+    }
+  },
+  "sources": [
+    {
+      "id": "K84-S001",
+      "title": "Nanoscale analysis of frozen honey by atom probe tomography",
+      "url": "https://doi.org/10.1038/s41598-022-22717-9",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "K84-S002",
+      "title": "Analysis of sugar crystal size in honey",
+      "url": "https://doi.org/10.1016/j.mex.2022.101823",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "K84-S003",
+      "title": "The Use of Ultrasound for Preventing Honey Crystallization",
+      "url": "https://doi.org/10.3390/foods10040773",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "K84-S004",
+      "title": "Tracking of Thermal, Physicochemical, and Biological Parameters of a Long-Term Stored Honey Artificially Adulterated with Sugar Syrups",
+      "url": "https://doi.org/10.3390/molecules28041736",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "K84-S005",
+      "title": "Relationship between Water Activity and Moisture Content in Floral Honey",
+      "url": "https://doi.org/10.3390/foods8010030",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "K84-S006",
+      "title": "Effect of Temperature and Time on the Physicochemical and Sensory Properties of Crystallized Honey",
+      "url": "https://doi.org/10.1021/acsomega.4c00570",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "K84-S007",
+      "title": "Effect of Liquefaction of Honey on the Content of Phenolic Compounds",
+      "url": "https://doi.org/10.3390/molecules28020714",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "K84-S008",
+      "title": "The High Pressure Preservation of Honey: A Comparative Study on Quality Changes during Storage",
+      "url": "https://doi.org/10.3390/foods13070989",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "K84-S009",
+      "title": "Rapid Detection of Thermal Treatment of Honey by Chemometrics-Assisted FTIR Spectroscopy",
+      "url": "https://doi.org/10.3390/foods10112892",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "K84-S010",
+      "title": "Bioactive compounds and antibacterial activities in crystallized honey liquefied with ultrasound",
+      "url": "https://doi.org/10.1016/j.ultsonch.2021.105619",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "K84-S011",
+      "title": "Rheology of Indian Honey: Effect of Temperature and Gamma Radiation",
+      "url": "https://doi.org/10.1155/2014/935129",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "K84-S012",
+      "title": "Influence of Stirring Parameters on Creaminess of Spring Blossom Honey Measured by Crystal Size, Whiteness Index and Mouthfeel",
+      "url": "https://doi.org/10.3390/foods12010048",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "id": "K84-S013",
+      "title": "Influence of seed concentration and storage time on the rheological, textural, and microscopic crystallization attributes of Apis mellifera honey",
+      "url": "https://doi.org/10.1016/j.fochx.2025.102634",
+      "checked_on": "2026-11-17"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "kid-hard-honey-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of cozy question office interior, warm sunlight streaming through window, curious 8-year-old girl with short black bob and cowlick, wearing navy toggle raincoat with mustard hood, holding a transparent glass honey jar with thick white solid crust at the bottom, trying hard to dig with a metal spoon, puzzled expression",
+        "camera": "Medium shot, static",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p001",
+          "speaker": "kid",
+          "text": "所長你看！我上個月買的天然蜂蜜，",
+          "pause_after_ms": 750,
+          "emotion": "好奇困惑"
+        }
+      ],
+      "chapter": "蜂蜜上那層白，到底是什麼？"
+    },
+    {
+      "id": "kid-hard-honey-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of cozy question office interior, warm sunlight streaming through window, curious 8-year-old girl with short black bob and cowlick, wearing navy toggle raincoat with mustard hood, holding a transparent glass honey jar with thick white solid crust at the bottom, trying hard to dig with a metal spoon, puzzled expression, detailed continuation focus",
+        "camera": "Medium close-up, static",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p002",
+          "speaker": "kid",
+          "text": "最近底部竟然浮起一層白白厚厚的硬塊，",
+          "pause_after_ms": 750,
+          "emotion": "驚訝納悶"
+        }
+      ]
+    },
+    {
+      "id": "kid-hard-honey-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of cozy question office interior, warm sunlight streaming through window, curious 8-year-old girl with short black bob and cowlick, wearing navy toggle raincoat with mustard hood, holding a transparent glass honey jar with thick white solid crust at the bottom, trying hard to dig with a metal spoon, puzzled expression, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p003",
+          "speaker": "kid",
+          "text": "硬到湯匙都快挖彎了！",
+          "pause_after_ms": 750,
+          "emotion": "誇張抱怨"
+        }
+      ]
+    },
+    {
+      "id": "kid-hard-honey-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of cozy question office interior, warm sunlight streaming through window, curious 8-year-old girl with short black bob and cowlick, wearing navy toggle raincoat with mustard hood, holding a transparent glass honey jar with thick white solid crust at the bottom, trying hard to dig with a metal spoon, puzzled expression, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p004",
+          "speaker": "kid",
+          "text": "上網一查大家都說這是摻了白砂糖的假蜜，我是不是被坑了啊？",
+          "pause_after_ms": 950,
+          "emotion": "著急詢問"
+        }
+      ]
+    },
+    {
+      "id": "chief-supersaturated-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of friendly middle-aged female chief with round glasses, dark ponytail with grey streak, mustard yellow cardigan, holding the honey jar with a reassuring gentle smile, cozy wooden office bookshelf background",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p005",
+          "speaker": "chief",
+          "text": "先別急著丟！恰恰相反，這罐蜂蜜很可能是純得不能再純的頂級好蜜。",
+          "pause_after_ms": 750,
+          "emotion": "溫和微笑"
+        }
+      ]
+    },
+    {
+      "id": "chief-supersaturated-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of friendly middle-aged female chief with round glasses, dark ponytail with grey streak, mustard yellow cardigan, holding the honey jar with a reassuring gentle smile, cozy wooden office bookshelf background, detailed continuation focus",
+        "camera": "Medium close-up, static",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p006",
+          "speaker": "chief",
+          "text": "大家常以為蜂蜜是一罐金黃透明的純液體，",
+          "pause_after_ms": 750,
+          "emotion": "耐心解說"
+        }
+      ]
+    },
+    {
+      "id": "chief-supersaturated-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of friendly middle-aged female chief with round glasses, dark ponytail with grey streak, mustard yellow cardigan, holding the honey jar with a reassuring gentle smile, cozy wooden office bookshelf background, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p007",
+          "speaker": "chief",
+          "text": "但從物理化學來看，它本質上是一罐糖多到快裝不下的超濃過飽和溶液，",
+          "pause_after_ms": 750,
+          "emotion": "專業分析"
+        }
+      ]
+    },
+    {
+      "id": "chief-supersaturated-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of friendly middle-aged female chief with round glasses, dark ponytail with grey streak, mustard yellow cardigan, holding the honey jar with a reassuring gentle smile, cozy wooden office bookshelf background, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p008",
+          "speaker": "chief",
+          "text": "水分通常只有百分之十八左右，剩下的八成全都是糖！",
+          "pause_after_ms": 950,
+          "emotion": "強調重點"
+        }
+      ]
+    },
+    {
+      "id": "stuttgart-apt-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up macro scientific laboratory illustration showing a high-tech atom probe tomography chamber, a tiny drop of frozen amber honey mounted on a tungsten needle tip below 100 nanometers at minus 150 degrees Celsius, laser pulse focused on the apex, cool blue and amber scientific atmosphere, no people, clean composition",
+        "camera": "Macro shot, slow push in",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p009",
+          "speaker": "chief",
+          "text": "為了解開這層白霜的起點，德國斯圖加特大學團隊做了一個極致實驗：",
+          "pause_after_ms": 750,
+          "emotion": "引導探究"
+        }
+      ]
+    },
+    {
+      "id": "stuttgart-apt-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up macro scientific laboratory illustration showing a high-tech atom probe tomography chamber, a tiny drop of frozen amber honey mounted on a tungsten needle tip below 100 nanometers at minus 150 degrees Celsius, laser pulse focused on the apex, cool blue and amber scientific atmosphere, no people, clean composition, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p010",
+          "speaker": "chief",
+          "text": "他們用細鎢絲沾起一滴市售蜂蜜，浸入零下兩百度液態氮急凍，",
+          "pause_after_ms": 750,
+          "emotion": "嚴謹敘述"
+        }
+      ]
+    },
+    {
+      "id": "stuttgart-apt-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up macro scientific laboratory illustration showing a high-tech atom probe tomography chamber, a tiny drop of frozen amber honey mounted on a tungsten needle tip below 100 nanometers at minus 150 degrees Celsius, laser pulse focused on the apex, cool blue and amber scientific atmosphere, no people, clean composition, detailed continuation focus",
+        "camera": "Close-up, slow push in",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p011",
+          "speaker": "chief",
+          "text": "在零下一百五十度下削成半徑不到一百奈米的極細針尖，",
+          "pause_after_ms": 750,
+          "emotion": "專注說明"
+        }
+      ]
+    },
+    {
+      "id": "stuttgart-apt-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up macro scientific laboratory illustration showing a high-tech atom probe tomography chamber, a tiny drop of frozen amber honey mounted on a tungsten needle tip below 100 nanometers at minus 150 degrees Celsius, laser pulse focused on the apex, cool blue and amber scientific atmosphere, no people, clean composition, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p012",
+          "speaker": "chief",
+          "text": "再放進雷射原子探針裡，把分子碎片一顆一顆拔下來重建三維空間。",
+          "pause_after_ms": 950,
+          "emotion": "精準揭示"
+        }
+      ]
+    },
+    {
+      "id": "nanoclusters-proof-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific 3D visualization of atom probe tomography data volume, a nanoscale box of 12 by 12 by 35 nanometers showing six distinct clusters of sugar fragments colored in warm glowing orange, surrounded by lighter blue water molecular cloud, clean minimalist physics diagram, no people, no text",
+        "camera": "Slow rotational pan",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p013",
+          "speaker": "chief",
+          "text": "結果在一個十二乘十二、長三十五奈米的極小盒子裡，",
+          "pause_after_ms": 750,
+          "emotion": "揭露數據"
+        }
+      ]
+    },
+    {
+      "id": "nanoclusters-proof-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific 3D visualization of atom probe tomography data volume, a nanoscale box of 12 by 12 by 35 nanometers showing six distinct clusters of sugar fragments colored in warm glowing orange, surrounded by lighter blue water molecular cloud, clean minimalist physics diagram, no people, no text, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p014",
+          "speaker": "chief",
+          "text": "研究人員清楚抓到了六個富糖團簇！",
+          "pause_after_ms": 750,
+          "emotion": "清晰指認"
+        }
+      ]
+    },
+    {
+      "id": "nanoclusters-proof-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific 3D visualization of atom probe tomography data volume, a nanoscale box of 12 by 12 by 35 nanometers showing six distinct clusters of sugar fragments colored in warm glowing orange, surrounded by lighter blue water molecular cloud, clean minimalist physics diagram, no people, no text, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p015",
+          "speaker": "chief",
+          "text": "團簇長度在四點三六到十五點七八奈米之間，糖碎片比例高達百分之七十七點四五，",
+          "pause_after_ms": 750,
+          "emotion": "專業數值"
+        }
+      ]
+    },
+    {
+      "id": "nanoclusters-proof-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific 3D visualization of atom probe tomography data volume, a nanoscale box of 12 by 12 by 35 nanometers showing six distinct clusters of sugar fragments colored in warm glowing orange, surrounded by lighter blue water molecular cloud, clean minimalist physics diagram, no people, no text, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p016",
+          "speaker": "chief",
+          "text": "這證明在分子尺度下，糖分子早就自發聚整合群，準備發動相變析出！",
+          "pause_after_ms": 950,
+          "emotion": "定論解析"
+        }
+      ]
+    },
+    {
+      "id": "crystal-macro-size-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of 8-year-old girl in navy jacket and mustard hood, looking through an optical microscope in the office laboratory, eyes wide in wonder, colorful polarized crystal reflections on the microscope stage, cheerful and enthusiastic expression",
+        "camera": "Close-up, tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p017",
+          "speaker": "kid",
+          "text": "哇！原來在肉眼還看不見時，奈米級的糖團簇就已經在偷偷排隊了！",
+          "pause_after_ms": 750,
+          "emotion": "恍然大悟"
+        }
+      ]
+    },
+    {
+      "id": "crystal-macro-size-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of 8-year-old girl in navy jacket and mustard hood, looking through an optical microscope in the office laboratory, eyes wide in wonder, colorful polarized crystal reflections on the microscope stage, cheerful and enthusiastic expression, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p018",
+          "speaker": "kid",
+          "text": "等它們一個個抱團長大，就變成了顯微鏡下量到的那些長達三分之一毫米的大晶體，",
+          "pause_after_ms": 750,
+          "emotion": "連貫思維"
+        }
+      ]
+    },
+    {
+      "id": "crystal-macro-size-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of 8-year-old girl in navy jacket and mustard hood, looking through an optical microscope in the office laboratory, eyes wide in wonder, colorful polarized crystal reflections on the microscope stage, cheerful and enthusiastic expression, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p019",
+          "speaker": "kid",
+          "text": "也就是我們罐子裡看見的那層白霜對不對？",
+          "pause_after_ms": 750,
+          "emotion": "滿懷期待"
+        }
+      ]
+    },
+    {
+      "id": "crystal-macro-size-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of 8-year-old girl in navy jacket and mustard hood, looking through an optical microscope in the office laboratory, eyes wide in wonder, colorful polarized crystal reflections on the microscope stage, cheerful and enthusiastic expression, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p020",
+          "speaker": "chief",
+          "text": "沒錯！那層白霜不是假糖，正是如假包換的天然葡萄糖結晶！",
+          "pause_after_ms": 950,
+          "emotion": "肯定答覆"
+        }
+      ]
+    },
+    {
+      "id": "kid-two-honeys-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of wooden desk with curious 8-year-old girl, holding two distinct honey jars side by side: left jar is clear golden liquid acacia honey flowing smoothly, right jar is cloudy opaque white crystallized rapeseed honey solid as butter, comparing them with quizzical look",
+        "camera": "Medium shot, pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p021",
+          "speaker": "kid",
+          "text": "可是所長，如果蜂蜜都是過飽和糖水，",
+          "pause_after_ms": 750,
+          "emotion": "好奇發問"
+        }
+      ],
+      "chapter": "為什麼有的蜂蜜一直流，有的整罐硬？"
+    },
+    {
+      "id": "kid-two-honeys-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of wooden desk with curious 8-year-old girl, holding two distinct honey jars side by side: left jar is clear golden liquid acacia honey flowing smoothly, right jar is cloudy opaque white crystallized rapeseed honey solid as butter, comparing them with quizzical look, detailed continuation focus",
+        "camera": "Medium close-up, static",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p022",
+          "speaker": "kid",
+          "text": "為什麼我阿嬤家這罐洋槐蜜放了一年還是順滑好倒，",
+          "pause_after_ms": 750,
+          "emotion": "比對觀察"
+        }
+      ]
+    },
+    {
+      "id": "kid-two-honeys-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of wooden desk with curious 8-year-old girl, holding two distinct honey jars side by side: left jar is clear golden liquid acacia honey flowing smoothly, right jar is cloudy opaque white crystallized rapeseed honey solid as butter, comparing them with quizzical look, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p023",
+          "speaker": "kid",
+          "text": "而旁邊這罐油菜蜜買回來才幾週，就整罐凝固成白色硬膏呢？",
+          "pause_after_ms": 750,
+          "emotion": "納悶不解"
+        }
+      ]
+    },
+    {
+      "id": "kid-two-honeys-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of wooden desk with curious 8-year-old girl, holding two distinct honey jars side by side: left jar is clear golden liquid acacia honey flowing smoothly, right jar is cloudy opaque white crystallized rapeseed honey solid as butter, comparing them with quizzical look, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p024",
+          "speaker": "chief",
+          "text": "這就問到了結晶的真正核心！秘密就藏在蜜蜂採的花蜜裡。",
+          "pause_after_ms": 950,
+          "emotion": "引人入勝"
+        }
+      ]
+    },
+    {
+      "id": "glucose-vs-fructose-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Informational split illustration: left side shows fructose molecules dissolving effortlessly in vibrant blue water beaker, right side shows glucose molecules forming rigid hexagonal crystal lattice precipitating to beaker floor, clean anime infographic style, no text, warm lighting",
+        "camera": "Slow pan across diagram",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p025",
+          "speaker": "chief",
+          "text": "蜂蜜裡主要有兩大單糖：果糖和葡萄糖。",
+          "pause_after_ms": 750,
+          "emotion": "條理分明"
+        }
+      ]
+    },
+    {
+      "id": "glucose-vs-fructose-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Informational split illustration: left side shows fructose molecules dissolving effortlessly in vibrant blue water beaker, right side shows glucose molecules forming rigid hexagonal crystal lattice precipitating to beaker floor, clean anime infographic style, no text, warm lighting, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p026",
+          "speaker": "chief",
+          "text": "果糖是個水溶性超強的社交達人，一百克水可以溶解近四百克果糖；",
+          "pause_after_ms": 750,
+          "emotion": "生動比喻"
+        }
+      ]
+    },
+    {
+      "id": "glucose-vs-fructose-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Informational split illustration: left side shows fructose molecules dissolving effortlessly in vibrant blue water beaker, right side shows glucose molecules forming rigid hexagonal crystal lattice precipitating to beaker floor, clean anime infographic style, no text, warm lighting, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p027",
+          "speaker": "chief",
+          "text": "但葡萄糖卻非常內向難溶，一百克水只能溶大約九十克葡萄糖。",
+          "pause_after_ms": 750,
+          "emotion": "對比特徵"
+        }
+      ]
+    },
+    {
+      "id": "glucose-vs-fructose-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Informational split illustration: left side shows fructose molecules dissolving effortlessly in vibrant blue water beaker, right side shows glucose molecules forming rigid hexagonal crystal lattice precipitating to beaker floor, clean anime infographic style, no text, warm lighting, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p028",
+          "speaker": "chief",
+          "text": "所以結晶的主角，永遠是快被擠出水面的葡萄糖！",
+          "pause_after_ms": 950,
+          "emotion": "明確結論"
+        }
+      ]
+    },
+    {
+      "id": "nine-months-room-test-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot of a tidy laboratory shelf in Suceava University, row of seven distinct sealed glass honey jars numbered and monitored at 18 to 20 degrees Celsius, natural room light, clean scientific setting, no people",
+        "camera": "Medium tracking shot",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p029",
+          "speaker": "chief",
+          "text": "羅馬尼亞蘇恰瓦大學曾把七種不同花種的天然蜂蜜，",
+          "pause_after_ms": 750,
+          "emotion": "介紹實驗"
+        }
+      ]
+    },
+    {
+      "id": "nine-months-room-test-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot of a tidy laboratory shelf in Suceava University, row of seven distinct sealed glass honey jars numbered and monitored at 18 to 20 degrees Celsius, natural room light, clean scientific setting, no people, detailed continuation focus",
+        "camera": "Medium close-up, static",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p030",
+          "speaker": "chief",
+          "text": "放在十八到二十度的同一個房間裡，連續觀察了整整九個月。",
+          "pause_after_ms": 750,
+          "emotion": "客觀條件"
+        }
+      ]
+    },
+    {
+      "id": "nine-months-room-test-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot of a tidy laboratory shelf in Suceava University, row of seven distinct sealed glass honey jars numbered and monitored at 18 to 20 degrees Celsius, natural room light, clean scientific setting, no people, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p031",
+          "speaker": "chief",
+          "text": "所有環境、光照和溫度完全一致，只讓花種本身的成分說話。",
+          "pause_after_ms": 750,
+          "emotion": "控制變因"
+        }
+      ]
+    },
+    {
+      "id": "nine-months-room-test-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot of a tidy laboratory shelf in Suceava University, row of seven distinct sealed glass honey jars numbered and monitored at 18 to 20 degrees Celsius, natural room light, clean scientific setting, no people, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p032",
+          "speaker": "kid",
+          "text": "在同一個房間放九個月，結果到底差了多少？",
+          "pause_after_ms": 950,
+          "emotion": "追問結果"
+        }
+      ]
+    },
+    {
+      "id": "acacia-vs-rapeseed-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up macro comparison: left side polarized microscopy showing liquid acacia honey with only tiny sparse crystal seeds, right side showing dense interlocking coarse glucose crystals of rapeseed honey with mechanical hardness probe pressing on firm white texture, high detail",
+        "camera": "Macro focus shift",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p033",
+          "speaker": "chief",
+          "text": "結果葡萄糖少、果糖多的洋槐蜜，九個月下來顯微鏡下只有零星晶粒，始終是流動液體；",
+          "pause_after_ms": 750,
+          "emotion": "數據呈現"
+        }
+      ]
+    },
+    {
+      "id": "acacia-vs-rapeseed-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up macro comparison: left side polarized microscopy showing liquid acacia honey with only tiny sparse crystal seeds, right side showing dense interlocking coarse glucose crystals of rapeseed honey with mechanical hardness probe pressing on firm white texture, high detail, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p034",
+          "speaker": "chief",
+          "text": "但葡萄糖含量超過百分之四十的油菜蜜，短時間內就結滿粗大晶體，",
+          "pause_after_ms": 750,
+          "emotion": "強烈對比"
+        }
+      ]
+    },
+    {
+      "id": "acacia-vs-rapeseed-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up macro comparison: left side polarized microscopy showing liquid acacia honey with only tiny sparse crystal seeds, right side showing dense interlocking coarse glucose crystals of rapeseed honey with mechanical hardness probe pressing on firm white texture, high detail, detailed continuation focus",
+        "camera": "Close-up, slow push in",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p035",
+          "speaker": "chief",
+          "text": "機械質構測定的硬度更暴增到原本的三倍以上！",
+          "pause_after_ms": 750,
+          "emotion": "驚人數字"
+        }
+      ]
+    },
+    {
+      "id": "acacia-vs-rapeseed-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up macro comparison: left side polarized microscopy showing liquid acacia honey with only tiny sparse crystal seeds, right side showing dense interlocking coarse glucose crystals of rapeseed honey with mechanical hardness probe pressing on firm white texture, high detail, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p036",
+          "speaker": "chief",
+          "text": "一罐軟如水，一罐硬如石，天差地別。",
+          "pause_after_ms": 950,
+          "emotion": "總結反差"
+        }
+      ]
+    },
+    {
+      "id": "gf-ratio-destiny-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of chief in yellow cardigan, explaining warmly with expressive hand gesture, colorful botanical chart of black locust blossoms and yellow rapeseed flowers on the corkboard behind her, cheerful atmosphere",
+        "camera": "Medium close-up, static",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p037",
+          "speaker": "chief",
+          "text": "所以會不會變硬、結晶快不快，完全由蜜源花種的葡萄糖與果糖比例決定！",
+          "pause_after_ms": 750,
+          "emotion": "核心定調"
+        }
+      ]
+    },
+    {
+      "id": "gf-ratio-destiny-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of chief in yellow cardigan, explaining warmly with expressive hand gesture, colorful botanical chart of black locust blossoms and yellow rapeseed flowers on the corkboard behind her, cheerful atmosphere, detailed continuation focus",
+        "camera": "Medium close-up, static",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p038",
+          "speaker": "kid",
+          "text": "原來是花朵本身的基因在決定，而不是放太久壞掉！",
+          "pause_after_ms": 750,
+          "emotion": "融會貫通"
+        }
+      ]
+    },
+    {
+      "id": "gf-ratio-destiny-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of chief in yellow cardigan, explaining warmly with expressive hand gesture, colorful botanical chart of black locust blossoms and yellow rapeseed flowers on the corkboard behind her, cheerful atmosphere, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p039",
+          "speaker": "chief",
+          "text": "沒錯，葡萄糖比例高的蜜天生就是結晶王者，這跟真假優劣完全無關。",
+          "pause_after_ms": 750,
+          "emotion": "破除迷思"
+        }
+      ]
+    },
+    {
+      "id": "gf-ratio-destiny-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of chief in yellow cardigan, explaining warmly with expressive hand gesture, colorful botanical chart of black locust blossoms and yellow rapeseed flowers on the corkboard behind her, cheerful atmosphere, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p040",
+          "speaker": "kid",
+          "text": "那為什麼菜市場的大媽總說摻糖的才會結成一塊呢？",
+          "pause_after_ms": 950,
+          "emotion": "拋出新疑問"
+        }
+      ]
+    },
+    {
+      "id": "kid-adulteration-myth-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of curious girl holding a notepad and pencil, leaning forward with an investigative expression, wooden desk with vintage honey jars, questions swirling in her head, soft morning studio light",
+        "camera": "Medium shot, push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p041",
+          "speaker": "kid",
+          "text": "坊間一直傳說結晶是摻了白砂糖，",
+          "pause_after_ms": 750,
+          "emotion": "提出質疑"
+        }
+      ],
+      "chapter": "結晶是摻糖的證據？實驗結果剛好相反"
+    },
+    {
+      "id": "kid-adulteration-myth-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of curious girl holding a notepad and pencil, leaning forward with an investigative expression, wooden desk with vintage honey jars, questions swirling in her head, soft morning studio light, detailed continuation focus",
+        "camera": "Medium close-up, static",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p042",
+          "speaker": "kid",
+          "text": "要是真的有黑心商人往蜂蜜裡摻入廉價的人工糖漿，",
+          "pause_after_ms": 750,
+          "emotion": "設想情境"
+        }
+      ]
+    },
+    {
+      "id": "kid-adulteration-myth-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of curious girl holding a notepad and pencil, leaning forward with an investigative expression, wooden desk with vintage honey jars, questions swirling in her head, soft morning studio light, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p043",
+          "speaker": "kid",
+          "text": "放久了難道不會結成更大一塊嗎？",
+          "pause_after_ms": 750,
+          "emotion": "邏輯推導"
+        }
+      ]
+    },
+    {
+      "id": "kid-adulteration-myth-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of curious girl holding a notepad and pencil, leaning forward with an investigative expression, wooden desk with vintage honey jars, questions swirling in her head, soft morning studio light, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p044",
+          "speaker": "chief",
+          "text": "大家都這麼猜，但真正的科學實驗結果，剛好完全相反！",
+          "pause_after_ms": 950,
+          "emotion": "預告反轉"
+        }
+      ]
+    },
+    {
+      "id": "two-year-syrup-study-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro laboratory shot of rows of sample jars at Rzeszow University, labeled with percentages from 5% to 30% syrup adulteration alongside pure floral honey controls, stored carefully in 18 degrees incubator over two years, precise scientific setting",
+        "camera": "Slow horizontal tracking shot",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p045",
+          "speaker": "chief",
+          "text": "波蘭熱舒夫大學的食品科學家做過一項耗時整整兩年的長期實驗：",
+          "pause_after_ms": 750,
+          "emotion": "介紹大考驗"
+        }
+      ]
+    },
+    {
+      "id": "two-year-syrup-study-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro laboratory shot of rows of sample jars at Rzeszow University, labeled with percentages from 5% to 30% syrup adulteration alongside pure floral honey controls, stored carefully in 18 degrees incubator over two years, precise scientific setting, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p046",
+          "speaker": "chief",
+          "text": "他們拿天然純百花蜜，分別摻入百分之五、十、二十和三十的高果糖漿與轉化糖漿，",
+          "pause_after_ms": 750,
+          "emotion": "實驗梯度"
+        }
+      ]
+    },
+    {
+      "id": "two-year-syrup-study-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro laboratory shot of rows of sample jars at Rzeszow University, labeled with percentages from 5% to 30% syrup adulteration alongside pure floral honey controls, stored carefully in 18 degrees incubator over two years, precise scientific setting, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p047",
+          "speaker": "chief",
+          "text": "在十八度常溫下存放兩年，定期用儀器切片檢驗結晶進程。",
+          "pause_after_ms": 750,
+          "emotion": "長期追蹤"
+        }
+      ]
+    },
+    {
+      "id": "two-year-syrup-study-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro laboratory shot of rows of sample jars at Rzeszow University, labeled with percentages from 5% to 30% syrup adulteration alongside pure floral honey controls, stored carefully in 18 degrees incubator over two years, precise scientific setting, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p048",
+          "speaker": "kid",
+          "text": "摻了糖漿的蜂蜜，最後真的長出滿滿白糖塊了嗎？",
+          "pause_after_ms": 950,
+          "emotion": "緊張期待"
+        }
+      ]
+    },
+    {
+      "id": "phase-separation-reveal-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro comparison shot of two tall glass test tubes after two years: left tube is 100% pure honey solidified into uniform opaque cream from top to bottom, right tube is adulterated honey with cloudy sediment at bottom but a thick transparent liquid layer on top, stark visual contrast",
+        "camera": "Vertical tilt down",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p049",
+          "speaker": "chief",
+          "text": "結果徹底反轉！沒摻糖漿的純蜜整罐均勻結成扎實膏體；",
+          "pause_after_ms": 750,
+          "emotion": "揭示純蜜"
+        }
+      ]
+    },
+    {
+      "id": "phase-separation-reveal-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro comparison shot of two tall glass test tubes after two years: left tube is 100% pure honey solidified into uniform opaque cream from top to bottom, right tube is adulterated honey with cloudy sediment at bottom but a thick transparent liquid layer on top, stark visual contrast, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p050",
+          "speaker": "chief",
+          "text": "而摻了糖漿的蜂蜜結晶嚴重受阻，反而出現了上下分層現象！",
+          "pause_after_ms": 750,
+          "emotion": "揭曉反轉"
+        }
+      ]
+    },
+    {
+      "id": "phase-separation-reveal-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro comparison shot of two tall glass test tubes after two years: left tube is 100% pure honey solidified into uniform opaque cream from top to bottom, right tube is adulterated honey with cloudy sediment at bottom but a thick transparent liquid layer on top, stark visual contrast, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p051",
+          "speaker": "chief",
+          "text": "摻入的糖漿越多，頂部未結晶的稀薄液體就越厚、含水量越高！",
+          "pause_after_ms": 750,
+          "emotion": "分層規律"
+        }
+      ]
+    },
+    {
+      "id": "phase-separation-reveal-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro comparison shot of two tall glass test tubes after two years: left tube is 100% pure honey solidified into uniform opaque cream from top to bottom, right tube is adulterated honey with cloudy sediment at bottom but a thick transparent liquid layer on top, stark visual contrast, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p052",
+          "speaker": "kid",
+          "text": "天啊！摻了糖漿反而不能好好結晶，還會露餡分成兩半！",
+          "pause_after_ms": 950,
+          "emotion": "驚嘆連連"
+        }
+      ]
+    },
+    {
+      "id": "water-squeeze-mechanism-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Animated molecular mechanism diagram: glucose molecules binding with single water molecules to lock into solid crystal lattice, while squeezing excess free water molecules out into surrounding fluid phase, clean scientific visualization, warm amber and cyan light",
+        "camera": "Macro zoom into molecules",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p053",
+          "speaker": "chief",
+          "text": "因為純蜜葡萄糖咬合結晶時，會形成一水合物晶體，把多餘的自由水往外擠，",
+          "pause_after_ms": 750,
+          "emotion": "化學機理解析"
+        }
+      ]
+    },
+    {
+      "id": "water-squeeze-mechanism-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Animated molecular mechanism diagram: glucose molecules binding with single water molecules to lock into solid crystal lattice, while squeezing excess free water molecules out into surrounding fluid phase, clean scientific visualization, warm amber and cyan light, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p054",
+          "speaker": "chief",
+          "text": "釋放到未結晶的液相裡；",
+          "pause_after_ms": 750,
+          "emotion": "動態過程"
+        }
+      ]
+    },
+    {
+      "id": "water-squeeze-mechanism-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Animated molecular mechanism diagram: glucose molecules binding with single water molecules to lock into solid crystal lattice, while squeezing excess free water molecules out into surrounding fluid phase, clean scientific visualization, warm amber and cyan light, detailed continuation focus",
+        "camera": "Close-up, slow push in",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p055",
+          "speaker": "chief",
+          "text": "摻入糖漿後，雜亂的果糖和多醣破壞了晶格連續性，導致水分糖分失衡分離。",
+          "pause_after_ms": 750,
+          "emotion": "破壞晶格原理"
+        }
+      ]
+    },
+    {
+      "id": "water-squeeze-mechanism-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Animated molecular mechanism diagram: glucose molecules binding with single water molecules to lock into solid crystal lattice, while squeezing excess free water molecules out into surrounding fluid phase, clean scientific visualization, warm amber and cyan light, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p056",
+          "speaker": "kid",
+          "text": "原來結晶是一場嚴格的分子排隊，摻假的外來分子只會把隊形搞亂！",
+          "pause_after_ms": 950,
+          "emotion": "形象總結"
+        }
+      ]
+    },
+    {
+      "id": "chung-hsing-water-activity-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific graphic chart showing water activity (aw) adsorption isotherms across 10 to 30 degrees Celsius from National Chung Hsing University research on Taiwanese longan honey, neat linear graphs with thermodynamic formulas, clean beige background, no people",
+        "camera": "Slow camera drift",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p057",
+          "speaker": "chief",
+          "text": "台灣中興大學團隊曾深入測定二十七個龍眼蜜樣品在十到三十度的水活性，",
+          "pause_after_ms": 750,
+          "emotion": "本土權威佐證"
+        }
+      ]
+    },
+    {
+      "id": "chung-hsing-water-activity-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific graphic chart showing water activity (aw) adsorption isotherms across 10 to 30 degrees Celsius from National Chung Hsing University research on Taiwanese longan honey, neat linear graphs with thermodynamic formulas, clean beige background, no people, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p058",
+          "speaker": "chief",
+          "text": "證實了水活性隨含水率高度線性上升，精準描繪出結晶時水分動態平衡。",
+          "pause_after_ms": 750,
+          "emotion": "熱力學定律"
+        }
+      ]
+    },
+    {
+      "id": "chung-hsing-water-activity-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific graphic chart showing water activity (aw) adsorption isotherms across 10 to 30 degrees Celsius from National Chung Hsing University research on Taiwanese longan honey, neat linear graphs with thermodynamic formulas, clean beige background, no people, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p059",
+          "speaker": "kid",
+          "text": "所以整罐均勻結成扎實一塊，反而是純蜜高葡萄糖的物理鐵證！",
+          "pause_after_ms": 750,
+          "emotion": "確立判斷"
+        }
+      ]
+    },
+    {
+      "id": "chung-hsing-water-activity-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific graphic chart showing water activity (aw) adsorption isotherms across 10 to 30 degrees Celsius from National Chung Hsing University research on Taiwanese longan honey, neat linear graphs with thermodynamic formulas, clean beige background, no people, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p060",
+          "speaker": "chief",
+          "text": "沒錯！反倒是放很久上面浮著一層稀水、底部有一點怪沉澱的，才值得懷疑！",
+          "pause_after_ms": 950,
+          "emotion": "實用技巧"
+        }
+      ]
+    },
+    {
+      "id": "kid-mind-turn-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Two-shot in cozy question office: smiling chief in yellow cardigan patting 8-year-old girl on shoulder, girl smiling with realization, honey jars gleaming warmly on wooden workbench in foreground",
+        "camera": "Medium two-shot, static",
+        "visual": "still",
+        "characters": [
+          "kid",
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p061",
+          "speaker": "kid",
+          "text": "這下我終於懂了，我這罐結滿白霜的蜂蜜原來是真材實料的好東西！",
+          "pause_after_ms": 750,
+          "emotion": "解開疑慮"
+        }
+      ]
+    },
+    {
+      "id": "kid-mind-turn-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Two-shot in cozy question office: smiling chief in yellow cardigan patting 8-year-old girl on shoulder, girl smiling with realization, honey jars gleaming warmly on wooden workbench in foreground, detailed continuation focus",
+        "camera": "Medium close-up, static",
+        "visual": "still",
+        "characters": [
+          "kid",
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p062",
+          "speaker": "chief",
+          "text": "不過很多人嫌結晶太硬不好挖，常常想拿熱水去泡融它。",
+          "pause_after_ms": 750,
+          "emotion": "帶入下節"
+        }
+      ]
+    },
+    {
+      "id": "kid-mind-turn-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Two-shot in cozy question office: smiling chief in yellow cardigan patting 8-year-old girl on shoulder, girl smiling with realization, honey jars gleaming warmly on wooden workbench in foreground, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": [
+          "kid",
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p063",
+          "speaker": "kid",
+          "text": "對啊！泡個熱水澡融回金黃色，難道不行嗎？",
+          "pause_after_ms": 750,
+          "emotion": "好奇接話"
+        }
+      ]
+    },
+    {
+      "id": "kid-mind-turn-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Two-shot in cozy question office: smiling chief in yellow cardigan patting 8-year-old girl on shoulder, girl smiling with realization, honey jars gleaming warmly on wooden workbench in foreground, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": [
+          "kid",
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p064",
+          "speaker": "chief",
+          "text": "這就是另一個嚴肅的食品科學大問題了！",
+          "pause_after_ms": 950,
+          "emotion": "留下懸念"
+        }
+      ]
+    },
+    {
+      "id": "kid-hot-water-bath-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of curious girl in navy jacket standing by stainless steel kitchen counter, holding glass jar of crystallized honey over a steaming pot of boiling water, about to plunge it in, wide determined eyes",
+        "camera": "Close-up, static",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p065",
+          "speaker": "kid",
+          "text": "既然結晶挖不動，那我直接把它丟進滾燙的熱水裡煮一煮，",
+          "pause_after_ms": 750,
+          "emotion": "天真想法"
+        }
+      ],
+      "chapter": "把它熱回液體，會少掉什麼？"
+    },
+    {
+      "id": "kid-hot-water-bath-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of curious girl in navy jacket standing by stainless steel kitchen counter, holding glass jar of crystallized honey over a steaming pot of boiling water, about to plunge it in, wide determined eyes, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p066",
+          "speaker": "kid",
+          "text": "或者放進微波爐按個三十秒，把它溶回透明液體總可以吧？",
+          "pause_after_ms": 750,
+          "emotion": "常見作法"
+        }
+      ]
+    },
+    {
+      "id": "kid-hot-water-bath-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of curious girl in navy jacket standing by stainless steel kitchen counter, holding glass jar of crystallized honey over a steaming pot of boiling water, about to plunge it in, wide determined eyes, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p067",
+          "speaker": "chief",
+          "text": "千萬別衝動！熱水確實能讓晶體融化，但越快溶化，代價就越慘重！",
+          "pause_after_ms": 750,
+          "emotion": "緊急制止"
+        }
+      ]
+    },
+    {
+      "id": "kid-hot-water-bath-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of curious girl in navy jacket standing by stainless steel kitchen counter, holding glass jar of crystallized honey over a steaming pot of boiling water, about to plunge it in, wide determined eyes, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p068",
+          "speaker": "kid",
+          "text": "熱一下而已，難道蜂蜜還會被燙傷嗎？",
+          "pause_after_ms": 950,
+          "emotion": "不解發問"
+        }
+      ]
+    },
+    {
+      "id": "jordan-temperature-time-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Infographic timeline comparison: top bar shows 45 degrees Celsius warm water bath clock spinning for 16 hours (960 minutes) to liquefy, bottom bar shows 90 degrees Celsius boiling water taking only 23 minutes, clear visual clock graphics, warm laboratory lighting, no text",
+        "camera": "Top-to-bottom pan",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p069",
+          "speaker": "chief",
+          "text": "約旦科技大學團隊拿結晶油菜蜜實測不同水浴溫度的液化速度：",
+          "pause_after_ms": 750,
+          "emotion": "科學實測"
+        }
+      ]
+    },
+    {
+      "id": "jordan-temperature-time-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Infographic timeline comparison: top bar shows 45 degrees Celsius warm water bath clock spinning for 16 hours (960 minutes) to liquefy, bottom bar shows 90 degrees Celsius boiling water taking only 23 minutes, clear visual clock graphics, warm laboratory lighting, no text, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p070",
+          "speaker": "chief",
+          "text": "在四十五度溫水浴下，要整整等十六個小時結晶才能完全溶光；",
+          "pause_after_ms": 750,
+          "emotion": "低溫耗時"
+        }
+      ]
+    },
+    {
+      "id": "jordan-temperature-time-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Infographic timeline comparison: top bar shows 45 degrees Celsius warm water bath clock spinning for 16 hours (960 minutes) to liquefy, bottom bar shows 90 degrees Celsius boiling water taking only 23 minutes, clear visual clock graphics, warm laboratory lighting, no text, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p071",
+          "speaker": "chief",
+          "text": "如果換成九十度滾燙熱水，確實只要二十三分鐘就全部溶化了。",
+          "pause_after_ms": 750,
+          "emotion": "高溫極速"
+        }
+      ]
+    },
+    {
+      "id": "jordan-temperature-time-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Infographic timeline comparison: top bar shows 45 degrees Celsius warm water bath clock spinning for 16 hours (960 minutes) to liquefy, bottom bar shows 90 degrees Celsius boiling water taking only 23 minutes, clear visual clock graphics, warm laboratory lighting, no text, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p072",
+          "speaker": "kid",
+          "text": "二十三分鐘對十六個小時，這速度差了四十幾倍啊！",
+          "pause_after_ms": 950,
+          "emotion": "計算對比"
+        }
+      ]
+    },
+    {
+      "id": "sensory-browning-drop-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro comparison of two honey dishes: left dish has light golden raw honey, right dish shows 90 degrees heated honey noticeably darkened into murky amber brown, sensory evaluation scorecard showing score dropping from 8.23 to 6.20 with HMF chemical symbol rising red, dramatic lighting",
+        "camera": "Macro shot, push in",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p073",
+          "speaker": "chief",
+          "text": "但是代價令人痛心：九十度加熱後，蜂蜜顏色劇烈褐變發暗，",
+          "pause_after_ms": 750,
+          "emotion": "外觀劣化"
+        }
+      ]
+    },
+    {
+      "id": "sensory-browning-drop-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro comparison of two honey dishes: left dish has light golden raw honey, right dish shows 90 degrees heated honey noticeably darkened into murky amber brown, sensory evaluation scorecard showing score dropping from 8.23 to 6.20 with HMF chemical symbol rising red, dramatic lighting, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p074",
+          "speaker": "chief",
+          "text": "五十名品評員盲測的風味接受度由八點二三分暴跌到六點二零分！",
+          "pause_after_ms": 750,
+          "emotion": "風味暴跌"
+        }
+      ]
+    },
+    {
+      "id": "sensory-browning-drop-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro comparison of two honey dishes: left dish has light golden raw honey, right dish shows 90 degrees heated honey noticeably darkened into murky amber brown, sensory evaluation scorecard showing score dropping from 8.23 to 6.20 with HMF chemical symbol rising red, dramatic lighting, detailed continuation focus",
+        "camera": "Close-up, slow push in",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p075",
+          "speaker": "chief",
+          "text": "更嚴重的是受熱副產物羥甲基糠醛，從原本每公斤不到七毫克飆升到五十五毫克！",
+          "pause_after_ms": 750,
+          "emotion": "關鍵化學指標"
+        }
+      ]
+    },
+    {
+      "id": "sensory-browning-drop-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro comparison of two honey dishes: left dish has light golden raw honey, right dish shows 90 degrees heated honey noticeably darkened into murky amber brown, sensory evaluation scorecard showing score dropping from 8.23 to 6.20 with HMF chemical symbol rising red, dramatic lighting, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p076",
+          "speaker": "chief",
+          "text": "原本香甜的百花香氣，直接被一股焦苦味取代了。",
+          "pause_after_ms": 950,
+          "emotion": "感官結論"
+        }
+      ]
+    },
+    {
+      "id": "microwave-vs-ultrasound-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Split scientific analysis: left side shows microwave heating glass bottle with localized hot spots degrading phenolic compounds, right side shows ultrasonic bath at 45 degrees generating acoustic cavitation bubbles violently collapsing near honey molecules, clean analytical aesthetic, no text",
+        "camera": "Split screen pan",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p077",
+          "speaker": "chief",
+          "text": "那改用微波爐呢？捷克分析化學家發現微波雖快，但局部過熱讓總酚化合物嚴重降解；",
+          "pause_after_ms": 750,
+          "emotion": "微波缺陷"
+        }
+      ]
+    },
+    {
+      "id": "microwave-vs-ultrasound-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Split scientific analysis: left side shows microwave heating glass bottle with localized hot spots degrading phenolic compounds, right side shows ultrasonic bath at 45 degrees generating acoustic cavitation bubbles violently collapsing near honey molecules, clean analytical aesthetic, no text, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p078",
+          "speaker": "chief",
+          "text": "最意外的是超音波溶晶，雖然溫度低，但為了震碎晶體需震盪九十分鐘，",
+          "pause_after_ms": 750,
+          "emotion": "超音波意外"
+        }
+      ]
+    },
+    {
+      "id": "microwave-vs-ultrasound-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Split scientific analysis: left side shows microwave heating glass bottle with localized hot spots degrading phenolic compounds, right side shows ultrasonic bath at 45 degrees generating acoustic cavitation bubbles violently collapsing near honey molecules, clean analytical aesthetic, no text, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p079",
+          "speaker": "chief",
+          "text": "強烈聲致空化產生的自由基，反而使微量多酚與抗氧化物損失高達百分之五十！",
+          "pause_after_ms": 750,
+          "emotion": "最大損失率"
+        }
+      ]
+    },
+    {
+      "id": "microwave-vs-ultrasound-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Split scientific analysis: left side shows microwave heating glass bottle with localized hot spots degrading phenolic compounds, right side shows ultrasonic bath at 45 degrees generating acoustic cavitation bubbles violently collapsing near honey molecules, clean analytical aesthetic, no text, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p080",
+          "speaker": "chief",
+          "text": "在所有融晶方法裡，超音波造成的微量營養損失居然是第一名！",
+          "pause_after_ms": 950,
+          "emotion": "打破常識"
+        }
+      ]
+    },
+    {
+      "id": "kid-loss-realization-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of curious girl in navy toggle jacket holding both hands to her cheeks in shock, eyes wide, warm wooden office backdrop with soft evening shadows, expressive cartoon emotion",
+        "camera": "Close-up, slight wobble",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p081",
+          "speaker": "kid",
+          "text": "太誇張了！高溫直接把蜂蜜燙焦燙苦，低溫超音波又把抗氧化物震碎！",
+          "pause_after_ms": 750,
+          "emotion": "情感共鳴"
+        }
+      ]
+    },
+    {
+      "id": "kid-loss-realization-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of curious girl in navy toggle jacket holding both hands to her cheeks in shock, eyes wide, warm wooden office backdrop with soft evening shadows, expressive cartoon emotion, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p082",
+          "speaker": "kid",
+          "text": "看似恢復原狀的金黃液體，裡面的營養精華早就被破壞殆盡了！",
+          "pause_after_ms": 750,
+          "emotion": "深刻領悟"
+        }
+      ]
+    },
+    {
+      "id": "kid-loss-realization-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of curious girl in navy toggle jacket holding both hands to her cheeks in shock, eyes wide, warm wooden office backdrop with soft evening shadows, expressive cartoon emotion, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p083",
+          "speaker": "chief",
+          "text": "這就是食品熱力學的第一定律：能量不可能白白借給你。",
+          "pause_after_ms": 750,
+          "emotion": "哲理總結"
+        }
+      ]
+    },
+    {
+      "id": "kid-loss-realization-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of curious girl in navy toggle jacket holding both hands to her cheeks in shock, eyes wide, warm wooden office backdrop with soft evening shadows, expressive cartoon emotion, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p084",
+          "speaker": "kid",
+          "text": "那如果我只用洗澡水那種溫溫的溫度泡一下，會不會安全一點？",
+          "pause_after_ms": 950,
+          "emotion": "退而求其次"
+        }
+      ]
+    },
+    {
+      "id": "kid-clear-illusion-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of girl inspecting a honey jar held against the studio light, clear transparent liquid inside, squinting with deep suspicion, warm sunlight on her face",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p085",
+          "speaker": "kid",
+          "text": "所長你看，如果只用五十幾度溫水輕輕溫泡，",
+          "pause_after_ms": 750,
+          "emotion": "提出溫和假設"
+        }
+      ],
+      "chapter": "看起來恢復原狀了，真的嗎？"
+    },
+    {
+      "id": "kid-clear-illusion-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of girl inspecting a honey jar held against the studio light, clear transparent liquid inside, squinting with deep suspicion, warm sunlight on her face, detailed continuation focus",
+        "camera": "Medium close-up, static",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p086",
+          "speaker": "kid",
+          "text": "拿出來顏色沒變黑、味道也還很甜，",
+          "pause_after_ms": 750,
+          "emotion": "觀察表面"
+        }
+      ]
+    },
+    {
+      "id": "kid-clear-illusion-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of girl inspecting a honey jar held against the studio light, clear transparent liquid inside, squinting with deep suspicion, warm sunlight on her face, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p087",
+          "speaker": "kid",
+          "text": "這樣難道不能算完好如初嗎？",
+          "pause_after_ms": 750,
+          "emotion": "探詢底線"
+        }
+      ]
+    },
+    {
+      "id": "kid-clear-illusion-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of girl inspecting a honey jar held against the studio light, clear transparent liquid inside, squinting with deep suspicion, warm sunlight on her face, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p088",
+          "speaker": "chief",
+          "text": "這正是最致命的隱形陷阱：有些傷害，是日後才慢慢發作的！",
+          "pause_after_ms": 950,
+          "emotion": "揭露真相"
+        }
+      ]
+    },
+    {
+      "id": "long-term-hmf-bomb-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific data chart from University of Aveiro research: graph tracking HMF content over 6, 12, and 24 months, showing 78 degrees Celsius treated honey red curve climbing sharply past the 40 mg/kg Codex Alimentarius international threshold, clean modern graph design",
+        "camera": "Macro zoom on threshold line",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p089",
+          "speaker": "chief",
+          "text": "葡萄牙阿威羅大學團隊做了一項長達兩年的存放追蹤：",
+          "pause_after_ms": 750,
+          "emotion": "引用權威"
+        }
+      ]
+    },
+    {
+      "id": "long-term-hmf-bomb-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific data chart from University of Aveiro research: graph tracking HMF content over 6, 12, and 24 months, showing 78 degrees Celsius treated honey red curve climbing sharply past the 40 mg/kg Codex Alimentarius international threshold, clean modern graph design, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p090",
+          "speaker": "chief",
+          "text": "他們把生蜂蜜在七十八度下只加熱了短短六分鐘，當下看起來完全正常；",
+          "pause_after_ms": 750,
+          "emotion": "看似無害"
+        }
+      ]
+    },
+    {
+      "id": "long-term-hmf-bomb-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific data chart from University of Aveiro research: graph tracking HMF content over 6, 12, and 24 months, showing 78 degrees Celsius treated honey red curve climbing sharply past the 40 mg/kg Codex Alimentarius international threshold, clean modern graph design, detailed continuation focus",
+        "camera": "Close-up, slow push in",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p091",
+          "speaker": "chief",
+          "text": "但在二十度常溫存放十二個月後，羥甲基糠醛飆升到四十六點三七毫克！",
+          "pause_after_ms": 750,
+          "emotion": "指標飆高"
+        }
+      ]
+    },
+    {
+      "id": "long-term-hmf-bomb-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Scientific data chart from University of Aveiro research: graph tracking HMF content over 6, 12, and 24 months, showing 78 degrees Celsius treated honey red curve climbing sharply past the 40 mg/kg Codex Alimentarius international threshold, clean modern graph design, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p092",
+          "speaker": "chief",
+          "text": "直接突破了國際食品法典每公斤四十毫克的法定品質門檻！",
+          "pause_after_ms": 950,
+          "emotion": "越過法定界限"
+        }
+      ]
+    },
+    {
+      "id": "raw-honey-stable-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Split comparison chart: green stable curve of unheated raw honey staying comfortably below 20 mg/kg after 24 months, alongside golden glowing honey jar standing untouched on clean pine wood pantry shelf, serene trustworthy aesthetic",
+        "camera": "Slow pan across curves",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p093",
+          "speaker": "chief",
+          "text": "相反地，完全沒加熱過的天然生蜜，常溫放了整整二十四個月，",
+          "pause_after_ms": 750,
+          "emotion": "生蜜對照"
+        }
+      ]
+    },
+    {
+      "id": "raw-honey-stable-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Split comparison chart: green stable curve of unheated raw honey staying comfortably below 20 mg/kg after 24 months, alongside golden glowing honey jar standing untouched on clean pine wood pantry shelf, serene trustworthy aesthetic, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p094",
+          "speaker": "chief",
+          "text": "各項指標依然安安穩穩留在安全線內！",
+          "pause_after_ms": 750,
+          "emotion": "長期穩定"
+        }
+      ]
+    },
+    {
+      "id": "raw-honey-stable-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Split comparison chart: green stable curve of unheated raw honey staying comfortably below 20 mg/kg after 24 months, alongside golden glowing honey jar standing untouched on clean pine wood pantry shelf, serene trustworthy aesthetic, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p095",
+          "speaker": "chief",
+          "text": "加熱留下的分子微裂痕，會在日後儲存過程中像定時炸彈一樣持續惡化。",
+          "pause_after_ms": 750,
+          "emotion": "定時炸彈比喻"
+        }
+      ]
+    },
+    {
+      "id": "raw-honey-stable-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Split comparison chart: green stable curve of unheated raw honey staying comfortably below 20 mg/kg after 24 months, alongside golden glowing honey jar standing untouched on clean pine wood pantry shelf, serene trustworthy aesthetic, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p096",
+          "speaker": "kid",
+          "text": "原來熱傷害不是當下看沒事就沒事，它是有潛伏期的！",
+          "pause_after_ms": 950,
+          "emotion": "驚人悟點"
+        }
+      ]
+    },
+    {
+      "id": "ftir-molecular-fingerprint-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Detailed scientific FTIR spectroscopy output display showing carbohydrate fingerprint region between 800 and 1500 cm-1, PCA-LDA machine learning cluster plot separating unheated raw honey from 40 degrees heated samples with 100% accuracy, high-tech interface, glowing cyan traces",
+        "camera": "Slow rotational drift",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p097",
+          "speaker": "chief",
+          "text": "西班牙巴斯克奈米科技團隊更用傅立葉紅外光譜 FTIR 證實：",
+          "pause_after_ms": 750,
+          "emotion": "紅外光譜檢測"
+        }
+      ]
+    },
+    {
+      "id": "ftir-molecular-fingerprint-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Detailed scientific FTIR spectroscopy output display showing carbohydrate fingerprint region between 800 and 1500 cm-1, PCA-LDA machine learning cluster plot separating unheated raw honey from 40 degrees heated samples with 100% accuracy, high-tech interface, glowing cyan traces, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p098",
+          "speaker": "chief",
+          "text": "即便只是用四十度像洗澡水一樣的溫度溫上幾小時，",
+          "pause_after_ms": 750,
+          "emotion": "低溫條件"
+        }
+      ]
+    },
+    {
+      "id": "ftir-molecular-fingerprint-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Detailed scientific FTIR spectroscopy output display showing carbohydrate fingerprint region between 800 and 1500 cm-1, PCA-LDA machine learning cluster plot separating unheated raw honey from 40 degrees heated samples with 100% accuracy, high-tech interface, glowing cyan traces, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p099",
+          "speaker": "chief",
+          "text": "紅外光譜在八百到一千五百波段的分子指紋區，機器模型依然百分之百抓得出受熱痕跡！",
+          "pause_after_ms": 750,
+          "emotion": "百分百抓獲"
+        }
+      ]
+    },
+    {
+      "id": "ftir-molecular-fingerprint-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Detailed scientific FTIR spectroscopy output display showing carbohydrate fingerprint region between 800 and 1500 cm-1, PCA-LDA machine learning cluster plot separating unheated raw honey from 40 degrees heated samples with 100% accuracy, high-tech interface, glowing cyan traces, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p100",
+          "speaker": "chief",
+          "text": "外表再怎麼偽裝成生蜜，分子振動頻率早已留下了不可逆的烙印。",
+          "pause_after_ms": 950,
+          "emotion": "光譜定案"
+        }
+      ]
+    },
+    {
+      "id": "ultrasound-residual-seeds-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Polarized micrograph of honey treated with ultrasound, showing broken jagged microcrystals scattered randomly in solution, acting as irregular nucleation sites for fast messy recrystallization, clean scientific micrograph, high resolution",
+        "camera": "Microscope focus pull",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p101",
+          "speaker": "chief",
+          "text": "而墨西哥自治大學的研究也發現，超音波雖把晶體打小了百分之六十八，",
+          "pause_after_ms": 750,
+          "emotion": "超音波後果"
+        }
+      ]
+    },
+    {
+      "id": "ultrasound-residual-seeds-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Polarized micrograph of honey treated with ultrasound, showing broken jagged microcrystals scattered randomly in solution, acting as irregular nucleation sites for fast messy recrystallization, clean scientific micrograph, high resolution, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p102",
+          "speaker": "chief",
+          "text": "但殘留的微米晶核根本消滅不掉，",
+          "pause_after_ms": 750,
+          "emotion": "晶種殘留"
+        }
+      ]
+    },
+    {
+      "id": "ultrasound-residual-seeds-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Polarized micrograph of honey treated with ultrasound, showing broken jagged microcrystals scattered randomly in solution, acting as irregular nucleation sites for fast messy recrystallization, clean scientific micrograph, high resolution, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p103",
+          "speaker": "chief",
+          "text": "常溫存放時反而會誘發更粗糙雜亂的二次結晶！",
+          "pause_after_ms": 750,
+          "emotion": "二次結晶缺陷"
+        }
+      ]
+    },
+    {
+      "id": "ultrasound-residual-seeds-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Polarized micrograph of honey treated with ultrasound, showing broken jagged microcrystals scattered randomly in solution, acting as irregular nucleation sites for fast messy recrystallization, clean scientific micrograph, high resolution, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p104",
+          "speaker": "chief",
+          "text": "想要徹底消滅看得見的白，只會換來更多看不見的傷痕。",
+          "pause_after_ms": 950,
+          "emotion": "深刻結尾"
+        }
+      ]
+    },
+    {
+      "id": "kid-invisible-damage-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of curious girl looking thoughtfully at a small wooden honey dipper on her desk, soft warm indoor lighting, philosophical and respectful expression",
+        "camera": "Medium shot, slow push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p105",
+          "speaker": "kid",
+          "text": "眼睛看得見的結晶雖然消失了，但分子世界裡的熱痕跡卻永遠抹不掉！",
+          "pause_after_ms": 750,
+          "emotion": "呼應主題"
+        }
+      ]
+    },
+    {
+      "id": "kid-invisible-damage-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of curious girl looking thoughtfully at a small wooden honey dipper on her desk, soft warm indoor lighting, philosophical and respectful expression, detailed continuation focus",
+        "camera": "Medium close-up, static",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p106",
+          "speaker": "chief",
+          "text": "既然高溫低溫都有代價，那我們何不換個角度思考呢？",
+          "pause_after_ms": 750,
+          "emotion": "轉折帶出解法"
+        }
+      ]
+    },
+    {
+      "id": "kid-invisible-damage-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of curious girl looking thoughtfully at a small wooden honey dipper on her desk, soft warm indoor lighting, philosophical and respectful expression, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p107",
+          "speaker": "kid",
+          "text": "換個角度？結晶都結成硬塊了，還能怎麼換？",
+          "pause_after_ms": 750,
+          "emotion": "好奇探問"
+        }
+      ]
+    },
+    {
+      "id": "kid-invisible-damage-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of curious girl looking thoughtfully at a small wooden honey dipper on her desk, soft warm indoor lighting, philosophical and respectful expression, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p108",
+          "speaker": "chief",
+          "text": "既然擋不住它結晶，那就用科學讓它結成全世界最美味的質地！",
+          "pause_after_ms": 950,
+          "emotion": "有力引導"
+        }
+      ]
+    },
+    {
+      "id": "kid-smooth-honey-question-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of curious girl spreading a dollop of luxurious white velvety creamed honey onto a crisp golden cracker with a butter knife, smooth creamy swirl texture catching warm sunlight, eyes sparkling with delight",
+        "camera": "Close-up macro, pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p109",
+          "speaker": "kid",
+          "text": "所長，我在進口超市看過一種白色的奶油蜂蜜，",
+          "pause_after_ms": 750,
+          "emotion": "提出實例"
+        }
+      ],
+      "chapter": "既然擋不住，就讓它結得又細又滑"
+    },
+    {
+      "id": "kid-smooth-honey-question-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of curious girl spreading a dollop of luxurious white velvety creamed honey onto a crisp golden cracker with a butter knife, smooth creamy swirl texture catching warm sunlight, eyes sparkling with delight, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p110",
+          "speaker": "kid",
+          "text": "抹在吐司上像冰淇淋一樣綿密細滑，完全沒有粗粗刮舌頭的顆粒感！",
+          "pause_after_ms": 750,
+          "emotion": "誘人描述"
+        }
+      ]
+    },
+    {
+      "id": "kid-smooth-honey-question-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of curious girl spreading a dollop of luxurious white velvety creamed honey onto a crisp golden cracker with a butter knife, smooth creamy swirl texture catching warm sunlight, eyes sparkling with delight, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p111",
+          "speaker": "kid",
+          "text": "它明明也是結晶蜜，為什麼口感能這麼神奇？",
+          "pause_after_ms": 750,
+          "emotion": "提出核心疑問"
+        }
+      ]
+    },
+    {
+      "id": "kid-smooth-honey-question-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of curious girl spreading a dollop of luxurious white velvety creamed honey onto a crisp golden cracker with a butter knife, smooth creamy swirl texture catching warm sunlight, eyes sparkling with delight, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p112",
+          "speaker": "chief",
+          "text": "這就是頂級食品工藝對物理規律最美妙的應用！",
+          "pause_after_ms": 950,
+          "emotion": "欣然肯定"
+        }
+      ]
+    },
+    {
+      "id": "cold-rheology-glass-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Rheology measurement graphic: curve showing honey viscosity rising exponentially as temperature drops, down to minus 45 degrees Celsius where Differential Scanning Calorimetry marks glass transition into transparent rigid solid, clean physics illustration, cool indigo tones",
+        "camera": "Slow curve trace pan",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p113",
+          "speaker": "chief",
+          "text": "印度原子能研究中心測定蜂蜜流變學發現，蜂蜜降溫時黏度呈指數上升，",
+          "pause_after_ms": 750,
+          "emotion": "低溫流變特性"
+        }
+      ]
+    },
+    {
+      "id": "cold-rheology-glass-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Rheology measurement graphic: curve showing honey viscosity rising exponentially as temperature drops, down to minus 45 degrees Celsius where Differential Scanning Calorimetry marks glass transition into transparent rigid solid, clean physics illustration, cool indigo tones, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p114",
+          "speaker": "chief",
+          "text": "冷到零下四五十度時會進入硬邦邦的玻璃轉移態，",
+          "pause_after_ms": 750,
+          "emotion": "玻璃轉移現象"
+        }
+      ]
+    },
+    {
+      "id": "cold-rheology-glass-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Rheology measurement graphic: curve showing honey viscosity rising exponentially as temperature drops, down to minus 45 degrees Celsius where Differential Scanning Calorimetry marks glass transition into transparent rigid solid, clean physics illustration, cool indigo tones, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p115",
+          "speaker": "chief",
+          "text": "但那是無定形非晶固態，並不是真正的結晶。",
+          "pause_after_ms": 750,
+          "emotion": "區分物理本質"
+        }
+      ]
+    },
+    {
+      "id": "cold-rheology-glass-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Rheology measurement graphic: curve showing honey viscosity rising exponentially as temperature drops, down to minus 45 degrees Celsius where Differential Scanning Calorimetry marks glass transition into transparent rigid solid, clean physics illustration, cool indigo tones, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p116",
+          "speaker": "kid",
+          "text": "那要讓它在常溫下變成絲滑的奶油質地，到底要靠什麼魔法？",
+          "pause_after_ms": 950,
+          "emotion": "迫不及待"
+        }
+      ]
+    },
+    {
+      "id": "dyce-creamed-process-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro illustration of commercial Dyce process creamed honey vat at Anhalt University: stainless steel paddle gently rotating in 25 kilograms of spring blossom honey at strict 14 degrees Celsius, turning raw golden honey into pearlescent snowy cream, pristine dairy aesthetic",
+        "camera": "Rotational medium shot",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p117",
+          "speaker": "chief",
+          "text": "這要歸功於二十世紀發明的戴斯工藝！",
+          "pause_after_ms": 750,
+          "emotion": "介紹經典工藝"
+        }
+      ]
+    },
+    {
+      "id": "dyce-creamed-process-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro illustration of commercial Dyce process creamed honey vat at Anhalt University: stainless steel paddle gently rotating in 25 kilograms of spring blossom honey at strict 14 degrees Celsius, turning raw golden honey into pearlescent snowy cream, pristine dairy aesthetic, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p118",
+          "speaker": "chief",
+          "text": "德國安哈特應用科學大學用二十五公斤級春季花蜜實測證實：",
+          "pause_after_ms": 750,
+          "emotion": "大型實證"
+        }
+      ]
+    },
+    {
+      "id": "dyce-creamed-process-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro illustration of commercial Dyce process creamed honey vat at Anhalt University: stainless steel paddle gently rotating in 25 kilograms of spring blossom honey at strict 14 degrees Celsius, turning raw golden honey into pearlescent snowy cream, pristine dairy aesthetic, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p119",
+          "speaker": "chief",
+          "text": "決定結晶粗細的絕對關鍵，在於十四度的精準控溫與定時攪拌！",
+          "pause_after_ms": 750,
+          "emotion": "黃金十四度"
+        }
+      ]
+    },
+    {
+      "id": "dyce-creamed-process-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro illustration of commercial Dyce process creamed honey vat at Anhalt University: stainless steel paddle gently rotating in 25 kilograms of spring blossom honey at strict 14 degrees Celsius, turning raw golden honey into pearlescent snowy cream, pristine dairy aesthetic, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p120",
+          "speaker": "kid",
+          "text": "十四度？比冰箱溫一點、比室溫涼一點的溫度！",
+          "pause_after_ms": 950,
+          "emotion": "直觀理解"
+        }
+      ]
+    },
+    {
+      "id": "thirty-micron-limit-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Split comparison micrograph of honey crystals: left circle shows micro-crystals strictly below 30 micrometers looking like tiny smooth beads, right circle shows jagged 146 micrometer coarse crystals from room temperature storage, human tongue touch threshold marked at 40 micrometers, high detail",
+        "camera": "Macro comparison zoom",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p121",
+          "speaker": "chief",
+          "text": "人類舌尖的觸覺受器，只能分辨大於四十微米的微小顆粒；",
+          "pause_after_ms": 750,
+          "emotion": "人體觸覺極限"
+        }
+      ]
+    },
+    {
+      "id": "thirty-micron-limit-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Split comparison micrograph of honey crystals: left circle shows micro-crystals strictly below 30 micrometers looking like tiny smooth beads, right circle shows jagged 146 micrometer coarse crystals from room temperature storage, human tongue touch threshold marked at 40 micrometers, high detail, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p122",
+          "speaker": "chief",
+          "text": "在十四度控溫攪拌下，晶體尺寸被牢牢鎖定在三十微米以下！",
+          "pause_after_ms": 750,
+          "emotion": "鎖定三十微米"
+        }
+      ]
+    },
+    {
+      "id": "thirty-micron-limit-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Split comparison micrograph of honey crystals: left circle shows micro-crystals strictly below 30 micrometers looking like tiny smooth beads, right circle shows jagged 146 micrometer coarse crystals from room temperature storage, human tongue touch threshold marked at 40 micrometers, high detail, detailed continuation focus",
+        "camera": "Close-up, slow push in",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p123",
+          "speaker": "chief",
+          "text": "晶體又小又密，折射光線呈現純淨乳白，在嘴裡入口即化！",
+          "pause_after_ms": 750,
+          "emotion": "極致感官描寫"
+        }
+      ]
+    },
+    {
+      "id": "thirty-micron-limit-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Split comparison micrograph of honey crystals: left circle shows micro-crystals strictly below 30 micrometers looking like tiny smooth beads, right circle shows jagged 146 micrometer coarse crystals from room temperature storage, human tongue touch threshold marked at 40 micrometers, high detail, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p124",
+          "speaker": "chief",
+          "text": "如果隨意放在室溫結晶，長出來的晶體就會高達一百四十六微米，粗糙刮舌。",
+          "pause_after_ms": 950,
+          "emotion": "室溫缺點"
+        }
+      ]
+    },
+    {
+      "id": "seed-kinetics-turkey-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro progression illustration: three jars of honey at day 0, day 6, and day 9 at 14 degrees Celsius seeded with 10% creamed honey, showing swift beautiful transformation into uniform silky white spread, clean scientific timeline design",
+        "camera": "Horizontal timeline sweep",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p125",
+          "speaker": "chief",
+          "text": "土耳其耶爾德茲科技大學最新研究更證實：在十四度拌入百分之五到十的細緻晶種，",
+          "pause_after_ms": 750,
+          "emotion": "最新晶種研究"
+        }
+      ]
+    },
+    {
+      "id": "seed-kinetics-turkey-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro progression illustration: three jars of honey at day 0, day 6, and day 9 at 14 degrees Celsius seeded with 10% creamed honey, showing swift beautiful transformation into uniform silky white spread, clean scientific timeline design, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p126",
+          "speaker": "chief",
+          "text": "短短九天全罐就會均勻結成極致綿密的奶油膏體；",
+          "pause_after_ms": 750,
+          "emotion": "九天成膏"
+        }
+      ]
+    },
+    {
+      "id": "seed-kinetics-turkey-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro progression illustration: three jars of honey at day 0, day 6, and day 9 at 14 degrees Celsius seeded with 10% creamed honey, showing swift beautiful transformation into uniform silky white spread, clean scientific timeline design, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p127",
+          "speaker": "chief",
+          "text": "未加晶種的在同溫度放十二天，顯微鏡下甚至連一顆晶核都還沒形成！",
+          "pause_after_ms": 750,
+          "emotion": "晶種成核威力"
+        }
+      ]
+    },
+    {
+      "id": "seed-kinetics-turkey-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro progression illustration: three jars of honey at day 0, day 6, and day 9 at 14 degrees Celsius seeded with 10% creamed honey, showing swift beautiful transformation into uniform silky white spread, clean scientific timeline design, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "p128",
+          "speaker": "kid",
+          "text": "先放幾顆優秀的種子進去帶路，大家就會跟著長得又細又整齊！",
+          "pause_after_ms": 950,
+          "emotion": "生動理解"
+        }
+      ]
+    },
+    {
+      "id": "chief-closing-summary-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Warm wide closing shot of question office: smiling chief in mustard cardigan and happy 8-year-old girl enjoying toast with white creamed honey, beautiful golden afternoon sunlight filling the room, peaceful and heartwarming scene",
+        "camera": "Wide shot, slow pull back",
+        "visual": "still",
+        "characters": [
+          "kid",
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p129",
+          "speaker": "kid",
+          "text": "原來蜂蜜結晶不是假貨瑕疵，而是葡萄糖純度的勳章！",
+          "pause_after_ms": 750,
+          "emotion": "昇華認知"
+        }
+      ]
+    },
+    {
+      "id": "chief-closing-summary-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Warm wide closing shot of question office: smiling chief in mustard cardigan and happy 8-year-old girl enjoying toast with white creamed honey, beautiful golden afternoon sunlight filling the room, peaceful and heartwarming scene, detailed continuation focus",
+        "camera": "Close-up, pan left",
+        "visual": "still",
+        "characters": [
+          "kid",
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p130",
+          "speaker": "kid",
+          "text": "與其冒著破壞營養的風險去加熱融化，不如直接當成果醬抹吐司，甚至學會控溫做奶油蜜！",
+          "pause_after_ms": 750,
+          "emotion": "生活行動指南"
+        }
+      ]
+    },
+    {
+      "id": "chief-closing-summary-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Warm wide closing shot of question office: smiling chief in mustard cardigan and happy 8-year-old girl enjoying toast with white creamed honey, beautiful golden afternoon sunlight filling the room, peaceful and heartwarming scene, detailed continuation focus",
+        "camera": "Medium shot, pan right",
+        "visual": "still",
+        "characters": [
+          "kid",
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p131",
+          "speaker": "chief",
+          "text": "沒錯！尊重食物的物理特性，學會科學背後的原理，",
+          "pause_after_ms": 750,
+          "emotion": "溫暖總結"
+        }
+      ]
+    },
+    {
+      "id": "chief-closing-summary-d",
+      "template": "shot",
+      "data": {
+        "prompt": "Warm wide closing shot of question office: smiling chief in mustard cardigan and happy 8-year-old girl enjoying toast with white creamed honey, beautiful golden afternoon sunlight filling the room, peaceful and heartwarming scene, detailed continuation focus",
+        "camera": "Medium close-up, tilt up",
+        "visual": "still",
+        "characters": [
+          "kid",
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p132",
+          "speaker": "chief",
+          "text": "你才能把大自然的過飽和奇蹟，變成餐桌上最美妙的滋味！",
+          "pause_after_ms": 950,
+          "emotion": "全片有力收尾"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "path": "docs/videos/sothatswhy-g653-honey-crystallization/thumbnail-bg.jpg",
+      "source": "Mokaair 原來如此事務所",
+      "license": "Mokaair"
+    }
+  ]
+}
