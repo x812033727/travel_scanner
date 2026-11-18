@@ -31,10 +31,18 @@ describe("the AI hub rails", () => {
     expect(mocks.list).not.toHaveBeenCalledWith("en", expect.objectContaining({ topic: "ai-chat" }), expect.anything());
   });
 
+  it("keeps undated reference articles out of the AI news rail", async () => {
+    mocks.list.mockResolvedValue({ articles: [{ ...article("source-directory"), news_date: null }] });
+    const { news } = await loadAiHubRails("en", [topic("ai-news", 1)]);
+    expect(news).toBeNull();
+  });
+
   it("links each rail to its sub-topic's hub and jumps to it from the row of needs", async () => {
     const { rails, news } = await loadAiHubRails("en", [topic("ai-plans", 3), topic("ai-news", 4)]);
     render(<AiHubRails rails={rails} news={news} labels={labels} />);
     const plans = screen.getByRole("region", { name: "Label ai-plans" });
+    const newsRail = screen.getByRole("region", { name: "Label ai-news" });
+    expect(within(newsRail).getByRole("heading", { level: 4, name: "Title ai-news-1" })).toBeTruthy();
     expect(within(plans).getByRole("link", { name: "See all" }).getAttribute("href")).toBe("/life/topics/ai-plans");
     expect(within(plans).getByText("About ai-plans")).toBeTruthy();
     expect(screen.getByRole("navigation", { name: "By need" }).querySelectorAll("a")).toHaveLength(2);
