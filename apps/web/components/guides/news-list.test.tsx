@@ -1,5 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import * as intl from "next-intl";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { locales } from "@/i18n/routing";
 import type { GuideSummary } from "@/lib/guides";
 import { NewsList } from "./news-list";
 
@@ -9,6 +11,23 @@ const story = (slug: string, title: string, news_date: string | null, published_
 });
 
 describe("the news list", () => {
+  afterEach(() => vi.restoreAllMocks());
+
+  it.each(locales)("links channel, lead and compact rows to the %s article documents", (locale) => {
+    vi.spyOn(intl, "useLocale").mockReturnValue(locale);
+    const articles: GuideSummary[] = [
+      story("story", "Story", "2026-11-18"),
+      { ...story("report", "Report", "2026-11-17"), kind: "intel" },
+      { ...story("explainer", "Explainer", null), kind: "howto" },
+    ];
+    const hrefs = () => screen.getAllByRole("link").map((link) => link.getAttribute("href"));
+    const expected = [`/${locale}/life/story`, `/${locale}/guides/intel/report`, `/${locale}/guides/howto/explainer`];
+    const { rerender } = render(<NewsList articles={articles} channelFront />);
+    expect(hrefs()).toEqual(expected);
+    rerender(<NewsList articles={articles} leadHeading="h3" />);
+    expect(hrefs()).toEqual(expected);
+  });
+
   it("draws one line per story: the day the news happened, then the title as a link, in the order given", () => {
     render(
       <NewsList
@@ -22,7 +41,7 @@ describe("the news list", () => {
     expect(rows).toHaveLength(2);
     expect(rows.map((row) => row.querySelector("time")?.getAttribute("dateTime"))).toEqual(["2026-09-14", "2026-09-12"]);
     expect(rows[0].querySelector("time")?.textContent).toBe("2026-09-14");
-    expect(within(rows[0]).getByRole("link", { name: "Siri AI 隨 iOS 27 推出" }).getAttribute("href")).toBe("/life/ai-news-siri-20260914");
+    expect(within(rows[0]).getByRole("link", { name: "Siri AI 隨 iOS 27 推出" }).getAttribute("href")).toBe("/zh-TW/life/ai-news-siri-20260914");
   });
 
   it("shows the news day, never the publication time, and no description or position", () => {

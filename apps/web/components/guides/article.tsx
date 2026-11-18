@@ -48,6 +48,7 @@ export type GuideArticleLabels = Record<GuideKind, string> & {
   term?: TermLinkLabels;
   /** The heading over the summary card and over the FAQ section. */
   summary?: string;
+  summaryMore?: string;
   faq?: string;
   /** The line under the sources that links the owner's tip page, when one is set. */
   support?: SupportLinkLabels;
@@ -82,6 +83,7 @@ export function GuideArticle({
   sidebarToc = false,
   constrainDiagrams = false,
   share,
+  newsRail,
 }: {
   state: GuideArticleState & { document: NonNullable<GuideArticleState["document"]> };
   labels: GuideArticleLabels;
@@ -98,8 +100,10 @@ export function GuideArticle({
   constrainDiagrams?: boolean;
   /** Optional zero-script share actions rendered in the article header. */
   share?: { url: string; labels: ArticleShareLabels };
+  newsRail?: ReactNode;
 }) {
   const { document } = state;
+  const newsReading = Boolean(state.news_date && !state.series && !geminiSeries && !seriesHub);
   const visibleHero = visibleGuideHero(document.hero);
   const authoredBlocks = document.blocks.filter((block) => !isSyntheticNewsBlock(block));
   const geminiMember = geminiSeries ? visibleGeminiMember(geminiSeries, state.slug, state.locale, state.kind) : undefined;
@@ -196,51 +200,59 @@ export function GuideArticle({
     .filter((module) => !inlineModules.has(module));
   const showAffiliate = Boolean(affiliateDestination) && affiliateModules.length > 0 && !state.expired;
 
-  return (
-    <article className="space-y-6 break-words [overflow-wrap:anywhere]">
-      {geminiMember && geminiSeries ? <GeminiNavigation series={geminiSeries} number={geminiMember.number} position="top" /> : null}
-      <header>
+  const header = (
+    <header>
+      {!newsReading || state.destination_label ? (
         <p className="flex flex-wrap items-center gap-2 text-[length:var(--text-xs)] font-semibold uppercase tracking-wide text-[var(--muted)]">
-          <span className="rounded-full bg-[var(--teal-soft)] px-2.5 py-0.5 text-[var(--teal-dark)]">
-            {labels[state.kind]}
-          </span>
+          {!newsReading ? (
+            <span className="rounded-full bg-[var(--teal-soft)] px-2.5 py-0.5 text-[var(--teal-dark)]">
+              {labels[state.kind]}
+            </span>
+          ) : null}
           {state.destination_label ? (
             <Link className="underline underline-offset-4 hover:text-[var(--teal)]" href={`/destinations/${state.destination_id}`}>
               {state.destination_label}
             </Link>
           ) : null}
         </p>
-        <h1 className="mt-3 text-2xl font-extrabold leading-[1.28] tracking-tight sm:mt-3.5 sm:text-3xl md:text-4xl md:leading-[1.2]">{document.title}</h1>
-        <p className="mt-3 text-base leading-7 text-[var(--muted)] sm:mt-3.5 sm:text-lg sm:leading-8">{document.description}</p>
-        {isGeminiHub ? <a href="#series-directory" className="mt-3 inline-flex min-h-11 items-center text-[var(--teal)] underline">{geminiCopy.start}</a> : null}
-        {state.news_date || (modified && modified > published) || readingTime ? (
-          <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 border-y border-[var(--line)] py-2.5 text-sm text-[var(--muted)]">
-            {state.news_date ? (
-              <span className="inline-flex items-center gap-1.5">
-                <Calendar size={14} className="shrink-0 text-[var(--teal)]" aria-hidden />
-                <span>{labels.publishedOn ? `${labels.publishedOn}: ` : ""}<time dateTime={state.news_date} className="font-mono tabular-nums">{state.news_date}</time></span>
-              </span>
-            ) : null}
-            {modified && modified > published ? (
-              <span className="inline-flex items-center gap-1.5">
-                <RefreshCw size={14} className="shrink-0 text-[var(--muted)]" aria-hidden />
-                <span>{labels.updated}: <time dateTime={modified} className="font-mono tabular-nums">{modified}</time></span>
-              </span>
-            ) : null}
-            {readingTime ? (
-              <span className="inline-flex items-center gap-1.5">
-                <Clock size={14} className="shrink-0 text-[var(--muted)]" aria-hidden />
-                <span>{readingTime}</span>
-              </span>
-            ) : null}
-          </p>
-        ) : null}
-        {share && !isGeminiHub ? (
-          <ArticleShareBar url={share.url} title={document.title} labels={share.labels} />
-        ) : null}
-      </header>
+      ) : null}
+      <h1 className="mt-3 text-2xl font-extrabold leading-[1.28] tracking-tight sm:mt-3.5 sm:text-3xl md:text-4xl md:leading-[1.2]">{document.title}</h1>
+      <p className="mt-3 text-base leading-7 text-[var(--muted)] sm:mt-3.5 sm:text-lg sm:leading-8">{document.description}</p>
+      {isGeminiHub ? <a href="#series-directory" className="mt-3 inline-flex min-h-11 items-center text-[var(--teal)] underline">{geminiCopy.start}</a> : null}
+      {state.news_date || (modified && modified > published) || readingTime ? (
+        <p data-news-meta={newsReading || undefined} className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 border-y border-[var(--line)] py-2.5 text-sm text-[var(--muted)]">
+          {state.news_date ? (
+            <span className="inline-flex items-center gap-1.5">
+              <Calendar size={14} className="shrink-0 text-[var(--teal)]" aria-hidden />
+              <span>{labels.publishedOn ? `${labels.publishedOn}: ` : ""}<time dateTime={state.news_date} className="font-mono tabular-nums">{state.news_date}</time></span>
+            </span>
+          ) : null}
+          {modified && modified > published ? (
+            <span className="inline-flex items-center gap-1.5">
+              <RefreshCw size={14} className="shrink-0 text-[var(--muted)]" aria-hidden />
+              <span>{labels.updated}: <time dateTime={modified} className="font-mono tabular-nums">{modified}</time></span>
+            </span>
+          ) : null}
+          {readingTime ? (
+            <span className="inline-flex items-center gap-1.5">
+              <Clock size={14} className="shrink-0 text-[var(--muted)]" aria-hidden />
+              <span>{readingTime}</span>
+            </span>
+          ) : null}
+        </p>
+      ) : null}
+      {share && !isGeminiHub ? (
+        <ArticleShareBar url={share.url} title={document.title} labels={share.labels} />
+      ) : null}
+    </header>
+  );
 
-      {extras.summary ? <SummaryCard id="article-summary" items={extras.summary.items} heading={labels.summary} /> : null}
+  const body = (
+    <>
+      {extras.summary ? (
+        <SummaryCard id="article-summary" items={extras.summary.items} heading={labels.summary}
+          moreLabel={newsReading ? labels.summaryMore : undefined} />
+      ) : null}
 
       {visibleHero ? (
         <figure>
@@ -284,7 +296,7 @@ export function GuideArticle({
         </nav>
       ) : null}
       {(sidebarToc || state.series?.current) && headings.length >= CONTENTS_MIN_HEADINGS ? (
-        <details open={!state.series?.current} className="group rounded-2xl border border-[var(--line)] bg-[color-mix(in_srgb,var(--teal-soft)_38%,var(--surface))] px-4 py-2.5 shadow-[var(--shadow-sm)] sm:px-5 sm:py-3 lg:hidden">
+        <details open={!newsReading && !state.series?.current} className="group rounded-2xl border border-[var(--line)] bg-[color-mix(in_srgb,var(--teal-soft)_38%,var(--surface))] px-4 py-2.5 shadow-[var(--shadow-sm)] sm:px-5 sm:py-3 lg:hidden">
           <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 font-bold text-[var(--teal-dark)] after:shrink-0 after:font-mono after:text-base after:text-[var(--muted)] after:content-['+'] group-open:after:content-['−'] [&::-webkit-details-marker]:hidden">{labels.contents}</summary>
           <ol className="mt-1.5 space-y-1.5 border-t border-[var(--line)] pb-1.5 pt-2.5 text-sm leading-6">
             {headings.map((heading, index) => (
@@ -422,6 +434,14 @@ export function GuideArticle({
       ) : null}
 
       {labels.support ? <SupportLink labels={labels.support} /> : null}
+    </>
+  );
+  return (
+    <article data-news-reading={newsReading || undefined} className="space-y-6 break-words [overflow-wrap:anywhere]">
+      {geminiMember && geminiSeries ? <GeminiNavigation series={geminiSeries} number={geminiMember.number} position="top" /> : null}
+      {header}
+      {newsReading ? <div data-news-body className="space-y-6">{body}</div> : body}
+      {newsReading ? newsRail : null}
     </article>
   );
 }

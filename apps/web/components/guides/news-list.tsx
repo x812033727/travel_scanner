@@ -1,16 +1,19 @@
-import { Link } from "@/i18n/navigation";
+import { useLocale } from "next-intl";
+import { getPathname } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
 import { guideHref, visibleGuideHero, type GuideSummary } from "@/lib/guides";
 import { GuideImage } from "./guide-image";
 
-function LeadRow({ article, heading: Heading, showTopic }: {
+function LeadRow({ article, href, heading: Heading, showTopic }: {
   article: GuideSummary;
+  href: string;
   heading: "h3" | "h4";
   showTopic: boolean;
 }) {
   const hero = visibleGuideHero(article.hero);
   return (
     <li className="py-2">
-      <Link href={guideHref(article.kind, article.slug)} aria-label={article.title}
+      <a href={href} aria-label={article.title}
         className={`group grid min-w-0 gap-3 rounded-xl bg-[var(--teal-soft)] p-4 text-[var(--ink)] outline-offset-2 [overflow-wrap:anywhere] sm:p-5 ${hero ? "sm:grid-cols-[minmax(0,1fr)_11rem] sm:items-center" : ""}`}>
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-[var(--teal-dark)]">
@@ -28,13 +31,14 @@ function LeadRow({ article, heading: Heading, showTopic }: {
           <GuideImage src={hero.src} alt="" width={hero.width} height={hero.height} loading="lazy" decoding="async"
             className="aspect-video w-full rounded-lg object-contain" />
         ) : null}
-      </Link>
+      </a>
     </li>
   );
 }
 
-function ChannelStory({ article, lead, showTopic, hasPair }: {
+function ChannelStory({ article, href, lead, showTopic, hasPair }: {
   article: GuideSummary;
+  href: string;
   lead: boolean;
   showTopic: boolean;
   hasPair: boolean;
@@ -54,10 +58,10 @@ function ChannelStory({ article, lead, showTopic, hasPair }: {
           <Heading className={`mt-2 text-pretty font-extrabold tracking-tight text-[var(--ink)] ${lead
             ? "max-w-[34ch] text-2xl leading-[1.27] sm:text-3xl lg:text-4xl"
             : "text-xl leading-snug sm:text-2xl"}`}>
-            <Link href={guideHref(article.kind, article.slug)}
+            <a href={href}
               className="underline-offset-4 after:absolute after:inset-0 group-hover:text-[var(--teal-dark)] group-hover:underline focus-visible:underline">
               {article.title}
-            </Link>
+            </a>
           </Heading>
           {article.description ? (
             <p className={`mt-2 max-w-prose text-[var(--muted)] ${lead
@@ -102,7 +106,10 @@ export function NewsList({
   showTopic?: boolean;
   showDescription?: boolean;
 }) {
+  const locale = useLocale() as Locale;
   if (!articles.length) return null;
+  // All three listing surfaces link across root layouts to (ads-public), which requires a document load.
+  const storyHref = (article: GuideSummary) => getPathname({ locale, href: guideHref(article.kind, article.slug) });
   const channelStories = channelFront ? articles.filter((article) => article.news_date).slice(0, 3) : [];
   const hasChannelStories = channelStories.length > 0;
   return (
@@ -113,10 +120,10 @@ export function NewsList({
       data-testid="news-list"
     >
       {articles.map((article, index) => channelStories.includes(article) ? (
-        <ChannelStory key={`${article.kind}:${article.slug}`} article={article} lead={article === channelStories[0]}
+        <ChannelStory key={`${article.kind}:${article.slug}`} article={article} href={storyHref(article)} lead={article === channelStories[0]}
           showTopic={showTopic} hasPair={channelStories.length === 3} />
       ) : leadHeading && index === 0 && article.news_date ? (
-        <LeadRow key={`${article.kind}:${article.slug}`} article={article} heading={leadHeading} showTopic={showTopic} />
+        <LeadRow key={`${article.kind}:${article.slug}`} article={article} href={storyHref(article)} heading={leadHeading} showTopic={showTopic} />
       ) : (
         <li
           key={`${article.kind}:${article.slug}`}
@@ -141,12 +148,12 @@ export function NewsList({
                   {article.topics[0].label}
                 </span>
               ) : null}
-              <Link
-                href={guideHref(article.kind, article.slug)}
+              <a
+                href={storyHref(article)}
                 className="inline-flex min-h-11 min-w-0 items-center font-medium leading-7 text-[var(--ink)] underline-offset-4 [overflow-wrap:anywhere] after:absolute after:inset-0 group-hover:text-[var(--teal)] group-hover:underline focus-visible:underline"
               >
                 {article.title}
-              </Link>
+              </a>
             </div>
             {showDescription && article.description ? (
               <p className="mb-1.5 line-clamp-2 text-sm leading-6 text-[var(--muted)]">{article.description}</p>

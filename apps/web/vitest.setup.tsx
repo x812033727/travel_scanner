@@ -68,6 +68,7 @@ vi.mock("next-intl/server", () => ({
 }));
 
 vi.mock("@/i18n/navigation", () => ({
+  getPathname: ({ locale, href }: { locale: string; href: string }) => `/${locale}${href}`,
   Link: ({ href, children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) =>
     React.createElement("a", { href, ...props }, children),
   usePathname: () => "/",

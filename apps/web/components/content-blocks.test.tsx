@@ -311,9 +311,10 @@ describe("rendering the rich blocks", () => {
   });
 
   it("draws a diagram wide enough to read, inside a box that scrolls and takes keyboard focus", () => {
-    const { container } = render(<ContentBlocks labels={labels} blocks={[{
+    const { container } = render(<ContentBlocks labels={{ ...labels, viewOriginalImage: "查看原圖" }} blocks={[{
       type: "image", src: "/guides/narita-to-tokyo/route-map.svg", alt: "路線圖", width: 1600, height: 900,
     }]} />);
+    expect(screen.queryByRole("link")).toBeNull();
     const image = screen.getByRole("img", { name: "路線圖" });
     // 15px, the floor pack_ingest enforces, lands at 11.1 CSS px here; fitted to the 728px
     // column it would be 6.8, and 3.1 on a phone.
@@ -346,6 +347,32 @@ describe("rendering the rich blocks", () => {
     expect(photo.style.width).toBe("");
     expect(photo.className).toContain("w-full");
     expect(photo.parentElement!.tagName).toBe("FIGURE");
+    expect(photo.closest("figure")!.querySelector("a[href^='/guides/']")).toBeNull();
+  });
+
+  it.each(["png", "jpg", "webp"])("offers the full-size %s in the same tab when requested", (extension) => {
+    const src = `/guides/new-display/rear-ports.${extension}`;
+    render(<ContentBlocks labels={{ ...labels, viewOriginalImage: "查看原圖" }} blocks={[{
+      type: "image", src, width: 1600, height: 900, alt: "HDMI 與 USB 接孔排列",
+      caption: "連接埠的位置", credit: { author: "Mokaair", license: "CC BY 4.0", source_url: null },
+    }]} />);
+    const figure = screen.getByRole("figure");
+    const link = within(figure).getByRole("link", { name: "查看原圖 · HDMI 與 USB 接孔排列" });
+    expect(link.getAttribute("href")).toBe(src);
+    expect(link.getAttribute("target")).toBeNull();
+    expect(link.textContent).toBe("查看原圖");
+    expect(within(figure).getByRole("img", { name: "HDMI 與 USB 接孔排列" })).toBeTruthy();
+    expect(figure.querySelector("figcaption")!.textContent).toContain("連接埠的位置 · 圖片：Mokaair (CC BY 4.0)");
+  });
+
+  it("omits the original action for column-sized figures and untrusted sources", () => {
+    const photo = { type: "image" as const, alt: "螢幕", width: 728, height: 410 };
+    render(<ContentBlocks labels={{ ...labels, viewOriginalImage: "查看原圖" }} blocks={[
+      { ...photo, src: "/guides/new-display/screen.jpg" },
+      { ...photo, width: 1600, src: "https://example.test/remote.jpg" },
+    ]} />);
+    expect(screen.getAllByRole("figure")).toHaveLength(1);
+    expect(screen.queryByRole("link")).toBeNull();
   });
 
   it("never draws a diagram larger than it was authored", () => {

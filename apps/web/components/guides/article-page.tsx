@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import readingStyles from "./news-reading.module.css";
 import { headers } from "next/headers";
 import { permanentRedirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
@@ -327,6 +328,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   const card: GuideCardLabels = kindLabels;
   const isCodexHub = kind === "life" && slug === HUB_SLUG;
   const isHub = isCodexHub || Boolean(state.series && !state.series.current && state.series.hub.slug === slug);
+  const isNewsReading = Boolean(state.news_date && !isHub && !state.series && !geminiSeries);
   const section = guideSection(kind);
   const topic = state.topics[0];
   // What to read next comes from the API's ranked list when it has one (the editor's picks,
@@ -343,7 +345,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
       ? await relatedLife(locale, state, seriesRelated)
       : [];
   const grid = gridItems.length
-    ? <RelatedGrid heading={t("guides.relatedSameTopic")} items={gridItems} kindLabels={kindLabels} />
+    ? <RelatedGrid layout={isNewsReading ? "news" : undefined} heading={t("guides.relatedSameTopic")} items={gridItems} kindLabels={kindLabels} />
     : null;
   const cited = state.backlinks?.length ? <Backlinks heading={t("guides.citedBy")} items={state.backlinks} /> : null;
   const handover = kind === "life"
@@ -409,10 +411,13 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     partner: { badge: t("guides.partnerBadge"), newTab: ts("newTab") },
     blocks: {
       imageCredit: t("guides.imageCredit"), imageDescription: t("guides.imageDescriptionToggle"),
+      viewOriginalImage: state.news_date ? t("guides.viewOriginalImage") : undefined,
       tip: t("guides.calloutTip"), warning: t("guides.calloutWarning"), info: t("guides.calloutInfo"),
     },
     term: { card: t("guides.termCard"), readMore: t("guides.termReadMore") },
     summary: t("guides.summary"),
+    summaryMore: isNewsReading && extras.summary && extras.summary.items.length > 1
+      ? t("guides.summaryMore", { count: extras.summary.items.length - 1 }) : undefined,
     faq: t("guides.faq"),
     support: { text: t("guides.supportText"), action: t("guides.supportAction"), newTab: ts("newTab") },
   };
@@ -475,6 +480,72 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
         : <div role="alert"><p>{copy.unavailable}</p><a href={`/${locale}${guideHref(kind, slug)}`} className="inline-flex min-h-11 items-center underline">{copy.retry}</a></div>
       : null;
 
+  const moveTrendingBelow = isNewsReading && hasDesktopToc;
+  const trendingSection = railTrending.length > 0 ? (
+    <section
+      aria-label={nav("searchTrending")}
+      className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-sm)] sm:p-5"
+    >
+      <h2 className="portal-section-heading text-sm font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">
+        {nav("searchTrending")}
+      </h2>
+      <ol className="mt-3 divide-y divide-[var(--line)] text-sm leading-6">
+        {railTrending.map((item, index) => {
+          const rankClass = index === 0
+            ? "bg-[var(--teal-fill)] text-[var(--primary-text)]"
+            : index < 3
+              ? "bg-[var(--coral-soft)] text-[var(--coral)]"
+              : "border border-[var(--line)] bg-[var(--paper)] text-[var(--muted)]";
+          return (
+            <li
+              key={`${item.kind}:${item.slug}`}
+              className="group relative -mx-2 flex items-start gap-2.5 rounded-xl px-2 py-2.5 transition-colors hover:bg-[var(--paper)]/70"
+            >
+              <span
+                aria-hidden
+                className={`mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md font-mono text-[length:var(--text-xs)] font-extrabold tabular-nums ${rankClass}`}
+              >
+                {index + 1}
+              </span>
+              <div className="min-w-0">
+                <Link
+                  href={guideHref(item.kind, item.slug)}
+                  className="line-clamp-2 font-semibold text-[var(--ink)] underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:text-[var(--teal)] group-hover:underline"
+                >
+                  {item.title}
+                </Link>
+                {item.topics[0] ? (
+                  <span className="mt-0.5 block text-[length:var(--text-xs)] text-[var(--muted)]">
+                    {item.topics[0].label}
+                  </span>
+                ) : null}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+  ) : null;
+  const sideRail = hasDesktopRail ? (
+    <aside
+      className={railTrending.length > 0 && !moveTrendingBelow
+        ? "min-w-0 space-y-5 lg:sticky lg:top-24"
+        : "hidden lg:sticky lg:top-24 lg:block lg:space-y-5"}
+    >
+      {hasDesktopToc ? (
+        <ArticleTocRail
+          headings={headings}
+          contentsLabel={labels.contents}
+          backToTopLabel={t("guides.backToTop")}
+          progressLabel={t("guides.readingProgress")}
+          seriesBackHref={state.series?.current ? `/${locale}${guideHref(state.series.hub.kind, state.series.hub.slug)}` : null}
+          seriesBackLabel={state.series?.current ? copy.back : null}
+        />
+      ) : null}
+      {moveTrendingBelow ? null : trendingSection}
+    </aside>
+  ) : null;
+
   return (
     <>
       <SiteHeader />
@@ -536,11 +607,11 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
           }),
         ]}
       />
-      <main className={`mx-auto px-5 py-6 sm:py-8 md:py-12 ${isHub || state.series || hasDesktopRail ? "max-w-6xl" : "max-w-3xl"}`}>
-        <Breadcrumb trail={trail} current={state.document.title} label={t("guides.breadcrumb")} />
-        <div className={hasDesktopRail ? "grid min-w-0 gap-6 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:items-start lg:gap-8" : ""}>
+      <main data-news-rail={isNewsReading && hasDesktopRail || undefined} className={isNewsReading ? readingStyles.reading : `mx-auto px-5 py-6 sm:py-8 md:py-12 ${isHub || state.series || hasDesktopRail ? "max-w-6xl" : "max-w-3xl"}`}>
+        <Breadcrumb compact={isNewsReading} trail={trail} current={state.document.title} label={t("guides.breadcrumb")} />
+        <div className={!isNewsReading && hasDesktopRail ? "grid min-w-0 gap-6 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:items-start lg:gap-8" : ""}>
           <div
-            className={elevateReadingSheet
+            className={!isNewsReading && elevateReadingSheet
               ? "min-w-0 rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-5 shadow-[var(--shadow-sm)] sm:rounded-3xl sm:p-7 md:p-10"
               : "min-w-0"}
           >
@@ -553,6 +624,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
               labels={labels}
               adsense={adsense}
               seriesHub={seriesDirectory}
+              newsRail={isNewsReading ? sideRail : undefined}
               sidebarToc={hasDesktopToc}
               constrainDiagrams={elevateReadingSheet || hasDesktopRail}
               share={!isHub ? {
@@ -568,70 +640,11 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
               } : undefined}
             />
           </div>
-          {hasDesktopRail ? (
-            <aside
-              className={railTrending.length > 0
-                ? "min-w-0 space-y-5 lg:sticky lg:top-24"
-                : "hidden lg:sticky lg:top-24 lg:block lg:space-y-5"}
-            >
-              {hasDesktopToc ? (
-                <ArticleTocRail
-                  headings={headings}
-                  contentsLabel={labels.contents}
-                  backToTopLabel={t("guides.backToTop")}
-                  progressLabel={t("guides.readingProgress")}
-                  seriesBackHref={state.series?.current ? `/${locale}${guideHref(state.series.hub.kind, state.series.hub.slug)}` : null}
-                  seriesBackLabel={state.series?.current ? copy.back : null}
-                />
-              ) : null}
-              {railTrending.length > 0 ? (
-                <section
-                  aria-label={nav("searchTrending")}
-                  className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-sm)] sm:p-5"
-                >
-                  <h2 className="portal-section-heading text-sm font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">
-                    {nav("searchTrending")}
-                  </h2>
-                  <ol className="mt-3 divide-y divide-[var(--line)] text-sm leading-6">
-                    {railTrending.map((item, index) => {
-                      const rankClass = index === 0
-                        ? "bg-[var(--teal-fill)] text-[var(--primary-text)]"
-                        : index < 3
-                          ? "bg-[var(--coral-soft)] text-[var(--coral)]"
-                          : "border border-[var(--line)] bg-[var(--paper)] text-[var(--muted)]";
-                      return (
-                        <li
-                          key={`${item.kind}:${item.slug}`}
-                          className="group relative -mx-2 flex items-start gap-2.5 rounded-xl px-2 py-2.5 transition-colors hover:bg-[var(--paper)]/70"
-                        >
-                          <span
-                            aria-hidden
-                            className={`mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md font-mono text-[length:var(--text-xs)] font-extrabold tabular-nums ${rankClass}`}
-                          >
-                            {index + 1}
-                          </span>
-                          <div className="min-w-0">
-                            <Link
-                              href={guideHref(item.kind, item.slug)}
-                              className="line-clamp-2 font-semibold text-[var(--ink)] underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:text-[var(--teal)] group-hover:underline"
-                            >
-                              {item.title}
-                            </Link>
-                            {item.topics[0] ? (
-                              <span className="mt-0.5 block text-[length:var(--text-xs)] text-[var(--muted)]">
-                                {item.topics[0].label}
-                              </span>
-                            ) : null}
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ol>
-                </section>
-              ) : null}
-            </aside>
-          ) : null}
+          {isNewsReading ? null : sideRail}
         </div>
+        {moveTrendingBelow && trendingSection ? (
+          <aside className={readingStyles.trending}>{trendingSection}</aside>
+        ) : null}
         <p className="mt-8">
           <Link
             className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-5 py-2 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]"

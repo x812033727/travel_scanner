@@ -114,6 +114,25 @@ describe("Codex articles on the shared page", () => {
 });
 
 describe("further reading", () => {
+  it("keeps the chapter navigation beside a news story and moves trending links after it", async () => {
+    const slug = "ai-news-field-notes";
+    mocks.article.mockResolvedValue({
+      ...state, slug, series: null, news_date: "2026-11-17",
+      document: { ...document, title: "Field notes" },
+    });
+    mocks.trending.mockResolvedValueOnce({
+      articles: [{ kind: "life", slug: "another-story", title: "Another story", topics: [] }],
+      next_cursor: null, available: true,
+    });
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug }));
+    const story = container.querySelector("article[data-news-reading]")!;
+    expect(story.querySelector(":scope > header h1")?.textContent).toBe("Field notes");
+    expect(story.querySelector(":scope > aside nav")).not.toBeNull();
+    const trending = screen.getByRole("link", { name: "Another story" });
+    expect(story.compareDocumentPosition(trending) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(story.contains(trending)).toBe(false);
+  });
+
   const ref = (slug: string, title: string, kind: "life" | "howto" = "life") =>
     ({ kind, slug, title, description: `${title} 的描述` });
 
@@ -344,6 +363,19 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
     expect(newsGraph.articleSection).toBe("AI 新聞");
     expect(newsGraph).not.toHaveProperty("image");
     expect(container.querySelector("img")).toBeNull();
+  });
+
+  it.each(["2026-11-17", null])("offers the original body figure only for dated news (news_date=%s)", async (newsDate) => {
+    const route = { locale: "zh-TW", kind: "life", slug: "new-display" } as const;
+    const src = "/guides/new-display/ports.png";
+    mocks.article.mockResolvedValue({
+      ...state, ...route, series: null, news_date: newsDate,
+      document: { ...document, blocks: [{ type: "image", src, alt: "螢幕背面接孔圖解", width: 1600, height: 900 }] },
+    });
+    render(await renderGuideArticle(route));
+    const figure = screen.getByRole("img", { name: "螢幕背面接孔圖解" }).closest("figure")!;
+    const link = within(figure).queryByRole("link", { name: /^查看原圖/ });
+    expect(link?.getAttribute("href") ?? null).toBe(newsDate ? src : null);
   });
 
   it("shares the first suitable published news figure, leaving it in its original position", async () => {
