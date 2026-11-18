@@ -36,6 +36,23 @@ describe("YouTube channel reports proxy", () => {
     expect(calls.find((call) => call.method === "POST")?.body).toBe(JSON.stringify({ force: true }));
   });
 
+  it("names another linked channel only when it is a channel code", async () => {
+    const urls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => { urls.push(url); return Response.json({ ok: true }); }));
+    await overview(new NextRequest(`${BASE}?channel=theater`, { headers: auth }));
+    await sync(new NextRequest(`${BASE}/sync?channel=theater`, { method: "POST", headers: { ...auth, "Content-Type": "application/json" }, body: "{}" }));
+    await rows(new NextRequest(`${BASE}/rows?report=channel_basic&start=2026-10-01&end=2026-10-31&channel=theater`, { headers: auth }));
+    await overview(new NextRequest(`${BASE}?channel=..%2Fadmin`, { headers: auth }));
+    const refused = await rows(new NextRequest(`${BASE}/rows?report=channel_basic&start=2026-10-01&end=2026-10-31&channel=A%20B`, { headers: auth }));
+    expect(refused.status).toBe(422);
+    expect(urls.map((url) => `${new URL(url).pathname}${new URL(url).search}`)).toEqual([
+      "/api/v1/video/youtube-reports?channel=theater",
+      "/api/v1/video/youtube-reports/sync?channel=theater",
+      "/api/v1/video/youtube-reports/rows?report=channel_basic&start=2026-10-01&end=2026-10-31&format=json&channel=theater",
+      "/api/v1/video/youtube-reports",
+    ]);
+  });
+
   it("refuses a bad query or a missing token before the API", async () => {
     const fetchMock = vi.fn();
     vi.stubGlobal("fetch", fetchMock);

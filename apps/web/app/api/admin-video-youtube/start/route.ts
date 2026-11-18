@@ -6,14 +6,21 @@ import { adminHeaders, apiUrl, backToSettings, COOKIE_PATH, encodeFlow, FLOW_COO
 // Google's consent screen is the only place this route sends a browser.
 const GOOGLE_AUTHORIZE = "https://accounts.google.com/o/oauth2/v2/auth?";
 
+// A channel added on the settings tab (apps/api/app/video_youtube/connection.py KEY_PATTERN);
+// without one, or with "default", the link is for the main channel as it always was.
+const CHANNEL_KEY = /^[a-z][a-z0-9-]{1,31}$/;
+
 /** The link button on the YouTube card: open a flow with the API, then go to Google. */
 export async function GET(request: NextRequest) {
   const locale = normalizeLocale(request.nextUrl.searchParams.get("locale"));
   if (!request.cookies.get("travel_access")?.value) return backToSettings(locale, { error: "authentication_required" });
+  const key = request.nextUrl.searchParams.get("channel") ?? "";
+  if (key && !CHANNEL_KEY.test(key)) return backToSettings(locale, { error: "video_youtube_channel_unknown" });
+  const path = key && key !== "default" ? `admin/video-youtube/channels/${key}/oauth/start` : "admin/video-youtube/oauth/start";
   const binding = randomBytes(32).toString("base64url");
   let upstream: Response;
   try {
-    upstream = await fetch(apiUrl("admin/video-youtube/oauth/start"), {
+    upstream = await fetch(apiUrl(path), {
       method: "POST",
       headers: adminHeaders(request),
       body: JSON.stringify({ browser_binding: binding }),

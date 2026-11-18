@@ -43,6 +43,10 @@ tool_router = APIRouter(prefix="/video/youtube-reports", tags=["video tool"])
 admin_router = APIRouter(prefix="/admin/video-youtube/reports", tags=["admin video youtube"])
 
 
+# Which linked channel (VideoYoutubeConnection.key, migration 0147); the default one if left out.
+ChannelKey = Annotated[str, Query(alias="channel", pattern=r"^[a-z][a-z0-9-]{1,31}$")]
+
+
 def _refused(error: Refused) -> AppError:
     return AppError(error.status, error.code, error.detail)
 
@@ -52,18 +56,32 @@ def _sync_out(result: reports.SyncResult) -> ReportsSyncOut:
 
 
 @tool_router.get("")
-async def tool_overview(tool: VideoTool, session: Session) -> dict[str, Any]:
-    """Which reports the site keeps and for which days, and the site's videos on YouTube."""
+async def tool_overview(
+    tool: VideoTool, session: Session, channel: ChannelKey = "default"
+) -> dict[str, Any]:
+    """Which reports the site keeps for a channel and for which days, the site's videos on
+    it, and every linked channel under ``channels``."""
     _ = tool
-    return await reports.overview(session)
+    try:
+        return await reports.overview(session, key=channel)
+    except Refused as error:
+        raise _refused(error) from error
 
 
 @tool_router.post("/sync", response_model=ReportsSyncOut)
-async def tool_sync(payload: ReportsSyncIn, tool: VideoTool, session: Session) -> ReportsSyncOut:
+async def tool_sync(
+    payload: ReportsSyncIn, tool: VideoTool, session: Session, channel: ChannelKey = "default"
+) -> ReportsSyncOut:
     await enforce_named_rate_limit(
         "video_youtube_reports_sync", str(tool.id), limit=SYNCS_PER_HOUR, window_seconds=3600
     )
-    return _sync_out(await reports.sync(session, force=payload.force, limit=payload.limit))
+    try:
+        result = await reports.sync(
+            session, force=payload.force, limit=payload.limit, key=channel
+        )
+    except Refused as error:
+        raise _refused(error) from error
+    return _sync_out(result)
 
 
 @tool_router.get("/rows")
@@ -75,13 +93,20 @@ async def tool_rows(
     end: date,
     video_id: Annotated[list[str] | None, Query(max_length=50)] = None,
     output: Annotated[Literal["json", "csv"], Query(alias="format")] = "json",
+    channel: ChannelKey = "default",
 ) -> Response:
     """One report family's rows for the days ``start`` to ``end`` (Pacific, inclusive), as
     YouTube wrote them; ``video_id`` (repeatable) keeps the rows of those videos only."""
     _ = tool
     try:
         found = await reports.rows(
-            session, report=report, start=start, end=end, video_ids=video_id or (), output=output
+            session,
+            report=report,
+            start=start,
+            end=end,
+            video_ids=video_id or (),
+            output=output,
+            key=channel,
         )
     except Refused as error:
         raise _refused(error) from error
@@ -133,15 +158,25 @@ async def tool_retention(
 
 
 @admin_router.get("")
-async def admin_overview(user: ContentReader, session: Session) -> dict[str, Any]:
+async def admin_overview(
+    user: ContentReader, session: Session, channel: ChannelKey = "default"
+) -> dict[str, Any]:
     """The card's line: the overview without the list of videos."""
     _ = user
-    view = await reports.overview(session)
+    try:
+        view = await reports.overview(session, key=channel)
+    except Refused as error:
+        raise _refused(error) from error
     view.pop("videos", None)
     return view
 
 
 @admin_router.post("/sync", response_model=ReportsSyncOut)
-async def admin_sync(user: ContentManager, session: Session) -> ReportsSyncOut:
+async def admin_sync(
+    user: ContentManager, session: Session, channel: ChannelKey = "default"
+) -> ReportsSyncOut:
     _ = user
-    return _sync_out(await reports.sync(session, force=True))
+    try:
+        return _sync_out(await reports.sync(session, force=True, key=channel))
+    except Refused as error:
+        raise _refused(error) from error

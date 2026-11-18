@@ -86,12 +86,19 @@ class VideoYoutubeReport(Base):
 
 
 class VideoYoutubeReportState(Base):
-    """When the reports were last fetched, and why the last attempt stopped. A single row."""
+    """When a channel's reports were last fetched, and why the last attempt stopped.
+
+    One row per linked channel since migration 0147; row 1 is the default channel's, and a row
+    from before then may still have no ``channel_id``.
+    """
 
     __tablename__ = "video_youtube_report_state"
-    __table_args__ = (CheckConstraint("id = 1", name="ck_video_youtube_report_state_single"),)
+    __table_args__ = (
+        UniqueConstraint("channel_id", name="uq_video_youtube_report_state_channel_id"),
+    )
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, default=1)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    channel_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
     # The last run that went through every job (a run that stopped early leaves it).
     synced_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     attempted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)

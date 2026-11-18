@@ -700,6 +700,7 @@ def _summary(
         "series_slug": project.series_slug,
         "episode_number": project.episode_number,
         "youtube_sync": public_state(project.youtube_sync),
+        "youtube_channel_key": project.youtube_channel_key,
     }
 
 
@@ -2772,24 +2773,39 @@ def publication_of(video: dict[str, Any] | None, channel_id: str | None) -> Yout
 
 
 @asynccontextmanager
-async def _linked_youtube(session: AsyncSession) -> AsyncIterator[tuple[str, YoutubeClient]]:
+async def _linked_youtube(
+    session: AsyncSession, key: str = connection.DEFAULT_KEY
+) -> AsyncIterator[tuple[str, YoutubeClient]]:
     """The linked channel's id and a client that speaks for it; ``Refused`` when no channel is
-    linked or its grant is lost (the same answers as the sync's ``_linked_connection``)."""
-    row = await connection.connection_row(session)
+    linked or its grant is lost (the same answers as the sync's ``_linked_connection``).
+    ``key`` is which channel (VideoProject.youtube_channel_key); the default one otherwise."""
+    row = await connection.connection_row(session, key=key)
     if not connection.linked(row):
         raise Refused(409, "video_youtube_not_linked", "還沒有連結 YouTube 頻道：到設定分頁連結")
     if row.problem:
         raise Refused(409, "video_youtube_grant_lost", row.problem)
     channel_id = row.channel_id or ""
     async with connection.http_client() as http:
-        yield channel_id, YoutubeClient(http, await connection.access_token(session, http))
+        yield channel_id, YoutubeClient(
+            http, await connection.access_token(session, http, key=key)
+        )
+
+
+def _linked_for(session: AsyncSession, key: str) -> Any:
+    """``_linked_youtube`` for a video's channel; the default channel is asked the way it always
+    was, so a stand-in for the one-channel helper keeps working."""
+    if key == connection.DEFAULT_KEY:
+        return _linked_youtube(session)
+    return _linked_youtube(session, key)
 
 
 def _unreachable(error: Exception) -> str:
     return f"問不到 YouTube，沒有記公開時間（{error}）；公開後再貼一次網址或跑回填"
 
 
-async def youtube_publication(session: AsyncSession, video_id: str) -> YoutubePublication:
+async def youtube_publication(
+    session: AsyncSession, video_id: str, *, key: str = connection.DEFAULT_KEY
+) -> YoutubePublication:
     """Ask the linked channel when ``video_id`` went or goes public (videos.list, 1 unit).
 
     Never raises: no linked channel, a lost grant, a refused or failed call and a video outside
@@ -2797,7 +2813,7 @@ async def youtube_publication(session: AsyncSession, video_id: str) -> YoutubePu
     account.
     """
     try:
-        async with _linked_youtube(session) as (channel_id, client):
+        async with _linked_for(session, key) as (channel_id, client):
             video = await client.video(video_id)
     except Refused as refused:
         return YoutubePublication(None, refused.detail)
@@ -2806,10 +2822,12 @@ async def youtube_publication(session: AsyncSession, video_id: str) -> YoutubePu
     return publication_of(video, channel_id)
 
 
-async def _verify_private_youtube_video(session: AsyncSession, video_id: str) -> None:
+async def _verify_private_youtube_video(
+    session: AsyncSession, video_id: str, *, key: str = connection.DEFAULT_KEY
+) -> None:
     """Fail closed when Studio cannot prove this is an unscheduled private video on our channel."""
     try:
-        async with _linked_youtube(session) as (channel_id, client):
+        async with _linked_for(session, key) as (channel_id, client):
             videos = await client.videos(
                 [video_id], parts="snippet,status,contentDetails,processingDetails"
             )
@@ -2920,11 +2938,15 @@ async def link_youtube(
         )
         if other_slug is not None:
             raise AppError(409, "video_youtube_id_in_use", "這個 YouTube ID 已連結其他影片")
-        await _verify_private_youtube_video(session, video_id)
+        await _verify_private_youtube_video(
+            session, video_id, key=connection.channel_key(project.youtube_channel_key)
+        )
     source: str | None = "owner" if publish_at is not None else None
     reason: str | None = None
     if publish_at is None and not private_only:
-        reported = await youtube_publication(session, video_id)
+        reported = await youtube_publication(
+            session, video_id, key=connection.channel_key(project.youtube_channel_key)
+        )
         publish_at, reason = reported.publish_at, reported.reason
         source = "youtube" if publish_at is not None else None
     now = datetime.now(UTC)

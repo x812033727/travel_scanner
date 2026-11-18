@@ -45,6 +45,17 @@ describe("starting the link", () => {
     expect(flow.toLowerCase()).toContain("samesite=lax");
   });
 
+  it("opens a flow for another channel by its code, and refuses a code that is not one", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(Response.json({ authorization_url: AUTHORIZE, flow_id: "flow-1", state: "state-1", expires_in: 600 }));
+    vi.stubGlobal("fetch", fetchMock);
+    await start(request("/start?locale=ja&channel=theater", { travel_access: "session" }));
+    expect((fetchMock.mock.calls[0] as [string])[0]).toMatch(/\/api\/v1\/admin\/video-youtube\/channels\/theater\/oauth\/start$/);
+    await start(request("/start?locale=ja&channel=default", { travel_access: "session" }));
+    expect((fetchMock.mock.calls[1] as [string])[0]).toMatch(/\/api\/v1\/admin\/video-youtube\/oauth\/start$/);
+    expect(outcome(await start(request("/start?locale=ja&channel=..%2Fusers", { travel_access: "session" }))).error).toBe("video_youtube_channel_unknown");
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
   it("sends a signed-out browser back to the settings tab without asking the API", async () => {
     const fetchMock = vi.fn();
     vi.stubGlobal("fetch", fetchMock);

@@ -85,6 +85,35 @@ YouTube Analytics 有兩半：Analytics API 是即時查詢，Reporting API 是�
   報告裡算出來的數字要標明「依 YouTube 報表原始數據自行計算」，不能當成 YouTube 的數字，
   也不放上公開頁面。
 
+## 頻道（2026-11-18 起可以連結不只一個）
+
+站主同時經營 @Mokaair 和「摩卡劇場 Mokaair」（`docs/videos/channel-os-20261117/`），所以站台可以連結好幾個頻道（migration 0147，`apps/api/app/video_youtube/connection.py`）。
+
+- **每個頻道一列**，各有一個代號（`key`）和自己的授權。
+  - 原本那個頻道是 `default`（第 1 列），也保存所有頻道共用的 OAuth 用戶端。
+  - 其他頻道只存自己的 refresh token，登入時用第 1 列的用戶端。同一個 Google Cloud 專案可以被好幾個頻道（品牌帳戶）授權，不用另外建用戶端。
+- **新增與連結**：
+  1. 在 `/admin/videos` 的設定分頁，「其他頻道」卡片輸入代號（例如 `theater`）和名稱，按新增。
+  2. 按「連結」，在 Google 的畫面選那個頻道的品牌帳戶，並勾選 YouTube 與 Analytics 兩個範圍。
+  3. 同一個 YouTube 頻道不能連在兩個代號上。
+- **影片上哪個頻道**：
+  - 上傳表單有兩個以上頻道時會多一個「頻道」選單，寫進 `video_projects.youtube_channel_key`。
+  - 沒選的影片都算 `default`。
+  - 影片上了 YouTube 之後就不能換頻道。
+  - 上傳、貼網址驗證、讀觀眾續看曲線，都用那支影片所屬頻道的授權。
+- **報表依頻道分開保存**：
+  - 每天的排程會依序同步每個已連結的頻道，各有一列同步狀態。
+  - 一個頻道解除連結後，只刪那個頻道的報表。換連到另一個頻道時，舊頻道的報表照樣刪掉。
+  - 舊的路由與工具不帶頻道時，一律代表 `default`。
+- **讀其他頻道**：
+  - 報表工具加 `--channel <代號>`，例如 `node tools/video/youtube-reports/cli.mjs overview --channel theater`。
+  - API 路由加 `?channel=<代號>`。
+  - `overview` 會在 `channels` 列出所有頻道。
+- **還只用 `default` 的地方**（另開看板票 `2026-11-18-second-channel-phase-2-shorts-vps`）：
+  - Shorts 的排程、授權範圍與數據（`app/video_shorts`）
+  - VPS 上傳器（`services/youtube-uploader`、`MOKAAIR_VPS_UPLOADER_CHANNEL_ID`）
+  - 主機指令 `video-youtube-caption-titles`、`video-youtube-backfill-publish-times`
+
 ## 工具權杖能讀什麼
 
 任何有效的影片工具權杖都能讀（不另外勾權限）：報表只描述站主自己的頻道，讀它不花錢、不改任何
@@ -92,7 +121,7 @@ YouTube Analytics 有兩半：Analytics API 是即時查詢，Reporting API 是�
 
 | 路由 | 內容 |
 | --- | --- |
-| `GET youtube-reports` | 連結狀態、是否有 Analytics、上次同步、每種報表涵蓋的日期與欄位、站台已上 YouTube 的影片（slug、標題、分類、是否 Shorts、系列、公開時間）、政策說明 |
+| `GET youtube-reports` | `?channel=<代號>` 選頻道（預設 default）；連結狀態、所有頻道的清單、是否有 Analytics、上次同步、每種報表涵蓋的日期與欄位、站台已上 YouTube 的影片（slug、標題、分類、是否 Shorts、系列、公開時間）、政策說明 |
 | `POST youtube-reports/sync` | `{"force": bool, "limit": 1–400}`；每小時 30 次 |
 | `GET youtube-reports/retention` | `video_id`（一支）、`start`、`end`（太平洋日，可省：上架日到今天）、`organic=true`（只看自然流量）；站台當場問 YouTube Analytics API，回 100 點原值與影片長度；每小時 60 次 |
 | `GET youtube-reports/rows` | `report`（家族或類型 id）、`start`、`end`（太平洋日，含頭尾，最多 120 天）、`video_id`（可重複，最多 50）、`format=json|csv`；JSON 最多 5 萬列、CSV 50 萬列，超過時 `truncated: true` |

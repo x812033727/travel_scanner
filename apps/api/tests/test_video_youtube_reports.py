@@ -584,10 +584,16 @@ async def test_the_daily_job_runs_until_nothing_is_left(monkeypatch: pytest.Monk
     ]
     forced: list[bool] = []
 
-    async def fake_sync(_session: Any, *, force: bool, limit: int) -> reports.SyncResult:
+    async def fake_sync(
+        _session: Any, *, force: bool, limit: int, key: str = "default"
+    ) -> reports.SyncResult:
         forced.append(force)
         assert limit == reports.MAX_LIMIT
+        assert key == "default"
         return answers.pop(0)
+
+    async def linked_keys(_session: Any) -> list[str]:
+        return ["default"]
 
     class FakeSession:
         async def __aenter__(self) -> FakeSession:
@@ -596,12 +602,12 @@ async def test_the_daily_job_runs_until_nothing_is_left(monkeypatch: pytest.Monk
         async def __aexit__(self, *_: object) -> None:
             return None
 
+        async def commit(self) -> None:
+            return None
+
     monkeypatch.setattr(reports, "sync", fake_sync)
+    monkeypatch.setattr(reports, "linked_keys", linked_keys)
     monkeypatch.setattr(jobs, "SessionFactory", FakeSession)
-    assert await jobs._run() == {
-        "status": "synced",
-        "downloaded": 523,
-        "replaced": 2,
-        "problem": None,
-    }
+    expected = {"status": "synced", "downloaded": 523, "replaced": 2, "problem": None}
+    assert await jobs._run() == {**expected, "channels": {"default": expected}}
     assert forced == [False, True, True], "only the first round may be skipped as not due"

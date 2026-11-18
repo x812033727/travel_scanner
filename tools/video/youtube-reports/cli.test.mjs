@@ -56,6 +56,31 @@ test("overview reads the site with the token and says what is kept", async () =>
   assert.match(out.join(""), /channel_basic_a3: 30 days, 2026-10-01 to 2026-10-31/);
 });
 
+test("--channel asks the site about another linked channel, and the overview lists them all", async () => {
+  const channels = [
+    { key: "default", label: null, linked: true, channel_id: "UCx", channel_title: "Mokaair" },
+    { key: "theater", label: "摩卡劇場", linked: true, channel_id: "UCt", channel_title: "摩卡劇場 Mokaair" },
+  ];
+  const { out, calls, overrides } = harness((url) => (url.pathname.endsWith("/rows") ? rowsAnswer(url) : { body: { ...OVERVIEW, key: "theater", channel_id: "UCt", channel_title: "摩卡劇場 Mokaair", channels } }));
+  assert.equal(await main(["overview", "--channel", "theater"], overrides), 0);
+  assert.equal(calls[0].url.href, "https://mokaair.example/api/video/youtube-reports?channel=theater");
+  assert.match(out.join(""), /channel: 摩卡劇場 Mokaair \(UCt\) \[--channel theater\]/);
+  assert.match(out.join(""), /theater: 摩卡劇場 Mokaair/);
+  assert.equal(await main(["rows", "--report", "channel_basic", "--from", "2026-10-01", "--to", "2026-10-02", "--channel", "theater"], overrides), 0);
+  const rows = calls.find((call) => call.url.pathname.endsWith("/rows"));
+  assert.equal(rows.url.searchParams.get("channel"), "theater");
+  assert.equal(rows.url.searchParams.get("report"), "channel_basic");
+  assert.equal(await main(["overview", "--channel", "default"], overrides), 0);
+  assert.equal(calls.at(-1).url.href, "https://mokaair.example/api/video/youtube-reports");
+});
+
+test("--channel refuses something that is not a channel code", async () => {
+  const { err, calls, overrides } = harness(() => ({ body: OVERVIEW }));
+  assert.equal(await main(["overview", "--channel", "../x"], overrides), 2);
+  assert.match(err.join(""), /--channel is a channel code/);
+  assert.equal(calls.length, 0);
+});
+
 test("overview exits 3 when the owner has to link again with Analytics", async () => {
   const { overrides } = harness(() => ({ body: { ...OVERVIEW, analytics_granted: false, problem: "頻道授權沒有包含 YouTube Analytics（yt-analytics.readonly）" } }));
   assert.equal(await main(["overview"], overrides), 3);

@@ -394,6 +394,8 @@ class ProjectSummary(BaseModel):
     # What the site last sent this video's YouTube side through the linked channel, step by step
     # (app/video_youtube/state.py public_state), or None when it never did.
     youtube_sync: dict[str, Any] | None = None
+    # Which linked channel the video goes to (VideoYoutubeConnection.key); None is the default.
+    youtube_channel_key: str | None = None
     # A Short (docs/videos/SHORTS.md): its line, series and source; where it stands, one of the
     # eight states the Shorts tab groups by; and when the slot it holds goes public. All None
     # for a video that is not a Short.

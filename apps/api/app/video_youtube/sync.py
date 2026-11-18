@@ -279,8 +279,16 @@ async def _project_reviews(session: AsyncSession, project: VideoProject) -> list
     return list(rows)
 
 
-async def _linked_connection(session: AsyncSession) -> Any:
-    row = await connection.connection_row(session)
+async def _project_key(session: AsyncSession, slug: str) -> str:
+    """The channel a video goes to (VideoProject.youtube_channel_key; None is the default)."""
+    stored = await session.scalar(
+        select(VideoProject.youtube_channel_key).where(VideoProject.slug == slug)
+    )
+    return connection.channel_key(stored)
+
+
+async def _linked_connection(session: AsyncSession, key: str = connection.DEFAULT_KEY) -> Any:
+    row = await connection.connection_row(session, key=key)
     if not connection.linked(row):
         raise Refused(409, "video_youtube_not_linked", "還沒有連結 YouTube 頻道：到設定分頁連結")
     if row.problem:
@@ -322,7 +330,9 @@ async def request_sync(
     (that it was automatic, and the consent's id) goes into the audit entry with the rest.
     Automatic requests also retain that provenance so the run can check consent at the write.
     """
-    row = await _linked_connection(session)
+    row = await _linked_connection(session, await _project_key(session, slug))
+    # The audit switch belongs to the Google Cloud project, whose client is the default row's.
+    client_row = row if row.id == 1 else await connection.connection_row(session)
     project = await _locked_project(session, slug)
     if running(project.youtube_sync):
         raise Refused(409, "video_youtube_sync_running", "這支影片正在送 YouTube，等它跑完再送")
@@ -371,7 +381,7 @@ async def request_sync(
             raise Refused(
                 409, "video_youtube_mp4_missing", "審核區已經沒有這支的 mp4，請在 Studio 上傳"
             )
-        if not row.audited and not payload.accept_private_lock:
+        if not client_row.audited and not payload.accept_private_lock:
             raise Refused(
                 422,
                 "video_youtube_private_lock",
@@ -412,12 +422,30 @@ async def request_sync(
     return await reviews.project_view(session, slug)
 
 
+async def choose_channel(session: AsyncSession, slug: str, user: User, key: str) -> ProjectOut:
+    """Which linked channel the video goes to. Fixed once the video is on YouTube: the site
+    reads and writes it through that channel's grant from then on."""
+    await connection.connection_row(session, key=key)
+    project = await _locked_project(session, slug)
+    if project.youtube_video_id:
+        raise Refused(
+            409, "video_youtube_channel_locked", "這支影片已經在 YouTube 上了，不能換頻道"
+        )
+    if running(project.youtube_sync):
+        raise Refused(409, "video_youtube_sync_running", "這支影片正在送 YouTube，等它跑完再換")
+    before = connection.channel_key(project.youtube_channel_key)
+    project.youtube_channel_key = None if key == connection.DEFAULT_KEY else key
+    _audit(session, user, "video_youtube_channel_chosen", slug, before=before, key=key)
+    await session.commit()
+    return await reviews.project_view(session, slug)
+
+
 async def retry_sync(
     session: AsyncSession, slug: str, user: User, *, on_behalf: dict[str, Any] | None = None
 ) -> ProjectOut:
     """Run the last request again: finished steps stay finished, the rest start over.
     ``on_behalf`` is what it is for ``request_sync``."""
-    await _linked_connection(session)
+    await _linked_connection(session, await _project_key(session, slug))
     project = await _locked_project(session, slug)
     from app.video_youtube.vps import assert_idle
 
@@ -465,6 +493,7 @@ class Run:
     request: dict[str, Any]
     channel_id: str
     audited: bool
+    key: str = connection.DEFAULT_KEY
     access: str = ""
     access_at: datetime | None = None
 
@@ -498,7 +527,7 @@ class Run:
         if not self.access or self.access_at is None or moment - self.access_at > TOKEN_AGE:
             async with self.factory() as session:
                 try:
-                    self.access = await connection.access_token(session, self.http)
+                    self.access = await connection.access_token(session, self.http, key=self.key)
                 except Refused as refused:
                     raise StepFailed(refused.detail) from refused
             self.access_at = moment
@@ -895,11 +924,16 @@ async def _prepare(factory: Factory, slug: str, state: dict[str, Any]) -> tuple[
     request = state["request"]
     async with factory() as session:
         store = reviews.review_store(await load_runtime_settings(session))
-        row = await connection.connection_row(session)
-        channel_id, audited = row.channel_id or "", row.audited
         project = await session.scalar(select(VideoProject).where(VideoProject.slug == slug))
         if project is None:
             raise StepFailed("找不到這支影片")
+        key = connection.channel_key(project.youtube_channel_key)
+        try:
+            row = await connection.connection_row(session, key=key)
+        except Refused as refused:
+            raise StepFailed(refused.detail) from refused
+        default_row = row if row.id == 1 else await connection.connection_row(session)
+        channel_id, audited = row.channel_id or "", default_row.audited
         try:
             package = await asyncio.to_thread(
                 read_approved_package,
@@ -912,7 +946,7 @@ async def _prepare(factory: Factory, slug: str, state: dict[str, Any]) -> tuple[
         except Refused as refused:
             raise StepFailed(refused.detail) from refused
         await session.commit()
-    return store, package, channel_id, audited
+    return store, package, channel_id, audited, key
 
 
 async def run_sync(slug: str, factory: Factory | None = None) -> None:
@@ -927,7 +961,7 @@ async def run_sync(slug: str, factory: Factory | None = None) -> None:
         run: Run | None = None
         heartbeat: asyncio.Task[None] | None = None
         try:
-            store, package, channel_id, audited = await _prepare(factory, slug, state)
+            store, package, channel_id, audited, key = await _prepare(factory, slug, state)
             run = Run(
                 slug=slug,
                 token=token,
@@ -938,6 +972,7 @@ async def run_sync(slug: str, factory: Factory | None = None) -> None:
                 request=state["request"],
                 channel_id=channel_id,
                 audited=audited,
+                key=key,
             )
             heartbeat = asyncio.create_task(_heartbeat(run))
             video_id = str(state["request"].get("video_id") or "")
