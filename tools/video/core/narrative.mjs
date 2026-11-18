@@ -326,6 +326,41 @@ export function viewerAddressProblems(doc) {
   return [{ path: "scenes", message: `「你」 ${you} times in ${characters} spoken characters (${per1000.toFixed(1)} a thousand): a story told to one viewer turns to them at least ${VIEWER_ADDRESS_PER_1000} times a thousand characters, about once a chapter (register.mjs TOLD_TO_ONE_VIEWER; what they use, own, have heard or would have done)` }];
 }
 
+/**
+ * Defensive statutory/annual-report caveats and missing-figure disclaimers read aloud (2026-11-18;
+ * measured on curio-w01's 5 filing/missing-figure disclaimers against 黑猫研究院's human-stakes
+ * storytelling). At most one across an episode is tolerated; two or more warn the writer to move
+ * exact legal scope, accounting footnotes and unpublished figures into claims.md / youtube.description.
+ */
+export const CAVEAT_RECITATION_MAX = 1;
+export const CAVEAT_RECITATION_PATTERNS = Object.freeze([
+  /照(?:[^，。！？；：]{1,12}的)?公開資料|照[^，。！？；：]{1,12}的資料/,
+  /年報(?:寫|裡寫|上寫|記載|揭露)/,
+  /(?:翻遍|查遍)[^，。！？]{0,12}(?:找不到|查不到)/,
+  /沒有(?:對外)?公布[^，。！？]{0,12}(?:費|金額|數字|名單|細目)/,
+  /千萬別聽成|可別聽成|別誤會成/,
+  /現行[^，。！？]{0,10}法規(?:還)?寫著/,
+]);
+
+export function caveatRecitationProblems(doc) {
+  const hits = [];
+  for (const { line } of eachLine(doc)) {
+    const text = String(spokenText(line) ?? "");
+    for (const pattern of CAVEAT_RECITATION_PATTERNS) {
+      const match = pattern.exec(text);
+      if (match) {
+        hits.push({ id: line.id, hit: match[0] });
+        break;
+      }
+    }
+  }
+  if (hits.length <= CAVEAT_RECITATION_MAX) return [];
+  return [{
+    path: "scenes",
+    message: `statutory/filing caveats or missing-figure hedges recited in ${hits.length} lines (${hits.slice(0, 6).map(({ id, hit }) => `${id}:「${hit}」`).join(", ")}): tell who was cornered, what move they made and what it cost; leave exact legal scope, accounting footnotes and unpublished figures to claims.md and youtube.description (register.mjs TOLD_TO_ONE_VIEWER)`,
+  }];
+}
+
 /** Every storytelling problem of a narrated script, tagged "narrative" so the worker can hand the warnings to the writer. */
 export function narrativeProblems(doc, timeline, { minutes, cadence = DEFAULT_CADENCE } = {}) {
   const tag = (problems) => problems.map((problem) => ({ ...problem, kind: "narrative" }));
@@ -334,7 +369,7 @@ export function narrativeProblems(doc, timeline, { minutes, cadence = DEFAULT_CA
   const told = cadence.gap <= TIGHT_CADENCE.gap ? viewerAddressProblems(doc) : [];
   return {
     errors: tag(outroNextVideoProblems(doc)),
-    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc), ...told]),
+    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc), ...caveatRecitationProblems(doc), ...told]),
   };
 }
 
@@ -404,6 +439,7 @@ export const STORY_SERIES_PANEL_QUESTIONS = Object.freeze({
   no_toc: "是否沒有任何一句只是在宣告這支片分幾段（「接下來分三段」「第一…第二…最後」「先講 A 再講 B」「這一章回答…」）或把後面的內容排成清單？開場可以有一句「今天我們就來聊聊…」的承諾句，說出這集要回答的問題，整支片只一次。",
   chapters_link: "故事是否從頭到尾連貫、沒有沒頭沒尾的地方：每個人物、公司、文件出現時都先交代是誰或是什麼；每一段、每一章第一句都用轉場接住上一段（「但就在這時候」「時間快轉到 1983 年」「問題來了」）或上一章留下的疑問？標籤、總結、重述剛問過的話不算銜接。",
   opening_hooks: "開場是否在約 1 分 05 秒內做到：一個問句或情境、終點多大和起點多小的反差（帶數字）、最多一兩個停在結果之前的高潮標籤，再用一句承諾句「今天我們就來聊聊…」說出這集要回答的問題？（「接下來我們會看到」這種空宣告不算；超過兩個預告、或把劇情照順序講一遍，也算沒做到。）",
+  no_detour: "是否沒有岔出去或變成年報與校勘朗讀的段落：每一段都透過人的困境與出招推進開場那個問題，沒有整段脫離主線，沒有連著念法條但書、年報揭露或「查不到／沒有公布」，也沒有逐條對照三個以上史料版本或產品清單？",
 });
 /** Whether a script belongs to one of the two story series the viewer wording reads. */
 export const isStorySeries = (doc) => /^(?:curio|story)-/.test(doc?.slug ?? "");

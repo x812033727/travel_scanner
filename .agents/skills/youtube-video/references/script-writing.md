@@ -199,7 +199,8 @@
 - **全片都不能沒頭沒尾**：人物、公司、文件出現前先交代是誰、是什麼、什麼時候；名詞在主角碰到它時才解釋；段落之間有轉場句（「但就在這時候」「時間快轉到 1983 年」「問題來了」）。盲評 `chapters_link` 讀的就是這件事。
 - **`loops`**：鉤子的反差、一兩個高潮標籤和承諾句的問題，就是第一章埋的那三個以上，在第 5–9 步回收。鉤子密度（每 30–45 秒一個、十分鐘至少 8 個）照舊。
 - **第一章的長度**：鉤子加承諾句約 40–90 秒，lint 在這兩個系列照這個範圍警告（不是 30–60 秒）；短於 40 秒多半是少了反差，長於 90 秒多半是在講劇情。品牌故事的工人給 hook 章 45 秒預算（`story.mjs` `HOOK_SECONDS`），在範圍內。
-- **畫面與名字**（同日站主定）：不用卡片、畫面不放任何文字，數字講出來、畫成圖；章名只放在 YouTube 說明欄的章節；英文名稱照原文念。細節在 `.agents/skills/curio-episode/SKILL.md` §系列定案與 `.agents/skills/brand-story/SKILL.md` §站主定案。
+- **人的困境與出招，不把法條但書／「查不到」／史料校勘唸進旁白（2026-11-18）**：精準的法規適用範圍、年報附註與沒有公開的金額細目留在 `claims.md` 與 `youtube.description`；旁白改講「誰被逼到什麼處境、對手怎麼反制、他出了哪一招、代價是什麼」，不連唸「照…的公開資料」「年報寫」「現行…法規寫著」「翻遍年報也找不到」「沒有公布…費」「千萬別聽成…」，歷史奇聞也不逐條對照三個以上史料版本（`narrative.mjs` `caveatRecitationProblems` 全集超過 1 句警告；盲評 `STORY_SERIES_PANEL_QUESTIONS.no_detour` 同步把關）。
+- **畫面與名字**（同日站主定；2026-11-18 補專屬物件上限）：不用卡片、畫面不放任何文字，數字講出來、**優先畫本集專屬的無字實體物件、剖面或動作對照**（鼓扁錢包 `purse`/`wallet`、空白厚書 `thick/plain-covered book` 等萬用代替物全集同類最多 **2 鏡**，`curio.mjs` `genericPropWarnings` 達 3 鏡即警告）；章名只放在 YouTube 說明欄的章節；英文名稱照原文念。細節在 `.agents/skills/curio-episode/SKILL.md` §系列定案與 `.agents/skills/brand-story/SKILL.md` §站主定案。
 
 量到的其他差距（語速 5.1 對 3.3 字／秒、「你」26 次對 1 次、標題與縮圖）與規則在 `.agents/skills/curio-episode/SKILL.md`
 與 `.agents/skills/brand-story/SKILL.md` §跟高點閱頻道的差距，完整報告在 `docs/videos/channel-review-20261025-story-series/README.md`。
