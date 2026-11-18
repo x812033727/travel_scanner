@@ -476,7 +476,7 @@ FOOT = [
 # 5, 6.58 s for 6, 8.00 s for 8, so a line fits with about 0.68 s to spare, rule 43): s27 a27 6.05 s of speech > 5.9 -> 8;
 # s35 a35 7.80 s in 8.00 -> 10; s25b a24 4.83 s in 5.17 (an insert under Xu Yan's thought) -> 6. Every other line fits.
 BUY = {"s05": 8, "s26": 8, "s07": 8, "s10": 8, "s11": 8, "s13": 8, "s21": 8, "s25": 8, "s28": 8, "s33": 8, "s34": 8, "s35": 10, "s36": 8,
-       "s27": 8, "s25b": 6, "s01": 5, "s16": 5, "s20": 5, "s37": 5}
+       "s27": 8, "s25b": 6, "s32": 6, "s01": 5, "s16": 5, "s20": 5, "s37": 5}
 
 
 # ---- the refine text (as e023-e031): hailuo/clips-dh-e932.json column 0 is the motion text refine-prep.py sends with a picked
