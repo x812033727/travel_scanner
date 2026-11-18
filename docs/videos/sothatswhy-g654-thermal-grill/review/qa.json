@@ -25,7 +25,18 @@
     {
       "id": "captions",
       "ok": true,
-      "detail": "caption files for zh-TW, en, ja, ko, every translation current"
+      "detail": "caption files for zh-TW, en, ja, ko, es, pt, id, vi, th, every translation current",
+      "warnings": [
+        "id: cue 9 (p009): 19.0 characters a second, above 17",
+        "id: cue 118 (p116): 19.1 characters a second, above 17",
+        "id: cue 130 (p126): 17.8 characters a second, above 17",
+        "vi: cue 9 (p009): 18.4 characters a second, above 17",
+        "vi: cue 39 (p038): 17.6 characters a second, above 17",
+        "vi: cue 44 (p043): 17.9 characters a second, above 17",
+        "vi: cue 85 (p084): 17.3 characters a second, above 17",
+        "vi: cue 124 (p121): 17.8 characters a second, above 17",
+        "vi: cue 129 (p126): 17.2 characters a second, above 17"
+      ]
     },
     {
       "id": "metadata",
@@ -45,22 +56,22 @@
     {
       "id": "thumbnail",
       "ok": true,
-      "detail": "1280x720 JPEG, 154 KB; the headline is about 31 px tall at 320 px wide; language thumbnails checked: en, ja, ko, es, pt, id, vi, th"
+      "detail": "1280x720 JPEG, 225 KB; the headline is about 30 px tall at 320 px wide; language thumbnails checked: en, ja, ko, es, pt, id, vi, th"
     },
     {
       "id": "policy",
       "ok": false,
-      "detail": "Jev：符合立場 0.54、有示範 0.43、建議 0.01、業配 0.02；沒過（符合立場低於 0.6；有示範低於 0.6）"
+      "detail": "Jev：符合立場 0.54、有示範：不適用（解說）、建議 0.01、業配 0.02；沒過（符合立場低於 0.6）"
     },
     {
       "id": "disclosure",
       "ok": true,
-      "detail": "tick altered or synthetic content: a drama: AI-generated shots and music are always disclosed; upload/metadata.json already says so"
+      "detail": "tick altered or synthetic content: a drama: AI-generated shots and music are always disclosed"
     }
   ],
   "policy_judged": {
     "request_sha256": "0c0f9fb59c79623404904fa216b0de6d86c77d19bbc86afaec3cc545519b3dab",
     "ok": false,
-    "detail": "Jev：符合立場 0.54、有示範 0.43、建議 0.01、業配 0.02；沒過（符合立場低於 0.6；有示範低於 0.6）"
+    "detail": "Jev：符合立場 0.54、有示範：不適用（解說）、建議 0.01、業配 0.02；沒過（符合立場低於 0.6）"
   }
 }
