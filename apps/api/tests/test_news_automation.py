@@ -30,6 +30,7 @@ import app.news_automation as news_automation_package
 from app.config import get_settings
 from app.db import Base
 from app.guides.schemas import GuideDocument
+from app.news_automation import sources_cli
 from app.news_automation.feeds import (
     extract_article,
     github_star_count,
@@ -1802,6 +1803,68 @@ class _ListingFetcher:
 
     async def close(self) -> None:
         return None
+
+
+@pytest.mark.asyncio
+async def test_decrypt_feed_classifies_each_story_and_keeps_press_evidence() -> None:
+    reviewed = next(
+        row
+        for row in sources_cli.load_file(sources_cli.DEFAULT_FILE)
+        if row.url == "https://decrypt.co/feed"
+    )
+    source = NewsSource(
+        **reviewed.model_dump(exclude={"config", "allowed_redirect_hosts"}),
+        config_json=reviewed.config,
+        allowed_redirect_hosts_json=reviewed.allowed_redirect_hosts,
+        last_scanned_at=SCANNED_BEFORE,
+    )
+    stories = [
+        ("Nvidia board starts CEO search", "The board discussed succession.", "tech"),
+        ("OpenAI GPT 6.2 Astra challenges Anthropic", "API prices are per million tokens.", "ai"),
+        ("Ethereum developers consider Glamsterdam", "The upgrade raises the gas limit.", "crypto"),
+        (
+            "AI agents settle payments in USDC",
+            "The stablecoin moves on the Ethereum blockchain.",
+            "crypto",
+        ),
+    ]
+    entries = []
+    responses = {}
+    for index, (title, body, _vertical) in enumerate(stories):
+        url = f"https://decrypt.co/{index}"
+        entries.append(f"<item><title>{title}</title><link>{url}</link></item>")
+        responses[url] = FetchResult(
+            url=url,
+            status_code=200,
+            content_type="text/html",
+            body=f"<article><p>{body}</p></article>".encode(),
+        )
+    responses[source.url] = FetchResult(
+        url=source.url,
+        status_code=200,
+        content_type="application/rss+xml",
+        body=f"<rss><channel>{''.join(entries)}</channel></rss>".encode(),
+    )
+    fetcher = AsyncMock()
+    fetcher.fetch.side_effect = lambda url, **kwargs: responses[url]
+
+    engine, factory = await _scan_database()
+    try:
+        async with factory() as session:
+            session.add_all([source, NewsAutomationSettings(id=1, enabled=True)])
+            await session.commit()
+            assert await scan_source(session, source.id, AsyncMock(), fetcher=fetcher) == len(
+                stories
+            )
+            candidates = await session.scalars(select(NewsCandidate))
+            assert {row.source_title: row.vertical for row in candidates} == {
+                title: vertical for title, _, vertical in stories
+            }
+            evidence = list(await session.scalars(select(NewsEvidence)))
+            assert len(evidence) == len(stories)
+            assert all(row.role == "evidence" and not row.is_first_party for row in evidence)
+    finally:
+        await engine.dispose()
 
 
 @pytest.mark.asyncio

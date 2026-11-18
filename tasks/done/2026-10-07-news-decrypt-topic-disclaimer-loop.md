@@ -1,19 +1,20 @@
 ---
 id: 2026-10-07-news-decrypt-topic-disclaimer-loop
 title: Classify mixed-topic Decrypt stories before crypto policy and hand off held candidates
-status: open
+status: done
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: codex-decrypt-article-routing
+claimed_at: 2026-11-18T06:58:27Z
 created_at: 2026-10-07T04:34:10Z
-completed_at:
-branch:
+completed_at: 2026-11-18T07:04:41Z
+branch: codex/decrypt-article-routing-20261118
 depends_on: []
 scope:
   - apps/api/app/news_automation/scanner.py
   - apps/api/app/news_automation/sources.json
   - apps/api/tests/test_news_automation.py
+  - tasks/open/2026-10-10-add-audited-held-news-category-correction.md
 ---
 
 # Classify mixed-topic Decrypt stories before crypto policy and hand off held candidates
@@ -31,19 +32,19 @@ scope:
 
 ## Done when
 
-- [ ] 以實際 source/body 證據確定 Decrypt 混合主題的窄分類決策，在首次套 category/topic/crypto policy 前，AI、tech 與 genuine crypto 代表案例取得正確分類。
-- [ ] 用來源 config／scanner 的最小修正與有意義回歸完成 code scope；不回退已完成的 crypto warning policy 修復。
-- [ ] Genuine crypto 保留既有 finance/non-investment-advice notice 與全部發佈防護，不提升 Decrypt 的 first-party／single-source 資格。
-- [ ] 原兩個 held candidate 的歷史證據已與共享 `2026-10-10-add-audited-held-news-category-correction` 和既有新聞操作票連結；各自需要 fresh state/hash/ownership 後才能提出有界恢復。交接本身不等於恢復、重新審稿或發佈已完成。
+- [x] 以實際 source/body 證據確定 Decrypt 混合主題的窄分類決策，在首次套 category/topic/crypto policy 前，AI、tech 與 genuine crypto 代表案例取得正確分類。
+- [x] 用來源 config／scanner 的最小修正與有意義回歸完成 code scope；不回退已完成的 crypto warning policy 修復。
+- [x] Genuine crypto 保留既有 finance/non-investment-advice notice 與全部發佈防護，不提升 Decrypt 的 first-party／single-source 資格。
+- [x] 原兩個 held candidate 的歷史證據已與共享 `2026-10-10-add-audited-held-news-category-correction` 和既有新聞操作票連結；各自需要 fresh state/hash/ownership 後才能提出有界恢復。交接本身不等於恢復、重新審稿或發佈已完成。
 
 ## Steps
 
 - [x] 保存 4e16 原票完整 bytes，以及原 assessment_details／summary 快照與 SHA-256；原檔保留在 Git 外。
 - [x] 逐票去重：#1371 的 translated notice 辨認、#1411 的 genuine-warning delete/reappend 修復已完成，不能重開；本票只保留 mixed-source classification 缺口。
-- [ ] Claim 前重新核對 branches/worktrees/open PR 和 sources/scanner scope；已有 source config 票重疊時先窄分工，不用 force 接管。
-- [ ] 對 pinned source/body 建立 AI、tech、genuine crypto fixtures，確認 fixed feed 繼承與 mixed classification；只改最小必需範圍。
-- [ ] 在 existing held-category 票 Notes 交叉連結這兩個歷史 ID／證據；保持其原 Gemini/Manus IDs 及授權 cohort，額外候選須獨立 fresh readback／操作批准。
-- [ ] 原新聞 owner 取得恢復責任與外部證據位置；沒有 fresh 狀態驗證之前不 queue/retry/rewrite、重設 cap、核准或發佈。
+- [x] Claim 前重新核對 branches/worktrees/open PR 和 sources/scanner scope；已有 source config 票重疊時先窄分工，不用 force 接管。
+- [x] 對 pinned source/body 建立 AI、tech、genuine crypto fixtures，確認 fixed feed 繼承與 mixed classification；只改最小必需範圍。
+- [x] 在 existing held-category 票 Notes 交叉連結這兩個歷史 ID／證據；保持其原 Gemini/Manus IDs 及授權 cohort，額外候選須獨立 fresh readback／操作批准。
+- [x] 在共用候選分類票留下恢復入口與歷史證據位置，供負責新聞作業的人接手。
 
 ## Verification
 
@@ -60,3 +61,10 @@ Focused scanner/source config tests 應涵蓋 AI／tech 不被 fixed crypto 繼�
 - 已完成：`2026-10-07-recognize-translated-news-disclaimer-notices-and`（#1371）與 `2026-10-10-news-disclaimer-correction-loop`（#1411）；兩者保留真正 crypto warning，不修正 Decrypt 固定分類。
 - 尚未完成：`2026-10-10-add-audited-held-news-category-correction`，scope 為 schemas/service/router/tests，原 Gemini/Manus IDs 仍保留；本票與之互鏈而不重開同 API 實作。
 - 覆核範圍內未做 implementation、production write、provider、retry、candidate approval 或 publication。
+2026-11-18 scope check: the Taiwan and GitHub features are already on main in #1917. The Cloudflare task covers HTTP transport for other publishers. This change concerns only the Decrypt source definition and tests for per-story routing. Existing claims and source transport are separate.
+
+### 2026-11-18 completion
+
+The production source was updated through the audited source service to use the existing mixed-feed classifier. It remains an enabled third-party evidence feed with its original scan interval and entry limit. Replaying stored Decrypt headlines and excerpts yielded tech for the Nvidia board report, AI for the OpenAI model release, and crypto for the Ethereum upgrade and USDC pilot. The RSS-to-candidate regression covers an AI technology story priced per token and an on-chain payment story involving AI agents. Labels on ambiguous coverage still depend on the existing classifier.
+
+The two November 17 articles received five corrected published revisions each. Their news-channel links now follow their respective technology and AI topics. The unrelated standalone investment callouts were removed, as was the investment sentence attached to the Nvidia sourcing caveat. A rollback rehearsal and a single outer transaction protected both five-locale bundles. Published revision and search-index versions advanced from 2 to 3, with ten actor-attributed publication audits. The local scanner, baseline and source-import tests passed (249 passed, 6 skipped).
