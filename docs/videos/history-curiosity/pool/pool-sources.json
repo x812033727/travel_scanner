@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-18-curio-pool-1717",
+  "revision": "2026-11-18-curio-pool-1718",
   "sources": [
     {
       "id": "SRC-00003441dc8ac27d",
@@ -8536,6 +8536,25 @@
       ]
     },
     {
+      "id": "SRC-07bd446cf5c5395a",
+      "url": "https://ndlsearch.ndl.go.jp/api/opensearch?title=%E6%B8%85%E5%8F%B2%E9%80%9A%E4%BF%97%E6%BC%94%E7%BE%A9&cnt=30",
+      "readings": [
+        {
+          "title": "國立國會圖書館 NDL Search 書目檢索『清史通俗演義』",
+          "publisher": "國立國會圖書館 NDL Search OpenSearch API（書目資料來自沖繩縣立圖書館等）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 3（200，28,903 bytes），python 解析 RSS 每筆 title、volume、publisher、issued、seeAlso",
+          "reading_scope": "18 筆書目著錄；沒有任何一筆附數位影像",
+          "locator": "R100000001-I47111106045799 至 -I47111106045808（『絵図清史通俗演義：歴史小説』，版次欄『増訂』，会文堂書局，1916（中華民国5），第1–10冊；這十筆沒有著者欄）；R100000136-I1971149384749276568（『增訂繪圖清史通俗演義』會文堂書局，1917.2）",
+          "summary": "書目紀錄：會文堂書局 1916 年（民國五年）出版《絵図清史通俗演義》十冊（版次欄寫『増訂』、無著者欄），1917 年 2 月有《増訂繪圖清史通俗演義》（著者欄『蔡東帆（藩）、琴石山人校訂』）。只證明這部小說最晚 1916 年已在上海出版，不含正文，沒有讀到第三十回。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "純書目，館藏是紙本，沒有掃描影像；不能證明書裡寫了血滴子。ndlsearch.ndl.go.jp 之後已進共用封鎖名單（seq 18 被拒發）。 覆核 R7711：1916 年十筆著錄本身沒有著者欄，作者歸屬靠 1917 年那一筆；1916 年那批的版次已寫『増訂』，所以 1916 年不一定是初版年，只能說『最晚 1916 年』。",
+          "origin": "wave77-20261118",
+          "original_url": "https://ndlsearch.ndl.go.jp/api/opensearch?title=%E6%B8%85%E5%8F%B2%E9%80%9A%E4%BF%97%E6%BC%94%E7%BE%A9&cnt=30"
+        }
+      ]
+    },
+    {
       "id": "SRC-07c7dfa3bba3660c",
       "url": "https://www.aps.org/apsnews/2018/06/tunguska-event%EF%BD%9C2026-10-10%EF%BD%9Cplanks-across-the-peat",
       "readings": [
@@ -13066,6 +13085,25 @@
       ]
     },
     {
+      "id": "SRC-0c5b18599c898551",
+      "url": "https://www.shidianguji.com/zh/mingju/7621908885926150182",
+      "readings": [
+        {
+          "title": "煮豆燃豆萁，豆在釜中泣。本是同根生，相煎何太急？（名句頁）",
+          "publisher": "識典古籍（古籍資料庫名句頁）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 11（200，310,502 bytes），python 去標籤後讀",
+          "reading_scope": "名句頁的出處欄與原文語境欄",
+          "locator": "『出處』欄",
+          "summary": "把這四句的出處標為『[宋]李昉《太平御覽》思疾，四部叢刊中華學藝社借照日本帝室圖書寮京都』（即景宋本），語境說魏文帝令曹植七步內作詩、不成施以軍法、應聲而作。這是我找到《太平御覽》卷六百的線索，也是宋本同條為四句的旁證。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "資料庫的整理文字，字形可能已規範化（頁面作『相煎何太急』）；沒有附書影，只當線索與旁證。",
+          "origin": "wave78-20261118",
+          "original_url": "https://www.shidianguji.com/zh/mingju/7621908885926150182"
+        }
+      ]
+    },
+    {
       "id": "SRC-0c5b314d65002026",
       "url": "https://www.newtonproject.ox.ac.uk/catalogue/record/OTHE00001",
       "readings": [
@@ -14168,6 +14206,25 @@
           "limitations": "全文付費，只讀摘要與書目；134 件是從書目標題推得的目錄編號，不是摘要正文的數字。",
           "origin": "wave2-legacy-20261101",
           "original_url": "https://www.cambridge.org/core/journals/antiquaries-journal/article/abs/galloroman-dodecahedron-and-the-receptacle-of-all-becoming/1B73B7B58792CD3CC5C6D30028326B89"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0d65cd4cdcbad34e",
+      "url": "https://mbcrc.web2.ncku.edu.tw/p/405-1196-213395,c26141.php?Lang=zh-tw",
+      "readings": [
+        {
+          "title": "建立區域海洋保育教育中心計畫",
+          "publisher": "國立成功大學海洋生物及鯨豚研究中心（計畫說明頁，海洋保育署補助，約 2021 年）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 1（200，33,593 bytes），python 去標籤後讀全頁",
+          "reading_scope": "全頁讀完（計畫緣起、主展示物修整、計畫內容、重要成果）",
+          "locator": "『原場域主要展示物件(一隻成年抹香鯨骨骼以及一隻喙鯨骨骼)的修整』段",
+          "summary": "成大鯨豚中心自述：主展示物是全台現存體型最巨大、『在搬運過程發生全球知名抹香鯨氣爆事件』的抹香鯨骨骼；該抹香鯨『於2004年1月24日於雲林台西死亡擱淺，並在1月26日早晨搬運途中於台南西門路發生氣爆』。骨骼標本 17 年後發霉泛黃，計畫中拆卸、清潔、重組並重建掌骨與牙齒。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "機構自述，沒有解釋破裂機制；擱淺死亡日寫 1 月 24 日，與路透社圖說（ZW0-S001）的 1 月 17 日不同，本次無法判定哪個對。",
+          "origin": "wave78-20261118",
+          "original_url": "https://mbcrc.web2.ncku.edu.tw/p/405-1196-213395,c26141.php?Lang=zh-tw"
         }
       ]
     },
@@ -32007,6 +32064,25 @@
       ]
     },
     {
+      "id": "SRC-1a7fa86efde82acf",
+      "url": "https://news.pts.org.tw/article/126888",
+      "readings": [
+        {
+          "title": "台南 鯨魚爆炸血染街 店家拍照全記錄",
+          "publisher": "公視新聞網 PNN，2011-08-02 發布（頁面標示『公視新聞 PNN』）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 3（200，256,328 bytes），python 去標籤後讀正文",
+          "reading_scope": "正文全讀",
+          "locator": "導言『五年前，一尾大鯨魚，被人從擱淺海灘運往【成功大學】途中』；『長達十七公尺的鯨魚骨架』句",
+          "summary": "中文流傳樣本：一家水果攤把當年拍的照片護貝放在店裡；導言寫『五年前』（實際是七年前）鯨魚在運往成大途中『竟然在半路上爆炸』，員工對爆炸聲響記憶猶新，鯨魚長度橫過三個店面；17 公尺骨架在成大展示，因風災淹水暫時封閉。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "通俗新聞，作為流傳樣本；導言『五年前』與實際七年不符，可當『記憶怎麼走樣』的例子；店名與街道細節正片不用。",
+          "origin": "wave78-20261118",
+          "original_url": "https://news.pts.org.tw/article/126888"
+        }
+      ]
+    },
+    {
       "id": "SRC-1a8763082d6d5b5b",
       "url": "https://archive.org/details/historical-inquest-wave67-n7000",
       "readings": [
@@ -42588,6 +42664,25 @@
       ]
     },
     {
+      "id": "SRC-246372e3e30ac106",
+      "url": "https://archive.org/download/06081977.cn/06081977.cn.pdf",
+      "readings": [
+        {
+          "title": "三國志·魏志·卷十九~卷二十一（乾隆御覽本四庫全書薈要）",
+          "publisher": "（晉）陳壽撰、（宋）裴松之注；四庫全書薈要影印本，Internet Archive 06081977.cn",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 1（archive.org advancedsearch 找條目）、seq 2 讀 metadata 取得檔名、seq 3（200，7,005,796 bytes）下載 PDF（189 頁），pdftoppm 以 110 dpi 轉 PDF 第 9–56 頁、三頁一張看圖讀；seq 4 的 djvu.txt 文字層是亂碼，不用",
+          "reading_scope": "卷十九〈陳思王植傳〉本傳與裴注 PDF 第 9–54 頁逐頁看圖（第 9–29 頁與第 51–56 頁細讀；第 30–50 頁太和年間的〈求自試表〉等表疏只看過一遍，裴注小字未逐字讀）；卷二十、二十一未讀",
+          "locator": "〈陳思王植傳〉：文帝即王位誅丁儀丁廙（PDF 第 17 頁）；黃初二年灌均奏植醉酒悖慢、貶爵安鄉侯，其年改封鄄城侯（PDF 第 20 頁）；景初中詔撰錄植前後所著賦頌詩銘雜論凡百餘篇副藏內外（PDF 第 53 頁）；卷末（PDF 第 56 頁）",
+          "summary": "本傳寫文帝即位後誅丁儀、丁廙；黃初二年監國謁者灌均希指，奏植『醉酒悖慢，劫脅使者』，有司請治罪，帝以太后故貶爵安鄉侯，其年改封鄄城侯，三年立為鄄城王，四年徙封雍丘王；裴注引《魏略》說他入京謝罪、太后與帝乃喜。景初中明帝下詔：收黃初中諸奏植罪狀者皆削除，『撰錄植前後所著賦頌詩銘雜論凡百餘篇，副藏內外』。文帝在位那幾頁（PDF 第 17–25 頁）本傳與裴注都沒有『七步』或煮豆詩；全傳看圖也沒有看到。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "清代四庫薈要寫本；第 30–50 頁的裴注小字只瀏覽，沒有逐字讀，所以只能說『看圖沒有看到』，不是全文檢索；字形照圖錄寫、斷句自斷。",
+          "origin": "wave78-20261118",
+          "original_url": "https://archive.org/download/06081977.cn/06081977.cn.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-24642acdab3e1886",
       "url": "https://www.hnn.us/article/38555",
       "readings": [
@@ -44247,6 +44342,25 @@
       ]
     },
     {
+      "id": "SRC-2632aae3ae05d921",
+      "url": "https://news.nate.com/view/20180603n00037",
+      "readings": [
+        {
+          "title": "곤지암 정신병원 '철거'…\"공포 테마파크 개발은 아니야\"（김민욱 기자）",
+          "publisher": "중앙일보（JoongAng Ilbo），2018-06-03，經 네이트 뉴스 轉載（標『중앙일보 원문』）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 5（200，177,109 bytes）EUC-KR 解碼、HTML 去標籤後讀正文",
+          "reading_scope": "全文",
+          "locator": "『20여년간 방치됐던 공간 \"팔렸다\"』節第 1 段；『한때 공포체험 성지』節末段",
+          "summary": "記者 2018-05-30 到現場（拆除中）。『據廣州市等』南陽神經精神病院 1982 年 8 月開院；『看建築物台帳』，同月 11 日地上三層、延面積 1,795㎡ 的醫院建物取得使用核准；1990 年代初又加蓋兩棟各不到 500㎡ 的建物；1996 年突然閉院——報導說創辦人死後繼承的兒子們都住在美國，又因強化後的環境政策基本法須新設汙水處理設施，乾脆放棄經營（『했다고 한다』，傳聞語氣）。主地號與三筆鄰地約 6.9 萬㎡ 成交；用地因朝鮮白瓷窯址（史蹟 314 號）屬歷史文化環境保存地區、需試掘，引廣州市官員。CNN 6 年前列為『世界 7 大』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "全國性日報，但仍是報導；建築物台帳是記者轉述，台帳本身沒讀到。閉院原因是傳聞語氣。報導點名繼承人姓氏，正片不用。 覆核 R7712：重抓 sha 相同，引文逐句相符。",
+          "origin": "wave77-20261118",
+          "original_url": "https://news.nate.com/view/20180603n00037"
+        }
+      ]
+    },
+    {
       "id": "SRC-2633ebe36a3edc39",
       "url": "https://www.bousai.go.jp/kyoiku/kyokun/kyoukunnokeishou/rep/1783_tenmei_asamayama_funka/pdf/1783-tenmei-asamayamaFUNKA_07_chap3.pdf%EF%BC%88%E9%80%A3%E7%B5%90%E5%8F%96%E8%87%AA%E5%A0%B1%E5%91%8A%E6%9B%B8%E9%A0%81%EF%BC%89",
       "readings": [
@@ -45027,6 +45141,25 @@
       ]
     },
     {
+      "id": "SRC-2704e5b43daab4d0",
+      "url": "https://e-info.org.tw/node/31764",
+      "readings": [
+        {
+          "title": "救鯨人生",
+          "publisher": "環境資訊中心轉載公共電視《我們的島》（公視記者文字與攝影），2008-04-13",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 10（200，172,172 bytes），python 去標籤後讀『解剖16公尺長的抹香鯨』節（同題公視原站 ourisland.pts.org.tw seq 9 回驗證頁，已停）",
+          "reading_scope": "『解剖16公尺長的抹香鯨』節全讀；其他章節略讀",
+          "locator": "『解剖16公尺長的抹香鯨』節，『他發現，抹香鯨的第一節與第三節腰椎是斷的』句",
+          "summary": "公視報導：2004 年 1 月雲林台西一隻 16 公尺、50 噸的雄性抹香鯨擱淺死亡，運到四草鯨豚救援基地解剖、取出骨骼；主持解剖的成大教授發現第一與第三節腰椎斷裂，後半身無法運動，『極有可能』來自大型船舶碰撞。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "談的是擱淺死因（腰椎斷裂、疑似船撞），沒有說破裂部位與撞擊處相同；長度寫 16 公尺，與其他來源的 17 公尺不同；教授在世不點名。",
+          "origin": "wave78-20261118",
+          "original_url": "https://e-info.org.tw/node/31764"
+        }
+      ]
+    },
+    {
       "id": "SRC-270c3c31725c6e08",
       "url": "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB434/docs/U2%20-%20Chapter%202.pdf%EF%BD%9C2026-10-10%EF%BD%9Clegend-list",
       "readings": [
@@ -45292,6 +45425,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.nbcnews.com/world/africa/egypt-ancient-pharaoh-tutankhamun-grand-museum-giza-pyramids-rcna240005"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2755a5ded60cb7a4",
+      "url": "https://theroomlife.com/exhibition120/",
+      "readings": [
+        {
+          "title": "從北溟到南瀛：台南市抹香鯨爆炸事件二十週年特展（展覽介紹轉載）",
+          "publisher": "展覽資訊部落格 Room（轉載展覽介紹），2024-07-16 刊；展覽 2024-08-10 至 09-28 在成大南瀛海洋保育教育中心",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 8（200，302,488 bytes），python 去標籤後讀展覽介紹",
+          "reading_scope": "展覽資訊與展覽介紹全讀",
+          "locator": "『二十年前的一月凌晨』段、『據研究表示，該鯨魚爆炸部位曾遭遇船隻撞擊』句",
+          "summary": "中文流傳樣本（展覽介紹）：17 公尺、50 噸，由成大台江鯨豚救援小組等運往四草野生動物保護區解剖，途中在西門路小北夜市附近爆炸；『據研究表示』爆炸部位曾遭船隻撞擊，可能是擱淺死因之一，屍體腐爛產生的氣體壓力讓該部位承受不住而爆開；一年後成大製作骨骼標本，2022 年公開展示。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "部落格轉載，主辦單位頁面本身沒讀；『爆炸部位就是撞擊部位』沒有出處，ZV8-S005 只說腰椎斷裂疑似船撞，沒有連到破裂部位；寫『凌晨』與成大的『早晨』不同。",
+          "origin": "wave78-20261118",
+          "original_url": "https://theroomlife.com/exhibition120/"
         }
       ]
     },
@@ -86796,6 +86948,25 @@
       ]
     },
     {
+      "id": "SRC-498a970523972492",
+      "url": "https://supertaste.tvbs.com.tw/travel/350366",
+      "readings": [
+        {
+          "title": "呼叫天母人！被稱為「天龍國裡的天龍國」，台北最霸氣地名「天母」由來曝光",
+          "publisher": "食尚玩家（TVBS），2024-07-28；作者張哲生，圖文出自其書《台北拾遺》（健行文化／九歌），周盼儀整理",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 8（200，271,848 bytes）下載 HTML，python 去標籤後讀正文",
+          "reading_scope": "正文全部（四節與文末結論句）",
+          "locator": "『在台灣日本人創立「天母教」』節；『以「天母」為名的店家增多』節；『「天母」成為台北地區名』節與文末『所以說…而非來自稗野所謂…「聽無」二字』",
+          "summary": "書摘：中治稔郎 1902 年來臺，曾任臺南郵便局郵便課通信書記，退休後於 1925 年在臺北永樂町通（今迪化街）創立『天母教』，把天照大神與天上聖母視為同一神明的不同表現、主神稱『天母』；請回一尊湄洲媽祖並獲總督府認證；1931 年獲總督府同意開發士林三角埔溫泉地，1933 年建天母神社（含天母教大本殿與天母溫泉），以天母為名的商店旅館增多，地區因此被叫天母。1945 年後神像乏人照料，信眾 1947 年在福德祠旁另建廟供奉；1976 年拓路兩廟拆遷，1979 年合建為三玉宮。文末說地名不是來自『稗野所謂當地人用閩南語回應美軍詢問』的『聽無』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "文史作者的通俗書摘，沒有註一手出處（總督府認證、1931 許可都無檔號）；不是一手紀錄。但它把 ZW6-S014 的『1947 救出神像』與 ZW6-S018 的『1976 拆遷』串成同一條時間線（1947 另建廟、1976 拆遷合併），兩者不再矛盾。『聽無』仍只以被駁斥的形式出現，且此處說的是美軍版。",
+          "origin": "wave77-20261118",
+          "original_url": "https://supertaste.tvbs.com.tw/travel/350366"
+        }
+      ]
+    },
+    {
       "id": "SRC-4990b10acb0f9b27",
       "url": "https://archive.org/details/modernspirituali02podmiala",
       "readings": [
@@ -101140,6 +101311,25 @@
       ]
     },
     {
+      "id": "SRC-5627496a6a38346c",
+      "url": "https://web.ncku.edu.tw/p/406-1000-234552,r3375.php?Lang=zh-tw",
+      "readings": [
+        {
+          "title": "【影音】成大永續海洋發展承擔學術與社會責任　南瀛海洋保育教育中心揭牌",
+          "publisher": "國立成功大學新聞中心（故事．觀點），2022-02-20",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 2（200，39,673 bytes），python 去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "倒數第二、三段『展場懸掛的抹香鯨骨骼標本為全臺現存體型最大抹香鯨骨骼標本』起",
+          "summary": "成大鯨豚中心主任說，展場的抹香鯨骨骼是全台現存最大，也是全球知名抹香鯨氣爆事件主角：2004 年 1 月 24 日在雲林台西死亡擱淺，1 月 26 日早晨『因搬運途中鯨魚體內壓力不斷上升』在台南西門路爆炸；當年國內外科學家熱議，國家地理頻道製作專題。文中另引『當時媒體報導』說波及附近車輛、民宅與路人。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "大學新聞稿；機制只有『體內壓力不斷上升』一句；主任在世，正片只稱身分。",
+          "origin": "wave78-20261118",
+          "original_url": "https://web.ncku.edu.tw/p/406-1000-234552,r3375.php?Lang=zh-tw"
+        }
+      ]
+    },
+    {
       "id": "SRC-5627a43c9feff7a8",
       "url": "https://resolver.kb.nl/resolve?urn=ddd:010298841:mpeg21:a0035:ocr",
       "readings": [
@@ -102687,6 +102877,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave39-20261112",
           "original_url": "https://mysteriousbritain.co.uk/?p=3273"
+        }
+      ]
+    },
+    {
+      "id": "SRC-57ba3a144ac84a38",
+      "url": "https://archive.org/download/nlc-892-cbm0573-369231/NLC892-CBM0573-369231_%E8%BC%BF%E5%9C%B0%E7%B4%80%E5%8B%9D_%E4%BA%8C%E7%99%BE%E5%8D%B7_%E7%AC%AC31%E5%86%8A.pdf",
+      "readings": [
+        {
+          "title": "輿地紀勝 二百卷 第31冊（卷六十九岳州、卷七十澧州）",
+          "publisher": "（宋）王象之撰；抄本（年代不詳），中國國家圖書館「數字古籍」影像，Internet Archive nlc-892-cbm0573-369231",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 26–29 先抓第 22 冊（卷三十八真州）、第 38 冊（卷九十三南雄州）定位；seq 30 讀第 31 冊 metadata、seq 31（200，11,484,775 bytes）下載 PDF（41 頁），22 dpi 縮圖找卷七十卷首（PDF 第 27 頁），PDF 第 27、29、30、35 頁 85 dpi 看圖，第 35 頁 220／330 dpi 放大讀小字；覆核 R7812 從 ZV9 cache 031 轉 PDF 第 35 頁（110／300 dpi）核對",
+          "reading_scope": "卷六十九岳州卷首（PDF 第 3 頁）；卷七十澧州卷首、州沿革、縣沿革（PDF 第 27–30 頁）與古迹一頁（PDF 第 35 頁）；第 31–34、36–41 頁未讀",
+          "locator": "卷七十 澧州 古迹『范文正公讀書堂』條，PDF 第 35 頁左半",
+          "summary": "『范文正公讀書堂，在安鄉縣。仲淹幼孤，從其母歸朱氏，朱宰安鄉，與俱來，讀書此地。』其後引一首詩（作者名字形像『張燁』，詩文在下頁，未讀）。縣沿革列安鄉為澧州屬縣（在州東）。——南宋地志已記『范仲淹少年隨繼父朱氏到安鄉、在此讀書』這個說法，但這條沒有提到太平興國觀，也沒有提到洞庭湖。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "抄本，字跡潦草（『仲淹幼』三字字形近『中澄紋』，依上下文讀）；地志記的是『讀書堂』古迹傳說，不等於一手證明；作詩者名字與詩文未讀。",
+          "origin": "wave78-20261118",
+          "original_url": "https://archive.org/download/nlc-892-cbm0573-369231/NLC892-CBM0573-369231_%E8%BC%BF%E5%9C%B0%E7%B4%80%E5%8B%9D_%E4%BA%8C%E7%99%BE%E5%8D%B7_%E7%AC%AC31%E5%86%8A.pdf"
         }
       ]
     },
@@ -114601,6 +114810,25 @@
       ]
     },
     {
+      "id": "SRC-62b49b3f569bb6a3",
+      "url": "https://news.mynavi.jp/article/20211110-2164859/",
+      "readings": [
+        {
+          "title": "上杉謙信とは? したことや性格、敵に塩を送った逸話や女性説の真偽など解説",
+          "publisher": "マイナビニュース，2021",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 11（200，214,744 bytes），python 去標籤後讀『上杉謙信の女性説は、歴史小説がきっかけ?』一節",
+          "reading_scope": "女性說一節與其前的死因一段",
+          "locator": "『上杉謙信の女性説は、歴史小説がきっかけ?』節",
+          "summary": "通俗樣本：說女性說的契機似乎是一位歷史小說家的小說；列舉根據時寫『上杉謙信と思われる人物が叔母と記されている文書がある』，但括號自注『実在するのか確認されていない』；結論是沒有明確證據、近於珍說。死因一段寫倒在城內急死，被認為是腦出血等病。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "通俗文章，沒有給任何史料出處；『文書是否實在未確認』也是它自己的說法，不是學術考證。",
+          "origin": "wave78-20261118",
+          "original_url": "https://news.mynavi.jp/article/20211110-2164859/"
+        }
+      ]
+    },
+    {
       "id": "SRC-62bf2392e44c949f",
       "url": "https://hcmussh.edu.vn/static/document/13058.pdf",
       "readings": [
@@ -118911,6 +119139,25 @@
           "limitations": "OCR（Google 掃描）；《The Times》與《All the Year Round》原文本輪沒讀，只讀到 Dircks 的引文。",
           "origin": "wave33-20261112",
           "original_url": "https://archive.org/download/ghostasproduced00dircgoog/ghostasproduced00dircgoog_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-66b635e2b6a5a9c5",
+      "url": "https://tw.forumosa.com/t/origin-of-the-name-tianmu/26470",
+      "readings": [
+        {
+          "title": "Origin of the name 'Tianmu'（Learning Chinese 討論串）",
+          "publisher": "Forumosa 論壇，2006-03-25 至 2006-06-18 的使用者貼文",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 12（200，44,809 bytes）下載 HTML，python 去標籤後讀全部 11 則貼文",
+          "reading_scope": "討論串全部",
+          "locator": "第 1 則（Taffy，2006-03-25）『I was told a while back…』；第 2 則（Poagao）『The version I heard had a foreigner…』；第 3 則（Feiren）『I have heard the mispronunciation story many times…』；第 9 則（Bu_Lai_En，2006-06-18）引 Hsieh 1980",
+          "summary": "流傳樣本：2006 年在臺外國人論壇上，發文者說曾被告知天母來自外省人用國語問地名、在地人回台語『聽無』（thiaⁿ-bô）；第二人說他聽到的版本是外國人問路；第三人說這個誤聽故事『聽過很多次、有好幾種版本』。同串另有人引謝覺民（Ciao-Min Hsieh）1980 年〈Sequent Occupance and Place Names〉（Knapp 編 China's Island Frontier）一句：天母是日本人為紀念一位神明而取的名（Tenbo）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "論壇貼文：證明『聽無』說以口耳相傳的形式流傳、而且有外省人與外國人兩個版本，但發文者自己就說『may well be urban myth』，仍不是正面主張此說的文章；謝覺民 1980 一句只是網友轉引，書本身未讀。",
+          "origin": "wave77-20261118",
+          "original_url": "https://tw.forumosa.com/t/origin-of-the-name-tianmu/26470"
         }
       ]
     },
@@ -126412,19 +126659,6 @@
       "url": "https://archive.org/download/pgcommunitytexts23950gut/23950-0.txt",
       "readings": [
         {
-          "title": "三國志演義（Project Gutenberg #23950 電子文字本）",
-          "publisher": "（明）羅貫中；Project Gutenberg 電子本，Internet Archive 存檔",
-          "accessed_on": "2026-11-18",
-          "read_via": "metadata 見 fetch.sh seq 33（200，4,029 bytes）；文字檔見 seq 35（200，1,863,588 bytes），grep 定位後讀第七十九回該段",
-          "reading_scope": "只讀第七十九回『兄逼弟曹植賦詩』一段（文字檔第 13932–13995 行附近）",
-          "locator": "第七十九回回目與『吾今限汝行七步吟詩一首』至『相煎何太急』段",
-          "summary": "演義裡曹丕先限七步吟詩，以牆下兩牛相鬥、一牛墜井的畫為題，曹植走七步作成的是『兩肉齊道行』那首；曹丕再說『七步成章，吾猶以為遲』，要他應聲作一首、題目是兄弟又不許出現『兄弟』二字，曹植才口占『煮豆燃豆萁，豆在釜中泣。本是同根生，相煎何太急』四句。也就是說，演義裡的四句版不是七步詩，而是第二首應聲詩。",
-          "rights": "PUBLIC_DOMAIN",
-          "limitations": "不知所據是哪個版本（毛本或其他）；四句版是否另有更早出處本次沒查到。",
-          "origin": "wave78-20261118",
-          "original_url": "https://archive.org/download/pgcommunitytexts23950gut/23950-0.txt"
-        },
-        {
           "title": "三國志演義（羅貫中；Project Gutenberg #23950 的 Internet Archive 鏡像）",
           "publisher": "Project Gutenberg 電子文本，Internet Archive 條目 pgcommunitytexts23950gut",
           "read_via": "fetch.sh seq 10（200）advancedsearch 找到條目；seq 11（200，4,029 bytes）讀 metadata（source 指向 gutenberg.org/ebooks/23950）；seq 12（200，1,863,588 bytes）下載 UTF-8 文字，以 grep 定位第九十六回後用 sed 讀",
@@ -126434,6 +126668,19 @@
           "rights": "PUBLIC_DOMAIN",
           "limitations": "電子文本底本未註明（看文字是通行的毛宗崗本系統），只讀一回；作為流傳版本的樣本，不是史料。",
           "accessed_on": "2026-11-18",
+          "origin": "wave78-20261118",
+          "original_url": "https://archive.org/download/pgcommunitytexts23950gut/23950-0.txt"
+        },
+        {
+          "title": "三國志演義（Project Gutenberg #23950 電子文字本）",
+          "publisher": "（明）羅貫中；Project Gutenberg 電子本，Internet Archive 存檔",
+          "accessed_on": "2026-11-18",
+          "read_via": "metadata 見 fetch.sh seq 33（200，4,029 bytes）；文字檔見 seq 35（200，1,863,588 bytes），grep 定位後讀第七十九回該段",
+          "reading_scope": "只讀第七十九回『兄逼弟曹植賦詩』一段（文字檔第 13932–13995 行附近）",
+          "locator": "第七十九回回目與『吾今限汝行七步吟詩一首』至『相煎何太急』段",
+          "summary": "演義裡曹丕先限七步吟詩，以牆下兩牛相鬥、一牛墜井的畫為題，曹植走七步作成的是『兩肉齊道行』那首；曹丕再說『七步成章，吾猶以為遲』，要他應聲作一首、題目是兄弟又不許出現『兄弟』二字，曹植才口占『煮豆燃豆萁，豆在釜中泣。本是同根生，相煎何太急』四句。也就是說，演義裡的四句版不是七步詩，而是第二首應聲詩。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "不知所據是哪個版本（毛本或其他）；四句版是否另有更早出處本次沒查到。",
           "origin": "wave78-20261118",
           "original_url": "https://archive.org/download/pgcommunitytexts23950gut/23950-0.txt"
         }
@@ -129730,6 +129977,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave19-20261102",
           "original_url": "https://sillok.history.go.kr/id/kka_11912015_002"
+        }
+      ]
+    },
+    {
+      "id": "SRC-70e7f15dc5b40fa2",
+      "url": "https://dl.ndl.go.jp/api/iiif/1223516/manifest.json",
+      "readings": [
+        {
+          "title": "越佐史料 巻五（高橋義彦編，1930，國立國會圖書館數位典藏 info:ndljp/pid/1223516，PDM）天正六年三月十三日條",
+          "publisher": "高橋義彦編・刊，昭和5年（1930）；國立國會圖書館數位典藏（公有領域 PDM）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 3（200，296,626 bytes）讀 IIIF manifest 的目次結構，定位『六年戊寅・三月』在 canvas 262；seq 4、5、8、9（200）以 IIIF Image API 抓 canvas 262–265 全頁圖，seq 6、7、10（200）抓局部放大圖，用 Read 看圖逐行讀（網址出處：pid 取自 NDL Search OpenSearch 結果 seq 2 的 dc:identifier 與 rdfs:seeAlso；manifest 網址是 NDL IIIF 的固定格式代入 pid，dl.ndl.go.jp/pid/ 頁是 SPA、不含連結，但 manifest 自身的 @id 與 label 與書目相符，頁圖網址取自 manifest 的 canvas／service，非猜測）",
+          "reading_scope": "刊本頁 428–435（canvas 262–265）天正六年三月十三日謙信卒去條所收各史料全讀；之後各頁未讀",
+          "locator": "頁429：〔平等寺薬師堂題書〕、〔上杉家古文書〕景勝書狀二通；頁430：〔上杉謙信壽像裏書〕、〔續本朝通鑑〕；頁432：〔上杉家譜〕附錄、〔謙信一代記〕；頁433：〔上杉年譜〕二十；頁434–435：〔北越軍記〕、〔甲陽軍鑑〕、〔關八州古戰錄〕",
+          "summary": "這部 1930 年的史料集把謙信之死相關記載按條排列。同時代文書：景勝（天正六年）三月廿四日給小島六郎左衛門的書狀寫『去十三日謙信不慮之虫氣不被執直遠行』（校注說給石黑左近藏人的書狀相同），四月三日給蘆名盛氏的書狀寫『去月十三謙信不慮之煩不被取直遠行』；越後平等寺藥師堂題書寫天正六年三月十三日謙信『さるとんし（頓死）』；高野山無量光院藏壽像裏書寫『三月十三日未刻頓滅』。後世編纂：《續本朝通鑑》說欲於十五日出兵上洛，某日如廁時突然發病，病五日而終；〈上杉家譜〉附錄寫三月九日午刻『俄ニ中風の御症を受』、十三日去世；《上杉年譜》寫三月九日午刻『卒中風ヲ煩セ玉ヒ忽困倒』、十三日未刻去世，享年四十九；《謙信一代記》說三月九日如廁初患痛；《北越軍記》寫『卒中風』（另說十一日如廁腹痛）。所讀各頁沒有『大虫』一詞，也沒有任何一條提到婦人病。 覆核 R7810 自抓 canvas 262 局部（頁429）核對景勝書狀兩通與平等寺題書原文相符；看 canvas 264（頁432–433）核對家譜附錄與年譜用語。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "是 1930 年的翻刻與摘錄（多處『下略』），不是原文書影像；書狀年份由編者補注。《上杉年譜》《上杉家譜》等是江戶時代米澤藩的編纂物，不是同時代紀錄。",
+          "origin": "wave78-20261118",
+          "original_url": "https://dl.ndl.go.jp/api/iiif/1223516/manifest.json"
         }
       ]
     },
@@ -134904,6 +135170,25 @@
       ]
     },
     {
+      "id": "SRC-74fe517ca48afbf4",
+      "url": "https://www.chugoku-np.co.jp/articles/-/265726",
+      "readings": [
+        {
+          "title": "「ウサギ島」そもそもなぜ増えた?　大久野島（広島県竹原市）",
+          "publisher": "中國新聞デジタル，2023-02-01（回顧自家舊報紙版面）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 13（200，208,688 bytes），python 去標籤後讀公開部分（其後為會員限定，未讀）",
+          "reading_scope": "公開的前四段；會員限定部分沒讀",
+          "locator": "『大久野島のウサギが初めて紙面に登場したのは、1972年4月21日付』段與下一段",
+          "summary": "中國新聞查自家紙面：兔子第一次見報是 1972 年 4 月 21 日廣域地方版頭條〈移入野ウサギが異常繁殖〉；該報導寫放兔子的是島內的國民休暇村，時間是『1 年半前』（推算約 1970 年底），『白與黑白、合計 8 組のつがい』即 16 隻；放之前先清除了野狗野貓，沒有天敵、氣候溫暖，一年半增加到 200 隻；報導引了『本想當島上的偶像，卻成了害獸』的苦惱。開頭並說網路上有毒氣實驗動物說、學校飼養說，最初數量有 5 隻、8 隻等說法。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是報社 2023 年轉述自己 1972 年的報導，不是當年版面掃描；文章後半會員限定沒讀，所以報社最後怎麼下結論不知道。 覆核 R7811 重抓 seq 2 核對公開段落一致。",
+          "origin": "wave78-20261118",
+          "original_url": "https://www.chugoku-np.co.jp/articles/-/265726"
+        }
+      ]
+    },
+    {
       "id": "SRC-7505ce5642f8e647",
       "url": "https://jimclifford.ca/philosophical-transactions-ocr-1665-1869/articles/jstor-103079/",
       "readings": [
@@ -136483,6 +136768,25 @@
           "limitations": "1896 年學者的論證，部分（Pattberg 為善意寄送、Arnim 不知改稿）是 Steig 的推論；Wunderhorn 1808 年原刊與 Althof 1802、Teutscher Merkur 1797、Monthly Magazine 1796 本輪都沒有另讀原件。",
           "origin": "wave30-20261112",
           "original_url": "https://de.wikisource.org/wiki/Frau_Auguste_Pattberg_geb._von_Kettner"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7670eba387886f33",
+      "url": "https://www.kyeongin.com/article/1268608",
+      "readings": [
+        {
+          "title": "'괴담 온상' 광주 곤지암 정신병원 건물 철거（이윤희 기자）",
+          "publisher": "경인일보（京仁日報，京畿道地方報），2018-05-28",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 1（200，127,771 bytes）HTML 去標籤後讀正文；同記者同日另一稿 seq 2（200，129,982 bytes，/article/1268618）文字幾乎相同；2018-05-24 前稿 seq 3（200，129,705 bytes，/article/1267243）",
+          "reading_scope": "三稿全文",
+          "locator": "seq 1 第 2–4 段；seq 3 『24일 인근 주민을 비롯 관계자 등에 따르면…』段",
+          "summary": "地方報記者現場報導：N 精神病院建物於 5 月 28 日拆除，本館兩棟與附屬建物一併拆；部地售出後申報拆除與滅失。寫『1992 年以精神病院開院、五年後 1996 年歇業』，前稿註明這是『據附近居民與相關人士』。買地者說因居民抱怨與陳情多而拆，打算開發住宅。前稿也記所有人因電影妨礙出售聲請禁止上映、被駁回。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "1992 年的說法來自居民與相關人士口述，與 S001 引建築物台帳的 1982 年衝突；『五年後 1996』本身算術也不合（1992→1996 為四年）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.kyeongin.com/article/1268608"
         }
       ]
     },
@@ -160847,6 +161151,25 @@
       ]
     },
     {
+      "id": "SRC-8c94d562d6ecfc9c",
+      "url": "https://archive.org/download/06075527.cn/06075527.cn.pdf",
+      "readings": [
+        {
+          "title": "宋史·卷三百十六~卷三百十八（摛藻堂四庫全書薈要·史部·正史類）",
+          "publisher": "Internet Archive（China-America Digital Academic Library 掃描，浙江大學圖書館藏）；（元）脫脫（托克托）等修",
+          "accessed_on": "2026-11-18",
+          "read_via": "R7711 fetch.sh seq 3（advancedsearch 題名檢索得 06075527.cn＝卷三百十六~三百十八）、seq 4（metadata，列出 06075527.cn.pdf）、seq 5（PDF，200，7,264,591 bytes），pdftoppm 轉 PDF 第 3–11 頁成圖逐頁讀",
+          "reading_scope": "卷三百十六〈包拯傳〉全文（PDF 第 3 頁卷首『包拯字希仁廬州合肥人也』至第 11 頁『奏議十五卷』）",
+          "locator": "PDF 第 8 頁（葉三後半）『拯立朝剛毅，貴戚宦官為之斂手，聞者皆憚之。人以包拯笑比黃河清。童稚婦女亦知其名，呼曰包待制』；PDF 第 10 頁『拯性峭直，惡吏苛刻，務敦厚……不偽辭色悅人，平居無私書』",
+          "summary": "《宋史》包拯本傳原文：寫他立朝剛毅、貴戚宦官為之收手，『人以包拯笑比黃河清』，婦孺都叫他『包待制』；又說他性情峭直、『不偽辭色悅人』。全傳逐頁讀過，沒有任何描寫膚色、面貌的字句。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "四庫全書薈要本，不是點校本；只證明本傳沒寫相貌，不代表其他宋人文獻都沒寫。",
+          "origin": "wave77-20261118",
+          "original_url": "https://archive.org/download/06075527.cn/06075527.cn.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-8c951c0419243513",
       "url": "https://web.archive.org/web/20131213231924/http://www.nbcnews.com/id/20417240/",
       "readings": [
@@ -163838,6 +164161,25 @@
           "limitations": "OCR 混入振假名，有誤字（把享和三年誤成享保三年，應是 OCR 或原書筆誤）；筠庭與美成的原文都是轉引，沒讀到《嬉遊笑覧》等原書。",
           "origin": "wave7-20261102",
           "original_url": "https://lab.ndl.go.jp/dl/api/book/fulltext-json/1018560"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8f3480ce3f50a42a",
+      "url": "https://www.cna.com.tw/news/aloc/202202200089.aspx",
+      "readings": [
+        {
+          "title": "南瀛海洋保育教育中心揭牌　氣爆抹香鯨骨骼亮相",
+          "publisher": "中央社，2022-02-20",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 4（200，125,948 bytes），python 去標籤後讀正文",
+          "reading_scope": "正文全讀，側欄新聞未讀",
+          "locator": "首段；『王浩文表示，展場懸掛全台現存體型最大抹香鯨骨骼標本』段",
+          "summary": "獨立通訊社的報導：成大安南校區的南瀛海洋保育教育中心展出 2004 年在雲林擱淺死亡、運送過程中在台南西門路『氣爆』的抹香鯨骨骼；轉述中心主任：2004 年 1 月 26 日早晨因搬運途中體內壓力不斷上升而在西門路爆開，場景罕見。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "內容大致轉述成大說法，不是獨立調查；機制同 ZV8-S002 一句。",
+          "origin": "wave78-20261118",
+          "original_url": "https://www.cna.com.tw/news/aloc/202202200089.aspx"
         }
       ]
     },
@@ -187508,6 +187850,25 @@
       ]
     },
     {
+      "id": "SRC-a33dab183424d0a1",
+      "url": "https://ghzrzyw.beijing.gov.cn/zhengwuxinxi/ghcg/zxgh/201912/t20191213_1165427.html",
+      "readings": [
+        {
+          "title": "北京市規劃委員會、北京市文物局關於公布《北京市優秀近現代建築保護名錄（第一批）》的通知（附名錄全表）",
+          "publisher": "北京市規劃委員會、北京市文物局，2007-12-19 公布；北京市規劃和自然資源委員會網站『政務公開／規劃成果／專項規劃』刊載（頁面日期 2009-08-06）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 11（200，161,970 bytes）HTML 去標籤後讀通知全文與名錄表",
+          "reading_scope": "通知全文；名錄表讀了第 1–25 項，其餘掃過",
+          "locator": "名錄第 24 項",
+          "summary": "官方公布的名錄第 24 項：建築現有名稱『朝內大街81號』，建築原有名稱『華北協和話語學校、加利福尼亞學院』，建成年代『1910』，位置東城區朝內大街81號。也就是說，『1910 年美國人辦的語言學校』這個說法在 2007 年已寫進市級官方保護名錄——而 2024 年修繕後的展覽資料（ZW9-S004、ZV12-S005）改寫成 1921 年普意雅自宅。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "這是官方名錄原文，但它載的正是 ZV3-S002 說的錯誤版本；它證明『1910 學校說』進了官方紀錄，不證明屋主是誰。東城區 2009 年文保公布原文仍沒讀到（ZV12-S004 轉述其名稱）。 覆核 R7712：重抓 sha 相同，第 24 項逐字相符；這是本題唯一讀到全文的機構原件。",
+          "origin": "wave77-20261118",
+          "original_url": "https://ghzrzyw.beijing.gov.cn/zhengwuxinxi/ghcg/zxgh/201912/t20191213_1165427.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-a33e8520e53b91cf",
       "url": "https://www.texasmonthly.com/travel/the-truth-is-out-there/",
       "readings": [
@@ -202737,6 +203098,25 @@
       ]
     },
     {
+      "id": "SRC-af79532e914b2f11",
+      "url": "https://chushikoku.env.go.jp/okunoshima/usagi.html",
+      "readings": [
+        {
+          "title": "大久野島ビジターセンター［島のうさぎについて］",
+          "publisher": "環境省中國四國地方環境事務所，現行網頁（年份未標）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 14（200，4,548 bytes），python 去標籤後讀全頁",
+          "reading_scope": "全頁",
+          "locator": "首段",
+          "summary": "現行官方說明：『１９７１年に小学校で飼いきれなくなった８羽のアナウサギを放したのがきっかけといわれています』，其後是不要追、不要丟兔子等禮儀。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "同樣是『據說』；這是『1971 年 8 隻』最直接的機構出處，但沒有附任何依據。",
+          "origin": "wave78-20261118",
+          "original_url": "https://chushikoku.env.go.jp/okunoshima/usagi.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-af7b6391d0a78702",
       "url": "https://www.abc.net.au/news/2022-12-05/last-tasmanian-tiger-remains-found-in-museum-cupboard/101733008",
       "readings": [
@@ -203086,6 +203466,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://city.gvm.com.tw/article/131707"
+        }
+      ]
+    },
+    {
+      "id": "SRC-afbfbe662e31ee2b",
+      "url": "https://chushikoku.env.go.jp/to_2010/0207b.pdf",
+      "readings": [
+        {
+          "title": "大久野島ビジターセンター便り Vol.52",
+          "publisher": "環境省大久野島ビジターセンター發行，平成 23 年（2011）1 月 10 日",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 11（200，903,064 bytes），pdftotext -layout 後讀",
+          "reading_scope": "4 頁全讀",
+          "locator": "第 1 頁『大久野島のウサギたち』欄『☆どうしてウサギさんが多いの？』",
+          "summary": "環境省的訪客中心說：『1971 年に小学校で飼いきれなくなった飼いウサギ（アナウサギ）を島に放したのがきっかけといわれています』，當時約近 300 隻在島上野生化；另說有人把寵物兔丟到島上、違反動物愛護法。這一期沒有寫『8 隻』。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "用『といわれています』（據說），不是考證；沒寫出處與學校名。",
+          "origin": "wave78-20261118",
+          "original_url": "https://chushikoku.env.go.jp/to_2010/0207b.pdf"
         }
       ]
     },
@@ -203580,6 +203979,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://scholarworks.sjsu.edu/cgi/viewcontent.cgi?article=1427&context=libphilprac"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b060038f600514da",
+      "url": "https://www.dpm.org.cn/Uploads/File/2020/04/22/u5e9fdfb72b3f4.pdf",
+      "readings": [
+        {
+          "title": "歷史上的「香妃」畫像之謎（徐鑫，「人物春秋」欄，頁 024–031）",
+          "publisher": "故宮博物院網站（dpm.org.cn）上傳的期刊文章 PDF；PDF 內未印刊名，補查代理標《紫禁城》是推斷（InDesign 製作日期 2012-03，上傳路徑 2020/04/22）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 2（200，10,894,390 bytes）下載 PDF，pdftotext 讀全文 8 頁，並轉圖看第 1 頁版面（欄名、作者、圖 1）",
+          "reading_scope": "全文八頁都讀了。",
+          "locator": "頁 024『1914年，此画像曾在故宫西华门内的浴德堂举展出过…附有人物事略介绍』（引文到『赐缢死』）；頁 024–025 朱家溍〈「香妃戎裝像」定名的由來〉引文（曾廣齡：『总之是官大表准…就说这大概就是香妃吧…只是顺口一说』）；頁 025 寶月樓建於乾隆二十三年、回子營建成於乾隆二十四年末（內務府奏銷與檔案）；頁 026 浴德堂非后妃浴室；頁 027 單士元回憶『是没有查史料的，是错误的』；頁 028–029 《清宮十三朝演義》引文、孟森《香妃考實》引文（太仓陆夫人至容妃园寝摄像）；頁 029 民國十四年毓彭信『裕陵圣容及蓉妃圣容均行携入署中』",
+          "summary": "故宮博物院網站刊載的考證文章。（1）民國初年古物陳列所在故宮武英殿浴德堂展出一幅半身西式盔甲女像，標名『香妃戎裝像』，附『人物事略』：香妃是回部王妃，『生而体有异香』，兆惠俘她進京，乾隆為她建寶月樓與回營，浴德堂相傳是她沐浴處；她袖中藏白刃，說要報故主；皇太后趁皇帝宿齋宮時召她入宮『赐缢死』。（2）作者引朱家溍、單士元轉述經手運畫的曾廣齡：原帳只寫『油画屏一件』，畫背沒有寫容妃的簽子（單士元版說簽子寫『美人画像』），『香妃』是一位官員（文中一處寫『內務府朱總長』，另一處寫『民國政府內務部一官員』）看到畫順口說的，展覽沒有查史料。（3）作者用乾隆〈寶月樓記〉、內務府奏銷與檔案指出寶月樓建於乾隆二十三年（1758）、回子營乾隆二十四年末已建好並有人入住，都在容妃進京（1760）之前，不是為她而建；禮拜寺乾隆二十八年動工、二十九年落成；浴德堂不是后妃浴室。（4）引《清宮十三朝演義》的版本（回妃被留在宮中、生下皇子、改旗裝）；引孟森《香妃考實》：民國二三年太倉陸夫人遊東陵，至容妃園寢，守者說是香妃冢，她拍下園寢的遺像；又引民國十四年一封信提到裕陵與『蓉妃聖容』被地方官攜入署中。作者結論：畫像沒有一幅能確定是『香妃』，只有陸夫人所攝像最可能是容妃。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "1914 年展覽說明是作者轉錄，不是展板原物照片；同文一處寫 1914 年展出、另一處寫 1915 年曾廣齡搬運承德文物，年份有出入，正片說『民國初年』；朱家溍與單士元的回憶是轉引；孟森《香妃考實》只讀到作者引的一段；文中『二十九年（1761年）』應為 1764 年，是排印錯誤。不提卒年。 覆核 R7614：刊名未見於 PDF 版面（轉圖看頁 024、025 只有欄名『人物春秋』與頁碼）；《清宮十三朝演義》在本文沒有出版年；網址出處在補查代理的網路搜尋結果，未進請求紀錄。",
+          "origin": "wave76-20261117",
+          "original_url": "https://www.dpm.org.cn/Uploads/File/2020/04/22/u5e9fdfb72b3f4.pdf"
         }
       ]
     },
@@ -205965,19 +206383,6 @@
       "url": "https://archive.org/download/pgcommunitytexts24047gut/24047-0.txt",
       "readings": [
         {
-          "title": "世說新語（Project Gutenberg #24047 電子文字本）",
-          "publisher": "（南朝宋）劉義慶撰；Project Gutenberg 2007 年電子本，Internet Archive 存檔",
-          "accessed_on": "2026-11-18",
-          "read_via": "metadata 見 fetch.sh seq 29（200，4,069 bytes）；文字檔見 seq 30（200，264,478 bytes），以 grep 定位後讀〈文學第四〉該條",
-          "reading_scope": "只讀〈文學第四〉第 66 條（文字檔第 778 行）與篇名行",
-          "locator": "〈文學第四〉『文帝嘗令東阿王七步中作詩』條",
-          "summary": "原文：『文帝嘗令東阿王七步中作詩，不成者行大法。應聲便為詩曰：煮豆持作羹，漉菽以為汁。萁在釜下然，豆在釜中泣。本自同根生，相煎何太急？帝深有慚色。』——六句，第一句是『煮豆持作羹』，沒有『燃豆萁』；寫的是『令七步中作詩』而曹植『應聲』便作。",
-          "rights": "PUBLIC_DOMAIN",
-          "limitations": "電子文字本，沒有對照善本與劉孝標注；成書年代（約 5 世紀中葉）依 ZW7-S018。",
-          "origin": "wave78-20261118",
-          "original_url": "https://archive.org/download/pgcommunitytexts24047gut/24047-0.txt"
-        },
-        {
           "title": "世說新語（劉義慶；Project Gutenberg #24047 的 Internet Archive 鏡像）",
           "publisher": "Project Gutenberg 電子文本，Internet Archive 條目 pgcommunitytexts24047gut",
           "read_via": "fetch.sh seq 10（200）advancedsearch 找到條目；seq 13（200，4,069 bytes）讀 metadata；seq 14（200，264,478 bytes）下載文字，grep『自新』後讀全條",
@@ -205987,6 +206392,19 @@
           "rights": "PUBLIC_DOMAIN",
           "limitations": "電子文本未註底本、沒有劉孝標注；注文另看 S006。",
           "accessed_on": "2026-11-18",
+          "origin": "wave78-20261118",
+          "original_url": "https://archive.org/download/pgcommunitytexts24047gut/24047-0.txt"
+        },
+        {
+          "title": "世說新語（Project Gutenberg #24047 電子文字本）",
+          "publisher": "（南朝宋）劉義慶撰；Project Gutenberg 2007 年電子本，Internet Archive 存檔",
+          "accessed_on": "2026-11-18",
+          "read_via": "metadata 見 fetch.sh seq 29（200，4,069 bytes）；文字檔見 seq 30（200，264,478 bytes），以 grep 定位後讀〈文學第四〉該條",
+          "reading_scope": "只讀〈文學第四〉第 66 條（文字檔第 778 行）與篇名行",
+          "locator": "〈文學第四〉『文帝嘗令東阿王七步中作詩』條",
+          "summary": "原文：『文帝嘗令東阿王七步中作詩，不成者行大法。應聲便為詩曰：煮豆持作羹，漉菽以為汁。萁在釜下然，豆在釜中泣。本自同根生，相煎何太急？帝深有慚色。』——六句，第一句是『煮豆持作羹』，沒有『燃豆萁』；寫的是『令七步中作詩』而曹植『應聲』便作。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "電子文字本，沒有對照善本與劉孝標注；成書年代（約 5 世紀中葉）依 ZW7-S018。",
           "origin": "wave78-20261118",
           "original_url": "https://archive.org/download/pgcommunitytexts24047gut/24047-0.txt"
         }
@@ -207185,6 +207603,25 @@
           "limitations": "只讀到書目，未讀到正文。",
           "origin": "wave9-20261102",
           "original_url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000000745511"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b3bda3f6f7b082c4",
+      "url": "https://tdr.lib.ntu.edu.tw/jspui/bitstream/123456789/6699/1/ntu-101-1.pdf",
+      "readings": [
+        {
+          "title": "以歷史 GIS 觀點重建臺灣日治時期行政區域",
+          "publisher": "黃偉嘉，國立臺灣大學地理環境資源學系碩士論文，2012 年 6 月（臺大機構典藏）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 2（200，3,179,566 bytes）下載 PDF；pdftotext -layout 轉文字（有字型警告，中文可讀），以關鍵詞（府令、萬華、高雄、地名）定位",
+          "reading_scope": "摘要、目次、第二章『六、1920 年地方制度改正後的行政區劃』與表 9 的資料來源註；其餘各章未讀。全文沒有『萬華』『艋舺』，『高雄』只出現在市制年表與附圖名",
+          "locator": "表 9『臺東廳 1909-1945 行政區變更與地名演變』下的資料來源註（論文頁 37–38）；『六、1920 年地方制度改正後的行政區劃』段（論文頁 22 前後）",
+          "summary": "學術論文在表 9（臺東廳 1909–1945 行政區變更）的參考資料中列出『1920 年 8 月 10 日府令第 47 號』；正文另說 1920 年地方制度改正、街庄社改為大字。可獨立於 ZW0-S010 確認 1920 年 8 月 10 日有府令第 47 號、且與當年行政區改制有關。",
+          "rights": "OPEN_ACCESS_ACADEMIC",
+          "limitations": "只是表的參考法令清單列出號數與日期，論文沒有直接說府令第 47 號就是五州二廳的改制令；不是《府報》第 2177 號原件；論文沒談高雄或萬華兩字怎麼選。",
+          "origin": "wave77-20261118",
+          "original_url": "https://tdr.lib.ntu.edu.tw/jspui/bitstream/123456789/6699/1/ntu-101-1.pdf"
         }
       ]
     },
@@ -216849,6 +217286,25 @@
       ]
     },
     {
+      "id": "SRC-bb86ec352f245aed",
+      "url": "https://taiwan.ntue.edu.tw/var/file/29/1029/img/692/176955521.pdf",
+      "readings": [
+        {
+          "title": "臺灣文學與文獻中「打狗」港灣符號的衍異與層構（1624─1920）",
+          "publisher": "吳毓琪，《文史台灣學報》第 5 期，頁 103 起（國立臺北教育大學臺灣文化研究所；註 i 說同文收入王儀君主編《哈瑪星文化研究》，國立中山大學人文中心，2012）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 4（200，1,269,846 bytes）下載 PDF（32 頁）；pdftotext -layout 轉文字，以關鍵詞（高雄、高尾、京都、Takao、臺灣日日新報）定位並讀命中段與註 61–63",
+          "reading_scope": "摘要、前言、第五節 1920 年改名段（頁 129–130）與註 61–63；荷、鄭、清各節只掃關鍵詞",
+          "locator": "頁 129『大正九年（1920）日本對全臺灣施行地方新制…取 Takao 日語的諧音改寫為「高雄」，設高雄州』段；註 61（1920 年 7 月 18 日《臺灣日日新報》第 7 版）、註 62（賴惠川《悶紅小草》，1951，頁 43）、註 63（《臺灣時報》1920 年 10 月 1 日第 16 期頁 129）",
+          "summary": "學術論文：作者檢索《臺灣日日新報》資料庫，日治時期『打狗』條目 1644 筆、『打鼓』618 筆；1920 年地方新制時，統治者把『打狗』取 Takao 的日語諧音改寫為『高雄』、設高雄州（註引 1920 年 7 月 18 日《臺灣日日新報》第 7 版的改制報導）。另引嘉義文人賴惠川的竹枝詞『高雄咫尺地相通，傳說紛紛大不同。自昔高雄稱打鼓，却將打狗字高雄』（1951 年自印本），以及 1920 年 10 月《臺灣時報》〈臺灣新制頌〉中用『高雄』入詩的漢詩。全文沒有提到京都高雄山或『高尾』。",
+          "rights": "OPEN_ACCESS_ACADEMIC",
+          "limitations": "能撐『保留 Takao 音、換成日語同音的高雄』這個機制，與『當時就傳說紛紛』一句詩；不能撐 1939 年隨筆的『高尾』說，也不能撐京都說無據。日日新報只見論文轉引，本次沒讀到原報。期刊出版年本次未在 PDF 內確認。 覆核 R7713：竹枝詞收在 1951 年自印本，寫作年不詳，『傳說紛紛』在詩中所指不明，不能當 1920 年當時就有多種由來傳說的證據。期刊頁眉確認為《文史台灣學報》第五期。",
+          "origin": "wave77-20261118",
+          "original_url": "https://taiwan.ntue.edu.tw/var/file/29/1029/img/692/176955521.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-bb8749845166db1d",
       "url": "https://www.gutenberg.org/ebooks/3913",
       "readings": [
@@ -217552,6 +218008,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave45-20261112",
           "original_url": "https://archive.org/details/sim_nature-uk_1917-02-01_98_2466"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bc66fadd12399a81",
+      "url": "https://archive.org/download/nlc-892-cbm0270-367683/NLC892-CBM0270-367683_%E5%A4%AA%E5%B9%B3%E5%BE%A1%E8%A6%BD_%E4%B8%80%E5%8D%83%E5%8D%B7_%E6%98%8E%E6%B4%BB%E5%AD%97%E6%9C%AC_%E7%AC%AC122%E5%86%8A.pdf",
+      "readings": [
+        {
+          "title": "太平御覽 一千卷 第122冊（卷五百九十六至卷六百）",
+          "publisher": "（宋）李昉等撰；明活字本，中國國家圖書館「數字古籍」影像，Internet Archive nlc-892-cbm0270-367683",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 15（advancedsearch 找到國圖明活字本 190 冊）、seq 16–17 先抓第 114 冊確認是卷五百五十六、seq 18 讀第 122 冊 metadata、seq 19（200，14,653,536 bytes）下載 PDF（47 頁），40 dpi 縮圖找卷首，PDF 第 40–41 頁以 140／260 dpi 看圖讀",
+          "reading_scope": "第 122 冊卷首（PDF 第 3 頁，卷五百九十六）與卷六百〈文部十六·思疾〉開頭至曹植條（PDF 第 40–41 頁）；其餘未讀",
+          "locator": "卷六百 文部十六〈思疾〉，『魏志曰陳思王植年十餘歲』條，PDF 第 40 頁左半至第 41 頁右半",
+          "summary": "〈思疾〉門下一條標為『魏志曰』：陳思王植年十餘歲誦讀詩論辭賦數萬言，善屬文；銅雀臺新成，太祖令諸子登臺作賦，植援筆立成；『文帝嘗欲害植，以其無罪，令植七步為詩，若不成加軍法。植即應聲曰：煑豆燃豆萁，豆在釜中泣，本是同根生，相煑何大急。文帝善之。』——宋初類書裡已經是四句、第一句就是『煮豆燃豆萁』（末句作『相煑何大急』），而且是『應聲』作的；但它把出處寫成《魏志》，這條前半的少年誦讀、銅雀臺作賦見於《三國志·陳思王植傳》，七步段本傳沒有看到（見 ZV9-S001）。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "明代活字本，不是宋刻；『相煑何大急』照圖錄字，『煑』『大』是此本字形（通『煮／煎』『太』的問題未判）；宋本文字未親見，只有 ZV9-S004 的資料庫轉錄（四部叢刊景宋本）佐證同條四句。；成書年份（983）不是從此本讀到的，題卡不用。覆核 R7812 自行轉 PDF 第 40–41 頁核對引文相符。",
+          "origin": "wave78-20261118",
+          "original_url": "https://archive.org/download/nlc-892-cbm0270-367683/NLC892-CBM0270-367683_%E5%A4%AA%E5%B9%B3%E5%BE%A1%E8%A6%BD_%E4%B8%80%E5%8D%83%E5%8D%B7_%E6%98%8E%E6%B4%BB%E5%AD%97%E6%9C%AC_%E7%AC%AC122%E5%86%8A.pdf"
         }
       ]
     },
@@ -222657,6 +223132,25 @@
       ]
     },
     {
+      "id": "SRC-c0d75efdceb36c1b",
+      "url": "https://xinwen.bjd.com.cn/content/s62cce612e4b0cd8d0ea66ea1.html",
+      "readings": [
+        {
+          "title": "他不但建了朝內81號，還留下百年前北京的珍貴影像（文：馬志璞；圖：國家圖書館）",
+          "publisher": "北京日報客戶端《舊京圖說》，2022-07-12（署名原創）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 7（200，145,312 bytes）HTML 去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "第 1–3 段（1932/1933 捐贈）；『普意雅對中國有特殊的情結…』與末段",
+          "summary": "署名作者、圖片出自國家圖書館：普意雅 1898 年來華測繪平漢鐵路，不到十年先後任北段與全路總工程師；1927 年自平漢鐵路卸任；娶中國妻子（1885-10-25 生、祖籍廣州），1920 年前後購置朝陽門內大街 69 號宅基地，親自設計兩棟法式三層小樓；兩人在樓裡生活近十年；1930 年 9 月普意雅在北平病逝，享年 68；1965 年改門牌 81 號。他的夫人 1932 年 10 月把約 5,000 幅照片與圖文資料捐給國立北平圖書館，1933 年 3 月 1 日館方辦展示會。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "仍是報紙稿（但有作者署名、與 ZV3-S002 不同作者，部分可能同樣取材於檔案館研究）；只寫到 1930 年與 1965 年改門牌，1946–1957 的出租、出售、文工團、女主人搬走都沒寫。 覆核 R7712：妻子生日等細節與 ZV3-S002 相同，作者不同但可能取材同一檔案研究，只算部分獨立。",
+          "origin": "wave77-20261118",
+          "original_url": "https://xinwen.bjd.com.cn/content/s62cce612e4b0cd8d0ea66ea1.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-c0d78a4bbc524cf9",
       "url": "https://skeptoid.com/episodes/337",
       "readings": [
@@ -225951,6 +226445,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://archive.org/details/dedrietzamenspra00haer"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c3db964393f36e29",
+      "url": "https://archive.org/download/secretsofthechin007863mbp/secretsofthechin007863mbp.pdf",
+      "readings": [
+        {
+          "title": "Secrets of the Chinese Drama: A Complete Explanatory Guide to Actions and Symbols as Seen in the Performance of Chinese Dramas（Cecilia S. L. Zung）",
+          "publisher": "原書 1937 年出版（序署 Shanghai, December 1936）；掃描本是 Benjamin Blom, New York 重印本，Digital Library of India 掃描、Internet Archive 收藏",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 15（metadata，200）、seq 16（djvu.txt，200，333,057 bytes，以關鍵詞定位）、seq 17（PDF，200，15,616,284 bytes），pdftoppm 轉 PDF 第 73、75 頁成圖逐頁看",
+          "reading_scope": "序文（書頁未編號，djvu 開頭）、第 37–42 頁『The Character Types』painted-face 一節；其餘劇目提要沒有讀",
+          "locator": "PDF 第 75 頁＝書頁 41，圖 (j)『黑頭』臉譜與說明及頁腳注 1；PDF 第 73 頁＝書頁 39（明代至光緒的馬武臉譜演變五圖）；書頁 38 painted-face 發展段；序文第 4 點（臉譜圖由 Professor J. S. Chi 提供）",
+          "summary": "1930 年代上海出版的英文京劇指南：書頁 41 的圖 (j) 畫的是額頭一彎月牙的黑臉臉譜，旁註『黑頭』，說明寫這是包拯（P'ao-tsen 包拯），『能到陰間向死者查明真相的神奇判官』，腳注說月亮代表夜晚、亡魂出來活動的時候。書頁 38–39 說臉譜沒有確切起始年代，明代以前只有壞人勾臉、明代才定規矩，並以馬武臉譜示範明、乾隆、咸豐、同治、光緒各期的變化；書頁 41 說黑色原意是『單純、直率』。序文說臉譜圖片由一位 Professor J. S. Chi 提供。也就是說：最晚到 1930 年代，京劇已把包拯畫成黑臉加月牙，而且當時的解說把月牙和『能審陰間』連在一起。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是 1930 年代的通俗介紹書，不是現代學術論文；它關於明代立規矩、各朝演變的說法沒有附出處；它只證明『到 1930 年代已是黑臉加月牙』，沒有說月牙最早何時出現。作者與提供圖片的教授卒年都在 1956 年後或未核，正片不點名。掃描本是重印本，原版權狀態未確認。 覆核 R7711：重抓 PDF（R7711 seq 1，位元組與雜湊與 ZV11 seq 17 相同），自轉 PDF 第 72–75 頁（書頁 38–41）核對：圖 (j) 旁註『黑頭』、說明『A Moon on the forehead of P'ao-tsen (包拯), the wonderful judge, who could go to the Land of Spirits to find the real facts from the dead』、腳注『The moon stands for night when the dead come forth and are active』、黑色『simplicity and straightforwardness』都對得上；序署 Shanghai, December, 1936。序文第 4 點只說臉譜圖『reprinted by courtesy of Professor Chi』，這位教授是誰未核，不點名也不推測。書中只有一幅圖，不能證明『固定譜式』。",
+          "origin": "wave77-20261118",
+          "original_url": "https://archive.org/download/secretsofthechin007863mbp/secretsofthechin007863mbp.pdf"
         }
       ]
     },
@@ -232567,6 +233080,25 @@
           "limitations": "傳記核驗來源。",
           "origin": "wave51-20261113",
           "original_url": "https://en.wikipedia.org/w/api.php?action=parse&page=Tycho_Brahe&prop=wikitext&section=0&format=json"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c9cf1a2acb1f9353",
+      "url": "https://archive.org/download/06044204.cn/06044204.cn.pdf",
+      "readings": [
+        {
+          "title": "湖廣通志·卷九十五~卷九十六（欽定四庫全書·史部）",
+          "publisher": "（清）邁柱等監修、夏力恕等纂（雍正）；文淵閣四庫全書影印本，Internet Archive 06044204.cn",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 23（advancedsearch 列出四庫本《湖廣通志》各冊）、seq 24 讀 metadata、seq 25（200，4,527,555 bytes）下載 PDF（118 頁），28 dpi 縮圖定位卷九十六，PDF 第 33–61 頁 100 dpi 看圖，第 57、60、61 頁 200 dpi 放大核字；覆核 R7812 重抓（R7812 seq 1，200，4,527,555 bytes，sha256 前綴 e24d2227643dd1d0 與原檔相同），自行轉 PDF 第 57、61 頁核對",
+          "reading_scope": "卷九十六〈藝文志·書〉卷首至宋代滕宗諒〈求記書〉全文（PDF 第 33–61 頁，晉、唐各書只看標題）；其餘未讀",
+          "locator": "卷九十六 藝文志 書類『宋 求記書 滕宗諒』，PDF 第 57 頁左起至第 61 頁右三行",
+          "summary": "信首：『六月十五日，尚書祠部員外郎、天章閣待制、知岳州軍州事滕宗諒謹馳介致書，恭投邠府四路經略安撫資政諫議節下』；說天下郡國『非有山水瓌異者不為勝，山水非有樓觀登覽者不為顯，樓觀非有文字稱記者不為久，文字非出於雄才鉅卿者不成著』；稱范『雅意在山水之好』，請他在『戎務鞅掌之暇』為此景作文；信末『謹以洞庭秋晚圖一本隨書贄獻，涉毫之際，或有所助。干冒清嚴，伏惟惶灼』。——信確實說隨信附一幅圖，圖名是《洞庭秋晚圖》（不是《洞庭晚秋圖》），用意是『或有所助』；信裡沒有寫年份。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "清雍正年間的省志，距原信約 690 年；沒有讀到更早的收錄（網路說明代隆慶《岳州府志》已收，本次未讀到原書）；信的真偽與流傳經過此本不交代。",
+          "origin": "wave78-20261118",
+          "original_url": "https://archive.org/download/06044204.cn/06044204.cn.pdf"
         }
       ]
     },
@@ -239601,6 +240133,25 @@
       ]
     },
     {
+      "id": "SRC-cfb0c953efa3fe6b",
+      "url": "https://dl.ndl.go.jp/api/iiif/769631/manifest.json",
+      "readings": [
+        {
+          "title": "史籍雜纂 第二（國書刊行會，1911，國立國會圖書館數位典藏 info:ndljp/pid/769631，PDM）所收《當代記》卷二",
+          "publisher": "國書刊行會，明治44年（1911）；國立國會圖書館數位典藏（公有領域 PDM）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 14（200，157,372 bytes）讀 IIIF manifest 目次（當代記在 canvas 4–110）；seq 15（canvas 16，天正三年）、seq 16（200，1,438,053 bytes，canvas 19 全頁）定位，seq 17、18 抓局部放大圖，用 Read 看圖讀（網址出處：pid 取自 NDL Search OpenSearch 結果 seq 13 的 dc:identifier 與 rdfs:seeAlso；manifest 網址是 NDL IIIF 的固定格式代入 pid，dl.ndl.go.jp/pid/ 頁是 SPA、不含連結，但 manifest 自身的 @id 與 label 與書目相符，頁圖網址取自 manifest 的 canvas／service，非猜測）",
+          "reading_scope": "canvas 16、19 兩個跨頁（刊本頁 24–25、30–31）；只細讀頁 31 下欄天正六年春的謙信一條",
+          "locator": "《當代記》卷二，刊本頁三十一下欄，『此春越後景虎卒』起",
+          "summary": "《當代記》天正六年記事寫：『此春越後景虎卒（年四十九），大虫と云々』，接著記辭世頌『一期榮華有二一盃一、四十九年一炊夢』（三四句不繼），再寫養子三郎（景虎）與景勝爭家督。也就是說『大虫』這個詞確實出現在史料裡，是《當代記》的一句傳聞（『云々』），原文沒有任何解釋，沒有說它是婦人病。 覆核 R7810 自抓 canvas 19 兩處局部核對：『此春越後景虎卒』在頁末，次行行首『（年四十九）、大虫と云々、及二死後一辭世頌云』，相符。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "《當代記》是後世編纂的編年記，不是謙信身邊的同時代紀錄；本次沒有讀到能說明它的成書年代與作者的來源，正片不說成書年。『大虫』的語義本次沒有讀到辭書或論文的解釋，不能說它是或不是婦人病。 補查代理原寫的辭世頌『一盃酒…一睡夢』是《謙信一代記》（越佐史料頁432）的寫法，不是《當代記》，已改。",
+          "origin": "wave78-20261118",
+          "original_url": "https://dl.ndl.go.jp/api/iiif/769631/manifest.json"
+        }
+      ]
+    },
+    {
       "id": "SRC-cfbbb8e5888761e0",
       "url": "https://theconversation.com/princes-in-the-tower-how-i-established-a-direct-link-between-richard-iii-and-the-two-murders-159836",
       "readings": [
@@ -243845,6 +244396,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.nature.com/articles/nature05357"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d34b656652c271ca",
+      "url": "https://m.zxart.cn/Detail.aspx?ID=48123&m=1",
+      "readings": [
+        {
+          "title": "《洞庭秋晚圖》：被時光遺佚的畫卷",
+          "publisher": "張雄藝術網（轉載），年份未標",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 22（200，40,706 bytes），python 去標籤後讀正文",
+          "reading_scope": "正文全讀",
+          "locator": "中段『在方志里保留了滕子京為求《岳陽樓記》而寫給范仲淹的信—《求記書》』一段",
+          "summary": "流傳版本的另一個樣本：說方志保留了〈求記書〉，引『謹以《洞庭秋晚圖》一本隨書贄獻，涉毫之際，或有所助』，說此畫今已失傳、作者成謎；並以文學筆法寫范仲淹在鄧州書房展畫。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "散文，沒有寫是哪部方志；書房展畫的情節是作者想像。",
+          "origin": "wave78-20261118",
+          "original_url": "https://m.zxart.cn/Detail.aspx?ID=48123&m=1"
         }
       ]
     },
@@ -253341,6 +253911,25 @@
       ]
     },
     {
+      "id": "SRC-db5219639e141cc4",
+      "url": "https://kusanomido.com/study/history/japan/sengoku/75594/",
+      "readings": [
+        {
+          "title": "【上杉謙信は女だった？】上杉謙信女説はどこから来たのか？",
+          "publisher": "草の実堂編集部，2023 年刊、2026 年更新",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 12（200，153,144 bytes），python 去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "『ゴンザレス報告書から』『死因が女性特有のものだった』兩小節與『上杉謙信女説は都市伝説の類いか？』節",
+          "summary": "通俗樣本：說西班牙人『ゴンザレス』給腓力二世的報告寫『會津的上杉擁有叔母開發的佐渡金山』，這位叔母被解釋成謙信；又說『大虫』見於《當代記》，『大虫』相當於更年期婦人病。文末自己說這份報告『実在性が疑われている』，整體是都市傳說之類。也說說法起於 1968 年一位小說家在報紙上發表。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "通俗網站；報告的檔案館、年份、原文都沒給；1968 年報紙發表一事本次沒有一手核對；『大虫＝婦人病』沒有給辭書出處。",
+          "origin": "wave78-20261118",
+          "original_url": "https://kusanomido.com/study/history/japan/sengoku/75594/"
+        }
+      ]
+    },
+    {
       "id": "SRC-db543fb2cb45da13",
       "url": "http://resolver.kb.nl/resolve?urn=ddd:010283771:mpeg21:a0055:ocr",
       "readings": [
@@ -262152,6 +262741,25 @@
           "limitations": "OCR 文字，個別字辨識錯（cathedrial、Bloke 等），引句只用清楚的部分；是外地報紙轉登的專電，原始的舊金山報紙是哪一家沒有寫。沒有提到布里斯托。",
           "origin": "wave29-20261112",
           "original_url": "https://www.loc.gov/resource/sn85038614/1889-07-11/ed-1/?sp=4"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e35e452c3222d527",
+      "url": "https://news.cri.cn/201633/4eaa8ed5-b32a-9f57-72ac-79be6330e01e.html",
+      "readings": [
+        {
+          "title": "“京城第一凶宅”朝內81號院將修繕待客（記者 沈湜）",
+          "publisher": "國際在線（中國國際廣播電臺），2016-03-03",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 9（200，30,029 bytes）HTML 去標籤後讀正文",
+          "reading_scope": "全文（短訊）",
+          "locator": "第 1–2 段",
+          "summary": "2016 年 3 月記者到場，大門關閉修繕；網路文學與電影使它被稱『京城鬼屋』。轉述 2007 年市規委與市文物局名錄寫原名『華北協和話語學校、加利福尼亞學院』、建成 1910 年；並寫在 2009 年東城區第三批文物保護單位名單中，列為 9 處近現代重要史跡及代表性建築之一，名稱『朝陽門內大街81號近代建築』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "官方媒體報導；2009 年東城區名單是轉述，原文沒讀到。",
+          "origin": "wave77-20261118",
+          "original_url": "https://news.cri.cn/201633/4eaa8ed5-b32a-9f57-72ac-79be6330e01e.html"
         }
       ]
     },
@@ -285348,6 +285956,25 @@
       ]
     },
     {
+      "id": "SRC-f625300704d48a6e",
+      "url": "https://www.loc.gov/search/?q=opera+faces+great+peace&fa=partof:world+digital+library&fo=json",
+      "readings": [
+        {
+          "title": "Sheng ping shu lian pu 昇平署臉譜（Office of Great Peace Album of Opera Faces，WDL 3023）",
+          "publisher": "Library of Congress World Digital Library；原件藏中國國家圖書館",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 10（200，548,236 bytes）loc.gov 搜尋 JSON 讀第一筆完整著錄；seq 11（item ?fo=json，只收到 8,192 bytes 截斷）；seq 13（200，12,212,177 bytes）下載 JSON 裡列的 wdl_03023.pdf（seq 12 第一次只收到 61,440 bytes 截斷），pdftoppm 轉圖逐頁看圖與題名",
+          "reading_scope": "著錄 summary、notes、日期；PDF 47 頁全部看過（第 1 頁封面，第 2–47 頁共 46 幅），逐幅讀右上角題名",
+          "locator": "著錄 summary（『work of a court painter in or after the Tongzhi reign』『97 paintings…nine different kinds of plays』）；PDF 第 2–47 頁題名：泗洲城狀元、知州、靈官、玄壇、伽藍、拏嗟、青龍、白虎、化身、韋馱、孫悟空、水母、太平橋老大王、公主、朱溫、卞宜隨、李存勗、旗牌郭義、李廣、師敬司、空城計司馬懿、夏侯霸、司馬師、司馬昭、諸葛亮、老軍、馬謖、王平、趙雲、黃忠、王玲瓏王成、梁紅玉、龐勛、韓世忠、土地、節氏、落馬湖李龔、萬君照、黃天霸、何路通、于亮、李大成、闞泰、李五、郭起鳳、朱光祖",
+          "summary": "國會圖書館著錄說這是同治年間或之後宮廷畫師畫的京劇扮相冊，升平署負責宮中承應戲，劇中人的化妝『大致依循一套固定的臉譜與顏色』，原冊 97 幅、九類戲。但數位化 PDF 只有 46 幅，逐幅讀題名，沒有包拯（或包公、包待制）——這冊不能拿來證明清宮的包公臉譜有月牙；只能證明同治以後宮中臉譜已成固定譜式。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "數位本只有 46 幅，著錄說原冊 97 幅，其餘未見；著錄原文是『in or after the Tongzhi reign (1851--74)』、date 欄寫 1851（同治實為 1862–1874，著錄的年份本身有誤），只能說『同治年間或之後』。對本題只是負面檢查與背景。 覆核 R7711：看過補查代理的 46 幅拼圖，黑臉的只有玄壇等幾幅，沒有額頭月牙的黑臉，負面結果成立。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.loc.gov/search/?q=opera+faces+great+peace&fa=partof:world+digital+library&fo=json"
+        }
+      ]
+    },
+    {
       "id": "SRC-f6266a9ea8fac638",
       "url": "https://no.wikipedia.org/wiki/Hessdalsfenomenet",
       "readings": [
@@ -286157,6 +286784,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "http://web.archive.org/web/20260419174506/https://www.esd.whs.mil/Portals/54/Documents/FOID/Reading%20Room/UFOsandUAPs/nas_re1.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f6e0a393f629c720",
+      "url": "https://archive.org/download/06065887.cn/06065887.cn.pdf",
+      "readings": [
+        {
+          "title": "文選［李善、五臣注］·卷六十（欽定四庫全書·集部）",
+          "publisher": "（梁）蕭統編，（唐）李善、呂延濟等注；文淵閣四庫全書影印本，Internet Archive 06065887.cn",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 7（advancedsearch 列出四庫本《文選》各冊）、seq 8 讀 metadata、seq 9（200，3,982,977 bytes）下載 PDF（98 頁），pdftoppm 110 dpi 定位，PDF 第 7 頁以 220 dpi 放大讀注文；覆核 R7812 重抓（R7812 seq 2，200，3,982,977 bytes，sha256 前綴 d4938b4604a2fd77 與原檔相同），自行轉 PDF 第 7 頁核對",
+          "reading_scope": "卷首目錄與任昉〈齊竟陵文宣王行狀〉開頭（PDF 第 1–9 頁），細讀 PDF 第 7 頁『陳思見稱於七步』句與其下的善注、良注；其餘未讀",
+          "locator": "卷六十 任昉〈齊竟陵文宣王行狀〉『淮南取貴於食時，陳思見稱於七步』句下注，PDF 第 7 頁",
+          "summary": "行狀原文『淮南取貴於食時，陳思見稱於七步，方斯蔑如也』。善曰引《世說》：『魏文帝令陳思王七步成詩，詩曰：萁在竈下然，豆居釜中泣。本是同根生，相煎何太急。』良曰：魏陳思王植有奇才，文帝令作詩，七步而成。也就是說，唐代李善注引的《世說》已經是四句，第三、四句和課本一樣（『本是同根生』），但第一句是『萁在竈下然』，不是『煮豆燃豆萁』。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "清代四庫本的六臣合注本，李善注文字可能經後人改動；沒有對照宋刻本或單行李善注本；『萁在竈下然』四句是李善節引還是當時《世說》的別本，此本看不出來。",
+          "origin": "wave78-20261118",
+          "original_url": "https://archive.org/download/06065887.cn/06065887.cn.pdf"
         }
       ]
     },
@@ -290731,6 +291377,25 @@
           "limitations": "百科條目，不算兩個來源之一；安藤、庄司、《冒險世界》、《週刊文春》本次都沒讀到原文；免官一事的出處被條目標為無效出典。流傳版本樣本合格（BRIEF 允許維基當樣本、不算來源之一），但『英國倖存者的書罵日本人』這個具體說法只有本條目轉述《週刊文春》一處樣本；條目本身同時收了安藤 2011 的反駁，所以這個翻轉在日文圈並非首次提出。",
           "origin": "wave78-20261118",
           "original_url": "https://ja.wikipedia.org/w/index.php?title=%E7%B4%B0%E9%87%8E%E6%AD%A3%E6%96%87&action=raw"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fafacf8a67847274",
+      "url": "https://crd.ndl.go.jp/reference/detail?page=ref_view&id=1000265296",
+      "readings": [
+        {
+          "title": "レファレンス事例：広島県竹原市にある大久野島のうさぎについて，放したとされる地元の小学校はどこか…",
+          "publisher": "廣島縣立圖書館（管理番號 広県図2019170），國立國會圖書館レファレンス協同データベース，2019-08-26 作成、2020-07-03 更新",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 12（200，37,355 bytes），python 去標籤後讀全頁",
+          "reading_scope": "質問、回答、追記全讀",
+          "locator": "回答各條；『中国新聞』朝刊2011年1月1日1面『天風録』條；追記『読売新聞』2019年10月7日27面條",
+          "summary": "縣立圖書館查了書、雜誌與中國新聞資料庫，結論是『哪間小學、放的人是否在世』都找不到記載。列出的說法彼此不一：寫真集說『8 匹の飼いうさぎ』；兒童書說是戰後小學的兔子野生化；2003 年一本論文集說休暇村時期為觀光帶進約 10 隻、加上學校棄養，並認為其中也可能有毒氣工廠實驗兔的後代；2010 年一本離島謎團書說『甚至有人說』是毒氣檢測用兔子繁殖來的；2008 年地方雜誌說約 35 年前小學的幾隻；2017 年雜誌說 1971 年小學 8 頭。中國新聞 2009 年寫 1971 年小學 8 匹『とされる』；2011 年元旦〈天風錄〉說實驗兔倖存後代是流傳的『伝説』，約 40 年前從對岸小學要來、『為了讓觀光客高興』放到島上，加上偷偷丟的兔子，『真相らしい』。讀賣 2019-10-07：休暇村 1963 年開幕，集客點子是養動物，原想養鹿但島太小，改兔子，從對岸忠海的小學要來幾隻逐漸增加。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "圖書館整理的摘錄，不是報紙版面原件；讀賣是 2019-10-07 那篇，不是題卡原本缺的 2016-01-01 讀賣與 2016-02-11 週刊文春；2003 年論文集的作者在世，不點名。",
+          "origin": "wave78-20261118",
+          "original_url": "https://crd.ndl.go.jp/reference/detail?page=ref_view&id=1000265296"
         }
       ]
     },
