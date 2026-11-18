@@ -1,13 +1,13 @@
 ---
 id: 2026-11-18-drive-single-writer-shared-assets
 title: One writer per Drive file: sessions stop copying the final cut, shared assets folder
-status: review
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-drive-single-writer
 claimed_at: 2026-11-18T05:42:53Z
 created_at: 2026-11-18T02:27:51Z
-completed_at:
+completed_at: 2026-11-18T07:03:25Z
 branch: claude/kind-mccarthy-5m28jo
 depends_on: []
 scope:
