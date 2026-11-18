@@ -1,13 +1,13 @@
 ---
 id: 2026-11-18-drive-index-sheet
 title: Generate a daily Google Drive index sheet of every show and episode
-status: review
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-drive-index
 claimed_at: 2026-11-18T04:42:22Z
 created_at: 2026-11-18T02:27:51Z
-completed_at:
+completed_at: 2026-11-18T07:03:25Z
 branch: claude/kind-mccarthy-5m28jo
 depends_on:
   - 2026-11-18-drive-links-in-admin
