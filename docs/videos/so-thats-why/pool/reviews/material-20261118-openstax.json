@@ -1,0 +1,64 @@
+{
+ "schema_version": 1,
+ "reviewed_on": "2026-11-18",
+ "owner_request": "站主 2026-11-18 在 OpenStax 清查後選「補實讀來源」（G06、G08 拿掉只引 OpenStax 的卡就不達 11.4 條）。",
+ "rule": "OpenStax 不算來源：頁面禁止 LLM 擷取，授權 CC BY-NC-SA 只限非商業。研究與覆核都沒有請求 openstax.org。",
+ "themes": {
+  "G06": {
+   "verdict": "ready",
+   "fact_count": 12.75,
+   "est_minutes": 9.5,
+   "researcher": "SO0",
+   "reviewer": "SVO0",
+   "replaced": [
+    "L094",
+    "L095",
+    "L54-005",
+    "L096",
+    "L54-004",
+    "L092"
+   ],
+   "kept": [
+    "L54-002",
+    "L54-001",
+    "L097",
+    "L54-003"
+   ],
+   "new_cards": [
+    "K104-0101",
+    "K104-0102",
+    "K104-0103",
+    "K104-0104",
+    "K104-0105",
+    "K104-0106",
+    "K104-0107",
+    "K104-0108",
+    "K104-0109",
+    "K104-0110",
+    "K104-0111"
+   ],
+   "notes": "L097 只算 USGS 0.5（OpenStax 不計）；波昂與于利希同列一篇約 38 位作者的多單位論文，保守併網扣 1.0；K104-0108 降 0.75。"
+  },
+  "G08": {
+   "verdict": "reserve",
+   "material": "ready (14.75)",
+   "researcher": "SO1, SO1B",
+   "reviewer": "SVO1, SVO1B",
+   "audience": {
+    "after_material": {
+     "base": 7.13,
+     "total": 6.48,
+     "old": 7.17,
+     "old_base": 7.95,
+     "demand": 3.25
+    },
+    "after_repack": {
+     "base": 6.93,
+     "total": 6.32
+    }
+   },
+   "reason": "素材補足但觀眾分未過 6.5；車輛章節是素材主體，改包裝扣題反而更低。",
+   "work_files_not_in_pool": "SO1/SO1B 的 13 張新卡與 9 個來源未入池（重做紀錄在 scratchpad，未提交）。"
+  }
+ }
+}

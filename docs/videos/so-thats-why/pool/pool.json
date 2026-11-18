@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-17-pool-6249",
+  "revision": "2026-11-18-pool-6260",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,15 +12,15 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 6638,
-    "canonical_questions": 6478,
-    "eligible_candidates": 6308,
-    "selected_candidates": 6249,
+    "raw_records": 6649,
+    "canonical_questions": 6489,
+    "eligible_candidates": 6319,
+    "selected_candidates": 6260,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 7393,
-    "current_research_source_urls": 4446,
-    "selected_source_urls": 5444,
+    "source_urls": 7400,
+    "current_research_source_urls": 4453,
+    "selected_source_urls": 5451,
     "new_suggestions_not_added": 3419,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
@@ -30,8 +30,8 @@
         "selected": 1472
       },
       "生物動物與植物": {
-        "canonical": 1495,
-        "selected": 1484
+        "canonical": 1506,
+        "selected": 1495
       },
       "地球天氣與太空": {
         "canonical": 921,
@@ -1821,6 +1821,10 @@
       "sha256": "98756683d1685e3bec5a2952aed9d6270772aa1f806919db9db2277e50f61c58"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave104-openstax-20261118.json",
+      "sha256": "1de5f1ec5f49f75df8a562e43812b656c2effee05d6bf681ca973d90cd869741"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave11-landforms.json",
       "sha256": "9c87d4ae72bd7128701b6a2a7107635338aef97d4ce6c41994b7022c2a068ecb"
     },
@@ -3134,12 +3138,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "f3b9c81096c2e528042270fe47bcbc8a907f00e1f19d833780361ac0dc4acd53"
+      "sha256": "59a0e03e112a76b30fae7a72e3332f5ec424cbe307a2774166416342fd8b3c8f"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 7393
+    "count": 7400
   },
   "candidates": [
     {
@@ -74670,6 +74674,479 @@
       "question_variants": [],
       "provenance_ids": [
         "K103-1314"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K104-0101",
+      "category": "生物動物與植物",
+      "domain": "植物生理",
+      "question": "一片薄薄的葉子能挺得直，細胞裡到底撐著多大的壓力？",
+      "mechanism_key": "os104.turgor_magnitude_up_to_2mpa_probe_0_3_to_0_6",
+      "answer_target": "法國與英國研究機構的回顧開頭說，植物細胞像一顆顆小「壓力彈」：細胞內的靜水壓（膨壓）最高可達約 20 大氣壓，也就是 2 MPa，遠高於汽車輪胎裡的氣壓（回顧沒有給輪胎數字）。實際量到的多半低於這個上限：把細針狀的壓力探針插進活細胞，大豆莖約 0.4 MPa，玉米與小麥的根 0.4–0.6 MPa，番茄根約 0.3 MPa，阿拉伯芥根表皮 0.3–0.6 MPa；用小球壓洋蔥表皮細胞推得約 0.6 MPa；回顧中唯一的葉片數值，是以濕度計法量到的阿拉伯芥葉片約 0.18 MPa。",
+      "scope": "「可達 2 MPa、遠高於輪胎」是回顧的上限總述；實測多在根、莖與單細胞，唯一的葉片值（0.18 MPa）偏低。稿中不得說「每片葉子的細胞都比輪胎高」，也不給倍數。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一片軟軟的葉子，是靠每個細胞裡鼓著的水壓撐起來的；這種壓力的上限，比輪胎還高得多。",
+        "visual": "清爽可愛的機制剖面動畫：葉片放大成一格格透明小房間，每間裡的水囊把牆壁撐得圓鼓鼓，牆壁微微向外彎；水囊鼓得越飽，整片葉子越挺。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "SO0-S006 Introduction 第 1 段（2 MPa、遠高於輪胎）；〈Psychrometer〉（大豆莖 0.46、阿拉伯芥葉 0.18 MPa）；〈Pressure probe〉數值段；〈Indentation〉洋蔥表皮約 0.6 MPa",
+      "notes": "研究網 NET_LYON_EDINBURGH；加權 1.0。覆核 SVO0：補上回顧中唯一的葉片值 0.18 MPa，改掉「每個細胞都比輪胎高」的 payoff 與輪胎對照畫面。",
+      "origin": "wave104-openstax-20261118",
+      "source_refs": [
+        {
+          "source_id": "SRC-0363e2591450dc1a",
+          "origin": "wave104-openstax-20261118",
+          "locator": "SO0-S006 Introduction 第 1 段（2 MPa、遠高於輪胎）；〈Psychrometer〉（大豆莖 0.46、阿拉伯芥葉 0.18 MPa）；〈Pressure probe〉數值段；〈Indentation〉洋蔥表皮約 0.6 MPa",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave104-openstax-20261118.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K104-0101"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K104-0102",
+      "category": "生物動物與植物",
+      "domain": "植物生理",
+      "question": "葉子垂下來，是細胞壁壞了，還是裡面的水壓沒了？",
+      "mechanism_key": "os104.wall_holds_turgor_tissue_softens_when_turgor_falls",
+      "answer_target": "同一篇回顧說，膨壓把細胞膜推向細胞壁，細胞壁被撐開到剛好能穩住這股內壓的大小與形狀；細胞的硬度同時來自細胞壁材料與膨壓，膨壓高時主要靠膨壓。整片組織也一樣：膨壓升高，組織變硬；膨壓下降，組織變軟甚至萎蔫，地上器官的外層表皮細胞外壁承受著內部推出來的壓力。高鹽或缺水都會讓膨壓下降。",
+      "scope": "定性機制，來自回顧的整理；沒有針對特定盆栽植物的量測。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "垂頭不是牆塌了，是撐牆的水壓洩了。",
+        "visual": "清爽可愛的機制剖面動畫：一排小房間的水囊慢慢消氣，牆壁跟著鬆垮，整根葉柄像洩了氣的充氣玩具緩緩彎下；水囊重新鼓起，葉柄又挺回來。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "SO0-S006 Roles of turgor pressure 第 1 段（細胞壁撐到穩住內壓、組織硬化與萎蔫、表皮外壁承壓）與第 4 段（高鹽、缺水使膨壓下降）",
+      "notes": "研究網 NET_LYON_EDINBURGH；加權 1.0（本網合計 2.0，已達上限）。取代 L094、L095。",
+      "origin": "wave104-openstax-20261118",
+      "source_refs": [
+        {
+          "source_id": "SRC-0363e2591450dc1a",
+          "origin": "wave104-openstax-20261118",
+          "locator": "SO0-S006 Roles of turgor pressure 第 1 段（細胞壁撐到穩住內壓、組織硬化與萎蔫、表皮外壁承壓）與第 4 段（高鹽、缺水使膨壓下降）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave104-openstax-20261118.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K104-0102"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K104-0103",
+      "category": "生物動物與植物",
+      "domain": "植物生理",
+      "question": "根吸水靠的是什麼「坡度」，土一變乾為什麼葉子就垮？",
+      "mechanism_key": "os104.water_potential_gradient_soil_drying_turgor_lost",
+      "answer_target": "俄亥俄州立大學的植物科學課程講義說，水在土、植物、空氣之間的移動可以用「水勢」理解：以壓力單位量，水一律由水勢高往低走，純水與 100% 濕度的空氣定為零。每個細胞都坐在一條從土壤到大氣的水勢梯度上，只要細胞的水勢比外面低就能吸水。土壤變乾時，土的水勢往下掉、逼近細胞裡的水勢，細胞卻還在向空氣失水，於是內容物收縮、膨壓消失，植物萎蔫。",
+      "scope": "教學講義，定性說明，沒有數據；水勢的數值在 K104-0106、K104-0107 與保留卡 L54-001。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水是往下坡流的：土一乾，坡就平了，葉子還在漏，於是垮。",
+        "visual": "清爽可愛的機制剖面動畫：一條從盆土經過莖、葉到天空的滑水道，水珠一路往下坡溜；盆土那端慢慢升高變平，水珠停在半路，葉尖還在往空中冒水氣，葉片跟著軟下來。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "SO0-S001 Cell enlargement 第 2–3 段",
+      "notes": "研究網 NET_OSU_PLANTFACTS；加權 1.0。取代 L096 的「含水量與水勢不是同一指標」。",
+      "origin": "wave104-openstax-20261118",
+      "source_refs": [
+        {
+          "source_id": "SRC-ff5058d7dcfc782d",
+          "origin": "wave104-openstax-20261118",
+          "locator": "SO0-S001 Cell enlargement 第 2–3 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave104-openstax-20261118.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K104-0103"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K104-0104",
+      "category": "生物動物與植物",
+      "domain": "植物生理",
+      "question": "土明明是濕的，為什麼鹽一多，根反而喝不到水？",
+      "mechanism_key": "os104.salty_soil_wet_but_water_unavailable_plasmolysis",
+      "answer_target": "同一份講義說，土壤累積鹽分時是「同等的情況」：細胞沒辦法逆著水勢梯度吸水，不能生長，甚至可能把水倒失給周圍；這種植物的根細胞可能出現質壁分離，細胞質收縮、細胞膜從細胞壁拉開，中間留下充滿液體的空隙。（推論，非講義原句：講義把鹽分與土壤變乾並列，意思是即使土裡有水，水勢被溶質拉低時根一樣吸不進來。）",
+      "scope": "講義沒有給鹽的濃度、植物種類或盆栽情境，只當原理；不得延伸成施肥或換土建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "濕不等於喝得到：鹽多的土，水就在那裡，根卻吸不進來。",
+        "visual": "清爽可愛的機制剖面動畫：濕潤的土裡散著許多小晶粒，根毛伸過去想喝水，水珠卻被晶粒拉住不肯過來；根毛裡的小房間反而一點點縮小，膜從牆邊退開。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "source_locator": "SO0-S001 Cell enlargement 第 4 段（salinity、plasmolysis）",
+      "notes": "研究網 NET_OSU_PLANTFACTS；加權 0.75（單句定性，無數據；本網合計 1.75）。覆核 SVO0：「土裡的水量不變、根一樣拿不到」標為推論。",
+      "origin": "wave104-openstax-20261118",
+      "source_refs": [
+        {
+          "source_id": "SRC-ff5058d7dcfc782d",
+          "origin": "wave104-openstax-20261118",
+          "locator": "SO0-S001 Cell enlargement 第 4 段（salinity、plasmolysis）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave104-openstax-20261118.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K104-0104"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K104-0105",
+      "category": "生物動物與植物",
+      "domain": "植物生理",
+      "question": "葉子到底要「渴」到什麼程度才會垂？每種植物都一樣嗎？",
+      "mechanism_key": "os104.grapevine_turgor_loss_point_minus_1_7_mpa_varies",
+      "answer_target": "加拿大多倫多大學士嘉堡校區與尼加拉學院的團隊說明，「膨壓喪失點」就是葉片萎蔫時的葉水勢。他們在 2023 年 7 月採 12 個葡萄品系與一種野生葡萄的枝條，水中再水合 12 小時後，用加壓艙做壓力—體積曲線、也用露點水勢計測：39 片葉平均約 −1.7 MPa，範圍 −2.4 到 −1.2 MPa，品系之間有顯著差異（品系解釋約 39% 的變異）。論文也提到，過去作物界普遍假設作物要到土壤的「永久凋萎點」以下才停擺，把葉子本身的膨壓喪失點當成作物耐旱指標是相對新的做法；它引述的 27 種地中海木本植物，萎蔫點從約 −4.5 到 −0.5 MPa。",
+      "scope": "一個葡萄園、一個夏季、剪下再水合的葉子；不是盆栽；地中海植物範圍是引述。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "會垂頭的那條線畫在葉子裡，而且每種植物畫的位置不一樣。",
+        "visual": "清爽可愛的機制剖面動畫：一排不同形狀的葉子各自掛著一根垂直的水位尺，水位慢慢下降，每片葉子在不同高度先後軟下來。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SO0-S002 Background 第 3、5 段；Results 第 1–2 段；圖 1、圖 3 圖說",
+      "notes": "研究網 NET_UTSC_NIAGARA；加權 1.0。與保留卡 L54-001（土壤的 1500 kPa 下限）並陳：土壤那條線是約定，葉子真正萎蔫的位置因植物而異。",
+      "origin": "wave104-openstax-20261118",
+      "source_refs": [
+        {
+          "source_id": "SRC-46983cd7be8db363",
+          "origin": "wave104-openstax-20261118",
+          "locator": "SO0-S002 Background 第 3、5 段；Results 第 1–2 段；圖 1、圖 3 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave104-openstax-20261118.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K104-0105"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K104-0106",
+      "category": "生物動物與植物",
+      "domain": "植物生理",
+      "question": "盆土離乾透還很遠的時候，根到葉的「水管」就可能已經窄掉一半嗎？",
+      "mechanism_key": "os104.pot_drying_soil_to_leaf_conductance_halves_far_from_wilting_point",
+      "answer_target": "德國于利希研究中心與澳洲麥覺理大學的團隊，把約 4 週大的蠶豆（12 株）和玉米（10 株）種在裝了 2.32 公升砂質壤土、填到 45 公分高的長管盆裡，斷水四天，連續量整株吸水量、土壤水勢與葉水勢。土壤水勢一低於約 −0.025 MPa，從土到葉的導水度就開始指數下降：蠶豆在 −0.07 MPa、玉米在 −0.10 MPa 時導水度已剩一半，氣孔導度也在差不多的地方減半（蠶豆 −0.07、玉米 −0.13 MPa）。論文引言寫，永久凋萎點通常假設為 −1.5 MPa。（推算比較，非論文原句：導水度減半時的土壤水勢，只有凋萎點假設值的約二十分之一，土壤離乾到凋萎還很遠。）",
+      "scope": "氣候室長管盆的兩種作物幼苗，介質是砂質壤土；不是一般室內盆栽。論文沒有說土「摸起來濕」，稿中只能說「離凋萎點還很遠」；也沒有說植物已萎蔫，只說導水度與氣孔導度減半。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "土還沒乾透，水管已經先細了一半，氣孔跟著關。",
+        "visual": "清爽可愛的機制剖面動畫：一株小苗的根、莖、葉被畫成一條透明水管，盆土看起來仍是深色濕潤，水管卻從根那端開始一節節變細，水流變慢，葉上的小氣孔一個個闔起。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_locator": "SO0-S005 Introduction 第 1 段（−1.5 MPa）；Methods〈Plant growing conditions〉；Results（臨界 −0.025 MPa、表 3）",
+      "notes": "研究網 NET_JULICH（與 NET_BONN 有直接合著，見覆核）；加權 1.0。覆核 SVO0：週齡改為摘要寫的約 4 週；「土裡水還多得很」改為推算比較；payoff 不再說「喊渴」。",
+      "origin": "wave104-openstax-20261118",
+      "source_refs": [
+        {
+          "source_id": "SRC-eeb45deb131ed996",
+          "origin": "wave104-openstax-20261118",
+          "locator": "SO0-S005 Introduction 第 1 段（−1.5 MPa）；Methods〈Plant growing conditions〉；Results（臨界 −0.025 MPa、表 3）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave104-openstax-20261118.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K104-0106"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K104-0107",
+      "category": "生物動物與植物",
+      "domain": "植物生理",
+      "question": "乾掉的盆栽一澆水，為什麼不會馬上恢復原狀？",
+      "mechanism_key": "os104.rewatering_soil_recovers_in_30min_plant_conductance_needs_overnight",
+      "answer_target": "同一個于利希團隊估算根表面的水勢後認為，導水度的下降幾乎全可由根表面到葉之間（植物體內）的下降解釋，而不是土和根的交界。斷水四天後，四株蠶豆重新澆水，其中一株有完整的紀錄：土壤水勢 30 分鐘內從 −0.14 回到 −0.01 MPa，葉水勢 1 小時內從 −1.3 回到 −0.8 MPa；但整條水路的導水度復水前只剩約 17%，8 小時後回到約一半，約 20 小時後才回到約 85%，隔天早上的吸水量仍比第一天低約四成。另外三株只量到復水後 5.5 小時，趨勢相似（葉水勢幾小時內回復、吸水回得慢得多）。作者推測體內的損失可能來自根的木栓化或水通道蛋白表現改變，論文沒有直接量。",
+      "scope": "根表面水勢是模型估算；17%、50%、85%、四成都是單一植株的示例；原因只是作者推測。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "土半小時就濕回來，根裡的水路卻要睡一整晚才修好。",
+        "visual": "清爽可愛的機制剖面動畫：澆水壺把盆土一下子染深，土裡的水珠馬上滿了；根裡的水管卻像一扇扇小門，隨著窗外由白天轉成夜晚再到清晨，才一扇一扇慢慢打開。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "SO0-S005 Results〈土壤與植物段〉（KSL 與 KRL 幾乎相同）；Results〈復水〉（圖 6）；Discussion 開頭",
+      "notes": "研究網 NET_JULICH；加權 1.0（本網合計 2.0；與 NET_BONN 合併後上限仍 2.0）。覆核 SVO0：改正「四株」與單株示例的混寫。",
+      "origin": "wave104-openstax-20261118",
+      "source_refs": [
+        {
+          "source_id": "SRC-eeb45deb131ed996",
+          "origin": "wave104-openstax-20261118",
+          "locator": "SO0-S005 Results〈土壤與植物段〉（KSL 與 KRL 幾乎相同）；Results〈復水〉（圖 6）；Discussion 開頭",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave104-openstax-20261118.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K104-0107"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K104-0108",
+      "category": "生物動物與植物",
+      "domain": "植物生理",
+      "question": "葉子上那麼小的氣孔，到底占了多少散水的份量？",
+      "mechanism_key": "os104.stomata_1pct_area_90pct_transpiration_90pct_of_root_water",
+      "answer_target": "奧勒岡州立大學推廣處的教材給了一組常用的通則數字（頁面沒有引文）：氣孔只占葉面約 1%，卻散掉約 90% 的蒸散水；根吸進來的水，約 90% 最後用在蒸散，只有約 10% 用在化學反應與組織裡。教材說蒸散會把更多的水從根拉上來；蒸散同時幫植物運送礦物質、降溫、維持膨壓，在炎熱、乾燥、有風的天氣最旺。",
+      "scope": "推廣教材的通則數字，沒有引文、沒有指明植物；同一段「保衛細胞收縮時氣孔打開」寫反了（SO0-S006：保衛細胞膨壓夠高時才開），不採用，也因此本卡降權。稿中要說「推廣教材常用的估計」。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "葉面百分之一的小孔，放走了九成的水。",
+        "visual": "清爽可愛的機制剖面動畫：葉片表面放大，一大片平滑的表皮上只零星點著幾個小嘴巴般的氣孔，水氣幾乎全從這幾個小口飄出去，葉脈裡的水流跟著往上補。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SO0-S003 Transpiration 段",
+      "notes": "研究網 NET_OREGON_EXT；加權 0.75（覆核 SVO0 降權：數字無引文，且同段有明顯錯誤）。也撐住第 3 章「蒸散把水從根拉上來」（保留卡 L097 的 USGS 頁沒有這句）。",
+      "origin": "wave104-openstax-20261118",
+      "source_refs": [
+        {
+          "source_id": "SRC-0b1902cd81e9a1cd",
+          "origin": "wave104-openstax-20261118",
+          "locator": "SO0-S003 Transpiration 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave104-openstax-20261118.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K104-0108"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K104-0109",
+      "category": "生物動物與植物",
+      "domain": "植物生理",
+      "question": "氣孔一天裡什麼時候開、什麼時候關？關起來又要付什麼代價？",
+      "mechanism_key": "os104.stomata_daily_rhythm_close_in_heat_co2_tradeoff",
+      "answer_target": "同一份推廣教材說，光合作用要的二氧化碳是從氣孔進來的；多數植物的氣孔一天裡早上打開、中午收小、傍晚前再打開，入夜後關上。氣孔開著就會失水，所以植物在乾熱、蒸散最旺的時候關氣孔；可是氣孔關太久，二氧化碳進不來，光合作用和呼吸都會變慢，生長也跟著放慢。",
+      "scope": "推廣教材的通則；「早開、午收、傍晚再開」是多數植物的典型，不適用所有種類（例如夜間開氣孔的植物）。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "想吃二氧化碳就得開門，一開門水就跑。",
+        "visual": "清爽可愛的機制剖面動畫：葉面上的小氣孔像一排小窗，晨光裡打開、正午太陽最毒時半掩、傍晚又打開、夜裡全關；窗開時小小的氣泡飄進來、水氣飄出去。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SO0-S003 Photosynthesis／Carbon dioxide 段；A balancing act 段；圖 2 圖說",
+      "notes": "研究網 NET_OREGON_EXT；加權 1.0（本網合計 2.0）。取代 L54-004。",
+      "origin": "wave104-openstax-20261118",
+      "source_refs": [
+        {
+          "source_id": "SRC-0b1902cd81e9a1cd",
+          "origin": "wave104-openstax-20261118",
+          "locator": "SO0-S003 Photosynthesis／Carbon dioxide 段；A balancing act 段；圖 2 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave104-openstax-20261118.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K104-0109"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K104-0110",
+      "category": "生物動物與植物",
+      "domain": "植物生理",
+      "question": "葉子表面那層亮亮的蠟，真的是擋水的主力嗎？",
+      "mechanism_key": "os104.cherry_laurel_epicuticular_wax_removal_no_effect_intracuticular_barrier",
+      "answer_target": "德國波昂大學的團隊用桂櫻葉沒有氣孔的上表面，量帶放射性標記的水穿過角質層的速度（25 °C、乾燥空氣）。角質層靠蠟擋水，既有研究顯示把蠟全部去掉，透水度會升高兩到三個數量級；但他們用膠膜把表面的蠟晶撕掉兩次甚至五次、或用阿拉伯膠剝除（電顯確認已撕乾淨），水穿過的速度都沒有顯著改變；反而是會溶進角質層裡面的丙酮處理，讓透水度升高 5–10 倍。結論是：擋水的主要是嵌在角質層裡的內層蠟，而不是表面那層蠟。",
+      "scope": "只有一種植物的葉片；作者說要更多物種才能一般化，果實角質層的研究曾看到表層蠟有影響。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真正擋水的蠟不在表面，而是藏在那層膜的裡面。",
+        "visual": "清爽可愛的機制剖面動畫：葉面剖開成三明治，最上面是一片片小蠟晶，中間是嵌滿蠟的半透明膜；小膠帶把上面的蠟晶整片撕走，水珠還是穿不過去；換成會溶進中層的液體，水珠才一顆顆鑽出來。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SO0-S004 Introduction 第 1–2 段；Results〈氚水蒸散〉；Discussion〈Effects of epicuticular wax removal〉",
+      "notes": "研究網 NET_BONN；加權 1.0，但覆核 SVO0 查到 NET_BONN 與 NET_JULICH 有直接合著（Europe PMC 作者查詢，一篇大型多單位論文），兩網合併上限 2.0，本卡實際不增加加權。取代 L092；小轉折。",
+      "origin": "wave104-openstax-20261118",
+      "source_refs": [
+        {
+          "source_id": "SRC-5c127f5b988afca3",
+          "origin": "wave104-openstax-20261118",
+          "locator": "SO0-S004 Introduction 第 1–2 段；Results〈氚水蒸散〉；Discussion〈Effects of epicuticular wax removal〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave104-openstax-20261118.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K104-0110"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K104-0111",
+      "category": "生物動物與植物",
+      "domain": "植物生理",
+      "question": "根泡在水裡太久，為什麼植物也會像缺水一樣垂下來？",
+      "mechanism_key": "os104.root_hypoxia_wilting_early_symptom_tamarack_roots_disintegrate",
+      "answer_target": "加拿大亞伯達大學的團隊整理文獻：淹水讓根周圍缺氧，最早出現的症狀之一就是氣孔關閉與萎蔫，因為根系導水的能力降低，缺氧會抑制靠水通道蛋白運水的路徑。他們把耐淹的美洲落葉松苗連續淹水六個月：第一個月地上部生長與光合作用暫時受抑、針葉壞死增加；原有的年輕根逐漸解體，最後只剩老的木質根和新長出來的不定根，苗木是靠這些新根才把吸水與光合作用撐回來，六個月時蒸散與水勢已與未淹水的相當，但針葉葉綠素仍顯著較低。",
+      "scope": "耐淹樹種、連續淹水六個月，比盆栽澆太多極端；「缺氧使萎蔫」是論文引言的文獻整理；第一個月的受抑資料未列出。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水太多，根先窒息，窒息的根一樣送不了水。",
+        "visual": "清爽可愛的機制剖面動畫：盆子底部積滿水，土裡的小氣泡一顆顆消失，原本白白的細根慢慢變淡、散掉；接著旁邊冒出幾條新的粗根，探向水面附近。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SO0-S007 Background 第 2 段；Results 第 1 段；Discussion 第 1–2 段；表 1",
+      "notes": "研究網 NET_UALBERTA；加權 0.75（機制來自引言整理，實驗是耐淹樹種）。補強第二個轉折：澆太多造成的垂頭，除了病菌（L54-003），根缺氧本身就會讓根送不了水。",
+      "origin": "wave104-openstax-20261118",
+      "source_refs": [
+        {
+          "source_id": "SRC-00a32c34c6d370ba",
+          "origin": "wave104-openstax-20261118",
+          "locator": "SO0-S007 Background 第 2 段；Results 第 1 段；Discussion 第 1–2 段；表 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave104-openstax-20261118.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K104-0111"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -285699,7 +286176,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 6638
+    "count": 6649
   },
   "dedup": {
     "aliases": {
@@ -287184,6 +287661,17 @@
       "K103-1312": "K103-1312",
       "K103-1313": "K103-1313",
       "K103-1314": "K103-1314",
+      "K104-0101": "K104-0101",
+      "K104-0102": "K104-0102",
+      "K104-0103": "K104-0103",
+      "K104-0104": "K104-0104",
+      "K104-0105": "K104-0105",
+      "K104-0106": "K104-0106",
+      "K104-0107": "K104-0107",
+      "K104-0108": "K104-0108",
+      "K104-0109": "K104-0109",
+      "K104-0110": "K104-0110",
+      "K104-0111": "K104-0111",
       "E11001": "E11001",
       "E11002": "E11002",
       "E11003": "E11003",
@@ -341860,10 +342348,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-17-pool-6249",
-    "target_count": 6249,
-    "reviewed_on": "2026-11-17",
-    "reason": "重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "revision": "2026-11-18-pool-6260",
+    "target_count": 6260,
+    "reviewed_on": "2026-11-18",
+    "reason": "OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -348113,7 +348601,18 @@
       "K103-1311",
       "K103-1312",
       "K103-1313",
-      "K103-1314"
+      "K103-1314",
+      "K104-0101",
+      "K104-0102",
+      "K104-0103",
+      "K104-0104",
+      "K104-0105",
+      "K104-0106",
+      "K104-0107",
+      "K104-0108",
+      "K104-0109",
+      "K104-0110",
+      "K104-0111"
     ],
     "overflow": [
       {
