@@ -114,10 +114,32 @@ async def test_choose_uses_keys_in_order_and_skips_resting_ones() -> None:
         gemini_pool.EXHAUSTED_PROBE_SECONDS
     )
     await rest(redis, fingerprint("ub"), "busy")
+    # Ultra B is only busy: it keeps the call rather than the paid site key.
+    assert await choose(redis, settings, now=lambda: NOW) == "ub"
+    await rest(redis, fingerprint("ub"), "exhausted", now=lambda: NOW)
     assert await choose(redis, settings, now=lambda: NOW) == "site"
     await rest(redis, fingerprint("site"), "exhausted")
     # Nothing usable: the site's own key takes the call and its error goes up as before.
     assert await choose(redis, settings, now=lambda: NOW) == "site"
+
+
+@pytest.mark.asyncio
+async def test_busy_ultra_keys_keep_the_call_and_the_soonest_free_goes_first() -> None:
+    redis = _redis()
+    settings = _settings()
+    await rest(redis, fingerprint("ua"), "busy", retry_after=3600)
+    await rest(redis, fingerprint("ub"), "busy", retry_after=120)
+    assert await choose(redis, settings, now=lambda: NOW) == "ub"
+    # Over its budget, a busy key is out like an exhausted one.
+    over = _settings(budgets_usd="0, 1")
+    await record_spend(redis, fingerprint("ub"), 2.0, now=lambda: NOW)
+    assert await choose(redis, over, now=lambda: NOW) == "ua"
+    await rest(redis, fingerprint("ua"), "exhausted", now=lambda: NOW)
+    assert await choose(redis, over, now=lambda: NOW) == "site"
+    # Without a site key, every Ultra key out of money leaves the last one to answer.
+    no_site = Settings(hotspot_guide_gemini_api_keys_extra="ua, ub")
+    await rest(redis, fingerprint("ub"), "exhausted", now=lambda: NOW)
+    assert await choose(redis, no_site, now=lambda: NOW) == "ub"
 
 
 @pytest.mark.asyncio
@@ -279,16 +301,17 @@ async def test_narration_switches_keys_end_to_end(monkeypatch: pytest.MonkeyPatc
     assert await narrate() == "ok" and used[-1] == "ub"
 
     # Ultra B runs out of prepaid credit (402): it rests for hours, answered as busy so the call
-    # is retried; with Ultra A still resting, the site key takes the retry.
+    # is retried. Ultra A is only busy, so the retry goes back to Ultra A, never the site key.
     answers["ub"] = (402, PREPAY)
     assert await narrate() == "429" and used[-1] == "ub"
     assert await redis.get(f"gmpool:rest:{fingerprint('ub')}") == "exhausted"
-    assert await narrate() == "ok" and used[-1] == "site"
+    assert await narrate() == "429" and used[-1] == "ua"
 
-    # Ultra A's minute is over: it is first again, ahead of the site key.
+    # Ultra A's minute is over and Google takes it again.
     answers.pop("ua")
     await redis.delete(f"gmpool:rest:{fingerprint('ua')}")
     assert await narrate() == "ok" and used[-1] == "ua"
+    assert await redis.get(f"gmpool:spend:{fingerprint('site')}:{month}") is None
 
     # Ultra A hits its monthly spending cap too: Ultra B is still out, so the site key.
     answers["ua"] = (429, SPENDING_CAP)
