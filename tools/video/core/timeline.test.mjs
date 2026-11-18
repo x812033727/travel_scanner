@@ -297,3 +297,33 @@ test("visualHash leaves out the split thumbnail layout and its focus, and nothin
   assert.notEqual(visualHash(withData({ layout: "ai" })), plain);
   assert.notEqual(visualHash(withData({ headline: "x" })), plain, "the words on the thumbnail still count");
 });
+
+test("thumbnail.replaces moves visualHash for render while keeping unchanged pictures and cuts bound", async () => {
+  const { cutVisualBound, pictureHash, picturesBound, visualHash } = await import("./timeline.mjs");
+  const { validateVideo } = await import("./schema.mjs");
+  const oldThumb = { template: "thumb", data: { tag: "冷知識", headline: "舊標題", sub: "舊副標", shot: "s1", subject: "right" } };
+  const before = { ...fixture(), thumbnail: oldThumb };
+  const recordedVisual = visualHash(before);
+  const recordedPictures = pictureHash(before);
+  const upgraded = {
+    ...fixture(),
+    thumbnail: {
+      template: "thumb",
+      data: { layout: "heimao", headline: "新滿版標題", sub: "新副標", asset: "docs/videos/demo/thumbnail-bg.jpg" },
+      replaces: oldThumb,
+    },
+  };
+  assert.deepEqual(validateVideo(upgraded), []);
+  assert.notEqual(visualHash(upgraded), recordedVisual, "frames/manifest.json must still go stale so render redraws thumbnails");
+  assert.equal(visualHash(upgraded), visualHash({ ...upgraded, thumbnail: { template: upgraded.thumbnail.template, data: upgraded.thumbnail.data } }), "replaces itself is not part of the active visual hash");
+  assert.equal(picturesBound(recordedPictures, upgraded), true, "unchanged keyframes and clips stay bound");
+  assert.equal(cutVisualBound(recordedVisual, upgraded), true, "unchanged assembled cut stays bound");
+
+  const mutatedScene = structuredClone(upgraded);
+  mutatedScene.scenes[1].data.items[0] = "改動場景";
+  assert.equal(picturesBound(recordedPictures, mutatedScene), false, "any scene edit invalidates keyframes and clips");
+  assert.equal(cutVisualBound(recordedVisual, mutatedScene), false, "any scene edit invalidates the cut");
+
+  const mutatedTheme = { ...upgraded, theme: "paper" };
+  assert.equal(cutVisualBound(recordedVisual, mutatedTheme), false, "a card theme change invalidates the cut");
+});
