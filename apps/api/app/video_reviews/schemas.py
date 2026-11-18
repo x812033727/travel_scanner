@@ -140,6 +140,12 @@ VideoCategory = Literal[
 ]
 VIDEO_CATEGORY_CODES: tuple[VideoCategory, ...] = get_args(VideoCategory)
 CategoryFilter = VideoCategory | Literal["none"]
+# The catalog's first row (migration 0147): the two explainer shows that stand on their own,
+# then every category and ``none``. A category here leaves the two shows out, so ``explainer``
+# is the other explainers (app/video_reviews/shelf.py).
+VideoShow = Literal["curio", "sothatswhy"]
+VIDEO_SHOW_CODES: tuple[VideoShow, ...] = get_args(VideoShow)
+ShelfFilter = VideoShow | CategoryFilter
 # Where a tutorial stands, for the review page's second filter: still being made, on
 # YouTube, or dropped by the owner. Not the Shorts tab's ShortsState.
 BrowseState = Literal["working", "published", "dropped"]
@@ -387,6 +393,9 @@ class ProjectSummary(BaseModel):
     # The series this video is an episode of, if any (docs/videos/SERIES.md).
     series_slug: str | None = None
     episode_number: int | None = None
+    # The show or drama the catalog files it under and an explainer show's topic (migration 0147).
+    series_key: str | None = None
+    topic: str | None = None
     # A compilation of a binge series (docs/videos/BINGE.md): its 1080p cut is too big for
     # the review store and is downloaded from the worker's volume when it is there.
     compilation: bool = False
@@ -429,14 +438,24 @@ class CategoryIn(BaseModel):
 class FacetCount(BaseModel):
     code: str
     count: int
+    # A series' name, from the server (a drama's title, a show's Drive folder name); None for
+    # the codes the page has its own words for.
+    label: str | None = None
 
 
 class ProjectFacets(BaseModel):
     """How many videos each filter value would list, with the other filters applied: every
-    category (and ``none``) and every state is present, with 0 when nothing matches."""
+    category (and ``none``) and every state is present, with 0 when nothing matches.
+
+    ``shelf`` is the first row: the two shows, then every category and ``none``, each without
+    the two shows. ``series`` and ``topic`` are listed only for a picked shelf and only the
+    values that list something, a series' name in its label; ``none`` is the rest."""
 
     category: list[FacetCount]
     state: list[FacetCount]
+    shelf: list[FacetCount] = Field(default_factory=list)
+    series: list[FacetCount] = Field(default_factory=list)
+    topic: list[FacetCount] = Field(default_factory=list)
 
 
 class ProjectPage(BaseModel):

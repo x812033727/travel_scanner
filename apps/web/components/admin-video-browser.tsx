@@ -6,7 +6,7 @@ import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { FilterPills } from "@/components/admin-filter-pills";
 import { AdminDataTable, AdminEmptyState, AdminErrorState, AdminFilterBar, AdminStatusPill } from "@/components/admin-ui";
 import {
-  control, isBlocked, type ProjectSummary, ProductionPill, PublishPill, publishState, REFRESH_MS, useWhen, VIDEO_CATEGORIES, type VideoCategory, type VideoPage, youtubeSyncStuck,
+  control, type FacetCount, isBlocked, type ProjectSummary, ProductionPill, PublishPill, publishState, REFRESH_MS, useWhen, VIDEO_CATEGORIES, type VideoCategory, type VideoPage, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
 import { DeleteVideo } from "@/components/admin-video-delete";
 import { STORY_SERIES_SLUG } from "@/components/admin-video-stories";
@@ -23,8 +23,15 @@ type BrowseState = (typeof BROWSE_STATES)[number];
 const PAGE_SIZE = 30;
 const COLUMNS = ["title", "category", "state", "pending", "progress", "youtube", "synced"] as const;
 const STATE_KEYS: Record<BrowseState, string> = { working: "inProgress", published: "publishedSection", dropped: "dropped" };
+// The two explainer shows that stand on their own in the catalog's first row, ahead of the categories
+// (apps/api/app/video_reviews/schemas.py VideoShow; the owner, 2026-11-18). A category there leaves
+// the two out, so "explainer" reads as the other explainers.
+export const VIDEO_SHOWS = ["curio", "sothatswhy"] as const;
 // Module-level so useAdminQueryValue sees one validator across renders.
 const isCategoryFilter = (value: string) => value === "none" || (VIDEO_CATEGORIES as readonly string[]).includes(value);
+const isShelfFilter = (value: string) => isCategoryFilter(value) || (VIDEO_SHOWS as readonly string[]).includes(value);
+// A series or a topic is a key the server stored (a drama's slug, a topic's name), or "none".
+const isShelfKey = (value: string) => value.length > 0 && value.length <= 40;
 const isBrowseState = (value: string) => (BROWSE_STATES as readonly string[]).includes(value);
 const countsOf = (facets: { code: string; count: number }[] | undefined) => Object.fromEntries((facets ?? []).map((facet) => [facet.code, facet.count])) as Partial<Record<string, number>>;
 const sumOf = (facets: { code: string; count: number }[] | undefined) => (facets ? facets.reduce((sum, facet) => sum + facet.count, 0) : undefined);
@@ -51,7 +58,13 @@ function VideoRow({ project, onOpen, onDeleted }: { project: ProjectSummary; onO
       {project.series_slug && <span className="block text-xs text-[var(--muted)]">{project.compilation ? t("compilationOf", { series: project.series_slug }) : t("episodeOf", { series: project.series_slug, number: project.episode_number ?? 0 })}</span>}
       {manage.allowed && <DeleteVideo project={project} compact onDeleted={onDeleted} />}
     </td>
-    <td data-label={t("table.category")} className="px-4 py-3"><CategoryPill category={project.category} /></td>
+    <td data-label={t("table.category")} className="px-4 py-3">
+      {/* An explainer show's episode is filed under its show, which the catalog's first row lists apart from the other explainers. */}
+      {project.series_key && (VIDEO_SHOWS as readonly string[]).includes(project.series_key)
+        ? <AdminStatusPill status="queued">{t(`shelves.${project.series_key as "curio" | "sothatswhy"}`)}</AdminStatusPill>
+        : <CategoryPill category={project.category} />}
+      {project.topic && <span className="mt-1 block text-xs text-[var(--muted)]">{project.topic}</span>}
+    </td>
     <td data-label={t("table.state")} className="px-4 py-3">
       <span className="flex flex-wrap items-center gap-1">
         {dropped ? <AdminStatusPill status="inactive">{t("dropped")}</AdminStatusPill> : <PublishPill project={project} production={false} />}
@@ -77,7 +90,10 @@ function VideoRow({ project, onOpen, onDeleted }: { project: ProjectSummary; onO
 
 /**
  * The catalog of every long video under the two groups that wait for the owner (the category section
- * of docs/videos/HANDS-OFF.md): one line a video, narrowed by a category, a state and a search, a page at a time. The
+ * of docs/videos/HANDS-OFF.md): one line a video, narrowed by a show, a state and a search, a page at a time. The
+ * show is one of the two explainer shows or a category without them; once one is picked, a row of its series
+ * (the dramas under the drama category) and a row of its topics (an explainer show's) narrow it further, and a picked series
+ * or topic lists in episode order (apps/api/app/video_reviews/shelf.py). The
  * filters live in the URL, so a view can be bookmarked and the back button undoes a filter; the counts
  * on the pills come from the server with the other filters kept. The page reads the site again every
  * REFRESH_MS like the groups above it, for the same query, and again when `revision` changes (the groups
@@ -85,7 +101,14 @@ function VideoRow({ project, onOpen, onDeleted }: { project: ProjectSummary; onO
  */
 export function VideoBrowser({ onOpen, revision = 0 }: { onOpen: (slug: string) => void; revision?: number }) {
   const t = useTranslations("admin.videoReviews");
-  const [category] = useAdminQueryValue("category", "", isCategoryFilter);
+  // The first row is the show (shelf); a bookmark from before shows names a category, which is the
+  // shelf of the same name.
+  const [shelfValue] = useAdminQueryValue("shelf", "", isShelfFilter);
+  const [legacyCategory] = useAdminQueryValue("category", "", isCategoryFilter);
+  const shelf = shelfValue || legacyCategory;
+  // Not "series": the drama tab keeps its open series under that name.
+  const [series] = useAdminQueryValue("shelf_series", "", isShelfKey);
+  const [topic] = useAdminQueryValue("topic", "", isShelfKey);
   // A bookmark from when the brand-story series opened here: they live under Drama now.
   const [storySeries] = useAdminQueryValue("story_series", "", (value) => STORY_SERIES_SLUG.test(value));
   const [state] = useAdminQueryValue("state", "", isBrowseState);
@@ -93,11 +116,13 @@ export function VideoBrowser({ onOpen, revision = 0 }: { onOpen: (slug: string) 
   const [pageValue] = useAdminQueryValue("page", "1", isPageNumber);
   const page = Number(pageValue);
   const params = new URLSearchParams({ page: String(page), limit: String(PAGE_SIZE) });
-  if (category) params.set("category", category);
+  if (shelf) params.set("shelf", shelf);
+  if (shelf && series) params.set("series", series);
+  if (shelf && topic) params.set("topic", topic);
   if (state) params.set("state", state);
   if (query) params.set("q", query);
   const suffix = params.toString();
-  const filtered = Boolean(category || state || query);
+  const filtered = Boolean(shelf || state || query);
   const [reload, setReload] = useState(0);
   // The page is keyed by what it was loaded for: a filter change shows the loading state without an
   // effect resetting anything, and a refresh for the same key replaces it in place.
@@ -109,7 +134,7 @@ export function VideoBrowser({ onOpen, revision = 0 }: { onOpen: (slug: string) 
   const text = draft.seen === query ? draft.text : query;
 
   useEffect(() => {
-    if (storySeries) updateAdminQuery({ tab: "drama", series: storySeries, story_series: "", category: "", page: "" });
+    if (storySeries) updateAdminQuery({ tab: "drama", series: storySeries, story_series: "", category: "", shelf: "", shelf_series: "", topic: "", page: "" });
   }, [storySeries]);
 
   useEffect(() => {
@@ -136,21 +161,50 @@ export function VideoBrowser({ onOpen, revision = 0 }: { onOpen: (slug: string) 
   }, [suffix, reload, revision, storySeries]);
 
   if (storySeries) return null;
-  const categoryCounts = countsOf(data?.facets.category);
+  // An answer from before shows has no shelf facet: its categories still count.
+  const shelfFacets = data?.facets.shelf ?? data?.facets.category;
+  const shelfCounts = countsOf(shelfFacets);
   const stateCounts = countsOf(data?.facets.state);
+  const shelfLabel = (code: string) => (VIDEO_SHOWS as readonly string[]).includes(code) || code === "explainer"
+    ? t(`shelves.${code as "curio" | "sothatswhy" | "explainer"}`)
+    : t(`categories.${code as VideoCategory}`);
+  const seriesFacets = shelf ? data?.facets.series ?? [] : [];
+  const topicFacets = shelf ? data?.facets.topic ?? [] : [];
+  // A row that would offer one choice (a show is its own only series) says nothing; a picked value
+  // stays offered so it can be cleared.
+  const withPicked = (facets: FacetCount[], picked: string) => picked && !facets.some((facet) => facet.code === picked) ? [...facets, { code: picked, count: 0 }] : facets;
+  const seriesOptions = withPicked(seriesFacets, series);
+  const topicOptions = withPicked(topicFacets, topic);
   return <section aria-label={t("browserTitle")} className="grid gap-3">
     <h2 className="text-xs font-black tracking-[.16em] text-[var(--teal)]">{t("browserTitle")}</h2>
     <FilterPills
-      label={t("categoryFilter")}
-      allLabel={t("categoryAll")}
-      allCount={sumOf(data?.facets.category)}
+      label={t("shelfFilter")}
+      allLabel={t("shelfAll")}
+      allCount={sumOf(shelfFacets)}
       options={[
-        ...VIDEO_CATEGORIES.map((code) => ({ code, label: t(`categories.${code}`), count: categoryCounts[code] })),
-        { code: "none", label: t("uncategorized"), count: categoryCounts.none },
+        ...(data?.facets.shelf || shelfValue ? VIDEO_SHOWS : []).map((code) => ({ code, label: shelfLabel(code), count: shelfCounts[code] })),
+        ...VIDEO_CATEGORIES.map((code) => ({ code, label: shelfLabel(code), count: shelfCounts[code] })),
+        { code: "none", label: t("uncategorized"), count: shelfCounts.none },
       ]}
-      value={category}
-      onChange={(code) => updateAdminQuery({ category: code, page: "" })}
+      value={shelf}
+      onChange={(code) => updateAdminQuery({ shelf: code, category: "", shelf_series: "", topic: "", page: "" })}
     />
+    {(seriesOptions.length > 1 || series) && <FilterPills
+      label={t("seriesFilter")}
+      allLabel={t("seriesAll")}
+      allCount={sumOf(seriesFacets)}
+      options={seriesOptions.map((facet) => ({ code: facet.code, label: facet.code === "none" ? t("seriesNone") : facet.label || facet.code, count: facet.count }))}
+      value={series}
+      onChange={(code) => updateAdminQuery({ shelf_series: code, topic: "", page: "" })}
+    />}
+    {(topicOptions.length > 0 || topic) && <FilterPills
+      label={t("topicFilter")}
+      allLabel={t("topicAll")}
+      allCount={sumOf(topicFacets)}
+      options={topicOptions.map((facet) => ({ code: facet.code, label: facet.code === "none" ? t("topicNone") : facet.code, count: facet.count }))}
+      value={topic}
+      onChange={(code) => updateAdminQuery({ topic: code, page: "" })}
+    />}
     <AdminFilterBar>
       <FilterPills
         label={t("stateFilter")}
