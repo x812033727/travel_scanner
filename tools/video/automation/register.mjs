@@ -250,11 +250,13 @@ export const STORY_OPENING_RULE = `Shape of a 奇聞檔案局 episode or a brand
 export const STORY_SERIES_SCREEN_RULE = `Pictures and names of these two series (owner, 2026-11-05; they are watched worldwide):
   - No card and no word on screen: every scene is a picture ("template": "shot"), with no title,
     chapter, big, stats, compare, steps, table, quote or outro card. A number is said aloud and
-    drawn as a feeling, never as a proportion, a count, an arrow or a chart, which the image model
-    gets wrong (owner, 2026-11-06): a fat or a flat purse, a balloon rising or sagging, a seedling
-    growing or wilting, a dart in the bullseye or off the board, a gasp; a chapter's
-    name lives only in the YouTube description's chapters, which the tool writes from the
-    "chapter" fields. Only the thumbnail carries words.
+    drawn through a physical object, cross-section or contrast from this story first (a silicon
+    chip, a brass valve, a tire tread, a copper coil, a sealed wooden crate, a key in a lock),
+    never as a proportion, a count, an arrow or a chart, which the image model gets wrong (owner,
+    2026-11-06); generic stand-ins (a fat or flat purse, a balloon rising or sagging, a thick book
+    with a plain cover, a plain grey box) appear in at most two shots across an episode (lint warns
+    at three or more). A chapter's name lives only in the YouTube description's chapters, which the
+    tool writes from the "chapter" fields. Only the thumbnail carries words.
   - Each picture is what the narration names at that moment, and it catches the line's joke,
     metaphor or number when the line has one. A line need not get a picture of its own: where a
     new picture would be forced, the line joins the scene before or after it.
@@ -269,12 +271,13 @@ export const STORY_SERIES_SCREEN_RULE = `Pictures and names of these two series 
     a price tag, a laptop's logo) becomes a picture that needs none. Things that carry writing
     appear only in fixed safe forms (owner, 2026-11-06): a phone, navigation or laptop screen
     shows one blue route line, one big white turn arrow or one red pin, or is dark or one solid
-    colour; a watch screen shows one red heart; a report or document is a very thick book with a
-    plain cover; a box is a smooth plain grey box, never cardboard. Never a map, a sign, a label,
-    a race bib, a badge, a uniform crest or a dial with marks.
+    colour; a watch screen shows one red heart; a report or document, when no physical object of
+    the story fits, is a very thick book with a plain cover (at most twice an episode); a box is a
+    smooth plain grey box, never cardboard. Never a map, a sign, a label, a race bib, a badge, a
+    uniform crest or a dial with marks.
   - A shot with no person in it carries "nobody": true; its thing is one that does not grow a
-    face (a plain grey box, a purse, coins, a balloon, a paper airplane, a pie, a potted plant),
-    never a toy car, a satellite or a radar dish.
+    face (a brass valve, a wooden crate, coins, a key, a potted plant, a pie), never a toy car, a
+    satellite or a radar dish.
   - A Latin-letter name is said as it is written, with no Chinese transliteration in the line or
     in "say", unless Taiwan uses a formal Chinese name for it (三星, 華為, 維基百科); a new
     Latin-letter word goes into the lexicon as null.`;
@@ -298,6 +301,13 @@ export const TOLD_TO_ONE_VIEWER = `Told to one viewer (奇聞檔案局 and the b
     這時候), a fact is followed by what it meant for somebody, a number by what it bought or cost,
     and a reveal is a short sentence. Aim at about 4.5 spoken characters a second over the body
     (the reference channels run about 5; ours ran 3.3), so 13 minutes is about 3,500 characters.
+  - Human dilemmas and moves, never a legal filing or a collation note read aloud (2026-11-18):
+    tell who was cornered, what rival forced their hand, what move they made and what it cost,
+    instead of reciting source or statutory caveats out loud (「照…的資料」「年報寫」「現行…法規寫著」
+    「翻遍年報也找不到」「沒有公布…查不到」「千萬別聽成…」; lint warns when filing or missing-figure
+    hedges repeat). Exact legal scope, accounting footnotes and figures no source publishes belong
+    in claims.md and youtube.description; in a historical mystery, stay inside one person's choice
+    instead of collating three chronicle editions line by line.
   - The close is a conversation too: the answer, then 「如果你…，留言告訴我」 on something the
     viewer owns or does, then the subscribe reason; it may say 「好啦，這就是今天的故事」 and it
     still never names the next video.`;

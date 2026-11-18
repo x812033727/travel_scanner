@@ -7,6 +7,13 @@
 
 這份會自動同步到雲端硬碟 `AI劇/原來如此事務所/_規則與教訓/教訓/教訓.md`（docs/videos/rules-sync）。
 
+## 2026-11-18 · sothatswhy-g05 · 對標黑猫研究院（`@qiqiqushi0`）補強對白去法條但書化、禁用萬用道具與 `beat-motion-v5` 停頓快推運鏡
+對比黑猫研究院日常標準／收費機制高點閱長片與本系列稿件（如 G05），同步落地三項完播率與視覺重音規則：
+- **對白不唸法條但書與「查不到／沒有公布」，改演人的兩難與工程取捨**：像「現行電業法規寫著…」「翻遍年報也找不到…」「沒有公布…費」這類防禦性保留語一進對白就會把推理變成法規簡報。精準法條適用範圍、年報附註與未公開細目一律收進 `claims.md` 與 `youtube.description`；所長與小問的對白只聚焦「工程師或店家當年卡在哪個物理／成本兩難、出了哪一招解決、觀眾手上那件東西因此長成什麼樣」（`narrative.mjs` `caveatRecitationProblems` 全集超過 1 句即警告）。
+- **無字機制鏡禁用萬用「鼓扁錢包／空白厚書」充數，同類上限 2 鏡**：`45%–65%` 的 `"nobody": true` 機制鏡必須畫該題真正的無字實體結構、剖面或幾何對照（如晶片天線線圈、雙金屬片跳脫、墨水匣晶片觸點、條碼寬窄條垂直投影），`purse`／`wallet` 與 `thick/plain-covered book` 全集同類最多 **2 鏡**（`curio.mjs` `genericPropWarnings` 達 3 鏡即警告）。
+- **合成運鏡 `still_motion: "beat"` 升級為 `beat-motion-v5`（停 0.8 秒＋快推 2.2 秒）**：`tools/video/assemble/drama.mjs` 將靜圖運鏡從全程勻速滑行（`slow_share` `0.580`）改為先停 24 格（0.8 秒）看清圖解構圖、再用 66 格（2.2 秒）完成 `zoom: 0.22`／`panZoom: 1.2` 快推或橫移到關鍵零件並停住接 15 格淡化；1080p 實測 `slow_share` 降至 **`0.059`**（≤ 0.30 達標）、`mean_difference` **`5.78`**，讓無字機制圖在關鍵句落點有明確的視覺重拍。
+- 已升為規則：`tools/video/core/narrative.mjs`、`tools/video/core/curio.mjs`、`tools/video/assemble/drama.mjs`、`.agents/skills/youtube-video/references/script-writing.md`、`.agents/skills/producer/references/pace-targets.md`。
+
 ## 2026-11-14 · sothatswhy-p12-qr-code · 鎖死所長與小問 V2 2.5 頭身標準設定圖、移除耳後鉛筆與 45%–65% 無人機制鏡配比
 站主反映「別的對話畫得怪怪的，原來如此系列幫我確定人的造型；也不一定每一個畫面都要有人；奇聞是另外一個造型的人，兩系列不同」：
 - **為什麼別的對話會畫怪**：`docs/videos/so-thats-why/series-sheets/characters/` 裡原本只有 P14 時期的兩張舊 MiniMax 設定圖（`judge.passed: false`：所長耳後黃鉛筆畫成耳垂吊飾、小問是半閉豆豆眼與無指圓手），且改用「劇場級動畫光影 × 厚塗水粉」Prompt 後，若沒傳高品質 V2 設定圖或漏寫 `2.5-head chibi`，模型會自動把角色拉成 6–7 頭身寫實青年，甚至與《奇聞檔案局》撞臉。

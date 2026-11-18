@@ -45,12 +45,16 @@ test("a story's writer follows the ten steps and talks to one viewer, after the 
   assert.ok(!writer.includes(CONDENSATION_RULE), "the story writer no longer carries the condensation it replaces");
   assert.match(TOLD_TO_ONE_VIEWER, /Lint warns under two 「你」 a thousand characters/);
   assert.match(TOLD_TO_ONE_VIEWER, /about 4\.5 spoken characters a second/);
+  assert.match(TOLD_TO_ONE_VIEWER, /instead of reciting source or statutory caveats out loud/);
+  assert.match(TOLD_TO_ONE_VIEWER, /collating three chronicle editions line by line/);
   assert.ok(!NARRATIVE_RULES.includes("promise sentence"), "the explainers keep the condensation as it was");
 });
 
 test("a story's writer puts no card and no word on screen, writes short MiniMax prompts and draws nobody living or dead since 1956 (2026-11-05)", () => {
   assert.ok(writer.includes(STORY_SERIES_SCREEN_RULE));
   assert.match(STORY_SERIES_SCREEN_RULE, /No card and no word on screen/);
+  assert.match(STORY_SERIES_SCREEN_RULE, /physical object, cross-section or contrast from this story first/);
+  assert.match(STORY_SERIES_SCREEN_RULE, /at most two shots across an episode/);
   assert.match(STORY_SERIES_SCREEN_RULE, /100 to 200 characters: ONE subject doing ONE\s+action/);
   assert.match(STORY_SERIES_SCREEN_RULE, /It never uses the words no, not, without, text or blank/);
   assert.match(STORY_SERIES_SCREEN_RULE, /A Latin-letter name is said as it is written/);
