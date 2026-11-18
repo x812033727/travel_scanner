@@ -1004,6 +1004,12 @@ test("the thumbnail headline is read as the qa stage will read it, as warnings u
   const explainer = explainerFixture();
   explainer.thumbnail.data.headline = "一二三四五六七八九";
   assert.deepEqual(thumbnailHeadlineProblems(explainer), [], "a series' own thumbnail has its own length, checked where it is drawn");
+  const heimaoCurio = { ...doc, thumbnail: { template: "thumb", data: { layout: "heimao-left", headline: "杜比憑什麼躺著賺？", sub: "93%營收都是授權費" } } };
+  assert.deepEqual(thumbnailHeadlineProblems(heimaoCurio), [], "heimao-left allows up to 10 units on one top line without triggering the 6-unit narrow-column warning");
+  const heimaoStw = { ...explainer, thumbnail: { template: "thumb", data: { layout: "heimao", headline: "GPS慢38微秒會怎樣？", sub: "一天定位直接歪十公里" } } };
+  assert.deepEqual(thumbnailHeadlineProblems(heimaoStw), [], "heimao counts Latin words/numbers as 1 unit on So That's Why too");
+  const heimaoBroken = { ...explainer, thumbnail: { template: "thumb", data: { layout: "heimao", headline: "兩行\n標題" } } };
+  assert.match(thumbnailHeadlineProblems(heimaoBroken)[0].message, /one top line \(put the second line in sub\)/);
   const english = enFixture();
   english.thumbnail.data.headline = "Not the top one, and not the cheapest either";
   assert.deepEqual(thumbnailHeadlineProblems(english), [], "the rules are written for a zh-TW headline");

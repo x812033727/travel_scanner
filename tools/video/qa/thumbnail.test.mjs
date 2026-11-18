@@ -227,3 +227,31 @@ test("the AI look holds the headline to one line across the frame, read on a pho
   const broken = thumbnailChecks({ bytes: jpegBytes(1280, 720, 2000), headline: "Gemini 4\n**你找不到**", layout: "ai" });
   assert.match(broken.detail, /one line: the subject, then the \*\*hook\*\*/);
 });
+
+test("the Heimao layouts ('heimao' and 'heimao-left') hold both Curio and So That's Why headlines to one top line of up to 10 units", async () => {
+  const { HEADLINE_HEIMAO, HEADLINE_HEIMAO_LEFT, HEIMAO_HEADLINE_MAX } = await import("./thumbnail.mjs");
+  assert.equal(HEIMAO_HEADLINE_MAX, 10);
+  assert.equal(headlineRule(null, "heimao"), HEADLINE_HEIMAO);
+  assert.equal(headlineRule("sothatswhy", "heimao"), HEADLINE_HEIMAO, "heimao overrides series column rule");
+  assert.equal(headlineRule(null, "heimao-left"), HEADLINE_HEIMAO_LEFT);
+  assert.equal(headlineRule("sothatswhy", "heimao-left"), HEADLINE_HEIMAO_LEFT);
+
+  const bytes = jpegBytes(1280, 720, 2000);
+  const stw = thumbnailChecks({ bytes, headline: "鉛筆跟鑽石都是碳？", series: "sothatswhy", layout: "heimao" });
+  assert.equal(stw.ok, true, stw.detail);
+  const curio = thumbnailChecks({ bytes, headline: "杜比憑什麼躺著賺？", layout: "heimao-left" });
+  assert.equal(curio.ok, true, curio.detail);
+  const en = thumbnailChecks({ bytes, headline: "Square Wand, Round?", series: "sothatswhy", locale: "en", layout: "heimao" });
+  assert.equal(en.ok, true, en.detail);
+  const enTooLong = thumbnailChecks({ bytes, headline: "Why Does a Square Wand Blow a Round Bubble?", series: "sothatswhy", locale: "en", layout: "heimao" });
+  assert.equal(enTooLong.ok, false);
+  assert.match(enTooLong.detail, /shrinks to about \d+ px at 320 px wide/);
+
+  const multi = thumbnailChecks({ bytes, headline: "方框吹出\n圓泡泡？", series: "sothatswhy", layout: "heimao" });
+  assert.equal(multi.ok, false);
+  assert.match(multi.detail, /one top line \(put the second line in sub\)/);
+
+  const over = thumbnailChecks({ bytes, headline: "一二三四五六七八九十十一", layout: "heimao" });
+  assert.equal(over.ok, false);
+  assert.match(over.detail, /counts 12 characters.*at most 10 on one top line/);
+});

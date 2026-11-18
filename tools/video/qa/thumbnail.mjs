@@ -9,7 +9,7 @@
 // theme.css, so a theme change fails here until they are updated. The same model says where the
 // browser breaks the headline's lines, and Intl.Segmenter (zh) says whether a break falls inside
 // a word; the writer moves it with a `\n`.
-import { AI_THUMB_HEADLINE, DRAMA_THUMB_HEADLINE, HEADLINE_WORD, headlineCount, SERIES_THUMB_HEADLINE, THUMB_AI_LAYOUT, THUMB_DRAMA_LAYOUT, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, THUMB_SERIES, THUMB_SIZE } from "../templates/templates.mjs";
+import { AI_THUMB_HEADLINE, DRAMA_THUMB_HEADLINE, HEADLINE_WORD, headlineCount, HEIMAO_THUMB_HEADLINE, SERIES_THUMB_HEADLINE, THUMB_AI_LAYOUT, THUMB_DRAMA_LAYOUT, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, THUMB_HEIMAO_LAYOUT, THUMB_HEIMAO_LEFT_LAYOUT, THUMB_SERIES, THUMB_SIZE } from "../templates/templates.mjs";
 
 // Same as tools/video/render/cli.mjs THUMBNAIL_MAX_BYTES: YouTube's limit for custom thumbnails.
 export const MAX_BYTES = 2 * 1024 * 1024;
@@ -72,7 +72,34 @@ export const HEADLINE_AI = {
   maxHeight: AI_THUMB_HEADLINE.fontSize * AI_THUMB_HEADLINE.lineHeight,
   width: THUMB_SIZE.width - AI_THUMB_HEADLINE.left - AI_THUMB_HEADLINE.right,
 };
-export const headlineRule = (series = null, layout = null) => (series && Object.hasOwn(THUMB_SERIES, series) ? HEADLINE_SERIES : layout === THUMB_AI_LAYOUT ? HEADLINE_AI : layout === THUMB_DRAMA_LAYOUT ? HEADLINE_DRAMA : HEADLINE);
+/** The most CJK characters / Latin runs a Heimao top-line headline reads at a glance (6–10). */
+export const HEIMAO_HEADLINE_MAX = 10;
+export const HEADLINE_HEIMAO = {
+  ...HEADLINE,
+  fontSize: HEIMAO_THUMB_HEADLINE.fontSize,
+  lineHeight: HEIMAO_THUMB_HEADLINE.lineHeight,
+  maxHeight: Math.round(HEIMAO_THUMB_HEADLINE.fontSize * HEIMAO_THUMB_HEADLINE.lineHeight),
+  width: THUMB_SIZE.width - HEIMAO_THUMB_HEADLINE.left - HEIMAO_THUMB_HEADLINE.right,
+};
+export const HEADLINE_HEIMAO_LEFT = {
+  ...HEADLINE_HEIMAO,
+  fontSize: HEIMAO_THUMB_HEADLINE.leftFontSize,
+  maxHeight: Math.round(HEIMAO_THUMB_HEADLINE.leftFontSize * HEIMAO_THUMB_HEADLINE.lineHeight),
+  width: THUMB_SIZE.width - 42 - HEIMAO_THUMB_HEADLINE.right,
+};
+export const isHeimaoRule = (rule) => rule === HEADLINE_HEIMAO || rule === HEADLINE_HEIMAO_LEFT;
+export const headlineRule = (series = null, layout = null) =>
+  layout === THUMB_HEIMAO_LAYOUT
+    ? HEADLINE_HEIMAO
+    : layout === THUMB_HEIMAO_LEFT_LAYOUT
+      ? HEADLINE_HEIMAO_LEFT
+      : series && Object.hasOwn(THUMB_SERIES, series)
+        ? HEADLINE_SERIES
+        : layout === THUMB_AI_LAYOUT
+          ? HEADLINE_AI
+          : layout === THUMB_DRAMA_LAYOUT
+            ? HEADLINE_DRAMA
+            : HEADLINE;
 
 /** Width, height and format from a JPEG or PNG header, or null when it is neither. */
 export function imageSize(bytes) {
@@ -285,6 +312,13 @@ export function thumbnailChecks({ bytes, headline, title = null, series = null, 
     if (count > DRAMA_HEADLINE_MAX) problems.push(`the headline counts ${count} characters; a drama thumbnail reads 4 to ${DRAMA_HEADLINE_MAX} at a glance, so say the episode's clash in fewer`);
   }
   if (own && rule === HEADLINE_AI && own.includes("\n")) problems.push("the AI look takes the headline on one line: the subject, then the **hook**; remove the line break");
+  if (own && isHeimaoRule(rule)) {
+    if (own.includes("\n")) problems.push("the heimao look takes the headline on one top line (put the second line in sub); remove the line break");
+    if (locale === null || locale === CHANNEL_RULES_LOCALE) {
+      const { count } = headlineCount(own);
+      if (count > HEIMAO_HEADLINE_MAX) problems.push(`the headline counts ${count} characters (a Latin word or a number counts one); the heimao look reads at most ${HEIMAO_HEADLINE_MAX} on one top line, so shorten it`);
+    }
+  }
   if (own && typeof title === "string" && title.trim()) {
     const { shared, ratio } = titleOverlap(own, title);
     if (ratio > TITLE_OVERLAP_MAX) warnings.push(`the headline repeats the title: 「${shared}」 is in the title's first ${TITLE_HEAD_CHARS} characters; say what the title does not`);
