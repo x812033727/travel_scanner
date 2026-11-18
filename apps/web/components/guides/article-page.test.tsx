@@ -346,6 +346,19 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
     expect(container.querySelector("img")).toBeNull();
   });
 
+  it.each(["2026-11-17", null])("offers the original body figure only for dated news (news_date=%s)", async (newsDate) => {
+    const route = { locale: "zh-TW", kind: "life", slug: "new-display" } as const;
+    const src = "/guides/new-display/ports.png";
+    mocks.article.mockResolvedValue({
+      ...state, ...route, series: null, news_date: newsDate,
+      document: { ...document, blocks: [{ type: "image", src, alt: "螢幕背面接孔圖解", width: 1600, height: 900 }] },
+    });
+    render(await renderGuideArticle(route));
+    const figure = screen.getByRole("img", { name: "螢幕背面接孔圖解" }).closest("figure")!;
+    const link = within(figure).queryByRole("link", { name: /^查看原圖/ });
+    expect(link?.getAttribute("href") ?? null).toBe(newsDate ? src : null);
+  });
+
   it("shares the first suitable published news figure, leaving it in its original position", async () => {
     const route = { locale: "ja", kind: "life", slug: "new-display" } as const;
     const photo = {

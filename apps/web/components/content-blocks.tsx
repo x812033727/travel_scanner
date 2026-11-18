@@ -21,6 +21,8 @@ export type ContentBlockLabels = {
   /** The toggle over an image's folded long description. Without it the disclosure is named
    *  after the picture (its alt) rather than drawn blank. */
   imageDescription?: string;
+  /** Dated news articles offer the locally hosted original for large raster figures. */
+  viewOriginalImage?: string;
   tip: string;
   warning: string;
   info: string;
@@ -35,6 +37,7 @@ export type ContentBlockLabels = {
  *  `pack_ingest.MIN_LABEL_PX` is 15, and 15 * 1180/1600 = 11.1 CSS px; below about 11 a
  *  Han or Hangul glyph stops resolving. A diagram authored narrower keeps its own width. */
 const DIAGRAM_READABLE_WIDTH = 1180;
+const ARTICLE_COLUMN_WIDTH = 728;
 
 const TONE_CLASSES: Record<CalloutTone, string> = {
   tip: "border-[var(--teal)] bg-[color-mix(in_srgb,var(--teal-soft)_52%,var(--surface))]",
@@ -205,6 +208,7 @@ export function ContentBlocks({
       // decorative. Give it its own scroller and a width where that floor clears 11px; a
       // photograph keeps fitting the column, because its detail does not live in 15px text.
       const diagram = src.endsWith(".svg");
+      const originalLabel = !diagram && block.width > ARTICLE_COLUMN_WIDTH ? labels?.viewOriginalImage : undefined;
       const image = (
         <GuideImage
           src={src} alt={block.alt} width={block.width} height={block.height}
@@ -256,11 +260,20 @@ export function ContentBlocks({
               {image}
             </div>
           ) : image}
-          {caption || block.credit ? (
+          {caption || block.credit || originalLabel ? (
             <figcaption className="mt-2 text-sm leading-6 text-[var(--muted)]">
               {caption}
               {caption && block.credit ? " · " : null}
               {block.credit ? <ImageCreditLine credit={block.credit} prefix={labels?.imageCredit ?? ""} /> : null}
+              {originalLabel ? (
+                <a
+                  href={src}
+                  aria-label={block.alt ? `${originalLabel} · ${block.alt}` : undefined}
+                  className="flex min-h-11 w-fit items-center rounded-sm font-semibold text-[var(--teal-dark)] underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2"
+                >
+                  {originalLabel}
+                </a>
+              ) : null}
             </figcaption>
           ) : null}
           {description ? (

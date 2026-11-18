@@ -1,5 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { useLocale } from "next-intl";
+import { getPathname } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
 import { guideHref, visibleGuideHero, type GuideSummary } from "@/lib/guides";
 import { GuideImage } from "./guide-image";
 
@@ -9,6 +11,7 @@ export function ChannelGuide({ articles, news, label }: {
   news: readonly GuideSummary[];
   label: string;
 }) {
+  const locale = useLocale() as Locale;
   const pick = articles.find((article) =>
     !article.news_date && visibleGuideHero(article.hero) && !news.some((story) => story.slug === article.slug),
   );
@@ -16,7 +19,7 @@ export function ChannelGuide({ articles, news, label }: {
   const { hero } = pick;
   return (
     <aside aria-label={label} className="min-w-0">
-      <Link href={guideHref(pick.kind, pick.slug)} aria-label={pick.title}
+      <a href={getPathname({ locale, href: guideHref(pick.kind, pick.slug) })} aria-label={pick.title}
         className="group grid h-full min-w-0 grid-cols-[5.5rem_minmax(0,1fr)] items-center gap-3 rounded-xl border border-[var(--line)] bg-[var(--surface)] p-2.5 text-[var(--ink)] transition-colors hover:border-[var(--teal)] sm:grid-cols-[7rem_minmax(0,1fr)] md:block md:p-3">
         <GuideImage src={hero.src} alt={hero.alt} width={hero.width} height={hero.height} decoding="async"
           className="aspect-video w-full rounded-md bg-[var(--paper)] object-contain" />
@@ -26,7 +29,7 @@ export function ChannelGuide({ articles, news, label }: {
           </span>
           <p className="mt-1 text-sm font-bold leading-snug underline-offset-4 [overflow-wrap:anywhere] group-hover:underline group-focus-visible:underline md:text-base">{pick.title}</p>
         </div>
-      </Link>
+      </a>
     </aside>
   );
 }
