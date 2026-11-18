@@ -41,6 +41,9 @@ export type BackupVideoView = {
   error: string | null;
   missing: string[];
   overdue: boolean;
+  // Links into Google Drive once the worker read the folder's ids (apps/api/app/video_backup/drive_links.py).
+  drive_folder_url?: string | null;
+  drive_final_url?: string | null;
 };
 export type BackupStatusView = {
   enabled: boolean;
@@ -107,6 +110,16 @@ const stateLabel = (copy: VideoBackupCopy, state: BackupState) => ({
 })[state];
 const stateTone = (state: BackupState) => (state === "done" ? "text-[var(--teal)]" : state === "off" ? "text-[var(--muted)]" : state === "failed" || state === "partial" || state === "blocked_quota" ? "text-red-800" : "text-amber-800");
 
+/** Links that open a backed-up video's Drive folder and final cut in a new tab; nothing until the worker read their ids. */
+export function DriveLinks({ folder, final, folderLabel, finalLabel }: { folder?: string | null; final?: string | null; folderLabel: string; finalLabel: string }) {
+  if (!folder && !final) return null;
+  const link = "font-semibold text-[var(--teal)] underline underline-offset-2";
+  return <span className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-xs">
+    {folder && <a className={link} href={folder} target="_blank" rel="noopener noreferrer">{folderLabel}</a>}
+    {final && <a className={link} href={final} target="_blank" rel="noopener noreferrer">{finalLabel}</a>}
+  </span>;
+}
+
 function VideoRow({ video, root, hours, copy, locale }: { video: BackupVideoView; root: string; hours: number; copy: VideoBackupCopy; locale: string }) {
   const when = video.at ? new Date(video.at) : null;
   const details = [
@@ -118,7 +131,10 @@ function VideoRow({ video, root, hours, copy, locale }: { video: BackupVideoView
   return <tr className="border-t border-[var(--line)] align-top">
     <td className="py-2 pr-3"><span className="font-semibold">{video.title}</span><br /><code className="text-xs text-[var(--muted)]">{video.slug}</code></td>
     <td className={`py-2 pr-3 font-semibold ${stateTone(video.state)}`}>{stateLabel(copy, video.state)}</td>
-    <td className="py-2 pr-3 break-all">{root}/{video.folder}</td>
+    <td className="py-2 pr-3 break-all">
+      {root}/{video.folder}
+      <DriveLinks folder={video.drive_folder_url} final={video.drive_final_url} folderLabel={copy.openFolder} finalLabel={copy.openFinal} />
+    </td>
     <td className="py-2">{details.map((line) => <p key={line} className="break-words">{line}</p>)}</td>
   </tr>;
 }

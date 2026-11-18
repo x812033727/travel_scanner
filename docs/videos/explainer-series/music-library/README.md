@@ -25,6 +25,8 @@
 | 本機暫存 `~/mokaair-work/videos/_music-library/flow-music-20261117/{curio,sothatswhy}/` | 從 Flow Music 下載後先放這裡，量過、改好檔名再複製到雲端硬碟 |
 
 放在 `_共用/製作檔/` 是照 [`../../AI-DRAMA-DRIVE.md`](../../AI-DRAMA-DRIVE.md)：「跨集共用的（參考圖、音效、配樂庫、試鏡、腳本）放 `AI劇/<名稱>/_共用/製作檔/`」。
+2026-11-18 起，**兩個節目都會用到**的新配樂只放一份到 `AI劇/_共用素材/music/<名稱>/`（[`../../AI-DRAMA-DRIVE.md`](../../AI-DRAMA-DRIVE.md) §共用素材）；
+上面兩份 `flow-music-20261117/` 不搬，照舊從原處取用。
 | 本機 `~/mokaair-work/videos/_music/` | 要用的那首複製過來；`video.json` 寫 `"music": {"track": "<檔名>", "sha256": "…"}` |
 | 本機 `~/mokaair-work/videos/_sfx/<set>/` | 音效組（第 2 版 manifest，見 `ILLUSTRATED.md` §配樂與音效），用 `assemble sfx-measure` 補量測 |
 

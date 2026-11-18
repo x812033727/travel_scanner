@@ -78,6 +78,24 @@ describe("video backup card", () => {
     expect(card.getByText("AI/備份/奇聞檔案局/curio-h01")).toBeTruthy();
   });
 
+  it("links a backed-up video's Drive folder and final cut, in a new tab, once the worker read their ids", async () => {
+    const folder = "https://drive.google.com/drive/folders/1AbCdEfGhIjKlMn";
+    const final = "https://drive.google.com/file/d/9ZyXwVuTsRqPoNm/view";
+    site({ status: { ...behind, videos: [
+      video("curio-h01", { state: "done", drive_folder_url: folder, drive_final_url: final }),
+      video("curio-h02", { state: "done", drive_folder_url: folder }),
+      video("curio-h03", { state: "done" }),
+    ] } });
+    const card = await mount();
+    const row = (slug: string) => card.getAllByRole("row").find((each) => each.textContent?.includes(slug)) as HTMLElement;
+    const open = within(row("curio-h01")).getByRole("link", { name: copy.openFolder });
+    expect(open.getAttribute("href")).toBe(folder);
+    expect([open.getAttribute("target"), open.getAttribute("rel")]).toEqual(["_blank", "noopener noreferrer"]);
+    expect(within(row("curio-h01")).getByRole("link", { name: copy.openFinal }).getAttribute("href")).toBe(final);
+    expect(within(row("curio-h02")).queryByRole("link", { name: copy.openFinal })).toBeNull();
+    expect(within(row("curio-h03")).queryAllByRole("link")).toHaveLength(0);
+  });
+
   it("says so plainly when every uploaded video is in Drive, and lists them all on request", async () => {
     const fetchMock = site({ status: complete });
     const card = await mount();

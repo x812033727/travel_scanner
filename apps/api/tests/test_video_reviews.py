@@ -2127,6 +2127,9 @@ async def test_the_catalog_takes_a_category_a_state_a_search_and_a_page(
             url,
             params={"category": "none", "state": "published", "q": "模型", "page": 3, "limit": 10},
         )
+        shelved = await client.get(
+            url, params={"shelf": "curio", "series": "curio", "topic": "H-歷史懸案"}
+        )
         refused = [
             await client.get(url, params=params)
             for params in (
@@ -2135,13 +2138,18 @@ async def test_the_catalog_takes_a_category_a_state_a_search_and_a_page(
                 {"page": 0},
                 {"limit": 101},
                 {"q": "x" * 81},
+                {"shelf": "bogus"},
+                {"series": "x" * 41},
+                {"topic": ""},
             )
         ]
         set_ok = await client.put("/api/v1/admin/videos/v/category", json={"category": "tutorial"})
         set_bad = await client.put("/api/v1/admin/videos/v/category", json={"category": "news"})
         set_none = await client.put("/api/v1/admin/videos/v/category", json={})
     assert plain.status_code == narrowed.status_code == 200
-    assert plain.json()["facets"] == {"category": [], "state": []}
+    assert plain.json()["facets"] == {
+        "category": [], "state": [], "shelf": [], "series": [], "topic": [],
+    }
     calls = [call.kwargs for call in browsed.await_args_list]
     keys = ("category", "state", "q", "page", "limit")
     assert {k: calls[0][k] for k in keys} == {
@@ -2152,8 +2160,13 @@ async def test_the_catalog_takes_a_category_a_state_a_search_and_a_page(
         "category": "none", "state": "published", "q": "模型", "page": 3, "limit": 10,
     }
     assert calls[1]["work_dir"] == str(tmp_path)
-    assert [response.status_code for response in refused] == [422] * 5
-    assert len(calls) == 2, "a refused request never reaches the service"
+    assert shelved.status_code == 200
+    assert {k: calls[2][k] for k in ("category", "shelf_code", "series", "topic")} == {
+        "category": None, "shelf_code": "curio", "series": "curio", "topic": "H-歷史懸案",
+    }
+    assert calls[0]["shelf_code"] is None and calls[0]["series"] is None
+    assert [response.status_code for response in refused] == [422] * 8
+    assert len(calls) == 3, "a refused request never reaches the service"
     assert set_ok.status_code == 200 and set_ok.json()["category"] == "tutorial"
     assert filed.await_args.args[1] == "v"
     assert filed.await_args.args[3].category == "tutorial"

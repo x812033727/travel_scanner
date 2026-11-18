@@ -95,6 +95,7 @@ from app.video_automation.schemas import (
 )
 from app.video_media.catalog import JUDGE_USD_PER_CALL, find_model
 from app.video_media.meter import spend_by_slug
+from app.video_reviews import shelf
 from app.video_reviews.admin_service import _cancel_started_request, drop_project, list_projects
 from app.video_reviews.schemas import DropIn
 from app.video_reviews.storage import ReviewStore
@@ -2674,6 +2675,7 @@ async def start_episode(
     if project is not None:
         project.series_slug = series.slug
         project.episode_number = number
+        shelf.refresh(project)
     await session.commit()
     return SeriesEpisodeStartOut(
         request=request_view(request, series_slug=series.slug),
