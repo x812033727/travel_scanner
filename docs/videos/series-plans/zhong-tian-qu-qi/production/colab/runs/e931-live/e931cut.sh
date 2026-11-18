@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# e931 成片（真人版；第一版＋REVIEW 3，review3-plan.md）：照 e930cut.sh。剪接表 hailuo/edit-dh-e931-live.json 由 scratchpad e931c/（mkov931.py → overrides.json，
-# mkedit931.py＋note.txt → 剪接表）產生；所有決定與量測寫在剪接表的 _note。不花錢：不用 Colab、RunPod、站台 TTS，不重做精修。
+# e931 成片（真人版；第一版＋REVIEW 3＋s23 重拍，review3-plan.md）：照 e930cut.sh。剪接表 hailuo/edit-dh-e931-live.json 由 scratchpad e931c/（mkov931.py → overrides.json，
+# mkedit931.py＋note.txt → 剪接表）產生；所有決定與量測寫在剪接表的 _note。本腳本不花錢：不用 Colab、RunPod、站台 TTS，不重做精修。
 set -u
 R=/home/user/travel_scanner; P=$R/docs/videos/series-plans/zhong-tian-qu-qi/production; Q=$P/colab/runs/_scripts
 E=/root/mokaair-work/videos/_live-e931/zhong-tian-qu-qi-e931-dh; VJ=$R/docs/videos/zhong-tian-qu-qi-e031-r2/video.json
 mkdir -p $E/cut; [ -f $E/cut/e931-live.mp4 ] && { mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e931-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
 rm -rf $E/segments-v4
-# 精修片由 live-action/stage.py 31 放好（精修畫面＋草稿原聲＋剪點 -> clips/sNN-t1.mp4）；缺片或 picks.json 比片新（重跑過
+# 精修片由 live-action/stage.py 31 放好（精修畫面＋草稿原聲＋剪點 -> clips/sNN-t1.mp4；s23 是 fix3 9311402 的精修，e931f3refine.sh）；缺片或 picks.json 比片新（重跑過
 # refine-prep.py 31）就重跑。stage.py 把 $E/audio、$E/music 連到 zhong-tian-qu-qi-e931-dh/audio、music；music/ 是一個目錄
 # （e931 第一版手做）：_series/zhong-tian-qu-qi/music 的 cue-*.mp3 各一個連結，另 cue-drone31.mp3 -> assets/music/e031-e032/cue-suspense.mp3
 # （第 31–32 集舊版配樂裡低沉、少起音的那首，當第二場「乾、熱的低音 drone」用）、cue-tension31／cue-comedy31（備用，沒用到）。
@@ -17,13 +17,13 @@ stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=o
 [ -d /root/mokaair-work/videos/zhong-tian-qu-qi-e931-dh/music ] || { echo "zhong-tian-qu-qi-e931-dh/music/ 不在（見上面的說明）"; exit 1; }
 for f in hooves_trot_s07 hooves_trot_away; do [ -f /root/mokaair-work/videos/zhong-tian-qu-qi-e931-dh/sfx/$f.wav ] || { echo "zhong-tian-qu-qi-e931-dh/sfx/$f.wav 不在（REVIEW 3）"; exit 1; }; done
 # 剪接表假設的剪點與種子（picks.json 由 colab/runs/e931-live 的 refine-prep.py 31 picks-merged.tsv fix1/review-picks.tsv
-# fix2/review-picks.tsv review3-trims.tsv 產生；fix1 換 s06 s20 s22 s30 s31 s40，fix2 再換 s20 s40 s22）。REVIEW 3 剪短 s14 s15 s16 s18
+# fix2/review-picks.tsv review3-trims.tsv fix3/review-picks.tsv 產生；fix1 換 s06 s20 s22 s30 s31 s40，fix2 再換 s20 s40 s22，fix3 換 s23 為 9311402）。REVIEW 3 剪短 s14 s15 s16 s18
 # s28 s29b s32 的鏡尾（review3-trims.tsv，共 3.875 秒；s04 審查 2 建議的 7.208 會剪掉魏少卿走出院門，沒有剪）。
 # 整格：起點往下、終點往上取到小數三位，容差 0.001；只警告不停。
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
-want={'s01':(0.5,6.417),'s02':(1.375,6.333),'s03':(0.583,6.5),'s04':(1.0,7.958),'s05':(0.25,5.0),'s06':(1.833,6.542),'s07':(0.0,3.5),'s08':(2.5,6.583),'s09':(2.125,6.542),'s10':(1.5,6.542),'s11':(2.167,7.833),'s12':(1.708,6.25),'s13':(0.417,6.583),'s14':(1.0,4.5),'s15':(0.25,7.0),'s16':(0.25,4.0),'s17':(1.125,6.458),'s18':(1.0,3.75),'s19':(0.5,6.75),'s20':(1.583,6.417),'s21':(0.833,4.0),'s21b':(3.167,5.167),'s22':(0.5,5.75),'s23':(1.25,6.417),'s24':(2.333,6.583),'s25':(2.042,6.083),'s26':(2.583,6.583),'s27':(1.417,6.583),'s28':(0.5,6.875),'s29':(0.0,8.0),'s29b':(0.0,4.667),'s30':(0.833,7.833),'s31':(0.5,4.5),'s32':(0.125,4.5),'s33':(0.0,6.0),'s34':(0.917,8.0),'s35':(2.292,6.25),'s36':(0.542,7.917),'s37':(2.208,7.875),'s38':(1.5,7.875),'s39':(2.5,6.417),'s40':(1.417,5.333),'s41':(0.0,3.833)}
-seed={'s06':9311202,'s07':9311102,'s11':9311102,'s12':9311102,'s15':9311102,'s18':9311102,'s20':9311302,'s21b':9311102,'s22':9311301,'s23':9311102,'s24':9311102,'s25':9311102,'s30':9311201,'s31':9311201,'s32':9311102,'s38':9311102,'s40':9311302}
+want={'s01':(0.5,6.417),'s02':(1.375,6.333),'s03':(0.583,6.5),'s04':(1.0,7.958),'s05':(0.25,5.0),'s06':(1.833,6.542),'s07':(0.0,3.5),'s08':(2.5,6.583),'s09':(2.125,6.542),'s10':(1.5,6.542),'s11':(2.167,7.833),'s12':(1.708,6.25),'s13':(0.417,6.583),'s14':(1.0,4.5),'s15':(0.25,7.0),'s16':(0.25,4.0),'s17':(1.125,6.458),'s18':(1.0,3.75),'s19':(0.5,6.75),'s20':(1.583,6.417),'s21':(0.833,4.0),'s21b':(3.167,5.167),'s22':(0.5,5.75),'s23':(1.167,6.5),'s24':(2.333,6.583),'s25':(2.042,6.083),'s26':(2.583,6.583),'s27':(1.417,6.583),'s28':(0.5,6.875),'s29':(0.0,8.0),'s29b':(0.0,4.667),'s30':(0.833,7.833),'s31':(0.5,4.5),'s32':(0.125,4.5),'s33':(0.0,6.0),'s34':(0.917,8.0),'s35':(2.292,6.25),'s36':(0.542,7.917),'s37':(2.208,7.875),'s38':(1.5,7.875),'s39':(2.5,6.417),'s40':(1.417,5.333),'s41':(0.0,3.833)}
+seed={'s06':9311202,'s07':9311102,'s11':9311102,'s12':9311102,'s15':9311102,'s18':9311102,'s20':9311302,'s21b':9311102,'s22':9311301,'s23':9311402,'s24':9311102,'s25':9311102,'s30':9311201,'s31':9311201,'s32':9311102,'s38':9311102,'s40':9311302}
 bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].get(\"end-before\",0)} (want {a} {b})' for s,(a,b) in want.items()
      if s in p and (abs(p[s]['trim'].get('start',0)-a)>0.001 or abs(p[s]['trim'].get('end-before',0)-b)>0.001)]
 bad+=[f'{s} seed {p[s][\"seed\"]} (want {v})' for s,v in seed.items() if s in p and p[s]['seed']!=v]
