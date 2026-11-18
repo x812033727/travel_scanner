@@ -177,3 +177,45 @@ async def test_the_catalog_has_a_shelf_a_series_and_a_topic(
         assert done["by_series"].get(f"dra{tag}") == 1
         assert (await service._project(session, f"dra{tag}-e001")).series_key == f"dra{tag}"
         assert (await shelf.backfill(session, apply=True))["changed"] == 0
+
+
+@POSTGRES
+@pytest.mark.asyncio(loop_scope="module")
+async def test_opening_the_catalog_files_videos_written_before_the_columns(
+    _dispose: None,
+) -> None:
+    """The owner, 2026-11-18: no backfill on the host; the catalog files old rows itself."""
+    tag = uuid4().hex[:8]
+    old = {
+        f"curio-h01-{tag}": {"category": "explainer"},
+        f"dr{tag}-e001": {"category": "drama", "format": "drama"},
+        f"tutorial-{tag}": {"category": "tutorial"},
+        f"curio-h01-{tag}-cut": {"category": "explainer", "shorts_line": "cut"},
+    }
+    async with SessionFactory() as session:
+        for slug, fields in old.items():
+            session.add(_project(slug, **fields))
+        await session.commit()
+        # Rows from before migration 0147 have no series_key or topic.
+        healed = await shelf.heal(session)
+        assert healed >= 2
+        rows = {
+            slug: await service._project(session, slug) for slug in old
+        }
+        assert (rows[f"curio-h01-{tag}"].series_key, rows[f"curio-h01-{tag}"].topic) == (
+            "curio",
+            "H-歷史懸案",
+        )
+        assert rows[f"dr{tag}-e001"].series_key == f"dr{tag}"
+        assert rows[f"tutorial-{tag}"].series_key is None
+        assert rows[f"curio-h01-{tag}-cut"].series_key is None, "a Short has no shelf"
+        assert await shelf.heal(session) == 0, "nothing left to file"
+        curio = await service.browse_projects(session, q=tag, shelf_code="curio")
+        assert [item.slug for item in curio.items] == [f"curio-h01-{tag}"]
+
+
+def test_the_healing_candidates_cover_every_series_prefix() -> None:
+    sql = str(shelf._candidates().compile(compile_kwargs={"literal_binds": True}))
+    for prefix, _key in target.SLUG_PREFIXES:
+        assert f"'{prefix}" in sql, prefix
+    assert "series_slug IS NOT NULL" in sql and "shorts_line IS NULL" in sql

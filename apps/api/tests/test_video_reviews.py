@@ -27,7 +27,7 @@ from app.providers.usage_meter import GEMINI_SPEECH_PROVIDER, reserve_azure_spee
 from app.video_automation.judge import QA_AUTO_APPROVED_NOTE, QA_ITEMS, final_qa_passed
 from app.video_automation.models import VideoDramaEpisode, VideoDramaRequest, VideoDramaSeries
 from app.video_automation.settings import AUTO_APPROVED_STORYBOARD_NOTE
-from app.video_reviews import admin_api, admin_service, dub_retry
+from app.video_reviews import admin_api, admin_service, dub_retry, shelf
 from app.video_reviews.schemas import (
     VIDEO_CATEGORY_CODES,
     CategoryIn,
@@ -1426,6 +1426,15 @@ def test_a_review_payload_is_capped() -> None:
         ReviewIn.model_validate({**body, "payload": {"text": "字" * 100_000}})
 
 
+@pytest.fixture(autouse=True)
+def _no_shelf_healing(monkeypatch: pytest.MonkeyPatch) -> AsyncMock:
+    """The catalog files old rows before it lists (shelf.heal, against a real database in
+    test_video_shelf.py); these route tests hand it a mock session, so it does nothing here."""
+    healing = AsyncMock(return_value=0)
+    monkeypatch.setattr(shelf, "heal", healing)
+    return healing
+
+
 def _app(user: User | None = None) -> FastAPI:
     app = FastAPI()
     app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
@@ -2096,7 +2105,7 @@ async def test_a_compilation_s_cut_is_downloaded_with_byte_ranges_and_only_by_a_
 
 @pytest.mark.asyncio
 async def test_the_catalog_takes_a_category_a_state_a_search_and_a_page(
-    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path, _no_shelf_healing: AsyncMock
 ) -> None:
     owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
     owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
@@ -2160,6 +2169,7 @@ async def test_the_catalog_takes_a_category_a_state_a_search_and_a_page(
         "category": "none", "state": "published", "q": "模型", "page": 3, "limit": 10,
     }
     assert calls[1]["work_dir"] == str(tmp_path)
+    assert _no_shelf_healing.await_count == len(calls), "every listing files old rows first"
     assert shelved.status_code == 200
     assert {k: calls[2][k] for k in ("category", "shelf_code", "series", "topic")} == {
         "category": None, "shelf_code": "curio", "series": "curio", "topic": "H-歷史懸案",

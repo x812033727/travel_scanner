@@ -8,7 +8,9 @@ never disagree: ``series_key`` is the show or drama, ``topic`` the explainer sho
 
 The two are stored on the row (not worked out per query) because a 原來如此事務所 topic comes
 from a long code table SQL cannot read. Every write of a slug, category or series_slug calls
-``refresh``; ``python -m app.cli video-shelf-backfill`` fills the rows that existed before.
+``refresh``. The rows that existed before are filed by ``heal`` the next time the catalog is
+opened (GET /admin/videos/browse); ``python -m app.cli video-shelf-backfill`` recomputes every row,
+for when a rule changes.
 """
 
 from __future__ import annotations
@@ -17,7 +19,7 @@ from collections import Counter
 from collections.abc import Mapping
 from typing import Any
 
-from sqlalchemy import select
+from sqlalchemy import and_, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import VideoProject
@@ -92,6 +94,41 @@ async def load_series_labels(session: AsyncSession) -> dict[str, str]:
     }
     folder_names = mapping_of(config_of(await settings_row(session)), "folder_names")
     return series_labels(folder_names, titles)
+
+
+def _candidates() -> Any:
+    """The rows that may belong to a series but have none stored: a long series episode, an
+    imported drama (category drama, a -eNNN slug) or a slug with a series prefix. The same three
+    sources as ``shelf_fields``, loosely, so the Python rules decide."""
+    from app.video_backup import target
+
+    prefixes = [
+        VideoProject.slug.startswith(prefix, autoescape=True) for prefix, _ in target.SLUG_PREFIXES
+    ]
+    return select(VideoProject).where(
+        VideoProject.series_key.is_(None),
+        VideoProject.shorts_line.is_(None),
+        or_(
+            VideoProject.series_slug.is_not(None),
+            and_(VideoProject.category == "drama", VideoProject.slug.like("%-e%")),
+            *prefixes,
+        ),
+    )
+
+
+async def heal(session: AsyncSession) -> int:
+    """File the videos written before migration 0147 (or before a rule they now match) under
+    their show, when the catalog is opened: the owner, 2026-11-18, chose this over running
+    ``video-shelf-backfill`` on the host. Commits only when a row changed; returns how many did.
+    A candidate the rules still file under no series stays as it is and is looked at again next
+    time, which is a handful of rows at most."""
+    changed = 0
+    for project in (await session.scalars(_candidates())).all():
+        if refresh(project):
+            changed += 1
+    if changed:
+        await session.commit()
+    return changed
 
 
 async def backfill(session: AsyncSession, *, apply: bool) -> dict[str, Any]:
