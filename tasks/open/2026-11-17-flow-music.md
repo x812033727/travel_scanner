@@ -12,6 +12,7 @@ branch:
 depends_on: []
 scope:
   - docs/videos/explainer-series/music-library
+  - docs/videos/drama/music-library
 ---
 
 # Flow Music 配樂庫：剪短音樂與音效、試聽、接進產線
@@ -47,6 +48,8 @@ scope:
 `assemble` 後 `checks.json` 的 `metrics.sfx.min_bed_margin_db` ≥ 6。
 
 ## Notes
+
+- 2026-11-18 另做了 AI 劇的 118 首（種田、祖媽、婚約），同樣要剪與試聽，見 [`docs/videos/drama/music-library/README.md`](../../docs/videos/drama/music-library/README.md)。
 
 - `sothatswhy-sfx-splash` 整合響度 −44.5 LUFS，可能幾乎是靜音。
 - WAV 原檔還在 Flow Music 上，`manifest.json` 的 `flow_music_id` 可以用 `/__api/download/audio/<id>?format=wav` 在已登入的頁面裡重抓。
