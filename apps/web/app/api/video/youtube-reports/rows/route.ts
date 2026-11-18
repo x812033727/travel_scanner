@@ -7,6 +7,7 @@ const REPORT = /^[a-z0-9_]{3,100}$/;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
 const VIDEO = /^[A-Za-z0-9_-]{6,20}$/;
 const MAX_VIDEOS = 50;
+const CHANNEL = /^[a-z][a-z0-9-]{1,31}$/;
 const TIMEOUT_MS = 120_000;
 
 export async function GET(request: NextRequest) {
@@ -24,5 +25,11 @@ export async function GET(request: NextRequest) {
   }
   const passed = new URLSearchParams({ report, start, end, format });
   for (const video of videos) passed.append("video_id", video);
+  // A linked channel other than the main one (docs/videos/YOUTUBE-REPORTS.md §頻道).
+  const channel = query.get("channel") ?? "";
+  if (channel && channel !== "default") {
+    if (!CHANNEL.test(channel)) return problem(422, "video_youtube_channel_unknown", "channel is a channel code: 2 to 32 lowercase letters, digits or hyphens");
+    passed.set("channel", channel);
+  }
   return forwardToSpeech(request, `youtube-reports/rows?${passed.toString()}`, "GET", undefined, TIMEOUT_MS);
 }

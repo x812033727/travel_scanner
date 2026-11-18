@@ -21,8 +21,10 @@ from datetime import UTC, date, datetime
 from typing import Any
 
 import httpx
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.models import VideoProject
 from app.video_youtube import connection
 from app.video_youtube.analytics import AUDIENCE_TYPE_SINCE, DIMENSION, METRICS, AnalyticsClient
 from app.video_youtube.client import YoutubeClient, YoutubeError
@@ -128,7 +130,13 @@ async def retention(
         raise Refused(422, "video_youtube_report_videos", "video_id 的格式要像 YouTube 的影片 id")
     if start and end and end < start:
         raise Refused(422, "video_youtube_report_span", "end 早於 start")
-    row = await connection.connection_row(session)
+    # The video's channel is the one the site sent it to (VideoProject.youtube_channel_key,
+    # migration 0147); a video the site does not know is asked of the default channel.
+    stored = await session.scalar(
+        select(VideoProject.youtube_channel_key).where(VideoProject.youtube_video_id == video_id)
+    )
+    key = connection.channel_key(stored)
+    row = await connection.connection_row(session, key=key)
     if not connection.linked(row):
         raise Refused(409, "video_youtube_not_linked", NOT_LINKED)
     if not connection.analytics_granted(row):
@@ -136,7 +144,7 @@ async def retention(
     channel_id = str(row.channel_id)
     today = (now or datetime.now(UTC)).astimezone(PACIFIC).date()
     async with connection.http_client() as http:
-        token = await connection.access_token(session, http)
+        token = await connection.access_token(session, http, key=key)
         await session.commit()
         try:
             found = await YoutubeClient(http, token).videos(

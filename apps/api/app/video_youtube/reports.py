@@ -28,11 +28,11 @@ from zoneinfo import ZoneInfo
 
 import httpx
 from redis.exceptions import RedisError
-from sqlalchemy import delete, func, select
+from sqlalchemy import delete, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.infra import get_redis
-from app.models import VideoProject
+from app.models import VideoProject, VideoYoutubeConnection
 from app.video_youtube import connection
 from app.video_youtube.client import YoutubeError
 from app.video_youtube.errors import Refused
@@ -154,17 +154,41 @@ def parse_csv(content: bytes) -> tuple[list[str], int]:
     return [name.strip() for name in header], sum(1 for row in reader if row)
 
 
-async def state_row(session: AsyncSession) -> VideoYoutubeReportState:
-    row = await session.get(VideoYoutubeReportState, 1)
+async def state_row(
+    session: AsyncSession, link: VideoYoutubeConnection | None = None
+) -> VideoYoutubeReportState:
+    """A channel's report state (migration 0147): row 1 is the default channel's, as it always
+    was; another channel has the row carrying its channel id."""
+    if link is None or link.id == 1:
+        row = await session.get(VideoYoutubeReportState, 1)
+        if row is None:
+            row = VideoYoutubeReportState(id=1, chosen_types={})
+            session.add(row)
+            await session.flush()
+        return row
+    row = await session.scalar(
+        select(VideoYoutubeReportState).where(
+            VideoYoutubeReportState.channel_id == link.channel_id
+        )
+    )
     if row is None:
-        row = VideoYoutubeReportState(id=1, chosen_types={})
+        # Row 1 was written by hand, so the next id is picked here rather than by a sequence.
+        next_id = (await session.scalar(select(func.max(VideoYoutubeReportState.id)))) or 1
+        row = VideoYoutubeReportState(
+            id=max(next_id, 1) + 1, channel_id=link.channel_id, chosen_types={}
+        )
         session.add(row)
         await session.flush()
     return row
 
 
-async def _record_problem(session: AsyncSession, problem: str, now: datetime) -> None:
-    state = await state_row(session)
+async def _record_problem(
+    session: AsyncSession,
+    problem: str,
+    now: datetime,
+    link: VideoYoutubeConnection | None = None,
+) -> None:
+    state = await state_row(session, link)
     state.problem = problem
     state.attempted_at = now
     await session.commit()
@@ -225,43 +249,73 @@ async def _keep_report(
     return "replaced"
 
 
-async def _acquire_lock() -> bool:
+def _lock_key(key: str) -> str:
+    # The default channel keeps the lock name it always had.
+    return LOCK_KEY if key == connection.DEFAULT_KEY else f"{LOCK_KEY}:{key}"
+
+
+async def _acquire_lock(key: str = connection.DEFAULT_KEY) -> bool:
     try:
-        return bool(await get_redis().set(LOCK_KEY, "1", nx=True, ex=LOCK_SECONDS))
+        return bool(await get_redis().set(_lock_key(key), "1", nx=True, ex=LOCK_SECONDS))
     except RedisError:
         # Without Redis two runs could overlap; the unique day key keeps them from doubling.
         return True
 
 
-async def _release_lock() -> None:
+async def _release_lock(key: str = connection.DEFAULT_KEY) -> None:
     try:
-        await get_redis().delete(LOCK_KEY)
+        await get_redis().delete(_lock_key(key))
     except RedisError:
         pass
 
 
 async def forget_other_channels(session: AsyncSession) -> str | None:
     """Delete what was read for a channel the site no longer holds a grant for: every report
-    after an unlink, another channel's after a link in its place (Developer Policies III.E.4).
-    Every read and every run starts with it, and the card reads the reports again right after
-    an unlink. Returns the linked channel's id, or None."""
-    row = await connection.connection_row(session)
-    channel_id = str(row.channel_id) if connection.linked(row) else None
-    if channel_id is None:
+    of a channel after its unlink, another channel's after a link in its place (Developer
+    Policies III.E.4). With more than one channel linked (migration 0147), each keeps its own;
+    only the channels no row holds a grant for go. Every read and every run starts with it, and
+    the card reads the reports again right after an unlink. Returns the default channel's id,
+    or None."""
+    links = await connection.connections(session)
+    held = {str(link.channel_id) for link in links if connection.linked(link)}
+    default = links[0]
+    default_id = str(default.channel_id) if connection.linked(default) else None
+    if not held:
         await session.execute(delete(VideoYoutubeReport))
         await session.execute(delete(VideoYoutubeReportJob))
-        state = await session.get(VideoYoutubeReportState, 1)
-        if state is not None and (state.synced_at or state.chosen_types):
-            state.synced_at = None
-            state.chosen_types = {}
     else:
         await session.execute(
-            delete(VideoYoutubeReport).where(VideoYoutubeReport.channel_id != channel_id)
+            delete(VideoYoutubeReport).where(VideoYoutubeReport.channel_id.not_in(held))
         )
         await session.execute(
-            delete(VideoYoutubeReportJob).where(VideoYoutubeReportJob.channel_id != channel_id)
+            delete(VideoYoutubeReportJob).where(VideoYoutubeReportJob.channel_id.not_in(held))
         )
-    return channel_id
+    await session.execute(
+        delete(VideoYoutubeReportState).where(
+            VideoYoutubeReportState.id != 1,
+            or_(
+                VideoYoutubeReportState.channel_id.is_(None),
+                VideoYoutubeReportState.channel_id.not_in(held or {""}),
+            ),
+        )
+    )
+    state = await session.get(VideoYoutubeReportState, 1)
+    if state is not None:
+        if default_id is None and (state.synced_at or state.chosen_types):
+            state.synced_at = None
+            state.chosen_types = {}
+        if state.channel_id != default_id:
+            state.channel_id = default_id
+    return default_id
+
+
+async def linked_keys(session: AsyncSession) -> list[str]:
+    """The channels a scheduled run fetches for: every linked one, the default first."""
+    return [
+        connection.channel_key(link.key)
+        for link in await connection.connections(session)
+        if connection.linked(link)
+    ]
 
 
 async def sync(
@@ -270,43 +324,50 @@ async def sync(
     force: bool = False,
     limit: int = DEFAULT_LIMIT,
     now: datetime | None = None,
+    key: str = connection.DEFAULT_KEY,
 ) -> SyncResult:
-    """Schedule the missing jobs and download what YouTube made since the last run. A run
-    within SYNC_EVERY of the last complete one does nothing unless ``force``."""
+    """Schedule the missing jobs and download what YouTube made since the last run, for the
+    channel ``key``. A run within SYNC_EVERY of the last complete one does nothing unless
+    ``force``."""
     moment = now or datetime.now(UTC)
     limit = max(1, min(limit, MAX_LIMIT))
     await forget_other_channels(session)
-    row = await connection.connection_row(session)
-    state = await state_row(session)
+    row = await connection.connection_row(session, key=key)
+    state = await state_row(session, row)
     if not connection.linked(row):
         await session.commit()
         return SyncResult(status="not_linked", problem=NOT_LINKED)
     if not connection.analytics_granted(row):
-        await _record_problem(session, NEEDS_RELINK, moment)
+        await _record_problem(session, NEEDS_RELINK, moment, row)
         return SyncResult(status="needs_relink", problem=NEEDS_RELINK)
     if not force and state.synced_at is not None and moment - state.synced_at < SYNC_EVERY:
         result = SyncResult(status="not_due", synced_at=state.synced_at)
         await session.commit()
         return result
     channel_id = str(row.channel_id)
-    if not await _acquire_lock():
+    if not await _acquire_lock(key):
         await session.commit()
         return SyncResult(status="running")
     try:
-        return await _sync_locked(session, channel_id, limit, moment)
+        return await _sync_locked(session, row, channel_id, limit, moment)
     finally:
-        await _release_lock()
+        await _release_lock(key)
 
 
 async def _sync_locked(
-    session: AsyncSession, channel_id: str, limit: int, moment: datetime
+    session: AsyncSession,
+    link: VideoYoutubeConnection,
+    channel_id: str,
+    limit: int,
+    moment: datetime,
 ) -> SyncResult:
     result = SyncResult(status="synced")
+    key = connection.channel_key(link.key)
     async with connection.http_client() as http:
         try:
-            token = await connection.access_token(session, http)
+            token = await connection.access_token(session, http, key=key)
         except Refused as refused:
-            await _record_problem(session, refused.detail, moment)
+            await _record_problem(session, refused.detail, moment, link)
             return SyncResult(status="not_linked", problem=refused.detail)
         await session.commit()
         api = ReportingClient(http, token)
@@ -333,7 +394,7 @@ async def _sync_locked(
                 problem = (
                     f"YouTube Reporting API 回覆 {error.status} {error.reason}：{error.message}"
                 )
-            await _record_problem(session, problem[:1000], moment)
+            await _record_problem(session, problem[:1000], moment, link)
             # What was downloaded before the refusal is committed; the next run continues.
             result.status = "needs_relink" if relink else "partial"
             result.problem = problem
@@ -341,11 +402,11 @@ async def _sync_locked(
         except httpx.HTTPError as error:
             await session.rollback()
             problem = f"連不到 YouTube Reporting API：{type(error).__name__}"
-            await _record_problem(session, problem, moment)
+            await _record_problem(session, problem, moment, link)
             result.status = "partial"
             result.problem = problem
             return result
-    state = await state_row(session)
+    state = await state_row(session, link)
     state.attempted_at = moment
     state.chosen_types = chosen
     state.problem = None
@@ -462,12 +523,27 @@ async def _download_job(
 # --- what a video tool reads ----------------------------------------------------------------
 
 
-async def overview(session: AsyncSession, now: datetime | None = None) -> dict[str, Any]:
+def _project_on(key: str) -> Any:
+    """The videos meant for channel ``key`` (a null key is the default channel)."""
+    if key == connection.DEFAULT_KEY:
+        return or_(
+            VideoProject.youtube_channel_key.is_(None),
+            VideoProject.youtube_channel_key == connection.DEFAULT_KEY,
+        )
+    return VideoProject.youtube_channel_key == key
+
+
+async def overview(
+    session: AsyncSession, now: datetime | None = None, *, key: str = connection.DEFAULT_KEY
+) -> dict[str, Any]:
     moment = now or datetime.now(UTC)
     await forget_other_channels(session)
-    row = await connection.connection_row(session)
-    state = await state_row(session)
+    links = await connection.connections(session)
+    row = await connection.connection_row(session, key=key)
+    state = await state_row(session, row)
     is_linked = connection.linked(row)
+    # Before the channel is linked nothing is its; "" matches no stored channel id.
+    own = str(row.channel_id) if is_linked else ""
     coverage = (
         await session.execute(
             select(
@@ -476,19 +552,29 @@ async def overview(session: AsyncSession, now: datetime | None = None) -> dict[s
                 func.min(VideoYoutubeReport.day),
                 func.max(VideoYoutubeReport.day),
                 func.sum(VideoYoutubeReport.row_count),
-            ).group_by(VideoYoutubeReport.report_type_id)
+            )
+            .where(VideoYoutubeReport.channel_id == own)
+            .group_by(VideoYoutubeReport.report_type_id)
         )
     ).all()
     newest_columns: dict[str, list[str]] = {}
     for type_id, *_ in coverage:
         columns = await session.scalar(
             select(VideoYoutubeReport.columns)
-            .where(VideoYoutubeReport.report_type_id == type_id)
+            .where(
+                VideoYoutubeReport.report_type_id == type_id,
+                VideoYoutubeReport.channel_id == own,
+            )
             .order_by(VideoYoutubeReport.day.desc())
             .limit(1)
         )
         newest_columns[str(type_id)] = list(columns or [])
-    jobs = {job.report_type_id: job for job in await session.scalars(select(VideoYoutubeReportJob))}
+    jobs = {
+        job.report_type_id: job
+        for job in await session.scalars(
+            select(VideoYoutubeReportJob).where(VideoYoutubeReportJob.channel_id == own)
+        )
+    }
     reports = [
         {
             "family": family_of(str(type_id)),
@@ -529,12 +615,23 @@ async def overview(session: AsyncSession, now: datetime | None = None) -> dict[s
         }
         for project in await session.scalars(
             select(VideoProject)
-            .where(VideoProject.youtube_video_id.is_not(None))
+            .where(VideoProject.youtube_video_id.is_not(None), _project_on(key))
             .order_by(VideoProject.youtube_publish_at.desc().nulls_last())
             .limit(2000)
         )
     ]
     result = {
+        "key": key,
+        "channels": [
+            {
+                "key": connection.channel_key(link.key),
+                "label": link.label,
+                "linked": connection.linked(link),
+                "channel_id": link.channel_id if connection.linked(link) else None,
+                "channel_title": link.channel_title if connection.linked(link) else None,
+            }
+            for link in links
+        ],
         "linked": is_linked,
         "channel_id": row.channel_id if is_linked else None,
         "channel_title": row.channel_title if is_linked else None,
@@ -589,6 +686,7 @@ async def rows(
     end: date,
     video_ids: Sequence[str] = (),
     output: Literal["csv", "json"] = "json",
+    key: str = connection.DEFAULT_KEY,
 ) -> Rows:
     """The rows of ``report`` for the days ``start`` to ``end`` (Pacific, both included).
     When two versions of a family cover one day, the newer version's file is the one used;
@@ -605,11 +703,14 @@ async def rows(
             f"video_id 最多 {MAX_VIDEO_IDS} 個，格式要像 YouTube 的影片 id",
         )
     await forget_other_channels(session)
+    link = await connection.connection_row(session, key=key)
+    own = str(link.channel_id) if connection.linked(link) else ""
     types = await _types_for(session, report)
     files = list(
         await session.scalars(
             select(VideoYoutubeReport)
             .where(
+                VideoYoutubeReport.channel_id == own,
                 VideoYoutubeReport.report_type_id.in_(types),
                 VideoYoutubeReport.day >= start,
                 VideoYoutubeReport.day <= end,

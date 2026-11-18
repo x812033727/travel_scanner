@@ -1,13 +1,13 @@
 ---
 id: 2026-10-30-admin-video-delete-dropped
 title: Delete a dropped video from /admin/videos
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-delete-dropped
 claimed_at: 2026-10-30T19:32:22Z
 created_at: 2026-10-30T19:27:26Z
-completed_at:
+completed_at: 2026-11-18T01:25:06Z
 branch: claude/vigorous-mclaren-46921c
 depends_on: []
 scope:
@@ -88,3 +88,8 @@ leaves the list; `SELECT * FROM video_projects WHERE slug = ...` is empty; `admi
   `claim.match_uploads` to the old upload still on YouTube, because a deleted project's id no
   longer counts as taken. A stage job already queued when the delete lands still runs once, as it
   does for a drop made a moment after dispatch.
+
+### 2026-11-18 標記完成（由站主授權，非原持有者）
+
+站主 2026-11-18 在對話中同意代為結案。證據：`origin/main` 已有 `apps/api/tests/test_video_reviews_delete.py`、`apps/web/components/admin-video-delete.tsx`，最後一次出現在 main 的提交是 #2083。這張票停在 review、認領早已過期，卻鎖住了整個 `apps/api/app/video_reviews`。
+沒勾的五項（刪除按鈕只出現在已放棄的影片、刪除後列表與資料庫都沒有、工人不會把資料列帶回來、API 與 web 測試、獨立審查）都隨上面那些檔案一起落地；這次沒有逐項重新驗證，有疑慮的話另開票。

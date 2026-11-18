@@ -12,6 +12,7 @@ import { analyticsScopeLine, YoutubeChannelReports } from "@/components/admin-vi
 import { control, record, type Review, text, useWhen, type YoutubeSync, type YoutubeSyncStep, youtubeVideoId } from "@/components/admin-video-review-card";
 import { Button, fieldClass, panelClass } from "@/components/community/ui";
 import { ApiError, api } from "@/lib/api";
+import { CHANNEL_KEY_PATTERN, youtubeChannelsCopy } from "@/lib/youtube-channels-copy";
 import { adminNavigate, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 
 // The site's link to its own YouTube channel (docs/videos/HANDS-OFF.md, the YouTube API section;
@@ -20,6 +21,8 @@ import { adminNavigate, useAdminQueryValue } from "@/lib/admin-workspace-navigat
 // Google's consent screen and back. From then on the "ready to upload" card sends a video's
 // package to the channel, and the video's page shows each step of the run.
 export type YoutubeConnection = {
+  // Which channel (apps/api/app/video_youtube/connection.py; "default" is the main one) and its name.
+  key?: string; label?: string | null;
   client_id: string | null; client_secret_set: boolean; redirect_uri: string; scope: string;
   configured: boolean; linked: boolean; channel_id: string | null; channel_title: string | null; channel_url: string | null;
   linked_at: string | null; verified_at: string | null; problem: string | null; audited: boolean;
@@ -83,7 +86,178 @@ function CopyButton({ value, label }: { value: string; label: string }) {
  * is written, never read back; the API keeps it and the grant encrypted and away from the page.
  */
 export function YoutubeChannelCard() {
-  return <div className="grid gap-6"><YoutubeOAuthCard /><YoutubeVpsSettingsCard /></div>;
+  return <div className="grid gap-6"><YoutubeOAuthCard /><YoutubeVpsSettingsCard /><YoutubeOtherChannels /></div>;
+}
+
+/** What the owner calls a channel: its name, else YouTube's title, else its code. */
+function channelName(channel: YoutubeConnection, mainName: string) {
+  if (channel.label) return channel.label;
+  if (channel.channel_title) return channel.channel_title;
+  return !channel.key || channel.key === "default" ? mainName : channel.key;
+}
+
+/** Every channel, the main one first; null until the API answers. */
+function useYoutubeChannels() {
+  const [channels, setChannels] = useState<YoutubeConnection[] | null>(null);
+  const [loadError, setLoadError] = useState("");
+  const load = useCallback(() => {
+    api<YoutubeConnection[]>("/admin/video-youtube/channels")
+      // An API from before there were channels answers this path with something else.
+      .then((value) => { setChannels(Array.isArray(value) ? value : []); setLoadError(""); })
+      .catch((problem: unknown) => setLoadError(problem instanceof Error ? problem.message : String(problem)));
+  }, []);
+  useEffect(load, [load]);
+  return { channels, loadError, reload: load };
+}
+
+/**
+ * The channels besides the main one (docs/videos/YOUTUBE-REPORTS.md §頻道): each is added with a
+ * code, then linked through the same consent screen with that channel's account; it signs in with
+ * the OAuth client of the card above.
+ */
+function YoutubeOtherChannels() {
+  const locale = useLocale();
+  const copy = youtubeChannelsCopy(locale);
+  const when = useWhen();
+  const problemText = useProblem();
+  const manage = useAdminActionGuard("settings.manage");
+  const { channels, loadError, reload } = useYoutubeChannels();
+  const [key, setKey] = useState("");
+  const [label, setLabel] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const act = async (action: () => Promise<unknown>, done: string) => {
+    setBusy(true);
+    setError("");
+    setMessage("");
+    try {
+      await action();
+      setMessage(done);
+      reload();
+    } catch (problem) {
+      setError(problemText(problem));
+    } finally {
+      setBusy(false);
+    }
+  };
+  // The OAuth card above already says when the API cannot be read; this one stays out of the way.
+  if (loadError || !channels || channels.length === 0) return null;
+  const main = channels.find((channel) => (channel.key ?? "default") === "default");
+  const others = channels.filter((channel) => (channel.key ?? "default") !== "default");
+  const disabled = !manage.allowed || busy;
+  const keyValid = CHANNEL_KEY_PATTERN.test(key.trim()) && key.trim() !== "default";
+  const add = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!keyValid) return;
+    void act(async () => {
+      await api("/admin/video-youtube/channels", { method: "POST", body: JSON.stringify({ key: key.trim(), label: label.trim() || null }) });
+      setKey("");
+      setLabel("");
+    }, copy.added);
+  };
+  return <section className={`${panelClass} grid gap-4`} aria-labelledby="video-settings-youtube-channels">
+    <h2 id="video-settings-youtube-channels" className="text-xl font-bold">{copy.title}</h2>
+    <p className="text-sm leading-6 text-[var(--muted)]">{copy.help}</p>
+    {others.length === 0 && <p className="text-sm text-[var(--muted)]">{copy.none}</p>}
+    {others.map((channel) => {
+      const code = channel.key ?? "";
+      const name = channelName(channel, copy.defaultName);
+      const unlink = () => {
+        if (!window.confirm(copy.unlinkConfirm.replace("{name}", name))) return;
+        void act(async () => {
+          await api(`/admin/video-youtube/channels/${code}/unlink`, { method: "POST" });
+          // Reading the reports once more is what deletes the copy kept for the unlinked channel.
+          void api(`/admin/video-youtube/reports?channel=${code}`).catch(() => undefined);
+        }, copy.unlinked);
+      };
+      return <article key={code} aria-label={name} className="grid gap-2 rounded-xl bg-[var(--paper)] p-4">
+        <p className="flex flex-wrap items-center gap-2 font-semibold">
+          <AdminStatusPill status={channel.linked ? (channel.problem ? "failed" : "active") : "inactive"}>{channel.linked ? (channel.problem ? copy.broken : copy.linked) : copy.notLinked}</AdminStatusPill>
+          {channel.channel_url ? <a href={channel.channel_url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-[var(--teal)] underline">{name}<ExternalLink aria-hidden size={14} /></a> : name}
+          <code className="rounded bg-[var(--surface)] px-2 py-0.5 text-xs">{code}</code>
+        </p>
+        {channel.linked_at && <p className="text-sm text-[var(--muted)]">{when(channel.linked_at)}</p>}
+        {channel.problem && <p role="alert" className="text-sm text-red-800">{channel.problem}</p>}
+        {channel.linked && <YoutubeChannelReports channel={code} reloadKey={`${channel.channel_id ?? ""}:${channel.linked_at ?? ""}`} analyticsGranted={Boolean(channel.analytics_granted)} />}
+        <div className="flex flex-wrap gap-3">
+          {manage.allowed && main?.configured
+            ? <a href={`/api/admin-video-youtube/start?locale=${encodeURIComponent(locale)}&channel=${encodeURIComponent(code)}`} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-2 font-semibold text-white"><Link2 aria-hidden size={18} />{channel.linked ? copy.relink : copy.link}</a>
+            : <Button disabled><Link2 aria-hidden size={18} />{copy.link}</Button>}
+          {channel.linked && <Button secondary disabled={disabled} onClick={() => void act(() => api(`/admin/video-youtube/channels/${code}/verify`, { method: "POST" }), copy.verified)}><RefreshCw aria-hidden size={16} />{copy.verify}</Button>}
+          {channel.linked && <Button secondary disabled={disabled} onClick={unlink}><Unlink aria-hidden size={16} />{copy.unlink}</Button>}
+        </div>
+        {!main?.configured && <p className="text-sm text-amber-800">{copy.needsClient}</p>}
+      </article>;
+    })}
+    {manage.allowed && <form onSubmit={add} className="grid gap-3 sm:grid-cols-[1fr_1fr_auto] sm:items-end" aria-label={copy.addTitle}>
+      <label className="block text-sm font-semibold">{copy.key}
+        <input className={fieldClass} value={key} disabled={disabled} autoComplete="off" spellCheck={false} placeholder="theater" onChange={(event) => setKey(event.target.value.toLowerCase())} />
+      </label>
+      <label className="block text-sm font-semibold">{copy.label}
+        <input className={fieldClass} value={label} disabled={disabled} maxLength={80} onChange={(event) => setLabel(event.target.value)} />
+      </label>
+      <Button type="submit" disabled={disabled || !keyValid}>{copy.add}</Button>
+      <p className="text-xs text-[var(--muted)] sm:col-span-3">{copy.keyHelp}</p>
+    </form>}
+    {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
+    {message && !error && <p role="status" className="text-sm text-[var(--teal)]">{message}</p>}
+  </section>;
+}
+
+/**
+ * Which channel a video goes to, on the send form; shown only once there is more than one
+ * channel. ``locked`` once the video is on YouTube: the API refuses a change then too.
+ */
+function YoutubeChannelPicker({ slug, disabled, locked, onChannel }: { slug: string; disabled: boolean; locked: boolean; onChannel: (name: string | null) => void }) {
+  const locale = useLocale();
+  const copy = youtubeChannelsCopy(locale);
+  const problemText = useProblem();
+  const manage = useAdminActionGuard("content.manage");
+  const { channels } = useYoutubeChannels();
+  const [current, setCurrent] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  useEffect(() => {
+    api<{ youtube_channel_key?: string | null }>(`/admin/videos/${slug}`)
+      .then((project) => setCurrent(project.youtube_channel_key || "default"))
+      .catch(() => setCurrent("default"));
+  }, [slug]);
+  const chosen = channels?.find((channel) => (channel.key ?? "default") === current) ?? null;
+  useEffect(() => {
+    onChannel(chosen ? chosen.channel_title || chosen.channel_id || channelName(chosen, copy.defaultName) : null);
+  }, [chosen, copy.defaultName, onChannel]);
+  if (!channels || channels.length < 2 || current === null) return null;
+  const pick = async (key: string) => {
+    setBusy(true);
+    setError("");
+    setMessage("");
+    try {
+      const project = await api<{ youtube_channel_key?: string | null }>(`/admin/videos/${slug}/youtube/channel`, { method: "PUT", body: JSON.stringify({ key }) });
+      const next = project.youtube_channel_key || "default";
+      setCurrent(next);
+      const picked = channels.find((channel) => (channel.key ?? "default") === next);
+      setMessage(copy.pickerSaved.replace("{name}", picked ? channelName(picked, copy.defaultName) : next));
+    } catch (problem) {
+      setError(problemText(problem));
+    } finally {
+      setBusy(false);
+    }
+  };
+  return <div className="grid gap-1">
+    <label className="grid gap-2 text-sm font-semibold">{copy.pickerLabel}
+      <select className={control} value={current} disabled={disabled || busy || locked || !manage.allowed} onChange={(event) => void pick(event.target.value)}>
+        {channels.map((channel) => {
+          const code = channel.key ?? "default";
+          return <option key={code} value={code} disabled={!channel.linked && code !== current}>{channelName(channel, copy.defaultName)}{channel.linked ? "" : ` (${copy.notLinked})`}</option>;
+        })}
+      </select>
+    </label>
+    <span className="text-xs text-[var(--muted)]">{copy.pickerHelp}</span>
+    {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
+    {message && !error && <p role="status" className="text-sm text-[var(--teal)]">{message}</p>}
+  </div>;
 }
 
 function YoutubeOAuthCard() {
@@ -238,6 +412,8 @@ export function YoutubePublishForm({ slug, review, connection, canUpload, videoI
   const [acceptLock, setAcceptLock] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  // The channel the picker says the video goes to; the main channel's name until it answers.
+  const [pickedChannel, setPickedChannel] = useState<string | null>(null);
   const id = mode === "studio" ? youtubeVideoId(url) : null;
   const titleLength = [...title].length;
   const descriptionBytes = utf8Bytes(description);
@@ -272,7 +448,8 @@ export function YoutubePublishForm({ slug, review, connection, canUpload, videoI
   };
   return <YoutubeVpsUpload slug={slug} disabled={busy} draft={{ title, description, video_id: videoId ?? id }} onChange={onSent}><YoutubeManualUpload slug={slug} disabled={busy} draft={{ title, description, video_id: videoId ?? id }}><form onSubmit={(event) => void submit(event)} className="grid gap-3 rounded-2xl border border-[var(--teal)] p-4" aria-label={t("publishTitle")}>
     <p className="font-bold">{t("publishTitle")}</p>
-    <p className="text-sm leading-6 text-[var(--muted)]">{t("publishHelp", { channel: connection.channel_title || connection.channel_id || "" })}</p>
+    <p className="text-sm leading-6 text-[var(--muted)]">{t("publishHelp", { channel: pickedChannel ?? (connection.channel_title || connection.channel_id || "") })}</p>
+    <YoutubeChannelPicker slug={slug} disabled={busy} locked={Boolean(videoId)} onChannel={setPickedChannel} />
     {uploadAllowed && <fieldset className="grid gap-2"><legend className="text-sm font-semibold">{t("source")}</legend>
       <label className="flex items-start gap-2 text-sm"><input type="radio" name={`youtube-source-${slug}`} className="mt-1" checked={mode === "upload"} disabled={busy} onChange={() => setMode("upload")} /><span>{t("sourceUpload")}</span></label>
       <label className="flex items-start gap-2 text-sm"><input type="radio" name={`youtube-source-${slug}`} className="mt-1" checked={mode === "studio"} disabled={busy} onChange={() => setMode("studio")} /><span>{t("sourceStudio")}</span></label>

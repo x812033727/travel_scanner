@@ -14,6 +14,10 @@ Visibility = Literal["scheduled", "unlisted", "private"]
 class ConnectionView(BaseModel):
     """The settings tab's YouTube card. The client secret and the refresh token never appear."""
 
+    # Which channel this card is (migration 0147); the one from before there were two is
+    # "default".
+    key: str = "default"
+    label: str | None = None
     client_id: str | None
     client_secret_set: bool
     # What the owner registers as the client's authorized redirect URI in Google Cloud.
@@ -31,6 +35,19 @@ class ConnectionView(BaseModel):
     # The grant also reads YouTube Analytics, so the daily channel reports can be fetched
     # (docs/videos/YOUTUBE-REPORTS.md); a channel linked before them needs linking again.
     analytics_granted: bool = False
+
+
+class ChannelIn(BaseModel):
+    """A channel to add before linking it: a short code the videos refer to, and a name."""
+
+    key: str = Field(pattern=r"^[a-z][a-z0-9-]{1,31}$")
+    label: str | None = Field(default=None, max_length=80)
+
+
+class ChannelChoiceIn(BaseModel):
+    """Which channel a video goes to."""
+
+    key: str = Field(pattern=r"^[a-z][a-z0-9-]{1,31}$")
 
 
 class ClientIn(BaseModel):

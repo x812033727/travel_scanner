@@ -2310,6 +2310,9 @@ class VideoProject(Timestamped, Base):
     youtube_removed_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
     )
+    # Which linked channel this video goes to (VideoYoutubeConnection.key; migration 0147).
+    # None is the default channel, so every video from before there were two stays where it is.
+    youtube_channel_key: Mapped[str | None] = mapped_column(String(32), nullable=True)
     # What the worker last reported about this video's copy in the owner's Google Drive
     # (docs/videos/BACKUP.md; migration 0135): state, folder, tier, size, hash and what is
     # missing. None until the worker first queues it; app/video_backup/admin_status.py owns it.
@@ -2317,17 +2320,25 @@ class VideoProject(Timestamped, Base):
 
 
 class VideoYoutubeConnection(Timestamped, Base):
-    """The one YouTube channel the site publishes to, and the OAuth client it signs in with.
+    """A YouTube channel the site publishes to, and the grant it signs in with.
 
     docs/videos/HANDS-OFF.md §YouTube API; migration 0102. The owner pastes the client of their
     Google Cloud project on the settings tab of /admin/videos and grants access in the browser.
     The client secret and the refresh token are encrypted together in ``secret_config_encrypted``
-    the way the provider settings are, and never go back to a browser. A single row, id 1.
+    the way the provider settings are, and never go back to a browser.
+
+    Since migration 0147 there is one row per channel (docs/videos/YOUTUBE-REPORTS.md §頻道):
+    row 1 is ``key = "default"`` and holds the OAuth client every channel signs in with; the
+    other rows hold only their own grant. Code from before keeps reading row 1.
     """
 
     __tablename__ = "video_youtube_connections"
-    __table_args__ = (CheckConstraint("id = 1", name="ck_video_youtube_connection_single"),)
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, default=1)
+    __table_args__ = (UniqueConstraint("key", name="uq_video_youtube_connections_key"),)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    key: Mapped[str] = mapped_column(
+        String(32), default="default", server_default=text("'default'")
+    )
+    label: Mapped[str | None] = mapped_column(String(80), nullable=True)
     client_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
     secret_config_encrypted: Mapped[str | None] = mapped_column(Text, nullable=True)
     # The channel the grant speaks for, read back with channels.list at every verification.

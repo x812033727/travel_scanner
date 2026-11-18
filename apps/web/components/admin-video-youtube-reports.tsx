@@ -24,8 +24,12 @@ export type ReportsOverview = {
 };
 type SyncOut = { status: string; downloaded: number; replaced: number; problem: string | null };
 
-/** ``reloadKey`` changes when the connection does (a link or an unlink), so the line reads again. */
-export function YoutubeChannelReports({ reloadKey, analyticsGranted }: { reloadKey: string; analyticsGranted: boolean }) {
+/**
+ * ``reloadKey`` changes when the connection does (a link or an unlink), so the line reads again.
+ * ``channel`` is the code of a channel other than the main one (apps/web/lib/youtube-channels-copy.ts).
+ */
+export function YoutubeChannelReports({ reloadKey, analyticsGranted, channel }: { reloadKey: string; analyticsGranted: boolean; channel?: string }) {
+  const query = channel && channel !== "default" ? `?channel=${encodeURIComponent(channel)}` : "";
   const locale = useLocale();
   const copy = youtubeReportsCopy(locale);
   const when = useWhen();
@@ -36,10 +40,10 @@ export function YoutubeChannelReports({ reloadKey, analyticsGranted }: { reloadK
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const load = useCallback(() => {
-    api<ReportsOverview>("/admin/video-youtube/reports")
+    api<ReportsOverview>(`/admin/video-youtube/reports${query}`)
       .then((value) => { setOverview(value); setLoadError(""); })
       .catch((problem: unknown) => setLoadError(problem instanceof Error ? problem.message : ""));
-  }, []);
+  }, [query]);
   useEffect(() => { load(); }, [load, reloadKey]);
 
   const sync = async () => {
@@ -47,7 +51,7 @@ export function YoutubeChannelReports({ reloadKey, analyticsGranted }: { reloadK
     setError("");
     setMessage("");
     try {
-      const result = await api<SyncOut>("/admin/video-youtube/reports/sync", { method: "POST" });
+      const result = await api<SyncOut>(`/admin/video-youtube/reports/sync${query}`, { method: "POST" });
       if (result.problem && result.status !== "partial") setError(result.problem);
       else if (result.status === "partial") setMessage(fill(copy.partial, { downloaded: result.downloaded }));
       else if (result.status === "running") setMessage(copy.running);

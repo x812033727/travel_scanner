@@ -6,6 +6,11 @@ channel. The link's browser half is apps/web/app/api/admin-video-youtube (start 
 which calls ``/oauth/start`` and ``/oauth/exchange`` with the admin's session. ``publish_router``
 is the "ready to upload" card: sending a video to the channel and retrying a run that stopped
 need ``content.manage``, like recording the YouTube address by hand.
+
+More than one channel (migration 0147): the routes without a key are the default channel, as
+before; ``/channels`` lists every channel, adds one, and links, checks or unlinks it by its key.
+``/oauth/exchange`` serves every channel, since the flow it finishes remembers which one it was
+started for. ``/{slug}/youtube/channel`` picks the channel a video goes to.
 """
 
 from __future__ import annotations
@@ -27,6 +32,8 @@ from app.video_reviews.schemas import ProjectOut
 from app.video_youtube import connection, sync, vps, vps_settings
 from app.video_youtube.errors import Refused
 from app.video_youtube.schemas import (
+    ChannelChoiceIn,
+    ChannelIn,
     ClientIn,
     ConnectionView,
     OAuthExchangeIn,
@@ -97,6 +104,50 @@ async def unlink(user: SettingsManager, session: Session) -> UnlinkOut:
     return UnlinkOut(revoked=revoked, connection=view)
 
 
+@connection_router.get("/channels", response_model=list[ConnectionView])
+async def read_channels(user: ContentReader, session: Session) -> list[ConnectionView]:
+    _ = user
+    with answered():
+        return await connection.channel_views(session)
+
+
+@connection_router.post("/channels", response_model=ConnectionView, status_code=201)
+async def add_channel(
+    payload: ChannelIn, user: SettingsManager, session: Session
+) -> ConnectionView:
+    with answered():
+        return await connection.create_channel(session, user, payload.key, payload.label)
+
+
+@connection_router.get("/channels/{key}", response_model=ConnectionView)
+async def read_channel(key: str, user: ContentReader, session: Session) -> ConnectionView:
+    _ = user
+    with answered():
+        return await connection.connection_view(session, key=key)
+
+
+@connection_router.post("/channels/{key}/oauth/start", response_model=OAuthStartOut)
+async def start_channel_link(
+    key: str, payload: OAuthStartIn, user: SettingsManager, session: Session
+) -> OAuthStartOut:
+    with answered():
+        return await connection.start_link(session, user, payload, key=key)
+
+
+@connection_router.post("/channels/{key}/verify", response_model=ConnectionView)
+async def verify_channel(key: str, user: SettingsManager, session: Session) -> ConnectionView:
+    _ = user
+    with answered():
+        return await connection.verify(session, key=key)
+
+
+@connection_router.post("/channels/{key}/unlink", response_model=UnlinkOut)
+async def unlink_channel(key: str, user: SettingsManager, session: Session) -> UnlinkOut:
+    with answered():
+        revoked, view = await connection.unlink(session, user, key=key)
+    return UnlinkOut(revoked=revoked, connection=view)
+
+
 @connection_router.get("/vps/settings", response_model=vps_settings.SettingsView)
 async def read_vps_settings(user: ContentReader, session: Session) -> vps_settings.SettingsView:
     _ = user
@@ -126,6 +177,15 @@ async def publish(
     with answered():
         store = review_store(await load_runtime_settings(session))
         return await sync.request_sync(session, store, slug, user, payload)
+
+
+@publish_router.put("/{slug}/youtube/channel", response_model=ProjectOut)
+async def choose_channel(
+    slug: str, payload: ChannelChoiceIn, user: ContentManager, session: Session
+) -> ProjectOut:
+    """Which linked channel the video goes to; fixed once it is on YouTube."""
+    with answered():
+        return await sync.choose_channel(session, slug, user, payload.key)
 
 
 @publish_router.post("/{slug}/youtube/retry", response_model=ProjectOut, status_code=202)

@@ -26,6 +26,9 @@ POSTGRES = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1", reason="requires PostgreSQL"
 )
 TABLES = ("video_youtube_report_jobs", "video_youtube_reports", "video_youtube_report_state")
+# What migration 0147 (more than one channel) added to these tables since; it checks them itself.
+LATER_COLUMNS = {("video_youtube_report_state", "channel_id")}
+LATER_CONSTRAINTS = {"uq_video_youtube_report_state_channel_id"}
 
 
 def load_migration() -> ModuleType:
@@ -56,8 +59,12 @@ def test_model_and_migration_agree() -> None:
         table = cast(sa.Table, model.__table__)
         assert f"CREATE TABLE {table.name} (" in sql
         for column in table.columns:
+            if (table.name, column.name) in LATER_COLUMNS:
+                continue
             assert f"    {column.name} " in sql, f"{table.name}.{column.name} is missing"
         for constraint in table.constraints:
+            if constraint.name in LATER_CONSTRAINTS:
+                continue
             if constraint.name and isinstance(constraint.name, str):
                 assert constraint.name in sql, f"{constraint.name} is not in the migration"
         for index in table.indexes:

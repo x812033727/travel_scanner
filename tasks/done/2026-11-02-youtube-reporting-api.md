@@ -1,13 +1,13 @@
 ---
 id: 2026-11-02-youtube-reporting-api
 title: YouTube Reporting API: daily channel reports kept on the site and read by paired AI tools
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-youtube-reporting
 claimed_at: 2026-11-02T17:25:48Z
 created_at: 2026-11-02T17:23:43Z
-completed_at:
+completed_at: 2026-11-18T01:25:06Z
 branch: claude/youtube-reporting-api
 depends_on: []
 scope:
@@ -84,3 +84,8 @@ node --test tools/video/youtube-reports/cli.test.mjs tools/skills.test.mjs
 - 解除連結時沒有在 `connection.unlink` 直接刪報表：`tests/test_video_youtube.py`（別張票的範圍）的 SQLite 沒有這三張表。改成每次讀取與同步先 `forget_other_channels`，卡片在解除連結後立刻讀一次。
 - `apps/web/messages/*/admin.json` 被 `docs/videos/long-form/review.json` 以雜湊綁住、也在別的票範圍內，卡片步驟 4 那句「只加這一個範圍」沒改，第二個範圍另起一行說明。
 - 權杖不另設權限旗標：報表只描述站主自己的頻道，讀它不花錢也不改東西。若站主想限制，照 `colab_access`／`runpod_access` 加一個欄位即可。
+
+### 2026-11-18 標記完成（由站主授權，非原持有者）
+
+站主 2026-11-18 在對話中同意代為結案。證據：`origin/main` 已有 `apps/api/migrations/versions/0145_video_youtube_reports.py`、`apps/api/app/video_youtube/reports.py`、`apps/web/components/admin-video-youtube-reports.tsx`，以及報表工具 `tools/video/youtube-reports/`，最後一次出現在 main 的提交是 #2083。這張票停在 review、認領早已過期，卻鎖住了 `2026-11-17-second-youtube-channel-per-channel-connection` 要改的檔案。
+沒勾的兩項（部署後站主在 Google Cloud 啟用 Reporting API 並重新授權）是站主的上線操作，不屬於程式範圍；多頻道上線後要再授權一次，寫在那張票的上線步驟裡。

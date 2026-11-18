@@ -176,8 +176,11 @@ describe("YoutubePublishForm", () => {
     fireEvent.change(within(form).getByLabelText("中文標題"), { target: { value: "改過的標題" } });
     fireEvent.click(send);
     await waitFor(() => expect(sent).toHaveBeenCalledOnce());
-    expect(calls[0].url).toContain("/api/travel/admin/videos/ai-model-choice/youtube/publish");
-    expect(calls[0].body).toEqual({
+    // The channel picker reads the channels first; with one channel it shows nothing.
+    const publish = calls.find((call) => call.url.endsWith("/youtube/publish"));
+    expect(publish?.url).toContain("/api/travel/admin/videos/ai-model-choice/youtube/publish");
+    expect(within(form).queryByLabelText("頻道")).toBeNull();
+    expect(publish?.body).toEqual({
       mode: "upload", url: null, visibility: "scheduled", publish_at: new Date("2030-01-02T20:00").toISOString(),
       title: "改過的標題", description: "先把帳算清楚。", accept_private_lock: true,
     });
@@ -194,7 +197,56 @@ describe("YoutubePublishForm", () => {
     expect(within(form).queryByLabelText("公開時間")).toBeNull();
     fireEvent.click(within(form).getByRole("button", { name: "送到 YouTube" }));
     expect((await within(form).findByRole("alert")).textContent).toContain("審核區已經找不到這份上傳包");
-    expect(calls[0].body).toMatchObject({ mode: "studio", url: "https://studio.youtube.com/video/dQw4w9WgXcQ/edit", visibility: "unlisted", publish_at: null });
+    expect(calls.find((call) => call.url.endsWith("/youtube/publish"))?.body).toMatchObject({ mode: "studio", url: "https://studio.youtube.com/video/dQw4w9WgXcQ/edit", visibility: "unlisted", publish_at: null });
+  });
+
+  it("picks the channel a video goes to once there are two, and names it in the help", async () => {
+    const theater: YoutubeConnection = { ...linked, key: "theater", label: "摩卡劇場", client_id: null, channel_id: "UCtheaterchannel0000000", channel_title: "摩卡劇場 Mokaair", channel_url: "https://www.youtube.com/channel/UCtheaterchannel0000000" };
+    let chosen: string | null = null;
+    const calls = stub((url, method, body) => {
+      if (url.endsWith("/admin/video-youtube/channels")) return [{ ...linked, key: "default" }, theater];
+      if (url.endsWith("/youtube/channel") && method === "PUT") {
+        chosen = (body as { key: string }).key;
+        return { slug: "ai-model-choice", youtube_channel_key: chosen };
+      }
+      if (url.endsWith("/admin/videos/ai-model-choice")) return { slug: "ai-model-choice", youtube_channel_key: chosen };
+      return {};
+    });
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><YoutubePublishForm slug="ai-model-choice" review={confirmation} connection={linked} canUpload onSent={vi.fn()} /></AdminOperationsProvider>);
+    const form = screen.getByRole("form", { name: "送到 YouTube" });
+    const picker = await within(form).findByLabelText("頻道") as HTMLSelectElement;
+    expect(picker.value).toBe("default");
+    fireEvent.change(picker, { target: { value: "theater" } });
+    expect((await within(form).findByRole("status")).textContent).toContain("這支影片改上 摩卡劇場");
+    expect(calls.some((call) => call.method === "PUT" && call.url.endsWith("/admin/videos/ai-model-choice/youtube/channel"))).toBe(true);
+    await waitFor(() => expect(form.textContent).toContain("摩卡劇場 Mokaair"));
+  });
+});
+
+describe("the other channels", () => {
+  it("adds a channel by its code and links it through the start route with that code", async () => {
+    let channels: YoutubeConnection[] = [{ ...linked, key: "default" }];
+    const calls = stub((url, method, body) => {
+      if (url.endsWith("/admin/video-youtube/channels") && method === "POST") {
+        const { key, label } = body as { key: string; label: string | null };
+        const added = { ...empty, key, label, configured: true };
+        channels = [...channels, added];
+        return added;
+      }
+      if (url.endsWith("/admin/video-youtube/channels")) return channels;
+      if (url.includes("/admin/video-youtube/reports")) return { linked: true, analytics_granted: true, synced_at: null, problem: null, reports: [], waiting_for_first_report: [] };
+      return linked;
+    });
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><YoutubeChannelCard /></AdminOperationsProvider>);
+    const card = await screen.findByRole("region", { name: "其他頻道" });
+    expect(card.textContent).toContain("還沒有其他頻道");
+    const add = within(card).getByRole("form", { name: "新增頻道" });
+    fireEvent.change(within(add).getByLabelText("代號"), { target: { value: "Theater" } });
+    fireEvent.change(within(add).getByLabelText("名稱"), { target: { value: "摩卡劇場" } });
+    fireEvent.click(within(add).getByRole("button", { name: "新增" }));
+    const row = await within(card).findByRole("article", { name: "摩卡劇場" });
+    expect(calls.find((call) => call.method === "POST" && call.url.endsWith("/admin/video-youtube/channels"))?.body).toEqual({ key: "theater", label: "摩卡劇場" });
+    expect(within(row).getByRole("link", { name: "連結" }).getAttribute("href")).toBe("/api/admin-video-youtube/start?locale=zh-TW&channel=theater");
   });
 });
 

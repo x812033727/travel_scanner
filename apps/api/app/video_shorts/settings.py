@@ -53,6 +53,7 @@ async def settings_row(session: AsyncSession, *, lock: bool = False) -> VideoSho
 
 async def channel_facts(session: AsyncSession) -> ChannelFacts:
     """The channel the site publishes to, read without creating its row."""
+    # Shorts go to the default channel (row 1) until they learn to pick one (migration 0147).
     row = await session.scalar(select(VideoYoutubeConnection).where(VideoYoutubeConnection.id == 1))
     if row is None or not linked(row):
         return ChannelFacts(linked=False, problem=row.problem if row is not None else None)

@@ -57,6 +57,9 @@ Usage: node tools/video/youtube-reports/cli.mjs <command> [options]
                                     overview.json plus one <family>.csv per report for the last N
                                     days (default 28), coded columns named, ready to analyse
 
+Every command takes --channel KEY: the code of a linked channel other than the main one (the
+settings tab lists them; docs/videos/YOUTUBE-REPORTS.md). Without it, the main channel.
+
 Families: channel_basic (views, engaged views, watch time, average view duration and percentage,
 likes, shares, subscribers), channel_reach_basic (thumbnail impressions and CTR),
 channel_reach_combined, channel_traffic_source, channel_playback_location, channel_device_os,
@@ -76,7 +79,11 @@ export class SiteError extends Error {
   }
 }
 
-export function client({ site, token, fetchImpl = globalThis.fetch }) {
+const CHANNEL_KEY = /^[a-z][a-z0-9-]{1,31}$/;
+
+export function client({ site, token, fetchImpl = globalThis.fetch, channel = "" }) {
+  // The main channel is asked the way it always was; another one is named in the query.
+  const scoped = (route) => (channel && channel !== "default" ? `${route}${route.includes("?") ? "&" : "?"}channel=${encodeURIComponent(channel)}` : route);
   async function call(method, route, { body, accept = "application/json" } = {}) {
     const response = await fetchImpl(`${site}/api/video/${route}`, {
       method,
@@ -93,8 +100,8 @@ export function client({ site, token, fetchImpl = globalThis.fetch }) {
     return response.json();
   }
   return {
-    overview: () => call("GET", "youtube-reports"),
-    sync: (options) => call("POST", "youtube-reports/sync", { body: options }),
+    overview: () => call("GET", scoped("youtube-reports")),
+    sync: (options) => call("POST", scoped("youtube-reports/sync"), { body: options }),
     retention: ({ video, start, end, organic }) => {
       const query = new URLSearchParams({ video_id: video });
       if (start) query.set("start", start);
@@ -105,7 +112,7 @@ export function client({ site, token, fetchImpl = globalThis.fetch }) {
     rows: ({ report, start, end, videos = [] }) => {
       const query = new URLSearchParams({ report, start, end, format: "json" });
       for (const video of videos) query.append("video_id", video);
-      return call("GET", `youtube-reports/rows?${query}`);
+      return call("GET", scoped(`youtube-reports/rows?${query}`));
     },
   };
 }
@@ -183,7 +190,12 @@ async function cmdOverview(api, values, ctx) {
   if (values.json) {
     ctx.stdout.write(`${JSON.stringify(view, null, 2)}\n`);
   } else {
-    ctx.stdout.write(`channel: ${view.channel_title ?? "(not linked)"}${view.channel_id ? ` (${view.channel_id})` : ""}\n`);
+    ctx.stdout.write(`channel: ${view.channel_title ?? "(not linked)"}${view.channel_id ? ` (${view.channel_id})` : ""}${view.key && view.key !== "default" ? ` [--channel ${view.key}]` : ""}\n`);
+    const channels = Array.isArray(view.channels) ? view.channels : [];
+    if (channels.length > 1) {
+      ctx.stdout.write(`linked channels (pick one with --channel KEY):\n`);
+      for (const item of channels) ctx.stdout.write(`  ${item.key}: ${item.channel_title ?? item.label ?? "(not linked)"}${item.linked ? "" : " (not linked)"}\n`);
+    }
     ctx.stdout.write(`analytics granted: ${view.analytics_granted ? "yes" : "no"}; last complete sync: ${view.synced_at ?? "never"}${view.sync_due ? " (due)" : ""}\n`);
     for (const item of view.reports) ctx.stdout.write(`  ${item.report_type_id}: ${item.days} days, ${item.first_day} to ${item.last_day}, ${item.rows} rows\n`);
     for (const item of view.waiting_for_first_report) ctx.stdout.write(`  ${item.report_type_id}: scheduled, no report yet\n`);
@@ -456,8 +468,10 @@ export async function main(argv, overrides = {}) {
   }
   const [handler, options] = COMMANDS[command];
   try {
-    const { values } = parseArgs({ args, options, allowPositionals: false, strict: true });
-    return await handler(client({ site, token, fetchImpl: ctx.fetchImpl ?? globalThis.fetch }), values, ctx);
+    const { values } = parseArgs({ args, options: { ...options, channel: { type: "string" } }, allowPositionals: false, strict: true });
+    const channel = values.channel ?? "";
+    if (channel && !CHANNEL_KEY.test(channel)) throw new UsageError("--channel is a channel code: 2 to 32 lowercase letters, digits or hyphens");
+    return await handler(client({ site, token, fetchImpl: ctx.fetchImpl ?? globalThis.fetch, channel }), values, ctx);
   } catch (error) {
     if (error instanceof UsageError || error?.code?.startsWith?.("ERR_PARSE_ARGS")) {
       ctx.stderr.write(`${error.message}\n`);
