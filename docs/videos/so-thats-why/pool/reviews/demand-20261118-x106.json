@@ -1,0 +1,208 @@
+{
+ "schema_version": 1,
+ "reviewed_on": "2026-11-18",
+ "method": {
+  "questions": {
+   "have": "觀眾手上或家裡就有",
+   "local": "台灣或東亞觀眾自己生活裡的事",
+   "standard": "規格、標準或誰在收錢",
+   "lose_or_jp": "大公司輸掉或日本品牌"
+  },
+  "reviewers": "兩位獨立評審各答一次，不讀 repo、不上網，拿不準答否；兩人都答是才算是。",
+  "formula": "demand = 1 + 2.25 × 答「是」的題數"
+ },
+ "themes": [
+  {
+   "id": "G717",
+   "proposal_key": "Y02",
+   "answers": {
+    "have": true,
+    "local": true,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "demand": 7.75,
+   "reviewer_a": {
+    "have": true,
+    "local": true,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "reviewer_b": {
+    "have": true,
+    "local": true,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "reason": "家裡商品都有條碼、471 是台灣前綴，核心是 GS1 編碼標準由誰發號。"
+  },
+  {
+   "id": "G718",
+   "proposal_key": "Y05",
+   "answers": {
+    "have": true,
+    "local": true,
+    "standard": false,
+    "lose_or_jp": false
+   },
+   "demand": 5.5,
+   "reviewer_a": {
+    "have": true,
+    "local": true,
+    "standard": false,
+    "lose_or_jp": true
+   },
+   "reviewer_b": {
+    "have": true,
+    "local": true,
+    "standard": false,
+    "lose_or_jp": false
+   },
+   "reason": "電鍋是台灣家庭必備，講的是跳起開關原理而非標準，自動電子鍋源自日本東芝的發明。"
+  },
+  {
+   "id": "G719",
+   "proposal_key": "Y01",
+   "answers": {
+    "have": true,
+    "local": true,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "demand": 7.75,
+   "reviewer_a": {
+    "have": true,
+    "local": true,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "reviewer_b": {
+    "have": true,
+    "local": true,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "reason": "統一發票人人手上有、是台灣獨有制度，核心是字軌編號規則與國稅局怎麼收稅。"
+  },
+  {
+   "id": "G720",
+   "proposal_key": "Y04",
+   "answers": {
+    "have": true,
+    "local": false,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "demand": 5.5,
+   "reviewer_a": {
+    "have": true,
+    "local": false,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "reviewer_b": {
+    "have": true,
+    "local": false,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "reason": "微波爐與 Wi-Fi 家家有，但屬全球共通現象，核心是頻段分配規範。"
+  },
+  {
+   "id": "G721",
+   "proposal_key": "Y06",
+   "answers": {
+    "have": true,
+    "local": false,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "demand": 5.5,
+   "reviewer_a": {
+    "have": true,
+    "local": false,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "reviewer_b": {
+    "have": true,
+    "local": false,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "reason": "信用卡人人有，但是全球性的轉變，核心是 EMV 等規格與盜刷損失誰負擔。"
+  },
+  {
+   "id": "G722",
+   "proposal_key": "Y08",
+   "answers": {
+    "have": true,
+    "local": false,
+    "standard": false,
+    "lose_or_jp": false
+   },
+   "demand": 3.25,
+   "reviewer_a": {
+    "have": true,
+    "local": false,
+    "standard": false,
+    "lose_or_jp": true
+   },
+   "reviewer_b": {
+    "have": true,
+    "local": false,
+    "standard": false,
+    "lose_or_jp": false
+   },
+   "reason": "石英錶常見於家中，非東亞特有，核心是 2 的 15 次方的工程原理；石英錶為精工首創並使瑞士機械錶業落敗。"
+  },
+  {
+   "id": "G723",
+   "proposal_key": "Y03",
+   "answers": {
+    "have": false,
+    "local": false,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "demand": 3.25,
+   "reviewer_a": {
+    "have": false,
+    "local": true,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "reviewer_b": {
+    "have": false,
+    "local": false,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "reason": "主角是日本電網而非家中物品，屬東亞（日本）生活的事，核心是電力頻率標準；但不是日本品牌或發明，也不是大公司輸掉。"
+  },
+  {
+   "id": "G724",
+   "proposal_key": "Y07",
+   "answers": {
+    "have": true,
+    "local": false,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "demand": 5.5,
+   "reviewer_a": {
+    "have": true,
+    "local": false,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "reviewer_b": {
+    "have": true,
+    "local": false,
+    "standard": true,
+    "lose_or_jp": false
+   },
+   "reason": "手機 SIM 卡人手一張，屬全球共通，核心是卡片尺寸規格與電信業者鎖機的利益。"
+  }
+ ]
+}
