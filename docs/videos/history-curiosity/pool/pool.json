@@ -32,9 +32,9 @@
     "produced_cores": 48,
     "selected_candidates": 1735,
     "held_candidates": 156,
-    "reserve_candidates": 169,
+    "reserve_candidates": 168,
     "shorts_candidates": 89,
-    "excluded_cores": 268,
+    "excluded_cores": 269,
     "new_batch_records": 2153,
     "source_urls": 14528,
     "current_research_source_urls": 9706,
@@ -1686,7 +1686,7 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/dedup-decisions.json",
-      "sha256": "9cbceb6cea60aa3697f14222a084ff83e5927f4e92cb0a561d969e95824f7923"
+      "sha256": "ac03756e52e505f39902aac0e81cf9e68879e2d6b7c42810824293f5b6253003"
     },
     {
       "file": "docs/videos/history-curiosity/pool/selection.json",
@@ -222262,14 +222262,18 @@
       "category_code": "L",
       "category": "L-都市傳說與消失地名",
       "selected": false,
-      "pool_status": "reserve",
+      "pool_status": "excluded",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N7574"
       ],
-      "disposition": null,
-      "exclusion_reason": "還沒有可追溯來源：題目卡是起草時憑既有知識寫的，要先研究才能選入。",
+      "disposition": {
+        "disposition": "drop",
+        "reason": "第七十七批待查題兩輪補查（ZV3／R783、ZV12／R7712，2026-11-18）只剩全國性日報轉述地方政府建築物台帳一條路，沒有一手或機構來源；站主 2026-11-18 決定這類轉述不當來源，判不收。",
+        "reentry": "讀到京畿道廣州市建築物台帳、閉院紀錄等公開的一手或機構文件"
+      },
+      "exclusion_reason": "第七十七批待查題兩輪補查（ZV3／R783、ZV12／R7712，2026-11-18）只剩全國性日報轉述地方政府建築物台帳一條路，沒有一手或機構來源；站主 2026-11-18 決定這類轉述不當來源，判不收。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false
     },
@@ -256765,6 +256769,12 @@
         "disposition": "drop",
         "reason": "第七十六批待查題三輪補查（最後一輪 ZV14、覆核 R7614，2026-11-18）仍補不到關鍵來源，判不收。第三輪補到的博物館頁只把『20 格西遊浮雕、其中一格紅孩兒』坐實，題卡最需要的『1348 年已有豬八戒』仍是研究者判讀；流傳說法的前提（大家以為四人天生一隊、豬是吳承恩加的）始終沒有像樣樣本，翻轉立不起來；素材本來就只有 6–8 分鐘。判不收為獨立題；詩話隊伍沒有豬、明初雜劇第 13 齣入隊這段（ZW3-S005 讀過全文）可在日後西遊起源題當一段使用，重開條件是讀到機構點名豬八戒的浮雕說明或謝明",
         "reentry": "讀到機構點名豬八戒的敬天寺石塔浮雕說明，或謝明勳〈韓國敬天寺元代石塔「西遊」故事浮雕圖解〉原文"
+      },
+      {
+        "id": "N7574",
+        "disposition": "drop",
+        "reason": "第七十七批待查題兩輪補查（ZV3／R783、ZV12／R7712，2026-11-18）只剩全國性日報轉述地方政府建築物台帳一條路，沒有一手或機構來源；站主 2026-11-18 決定這類轉述不當來源，判不收。",
+        "reentry": "讀到京畿道廣州市建築物台帳、閉院紀錄等公開的一手或機構文件"
       }
     ],
     "cross_series": [
