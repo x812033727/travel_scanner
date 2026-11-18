@@ -196,13 +196,13 @@
   {
    "file": "cloth1",
    "at": "s21",
-   "off": 0.2,
+   "off": 0.25,
    "gain": -12
   },
   {
    "file": "impactBell_heavy_001",
    "at": "s21",
-   "off": 0.9,
+   "off": 1.35,
    "gain": -12
   },
   {
@@ -351,7 +351,7 @@
  "clip_af": {
   "s01": {
    "from": 0,
-   "af": "rubberband=pitch=1.12:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.15:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s03": {
    "from": 0,
@@ -371,15 +371,15 @@
   },
   "s17": {
    "from": 0,
-   "af": "rubberband=pitch=1.06:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.06:formant=preserved,volume=-2.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s06": {
    "from": 0,
-   "af": "rubberband=pitch=1.22:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.28:formant=preserved,volume=4.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s10": {
    "from": 0,
-   "af": "rubberband=pitch=1.2:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.2:formant=preserved,volume=0.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s13": {
    "from": 0,
@@ -395,7 +395,7 @@
   },
   "s04": {
    "from": 0,
-   "af": "asetrate=42240,aresample=48000,atempo=1.136364,rubberband=pitch=0.79:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "asetrate=42240,aresample=48000,atempo=1.136364,rubberband=pitch=0.79:formant=preserved,volume=2.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s33": {
    "from": 0,
@@ -403,11 +403,31 @@
   },
   "s40": {
    "from": 0,
-   "af": "asetrate=42240,aresample=48000,atempo=1.136364,rubberband=pitch=0.78:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "asetrate=42240,aresample=48000,atempo=1.136364,rubberband=pitch=0.78:formant=preserved,volume=2.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s24": {
    "from": 0,
    "af": "asetrate=41760,aresample=48000,atempo=1.149425,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s37": {
+   "from": 0,
+   "af": "volume=1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s39": {
+   "from": 0,
+   "af": "volume=1.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s02": {
+   "from": 0,
+   "af": "volume=-1.6dB"
+  },
+  "s30": {
+   "from": 0,
+   "af": "volume=-1.6dB"
+  },
+  "s35": {
+   "from": 0,
+   "af": "volume=-1.4dB"
   }
  },
  "voice_off": [
@@ -427,7 +447,7 @@
   "zq931a14": 0.3,
   "zq931a16": 0.3,
   "zq931a18": 0.3,
-  "zq931a20": 0.9,
+  "zq931a20": 1.55,
   "zq931a21": 0.3,
   "zq931a27": 0.3,
   "zq931a31": 0.5,
@@ -438,7 +458,10 @@
  "line_lead": {
   "zq931a30": 2.8
  },
- "panel_y": {},
+ "panel_y": {
+  "s14": 560,
+  "s28": 800
+ },
  "panel_from": {
   "s14": 0.3,
   "s28": 0.25
