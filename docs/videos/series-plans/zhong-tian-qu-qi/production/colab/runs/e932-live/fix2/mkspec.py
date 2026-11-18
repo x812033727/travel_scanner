@@ -6,6 +6,9 @@ NOT RUN: written and checked (mkjobs.py, preflight-prompts.py, check_manifest.py
     python3 -I ../../_scripts/preflight-prompts.py <live>/fix2/colab-jobs.json
     python3 -I <repo>/.agents/skills/minimax-h3-colab/scripts/check_manifest.py <live>/fix2/colab-jobs.json
 
+Run on the Colab session zt-live2 (e931 done and released; zt-live3 is busy with the e932 refine, about 2.5 h). The manifest
+is not bound to a session: pass --session zt-live2 when it is sent.
+
 What went wrong in fix1 9321202 (fix1/review-picks.tsv): the camera behind Erniu put the raised hoe handle and the carrying
 pole on one line from the first frame ("its end already under the raised hoe handle"), so after the jerk the two shafts read
 as one long pole held by both; the iron blade came off the handle and floated in the upper left 1.3-2.3 s; about nineteen
