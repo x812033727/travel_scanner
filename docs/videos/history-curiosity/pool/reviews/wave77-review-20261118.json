@@ -106,6 +106,22 @@
           "水越幸一 1920 年是否任地方課長"
         ],
         "note": "兩個新來源真實可讀，撐得住同音換字機制與府令日期，但改寫版沒有翻轉（京都說與同音換字並不互斥、『又高又雄』不能上片），撐不起 screened chapter；維持待查，建議無原報管道就不收。"
+      },
+      "recheck3": {
+        "verdict": "REJECT",
+        "reviewer": "R7912",
+        "author": "ZV2",
+        "key_source_reopened": "",
+        "changes": [
+          "依第三輪規則改列不收（理由與重開條件見 not_added）。"
+        ],
+        "unverified": [
+          "1939 年 6 月 3 日隨筆原報（報名不一致）",
+          "《府報》第 2177 號府令第 47 號原件",
+          "京都高雄山說無文件根據的第二個來源",
+          "萬華日語讀音的機構來源"
+        ],
+        "note": "ZV2 新試的日本國立公文書館（只有勅令）與高雄市府《Takao 樂高雄》2020 年 12 月號（只寫 1920 年 9 月 1 日更名，覆核以快取文字層核對屬實）都沒補到缺口；三輪無原報，同意不收。"
       }
     },
     {
@@ -471,6 +487,30 @@
           "1970 年代電影片名年份只有 ZW4-S018"
         ],
         "note": "新增的只是 NDL 書目（只證明出版年），第三輪仍沒讀到小說原文，維持 needs_check；ndlsearch 已封鎖，以 cache 核對。"
+      },
+      "recheck3": {
+        "verdict": "NEEDS_CHECK",
+        "reviewer": "R7912",
+        "author": "ZV2",
+        "key_source_reopened": "https://archive.org/metadata/manqingbaishi18luba（R7912 seq 1，200，124947 bytes）：ZV2-S006：title Man Qing bai shi、date 1914、publisher Xin Zhongguo tu shu ju、call number DS773 .L76、description『v. 3. Man Qing wai shi : 2 juan / Tian'gu zhuan』與 ZV2 快取 seq 11 相同；位元組相同，雜湊不同是 metadata JSON 的動態欄位。；https://archive.org/download/manqingbaishi18luba/manqingbaishi18luba_jp2.zip/manqingbaishi18luba_jp2%2Fmanqingbaishi18luba_0620.jp2&ext=jpg（R7912 seq 2，200，1472959 bytes）：網址出自 ZV2 seq 17 的 jp2.zip 目錄；轉圖看是貪官傳（貽穀事），不是《滿清外史》。；https://archive.org/download/manqingbaishi18luba/manqingbaishi18luba_jp2.zip/manqingbaishi18luba_jp2%2Fmanqingbaishi18luba_0030.jp2&ext=jpg（R7912 seq 3，200，1365958 bytes）：宣統三年上諭彙鈔，不是《滿清外史》。；https://archive.org/download/manqingbaishi18luba/manqingbaishi18luba_jp2.zip/manqingbaishi18luba_jp2%2Fmanqingbaishi18luba_0540.jp2&ext=jpg（R7912 seq 4，200，1307044 bytes）：辛亥武漢戰事記事（江元艦、龜山），不是《滿清外史》。；https://archive.org/download/manqingbaishi18luba/manqingbaishi18luba_jp2.zip/manqingbaishi18luba_jp2%2Fmanqingbaishi18luba_0080.jp2&ext=jpg（R7912 seq 5，200，1259233 bytes）：黃興畫像頁，不是《滿清外史》。另以 ZV2 的 img/p0349.jpg（seq 18）核對，版心確為『各省獨立史別裁』，與 ZV2 所記相符。",
+        "changes": [
+          "premise_status 由 screened 改回 needs_check：ZV2-S003–S005 的網址是自組的 Google 圖書舊版檢索端點，沒有搜尋結果給出，而且同一服務的 www.googleapis.com 已因 429 被封鎖，換主機等於繞過；依規則 2b 不計入，只當線索。",
+          "role 由 episode_core 降為 chapter、minutes 改 [5, 7]：可計入的素材只有官書 KWIC、書目與電影造型，血滴子出處沒有原文。",
+          "刪去『早期文本沒有把血滴子和粘竿處連在一起』『讀到的段落裡根本沒有粘竿處』『連結是更晚才接上的』：100–150 字片段推不出不存在，片段正好截在綠林豪客首領處（其他重排本顯示下文是年羹堯），也沒在書內檢索過『粘竿』。",
+          "answer_target 把第三輪的小說與野史片段移到『線索（未計入）』段；答案改回『目前查得到的都是民國初年的野史與通俗小說，正片不說哪一部最早』；『《滿清外史》早於《清史演義》』只列為待核。",
+          "payoff 改寫，拿掉《滿清外史》、江蘇人罵人、綠林豪客與『沒有粘竿處』等依片段的說法。",
+          "scope 第（3）點改成：正片不得引片段原文、不得說《滿清外史》較早、不得說早期小說沒提粘竿處；製作前必須讀到書頁影像。",
+          "risk 回到只點名雍正；蔡東藩卒年只見一則不計入的片段。",
+          "ZV2-S003–S005 limitations 加註取得途徑與不計入；ZV2-S006 limitations 加註覆核另抽 4 葉仍沒找到《滿清外史》與尚未抽過的範圍。"
+        ],
+        "unverified": [
+          "任何一部早期小說或野史的書頁影像（《清史演義》第三十回、《滿清外史》〈血滴子之猛厲〉）",
+          "《滿清外史》1913 年原刊與它是否早於《清史演義》",
+          "『粘竿處＝血滴子』的連結最早出處",
+          "KR2m0017、KR2k0009 書名；粘竿處完整職掌",
+          "1970 年代電影片名年份只有 ZW4-S018"
+        ],
+        "note": "第三輪找到了正確的位置（第三十回原文與《滿清外史》一章），但取得途徑繞過了封鎖、網址不是搜尋結果給出，而且只是截斷片段，撐不起 screened，更推不出『早期文本沒提粘竿處』；維持待查、降為 chapter，下一輪讀不到書頁影像就不收。"
       }
     },
     {
@@ -1032,6 +1072,7 @@
     "pmc.ncbi.nlm.nih.gov 與 www.ncbi.nlm.nih.gov 回的是 200 狀態的 reCAPTCHA 驗證頁，研究代理照「驗證頁第一次就停」手動加進共用封鎖名單（抓取工具只自動記 403／429）。",
     "沒有發現編造的來源：十位覆核共發 58 次重抓與補讀，位元組或正文與研究代理的快取相符。",
     "補查（站主 2026-11-18「補第七十七批待查」）：ZV0–ZV4 補查、R780–R784 覆核，共 14 次重抓與加試。補到 3 題，都只夠一章：N7549 孟婆湯（宋代「孟婆是風」、《玉曆》1806 年版本書目）、N7562 灶神（司馬彪注、《酉陽雜俎》、《風俗通義》；補查代理想升 episode_core，覆核判撐不起）、N7575 萬曆足疾（《明神宗實錄》卷219「腰痛腳軟，行走不便」與《明史·雒于仁傳》，覆核刪掉「官員認為是託辭」）。仍待查 6 題：N7543、N7568、N7560、N7571、N7574、N7578（補查代理想升 screened，覆核以報紙轉載無署名、不算一手退回）。kanripo.org 這一輪後段回 403 進了封鎖名單；只有一行上下文的 KWIC 檢索可以當原文，但只限那一行看得到的字。",
-    "第七十七批二次補查（ZV11–ZV13、R7711–R7713）：N7578 朝內 81 號補到北京市 2007 年優秀近現代建築保護名錄原件，可單獨成集而入選；N7571 包公黑臉（四庫本《宋史·包拯傳》全文、1937 年京劇指南）與 N7568 天母可收、只夠一章；N7560 血滴子、N7574 昆池岩、N7543 打狗改名高雄仍待查（昆池岩的建築物台帳只見報紙轉述，原件需本人認證、法院決定書未公開，覆核建議若不接受全國性日報轉述就不收）。 共 9 次重抓與加試。"
+    "第七十七批二次補查（ZV11–ZV13、R7711–R7713）：N7578 朝內 81 號補到北京市 2007 年優秀近現代建築保護名錄原件，可單獨成集而入選；N7571 包公黑臉（四庫本《宋史·包拯傳》全文、1937 年京劇指南）與 N7568 天母可收、只夠一章；N7560 血滴子、N7574 昆池岩、N7543 打狗改名高雄仍待查（昆池岩的建築物台帳只見報紙轉述，原件需本人認證、法院決定書未公開，覆核建議若不接受全國性日報轉述就不收）。 共 9 次重抓與加試。",
+    "第七十七批第三輪補查（ZV2、R7912）：N7543 打狗改名高雄三輪讀不到 1939 年隨筆原報與府報原件，判不收；N7560 血滴子只讀到 Google 圖書檢索片段，維持待查並降為一章。Google 圖書的 books/feeds/volumes 檢索介面不准用：它是補查代理自己組的網址，而且同一服務的 www.googleapis.com 已在封鎖名單，換主機等於繞過封鎖（主編 2026-11-18 裁定）。"
   ]
 }
