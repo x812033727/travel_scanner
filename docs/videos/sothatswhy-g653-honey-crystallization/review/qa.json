@@ -1,0 +1,69 @@
+{
+  "ok": false,
+  "final_sha256": "ffea63e829148fefe3e2e18277133fa741d2e19ea29ed4187ce1f6644a263e92",
+  "items": [
+    {
+      "id": "assemble",
+      "ok": true,
+      "detail": "21824 frames, -14 LUFS, 0 frames matched their slides; every check passed"
+    },
+    {
+      "id": "render",
+      "ok": true,
+      "detail": "0 slide states drawn with no layout, glyph or font problem, thumbnail included"
+    },
+    {
+      "id": "narration",
+      "ok": true,
+      "detail": "timeline.json approved at 2026-11-18T03:30:49.162Z"
+    },
+    {
+      "id": "pace",
+      "ok": true,
+      "detail": "132 slide states, the longest 8.8 s; none over 15 s"
+    },
+    {
+      "id": "captions",
+      "ok": true,
+      "detail": "caption files for zh-TW, en, ja, ko, every translation current"
+    },
+    {
+      "id": "metadata",
+      "ok": true,
+      "detail": "title, description and tags within YouTube's limits for zh-TW, en, ja, ko, es, pt, id, vi, th; 6 chapters"
+    },
+    {
+      "id": "facts",
+      "ok": true,
+      "detail": "verify-1.md marks no claim NOT FOUND"
+    },
+    {
+      "id": "links",
+      "ok": true,
+      "detail": "13 links open; 9 refuse automated checks and were not opened: https://doi.org/10.3390/foods10040773 (HTTP 403), https://doi.org/10.3390/molecules28041736 (HTTP 403), https://doi.org/10.3390/foods8010030 (HTTP 403), https://doi.org/10.1021/acsomega.4c00570 (HTTP 403), https://doi.org/10.3390/molecules28020714 (HTTP 403), https://doi.org/10.3390/foods13070989 (HTTP 403), https://doi.org/10.3390/foods10112892 (HTTP 403), https://doi.org/10.1155/2014/935129 (HTTP 403), https://doi.org/10.3390/foods12010048 (HTTP 403)"
+    },
+    {
+      "id": "thumbnail",
+      "ok": true,
+      "detail": "1280x720 JPEG, 184 KB; the headline is about 31 px tall at 320 px wide; language thumbnails checked: en, ja, ko, es, pt, id, vi, th",
+      "warnings": [
+        "the headline repeats the title: 「蜂蜜變白變硬是被摻了」 is in the title's first 10 characters; say what the title does not"
+      ]
+    },
+    {
+      "id": "policy",
+      "ok": false,
+      "detail": "Jev：符合立場 0.67、有示範 0.22、建議 0.02、業配 0.02；沒過（有示範低於 0.6）"
+    },
+    {
+      "id": "disclosure",
+      "ok": true,
+      "detail": "tick altered or synthetic content: a drama: AI-generated shots and music are always disclosed; upload/metadata.json already says so"
+    }
+  ],
+  "policy_judged": {
+    "request_sha256": "f6957130686e58def206f68c58367ec9a77d71753546b021738f3caed20ffec6",
+    "ok": false,
+    "detail": "Jev：符合立場 0.67、有示範 0.22、建議 0.02、業配 0.02；沒過（有示範低於 0.6）"
+  }
+}
