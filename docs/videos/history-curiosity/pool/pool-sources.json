@@ -27485,6 +27485,25 @@
       ]
     },
     {
+      "id": "SRC-15f284a0d7c1f2c6",
+      "url": "https://archive.org/advancedsearch.php?q=creator%3A%28Fliess%2C%20Wilhelm%29&fl[]=identifier&fl[]=title&fl[]=creator&fl[]=date&rows=20&output=json",
+      "readings": [
+        {
+          "title": "Internet Archive 館藏檢索：creator = Fliess, Wilhelm（館藏編目的人名權威形式）",
+          "publisher": "Internet Archive；條目編目來自 Wellcome Library 等館藏（例如 b28052109《Der Ablauf des Lebens》1906、vomlebenundvomto00flie《Vom Leben und vom Tod》1919）",
+          "read_via": "fetch.sh seq 7（200，2,345 bytes），讀 JSON",
+          "reading_scope": "只讀 creator 欄與書名、年份",
+          "locator": "docs 中 creator 欄『Fliess, Wilhelm, 1858-1928』（b28052109、derablaufdeslebe00flie、vomlebenundvomto00flie、originsofpsychoa00freu 四筆）",
+          "summary": "多個圖書館編目把這位柏林醫生、《生命的歷程》作者記為『Fliess, Wilhelm, 1858-1928』，即卒於 1928 年；館藏裡也有 1954 年出版的《精神分析的起源：致 Wilhelm Fliess 的信》。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是館藏編目，不是傳記正文；只用來確認卒年早於 1956，和既有卡用 archive.org creator 欄確認佛洛伊德卒年同一層級。",
+          "accessed_on": "2026-11-18",
+          "origin": "wave83-20261118",
+          "original_url": "https://archive.org/advancedsearch.php?q=creator%3A%28Fliess%2C%20Wilhelm%29&fl[]=identifier&fl[]=title&fl[]=creator&fl[]=date&rows=20&output=json"
+        }
+      ]
+    },
+    {
       "id": "SRC-15f2a4572870a99b",
       "url": "https://commons.wikimedia.org/wiki/Category:Antikythera_wreck",
       "readings": [
@@ -39991,6 +40010,25 @@
           "limitations": "講座案内ページのみ；9.9MB の講演録 PDF は未読。",
           "origin": "wave4-20261102",
           "original_url": "https://www.city.chiba.jp/chiba-shi/kanren/koza/koza17.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-202db0a30db1dd75",
+      "url": "https://www.esri.cao.go.jp/jp/esri/archive/bun/bun203/bun203i.pdf",
+      "readings": [
+        {
+          "title": "明治期日本の医学制度と「難病」～帝国陸海軍の脚気対策～（『経済分析』第 203 号）",
+          "publisher": "內閣府經濟社會綜合研究所《經濟分析》第 203 號，2021 年（東京大學經濟學研究科教授與西北大學博士候選人合著）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 14（200，1,520,000 bytes，sha256 fd483733ccca9975），pdftotext -layout 轉文字後讀；頁碼用 pdftotext 分頁比對（雜誌頁＝PDF 頁＋213）。",
+          "reading_scope": "要旨；2.2.3–2.2.4（高木兼寬與海軍兵食、表 2.1）；2.3.2（日俄戰爭陸軍腳氣、表 2.5）；2.3.3–2.3.6（石黒忠悳、日清戰爭阻止麥飯、小池正直與日俄戰爭麥的追送）。第 3 章以後的賽局模型沒讀。",
+          "locator": "要旨（p.214）；表 2.1 海軍腳氣患者數（p.225，出典海軍省醫務局 1899、1908）；高木生卒（2.2.3，p.223；卒年 p.226）；表 2.5 與死亡數討論（p.228，出典《明治三十七八年戰役陸軍衛生史》第 2 卷 p.1778）；石黒忠悳（1845–1941）（p.228）；日清戰爭第二軍麥飯上申被阻（p.229）；小池正直（1854～1914）（p.232）；2.3.6 小池 1906 年演講引文與 1907 年《醫海時報》匿名批評（p.233–234）",
+          "summary": "日本政府研究機關期刊的論文，作者與慈惠醫大無關。重點：（1）日俄戰爭期間的野戰衛生長官是小池正直（1854–1914，石黒忠悳的後繼者、時任醫務局長），開戰時沒有實行麥飯支給；小池 1906 年演講自述：陸軍平時數十年來米麥混食，平時腳氣入院一年僅約 0.44%，但戰時給與規程只有精米，加上戰地按比例混米麥困難、麥易生蟲不耐保存，起初不採用；明治 37 年 6 月前後旅順方面及沿岸諸隊、尤其補助輸卒隊腳氣大量發生，才『冒困難』改為平時同樣的混食，38 年確實勵行，比前年減少但沒能完全防止。（2）1907 年《醫海時報》匿名文章批評：37 年 4 月以前輸送的麥皆無，之後到 38 年 12 月每兵每日的麥只有四到五匁、最多不超過六匁，『戰役間腳氣預防無方針』。（3）陸軍官方《陸軍衛生史》表上直接列為腳氣死亡的是 5,896 名；27,800 人以上是 1908 年《醫海時報》〈日露と脚気〉的數字，若照山下（1988）把表中『事故』22,800 名也算作腳氣死亡，合計 28,696 名，與醫海時報大致相符。（4）海軍表：明治 37 年腳氣患者 41、死亡 3；38 年患者 70、死亡 0。（5）日清戰爭時（1895 年 2 月）第二軍軍醫部長土岐賴德上申給麥飯，據山下（2008）被野戰衛生長官石黒與第二軍兵站軍醫部長森林太郎阻止。（6）高木兼寬 1849 年生、1920 年卒；石黒忠悳 1845–1941。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "陸軍衛生史、小池演講、醫海時報、海軍省醫務局統計都是論文轉引，本輪沒有讀到原件影像；表 2.5 在 pdftotext 下欄位錯位，數字以論文正文的說明為準。森林太郎阻麥一事只轉述山下（2008），而且是日清戰爭、不是日俄戰爭。論文作者在世，正片不點名。",
+          "origin": "wave83-20261118",
+          "original_url": "https://www.esri.cao.go.jp/jp/esri/archive/bun/bun203/bun203i.pdf"
         }
       ]
     },
@@ -67433,6 +67471,25 @@
       ]
     },
     {
+      "id": "SRC-3700244a4abb7359",
+      "url": "https://www.hk01.com/%E5%A4%A7%E5%9C%8B%E5%B0%8F%E4%BA%8B/60302792/%E7%B5%95%E7%BE%8E-%E5%B1%B1%E6%9D%B1%E5%80%99%E9%B3%A5%E9%81%B7%E5%BE%99%E5%8C%96%E8%BA%AB-%E5%B7%A8%E9%AF%A8-%E5%A5%87%E6%99%AF-%E7%B6%B2%E6%B0%91-%E9%80%8D%E9%81%99%E9%81%8A-%E7%AB%9F%E6%98%AF%E7%9C%9F%E7%9A%84",
+      "readings": [
+        {
+          "title": "絕美！山東候鳥遷徙化身「巨鯨」奇景　網民：《逍遙遊》竟是真的",
+          "publisher": "香港01『大國小事』，2025-12-11（2025-12-14 更新）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 16（200，498,485 bytes），h2t.py 去標籤讀正文與網友留言區塊",
+          "reading_scope": "正文全文與頁面上的留言摘錄",
+          "locator": "正文第 1 段（『鳥群變化飛行陣型化身為如鯨魚般的形狀…重現莊子〈逍遙遊〉中「鯤鵬展翅」的奇觀』）；引〈逍遙遊〉後一段（『描寫北方大海一隻名為「鯤」的大魚…』）",
+          "summary": "流傳版本樣本：山東東營黃河口候鳥群飛成『巨鯨』形狀，網民說重現〈逍遙遊〉『鯤鵬展翅』、莊子寫的『北冥有魚』竟是真的；報導把鯤解釋成『北方大海一隻名為「鯤」的大魚』，網友留言以『好像大鯨魚』呼應。全文沒有提到鯤字在古字書裡是『魚子』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞報導兼網民反應，不是教材；記者不點名。只當『大家把鯤當成巨鯨大魚』的流傳樣本。 覆核 R8310：報導對原文『大魚』的解釋本身沒錯，它代表的是只知巨魚義、不知魚子義的一般理解，不是錯誤說法。",
+          "origin": "wave83-20261118",
+          "original_url": "https://www.hk01.com/大國小事/60302792/絕美-山東候鳥遷徙化身-巨鯨-奇景-網民-逍遙遊-竟是真的"
+        }
+      ]
+    },
+    {
       "id": "SRC-3706b78acd83084b",
       "url": "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/William_III.,_King_of_England",
       "readings": [
@@ -86376,6 +86433,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://archive.org/metadata/WilliamLillysHistoryOfHisLifeAndTimesFromTheYear1602To1681ByLilly"
+        }
+      ]
+    },
+    {
+      "id": "SRC-45f435a5f19b9b50",
+      "url": "https://www.loc.gov/item/mss3999000843/",
+      "readings": [
+        {
+          "title": "Sigmund Freud Papers: General Correspondence; Jung, C. G.; From Freud; Transcripts; 1909（1909 年 4 月 16 日信的打字謄本，館藏編頁 121–123）",
+          "publisher": "Library of Congress, Manuscript Division, Sigmund Freud Papers（數位化館藏；謄本為德文打字本）",
+          "read_via": "fetch.sh seq 2（200，421,883 bytes，loc.gov 館藏 JSON 檢索 q=jung，找到本夾）、seq 3（200，111,093 bytes，item JSON，列出 44 張影像與各自的 IIIF 網址）、seq 4／5／6（200，116,605／108,628／35,530 bytes，第 12、11、13 張影像的 25% JPEG，網址照 item JSON 所列），用 Read 看圖逐行讀德文打字稿",
+          "reading_scope": "只讀館藏編頁 121–123（1909 年 4 月 16 日信全文：開頭的書櫃爆裂聲一段、61–62 死期一段、結尾）；本夾其他信沒讀；原件手稿夾（Originals 1909 Jan.–June）沒讀",
+          "locator": "影像 0011（編頁 121，信頭『16. 4. 09 Wien, IX. Berggasse 19.』）；影像 0012（編頁 122，『Vor einigen Jahren entdeckte ich bei mir die Ueberzeugung』起到『das sprachliche beim Wortwitz』）；影像 0013（編頁 123，結尾署名 Freud）",
+          "summary": "一手全文（謄本）。信頭 1909 年 4 月 16 日，維也納 Berggasse 19。前半：收信人在他家時書櫃一再發出爆裂聲，他先觀察了一陣，說之後聲音雖然還有，卻和他的念頭無關，他的『輕信』隨收信人離開而消失，『家具已經去魅』，他要『戴上父親的角框眼鏡』勸對方冷靜。後半：幾年前他發現自己深信會死在 61 到 62 歲之間，『今天只剩 8 年』；和弟弟去希臘時，61 或 60 配 1、2 在各種編號物、尤其交通工具上出現，他『認真記下』；在雅典旅館分到二樓（im ersten Stock）時他想這下『61 號不可能出現』，結果拿到 31 號，『以宿命論的放縱』算成 61–62 的一半，這個數字比前一個更頑強。接著他說，因為自己的體系裡有『只是好奇、絕不迷信』的部分，他試著分析這份信念：它出現於 1899 年，那年發生兩件事——寫完《夢的解析》（印的是 1900 年），以及拿到一直沿用的新電話號碼 14362；兩者的共同點是寫那本書時他 43 歲，於是『另外幾個數字代表我的生命終點，也就是 61 或 62』，並引『瘋狂裡忽然有了章法』；他說這份迷信真正的意思是『用《夢的解析》完成了畢生工作，再沒有事要做，可以安心死去』。又說『順便說一句，裡面有 W. Fliess 的暗中影響；在他發動攻擊的那一年，迷信也爆發了』，並說收信人會再次看到他神祕主義『特別是猶太式的本性』。最後他把 61 一再出現歸於兩點：無意識加強的注意力（引《浮士德》『在每個女人身上看見海倫』），以及『偶然的配合』，說它在妄想形成裡的角色，就像身體配合之於歇斯底里症狀、語言配合之於雙關笑話。結尾說會帶著對『一種自己並不相信的可愛妄想』的興趣，聽對方的研究。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是圖書館收藏的打字謄本，不是手稿本身（同館另有原件夾，本輪沒看）；謄本有手寫補字（Frist、Spuk、das 等），讀法以打字為準；德文由我直接讀，引語為自己的中譯。LOC 權利聲明說館藏大部分在美國屬公有領域，但不對單件作保證，故只引短語。信裡沒有寫希臘之行的年份；『他（seines）發動攻擊』的『他』依文句指 Fliess，但信裡沒有說是什麼攻擊。 覆核 R8312：重抓編頁 122 的 50% 影像核對；館藏題名含收信人姓名，正片只稱身分。",
+          "accessed_on": "2026-11-18",
+          "origin": "wave83-20261118",
+          "original_url": "https://www.loc.gov/item/mss3999000843/"
         }
       ]
     },
@@ -118404,6 +118480,25 @@
       ]
     },
     {
+      "id": "SRC-60ce7894521de32f",
+      "url": "https://archive.org/download/20260104_20260104_0404/%E7%94%9F%E8%95%83%E4%BC%9D%E8%AA%AC%E9%9B%86%EF%BC%88%E5%8D%97%E5%A4%A9%E6%9B%B8%E5%B1%80%E4%B8%80%E4%B9%9D%E4%B9%9D%E5%85%AD%E5%B9%B4%E5%BE%A9%E5%88%BB%E7%89%88%EF%BC%89_text.pdf",
+      "readings": [
+        {
+          "title": "佐山融吉、大西吉壽編《生蕃傳說集》（1923，杉田重藏書店；南天書局 1996 年影印復刻本的掃描）",
+          "publisher": "原刊：臺北，杉田重藏書店，大正 12 年（1923）11 月；archive.org 條目 20260104_20260104_0404（個人上傳，2026-01-04）",
+          "read_via": "fetch.sh seq 31（200，archive.org advancedsearch 找到條目）、seq 32（200，metadata 取檔名）、seq 33（200，988,817 bytes，djvu 文字層：直排日文 OCR 全是亂碼，不能用）、seq 34（200，27,344,178 bytes，425 頁的 _text.pdf）；pdftoppm 轉圖：PDF 第 14–15 頁（目次）、第 193 頁（正文第 334–335 頁，110 與 250 dpi），用 Read 看圖讀",
+          "reading_scope": "讀目次第 2–5 頁（第四『天然傳說』下的『自然現象』：洪水、地震、山崩）與正文第 334–335 頁『地震』一則及其註；其他傳說沒讀",
+          "locator": "PDF 第 193 頁（一張含正文第 334、335 兩頁）：第 334 頁（頁眉『生蕃傳說集 334』）『地震』起，第 335 頁開頭結束並署『アミ族 海岸蕃』；第 335 頁註『ツォ族阿里山蕃，「モトエビ」（地震）は「ワツム」といふ牛のやうな獸が地中にあつて體を搖る時に起るのである』、『パイワン族，マカザヤザヤ社』、『平埔蕃パゼッヘ族』；第 335 頁起為『山崩』",
+          "summary": "一手原刊（影印）。本書在『地震』題下收的正文不是牛：阿美族海岸蕃說，從前地底也有世界，地底的人常到地上來買東西；有一次地上的人把澤山的蜂裝進袋子給他們，說是好東西，地底人回家一打開被蜂群螫得到處亂竄，大怒，抓住柱子搖晃，地上的房屋全倒、人畜死傷很多，『我們的地震就是這樣來的』。註裡列了另三種說法：鄒族阿里山蕃說地震是名叫『ワツム』、像牛的獸在地中搖動身體；排灣族マカザヤザヤ社說，從前パダイン社有一塊大石，綁上繩子去拉，必定發生地震；平埔蕃巴宰族說地下有一頭大山豬，不時搖動身體。四則裡只有鄒族一則是像牛的獸。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "1923 年出版，在美國屬公有領域；但 archive.org 條目是個人上傳的 1996 年南天書局影印復刻本，沒有授權欄位——它是原版照相影印，不是重新校點排印，所以引文取的是 1923 年原版的文字；覆核若認為仍應比照『個人上傳視為有版權』處理，本來源可改為只用來定位、只引一兩句。佐山融吉、大西吉壽卒年本輪未查，正片只稱『日治時期的編者』。原文的『蕃』字不入旁白。ZW9-S005 引的阿美族南勢蕃水牛說出自佐山另一部《蕃族調查報告書》，本書這一則是海岸蕃，兩者不同。 覆核 R8312：條目是個人上傳、無授權欄位，但 PDF 首尾可見大正十二年原版版權頁與 1996 年復刻版版權頁、內頁是原版鉛字的照相影印（頁面彎曲、舊字形），不是新校點排印本；專案『個人上傳的近代校點排印本視為有版權』這條針對的是重新排印的校點本，不適用於原版照相影印。照相複製不產生新的著作權，1923 年在美國出版的原文已屬公有領域，所以可以當內容來源，但只限 1923 原版的正文與註（第 334–335 頁），引文標原版頁碼，不用復刻版另加的任何文字；正片只摘述、引一兩句。編者卒年未查，仍只稱身分。",
+          "accessed_on": "2026-11-18",
+          "origin": "wave83-20261118",
+          "original_url": "https://archive.org/download/20260104_20260104_0404/%E7%94%9F%E8%95%83%E4%BC%9D%E8%AA%AC%E9%9B%86%EF%BC%88%E5%8D%97%E5%A4%A9%E6%9B%B8%E5%B1%80%E4%B8%80%E4%B9%9D%E4%B9%9D%E5%85%AD%E5%B9%B4%E5%BE%A9%E5%88%BB%E7%89%88%EF%BC%89_text.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-60cf1a12e5b556c5",
       "url": "https://mathcs.clarku.edu/huxley/SM3/bathy.html",
       "readings": [
@@ -125794,6 +125889,25 @@
       ]
     },
     {
+      "id": "SRC-672f8e6a15eccb31",
+      "url": "https://archive.org/download/06044602.cn/06044602.cn.pdf",
+      "readings": [
+        {
+          "title": "臺海使槎錄·卷一~卷二（欽定四庫全書·史部·地理類影印），卷一〈赤嵌筆談·風信〉與卷首提要",
+          "publisher": "Internet Archive／CADAL；（清）黃叔璥撰，文淵閣四庫全書寫本（提要署乾隆四十三年九月恭校上）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 11（archive.org advancedsearch，200）找到三個條目；seq 12 讀 06044602.cn metadata（200，31,909 bytes）取得檔名；seq 13 下載 PDF（200，8,488,937 bytes，sha256 22c228598509007a）。以 70 dpi 轉第 4、8、14、20、26、34、42 頁定位，第 34–35 頁以 120 dpi、第 34 頁另以 300 dpi 裁切放大核對『颶』『颱』字形；第 3–6 頁以 100 dpi 讀提要。",
+          "reading_scope": "提要全文（PDF 第 3–4 頁）；卷一〈風信〉PDF 第 34 頁末行至第 35 頁全頁。〈風信〉後續段落（颶日表等）沒有讀。",
+          "locator": "PDF 第 34 頁左起第 1 行『臺灣風信與他海殊異…又甚者為颱』至第 35 頁（卷一葉十五，版心『臺海使槎錄』）『曰關帝颶念九日』；提要 PDF 第 3–4 頁",
+          "summary": "四庫寫本書頁上清楚寫成『風』旁加『台』的颱字，和颶並列：『臺灣風信與他海殊異，風大而烈者為颶，又甚者為颱。颶倏發倏止，颱常連日夜不止。正、二、三、四月發者為颶，五、六、七、八月發者為颱。九月則北風初烈，或至連月，為九降。』又說過洋以四、七、十月為穩，『六月多颱，九月多九降，最忌颱』，颱將至天邊先見斷虹（破帆、屈鱟），土番看風草草節占一年颱數，再列以神明命名的颶日。提要：作者黃叔璥，大興人，康熙己丑進士；此書是『康熙壬寅叔璥為御史時巡視臺灣所作』，第一至四卷為〈赤嵌筆談〉，『裒輯舊籍，參以目見』，海道風信『一一究悉』。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "這是乾隆年間的四庫抄本，不是康熙原刊；抄寫時字形可能被改動（不過四庫館臣依的《康熙字典》不收颱，抄本仍寫颱，至少說明乾隆時這個字形已在用）。提要說作者『裒輯舊籍』，這段很可能取材自更早的府志，但本頁沒有註明出處。高拱乾《臺灣府志》原刊字形仍未讀到書頁影像。",
+          "origin": "wave83-20261118",
+          "original_url": "https://archive.org/download/06044602.cn/06044602.cn.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-672fec4d8e174ad6",
       "url": "https://www.sec.gov/Archives/edgar/data/0001003214/000100321415000017/simg-20141231x10k.htm",
       "readings": [
@@ -127037,6 +127151,25 @@
           "limitations": "非學術、非機構來源，只當線索：作者在世，片中不點名；8 月 20 日報告的英文原文、鍋爐 1984 年列為國家紀念物、1877 年再移位，這輪都沒讀到一手來源。",
           "origin": "wave10-20261102",
           "original_url": "https://archive.org/details/Wateree"
+        }
+      ]
+    },
+    {
+      "id": "SRC-685e5a4dd5486a84",
+      "url": "https://ac.nutc.edu.tw/var/file/77/1077/attach/54/pta_75970_8721163_18311.pdf",
+      "readings": [
+        {
+          "title": "《台灣の天災妖怪圖鑑》（學生編寫的電子書，附參考資料）",
+          "publisher": "國立臺中科技大學應用中文系，2022 年 1 月初版（版權頁）；作者為四位學生",
+          "read_via": "fetch.sh seq 24（200，9,355,496 bytes），pdftotext -layout 讀",
+          "reading_scope": "讀目錄、『地牛』圖鑑條、第四章『國家第一級警報──地底の妖怪』地牛一節與附錄參考資料；其他妖怪條沒讀",
+          "locator": "地牛條『臺灣民間傳說中棲息於地底下的巨牛，只要地牛一翻身，就會發生大地震』；第 25 頁前後地牛一節『1906 年嘉義梅仔坑大地震時，傳說有人在山上地裂之處，發現一條牛的尾巴』『大衛．萊特（David Wright）……地牛被一隻金雞啄而動起身子』",
+          "summary": "流傳樣本：把地牛寫成『臺灣民間傳說中棲息於地底下的巨牛』，翻身就大地震；說 1906 年梅仔坑地震時有人在地裂處看到牛尾巴，因此盛傳地底有地牛；又說荷蘭時期蘇格蘭人 David Wright 記下地牛被金雞啄而動身、引起地震；另轉述原住民地牛資料（內容與 ZW9-S005 幾乎相同，顯然轉抄自該論文），並列出參考資料（何敬堯《妖怪臺灣》、片岡巖《台灣風俗誌》、中央氣象局科普網等）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "學生作品，原住民段落轉抄自 ZW9-S005，不能當獨立來源；只當『網上怎麼講地牛』的樣本。David Wright 金雞一說，本輪在 Campbell 1903《Formosa under the Dutch》轉載的 Wright 記述（seq 25–27）與 Ogilby 1671《Atlas Chinensis》（seq 28–30）的文字層中以 earthquake、cock、bull 等字檢索都沒找到；但後者是 17 世紀 OCR、只檢索沒逐頁讀，只能說『本輪沒找到』，不能當反證。梅仔坑牛尾巴也沒有任何一手來源。 覆核 R8312：同一節（第 25 頁前後）緊接著轉抄 ZW9-S005，寫日治時期的地牛採錄、『各族流播的現象』與阿美族、平埔族的地震豬——樣本本身已經講了『原住民舊紀錄不只是牛、後來才擴散』這個翻轉，不能當被紀錄修正的流傳說法；另把東方孝義的專書寫成『1996 年』，年份顯然有誤。",
+          "accessed_on": "2026-11-18",
+          "origin": "wave83-20261118",
+          "original_url": "https://ac.nutc.edu.tw/var/file/77/1077/attach/54/pta_75970_8721163_18311.pdf"
         }
       ]
     },
@@ -142487,6 +142620,25 @@
           "limitations": "OCR 有誤字（年份 1831 被讀成 1851、1834 讀成 1854），已與 A1-S004、A1-S006 對讀確認。Vorderman 文中對那位女孩另有一段揣測性的動機推論，涉及兒童與性的暗示，本題不採用、不轉述。《Biang-Lala》與 1872 年《Tijdschrift voor Nederlandsch-Indië》原刊都沒有讀到。",
           "origin": "wave13-20261102",
           "original_url": "https://archive.org/details/natuurkundigtijd37koni"
+        }
+      ]
+    },
+    {
+      "id": "SRC-753a76663f5dae2f",
+      "url": "https://archive.org/download/nlc-892-312001191829-402570/NLC892-312001191829-402570_%E9%80%9A%E9%9B%85_%E4%BA%94%E5%8D%81%E4%BA%8C%E5%8D%B7_%E6%A1%90%E5%B1%B1%E5%A7%9A%E6%B0%8F%E6%B5%AE%E5%B1%B1%E6%AD%A4%E8%97%8F%E8%BB%92%E6%B8%85%E5%BA%B7%E7%86%99%E4%BA%94%E5%B9%B4%E5%88%BB%E6%9C%AC_%E7%AC%AC11%E5%86%8A_text.pdf",
+      "readings": [
+        {
+          "title": "通雅 五十二卷 第11冊（卷四十三至卷四十七）",
+          "publisher": "（明）方以智撰；桐山姚氏浮山此藏軒清康熙五年（1666）刻本；中國國家圖書館數字古籍影像，經 Wikimedia Commons 備份至 archive.org（Public Domain Mark）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 7（200，archive.org advancedsearch）、seq 12（200，metadata）、seq 14（200，23,701,566 bytes，_text.pdf，129 頁）；先試浙大四庫本 06061643.cn 的 PDF 與 djvu.txt，seq 9、10、11 都回 500（伺服器錯誤，非 403，未再試）；pdftoppm 25 dpi 縮圖拼圖找卷首（卷四十六獸在 PDF 第 75 頁、卷四十七蟲在第 96 頁、『動物 魚』在第 116 頁左半），再以 80 dpi 讀第 117–126 頁、160 dpi 放大第 126 頁右半目讀；覆核 R8310 重抓 metadata（R8310 seq 1，200，14,204 bytes）與同一 _text.pdf（R8310 seq 2，200，23,701,566 bytes，sha256 前綴 92a70ffb707388e5，與 ZV0 seq 14 相同），pdftoppm 150 dpi 轉 PDF 第 126 頁、切右半目讀，引文相符",
+          "reading_scope": "只讀卷四十七『動物 魚』PDF 第 116 頁左半至第 126 頁右半；鯤條之後的第 126 頁左半以後沒有細讀",
+          "locator": "PDF 第 126 頁右半（卷之四十七·魚，版心葉三十），第 2–3 行",
+          "summary": "方以智原書：『魚子曰鯤鮞。○魯語曰魚禁鯤鮞，爾雅曰鯤魚子，逍遙遊之言原無稽』，接著引韋昭『鮞，魚未成也』、《呂覽》『東海之鮞』、《說文》『魚子已生者也』等。也就是說：方以智把鯤歸在『魚子』一條，並明說〈逍遙遊〉那段話『原無稽』——本來就無從查考、不能當字義根據（此條沒有用『寓言』二字）。同卷第 119 頁右半另有『鱷即鯨…雄鯨雌鯢』條，沒有把鯤當成鯨。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "刻本目讀，個別小字不清（『又有鰫』一字未能確認，不引）；郭慶藩轉引的那句『鯤本小魚之名，莊子用為大魚之名』在這一條裡沒有逐字出現，可能出自方以智別的著作（例如《藥地炮莊》，本輪沒讀），所以正片引方以智時用本條原話或寫『郭慶藩轉述』。 卒年：此本只署『（明）方以智撰』，沒有卒年。",
+          "origin": "wave83-20261118",
+          "original_url": "https://archive.org/download/nlc-892-312001191829-402570/NLC892-312001191829-402570_%E9%80%9A%E9%9B%85_%E4%BA%94%E5%8D%81%E4%BA%8C%E5%8D%B7_%E6%A1%90%E5%B1%B1%E5%A7%9A%E6%B0%8F%E6%B5%AE%E5%B1%B1%E6%AD%A4%E8%97%8F%E8%BB%92%E6%B8%85%E5%BA%B7%E7%86%99%E4%BA%94%E5%B9%B4%E5%88%BB%E6%9C%AC_%E7%AC%AC11%E5%86%8A_text.pdf"
         }
       ]
     },
@@ -206523,6 +206675,25 @@
       ]
     },
     {
+      "id": "SRC-a99739f944dcbbe0",
+      "url": "https://archive.org/download/ibis9119078190106brit/ibis9119078190106brit_djvu.txt",
+      "readings": [
+        {
+          "title": "W. R. Ogilvie-Grant & J. D. D. La Touche, 'On the Birds of the Island of Formosa'（Part I 與 Part II），The Ibis, ser. 9, vol. 1",
+          "publisher": "British Ornithologists' Union, London, 1907（archive.org 條目 ibis9119078190106brit，Smithsonian Libraries／BHL 掃描）",
+          "read_via": "fetch.sh seq 10（200，archive.org advancedsearch identifier:ibis* 找到本卷）、seq 11（200，152,882 bytes，metadata 取檔名）、seq 12（200，1,596,722 bytes，djvu 文字層）；grep『mikado』後讀前後段，並讀第 151–157 頁採集者來信全文與第 277–279 頁第 260 種條",
+          "reading_scope": "讀卷首目錄、第 151–157 頁（論文開頭與 Goodfellow 長信）、第 277–279 頁（260. Calophasis mikado 條與編者附註）；其他各種鳥的條目沒讀",
+          "locator": "p. 151『VI.—On the Birds of the Island of Formosa』；pp. 152–153 腳傷與臥床『laid up for nearly three weeks』；p. 155『three months I spent in the mountains』；p. 156『When I shot the first Pheasant I really thought I had found a new species, but of course it was Swinhoe's』『It was only on the day we were leaving the mountains』；p. 277『260. *Calophasis mikado Grant』；pp. 277–278 方括號編者附註『When describing the two middle tail-feathers on which C. mikado was founded, I overlooked this specimen』；p. 278『a. ♀. Racu Racu Mts., 7000 ft., Feb. 1906.』",
+          "summary": "一手原刊。論文說採集在 1906 年 1–3 月於玉山（Mt. Morrison）一帶進行；採集者來信：一月第一週從台南出發，搭火車與台車進山、經過數個村落，上到 9000 呎紮營時遇雪被迫撤退，途中被另一群人設在路上的竹槍陷阱刺穿腳背，臥床近三週；他說在山裡的三個月有一半以上的日子因天氣無法採集；打到第一隻雉時以為是新種，結果是藍腹鷴；那兩根『無疑是新種』的尾羽，是離山那天才在一位來搬行李的原住民頭飾上看到的，那人說是自己在阿里山打的、很稀少。信末說他離山次日抵達嘉義，前一晚住過的林圯埔（Rinkiho）在大地震中有許多人死亡（只到這個層級）。第二部第 260 種條：重述原始描述（中央一對尾羽，基部不完整，約 18 吋）後，命名者加註：採集者在 Racu Racu 山區 7000 呎還採到一隻『未知種的雌雉』，標籤 1906 年 2 月，『幾乎可以肯定屬於我的 Calophasis mikado』；『描述那兩根中央尾羽時，我漏看了這個標本』，並附上雌鳥羽色描述（頭頸暗橄欖褐、背部黑與棕褐雜斑、尾羽栗色帶黑橫斑，全長約 18 吋）。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "OCR 文字層，頁碼以文字層頁眉與卷首目錄為準（Part II 目錄頁碼 254 起）；雌鳥屬於本種在這裡只是命名者的推斷，確認見 ZV2-S004。原文用當時的蔑稱 savage，正片不念。",
+          "accessed_on": "2026-11-18",
+          "origin": "wave83-20261118",
+          "original_url": "https://archive.org/download/ibis9119078190106brit/ibis9119078190106brit_djvu.txt"
+        }
+      ]
+    },
+    {
       "id": "SRC-a9a5eef86bcf0757",
       "url": "https://science.nasa.gov/science-news/science-at-nasa/2000/ast04may_1m/",
       "readings": [
@@ -231594,6 +231765,25 @@
       ]
     },
     {
+      "id": "SRC-beac2662a438afa6",
+      "url": "https://archive.org/advancedsearch.php?q=%28creator%3A%28Rothschild%29%20AND%20creator%3A%281868%29%29%20OR%20creator%3A%28Goodfellow%29%20OR%20subject%3A%28%22Goodfellow%2C%20Walter%22%29&fl[]=identifier&fl[]=creator&fl[]=subject&rows=100&output=json",
+      "readings": [
+        {
+          "title": "Internet Archive 館藏檢索：Ogilvie-Grant、Rothschild、Goodfellow、Owston 的編目人名形式",
+          "publisher": "Internet Archive；條目編目來自 Cornell、Smithsonian、McGill 等館藏",
+          "read_via": "fetch.sh seq 20（200，12,325 bytes，creator:Ogilvie-Grant OR Rothschild, Walter OR Goodfellow, Walter OR Owston）、seq 21（200，18,774 bytes，本網址，Rothschild 1868 與 Goodfellow）；讀 JSON 的 creator／subject 欄",
+          "reading_scope": "只讀人名欄",
+          "locator": "seq 20：『Ogilvie-Grant, W. R. (William Robert), 1863-1924』（avesappendixonso00ogil）、『Ogilvie-Grant, William Robert, 1863-1924』（cu31924001125065）；seq 21：『Rothschild, Lionel Walter Rothschild, Baron, 1868-1937』（revisionoflepido01roth）",
+          "summary": "命名者 W. R. Ogilvie-Grant 卒於 1924，描述成年雄鳥的 Walter Rothschild 卒於 1937，兩人都可點名。採集者 Walter Goodfellow 與中間人 Alan Owston 在兩次檢索裡都沒有帶卒年的編目（只有同名的他人），依規定正片只稱身分。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "館藏編目，不是傳記正文；只用來確認卒年。",
+          "accessed_on": "2026-11-18",
+          "origin": "wave83-20261118",
+          "original_url": "https://archive.org/advancedsearch.php?q=%28creator%3A%28Rothschild%29%20AND%20creator%3A%281868%29%29%20OR%20creator%3A%28Goodfellow%29%20OR%20subject%3A%28%22Goodfellow%2C%20Walter%22%29&fl[]=identifier&fl[]=creator&fl[]=subject&rows=100&output=json"
+        }
+      ]
+    },
+    {
       "id": "SRC-beaf6f5add70b04d",
       "url": "https://kotobank.jp/word/%E9%96%A2%E5%B1%8B%E6%94%BF%E6%98%A5-1085118",
       "readings": [
@@ -241328,6 +241518,25 @@
       ]
     },
     {
+      "id": "SRC-c75b8ddd8df89bdb",
+      "url": "https://archive.org/download/06058817.cn/06058817.cn.pdf",
+      "readings": [
+        {
+          "title": "晉書·卷九十五~卷九十六（欽定四庫全書·史部·正史類影印），卷九十五〈藝術傳·王嘉〉",
+          "publisher": "Internet Archive／CADAL；（唐）房玄齡等奉敕撰，文淵閣四庫全書寫本",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 5（archive.org advancedsearch，200）找到條目；seq 6 讀 metadata（200，33,783 bytes）取得檔名；seq 7 下載 PDF（200，7,055,797 bytes，sha256 d9e91321e4459ce4）。以 80 dpi 轉第 40、60、74、80 頁定位（卜珝、佛圖澄、索紞、郭黁），再以 110 dpi 轉第 76–79 頁逐字讀王嘉傳全文。",
+          "reading_scope": "王嘉傳全文（PDF 第 76 頁後半至第 79 頁前半）；其他傳只看定位。",
+          "locator": "PDF 第 76 頁標題『王嘉』起，至第 79 頁『又著拾遺錄十卷其記事多詭怪今行於世』止（卷九十五）",
+          "summary": "唐代官修《晉書》把王嘉列在〈藝術傳〉：字子年，隴西安陽人，不食五穀、隱居東陽谷，後遷終南山、倒獸山；苻堅屢次徵召不起，好為譬喻、言未然之事『辭如讖記』；苻堅南征前遣使問他，他以騎馬脫衣冠示意；後來姚萇入長安，逼他預言能否勝苻登，回答不合萇意而被殺；傳末說他『又著拾遺錄十卷，其記事多詭怪，今行於世』。也就是說，王嘉活動在前秦苻堅、後秦姚萇治下的長安一帶，唐初修史時已把他的書評為『記事多詭怪』。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "四庫寫本；書名寫作《拾遺錄》十卷。《晉書》成書於唐初，距王嘉約兩百多年，生平裡的預言故事本身也是傳說性質，只能當『唐代史官怎麼看這本書』的證據。《隋書·經籍志》仍未讀。",
+          "origin": "wave83-20261118",
+          "original_url": "https://archive.org/download/06058817.cn/06058817.cn.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-c75ba639122fc218",
       "url": "http://www.ufoevidence.org/documents/doc408.htm",
       "readings": [
@@ -246554,6 +246763,25 @@
           "limitations": "博物館雜誌文章；未給首演日期（日期依 D3-S015）。",
           "origin": "wave23-20261111",
           "original_url": "https://sites.utexas.edu/ransomcentermagazine/2011/06/21/the-immortal-hoax-of-william-henry-ireland"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cb9a59f68f002320",
+      "url": "https://i.ifeng.com/c/8BEw8SqdI6E",
+      "readings": [
+        {
+          "title": "康有为的弟子，画过一本“外星人图谱”（凤凰网读书，节选自 2021 年出版的《故国之妖》）",
+          "publisher": "凤凰网读书，2021-11-17（文末註明節選自四川文艺出版社 2021-11 出版的一本書）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 9（200，240,821 bytes，sha256 e7adb489b4a806a9），python 去標籤後讀『古代“飞碟”简史』一、二節與文末出處。",
+          "reading_scope": "導言、『古代“飞碟”简史』第一、二節（含宛渠與貫月槎兩段）、文末出處；後半『民國神童外星人圖譜』只掃過。",
+          "locator": "第二節『晋人王嘉《拾遗记》中也有疑似外星人的宛渠之民』一段，以及緊接的『《拾遗记》另载：“尧登位三十年…”』貫月槎一段",
+          "summary": "流傳版本樣本。文章把《拾遺記》宛渠之民稱為『疑似外星人』，引『乘螺舟而至，舟形似螺，沉行海底，而水不浸入，一名沦波舟…始皇与之语及天地初开之时，了如亲睹』，接著說『或许可以这样解释：一群具有高度文明的外星人很早就来到地球并安下基地，这些人还见到了秦始皇，并讲到了宇宙大爆炸之初的事』，並說這種『形似螺』的沦波舟『能在水里潜行，也能飞在空中，日行万里』。下一段把同書的貫月槎說成太空船、羽人是穿太空服的宇航員。引文略去了原文開頭的『始皇好神仙之事』與結尾『彌信仙術焉』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是一本 2021 年通俗書的網路節選，作者用『或许可以这样解释』的口吻，半是遊戲半是推想；作者在世，正片不點名、只稱『一本 2021 年的通俗讀物』。只能當流傳樣本，不能當任何事實的來源。",
+          "origin": "wave83-20261118",
+          "original_url": "https://i.ifeng.com/c/8BEw8SqdI6E"
         }
       ]
     },
@@ -271289,6 +271517,25 @@
           "limitations": "只讀摘要。",
           "origin": "wave1-20261101",
           "original_url": "https://arxiv.org/abs/2008.13180"
+        }
+      ]
+    },
+    {
+      "id": "SRC-dfb64f0ae7a1c7e7",
+      "url": "https://archive.org/download/bulletinofb2123190709brit/bulletinofb2123190709brit_djvu.txt",
+      "readings": [
+        {
+          "title": "Bulletin of the British Ornithologists' Club, vols. XXI–XXIII（1907–1909）：Rothschild 展示並描述 Calophasis mikado 成年雄鳥（vol. XXI pp. 22–25）、主席年會致詞、1907–1908 會期報告",
+          "publisher": "British Ornithologists' Club, London, 1907–1908（archive.org 條目 bulletinofb2123190709brit，BHL 掃描）",
+          "read_via": "fetch.sh seq 15（200，advancedsearch 列出 BOC 各卷條目）、seq 16（200，metadata）、seq 17（200，441,093 bytes，第 16–39 卷總索引 djvu，查到『Exhibition and description of the adult male of Calophasis mikado… xxi. 22–25』）、seq 18（200，93,414 bytes，metadata）、seq 19（200，688,474 bytes，djvu 文字層）；grep『mikado』後逐段讀",
+          "reading_scope": "讀 vol. XXI pp. 22–25（第 136 次例會，1907 年 11 月 20 日；刊期頁眉 November 29th, 1907）、主席年會致詞中提到帝雉的一段（刊期頁眉 October 29th, 1907）、1907–1908 會期報告中『本會期最引人注目的鳥』一段；其他部分沒讀",
+          "locator": "vol. XXI p. 22『The Hon. Walter Rothschild exhibited and described the adult male of Calophasis mikado』；p. 23『One fully adult and three nearly adult male examples, as well as seven females, had been received from Mt. Arizan』『originally described by Mr. Ogilvie-Grant from two tail-feathers』；主席致詞『although, as yet, we have only caught its tail』；會期報告（Session 1907-1908）『described from the middle pair of tail-feathers of a male and from an adult female. Subsequently, at the instigation of Mr. Walter Rothschild, Mr. Alan Owston sent some Japanese collectors to the island』",
+          "summary": "一手原刊。1907 年秋學會主席的年會致詞說：帝雉很有意思，『不過到目前為止，我們只抓到牠的尾巴』。1907 年 11 月 20 日例會，Rothschild 展示並描述第一批完整雄鳥：頭頸鋼黑、眼周大片草莓紅裸皮、身上帶紫色鱗紋、尾羽黑底白橫帶，尾長 630 公釐；從阿里山收到一隻完全成年與三隻近成年的雄鳥、七隻雌鳥，雌鳥與 Ogilvie-Grant 的描述相符；他還據此主張 Calophasis 這個屬太薄弱，把帝雉等都併回 Phasianus。會期報告總結：這種鳥最初是根據一隻雄鳥的中央尾羽『和一隻成年雌鳥』描述的；之後在 Rothschild 的鼓動下，一位人在日本的中間人（原文點名）派日本採集者上島，才弄到幾隻漂亮的成年雄鳥，連帶發現一種新的灰鷽。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "OCR 文字層；『中間人派日本採集者』的細節（誰、何時、在哪個村落取得）原文只有一句；登上千元鈔、族別都不在本卷。總索引另列 xxix. 107『活體帝雉』、xxxix. 78『帝雉的蛋』，本輪沒讀。",
+          "accessed_on": "2026-11-18",
+          "origin": "wave83-20261118",
+          "original_url": "https://archive.org/download/bulletinofb2123190709brit/bulletinofb2123190709brit_djvu.txt"
         }
       ]
     },
