@@ -1,6 +1,6 @@
 # 第 30 集真人版 fix3：重拍 s07（秦霜在院門攔下唐萬金）
 
-2026-11-18 寫好，**還沒送出**（要花 Colab 點數）。送出腳本：scratchpad `e930f3.sh`（Colab G4、session `zt-live`，跑完執行 `colab-release.sh`）。
+2026-11-18 寫好，當天送出（兩支都出片），已選 **9301402**，換進成片（`review-picks.tsv`；結果見 `../review3-plan.md`〈s07 重拍〉）。送出腳本：scratchpad `e930f3.sh`（Colab G4、session `zt-live`，跑完執行 `colab-release.sh`）。
 
 ## 為什麼重拍
 
