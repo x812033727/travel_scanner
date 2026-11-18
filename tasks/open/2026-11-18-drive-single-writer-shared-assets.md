@@ -27,6 +27,7 @@ An episode's final cut, clips and recordings are on Drive twice: once from the h
 - [ ] The worker is the only writer of an episode's package; todrive.sh excludes what the worker copies.
 - [ ] One `AI/共用素材/` for music, character sheets and references, linked from each series.
 - [ ] One upload tool.
+- [ ] Each 製作檔 upload leaves a manifest.json + SHA256SUMS (moved here from the index task).
 
 ## Steps
 

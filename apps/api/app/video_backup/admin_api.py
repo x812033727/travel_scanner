@@ -23,6 +23,7 @@ from app.video_backup import admin_status as status
 from app.video_backup.schemas import (
     BackupView,
     DriveIdsIn,
+    IndexView,
     LockIn,
     ProbeAnswerIn,
     ProbeView,
@@ -87,6 +88,13 @@ async def read_video_status(slug: Slug, user: ContentReader, session: Session) -
 async def worker_config(tool: VideoTool, session: Session) -> WorkerConfig:
     _ = tool
     return await status.worker_config(session)
+
+
+@tool_router.get("/index", response_model=IndexView)
+async def drive_index(tool: VideoTool, session: Session) -> IndexView:
+    """Every video and its Drive copy by series, for the worker's daily index sheets."""
+    _ = tool
+    return await status.drive_index(session)
 
 
 @tool_router.post("/lock", response_model=SettingsView)

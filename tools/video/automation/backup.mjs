@@ -26,6 +26,7 @@ import { pipeline } from "node:stream/promises";
 import { atomicWrite, isInside, readJson, resolveWorkBase, stopRequested } from "../core/paths.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
+import { writeDriveIndex } from "./drive-index.mjs";
 import { DOWNLOADS_PER_ROUND, fetchReviewPackage, packageFetched, packageIncomplete } from "./review-package.mjs";
 
 export const PER_ROUND_ENV = "VIDEO_BACKUP_PER_ROUND";
@@ -343,6 +344,7 @@ export function backupClient(ctx) {
     answer: (id, body) => call("POST", `test/${id}`, body),
     report: (slug, body) => call("POST", `${slug}/report`, body),
     drive: (slug, body) => call("POST", `${slug}/drive`, body),
+    index: () => call("GET", "index"),
     project: async (slug) => (await get(reviews(slug), "application/json")).json(),
     download: async (slug, sha256, target) => {
       const response = await get(`${reviews(slug)}/files/${sha256}`, "*/*");
@@ -805,7 +807,11 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     const next = await backUp(job, video, state);
     verdicts.set(video.slug, verdictOf(next));
   }
-  if (copy) await linkDriveIds(job, config.videos ?? []);
+  if (copy) {
+    await linkDriveIds(job, config.videos ?? []);
+    // The daily sheets in <path>/_總表/ (drive-index.mjs); never part of any video's verdict.
+    await writeDriveIndex(job);
+  }
   return { lines, gate: withDeleted({ enabled: true, verdicts }) };
 }
 

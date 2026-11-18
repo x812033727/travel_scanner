@@ -175,7 +175,8 @@ function fakeSite({ videos = [], enabled = true, lock = "AI/備份", prefix = ""
 }
 
 function ctxFor(box, { now = NOW, env = {} } = {}) {
-  return { env: { VIDEO_WORKDIR: box.work, VIDEO_BACKUP_RCLONE_CONFIG: box.conf, VIDEO_BACKUP_LOCK_PATH: "AI/備份", TMPDIR: box.box, ...env }, now: () => now, root: path.join(box.box, "repo") };
+  // The daily Drive index has tests of its own (drive-index.test.mjs); these rounds leave it off.
+  return { env: { VIDEO_WORKDIR: box.work, VIDEO_BACKUP_RCLONE_CONFIG: box.conf, VIDEO_BACKUP_LOCK_PATH: "AI/備份", TMPDIR: box.box, VIDEO_BACKUP_INDEX_HOURS: "0", ...env }, now: () => now, root: path.join(box.box, "repo") };
 }
 
 const stateOf = (dir) => JSON.parse(readFileSync(path.join(dir, STATE_FILE), "utf8"));

@@ -255,3 +255,40 @@ class WorkerConfig(BaseModel):
     # 2026-11-03; tools/video/automation/tidy.mjs). The site cannot: the API mounts video_work
     # read-only.
     deleted: list[str] = Field(default_factory=list)
+
+
+# Where a video stands, for the Drive index (drive-index.mjs): being made, ready to upload, on
+# YouTube, or dropped by the owner.
+IndexState = Literal["working", "ready", "published", "dropped"]
+
+
+class IndexRow(BaseModel):
+    slug: str
+    # The episode's code or number as its Drive folder names it (H01, P07, 第033集) and its topic.
+    code: str
+    topic: str | None = None
+    title: str
+    state: IndexState
+    youtube_url: str | None = None
+    folder: str
+    backup_state: BackupState
+    bytes: int | None = None
+    backed_up_at: datetime | None = None
+    drive_folder_url: str | None = None
+    drive_final_url: str | None = None
+
+
+class IndexGroup(BaseModel):
+    # The series key Drive files it under, and its name (the owner's folder name first).
+    key: str
+    name: str
+    rows: list[IndexRow]
+
+
+class IndexView(BaseModel):
+    """Every video and where its Drive copy is, by series, for the daily index the worker
+    uploads into ``<path>/_總表/`` (docs/videos/BACKUP.md §每日總表)."""
+
+    path: str
+    generated_at: datetime
+    groups: list[IndexGroup]
