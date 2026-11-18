@@ -224,8 +224,11 @@ const thumbnailOnly = ([key, value]) => key === "brand" || key === "focus" || (k
  */
 export function visualHash(doc) {
   const hash = createHash("sha256");
-  const data = doc.thumbnail?.data;
-  const thumbnail = data && Object.entries(data).some(thumbnailOnly) ? { ...doc.thumbnail, data: Object.fromEntries(Object.entries(data).filter((entry) => !thumbnailOnly(entry))) } : doc.thumbnail;
+  const baseThumb = doc.thumbnail && typeof doc.thumbnail === "object" && Object.hasOwn(doc.thumbnail, "replaces")
+    ? Object.fromEntries(Object.entries(doc.thumbnail).filter(([key]) => key !== "replaces"))
+    : doc.thumbnail;
+  const data = baseThumb?.data;
+  const thumbnail = data && Object.entries(data).some(thumbnailOnly) ? { ...baseThumb, data: Object.fromEntries(Object.entries(data).filter((entry) => !thumbnailOnly(entry))) } : baseThumb;
   hash.update(JSON.stringify(thumbnail ?? null));
   // The paper look (docs/videos/PAPER.md) redraws every card; a video without a theme hashes as it always did.
   if (doc.theme) hash.update(JSON.stringify(["theme", doc.theme]));
@@ -248,15 +251,34 @@ export function pictureHash(doc) {
 
 // The card looks a video may ask for (schema.mjs THEMES); kept here so timeline.mjs stays leaf-level.
 const CARD_THEMES = [undefined, "paper"];
+const MAX_REPLACED_THUMBNAILS = 4;
+const hasReplacedThumbnail = (doc, depth) => depth < MAX_REPLACED_THUMBNAILS && Boolean(doc?.thumbnail?.replaces) && typeof doc.thumbnail.replaces === "object" && !Array.isArray(doc.thumbnail.replaces);
 
 /**
  * Whether a keyframes or clips manifest's recorded `visual_hash` still describes this video's
  * pictures. Current manifests carry pictureHash; one written before keyframes and clips stopped
  * following the theme carries visualHash with whichever card theme the video had then (a video
  * drawn on the paper look and later taken off it, or the other way round, keeps its pictures).
+ * When a thumbnail is replaced after shots are drawn (`thumbnail.replaces`), `frames/manifest.json`
+ * still demands the new `visualHash(doc)`, while unchanged keyframes and clips remain bound.
  */
-export function picturesBound(recorded, doc) {
+export function picturesBound(recorded, doc, depth = 0) {
   if (typeof recorded !== "string" || !recorded) return false;
   if (recorded === pictureHash(doc)) return true;
-  return CARD_THEMES.some((theme) => recorded === visualHash({ ...doc, theme }));
+  if (CARD_THEMES.some((theme) => recorded === visualHash({ ...doc, theme }))) return true;
+  if (hasReplacedThumbnail(doc, depth)) return picturesBound(recorded, { ...doc, thumbnail: doc.thumbnail.replaces }, depth + 1);
+  return false;
+}
+
+/**
+ * Whether `checks.json`'s `visual_hash` still describes the assembled cut's scenes and theme.
+ * `final.mp4` never draws `doc.thumbnail` (`thumbnail.jpg` and `frames/manifest.json` still
+ * require the current `visualHash(doc)`), so refreshing a thumbnail via `thumbnail.replaces`
+ * preserves an unchanged, owner-approved cut while any change to `doc.theme` or `doc.scenes` makes it stale.
+ */
+export function cutVisualBound(recorded, doc, depth = 0) {
+  if (typeof recorded !== "string" || !recorded) return false;
+  if (recorded === visualHash(doc)) return true;
+  if (hasReplacedThumbnail(doc, depth)) return cutVisualBound(recorded, { ...doc, thumbnail: doc.thumbnail.replaces }, depth + 1);
+  return false;
 }
