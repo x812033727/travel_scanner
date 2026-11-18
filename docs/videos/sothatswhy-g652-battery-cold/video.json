@@ -122,11 +122,20 @@
   "thumbnail": {
     "template": "thumb",
     "data": {
-      "headline": "天一冷\n**電跑哪**去了？",
-      "sub": "不是凍掉是進不了門",
-      "shot": "kid-freezing-phone",
-      "subject": "right",
-      "tag": "科學"
+      "layout": "heimao",
+      "headline": "冰天雪地手機**秒關機**？",
+      "sub": "放口袋捂熱，電量竟原地復活",
+      "asset": "docs/videos/sothatswhy-g652-battery-cold/thumbnail-bg.jpg"
+    },
+    "replaces": {
+      "template": "thumb",
+      "data": {
+        "headline": "天一冷\n**電跑哪**去了？",
+        "sub": "不是凍掉是進不了門",
+        "shot": "kid-freezing-phone",
+        "subject": "right",
+        "tag": "科學"
+      }
     }
   },
   "sources": [
@@ -215,7 +224,13 @@
       "checked_on": "2026-11-17"
     }
   ],
-  "assets": [],
+  "assets": [
+    {
+      "path": "docs/videos/sothatswhy-g652-battery-cold/thumbnail-bg.jpg",
+      "source": "Mokaair 原來如此事務所",
+      "license": "Mokaair"
+    }
+  ],
   "scenes": [
     {
       "id": "kid-freezing-phone",

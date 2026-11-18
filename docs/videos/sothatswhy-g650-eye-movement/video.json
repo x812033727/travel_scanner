@@ -119,11 +119,20 @@
   "thumbnail": {
     "template": "thumb",
     "data": {
-      "headline": "轉眼珠\n**不糊**也不黑？",
-      "sub": "視網膜自己有剪輯師",
-      "shot": "kid-mirror-face",
-      "subject": "right",
-      "tag": "科學"
+      "layout": "heimao",
+      "headline": "每天偷黑屏**一整小時**？",
+      "sub": "一天眨眼上萬次，為何從不黑屏",
+      "asset": "docs/videos/sothatswhy-g650-eye-movement/thumbnail-bg.jpg"
+    },
+    "replaces": {
+      "template": "thumb",
+      "data": {
+        "headline": "轉眼珠\n**不糊**也不黑？",
+        "sub": "視網膜自己有剪輯師",
+        "shot": "kid-mirror-face",
+        "subject": "right",
+        "tag": "科學"
+      }
     }
   },
   "sources": [
@@ -198,7 +207,13 @@
       "checked_on": "2026-11-14"
     }
   ],
-  "assets": [],
+  "assets": [
+    {
+      "path": "docs/videos/sothatswhy-g650-eye-movement/thumbnail-bg.jpg",
+      "source": "Mokaair 原來如此事務所",
+      "license": "Mokaair"
+    }
+  ],
   "scenes": [
     {
       "id": "mirror-look",
