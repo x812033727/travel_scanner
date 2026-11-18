@@ -1,0 +1,927 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e032-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, empty-handed",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      },
+      "shot_looks": [
+        {
+          "id": "pole",
+          "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a plain wooden carrying pole over one shoulder with nothing hanging from it"
+        }
+      ]
+    },
+    {
+      "id": "hanbo",
+      "name": "韓伯",
+      "appearance": "East Asian man of sixty-five, thin and upright, a deeply lined kind face, a long white beard down to his chest, white hair in a neat small topknot, warm but firm eyes, a faded washed-out grey cotton long robe, leaning on a polished old bamboo walking staff",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十五歲的老村長，男聲、蒼老溫和但有分量，說話慢、句句篤定"
+      }
+    },
+    {
+      "id": "shimujiang",
+      "name": "石木匠",
+      "appearance": "East Asian man of fifty-five, lean and wiry with weathered tanned skin, a grey stubbled jaw, deep frown lines and suspicious narrow eyes, grey hair tied in a small rough topknot with a pencil-like wooden stick, a faded brown short work jacket with sleeves rolled up, a leather apron covered in wood shavings, calloused hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十五歲的老木匠，男聲、粗啞低沉，脾氣硬、說話短、帶著不耐煩"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene: a low dry drum at a dam in a bamboo valley, one heavy accent as a hoe is knocked flying, then steady low strings; then a pale dry drone at dawn by a row of dug pits, a low heartbeat drum as a rope is hauled, turning to a gentle slightly comic cue as a woman carries a man off on her shoulder, one bright accent as a reward box is announced; then a deep low cello in a candle-lit ancestral hall at dusk, one heavy note at the sight of the roof beam, one drum beat under an old man's vow, holding at its peak; ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "挖井挖到昏倒｜種田娶妻打天下 第32集（重製版）",
+    "description": "二牛的鋤頭還沒落下，秦霜一扁擔把它挑飛：打了，就是給錢家藉口。深潭的水在溝底、田在坡上，挑不活三畝田——那就挖井，挖到見水為止。第三天，十幾口井一口都沒見水，許硯自己綁繩下井，挖了一整天，被拉上來時滿臉是泥，只說得出「沒水」。秦霜扛起他就走，一路罵文弱書生，耳根卻紅了：好感突破四十，獎勵箱開啟——水車圖紙。可水車要三百斤的整木，村裡只剩祠堂頭頂那一根梁。韓伯帶全村跪下：拆祠堂的梁，給孩子換一口水——《種田娶妻打天下》第 32 集（重製版）。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "文弱書生",
+      "tag": "種田娶妻打天下",
+      "shot": "s23"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "上游錢家的壩前",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the bamboo valley upstream of the dry Liuxi stream on the first afternoon of the drought, at the Qian family's dam: a long rough bank of stacked brown hemp sacks of earth on a footing of rough fieldstones, running from the right foreground away to the far left of the valley, uneven and handmade, its top a row of round lumpy sacks; behind it on the right a wide still pond of muddy brown water held back to a low line of stones at its far end; along its left foot a narrow stone-edged earth path and beside it a narrow ditch of muddy water flowing toward us, and at the left edge a strip of bright green young rice; steep green bamboo hills on both sides; hazy white afternoon sunlight, dust in the hot air: wide shot at standing eye height toward the dam, like the picture: in the lower left foreground, on the stone-edged path at the foot of the bank of sacks, cut at the waist by the bottom of the frame, one big young man seen only from behind, in a coarse brown cross-collared short jacket with the sleeves rolled up, one hoe with a plain wooden handle and an iron blade raised above his head in both hands, the back of his head toward us the whole shot; just at his right, between him and the bank, Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, cut at the waist by the bottom of the frame, already right beside him from the first frame, one plain wooden carrying pole as long as she is tall, smooth and round to its ends in both her hands, its end already under the raised hoe, her face in profile to screen left toward him, never the lens; cold and fast, not smiling: brows level, eyes hard, lips closed; ahead, standing in one row along the far half of the crest of the bank of sacks, from the middle of the frame away to the left, all small and far, twelve men in identical Song-dynasty black cross-collared short jackets, black cloth head wraps and cloth shoes, each holding one plain wooden staff, facing us, their staffs raised; their hands hold only what is described here; exactly fourteen people; the only hoe in the frame is the young man's",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. Qin Shuang flicks the carrying pole sharply upward: the hoe is knocked out of the young man's hands, flies up and away to the left and drops onto the earth path; the twelve men on the dam stay where they are; Everyone in the frame says nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the hazy white afternoon light stays unchanged",
+        "characters": [
+          "qinshuang"
+        ],
+        "buy_seconds": 5
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a01",
+          "speaker": "qinshuang",
+          "text": "打了，就是給錢家藉口。你想讓全村吃官司？",
+          "emotion": "冷，不回頭"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the bamboo valley upstream of the dry Liuxi stream on the first afternoon of the drought, at the Qian family's dam, on the narrow stone-edged earth path at the foot of the bank of brown hemp sacks; hazy white afternoon sunlight, dust in the hot air: medium shot on the narrow stone-edged earth path at the foot of the bank of sacks, both framed from the waist up, side-on to us: on the left Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, his face tanned dark from the sun, his hands empty, already stumbling back from the first frame, his face three-quarter to screen right toward her, never the lens; stunned and furious, not smiling: brows knotted, jaw clenched, chest heaving, his lips pressed shut; on the right Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, facing screen left, her back to the bank of sacks, one plain wooden carrying pole as long as she is tall, smooth and round to its ends upright in her right hand, its end on the earth, her left hand already gripping the front of his collar from the first frame, never the lens; cold and level, not smiling: eyes hard, brows level, lips moving fast and clipped between words; behind them, soft, the bank of brown hemp sacks rising at the right and the narrow muddy ditch at the left in the hazy white sun; their hands hold only what is described here; exactly two people",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「打了，就是給錢家藉口。你想讓全村吃官司？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang shoves him one step back toward the left by his collar as she speaks; Wang Erniu says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the hazy white afternoon light stays unchanged",
+        "characters": [
+          "qinshuang",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a02",
+          "speaker": "erniu",
+          "text": "可水都被截了！不打，難道看著田乾死？",
+          "emotion": "急，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the bamboo valley upstream of the dry Liuxi stream on the first afternoon of the drought, at the Qian family's dam, on the narrow stone-edged earth path at the foot of the bank of brown hemp sacks; hazy white afternoon sunlight, dust in the hot air: close-up of Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, his face tanned dark from the sun, framed from the chest up with space above his head, his hands empty, his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the soft green bamboo slope of the valley all the way to the edge, and he is the only person in the frame; desperate, not smiling: red-rimmed eyes, brows knotted hard, jaw clenched, chest heaving, lips moving fast between panting words; behind him, soft, only the green bamboo slope of the valley in the hazy white sun; their hands hold only what is described here",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「可水都被截了！不打，難道看著田乾死？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu's flat right hand sweeps once toward the right edge of the frame, toward the dam, and drops again as he speaks, and the hazy white afternoon light stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a03",
+          "speaker": "xuyan",
+          "text": "秦霜說得對。錢員外就等我們先動手。",
+          "emotion": "喘，很穩"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the bamboo valley upstream of the dry Liuxi stream on the first afternoon of the drought, at the Qian family's dam, on the narrow stone-edged earth path at the foot of the bank of brown hemp sacks; hazy white afternoon sunlight, dust in the hot air: medium shot on the narrow stone-edged earth path, all three framed from the waist up: on the left Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dust on its hem, already bent over from the first frame, both hands gripping the wooden handle of one hoe with a plain wooden handle and an iron blade whose iron blade is stuck in the earth of the path, his face three-quarter to screen right toward the other two, never the lens; out of breath and steady, not smiling: panting, brows level, lips moving between breaths; in the middle Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, his face tanned dark from the sun, his hands empty, his face three-quarter to screen left toward Xu Yan, his lips pressed shut, not smiling, never the lens; on the right Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, one plain wooden carrying pole as long as she is tall, smooth and round to its ends upright in her right hand, her face three-quarter to screen left, her lips pressed shut, never the lens; behind them, soft, the bank of brown hemp sacks rising at the right and the narrow muddy ditch at the left in the hazy white sun; their hands hold only what is described here; exactly three people; the only hoe in the frame is the one in Xu Yan's hands",
+        "motion": "Xu Yan speaks a short Mandarin line, 「秦霜說得對。錢員外就等我們先動手」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan straightens up, pulling the hoe out of the earth, as he speaks; Wang Erniu and Qin Shuang say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the hazy white afternoon light stays unchanged",
+        "characters": [
+          "xuyan",
+          "erniu",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a04",
+          "speaker": "xuyan",
+          "text": "水，我們自己找。不靠他的壩，也要讓田見水。",
+          "emotion": "穩"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot over the shoulder, slow push in",
+        "prompt": "In the bamboo valley upstream of the dry Liuxi stream on the first afternoon of the drought, at the Qian family's dam, on the narrow stone-edged earth path at the foot of the bank of brown hemp sacks; hazy white afternoon sunlight, dust in the hot air: medium shot over a shoulder: at the right edge of the frame, cut by it, soft and out of focus, only the back of one broad shoulder in a coarse brown jacket with a wooden hoe handle resting on it and the back of a man's head, toward us the whole shot; one step beyond it in the left half of the frame Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dust on its hem, standing on the narrow stone-edged earth path, framed from the waist up, his hands empty, his flat right hand already raised a little toward the man's shoulder from the first frame, his face three-quarter to screen right toward the man in the foreground, never the lens; firm and calm, not smiling: steady eyes, brows level, lips moving evenly between words; behind him, soft, the narrow ditch of muddy water beside the stone-edged path in the hazy white sun; their hands hold only what is described here; exactly two people, the one in the foreground seen only from behind",
+        "motion": "Xu Yan speaks a short Mandarin line, 「水，我們自己找。不靠他的壩，也要讓田見水」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan pats the shoulder of the man in the foreground once with his flat right hand as he speaks, and the hazy white afternoon light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a05",
+          "speaker": "erniu",
+          "text": "下游還有一口深潭，潭裡的水沒乾！",
+          "emotion": "想到了"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the bamboo valley upstream of the dry Liuxi stream on the first afternoon of the drought, at the Qian family's dam, on the narrow stone-edged earth path at the foot of the bank of brown hemp sacks; hazy white afternoon sunlight, dust in the hot air: close-up of Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, his face tanned dark from the sun, framed from the chest up with space above his head, one hoe with a plain wooden handle and an iron blade on his right shoulder from the first frame, his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the soft green bamboo slope of the valley all the way to the edge, and he is the only person in the frame; it comes to him, not smiling: eyes going wide and bright, brows lifting, mouth set, lips moving fast between words; behind him, soft, only the green bamboo slope of the valley in the hazy white sun; their hands hold only what is described here",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「下游還有一口深潭，潭裡的水沒乾！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu's head comes up and his eyes widen as he speaks, his mouth set, and the hazy white afternoon light stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a06",
+          "speaker": "xuyan",
+          "text": "潭在溝底，田在坡上，一擔擔挑，挑不活三畝田。",
+          "emotion": "搖頭"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the bamboo valley upstream of the dry Liuxi stream on the first afternoon of the drought, at the Qian family's dam, on the narrow stone-edged earth path at the foot of the bank of brown hemp sacks; hazy white afternoon sunlight, dust in the hot air: medium shot on the narrow stone-edged earth path, all three framed from the waist up: on the left Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dust on its hem, his hands empty, his face three-quarter to screen right toward the young man beside him, never the lens; level and patient, not smiling: brows drawn a little, lips moving evenly between words; in the middle Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, his face tanned dark from the sun, one hoe with a plain wooden handle and an iron blade on his right shoulder, his face three-quarter to screen left toward Xu Yan, his lips pressed shut, not smiling, never the lens; on the right Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, one plain wooden carrying pole as long as she is tall, smooth and round to its ends upright in her right hand, her face three-quarter to screen left, her lips pressed shut, never the lens; behind them, soft, the bank of brown hemp sacks rising at the right and the narrow muddy ditch at the left in the hazy white sun; their hands hold only what is described here; exactly three people; the only hoe in the frame is Wang Erniu's",
+        "motion": "Xu Yan speaks a short Mandarin line, 「潭在溝底，田在坡上，一擔擔挑，挑不活三畝田」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan shakes his head slowly as he speaks; Wang Erniu and Qin Shuang say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the hazy white afternoon light stays unchanged",
+        "characters": [
+          "xuyan",
+          "erniu",
+          "qinshuang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a07",
+          "speaker": "qinshuang",
+          "text": "別繞了，說人話。到底要怎麼做？",
+          "emotion": "不耐煩"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot over the shoulder, slow push in",
+        "prompt": "In the bamboo valley upstream of the dry Liuxi stream on the first afternoon of the drought, at the Qian family's dam, on the narrow stone-edged earth path at the foot of the bank of brown hemp sacks; hazy white afternoon sunlight, dust in the hot air: medium shot over a shoulder: at the left edge of the frame, cut by it, soft and out of focus, only the back of one shoulder in a faded blue-grey robe and the back of a man's topknot, toward us the whole shot; one step beyond it in the right half of the frame Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, standing on the narrow stone-edged earth path, framed from the waist up, one plain wooden carrying pole as long as she is tall, smooth and round to its ends upright in her right hand from the first frame, its end just above the earth, her face three-quarter to screen left toward the man in the foreground, never the lens; impatient, not smiling: brows drawn, eyes narrowed, lips moving fast and clipped between words; behind her, soft, the bank of brown hemp sacks rising at the right in the hazy white sun; their hands hold only what is described here; exactly two people, the one in the foreground seen only from behind",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「別繞了，說人話。到底要怎麼做？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang thumps the end of the carrying pole down on the earth once, a little dust rising, as she speaks, and the hazy white afternoon light stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a08",
+          "speaker": "xuyan",
+          "text": "挖井。就在田邊挖，挖到見水為止。",
+          "emotion": "很穩"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "In the bamboo valley upstream of the dry Liuxi stream on the first afternoon of the drought, at the Qian family's dam, on the narrow stone-edged earth path at the foot of the bank of brown hemp sacks; hazy white afternoon sunlight, dust in the hot air: low-angle medium shot of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dust on its hem, framed from the waist up, one hoe with a plain wooden handle and an iron blade already raised over his right shoulder in both hands from the first frame, his hair stuck to his forehead in the heat, his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the hazy white sky and the green bamboo slope all the way to the edge, and he is the only person in the frame; resolved, not smiling: jaw set, eyes steady, lips moving firmly between words; behind him, soft, only the hazy white sky and the green bamboo slopes of the valley; their hands hold only what is described here",
+        "motion": "Xu Yan speaks a short Mandarin line, 「挖井。就在田邊挖，挖到見水為止」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan swings the hoe down hard into the earth at his feet, out of the bottom of the frame, as he speaks, and the hazy white afternoon light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a09",
+          "speaker": "qinshuang",
+          "text": "好，聽你的。都走，別在這裡讓人看笑話。",
+          "emotion": "乾脆"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the bamboo valley upstream of the dry Liuxi stream on the first afternoon of the drought, at the Qian family's dam, on the narrow stone-edged earth path at the foot of the bank of brown hemp sacks; hazy white afternoon sunlight, dust in the hot air: wide shot along the narrow stone-edged earth path at the foot of the bank of sacks, everyone framed full figure, already walking toward us down the path from the first frame, in a loose line: at the front Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, her hands empty, her face turned back over her left shoulder toward the people behind her, never the lens; brisk and cold, not smiling: brows level, lips moving between words; behind her Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dust on its hem and Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, his face tanned dark from the sun with one hoe with a plain wooden handle and an iron blade on his right shoulder, their lips pressed shut, never the lens; behind them five more people in Song-dynasty cross-collared homespun short jackets, each a different colour, cloth head wraps and cloth shoes: a white-haired old man in a faded undyed hemp-beige jacket and a lean middle-aged man in a dark charcoal jacket, each with one wooden carrying pole on his shoulder and an empty wooden bucket at each end of it; a thin boy of fifteen in a faded indigo jacket, a broad middle-aged man in a dull olive-green jacket and a middle-aged woman in a dark grey jacket with a faded indigo head cloth, each with one bamboo basket on the back and one wooden spade in hand, their lips closed, never the lens; at the right the bank of brown hemp sacks, at the left the narrow muddy ditch, in the hazy white sun; their hands hold only what is described here; exactly eight people; the only hoe in the frame is Wang Erniu's",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「好，聽你的。都走，別在這裡讓人看笑話」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the eight of them walk steadily toward us down the stone-edged path as Qin Shuang speaks; Xu Yan, Wang Erniu and the five others say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the hazy white afternoon light stays unchanged",
+        "characters": [
+          "qinshuang",
+          "xuyan",
+          "erniu"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s11",
+      "chapter": "柳溪田邊的井坑",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a10",
+          "speaker": "hanbo",
+          "text": "第三天了，挖了十幾口，一口都沒見水。",
+          "emotion": "蒼老，慢"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village early on the third morning of the drought: the field exactly as in the picture: one row of earth heaps running from the near left away to the far right across the cracked furrows, the near pit's dark square mouth in the left foreground with a long wooden pole along its far rim and a wooden tub on its edge, a willow with yellowed drooping leaves at the right, low roofs and hills far away; low pale early-morning sun from the left, long shadows to the right across the cracked furrows, a thin grey haze low over the field: wide shot at standing eye height, like the picture: in the left foreground at the rim of the near well pit Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dust on its hem, one thick hemp rope knotted round his waist, its other end tied to the long wooden pole along the pit's rim, framed full figure, small, standing still, one short-handled iron pick with a plain wooden handle stuck upright in the earth at his feet, his face turned toward the old man, his lips pressed shut, never the lens; walking slowly toward him along the row of earth heaps from the right Elder Han, in his faded grey cotton cross-collared long robe, his long white beard down to his chest, his white hair in a small topknot, his polished old bamboo walking staff in his right hand, framed full figure, small, his eyes on the heaps he passes, not smiling: weary, brows drawn, his head shaking, lips moving slowly between words, never the lens; far along the row five more people in Song-dynasty cross-collared homespun short jackets, each a different colour, cloth head wraps and cloth shoes, yellow mud on their jackets, each standing full figure on the field beside the far earth heaps: a white-haired old man in a faded undyed hemp-beige jacket and a lean middle-aged man in a dark charcoal jacket, each with one carrying pole on his shoulder and a bamboo basket of yellow earth at each end of it; a thin boy of fifteen in a faded indigo jacket, a broad middle-aged man in a dull olive-green jacket and a middle-aged woman in a dark grey jacket with a faded indigo head cloth, each with one wooden spade, their lips closed, never the lens; their hands hold only what is described here; exactly seven people; every pit is empty, everyone stands on the field",
+        "motion": "Elder Han speaks a short Mandarin line, 「第三天了，挖了十幾口，一口都沒見水」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Elder Han walks slowly on along the row of heaps toward the near pit, leaning on his staff, as he speaks; Xu Yan and the five others say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the pale early-morning light stays unchanged",
+        "characters": [
+          "hanbo",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a11",
+          "speaker": "xuyan",
+          "text": "韓伯，待會日頭就毒了，您回樹蔭下歇著。",
+          "emotion": "溫和"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village early on the third morning of the drought, at the near well pit, its dark square mouth and the long wooden pole along its far rim, the earth heaps beyond it; low pale early-morning sun from the left, long shadows to the right across the cracked furrows, a thin grey haze low over the field: medium shot at the rim of the near well pit, both framed from the waist up: on the left Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dust on its hem, one thick hemp rope knotted round his waist, its other end tied to the long wooden pole along the pit's rim, both hands already on the knot at his waist from the first frame, one short-handled iron pick with a plain wooden handle stuck upright in the earth at his feet, his face three-quarter to screen right toward the old man, never the lens; gentle, not smiling: soft eyes, lips moving quietly between words; on the right Elder Han, in his faded grey cotton cross-collared long robe, his long white beard down to his chest, his white hair in a small topknot, his polished old bamboo walking staff in his right hand, standing, leaning on the staff, his face three-quarter to screen left toward Xu Yan, his lips pressed shut, never the lens; behind them, soft, the dark square mouth of the pit, the long wooden pole along its far rim and the first earth heaps in the pale morning haze; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「韓伯，待會日頭就毒了，您回樹蔭下歇著」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan pulls the knot at his waist tight with one hard tug as he speaks; Elder Han says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the pale early-morning light stays unchanged",
+        "characters": [
+          "xuyan",
+          "hanbo"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a12",
+          "speaker": "hanbo",
+          "text": "你一個秀才都要下去，老頭子哪坐得住。",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot over the shoulder, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village early on the third morning of the drought, at the near well pit, its dark square mouth and the long wooden pole along its far rim, the earth heaps beyond it; low pale early-morning sun from the left, long shadows to the right across the cracked furrows, a thin grey haze low over the field: medium shot over a shoulder: at the left edge of the frame, cut by it, soft and out of focus, only the back of one shoulder in a faded blue-grey robe and the back of a man's topknot, toward us the whole shot; one step beyond it in the right half of the frame Elder Han, in his faded grey cotton cross-collared long robe, his long white beard down to his chest, his white hair in a small topknot, his polished old bamboo walking staff in his right hand, already lowering himself from the first frame onto a flat fieldstone at the edge of the pit, both hands on the staff, his face three-quarter to screen left toward the man in the foreground, never the lens; stubborn and sure, not smiling: brows level, eyes steady, lips moving slowly between words; behind him, soft, the row of earth heaps running away across the cracked furrows in the pale morning haze; their hands hold only what is described here; exactly two people, the one in the foreground seen only from behind",
+        "motion": "Elder Han speaks a short Mandarin line, 「你一個秀才都要下去，老頭子哪坐得住」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Elder Han sits down on the flat stone, leaning on his staff, and stays as he speaks, and the pale early-morning light stays unchanged",
+        "characters": [
+          "hanbo"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a13",
+          "speaker": "erniu",
+          "text": "許大哥，你沒挖過井，讓我下去！",
+          "emotion": "急，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village early on the third morning of the drought, at the near well pit, its dark square mouth and the long wooden pole along its far rim, the earth heaps beyond it; low pale early-morning sun from the left, long shadows to the right across the cracked furrows, a thin grey haze low over the field: medium shot at the rim of the near well pit, both framed from the waist up: on the left Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dust on its hem, one thick hemp rope knotted round his waist, its other end tied to the long wooden pole along the pit's rim, his face three-quarter to screen right toward the young man, his lips pressed shut, never the lens; tired, not smiling; on the right Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, dried yellow mud caked on the jacket and his forearms, his face tanned dark from the sun, already standing close beside him from the first frame, his face three-quarter to screen left toward Xu Yan, never the lens; urgent, not smiling: brows knotted, eyes wide, lips moving fast between words; behind them, soft, the dark square mouth of the pit and the long wooden pole along its far rim in the pale morning haze; their hands hold only what is described here; exactly two people",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「許大哥，你沒挖過井，讓我下去！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu's right hand grabs the rope at Xu Yan's waist as he speaks; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the pale early-morning light stays unchanged",
+        "characters": [
+          "xuyan",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a14",
+          "speaker": "xuyan",
+          "text": "你挖了兩天了。這口換我，上面拉繩靠你。",
+          "emotion": "累，穩"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot over the shoulder, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village early on the third morning of the drought, at the near well pit, its dark square mouth and the long wooden pole along its far rim, the earth heaps beyond it; low pale early-morning sun from the left, long shadows to the right across the cracked furrows, a thin grey haze low over the field: medium shot over a shoulder: at the right edge of the frame, cut by it, soft and out of focus, only the back of one broad shoulder in a coarse brown jacket caked with dried yellow mud and the back of a man's head, toward us the whole shot; one step beyond it in the left half of the frame Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dust on its hem, one thick hemp rope knotted round his waist, its other end tied to the long wooden pole along the pit's rim, framed from the waist up, the loose end of the rope already in his left hand from the first frame, his face three-quarter to screen right toward the man in the foreground, never the lens; tired and firm, not smiling: shadows under his eyes, brows level, lips moving evenly between words; behind him, soft, the long wooden pole along the far rim of the pit and the cracked furrows in the pale morning haze; their hands hold only what is described here; exactly two people, the one in the foreground seen only from behind",
+        "motion": "Xu Yan speaks a short Mandarin line, 「你挖了兩天了。這口換我，上面拉繩靠你」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan holds the loose end of the rope out to the man in the foreground as he speaks, and the pale early-morning light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "High-angle medium shot, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village at the end of the same day, at the near well pit, its dark square mouth and the long wooden pole along its far rim, the earth heaps beyond it; low orange evening sun from the left, long shadows to the right across the cracked furrows: high-angle shot looking straight down into the near well pit from its rim: far below at the bottom of the pit, as deep as two men are tall, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the robe, his arms and his face caked with wet yellow mud, his hair matted, alone, framed full figure, one short-handled iron pick with a plain wooden handle already raised in both hands from the first frame, the rope from his waist running up out of the top of the frame, his face down toward the earth at his feet, never the lens; dogged and spent, not smiling, his lips pressed shut; the rough dug earth walls of the pit around him, the low orange evening light only on the upper rim, the bottom in shadow; he is the only person in the frame",
+        "motion": "Xu Yan swings the pick down into the earth at his feet and a clod breaks loose; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the low orange evening light stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 5
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a15",
+          "speaker": "qinshuang",
+          "text": "他下去多久了？上頭的人都沒換他？",
+          "emotion": "皺眉"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village at the end of the same day, at the near well pit, its dark square mouth and the long wooden pole along its far rim, the earth heaps beyond it; low orange evening sun from the left, long shadows to the right across the cracked furrows: medium shot at the rim of the near well pit, both framed from the waist up: on the right Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, standing at the rim, one bamboo water tube with a rope handle in her right hand, already leaning to look down into the dark pit from the first frame, never the lens; frowning, not smiling: brows drawing together, lips moving fast between words; on the left Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, dried yellow mud caked on the jacket and his forearms, his face tanned dark from the sun, crouching on the rim, both hands gripping the rope that runs taut down into the pit, his face three-quarter to screen right toward her, his lips pressed shut, worried, not smiling, never the lens; behind them, soft, the long wooden pole along the far rim and the earth heaps in the low orange evening light; their hands hold only what is described here; exactly two people",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「他下去多久了？上頭的人都沒換他？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang's eyes lift from the pit to Wang Erniu, her brows drawn, as she speaks; Wang Erniu says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low orange evening light stays unchanged",
+        "characters": [
+          "qinshuang",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a16",
+          "speaker": "erniu",
+          "text": "一整天了，叫他也不上來，剛才就沒聲了。",
+          "emotion": "喘，擔心"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village at the end of the same day, at the near well pit, its dark square mouth and the long wooden pole along its far rim, the earth heaps beyond it; low orange evening sun from the left, long shadows to the right across the cracked furrows: close-up of Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, dried yellow mud caked on the jacket and his forearms, his face tanned dark from the sun, crouching, framed from the chest up with space above his head, both hands gripping the rope at the bottom of the frame, his face turned down toward the dark pit at first, never the lens; that side of the frame is only the cracked furrows of the dry field all the way to the edge, and he is the only person in the frame; frightened, not smiling: brows knotted up, eyes wide, panting, lips moving fast between words; behind him, soft, only the long wooden pole along the rim of the pit in the low orange evening light; their hands hold only what is described here",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「一整天了，叫他也不上來，剛才就沒聲了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu's face comes up from the pit and turns three-quarter to screen right, toward someone out of sight beyond the right edge of the frame, as he speaks, and the low orange evening light stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a17",
+          "speaker": "qinshuang",
+          "text": "沒聲了還等什麼？二牛，一起拉！",
+          "emotion": "命令"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village at the end of the same day, at the near well pit, its dark square mouth and the long wooden pole along its far rim, the earth heaps beyond it; low orange evening sun from the left, long shadows to the right across the cracked furrows: medium shot at the rim of the near well pit, both framed from the waist up, side-on to us: in front Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, both her hands already gripping the rope that runs taut from the dark pit at the left from the first frame, one bamboo water tube with a rope handle standing on the earth at her feet, her face turned back over her right shoulder toward the young man behind her, never the lens; commanding, not smiling: brows drawn, eyes hard, lips moving fast between words; just behind her Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, dried yellow mud caked on the jacket and his forearms, his face tanned dark from the sun, his hands on the same rope, his lips pressed shut, not smiling, never the lens; behind them, soft, the earth heaps in the low orange evening light; their hands hold only what is described here; exactly two people",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「沒聲了還等什麼？二牛，一起拉！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang braces her boots on the earth and leans back hard on the rope as she speaks; Wang Erniu says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low orange evening light stays unchanged",
+        "characters": [
+          "qinshuang",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Low-angle wide shot, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village at the end of the same day, at the near well pit, its dark square mouth and the long wooden pole along its far rim, the earth heaps beyond it; low orange evening sun from the left, long shadows to the right across the cracked furrows: low-angle wide shot from close to the earth at the rim of the near well pit, the thick hemp rope stretched taut in the foreground from the dark mouth of the pit at the left: four people in a line on the rope, all framed full figure, already leaning back hard from the first frame, side-on to us: at the front Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, then Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, dried yellow mud caked on the jacket and his forearms, his face tanned dark from the sun, then a lean middle-aged man in a dark charcoal homespun jacket and a broad middle-aged man in a dull olive-green homespun jacket, cloth head wraps; every face strained, not smiling, lips pressed shut, never the lens; behind them, soft, the earth heaps in the low orange evening light; their hands hold only what is described here; exactly four people; the pit at the left is dark and its mouth shows only the rope",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the four of them haul the rope in together, hand over hand, twice, stepping back toward the right; All four says nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low orange evening light stays unchanged",
+        "characters": [
+          "qinshuang",
+          "erniu"
+        ],
+        "buy_seconds": 5
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a18",
+          "speaker": "xuyan",
+          "text": "沒……沒水。再往下一丈，也許就有……",
+          "emotion": "虛弱，眼睛半閉"
+        }
+      ],
+      "data": {
+        "camera": "Close-up from overhead, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village at the end of the same day, beside the near well pit on the cracked furrows of the dry field; low orange evening sun from the left, long shadows to the right across the cracked furrows: overhead close-up looking straight down: Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the robe, his arms and his face caked with wet yellow mud, his hair matted, lying on his back on the cracked furrows beside the pit from the first frame, framed from the chest up, his lips dry and pale, his eyes half closed, his face tipped up toward the evening sky, never the lens; nearly fainted, not smiling: slack face, brows loose, lips barely moving between breathy words; only the cracked dry yellow furrows with a few short dead stalks around his head and shoulders to every edge, in the low orange evening light; he is the only person in the frame",
+        "motion": "Xu Yan speaks a short Mandarin line, 「沒……沒水。再往下一丈，也許就有……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan's lips move weakly and, as he finishes speaking, his head rolls slowly to one side on the earth, and the low orange evening light stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a19",
+          "speaker": "qinshuang",
+          "text": "都讓開。曬昏了，得馬上送回屋裡。",
+          "emotion": "低聲，不耐煩"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village at the end of the same day, beside the near well pit on the cracked furrows of the dry field; low orange evening sun from the left, long shadows to the right across the cracked furrows: medium shot beside the near well pit: on the left Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, down on one knee from the first frame, her right hand already resting on the forehead of the man lying before her, framed from the waist up, her face three-quarter to screen right toward the others, never the lens; grim and short, not smiling: brows drawn, lips moving low and fast between words; lying on his back across the bottom of the frame Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the robe, his arms and his face caked with wet yellow mud, his hair matted, his eyes closed, his face turned up, his lips pressed shut, never the lens; on the right, crouched close, Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, dried yellow mud caked on the jacket and his forearms, his face tanned dark from the sun, framed from the waist up, his face three-quarter to screen left toward her, his lips pressed shut, not smiling, never the lens, and beside him, side-on to us, a broad middle-aged man in a dull olive-green homespun jacket, his lips pressed shut; behind them, soft, the earth heaps in the low orange evening light; their hands hold only what is described here; exactly four people",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「都讓開。曬昏了，得馬上送回屋裡」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang sweeps her flat left hand once toward the two men on the right as she speaks; Wang Erniu and the man beside him say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low orange evening light stays unchanged",
+        "characters": [
+          "qinshuang",
+          "xuyan",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a20",
+          "speaker": "qinshuang",
+          "text": "文弱書生，逞什麼能，挖什麼井！",
+          "emotion": "罵，嫌棄"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle wide shot, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village at the end of the same day, walking along the row of earth heaps toward the village, the wide evening sky and the dry field around; low orange evening sun from the left, long shadows to the right across the cracked furrows: low-angle wide shot along the row of earth heaps: Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, framed full figure, already standing upright from the first frame with over her right shoulder the limp body of a man in a mud-caked faded blue-grey robe, his head and arms hanging down behind her back, her right arm locked round his legs, striding toward the left edge of the frame, her face in profile to screen left, her eyes on the way ahead, never the lens; cross and embarrassed, not smiling: brows drawn, mouth tight, lips moving fast between words; a few steps behind her at the right Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, dried yellow mud caked on the jacket and his forearms, his face tanned dark from the sun, one bamboo water tube with a rope handle in his right hand, following, his lips pressed shut, not smiling, never the lens; behind them, soft, the row of earth heaps running away to the right in the low orange evening light; their hands hold only what is described here; exactly three people, the man over her shoulder seen only from behind",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「文弱書生，逞什麼能，挖什麼井！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang strides on toward the left with the man over her shoulder, her ponytail swinging, as she speaks; Wang Erniu says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low orange evening light stays unchanged",
+        "characters": [
+          "qinshuang",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a21",
+          "speaker": "qinshuang",
+          "text": "在樹蔭下指一指就好，偏要自己下去。",
+          "emotion": "小聲，耳根紅"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village at the end of the same day, walking along the row of earth heaps toward the village, the wide evening sky and the dry field around; low orange evening sun from the left, long shadows to the right across the cracked furrows: close-up of Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, framed from the shoulders up with space above her head, walking, over her right shoulder the limp body of a man in a mud-caked faded blue-grey robe, his head and arms hanging down behind her back, only his muddy back and one limp hand in the frame behind her shoulder, her ears flushed red, her face in profile to screen left, her eyes on the way ahead, never the lens; she is the only one whose face is in the frame; awkward and cross, not smiling: eyes fixed ahead, brows drawn, lips moving low and quick between muttered words; behind her, soft, only the wide evening sky, a willow with yellowed leaves and the dry field in the low orange light",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「在樹蔭下指一指就好，偏要自己下去」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang hitches the man on her shoulder up once with a shrug, her eyes still on the way ahead, as she mutters, and the low orange evening light stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a22",
+          "speaker": "xitong",
+          "text": "叮。秦霜，好感加十二。",
+          "emotion": "冷，宣布"
+        },
+        {
+          "id": "zq932a23",
+          "speaker": "xitong",
+          "text": "加十二。宿主差點死在井裡，才換到這些。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village at the end of the same day, walking along the row of earth heaps toward the village, the wide evening sky and the dry field around; low orange evening sun from the left, long shadows to the right across the cracked furrows: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the robe, his arms and his face caked with wet yellow mud, his hair matted, slung head down over a shoulder, his muddy cheek against the dark brown cloth of a jacket's back, his face upside down in the frame, his eyes half closed, never the lens; he is the only one whose face is in the frame; dazed, not smiling: slack face, brows loose, lips pressed shut; behind him, soft, only the wide evening sky and the dry field in the low orange light",
+        "motion": "Xu Yan's head sways gently with each step and his eyelids flicker once; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the low orange evening light stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s25b",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a24",
+          "speaker": "xuyan",
+          "text": "死不了……換得到一口水，就值得。",
+          "emotion": "內心獨白，嘴閉著，心裡話，錄得近、輕，迷迷糊糊"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village at the end of the same day, walking along the row of earth heaps toward the village, the wide evening sky and the dry field around; low orange evening sun from the left, long shadows to the right across the cracked furrows: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the robe, his arms and his face caked with wet yellow mud, his hair matted, slung head down over a shoulder, his muddy cheek against the dark brown cloth of a jacket's back, his face upside down in the frame, his eyes half closed, never the lens; he is the only one whose face is in the frame; half dreaming, not smiling: slack face, lips pressed shut; behind him, soft, only the wide evening sky and the dry field in the low orange light",
+        "motion": "Xu Yan's head sways gently with each step, his eyes still half closed; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking, and the low orange evening light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a25",
+          "speaker": "xitong",
+          "text": "秦霜好感，突破四十。獎勵箱開啟：水車圖紙。",
+          "emotion": "冷，宣布"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village at the end of the same day, walking along the row of earth heaps toward the village, the wide evening sky and the dry field around; low orange evening sun from the left, long shadows to the right across the cracked furrows: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the robe, his arms and his face caked with wet yellow mud, his hair matted, slung head down over a shoulder, his muddy cheek against the dark brown cloth of a jacket's back, his face upside down in the frame, his eyes half closed at first, never the lens; he is the only one whose face is in the frame; dazed, not smiling: lips pressed shut; behind him, soft, only the wide evening sky and the dry field in the low orange light",
+        "motion": "Xu Yan's eyelids part a narrow crack and his eyes rest on the empty air before his face; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the low orange evening light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s26b",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a26",
+          "speaker": "xuyan",
+          "text": "水車……有了水車，深潭的水就上得來。",
+          "emotion": "內心獨白，嘴閉著，心裡話，錄得近、輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the row of new well pits on the cracked dry field outside Liuxi village at the end of the same day, walking along the row of earth heaps toward the village, the wide evening sky and the dry field around; low orange evening sun from the left, long shadows to the right across the cracked furrows: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the robe, his arms and his face caked with wet yellow mud, his hair matted, slung head down over a shoulder, his muddy cheek against the dark brown cloth of a jacket's back, his face upside down in the frame, his eyes a narrow crack, never the lens; he is the only one whose face is in the frame; a faint stubborn hope, lips pressed shut; behind him, soft, only the wide evening sky and the dry field in the low orange light",
+        "motion": "one corner of Xu Yan's mouth moves a little, his lips staying pressed together; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking, and the low orange evening light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "chapter": "柳溪祠堂",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a27",
+          "speaker": "shimujiang",
+          "text": "圖是好圖。可這輪子，要三百斤好木頭。",
+          "emotion": "粗啞"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the ancestral hall of Liuxi village at dusk on the same day, just inside the doorway, the lattice door leaves swung back, the dim orange dusk beyond them; warm candlelight inside the hall, the last dim orange evening light through the lattice of the doors: medium shot of the doorway from inside the hall, the lattice door leaves swung back: just inside the threshold Carpenter Shi, in his faded brown cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, one plain wooden stick through his grey topknot, framed from the waist up, already turned back three-quarter to screen left toward the doorway from the first frame, one rolled sheet of plain cream paper, its outside plain in his right hand, never the lens; gruff, not smiling: brows bunched, lips moving roughly between words; beyond him on the threshold at the left of the doorway Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dried yellow mud on its knees, his face washed clean and pale, framed from the waist up, his face toward the carpenter, his lips pressed shut, never the lens, and at the right of the doorway Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, his face tanned dark from the sun, one hoe with a plain wooden handle and an iron blade on his right shoulder, his lips pressed shut, not smiling, never the lens; the dim orange dusk behind them; their hands hold only what is described here; exactly three people; the only hoe in the frame is Wang Erniu's",
+        "motion": "Carpenter Shi speaks a short Mandarin line, 「圖是好圖。可這輪子，要三百斤好木頭」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Carpenter Shi gives the rolled paper one shake toward Xu Yan as he speaks; Xu Yan and Wang Erniu say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the warm candlelight and the dim dusk at the doors stay unchanged",
+        "characters": [
+          "shimujiang",
+          "xuyan",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a28",
+          "speaker": "xuyan",
+          "text": "我醒來就把它畫出來了。石師傅，這車做得出來嗎？",
+          "emotion": "啞"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot over the shoulder, slow push in",
+        "prompt": "In the ancestral hall of Liuxi village at dusk on the same day, just inside the doorway, the lattice door leaves swung back, the dim orange dusk beyond them; warm candlelight inside the hall, the last dim orange evening light through the lattice of the doors: medium shot over a shoulder: at the right edge of the frame, cut by it, soft and out of focus, only the back of one shoulder in a faded brown work jacket with the strap of a leather apron across it and the back of a grey topknot with one plain wooden stick through it, toward us the whole shot; one step beyond it in the left half of the frame Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dried yellow mud on its knees, his face washed clean and pale, standing on the threshold, framed from the waist up, his left hand already braced on the dark wooden door frame from the first frame, his face three-quarter to screen right toward the man in the foreground, never the lens; worn out, not smiling: pale, brows level, eyes tired but steady, lips moving hoarsely between words; behind him, soft, the lattice door leaf and the dim orange dusk; their hands hold only what is described here; exactly two people, the one in the foreground seen only from behind",
+        "motion": "Xu Yan speaks a short Mandarin line, 「我醒來就把它畫出來了。石師傅，這車做得出來嗎？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan draws one slow breath, leaning on the door frame, as he speaks, and the warm candlelight and the dim dusk at the doors stay unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a29",
+          "speaker": "shimujiang",
+          "text": "做得出。料呢？三百斤的整木，村裡上哪找？",
+          "emotion": "皺眉"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot over the shoulder, slow push in",
+        "prompt": "In the ancestral hall of Liuxi village at dusk on the same day, before the plain candle-warmed back wall under the dark main beam; warm candlelight inside the hall, the last dim orange evening light through the lattice of the doors: medium shot over a shoulder: at the left edge of the frame, cut by it, soft and out of focus, only the back of one shoulder in a faded blue-grey robe and the back of a man's topknot, toward us the whole shot; one step beyond it in the right half of the frame Carpenter Shi, in his faded brown cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, one plain wooden stick through his grey topknot, framed from the waist up, one rolled sheet of plain cream paper, its outside plain held in his left hand from the first frame, his face three-quarter to screen left toward the man in the foreground, never the lens; frowning, not smiling: brows knotted, eyes narrowed, lips moving roughly between words; behind him, soft, only the plain candle-warmed back wall of the hall under the dark beam; their hands hold only what is described here; exactly two people, the one in the foreground seen only from behind",
+        "motion": "Carpenter Shi speaks a short Mandarin line, 「做得出。料呢？三百斤的整木，村裡上哪找？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Carpenter Shi raps twice on the rolled paper with the knuckles of his right hand as he speaks, and the warm candlelight and the dim dusk at the doors stay unchanged",
+        "characters": [
+          "shimujiang"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a30",
+          "speaker": "erniu",
+          "text": "村裡的大樹，去年秋天就砍光了。",
+          "emotion": "悶，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the ancestral hall of Liuxi village at dusk on the same day, just inside the doorway, the lattice door leaves swung back, the dim orange dusk beyond them; warm candlelight inside the hall, the last dim orange evening light through the lattice of the doors: medium shot of Wang Erniu, in his coarse brown cross-collared short jacket with the sleeves rolled up, his face tanned dark from the sun, standing on the threshold, framed from the waist up, one hoe with a plain wooden handle and an iron blade on his right shoulder at first, his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the dark lattice door leaf swung back against the wall all the way to the edge, and he is the only person in the frame; glum, not smiling: a sullen frown, the corners of his mouth turned down, lips moving heavily between words; behind him, soft, the lattice door leaf and the dim orange dusk; their hands hold only what is described here; the only hoe in the frame is his",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「村裡的大樹，去年秋天就砍光了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu sets the hoe down off his shoulder and leans on its handle as he speaks, and the warm candlelight and the dim dusk at the doors stay unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a31",
+          "speaker": "shimujiang",
+          "text": "這麼大的料，村裡只剩一根，就在頭頂上。",
+          "emotion": "壓低"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the ancestral hall of Liuxi village at dusk on the same day, just inside the doorway, the lattice door leaves swung back, the dim orange dusk beyond them; warm candlelight inside the hall, the last dim orange evening light through the lattice of the doors: medium shot just inside the doorway, both framed from the waist up: on the left Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dried yellow mud on its knees, his face washed clean and pale, one rolled sheet of plain cream paper, its outside plain already in his right hand from the first frame, his face three-quarter to screen right toward the carpenter, his lips pressed shut, never the lens; on the right Carpenter Shi, in his faded brown cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, one plain wooden stick through his grey topknot, his hands empty at first, his face three-quarter to screen left toward Xu Yan, never the lens; low and grim, not smiling: brows drawn, lips moving low between words; behind them, soft, the lattice door leaves swung back and the dim orange dusk; their hands hold only what is described here; exactly two people",
+        "motion": "Carpenter Shi speaks a short Mandarin line, 「這麼大的料，村裡只剩一根，就在頭頂上」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Carpenter Shi raises his flat right hand, fingers together, up toward the roof above them inside the hall as he speaks low; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the warm candlelight and the dim dusk at the doors stay unchanged",
+        "characters": [
+          "xuyan",
+          "shimujiang"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a32",
+          "speaker": "xuyan",
+          "text": "祠堂的梁……這是全村祖宗的屋頂。",
+          "emotion": "畫外，愣住"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle point-of-view wide shot, slow push in",
+        "prompt": "In the ancestral hall of Liuxi village at dusk on the same day: the thick dark main beam across the top of the candle-warmed back wall; warm candlelight inside the hall, the last dim orange evening light through the lattice of the doors: low-angle point-of-view wide shot looking up across the hall from the doorway, like the picture: the thick dark main beam running across the top of the candle-warmed back wall, below it the tops of a row of plain dark wooden tablets and a few thin incense sticks, a thin thread of incense smoke rising toward the beam in the candlelight; only the beam, the wall, the tablets and the smoke are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. a thin thread of incense smoke drifts slowly up toward the dark beam, and the warm candlelight and the dim dusk at the doors stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a33",
+          "speaker": "hanbo",
+          "text": "許秀才，你們在門口說的，我都聽見了。",
+          "emotion": "蒼老，慢"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the ancestral hall of Liuxi village at dusk on the same day, before the long dark altar table against the wall with five small dark wooden tablets standing on it, their faces smooth and plain, a bronze censer with a few incense sticks and two white candles; warm candlelight inside the hall, the last dim orange evening light through the lattice of the doors: wide shot on the grey stone floor before the long dark altar table against the wall with five small dark wooden tablets standing on it, their faces smooth and plain, a bronze censer with a few incense sticks and two white candles: at the left end of the altar table Elder Han, in his faded grey cotton cross-collared long robe, his long white beard down to his chest, his white hair in a small topknot, his polished old bamboo walking staff in his right hand, framed full figure, already risen to his feet from the first frame, leaning on the staff, his face three-quarter to screen left toward the doorway beyond the left edge of the frame, never the lens; old and steady, not smiling: brows level, eyes grave, lips moving slowly between words; kneeling on the stone floor before the altar in two loose rows, their backs to us, facing the altar, eight more people in Song-dynasty cross-collared homespun jackets and cloth shoes, each a different colour: a bent old woman in a faded black jacket with a white head cloth, a white-haired old man in a faded undyed hemp-beige jacket, a middle-aged woman in a dark grey jacket with a faded indigo head cloth, a broad middle-aged man in a dull olive-green jacket, a young woman in a rust-red jacket, a boy of about ten in a mustard-yellow jacket, a girl of about seven in a faded green jacket with her hair in one small bun, and a little boy of five in a dark charcoal jacket, all framed full figure, their lips closed, never the lens, two of them lifting their heads; their hands hold only what is described here; exactly nine people",
+        "motion": "Elder Han speaks a short Mandarin line, 「許秀才，你們在門口說的，我都聽見了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Elder Han turns slowly from the altar toward the doorway beyond the left edge of the frame as he speaks; The eight kneeling people say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the warm candlelight and the dim dusk at the doors stay unchanged",
+        "characters": [
+          "hanbo"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a34",
+          "speaker": "hanbo",
+          "text": "祖宗在上。求了三個月的雨，一滴都沒下。",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the ancestral hall of Liuxi village at dusk on the same day, before the long dark altar table against the wall with five small dark wooden tablets standing on it, their faces smooth and plain, a bronze censer with a few incense sticks and two white candles; warm candlelight inside the hall, the last dim orange evening light through the lattice of the doors: medium shot before the long dark altar table against the wall with five small dark wooden tablets standing on it, their faces smooth and plain, a bronze censer with a few incense sticks and two white candles: Elder Han, in his faded grey cotton cross-collared long robe, his long white beard down to his chest, his white hair in a small topknot, already kneeling on the stone floor before the altar table from the first frame, side-on to us, framed from the waist up, his bamboo staff leaning against the edge of the table, his face in profile to screen right toward the tablets, never the lens; grave and sure, not smiling: brows level, eyes on the tablets, lips moving slowly between words; at the left edge of the frame, soft, the bowed backs of two kneeling people, a bent old woman in a faded black jacket with a white head cloth and a boy of about ten in a mustard-yellow jacket, their faces down; their hands hold only what is described here; exactly three people",
+        "motion": "Elder Han speaks a short Mandarin line, 「祖宗在上。求了三個月的雨，一滴都沒下」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Elder Han lifts his face to the row of tablets as he speaks; The two kneeling behind him say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the warm candlelight and the dim dusk at the doors stay unchanged",
+        "characters": [
+          "hanbo"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a35",
+          "speaker": "hanbo",
+          "text": "柳溪全村，願拆祠堂的梁，給孩子換一口水。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the ancestral hall of Liuxi village at dusk on the same day, before the long dark altar table against the wall with five small dark wooden tablets standing on it, their faces smooth and plain, a bronze censer with a few incense sticks and two white candles; warm candlelight inside the hall, the last dim orange evening light through the lattice of the doors: medium close-up of Elder Han, in his faded grey cotton cross-collared long robe, his long white beard down to his chest, his white hair in a small topknot, kneeling, framed from the chest up with space above his head, his face in profile to screen right toward the tablets, never the lens; he is the only person in the frame; solemn, not smiling: candlelight on his face, eyes wet, brows level, lips moving slowly, one word at a time; beside him at the right, soft, the edge of the altar table, one white candle and two plain dark wooden tablets, their faces smooth and plain",
+        "motion": "Elder Han speaks a short Mandarin line, 「柳溪全村，願拆祠堂的梁，給孩子換一口水」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Elder Han bows his head slowly and deeply toward the tablets and raises it again as he speaks, and the warm candlelight and the dim dusk at the doors stay unchanged",
+        "characters": [
+          "hanbo"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq932a36",
+          "speaker": "hanbo",
+          "text": "許秀才，祖宗的梁拆不拆，由你來說。",
+          "emotion": "回頭"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle wide shot, slow push in",
+        "prompt": "In the ancestral hall of Liuxi village at dusk on the same day: the hall exactly as in the picture: the pair of lattice doors swung back on the left with the dim orange dusk beyond them, the long dark altar table against the wall with five small dark wooden tablets standing on it, their faces smooth and plain, a bronze censer with a few incense sticks and two white candles on the right, the thick dark main beam across the top of the back wall, a floor of grey stone flags; warm candlelight inside the hall, the last dim orange evening light through the lattice of the doors: low-angle wide shot from close to the stone floor, like the picture: in the doorway at the left, between the lattice door leaves swung back, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dried yellow mud on its knees, his face washed clean and pale, standing on the threshold, framed full figure, one rolled sheet of plain cream paper, its outside plain in his right hand, his face toward the hall, his lips pressed shut, never the lens; just behind him in the dim doorway, soft, two more men, a lean man in a leather apron and a big young man in a coarse brown jacket with a hoe on his shoulder, their lips closed; across the stone floor, kneeling in two loose rows before the altar on the right, eight more people in Song-dynasty cross-collared homespun jackets and cloth shoes, each a different colour: a bent old woman in a faded black jacket with a white head cloth, a white-haired old man in a faded undyed hemp-beige jacket, a middle-aged woman in a dark grey jacket with a faded indigo head cloth, a broad middle-aged man in a dull olive-green jacket, a young woman in a rust-red jacket, a boy of about ten in a mustard-yellow jacket, a girl of about seven in a faded green jacket with her hair in one small bun, and a little boy of five in a dark charcoal jacket, their lips closed, never the lens; at the front of them by the altar Elder Han, in his faded grey cotton cross-collared long robe, his long white beard down to his chest, his white hair in a small topknot, kneeling, framed full figure, his face turned back over his shoulder toward the doorway, never the lens; grave, not smiling: lips moving slowly between words; their hands hold only what is described here; exactly twelve people",
+        "motion": "Elder Han speaks a short Mandarin line, 「許秀才，祖宗的梁拆不拆，由你來說」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the kneeling people turn their heads one by one toward the doorway at the left as Elder Han speaks; Xu Yan, the two men behind him and the kneeling people say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the warm candlelight and the dim dusk at the doors stay unchanged",
+        "characters": [
+          "hanbo",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the ancestral hall of Liuxi village at dusk on the same day, just inside the doorway, the lattice door leaves swung back, the dim orange dusk beyond them; warm candlelight inside the hall, the last dim orange evening light through the lattice of the doors: medium close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dried yellow mud on its knees, his face washed clean and pale, standing in the doorway, framed from the chest up with space above his head, one rolled sheet of plain cream paper, its outside plain in his right hand at the bottom of the frame, half his face in warm candlelight from the right, the other half in the dim orange dusk, his eyes on the hall beyond the right edge of the frame, never the lens; that side of the frame is only the dark lattice door leaf swung back against the wall all the way to the edge, and he is the only person in the frame; shaken and silent, not smiling: brows drawn, eyes wide and still, lips pressed shut; behind him, soft, the dim orange dusk beyond the doorway",
+        "motion": "Xu Yan's fingers tighten slowly on the rolled paper and he swallows once; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the warm candlelight and the dim dusk at the doors stay unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 5
+      }
+    }
+  ]
+}
