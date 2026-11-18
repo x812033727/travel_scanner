@@ -142,8 +142,10 @@ for (const scene of video.scenes) {
     const start = t - Number(edit.line_lead[l.id]);
     if (start < 0) throw new Error(`${l.id}: line_lead starts it before the cut`);
     leadLines.push({ wav: l.wav, start });
-    lineAt.push({ id: l.id, shot: scene.id, speaker: l.speaker, start, len: l.len, subtitled: l.speaker !== "xitong" });
-    if (l.speaker !== "xitong") srt.push({ start, end: start + l.len, text: l.text });
+    // a system line led in gets its CC when `subtitle_lines` names it (e931 s29 -> s29b: a30 runs over the cut, no panel)
+    const leadSub = l.speaker !== "xitong" || (edit.subtitle_lines ?? []).includes(l.id);
+    lineAt.push({ id: l.id, shot: scene.id, speaker: l.speaker, start, len: l.len, subtitled: leadSub });
+    if (leadSub) srt.push({ start, end: start + l.len, text: l.text });
   }
   const src = scene.data?.source;
   const clip = src ? firstTake(path.join(work, "clips"), src.shot) : pick(path.join(work, "clips"), scene.id);
