@@ -1,13 +1,13 @@
 ---
 id: 2026-11-18-drive-links-in-admin
 title: Open each video's Google Drive folder and final cut from the admin
-status: review
+status: done
 priority: P1
 area: web
 owner: claude-opus-5-5-drive-links
 claimed_at: 2026-11-18T02:28:23Z
 created_at: 2026-11-18T02:27:50Z
-completed_at:
+completed_at: 2026-11-18T07:03:24Z
 branch: claude/kind-mccarthy-5m28jo
 depends_on: []
 scope:

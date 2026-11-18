@@ -1,13 +1,13 @@
 ---
 id: 2026-11-18-admin-video-browse-by-show
 title: Browse admin videos by show, series and topic
-status: review
+status: done
 priority: P1
 area: web
 owner: claude-opus-5-5-video-shelf
 claimed_at: 2026-11-18T01:50:08Z
 created_at: 2026-11-18T01:49:18Z
-completed_at:
+completed_at: 2026-11-18T07:03:23Z
 branch: claude/kind-mccarthy-5m28jo
 depends_on: []
 scope:
