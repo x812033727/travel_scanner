@@ -60,10 +60,10 @@ export type DubRetry = { id: string; status: "requested" | "taken" | "made" | "s
 // once, the owner changes it on the video's page.
 export const VIDEO_CATEGORIES = ["ai-terms", "ai-news", "tutorial", "comparison", "explainer", "story", "drama", "long-drama", "anime", "travel", "other"] as const;
 export type VideoCategory = (typeof VIDEO_CATEGORIES)[number];
-export type FacetCount = { code: string; count: number };
+export type FacetCount = { code: string; count: number; label?: string | null };
 // One page of the list's catalog (GET /admin/videos/browse): the tutorials that match, how many
 // there are in all, and how many each category and each state would list with the other filters kept.
-export type VideoPage = { items: ProjectSummary[]; total: number; page: number; pages: number; facets: { category: FacetCount[]; state: FacetCount[] } };
+export type VideoPage = { items: ProjectSummary[]; total: number; page: number; pages: number; facets: { category: FacetCount[]; state: FacetCount[]; shelf?: FacetCount[]; series?: FacetCount[]; topic?: FacetCount[] } };
 export type ProjectSummary = {
   slug: string; title: string; stage: string; checklist: ChecklistItem[];
   youtube_video_id: string | null; last_synced_at: string; pending: number;
@@ -106,6 +106,10 @@ export type ProjectSummary = {
   worker_state?: VideoWorkerState | null;
   dub_locales?: string[];
   series_slug?: string | null; episode_number?: number | null;
+  // The show or drama the catalog files it under and an explainer show's topic (migration 0147).
+  series_key?: string | null; topic?: string | null;
+  // Its Google Drive backup's folder and final.mp4, once the worker read their ids.
+  drive_folder_url?: string | null; drive_final_url?: string | null;
   // A binge series' compilation (docs/videos/BINGE.md): series_slug set, no episode number, and
   // a 1080p cut too big for the review store, downloaded from the worker's volume once it is there.
   compilation?: boolean; download_available?: boolean;

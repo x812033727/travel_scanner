@@ -91,6 +91,7 @@ from app.usage.service import PACKAGE_DEFAULTS, create_usage_account, grant_pack
 from app.video_automation.story_cli import import_story_file
 from app.video_media.prune_cli import prune_video_media
 from app.video_reviews.admin_service import backfill_youtube_publish_times
+from app.video_reviews.shelf import backfill as backfill_video_shelf
 from app.video_youtube.errors import Refused as YoutubeRefused
 from app.video_youtube.retitle import DEFAULT_LIMIT as CAPTION_TITLES_LIMIT
 from app.video_youtube.retitle import caption_channel_titles
@@ -445,6 +446,13 @@ async def backfill_video_publish_times(apply: bool) -> dict[str, Any]:
     reports (admin_service.backfill_youtube_publish_times); one line per video either way."""
     async with SessionFactory() as session:
         return await backfill_youtube_publish_times(session, apply=apply)
+
+
+async def backfill_video_shelves(apply: bool) -> dict[str, Any]:
+    """File every video under its show and topic for the review catalog (migration 0147);
+    reports only unless ``apply``."""
+    async with SessionFactory() as session:
+        return await backfill_video_shelf(session, apply=apply)
 
 
 async def caption_video_titles(
@@ -1108,6 +1116,14 @@ def main() -> None:
         help="Expire old media generation jobs and delete the files no live job names",
     )
     media_prune.add_argument("--dry-run", action="store_true")
+    shelves = subparsers.add_parser(
+        "video-shelf-backfill",
+        help=(
+            "File every video under its show (奇聞檔案局, 原來如此事務所, a drama) and topic for "
+            "the /admin/videos catalog (migration 0147); reports only unless --apply"
+        ),
+    )
+    shelves.add_argument("--apply", action="store_true", help="Write the changes")
     publish_times = subparsers.add_parser(
         "video-youtube-backfill-publish-times",
         help=(
@@ -1498,6 +1514,8 @@ def main() -> None:
                 args.destination, args.slug_prefix, args.limit, args.dry_run, args.approve
             )
         )
+    elif args.command == "video-shelf-backfill":
+        print(json.dumps(asyncio.run(backfill_video_shelves(args.apply)), ensure_ascii=False))
     elif args.command == "backfill-trip-item-names":
         print(json.dumps(asyncio.run(backfill_trip_items(args.dry_run)), ensure_ascii=False))
     elif args.command == "review-pending-guides":

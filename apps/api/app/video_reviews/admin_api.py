@@ -50,6 +50,7 @@ from app.video_reviews.schemas import (
     ProjectPage,
     ProjectSummary,
     ReviewOut,
+    ShelfFilter,
     VideoFormat,
     YoutubeIn,
 )
@@ -177,19 +178,27 @@ async def browse_videos(
     user: ContentReader,
     session: Session,
     category: CategoryFilter | None = None,
+    shelf: ShelfFilter | None = None,
+    series: Annotated[str | None, Query(min_length=1, max_length=40)] = None,
+    topic: Annotated[str | None, Query(min_length=1, max_length=40)] = None,
     state: BrowseState | None = None,
     q: Annotated[str | None, Query(max_length=service.BROWSE_QUERY_MAX)] = None,
     page: Annotated[int, Query(ge=1)] = 1,
     limit: Annotated[int, Query(ge=1, le=service.BROWSE_PAGE_LIMIT)] = service.BROWSE_PAGE_SIZE,
 ) -> ProjectPage:
     """One page of the review tab's catalog (tutorials and dramas, not Shorts), with the
-    counts behind its category and state filters (docs/videos/HANDS-OFF.md §影片分類).
-    ``category=none`` is the videos nobody filed yet; ``state`` here is not a Short's."""
+    counts behind its filters (docs/videos/HANDS-OFF.md §影片分類). ``shelf`` is one of the two
+    explainer shows or a category without them, ``series`` and ``topic`` narrow it (``none`` for
+    the videos without one; migration 0147); ``category`` is the older filter, read as the shelf
+    of the same name when no shelf is given. ``state`` here is not a Short's."""
     _ = user
     runtime = await load_runtime_settings(session)
     return await service.browse_projects(
         session,
         category=category,
+        shelf_code=shelf,
+        series=series,
+        topic=topic,
         state=state,
         q=q,
         page=page,

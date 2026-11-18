@@ -254,13 +254,13 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     expect(calls.some((call) => call.url.endsWith("/admin/video-automation/series?kind=story"))).toBe(true);
   });
 
-  it("lists only the videos under the Videos tab's 品牌故事 category, as 觀念解說 does", async () => {
+  it("lists only the videos under the Videos tab's 品牌故事 category (an old ?category= link, read as the shelf), as 觀念解說 does", async () => {
     const { calls } = stubFetch();
     window.history.replaceState(null, "", "/?tab=reviews&category=story");
     render(<AdminOperationsProvider bootstrap={bootstrap(MANAGER)}>
       <VideoBrowser onOpen={() => undefined} />
     </AdminOperationsProvider>);
-    await waitFor(() => expect(calls.some((call) => call.url.includes("/admin/videos/browse?") && call.url.includes("category=story"))).toBe(true));
+    await waitFor(() => expect(calls.some((call) => call.url.includes("/admin/videos/browse?") && call.url.includes("shelf=story"))).toBe(true));
     expect(screen.queryByRole("region", { name: "品牌故事" })).toBeNull();
     expect(screen.queryByRole("form", { name: "匯入企劃清單" })).toBeNull();
     expect(calls.some((call) => call.url.endsWith("/admin/video-automation/series?kind=story"))).toBe(false);
