@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-18-pool-6804",
+  "revision": "2026-11-18-pool-6925",
   "sources": [
     {
       "id": "SRC-00165a550997c7aa",
@@ -1068,6 +1068,26 @@
           },
           "origin": "wave85-human-20261115",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:9232426&metadataPrefix=pmc"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0215d45d24a320fb",
+      "url": "https://www.city.hamamatsu.shizuoka.jp/documents/79323/reitokeisan.pdf",
+      "readings": [
+        {
+          "title": "製造計画書 3項別紙「一日の冷凍能力計算書」（冷凍保安規則第5条による）",
+          "publisher": "日本靜岡縣濱松市（高壓氣體製造許可申請用之計算書樣式）",
+          "version": "空白計算樣式 PDF（往復式單段、多段、螺旋式等多頁）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭、間隔 1.2 秒）SY1 seq=2，HTTP 200，53912 位元組，sha256 前 16 碼 6329c68264b73406；本機 pdftotext -layout 轉文字後全文讀。",
+          "reading_scope": "全部 4 頁：往復式單段、往復式多段／多元、螺旋（スクリュー）式單段、螺旋式多段／多元的計算欄位與公式。",
+          "locator": "第 1 頁（往復式單段）：1) 活塞排除量 V（m³/h）＝60×0.785×D²×L×n×N（D 汽缸內徑、L 行程、n 汽缸數、N 每分鐘標準轉數）；2) 一日の冷凍能力 R（トン）＝V／C（C：定數）；第 2 頁（多段）：V＝VH＋0.08VL；第 3 頁（螺旋式）：V＝K×D³×(L/D)×N×60。",
+          "summary": "依冷凍保安規則第 5 條填寫的「一日冷凍能力計算書」樣式：冷凍設備的「一日冷凍能力」單位是「噸」，算法是把壓縮機的活塞排量（由缸徑、行程、缸數、轉速算出）除以一個常數 C，不是量出來的冷卻效果。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是市政府的空白填寫樣式（製造計畫書 3 項附件），樣式本身沒寫「高壓氣體」字樣，卡上只寫「依冷凍保安規則第 5 條」；常數 C 的數值與法定門檻不在樣式裡，本卡不寫。覆核 SVY1：重抓 seq=2 雜湊相同（6329c68264b73406）。研究網 NET_JP_GOV（與 SY1-S006 同網，日本政府體系）。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.city.hamamatsu.shizuoka.jp/documents/79323/reitokeisan.pdf"
         }
       ]
     },
@@ -5158,6 +5178,27 @@
       ]
     },
     {
+      "id": "SRC-0858ddb8decd4ff9",
+      "url": "https://jswa.jp/2018/07/17/7220",
+      "readings": [
+        {
+          "canonical_url": "https://jswa.jp/2018/07/17/7220",
+          "title": "第 1 回トイレに流せる製品の取扱いの手引き策定委員会を開催します",
+          "publisher": "公益社團法人日本下水道協會（2018 年 7 月）",
+          "version": "新聞發布一頁 PDF（網址回傳 PDF）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY7 seq=17，HTTP 200，122039 位元組，sha256 前 16 碼 a04a9ac03a696816），與前一筆請求間隔 1.2 秒以上；回傳內容為 PDF，pdftotext 轉文字全讀。",
+          "reading_scope": "一頁全讀：目的、經緯、日時與議題。",
+          "locator": "經緯（平成 28 年 9 月與全國大都市及世界下水道關係者聯名聲明：規格出來前，能沖的只有し尿與衛生紙；ISO 規格化未成，IWSFG 規格平成 30 年 6 月 5 日發行）；委員會平成 30 年 7 月 19 日",
+          "summary": "日本下水道協會說明：2016 年 9 月它和各大都市、各國下水道業者聯名告訴「可沖」製品的製造商，在下水道業者認可的規格出現前，馬桶能沖的只有排泄物和衛生紙。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "一頁會議通知，從嚴記 0.75。日本下水道協會會員多為地方政府，從嚴與神奈川縣、靜岡縣同列 NET_JP_PUBLIC。 覆核：日本下水道協會是公益社團法人，不是政府機關，但會員以地方政府為主，照從嚴規則與兩縣同列一網；就算拆開，原始加權 2.25 也只多出 0.25。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://jswa.jp/2018/07/17/7220"
+        }
+      ]
+    },
+    {
       "id": "SRC-085de317a843cf35",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11721888/fullTextXML",
       "readings": [
@@ -5759,6 +5800,27 @@
       ]
     },
     {
+      "id": "SRC-0990c150dd5995c6",
+      "url": "https://nist.gov/pml/owm/metric-si/unit-conversion/pressure-and-gas-flow-unit-conversions",
+      "readings": [
+        {
+          "canonical_url": "https://nist.gov/pml/owm/metric-si/unit-conversion/pressure-and-gas-flow-unit-conversions",
+          "title": "Pressure and Gas Flow Unit Conversions",
+          "publisher": "美國國家標準與技術研究院（NIST）度量衡辦公室",
+          "version": "線上頁面（2025-07-28 更新）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4 seq=14，HTTP 200，86153 位元組，sha256 前 16 碼 655ddd08d46b9ef0；本機去除標籤後讀完壓力換算表。",
+          "reading_scope": "Pressure Unit 表全部七列。",
+          "locator": "壓力表：1 mbar = 100 Pa；1 atm = 101325 Pa = 1013.25 mbar；1 psi = 6894.757 Pa。",
+          "summary": "官方換算表：1 atm 是 101,325 Pa，1 mbar 是 100 Pa（所以 1 bar = 100,000 Pa）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "表中沒有直接列 bar 與公尺水柱；bar 由 mbar 列換算，水深對應為本卡推算。 研究網：NET_USGOV。 覆核：覆核未重抓；作者 cache 檔雜湊與 access_log 相符，關鍵數字在 cache 原文找到。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://nist.gov/pml/owm/metric-si/unit-conversion/pressure-and-gas-flow-unit-conversions"
+        }
+      ]
+    },
+    {
       "id": "SRC-09943dc0f995d399",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5660601/fullTextXML",
       "readings": [
@@ -6249,6 +6311,26 @@
       ]
     },
     {
+      "id": "SRC-0a3c6daf5a3f43c6",
+      "url": "https://www1.eere.energy.gov/buildings/appliance_standards/pdfs/2023_CAC_Standards_FAQ_10-5-2022_Final.pdf",
+      "readings": [
+        {
+          "title": "2023 Central Air Conditioner Standards FAQ（Final guidance, issued October 5, 2022）",
+          "publisher": "美國能源部（DOE）能源效率與再生能源辦公室，器具與設備標準計畫",
+          "version": "最終版指導文件（2022-10-05）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭、間隔 1.2 秒）SY1 seq=5，HTTP 200，487369 位元組，sha256 前 16 碼 2521b01d57ab14d0；本機 pdftotext -layout 轉文字後全文讀。",
+          "reading_scope": "全文：背景、區域劃分、北區與南區適用規則、2023 年全國與區域標準表、EER 與 SEER 定義、四個情境範例。",
+          "locator": "〈The 2023 Standards〉表（分離式冷氣 SEER2 13.4；區域表以冷卻能力 45 000 Btu/hr 為界：未滿者 SEER2 北區 13.4、東南與西南 14.3，西南 EER2 11.7／9.8）；〈What is an energy efficiency ratio (EER)?〉（冷卻能力 Btu/h 除以輸入功率 W，於 95 °F）；〈What is a SEER?〉（整季移走的熱除以整季耗電）；註 1（SEER2 等新指標與舊指標不可直接比較）。",
+          "summary": "美國能源部 2023 年冷氣標準說明：效率是「搬走的熱除以吃進的電」，但美國的 EER 是拿每小時 Btu 除以瓦，單位混搭；產品分級的界線寫成 45 000 Btu/h，而不是幾噸。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "文件含省錢語句，本卡不轉述。45 000 Btu/h 等於 3.75 冷凍噸是本研究以 12 000 Btu/h＝1 噸推算，文件本身沒有寫噸。研究網 NET_US_FED（與 SY1-S001 同網，合計上限 2.0）。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www1.eere.energy.gov/buildings/appliance_standards/pdfs/2023_CAC_Standards_FAQ_10-5-2022_Final.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-0a4222e308da740c",
       "url": "https://www.nssl.noaa.gov/education/svrwx101/wind/types/",
       "readings": [
@@ -6659,6 +6741,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.gutenberg.org/ebooks/33504"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0af7b8a5282ebafc",
+      "url": "https://enews.moenv.gov.tw/page/3b3c62c78849f32f/808b1d1c-dd0e-45f9-8d0a-195016463bec",
+      "readings": [
+        {
+          "canonical_url": "https://enews.moenv.gov.tw/page/3b3c62c78849f32f/808b1d1c-dd0e-45f9-8d0a-195016463bec",
+          "title": "環保署重申衛生紙仍不宜丟入馬桶",
+          "publisher": "行政院環境保護署水保處新聞發布（97-08-20；現收於環境部新聞專區）",
+          "version": "官方新聞稿網頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY7 seq=2，HTTP 200，56750 位元組，sha256 前 16 碼 c21f41ca3c4d1907），與前一筆請求間隔 1.2 秒以上；本機去標籤後讀正文全部四段與發布日期、單位欄。",
+          "reading_scope": "標題、發布日期與單位、正文四段全讀。",
+          "locator": "正文第 1 段（下水道普及率約 18%、近六成家戶用化糞池、化糞池效率不佳、甲烷）；第 2 段（加壓輸送與污水廠耗能、焚化可回收熱值）；第 3 段（廁所普遍設垃圾桶，建議加蓋）；第 4 段（現階段宣導衛生紙不宜投入馬桶）",
+          "summary": "2008 年 8 月，環保署針對媒體報導重申：衛生紙仍不宜丟馬桶。理由不是會塞管，而是當時公共污水下水道普及率約 18%、近六成家戶靠化糞池，沖下去會增加河川污染負荷與甲烷，進污水廠也耗能；反而焚化可以回收熱值。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是 2008 年的立場，2017 年同一機關已改為推動丟馬桶（SY7-S003），卡片必須標明年份。18% 與「近六成」是新聞稿當時數字，未附出處。「焚化回收熱值較節能」是機關當時的評估，未附計算。研究網：NET_TW_GOV。 覆核（SVY7 seq=2 重抓，只有 Cloudflare 腳本參數不同，正文逐字相同）：新聞稿四段全文沒有提到塞管；列的理由是下水道普及率約 18%、近六成化糞池、化糞池效率不佳與甲烷、下水道加壓與污水廠耗能、焚化可增加發電與熱值回收，以及廁所本來就設垃圾桶的使用習慣，結論是「綜合考量」，並提到部分衛生紙已有可投入馬桶的商品標示。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://enews.moenv.gov.tw/page/3b3c62c78849f32f/808b1d1c-dd0e-45f9-8d0a-195016463bec"
         }
       ]
     },
@@ -7978,6 +8081,27 @@
       ]
     },
     {
+      "id": "SRC-0d22dc39598b7f54",
+      "url": "https://www.merriam-webster.com/dictionary/Wi-Fi",
+      "readings": [
+        {
+          "canonical_url": "https://www.merriam-webster.com/dictionary/Wi-Fi",
+          "title": "Wi-Fi（詞條）",
+          "publisher": "Merriam-Webster 線上字典",
+          "version": "線上詞條現行頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒以上）請求 SY5 seq=17，HTTP 200，677697 位元組，sha256 前 16 碼 c08b70d65f26f5ec；本機抽正文全讀詞條部分。",
+          "reading_scope": "詞條標題、詞性標記、發音、兩處定義（標準版與兒童版），以及頁面是否有字源或全名展開。",
+          "locator": "詞性標為 certification mark；定義（used to certify the interoperability of wireless computer networking devices）；兒童版（Kids Definition）定義（certify the ability of wireless computer networking devices to communicate with each other）；頁面抽出文字中沒有 etymology、first known use 或 wireless fidelity 字樣。",
+          "summary": "美國字典把 Wi-Fi 的詞性直接標成『證明標章』，定義是『用來證明無線網路裝置能互通』，頁面上沒有任何全名展開。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "字典只陳述用法，不說明命名經過；『頁面沒有全名展開』是本機搜尋抽出文字的結果，字典另有付費完整版未讀。研究網 NET_MW。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.merriam-webster.com/dictionary/Wi-Fi"
+        }
+      ]
+    },
+    {
       "id": "SRC-0d2d972e7e852895",
       "url": "https://www.sciencedirect.com/science/article/abs/pii/S0950061816302057",
       "readings": [
@@ -8057,6 +8181,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.ikea.com/ph/en/this-is-ikea/about-us/the-story-of-ikea-flatpacks-puba710ccb0/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0d5780f8eaf354c5",
+      "url": "https://mohw.gov.tw/dl-62949-4677dd8d-a2ef-482e-a1ff-8902d11d9a06.html",
+      "readings": [
+        {
+          "canonical_url": "https://mohw.gov.tw/dl-62949-4677dd8d-a2ef-482e-a1ff-8902d11d9a06.html",
+          "title": "包裝食品營養標示應遵行事項修正草案",
+          "publisher": "衛生福利部網站附件（食品藥物管理署主政）；草案，未印日期",
+          "version": "衛福部網站附件 PDF（13 頁）；修正草案，非定稿",
+          "accessed_on": "2026-11-18",
+          "read_via": "https://mohw.gov.tw/dl-62949-4677dd8d-a2ef-482e-a1ff-8902d11d9a06.html，網址來自覆核者的搜尋結果；fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SVY8 seq=4，HTTP 200，376313 位元組，sha256 前 16 碼 2d38492d7d3623e1），與前一筆請求間隔 1.2 秒以上；pdftotext 轉文字後讀第一章第一至十二點與附表三。",
+          "reading_scope": "第一章總則第一至十二點、附表三全讀；第二、三章（嬰兒配方、特定疾病配方）只瀏覽。",
+          "locator": "第四點（每份配每 100 公克，或每份配每日參考值百分比，擇一，並加註每包裝份數）；第五點（各類產品每一份量的重量應考量國民飲食習慣及市售包裝食品型態的一般每次食用量）；第十點與附表三（標示值可用檢驗分析或計算；蛋白質、碳水化合物為標示值 80%～120%）",
+          "summary": "一份把一般包裝食品與嬰兒、特定疾病配方食品放在同一份規定裡的修正草案：一般包裝食品的每一份量要考量國民飲食習慣與一般每次食用量；標示值可分析或計算，並有誤差允許範圍表。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "草案，不是公告定稿，也未印日期；現行一般包裝食品規定的第四、五、十點定稿本輪仍未讀到，所以只能當成「台灣一般食品份量不一定由廠商自訂」的反證線索，不能寫成現行規定。 研究網：NET_TW_MOHW（本網已達上限）。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://mohw.gov.tw/dl-62949-4677dd8d-a2ef-482e-a1ff-8902d11d9a06.html"
         }
       ]
     },
@@ -9805,6 +9950,26 @@
       ]
     },
     {
+      "id": "SRC-0fa0457a6399815b",
+      "url": "https://www.chipublib.org/blogs/post/technology-that-changed-chicago-ice-continued/",
+      "readings": [
+        {
+          "title": "Ice, Continued: Technology That Changed Chicago",
+          "publisher": "芝加哥公共圖書館（Chicago Public Library）館方部落格，2014 年 8 月 4 日；文中轉述 1880 年人口普查特別報告（冰貿易）、芝加哥市衛生局年報、1940／1950 年住宅普查與 1997 年經濟普查",
+          "version": "網頁（頁面標示貼文已逾三年、資訊可能過時）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭、間隔 1.2 秒）SY1 seq=17，HTTP 200，393347 位元組，sha256 前 16 碼 1be2edd4deef49a1；本機去除 HTML 標籤後全文讀。",
+          "reading_scope": "全文（1847 年第一座商業冰庫、1880 年代消費量與從業人數、機械製冷在 1880 年代起取代部分市場、1911 與 1922 年天然冰比例、家用冰箱普及、1997 年全國冰產量與家用冷氣噸數一句）。",
+          "locator": "第 1–2 段（1847 年 2 000 噸冰庫；1880 年代年消費 575 000–900 000 噸，肉品包裝業與釀酒業約 350 000 噸，875 人送冰）；第 3–4 段（市衛生局估計 1911 年 82% 為天然冰；1922 年 2 500 000 噸中只剩 10%）；末段（1997 年全國冰塊 2 265 000 噸、冰磚 345 000 噸；許多家用冷氣額定 3 噸，相當於 24 小時融掉 3 噸冰）。",
+          "summary": "芝加哥公共圖書館整理的城市冰史：19 世紀芝加哥一年用掉幾十萬噸冰，冰從採收、儲存到配送都以「噸」計；1911 年八成還是天然冰，到 1922 年用掉的 250 萬噸冰只剩一成是天然冰。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "館方部落格屬二手整理（署名館員，不寫姓名），1880 年普查特別報告、市衛生局報告等原件本次未讀；卡上一律標「據芝加哥公共圖書館整理」。「許多家用冷氣額定 3 噸」是貼文作者的概括，不是普查數字。貼文沒有冰的每噸價格。文中冰庫業者名不轉述。覆核 SVY1：重抓 seq=3 位元組差 2（頁尾伺服器代號與時間戳），正文逐字相同。從嚴判定：轉述未讀原件，每卡 0.5、本網合計 1.0。研究網 NET_CPL。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.chipublib.org/blogs/post/technology-that-changed-chicago-ice-continued/"
+        }
+      ]
+    },
+    {
       "id": "SRC-0fa794392a6a3337",
       "url": "https://doi.org/10.1128/Spectrum.00955-21",
       "readings": [
@@ -10070,6 +10235,26 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "life-tech-20261101",
           "original_url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1002e9b12c020ab9",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication811e1995.pdf",
+      "readings": [
+        {
+          "title": "NIST Special Publication 811 (1995 edition): Guide for the Use of the International System of Units (SI)",
+          "publisher": "美國商務部國家標準與技術研究院（NIST）；本 PDF 封面頁註明此版已於 2018-03-15 撤回、被新版取代，僅供歷史參考",
+          "version": "1995 年 4 月版（已撤回的舊版，政府出版品）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭、間隔 1.2 秒）SY1 seq=1，HTTP 200，4648611 位元組，sha256 前 16 碼 8c9a74396b00644e；本機 pdftotext -layout 轉文字後讀。",
+          "reading_scope": "封面撤回說明頁、目錄、Appendix B 導言（B.8／B.9 的讀法與係數寫法）、B.8 依字母排列之係數表中 British thermal unit 各列與 ton 開頭各列、B.9 依量別排列之 HEAT／Heat Flow Rate 小節與 POWER 節。",
+          "locator": "Appendix B.8：ton of refrigeration (12 000 BtuIT/h) → watt 3.516 853 E+03；ton, short (2000 lb) 9.071 847 E+02 kg；ton, long (2240 lb) 1.016 047 E+03 kg；ton, metric／tonne 1.0 E+03 kg；ton, register 2.831 685 E+00 m³；ton of TNT 4.184 E+09 J；British thermal unitIT per hour → watt 2.930 711 E−01。B.9 依量別排列之表：ton of refrigeration 列在 HEAT 大類下的「Heat Flow Rate（熱流率）」小節（與 Btu/h、kcal/h 同節），不在 POWER 節。",
+          "summary": "美國國家標準機構的單位換算表裡，「ton」底下排了一整串不同的東西：短噸、長噸、公噸是質量，register ton 是體積，TNT 噸是能量，而「冷凍噸」被定義為每小時 12 000 國際表 Btu，換成 SI 是 3 516.853 瓦，是功率。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "讀到的是已撤回的 1995 年版；新版（2008）的同一列未讀，本卡只寫 1995 年版的數值。表中 TNT 噸註腳為約定值。研究網 NET_US_FED（美國聯邦政府體系；與 SY1-S004 同網）。 覆核 SVY1：重抓 seq=4 雜湊相同（8c9a74396b00644e）；作者原寫「B.9 power 節」有誤，實際在 HEAT 的 Heat Flow Rate 小節，已更正。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication811e1995.pdf"
         }
       ]
     },
@@ -13136,6 +13321,27 @@
           },
           "origin": "wave54-tech-20261111",
           "original_url": "https://www.apple.com/newsroom/2020/03/apple-unveils-new-ipad-pro-with-lidar-scanner-and-trackpad-support-in-ipados/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-149323de101173fa",
+      "url": "https://www.fsai.ie/getmedia/71c87819-77a7-4bf2-b741-2f11cf019c2d/EU-guidance-tolerances.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.FSAI.ie/getmedia/71c87819-77a7-4bf2-b741-2f11cf019c2d/EU-guidance-tolerances.pdf",
+          "title": "Guidance document for competent authorities for the control of compliance with EU legislation … with regard to the setting of tolerances for nutrient values declared on a label",
+          "publisher": "歐盟執委會健康與消費者總署，2012 年 12 月；愛爾蘭食品安全局網站轉載",
+          "version": "FSAI 轉載 PDF（10 頁）；文件自述無正式法律地位",
+          "accessed_on": "2026-11-18",
+          "read_via": "https://www.FSAI.ie/getmedia/71c87819-77a7-4bf2-b741-2f11cf019c2d/EU-guidance-tolerances.pdf，fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY8 seq=14，HTTP 200，155566 位元組，sha256 前 16 碼 5d722a7ead9b2e4b），與前一筆請求間隔 1.2 秒以上；pdftotext 轉文字後讀第 1–3 節與表 1。",
+          "reading_scope": "1 Introduction、1.1、1.2、2 General principles（2.1–2.4）、3 表 1 與例 1 全讀；第 4–6 節未逐列讀。",
+          "locator": "1.2（宣告值為平均值，依製造者分析、原料已知平均值計算、或公認資料計算）；2.3（宣告值應接近多批次平均，不應設在容許範圍兩端；脂肪、糖、鹽不應壓在下限）；表 1（碳水化合物、糖、蛋白質、纖維：每 100 g 少於 10 g ±2 g、10–40 g ±20%、超過 40 g ±8 g；脂肪 <10 g ±1.5 g、10–40 g ±20%、>40 g ±8 g；鈉、鹽分級）；2.2（整個保存期間都要落在容許範圍）",
+          "summary": "歐盟對控管機關的指引說明：標示上的熱量與營養素是「平均值」，可以來自製造者分析、依原料平均值計算或依公認資料計算；容許差以每 100 公克的含量分級，例如脂肪每 100 g 在 10–40 g 之間容許 ±20%；而且宣告值應接近多批次平均，不應故意設在容許範圍的邊緣。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "指引本身聲明不具正式法律地位；轉載網域是愛爾蘭食品安全局，原件為執委會文件；法規原文網域在封鎖名單，未讀。 研究網：NET_EU（歐盟執委會）。 覆核 SVY8 seq=8 重抓，雜湊 5d722a7ead9b2e4b 相同；1.2、2.2、2.3 與表 1 逐字核對無誤。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.FSAI.ie/getmedia/71c87819-77a7-4bf2-b741-2f11cf019c2d/EU-guidance-tolerances.pdf"
         }
       ]
     },
@@ -17678,6 +17884,26 @@
       ]
     },
     {
+      "id": "SRC-1a65dfd3270d206b",
+      "url": "https://members.wto.org/crnattachments/2022/TBT/TPKM/22_7713_01_x.pdf",
+      "readings": [
+        {
+          "title": "蒸氣壓縮式冰水機組容許耗用能源基準與能源效率分級標示事項方法及檢查方式修正草案",
+          "publisher": "中華民國經濟部（能源局）草案，經 WTO TBT 通知程序刊於 WTO 會員文件庫（2022）",
+          "version": "2022 年修正草案（非最終公告）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭、間隔 1.2 秒）SY1 seq=6，HTTP 200，846073 位元組，sha256 前 16 碼 b6f2bb43f975c8ee；本機 pdftotext -layout 轉文字後全文讀。",
+          "reading_scope": "全文第一至十三點、附表一（能源效率基準）、附表二至四（申請表）、附表五（分級基準表）、附表六。",
+          "locator": "第二點（依 CNS 12575 全載標準條件測 COP；實測不得低於附表一，額定製冷能力與 COP 實測值須達標示值 95% 以上）；第八點（銘牌須標示額定製冷能力（kW）、額定製冷消耗電功率（kW）、性能係數 COP、能源效率等級）；附表一（水冷容積式 <528 kW 4.45、528–1758 kW 4.90、≧1758 kW 5.50；水冷離心式 <528 kW 5.00、528–1055 kW 5.55、≧1055 kW 6.10；氣冷式 2.79）；附表五（3 級至 1 級，例如水冷離心式 ≧1055 kW 為 6.10／6.60／7.10）。",
+          "summary": "台灣冰水機組的能效規定要求銘牌寫 kW 與性能係數（COP，搬走的熱除以耗電），分級也比 COP；分類界線寫成 528、1055、1758 kW——換算回去恰好約是 150、300、500 冷凍噸。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是 2022 年的修正草案，最終公告內容本次未讀；冰水機組是大樓用的中央空調主機，不是家用冷氣。528／1055／1758 kW 約等於 150／300／500 噸是本研究用 SY1-S001 的 3 516.853 W／噸推算（150.1、300.0、499.9），草案本身沒有寫噸。研究網 NET_TW_GOV（與 SY1-S009 同網）。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://members.wto.org/crnattachments/2022/TBT/TPKM/22_7713_01_x.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-1a6f3f39be02d57f",
       "url": "https://www.yamaha.com/en/about/history/",
       "readings": [
@@ -19443,6 +19669,27 @@
       ]
     },
     {
+      "id": "SRC-1d14ccd5ca931a27",
+      "url": "https://stacks.cdc.gov/view/cdc/230448/cdc_230448_DS1.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1093/annweh/wxab008",
+          "title": "Standards for Surgical Respirators and Masks: Relevance for Protecting Healthcare Workers and the Public During Pandemics",
+          "publisher": "Annals of Work Exposures and Health 65(5):495–504（2021）；美國猶他大學醫學院家庭與預防醫學系、落磯山職業與環境衛生中心，加州大學舊金山分校職業與環境醫學部（CDC Stacks 典藏 PDF）",
+          "version": "期刊出版 PDF（10 頁），CDC Stacks 典藏版",
+          "read_via": "覆核者以 WebSearch 找到此網址（搜尋結果列出 stacks.cdc.gov/view/cdc/230448/cdc_230448_DS1.pdf），再以 fetch.sh、Mokaair-editorial/1.0 標頭請求（SVY3 seq=5，HTTP 200，251592 位元組，sha256 前 16 碼 afb57cc6bd93b749），與前一筆請求間隔 1.2 秒以上；以 pdftotext 抽文字層讀。canonical DOI 取自 PDF 首頁，doi.org 未請求。",
+          "reading_scope": "摘要、Introduction、Filtration efficiency 全節（含 MPPS 段、表 1 試驗方法、流量與電荷中和段）、Pressure differential 首段、Funding 與利益揭露。",
+          "locator": "Filtration efficiency 節（MPPS 定義；「Early studies reported MPPS for respirators of 0.3 μm, but more recent studies have shown that MPPS is in the 0.04–0.06 μm range」；「All FE test methods for FFRs use sodium chloride particles with a count median diameter (CMD) of 0.075 μm [mass median aerodynamic diameter approximately 0.3 μm]」；MPPS 隨濾材與風速而變）；表 1（NIOSH TEB-APR-STP-0059：多分散 NaCl、CMD 0.075 ± 0.020 µm、GSD ≤ 1.86、中和、整個面體）；流量段（85 L/min 代表高強度工作時的吸氣，休息或快走約 10–40 L/min；FFR 試驗多用中和顆粒，因帶電顆粒通常較易被濾掉；外科口罩方法用較大顆粒與較低流量；細菌過濾試驗從口罩內側噴、FFR 試驗從外側）。",
+          "summary": "兩所美國大學的綜論整理美、歐、中三地口罩標準：呼吸防護具（FFR）的濾材試驗用粒數中位徑 0.075 µm 的氯化鈉，對應的質量中位氣動徑約 0.3 µm；早期研究把最具穿透性粒徑定在 0.3 µm，較新研究則落在 0.04–0.06 µm，而且這個粒徑隨濾材與風速改變。85 L/min 是模擬高強度工作的吸氣量；顆粒先中和，是因為帶電顆粒通常較容易被濾掉；外科口罩的方法用較大顆粒與較低流量。",
+          "limitations": "綜論，MPPS 0.04–0.06 µm 是轉述他文；作者自述無經費。作者姓名不轉述。研究網：NET_UTAH_UCSF（大學作者，與本組其他來源無合著；CDC Stacks 只是典藏處，不併入美國政府網）。",
+          "accessed_on": "2026-11-18",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://stacks.cdc.gov/view/cdc/230448/cdc_230448_DS1.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-1d17629def743413",
       "url": "https://www.biomotionlab.ca/Text/TrojeFrost00.pdf",
       "readings": [
@@ -20893,6 +21140,27 @@
       ]
     },
     {
+      "id": "SRC-1f1f6088a0ae3343",
+      "url": "https://www.fhs.swiss/eng/knowledge/resistancy-expert",
+      "readings": [
+        {
+          "canonical_url": "https://www.fhs.swiss/eng/knowledge/resistancy-expert",
+          "title": "Deep dive into water resistance",
+          "publisher": "瑞士鐘錶工業聯合會 FH 知識頁",
+          "version": "線上英文版",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4 seq=3，HTTP 200，12749 位元組，sha256 前 16 碼 2a36822bca59558b；本機去除標籤後全文讀完。",
+          "reading_scope": "全頁：Static pressure、Dynamic pressure、Total pressure、The phenomenon of condensation、Technology and materials、Markings and references to standards。",
+          "locator": "Static pressure（P=ρgh）；Dynamic pressure（P=½ρv²、停滯點）；Total pressure 段（2 bar 動壓需從 20 m 高跳下、約 70 km/h）；condensation 段（錶不是氣密、水氣滲透、熱衝擊起霧數分鐘消失不代表防水故障）；Technology 段（墊圈位置：後蓋與中殼、鏡面與錶圈、錶冠與按鈕；聚合物墊圈會隨時間失去性質）；Markings 段（water-resistant 須符合 ISO 22810；waterproof、water-resist 不對應任何正式標準；diver's watch L m 須在文件明示 ISO 6425）。",
+          "summary": "把錶受的水壓拆成只跟深度有關的靜壓與只跟相對速度有關的動壓，算給讀者看：2 bar 的動壓要從 20 m 高處入水才碰得到；並說明起霧、墊圈老化與標示規則。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "動壓用穩態 ½ρv² 估算，沒有實測，也沒處理入水瞬間的衝擊尖峰；「足以應付所有常見水上活動」是該團體立場。 研究網：NET_FH。 覆核：覆核重抓 SVY4 seq=2，HTTP 200，12749 位元組，雜湊 2a36822bca59558b 與作者相同；全文逐句核對。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.fhs.swiss/eng/knowledge/resistancy-expert"
+        }
+      ]
+    },
+    {
       "id": "SRC-1f2d8559dd00221d",
       "url": "https://support.google.com/youtube/answer/16089387",
       "readings": [
@@ -21226,6 +21494,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1f994392836dd647",
+      "url": "https://www.pref.osaka.lg.jp/shokuhin/prcessed_food/nutritional_value.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.pref.osaka.lg.jp/shokuhin/prcessed_food/nutritional_value.html",
+          "title": "栄養成分の量及び熱量について（加工食品の表示）",
+          "publisher": "大阪府健康醫療部生活衛生室食的安全推進課（日本地方政府），依日本消費者廳食品表示基準整理",
+          "version": "大阪府網站 HTML",
+          "accessed_on": "2026-11-18",
+          "read_via": "https://www.pref.osaka.lg.jp/shokuhin/prcessed_food/nutritional_value.html，fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY8 seq=12，HTTP 200，37696 位元組，sha256 前 16 碼 0b8069556a3f9210），與前一筆請求間隔 1.2 秒以上；本機去標籤後全讀。",
+          "reading_scope": "義務表示項目、表示する食品単位、最小表示の位、栄養成分表示の設定方法、表示する値、合理的な推定により得られた一定の値の表示、根拠資料、栄養強調表示全讀。",
+          "locator": "「表示する食品単位」段（100g、100ml、1食分、1包装等；1食分要併記重量）；「栄養成分表示の設定方法」（分析或資料庫計算）；「表示する値」（別表第9第4欄許容差）；「合理的な推定により得られた一定の値の表示」（推定値、目安文字、保存根據資料、強調表示時不可用）",
+          "summary": "日本的營養成分表示只要挑一種「食品單位」：100 g、100 ml、1 食份或 1 包裝等；選 1 食份時要寫出那一份的重量。數值可以分析，也可以用資料庫計算；落不進許容差時，可標「推定值」或「此標示值為參考」並保存根據資料，但做營養強調表示時不能用這條路。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "地方政府的說明頁，條文以消費者廳食品表示基準為準；許容差數值在別表第 9 第 4 欄，本輪未讀。 研究網：NET_JP。覆核判定：大阪府是地方政府、消費者廳是中央機關，層級不同，但大阪府這頁是在轉述消費者廳的食品表示基準，屬同一套國家規格的轉述，依從嚴規則與 SY8-S008 合為一網。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.pref.osaka.lg.jp/shokuhin/prcessed_food/nutritional_value.html"
         }
       ]
     },
@@ -23836,6 +24125,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/27458798/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2329c18827436290",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5852715/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/nu10020139",
+          "title": "Large Variations in Declared Serving Sizes of Packaged Foods in Australia: A Need for Serving Size Standardisation?",
+          "publisher": "Nutrients 10(2):139（2018）；澳洲雪梨大學生命與環境科學學院營養與膳食學組",
+          "version": "出版社開放取用版（CC BY 4.0；Europe PMC 收錄完整 JATS XML）",
+          "accessed_on": "2026-11-18",
+          "read_via": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5852715/fullTextXML，fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY8 seq=22，HTTP 200，152088 位元組，sha256 前 16 碼 696775c8fe64af5b），與前一筆請求間隔 1.2 秒以上；Europe PMC 全文端點 PMC5852715/fullTextXML（seq=20 逾時無回應、seq=22 重試成功），本機解析 JATS XML 逐節讀。",
+          "reading_scope": "摘要、1 引言、2 材料與方法、3 結果（表格以 [TABLE] 略過，只讀正文與圖說）、4 討論、5 結論。",
+          "locator": "摘要（4046 項產品；份量變異係數 0%–59%，每份熱量 9%–64%；24% 份量在標準份 ±10% 內）；3 結果第 1 段（部分類別最大與最小份量差 10 倍以上，如脆餅、罐頭蔬菜、堅果種子與部分起司）；4 討論（同品牌不同包裝大小份量也不同；澳洲業界對飲料有自訂標準：600 mL 以下整瓶為一份、以上 250 mL）",
+          "summary": "雪梨大學團隊在 2017 年抄錄雪梨四家大型超市 4,046 項包裝食品的份量：同一類別裡，標示份量的變異係數從 0% 到 59%，每份熱量從 9% 到 64%；有些類別最大與最小份量差到 10 倍以上；同一品牌不同包裝大小，份量也可能不一樣。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只涵蓋五大類食物的包裝食品（不含零食類）；表 1、表 2 數值未逐列讀，本卡只用正文寫明的數字；作者對「業者是否有意操作份量」寫明不清楚。 研究網：NET_USYD（雪梨大學；與本題其他來源無合著）。 覆核 SVY8 seq=9 重抓全文 XML，雜湊 696775c8fe64af5b 相同。作者的 Europe PMC 搜尋三次都是 503，PMC 編號的出處不在作者 cache 裡；覆核以 Europe PMC 題名搜尋（SVY8 seq=10）確認 PMC5852715 就是這篇、DOI 10.3390/nu10020139，三位作者都在雪梨大學。作者的 seq=21 是 PMC 的 reCAPTCHA 驗證頁，未被當成來源；pmc.ncbi.nlm.nih.gov 已在共用封鎖名單。正文點名的四家超市是商號，卡上不寫。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5852715/fullTextXML"
         }
       ]
     },
@@ -26805,6 +27115,26 @@
       ]
     },
     {
+      "id": "SRC-27a852ecf880e468",
+      "url": "https://natural-resources.canada.ca/energy-efficiency/energy-star/air-conditioning-your-home",
+      "readings": [
+        {
+          "title": "Air Conditioning Your Home",
+          "publisher": "加拿大自然資源部（Natural Resources Canada）能源效率辦公室",
+          "version": "網頁（未標更新日期；內文引用 1995 年生效的能源效率法規與 CSA 標準）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭、間隔 1.2 秒）SY1 seq=15，HTTP 200，79773 位元組，sha256 前 16 碼 d2e4c5fdf6df05ee；本機去除 HTML 標籤後讀。",
+          "reading_scope": "〈Other terms〉名詞定義全節、〈Energy Efficiency Regulations – Labelling, Rating and Certification〉、房間冷氣一節中 EnerGuide 標示與 sizing considerations、中央空調 sizing 一節。保養、噪音與附錄 A 的估算程序只略讀。",
+          "locator": "〈Other terms〉（ton＝3.5 kW 或 12 000 Btu/h；capacity 以 Btu/h 或 tons 表示、於特定試驗條件下決定；cooling load；EER＝冷卻輸出 Btu/h 除以電功率 W；SEER 以平均夏季 28 °C 的氣候為基準）；〈Energy Efficiency Regulations〉（1995-02-03 生效；房間冷氣須貼 EnerGuide 標示，大字即 EER）；房間冷氣 sizing（粗估每平方公尺約 200 Btu/h）。",
+          "summary": "加拿大政府的說明頁直接把「ton」列為冷卻能力單位：一噸等於 3.5 kW 或 12 000 Btu/h，冷氣能力以 Btu/h 或噸表示，並且是在指定試驗條件下測得；房間冷氣的法定標籤上最大的數字是 EER。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "頁面的 SEER 定義把單位寫成「Btu per hour ÷ watt-hours」，單位表述不嚴謹，本卡不轉述 SEER 的單位。每平方公尺 200 Btu/h 是頁面自稱的粗略經驗值、且頁面明說應由專業計算，本卡只當「官方說明用 Btu/h 算面積」的例子，不當選購建議。研究網 NET_CA_GOV。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://natural-resources.canada.ca/energy-efficiency/energy-star/air-conditioning-your-home"
+        }
+      ]
+    },
+    {
       "id": "SRC-27a8dab4a397dea1",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC125199047/fullTextXML",
       "readings": [
@@ -26923,6 +27253,27 @@
       ]
     },
     {
+      "id": "SRC-27b4791fb52b06ca",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5054281/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.2486/indhealth.2015-0227",
+          "title": "Evaluation of performance loss of paraffin oil loaded filtering facepieces",
+          "publisher": "Industrial Health 54(5):403–409（2016）；義大利國家職業事故保險局（INAIL）職業醫學流行病學與衛生部、拉齊奧大區環境保護局空氣組",
+          "version": "開放取用版（CC BY-NC-ND 3.0；Europe PMC 完整 JATS XML，PMC5054281）",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭請求 https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5054281/fullTextXML（SY3 seq=13，HTTP 200，64486 位元組，sha256 前 16 碼 61144b3ab0f1164e），與前一筆請求間隔 1.2 秒以上；本機解析 JATS XML 全文讀完。",
+          "reading_scope": "摘要、Introduction、Materials and Methods（樣品依 EN 149:2001+A1:2009、石蠟油負載依 EN 13274-7、DEHS 單分散測試氣膠 0.03–0.40 µm、95 L/min、異丙醇去電荷對照）、表 1、Results and Discussion 全部（含圖 1–4 圖說）、Conclusion。",
+          "locator": "Methods（500 mg 石蠟油負載；作者估算一般作業環境 8 小時班約 1.3–185 mg）；表 1（壓差 139 Pa → 141–142 Pa）；Results 第 3 段與圖 2（MPPS 對單電荷顆粒接近 0.30 µm、對中和顆粒接近 0.05 µm；異丙醇處理使庫侖捕集降四個數量級、極化捕集降兩個數量級）；圖 4 段（庫侖效率比 1.14±0.07、極化 1.120±0.004，即約 12% 與 11%）；Conclusion（效能下降而呼吸阻力幾乎不變，配戴者察覺不到）。",
+          "summary": "義大利職業安全研究單位拿符合歐盟 EN 149 FFP2 的帶電纖維口罩做兩件事：一是讓濾材吸入 500 mg 石蠟油，靜電捕集的兩種機制各弱了約 12% 和 11%，壓差卻只從 139 Pa 變成 141–142 Pa，戴的人感覺不出來；二是證明帶電濾材的最弱粒徑隨顆粒帶電狀態移動，中和過的顆粒最弱點接近 0.05 µm，遠小於 0.3 µm。",
+          "limitations": "只測一個型號、每次一對口罩、報告一次試驗（另兩次「趨勢一致」）；500 mg 刻意高於作者估算的一般 8 小時班負載。用的是石蠟油不是 DOP，與美國 R／P 試驗條件不同。型號與廠商不轉述。研究網：NET_INAIL（單篇網）。 覆核 SVY3：seq=3 重抓雜湊 61144b3ab0f1164e 相符；原文寫的是「neutralized」（經中和、達電荷平衡）顆粒，並說明中和後的氣膠仍有部分顆粒帶電（0.03 µm 約 70% 不帶電），所以不能寫成「不帶電的顆粒」。",
+          "accessed_on": "2026-11-18",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5054281/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-27b71d983e13abf6",
       "url": "https://acp.copernicus.org/articles/11/5701/2011/acp-11-5701-2011.pdf",
       "readings": [
@@ -26967,6 +27318,27 @@
           "limitations": "讀的是 2014 年版 CFR；FTC 自 2022 年起檢討綠色指南，本次未讀到修正後版本（www.ecfr.gov 在封鎖名單），卡片只寫「2014 年版條文」。指南是 FTC 對何謂欺騙的解釋，不是對 RIC 本身的規格。NET_US_FED，與 SY6-S001 同網，合計上限 2.0。",
           "origin": "wave108-x108-20261118",
           "original_url": "https://www.govinfo.gov/content/pkg/CFR-2014-title16-vol1/pdf/CFR-2014-title16-vol1-sec260-12.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-27bc9715c8172469",
+      "url": "https://www.wi-fi.org/membership/membership-benefits",
+      "readings": [
+        {
+          "canonical_url": "https://www.wi-fi.org/membership/membership-benefits",
+          "title": "Membership Benefits | Wi-Fi Alliance",
+          "publisher": "Wi-Fi Alliance 官網會員權益與認證費表",
+          "version": "官網現行 HTML 頁；費表標示 PRICING EFFECTIVE JANUARY 1, 2026",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒以上）請求 SY5 seq=5，HTTP 200，144446 位元組，sha256 前 16 碼 b9cf3394ef20e578；本機抽正文全讀。",
+          "reading_scope": "會員權益表四大類（測試與認證、產業連結、參與制定、推廣）與〈Product certification fees〉費表全部列。",
+          "locator": "推廣類（使用 Wi-Fi CERTIFIED 標誌與證明標章於已認證產品，列為會員權益）；費表（新產品走 FlexTrack 路徑：每件一次性認證費 750 美元另加授權測試實驗室費；走 QuickTrack 路徑：750 美元另加實驗室費『如適用』；以自家已認證產品衍生：每件 750 美元，同一來源滿 16 件後每件 100 美元；整合他人已認證未改模組的衍生產品：較高會員等級每件 750 美元（滿 16 件後 100 美元），Implementer 級每件 4,000 美元）。",
+          "summary": "聯盟的會員權益表把『在已認證產品上使用 Wi-Fi CERTIFIED 標誌與證明標章』列為會員權益之一，並公開 2026 年起的認證費：新產品每件 750 美元認證費、另付實驗室測試費；衍生產品依會員等級是 750 美元（大量後 100 美元）或 4,000 美元。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "此頁沒有列會員年費，年費本題未讀到、不寫；實驗室測試費由實驗室另訂，頁上未列金額。費率是 2026 年版，不代表歷年。研究網 NET_WFA。（覆核補）費表兩欄依會員等級分列，抽出文字的欄位對應以表頭順序判讀。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.wi-fi.org/membership/membership-benefits"
         }
       ]
     },
@@ -28234,6 +28606,27 @@
       ]
     },
     {
+      "id": "SRC-295ea144429cd472",
+      "url": "https://www.anses.fr/en/content/sunscreen-products-better-consumer-information-means-better-protection",
+      "readings": [
+        {
+          "canonical_url": "https://www.anses.fr/en/content/sunscreen-products-better-consumer-information-means-better-protection",
+          "title": "Sunscreen products: better consumer information means better protection（2024-12-11）",
+          "publisher": "法國食品環境職業衛生安全署（ANSES）",
+          "version": "機構新聞頁（英文版 HTML），摘述 ANSES 2024 年防曬產品意見；意見全文 PDF 未讀",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0，間隔 1.2 秒）請求 seq=6，HTTP 200，85140 位元組，sha256 前 16 碼 7f573b81861594e3；本機去除標記後正文全讀。",
+          "reading_scope": "正文全文：UVA／UVB 段、歐盟 2006 年建議與 2024 年 6 月檢討、含防曬成分化粧品段、簡化標示段、等級修訂段、塗量段、What is the SPF 方框、水生生物段。",
+          "locator": "Aiming for clearer… 段（防曬品屬 1223/2009 號規章的化粧品；執委會 2006 年建議；2024 年 6 月啟動檢討）；Revise the protection level categories 段（現行 SPF 6 到 50+；UVA 防護只相當於 UVB 的三分之一；50+「very high」相較 50 沒有實質增加，建議取消；三級提案 15–20、25–30、50–50+）；What is the SPF 方框（歐洲建議把 SPF 定義為塗後與未塗之最小紅斑劑量比）；塗量段（實際用量平均低於標示所需）。",
+          "summary": "法國主管機關為歐盟 2006 年防曬標示建議的修訂提意見：歐盟現行可標的 SPF 從 6 到 50+，UVA 防護要至少是 SPF 的三分之一；它認為 50+ 比 50 沒有實質多擋，建議把最高一級併掉、改成三級，甚至不再印 SPF 數字。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是 ANSES 新聞頁對其意見的摘述與建議，不是歐盟建議原文（eur-lex 在封鎖名單，未找鏡像），也不是意見全文；三級制與取消 SPF 數字只是提案，未成規定。頁中「UVA 防護只相當於 UVB 的三分之一」是 ANSES 對低 SPF 產品的描述，不是歐盟 UVA 標誌門檻的條文，覆核 SVY2 已把 K112-0212 改以 S006、S004 為據。頁中健康、曝曬與塗量建議（含約 36 公克）一律不轉述。覆核 SVY2：seq=6 重抓，位元組與雜湊相同。研究網 NET_FR_ANSES（法國政府機關，與歐盟執委會不是同一機構，原代號 NET_EU 易誤導，改名）。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.anses.fr/en/content/sunscreen-products-better-consumer-information-means-better-protection"
+        }
+      ]
+    },
+    {
       "id": "SRC-2961949bbd689913",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12447540/fullTextXML",
       "readings": [
@@ -28618,6 +29011,27 @@
       ]
     },
     {
+      "id": "SRC-29e60543a43494ab",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12400021/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1111/ics.70000",
+          "title": "The variability of in vivo sunscreen sun protection factor values",
+          "publisher": "International Journal of Cosmetic Science 47(Suppl 1):25–36（2025）；美國賓州一家防曬檢測顧問公司與德國德勒斯登一家統計分析公司",
+          "version": "出版社開放取用版（CC BY-NC-ND 4.0；Europe PMC 完整 JATS XML）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0，間隔 1.2 秒）請求 seq=10，HTTP 200，94761 位元組，sha256 前 16 碼 ead1f28688e42ff7；本機解析 JATS XML 後讀摘要至 Discussion 中段（約 3.6 萬字元中的前 3.6 萬字元，結論與參考文獻略讀）。",
+          "reading_scope": "摘要、Introduction、Methods（Laboratories、Test products 與表 1、Design、Procedures）、Results（表 2、表 3、圖 1–6 圖說）、Discussion 前半（SPF 標示上限、塗量、MED 定義演變）。",
+          "locator": "Introduction（SPF 隱含『時間倍數』的說法是誤導；一般使用者用量約為測試量的 1/4 到 1/2［引文獻 1–4］；1978 年美國 FDA 首部成文試驗；2006 年歐盟、日本、南非、美國代表合訂國際協調 SPF 規範；ISO 24444:2010 幾乎各國承認、美國例外；2019 年改版）；Methods（12 家實驗室在澳洲、巴西、法國、德國、韓國、羅馬尼亞、西班牙；32 個產品分 8 組，每組送 4 家，盲測不給目標值）；Results（變異隨 SPF 升高而變大；表 3 第 1 組再現性界限 R＝0.50 ln SPF；例：一家測到 30，另一家可預期落在 18.1–49.5）；Discussion（測試塗量 1.95–2.05 mg/cm²；美國 MED 定義 1978、1999、2011 三度改寫，ISO 用『可察覺、明確的發紅』）。",
+          "summary": "一項由 ISO 工作組推薦實驗室參與的盲測：同一批 32 個產品分送七國 12 家實驗室按 ISO 24444 測 SPF，實驗室內重複很一致，實驗室之間卻差很多，SPF 越高差越大；以低黏度 SPF 30 那組為例，一家量到 30，另一家量到 18 到 50 之間都算在預期範圍內。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "每家只測 5+5 名受試者、未依 ISO 加測到信賴區間 < 17%，變異可能比正式送測略大；18.1–49.5 是作者用第 1 組再現性界限舉的例子，其他組更寬或更窄。作者稱『許多國家把 60 以上限標 60+』與台灣、日本的 50+ 不同，本卡不採。1945 年最早報告的作者姓名不轉述。CC BY-NC-ND：只連結與自寫摘要。研究網 NET_COLE。 覆核 SVY2：seq=7 重抓，位元組與雜湊相同。原文寫實驗室雖不知產品身分，但被告知真值是否高於 25，卡上已補；作者把實驗室之間差異歸於各實驗室的訓練與操作方式不同，並稱實驗室內的塗抹者與判讀者影響相對小（作者原卡把來源寫成「塗抹與判讀習慣」，已改）。實驗室由 ISO TC217 WG7 成員推薦、產品也由 WG7 成員選定；JCIA 自述參與 WG7（S003），但本文作者為顧問與統計公司，不屬 JCIA，不併網。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12400021/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-29e67bbde52858a0",
       "url": "https://pubmed.ncbi.nlm.nih.gov/30899065/",
       "readings": [
@@ -28818,6 +29232,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.consumerproductsafety.gov.sg/consumers/product-safety-tips/home-appliances-furniture-and-indoor-product-safety/types-of-mains-plugs-suitable-for-use-in-singapore/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2a3df62eddda83fd",
+      "url": "https://arxiv.org/pdf/2007.13401v3",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/pdf/2007.13401v3",
+          "title": "IEEE 802.11be – Wi-Fi 7: New Challenges and Opportunities（arXiv:2007.13401v3，2020-08-03）",
+          "publisher": "arXiv 預印本；中國西南交通大學、一家通訊設備企業實驗室與加拿大西安大略大學的研究者",
+          "version": "arXiv 預印本 v3 全文 PDF（本機 pdftotext 轉文字）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒以上）請求 SY5 seq=18，HTTP 200，906748 位元組，sha256 前 16 碼 d64c8faf55b62ecf；本機 pdftotext 轉文字後讀摘要、第 I 節與表 I。",
+          "reading_scope": "摘要、I Introduction 全段、II PHY Enhancements 開頭與表 I（只確認性質）。",
+          "locator": "摘要（802.11be EHT『also known as Wireless-Fidelity (Wi-Fi) 7』）；I 第 2–3 段（『namely Wi-Fi 7』；為了與 IEEE 提案一致，本文主要用 EHT 稱呼；工作小組 2019 年 5 月成立任務組，範圍為至少 30 Gbps、1–7.250 GHz，並與舊裝置向下相容）。",
+          "summary": "另一組研究者在 2020 年也已經把還在提案階段的 802.11be 稱為 Wi-Fi 7，但說明為了跟 IEEE 文件一致，內文改用工程代號 EHT；任務組 2019 年 5 月成立，目標至少 30 Gbps。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "預印本；本卡只用它對命名的處理與任務組範圍，不引用技術提案細節。（覆核補）作者單位：中國西南交通大學五人、一家通訊設備企業無線實驗室二人、加拿大西安大略大學一人；作者列中的 IEEE 會員等級只是個人會籍，文中未聲明任何作者任職 IEEE 或 Wi-Fi Alliance；與 SY5-S012 無合著。摘要把 Wi-Fi 7 寫成『Wireless-Fidelity (Wi-Fi) 7』。研究網 NET_ARX_SWJTU。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://arxiv.org/pdf/2007.13401v3"
         }
       ]
     },
@@ -29426,6 +29861,27 @@
       ]
     },
     {
+      "id": "SRC-2b022a00ac9a7d40",
+      "url": "https://www.pref.kanagawa.jp/docs/r7b/cnt/f370222/p1224230.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.pref.kanagawa.jp/docs/r7b/cnt/f370222/p1224230.html",
+          "title": "流せるティッシュ類の商品テスト",
+          "publisher": "神奈川県（くらしの中の商品等の情報／商品テスト；頁面更新 2026-06-11，調査 令和元年 10–11 月）",
+          "version": "縣政府網頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY7 seq=11，HTTP 200，17799 位元組，sha256 前 16 碼 7e61aff9858a914e），與前一筆請求間隔 1.2 秒以上；本機去標籤後讀全頁。",
+          "reading_scope": "調查概要、結果表（9 檢體）、調查方法、表示調查、まとめ，全讀。",
+          "locator": "結果表（單層：檢體 1–7 為 75、24、>100、19、87、37、>100 秒；參考衛生紙 18、22 秒；製品規格枚數：多數 >100 秒，衛生紙三層 57、65 秒）；調查方法（600 ± 10 轉、約 500 轉、回到 540 轉、5 次平均；JIS 規定 100 秒以內）；まとめ（單層 7 件中 2 件、照規格枚數 7 件中 5 件 100 秒內不散）",
+          "summary": "神奈川縣因為有人用「可沖」面紙後大樓下水溢出，委託檢驗機構用日本衛生紙規格的方法測 7 種標示可沖的面紙與濕巾類，兩種衛生紙做參考：照實際重疊張數測，7 件裡 5 件 100 秒內散不開，衛生紙兩件都合格。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "檢體只寫品類不寫品牌；7 件裡包含乾面紙 2 件與濕巾類 5 件，卡片要分清楚「標示可沖」的面紙類。照規格枚數測是縣的加測，不是 JIS 條件。研究網：NET_JP_PUBLIC。 覆核（SVY7 seq=4 重抓，雜湊相同）：檢驗由一家財團法人試驗所受託執行；頁面第 4 節「給消費者的建議」教怎麼沖，卡片不轉述。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.pref.kanagawa.jp/docs/r7b/cnt/f370222/p1224230.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-2b064563fec6c4c6",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13534890/fullTextXML",
       "readings": [
@@ -29650,6 +30106,27 @@
           },
           "origin": "wave62-physics-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9266007/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2b59ff3c246413e6",
+      "url": "https://www.ftc.gov/system/files/documents/cases/150518nice-pakanalysis.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.ftc.gov/system/files/documents/cases/150518nice-pakanalysis.pdf",
+          "title": "Analysis of Proposed Consent Order to Aid Public Comment（File No. 132-3272）",
+          "publisher": "美國聯邦貿易委員會（FTC），2015 年 5 月",
+          "version": "官方案件文件 PDF，兩頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY7 seq=10，HTTP 200，19678 位元組，sha256 前 16 碼 6e9cc2cfb629e100），與前一筆請求間隔 1.2 秒以上；pdftotext 轉文字全讀。",
+          "reading_scope": "全文兩頁：案由、Part I–IX 摘要、說明。",
+          "locator": "第 3 段（業者宣稱可沖、沖後不久會散；FTC 指其佐證不符沖下後的真實條件）；Part I（須證明沖下後在足夠短的時間內分散，且試驗要實質重現丟棄環境）；Part IX（命令 20 年後終止）",
+          "summary": "美國聯邦貿易委員會在 2015 年與一家濕紙巾製造商達成同意令：之後若要說產品「可沖」，必須拿得出沖下後能在夠短時間內分散、而且試驗條件貼近真實下水道的證據。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是公眾意見徵詢期的擬議同意令分析，文件自己寫明不是對申訴或命令的正式解釋；最終命令本文未讀。內容是單一業者的廣告佐證案，對象是濕巾，不是衛生紙或面紙，也不是一般性的標準。文件與網址含業者名，卡片一律不寫。覆核：和題目只算間接相關，加權由 1.0 降為 0.5。研究網：NET_US_FTC。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ftc.gov/system/files/documents/cases/150518nice-pakanalysis.pdf"
         }
       ]
     },
@@ -35077,6 +35554,27 @@
       ]
     },
     {
+      "id": "SRC-32bf78020468f73e",
+      "url": "https://www.jcia.org/user/common/download/approach/news_release/JCIA_release20121114-UV-PF.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.jcia.org/user/common/download/approach/news_release/JCIA_release20121114-UV-PF.pdf",
+          "title": "紫外線防止効果測定法基準の改定とそれに伴う「PA++++」表示の追加（2012 年 11 月 14 日新聞稿）",
+          "publisher": "日本化粧品工業連合会（JCIA）",
+          "version": "官方 PDF 新聞稿（4 頁）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0，間隔 1.2 秒）請求 seq=3，HTTP 200，17383 位元組，sha256 前 16 碼 87d4d3f43836f580；pdftotext 轉為文字後 4 頁全讀。",
+          "reading_scope": "【概要】、＊註三則（SPF、PA 定義與波長）、【経緯】全文、【参考】SPF 測定法基準＜2011 年改定版＞與 UVA 防止効果測定法基準＜2012 年改定版＞全文含過渡條款。",
+          "locator": "概要（ISO 兩規格採為自主基準；原則上既有 SPF 與 PA 不變；新增 PA++++，2013-01-01 起可標）；註（UVB 約 280–320 nm、UVA 約 320–400 nm）；経緯（1992 年 1 月 SPF 測定法基準；1999、2003、2007 年改定；1995 年 11 月 UVA 防止効果測定法基準，自稱世界首創；PA 採等級表示而非整數；2006 年 ISO TC217 WG7；In vivo SPF 2010 年 11 月、In vivo UVA 2011 年 12 月成為 IS；2011 年 10 月、2012 年 6 月採入）；参考（SPF 取 SPFi 算術平均、捨去小數；SPF≥50 且 95% 信賴下限 ≥51.0 才標 50+；UVAPF 2–<4 PA+、4–<8 PA++、8–<16 PA+++、≥16 PA++++；UVA 標示必須與 SPF 併記；2013-01-01 生效）。",
+          "summary": "日本業界團體的正式說明：SPF 規則 1992 年訂、UVA 規則 1995 年訂，後者用 PA 加號等級而不寫數字；2012 年改採 ISO 方法後，把最高等從 PA+++ 再切出 PA++++（UVAPF 16 以上），2013 年起可標；SPF 50 以上還要信賴區間下限過 51 才能寫 50+；PA 不能單獨標，一定要跟 SPF 一起寫。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "業界自主基準，不是政府法規；本新聞稿為 2012 年版本，此後是否再改未讀（jcia.org 另有現行基準頁，本次未請求）。「世界に先駆けた」是該會自述。新聞稿列出的會長姓名與聯絡人不轉述。研究網 NET_JP。 覆核 SVY2：seq=5 重抓，位元組與雜湊與作者 cache 完全相同。新聞稿列出的會長兼任公司名屬品牌，卡上不寫。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.jcia.org/user/common/download/approach/news_release/JCIA_release20121114-UV-PF.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-32c6aa02dc7e945e",
       "url": "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-250",
       "readings": [
@@ -35981,6 +36479,27 @@
       ]
     },
     {
+      "id": "SRC-33e1095d8abb519d",
+      "url": "https://www.wi-fi.org/node/35672",
+      "readings": [
+        {
+          "canonical_url": "https://www.wi-fi.org/node/35672",
+          "title": "Wi-Fi Alliance® introduces Wi-Fi 6",
+          "publisher": "Wi-Fi Alliance（美國德州奧斯汀的非營利產業聯盟）新聞稿，2018-10-03",
+          "version": "官網現行 HTML 頁（node/35672）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒以上）請求 SY5 seq=1，HTTP 200，144451 位元組，sha256 前 16 碼 ed80e3327bbcf697；本機去除 script／style 後抽出正文全讀。；覆核 SVY5 seq=1 重抓：HTTP 200，144451 位元組（雜湊 e71a09208ddbc7ba，與作者不同但抽出正文逐行相同，差在頁內動態字串），數字序列 Wi-Fi 6／5／4 對 802.11ax／ac／n 與 2018-10-03 日期逐句對過。",
+          "reading_scope": "新聞稿正文全文、業界支持引言段（只確認性質，不引用）、About Wi-Fi Alliance 段、頁尾商標聲明。",
+          "locator": "正文第 1–4 段（2018-10-03；Wi-Fi 6 為 802.11ax 產品的業界稱呼；數字序列 Wi-Fi 6／5／4 對應 802.11ax／ac／n；可用於指稱先前世代）；第 7 段（自 Wi-Fi 6 起，以 IEEE 802.11 主要版本為基礎的認證計畫使用世代名稱；Wi-Fi CERTIFIED 6 將於 2019 年推出）；頁尾（Wi-Fi、Wi-Fi CERTIFIED 等為該聯盟商標）。",
+          "summary": "聯盟在 2018 年 10 月宣布用數字替世代命名：802.11ax 叫 Wi-Fi 6，並往回把 802.11ac 叫 Wi-Fi 5、802.11n 叫 Wi-Fi 4；以後以 IEEE 主要版本為基礎的認證計畫都用世代名稱，Wi-Fi 6 認證預定 2019 年開始。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "發布者是命名者本身，屬自我陳述；稿中廠商引言帶推銷語氣，本題一律不引用、不點名。新聞稿沒有說 802.11ax 當時還是草案，草案狀態要對照 SY5-S006。研究網 NET_WFA。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.wi-fi.org/node/35672"
+        }
+      ]
+    },
+    {
       "id": "SRC-33ed89fd2db10225",
       "url": "https://openstax.org/books/biology-2e/pages/14-6-dna-repair",
       "readings": [
@@ -36704,6 +37223,27 @@
       ]
     },
     {
+      "id": "SRC-3534b94dbd509db7",
+      "url": "https://www.etsi.org/deliver/etsi_en/300300_300399/300328/02.02.02_60/en_300328v020202p.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.etsi.org/deliver/etsi_en/300300_300399/300328/02.02.02_60/en_300328v020202p.pdf",
+          "title": "ETSI EN 300 328 V2.2.2 (2019-07) Wideband transmission systems; Data transmission equipment operating in the 2,4 GHz band; Harmonised Standard for access to radio spectrum",
+          "publisher": "歐洲電信標準協會（ETSI）ERM 技術委員會",
+          "version": "ETSI 官方發行 PDF（V2.2.2，2019-07）；本機 pdftotext -layout 轉文字",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒以上）請求 SY5 seq=21，HTTP 200，1571870 位元組，sha256 前 16 碼 35211bae77e40e83；本機轉文字後讀前言、引言、第 1 節範圍、第 4.3.2.2 節輸出功率、第 4.3.2.6 節適應性（偵測門檻），並全文搜尋 Wi-Fi 字樣。",
+          "reading_scope": "Foreword（含各國轉置日期表）、Introduction、1 Scope（表 1）、2.2 Informative references 中 [i.1]、[i.3]、4.3.2.2 RF output power（非跳頻設備）、4.3.2.6 Adaptivity 的偵測門檻公式、目錄中 Annex D 標題；全文 6039 行搜尋 Wi-Fi。",
+          "locator": "Foreword（依歐盟執委會標準化請求制定，是符合 2014/53/EU 無線電設備指令基本要求的『一種自願方式』；刊登於歐盟公報後，符合表 A.1 條款即推定符合；2019-07-01 採用）；Introduction（例子：IEEE 802.11 RLAN 與其他短距無線技術）；1 Scope 表 1（2 400–2 483,5 MHz）；4.3.2.2.3（非跳頻設備輸出功率 ≤ 20 dBm e.i.r.p.）；4.3.2.6（20 dBm 設備的偵測門檻 −70 dBm/MHz）；Annex D 標題（Guidance for testing 2,4 GHz IEEE 802.11 Equipment）；全文 Wi-Fi 出現 0 次。",
+          "summary": "歐盟的 2.4 GHz 寬頻資料傳輸調和標準，把 IEEE 802.11 無線區網列為適用設備之一，規定非跳頻設備的等效全向輻射功率不得超過 20 dBm（100 mW），還要求先聽再說的偵測門檻；它是證明符合歐盟無線電設備指令的一種自願途徑。整份文件連一次 Wi-Fi 都沒出現，只寫 IEEE 802.11。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是技術標準，不是法律本文；指令本身（eur-lex）在封鎖名單，未讀。20 dBm 是 2.4 GHz 非跳頻設備的上限，其他頻段另有標準。研究網 NET_ETSI。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.etsi.org/deliver/etsi_en/300300_300399/300328/02.02.02_60/en_300328v020202p.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-355021793280b63f",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3783468/fullTextXML",
       "readings": [
@@ -36765,6 +37305,27 @@
           ],
           "origin": "wave41-physics-20261103",
           "original_url": "https://doi.org/10.3311/PPme.18381"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3557645fe3a2f671",
+      "url": "https://www.cdc.gov/niosh/bulletin/2018/n95-day.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.cdc.gov/niosh/bulletin/2018/n95-day.html",
+          "title": "N95 Day 2018: Getting Down to the Particulars about Filter Class",
+          "publisher": "NIOSH Science Bulletin（美國 CDC／NIOSH，NPPTL 撰稿）",
+          "version": "線上公告，2018-09-05 發布",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭請求 https://www.cdc.gov/niosh/bulletin/2018/n95-day.html（SY3 seq=2，HTTP 200，49323 位元組，sha256 前 16 碼 9e0b91da8e8f9daa），與前一筆請求間隔 1.2 秒以上；本機去標籤後全文讀完（作者名不轉述）。",
+          "reading_scope": "Summary、filter class 說明段、N／R／P 字母說明、油性微粒段、elastomeric 段、Further Reading 與 Sources。",
+          "locator": "「The number 95 refers to…」段（至少 95%、模擬最壞情況、most-penetrating sized particle）；「The FFR classes include N (not resistant to oil), R (somewhat resistant to oil), and P (strongly resistant to oil, or oil proof)」；「99.97% (labeled as 100)」；油性微粒段（潤滑油、切削液、金屬加工油霧舉例）；Schedule 13 段（1919 年起美國礦務局的舊分類，後由 Part 84 取代）。",
+          "summary": "NIOSH 自己解釋字母與數字：95 指在模擬最壞情況、用「最具穿透性」尺寸顆粒的試驗中至少濾掉 95%；N 是 not resistant to oil、R 是 somewhat resistant、P 是 strongly resistant／oil proof；標成 100 的其實是 99.97%；油性微粒例子是金屬加工時的切削液與潤滑油霧。",
+          "limitations": "公告的「應該用 R 或 P」屬職場選用建議，卡片不轉述為建議，只用字母定義與試驗意義。研究網：NET_US_GOV（與 S001 合計上限 2.0）。",
+          "accessed_on": "2026-11-18",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.cdc.gov/niosh/bulletin/2018/n95-day.html"
         }
       ]
     },
@@ -39068,6 +39629,27 @@
       ]
     },
     {
+      "id": "SRC-3894b1139257ed80",
+      "url": "https://arxiv.org/pdf/2008.02815v1",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/pdf/2008.02815v1",
+          "title": "IEEE 802.11be: Wi-Fi 7 Strikes Back（arXiv:2008.02815v1，2020-08-06）",
+          "publisher": "arXiv 預印本；愛爾蘭都柏林一所企業研究實驗室與西班牙龐培法布拉大學的研究者",
+          "version": "arXiv 預印本 v1 全文 PDF（本機 pdftotext 轉文字）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒以上）請求 SY5 seq=13，HTTP 200，1256120 位元組，sha256 前 16 碼 1192bc05d2f5348d；本機 pdftotext 轉文字後讀第 I、II 節與圖 1 圖說。",
+          "reading_scope": "摘要、I Introduction、II A Concise Update on Wi-Fi（A Wi-Fi 6E、B Wi-Fi 7）、III Release 1／Release 2 標題與圖 1 圖說；後段協調波束成形模擬只確認性質，不引用。",
+          "locator": "II 第 1 段（Wi-Fi 6 以 802.11ax 為基礎；802.11ax 尚未最終批准，延到 2020 年底；802.11be 可能以 Wi-Fi 7 認證）；II-A（2020 年 4 月美國把 5.925–7.125 GHz 開放免執照使用，可用頻寬幾乎變四倍；能用新頻段的裝置將得到『6E』標章，E 代表 extension；聯盟計畫 2021 年初推出 6E 認證）；II-B（Wi-Fi 7 目標每台基地台至少 30 Gbps，約 Wi-Fi 6 的四倍）。",
+          "summary": "2020 年 8 月的論文寫：市面上已經在講 Wi-Fi 6，但它依據的 802.11ax 還沒最終批准、延到 2020 年底；同一份 802.11ax 只要多支援新開放的 6 GHz 頻段，就會拿到『6E』標章（E 是 extension）；下一版 802.11be 則『可能以 Wi-Fi 7 認證』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "預印本 v1，非期刊定稿；6E 認證時程是作者當時引述的計畫，不代表實際上路日。（覆核補）作者單位：兩人當時在一家通訊設備企業的都柏林研究實驗室、一人仍在該實驗室、一人在龐培法布拉大學；與 SY5-S013 作者無重疊（以作者 arXiv API 回應 SY5 seq=12 與兩篇 PDF 首頁作者列對照），也不是 IEEE 或 Wi-Fi Alliance 的職員或出版品。但參考文獻 [15] 是第一作者等人提交給 IEEE 802.11 的文件（802.11-20/0091r7），可見作者以個人身分參與 802.11be 任務組；6E 命名一段是轉述聯盟計畫、未附出處，30 Gbps 是轉述任務組目標。依『論文依作者合著判斷』仍列獨立網，但轉述性質的卡降權。研究網 NET_ARX_DUB。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://arxiv.org/pdf/2008.02815v1"
+        }
+      ]
+    },
+    {
       "id": "SRC-389fdc11a66b23f9",
       "url": "https://data.iana.org/time-zones/tzdb/asia",
       "readings": [
@@ -40656,6 +41238,27 @@
       ]
     },
     {
+      "id": "SRC-3ad7c09fd2322747",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11618062/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41370-023-00608-z",
+          "title": "A novel online survey approach designed to measure consumer sunscreen application thickness—implications for estimating environmental emissions",
+          "publisher": "Journal of Exposure Science & Environmental Epidemiology 34(6):1064–1071（2024）；美國辛辛那提大學藥學院與一家化粧品公司的美國子公司",
+          "version": "出版社開放取用版（CC BY 4.0；Europe PMC 完整 JATS XML）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0，間隔 1.2 秒）請求 seq=14，HTTP 200，90555 位元組，sha256 前 16 碼 ab49964b5c1c304b；本機解析 JATS XML 後讀摘要、引言、方法、結果與表 1、討論。",
+          "reading_scope": "摘要、Introduction、Methods（問卷設計、雙重同意、資料清理）、Results（樣本數、表 1）、Discussion（與 2 mg/cm² 比較、文獻回顧）、Competing interests、倫理審查。",
+          "locator": "摘要（逾 9000 人受訪；臉部平均 3.00、中位數 1.78 mg/cm²；身體平均 1.52、中位數 1.35；1985–2020 年文獻 38 個數值中 36 個低於 2 mg/cm²，範圍 0.2–5）；Results 與表 1（最終臉部 4338 筆、雙臂 3443 筆；後續調查中位數 1.70 與 1.27）；Introduction（FDA 試驗規定 2.0 mg/cm²；過去文獻實際用量 0.2–1.27 mg/cm²）。",
+          "summary": "美國一項線上問卷估了數千人的塗抹厚度：雙臂中位數約 1.35 mg/cm²、臉部 1.78，都低於試驗用的 2；1985 到 2020 年的研究裡，38 個數值有 36 個低於 2。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "自陳用量與身高體重換算，只限乳液、只限美國；臉部資料高度偏斜（平均 3.00 遠高於中位數）。作者之一任職化粧品公司（不點名），作者聲明無利益衝突。研究目的是環境排放估算，不是防護效果。研究網 NET_UC。 覆核 SVY2：作者之一任職的公司是日本化粧品集團的美國子公司，該集團屬日本業界團體會員，但本文是辛辛那提大學主導的問卷研究，與 JCIA 的基準文件無作者或出版關係，不併入 NET_JP；Europe PMC 重查未見與其他論文作者合著。摘要把 2 mg/cm² 寫成 FDA「recommended」厚度，實際上是 FDA 的試驗塗量（S004：FDA 拒絕把具體用量寫進使用說明），卡上一律寫「試驗用量」。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11618062/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-3ae859e71d69fd84",
       "url": "https://irds.ieee.org/images/files/pdf/2022/2022IRDS_MM.pdf",
       "readings": [
@@ -41480,6 +42083,26 @@
       ]
     },
     {
+      "id": "SRC-3be449d37009f3a4",
+      "url": "https://www.reach.gov.sg/latest-happenings/public-consultation-pages/2018/public-consultation-on-the-introduction-of-mees-for-water-cooled-chilled-water-systems/",
+      "readings": [
+        {
+          "title": "Public Consultation on the Introduction of MEES for Water Cooled Chilled Water Systems",
+          "publisher": "新加坡國家環境局（NEA）資源保育署，刊於新加坡政府民意諮詢入口 REACH（頁面註明 2024-12-18 自舊站遷移）",
+          "version": "2018-12-31 至 2019-01-31 的諮詢文件（提案，非最終條文）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭、間隔 1.2 秒）SY1B seq=9，HTTP 200，593080 位元組，sha256 前 16 碼 465947371d8faf36；本機去標籤（x112/h2t.py）後全文讀。網址來自搜尋結果。",
+          "reading_scope": "Introduction、Background 1–5、Rationale 6、Scope 7–8、MEES 9 與溫度分級表、Compliance Deadlines 10–11、M&V 12、Reporting 13–16、Request for Feedback 17–18、註 1–10 全部；Annex 1–3 未讀。",
+          "locator": "第 7 段 a)：total installed cooling capacity of 300 RT (~1 MW) or more；第 9 段：7 °C 時 0.67 kW/RT、每偏離 1 °C 調 0.01 kW/RT，3–15 °C 分級表；註 7：kW/RT＝冷水系統的電功率輸入（kW）÷ 冷水系統產生的冷卻負荷（RT）；註 9：運轉效率＝評估期總耗電（kWh）÷ 總冷卻量（RTh）。",
+          "summary": "新加坡國家環境局 2018 年的諮詢文件，把工業冷水系統的效率指標寫成 kW/RT：分子是吃進的電（kW），分母是用冷凍噸（RT）計的冷卻量；累積量則用「冷凍噸小時」（RTh）。適用門檻寫成 300 RT（約 1 MW）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "諮詢提案，並非最終公告條文；本頁未定義 RT 的換算值。文件中的節能、減碳與成本效益說法不轉述。研究網 NET_SG_GOV（新加坡政府體系；與 SY1B-S004 同網）。 覆核 SVY1B：重抓 seq=4 雜湊相同（465947371d8faf36）；頁面狀態 Closed，為 2018 年提案；註 7、註 9 定義逐字相符。權重從嚴：本來源只撐 K112-0156 的定義，記 0.5。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.reach.gov.sg/latest-happenings/public-consultation-pages/2018/public-consultation-on-the-introduction-of-mees-for-water-cooled-chilled-water-systems/"
+        }
+      ]
+    },
+    {
       "id": "SRC-3bfdb3be9feb1d83",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12519753/fullTextXML",
       "readings": [
@@ -41847,6 +42470,27 @@
           },
           "origin": "wave46-reading-20261103",
           "original_url": "https://doi.org/10.1177/0956797618806296"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3c7147829c74446b",
+      "url": "https://www.ra-kotz.de/wasserdichtigkeit_armbanduhr.htm",
+      "readings": [
+        {
+          "canonical_url": "https://www.ra-kotz.de/wasserdichtigkeit_armbanduhr.htm",
+          "title": "Armbanduhr – Hinweis auf Wasserdichtigkeit（轉載 OLG Frankfurt am Main，2008-04-10 判決，案號 6 U 34/07）",
+          "publisher": "德國一家律師事務所網站的判決彙編頁；判決本身由德國法蘭克福邦高等法院（第 6 民事庭）作成",
+          "version": "線上 HTML，轉載判決主文、事實與理由（未見官方資料庫版本）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4B seq=6，HTTP 200，367607 位元組，sha256 前 16 碼 b008bdfca60f7314；本機去除標籤後讀完判決轉載部分（約 2,500 字），頁尾事務所自寫的導言與免責聲明另讀。 覆核：SVY4B seq=1 重抓，HTTP 200，367634 位元組，雜湊 b14869983a813d92；與作者 367607 位元組不同，逐行比對差異只在頁尾快取註解（WP Rocket 的 cached 時戳），判決正文逐字相同。",
+          "reading_scope": "導言一段；判決主文；I（事實與上訴主張）；II 理由全部各段；費用與假執行段。",
+          "locator": "II 第 1 段（§§3、5、8 UWG，「30 m wasserdicht」誤導）；第 2 段（一般消費者理解為可反覆、持續潛到 30 m；把公尺當 3 bar 試驗壓力「離理解很遠」）；第 3 段（DIN 8310 第 3 點、第 4.2 點；ISO 2281:1990 第 7.2 點）；第 6 段（3 bar 在 DIN 第 6.4.2 點維持 5 分鐘、物理上等於 30 m 水壓；當事公司內部手冊數字）；第 7 段（湖中下潛試驗不足）；第 8 段（「30 m」比「3 bar」更有廣告效果）。",
+          "summary": "德國上訴法院認定錶的廣告寫「30 m 防水」屬誤導：消費者會把公尺數讀成可潛深度，而 DIN 8310 的 3 bar 靜態試驗撐不起這個讀法；DIN 8310 本身要求試驗壓力以 bar 標示且不得被當成潛水深度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "判決文字經德國一家律師事務所網站轉載（2013 年刊出），非法院或官方判決資料庫；覆核以三次網路搜尋找官方或判決資料庫版本，只找到這份轉載與另一家事務所的說明，未找到官方版本。該站頁尾另有一般性聲明：文章部分可能以 AI 輔助撰寫、可能有誤，因此轉載的逐字忠實度無法獨立確認；判決的案號、日期、結論與 DIN 8310 第 3、4.2 點由另一家事務所（SY4B-S002）獨立轉述相符。頁首「Leitsatz」末句（錶在保證深度撐不住潛水就有瑕疵）不見於理由本文，可能是事務所自加，不引。轉載已把當事公司與湖名隱為 X、Y；卡上一律只稱「業者」。DIN 8310 與 ISO 2281:1990 的內容只是法院引述，原文未讀。法院所寫「潛水時的動作會使壓力升高」，佐證是當事公司內部試驗手冊（被告提出的附件）裡的數字，非公開實測，且與 NET_TSUKUBA 實測與 NET_FH 計算方向相反：手冊數字與這一段推論都不上卡、不進章節。頁面署名的律師是在世人物，卡上不寫。研究網：NET_DE（德國法院判決；S001、S002 同一網）。與 NET_FH（瑞士業界）、NET_USGOV、NET_JPGOV、NET_HIJ 與各論文團隊沒有從屬或引用關係。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ra-kotz.de/wasserdichtigkeit_armbanduhr.htm"
         }
       ]
     },
@@ -42349,6 +42993,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/21604911/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3cde67201c96a4fc",
+      "url": "https://distantreader.org/stacks/trust/uc2/uc2_ark+=13960=t2j67b081.txt",
+      "readings": [
+        {
+          "title": "Elementary Mechanical Refrigeration: A Simple and Non-Technical Treatise（1912 年初版第二刷）",
+          "publisher": "紐約的技術書出版社（1912）；美國機械工程師學會與美國冷凍工程師學會會員所著之教科書；文字檔為 HathiTrust 加州大學館藏（uc2 ark:/13960/t2j67b081）之 OCR 全文轉存（出版社名不寫入卡）",
+          "version": "公有領域掃描書的 OCR 純文字（有零星辨識錯字）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭、間隔 1.2 秒）SY1 seq=4，HTTP 200，392719 位元組，sha256 前 16 碼 f530e0e1681b5cb9；純文字直接讀，以頁眉頁碼定位。",
+          "reading_scope": "書名頁與版權頁、序、第一章熱的基本單位（p.5–6 含 ASME 委員會註腳）、機械製冷發展史（p.13–15 天然冰污染、勞力與釀酒業）、壓縮系統（p.46–47 一噸冰的負熱）、製冰系統（p.90–93 節略）、冷凍機能力一章（p.126–130 單位定義、1903 年標準條件註腳、排量效率）、熱負荷一節（p.153–154 燈與工人）。其餘章節（設計計算表、索引）只檢索未逐頁讀。 覆核 SVY1 另讀 p.127 STANDARD CONDITIONS（每噸每小時蒸發 27–28 磅氨、有效排量約每分鐘 4 立方呎）、p.129 DISPLACEMENT EFFICIENCY（以壓縮機當計量器、由活塞掃過體積推算冷媒量）、p.132–133（由排量×每立方呎冷卻效果÷200 得噸數；APPROXIMATE NOMINAL CAPACITY 式 [9][10] 由缸徑、行程、轉速直接算噸，書中說只是近似值，準確做法是秤冷媒）。",
+          "locator": "p.5 註腳（ASME 紐約年會委員會：以融一磅冰所需 144 B.t.u. 為單位，2000 磅冰融解能力定為 288 000 B.t.u.，以每 24 小時計，等於每小時 12 000、每分鐘 200 B.t.u.）；p.126–127「UNITS」(1)–(3)（Pound／Ton of Refrigeration，“from and at” 32 °F）；p.129 註腳（1903 年 Ice Machine Builders 標準：185 磅冷凝壓力（90 °F）、15.67 磅背壓（0 °F）下蒸發 27.7 磅氨為一噸；80% 排量效率壓縮機約每噸每 24 小時 5 立方呎排量）；p.47（144 B.t.u. 凍一磅 32 °F 水；實務上 288 000 B.t.u. 凍不出一噸水，因為水要先從原溫度降到 32 °F）；p.14–15（天然冰取自受污水污染的河湖、勞力成本、釀酒業與屠宰業先採用機械製冷）。；p.127 STANDARD CONDITIONS；p.129 DISPLACEMENT EFFICIENCY 段；p.132–133 式 [9][10]（Tons＝d²×L×N×常數，19×38 吋、45 rpm 例得約 112 噸）。",
+          "summary": "1912 年的美國冷凍教科書記下了冷凍噸的由來：美國機械工程師學會的委員會以「融化一磅冰要 144 Btu」為基準，把一噸（2000 磅）冰的融解熱 288 000 Btu 攤在 24 小時，得到每小時 12 000 Btu。書中也記載 1903 年製冰機業者的標準用氨的蒸發量和壓縮機排量來定一噸，並提醒一噸冷凍能力其實凍不出一噸冰。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY（公有領域書，仍只摘述）",
+          "limitations": "OCR 文字有錯字（例如 Fahrenheit 前的度數符號遺失），引用的數字均與上下文算式核對過（2000×144=288 000；288 000÷24=12 000；÷1440=200）。ASME 委員會的年份書中沒寫，本卡不寫年份。作者是否 1956 年後過世無從確認，一律不寫姓名，只稱「1912 年的美國教科書」。研究網 NET_TEXT1912（單一著作）。 覆核 SVY1：重抓 seq=1 雜湊相同（f530e0e1681b5cb9）。p.129 註腳原文寫「approximately 5 cubic feet of displacement would be allowed per ton per twenty-four hours」，但正文與 p.133 都以「每分鐘」計（有效約 3.9–4、表觀約 4.85–5 立方呎／分鐘／噸），「per ton per twenty-four hours」應讀作「每『每日一噸』的能力」；卡上不寫「每 24 小時 5 立方呎」。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://distantreader.org/stacks/trust/uc2/uc2_ark+=13960=t2j67b081.txt"
         }
       ]
     },
@@ -43080,6 +43744,27 @@
       ]
     },
     {
+      "id": "SRC-3e224987f098a6a0",
+      "url": "https://www.canada.ca/en/public-health/services/reports-publications/health-promotion-chronic-disease-prevention-canada-research-policy-practice/vol-35-no-10-2015/randomized-trial-testing-efficacy-modifications-nutrition-facts-table-comprehension-use-nutrition-information-among-adolescents-young-adults-canada.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.canada.ca/en/public-health/services/reports-publications/health-promotion-chronic-disease-prevention-canada-research-policy-practice/vol-35-no-10-2015/randomized-trial-testing-efficacy-modifications-nutrition-facts-table-comprehension-use-nutrition-information-among-adolescents-young-adults-canada.html",
+          "title": "Randomized trial testing the efficacy of modifications to the nutrition facts table on comprehension and use of nutrition information among adolescents and young adults in Canada",
+          "publisher": "Health Promotion and Chronic Disease Prevention in Canada 35(10)（2015）；安大略省公共衛生局與滑鐵盧大學的研究團隊",
+          "version": "期刊開放全文（加拿大公共衛生署網站 HTML）",
+          "accessed_on": "2026-11-18",
+          "read_via": "https://www.canada.ca/en/public-health/services/reports-publications/health-promotion-chronic-disease-prevention-canada-research-policy-practice/vol-35-no-10-2015/randomized-trial-testing-efficacy-modifications-nutrition-facts-table-comprehension-use-nutrition-information-among-adolescents-young-adults-canada.html，fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY8 seq=24，HTTP 200，131306 位元組，sha256 前 16 碼 f6679a53476ef134），與前一筆請求間隔 1.2 秒以上；本機去標籤後讀摘要、方法、結果、表 1、表 2、討論限制與結論。",
+          "reading_scope": "摘要、Key findings、引言、方法（招募、設計、圖 1 說明）、結果（表 1、表 2 全列）、討論末段與致謝。",
+          "locator": "方法（2014 年 8 月線上調查 2,010 名 16–24 歲；兩盒虛構品牌餅乾、225 g；2×3 設計：現行表 vs 同類標準化份量）；表 2 Compare 第 2 題（想吃少一點熱量選哪個：對照組 25.0%、標準化份量 54.6%，p<.001）、Compare 第 3 題鈉（28.0% 對 39.7%）、Manipulate 第 1 題半盒脂肪 %DV（10.4% 對 18.5%）",
+          "summary": "加拿大研究團隊讓 2,010 名 16 到 24 歲的人在線上比較兩盒虛構的餅乾：兩盒份量不同時，答對「哪一盒熱量較低」的只有 25.0%；把兩盒的份量統一後，答對的變成 54.6%。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "線上樣本、只用一種食品（餅乾）與虛構包裝；作者自述樣本代表性有限、無法模擬真實購物；只代表理解測驗，不代表購買或飲食行為。實驗中「標準化份量」是依加拿大飲食指南的建議選的，不是 2016 年修法的法定參考量，不能說成「測試了加拿大新規」。受試者來自一家市場研究公司的線上樣本庫，卡上不寫公司名。覆核 SVY8 seq=11 重抓：位元組數相同、雜湊不同（f6679a53476ef134 對 17ef2ed63c9f36d7），逐行比對只差在頁面嵌入的 CDN 統計腳本，正文與表 2 相同。研究網判定（覆核）：這是研究者論文，依作者合著判斷。作者機構為安大略省公共衛生局（省級機關）、滑鐵盧大學、澳洲維多利亞大學與多倫多病童醫院，經費來自加拿大營養師研究基金會；作者中沒有加拿大衛生部或聯邦機關人員，與雪梨大學那篇（三位作者都在雪梨大學）也沒有共同作者。canada.ca 只是期刊出版者（加拿大公共衛生署）的網址，不代表內容是衛生部的法規文件，所以不併入 NET_HC。 研究網：NET_WATERLOO。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.canada.ca/en/public-health/services/reports-publications/health-promotion-chronic-disease-prevention-canada-research-policy-practice/vol-35-no-10-2015/randomized-trial-testing-efficacy-modifications-nutrition-facts-table-comprehension-use-nutrition-information-among-adolescents-young-adults-canada.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-3e27b0997dd8139d",
       "url": "https://unicode-org.github.io/icu-docs/apidoc/released/icu4j/com/ibm/icu/util/BuddhistCalendar.html",
       "readings": [
@@ -43786,6 +44471,27 @@
       ]
     },
     {
+      "id": "SRC-3f044c48b3996012",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13558700/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41598-026-69766-y",
+          "title": "The effect of different liquids on paper strength demonstrates the central role of hydrogen bonding",
+          "publisher": "Scientific Reports 16:28199（2026）；瑞典卡爾斯塔德大學工程與化學科學系、瑞典皇家理工學院纖維與高分子技術系",
+          "version": "出版社開放取用版（CC BY 4.0；Europe PMC 完整 JATS XML）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY7 seq=14，HTTP 200，128826 位元組，sha256 前 16 碼 4cb2b1a6d3c21403），與前一筆請求間隔 1.2 秒以上；本機解析 JATS XML 後讀摘要、前言、材料方法、結果與討論、結論。DOI 取自 XML。",
+          "reading_scope": "Abstract、Introduction、Materials and methods（漿料、化學品表 1、抄紙、浸濕與拉伸）、Results and discussion（圖 2–11 圖說、表 2）、Conclusions。",
+          "locator": "Introduction（紙的強度主要來自纖維表面間作用而非纏結；氫鍵角色仍有爭論）；方法（漂白針葉牛皮漿、100 g/m² 手抄紙；水與鹽溶液浸 15 秒即達平衡）；結果（水使所有強度指標下降最多，正庚烷幾乎不影響）；結論（氫鍵為主，疏水與凡得瓦作用次之，靜電作用不顯著）",
+          "summary": "瑞典的團隊把同一種紙泡進水和各種溶劑，比較強度掉多少：水讓紙變弱得最多，而且 15 秒內就到底；幾乎不形成氫鍵的溶劑則幾乎不影響，支持「紙主要靠纖維之間的氫鍵黏在一起」。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "實驗用的是實驗室手抄紙（較厚、無添加劑），不是衛生紙或面紙；強度損失百分比只在圖中，卡片不寫數值。紙張強度的分子機制在學界仍有爭論，本文是支持氫鍵觀點的一方。漿料由瑞典一家紙廠提供，卡片不寫。研究網：NET_KTH_KAU。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13558700/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-3f0b58b9bf108448",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12348592/fullTextXML",
       "readings": [
@@ -44329,6 +45035,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sec.gov/Archives/edgar/data/1318605/000119312516652995/d213946d425.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3f8f60555b3d736b",
+      "url": "https://www.reach.gov.sg/latest-happenings/public-consultation-pages/2024/proposed-changes-to-mees-for-water-cooled-chilled-water-systems-used-for-space-cooling-in-new-industrial-facilities/",
+      "readings": [
+        {
+          "title": "Proposed Changes to MEES for Water-Cooled Chilled Water Systems used for Space Cooling in New Industrial Facilities",
+          "publisher": "新加坡國家環境局（NEA），刊於新加坡政府民意諮詢入口 REACH",
+          "version": "2024-12-31 至 2025-01-31 的諮詢文件（敘述 2020 年起的現行規定，並提出 2026-04-01 起的修正）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭、間隔 1.2 秒）SY1B seq=10，HTTP 200，556110 位元組，sha256 前 16 碼 6b5cdb94640c318a；本機去標籤（x112/h2t.py）後全文讀。網址來自搜尋結果。",
+          "reading_scope": "Aim、Background（含分級表）、Proposed Alignment、Request for Feedback、註 1–3 全部。",
+          "locator": "Background：依能源節約法（ECA），2020-12-01 起申請規劃許可的新工業設施須符合 MEES；分級表標題「MEES in kWe/kWc (kW/RT)」，例：7 °C 0.191（0.672）、3 °C 0.203（0.714）、9 °C 0.185（0.651）。Proposed Alignment：建管局（BCA）建築管制（環境永續）規則下新商業建築的水冷冷水系統須達 0.63 kW/RT（《建築環境永續規範》第 4 版）；擬自 2026-04-01 起單一 0.63 kW/RT（0.179 kWe/kWc）。註 1：total installed capacity of 1055kW (300RT) or more。",
+          "summary": "新加坡國家環境局 2024 年的文件，把同一條效率門檻並列兩種寫法：國際單位的 kWe/kWc（電的 kW 比冷的 kW），和括號裡的 kW/RT；適用門檻寫成「1055 kW（300 RT）」。商業建築那條現行標準則直接寫 0.63 kW/RT。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "2026-04-01 的單一門檻是諮詢時的提案，本次未讀到最終公報；2020 年起的分級規定與商業建築 0.63 kW/RT 是文件對現行規定的敘述，原法規條文未讀。0.191÷0.672≈0.284、即 1 RT≈3.52 kW 為本代理由表中並列數字推算，原文沒有寫出換算值；1055 kW÷300≈3.52 kW 同為推算。研究網 NET_SG_GOV（與 SY1B-S003 同網）。 覆核 SVY1B：重抓 seq=3 雜湊相同（6b5cdb94640c318a）；頁面本身也是諮詢文件（2024-12-31 至 2025-01-31），寫明擬於 2025 年 11 月前公告、2026-04-01 實施，本次未讀到公告結果。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.reach.gov.sg/latest-happenings/public-consultation-pages/2024/proposed-changes-to-mees-for-water-cooled-chilled-water-systems-used-for-space-cooling-in-new-industrial-facilities/"
         }
       ]
     },
@@ -44963,6 +45689,27 @@
       ]
     },
     {
+      "id": "SRC-4079f995a66146fe",
+      "url": "https://mohw.gov.tw/cp-16-65851-1.html",
+      "readings": [
+        {
+          "canonical_url": "https://mohw.gov.tw/cp-16-65851-1.html",
+          "title": "第二次預告修正「包裝食品營養標示應遵行事項」部分規定草案",
+          "publisher": "衛生福利部新聞（資料來源：食品藥物管理署），111 年 1 月 26 日",
+          "version": "衛福部網站新聞頁 HTML",
+          "accessed_on": "2026-11-18",
+          "read_via": "https://mohw.gov.tw/cp-16-65851-1.html，fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY8 seq=1，HTTP 200，30437 位元組，sha256 前 16 碼 0ad1f9f985cf2598），與前一筆請求間隔 1.2 秒以上；本機去標籤後全讀正文。",
+          "reading_scope": "新聞全文六點修正重點與實施日期段；附件連結未另抓。",
+          "locator": "修正重點第 4 點（新增每一份量與每 100 公克單位一致性規定）；實施日期段（預告稿寫延至 113 年 1 月 1 日）",
+          "summary": "衛福部 110 年 5 月首次預告、111 年 1 月第二次預告修正包裝食品營養標示應遵行事項，重點之一是新增「每一份量與每 100 公克（或毫升）單位一致」的規定。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "預告稿，不是最終公告；最終施行日期以公告為準，本頁寫的 113 年 1 月 1 日只代表第二次預告時的安排。 研究網：NET_TW_MOHW。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://mohw.gov.tw/cp-16-65851-1.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-407c07efc2e85fe0",
       "url": "https://openstax.org/books/university-physics-volume-1/pages/11-3-conservation-of-angular-momentum",
       "readings": [
@@ -45519,6 +46266,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://web.customs.gov.tw/keelung/singlehtml/e4a97921512c494bb144b48a7e51103f?cntId=548722d3c84949568a24e2d56a5fb5e9"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4119de0d643ef677",
+      "url": "https://www.consumer.org.hk/f/article_tab/443121/475152/595-1-5hp-split-type-air-conditioners-table002.pdf",
+      "readings": [
+        {
+          "title": "表二：「1匹半」變頻式分體冷暖空調機／冷氣機的基本功能測試結果",
+          "publisher": "香港消費者委員會《選擇》月刊第 595 期測試報告附表",
+          "version": "測試結果表 PDF",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭、間隔 1.2 秒）SY1 seq=21，HTTP 200，209148 位元組，sha256 前 16 碼 5c942d94a3a17003；本機 pdftotext -layout 轉文字後全文讀。",
+          "reading_scope": "表頭、13 個樣本的製冷量（聲稱、量得、相差）、CSPF 與能源標籤級別欄，註 [1]–[8]。品牌、型號、電費與評分欄不轉述。",
+          "locator": "表二：13 個標為「1匹半」的樣本，聲稱製冷量 3.300–3.550 kW（其中 2 個聲稱 3.517 kW），量得 3.310–3.738 kW，相差 −3.0% 至 +6.8%；註 [2]（聲稱值取自強制性能源效益標籤計劃的紀錄冊）；註 [6]–[7]（CSPF 依 ISO 16358-1 與標籤計劃方法計算；級別依 CSPF 分 1–5 級，1 級最高效）。",
+          "summary": "在香港，冷氣的俗稱單位不是噸而是「匹」：消委會測的 13 部「一匹半」分體機，標示的製冷量都在 3.3 到 3.55 kW 之間，其中兩部直接標 3.517 kW——剛好是一個美制冷凍噸。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "13 個樣本是消委會挑選的市售機（表中以代號列出），不代表所有「一匹半」；表中電費估算與評分一律不轉述，不做比較。表本身沒有「噸」字，3.517 kW 等於一個冷凍噸是推算（3.517÷3.516853≈1.000）。和題目只靠推算相連，覆核從嚴記 0.5。覆核 SVY1：重抓 seq=6 雜湊相同（5c942d94a3a17003）。研究網 NET_HK_CC。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.consumer.org.hk/f/article_tab/443121/475152/595-1-5hp-split-type-air-conditioners-table002.pdf"
         }
       ]
     },
@@ -46878,6 +47645,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.seattletimes.com/business/complete-qa-with-costco-founder-ceo-jim-sinegal/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-434266d23042fb78",
+      "url": "https://www.cit.nihon-u.ac.jp/laboratorydata/kenkyu/kouennkai/reference/No.53/pdf/3-19.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.cit.nihon-u.ac.jp/laboratorydata/kenkyu/kouennkai/reference/No.53/pdf/3-19.pdf",
+          "title": "衛生製品の下水道受入れ基準に関する基礎研究－各規格の水解性評価の比較－",
+          "publisher": "日本大學生產工學部第 53 回學術講演會講演概要 3-19（2020-12-12）",
+          "version": "講演概要兩頁 PDF",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY7 seq=6，HTTP 200，529286 位元組，sha256 前 16 碼 67ba624bcae30db3），與前一筆請求間隔 1.2 秒以上；pdftotext -layout 轉文字全讀，含表 1。",
+          "reading_scope": "1 序文、2.1–2.4 四種試驗法、表 1、3 實驗結果、4 考察，兩頁全讀。",
+          "locator": "表 1（PAS3 2018：18 RPM 30 分、15 ℃、25 mm 篩通過 95%；PAS3 2020：20 ℃；EDANA/INDA：26 RPM 60 分、12.5 mm 篩 60%；JIS P4501：600 RPM、5 次平均 100 秒內回到 540 RPM；法國舊法：800 RPM 120 秒目視）；3（同一「可沖」製品：EDANA/INDA 與法國法合格，PAS3 兩版與 JIS 不合格）",
+          "summary": "日本大學團隊把同一件標示可沖的衛生製品，分別用下水道業者的規格、歐美製造商團體的規格、日本衛生紙規格和已停用的法國規格去測，結果兩種合格、三種不合格。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "講演概要，只測一件製品，從嚴記 0.5。表 1 寫 JIS P4501「2006 年制定」，與同團隊論文（S016）寫 1993 年規格化不一致，應是 2006 年版的修訂年，卡片用「1993 年起、2006 年版」。研究網：NET_NIHON_U（與 S016 同一團隊）。 覆核：講演概要作者 4 人中 3 人也是 S016 的作者，同一網成立。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.cit.nihon-u.ac.jp/laboratorydata/kenkyu/kouennkai/reference/No.53/pdf/3-19.pdf"
         }
       ]
     },
@@ -51841,6 +52629,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.computer.org/profiles/werner-buchholz"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4b0b1e2ceddd9dc4",
+      "url": "https://www.wi-fi.org/who-we-are/history",
+      "readings": [
+        {
+          "canonical_url": "https://www.wi-fi.org/who-we-are/history",
+          "title": "History | Wi-Fi Alliance",
+          "publisher": "Wi-Fi Alliance 官網〈Who we are／History〉頁",
+          "version": "官網現行 HTML 頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒以上）請求 SY5 seq=2，HTTP 200，136279 位元組，sha256 前 16 碼 ad1ffaed33837046；本機抽正文全讀。",
+          "reading_scope": "History 頁正文兩段與 25 週年段。",
+          "locator": "正文第 1 段（1999 年數家公司組成全球非營利協會；2000 年採用 Wi-Fi 作為其技術工作的正式名稱，並宣布正式名稱 Wi-Fi Alliance）。",
+          "summary": "聯盟自述 1999 年成立、2000 年改名 Wi-Fi Alliance，並把 Wi-Fi 定為它工作的正式名稱。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "自述性質；只提供年份，不提供命名經過。研究網 NET_WFA。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.wi-fi.org/who-we-are/history"
         }
       ]
     },
@@ -59508,6 +60317,27 @@
       ]
     },
     {
+      "id": "SRC-55276a97922d5cc5",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9110919/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1002/gch2.202200001",
+          "title": "Respirators in Healthcare: Material, Design, Regulatory, Environmental, and Economic Considerations for Clinical Efficacy",
+          "publisher": "Global Challenges 6(7):2200001（2022）；美國布萊根婦女醫院、東北大學、麻省理工學院、麻州總醫院等",
+          "version": "出版社開放取用版（CC BY 4.0；Europe PMC 完整 JATS XML，PMC9110919）",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭請求 https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9110919/fullTextXML（SY3 seq=14，HTTP 200，170664 位元組，sha256 前 16 碼 aa67ce6b27b5e84c），與前一筆請求間隔 1.2 秒以上；本機解析 JATS XML 依節讀。",
+          "reading_scope": "摘要、Introduction、History、Overview of Respirator Types、Measuring Respirator Performance 全節（含表 1）、Filtration Mechanisms 略讀、Clinical Translation 略讀、Conclusion。",
+          "locator": "Measuring Respirator Performance 表 1（NIOSH：42 CFR 84；FDA：外科口罩 510(k)、21 CFR 878.4040、PFE 依 ASTM F2299、BFE 依 ASTM F2101、液體阻抗依 ASTM F1862、可燃性 16 CFR 1610、生物相容性 ISO 10993）；PFE 段（20 片濾材先在 85% RH、38 °C 預處理 25 小時；85 L/min；NaCl 平均 0.075±0.02 µm、DOP 0.185±0.02 µm；最壞情況）；FDA 段（0.1 µm 未中和聚苯乙烯乳膠；BFE 用平均 3 µm 金黃色葡萄球菌液滴；FDA 本身不做測試）；Fluid resistance 段（紅色合成血液在 80、120、160 mmHg）；Fit 段（定性測試用糖精或苦味劑噴霧；OSHA 要求每年做）；History（作者稱 N95 1972 年獲 NIOSH 核准——與 S001 的 1995 年分級制度不符，見 notes）。",
+          "summary": "美國醫工團隊的綜論把兩套考卷並列：NIOSH 考濾材效率與呼吸阻力，先把 20 片濾材泡在 85% 濕度、38 °C 下 25 小時，再用平均 0.075 µm 的氯化鈉（N）或 0.185 µm 的 DOP（R／P）以 85 L/min 猛吹；FDA 管醫用口罩，考液體阻抗（合成血液以 80、120、160 mmHg 噴）、細菌過濾效率、0.1 µm 顆粒效率、可燃性與生物相容性，而且 FDA 不自己測，只訂方法。",
+          "limitations": "綜論，引述多為二手；History 段說 N95「1972 年經 NIOSH 核准」與 NIOSH 自己的 1995 年分級規則矛盾（N95 這個級別名來自 1995 年 Part 84），卡片不用該句。研究網：NET_HARVARD_MIT（單篇網）。 覆核 SVY3：作者單位全為私立醫院、大學與研究所，無美國政府單位，獨立成網合理；利益揭露寫部分作者持有可重複使用呼吸防護具公司的財務利益（公司名不轉述），本卡只用其對測試方法的整理。原文寫 NaCl「average of 0.075 ± 0.02 µm」，沒有寫粒數中位。",
+          "accessed_on": "2026-11-18",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9110919/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-552cf66b649311aa",
       "url": "http://info.cern.ch/hypertext/WWW/TheProject.html/nhttps://developer.mozilla.org/en-US/docs/Web/URI/Guides/Choosing_between_www_and_non-www_URLs",
       "readings": [
@@ -60229,6 +61059,26 @@
       ]
     },
     {
+      "id": "SRC-5665d02a63e3522c",
+      "url": "https://safety.bsmi.gov.tw/wSite/public/Data/f1690268093941.pdf",
+      "readings": [
+        {
+          "title": "「冷氣機」選購與使用指南",
+          "publisher": "經濟部標準檢驗局高雄分局（商品安全資訊網）",
+          "version": "單頁 PDF（未標日期）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭、間隔 1.2 秒）SY1 seq=18，HTTP 200，243005 位元組，sha256 前 16 碼 f0e5df08c4a3df42；本機 pdftotext 轉文字後全文讀。",
+          "reading_scope": "全文第一至八點與文末聯絡資訊。",
+          "locator": "第三點（以額定總冷氣能力及能源效率比（EER）為考量時，以電器本體規格標示為依據，並參考能源效率分級標示，數字愈小表示愈省電）；第二點（冷氣機為應施檢驗商品）。",
+          "summary": "台灣標準檢驗局的冷氣說明把機身上該看的兩個數字叫做「額定總冷氣能力」和「能源效率比」，能效分級標示的數字越小越省電；全頁沒有用噸。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是選購與使用指南，第一、三、五、六點都是選購或省電建議，本卡一律不轉述；只用第三點裡標示項目的名稱（額定總冷氣能力、能源效率比）。台灣現行冷氣分級指標本次未讀到官方原文。加權 0.5。研究網 NET_TW_GOV。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://safety.bsmi.gov.tw/wSite/public/Data/f1690268093941.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-566b04534933bacb",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12519840/fullTextXML",
       "readings": [
@@ -60310,6 +61160,27 @@
           "limitations": "受控實驗室單體電池電化學測試數據，不涉及個別廠商專有快充協議秘密。",
           "origin": "wave89-tech-20261115",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9675797/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-568fbaecdf6dc583",
+      "url": "https://www.wi-fi.org/node/1958",
+      "readings": [
+        {
+          "canonical_url": "https://www.wi-fi.org/node/1958",
+          "title": "Wireless Ethernet Compatibility Alliance (WECA) Awards First Wi-Fi Interoperability Certifications",
+          "publisher": "Wi-Fi Alliance 官網保存的 WECA 新聞稿，2000-04-17（美國加州聖荷西）",
+          "version": "官網存檔 HTML 頁（node/1958）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒以上）請求 SY5 seq=4，HTTP 200，138983 位元組，sha256 前 16 碼 4787470067c5dd55；本機抽正文全讀。",
+          "reading_scope": "新聞稿全文：首批通過名單段（只確認數量與性質，不轉述廠商與型號）、互通問題段、Wi-Fi 標誌段、Wi-Fi Testing Process 段、About WECA 段與 36 家會員名單（只計數）。",
+          "locator": "第 1 段（2000-04-17 首批 Wi-Fi 互通認證；產品建立在 IEEE 802.11b HR 上）；第 3 段（不同廠商之間的互通一直是問題）；第 4 段（Wi-Fi 標誌是通過互通測試產品的 seal of interoperability）；第 7 段（Wi-Fi 一詞用來取代 IEEE 802.11b HR，就像 Ethernet 取代 IEEE 802.3；最高 11 Mbps）；Testing Process 段（獨立實驗室測試，每件產品通常 2–4 天；全部通過後才准用標誌；單是會員身分不代表通過）；About 段（1999 年成立的非營利組織；會員 36 家）。",
+          "summary": "WECA 在 2000 年 4 月發出第一批 Wi-Fi 互通認證，新聞稿直說不同廠商的無線區網產品互通一直是問題，所以讓獨立實驗室照它訂的測試組合逐件測，每件約 2 到 4 天，全部過關才能印 Wi-Fi 標誌；當會員本身不等於過關。稿中把 Wi-Fi 比作 Ethernet：一個用來代替一串規格編號的名字。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞稿是聯盟前身自己發的，『前所未有』等評價語不採用；首批名單中的公司與型號一律不轉述。研究網 NET_WFA。（覆核補）稿中以「WECA Chairman」身分引述的人，就是 SY5-S010 轉載信的寫信者；稿中也把 Wi-Fi 稱為「the standard for 2.4 GHz wireless LAN products」，與寫信者後來說聯盟從不訂標準的說法有落差，見 K112-0501 scope。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.wi-fi.org/node/1958"
         }
       ]
     },
@@ -66283,6 +67154,27 @@
       ]
     },
     {
+      "id": "SRC-5ed36d2b67fff4aa",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9328685/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1126/sciadv.abo5888",
+          "title": "Slamming dynamics of diving and its implications for diving-related injuries",
+          "publisher": "Science Advances 8(30):eabo5888（2022）；美國康乃爾大學等",
+          "version": "CC BY 4.0，Europe PMC 完整 JATS XML",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4 seq=16，HTTP 200，99953 位元組，sha256 前 16 碼 fd8365a5c7173d20；本機解析 XML 逐節讀完。",
+          "reading_scope": "Abstract、Introduction、Results 各節（Experimental observations、Kinematics、Unsteady slamming force、Time-averaged impulse）、Discussion、Materials and Methods。",
+          "locator": "Experimental observations（3D 列印模型自由落下入水，力感測器 2000 Hz）；Fig. 2 圖說（1 m 落下入水 4.41 m/s，理論 4.43 m/s）；Unsteady slamming force（衝擊力 ∝ ρV² 與形狀；尖錐形平滑上升，圓弧形接觸瞬間跳升，平腳先入水立即減速並形成空腔）；Time-averaged impulse（時間平均衝擊隨高度線性增加）。",
+          "summary": "入水那一下的力不是穩定水流的力：速度由落差決定，形狀不同，力的上升方式差很多，平面撞水是瞬間跳上去。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "研究對象是人體與動物模型，不是手錶；拿來說明入水瞬間的壓力是尖峰而非穩態，對錶的推論是編輯推論，加權 0.75。 研究網：NET_CORNELL（單篇網）。 覆核：覆核未重抓；作者 cache 檔雜湊與 access_log 相符，關鍵數字在 cache 原文找到。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9328685/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-5ed6a41a3882402f",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10107537/fullTextXML",
       "readings": [
@@ -66988,6 +67880,26 @@
           ],
           "origin": "wave37-physics-20261102",
           "original_url": "https://doi.org/10.1038/35086588"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5f9ee3803a6cbdb9",
+      "url": "https://seihinjyoho.go.jp/frontguide/pdf/catalog/2018/winter2018_aircon.pdf",
+      "readings": [
+        {
+          "title": "省エネ性能カタログ 2018年冬版（エアコン）",
+          "publisher": "日本經濟產業省資源能源廳系統之省能源產品資訊站（seihinjyoho.go.jp）刊載；表中部分數據註明出處為日本冷凍空調工業會",
+          "version": "2018 年冬版 PDF",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭、間隔 1.2 秒）SY1 seq=12，HTTP 200，1868044 位元組，sha256 前 16 碼 78459d1130818269；本機 pdftotext -layout 轉文字後讀。",
+          "reading_scope": "前段說明頁（省エネ基準達成率與星等、APF 定義、冷暖房平均 COP 改為 APF 的 Q&A、各種表示的定義、算出條件、冷房能力對應房間大小表）；產品一覽表只讀分類標題（2.2／2.5／2.8 kW 等級與畳數），不讀個別廠牌列。",
+          "locator": "〈各種表示〉●冷房能力(kW)：外氣 35 °C、室內 27 °C 時單位時間自室內除去的熱量；●冷房消費電力(kW)；●APF＝冷暖房期間所需冷暖房能力總和 ÷ 期間消費電力量（JIS C 9612:2005），算例：冷房能力 2.8 kW、期間消費電力量 850 kWh 時 APF＝6.6；〈Q1〉冷暖房平均 COP 只看定格點，變頻機能力會變，故改用 APF；〈算出條件〉東京、冷房 3.6 個月（6/2–9/21）、暖房 5.5 個月、6:00–24:00；〈冷房能力に対する部屋の広さの目安〉表（〜2.2 kW 6 畳、2.5 kW 8 畳、2.8 kW 10 畳……10.0 kW 32 畳）；一覽表分類「冷房能力 2.2kW（6〜9畳）」「2.5kW（7〜10畳）」「2.8kW（8〜12畳）」。",
+          "summary": "日本政府的省能型錄裡，冷氣的「能力」一律寫 kW，並定義成外氣 35 °C、室內 27 °C 時每單位時間從室內搬走的熱；產品按 2.2、2.5、2.8 kW 這些級距分類，再配上「幾疊」的房間大小參考，全冊不用噸。效率則用 APF：一年需要的冷暖能力除以一年的耗電。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "2018 年冬版，現行版本未讀；型錄含省電與電費建議，本卡一律不轉述；房間大小表原表欄名誤植為「冷房能力（kWh）」，本卡依同頁〈各種表示〉以 kW 理解。個別產品與廠牌不提。研究網 NET_JP_GOV（與 SY1-S007 同屬日本政府體系，合計上限 2.0）。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://seihinjyoho.go.jp/frontguide/pdf/catalog/2018/winter2018_aircon.pdf"
         }
       ]
     },
@@ -70098,6 +71010,27 @@
       ]
     },
     {
+      "id": "SRC-6433730b2ffada27",
+      "url": "https://www.fhs.swiss/eng/resistancy.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.fhs.swiss/eng/resistancy.html",
+          "title": "Water resistance of watches",
+          "publisher": "瑞士鐘錶工業聯合會（Federation of the Swiss Watch Industry FH）知識頁",
+          "version": "線上英文版（2026 年版頁面）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4 seq=2，HTTP 200，8348 位元組，sha256 前 16 碼 70aa9e093e82d44d；本機去除標籤後全文讀完。",
+          "reading_scope": "全頁（Water resistance of watches、Diving watches 兩節與參考文件連結）。",
+          "locator": "第一段（未標示時預設 2 bar、約水深 20 m；可用於洗手、淋浴與常見水上活動；應依製造商說明）；Diving watches 段（至少 100 m／10 bar、夜間可讀、潛水計時、耐衝擊與磁場、堅固錶帶；ISO 22810 與 ISO 6425 分工）。",
+          "summary": "瑞士業界團體說明：標示防水或潛水的錶須符合國際標準；未標示壓力時預設 2 bar；潛水錶另有一組附加要求，兩份 ISO 標準分別管一般防水錶與潛水錶。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "業界團體的說明頁，不是標準原文；ISO 22810／6425 本文未讀（iso.org 在封鎖名單）。「2 bar 足以應付常見水上活動」是該團體的立場，與日本業界分級的使用建議不同，卡上須標歸屬。 研究網：NET_FH（瑞士鐘錶工業聯合會；S001–S003 同一網）。 覆核：覆核重抓 SVY4 seq=1，HTTP 200，8348 位元組，雜湊 70aa9e093e82d44d 與作者相同；全文逐句核對。 頁中「可戴著從事洗手、淋浴與常見水上活動」與「依製造商使用與保養建議」屬使用建議，卡上不轉述。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.fhs.swiss/eng/resistancy.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-644d00a86afacaff",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10861916/fullTextXML",
       "readings": [
@@ -70708,6 +71641,27 @@
       ]
     },
     {
+      "id": "SRC-64c45b4a3a34224e",
+      "url": "https://www.wi-fi.org/news-events/newsroom/wi-fi-alliance-introduces-wi-fi-certified-7",
+      "readings": [
+        {
+          "canonical_url": "https://www.wi-fi.org/news-events/newsroom/wi-fi-alliance-introduces-wi-fi-certified-7",
+          "title": "Wi-Fi Alliance® introduces Wi-Fi CERTIFIED 7™",
+          "publisher": "Wi-Fi Alliance 新聞稿，2024-01-08（美國德州奧斯汀）",
+          "version": "官網現行 HTML 頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒以上）請求 SY5 seq=19，HTTP 200，146047 位元組，sha256 前 16 碼 19a8acf9dd14a37a；本機抽正文全讀。",
+          "reading_scope": "新聞稿正文、功能列表、執行長引言（不點名）、測試床段（公司名不轉述）、業界引言段（只確認性質）。",
+          "locator": "第 1 段（2024-01-08 Wi-Fi CERTIFIED 7 上路）；功能列表（320 MHz 通道、多鏈路運作、4K QAM 比 1024 QAM 傳輸率高 20% 等）；第 2 段（預估 2024 年 2.33 億台、2028 年 21 億台，為聯盟引用的市場預估）。",
+          "summary": "聯盟在 2024 年 1 月 8 日推出 Wi-Fi 7 認證。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只用日期；市場預估與功能宣傳不引用。研究網 NET_WFA。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.wi-fi.org/news-events/newsroom/wi-fi-alliance-introduces-wi-fi-certified-7"
+        }
+      ]
+    },
+    {
       "id": "SRC-64c4d2b083630d5b",
       "url": "https://tfl.gov.uk/info-for/taxis-and-private-hire/licensing/learn-the-knowledge-of-london",
       "readings": [
@@ -70741,6 +71695,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-everyday-engineering-20261101",
           "original_url": "https://www.epa.gov/system/files/documents/2022-04/ds-toolbox-fact-sheets_water-age-mgt_final-508_revised.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-64ce001554595302",
+      "url": "https://www.wi-fi.org/beacon/jeff-abramowitz/wi-fi-alliance-then-and-now",
+      "readings": [
+        {
+          "canonical_url": "https://www.wi-fi.org/beacon/jeff-abramowitz/wi-fi-alliance-then-and-now",
+          "title": "Wi-Fi Alliance®, then and now",
+          "publisher": "Wi-Fi Alliance 官網部落格 The Beacon，一位聯盟創始成員撰文（2019 年，20 週年系列）",
+          "version": "官網現行 HTML 頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒以上）請求 SY5 seq=14，HTTP 200，138982 位元組，sha256 前 16 碼 1fbf7a47e929de7f；本機抽正文全讀。",
+          "reading_scope": "Then、Now、Wind beneath our wings 三段與作者簡介（作者在世，不點名）。",
+          "locator": "Then 段（1999 年 WECA 推出新的 Wi-Fi 商標；當時業界出貨不到一百萬台、不同廠商產品少有互通；同年 IEEE 核准 802.11b；Wi-Fi 商標是為了向企業與消費者保證產品能互通而創的好記名稱；六家公司發起、各派一名董事；只有一名受薪技術主管，管理、實驗室測試與公關全部外包；成立時宣布 Wi-Fi 名稱、另有 11 家加入；七個月後首批認證產品出貨）；Now 段（2019 年會員逾 800 家）。",
+          "summary": "一位創始成員回顧：1999 年 WECA 由六家公司發起、只有一名受薪技術主管，管理、測試、公關都外包；成立同時宣布 Wi-Fi 這個名字，目的就是讓買家相信不同廠牌產品能互通；到 2019 年會員超過 800 家。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "創始成員的回憶文，發表在聯盟官網，屬聯盟自述，併入 NET_WFA；『七個月後』與 SY5-S003 的 2000 年 4 月首批認證大致相符。（覆核補）本頁稱轉載信（SY5-S010）的寫信者為「WECA's first chairman」，是卡片稱「首任主席」的依據。網址路徑含作者姓名（在世），只作出處，不得進旁白、字幕或畫面。研究網 NET_WFA。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.wi-fi.org/beacon/jeff-abramowitz/wi-fi-alliance-then-and-now"
         }
       ]
     },
@@ -70868,6 +71843,27 @@
           },
           "origin": "wave74-life-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5497986/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6518570b4cd19568",
+      "url": "https://law.resource.org/pub/in/bis/S01/is.14559.1998.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://law.resource.org/pub/in/bis/S01/is.14559.1998.pdf",
+          "title": "IS 14559 : 1998 / ISO 6425 : 1996 Horology — Divers' watches",
+          "publisher": "印度標準局（BIS）國家標準，逐字採用 ISO 6425:1996；Public.Resource.Org 依印度資訊公開運動公開的掃描本",
+          "version": "1998 年 7 月版，13 頁掃描 PDF（含文字層）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4B seq=7，HTTP 200，1349074 位元組，sha256 前 16 碼 e88f33dc123aa2d0；pdftotext 抽文字後全文讀完（前言、第 1–8 章、附錄 A）。 覆核：SVY4B seq=2 重抓，HTTP 200，1349074 位元組，雜湊 e88f33dc123aa2d0 與作者相同；第 3–8 章逐句對照。",
+          "reading_scope": "National Foreword；1 Scope；4 Designation；5 Practical meaning；6 Requirements 6.1–6.11；7 Test methods 7.1–7.3.8 與表 1；8 Marking 與使用說明要求；Annex A。",
+          "locator": "第 4 章（100 m 以上自稱潛水錶須符合第 6 章）；第 5 章（模擬 L m 潛 1 h 再 3 m 潛 1 h）；7.1（耐水過壓試驗每只錶都做，其餘為型式試驗）；7.3.3 鹽水 30 g/L、24 h；7.3.4 30 cm 水深 50 h；7.3.5 40/5/40 °C 各 10 min；7.3.6 1.25 倍壓力加 5 N 錶冠側力 10 min；7.3.7 (L+0.25L)/10 bar 2 h 再 0.3 bar 1 h；7.3.8 凝結試驗；第 8 章 diver's watch L m、L 為製造商保證深度。",
+          "summary": "ISO 6425:1996 全文（以印度國家標準逐字採用的形式）：潛水錶的定義、各項試驗條件與標示方式。第 8 章後另規定說明書須載明的注意事項，屬使用建議，不引。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是 1996 年版：ISO 6425 現行為 2018 年版；覆核搜尋結果顯示印度局把 IS 14559:1998 列為已撤銷、由 IS 14559:2023 取代（BIS 頁未請求，僅見搜尋摘要）。卡上一律寫成「1996 年版規定」；核心的 100 公尺下限與「L 為製造商保證深度」另由 NET_FH 與 JIS B 7023:2021 試閱的適用範圍佐證仍是現行概念，各試驗數值則只能說是 1996 年版。掃描文字層有缺字，7.3.2 空氣試驗流量上限字跡不清，不引。研究網：NET_ISO（ISO 標準及各國採用版；S003、S004、S005 嚴算併為一網）。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://law.resource.org/pub/in/bis/S01/is.14559.1998.pdf"
         }
       ]
     },
@@ -71166,6 +72162,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-electricity-20261101",
           "original_url": "https://www.analog.com/media/en/training-seminars/tutorials/MT-032.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6594e7051f04926e",
+      "url": "https://www.mdanderson.org/cancerwise/2025/05/what-spf-should-i-use.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.mdanderson.org/cancerwise/2025/05/what-spf-should-i-use.html",
+          "title": "What SPF should I use?（Cancerwise，2025-05 審閱）",
+          "publisher": "美國德州大學 MD 安德森癌症中心（醫院衛教專欄）",
+          "version": "機構網頁（HTML）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0，間隔 1.2 秒）請求 seq=12，HTTP 200，163257 位元組，sha256 前 16 碼 231bdcf279a29668；本機去除標記後正文全讀。",
+          "reading_scope": "正文全文：How is SPF determined、How much protection does SPF provide、名詞解釋（Broad-spectrum、Water-resistant、PA++++）、Key takeaways、膚色段。",
+          "locator": "How much protection… 段（SPF 加倍不等於防護加倍、阻擋量不是線性；SPF 15 擋 93%、30 擋 97%、50 擋 98% 的 UVB）；How is SPF determined 段（實驗室以標準塗量與光源比較塗與未塗發紅）。",
+          "summary": "美國一家大學癌症中心的衛教文用三個數字說明 SPF 不是線性：SPF 15 約擋 93% UVB、30 約 97%、50 約 98%。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "醫院衛教頁，不是規格文件；93/97/98% 未附任何出處，同頁又把 SPF 試驗寫成比較「發紅所需時間」，與 FDA、日本環境省寫的「光量比」不同，可信度打折。這組數字與 1−1/SPF 的換算相近（1/15≈6.7%、1/30≈3.3%、1/50＝2% 透過）——這是編輯推算，不是來源事實，不計入加權。頁中選用、補擦、膚色建議與審閱醫師姓名一律不轉述。覆核 SVY2 由 0.75 降為 0.5。研究網 NET_MDA。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.mdanderson.org/cancerwise/2025/05/what-spf-should-i-use.html"
         }
       ]
     },
@@ -77070,6 +78087,27 @@
       ]
     },
     {
+      "id": "SRC-6dccb411ef6dd88d",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13636130/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1111/ics.70103",
+          "title": "A proposal for simplifying the labelling of sunscreens",
+          "publisher": "International Journal of Cosmetic Science 48(5):1071–1076（2026）；英國紐卡索大學轉譯與臨床研究所（皮膚科）單一作者",
+          "version": "出版社開放取用版（CC BY 4.0；Europe PMC 完整 JATS XML）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0，間隔 1.2 秒）請求 seq=8，HTTP 200，50739 位元組，sha256 前 16 碼 bee3e5391d54d7c7；本機解析 JATS XML 後逐節全讀。",
+          "reading_scope": "摘要、Introduction、A binary classification…、The criterion…（含圖 1、2 圖說）、Evaluating sunscreen products、Discussion、參考文獻表。",
+          "locator": "Introduction（實驗室條件：每位受試者 2 mg/cm²、戴手套的手指仔細抹勻、依國際規範；ISO 23675:2024 體外法與 ISO 23698:2024 混合法已發布但尚未取代人體法；實際使用量不一、塗抹不均）；Binary classification 段（美國以臨界波長及格／不及格、歐洲以 UVA-PF／SPF ≥ 1/3 判定廣譜，都是二分法）；The criterion 段（模型假設典型使用厚度 1 mg/cm²，引作者 2009 年文獻）；Discussion（作者主張 SPF 數值對實際防護是『meaningless』的指標——作者觀點）。",
+          "summary": "英國一位皮膚光生物學研究者指出：SPF 是在每位受試者都塗足 2 mg/cm²、仔細抹勻的理想條件下量的，日常常見約 1 mg/cm²；2024 年 ISO 已發布兩種不必照到人體發紅的新方法，但還沒取代人體法；美歐對 UVA 其實都只給及格／不及格。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "評論與模型文章，二分法標示是作者個人提案；1 mg/cm² 是作者引自己 2009 年文獻的典型值，本文未量。模型中的曬紅預測與選用建議一律不轉述。Europe PMC 合著查詢（seq=13）未見與 S007、S008、S009 作者直接合著。研究網 NET_NCL。 覆核 SVY2：本文引用 S007（參考文獻 5）作為實驗室間變異的依據，引用不是合著；Europe PMC 以姓氏重查（SVY2 seq=1–3）也未見與 S007、S008、S010 作者合著。歐盟 UVA-PF/SPF ≥ 1/3 的說法見 A binary classification 段（引歐盟建議為文獻 12），K112-0212 改以本文為主據。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13636130/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-6dded9a44db40afe",
       "url": "https://www.etsi.org/deliver/etsi_TS/102200_102299/102221/16.00.00_60/ts_102221v160000p.pdf",
       "readings": [
@@ -77545,6 +78583,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave8-networks-20261101",
           "original_url": "https://www.rfc-editor.org/rfc/rfc8290.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6e684e81b3b98184",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10753470/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1017/ash.2023.503",
+          "title": "Striving to be the fittest: quantitative P2/N95 respirator fit test results among hospital staff during the COVID-19 pandemic",
+          "publisher": "Antimicrobial Stewardship & Healthcare Epidemiology 3(1):e236（2023）；澳洲蒙納許大學 Eastern Health 臨床學院與 Eastern Health 各部門",
+          "version": "出版社開放取用版（CC BY 4.0；Europe PMC 完整 JATS XML，PMC10753470）",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭請求 https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10753470/fullTextXML（SY3 seq=11，HTTP 200，90862 位元組，sha256 前 16 碼 8375f1ace30be8c9），與前一筆請求間隔 1.2 秒以上；本機解析 JATS XML 依節讀。",
+          "reading_scope": "摘要、Introduction、Methods 全部（Type、Sample、Fit testing、Statistics、Ethics）、Results 全部、Discussion、表 1、3、4 標題與內容。",
+          "locator": "Introduction（AS/NZS 1715:2009 要求每年做密合測試；定性與定量測試定義；所有 P2/N95 都須在最具穿透性粒徑濾掉至少 95%）；Fit testing（定量儀器、N95 mode、fit factor ≥ 100 為通過、四個動作）；Results 首段（4593 人；約 98% 至少合一款；28% 合不到三款）；表 3 與 Results（十款中個別款式通過率 17.65%–86.82%）。",
+          "summary": "澳洲一個大型公立醫療網的 4593 名員工做定量密合測試：十款都符合 P2/N95 濾材要求的口罩，以 fit factor ≥ 100 為通過，個別款式的通過率從約 18% 到約 87%；約 98% 的人至少能合一款，但 28% 的人合不到三款。",
+          "limitations": "單一機構的回溯稽核，測試順序固定、不是每人都試每款；只代表該院員工。廠牌型號一律不轉述，也不轉述性別、年齡等個人因素作為建議。研究網：NET_MONASH（單篇網）。 覆核 SVY3：測試流程是先試三款、再依預定順序加試，直到成功合三款為止，所以「28% 合不到三款」是在這個流程下的結果；論文結論點名的款式與「表現最穩定」的說法不轉述。",
+          "accessed_on": "2026-11-18",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10753470/fullTextXML"
         }
       ]
     },
@@ -79502,6 +80561,27 @@
       ]
     },
     {
+      "id": "SRC-7165989b33638119",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8832847/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.ajic.2022.02.009",
+          "title": "Comparison of filtration efficiency and respiratory resistance of COVID-19 protective masks by multi-national standards",
+          "publisher": "American Journal of Infection Control（2022）；中國廣東工業大學生物醫藥學院、廣州一家檢測技術服務公司",
+          "version": "Elsevier COVID-19 資源中心免費全文（Europe PMC JATS XML，PMC8832847）",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭請求 https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8832847/fullTextXML（SY3 seq=16，HTTP 200，75548 位元組，sha256 前 16 碼 17f730510910a03b），與前一筆請求間隔 1.2 秒以上；本機解析 JATS XML 依節讀。",
+          "reading_scope": "摘要、Introduction、Materials and methods 全部（三套標準的 PFE 方法、呼吸阻力方法）、表 1–3、Results and discussion 全部 PFE 與阻力各節、Conclusion。",
+          "locator": "表 2（GB 2626-2019：KN90／95／100 為非油性顆粒 ≥ 90.00／95.00／99.97%；KP90／95／100 為油性顆粒同門檻）；GB 2626-2019 段（2019-12-31 發布、2020-07-01 生效、取代 2006 版；NaCl 平均 0.075 µm、85 L/min）；EN 149+A1 段（FFP1／2／3，論文所述 NaCl 0.06 µm、95 L/min）；表 1（FFP 效率 ≥ 80／94／99%）；表 3（NIOSH 九級）；平面口罩段（同一片口罩 EN 法 88.02%、GB 法 90.91%、NIOSH 法未達 95%）；杯型段（同一款依 NIOSH 法 97.86%）。",
+          "summary": "中國的檢測團隊整理三套標準：中國 GB 2626-2019 把「不耐油」寫成 KN、「耐油」寫成 KP，各有 90、95、100 三級；歐盟 EN 149 分 FFP1–3（效率 80／94／99%）；美國 NIOSH 分 N／R／P。同一片平面口罩照歐盟方法測 88%、照中國方法測 91%（剛好過 KN90）、照 NIOSH 方法則不到 95%——考卷不同，分數不同。",
+          "limitations": "樣品號以代碼表示，數量少；表 1 的 EN 149 欄位在 XML 中排版混亂，只採效率門檻；EN 149 的測試粒徑與流量是論文自述，標準本身未讀。結論的配戴建議不轉述。研究網：NET_GDUT（單篇網）。 覆核 SVY3：文中 GB 法下三款平面口罩「從 68.26% 到 90.71%」與同段「#C 升到 90.91%」自相矛盾，0313 只寫約九成並記 0.75；表 2 標題寫 GB 2626-2019，正文一處誤植為 GB2625-2019。",
+          "accessed_on": "2026-11-18",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8832847/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-716d4638177b5674",
       "url": "https://doi.org/10.1121/1.2146089",
       "readings": [
@@ -80917,6 +81997,27 @@
           },
           "origin": "wave54-life-20261111",
           "original_url": "https://yardandgarden.extension.iastate.edu/article/2014/02-14/rootrot.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-738f5e02eb22fa2c",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13046834/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41598-026-41650-9",
+          "title": "A comparative analysis of multi-stage evaporative cooling and conventional chillers for office-scale cooling loads",
+          "publisher": "Scientific Reports（2026）；作者單位：印度韋洛爾理工學院機械工程學院、卡達一家永續顧問公司、印度 NMAM 理工學院、沙烏地阿拉伯伊瑪目大學、莫三比克蒙德拉內大學、衣索比亞默克雷大學",
+          "version": "出版社開放取用版（Europe PMC 完整 JATS XML）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭、間隔 1.2 秒）SY1 seq=23，HTTP 200，90775 位元組，sha256 前 16 碼 e693dd7c126efad2；本機去除 XML 標籤後讀；DOI 取自 XML 的 article-id，doi.org 未請求。",
+          "reading_scope": "摘要、建築與方法說明、表 3（夏季熱負荷）、表 4（季風季熱負荷）、表 5–7 前後的系統容量段落、結論、符號表（TR＝Ton of refrigeration）。數學推導與經濟分析段只略讀。",
+          "locator": "符號表（TR：Ton of refrigeration）；表 3（七個印度城市、同一棟建築夏季 Total heat load 212.45–323.12 TR、Grand total load 218.82–332.81 TR）；表 4（季風季 Total 239.43–362.64 TR）；系統段（風量 95 150 cfm 時單獨冰水系統需 589.65 TR）；摘要與結論（傳統間接蒸發預冷減 50–60 TR，改良多段式減 80–140 TR）。",
+          "summary": "一篇 2026 年的同儕審查論文計算一棟辦公大樓在八個印度城市的冷卻負荷，從頭到尾用冷凍噸（TR）當單位：夏季總負荷約 210 到 330 TR，比較的節省量也寫成「少了幾十到上百噸」。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "單一建築的模擬計算；標題稱 office-scale，內文描述為約 80 950 平方呎、150 人的工業建築（廠房樓層）。作者原寫「八個城市」「212.45–323.77 TR」「含安全係數」有誤：表 1–4 是七個城市；Total heat load 最高 323.12（加爾各答），323.77 是浦那的 Grand total；表中欄名是 Grand total load，沒寫安全係數。覆核 SVY1 已更正。作者 7 人的單位與本題其他來源（政府、市立圖書館、1912 年教科書）無合著關係。重抓 seq=7 雜湊相同（e693dd7c126efad2；seq=5 逾時無資料）。研究網 NET_VIT。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13046834/fullTextXML"
         }
       ]
     },
@@ -84689,6 +85790,27 @@
       ]
     },
     {
+      "id": "SRC-7902eaca2b09b8b2",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8886298/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3389/fspor.2022.786459",
+          "title": "Relationship Between Hand Kinematics, Hand Hydrodynamic Pressure Distribution and Hand Propulsive Force in Sprint Front Crawl Swimming",
+          "publisher": "Frontiers in Sports and Active Living 4:786459（2022）；日本筑波大學體育與運動科學系",
+          "version": "CC BY 4.0，Europe PMC 完整 JATS XML",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4 seq=10，HTTP 200，102497 位元組，sha256 前 16 碼 fbfc06f06c2ab381；本機解析 XML 逐節讀完（參考文獻除外）。",
+          "reading_scope": "Abstract、Introduction、Participant、Data Acquisition、Hydrodynamic Pressure、Hand Pressure Force、Results、Discussion、Limitation。",
+          "locator": "Methods（24 名男性選手、20 m 閉氣全力自由式、每手 6 個直徑 6 mm 壓力感測器、100 Hz、以大氣壓為零並扣除水深靜壓）；Results（手掌平均 1.17 ± 0.50 kPa、手背平均 2.83 ± 0.39 kPa（絕對值，手背為負壓），p < 0.001）。",
+          "summary": "在泳池裡把壓力感測器貼在選手手上，量全力自由式划水時手上真正受到的「游動造成的」水壓：手掌平均約 1 kPa、手背約 3 kPa 的負壓。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "量的是手掌與手背、不是手腕；是一個划手週期的平均值，峰值只在圖中，不引用；只有男性競技選手全力衝刺；換成 bar 是本卡推算（1 kPa = 0.01 bar）。 研究網：NET_TSUKUBA（筑波大學，單篇網）。 覆核：覆核重抓 SVY4 seq=6，HTTP 200，102497 位元組，雜湊 fbfc06f06c2ab381 與作者相同；Methods 與 Results 數值核對。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8886298/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-7908893323669f99",
       "url": "https://eagleman.com/papers/EagleSejScience2.pdf",
       "readings": [
@@ -84955,6 +86077,27 @@
       ]
     },
     {
+      "id": "SRC-795d2d528a710022",
+      "url": "https://www.jstage.jst.go.jp/article/jriet/49/6/49_326/_pdf/-char/en",
+      "readings": [
+        {
+          "canonical_url": "https://www.jstage.jst.go.jp/article/jriet/49/6/49_326/_article/-char/en",
+          "title": "トイレに流せるとする衛生製品の水解性評価について",
+          "publisher": "環境技術 49(6):326–335（2020）；日本大學生產工學部土木工學科、環境安全工學科",
+          "version": "J-STAGE 公開全文 PDF，10 頁（文章頁 SY7 seq=15 一併讀）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY7 seq=16，HTTP 200，12303501 位元組，sha256 前 16 碼 74ee193830b719b0），與前一筆請求間隔 1.2 秒以上；pdftotext 轉文字時內嵌字型的阿拉伯數字遺失，改以 pdftoppm 將第 1、8 頁轉圖逐格判讀表 3 與前言年份；其餘各頁以文字讀。 覆核：SVY7 seq=6 重抓，雜湊相同；覆核者自行以 pdftoppm 220 dpi 轉第 8 頁影像判讀表 3。",
+          "reading_scope": "要旨、1 はじめに、2 實驗條件與方法（PAS3 概念、PAS3 變法、JIS P 4501 操作、試驗裝置、樣品表 2）、3 結果（照片說明、表 3 全格）、4 考察與結語；表 3 以頁面影像判讀。",
+          "locator": "1（1993 年 JIS P 4501 規格化衛生紙的ほぐれやすさ；2018 年 6 月起「トイレに流せる製品の取扱いの手引き」委員會）；表 2（37 件：衛生紙 10、清潔布 7、擦拭巾 12、ティシュ 4、其他 4）；表 3（衛生紙 10 件兩規格皆合格；ティシュ 3 件皆合格、1 件皆不合格；擦拭巾 11/12 皆不合格；JIS 不合格的 13 件 PAS3 變法也全不合格）；4（消費者廳公表 JIS P 4501 適用於可沖標示，部分製品有猶豫期）",
+          "summary": "日本大學團隊買了 37 件衛生紙與標示可沖的衛生製品，同時用日本衛生紙規格和下水道業者的晃動水箱規格測：衛生紙 10 件全過；標示可沖的面紙 4 件裡 3 件兩邊都過、1 件兩邊都不過；擦拭巾 12 件裡 11 件兩邊都不過。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "數字以頁面影像判讀。覆核者判讀表 3：IWSFG PAS3 變法／JIS P 4501 兩者皆合格 19、PAS3 合格 JIS 不合格 0、PAS3 不合格 JIS 合格 3、兩者皆不合格 13、PAS3 不合格 JIS 無法試驗 2，合計 37；製品別：衛生紙 10 件全部兩者合格；トイレクリーナー 7 件中 4 件兩者合格、3 件 JIS 合格 PAS3 不合格；おしりふき 12 件中 1 件兩者合格、11 件兩者不合格；ティシュペーパー 4 件中 3 件兩者合格、1 件兩者不合格；其他 4 件為 1、1、2。表注：PAS3 變法的判準是 30 分鐘晃動後 25 mm 篩 100% 通過（與 S006 表 1 原版 PAS3 的 95% 不同）。與 SY7 判讀一致。表 2 的ティシュ是標示可沖的面紙，不代表一般盒裝面紙。表 2 有品牌與型號資訊，卡片不寫。研究網：NET_NIHON_U（作者群與 S006 重疊）。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.jstage.jst.go.jp/article/jriet/49/6/49_326/_pdf/-char/en"
+        }
+      ]
+    },
+    {
       "id": "SRC-795fbe555f188022",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11006549/",
       "readings": [
@@ -85017,6 +86160,27 @@
           "limitations": "1.5 是納入門檻，所以樣本全部 ≥ 1.5 是挑出來的，不能當成族群分布；結果段寫平均 logMAR 0.105 ± 0.324，與 20/13、20/10 應為負值不符，疑為正負號或格式誤植，卡片不引。研究網 NET_JCHO；只當旁證，加權 0.5。",
           "origin": "wave110-x110-20261118",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8629265/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-796f0507044a112c",
+      "url": "https://mohw.gov.tw/dl-78107-d363d71f-fd13-42e4-bfcc-5ad5f8ff003f.html",
+      "readings": [
+        {
+          "canonical_url": "https://mohw.gov.tw/dl-78107-d363d71f-fd13-42e4-bfcc-5ad5f8ff003f.html",
+          "title": "包裝食品營養標示應遵行事項部分規定修正規定",
+          "publisher": "衛生福利部（食品藥物管理署主政）；衛福部網站附件",
+          "version": "衛福部網站公告附件 PDF（4 頁）；附件本身未印公告日期",
+          "accessed_on": "2026-11-18",
+          "read_via": "https://mohw.gov.tw/dl-78107-d363d71f-fd13-42e4-bfcc-5ad5f8ff003f.html，fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY8 seq=4，HTTP 200，116597 位元組，sha256 前 16 碼 e8ba46465f2c0a5a），與前一筆請求間隔 1.2 秒以上；pdftotext 轉文字後逐點全讀。",
+          "reading_scope": "第一點、第二點（用詞定義）、第三點（標示格式與順序）、第六點（單位）、第八點（以「０」標示）、第九點（數據修整）、附表二全讀；本附件只收部分修正條文，第四、五、七、十點未收錄，未讀到。",
+          "locator": "第三點第一項第（二）（三）款；第三點第一項第（四）至（九）款；第六點第二項（每一份量單位與每 100 公克單位一致）；第九點第（一）（三）款；附表二註 2（「０」標示不適用第十點誤差允許範圍）",
+          "summary": "修正後的台灣規定要求營養標示用表格由上而下依序寫：標題、每一份量與本包裝含幾份、欄位標頭，再依序熱量、蛋白質、脂肪、飽和脂肪、反式脂肪、碳水化合物、糖、鈉與宣稱或自願標示的營養素。欄位標頭有兩種寫法：「每份」配「每 100 公克（或毫升）」，或「每份」配「每日參考值百分比」。份數可寫整數或到小數點後一位；無法固定重量的產品可把份數修成整數再加「約」字。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "本附件只有部分修正條文，未讀到第四點（熱量與營養素以哪種基準標示的原條文）、第五點（是否規定每一份量怎麼定）與第十點（一般包裝食品的誤差允許範圍）；附件未印公告與施行日期（搜尋摘要稱 113 年 7 月 1 日施行，本卡不採）。卡片只寫第三、六、九點與附表二實際寫的內容。 研究網：NET_TW_MOHW（台灣衛福部與食藥署，同一政府體系合為一網）。 覆核 SVY8 seq=1 重抓，雜湊 e8ba46465f2c0a5a 與作者 cache 相同。第六點第二項的單位一致規定原文寫「營養標示依第四點第一項第一款規定記載者」，第四點定稿本輪仍未讀到，卡上不得自行替第四點第一項第一款下定義。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://mohw.gov.tw/dl-78107-d363d71f-fd13-42e4-bfcc-5ad5f8ff003f.html"
         }
       ]
     },
@@ -88764,6 +89928,27 @@
       ]
     },
     {
+      "id": "SRC-7ebfe5903d72236e",
+      "url": "https://www.canada.ca/en/health-canada/news/2016/12/government-canada-finalizes-changes-nutrition-facts-table-list-ingredients-packaged-foods.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.canada.ca/en/health-canada/news/2016/12/government-canada-finalizes-changes-nutrition-facts-table-list-ingredients-packaged-foods.html",
+          "title": "Government of Canada finalizes changes to the Nutrition Facts table and list of ingredients on packaged foods",
+          "publisher": "加拿大衛生部新聞稿，2016 年 12 月 14 日",
+          "version": "canada.ca HTML",
+          "accessed_on": "2026-11-18",
+          "read_via": "https://www.canada.ca/en/health-canada/news/2016/12/government-canada-finalizes-changes-nutrition-facts-table-list-ingredients-packaged-foods.html，fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY8 seq=16，HTTP 200，27625 位元組，sha256 前 16 碼 d2d5a5872258b593），與前一筆請求間隔 1.2 秒以上；本機去標籤後全讀。",
+          "reading_scope": "全文。",
+          "locator": "第 3 段（修正包含份量規定，讓比較相似產品更容易）；業者有到 2021 年的調整期",
+          "summary": "加拿大衛生部宣布營養標示修法，其中一項是調整份量規定以便比較相似產品，業者有到 2021 年的調整期。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞稿只有方向，細節以政府公報條文為準；新聞稿點名的部長本卡不提。 研究網：NET_HC。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.canada.ca/en/health-canada/news/2016/12/government-canada-finalizes-changes-nutrition-facts-table-list-ingredients-packaged-foods.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-7ec98e180b6d3124",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13206629/fullTextXML",
       "readings": [
@@ -88995,6 +90180,27 @@
       ]
     },
     {
+      "id": "SRC-7f1e650cf91827d5",
+      "url": "https://www.fda.gov/consumers/consumer-updates/food-serving-sizes-get-reality-check",
+      "readings": [
+        {
+          "canonical_url": "https://www.fda.gov/consumers/consumer-updates/food-serving-sizes-get-reality-check",
+          "title": "Food Serving Sizes Have a Reality Check",
+          "publisher": "美國食品藥物管理局（FDA）消費者專文；Content current as of 03/30/2022",
+          "version": "FDA 官網 HTML",
+          "accessed_on": "2026-11-18",
+          "read_via": "https://www.fda.gov/consumers/consumer-updates/food-serving-sizes-get-reality-check，fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY8 seq=9，HTTP 200，40135 位元組，sha256 前 16 碼 f292ffd735497640），與前一筆請求間隔 1.2 秒以上；本機去標籤後全讀正文。",
+          "reading_scope": "全文（RACC 由來、資料年份、兩個參考量變動例、依包裝大小的三種情形）。",
+          "locator": "第 3–5 段（serving size 不是建議量；1993 年 RACC 依 1977–1978 與 1987–1988 調查；更新後依 2003–2008 NHANES）；Changes Based on Package Size 段（整包一份；2–3 倍參考量要雙欄，例：19 盎司湯罐、一包 3 盎司洋芋片；超過三份免雙欄）",
+          "summary": "美國的份量依「參考量」（RACC）來定，而參考量來自全國飲食調查的實際吃量，不是建議量；新規讓更多包裝必須標成一份，而介於參考量 2 到 3 倍的包裝要同時列每份與每包裝兩欄，FDA 舉的例子之一就是 一包 3 盎司洋芋片。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "消費者專文，法律條文以 21 CFR 為準；「多數人會一次吃完」是 FDA 的說明，不是本頁提供的數據。 研究網：NET_US_FDA（FDA 與聯邦法規彙編同屬美國聯邦政府，合為一網）。 覆核 SVY8 seq=5 重抓，雜湊 f292ffd735497640 相同；例子原文是「3-ounce bag of chips」，未點名任何品牌。頁末「做更健康的選擇」一句屬 FDA 的宣導語，卡上不用。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.fda.gov/consumers/consumer-updates/food-serving-sizes-get-reality-check"
+        }
+      ]
+    },
+    {
       "id": "SRC-7f295ea4f4c532a4",
       "url": "https://ask.ifas.ufl.edu/publication/HS1483/pdf",
       "readings": [
@@ -89096,6 +90302,27 @@
       ]
     },
     {
+      "id": "SRC-7f5814b4f94638e5",
+      "url": "https://gazette.gc.ca/rp-pr/p2/2016/2016-12-14/html/sor-dors305-eng.html",
+      "readings": [
+        {
+          "canonical_url": "https://gazette.gc.ca/rp-pr/p2/2016/2016-12-14/html/sor-dors305-eng.html",
+          "title": "Regulations Amending the Food and Drug Regulations (Nutrition Labelling, Other Labelling Provisions and Food Colours), SOR/2016-305，含法規影響分析說明",
+          "publisher": "加拿大政府公報第二部 Vol. 150, No. 25（2016 年 12 月 14 日）",
+          "version": "加拿大政府公報 HTML",
+          "accessed_on": "2026-11-18",
+          "read_via": "https://gazette.gc.ca/rp-pr/p2/2016/2016-12-14/html/sor-dors305-eng.html，fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY8 seq=17，HTTP 200，406049 位元組，sha256 前 16 碼 5e6cfa7da5415de5），與前一筆請求間隔 1.2 秒以上；本機去標籤後讀條文中 serving 相關條款與法規影響分析說明 Issues、Objectives、Serving size、Options、Regulatory cooperation、Benefits and costs 各段。",
+          "reading_scope": "條文 B.01.001 定義、B.01.002A、B.01.401(6.1) 與表格第 1 項；法規影響分析說明之 Issues、Objectives、Serving size、Regulatory and non-regulatory options、Regulatory cooperation、成本段第 1 點。",
+          "locator": "B.01.002A(1)（份量以販售型態計；一人一次可吃完或少於參考量 200% 的包裝以整包淨重為份量；其他依參考量表第 3A 欄）；RIAS「Serving size」段（修法前多份包裝的份量由製造商自行決定，一袋餅乾 10 片 30 g、另一袋 8 片 15 g；修法後取最接近參考量 20 g 的片數並寫實際克數；參考量更新反映現今食用量，例：優格 175 g）；Options 段（曾考慮維持自願制，判定需標準化）；成本段（改份量要重算營養數值，部分宣稱可能因此不再符合）",
+          "summary": "加拿大 2016 年修法前，多份包裝的份量由製造商自行決定，同類產品因此難比：一袋餅乾一份 10 片 30 g、另一袋一份 8 片 15 g。修法改成份量要對齊法定參考量（例：餅乾取最接近 20 g 的片數並寫克數）；少於參考量兩倍或一人一次可吃完的包裝，以整包為一份。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "法規影響分析說明是政府的立法理由，不是成效評估；參考量表另以引用方式收錄，本輪未讀表本身。 研究網：NET_HC（加拿大衛生部與政府公報同屬加拿大聯邦政府，合為一網）。 覆核 SVY8 seq=7 重抓，雜湊 5e6cfa7da5415de5 相同；RIAS Serving size 段（餅乾 30 g 對 15 g、最接近 20 g、優格 175 g）、Options 段、成本第 1 點、B.01.002A(1) 逐字核對無誤；另讀到 Consultation 段：單份包裝門檻由舊制參考量的 150% 提高到 200%，與美國的修訂一致。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://gazette.gc.ca/rp-pr/p2/2016/2016-12-14/html/sor-dors305-eng.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-7f5c439319d0d1d6",
       "url": "https://www.fbs.osaka-u.ac.jp/labs/skondo/paper/Nakamasu2009.pdf",
       "readings": [
@@ -89139,6 +90366,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-electricity-20261101",
           "original_url": "https://openstax.org/books/university-physics-volume-2/pages/5-7-electric-dipoles"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7f5e9ba1e3b2c83b",
+      "url": "https://www.govinfo.gov/content/pkg/FR-1999-06-09/html/99-14551.htm",
+      "readings": [
+        {
+          "canonical_url": "https://www.govinfo.gov/content/pkg/FR-1999-06-09/html/99-14551.htm",
+          "title": "Guides for the Watch Industry — Rescission（64 FR 30898–30902, June 9, 1999）",
+          "publisher": "美國聯邦貿易委員會（FTC），刊於聯邦公報，GPO govinfo 收錄",
+          "version": "聯邦公報 HTML 全文",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4 seq=6，HTTP 200，40900 位元組，sha256 前 16 碼 224eab7187224c2d；本機去除標籤後全文讀完（約 5,600 字）。",
+          "reading_scope": "SUMMARY、Background、comments 各節、A. ISO Standards Provide Guidance、B. Guides Are Not Needed、註 2、註 36、註 39。",
+          "locator": "SUMMARY（1999-06-09 生效、撤銷 16 CFR Part 245）；註 2（意見指防水等條款過時或與國際標準不一致）；A 節（ISO 規定防水等試驗方法；ISO 在美國不具強制力，但客觀宣稱須真實並有可靠證據；委員會將參考 ISO）；註 39（原指南告誡不要用 waterproof；日本、歐盟與瑞士等意見支持；瑞士意見：proof 暗示絕對保護，對錶並不存在，尤其長時間）。",
+          "summary": "美國主管機關 1999 年撤銷鐘錶業指南，理由是國際標準已足以指引；但「waterproof」這個字，各國業界意見普遍認為不該用在錶上。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "撤銷公告本身不定任何試驗條件；意見書中的公司名稱不轉述。原指南（16 CFR 245）的條文未讀（ecfr、federalregister 在封鎖名單）。 研究網：NET_USGOV（美國聯邦政府：FTC 與 NIST 同一網）。 覆核：覆核重抓 SVY4 seq=4，HTTP 200，40900 位元組，雜湊 bb6c1832637abdc0（作者 224eab7187224c2d）；逐位元比對差異只在 Cloudflare 每次重產的 email 混淆字串，正文相同；SUMMARY、A 節、註 39 逐句核對。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.govinfo.gov/content/pkg/FR-1999-06-09/html/99-14551.htm"
         }
       ]
     },
@@ -91064,6 +92312,27 @@
       ]
     },
     {
+      "id": "SRC-818f60ff5c678b02",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13514885/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/ma19163508",
+          "title": "Investigation into the Mechanical Properties of Swimming-Goggle Gaskets After Prolonged Water Conditioning",
+          "publisher": "Materials 19(16):3508（2026）；波蘭羅茲工業大學、拉多姆大學",
+          "version": "CC BY 4.0，Europe PMC 完整 JATS XML",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4 seq=17，HTTP 200，161608 位元組，sha256 前 16 碼 031263b20270d94b；本機解析 XML 逐節讀完。",
+          "reading_scope": "Abstract、1、2 Materials、3.2 Conditioning、3.3、4.3–4.5、5。",
+          "locator": "3.2（SEBS 泳鏡墊圈泡在含氯泳池水（0.8 mg/L）、蒸餾水、35‰ 鹽水，25 °C、窗邊日光、20／30／40 天；作者附註實際使用 1–1.5 年側緣開始碎裂）；Abstract（斷裂力 20 天約降 48%、40 天約 50%）；4.3（硬度：含氯水 30 天降 17.46%、40 天 18.30%；鹽水 40 天降 14.88%）。",
+          "summary": "把泳鏡的彈性體墊圈泡在三種水裡一個多月，斷裂力少了一半左右、硬度也下降。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "泳鏡墊圈不是錶殼墊圈，類比用；浸泡同時有日光照射，無法分開水與紫外線的作用；摘要寫硬度 20 天降 10–13% 之後幾乎不變，與 4.3 的 30–40 天約 17–18% 不完全一致，卡上只引 4.3；論文附有商品照片與品牌，不轉述。加權從嚴 0.75。 研究網：NET_LODZ（單篇網）。 覆核：覆核未重抓；作者 cache 檔雜湊與 access_log 相符，關鍵數字在 cache 原文找到。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13514885/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-818fb8e04678b4fc",
       "url": "https://www.nature.com/articles/s41467-018-06254-6.pdf",
       "readings": [
@@ -92172,6 +93441,27 @@
       ]
     },
     {
+      "id": "SRC-8362da2cb7f8204e",
+      "url": "https://enews.moenv.gov.tw/Page/894720A1EB490390/8581270f-b297-4a15-9c09-30bfb0fcb298",
+      "readings": [
+        {
+          "canonical_url": "https://enews.moenv.gov.tw/Page/894720A1EB490390/8581270f-b297-4a15-9c09-30bfb0fcb298",
+          "title": "環保署為甚麼要推動衛生紙丟馬桶政策？",
+          "publisher": "行政院環境保護署環管處即時新聞澄清（106-08-17；現收於環境部新聞專區）",
+          "version": "官方問答網頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY7 seq=3，HTTP 200，55790 位元組，sha256 前 16 碼 e8b4e9fa3c390a52），與前一筆請求間隔 1.2 秒以上；本機去標籤後讀總答與問答 1–10。",
+          "reading_scope": "總答、問 1 至問 14 全讀（覆核時確認共 14 問）。",
+          "locator": "總答（減少蚊蠅、細菌與傳染病傳播、異味）；問 1（短纖維，纖維長度約 0.4 公分以下）；問 2（面紙添加濕強劑與長纖維）；問 5（檢驗合格的衛生紙都可丟）；問 7、8（不需換管線，但不要故意投入大量）；問 9（化糞池效率不佳時可能要增加抽水肥次數）",
+          "summary": "2017 年 8 月 17 日，環保署以問答說明為什麼改推衛生紙丟馬桶：理由是減少蚊蠅、細菌與異味；衛生紙是短纖維、遇水分散，面紙則添加濕強劑和長纖維，丟馬桶容易塞。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "問答中的傳染病名稱是機關列舉的理由，本片不做任何健康或防疫說法，只轉述「機關提出的理由」。「纖維長度約 0.4 公分以下」與「糞便纖維數公分」是機關說法、未附出處。「國內所有品牌市售衛生紙遇水都會分散」是機關當時說法，卡片不轉述（涉品牌、無檢驗數據）。研究網：NET_TW_GOV。 覆核（SVY7 seq=3 重抓，正文相同）：問 3–6、11 涉及品牌、採買與包裝標示，問 7–9、12、14 涉及怎麼丟與化糞池維護，卡片都不轉述。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://enews.moenv.gov.tw/Page/894720A1EB490390/8581270f-b297-4a15-9c09-30bfb0fcb298"
+        }
+      ]
+    },
+    {
       "id": "SRC-83641d401b99327a",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8106610/fullTextXML",
       "readings": [
@@ -92898,6 +94188,27 @@
           },
           "origin": "wave43-life-20261103",
           "original_url": "https://doi.org/10.7554/eLife.109449"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8479c7ae28ece9a6",
+      "url": "https://www.it-recht-kanzlei.de/anforderungen-an-werbung-wasserdichtigkeit-armbanduhren.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.it-recht-kanzlei.de/anforderungen-an-werbung-wasserdichtigkeit-armbanduhren.html",
+          "title": "Anforderungen an die Werbung mit Wasserdichtigkeit bei Armbanduhren",
+          "publisher": "德國一家律師事務所的法律說明頁（2015-07-13 首刊，2026-01-13 更新）",
+          "version": "線上 HTML",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4B seq=5，HTTP 200，143743 位元組，sha256 前 16 碼 d39a98410f6b7d03；本機去除標籤後讀完正文；文中「Richtwerttabelle」是圖片，未取用。 覆核：SVY4B seq=5 重抓，HTTP 200，143884 位元組，雜湊 dfba4abae425b20b；差異只在 CSS／JS 版本參數與廣告橫幅，正文四節逐字相同。",
+          "reading_scope": "Grundlegendes、Technische Voraussetzungen: DIN 8310、Angabe der Druckresistenz in Metern unzulässig、Fazit 各節。",
+          "locator": "Technische Voraussetzungen 節（DIN 8310 的「防水」：新錶耐汗、水滴、雨，並通過 1 m 水柱約 0.1 bar 30 分鐘、再 20 m 水柱約 2 bar 90 秒；另標 bar 值）；Meterangabe 節（OLG Frankfurt 6 U 34/07；後續 AG Bochum 2011-06-24 75 C 45/11、LG Berlin 2015-01-08 52 O 247/14）。",
+          "summary": "律師事務所的說明：德國以 DIN 8310（國際上對應 ISO 22810）判定錶能否稱防水，試驗是靜態水壓；以公尺標示防水被德國法院認定誤導，並列出後續兩件判決。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "律師事務所的二手說明，凡引用都要標歸屬；DIN 8310 試驗條件與後續兩件判決都未讀原文。頁中的情境對照表是圖片且屬使用建議，不取用。研究網：NET_DE（與 S001 談同一判決，不另計）。 覆核：頁末「廣告不要再加公尺數」是寫給賣家的法律建議，頁中動態負荷一段是事務所自己的說法，都不上卡；署名律師為在世人物，卡上不寫。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.it-recht-kanzlei.de/anforderungen-an-werbung-wasserdichtigkeit-armbanduhren.html"
         }
       ]
     },
@@ -96237,6 +97548,27 @@
       ]
     },
     {
+      "id": "SRC-88899acb859cef2f",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC1637776/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1289/ehp.00108s171",
+          "title": "Sunscreens, skin photobiology, and skin cancer: the need for UVA protection and evaluation of efficacy",
+          "publisher": "Environmental Health Perspectives 108(Suppl 1):71–78（2000）；美國費城湯瑪斯傑佛遜大學皮膚科光生物學實驗室",
+          "version": "開放取用掃描版（Europe PMC JATS XML，含 OCR 正文）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0，間隔 1.2 秒）請求 seq=11，HTTP 200，158043 位元組，sha256 前 16 碼 b56949007d0b569c；本機解析 XML 後以關鍵詞定位讀相關節（OCR 文字有錯字）。",
+          "reading_scope": "摘要、引言、紫外線分段段落、UVA Effects in Skin 前段、SPF 與塗量段（含表 3 Long-wave index）、Sunscreen Substantivity 段開頭；其餘致癌與動物實驗段未讀。",
+          "locator": "紫外線分段段（UVA 320–400、UVB 290–320、UVC 200–290 nm；這些界線源自 20 世紀初常用光學濾片的穿透範圍，並非依生物效應而定；UVA 後來再細分）；塗量段（FDA 試驗規定 2 mg/cm²；成人約 2 m² 皮膚，全身一次約 40 g；作者引研究稱 SPF 隨用量下降近似平方——作者轉述）；摘要（主張把 SPF 改稱 sunburn protection factor）。",
+          "summary": "美國一所大學光生物學實驗室的回顧指出：UVA、UVB、UVC 的分界其實是二十世紀初光學濾片方便劃的，不是依生物效應；照 2 mg/cm² 算，成人全身塗一次大約要 40 公克。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "2000 年的回顧；OCR 版有一處把 UVA-II 寫成 320–400 nm（應為較短的一段），本卡只用三段總界線與『濾片』由來。『SPF 隨用量近似平方下降』是作者轉述他人研究，本卡不用。40 g 是作者自己的推算。健康效應段一律不轉述。研究網 NET_TJU。 覆核 SVY2：40 g 為作者以 2 mg/cm² × 約 2 m² 算出的數字，且原文接著寫成海灘上該塗多少的語氣，屬用量建議範圍；K112-0217 已刪，K112-0213 也刪去此句。本源只撐 K112-0201。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC1637776/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-88a50dd89c472126",
       "url": "https://kokkai.ndl.go.jp/api/speech?any=%E5%91%A8%E6%B3%A2%E6%95%B0%20%E7%B5%B1%E4%B8%80%20%E5%85%86%E5%86%86&maximumRecords=50&recordPacking=json&from=2011-03-01&until=2014-12-31",
       "readings": [
@@ -96805,6 +98137,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-everyday-engineering-20261101",
           "original_url": "https://bsesc.energy.gov/energy-basics/hvac-whole-house-ventilation-0"
+        }
+      ]
+    },
+    {
+      "id": "SRC-89631a5053d98960",
+      "url": "https://www.chinesestandard.net/PDF-EN/GBT30106-2013EN-P05P-H4160H-838568.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.chinesestandard.net/PDF-EN/GBT30106-2013EN-P05P-H4160H-838568.pdf",
+          "title": "GB/T 30106-2013 / ISO 22810:2010 Horology – Water-Resistant Watches（钟表 防水手表）英譯試閱",
+          "publisher": "中國國家標準（國家質檢總局、國家標準委發布）；英譯與試閱檔由一家標準轉售商製作",
+          "version": "試閱 PDF，原書 11 頁中提供第 1–4 頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4B seq=2，HTTP 200，239881 位元組，sha256 前 16 碼 b7066182afd53d0e；pdftotext 抽文字後讀完試閱的封面、目錄、前言、第 1 章、第 2 章（2.1–2.4 與註腳）。 覆核：SVY4B seq=4 重抓，HTTP 200，239881 位元組，雜湊 b7066182afd53d0e 與作者相同。",
+          "reading_scope": "封面、目錄、前言、1 Scope、2 Terms and Definitions。第 3 章以後與附錄 A 不在試閱內。",
+          "locator": "封面（IDT ISO 22810:2010；2013-12-17 發布、2014-11-01 實施）；第 1 章（潛水錶另依 ISO 6425）；2.3 Overpressure（以 bar 表示、與浸水深度成正比）與註腳（1 bar = 10^5 Pa，相當於 10 m 水深）；2.4 Immersion depth。",
+          "summary": "中國等同採用 ISO 22810:2010 的防水錶國家標準；範圍、名詞定義與單位約定。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有前四頁（第 1–2 章），要求、試驗方法、標示與附錄 A 都沒讀到；英譯由新加坡一家標準轉售商製作，非官方。試閱前言列出的起草單位含多家商用錶廠、起草人為在世人物，卡上一律不寫。屬 ISO 22810:2010 的等同採用（IDT），嚴算與 S003 同網。研究網：NET_ISO。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.chinesestandard.net/PDF-EN/GBT30106-2013EN-P05P-H4160H-838568.pdf"
         }
       ]
     },
@@ -98760,6 +100113,27 @@
       ]
     },
     {
+      "id": "SRC-8c2c3a31997d4d3b",
+      "url": "https://www.jamstec.go.jp/godac/j/godac/en/deepsea.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.jamstec.go.jp/godac/j/godac/en/deepsea.html",
+          "title": "What is the deep sea?",
+          "publisher": "日本海洋研究開發機構（JAMSTEC）全球海洋資料中心（GODAC）",
+          "version": "線上英文頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4 seq=21，HTTP 200，20864 位元組，sha256 前 16 碼 995a5a8cc1960eb0；本機去除標籤後全文讀完。",
+          "reading_scope": "What is the deep sea like?（Enormous Pressure、Extreme Cold、Eternal Dark）及其後各節。",
+          "locator": "Enormous Pressure 段（水深每 10 m 水壓約增 1 氣壓；6500 m 每平方公分 681 kg 力）。",
+          "summary": "日本海洋研究機構的科普頁：水深每增加 10 公尺，水壓大約多 1 個氣壓。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "科普頁的近似值，未區分海水與淡水。 研究網：NET_JPGOV（日本政府機構，單頁網）。 覆核：覆核未重抓；作者 cache 檔雜湊與 access_log 相符，關鍵數字在 cache 原文找到。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.jamstec.go.jp/godac/j/godac/en/deepsea.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-8c3dc015768cc4fb",
       "url": "https://longreads.cbs.nl/the-netherlands-in-numbers-2021/how-tall-are-dutch-people/",
       "readings": [
@@ -100078,6 +101452,26 @@
       ]
     },
     {
+      "id": "SRC-8dc235fb03a64923",
+      "url": "https://distantreader.org/stacks/trust/uc2/uc2_ark+=13960=t2s46jg1h.txt",
+      "readings": [
+        {
+          "title": "The Elements of Refrigeration: A Text Book for Students, Engineers and Warehousemen（初版第二刷修正）",
+          "publisher": "美國普林斯頓大學機械工程教授兼工學院院長所著之大學教科書，紐約一家技術書出版社發行（版權頁 OCR 為 1916／1919）；文字檔為 HathiTrust 加州大學館藏（uc2 ark:/13960/t2s46jg1h）之 OCR 全文轉存",
+          "version": "初版第二刷修正（1919 年前後，公有領域；OCR 純文字）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭、間隔 1.2 秒）SY1B seq=7，HTTP 200，637654 位元組，sha256 前 16 碼 ff95f3bdf01b6e2c；本機以 grep 定位後逐段讀 OCR 文字。網址來自搜尋結果。",
+          "reading_scope": "書名頁、版權頁、序；第三章〈THERMODYNAMICS OF REFRIGERATING APPARATUS〉開頭（p.40–42 冷凍單位）與 p.79 製冰用煤一段；p.104 吸收式製冰一段；第六章 p.206–207 冰庫造價與保險一段；冷藏章 p.223 奶油與蛋冷藏室用冰一段、p.241 市場冷藏用冰一段。",
+          "locator": "p.41–42：融冰而非結冰當單位的理由（結冰溫度與冰的溫度不確定、融化恆在 32 °F）；refrigeration is usually measured in tons of ice-melting capacity per twenty-four hours；融解熱 143.4 B.t.u.／磅（according to the latest experiments）→ 每 24 小時 286,800 B.t.u.、每分鐘 199.2 B.t.u.。p.79：製冰需 1¾ 到 2 倍噸數的冷凍單位。p.206–207：冰庫造價以每噸容量計（木造 2.00 美元、防火結構 2.50 美元）、冰的保險以每 100 噸計。p.223：ice at $2.50 per ton and salt at $7.00 per ton。p.241：553 tons of ice at $1.65 per ton。",
+          "summary": "一本 1910 年代的美國大學冷凍教科書說，冷凍量「通常」用每 24 小時能融化幾噸冰來量，而不是凍出幾噸冰，因為冰在融化時溫度固定、結冰時不固定；它用當時最新實驗的融解熱 143.4，算出一噸是每天 286,800、每分鐘 199.2 B.t.u.——和同時代別的書不是同一個數。書中的冷藏實例也都把冰當成論噸計價、論噸容量的商品。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "OCR 有誤植（例如 1¾ 印成「if」、7½ 印成「yj」），只引用可由上下文核實的數字。冰價是書中轉述的個案（明尼蘇達一處市場、肯塔基一處冷藏室），不代表全國行情，且未寫年份。書中轉述他人測試時提到的人名不寫入卡片。研究網 NET_PRINCETON_TEXT（單書網；作者與 1912 年教科書作者、英國手冊編者均無合著）。 覆核 SVY1B：重抓 seq=2 雜湊相同（ff95f3bdf01b6e2c）；書名頁為單一作者（大學教授兼工學院院長），書中未引用 1912 年教科書或 1909 年手冊；序言說參考了美國冷凍工程師學會會刊與一本冷凍業期刊，與 1912 年教科書作者的學會會員身分只是同一學界，不是合著或從屬，維持獨立網。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://distantreader.org/stacks/trust/uc2/uc2_ark+=13960=t2s46jg1h.txt"
+        }
+      ]
+    },
+    {
       "id": "SRC-8dc7517796df405e",
       "url": "https://www.csfieldguide.org.nz/en/chapters/coding-error-control/check-digits-on-barcodes/",
       "readings": [
@@ -100394,6 +101788,27 @@
       ]
     },
     {
+      "id": "SRC-8e11c4e1ffaba481",
+      "url": "https://www.iri.pref.shizuoka.jp/wp/wp-content/uploads/2022/06/Jirei_2017_24.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.iri.pref.shizuoka.jp/wp/wp-content/uploads/2022/06/Jirei_2017_24.pdf",
+          "title": "水に解けないトイレットペーパーの原因追及と対策（研究成果事例，平成 29～30 年度）",
+          "publisher": "静岡県工業技術研究所 富士工業技術支援センター",
+          "version": "縣公開研究成果事例一頁 PDF",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY7 seq=4，HTTP 200，103027 位元組，sha256 前 16 碼 8eb14fb96c9ad903），與前一筆請求間隔 1.2 秒以上；pdftotext 轉文字全讀；圖 1、圖 2 只讀圖說與軸名，柱高未判讀。",
+          "reading_scope": "背景・目的、成果兩點、圖 1–2 圖說、期待效果，一頁全讀。",
+          "locator": "背景（古紙品質下降、水に解けない再生紙相談増加、不良品）；成果第 1 點（硫酸鋁、AKD 與松香施膠劑、乾燥紙力增強劑使紙變難散，過乾燥更甚）；成果第 2 點（AKD 較易散，松香與紙力劑視條件變難散）；圖 1–2（縱軸ほぐれやすさ秒數，標有 JIS P 4501 上限線）",
+          "summary": "日本靜岡縣的工業研究所接到再生紙衛生紙「泡水不散」的技術諮詢，用模擬古紙試驗後發現：一般紙張用的施膠劑、乾燥紙力增強劑和過度乾燥，都會讓衛生紙變得難散。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是一頁的研究成果摘要，沒有方法細節與數值表，圖中柱高未判讀，從嚴記 0.5。覆核：成果第 1 點是把硫酸鋁、AKD 與松香施膠劑、乾燥紙力增強劑加進原生漿都變難散；第 2 點是做成再生紙後 AKD 較易散。卡片已改正。研究網：NET_JP_PUBLIC（與 S011 神奈川縣、S017 日本下水道協會同列日本公部門體系，從嚴併網）。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.iri.pref.shizuoka.jp/wp/wp-content/uploads/2022/06/Jirei_2017_24.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-8e14dd7203c4bdbe",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5687742/fullTextXML",
       "readings": [
@@ -100461,6 +101876,27 @@
           },
           "origin": "wave70-earth-20261111",
           "original_url": "https://oceanopticsbook.info/view/optical-constituents-of-the-ocean/water"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8e33e9c2833858ab",
+      "url": "https://www.cdc.gov.tw/Uploads/52a5464c-3329-4daa-be57-58db3b7ac839.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.cdc.gov.tw/Uploads/52a5464c-3329-4daa-be57-58db3b7ac839.pdf",
+          "title": "自評表附件 5：符合國家標準 CNS14774、CNS14755 之檢測報告範例、醫療器材第一等級與第二等級許可證範例",
+          "publisher": "衛生福利部疾病管制署（上傳檔）",
+          "version": "PDF 附件（版本日期未載；文中註明兩標準 2022/07 更新）",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭請求 https://www.cdc.gov.tw/Uploads/52a5464c-3329-4daa-be57-58db3b7ac839.pdf（SY3 seq=9，HTTP 200，1646086 位元組，sha256 前 16 碼 8ab4caae81214281），與前一筆請求間隔 1.2 秒以上；以 pdftotext 抽出文字層讀完；檢測報告範例本體是圖片，文字層只有各項標題，數值未讀。",
+          "reading_scope": "全部文字層：許可證範本標題、查詢系統說明、CNS14774 外科手術口罩報告五項標題、CNS14774 外科手術防塵面（口）罩 D2 等級四項標題、CNS14755 防塵口罩 D2 等級三項標題、兩標準 2022/07 更新註記。",
+          "locator": "第四節（CNS14774 外科手術口罩：合成血液穿透性、細菌過濾效率、防護效率、壓差、可燃性，共 5 項）；第五節（CNS14774 外科手術防塵面（口）罩 D2：合成血液穿透性、防護效率、壓差、防焰性，共 4 項）；第六節（CNS14755 防塵口罩 D2：防護效率、吸氣阻抗、呼氣阻抗，共 3 項）；末頁（CNS 14774:2022、CNS 14755:2022 於 2022/07 更新）。",
+          "summary": "疾管署附件列出台灣兩號標準的檢驗項目：外科手術口罩（CNS 14774）驗合成血液穿透、細菌過濾效率、防護效率、壓差與可燃性 5 項；防塵口罩 D2 等級（CNS 14755）只驗防護效率、吸氣阻抗與呼氣阻抗 3 項；兩標準都在 2022 年 7 月改版。",
+          "limitations": "只讀到項目名稱，報告中的數值與合格門檻在圖片裡未讀；「D2」等級的門檻未查證。研究網：NET_TW_GOV（與 S005 合計上限 2.0，兩卡各 0.75）。 覆核 SVY3：與 S005 同屬衛生福利部，併網確認。",
+          "accessed_on": "2026-11-18",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.cdc.gov.tw/Uploads/52a5464c-3329-4daa-be57-58db3b7ac839.pdf"
         }
       ]
     },
@@ -101610,6 +103046,27 @@
           },
           "origin": "wave54-tech-20261111",
           "original_url": "https://www.icann.org/en/system/files/press-materials/release-03feb11-en.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8f8e0cfb60c3fd90",
+      "url": "https://www.govinfo.gov/content/pkg/CFR-2022-title21-vol2/pdf/CFR-2022-title21-vol2-sec101-12.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.govinfo.gov/content/pkg/CFR-2022-title21-vol2/pdf/CFR-2022-title21-vol2-sec101-12.pdf",
+          "title": "21 CFR 101.12 Reference amounts customarily consumed per eating occasion（2022 年 4 月 1 日版）",
+          "publisher": "美國政府出版局 govinfo 年度版聯邦法規彙編",
+          "version": "govinfo 年度版 PDF",
+          "accessed_on": "2026-11-18",
+          "read_via": "https://www.govinfo.gov/content/pkg/CFR-2022-title21-vol2/pdf/CFR-2022-title21-vol2-sec101-12.pdf，fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY8 seq=10，HTTP 200，255579 位元組，sha256 前 16 碼 4d613efb31f364f2），與前一筆請求間隔 1.2 秒以上；pdftotext 轉文字後讀 (a) 全段、(b) 表 2 點心列、(f)(g)(h)。",
+          "reading_scope": "(a)(1)–(9) 一般原則全讀；表 2 中 Snacks 列；(f)、(g)、(h) 請願所需內容段落。",
+          "locator": "(a)(1)(3)(4)（參考量依全國飲食調查、以實際使用情形、考量每次食用量的平均數、中位數與眾數）；(a)(6)（只算可食部分）；表 2 Snacks「All varieties, chips…」30 g、散裝產品如洋芋片以 1 oz（28 g／目測單位）標示",
+          "summary": "美國法規寫明參考量依具代表性的全國飲食調查、在實際食用條件下的每次食用量，考量平均數、中位數與眾數；洋芋片等點心的參考量是 30 g，散裝產品如洋芋片標示成 1 oz（28 g）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "2022 年度版；eCFR 現行版本網域在封鎖名單，未比對 2022 之後是否修訂。 研究網：NET_US_FDA。 覆核 SVY8 seq=6 重抓，雜湊 4d613efb31f364f2 相同；(a)(3)(4) 與表 2 Snacks 列逐字核對無誤。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.govinfo.gov/content/pkg/CFR-2022-title21-vol2/pdf/CFR-2022-title21-vol2-sec101-12.pdf"
         }
       ]
     },
@@ -106136,6 +107593,27 @@
       ]
     },
     {
+      "id": "SRC-96412cd111c3c801",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13437588/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1007/s10853-026-13269-8",
+          "title": "Review: advancements in fibrous aerosol filtration across experimental analysis, numerical modeling, and fabrication techniques",
+          "publisher": "Journal of Materials Science（2026 年 7 月 27 日）；美國密蘇里科技大學採礦工程系、賓州州立大學能源與礦物工程系、中國礦業大學安全工程學院與職業健康研究所",
+          "version": "出版社開放取用版（CC BY 4.0；Europe PMC 完整 JATS XML，PMC13437588）",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭請求 https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13437588/fullTextXML（SY3 seq=4，HTTP 200，324110 位元組，sha256 前 16 碼 ce09c533ad5380f3），與前一筆請求間隔 1.2 秒以上；本機解析 JATS XML，去掉參考文獻後依節讀。",
+          "reading_scope": "摘要、Introduction、Aerosol filtration theories（單纖維效率、攔截、慣性衝擊、擴散各式與適用粒徑）、Electrostatic interactions 全節（含電荷穩定性與濕度）、Experimental validation（測試裝置與表格：呼吸防護測試聚焦 MPPS 約 0.3 µm）、Impact factors／Theoretical analysis（MPPS 段與圖 12、13 圖說）、Conclusion。數值模擬與纖維製程各節只略讀。",
+          "locator": "Aerosol filtration theories（「interception can remove the particles larger than 0.6 um」；「particle size exceeds 1.0 μm … inertial impaction」；很小的顆粒以布朗運動擴散被抓）；Theoretical analysis（MPPS 定義、<0.1 µm 擴散主導、200–300 nm 為 MPPS、效率先降後升；圖 12 圖說）；Electrostatic interactions（electret 纖維以庫侖力與介電泳力抓次微米顆粒，濕度、溫度與顆粒組成會加速電荷消散）；Experimental validation 表（Respirator testing: NIOSH 42 CFR Part 84、ISO 16900，~0.02–0.6 μm，focus on MPPS ~0.3 μm）。",
+          "summary": "綜論把纖維濾材抓顆粒的方式分成攔截、慣性衝擊、布朗擴散三種：大於約 1 µm 的顆粒衝不過氣流轉彎而撞上纖維，大於約 0.6 µm 的靠攔截，小於約 0.1 µm 的因布朗運動亂跑而碰上纖維；夾在中間、兩邊機制都弱的約 200–300 nm 就是「最具穿透性粒徑」（MPPS），效率曲線先降後升。帶電（electret）纖維額外用靜電力補強次微米區，但電荷會受濕度等影響而消散。",
+          "limitations": "綜論，數值多引自他文；各機制的「適用粒徑」是概略界線，依纖維粗細與風速而移動。MPPS 段描述的是機械過濾為主的情形；帶電濾材的 MPPS 可能更小（見 S004、S009），本卡不把 0.3 µm 寫成固定常數。canonical DOI 取自 XML 的 article-id，doi.org 未請求。研究網：NET_MST（單篇網；作者與其他來源無合著）。 覆核 SVY3：Europe PMC 作者查詢（SVY3 seq=7）顯示該團隊相關論文合著者限於同校成員，與本組其他來源作者無合著；致謝寫部分經費來自美國環保署補助，屬經費不屬單位從屬，不併入美國政府網。",
+          "accessed_on": "2026-11-18",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13437588/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-9649143506d08b04",
       "url": "https://www.fao.org/4/y0681e/y0681e02.htm",
       "readings": [
@@ -106801,6 +108279,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1080/23328940.2018.1468205"
+        }
+      ]
+    },
+    {
+      "id": "SRC-97384c1b8c31f901",
+      "url": "https://www.reclamecode.nl/uitspraak/?uitspraakId=238951",
+      "readings": [
+        {
+          "canonical_url": "https://www.reclamecode.nl/uitspraak/?uitspraakId=238951",
+          "title": "Uitspraak 2018/00883（荷蘭廣告自律機構 Reclame Code Commissie 對一則錶廣告「waterdicht tot 200 meter」的決定，2019-01-31）",
+          "publisher": "Stichting Reclame Code（荷蘭廣告業自律基金會）的決定資料庫；決定由該基金會的 Reclame Code Commissie 作成",
+          "version": "線上 HTML，該機構自己的決定資料庫全文（含被訴廣告、申訴、兩名被申訴人的答辯、委員會判斷與決定）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4C seq=2，HTTP 200，29930 位元組，sha256 前 16 碼 d40145429cadfe50；本機去除標籤後讀完全文（約 1 萬字元）。網址取自網路搜尋結果，不是代入編號。 覆核 SVY4C 以同一工具重抓（SVY4C seq=1，HTTP 200，29930 位元組，sha256 前 16 碼 d40145429cadfe50），與作者 cache 逐位元組相同。",
+          "reading_scope": "頁首欄位（案號、日期、產品類別、理由類別、決定種類、狀態）；De bestreden reclame-uitingen；De klacht；兩名被申訴人的 verweer；Het oordeel van de Commissie 全部；De beslissing。",
+          "locator": "頁首欄位（2018/00883、31-01-2019、Misleiding Voornaamste kenmerken product、Aanbeveling、Status: Compliant）；Het oordeel 第 1–2 段（申訴人有理由的爭執後，舉證落在廣告方；兩名被申訴人都未能使「防水至 200 公尺」可信）；第 5–7 段（工廠影片看不出是被訴型號、獨立試驗報告是同系列另一型號、說明書與保固書沒有佐證）；倒數第 2 段（NRC 第 8.2 條 b 款「使用產品可預期的結果」不實資訊、第 7 條誤導）；De beslissing（建議不再以此方式廣告）。",
+          "summary": "荷蘭廣告自律委員會 2019 年認定：一則錶廣告寫「防水至 200 公尺」，在消費者提出有理由的爭執後，應由廣告方讓這句話可信；業者交的影片看不出是被廣告的型號、試驗報告測的是廣告沒提到的另一型號、說明書與保固書也沒佐證，所以屬誤導，建議不再這樣廣告。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是業界自律機構的決定，不是法院判決，效力是「建議」（aanbeveling），頁首狀態標為 Compliant。委員會判的是廣告方能不能讓自己寫的深度「可信」（aannemelijk maken），不是錶在水中的實際表現；它沒有討論公尺寫法本身會不會讓人誤讀（與德國判決的論點不同），也沒有引用 DIN、ISO 或任何試驗標準。委員會把維修報告的「WD 0,5 bar」解讀成 5 公尺，依據的是申訴人附的一家零售網站對照表，屬該網站的換算，不上卡；報告另附的測漏儀列印寫「Vacuüm -0,5 Bar」，委員會的換算是否恰當，來源無從判定，不上卡也不評論。「同一產品系列」是零售平台的說法（原文寫「依該零售平台所稱」），不是委員會的認定。原文點名品牌、型號與零售平台，卡上一律稱「業者」「零售平台」；維修人員與業務人員對申訴人說的話（含使用勸告）不引；零售網站對照表的用途描述屬使用建議，不引。頁面沒有出現自然人姓名。研究網：NET_RCC_NL（荷蘭廣告自律）。與 NET_DE（德國法院轉載與事務所）、NET_FH（瑞士業界）、NET_ISO（印度、中國、日本的 ISO 採用版）、NET_USGOV、NET_JPGOV、NET_HIJ 及各論文團隊沒有從屬或引用關係；荷蘭守則第 7 條與德國 UWG 同樣對應歐盟不公平商業行為規範，這是法律框架上的共通，不是同一政府體系的單位，也不是引用關係，不併網。被申訴人提出的香港一家鐘錶技術中心報告未公開、未讀，不構成來源。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.reclamecode.nl/uitspraak/?uitspraakId=238951"
         }
       ]
     },
@@ -108210,6 +109709,27 @@
       ]
     },
     {
+      "id": "SRC-98f84c0f5a5b30d5",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6723462/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/polym11081251",
+          "title": "Analysis of O-Ring Seal Failure under Static Conditions and Determination of End-of-Lifetime Criterion",
+          "publisher": "Polymers 11(8):1251（2019）；德國聯邦材料研究與測試研究院（BAM）、瑞典皇家理工學院",
+          "version": "CC BY 4.0，Europe PMC 完整 JATS XML",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4 seq=12，HTTP 200，117762 位元組，sha256 前 16 碼 ddc760b32748ea1d；本機解析 XML 逐節讀完。",
+          "reading_scope": "Abstract、1、2 Materials and Methods、3.1–3.6、4 Conclusions。",
+          "locator": "2（內徑 190 mm、線徑 10 mm 的 EPDM 與 HNBR O 形環，壓縮 25%，125 °C 與 150 °C 老化最長 1.5 年）；3.3.1（HNBR 150 °C 184 天在 −30 °C 首次漏、回到 20 °C 又密合，屬可逆熱收縮）；3.3.2（EPDM 125 °C 至 545 天在 20 °C、60 °C 仍密合）；3.6（靜態下即使材料大幅劣化仍可密合；快速部分放鬆 0.1–0.2 mm、不到 1 秒的試驗中，150 °C 老化 80 天即漏，靜態試驗在 101 天仍密合）；4。",
+          "summary": "德國與瑞典的團隊把橡膠 O 形環壓著加熱老化，發現靜態量漏氣率幾乎看不出老化，等真的要放鬆一點點（0.1–0.2 mm、不到一秒）時，老化的環跟不上，才露出破綻。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "工業用粗 O 形環（核廢料桶），高溫加速老化，不是手錶墊圈；推到手錶屬類比，卡上要標明；部分數據只在圖中。 研究網：NET_BAM（BAM 與 KTH 合著，單篇網）。 覆核：覆核未重抓；作者 cache 檔雜湊與 access_log 相符，關鍵數字在 cache 原文找到。 覆核確認 BAM 與 KTH 是同一篇論文的合著，併為一網合理。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6723462/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-9901ac477de2b9ad",
       "url": "https://arxiv.org/pdf/2603.14520",
       "readings": [
@@ -109068,6 +110588,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.engadget.com/2011-02-08-nokia-ceo-stephen-elop-rallies-troops-in-brutally-honest-burnin.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9a2df8872da5b24b",
+      "url": "https://mohw.gov.tw/dl-62951-6593655d-51cd-4735-9b70-ff39cbb66bbf.html",
+      "readings": [
+        {
+          "canonical_url": "https://mohw.gov.tw/dl-62951-6593655d-51cd-4735-9b70-ff39cbb66bbf.html",
+          "title": "市售包裝嬰兒與較大嬰兒配方食品及特定疾病配方食品營養標示應遵行事項",
+          "publisher": "衛生福利部，104 年 8 月 14 日部授食字第 1041302169 號公告",
+          "version": "衛福部網站附件 PDF（全文含附表）",
+          "accessed_on": "2026-11-18",
+          "read_via": "https://mohw.gov.tw/dl-62951-6593655d-51cd-4735-9b70-ff39cbb66bbf.html，fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY8 seq=3，HTTP 200，240598 位元組，sha256 前 16 碼 c97a99092ba9bf47），與前一筆請求間隔 1.2 秒以上；pdftotext 轉文字後全讀八點與附表一、附表二。",
+          "reading_scope": "第一至八點全讀；附表一兩種格式、附表二（一）（二）誤差允許範圍全讀。",
+          "locator": "第二點（未規定者適用一般包裝食品應遵行事項）；第四點（二）；第五點（每一份量應考量一般每次食用量）；第八點（檢驗分析或計算）；附表二（二）（蛋白質、碳水化合物、熱量、脂肪為標示值 80%～120%；飽和脂肪、反式脂肪、膽固醇、鈉、糖 ≦ 120%）",
+          "summary": "特定疾病配方食品要用「每份」與「每 100 公克（或毫升）」兩欄並註明每包裝份數；它的每一份量要考量產品型態的一般每次食用量；標示值可用檢驗分析或計算得到，但要落在附表二的誤差範圍內。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只適用嬰兒配方與特定疾病配方食品，不是一般零食；一般包裝食品的對應條文本輪未讀到，不能把這裡的 80%～120% 與「一般每次食用量」直接套到洋芋片。 研究網：NET_TW_MOHW。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://mohw.gov.tw/dl-62951-6593655d-51cd-4735-9b70-ff39cbb66bbf.html"
         }
       ]
     },
@@ -119178,6 +120719,27 @@
       ]
     },
     {
+      "id": "SRC-a8745dda74591661",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2011-06-17/html/2011-14766.htm",
+      "readings": [
+        {
+          "canonical_url": "https://www.govinfo.gov/content/pkg/FR-2011-06-17/html/2011-14766.htm",
+          "title": "Labeling and Effectiveness Testing; Sunscreen Drug Products for Over-the-Counter Human Use; Final Rule (76 FR 35620, 2011-06-17)",
+          "publisher": "美國食品藥物管理局（FDA）；美國政府出版局 govinfo 收錄之聯邦公報",
+          "version": "聯邦公報官方 HTML 版",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0，間隔 1.2 秒）請求 seq=4，HTTP 200，345513 位元組，sha256 前 16 碼 59b7adf499bdc813；本機去除標記後以關鍵詞定位並讀相關節（約 31 萬字元全文，未逐字全讀）。",
+          "reading_scope": "SUMMARY、DATES、I. Overview（主要修改）、背景沿革（1978、1993、1999、2001 暫緩）、PDP 標示節（星等不採用、Broad Spectrum SPF、water resistant 40/80 分鐘、歐盟建議的描述）、Directions（generously／liberally 與 2 mg/cm²）、禁用宣稱（sunblock、waterproof、sweatproof）、SPF 試驗參數對照表（受試者數、MED 定義、塗量）、廣譜試驗參數表與 C. Critical Wavelength 節、規則本文 201.327(i)(5)(i) 與 (j) 末段。",
+          "locator": "I. Overview（受試者由 20 人減為 10 人；廣譜改為單一體外試驗；以臨界波長 370 nm 判定通過與否；星等不放在主展示面；通過者標 Broad Spectrum SPF）；DATES（2012-06-18 生效）；PDP 節（歐盟建議 UVA 防護至少為標示 SPF 的三分之一或臨界波長 ≥370 nm，以圓圈內的 UVA 字樣標示，直徑不超過 SPF 數字高度）；Directions 節（不改寫成具體用量，續用 generously／liberally）；201.327(g) 禁用 sunblock 等詞；201.327(i)(5)(i)（MED：照後 16–24 小時可見、邊界清楚的發紅之最小劑量）；試驗表（塗量 2 mg/cm²；體外試驗 PMMA 板、0.75 mg/cm²、290–400 nm）；201.327(j) 末（平均臨界波長 ≥370 nm 即歸為廣譜）。",
+          "summary": "美國 FDA 2011 年的定案規則：SPF 用 10 名以上受試者、每平方公分 2 毫克、照後 16–24 小時看發紅來量；UVA 不另給等級，而是用一個體外的及格／不及格試驗（吸收曲線涵蓋到 370 nm 以上），及格才能把「Broad Spectrum」和 SPF 寫在一起；當時徵詢過的四星等方案沒有採用。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "2011 年定案規則；2019 年後美國 OTC 專論制度改革與後續提案未讀（www.ecfr.gov、www.federalregister.gov 在封鎖名單），現行條文是否改動未核。長文以關鍵詞定位閱讀，非逐字全讀。文中對歐盟建議的描述是 FDA 的轉述。研究網 NET_US。 覆核 SVY2：seq=4 重抓，位元組與雜湊相同；逐句核對 20→10 人、10 人抽樣比對、MED 定義、2 mg/cm²、0.75 mg/cm² 與 PMMA、90% 面積定義、平均臨界波長 ≥370 nm、星等不要求放 PDP、歐盟三分之一與圓圈標誌描述、sunblock 等三詞為 false and misleading，均與原文相符。K112-0212 以本文對歐盟建議的轉述為旁證，NET_US 已滿 2.0，不另計。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.govinfo.gov/content/pkg/FR-2011-06-17/html/2011-14766.htm"
+        }
+      ]
+    },
+    {
       "id": "SRC-a878f138a53e7e94",
       "url": "https://wsdot.wa.gov/TNBhistory/bridges-failure.htm",
       "readings": [
@@ -122506,6 +124068,27 @@
       ]
     },
     {
+      "id": "SRC-ab9ddd54a72adda8",
+      "url": "https://tsdr.uspto.gov/statusview/sn75799630",
+      "readings": [
+        {
+          "canonical_url": "https://tsdr.uspto.gov/statusview/sn75799630",
+          "title": "TSDR Case Status: WI FI（US Serial 75799630，圖形標章）",
+          "publisher": "美國專利商標局 TSDR",
+          "version": "TSDR statusview 即時產生頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒以上）請求 SY5 seq=8，HTTP 200，21786 位元組，sha256 前 16 碼 cb8c3d6731fd1a48；本機抽正文讀至 Basis Information。",
+          "reading_scope": "Status、Mark Information（含 Design Search Code）、Certification Statement、Goods and Services、First Use。",
+          "locator": "Mark Type: Certification Mark；申請日 1999-09-15；註冊號 2523241、註冊日 2001-12-25；Mark Drawing Type 3（含文字的圖形）；設計分類 26.11.10、26.11.21；證明聲明同 75799629；首次使用 1999-08。",
+          "summary": "同一天申請的另一件是帶圖形的 WI FI 標誌，同樣登記為證明標章，2001 年 12 月 25 日註冊。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只作為 S007 的佐證（文字與圖形兩件同日申請、同為證明標章）。研究網 NET_USPTO。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://tsdr.uspto.gov/statusview/sn75799630"
+        }
+      ]
+    },
+    {
       "id": "SRC-aba2135558015da4",
       "url": "https://law.go.kr/lsLawLinkInfo.do?lsJoLnkSeq=1000608588",
       "readings": [
@@ -122761,6 +124344,27 @@
           },
           "origin": "wave78-physics-20261113",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7014515/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-abf3334c35d0a688",
+      "url": "https://wifinetnews.com/archives/006029.html",
+      "readings": [
+        {
+          "canonical_url": "https://wifinetnews.com/archives/006029.html",
+          "title": "Wi-Fi Stands for...Nothing (and Everything)",
+          "publisher": "Wi-Fi Networking News（美國一位科技記者經營的獨立產業新聞網站）；頁面未標發文日期（側欄為 2010 年 11 月存檔月曆），依其引用的 Boing Boing 貼文推定約 2005 年 11 月（推定）",
+          "version": "網站存檔 HTML 頁（archives/006029）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒以上）請求 SY5 seq=16，HTTP 200，31662 位元組，sha256 前 16 碼 4c8d0b7652a9c994；本機抽正文全讀。；覆核 SVY5 seq=4 重抓：HTTP 200，31662 位元組（雜湊 949d38c298ef7851，與作者不同但抽出正文逐行相同），轉載信全文逐句對過。",
+          "reading_scope": "全文：記者前言與經同意轉載的一封信。記者前言稱寫信者是『an early chairman』、名字在 802.11b 規格上；聯盟官網（SY5-S005）稱他為 WECA 首任主席，2000 年 WECA 新聞稿（SY5-S003）以主席身分引述他。寫信者在世，不點名。",
+          "locator": "轉載信第 1 段（Wi-Fi 不代表任何東西、不是縮寫）；第 2 段（名字與陰陽式標誌由一家品牌顧問公司創作；創始成員聘請它替互通印章與行銷取一個比『IEEE 802.11b Direct Sequence』好記的名字）；第 3 段（『Wireless Fidelity』只因部分同僚不放心沒有字面解釋，妥協加上口號『The Standard for Wireless Fidelity』；約 2000 年前後的第一年左右出現在所有文宣；後來大公司的行銷與業務人員進入董事會後，聯盟拿掉口號）；第 4 段（口號是名字選定後才發明的；名字從該公司提的 10 個候選中選出；口號由最初六家公司的董事會發明；聯盟不訂標準，標準是 IEEE 802.11）；末段（Wi-Fi 沒有意思、不是縮寫，正確拼法帶連字號）。",
+          "summary": "WECA 首任主席寫給記者、經同意轉載的信說：名字是請品牌顧問公司取的，從 10 個候選中選出 Wi-Fi；『The Standard for Wireless Fidelity』這句口號是選定名字之後，最初六家公司的董事會怕名字沒有字面意思才加上的，用了一年左右就拿掉。他強調 Wi-Fi 不是縮寫，聯盟也不訂標準，標準是 IEEE 802.11。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是當事人事後的個人說法，經科技記者網站轉載，不是聯盟官方文件；命名經過與口號存廢時間只有這一個來源，卡片一律寫成『首任主席的說法』。原始轉載處之一 boingboing.net 回 403，未讀。（覆核改）寫信者是聯盟前身的創會成員與首任主席，屬聯盟內部人的陳述，從嚴併入 NET_WFA（原列獨立網 NET_WNN）。品牌顧問公司名稱不轉述。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://wifinetnews.com/archives/006029.html"
         }
       ]
     },
@@ -124827,6 +126431,27 @@
           "limitations": "受控實驗室與野外原位觀測數據，無利益衝突。",
           "origin": "wave94-physics-20261116",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12519455/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-af0d70437a592d83",
+      "url": "https://www.foodstandards.gov.au/consumer/labelling/panels",
+      "readings": [
+        {
+          "canonical_url": "https://www.foodstandards.gov.au/consumer/labelling/panels",
+          "title": "Nutrition information panels",
+          "publisher": "澳洲紐西蘭食品標準局（FSANZ）消費者頁；Page last updated 20 October 2025",
+          "version": "FSANZ 官網 HTML",
+          "accessed_on": "2026-11-18",
+          "read_via": "https://www.foodstandards.gov.au/consumer/labelling/panels，fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY8 seq=15，HTTP 200，189248 位元組，sha256 前 16 碼 f06ff1da68296279），與前一筆請求間隔 1.2 秒以上；本機去標籤後全讀正文。",
+          "reading_scope": "全文（NIP 必列項目、格式、免標示食品、每項說明）。",
+          "locator": "首段（NIP 必須以標準格式同時列每份與每 100 g〔液體 100 mL〕平均含量）；Serving size 段（份量由食品業者決定，產品間可能不同）；Quantity per 100g 段（用來比較相似產品，數字等同百分比）",
+          "summary": "澳紐規定營養資訊表必須同時列「每份」與「每 100 公克（毫升）」兩欄；份量由食品業者自己決定、各產品可能不同；每 100 公克那欄是給人比較相似產品用的，數字就等於百分比。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "消費者說明頁，法律條文在食品標準法典 1.2.8 與附表 12，本輪未讀。 研究網：NET_FSANZ（澳洲紐西蘭食品標準局）。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.foodstandards.gov.au/consumer/labelling/panels"
         }
       ]
     },
@@ -127686,6 +129311,27 @@
       ]
     },
     {
+      "id": "SRC-b381d224a7047230",
+      "url": "https://archive.cdc.gov/www_cdc_gov/niosh/npptl/topics/respirators/pt84abs2.html",
+      "readings": [
+        {
+          "canonical_url": "https://archive.cdc.gov/www_cdc_gov/niosh/npptl/topics/respirators/pt84abs2.html",
+          "title": "42 CFR Part 84 Respiratory Protective Devices（1995 年最終規則摘要）",
+          "publisher": "美國疾病管制與預防中心國家職業安全衛生研究所（NIOSH）國家個人防護技術實驗室（NPPTL）；CDC 網站封存版",
+          "version": "NIOSH 公開說明頁封存版（頁尾 Last Reviewed: March 4, 1997）",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭請求 https://archive.cdc.gov/www_cdc_gov/niosh/npptl/topics/respirators/pt84abs2.html（SY3 seq=1，HTTP 200，86634 位元組，sha256 前 16 碼 59dd64610488623d），與前一筆請求間隔 1.2 秒以上；本機去標籤後全文讀完。eCFR 與 Federal Register 在共用封鎖名單，條文本身未讀，本頁是 NIOSH 對 1995 年 6 月 8 日刊登之最終規則的官方摘要。",
+          "reading_scope": "Summary 全段、九級濾材表（Filter Designation／Minimum Efficiency／Test Agent／Maximum Test Challenge Loading）、N／R／P 使用限制段、最終規則與提案差異對照表（8 項）、Effective Date。",
+          "locator": "Summary 第 1、5 段（以 42 CFR 84 取代 30 CFR 11；NIOSH 取得認證主責）；「Under the new particulate filter tests」段（三類 N／R／P、三級 95%／99%／99.97%、all filter tests employ the most penetrating aerosol size, 0.3 µm aerodynamic mass median diameter、N 用 NaCl、R／P 用 DOP）；九級表（N、R 系列 200 mg filter loading；P 系列 maximum filter degradation）；限制段（N 系列限無油環境；P 系列測到效率不再下降）；差異表（20 片濾材全數通過的通過／不通過制；吸氣阻力上限 35 mm、呼氣 25 mm）；Effective Date（1995-07-10）。",
+          "summary": "NIOSH 說明 1995 年最終規則：以 42 CFR 84 取代舊的 30 CFR 11，濾材分 N、R、P 三類，各有 95%、99%、99.97% 三級，共九級；所有濾材試驗都用「最具穿透性」的氣膠尺寸，寫作 0.3 µm 氣動質量中位徑；N 系列用輕度劣化的氯化鈉氣膠，R、P 系列用強劣化性的鄰苯二甲酸二辛酯（DOP）油霧；N、R 系列測到 200 mg 負載，P 系列測到效率不再下降為止；認證改為每型 20 片濾材全數通過。",
+          "limitations": "這是 NIOSH 的摘要頁，不是條文；1997 年後未再審閱，現行條文是否有修正未查（eCFR、Federal Register 被封鎖）。「0.3 µm」明寫是質量中位徑，不是粒數中位徑，也不代表每顆測試顆粒都是 0.3 µm。研究網：NET_US_GOV（與 SY3-S002 同屬美國聯邦政府體系，合計上限 2.0）。 覆核 SVY3：seq=1 重抓，雜湊 59dd64610488623d 相符；頁面原句是「0.3 µm aerodynamic mass median diameter」，未寫粒數中位徑，粒數中位 0.075 µm 改由 SVY3-S012 支撐。頁中聯絡人姓名不轉述。",
+          "accessed_on": "2026-11-18",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://archive.cdc.gov/www_cdc_gov/niosh/npptl/topics/respirators/pt84abs2.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-b391c7c930f0e772",
       "url": "https://doi.org/10.1523/JNEUROSCI.1121-25.2026",
       "readings": [
@@ -128510,6 +130156,27 @@
       ]
     },
     {
+      "id": "SRC-b48d6041d13612a3",
+      "url": "https://www.ieee802.org/11/Reports/802.11_Timelines.htm",
+      "readings": [
+        {
+          "canonical_url": "https://www.ieee802.org/11/Reports/802.11_Timelines.htm",
+          "title": "Official IEEE 802.11 Working Group Project Timelines（2026-10-27 版）",
+          "publisher": "IEEE 802.11 工作小組官方網站（ieee802.org）",
+          "version": "工作小組現行時程表 HTML（UTF-16 編碼，本機轉碼）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒以上）請求 SY5 seq=6，HTTP 200，195736 位元組，sha256 前 16 碼 3ed775714e0f3406；本機以 UTF-16 轉碼後抽出全部表格列，逐列讀取欄位。；覆核 SVY5 seq=3 重抓：HTTP 200，195736 位元組，雜湊 3ed775714e0f3406 與作者完全相同；802.11ax、802.11be、802.11-1997、802.11b-1999、802.11n-2009、802.11ac-2013 各列逐欄對過。",
+          "reading_scope": "IN PROCESS、PUBLISHED、SUPERSEDED OR WITHDRAWN 三張表的欄位標題，以及 802.11-1997、802.11a-1999、802.11b-1999、802.11g-2003、802.11n-2009、802.11ac-2013、802.11ax-2021、802.11be-2024 各列；表末 Timeline Chart Notes。",
+          "locator": "802.11-1997 列（PAR 1991-03-21；1997-06-26）；802.11b-1999 列（Higher Speed PHY Extension in the 2.4 GHz Band；PAR 1997-12-09；1999-09-16）；802.11a-1999 列（5 GHz；1999-09-16）；802.11n-2009 列（High Throughput；PAR 2003-09-11；2009-09-11）；802.11ac-2013 列（Very High Throughput < 6 GHz；PAR 2008-09-26）；802.11ax-2021 列（High Efficiency WLAN；PAR 2014-03-27；WG 信件投票 D1.0 2017-01-08、D2.0 2017-11-04、D3.0 2018-07-01 87%、D4.0 2019-02-25、D5.0 2019-10-24、D6.0 2019-12-11；SA 投票 D6.0 2020-01-24、D7.0 2020-09-17、D8.0 2020-11-27 95%）；802.11be-2024 列（Extremely High Throughput；PAR 2019-03-21；WG 投票 D2.0–D5.0 2022-07-04 至 2023-12-16；SA 投票 D5.0 2024-02-02 82%、D6.0 2024-05-31 93%、D7.0 2024-08-10 97%）。",
+          "summary": "IEEE 802.11 工作小組自己的時程表：最早的 802.11 從 1991 年立案到 1997 年 6 月核准；802.11b 1997 年底立案、1999 年 9 月核准。802.11ax 在 2018 年 7 月才跑到第 3 版草案的工作小組投票，之後還有到第 8 版草案、2020 年 11 月的投票；802.11be 的標準協會投票從 2024 年 2 月跑到 8 月。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "表格欄位多、部分最後幾欄的意義（核准、ANSI、出版或被取代日期）隨表而異，本題只引用草案版本與投票日期、PAR 立案日，以及 802.11-1997 與 802.11b 兩列在欄位上明確的核准日；不寫 802.11ax、802.11be 的最終核准日。研究網 NET_IEEE802。（覆核補）WG Letter Ballots 與 IEEE SA Ballots 欄只寫『Draft／Date／Result』，沒說日期是投票開始或截止日；表上只列送投票的草案版本，中間修訂版不列。802.11be 列：WG 信件投票 D2.0–D5.0 在 2022-07-04 至 2023-12-16（64%、80%、90%、95%），Form SA Ballot Pool 欄 2023-10-01，SA 投票 D5.0–D7.0 在 2024-02-02 至 2024-08-10。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ieee802.org/11/Reports/802.11_Timelines.htm"
+        }
+      ]
+    },
+    {
       "id": "SRC-b495c2b95b7c7f88",
       "url": "https://www.pref.saitama.lg.jp/a0310/escalator.html",
       "readings": [
@@ -128634,6 +130301,27 @@
           },
           "origin": "wave86-tech-20261115",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12251595/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b4c5339f2e426213",
+      "url": "https://www.env.go.jp/chemi/uv/uv_pdf/03.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.env.go.jp/chemi/uv/uv_pdf/03.pdf",
+          "title": "紫外線環境保健マニュアル 第3章 紫外線による影響を防ぐためには",
+          "publisher": "日本環境省（環境保健マニュアル章節 PDF；本章未印版次年份）",
+          "version": "官方 PDF（pdftotext -layout 轉文字）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0，間隔 1.2 秒）請求 seq=2，HTTP 200，927105 位元組，sha256 前 16 碼 cd86ad364d0707e3；pdftotext 轉為文字後全章讀完。",
+          "reading_scope": "第 3 章全文 p.33–37：對策清單、表 3-2、b. 日焼け止めの効果表示（SPF、PA）、圖 3-1 SPF 測定法模式圖、c. 使用方法 ①–⑤ 與圖 3-3。",
+          "locator": "b 節與圖 3-1（背部無塗布部照 5、6 段紫外線，翌日最弱的微紅＝MED；例：無塗布 1.25、塗布 14.1，14.1÷1.25＝11.3；10 名以上平均；塗布量 2 mg/cm²；16–24 小時後判定）；b 節末段（PA：除去 UV-B 的 UV-A 光源，照後 2–4 小時的皮膚黑化為指標，算 PFA，分 PA+、PA++、PA+++ 三段）。",
+          "summary": "日本環境省把 SPF 的量法畫成示意圖：同一人背上塗與不塗各照一排逐級加強的紫外線，隔天看哪一格剛好微紅，兩者光量相除就是 SPF；PA 則改用去掉 UVB 的 UVA 燈，看照後 2–4 小時的變黑程度，算比值後分級。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "章節未印版次年份；PA 只寫到三段（PA+++），可見是 2013 年 PA++++ 之前的版本，分級門檻以 SY2-S003 為準。本章 c 節的塗法與選購建議一律不轉述。此章描述的就是日本化粧品工業連合會的測定法，依第 112 輪從嚴規則與 SY2-S003 併為同一研究網 NET_JP。 覆核 SVY2：同章圖 3-2 註明「出典：日本化粧品工業連合会」，可確認環境省本章轉述的就是該會測定法；與 S003 併為 NET_JP 合理（政府手冊轉述業界自主基準，不是獨立量測）。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.env.go.jp/chemi/uv/uv_pdf/03.pdf"
         }
       ]
     },
@@ -129771,6 +131459,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave17-earth-patterns-20261102",
           "original_url": "https://math.nyu.edu/~jinzi/research/UprightCandy/paper-CandyShock.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b679324bf2a945c0",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10252473/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/ijms24119268",
+          "title": "Polymeric Wet-Strength Agents in the Paper Industry: An Overview of Mechanisms and Current Challenges",
+          "publisher": "International Journal of Molecular Sciences 24(11):9268（2023）；義大利羅馬一所大學化學系與一家義大利企業研究部門",
+          "version": "出版社開放取用版（CC BY；Europe PMC 完整 JATS XML）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY7 seq=13，HTTP 200，188125 位元組，sha256 前 16 碼 9e3b330135cc7241），與前一筆請求間隔 1.2 秒以上；本機解析 JATS XML 後讀摘要、第 1–4 節與第 7–8 節。DOI 取自 XML，doi.org 與 mdpi.com 未請求。",
+          "reading_scope": "Abstract、1 Introduction、2 Types、3 Mechanisms、4.1 PAE、4.3 PAM/GPAM、4.5 PVAm、7 Challenges、8 Conclusions；其餘小節略讀。",
+          "locator": "1（濕強劑在成紙前加入漿料，形成交聯網路，應用含 tissues）；3（補強機制：共價鍵不被水破壞；保護機制：自交聯網包住纖維接點）；4.3（PAE 浸泡 30 分鐘強度衰減只有 10–15%，GPAM 浸泡 2 分鐘衰減 40–60%，引自一篇產業雜誌文章）；4.5（闊葉漿手抄紙濕／乾強度比由約 5% 提高到約 30%，引自文獻 [30]）",
+          "summary": "義大利的綜述說明濕強劑怎麼作用：在漿料成紙前加入，與纖維形成水破壞不了的共價鍵或包住纖維接點；有些是長效型，泡半小時強度只掉一成多，有些是暫時型，泡兩分鐘就掉一半左右。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "綜述，數字多引自他人：10–15% 與 40–60% 引自一篇產業雜誌文章（非同儕審查），5%→30% 引自另一篇論文，卡片須標「綜述轉引」。綜述沒有專講面紙，只說濕強劑用於 tissues、紙巾等；「面紙加濕強劑」的台灣說法來自 SY7-S003。共同作者之一任職企業，卡片不寫企業名。研究網：NET_ROMA_REVIEW。 覆核：40–60% 與 10–15% 的出處 [25] 是一份產業雜誌的網頁文章，卡片 K112-0706 從嚴改記 0.5。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10252473/fullTextXML"
         }
       ]
     },
@@ -134832,6 +136541,27 @@
       ]
     },
     {
+      "id": "SRC-bd6236731b66fe22",
+      "url": "https://tsdr.uspto.gov/statusview/sn75799629",
+      "readings": [
+        {
+          "canonical_url": "https://tsdr.uspto.gov/statusview/sn75799629",
+          "title": "TSDR Case Status: WI-FI（US Serial 75799629）",
+          "publisher": "美國專利商標局（USPTO）商標狀態與文件檢索系統 TSDR",
+          "version": "TSDR statusview 即時產生頁（2026-11-18 08:48 EST 產生）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒以上）請求 SY5 seq=7，HTTP 200，21418 位元組，sha256 前 16 碼 24d89d91e32c56a4；本機抽正文全讀。；覆核 SVY5 seq=2 重抓：HTTP 200，21418 位元組（雜湊 879b462a80cd3eae，與作者不同只因頁首產生時間），Mark Type、申請日、註冊號與日、證明聲明、商品、首次使用、Filed ITU、兩次續展、Registrant 逐欄對過。",
+          "reading_scope": "Status、Mark Information、Certification Statement、Goods and Services、Basis Information、Current Owner、Prosecution History 全部列、Assignment 摘要（代理人姓名與聯絡資料不轉述）。",
+          "locator": "Mark Type: Certification Mark；申請日 1999-09-15（Filed ITU: Yes）；註冊號 2525795、註冊日 2002-01-01；首次使用 1999-08；證明聲明（certify that goods manufactured by authorized persons comply with interoperability standards）；商品（無線區域網路產品）；現所有人 Wi-Fi Alliance；Prosecution History（2001-08-13 使用聲明；2007 第 8／15 條；2012-02-21 第一次續展；2022-04-23 第二次續展）；Assignment（Registrant: Wireless Ethernet Compatibility Alliance, Inc.）。",
+          "summary": "美國商標局的紀錄：WI-FI 這幾個字在 1999 年 9 月 15 日以『預定使用』提出申請，類型是證明標章，不是一般商標；證明內容是『獲授權者製造的商品符合互通標準』；2002 年 1 月 1 日註冊、登記人是 WECA，現所有人 Wi-Fi Alliance，2012 年與 2022 年兩度續展。紀錄上的首次使用是 1999 年 8 月。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "TSDR 是政府登記紀錄，只證明登記事實，不說明命名經過；首次使用日期為申請人申報。研究網 NET_USPTO。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://tsdr.uspto.gov/statusview/sn75799629"
+        }
+      ]
+    },
+    {
       "id": "SRC-bd64452bbbb32bc6",
       "url": "https://www.hp.com/us-en/tech-takes/printing/comparison/print-basics-rgb-vs-cmyk.html",
       "readings": [
@@ -135221,6 +136951,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-everyday-engineering-20261101",
           "original_url": "https://nchfp.uga.edu/how/can/general-information/ensuring-high-quality-canned-foods/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bde9015e4a5b088b",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10647683/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/ma16217013",
+          "title": "Synergistic Effects of Multiple Environmental Factors on Degradation of Silicone Rubber Seals under Marine Atmosphere",
+          "publisher": "Materials 16(21):7013（2023）；北京航空航天大學可靠性與系統工程學院等",
+          "version": "CC BY 4.0，Europe PMC 完整 JATS XML",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4 seq=20，HTTP 200，120493 位元組，sha256 前 16 碼 e2bb6d41f3ed9b59；本機解析 XML 逐節讀完。",
+          "reading_scope": "Abstract、2.1–2.4、3.1–3.6、4、5。",
+          "locator": "2.3（矽膠 O 形環壓縮固定，110–150 °C，2–54 天取樣）；Abstract（壓縮量對應實際使用的 28%）；3.2（溫度越高壓縮永久變形越大；前兩天快速上升、之後近線性增加；機制為氧化交聯）；5。",
+          "summary": "壓著的矽膠密封圈在加熱老化時，「被壓扁回不去」的比例隨時間與溫度增加。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "加速老化溫度 110–150 °C 遠高於手腕；模擬介質含油；數值只在圖中，卡上不寫數值；類比用，加權 0.5。 研究網：NET_BUAA（單篇網）。 覆核：覆核未重抓；作者 cache 檔雜湊與 access_log 相符，關鍵數字在 cache 原文找到。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10647683/fullTextXML"
         }
       ]
     },
@@ -136030,6 +137781,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.nist.gov/pml/owm/metric-si/metric-policy"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bf001ff8cee192aa",
+      "url": "https://webdesk.jsa.or.jp/preview/pre_jis_b_07023_000_000_2021_e_ed10_ch.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://webdesk.jsa.or.jp/preview/pre_jis_b_07023_000_000_2021_e_ed10_ch.pdf",
+          "title": "JIS B 7023 : 2021 Divers' watches — Classification and performance（英譯試閱）",
+          "publisher": "日本產業規格（經濟產業大臣經日本產業標準調查會審議修訂）；日本規格協會（JSA）英譯並提供試閱",
+          "version": "英譯第一版（2021-11）試閱 PDF",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4B seq=4，HTTP 200，146878 位元組，sha256 前 16 碼 7e56329c8e98e949；pdftotext 抽文字後讀完試閱全部（封面資料、目錄、前言、引言、第 1–2 章）。 覆核：SVY4B seq=3 重抓，HTTP 200，146878 位元組，雜湊 7e56329c8e98e949 與作者相同。",
+          "reading_scope": "封面資料頁、目錄、Foreword、Introduction、1 Scope、2 Normative references（部分）。第 3 章以後不在試閱內。",
+          "locator": "封面資料（1993-01-01 制定、2021-02-22 修訂並公告）；Foreword（原案由日本時計協會與 JSA 提出，取代 2014 版）；Introduction（以 ISO 6425:2018 為基礎，修改耐鹽水與耐溫度衝擊等技術內容）；1 Scope（至少 100 m、暗處可見的潛水計時裝置；不適用於 skin diving；MOD）；2（JIS B 7021 對應 ISO 22810）。",
+          "summary": "日本潛水錶國家標準的修訂沿革、與 ISO 6425:2018 的關係與適用範圍。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有試閱頁（封面資料、前言、引言、第 1–2 章）；修改的具體試驗值未讀。覆核搜尋結果顯示另有 2024 年的追補 1（未讀）。網別判斷：JIS 由經濟產業大臣經日本產業標準調查會審議制定與修訂，屬日本政府體系，與 JAMSTEC（NET_JPGOV）同一體系；同時它是 ISO 6425:2018 的修改採用（MOD），依第 112 輪規則也屬 ISO 與各國標準局一網。它同時連著兩個網，從嚴不能拿它替任何一網加分：NET_ISO 已由 S003、S004 撐到 2.0 封頂；放進 NET_JPGOV 加分等於讓 ISO 一網的內容換個名義再算一次。覆核把 K112-0456 記 0，改 theme_seed、移出章節。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://webdesk.jsa.or.jp/preview/pre_jis_b_07023_000_000_2021_e_ed10_ch.pdf"
         }
       ]
     },
@@ -140358,6 +142130,27 @@
       ]
     },
     {
+      "id": "SRC-c4f2c0f4b6aa598b",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=74041000",
+      "readings": [
+        {
+          "canonical_url": "https://www.mhlw.go.jp/web/t_doc?dataId=74041000",
+          "title": "防じんマスクの規格（昭和63年3月30日労働省告示第19号，令和5年厚生労働省告示第88号まで改正）",
+          "publisher": "日本厚生労働省 法令等データベース",
+          "version": "告示現行條文（附則至令和5年3月27日告示第88号、令和5年10月1日適用）",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭請求 https://www.mhlw.go.jp/web/t_doc?dataId=74041000（SY3 seq=10，HTTP 200，61509 位元組，sha256 前 16 碼 79ec34a9763d013a），與前一筆請求間隔 1.2 秒以上；UTF-8 HTML，本機去標籤後全文讀完。",
+          "reading_scope": "第一條（種類與 RS／RL／DS／DL 區分）至第八條全部、附則全部；第六條粒子捕集效率試驗、吸排氣阻抗、排氣閥、二氧化碳濃度上升值；第七條表示與漏れ率測定法。",
+          "locator": "第一條第 3 項（取替え式 RS1–3、RL1–3；使い捨て式 DS1–3、DL1–3）；第六條粒子捕集效率試驗（粒徑中央值以粒子數為基準；NaCl：中央值 0.06–0.1 µm、幾何標準偏差 ≤ 1.8、85 L/min、供給至 100 mg；DOP：中央值 0.15–0.25 µm、≤ 1.6、85 L/min、供給至 200 mg；效率須「常に」不低於 80.0／95.0／99.9%）；第四條第七款（取替え式須能讓配戴者隨時自行檢查面體密合）；第七條第 2 項第五、七款與第 3 項第三款（使い捨て式須附漏れ率；NaCl 數量中位徑約 0.5 µm、10 名（表共 10 格、每格 1 人）依唇寬與鼻根至下巴距離分組的受試者、每分鐘 10 次呼吸 3 分鐘）。",
+          "summary": "日本的職場防塵口罩用另一套代號：D 是拋棄式、R 是可換濾材式，S 用氯化鈉固體顆粒測、L 用 DOP 油霧測，1／2／3 級分別要求 80.0%、95.0%、99.9%；試驗中效率必須「始終」不低於門檻。拋棄式還要在說明書寫出「漏れ率」，由 10 名按唇寬與臉長分組的受試者實際戴著呼吸 3 分鐘量出。",
+          "limitations": "漏れ率只要求標示、條文只說「不得顯著過大」，沒有數字門檻；DS2 與 N95 不能直接畫等號（試驗粒徑、負載量不同）。研究網：NET_JP_MHLW（日本政府體系，單一來源）。 覆核 SVY3：seq=4 重抓雜湊 79ec34a9763d013a 相符；漏れ率受試者表逐列數過共 10 列、每列 1 人，合計 10 人，作者寫的 11 人有誤，已改。",
+          "accessed_on": "2026-11-18",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.mhlw.go.jp/web/t_doc?dataId=74041000"
+        }
+      ]
+    },
+    {
       "id": "SRC-c508c4e77c2c8b7e",
       "url": "https://www.toshiba-lifestyle.com/jp/corporate/rd/research/history/ricecooker/",
       "readings": [
@@ -142169,6 +143962,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://en.natmus.dk/historical-knowledge/denmark/prehistoric-period-until-1050-ad/the-bronze-age/the-viksoe-helmets/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c7bd6e079a4825dc",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8494377/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0258191",
+          "title": "The protective performance of reusable cloth face masks, disposable procedure masks, KN95 masks and N95 filtering facepiece respirators",
+          "publisher": "PLoS ONE 16(10):e0258191（2021）；加拿大國防研究發展署（DRDC）Suffield 研究中心化學威脅防禦組",
+          "version": "出版社開放取用版（CC BY；Europe PMC 完整 JATS XML，PMC8494377）",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭請求 https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8494377/fullTextXML（SY3 seq=7，HTTP 200，195744 位元組，sha256 前 16 碼 d41bd93a07ba1b50），與前一筆請求間隔 1.2 秒以上；seq=6 同網址逾時 0 位元組未取得，seq=7 重試成功；本機解析 JATS XML 依節讀。",
+          "reading_scope": "摘要、1 Introduction、2.1（含 2.1.3 KN95 與 N95 樣品與所依標準）、2.2 濾材切片穿透試驗、2.3 全面內漏（TIL）試驗、3.1.4、3.1.5、3.2、4.2.2、4.2.3、5 Conclusion；表 1 與圖 7–9 圖說；布料與手術口罩各節略讀。",
+          "locator": "2.1.3（KN95 依中國 GB2626-2006，等同 FE ≥ 95%、TIL ≤ 8%）；2.2（NaCl 多分散氣膠、粒數中位電移動徑 0.076 µm）；3.1.4（KN95 濾材最大平均穿透 2.28% 在 0.123 µm；FPF 144.5，整體穿透約 0.70%）；3.1.5（五款 N95 濾材最大平均穿透 3.41% 在 0.076 µm；FPF 69.8，約 1.4%；流量 17 L/min）；3.2 與圖 9（N95 與 KN95 濾材效率無顯著差異；全面內漏結果）；4.2.3（N95 受試者先依加拿大標準做定量密合測試達 PF ≥ 100 才測 TIL；密合係數幾何平均約 644）。",
+          "summary": "加拿大國防研究單位把濾材切片和「戴在人臉上的整個口罩」分開量：KN95 與 N95 兩類濾材的過濾效率沒有顯著差別，但戴在臉上量全面內漏時數字差很大；論文結論是口罩表現由面部密合漏氣主導（兩組受試程序不同，覆核者不轉述兩組數值）。另量到五款 N95 濾材的最大穿透出現在約 0.076 µm（氣動粒徑、17 L/min），而不是 0.3 µm。",
+          "limitations": "樣品少（KN95 兩款、N95 TIL 只用一款），流量 17 L/min 低於認證的 85 L/min；N95 受試者事先通過密合測試，KN95 受試者沒有，兩組 TIL 差距部分來自這個程序差異，論文自己也提到 KN95 可能是臉型或產品本身不合規。論文點名的廠牌型號與「最佳選擇」結論一律不轉述。研究網：NET_DRDC（單篇網）。 覆核 SVY3：seq=2 重抓雜湊 d41bd93a07ba1b50 相符。最大穿透 0.076 µm 標在「氣動粒徑」軸上（圖 7、8 圖說），測試氣膠先經電荷中和器；氣膠本身的粒數中位電移動徑也是 0.076 µm（換成氣動徑為 0.131 µm），兩個 0.076 是不同量，不可併讀成「考場鹽粒正落在弱點」。作者含一名羅馬尼亞大學學者，與其他來源無合著。",
+          "accessed_on": "2026-11-18",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8494377/fullTextXML"
         }
       ]
     },
@@ -144682,6 +146496,27 @@
       ]
     },
     {
+      "id": "SRC-cb123f72e814421f",
+      "url": "https://www.fao.org/3/Y2770E/y2770e06.htm",
+      "readings": [
+        {
+          "canonical_url": "https://www.fao.org/3/Y2770E/y2770e06.htm",
+          "title": "Codex Guidelines on Nutrition Labelling CAC/GL 2-1985 (Rev. 1 - 1993)",
+          "publisher": "聯合國糧農組織（FAO）網站收錄之食品法典委員會（FAO/WHO Codex Alimentarius）《Food Labelling》彙編",
+          "version": "FAO 網站 HTML；1993 年修訂版",
+          "accessed_on": "2026-11-18",
+          "read_via": "https://www.fao.org/3/Y2770E/y2770e06.htm，fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY8 seq=11，HTTP 200，19755 位元組，sha256 前 16 碼 b9ecf720cf5f7c8e），與前一筆請求間隔 1.2 秒以上；本機去標籤後全讀。",
+          "reading_scope": "目的、1 範圍、2 定義、3 營養素宣告（3.1–3.5）、4 補充營養資訊、5 營養標示的呈現全讀。",
+          "locator": "3.4.2、3.4.3（每 100 公克或 100 毫升，或單份包裝的每包裝；另外得以每份標示，但須註明包裝內份數）；3.5.1–3.5.3（容許差的考量因素；宣告值應為代表性產品分析所得的加權平均）",
+          "summary": "國際食品法典的營養標示指引把「每 100 公克（毫升）」或單份包裝的「每包裝」當基本單位，「每份」是額外可加的，加的時候要寫包裝裡有幾份；宣告值應是代表性產品分析所得的加權平均。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "1993 年修訂版；FAO 頁本身不是最新版（後續有 2011 年與之後的修訂），本卡只寫 1993 版內容並標明版本。 研究網：NET_CODEX（FAO/WHO 食品法典委員會）。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.fao.org/3/Y2770E/y2770e06.htm"
+        }
+      ]
+    },
+    {
       "id": "SRC-cb1390264052b4fc",
       "url": "https://www.vfc.com/investors/news-events-presentations/press-releases/detail/1741/vf-corporation-completes-acquisition-of-supreme",
       "readings": [
@@ -144792,6 +146627,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "nature-20261101",
           "original_url": "https://www.spaceweather.gov/phenomena/geomagnetic-storms"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cb3bc1448612eecf",
+      "url": "https://www.fda.gov.tw/tc/newsContent.aspx?cid=4&id=t623178",
+      "readings": [
+        {
+          "canonical_url": "https://www.fda.gov.tw/tc/newsContent.aspx?cid=4&id=t623178",
+          "title": "醫用口罩，預防飛沫傳染（本署新聞）",
+          "publisher": "衛生福利部食品藥物管理署醫粧組",
+          "version": "新聞稿，2024-10-30 發布",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭請求 https://www.fda.gov.tw/tc/newsContent.aspx?cid=4&id=t623178（SY3 seq=8，HTTP 200，167015 位元組，sha256 前 16 碼 233e82aaf07198a4），與前一筆請求間隔 1.2 秒以上；本機去標籤後讀完新聞正文。",
+          "reading_scope": "新聞正文全文（醫療器材定位、三層結構、CNS 14774、CNS 14755、販售規定、一認二看三會用）。",
+          "locator": "第 2 段（三層結構；醫用口罩須由合格醫療器材製造業者製造、符合 CNS 14774 才能上市；N95（或 TN95）須符合 CNS 14755，過濾 95% 以上微小粒狀物）；第 3 段（須由領有執照之醫療器材商或藥局販售）。",
+          "summary": "食藥署說明：醫用口罩在台灣是醫療器材，要由合格醫療器材製造業者製造並符合 CNS 14774 國家標準才能上市；N95（或 TN95）則要符合另一號國家標準 CNS 14755。",
+          "limitations": "新聞稿含選購與配戴提醒，卡片一律不轉述；CNS 14774、14755 條文本身未讀（標準需購買），只寫標準號與管理方式。研究網：NET_TW_GOV（與 S006 同屬中華民國政府體系，合計上限 2.0）。 覆核 SVY3：「MD」與「Made in Taiwan」雙鋼印出現在新聞的選購提醒段，屬選購指引，已從卡面刪除。食藥署與疾管署同屬衛生福利部，併為一網合理。",
+          "accessed_on": "2026-11-18",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.fda.gov.tw/tc/newsContent.aspx?cid=4&id=t623178"
         }
       ]
     },
@@ -149444,6 +151300,27 @@
           "limitations": "受控實驗室與野外原位觀測數據，無利益衝突。",
           "origin": "wave98-tech-20261116",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12519845/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d1af22aed677328d",
+      "url": "https://www.uspto.gov/trademarks/apply/certification-mark-applications",
+      "readings": [
+        {
+          "canonical_url": "https://www.uspto.gov/trademarks/apply/certification-mark-applications",
+          "title": "Certification mark applications",
+          "publisher": "美國專利商標局官網商標申請說明頁",
+          "version": "官網現行 HTML 頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒以上）請求 SY5 seq=9，HTTP 200，197651 位元組，sha256 前 16 碼 4a0798e7339ddc69；本機抽正文全讀，問答逐節讀。",
+          "reading_scope": "What is a certification mark?、三種類型範例、How does a certification mark differ from a trademark?、Can a certifying organization register the same mark as a certification mark and a trademark? 等問答；頁中範例的品牌名稱不轉述。",
+          "locator": "〈What is a certification mark?〉（由授權使用者使用，表示商品或服務符合認證組織訂的標準；認證組織本身通常不使用）；〈differ from a trademark〉（證明標章表示符合標準，一般商標表示商業來源；認證者不製造也不販售該商品）；〈same mark as a certification mark and a trademark〉（不行；登記為證明標章就不能把同一標章就相同商品登記為其他類型標章）。",
+          "summary": "美國商標局解釋：證明標章是給『獲授權使用者』用的，表示東西達到認證組織訂的標準；認證組織自己通常不用它、也不製造販售那些商品；同一個標章登記成證明標章後，就不能再把它就相同商品登記成一般商標。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "通則說明，沒有提到 Wi-Fi；套用到 Wi-Fi 需搭配 S007 的登記類型。研究網 NET_USPTO（與 S007、S008 同一政府體系，合併一網）。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.uspto.gov/trademarks/apply/certification-mark-applications"
         }
       ]
     },
@@ -159609,6 +161486,27 @@
       ]
     },
     {
+      "id": "SRC-e09f605c4393f172",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7413839/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1007/s10311-020-01064-z",
+          "title": "Unflushable or missing toilet paper, the dilemma for developing communities during the COVID-19 episode",
+          "publisher": "Environmental Chemistry Letters 19(1):711 起（2021）；中國西安交通大學環境科學與工程系",
+          "version": "Europe PMC 開放子集完整 JATS XML",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY7 seq=20，HTTP 200，53233 位元組，sha256 前 16 碼 746343f1552b6ebf），與前一筆請求間隔 1.2 秒以上；本機解析 JATS XML 後逐節全讀。DOI 取自 XML。",
+          "reading_scope": "摘要、Introduction、Experimental（調查與崩解實驗）、Results and discussion 全部、Strategies、Conclusion。",
+          "locator": "Introduction（中國多數公廁不供紙、每間放開口紙簍，東亞與中美洲常見；另引調查 200 人中逾 80% 會把用過的紙丟紙簍；GB/T 20810-2018 未規範水中崩解）；Experimental（1000 mL 自來水、約 200 cm²、100 rpm 搖兩小時、6.0 mm 篩）；Results（73 處只有 11 處供紙；暢銷捲筒紙除一件外都不散，該件篩上殘留 93.8%，標準要求低於 5%；可沖對照組 2.5%）",
+          "summary": "西安交通大學的團隊調查中國公廁，73 處只有 11 處供紙、幾乎都放開口紙簍；再把四款依銷售排行挑的不具名暢銷捲筒衛生紙樣本和一包隨身面紙放進水裡搖兩小時，除了一件特別標示可沖的對照組，其餘幾乎都沒散。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "樣本小（暢銷捲筒 4 件、面紙 1 件、可沖對照 1 件），崩解試驗用作者引用的流程而非 JIS 或 CNS。逾 80% 的數字引自他人調查。論文以疫情為背景，本片不轉述任何防疫或健康說法，只用「公廁放紙簍」與「捲筒紙不散」兩點。研究網：NET_XJTU。 覆核（SVY7 seq=5 重抓，雜湊相同）：樣本是依網路零售銷售排行挑選、論文未具名的暢銷品，卡片只寫「不具名的暢銷捲筒衛生紙樣本」，不寫零售平台與品牌。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7413839/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-e0ade600259b8e2f",
       "url": "https://grace.jpl.nasa.gov/system/downloadable_items/3_Landerer.2011WR011453.pdf",
       "readings": [
@@ -160499,6 +162397,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.ellenmacarthurfoundation.org/a-new-textiles-economy"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e1ce81a9b8fdc695",
+      "url": "https://www.cao.go.jp/consumer/history/03/kabusoshiki/syokuhinhyouji/doc/e140529_shiryou1.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.cao.go.jp/consumer/history/03/kabusoshiki/syokuhinhyouji/doc/e140529_shiryou1.pdf",
+          "title": "栄養成分表示の方法について（食品表示部会第5回栄養表示に関する調査会 資料1）",
+          "publisher": "日本消費者廳食品表示企劃課，平成 26 年 5 月 29 日；內閣府消費者委員會網站",
+          "version": "內閣府網站 PDF（會議資料）",
+          "accessed_on": "2026-11-18",
+          "read_via": "https://www.cao.go.jp/consumer/history/03/kabusoshiki/syokuhinhyouji/doc/e140529_shiryou1.pdf，fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY8 seq=13，HTTP 200，665419 位元組，sha256 前 16 碼 45331219b7a688dc），與前一筆請求間隔 1.2 秒以上；pdftotext 轉文字後讀目錄、食品単位、栄養素等表示基準値の割合、參考調查各頁。",
+          "reading_scope": "第 1–5 頁（目錄、食品單位背景、課題、考え方、新基準案）；第 19–21 頁平成 25 年度消費者廳調查事業概要③④。",
+          "locator": "第 3–4 頁（食品單位由事業者依商品特性任意設定；日本缺乏像美國那樣的份量知見，現階段難以規定份量；新基準維持現行，以通知表示宜用 1 食份）；第 20 頁（n＝6,000，77.5% 選「換算成 1 瓶的表示較好」、9.2% 選 100 ml）",
+          "summary": "日本消費者廳 2014 年整理新基準時寫明：食品單位由業者依商品特性自行設定；日本沒有像美國那樣的份量資料，現在難以規定份量，所以維持現制，只用通知鼓勵以 1 食份標示。同一份資料引用的消費者調查中，6,000 人裡 77.5% 偏好「1 瓶（200 ml）」換算的標示，9.2% 偏好每 100 ml。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "會議資料中的「新基準（案）」是當時的提案；調查題目以飲料舉例，不能推到所有食品。 研究網：NET_JP。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.cao.go.jp/consumer/history/03/kabusoshiki/syokuhinhyouji/doc/e140529_shiryou1.pdf"
         }
       ]
     },
@@ -161761,6 +163680,27 @@
       ]
     },
     {
+      "id": "SRC-e3eb50b0bd5df00c",
+      "url": "https://www.jstage.jst.go.jp/article/micromechatronics/53/201/53_KJ00005927612/_pdf/-char/en",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.20805/micromechatronics.53.201_68",
+          "title": "防水時計学（Water-resistant watches & Diver's watches）",
+          "publisher": "日本時計學會《マイクロメカトロニクス》53 卷 201 號（2009）頁 68–79；作者為業界資深技術者（個人署名，不點名）",
+          "version": "J-STAGE 免費全文 PDF（掃描版，OCR 文字）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）請求 SY4 seq=8，HTTP 200，1607828 位元組，sha256 前 16 碼 32f3776c72546781；先讀 J-STAGE 書目頁（seq=7，HTTP 200，63022 位元組，sha256 前 16 碼 8e07dd74a00f3d9e）取得 PDF 連結；PDF 以 pdftotext 抽出 OCR 文字逐節讀完，表 1 為圖像無法辨識。",
+          "reading_scope": "1（種類）、1.1、1.2 與表 2–4、2 與表 5、3.1 防曇性、3.2 靜加壓防水性、3.3 動的防水性與表 6、3.4 長期防水性與表 7、3.5–3.15。",
+          "locator": "1（JIS 只有潛水錶用 m、日常強化防水用 bar；ISO 允許一般錶用 m）；1.1（強化防水 5–20 氣壓、日本禁止日常類超過 20 氣壓以免與 200 m 潛水錶混淆；錶冠水中加 5 N 試驗）；表 2；3.1（體溫約 40 °C、水溫 18–25 °C 或 5–15 °C、內部約 0.1 mg 水分凝結）；3.2（3 氣壓、10 氣壓是靜態加壓保證，未計動態；潛水錶 1.25 倍；JIS 日常 2 氣壓、強化 4 氣壓以上，ISO 一般錶一律 2 氣壓以上）；3.3 與表 6（游泳約 0.1–0.4 氣壓，2 m、5 m 跳水約 0.34、0.75；用力拍水估 2.2–5.7；水龍頭 1–3、消防栓 4–6；括號內為推定值）；3.4（浸水 1 小時對 50 小時；接面漏與滲透漏；材質透濕率差約 100 倍）。",
+          "summary": "日本時計學會期刊上的綜述：把防水錶分成日常防水、日常強化防水、空氣潛水、混合氣體潛水四類，整理 JIS 與 ISO 的差別、靜態與動態水壓、長時間浸水與墊圈滲透。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "單一作者綜述，表 6 多數數值是作者的調查或推定（括號內），單位為 kgf/cm²（約等於氣壓）；文中「日常強化防水用途最多約 4–6 氣壓」與表 6 游泳值 0.1–0.4 並陳時須說清楚前者包含用力拍水等情況；作者為前業界技術者，結論處帶推廣語氣，只取規格與數值；JIS 本文未讀，JIS 規定一律寫「依這篇綜述」。2009 年刊出，之後 ISO 22810（2010）等改版未涵蓋。 研究網：NET_HIJ（日本時計學會綜述，單篇網）。 覆核：覆核重抓 SVY4 seq=5，HTTP 200，1607828 位元組，雜湊 32f3776c72546781 與作者相同；OCR 逐節核對 1、1.1、3.1–3.4 與表 6。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.jstage.jst.go.jp/article/micromechatronics/53/201/53_KJ00005927612/_pdf/-char/en"
+        }
+      ]
+    },
+    {
       "id": "SRC-e3fc6b99f2502612",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516356/fullTextXML",
       "readings": [
@@ -162089,6 +164029,26 @@
           },
           "origin": "wave84-food-20261114",
           "original_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=9440417&rettype=xml"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e44aedf02b7c3767",
+      "url": "https://distantreader.org/stacks/trust/uc2/uc2_ark+=13960=t3kw58v08.txt",
+      "readings": [
+        {
+          "title": "The Pocket Book of Refrigeration and Ice-Making（第五版，1909）",
+          "publisher": "英國土木工程師學會準會員（Assoc. Memb. Inst. C.E.）所編之英國冷凍手冊，第五版由紐約一家技術書出版社於 1909 年發行；文字檔為 HathiTrust 加州大學館藏（uc2 ark:/13960/t3kw58v08）之 OCR 全文轉存",
+          "version": "1909 年第五版（公有領域；OCR 純文字）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭、間隔 1.2 秒）SY1B seq=3，HTTP 200，331907 位元組，sha256 前 16 碼 c1818b162c2fe49f；本機以 grep 定位後逐段讀 OCR 文字。網址來自搜尋結果。",
+          "reading_scope": "書名頁、出版者序、目錄 Section I–II；Section I〈CAPACITY OF REFRIGERATING MACHINES〉全段（p.25–26）及前後圖說；〈APPROXIMATE ALLOWANCES PER TON CAPACITY〉表頭；Section II〈CUBIC FEET OF AMMONIA GAS PER MINUTE TO PRODUCE ONE TON OF REFRIGERATION PER DAY〉表頭；〈ICE-MAKING AND STORING ICE〉p.112–114 冰庫一段。",
+          "locator": "p.25–26〈CAPACITY OF REFRIGERATING MACHINES〉：兩種額定（ice-making capacity／refrigerating capacity，前者約為後者一半）；單位為每日把 32 °F 的水凍成 32 °F 的冰一噸；英國慣例 318,080 熱單位、美國慣例 284,000 熱單位，差在 2240 磅與 2000 磅；以每磅 142 熱單位計；72 °F 水需 40＋142＋約 10＝192，142÷192≈74%。p.113：50 立方呎（照常堆放）約一短噸、62 立方呎約一英噸。",
+          "summary": "二十世紀初的英國冷凍手冊說，冷凍機有兩種噸：一天能做出幾噸冰的「製冰能力」，和等於一天融化幾噸冰的「冷凍能力」，前者大約只有後者一半；而且「一噸」本身英美就不一樣大——英國一噸 2240 磅、合每天 318,080 熱單位，美國一噸 2000 磅、合 284,000 熱單位。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "OCR 文字有誤植（例如 318,080 被拆成「3 18,080」、142 被印成「* 42」），數字已依上下文與乘法（2240×142＝318,080、2000×142＝284,000）核對。書中所用融解熱 142 熱單位／磅與 1912 年美國教科書的 144 不同，為當時各書取值差異。出版地為紐約，但編者為英國土木工程師學會會員，書中以「here」指英國慣例、對照「American practice」。研究網 NET_UK_POCKET1909（單書網；編者與既有各網無合著；與 SY1-S002 只是同一轉存站，不同作者、不同國家）。 覆核 SVY1B：重抓 seq=1 雜湊相同（c1818b162c2fe49f，cmp 逐位元組相同）；書名頁為單一編者（英國土木工程師學會準會員），出版者是紐約一家技術書出版社，與 1912 年教科書（另一家紐約出版社）、1916／1919 年大學教科書（第三家紐約出版社，倫敦另有合作發行商）不同；三書作者互不合著、書中互不引用（三書內檢索對方作者名無結果），只是 1909 年手冊與大學教科書都引用同一位德裔美國冷凍學者的手冊，屬共同參考文獻，不構成合著。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://distantreader.org/stacks/trust/uc2/uc2_ark+=13960=t3kw58v08.txt"
         }
       ]
     },
@@ -170319,6 +172279,27 @@
       ]
     },
     {
+      "id": "SRC-efdc790a27ea06cf",
+      "url": "https://www.mohw.gov.tw/cp-2633-10355-1.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.mohw.gov.tw/cp-2633-10355-1.html",
+          "title": "防曬類化粧品防曬效能管理之說明",
+          "publisher": "衛生福利部（資料來源：食品藥物管理署）；建檔 105-11-20（2016）、更新 106-05-12（2017）",
+          "version": "衛福部新聞稿網頁（HTML）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0，間隔 1.2 秒）請求 seq=1，HTTP 200，30246 位元組，sha256 前 16 碼 a6875351543b9e4f；本機去除標記後全文讀完。",
+          "reading_scope": "新聞稿正文全文（查驗登記、檢測方式、96 年 2 月 26 日標示規定、罰則、抽驗計畫與通報管道）。",
+          "locator": "正文第一段（除非奈米二氧化鈦外，防曬劑成分以含藥化粧品管理；標示 SPF、PA+、★ 須附防曬效能測定報告）；第二段（人體測試與人工薄膜兩類；各國尚無統一標準；96 年 2 月 26 日公告：SPF 標示值不得大於實測值、上限 50、實測高於 50 標 SPF 50+ 或 SPF 50 Plus；化粧品衛生管理條例第 6、28 條，10 萬元以下罰鍰）。",
+          "summary": "台灣主管機關說明：瓶上標 SPF、PA 或星號都要附測定報告送審；檢測有人體與人工薄膜兩類，國際沒有統一標準；2007 年起 SPF 標示不得高於實測值，最高只能寫 50，量到超過 50 的寫 50+。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "2016 年的新聞稿；文中引用的《化粧品衛生管理條例》已由《化粧品衛生安全管理法》取代（2018 年公布、2019 年起施行），罰則條號與金額可能已變，本次未讀現行法條（law.moj.gov.tw 在封鎖名單），卡上不寫罰則。新聞稿未寫 PA 與 ★ 的分級門檻。研究網 NET_TW（台灣衛福部體系）。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.mohw.gov.tw/cp-2633-10355-1.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-efe89e0927914daa",
       "url": "https://www.gesetze-im-internet.de/bimschv_32/__7.html",
       "readings": [
@@ -172889,6 +174870,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sec.gov/Archives/edgar/data/0000031235/000120677407000543/kodak_10k.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f358f23e14832607",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8042014/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41598-021-86971-z",
+          "title": "Reduced dispersibility of flushable wet wipes after wet storage",
+          "publisher": "Scientific Reports 11:7942（2021）；奧地利格拉茨科技大學生物製品與造紙技術研究所等（另一位作者任職德國一家纖維公司）",
+          "version": "出版社開放取用版（CC BY 4.0；Europe PMC 完整 JATS XML）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY7 seq=9，HTTP 200，83953 位元組，sha256 前 16 碼 dc2e74f286298e1c），與前一筆請求間隔 1.2 秒以上；本機解析 JATS XML 後讀摘要、前言、結果與討論、方法。DOI 取自 XML，doi.org 未請求。",
+          "reading_scope": "摘要、Introduction、Results and discussion 全段（圖 2–5 圖說）、Methods 中 slosh box 段落。",
+          "locator": "Introduction（INDA/EDANA 與 IWSFG 都採 slosh box；紐約、倫敦、柏林、東京的堵塞報告）；Results 第 1–3 段與圖 2（INDA/EDANA 最低 60%；濕存兩週後低於 10%，乾布初始高於 70%）；圖 3（只有未漂白針葉漿配扁平黏膠纖維者維持可散）",
+          "summary": "奧地利的團隊發現：用纖維素做的濕紙巾，乾的時候在晃動水箱裡散得很好，但泡在保濕液或純水裡存放後，可散程度一路下降，兩週後幾乎不散。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "一位作者任職纖維公司，研究獲該公司與研究基金支持；卡片不寫公司名。濕存時間與市售品實際架上時間的對應是作者推論。研究網：NET_TUGRAZ。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8042014/fullTextXML"
         }
       ]
     },
@@ -175568,6 +177570,27 @@
           },
           "origin": "wave74-human-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12365028/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f72de5357acb9ff4",
+      "url": "https://www.bsmi.gov.tw/wSite/public/Data/f1547435998117.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.bsmi.gov.tw/wSite/public/Data/f1547435998117.pdf",
+          "title": "衛生紙檢驗項目可分散性之技術探討（107 年度自行研究計畫 107BSMI-27）",
+          "publisher": "經濟部標準檢驗局花蓮分局（中華民國 107 年 12 月 31 日編印）",
+          "version": "機關公開研究報告 PDF，36 頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 以 Mokaair-editorial/1.0 標頭下載（SY7 seq=1，HTTP 200，1535203 位元組，sha256 前 16 碼 67d6bb75614248db），與前一筆請求間隔 1.2 秒以上；pdftotext -layout 轉文字後逐節全讀。",
+          "reading_scope": "提要表、壹 緣起、貳 試驗流程說明（圖 1–4）、參 能力試驗計畫摘要、肆 能力試驗結果分析（表 2–11）、伍 實驗問題與討論問題一至問題八（表 12–14）、陸 結論及建議事項（一）至（八）、柒、捌 參考資料，全部讀完。",
+          "locator": "壹（106 年 8 月 17 日修訂 CNS 1091，可溶解改稱可分散性、新增 100 秒以下規範；國內馬桶排出管徑與衛生紙品質狀況無法明確）；貳 1–4 步（300 mL、20 ± 5 ℃、直徑 35 mm 圓盤攪拌子、600 ± 10 rpm、11.4 cm 見方單層、回升 540 rpm 停錶、5 次平均、<100 秒合格）；表 2（三樣品指定值 31.86、16.11、15.74 秒）；問題二（300 mL 由 4000 cm² 對 9000 mL 換算，方法參考日本國家標準）；問題三、四（加濕強劑趨近面紙，>100 秒；一次超過 100 秒擬視為不合格）；表 12–14（摺疊、燒杯底徑、水溫）；捌 4（JIS P4501 2006）",
+          "summary": "台灣標準檢驗局分局為了配合「衛生紙丟馬桶」政策後新增的可分散性檢項，請國內主要衛生紙廠實驗室用同樣三種進口衛生紙做比對試驗，並把試驗方法、300 mL 水量怎麼來、哪些操作會改變秒數都寫成報告。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "報告提要表與內文具名研究人員（在職公務員），卡片一律只寫「標準檢驗局分局」。參加比對的廠商名單見於報告，卡片不寫。三個樣品是美國製 1 種、日本製 2 種的進口衛生紙，不代表台灣市售品。問題四的「一次超過 100 秒即不合格」是分局擬向技術委員會提案的建議，不是 CNS 1091 現行條文。300 mL 的換算是分局對標準設計的說明（以 5 張雙層、每層 20 × 20 cm、沖水 9000 mL 為假設），不是標準本文。CNS 1091 原文未取得（law.moea.gov.tw 在封鎖名單，標準本文需付費），試驗條件以本報告轉述為準。研究網：NET_TW_GOV（與 SY7-S002、S003 同一政府體系，合計上限 2.0）。 覆核（SVY7 seq=1 重抓，雜湊相同）：參加比對的是 9 家業者實驗室加分局本身共 10 間；樣品為 3 種國外品牌衛生紙。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://www.bsmi.gov.tw/wSite/public/Data/f1547435998117.pdf"
         }
       ]
     },
@@ -179831,6 +181854,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "physics-20261101",
           "original_url": "https://openstax.org/books/college-physics-2e/pages/17-3-sound-intensity-and-sound-level"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fced82bc1815f8f7",
+      "url": "https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/devices-and-equipment/radio-equipment-standards/radio-standards-specifications-rss/rss-247-digital-transmission-systems-dtss-frequency-hopping-systems-fhss-and-licence-exempt-local",
+      "readings": [
+        {
+          "canonical_url": "https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/devices-and-equipment/radio-equipment-standards/radio-standards-specifications-rss/rss-247-digital-transmission-systems-dtss-frequency-hopping-systems-fhss-and-licence-exempt-local",
+          "title": "RSS-247 — Digital Transmission Systems, Frequency Hopping Systems and Licence-Exempt Local Area Network Devices in 902-928 MHz, 2400-2483.5 MHz, 5150-5350 MHz, and 5470-5895 MHz bands (Issue 4, July 24, 2025; Amendment 1, October 8, 2026)",
+          "publisher": "加拿大創新、科學及經濟發展部（ISED）工程、規劃及標準處（依工業部長授權發布）",
+          "version": "ISED 官網 HTML 版（第 4 版，2025-07-24；第 1 次修正 2026-10-08）；本機 h2t.py 去標籤轉文字，552 行",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，單一請求）請求 SY5B seq=1，HTTP 200，93812 位元組，sha256 前 16 碼 726a519d84d6205f；SY5 seq=22 同一網址當時是連線被重設（curl 35，非 403），本輪重新請求一次即取得。本機轉文字後逐節讀前言、第 1–3 節、第 6.1、6.3、6.5 節、第 7.1、7.3.1、7.3.2、7.3.6 節，並全文搜尋 Wi-Fi、WiFi、802.11、IEEE。；覆核 SVY5B seq=2 重請求（seq=1 連線被重設），HTTP 200，93812 位元組，sha256 前 16 碼 726a519d84d6205f，與 SY5B cache 逐位元組相同，全文逐節重讀。",
+          "reading_scope": "Preface（版次、主要技術修改）；1 Scope；2.1 生效與過渡期；2.2 Certification requirements；2.3 Licensing requirements；2.5 Normative publications；3 Definitions（LE-LAN、DTS、DFS、Channel move time 等）；6.1 General；6.3 DTS（6.3.1、6.3.2）；6.5；7.1–7.2；7.3.1（5150–5250 MHz 一般規定與功率）；7.3.2.1–7.3.2.2；7.3.6.1–7.3.6.3（DFS 門檻表 2 與運作要求）。7.3.3–7.3.5 與 Annex A 只掃過標題與 5850–5895 MHz 室內外規定，未逐條讀。",
+          "locator": "標題與 1 Scope（LE-LAN 與 DTS、各頻段）；2.2（第 I 類設備，須 ISED 認證與工程局的技術認可證書 TAC 或認可驗證機構的證書）；2.3（依無線電通訊規則第 15 條免執照）；3 Definitions（LE-LAN device：可作為接取點或用戶端的設備）；6.3.2（2400–2483.5 MHz 的 DTS：最大峰值傳導輸出功率 ≤ 1 W、e.i.r.p. ≤ 4 W，6.5 a/b 例外）；7.3.1.1（5150–5250 MHz 的 LE-LAN 限室內，含火車內；不得在飛機上使用）；7.3.1.2（一般設備 e.i.r.p. ≤ 200 mW 或 10+10log10B dBm 取小者）；7.3.6.2 表 2（偵測門檻 −62／−64 dBm）；7.3.6.3（使用前檢查 60 秒、偵測到雷達後 10 秒內停止發射、該頻道 30 分鐘不得使用）；全文 Wi-Fi／WiFi／802.11／IEEE 出現 0 次。",
+          "summary": "加拿大政府對免執照無線區網與數位傳輸設備的無線電標準規格。它要求這類設備在上市前取得政府或認可驗證機構的認證，但使用時免執照；2.4 GHz 數位傳輸系統的等效全向輻射功率上限是 4 W；5 GHz 區段則有限室內、200 mW 上限，以及必須偵測雷達、偵測到就 10 秒內停發、該頻道 30 分鐘內不得再用的規定。整份規格用的是自己的詞「免執照區域網路設備（LE-LAN）」，從頭到尾沒有出現 Wi-Fi、802.11 或 IEEE。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是技術標準規格，不是法規本文（無線電通訊規則與 RSS-Gen 未讀）。『2.4 GHz 無線區網屬於 DTS』『這些 LE-LAN 規定適用於一般無線區網路由器與手機』是依定義推論，規格本身沒有點名任何技術或產品。頁面末段有簽發主管的姓名，屬在世公務員，不得進旁白、畫面或卡片。規格接受美國 FCC 的 KDB 905462 或 ETSI EN 301 893 作為雷達偵測的測試程序之一、並以 ANSI C63.10 為量測方法，這是引用其他機構的測試方法，不是合著；EN 301 893 也不是 SY5-S015（EN 300 328）。研究網 NET_ISED（加拿大政府，與 NET_USPTO 的美國政府、NET_ETSI 的歐洲標準機構、NET_IEEE802、NET_WFA 都不同體系、無從屬）。 覆核補註：LE-LAN 一詞只用於第 7 節 5 GHz 設備；2.4 GHz 用 DTS／FHS。CRTC（加拿大另一機關，在封鎖名單）未請求；若日後補 CRTC 或其他加拿大聯邦機關文件，依從嚴規則併入 NET_ISED。",
+          "origin": "wave112-x112-20261118",
+          "original_url": "https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/devices-and-equipment/radio-equipment-standards/radio-standards-specifications-rss/rss-247-digital-transmission-systems-dtss-frequency-hopping-systems-fhss-and-licence-exempt-local"
         }
       ]
     },
