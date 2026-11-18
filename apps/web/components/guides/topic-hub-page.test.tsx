@@ -148,7 +148,7 @@ describe("the topic hub", () => {
       const { container } = render(await renderTopicHub(route({ topic: channel })));
       const feature = screen.getByRole("complementary", { name: "圖解指南" });
       expect(within(feature).getByRole("img", { name: hero.alt }).getAttribute("src")).toBe(hero.src);
-      expect(within(feature).getByRole("link", { name: guide.title }).getAttribute("href")).toBe("/life/how-it-works");
+      expect(within(feature).getByRole("link", { name: guide.title }).getAttribute("href")).toBe("/zh-TW/life/how-it-works");
       expect(within(screen.getByTestId("news-list")).getByRole("heading", { name: story.title, level: 2 })).toBeTruthy();
       expect(within(screen.getByTestId("news-list")).queryByText(guide.title)).toBeNull();
       expect(within(container.querySelector<HTMLElement>("main header")!).getByRole("link", { name: "另一個頻道" }).getAttribute("href"))
