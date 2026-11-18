@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-17-curio-pool-1676",
+  "revision": "2026-11-18-curio-pool-1692",
   "sources": [
     {
       "id": "SRC-00003441dc8ac27d",
@@ -258,6 +258,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.britannica.com/topic/Antikythera-mechanism"
+        }
+      ]
+    },
+    {
+      "id": "SRC-004fddf5e21d4a65",
+      "url": "https://www.kanripo.org/api/v1.0/search?query=%E8%A1%80%E6%BB%B4%E5%AD%90&with-titles&count=40",
+      "readings": [
+        {
+          "title": "漢籍リポジトリ全文檢索『血滴子』（零命中）",
+          "publisher": "Kanseki Repository 公開 API（網站自述收錄九千多種漢籍）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 34（200，1 byte＝空結果）",
+          "reading_scope": "一次檢索",
+          "locator": "（無命中）",
+          "summary": "在包含《世宗憲皇帝硃批諭旨》《欽定八旗通志》等清代官書的漢籍庫裡，『血滴子』三字一次也沒有出現。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "漢籍庫不含清宮原始檔案（軍機處錄副、內務府檔等）與清末民初小說報刊，零命中只能說『在這批已刊官書與古籍裡找不到』，不能說『清宮檔案裡找不到』。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.kanripo.org/api/v1.0/search?query=%E8%A1%80%E6%BB%B4%E5%AD%90&with-titles&count=40"
         }
       ]
     },
@@ -981,6 +1000,25 @@
           "limitations": "curl 直連回 403，經 WebFetch 存下 PDF 再用 pdftotext 讀文字層。",
           "origin": "wave2-legacy-20261101",
           "original_url": "https://www.gao.gov/assets/nsiad-95-187.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-011894575b8f81cb",
+      "url": "https://writing.upenn.edu/epc/mags/vert/Vert_issue_6/jerseyintro.html",
+      "readings": [
+        {
+          "title": "Introduction: Jersey Phantoms",
+          "publisher": "Jeffrey Jullich，Vert 第 6 期（賓州大學 Electronic Poetry Center 網站），年份未標",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 11（200，5,411 bytes）抓 HTML，全文讀。",
+          "reading_scope": "全文讀過。",
+          "locator": "'One tap for A, two for B'；'By process of elimination…Charles Hugo'",
+          "summary": "敲一下是 A、兩下是 B，依序類推；引 Stevens《Victor Hugo in Jersey》（1983）：每個字母平均約五秒，一小段話可能要兩小時。作者主張以排除法推斷，最能即席敲出押韻亞歷山大詩行的媒介是 Charles Hugo，他不在桌邊時場面就變成一鍋字母湯；Charles 唯一流傳的『詩』都掛著別人（死者）的名字。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "詩刊導言，是作者的推論，不是定論；與 ZW1-S004 編者『Charles 不會即席作詩』的看法正好相反，正片要兩說並陳。",
+          "origin": "wave77-20261118",
+          "original_url": "https://writing.upenn.edu/epc/mags/vert/Vert_issue_6/jerseyintro.html"
         }
       ]
     },
@@ -3876,6 +3914,25 @@
       ]
     },
     {
+      "id": "SRC-03be6ded1ea65191",
+      "url": "https://www.ripleys.com/stories/debunking-the-image-of-the-ninja",
+      "readings": [
+        {
+          "title": "Debunking the Image of the Ninja",
+          "publisher": "Ripley's Believe It or Not!，2018-10-11",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 5（200，82,792 bytes），python 去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "『But What About Those Black Pajamas?』段與其後一段",
+          "summary": "流傳版本樣本：說忍者夜裡穿深藍而非黑，因為夜空是靛色；說 19 世紀作者把忍者寫進故事時，借用了舞台上穿全黑、被當作『看不見』的道具人員（黑子）服裝，才有黑衣忍者；附一張 1817 年的繪本忍者圖。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "通俗文章，沒有列出處；『黑子說』與『夜空是靛色』都只是轉述，本題把它當流行說法的樣本。（覆核補：原文把黑子拼成 kuruko，且未給出處；『深藍』說歸給伊賀流忍者博物館但沒連結原文。）",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.ripleys.com/stories/debunking-the-image-of-the-ninja"
+        }
+      ]
+    },
+    {
       "id": "SRC-03c170f164dd011c",
       "url": "https://archive.org/details/20thc-impressions-netherlands-india",
       "readings": [
@@ -5338,6 +5395,25 @@
           "limitations": "OCR 全文；1878 年那張照片本身沒有留存資料，只有圓了四十年後的回憶。",
           "origin": "wave20-20261102",
           "original_url": "https://lab.ndl.go.jp/dl/book/959316?page=36"
+        }
+      ]
+    },
+    {
+      "id": "SRC-057bb63f1e34ecb4",
+      "url": "https://cbdb.fas.harvard.edu/cbdbapi/person.php?name=%E7%B4%80%E6%98%80&o=json",
+      "readings": [
+        {
+          "title": "China Biographical Database（CBDB）人物紀錄：紀昀 Ji Yun（ID 30080）",
+          "publisher": "哈佛大學、中央研究院歷史語言研究所、北京大學合作之中國歷代人物傳記資料庫（CBDB），資料版本標 20131220",
+          "accessed_on": "2026-11-17",
+          "read_via": "作者原以 fetch.sh seq 16（200，115,293 bytes，sha256 前綴 acc9f2df1ff9644b）請求同一端點的 id=30080；覆核改用與 S002 相同、CBDB 公開說明的姓名查詢（name=紀昀），覆核 fetch.sh seq 2（200，115,293 bytes，sha256 前綴 acc9f2df1ff9644b，與作者 seq 16 逐位元組相同，回傳 PersonId 30080），以 python json 解析",
+          "reading_scope": "BasicInfo、PersonEntryInfo、PersonAddresses、PersonPostings 全部；PersonTexts 全部以程式搜尋『和珅』；163 筆 PersonSocialAssociation 以程式搜尋和珅（ID 59024）與『和珅』字樣，並列出劉姓關係人",
+          "locator": "BasicInfo.YearBirth/YearDeath；PersonEntryInfo；PersonAddresses『流放之地』；PersonPostings；PersonTexts TextId 24314『熱河志』備註；PersonSocialAssociation（劉墉『友』、劉統勳『考官為Y』）",
+          "summary": "紀昀生於 1724（雍正 2 年）、卒於 1805（嘉慶 10 年），注引《清代人物生卒年表》。1747 年（乾隆 12 年）鄉試第一名舉人，1754 年進士；1769–1771 年流放新疆（出處註《紀曉嵐年譜》頁 50–55）。官職清單有翰林院編修、四庫全書館總纂官、左都御史（1785、1791、1792、1796）、禮部尚書（列到 1805）、協辦大學士等。著作列《閱微草堂筆記》二十四卷、《紀文達公遺集》等。163 筆社會關係裡沒有和珅，劉墉列為『友』、劉統勳列為其考官。但 PersonTexts 的《熱河志》一條，備註（引中研院《明清人物權威檔案》）同時寫著『欽定熱河志 120 卷／和珅等奉敕撰』與『錢大昕、紀昀受命助修』——兩人的名字至少同掛在一部官修書的著錄上，分工與年份未載。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "資料庫是二次整理，多數年份與官職引中研院人名權威與年譜，官職年份多為 0（未詳）；社會關係表沒有和珅只代表資料庫沒收錄；《熱河志》備註把 80 卷本與 120 卷本寫在一起，『紀昀受命助修』對應哪一個本子不清楚，只能說同一條著錄裡出現兩人的名字。",
+          "origin": "wave77-20261118",
+          "original_url": "https://cbdb.fas.harvard.edu/cbdbapi/person.php?name=%E7%B4%80%E6%98%80&o=json"
         }
       ]
     },
@@ -7539,6 +7615,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://tile.loc.gov/storage-services/service/ndnp/dlc/batch_dlc_hagith_ver01/data/sn83045462/00280607393/1954122101/0001.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-06ffedb23d62b1a4",
+      "url": "https://petit.lib.yamaguchi-u.ac.jp/1502/files/146328",
+      "readings": [
+        {
+          "title": "明代における包公説話の展開―「成化説唱詞話」を中心として",
+          "publisher": "山口大學機構典藏；刊於《中國文學論集》第十五號（文末附記為 1986 年 5 月山口大學學會發表稿，刊行年未在 PDF 中核對）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 19（200，1,312,054 bytes）下載 PDF；pdftotext 缺日文字型，改以 python pdfminer 轉文字（直排、OCR 雜訊多），以關鍵詞前後文閱讀",
+          "reading_scope": "以『笑比』『日判陽間』『包待制出身』『人面』『成化』等關鍵詞讀了相關段落；全文直排順序錯亂，沒有逐段通讀",
+          "locator": "首頁引《宋史》本傳（卷三一六）；第二節列『成化說唱詞話』八種包公說話與刊記；論『包待制出身傳』容貌與『日判陽間夜判陰』段",
+          "summary": "論文首頁引《宋史》本傳：包拯立朝剛毅，貴戚宦官為之斂手，『人以包拯笑比黃河清』，童稚婦女都知道他、叫他『包待制』——這句話說的是他難得一笑，不是長相。成化七年（1471）到十四年（1478）間刊刻的『成化說唱詞話』有八種包公說話，其中《包待制出身傳》把出生的包拯寫成『八分像鬼二分人』的異樣面容，所以被父親冷遇；作者指出『日判陽間夜判陰』這種形容從元代包公戲就有，到明代《百家公案》《龍圖公案》發展成包公睡『赴陰床』到陰間辦案的情節。",
+          "rights": "OPEN_ACCESS_ACADEMIC",
+          "limitations": "OCR 文字錯字多（如『包拯』多被讀成『包極』），只讀到關鍵段落；論文不談戲曲臉譜與黑臉的化妝史。作者是否在世未核對，正片不點名。",
+          "origin": "wave77-20261118",
+          "original_url": "https://petit.lib.yamaguchi-u.ac.jp/1502/files/146328"
         }
       ]
     },
@@ -11545,6 +11640,25 @@
       ]
     },
     {
+      "id": "SRC-0afa8d7d9f170913",
+      "url": "https://www.todayifoundout.com/?p=3486",
+      "readings": [
+        {
+          "title": "Alfred Nobel Was Also Known as \"The Merchant of Death\"",
+          "publisher": "Today I Found Out（網站），文章與讀者留言",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 26（200，102,042 bytes），python 去標籤後讀正文與留言",
+          "reading_scope": "正文與留言",
+          "locator": "正文第 1 段；留言『This story is actually a myth』一則",
+          "summary": "流傳版本樣本：正文把故事當事實，說報紙標題是『The Merchant of Death is Dead』並引了一句訃聞內文，只說是『一家法國報紙』。讀者留言指出沒有一手來源、所有二手來源都只說『一家法國報紙』，並引傳記作者說沒有人找到過；另一則留言引用一位諾貝爾博物館人員的話，說他確實看過自己的訃聞、但可能不是唯一因素。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "網站文章與匿名留言，只能當流行版本與爭論的樣本，不能當證據。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.todayifoundout.com/?p=3486"
+        }
+      ]
+    },
+    {
       "id": "SRC-0afbd6802203b47b",
       "url": "https://archive.org/details/joanniskeplerias08kepl",
       "readings": [
@@ -13602,6 +13716,25 @@
       ]
     },
     {
+      "id": "SRC-0d2a04ba2cdaaf66",
+      "url": "https://archive.org/download/02111749.cn/02111749.cn.pdf",
+      "readings": [
+        {
+          "title": "三國志通俗演義（一）（羅貫中撰；卷首庸愚子序的二十四冊本）",
+          "publisher": "北京大學圖書館提供、Internet Archive 掃描 02111749.cn（metadata 未標版本年）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 25（200）advancedsearch 找到條目；seq 26（200，47,127 bytes）讀 metadata；seq 27（200，6,012,449 bytes）下載 PDF，pdftoppm 轉圖後目讀 PDF 第 2–4、213–222 頁",
+          "reading_scope": "讀了卷首序首頁、華雄出場到斬華雄一段（PDF 第 211–222 頁）；其餘未讀",
+          "locator": "PDF 第 213–216 頁（華雄斬鮑忠、敗孫堅、祖茂戴赤幘被斬）；第 217–220 頁（俞涉、潘鳳被斬，關某請戰，『操教釃熱酒一盃與關某飲了上馬』）；第 221 頁（『酒且斟下，某去便來』『擲於地上，其酒尚溫』）",
+          "summary": "小說的版本：華雄斬鮑忠；夜襲孫堅營，孫堅敗走，脫赤幘給祖茂戴，祖茂把赤幘掛在人家燒過的柱子上，後被華雄斬殺；胡軫在小說裡是華雄的副手，被孫堅部將程普刺死。諸侯帳中，華雄又連斬俞涉、潘鳳；關某請戰，袁術嫌他是弓手要打出去，曹操攔下，叫人斟熱酒一盃要他喝了再上馬；關某說『酒且斟下，某去便來』，出帳提刀，不久提華雄頭擲在地上，『其酒尚溫』，後面接一首讚詩。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "掃描 metadata（seq 26）沒有刊年或版本說明，只有『原書有些字跡不清、有些頁殘』；有庸愚子序、分則形式屬嘉靖本系統，但無法確認是明代原刻、1522 年原刊或後世影印本。毛宗崗本（今天通行的一百二十回本）的文字沒有讀。覆核 R773 目讀 PDF 第 2、212–221 頁，引文都在掃描裡。",
+          "origin": "wave77-20261118",
+          "original_url": "https://archive.org/download/02111749.cn/02111749.cn.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-0d2c1bfff24e96a3",
       "url": "https://archive.org/details/norskefolkeeven00asbjgoog",
       "readings": [
@@ -14361,6 +14494,25 @@
           "limitations": "評論文章，Philips 的聲明是轉引；2.39075 與『1972 年以來的 SMPTE 標準』是作者的說法，本輪沒有讀 SMPTE 文件。",
           "origin": "wave72-20261117",
           "original_url": "https://www.widescreenreview.com/blog_detail.php?id=81"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0dcb46f6639d074f",
+      "url": "https://www.newworldencyclopedia.org/entry/Stove_God",
+      "readings": [
+        {
+          "title": "Zao Shen（Stove God）",
+          "publisher": "New World Encyclopedia（線上百科）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 18（200，94,194 bytes）下載 HTML，以 python 去標籤後讀",
+          "reading_scope": "Mythological Accounts、Worship and Customs 兩節",
+          "locator": "首段『returns to Heaven to submit his annual report』；『he was once a mortal man named Zhang Dan』；『a paper effigy of Zao Jun… and his wife』",
+          "summary": "流傳版本的樣本：灶神是男性，最流行的說法說他原是凡人張單（張子郭），年底上天向玉皇大帝報告一家善惡，家家在灶上貼灶君與灶君夫人的紙像，臘月二十三用麥芽糖封口。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "線上百科，只當流傳版本樣本，不能當來源之一。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.newworldencyclopedia.org/entry/Stove_God"
         }
       ]
     },
@@ -18518,6 +18670,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.nbcnews.com/id/wbna21494221"
+        }
+      ]
+    },
+    {
+      "id": "SRC-115b3493e5f48aba",
+      "url": "https://www.natureasia.com/ja-jp/research/highlight/12910",
+      "readings": [
+        {
+          "title": "【考古学】兵馬俑と共に埋葬されていた兵器の保存に関する新知見",
+          "publisher": "Nature Portfolio（Nature Asia 日文版 Scientific Reports 研究紹介，2019 年）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 8（200，47,070 bytes）抓 HTML，python 去標籤後讀正文。",
+          "reading_scope": "正文三段全讀。",
+          "locator": "正文第 2、3 段（『兵馬俑坑は、1970年代に初めて発掘され』『兵器464点を調べたところ』）",
+          "summary": "出版社對同一篇論文的日文介紹：先行研究認為兵器保存好是因為秦代工匠用鉻做防鏽處理；新研究查 464 件只有 37 件測到鉻，取手、握把、劍鞘一帶的部件 88% 有鉻，箭鏃與刀身 2% 以下；研究者認為是埋葬後腐朽的木製部件上的漆造成污染。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是出版社對 ZW1-S001 的摘要，不是獨立研究；『2% 以下』是把箭鏃與刃部合併的說法，細數以 ZW1-S001 內文為準（刃部 0）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.natureasia.com/ja-jp/research/highlight/12910"
         }
       ]
     },
@@ -25437,6 +25608,25 @@
       ]
     },
     {
+      "id": "SRC-15c7c1728e988323",
+      "url": "https://www.kanripo.org/api/v1.0/search?query=%E8%BE%9F%E9%A6%AC%E7%98%9F&with-titles&count=40",
+      "readings": [
+        {
+          "title": "漢籍リポジトリ全文檢索『辟馬瘟』：命中李時珍《本草綱目》（KR3e0079）",
+          "publisher": "Kanseki Repository（漢リポ）公開 API（API 說明頁 https://www.kanripo.org/api，fetch.sh seq 2 讀過）；書目代號由 titles?query=本草綱目 確認（seq 8，回 KR3e0079 本草綱目）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 4（200，101 bytes）；seq 8（200，21 bytes）確認書目代號。純文字 KWIC 回應直接讀",
+          "reading_scope": "只讀到全文檢索回傳的一行上下文（約 30 字），沒有讀到整卷",
+          "locator": "KR3e0079 檔 120，葉 38a，行 0595（KWIC 定位碼 KR3e0079_120:38a:0595）",
+          "summary": "全庫只有一處命中『辟馬瘟』：『時珍曰：馬經言馬厩畜母猴，辟馬瘟疫，逐月有天癸流草上，馬食……』。也就是李時珍自己引一部叫《馬經》的書，說馬廄裡養母猴可以辟馬的瘟疫，理由是母猴每月的月經流在草上、讓馬吃到。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "只有一行 KWIC；卷次（通行說是卷五十一獸部獼猴條）是由檔號推的，沒有讀到卷首核對。《馬經》是哪一部書，本次沒有查。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.kanripo.org/api/v1.0/search?query=%E8%BE%9F%E9%A6%AC%E7%98%9F&with-titles&count=40"
+        }
+      ]
+    },
+    {
       "id": "SRC-15cb530dbb67f599",
       "url": "https://oxis.org/articles-k-z/koolhof-1999.pdf",
       "readings": [
@@ -25452,6 +25642,25 @@
           "limitations": "讀的是 oxis.org 上的 PDF 副本（同儕審查期刊原文，非出版社網站）。",
           "origin": "wave8-20261102",
           "original_url": "https://oxis.org/articles-k-z/koolhof-1999.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-15d6317b36d39ee2",
+      "url": "https://www.businessweekly.com.tw/careers/blog/3000257",
+      "readings": [
+        {
+          "title": "父母雙亡，一切靠自己；滿肚子乾貨可和乾隆對話...貪官和珅，其實是職場典範（哈叔，商周專欄）",
+          "publisher": "商業周刊網站，2019-09-20",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 25（200，28,918 bytes）HTML 去標籤後讀正文",
+          "reading_scope": "讀全文前半到『會為人處世』一節",
+          "locator": "首段『說起和珅，大家會想到紀曉嵐，這對老對手被導演搬上螢幕…』；中段『在電視劇裡，我們看到的是一個肥頭大耳，總是被紀曉嵐捉弄的和珅』",
+          "summary": "流傳版本樣本：直接把紀曉嵐與和珅稱為『老對手』，並以電視劇裡『總是被紀曉嵐捉弄的和珅』為大眾印象；文中另有和珅每天吃珍珠粉、家產八至十一億兩等未附出處的說法。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "專欄文章，只當流傳版本的樣本；文中和珅生平細節都沒有出處，不引用。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.businessweekly.com.tw/careers/blog/3000257"
         }
       ]
     },
@@ -26363,6 +26572,25 @@
           "limitations": "現代報紙短訊，沒有出處，只當流傳樣本；『鼻尖到拇指』的版本最早何時出現，本輪沒有查到。",
           "origin": "wave57-20261115",
           "original_url": "https://www.deseret.com/1992/6/25/18991257/from-the-nose-of-henry-i-to-his-thumb-was-1-yard"
+        }
+      ]
+    },
+    {
+      "id": "SRC-167fa833ff807c93",
+      "url": "https://npgallery.nps.gov/pdfhost/docs/NRHP/Text/66000718.pdf",
+      "readings": [
+        {
+          "title": "National Register of Historic Places Inventory–Nomination Form: Mount Rushmore National Memorial（Form 10-306/10-300）",
+          "publisher": "美國內政部國家公園管理局，Rocky Mountain Regional Office 填寫（填表人具名；表上未印清楚填表日期，參考書目最晚為 1977 年）",
+          "read_via": "fetch.sh seq 2（200，886,118 bytes）下載 5 頁掃描 PDF，以 pdftotext -layout 轉文字後讀",
+          "reading_scope": "讀了資源清單（HS-097 Hall of Records Entrance、雕塑工作室）與 Significance 敘述；其餘建物條目只掃過",
+          "locator": "資源清單 HS-097 'Hall of Records Entrance'；Significance 段 'Borglum also intended to carve out a large room…'",
+          "summary": "HS-097：入口在頭像後方 V 形小峽谷北壁，開口約 20×12 英尺，隧道深入 80 英尺，『這就是 Hall of Records 實際完成的全部』，填表時禁止一般民眾進入、『用作儲藏』。Significance 段：這間大廳原要做成一個巨大的時光膠囊，存放與美利堅共和國及其向太平洋擴張有關的紀錄與文物；『除了 Borglum 以外沒人有興趣』，所以放棄。另記雕塑工作室展示 Borglum 的石膏模型與 Hall of Records 模型。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "掃描 OCR 有錯字；填表年份未讀清；寫於 1998 年封存之前，所以只說用作儲藏。",
+          "accessed_on": "2026-11-17",
+          "origin": "wave77-20261118",
+          "original_url": "https://npgallery.nps.gov/pdfhost/docs/NRHP/Text/66000718.pdf"
         }
       ]
     },
@@ -28261,6 +28489,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave35-20261112",
           "original_url": "https://sprezzatura.it/Arte/Arte_UFO_7.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-18113f1a0c10d473",
+      "url": "https://www.ntdtv.com/gb/2022/03/26/a103383884.html/amp",
+      "readings": [
+        {
+          "title": "【未解之謎】沙中龐貝 樓蘭之謎",
+          "publisher": "新唐人電視台網站，2022-03-26",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 28（200，62,773 bytes）HTML，去標籤後讀正文",
+          "reading_scope": "全文讀過",
+          "locator": "首段『它卻一下子消失』；『樓蘭古國盛極一時，然而到公元630年卻突然神祕地消失了』；末段各種消失說",
+          "summary": "流傳版本樣本：樓蘭『一下子消失，沒有在歷史上留下任何描述』『到公元 630 年卻突然神秘地消失』；列出『水源枯竭、被沙漠風暴吞沒』、戰爭『瞬間』毀滅、瘟疫留下死城等說法；同文也寫了前 77 年改名鄯善。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只當流傳版本樣本；文末有宗教性的說法，正片不引用。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.ntdtv.com/gb/2022/03/26/a103383884.html/amp"
         }
       ]
     },
@@ -30234,6 +30481,25 @@
       ]
     },
     {
+      "id": "SRC-19b17c94541e65e2",
+      "url": "https://www.cssn.cn/skgz/bwyc/202601/t20260119_5969780.shtml",
+      "readings": [
+        {
+          "title": "秦阿房宫前殿遗址项目入选“2025年度陕西六大考古新发现”",
+          "publisher": "中國社會科學網／中國社會科學報，2026-01",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 6（200，35,055 bytes），python 去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "第 2–4 段",
+          "summary": "阿房宮是秦始皇三十五年（前 212 年）開始在渭河南岸上林苑選址營建的朝宮；2025 年社科院考古所阿房宮與上林苑考古隊在台基中部偏東發掘，確認台基南緣、確認台基建在水『池』或湖泊的淤泥上，並首次揭示台基分塊夯築流程。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只談 2025 年發掘，沒有談火燒問題。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.cssn.cn/skgz/bwyc/202601/t20260119_5969780.shtml"
+        }
+      ]
+    },
+    {
       "id": "SRC-19b441ee5a4c183d",
       "url": "https://rowman.com/ISBN/9780759105393/Bigfoot-Exposed-An-Anthropologist-Examines-Americas-Enduring-Legend",
       "readings": [
@@ -32102,6 +32368,44 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%AD%90%E8%97%8F/%E7%B1%BB%E4%B9%A6/%E8%89%BA%E6%96%87%E7%B1%BB%E8%81%9A.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1b75ba18fcc451f3",
+      "url": "https://www.fabula.org/acta/document9003.php",
+      "readings": [
+        {
+          "title": "L'entrée des médiums : Hugo & l'écriture des Tables（評 Victor Hugo, Le Livre des Tables, éd. Patrice Boivin, Folio 2014）",
+          "publisher": "Acta fabula vol. 15 n° 9，2014 年 11 月（Stéphane Massonet）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 9（200，59,985 bytes）抓 HTML，python 去標籤後全文讀。",
+          "reading_scope": "第 1–9 段全讀；註腳掃過。",
+          "locator": "第 4 段（'Deux ans et demi durant, entre le 11 septembre 1853 et le 8 octobre 1855'、近百位靈的名單）；第 6 段（禁止出版、『未來的聖經之一』、『一陣大笑』）；第 7 段（四本紅皮筆記本失蹤、1962 與 1972 年重現、BnF）",
+          "summary": "學術書評：1852 年流亡後雨果租下澤西島 Marine Terrace；1853 年 9 月 Delphine de Girardin 來訪一週，帶來轉桌風潮，一場出現亡女 Léopoldine 的降靈讓全家信服；1853-09-11 到 1855-10-08 幾乎每天開場，紀錄多由雨果本人寫，與近百位『靈』對話（莎士比亞、但丁、拉辛、莫里哀、拜倫……以及『墳墓之影』『戲劇』等抽象存在）。桌子自己禁止出版紀錄；雨果認為時代會報以大笑，留待身後；但這些對話的影子出現在《靜觀集》《撒旦的末日》《威廉·莎士比亞》等作品，他還為《靜觀集》兩卷向桌子『請准』引用。四本紅皮筆記本在雨果死後從捐給國家圖書館的遺贈中消失，1923 年才部分出版，其中兩本 1962、1972 年先後重現並歸 BnF。書評者說這是『詩人、媒介、桌子、靈』的循環，而抄錄者的版本永遠有最後決定權。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手學術書評；結束日期與其他來源（1855 年 7 月）不一致，正片說『約兩年』。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.fabula.org/acta/document9003.php"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1b82c5a39d587bd3",
+      "url": "https://storytellingdb.com/pangu/",
+      "readings": [
+        {
+          "title": "Pangu: The Creator God of Chinese Mythology",
+          "publisher": "StorytellingDB（網路神話介紹站），年份未標",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 33（200，87,746 bytes）HTML 去標籤後以關鍵詞讀命中段",
+          "reading_scope": "讀名稱解釋與『The Real-world Origin of the Myths』段",
+          "locator": "『The Real-world Origin of the Myths』段",
+          "summary": "流傳版本樣本：說盤古傳說『undoubtedly ancient』，承認最早文字紀錄約在西元 3 世紀徐整，但說多數學者認為口傳更早，並引一位學者主張可上溯西周。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "通俗網站，只當流傳版本樣本；『多數學者同意』沒有出處。",
+          "origin": "wave77-20261118",
+          "original_url": "https://storytellingdb.com/pangu/"
         }
       ]
     },
@@ -35859,6 +36163,25 @@
       ]
     },
     {
+      "id": "SRC-1ebb1be75d90622b",
+      "url": "https://pfonline.com/articles/scientists-unearth-ancient-plating-techniques",
+      "readings": [
+        {
+          "title": "Scientists Unearth Ancient Plating Techniques",
+          "publisher": "Products Finishing（Gardner Business Media 的表面處理業雜誌網站），PF Editorial Team，2016-11-28",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 7（200，258,978 bytes）抓 HTML，python 去標籤後讀正文；發佈日依頁面 datePublished 欄位。",
+          "reading_scope": "全文讀過（主要講韓國佛像鍍金，秦劍只有一段與一張圖說）。",
+          "locator": "圖說『Qin dynasty sword on display』下一段（'The Chinese Qin Shihuang dynasty is credited with sophisticated chrome plating techniques…'）",
+          "summary": "流傳版本的樣本：業界雜誌寫秦始皇時代『被認為』擁有精密的鍍鉻技術，1974 年大發掘後科學家發現劍不但雙鑄、熱處理，還有 10–15 微米的氧化鉻鍍層，西方要到 1900 年代才用這種工藝；並把文物『奇蹟般』保存歸因於此。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "業界雜誌的轉述，沒有出處；只當流傳版本樣本，不當紀錄。『德美專利』的說法在這次讀到的來源裡都沒有出現。",
+          "origin": "wave77-20261118",
+          "original_url": "https://pfonline.com/articles/scientists-unearth-ancient-plating-techniques"
+        }
+      ]
+    },
+    {
       "id": "SRC-1ebd6cab39942984",
       "url": "https://en.wikisource.org/wiki/Page:Popular_Science_Monthly_Volume_78.djvu/463",
       "readings": [
@@ -38701,6 +39024,25 @@
           "limitations": "二手彙整；Ibn Wasif Shah、Makrizi、Suyuti、Murtadi 原書本輪都沒讀，年代也沒在本頁讀到。",
           "origin": "wave43-20261112",
           "original_url": "https://archive.org/download/cu31924028717324/cu31924028717324_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-218d35d689d9c7c6",
+      "url": "https://www.nippon.com/ja/japan-topics/g01040/",
+      "readings": [
+        {
+          "title": "「打狗」から「高雄」へ ――高雄の由来は京都？ 東京？",
+          "publisher": "nippon.com（公益財團法人ニッポンドットコム），作者為台灣的研究者，約 2020–2021 年",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 15（200，68,361 bytes），python 去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "『実際には、なぜ…公式の説明はない』段；『1920年に名称を変更した行政区域は高雄だけではなかった』段；『宗藤は、1939（昭和14）年6月3日付け』段；『京都起源説』段；『実際のところ…絶対的なルールはなかった』段",
+          "summary": "總督府選了和『打狗』日語發音相同、漢字不同的『高雄』；為什麼改名沒有官方說明。1920 年 8 月 10 日府令第 47 號把 12 廳改為 5 州 2 廳，9 月 1 日施行；同年改名的還有打貓→民雄、阿緱→屏東、蕃薯寮→旗山，做法有音近漢字、風景名、簡化成日本風讀音。日治公文書多記『改名高雄』卻幾乎不說經緯。1923 年一本見聞錄說『高雄』應念 タ・カ・オ。最早說明由來的是第六任高雄市長，他在 1939 年 6 月 3 日的報上隨筆寫：1920 年總督府地方課長提議改成同音的『高尾』，但『尾』印象不好，最後用同音、取『高く雄々しく飛翔する』之意的『高雄』。京都高雄山說是今天的定說，傳說是當時總務長官喜歡京都，但作者說找不到根據，該長官的日記也沒有記錄。2020 年有人提『又高又雄』的說法而引起熱議，教育部隨即貼文採京都說。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手考證文章；1939 年隨筆只見作者轉述與一張剪報圖，正文寫『台湾日報』、圖說寫『臺灣日日新報』，報名不一致；本次沒讀到原報。（覆核補：同一篇內人名也前後不一：地方課長寫作水越幸一／水越浩一，總務長官寫作下村宏／下村弘，總督寫作田健次郎，而高雄市府 ZW0-S011 寫田健治郎；府令第 47 號只見《府報》第 2177 號的圖說，原件沒讀到。）",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.nippon.com/ja/japan-topics/g01040/"
         }
       ]
     },
@@ -44257,6 +44599,25 @@
       ]
     },
     {
+      "id": "SRC-27724b45aeb9d497",
+      "url": "https://tais.ith.sinica.edu.tw/browse-0000587553.html",
+      "readings": [
+        {
+          "title": "〔府屬〕中治稔郎任府通信屬",
+          "publisher": "中央研究院臺灣史研究所 臺灣史檔案資源系統（臺灣總督府公文類纂，大正九年永久保存進退（判）第十二卷）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 21（200，12,036 bytes）下載 HTML，只讀到全宗層級的標題頁",
+          "reading_scope": "只有檔案標題與所屬卷冊，沒有影像或內文",
+          "locator": "臺灣總督府公文類纂 > 大正8年至10年永久保存公文類纂 > 大正九年永久保存進退(判)第十二卷",
+          "summary": "證明有一位名叫中治稔郎的人在 1920 年（大正九年）被任命為臺灣總督府通信屬（遞信系統的判任官），與『退休郵政人員創教』的說法相合，但不能證明他創了天母教。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有標題；不能撐起任何天母教細節。",
+          "origin": "wave77-20261118",
+          "original_url": "https://tais.ith.sinica.edu.tw/browse-0000587553.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-2773fd917886dbe9",
       "url": "https://lab.ndl.go.jp/dl/book/951495?page=59",
       "readings": [
@@ -45605,6 +45966,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://web.archive.org/web/20070320204243/http://www.nationalledger.com/artman/publish/article_272612175.shtml"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2893787d2f1cbf74",
+      "url": "https://www.nps.gov/moru/learn/historyculture/hall-of-records.htm",
+      "readings": [
+        {
+          "title": "Hall of Records - Mount Rushmore National Memorial",
+          "publisher": "美國國家公園管理局（NPS），頁面註明最後更新 2023-03-28",
+          "read_via": "fetch.sh seq 1（200，43,769 bytes）下載 HTML，以 python 去標籤後讀全文。覆核 R772 seq 1 重抓（200，43,769 bytes，sha256 前綴相同 f5b2bb6980c878a7）。",
+          "reading_scope": "全文讀過：The Idea、Location、The Plan、Construction、The Hall of Records Today 五節與兩段圖說",
+          "locator": "'The Idea'、'The Plan'、'Construction'、'The Hall of Records Today' 各節",
+          "summary": "Borglum 原想在山上刻一大塊約 80×120 英尺、形如路易斯安那購地的銘文，因字太小看不清、且那塊岩面後來要刻林肯而放棄；改計畫在頭像後方小峽谷北壁鑿一間 80×100 英尺的大廳，用 800 英尺花崗岩階梯上去，裡面用銅與玻璃櫃放憲法、獨立宣言等文件、名人胸像與美國對世界貢獻的清單，門口要放一隻翼展 38 英尺的銅鷹。1938 年 7 月到 1939 年 7 月實際只炸出一條 70 英尺、很粗糙、越往裡越尖的隧道；1939 年國會指示經費只能用在頭像上，工程停止；Borglum 1941 年過世，同年 10 月 31 日全部工程結束。1998 年 8 月 9 日在入口地面放進一個儲存庫：柚木盒、外套鈦金屬箱、上蓋花崗岩石板，石板刻 Borglum 的一段話；裡面是 16 片琺瑯瓷板，內容是總統山怎麼刻成、誰刻的、為什麼選這四位總統、以及一段美國簡史；不開放參觀，是留給『幾千年後的人』的紀錄。頁首引 Borglum 1939 年語：不附說明就把刻好的山送進歷史，就像寄一封沒有地址也沒有署名的信。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "機構簡介頁，未附原始計畫書或 1998 年封存儀式紀錄；隧道長度與 ZW2-S002（80 英尺）不同。",
+          "accessed_on": "2026-11-17",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.nps.gov/moru/learn/historyculture/hall-of-records.htm"
         }
       ]
     },
@@ -48715,6 +49095,25 @@
       ]
     },
     {
+      "id": "SRC-2b4eb9a700d7e25f",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000012927/000001292798000007/0000012927-98-000007.txt",
+      "readings": [
+        {
+          "title": "The Boeing Company Form 10-K，fiscal year ended December 31, 1997",
+          "publisher": "Boeing 向 SEC 申報，1998-03-04 申報",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 30（200，741,094 bytes），以 python 去空白後讀 Item 1、Item 7 合併段、Item 10 Executive Officers 名單與交付量表",
+          "reading_scope": "讀了 Item 1 開頭（商用機產品線與合併說明）、MD&A 的合併段、交付量表、Item 10 全部高階主管名單、封面的流通股數；財報附註與附件大多沒讀",
+          "locator": "Item 1 首段『Effective August 1, 1997』；Item 10『The executive officers of the Company as of February 23, 1998』；交付量表（737 135、MD-80 16、MD-90 26、MD-11 12 等）；封面『As of January 30, 1998, there were 973,467,522 common shares outstanding held by nonaffiliates』",
+          "summary": "1997-08-01 麥道公司與波音的一家子公司合併，每 1 股麥道換 1.3 股波音，波音為此發行 2.773 億股，麥道成為波音的子公司，合併後以 The Boeing Company 名義營運，會計上採權益結合法（pooling of interests），不認列商譽；合併須經美國 FTC 與歐盟執委會核准。1998 年 2 月 23 日列出的 24 位高階主管中，簡歷寫著來自麥道的有 5 位（總裁兼營運長＝麥道前執行長、華府事務、共用服務、麥道軍機與飛彈、Phantom Works），其餘多為波音原班。產品線：MD-80、MD-90 預計 1999 年後停產，MD-11 只剩貨機版前景，MD-95 改名 717。1997 年交付：737 共 135 架，三款麥道客機合計 54 架。1998 年 1 月非關係人持有的流通股約 9.73 億股，（與 2.773 億股相比可推知麥道舊股東是少數股東；比例是推算，文件沒寫。）",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "公司自己的申報；主管名單只到 1998 年 2 月，之後人事變動不在此文件。股權比例是我用兩個數字自己算的近似值，不是文件寫的。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.sec.gov/Archives/edgar/data/0000012927/000001292798000007/0000012927-98-000007.txt"
+        }
+      ]
+    },
+    {
       "id": "SRC-2b4ebcc88b6b128f",
       "url": "https://archive.org/details/westernaustralia00gold",
       "readings": [
@@ -49048,6 +49447,25 @@
       ]
     },
     {
+      "id": "SRC-2ba479c82d8bb2f3",
+      "url": "https://ntrs.nasa.gov/api/citations/19690002499/downloads/19690002499.pdf",
+      "readings": [
+        {
+          "title": "Biological Investigations in Outer Space (Zond-5)，NASA 譯稿 ST-PR-SB-10773",
+          "publisher": "NASA Goddard Space Flight Center 委託 Volt Information Sciences 英譯，1968 年 11 月 19 日；原文為 1968 年 11 月 15 日《真理報》第 320 號，蘇聯科學院一位通訊院士與三位研究人員署名",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 2（200，177,207 bytes）下載 PDF，pdftotext -layout 讀全文",
+          "reading_scope": "全文 3 頁（含譯者摘要）都讀過",
+          "locator": "頁 1 譯者 ABSTRACT；頁 1–2『Following were the living objects placed aboard ZOND-5』；頁 2『Upon return to Earth, turtles were active』段",
+          "summary": "蘇聯研究者在《真理報》公布的初步結果：艙內生物有編號 22 與 37 的兩隻烏龜、果蠅、麵粉甲蟲、帶花苞的紫露草、小麥松樹大麥等種子、小球藻與溶原性細菌等；生物容器附近的劑量計累積劑量只有『幾 rad』，主要在穿越地球輻射帶時累積。烏龜回到地球後很活躍、到處爬、食慾很好，飛行期間體重減少 10%；血液指標（白血球、紅血球、血紅素）和對照組沒有明顯差異；但在濺落後 20 天內做的器官組織化學分析中，飛行組烏龜的肝臟肝醣與鐵含量增加，脾臟結構也受到影響。作者說分析才剛開始，只是很初步的結果。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "是 NASA 的英譯（譯者自言略去面向大眾的一般性段落），不是蘇聯的正式科學報告；只到初步結果，沒有寫烏龜最後的處置，也沒有寫對照組的體重變化。",
+          "origin": "wave77-20261118",
+          "original_url": "https://ntrs.nasa.gov/api/citations/19690002499/downloads/19690002499.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-2ba65fb25ff10916",
       "url": "https://archive.org/download/omni-1979-08/omni-1979-08.pdf",
       "readings": [
@@ -49331,6 +49749,25 @@
           "limitations": "訃告只證明姊妹過世的日期與他的所在地，不涉及石頭事件本身。報名依 Delpher 出版者欄推定。",
           "origin": "wave15-20261102",
           "original_url": "http://resolver.kb.nl/resolve?urn=MMRHCG04:235111176:mpeg21:a00016"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2be8cded1b5e361e",
+      "url": "https://odd.setn.com/News/1650576",
+      "readings": [
+        {
+          "title": "萬曆皇帝為何28年不上朝？考古學家：有這腿…換你也不上（歷史搜奇 Odd，大陸中心／綜合報導）",
+          "publisher": "三立新聞網",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 8（200，28,232 bytes）HTML 去標籤後讀正文",
+          "reading_scope": "全文",
+          "locator": "末兩段『西元1956年，考古專家們對萬曆帝的明定陵進行挖掘…』",
+          "summary": "流傳版本樣本：說考古專家把萬曆屍骨『復原』後發現兩腿不等長，右腿扭曲、明顯比左腿短，判斷他生前有嚴重足疾與肌肉攣縮、行走困難，『或許這是他多年不上朝的原因』；配圖說明翻攝自百度百科。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "綜合報導，沒有引用發掘報告或任何鑑定原文；發布日期頁面未明示。",
+          "origin": "wave77-20261118",
+          "original_url": "https://odd.setn.com/News/1650576"
         }
       ]
     },
@@ -52010,6 +52447,25 @@
       ]
     },
     {
+      "id": "SRC-2e825c3fd4d33204",
+      "url": "https://www.hk01.com/%E6%AD%A6%E5%82%99%E5%BF%97/498228/%E5%85%B5%E5%99%A8-%E8%A1%80%E6%BB%B4%E5%AD%90-%E4%B8%AD%E5%9C%8B%E5%8F%A4%E4%BB%A3%E6%9C%80%E7%A5%9E%E7%A7%98%E6%9A%97%E5%99%A8-%E9%9B%BB%E5%BD%B1%E4%BD%9C%E5%93%81%E5%8A%A0%E5%B7%A5%E6%88%90%E4%BB%8A%E6%97%A5%E8%AA%8D%E7%9F%A5",
+      "readings": [
+        {
+          "title": "【血滴子】中國古代最神秘暗器　電影作品加工成今日認知（賴家俊）",
+          "publisher": "香港01 武備志，2020-07-15",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 44（200，494,279 bytes），去標籤後讀全文",
+          "reading_scope": "正文全讀",
+          "locator": "小標『神秘血滴子與野史中的雍正』『有關血滴子的電影』",
+          "summary": "說血滴子不見於歷史記載，只流傳於清末民初小說，列舉《胤禛外傳》《呂四娘演義》《雍正劍俠圖》（童林傳）《清史演義》等，並說《茅山奇談錄》另有一個『茅山道人發明、被雍正偷用』的版本；今天大家熟悉的『飛盤一樣旋轉、罩頭割首』外形，是 1970 年代香港電影（1975 年《血滴子》、1976 年另一部）與電視劇加工的；國家地理頻道曾做一比一模型實驗，對準不動的假人也要試好幾次才成功一次。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "通俗專欄，書名清單沒有出版年也沒有引原文；哪一部最早，本文沒有說。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.hk01.com/武備志/498228/兵器-血滴子-中國古代最神秘暗器-電影作品加工成今日認知"
+        }
+      ]
+    },
+    {
       "id": "SRC-2e8d8af3bbcb2062",
       "url": "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Louis_XIV._of_France",
       "readings": [
@@ -52119,6 +52575,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave1-20261101",
           "original_url": "https://canadashistory.ca/explore/transportation/s-s-baychimo-icebound"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2ea221f300afa282",
+      "url": "https://www.ndl.go.jp/kaleido/entry/33/4.html",
+      "readings": [
+        {
+          "title": "本の万華鏡 第33回 NINJA 虚像と実像 秘伝之巻 忍術書を読んでみよう",
+          "publisher": "國立國會圖書館（日本），電子展示",
+          "accessed_on": "2026-11-18",
+          "read_via": "覆核者 R770 以 fetch.sh seq 2（200，23,609 bytes）請求；網址取自 ZW0-S001 頁面上的連結（href=\"/kaleido/entry/33/4.html\"），python 去標籤後讀『万川集海』『正忍記』兩節",
+          "reading_scope": "『忍術の百科事典『万川集海』』『忍術であの子と仲良しに？『正忍記』の世界』兩節；『忍秘伝』節掃過",
+          "locator": "『万川集海』節首段；『正忍記』節第 1–3 段",
+          "summary": "《萬川集海》延寶 4 年（1676）由藤林保武寫成，22 卷；《正忍記》延寶 9 年（1681）由紀州藩的名取正澄寫成，原典未發現，國會圖書館保存並公開一部寬保 3 年（1743）傳授的抄本；『忍び六具』與忍者的變裝方式（七方出）是《正忍記》介紹的。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "仍是國會圖書館的普及展示頁；顏色清單本身在 ZW0-S001，不在此頁；《正忍記》抄本影像本次沒讀。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.ndl.go.jp/kaleido/entry/33/4.html"
         }
       ]
     },
@@ -56689,6 +57164,25 @@
       ]
     },
     {
+      "id": "SRC-31d8f7f07ff5a002",
+      "url": "https://archive.org/download/documents-sur-eusapia-palladino-institut-general-psychologique-section-des-reche/Documents_sur_Eusapia_Palladino_Institut%20g%C3%A9n%C3%A9ral_psychologique_Section_des_recherches_psychiques_et_physiologiques%281%29_djvu.txt",
+      "readings": [
+        {
+          "title": "Documents sur Eusapia Palladino（含 Rapport sur les séances d'Eusapia Palladino à l'Institut Général Psychologique en 1905, 1906, 1907, 1908）",
+          "publisher": "Institut Général Psychologique, Section des recherches psychiques et physiologiques, 1909（Bulletin de l'IGP；掃描源自 Gallica／BnF，Internet Archive 2024 年上傳）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 13（advancedsearch 找到條目）、seq 14（metadata）、seq 15（200，402,327 bytes）下載 djvu OCR 文字檔，以 grep 與 sed 讀相關段",
+          "reading_scope": "讀了報告開頭（三個系列的場次數）、1905 與 1906 場地段、皮耶・居禮死後場次段、居禮的布管裝置段、1907 年秤繭天平（pèse-cocon）段、『LES SUPERCHERIES』開頭的頭髮與換手段、『Y a-t-il eu fraude?』段與十條 CONCLUSIONS；後面 1908-11-30 的討論會紀錄只掃過；OCR 錯字多，頁碼頁眉有重複",
+          "locator": "Rapport 開頭『Eusapia Palladino a donné trois séries de séances…13 séances…16…14』；『En 1906, du 27 mars au 10 avril, cinq séances』；『Après la mort de M. Pierre Curie, onze séances (du 28 avril au 2 juillet)』；『(1906-IV-5,6)…M. Curie avait apporté un dispositif』；『(1907-IV-10)』之後『Mme Curie et M. Debierne s'étaient aperçus…』；『LES SUPERCHERIES』；『CONCLUSIONS』第 1–10 條",
+          "summary": "報告由 IGP 的 Jules Courtier 執筆，涵蓋 1905–1908：三個系列分別 13、16、14 場；1906 年 3 月 27 日到 4 月 10 日在 IGP 圖書室有 5 場，皮耶・居禮死後（4 月 28 日到 7 月 2 日）又在另一位成員家開 11 場。紀錄寫居禮親自擔任左右手的『控制者』，曾用綁住手腳、拍照、紀錄儀；他對裙擺鼓起的現象印象深，構想用黑色羊毛布管『引導』這股力，下一場就帶了兩個木框撐起的布管裝置。速記紀錄留下他的話：小圓桌『畫了一條漂亮的弧線，沒有碰到我』。同一份報告也列出作弊：1907 年秤繭天平實驗中，瑪麗・居禮與 Debierne 注意到她把手指併在秤盤前，『必要時可以在雙手間拉一根很細的線』；另有用頭髮弄動秤盤的『le cheveu』、換手（讓兩側控制者的手都碰到她同一隻手，空出另一隻）是她多年來常見的作弊。十條結論：桌子移動與抬起『有紀錄證明』，部分似乎無接觸；但人形與觸碰『已在部分情況確認作弊』，第 10 條寫『與會者遭受的作弊，其範圍難以確切界定』。 報告也寫明：早在 1905 年 Youriévitch 的記錄天平就加了木框，目的是防止有人用線壓秤盤；1907 年秤繭天平實驗的設計同樣以防『很細的線或頭髮』為前提。指出手指併攏、可能拉細線的是『Mme Curie et M. Debierne』兩人，Debierne 並向 Branly 說明細線假說，Perrin 隨後用一根頭髮重現了秤盤下壓。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "OCR 品質差，引語需對照 PDF 原頁；結論是委員會集體結論，不等於居禮夫婦個人看法；1907 年秤盤事件的確切場次以 OCR 上下文推定。",
+          "origin": "wave77-20261118",
+          "original_url": "https://archive.org/download/documents-sur-eusapia-palladino-institut-general-psychologique-section-des-reche/Documents_sur_Eusapia_Palladino_Institut%20g%C3%A9n%C3%A9ral_psychologique_Section_des_recherches_psychiques_et_physiologiques%281%29_djvu.txt"
+        }
+      ]
+    },
+    {
       "id": "SRC-31e53d62e020d85c",
       "url": "https://raw.githubusercontent.com/textcreationpartnership/A00943/master/A00943.xml",
       "readings": [
@@ -57242,6 +57736,25 @@
       ]
     },
     {
+      "id": "SRC-325e7d948997866a",
+      "url": "https://archive.org/download/centralasiatibet02hediuoft/centralasiatibet02hediuoft_djvu.txt",
+      "readings": [
+        {
+          "title": "Central Asia and Tibet: Towards the Holy City of Lassa, Vol. II（Sven Hedin）",
+          "publisher": "Hurst and Blackett，London，1903；Internet Archive 掃描（多倫多大學藏本）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 21（200）archive.org advancedsearch 找條目；seq 22（200，129,110 bytes）讀 metadata 取得檔名；seq 23（200，1,237,040 bytes）下載 OCR 全文，以 grep／sed 讀相關章；作者卒年依 seq 22 metadata 的 creator 欄『Hedin, Sven Anders, 1865-1952』",
+          "reading_scope": "讀了第 VI 章〈The Ruins of Ancient Lop-nor〉頁 111–115 與第 VII 章〈Lou-lan〉頁 139–150；其餘章節未讀",
+          "locator": "第 VI 章頁 111–112（3 月 3 日起的搜尋）；第 VII 章頁 139–144（Himly 摘要）、頁 144–150（Macartney 全文）",
+          "summary": "第 VI 章：探險隊在羅布泊北岸的雅丹地帶找到幾座泥塔與房屋遺跡，撿到中國錢幣、陶器、銅燈等；赫定說他改變原定路線『就是為了回到這裡』。第 VII 章收兩篇解讀：德國漢學家 Himly 1902 年在 Petermanns Mitteilungen 的文章說，出土木簡與紙片上多次出現『樓蘭』，是寄達或保存信件的地點；紀年有 264、265（泰始六年）、266、268、269、270 年，一片紙提到 310 年；他的結論是『這座城看起來是在四世紀初被沙漠風暴或洪水、或兩者一起毀掉的』。英國駐喀什代表 Macartney 1903 年在 Geographical Journal 的文章摘要《前漢書》：西元前 77 年漢將傅介子在宴席上刺殺樓蘭王，立其弟為王，『以鄯善這個新名字重建這個國家』，並應新王之請在伊循（E-tun）屯田；當時鄯善有 1,570 戶、14,100 人、勝兵 2,912 人，王治扜泥（Wu-ni）。他也引法顯：五世紀法顯走 17 天到鄯善國，國王信佛，有僧四千餘人。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "OCR 有錯字；《漢書》內容是 1903 年英譯摘要，不是原文（中文原文本輪沒讀到）。Himly 的『沙暴或洪水』是當時的推測，不是證據。 Himly 同段也引玄奘 645 年見到居民被逐、房屋被沙埋的記載；Macartney 摘要說前 77 年的事件結束了樓蘭的獨立地位。",
+          "origin": "wave77-20261118",
+          "original_url": "https://archive.org/download/centralasiatibet02hediuoft/centralasiatibet02hediuoft_djvu.txt"
+        }
+      ]
+    },
+    {
       "id": "SRC-326e5a1f88c9d79e",
       "url": "https://www.gutenberg.org/cache/epub/57493/pg57493-images.html",
       "readings": [
@@ -57594,6 +58107,25 @@
           "limitations": "OCR 文字；是若狭守護家的編年紀錄，成書年代晚於事件、未考。這份紀錄沒有說象後來去了哪裡；『就是 1411 年送到朝鮮的那一頭』是推論，本輪沒有讀到論證兩者為同一頭的學術文章。",
           "origin": "wave17-20261102",
           "original_url": "https://lab.ndl.go.jp/dl/api/book/fulltext-json/1879715"
+        }
+      ]
+    },
+    {
+      "id": "SRC-32c4398eee360604",
+      "url": "https://opinvisindi.is/bitstreams/0eabf4d2-e0fe-4931-9ee7-6239b056821d/download",
+      "readings": [
+        {
+          "title": "The world's earliest Aral-Sea type disaster: the decline of the Loulan Kingdom in the Tarim Basin（Mischke 等）",
+          "publisher": "Scientific Reports 7:43102，2017（Springer Nature，開放取用）；冰島大學機構典藏 Opin vísindi 存本",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 25（200，460,726 bytes）讀典藏記錄頁取得 PDF 連結與授權（openAccess）；seq 26（200，1,795,901 bytes）下載 PDF，以 pdftotext 轉文字讀。另 seq 24 PMC 頁回 reCAPTCHA 驗證頁，該網域本輪停用",
+          "reading_scope": "讀摘要、引言、Results 末段與 Discussion 前半；方法細節與圖表只掃過",
+          "locator": "Abstract；Introduction 第 2–3 段（『Historical documents describe diminishing river discharge…』）；Discussion 第 1–2 段",
+          "summary": "樓蘭王國在漢代（前 206–220）繁盛，於漢末到 645 年之間被放棄；有機遺物的碳十四結果顯示城市放棄開始不早於西元 230±66 年，留下約 200–645 年的衰落期；史料記載約 270 年後河水減少、兵士糧食配給減少；645 年玄奘經過時城已廢。作者用羅布泊湖泊沉積分析，主張衰落是類似鹹海危機的人為環境災難：中游為灌溉大量取水，使下游缺水、羅布泊水位驟降，而不是氣候變化；鄰近漢朝範圍外的湖泊同期反而較濕。文中寫赫定 1899 年『重新發現』樓蘭。",
+          "rights": "OPEN_ACCESS_ACADEMIC",
+          "limitations": "『人為取水』是這篇論文的論點，引言自己說過去研究多認為是氣候惡化，學界未定；它寫的 1899 年與赫定書中的行程年份不一致（見 notes）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://opinvisindi.is/bitstreams/0eabf4d2-e0fe-4931-9ee7-6239b056821d/download"
         }
       ]
     },
@@ -66551,6 +67083,25 @@
       ]
     },
     {
+      "id": "SRC-3a340e1be509a052",
+      "url": "https://www.nobelprize.org/alfred-nobel/alfred-nobels-will",
+      "readings": [
+        {
+          "title": "Alfred Nobel's will",
+          "publisher": "NobelPrize.org（Nobel Prize Outreach），2026 年版頁面",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 20（200，168,706 bytes），python 去標籤後讀正文",
+          "reading_scope": "正文與遺囑節錄",
+          "locator": "首段『third and last will』；遺囑節錄段",
+          "summary": "1895 年 11 月 27 日在巴黎瑞典挪威俱樂部簽下『第三份也是最後一份』遺囑；開讀後在瑞典與國際引起爭議，家族反對、指定的頒獎機構一開始也拒絕，五年後 1901 年才首次頒獎。遺囑節錄：其餘可變現資產成立基金，利息每年分五份頒給前一年對人類貢獻最大者（物理、化學、生理或醫學、文學、和平），並要求不考慮國籍。頁面完全沒有提到訃聞。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "機構頁面；沒有談動機。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.nobelprize.org/alfred-nobel/alfred-nobels-will"
+        }
+      ]
+    },
+    {
       "id": "SRC-3a41ef234711964d",
       "url": "https://raw.githubusercontent.com/greshko/naibbe-cipher/main/README.md",
       "readings": [
@@ -67670,6 +68221,25 @@
           "limitations": "1885 年博物館拒收是「據當地傳聞」。",
           "origin": "wave1-20261101",
           "original_url": "https://archive.archaeology.org/0805/etc/indy.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3b63b77a1ab36398",
+      "url": "https://www.storm.mg/lifestyle/4158585",
+      "readings": [
+        {
+          "title": "清朝「貪污之王」和珅到底貪了多少錢？（原標題：和珅貪汙八億兩？一切都是為了革命大業）",
+          "publisher": "風傳媒〈風生活〉，經岳麓書社授權轉載《新週刊》雜誌社編《顯微鏡下的古人生活》書摘",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 16（200，841,276 bytes），python 去標籤後讀正文",
+          "reading_scope": "全文讀過",
+          "locator": "小節『和珅家產有多少，八億兩傳聞哪裡來？』；末段『唯一可信的史料，就只有上諭、參與查抄臣僚的奏摺和內務府的摺片』",
+          "summary": "這份清單經《止園筆談》《庸盦筆記》《見聞瑣錄》《殛珅志略》《清稗類鈔》等筆記流傳；1910 年初版的《檮杌近志》寫『百有九號，就中估價者二十六號，已值二百二十三兆兩有奇；未估者尚八十三號，論者謂以此比例算之，又當八百兆兩有奇』，這就是『八億兩、相當清朝十餘年財政收入』的由來；文章說這本書收入革命派人士編的《滿清野史》，有反清宣傳的作用（文中推測編者可能就是清單作者，屬推測）。又說嘉慶在吳熊光奏摺上表示對和珅家人隱匿民間的財產網開一面，同日卻密旨把花園金銀器皿交內務府。結論：可信的上諭、奏摺與內務府摺片加起來不超過四千萬兩，保守估計約一千萬兩上下。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "大眾書摘，沒有逐條註出處；『編者可能是清單作者』只是推測，正片不用；它的上限（四千萬、一千萬）與 ZW7-S005 的 485 萬不同，正片只說『學者估算從幾百萬到一千萬兩上下』。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.storm.mg/lifestyle/4158585"
         }
       ]
     },
@@ -68796,6 +69366,25 @@
       ]
     },
     {
+      "id": "SRC-3c638b74c2c45211",
+      "url": "https://www.aisixiang.com/data/117369.html",
+      "readings": [
+        {
+          "title": "清仁宗反腐（學者專欄）",
+          "publisher": "愛思想網轉載，一位已故復旦大學史學家的專欄文章",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 8（200，26,233 bytes），python 去標籤後讀正文",
+          "reading_scope": "全文讀過",
+          "locator": "第 5 段『他突袭和珅得手，发布上谕，说抄没和珅家产，凡编为一百零九号』",
+          "summary": "流傳版本的樣本（學者也這樣寫）：說嘉慶發布上諭，公布 109 號清單中已估價的 26 號總值 2 億 2,389 萬餘兩，『已是當時國庫每年稅收總額的三倍多』，之後不再公布其餘 83 號；引《東華續錄》嘉慶四年四月副都統萨彬圖請查隱匿財產被申斥一事；並說『據有的清史學者推算』總值不下八億兩，近四分之三進了皇帝內庫，因此民間傳出『和珅跌倒，嘉慶吃飽』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "評論專欄，沒有說 109 號那段『上諭』的出處；作者 2012 年過世，正片不點名，只當『連史學家都這樣寫』的樣本。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.aisixiang.com/data/117369.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-3c63e568db33c157",
       "url": "https://commons.wikimedia.org/wiki/File:Castle_tower_and_Emperor_William%27s_Monument,_Konigsberg,_East_Prussia,_Germany_(i.e.,_Kaliningrad,_Kaliningradskai%EF%B8%A0a%EF%B8%A1_oblast%CA%B9,_Russia)-LCCN2002714011.jpg",
       "readings": [
@@ -69264,6 +69853,25 @@
           "limitations": "只是關鍵字檢索，OCR 漏字可能使檢索失手；用來說明 Jolly 1880 把 Pennant 的說法標成 1771 年，與我讀到的 1776 年附錄不一致，片中只說『目前讀到 Pennant 的這段在 1776 年的第二部附錄』。",
           "origin": "wave41-20261112",
           "original_url": "https://archive.org/download/bim_eighteenth-century_a-tour-in-scotland-mdcc_pennant-thomas_1771/bim_eighteenth-century_a-tour-in-scotland-mdcc_pennant-thomas_1771_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3cd483de3c47db62",
+      "url": "https://www.chinanews.com.cn/cul/2022/06-13/9778609.shtml",
+      "readings": [
+        {
+          "title": "三星堆公布最新发掘成果：确认三星堆祭祀坑年代 新发现小祭祀坑群",
+          "publisher": "中国新闻网，2022-06-13（四川廣漢三星堆遺址考古發掘階段性成果新聞通氣會報導）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 11（200，65,972 bytes）HTML，去標籤後讀正文",
+          "reading_scope": "全文讀過",
+          "locator": "第 1 段、『冉宏林介绍』段、末段『若干新器物显示…』",
+          "summary": "2020–2022 年新發現的 6 座祭祀坑共出土編號文物近 13,000 件，相對完整的 3,155 件。四川省文物考古研究院三星堆考古研究所負責人說：近 200 個樣品做碳十四測年，數據集中在西元前 1131–1012 年；除有打破關係的 5、6 號坑稍晚外，3、4、7、8 號坑埋藏年代一致，為商代晚期，距今約 3,200–3,000 年，解決了 30 年來的年代爭議。3、8 號坑的銅尊、銅罍、銅瓿是『中原殷商文化的典型銅器』；3、4 號坑的玉琮來自甘青地區齊家文化；神樹、頂尊跪坐人像與大量龍形象顯示其認同與禮儀和中國其他地區人群相近。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞稿式報導，轉述考古單位發布會；不是發掘報告本身。1999 年《三星堆祭祀坑》報告與 1987 年《文物》簡報本輪沒讀到。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.chinanews.com.cn/cul/2022/06-13/9778609.shtml"
         }
       ]
     },
@@ -70949,6 +71557,25 @@
       ]
     },
     {
+      "id": "SRC-3e98003e80e88740",
+      "url": "https://archive.org/download/pgcommunitytexts23817gut/23817-0.txt",
+      "readings": [
+        {
+          "title": "閱微草堂筆記（紀昀著；Project Gutenberg EBook #23817，2007 年 12 月發布，Wan Jei Chen 製作）",
+          "publisher": "Project Gutenberg 電子文本，Internet Archive 的 pgcommunitytexts 收藏轉存",
+          "accessed_on": "2026-11-17",
+          "read_via": "gutenberg.org 本身在維護（seq 18、19 回 503），改由 archive.org：seq 20 advancedsearch 找到 pgcommunitytexts23817gut，seq 21 讀 /metadata，seq 22（200，1,180,435 bytes）依 metadata 檔名下載 23817-0.txt，python 以字串搜尋",
+          "reading_scope": "讀序（盛時彥序、鄭開僖序）；全文以程式搜尋『和珅、和相、和中堂、珅、致齋』與『石庵、劉文正、乾隆』，並抽讀命中段落；沒有逐則通讀",
+          "locator": "盛時彥〈原序〉（嘉慶庚申，說合《灤陽消夏錄》等五書為一編）；劉石庵命中段如『劉石庵參知言，諸城濱海處…』『擬請劉石庵補書…』",
+          "summary": "全書由《灤陽消夏錄》《如是我聞》《槐西雜志》《姑妄聽之》《灤陽續錄》五書合成，盛時彥序寫於嘉慶庚申（1800）。全文搜尋『和珅』『珅』都是 0 次；同一部書裡『劉石庵』（劉墉）出現 3 次（『石庵』4 次）、『劉文正公』（劉統勳）4 次、『乾隆』64 次。和珅在這部筆記裡一次都沒有出現。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "這是 Gutenberg 的志工電子本，底本與是否有缺漏未查；『0 次』只對這個本子成立，正片宜說『在通行的全文本裡搜尋不到』。也沒查《紀文達公遺集》（詩文、奏摺）是否提到和珅。",
+          "origin": "wave77-20261118",
+          "original_url": "https://archive.org/download/pgcommunitytexts23817gut/23817-0.txt"
+        }
+      ]
+    },
+    {
       "id": "SRC-3e9ae38cd0ee5c5e",
       "url": "http://www.loc.gov/resource/sn78002169/1946-02-24/ed-1/?sp=5",
       "readings": [
@@ -72567,6 +73194,25 @@
           "limitations": "現代譯文只轉述意思、不轉載；Thomas 1941 譯本仍有版權。",
           "origin": "wave43-20261112",
           "original_url": "https://math.nyu.edu/Archimedes/Mirrors/Tzetzes.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4031b32608173a26",
+      "url": "https://udn.com/news/story/7323/9316788",
+      "readings": [
+        {
+          "title": "關羽斬華雄、顏良、文醜？正史都推翻（聚傳媒特約記者報導）",
+          "publisher": "聯合新聞網轉載聚傳媒，2026-02-09",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 28（200，180,490 bytes）下載 HTML，去標籤後讀前半篇",
+          "reading_scope": "讀了溫酒斬華雄與顏良段；文醜以後只掃過",
+          "locator": "第三、四段『以「溫酒斬華雄」為例』",
+          "summary": "流傳版本樣本：重述演義『曹操吩咐端上的酒還溫熱，關羽已經出戰斬下華雄首級並歸來』，再引正史『堅復相收兵，合戰於陽人，大破卓軍，梟其都督華雄等』說殺華雄的是孫堅部隊；但把這句的出處寫成《三國志·武帝紀》（掃描 ZW3-S009 顯示它在吳志卷一的孫堅傳）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "通俗報導，只作樣本；它自己的出處就寫錯了。",
+          "origin": "wave77-20261118",
+          "original_url": "https://udn.com/news/story/7323/9316788"
         }
       ]
     },
@@ -76213,6 +76859,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://lab.ndl.go.jp/dl/api/book/fulltext-json/771066"
+        }
+      ]
+    },
+    {
+      "id": "SRC-437c53a5c0aad0c1",
+      "url": "https://www.hallofmaat.com/orioncorrelation/orion-and-the-giza-pyramids/",
+      "readings": [
+        {
+          "title": "Orion and the Giza pyramids（Jaromir Malek）",
+          "publisher": "原刊 Discussions in Egyptology 30（1994）頁 101–114；Hall of Ma'at 2002-10-02 經授權轉載",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 3（200，96,092 bytes）下載 HTML，以 python 去標籤後讀",
+          "reading_scope": "導言、勘誤清單開頭、第 1–4 節（星辰意識形態、墓室設計、星井、吉薩與腰帶的對應）讀過；第 5 節以後與註腳只掃過",
+          "locator": "導言『The main themes of the first part』；勘誤『46 There were rulers separating the reigns』；第 4 節『The case for a definable relationship of the three pyramids』『There is no ancient textual or representational evidence』",
+          "summary": "牛津的埃及學者評論 1994 年《The Orion Mystery》：書的主張之一是吉薩三座金字塔的位置與大小對應腰帶三星，還把孟斐斯一帶七座第四王朝金字塔說成依照獵戶座與畢宿的『總體規畫』。作者指出：古夫與卡夫拉、卡夫拉與孟卡拉之間都還隔著別的國王，三座塔屬於不同國王；吉薩三座塔之間有關聯的證據『壓倒性』，但沒有任何古代文字或圖像證據證實它們模仿腰帶；只有三座建築三顆星，兩個圖形大致相像的機率本來就不小；尼羅河對銀河的比較太籠統，書裡再用歲差把它推到西元前 10450 年當『年代標記』。作者也承認書的前半部（星井指向）值得討論。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "期刊論文的網路轉載版；作者本人的看法；它沒有提到『地圖倒過來』這一點。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.hallofmaat.com/orioncorrelation/orion-and-the-giza-pyramids/"
         }
       ]
     },
@@ -80283,6 +80948,25 @@
       ]
     },
     {
+      "id": "SRC-45f71a6a3d286ad7",
+      "url": "https://www.chinanews.com.cn/cul/2026/03-25/10592480.shtml",
+      "readings": [
+        {
+          "title": "阿房宫真的被烧了吗？（中國新聞週刊 總第 1228 期）",
+          "publisher": "中國新聞週刊，經中新網轉載，2026-03-25",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 7（200，98,711 bytes），python 去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "第 4–5 段（司馬遷未指明阿房宮）；『2002年，中国社会科学院考古研究所…』段；『阿房宫命名奇特』段；『班固在《汉书·五行志》』段；『杜牧写《阿房宫赋》…借秦讽唐』段；2025 年發掘各段",
+          "summary": "報導引現任考古隊長：《史記》寫項羽『燒秦宮室，火三月不滅』但沒指明阿房宮，又明記阿房宮未成（引『阿房宮未成；成，欲更擇令名名之。作宮阿房，故天下謂之阿房宮』）。2002 年社科院考古所與西安市文物保護考古所組隊系統發掘兩年多，沒有發現火燒過的紅燒土、沒有大面積炭屑，也沒有秦代磚瓦、瓦當及牆體、柱礎、散水、排水等建築遺跡，判斷是只完成基礎的『爛尾』工程。始建於秦始皇三十五年（前 212 年），兩年後秦始皇死，工人調去修陵；《漢書·五行志》說秦二世『復起阿房，未成而亡』；宋代《長安志》記阿房宮三面有牆、南面無牆，發掘證實南牆確實沒修。台基東西約 1270、南北約 426 米。考古隊長認為杜牧〈阿房宮賦〉是借秦諷唐，不是考證。2016 年鑽探發現台基下是淤泥，2025 年 10–12 月發掘確認台基建在湖沼上、並揭示分段夯築。2004 年成果公布後學界有不同意見。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞週刊報導，《史記》《漢書》《長安志》都是轉引，本次沒讀古籍原文（zh.wikisource、ctext 已封鎖，api.github.com 被拒、github.com 回 403，Kanripo 文字檔讀不到）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.chinanews.com.cn/cul/2026/03-25/10592480.shtml"
+        }
+      ]
+    },
+    {
       "id": "SRC-460464d7eb7efc61",
       "url": "https://fr.wikipedia.org/wiki/Charles-Joseph_de_Ligne",
       "readings": [
@@ -80936,6 +81620,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://theweek.com/articles/905215/30-years-later-still-dont-know-what-really-happened-during-belgian-ufo-wave"
+        }
+      ]
+    },
+    {
+      "id": "SRC-46a6495d1d5360ca",
+      "url": "https://www.ndl.go.jp/kaleido/entry/33/3.html",
+      "readings": [
+        {
+          "title": "本の万華鏡 第33回 NINJA 虚像と実像 参之巻 エンタメ忍者とホンモノ忍者、ここが違う！",
+          "publisher": "國立國會圖書館（日本），電子展示，年份頁面未標",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 1（200，25,320 bytes），python 去標籤後讀全文",
+          "reading_scope": "『忍者の装束』『手裏剣』『印』『くノ一』四節全讀；圖說讀過；其他各卷沒讀",
+          "locator": "『忍者の装束』首段至『七方出』段；『手裏剣』節；『印』節；『くノ一』節",
+          "summary": "忍者原本不穿今天想像的黑裝束，目立たないことが信条，黑裝束反而顯眼。黑裝束忍者被認為從歌舞伎、淨瑠璃等演劇擴散：舞台上無法像小說那樣用文字說明『這人是忍者』，黑裝束是讓觀眾立刻認出忍者的演出手法，之後擴散到文藝作品（附北齋漫畫、繪本太閤記、本朝廿四孝插圖）。《正忍記》說忍者穿茶色、柿色、黑色、紺色，都是當時常見不顯眼的顏色；並有『七方出』變裝術：虛無僧、出家、山伏、商人、放下師、猿樂師、平常打扮。至今找到的忍術書沒有手裏劍的記述，也找不到忍者用手裏劍的紀錄；手裏劍術是武士的武藝；手裏劍＝忍者的印象來自江戶演劇與文藝，而那時的手裏劍是棒狀；平的星形手裏劍是靠一位昭和忍術研究者的著作才廣為人知，戰後作品大量使用後反而成為主流。結印在忍術書幾乎沒有，《萬川集海》卷十三只有一處，是隱身時唸咒定心的方法。『くノ一』指女忍者是戰後才普及的用法；《萬川集海》卷八的『くノ一の術』是派女性潛入，不是女忍者。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "國會圖書館的普及展示頁，不是研究論文；《正忍記》原文本次沒讀，只讀到此頁的轉述；黑裝束起源的寫法是『と考えられています』。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.ndl.go.jp/kaleido/entry/33/3.html"
         }
       ]
     },
@@ -82344,6 +83047,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave41-20261112",
           "original_url": "https://todayinsci.com/R/Richmann_Georg/RichmannGeorgExp.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-47d05e5bed8ace77",
+      "url": "https://fortune.com/article/boeing-vs-boeing",
+      "readings": [
+        {
+          "title": "Boeing vs. Boeing（Jerry Useem）",
+          "publisher": "Fortune 雜誌，頁首標 2000-10-02；網頁編者註寫『originally appeared in the Oct. 2, 2002 issue』，兩處年份不一致",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 28（200，507,915 bytes），去標籤後用關鍵詞讀上下文",
+          "reading_scope": "讀了開頭與提到 McDonnell、reverse takeover 的段落；全文其餘談波音管理的部分沒細讀",
+          "locator": "『Several McDonnell executives now occupy surprisingly powerful positions』段",
+          "summary": "流傳版本樣本：說合併後幾位麥道主管在新公司裡占了出人意料的要職，其中麥道前執行長成了波音董事長的副手，他『show-me-the-money』的管理風格讓波音老員工反感；『as the joke around Seattle goes, “McDonnell Douglas bought Boeing with Boeing’s money.”』，還說不只一位分析師用『reverse takeover』（反向併購）形容。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "雜誌報導，屬當時的觀感；頁首日期 2000-10-02，編者註寫 2002，正片寫『合併幾年後的一篇財經雜誌報導』即可。文中說工程師工會『二月』發動『56 年來第一次大罷工』，與 2000 年較一致（覆核推論，未另查）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://fortune.com/article/boeing-vs-boeing"
         }
       ]
     },
@@ -86352,6 +87074,38 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://cir.nii.ac.jp/crid/1390013972160392832.json"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4b12e056ea9ebb41",
+      "url": "https://archive.org/download/pgcommunitytexts23962gut/23962-0.txt",
+      "readings": [
+        {
+          "title": "西遊記（吳承恩；Project Gutenberg #23962 的 Internet Archive 鏡像）",
+          "publisher": "Project Gutenberg 電子文本，Internet Archive pgcommunitytexts23962gut",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 41（200）advancedsearch；seq 42（200，3,707 bytes）讀 metadata；seq 43（200，2,264,071 bytes）下載文字，以 python 搜尋『蟠桃勝會』『王母娘娘』",
+          "reading_scope": "只讀第五回偷桃與七衣仙女一段",
+          "locator": "第五回『一朝，王母娘娘設宴，大開寶閣，瑤池中做蟠桃勝會』",
+          "summary": "王母娘娘在瑤池大開寶閣辦蟠桃勝會，派紅、青、素、皂、紫、黃、綠七衣仙女去蟠桃園摘桃；仙女稱『奉王母懿旨』；赴會的是西天佛老、菩薩、南極觀音、三清、玉皇等五方神佛。她在這裡是天庭宴會的女主人。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "只讀一段；電子文本底本未註明。這段沒有寫她是玉皇大帝的妻子。",
+          "origin": "wave77-20261118",
+          "original_url": "https://archive.org/download/pgcommunitytexts23962gut/23962-0.txt"
+        },
+        {
+          "title": "《西遊記》（Project Gutenberg #23962，UTF-8 全文）",
+          "publisher": "Project Gutenberg（2007 年上線）；Internet Archive 條目 pgcommunitytexts23962gut",
+          "accessed_on": "2026-11-17",
+          "read_via": "gutenberg.org 本身維修中（seq 20、21 回 503），改讀 archive.org：先讀 metadata（seq 23，200，3,707 bytes），再依檔名下載 23962-0.txt（seq 24，200，2,264,071 bytes），以 python 搜尋關鍵詞讀上下文",
+          "reading_scope": "讀第四回回目到孫悟空自封齊天大聖一段，以及第五十六回『馬皆懼猴子』一段；其餘章回沒讀",
+          "locator": "第四回〈官封弼馬心何足　名注齊天意未寧〉；第五十六回『你說馬不怕八戒，只怕行者何也』段",
+          "summary": "第四回：武曲星君說天宮只有『御馬監缺個正堂管事』，玉帝說『就除他做個弼馬溫罷』；悟空上任後晝夜不睡，馬睡了就趕起來吃草，半個月把天馬養得肉肥膘滿；監官告訴他這官『沒有品從』『只喚做未入流』『只可與他看馬』，他才推倒公案打出南天門。小說全書沒有解釋『弼馬溫』三個字的意思。第五十六回作者自己給了一個說法：行者五百年前曾在御馬監養馬，『官名弼馬溫，故此傳留至今，是馬皆懼猴子』。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "Gutenberg 本的底本未在本次查核；用的是通行百回本文字，不涉版本差異。",
+          "origin": "wave77-20261118",
+          "original_url": "https://archive.org/download/pgcommunitytexts23962gut/23962-0.txt"
         }
       ]
     },
@@ -92603,6 +93357,25 @@
       ]
     },
     {
+      "id": "SRC-506e0f00afdf68c2",
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/pierre-curie",
+      "readings": [
+        {
+          "title": "Pierre Curie（Renaud Evrard）",
+          "publisher": "Psi Encyclopedia, Society for Psychical Research（線上條目，年份未標）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 16（200，236,901 bytes）下載 HTML，python 去標籤後讀全文",
+          "reading_scope": "全文讀過（Palladino 段、Convictions、Marie Curie、Conclusion、引用書目）",
+          "locator": "『At his last sitting (10 April 1906)…』；『Convictions』段引致 Gouy 信（引自 Blanc 2009, 643–44）；『Marie Curie』段；『Conclusion』",
+          "summary": "IGP 三年共 43 場；居禮 1905 年『至少 3 場』、1906 年 5 場，參與者 14 人（含瑪麗・居禮、Richet、柏格森、朗之萬、佩蘭、Branly、Feilding、d'Arsonval 等）；1906 年最後一場是 4 月 10 日。引 Blanc 編《Pierre Curie: Correspondances》（2009）裡致 Gouy 的信：『這些現象確實存在，我已不能再懷疑』，『在完美控制下』，並說承認一部分就會被一步步帶到全部承認，連 Crookes 與 Richet 的鬼魂都得承認，這點『極令人不安』。條目說瑪麗・居禮參與但熱度較低，1909 年參與波蘭靈媒 Tomczyk 研究時認為發現作弊；並說有些傳記作者『錯誤地把懷疑的話安在皮耶頭上』。結論段也承認：沒有魔術師參與 IGP 調查，『好、極好、完美』的控制等級之間差在哪裡不清楚。 條目同時說居禮夫婦的傳記作者多半淡化了他們對現象的相信（有的甚至把懷疑的話錯安在皮耶頭上）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "SPR 是心靈研究學會，立場偏向認真看待這些現象；信件是轉引 Blanc 2009，本次沒有讀到書信原文，信的日期（條目只寫 early 1906）未核定。",
+          "origin": "wave77-20261118",
+          "original_url": "https://psi-encyclopedia.spr.ac.uk/articles/pierre-curie"
+        }
+      ]
+    },
+    {
       "id": "SRC-50703018f12a94fb",
       "url": "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/George_III.",
       "readings": [
@@ -93304,6 +94077,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://commons.wikimedia.org/wiki/File:Anak_Krakatau_Rumbles_Again_(1303134_-_oli_20260905).jpg"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5100cd439da7243e",
+      "url": "https://www.nownews.com/news/3987647",
+      "readings": [
+        {
+          "title": "真天龍國／在地人一住就不走了 天母房市持穩成長的秘密",
+          "publisher": "NOWnews 今日新聞，2020-04-22",
+          "accessed_on": "2026-11-18",
+          "read_via": "覆核 R776 fetch.sh seq 5（200，113,034 bytes）下載 HTML，去標籤後讀內文；網址出自覆核的搜尋結果",
+          "reading_scope": "首段讀過；房市內容未用",
+          "locator": "首段『天母舊稱為「三角埔」…在美國駐台時期曾為美軍眷屬的居住地』",
+          "summary": "天母舊稱三角埔，美國駐台時期曾是美軍眷屬的居住地。沒有談地名由來。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "房市新聞，只能撐『美軍眷屬曾住這裡』一句，沒有年代與數字。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.nownews.com/news/3987647"
         }
       ]
     },
@@ -96686,6 +97478,25 @@
       ]
     },
     {
+      "id": "SRC-54366ceab17695cb",
+      "url": "https://talkingpointsmemo.com/news/frederic-chopin-heart-exhumed-secret",
+      "readings": [
+        {
+          "title": "Chopin's Heart Exhumed In Secret For Inspection By Polish Officials（AP，Vanessa Gera）",
+          "publisher": "美聯社稿，Talking Points Memo 轉載，2014-11-17",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 28（200，107,661 bytes）下載 HTML，以 python 去標籤後讀",
+          "reading_scope": "報導全文；讀者留言未讀",
+          "locator": "首段『First it was sealed in a jar of liquor believed to be cognac. Then it was smuggled into Warsaw past Russian border guards』；『probably beneath her skirts』；『removed it for safekeeping during the Warsaw Uprising of 1944』",
+          "summary": "流傳版本的樣本，也是 2014 年檢查經過的新聞來源：心臟『泡在據信是干邑的酒裡』、『被偷運過俄國邊境守衛』，姊姊『大概藏在裙子底下』；先在家中放了幾年，再封進聖十字教堂柱子；二戰華沙起義時被德國佔領軍取走『保管』，戰後在儀式中歸還。2014 年 4 月 14 日近午夜，13 人（含華沙總主教、文化部長、兩位科學家）秘密取出檢查，拍了上千張照片、補熱蠟，五個月後才公布；不公開照片。教會與政府多年拒絕侵入性檢驗，部分原因是一位遠親反對；結核是官方死因，但也有人懷疑囊性纖維化。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞報導；『偷運』『藏在裙下』用的是『大概』，沒有引出處；戰時經過是概述。",
+          "origin": "wave77-20261118",
+          "original_url": "https://talkingpointsmemo.com/news/frederic-chopin-heart-exhumed-secret"
+        }
+      ]
+    },
+    {
       "id": "SRC-5436928f99fcc1de",
       "url": "https://commons.wikimedia.org/wiki/File:Portret_van_Kaspar_Hauser,_RP-P-1915-686.jpg",
       "readings": [
@@ -96851,6 +97662,25 @@
           "limitations": "OCR；全文用「鬼共」，沒有「百鬼夜行」四字。成書年代本輪沒另考。",
           "origin": "wave34-20261112",
           "original_url": "https://lab.ndl.go.jp/dl/api/page/991106_440"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5450ef833931fae0",
+      "url": "https://www.nobelprize.org/ceremonies/1995-opening-address",
+      "readings": [
+        {
+          "title": "Opening address – 1995（遺囑百年紀念）",
+          "publisher": "NobelPrize.org，諾貝爾基金會 1995 年致詞",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 21（200，163,685 bytes），python 去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "第 3–10 段",
+          "summary": "基金會說他的心願『部分體現於兩份遺囑，1893 年與 1895 年』：1893 年那份已把部分財產交給瑞典皇家科學院管理的基金，每年頒給知識與進步領域最重要的開創性發現或作品；1893 年遺囑沒有文學獎，1895 年才加上，有人認為和他 1895 年重拾寫作有關；也明說『我們不知道他改變心意背後的想法』。全文沒有提到訃聞。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "致詞稿；只提兩份遺囑，與 ZW0-S014『第三份』的說法並存，最早一份本次沒查到。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.nobelprize.org/ceremonies/1995-opening-address"
         }
       ]
     },
@@ -97654,6 +98484,25 @@
       ]
     },
     {
+      "id": "SRC-552fae8b12c27854",
+      "url": "https://www.kanripo.org/api/v1.0/search?query=%E7%B2%98%E7%AB%BF&with-titles&count=40",
+      "readings": [
+        {
+          "title": "漢籍リポジトリ全文檢索『粘竿』：命中《欽定八旗通志》《世宗憲皇帝硃批諭旨》等",
+          "publisher": "Kanseki Repository 公開 API；書目代號由 titles?query=諭旨（seq 38，回 KR2f0009 世宗憲皇帝硃批諭旨）與 titles?query=八旗通志（seq 39，回 KR2m0053 欽定八旗通志）確認",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 35（200，2,219 bytes），純文字 KWIC；seq 38、39 確認書名",
+          "reading_scope": "只讀每處命中的一行上下文；KR2m0037 由 R774 確認是《國朝宮史》；KR2m0039、KR2m0017、KR2c0012 的書名沒有確認",
+          "locator": "KR2m0053_066:3b:0046（八旗通志『管理鷹狗粘竿三處拜唐阿之大臣』）；KR2f0009_029:3a:0040、3b:0041（硃批諭旨『預備粘竿子處管侍衛內大臣』『雍正元年五月十一日將預備粘竿子處之陜西甘州武舉韓勳引』）；KR2m0017_031:8b:0124（『有粘竿處侍衛三十四人』）；KR2m0037_003:14b–15a（國朝宮史，粘竿上人與拜唐阿『看守打掃』）",
+          "summary": "官書裡的『粘竿處』是一個實際存在的單位：《八旗通志》把它和管鷹、管狗並列為『鷹狗粘竿三處』，由大臣管理拜唐阿（執事人）；雍正朝《硃批諭旨》收的公文裡雍正元年就有『預備粘竿子處』由侍衛內大臣管理、引見武舉的紀錄；另一部政書記『粘竿處侍衛三十四人』；《國朝宮史》要『粘竿上人、拜唐阿』負責看守打掃、冬天量取炭火。這些命中都是侍從、狩獵、雜役的語境。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "KWIC 一行，看不到前後文；粘竿處的完整職掌（捕鳥、釣魚、扈從）要讀全段才能說，本次只能說『與鷹、狗並列，負責侍衛與雜役』。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.kanripo.org/api/v1.0/search?query=%E7%B2%98%E7%AB%BF&with-titles&count=40"
+        }
+      ]
+    },
+    {
       "id": "SRC-553056790bb98821",
       "url": "https://lab.ndl.go.jp/dl/book/1257877?page=320",
       "readings": [
@@ -97953,6 +98802,25 @@
           "limitations": "個人網站（二手）。",
           "origin": "wave47-20261112",
           "original_url": "https://mathpages.com/home/kmath121/kmath121.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-557dbce60287012c",
+      "url": "https://www.mie-u.ac.jp/about/pr/item/X46_5-6.pdf",
+      "readings": [
+        {
+          "title": "特集 おもしろ研究・先生 第22弾：忍者文学作品から作られた忍者イメージの謎を追う（三重大學人文學部教授）",
+          "publisher": "三重大學廣報誌，約 2022–2023 年",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 2（200，815,774 bytes）；pdftotext 缺字型，改用 python pdfminer 轉文字讀全文",
+          "reading_scope": "兩頁全讀",
+          "locator": "頁 05『黒装束・黒覆面と手裏剣が忍者の表象の定番となるまで』首段；頁 06『忍者とは何か』",
+          "summary": "研究者說：三重大學 2012 年起研究忍者；黑裝束、覆面、使用手裏劍的忍者形象與史實不同，是虛像，從 18 世紀中葉的演劇發生並定著。忍者像隨時代與地域而變。研究成果整理成 2022 年 KADOKAWA《忍者とは何か―忍法・手裏剣・黒装束》。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "大學廣報的訪談體短文，只給結論，沒有列出哪一齣戲或哪一張圖是最早的。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.mie-u.ac.jp/about/pr/item/X46_5-6.pdf"
         }
       ]
     },
@@ -98400,6 +99268,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://spectator.com/article/how-scientists-misled-the-world-about-faith/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-55f3127f6a7828f2",
+      "url": "https://www.epochtimes.com/b5/11/5/31/n3272252.htm",
+      "readings": [
+        {
+          "title": "乾隆看走眼 無用師卷才為真（轉載中央社 2011-05-31 電）",
+          "publisher": "大紀元轉載中央社，2011-05-31",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 12（200，256,173 bytes）下載 HTML，python 去標籤後讀內文",
+          "reading_scope": "內文全部讀過；側欄與其他新聞未讀",
+          "locator": "首段『乾隆皇帝還曾誤以為「子明卷」是真跡』；末三段（梁詩正奉敕、點收委員、傅申）",
+          "summary": "流傳版本樣本：『乾隆看走眼』，說乾隆一直到死都以為子明卷為真，大臣認為子明卷才是真跡，乾隆在子明卷上題了 60 年，無用師卷只有梁詩正奉敕書寫的一段；引故宮書畫處長說，直到國民政府點收故宮文物時點收委員才重新認定無用師卷為真，子明卷被誤認近一百到兩百年；另引一位故宮委員以曹知白〈群峰雪霽〉上黃公望題字比對書法。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞轉述；『點收委員』是哪一年、哪份點收紀錄，報導沒有寫，本次也沒有找到原始點收紀錄。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.epochtimes.com/b5/11/5/31/n3272252.htm"
         }
       ]
     },
@@ -99745,6 +100632,25 @@
       ]
     },
     {
+      "id": "SRC-5775e61a2938a36f",
+      "url": "https://thechinaproject.com/2021/01/18/hells-bittersweet-end-meng-po-goddess-of-forgetfulness/",
+      "readings": [
+        {
+          "title": "Hell's bittersweet end: Meng Po, goddess of forgetfulness",
+          "publisher": "The China Project（前 SupChina），2021-01-18",
+          "read_via": "fetch.sh seq 21（200，476,967 bytes）下載 HTML，以 python 去標籤後讀正文",
+          "reading_scope": "正文讀過；側欄與留言沒讀",
+          "locator": "'Who is Meng Po?' 段、'we can be sure she arrived in China around the same time as Buddhism' 句、'since the late Qing…Naihe Bridge' 句",
+          "summary": "流傳版本樣本：作者說『可以確定』孟婆隨佛教在公元 1 世紀左右來到中國；同時說《玉曆寶鈔》是清代的書，書中把她寫成虔誠的佛教隱士；又說在最流行的版本裡，她從晚清起才成為站在奈何橋邊的獨立人物，並提到清代沈起鳳筆下有情侶被扣下湯藥以便來生相認。沒有提到宋代的風神孟婆。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "通俗英文文章，無註腳；『清代』與『晚清才到奈何橋邊』都是作者的判斷，未附出處，只能當樣本與線索。",
+          "accessed_on": "2026-11-17",
+          "origin": "wave77-20261118",
+          "original_url": "https://thechinaproject.com/2021/01/18/hells-bittersweet-end-meng-po-goddess-of-forgetfulness/"
+        }
+      ]
+    },
+    {
       "id": "SRC-57772383ec56d8d5",
       "url": "https://col.rct.uk/collection/403256/donald-iii-king-of-scotland-270-82",
       "readings": [
@@ -100134,6 +101040,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/5b80/2444866/c5b792240680/brmedj07148-0047.png"
+        }
+      ]
+    },
+    {
+      "id": "SRC-57bfa3f0adc91a74",
+      "url": "https://www.kanripo.org/api/v1.0/search?query=%E9%BB%8F%E6%A1%BF%E8%99%95&with-titles&count=40",
+      "readings": [
+        {
+          "title": "漢籍リポジトリ全文檢索『黏桿處』／『尚虞備用處』",
+          "publisher": "Kanseki Repository 公開 API",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 48（200，101 bytes）與 seq 47（200，101 bytes，『尚虞備用處』），兩次命中同一處",
+          "reading_scope": "一行 KWIC；KR2k0009 書名未確認",
+          "locator": "KR2k0009_002:48a:0895",
+          "summary": "『尚虞備用處亦曰黏桿處，管理大臣無定員，協理事務……』：證實『尚虞備用處』與『黏桿處』是同一單位的正式名與俗名。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "書名未確認（KR2k 類為地理類，可能是北京地方志一類），一行上下文。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.kanripo.org/api/v1.0/search?query=%E9%BB%8F%E6%A1%BF%E8%99%95&with-titles&count=40"
         }
       ]
     },
@@ -102961,6 +103886,25 @@
           "limitations": "被抄的那部問答書書名本次沒有確認（同卷各則只寫『同書○の巻』，前面有一則抄本奧書提到天正五年在高野山往生院書寫，但不能確定是同一部書），所以只能說『松屋筆記引的一部更早的問答書』，不能給年代。OCR 全文。",
           "origin": "wave8-20261102",
           "original_url": "https://lab.ndl.go.jp/dl/book/2574499?page=41"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5a5ebec379162ead",
+      "url": "https://www.daily.co.jp/gossip/subculture/2024/03/20/0017452561.shtml",
+      "readings": [
+        {
+          "title": "本当にさよなら「カーネル・サンダース像」ＫＦＣが人形納め 1985年の道頓堀川投げ込みから2009年帰還",
+          "publisher": "デイリースポーツ online，2024-03-20",
+          "read_via": "fetch.sh seq 22（200，105,007 bytes）下載 HTML，以 python 去標籤後讀正文",
+          "reading_scope": "正文全讀",
+          "locator": "正文第 1、3、4 段",
+          "summary": "流傳版本樣本兼第二來源：雕像 1985 年擺在道頓堀店，阪神聯盟優勝確定後，因為『像主力打者 Randy Bass』被拋起來後丟進河；翌年起球隊低迷，球迷之間私下說是『カーネルの呪い』，到 38 年後的 2023 年才再拿到日本一；2009 年發現時命名『おかえり！カーネル』、發現時就損傷嚴重；2024 年公司宣布廢棄，在住吉神社（應為住吉大社）辦人形納め。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "體育報的二手報導；『詛咒』只寫成球迷之間的說法，沒有交代媒體何時開始用；神社名稱與公司稿不同。",
+          "accessed_on": "2026-11-17",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.daily.co.jp/gossip/subculture/2024/03/20/0017452561.shtml"
         }
       ]
     },
@@ -106933,6 +107877,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=text&COMMAND='599'&OBJ_DATA='NO'&MAKE_EPHEM='YES'&EPHEM_TYPE='VECTORS'&CENTER='500@10'&START_TIME='1982-01-01'&STOP_TIME='1982-06-30'&STEP_SIZE='1%20d'&REF_PLANE='ECLIPTIC'&REF_SYSTEM='ICRF'&VEC_TABLE='1'&OUT_UNITS='AU-D'&CSV_FORMAT='YES'"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5e2f3bbcbf97710a",
+      "url": "https://www.lhp.sdu.edu.cn/__local/0/A5/34/33B2E0DD73F072A10F867D774B1_190BA052_9E60F.pdf",
+      "readings": [
+        {
+          "title": "An Exploration of the Queen Mother of the West from the Perspective of Comparative Mythology（蘇永前著，Kathryn Henderson 英譯）",
+          "publisher": "Journal of Chinese Humanities 3 (2017) 72–90，Brill；PDF 由山東大學網站提供",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 40（200，648,719 bytes）下載 PDF，pdftotext 轉文字後讀頁 72–75、78–81、84–86",
+          "reading_scope": "讀了摘要、研究回顧、『Symbolism』節前段、『From a Goddess with the Teeth of a Tiger…』節；比較神話學的民族誌部分只掃過",
+          "locator": "頁 72 摘要；頁 73『evolution from the disheveled, androgynous, and therianthropic ferocious deity』；頁 74 historicizing 一段；頁 78–79；頁 84–85",
+          "summary": "學界關心的是西王母如何從《山海經》裡『蓬髮、雌雄莫辨、半人半獸的凶神』變成玉皇大帝身旁端莊的皇后；1928 年起有『三階段演變』說；一派學者把她歷史化，認為她只是西部部族的女首領，凶相是誇張或圖騰；漢以後她被納入道教神譜；出土的畫像石、畫像磚、銅鏡大多屬於神仙信仰興起之後，難以還原原貌。《穆天子傳》見穆王一段被普遍視為第一次大轉變：從『豹尾虎齒、善嘯』變成會唱歌作詩、對穆王有情的天帝之女，但『虎豹為群』仍留著舊痕。郭璞注把『司天之厲及五殘』解為主管災厲與死亡。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "Brill 期刊的大學網站副本，授權未查；作者在世，正片不點名。文中說《穆天子傳》在東晉孝武帝時出土（372–396），與通行說法（西晉太康年間汲冢出土）不合，可能是作者或譯者筆誤，正片不採用這個年代。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.lhp.sdu.edu.cn/__local/0/A5/34/33B2E0DD73F072A10F867D774B1_190BA052_9E60F.pdf"
         }
       ]
     },
@@ -111915,6 +112878,25 @@
       ]
     },
     {
+      "id": "SRC-62efc554d6453224",
+      "url": "https://archive.org/download/mythicalmonsters00gouluoft/mythicalmonsters00gouluoft_djvu.txt",
+      "readings": [
+        {
+          "title": "Mythical Monsters（Charles Gould）",
+          "publisher": "W. H. Allen, London, 1886；Internet Archive 多倫多大學館藏掃描（先讀 https://archive.org/metadata/mythicalmonsters00gouluoft，seq 23）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 24（200，792,381 bytes）下載 OCR 文字檔，以 claws 等關鍵詞讀前後文",
+          "reading_scope": "只讀了日本龍一節中講爪數的段落與前後數段；全書未讀",
+          "locator": "OCR 文字第 10518–10524 行附近：『In Japan, however, it is invariably figured as possessing three claws…』",
+          "summary": "1886 年的西方記述：日本的龍顯然源自中國，功能與性質和中國龍相同，但在日本『invariably』畫成三爪，而中國的龍有四爪或五爪，看是一般還是皇家的紋樣。可用來說明『中國五爪、日本三爪』的對照在 19 世紀已被西方作者寫下，但書裡沒有『飛遠掉爪』的故事。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "19 世紀二手觀察，不是中國或日本的一手規定；『invariably』是誇大說法。",
+          "origin": "wave77-20261118",
+          "original_url": "https://archive.org/download/mythicalmonsters00gouluoft/mythicalmonsters00gouluoft_djvu.txt"
+        }
+      ]
+    },
+    {
       "id": "SRC-62fe46eaaf0b56ba",
       "url": "https://de.wikisource.org/wiki/Lenore_(B%C3%BCrger)",
       "readings": [
@@ -116323,6 +117305,25 @@
       ]
     },
     {
+      "id": "SRC-66e551837c5059fb",
+      "url": "https://www.grunge.com/926397/a-big-secret-lies-behind-lincolns-head-on-mount-rushmore",
+      "readings": [
+        {
+          "title": "A Big Secret Lies Behind Lincoln's Head On Mount Rushmore",
+          "publisher": "Grunge（Static Media 旗下通俗網站），作者 Chris Littlechild、William Kennedy，頁面標 Updated: March 30, 2023",
+          "read_via": "fetch.sh seq 6（200，61,792 bytes）下載 HTML，以 python 去標籤後讀全文",
+          "reading_scope": "全文讀過",
+          "locator": "標題、首段 'something just as intriguing inside Lincoln's head'、'The hallowed hall of records' 段 'that secret chamber mentioned behind Lincoln's head'、'Today, the Hall of Records contains 16 porcelain panels' 段",
+          "summary": "流傳版本樣本：標題稱林肯頭像後面藏著『大祕密』，內文稱它是『林肯頭像後方的祕密密室（secret chamber）』，也說它在『林肯頭像裡面』、『只有極少數人見過』，原計畫要存放獨立宣言等珍貴文件，Borglum 1941 年過世時只有一間 70 英尺的空間；後段自己更正說現在裡面不是獨立宣言，而是 16 片琺瑯瓷板。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "通俗二手文章，只當流傳版本樣本；位置寫成『在林肯頭像裡面／後面』比 NPS 的描述（頭像後方峽谷的北壁）更戲劇化。",
+          "accessed_on": "2026-11-17",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.grunge.com/926397/a-big-secret-lies-behind-lincolns-head-on-mount-rushmore"
+        }
+      ]
+    },
+    {
       "id": "SRC-66e8d0a8521fa3af",
       "url": "https://www.history.com/articles/april-fools-day",
       "readings": [
@@ -118541,6 +119542,25 @@
       ]
     },
     {
+      "id": "SRC-6926c2b33d6852e6",
+      "url": "https://archive.org/download/pgcommunitytexts25288gut/25288-0.txt",
+      "readings": [
+        {
+          "title": "山海經（Project Gutenberg #25288 的 Internet Archive 鏡像）",
+          "publisher": "Project Gutenberg 電子文本，Internet Archive pgcommunitytexts25288gut",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 29（200）advancedsearch 找到條目；seq 30（200，3,985 bytes）讀 metadata（source 指向 gutenberg.org/ebooks/25288）；seq 31（200，145,348 bytes）下載 UTF-8 文字，以 grep 找出全部『西王母』",
+          "reading_scope": "讀了三處西王母原文及其所屬篇名；全書其餘未讀",
+          "locator": "〈西山經〉第 225 行『曰玉山，是西王母所居也』；〈海內北經〉第 1671 行『西王母梯几而戴勝杖』；〈大荒西經〉第 1987–1991 行『有人戴勝，虎齒，有豹尾，穴處，名曰西王母』",
+          "summary": "〈西山經〉：玉山是西王母住的地方，『其狀如人，豹尾虎齒而善嘯，蓬髮戴勝，是司天之厲及五殘』。〈海內北經〉：西王母靠著几、戴勝、拄杖，南邊有三青鳥替她取食，在崑崙虛北。〈大荒西經〉：崑崙之丘，『有人戴勝，虎齒，有豹尾，穴處，名曰西王母』。三處都沒有寫她是女性，也都用『如人』『有人』描述。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "電子文本未註明底本；個別字（如『蓬發』）是電子化時的簡繁或錯字，引用時要對照刻本。",
+          "origin": "wave77-20261118",
+          "original_url": "https://archive.org/download/pgcommunitytexts25288gut/25288-0.txt"
+        }
+      ]
+    },
+    {
       "id": "SRC-692a110b30b05781",
       "url": "https://articles.adsabs.harvard.edu/full/seri/JRASC/0061//0000184.000.html",
       "readings": [
@@ -120393,6 +121413,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://archive.org/download/huldreichzwingli0006zwin_pt03/huldreichzwingli0006zwin_pt03_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6aeb029d5580936a",
+      "url": "https://spectralcodex.com/shilin-tenmu-shinto-shrine/",
+      "readings": [
+        {
+          "title": "Tenmu Shinto Shrine（天母神社）",
+          "publisher": "Spectral Codex（個人文史網站），2026-02-10",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 24（200，82,491 bytes）下載 HTML，python 去標籤後讀內文",
+          "reading_scope": "條目內文全部讀過",
+          "locator": "首段『The shrine at the heart of Tenmu-kyō…』與第二段『After the war…』",
+          "summary": "天母教 1925 年由一位 1902 年來臺、1921 年已是臺南郵便局局長級職員的退休郵政人員創立；教義說天照大神與媽祖是同一位神『天母』的不同化身，御神體是一尊從湄洲迎來的媽祖像；1931 年獲准開發三角埔溫泉區，在一位日本百貨業者支持下 1933 年神社完工；香客帶來商業，旅館、商店與公車站都用這個名字，地方因而被叫做天母。皇民化時期他把七尊地方神像稱為『日本七福神』藏起來；戰後他回日本，神社因拓寬道路被拆，信眾 1947 年救出神像，後奉於三玉宮。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "個人網站，引的是中文維基與 ARTouch、臉書文史作者，二手；『湄洲媽祖像』『1931 溫泉』『1925 創教』都沒有一手出處。",
+          "origin": "wave77-20261118",
+          "original_url": "https://spectralcodex.com/shilin-tenmu-shinto-shrine/"
         }
       ]
     },
@@ -122353,6 +123392,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave14-20261102",
           "original_url": "https://archive.org/details/obrasenprosayve00bartgoog"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6cc8ef40836064c2",
+      "url": "https://www.nasa.gov/history/50-years-ago-on-the-way-to-the-moon-0/",
+      "readings": [
+        {
+          "title": "50 Years Ago: On the Way to the Moon",
+          "publisher": "NASA History Office（nasa.gov），2018 年",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 1（200，278,432 bytes），python 去標籤後讀正文",
+          "reading_scope": "讀了 Zond 4、Zond 5 段落與圖說；文末 Apollo 8 決策段讀過；其他網站導覽未讀",
+          "locator": "正文『Zond 5 launched successfully on September 15, 1968…』段與下一段『The flight of Zond-5 caused concern…』",
+          "summary": "Zond 5 於 1968 年 9 月 15 日（莫斯科時間）從拜科努爾發射，載有果蠅（wine flies）、蟲、植物和兩隻俄羅斯草原陸龜；三天後在月球背面上空約 1,950 公里處繞過，回程在約 9 萬公里處拍地球。9 月 21 日因導引系統錯誤無法在蘇聯境內軟著陸，落入印度洋；美國海軍船艦拍下艙體漂浮，由蘇聯船 Vasily Golovnin 打撈，10 月 3 日抵孟買，再由 An-12 運機空運回莫斯科取出生物酬載。科學家發現這兩隻『第一批繞月的生物』體重略減、其他狀況良好。艙體現展於科羅廖夫的 RKK Energiya 博物館。文中說 Zond 5 加上偵察衛星拍到的 N-1 火箭『may have contributed』阿波羅 8 號改成繞月任務的決定。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "NASA 二手整理（圖片來源 RKK Energiya），沒有列出烏龜之後的處置；發射日寫 9 月 15 日（UTC 為 14 日深夜）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.nasa.gov/history/50-years-ago-on-the-way-to-the-moon-0/"
         }
       ]
     },
@@ -134486,6 +135544,25 @@
       ]
     },
     {
+      "id": "SRC-778ecdea700b15a1",
+      "url": "https://www.visitbeijing.com.cn/article/4Jv7NMdfgdo",
+      "readings": [
+        {
+          "title": "朝内81号院修缮后首次开放，百岁欧式花园宅邸很出片儿",
+          "publisher": "北京旅游网（北京市文化和旅游局宣传中心）轉載《北京晚報》，2024-10-20",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 8（200，32,051 bytes）HTML，去標籤後讀正文",
+          "reading_scope": "全文讀過",
+          "locator": "第 4 段『资料显示，朝阳门内大街81号院建造于1921年…』",
+          "summary": "開放日的展覽資料寫：此院建於 1921 年，是主持京漢鐵路的一位法國工程師設計的住宅，典型的近代花園式宅邸；2009 年列為東城區文物保護單位並收入《北京優秀建築名錄》；2016 年 3 月封閉整修、2017 年 3 月完工；2024 年 8 月更名『聞園81號』，10 月首次對公眾開放，主樓辦歷史展。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "市政府旅遊單位的網站，但內容是轉載的晚報報導；只寫結論，沒有列檔案出處。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.visitbeijing.com.cn/article/4Jv7NMdfgdo"
+        }
+      ]
+    },
+    {
       "id": "SRC-77955d49315e5715",
       "url": "https://www.arthur-conan-doyle.com/wiki/Mary_Celeste%EF%BD%9C2026-10-10%EF%BD%9Canonymous-author",
       "readings": [
@@ -134539,6 +135616,25 @@
           "limitations": "OCR 全文；只讀了這一條，1799 年《Naturalist's Miscellany》的原版沒有另外核對。",
           "origin": "wave26-20261112",
           "original_url": "https://archive.org/stream/generalzoology1121800shaw/generalzoology1121800shaw_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-779af06ff076e6c6",
+      "url": "https://www.stheadline.com/knowledge/3547070/",
+      "readings": [
+        {
+          "title": "馬年2026｜從《西遊記》「弼馬溫」看傳統文化 為何古人相信猴子能防馬瘟？（原題〈馬年說「弼馬溫」〉）",
+          "publisher": "《星島頭條》根本月報，2026-02-27；作者為港大中國歷史研究文學碩士課程同學會成員",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 17（200，199,907 bytes），去標籤後讀全文",
+          "reading_scope": "全文讀過",
+          "locator": "小標『「御馬監」及「避馬瘟」』『五行解說猴治馬』",
+          "summary": "流傳版本樣本：引錢鍾書《談藝錄》『美猴王官封弼馬溫，即本俗說猴能辟馬瘟，生發出一段奇談』，說不少人認定弼馬溫就是避（辟）馬瘟的諧音；也說御馬監依明代內廷實有的御馬監（由太監主管，後來還統領禁兵），但『弼馬溫』一職沒有歷史文獻記載。另外提到反對意見：有學者認為『溫』是元代蒙古語詞綴（如『也里可溫』），弼馬溫就是『輔助管馬的官員』，但作者質疑明中後期讀者是否還懂這用法。還提到成都出土東漢畫像石有猴與馬同框、20 世紀初陝西鳳翔年畫《避馬瘟》、邢義田談猴馬母題也見於印度與中亞。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "報紙專欄，錢鍾書、蒙古語詞綴說、明代御馬監都是轉述，沒有給原書頁碼；我沒有讀到《談藝錄》、謝肇淛《五雜俎》或邢義田原文。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.stheadline.com/knowledge/3547070/"
         }
       ]
     },
@@ -134811,6 +135907,25 @@
           "limitations": "marvel.com 回 403；『養子、勞菲之子』的漫威設定只見於維基百科（指向 1965 年 #112），未讀到可靠來源。",
           "origin": "wave2-legacy-20261101",
           "original_url": "https://library.bellevue.edu/articles/1st-appearance-loki/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-77cac2c8ae39e6c5",
+      "url": "https://www.ftc.gov/news-events/press-releases/1997/07/ftc-allows-merger-boeing-company-and-mcdonnell-douglas",
+      "readings": [
+        {
+          "title": "FTC Allows Merger of the Boeing Company and McDonnell Douglas Corporation",
+          "publisher": "美國聯邦貿易委員會新聞稿，1997-07-01（FTC File No. 971-0051）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 31（200，990,358 bytes），去標籤後讀正文",
+          "reading_scope": "正文全讀",
+          "locator": "正文首兩段與『Related actions』",
+          "summary": "FTC 幕僚結束調查，委員會認定目前不需採取行動；主席與三位委員發表聯合聲明，另一位委員發表個別意見（不同意）。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "新聞稿本身只有結論，理由在 ZW4-S011。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.ftc.gov/news-events/press-releases/1997/07/ftc-allows-merger-boeing-company-and-mcdonnell-douglas"
         }
       ]
     },
@@ -135267,6 +136382,25 @@
           "limitations": "原書完全沒有記載賭金金額，更無後世流傳『贏走友人全部家產再大度退還』的情節——片中據原書糾正此一後世加料。",
           "origin": "wave48-20261113",
           "original_url": "https://archive.org/download/natuerlykehisto00ruus/natuerlykehisto00ruus_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-78235f72966fd0ad",
+      "url": "https://www.storm.mg/lifestyle/1077327",
+      "readings": [
+        {
+          "title": "皇帝身邊的雜工，卻是清朝最恐怖特務！揭秘雍正「血滴子」傳說：百里奪命的真相其實是…（蔡佳妘）",
+          "publisher": "風傳媒 風生活，2019-03-20",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 42（200，825,899 bytes），去標籤後讀全文",
+          "reading_scope": "正文全讀",
+          "locator": "小標『像粘蟬一樣將政敵摘下》粘竿處』『最恐怖武器》血滴子的傳說』",
+          "summary": "流傳版本樣本：說粘竿處（正式名尚虞備用處）表面上是釣魚、養鷹、捕雀的雜工，實際是雍正從皇子時期就組織的特務，替他消滅政敵；傳說血滴子是粘竿處專用暗器，形如鳥籠、皮革為囊、內藏利刃、以鐵鍊連著，可在『百里外』取人首級，也有人說血滴子是特務的別稱或毒藥；文末自己說血滴子『只存在於清代的小說之中，而沒有史料記載』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "通俗文章，沒有給任何出處；『清代的小說』沒有指名是哪一部。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.storm.mg/lifestyle/1077327"
         }
       ]
     },
@@ -140975,6 +142109,25 @@
       ]
     },
     {
+      "id": "SRC-7d3fb314e2eb4d41",
+      "url": "https://www.manchester.ac.uk/about/news/jodrell-bank-observatory-release-50-year-old-audio-archive-of-soviet-zond-6-lunar-mission/",
+      "readings": [
+        {
+          "title": "Jodrell Bank Observatory release 50 year-old audio archive of Soviet Zond 6 lunar mission",
+          "publisher": "University of Manchester 新聞稿，2018 年",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 5（200，91,699 bytes），python 去標籤後讀正文",
+          "reading_scope": "全文讀過",
+          "locator": "『also includes a human voice speaking in Russian. A similar voice had been picked up by Jodrell Bank during the flight of Zond 5』段；『Zond 6 flew around the Moon on 14 November 1968』段",
+          "summary": "Jodrell Bank 天文台當年追蹤美蘇探測器；Zond 6 的錄音裡有一個說俄語的人聲，Zond 5 飛行時也收到過類似人聲，推測是艙上預錄、用來測試通訊的訊息，或地面人員經探測器轉發的聲音，為之後載人飛行演練。Zond 6 於 1968 年 11 月 14 日繞月，回程艙體失壓，艙內生物（推測與 Zond 5 類似，含陸龜、蟲與種子）沒有存活，降落傘也故障墜地；這些失敗讓蘇聯延後載人飛行，12 月阿波羅 8 號成為第一次載人繞月。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "大學新聞稿；Zond 5 的人聲只有一句帶過，『可能是預錄或轉發』是推測語氣。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.manchester.ac.uk/about/news/jodrell-bank-observatory-release-50-year-old-audio-archive-of-soviet-zond-6-lunar-mission/"
+        }
+      ]
+    },
+    {
       "id": "SRC-7d43a408eb60c81a",
       "url": "https://drdavidclarke.co.uk/urban-legendary/spring-heeled-jack/",
       "readings": [
@@ -141263,6 +142416,25 @@
           "limitations": "書目資料，只用來確認卒年。",
           "origin": "wave30-20261112",
           "original_url": "https://www.gutenberg.org/ebooks/345"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7d82e9cc01c99d3f",
+      "url": "https://link.springer.com/10.1038/s41598-019-40613-7",
+      "readings": [
+        {
+          "title": "Surface chromium on Terracotta Army bronze weapons is neither an ancient anti-rust treatment nor the reason for their good preservation",
+          "publisher": "Scientific Reports 9, 5289（2019 年 4 月；劍橋大學、倫敦大學學院考古所、秦始皇帝陵博物院、北京科技大學等合著，Springer Nature）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 3（200，413,314 bytes）抓 Springer Link 的文章 HTML，python 去標籤後讀全文。PMC 版（seq 1）回 reCAPTCHA 驗證頁、UCL 典藏 PDF（seq 2）回 403，都已停用。",
+          "reading_scope": "Abstract、Introduction、The Bronze Weapons and Their Surfaces、Post-Depositional Chromium on the Weapons（礦石、土壤、顏料、漆四個假說）、Explanations for Bronze Preservation 全部讀過；Table 1 與補充材料（Table S2–S5、加速老化細節）沒有讀到，只讀內文對它們的描述；Methods 只掃過。",
+          "locator": "Abstract；Introduction 第 2–3 段（'Since the first excavation…in the 1970s'）；'The Bronze Weapons and Their Surfaces' 第 2 段（464 件、37 件）；'Chromium in the lacquer' 全段；'Explanations for Bronze Preservation' 全段與 Fig. 6",
+          "summary": "作者說：約四十年來流行一個看法，認為秦人兩千多年前就發明了鉻酸鹽轉化膜（CCC）防鏽，根據是兵馬俑青銅兵器表面測到鉻、而且保存得很好。這說法起於 1970 年代發掘後研究者對保存良好的驚嘆，加上少數樣本表面測到氧化鉻富集，之後寫進發掘報告，再經翻譯與大眾媒體放大。團隊用可攜式 X 光螢光測了 464 件兵器零件，只有 37 件（8%）表面鉻 ≥0.1%；鉻集中在劍與矛的柄端配件（88%）、弩機的把手部件（75%）、長兵器末端的鐏（67%），箭鏃只有 1.5%，劍刃與矛刃一件都沒有。含鉻兵器在坑中的分布近乎隨機，跟已知的生產批次對不上，也跟保存好壞無關——最亮的刃部恰恰不含鉻。礦石來源（秦人冶煉不可能還原出鉻）、土壤（坑土鉻 <100 ppm，摻鉻鐵礦做加速老化也沒有鉻遷移）、顏料（陵區未發現含鉻顏料）都被排除；漆樣的鉻含量明顯偏高，陶俑外表也富鉻。作者推論：長兵器木桿、弩臂、劍柄劍鞘原本都上了漆，木竹腐朽後漆裡的鉻沾到貼著它的金屬上；一件劍鞘尾飾內側（貼木頭）有鉻、外側（貼土）沒有，正好吻合。保存好的原因改指向坑土 pH 8.1–8.5 的弱鹼性、黃土顆粒極細、有機質低，再加上青銅成分（錫含量高於 10% 的件表面形成穩定的氧化錫層；錫含量也影響坑內保存差異）；實驗中鍍 CCC 與未處理的青銅埋在坑土裡四個月加速老化都一樣光亮，埋在 pH 5.9 有機土的對照組則生鏽。漆裡為什麼有鉻還不知道。",
+          "rights": "OPEN_ACCESS_ACADEMIC",
+          "limitations": "補充表格沒有讀；1970–80 年代最早提出鍍鉻說的中文研究（文中引 Han Rubin 等 1983）只在參考文獻裡看到題名，沒有讀原文，所以『誰在哪一年先說』只能說到這篇論文的轉述。論文說最早的實驗『not conclusive』，正片不說是誰。",
+          "origin": "wave77-20261118",
+          "original_url": "https://link.springer.com/10.1038/s41598-019-40613-7"
         }
       ]
     },
@@ -141588,6 +142760,25 @@
           "limitations": "OCR 有錯字（Jaige＝large，Runingmede 為原拼法）；銘文本身 OCR 讀不清，內容改用 ZB7-S008 的抄錄。",
           "origin": "wave46-20261112",
           "original_url": "https://archive.org/download/bim_eighteenth-century_memoirs-of-the-ancient-e_watson-john_1782_1/bim_eighteenth-century_memoirs-of-the-ancient-e_watson-john_1782_1_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7de0c669581dd1b7",
+      "url": "https://gizmodo.com/this-amazing-chinese-mansion-is-abandoned-because-its-1386896195",
+      "readings": [
+        {
+          "title": "This Amazing Chinese Mansion Is Abandoned Because It's Haunted",
+          "publisher": "Gizmodo，2013-09-25（轉述《紐約時報》報導）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 10（200，220,310 bytes）HTML，去標籤後讀正文",
+          "reading_scope": "正文全讀",
+          "locator": "第 2–4 段",
+          "summary": "流傳版本樣本：這棟樓約 1900 年蓋好、是送給英國殖民者的禮物；1949 年內戰結束時住著一位國民黨高官，他逃往台灣，留下的妻子（或妾）在樓裡上吊；之後一直傳鬧鬼，文革時住進去的紅衛兵也逃走；還說政府曾想拆、因工人神秘失蹤而停工。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手轉述、只當流傳版本樣本；沒有『旗袍』這個細節。",
+          "origin": "wave77-20261118",
+          "original_url": "https://gizmodo.com/this-amazing-chinese-mansion-is-abandoned-because-its-1386896195"
         }
       ]
     },
@@ -143968,6 +145159,25 @@
       ]
     },
     {
+      "id": "SRC-7fcd3eb46119e860",
+      "url": "https://m.thepaper.cn/newsDetail_forward_5514493",
+      "readings": [
+        {
+          "title": "官紳的荷包：貪官和珅的資產疑雲（書摘）",
+          "publisher": "澎湃新聞〈私家歷史〉轉載，節選自三位經濟史學者合著《官紳的荷包：清代精英家庭資產結構研究》，中信出版集團 2019 年 11 月",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 10（200，106,703 bytes），python 去標籤後讀正文",
+          "reading_scope": "全文讀過（含引用的檔案原文與估算段）；書中表格只以文字形式讀到總數",
+          "locator": "『關於和珅家產的爭議』節；『和珅家產的重新估計』節中引《史料旬刊》第 14 期『嘉慶誅和珅案』與內務府嘉慶四年正月二十九日奏；末段『估計和珅家產總價值 4854792.169 兩』",
+          "summary": "『二億兩』出自晚清薛福成《庸盦筆記》所錄一段諭旨式文字：清單共 109 號，已估 26 號合銀 22,389 萬餘兩；後人按 26/109 比例外推得出『八億兩』，20 世紀初《清朝野史大觀》寫成『八百兆兩有奇』，還說足以抵甲午、庚子兩次賠款。作者指出現存三份清單（一檔館藏《御覽抄產單》、無名氏《殛珅紀略》、《庸盦筆記》）形制相近、像同一份清單的不同抄本，數字互有出入（例如玉器庫估銀『七千萬』『七十萬』『七百萬』三種寫法）；有學者考察認為一檔館那份所出的《和珅犯罪全案檔》不是正式檔案，而是從邸報、小抄、傳聞匯抄；民國史家鄧之誠說世傳清單『出於當時民間小抄，實不足據』。可信的一手資料（軍機處錄副、內務府來文等）：查出金 33,551 兩、銀 3,014,095 兩餘，交廣儲司銀庫，內務府嘉慶四年正月二十九日奏報弹兌得庫平紋銀 2,833,249 兩餘；《清實錄》二十大罪中『夾牆藏金二萬六千餘兩、私庫藏金六千餘兩』合起來正好對得上這個金數；房屋三千多間、地十六萬多畝合估約 40 萬兩。作者把可查的各項加總，估計和珅家產約 485 萬兩，『恐怕不會超過 500 萬兩』，並比較乾隆六十年私庫總收入約 8,000 萬兩，說和珅不可能在二十多年攢下皇帝十倍的錢；還提到和珅財物中可能有相當部分是『備貢之物』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是學術專書的報紙轉載節選，不是我直接讀到的檔案原件；檔案文字是書中引文。三位作者在世，正片只稱『經濟史學者』。估算是作者的方法，玉器瓷器等無數量資料、只取上下限。 覆核時 m.thepaper.cn 已在共用封鎖名單，未重抓，以作者 cache seq 10 核對。",
+          "origin": "wave77-20261118",
+          "original_url": "https://m.thepaper.cn/newsDetail_forward_5514493"
+        }
+      ]
+    },
+    {
       "id": "SRC-7fd3e422cb73c49c",
       "url": "https://news.ltn.com.tw/news/life/paper/1660022",
       "readings": [
@@ -144655,6 +145865,25 @@
       ]
     },
     {
+      "id": "SRC-8066e698e1f5305e",
+      "url": "https://boeing.mediaroom.com/1997-07-31-Boeing-Completes-McDonnell-Douglas-Merger",
+      "readings": [
+        {
+          "title": "Boeing Completes McDonnell Douglas Merger",
+          "publisher": "Boeing 新聞稿，1997-07-31",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 33（200，131,038 bytes），去標籤後讀正文",
+          "reading_scope": "正文全讀",
+          "locator": "正文第 1–3 段",
+          "summary": "合併在 1997-08-01 凌晨 12:01（美東夏令時間）生效，交易價值 163 億美元；麥道股票當天收盤後在紐約證交所停止交易；每股麥道換 1.3 股波音普通股，零股付現金。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司新聞稿；163 億美元是當時以股價計的價值。",
+          "origin": "wave77-20261118",
+          "original_url": "https://boeing.mediaroom.com/1997-07-31-Boeing-Completes-McDonnell-Douglas-Merger"
+        }
+      ]
+    },
+    {
       "id": "SRC-8071c175b2ec19cb",
       "url": "https://archive.org/download/b30334652/b30334652_djvu.txt",
       "readings": [
@@ -144917,6 +146146,25 @@
           "limitations": "通訊社稿。",
           "origin": "wave8-20261102",
           "original_url": "https://www.nbcnews.com/id/wbna4998898"
+        }
+      ]
+    },
+    {
+      "id": "SRC-80bc352286eb3df5",
+      "url": "https://grahamhancock.com/?p=5292",
+      "readings": [
+        {
+          "title": "The Mystery of the \"Upside-Down\" Pyramids（Robert Bauval）",
+          "publisher": "Graham Hancock 官方網站，2000-11-06（理論提出者本人撰文）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 5（200，60,182 bytes）下載 HTML，以 python 去標籤後讀",
+          "reading_scope": "前半篇（BBC 訪談經過、對『倒過來』的反駁、兩位天文學者的支持信）讀過；後半篇對 BBC 申訴的細節只讀到開頭",
+          "locator": "『Since early 1997 Krupp has maintained』；『I argued that the Giza-Orion's belt correlation theory worked because』；1999 年 11 月信件引文『If our observer is standing north of the three pyramids』",
+          "summary": "提出者本人的回應：批評者自 1997 年起說他把吉薩地圖倒過來；他主張這個對應要『面向南方』看才成立——觀察者站在三座塔北邊朝南看，尼羅河在左、大金字塔最靠近河、孟卡拉在連線偏南；再想像地面平面以東西線為軸翻起來，就和朝南看到的腰帶與銀河相符。他說埃及人以南為上，因為尼羅河由南向北流、日月星辰都在南天運行，『北方朝上只是今天的慣例』。文中引了兩位英國天文學者支持他的說法。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "當事人的自我辯護，立場鮮明；文中提到的 BBC 申訴裁決結果我沒有讀到一手文件。",
+          "origin": "wave77-20261118",
+          "original_url": "https://grahamhancock.com/?p=5292"
         }
       ]
     },
@@ -149655,6 +150903,25 @@
       ]
     },
     {
+      "id": "SRC-855c9152b0137fd9",
+      "url": "https://repository.kulib.kyoto-u.ac.jp/server/api/core/bitstreams/a8a8f21d-fd26-4e5d-be3a-fcac46d1dc45/content",
+      "readings": [
+        {
+          "title": "6-2 国内の厩猿信仰の記録とニホンザル古分布域との相関関係（共同利用研究報告，中村民彦，對應者川本芳）",
+          "publisher": "京都大學靈長類研究所年報（京都大學學術情報リポジトリ KURENAI 收錄，頁 111；卷號由搜尋結果另一條同系列檔名 apk039 推為第 39 卷，未核對）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 19（200，108,718 bytes，1 頁 PDF）；pdftotext 無輸出，改用 python pdfminer 轉文字。（seq 18 舊式 dspace 網址只回 HTML 首頁，沒有用）",
+          "reading_scope": "該頁的 6-2 報告全部讀過；同頁其他報告（屋久島、愛鷹的獼猴遺傳）略過",
+          "locator": "頁 111『6･2 国内の厩猿信仰の記録とニホンザル古分布域との相関関係』",
+          "summary": "『厩猿』是在馬廄裡供奉猴子頭骨或手骨、祈求牛馬與家人繁衍和生產的民間信仰，曾流布日本全國。調查累計 73 例（岩手 31、秋田 13、宮城 6、岡山 6 等），頭骨 62、手骨 11；功能說法有『守護神』『緣起物』『安產』『藥用』等，九州則是把手骨釘在廄上『驅魔』。作者推測北東北的獼猴在明治初年以前還遍布全境、今天只剩局部，為了厩猿而濫捕是族群減少的重要原因之一（推測語氣）。 （73 例是全國累計，集中在東北。）",
+          "rights": "OPEN_ACCESS_ACADEMIC",
+          "limitations": "年度報告型摘要，只有一頁，沒有逐例出處；『濫捕致減少』是作者推測。卷號與年份沒有在本頁核對。",
+          "origin": "wave77-20261118",
+          "original_url": "https://repository.kulib.kyoto-u.ac.jp/server/api/core/bitstreams/a8a8f21d-fd26-4e5d-be3a-fcac46d1dc45/content"
+        }
+      ]
+    },
+    {
       "id": "SRC-855e719c66a60677",
       "url": "https://kongehuset.dk/en/menu/news/the-history-behind-the-anointing-throne",
       "readings": [
@@ -150900,6 +152167,25 @@
       ]
     },
     {
+      "id": "SRC-86742dead9dc0c4a",
+      "url": "https://yzwmyjy.nenu.edu.cn/info/1363/2199.htm",
+      "readings": [
+        {
+          "title": "宇宙论哲学与盘古创世神话（張文安）摘要",
+          "publisher": "東北師範大學亞洲文明研究院網站《古代文明》目錄及摘要頁，2016-10-11 上網",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 30（200，17,528 bytes）HTML 去標籤後讀摘要",
+          "reading_scope": "只有中英文摘要與關鍵詞，正文沒讀到",
+          "locator": "摘要全段",
+          "summary": "作者主張盤古神話不是原始思維的遺存，與域外神話傳播無關，而是先秦道家宇宙論逐步綜合渾天說、緯書『三皇』傳說與道教神學，『最終在三國時期形成』；並說中國古代創世神話『不發達並且相對晚出』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀到摘要；這是學界諸說之一（另有印度佛經說、南方說等，見 S010 引高木敏雄、呂思勉的轉述未讀到原文）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://yzwmyjy.nenu.edu.cn/info/1363/2199.htm"
+        }
+      ]
+    },
+    {
       "id": "SRC-867889dc1772a675",
       "url": "https://catalog.archives.gov/medialive/60/9946/28994660/content/TB0106/T1206-ProjectBlueBook/T1206_0043/images/1046.jpg",
       "readings": [
@@ -151217,6 +152503,25 @@
       ]
     },
     {
+      "id": "SRC-86b84fa1d9bd86ad",
+      "url": "https://www.moneyweekly.com.tw/_Article?AID=11153",
+      "readings": [
+        {
+          "title": "天母三玉宮 神農大帝庇佑醫學者（高永謀）",
+          "publisher": "理財周刊，2012-05-22",
+          "accessed_on": "2026-11-18",
+          "read_via": "覆核 R776 fetch.sh seq 6（200，78,829 bytes）下載 HTML，去標籤後讀內文；網址出自覆核的搜尋結果",
+          "reading_scope": "內文前半（地名由來與三玉宮沿革）讀過，神農大帝與醫學部分未細讀",
+          "locator": "首段『即使當地人也可能誤以為，天母地名的由來…「聽無」』；次段『根據《三玉宮史誌》的記載…』",
+          "summary": "流傳版本的描述：當地人也可能以為天母來自早年『外國旅客』問路、先民用閩南語回答『聽無』，以訛傳訛（文章本身反駁此說）。文章引《三玉宮史誌》：日本人中治稔郎從湄洲迎來媽祖分靈，取『天上聖母』首末兩字為『天母』，經營天母溫泉、天母巴士並創天母教，地方因此被叫做天母；1945 年中治被遣返，地方人士另建廟奉他留下的媽祖像；1976 年道路拓寬兩廟拆遷，在現址重建。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "雜誌文章，轉述宮廟自己的史誌；『聽無』只以被駁斥的形式出現，且說的是『外國旅客』不是美軍；『首末兩字』的命名說與臺史博的『天照大神＋天上聖母』說不同，拆廟年份（1976）也與 ZW6-S014 的 1947 年救出神像說法不一致。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.moneyweekly.com.tw/_Article?AID=11153"
+        }
+      ]
+    },
+    {
       "id": "SRC-86b89ee476c37a6f",
       "url": "https://www.govinfo.gov/content/pkg/USCOURTS-dcd-1_03-cv-02509/pdf/USCOURTS-dcd-1_03-cv-02509-1.pdf",
       "readings": [
@@ -151289,6 +152594,25 @@
           "limitations": "OCR；Arkansas Gazette 原文本輪沒讀到。",
           "origin": "wave45-20261112",
           "original_url": "https://www.loc.gov/resource/sn88084068/1897-02-05/ed-1/?sp=5"
+        }
+      ]
+    },
+    {
+      "id": "SRC-86ccf08ec4404ceb",
+      "url": "https://chinese.hksyu.edu/chinese/Sharing/%E5%91%82%E5%BF%97%E5%A0%85%20%20%E3%80%8A%E4%B8%AD%E5%9C%8B%E5%85%88%E7%A7%A6%E5%85%A9%E6%BC%A2%E7%A5%9E%E8%A9%B1%E8%88%87%E6%97%A5%E6%9C%AC%E3%80%8A%E5%8F%A4%E4%BA%8B%E8%A8%98%E3%80%8B%E7%9A%84%E6%AF%94%E8%BC%83%E7%A0%94%E7%A9%B6%E2%94%80%E2%94%80%E4%BB%A5%E3%80%8C%E4%BC%8F%E7%BE%B2%E3%80%81%E5%A5%B3%E5%AA%A7%E3%80%8D%E8%88%87%E3%80%8C%E4%BC%8A%E8%80%B6%E9%82%A3%E5%B2%90%E5%91%BD%E3%80%81%E4%BC%8A%E8%80%B6%E9%82%A3%E7%BE%8E%E5%91%BD%E3%80%8D%E5%89%B5%E4%B8%96%E7%A5%9E%E8%A9%B1%E7%82%BA%E4%BE%8B%E3%80%8B.pdf",
+      "readings": [
+        {
+          "title": "中國先秦兩漢神話與日本《古事記》的比較研究──以「伏羲、女媧」與「伊耶那岐命、伊耶那美命」創世神話為例（呂志堅）",
+          "publisher": "香港樹仁大學中文系網站分享文稿（年份未標）",
+          "accessed_on": "2026-11-17",
+          "read_via": "seq 31 因網址空格未編碼而失敗（000）；seq 32（200，1,885,647 bytes）以百分號編碼重發，pdftotext 轉文字",
+          "reading_scope": "讀緒論與『(2)中國：伏羲、女媧的創始神話』一節；其餘掃過",
+          "locator": "『伏羲、女媧之名，最早見於戰國時期的文獻典籍當中』段（文字檔約第 185–196 行），註 11–14",
+          "summary": "作者整理：女媧見於戰國文獻《楚辭．天問》『女媧有體，孰制匠之』、《山海經．大荒西經》『有神十人，名曰女媧之腸』、《列子．湯問》女媧練五色石補天；漢代《淮南子．覽冥訓》有煉五色石補蒼天、斷鼇足立四極。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "學系網站分享文稿，似為學生或研究論文，未見期刊出處；引文的原典版本沒有自己核對（中文古籍站被封鎖）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://chinese.hksyu.edu/chinese/Sharing/%E5%91%82%E5%BF%97%E5%A0%85%20%20%E3%80%8A%E4%B8%AD%E5%9C%8B%E5%85%88%E7%A7%A6%E5%85%A9%E6%BC%A2%E7%A5%9E%E8%A9%B1%E8%88%87%E6%97%A5%E6%9C%AC%E3%80%8A%E5%8F%A4%E4%BA%8B%E8%A8%98%E3%80%8B%E7%9A%84%E6%AF%94%E8%BC%83%E7%A0%94%E7%A9%B6%E2%94%80%E2%94%80%E4%BB%A5%E3%80%8C%E4%BC%8F%E7%BE%B2%E3%80%81%E5%A5%B3%E5%AA%A7%E3%80%8D%E8%88%87%E3%80%8C%E4%BC%8A%E8%80%B6%E9%82%A3%E5%B2%90%E5%91%BD%E3%80%81%E4%BC%8A%E8%80%B6%E9%82%A3%E7%BE%8E%E5%91%BD%E3%80%8D%E5%89%B5%E4%B8%96%E7%A5%9E%E8%A9%B1%E7%82%BA%E4%BE%8B%E3%80%8B.pdf"
         }
       ]
     },
@@ -151800,6 +153124,25 @@
           "limitations": "Beard 自己的回顧，替自己爭首創；委員會原報告沒讀到。",
           "origin": "wave37-20261112",
           "original_url": "https://archive.org/download/studyoftrancemus00bear/studyoftrancemus00bear_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-877d9f2d1c7bd60c",
+      "url": "https://cbdb.fas.harvard.edu/cbdbapi/person.php?name=%E5%92%8C%E7%8F%85&o=json",
+      "readings": [
+        {
+          "title": "CBDB 人物紀錄：鈕祜祿和珅 Niuhulu Heshen（ID 59024）",
+          "publisher": "CBDB（同上），資料版本標 20131220",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 17（200，13,256 bytes）同一 JSON 端點以姓名查詢，python json 解析",
+          "reading_scope": "BasicInfo、PersonEntryInfo、PersonAddresses、PersonPostings 全部；兩筆社會關係以程式搜尋紀昀 ID 30080",
+          "locator": "BasicInfo.YearBirth/YearDeath；PersonPostings",
+          "summary": "和珅生於 1750（乾隆 15 年）、卒於 1799（嘉慶 4 年），注引《清代人物生卒年表》；滿洲正紅旗，文生員出身。官職清單（引中研院人名權威，以年號紀年）：三等侍衛（乾隆 37 年）、乾清門侍衛與御前侍衛（乾隆 40 年）、總管內務府大臣（乾隆 41 年）、滿洲副都統、步軍統領（乾隆 42 年）、都統等。只有 2 筆社會關係，沒有紀昀。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "和珅的官職清單明顯不完整（沒有軍機大臣、大學士等），只能用來核對生卒年與出身；不能用來說兩人沒有同朝任職。",
+          "origin": "wave77-20261118",
+          "original_url": "https://cbdb.fas.harvard.edu/cbdbapi/person.php?name=%E5%92%8C%E7%8F%85&o=json"
         }
       ]
     },
@@ -166122,6 +167465,25 @@
       ]
     },
     {
+      "id": "SRC-9464bf97c902dda2",
+      "url": "https://news.ifeng.com/c/8p1Itj9natN",
+      "readings": [
+        {
+          "title": "明太祖被畫成「醜怪朱元璋」，誰幹的？",
+          "publisher": "紅星新聞（鳳凰網『大風號』轉載），文／啟凌，2025-12-12",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 19（200，245,491 bytes）抓 HTML，python 去標籤後全文讀。",
+          "reading_scope": "全文讀過。",
+          "locator": "首段（台北故宮中年全身像與老年半身像、趙汝珍《古董辨疑》）；第貳節（王錡、張萱、張瀚、七十二黑子）；第參節（『因樣貌醜陋而殺掉把他畫得逼真的畫工』的民間傳說）",
+          "summary": "流傳版本的樣本與通俗整理：朱元璋像分兩類，正式肖像是台北故宮的中年全身（坐）像與老年半身像；怪異肖像面龐扭曲、下頷突出、臉有黑痣，數量遠多於正像，許多人認為異像才是真容，清末民初趙汝珍《古董辨疑》說這像近乎侮辱、在專制時代若非真像無人敢畫。文章也記下民間流傳『朱元璋因長得醜殺了畫得逼真的畫工』一類傳說。它整理的反證：正史『奇其狀貌』出自永樂朝修的《太祖實錄》，朱元璋自己的文字從不提相貌；1413 年孝陵神功聖德碑才寫『項上奇骨隱起至頂』；黑痣從明末的七顆一路傳到清初『七十二黑子』，被認為是比附《史記》劉邦『左股有七十二黑子』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "自媒體轉載文章，沒有註腳；碑文、薛熙、田雯、楊繩武等引文未在一手或學術來源核對，正片只能用 ZW1-S008 有出處的部分。",
+          "origin": "wave77-20261118",
+          "original_url": "https://news.ifeng.com/c/8p1Itj9natN"
+        }
+      ]
+    },
+    {
       "id": "SRC-9469e851efd90583",
       "url": "https://www.theanneboleynfiles.com/the-ghost-of-anne-boleyn/",
       "readings": [
@@ -171338,6 +172700,25 @@
       ]
     },
     {
+      "id": "SRC-98fcbca47b147567",
+      "url": "https://www.aisixiang.com/data/135893.html",
+      "readings": [
+        {
+          "title": "孫中山倫敦蒙難事件的第三種解釋（侯中軍）",
+          "publisher": "原載《廣東社會科學》2022 年第 3 期（注釋從略、標題略有修改），愛思想網轉載",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 13（200，66,013 bytes）下載 HTML，以 python 去標籤後讀第一、二節與第三節開頭",
+          "reading_scope": "讀了第一節『究竟是被綁架還是自投？100多年以來的爭論』全文、第二節大部分、第三節前段；結論只掃到最後一段；注釋已被轉載方刪去",
+          "locator": "第一節（綁架說、自進說兩派與各自證據）；第二節『卡菲……的調查』『窦納德照會』段",
+          "summary": "整理兩派證據：孫的說法——10 月 17 日、19 日交給康德黎的求救卡片寫『星期天被綁架』『被兩個中國人拉進使館』。清使館的說法——使館隨員的函件說孫改名『陳載之』前一天來使館詢問有無粵人，次日又自己來，才被扣留；馬格里對外交部說孫 10 月 9 日（另一次說 10 日）先來過一次，前後日期不一。私家偵探社報告與孫自述的 10 日行程都無法證明或排除他去過使館。後來的國民黨元老向整理史料者轉述孫親口說過『是我自己走進去的』；一位美國學者據此主張自進說；另一位學者的專著則反過來認為他確是被綁，『自進使署』是 1897 年在日本時為塑造英雄形象才改口的。英國方面：財政部律師卡菲 1896 年 11 月調查，因無法約談使館人員，只採一方證詞，認為孫的說法『無疑是正確的』，但被普遍認為不明確；外交部 12 月的說明稿寫『孫是在何種情況下進入（訪問）中國使館，迄今仍存有爭議』，正式照會改用『進入』；1897 年 2 月英國駐華公使照會總理衙門，也說入館情形『仍有不同解釋』，但 10 月 11 日已被羈押無疑。作者本人提出第三種推論：孫與康德黎預謀自投使館，以製造國際輿論。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "期刊論文的網路轉載，注釋被刪，引用的英國檔案（FO、Treasury Solicitor）與清使館函件都是經作者轉述，我沒有讀到檔案原件；作者自己的『預謀自投』是推論，正片只能當作『一種新解釋』。 轉載版為簡體字；1930 年兩位元老的轉述在第一節，本文沒有寫他們的卒年。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.aisixiang.com/data/135893.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-990113f2ee4b42af",
       "url": "https://science.nasa.gov/earth/deep-impact-and-the-mass-extinction-of-species-65-million-years-ago/",
       "readings": [
@@ -171906,6 +173287,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.physics.smu.edu/pseudo/2012/Doomsday2012.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9963bf0a75ee2192",
+      "url": "https://www.mentalfloss.com/history/pierre-marie-curie-psychic-medium-investigation",
+      "readings": [
+        {
+          "title": "When Marie and Pierre Curie Investigated a Psychic Medium",
+          "publisher": "Mental Floss（線上文章，年份未在讀到的段落標出）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 17（200，279,858 bytes）下載 HTML，python 去標籤後讀內文",
+          "reading_scope": "讀了『The Curies Investigate』與『A Message from Beyond』兩節；結尾未細讀",
+          "locator": "『The Curies Investigate』；『Just a few days before his death in 1906, Pierre wrote again to Gouy…』；『A Message from Beyond』引 Goldsmith",
+          "summary": "流傳版本樣本：說居禮夫婦把降靈會當實驗；1905 年致 Gouy 信說現象『看起來無法用作弊解釋』，場地由他們準備、觀眾都認識、沒有可能的同謀；死前幾天再寫信給 Gouy，說『這些現象真的存在，我已不能懷疑』，『有一整個全新事實與空間物理狀態的領域』；並引傳記作者說居禮夫婦『相信唯靈論』、瑪麗在皮耶死後寫日記對他說話。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "通俗文章，信件引文轉手自傳記；『居禮夫婦相信唯靈論』是引用傳記作者的詮釋。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.mentalfloss.com/history/pierre-marie-curie-psychic-medium-investigation"
         }
       ]
     },
@@ -172707,6 +174107,25 @@
       ]
     },
     {
+      "id": "SRC-9a237a94e384ee83",
+      "url": "https://ufn.ru/ufn2019/ufn2019_4/ufn194e.pdf",
+      "readings": [
+        {
+          "title": "Hypothetical signs of life on Venus: revising results of 1975–1982 TV experiments（L V Ksanfomality, L M Zelenyi, V N Parmon, V N Snytnikov）",
+          "publisher": "Physics–Uspekhi 62 (4) 378–404, 2019（Russian Academy of Sciences；DOI 10.3367/UFNe.2018.12.038507）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 2（200，3,733,948 bytes）下載 PDF，pdftotext 轉文字後讀相關節",
+          "reading_scope": "讀了摘要、第 3 節 Venera 電視實驗（含鏡頭蓋段）、第 5.2 節 Tentative living objects（scorpion 全段與圖 12 說明）；第 6–7 節化學假說與附錄只掃過",
+          "locator": "第 3 節『The optical windows of the TV cameras had special lids…』；第 5.2 節『As examples of the objects found, a moving object called scorpion (Fig. 12)…』至『In the 113–126-min panorama, scorpion is already absent.』；圖 12 說明",
+          "summary": "作者團隊（第一作者就是 2012 年提出『蠍子』的研究者）2019 年仍堅持：到 2018 年在 Venera 9–14 影像裡找到 18 個『假設的生命體』。『蠍子』出現在 Venera 13 第 6BW 張全景（登陸後 87–100 分鐘），87 分鐘以前與 113 分鐘以後都不在；長約 15–17 公分，右邊有一個『半環』，下一張會轉 90 度。作者承認『第一個假設是這是登陸器自己某個部件損壞的產物』，但以登陸器之後又運作了一小時、所有外部動作（丟掉鏡頭蓋、鑽探）都在登陸後 30 分鐘內完成為由排除；用風速 0.3–0.5 m/s 算出推力約 0.08 N，排除被風吹走；推論它被登陸時拋起的土埋住、花了約 1.5 小時才爬出來。第 3 節也寫明：電視鏡頭的光學窗有保護蓋，登陸後要用裝置拋掉；Venera 11、12 的蓋子沒能打開。 同一篇的圖 10 說明自己就標出畫面中『一個掉落的半圓柱形電視相機鏡頭蓋』，直徑 20 公分。",
+          "rights": "OPEN_ACCESS_ACADEMIC",
+          "limitations": "這是提出主張的一方自己的論文，不是反駁；2012 年原論文（Solar System Research）本次沒有讀到全文，只讀到 ZW6-S010 的轉述。",
+          "origin": "wave77-20261118",
+          "original_url": "https://ufn.ru/ufn2019/ufn2019_4/ufn194e.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-9a3253e69143adbb",
       "url": "https://niwa.co.nz/news-and-publications/publications/all/wa/14-1/news6",
       "readings": [
@@ -173064,6 +174483,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.gamespark.jp/article/2020/07/24/100812.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9a9bd9e588383629",
+      "url": "https://www.kyohaku.go.jp/eng/learn/home/dictio/senshoku/48koutei/",
+      "readings": [
+        {
+          "title": "Imperial Dragons（Museum Dictionary）",
+          "publisher": "京都國立博物館 Kyoto National Museum，網站學習資源（年份未標）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 20（200，53,749 bytes），python 去標籤後讀正文",
+          "reading_scope": "全文讀過",
+          "locator": "『It was during the Tang dynasty (618-907)…』段與『Four-clawed Dragons』段",
+          "summary": "唐代開始以龍紋為權力象徵，693 年有高官獲賜龍袍；1297 年准許衣服前後有小龍紋，但禁止滿身大龍；1315 年規定只有皇帝能用『兩角五爪』的龍紋，從此龍成為權力象徵。明代皇帝延續兩角五爪龍，15 世紀中葉起賜臣下四爪的『蟒』，另有飛魚、斗牛（四爪或三爪）等相似紋樣；1458 年下令禁止濫用蟒、飛魚、斗牛；清代臣下的『蟒』已長得跟龍一模一樣。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "博物館科普頁，沒有逐條註出處；年份 1315 與 ZW7-S011 的延祐元年（1314）差一年，可能是延祐元年年底換算成西曆已入 1315 年，原典月份未讀到，正片寫『元朝中期』或『14 世紀初』即可。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.kyohaku.go.jp/eng/learn/home/dictio/senshoku/48koutei/"
         }
       ]
     },
@@ -173877,6 +175315,25 @@
       ]
     },
     {
+      "id": "SRC-9b6a1cf4c43337a7",
+      "url": "https://ntrs.nasa.gov/api/citations/19730006364/downloads/19730006364.txt",
+      "readings": [
+        {
+          "title": "Bioastronautics Data Book, Second Edition（NASA SP-3006）第 1 章 Barometric Pressure",
+          "publisher": "NASA，1973 年（NTRS 19730006364）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 4（200，8,408 bytes）讀 citation JSON；seq 5（200，1,660,851 bytes）下載全文 .txt，以 grep 找 ebullism 後讀約第 1590–1665 行",
+          "reading_scope": "只讀第 1 章關於減壓到近真空的段落（約一頁）；全書其餘未讀",
+          "locator": "OCR 文字約第 1590–1665 行（第 1 章，接在 Cooke 等動物實驗之後，『Some degree of consciousness will probably be retained for 9 to 11 seconds』一段）",
+          "summary": "暴露在近真空時，推估還能保有某種程度意識 9 到 11 秒，接著癱瘓、全身抽搐；水蒸氣在軟組織與靜脈血中迅速形成，若沒有加壓衣約束，身體可能腫到正常體積的兩倍；合身的彈性衣在低到 15 mmHg 時可以完全防止體液沸騰；口鼻因持續蒸發而冷到接近冰點；動物實驗中 90 秒內回壓通常存活；回壓超過約 1 psia 時腫脹明顯消退。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "這段是依動物實驗推估人體反應，不是人體病例；沒有提到 1966 年的事故。",
+          "origin": "wave77-20261118",
+          "original_url": "https://ntrs.nasa.gov/api/citations/19730006364/downloads/19730006364.txt"
+        }
+      ]
+    },
+    {
       "id": "SRC-9b7711b6ff89552e",
       "url": "https://archive.org/details/inquiryintonatur01smit_3",
       "readings": [
@@ -174504,6 +175961,25 @@
       ]
     },
     {
+      "id": "SRC-9bc41fb7e79ed4b8",
+      "url": "https://digitalarchive.npm.gov.tw/Painting/Content?pid=1193&Dept=P",
+      "readings": [
+        {
+          "title": "元黃公望富春山居圖卷（子明卷）典藏資料：款識、題跋全文與網頁展示說明",
+          "publisher": "國立故宮博物院 故宮典藏資料檢索（展示說明日期 2011-06-09）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 10（200，264,267 bytes）下載 HTML，以 python 去標籤後讀題跋欄與『網頁展示說明』",
+          "reading_scope": "讀了黃公望款識、清高宗各則題跋（丙寅清和月、丙寅長至後一日重華宮御識、丙寅小寒、丙寅榖雨、丁卯仲春等）、錢陳群跋、董其昌跋、參考書目與展示說明；沒有逐則讀完全部乾隆題詩；覆核 R776 以程式計數：題跋欄中作者為『清高宗』的共 55 則（另有沈德潛 2、劉珏、孔諤、錢陳群、董其昌、鄒之麟各 1），與 ZW6-S003 的 55 則一致",
+          "locator": "題跋欄『丙寅（西元一七四六年）長至後一日。重華宮御識。並書。』整段；頁末『網頁展示說明』",
+          "summary": "乾隆 1746 年長至後一日御識（乾隆自己寫在子明卷上）：1745 年夏讀沈德潛文稿，同年冬得『黃子久山居圖』，以為筆墨蒼古的係真蹟，但跋與沈文所記不合，以為山居與富春是兩幅；1746 年冬安氏家道中落，經傅恆把富春山居卷送來，『剪燭粗觀，則居然黃子久富春山居圖也』；次日命梁詩正等辨真偽，『咸以舊為真而新為偽』，乾隆寫自己『燈下駭以為更得富春者乃誤也』，並說沈德潛、高士奇、王鴻緒都誤；但認為新卷『蓋非近日俗工所能為』，與同批古物『概以二千金留之』，並把子明卷正名為《富春山居》。故宮展示說明：清高宗 1745 年收入子明卷，第二年購得無用師卷，認子明卷為真、無用師卷為仿本，引發後世熱烈辯論；現代學者比較筆墨，確認子明卷是仿本，但它保留了剩山圖一段，是理解原貌的參照本。 題跋欄作者為清高宗者共 55 則（覆核計數）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "題跋是故宮的釋文，未對照原件影像；展示說明只用一句話交代翻案，沒有說哪一年、誰翻案。",
+          "origin": "wave77-20261118",
+          "original_url": "https://digitalarchive.npm.gov.tw/Painting/Content?pid=1193&Dept=P"
+        }
+      ]
+    },
+    {
       "id": "SRC-9bc905a2f8a906a6",
       "url": "https://en.wikipedia.org/wiki/Old_Santeclaus_with_Much_Delight",
       "readings": [
@@ -174839,6 +176315,25 @@
       ]
     },
     {
+      "id": "SRC-9c0e22019e757b91",
+      "url": "https://www.ctdsb.net/c1664_202509/2549998.html",
+      "readings": [
+        {
+          "title": "三星堆公布重大发现！专家：种种迹象表明，三星堆可能爆发过内战…",
+          "publisher": "极目新闻轉載《每日經濟新聞》（綜合央視新聞、封面新聞），2025-09-27",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 14（200，112,842 bytes）HTML，去標籤後讀正文",
+          "reading_scope": "全文讀過",
+          "locator": "『祭祀坑年代确定为商代晚期』節、『芯骨-条形芯撑』節、『金器制作技术』節、『三星堆可能爆发过内战』節",
+          "summary": "四川省文物考古研究院 2025-09-27 發布多學科研究成果：3、4、6、8 號坑埋藏年代有 95.4% 機率在西元前 1201–1012 年，相當於商代晚期；北京大學挑選坑中竹子炭屑測年（竹子生長期短，較精確）。1、2、3、4、7、8 號坑有跨坑拼對的器物，印證同時期埋藏。青銅器以分鑄為核心，兼用渾鑄、鍛造，首次系統確認『芯骨－條形芯撐』技術；學者說模範法技術直接來自中原，再有本地創造。彩繪青銅器用朱砂與大漆，是已知中國最早的銅胎漆器之一；黃金用量預計超過 2 公斤，已用灰吹法提純沙金。一位北大教授的報告推測三星堆曾發生爭奪都城的內部戰爭，神權貴族集團受打擊。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "轉載報導；『內戰』是單一學者的推論，不是定論。2022 年說 6 號坑較晚，2025 年把 6 號坑放進同一區間，兩次發布口徑不同（見 notes）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.ctdsb.net/c1664_202509/2549998.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-9c0e8a2afd781090",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3744476/",
       "readings": [
@@ -175005,6 +176500,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave19-20261102",
           "original_url": "https://db.itkc.or.kr/dir/node?dataId=ITKC_JT_I0_A01_08A_03A_00040&viewSync=TR"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9c2ab966703debc6",
+      "url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/public-statements/statement-chairman-robert-pitofsky-commissioners-janet-d-steiger-roscoe-b-starek-iii-christine",
+      "readings": [
+        {
+          "title": "Statement of Chairman Robert Pitofsky and Commissioners Janet D. Steiger, Roscoe B. Starek III and Christine A. Varney in the Matter of The Boeing Company/McDonnell Douglas Corporation",
+          "publisher": "美國聯邦貿易委員會，1997-07-01",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 32（200，998,721 bytes；連結取自 seq 31 頁面的 Related actions），去標籤後讀全文",
+          "reading_scope": "聲明全文與兩個註腳全讀；Azcuenaga 委員的個別意見沒有讀",
+          "locator": "第 5–9 段（『On its face』『With respect to the commercial aircraft sector』『Our decision not to challenge』）",
+          "summary": "聲明說波音約占大型商用機銷售 60%，表面上併購一個『非倒閉中』的直接對手會有疑慮；但調查（訪談四十多家航空公司、幾乎一致的證詞）認為麥道『looking to the future, no longer constitutes a meaningful competitive force』，原因是幾十年來在新機型、廠房、研發上的投資遠低於對手，產品線有限、技術落後，而且各機型駕駛艙與發動機不共通，無法像 737 或 A320 家族那樣共用零件與訓練，『絕大多數航空公司不再考慮購買』。聲明特別說明這不是認定麥道是倒閉公司，也明說『國家冠軍』論不是核准理由；並表示對波音與三家大航空公司簽的 20 年獨家合約感到疑慮、會持續監看。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "多數委員的意見；反對意見（Azcuenaga）沒有讀，正片若講『有人不同意』要補讀或只說『有一位委員另提意見』。歐盟條件未讀。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/public-statements/statement-chairman-robert-pitofsky-commissioners-janet-d-steiger-roscoe-b-starek-iii-christine"
         }
       ]
     },
@@ -176832,6 +178346,25 @@
       ]
     },
     {
+      "id": "SRC-9db09588fa574b1f",
+      "url": "https://www.history.com/articles/did-a-premature-obituary-inspire-the-nobel-prize",
+      "readings": [
+        {
+          "title": "Did a Premature Obituary Inspire the Nobel Prize?",
+          "publisher": "HISTORY（A&E），作者 Evan Andrews，年份頁面未標",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 19（200，453,005 bytes），python 去標籤後讀正文",
+          "reading_scope": "正文全讀",
+          "locator": "第 3–5 段（遺囑與『merchant of death』）；『The newspaper incident is often cited』段；Suttner 段",
+          "summary": "流傳版本與其限制：1888 年弟兄 Ludvig 在法國死於心臟病，至少一家法國報紙誤以為死的是 Alfred，刊出稱他『merchant of death』、靠找出更快『殘害與殺人』方法致富的訃聞；一位傳記作者說他因此執著身後名聲而重寫遺囑。但文章接著寫：歷史學者至今沒有找到這份訃聞的原件，有人視之為神話，也有人說只是因素之一；諾貝爾基金會提到他可能早在 1868 年獲瑞典皇家科學院獎時就有了科學獎的念頭；和平獎常歸功於他與 Bertha von Suttner 的長年通信，他 1890 年還寫信說他的工廠可能比和平會議更早終結戰爭。1895-11-27 在巴黎瑞典挪威俱樂部簽遺囑。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "大眾史普文章，沒有說是哪位學者找過、用什麼方法；Kenne Fant 引語是轉引。（覆核補：『基金會提到 1868 年獲瑞典皇家科學院獎』在本次讀到的三頁 nobelprize.org［ZW0-S014、S015、S016］都找不到，只能算 HISTORY 的轉述。）",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.history.com/articles/did-a-premature-obituary-inspire-the-nobel-prize"
+        }
+      ]
+    },
+    {
       "id": "SRC-9db810c25716c53c",
       "url": "https://archive.org/download/orygynalecronyki02andr/orygynalecronyki02andr_djvu.txt",
       "readings": [
@@ -177803,6 +179336,25 @@
       ]
     },
     {
+      "id": "SRC-9ea7ef9e8e3fc5cf",
+      "url": "https://www.cass.cn/xueshuchengguo/xscg_lsyjy/202008/t20200807_5166961.shtml",
+      "readings": [
+        {
+          "title": "退而不休追梦人——记中国社会科学院离退休干部先进个人（阿房宫考古队前队长）",
+          "publisher": "中國社會科學院網站，2020-08-07",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 9（200，29,076 bytes），python 去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "第 3 段『2002年临近退休时』；第 4 段『至此…得到了国家正式认可』",
+          "summary": "社科院官方頁：2002 年起國家文物局聘請的阿房宮考古隊在 135 平方公里範圍調查、鑽探、發掘，結論是秦始皇的阿房宮並未建成，只建成長 1270 米、寬 426 米、現存高 12 米的夯土台基，也沒有遭到大火焚燒；2012 年國家文物局依考古隊確定的範圍通過《阿房宮遺址保護規劃》，等於正式認可『沒有建成，亦沒遭火燒』的結論。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "機構表揚稿，不是發掘報告本身；沒寫紅燒土或土樣分析的細節。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.cass.cn/xueshuchengguo/xscg_lsyjy/202008/t20200807_5166961.shtml"
+        }
+      ]
+    },
+    {
       "id": "SRC-9eaa052d3ef26984",
       "url": "https://dl.ndl.go.jp/pid/1194426",
       "readings": [
@@ -177856,6 +179408,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://commons.wikimedia.org/wiki/File:Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9eb851a8a1a612ef",
+      "url": "https://www.rtbf.be/article/esprit-es-tu-la-sur-les-traces-de-l-histoire-du-spiritisme-10857941",
+      "readings": [
+        {
+          "title": "Esprit es-tu là ? Sur les traces de l'histoire du spiritisme（節目頁）",
+          "publisher": "RTBF（比利時法語公共廣播），2021-11-05",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 15（200，715,773 bytes）抓 HTML，python 去標籤後讀與雨果有關的節目簡介。",
+          "reading_scope": "只讀第 4 集（Victor Hugo, Harry Houdini et Sir Conan Doyle）的簡介段。",
+          "locator": "'Episode 4 : Victor Hugo, Harry Houdini et Sir Conan Doyle'",
+          "summary": "流傳版本的樣本：雨果兩年多參加約 130 場『會說話的桌子』，紀錄成《Le livre des tables》，這位大作家『據說』與夏多布里昂、莎士比亞、耶穌，以及死神、戲劇等存在通了話。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "大眾媒體的節目簡介，語氣有保留（條件式）；『130 場』只在這裡讀到。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.rtbf.be/article/esprit-es-tu-la-sur-les-traces-de-l-histoire-du-spiritisme-10857941"
         }
       ]
     },
@@ -183516,6 +185087,25 @@
       ]
     },
     {
+      "id": "SRC-a38bc08aafb7dcc4",
+      "url": "https://link.springer.com/article/10.1007/s13353-018-0456-3/fulltext.html",
+      "readings": [
+        {
+          "title": "Disease not genetic but infectious: multiple tuberculomas and fibrinous pericarditis as symptoms pathognomonic for tuberculosis of Frederic Chopin",
+          "publisher": "Journal of Applied Genetics 59 卷，頁 471 起，2018 年 11 月（Springer，CC BY 4.0 開放取用）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 24（200，266,801 bytes）下載 HTML 全文，以 python 去標籤後讀",
+          "reading_scope": "Abstract、Introduction、Materials and methods、Results and discussion、Conclusions 全讀；圖只讀圖說；參考文獻掃過",
+          "locator": "Introduction『The post-mortem examination was performed by』；Materials and methods『On April 2014, an inspection of the crypt』『it was decided not to open the jar』；Conclusions",
+          "summary": "蕭邦 1849 年死在巴黎，由解剖學家 Cruveilhier 解剖；解剖紀錄在 1871 年巴黎警察檔案大火中燒毀，只剩他對蕭邦學生的口頭轉述。照遺願心臟被取出，次年姊姊 Ludwika 把裝在玻璃罐裡的心臟帶回華沙家中，多年後移入聖十字教堂的柱子。2014 年 4 月的檢查事前就決定不做任何侵入性處理、限時 4 小時、不准用 CT；水晶罐以磨砂玻璃塞密封，心臟泡在琥珀褐色液體裡，作者說『從史料知道它可能是白蘭地』，液面只降了 0.5 公分；因保存極好，決定不開罐，所以液體的化學、基因與顯微分析都放棄，只拍照分析，再補熱蠟封口，下次檢查約 50 年後。作者依照片判讀：心臟整體擴大、有多個珍珠白小結節（結核瘤）與整片纖維素性心包膜炎（『frosted heart』），認為不是死後沉積或黴，結論是結核最可能，急速進展的結核性心包膜炎是直接死因；並說妹妹 Emilia 類似的病程比較像家中傳染，不像遺傳病，要再確認得分析華沙 Powązki 墓園家族遺骸。",
+          "rights": "OPEN_ACCESS_ACADEMIC",
+          "limitations": "判讀只根據外觀照片，作者自己說非侵入；作者群中有人 2003 年曾主張囊性纖維化，這篇是修正自己的看法。病理學界是否接受，本次沒有讀到反方論文（維基轉述有人質疑，只在搜尋摘要看到）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://link.springer.com/article/10.1007/s13353-018-0456-3/fulltext.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-a38be664f3fbbf3e",
       "url": "https://archive.org/details/provasdahistoria01sous",
       "readings": [
@@ -185136,6 +186726,25 @@
           "limitations": "只讀到檢索片段與前後數句。",
           "origin": "wave17-20261102",
           "original_url": "https://dl.ndl.go.jp/pid/3438316"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a50e1ba0eebef31f",
+      "url": "https://m.163.com/dy/article/I6BF80HO0552H74Z.html",
+      "readings": [
+        {
+          "title": "歷史上的包青天：不黑還很白、清官、超有錢",
+          "publisher": "網易號自媒體文章（年份未標）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 18（200，74,049 bytes），python 去標籤後讀正文",
+          "reading_scope": "全文讀過",
+          "locator": "小節『不黑還很白，包公的長相』；月牙段；三口銅鍘段",
+          "summary": "流傳版本的樣本：大家印象中包公很黑、額頭自帶月牙、有三口銅鍘；文章說北京故宮藏的歷代聖賢像裡有一幅包公像（老年、烏紗帽、紅袍、白鬚、面帶微笑），又引宋人張田說包公『面白皙，有豐儀』；月牙是清代京劇加上去的（引《清宮戲畫》），元明戲曲已有黑臉但沒有月牙；銅鍘不見於《宋史》，宋代死刑沒有鍘刀。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "自媒體文章，沒有給『面白皙』的書名卷次，也沒有給故宮畫像的藏品編號；只能當流傳版本樣本。",
+          "origin": "wave77-20261118",
+          "original_url": "https://m.163.com/dy/article/I6BF80HO0552H74Z.html"
         }
       ]
     },
@@ -187164,6 +188773,25 @@
       ]
     },
     {
+      "id": "SRC-a64edebd502ef931",
+      "url": "https://spacedaily.com/a-on-december-14-1966-a-nasa-engineers-spacesuit-sprang-a-leak-inside-a-houston-vacuum-chamber-and-the-air-pressure-around-him-dropped-to-the-equivalent-of-120000-feet-high-enough-that-the/",
+      "readings": [
+        {
+          "title": "On December 14, 1966, a NASA engineer's spacesuit sprang a leak inside a Houston vacuum chamber…（Ainura Kalau）",
+          "publisher": "SpaceDaily，2026-08-23",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 3（200，77,534 bytes）下載 HTML，以 python 去標籤後讀全文（去標籤後約 9,300 字元）",
+          "reading_scope": "全文讀過（開頭到『What actually happened inside Building 7』一節）",
+          "locator": "首段『Ask most people what happens…』；第二、三段；『What actually happened inside Building 7』一節",
+          "summary": "流傳版本樣本：文章開頭自己列出大眾的說法——『你會爆炸，血液沸騰，還來不及察覺就死了』，再說這些都不太對。事故敘述：1966-12-14 休士頓載人太空船中心，一名太空衣工程師（文中具名）穿著登月衣原型，在 8 英尺的高度艙裡加壓到 3.7 psi；加壓管脫開，自動閥被同一個接頭撐開；等效高度約 12 萬英尺；他感覺到舌頭上的口水冒泡，接著昏過去；約一分半內恢復呼吸，紀錄上唯一的傷是耳朵痛。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "2026 年的科普報導，沒有附出處；『口水冒泡』『12 萬英尺』『一分半』都沒有在 ZW3-S001 讀到。只作流傳版本樣本與當事人說法的二手轉述。 文章另寫控制台兩名技師立刻回壓、以及具名的當事人與督導工程師（是否在世未查，正片不點名）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://spacedaily.com/a-on-december-14-1966-a-nasa-engineers-spacesuit-sprang-a-leak-inside-a-houston-vacuum-chamber-and-the-air-pressure-around-him-dropped-to-the-equivalent-of-120000-feet-high-enough-that-the/"
+        }
+      ]
+    },
+    {
       "id": "SRC-a64f412bf80778b9",
       "url": "https://archive.org/download/monthly-notices-of-the-royal-astronomical-society_1906-02-09_66_4/monthly-notices-of-the-royal-astronomical-society_1906-02-09_66_4_djvu.txt",
       "readings": [
@@ -187369,6 +188997,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave41-20261112",
           "original_url": "https://latinitium.com/latin-book-club-livy-the-death-of-hannibal/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a68072b942709093",
+      "url": "https://japan.kfc.co.jp/news_release/7751",
+      "readings": [
+        {
+          "title": "幸運の象徴「おかえり！ カーネル」に感謝を込めて 人形納めを実施",
+          "publisher": "日本ケンタッキー・フライド・チキン株式会社（日本KFCホールディングス）新聞稿，2024-03-19",
+          "read_via": "fetch.sh seq 23（200，23,336 bytes）下載 HTML，以 python 去標籤後讀全文；網址來自搜尋結果中一則社群註記所引的公司新聞稿連結。覆核 R772 seq 2 重抓（200，23,336 bytes，sha256 前綴相同 51030c45ad578438）。",
+          "reading_scope": "全文與文末年表讀過",
+          "locator": "正文第 2–3 段；『「おかえり！ カーネル」年表』1985-10-16、2009-03-10、2009-03-11、2009-06-25、2009-08-22、2017-02-27、2024-03-08 各列",
+          "summary": "公司年表：1985 年 10 月 16 日，因『職棒優勝』狂熱的兩三名球迷把道頓堀店的立像『當成外國人選手』拋起來，又有十人左右再拋，街上擠滿球迷、勸阻聽不到，就被抬到橋上、消失在道頓堀川；2009 年 3 月 10 日在河裡 24 年後被發現；3 月 11 日因原店已關，與大阪市協議後歸還日本 KFC；6 月 25 日公開由 NPO『文化財保存支援機構』修復的樣子，命名『おかえり！カーネル』，稱它是『幸運的象徵』（正文說理由是隔了漫長年月仍帶著不變的笑容出現）；之後在水都大阪 2009、KFC 阪神甲子園店展示，也借給奈良大學博物館當保存修復的例子；2017 年移到關西辦公室；正文說它也替『去年（2023）職棒季末』炒熱氣氛；2024 年 3 月 8 日因老化難以保存，在住吉大社辦『人形納め』，供了御神酒與原味炸雞。整篇沒有出現『詛咒』這個詞，也沒有寫雕像缺了哪些部分（只說損傷嚴重）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自己的說法；不談詛咒、不寫發現者與缺損部位；『外國人選手』沒有點名。",
+          "accessed_on": "2026-11-17",
+          "origin": "wave77-20261118",
+          "original_url": "https://japan.kfc.co.jp/news_release/7751"
         }
       ]
     },
@@ -191290,6 +192937,25 @@
       ]
     },
     {
+      "id": "SRC-a8fb0d82d5fe50f4",
+      "url": "https://newstatesman.com/international-content/2021/10/the-london-kidnapping-that-changed-china",
+      "readings": [
+        {
+          "title": "The London kidnapping that changed China（Bill Hayton）",
+          "publisher": "New Statesman，2021-10-12",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 11（200，228,560 bytes）下載 HTML，去標籤後只讀到付費牆前的導言（約四段）",
+          "reading_scope": "只讀導言；正文被付費牆擋住，沒有讀到",
+          "locator": "導言首段『One hundred and twenty-five years ago this week』",
+          "summary": "流傳版本樣本：孫『在倫敦街頭被抓走，被推進中國使館』，被告知將被偷運回國處死；12 天後獲釋時成為英國報紙的英雄，《Kidnapped in London》讓他舉世聞名。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀到導言；作者在世，正片不點名。",
+          "origin": "wave77-20261118",
+          "original_url": "https://newstatesman.com/international-content/2021/10/the-london-kidnapping-that-changed-china"
+        }
+      ]
+    },
+    {
       "id": "SRC-a901ef5c06cccd7c",
       "url": "http://www.themunnsreport.com/tmr_v2_design_012.htm",
       "readings": [
@@ -192413,6 +194079,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://celt.ucc.ie/published/T201040.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-aa27ba159213bb8a",
+      "url": "https://www.hallofmaat.com/orioncorrelation/pyramid-marketing-schemes",
+      "readings": [
+        {
+          "title": "Pyramid Marketing Schemes（E. C. Krupp, Rambling Through the Skies 專欄）",
+          "publisher": "原刊 Sky & Telescope 1997 年 2 月號；Hall of Ma'at 2001-09-27 經授權轉載",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 4（200，73,713 bytes）下載 HTML，以 python 去標籤後讀全文",
+          "reading_scope": "專欄全文與圖說讀過",
+          "locator": "圖說『This is bait and switch with north and south』；正文『There is something wrong with these images』『all of the book's maps of Egypt are published upside down』；末段『Embracing the plausibly astronomical orientation』",
+          "summary": "一位天文台台長在天文雜誌專欄指出：書中把吉薩空照圖與腰帶照片並排，但空照圖北方在頁面下方、腰帶照片北方在上方——『要讓金字塔對上天空，得把埃及倒過來』，書裡所有埃及地圖都是南方朝上；最小的孟卡拉塔在西南，卻被對到腰帶最北的參宿三。他還指出書把吉薩南邊的『未完成金字塔』對到腰帶北方的參宿五、北邊的金字塔對到南方的參宿六，最亮的參宿四與參宿七沒有金字塔。他的論點是：既然書接受大金字塔南北星井指向的真南真北，就不能在整體布局裡把南北對調。他同時肯定 1964 年一位埃及學者與一位大學生對星井角度的研究。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "雜誌專欄（Hall of Ma'at 經授權轉載，頁末載『From Sky & Telescope, February 1997』），是批評者自己的論證；作者卒年本次來源未載，正片不點名。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.hallofmaat.com/orioncorrelation/pyramid-marketing-schemes"
         }
       ]
     },
@@ -193879,6 +195564,25 @@
       ]
     },
     {
+      "id": "SRC-abd5b47397c66af6",
+      "url": "https://www.kanripo.org/api/v1.0/search?query=%E7%B9%AB%E7%8D%BC%E7%8C%B4&with-titles&count=40",
+      "readings": [
+        {
+          "title": "漢籍リポジトリ全文檢索『繫獼猴』與『獼猴於馬坊』",
+          "publisher": "Kanseki Repository 公開 API",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 13（200，709 bytes，『繫獼猴』）與 seq 6（200，302 bytes，『獼猴於馬坊』），純文字 KWIC；R774 重抓『繫獼猴』（R774 seq 2，同 709 bytes），並以 titles 端點確認 KR3d0007＝農政全書（R774 seq 3）、KR3d0010＝欽定授時通考（R774 seq 4）",
+          "reading_scope": "只讀到每處命中的一行上下文；KR3d0007、KR3d0010 書名由 R774 確認；KR3d0001《齊民要術》本身沒有命中這個寫法",
+          "locator": "KR3e0079_117:19a:0293（本草綱目另一處）；KR3d0007_041:12a:0179、KR3d0010_070:18b:0283（『術曰』）；KR4i0045_016:15a:0231、KR3j0171_012:6a:0086（引韓鄂《四時纂要》）",
+          "summary": "《本草綱目》另一卷也說『令馬落駒；繫獼猴於廏，辟馬病，皆物理當然耳』。明末《農政全書》與清代《欽定授時通考》在『令馬落駒』條下引『術曰：常繫獼猴於馬坊，令馬不（畏？），辟惡，消百病』；另兩部書引唐末韓鄂《四時纂要》『常係獼猴於馬坊內，辟惡，消百病，令馬不……』。『術曰』的兩部都晚於李時珍；早於李時珍的證據只有那兩處《四時纂要》引文。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "KWIC 只截一行，句尾被切斷；『術曰』兩部書已確認是《農政全書》《欽定授時通考》（晚於《本草綱目》），不能說成更早的農書，也不能直接說成《齊民要術》；引《四時纂要》的 KR4i0045、KR3j0171 書名未確認。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.kanripo.org/api/v1.0/search?query=%E7%B9%AB%E7%8D%BC%E7%8C%B4&with-titles&count=40"
+        }
+      ]
+    },
+    {
       "id": "SRC-abe8ba9d63a0eb9a",
       "url": "https://www.austinchronicle.com/screens/sxsw-film-review-capturing-bigfoot/",
       "readings": [
@@ -194135,6 +195839,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://commons.wikimedia.org/wiki/File:Srep37665-f3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ac35b1ce541663fa",
+      "url": "https://ming.cnhis.ncnu.edu.tw/wp-content/uploads/2020/02/ming33_05Pan_full.pdf",
+      "readings": [
+        {
+          "title": "附魅與祛魅：朱元璋像的真相",
+          "publisher": "《明代研究》第 33 期，頁 199–220，2019 年 12 月（中國明代研究學會，暨南國際大學網站公開全文）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 21（200，1,200,340 bytes）下載 PDF，pdftotext 轉文字後以關鍵字定位閱讀。",
+          "reading_scope": "讀了摘要、引言、第一節（正像的收藏與清宮的異像）、註 5–13、22、35 與相關正文；第二節以後（塑像、蘇州天王堂）只讀了關鍵字附近；結論沒有完整讀。",
+          "locator": "頁 199 摘要；頁 200–202 第一節與註 5–12（張瀚《松窗夢語》卷 6〈方術紀〉頁 110；張萱《疑耀》卷 1〈高皇帝像〉；陸容《菽園雜記》卷 14 頁 170）；頁 203–204（乾隆九年兩軸、嘉慶初 12 軸、為何乾隆後期收藏異像）",
+          "summary": "作者說朱元璋像版本多、反差大，判定『異像』是朱元璋死後、由明廷提供設計理念（相術、異相之說）、民間輾轉創作出來的一系列形象；現代人以西式審美把『異像』看成『醜像』。正像原藏南京宮中，遷都後分置兩京。親眼見過宮中御容的人寫的都是端正的臉：張瀚（1511–1593）自稱任『南司空』時入武英殿瞻仰太祖御容，『眉秀目炬，鼻直唇長，面如滿月，鬚不盈尺』，並說與民間所傳奇異之象大不相同；張萱（1558–1641）見內府御容，『高皇帝乃美丈夫也，鬚髯皆如銀絲可數』，而他父親在雲南黔國公府摹的是『龍形虯髯，左臉有十二黑子，與世俗所傳相同』。另一條：陸容《菽園雜記》記太祖曾召畫工傳寫御容，有一位畫工揣摩上意，在形似之外加上『穆穆之容』，太祖很高興，命傳數本賜諸王。作者轉述胡丹 2015 年的研究：到乾隆九年（1744）清內府僅藏朱元璋像 2 幅，可能都是正像，即現存的立軸中年坐像與冊頁老年半身像；到嘉慶初年已是 12 軸，多出的異像大概在乾隆晚年編《秘殿珠林》《石渠寶笈》時流入；作者推測與秘密會社『反清復明』的寄託有關，並舉 1912 年臨時政府祭孝陵懸掛的是異像為佐證。 註 20：這 12 軸見索予明〈明太祖畫像考〉所附圖版，論文重點分析的異像不在其中。另一節：蘇州天王堂土地神像被曾侍太祖的百戶認為『逼真』，祝允明等的記載也沒說太祖相貌怪異。",
+          "rights": "OPEN_ACCESS_ACADEMIC",
+          "limitations": "PDF 文字抽取有斷行錯位；張瀚、張萱、陸容的原文是透過這篇論文的引文讀到，沒有讀到古籍原書（ctext、zh.wikisource 已封鎖）；《菽園雜記》的引文中間有省略號，被省略的部分沒讀到。『乾隆晚年流入』是胡丹的推測。覆核者 R771 重抓同一 PDF（sha256 前綴相同）並以 pdftotext 核對張瀚、張萱、陸容引文、乾隆九年 2 幅、嘉慶 12 軸、1912 年祭陵各句。",
+          "origin": "wave77-20261118",
+          "original_url": "https://ming.cnhis.ncnu.edu.tw/wp-content/uploads/2020/02/ming33_05Pan_full.pdf"
         }
       ]
     },
@@ -194787,6 +196510,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave38-20261112",
           "original_url": "https://www.loc.gov/resource/sn84026749/1904-03-02/ed-1/?sp=9"
+        }
+      ]
+    },
+    {
+      "id": "SRC-acdf396432a579d3",
+      "url": "https://pages.uoregon.edu/jschombe/ast121/lectures/surface_venus.html",
+      "readings": [
+        {
+          "title": "Surface of Venus（AST 121 課程講義）",
+          "publisher": "University of Oregon 天文課程網頁（年份未標）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 4（200，6,321 bytes）下載 HTML，python 去標籤後讀全文",
+          "reading_scope": "全文讀過",
+          "locator": "Venera 13 段『survived on the surface for 2 hours, 7 minutes…Parts of the lander and semi-circular lens covers can be seen in both images.』",
+          "summary": "Venera 13 在地表撐了 2 小時 7 分鐘，拍到 14 張影像；兩台相機朝相反方向，兩張畫面裡都看得到登陸器的部件與『半圓形的鏡頭蓋』，下方畫面有測試臂。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "大學課程講義，圖說應源自 NASA 圖檔說明，但未註出處。",
+          "origin": "wave77-20261118",
+          "original_url": "https://pages.uoregon.edu/jschombe/ast121/lectures/surface_venus.html"
         }
       ]
     },
@@ -197533,6 +199275,25 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave43-20261112",
           "original_url": "https://archive.org/details/foiblesandfallac029520mbp"
+        }
+      ]
+    },
+    {
+      "id": "SRC-af074ea194692934",
+      "url": "https://www.npm.edu.tw/NewChineseArtDownload.ashx?bid=5255",
+      "readings": [
+        {
+          "title": "乾隆古畫鑑賞觀的形成——以李公麟之作為例（何嘉誼）",
+          "publisher": "國立故宮博物院《故宮文物月刊》第 505 期，2025 年 4 月",
+          "accessed_on": "2026-11-18",
+          "read_via": "作者 ZW6 的 fetch.sh seq 5（200，3,436,328 bytes）下載，作者未列為來源；覆核 R776 讀作者轉出的文字檔 005m.txt（同一 PDF），網址出處見覆核的搜尋結果（npm.edu.tw 這個下載連結直接出現在搜尋結果中）",
+          "reading_scope": "只讀首頁前言段（富春山居圖鑑定一句）、梁詩正代筆段與註 1、註 5；李公麟部分未讀",
+          "locator": "首段『乾隆皇帝（1711-1799，1735-1796 在位）…』；第二頁『最著名的例子莫過於乾隆對黃公望〈富春山居圖〉子明、無用師卷的鑑定』；『梁詩正（1697-1763）代筆』；註 1 書目",
+          "summary": "故宮刊物：乾隆生卒 1711–1799；梁詩正 1697–1763 曾替乾隆代筆題畫；文中說乾隆把子明本斷為真的見解『與現今學界之共識不符』，加上密集題寫被認為破壞原貌而遭惡評。註 1 列出 1974–1975 年《明報月刊》上徐復觀〈中國畫史上最大的疑案〉、饒宗頤、傅申的往返論文與 1984 年徐邦達的考辨，顯示兩卷真偽在 1970 年代仍有公開論戰。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只用到一句結論與註釋書目；論戰各方立場沒有讀原文，不能說誰主張哪一卷。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.npm.edu.tw/NewChineseArtDownload.ashx?bid=5255"
         }
       ]
     },
@@ -202159,6 +203920,44 @@
       ]
     },
     {
+      "id": "SRC-b359ff5a6b412f25",
+      "url": "https://www.rmzxw.com.cn/zxxs/zzx/2014/08/07/360054.shtml",
+      "readings": [
+        {
+          "title": "北京朝内81号是鬼宅为虚构 政协委员曾提案解决房产纠纷",
+          "publisher": "人民政协网（人民政协报社），2014-08-07，頁面註明來源為新浪收藏轉載",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 7（200，22,442 bytes）HTML，以 python 去標籤後讀正文",
+          "reading_scope": "全文讀過（真相、现状、计划征集史料三節）",
+          "locator": "『真相 建筑本是教会学校』節；『现状』節 1980 年 188 號文件段、1994 年提案段、2009 年文保段",
+          "summary": "北京市天主教愛國會一位負責人說：樓裡沒發生過命案、也沒有撞鬼事件，『鬼宅』全是編的；依教會現有資料，此樓 1910 年由美國天主教本篤會傳教士出資興建，坊間『皇帝賜英國人的教堂』『外國夫妻合開醫院』『軍閥宅院』都不屬實。東西兩座磚石小樓、地上三層加地下室、法式『蒙薩』雙折屋頂。建成後作美國傳教士語言訓練中心與宿舍，1930 年改為加利福尼亞學院；1933 年本篤會把北京產業交給其他機構；1937 年一位愛爾蘭味增爵會神父改作教堂；1946 年比利時奧斯定修女會在此設普德診所至 1949 年；之後由北京市民政局使用、成為民政工業公司辦公地。1980 年中央文件要求騰退被占宗教房產；1994 年 7 月教會辦下房屋所有權證；1990 年代末險些被拆；2009 年列為東城區文物保護單位。網路小說《朝內81號》走紅後『鬼宅』之名大盛；2014 年電影原名同小說，教會提出異議後改名《京城81號》。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是教會一方的說法，透過報紙轉述；它的 1910 年／本篤會版本和 ZW9-S005 引述的檔案研究不一致（見 notes）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.rmzxw.com.cn/zxxs/zzx/2014/08/07/360054.shtml"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b35b3d955175584f",
+      "url": "https://museum.shu.edu.cn/info/1030/3736.htm",
+      "readings": [
+        {
+          "title": "“青铜之光”展品解读 | 青铜纵目面具",
+          "publisher": "上海大學博物館，2023-12-28（特展『青銅之光：三星堆與羅丹的超時空對話』展品說明）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 15（200，50,390 bytes）HTML，去標籤後讀中英文說明",
+          "reading_scope": "展品說明全文",
+          "locator": "『青铜纵目面具』條，中英文兩段",
+          "summary": "青銅縱目面具，商代後期（標為西元前 1300–1100 年），寬 138 cm、縱徑 85 cm、高 66 cm，1986 年出土於三星堆二號祭祀坑，編號 K2②:148，三星堆博物館藏。瞳孔呈柱狀凸起，額與兩側有五個方孔，應是固定在其他器物上用的；這類面具僅見於三星堆。學者普遍認為眼睛符合史書記載蜀人始祖蠶叢『縱目』，可能是祖先神造像；也有人解為『豎眼』（如二郎神額上的眼），或聯繫額飾認為與神話天神燭龍『直目正乘』有關。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "大學博物館的展品說明；《華陽國志》『其目縱』原文本輪沒讀到（ctext、zh.wikisource 封鎖），只能說『史書記載』。標示年代區間與 2022、2025 測年口徑不同，是展籤的概括。",
+          "origin": "wave77-20261118",
+          "original_url": "https://museum.shu.edu.cn/info/1030/3736.htm"
+        }
+      ]
+    },
+    {
       "id": "SRC-b37189b2ea4ca310",
       "url": "https://archive.org/stream/wunderdeshimmels00litt/wunderdeshimmels00litt_djvu.txt",
       "readings": [
@@ -204247,6 +206046,25 @@
       ]
     },
     {
+      "id": "SRC-b58b4212712e8ba8",
+      "url": "https://ntrs.nasa.gov/api/citations/19690004637/downloads/19690004637.txt",
+      "readings": [
+        {
+          "title": "Rapid (Explosive) Decompression Emergencies in Pressure-Suited Subjects（NASA CR-1223，E. M. Roth）",
+          "publisher": "NASA 委託 Lovelace Foundation 的承包商報告，1968 年 11 月（NTRS 19690004637）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 1（200，2,519 bytes）讀 NTRS 的 citation JSON 取得檔名與報告號；seq 2（200，268,095 bytes）下載 NTRS 提供的全文 .txt（OCR，字距錯亂），以 grep／sed 讀相關段落",
+          "reading_scope": "讀了軟式太空衣可能爆裂部位一節（臍帶管 Umbilicals 段，含 1966-12-14 事故）、Ebullism 一節（動物實驗、意識時間、90 秒存活界線）；其餘章節（治療、肺損傷力學）只掃過",
+          "locator": "OCR 文字約第 2560–2600 行『Umbilicals』段（原報告頁約 21–22）；約第 4205–4420 行『Ebullism』節（原報告頁 39–41）",
+          "summary": "臍帶管段：一個接頭組件在太空衣端已經脫開過一次，造成意識喪失與缺氧，但壓力由 3.7 psia 在約 0.5 秒內降到最低 0.1 psia 後，未見肺損傷的症狀或徵象（PLSS 005 Test #3，1966 年 12 月 14 日）；實際壓力曲線無法取得；艙端臍帶把止回閥的籃架撐開，若在太空衣閥下游裝一個感壓止回閥『可能可以避免這次減壓』。Ebullism 節：體液在真空下汽化會使全身腫脹；狗在 2 mmHg 待到 90 秒沒有一隻死亡，但都昏迷、心跳降到每分鐘 10 下，10–15 分鐘後大多能正常行走，超過 120 秒常死亡；一隻黑猩猩在 2 mmHg 3 分鐘，『有效意識時間』11 秒；心臟在汽化高度約 10–15 秒內會因蒸氣阻塞而停止有效搏動。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "NTRS 標記 GOV_PUBLIC_USE_PERMITTED（承包商報告）。報告沒有寫受試者姓名、昏迷秒數、艙內回壓時間，也沒有寫『口水冒泡』；這些只在 ZW3-S003 這類二手報導裡。OCR 文字錯字多，引數字前應對照 PDF 頁面。",
+          "origin": "wave77-20261118",
+          "original_url": "https://ntrs.nasa.gov/api/citations/19690004637/downloads/19690004637.txt"
+        }
+      ]
+    },
+    {
       "id": "SRC-b58c14ba399fca54",
       "url": "https://articles.adsabs.harvard.edu/pdf/1973AJ.....78..769G",
       "readings": [
@@ -206018,6 +207836,25 @@
       ]
     },
     {
+      "id": "SRC-b722b2dce8f784fb",
+      "url": "https://women.nmth.gov.tw/?p=20069",
+      "readings": [
+        {
+          "title": "與女性相關的臺灣地名",
+          "publisher": "國立臺灣歷史博物館『臺灣女人』網站主題辭條（年份未標）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 18（200，92,453 bytes）下載 HTML，python 去標籤後讀內文",
+          "reading_scope": "內文全部讀過",
+          "locator": "第一類（信仰）段『較特別的是，台北市士林區的天母其實不是源自臺語的「聽無」…』",
+          "summary": "把天母列在『來自女性神明』的地名：說天母『其實不是源自臺語的「聽無」』，而是日治時期日人中治稔郎創立、結合日本神道教的天照大神與臺灣的天上聖母媽祖兩者形象合而為一的『天母教』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "博物館網站的通俗辭條，沒有註原始出處；只用一句話交代。",
+          "origin": "wave77-20261118",
+          "original_url": "https://women.nmth.gov.tw/?p=20069"
+        }
+      ]
+    },
+    {
       "id": "SRC-b7237c8f6201bb02",
       "url": "https://ru.wikisource.org/wiki/%D0%9D%D0%B5%D1%87%D0%B8%D1%81%D1%82%D0%B0%D1%8F,_%D0%BD%D0%B5%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%B0%D1%8F_%D0%B8_%D0%BA%D1%80%D0%B5%D1%81%D1%82%D0%BD%D0%B0%D1%8F_%D1%81%D0%B8%D0%BB%D0%B0_(%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%BE%D0%B2)/%D0%A0%D1%83%D1%81%D0%B0%D0%BB%D0%BA%D0%B8",
       "readings": [
@@ -206185,6 +208022,25 @@
           "limitations": "作者是當事人（餵藥的人、也是抓到 Lorz 的人），立場偏袒 Hicks；PDF 是 LA84 重新排版的掃描，頁碼以書頁為準；下載網址的出處（覆核補記）：LA84 自己的轉址頁 cache/008.bin 內嵌資料就有完整路徑『downloadParentUri: /digital/api/collection/p17103coll8/id/8216/download』，seq 9 的 downloadUri 是同一路徑少了 /digital 前綴，所以這個網址是讀到的頁面給出的，不是代編號猜的。館藏紀錄把這本書標為 Official Report（別題 Official Report of the 1904 Olympic Games (Lucas)）、出版年 1905，『官方報告』是館藏的稱呼，書本身是作者個人署名的著作。終身停權後來是否撤銷，本書沒有寫。",
           "origin": "wave75-20261117",
           "original_url": "https://digital.la84.org/digital/api/collection/p17103coll8/id/8216/download"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b7483bead7f11249",
+      "url": "https://archive.org/download/strangestoriesfr02pusuuoft/strangestoriesfr02pusuuoft_djvu.txt",
+      "readings": [
+        {
+          "title": "Strange Stories from a Chinese Studio, Vol. II（Herbert A. Giles 譯），Appendix A：The Yü Li or Divine Panorama（《玉曆》英譯）",
+          "publisher": "London: Thomas De la Rue, 1880（Internet Archive 條目 strangestoriesfr02pusuuoft，多倫多大學館藏掃描）",
+          "read_via": "fetch.sh seq 18（200，1,592 bytes）用 archive.org advancedsearch 找條目；seq 19（200，81,940 bytes）讀 /metadata 確認 1880 年 De la Rue 版與文字檔名；seq 20（200，658,767 bytes）下載 djvu.txt，以 grep 定位後讀 Appendix A。覆核 R772 seq 3、4 重抓 metadata 與 djvu.txt（200，81,940 與 658,767 bytes，sha256 前綴相同）。",
+          "reading_scope": "讀了 Appendix A 的譯者引言（頁 361–362）、序文開頭與第十殿與孟婆段（約頁 385–387）；第一到第九殿只掃過",
+          "locator": "Appendix A 頁 361 'VISITORS to Chinese temples…'、腳註 1 'The Yü Li or Divine Panorama'；頁 385–387 'Mother Meng was born in the Earlier Han Dynasty…' 至 'Bitter Bamboo floating bridge'",
+          "summary": "Giles 說這是一部各地免費流通、勸人積善的道教書，他全譯當附錄。書中自己的說法：孟婆（Mother Meng）生於前漢，幼讀儒書、長誦佛經，勸人戒殺吃素，八十一歲時髮白而面如童子，終身未嫁，自稱姓孟，人稱孟婆；後漢時因有人憑前世記憶誘騙婦女，『上天』命她築『孽忘台』（Terrace of Oblivion）並看守。凡判定轉生的魂都先在台上喝下甜苦辛酸鹹五味的藥湯，忘掉一切；台在十殿之前、六橋之外，方一丈，四周 108 間小屋備好『忘杯』；不肯喝的，腳下刀刃升起、用銅管灌下。喝完被推上兩旁紅水奔流的『苦竹浮橋』，再被兩個鬼推進紅水投生。第十殿王有金、銀、玉、石、木、板六座橋。譯文裡沒有出現『奈何橋』這個名字。 覆核補：metadata 的 creator 欄記 Giles, Herbert Allen, 1845-1935；第二卷正文一則故事的腳註 2 引《玉歷鈔》（Yü-li-ch'ao），稱孟婆為『old beldame』，坐在孽忘台上。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "是 1880 年英譯，不是中文原文；Giles 沒有交代《玉曆》的成書年代或作者，所以『清代勸善書』這個年代判斷在這份來源裡讀不到；英文 OCR 有少量錯字。",
+          "accessed_on": "2026-11-17",
+          "origin": "wave77-20261118",
+          "original_url": "https://archive.org/download/strangestoriesfr02pusuuoft/strangestoriesfr02pusuuoft_djvu.txt"
         }
       ]
     },
@@ -211270,6 +213126,25 @@
       ]
     },
     {
+      "id": "SRC-baec7acb545de4fd",
+      "url": "https://www.aisixiang.com/data/143823.html",
+      "readings": [
+        {
+          "title": "「合法性」視野下的《富春山居圖》真偽（王洪偉）",
+          "publisher": "《讀書》2023 年第 6 期，愛思想網轉載（2023-06-20）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 7（200，38,664 bytes）下載 HTML，python 去標籤後讀全文",
+          "reading_scope": "全文讀過（一、二兩節與結語）",
+          "locator": "第一節首四段（『在乾隆十年（一七四五）冬之前…』至沈德潛和詩段）；第二節『火殉』與『瞿式耜鑑藏印』段；『五十五則御識』段",
+          "summary": "作者把鑑定過程放回清廷與漢臣的關係：真偽判定的經過『完全來自乾隆個人遺存的文字』，梁詩正等人的鑑定細節沒有留下可對照的紀錄；乾隆事後在子明卷上寫『玩物喪志…於出治用人其可乎哉』；1747 年乾隆再題，嘲諷沈周、文彭、王穉登、董其昌、高士奇、王鴻緒、沈德潛；沈德潛奉命再題時只能寫『圣論定余』；1778 年沈德潛身後獲罪，乾隆命金士松把沈德潛當年讚無用師卷的兩則跋抄到無用師卷上。作者另說子明卷上留下宮內展閱與出巡的 55 則御識，六次南巡都帶著它；清初關於 1650 年火殉的文獻不下二十份，但火殉真實性仍有爭議。作者的論點是：這次鑑定更像一場權力上的『貓鼠遊戲』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是作者的詮釋性論文，『政治考量』是推論；55 則的數字經覆核與故宮典藏頁（ZW6-S001）題跋欄中清高宗 55 則相符。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.aisixiang.com/data/143823.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-baf017f698db9d07",
       "url": "https://skepticalinquirer.org/2025/12/jeff-meldrum-top-bigfoot-proponent-dies-at-67/",
       "readings": [
@@ -214065,6 +215940,25 @@
       ]
     },
     {
+      "id": "SRC-bdc4f21c9ba6ee0f",
+      "url": "https://mylionsden.blogspot.com/2008/10/dragon-toes.html",
+      "readings": [
+        {
+          "title": "dragon toes",
+          "publisher": "個人部落格 Daniel's Den，2008 年 10 月",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 27（200，68,790 bytes），python 去標籤後讀正文",
+          "reading_scope": "正文與留言開頭讀過",
+          "locator": "首段『Chinese Dragons have five toes, Korean dragons four toes and Japanese dragons three toes』；『The Chinese tradition states…』段",
+          "summary": "流傳版本的樣本：中國龍五趾、韓國四趾、日本三趾，『龍離中國越遠趾越少』；中國版說龍從中國出發、越往外越掉趾，所以到不了西方；日本版則反過來說龍生在日本、越往外飛越長趾。文中也提到元代禁令（引一段禁服『雙角五爪龍』的中文，年份寫 1336）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "個人部落格，只當流傳版本樣本；它說的 1336 年禁令出處未註，本題不採用。",
+          "origin": "wave77-20261118",
+          "original_url": "https://mylionsden.blogspot.com/2008/10/dragon-toes.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-bdcaaa8ac6584573",
       "url": "https://eapoe.org/papers/misc1851/18670300.htm",
       "readings": [
@@ -214118,6 +216012,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://archive.org/services/search/beta/page_production/?service_backend=fts&user_query=identifier%3Abwb_KV-424-422%20AND%20%28%22early%201980s%22%20OR%20%22Between%201977%20and%201984%22%20OR%20%221982%20and%201984%22%29&hits_per_page=30&page=1"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bddce265357f8693",
+      "url": "https://www.astronomy.com/science/are-the-egyptian-pyramids-aligned-with-the-stars/",
+      "readings": [
+        {
+          "title": "Are the Egyptian pyramids aligned with the stars?",
+          "publisher": "Astronomy 雜誌網站（Kalmbach），年份頁面未標於讀到的段落",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 7（200，293,805 bytes）下載 HTML，以 python 去標籤後讀",
+          "reading_scope": "『Orion correlation theory』到『Giza celestial alignments』開頭讀過",
+          "locator": "『The idea went mainstream in Bauval's 1995 New York Times bestseller』；『The three pyramids weren't all planned at once』",
+          "summary": "流傳版本的樣本：介紹獵戶座對應理論，說它 1990 年代因暢銷書走紅、主張金字塔是『通往星辰的門』；同時說它在考古學界屬邊緣說法，沒有實物或埃及文字證據；孟卡拉塔看起來像後來才加的。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "大眾科普文章，只當流傳版本與學界態度的樣本；文中星井機器人探勘的年份與細節與我所知不符，不引用該段。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.astronomy.com/science/are-the-egyptian-pyramids-aligned-with-the-stars/"
         }
       ]
     },
@@ -214251,6 +216164,25 @@
           "limitations": "OCR；譯者序的史實多轉自 Sismondi。Internet Archive 編目把作者 Tassoni 標為 1565–1635。",
           "origin": "wave38-20261112",
           "original_url": "https://archive.org/download/lasecchiarapitao00tass/lasecchiarapitao00tass_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bdf66fd400a9baa3",
+      "url": "https://archive.org/download/pgcommunitytexts24058gut/24058-0.txt",
+      "readings": [
+        {
+          "title": "穆天子傳（郭璞注本；Project Gutenberg #24058 的 Internet Archive 鏡像）",
+          "publisher": "Project Gutenberg 電子文本，Internet Archive pgcommunitytexts24058gut",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 32–33（200）advancedsearch；seq 34（200，3,877 bytes）讀 metadata；seq 35（200，52,590 bytes）下載文字（字間有空格，以 python 去空白後搜尋）",
+          "reading_scope": "讀了卷二末到卷三見西王母一段",
+          "locator": "卷二末『癸亥，至于西王毋之邦』；卷三『吉日甲子，天子賓于西王毋』至『世民之子，唯天之望』",
+          "summary": "周穆王到『西王毋之邦』，拿白圭玄璧拜見，獻錦組百純等，西王毋再拜受禮；次日穆王在瑤池上宴請她，她作歌『白雲在天……將子無死，尚能復來』，穆王答應三年後再來；她又吟『比徂西土，爰居其野，虎豹為群，於鵲與處……我惟帝（之）女』。這裡她是一國的主人，會行禮、會作詩，沒有任何怪異外貌的描寫。本子裡寫作『西王毋』。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "電子文本缺字多（以□●表示），引用歌詞要對照刻本。 覆核 R773：卷三『我惟帝』後此本脫字，『帝女』依通行本與 ZW3-S015 所引英譯。",
+          "origin": "wave77-20261118",
+          "original_url": "https://archive.org/download/pgcommunitytexts24058gut/24058-0.txt"
         }
       ]
     },
@@ -217304,6 +219236,25 @@
       ]
     },
     {
+      "id": "SRC-c08a18682a1c64bd",
+      "url": "https://newtalk.tw/news/view/2020-08-03/445314",
+      "readings": [
+        {
+          "title": "（政治新聞）高雄命名 100 週年與『又高又雄』說",
+          "publisher": "新頭殼 Newtalk，2020-08-03",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 17（200，177,659 bytes），python 去標籤後讀正文",
+          "reading_scope": "正文",
+          "locator": "正文第 2–4 段",
+          "summary": "流行說法樣本之一：2020 年一位政治人物在臉書說日本人把打狗改為高雄，是希望這座城市『又高又雄』，並補充 Takao 是原住民語的日語讀音、日本各地有高雄山，當時引起大量討論。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "選舉期間的政治新聞；本題只借它證明『又高又雄』說法存在，正片不點名、不談選舉。",
+          "origin": "wave77-20261118",
+          "original_url": "https://newtalk.tw/news/view/2020-08-03/445314"
+        }
+      ]
+    },
+    {
       "id": "SRC-c08e7e611c93c710",
       "url": "https://zh.wikisource.org/wiki/%E6%98%A5%E7%A7%8B%E5%85%AC%E7%BE%8A%E5%82%B3/%E8%8E%8A%E5%85%AC",
       "readings": [
@@ -219042,6 +220993,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://astrobiology.nasa.gov/ask-an-astrobiologist/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c24303b37e78fae9",
+      "url": "https://cart.ntua.edu.tw/uploads/root/10%E6%96%BD%E8%90%AC%E9%8D%BE%EF%BC%9A%E8%91%A3%E5%85%B6%E6%98%8C%E8%B3%AA%E6%8A%BC%E3%80%8A%E5%AF%8C%E6%98%A5%E5%B1%B1%E5%B1%85%E5%9C%96%E7%84%A1%E7%94%A8%E5%B8%AB%E5%8D%B7%E3%80%8B%E6%99%82%E9%96%93%E8%80%83%20(%E7%B7%A8%E8%BC%AF)26.pdf",
+      "readings": [
+        {
+          "title": "董其昌質押《富春山居圖無用師卷》時間考（施萬鍾）",
+          "publisher": "《書畫藝術學刊》第三十五期，國立臺灣藝術大學書畫藝術學系（約 2021–2023 年）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 8（200，5,990,733 bytes）下載 PDF；pdftotext 缺字型，改以 python pdfminer 轉文字，以關鍵詞（乾隆、安岐、火、吳洪裕、贗、梁詩正）定位後讀相關段落",
+          "reading_scope": "讀摘要、吳洪裕與火殉段、沈顥臨本題識引文、安岐與乾隆十一年入宮段、遞藏表中乾隆 1746 年梁詩正奉敕書跋引文；董其昌質押年代的考證細節只掃過",
+          "locator": "摘要；吳洪裕段（『原卷由六張紙拼接而成…』）；沈顥題識引文（『近聞問卿訣時命付祖龍…幸火未半，急取燼餘』）；遞藏表『清 乾隆十一年丙寅（1746）』條（PDF 頁 316 前後）",
+          "summary": "引沈顥題識：吳洪裕臨終命將此卷燒掉，『幸火未半，急取燼餘』；作者整理：原卷六紙拼成，火後揭下焦灼的首紙、去掉約三分之二，餘段重裱成今日的剩山圖，其餘五紙即無用師卷。安岐（揚州鹽商、收藏家）後因家中變故出售，經大學士傅恆介紹，乾隆十一年賣入內府。無用師卷上梁詩正奉敕敬書的乾隆御識：兩卷並觀，『始悟舊藏即《富春山居》真蹟』，『此卷筆力苶弱，其為贗鼎無疑』，『惟畫格秀潤可喜，亦如雙鉤下真跡一等，不妨並存』，『以二千金留之』。作者並說無用師卷因被認為是仿作，沒有被題滿，反而保存較完整。",
+          "rights": "OPEN_ACCESS_ACADEMIC",
+          "limitations": "碩士背景作者的期刊論文，梁詩正跋文是轉錄，未看原件；火殉細節來自沈顥轉述，不是吳家當事人紀錄。",
+          "origin": "wave77-20261118",
+          "original_url": "https://cart.ntua.edu.tw/uploads/root/10施萬鍾：董其昌質押《富春山居圖無用師卷》時間考%20(編輯)26.pdf"
         }
       ]
     },
@@ -222357,6 +224327,25 @@
       ]
     },
     {
+      "id": "SRC-c5914fce6b579a57",
+      "url": "https://www.insight.co.kr/news/158706",
+      "readings": [
+        {
+          "title": "'세계 7대 공포 장소' 곤지암 정신병원, 폐업 22년만에 결국 철거됐다（이소현 기자）",
+          "publisher": "인사이트（Insight），2018-06-03",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 15（200，105,293 bytes）HTML 去標籤後讀正文",
+          "reading_scope": "全文",
+          "locator": "第 2–4 段、『부지를 매입한 A씨는…』段",
+          "summary": "據京畿道廣州市與相關人士，昆池岩精神病院於（2018 年 5 月）28 日拆除；南陽神經精神病院 1982 年 8 月開院、1996 年閉院後既未拆也未開發，長年閒置才被誤會成『鬼屋』。土地因鄰近朝鮮白瓷窯址（史蹟 314 號）被劃為歷史文化環境保存地區，須先試掘。買下土地的 A 對地方媒體說，因居民抱怨與陳情多而拆除。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "網路媒體，引市府為消息來源但沒有附公文；停業原因沒寫。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.insight.co.kr/news/158706"
+        }
+      ]
+    },
+    {
       "id": "SRC-c593615340480c84",
       "url": "https://archive.org/download/pourlaconser2v14soci/pourlaconser2v14soci_djvu.txt",
       "readings": [
@@ -224243,6 +226232,25 @@
       ]
     },
     {
+      "id": "SRC-c7709aa3188dff48",
+      "url": "https://nssdc.gsfc.nasa.gov/imgcat/html/object_page/v13_yg06847.html",
+      "readings": [
+        {
+          "title": "Venus - Venera 13 Lander（NASA Image ID YG06847）",
+          "publisher": "NASA Goddard Space Flight Center, NSSDC Photo Gallery（最後更新 2016-03-31）",
+          "accessed_on": "2026-11-18",
+          "read_via": "覆核 R776 fetch.sh seq 3（200，2,701 bytes）下載 HTML，去標籤後讀全文；網址出自覆核的搜尋結果",
+          "reading_scope": "全文讀過（圖說與影像資訊表）",
+          "locator": "圖說『Parts of the lander and semi-circular lens covers can be seen in both images.』",
+          "summary": "NASA 圖說：Venera 13 1982-03-01 降落在 7.5S 303E，在地表撐了 2 小時 7 分鐘；兩張圖來自朝相反方向的兩台相機，兩張畫面裡都看得到登陸器部件與『半圓形的鏡頭蓋』，下方畫面有測試臂。影像標註 Russian Space Agency、不一定是公有領域。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "圖說只說畫面裡有鏡頭蓋，沒有討論『蠍子』或 2012 年的主張；影像本身不一定是公有領域，製作時不直接用原圖。",
+          "origin": "wave77-20261118",
+          "original_url": "https://nssdc.gsfc.nasa.gov/imgcat/html/object_page/v13_yg06847.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-c772dd4cd2c8e636",
       "url": "https://archive.org/download/krakatau00verbgoog/krakatau00verbgoog_djvu.txt",
       "readings": [
@@ -224912,6 +226920,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "http://web.archive.org/web/20220703202042/http://uanews.org/story/ua-experts-determine-age-book-nobody-can-read"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c7e4a316ec2e0bdb",
+      "url": "https://resolve.cambridge.org/core/journals/modern-asian-studies/article/abs/mediating-sovereignty-the-qing-legation-in-london-and-its-diplomatic-representation-of-china-18761901/7535DB3D163A3E5721212BA6C7B3E84B",
+      "readings": [
+        {
+          "title": "Mediating sovereignty: The Qing legation in London and its diplomatic representation of China, 1876–1901",
+          "publisher": "Modern Asian Studies，Cambridge University Press，2020 年 9 月線上刊出",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 10（200，962,290 bytes）下載摘要頁，去標籤後只讀摘要",
+          "reading_scope": "只讀摘要；全文需訂閱，沒有讀到",
+          "locator": "Abstract",
+          "summary": "摘要：1896 年清駐倫敦使館參贊馬格里把孫扣在館內、打算送回中國；此後使館一直被想像成專制政府的僵化延伸；作者主張這次行動是清朝外交官在治外法權下爭回司法主權的『法律行動主義』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀摘要，不能撐任何入館細節；搜尋結果片段提到的『visited 改成 entered』沒有在摘要裡讀到，以 ZW3-S006 為準。",
+          "origin": "wave77-20261118",
+          "original_url": "https://resolve.cambridge.org/core/journals/modern-asian-studies/article/abs/mediating-sovereignty-the-qing-legation-in-london-and-its-diplomatic-representation-of-china-18761901/7535DB3D163A3E5721212BA6C7B3E84B"
         }
       ]
     },
@@ -225997,6 +228024,25 @@
       ]
     },
     {
+      "id": "SRC-c8c4a74f8df33a0f",
+      "url": "https://scienceinpoland.pl/en/news/news%2C27115%2Cchopin-probably-died-tuberculous-pericarditis.html",
+      "readings": [
+        {
+          "title": "Chopin probably died of tuberculous pericarditis",
+          "publisher": "Science in Poland（波蘭通訊社 PAP 基金會的科學新聞服務），2017-11-10，記者 Paweł Wernicki",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 25（200，101,731 bytes）下載 HTML，以 python 去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "『his heart preserved in a jar with alcohol was brought to Warsaw around 1850』；『received permission to examine Chopin's heart - but without opening the jar』；『we do not exclude that the heart is preserved in cognac』",
+          "summary": "心臟約 1850 年由姊姊帶回華沙，1880 年放進聖十字教堂左側柱子，華沙起義期間被撤到 Milanówek。2014 年獲准檢查，但條件是不開罐；4 月 14 日做非侵入外觀檢查，9 月 17 日記者會公布。參與的法醫學者說：先前有史學者懷疑柱子裡的罐子是否真有心臟，這次打消疑慮；罐子是水晶罐、蓋子極密，邊緣抹的凡士林多到在液面形成薄膜防蒸發；液體只少一點，補蠟封口；『因為液體的顏色，我們不排除心臟泡在干邑（cognac）裡』；外觀變化指向結核。因為沒開罐，無法做 DNA 分析去證實或排除囊性纖維化；過去從拉雪茲墓園遺骸取 DNA 也因酸性土壤失敗。下次檢查定在 2064 年。文中列出過去被提出的十種替代診斷。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "通訊社新聞，轉述研究者說法；放進柱子的年份本文寫 1880 年，ZW5-S008 只寫『過了幾年』，本次讀到的來源都沒有出現 1879 年（作者說的『其他報導 1879』沒有讀到的出處），正片只說『十九世紀後期』或『依波蘭通訊社 1880 年』。",
+          "origin": "wave77-20261118",
+          "original_url": "https://scienceinpoland.pl/en/news/news%2C27115%2Cchopin-probably-died-tuberculous-pericarditis.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-c8ca9608375b05ed",
       "url": "https://archive.org/services/search/beta/page_production/?service_backend=fts&user_query=identifier%3Abwb_KV-424-422%20AND%20(%22perienced%20by%22%20OR%20%22same%20side%20of%20the%20Sun%22%20OR%20%22lined%20up%22%20OR%20%22line%20up%22%20OR%20alignment%20OR%20%22points%20to%201982%22)&hits_per_page=30&page=1",
       "readings": [
@@ -226593,6 +228639,25 @@
           "limitations": "波蘭文，由本代理閱讀理解；多數細節是作者轉述其他研究（Oberman、Ocker、Lotito、Hoppmann），旁白要說『研究者整理』；路德 1527 年替 Lichtenberger 新版寫序的內容本輪沒讀到原文，不能講。",
           "origin": "wave24-20261111",
           "original_url": "https://journals.umcs.pl/rh/article/download/12360/10230"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c94f3dd554dbb2ff",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000063917/000095014697001087/0000950146-97-001087.txt",
+      "readings": [
+        {
+          "title": "McDonnell Douglas Corp Form 424B3（1997-07-25 申報）SEC 檔頭",
+          "publisher": "McDonnell Douglas 向 SEC 申報，1997",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 29（200，45,084 bytes），只讀 SEC-HEADER 與正文開頭",
+          "reading_scope": "只讀檔頭；正文是一份 350 萬股的增補公開說明書，與本題無關，沒有讀",
+          "locator": "SEC-HEADER『FORMER COMPANY: FORMER CONFORMED NAME: MCDONNELL CO / DATE OF NAME CHANGE: 19670601』",
+          "summary": "SEC 的公司資料記錄這家公司舊名 McDonnell Co，1967-06-01 改名，總部在聖路易，可佐證這家公司 1967 年 6 月由 McDonnell Co 改成現名；改名與和 Douglas 合併的關係，這份檔頭沒寫。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "只是檔頭的公司資料；兩家公司 1967 年合併的經過不在這份文件裡，正片若要講合併細節需另補一手。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.sec.gov/Archives/edgar/data/0000063917/000095014697001087/0000950146-97-001087.txt"
         }
       ]
     },
@@ -227862,6 +229927,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://api.crossref.org/works/10.1093/hisres/htae009"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ca866e972d9d9fbe",
+      "url": "https://www-ws.gov.taipei/001/Upload/686/relfile/55437/8338315/8627111d-0653-4b96-81f4-bdb71d3d3832.pdf",
+      "readings": [
+        {
+          "title": "文化臺北—艋舺風華 300 年（旅遊手冊）",
+          "publisher": "臺北市政府（文化旅遊手冊），出版年本次未確認",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 14（200，15,233,669 bytes）；pdftotext 缺字型，改用 python pdfminer 讀前 14 頁",
+          "reading_scope": "序言、目錄、『二 艋舺歷史300年』首頁；其餘各景點頁沒讀",
+          "locator": "『二 艋舺歷史300年』第 2 段『萬華昔日俗稱艋舺』",
+          "summary": "官方手冊寫：艋舺名稱源自『莽葛』，先民見舟木蝟集，以 Mankah 稱之，今英文音譯 Bangka；1920 年日本殖民當局施行地方制度，將艋舺改稱萬華，『取其「萬年均能繁華」之意』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是流行說法的官方樣本：只寫寓意，沒寫日語讀音，也沒給『萬年繁華』的出處。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www-ws.gov.taipei/001/Upload/686/relfile/55437/8338315/8627111d-0653-4b96-81f4-bdb71d3d3832.pdf"
         }
       ]
     },
@@ -231212,6 +233296,25 @@
       ]
     },
     {
+      "id": "SRC-cd3a36861d8b93c9",
+      "url": "https://www.space.com/14324-life-venus-russian-claim-debunked.html",
+      "readings": [
+        {
+          "title": "Russian Scientist's Claim of Life on Venus Proven False",
+          "publisher": "Space.com（Life's Little Mysteries 供稿），2012 年 1 月",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 1（200，1,684,385 bytes）下載 HTML，python 截取 article-body 去標籤後讀內文",
+          "reading_scope": "內文全部讀過",
+          "locator": "『According to NASA, the half-circle components are camera lens covers…』；『The other photograph highlighted by Ksanfomaliti, which supposedly shows a scorpion-like creature, contains a blur.』",
+          "summary": "反駁與流傳版本：報導說一位俄國科學院成員在《Solar System Research》新文章指出 Venera 13 照片裡的『圓盤』與『蠍子』會換位置。一位處理火星任務影像的大學技術員說：高解析版本顯示那個像螃蟹的物體是機械部件，同一個物體也出現在約 1,000 公里外降落的 Venera 14 照片、相對登陸器的位置相同；依 NASA 說法，半圓形的東西是登陸後彈開的相機鏡頭蓋，兩張照片位置不同是因為 Venera 13 有前後兩台相機、拍到的是兩個蓋子；Venera 14 的鏡頭蓋剛好落在量土壤壓縮性的彈簧臂要碰地的地方，結果量到的是蓋子。至於『蠍子』，一位重處理蘇聯影像的編輯說那只是某些很差的版本裡經過處理的雜訊，原始資料裡沒有。 注意：報導裡 Hill 的說法是『那個像螃蟹的物體』是機械部件、Venera 14 照片裡也有同一個物體；Stryk 則說『蠍子』是雜訊——兩位反駁者對各物體的解釋不完全相同。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞報導；『依 NASA』沒有附上 NASA 原文，本次未讀到 NASA NSSDC 條目；兩位受訪者都是在世者。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.space.com/14324-life-venus-russian-claim-debunked.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-cd3bbbce1cae029a",
       "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T55/T55n2154.xml",
       "readings": [
@@ -232900,6 +235003,25 @@
       ]
     },
     {
+      "id": "SRC-cea5c4197fd0ca59",
+      "url": "https://www-ws.gov.taipei/001/Upload/430/relfile/41653/7561488/4f779711-408f-4208-b048-099f988957ba.pdf",
+      "readings": [
+        {
+          "title": "《續修臺北市志》大事紀",
+          "publisher": "臺北市政府（ISBN 978-986-04-6941-7，GPN 1010403289；約 2014–2015 年）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 20（200，4,039,659 bytes）下載 PDF，python pdfminer 轉文字，以關鍵詞（天母、中治、重田、三角埔、顧問團）定位",
+          "reading_scope": "只讀了 1933 年（昭和 8 年）條目與 1951 年美軍顧問團條目，及其他含『天母』的戰後條目；全書未讀",
+          "locator": "第一章 民國 70 年前，昭和 8 年（1933）末的『※』條；民國 40 年（1951）4 月 23 日、5 月 2 日條",
+          "summary": "昭和 8 年（1933）條：日本人『重田榮治』（另一說是『中治稔郎』）在士林三角埔（今中山北路 7 段）東方山坡地興建『以奉祀媽祖為主神』的寺廟，創立『天母教』，此地就以天母為名迄今。1951 年 4 月 23 日美軍事援華顧問團團員抵臺北、5 月 2 日開始工作（條目沒有說宿舍在天母）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "市志大事紀，沒有註出處；創教者兩說並陳；年份歸在 1933 年條末，未寫月日。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www-ws.gov.taipei/001/Upload/430/relfile/41653/7561488/4f779711-408f-4208-b048-099f988957ba.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-cea9d01c12d654f2",
       "url": "https://archive.org/download/jstor-103079/103079_djvu.txt",
       "readings": [
@@ -232972,6 +235094,25 @@
           "limitations": "OCR（日期『June 8』OCR 作『June H』，依頁首與下一條『June 8』判讀）；只讀此條；這一條沒有寫出被告名字。",
           "origin": "wave46-20261112",
           "original_url": "https://archive.org/download/calendarofpaten01grea/calendarofpaten01grea_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cebabc9ebfa4e8f3",
+      "url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/public-statements/statement-commissioner-mary-l-azcuenaga-boeing-company",
+      "readings": [
+        {
+          "title": "Statement of Commissioner Mary L. Azcuenaga in The Boeing Company",
+          "publisher": "美國聯邦貿易委員會，1997-07-01（Matter No. 971 0051）",
+          "accessed_on": "2026-11-18",
+          "read_via": "R774 fetch.sh seq 6（200，994,492 bytes；連結取自作者 seq 31 新聞稿頁的 Related actions），去標籤後讀正文；覆核者新增",
+          "reading_scope": "正文與註 1–2 讀過，其餘註腳略讀",
+          "locator": "正文第 4–7 段（『Another aspect of the proposed transaction』起）與註 2",
+          "summary": "這位委員同意國防部分與三家航空公司 20 年獨家合約不必採取行動，但認為商用機部分是三家剩兩家的水平合併，『appears to present a rather straightforward case for a challenge』；她不同意多數意見『多數航空公司不會向 Douglas 買飛機』的結論，指出 Douglas 份額雖小仍有競爭約束、仍在投標並贏到一些生意（註 2：1996 年訂單約占產業 4%），並擔心『經營不善的公司』抗辯會鼓勵策略行為；結論是有理由相信合併違反克萊頓法第 7 條，救濟方式較不明確，但她會繼續追查。",
+          "rights": "PUBLIC_DOMAIN_US_GOV",
+          "limitations": "個別委員意見，不是委員會決定；歐盟的核准條件仍未讀。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/public-statements/statement-commissioner-mary-l-azcuenaga-boeing-company"
         }
       ]
     },
@@ -239397,6 +241538,25 @@
           "limitations": "沒有讀到正文，不能當內容來源；列在這裡只是讓覆核知道一手論文在哪、卡在哪。",
           "origin": "wave75-20261117",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2069953/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d4b19088c0954754",
+      "url": "https://archive.org/download/kidnappedinlondo00suny/kidnappedinlondo00suny_djvu.txt",
+      "readings": [
+        {
+          "title": "Kidnapped in London: being the story of my capture by, detention at, and release from the Chinese Legation, London（孫逸仙）",
+          "publisher": "Bristol: J. W. Arrowsmith，1897（Internet Archive 掃描 kidnappedinlondo00suny）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 6（200，36,194 bytes）讀 archive.org metadata 確認書名、1897、出版者與文字檔名；seq 7（200，154,334 bytes）下載 djvu 文字層，以 grep／sed 讀相關頁",
+          "reading_scope": "讀了 My Capture 一章（頁 32–36 被帶進使館經過）、The Government Intervene 一章轉載馬格里談話的段落（頁約 88–89）；其餘章節只掃過",
+          "locator": "頁 33–36『On Sunday morning, October 11th』到『the house must be the Chinese Legation』；頁 88–89『He came of his own free will to the Legation』",
+          "summary": "孫的版本：10 月 11 日星期日上午約 10 點半，他走向德文郡街要跟康德黎一家上教堂，一名中國人從後面搭訕問他是日本人還是中國人，得知同是廣東人後改說粵語；第二人加入、兩人一左一右邀他去『住處』抽菸聊天，他婉拒；第三人出現、第一人離開；兩人半開玩笑半堅持、以『半友善的推』把他帶進旁邊突然打開的門，門隨即被匆忙關上閂住，他才明白這是中國使館。同一本書轉載的使館參贊馬格里談話則說：他『是自己願意來到使館的，絕不是被綁、被強迫或被誘騙』，說他前一次來訪與館員聊天，館方事後懷疑就是被監視的人，『第二天』他再來時被扣留。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "這是孫本人（與康德黎協作）出版的自述；馬格里的話是被這本書轉引的報紙談話，不是英國檔案原件。",
+          "origin": "wave77-20261118",
+          "original_url": "https://archive.org/download/kidnappedinlondo00suny/kidnappedinlondo00suny_djvu.txt"
         }
       ]
     },
@@ -246092,6 +248252,25 @@
       ]
     },
     {
+      "id": "SRC-da352df5bfd25065",
+      "url": "https://www.gmw.cn/01wzb/2006-10/15/content_492631.htm",
+      "readings": [
+        {
+          "title": "定陵洞开之后的厄运（摘自楊仕、岳南《考古中國：定陵地下玄宮洞開記》，海南出版社）",
+          "publisher": "光明網《文摘報》，2006-10-15",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 7（200，26,573 bytes）HTML 去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "『我国第一座皇陵博物馆』節與『当帝后尸骨遭遇“革命”』節",
+          "summary": "定陵 1956 年 5 月動工發掘、1958 年 7 月底清理基本結束，9 月文物在故宮神武門展出。三具頭骨送中科院古人類古脊椎動物研究所修補，另請兩位雕塑老師做帝后人體石膏模型，『兩個月後』送到定陵；經『藝術加工』的萬曆像被塑成『左腿長，右腿短，身體極不平衡地站立』、手握皮鞭的惡地主形象。定陵博物館 1959 年 9 月 30 日成立。1966 年三具屍骨在定陵博物館大紅門前廣場被砸碎焚燒。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "紀實文學摘錄，不是發掘報告；『左腿長右腿短』寫的是石膏像的樣子，書中沒有說這是依骨骼觀察做的還是雕塑者的加工，也沒有測量數據或鑑定者；石膏像確切年份未寫（只說清理結束後的修補階段、『兩個月後』送到）。人名『W』等細節不入正片。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.gmw.cn/01wzb/2006-10/15/content_492631.htm"
+        }
+      ]
+    },
+    {
       "id": "SRC-da3c6ad79f5a3a50",
       "url": "https://zh.wikisource.org/wiki/%E5%A4%A7%E8%B6%8A%E5%8F%B2%E8%A8%98%E5%85%A8%E6%9B%B8/%E6%9C%AC%E7%B4%80%E5%8D%B7%E4%B9%8B%E4%B8%80",
       "readings": [
@@ -247588,6 +249767,25 @@
       ]
     },
     {
+      "id": "SRC-db669fb5e2b9d78a",
+      "url": "https://www.astronomy.com/space-exploration/first-earthlings-around-the-moon-were-two-soviet-tortoises/",
+      "readings": [
+        {
+          "title": "First earthlings around the Moon were two Soviet tortoises",
+          "publisher": "Astronomy 雜誌網站，2018 年 9 月",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 3（200，285,248 bytes），python 去標籤後讀正文",
+          "reading_scope": "全文讀過",
+          "locator": "首段『Anders. Borman. Lovell.』；『Lewis says that — contrary to popular narrative』段；『Past reports suggested the Apollo 8 mission was bumped up』段",
+          "summary": "流傳版本的樣本與糾正：文章開頭說大家記得阿波羅 8 號三位太空人是最早繞月的人類，但他們不是最早完成這趟旅程的地球生物，兩隻陸龜早了幾個月；寫明 1968 年 9 月 18 日 Zond 5 繞月，艙內還有蟲、蠅與種子；烏龜體重略減、其他無恙。文中引一位太空史研究者的看法：蘇聯當時沒有能載人繞月的火箭與可靠的艙，Zond 5 是想搶一個國家勝利；他也不同意『阿波羅 8 號是因為 Zond 5 才提前』的說法。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞雜誌報導；引用的研究者是在世人物，不點名；『阿波羅 8 號為何提前』是觀點之爭，與 ZW7-S001 的『may have contributed』並列即可。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.astronomy.com/space-exploration/first-earthlings-around-the-moon-were-two-soviet-tortoises/"
+        }
+      ]
+    },
+    {
       "id": "SRC-db6cf25ad42c6d3b",
       "url": "https://doi.org/10.1016/j.actaastro.2010.01.019",
       "readings": [
@@ -248417,6 +250615,25 @@
       ]
     },
     {
+      "id": "SRC-dc6af54220f186a2",
+      "url": "https://openresearch-repository.anu.edu.au/bitstream/1885/148674/4/Generals%20of%20the%20South.pdf",
+      "readings": [
+        {
+          "title": "Generals of the South: the foundation and early history of the Three Kingdoms state of Wu（Internet edition）",
+          "publisher": "Australian National University，1990 初版、2018 網路版（CC BY-NC-ND 4.0）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 16（200，17,141,652 bytes）下載 PDF，pdftotext 轉文字後讀第二章陽人一段與第九章開頭",
+          "reading_scope": "讀了第二章頁 95–97（梁、陽人之戰與註 59–62）、第九章〈The distortions of Romance〉導言；全書其餘未讀",
+          "locator": "第二章頁 95–96『By late February or early March of 191』至註 60；第九章導言",
+          "summary": "孫堅在梁被徐榮擊敗後重整，191 年 2 月底或 3 月初進駐陽人；《英雄記》說胡軫率五千步騎、呂布領騎兵來攻，被徹底擊潰，呂布等人輕視胡軫而故意製造恐慌；此後董卓不再派兵南攻孫堅。作者在註 60 指出，《英雄記》這段在《三國志》注裡可能放錯了位置，應屬陽人之勝。第九章說《演義》在事件一千多年後才定型，強烈偏向蜀漢。全書沒有逐字討論華雄。",
+          "rights": "OPEN_ACCESS_ACADEMIC",
+          "limitations": "二手學術；沒有直接處理『溫酒斬華雄』或平話；作者是否在世我沒有核對，正片不點名。",
+          "origin": "wave77-20261118",
+          "original_url": "https://openresearch-repository.anu.edu.au/bitstream/1885/148674/4/Generals%20of%20the%20South.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-dc7389da959523b7",
       "url": "https://www.theartnewspaper.com/news/leonardo-sperm-whale",
       "readings": [
@@ -248947,6 +251164,25 @@
       ]
     },
     {
+      "id": "SRC-dcfd2f113800fec1",
+      "url": "https://www.nbd.com.cn/articles/2017-03-01/1080349.html",
+      "readings": [
+        {
+          "title": "“京城81号”修缮完毕 年租金达千万",
+          "publisher": "每经网轉載《北京青年報》，2017-03-01",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 9（200，42,848 bytes）HTML，去標籤後讀正文",
+          "reading_scope": "全文讀過，含文末『背景』段",
+          "locator": "文末『背景 老宅已历近百年 曾被鉴定为危房』段",
+          "summary": "教會基建辦一位主任 2013 年受訪說：兩棟樓 2004 年就被鑑定為高度危房；2005 年左右許多城市探險的年輕人來此，把經歷誇張想像，臆造出『81號院鬧鬼』，再經文學影視演繹被當真。北京市檔案館一位研究者整理檔案發現：此院 1965 年以前門牌是 69 號，原屬一位法籍中國天主教徒女士；她與時任平漢鐵路總工程師的法國人結婚後購地，由丈夫設計施工建法式住宅，1921 年初兩棟三層小樓竣工，前院是大花園；抗戰勝利後『由於生活所迫』，1946 年她把西樓一層租給奧斯汀（奧斯定）修女會設普德診所；1948 年 5 月 5 日一位愛爾蘭神父籌款國幣 10 億元買下此院，設朝陽門天主堂；1965 年改門牌 81 號；1949 年後曾成大雜院。另：2016 年修繕的招標方是東城區文物管理所，預算 3,300 多萬元；修完後由中介以年租約 1,000 萬元招租，中介稿寫『始建於 1910 年，為美國人所建』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "檔案內容是報紙轉述研究者的發現，檔號與原件未見；修女會名稱報導寫作『奧斯汀』，與 ZW9-S003『奧斯定』應為同一會。 覆核：這是 N7578『檔案裡的屋主』的唯一出處，原卷與研究者本人的出版品都未讀到。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.nbd.com.cn/articles/2017-03-01/1080349.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-dd026b153646b50a",
       "url": "https://web.archive.org/web/20190917132529/http://expos-historiques.cannes.com/a/1910/fort-de-pignerol-bh739-/",
       "readings": [
@@ -249433,6 +251669,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://skeptoid.com/episodes/4124"
+        }
+      ]
+    },
+    {
+      "id": "SRC-dd727c44e6dd1fef",
+      "url": "https://api.parliament.uk/historic-hansard/commons/1897/feb/15/sun-yat-sens-detention",
+      "readings": [
+        {
+          "title": "SUN YAT SEN'S DETENTION（HC Deb 15 February 1897 vol 46 cc396-7）",
+          "publisher": "英國下議院議事錄（Hansard），1897-02-15",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 12（200，8,967 bytes）下載 HTML，去標籤後讀全文",
+          "reading_scope": "全文（一問一答）讀過",
+          "locator": "cc396–397，Curzon 答覆",
+          "summary": "議員問『被指稱的綁架』（alleged kidnapping）；外交部次官 Curzon 答：外交部第一次得知是 10 月 18 日星期日；沙士勃雷向中國公使指出扣押是濫用外交特權並要求立即釋放，10 月 23 日照辦；扣押絕非國際法所允許；這是中國公使的行為，由他負責。答覆完全沒有說孫是怎麼進入使館的。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只到英國政府的正式口徑；沒有提及如何入館。Hansard 網頁的授權依英國國會條款，這裡只作摘要。",
+          "origin": "wave77-20261118",
+          "original_url": "https://api.parliament.uk/historic-hansard/commons/1897/feb/15/sun-yat-sens-detention"
         }
       ]
     },
@@ -250808,6 +253063,25 @@
           "limitations": "通訊社的背景稿，沒有出處。",
           "origin": "wave47-20261112",
           "original_url": "https://dzieje.pl/node/123990"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ded8d79b35cea825",
+      "url": "https://mie-u.repo.nii.ac.jp/record/15243/files/2022RP0002.pdf",
+      "readings": [
+        {
+          "title": "科學研究費助成事業 研究成果報告書：近世日本における忍者像の形成と変容に関する研究（課題番號 18K00277）",
+          "publisher": "日本學術振興會科研費成果報告，三重大學機構典藏，2021 年 5 月",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 3（200，80,417 bytes），python pdfminer 轉文字後讀全文",
+          "reading_scope": "研究成果概要（和英）、1 背景、2 目的、3 方法、4 成果全讀；發表清單掃過",
+          "locator": "『研究成果の概要』；『２．研究の目的』；『４．研究成果』最後兩段",
+          "summary": "報告說研究釐清了忍者『黑裝束・黑覆面加手裏劍』形象的成立過程，以小說（假名草子、浮世草子、讀本）與演劇（歌舞伎、人形淨瑠璃）為調查對象；2018 年有學會發表〈絵入本にみる忍び装束の発生と定着〉；成果收進《忍者の文学史》（KADOKAWA，2021，376 頁），其中有『忍者装束の発生と展開』一章。報告也批評早期忍者研究把二手資料裡的虛構忍者像當成史實。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "成果報告只列結論與章名，黑裝束的具體證據在書裡，本次沒讀到書。",
+          "origin": "wave77-20261118",
+          "original_url": "https://mie-u.repo.nii.ac.jp/record/15243/files/2022RP0002.pdf"
         }
       ]
     },
@@ -255580,6 +257854,25 @@
       ]
     },
     {
+      "id": "SRC-e2d19f7b10f3623e",
+      "url": "https://www.sci.news/space/article00156.html",
+      "readings": [
+        {
+          "title": "Russian Researcher Suggests Venera-13 Imaged Life on Venus",
+          "publisher": "Sci-News.com，2012-01-24",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 3（200，73,354 bytes）下載 HTML，python 去標籤後讀內文",
+          "reading_scope": "內文全部讀過",
+          "locator": "『Among the relatively large disappearing or changing elements, first of all, there is a disk…』；『The most interesting object is a scorpion…』；文末書目",
+          "summary": "流傳版本樣本與 2012 年論文的轉述：2012 年 1 月號《Astronomicheskii Vestnik（Solar System Research）》的討論文章；Venera 13 1982 年 3 月 1 日登陸、運作約 127 分鐘；作者描述三個物體：『圓盤』（直徑約 0.34 公尺、只見下半，作者說『登陸器沒有脫落形狀相似的部件』）、『黑布』（量測錐旁，13 分鐘內出現、27 與 36 分鐘消失）與『蠍子』（約第 90 分鐘出現，旁邊有『半環』）；2012 版寫溝槽在第 7、20 分鐘的影像、第 59 分鐘露出一部分、第 93 分鐘完全爬出、第 119 分鐘不見，與 2019 年論文的時間（53–66、79–87、87–100、113–126 分鐘）寫法不同。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞轉述大段原文，未對照 2012 年論文原文；時間差異可能是張次編號與分鐘的寫法不同，未判定。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.sci.news/space/article00156.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-e2ee89b89e4ebbfa",
       "url": "https://archive.org/details/ethruscarumantiq00ingh",
       "readings": [
@@ -255747,6 +258040,25 @@
           "limitations": "非學術出版；只讀了頁面前段。",
           "origin": "wave1-20261101",
           "original_url": "https://newliturgicalmovement.org/2024/11/the-prophecies-of-st-malachy.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e322daa5068d12c4",
+      "url": "https://www.nobelprize.org/alfred-nobel/biographical-information/",
+      "readings": [
+        {
+          "title": "Alfred Nobel – Biographical information（含年表）",
+          "publisher": "NobelPrize.org，2026 年版頁面",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 25（200，231,162 bytes），python 去標籤後讀正文與年表",
+          "reading_scope": "正文與年表全讀",
+          "locator": "年表 1887、1889、1891、1893、1895 各條；年表 1876、1896 條；Suttner 圖說",
+          "summary": "基金會的年表從 1887（ballistite 專利）直接跳到 1889（母親過世），1888 年沒有任何條目，沒有提 Ludvig 之死或訃聞；1891 年因 ballistite 與法國政府的爭執離開巴黎移居聖雷莫；1895 年第三份也是最後一份遺囑。年表 1876 條：他登報徵管家兼秘書，雇用 Bertha Kinsky（後來的 von Suttner），她不久離職、成為和平運動者；頁面另一處標示她是 1905 年和平獎得主；1896 條：12 月 10 日在聖雷莫的家中過世。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "『沒有寫』只能說明基金會沒採用這個故事，不能證明事情沒發生。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.nobelprize.org/alfred-nobel/biographical-information/"
         }
       ]
     },
@@ -257320,6 +259632,25 @@
       ]
     },
     {
+      "id": "SRC-e498665f763cbbcf",
+      "url": "https://www.tenasia.co.kr/article/2018032198864",
+      "readings": [
+        {
+          "title": "'곤지암' 상영금지 가처분 신청 기각…28일 개봉（박슬기 기자）",
+          "publisher": "텐아시아（TenAsia），2018-03-21",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 12（200，66,247 bytes）HTML 去標籤後讀正文",
+          "reading_scope": "全文（短訊）",
+          "locator": "第 2–5 段",
+          "summary": "首爾中央地方法院民事合議 50 部駁回廢棄精神病院建物所有人 A 對電影《昆池岩》製作與發行公司提出的禁止上映假處分；A 主張電影擴散怪談、妨礙正在進行的建物出售。報導說醫院 1996 年停業後衍生各種怪談、被 CNN 選為『世界 8 大毛骨悚然的地方』；實際拍攝不在該醫院，而在釜山的海事高中建物。電影設定是『1979 年 42 名病患集體自殺與院長失蹤』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "娛樂新聞；CNN 名單是『8 大』還是『7 大』各報不一（S006、S007 寫 7 大），CNN 原文沒讀到。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.tenasia.co.kr/article/2018032198864"
+        }
+      ]
+    },
+    {
       "id": "SRC-e498ae72b13b8814",
       "url": "https://archive.org/details/b30334494",
       "readings": [
@@ -258319,6 +260650,25 @@
       ]
     },
     {
+      "id": "SRC-e563e0bbe9546423",
+      "url": "https://www.xinhuanet.com/politics/2021-03/20/c_1127235555.htm",
+      "readings": [
+        {
+          "title": "关于三星堆的N种传说，都找到答案了吗？",
+          "publisher": "新华网（新华社成都電），2021-03-20",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 16（200，16,112 bytes）HTML，去標籤後讀正文",
+          "reading_scope": "全文讀過（傳說一至四）",
+          "locator": "『传说一：三星堆是外星文明吗？』節",
+          "summary": "流傳版本樣本兼官方回應：有網友認為三星堆是外星文明，大面具、青銅立人、神樹是外星人的作品；專家反對，指出出土的青銅尊、罍與玉璋、玉琮、玉璧、玉戈與黃河流域一致，奇特造型顯示中華文化的多樣性。另提到大立人手中可能握象牙、玉琮或權杖，學界沒有定論。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "官方媒體稿，同時是『外星說』存在的樣本與反駁；沒有引出具體提出外星說的出版物。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.xinhuanet.com/politics/2021-03/20/c_1127235555.htm"
+        }
+      ]
+    },
+    {
       "id": "SRC-e5666230640357ae",
       "url": "https://archive.org/download/paper-doi-10_1098_rstl_1693_0027/paper-doi-10_1098_rstl_1693_0027_djvu.txt",
       "readings": [
@@ -258984,6 +261334,25 @@
           "limitations": "大學新聞稿，屬二手；轉述《紐約時報》2005 年報導，原報導 403 讀不到。",
           "origin": "wave4-20261102",
           "original_url": "https://news.lafayette.edu/2011/04/14/looking-back-new-novel-suggests-fate-of-judge-joe-crater-class-of-1910/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e5bda38501bb1bbe",
+      "url": "https://cine21.com/news/view/?mag_id=89791",
+      "readings": [
+        {
+          "title": "<곤지암>처럼 법정 분쟁을 겪었던 영화 3편（김진우）",
+          "publisher": "씨네21（Cine21），2018-04-02",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 13（200，46,500 bytes）HTML 去標籤後讀正文",
+          "reading_scope": "讀《昆池岩》一節全文，另兩部電影的段落掃過",
+          "locator": "首兩段與『결과는 상영금지 가처분 신청 기각』段",
+          "summary": "說醫院營運時名為南陽神經精神病院；流傳的『病患集體自殺導致停業、院長失蹤』是怪談，括號註明『實際上醫院因經濟原因停業，院長是自然死亡』。所有人主張劇組擅闖私有地、妨礙出售；劇組說在釜山廢校搭景、只參考既有影片。法院理由（轉述）：電影不以所有人為題材，名譽與信用受損主張不成立；電影明顯是虛構恐怖片，不是要揭露不動產的虛假事實；怪異傳聞早在電影製作前就已流傳並被多家媒體報導。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "『經濟原因停業、院長自然死亡』是記者括號裡一句，沒有附出處；法院決定書原文沒有找到（案號未知）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://cine21.com/news/view/?mag_id=89791"
         }
       ]
     },
@@ -268617,6 +270986,25 @@
       ]
     },
     {
+      "id": "SRC-ecaab46967d5f235",
+      "url": "https://www.daily.co.jp/leisure/kansai/2024/03/19/0017449289.shtml",
+      "readings": [
+        {
+          "title": "さようなら、カーネルおじさん…野球ファンが道頓堀に投げ込み２４年、奇跡の生還が話題に",
+          "publisher": "デイリースポーツ online，2024-03-19",
+          "read_via": "fetch.sh seq 25（200，107,085 bytes）下載 HTML，以 python 去標籤後讀正文",
+          "reading_scope": "正文全讀",
+          "locator": "正文第 1–2 段與年表",
+          "summary": "大致改寫公司新聞稿：1985 年『職棒熱狂禍』中消失、24 年後生還、2009 年命名並稱『幸運的象徵』、2024 年 3 月因老化廢棄；沒有寫缺損部位。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "幾乎是新聞稿改寫，不算獨立查證。",
+          "accessed_on": "2026-11-17",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.daily.co.jp/leisure/kansai/2024/03/19/0017449289.shtml"
+        }
+      ]
+    },
+    {
       "id": "SRC-ecb6289f4ebb0907",
       "url": "https://archive.org/download/henslowesdiaryv00greggoog/henslowesdiaryv00greggoog_djvu.txt",
       "readings": [
@@ -270269,6 +272657,25 @@
       ]
     },
     {
+      "id": "SRC-ee28480188648550",
+      "url": "https://archive.org/download/tablestournantes0000unse/tablestournantes0000unse_djvu.txt",
+      "readings": [
+        {
+          "title": "Chez Victor Hugo. Les tables tournantes de Jersey. Procès-verbaux des séances présentés et commentés par Gustave Simon",
+          "publisher": "Paris, Louis Conard, 1923（Internet Archive 掃描本 tablestournantes0000unse）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 13（200，79,533 bytes）先讀 archive.org/metadata 條目確認檔名與 1923 年份，再 seq 14（200，483,729 bytes）下載 OCR 文字檔，攤平換行後以關鍵字定位閱讀。",
+          "reading_scope": "讀了開頭〈Pourquoi n'a-t-on pas publié les séances〉、第 IV 節〈De l'influence des tables sur Victor Hugo ou de Victor Hugo sur les tables〉全節（約原書頁 15–20），以及『Shakespeare』各場紀錄中的兩段（約頁 131–150）；其餘各場紀錄沒有逐場讀。OCR 有錯字。",
+          "locator": "第 IV 節〈De l'influence des tables sur Victor Hugo…〉頁 15–19（'Victor Hugo serait l'auteur inconscient'、'jamais Victor Hugo n'y a posé les mains'、'toujours dans le style et la forme de Victor Hugo'）；雨果手稿附注（'jamais je n'ai mêlé à mes vers un seul de ces vers venus du mystère'）；Shakespeare 場次頁約 131–150（'Qui vous dit que c'est Shakespeare?'）",
+          "summary": "1923 年第一次部分出版的降靈紀錄本。編者自己整理出當時批評者的論點：不管哪個『靈』、說詩說文，桌子口述的永遠是雨果熟悉的形式與構思，所以雨果是無意識的作者、經由常當媒介的兒子 Charles 在回答自己的問題。編者的反駁：紀錄寫明在場者、媒介與助手、雨果何時進出，桌上至少兩個人，但雨果從沒把手放上桌；可是他也承認，回答『永遠是雨果的風格與形式』，連雨果不在場時也一樣，甚至轉到別的流亡者家裡續場也一樣。他再排除 Vacquerie（不會即席寫詩）與 Charles（不擅即席作詩、當媒介很累），最後說『我不下結論』。他也承認身分問題無法解決：『誰告訴你那是莎士比亞？』莎士比亞場次裡，桌子用法文亞歷山大詩行一句句口述、一再自我修改。書中引雨果的手稿附注：他見過三腳桌口述詩句，但從沒把這些詩句或想法摻進自己的作品。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "OCR 文字有錯；編者立場傾向替降靈辯護；『越來越像雨果』這種隨時間變化的說法書裡沒有，只說『永遠』是雨果風格。編者卒年未在本次來源核對，正片不點名。版權狀態以 1923 年出版、archive.org 公開下載判斷，未查法國權利。",
+          "origin": "wave77-20261118",
+          "original_url": "https://archive.org/download/tablestournantes0000unse/tablestournantes0000unse_djvu.txt"
+        }
+      ]
+    },
+    {
       "id": "SRC-ee2f7207e3e47bec",
       "url": "http://resolver.kb.nl/resolve?urn=MMKB23:001709105:mpeg21:a00033:ocr",
       "readings": [
@@ -270392,6 +272799,25 @@
           "limitations": "百科條目；噴泉與 Hercules 的年份（1624、1636）與 X3-S017 的檔案紀錄（1630 年代、1633 撥款）不一致，旁白只說『17 世紀才加上噴泉與 Hercules』。",
           "origin": "wave31-20261112",
           "original_url": "https://austria-forum.org/af/AEIOU/Lindwurm-Brunnen/Lindwurm-Brunnen_english?skin=raw"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ee464c5c37bca1f1",
+      "url": "https://catalog.digitalarchives.tw/item/00/10/90/fd.html",
+      "readings": [
+        {
+          "title": "明太祖坐像（七）軸（典藏目錄）",
+          "publisher": "數位典藏與學習聯合目錄（國立故宮博物院書畫處數位典藏），著錄《故宮書畫錄》卷七第四冊頁 32–33",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 20（200，22,773 bytes）抓 HTML，python 去標籤後讀後設資料欄。",
+          "reading_scope": "只有後設資料欄（尺寸、著錄、中英文簡介、參考文獻）。",
+          "locator": "『資料識別：中畫000311N000000000』欄",
+          "summary": "台北故宮藏『明太祖坐像（七）』立軸，本幅 270×163.6 公分，著錄於《故宮書畫錄》卷七；院方簡介寫明太祖『貌奇偉，有雄才』；參考文獻列〈院藏明太祖朱元璋畫像〉，《故宮文物月刊》第 54 期（1987 年 9 月），頁 116–119。可見院藏太祖坐像至少編到第七件。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "目錄沒有描述畫中相貌，看不出這件是正像還是異像；《故宮文物月刊》1987 年那篇沒讀到（故宮 PDF 下載端點 seq 16、17 拿到的是別篇，且中文字型抽不出）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://catalog.digitalarchives.tw/item/00/10/90/fd.html"
         }
       ]
     },
@@ -271088,6 +273514,25 @@
           "limitations": "Buck 1938 年的回顧原文未讀。",
           "origin": "wave15-20261102",
           "original_url": "https://archive.org/details/annualreportofbo1938smit"
+        }
+      ]
+    },
+    {
+      "id": "SRC-eeef7e45607c2274",
+      "url": "https://aska-r.repo.nii.ac.jp/record/5915/files/0005031200803039053.pdf",
+      "readings": [
+        {
+          "title": "『榻鴫暁筆』の「盤古王」説話研究ノート—「神在経云」の記述をめぐって（小椋愛子）",
+          "publisher": "日本大學紀要論文，收於 NII 機關典藏 aska-r（發行機構與年份未從 PDF 文字確認）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 29（200，518,519 bytes）下載 PDF；pdftotext 缺日文字型，改用 python pdfminer 轉文字後以關鍵詞搜尋並讀命中段",
+          "reading_scope": "讀『二、盤古王について』與第三章引漢籍的部分（約頁 40–44）；論文主體談日本中世說話集的出典，沒有細讀",
+          "locator": "頁 40『しかし、『山海経』に、盤古の記述はない』；頁 42 引『徐整三五暦紀曰…天地渾沌如鶏子，盤古生其中，萬八千歳』及『太平御覧』巻一同文；頁 44 引馬驌『繹史』巻一「開闢原始」所引『五運歴年記』『首生盤古，垂死化身…左眼為日，右眼為月』；梁任昉『述異記』巻上諸說",
+          "summary": "論文整理中國方面的盤古材料：『三五暦紀』（徐整）寫天地渾沌如雞子、盤古生其中、一萬八千歲天地開闢、天日高一丈地日厚一丈盤古日長一丈；『太平御覽』卷一引同文；身體化為風雲、雷霆、日月、江河、田土、草木等的說法出自清人馬驌『繹史』所引的『五運歷年記』；梁任昉『述異記』記盤古氏廟與南海盤古墓等。作者明寫『山海經』裡沒有盤古，只有性質相近的燭陰、燭龍。 頁 44 另引梁任昉《述異記》卷上：盤古氏頭為四岳、目為日月、脂膏為江海、毛髮為草木，並寫『秦漢間俗說，盤古氏頭為東岳……』、『吳楚間說，盤古氏夫妻陰陽之始也』、桂林有盤古氏廟——也就是說，六世紀的任昉已記下身體化為山川日月的版本，並說那是『秦漢間』的俗說。",
+          "rights": "OPEN_ACCESS_ACADEMIC",
+          "limitations": "OCR 文字有錯字（例『難子』應為『鶏子』）；論文焦點是日本說話集，不是專門考證盤古起源；引文是轉錄類書，不是三國原書（原書已佚）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://aska-r.repo.nii.ac.jp/record/5915/files/0005031200803039053.pdf"
         }
       ]
     },
@@ -272524,6 +274969,25 @@
       ]
     },
     {
+      "id": "SRC-f0173c4e1008a0d8",
+      "url": "https://www.hallofmaat.com/?p=1846",
+      "readings": [
+        {
+          "title": "Astronomer Tony Fairall and Secret Chamber",
+          "publisher": "Hall of Ma'at，作者為倫敦大學學院碩士 Mikey Brass，2001-07-23",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 1（200，67,877 bytes）下載 HTML，以 python 去標籤後讀全文",
+          "reading_scope": "正文全部；網站側欄與推薦文章未讀；文中連結的 Fairall 原文副本（web.archive.org）seq 6 連線中斷，沒有讀到",
+          "locator": "首段『In 1998 the South African astronomer』；『My own investigation showed』引文；末段『In the second run of the BBC Horizon programme』",
+          "summary": "轉引一位南非天文館館長 1999 年 6 月發表的文章（本文寫作『Journal of Royal Astronomical Society (June 1999)』，引文中館長自稱是他寫給『Astronomy and Geophysics』的信／文章；刊名與文體以轉引為準，原文未讀）：吉薩外側兩座金字塔連線與北方夾 38 度，而西元前 10500 年獵戶座腰帶與北方的夾角接近 50 度（他用圓形歲差算 47 度，加章動略高，天文館儀器量測一致），結論是『把吉薩布局推到西元前 10500 年的天文依據非常薄弱』。2000 年 12 月 BBC 節目重播時，他改用理論提出者偏好的兩座大金字塔比較：地面 45–47 度，同期兩顆星之間 54 度。文中也記錄提出者在 1999 年的書裡反駁他、引用時刪掉『天文館量測一致』一句。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手轉引：Fairall 1999 原文沒有讀到，數字只能說是『這篇文章轉引』；作者立場明顯是批評者。（覆核 R775：角度數字 38°／約 50°／47°、45–47°／54°、『some 10 degrees』全部出自本文對 Fairall 的引述，正片一律說『據轉引』，不可寫成本片核對過原刊。）",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.hallofmaat.com/?p=1846"
+        }
+      ]
+    },
+    {
       "id": "SRC-f01b3bafab7e228f",
       "url": "https://link.springer.com/article/10.1007/s10509-005-9025-4",
       "readings": [
@@ -273806,6 +276270,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.tbocc.gov.tw/SightLib/Sight_Detail.aspx?id=e051b0c9-2ed4-e411-a5d3-e4115b13f301"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f16e4ee836b54dd3",
+      "url": "https://orgws.kcg.gov.tw/001/KcgOrgUploadFiles/412/relfile/74512/221665/9a228c4c-f403-49a6-b47d-33f9df4ef394.pdf",
+      "readings": [
+        {
+          "title": "高雄市行政概況（An Overview of the Administration of Kaohsiung City Government 2004）",
+          "publisher": "高雄市政府，2004",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 16（200，12,399,015 bytes），python pdfminer 轉文字後讀『沿革』節",
+          "reading_scope": "序言與『沿革』節；其餘市政各章沒讀",
+          "locator": "『沿革』第 2 段『高雄原名有二』；『民國 9 年（大正 9 年，西元 1920 年）』段",
+          "summary": "市府沿革：高雄原名『打狗』或『打鼓』，明清文獻兩種寫法並用；『打狗』說源自平埔族馬卡道族的打狗（Takau）社，Takau 意為竹林，打狗是音譯。1920 年第八任總督田健治郎廢廳設州，『高雄』一名首次出現在行政區名上；1924 年設高雄市。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "市府概況手冊，沒有寫為什麼選『高雄』兩字。",
+          "origin": "wave77-20261118",
+          "original_url": "https://orgws.kcg.gov.tw/001/KcgOrgUploadFiles/412/relfile/74512/221665/9a228c4c-f403-49a6-b47d-33f9df4ef394.pdf"
         }
       ]
     },
@@ -281061,6 +283544,25 @@
       ]
     },
     {
+      "id": "SRC-f8423aa511b6d2cd",
+      "url": "http://art.people.com.cn/n/2013/0408/c226026-21050214.html",
+      "readings": [
+        {
+          "title": "考古学家称阿房宫没建成：《史记》写得清楚",
+          "publisher": "人民網藝術收藏頻道，2013-04-08（訪談）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 13（200，59,438 bytes），python 去標籤後讀全文",
+          "reading_scope": "全文",
+          "locator": "『根据考古实证』段；『实证为本，考古调查非常重要』整節；『司马迁的《史记》』段",
+          "summary": "前考古隊長受訪：六年野外工作，在前殿台基上與東西北三面牆裡都沒發現秦代文化層與秦代宮殿建築遺跡；135 平方公里內沒找到與前殿同時期的建築；台子上沒有火燒痕跡（紅燒土），項羽燒的是咸陽宮——在咸陽一、二、三號宮殿遺址，牆燒成黑色、土坯燒得像磚、瓦片燒紅。有前輩質疑紅燒土被農民平整土地拉走，她訪問兩位當年生產隊長，說平整時只從北邊平高墊低；並取土樣回北京實驗室分析，沒發現火燒證據。她引《史記》『阿房宮未成…』與《漢書·五行志》『復起阿房，未成而亡』。當地曾有一處人造阿房宮景區，裡面有大量火燒阿房宮的『資料』與『情景』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "當事研究者的受訪說法，土樣分析細節（植矽石）未在此文寫明；報導本身有表揚語氣。",
+          "origin": "wave77-20261118",
+          "original_url": "http://art.people.com.cn/n/2013/0408/c226026-21050214.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-f8473a6f65d35d0c",
       "url": "https://de.wikisource.org/wiki/ADB:Schwediauer,_Franz_Xaver",
       "readings": [
@@ -283631,6 +286133,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://commons.wikimedia.org/wiki/File:Bills_of_Mortality_August_15_-22,_1665_Wellcome_L0043360.jpg"
+        }
+      ]
+    },
+    {
+      "id": "SRC-faace9db830c39d1",
+      "url": "https://www.chineseclassic.com/sites/default/files/field/image/ligiezusu1.epub",
+      "readings": [
+        {
+          "title": "禮記注疏（漢鄭玄注、唐陸德明音義、唐孔穎達正義）電子版第一冊",
+          "publisher": "中華經典網站（chineseclassic.com）提供的 EPUB；底本為十三經注疏系統，網站未標明校勘底本",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 14（200，742,185 bytes）下載 EPUB，以 python zipfile 解開 Section0001.xhtml 去標籤後，用關鍵字『燔柴於奧』『老婦』『祀灶』定位閱讀",
+          "reading_scope": "〈禮器〉『孔子曰：臧文仲安知禮』一段的經文、鄭注、音義與孔疏全段；〈月令〉孟夏『其祀灶』注疏一段（『此配灶神而祭者，是先炊之人』）；其他篇未讀",
+          "locator": "〈禮器〉『燔柴於奧』經文與注『奧當為爨字之誤也』『老婦，先炊者也』；疏『奧者，夏祀灶神，其禮尊，以老婦配之耳』『按《異義》：灶神…祝融』；〈月令〉疏『此配灶神而祭者，是先炊之人。《禮器》云：灶者老婦之祭』",
+          "summary": "〈禮器〉經文：孔子批評臧文仲不知禮，因為有人『燔柴於奧』，而『夫奧者，老婦之祭也，盛於盆，尊於瓶』。鄭玄注：『奧』是『爨』字之誤（有的本子作『灶』）；宗廟祭禮在尸吃完後祭饎爨、饔爨；時人以為是祭火神才燒柴；『老婦，先炊者也』，盆瓶是炊器，『明此祭先炊，非祭火神』。孔穎達疏進一步分開兩件事：夏天祭灶神是尊禮，有主有尸、用特牲，『以老婦配之耳』；宗廟祭後在爨灶旁另祭『先炊老婦之神』，用盆瓶，是小祭。疏又引許慎《五經異義》：古《周禮》說顓頊之子黎為祝融，『祀以為灶神』，許慎同意；鄭玄駁說祝融是五祀之神、應祀於郊，不該在灶邊祭。〈月令〉疏也說陪灶神受祭的是『先炊之人』。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "網站自製電子本，底本與校勘未標明；只讀到兩處相關段落。莊子〈達生〉司馬彪注（『灶神著赤衣，狀如美女』）與《酉陽雜俎》的灶神名號，本次都沒有讀到原文（維基文庫、ctext 被封鎖，Gutenberg 回 503）。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.chineseclassic.com/sites/default/files/field/image/ligiezusu1.epub"
         }
       ]
     },
@@ -288995,6 +291516,25 @@
       ]
     },
     {
+      "id": "SRC-ff861cf87e42f91d",
+      "url": "https://archive.org/download/06081986.cn/06081986.cn.pdf",
+      "readings": [
+        {
+          "title": "三國志·吳志·卷一~卷二（陳壽撰、裴松之注；乾隆御覽本四庫全書薈要·史部影印）",
+          "publisher": "浙江大學圖書館提供、Internet Archive 掃描 06081986.cn",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 20（200）用 archive.org advancedsearch 找到條目；seq 21（200，32,861 bytes）讀 metadata；seq 22（200，63,180 bytes）的 djvu 文字層是亂碼不能用；seq 23（200，5,228,156 bytes）下載 PDF，以 pdftoppm 轉 200 dpi 圖檔後逐字目讀 PDF 第 10、13、14 頁",
+          "reading_scope": "只讀《孫破虜討逆傳》孫堅起兵到陽人之戰一段（PDF 第 10、13、14 頁，含裴注引《英雄記》《江表傳》）；其餘未讀",
+          "locator": "PDF 第 13 頁（裴注引《英雄記》胡軫、呂布一段，及正文『堅移屯梁東……堅常著赤罽幘乃脫幘令親近將祖茂著之』）；PDF 第 14 頁正文『堅復相收兵合戰於陽人大破卓軍梟其都督華雄等』",
+          "summary": "正文：孫堅移屯梁東，被董卓軍大攻，與數十騎突圍；他平常戴紅色毛織頭巾，脫下讓親近將領祖茂戴上，董卓騎兵爭著追祖茂，孫堅從小路逃脫；祖茂被逼急，把頭巾掛在燒過的墓間柱子上、自己伏在草中，追兵圍了好幾層才發現是柱子。孫堅重新收兵，『合戰於陽人，大破卓軍，梟其都督華雄等』。裴注引《英雄記》：董卓派步騎五千迎戰，陳郡太守胡軫為大督護，呂布為騎督，其餘步騎將校都督者很多；胡軫性急，揚言這一仗要斬一個青綬（高官），諸將厭惡他；呂布等人造謠說城中賊已出、又說陽人城的敵人跑了，使軍隊在夜裡驚亂潰走、丟盔棄甲；第二天天亮回頭攻城，城防已固，攻不下而回。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "四庫薈要本是清代抄本，文字以通行本核對過的需另找；我目讀的是掃描影像，斷句是自己加的。",
+          "origin": "wave77-20261118",
+          "original_url": "https://archive.org/download/06081986.cn/06081986.cn.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-ff876f55962b65f8",
       "url": "https://journals.openedition.org/archeosciences/22097",
       "readings": [
@@ -289219,6 +291759,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://archive.org/services/search/beta/page_production/?service_backend=fts&user_query=identifier%3Ajupitereffectrec0000grib%20AND%20(%22proved%20wrong%22%20OR%20%22went%20right%22%20OR%20%22Mount%20St%22%20OR%20%22solar%20maximum%22%20OR%20%22peaked%22)&hits_per_page=30&page=1"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ffa734e413ef8402",
+      "url": "https://www.thepaper.cn/newsDetail_forward_27048589",
+      "readings": [
+        {
+          "title": "帝王將相的龍袍爭奪戰（《中國龍的發明》書摘）",
+          "publisher": "澎湃新聞〈私家歷史〉2024 年經授權發布，摘自一位民俗學者的專書《中國龍的發明：近現代中國形象的域外變迁》（後浪／九州出版社，2024 年 4 月）",
+          "accessed_on": "2026-11-17",
+          "read_via": "fetch.sh seq 29（200，57,025 bytes），python 去標籤後讀正文",
+          "reading_scope": "全文讀過",
+          "locator": "『封建帝王真正嚴格禁止百官及民間使用龍紋，始於忽必烈時期』段起至『元延祐元年（1314年）』段；明代蟒服段",
+          "summary": "引元代公文：至元七年（1270）刑部議定民間不得織造日月龍鳳緞匹，已織的要蓋官印才准賣；至元十年中書省再禁。商人把龍紋織得似是而非，大德元年（1297）有官員上奏：『街市賣的緞子，似上位穿的御用大龍則少一個爪兒，四個爪兒的着賣』，右丞暗都剌回說胸背的小龍不礙事，只禁滿身纏龍。延祐元年（1314）中書省定服色等第，職官不得服龍鳳文，並重新界定『龍謂五爪二角者』（文中此條未註出處）——等於只要不是五爪二角就可以用；文中引另一位學者說宋代流行的龍紋多為三爪、四爪，五爪少見。明代蟒紋本指去角去足的龍，後來官員把蟒加角加爪；天順二年（1458）擴大禁令；嘉靖十六年皇帝見兵部尚書穿類蟒的飛魚服而大怒。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "學術專書的報紙節選；1270、1273、1297 三段公文註《大元聖政國朝典章·造作》但無卷次，1314『龍謂五爪二角者』未註出處；原典沒有讀到（ctext、wikisource 封鎖）；作者在世，正片不點名。",
+          "origin": "wave77-20261118",
+          "original_url": "https://www.thepaper.cn/newsDetail_forward_27048589"
         }
       ]
     },
