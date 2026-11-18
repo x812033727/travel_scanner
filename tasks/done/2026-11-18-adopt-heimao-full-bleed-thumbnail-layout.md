@@ -25,6 +25,8 @@ scope:
   - docs/videos/so-thats-why/dialogue-pilot-20261103/README.md
   - docs/videos/explainer-series/README.md
   - docs/videos/lessons/explainer.md
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Adopt Heimao full-bleed thumbnail layout and rules for Curio and So-Thats-Why
