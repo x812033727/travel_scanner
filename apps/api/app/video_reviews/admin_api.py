@@ -30,6 +30,7 @@ from app.video_media.settings import get_media_settings
 from app.video_reviews import admin_deletion, dub_retry, tool_files
 from app.video_reviews import admin_package_zip as package_zip_module
 from app.video_reviews import admin_service as service
+from app.video_reviews import shelf as shelf_rules
 from app.video_reviews.clips import SubmittedReview
 from app.video_reviews.schemas import (
     SERIES_SLUG_PATTERN,
@@ -192,6 +193,8 @@ async def browse_videos(
     the videos without one; migration 0147); ``category`` is the older filter, read as the shelf
     of the same name when no shelf is given. ``state`` here is not a Short's."""
     _ = user
+    # Videos from before migration 0147 are filed under their show on the first look (shelf.py).
+    await shelf_rules.heal(session)
     runtime = await load_runtime_settings(session)
     return await service.browse_projects(
         session,
