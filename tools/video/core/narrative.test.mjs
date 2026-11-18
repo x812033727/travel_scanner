@@ -604,6 +604,8 @@ test("a curio- or story- slug reads the panel in the viewer wording, with its ow
   assert.match(questions.find((question) => question.id === "no_spoiler").question, /沒有先把劇情照順序濃縮一遍/);
   assert.match(questions.find((question) => question.id === "one_line").question, /明確的時間提示/);
   assert.match(questions.find((question) => question.id === "chapters_link").question, /沒頭沒尾/);
+  assert.match(questions.find((question) => question.id === "no_detour").question, /人的困境與出招/);
+  assert.match(questions.find((question) => question.id === "no_detour").question, /法條但書、年報揭露/);
   assert.notEqual(panelRulesSha256(curio), PANEL_RULES_SHA256);
   assert.notEqual(panelRulesSha256(curio), panelRulesSha256({ ...fixture(), category: "tutorial" }));
   assert.equal(panelRulesSha256({ ...fixture(), slug: "story-adapt-seiko" }), panelRulesSha256(curio), "both series share one contract");
@@ -614,7 +616,30 @@ test("a curio- or story- slug reads the panel in the viewer wording, with its ow
   assert.equal(narrativeReviewMatches(narrativeRecord(fixture(), verdict, 1), curio), false);
 });
 
-import { DAILY_BRIEF_PANEL_QUESTIONS, isDailyBrief } from "./narrative.mjs";
+import { CAVEAT_RECITATION_MAX, caveatRecitationProblems, DAILY_BRIEF_PANEL_QUESTIONS, isDailyBrief } from "./narrative.mjs";
+
+test("reciting statutory/filing caveats or missing-figure hedges twice or more warns the writer to tell human dilemmas instead", () => {
+  assert.equal(CAVEAT_RECITATION_MAX, 1);
+  const single = stretched();
+  single.scenes[1].lines[0].text = "照米其林的公開資料，這套評鑑一開始其實只送給買輪胎的車主。";
+  assert.deepEqual(caveatRecitationProblems(single), [], "one brief attribution across an episode is tolerated");
+
+  const repeated = stretched();
+  repeated.scenes[1].lines[0].text = "年報寫這筆授權收入創下新高，卻沒寫單筆抽成。";
+  repeated.scenes[2].lines[0].text = "我們翻遍年報也找不到那筆評審補助到底是多少。";
+  repeated.scenes[3].lines[0].text = "千萬別聽成這家協會自己出錢買單。";
+  const [warning] = caveatRecitationProblems(repeated);
+  assert.match(warning.message, /statutory\/filing caveats or missing-figure hedges recited in 3 lines/);
+  assert.match(warning.message, /年報寫/);
+  assert.match(warning.message, /翻遍年報也找不到/);
+  assert.match(warning.message, /千萬別聽成/);
+  assert.match(warning.message, /claims\.md and youtube\.description/);
+
+  const timeline = estimateTimeline(repeated);
+  const minutes = timeline.total_frames / FPS / 60;
+  assert.match(messages(narrativeProblems(repeated, timeline, { minutes, cadence: TIGHT_CADENCE }).warnings), /statutory\/filing caveats/);
+  assert.match(messages(lintVideo({ ...structuredClone(repeated), slug: "curio-w99" }, context()).warnings), /statutory\/filing caveats/);
+});
 
 test("a daily-ai- slug reads the panel in the daily brief wording, with its own contract hash; the ids and required flags do not move", () => {
   assert.equal(isDailyBrief({ slug: "daily-ai-20261028" }), true);

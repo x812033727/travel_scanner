@@ -672,20 +672,27 @@ test("the manga tier's stills take a move the viewer sees, under their own versi
   assert.deepEqual(layoutDrama(doc, timeline, frames, clips, keyframes)[0].move, { name: "push-in", startsAtIdentity: true });
 });
 
-test("beat stills take the moves in turn, keep moving the whole shot, and dissolve into each other", async () => {
-  const { BEAT_MOTION, BEAT_MOVES, MOTION_PROFILES, STILL_MOTIONS, beatTransition } = await import("./drama.mjs");
+test("beat stills take the moves in turn, hold then punch in, and dissolve into each other", async () => {
+  const { BEAT_MOTION, BEAT_MOVES, MOTION_BEAT_VERSION, MOTION_PROFILES, STILL_MOTIONS, beatTransition } = await import("./drama.mjs");
   const { STILL_MOTION_NAMES, validateVideo } = await import("../core/schema.mjs");
+  assert.equal(MOTION_BEAT_VERSION, "beat-motion-v5");
   assert.deepEqual([...STILL_MOTIONS], [...STILL_MOTION_NAMES]);
   assert.equal(MOTION_PROFILES.beat, BEAT_MOTION);
+  assert.equal(BEAT_MOTION.holdFrames, 24);
+  assert.equal(BEAT_MOTION.punchFrames, 66);
   const names = [0, 1, 2, 3, 4, 5].map((turn) => motionMove({}, `shot-${turn}`, "beat", turn).name);
   assert.deepEqual(names, [...BEAT_MOVES, BEAT_MOVES[0]], "five moves in turn");
   for (let i = 1; i < names.length; i += 1) assert.notEqual(names[i], names[i - 1], "never the same move twice in a row");
   assert.equal(names.filter((name) => name === "push-in").length < names.length / 2, true, "not a zoom on every picture");
   assert.equal(motionMove({ camera: "slow tilt down" }, "x", "beat", 0).name, "tilt-down", "a named camera move is kept");
   const push = zoompanExpr(motionMove({}, "a", "beat", 0), 150, { eased: true, travel: 1 });
-  assert.match(push.z, /^1\+0\.18\*/, "a bigger push than the held shot's");
+  assert.match(push.z, /^1\+0\.22\*/, "a bigger punch-in than the held shot's");
+  assert.match(push.z, /clip\(\(on-24\)\/66,0,1\)/, "holds for 24 frames (~0.8 s) then punches in over 66 frames (~2.2 s)");
+  const shortPush = zoompanExpr(motionMove({}, "a", "beat", 0), 60, { eased: true, travel: 1 });
+  assert.match(shortPush.z, /clip\(\(on-17\)\/42,0,1\)/, "a 2-second beat still caps hold at 30% and finishes inside the shot");
   const pan = zoompanExpr(motionMove({}, "b", "beat", 1), 150, { eased: true, travel: 1 });
-  assert.equal(pan.z, "1.16");
+  assert.equal(pan.z, "1.2");
+  assert.match(pan.x, /clip\(\(on-24\)\/66,0,1\)/);
   assert.equal(beatTransition({ data: {} }, 0), "cut");
   assert.equal(beatTransition({ chapter: "two", data: {} }, 5), "cut", "a chapter cuts in");
   assert.equal(beatTransition({ data: {} }, 5), "dissolve");
