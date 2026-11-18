@@ -15,9 +15,9 @@ import { DEFAULT_TARGET_MINUTES, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisode
 import { isEverydayStory, isStory, storyCuteVisualProblems, storyProblems } from "./story.mjs";
 import { DEFAULT_CPM, FPS, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
-import { headlineCount, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, thumbnailVariants } from "../templates/templates.mjs";
+import { headlineCount, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, THUMB_HEIMAO_LAYOUTS, thumbnailVariants } from "../templates/templates.mjs";
 import { isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
-import { atPhoneWidth, CHANNEL_RULES_LOCALE, headlineSizeEstimate, headlineSplitWords, MIN_HEADLINE_PX_AT_PHONE, PHONE_WIDTH, TITLE_HEAD_CHARS, TITLE_OVERLAP_MAX, titleOverlap } from "../qa/thumbnail.mjs";
+import { atPhoneWidth, CHANNEL_RULES_LOCALE, HEADLINE, HEIMAO_HEADLINE_MAX, headlineRule, headlineSizeEstimate, headlineSplitWords, isHeimaoRule, MIN_HEADLINE_PX_AT_PHONE, PHONE_WIDTH, TITLE_HEAD_CHARS, TITLE_OVERLAP_MAX, titleOverlap } from "../qa/thumbnail.mjs";
 import { thumbnailSeries } from "../render/plan.mjs";
 import { ANIME_BODY_TOLERANCE_SECONDS, hasAnimePolicy, isLongAnime, runtimePolicyHash, validateAnimePolicy } from "./anime-policy.mjs";
 import { isCompilation } from "./compilation.mjs";
@@ -402,19 +402,29 @@ export function mangaShotLengthProblems(doc, timeline) {
  */
 export function thumbnailHeadlineProblems(doc) {
   const problems = [];
-  if (!doc.thumbnail || thumbnailSeries(doc) !== null || narrationLocale(doc) !== CHANNEL_RULES_LOCALE) return problems;
+  if (!doc.thumbnail || narrationLocale(doc) !== CHANNEL_RULES_LOCALE) return problems;
+  const series = thumbnailSeries(doc);
   const title = isCompilation(doc) ? null : doc.youtube?.title ?? null;
   const own = [{ path: "thumbnail", thumbnail: doc.thumbnail }, ...thumbnailVariants(doc.thumbnail).map(({ id, thumbnail }) => ({ path: `thumbnail.variants (${id})`, thumbnail }))];
   for (const { path, thumbnail } of own) {
+    const layout = thumbnail.data?.layout ?? null;
+    if (series !== null && !THUMB_HEIMAO_LAYOUTS.includes(layout)) continue;
     const headline = thumbnail.data?.headline;
     if (typeof headline !== "string" || !headline.trim()) continue;
     const warn = (message) => problems.push({ path, message });
-    const { count, words } = headlineCount(headline);
-    if (count > THUMB_HEADLINE_MAX) warn(`the headline counts ${count} characters (a Latin word or a number counts one); at most ${THUMB_HEADLINE_MAX} read at a glance, so say one thing in six (qa fails it)`);
-    if (words.length > THUMB_HEADLINE_WORDS_MAX) warn(`the headline has ${words.length} Latin words or numbers (${words.join(", ")}); at most ${THUMB_HEADLINE_WORDS_MAX} fit the column (qa fails it)`);
-    const split = headlineSplitWords(headline);
-    if (split.length) warn(`a line break falls inside the word ${split.map(({ word }) => `「${word}」`).join(", ")}; put \\n where a word ends (qa fails it)`);
-    const px = atPhoneWidth(headlineSizeEstimate(headline));
+    const rule = headlineRule(series, layout);
+    if (rule === HEADLINE) {
+      const { count, words } = headlineCount(headline);
+      if (count > THUMB_HEADLINE_MAX) warn(`the headline counts ${count} characters (a Latin word or a number counts one); at most ${THUMB_HEADLINE_MAX} read at a glance, so say one thing in six (qa fails it)`);
+      if (words.length > THUMB_HEADLINE_WORDS_MAX) warn(`the headline has ${words.length} Latin words or numbers (${words.join(", ")}); at most ${THUMB_HEADLINE_WORDS_MAX} fit the column (qa fails it)`);
+      const split = headlineSplitWords(headline);
+      if (split.length) warn(`a line break falls inside the word ${split.map(({ word }) => `「${word}」`).join(", ")}; put \\n where a word ends (qa fails it)`);
+    } else if (isHeimaoRule(rule)) {
+      const { count } = headlineCount(headline);
+      if (headline.includes("\n")) warn("the heimao look takes the headline on one top line (put the second line in sub); remove the line break (qa fails it)");
+      if (count > HEIMAO_HEADLINE_MAX) warn(`the headline counts ${count} characters (a Latin word or a number counts one); the heimao look reads at most ${HEIMAO_HEADLINE_MAX} on one top line, so shorten it (qa fails it)`);
+    }
+    const px = atPhoneWidth(headlineSizeEstimate(headline, rule));
     if (px < MIN_HEADLINE_PX_AT_PHONE) warn(`the headline shrinks to about ${px} px at ${PHONE_WIDTH} px wide; at least ${MIN_HEADLINE_PX_AT_PHONE} px reads on a phone, so shorten it (qa fails it)`);
     if (typeof title === "string" && title.trim()) {
       const { shared, ratio } = titleOverlap(headline, title);
