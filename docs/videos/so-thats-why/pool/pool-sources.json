@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-18-pool-6260",
+  "revision": "2026-11-18-pool-6372",
   "sources": [
     {
       "id": "SRC-00165a550997c7aa",
@@ -1411,6 +1411,27 @@
       ]
     },
     {
+      "id": "SRC-02b58f808e174be4",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022L2380",
+      "readings": [
+        {
+          "canonical_url": "https://eur-lex.europa.eu/eli/dir/2022/2380/oj",
+          "title": "Directive (EU) 2022/2380 of the European Parliament and of the Council of 23 November 2022 amending Directive 2014/53/EU",
+          "publisher": "歐洲議會與歐盟理事會；Official Journal L 315/30（2022-12-07）",
+          "version": "EUR-Lex 英文 HTML 正式文本",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 工具（Mokaair-editorial/1.0 標頭、請求間隔 1.2 秒）下載：SX4 seq=5，HTTP 200，334545 位元組，sha256 前 16 碼 f05bd15e133fe6a5；本機去除標籤後全文讀。",
+          "reading_scope": "前言（1）–（20）全部；條文 Article 1 各修正點（3(4)、3a、10(8)、47 等）；Article 2（轉置與適用日期）；Annex Ia Part I–IV。",
+          "locator": "前言（2）（2009 年起在歐盟層級努力減少手機充電介面分歧，自願措施不足）；（4）（13 類裝置充電介面不同、快充協定有好幾種且最低性能不一定有保障）；（11）（Type-C 已轉為 EN IEC 62680-1-3:2021）；（12）（配 USB PD 可達 100 W，規格已更新到 240 W）；（13）（拆售充電器與象形圖）；（17）（標籤標示充電能力）；Article 2（2024-12-28 起適用 1.1–1.12 類，2026-04-28 起筆電）；Annex Ia Part I（13 類裝置須配 Type-C 插孔並保持可用；超過 5 V、3 A 或 15 W 須支援 USB PD）；Part II（標示最小與最大充電功率、『USB PD fast charging』字樣）；Part III／IV（象形圖與標籤最小尺寸 7 mm）",
+          "summary": "歐盟 2022 年的共通充電器指令：手機、平板、相機、耳機、鍵盤滑鼠、筆電等 13 類可有線充電的無線電設備，必須配備 USB Type-C 插孔（2024 年 12 月 28 日起，筆電 2026 年 4 月 28 日起）。立法理由寫明快充協定有好幾種、最低性能不一定有保障，所以同時要求超過 15 W 的裝置支援同一套快充協定，並在包裝上標出最小與最大充電功率、是否附充電器。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "指令管的是充電介面與資訊標示，不管資料傳輸速度或影像輸出；不能說歐盟規定所有 Type-C 線功能一致。研究網：NET_EU（單篇網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022L2380"
+        }
+      ]
+    },
+    {
       "id": "SRC-02ca84a2b21b5e9d",
       "url": "https://pubs.usgs.gov/gip/deserts/dunes/",
       "readings": [
@@ -1561,6 +1582,27 @@
           "limitations": "受控實驗室與野外原位觀測數據，無利益衝突。",
           "origin": "wave97-tech-20261116",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12519752/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0307219905fc39ed",
+      "url": "https://static.usenix.org/events/sec06/tech/full_papers/kirschenbaum/kirschenbaum_html/kw-usenix06-forhtml.html",
+      "readings": [
+        {
+          "canonical_url": "15th USENIX Security Symposium（2006）論文 HTML 版",
+          "title": "How to Build a Low-Cost, Extended-Range RFID Skimmer",
+          "publisher": "第 15 屆 USENIX Security Symposium（2006）；以色列特拉維夫大學",
+          "version": "USENIX 公開全文 HTML 版",
+          "accessed_on": "2026-11-18",
+          "read_via": "本工作夾 fetch.sh，Mokaair-editorial/1.0 標頭下載（SX1 seq=8，HTTP 200，75627 位元組，sha256 前 16 碼 a9aac06659db248d），與前一筆請求間隔 1.2 秒以上；去標籤後逐節讀。",
+          "reading_scope": "摘要、1 Introduction（1.1–1.3）、2 System Design（2.1–2.7 只為確認天線與功率條件）、5 Results（5.1–5.3）、6 Conclusions。第 3、4 節與附錄（製作與調校步驟）未轉述。",
+          "locator": "摘要與 1.1（ISO 14443 系統設計工作距離 5–10 cm）；1.2.1（一般竊聽與『掃讀』不同：掃讀者必須夠近、產生夠強的磁場替卡片供電）；5.1（參考讀卡機與 8.5 cm 天線讀距 6.5 cm；加功率放大與約 40 cm 銅管環形天線，14.58 V 時讀距 25.2 cm；12 V 電池時 23.2 cm；負載調變邊帶比 13.56 MHz 載波低約 60–80 dB；電壓再加高未必更遠）；6（讀距為標稱的 3–5 倍；密碼控制只能防掃讀，不能防中繼攻擊）。",
+          "summary": "以色列大學團隊證明：設計上只在 5–10 公分工作的非接觸卡，用加大功率和約 40 公分直徑的環形天線，能在約 25 公分外讀到。關鍵是讀取方得先產生夠強的磁場『替卡片供電』，而卡片回話的邊帶比讀卡機的載波弱 60 到 80 分貝，很容易被淹沒。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "2006 年單一團隊、單一種卡的實驗；論文主題是攻擊裝置，製作、電路與調校內容一律不轉述，卡片只用距離與訊號強弱的結果。作者在世，不寫姓名；讀卡機模組品牌不寫。研究網：NET_G_TAU（單篇網）。 覆核 SVX1：卡片已刪去電壓、電池、天線直徑與調校相關敘述。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://static.usenix.org/events/sec06/tech/full_papers/kirschenbaum/kirschenbaum_html/kw-usenix06-forhtml.html"
         }
       ]
     },
@@ -8054,6 +8096,27 @@
       ]
     },
     {
+      "id": "SRC-0df436d92637011a",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6263776/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/s18113746",
+          "title": "A Survey of NFC Sensors Based on Energy Harvesting for IoT Applications",
+          "publisher": "Sensors 18(11):3746（2018）；西班牙塔拉戈納 Rovira i Virgili 大學電子、電機與自動控制工程系",
+          "version": "出版社開放取用版（CC BY 4.0；Europe PMC 完整 JATS XML 全文）",
+          "accessed_on": "2026-11-18",
+          "read_via": "本工作夾 fetch.sh，Mokaair-editorial/1.0 標頭下載（SX1 seq=4，HTTP 200，194749 位元組，sha256 前 16 碼 29b51d600f1e5a76），與前一筆請求間隔 1.2 秒以上；Europe PMC 全文端點；本機解析 JATS XML 後逐節讀（Europe PMC 搜尋 seq=3 取得 PMCID）。",
+          "reading_scope": "1 Introduction、2 NFC Energy Harvesting 全部（2.1.1 Forward Link、2.1.2 Reverse Link、2.2 Tag Antenna Design、2.3 Tag ICs with Energy Harvesting）；表 1、表 2 未逐列讀（只讀正文對表 2 的敘述）；第 3 節感測器應用與第 4 節結論未讀（醫療與感測應用，與本題無關）。",
+          "locator": "第 2 節首段（無電池模式下標籤完全被動，從讀取器的射頻場取能）；第 2 節（兩個環形天線間的電磁感應；13.56 MHz；106–424 kbit/s；接收天線接到標籤內部整流器取能；讀取器以 ASK 傳指令；標籤以被動負載調變改變天線阻抗回應；頻譜含載波與 12.712、14.408 MHz 兩個副載波邊帶，資料都在邊帶上，標籤不必自己發送載波）；2.1.1（14443 A 型用 100% ASK 與修正密勒碼，是為了最大化送電）；2.1.2（讀取器靈敏度通常比載波低 110 dB）；2.2（手機讀取器天線半徑約 2–2.5 cm，典型讀取距離約 1 cm；兩線圈大小相同時耦合最好；付款卡標準尺寸 85.60 × 53.98 mm）；2.3（能量收集晶片在 3.5–5 A/m 時典型可輸出約 5 mA、2–3 V；以兩支手機實驗，門檻場強約 1.1 A/m，場強一低於門檻輸出電壓就掉到零；負載約 900 µA）。",
+          "summary": "西班牙大學的綜述：NFC 靠兩個環形線圈的電磁感應，卡上的線圈接到整流器，把讀取器的交變磁場變成直流電；卡片回話不自己發射載波，而是切換天線的負載，讓資料出現在載波兩側的邊帶上，讀取器要能聽出比載波低約 110 dB 的訊號。能量收集晶片在每公尺 3.5–5 安培的場中大約能給出 5 毫安；實驗裡場強一掉到門檻以下，輸出電壓就直接歸零。手機讀取器的典型距離只有約 1 公分。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "主題是無電池感測器，不是票卡；能量收集晶片的電流數字是給外接電路用的輸出，不等於票卡晶片本身的耗電。1.1 A/m 門檻是特定晶片加特定負載（約 900 µA）的實驗結果，不能推到所有卡片。文中提到品牌與型號，本卡一律不寫。−110 dBc 是作者轉引的典型值。研究網：NET_C_URV（單篇網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6263776/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-0df743261ccf444c",
       "url": "https://ahf.nuclearmuseum.org/voices/oral-histories/general-leslie-grovess-interview-part-9/",
       "readings": [
@@ -10794,6 +10857,27 @@
       ]
     },
     {
+      "id": "SRC-11a9768c0864f49d",
+      "url": "https://docs.ampnuts.ru/eevblog.docs/HP_Agilent_Keysight/journals/1985-05.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://docs.ampnuts.ru/eevblog.docs/HP_Agilent_Keysight/journals/1985-05.pdf",
+          "title": "Hewlett-Packard Journal, Vol. 36 No. 5（May 1985）— History of ThinkJet Printhead Development 等",
+          "publisher": "美國一家電子儀器公司自辦的技術期刊（1985）；檔案為整本掃描 PDF，每頁有該公司 1949–1998 版權標記；託管於第三方電子工程文件鏡像站",
+          "version": "整期掃描 PDF（含 OCR 文字層）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 請求 seq=9，HTTP 200，9874561 位元組，sha256 前 16 碼 5ca2557570f8a0d4；網址取自搜尋結果（官方歷史中心只列目錄，未找到官方 PDF）；pdftotext 轉文字後讀。",
+          "reading_scope": "目錄頁；第一篇〈History of ThinkJet Printhead Development〉全文（Why Disposable?、Size and Ink Constraints、Printhead Design Refinement 各節）與側欄〈Mass-Producing Thermal Ink-Jet Printheads〉。其餘各篇（薄膜結構、噴孔板、p.32 墨水與紙張側欄）未全讀。",
+          "locator": "p.6–7 'Why Disposable?'（早期噴墨的遠端墨瓶與管路；1979 年一款把墨匣放上車架的壓電噴頭仍昂貴）；p.7 第一欄（噴頭成本須比當時壓電系統低約兩個數量級；液滴產生機構成本要與耗材墨水同一數量級，才可能整顆用完即丟）；p.7 'Size and Ink Constraints'（噴頭只有一立方英寸；至少印 500,000、最好 750,000 字元；平均每字 17 點，等於 850 萬到 1275 萬滴）；p.7 第二欄（加甘醇降低蒸發以免堵孔，但一般紙吸收太慢、印後十分鐘內一碰就糊，只好搭配噴墨專用紙；液滴小於 3×10^-7 g、點徑 0.025 mm）",
+          "summary": "1985 年一家公司技術期刊回顧第一款可拋式熱噴墨噴頭的開發：要讓噴墨打進低價市場，噴頭成本必須降到與它裝的墨水同一個數量級，於是乾脆把噴頭和墨水做成一顆、墨水用完整顆丟掉，省去管路與閥門。代價是一立方英寸裡要裝夠印 50 萬到 75 萬字的墨水，墨水還得不堵噴孔又能快乾，兩者衝突，當時只能指定專用紙。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "託管站不是原出版者，來源屬「原件掃描、第三方保存」；掃描頁腳的版權標記與目錄頁和官方歷史中心的目錄相符，但未逐位元比對官方檔。這是 1985 年單一機種的工程設計，不能代表今日所有墨匣（不少機種噴頭固定在機器上）；文中不談售價與利潤。文中點名的工程師一律不入稿，品牌與機種名不入稿。與 S001 同一公司但作者群與年代無重疊，覆核 SVX3 判定與 S001/S002 合併為同一機構研究網 NET_HPCO（同一法人自辦的出版品，非外部審查），封頂 2.0。 覆核另注意：檔案為第三方鏡像站上的掃描件，出處只能以頁腳版權標記與內容一致性佐證，未與原出版者檔案比對。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://docs.ampnuts.ru/eevblog.docs/HP_Agilent_Keysight/journals/1985-05.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-11b853f0849072b7",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9675800/fullTextXML",
       "readings": [
@@ -13242,6 +13326,27 @@
       ]
     },
     {
+      "id": "SRC-1577b99c4ff95b82",
+      "url": "https://www.vde-verlag.de/iec-normen/preview-pdf/info_iec62680-1-3%7Bed4.0%7Db.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.vde-verlag.de/iec-normen/preview-pdf/info_iec62680-1-3%7Bed4.0%7Db.pdf",
+          "title": "IEC 62680-1-3:2021 Edition 4.0 — preview（前言、引言、目錄）",
+          "publisher": "IEC TC 100／TA 18；VDE Verlag 公開預覽",
+          "version": "IEC 官方預覽 PDF（54 頁，只含前段）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 工具（Mokaair-editorial/1.0 標頭、請求間隔 1.2 秒）下載：SX4 seq=17，HTTP 200，2058388 位元組，sha256 前 16 碼 ee279877bb9a896f；pdftotext 轉文字，讀前言與引言。",
+          "reading_scope": "封面、FOREWORD、INTRODUCTION；目錄只掃過。",
+          "locator": "FOREWORD（由 IEC TC 100 技術領域 18 編製，正文由 USB-IF 準備）；INTRODUCTION（IEC 62680 系列依 IEC 與 USB-IF 的特別協議提交；本標準即 USB-IF 的 Type-C 規格 Release 2.0）",
+          "summary": "國際電工委員會的 IEC 62680-1-3 就是 USB-IF 的 Type-C 規格原文，依雙方特別協議提交成國際標準；歐盟與印度引用的都是這份標準。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "正文由 USB-IF 準備，與 SX4-S001 同為 NET_USBIF，不另計權重；只用來串起『業界規格 → 國際標準 → 各國法規』這條線。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.vde-verlag.de/iec-normen/preview-pdf/info_iec62680-1-3%7Bed4.0%7Db.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-157872845bda356b",
       "url": "https://newsroom.porsche.com/dam/jcr:93483663-c12b-43ca-98f5-b1b8b845e321/PAG_Taycan_Technology_PM_EN.pdf.PDF",
       "readings": [
@@ -13934,6 +14039,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://irds.ieee.org/images/files/pdf/2024/2024IRDS_MM_Tables.xlsx"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1662732bcb26bb88",
+      "url": "https://docs.kernel.org/driver-api/usb/typec.html",
+      "readings": [
+        {
+          "canonical_url": "https://docs.kernel.org/driver-api/usb/typec.html",
+          "title": "USB Type-C connector class",
+          "publisher": "Linux 核心文件（kernel.org，7.4.0-rc3 版文件樹）",
+          "version": "網頁全文",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 工具（Mokaair-editorial/1.0 標頭、請求間隔 1.2 秒）下載：SX4 seq=12，HTTP 200，65652 位元組，sha256 前 16 碼 b6c8ef7f95844502；去除 API 函式定義區塊後讀全部說明段落。",
+          "reading_scope": "Introduction、User space interface、Registering ports／partners／cables、Notifications、Multiplexer/DeMultiplexer Switches 全節。",
+          "locator": "Multiplexer/DeMultiplexer Switches（插頭可以正插或倒插，需要一個開關把正確的資料線對導到控制器；支援替代模式時另需切換腳位的 mux；兩者在軟體上分成 orientation『switch』與 mode『mux』，實體上常是同一顆）；Registering Cables（帶電子標記的線材插頭可回應 SOP′／SOP″ 查詢）",
+          "summary": "開源作業系統核心的 Type-C 說明文件寫得很直白：因為插頭可以正插或倒插，接頭後面需要一個切換開關，把對的那組資料線接到控制器；如果還要輸出影像等其他模式，就再需要一個重新分配腳位的切換器。軟體上把『方向』與『模式』分成兩個元件管理。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "談的是高速資料線與替代模式的切換；USB 2.0 資料線在插座內短接、不需要這個開關（見 SX4-S001 4.5.1.1），兩者並陳時要分清楚。研究網：NET_KERNEL（單篇網）。（SVX4 覆核：新增 K105-0420 引 User space interface 與 Registering Cables 節，均在作者 reading_scope 內。）",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://docs.kernel.org/driver-api/usb/typec.html"
         }
       ]
     },
@@ -14974,6 +15100,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/23000611/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1813e7f99101f9e0",
+      "url": "https://man7.org/linux/man-pages/man7/units.7.html",
+      "readings": [
+        {
+          "canonical_url": "https://man7.org/linux/man-pages/man7/units.7.html",
+          "title": "units(7) — decimal and binary prefixes（Linux man-pages）",
+          "publisher": "Linux man-pages 專案（man-pages 6.19，頁尾日期 2026-02-08）",
+          "version": "man7.org HTML 版，2026-09-09 由 man-pages-6.19 tarball 產生",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 單次請求（SX6 seq=7，HTTP 200，10497 位元組，sha256 前 16 碼 849df2c31aa91f57），Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；本機去除 HTML 標籤後全文讀完。",
+          "reading_scope": "全文：NAME、DESCRIPTION（Decimal prefixes 表、Binary prefixes 表、Discussion）、SEE ALSO、COLOPHON。",
+          "locator": "Binary prefixes 表（Ki 2^10 至 Yi 2^80）；Discussion 第 1 段（二進位字首出現前常見 k=1000、K=1024，與 b=bit、B=byte 並用；M 已經是大寫無法再區分）；第 2 段（記憶體與磁碟原本都是 2 的次方，後來磁碟容量變成任意數字，所有磁碟廠最後採 k=1000、M=1000k、G=1000M）；第 3 段（14k4 數據機的 k=1000、1.44 MB 磁片的 M=1024000；1998 年 IEC 核准二進位字首；今天 MB=1000000 B、MiB=1048576 B）；第 4 段（自由軟體程式正慢慢改；核心開機訊息「hda: 120064896 sectors (61473 MB) w/2048KiB Cache」中 MB 是十進位、KiB 是二進位）；SEE ALSO（BIPM SI 手冊連結，本研究即循此連結取得 SX6-S004）",
+          "summary": "Linux 系統手冊的 units(7) 頁說：二進位字首出現前，大家常用小寫 k 表示 1000、大寫 K 表示 1024，但 M 本來就是大寫，沒辦法再用大小寫分辨；磁碟容量後來變成任意數字，磁碟廠最後全採十進位。舊時代很亂：14.4k 數據機的 k 是 1000，1.44 MB 磁片的 M 卻是 1,024,000。今天手冊的規定是 MB = 1,000,000 位元組、MiB = 1,048,576 位元組，自由軟體正在慢慢改，核心開機訊息就同一行混用 MB 與 KiB。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "手冊頁是說明文件，不是調查；「all disk manufacturers settled」是作者概括。核心訊息是舉例，不代表現行核心的輸出格式。研究網 NET_MANPAGES（專案文件單篇網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://man7.org/linux/man-pages/man7/units.7.html"
         }
       ]
     },
@@ -17137,6 +17284,27 @@
       ]
     },
     {
+      "id": "SRC-1aefb53e938fcd0d",
+      "url": "https://laws.e-gov.go.jp/api/1/lawdata/337AC0000000119",
+      "readings": [
+        {
+          "canonical_url": "https://laws.e-gov.go.jp/api/1/lawdata/337AC0000000119",
+          "title": "住居表示に関する法律（昭和三十七年法律第百十九号）",
+          "publisher": "日本 e-Gov 法令檢索（デジタル庁）；法律本文",
+          "version": "e-Gov 法令 API v1 lawdata 現行條文 XML（含歷次附則）",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=1，HTTP 200，33350 位元組，sha256 前 16 碼 527c3c1347a6c528，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；e-Gov 法令 API 回傳 XML，本機去標籤後逐段全讀",
+          "reading_scope": "第一條至第十三條全文、本則附則 1–3、其後各次改正附則全讀。",
+          "locator": "第二條（街區方式／道路方式定義；街區＝以道路、鐵道軌道等恆久設施或河川水路區畫之地域）；第三條（市町村經議會議決、對市街地定區域並編號、告示）；第六條（公簿須使用）；第八條（町名與街區符號表示板、住居番號由建物所有者等表示）；第九條（住居表示台帳）；附則 2（「従前のならわし」造成不便之市街地應速實施）",
+          "summary": "1962 年（昭和 37 年）的法律規定住址可用兩種方式表示：以道路、鐵道、河川等圍起的「街區」編號再給建物編號的街區方式，或以道路名稱加住居番號的道路方式；由市町村經議會議決、只對市街地劃定區域實施。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "法律只定制度，未給實施數量或各地比例；條文用語「市街地」未定義面積門檻。公布年取自 XML 的 Year=37／PromulgateMonth=05／PromulgateDay=10 屬性。研究網 NET_LAW（單一法令文本）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://laws.e-gov.go.jp/api/1/lawdata/337AC0000000119"
+        }
+      ]
+    },
+    {
       "id": "SRC-1afb65e180e786c1",
       "url": "https://www.nature.com/articles/srep07104",
       "readings": [
@@ -17825,6 +17993,27 @@
       ]
     },
     {
+      "id": "SRC-1bd0bd22d82dd597",
+      "url": "https://www.sec.gov/Archives/edgar/data/47217/000004721724000075/hp103124exhibit991q424.htm",
+      "readings": [
+        {
+          "canonical_url": "https://www.sec.gov/Archives/edgar/data/47217/000004721724000075/hp103124exhibit991q424.htm",
+          "title": "Exhibit 99.1: HP Inc. Reports Fiscal 2024 Full Year and Fourth Quarter Results",
+          "publisher": "美國證券交易委員會 EDGAR（8-K 附件，2024-11-26）",
+          "version": "EDGAR 原始申報 HTML",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 請求 seq=6，HTTP 200，527496 位元組，sha256 前 16 碼 b6d471da72ba480d；網址取自搜尋結果；本機去標籤後讀。",
+          "reading_scope": "新聞稿正文第四季各部門段落；Segment/Business Unit Information 十二個月表（Net revenue 與 Earnings before taxes）。",
+          "locator": "十二個月表：Supplies 11,295（2023：11,452）、Commercial Printing 4,841、Consumer Printing 1,202、Printing 17,338；Printing earnings 3,290；Personal Systems 36,195、2,194",
+          "summary": "2024 財年的部門營收表，與 SX3-S001 年報中 2024 年欄完全一致（Supplies 11,295、Printing 17,338），用來交叉核對；耗材約占印表機部門營收 65%，連續兩年相近。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "未經查核的新聞稿附件，只作 S001 數字的交叉核對；其中有現任執行長發言，不引用、不點名。研究網 NET_HPCO（覆核合併）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.sec.gov/Archives/edgar/data/47217/000004721724000075/hp103124exhibit991q424.htm"
+        }
+      ]
+    },
+    {
       "id": "SRC-1bdaa3754025f46d",
       "url": "https://doi.org/10.2307/3062123",
       "readings": [
@@ -18381,6 +18570,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://companiesmarketcap.com/netflix/marketcap/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1d0385cc00ad431c",
+      "url": "https://arxiv.org/pdf/2407.17364v1",
+      "readings": [
+        {
+          "canonical_url": "arXiv:2407.17364v1 [cs.IT]（2024-07-24）",
+          "title": "Reliability on QR Codes and Reed-Solomon Codes",
+          "publisher": "arXiv 預印本；單一作者，地址為西班牙加那利群島（未經同儕審查）",
+          "version": "arXiv v1 PDF",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒）SX5 seq=7，HTTP 200，728903 位元組，sha256 前 16 碼 386a16b1a6663dac；本機 pdftotext -layout 轉文字後逐節讀。",
+          "reading_scope": "摘要、1、2.1–2.3（Reed-Solomon 理論與 GF(256) 實作）、3、3.1.1（版面、格式資訊、遮罩、版本 3-H 的兩區塊交錯）、4、4.1、4.2.1–4.2.3、表 3–6；5 結論略讀。圖 1–3 引自維基百科，只讀圖說。",
+          "locator": "3（建碼七步；表 3：版本 1 為 21×21，L/M/Q/H 可放 17/14/11/7 位元組；版本 2 為 25×25，32/26/20/14；版本 3 為 29×29，53/42/32/24；四等級 7/15/25/30%）；3.1.1（格式資訊 2 位元等級＋3 位元遮罩＋10 位元修正；8 種遮罩以 XOR 疊上；讀碼器不檢查遮罩是否最佳；版本 3-H 分兩塊 D1–D13、D14–D26，修正碼 E1–E22、E23–E44，排列順序 D1、D14、D2、D15……以便局部損壞時仍可修）；4（修正以位元組為單位、不是位元）；4.1（版本 1-Q 為 RS(26,13)，最多修 6 個位元組；把『…567』改成『…566』要動 8 個位元組，但挑最省的只需翻 24 個位元，佔 208 位元的 11.54%，以位元組計則為 30.77%）；4.2.1–4.2.3 與表 6（版本 1-L 只要翻 7 個位元就能變成另一段合法文字；M 9、Q 14、H 20 個，作者稱為推測）。",
+          "summary": "一篇西班牙的預印本整理了 QR Code 的修正原理，並示範：修正是以 8 位元的碼字為單位；較大的碼會把資料分塊交錯排，讓局部損壞分散到不同塊；但如果有人刻意挑格子，只要翻很少幾格（版本 1、L 等級只要 7 格），就能讓碼讀成另一段同樣「合法」的文字。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "單一作者預印本、未經同儕審查；版面圖取自維基百科；文中先說有 8 種遮罩、後又寫「測試現有的七種組合」，前後不一致，卡片只用 8 種；表 6 的固定位元數是作者在版本 1 位元組模式下的經驗結果與推測。作者姓名不寫。研究網：NET_ES_PREPRINT（單篇網；與其他來源無合著），預印本一律折 0.75。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://arxiv.org/pdf/2407.17364v1"
         }
       ]
     },
@@ -19210,6 +19420,27 @@
           },
           "origin": "wave64-physics-20261111",
           "original_url": "https://cambridge.org/core/services/aop-cambridge-core/content/view/S0022143021000976"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1e733ea58bec3f60",
+      "url": "https://www.usb.org/sites/default/files/USB%20Type-C%20Spec%20R2.0%20-%20August%202019.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.usb.org/sites/default/files/USB%20Type-C%20Spec%20R2.0%20-%20August%202019.pdf",
+          "title": "Universal Serial Bus Type-C Cable and Connector Specification, Release 2.0",
+          "publisher": "USB 3.0 Promoter Group／USB Implementers Forum（USB-IF），2019 年 8 月（Release 1.0 為 2014-08-11）",
+          "version": "USB-IF 官方網站公開 PDF（373 頁）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 工具（Mokaair-editorial/1.0 標頭、請求間隔 1.2 秒）下載：SX4 seq=1，HTTP 200，10980886 位元組，sha256 前 16 碼 87d15160bf8bd251；pdftotext -layout 轉成文字後逐節讀。",
+          "reading_scope": "版本沿革表；第 1 章 Introduction（1.1 Purpose、1.2 Scope）；第 2 章 Overview 全部（2.1 介面圖說、2.2 插座／插頭／線材種類、2.3 Configuration Process 及 2.3.1–2.3.3）；3.2.3 Pin Assignments 與表 3-4；3.2 中 USB 2.0 Type-C 插座與插頭的接點簡化段；3.8.1 機械要求（插拔力、3.8.1.3 耐久）；4.5.1.1 Plug Flip-ability 與圖 4-3 說明段；4.9 Electronically Marked Cables；規格工作組貢獻者名單（用於合著檢查）。第 3 章訊號完整性、附錄 A–F 未逐節讀。",
+          "locator": "版本沿革（1.0 2014-08-11 … 2.0 2019-08）；1.1（三項原則之一：minimizing user confusion for plug and cable orientation）；2.1（插座 24 個訊號腳位、兩組 USB 資料位置讓訊號與插入方向無關；插頭只有一條 CC 經線材接通，另一個 CC 改作 VCONN；線材只有一組 D+/D−；純供電插頭只有 9 個接點）；2.2（Full-Featured、USB 2.0 Type-C 線等種類；Full-Featured 線一律要電子標記，USB 2.0 Type-C 線可選）；2.3.2（插頭可以兩個方向插入，CC 腳用來偵測方向）；2.3.3（Type-C 的機械結構不再決定主從，改由 CC 腳建立）；表 3-4（A1 GND 對 B12 GND、A4 VBUS 對 B9 VBUS、A5 CC1 對 B5 CC2、A6/A7 Dp1/Dn1 對 B6/B7 Dp2/Dn2…上下兩排鏡像）；3.8.1.3（耐久至少 10,000 次插拔）；4.5.1.1（USB 2.0 靠插座內把兩個 D+、兩個 D− 短接；SuperSpeed 單通道需要開關切換）；圖 4-3 說明段（Source 看哪一個 CC 腳感到 Rd 下拉來判斷方向，再開 VBUS）；3.2.3 前段 Rd = 5.1 kΩ ± 20%；4.9（eMarker 回報線材電流能力與性能）",
+          "summary": "USB Type-C 的官方規格。它開宗明義把「減少使用者對插頭與線材方向的困惑」列為設計原則；插座有 24 個腳位，上下兩排在表 3-4 裡成鏡像排列，插頭可以兩面插入，方向靠兩個 CC 腳中哪一個接到對方的下拉電阻來判斷。USB 2.0 資料線甚至不需要切換：插座裡把重複的兩組 D+、D− 直接短接；高速通道才需要開關。規格同時定義了只有 USB 2.0 能力的 Type-C 線、只有 9 個接點的純供電插頭，並規定只有全功能線一定要帶電子標記晶片。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是規格文件，寫的是「應該怎麼做」，不是市售產品實測；不能據此說市面線材都照做。規格只描述機制，沒有給「為什麼改成兩面插」的成本分析。研究網：NET_USBIF（USB-IF 及其發起廠商群；貢獻者名單與 USB 2.0 規格致謝名單有重複個人，與 Micro-USB 規格亦有重複個人，三份規格與 SX4-S002–S004、S011 併為同一網，封頂 2.0）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.usb.org/sites/default/files/USB%20Type-C%20Spec%20R2.0%20-%20August%202019.pdf"
         }
       ]
     },
@@ -21391,6 +21622,27 @@
       ]
     },
     {
+      "id": "SRC-215c20612cf29096",
+      "url": "https://www.city.funabashi.lg.jp/jigyou/kenchiku_kaihatsu/001/p042147_d/fil/jisshikijyun.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.city.funabashi.lg.jp/jigyou/kenchiku_kaihatsu/001/p042147_d/fil/jisshikijyun.pdf",
+          "title": "船橋市住居表示実施基準",
+          "publisher": "千葉縣船橋市（市役所公開 PDF）",
+          "version": "令和 3 年 4 月 1 日施行、令和 8 年 8 月 1 日改正附則版",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=3，HTTP 200，264048 位元組，sha256 前 16 碼 dc10e2038169675a，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；船橋市官方 PDF，pdftotext -layout 轉文字後逐頁全讀",
+          "reading_scope": "第 1（町區域合理化、町名、街區割、街區符號、住居番號、表示方式、團地與中高層特例、住居表示台帳）與第 2（表示板基準）、附則，全 7 頁。",
+          "locator": "第 1-1(2)②（町 100,000–300,000 m²）；第 1-3(5)（1 街區 3,000–5,000 m²、約 30 戶）；第 1-4（街區符號以距 JR 船橋站最近街區為起點、蛇行式）；第 1-5(1)①–④（從離站近的街區角起右回、10–15 m 一段 frontage 編基礎番號；主要出入口所接處的基礎番號即住居番號；恰在兩號交界取小號；不足半段併入前段）；第 1-9（台帳 1/500 地圖）；第 2-2（街區表示板貼於街區角附近電柱等、下緣離地約 1.6 m、66 cm × 12 cm）；第 2-3（住居番號表示板約 1.6 m 高、6 × 12 cm）",
+          "summary": "一個市的住居表示實施基準：先用道路等切出 3,000–5,000 m² 左右、約 30 戶的街區，從靠近車站的街區開始蛇行編號；每個街區再從角落順時針每 10–15 m 切一段編基礎番號，房子的號碼取決於主要出入口碰到哪一段。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只代表船橋市的基準（起點為 JR 船橋站、frontage 10–15 m）；其他市的起點與間隔不同（名古屋 10 m、起點巾下橋），不可當全國公式。研究網 NET_FUNABASHI。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.city.funabashi.lg.jp/jigyou/kenchiku_kaihatsu/001/p042147_d/fil/jisshikijyun.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-216909c6460491d9",
       "url": "https://gpm.nasa.gov/resources/students-and-educators/the-shape-of-a-raindrop",
       "readings": [
@@ -22768,6 +23020,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://support.apple.com/en-us/102381"
+        }
+      ]
+    },
+    {
+      "id": "SRC-237a8549f0c33cad",
+      "url": "https://dosobo-access.wbdg.org/aba-chapters/figure/707-6-input/",
+      "readings": [
+        {
+          "canonical_url": "https://dosobo-access.wbdg.org/aba-chapters/figure/707-6-input/",
+          "title": "ABA Accessibility Standards, 707.6 Input（Automatic Teller Machines and Fare Machines）",
+          "publisher": "美國《建築障礙法》無障礙標準第 707 節（提款機與售票機）條文；美國國家建築科學研究院 WBDG 網站之聯邦條文頁",
+          "version": "條文頁全文（短頁）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 依序第 6 筆請求（SX7 seq=6，HTTP 200，2954 位元組，sha256 前 16 碼 f3b5551778f3ec9a），Mokaair-editorial/1.0 標頭、間隔 1.2 秒；去除 HTML 標籤後全讀。",
+          "reading_scope": "707.6、707.6.1、707.6.2、707.6.3、707.6.3.1、707.6.3.2 全部條文（頁面只有這一節）。",
+          "locator": "707.6.1（每項功能至少一個可觸覺辨別的輸入；非螢幕區的鍵面須高於周圍表面）；707.6.2（數字鍵採 12 鍵遞增或遞減的電話鍵盤排列，5 須觸覺上不同）；707.6.3.2（功能鍵觸覺符號：確認為凸起圓圈、更正為凸起左箭頭、取消為凸起 X、加值為加號、減值為減號）",
+          "summary": "美國提款機與售票機的無障礙條文同樣要求數字鍵的 5 要摸得出來，1 在上或 7 在上都可；功能鍵則各有規定的凸起符號，例如確認是圓圈、取消是 X。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是 ABA（聯邦設施）條文頁；2010 年 ADA 標準的 707.6.2 有相同文字，但本次沒有讀到 ada.gov 或 access-board.gov 原頁，口播只說『美國的無障礙標準』。頁面沒有附 advisory 說明與圖。研究網 NET_USAB。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://dosobo-access.wbdg.org/aba-chapters/figure/707-6-input/"
         }
       ]
     },
@@ -24797,6 +25070,21 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.pcworld.com/article/424209/happy-birthday-usb-the-standard-turns-20-and-proud-inventor-ajay-bhatt-tells-all.html"
+        },
+        {
+          "canonical_url": "https://www.pcworld.com/article/424209/happy-birthday-usb-the-standard-turns-20-and-proud-inventor-ajay-bhatt-tells-all.html",
+          "title": "Happy birthday USB: The standard turns 20, and proud inventor tells all",
+          "publisher": "PCWorld（美國科技媒體），2015-11-16，新聞專訪",
+          "version": "網頁全文",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 工具（Mokaair-editorial/1.0 標頭、請求間隔 1.2 秒）下載：SX4 seq=10，HTTP 200，301529 位元組，sha256 前 16 碼 f142c511c4b8796f；本機去除指令碼後擷取 article 內全部段落讀。",
+          "reading_scope": "全文：起源（家中印表機問題）、業界合縱、與另一種序列匯流排的差異、早期作業系統支援、『Why USB wasn’t reversible』整節、後續接頭演進。",
+          "locator": "起源段（90 年代印表機走平行埠，還有序列、PS/2、SCSI 等線）；『25-cent silicon』段（把複雜度放在 PC、讓周邊便宜）；『Why USB wasn’t reversible』節（要打敗的對象是 PS/2；曾短暫考慮完全可翻轉；『四個腳位、晶片上很少的邏輯閘、四條線』；『要能翻轉就要兩倍的線、兩倍成本、更多電路，成本當時不會被接受』；事後說『我們搞砸了』）",
+          "summary": "科技媒體在 USB 二十週年專訪原始英特爾團隊的帶頭工程師。他說當時要打敗的是 PS/2，團隊曾短暫考慮過完全可翻轉的接頭，但目標是四個腳位、四條線、晶片上用很少的邏輯閘；要能翻轉就得兩倍的線和更多電路，成本不會被接受。他也說周邊要能用『二十五美分的晶片』，所以把複雜度放在電腦端。二十年後他承認這個決定是錯的。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是當事人二十年後的口述，經記者轉述，不是當年的設計文件；『兩倍的線』是他的說法，Type-C 的實際作法（插座內短接、CC 偵測）顯示翻轉不一定需要兩倍的線，本卡只寫『當事人這樣說』。受訪者在世，稿中不具名。研究網：NET_PCW（單篇網；記者非任何規格文件作者）。（SVX4 覆核：本文標題原文含受訪者姓名，此處省略；網址本身含姓名，稿中與畫面不得出現。NET_PCW 封頂下修為 1.25。）",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.pcworld.com/article/424209/happy-birthday-usb-the-standard-turns-20-and-proud-inventor-ajay-bhatt-tells-all.html"
         }
       ]
     },
@@ -26376,6 +26664,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.daimlertruck.com/en/newsroom/pressrelease/mercedes-benz-trucks-celebrates-world-premiere-of-the-battery-electric-long-haul-truck-eactros-600-52428265"
+        }
+      ]
+    },
+    {
+      "id": "SRC-28a31e3cc8a93f3e",
+      "url": "https://www.post.japanpost.jp/zipcode/zipmanual/p06.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.post.japanpost.jp/zipcode/zipmanual/p06.html",
+          "title": "郵便番号・バーコードマニュアル：郵便番号による郵便物処理",
+          "publisher": "日本郵便株式会社",
+          "version": "HTML 版手冊頁 p06",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=14，HTTP 200，41468 位元組，sha256 前 16 碼 fa28111f9482ff9e，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；日本郵便官方網頁，本機去標籤後逐段全讀",
+          "reading_scope": "本頁全讀（含圖 3 兩例文字）。",
+          "locator": "本文（引受局的區分機同時讀郵遞區號與收件地址，以透明墨水印上代表整個地址的條碼，之後依條碼處理）；圖 3（住居表示實施地域例 154-0023 3-16-4-205；未實施地域例 川越市大字小室 22-1 郵政団地 A棟308號室 → 350-1106 22-1-A-308）；末段（配達局讀條碼、機械化到把郵件排成配達順序；尚無條碼者由配達局印）",
+          "summary": "郵局的機器同時讀郵遞區號和地址，用肉眼看不到的墨水印上條碼；條碼只抽出地址裡的數字（住居表示的「3-16-4」或地番的「22-1」都一樣處理），配達局再用它把郵件排成投遞順序。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "手冊沒說排序後郵差在現場如何找門。研究網 NET_JPPOST。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.post.japanpost.jp/zipcode/zipmanual/p06.html"
         }
       ]
     },
@@ -28986,6 +29295,27 @@
       ]
     },
     {
+      "id": "SRC-2cbd67ecea76b50f",
+      "url": "https://www.itu.int/rec/dologin_pub.asp?lang=e&id=T-REC-L.1000-201106-S!!PDF-E&type=items",
+      "readings": [
+        {
+          "canonical_url": "https://www.itu.int/rec/T-REC-L.1000-201106-S",
+          "title": "Recommendation ITU-T L.1000 (06/2011): Universal power adapter and charger solution for mobile terminals and other hand-held ICT devices",
+          "publisher": "國際電信聯盟電信標準化部門（ITU-T）第 5 研究組；2011-06-13 核准（第 2 版，已被 2019 版取代）",
+          "version": "ITU 官方 PDF（58 頁）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 工具（Mokaair-editorial/1.0 標頭、請求間隔 1.2 秒）下載：SX4 seq=20，HTTP 200，336197 位元組，sha256 前 16 碼 855db164605ab89b；下載連結取自 ITU 建議書頁面（seq=19，HTTP 200，25162 位元組）上的 href；pdftotext 轉文字讀。",
+          "reading_scope": "Summary、History、Introduction、第 3–7 章、Annex B（B.1 三元件配置、B.2.1 目標方案、B.2.2 過渡方案、B.2.3 共同特性）；附錄只掃標題。",
+          "locator": "History（1.0 2010-03-09、2.0 2011-06-13）；Introduction（估計可省下最多 5 萬噸重複的充電器；約 20 億個充電器在用，不打算立刻汰換）；Annex B.1（充電器輸出統一為 USB Standard-A，可充電也可傳資料）；B.2.1（目標方案：可拆的 Std-A 對 Micro-B 線、750–1500 mA、無載耗電低於 0.03 W；發布後三年為目標）；B.2.2（過渡方案：允許另一端是專屬接頭，可用轉接頭）",
+          "summary": "聯合國的電信標準機構在 2011 年版建議書裡，把『充電器一律做 USB Standard-A 輸出、配一條 Std-A 對 Micro-B 的可拆線』定為通用充電目標，估計可省下最多五萬噸重複的充電器；但它同時承認全球約有二十億個充電器在用，因此另開『過渡方案』，允許線的另一端暫時是各家專屬接頭。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "本卡讀的是已被取代的 2011 版；2019 現行版未讀，不能說 ITU 現在仍建議 Micro-B。五萬噸是建議書的估計。研究網：NET_ITU（單篇網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.itu.int/rec/dologin_pub.asp?lang=e&id=T-REC-L.1000-201106-S!!PDF-E&type=items"
+        }
+      ]
+    },
+    {
       "id": "SRC-2cecfc839e7231f9",
       "url": "https://www.unicode.org/faq/casemap_charprop.html",
       "readings": [
@@ -30646,6 +30976,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "nature-20261101",
           "original_url": "https://oceanservice.noaa.gov/education/tutorial_currents/03coastal1.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2f45b25968db5461",
+      "url": "https://arxiv.org/pdf/2503.13458v1",
+      "readings": [
+        {
+          "canonical_url": "arXiv:2503.13458v1（2025）",
+          "title": "Dueling QR Codes: The Hyding of Dr. Jeckyl",
+          "publisher": "美國阿拉巴馬州亨茨維爾一家國防科技顧問公司的兩位研究人員（預印本）",
+          "version": "arXiv v1 PDF",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒）SX5 seq=21，HTTP 200，684620 位元組，sha256 前 16 碼 d88064ab1fab440e；本機 pdftotext 轉文字後全文讀（392 行）。",
+          "reading_scope": "摘要、Introduction、方法段與圖 3 說明、限制段（scanning inconsistency）、Summary and Future Work、附錄虛擬碼（功能圖樣判斷）。",
+          "locator": "方法段（讀碼器先用定位方框找到碼、依定時圖樣建立取樣格網、再取每格中心附近的點；把資料格切成左右兩半各放一張碼的內容，碼往左傾時取樣點落在左半、往右傾落在右半；定位、定時、格式區保留不動）；摘要（9–11 像素的格子大小下，以標準讀碼器在直、橫、斜三種傾斜都讀出兩段不同內容）；限制段（正對著拍時取樣點落在格子交界，結果不穩定）。",
+          "summary": "一份預印本把每一格資料切成兩半、各放不同內容，只保留方框和定時線等結構格不動：碼稍微往左或往右傾，讀碼器取樣的格子中心就落在不同半邊，讀出兩段不同但都合法的內容。這反過來說明讀碼器每格只看中心附近一點。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "企業研究人員的預印本、實驗規模小（數組示範），沒有給成功率統計；文中提到的網址與惡意程式測試字串不轉述。它說讀碼器『依定時圖樣建立格網』是引標準的一般流程，與 SX5-S005 那套程式的偵測檔不讀定時線並不一致，卡片並陳。作者姓名不寫。研究網：NET_PEOPLETEC（單篇網），折 0.75。 覆核 SVX5：論文自稱是一種 attack 手法；卡片改為只講概念（讀碼器只在每格中心附近取樣，所以可能被做成隨角度讀出不同內容），不描述切格、保留哪些結構、格子像素大小等製作細節。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://arxiv.org/pdf/2503.13458v1"
         }
       ]
     },
@@ -32405,6 +32756,27 @@
       ]
     },
     {
+      "id": "SRC-3186f8a3546fc3cd",
+      "url": "https://www.etsi.org/deliver/etsi_etr/300_399/345/01_60/etr_345e01p.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.etsi.org/deliver/etsi_etr/300_399/345/01_60/etr_345e01p.pdf",
+          "title": "ETSI ETR 345 (January 1997) Human Factors (HF); Characteristics of telephone keypads and keyboards; Requirements of elderly and disabled people",
+          "publisher": "歐洲電信標準協會（ETSI）人因技術委員會（TC HF）；技術報告，1997 年 1 月第一版",
+          "version": "ETSI 官方免費下載 PDF 全文",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 依序第 4 筆請求（SX7 seq=4，HTTP 200，48272 位元組，sha256 前 16 碼 c40e1a9d6970b3ee），Mokaair-editorial/1.0 標頭、間隔 1.2 秒；pdftotext -layout 抽全文，第 2–4 章與參考書目逐節讀。",
+          "reading_scope": "封面、引言、2 參考、3 定義與縮寫、4 建議全部小節（4.1 鍵盤排列至 4.11 觸覺回饋）、參考書目、文件歷史。",
+          "locator": "引言（丹麥教育與溝通輔具中心與身障者團體合作研究，含 54 名不同程度身障者參與的使用者小組測試；屬 TIDE HEART 計畫）；4 前言段（部分建議由高齡與身障使用者的使用者小組測試推得，其餘取自北歐設計準則、ETR 116、ETR 166、ISO 9241-4）；4.1（電話數字鍵盤應符合 ITU-T E.161、用 3×4 十二鍵）；4.3（鍵距 19 ± 1 mm）；4.6（內凹鍵帽有助手指找到中心；5 鍵上的凸起『點』幫助盲人與視障者找到數字鍵）；參考書目（ISO 1092『加法機與計算機──十鍵鍵盤的數字區』、ISO 9995 八部）",
+          "summary": "ETSI 在 1997 年替高齡與身障使用者整理電話鍵盤建議：數字鍵要照 ITU 的 3×4 排列，鍵帽最好微微內凹讓手指找到中心，5 上的小凸點能幫看不見的人找到整片數字鍵。參考書目裡把計算機的十鍵數字區列為另一份 ISO 標準（ISO 1092），和電話排列分開。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "技術報告（ETR）是建議性文件；使用者小組測試有 54 名身障者參與（引言），但測試方法與各項建議的數據本文沒有細列。ISO 1092 只出現在參考書目，本文沒有說它規定的排列是哪一種，不能據此說『計算機 7 在上是 ISO 1092 規定的』。研究網 NET_ETSI。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.etsi.org/deliver/etsi_etr/300_399/345/01_60/etr_345e01p.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-318b7bdd95b9c65b",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12519851/fullTextXML",
       "readings": [
@@ -32965,6 +33337,27 @@
           },
           "origin": "wave78-life-20261113",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9833599/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-32526c21fda96042",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-98.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.6028/NIST.SP.800-98",
+          "title": "Guidelines for Securing Radio Frequency Identification (RFID) Systems（NIST Special Publication 800-98）",
+          "publisher": "美國國家標準與技術研究院（NIST），2007 年 4 月",
+          "version": "美國政府出版品，NIST 官方 PDF（154 頁）",
+          "accessed_on": "2026-11-18",
+          "read_via": "本工作夾 fetch.sh，Mokaair-editorial/1.0 標頭下載（SX1 seq=1，HTTP 200，1389204 位元組，sha256 前 16 碼 94a4034079bdc47d），與前一筆請求間隔 1.2 秒以上；pdftotext -layout 轉文字後逐節讀。",
+          "reading_scope": "第 2 節 RFID Technology 的 2.3 RF Subsystem 全部（2.3.1.1–2.3.1.5 標籤特性、2.3.2.1 讀取器輸出、2.3.3.3 訊號傳播距離）含註 4–19；第 3 節的 3.1.7 Automated Payment、3.3.1 距離、3.3.2 交易速度、3.3.3 網路連線與資料存放。其他章節（風險、控制措施、案例）只瀏覽目錄，未逐節讀。",
+          "locator": "2.3.1.2 Power Source（標籤可從讀取器發出的電磁波感應出電流取得電力；支援密碼與驗證的標籤需要更多能量；四種供電類型）；2.3.1.2 被動標籤段（回覆訊號只有讀取器訊號功率的一小部分，限制距離與運算複雜度）；註 5（LF/HF 被動標籤通常是感應耦合，不靠背向散射）；註 7（ISO/IEC 14443 HF 系統約 7–15 cm，遠小於 10–100 m 的 HF 波長，屬近場）；2.3.3.3（前向通道遠強於回程通道；六種距離定義）與其後段落（典型 7–15 cm；研究者以可攜低功率裝置在至少 25 cm 讀取；以固定天線竊聽距離可達 15 m）；註 16（操作距離取決於讀取器磁場強度）；3.1.7（線上系統最常見，資料在中央系統；離線系統要卡片自己保存「電子現金」並處理扣款與加值，卡片較複雜也較貴，因此相對少見）；3.3.2（安全機制會增加交易延遲）；3.3.3（資料存在卡上時須保護完整性）。",
+          "summary": "美國標準機構的 RFID 安全指南：不帶電池的被動標籤，電力來自讀取器的電磁波在標籤上感應出的電流，回覆訊號只有讀取器訊號功率的一小部分；高頻非接觸卡在近場工作，典型距離 7–15 公分，但有人在至少 25 公分讀到、以固定天線在 15 公尺外竊聽到。自動收費系統分線上與離線兩種：離線系統要卡片自己存電子錢並處理扣款，比較複雜昂貴。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "2007 年出版，技術描述未必反映現行產品；25 cm 與 15 m 兩個數字是指南轉引其他研究（註 17、18），不是 NIST 本文自己的實驗。7–15 cm 是「approximate」與「typical」範圍，標準本身並未規定公分數（見 SX1-S002）。3.1.7 寫「線上系統最常見」是 2007 年美國的概況，不能套到台灣；台灣的做法另見 SX1-S005。研究網：NET_A_NIST（美國政府機構，單一研究網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-98.pdf"
         }
       ]
     },
@@ -35361,6 +35754,27 @@
       ]
     },
     {
+      "id": "SRC-35c4de20c6108afe",
+      "url": "https://www.post.japanpost.jp/service/search/zipcode/zipmanual/p17.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.post.japanpost.jp/service/search/zipcode/zipmanual/p17.html",
+          "title": "郵便番号・バーコードマニュアル：バーコードに必要な文字情報の抜き出し法(1/9)",
+          "publisher": "日本郵便株式会社",
+          "version": "HTML 版手冊頁 p17",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=11，HTTP 200，37660 位元組，sha256 前 16 碼 d07e9f7c36fef7f0，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；日本郵便官方網頁，本機去標籤後逐段全讀",
+          "reading_scope": "本頁全讀。",
+          "locator": "處理概要（住所分為到町域名的 A 與之後的 B；A 給郵遞區號、B 抽出住所表示番號；例 東京都千代田區霞が関1丁目3番2號 郵便プラザ503室 → 1000013 + 1-3-2-503；不足 13 位以 CC4 補足）",
+          "summary": "條碼的地址部分只留「1-3-2-503」這種數字串，郵遞區號負責到町域為止。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "研究網 NET_JPPOST（與 S010、S011 同機構）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.post.japanpost.jp/service/search/zipcode/zipmanual/p17.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-35c506353711f9bd",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC125199042/fullTextXML",
       "readings": [
@@ -35689,6 +36103,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.etymonline.com/word/port"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3656987ca6f3a168",
+      "url": "https://www.cas.go.jp/jp/seisaku/digital_gyozaikaikaku/kyotsu13/jyusho_shiryou.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.cas.go.jp/jp/seisaku/digital_gyozaikaikaku/kyotsu13/jyusho_shiryou.pdf",
+          "title": "住所・所在地情報管理システムに係る検討状況（中間報告）",
+          "publisher": "デジタル庁 デジタル社会共通機能G ベース・レジストリ担当（內閣官房網站刊載）",
+          "version": "2025 年 12 月 PDF",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=16，HTTP 200，210653 位元組，sha256 前 16 碼 8d5ea6bb3853975f，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；內閣官房官方 PDF，pdftotext -layout 轉文字後逐頁全讀",
+          "reading_scope": "全文 2 頁。",
+          "locator": "1 概要（市區町村依住居表示法管理的街區符號、住居番號為アドレス・ベース・レジストリ重要組成；多數市區町村仍以紙本管理台帳）；2 檢討經緯；3 今後預定（2026 年 4 月起 pilot 與紙台帳電子化、2027 年 6 月定方針）",
+          "summary": "數位廳 2025 年報告：街區符號與住居番號是國家地址資料庫的重要部分，但很多市區町村還用紙本台帳管理，國家要先做試辦系統。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "計畫性文件，未來時程可能變動。研究網 NET_DIGITAL。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.cas.go.jp/jp/seisaku/digital_gyozaikaikaku/kyotsu13/jyusho_shiryou.pdf"
         }
       ]
     },
@@ -36973,6 +37408,27 @@
       ]
     },
     {
+      "id": "SRC-382480d102958028",
+      "url": "https://cdn.jsdelivr.net/npm/@zxing/core@0.3.0-dev.736e254/src/core/qrcode/detector/FinderPatternFinder.ts",
+      "readings": [
+        {
+          "canonical_url": "npm @zxing/core@0.3.0-dev.736e254 /src/core/qrcode/detector/FinderPatternFinder.ts",
+          "title": "FinderPatternFinder.ts（ZXing 定位方框搜尋）",
+          "publisher": "開源條碼函式庫 ZXing（Apache 2.0 授權，原 Java 版的 TypeScript 移植，npm 套件 @zxing/core 0.3.0-dev.736e254，檔頭 Copyright 2007 ZXing authors）",
+          "version": "原始碼（套件檔案清單由 jsDelivr 公開 API seq=9 取得，HTTP 200，13808 位元組，sha256 前 16 碼 b09ad46cfd7fdc9d；網址取自清單，不是猜的）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒）SX5 seq=8，HTTP 200，29765 位元組，sha256 前 16 碼 4cd567661a77278d；純文字原始碼，本機逐行讀註解與主要函式。",
+          "reading_scope": "全檔：類別常數、find 主迴圈、foundPatternCross、crossCheckDiagonal／Vertical／Horizontal、handlePossibleCenter、haveMultiplyConfirmedCenters 的註解與判斷式。",
+          "locator": "第 82–90 行（逐列掃描、追蹤 1:1:3:1:1 的五段計數；最少每 3 列取樣一次）；foundPatternCross（第 196–218 行：五段總寬至少 7、模組寬＝總寬/7、每段與理想值差距小於 50%，中段為 3 倍）；handlePossibleCenter（先垂直交叉驗證、再水平、純條碼模式下再加對角驗證；同一位置被多次找到才算數，CENTER_QUORUM＝2）；crossCheckHorizontal 註（大小與原先差太多視為誤認）。",
+          "summary": "這套程式找方框的方法是：一列一列掃，尋找黑白黑白黑寬度約 1:1:3:1:1 的一段，允許每段誤差小於一半；找到後再直的、橫的（必要時斜的）各掃一次確認，同一個位置被多次確認才當成方框中心。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是一套廣泛使用的開源讀碼程式的實作，不是國際標準本身；其他讀碼程式（含手機內建）不一定照同樣做法。只讀這一版移植的原始碼，未對照原 Java 版。程式作者姓名不寫。研究網：NET_ZXING（S004–S009 同網，封頂 2.0）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://cdn.jsdelivr.net/npm/@zxing/core@0.3.0-dev.736e254/src/core/qrcode/detector/FinderPatternFinder.ts"
+        }
+      ]
+    },
+    {
       "id": "SRC-382a0aa46bd9fa2e",
       "url": "https://archive.org/details/bstj39-4-995",
       "readings": [
@@ -37268,6 +37724,27 @@
           },
           "origin": "wave70-life-20261111",
           "original_url": "https://dl.tufts.edu/downloads/pn89dk08v?filename=3197xz596.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-38df2cf57fcd95d0",
+      "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/backup-and-storage/disk-space-problems-on-ntfs-volumes",
+      "readings": [
+        {
+          "canonical_url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/backup-and-storage/disk-space-problems-on-ntfs-volumes",
+          "title": "Locate and correct disk space problems on NTFS volumes（原 KB 814594）",
+          "publisher": "一家作業系統公司的官方疑難排解文件",
+          "version": "Learn 網頁版；Applies to: Windows Server 2003（原知識庫文章）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 單次請求（SX6 seq=21，HTTP 200，63644 位元組，sha256 前 16 碼 545d7557883c7c48），Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；本機去除 HTML 標籤後全文讀完。",
+          "reading_scope": "全文：Summary、Cluster size is too large（含 chkdsk 範例輸出與註記）、權限與隱藏檔、路徑過長、無效檔名、MFT expansion、MFT fragmentation 範例、Alternate data streams、NTFS 損毀、其他 NTFS 功能、結論段。",
+          "locator": "Summary（NTFS 的許多功能會讓可用空間「看起來」遺失或回報錯誤，列 8 種原因）；Cluster size 節（檔案至少占一個叢集，之後以叢集倍數成長；叢集大小在格式化時依分割區大小決定）；chkdsk 範例（4096543 KB 總容量、2906360 KB 使用者檔案、6344 KB 索引、49379 KB 系統使用（含 MFT 等中繼檔）、22544 KB 記錄檔、1134460 KB 可用、每個配置單位 4096 位元組、1024135 個配置單位）；Note（chkdsk 報的 KB 要乘 1024 才是位元組，例 2906360×1024＝2,976,112,640）；MFT 節（格式化時建立，初始約 16 KB，每個檔案記錄段固定 1024 位元組，刪檔後記錄只標記可重用、不會縮回）；ADS 節（檔案總管與 dir 不把替代資料流算進檔案大小）",
+          "summary": "作業系統公司的疑難排解文件用一個 4 GB 磁碟區的檢查結果說明：除了使用者檔案，格式化後的檔案系統還有索引、系統中繼檔（主檔案表等）約 49 MB、記錄檔約 22 MB；每個檔案至少占一整個 4096 位元組的叢集。文件特別註明：工具報的 KB 要乘以 1024 才是位元組數。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "文件適用的是 Windows Server 2003 時代的 NTFS，範例是一個 4 GB 磁碟區，數字只是示範，不代表現在大容量碟的比例；文件沒有直接說明檔案總管的 GB 用哪一套，只證明它自家工具的 KB 是 1024 位元組。研究網 NET_MS（機構頁）。 覆核者：chkdsk 範例各項加總比總容量多 22,544 KB（剛好等於記錄檔），記錄檔應已含在「系統使用」內，卡已改寫。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/backup-and-storage/disk-space-problems-on-ntfs-volumes"
         }
       ]
     },
@@ -41075,6 +41552,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.opapisa.it/piazza-dei-miracoli/torre-pendente/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3e46d828602e097d",
+      "url": "https://www.call3755.city.kyoto.lg.jp/faq_p/P200.aspx?FAQID=0101716",
+      "readings": [
+        {
+          "canonical_url": "https://www.call3755.city.kyoto.lg.jp/faq_p/P200.aspx?FAQID=0101716",
+          "title": "京都市よくある質問：住居表示の番号を教えてください。【0101716】",
+          "publisher": "京都市 市民コールセンター（京都市公式 FAQ）",
+          "version": "FAQ 頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=6，HTTP 200，38381 位元組，sha256 前 16 碼 0e02942c0f755be9，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；京都市 FAQ 網頁，本機去標籤後逐段全讀",
+          "reading_scope": "問答全文與關聯連結。",
+          "locator": "回答本文（京都市では住居表示制度を実施しておりません；土地の登記簿の地番がそのまま住所の地番；登記簿確認は法務局）",
+          "summary": "京都市官方回答：京都市沒有實施住居表示制度，住址裡的番地就是土地登記簿上的地番，要查請找法務局。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只是一句官方回答，沒有說明歷史原因或例外。研究網 NET_KYOTO_CITY。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.call3755.city.kyoto.lg.jp/faq_p/P200.aspx?FAQID=0101716"
         }
       ]
     },
@@ -47731,6 +48229,27 @@
       ]
     },
     {
+      "id": "SRC-483007b564a8e928",
+      "url": "https://hyperphysics.gsu.edu/hbase/magnetic/curloo.html",
+      "readings": [
+        {
+          "canonical_url": "https://hyperphysics.gsu.edu/hbase/magnetic/curloo.html；https://hyperphysics.gsu.edu/hbase/electric/farlaw2.html",
+          "title": "HyperPhysics：Magnetic Field of Current Loop；Variations of Faraday's Law",
+          "publisher": "喬治亞州立大學物理與天文系 HyperPhysics 教學網站",
+          "version": "大學公開教學頁（兩頁）",
+          "accessed_on": "2026-11-18",
+          "read_via": "本工作夾 fetch.sh，Mokaair-editorial/1.0 標頭下載（SX1 seq=7，HTTP 200，8849 位元組，sha256 前 16 碼 c03cbb96ef5ebd78），與前一筆請求間隔 1.2 秒以上；去標籤後全讀；軸上磁場公式以頁內計算器的 JavaScript（B = 2π×10⁻⁷·I·R²/(R²+z²)^1.5，即 μ₀IR²/[2(R²+z²)^{3/2}]）讀出，公式圖檔未下載。；第二頁 farlaw2.html：本工作夾 fetch.sh，Mokaair-editorial/1.0 標頭下載（SX1 seq=10，HTTP 200，3510 位元組，sha256 前 16 碼 95d69ac9fb454a9a），與前一筆請求間隔 1.2 秒以上；去標籤後全讀。",
+          "reading_scope": "curloo.html 全頁四節（線圈磁場、中心場、軸上場、幾何）與計算器程式；farlaw2.html 全頁。",
+          "locator": "curloo.html『Field on Axis of Current Loop』與計算器（軸上距離 z 的磁場 ∝ R²/(R²+z²)^{3/2}；N 匝線圈以 N·i 計）；『Magnetic Field of Current Loop』（環形電流的磁場集中在環內）；farlaw2.html（線圈周圍磁環境的任何變化都會在線圈感應出電壓；與匝數成正比；與變壓器的關係；感應電流的磁場方向會抵抗原本的變化＝冷次定律）。",
+          "summary": "大學物理教學頁：線圈周圍的磁場只要有變化，不管是磁場變強變弱、還是線圈移進移出，線圈上就會感應出電壓，匝數越多電壓越大，變壓器就是這樣工作。一個通電線圈在自己軸線上的磁場，隨距離以 R²/(R²+z²)^{3/2} 的方式衰減。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "教科書等級的通則，沒有談 RFID 或票卡；衰減比例（例如線圈半徑 2.5 cm 時 1、2.5、5、10 cm 處分別剩約 80%、35%、9%、1.4%）是本代理用頁內公式自行計算，只適用理想單一圓線圈的軸線上，不是量測值。研究網：NET_D_HP（同一教學網站兩頁合為一網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://hyperphysics.gsu.edu/hbase/magnetic/curloo.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-4832bfaa0795d687",
       "url": "https://weather.com/science/space/news/alan-eustace-parachute-jump-breaks-felix-baumgartner-record-20141025",
       "readings": [
@@ -53203,6 +53722,27 @@
       ]
     },
     {
+      "id": "SRC-4ffd922bc34ca319",
+      "url": "https://lawreview.uchicago.edu/sites/default/files/78-1-Razors-and-Blades%20Myth%28s%29-Picker.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://lawreview.uchicago.edu/sites/default/files/78-1-Razors-and-Blades%20Myth%28s%29-Picker.pdf",
+          "title": "The Razors-and-Blades Myth(s)",
+          "publisher": "University of Chicago Law Review 78:225（2011）；作者為芝加哥大學法學院一位教授（在世，不點名）",
+          "version": "期刊官網公開 PDF 全文",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 請求 seq=12，HTTP 200，3326612 位元組，sha256 前 16 碼 9ee4b10fb6e9a2e7；網址取自搜尋結果；pdftotext -layout 轉文字後讀。",
+          "reading_scope": "摘要、Introduction 全文（含註 4–8）、第一部分前段（1904 年專利期間的定價、$5 價格與經銷商維持轉售價、型錄比價）；後段 1921 年後與 1930 年的部分只讀到開頭，未全讀。 覆核 SVX3 另讀 p.248（1921 年報數字：1920 年刀架組 2,090,616、加購刀片組 19,051,268；1921 年 4,248,069 與 19,531,861；1920 年起不含對政府的銷售，一戰期間曾大量賣給美軍）。",
+          "locator": "摘要（1904–1921 專利期間未採刮鬍刀模式；專利到期後才改，且是跟進市場）；Introduction p.226–228（$5 約當時平均週工資三分之一；經銷商低於 $5 即威脅追訴，註 5；專利到期後相容刀片進場；第一個贈送刀架是 1922 年隨口香糖；1921 新款刀架仍高價）；p.229 起（'razors-and-blades seems to have worked even without a way to lock'）；正文型錄段（刀架附 12 片刀片 $5、刀片 12 片 $1 為專利期間定價）；p.248（1920／1921 年銷售組數，覆核補讀）",
+          "summary": "法律經濟學論文回頭查史料：被視為發明「刀架便宜、刀片賺錢」的那家刮鬍刀公司，在 1904–1921 年專利保護最強、最能這樣做的期間，刀架反而定在 5 美元（約當時平均週工資的三分之一），還盯著經銷商不准降價；送刀架是專利到期後的 1922 年才開始，而且是跟進對手。作者稱之為兩個迷思：一是誰發明了這個模式，二是沒有「鎖」（專利或技術綁定）就玩不起來——到期後相容刀片進場，這套卻仍然賺錢。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "論文的史料多來自二手傳記與當年報紙廣告、型錄；後半段未全讀，故不轉述 1930 年之後的發展。週工資換算是作者的估計。只用於說明商業模式史，不推論到印表機公司的實際成本。研究網 NET_UCHI。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://lawreview.uchicago.edu/sites/default/files/78-1-Razors-and-Blades%20Myth%28s%29-Picker.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-5007d84308a0a99f",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13532863/fullTextXML",
       "readings": [
@@ -54767,6 +55307,27 @@
       ]
     },
     {
+      "id": "SRC-526294fd0b714fb0",
+      "url": "https://en.agcm.it/en/media/press-releases/2023/1/PS12007-PS11600",
+      "readings": [
+        {
+          "canonical_url": "https://en.agcm.it/en/media/press-releases/2023/1/PS12007-PS11600",
+          "title": "PS12007-PS11600 – After the Italian Competition Authority's exercise of moral suasion, Epson and Lexmark clarify the limits on the use of non-original printer cartridges（19 January 2023）",
+          "publisher": "義大利競爭與市場管理局（AGCM）",
+          "version": "官方英文新聞稿網頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 請求 seq=5，HTTP 200，47367 位元組，sha256 前 16 碼 c4818bc2b4719033；網址取自搜尋結果；本機去標籤後全讀。",
+          "reading_scope": "新聞稿全文。案卷本文未抓。",
+          "locator": "導言（2020 年已因包裝未充分標示非原廠墨匣限制而處罰另一家公司）；第 1 段（以道德勸說要求兩家公司告知印表機能否用非原廠墨匣，含之後的更新）；第 2–3 段（一家的韌體含阻擋非原廠墨匣、但接受原廠匣再填的技術保護措施；另一家的韌體與墨匣晶片互動、認得才印）；第 4 段（缺乏資訊會讓人以為故障是副廠墨匣的錯）；第 5 段（兩家在購買時與韌體更新提示時補充說明）",
+          "summary": "義大利競爭主管機關 2023 年公告：兩家印表機公司的韌體會和墨匣晶片互動，認不得就不印，或阻擋非原廠墨匣；主管機關認為沒說清楚會讓消費者在買時以為能用副廠、在用時以為故障是副廠墨匣造成的。經勸說，兩家在購買時與每次提示韌體更新時補上說明。2020 年另一家因包裝標示不足已被處罰。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "道德勸說不是處分，沒有認定違法；2020 年罰款金額本稿未讀到，不寫。品牌名不入稿。研究網 NET_AGCM。 公告所稱 2020 年被罰的公司即 S001 的申報公司；口播不點名、不串連。覆核重抓（SVX3 seq=3）正文一致。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://en.agcm.it/en/media/press-releases/2023/1/PS12007-PS11600"
+        }
+      ]
+    },
+    {
       "id": "SRC-526572d32899cba1",
       "url": "https://doi.org/10.1109/JSSC.1974.1050511",
       "readings": [
@@ -55717,6 +56278,27 @@
       ]
     },
     {
+      "id": "SRC-53a331fc8391bc9b",
+      "url": "https://www.ecma-international.org/wp-content/uploads/ECMA-130_2nd_edition_june_1996.pdf",
+      "readings": [
+        {
+          "canonical_url": "ECMA-130 第 2 版（1996 年 6 月；同 ISO/IEC 10149）",
+          "title": "ECMA-130: Data interchange on read-only 120 mm optical data disks (CD-ROM)",
+          "publisher": "Ecma International（歐洲電腦製造商協會標準組織）",
+          "version": "第 2 版 PDF（有文字層）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒）SX5 seq=19，HTTP 200，1578188 位元組，sha256 前 16 碼 576fb91e38e850b7；本機 pdftotext -layout 轉文字後逐節讀相關章節。",
+          "reading_scope": "Brief History、4 定義（F1、F2 Frame）、12.5.2–12.5.3（隨機與突發錯誤規格）、14（Sector 結構與 Mode 00/01/02）、17（CIRC 編碼）、Annex A（RSPC）A.1–A.2 與 P／Q 向量段、Annex C（CIRC）C.1–C.9 全部。其餘光學與機械章節未讀。",
+          "locator": "12.5.2（一個位元組只要有一個位元錯就算錯；10 秒平均框錯誤率須低於 3×10⁻²）；12.5.3（C1 解碼器輸入端一框內有兩個以上連續錯誤位元組即為無法修正；連續無法修正的框須少於 7 個）；14.2 b（Mode 01：第 16–2063 位元組為使用者資料，受 EDC、ECC 與 CIRC 保護；Mode 02：第 16–2351 位元組全是使用者資料，只受 CIRC 保護）；Annex A（RSPC：43 欄 P 向量為 (26,24) RS 碼字、26 條對角 Q 向量為 (45,43) RS 碼字）；Annex C（CIRC＝三段延遲＋C2 (28,24) 與 C1 (32,28) 兩個 RS 編碼器，各加 4 個同位位元組；第二段延遲由 0 到 27×4 個框時間；一個位元組最長延遲 108 個框、最短 3 個框）。",
+          "summary": "光碟資料標準寫明：光碟上的資料先經兩層 Reed-Solomon 碼，中間再把位元組按不同延遲打散到最多上百個框之外，所以一道沿著軌道的刮痕在每個框裡只留下少數錯誤位元組；放電腦資料的模式再多加一層修正，代價是每個扇區少放 288 個位元組。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是光碟標準，不是 QR Code 標準，只能當「Reed-Solomon 碼加交錯對付成片損壞」的旁證；標準只給規格，沒有給可修正的刮痕長度。研究網：NET_ECMA（標準機構，單一網）。 覆核 SVX5：12.5.3 是把「一框內兩個以上連續錯誤位元組」定義為 uncorrectable 的規格用語；「一道刮痕被拆成每框少數錯誤」是由延遲結構推論，標準沒有寫這句。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.ecma-international.org/wp-content/uploads/ECMA-130_2nd_edition_june_1996.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-53a697d10b86c5c2",
       "url": "https://research.fs.usda.gov/download/treesearch/12890.pdf",
       "readings": [
@@ -56552,6 +57134,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.aeaweb.org/articles?id=10.1257/jep.28.1.49"
+        }
+      ]
+    },
+    {
+      "id": "SRC-551be93fe88252db",
+      "url": "https://www.asme.org/wwwasmeorg/media/ResourceFiles/AboutASME/Who%20We%20Are/Engineering%20History/Landmarks/249-Sholes-Glidden-Type-Writer.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.asme.org/about-asme/engineering-history/landmarks",
+          "title": "Sholes & Glidden 'Type Writer' – A Historic Mechanical Engineering Landmark（第 249 號地標手冊）",
+          "publisher": "美國機械工程師學會（ASME）歷史與遺產委員會；2011 年 10 月 6 日，威斯康辛州密爾瓦基",
+          "version": "ASME 官方 PDF 手冊（封面標示 2011 年 4 月初稿日期）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 依序第 15 筆請求（SX7 seq=15，HTTP 200，1304567 位元組，sha256 前 16 碼 537110c9455e06cb），Mokaair-editorial/1.0 標頭、間隔 1.2 秒；pdftotext -layout 抽全文逐頁讀。",
+          "reading_scope": "封面、發明者生平、開發歷程（第 3–4 頁）、技術描述、QWERTY 鍵盤一欄、地標碑文、ASME 地標計畫說明。",
+          "locator": "第 3 頁（1868 年兩種版本：長金屬線連接字桿與鍵桿；之後採用『四排金屬鍵桿與按鈕呈階梯式上升』的鍵盤，應顧客要求在四排下方加空白鍵；短硬金屬線斜拉造成字桿不齊）；第 4 頁（為減少頻繁的字桿碰撞，排出非字母順序的鍵位）；QWERTY 欄（『據報導』此排列是為了減少字桿卡住）；碑文（槓桿式按鍵機構）",
+          "summary": "美國機械工程師學會的地標手冊記載，1870 年代初的打字機每顆鍵都是一根金屬鍵桿，四排鍵桿像階梯一樣一排比一排高，鍵桿再用金屬線拉動字桿。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "手冊沒有說明左右錯位（stagger）的原因，也沒有提鍵帽凸點；QWERTY 起源一段作者自己用『據報導』。本題案依撞題說明不講字母排列起源，只取『一顆鍵一根桿、四排階梯』這一點。研究網 NET_ASME（單篇網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.asme.org/wwwasmeorg/media/ResourceFiles/AboutASME/Who%20We%20Are/Engineering%20History/Landmarks/249-Sholes-Glidden-Type-Writer.pdf"
         }
       ]
     },
@@ -59238,6 +59841,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave11-plants-20261101",
           "original_url": "https://www.phys.ens.psl.eu/~corson/pdf/hamant-08.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5974f6cb4e49d848",
+      "url": "https://www.law.cornell.edu/cfr/text/36/appendix-C_to_part_1194",
+      "readings": [
+        {
+          "canonical_url": "https://www.ecfr.gov/current/title-36/chapter-XI/part-1194",
+          "title": "36 CFR Appendix C to Part 1194 – Functional Performance Criteria and Technical Requirements（Revised 508 Standards and 255 Guidelines）",
+          "publisher": "美國無障礙委員會（U.S. Access Board）訂定之聯邦法規；康乃爾大學法學院 Legal Information Institute 轉載",
+          "version": "聯邦法規現行條文的大學轉載本（eCFR 原頁未請求；canonical_url 為書目指向）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 依序第 5 筆請求（SX7 seq=5，HTTP 200，73138 位元組，sha256 前 16 碼 9fa5d3e45800ebb0），Mokaair-editorial/1.0 標頭、間隔 1.2 秒；去除 HTML 標籤後讀第 3、4 章與第 7 章引用標準。",
+          "reading_scope": "目錄、第 3 章功能表現準則（301–302）、第 4 章硬體 401–408 全部條文、第 7 章 702 引用標準清單。",
+          "locator": "301.1、401.1（適用於依 508 與 255 第 2 章範圍規定所涵蓋的 ICT）；407.3（每項功能至少一個符合的輸入控制；個人用且能以聲音辨識者例外）；407.3.1（輸入控制可觸摸操作且不按下即可觸覺辨別）；407.3.2（字母鍵採 QWERTY 為基礎的排列，F 與 J 須觸覺上與其他鍵不同）；407.3.3（數字鍵採 12 鍵遞增或遞減排列，5 須觸覺上不同；字母對應須符合 ITU-T E.161）；407.6（操作力最大 22.2 N）；702（E.161 引用）",
+          "summary": "美國聯邦的資訊與通訊科技無障礙規定寫得很短：有字母鍵就要 F、J 摸得出來不一樣，有數字鍵就要 5 摸得出來不一樣，而且數字鍵 1 在上或 7 在上都可以。條文沒有規定是點、橫條還是凹槽。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "Section 508 規範聯邦機關採購與使用的 ICT，255 準則針對電信設備，不是全球法律，也不是所有消費產品的強制規定；本次沒有讀第 2 章的適用範圍細節。條文只要求『觸覺上不同』，不指定形式。研究網 NET_USAB（與 SX7-S006、S007 同為美國無障礙委員會，合計封頂 2.0）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.law.cornell.edu/cfr/text/36/appendix-C_to_part_1194"
         }
       ]
     },
@@ -65524,6 +66148,21 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.city.sapporo.jp/shimin/koseki/jukyo-hyoji/jukyohyoji-toha.html"
+        },
+        {
+          "canonical_url": "https://www.city.sapporo.jp/shimin/koseki/jukyo-hyoji/jukyohyoji-toha.html",
+          "title": "住居表示とは／札幌市",
+          "publisher": "北海道札幌市 デジタル戦略推進局スマートシティ推進部住民情報課",
+          "version": "網頁，更新日 2026 年 5 月 14 日",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=8，HTTP 200，25812 位元組，sha256 前 16 碼 11b91383393f66ea，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；札幌市官方網頁，本機去標籤後逐段全讀",
+          "reading_scope": "本文全讀（制度、地番問題、法律、札幌實施年、編號法、註記、表示板）。",
+          "locator": "地番與住居表示寫法對照；地番當住址的問題（緊急車輛難抵達、宅配與郵局效率下降、訪客難找）；昭和 37 年 5 月法律施行；札幌自昭和 47 年（1972）導入；編號法（○条○丁目內以道路河川圍成的街區為單位編號，自近市中心的角右回每 10 m 編基礎番號，出入口處的號碼為住居番號）；註（市中心定為大通公園與創成川交會處；基本付番法，地形、建物位置或將來因素可能使號碼不等於出入口基礎番號；住居表示只用於住所，地番仍用於不動產）；表示板 7 × 12 cm、66 × 12 cm",
+          "summary": "札幌在既有的「○條○丁目」裡再切街區、從靠近大通公園與創成川交會處的角落順時針每 10 m 編號；1972 年才導入住居表示，而且明說號碼不一定等於出入口那一段。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "條丁目本身怎麼劃分本頁未說明（見 SX2-S009）。研究網 NET_SAPPORO。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.city.sapporo.jp/shimin/koseki/jukyo-hyoji/jukyohyoji-toha.html"
         }
       ]
     },
@@ -66419,6 +67058,27 @@
           },
           "origin": "wave37-bio-20261102",
           "original_url": "https://doi.org/10.1038/nature01065"
+        }
+      ]
+    },
+    {
+      "id": "SRC-63bdaddc85c1a130",
+      "url": "https://cdn.jsdelivr.net/npm/@zxing/core@0.3.0-dev.736e254/src/core/qrcode/decoder/DataBlock.ts",
+      "readings": [
+        {
+          "canonical_url": "npm @zxing/core@0.3.0-dev.736e254 /src/core/qrcode/decoder/DataBlock.ts",
+          "title": "DataBlock.ts（ZXing 拆回資料區塊）",
+          "publisher": "開源條碼函式庫 ZXing（Apache 2.0 授權，原 Java 版的 TypeScript 移植，npm 套件 @zxing/core 0.3.0-dev.736e254，檔頭 Copyright 2007 ZXing authors）",
+          "version": "原始碼（套件檔案清單由 jsDelivr 公開 API seq=9 取得，HTTP 200，13808 位元組，sha256 前 16 碼 b09ad46cfd7fdc9d；網址取自清單，不是猜的）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒）SX5 seq=12，HTTP 200，5207 位元組，sha256 前 16 碼 add18fe4419f4d5f；純文字原始碼，本機逐行讀註解與主要函式。",
+          "reading_scope": "全檔：類別註解與 getDataBlocks 全部步驟。",
+          "locator": "類別註解（碼可分成多個區塊，每塊各有資料與修正碼字）；getDataBlocks 註解（多區塊時是交錯寫入：先寫第 1 到第 n 塊的第一個位元組，再寫各塊第二個，以此類推；本函式把它們分回原區塊；最後幾塊可能多 1 個位元組）。",
+          "summary": "這套程式的說明寫明：資料分成多塊時是交錯排的，第一塊的第一個位元組、第二塊的第一個位元組……輪流寫進圖裡，讀取時再拆回各塊。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是一套廣泛使用的開源讀碼程式的實作，不是國際標準本身；其他讀碼程式（含手機內建）不一定照同樣做法。只讀這一版移植的原始碼，未對照原 Java 版。程式作者姓名不寫。研究網：NET_ZXING（S004–S009 同網，封頂 2.0）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://cdn.jsdelivr.net/npm/@zxing/core@0.3.0-dev.736e254/src/core/qrcode/decoder/DataBlock.ts"
         }
       ]
     },
@@ -77856,6 +78516,27 @@
       ]
     },
     {
+      "id": "SRC-74fb024f5b8966e9",
+      "url": "https://www.etsi.org/deliver/etsi_ES/201300_201399/201381/01.01.01_60/es_201381v010101p.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.etsi.org/deliver/etsi_ES/201300_201399/201381/01.01.01_60/es_201381v010101p.pdf",
+          "title": "ETSI ES 201 381 V1.1.1 (1998-12) Human Factors (HF); Telecommunications keypads and keyboards; Tactile identifiers",
+          "publisher": "歐洲電信標準協會（ETSI）人因技術委員會（TC HF）；1998 年 12 月出版",
+          "version": "ETSI 官方免費下載 PDF 全文",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 依序第 3 筆請求（SX7 seq=3，HTTP 200，41493 位元組，sha256 前 16 碼 cd0b84df8d807113），Mokaair-editorial/1.0 標頭、間隔 1.2 秒；pdftotext -layout 抽全文逐節全讀（全文 10 頁）。",
+          "reading_scope": "目錄、前言、引言、1 範圍、2 參考、3 定義、4 標準觸覺標記的要求、5 數字鍵盤（5.1–5.3）、6 字母數字鍵盤（6.1–6.2）、7 符合性測試、參考書目、文件歷史，全部讀完。",
+          "locator": "引言（視障者難找到特定鍵；觸覺標記也提高一般視力者在光線不足時的可用性；與既有標準及『事實標準』一致，盼與 CEN、ITU-T、ISO 協調成世界標準）；1（只涵蓋『5』『F』『J』三鍵）；5.1（數字鍵盤『應』在 5 鍵上設觸覺標記）；5.2（首選鍵面中央）；5.3（首選凸起圓點，高 0.6 ± 0.2 mm、直徑 1.5 ± 0.2 mm）；6（字母數字鍵盤『應』在 F、J 設標記）；6.1（首選位置：鍵面最靠近使用者的邊緣）；6.2（首選形狀：凸起短橫條，長 4.0 ± 1 mm、寬 0.5 ± 0.1 mm、高 0.6 ± 0.2 mm）；7（不需特殊量測程序）；歷史（1998 年 9–11 月會員核准、12 月出版）",
+          "summary": "歐洲電信標準協會在 1998 年的一份只有十頁的標準，範圍就只有三顆鍵：數字鍵盤的 5 要有一個小圓點，文字鍵盤的 F 和 J 要在靠近手的那一邊有一條小橫條，連尺寸都寫了；目的寫的是幫盲人與視障者找鍵，也讓一般人在光線暗時好用，而且說明這是在把既有的『事實標準』寫下來。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "ETSI ES 是歐洲電信標準，不是法律；本文只規定電信終端的鍵盤與數字鍵盤，並寫明是與既有『事實標準』一致，所以不能說凸點是 1998 年才發明。形狀與尺寸都是『首選』與『建議』，小鍵可用其他位置與形式。研究網 NET_ETSI（與 SX7-S004 同一技術委員會，合計封頂 2.0）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.etsi.org/deliver/etsi_ES/201300_201399/201381/01.01.01_60/es_201381v010101p.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-7501f937b9e8e394",
       "url": "https://doi.org/10.1039/D0SM00938E",
       "readings": [
@@ -78335,6 +79016,27 @@
       ]
     },
     {
+      "id": "SRC-7587968f24b8b114",
+      "url": "https://ntrs.nasa.gov/api/citations/19890018519/downloads/19890018519.pdf",
+      "readings": [
+        {
+          "canonical_url": "NASA NTRS 19890018519（TDA Progress Report 42-97，1989 年 1–3 月）",
+          "title": "Performance of Concatenated Codes Using 8-Bit and 10-Bit Reed-Solomon Codes",
+          "publisher": "美國噴射推進實驗室通訊系統研究組（NASA 技術報告伺服器）",
+          "version": "掃描 PDF 的 OCR 文字層",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒）SX5 seq=15，HTTP 200，262359 位元組，sha256 前 16 碼 1c839f386f927d86；本機 pdftotext（-layout 與一般兩種）讀；OCR 文字層雙欄錯位嚴重，只採左欄可完整讀出的句子。",
+          "reading_scope": "摘要與 I. Introduction 左欄、II 左欄；右欄與 III、IV 因 OCR 錯位無法可靠閱讀。",
+          "locator": "I. Introduction 第一段（多個現行與規劃中的深太空任務使用「內層摺積碼＋外層 Reed-Solomon 碼」的串接碼；航海家號太空船使用 (7,1/2) 摺積碼為內碼、8 位元 (255,223) RS 碼為外碼；伽利略任務用實驗性 (15,1/4) 摺積碼串接同一 RS 碼；未來任務可能用 (15,1/6) 搭配 10 位元 (1023,959) RS 碼）；第二段可讀片段（最大概似解碼的錯誤成串出現，需交錯）。",
+          "summary": "噴射推進實驗室 1989 年的報告寫明，航海家號太空船的通訊用 8 位元的 (255,223) Reed-Solomon 碼當外層保護；內層解碼器出錯時錯誤會成串出現。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "OCR 品質差，只有第一段可完整讀；交錯與突發錯誤的細節只讀到片段，卡片只寫航海家號用 (255,223) RS 碼與「錯誤成串」這一句。作者姓名不寫。研究網：NET_JPL（單篇網），折 0.75。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://ntrs.nasa.gov/api/citations/19890018519/downloads/19890018519.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-758d3d04421512e6",
       "url": "https://techxplore.com/news/2021-03-beers-vikings-gave-bluetooth-technology.html",
       "readings": [
@@ -78350,6 +79052,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://techxplore.com/news/2021-03-beers-vikings-gave-bluetooth-technology.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-758d55a5d0b6d8bb",
+      "url": "https://cdn.jsdelivr.net/npm/@zxing/core@0.3.0-dev.736e254/src/core/qrcode/decoder/BitMatrixParser.ts",
+      "readings": [
+        {
+          "canonical_url": "npm @zxing/core@0.3.0-dev.736e254 /src/core/qrcode/decoder/BitMatrixParser.ts",
+          "title": "BitMatrixParser.ts（ZXing 讀出格式資訊與碼字）",
+          "publisher": "開源條碼函式庫 ZXing（Apache 2.0 授權，原 Java 版的 TypeScript 移植，npm 套件 @zxing/core 0.3.0-dev.736e254，檔頭 Copyright 2007 ZXing authors）",
+          "version": "原始碼（套件檔案清單由 jsDelivr 公開 API seq=9 取得，HTTP 200，13808 位元組，sha256 前 16 碼 b09ad46cfd7fdc9d；網址取自清單，不是猜的）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒）SX5 seq=11，HTTP 200，10068 位元組，sha256 前 16 碼 b028f5b6fd7aab60；純文字原始碼，本機逐行讀註解與主要函式。",
+          "reading_scope": "全檔：建構子、readFormatInformation、readVersion、readCodewords、remask、setMirror、mirror 的註解與主要迴圈。",
+          "locator": "建構子（邊長須 ≥21 且除以 4 餘 1）；readFormatInformation（從兩個位置之一讀格式資訊：左上一份，右上與左下拼成另一份，讀時跳過定時線的格子；兩處都讀不出就丟格式錯誤）；readVersion（版本資訊在右上 3×6 與左下 6×3 各一份）；readCodewords（第 160–200 行：依格式資訊取遮罩；從右到左兩欄一組，交替由下往上、由上往下讀；跳過功能圖樣與整條直的定時欄；每湊滿 8 位元存成一個位元組；位元組數不對就丟錯）。",
+          "summary": "這套程式讀資料時，從最右邊兩欄開始像蛇一樣上下來回走，遇到方框、定時線等結構格就跳過，邊讀邊去掉遮罩，每 8 格湊成一個碼字。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是一套廣泛使用的開源讀碼程式的實作，不是國際標準本身；其他讀碼程式（含手機內建）不一定照同樣做法。只讀這一版移植的原始碼，未對照原 Java 版。程式作者姓名不寫。研究網：NET_ZXING（S004–S009 同網，封頂 2.0）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://cdn.jsdelivr.net/npm/@zxing/core@0.3.0-dev.736e254/src/core/qrcode/decoder/BitMatrixParser.ts"
         }
       ]
     },
@@ -86188,6 +86911,21 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://ethw.org/Milestones:Universal_Serial_Bus_(USB),_1996"
+        },
+        {
+          "canonical_url": "https://ethw.org/Milestones:Universal_Serial_Bus_(USB),_1996",
+          "title": "Milestones: Universal Serial Bus (USB), 1996",
+          "publisher": "IEEE History Center／Engineering and Technology History Wiki（IEEE 里程碑提案與審定文件）",
+          "version": "網頁全文",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 工具（Mokaair-editorial/1.0 標頭、請求間隔 1.2 秒）下載：SX4 seq=14，HTTP 200，81679 位元組，sha256 前 16 碼 cd292cf1eb15c3a5；擷取正文全部段落與清單讀。",
+          "reading_scope": "Citation、Historical significance 全節、Obstacles（Technical／Broad Acceptance／Political）、Features、USB Timeline、Significant references。",
+          "locator": "Historical significance（90 年代中前，加掃描器常要開機殼裝擴充卡、調跳線與指撥開關設 DMA 與 IRQ、反覆開關機試錯；某連鎖零售商報告掃描器退貨率超過 30%）；Intel initiated…（1994 年 5 月首次工作組會議；1996-01-15 七家公司發布 1.0）；Technical Obstacles（最大挑戰是壓成本，以滑鼠為基準，一家廠商透露滑鼠整套電子預算只有 50 美分；只用一對差動訊號線）；Features（刻意做成主機複雜、裝置簡單的非對稱設計；供電當時有爭議）；Political Obstacle（有人要求完全對稱、1 公里線長、防水接頭等，被擋下）；Timeline（2014-08-11 Type-C 1.0 引入可翻轉接頭）",
+          "summary": "IEEE 把 USB 列為工程里程碑，審定文件記下：USB 之前，替電腦加一台掃描器常要拆機殼、調跳線、設定中斷，開關機反覆試；某連鎖賣場的掃描器退貨率超過三成。USB 最大的技術難題是壓成本——以滑鼠為基準，有廠商說滑鼠整套電子零件預算只有 50 美分，所以整條匯流排只用一對訊號線，並刻意讓主機端扛複雜度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "里程碑文件由志工撰寫、大量引用當事公司說法；退貨率與 50 美分都是轉述，未附原始數據。文件沒有談接頭為何不做成兩面插。提案撰寫人在世、不具名。研究網：NET_IEEE（撰寫人不在 Type-C 規格貢獻者名單）。（SVX4 覆核：重抓 seq=2 雜湊 681f05b78cb99a30 與作者 cd292cf1eb15c3a5 不同，逐行比對只差 Cloudflare 指令碼中的 ray 參數，正文相同。非對稱設計段引自 USB 2.0 規格主編的 1998 年著作。）",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://ethw.org/Milestones:Universal_Serial_Bus_(USB),_1996"
         }
       ]
     },
@@ -87561,6 +88299,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://svs.gsfc.nasa.gov/5587/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-835c1ba6294165ff",
+      "url": "https://cdn.standards.iteh.ai/samples/73597/abf724f0300e49909f6e888f0bbcfdb7/ISO-IEC-FDIS-14443-2.pdf",
+      "readings": [
+        {
+          "canonical_url": "ISO/IEC 14443-2:2020（第四版）",
+          "title": "ISO/IEC FDIS 14443-2:2020(E) Cards and security devices for personal identification — Contactless proximity objects — Part 2: Radio frequency power and signal interface（樣本頁）",
+          "publisher": "ISO/IEC JTC 1/SC 17；樣本由標準經銷商公開提供",
+          "version": "最終國際標準草案（FDIS）公開樣本，含前言、引言、第 1–7 章全文與目錄；第 8 章以後不在樣本內",
+          "accessed_on": "2026-11-18",
+          "read_via": "本工作夾 fetch.sh，Mokaair-editorial/1.0 標頭下載（SX1 seq=2，HTTP 200，407689 位元組，sha256 前 16 碼 20eced9e813e0f54），與前一筆請求間隔 1.2 秒以上；pdftotext（含 -layout 版，用來讀表 1 與表 2 數值）轉文字，濾掉樣本浮水印後逐節讀。",
+          "reading_scope": "目錄、前言、引言、1 Scope、2 Normative references、3 Terms and definitions（3.1–3.7）、5.1 Initial dialogue、5.2 Compliance、6 Power transfer（6.1–6.3、表 1、表 2 及其前後條文）、7 Signal interface 全文。第 8 章（A 型通訊）以後只見目錄。",
+          "locator": "引言（介面同時包含供電與雙向通訊；10536 密耦合、14443 近距、15693 中距三類）；1 Scope（規定供電與雙向通訊所需的場；不規定產生方式，也不規定各國不同的輻射與人體暴露法規）；3.6 operating volume；5.1（讀卡機的射頻場啟動卡片→卡片靜候指令→讀卡機送指令→卡片回應）；6.1（讀卡機應產生高頻交變磁場，以感應耦合把電力傳給卡片，並調變此場來通訊）；6.2（13.56 MHz ± 7 kHz）；6.3 與表 1（以 Reference PICC 1 量測，Hmin 1.5、Hmax 7.5 A/m rms；PICC 2、3 為 1.5／8.5；選配 4、5、6 為 2.0／12、2.5／14、4.5／18）；表 2 前條文（卡片須在其等級的 Hmin 與 Hmax 之間持續正常運作）；7（讀卡機以調變脈衝調變磁場振幅來傳資料；卡片以被動加載讀卡機磁場及／或主動貢獻自己的交變磁場回傳，稱為負載調變；製造商可另標示 0 到 X cm 的操作距離作參考）。",
+          "summary": "非接觸卡國際標準第 2 部的公開樣本：讀卡機必須產生 13.56 MHz 的交變磁場，同一個場既用感應耦合送電、又被調變來傳指令；卡片進場後先被「啟動」、靜候指令再回應。標準規定場強的下限與上限（最常見的等級是每公尺 1.5 到 7.5 安培），卡片要在這段範圍內持續正常運作；卡片回話叫「負載調變」，2020 年版明寫可以是被動加載、也可以主動送出自己的磁場。標準沒有規定公分數，只讓製造商標示操作距離。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "樣本是 FDIS 階段文字，正式版可能有編修；只讀到第 1–7 章，A／B 型的位元率、副載波頻率、時序等細節不在樣本內，本批不引用。表 1、表 2 的數字是 pdftotext -layout 版從表格欄位讀出，原始樣本有浮水印干擾，數值與條文中『Hmin／Hmax』敘述一致。標準不規定公分距離，任何『標準規定幾公分』的說法都不能用本來源撐。研究網：NET_B_ISO（標準機構，單一研究網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://cdn.standards.iteh.ai/samples/73597/abf724f0300e49909f6e888f0bbcfdb7/ISO-IEC-FDIS-14443-2.pdf"
         }
       ]
     },
@@ -89746,6 +90505,27 @@
       ]
     },
     {
+      "id": "SRC-867d67a1049ff7f8",
+      "url": "https://cdn.standards.iteh.ai/samples/119433/a968ceccce3b41d38f8fe5682148ebac/IEC-80000-13-2025.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.iso.org/standard/87648.html",
+          "title": "IEC 80000-13:2025 Quantities and units — Part 13: Information science and technology（公開預覽）",
+          "publisher": "IEC TC 25 與 ISO/TC 12；預覽 PDF 由一家標準經銷商提供",
+          "version": "第 2 版 2025-02 之官方預覽（12 頁，含前言、範圍與第 3 節部分條目；第 4 節二進位字首表不在預覽內）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 單次請求（SX6 seq=14，HTTP 200，1122675 位元組，sha256 前 16 碼 68cbb52b8534b68b），Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；網址取自搜尋結果；pdftotext -layout 轉文字後讀完預覽全部 12 頁。",
+          "reading_scope": "預覽 12 頁全部：目錄、Foreword（第二版取代 2008 年第一版，主要技術變更為新增二進位字首）、Introduction 與 Scope 可見部分、第 3 節條目 13-9 至 13-15。第 4 節 Prefixes for binary multiples（第 17 頁）未含於預覽，未讀。",
+          "locator": "Foreword（第二版 2025 取代 2008 年第一版；significant technical change：addition of new prefixes for binary multiples）；條目 13-9 storage capacity 備註（bit、octet o、byte B；英文中 byte 作 octet 同義詞，指 8 位元；但 byte 曾被用來指 8 以外的位元數，為免混淆強烈建議 byte 與符號 B 只用於 8 位元；B 不是國際符號，勿與分貝的 B 混淆；bit 與 octet 可配 SI 字首或二進位字首）；條目 13-11（octet per second、byte per second，o/s、B/s，例 kB/s）；條目 13-13（bit rate，bit/s，例 Mbit/s）",
+          "summary": "資訊單位的國際標準寫明：英文 byte 在這裡等於 octet、也就是 8 位元，但歷史上 byte 曾被用來指不是 8 位元的長度，所以標準「強烈建議」byte 與符號 B 只用在 8 位元；位元速率用 bit/s（例如 Mbit/s），位元組速率用 B/s 或 o/s。2025 年第二版的主要技術變更就是新增二進位字首。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀到官方預覽，標準全文（含第 4 節字首表）未讀；本卡只用預覽中完整可見的條目 13-9、13-11、13-13 與前言，從嚴記 0.75。預覽由經銷商托管，canonical_url 指 ISO 目錄頁（未請求）。研究網 NET_IEC80000（標準機構文件；與 BIPM、NIST 無作者合著關係，IEC 為制定機關）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://cdn.standards.iteh.ai/samples/119433/a968ceccce3b41d38f8fe5682148ebac/IEC-80000-13-2025.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-86818b5b30033dd6",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11733674/fullTextXML",
       "readings": [
@@ -90561,6 +91341,27 @@
           },
           "origin": "wave43-speech-20261103",
           "original_url": "https://doi.org/10.1037/xap0000247"
+        }
+      ]
+    },
+    {
+      "id": "SRC-87869eac1aa45c56",
+      "url": "https://crd.ndl.go.jp/reference/modules/d3ndlcrdentry/index.php?id=1000238200&page=ref_view",
+      "readings": [
+        {
+          "canonical_url": "https://crd.ndl.go.jp/reference/modules/d3ndlcrdentry/index.php?id=1000238200&page=ref_view",
+          "title": "レファレンス事例：京都市内の交差点名のルールが知りたい",
+          "publisher": "國立國會圖書館 レファレンス協同データベース；提供館 京都府立京都学・歴彩館",
+          "version": "事例 1000238200（2018）",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=23，HTTP 200，39088 位元組，sha256 前 16 碼 52ac1f3cf1efc104，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；NDL 網頁，本機去標籤後逐段全讀",
+          "reading_scope": "回答全文、回答プロセス、參考資料全讀。",
+          "locator": "回答（交差點名東西優先與南北優先混在、無條例；交差點移動位置以所面之通先寫：「三条通室町東入ル（西入ル）」＝三條通沿線自室町通往東（西）、「室町通三条上ル（下ル）」＝室町通沿線自三條通往北（南）；入ル／上ル／下ル讀 いる／あがる／さがる）",
+          "summary": "京都的位置寫法：先寫房子面對的那條路，再寫最近的交叉路，然後說往北（上ル）、往南（下ル）、往東或往西（東入、西入）走；交叉口本身叫法東西、南北誰先則沒有規則。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "整理自近世都市史專書與報導的二手回答。研究網 NET_KYOREKI。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://crd.ndl.go.jp/reference/modules/d3ndlcrdentry/index.php?id=1000238200&page=ref_view"
         }
       ]
     },
@@ -91487,6 +92288,27 @@
           },
           "origin": "wave10-sensing-20261101",
           "original_url": "https://elifesciences.org/articles/68848"
+        }
+      ]
+    },
+    {
+      "id": "SRC-88b33e0e399fd3b1",
+      "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/5726435",
+      "readings": [
+        {
+          "canonical_url": "US 5,726,435 A（美國專利商標局公告本）",
+          "title": "Optically readable two-dimensional code and method and apparatus using the same（US 5,726,435）",
+          "publisher": "美國專利商標局；專利權人為開發公司當時的母公司與一家日本汽車集團的中央研究所，發明人 5 名均在日本愛知縣",
+          "version": "公告本掃描影像 PDF（30 頁，無文字層）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒）SX5 seq=17，HTTP 200，2158807 位元組，sha256 前 16 碼 f3cd1fcc0d39bef2；PDF 無文字層，本機以 pdftoppm 把第 1 頁（110 dpi）與第 16 頁（說明書第 3–4 欄，90 dpi）轉成影像後直接判讀。Google Patents 已在共用封鎖名單（seq=16 未送出），改用美國專利局公開影像。",
+          "reading_scope": "只讀第 1 頁（書目、摘要、代表圖）與第 16 頁（說明書第 3–4 欄，第二至第七態樣）；其餘 28 頁（圖式與實施例、61 項請求項）未讀。",
+          "locator": "第 1 頁書目（申請 1995-03-14、公告 1998-03-10、申請號 403,548）；摘要（三個定位符號、資料區、定時格、頂點偵測格；正方形；通過定位符號中心的掃描線一律得到暗:亮:暗:亮:暗＝1:1:3:1:1，與掃描方向無關，因此旋轉角不確定時只掃一個方向就能找到中心）；代表圖（定時格沿對角線排列）；第 3 欄（定時格明暗交錯、依間隔決定格位；碼由暫定二維碼與「格特徵轉換碼」逐格做互斥或 XOR 產生，讀取時再 XOR 一次還原）；第 4 欄第四態樣（定時格斜率 1/1）、第七態樣（資料格經轉換處理成與定位符號不同的圖樣）。",
+          "summary": "開發公司 1995 年在美國申請的專利：三個定位符號從任何方向掃過中心，都會得到 1:1:3:1:1 的黑白寬度比，所以不管碼轉了幾度，掃一次就能定位；資料格要先跟一組轉換圖樣做 XOR，讓資料區不會長出跟定位符號一樣的圖樣，讀取時再 XOR 回來。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀了 2 頁；這份專利描述的是早期設計（代表圖的定時格沿對角線、另有頂點偵測格），與後來國際標準的版面不一定相同，卡片只說「這份專利」的設計，不說成現行規格。專利沒有談錯誤修正。發明人姓名不寫。研究網：NET_DENSO（發明人為開發公司人員；與 S001、S002 同網，該網封頂 2.0）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/5726435"
         }
       ]
     },
@@ -93358,6 +94180,27 @@
       ]
     },
     {
+      "id": "SRC-8b8f82161eb7aff0",
+      "url": "https://crd.ndl.go.jp/reference/entry/index.php?id=1000098425&page=ref_view",
+      "readings": [
+        {
+          "canonical_url": "https://crd.ndl.go.jp/reference/entry/index.php?id=1000098425&page=ref_view",
+          "title": "レファレンス事例：明治22年3月の京都府告示第24号で…「上ル下ル」が定められたときいた",
+          "publisher": "國立國會圖書館 レファレンス協同データベース；提供館 京都府立京都学・歴彩館",
+          "version": "事例 1000098425（2011 作成、2019 更新）",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=22，HTTP 200，34035 位元組，sha256 前 16 碼 8df1081a33aa11b0，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；NDL 網頁，本機去標籤後逐段全讀",
+          "reading_scope": "質問、回答、回答プロセス、參考資料全讀。",
+          "locator": "回答（『京都府府令達要約』明治 22 第 10 編下卷 p227–228：住所寫法定為「京都市何区何通何小路何町上ル下ル又は東入西入何町何番戸」；『京都市市町村編入の町名総覧』p15「この通達によって京都市の町名の呼び方が決定され」）",
+          "summary": "京都府在 1889 年（明治 22 年）的告示把京都市住址寫法定成「某通某小路 上ル下ル或東入西入 某町 某番戶」，館方查到的資料中這是最早的規定。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "圖書館參考諮詢回答，轉述二手文獻；「最早」限於所查資料。研究網 NET_KYOREKI。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://crd.ndl.go.jp/reference/entry/index.php?id=1000098425&page=ref_view"
+        }
+      ]
+    },
+    {
       "id": "SRC-8b986f109d286b07",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10399922/fullTextXML",
       "readings": [
@@ -94172,6 +95015,27 @@
       ]
     },
     {
+      "id": "SRC-8ca346686eb20d03",
+      "url": "https://arxiv.org/pdf/2506.20305v1",
+      "readings": [
+        {
+          "canonical_url": "arXiv:2506.20305v1 [cs.LG]（2025-06-25）",
+          "title": "Learning Moderately Input-Sensitive Functions: A Case Study in QR Code Decoding",
+          "publisher": "arXiv 預印本；日本千葉大學與德國柏林一所數學研究所（未經同儕審查）",
+          "version": "arXiv v1 PDF",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒）SX5 seq=14，HTTP 200，3462746 位元組，sha256 前 16 碼 633d68cb2e3a5532；本機 pdftotext（一般與 -layout 兩種）轉文字後逐節讀。",
+          "reading_scope": "摘要、1、3（QR Code 結構）、4（修正成功率定理 4.1–4.3）、5.1–5.2（設定與結果、表 3–4、圖 6 說明）、附錄 E 與 H（證明）略讀。",
+          "locator": "3（功能圖樣供相機偵測，其餘為編碼區；資料與修正碼字以 8 位元為單位；格式資訊以 BCH 碼編等級與遮罩，複製兩份：一份在左上方框旁，一份分在左下與右上方框旁；剩餘位元不含資料；8 種遮罩依扣分規則選，罰長串同色或妨礙偵測的排列；40 種版本，版本 1、2、3 每邊 21、25、29 格）；4（假設位元錯誤均勻隨機；定理 4.2：可修碼字數 t＝修正碼字數/2 取整，成功率取決於『至少錯 1 位元的碼字』有幾個；定理 4.3：格式資訊為 15 位元 (15,5) BCH 碼、可修 3 位元，兩份任一份成功即可）；5.1（只在編碼區加錯，功能圖樣不動；翻轉錯誤＝隨機翻位元；突發錯誤＝隨機選 3×3 方塊全設成 1）；5.2（版本 3-L：翻轉超過 9 個或 3×3 方塊超過 4 個時，Transformer 成功率超過標準讀碼程式；翻 20 個位元時標準讀碼程式不回傳任何結果，因為它被設計成錯誤超過門檻就不輸出，以免讀錯；Transformer 一定會輸出，可能錯，例如把 inc 讀成 getting）。",
+          "summary": "千葉大學等的預印本先推導出：在隨機翻位元的情況下，QR Code 能不能修好，取決於被打到的「碼字」有幾個，而不是錯了幾格；格式資訊另有兩份、各自可修 3 位元。實驗中，常用的開源讀碼程式錯誤超過門檻時寧可什麼都不回傳；訓練過的 Transformer 卻能靠猜網域名稱的拼字規律讀出超過理論上限的碼，代價是有時讀錯。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "預印本；實驗只用網域名稱、固定版本與遮罩，且假設偵測已完成；Transformer 是研究用的解碼器，不是手機讀碼器。定理假設錯誤均勻隨機分布，不是真實污漬。作者姓名不寫。研究網：NET_CHIBA（單篇網；與其他來源無合著），預印本，覆核依作者自訂「預印本一律折 0.75」改為每卡 0.75。 覆核 SVX5：論文比較的「標準讀碼程式」是 ZBar 的 Python 包裝（pyzbar），不是 SX5-S004–S009 的 ZXing；所以「錯誤超過門檻就不輸出」是第二套開源程式的行為，作者自評「讀碼行為全來自一個函式庫」並不精確。Transformer 高過理論上限只在翻轉錯誤超過 9 個時成立；超過 4 個 3×3 方塊時只說高過 pyzbar。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://arxiv.org/pdf/2506.20305v1"
+        }
+      ]
+    },
+    {
       "id": "SRC-8ca44a9fa397b3b7",
       "url": "https://kairospower.com/external_updates/google-kairos-power-tva-collaborate-to-meet-americas-growing-energy-needs",
       "readings": [
@@ -94606,6 +95470,21 @@
           "locator": "docs/videos/so-thats-why/topic-checks/s2-A26-A38.md#A35",
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
+          "original_url": "https://support.apple.com/en-us/102119"
+        },
+        {
+          "canonical_url": "https://support.apple.com/en-us/102119",
+          "title": "How storage capacity is measured on Apple devices",
+          "publisher": "一家電腦公司的官方技術支援文章（美國）",
+          "version": "網頁版，頁面標示 Published Date: February 26, 2025",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 單次請求（SX6 seq=2，HTTP 200，117057 位元組，sha256 前 16 碼 93c796c69d5a4652），Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；本機去除 HTML 標籤後全文讀完（正文很短）。",
+          "reading_scope": "全文：Decimal system (base 10)、Binary system (base 2) 兩節與 Learn more 連結列。",
+          "locator": "Decimal system 節（包裝字樣「1GB = 1 billion bytes, and 1TB = 1 trillion bytes; actual formatted capacity less」；formatted capacity 的解釋與作業系統另占空間）；Binary system 節（1GB = 1,073,741,824 bytes、1TB = 1,099,511,627,776 bytes；iOS 10 及更早、OS X Leopard 及更早以二進位回報）",
+          "summary": "廠商的技術支援頁說明：儲存裝置製造商用十進位標容量，所以包裝上寫「1GB = 10 億位元組、1TB = 1 兆位元組，實際格式化後容量較少」；格式化本身與作業系統都會占掉空間。若用二進位算，1GB 是 1,073,741,824 位元組；部分 app 與舊版作業系統（iOS 10 及更早、OS X Leopard 及更早）以二進位回報容量。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "頁面沒有明寫現行版本作業系統用哪一套，只寫舊版用二進位；「新版改用十進位」是由文意推得，卡片只能說「這家公司說它的舊版系統用二進位算」。沒有給格式化占多少的數字。廠商頁，品牌不當主角，口播稱「一家電腦公司的說明」。研究網 NET_APPLE（機構頁單篇網）。 覆核者：卡與口播不念該公司系統名稱與版本號。",
+          "origin": "wave105-x105-20261118",
           "original_url": "https://support.apple.com/en-us/102119"
         }
       ]
@@ -95584,6 +96463,27 @@
       ]
     },
     {
+      "id": "SRC-8e67eae76510d636",
+      "url": "https://members.snia.org/document/dl/25903",
+      "readings": [
+        {
+          "canonical_url": "https://members.snia.org/document/dl/25903",
+          "title": "SFF-8447 Specification for LBA Count for Disk Drives, Rev 0.5",
+          "publisher": "SFF Committee（現為 SNIA SFF TA 技術工作組），2015-05-14",
+          "version": "Published Rev 0.5 PDF，15 頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 單次請求（SX6 seq=13，HTTP 200，103420 位元組，sha256 前 16 碼 41e46a510028d1c6），Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；網址取自搜尋結果；pdftotext -layout 轉文字後全文讀完。",
+          "reading_scope": "全 15 頁：封面與摘要、支持與棄權公司名單、修訂紀錄、Foreword、1 Scope、2 References 與 Definitions、3 General Description、4.1–4.3（含表 4-1、表 4-2）、5 虛擬碼、6 試算表公式。",
+          "locator": "2.5 Definitions（advertised capacity 以 IEC 60027-2 單位表示，例 250 GB＝250 000 000 000 bytes、3 TB＝3 000 000 000 000 bytes；GB＝10^9、GiB＝2^30、TB＝10^12）；3（為了不同供應商產品可互換，同一標示容量要對應同一 LBA 數；高容量碟 LBA 數取 2^21（512 位元組區塊）倍數，資訊性說明：容量為 1 GiB 的整數倍）；4.1.1（低容量 512 位元組區塊：LBA 數＝97 696 368＋1 953 504×(標示 GB−50)，末三位可被 8 整除；不符時標籤應註明）；4.2.1（高容量 >8 000 GB：LBA 數＝ceiling(標示容量/512, 2^21)）；表 4-1（10 TB、512 位元組、無 PI：19 532 873 728 個 LBA）；修訂紀錄 Rev 0.3（低容量公式等同 IDEMA LBA1-03）；支持名單（13 家公司投贊成票）",
+          "summary": "硬碟業界的規格書規定：標示容量用十進位位元組（1 TB＝10^12 位元組），再用固定公式換成硬碟要有幾個 512 位元組的區塊，好讓不同廠牌同容量的碟可以互換。照公式，標示 1 TB 的碟要有 1,953,525,168 個區塊，乘上 512 等於 1,000,204,886,016 位元組，比 1 兆還多約 2 億位元組；8 TB 以上的碟則把區塊數無條件進位到 2^21 的倍數，所以 10 TB 碟其實有 10,000,831,348,736 位元組，剛好是整數個 GiB。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "1 TB 的區塊數與位元組數、10 TB 的位元組數與 TiB 換算（約 931.5 GiB、約 9.096 TiB）是本研究依規格公式與表 4-1 自行計算，規格書只給公式與 10 TB 表；規格是業界自訂的 SFF 規格，不是法規，也不保證每一款產品照做（公式不符時規格要求標籤註明）。只適用 3.5 吋 160 GB 以上、2.5 吋 80 GB 以上的磁碟機，不涵蓋 SSD 與隨身碟。研究網 NET_SFF（產業規格單篇網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://members.snia.org/document/dl/25903"
+        }
+      ]
+    },
+    {
       "id": "SRC-8e75af6f2854f75c",
       "url": "https://esj.ne.jp/meeting/abst/59/P1-237A.html",
       "readings": [
@@ -96054,6 +96954,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://ls-jp.fujifilm.com/astaliftbrand/contents/development-story-of-white-jelly-aquarysta/conversion-to-cosmetics/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8f196e36613feb35",
+      "url": "https://houmukyoku.moj.go.jp/hiroshima/static/2-number_QA.htm",
+      "readings": [
+        {
+          "canonical_url": "https://houmukyoku.moj.go.jp/hiroshima/static/2-number_QA.htm",
+          "title": "山耕地番の解消に関するＱ＆Ａ",
+          "publisher": "廣島法務局（法務省）",
+          "version": "網頁（Word 轉 HTML，2011 年版）",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=18，HTTP 200，116961 位元組，sha256 前 16 碼 e758791fbc86ebbf，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；法務局官方網頁，本機去標籤後逐段全讀",
+          "reading_scope": "問 1–15 全讀。",
+          "locator": "問1（地番始於明治 6 年地租改正，原則全村或大字通號；廣島、山口有山地番與耕地番分別從 1 號編起而重複）；問2（不動產登記法 2 條 17 號、35 條；規則 97、98 條：登記所定地番區域、區域內起番）；問7（山耕地番約 470 萬筆，佔局內 72.0%；需變更地番者約 458 萬筆；平成 21 年度概算）；問11（住居表示實施地區地番變更不影響住址；未實施地區地番變更後新地番即住址）",
+          "summary": "地番是明治 6 年（1873）地租改正時開始給每一筆土地的號碼，由登記所在地番區域內編號；廣島與山口有些地方山林和田地各自從 1 號編起，同一個大字裡出現重號，廣島法務局轄內約 470 萬筆、佔 72%。沒實施住居表示的地方，地番一改，住址就跟著改。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "山耕重號是廣島、山口的地方特例，不代表全國；筆數為 2009 年度概算。研究網 NET_MOJ。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://houmukyoku.moj.go.jp/hiroshima/static/2-number_QA.htm"
         }
       ]
     },
@@ -97460,6 +98381,27 @@
           },
           "origin": "wave74-food-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10714952/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-90e35d9079cc8a08",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5424744/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/s17040867",
+          "title": "Low Power Near Field Communication Methods for RFID Applications of SIM Cards",
+          "publisher": "Sensors 17(4):867（2017）；中國科學院深圳先進技術研究院、華中科技大學光學與電子資訊學院",
+          "version": "出版社開放取用版（CC BY 4.0；Europe PMC 完整 JATS XML 全文）",
+          "accessed_on": "2026-11-18",
+          "read_via": "本工作夾 fetch.sh，Mokaair-editorial/1.0 標頭下載（SX1 seq=13，HTTP 200，95354 位元組，sha256 前 16 碼 9a5af644f3714c2a），與前一筆請求間隔 1.2 秒以上；Europe PMC 全文端點（PMCID 取自 Europe PMC 搜尋 seq=11）；本機解析 JATS XML 後讀。",
+          "reading_scope": "1 Introduction、2 An Improved RFID SIM Structure、3 Low Frequency Data Transmission Model（式 1–3）、5 Implementation and Experimental Results（表 1、表 2）、6 Conclusions。第 4 節電路設計細節略讀。",
+          "locator": "1（手機以 13.56 MHz NFC、SIM 卡安全元件做支付；13.56 MHz 線圈太大，難放進 SIM 卡，金屬機殼也會影響）；2（2.45 GHz 晶片可達數十公尺、工作距離不可控；公車、地鐵票款等短距場景須把交易距離限制在約 10 cm，因此加 2 kHz 低頻近場指示）；3 式 1（圓線圈軸上磁場 H = INR²/[2(R²+X²)^{3/2}]）；表 1（空氣中工作距離：micro-SIM 13.5／9.2／12.7 cm，nano-SIM 12.0／8.0／11.4 cm，三種調變）；表 2（nano-SIM 基頻模式 −40 °C 11.2 cm、0–85 °C 12.0 cm）。",
+          "summary": "中國的研究團隊想讓手機 SIM 卡用 2.45 GHz 做票卡支付，但 2.45 GHz 能傳到數十公尺、距離管不住，而公車、地鐵的付款必須限在約 10 公分內，所以另加一個 2 kHz 的低頻『近場閘門』，讀卡機的低頻磁場只在近距離夠強，SIM 卡收到才放行交易；實測工作距離約 8–13.5 公分。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是特定設計方案的工程論文，不代表台灣或一般手機支付做法；『約 10 cm』是作者對應用需求的敘述，沒有引用規範條文。研究網：NET_H_SIAT（單篇網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5424744/fullTextXML"
         }
       ]
     },
@@ -99641,6 +100583,27 @@
       ]
     },
     {
+      "id": "SRC-948308f13fc5af2f",
+      "url": "https://cdn.jsdelivr.net/npm/@zxing/core@0.3.0-dev.736e254/src/core/qrcode/detector/Detector.ts",
+      "readings": [
+        {
+          "canonical_url": "npm @zxing/core@0.3.0-dev.736e254 /src/core/qrcode/detector/Detector.ts",
+          "title": "Detector.ts（ZXing 偵測與透視校正）",
+          "publisher": "開源條碼函式庫 ZXing（Apache 2.0 授權，原 Java 版的 TypeScript 移植，npm 套件 @zxing/core 0.3.0-dev.736e254，檔頭 Copyright 2007 ZXing authors）",
+          "version": "原始碼（套件檔案清單由 jsDelivr 公開 API seq=9 取得，HTTP 200，13808 位元組，sha256 前 16 碼 b09ad46cfd7fdc9d；網址取自清單，不是猜的）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒）SX5 seq=22，HTTP 200，18085 位元組，sha256 前 16 碼 402c0a62a5adeb06；純文字原始碼，本機逐行讀註解與主要函式。",
+          "reading_scope": "全檔：類別註解、processFinderPatternInfo、createTransform、computeDimension、calculateModuleSize 系列、sizeOfBlackWhiteBlackRun、findAlignmentInRegion。",
+          "locator": "類別註解（可偵測旋轉、歪斜或部分遮住的碼）；第 98–131 行（由三個方框中心推估邊長；程式註解「Anything above version 1 has an alignment pattern」：版本 2 起才有對齊圖樣，程式只找右下那一個；以三方框推出「右下角若有方框會在哪」，往左上退 3 格估對齊圖樣位置，搜尋半徑 4、8、16 逐步放大；找不到「就不用它硬試」）；createTransform（四點對四點透視轉換，沒有對齊圖樣就自行推右下角）；computeDimension（第 202–221 行：兩組方框中心距離除以模組寬取平均加 7，再修成除以 4 餘 1 的邊長，餘 3 判定失敗）；第 260 行（方框寬除以 7 得模組寬）。全檔沒有讀取定時線的步驟。",
+          "summary": "這套程式定好三個方框後，用方框的寬度推一格有多大、用方框之間的距離推整張碼有幾格，再找右下方的小對齊方框，最後做透視轉換把斜拍的四邊形拉回正方形；小方框找不到也會照樣嘗試。這個偵測檔案裡沒有用定時線來數格子。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是一套廣泛使用的開源讀碼程式的實作，不是國際標準本身；其他讀碼程式（含手機內建）不一定照同樣做法。只讀這一版移植的原始碼，未對照原 Java 版。程式作者姓名不寫。研究網：NET_ZXING（S004–S009 同網，封頂 2.0）。 覆核 SVX5：作者原寫「版本 1 以上」，程式原文是 above version 1，即版本 2 起，已改。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://cdn.jsdelivr.net/npm/@zxing/core@0.3.0-dev.736e254/src/core/qrcode/detector/Detector.ts"
+        }
+      ]
+    },
+    {
       "id": "SRC-948a1e1c2a959825",
       "url": "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:12769706&metadataPrefix=pmc",
       "readings": [
@@ -100433,6 +101396,27 @@
       ]
     },
     {
+      "id": "SRC-95cbfaff8a870553",
+      "url": "https://www.accc.gov.au/system/files/guidance-broadband-speed-claims-retail-service-providers.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.accc.gov.au/about-us/publications/guidance-on-broadband-speed-claims-for-retail-service-providers",
+          "title": "Broadband Speed Claims — Industry Guidance（Version 5, July 2025）",
+          "publisher": "澳洲競爭及消費者委員會（ACCC）",
+          "version": "第 5 版 2025 年 7 月（CC BY 4.0 AU）；39 頁 PDF",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 單次請求（SX6 seq=20，HTTP 200，369722 位元組，sha256 前 16 碼 b00c9406a290d688），Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；PDF 連結取自 seq=19 的出版品頁（seq=17、18 為專案總覽與 2025 修訂頁，用來找到正式版連結）；pdftotext -layout 轉文字後讀相關各節。",
+          "reading_scope": "版本紀錄、目錄、1 Introduction、Principle 1 全文（3.1–3.8）、Principle 2（3.9 與兩個例子）、Principle 4（3.21–3.25）、Attachment A 第 1–21 段（標籤、量測方法、抽樣、上傳速度估計）。第 2 章背景、Principle 3／5／6、Attachment B–D 只瀏覽。",
+          "locator": "3.3（typical busy period speed＝零售方案整體在尖峰時段每小時通常提供的速度，量的是住戶端數據機到最常被存取內容所在資料中心之間；住宅尖峰時段每天晚上 7 點至 11 點）；3.7（應避免「最高可達」up to 的速度宣稱）；3.9 例 A（批發規格約 1000/100 Mbps、批發商說多數時候 800–850 Mbps，零售商標離峰 800 Mbps）；3.22(d)–(f)、3.24–3.25（數據機／路由器的 Wi-Fi 標準或有線埠可能使用戶無法用到方案最高速度，應揭露）；Attachment A 第 6 段（每小時至少量一次、56 個小時平均、取第三低者）；第 9 段（至少 75 條線路、14 天）；第 17–18 段（澳洲寬頻量測計畫資料顯示固網上傳速度一貫比批發規格最高值低 10–15%；未自行測試者可用打 85 折估計）；第 20 段（網路業者可超額配置上傳速度以涵蓋網路協定負擔）",
+          "summary": "澳洲的消費者主管機關要求業者標示「尖峰時段通常速度」：量的是晚上 7 點到 11 點、家中數據機到資料中心之間的速度，並建議別用「最高可達」。指引也寫：量測資料顯示固網上傳速度一貫比批發規格的最高值低 10–15%，業者若想更接近規格值，可以多配一點頻寬來涵蓋網路協定的負擔；家裡的數據機、路由器與 Wi-Fi 也可能讓人用不到方案最高速度，業者應揭露。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "澳洲指引，不適用台灣；非強制（違反的是消費者法而非指引本身）。10–15% 是上傳速度的觀察，不能直接套到下載；「協定負擔」只在第 20 段一句帶過，沒有量化。卡片只轉述「主管機關怎麼定義與量測」，不做方案或設備的消費建議。研究網 NET_ACCC（機構文件）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.accc.gov.au/system/files/guidance-broadband-speed-claims-retail-service-providers.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-95cc0ef5eb8e7f8f",
       "url": "https://basc.pnnl.gov/resource-guides/condensation-control-walls-cold-weather",
       "readings": [
@@ -101216,6 +102200,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.ettoday.net/news/20250723/3000664.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9723c53073520a09",
+      "url": "https://www.corada.com/documents/ada-aba-guidelines-preamble/707-6-3",
+      "readings": [
+        {
+          "canonical_url": "https://www.access-board.gov/",
+          "title": "36 CFR Parts 1190 and 1191, ADA and ABA Accessibility Guidelines – Preamble (Discussion of Comments and Changes), 707 Automatic Teller Machines and Fare Machines",
+          "publisher": "美國無障礙委員會 ADA 與 ABA 無障礙準則最終規則前言（評論與修改說明）；corada.com（無障礙產品公司網站）轉載。轉載頁本身沒有寫公布日期",
+          "version": "聯邦公報前言的第三方轉載（原始聯邦公報頁未請求）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 依序第 12 筆請求（SX7 seq=12，HTTP 200，26804 位元組，sha256 前 16 碼 681679db88ff4c72），Mokaair-editorial/1.0 標頭、間隔 1.2 秒；去除 HTML 標籤後讀 707 全節。",
+          "reading_scope": "第 7 章 707 提款機與售票機前言全節：707.6 輸入、707.6.1 輸入控制、707.6.2 數字鍵、707.6.3 功能鍵、707.8 時間延長等段落。",
+          "locator": "707.6 第 1 段（草案原訂鍵面凸起 1/25 吋、鍵距等尺寸，業界認為過嚴，改為表現型要求）；707.6.2 段（草案只規定遞增的電話 12 鍵排列；提款機與銀行業表示數字可以遞減排列，與標準電腦鍵盤相同，也是加拿大等其他國家標準的要求；因提款機製造商跨國經營，與他國標準一致是業界關切；最終規則容許遞增或遞減）；707.6.3 段（『更正』鍵符號改為凸起左箭頭以與加拿大標準一致；撤回功能鍵顏色規定以免與他國標準衝突）",
+          "summary": "美國原本想讓提款機一律用電話的 1-2-3 在上排法；銀行業與提款機業者回覆說電腦鍵盤與加拿大等國的標準是 7-8-9 在上，跨國製造的機器需要一致，最後條文改成兩種都可以。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "讀的是第三方轉載的前言，不是聯邦公報原頁；文字與本次讀到的條文（SX7-S006）一致。前言轉述的是業界意見與委員會的決定，不是實驗結果。研究網 NET_USAB。 覆核補註（SVX7）：作者原寫的『2004 年 7 月 23 日』不在 cache 頁裡，屬作者背景知識，卡上已刪去日期；corada 是商業網站，只在文字與 WBDG 條文頁及委員會官方說明一致的範圍內採用。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.corada.com/documents/ada-aba-guidelines-preamble/707-6-3"
         }
       ]
     },
@@ -102572,6 +103577,27 @@
       ]
     },
     {
+      "id": "SRC-98d78edd7153cf67",
+      "url": "https://www.courts.go.jp/hanrei/35371/detail2/index.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.courts.go.jp/hanrei/35371/detail2/index.html",
+          "title": "最高裁判所第一小法廷 平成19年11月8日判決（平成18(受)826 特許権侵害差止請求事件）裁判例結果詳細",
+          "publisher": "日本最高裁判所（裁判所網站裁判例資料庫）",
+          "version": "官方裁判例頁（判示事項、裁判要旨）＋同頁連結的判決全文 PDF",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 請求 seq=10，HTTP 200，64683 位元組，sha256 前 16 碼 4e232c41f6364903；網址取自搜尋結果；全文 PDF 連結取自本頁（seq=11，HTTP 200，33957 位元組，ee0d44a244fd381f），但該 PDF 的日文字型對應表無法以 pdftotext／pypdf 正確解出（輸出亂碼），所以實際只讀到官方頁的判示事項 1–6 與裁判要旨 1–6。 覆核 SVX3：以 pdfminer.six（內含 Adobe-Japan1 CMap）解作者 cache/011.bin（雜湊 ee0d44a244fd381f，未重抓），成功取出判決全文約 13 頁（主文、事實關係、原審判斷、本院判斷 4(1)–(3)、全員一致）；官方頁另由覆核重抓（SVX3 seq=5，HTTP 200，64683 位元組，雜湊相同 4e232c41f6364903）。",
+          "reading_scope": "判示事項 1–6、裁判要旨 1–6；判決全文（覆核解碼）：2(3) 被上告人製品的構造與使用後狀態（無補充開口、殘留墨水約 1 週至 10 天乾固）、2(4) 回收品的製程六步、2(5) 原廠以一次用完為由推薦新品並回收空匣、3 原審兩類型基準、4(1)–(3) 本院判斷與結論、5 全員一致。",
+          "locator": "裁判要旨 1（國內讓渡即消盡）；要旨 2–3（加工或更換零件致失去同一性、等於新製造時可行使權利；判斷時綜合考量產品屬性、發明內容、加工態樣與交易實情）；要旨 6（回收空墨水匣洗淨、注入新墨水的產品：不只是補充墨水，而是把構造上不預定再充填的墨匣變形成可充填，並使失去的發明本質部分重新具備；判定為新製造，准許禁止進口販賣與銷毀）；全文 2(3)ウ（1 週～10 日乾固）、2(4)ウ（①開孔②洗淨③封住供墨口④注墨⑤塞孔⑥貼標）、4(3)（墨水本身擔任界面阻擋空氣的技術角色；開孔為再填所不可缺）、5（裁判官全員一致）",
+          "summary": "日本最高法院 2007 年判決：同樣承認「賣出就消盡」，但另加一條——如果回收業者對空墨水匣的加工，等於重新製造出一個失去同一性的專利品，專利權人仍可行使權利。本案回收品是把構造上不打算再填的墨水匣改造成可以再填、讓已失去的發明關鍵部分重新發揮作用，因此被判為新製造，原廠可要求停止進口販賣並銷毀。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "判決全文由覆核以另一套解碼工具從作者的同一份 PDF 取出，並與官方要旨逐條相符；作者本人只讀到要旨。結論是個案判斷，不能說成「日本禁止再填墨水」。全文中的價格事實（原廠品與回收品零售價）不入稿，以免變成價格比較。法官與代理人姓名不入稿。研究網 NET_JPSC。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.courts.go.jp/hanrei/35371/detail2/index.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-98d9100f46492e6e",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4448846/fullTextXML",
       "readings": [
@@ -102768,6 +103794,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "http://hyperphysics.phy-astr.gsu.edu/hbase/atmos/rbowpath.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-991b2f0827db20fc",
+      "url": "https://www.city.sendai.jp/kosekijumin/kurashi/tetsuzuki/koseki/jisshi/aramashi.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.city.sendai.jp/kosekijumin/kurashi/tetsuzuki/koseki/jisshi/aramashi.html",
+          "title": "住居表示のあらまし",
+          "publisher": "宮城縣仙台市 市民局戸籍住民課",
+          "version": "網頁，更新日 2026 年 7 月 30 日",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=4，HTTP 200，26661 位元組，sha256 前 16 碼 faea65783ea15594，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；仙台市官方網頁，本機去標籤後逐段全讀",
+          "reading_scope": "制度概要、實施地區住所寫法（含 4 層以上共同住宅）、未實施地區寫法、新建建物手續與注意事項、證明書、各區窗口地址表全讀。",
+          "locator": "制度概要段（地番排列不規則、町界入組、找不到訪問處）；實施地區表記（○○町○番○號、4 層以上共同住宅含房號）；未實施地區例（若林區保春院前丁 3 番地の1）；新建手續（建築確認後寄出新築屆出明信片、必要時現地調查後決定住址、竣工前 2–3 週）；注意事項（同一土地改建若改變出入口，住址可能改變）；窗口表（若林區まちづくり推進課 仙台市若林区保春院前丁3番地の1）",
+          "summary": "仙台市說明：住居表示依建物出入口順序編號；實施地區以外，土地的地番直接當住址（若林區役所本身的地址就是「3番地の1」）。新建房屋要交屆出、市府必要時到現場看才決定號碼；同一塊地上改建，只要出入口換了位置，住址就可能改變。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只代表仙台市的運作；未給全市實施比例。研究網 NET_SENDAI。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.city.sendai.jp/kosekijumin/kurashi/tetsuzuki/koseki/jisshi/aramashi.html"
         }
       ]
     },
@@ -106053,6 +107100,27 @@
       ]
     },
     {
+      "id": "SRC-9d9198b0b3b8956e",
+      "url": "https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.161.2001.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.itu.int/rec/T-REC-E.161-200102-I",
+          "title": "Recomendación UIT-T E.161 (02/2001)：Disposición de las cifras, letras y símbolos en los aparatos telefónicos y en otros dispositivos que pueden utilizarse para tener acceso a una red telefónica",
+          "publisher": "國際電信聯盟電信標準化部門（ITU-T）第 2 研究組；2001 年 2 月 2 日核准。美國聯邦公報辦公室作為 47 CFR 80.1101(b)(2) 引用標準的公開本，由 law.resource.org 轉存",
+          "version": "ITU-T E.161 (02/2001) 西班牙文正式版全文（ITU 官方頁未請求；canonical_url 取自搜尋結果）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 依序第 2 筆請求（SX7 seq=2，HTTP 200，1508896 位元組，sha256 前 16 碼 67ff833e43daa947），Mokaair-editorial/1.0 標頭、間隔 1.2 秒；pdftotext 抽全文，西班牙文原文逐節讀，自行翻譯。",
+          "reading_scope": "封面與美國聯邦引用聲明、摘要、來源說明、1 數字與字母的使用、2 撥盤、3 按鍵（3.1 十鍵、3.2 十二鍵、3.5 符號位置、3.6 『5』鍵的觸覺標記）、4 附加按鍵開頭、參考文獻；腳註 1–5 全讀。",
+          "locator": "摘要（修訂加入建議『5』鍵設觸覺標記，以協助盲人與視障者）；3.1.1（標準排列 1-2-3／4-5-6／7-8-9／0；『大量研究顯示此排列撥號時間較短、錯誤率較低』，腳註 1 指向 1982 年瑞典 TELE 期刊的文獻回顧；2×5、5×2 排列的註：使用者表現『略差』；多功能終端的獨立數字小鍵盤首選標準排列；例外：主要用於資料輸入的裝置可用第一與第三列對調的排列，腳註 3 指向 ISO/IEC 9995-4 數字區）；2.2（2 ABC … 9 WXYZ）；3.6（建議『5』鍵設觸覺標記，也為了光線不足時撥號；首選位置在鍵面中央；首選形狀為圓點，高 0.6 ± 0.2 mm、直徑 1.5 ± 0.2 mm；小鍵盤可改位置；腳註 5：本條內容取自 ETSI ES 201 381 V1.1.1）",
+          "summary": "ITU 的電話按鍵建議把 1-2-3 放在最上排定為標準，理由是研究顯示撥得較快、錯得較少；但它也明文容許『主要用來輸入資料』的裝置把第一列與第三列對調，也就是 7-8-9 在上，並指向 ISO 的鍵盤數字區標準。2001 年版另外建議在 5 上放一個 0.6 mm 高、1.5 mm 寬的小圓點，這一條直接取自歐洲 ETSI 的標準。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "ITU-T 建議書本身是建議（recomienda），不是法律；美國聯邦法規只在 47 CFR 80.1101（海事無線電）引用它。讀的是西班牙文版，中文為自行翻譯。『大量研究』只給了一篇 1982 年文獻回顧，本文沒有列數字。3.6 與 SX7-S003 是同一段文字的轉載，不另算一條獨立事實（見 0704 的折算）。研究網 NET_ITU。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.161.2001.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-9d94957d25db4501",
       "url": "https://arxiv.org/pdf/1701.06818",
       "readings": [
@@ -107484,6 +108552,27 @@
           },
           "origin": "wave74-food-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7837699/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9fa0d75650599017",
+      "url": "https://www.city.sapporo.jp/kobunshokan/kankobutsu/bunkashiryoshitsunews/documents/newsletter12.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.city.sapporo.jp/kobunshokan/kankobutsu/bunkashiryoshitsunews/documents/newsletter12.pdf",
+          "title": "文化資料室ニュース 第12号（2010年11月）",
+          "publisher": "札幌市文化資料室（現札幌市公文書館系統）",
+          "version": "PDF 館刊",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=10，HTTP 200，975958 位元組，sha256 前 16 碼 e4f9db5156d2e380，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；札幌市官方 PDF，pdftotext -layout 轉文字後逐頁全讀",
+          "reading_scope": "第 1 頁「札幌市街図」條丁目考證全文；其餘頁（時計台門柱）略讀。",
+          "locator": "第 1 篇：明治 14 年 6 月 25 日開拓使把以國郡名命名的「通」與番地改為條與丁目（開拓使布令類聚）；改正理由（町名只是通路名、町數增加郡名不夠、東西南北的通在創成川或大通兩側各有不同名稱而煩雜、郡名難讀）；札幌區役所詢問新町名是通名還是區域，布達未示區域；明治至大正年間史料對同一店舖的條數記載不一（南 1 條／南 2 條）",
+          "summary": "札幌在 1881 年把原本以國郡名命名的街道改成「條」「丁目」；理由之一是同一條路在創成川或大通兩側叫不同名字太亂。但當時連區役所都不確定新名字指的是一條路還是一塊區域，之後幾十年同一家店的地址在不同文件裡差了一條。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "館刊考證文章，作者自己保留多種可能（誤記、誤植或區域曾改）；本卡不寫「條＝大通以北第幾條」的精確規則，因本文未明寫。研究網 NET_SAPPORO（與 S008 同機構），從嚴 0.75。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.city.sapporo.jp/kobunshokan/kankobutsu/bunkashiryoshitsunews/documents/newsletter12.pdf"
         }
       ]
     },
@@ -110261,6 +111350,57 @@
       ]
     },
     {
+      "id": "SRC-a3d88efc3a45c483",
+      "url": "https://usb.org/sites/default/files/usb_20_20250603.zip",
+      "readings": [
+        {
+          "canonical_url": "https://usb.org/sites/default/files/usb_20_20250603.zip",
+          "title": "Universal Serial Bus Specification Revision 2.0（壓縮包內 usb_20.pdf）",
+          "publisher": "Compaq、Hewlett-Packard、Intel、Lucent、Microsoft、NEC、Philips（USB 2.0 Promoter Group），2000-04-27；USB-IF 文件庫公開",
+          "version": "USB-IF 文件庫 usb_20_20250603.zip 內的 usb_20.pdf（5,983,789 位元組，sha256 前 16 碼 d39698a33486c399）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 工具（Mokaair-editorial/1.0 標頭、請求間隔 1.2 秒）下載：SX4 seq=3，HTTP 200，14489344 位元組，sha256 前 16 碼 5fe9c53c04033818；下載連結取自 USB-IF 文件庫頁（seq=2，HTTP 200，105407 位元組）上的 href；本機解壓後以 pdftotext 轉文字讀。",
+          "reading_scope": "版本沿革（1.0 1996-01-15、1.1 1998-09-23、2.0 2000-04-27）；致謝名單；第 1 章 1.1 Motivation、1.2；第 3 章 3.1 Goals；4.2.1 Electrical（四線纜線）；第 6 章 6.1 Architectural Overview、6.2 Keyed Connector Protocol 與圖 6-1、6.4.4 Prohibited Cable Assemblies、6.5 USB Icon 與 6.5.1 USB Icon Location、圖 6-6、6.5.2 表 6-1、表 6-7 耐久列。第 7–11 章電氣與協定未讀。",
+          "locator": "沿革表；1.1（三項動機：PC 接電話、易用性——serial/parallel、鍵盤滑鼠搖桿介面沒有隨插即用、埠擴充——每加一種功能就定義一種新介面）；3.1（low-cost solution 等目標）；4.2.1（四線纜線，訊號走其中兩條）；6.1（USB Icon 提供觸覺回饋，讓人容易找到正確方向）；6.2（keyed connector：A 型與 B 型外形不同，A 永遠朝主機、B 永遠朝裝置）；6.5.1（圖示壓印在插頭『頂面』凹槽內，為必要；插座『should be oriented』讓圖示在插入時看得見）；表 6-1（1 VBUS、2 D−、3 D+、4 GND）；表 6-7（耐久 1,500 次插拔）",
+          "summary": "USB 2.0 規格寫明當初的動機：舊 PC 的序列埠、平行埠、鍵盤滑鼠搖桿介面都不能隨插即用，每多一種周邊就多一種介面。纜線只有四條線（電源、D−、D+、地線）。規格所謂的防呆是讓 A、B 兩種接頭外形不同、不會插錯主機端或裝置端；上下方向則交給插頭頂面那個凸起的 USB 圖示，插座的擺向只用「should」建議讓圖示看得見。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "規格不說明為什麼不做成兩面插；『should』是建議不是強制，不能據此推論實際產品的插座擺向比例。研究網：NET_USBIF。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://usb.org/sites/default/files/usb_20_20250603.zip"
+        },
+        {
+          "canonical_url": "https://usb.org/sites/default/files/usb_20_20250603.zip",
+          "title": "USB 2.0 Specification Engineering Change Notice (ECN) #1: Mini-B connector",
+          "publisher": "USB-IF，2000-10-20",
+          "version": "同一壓縮包內 ecn1-usb20-miniB-revd.pdf（981,022 位元組，sha256 前 16 碼 051d8c81b51c3166）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 工具（Mokaair-editorial/1.0 標頭、請求間隔 1.2 秒）下載：SX4 seq=3，HTTP 200，14489344 位元組，sha256 前 16 碼 5fe9c53c04033818；與 SX4-S002 同一次下載，解壓後讀內附 PDF。",
+          "reading_scope": "首頁 Reason／Summary／Benefits／Assessment of Impact 全段；改寫後的 6.2 Keyed Connector Protocol；表 6-7（改版）耐久與拔出力列。",
+          "locator": "Reason for ECN（B 型接頭對手機等新一代手持裝置太大）；Assessment of Impact（『兩種標準線材選擇，可能造成使用者困惑，但可以靠使用者教育緩解』）；表 6-7（耐久 1,500 次，mini-B 5,000 次；mini-B 拔出力 5,000 次後至少 3 N）",
+          "summary": "2000 年 10 月，USB 規格為手機等小裝置加了 Mini-B 接頭。變更通知自己承認：多一種標準線材「可能造成使用者困惑」，並說可以靠教育使用者來緩解。Mini-B 的耐久要求是 5,000 次插拔，原本的標準接頭是 1,500 次。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只涵蓋 Mini-B；Mini-A 不在這份文件。研究網：NET_USBIF。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://usb.org/sites/default/files/usb_20_20250603.zip"
+        },
+        {
+          "canonical_url": "https://usb.org/sites/default/files/usb_20_20250603.zip",
+          "title": "Universal Serial Bus Micro-USB Cables and Connectors Specification, Revision 1.01",
+          "publisher": "USB-IF（Cable & Connector Work Group，編者來自兩家手機公司），2007-04-04",
+          "version": "同一壓縮包內 Micro-USB_final/Micro-USB_1_01.pdf（1,231,932 位元組，sha256 前 16 碼 64157f55767eb32a）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 工具（Mokaair-editorial/1.0 標頭、請求間隔 1.2 秒）下載：SX4 seq=3，HTTP 200，14489344 位元組，sha256 前 16 碼 5fe9c53c04033818；與 SX4-S002 同一次下載，解壓後讀內附 PDF。",
+          "reading_scope": "沿革表、貢獻者名單、第 1 章 1.1–1.4、3.5 Plug Overmolds、表 4-2 與 ID 腳說明、耐久與拔出力段。",
+          "locator": "1.1（裝置小到無法用標準 USB 元件；手機與攜帶式裝置市場的耐久要求超過現有接頭）；1.3（裝置薄到 Mini-USB 放不下；要求耐久超過 10,000 次；Mini-USB 無法修改又保持相容）；3.5（Micro-A 外殼矩形、Micro-B 外殼帶倒角，讓消費者辨認）；表 4-2（五個腳位，第 4 腳為 ID）；耐久段（10,000 次插拔後接觸電阻變化）",
+          "summary": "2007 年的 Micro-USB 規格說，手機已經薄到放不下 Mini-USB，而且手機市場要求的耐久超過現有接頭，所以另訂一種：耐久超過一萬次，五個腳位多了一條辨識用的 ID 腳。為了讓人分得出 A 和 B，Micro-B 的外殼故意做成帶倒角的梯形。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "倒角是為了區分 Micro-A 與 Micro-B，並非專為上下方向而設；本卡不寫成『倒角讓人一眼看出正反』。研究網：NET_USBIF。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://usb.org/sites/default/files/usb_20_20250603.zip"
+        }
+      ]
+    },
+    {
       "id": "SRC-a3df01681948da17",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11794370/fullTextXML",
       "readings": [
@@ -110314,6 +111454,21 @@
           "locator": "docs/videos/so-thats-why/season2/A36.md#A36",
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
+          "original_url": "https://www.qrcode.com/en/about/error_correction.html"
+        },
+        {
+          "canonical_url": "https://www.qrcode.com/en/about/error_correction.html",
+          "title": "Error Correction Feature（QRcode.com）",
+          "publisher": "QR Code 開發公司官方技術說明頁（日本，一家汽車零件集團旗下的自動辨識設備公司）",
+          "version": "英文網頁現行版；等級表為頁內圖片",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒）SX5 seq=1，HTTP 200，4842 位元組，sha256 前 16 碼 44e25f08579ea5f6；本機去標籤後全文讀；頁內等級表是圖片 errorCorrectionTable.png，另以 seq=3（HTTP 200，4603 位元組，sha256 前 16 碼 2848ac6020b1ffdc）下載後以影像直接判讀。",
+          "reading_scope": "全頁正文（等級選擇、Error Correction Feature 一節與註腳）與等級表圖片全部。",
+          "locator": "導言段（四種等級、等級越高能修越多但碼越大、工廠髒污環境選 Q 或 H、乾淨且資料多選 L、最常用 M）；等級表圖片（L 約 7%、M 約 15%、Q 約 25%、H 約 30%）；表註（以全部碼字計，一個碼字 8 位元）；Error Correction Feature 段（100 個資料碼字中要修 50 個需 100 個 RS 碼字，總 200 個中可修 50 個＝25%，對應 Q；不以資料碼字的 50% 表示，因為髒污不只落在資料碼字上）；註腳（RS 碼用於音樂 CD，原為人造衛星與行星探測器對抗通訊雜訊而發展，以位元組為單位修正，適合集中的突發錯誤）。",
+          "summary": "開發公司自己的說明：QR Code 在原資料後加上 Reed-Solomon 修正碼字，四種等級約可救回全部碼字的 7%、15%、25%、30%；要修正一個碼字需要兩個修正碼字，所以百分比是以「全部碼字」而不是圖形面積計；並說明這種碼以位元組為單位修正，適合集中的突發錯誤。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "企業官方頁，屬推廣性技術說明，百分比標明為約略值（Approx），沒有交代版本與分塊的細節；「適合集中的突發錯誤」是一句定性陳述，沒有實驗數據；等級表只存在於圖片中。研究網：NET_DENSO（開發公司本身；與 SX5-S002、S003 同網）。",
+          "origin": "wave105-x105-20261118",
           "original_url": "https://www.qrcode.com/en/about/error_correction.html"
         },
         {
@@ -111904,6 +113059,21 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sec.gov/Archives/edgar/data/47217/000004721725000071/hpq-20251031.htm"
+        },
+        {
+          "canonical_url": "https://www.sec.gov/Archives/edgar/data/47217/000004721725000071/hpq-20251031.htm",
+          "title": "HP Inc. Form 10-K, fiscal year ended October 31, 2025",
+          "publisher": "美國證券交易委員會 EDGAR（申報公司：美國一家上市印表機與電腦公司；申報日 2025-12-10，accession 0000047217-25-000071）",
+          "version": "EDGAR 原始申報 HTML（inline XBRL）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 請求 seq=16，HTTP 200，3530509 位元組，sha256 前 16 碼 31d38fa13adfde7f；申報編號由 EDGAR 公開 API data.sec.gov/submissions/CIK0000047217.json（seq=15，HTTP 200，163592 位元組，0d8781c74d68b3fe）的 10-K 清單取得；本機去標籤成純文字後逐段讀。",
+          "reading_scope": "Item 1 Business（Printing 三個事業單位定義、Supplies 定義、Competition 一段）；Item 1A Risk Factors 中策略與執行風險一段（big tank、訂閱）、競爭風險一段（non-original supplies、technological protection measures）；Item 7 MD&A 的 Printing 與 Personal Systems 兩節（營收、營業利益、各事業單位表與說明）；附註 Litigation and Contingencies 的「Legal Proceedings re Authentication of Supplies」一段。其餘財務附註未讀。",
+          "locator": "Item 7 Printing 表（Net revenue 16,702／17,338／18,029；Earnings from operations 3,118／3,290／3,399；18.7%／19.0%／18.9%）；business unit 表（Supplies 10,916／11,295／11,452、Commercial Printing 4,633、Consumer Printing 1,153，單位百萬美元）；Personal Systems 表（38,532、2,054、5.3%）；Supplies 營收減 3.4%「installed base and usage」；Item 1A 策略段（big tank 'higher initial margin'…'lower overall device lifetime profitability'；recurring revenue 'forego upfront revenue'）；Item 1A 競爭段（'may not be able to prevent the use of imitation print supplies… using technological protection measures'）；附註 Authentication of Supplies（2016 起美、義、以色列、荷蘭、澳、紐；荷蘭上訴法院 2024-11-19；2025-02-18 向荷蘭最高法院上訴；伊利諾州集體訴訟 2025-09-30 駁回但准修訴）",
+          "summary": "一家美國大型印表機公司 2025 財年年報：印表機部門營收 167.0 億美元中，耗材（墨水、碳粉匣、紙材、工業與 3D 耗材）占 109.2 億美元，商用與家用印表機硬體合計 57.9 億美元；印表機部門營業利益率 18.7%，同公司個人電腦部門為 5.3%。風險因素寫明：大墨水槽機種初始毛利較高，但不會帶來高毛利墨匣的後續銷售，整機生命週期獲利可能較低；改走訂閱可能要放棄前期營收。附註列出 2016 年以來各國針對墨匣認證機制（韌體更新、仿製晶片）的訴訟與調查，其中荷蘭上訴法院 2024 年判該機制不違法。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "Supplies 包含雷射碳粉、媒材、大型工業與 3D 列印耗材，不等於家用噴墨墨水；年報不分拆耗材與硬體各自的利潤，所以「耗材賺、硬體賠」不能由本年報直接證明，只能說營收結構與部門利益率。big tank 一段是公司自述的風險陳述（may），不是實際數字。訴訟段為被告公司自己的描述。品牌與人名一律不入稿；本研究網與 SX3-S002 同屬該公司申報。研究網 NET_HPCO（覆核合併 S001、S002、S004，封頂 2.0）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.sec.gov/Archives/edgar/data/47217/000004721725000071/hpq-20251031.htm"
         }
       ]
     },
@@ -112607,6 +113777,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.thatsatrademark.com/blog/venti"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a7ed057db39bc53b",
+      "url": "https://www.post.japanpost.jp/zipcode/zipmanual/p03.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.post.japanpost.jp/zipcode/zipmanual/p03.html",
+          "title": "郵便番号・バーコードマニュアル：郵便番号制の目的",
+          "publisher": "日本郵便株式会社",
+          "version": "HTML 版手冊頁 p03",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=15，HTTP 200，34675 位元組，sha256 前 16 碼 4f593db37bc4f955，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；日本郵便官方網頁，本機去標籤後逐段全讀",
+          "reading_scope": "本頁全讀。",
+          "locator": "目的（擴大機械化、人件費類經費約佔 8 成）；平成 10 年 2 月導入新郵便番號制",
+          "summary": "日本在 1998 年 2 月改用新郵遞區號制，目的是擴大郵件處理機械化，因為人事類經費約佔郵政經費 8 成。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "研究網 NET_JPPOST。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.post.japanpost.jp/zipcode/zipmanual/p03.html"
         }
       ]
     },
@@ -114772,6 +115963,27 @@
           "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4063665/fullTextXML",
           "origin": "wave8-microbes-20261101",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4063665/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a981c8e7213e2e47",
+      "url": "https://www.access-board.gov/ict/guide/computer.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.access-board.gov/ict/guide/computer.html",
+          "title": "Desktop and Portable Computers (1194.26)（舊版 Section 508 標準指引）",
+          "publisher": "美國無障礙委員會（U.S. Access Board）官方網站；頁面標示 2001 年 8 月 1 日更新",
+          "version": "官方指引頁全文（舊版 508 標準條文加說明）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 覆核者 SVX7 依序第 5 筆請求（HTTP 200，24841 位元組，sha256 前 16 碼 4ad4c484b1fdad9d），Mokaair-editorial/1.0 標頭、間隔 1.2 秒；網址取自搜尋結果；去除 HTML 標籤後全讀。",
+          "reading_scope": "1194.26(a) 條文（引用 1194.23(k)(1)–(4)）與說明段落『What is meant by tactilely discernible』、操作力 5 磅說明。",
+          "locator": "1194.26(a)(1)（按鍵不需啟動即可觸覺辨別）；說明段（可用形狀、間距或觸覺記號達成；典型桌上型電腦鍵盤因『j』與『f』上的觸覺記號讓使用者能摸出其他所有鍵而符合；功能鍵、數字區與方向鍵的實體間距也便於觸摸定位）",
+          "summary": "美國無障礙委員會 2001 年的官方指引說，典型的桌上型電腦鍵盤本來就符合『摸得出來』的要求，因為 j 和 f 上的觸覺記號讓人能摸出其他所有鍵。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是舊版（2000 年）508 標準的指引，條文本身沒有點名 F、J；點名 F、J 的是 2017 年修訂版 407.3.2（SX7-S005）。研究網 NET_USAB（與 S005–S007 同一機構，已封頂，不另加權）。本頁作為 S005 轉載本的官方佐證。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.access-board.gov/ict/guide/computer.html"
         }
       ]
     },
@@ -122061,6 +123273,27 @@
       ]
     },
     {
+      "id": "SRC-b4cef2a4da9bcab2",
+      "url": "https://sos.cs.ru.nl/applications/rfid/2008-esorics.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1007/978-3-540-88313-5_7",
+          "title": "Dismantling MIFARE Classic",
+          "publisher": "ESORICS 2008, LNCS 5283, pp. 97–114（Springer）；荷蘭奈梅亨 Radboud 大學計算與資訊科學研究所",
+          "version": "作者機構公開 PDF（會議論文全文）",
+          "accessed_on": "2026-11-18",
+          "read_via": "本工作夾 fetch.sh，Mokaair-editorial/1.0 標頭下載（SX1 seq=6，HTTP 200，581570 位元組，sha256 前 16 碼 1a1cb91384293343），與前一筆請求間隔 1.2 秒以上；pdftotext -layout 轉文字後逐節讀。",
+          "reading_scope": "摘要、1 Introduction、2 Hardware Setup、3 Logical Structure、4 Authentication Protocol（至圖 3）、9 Consequences and Conclusions。第 5–8 節（密碼還原與攻擊細節）只確認標題，未轉述。",
+          "locator": "摘要（一兩次與真讀卡機的驗證嘗試、一般硬體不到一秒就能取回密鑰；竊聽後可解密整段通訊，可複製卡片或把卡片恢復到先前狀態）；1（該晶片用 48 位元的專有串流密碼；據廠商說法約 2 億張在用、占非接觸智慧卡市場約 85%）；3（記憶體分區，可做讀、寫、加值、扣值）；4 首段（卡片進入讀卡機電磁場、一通電就立刻開始防碰撞並送出識別碼）；4 第三段（卡片的亂數產生器完全確定，送出的挑戰值只取決於通電到開始通訊之間的時間）；9（實際影響取決於整個系統；大眾運輸收費系統有後台記錄交易並偵測詐欺，例如偵測用複製卡搭車；作者主張用公開審查過的密碼學）。",
+          "summary": "荷蘭大學團隊把一款當時全球最廣用的非接觸卡晶片的保密機制反推出來：卡片一進讀卡機的磁場、一通電就立刻自報身分；它的密碼只有 48 位元，攻擊者跟真讀卡機互動一兩次、一般電腦不到一秒就能算出密鑰，進而複製卡片、或把卡片恢復到先前的狀態。作者也指出，收費系統真正的第二道防線是後台：記錄每筆交易、偵測複製卡。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只研究一款晶片（2008 年），不代表所有票卡；不知道台灣任何票卡用的是哪一款晶片，本卡不得暗示悠遊卡被破解。約 2 億張與 85% 是作者轉引廠商說法。攻擊細節屬危險知識，一律不轉述。作者全為在世學者，不寫姓名；產品與廠商名不寫。研究網：NET_F_RU（單篇網）。 覆核 SVX1：亂數只取決於通電時間一事，論文標為引述 [NP07]，非本文實驗。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://sos.cs.ru.nl/applications/rfid/2008-esorics.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-b4d0aa87bd8b8283",
       "url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312519305505/d843403dex991.htm",
       "readings": [
@@ -122401,6 +123634,27 @@
           "access_notes": "web.run find後續遭500/登入轉址；公開文章HTML用urllib成功，未登入。",
           "origin": "wave6-plants-garden-20261101",
           "original_url": "https://www.nature.com/articles/s41467-020-18782-1"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b56a9599da04d329",
+      "url": "https://www.bis.gov.in/wp-content/uploads/2023/01/LITD-Press-Release.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.bis.gov.in/wp-content/uploads/2023/01/LITD-Press-Release.pdf",
+          "title": "Recent important Indian Standards published by BIS in area of electronics（PRD/Press Note/24/2022-23）",
+          "publisher": "Bureau of Indian Standards（印度標準局），2023-01-05",
+          "version": "官方新聞稿 PDF（2 頁）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 工具（Mokaair-editorial/1.0 標頭、請求間隔 1.2 秒）下載：SX4 seq=16，HTTP 200，122158 位元組，sha256 前 16 碼 ccdcc693f9b75bd5；pdftotext 轉文字全讀。",
+          "reading_scope": "全文三段（衛星調諧電視、USB Type-C、監視系統）；本卡只用 USB Type-C 段。",
+          "locator": "USB Type C 段（消費者為不同裝置留不同充電器，增加開支、電子廢棄物與不便；發布 IS/IEC 62680-1-3:2022，等同採用國際標準 IEC 62680-1-3:2022；適用手機、筆電等）",
+          "summary": "印度標準局 2023 年初宣布，把 USB Type-C 接頭與線材規格直接採用為國家標準，理由是消費者得為不同裝置留不同充電器，既花錢又製造電子廢棄物。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "新聞稿，只說發布標準，未說強制日期；不引用媒體轉述的時程。只算 0.5。研究網：NET_BIS（單篇網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.bis.gov.in/wp-content/uploads/2023/01/LITD-Press-Release.pdf"
         }
       ]
     },
@@ -123068,6 +124322,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave17-earth-patterns-20261102",
           "original_url": "https://math.nyu.edu/~jinzi/research/UprightCandy/paper-CandyShock.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b6797687ac9a742d",
+      "url": "https://cdn.jsdelivr.net/npm/@zxing/core@0.3.0-dev.736e254/src/core/qrcode/decoder/Decoder.ts",
+      "readings": [
+        {
+          "canonical_url": "npm @zxing/core@0.3.0-dev.736e254 /src/core/qrcode/decoder/Decoder.ts",
+          "title": "Decoder.ts（ZXing 解碼與錯誤修正）",
+          "publisher": "開源條碼函式庫 ZXing（Apache 2.0 授權，原 Java 版的 TypeScript 移植，npm 套件 @zxing/core 0.3.0-dev.736e254，檔頭 Copyright 2007 ZXing authors）",
+          "version": "原始碼（套件檔案清單由 jsDelivr 公開 API seq=9 取得，HTTP 200，13808 位元組，sha256 前 16 碼 b09ad46cfd7fdc9d；網址取自清單，不是猜的）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒）SX5 seq=13，HTTP 200，7711 位元組，sha256 前 16 碼 dcbc301cd95ef8d1；純文字原始碼，本機逐行讀註解與主要函式。",
+          "reading_scope": "全檔：decode 系列（含鏡像重試）、correctErrors 的註解與流程。",
+          "locator": "decode（第 79–120 行：先正常讀；失敗時嘗試把版本與格式資訊當成鏡像讀，讀得到就鏡像整張重試）；第 132–155 行（讀碼字、拆成區塊、逐塊做錯誤修正後串起資料位元組再解析）；correctErrors（Reed-Solomon 修正，失敗丟 ChecksumException；只拷回資料位元組，不在意修正碼字本身的錯）。",
+          "summary": "這套程式是一塊一塊做 Reed-Solomon 修正的，任何一塊修不回來就整個失敗；修完只留下資料位元組。正常讀不出來時，還會試著把整張碼當成左右相反的鏡像再讀一次。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是一套廣泛使用的開源讀碼程式的實作，不是國際標準本身；其他讀碼程式（含手機內建）不一定照同樣做法。只讀這一版移植的原始碼，未對照原 Java 版。程式作者姓名不寫。研究網：NET_ZXING（S004–S009 同網，封頂 2.0）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://cdn.jsdelivr.net/npm/@zxing/core@0.3.0-dev.736e254/src/core/qrcode/decoder/Decoder.ts"
         }
       ]
     },
@@ -132453,6 +133728,21 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.qrcode.com/en/history/"
+        },
+        {
+          "canonical_url": "https://www.qrcode.com/en/history/",
+          "title": "History of QR Code（QRcode.com）",
+          "publisher": "QR Code 開發公司官方發展史頁",
+          "version": "英文網頁現行版",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒）SX5 seq=4，HTTP 200，19453 位元組，sha256 前 16 碼 084967452d0efd38；本機去標籤後全文讀。另讀同站 /en/about/ 索引頁（seq=2，HTTP 200，7106 位元組，sha256 前 16 碼 f6535c42acdc2d4c），其六項特色的內文是圖片，未引用。",
+          "reading_scope": "Section 1–4 全文與四則註解（Electronic Kanban、BSE、AIM、JIS、EDI、ISO、Good Design Award）。",
+          "locator": "Section 1（條碼約只能放 20 個英數字；使用者要求能放漢字與假名；兩人小組；以定位用的方形標記加速讀取；選方形因為「最不容易出現在各種商用表單上」；把傳單、雜誌、紙箱上的圖案化成黑白後調查黑白比例，找到最少出現的 1:1:3:1:1；可從 360 度任何角度判斷方向；約一年半後完成可編約 7,000 個數字、可編漢字、讀取比其他碼快 10 倍以上）；Section 2（1994 年發表，QR＝quick response；先被汽車業用於電子看板；食品、製藥、隱形眼鏡業用於追溯；公開規格、保留專利但聲明不行使，且自開發之初即如此；2002 年日本手機內建讀碼後普及到一般大眾）；Section 3（1997 AIM 標準、1999 JIS 與日本汽車工業會 EDI 表單、2000 ISO 國際標準；2004 微型 QR 成為 JIS）。",
+          "summary": "開發公司自述的發展史：起點是條碼容量不夠、使用者要漢字；三個角的方框是為了快速讀取，黑白比例 1:1:3:1:1 是調查大量印刷品後挑出最少見的比例；1994 年發表後先用在汽車業的電子看板，公司公開規格且不行使專利，2000 年成為 ISO 標準，2002 年日本手機能讀碼後才走進大眾生活。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "企業自述的發展史，含訪談引述，屬單方說法；「調查印刷品」沒有交代樣本數與方法；「快 10 倍以上」沒有說明比較對象與條件。頁面點名開發者本人（在世），卡片一律只稱「開發公司的兩人小組」。研究網：NET_DENSO（與 S001、S003 同網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.qrcode.com/en/history/"
         }
       ]
     },
@@ -132473,6 +133763,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave11-structures-20261101",
           "original_url": "https://ocw.mit.edu/courses/16-001-unified-engineering-materials-and-structures-fall-2021/mit16_001_f21_lec33lec34lec35.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c39f12317acfd196",
+      "url": "https://www.ftc.gov/system/files/documents/reports/nixing-fix-ftc-report-congress-repair-restrictions/nixing_the_fix_report_final_5521_630pm-508_002.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.ftc.gov/system/files/documents/reports/nixing-fix-ftc-report-congress-repair-restrictions/nixing_the_fix_report_final_5521_630pm-508_002.pdf",
+          "title": "Nixing the Fix: An FTC Report to Congress on Repair Restrictions（May 2021）",
+          "publisher": "美國聯邦貿易委員會（FTC）",
+          "version": "官方 PDF（508 無障礙版）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 請求 seq=13，HTTP 200，1296086 位元組，sha256 前 16 碼 2df9226d31fe3a53；網址取自搜尋結果（去掉頁碼錨點）；pdftotext -layout 轉文字後讀。",
+          "reading_scope": "目錄；Introduction；Section I（MMWA 反搭售條款）全文；Section II（維修市場的競爭問題）A–B 與 Kodak 案討論及其註 44–63；Section IX Conclusion。Section III–VIII（各產業限制與廠商理由）只用關鍵字掃過，未逐節讀。",
+          "locator": "Introduction（第 102(c) 條禁止以使用指定品牌物品為保固條件；例子明列印表機廠不得以使用原廠墨水為保固條件）；Section I 第 1 段（1975 年立法；豁免須證明原廠零件為運作所必需且符合公益；1975 年以來只有 3 件申請、全遭駁回）；Section II-B（Kodak 1992：拒絕『主機市場有競爭就不可能壟斷售後市場』的推定；鎖定因素包括轉換成本與對整套系統總成本資訊不完整）；其後段（後來法院多把 Kodak 限縮在售後才改變政策的情形；若購買時已知售後成本，可能認定買家做了生命週期估價）",
+          "summary": "美國聯邦貿易委員會 2021 年給國會的維修限制報告：1975 年的保固法禁止廠商把保固綁在使用自家品牌零件上，報告直接舉例「印表機廠不能要求用原廠墨水才保固」，近五十年只有三件豁免申請、全被駁回。報告也整理了 1992 年最高法院的影印機售後市場案：法院不接受「機器市場有競爭、售後就不可能被壟斷」的說法，因為消費者買機器時往往算不清整套系統的總成本、事後轉換又很貴；後來的法院多半把這個結論限縮在「買了之後才改變政策」的情形。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "報告主體在談手機、汽車、農機等維修，對印表機只有保固條款的舉例；Kodak 案是影印機維修服務，不是墨水，連到印表機是本稿的類比，口播要說明。這是美國法，不代表各國。研究網 NET_FTC。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.ftc.gov/system/files/documents/reports/nixing-fix-ftc-report-congress-repair-restrictions/nixing_the_fix_report_final_5521_630pm-508_002.pdf"
         }
       ]
     },
@@ -138311,6 +139622,27 @@
       ]
     },
     {
+      "id": "SRC-cc52a76e565d656e",
+      "url": "https://www.post.japanpost.jp/zipcode/zipmanual/p04.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.post.japanpost.jp/zipcode/zipmanual/p04.html",
+          "title": "郵便番号・バーコードマニュアル：郵便番号",
+          "publisher": "日本郵便株式会社",
+          "version": "HTML 版手冊頁 p04",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=13，HTTP 200，43046 位元組，sha256 前 16 碼 6b4ab88d08940298，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；日本郵便官方網頁，本機去標籤後逐段全讀",
+          "reading_scope": "本頁全讀（桁數、使用文字、範圍、例、基本型、個別番號、超高層ビル番號）。",
+          "locator": "けた数（7 けた、3–4 けた間加連字號）；郵便番号で表す範囲ア（設定於町域；用「丁目」者除去○丁目的部分為同一區域；大字小字者以大字為區域）及超高層ビル；イ（小字或通稱原則不設）；基本型（舊 3 位加 4 位、舊 5 位加 2 位）；個別番號（大口事業所原則每日 50 通以上）；超高層ビル番號（6–7 位表示樓層，例 100-6101 為 1 樓、100-6140 為 40 樓）",
+          "summary": "日本的 7 位郵遞區號只細到「町域」（同町不同丁目共用一個號），小字不另給；反而每天信很多的大企業與超高層大樓可以分到自己的號，大樓甚至每層樓一個號。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "未寫全國號碼總數。研究網 NET_JPPOST。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.post.japanpost.jp/zipcode/zipmanual/p04.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-cc52deb01af21bec",
       "url": "https://digital-strategy.ec.europa.eu/en/news/5g-planes-wi-fi-road-commission-decision-opens-new-opportunities-innovation",
       "readings": [
@@ -141329,6 +142661,27 @@
       ]
     },
     {
+      "id": "SRC-d0d842835ccff2ce",
+      "url": "https://arxiv.org/pdf/1803.01146v2",
+      "readings": [
+        {
+          "canonical_url": "arXiv:1803.01146v2 [cs.MM]（2018-08-11；版頭標 IEEE Transactions on Multimedia）",
+          "title": "Stylize Aesthetic QR Code",
+          "publisher": "中國鄭州大學、浙江大學、北京航空航天大學與一家跨國企業亞洲研究院的團隊",
+          "version": "arXiv v2 PDF（作者稿）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒）SX5 seq=18，HTTP 200，10168563 位元組，sha256 前 16 碼 5976b228211febef；本機 pdftotext（一般與 -layout，第 6–7 頁）轉文字後讀。",
+          "reading_scope": "摘要、I Introduction、IV.A–B（Stage A 生成）、V（取樣與門檻、模組穩健度評估）、實驗 3) Robustness evaluation 與表 IV 標題；其餘風格轉換網路細節略讀。",
+          "locator": "I（美化 QR 的四類：嵌入式『利用 QR 的修正能力嵌入小圖示』、變形式、手工式、融合式）；IV.B（預設版本 5、等級 L）；IV.A／V（依最廣用的開源讀碼函式庫的規則，取樣只看每一格的中心像素；先由定位與對齊圖樣定出編碼區，再取樣、轉灰、二值化，兩步都對才能解碼）；V.B（引前人證明：一格邊長 a 時，中心至少約 a/3 見方的區域正確才能讀對；本文用半徑約 a/4 的圓點承載資訊）。",
+          "summary": "一篇美化 QR Code 的論文整理了業界做法：在中間放小圖示的那一類，是直接拿修正能力去抵掉被蓋住的格子；它也說明常用讀碼程式取樣時只看每一格中心一小塊，所以格子邊緣被畫花不一定有影響，中心顏色才算數。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "論文主題是美化，取樣規則是轉述開源函式庫與前人研究，不是它自己的量測；「a/3」的分數在 PDF 文字層被排成「31 a × 13 a」，判讀為三分之一，從嚴折分。作者姓名不寫。研究網：NET_ZZU（單篇網；與 ZXing 無合著，但取樣規則轉述自 ZXing）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://arxiv.org/pdf/1803.01146v2"
+        }
+      ]
+    },
+    {
       "id": "SRC-d0f59f63173eda2a",
       "url": "https://www.ecfr.gov/current/title-14/section-121.311",
       "readings": [
@@ -143279,6 +144632,27 @@
       ]
     },
     {
+      "id": "SRC-d3dba928c289eaa1",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9356123/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1186/s41235-022-00424-3",
+          "title": "Typing expertise in a large student population",
+          "publisher": "Cognitive Research: Principles and Implications 7:77（2022）；西班牙巴斯克認知、大腦與語言中心，法國艾克斯－馬賽大學與法國國家科學研究中心",
+          "version": "出版社開放取用版（CC BY 4.0；Europe PMC 完整 JATS XML）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 依序第 10 筆請求（SX7 seq=10，HTTP 200，158934 位元組，sha256 前 16 碼 c8f95040bcbd8d2f），Mokaair-editorial/1.0 標頭、間隔 1.2 秒；本機去除參考文獻後解析全文逐節讀。",
+          "reading_scope": "摘要、Introduction、The current study、Method（Participants、Materials and procedure）、Results（打字習慣與表現組、實驗操弄）、補充分析、Discussion、Conclusion；表 1、表 2 逐列讀。",
+          "locator": "Introduction 第 1–2 段（到 1980 年代末，打字幾乎只由受過嚴格正規訓練、固定指法與不看手的專業打字員進行）；Participants（1301 名大學生；只有 17 人報告上過正規打字課；1188 人經常打字；平均每天打 2.0 小時）；表現組（最熟練三分之一平均 80 wpm、正確率 88%；最不熟練三分之一 54 wpm、79%）；表 2（使用手指數 6.9 對 7.3，p = 0.0021；『從不看鍵盤』22 對 81 人、『總是看』40 對 12 人，p < 0.001；刻意練習與表現組無關，p = 0.70）；Discussion（光是頻繁使用就能發展出高熟練度，伴隨用更多手指、較少看手）",
+          "summary": "法國一所大學測了 1301 名大學生的打字：上過正規打字課的只有 17 人。最快的三分之一平均每分鐘 80 字，但平均只用 7.3 根手指，比最慢的三分之一多不到半根；差別比較明顯的是看不看鍵盤。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "受試者是法國大學生、用 AZERTY 等鍵盤、線上施測；手指數與看鍵盤頻率都是自陳。『刻意練習』與『正規訓練』是不同題目：表 2 中回答有刻意練習的人很多（277／266），但正規上課只有 17 人。研究沒有觀察 F、J 凸點的使用。研究網 NET_BCBL_AMU（單篇網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9356123/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-d3dd89791982bd3c",
       "url": "https://doi.org/10.1103/PhysRevLett.126.218004",
       "readings": [
@@ -144004,6 +145378,21 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.supremecourt.gov/opinions/16pdf/15-1189_ebfj.pdf"
+        },
+        {
+          "canonical_url": "https://www.supremecourt.gov/opinions/16pdf/15-1189_ebfj.pdf",
+          "title": "Impression Products, Inc. v. Lexmark International, Inc., 581 U.S. ___ (2017), No. 15–1189 slip opinion",
+          "publisher": "美國最高法院（2017-05-30 判決）",
+          "version": "最高法院官網 slip opinion PDF（含 syllabus、法院意見與部分協同部分不同意見）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 請求 seq=1，HTTP 200，158985 位元組，sha256 前 16 碼 8968da933f74c5e3；網址取自搜尋結果所引的官網路徑；pdftotext -layout 轉文字後讀。",
+          "reading_scope": "Syllabus 全文；法院意見 Part I（事實與程序）、Part II-A（國內銷售的權利耗盡，含二手車行的例子）、Part II-B 開頭；Part III（國外銷售）只讀 syllabus 摘要；部分不同意見只看了標題與第一段。",
+          "locator": "Opinion Part I p.2–3（Return Program 約 8 折、只用一次且只能交回原廠的合約；在墨匣裝微晶片使碳粉用完後無法再用；再製商設法抵銷晶片效果；2010 年起訴）；Syllabus Held 1（銷售即耗盡專利權，不論附帶何種限制；合約限制或可依契約法執行，但不能用專利侵權訴訟）；Held 2（國外的授權銷售同樣耗盡）；Opinion p.7–8（二手車行的例子）；判決頁首（7 位大法官多數，1 位未參與）",
+          "summary": "美國最高法院 2017 年判決：一家公司賣碳粉匣時給兩種選擇——原價無限制，或打約八折但簽約只用一次、空匣只能交回原廠，並在折扣匣上裝晶片讓它用完就不能再用。再製業者破解晶片、回收再填再賣，原廠告專利侵權。最高法院認為：專利權人一旦把東西賣出去，對那件東西的專利權就用盡了，不管附了什麼限制；合約或許能告原買家，但不能用專利告後手，國外賣出的也一樣。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "判決只處理專利法，不處理契約法是否能執行、不處理晶片是否涉及著作權或反規避；對象是雷射碳粉匣而非噴墨墨匣。大法官不點名，只稱「多數意見」。研究網 NET_SCOTUS。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.supremecourt.gov/opinions/16pdf/15-1189_ebfj.pdf"
         }
       ]
     },
@@ -144284,6 +145673,27 @@
           },
           "origin": "wave57-tech-20261111",
           "original_url": "https://signal.org/docs/specifications/pqxdh/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d5923dc7a78dc459",
+      "url": "https://www.city.nagoya.jp/kurashi/juutaku/1030361/1030363.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.city.nagoya.jp/kurashi/juutaku/1030361/1030363.html",
+          "title": "住居表示制度",
+          "publisher": "愛知縣名古屋市 スポーツ市民局地域振興部住民課",
+          "version": "網頁，ページID 1030363，2026 年 8 月 4 日",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=5，HTTP 200，48811 位元組，sha256 前 16 碼 c1d4403d390ae95b，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；名古屋市官方網頁，本機去標籤後逐段全讀",
+          "reading_scope": "住居表示とは、住所表記例與丁目註、實施理由、定め方、本籍與不動產表示、實施地區、規程，全讀。",
+          "locator": "「住居表示を実施する理由」三點（分筆合筆造成缺號跳號；一筆土地多棟建物或一棟跨多筆；町界入組）；實施始於昭和 39 年（1964）；定め方（街區從基準點最近者起右回連續蛇行；基準點為名古屋城本丸西南的巾下橋；各街區自近基準點之角每 10 m 右回編基礎番號，主出入口面對的號碼為住居番號，面對兩個號碼取小者）；本籍與不動產仍用地番；實施地區註「緑区、名東区、天白区では住居表示を実施している地区はありません」",
+          "summary": "名古屋市說明為何不再用地番當住址（分割合併造成缺號、一地多屋或一屋多地、町界複雜），以及自 1964 年起實施的編號法；同時寫明本籍與不動產仍用地番，而且市內綠區、名東區、天白區完全沒有實施住居表示的地區。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "「10 m 間隔（場合によっては異なる）」為原文附但書。只代表名古屋市。研究網 NET_NAGOYA。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.city.nagoya.jp/kurashi/juutaku/1030361/1030363.html"
         }
       ]
     },
@@ -147139,6 +148549,27 @@
       ]
     },
     {
+      "id": "SRC-d99e3b7397255aaa",
+      "url": "https://www.city.kyoto.lg.jp/bunshi/page/0000260548.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.city.kyoto.lg.jp/bunshi/page/0000260548.html",
+          "title": "戸籍・住民票における地番の表示方法について",
+          "publisher": "京都市 文化市民局地域自治推進室",
+          "version": "網頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=19，HTTP 200，22868 位元組，sha256 前 16 碼 40adf0a98911bd33，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；京都市官方網頁，本機去標籤後逐段全讀",
+          "reading_scope": "本文全讀，並讀頁尾市役所所在地。",
+          "locator": "本文（平成 8 年以後新記載的住址不寫地番支號前的「の」；「の」有無不改變所指地點）；頁尾（京都市役所 〒604-8571 京都市中京区寺町通御池上る上本能寺前町488番地）",
+          "summary": "京都市自己的頁尾地址就是「寺町通御池上る」＋町名＋地番的寫法；同頁說明 1996 年以後新登記住址不再寫「123番地の4」的「の」。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "頁尾地址是格式實例，不是制度說明。研究網 NET_KYOTO_CITY。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.city.kyoto.lg.jp/bunshi/page/0000260548.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-d9b6d95dbfe5531b",
       "url": "https://www.khan.co.kr/article/202602231027001",
       "readings": [
@@ -147984,6 +149415,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://instantink.hpconnected.com/us/en/terms"
+        }
+      ]
+    },
+    {
+      "id": "SRC-dae58fe522190555",
+      "url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9.pdf",
+          "title": "Le Système international d’unités (SI) / The International System of Units (SI), 9th edition",
+          "publisher": "國際度量衡局（BIPM）",
+          "version": "第 9 版（2019），收錄 2022 年第 27 屆 CGPM 新增 ronna、quetta 等字首；法英對照 PDF",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 單次請求（SX6 seq=8，HTTP 200，3503078 位元組，sha256 前 16 碼 1122cf38e25b23d7），Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；網址取自 SX6-S003 SEE ALSO 段的連結；本機以 pdftotext -layout 轉文字後讀英文部分相關各節。",
+          "reading_scope": "英文部分第 3 章 Decimal multiples and sub-multiples of SI units 全文與表 7；法文對應段落（第 3 章）對照；附錄 1 中 27th CGPM 2022 決議條目；封面版次資訊。其餘章節（基本單位定義等）未讀。",
+          "locator": "第 3 章表 7（SI 字首 10^1–10^30、10^-1–10^-30）；第 3 章末段（SI 字首嚴格表示 10 的次方，不應用來表示 2 的次方，例如 1 kilobit 是 1000 bits 而非 1024 bits；2 的次方字首為 kibi (Ki) 2^10 至 quebi (Qi) 2^100，詳見 IEC 80000-13）；附錄 1（27th CGPM 2022 新增 ronna、ronto、quetta、quecto）",
+          "summary": "國際單位制的官方手冊明文寫：SI 字首嚴格代表 10 的次方，不應拿來表示 2 的次方，例如 1 kilobit 是 1000 位元、不是 1024 位元；要表示 2 的次方，請用 kibi（Ki）、mebi（Mi）……一直到 quebi（Qi，2^100），細節見 IEC 80000-13。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "手冊只規定字首意義，不談硬碟、作業系統或網速。手冊列到 robi、quebi，與 NIST 頁（只到 exbi）不同，是後來增補，卡片若提最大字首以本手冊為準。研究網 NET_BIPM（機構文件）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9.pdf"
         }
       ]
     },
@@ -151623,6 +153075,27 @@
       ]
     },
     {
+      "id": "SRC-e07c49a9f1503085",
+      "url": "https://cdn.jsdelivr.net/npm/@zxing/core@0.3.0-dev.736e254/src/core/qrcode/decoder/FormatInformation.ts",
+      "readings": [
+        {
+          "canonical_url": "npm @zxing/core@0.3.0-dev.736e254 /src/core/qrcode/decoder/FormatInformation.ts",
+          "title": "FormatInformation.ts（ZXing 格式資訊）",
+          "publisher": "開源條碼函式庫 ZXing（Apache 2.0 授權，原 Java 版的 TypeScript 移植，npm 套件 @zxing/core 0.3.0-dev.736e254，檔頭 Copyright 2007 ZXing authors）",
+          "version": "原始碼（套件檔案清單由 jsDelivr 公開 API seq=9 取得，HTTP 200，13808 位元組，sha256 前 16 碼 b09ad46cfd7fdc9d；網址取自清單，不是猜的）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，與前一筆間隔 1.2 秒）SX5 seq=10，HTTP 200，6338 位元組，sha256 前 16 碼 4806f5f585054591；純文字原始碼，本機逐行讀註解與主要函式。",
+          "reading_scope": "全檔：常數、FORMAT_INFO_DECODE_LOOKUP 註解、建構子、decodeFormatInformation、doDecodeFormatInformation。",
+          "locator": "FORMAT_INFO_MASK_QR＝0x5412；查表註明出自 ISO 18004:2006 附錄 C 表 C.1，共 32 組；建構子（低 3 位元是遮罩編號，另 2 位元是修正等級）；decodeFormatInformation（兩份同時比對取最接近的；都不合時再試「沒有被遮罩的格式資訊」，註解說有些碼顯然沒遮）；doDecodeFormatInformation（32 組合法碼彼此至少差 7 個位元，所以最多差 3 個位元仍判為該組，否則回傳 null）。",
+          "summary": "格式資訊（修正等級＋遮罩種類）只有 32 種合法寫法，彼此至少差 7 個位元；這套程式把讀到的兩份拿去比，差 3 個位元以內就認得出來，兩份都差太多就無法解碼。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是一套廣泛使用的開源讀碼程式的實作，不是國際標準本身；其他讀碼程式（含手機內建）不一定照同樣做法。只讀這一版移植的原始碼，未對照原 Java 版。程式作者姓名不寫。研究網：NET_ZXING（S004–S009 同網，封頂 2.0）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://cdn.jsdelivr.net/npm/@zxing/core@0.3.0-dev.736e254/src/core/qrcode/decoder/FormatInformation.ts"
+        }
+      ]
+    },
+    {
       "id": "SRC-e088cde1181bbc2a",
       "url": "https://www.sec.gov/Archives/edgar/data/103379/000010337925000023/vfc-20250329.htm",
       "readings": [
@@ -152441,6 +153914,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://housefoods-group.com/kenkyu/functions/agri/smileball.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e1a1da66bffc748e",
+      "url": "https://multimedia.cy.gov.tw/Message_Message/23390/1020716-1.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://multimedia.cy.gov.tw/Message_Message/23390/1020716-1.pdf",
+          "title": "記名式悠遊卡掛失保障未盡周延，監察院於 3 月中立案進行調查，悠遊卡公司宣布自 8 月 1 日起，持卡人掛失風險承擔時限由 6 小時降為 3 小時",
+          "publisher": "監察院（新聞稿，民國 102 年 7 月 16 日；財政及經濟委員會通過之調查報告重點）",
+          "version": "政府機關新聞稿 PDF（2 頁）",
+          "accessed_on": "2026-11-18",
+          "read_via": "本工作夾 fetch.sh，Mokaair-editorial/1.0 標頭下載（SX1 seq=5，HTTP 200，128260 位元組，sha256 前 16 碼 7baf828bee6a5db8），與前一筆請求間隔 1.2 秒以上；pdftotext -layout 轉文字後全文讀。",
+          "reading_scope": "全文 2 頁逐段讀。",
+          "locator": "第 1 頁第 2 段（金管會電子票證定型化契約範本第 15 條第 3 項：完成掛失後 24 小時內非線上即時交易被冒用損失由持卡人負擔；理由是電子票證用於大眾運輸與小額消費，為加速通關、快速付款而採非線上即時交易，即離線交易，與信用卡線上即時交易截然不同）；同段（悠遊卡公司 98 年 4 月由 24 小時縮為 12 小時，99 年 3 月 28 日起降為 6 小時）；第 2 頁第 1 段（99–101 年度持卡人負擔 29,424、36,253、51,805 元；公司負擔 561,328、616,657、508,307 元；8 月 1 日起降為 3 小時）；第 2 頁第 2 段（當時唯一採行非線上即時交易的是悠遊卡公司）。",
+          "summary": "監察院 2013 年的調查重點：台灣電子票證為了讓閘門通關快，採「非線上即時交易」，也就是離線交易，跟信用卡每筆即時連線不同；因此卡片掛失後，系統要一段時間才能擋下冒用，契約範本原本讓持卡人承擔掛失後 24 小時內的損失，悠遊卡公司逐步縮短到 12、6 小時，2013 年 8 月起再降到 3 小時。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是新聞稿不是調查報告全文；內容反映 2013 年的情況，現行時限與交易架構未查證（電子票證法規後來已併入電子支付相關法規）。新聞稿沒有直接寫『餘額存在卡片晶片裡』，只寫離線交易；『離線系統要由卡片自己保存電子錢』出自 SX1-S001 的一般定義，兩者合起來是推論。新聞稿點名監察委員，本卡不寫姓名；也提到香港一套系統的 3 小時作法，本卡不點名。研究網：NET_E_CY（政府機關，單一研究網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://multimedia.cy.gov.tw/Message_Message/23390/1020716-1.pdf"
         }
       ]
     },
@@ -153312,6 +154806,27 @@
       ]
     },
     {
+      "id": "SRC-e32f4fc7b8b1abad",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11588821/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3758/s13421-023-01431-5",
+          "title": "Hanging on the telephone: Maintaining visuospatial bootstrapping over time in working memory",
+          "publisher": "Memory & Cognition 52(8):1798–1815（2024，線上 2023）；英國利茲大學、卡地夫大學、瑪格麗特皇后大學",
+          "version": "出版社開放取用版（CC BY 4.0；Europe PMC 完整 JATS XML）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 依序第 17 筆請求（SX7 seq=17，HTTP 200，174677 位元組，sha256 前 16 碼 1111544a87f95f9c），Mokaair-editorial/1.0 標頭、間隔 1.2 秒；本機去除參考文獻後解析全文；讀摘要、引言與實驗 1、2。",
+          "reading_scope": "摘要、Introduction（視覺空間自舉效應的既有研究）、Experiment 1（Method、Results、Discussion）、Experiment 2（Method、Results）；實驗 3、4 只讀摘要的結論。",
+          "locator": "摘要（以 T-9 手機鍵盤為模型的熟悉排列呈現數字，比全部出現在同一位置記得好，四個實驗都觀察到；空間敲擊與空間判斷任務會消除這個優勢）；Introduction（同樣的空間框架若換成不熟悉的隨機排列，不會帶來相同好處；需要先前的數字－位置對應）；Experiment 1 Method（30 人；序列長度依個人廣度平均 6.6 位）；Experiment 1 Results（無干擾時鍵盤呈現優於單一位置，t(29) = 3.82，p < .001，d = .70）",
+          "summary": "英國的記憶研究發現，一串數字如果亮在熟悉的電話鍵盤位置上，比全部閃在同一格更容易記住；換成陌生的隨機排列就沒有這個好處。熟悉的按鍵排法已經變成腦中的一張地圖。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "受試者是英國大學生、每個實驗約 30 人；比的是熟悉鍵盤與『單一位置』，不是電話排列對計算機排列；『隨機排列沒有好處』是作者引用的先前研究，不是本篇的數據。研究網 NET_LEEDS（單篇網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11588821/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-e33bb11ccb201623",
       "url": "https://security.googleblog.com/2019/05/new-research-how-effective-is-basic.html",
       "readings": [
@@ -153755,6 +155270,27 @@
           ],
           "origin": "wave34-physics-20261102",
           "original_url": "https://link.springer.com/content/pdf/10.1051/apido:2008042.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e401649fac06fd23",
+      "url": "https://learn.microsoft.com/en-us/windows-hardware/drivers/usbcon/usb-type-c-troubleshooting-notifications",
+      "readings": [
+        {
+          "canonical_url": "https://learn.microsoft.com/en-us/windows-hardware/drivers/usbcon/usb-type-c-troubleshooting-notifications",
+          "title": "Windows USB Type-C troubleshooting notifications",
+          "publisher": "Microsoft Learn（硬體開發文件），最後更新 2025-06-12",
+          "version": "網頁全文（ms.date 2025-05-23）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 工具（Mokaair-editorial/1.0 標頭、請求間隔 1.2 秒）下載：SX4 seq=11，HTTP 200，59914 位元組，sha256 前 16 碼 a1a42b63eb0d96cf；擷取 main 內段落與兩張表格逐列讀。",
+          "reading_scope": "全文：引言、Power notifications 表（3 列）、Mode notifications 表（7 列）、See also。",
+          "locator": "Power 表（Slow charger、PC isn't charging、USB device might need more power）；Mode 表（USB4 device functionality might be limited、Use different USB port、某專屬模式裝置功能受限、Display connection might be limited、USB device functionality might be limited——24H2 起只認得四種模式、Unsupported USB-C audio adapter）",
+          "summary": "一套主流電腦作業系統的硬體開發文件，列出接上 Type-C 裝置時會跳出的提醒：充電器太慢、充電器太弱充不進去、裝置要的電比電腦能給的多、這台電腦不支援某種高速模式、螢幕輸出可能受限、『請改插另一個 USB 埠』，以及不支援類比耳機轉接頭。這些通知存在的前提就是：同一個外形的孔，背後能做的事不一樣。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只描述該作業系統的行為與觸發條件，不統計發生頻率。開發商是 USB 發起廠商之一，但本頁作者不在 Type-C 規格貢獻者名單中，另立 NET_MS；口播不點名作業系統與專屬模式名稱。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://learn.microsoft.com/en-us/windows-hardware/drivers/usbcon/usb-type-c-troubleshooting-notifications"
         }
       ]
     },
@@ -161156,6 +162692,27 @@
       ]
     },
     {
+      "id": "SRC-eed2569c390e77f5",
+      "url": "https://www2.city.kyoto.lg.jp/sogo/toukei/Population/Census/2020/s1_sankou1_chui.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www2.city.kyoto.lg.jp/sogo/toukei/Population/Census/2020/s1_sankou1_chui.pdf",
+          "title": "公称町別集計の利用上の注意（令和２年国勢調査 参考資料１）",
+          "publisher": "京都市 總合企畫局（統計）",
+          "version": "PDF",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=7，HTTP 200，113016 位元組，sha256 前 16 碼 16d96a60760a3d29，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；京都市官方統計 PDF，pdftotext -layout 轉文字後逐頁全讀",
+          "reading_scope": "1–4 節全讀（公稱町、跨統計區、同名町、京北地域）。",
+          "locator": "3「同名町」（同一國勢統計區內有同名的不同町時，以町名所附的通り名判別）",
+          "summary": "京都市的人口普查說明：同一個統計區裡可能有兩個同名但不同的町，要靠附在町名前的通り名才分得出來。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "沒有說同名町的數量。研究網 NET_KYOTO_CITY（與 SX2-S005 同機構）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www2.city.kyoto.lg.jp/sogo/toukei/Population/Census/2020/s1_sankou1_chui.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-eed90d212811b004",
       "url": "https://doi.org/10.1152/jn.01015.2004",
       "readings": [
@@ -164954,6 +166511,27 @@
       ]
     },
     {
+      "id": "SRC-f4367f898989b555",
+      "url": "https://www.vcalc.net/Documents/touchtone_hf.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1002/j.1538-7305.1960.tb04447.x",
+          "title": "Human Factors Engineering Studies of the Design and Use of Pushbutton Telephone Sets",
+          "publisher": "The Bell System Technical Journal 39(4):995–1012（1960 年 7 月）；美國貝爾電話實驗室（Murray Hill, N.J.）",
+          "version": "期刊原刊掃描（含當期目錄頁與全文 OCR），由計算機收藏網站轉存；DOI 取自搜尋結果的書目紀錄，doi.org 未請求",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 依序第 1 筆請求（SX7 seq=1，HTTP 200，646091 位元組，sha256 前 16 碼 7b0fcc42865174d3），Mokaair-editorial/1.0 標頭、間隔 1.2 秒；pdftotext -layout 抽全文逐節讀；圖 3、圖 4 用 pdftoppm 轉成圖片後直接看（圖中鍵位排列與數值）。",
+          "reading_scope": "摘要、I 人因問題、II 實驗方法、III 設計變數全部小節（3.1 鍵位排列、3.2 鍵頂、3.3 力與行程 3.3.1–3.3.4、3.4 交換機因素）、V 結論、致謝與參考文獻；圖 3（16 種排列）與圖 4（第二輪 5 種排列的時間、錯誤率、喜好排名）。第 IV 節中段（記號顯示與撥號習慣）只讀了結論段的摘述。",
+          "locator": "II（每輪 10–15 名貝爾實驗室員工隨機抽樣、每天撥 10–15 個標準號碼）；3.1 第 1–3 段（前導研究：問卷偏好與實際表現無顯著關係，20 人中 10 人用過後改變偏好；16 種排列分 6 組、每組 6 人；加法機常見排列 I-A 平均 5.08 秒，同幾何、不同編號的 IV-A 4.92 秒）；圖 3（I-A 為 7-8-9 在上、IV-A 為 1-2-3 在上，IV-A 標示顯著較短時間）；3.1 第 4–6 段與圖 4（第二輪 15 人、5 種排列無顯著差異；三乘三加一 6.01 秒、2.5%；兩橫排 6.17 秒、2.3%、最受喜愛；兩直排最不受喜愛；類撥盤圓形 5.90 秒、2.0%）；3.1 末段（三乘三加一間距 5/8 與 3/4 吋無顯著差異）；V（表現有寬廣可接受範圍、喜好較挑；整串背起來撥不到 2 秒、分段回看可超過 12 秒）",
+          "summary": "貝爾實驗室在按鍵電話上市前，找員工實際撥號比較了 16 種、再 5 種按鍵排列。加法機常見的 7-8-9 在上排法並不差：平均 5.08 秒，把同一個方格改成 1-2-3 在上是 4.92 秒，差 0.16 秒但達顯著；第二輪連圓形、兩橫排等 5 種排法彼此都沒有顯著差異，作者的結論是表現上有很大彈性、喜好比較挑。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "受試者全是貝爾實驗室員工、每輪 6–45 人、每種排法只用三到五天；作者自己說和多年使用後的表現相比經驗有限。I-A 與 IV-A 的差異雖然在第一輪顯著，作者也寫『差異很小』；第二輪 5 種排列無顯著差異，論文沒有寫最後為何選三乘三加一的 1-2-3 在上，只寫兩種方格排法『有某些工程上的優點』。本文從頭到尾沒有提到觸覺凸點。研究網 NET_BELL（單篇網）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.vcalc.net/Documents/touchtone_hf.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-f44a2f7d21f3eb31",
       "url": "https://www.agriculture.gov.au/biosecurity-trade/travelling/bringing-mailing-goods",
       "readings": [
@@ -165201,6 +166779,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://collection.sciencemuseumgroup.org.uk/objects/co482354/cyclon-vacuum-cleaner-model-1000"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f49cd4dc0592a492",
+      "url": "https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/f66f277e-4fcb-41da-b3b8-20cbe8b02cdf/63534bb2/20260218_base-registry-advisory-board_4th_outline_04.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/f66f277e-4fcb-41da-b3b8-20cbe8b02cdf/63534bb2/20260218_base-registry-advisory-board_4th_outline_04.pdf",
+          "title": "町字より下位のデータ整備の方針について（ベース・レジストリ推進有識者会合 第4回 資料4）",
+          "publisher": "デジタル庁",
+          "version": "2026 年 2 月 PDF",
+          "accessed_on": "2026-11-18",
+          "read_via": "SX2 fetch.sh seq=17，HTTP 200，3520702 位元組，sha256 前 16 碼 99d473fe273e61c4，Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；數位廳官方 PDF，pdftotext -layout 轉文字後逐頁全讀",
+          "reading_scope": "全文逐頁讀（背景、階層結構、紐づけ、共通化、業務實態調查①–③與詳細表、論點）。",
+          "locator": "p2 背景（街區符號住居番號以紙台帳為主、地番公共座標整備有限）；p4 階層結構（實施例 霞が関二丁目1番6號 vs 未實施例 加賀市大聖寺南町ニ41番地；地番由法務局付番、根據不動產登記法；住居番號由市區町村付番）；共通化理由段（地番由法務省、住居番號由市區町村管理；民間各自蒐集、整備成本重複、資料互換性欠缺）；p13 與詳細表（住居表示實施自治體 566、有效回答 477；未系統化 347 團體＝72.7%，其中紙本 210＝44.0%、試算表／繪圖軟體 137＝28.7%）",
+          "summary": "數位廳 2026 年資料：住址在町字以下分成兩條線——地番由法務局編、住居番號由市區町村編；全國實施住居表示的市區町村有 566 個，回答調查的 477 個裡 72.7% 的台帳還沒系統化、44% 只有紙本（其餘用試算表或繪圖軟體）；民間業者只好各自去兩邊蒐集，資料互不相容。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "回收率在兩頁分別寫 84.2% 與 84.8%（477/566 實為 84.3%），本卡不引回收率。566 是實施自治體數，不是實施面積比例。研究網 NET_DIGITAL。 覆核補：同檔「選定の理由」段把住所資訊定位為郵件投遞與防災的公共基礎。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/f66f277e-4fcb-41da-b3b8-20cbe8b02cdf/63534bb2/20260218_base-registry-advisory-board_4th_outline_04.pdf"
         }
       ]
     },
@@ -165653,6 +167252,27 @@
           },
           "origin": "wave84-food-20261114",
           "original_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=11011302&rettype=xml"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f588c4ac588aeec4",
+      "url": "https://distantreader.org/stacks/trust/uc2/uc2_ark+=13960=t6qz2692v.txt",
+      "readings": [
+        {
+          "canonical_url": "https://hdl.handle.net/2027/uc2.ark:/13960/t6qz2692v",
+          "title": "Methods of Teaching Typewriting (With Keys to Rational Typewriting)",
+          "publisher": "The Gregg Publishing Company，紐約等地，1919 年版權（美國公有領域）；加州大學館藏掃描，HathiTrust 來源的 OCR 純文字由 distantreader.org 轉存",
+          "version": "1919 年原書掃描 OCR 全文（有少量辨識錯字）；canonical_url 由檔名的 HathiTrust ark 編號組成，未請求",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 依序第 14 筆請求（SX7 seq=14，HTTP 200，225470 位元組，sha256 前 16 碼 ac954d1dee52cc46），Mokaair-editorial/1.0 標頭、間隔 1.2 秒；純文字以關鍵詞定位後，讀前言、目錄、Teaching Methods 的教具段與 The Technique of Typewriting 全章。",
+          "reading_scope": "書名頁、前言、目錄；Teaching Methods 一章的教具段（Blank Keys — Shields — Aprons、Charts）；The Technique of Typewriting 一章（插圖 2 說明、Position at the Machine、The Guide Keys — 'Home Position'、Getting Back to Home Position、Learning the Keyboard）；第一課教案（The importance of the guide keys）。",
+          "locator": "The Guide Keys — 'Home Position'（p.45：指法從鍵盤中間開始；每個鍵的位置最初從導引鍵『a』與『;』量起；左手小指在 a、無名指 s、中指 d、食指 f，右手小指在 ;、食指在 j；手指打完要立刻落回原位）；Learning the Keyboard（p.48–49：先固定導引鍵 a 與分號，再練習手離開鍵盤後放回；感受位置的『動作觸覺意象』）；插圖 1 說明（p.42：第一、二課從 a 與分號出發找鍵，第三、四課起改用『導引鍵 F 與 J』）；插圖 2 說明（p.43：稱 F、J 為導引鍵，找數字鍵與 Q、W、Z、X 都從 F、J 出發）；第四課教案（食指保持碰著 f 與 j，同時用小指打鍵）；Blank Keys — Shields — Aprons（p.22：空白鍵帽只用來逼學生背鍵盤；遮罩逼學生以觸覺打字，但老師看不到學生的手法；盡早撤除）；第一課（p.129：講解導引鍵的重要）",
+          "summary": "1919 年的打字教師手冊已經要手指『打完就回到基準列』。主文說初學時每顆鍵的位置從兩根小指下的 a 與分號量起，插圖說明則寫第三、四課起改用『導引鍵 F 與 J』找鍵，連數字鍵也從 F、J 出發；要學生不看鍵盤，用的是空白鍵帽、遮手的罩子、圍裙和掛圖。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "單一出版社的教學法（配合該社的教科書），不能代表 1919 年所有打字教學；OCR 有錯字，引用的頁碼依掃描文字中的頁眉。書中沒有提到鍵帽上的凸點。研究網 NET_GREGG（單篇網）。 覆核補註（SVX7）：書中『導引鍵』一詞同時用在 a／分號（主文）與 F／J（插圖 1、2 說明），作者原稿只寫前者，已改。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://distantreader.org/stacks/trust/uc2/uc2_ark+=13960=t6qz2692v.txt"
         }
       ]
     },
@@ -166139,6 +167759,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1038/2870"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f65a464ef6915686",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8472900/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/s21186155",
+          "title": "Phase Detection and Modulation Improvement for Active Load Modulation during Continuous Transmission",
+          "publisher": "Sensors 21(18):6155（2021）；斯洛維尼亞一家半導體公司的盧布爾雅那研發單位與盧布爾雅那大學電機學院",
+          "version": "出版社開放取用版（CC BY 4.0；Europe PMC 完整 JATS XML 全文）",
+          "accessed_on": "2026-11-18",
+          "read_via": "本工作夾 fetch.sh，Mokaair-editorial/1.0 標頭下載（SX1 seq=12，HTTP 200，93014 位元組，sha256 前 16 碼 7c38540c5175acf3），與前一筆請求間隔 1.2 秒以上；Europe PMC 全文端點（PMCID 取自 Europe PMC 搜尋 seq=11）；本機解析 JATS XML 後讀。",
+          "reading_scope": "1 Introduction、4 Discussion、5 Conclusions 全讀；2–3 節（相位轉換整形與模擬）略讀。",
+          "locator": "1 第 1 段（NFC 標準多為智慧型手機而訂，2019 年有 20 億台 NFC 裝置在用，作者轉引）；1 第 2 段（讀取器產生磁場並調變以通訊；標籤可用讀取器磁場供電並調變回應；在需要時可用電池供電改善距離或縮小天線）；1 第 3 段（標籤主動送出磁場、讓讀取器以為是自己磁場被調變，稱主動負載調變；做得正確時讀取器分不出主動與被動，因此也稱卡片模擬；必須與讀取器磁場相位、頻率同步）；4（實測接收的讀取器訊號與標籤送出訊號比在 −40 到 −18 dB 之間可運作）。",
+          "summary": "斯洛維尼亞的業界與大學團隊說明『主動負載調變』：有電源的裝置可以自己送出一個與讀卡機同步的小磁場，讀卡機收到時看起來就像卡片在加載它的磁場，做得好時根本分不出來，這種做法也叫卡片模擬；代價是必須把相位和頻率對得很準。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "論文是相位偵測電路的改良研究，沒有明寫哪些手機採用主動負載調變；20 億台是作者轉引產業組織數字。作者單位含一家晶片公司，本卡不寫公司名。研究網：NET_I_LJ（單篇網；與其他 8 網查無直接合著，未做 ORCID 全面比對）。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8472900/fullTextXML"
         }
       ]
     },
@@ -167543,6 +169184,27 @@
       ]
     },
     {
+      "id": "SRC-f87c06ac224ee274",
+      "url": "https://www.accc.gov.au/media-release/hp-to-compensate-printer-customers",
+      "readings": [
+        {
+          "canonical_url": "https://www.accc.gov.au/media-release/hp-to-compensate-printer-customers",
+          "title": "HP to compensate printer customers（ACCC media release, 3 May 2018）",
+          "publisher": "澳洲競爭與消費者委員會（ACCC）",
+          "version": "官方新聞稿網頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 請求 seq=4，HTTP 200，104232 位元組，sha256 前 16 碼 3e1e1dcd981302c6；網址取自搜尋結果；本機去標籤後全讀。",
+          "reading_scope": "新聞稿全文與 Background（受影響機種清單）。承諾書本文（court-enforceable undertaking）未另抓。",
+          "locator": "第 3–4 段（Dynamic Security Feature 的設計目的；約 220,000 台；出廠即有或經韌體更新安裝）；第 5 段（2016 年 9 月非原廠墨匣被拒、錯誤訊息顯示墨匣損壞但其實沒有）；第 6–7 段（購買或更新時未告知；委員會關切售後以技術改變功能）；第 9–10 段（公司承認很可能違反澳洲消費者法的誤導行為；每人補償 50 澳元，逾 2000 人受影響，總額逾 10 萬澳元）；第 11–12 段（包裝與賣場標示；提供移除該功能的更新）",
+          "summary": "澳洲競爭與消費者委員會 2018 年公告：一家公司約 22 萬台印表機裝有阻擋非原廠墨匣的功能，有的是出廠就有，有的是之後經韌體更新裝上；2016 年 9 月起有用戶的副廠墨匣被拒，螢幕還顯示「墨匣損壞」。公司承認未事先告知很可能構成誤導，承諾每位受影響者補償 50 澳元（估計逾 2000 人），並在包裝標示、提供移除該功能的更新。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是和解承諾，不是法院判決；處理的是「沒有告知」，不是「阻擋副廠本身違法」。機種名、官員姓名不入稿。研究網 NET_ACCC。 覆核重抓（SVX3 seq=2）正文一致。",
+          "origin": "wave105-x105-20261118",
+          "original_url": "https://www.accc.gov.au/media-release/hp-to-compensate-printer-customers"
+        }
+      ]
+    },
+    {
       "id": "SRC-f87fe1bfabd1ed97",
       "url": "https://download.bls.gov/pub/time.series/cu/cu.data.1.AllItems",
       "readings": [
@@ -168573,6 +170235,21 @@
           "locator": "docs/videos/so-thats-why/week3/A03.md#A03",
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
+          "original_url": "https://www.rfc-editor.org/rfc/rfc6349.txt"
+        },
+        {
+          "canonical_url": "https://www.rfc-editor.org/info/rfc6349",
+          "title": "RFC 6349: Framework for TCP Throughput Testing",
+          "publisher": "IETF（Informational RFC，2011 年 8 月）；作者來自美國一家測試儀器公司、加拿大一家電信公司顧問、德國一家電信公司與一家顧問公司",
+          "version": "RFC 正式純文字版",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 單次請求（SX6 seq=9，HTTP 200，62494 位元組，sha256 前 16 碼 2877fcf785a87d69），Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；純文字逐節讀。",
+          "reading_scope": "Abstract、1 Introduction（含 1.3 前後 RWND／CWND 說明）、3.3.1 Minimum TCP RWND（含表 3.3.1、圖 3.3.1a／b）、4.1 至 4.1.2（Maximum Achievable TCP Throughput 與表 4.1.2）、5.1 Single versus Multiple TCP Connections（表 5.1）。2、3.1、3.2、4.2–4.3、5.2、6 以後只瀏覽。",
+          "locator": "4.1.1（計算基於 IPv4、TCP 與 IP 標頭各 20 位元組、MTU 1500；乙太網路每框線上 1538 位元組＝MTU 1500＋乙太標頭 14＋CRC32 4＋框間隙 12＋前導碼 7＋SFD 1；100 Mbps 乙太網路最多每秒 8127 框；最大 TCP 吞吐量＝1460 位元組×8×8127＝94.9 Mbps）；表 4.1.2（100 Mbps、RTT 2 ms：94.9 Mbps，100 MB 檔理想 9 秒；1 Gbps：949.2 Mbps）；4.1.2（100 MB 檔＝100×8＝800 Mbits）；3.3.1（BDP＝RTT×頻寬；TCP 吞吐量＝RWND×8／RTT；100 Mbps、RTT 5 ms、RWND 16 KB 時只有 25.6 Mbps；16 KBytes×8＝128,000 bits，即此處 KB 以 1000 計）；5.1（500 Mbps、RTT 5 ms、BDP 312.5 KB，RWND 64 KB 時需 5 條連線填滿）；1（框架主要針對有 SLA 的企業網路，best effort 接取無法保證端到端效能）",
+          "summary": "這份網路測試框架算給你看：100 Mbps 乙太網路每個框在線上占 1538 位元組，真正裝檔案資料的只有 1460 位元組，所以就算線路完美、TCP 在穩定狀態，最多也只有 94.9 Mbps，換成每秒位元組約 11.9 MB。另外，單一連線一次能「在路上」的資料量受接收視窗限制：100 Mbps、來回 5 毫秒、視窗 16 KB 時，理論上限只剩 25.6 Mbps。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "Informational RFC，計算是理論最大值，假設 IPv4、無 TCP 選項、MTU 1500、無遺失；實際 TCP 多數會帶選項（見 SX6-S006），額外負擔會更高一點。11.9 MB/s 是本卡由 94.9 Mbps÷8 換算，RFC 沒寫。RFC 主要對象是企業專線，不談家用方案廣告。RFC 內 KB 以 1000 計（16 KBytes×8＝128,000 bits），與作業系統的 KB 不同。研究網 NET_RFC6349。",
+          "origin": "wave105-x105-20261118",
           "original_url": "https://www.rfc-editor.org/rfc/rfc6349.txt"
         }
       ]
@@ -169728,6 +171405,21 @@
           "summary": "TCP 用連線端點、位元組序號與累積確認支援可靠傳輸。",
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "life-tech-20261101",
+          "original_url": "https://www.rfc-editor.org/rfc/rfc9293.txt"
+        },
+        {
+          "canonical_url": "https://www.rfc-editor.org/info/rfc9293",
+          "title": "RFC 9293: Transmission Control Protocol (TCP)（STD 7）",
+          "publisher": "IETF（Standards Track，2022 年 8 月；單一編者，美國一家系統公司）",
+          "version": "RFC 正式純文字版；取代 RFC 793 等",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 單次請求（SX6 seq=15，HTTP 200，263696 位元組，sha256 前 16 碼 6d9ac8be4b0286f8），Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；純文字讀相關各節。",
+          "reading_scope": "Abstract、2.2 Key TCP Concepts、3.1 Header Format 全文（含圖 1 各欄位說明）、3.5 Establishing a Connection 前段（圖 6、圖 7）、3.7.1 Maximum Segment Size Option 全文。其餘各節（狀態機、計時器、介面等）未讀。",
+          "locator": "2.2（TCP 以序號偵測遺失、以每段檢查碼偵測錯誤、以重送更正）；3.1 開頭（IP 標頭帶來源與目的位址，TCP 標頭接在後面；網際網路協定早期開發時 IP 標頭的欄位原本是 TCP 的一部分）；圖 1 與欄位說明（來源／目的埠各 16 位元、序號 32、確認號 32、資料位移 4、保留 4、控制位元 8、視窗 16、檢查碼 16、緊急指標 16，之後才是選項與資料）；3.5 圖 6（三向交握：SYN、SYN+ACK、ACK 後才送資料）；3.7.1（沒有選項時 TCP 標頭 20 位元組，原文稱這是「rare」情況；未收到 MSS 選項時 IPv4 預設 MSS 536＝576−40）",
+          "summary": "TCP 標準規定每一段資料前面都有一份固定格式的表頭：來源埠、目的埠、序號、確認號、旗標、視窗、檢查碼等，最少 20 位元組，而且標準自己說沒有任何選項的情況「很少見」；IP 位址則放在更外面一層的 IP 標頭。連線開始前要先三向交握，資料才開始送。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "標準只定格式與程序，不給實際網路的負擔比例；選項實際多長、交握占多少時間依連線而定，本卡不給數字。研究網 NET_RFC9293（與 RFC 6349 作者無重疊）。",
+          "origin": "wave105-x105-20261118",
           "original_url": "https://www.rfc-editor.org/rfc/rfc9293.txt"
         }
       ]
@@ -172733,6 +174425,21 @@
           "limitations": "不把頁末歷史廠商慣例當現行Windows/硬碟規格；未核格式化容量、保留區或舊訴訟。",
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave10-source-refresh-20261101",
+          "original_url": "https://physics.nist.gov/cuu/Units/binary.html"
+        },
+        {
+          "canonical_url": "https://physics.nist.gov/cuu/Units/binary.html",
+          "title": "Prefixes for binary multiples（NIST Reference on Constants, Units, and Uncertainty）",
+          "publisher": "美國國家標準與技術研究院（NIST）物理量測實驗室",
+          "version": "網頁版（未標日期；歷史背景段改寫自 1997 年 1 月 IEEE Standards Bearer 第 5 頁一篇短文）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh 單次請求（SX6 seq=6，HTTP 200，14645 位元組，sha256 前 16 碼 bded7ada573c8ff7），Mokaair-editorial/1.0 標頭、與前一筆間隔 1.2 秒以上；本機去除 HTML 標籤後逐段全讀。先前 seq=1（www 子網域 cgi 路徑）回 502、seq=5 回 400，非 403／429，改用搜尋結果所示路徑的無 www 版本取得。",
+          "reading_scope": "全文：Prefixes for binary multiples 表、Examples and comparisons with SI prefixes、讀音建議、與 SI 的關係、Official publication、Historical context 兩段。",
+          "locator": "開頭段（1998 年 12 月 IEC 核准）；表（kibi 2^10 至 exbi 2^60、名稱由 SI 字首前兩字母加 bi）；Examples（1 kbit = 1000 bit、1 Kibit = 1024 bit、1 B = 8 bit、1 MB = 10^6 B、1 MiB = 1 048 576 B）；與 SI 段（不是 SI 的一部分；Ki 用大寫 K）；Official publication（IEC TC 25 制定、CIPM 與 IEEE 支持、IEC 60027-2 Amendment 2 出版日 1999-01、第二版 2000-11、初版 1972）；Historical context（kilo 被借作 1024；記憶體廠用 2^20、儲存裝置廠用 10^6；部分區域網路設計者用 1 048 576 bit/s 當 Mbit/s、電信工程師一律用 10^6；1.44 MB 磁片的 MB 是 1 024 000 位元組；IEEE 標準委員會決定 IEEE 標準採 SI 定義）",
+          "summary": "NIST 說明 IEC 在 1998 年 12 月核准 kibi、mebi 等二進位字首，1999 年 1 月以 IEC 60027-2 修正案 2 出版。歷史段說：電腦人早年看 2^10 接近 1000 就借用「kilo」；後來記憶體廠用 2^20 當 MB、儲存廠用 10^6，部分區域網路設計者甚至用 1 048 576 bit/s 當 1 Mbit/s，而電信工程師都用 10^6；1.44 MB 磁片的 MB 又是第三種：1 024 000 位元組。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "歷史段是 NIST 改寫自 1997 年 IEEE 刊物的短文，屬機構轉述，不是原始統計；「most manufacturers」「usually」等是概括說法，沒有逐家調查。頁面未標修訂日期。研究網 NET_NIST（機構頁）。",
+          "origin": "wave105-x105-20261118",
           "original_url": "https://physics.nist.gov/cuu/Units/binary.html"
         }
       ]
