@@ -1,0 +1,294 @@
+{
+  "batch_id": "wave109-x109-20261118",
+  "created_on": "2026-11-18",
+  "scope": "站主 2026-11-18 選「補強 G727、G731」。補研究 SZ7、SZ8 找與既有研究網無合著、不同體系的新網寫卡，覆核 SVZ7、SVZ8 重抓核對、從嚴併網並重排章節。既有卡的修正寫回 wave108 批次，新卡與新來源放在本批次。",
+  "sources": [
+    {
+      "id": "SZ7-S001",
+      "url": "https://arxiv.org/pdf/2312.12495v1",
+      "canonical_url": "https://arxiv.org/abs/2312.12495v1",
+      "title": "A Huffman based short message service compression technique using adjacent distance array（arXiv 2312.12495v1；arXiv 註記 peer reviewed、accepted、in press，期刊 Int. J. Information and Communication Technology，DOI 10.1504/IJICT.2022.10052558 取自 arXiv API 回應）",
+      "publisher": "arXiv 開放全文（期刊接受稿版式）；作者兩人：一位在孟加拉 North East University Bangladesh 資訊工程系任教，一位在英國 University of Hertfordshire 攻讀碩士",
+      "version": "arXiv v1 PDF（2023-12 上傳的作者接受稿）",
+      "accessed_on": "2026-11-18",
+      "read_via": "Mokaair-editorial/1.0 標頭，經 wave72/tools/fetch.sh（間隔 1.2 秒）下載（SZ7 seq=2，HTTP 200，694587 位元組，sha256 前 16 碼 cc42cca803ba8007）；網址取自 arXiv 公開 API 查詢結果（seq=1）的 pdf 連結；本機 pdftotext -layout 轉文字後逐節讀。 覆核 SVZ7 重抓（SVZ7 seq=1，HTTP 200，694587 位元組，sha256 前 16 碼 cc42cca803ba8007）與作者 cache 完全相同；arXiv 編號見 SZ7 seq=1 API 回應。",
+      "reading_scope": "摘要、1 Introduction、2 Related works、3 Background（3.1 The SMS 含表 1、3.2 含表 2）、4 Architecture（4.1、4.2 方法與式 1–5）、5 Implementation、6 Results and discussion（表 4 測試語料、6.1 與表 5、6.2 與表 6）。參考文獻只掃過。",
+      "locator": "摘要（傳統系統 1,120 bits、每字 7 位元、最多 160 字）；3.1 與表 1（GSM 7-bit 160／8-bit 140／16-bit 70，皆 140 bytes 即 1,120 bits；16 位元用於中文、阿拉伯文等非拉丁文字）；6 節開頭（測試語料取自一個公開的英文簡訊語料庫，分 5 組各 5 則連續訊息）；表 5（新方法每字約 5.16–5.54 位元，傳統 GSM 為 7.00）；表 6（以 1,120 ÷ 每字位元數換算，最多約 202–217 字，比 160 多約 26–36%）",
+      "summary": "兩位研究者提出一種以霍夫曼編碼為基礎、把相鄰字元的 ASCII 差值另存一個陣列的簡訊壓縮法。文中先交代傳統簡訊一格 1,120 位元、7 位元字母最多 160 字、16 位元字母 70 字；再用公開英文簡訊語料的 5 組測試訊息估算，新方法平均每字約 5.2 位元，換算同一格 1,120 位元可容納約 202–217 字。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "202–217 字是作者以 1,120 ÷ 每字平均位元數換算的理論值：實驗在一台桌上型電腦上跑，不經手機或電信網路；每組測試是把 5 則連續訊息接成 255–390 字一起壓縮（不是單則 160 字以內的簡訊）；表 5 的位元數只算 encoded 與 adjacent 兩個檔，解碼還需要的字碼表（dictionary／L）沒有計入；只測英文訊息，未測中文；收發兩端要有同一套程式，論文沒有討論與一般手機相容。論文語氣明顯偏推銷（例如說可望取代 GSM 7 位元），只採表中數字與摘要的 1,120／7／160 說法。語料出處只寫『英文與華語對話的公開簡訊語料』並引用一份語料論文，SZ7 原寫的『新加坡口語英文』論文正文沒有寫，已刪。研究網：NET_NEUB；覆核 SVZ7 查 arXiv 作者查詢（SVZ7 seq=5）兩人只有本篇，作者與單位和既有 11 網無交集；加權 0.5（見卡片 notes）。不寫作者姓名。"
+    },
+    {
+      "id": "SZ7-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13717270/fullTextXML",
+      "canonical_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13717270/fullTextXML",
+      "title": "A Behavior Change Technique–Based Text Messaging Intervention for Obesity Among Employed Adult Men Younger Than 40 Years: Pilot Randomized Controlled Trial（JMIR Formative Research 2026；10:e104711；PMC13717270）——題名含醫療主題，只作來源紀錄，不得進稿",
+      "publisher": "JMIR Publications 開放全文（CC BY 4.0）；作者兩人，日本目白大學看護學部與群馬大學大學院保健學研究科",
+      "version": "Europe PMC fullTextXML（2026 年 10 月刊出版本）",
+      "accessed_on": "2026-11-18",
+      "read_via": "Mokaair-editorial/1.0 標頭，經 wave72/tools/fetch.sh（間隔 1.2 秒）下載（SZ7 seq=4，HTTP 200，115713 位元組，sha256 前 16 碼 6ba72d62ec7778a2）；PMCID 取自 Europe PMC 公開 REST 搜尋結果（seq=3）；去除 XML 標籤後讀方法與結果各節。 覆核 SVZ7 重抓（SVZ7 seq=2，HTTP 200，115713 位元組，sha256 前 16 碼 6ba72d62ec7778a2）與作者 cache 完全相同；PMCID 見 SZ7 seq=3 搜尋回應。",
+      "reading_scope": "作者單位、Methods 的 Interventions（訊息每週 3 次共 12 週、36 則）與 Feasibility Measures（成本計算方式）、Results 的 Feasibility Measures 與表 5 及其表後說明。研究的健康介入內容與成效部分只確認範圍，本卡不使用。",
+      "locator": "Methods > Feasibility Measures（The cost calculation included only SMS delivery fees, calculated from the total number of SMS units sent and the per-unit fee）；Results 表 5（Total number of SMS units 累計 54／645／957／1350）與表後說明（The reported SMS count represents the number of SMS units recorded by the delivery system rather than the number of intervention messages delivered. Messages exceeding 70 characters were counted as multiple SMS units）；Methods > Interventions（發送平台是一家商用簡訊服務公司的日本分公司，稿中不點名）",
+      "summary": "一項在日本進行的研究在交代可行性時寫明：發送系統記錄的是『SMS 單位』而不是訊息則數，超過 70 字的訊息被算成多個單位；研究的簡訊費用只算發送費，用單位總數乘以每單位費率算出。三個月累計記錄 1,350 個 SMS 單位。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是研究團隊對所用商用發送平台的描述（平台為一家簡訊服務公司，不是電信業者，也不是規格或法規）；沒寫每單位費率、沒寫用哪種文字或編碼（論文沒有明寫簡訊是日文，只能說研究在日本進行），也沒寫每段實際字數（67 或其他）。研究主題屬健康介入，本來源只能引用簡訊的計數單位與費用計算方式，任何健康主題、對象、介入內容、成效與總金額都不得進稿；平台公司名稱不得進稿。研究網：NET_MEJIRO；覆核 SVZ7 以 Europe PMC 作者查詢（SVZ7 seq=3、4）確認第一作者在 Europe PMC 只有本篇，兩位作者都不在既有 11 網的作者名單（NIPH_PAL、UTMB、FUWAI、GENAI 各篇作者已逐一比對）；加權 0.5（見卡片 notes）。"
+    },
+    {
+      "id": "SZ8-S001",
+      "url": "https://consumerproductsafety.gov.sg/suppliers/cpsr/overview-of-cpsr",
+      "canonical_url": "https://www.consumerproductsafety.gov.sg/suppliers/cpsr/overview-of-cpsr/",
+      "title": "Consumer Protection (Safety Requirements) Regulations（CPSR 總覽與 SAFETY Mark 說明）",
+      "publisher": "新加坡政府消費品安全辦公室（Consumer Product Safety Office，CPSO）網站",
+      "version": "頁面標示 Last updated on 23 June 2026；頁尾『© 2026 Government of Singapore, last updated on 10 November 2026』（全站）",
+      "accessed_on": "2026-11-18",
+      "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）SZ8 seq=1，HTTP 200，412341 位元組，sha256 前 16 碼 96080ece5157a4cd；本機去標籤後正文全讀。",
+      "reading_scope": "正文全部：What is the SAFETY Mark、CoC／SDoC 兩種註冊依據、Registered Supplier、罰則、SAFETY Mark 構成與 8 位數註冊號、三步查驗。",
+      "locator": "第一段（33 類 Controlled Goods 須依指定安全標準測試、向 CPSO 註冊、加 SAFETY Mark 才能在新加坡販售）；第二段（註冊依據為指定第三方 CAB 發的 CoC 或 Registered Supplier 的 SDoC）；罰則段（販售未註冊品罰金不超過 S$10,000 或兩年以下監禁或併科）；What is the SAFETY Mark 段（安全標誌加矩形內『SAFETY MARK』字樣、8 位數註冊號可追到註冊者與註冊型號、可在官方登錄查型號或號碼）。",
+      "summary": "新加坡把 33 類家用電器、電子與瓦斯器具列為 Controlled Goods，須先測試、註冊、加 SAFETY Mark 才能賣；註冊依據是指定第三方機構發的符合證書或註冊供應商的自我聲明；標章旁的 8 位數註冊號可回查註冊者與型號；賣未註冊品可罰款或監禁。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "機構說明頁，不是法規全文（CPSR 條文與 Information Booklet 未讀）；罰則數字照本頁轉述。研究網 NET_SG_GOV（新加坡政府體系；與台灣、歐盟、英國、美國、日本、澳紐、愛爾蘭皆無同體系關係）。seq=4、5 為同站兩個 404（搜尋結果中的舊網址），未再猜網址。｜覆核 SVZ8：重抓 seq=4，雜湊 96080ece5157a4cd 相同；作者原寫『本頁未另標更新日』與頁面不符（頁首有 23 June 2026），已改。罰則與號碼可回查都是機構頁轉述，卡上照此標明。"
+    },
+    {
+      "id": "SZ8-S002",
+      "url": "https://consumerproductsafety.gov.sg/suppliers/cpsr/list-of-controlled-goods/",
+      "canonical_url": "https://consumerproductsafety.gov.sg/suppliers/cpsr/list-of-controlled-goods/",
+      "title": "List of controlled goods（33 類 Controlled Goods 與風險分級）",
+      "publisher": "新加坡政府消費品安全辦公室（CPSO）網站",
+      "version": "頁面標示 Last updated on 23 June 2026",
+      "accessed_on": "2026-11-18",
+      "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）SZ8 seq=2，HTTP 200，688021 位元組，sha256 前 16 碼 6a1b6223a726d9f1；本機去標籤後讀分級說明與 Low／Medium／High 三張表。",
+      "reading_scope": "分級說明段、Low Risk 表全部、Medium Risk 表全部（含 AC Adaptors 列）、High Risk 表開頭。",
+      "locator": "33 Categories 段（分低、中、高風險，合格評定方式不同；低風險交 SDoC，中高風險須指定 CAB 發 CoC）；Medium Risk 表 AC Adaptors 列（額定電壓不超過 250 VAC、供電給電腦、電信設備、家庭娛樂設備或玩具等用途的裝置；依用途對應不同 IEC 標準，含 battery chargers 一項）；Low Risk 表（空氣冷卻扇、插頭保險絲、窗型冷氣、檯燈立燈）。",
+      "summary": "新加坡把 Controlled Goods 分成低、中、高三級：低風險可由供應商自我聲明，中高風險要由指定的第三方合格評定機構發證；AC Adaptors 被列在中風險，因此要第三方證書。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "表格定義寫的是『電信設備』等用途，沒有逐字寫『手機充電器』；卡片照定義原話，不另作品項推論。研究網 NET_SG_GOV。｜覆核 SVZ8：重抓 seq=2，雜湊 6a1b6223a726d9f1 相同；AC Adaptors 定義與 Low Risk 表逐句對過。定義只列用途（電腦、電信設備、家庭娛樂設備、玩具），子項有 battery chargers 適用標準，但全頁沒有『手機』或『mobile phone』字樣，不能推論手機充電器一定屬此類。Low Risk 的冷氣是窗型或穿牆式的房間冷氣。"
+    },
+    {
+      "id": "SZ8-S003",
+      "url": "https://consumerproductsafety.gov.sg/suppliers/cpsr/register-your-controlled-goods/",
+      "canonical_url": "https://consumerproductsafety.gov.sg/suppliers/cpsr/register-your-controlled-goods/",
+      "title": "Register your controlled goods",
+      "publisher": "新加坡政府消費品安全辦公室（CPSO）網站",
+      "version": "Last updated on 23 June 2026",
+      "accessed_on": "2026-11-18",
+      "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）SZ8 seq=3，HTTP 200，388123 位元組，sha256 前 16 碼 6073994dd8064185；本機去標籤後正文全讀。",
+      "reading_scope": "正文全部。",
+      "locator": "For Low Risk 段（SDoC 是 Registered Supplier 的自我聲明）；For Medium and High Risk 段（RS 把測試報告交給負責認證的 CAB 審查，合格者由 CAB 發 CoC 並送交 CPSO；文件齊全一個工作天內發核准函 LOA）。",
+      "summary": "中高風險品由供應商把測試報告交給第三方認證機構審，機構發證並轉交主管機關，主管機關再核准；低風險品是供應商自我聲明。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "未讀 Information Booklet 第 5.3、5.4 章流程圖；費用與註冊效期未寫。研究網 NET_SG_GOV。｜覆核 SVZ8：對作者 cache 003 逐句對過，相符。"
+    },
+    {
+      "id": "SZ8-S004",
+      "url": "https://consumerproductsafety.gov.sg/suppliers/cpsr/apply-to-be-a-registered-supplier/",
+      "canonical_url": "https://consumerproductsafety.gov.sg/suppliers/cpsr/apply-to-be-a-registered-supplier/",
+      "title": "Apply to be a Registered Supplier",
+      "publisher": "新加坡政府消費品安全辦公室（CPSO）網站",
+      "version": "Last updated on 23 June 2026",
+      "accessed_on": "2026-11-18",
+      "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）SZ8 seq=10，HTTP 200，386289 位元組，sha256 前 16 碼 718acee4766c97aa；本機去標籤後正文全讀。",
+      "reading_scope": "正文全部。",
+      "locator": "Supplying Controlled Goods 段（未向主管機關註冊不得為供應而廣告或供應；Registered Supplier 對以其名義註冊的商品安全與合規負責；停業或不再於 ACRA 登記時註冊撤銷）；第二段（進口商、平行進口商、零售商、製造商一般都要註冊）；轉讓段（新公司須重新註冊）。",
+      "summary": "在新加坡賣受管制電器的人要先成為註冊供應商，並對以自己名義註冊的商品負責；公司停業註冊就撤銷，轉手要重新註冊。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "機構說明頁。研究網 NET_SG_GOV。｜覆核 SVZ8：對作者 cache 010 逐句對過，相符。"
+    },
+    {
+      "id": "SZ8-S005",
+      "url": "https://esasafe.com/assets/files/esasafe/pdf/Electrical_Safety_Products/Bulletins/2-7-41.pdf",
+      "canonical_url": "https://esasafe.com/assets/files/esasafe/pdf/Electrical_Safety_Products/Bulletins/2-7-41.pdf",
+      "title": "Ontario Electrical Safety Code – Bulletin 2-7-41: Approval of electrical equipment, Rules 2-022 and 2-024",
+      "publisher": "Electrical Safety Authority（ESA；受安大略省政府授權執行電氣產品與電氣安裝安全法規的行政機構，非政府部會本身）",
+      "version": "Issued May 2026，取代 Bulletin 2-7-40",
+      "accessed_on": "2026-11-18",
+      "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）SZ8 seq=9，HTTP 200，209779 位元組，sha256 前 16 碼 288d046185bc5282；pdftotext -layout 轉文字後兩頁全讀。",
+      "reading_scope": "第 1–2 頁全部（1) Approval requirements、2) 用戶自備電表）。",
+      "locator": "1) Approval requirements 第一段（安大略電氣安全法規與 O. Reg. 438/07 承認由加拿大標準委員會 SCC 認證的認證機構核可電氣設備；只有帶連結清單中標記的設備被 ESA 視為可接受）；第二段（須依認可的加拿大標準核可）；Photo B1 說明（CE 是製造者的自我聲明標記，在加拿大不被承認）。",
+      "summary": "安大略省的電氣安全機構寫明：只有經加拿大標準委員會認證的認證機構核可、帶上其標記的設備才算合格；CE 是製造者自我聲明的標記，在加拿大不被承認。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "是安大略省電氣安全法規（OESC）的公告（加拿大電氣產品核可由各省管），不代表其他省份的條文；O. Reg. 438/07 原文頁 ontario.ca 為 JavaScript 動態頁（seq=8 去標籤後只剩 24 位元組標題），條文本身未讀。研究網 NET_CA_ON_ESA。覆核 SVZ8：重抓 seq=1，雜湊 288d046185bc5282 相同；第 1) 節兩段與 Photo B1 說明逐句對過。ESA 的地位：它自稱『The Ontario government has given ESA a mandate』（SZ8-S007），是省政府授權的行政機構，不是部會網站；它講的是自己執行的規則與職權，可當監理機關說明採用，但卡上一律寫『安大略省負責執行電氣安全法規的機構』，不寫成『安大略省政府規定』。與美國 OSHA、歐盟等既有網沒有同體系關係，獨立一網、上限 2.0 合理。"
+    },
+    {
+      "id": "SZ8-S006",
+      "url": "https://esasafe.com/electrical-products/recognized-certification-marks/",
+      "canonical_url": "https://esasafe.com/electrical-products/recognized-certification-marks/",
+      "title": "Recognized Approval Marks",
+      "publisher": "Electrical Safety Authority（安大略省，ESA）",
+      "version": "未標日期；清單內最近一筆撤銷日期為 2024 年 1 月 16 日",
+      "accessed_on": "2026-11-18",
+      "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）SZ8 seq=6，HTTP 200，101127 位元組，sha256 前 16 碼 077eeedd53d0a714；本機去標籤後正文全讀，清單逐列計數。",
+      "reading_scope": "開頭說明、Recognized Certification Markings 全部、SPE-1000／Panel-Only／SPE-3000 現場評估標記、Component Certification 段與註、Withdrawn 段與註。",
+      "locator": "開頭段（電氣產品在安大略使用、販售、展示或廣告前，須經認證或評估機構核可並帶其標記，表示經獨立安全評估；安裝與連接未核可設備違法，可被起訴）；Recognized Certification Markings（列 29 個名稱，其中一個註明 2023 年 7 月 5 日撤銷、一個只限防爆環境用設備）；SPE-1000／Panel-Only／SPE-3000 現場評估標記；Component Certification 段與 Note（元件認可標記不適用於完整終端產品；例子含部分 power supplies）；Withdrawn 段與 Note（只適用現場評估標記：撤銷日後才貼的視為未核可，不得在安大略使用或販售）。",
+      "summary": "安大略省列出近三十個被承認的認證標記與幾類現場評估標記；元件級的認可標記不能當成整台產品的核可；被撤銷的現場評估機構，撤銷日以後貼上的標記就不算數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "清單列的是機構名稱（多數為民間機構，也包括 ESA 自己的現場評估單位），卡上不點名任何一家；頁面未標日期，清單可能變動。研究網 NET_CA_ON_ESA。覆核 SVZ8：重抓 seq=3，雜湊 077eeedd53d0a714 相同；逐列重數 Recognized Certification Markings 為 29 列，但其中一列註明已於 2023 年撤銷，作者『29 個被承認』改為『近三十個名稱、其中一個已註明撤銷』。"
+    },
+    {
+      "id": "SZ8-S007",
+      "url": "https://esasafe.com/electrical-products/product-safety-regulation/",
+      "canonical_url": "https://esasafe.com/electrical-products/product-safety-regulation/",
+      "title": "Product Safety Regulation 438 / 07",
+      "publisher": "Electrical Safety Authority（安大略省，ESA）",
+      "version": "未標日期",
+      "accessed_on": "2026-11-18",
+      "read_via": "fetch.sh（Mokaair-editorial/1.0 標頭，間隔 1.2 秒）SZ8 seq=7，HTTP 200，39018 位元組，sha256 前 16 碼 884f6695b86b4abd；本機去標籤後正文全讀。",
+      "reading_scope": "正文全部。",
+      "locator": "Who manages electrical product safety?（ESA 執行 2007 年生效的 O. Reg. 438/07；職權含撤銷或暫停不安全產品的核可、撤銷認證機構或現場評估機構的承認）；Health Canada 依 CCPSA 對消費性電器負責調查與公告；OESC Rule 2-022、2-024。",
+      "summary": "安大略省電氣安全機構依 2007 年生效的產品安全規則，可以撤銷產品核可，也可以撤銷對認證機構的承認；消費性電器另由聯邦衛生部分工。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "機構說明頁，未標日期。研究網 NET_CA_ON_ESA。覆核 SVZ8：對作者 cache 007 逐句對過職權清單與 Health Canada 分工段，相符；頁首『The Ontario government has given ESA a mandate』是判斷 ESA 地位的依據。"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K108-0320",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "不改那一格 1,120 位元，有沒有人試過靠「每個字少用幾個位元」塞進更多字？",
+      "mechanism_key": "x108.sms.huffman_compression_fits_200_plus_in_1120_bits",
+      "answer_target": "有，而且它從反方向把 160 再算了一次。一篇開放全文論文的兩位作者（孟加拉與英國的大學）先寫明：傳統簡訊一格是 1,120 位元，每字 7 位元，所以最多 160 字。他們改用霍夫曼編碼（常出現的字給短碼）再加一個記錄相鄰字碼差值的陣列，在電腦上拿一份公開英文簡訊語料的 5 組測試文字（每組是 5 則連續訊息接起來，255–390 字）試算：每字約 5.16–5.54 位元，傳統做法是 7.00；作者再用 1,120 去除，換算一格約可裝 202–217 字（比 160 多約 26–36%）。這些是理論換算：沒有經過手機或電信網路實際發送，位元數也沒算進解碼需要的字碼表，收發兩端還得裝同一套程式。可以確定的只有一件事：格子大小不變時，能裝幾個字取決於每字用幾個位元。",
+      "scope": "SZ7-S001 摘要、3.1 表 1、6 節、表 5、表 6、5.2 節（解碼需 encoded、adjacent 與字碼表 L）。202–217 字與 26–36% 是作者以 1,120 ÷ 每字位元數換算的理論值；每組測試長於一則簡訊；表 5 未計字碼表；只測英文。屬學術提案，不可說成手機、業者或規格採用的做法；『兩端要裝同一套程式，和規格照顧舊手機的做法相反』是本片的對照，不是論文的說法。不做省錢建議，不點名作者。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "盒子一樣大，每顆積木削小一點就能多放；但收件的人得有同一把拆解的鑰匙。",
+        "visual": "清爽可愛的機制剖面動畫：同一個透明小包裹盒並排兩個，左邊塞著大小一致的方塊積木，右邊的積木被削成大小不一、常見的特別小，於是右盒多擠進好幾排；兩個盒子外框完全重疊，證明盒子沒變大；最後右盒旁出現一把小鑰匙，只有拿著同款鑰匙的另一端才打得開。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          20,
+          30
+        ]
+      },
+      "source_ids": [
+        "SZ7-S001"
+      ],
+      "source_locator": "SZ7-S001 摘要（1,120 bits、7 bits、160）；3.1 表 1；6 節（5 組、每組 5 則連續訊息）與表 4（每組 255–390 字）；6.1 表 5（5.16–5.54 vs 7.00；位元數＝encode.txt＋adjacent.txt）；6.2 表 6（1120 ÷ 每字位元 → 202.04–216.85 字，26.28–35.53%）；5.2（解碼用 encoded、adjacent 與 L）",
+      "notes": "研究網 NET_NEUB；覆核 SVZ7 加權 1.0→0.5：（1）核心數字是作者在桌上型電腦上的理論換算，沒有實際發送；（2）測試文字每組 255–390 字，位元數未計解碼所需字碼表，202–217 字偏樂觀；（3）卡上『1,120÷7＝160』與 K108-0301／0304（3GPP）重複，獨有的只有壓縮試算一點，且與主軸（為什麼是 160／70）距離較遠。放第七章，當『不改格子、改每字位元數』的對照。不得說這是手機或電信業者採用的方法；不做省錢建議；不點名作者。"
+    },
+    {
+      "id": "K108-0321",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "超過 70 字的簡訊，在發送系統的帳上是記成一則還是好幾筆？",
+      "mechanism_key": "x108.sms.over_70_chars_billed_as_multiple_units_japan",
+      "answer_target": "記成好幾筆「單位」。日本一項研究在交代可行性時特別註明：表裡的簡訊數是發送系統記錄的 SMS 單位數，不是寄出的訊息則數，因為超過 70 字的訊息被算成多個 SMS 單位；研究的簡訊費用只算發送費，就是用 SMS 單位總數乘以每單位費率。三個月下來，系統累計記了 1,350 個單位。也就是說，在這套商用發送平台的帳上，計數與計價的單位是被切開後的段，不是使用者心中的「一則」。",
+      "scope": "SZ7-S002 Methods > Feasibility Measures、Results 表 5 與表後說明。這是研究團隊對一家商用簡訊發送平台的描述，不是電信業者、規格或法規；論文沒寫單位費率、文字或編碼、每段實際字數，不能說成『日文 70 字』或『每段 67 字』；不推論台灣或其他業者也如此計價；不提研究的健康主題、對象與總金額，不點名平台公司。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "帳單上數的不是你寄了幾則，而是被切成了幾段。",
+        "visual": "清爽可愛的機制剖面動畫：一張長長的紙條滑進一台小小的切紙機，從另一頭掉出好幾段等長的小紙片，每掉一段，旁邊的小算盤就撥上一顆珠子；鏡頭停在一排整齊的珠子上。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          20,
+          30
+        ]
+      },
+      "source_ids": [
+        "SZ7-S002"
+      ],
+      "source_locator": "SZ7-S002 Methods > Feasibility Measures（calculated from the total number of SMS units sent and the per-unit fee）；Results 表 5（Total number of SMS units 0–3 個月累計 1350）與表後說明（Messages exceeding 70 characters were counted as multiple SMS units）",
+      "notes": "研究網 NET_MEJIRO；覆核 SVZ7 加權 0.75→0.5：（1）是研究者對一家商用發送平台計數方式的一句說明，不是業者或規格文件；（2）沒有寫文字、編碼、每段字數與費率，SZ7 原稿『用的是日文』『多一個字就多收一則錢』『第一份真實帳目紀錄』論文都沒寫，已刪；（3）『長簡訊被算成多則』與 K108-0315（NIPH_PAL）同一個點，獨有的只有『計費＝單位數×單位費率』的記帳方式。放第六章轉折二，接在 K108-0315 之後，部分補上缺口（2）（6）：核心追問的『收兩次錢』多一筆實際記帳方式的紀錄，但仍不得說成規格或法規。"
+    },
+    {
+      "id": "K108-0714",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "新加坡賣插牆電源轉接器，可以像低風險家電一樣由賣家自己聲明合格嗎？",
+      "mechanism_key": "x108.sg_cpsr.risk_tiers_ac_adaptors_medium_risk_need_third_party_coc_low_risk_sdoc",
+      "answer_target": "不行。新加坡消費品安全辦公室說明：〈消費者保護（安全要求）規則〉把 33 類家用電器、電子與瓦斯器具列為受管制商品，賣之前要依指定安全標準測試、向該辦公室註冊、加上 SAFETY Mark。這 33 類分成低、中、高三級，合格評定方式不同：低風險（例如檯燈、插頭用保險絲、窗型或穿牆式房間冷氣）由註冊供應商交一份自我符合聲明即可；中、高風險則由供應商把測試報告交給主管機關指定的第三方合格評定機構審查，合格才由該機構發符合證書並送交主管機關，文件齊全後一個工作天內發核准函。『AC Adaptors』的定義是額定電壓 250 伏特交流以下、為電腦、電信設備、家庭娛樂設備或玩具等用途供電的裝置，列在中風險，所以要第三方證書，不能只靠自我聲明。頁面沒有逐字寫出手機充電器，這張卡只講『電源轉接器』這個類別。",
+      "scope": "新加坡現行機構頁（2026 年 6 月 23 日更新）；不涵蓋費用、註冊效期與 CPSR 條文全文；定義只列用途，頁面沒有『手機』字樣，不能推論到手機充電器。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個國家裡，自己簽名和外人把關兩種做法都有，差別在被列在哪一級；電源轉接器被排在要外人把關的那一邊。",
+        "visual": "清爽可愛的機制動畫：三個高矮不同的小台階，最低一階上的小檯燈自己舉起一張簽名小紙條就過關；中間一階上的圓滾滾電源小方塊，要把一疊報告交給旁邊戴小眼鏡的第三方小盒子翻看，小盒子蓋章後把紙條遞給遠處的官方小信箱，小方塊背後才亮起小印記。不放任何文字、數字、標誌圖樣與字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "source_ids": [
+        "SZ8-S001",
+        "SZ8-S002",
+        "SZ8-S003"
+      ],
+      "source_locator": "SZ8-S001 第一、二段；SZ8-S002 33 Categories 段與 Medium Risk 表 AC Adaptors 列、Low Risk 表；SZ8-S003 For Low Risk／For Medium and High Risk 段",
+      "notes": "研究網 NET_SG_GOV；加權 1.0。補第六章（『電源盒被放進要外部檢查的清單』）的第三個國家，並給轉折一一個對照：自我聲明在新加坡只給低風險品。紅線：不說哪國制度較好、不做選購建議；口播說『電源轉接器這一類』，不說『手機充電器一定屬此類』。｜覆核 SVZ8：對 SZ8-S001、S002（重抓 seq=2、4 雜湊相同）、S003 逐句對過，相符；『窗型冷氣』補為『窗型或穿牆式房間冷氣』；answer_target 末句明寫不推論到手機充電器；放入新的新加坡章。秒數因整組素材超過 10 分鐘，下調為 [25,35]。"
+    },
+    {
+      "id": "K108-0715",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "新加坡電器上 SAFETY Mark 旁邊的號碼，查得到是誰負責嗎？",
+      "mechanism_key": "x108.sg_safety_mark.eight_digit_registration_number_traces_registrant_and_models_registered_supplier_liable",
+      "answer_target": "查得到。新加坡消費品安全辦公室說明：SAFETY Mark 由一個安全標誌加上右側矩形內的『SAFETY MARK』字樣組成，要印在商品或包裝上；每件受管制商品有一組獨一的 8 位數註冊號，可以追到註冊者與它註冊的型號，官方設有公開登錄，用型號或這組號碼就查得到註冊資料。標章背後負責的是『註冊供應商』：進口商、平行進口商、零售商、製造商一般都要註冊，並對以自己名義註冊的商品安全與合規負責；公司不再供應、停業或不再在新加坡公司登記機關登記，註冊就撤銷，商品轉給別家公司也要重新註冊。依機構頁的轉述，販售未註冊的受管制商品，罰金最高 1 萬新加坡元，或兩年以下監禁，或兩者併科。",
+      "scope": "新加坡現行機構頁；罰則數字照機構頁轉述，未讀規則條文；只講新加坡的 SAFETY Mark，不推論到手機充電器，也不移植到台灣的商品安全標章。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "號碼不是裝飾：它把一顆電源盒連到一家在當地登記、要負責的公司。",
+        "visual": "清爽可愛的機制動畫：一個小電源方塊背面亮起一條細細的光線，光線一路連到一本攤開的大登錄冊，冊頁翻到某一頁，冒出一棟小小的公司房子和一排同款小方塊；接著小房子熄燈關門，那一頁跟著變灰。不放任何文字、數字、標誌圖樣與字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "source_ids": [
+        "SZ8-S001",
+        "SZ8-S004"
+      ],
+      "source_locator": "SZ8-S001 罰則段、What is the SAFETY Mark 段、三步查驗；SZ8-S004 Supplying Controlled Goods 段、第二段、轉讓段",
+      "notes": "研究網 NET_SG_GOV；加權 1.0（本網封頂 2.0）。可放第六章或收尾，回應原草稿『號碼可以回查是誰申請的』（台灣部分仍未查證，口播不得移植到台灣）。紅線：不點名任何公司或被罰案例；不教民眾查驗步驟以外的消費建議。｜覆核 SVZ8：對 SZ8-S001（重抓 seq=4 雜湊相同）、S004 逐句對過，相符；把『民眾可在官方登錄輸入型號查驗』改寫成制度描述（官方設有公開登錄），避免變成教觀眾怎麼檢查的消費建議；罰則標明是機構頁轉述。放入新的新加坡章。"
+    },
+    {
+      "id": "K108-0716",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "CE 帶到加拿大安大略省，算不算合格的電器安全標記？",
+      "mechanism_key": "x108.ca_ontario.only_scc_accredited_certification_body_marks_accepted_ce_self_declaration_not_recognized",
+      "answer_target": "不算。安大略省負責執行電氣安全法規的機構（Electrical Safety Authority，受省政府授權）在 2026 年 5 月的公告寫：安大略電氣安全法規與省規則 O. Reg. 438/07 承認經加拿大標準委員會認證的認證機構來核可電氣設備，只有帶上該機構清單裡標記的設備才被視為可接受，而且要依認可的加拿大標準核可；公告附上 CE 標記的照片，明寫它是『製造者的自我聲明標記』，在加拿大不被承認。同一機構的標記頁也寫：電氣產品在安大略使用、販售、展示或廣告之前，就要經認證或評估機構核可並帶其標記，表示經過獨立的安全評估；安裝與連接未核可設備違法、可被起訴。",
+      "scope": "安大略省（加拿大電氣產品核可由各省管，不代表其他省的條文）；依 ESA 公告與說明頁，O. Reg. 438/07 原文未讀；ESA 是省政府授權的行政機構，不寫成『省政府規定』。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個 CE，在歐洲是製造者簽名負責，到了加拿大這一省，監理機關直接說：自己簽的不算。",
+        "visual": "清爽可愛的機制動畫：一個小電源方塊背著一枚自己畫的小徽章走到一道楓葉色的小閘門前，閘門旁的小機器人搖搖頭；方塊轉身去找一個戴小眼鏡的第三方小盒子做檢查，換上一枚小徽章後閘門才打開。不放任何文字、數字、字母、真實標誌圖樣與字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "source_ids": [
+        "SZ8-S005",
+        "SZ8-S006"
+      ],
+      "source_locator": "SZ8-S005 1) Approval requirements 第一、二段與 Photo B1 說明；SZ8-S006 開頭段",
+      "notes": "研究網 NET_CA_ON；加權 1.0。強化轉折一：由歐盟以外的監理機關直接把 CE 定性為製造者自我聲明，不靠歐盟網。紅線：不說哪國制度較好；畫面不得出現 CE 或任何真實標誌圖樣；不點名任何認證機構。｜覆核 SVZ8：對 SZ8-S005（重抓 seq=1 雜湊相同）第 1) 節與 Photo B1、S006（重抓 seq=3 雜湊相同）開頭段逐句對過，相符；『只承認』改為原文的『承認』＋『只有帶清單標記的設備才可接受』；主詞統一寫『負責執行法規的機構』。加權維持 1.0（公告標 2026 年 5 月）。"
+    },
+    {
+      "id": "K108-0717",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在安大略省，電器上有某家實驗室的標記，就一定算整台核可過嗎？",
+      "mechanism_key": "x108.ca_ontario.component_marks_not_end_product_approval_withdrawn_agency_marks_void_after_date",
+      "answer_target": "不一定。安大略省負責執行電氣安全法規的機構列出近三十個被承認的認證標記名稱（其中一個註明 2023 年已撤銷，一個只限防爆環境用的設備），另列幾類現場評估標記；同一頁特別註明：有些機構另有『元件認可』標記，這類元件可能性能受限或結構不完整，是要裝進更大的已核可產品或系統裡用的，不能當作完整終端產品的核可，所舉的例子包括部分電源供應器。被撤銷承認的現場評估機構，撤銷日以後才貼上的標記視為未核可、不得在安大略使用或販售。這個機構說明，依 2007 年生效的省規則 O. Reg. 438/07，它可以撤銷或暫停不安全或不符標準產品的核可，也可以撤銷對某個認證機構或現場評估機構的承認。換句話說，標記上多半是民間機構的名字，但哪些名字算數、何時不算數，由這個省政府授權的機構決定。",
+      "scope": "安大略省；清單頁與職權說明頁都未標日期，名單可能變動；O. Reg. 438/07 原文未讀；卡上不點名任何機構。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "民間實驗室的標記能不能用，看的是政府那張名單；同一家的元件標記，也不能當整台的通行證。",
+        "visual": "清爽可愛的機制動畫：一面掛滿小圓章的牆，旁邊一本官方小名冊；一個小電源模組戴著半枚小章想自己過門，被引導回一台大機器裡面組裝好，整台才拿到完整的章；牆上有一枚小圓章在某一刻變灰，之後新貼上的同款章也跟著變灰。不放任何文字、數字、字母、真實標誌圖樣與字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "source_ids": [
+        "SZ8-S006",
+        "SZ8-S007"
+      ],
+      "source_locator": "SZ8-S006 Recognized Certification Markings（29 個）、Component Certification 段與 Note、Withdrawn 段與 Note；SZ8-S007 Who manages electrical product safety? 職權清單",
+      "notes": "研究網 NET_CA_ON_ESA；加權 0.75（覆核 SVZ8 由 1.0 下調：兩個來源頁都未標日期，比照 K108-0702 的處理；本網合計 1.75）。補轉折二：與美國職場設備規則同樣是『政府認可民間機構』，但是另一個國家的另一套體系，口播說明兩者法源不同，不說加拿大照抄美國。紅線：不點名任何認證機構、不說哪家可信。｜覆核 SVZ8：重數清單 29 列，其中 TR 一列註明 2023 年 7 月 5 日撤銷，作者『29 個被承認』改為『近三十個名稱、其中一個已註明撤銷』；撤銷規則原文只針對現場評估標記，已限定；清單含 ESA 自己的現場評估單位，『標記上是民間機構的名字』改為『多半是』；『例子就包括電源供應器』改為原文的『部分電源供應器』，不推論到手機充電器。"
+    }
+  ],
+  "not_added": []
+}
