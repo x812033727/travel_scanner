@@ -6,7 +6,7 @@ import { GuideCard, type GuideCardLabels } from "@/components/guides/card";
 import { GuideImage } from "@/components/guides/guide-image";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { guideHref, guideTopicHref, visibleGuideHero, type GuideSummary } from "@/lib/guides";
+import { guideHref, guideTopicHref, isNewsTopic, visibleGuideHero, type GuideSummary } from "@/lib/guides";
 import type { SeriesSummary } from "@/lib/guide-series";
 
 export type HomeGuideBlock = {
@@ -37,10 +37,18 @@ export type HomePortalTabsLabels = {
   seriesTitle: string;
 };
 
+function NewsTopicLabel({ article, className }: { article: GuideSummary; className: string }) {
+  const topic = article.topics.find((item) => isNewsTopic("life", item.slug));
+  return topic ? <span className={className}>{topic.label}</span> : null;
+}
+
 export function HomePortalTabs({
   locale,
   blocks,
   news,
+  newsChannels,
+  overviewBlocks,
+  overviewSoftware,
   trending,
   software,
   series,
@@ -49,6 +57,9 @@ export function HomePortalTabs({
   locale: Locale;
   blocks: HomeGuideBlock[];
   news: GuideSummary[];
+  newsChannels: { href: string; label: string }[];
+  overviewBlocks: HomeGuideBlock[];
+  overviewSoftware: GuideSummary[];
   trending: GuideSummary[];
   software: GuideSummary[];
   series: SeriesSummary[];
@@ -73,10 +84,10 @@ export function HomePortalTabs({
   const currentTab = availableTabs.some((tab) => tab.id === activeTab) ? activeTab : "all";
   const showNewsDesk = (currentTab === "all" || currentTab === "news") && news.length > 0;
   const showSideRail = currentTab === "all" && (trending.length > 0 || series.length > 0);
-  const showSoftware = (currentTab === "all" || currentTab === "software") && software.length > 0;
+  const softwareArticles = currentTab === "all" ? overviewSoftware : software;
+  const showSoftware = (currentTab === "all" || currentTab === "software") && softwareArticles.length > 0;
 
-  const visibleBlocks = nonEmptyBlocks.filter((block) => {
-    if (currentTab === "all") return true;
+  const visibleBlocks = currentTab === "all" ? overviewBlocks : nonEmptyBlocks.filter((block) => {
     if (currentTab === "ai") return block.key === "tech";
     if (currentTab === "travel") return block.key === "travel";
     if (currentTab === "money") return block.key === "money";
@@ -133,12 +144,12 @@ export function HomePortalTabs({
             >
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] pb-3.5">
                 <div className="min-w-0">
-                  <h3 className="flex items-center gap-2.5 text-lg font-extrabold tracking-tight sm:text-xl">
+                  <h2 className="flex items-center gap-2.5 text-lg font-extrabold tracking-tight sm:text-xl">
                     <span className="inline-grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-[var(--teal-soft)] text-[var(--teal-dark)]">
                       <Newspaper size={17} aria-hidden />
                     </span>
                     {labels.newsDeskTitle}
-                  </h3>
+                  </h2>
                   <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{labels.newsDeskLead}</p>
                 </div>
                 <div className="flex flex-wrap items-center gap-2 text-sm font-semibold">
@@ -150,7 +161,7 @@ export function HomePortalTabs({
                     {labels.newsDeskRss}
                   </a>
                   <Link
-                    href="/life"
+                    href="/life#life-news-heading"
                     className="inline-flex min-h-11 items-center gap-1 rounded-full px-3 text-[var(--teal)] transition-colors hover:bg-[var(--teal-soft)]"
                   >
                     {labels.seeAll}
@@ -158,6 +169,21 @@ export function HomePortalTabs({
                   </Link>
                 </div>
               </div>
+
+              {newsChannels.length > 0 ? (
+                <nav aria-label={labels.newsDeskTitle} className="mt-2 flex flex-wrap gap-x-4">
+                  {newsChannels.map((channel) => (
+                    <Link
+                      key={channel.href}
+                      href={channel.href}
+                      className="inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline"
+                    >
+                      {channel.label}
+                      <ArrowRight aria-hidden size={14} />
+                    </Link>
+                  ))}
+                </nav>
+              ) : null}
 
               <article
                 data-testid="portal-hero"
@@ -190,20 +216,16 @@ export function HomePortalTabs({
                         {leadStory.news_date}
                       </time>
                     ) : null}
-                    {leadStory.topics[0] ? (
-                      <span className="rounded-full border border-[var(--line)] bg-[var(--surface)] px-2 py-0.5 text-[var(--ink)]">
-                        {leadStory.topics[0].label}
-                      </span>
-                    ) : null}
+                    <NewsTopicLabel article={leadStory} className="rounded-full border border-[var(--line)] bg-[var(--surface)] px-2 py-0.5 text-[var(--ink)]" />
                   </p>
-                  <h4 className="mt-2.5 text-lg font-extrabold leading-[1.36] tracking-tight sm:text-xl md:text-2xl md:leading-snug">
+                  <h3 className="mt-2.5 text-lg font-extrabold leading-[1.36] tracking-tight sm:text-xl md:text-2xl md:leading-snug">
                     <Link
                       href={guideHref(leadStory.kind, leadStory.slug)}
                       className="text-[var(--ink)] underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:text-[var(--teal)] group-hover:underline"
                     >
                       {leadStory.title}
                     </Link>
-                  </h4>
+                  </h3>
                   <p className="mt-2 line-clamp-2 text-sm leading-6 text-[var(--muted)] sm:line-clamp-3">
                     {leadStory.description}
                   </p>
@@ -239,20 +261,16 @@ export function HomePortalTabs({
                                 {story.news_date}
                               </time>
                             ) : null}
-                            {story.topics[0] ? (
-                              <span className="rounded-full bg-[var(--teal-soft)] px-2 py-0.5 font-semibold text-[var(--teal-dark)]">
-                                {story.topics[0].label}
-                              </span>
-                            ) : null}
+                            <NewsTopicLabel article={story} className="rounded-full bg-[var(--teal-soft)] px-2 py-0.5 font-semibold text-[var(--teal-dark)]" />
                           </p>
-                          <h4 className="mt-1.5 text-[0.96875rem] font-bold leading-6 tracking-tight sm:mt-2 sm:text-base">
+                          <h3 className="mt-1.5 text-[0.96875rem] font-bold leading-6 tracking-tight sm:mt-2 sm:text-base">
                             <Link
                               href={guideHref(story.kind, story.slug)}
                               className="text-[var(--ink)] underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:text-[var(--teal)] group-hover:underline"
                             >
                               {story.title}
                             </Link>
-                          </h4>
+                          </h3>
                           <p className="mt-1.5 hidden text-sm leading-6 text-[var(--muted)] sm:block">
                             <span className="line-clamp-2">{story.description}</span>
                           </p>
@@ -277,11 +295,7 @@ export function HomePortalTabs({
                               {story.news_date}
                             </time>
                           ) : null}
-                          {story.topics[0] ? (
-                            <span className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-2 py-0.5 font-medium text-[var(--ink)]">
-                              {story.topics[0].label}
-                            </span>
-                          ) : null}
+                          <NewsTopicLabel article={story} className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-2 py-0.5 font-medium text-[var(--ink)]" />
                         </div>
                         <Link
                           href={guideHref(story.kind, story.slug)}
@@ -311,12 +325,12 @@ export function HomePortalTabs({
                   className="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-sm)] sm:p-5"
                 >
                   <div className="border-b border-[var(--line)] pb-3">
-                    <h3 id="portal-trending-heading" className="flex items-center gap-2 text-lg font-extrabold tracking-tight">
+                    <h2 id="portal-trending-heading" className="flex items-center gap-2 text-lg font-extrabold tracking-tight">
                       <span className="inline-grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-[var(--coral-soft)] text-[var(--coral)]">
                         <Flame size={16} aria-hidden />
                       </span>
                       {labels.trendingTitle}
-                    </h3>
+                    </h2>
                     <p className="mt-1 text-[length:var(--text-xs)] leading-5 text-[var(--muted)]">{labels.trendingLead}</p>
                   </div>
                   <ol className="mt-2 divide-y divide-[var(--line)]">
@@ -361,12 +375,12 @@ export function HomePortalTabs({
                   data-testid="portal-series"
                   className="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-sm)] sm:p-5"
                 >
-                  <h3 id="portal-series-heading" className="flex items-center gap-2 text-lg font-extrabold tracking-tight">
+                  <h2 id="portal-series-heading" className="flex items-center gap-2 text-lg font-extrabold tracking-tight">
                     <span className="inline-grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-[var(--teal-soft)] text-[var(--teal-dark)]">
                       <Layers size={16} aria-hidden />
                     </span>
                     {labels.seriesTitle}
-                  </h3>
+                  </h2>
                   <ul className="mt-3.5 space-y-2">
                     {series.map((item) => (
                       <li key={item.slug}>
@@ -390,9 +404,9 @@ export function HomePortalTabs({
       {showSoftware ? (
         <div data-testid="portal-software" className="min-w-0">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] pb-2.5">
-            <h3 className="portal-section-heading text-xl font-extrabold tracking-tight">
+            <h2 className="portal-section-heading text-xl font-extrabold tracking-tight">
               {labels.blockTitles.software}
-            </h3>
+            </h2>
             <Link
               href={guideTopicHref("life", "software")}
               className="inline-flex min-h-11 items-center gap-1 rounded-full px-3 text-sm font-semibold text-[var(--teal)] transition-colors hover:bg-[var(--teal-soft)]"
@@ -403,7 +417,7 @@ export function HomePortalTabs({
           </div>
           {currentTab === "all" ? (
             <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {software.slice(0, 4).map((article) => (
+              {softwareArticles.map((article) => (
                 <GuideCard key={article.slug} article={article} labels={labels.cardLabels} />
               ))}
             </ul>
@@ -425,13 +439,13 @@ export function HomePortalTabs({
       {visibleBlocks.length > 0 ? (
         <div className={`grid gap-6 ${currentTab === "all" ? "lg:grid-cols-3" : ""}`}>
           {visibleBlocks.map((block) => {
-            const shownArticles = currentTab === "all" ? block.articles.slice(0, 4) : block.articles;
+            const shownArticles = block.articles;
             return (
               <div key={block.key} className="min-w-0" data-testid={`home-guides-${block.key}`}>
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] pb-2.5">
-                  <h3 className="portal-section-heading text-xl font-extrabold tracking-tight">
+                  <h2 className="portal-section-heading text-xl font-extrabold tracking-tight">
                     {labels.blockTitles[block.key]}
-                  </h3>
+                  </h2>
                   <Link
                     href={block.href}
                     className="inline-flex min-h-11 items-center gap-1 rounded-full px-3 text-sm font-semibold text-[var(--teal)] transition-colors hover:bg-[var(--teal-soft)]"
@@ -486,12 +500,12 @@ export function HomePortalTabs({
             data-testid="portal-category-series"
             className="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]"
           >
-            <h3 className="flex items-center gap-2 text-lg font-extrabold tracking-tight">
+            <h2 className="flex items-center gap-2 text-lg font-extrabold tracking-tight">
               <span className="inline-grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-[var(--teal-soft)] text-[var(--teal-dark)]">
                 <Layers size={16} aria-hidden />
               </span>
               {labels.seriesTitle}
-            </h3>
+            </h2>
             <ul className="mt-3.5 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
               {categorySeries.map((item) => (
                 <li key={item.slug}>

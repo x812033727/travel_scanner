@@ -29,7 +29,7 @@ export function DiscoveryHomeGate({ children, initialEnabled, initialFeed }: { c
   }, [enabled, router]);
   // The request's snapshot stands in only until the shared client store resolves. Never remove
   // this gate on the server: a failed status request must still recover after hydration.
-  if (loading) return <main className={styles.page}><DiscoverySkeleton /></main>;
+  if (loading) return <div className={styles.page}><DiscoverySkeleton /></div>;
   return enabled ? <DiscoveryExplorer home initialEnabled={initialEnabled} initialFeed={initialFeed} /> : children;
 }
 /**
@@ -42,11 +42,14 @@ export function DiscoveryHomeGate({ children, initialEnabled, initialFeed }: { c
  */
 export function DiscoveryExplorer({ home = false, initialEnabled, initialFeed }: { home?: boolean; initialEnabled?: boolean; initialFeed?: InitialDiscoveryFeed }) {
   const t = useTranslations("community"); const { enabled, loading } = resolveDiscoveryStatus(useDiscoveryStatus(), initialEnabled);
-  if (loading) return <main className={styles.page}><DiscoverySkeleton /></main>;
-  if (!enabled) return <main className="mx-auto max-w-5xl px-5 py-10"><h1 className="mb-6 text-3xl font-bold">{t("exploreTravel")}</h1><TravelExplore /></main>;
-  return <DiscoveryDetailBoundary><ExplorerContent home={home} initialFeed={initialFeed} /></DiscoveryDetailBoundary>;
+  const Container = home ? "div" : "main";
+  const Title = home ? "h2" : "h1";
+  if (loading) return <Container className={styles.page}><DiscoverySkeleton /></Container>;
+  if (!enabled) return <Container className="mx-auto max-w-5xl px-5 py-10"><Title className="mb-6 text-3xl font-bold">{t("exploreTravel")}</Title><TravelExplore /></Container>;
+  return <DiscoveryDetailBoundary><Container className={styles.page}><ExplorerContent home={home} initialFeed={initialFeed} /></Container></DiscoveryDetailBoundary>;
 }
 function ExplorerContent({ home, initialFeed }: { home: boolean; initialFeed?: InitialDiscoveryFeed }) {
+  const Title = home ? "h2" : "h1";
   const locale = useLocale(); const c = getDiscoveryCopy(locale); const f = getFrontendFlowCopy(locale);
   // The saved-count tab label lives in the message catalog: new display text may not be
   // added to lib/discovery-copy.ts, which check-i18n guards against.
@@ -61,8 +64,8 @@ function ExplorerContent({ home, initialFeed }: { home: boolean; initialFeed?: I
   function navigate(patch: DiscoveryQuery) { const next = discoveryQuery({ ...value, ...patch }); router.push(`/explore${next ? `?${next}` : ""}`, { scroll: false }); }
   const kinds = discoveryKinds.filter((kind) => flags.enabled || !["post", "itinerary"].includes(kind));
   const selectedFilters = (["q", "destination", "type", "topic", "locale"] as const).filter((key) => value[key] && value[key] !== "all");
-  return <main className={styles.page}>
-    <header className={styles.masthead}><div><p className={styles.eyebrow}>{c.eyebrow}</p><h1 className={styles.title}>{home ? f.editorial : f.results}</h1><p className={styles.intro}>{c.subtitle}</p></div><div className={styles.searchArea}><DiscoverySearch key={value.q || ""} initial={value.q || ""} onSearch={(q) => navigate({ q })} /></div></header>
+  return <>
+    <header className={styles.masthead}><div><p className={styles.eyebrow}>{c.eyebrow}</p><Title className={styles.title}>{home ? f.editorial : f.results}</Title><p className={styles.intro}>{c.subtitle}</p></div><div className={styles.searchArea}><DiscoverySearch key={value.q || ""} initial={value.q || ""} onSearch={(q) => navigate({ q })} /></div></header>
     <div className={styles.filters}><nav className={styles.categories} aria-label={c.filters}>{discoveryCategories.map((category) => <button key={category} type="button" className={styles.chip} aria-pressed={(value.category || "all") === category} onClick={() => navigate({ category, type: "" })}>{f.categories[category]}</button>)}</nav>
       <div className={styles.toolbar}><label className="sr-only" htmlFor={`${filterId}-destination`}>{c.destination}</label><select id={`${filterId}-destination`} className={styles.destination} value={value.destination || ""} onChange={(event) => navigate({ destination: event.target.value })}><option value="">{c.destination}: {c.any}</option>{options.data?.destinations?.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}{value.destination && !options.data?.destinations?.some((item) => item.id === value.destination) && <option value={value.destination}>{value.destination}</option>}</select><button type="button" className={styles.chip} aria-expanded={advanced} aria-controls={filterId} onClick={() => setAdvanced((open) => !open)}><SlidersHorizontal size={17} aria-hidden />{f.advanced}</button></div>
     </div>
@@ -76,7 +79,7 @@ function ExplorerContent({ home, initialFeed }: { home: boolean; initialFeed?: I
     {mode === "following" && !user ? <section className="rounded-xl border border-[var(--line)] p-6"><p>{c.loginFollowing}</p><Link href={loginPath(`/explore?${discoveryQuery(value)}`)} className="inline-flex min-h-11 items-center text-[var(--teal)] underline">{c.login}</Link></section> : <Results query={{ ...value, mode }} identity={sessionIdentity} revision={revision} initialFeed={initialFeed} />}
     <section className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--line)] py-7"><div><h2 className="font-bold">{c.planning}</h2><p className="mt-1 text-sm text-[var(--muted)]">{c.planningHelp}</p></div><Link href="/search/new" className="inline-flex min-h-11 items-center gap-2 font-semibold text-[var(--teal)] underline">{f.searchTrips}<ArrowRight size={17} aria-hidden /></Link></section>
     {preferences && user && <DiscoveryPreferenceEditor key={user.id} onClose={() => setPreferences(false)} onSaved={() => { setPreferences(false); setRevision((n) => n + 1); }} />}
-  </main>;
+  </>;
 }
 export function DiscoverySearch({ initial, onSearch }: { initial: string; onSearch: (value: string) => void }) {
   const c = getDiscoveryCopy(useLocale()); const [text, setText] = useState(initial); const [debounced, setDebounced] = useState(""); const [show, setShow] = useState(false); const id = useId();

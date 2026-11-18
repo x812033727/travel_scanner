@@ -157,9 +157,11 @@ describe("the lifestyle listing", () => {
     expect(block.querySelector("h2")?.textContent).toBe("最新新聞");
     // The topic's lead is not repeated here.
     expect(screen.queryByText("這週的 AI 大事。")).toBeNull();
-    expect(screen.getByRole("link", { name: "看全部" }).getAttribute("href")).toBe("/life/topics/ai-news");
+    expect(within(block).getByRole("link", { name: "AI 新聞與趨勢" }).getAttribute("href")).toBe("/life/topics/ai-news");
     const rows = within(within(block).getByTestId("news-list")).getAllByRole("listitem");
-    expect(rows.map((row) => row.textContent)).toEqual(["2026-09-14Siri AI 隨 iOS 27 推出", "2026-07-10OpenAI DevDay 重點"]);
+    expect(within(rows[0]).getByRole("heading", { level: 3, name: newer.title })).toBeTruthy();
+    expect(within(rows[0]).getByText(newer.description)).toBeTruthy();
+    expect(rows[1].textContent).toBe("2026-07-10OpenAI DevDay 重點");
     expect(within(rows[0]).getByRole("link").getAttribute("href")).toBe("/life/ai-news-siri-20260914");
     expect(within(block).queryByText("追新聞的來源")).toBeNull();
     // The news comes right after the hero, before the topics.
@@ -201,12 +203,16 @@ describe("the lifestyle listing", () => {
     const block = screen.getByTestId("life-news");
     const rows = within(within(block).getByTestId("news-list")).getAllByRole("listitem");
     // Across topics by the news day, and the two-topic story appears once.
-    expect(rows.map((row) => row.textContent)).toEqual([
-      "2026-09-14Siri AI 隨 iOS 27 推出",
-      "2026-09-09Apple 推出 iPhone Duo",
-      "2026-09-03NVIDIA 併購 Hugging Face",
-      "2026-06-30虛擬資產服務法三讀通過",
-    ]);
+    const stories = [aiStory, techStory, both, cryptoStory];
+    expect(rows.map((row) => row.querySelector("time")?.dateTime)).toEqual(stories.map((story) => story.news_date));
+    expect(rows.map((row) => within(row).getByRole("link").getAttribute("href")))
+      .toEqual(stories.map((story) => `/life/${story.slug}`));
+    const graphs = JSON.parse(document.querySelector('script[type="application/ld+json"]')!.textContent!);
+    const newsGraph = graphs.find((graph: { name?: string }) => graph.name === "最新新聞");
+    expect(newsGraph.itemListElement).toEqual(stories.map((story, index) => ({
+      "@type": "ListItem", position: index + 1, name: story.title,
+      url: `http://localhost:3000/zh-TW/life/${story.slug}`,
+    })));
     // With more than one vertical publishing, "see all" names each hub instead.
     expect(within(block).queryByRole("link", { name: "看全部" })).toBeNull();
     for (const [label, slug] of [["AI 新聞與趨勢", "ai-news"], ["加密貨幣與區塊鏈", "crypto"], ["科技新聞", "tech-news"]]) {

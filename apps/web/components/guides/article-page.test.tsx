@@ -329,14 +329,86 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
       document: { ...document, hero: syntheticHero },
     });
     const meta = await guideArticleMetadata({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" });
-    expect(meta.openGraph).toBeUndefined();
-    expect(meta.twitter).toBeUndefined();
+    expect(meta.openGraph).toMatchObject({
+      type: "article", url: meta.alternates?.canonical, title: document.title, description: document.description,
+      publishedTime: document.published_at, section: "AI 新聞", tags: ["AI 新聞"], locale: "en_US", alternateLocale: ["ja_JP"],
+      images: [{ url: "/og.png" }],
+    });
+    expect(meta.twitter).toMatchObject({
+      card: "summary_large_image", title: document.title, description: document.description, images: [{ url: "/og.png" }],
+    });
 
     const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" }));
     const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
     const newsGraph = graphs.find(item => item["@type"] === "NewsArticle");
+    expect(newsGraph.articleSection).toBe("AI 新聞");
     expect(newsGraph).not.toHaveProperty("image");
     expect(container.querySelector("img")).toBeNull();
+  });
+
+  it("shares the first suitable published news figure, leaving it in its original position", async () => {
+    const route = { locale: "ja", kind: "life", slug: "new-display" } as const;
+    const photo = {
+      type: "image", src: "/guides/new-display/ports.webp", alt: "背面の HDMI と USB 端子",
+      width: 1440, height: 810, credit: null,
+    };
+    const synthetic = { author: "Mokaair", license: "Original editorial artwork", source_url: null };
+    mocks.article.mockResolvedValue({
+      ...state, ...route, series: null, news_date: "2026-11-17",
+      topics: [{ slug: "hardware", label: "ハードウェア" }, { slug: "tech-news", label: "テクノロジーニュース" }],
+      document: { ...document, hero: { ...photo, credit: synthetic }, blocks: [
+        { ...photo, src: "/guides/news-assets/placeholder.webp" },
+        { ...photo, src: "/guides/new-display/placeholder.webp", credit: synthetic },
+        { ...photo, src: "/guides/new-display/diagram.svg" },
+        { ...photo, src: "https://example.com/foreign.jpg" },
+        { ...photo, src: "/guides/new-display/small.jpg", width: 1000 },
+        { ...photo, src: "/guides/new-display/portrait.jpg", height: 1600 },
+        { ...photo, src: "/guides/new-display/banner.jpg", height: 180 },
+        { ...photo, src: "/guides/new-display/decorative.jpg", alt: "  " },
+        { ...photo, src: "/guides/new-display/generic.jpg", alt: "画像" },
+        { ...photo, src: "/guides/new-display/filename.jpg", alt: "filename.jpg" },
+        { type: "paragraph", text: "Connection details" }, photo,
+        { ...photo, src: "/guides/new-display/rear.jpg", alt: "背面にある電源ボタン" },
+      ] },
+    });
+    const meta = await guideArticleMetadata(route);
+    const selected = { url: photo.src, width: photo.width, height: photo.height, alt: photo.alt };
+    expect(meta.openGraph).toMatchObject({ section: "テクノロジーニュース", images: [selected] });
+    expect(meta.twitter).toMatchObject({ card: "summary_large_image", images: [selected] });
+
+    const { container } = render(await renderGuideArticle(route));
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    const article = graphs.find(item => item["@type"] === "NewsArticle");
+    expect(article).toMatchObject({
+      articleSection: "テクノロジーニュース",
+      image: { "@type": "ImageObject", width: photo.width, height: photo.height },
+    });
+    expect(new URL(article.image.url).pathname).toBe(photo.src);
+    const rendered = container.querySelectorAll(`img[src="${photo.src}"]`);
+    expect(rendered).toHaveLength(1);
+    expect(screen.getByText("Connection details").compareDocumentPosition(rendered[0]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
+  it.each([
+    { newsDate: "2026-11-17", topic: "crypto", hasHero: true, section: "암호화폐", expectedImage: "/guides/network/cover.jpg" },
+    { newsDate: null, topic: "crypto", hasHero: false, section: "生活分享", expectedImage: null },
+    { newsDate: "2026-11-17", topic: "finance", hasHero: false, section: "生活分享", expectedImage: "/guides/network/photo.jpg" },
+  ])("keeps cover precedence and section fallbacks for $topic, newsDate=$newsDate", async ({ newsDate, topic, hasHero, section, expectedImage }) => {
+    const route = { locale: "ko", kind: "life", slug: "network" } as const;
+    const picture = { src: "/guides/network/photo.jpg", width: 1280, height: 720, alt: "데이터 센터의 네트워크 연결", credit: null };
+    mocks.article.mockResolvedValue({
+      ...state, ...route, series: null, news_date: newsDate, topics: [{ slug: topic, label: topic === "crypto" ? "암호화폐" : "금융" }],
+      document: { ...document, hero: hasHero ? { ...picture, src: "/guides/network/cover.jpg" } : null, blocks: [{ type: "image", ...picture }] },
+    });
+    const meta = await guideArticleMetadata(route);
+    expect(meta.openGraph).toMatchObject({ section, images: [{ url: expectedImage ?? "/og.png" }] });
+    expect(meta.twitter).toMatchObject({ images: [{ url: expectedImage ?? "/og.png" }] });
+    const { container } = render(await renderGuideArticle(route));
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    const article = graphs.find(item => item["@type"] === (newsDate ? "NewsArticle" : "Article"));
+    expect(article.articleSection).toBe(section);
+    if (expectedImage) expect(new URL(article.image.url).pathname).toBe(expectedImage);
+    else expect(article).not.toHaveProperty("image");
   });
 
   it("emits Discover max-image-preview:large metadata and renders share actions plus right-rail trending recirculation", async () => {

@@ -72,11 +72,12 @@ export function breadcrumbs(locale: Locale, trail: readonly Crumb[]): object | n
 
 /** A list whose entries have their own pages. Entries without a URL are left unmarked: a
  *  ListItem a crawler cannot follow is not worth describing. */
-export function itemList(locale: Locale, items: readonly Crumb[]): object | null {
+export function itemList(locale: Locale, items: readonly Crumb[], name?: string): object | null {
   if (!items.length) return null;
   return {
     "@context": CONTEXT,
     "@type": "ItemList",
+    ...(name ? { name } : {}),
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
