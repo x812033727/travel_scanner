@@ -13,6 +13,9 @@ rm -rf $E/segments-v4
 # 沒有片段帶 crop（s05 s08 s13 s29 的靜態裁切、s24 耳緣提紅、s37 淡出都是剪接表的 vf）。
 stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=os.path.getmtime(e+'/picks.json');print(' '.join(s for s in p if not os.path.exists(f'{e}/clips/{s}-t1.mp4') or os.path.getmtime(f'{e}/clips/{s}-t1.mp4')<t))")
 [ -z "$stale" ] || { echo "staging (stale: $stale)"; python3 $P/live-action/stage.py 32 || exit 1; }
+# s26／s26b 的 vf 是兩段式 vidstab（被扛著的近景逐格晃，cut-qa jitter 0.16／0.17）：第一段的轉換檔放在 $E/stab/，片子重放過或檔不在就重算
+# （放大到 1920×1080 之後算，跟組片程式套 vf 的畫面一樣）。
+mkdir -p $E/stab; for s in s26 s26b; do [ -f $E/stab/$s.trf ] && [ $E/stab/$s.trf -nt $E/clips/$s-t1.mp4 ] || ffmpeg -nostdin -v error -y -i $E/clips/$s-t1.mp4 -vf "scale=1920:1080:flags=lanczos,vidstabdetect=shakiness=6:accuracy=15:result=$E/stab/$s.trf" -f null - || exit 1; done
 [ -d /root/mokaair-work/videos/zhong-tian-qu-qi-e932-dh/music ] || { echo "zhong-tian-qu-qi-e932-dh/music/ 不在（見上面的說明）"; exit 1; }
 # 剪接表假設的剪點與種子（picks.json 由 colab/runs/e932-live 的 refine-prep.py 32 picks-merged.tsv fix1/review-picks.tsv
 # fix2/review-picks.tsv 產生；fix1 換 s19 s25 為 9321202（s01 的 fix1 9321202 不用），fix2 換 s01 為 9321301）。第一版沒有改任何剪點。
