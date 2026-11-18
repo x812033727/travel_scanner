@@ -8,16 +8,17 @@ rm -rf $E/segments-v4
 # when a clip is missing or picks.json is newer than any clip (a re-run of refine-prep.py 30 rewrites picks.json). stage.py
 # links $E/audio -> zhong-tian-qu-qi-e930-dh/audio and $E/music -> zhong-tian-qu-qi-e930-dh/music, which is itself a link to
 # ../_series/zhong-tian-qu-qi/music (made by hand for e930, the e927-e929 way; its cue-warm.mp3 came back from the backup at REVIEW 3, the copy the first cut
-# matches). No staged clip carries a crop (REVIEW 3's s07 crop and the s02/s13 blur boxes are vf in the edit table). Every effect is in the
+# matches). No staged clip carries a crop (the s02/s13 blur boxes are vf in the edit table; REVIEW 3's s07 crop came out with the fix3 retake). Every effect is in the
 # series library except murmur930.wav (the square's crowd: twelve of this episode's recordings reversed and filtered,
 # unintelligible; zhong-tian-qu-qi-e930-dh/sfx, the edit table's second sfx dir; the e929 murmur recipe, since murmur929.wav
 # is no longer on this disk).
 stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=os.path.getmtime(e+'/picks.json');print(' '.join(s for s in p if not os.path.exists(f'{e}/clips/{s}-t1.mp4') or os.path.getmtime(f'{e}/clips/{s}-t1.mp4')<t))")
 [ -z "$stale" ] || { echo "staging (stale: $stale)"; python3 $P/live-action/stage.py 30 || exit 1; }
 # e930 trims and seeds the edit table assumes (edit-dh-e930-live.json _note): picks.json as refine-prep.py 30 builds it from
-# picks-merged.tsv, fix1/review-picks.tsv, fix2/review-picks.tsv and review3-trims.tsv (run in colab/runs/e930-live:
-# refine-prep.py 30 picks-merged.tsv fix1/review-picks.tsv fix2/review-picks.tsv review3-trims.tsv, then stage.py 30; fix1
-# replaced s29 and s32, fix2 s41). review3-trims.tsv (first cut): s01 1.333 -> 1.875 (the take keeps its own voice: whisper
+# picks-merged.tsv, fix1/review-picks.tsv, fix2/review-picks.tsv, review3-trims.tsv and fix3/review-picks.tsv (run in
+# colab/runs/e930-live: refine-prep.py 30 picks-merged.tsv fix1/review-picks.tsv fix2/review-picks.tsv review3-trims.tsv
+# fix3/review-picks.tsv, then stage.py 30; fix1 replaced s29 and s32, fix2 s41, fix3 s07: 9301402 0.500-5.833, the retake
+# with the two apart and no smile, refined alone by scratchpad tools/e930f3refine.sh). review3-trims.tsv (first cut): s01 1.333 -> 1.875 (the take keeps its own voice: whisper
 # hears 窮 and 秀才 short of its tone only, so zq930a01 is not laid and the pick's own cut comes back; picks-merged.tsv's s01 row
 # carries both pairs and refine-prep keeps the last one, the laid-recording fallback); s15 start 2.917 -> 2.708 and s26 end
 # 6.208 -> 6.542 (their spliced voices are laid with voice_off, and a laid line longer than the picture would slow it, lips
@@ -27,8 +28,8 @@ stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=o
 # Whole frames: a start rounded DOWN and an end-before rounded UP to 3 decimals, tolerance 0.001; 0 = no end. Warn (not stop).
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
-want={'s01':(1.875,6.25),'s02':(0.0,4.5),'s03':(1.833,6.583),'s04':(0.375,6.583),'s05':(1.167,6.583),'s06':(0.208,6.583),'s07':(0.875,6.333),'s08':(0.25,5.459),'s09':(1.25,3.25),'s10':(1.375,7.417),'s11':(0.625,6.583),'s12':(1.792,6.583),'s13':(1.083,6.583),'s14':(0.5,4.292),'s15':(2.708,8.0),'s16':(2.583,6.583),'s17':(0.0,4.5),'s18':(1.75,6.583),'s19':(0.583,6.583),'s20':(1.0,4.5),'s21':(0.0,6.375),'s21b':(0.0,4.042),'s22':(2.125,4.5),'s23':(1.333,6.583),'s24':(0.75,6.25),'s25':(0.708,6.417),'s26':(0.958,6.542),'s27':(0.083,6.25),'s28':(0.25,4.5),'s29':(2.083,6.583),'s30':(0.75,8.0),'s31':(1.0,6.583),'s32':(2.5,4.5),'s33':(0.25,5.75),'s34':(2.042,6.5),'s35':(1.292,6.583),'s36':(1.667,6.583),'s37':(0.583,6.583),'s38':(0.25,2.5),'s39':(0.667,3.167),'s40':(1.375,4.5),'s41':(2.5,8.0)}
-seed={'s01':9301102,'s03':9301102,'s04':9301102,'s06':9301102,'s08':9301102,'s09':9301102,'s11':9301102,'s12':9301102,'s15':9301102,'s21':9301102,'s21b':9301102,'s26':9301102,'s27':9301102,'s29':9301201,'s30':9301102,'s31':9301102,'s32':9301201,'s38':9301102,'s40':9301102,'s41':9301301}
+want={'s01':(1.875,6.25),'s02':(0.0,4.5),'s03':(1.833,6.583),'s04':(0.375,6.583),'s05':(1.167,6.583),'s06':(0.208,6.583),'s07':(0.5,5.833),'s08':(0.25,5.459),'s09':(1.25,3.25),'s10':(1.375,7.417),'s11':(0.625,6.583),'s12':(1.792,6.583),'s13':(1.083,6.583),'s14':(0.5,4.292),'s15':(2.708,8.0),'s16':(2.583,6.583),'s17':(0.0,4.5),'s18':(1.75,6.583),'s19':(0.583,6.583),'s20':(1.0,4.5),'s21':(0.0,6.375),'s21b':(0.0,4.042),'s22':(2.125,4.5),'s23':(1.333,6.583),'s24':(0.75,6.25),'s25':(0.708,6.417),'s26':(0.958,6.542),'s27':(0.083,6.25),'s28':(0.25,4.5),'s29':(2.083,6.583),'s30':(0.75,8.0),'s31':(1.0,6.583),'s32':(2.5,4.5),'s33':(0.25,5.75),'s34':(2.042,6.5),'s35':(1.292,6.583),'s36':(1.667,6.583),'s37':(0.583,6.583),'s38':(0.25,2.5),'s39':(0.667,3.167),'s40':(1.375,4.5),'s41':(2.5,8.0)}
+seed={'s01':9301102,'s03':9301102,'s04':9301102,'s06':9301102,'s07':9301402,'s08':9301102,'s09':9301102,'s11':9301102,'s12':9301102,'s15':9301102,'s21':9301102,'s21b':9301102,'s26':9301102,'s27':9301102,'s29':9301201,'s30':9301102,'s31':9301102,'s32':9301201,'s38':9301102,'s40':9301102,'s41':9301301}
 bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].get(\"end-before\",0)} (want {a} {b})' for s,(a,b) in want.items()
      if s in p and (abs(p[s]['trim'].get('start',0)-a)>0.001 or abs(p[s]['trim'].get('end-before',0)-b)>0.001)]
 bad+=[f'{s} seed {p[s][\"seed\"]} (want {v})' for s,v in seed.items() if s in p and p[s]['seed']!=v]
