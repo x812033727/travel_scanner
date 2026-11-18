@@ -28,8 +28,9 @@ import { citiesForCountry, destinationSeeds, type CatalogTranslator } from "@/li
 import { contentBlockLink } from "@/lib/content-blocks";
 import { guideAffiliateDestination } from "@/lib/guide-affiliate";
 import { splitArticleExtras, guideTopicHref, guideSection,
-  guideHeadings, guideHref, guideListHref, isSyntheticNewsBlock, readingMinutes, visibleGuideHero,
-  type GuideArticleState, type GuideKind, type GuideSummary,
+  guideHeadings, guideHref, guideListHref, isGuideHero, isNewsTopic, isSyntheticNewsArtwork,
+  isSyntheticNewsBlock, readingMinutes, visibleGuideHero,
+  type GuideArticleState, type GuideKind, type GuideSummary, type PublishedGuide,
 } from "@/lib/guides";
 import { getAdsenseSlot } from "@/lib/adsense.server";
 import * as guidesServer from "@/lib/guides.server";
@@ -65,6 +66,31 @@ function listingOf(kind: GuideKind, t: Translate): Crumb {
     ? t("guides.lifeHubTitle")
     : kind === "intel" ? t("guides.intelTitle") : t("guides.howtoTitle");
   return { name, path: guideListHref(kind) };
+}
+
+function articleSection(state: GuideArticleState, listingName: string): string {
+  if (!state.news_date) return listingName;
+  const section = guideSection(state.kind);
+  return state.topics.find((topic) => topic.label.trim() && isNewsTopic(section, topic.slug))?.label ?? listingName;
+}
+
+const genericImageAlt = /^(?:image|photo|screenshot|illustration|圖片|图片|照片|截圖|截图|示意圖|示意图|画像|写真|スクリーンショット|이미지|사진|스크린샷)$/iu;
+
+function articlePreviewImage(document: PublishedGuide, newsDate: GuideArticleState["news_date"]) {
+  const hero = visibleGuideHero(document.hero);
+  if (hero || !newsDate) return hero;
+
+  // An authored body image can supply a landscape share card while staying beside its explanation.
+  // isGuideHero applies the same local path, raster format and stored-dimension checks as an actual cover.
+  for (const block of document.blocks) {
+    if (block.type !== "image" || !isGuideHero(block) || isSyntheticNewsArtwork(block)) continue;
+    const alt = block.alt.trim();
+    if (alt && !genericImageAlt.test(alt) && !block.src.endsWith(`/${alt}`)
+      && block.width >= 1200 && block.height >= 630 && block.width > block.height) {
+      return block;
+    }
+  }
+  return null;
 }
 
 /**
@@ -108,12 +134,12 @@ export async function guideArticleMetadata(
   const alternateLocale = state.published_locales.filter((value) => value !== locale).map((value) => openGraphLocale[value]);
   const { document } = state;
   const { title, description } = document;
-  const hero = visibleGuideHero(document.hero);
+  const image = articlePreviewImage(document, state.news_date);
   // Next replaces the entire social object. Carry forward the layout's brand artwork
   // whenever this article has no editorial image that can appear on a reader surface.
   const inherited = (await parent)?.openGraph;
   const fallbackImages = inherited?.images?.length ? inherited.images : [{ url: "/og.png", width: 1200, height: 630 }];
-  const images = hero ? [{ url: hero.src, width: hero.width, height: hero.height, alt: hero.alt }] : fallbackImages;
+  const images = image ? [{ url: image.src, width: image.width, height: image.height, alt: image.alt }] : fallbackImages;
   const tags = state.topics.map((topic) => topic.label).filter(Boolean);
   return {
     title,
@@ -134,7 +160,7 @@ export async function guideArticleMetadata(
       siteName: inherited?.siteName ?? "Mokaair",
       locale: openGraphLocale[locale],
       alternateLocale,
-      section: listingOf(kind, t).name,
+      section: articleSection(state, listingOf(kind, t).name),
       ...(tags.length ? { tags } : {}),
       publishedTime: document.published_at,
       modifiedTime: document.modified_at ?? document.published_at,
@@ -390,7 +416,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     faq: t("guides.faq"),
     support: { text: t("guides.supportText"), action: t("guides.supportAction"), newTab: ts("newTab") },
   };
-  const hero = visibleGuideHero(state.document.hero);
+  const image = articlePreviewImage(state.document, state.news_date);
   const copy = seriesCopy(locale);
   labels.blocks.code = copy;
   const useApiDirectory = isHub && !geminiSeries;
@@ -485,8 +511,8 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
             publishedAt: state.document.published_at,
             modifiedAt: state.document.modified_at,
             newsDate: state.news_date,
-            hero,
-            section: listingOf(kind, t).name,
+            hero: image,
+            section: articleSection(state, listing.name),
             keywords: state.topics.map((topic) => topic.label),
             // Only an id with a destination page behind it. Every id in the corpus has one
             // today, but the graph may not be the thing that finds out when one stops.

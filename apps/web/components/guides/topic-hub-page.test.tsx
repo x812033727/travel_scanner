@@ -103,7 +103,7 @@ describe("the topic hub", () => {
     const evergreen = { ...summary, slug: "ai-news-sources-to-follow", title: "追新聞的來源", news_date: null };
     mocks.list.mockResolvedValue({ articles: [newer, evergreen], next_cursor: "c1", available: true });
     render(await renderTopicHub(route({ topic: "ai-news" })));
-    expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", { section: "life", topic: "ai-news", cursor: undefined, sort: "news" }, 24);
+    expect(mocks.list).toHaveBeenCalledWith("zh-TW", { section: "life", topic: "ai-news", cursor: undefined, sort: "news" }, 24);
     const rows = within(screen.getByTestId("news-list")).getAllByRole("listitem");
     expect(rows[0].querySelector("time")?.getAttribute("dateTime")).toBe("2026-09-14");
     expect(within(rows[1]).getByRole("link", { name: "追新聞的來源" })).toBeTruthy();
@@ -130,6 +130,41 @@ describe("the topic hub", () => {
     expect(screen.getByRole("navigation", { name: "排序" })).toBeTruthy();
     await renderTopicHub(route({ sort: "news" }));
     expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", expect.objectContaining({ topic: "ai-terms", sort: "latest" }), 24);
+  });
+
+  it.each([["ai-news", "ai-terms", "tech-news"], ["tech-news", "gadgets", "ai-news"]])(
+    "pairs the %s wire with its illustrated guides without including them in the news order", async (channel, guides, other) => {
+      const story = { ...summary, slug: "headline", title: "今日頭條", news_date: "2026-11-18" };
+      const hero = { src: "/guides/how-it-works/cover.jpg", alt: "A diagram of the settings", width: 1600, height: 900, credit: null };
+      const guide = { ...summary, slug: "how-it-works", title: "操作圖解", hero };
+      const synthetic = { ...guide, slug: "placeholder", hero: { ...hero, src: "/guides/news-assets/cover.webp" } };
+      mocks.vocabulary.mockResolvedValue({ available: true, topics: [
+        { slug: channel, label: "目前頻道", count: 4 }, { slug: other, label: "另一個頻道", count: 3 },
+      ] });
+      mocks.list.mockImplementation(async (_locale, filters) => ({
+        available: true, next_cursor: null, articles: filters.topic === guides
+          ? [synthetic, { ...guide, slug: story.slug }, { ...guide, news_date: story.news_date }, guide] : [story],
+      }));
+      const { container } = render(await renderTopicHub(route({ topic: channel })));
+      const feature = screen.getByRole("complementary", { name: "圖解指南" });
+      expect(within(feature).getByRole("img", { name: hero.alt }).getAttribute("src")).toBe(hero.src);
+      expect(within(feature).getByRole("link", { name: guide.title }).getAttribute("href")).toBe("/life/how-it-works");
+      expect(within(screen.getByTestId("news-list")).getByRole("heading", { name: story.title, level: 2 })).toBeTruthy();
+      expect(within(screen.getByTestId("news-list")).queryByText(guide.title)).toBeNull();
+      expect(within(container.querySelector<HTMLElement>("main header")!).getByRole("link", { name: "另一個頻道" }).getAttribute("href"))
+        .toBe(`/life/topics/${other}`);
+      expect(container.querySelector("script[type='application/ld+json']")?.textContent).not.toContain(guide.title);
+    },
+  );
+
+  it("keeps the archive compact and skips the extra guide read on subsequent pages", async () => {
+    const article = { ...summary, news_date: "2026-11-18" };
+    mocks.list.mockResolvedValue({ articles: [article], next_cursor: null, available: true });
+    render(await renderTopicHub(route({ topic: "ai-news", cursor: "next" })));
+    expect(mocks.list).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole("complementary", { name: "圖解指南" })).toBeNull();
+    expect(screen.queryByRole("heading", { name: article.title })).toBeNull();
+    expect(screen.getByRole("link", { name: article.title })).toBeTruthy();
   });
 
   it("walks the breadcrumb home › section › parent › topic, and marks the topic chip current", async () => {
@@ -168,6 +203,21 @@ describe("the topic hub", () => {
 });
 
 describe("what the topic hub tells search engines", () => {
+  it("uses the displayed lead's own art for a channel share and skips synthetic artwork and archive pages", async () => {
+    const publishedTopic = { ...topics[2], count: 4, counts: { "zh-TW": 4, en: 1 } };
+    const hero = { src: "/guides/lead/shot.webp", width: 1600, height: 900, alt: "The model settings", credit: null };
+    const lead = { ...summary, news_date: "2026-11-18", hero };
+    mocks.vocabulary.mockResolvedValue({ topics: [publishedTopic], available: true });
+    mocks.list.mockResolvedValue({ articles: [lead], next_cursor: null });
+    const channel = route({ topic: "ai-news" });
+    const metadata = await topicHubMetadata(channel);
+    expect(metadata.openGraph).toMatchObject({ title: metadata.title, images: [{ url: hero.src, alt: hero.alt }], alternateLocale: ["en"] });
+    expect(metadata.twitter?.images).toEqual(metadata.openGraph?.images);
+    expect((await topicHubMetadata({ ...channel, cursor: "next" })).openGraph).toBeUndefined();
+    mocks.list.mockResolvedValue({ articles: [{ ...lead, hero: { ...hero, src: "/guides/news-assets/hero.webp" } }] });
+    expect((await topicHubMetadata(channel)).openGraph).toBeUndefined();
+  });
+
   it("is indexable where the topic publishes, with a self canonical and only the published languages", async () => {
     const metadata = await topicHubMetadata(route({ topic: "ai" }));
     expect(metadata.title).toBe("AI 工具：文章與攻略 | Mokaair");

@@ -33,6 +33,48 @@ function LeadRow({ article, heading: Heading, showTopic }: {
   );
 }
 
+function ChannelStory({ article, lead, showTopic, hasPair }: {
+  article: GuideSummary;
+  lead: boolean;
+  showTopic: boolean;
+  hasPair: boolean;
+}) {
+  const hero = visibleGuideHero(article.hero);
+  const Heading = lead ? "h2" : "h3";
+  return (
+    <li className={`group relative min-w-0 [overflow-wrap:anywhere] ${lead
+      ? "col-span-full border-y-2 border-t-[var(--teal)] border-b-[var(--line)] py-5 sm:py-7"
+      : `border-b border-[var(--line)] py-4 sm:py-5 ${hasPair ? "" : "col-span-full"}`}`}>
+      <div className={`grid min-w-0 gap-4 ${lead && hero ? "md:grid-cols-[1.15fr_1fr] md:items-center md:gap-8" : ""}`}>
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-xs font-semibold text-[var(--teal-dark)]">
+            <time dateTime={article.news_date ?? undefined} className="font-mono tabular-nums">{article.news_date}</time>
+            {showTopic && article.topics[0] ? <span>{article.topics[0].label}</span> : null}
+          </div>
+          <Heading className={`mt-2 text-pretty font-extrabold tracking-tight text-[var(--ink)] ${lead
+            ? "max-w-[34ch] text-2xl leading-[1.27] sm:text-3xl lg:text-4xl"
+            : "text-xl leading-snug sm:text-2xl"}`}>
+            <Link href={guideHref(article.kind, article.slug)}
+              className="underline-offset-4 after:absolute after:inset-0 group-hover:text-[var(--teal-dark)] group-hover:underline focus-visible:underline">
+              {article.title}
+            </Link>
+          </Heading>
+          {article.description ? (
+            <p className={`mt-2 max-w-prose text-[var(--muted)] ${lead
+              ? "text-base leading-7 sm:mt-3 sm:text-lg sm:leading-8"
+              : "line-clamp-3 text-sm leading-6"}`}>{article.description}</p>
+          ) : null}
+        </div>
+        {hero ? (
+          <GuideImage src={hero.src} alt={hero.alt} width={hero.width} height={hero.height}
+            loading={lead ? "eager" : "lazy"} decoding="async"
+            className="aspect-video w-full rounded-lg bg-[var(--paper)] object-contain" />
+        ) : null}
+      </div>
+    </li>
+  );
+}
+
 /**
  * A compact chronological wire. A section can give its first dated story a headline and
  * summary, while keeping the remaining rows short enough to scan on a phone.
@@ -48,28 +90,39 @@ function LeadRow({ article, heading: Heading, showTopic }: {
 export function NewsList({
   articles,
   className = "mt-4",
+  channelFront = false,
   leadHeading,
   showTopic = false,
   showDescription = false,
 }: {
   articles: readonly GuideSummary[];
   className?: string;
+  channelFront?: boolean;
   leadHeading?: "h3" | "h4";
   showTopic?: boolean;
   showDescription?: boolean;
 }) {
   if (!articles.length) return null;
+  const channelStories = channelFront ? articles.filter((article) => article.news_date).slice(0, 3) : [];
+  const hasChannelStories = channelStories.length > 0;
   return (
     <ol
-      className={`${className} divide-y divide-[var(--line)] rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-1.5 shadow-[var(--shadow-sm)]`}
+      className={`${className} ${hasChannelStories
+        ? "grid min-w-0 gap-x-8 md:grid-cols-2"
+        : "divide-y divide-[var(--line)] rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-1.5 shadow-[var(--shadow-sm)]"}`}
       data-testid="news-list"
     >
-      {articles.map((article, index) => leadHeading && index === 0 && article.news_date ? (
+      {articles.map((article, index) => channelStories.includes(article) ? (
+        <ChannelStory key={`${article.kind}:${article.slug}`} article={article} lead={article === channelStories[0]}
+          showTopic={showTopic} hasPair={channelStories.length === 3} />
+      ) : leadHeading && index === 0 && article.news_date ? (
         <LeadRow key={`${article.kind}:${article.slug}`} article={article} heading={leadHeading} showTopic={showTopic} />
       ) : (
         <li
           key={`${article.kind}:${article.slug}`}
-          className="group relative -mx-2 grid gap-x-4 rounded-xl px-2 py-1.5 transition-colors hover:bg-[var(--paper)]/75 sm:grid-cols-[7rem_minmax(0,1fr)] sm:items-baseline"
+          className={`group relative grid min-w-0 gap-x-4 transition-colors hover:bg-[var(--paper)]/75 sm:grid-cols-[7rem_minmax(0,1fr)] sm:items-baseline ${hasChannelStories
+            ? "col-span-full border-b border-[var(--line)] py-3 [overflow-wrap:anywhere]"
+            : "-mx-2 rounded-xl px-2 py-1.5"}`}
         >
           {article.news_date ? (
             <time

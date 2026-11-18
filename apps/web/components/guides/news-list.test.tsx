@@ -63,4 +63,57 @@ describe("the news list", () => {
     rerender(<NewsList articles={[{ ...first, news_date: null }]} leadHeading="h3" />);
     expect(screen.queryByRole("heading")).toBeNull();
   });
+
+  it("gives a photo-free channel a lead and two supporting headlines while keeping its full chronological wire", () => {
+    const stories = [
+      story("lead", "頭條", "2026-11-18"),
+      story("second", "第二則", "2026-11-17"),
+      story("third", "第三則", "2026-11-17"),
+      story("fourth", "第四則", "2026-11-16"),
+      story("sources", "資料來源", null),
+    ];
+    const { rerender } = render(<NewsList articles={stories} channelFront showDescription />);
+    const list = within(screen.getByRole("list"));
+    expect(list.getAllByRole("heading").map((heading) => [heading.tagName, heading.textContent])).toEqual([
+      ["H2", "頭條"], ["H3", "第二則"], ["H3", "第三則"],
+    ]);
+    expect(list.getAllByRole("link").map((link) => link.textContent)).toEqual(stories.map((item) => item.title));
+    expect(list.queryByRole("img")).toBeNull();
+    for (const item of stories) expect(list.getByText(item.description)).toBeTruthy();
+
+    rerender(<NewsList articles={stories} channelFront />);
+    expect(screen.queryByText(stories[3].description)).toBeNull();
+    expect(screen.getByText(stories[1].description)).toBeTruthy();
+  });
+
+  it("uses each headline's own editorial image with its dimensions and suppresses synthetic covers", () => {
+    const lead = story("lead", "Lead", "2026-11-18");
+    const second = story("second", "Second", "2026-11-17");
+    const third = story("third", "Third", "2026-11-16");
+    const cover = { src: "/guides/lead/chart.jpg", alt: "Weekly price chart", width: 1600, height: 900, credit: null };
+    const otherCover = { ...cover, src: "/guides/second/camera.png", alt: "Camera module", width: 1280, height: 720 };
+    render(<NewsList channelFront articles={[
+      { ...lead, hero: cover },
+      { ...second, hero: otherCover },
+      { ...third, hero: { ...cover, src: "/guides/news-assets/third-hero.webp" } },
+    ]} />);
+    const images = screen.getAllByRole("img");
+    expect(images.map((image) => [image.getAttribute("src"), image.getAttribute("alt"),
+      image.getAttribute("width"), image.getAttribute("height"), image.getAttribute("loading")])).toEqual([
+      [cover.src, cover.alt, "1600", "900", "eager"],
+      [otherCover.src, otherCover.alt, "1280", "720", "lazy"],
+    ]);
+    expect(screen.getAllByRole("link")).toHaveLength(3);
+  });
+
+  it("keeps undated rows intact and promotes only dated headlines for a mixed or older list", () => {
+    const reference = story("sources", "資料來源", null);
+    const later = story("story", "最新消息", "2026-11-18");
+    const { rerender } = render(<NewsList articles={[reference, later]} channelFront />);
+    expect(screen.getByRole("heading", { level: 2 }).textContent).toBe(later.title);
+    expect(screen.getAllByRole("link").map((link) => link.textContent)).toEqual([reference.title, later.title]);
+    rerender(<NewsList articles={[reference, { ...later, news_date: undefined }]} channelFront />);
+    expect(screen.queryByRole("heading")).toBeNull();
+    expect(screen.queryByText(reference.description)).toBeNull();
+  });
 });
