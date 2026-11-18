@@ -48,7 +48,7 @@ THE AXES (rules 29, 42: the pictures decide):
   sacks from the right foreground away to the far left, the muddy pond behind it on the right, the narrow stone-edged path at
   its left foot, a muddy ditch and a strip of green rice further left, bamboo hills. The Liuxi side is on the LEFT on the
   path, the dam on the RIGHT (bible 31->32). The hand-over (e031 s41): Erniu from behind in the lower left on the path, the
-  hoe raised, twelve retainers in a row on the far half of the crest. s01 keeps that camera; Qin Shuang is already at his
+  hoe raised (as shot, 9311101: the retainers, about fourteen, stand in the pond's shallow water beyond the bank). s01 keeps that camera; Qin Shuang is already at his
   RIGHT (between him and the bank: 「站到兩幫人中間」) and the hoe flies off to the LEFT, where Xu Yan picks it up in s04. From
   s02 on, left to right on the path: Xu Yan, Erniu, Qin Shuang; Qin Shuang faces screen left (to them, her back to the dam),
   Xu Yan and Erniu face screen right; s03 Erniu looks right (to her), s06 left (to Xu Yan); s09 Xu Yan looks right (to her).
@@ -82,11 +82,14 @@ PLACES (gen-dh SET takes the FIRST pattern in its list order that matches; spec.
 No "spring field", "sluice", "channel", "pool", "courtyard", "yard" in any prompt (other SET rows).
 Shared files: none changed (build-r2.py's EN has "Qin Shuang", "Wang Erniu", "Elder Han", "Carpenter Shi"; gen-dh.mjs,
 pilot.py, cast.json untouched). The d1 prep (colab/runs/e932/extras.json, colab/runs/e932-live/{mkspec.py,spec.json}, the
-scratchpad's prep932.sh and e932d1.sh) is NOT written yet: it follows the independent review of this spec.
+scratchpad's prep932.sh and e932d1.sh) was written 2026-11-18 after the independent review (colab/runs/e932-live/PREP.md).
 
-TO RECHECK: s01 is written from the bible's 31->32 row and e031 r2.py's s41 text; e031 s41 is not shot yet (its drafts are
-being picked). Once it is picked, compare s01's first frame with the picked s41 (Erniu's place and size in the lower left,
-which half of the crest the retainers stand on, whether they face us, the hoe's height) and rewrite s01 to the frame shot.
+RECHECKED 2026-11-18 against e031 s41 as picked (colab/runs/e931-live/picks-merged.tsv: 9311101, 0-3.833; the refined clip
+looked at at 0, 1.5, 3.0 and 3.8 s): Erniu's back fills the lower left quarter, cut at the hips, turned a little away to the
+right, the hoe high over his head with its handle slanting to the upper left and the blade at the left edge; the retainers
+are not on the crest but stand in one row in the pond's shallow water beyond the bank, from just right of the middle away to
+the left, about fourteen (13-15), three-quarter to screen left toward him, black jackets, white leg wraps, staffs upright at
+the cut. s01 is rewritten to that frame (RETAINERS_S01, fourteen; exactly sixteen people).
 
 AFTER THE INDEPENDENT REVIEW (writer-tools/e032-r2/review.md, 2026-11-18; the coordinator took all 6 必改 and these 建議):
 必改 1 dawn pictures + JM without a direction; 2 s16 a no-picture insert of the hands and the pick; 3 s20 (now the whole
@@ -191,6 +194,9 @@ VILLAGERS_PIT = ("five more people in Song-dynasty cross-collared homespun short
                  "a dark grey jacket with a faded indigo head cloth, each with one wooden spade")
 RETAINERS = ("twelve men in identical Song-dynasty black cross-collared short jackets, black cloth head wraps and cloth shoes, each "
              "holding one plain wooden staff")
+# s01 as e031 s41 was shot (9311101): about fourteen of them, white cloth leg wraps, standing in the pond's shallow water
+RETAINERS_S01 = ("fourteen men in identical Song-dynasty black cross-collared short jackets, black trousers with white cloth leg wraps "
+                 "below the knee and black cloth head wraps, each holding one plain wooden staff")
 # rule 34: the hall, eight people each a different colour, age and sex; no leads' colours, no red-string pigtails (Xiaohe's)
 CT_VILLAGERS = ("eight more people in Song-dynasty cross-collared homespun jackets and cloth shoes, each a different colour: a bent "
                 "old woman in a faded deep plum jacket with a white head cloth, a white-haired old man in a faded undyed hemp-beige "
@@ -237,9 +243,9 @@ def off(side, what, he="he"):
 SHOTS = [
     # ---- scene 1: the first afternoon of the drought quest, the Qian dam upstream (31->32: the same moment as e031 s41).
     dict(chapter="上游錢家的壩前", loc="ba", cam="Wide shot, slow push in", chars=["qinshuang"], night="hot",
-         comp=f"wide shot at standing eye height toward the dam, like the picture: in the lower left foreground, on the stone-edged path at the foot of the bank of sacks, cut at the waist by the bottom of the frame, one big young man seen only from behind, in a coarse brown cross-collared short jacket with the sleeves rolled up, {HOE} raised above his head in both hands, the back of his head toward us the whole shot; just at his right, between him and the bank, {QIN}, cut at the waist by the bottom of the frame, already right beside him from the first frame, {POLE} in both her hands, its end already under the raised hoe, her face in profile to screen left toward him, never the lens; cold and fast, not smiling: brows level, eyes hard, lips closed; ahead, standing in one row along the far half of the crest of the bank of sacks, from the middle of the frame away to the left, all small and far, {RETAINERS}, facing us, their staffs raised; {HANDS}; exactly fourteen people; the only hoe in the frame is the young man's",
-         motion=NOBODY + f"Qin Shuang flicks the carrying pole sharply upward: the hoe is knocked out of the young man's hands, flies up and away to the left and drops blade first, sticking in the earth of the path; the twelve men on the dam stay where they are; {quiet('Everyone in the frame', 'their')}",
-         zh="全景、慢推（人眼高、照圖；送整張 `set-shangyou-ba-fx-l1`，接點 31→32，同第 31 集 s41 的機位）：左下前景土路上被畫框切到腰的二牛背影（不點名、不送圖，同 s41），鋤頭舉在頭上；秦霜第一格已經在他**右邊**（他和麻袋土埂之間：稿子『站到兩幫人中間』），兩手握著木扁擔、扁擔頭已經頂在鋤頭下，側臉朝畫左看他、不笑；土埂遠段頂上一排十二個家丁（從畫面中間往左後、遠景正面、棍子舉著，拍法 34）。動作只有一個：扁擔往上一挑，鋤頭脫手、往**左**飛、刃朝下插在土路上（給 s04 許硯從左邊拔起來；審稿建議）。稿子『從畫面左跑進來、從村民肩上抽走扁擔、兩步衝到二牛身後』在第一格已經完成（聖經 31→32：第一格她已經握著扁擔衝到二牛身後）；『在空中轉兩圈、插進裂泥』照圖改落在土路上（圖上沒有裂泥）；許硯與村民不入鏡（第 31 集 s41 也沒拍）。**柴刀不寫**（拍法 5）。無台詞。**要重核**：第 31 集 s41 還沒挑片，挑定後照實拍的站位改這一鏡"),
+         comp=f"wide shot at standing eye height toward the dam, like the picture: in the lower left foreground, on the stone-edged path at the foot of the bank of sacks, filling the lower left quarter of the frame and cut at the hips by the bottom of the frame, one big young man seen only from behind, turned a little away from us toward the right, in a coarse brown cross-collared short jacket with the sleeves rolled up, {HOE} raised high above his head in both hands, its handle slanting up to the upper left and its iron blade high at the left edge of the frame, the back of his head toward us the whole shot; just at his right, between him and the bank, {QIN}, cut at the waist by the bottom of the frame, already right beside him from the first frame, {POLE} in both her hands, its end already under the raised hoe handle, her face in profile to screen left toward him, never the lens; cold and fast, not smiling: brows level, eyes hard, lips closed; beyond the bank of sacks on the right, standing in one row in the shallow muddy water of the pond along the far side of the bank, from just right of the middle of the frame away to the left, the nearest at the right the tallest and the farther ones smaller and smaller, {RETAINERS_S01}, their faces three-quarter to screen left toward the young man, their staffs held upright; {HANDS}; exactly sixteen people; the only hoe in the frame is the young man's",
+         motion=NOBODY + f"Qin Shuang flicks the carrying pole sharply upward: the hoe is knocked out of the young man's hands, flies up and away to the left and drops blade first, sticking in the earth of the path at the left edge of the frame; the fourteen men in the pond stay where they are; {quiet('Everyone in the frame', 'their')}",
+         zh="全景、慢推（人眼高、照圖；送整張 `set-shangyou-ba-fx-l1`，接點 31→32，同第 31 集 s41 的機位）：**照第 31 集 s41 實拍（9311101 精修片，剪在 3.833 秒）重核**：二牛的背影佔左下約四分之一、被畫框下緣切在臀部、身子略朝右轉離鏡頭，鋤頭兩手高舉過頭、柄往左上斜、鐵刃在畫面左緣上方（不點名、不送圖，同 s41）；秦霜第一格已經在他**右邊**（他和麻袋土埂之間的石邊土路上：稿子『站到兩幫人中間』），兩手握著木扁擔、扁擔頭已經頂在鋤頭柄下，側臉朝畫左看他、不笑；家丁照實拍寫成**站在土埂右後方水塘的淺泥水裡**、沿土埂排成一排，從畫面中間偏右（最近、最高）往左後越來越小，臉三分之二朝畫左看二牛、棍子豎直（s41 剪點時棍子已從前傾回到豎直）；人數照實拍約 13–15 人寫**十四人**（稿子的十二人改掉，免得 s41→s01 少了兩三個；拍法 34 仍只在這個遠景），黑短打、黑頭巾、膝下白綁腿（實拍的樣子）。動作只有一個：扁擔往上一挑，鋤頭脫手、往**左**飛、刃朝下插在畫左緣的土路上（給 s04 許硯從左邊拔起來；審稿建議）。稿子『從畫面左跑進來、從村民肩上抽走扁擔、兩步衝到二牛身後』在第一格已經完成（聖經 31→32）；『在空中轉兩圈、插進裂泥』照圖改落在土路上（圖上沒有裂泥）；許硯與村民不入鏡（第 31 集 s41 也沒拍）。**柴刀不寫**（拍法 5）。無台詞"),
     dict(loc="ba_c", cam="Medium shot, slow push in", chars=["qinshuang", "erniu"], night="hot",
          comp=f"medium shot on the narrow stone-edged earth path at the foot of the bank of sacks, both framed from the waist up, side-on to us: on the left {ERNIU}, his hands empty, already stumbling back from the first frame, his face three-quarter to screen right toward her, never the lens; stunned and furious, not smiling: brows knotted, jaw clenched, chest heaving, his lips pressed shut; on the right {QIN}, facing screen left, her back to the bank of sacks, {POLE} upright in her right hand, its end on the earth, her left hand already gripping the front of his collar from the first frame, never the lens; cold and level, not smiling: eyes hard, brows level, lips moving fast and clipped between words; behind them, soft, the bank of brown hemp sacks rising at the right and the narrow muddy ditch at the left in the hazy white sun; {HANDS}; exactly two people",
          lines=[("qinshuang", "打了，就是給錢家藉口。你想讓全村吃官司？", "冷，不回頭")],
@@ -436,7 +442,7 @@ SHOTS = [
 
 HEAD = [
     "- 重製版 r2、真人版（站主 2026-11-11「之後都用真人版」）：照 `docs/videos/zhong-tian-qu-qi-e032-r2/script.md`（c01–c37 對應 s01–s37；含「這版改了什麼」「2026-11-06 審稿後的修改」「真人版的改動」）；台詞一字不改，只改拍法；每鏡一個看得見的動作、一句一筆不拆半句、預設不笑。篇章設定 `production/r2-bible-e031-e040.md`（拍法 1–43 條、〈場景〉〈接點〉），帳照 `r2-bible-e011-e060.md`。**第 4 篇章〈旱年〉第二集**。",
-    "- 內部工作編號 932（`hailuo/{ff,clips}-dh-e932.json`；之後的 `colab/runs/e932/extras.json`、`colab/runs/e932-live/spec.json`、工作資料夾 `~/mokaair-work/videos/zhong-tian-qu-qi-e932-dh/`）；發布 slug `zhong-tian-qu-qi-e032-r2`。不放集數、不放片名卡；s01 接第 31 集 s41（接點 31→32：同一刻，秦霜一扁擔挑飛鋤頭）；s37 交給第 33 集（接點 32→33：許硯拿著圖卷走進祠堂）。**s01 照聖經 31→32 與第 31 集 r2.py 的 s41 文字寫，第 31 集 s41 還沒挑片：挑定後要對實拍的站位重核 s01**。",
+    "- 內部工作編號 932（`hailuo/{ff,clips}-dh-e932.json`；之後的 `colab/runs/e932/extras.json`、`colab/runs/e932-live/spec.json`、工作資料夾 `~/mokaair-work/videos/zhong-tian-qu-qi-e932-dh/`）；發布 slug `zhong-tian-qu-qi-e032-r2`。不放集數、不放片名卡；s01 接第 31 集 s41（接點 31→32：同一刻，秦霜一扁擔挑飛鋤頭）；s37 交給第 33 集（接點 32→33：許硯拿著圖卷走進祠堂）。**s01 已照第 31 集 s41 實拍（9311101 精修片）重核**：家丁站在土埂右後方水塘的淺水裡、約十四人、臉朝畫左，二牛背影佔左下四分之一、鋤頭柄往左上斜。",
     "- 照第 31 集審稿後的寫法一開始就照做：`OFFSCREEN_SPEECH = False`；系統與心裡話的鏡，每張朝鏡頭的臉都寫不說話、嘴閉著；**對畫外的人說話寫「朝畫左／右外看不到的人」，那一側到邊緣只有景、畫面裡只有他一個人，不點名、不描述不在畫裡的人**（家丁只在 s01 遠景）；過肩前景是不點名、不送圖的背影；不掛東西；不寫 open；道具與接觸寫在第一格；寫人數；每張圖照它實際的樣子寫（下面〈軸線〉）。",
     "- **秦霜**：柴刀整集不寫（拍法 5；稿子『柴刀插腰帶右邊』拿掉）；扁擔 s01–s09（s10 第一格已還給村民）、竹水筒 s17–s19、s23 起右肩扛許硯、s24 起耳根紅。**王二牛**每鏡不笑（原版必修），臉寫曬黑、不寫泛紅（原版必修：肩上一片紅暈）；第一、三場只有他一把鋤頭，第二場不拿鋤頭。**村民**：壩前與井坑是第 31 集那五人（本色麻、炭灰、褪色靛藍、暗橄欖綠、深灰，沒有鋤頭）；祠堂八人八種衣色與年紀（不穿主角的顏色、沒有紅繩小辮）。**韓伯**、**石木匠**照第 15–17 集的寫法（石木匠的墨線筆照定妝照寫成插在髮髻的木棍）。本集沒有唐小棠、阿令。",
     "- **軸線（照圖）**：第一場同第 31 集翻轉的壩：柳溪的人在左邊壩腳的石邊土路上、壩在右；s01 秦霜在二牛**右邊**（兩幫人中間），鋤頭往**左**飛，s02 起土路上左到右是許硯、二牛、秦霜，秦霜背對壩朝畫左；s10 一行人沿土路朝鏡頭走（泥水小溝流向鏡頭，村子在鏡頭這邊）。第二場 `set-jingkeng-l1`：一排土堆從左前斜到右後、**左前那口坑最近、畫得最清楚**（木盆右邊還有一口，挑片時看第二口坑裡沒有長出人），許硯下的是左前那口（稿子『中間那一口』照圖改）；韓伯、二牛、秦霜從右邊來，秦霜扛人往左走（村子在左遠處）。第三場祠堂：門在左、供桌牌位在右、主梁在牆頂；**祠堂沒有外景圖**，稿子門前石階那段（c27–c31）改在門裡門檻邊；跪著的人面向右邊的神龕、回頭朝畫左看門口。",
