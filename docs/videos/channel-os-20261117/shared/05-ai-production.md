@@ -45,18 +45,30 @@
 - [ ] 改編作品有「參考劇與原創聲明」，不搬原劇的情節與台詞
 - [ ] 音樂與素材的授權有記錄
 
-## 3. 改編到 Shorts、TikTok、Instagram Reels
+## 3. 改編到 Shorts 與 Instagram Reels
 
-| 來源 | Shorts | TikTok／Reels | 工具 |
+| 來源 | Shorts | Reels | 工具 |
 | --- | --- | --- | --- |
 | 奇聞、原來如此長片 | 每支切 1–2 段：選「最反常的那一句」加上答案前的懸念，25–55 秒 | 同一支 9:16 檔案 | `node tools/video/shorts/cli.mjs`（`docs/videos/SHORTS.md`），長度範圍在後台 Shorts 設定 |
 | AI 劇 | 單集本身就是 Shorts（50–180 秒的集數，超過 60 秒的要剪短或用合輯切片） | 同一支 | `shorts from-drama` 裁切 |
-| 寵物短劇 | 原生 15 秒或 50–55 秒 | 同一支，這類最適合 TikTok／Reels | 同上 |
+| 寵物短劇 | 原生 15 秒或 50–55 秒 | 同一支，這類最適合 Reels | 同上 |
 
 **跨平台的規則**：
 - 上傳**沒有浮水印**的原始檔，不要轉載 YouTube 下載的版本。
-- 字幕燒進畫面（TikTok／Reels 很多人靜音看）；YouTube 版用 CC。
-- TikTok／Reels 目前**沒有自動上傳工具**，由站主手動上傳。要不要經營這兩個平台、用哪個帳號，**站主決定**。
+- 字幕燒進畫面（Reels 很多人靜音看）；YouTube 版用 CC。
+- 站主 2026-11-18 決定**經營 Reels**，TikTok 先不做（[`../DECISIONS.md`](../DECISIONS.md)）。Reels 目前**沒有自動上傳工具**，由站主手動上傳。
+
+**Reels 規劃**：
+
+| 項目 | 做法 |
+| --- | --- |
+| 帳號 | 跟兩個 YouTube 頻道各配一個 Instagram 帳號，名稱一致（Mokaair、摩卡劇場 Mokaair），站主開 |
+| 頻率 | 跟著 Shorts 走：@Mokaair 每週 4–8 支，摩卡劇場每天 1 支 |
+| 檔案 | 同一支 9:16、無浮水印的原始檔；字幕燒進畫面 |
+| 時段 | 和 YouTube Shorts 同一天，晚 2–3 小時上，先讓 Shorts 吃第一波 |
+| 導流 | 個人檔案的連結放 YouTube 頻道；每支說明第一行寫系列名，結尾說「完整版在 YouTube 搜尋○○」 |
+| 先試什麼 | 摩卡劇場的寵物短劇和《種田》最有爽點的單集；4 週後看哪一類分享數最高，再調整比例 |
+| 數字 | 每週檢視加一行：Reels 觀看、分享、個人檔案點擊（Instagram 洞察報告手抄） |
 - 每支結尾都導回 YouTube 的系列名稱（說「搜尋○○」，不要只放連結）。
 
 ## 4. 第二個頻道要改的地方（開工程票）

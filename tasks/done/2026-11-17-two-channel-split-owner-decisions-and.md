@@ -1,13 +1,13 @@
 ---
 id: 2026-11-17-two-channel-split-owner-decisions-and
 title: Two-channel split: owner decisions and Studio checklist
-status: open
+status: done
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-opus
+claimed_at: 2026-11-18T00:20:12Z
 created_at: 2026-11-17T17:12:28Z
-completed_at:
+completed_at: 2026-11-18T00:23:10Z
 branch:
 depends_on: []
 scope:
@@ -22,7 +22,7 @@ scope:
 
 ## Definition of done
 
-- [ ] `DECISIONS.md` 寫下每一條：決定、不做、或之後再說。
+- [x] `DECISIONS.md` 寫下每一條：決定、不做、或之後再說。
   - 品牌故事放 A 還是 B（或停做）
   - B 頻道名稱與 handle
   - AI 科技解說留在 B、轉型，還是停
@@ -34,8 +34,8 @@ scope:
 
 ## Steps
 
-- [ ] 讀 `README.md` 的〈站主決定〉和〈站主清單〉。
-- [ ] 逐條拍板，需要工程的另外開票。
+- [x] 讀 `README.md` 的〈站主決定〉和〈站主清單〉。
+- [x] 逐條拍板，需要工程的另外開票。
 
 ## How to verify
 
@@ -44,3 +44,6 @@ scope:
 ## Notes
 
 從 `docs/videos/channel-os-20261117/` 開出（2026-11-17）。
+
+2026-11-18：站主逐條回覆，寫成 `DECISIONS.md`。品牌故事放 @Mokaair；B 頻道名稱為摩卡劇場 Mokaair（已開台）；AI 科技解說另開頻道規劃；建議宣傳每筆 NT$3,200、每月上限 NT$6,400；真人版每部約 Colab 60U；經營 Reels；摩卡劇場的睡眠音樂不再新增。站主另外說已經向第三方買了訂閱與時數。這違反 YouTube 虛假互動政策，風險與建議寫在 DECISIONS.md，營利進度不計入。
+Studio 清單（停投泰國的宣傳、改頻道頁、IG 帳號）仍由站主自己做，不屬於這張票能驗收的範圍。
