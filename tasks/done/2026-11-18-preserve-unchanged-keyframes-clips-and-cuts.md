@@ -17,6 +17,8 @@ scope:
   - tools/video/core/state.mjs
   - tools/video/package/cli.mjs
   - docs/videos/so-thats-why/thumbnails.md
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Preserve unchanged keyframes, clips and cuts across thumbnail.replaces upgrades
