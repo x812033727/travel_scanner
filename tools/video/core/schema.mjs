@@ -413,8 +413,11 @@ export function validateVideo(doc) {
   if (!compilation || doc.voice !== undefined) validateVoice(doc.voice, errors, "voice", locale);
   validateYoutube(doc.youtube, errors, locale);
   if (doc.thumbnail !== undefined) {
-    if (!isObject(doc.thumbnail) || !THUMBNAIL_TEMPLATES.includes(doc.thumbnail.template) || !isObject(doc.thumbnail.data)) {
+    const validThumbShape = (value) => isObject(value) && THUMBNAIL_TEMPLATES.includes(value.template) && isObject(value.data) && Object.keys(value).every((key) => ["template", "data", "variants", "replaces"].includes(key));
+    if (!validThumbShape(doc.thumbnail)) {
       errors.push({ path: "thumbnail", message: `must be { template: ${THUMBNAIL_TEMPLATES.join("|")}, data: {...} }` });
+    } else if (doc.thumbnail.replaces !== undefined && !validThumbShape(doc.thumbnail.replaces)) {
+      errors.push({ path: "thumbnail.replaces", message: `must be { template: ${THUMBNAIL_TEMPLATES.join("|")}, data: {...} }` });
     }
   }
   if (doc.sources !== undefined) {
