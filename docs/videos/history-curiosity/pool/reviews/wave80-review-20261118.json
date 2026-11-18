@@ -10,7 +10,8 @@
   "source_renames": {
     "R8000-S001": "ZW0-S019",
     "R8002-S001": "ZW2-S016",
-    "R8005-S001": "ZW5-S012"
+    "R8005-S001": "ZW5-S012",
+    "R8011-S001": "ZV1-S007"
   },
   "verdicts": [
     {
@@ -252,7 +253,27 @@
         "王國維〈清真先生遺事〉原文",
         "第二個一手或機構來源（搜狐轉載詞文不算）"
       ],
-      "note": "《貴耳集》卷下 PDF 第 88–91 頁我自己轉圖逐行核對，記載與作者摘要完全一致，『先貶後升＋張端義諷刺君臣遇合於倡優之家』的翻轉在原文裡；題材是皇帝去名妓家、詞人躲床下，原文與題卡都沒有性描寫，賣點也不在這裡，可收。但流傳樣本與第二個像樣的來源都缺，維持 needs_check。"
+      "note": "《貴耳集》卷下 PDF 第 88–91 頁我自己轉圖逐行核對，記載與作者摘要完全一致，『先貶後升＋張端義諷刺君臣遇合於倡優之家』的翻轉在原文裡；題材是皇帝去名妓家、詞人躲床下，原文與題卡都沒有性描寫，賣點也不在這裡，可收。但流傳樣本與第二個像樣的來源都缺，維持 needs_check。",
+      "recheck": {
+        "verdict": "ADOPT_WITH_CHANGES",
+        "reviewer": "R8011",
+        "author": "ZV1",
+        "key_source_reopened": "https://archive.org/metadata/02110435.cn（R8011 seq 1，200，24448 bytes）：先讀第二冊 metadata：題名詳註周義成詞片玉集(二)、北京大學圖書館、檔名 02110435.cn.pdf（3,294,712 bytes，md5 d19caec2e1008df499aeeb7658081e44）列在清單；識別碼出自 ZV1 seq 13 advancedsearch；https://archive.org/download/02110435.cn/02110435.cn.pdf（R8011 seq 2，200，3294712 bytes）：依 metadata 重抓，md5 與清單相同、sha256 前綴 64bb859a609c1c2f 與 ZV1 seq 16 相同；轉 PDF 第 29–32 頁圖：卷六『秋景』、〈少年遊〉商調詞文與夾注無本事，第 32 頁末句作『直自少人行』（ZV1 誤抄『直是』）；另用 ZV1 第一冊 cache（md5 與 ZV1 seq 14 metadata 相符）轉第 7 頁，劉肅序『嘉定辛未杪臘』屬實；https://archive.org/metadata/06063228.cn（R8011 seq 3，200，21389 bytes）：《貴耳集·卷上》條目（ZW3 seq 25 advancedsearch 列出）metadata，檔名 06063228.cn.pdf 列在清單；https://archive.org/download/06063228.cn/06063228.cn.pdf（R8011 seq 4，200，2716848 bytes）：轉 PDF 第 3–4 頁四庫提要：上卷淳祐元年、中卷淳祐四年、下卷淳祐八年；用來替 ZV1 沒有來源的『早約三十年』定年（1211 對 1248，改為三十多年）",
+        "changes": [
+          "premise_status 升 screened（chapter，5–7 分）：兩個一手（《貴耳集》四庫本卷下、陳元龍注本卷六）＋讀到的流傳樣本，王國維不用",
+          "ZV1-S001 程序瑕疵：檔名是照規則猜的；覆核先讀 metadata 確認檔名在清單後重抓，雜湊相同，才計入",
+          "末句異文改正：注本作『直自少人行』（ZV1 誤抄『直是』）",
+          "『早約三十年』原無來源：新增 R8011-S001（《貴耳集》卷上四庫提要，下卷成於淳祐八年 1248），改為『早三十多年』",
+          "問句與 payoff 的『最早記下／最早寫在』沒有來源，改成『記下這件事的那本南宋筆記』『出自』；answer_target 加註不說『最早』",
+          "ZV1-S002 標題改為實際篇名、註明原載中華讀書報；樣本只寫『躲了起來』、未寫床下"
+        ],
+        "unverified": [
+          "王國維〈清真先生遺事〉原文",
+          "《貴耳集》是不是此事最早出處",
+          "周邦彥當時年歲與是否在京"
+        ],
+        "note": "自己轉圖核對第二冊第 31–32 頁，注本確實只有詞與字詞注、沒有故事；翻轉（佳話版刪掉查稅藉口、蔡京『只得遷就』與張端義的批評，更早的注本只是一首秋夜詞）成立，可升 screened。"
+      }
     },
     {
       "id": "N7680",
@@ -526,7 +547,27 @@
         "Abbey 遷出年份（2002 或 2005）",
         "『寫信找貓』"
       ],
-      "note": "作者判的 needs_check 我同意，不升 screened。唯一一手（1889 年名冊）屬實，但只撐住『當年沒有 221 號』；題目的賣點（收信與門牌之爭）只有部落格與商業網站。本批若只收可製作的題，這題可以先不收，等讀到改號紀錄或當年報紙掃描再升級。"
+      "note": "作者判的 needs_check 我同意，不升 screened。唯一一手（1889 年名冊）屬實，但只撐住『當年沒有 221 號』；題目的賣點（收信與門牌之爭）只有部落格與商業網站。本批若只收可製作的題，這題可以先不收，等讀到改號紀錄或當年報紙掃描再升級。",
+      "recheck": {
+        "verdict": "ADOPT_WITH_CHANGES",
+        "reviewer": "R8011",
+        "author": "ZV1",
+        "key_source_reopened": "https://proof.csmonitor.com/1991/0513/uholmes.html（R8011 seq 5，200，76893 bytes）：sha256 前綴 34a747166463a075 與 ZV1 seq 2 相同；May 13, 1991、Granville Wilson；『occupied by the Abbey National Building Society』『informed by his personal secretary… retired to Sussex to keep bees』屬實；國名是 Russia",
+        "changes": [
+          "premise_status 升 screened（chapter，5–7 分），條件是正片不說改號年份、博物館門牌只說據報導且不說號碼",
+          "hook『幾十年後』改『小說問世一百年的時候』（TIME 1987 centenary year）",
+          "payoff 與 answer_target：回信者照 CSM 原文寫『福爾摩斯的私人秘書』，『公司雇人』標據報導；『合併改號』改『街道改號』並寫明是由 1889 與 1987 兩點推得",
+          "ZV1-S006（個人網站轉錄）降為背景，正片不用 1917–20",
+          "ZV1-S004 補日期 1987-08-17；ZV1-S003 摘要『蘇聯』改『俄國（Russia）』"
+        ],
+        "unverified": [
+          "改號年份與公文",
+          "博物館取得 221B 門牌的日期與爭信件經過",
+          "Abbey National 回信制度起始年、遷出年份（2002／2005）",
+          "Historic England BL28775 的『Abbey Road Building Society』"
+        ],
+        "note": "一手名冊加兩篇當年主要報刊撐住『當年沒有 221 號→後來 221B 是建屋互助會、有秘書替偵探回信』，流傳的混淆樣本也讀到；接受作者提的收斂 scope，升 screened chapter。"
+      }
     },
     {
       "id": "N7695",
