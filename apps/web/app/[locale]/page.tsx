@@ -63,7 +63,7 @@ export default async function Home() {
   const seeded = discovery.enabled && Boolean(feed);
   // Seed the gate, rather than bypassing it, so SSR and client recovery both work.
   const body = (
-      <main className="mx-auto min-h-screen max-w-6xl border-t border-[var(--line)] px-5 pb-20 md:px-8">
+      <div className="mx-auto min-h-screen max-w-6xl border-t border-[var(--line)] px-5 pb-20 md:px-8">
         {/* Keep the planning form compact on phones: a short hero, the
             workbench, and the three trust lines underneath.
             On desktop the lines keep their place beside the form. */}
@@ -73,11 +73,11 @@ export default async function Home() {
               <Sparkles size={16} />
               {t("heroEyebrow")}
             </p>
-            <h1 className="max-w-2xl text-3xl font-bold leading-[1.12] tracking-[-.04em] md:text-5xl xl:text-[3.5rem]">
+            <h2 className="max-w-2xl text-3xl font-bold leading-[1.12] tracking-[-.04em] md:text-5xl xl:text-[3.5rem]">
               {t("heroTitleLine1")}
               <br />
               {t("heroTitleLine2")}
-            </h1>
+            </h2>
             <p className="mt-4 max-w-xl text-base leading-7 text-[var(--muted)] md:text-lg lg:mt-5">
               {t("heroDescription")}
             </p>
@@ -210,7 +210,7 @@ export default async function Home() {
           </div>
         </section>
         <CommunityHome pets />
-      </main>
+      </div>
   );
   return (
     <>
@@ -219,8 +219,10 @@ export default async function Home() {
       <StructuredData data={[organization(), webSite(locale, hotspotsEnabled)]} />
       {/* Keep the site context and article entrances ahead of the discovery feed in both
           the server response and the client's later switch resolution. */}
-      <HomeGuides {...guides} hotspotsEnabled={hotspotsEnabled} />
-      <DiscoveryHomeGate initialEnabled={seeded} initialFeed={feed}>{body}</DiscoveryHomeGate>
+      <main>
+        <HomeGuides {...guides} hotspotsEnabled={hotspotsEnabled} />
+        <DiscoveryHomeGate initialEnabled={seeded} initialFeed={feed}>{body}</DiscoveryHomeGate>
+      </main>
     </>
   );
 }

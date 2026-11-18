@@ -329,8 +329,14 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
       document: { ...document, hero: syntheticHero },
     });
     const meta = await guideArticleMetadata({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" });
-    expect(meta.openGraph).toBeUndefined();
-    expect(meta.twitter).toBeUndefined();
+    expect(meta.openGraph).toMatchObject({
+      type: "article", url: meta.alternates?.canonical, title: document.title, description: document.description,
+      publishedTime: document.published_at, tags: ["AI 新聞"], locale: "en_US", alternateLocale: ["ja_JP"],
+      images: [{ url: "/og.png" }],
+    });
+    expect(meta.twitter).toMatchObject({
+      card: "summary_large_image", title: document.title, description: document.description, images: [{ url: "/og.png" }],
+    });
 
     const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" }));
     const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));

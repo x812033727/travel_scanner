@@ -46,4 +46,21 @@ describe("the news list", () => {
     const { container } = render(<NewsList articles={[]} />);
     expect(container.innerHTML).toBe("");
   });
+
+  it("previews the first story and only shows artwork suitable for readers", () => {
+    const first = story("first", "First story", "2026-11-18");
+    const second = story("second", "Second story", "2026-11-17");
+    const hero = { src: "/guides/first/hero.jpg", width: 640, height: 360, alt: "Editorial diagram", credit: null };
+    const { rerender } = render(<NewsList articles={[{ ...first, hero }, second]} leadHeading="h3" />);
+    const link = screen.getByRole("link", { name: first.title });
+    expect(within(link).getByRole("heading", { level: 3 }).textContent).toBe(first.title);
+    expect(within(link).getByText(first.description)).toBeTruthy();
+    expect(link.querySelector("img")?.getAttribute("src")).toBe(hero.src);
+    expect(screen.queryByText(second.description)).toBeNull();
+
+    rerender(<NewsList articles={[{ ...first, hero: { ...hero, src: "/guides/news-assets/placeholder.jpg" } }]} leadHeading="h3" />);
+    expect(screen.getByRole("link", { name: first.title }).querySelector("img")).toBeNull();
+    rerender(<NewsList articles={[{ ...first, news_date: null }]} leadHeading="h3" />);
+    expect(screen.queryByRole("heading")).toBeNull();
+  });
 });

@@ -125,13 +125,12 @@ export default async function LifeHubPage(
         .map((article) => [article.slug, article] as const),
     ),
   );
-  const news = [...newsBySlug.values()].sort(newsOrder).slice(0, NEWS_LIMIT);
-  // "See all" names the topics that actually have something, in ``NEWS_TOPICS`` order, with
-  // each topic's own label from the vocabulary this page already reads -- no new strings, and
-  // while only one vertical publishes it renders as the single link it was before.
+  const datedStories = [...newsBySlug.values()];
+  const news = datedStories.sort(newsOrder).slice(0, NEWS_LIMIT);
+  // Keep a published channel reachable even when another channel fills the whole wire.
   const newsHubs = NEWS_TOPICS.flatMap((slug) => {
     const topic = topics.find((item) => item.slug === slug);
-    return topic && news.some((article) => article.topics?.some((option) => option.slug === slug))
+    return topic && datedStories.some((article) => article.topics.some((option) => option.slug === slug))
       ? [{ slug, label: topic.label }]
       : [];
   });
@@ -150,7 +149,8 @@ export default async function LifeHubPage(
             { name: nav("home"), path: "/" },
             { name: t("guides.lifeHubTitle"), path: "/life" },
           ]),
-          itemList(locale, list.articles.map((article) => ({ name: article.title, path: guideHref(article.kind, article.slug) }))),
+          itemList(locale, news.map((article) => ({ name: article.title, path: guideHref(article.kind, article.slug) })), t("guides.latestNews")),
+          itemList(locale, list.articles.map((article) => ({ name: article.title, path: guideHref(article.kind, article.slug) })), t("guides.allArticles")),
         ]}
       />
       <main className="mx-auto max-w-5xl px-5 py-10 md:px-8">
@@ -165,7 +165,7 @@ export default async function LifeHubPage(
         {news.length ? (
           <section className="mt-10" aria-labelledby="life-news-heading" data-testid="life-news">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] pb-3">
-              <h2 id="life-news-heading" className="portal-section-heading text-2xl font-extrabold tracking-tight">{t("guides.latestNews")}</h2>
+              <h2 id="life-news-heading" className="portal-section-heading scroll-mt-24 text-2xl font-extrabold tracking-tight">{t("guides.latestNews")}</h2>
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
                 <a
                   href={`/${locale}/life/feed.xml`}
@@ -180,12 +180,12 @@ export default async function LifeHubPage(
                     className="inline-flex min-h-11 items-center text-sm font-semibold text-[var(--teal)] underline underline-offset-4"
                     href={guideTopicHref("life", hub.slug)}
                   >
-                    {newsHubs.length === 1 ? t("guides.seeAll") : hub.label}
+                    {hub.label}
                   </Link>
                 ))}
               </div>
             </div>
-            <NewsList articles={news} />
+            <NewsList articles={news} leadHeading="h3" />
           </section>
         ) : null}
 

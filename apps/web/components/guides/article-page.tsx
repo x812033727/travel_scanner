@@ -29,7 +29,7 @@ import { contentBlockLink } from "@/lib/content-blocks";
 import { guideAffiliateDestination } from "@/lib/guide-affiliate";
 import { splitArticleExtras, guideTopicHref, guideSection,
   guideHeadings, guideHref, guideListHref, isSyntheticNewsBlock, readingMinutes, visibleGuideHero,
-  type GuideArticleState, type GuideKind, type GuideSummary, type PublishedGuide,
+  type GuideArticleState, type GuideKind, type GuideSummary,
 } from "@/lib/guides";
 import { getAdsenseSlot } from "@/lib/adsense.server";
 import * as guidesServer from "@/lib/guides.server";
@@ -54,6 +54,10 @@ type Translate = (key: string, values?: Record<string, string | number>) => stri
 export const RELATED_ARTICLE_LIMIT = 3;
 
 const RAIL_TRENDING_LIMIT = 5;
+
+const openGraphLocale: Record<Locale, string> = {
+  en: "en_US", ja: "ja_JP", ko: "ko_KR", "zh-TW": "zh_TW", "zh-CN": "zh_CN",
+};
 
 /** The listing an article belongs to: the heading readers return to, and its URL. */
 function listingOf(kind: GuideKind, t: Translate): Crumb {
@@ -89,69 +93,54 @@ export async function guideArticleMetadata(
     getTranslations({ locale, namespace: "common" }),
   ]);
   const path = guideHref(kind, slug);
+  const canonical = localeUrl(locale, path);
   if (state.status !== "published" || !state.document) {
     return {
       title: t("guides.unavailableTitle"),
       description: t(state.status === "unpublished" ? "guides.notTranslated" : "guides.unavailable"),
       robots: { index: false },
-      alternates: { canonical: localeUrl(locale, path) },
+      alternates: { canonical },
     };
   }
   // Each locale publishes independently, so the root layout's all-five alternate set would
   // advertise translations that do not exist. Declare only the ones actually published.
   const languages = Object.fromEntries(state.published_locales.map((value) => [value, localeUrl(value, path)]));
+  const alternateLocale = state.published_locales.filter((value) => value !== locale).map((value) => openGraphLocale[value]);
+  const { document } = state;
+  const { title, description } = document;
+  const hero = visibleGuideHero(document.hero);
+  // Next replaces the entire social object. Carry forward the layout's brand artwork
+  // whenever this article has no editorial image that can appear on a reader surface.
+  const inherited = (await parent)?.openGraph;
+  const fallbackImages = inherited?.images?.length ? inherited.images : [{ url: "/og.png", width: 1200, height: 630 }];
+  const images = hero ? [{ url: hero.src, width: hero.width, height: hero.height, alt: hero.alt }] : fallbackImages;
+  const tags = state.topics.map((topic) => topic.label).filter(Boolean);
   return {
-    title: state.document.title,
-    description: state.document.description,
+    title,
+    description,
     robots: DISCOVER_ROBOTS,
     alternates: {
-      canonical: localeUrl(locale, path),
+      canonical,
       languages: {
         ...languages,
         ...(state.published_locales.includes("en") ? { "x-default": localeUrl("en", path) } : {}),
       },
     },
-    ...(await socialCard(
-      state.document,
-      listingOf(kind, t).name,
-      state.topics.map((topic) => topic.label),
-      parent,
-    )),
-  };
-}
-
-/**
- * The share card, only when the article has a hero to put on it.
- *
- * Next replaces a whole top-level metadata key rather than merging inside it, so naming
- * `openGraph` here would silently drop the layout's locale and alternate locales. They are
- * read back from the parent and restated; the image path is relative, and the layout's
- * `metadataBase` makes it absolute the same way it does for `/og.png`. Without a hero the
- * keys are left alone and the site card inherits.
- */
-async function socialCard(
-  document: PublishedGuide,
-  sectionName: string,
-  tags: readonly string[],
-  parent?: ResolvingMetadata,
-): Promise<Pick<Metadata, "openGraph" | "twitter">> {
-  const hero = visibleGuideHero(document.hero);
-  if (!hero) return {};
-  const cleanTags = tags.filter(Boolean);
-  const inherited = parent ? (await parent).openGraph : null;
-  return {
     openGraph: {
-      ...(inherited?.siteName ? { siteName: inherited.siteName } : {}),
-      ...(inherited?.locale ? { locale: inherited.locale } : {}),
-      ...(inherited?.alternateLocale ? { alternateLocale: inherited.alternateLocale } : {}),
       type: "article",
-      section: sectionName,
-      ...(cleanTags.length ? { tags: [...cleanTags] } : {}),
+      url: canonical,
+      title,
+      description,
+      siteName: inherited?.siteName ?? "Mokaair",
+      locale: openGraphLocale[locale],
+      alternateLocale,
+      section: listingOf(kind, t).name,
+      ...(tags.length ? { tags } : {}),
       publishedTime: document.published_at,
       modifiedTime: document.modified_at ?? document.published_at,
-      images: [{ url: hero.src, width: hero.width, height: hero.height, alt: hero.alt }],
+      images,
     },
-    twitter: { card: "summary_large_image", images: [hero.src] },
+    twitter: { card: "summary_large_image", title, description, images },
   };
 }
 

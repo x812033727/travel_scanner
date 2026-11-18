@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Rss } from "lucide-react";
+import { ChevronDown, Rss } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
@@ -80,6 +80,7 @@ export async function topicHubMetadata(route: TopicHubRoute): Promise<Metadata> 
   const t = await getTranslations({ locale: route.locale, namespace: "metadata" });
   const label = topic?.label ?? route.topic;
   const path = guideTopicHref(route.section, route.topic);
+  const news = isNewsTopic(route.section, route.topic);
   // Published-in-this-language decides the index, from the vocabulary's own counts; only when
   // an older API sends none does the listing's emptiness decide, and only a complete answer
   // may say empty (`hubIsEmpty`). A `?cursor=` page is the same collection further down,
@@ -88,8 +89,10 @@ export async function topicHubMetadata(route: TopicHubRoute): Promise<Metadata> 
   const noindex = !topic || empty || Boolean(route.cursor) || Boolean(route.sort);
   const published = topic ? topicLocales(topic, locales) : [];
   return {
-    title: t("topicHubTitle", { topic: label }),
-    description: topic?.description || t("topicHubDescription", { topic: label }),
+    title: t(news ? `newsTopic-${route.topic}-title` : "topicHubTitle", { topic: label }),
+    description: topic?.description || (news
+      ? t(`newsTopic-${route.topic}-description`)
+      : t("topicHubDescription", { topic: label })),
     alternates: {
       canonical: localeUrl(route.locale, path),
       // Only the languages with something under the topic, for the reason an article page
@@ -103,7 +106,7 @@ export async function topicHubMetadata(route: TopicHubRoute): Promise<Metadata> 
             },
           }
         : {}),
-      ...(isNewsTopic(route.section, route.topic) && !route.cursor && !route.sort
+      ...(news && !route.cursor && !route.sort
         ? {
             types: {
               "application/atom+xml": [
@@ -125,11 +128,12 @@ export async function renderTopicHub(
   featured?: (topics: GuideTopic[]) => Promise<ReactNode>,
 ) {
   const { locale, section } = route;
-  const [[vocabulary, list], registry, t, nav] = await Promise.all([
+  const [[vocabulary, list], registry, t, nav, meta] = await Promise.all([
     reads(route),
     getSeriesIndex(locale),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "navigation" }),
+    getTranslations({ locale, namespace: "metadata" }),
   ]);
   const topic = resolve(vocabulary.topics, vocabulary.available, route.topic);
   const top = featured && !route.cursor && !route.sort ? await featured(vocabulary.topics) : null;
@@ -137,7 +141,8 @@ export async function renderTopicHub(
   const label = topic?.label ?? route.topic;
   const sectionTitle = section === "life" ? t("guides.lifeHubTitle") : t("guides.hubTitle");
   const sectionLead = section === "life" ? t("guides.lifeHubIntro") : t("guides.hubIntro");
-  const lead = topic?.description || parent?.description || sectionLead;
+  const news = isNewsTopic(section, route.topic);
+  const lead = topic?.description || (news ? meta(`newsTopic-${route.topic}-description`) : parent?.description || sectionLead);
   const path = guideTopicHref(section, route.topic);
   const cardLabels = { intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life") };
   const toolbarLabels = {
@@ -146,7 +151,6 @@ export async function renderTopicHub(
     sortLabel: t("guides.sortLabel"), sortCurated: t("guides.sortCurated"), sortLatest: t("guides.sortLatest"),
   };
   const searchLabels = { label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") };
-  const news = isNewsTopic(section, route.topic);
   const sort = sortOf(route);
   // The hub's own address is its default order; the other order rides on `?sort=`.
   const view = (value: GuideListSort) => (value === defaultSortOf(route) ? path : `${path}?sort=${value}`);
@@ -157,6 +161,16 @@ export async function renderTopicHub(
     ...(parent ? [{ name: parent.label, path: guideTopicHref(section, parent.slug) }] : []),
     { name: label, path },
   ];
+  const toolbar = (
+    <ListingToolbar
+      section={section}
+      topics={vocabulary.topics}
+      active={route.topic}
+      allHref={sectionHubHref(section)}
+      sort={news ? null : { current: sort, hrefs: { curated: view("curated"), latest: view("latest") } }}
+      labels={toolbarLabels}
+    />
+  );
 
   return (
     <>
@@ -206,14 +220,15 @@ export async function renderTopicHub(
 
         {top}
 
-        <ListingToolbar
-          section={section}
-          topics={vocabulary.topics}
-          active={route.topic}
-          allHref={sectionHubHref(section)}
-          sort={news ? null : { current: sort, hrefs: { curated: view("curated"), latest: view("latest") } }}
-          labels={toolbarLabels}
-        />
+        {news && topic && list.articles.length > 0 ? (
+          <details className="group mt-4">
+            <summary className="inline-flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 text-sm font-semibold text-[var(--ink)] hover:border-[var(--teal)] hover:text-[var(--teal-dark)] [&::-webkit-details-marker]:hidden">
+              {t("guides.browseTopics")}
+              <ChevronDown size={16} aria-hidden className="text-[var(--muted)] group-open:rotate-180" />
+            </summary>
+            {toolbar}
+          </details>
+        ) : toolbar}
 
         {list.articles.length ? (
           news ? (
