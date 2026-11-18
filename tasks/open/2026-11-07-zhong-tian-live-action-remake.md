@@ -111,3 +111,9 @@ CG 的重抽佇列（`scratchpad/chainR`–`chainU`）已經停掉，pod 也停�
 - **第 32 集**：r2.py 已寫、已 build；獨立審稿 `writer-tools/e032-r2/review.md`（必改 6 條，協調者全收，含四鏡倒掛減成兩鏡、s16 改手與鎬的插鏡、s34/s35 用 `-huang-zuo/-zuo2`）。**套用審稿做到一半就停了**：清晨版井坑三張、`-zuo/-zuo2` 已做好，`r2.py` 還沒改完，要從 review.md 的必改清單接著改、重 build（`$S/build932.sh`）。d1 前置等第 31 集 s41 挑定、核對第 32 集 s01 後再做。
 - **第 4 篇章試鏡全部完成**（五輪，`live-action/screen-test-e031-e040-r1-picks.md`）。第 30→31 接點已照第 30 集 s41 實拍改寫；棗紅馬是裸背 37043（鞍寫在鏡頭，只要寫 saddle 模型就畫英式鞍）。
 - 教訓：Qwen 合成多人首格不可靠，難鏡改用已拍片段裡站位對的那一格當首格；試鏡鏡頭句寫「站在地上的人拍的」會把人叫進畫面，改寫三腳架；壩的圖左右反了就免費水平翻轉場景圖（人物圖不能翻）。
+
+## 進度（2026-11-18 新 session，接上一段交接）
+
+- 新容器：影片工具權杖已配對（Colab＋RunPod，站主核准）；Colab 帳號 b 餘額 584.21 CU；RunPod 本月還剩 US$61.97、沒有跑著的 pod。第 30、31 集工作檔與配樂、音效庫從 videobackup 還原到 `~/mokaair-work/videos/`；舊 scratchpad 路徑以 symlink 指到新 scratchpad，`/home/user/zt-work` 指到 repo，舊腳本可原樣跑。
+- **第 32 集**：審稿 `writer-tools/e032-r2/review.md` 的必改 6 條與建議（s25 改不見臉的全景、s25b 手的插鏡；s05/s26 BUY 8；s11 精修視線；s18 側；s01 鋤頭插地；s26b 不笑；s32 水平；s36 近排切膝；祠堂老婦深梅紫、炭灰五歲男孩換炭灰瘦中年；石木匠淺褐；`-huang-men` 門外寫門廊）全部套進 `r2.py` 並重建（39 鏡；shot_reading 4 個 cast.speaker 是 OFFSCREEN_SPEECH=False 的刻意寫法）。refs-live README 補 `-chen` 三張與 `-huang-zuo/-zuo2`；兩份聖經的石木匠列、e031–e040〈場景〉井坑與祠堂黃昏列照圖改。**還沒做**：d1 前置（`colab/runs/e932/extras.json`、`e932-live/{mkspec.py,spec.json}`——s16、s25b 是插鏡，要拿掉地點句、不送任何圖——`prep932.sh`、`e932d1.sh`），等第 31 集 s41 挑定後重核 s01；錄音後照 `span931.sh` 重核 BUY。
+- 第 30 集審片 1、第 31 集挑片 A／B 已重新派獨立代理在跑（結果寫 `colab/runs/e930-live/cut-review.md`、`colab/runs/e931-live/review-picks-{a,b}.tsv`）。
