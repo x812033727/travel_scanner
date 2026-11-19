@@ -43,10 +43,22 @@ title rule was one line; the curio rule lived only in prompts; nothing checked t
       its refresh SPEC), no calm reading question, the point inside the first 18 characters, the
       thumbnail headline not repeating the title.
 - [x] 原來如此 writer prompt carries the 黑猫 title formula.
-- [ ] Retitle batches under docs/videos/packaging-refresh-20261111/ (zh-TW + 8 locales, fixed series
+- [x] Retitle batches under docs/videos/packaging-refresh-20261111/ (zh-TW + 8 locales, fixed series
       suffixes), applied by the owner in Studio or by `video-youtube-caption-titles --set-title --apply`
       on the host with the owner's explicit OK. No video.json or i18n file is edited (that would stale
       the translations and the publish approval).
+
+## Notes
+
+- 59 episodes retitled (curio 41, story 15, 原來如此 T27 + QR Code); every zh-TW title passes
+  `titleProblems`, every locale title fits 100 characters with the caption tag, every figure is in
+  that episode's script or claims. The lead corrected Kincho (the proposal set two different products
+  as 早年／如今).
+- Found on the way: several live titles differ from video.json (check Studio first); s11 is in a
+  Studio thumbnail test since 2026-11-11; some i18n files use pre-2026-11-13 series names; Zippo short
+  names 奇聞檔案局 (filed 2026-11-19-zippo-short-wrong-series-subscribe-line).
+- A browser review of 黑猫研究院's top ten (asked of a local session, the cloud IP gets LOGIN_REQUIRED)
+  may adjust the formula; a later PR revises the sheets then.
 
 ## How to verify
 
