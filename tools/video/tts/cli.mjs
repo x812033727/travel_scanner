@@ -403,7 +403,9 @@ async function tts(args, ctx) {
   requireStorySpeechLexicon(project, workdir);
   // 原來如此, 奇聞 and brand stories made by hand pass the strict first-300-seconds review before
   // any voice is paid for (owner, 2026-11-19; core/opening-review.mjs).
-  if (!values["dry-run"] && needsOpeningReview(doc, { series: project.series, workdir })) {
+  const voiced = readJson(path.join(workdir, ARTIFACTS.timeline), null)?.speech_hash === speechHash(doc, lexicon);
+  const retake = Boolean(values.redo || values["refresh-evidence"]);
+  if (!values["dry-run"] && needsOpeningReview(doc, { series: project.series, workdir, voiced, retake })) {
     const problems = openingReviewProblems(doc, readJson(path.join(workdir, ...OPENING_REVIEW), null));
     if (problems.length) throw new UsageError(`the first ${OPENING_REVIEW_SECONDS} seconds have not passed the opening review: ${problems.join("; ")}`);
   }

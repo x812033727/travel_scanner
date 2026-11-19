@@ -282,7 +282,7 @@ async function cmdOpeningReview(args, ctx) {
   const values = parse(args, { slug: { type: "string" }, workdir: { type: "string" }, record: { type: "string" }, author: { type: "string" } });
   if (!values.slug) throw new UsageError("opening-review needs --slug");
   const project = loadProject({ slug: values.slug, root: ctx.root });
-  const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: project.doc.slug, root: ctx.root });
+  const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: project.doc.slug, root: ctx.root, home: ctx.home });
   const reviewFile = path.join(workdir, ...OPENING_REVIEW);
   if (!values.record) {
     const packet = path.join(workdir, ...OPENING_PACKET);

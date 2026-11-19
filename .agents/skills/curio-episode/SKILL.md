@@ -228,7 +228,7 @@ metadata:
 3. 將所有關鍵影格轉為 `1920×1080` PNG 並切出四格 2x 放大圖，交由獨立子代理逐張審過（零文字、零白邊、角色一致、五指與地理／時代道具無誤），不合格鏡頭帶原圖進 `ImagePaths` 重繪。
 4. 全數審過後，逐鏡執行 `node tools/video/cli.mjs keyframes import --slug <SLUG> --shot <ID> --file <PNG> --provider external --usd 0` 寫入 `keyframes/manifest.json`，再鎖定並推送 `storyboard` 關卡。注意：之後只要改動 `video.json` 某景的 `prompt`，該景的外部匯入紀錄就會失效，務必先定稿 `video.json` 再匯入。
 
-**前 300 秒觀眾審查（站主 2026-11-19「前300秒都不會滑走、嚴格審核」，配音前必過）**：劇本定稿後、跑 `tts` 之前，先 `node tools/video/cli.mjs opening-review --slug <SLUG>` 產生審查包（`review/opening-packet.md`：縮圖大字、標題、前 300 秒的口白與時間）。派**三個沒參與製作的獨立子代理**，各開新 session、只給這份審查包，分別扮演三種觀眾：`newcomer`（第一次點進來的路人）、`scroller`（邊滑手機、隨時想走）、`stickler`（專抓沒頭沒尾和跳接）。三位的 JSON 存成陣列，`opening-review --slug <SLUG> --record <檔案> --author <你的名字>` 記錄。**三位都要 score ≥ 8.5、不會滑走、problems 為空**才算過；有任何一條就改稿，再派**新的三位**重審（腳本一改，舊結果自動失效）。沒過關之前 `tts` 會拒絕合成（主機產線用自己的盲評，不受影響）。
+**前 300 秒觀眾審查（站主 2026-11-19「前300秒都不會滑走、嚴格審核」，配音前必過）**：劇本定稿後、跑 `tts` 之前，先 `node tools/video/cli.mjs opening-review --slug <SLUG>` 產生審查包（`review/opening-packet.md`：縮圖大字、標題、前 300 秒的口白與時間）。派**三個沒參與製作的獨立子代理**，各開新 session、只給這份審查包，分別扮演三種觀眾：`newcomer`（第一次點進來的路人）、`scroller`（邊滑手機、隨時想走）、`stickler`（專抓沒頭沒尾和跳接）。三位的 JSON 存成陣列，`opening-review --slug <SLUG> --record <檔案> --author <你的名字>` 記錄。**三位都要 score ≥ 8.5、不會滑走、problems 為空**才算過；有任何一條就改稿，再派**新的三位**重審（前 300 秒、標題或縮圖大字一改，舊結果自動失效；300 秒之後的修改和念法微調不用重審）。每位審查者要照抄審查包裡的 `opening_hash`，證明讀的是這一版。沒過關之前 `tts` 會拒絕合成（主機產線用自己的盲評，不受影響）。
 
 **配樂、觀眾評分關卡與成片推送**
 

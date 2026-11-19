@@ -5,7 +5,7 @@ import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
 import { sandbox } from "./fixtures/load.mjs";
-import { needsOpeningReview, OPENING_PERSONAS, OPENING_REVIEW_MIN_SCORE, OPENING_REVIEW_SECONDS, openingPacket, openingReviewProblems, openingReviewRecord } from "./opening-review.mjs";
+import { needsOpeningReview, openingHash, OPENING_PERSONAS, OPENING_REVIEW_MIN_SCORE, OPENING_REVIEW_SECONDS, openingPacket, openingReviewProblems, openingReviewRecord } from "./opening-review.mjs";
 
 function capture(box) {
   const out = { stdout: "", stderr: "" };
@@ -29,7 +29,8 @@ function episode(slug = "sothatswhy-x01") {
   return { box, doc, file };
 }
 
-const pass = (persona, agent = `reader-${persona}`) => ({ agent, persona, score: 9, would_stay_300: true, swipe_at: null, problems: [] });
+let current = null;
+const pass = (persona, agent = `reader-${persona}`) => ({ opening_hash: current, agent, persona, score: 9, would_stay_300: true, swipe_at: null, problems: [] });
 const allPass = () => Object.keys(OPENING_PERSONAS).map((persona) => pass(persona));
 
 test("the opening review reads 300 seconds with three readers, one per viewer, all strict (owner 2026-11-19)", () => {
@@ -37,7 +38,10 @@ test("the opening review reads 300 seconds with three readers, one per viewer, a
   assert.equal(OPENING_REVIEW_MIN_SCORE, 8.5);
   assert.deepEqual(Object.keys(OPENING_PERSONAS), ["newcomer", "scroller", "stickler"]);
   const { doc } = episode();
+  current = openingHash(doc);
   const packet = openingPacket(doc);
+  assert.ok(packet.includes(current), "the packet carries the hash each reader echoes");
+  assert.ok(/精衛：|炎帝：/.test(packet) && !/jingwei：|yandi：/.test(packet), "readers see the characters' names, not their ids");
   assert.match(packet, /前 300 秒觀眾審查/);
   assert.match(packet, /縮圖大字/);
   assert.match(packet, /問題菜單/);
@@ -59,9 +63,22 @@ test("the opening review reads 300 seconds with three readers, one per viewer, a
   const nit = openingReviewRecord(doc, [pass("newcomer"), pass("scroller"), { ...pass("stickler"), problems: [{ at: "0:42", line: "某句", why: "沒交代是誰", fix: "先說他是誰" }] }], { author: "writer" });
   assert.ok(openingReviewProblems(doc, nit).some((problem) => /沒交代是誰/.test(problem)), "any problem named keeps it from passing");
 
+  const passed = openingReviewRecord(doc, allPass(), { author: "writer" });
   const edited = structuredClone(doc);
   edited.scenes[0].lines[0].text += "改了一句。";
-  assert.ok(openingReviewProblems(edited, openingReviewRecord(doc, allPass(), { author: "writer" })).some((problem) => /script changed/.test(problem)), "an edit asks for a new round");
+  assert.ok(openingReviewProblems(edited, passed).some((problem) => /first 300 seconds changed/.test(problem)), "an edit in the opening asks for a new round");
+  const retitled = { ...structuredClone(doc), youtube: { ...doc.youtube, title: "另一個標題" } };
+  assert.ok(openingReviewProblems(retitled, passed).some((problem) => /changed after the opening review/.test(problem)), "so does a new title");
+  const reheadlined = { ...structuredClone(doc), thumbnail: { ...doc.thumbnail, data: { ...doc.thumbnail.data, headline: "新大字" } } };
+  assert.ok(openingReviewProblems(reheadlined, passed).length > 0, "and a new thumbnail headline");
+  const stale = openingReviewRecord(doc, [{ ...pass("newcomer"), opening_hash: "0".repeat(64) }, pass("scroller"), pass("stickler")], { author: "writer" });
+  assert.ok(openingReviewProblems(doc, stale).some((problem) => /read another version/.test(problem)), "a reader of an older packet does not count");
+  const text = openingReviewRecord(doc, [pass("newcomer"), pass("scroller"), { ...pass("stickler"), problems: "drags at 1:40" }], { author: "writer" });
+  assert.ok(openingReviewProblems(doc, text).some((problem) => /must be a list/.test(problem)));
+  const cased = openingReviewRecord(doc, [pass("newcomer", "Writer "), pass("scroller"), pass("stickler")], { author: "writer" });
+  assert.ok(openingReviewProblems(doc, cased).some((problem) => /author cannot be a reader/.test(problem)), "names compare without case or spaces");
+  assert.equal(needsOpeningReview(doc, { voiced: true }), false, "a voice already made for this script is not asked again");
+  assert.equal(needsOpeningReview(doc, { retake: true }), false, "nor a retake");
   assert.equal(needsOpeningReview({ slug: "daily-ai-20261119" }), false, "other series are untouched");
 });
 
@@ -78,6 +95,7 @@ test("tts refuses a hand-made 原來如此 episode until the opening review pass
   assert.match(readFileSync(path.join(box.workdir, "review", "opening-packet.md"), "utf8"), /前 300 秒觀眾審查/);
 
   const answers = path.join(box.base, "answers.json");
+  current = openingHash(JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8")));
   writeFileSync(answers, JSON.stringify([pass("newcomer"), { ...pass("scroller"), score: 7 }, pass("stickler")]));
   const failed = capture(box);
   assert.equal(await main(["opening-review", "--slug", box.slug, "--record", answers, "--author", "writer"], failed.ctx), EXIT.lint);

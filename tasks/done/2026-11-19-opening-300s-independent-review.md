@@ -43,6 +43,13 @@ gate (they go straight to storyboard and final), so nothing held a weak opening 
       worker video with auto.json, not a cut with a final approval).
 - [x] Skills, the sothatswhy template, script-writing.md and lessons describe the step.
 
+- [x] After an independent review: the record binds to `openingHash` (title, thumbnail headline,
+      lines under 300 s with speaker names) and every reader echoes it; edits after 300 s, a `say`
+      fix and retakes (`--redo`, `--refresh-evidence`) or a voice already made for this script are
+      not asked again; the old "any final approval" exemption is gone (a recut in the same workdir is
+      gated); `problems` must be a list; names compare without case or spaces; the packet shows
+      character names (所長, 小問), not ids.
+
 ## How to verify
 
 ```bash
