@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-19-pool-7218",
+  "revision": "2026-11-19-pool-7252",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,22 +12,22 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 7682,
-    "canonical_questions": 7522,
-    "eligible_candidates": 7329,
-    "selected_candidates": 7218,
+    "raw_records": 7716,
+    "canonical_questions": 7556,
+    "eligible_candidates": 7363,
+    "selected_candidates": 7252,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 8175,
-    "current_research_source_urls": 5240,
-    "selected_source_urls": 6190,
-    "new_suggestions_not_added": 3435,
+    "source_urls": 8211,
+    "current_research_source_urls": 5276,
+    "selected_source_urls": 6226,
+    "new_suggestions_not_added": 3440,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1718,
-        "selected": 1688
+        "canonical": 1723,
+        "selected": 1693
       },
       "生物動物與植物": {
         "canonical": 1506,
@@ -38,20 +38,20 @@
         "selected": 938
       },
       "數位科技與通訊工程": {
-        "canonical": 1375,
-        "selected": 1295
+        "canonical": 1376,
+        "selected": 1296
       },
       "飲食與廚房科學": {
-        "canonical": 491,
-        "selected": 485
+        "canonical": 495,
+        "selected": 489
       },
       "人體感官與日常行為": {
-        "canonical": 560,
-        "selected": 548
+        "canonical": 561,
+        "selected": 549
       },
       "建築交通與商業制度": {
-        "canonical": 931,
-        "selected": 769
+        "canonical": 954,
+        "selected": 792
       }
     }
   },
@@ -1921,6 +1921,18 @@
       "sha256": "ac1e17acfe1693f0fab9c3d2fa22ea5a38f15cbbcf2ebb76284330ce5d62d0e7"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json",
+      "sha256": "a78c1d837030dd10eb18d2b5210510a7cfe3f12f04d8e3734bdd4cc1a23450d0"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json",
+      "sha256": "239945ab8c49dc5f01e161ec5052b4be6c0b0eba74f871e2c26b1358654176a3"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave119-sports-20261119.json",
+      "sha256": "408f2661f6eead81a8786181f446b1cde4b7d1df355fee1ed8980aa6d760fd76"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json",
       "sha256": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70"
     },
@@ -3222,12 +3234,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "6a50a50b828e90bdb8febfe7179a26d4a242391e748069f9e043f481735da398"
+      "sha256": "c69e65bd82ceb39ecba44cd4c4c216bce638dff3017c4a98bfdf965184d591ad"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 8175
+    "count": 8211
   },
   "candidates": [
     {
@@ -123069,6 +123081,1534 @@
       "question_variants": [],
       "provenance_ids": [
         "K118-0218"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0001",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "掐絲琺瑯瓶上，每一塊顏色邊緣那道細金線，是等花紋燒好才畫上去的嗎？",
+      "mechanism_key": "x119.enamel.cloison_walls_exposed_by_polishing",
+      "answer_target": "在填第一筆顏色以前，工匠已經把金屬絲彎成花紋，固定在瓶胎上。一瓣花就是一個小格，釉料填在格裡。釉燒過會收縮，有時得再填再燒；最後把表面磨平，原本隔開釉色的金屬絲頂邊就露了出來，還可以再鎏金。",
+      "scope": "限大都會藝術博物館介紹的中國金屬胎掐絲琺瑯。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沿著一瓣花描回去，成品的細邊正是工匠一開始就裝上的隔牆。",
+        "visual": "自繪同一瓣花的俯視及截面，先放隔絲，再填色、燒縮、補填和磨平，最後對回俯視的金線。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X119L-S01 正文首段，cloisons、燒後收縮及研磨露邊。",
+      "notes": "P74-011 解釋彩繪窗綠色琺瑯的變色。本題辨認金屬隔絲的位置。",
+      "origin": "wave119-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc52067f82ece424",
+          "origin": "wave119-everyday-20261119",
+          "locator": "X119L-S01 正文首段，cloisons、燒後收縮及研磨露邊。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0002",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "翻過一只手工玻璃杯，底部那圈不太規則的疤，為什麼偏偏留在杯底？",
+      "mechanism_key": "x119.glass.pontil_base_scar",
+      "answer_target": "做玻璃器的時候，可以把一根實心桿的前端沾上熱玻璃，再黏到器底，靠這根桿暫時持住整件器物。等桿子卸掉，接合過的地方有時會留一道不規則或環狀的痕跡。成品平放時看不到的部位，正是製作中曾經握住它的地方。",
+      "scope": "只談可辨識為接桿痕的玻璃器，其他底部記號另須鑑別。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把杯子倒過來，那圈痕跡給出了工匠當時握柄的位置。",
+        "visual": "用自繪側視圖標出桿、桿頭的熱玻璃和器底，再拆去桿，把接點與底部環痕慢慢對齊。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X119L-S02 Glass Dictionary Definition 首段，applied to the base 至 pontil mark。",
+      "notes": "以製作中的持握點為主；不把環痕當作斷代依據。",
+      "origin": "wave119-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c8864086d6c7b8e7",
+          "origin": "wave119-everyday-20261119",
+          "locator": "X119L-S02 Glass Dictionary Definition 首段，applied to the base 至 pontil mark。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0003",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "中世紀地磚白花紋下方，為什麼切開還會看見一小塊白色的泥？",
+      "mechanism_key": "x119.tiles.medieval_stamped_clay_inlay",
+      "answer_target": "做這種鑲嵌地磚，先拿雕了花紋的木模往坯上壓，脫模後，花紋在泥面留下一道凹槽。工匠把白色陶土填進去，白色就從表面一直延伸到槽底。從上面看到的花瓣，是那塊白泥朝上的一面。",
+      "scope": "限 V&A 所載中世紀木模壓紋、填白泥的磚；encaustic 一詞也用於其他工藝。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把花紋橫切一刀，底下有和木模凸起處對應的白色截面。",
+        "visual": "以兩色軟陶示範，先壓印再填白泥，切開模型並把截面和木模花瓣並排。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X119L-S03「E is for encaustic」第 2 段的 Medieval inlaid tiles。",
+      "notes": "鏡頭切的是模型。原頁對照的維多利亞時期壓模法另有差異。",
+      "origin": "wave119-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f3b4e97d9f4aadb3",
+          "origin": "wave119-everyday-20261119",
+          "locator": "X119L-S03「E is for encaustic」第 2 段的 Medieval inlaid tiles。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0004",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "牛仔布的紗線明明一組直、一組橫，斜著爬上褲管的紋路是哪條線？",
+      "mechanism_key": "x119.denim.offset_warp_floats_twill",
+      "answer_target": "放大一塊用三上一下斜紋織成的牛仔布。沿同一根經紗走，它跨過三根緯紗，再沉到下一根底下；換到隔壁的經紗看，沉下去的位置錯開一格。把這幾個交織點依次圈起來，就能看見那條斜線，即使抽走其中一根紗，抽出來的仍是直向或橫向的線。",
+      "scope": "示範規則 3/1 斜紋布的一次四經四緯循環。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "眼睛追到的斜線，是好多根紗輪流在不同位置交會。",
+        "visual": "用兩色寬紙條織四乘四方格，逐欄圈出經紗沉到下面的一格，最後拉遠對回褲管。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X119L-S04 Appearance of Twill Weaves 與 3 x 1 Twill／3 x 1 Right-Hand Twill 圖例。",
+      "notes": "X5015 談磨損處的靛藍；這裡使用沒有磨損、兩色紙也能重現的交織位置。",
+      "origin": "wave119-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-0cd906730e555b8a",
+          "origin": "wave119-everyday-20261119",
+          "locator": "X119L-S04 Appearance of Twill Weaves 與 3 x 1 Twill／3 x 1 Right-Hand Twill 圖例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0005",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "皮鞋的大底磨穿了，鞋匠怎麼拆得掉整片底，又保得住上面的鞋面？",
+      "mechanism_key": "x119.shoes.goodyear_welt_outsole_repair_seam",
+      "answer_target": "看這雙固特異沿條鞋的邊緣，中底下方有一道凸條，工匠先在那裡縫上一圈皮革沿條。接著才用另一道縫線把大底固定到沿條。修鞋時，可以處理大底與沿條之間的接縫，把磨壞的底拆走；上面那一層仍有原來的連接。",
+      "scope": "限 Crockett & Jones 公開的沿條構造，示範沿條可用時的換底。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "翻起破底時，皮革沿條能留在鞋上接下一塊底。",
+        "visual": "用皮片模型把中底、凸條、沿條和大底分色，兩排線用兩色粗線示意，只解開大底那排。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X119L-S05 GOODYEAR-WELTED SHOES 段，welt sewing、soles stitched to the welt 與修理。",
+      "notes": "描述兩處連接；不保證沿條或鞋面已破壞的鞋也能照樣換底。",
+      "origin": "wave119-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c702121fe31109ca",
+          "origin": "wave119-everyday-20261119",
+          "locator": "X119L-S05 GOODYEAR-WELTED SHOES 段，welt sewing、soles stitched to the welt 與修理。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0006",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "小號手右手在按活塞，為什麼左手還會把指環往外推一下？",
+      "mechanism_key": "x119.music.trumpet_left_hand_tuning_slides",
+      "answer_target": "看左手指環連著哪裡：在這種小號上，拇指可以動第一調音管，無名指可以動第三調音管。右手按閥先選一條氣柱路徑，當下的音高還有修正空間。左手往外送，會把對應的管路再拉長一點，演奏者可以邊聽邊微調。",
+      "scope": "限 Yamaha 示範有可動第一、三調音管的小號，及該調音管接入的管路。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "指環一動，跟著手移動的是一小段真正的管子。",
+        "visual": "近鏡固定右手指法，側拍左手無名指推第三管；在原位和推出的位置疊圖，配同一指法的調音對照。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X119L-S06 Controlling the pitch using the slides 的指環與音準段，搭配前段 How is a scale played?。",
+      "notes": "P119 是長氣柱與低音的一般關係，這裡追的是按好同一指法後，左手指環怎麼參與修音。",
+      "origin": "wave119-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b514d750b6319fc9",
+          "origin": "wave119-everyday-20261119",
+          "locator": "X119L-S06 Controlling the pitch using the slides 的指環與音準段，搭配前段 How is a scale played?。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0007",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "做完一批乳酪、把凝乳撈走之後，那鍋剩下的液體怎麼還能再撈出 ricotta？",
+      "mechanism_key": "x119.cheese.sweet_whey_ricotta_second_curd",
+      "answer_target": "第一次分離留下的甜乳清裡，仍有溶在液體中的乳清蛋白。傳統的一種 ricotta 做法會把合適的甜乳清重新加熱：這些蛋白質凝聚，乳清表面逐漸浮起一層凝塊，有孔勺又有東西可撈。今天的製程也常在乳清裡加牛奶；要看清這一鍋為什麼辦得到，可先追傳統純甜乳清的例子。",
+      "scope": "限圭爾夫大學教材列出的純甜乳清作法與適用酸鹼條件。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第一次撈起凝乳之後，漏過勺子的那鍋液體裡，還有能受熱結塊的蛋白質。",
+        "visual": "用同一口鍋畫兩個時間點，第一次舀走凝乳；下一幕亮出留在乳清裡的蛋白，受熱後再聚成浮層。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X119L-S07「1. Ricotta cheese」開頭，sweet whey、first rise、perforated scoops 及次段現代作法。",
+      "notes": "D2057 為第一輪凝乳之前把牛奶加熱、讓乳清蛋白跟著酪蛋白回收；本例從已分離出的甜乳清開始。",
+      "origin": "wave119-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ce8e7ad062414ee3",
+          "origin": "wave119-everyday-20261119",
+          "locator": "X119L-S07「1. Ricotta cheese」開頭，sweet whey、first rise、perforated scoops 及次段現代作法。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0008",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "硬幣上的人像還沒壓下去，光禿禿的金屬圓片怎麼已經有一圈凸邊？",
+      "mechanism_key": "x119.coins.upsetting_mill_forms_protective_rim",
+      "answer_target": "美國鑄幣局的流程把兩個動作分開。先讓胚片通過比直徑略窄的槽，圓周的金屬受擠而隆起，形成兩面圖案外側的凸緣。已經有凸緣的胚片之後才送進壓機打上圖案；成幣疊放時，這一圈能支撐硬幣，也替幣面減少磨耗。",
+      "scope": "限美國鑄幣局的 upsetting 工序；部分胚片到廠時已具凸緣。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把製程停在壓人像之前，沿著圓片的側面摸，已經找得到凸緣。",
+        "visual": "自繪俯視窄槽與圓片，切到凸緣剖面，再加正反面壓模，最後側看兩枚硬幣堆疊。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X119L-S08 Upsetting 的窄槽、凸緣功能及 Striking 的雙面壓模。",
+      "notes": "凸緣指正反面周圍高出圖案的圈；窄側面上的齒紋或文字有不同工序。",
+      "origin": "wave119-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-46c9e1158a5de98e",
+          "origin": "wave119-everyday-20261119",
+          "locator": "X119L-S08 Upsetting 的窄槽、凸緣功能及 Striking 的雙面壓模。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0009",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "倒空一罐 Guinness Draught，罐裡還滾著一顆小球。開罐那一刻，球做了什麼？",
+      "mechanism_key": "x119.beer.widget_releases_nitrogen_and_beer",
+      "answer_target": "這個塑膠裝置裡原先困著少量啤酒和氮氣。一拉開罐口，裡面的酒和氣體就被擠出，穿過周圍的酒液；杯中湧起的細泡和上方綿密的泡沫有它一份功勞。等酒倒完，留在空罐裡的才是那個會滾動的塑膠裝置。",
+      "scope": "限採 widget 的罐裝 Guinness Draught。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "聽見小球在空罐裡滾之前，它已經趁開罐時把氣和酒送出去了。",
+        "visual": "自繪罐與球的剖面，拉環打開時用箭頭帶出少量酒與氣體，再切至實拍杯面細泡。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X119L-S09 Our Beers 的 What is the widget –and how does it work? 與 creamy white head 問答。",
+      "notes": "P51-003 談氣泡排成一直線。此處追罐內專用裝置，不以泡沫表面反推氣體比例。",
+      "origin": "wave119-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-8e5ea31189bf6448",
+          "origin": "wave119-everyday-20261119",
+          "locator": "X119L-S09 Our Beers 的 What is the widget –and how does it work? 與 creamy white head 問答。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0010",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "煎茶做成乾葉前要反覆揉，準備磨抹茶的葉子蒸好後，怎麼反而先被吹得滿天飛？",
+      "mechanism_key": "x119.tea.tencha_steam_scatter_without_rolling",
+      "answer_target": "伊藤園展示的碾茶工序裡，剛蒸過的熱葉先被風吹進網罩。葉片在裡頭分散開，減少彼此堆疊，又能降溫；接著才送去乾燥。做煎茶會一道道揉的那個步驟，在這條供製抹茶的碾茶線上省掉了。",
+      "scope": "限伊藤園展示的日本碾茶荒茶製程，畫面中的網罩散茶機位於蒸熱之後、乾燥之前。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "那陣風的工作，是讓剛蒸好的葉片分開、冷卻；這條線下一站是乾燥。",
+        "visual": "畫三格移動中的葉片：蒸筒、網罩內風送分散、乾燥機。把煎茶的揉捻另作一個分岔。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X119L-S10 頁首碾茶與煎茶對照，以及 ❸ 蒸熱、❹ 攪拌・冷却、❺ 荒乾燥・本乾燥。",
+      "notes": "只解釋製茶工序；不從有無揉捻推定咖啡因、等級或口感。",
+      "origin": "wave119-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a3ecec564001b36a",
+          "origin": "wave119-everyday-20261119",
+          "locator": "X119L-S10 頁首碾茶與煎茶對照，以及 ❸ 蒸熱、❹ 攪拌・冷却、❺ 荒乾燥・本乾燥。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0011",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "一桌人說話時，戴著耳機的人把自己的 iPhone 放到講者面前，怎麼反而更有用？",
+      "mechanism_key": "x119.audio.live_listen_remote_microphone_position",
+      "answer_target": "開啟 Apple 的「即時聆聽」並連上支援的耳機後，手機本身就可以充當麥克風。把手機移到想聽的人面前，收音點也跟著移到那裡，聲音再傳回自己耳裡的 AirPods 或 Beats。兩張座位不用交換，就能把說話聲從桌子的另一端收進來。",
+      "scope": "限 Apple 文件所列的相容耳機、系統版本和已開啟即時聆聽的情境。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "靠近講者的那支麥克風，原來可以離坐著聽的人一整張桌子遠。",
+        "visual": "用桌面俯視圖固定兩個座位，移動手機；先畫講者到手機的聲音，再畫手機回到聽者耳機的路徑。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X119L-S11 開頭的 microphone that sends sound 與 Use Live Listen 的手機位置指示。",
+      "notes": "以受邀參與的面對面談話演示，只說明收音位置，不作助聽療效或降噪量的推論。",
+      "origin": "wave119-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-fffaec6203e18fd3",
+          "origin": "wave119-everyday-20261119",
+          "locator": "X119L-S11 開頭的 microphone that sends sound 與 Use Live Listen 的手機位置指示。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0012",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "站著往量杯裡看，怎麼有一排容量刻度不用把眼睛降到杯子旁邊也能讀？",
+      "mechanism_key": "x119.measures.interior_angled_top_read_scale",
+      "answer_target": "這款 OXO 量杯裡有一段從低處往高處爬的斜面，刻度排在能從上方看到的位置。倒水時，同一個水平水面只會在某個高度碰到斜面；水加得越多，那條交界就越往高處走。眼睛由上往下，便能沿著交界找到對應的杯、盎司或毫升讀數。",
+      "scope": "以一杯容量的 OXO Good Grips 斜面量杯平放時的讀取方式為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水仍然保持水平，斜著走的是供人從上方查看的那面刻度。",
+        "visual": "先用側鏡畫水平水線與斜面的交點，再切俯拍，加一點有色水，看交界沿著同一排刻度移動。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X119L-S12 Product Details 的 angled surface inside 與 Features 首項從上方向下讀數。",
+      "notes": "K118-0001 說明電鍋米量和內鍋水位的配對，本題用一條可俯視的斜面對應液位。",
+      "origin": "wave119-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-bb462919d1aec44c",
+          "origin": "wave119-everyday-20261119",
+          "locator": "X119L-S12 Product Details 的 angled surface inside 與 Features 首項從上方向下讀數。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0201",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "從松山飛札幌，中途在羽田換機，拿到行李收據時先確認哪個機場？",
+      "mechanism_key": "x119.interline.receipt_destination",
+      "answer_target": "向報到人員確認箱子掛到哪一站，也問清中途要在哪裡取件。設想這只箱掛到 CTS，這三個字母指定札幌新千歲，札幌丘珠在選單上另列 OKD。即使掛到新千歲，途中是否要為清關取件仍要另核。",
+      "scope": "假設同日、訂位確認、承運人已確認可掛到 CTS；未取得個人收據或查詢特定日期機位。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一張札幌機票可以說出旅客的目的地；要知道箱子交到哪裡，還要看報到時交到手上的行李憑證。",
+        "visual": "並列「台北松山→東京羽田→札幌新千歲」與示意行李收據，框出 CTS。",
+        "seconds": [
+          27,
+          40
+        ]
+      },
+      "source_locator": "S01 劃位後與轉機兩問；S03 關東航點表；S04 札幌機場選項；S05 通程報到小節。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-53488cf4e3cb5dbf",
+          "origin": "wave119-research-20261119",
+          "locator": "S01 劃位後與轉機兩問；S03 關東航點表；S04 札幌機場選項；S05 通程報到小節。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5d1f32ca36418af7",
+          "origin": "wave119-research-20261119",
+          "locator": "S01 劃位後與轉機兩問；S03 關東航點表；S04 札幌機場選項；S05 通程報到小節。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-13ee24fee09b10c4",
+          "origin": "wave119-research-20261119",
+          "locator": "S01 劃位後與轉機兩問；S03 關東航點表；S04 札幌機場選項；S05 通程報到小節。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1fc5bdd2aad8f465",
+          "origin": "wave119-research-20261119",
+          "locator": "S01 劃位後與轉機兩問；S03 關東航點表；S04 札幌機場選項；S05 通程報到小節。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0201"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0202",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "一人託運兩只外觀相同的黑箱，收據要留下幾組識別號碼？",
+      "mechanism_key": "x119.interline.one_identifier_per_piece",
+      "answer_target": "IATA 聯運指引建議起運航空公司逐件掛標籤，標籤帶有十位數識別碼。兩只箱可以同掛 CTS，卻各有一組號碼，之後拿回其中一只，就用它身上的號碼與自己的憑證配對。",
+      "scope": "用兩件聯運行李說明單件識別；不同航司可能把多件明細印在同張或不同張憑證。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個人、同一個目的地，兩只箱仍要分開認。",
+        "visual": "同色雙箱、兩組遮蔽示意號碼；只留一只時圈出對應的那一組。",
+        "seconds": [
+          25,
+          38
+        ]
+      },
+      "source_locator": "S02 §8.2 每件發標籤與十碼識別；S15 §2 引換證與實物核對。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-05de167c81b64266",
+          "origin": "wave119-research-20261119",
+          "locator": "S02 §8.2 每件發標籤與十碼識別；S15 §2 引換證與實物核對。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-387e250f855ad45f",
+          "origin": "wave119-research-20261119",
+          "locator": "S02 §8.2 每件發標籤與十碼識別；S15 §2 引換證與實物核對。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0202"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0203",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "手上已經有札幌段的登機證，為什麼同一座羽田第二航廈裡仍要去轉盤？",
+      "mechanism_key": "x119.interline.domestic_already_checked_in",
+      "answer_target": "ANA 公告，在適用起點可預辦當日接續的日本國內線；抵達日本的國際線機場仍要取件清關、再交回。第二航廈國際轉同一航廈國內線的圖也把入境、提領、海關及交運分作四站。",
+      "scope": "限 ANA 集團國際線銜接適用的 ANA 日本國內線；同航廈流程是對照情境，未指定松山班機的抵達航廈。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把航廈間的巴士從圖上拿掉，轉盤仍留在路上。",
+        "visual": "同一棟 T2 的國際到達與國內出發，中間標記人拿起行李的地方。",
+        "seconds": [
+          28,
+          42
+        ]
+      },
+      "source_locator": "S05 ANA International Flight to an ANA Japan Domestic Flight；S19 T2 國際轉 T2 國內 STEP1–4。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-1fc5bdd2aad8f465",
+          "origin": "wave119-research-20261119",
+          "locator": "S05 ANA International Flight to an ANA Japan Domestic Flight；S19 T2 國際轉 T2 國內 STEP1–4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fba85c1bc5f8c018",
+          "origin": "wave119-research-20261119",
+          "locator": "S05 ANA International Flight to an ANA Japan Domestic Flight；S19 T2 國際轉 T2 國內 STEP1–4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0203"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0204",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "羽田先查過護照，只帶日常用品，為什麼還有另一道手續？",
+      "mechanism_key": "x119.interline.passenger_declares",
+      "answer_target": "日本要求每位入境旅客申報攜帶物品。前段辦的是人員入境，旅客領下箱子後才攜物通關；有無應課稅或受管制物品會影響走哪個通道。即使行李標籤寫著札幌，此刻人和物已經從海外進入日本。",
+      "scope": "僅談旅客隨行物品的一般申報，不推定每人都要繳稅、逐件開箱，也不代為判斷某件物品。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個旅客要回答兩件事：誰進入日本、帶了哪些物品。",
+        "visual": "用旅行證件及箱子各畫一條線，標出在日本入境的交會處。",
+        "seconds": [
+          23,
+          37
+        ]
+      },
+      "source_locator": "S06 Declaration 及 green/red channel；S05 通程國際轉國內注意事項；S14 國際轉國內。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-1fc5bdd2aad8f465",
+          "origin": "wave119-research-20261119",
+          "locator": "S06 Declaration 及 green/red channel；S05 通程國際轉國內注意事項；S14 國際轉國內。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-216307e1e198fc8a",
+          "origin": "wave119-research-20261119",
+          "locator": "S06 Declaration 及 green/red channel；S05 通程國際轉國內注意事項；S14 國際轉國內。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-eefc06798c25db14",
+          "origin": "wave119-research-20261119",
+          "locator": "S06 Declaration 及 green/red channel；S05 通程國際轉國內注意事項；S14 國際轉國內。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0204"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0205",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在手機填完 Visit Japan Web 後，能不能讓箱子在後台直接去札幌？",
+      "mechanism_key": "x119.interline.declaration_while_waiting",
+      "answer_target": "日本海關的電子流程先產生申報用二維碼。在羽田這類設有電子閘門的機場，等箱子時可操作申報機；拿到箱子後才依指示往閘門或檢查檯。事先輸入申報資料可以利用等待時間，箱子仍要由旅客提領。",
+      "scope": "按日本海關公布的電子流程；是否使用設備、是否另行查驗，依旅客條件與現場指示。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "手機畫面完成了一件工作，轉盤上仍有另一件工作。",
+        "visual": "讓「等行李」和「操作申報機」並排，待行李抵達再接「攜物通關」。",
+        "seconds": [
+          25,
+          36
+        ]
+      },
+      "source_locator": "S07 名單、開頭等候行李段及 Overview 1–3。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-65f3bca4ae54c924",
+          "origin": "wave119-research-20261119",
+          "locator": "S07 名單、開頭等候行李段及 Overview 1–3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0205"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0206",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同樣在羽田第三航廈下機，如果下一段仍要飛國外，旅客要在哪裡轉彎？",
+      "mechanism_key": "x119.interline.airside_vs_domestic",
+      "answer_target": "若已確認可留在轉機區且行李已掛到國外終點，依國際轉機指示走。羽田列出同為第三航廈的轉機路徑，還有往第二航廈國際段的轉機交通。未完成後段報到者先向轉機櫃檯洽辦。",
+      "scope": "限航司確認有此銜接、無須入境提件者。後段是日本國內線就不能照搬。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把後段從國內班改為國際班，同一座抵達航廈出現另一條旅客路。",
+        "visual": "同一畫面兩條路，分別在「日本國內線」及「確認可留轉機區的國際線」旁標出下一步。",
+        "seconds": [
+          28,
+          46
+        ]
+      },
+      "source_locator": "S08 第三航廈出發的轉機動線；S09 首段適用前提；S14 International to international transfers。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-537f6693b311ac69",
+          "origin": "wave119-research-20261119",
+          "locator": "S08 第三航廈出發的轉機動線；S09 首段適用前提；S14 International to international transfers。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b2e09d82d9ec71b1",
+          "origin": "wave119-research-20261119",
+          "locator": "S08 第三航廈出發的轉機動線；S09 首段適用前提；S14 International to international transfers。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-eefc06798c25db14",
+          "origin": "wave119-research-20261119",
+          "locator": "S08 第三航廈出發的轉機動線；S09 首段適用前提；S14 International to international transfers。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0206"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0207",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "把國際轉國際的行程改成成田過夜，原來那條轉機路為什麼可能走不通？",
+      "mechanism_key": "x119.interline.narita_overnight",
+      "answer_target": "成田機場寫明每天航班運作時段為上午六點至午夜，時段外旅客不能留在航廈空側。若轉機需跨過夜間關閉時段，要辦理日本入境與海關手續；買票前還要確認入境資格。",
+      "scope": "限成田公布的航廈運作安排；不是羽田的關門時間。箱子在哪一站領仍要問承運人。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "航點、機票和目的地都相同，只把下一班推到隔日，旅客能留在哪裡就變了。",
+        "visual": "用成田時鐘切開空側可停留時段，另一端留白給待確認的行李安排。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "S09 §4 Points to note when connecting flights overnight，以及首段提醒。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b2e09d82d9ec71b1",
+          "origin": "wave119-research-20261119",
+          "locator": "S09 §4 Points to note when connecting flights overnight，以及首段提醒。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0207"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0208",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "從台灣分開買了長榮和下一家航空公司的票，在長榮櫃檯該查哪一條？",
+      "mechanism_key": "x119.interline.separate_ticket_eva",
+      "answer_target": "長榮台灣站「託運行李」分開說明同票與兩本票。兩本票各有運送契約，長榮只掛到自己票上的航點，旅客要在轉機站領箱、再交下一家。即使是同票，當地法規、場站及轉機時間仍可能改變交運安排。",
+      "scope": "限長榮作為開始辦理託運的一方，並按該頁的同票與分票條款判讀。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把旅客手上的訂票資料帶進真正能查到答案的「兩本機票」段落。",
+        "visual": "原創畫面依序圈出首段航司、兩張票的終點、該公司的分票條款。",
+        "seconds": [
+          18,
+          29
+        ]
+      },
+      "source_locator": "S10 行李直掛限制、當旅客之行程為持兩本機票時。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-64e60b4609e28824",
+          "origin": "wave119-research-20261119",
+          "locator": "S10 行李直掛限制、當旅客之行程為持兩本機票時。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0208"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0209",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "若首段換成國泰，為什麼兩張票的旅客可能得到不同答覆，回程又要重問？",
+      "mechanism_key": "x119.interline.cathay_partner_asymmetry",
+      "answer_target": "國泰的分票 FAQ 列出有直掛協議的夥伴；寰宇一家成員一欄仍註明當地海關限制。回程如果是另一家先收件，不能把國泰在去程提供的服務反過來套用。判斷自己的票，先問首段航司能否接上具名的下一家。",
+      "scope": "僅為國泰公布的分票安排，不代表台北至札幌示意航段由國泰執飛。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣兩張票，換點是誰先接下這件行李。",
+        "visual": "把兩家承運人名稱翻面，畫出「先收件」的箭頭，再對照官方表格欄名。",
+        "seconds": [
+          20,
+          30
+        ]
+      },
+      "source_locator": "S11 首段、Ticket Type 表格、表後聯絡說明。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-812c5c5abdf9e474",
+          "origin": "wave119-research-20261119",
+          "locator": "S11 首段、Ticket Type 表格、表後聯絡說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0209"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0210",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果兩段都是樂桃，甚至放在同一筆訂位裡，還會在中途拿到箱子嗎？",
+      "mechanism_key": "x119.interline.one_booking_peach",
+      "answer_target": "樂桃的多段訂位可合併最多四個航段，行李處理則按每個航段分開。它用新千歲經關西往那霸的全國內行程示範，中途一樣要領取再託運。這裡沒有國際入境，仍會看到旅客提著行李再去報到。",
+      "scope": "樂桃官方路線例示，未聲稱有人照例購票或實際搭乘。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連全國內行程都能在中途出現轉盤，說明這次領箱來自航司的銜接方式。",
+        "visual": "三座城市放在一筆示意訂位內，在關西標出領箱和交運。",
+        "seconds": [
+          20,
+          31
+        ]
+      },
+      "source_locator": "S12 Regarding Peach connecting flights／Domestic→Domestic 範例及 About Multi-City Flights reservation。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-418b5f0304c4a039",
+          "origin": "wave119-research-20261119",
+          "locator": "S12 Regarding Peach connecting flights／Domestic→Domestic 範例及 About Multi-City Flights reservation。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0210"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0211",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "回到羽田第三航廈，海關出口旁的櫃檯關了，箱子要拉去哪一棟？",
+      "mechanism_key": "x119.interline.haneda_counter_by_carrier",
+      "answer_target": "羽田官方從 T3 分別列出接日航 T1 和全日空 T2 的旅客流程。二樓轉機櫃檯開放時可在這裡辦；櫃檯關閉，應到各自出發航廈辦理。同一海關出口，後段航空公司決定把箱子帶往哪裡。",
+      "scope": "限定官方所列 T3 抵達、續接這兩家國內線的動線；依航班與現場營運確認。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "家人在同一個海關出口會合，接不同航司時也可能拉著箱子往不同航廈。",
+        "visual": "以海關出口為共同起點，打開 T1 日航與 T2 全日空兩塊目的地指示。",
+        "seconds": [
+          28,
+          41
+        ]
+      },
+      "source_locator": "S13 Transfer From Terminal 3 → To Terminal 1 / To Terminal 2，各項 Domestic Boarding Procedures。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-93787a0592c3aabb",
+          "origin": "wave119-research-20261119",
+          "locator": "S13 Transfer From Terminal 3 → To Terminal 1 / To Terminal 2，各項 Domestic Boarding Procedures。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0211"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0212",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "國內班假設下午三點起飛，兩點十分抵達羽田 T3 的日航轉機櫃檯，這裡還收箱嗎？",
+      "mechanism_key": "x119.interline.jal_last_bag_time",
+      "answer_target": "日航 T3 櫃檯僅受理當日銜接、託運收件到國內班起飛前六十分鐘。在櫃檯營業的前提下，三點班機對應兩點截止；兩點十分還有五十分鐘，旅客已須帶箱前往 T1 辦。這項時間只回答去哪裡交件，仍須留意後續報到與登機期限。",
+      "scope": "使用虛構 15:00 起飛時間按日航公告推算；無實際航班、排隊時間或趕上紀錄。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "比起問「還有沒有五十分鐘」，這位旅客應先知道哪一個櫃檯還能收他的箱子。",
+        "visual": "畫出 14:00、14:10、15:00 三個節點，讓箱子從 T3 隨人移往 T1。",
+        "seconds": [
+          34,
+          49
+        ]
+      },
+      "source_locator": "S14 Notices 與 International to domestic transfers STEP2 下的 60-minute cut-off；S13 T3 → T1。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-eefc06798c25db14",
+          "origin": "wave119-research-20261119",
+          "locator": "S14 Notices 與 International to domestic transfers STEP2 下的 60-minute cut-off；S13 T3 → T1。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-93787a0592c3aabb",
+          "origin": "wave119-research-20261119",
+          "locator": "S14 Notices 與 International to domestic transfers STEP2 下的 60-minute cut-off；S13 T3 → T1。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0212"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0213",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "若通關時後段改了航班，把舊行李標籤帶到櫃檯還要對哪一欄？",
+      "mechanism_key": "x119.interline.recheck_after_change",
+      "answer_target": "IATA 的聯運指引特別提到重新交件時所見的錯誤。遇到班機取消、延誤，或行李牌上的班號不對，工作人員應先處理再把行李送下去。旅客改到下一班時，可一起出示新的航段資料和原行李收據。",
+      "scope": "聯運作業指引及依此提出的核對動作。是否換發標籤、如何改票，由當時承運人處理。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "札幌仍是同一個目的地，承運人還得把箱子接上正確的那一班。",
+        "visual": "目的地 CTS 留在畫面上，更換示意航班 A／B，再由櫃檯核對。",
+        "seconds": [
+          24,
+          38
+        ]
+      },
+      "source_locator": "S02 §8.3 內文頁 16，in case the agent involved with the re-check-in process 一段。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-05de167c81b64266",
+          "origin": "wave119-research-20261119",
+          "locator": "S02 §8.3 內文頁 16，in case the agent involved with the re-check-in process 一段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0213"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0214",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "抵達札幌新千歲，同色行李轉過來，為什麼要在離開提領區前再看一次收據？",
+      "mechanism_key": "x119.interline.carousel_before_exit",
+      "answer_target": "新千歲國內線到達指引請旅客先按航司、班號找轉盤，再核對箱上與行李引換證的號碼。箱子若沒出現或受損，備著引換證向承運航司人員反映；一旦進入到達大廳就不能走回提領區。",
+      "scope": "只談新千歲國內線到達指引。看到相似箱子或轉盤變空都無法判斷問題出在哪一站。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "那張在台北留下的小紙，在札幌拿箱前又派上用場。",
+        "visual": "分別放大轉盤螢幕上的班號和收據上的行李號，再標出去往大廳的單向箭頭。",
+        "seconds": [
+          28,
+          40
+        ]
+      },
+      "source_locator": "S15 §2 手荷物の受け取り，§3 到着ロビー。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-387e250f855ad45f",
+          "origin": "wave119-research-20261119",
+          "locator": "S15 §2 手荷物の受け取り，§3 到着ロビー。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0214"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0215",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "只找到兩只黑箱裡的一只，向航空公司說「另一只是黑色」還能補哪些線索？",
+      "mechanism_key": "x119.interline.missing_bag_description",
+      "answer_target": "ANA 日本國內線請旅客立即向抵達站人員反映，視情況補填遺失物問卷。表上除了航班、日期、廠牌、箱型、顏色與材質，也留了內容物種類、數量及描述。找到後才安排送往指定地點。",
+      "scope": "以 ANA 自家處理流程與未填寫表單解說，不把空白欄位編成一宗實際尋回案件。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個形容詞能對上兩只箱，單件號碼和可辨識特徵能把範圍縮到剩下的那只。",
+        "visual": "用原創空白小卡列「箱型、顏色、材質、內容」四格，對照開場兩組識別號。",
+        "seconds": [
+          20,
+          31
+        ]
+      },
+      "source_locator": "S18 How to Report / Contents Declaration / Baggage Return；S16 Description 及 Details of contents 欄。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-0a3b686377445bd1",
+          "origin": "wave119-research-20261119",
+          "locator": "S18 How to Report / Contents Declaration / Baggage Return；S16 Description 及 Details of contents 欄。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-21bbc416f6f7282c",
+          "origin": "wave119-research-20261119",
+          "locator": "S18 How to Report / Contents Declaration / Baggage Return；S16 Description 及 Details of contents 欄。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0215"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0216",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果回台灣搭的是日航國際線，報失後為什麼拿原來的行李條號碼登入會找錯欄位？",
+      "mechanism_key": "x119.interline.case_reference_return",
+      "answer_target": "日航國際線尋件頁請符合資格的旅客用姓名與 File Reference Number 查詢。這是通報後取得的十位英數案件編號；報到時拿到的行李號是單件識別。忘記案件號可問抵達機場。",
+      "scope": "另設回程日航國際線案例，不能拿此頁指引新千歲國內線旅客。JTA 執飛不適用；日航後再轉別家且終點未取件，頁面指向最後搭乘的航司。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "台北報到時已經有行李號，另一個號碼要等確有通報才會出現。",
+        "visual": "將「收件時」與「報失後」兩張憑證放在時間軸上，不輸入真實號碼。",
+        "seconds": [
+          21,
+          35
+        ]
+      },
+      "source_locator": "S17 首段 File Reference Number、Notes、How to use the baggage tracer。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。",
+      "origin": "wave119-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a8eeddafe1147807",
+          "origin": "wave119-research-20261119",
+          "locator": "S17 首段 File Reference Number、Notes、How to use the baggage tracer。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0216"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0401",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "足球界外球直接飛進球門，怎麼有時踢球門球，有時卻要去角落開球？",
+      "mechanism_key": "x119.sport.throw_in_direct_goal",
+      "answer_target": "假設兩次都從邊線合法擲入，中途誰也沒碰到球。擲進對方的門，由對方踢球門球。若擲回自己守的門，對方改踢角球。兩次都不算進球，但要先認清是哪一隊擲的，才知道該從哪裡恢復比賽。",
+      "scope": "限合法界外球直接入門。途中有球員碰到就要另判。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看清擲球員守哪一邊，就知道球該搬去哪裡。",
+        "visual": "同一條擲球弧線左右翻轉，保留擲球員衣色，在門區和角旗各放一顆供重新開球的球。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "source_locator": "X119S-S01，Law 15 Introduction 的兩個進門方向。",
+      "notes": "以自畫場地、物件與判決示意，場景為依規則設計的例子。",
+      "origin": "wave119-sports-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-183b203fbbccb2e2",
+          "origin": "wave119-sports-20261119",
+          "locator": "X119S-S01，Law 15 Introduction 的兩個進門方向。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-sports-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0401"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0402",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "足球傳到一半打中裁判，為什麼這一球繼續踢，下一球卻要停下來墜球？",
+      "mechanism_key": "x119.sport.match_official_deflection",
+      "answer_target": "先看反彈之後發生什麼事。如果球留在場內，還是原隊控球，也沒因此開始有威脅的進攻或直接進門，比賽繼續。如果同一腳球碰裁判後送到對手腳下、控球隊伍改變，裁判就要停賽並以墜球恢復。即使沒有換隊，碰裁判後開始有威脅的進攻或直接進門，也符合墜球條件。",
+      "scope": "假設無其他犯規，且球碰裁判後仍在場內。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣擦到裁判，反彈有沒有改變控球或進攻局面會改變判決。",
+        "visual": "畫兩條傳球線，第一條彈回隊友腳下在原地控球，第二條彈給另一隊，讓觀眾先猜哪一條要吹哨。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X119S-S02，Law 9.1 第三款、9.2 首句及控球改變的 FAQ。",
+      "notes": "以自畫場地、物件與判決示意，場景為依規則設計的例子。",
+      "origin": "wave119-sports-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4daa27b1e6c87ee0",
+          "origin": "wave119-sports-20261119",
+          "locator": "X119S-S02，Law 9.1 第三款、9.2 首句及控球改變的 FAQ。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-sports-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0402"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0403",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "跳遠選手兩次的腳印落在同一條線，怎麼會因為身後一個手印，第二跳就變短了？",
+      "mechanism_key": "x119.sport.long_jump_nearest_mark",
+      "answer_target": "把兩次有效試跳的腳印畫在相同位置。第一次選手向前站起來，第二次卻往後一坐，用手在腳跟後的沙地撐了一下。丈量看的是起跳線到最近一道落地痕跡。第二次的手印比兩枚腳印更接近起跳線，尺就量到手印。",
+      "scope": "比較標準跳遠的兩次有效試跳，假設沒有更靠近起跳線的其他沙痕。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "決定尺端的可能是落地後撐住身體的那隻手。",
+        "visual": "把起跳線和兩組腳印固定，第二格多畫一道手印，再把尺端移到手印。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "source_locator": "X119S-S03，The landing 以及 Measurement。",
+      "notes": "以自畫場地、物件與判決示意，場景為依規則設計的例子。",
+      "origin": "wave119-sports-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-935ae910cf8807c8",
+          "origin": "wave119-sports-20261119",
+          "locator": "X119S-S03，The landing 以及 Measurement。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-sports-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0403"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0404",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "高爾夫球卡在旗桿旁，還露出半顆，這一桿怎麼就能算進洞？",
+      "mechanism_key": "x119.sport.golf_flagstick_part_below_surface",
+      "answer_target": "球靠著留在洞裡的旗桿停住時，從側面畫一條果嶺表面線。如果球的一部分已在洞內而且低於這條線，就算進洞。如果球的任何部分都沒在洞內低於表面，就還沒完成這一洞。俯視時兩顆球都貼著旗桿，剖面才看得出差別。",
+      "scope": "限球靜止並靠著留在洞內的旗桿。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "旗桿旁露出來多少不是判準，洞裡有沒有一部分低過果嶺表面才是。",
+        "visual": "把兩顆俯視都貼住旗桿的球切成側視圖，讓表面線在球身不同高度通過。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X119S-S04，Rule 13.2c 的前兩個判定條件。",
+      "notes": "以自畫場地、物件與判決示意，場景為依規則設計的例子。",
+      "origin": "wave119-sports-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-519694be7cdaba9f",
+          "origin": "wave119-sports-20261119",
+          "locator": "X119S-S04，Rule 13.2c 的前兩個判定條件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-sports-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0404"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0405",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "推桿後球懸在洞口，十秒要從揮桿那一刻就開始算嗎？",
+      "mechanism_key": "x119.sport.golf_overhanging_wait",
+      "answer_target": "球的一部分懸在洞緣上方時，球員有合理的時間走到洞口，還可以再等十秒。在允許的時間內球自己落入，用上一桿就算完成。超過等待時限才自己掉入、而球員還沒再打，仍以上一桿完成，但要加一罰桿。可以讓兩顆球都在球員抵達後落下，只改掉入的秒數就改變記分。",
+      "scope": "限起初有球的一部分懸在洞緣、球自行落入。球員已在合理時間內抵達，期間無人碰球。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "走向洞口的合理時間，和抵達後等球的十秒，得分開看。",
+        "visual": "先走到洞口才亮出十秒倒數，再以到達後第八秒和第十二秒自行落洞對照記分卡。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X119S-S04，Rule 13.3a Waiting Time to See If Ball Overhanging Hole Will Fall into Hole。",
+      "notes": "以自畫場地、物件與判決示意，場景為依規則設計的例子。",
+      "origin": "wave119-sports-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-519694be7cdaba9f",
+          "origin": "wave119-sports-20261119",
+          "locator": "X119S-S04，Rule 13.3a Waiting Time to See If Ball Overhanging Hole Will Fall into Hole。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-sports-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0405"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K119-0406",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "冰壺的大本營裡停了三顆紅壺、一顆黃壺，紅隊怎麼可能只得一分？",
+      "mechanism_key": "x119.sport.curling_scoring_stones",
+      "answer_target": "假設四顆都在大本營內，一局也已經投完。從圓心往外排，順序若是紅、黃、紅、紅，只有第一顆紅壺比黃壺近，紅隊拿一分。若把黃壺向外挪到四顆中最遠的位置，三顆紅壺就各拿一分。分數看同隊有幾顆合格的壺領先對方最近的壺。",
+      "scope": "示意兩個不同局末的靜止位置，沒有等距壺。大本營內或碰到外緣才有得分資格。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "顏色和顆數相同，移動最近的對手壺就能讓一分變三分。",
+        "visual": "以同一套四顆紙壺排兩次，畫出圓心到各壺最近邊緣的線，把最近黃壺當作比較點。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X119S-S05，R12(b) Scoring、R12(d) Measurement，印刷頁 18–19。",
+      "notes": "以自畫場地、物件與判決示意，場景為依規則設計的例子。",
+      "origin": "wave119-sports-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-675edd0e90b7358e",
+          "origin": "wave119-sports-20261119",
+          "locator": "X119S-S05，R12(b) Scoring、R12(d) Measurement，印刷頁 18–19。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave119-sports-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K119-0406"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -332293,7 +333833,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 7682
+    "count": 7716
   },
   "dedup": {
     "aliases": {
@@ -334863,6 +336403,40 @@
       "K118-0216": "K118-0216",
       "K118-0217": "K118-0217",
       "K118-0218": "K118-0218",
+      "K119-0001": "K119-0001",
+      "K119-0002": "K119-0002",
+      "K119-0003": "K119-0003",
+      "K119-0004": "K119-0004",
+      "K119-0005": "K119-0005",
+      "K119-0006": "K119-0006",
+      "K119-0007": "K119-0007",
+      "K119-0008": "K119-0008",
+      "K119-0009": "K119-0009",
+      "K119-0010": "K119-0010",
+      "K119-0011": "K119-0011",
+      "K119-0012": "K119-0012",
+      "K119-0201": "K119-0201",
+      "K119-0202": "K119-0202",
+      "K119-0203": "K119-0203",
+      "K119-0204": "K119-0204",
+      "K119-0205": "K119-0205",
+      "K119-0206": "K119-0206",
+      "K119-0207": "K119-0207",
+      "K119-0208": "K119-0208",
+      "K119-0209": "K119-0209",
+      "K119-0210": "K119-0210",
+      "K119-0211": "K119-0211",
+      "K119-0212": "K119-0212",
+      "K119-0213": "K119-0213",
+      "K119-0214": "K119-0214",
+      "K119-0215": "K119-0215",
+      "K119-0216": "K119-0216",
+      "K119-0401": "K119-0401",
+      "K119-0402": "K119-0402",
+      "K119-0403": "K119-0403",
+      "K119-0404": "K119-0404",
+      "K119-0405": "K119-0405",
+      "K119-0406": "K119-0406",
       "D12001": "D12001",
       "D12002": "D12002",
       "D12003": "D12003",
@@ -380492,6 +382066,20 @@
         ]
       },
       {
+        "id": "K119-0203~K119-0206",
+        "a": "K119-0203",
+        "b": "K119-0206",
+        "question_score": 0.148,
+        "answer_score": 0.091,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "手上已經有札幌段的登機證，為什麼同一座羽田第二航廈裡仍要去轉盤？",
+          "同樣在羽田第三航廈下機，如果下一段仍要飛國外，旅客要在哪裡轉彎？"
+        ]
+      },
+      {
         "id": "L128~L131",
         "a": "L128",
         "b": "L131",
@@ -381903,6 +383491,20 @@
         "questions": [
           "日語的「青」本來就包含綠嗎？",
           "現代日本人還分得清「青」和「綠」嗎？"
+        ]
+      },
+      {
+        "id": "K119-0404~K119-0405",
+        "a": "K119-0404",
+        "b": "K119-0405",
+        "question_score": 0,
+        "answer_score": 0.124,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "高爾夫球卡在旗桿旁，還露出半顆，這一桿怎麼就能算進洞？",
+          "推桿後球懸在洞口，十秒要從揮桿那一刻就開始算嗎？"
         ]
       },
       {
@@ -385896,6 +387498,20 @@
         ]
       },
       {
+        "id": "K119-0201~K119-0206",
+        "a": "K119-0201",
+        "b": "K119-0206",
+        "question_score": 0.074,
+        "answer_score": 0.043,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "從松山飛札幌，中途在羽田換機，拿到行李收據時先確認哪個機場？",
+          "同樣在羽田第三航廈下機，如果下一段仍要飛國外，旅客要在哪裡轉彎？"
+        ]
+      },
+      {
         "id": "K92-045~P62-006",
         "a": "P62-006",
         "b": "K92-045",
@@ -387142,6 +388758,20 @@
         ]
       },
       {
+        "id": "K119-0206~K119-0207",
+        "a": "K119-0206",
+        "b": "K119-0207",
+        "question_score": 0,
+        "answer_score": 0.061,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣在羽田第三航廈下機，如果下一段仍要飛國外，旅客要在哪裡轉彎？",
+          "把國際轉國際的行程改成成田過夜，原來那條轉機路為什麼可能走不通？"
+        ]
+      },
+      {
         "id": "L054~V3027",
         "a": "L054",
         "b": "V3027",
@@ -387951,6 +389581,20 @@
         "questions": [
           "小小孩也是走到某個速度『啪』一下改跑嗎？",
           "走跑混用時，人會用中間的速度嗎？會一直換來換去嗎？"
+        ]
+      },
+      {
+        "id": "K119-0201~K119-0204",
+        "a": "K119-0201",
+        "b": "K119-0204",
+        "question_score": 0.044,
+        "answer_score": 0.054,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "從松山飛札幌，中途在羽田換機，拿到行李收據時先確認哪個機場？",
+          "羽田先查過護照，只帶日常用品，為什麼還有另一道手續？"
         ]
       },
       {
@@ -389491,6 +391135,34 @@
         "questions": [
           "韓國蛋的四碼日期後面為什麼還有六個字元？只靠日期能查回農場嗎？",
           "美國蛋盒的 001 和 P 開頭的那一串，哪個能翻成日曆？"
+        ]
+      },
+      {
+        "id": "K119-0204~K119-0206",
+        "a": "K119-0204",
+        "b": "K119-0206",
+        "question_score": 0.043,
+        "answer_score": 0.014,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "羽田先查過護照，只帶日常用品，為什麼還有另一道手續？",
+          "同樣在羽田第三航廈下機，如果下一段仍要飛國外，旅客要在哪裡轉彎？"
+        ]
+      },
+      {
+        "id": "K119-0204~K119-0207",
+        "a": "K119-0204",
+        "b": "K119-0207",
+        "question_score": 0,
+        "answer_score": 0.043,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "羽田先查過護照，只帶日常用品，為什麼還有另一道手續？",
+          "把國際轉國際的行程改成成田過夜，原來那條轉機路為什麼可能走不通？"
         ]
       },
       {
@@ -391286,6 +392958,20 @@
         ]
       },
       {
+        "id": "K119-0212~K119-0215",
+        "a": "K119-0212",
+        "b": "K119-0215",
+        "question_score": 0,
+        "answer_score": 0.025,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "國內班假設下午三點起飛，兩點十分抵達羽田 T3 的日航轉機櫃檯，這裡還收箱嗎？",
+          "只找到兩只黑箱裡的一只，向航空公司說「另一只是黑色」還能補哪些線索？"
+        ]
+      },
+      {
         "id": "K91-001~K91-004",
         "a": "K91-001",
         "b": "K91-004",
@@ -391843,6 +393529,20 @@
         "questions": [
           "在美麗島同站正好停十五分鐘和停十六分鐘，想像的差價為什麼會大過一張最低票價？",
           "在桃捷拿出綁信用卡的手機，為什麼不能把當時的車資直接當作悠遊卡紀錄來查？"
+        ]
+      },
+      {
+        "id": "K119-0201~K119-0207",
+        "a": "K119-0201",
+        "b": "K119-0207",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "從松山飛札幌，中途在羽田換機，拿到行李收據時先確認哪個機場？",
+          "把國際轉國際的行程改成成田過夜，原來那條轉機路為什麼可能走不通？"
         ]
       },
       {
@@ -393061,6 +394761,20 @@
         "questions": [
           "在美麗島同站正好停十五分鐘和停十六分鐘，想像的差價為什麼會大過一張最低票價？",
           "在日本送朋友上車，只逛一下站內商店，出閘時 Suica 扣的是到哪一站的車資？"
+        ]
+      },
+      {
+        "id": "K119-0202~K119-0210",
+        "a": "K119-0202",
+        "b": "K119-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一人託運兩只外觀相同的黑箱，收據要留下幾組識別號碼？",
+          "如果兩段都是樂桃，甚至放在同一筆訂位裡，還會在中途拿到箱子嗎？"
         ]
       },
       {
@@ -394538,10 +396252,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-19-pool-7218",
-    "target_count": 7218,
+    "revision": "2026-11-19-pool-7252",
+    "target_count": 7252,
     "reviewed_on": "2026-11-19",
-    "reason": "第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -401760,7 +403474,41 @@
       "K118-0215",
       "K118-0216",
       "K118-0217",
-      "K118-0218"
+      "K118-0218",
+      "K119-0001",
+      "K119-0002",
+      "K119-0003",
+      "K119-0004",
+      "K119-0005",
+      "K119-0006",
+      "K119-0007",
+      "K119-0008",
+      "K119-0009",
+      "K119-0010",
+      "K119-0011",
+      "K119-0012",
+      "K119-0201",
+      "K119-0202",
+      "K119-0203",
+      "K119-0204",
+      "K119-0205",
+      "K119-0206",
+      "K119-0207",
+      "K119-0208",
+      "K119-0209",
+      "K119-0210",
+      "K119-0211",
+      "K119-0212",
+      "K119-0213",
+      "K119-0214",
+      "K119-0215",
+      "K119-0216",
+      "K119-0401",
+      "K119-0402",
+      "K119-0403",
+      "K119-0404",
+      "K119-0405",
+      "K119-0406"
     ],
     "overflow": [
       {
@@ -404025,6 +405773,58 @@
       ],
       "origin": "wave118-everyday-20261119",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
+    },
+    {
+      "id": "X119L-NA001",
+      "question": "把泥漿倒滿杯模再倒出來，模裡為什麼已留下中空的杯壁？",
+      "reason": "D2149 已解釋石膏吸水與成壁，D2150 再追等待時間與壁厚；把器型換成杯仍共用那層泥壁的答案。",
+      "existing_ids": [
+        "D2149",
+        "D2150"
+      ],
+      "origin": "wave119-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+    },
+    {
+      "id": "X119L-NA002",
+      "question": "小提琴弓毛上抹松香，怎麼就能把琴弦拉響？",
+      "reason": "D9-NA005 已把黏住再滑開的問法退回到 B2318；D9004 另收弓弦共同週期與泛音頻率鎖定，不以松香重開。",
+      "existing_ids": [
+        "B2318",
+        "D9004"
+      ],
+      "origin": "wave119-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+    },
+    {
+      "id": "X119L-NA003",
+      "question": "舊的 Forever 郵票碰上郵資調漲，為什麼一封普通信仍能只貼一張？",
+      "reason": "K117-0007 已直接處理這種郵票追隨適用郵資的規則。",
+      "existing_ids": [
+        "K117-0007"
+      ],
+      "origin": "wave119-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+    },
+    {
+      "id": "X119L-NA004",
+      "question": "同一把橘色樂高拆磚器，碰上光滑的平磚為什麼要改用另一端？",
+      "reason": "K117-0010 已以同一種平磚和工具兩端解釋拆卸方式。",
+      "existing_ids": [
+        "K117-0010"
+      ],
+      "origin": "wave119-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave119-everyday-20261119.json"
+    },
+    {
+      "id": "X119S-NA01",
+      "question": "高爾夫球場換完洞口，為什麼原本那個洞馬上有合身的草皮能塞回去？",
+      "reason": "換旗位時用新洞取出的草皮回填舊洞，前一批已入選。",
+      "existing_ids": [
+        "K118-0010"
+      ],
+      "origin": "wave119-sports-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave119-sports-20261119.json"
     },
     {
       "question": "網路斷掉後重送，怎麼不重複下單？",
