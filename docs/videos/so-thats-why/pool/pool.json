@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-19-pool-7433",
+  "revision": "2026-11-19-pool-7469",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,46 +12,46 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 7897,
-    "canonical_questions": 7737,
-    "eligible_candidates": 7544,
-    "selected_candidates": 7433,
+    "raw_records": 7933,
+    "canonical_questions": 7773,
+    "eligible_candidates": 7580,
+    "selected_candidates": 7469,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 8405,
-    "current_research_source_urls": 5472,
-    "selected_source_urls": 6420,
-    "new_suggestions_not_added": 3470,
+    "source_urls": 8446,
+    "current_research_source_urls": 5513,
+    "selected_source_urls": 6461,
+    "new_suggestions_not_added": 3477,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1770,
-        "selected": 1740
+        "canonical": 1774,
+        "selected": 1744
       },
       "生物動物與植物": {
-        "canonical": 1513,
-        "selected": 1502
+        "canonical": 1514,
+        "selected": 1503
       },
       "地球天氣與太空": {
-        "canonical": 955,
-        "selected": 952
+        "canonical": 959,
+        "selected": 956
       },
       "數位科技與通訊工程": {
-        "canonical": 1386,
-        "selected": 1306
+        "canonical": 1403,
+        "selected": 1323
       },
       "飲食與廚房科學": {
-        "canonical": 505,
-        "selected": 499
+        "canonical": 508,
+        "selected": 502
       },
       "人體感官與日常行為": {
-        "canonical": 572,
-        "selected": 560
+        "canonical": 574,
+        "selected": 562
       },
       "建築交通與商業制度": {
-        "canonical": 1036,
-        "selected": 874
+        "canonical": 1041,
+        "selected": 879
       }
     }
   },
@@ -2005,6 +2005,18 @@
       "sha256": "ead58466141eec72a0a9294024c5b2b2a96f5b3503b0d2d7a66781cc5f570078"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json",
+      "sha256": "a1a026a84d904f8866fab1a1fe950b53cc0d52d19ec74ffa8eaffc40999cbffd"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave125-maps-20261119.json",
+      "sha256": "3a581eb370a88b08d15bd9504322f85f645fa730e07991669efcbe7a49df8b45"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json",
+      "sha256": "bd1b0963b48e0b98fdff649d254c669df4cb74d3c733fd81b79a3a3a3053d42f"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json",
       "sha256": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de"
     },
@@ -3294,12 +3306,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "7ae6c7741a3057b441d3fd36da4d472c2ed26ba292ba15244f17d080a13e214e"
+      "sha256": "e29f6c705355a26aba71825213bc74fcc686395e23291ffbc70d376938bb4599"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 8405
+    "count": 8446
   },
   "candidates": [
     {
@@ -134577,6 +134589,1740 @@
       "question_variants": [],
       "provenance_ids": [
         "K124-0216"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0001",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "九號球桌上還有 3、6、9 號，選手明明先碰 3 號，卻把 9 號撞進袋。怎麼這一局已經贏了？",
+      "mechanism_key": "x125.daily.nine_ball_lowest_first_not_first_pocketed",
+      "answer_target": "要照號碼的是白球最先碰哪顆。桌面最小的是 3 號，白球先碰它，再由 3 號把 9 號送進袋，若為正常擊球且沒有犯規，就贏下這一局。若白球一開始就繞過 3 號去撞 9 號，即使進袋也犯規，9 號得重新擺回桌上。",
+      "scope": "依 WPA 九號球規則，例子選在開球後的一般回合，排除 push out。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "要分開看接觸順序和進袋順序，才能判定同一顆九號球是得勝還是要重擺。",
+        "visual": "自畫桌面動畫，白球先碰 3、3 再撞 9；第二次把第一個接觸點改成 9，停格判罰。",
+        "seconds": [
+          25,
+          36
+        ]
+      },
+      "source_locator": "X125E-S01，PDF 第 23 頁，5.5、5.6 及 5.7 的 Wrong Ball First。",
+      "notes": "贏的是當前這一局，並未說整場比賽已分勝負。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行畫球台及號碼球、錄製原創動畫。",
+      "origin": "wave125-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c1869f1d210ef5e4",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S01，PDF 第 23 頁，5.5、5.6 及 5.7 的 Wrong Ball First。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0002",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "兩顆高爾夫球在球道上都陷進地面一截，為什麼一顆可因嵌球免罰補救，另一顆滾進舊球痕卻不行？",
+      "mechanism_key": "x125.daily.golf_embedded_own_previous_pitch_mark",
+      "answer_target": "先看凹痕怎麼來。這項補救要求球在自己前一桿落地造成的凹痕裡，而且部分球體低於地面。A 球落地砸出的凹痕符合這兩點；B 球從旁邊滾進已存在的凹處，欠缺自己的落痕。若球員不能完全確定，規則允許依現有資訊作合理判斷。",
+      "scope": "比較一般區內正常修剪的草質球道，擊球可行，無其他補救事由。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "只拍最後一張球位照片，可能漏掉決定判例的落地過程。",
+        "visual": "原創兩段球路，終點凹陷深度相近，一段由空中落地，另一段沿地面滾入舊凹痕。",
+        "seconds": [
+          25,
+          37
+        ]
+      },
+      "source_locator": "X125E-S02，16.3a(1) 一般區及例外，16.3a(2) 和圖 16.3a。",
+      "notes": "不含沙坑、果嶺或把球直接打進地面且未飛起來的情形。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製球路與剖面，使用原創示意地形。",
+      "origin": "wave125-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2629915a0dfa0758",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S02，16.3a(1) 一般區及例外，16.3a(2) 和圖 16.3a。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0003",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "一顆鑽石拿到 Flawless，換上更高倍率竟找到極小痕跡，光靠這點就能推翻分級嗎？",
+      "mechanism_key": "x125.daily.gia_flawless_ten_power_standard",
+      "answer_target": "GIA 把觀察條件也寫進淨度定義。熟練分級員用十倍放大鏡看不到內含物或表面瑕疵，才符合 Flawless。分級過程可以借助顯微鏡找位置，最後仍以十倍放大鏡判定。如果痕跡只能在更高倍率看到，這個發現本身不足以推翻該等級。",
+      "scope": "依 GIA 淨度制度，假設十倍下確實不可見。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「無瑕」有明確的觀察尺度，甚至包括由誰來看。",
+        "visual": "自畫同一點在不同倍率下的觀察窗，圖旁標為示意，不做出像正式鑑定書的版面。",
+        "seconds": [
+          24,
+          34
+        ]
+      },
+      "source_locator": "X125E-S03，Clarity 的 Flawless 定義；X125E-S04，finalized using a 10x loupe。",
+      "notes": "未把內部無瑕 IF 和內外都符合條件的 FL 混用。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行畫抽象晶體與局部特徵，不取用 GIA 實物照片、標誌或分級證書。",
+      "origin": "wave125-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-739292a43fcb2c79",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S03，Clarity 的 Flawless 定義；X125E-S04，finalized using a 10x loupe。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8716d277e2c62d1f",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S03，Clarity 的 Flawless 定義；X125E-S04，finalized using a 10x loupe。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0004",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在倫敦用感應卡搭車，起點已刷黃機，終點也會再刷。繞開一區轉車時，中途那台粉紅機還能告訴系統什麼？",
+      "mechanism_key": "x125.daily.london_pink_reader_records_route",
+      "answer_target": "相同的進出站紀錄，未必交代中途走了哪條路。經過指定轉車站、走避開一區的路線時，用同一張卡碰粉紅讀卡機，系統便記下這次轉乘。按次付費的旅程若少了這筆紀錄，可能按經過一區的較高票價計費。到終點還是要刷黃色讀卡機出站。",
+      "scope": "以 TfL 頁列的鐵路服務、指定轉乘站及 pay as you go 為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "有兩條路都能到同一站，第三筆感應紀錄可補上票價需要的路線資訊。",
+        "visual": "用自創簡圖畫出兩條路線，同一組起終點分別經過、避開一區，再亮出三次感應順序。",
+        "seconds": [
+          24,
+          38
+        ]
+      },
+      "source_locator": "X125E-S05，黃色進站、粉紅轉乘、黃色出站的三個步驟和 Where are they?；X125E-S06，When to use pink card readers。",
+      "notes": "不是每種轉乘都會用到粉紅機；不報固定票價。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自製抽象路線圖與無商標機器，避免使用倫敦官方地鐵圖或讀卡機照片。",
+      "origin": "wave125-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-976b6f4039b12222",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S05，黃色進站、粉紅轉乘、黃色出站的三個步驟和 Where are they?；X125E-S06，When to use pink card readers。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-dc0c3eb83f2eaeed",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S05，黃色進站、粉紅轉乘、黃色出站的三個步驟和 Where are they?；X125E-S06，When to use pink card readers。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0005",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同一棟樓，每層電梯門框都摸得到樓層標示，只有一層兩側又多了一顆凸星。旁邊已經寫明樓層，這顆星另外在說什麼？",
+      "mechanism_key": "x125.daily.elevator_jamb_tactile_main_entry",
+      "answer_target": "依美國 ADA 這項標準，每層電梯層站的兩側門框都要標出樓層，並提供凸字和點字。主要入口層再多一顆可觸摸的星號，左右兩側都要有。樓層名稱仍由旁邊的字樣交代，星號額外說明這一層的用途。",
+      "scope": "限美國 ADA §407.2.3.1 的電梯層站門框標示。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "找到星號，便能把「這是哪一層」和「哪層是主要入口」一起讀出來。",
+        "visual": "從原創的轎廂外景移向左右門框，各放大同樣的凸字、點字和主要入口星號。",
+        "seconds": [
+          23,
+          34
+        ]
+      },
+      "source_locator": "X125E-S07，407.2.3.1、圖 407.2.3.1；X125E-S08 同節的 both jambs at the main entry level。",
+      "notes": "這是辨識主要入口樓層的標誌，不是緊急出口方向指示。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自製門框與凸字剖面，點字若出鏡須依可核對的樓層名稱排寫。",
+      "origin": "wave125-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c0c632921c74615b",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S07，407.2.3.1、圖 407.2.3.1；X125E-S08 同節的 both jambs at the main entry level。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-19c7ec6e0fe1ce90",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S07，407.2.3.1、圖 407.2.3.1；X125E-S08 同節的 both jambs at the main entry level。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0006",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "熱泵乾衣機沒有把濕熱空氣排到戶外，怎麼有些機型烘完衣服還要倒水箱？",
+      "mechanism_key": "x125.daily.heat_pump_dryer_condensate_closed_loop",
+      "answer_target": "機內熱空氣先從衣物帶走水分，再流過蒸發器，水氣在這裡凝結成液態水。除濕後的空氣繼續在機內循環，收集到的水則要另找出口。有些機型讓人倒水箱，有些可接排水管。衣物變乾時，水分並沒有隨著排風離開房間。",
+      "scope": "以 ENERGY STAR 說明的循環式熱泵乾衣機為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把水和空氣的路各畫一次，就看得出不用排風管為什麼仍需處理排水。",
+        "visual": "自畫剖面，用一條閉合線表示機內氣流，另將水滴由蒸發器畫向集水箱。",
+        "seconds": [
+          22,
+          34
+        ]
+      },
+      "source_locator": "X125E-S09，closed loop system 段與 WATER DRAINAGE。",
+      "notes": "不宣稱每台都有可拆水箱，排水配置請看型號。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製不帶廠牌的機體剖面及水路。",
+      "origin": "wave125-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-76fd3f6456e397c3",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S09，closed loop system 段與 WATER DRAINAGE。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0007",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "冷凍分好的蛋液，同一張保存指南為什麼要你先想蛋黃拿來做甜點還是鹹菜，蛋白卻可以直接分裝？",
+      "mechanism_key": "x125.daily.frozen_yolks_intended_use_texture",
+      "answer_target": "指南要求蛋黃輕輕攪勻；為避免冷凍後出現顆粒口感，可按日後食譜選加糖、糖漿或鹽。蛋白的做法則是輕輕混合、不打發，不必為這個目的加糖或鹽。所以即便兩盒都來自同幾顆蛋，準備蛋黃時就值得先決定日後的用途。",
+      "scope": "限 NCHFP 的去殼蛋黃、蛋白冷凍保存法。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "甜鹹選擇是在冷凍前為了處理口感；到了做菜那天，原先選的調味便已在蛋黃裡。",
+        "visual": "兩個標示甜、鹹的蛋黃容器，加上一個只裝蛋白的容器；其上以自畫圖卡註記做法。",
+        "seconds": [
+          24,
+          35
+        ]
+      },
+      "source_locator": "X125E-S10，EGG YOLKS 與 EGG WHITES。",
+      "notes": "不示範帶殼冷凍，不自行改寫原文的配量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自攝分蛋與分裝物件或自行繪圖，依指南另寫旁白。",
+      "origin": "wave125-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-66d42f7d3c5e5383",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S10，EGG YOLKS 與 EGG WHITES。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0008",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "櫛瓜開了好幾朵黃花，花一掉卻沒留下小瓜。光看花底下的那一段，怎麼分辨是正常開花還是該再看授粉情況？",
+      "mechanism_key": "x125.daily.zucchini_first_flowers_male_ovary",
+      "answer_target": "櫛瓜植株上分開開雄花與雌花。最早的一批常是雄花，下面接著細花柄，花謝後本來就不會留下瓜。雌花的花瓣下方才有一段膨大的子房，看起來像迷你櫛瓜；對指南描述的品種，花粉傳到雌花後，這一段才會繼續長成果實。",
+      "scope": "限明尼蘇達大學夏南瓜栽培指南所描述的一般情形。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先看花柄還是子房，才知道眼前這朵有沒有機會留下櫛瓜。",
+        "visual": "同角度自攝兩朵花的側面，只放大花瓣下方，再沿生長時間畫出各自的去向。",
+        "seconds": [
+          24,
+          35
+        ]
+      },
+      "source_locator": "X125E-S11，A slender stem attaches male flowers 及 The first blossoms often drop 兩段。",
+      "notes": "首批落雄花本身不能診斷為缺蜂或栽培失敗。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行拍攝或繪製已辨識的雄、雌花，不抄描推廣機關圖片。",
+      "origin": "wave125-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b67be2f9210cfd84",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S11，A slender stem attaches male flowers 及 The first blossoms often drop 兩段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0009",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "一瓶標 12 年的蘇格蘭威士忌封著放了 8 年，再打開時能算 20 年嗎？",
+      "mechanism_key": "x125.daily.scotch_age_stops_in_bottle",
+      "answer_target": "瓶中經過的八年會增加這瓶酒作為物件的年齡，酒標所指的熟成年數仍是十二。蘇格蘭威士忌協會說明，酒裝瓶後不再繼續計入桶中熟成。法規也把標示的年數連到酒中最年輕的成分，因此無法把自己收藏的八年加在標籤上。",
+      "scope": "以蘇格蘭威士忌酒齡標示為限，例中的收藏年數為假設。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在時間線上圈出裝瓶那天，就能分開酒齡和瓶子在櫃子裡待了多久。",
+        "visual": "畫一段從酒桶到玻璃瓶的時間線，裝瓶前標 12 年，裝瓶後標 8 年。",
+        "seconds": [
+          23,
+          34
+        ]
+      },
+      "source_locator": "X125E-S12，How should I store my Scotch Whisky?；X125E-S13，Regulation 12(1)。",
+      "notes": "不推論風味是否改變，亦不估價。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行拍攝未露品牌的瓶罐或自行繪製，不引用商標與酒標設計。",
+      "origin": "wave125-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d461576656abe83b",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S12，How should I store my Scotch Whisky?；X125E-S13，Regulation 12(1)。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3359b03894fd28eb",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S12，How should I store my Scotch Whisky?；X125E-S13，Regulation 12(1)。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0010",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "拿機器縫針織布，原廠偏偏把 Jersey 針的尖端做圓。針變鈍一點，怎麼反而比較不會把線圈縫破？",
+      "mechanism_key": "x125.daily.jersey_ballpoint_displaces_knit_loops",
+      "answer_target": "以 SCHMETZ 的 Jersey 針為例，這個中等圓頭是刻意做出來的形狀。進針時它把針織線圈推向旁邊，減少刺破纖維、在縫線處留下破損的機會。針本身仍是新的；要用多粗的針也得按布料選。",
+      "scope": "限 SCHMETZ 家用 130/705 H SUK Jersey／Ball Point 系列。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看針尖怎麼穿過一個線圈，就懂圓頭是用途設計。",
+        "visual": "自畫放大線圈與圓頭針，一格顯示進針前，一格顯示線圈被推開。",
+        "seconds": [
+          22,
+          34
+        ]
+      },
+      "source_locator": "X125E-S14，Tip 中的 displaces the loops；X125E-S15，avoid breakage of knit fibers at stitch creation。",
+      "notes": "不將磨損鈍針當替代品；K121-0003 的兩道色環是辨識針種和尺寸的舊題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製針頭、線圈與動作，不沿用原廠商品照或圖卡。",
+      "origin": "wave125-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e253bb3dbad923bd",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S14，Tip 中的 displaces the loops；X125E-S15，avoid breakage of knit fibers at stitch creation。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1b15a87ca5e4cbf0",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S14，Tip 中的 displaces the loops；X125E-S15，avoid breakage of knit fibers at stitch creation。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0011",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "把古典吉他從偏冷處帶進暖房，怎麼有些原本調準的尼龍弦反而變得偏高，並非全都鬆下來？",
+      "mechanism_key": "x125.daily.warm_classical_nylon_strings_pitch",
+      "answer_target": "Yamaha 的古典吉他指南提醒，裝在琴上的尼龍纖維已承受一定張力，升溫時會有收縮的傾向。在兩端固定的弦上，張力因而增加，音高可往上走。指南指出，較粗的尼龍第二、三弦尤其明顯，同把琴上金屬纏繞的第四到六弦變化較小。",
+      "scope": "限指南描述的古典吉他與弦組，其他條件相近。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一間房、同一把琴，還要逐根看弦的材料和構造。",
+        "visual": "自錄或模擬同一根空弦前後調音讀值，並排第二弦和第五弦；模擬數字清楚註記。",
+        "seconds": [
+          26,
+          37
+        ]
+      },
+      "source_locator": "X125E-S16，The pitch rises along with the temperature 全段，含第二、三弦與金屬纏弦比較。",
+      "notes": "不報固定音分數，也不把吉他的結果外推至所有樂器。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自攝琴弦、自錄單音或自製音頻，不用原廠照片與商用錄音。",
+      "origin": "wave125-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-6e5ac3b4c50b2527",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S16，The pitch rises along with the temperature 全段，含第二、三弦與金屬纏弦比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0012",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "食譜同樣寫一茶匙鹽，為什麼量匙刮平了，換成這盒片狀鹽後鈉的分量還會差這麼多？",
+      "mechanism_key": "x125.daily.flake_salt_teaspoon_bulk_density",
+      "answer_target": "量匙固定體積，沒有固定裝進去的鹽有多重。Diamond Crystal 比較自家片狀鹽與顆粒狀加碘桌鹽，以典型堆積密度估算，同為一茶匙，前者約含 1,150 毫克鈉，後者約 2,510 毫克。薄片結晶的堆積方式讓同一匙容得下的鹽量不同，所以不能把這個數字直接套到相同重量的兩份鹽。",
+      "scope": "限該廠規格單的 Diamond Crystal Kosher Salt 與所列 granulated iodized table salt。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把量匙改放在秤上，就能看到先前沒有控制的那個量。",
+        "visual": "自攝相同兩把平量匙與秤，示意鹽片和細粒的堆積形狀；表內數值清楚標為廠方估算。",
+        "seconds": [
+          24,
+          36
+        ]
+      },
+      "source_locator": "X125E-S17，~50% less sodium by volume。X125E-S18，SODIUM CONTROL 的 1 tsp 對照及頁腳 bulk density。",
+      "notes": "不推成所有粗鹽都須雙倍換算，也不給個人的鈉攝取建議。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "數值另行排版，晶體與量匙自攝或自畫，不複製原廠規格圖。",
+      "origin": "wave125-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d98b4390a9b7ec99",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S17，~50% less sodium by volume。X125E-S18，SODIUM CONTROL 的 1 tsp 對照及頁腳 bulk density。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ac304efb847333ff",
+          "origin": "wave125-everyday-20261119",
+          "locator": "X125E-S17，~50% less sodium by volume。X125E-S18，SODIUM CONTROL 的 1 tsp 對照及頁腳 bulk density。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0401",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在日本二萬五千分之一地形圖上，兩座 JR 小站的月台都量到 3 毫米，實際就一樣長嗎？",
+      "mechanism_key": "x125.maps.jr_platform_minimum_length",
+      "answer_target": "按這個比例，圖上 3 毫米代表地面 75 公尺。國土地理院畫普通 JR 旅客站時，沿月台的平面投影畫出站的長度，但圖符有 3 毫米的下限。假設兩座小站的月台投影各長 50、65 公尺，縮到圖上都得畫成 3 毫米。要分出哪一座較長，這張圖的車站符號已經不夠用。",
+      "scope": "限日本國土地理院二萬五千分之一圖、JR 普通鐵道旅客站。兩座小站的長度是假設值。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "先把紙尺貼到兩個自繪的站符號，再將 50 與 65 公尺各縮小兩萬五千倍，比對表 42 的最小圖長。",
+        "payoff": "同樣量出 3 毫米，有可能是兩座站都碰到符號的下限。",
+        "seconds": [
+          32,
+          45
+        ]
+      },
+      "source_locator": "S01 月台長度段；S09 印刷頁 22 表 42 第 2 款。",
+      "notes": "網頁的ひたち野うしく站只示範圖符，未取其實際月台長度。",
+      "origin": "wave125-maps-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-16f1eb6186262658",
+          "origin": "wave125-maps-20261119",
+          "locator": "S01 月台長度段；S09 印刷頁 22 表 42 第 2 款。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d2b1b6ab8a1a9cdd",
+          "origin": "wave125-maps-20261119",
+          "locator": "S01 月台長度段；S09 印刷頁 22 表 42 第 2 款。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-maps-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0401"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0402",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "茨城縣土浦的蓮田為什麼用稻子割完的圖符，種稻的田卻有可能畫成兩片小葉？",
+      "mechanism_key": "x125.maps.paddy_and_upland_crop_signs",
+      "answer_target": "國土地理院讓收割後的稻稈代表「田」這一類土地利用。翻看土浦市的圖照對比，實地長的是蓮；同一類還包括水稻、藺草。圖例又把在旱地栽種的陸稻列在「畑」，用兩片初生葉的符號。想知道種的是哪種作物，只認圖符的外形就會猜錯。",
+      "scope": "日本二萬五千分之一地形圖的田與畑。土浦是官方蓮田圖例；陸稻是另列的規則示例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫出稻稈和幼苗兩種記號，分別連到土浦的蓮田、假設的一塊陸稻田，再讓水稻回到稻稈圖符那一組。",
+        "payoff": "畫著稻稈的蓮田、畫著雙葉的陸稻田，都符合這套圖例。",
+        "seconds": [
+          30,
+          43
+        ]
+      },
+      "source_locator": "S02 土浦市「田（蓮）」的實景和區域圖；S03 畑的第一、二段；S09 印刷頁 35 表 84、85。",
+      "notes": "勿宣稱兩塊田都位於土浦，也不能從符號得知當季作物。",
+      "origin": "wave125-maps-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-78581e9d85f595af",
+          "origin": "wave125-maps-20261119",
+          "locator": "S02 土浦市「田（蓮）」的實景和區域圖；S03 畑的第一、二段；S09 印刷頁 35 表 84、85。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0554165396497351",
+          "origin": "wave125-maps-20261119",
+          "locator": "S02 土浦市「田（蓮）」的實景和區域圖；S03 畑的第一、二段；S09 印刷頁 35 表 84、85。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d2b1b6ab8a1a9cdd",
+          "origin": "wave125-maps-20261119",
+          "locator": "S02 土浦市「田（蓮）」的實景和區域圖；S03 畑的第一、二段；S09 印刷頁 35 表 84、85。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-maps-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0402"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0403",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "沿著日本地形圖上的溫泉符號去找冒水口，為什麼有可能先找到浴場？",
+      "mechanism_key": "x125.maps.spring_versus_remote_bath",
+      "answer_target": "符號的底部取泉源湯池的形，上方畫蒸氣。圖例把它放在主要的溫泉或礦泉湧出地，但若浴場距離泉源較遠，製圖時也可能在浴場加標。看到一個符號，可以把它當作查泉源或浴場的線索；要找到水真正湧出的位置，還得辨清該點標的是哪一種場所。",
+      "scope": "限國土地理院圖例所指溫泉或礦泉。以定山溪例圖辨符號，不判定圈出的個別設施屬於哪一類。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "先在自繪圖上圈出主要泉源，再把浴場移遠，依圖例示範浴場位置也可能出現同一個記號。",
+        "payoff": "湯池和蒸氣畫的是符號的來歷，不能單靠這個圖案把冒水口精確定位。",
+        "seconds": [
+          28,
+          42
+        ]
+      },
+      "source_locator": "S04 泉源與浴場距離段、定山溪圖例；S09 印刷頁 37 表 97。",
+      "notes": "「也可能」不可改成遠處的浴場一律會標，更無入場或開放承諾。",
+      "origin": "wave125-maps-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-186cca5bc46e4db3",
+          "origin": "wave125-maps-20261119",
+          "locator": "S04 泉源與浴場距離段、定山溪圖例；S09 印刷頁 37 表 97。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d2b1b6ab8a1a9cdd",
+          "origin": "wave125-maps-20261119",
+          "locator": "S04 泉源與浴場距離段、定山溪圖例；S09 印刷頁 37 表 97。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-maps-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0403"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0404",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "日本地形圖的標高點範例，一個寫 124.7，一個只寫 125。少掉的小數位透露了什麼？",
+      "mechanism_key": "x125.maps.spot_height_decimal_method",
+      "answer_target": "兩個數字來自國土地理院圖式的兩種標高點示例。製圖時派人到現場測得的標高點，圖上標到公尺的小數第一位；利用空照照片做攝影測量的標高點，圖上標到整公尺。神戶城山的公開圖例圈出點旁的 323。讀這種數字，得先辨認它配的是哪一種點。",
+      "scope": "限指定圖式的「特別標高點」與攝影測量「標高點」。124.7 與 125 是表中不同圖符示例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫兩個點，分別寫上表 4 的 124.7 和 125，再將現地與空照兩種量法配回去，最後認城山圖旁的 323。",
+        "payoff": "小數位顯示這類標高點的註記規則；它無法直接告訴你測量誤差是多少。",
+        "seconds": [
+          32,
+          45
+        ]
+      },
+      "source_locator": "S05 兩種標高點、市區例圖；S09 印刷頁 4 第 14 條第二項、頁 5 表 4。",
+      "notes": "不要演成同一座山重測或只看小數便能判讀任意地圖數字。",
+      "origin": "wave125-maps-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-506b748333fadd68",
+          "origin": "wave125-maps-20261119",
+          "locator": "S05 兩種標高點、市區例圖；S09 印刷頁 4 第 14 條第二項、頁 5 表 4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d2b1b6ab8a1a9cdd",
+          "origin": "wave125-maps-20261119",
+          "locator": "S05 兩種標高點、市區例圖；S09 印刷頁 4 第 14 條第二項、頁 5 表 4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-maps-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0404"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0405",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "山口縣秋吉台的地形圖上，等高線繞成一圈，怎麼看出往裡走是下坡？",
+      "mechanism_key": "x125.maps.depression_hachures",
+      "answer_target": "封閉等高線本身能圈住高地，也能圈住低地。看秋吉台的大凹地圖例，等高線的內側多了一排短線。這正是圖式表 108 指定的大凹地畫法；平面上一圈線圍出的，是比周圍低陷的地方。若凹地裡另有凸起，規則改在代表凸起的最低一道等高線上向外畫短線。",
+      "scope": "日本二萬五千分之一圖上的陸地大凹地，以秋吉台圖為例。「往裡」指跨過標有內短線的邊緣，內部仍可能有局部起伏。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把自繪等高線疊在凹盆的剖面上，再在盆內添小凸起，分別用手指指認內向、外向兩種短線。",
+        "payoff": "相同的封閉輪廓，只要看短線畫在哪一側，就有了辨認低陷和內部凸起的線索。",
+        "seconds": [
+          33,
+          46
+        ]
+      },
+      "source_locator": "S06 秋吉台圖、陸上大凹地的適用段；S09 印刷頁 42 表 108「凹地（大）」第一、二款。",
+      "notes": "著重地形方向；不從圖符推算落差或認定每個凹地的生成方式。",
+      "origin": "wave125-maps-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c953c3d2c0b7f1db",
+          "origin": "wave125-maps-20261119",
+          "locator": "S06 秋吉台圖、陸上大凹地的適用段；S09 印刷頁 42 表 108「凹地（大）」第一、二款。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d2b1b6ab8a1a9cdd",
+          "origin": "wave125-maps-20261119",
+          "locator": "S06 秋吉台圖、陸上大凹地的適用段；S09 印刷頁 42 表 108「凹地（大）」第一、二款。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-maps-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0405"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0406",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "廣島縣坂町的水害碑在日本地形圖上，比普通紀念碑符號多一條豎線。這條線要讀成什麼？",
+      "mechanism_key": "x125.maps.disaster_memorial_inscription",
+      "answer_target": "國土地理院以普通紀念碑的記號為底，加一條代表碑文的豎線，用來辨識傳述過去自然災害的石碑、紀念物。官方圖例所拍的坂町水害碑，記錄的是 1907 年 7 月 15 日的洪水和土石流。循這個標記找，對到的是留下記憶的碑；那場災害的範圍得另查災害資料。",
+      "scope": "日本二萬五千分之一圖中的自然災害傳承碑記號。日期指坂町案例發生災害的那一天。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "自繪普通紀念碑與傳承碑兩種符號，讓代表碑文的線出現，再將坂町案例的地名、災害與日期放進說明卡。",
+        "payoff": "線畫得像碑上的字，標的是災害記憶存在哪件實物上。",
+        "seconds": [
+          30,
+          42
+        ]
+      },
+      "source_locator": "S07 圖案解說第二段、坂町水害碑照片與日期；S09 印刷頁 31 表 71。",
+      "notes": "圖例沒有給立碑日，不從符號反推當年淹水界線。",
+      "origin": "wave125-maps-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-583f0f2b83a2cbb4",
+          "origin": "wave125-maps-20261119",
+          "locator": "S07 圖案解說第二段、坂町水害碑照片與日期；S09 印刷頁 31 表 71。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d2b1b6ab8a1a9cdd",
+          "origin": "wave125-maps-20261119",
+          "locator": "S07 圖案解說第二段、坂町水害碑照片與日期；S09 印刷頁 31 表 71。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-maps-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0406"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0407",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "茨城縣神栖市海岸的地形圖上，一排排小圓點從岸邊伸向海裡。畫一列和畫多列，差在哪裡？",
+      "mechanism_key": "x125.maps.groyne_width_dots",
+      "answer_target": "國土地理院用一串串圓形符號畫出「水制」的位置。這類設施會減緩水勢、整理流向，或保護岸線免受沖刷。畫幾列要看寬度：小於 20 公尺排成一列，達到 20 公尺就改用多列。比較神栖市的地圖和岸邊實景，可以把圖中的點陣和水中的構造物對起來。",
+      "scope": "日本二萬五千分之一地形圖表 83。鹿島灘的圖照是官方例子，未實測例圖設施的寬度。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "看鹿島灘圖上的點列方向，在自繪平面圖旁放兩把尺，依規則為 19 和 20 公尺寬的假設水制選記號。",
+        "payoff": "若要讀出的是寬度分級，就看幾列；圓點的個數算不出現場有幾塊消波塊。",
+        "seconds": [
+          32,
+          45
+        ]
+      },
+      "source_locator": "S08 水制作用、20 公尺兩側的畫法、鹿島灘圖照；S09 印刷頁 33 表 83。",
+      "notes": "這裡是水制圖符的寬度級距，不據此推算圓點的實際間隔。",
+      "origin": "wave125-maps-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-da57253f7d5ffde8",
+          "origin": "wave125-maps-20261119",
+          "locator": "S08 水制作用、20 公尺兩側的畫法、鹿島灘圖照；S09 印刷頁 33 表 83。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d2b1b6ab8a1a9cdd",
+          "origin": "wave125-maps-20261119",
+          "locator": "S08 水制作用、20 公尺兩側的畫法、鹿島灘圖照；S09 印刷頁 33 表 83。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-maps-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0407"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0201",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+      "mechanism_key": "x125.photo_print.order",
+      "answer_target": "北村網路下單的DSC是89×119毫米，標準L是89×127。短邊相同，長邊多八毫米。兩項單張含稅價均為59日圓，表下注明店頭下單為69。單張牌價不含本題未計的配送。",
+      "scope": "日本北村「かんたん写真プリント」網路單張牌價。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "付一樣的錢，可以買到不同長寬比。",
+        "visual": "對齊兩張相紙的短邊，再沿長邊畫出八毫米。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e1c1fa4616d43a8a",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0201"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0202",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+      "mechanism_key": "x125.photo_print.fill",
+      "answer_target": "Lightroom的Zoom To Fill等比例把影像放大或縮小到填滿影像格，超出格子的一部分被裁去。以橫向4000×3000畫素的原圖置中滿版為例，遇到比原圖寬的紙框，讓圖的左右先碰紙邊，紙框能收進的原圖高度為4000乘以紙的短邊再除以長邊。",
+      "scope": "以無旋轉、維持比例的幾何示意，不推定北村軟體採Adobe實作。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "原圖的上下，會先伸到寬紙框以外。",
+        "visual": "用透明架疊住標有4000×3000的格紙。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S02 Specify how photos fill an image cell；Zoom To Fill、Rotate To Fit 及其後的拖曳說明",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f002b4391b94968f",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S02 Specify how photos fill an image cell；Zoom To Fill、Rotate To Fit 及其後的拖曳說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0202"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0203",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
+      "mechanism_key": "x125.photo_print.cap",
+      "answer_target": "用89×119的DSC，4000×89÷119約2991.6，原圖3000畫素高，上下各少約4.2畫素。用89×127的L，能保留約2803.1畫素，上下各少約98.4。帽尖距原圖上緣60畫素，理想框裡DSC留得住，L會削掉。",
+      "scope": "僅指名義紙幅、置中等比例鋪滿、不加機械出血的預覽；只判帽尖這個點。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "八毫米的紙寬差，讓兩條裁切線落在帽尖兩側。",
+        "visual": "把原圖上緣、60、98三條線疊在同一個人頭上。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」；X125D-S02 Specify how photos fill an image cell；Zoom To Fill、Rotate To Fit 及其後的拖曳說明",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e1c1fa4616d43a8a",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」；X125D-S02 Specify how photos fill an image cell；Zoom To Fill、Rotate To Fit 及其後的拖曳說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f002b4391b94968f",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」；X125D-S02 Specify how photos fill an image cell；Zoom To Fill、Rotate To Fit 及其後的拖曳說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0203"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0204",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
+      "mechanism_key": "x125.photo_print.fit",
+      "answer_target": "理想置中等比全圖模式把3000畫素的短邊縮到89毫米，原圖相應寬118.67毫米。紙寬127毫米，左右各留約4.17毫米。しまうま電腦下單說明列有不裁切，白邊位置依圖形與方向而定；若選北村門市取件，該選項不能使用，須用自由裁切指定列印範圍。",
+      "scope": "試算使用北村公布的L紙尺寸；しまうま只作具名選項例，不把試算當它的白邊保證。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "原圖四個角都進來，空出的位置在左右。",
+        "visual": "把紙邊兩塊窄空帶用尺量出來。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S04 「トリミング『する』『しない』」、文字圖案放邊緣的注意事項、「正方形画像について」及頁末北村門市取件例外；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」；X125D-S02 Specify how photos fill an image cell；Zoom To Fill、Rotate To Fit 及其後的拖曳說明",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f40f2fa5b6620f4c",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S04 「トリミング『する』『しない』」、文字圖案放邊緣的注意事項、「正方形画像について」及頁末北村門市取件例外；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」；X125D-S02 Specify how photos fill an image cell；Zoom To Fill、Rotate To Fit 及其後的拖曳說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e1c1fa4616d43a8a",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S04 「トリミング『する』『しない』」、文字圖案放邊緣的注意事項、「正方形画像について」及頁末北村門市取件例外；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」；X125D-S02 Specify how photos fill an image cell；Zoom To Fill、Rotate To Fit 及其後的拖曳說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f002b4391b94968f",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S04 「トリミング『する』『しない』」、文字圖案放邊緣的注意事項、「正方形画像について」及頁末北村門市取件例外；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」；X125D-S02 Specify how photos fill an image cell；Zoom To Fill、Rotate To Fit 及其後的拖曳說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0204"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0205",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？",
+      "mechanism_key": "x125.photo_print.pan",
+      "answer_target": "Lightroom在Zoom To Fill裁切時可以拖動格內照片。示意L框總共要從原圖高度捨去約197畫素。若把裁框移近頂端，讓上邊只裁30畫素，帽尖能留下，下邊便須承擔約167畫素。移框會改變捨去哪裡，不能把這197畫素一起放進同一個滿版框。",
+      "scope": "只比較同一張、同一倍率的矩形裁框。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "救回上邊，會動到下邊的構圖。",
+        "visual": "固定紙框，拖動底下的人物照片。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S02 Specify how photos fill an image cell；Zoom To Fill、Rotate To Fit 及其後的拖曳說明；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f002b4391b94968f",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S02 Specify how photos fill an image cell；Zoom To Fill、Rotate To Fit 及其後的拖曳說明；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e1c1fa4616d43a8a",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S02 Specify how photos fill an image cell；Zoom To Fill、Rotate To Fit 及其後的拖曳說明；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0205"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0206",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？",
+      "mechanism_key": "x125.photo_print.taiwan",
+      "answer_target": "點點印列4×6為15.2×10.2公分，產品介紹列有可完整呈現手機照片的3:4版型、滿版及邊框。以橫紙152×102毫米作理想全圖試算，4:3影像高102時寬136，置中後左右各空8毫米。不同版型可安排文字、邊框，實際白邊以預覽為準。",
+      "scope": "用商品的毫米數做簡化全圖模型，不承諾網站某款版型固定留8毫米。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個原檔，換了紙，連空白也值得重算。",
+        "visual": "用透明尺在152毫米紙上排出8、136、8。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S05 商品規格「相片沖印4x6」「4x4」；產品介紹「文字+版型」",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-947e930e02904246",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S05 商品規格「相片沖印4x6」「4x4」；產品介紹「文字+版型」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0206"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0207",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？",
+      "mechanism_key": "x125.photo_print.phone",
+      "answer_target": "iPhone相機可選4:3、16:9或1:1。北村同價HV的橫幅是158÷89，約1.775，貼近16÷9約1.778；L則是127÷89約1.427。若檔案本身已是16:9，HV的名義紙形與它更接近。要先看送出的檔案，不能只問是哪一支手機。",
+      "scope": "比對螢幕比例選項與相紙比值，沒有將所有iPhone檔案固定成4000×3000。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "昨天適合4:3的紙，明天未必最合16:9。",
+        "visual": "手機切換比例，後方疊出L和HV兩個框。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S03 「更改顯示比例」；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-cde64fd07a09ca03",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S03 「更改顯示比例」；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e1c1fa4616d43a8a",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S03 「更改顯示比例」；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0207"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0208",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "相機設成L、相館也點L，難道就能保證合照不裁邊？",
+      "mechanism_key": "x125.photo_print.camera",
+      "answer_target": "富士X100VI在L畫素設定下還分好幾種構圖。4:3列6864×5152，3:2列7728×5152，1:1列5152×5152。這些檔案都可以從相機的L列出來；北村相紙的L只有89×127毫米那一種框。要比較的是檔案實際長寬。",
+      "scope": "明示機型X100VI。數字是該機原廠記錄畫素表。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩個選單用同一個字母，背後列的尺寸卻不同。",
+        "visual": "把相機規格表的三格各接回同一個相紙L框。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S06 Number Of Recorded Pixels／[L]四種比例；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4d8db2b31b65e607",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S06 Number Of Recorded Pixels／[L]四種比例；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e1c1fa4616d43a8a",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S06 Number Of Recorded Pixels／[L]四種比例；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0208"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0209",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？",
+      "mechanism_key": "x125.photo_print.squarecrop",
+      "answer_target": "以4000×3000原圖填滿方框，最多留下3000×3000。兩個臉部標記的水平距離是3400畫素，大於裁框寬。置中時留下x=500至3500；就算重新移框，至多救回一邊的標記。若兩邊都要，得改用較寬紙形或容許上下留白。",
+      "scope": "人物是示意圖上的兩個點，單純比較等比例方形滿版構圖。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不能靠移框解決的合照，一量兩張臉的距離就知道。",
+        "visual": "讓一個3000畫素方框左右滑過兩個標點。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S02 Specify how photos fill an image cell；Zoom To Fill、Rotate To Fit 及其後的拖曳說明；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f002b4391b94968f",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S02 Specify how photos fill an image cell；Zoom To Fill、Rotate To Fit 及其後的拖曳說明；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e1c1fa4616d43a8a",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S02 Specify how photos fill an image cell；Zoom To Fill、Rotate To Fit 及其後的拖曳說明；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0209"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0210",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？",
+      "mechanism_key": "x125.photo_print.pixels",
+      "answer_target": "Photoshop的影像尺寸面板取消重新取樣時，現有畫素數鎖定。改變解析度數字會改變它對應的列印尺寸，沒有額外的上下內容。若最後仍將同一份4000×3000影像置中滿版印到同一張L紙，裁切線仍落在相同位置。",
+      "scope": "固定輸出紙幅與置中滿版，且不重取樣、不生成新影像。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "畫素密度和取景邊界可以分開驗。",
+        "visual": "左右顯示相同格數，將ppi欄改值後再次疊框。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S07 Image Size／Resample 及關於更改解析度與畫素尺寸的說明",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f67bca81e071da27",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S07 Image Size／Resample 及關於更改解析度與畫素尺寸的說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0210"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0211",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？",
+      "mechanism_key": "x125.photo_print.bleed",
+      "answer_target": "Canon TS8300系列說明，選無邊界時會放大影像使它蓋住整張紙，因此邊緣可能略被裁去。機身列印設定有Amount of extension可調延伸量。紙和檔比例相同只能消除形狀不合的那部分，不能消除機器外擴。",
+      "scope": "限定說明書列的機型，無法從它推知沖印店的實際出血。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "有第二個裁切框，來自無邊界列印。",
+        "visual": "先把兩框疊齊，再把彩圖從四邊向外推出少許。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S08 S108 Print Area／Borderless Printing／Amount of extension",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-077097e27b668314",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S08 S108 Print Area／Borderless Printing／Amount of extension",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0211"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0212",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？",
+      "mechanism_key": "x125.photo_print.margin",
+      "answer_target": "しまうま電腦沖印頁要求文字和圖離邊數毫米；其說明指出列印與裁切誤差可能從影像內約2至3毫米處輸出。拿這條注意事項回看帽尖預覽，就能區分圖形試算和出紙時的餘裕。這組毫米數只屬於其服務。",
+      "scope": "しまうま實際提示，不用其公差推算北村或Canon的成品。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "做給別人讀的字，需要離紙邊一段距離。",
+        "visual": "在しまうま示意卡的外緣標出其原文的毫米範圍。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S04 「トリミング『する』『しない』」、文字圖案放邊緣的注意事項、「正方形画像について」及頁末北村門市取件例外",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f40f2fa5b6620f4c",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S04 「トリミング『する』『しない』」、文字圖案放邊緣的注意事項、「正方形画像について」及頁末北村門市取件例外",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0212"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0213",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？",
+      "mechanism_key": "x125.photo_print.kiosk",
+      "answer_target": "7-ELEVEN把方形模式列在L相紙、單張40日圓。富士BI的操作說明可加剪線，拿到後沿點線剪成正方形；也能不要剪線，保留L紙，把旁邊的空白用於書寫。方形可以指排在紙上的圖像。",
+      "scope": "只談該連鎖多功能機與指定模式。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "想要真方紙，這一款由拿到照片的人動剪刀。",
+        "visual": "用印好的虛線演示剪開和留白寫字兩種結果。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S09 選べる4タイプ／切り取り線［あり］［なし］；X125D-S10 写真プリントの種類とご利用料金／ましかくプリント",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-dbe66aac76f542a3",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S09 選べる4タイプ／切り取り線［あり］［なし］；X125D-S10 写真プリントの種類とご利用料金／ましかくプリント",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6582ca7a1ed60890",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S09 選べる4タイプ／切り取り線［あり］［なし］；X125D-S10 写真プリントの種類とご利用料金／ましかくプリント",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0213"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0214",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？",
+      "mechanism_key": "x125.photo_print.stock",
+      "answer_target": "北村方形沖印89×89毫米，點點印4×4列102×102。Epson日本的光澤方紙KS20PSKR則是127×127毫米。三者比例都是1:1，但紙袋內寬若只有110毫米，平放時前兩張紙寬在限內，127毫米方紙超出。",
+      "scope": "袋寬是試算，袋高和開口亦要足夠；紙廠未聲稱相館使用此型紙。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "方只是比例，還要用尺量實際邊長。",
+        "visual": "用同一個110毫米開口和三張標了尺寸的方紙。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S11 写真用紙＜光沢＞／スクエア、型番KS20PSKR；X125D-S05 商品規格「相片沖印4x6」「4x4」；產品介紹「文字+版型」；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b221ad4a8be5b3a9",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S11 写真用紙＜光沢＞／スクエア、型番KS20PSKR；X125D-S05 商品規格「相片沖印4x6」「4x4」；產品介紹「文字+版型」；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-947e930e02904246",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S11 写真用紙＜光沢＞／スクエア、型番KS20PSKR；X125D-S05 商品規格「相片沖印4x6」「4x4」；產品介紹「文字+版型」；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e1c1fa4616d43a8a",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S11 写真用紙＜光沢＞／スクエア、型番KS20PSKR；X125D-S05 商品規格「相片沖印4x6」「4x4」；產品介紹「文字+版型」；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0214"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0215",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？",
+      "mechanism_key": "x125.photo_print.postcard",
+      "answer_target": "北村KG相紙列102×152毫米。Canon台灣SELPHY CP1500規格列明信片模式無邊距圖面100×148毫米，有邊距時圖面91.3×121.7。後兩行是印出圖面的尺寸；不能看它們就說紙被裁成91.3毫米寬。框的問題得各自查作品與可見區。",
+      "scope": "分別引用店家相紙成品尺寸、原廠列印尺寸，保留兩種量測對象。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "留白可以改變圖面，同一個尺寸名稱也可以對到不同毫米數。",
+        "visual": "將紙幅、無邊距印區和有邊距印區分三行標示。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S12 規格「列印尺寸」／明信片尺寸有邊距、無邊距；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-1c3ebbc2773417b6",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S12 規格「列印尺寸」／明信片尺寸有邊距、無邊距；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e1c1fa4616d43a8a",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S12 規格「列印尺寸」／明信片尺寸有邊距、無邊距；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0215"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0216",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？",
+      "mechanism_key": "x125.photo_print.mat",
+      "answer_target": "日本IKEA的RÖDALM 13×18款不用台紙時對應13×18作品，用台紙時對應10×15，畫面開口是9×14。若100×150毫米作品置中貼在90×140毫米窗後，四邊各約5毫米被台紙壓住。把紙抽出，圖上原有的細節仍會出現。",
+      "scope": "只按IKEA日本005.500.35商品與置中假設。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "內容可能印在紙上，裝框時才被遮住。",
+        "visual": "在框前抬起台紙，讓遮住的標點首次出現。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S13 商品番号005.500.35／お役立ち情報、サイズ「ピクチャー部分」「台紙付き／なしアート」",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d7e433fa0662bb48",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S13 商品番号005.500.35／お役立ち情報、サイズ「ピクチャー部分」「台紙付き／なしアート」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0216"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K125-0217",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？",
+      "mechanism_key": "x125.photo_print.framechoice",
+      "answer_target": "13×18款的台紙搭配10×15作品，窗9×14；標稱10×15的較小款則不用台紙時搭10×15，裝上台紙適合8×12，窗僅7×11。回到北村兩張59日圓樣本：DSC 89×119與L 89×127，甚至都不足以蓋過大款的90×140開口。買框時得帶兩組數字，作品實際紙幅，以及希望觀眾最後看到的視窗。",
+      "scope": "兩款限定005.500.35、705.500.27。沒有宣稱拔掉台紙能消除外框邊緣的一切遮擋。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "紙、圖都挑對了，還要把成片放到準備送人的那個框裡看。",
+        "visual": "將DSC、L和100×150樣紙輪流覆上兩個台紙視窗。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X125D-S14 商品番号705.500.27／サイズ「ピクチャー部分」「台紙付き／なしアート」；X125D-S13 商品番号005.500.35／お役立ち情報、サイズ「ピクチャー部分」「台紙付き／なしアート」；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+      "notes": "依具名產品或服務文件整理。合照、人物位置、裁切與留白的數值為理想幾何示意，未拿此圖實際下單。",
+      "origin": "wave125-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d58b884466a25dd3",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S14 商品番号705.500.27／サイズ「ピクチャー部分」「台紙付き／なしアート」；X125D-S13 商品番号005.500.35／お役立ち情報、サイズ「ピクチャー部分」「台紙付き／なしアート」；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d7e433fa0662bb48",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S14 商品番号705.500.27／サイズ「ピクチャー部分」「台紙付き／なしアート」；X125D-S13 商品番号005.500.35／お役立ち情報、サイズ「ピクチャー部分」「台紙付き／なしアート」；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e1c1fa4616d43a8a",
+          "origin": "wave125-research-20261119",
+          "locator": "X125D-S14 商品番号705.500.27／サイズ「ピクチャー部分」「台紙付き／なしアート」；X125D-S13 商品番号005.500.35／お役立ち情報、サイズ「ピクチャー部分」「台紙付き／なしアート」；X125D-S01 「価格・サイズ」表（ましかく、DSC、L、HV、KG）、注文の流れ「トリミング・枚数を選択」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K125-0217"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -342360,7 +344106,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 7897
+    "count": 7933
   },
   "dedup": {
     "aliases": {
@@ -345179,6 +346925,42 @@
       "K124-0214": "K124-0214",
       "K124-0215": "K124-0215",
       "K124-0216": "K124-0216",
+      "K125-0001": "K125-0001",
+      "K125-0002": "K125-0002",
+      "K125-0003": "K125-0003",
+      "K125-0004": "K125-0004",
+      "K125-0005": "K125-0005",
+      "K125-0006": "K125-0006",
+      "K125-0007": "K125-0007",
+      "K125-0008": "K125-0008",
+      "K125-0009": "K125-0009",
+      "K125-0010": "K125-0010",
+      "K125-0011": "K125-0011",
+      "K125-0012": "K125-0012",
+      "K125-0401": "K125-0401",
+      "K125-0402": "K125-0402",
+      "K125-0403": "K125-0403",
+      "K125-0404": "K125-0404",
+      "K125-0405": "K125-0405",
+      "K125-0406": "K125-0406",
+      "K125-0407": "K125-0407",
+      "K125-0201": "K125-0201",
+      "K125-0202": "K125-0202",
+      "K125-0203": "K125-0203",
+      "K125-0204": "K125-0204",
+      "K125-0205": "K125-0205",
+      "K125-0206": "K125-0206",
+      "K125-0207": "K125-0207",
+      "K125-0208": "K125-0208",
+      "K125-0209": "K125-0209",
+      "K125-0210": "K125-0210",
+      "K125-0211": "K125-0211",
+      "K125-0212": "K125-0212",
+      "K125-0213": "K125-0213",
+      "K125-0214": "K125-0214",
+      "K125-0215": "K125-0215",
+      "K125-0216": "K125-0216",
+      "K125-0217": "K125-0217",
       "X13001": "X13001",
       "X13002": "X13002",
       "X13003": "X13003",
@@ -388786,6 +390568,20 @@
         ]
       },
       {
+        "id": "K125-0202~K125-0205",
+        "a": "K125-0202",
+        "b": "K125-0205",
+        "question_score": 0,
+        "answer_score": 0.218,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？"
+        ]
+      },
+      {
         "id": "P74-030~P74-044",
         "a": "P74-030",
         "b": "P74-044",
@@ -388898,6 +390694,20 @@
         ]
       },
       {
+        "id": "K125-0216~K125-0217",
+        "a": "K125-0216",
+        "b": "K125-0217",
+        "question_score": 0.212,
+        "answer_score": 0.188,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
+        ]
+      },
+      {
         "id": "K112-0678~K112-0679",
         "a": "K112-0678",
         "b": "K112-0679",
@@ -388909,6 +390719,20 @@
         "questions": [
           "同一張記憶卡，換一台機器寫，速度會一樣嗎？",
           "同一張卡，一次寫一小塊和一次寫一大塊，差多少？"
+        ]
+      },
+      {
+        "id": "K125-0205~K125-0210",
+        "a": "K125-0205",
+        "b": "K125-0210",
+        "question_score": 0.211,
+        "answer_score": 0.085,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？",
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？"
         ]
       },
       {
@@ -391558,6 +393382,20 @@
         ]
       },
       {
+        "id": "K125-0208~K125-0214",
+        "a": "K125-0208",
+        "b": "K125-0214",
+        "question_score": 0.038,
+        "answer_score": 0.152,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？",
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
+        ]
+      },
+      {
         "id": "P65-004~P65-005",
         "a": "P65-004",
         "b": "P65-005",
@@ -392062,6 +393900,20 @@
         ]
       },
       {
+        "id": "K125-0201~K125-0217",
+        "a": "K125-0201",
+        "b": "K125-0217",
+        "question_score": 0,
+        "answer_score": 0.145,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
+        ]
+      },
+      {
         "id": "E74-004~E74-005",
         "a": "E74-004",
         "b": "E74-005",
@@ -392538,6 +394390,20 @@
         ]
       },
       {
+        "id": "K125-0201~K125-0203",
+        "a": "K125-0201",
+        "b": "K125-0203",
+        "question_score": 0.1,
+        "answer_score": 0.139,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？"
+        ]
+      },
+      {
         "id": "P59-001~P60-006",
         "a": "P59-001",
         "b": "P60-006",
@@ -392773,6 +394639,20 @@
         "questions": [
           "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
           "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？"
+        ]
+      },
+      {
+        "id": "K125-0203~K125-0204",
+        "a": "K125-0203",
+        "b": "K125-0204",
+        "question_score": 0.038,
+        "answer_score": 0.136,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？"
         ]
       },
       {
@@ -393039,6 +394919,20 @@
         "questions": [
           "同樣打算凌晨一點拿包，為了先留一格，成田多功能小櫃的400日圓為什麼會變成900？",
           "回到成田，同一個小包改成上午九點到下午四點，原來最便宜的計時櫃還能贏嗎？"
+        ]
+      },
+      {
+        "id": "K125-0215~K125-0216",
+        "a": "K125-0215",
+        "b": "K125-0216",
+        "question_score": 0.069,
+        "answer_score": 0.133,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？",
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
         ]
       },
       {
@@ -394148,6 +396042,20 @@
         ]
       },
       {
+        "id": "K125-0201~K125-0214",
+        "a": "K125-0201",
+        "b": "K125-0214",
+        "question_score": 0.031,
+        "answer_score": 0.121,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
+        ]
+      },
+      {
         "id": "L088~L089",
         "a": "L088",
         "b": "L089",
@@ -394358,6 +396266,20 @@
         ]
       },
       {
+        "id": "K125-0203~K125-0208",
+        "a": "K125-0203",
+        "b": "K125-0208",
+        "question_score": 0.042,
+        "answer_score": 0.12,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？"
+        ]
+      },
+      {
         "id": "L70-025~L73-006",
         "a": "L70-025",
         "b": "L73-006",
@@ -394425,6 +396347,20 @@
         "questions": [
           "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？",
           "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？"
+        ]
+      },
+      {
+        "id": "K125-0203~K125-0217",
+        "a": "K125-0203",
+        "b": "K125-0217",
+        "question_score": 0,
+        "answer_score": 0.118,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
         ]
       },
       {
@@ -394610,6 +396546,34 @@
         ]
       },
       {
+        "id": "K125-0202~K125-0210",
+        "a": "K125-0202",
+        "b": "K125-0210",
+        "question_score": 0,
+        "answer_score": 0.116,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？"
+        ]
+      },
+      {
+        "id": "K125-0208~K125-0215",
+        "a": "K125-0208",
+        "b": "K125-0215",
+        "question_score": 0,
+        "answer_score": 0.116,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？",
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
+        ]
+      },
+      {
         "id": "K66-001~K66-004",
         "a": "K66-001",
         "b": "K66-004",
@@ -394789,6 +396753,20 @@
         "questions": [
           "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
           "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？"
+        ]
+      },
+      {
+        "id": "K125-0207~K125-0208",
+        "a": "K125-0207",
+        "b": "K125-0208",
+        "question_score": 0,
+        "answer_score": 0.114,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？",
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？"
         ]
       },
       {
@@ -395534,6 +397512,62 @@
         ]
       },
       {
+        "id": "K125-0202~K125-0204",
+        "a": "K125-0202",
+        "b": "K125-0204",
+        "question_score": 0.089,
+        "answer_score": 0.109,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？"
+        ]
+      },
+      {
+        "id": "K125-0202~K125-0209",
+        "a": "K125-0202",
+        "b": "K125-0209",
+        "question_score": 0,
+        "answer_score": 0.109,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？"
+        ]
+      },
+      {
+        "id": "K125-0204~K125-0212",
+        "a": "K125-0204",
+        "b": "K125-0212",
+        "question_score": 0,
+        "answer_score": 0.109,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？"
+        ]
+      },
+      {
+        "id": "K125-0208~K125-0217",
+        "a": "K125-0208",
+        "b": "K125-0217",
+        "question_score": 0,
+        "answer_score": 0.109,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
+        ]
+      },
+      {
         "id": "K66-001~K66-011",
         "a": "K66-001",
         "b": "K66-011",
@@ -395758,6 +397792,20 @@
         ]
       },
       {
+        "id": "K125-0201~K125-0204",
+        "a": "K125-0201",
+        "b": "K125-0204",
+        "question_score": 0,
+        "answer_score": 0.107,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？"
+        ]
+      },
+      {
         "id": "X34-001~X34-006",
         "a": "X34-001",
         "b": "X34-006",
@@ -395783,6 +397831,20 @@
         "questions": [
           "在新加坡用交通卡領走退罐款，回家打開 app，要找哪一行才知道這次真的入帳？",
           "四入組先付了四角押金，機器只確認收進三罐，這次卡裡應該會出現多少？"
+        ]
+      },
+      {
+        "id": "K125-0209~K125-0210",
+        "a": "K125-0209",
+        "b": "K125-0210",
+        "question_score": 0.062,
+        "answer_score": 0.106,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？",
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？"
         ]
       },
       {
@@ -395898,6 +397960,34 @@
         ]
       },
       {
+        "id": "K125-0203~K125-0212",
+        "a": "K125-0203",
+        "b": "K125-0212",
+        "question_score": 0.105,
+        "answer_score": 0.025,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？"
+        ]
+      },
+      {
+        "id": "K125-0204~K125-0208",
+        "a": "K125-0204",
+        "b": "K125-0208",
+        "question_score": 0.044,
+        "answer_score": 0.105,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？"
+        ]
+      },
+      {
         "id": "L056~L057",
         "a": "L056",
         "b": "L057",
@@ -396007,6 +398097,34 @@
         "questions": [
           "剛看完說話的嘴形，螢幕關掉後，怎麼連純聲音也聽得不太一樣？",
           "三條像口哨的聲音，怎麼有人聽得出整句話？"
+        ]
+      },
+      {
+        "id": "K125-0206~K125-0215",
+        "a": "K125-0206",
+        "b": "K125-0215",
+        "question_score": 0.032,
+        "answer_score": 0.104,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？",
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
+        ]
+      },
+      {
+        "id": "K125-0214~K125-0217",
+        "a": "K125-0214",
+        "b": "K125-0217",
+        "question_score": 0,
+        "answer_score": 0.104,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
         ]
       },
       {
@@ -396133,6 +398251,34 @@
         "questions": [
           "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？",
           "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？"
+        ]
+      },
+      {
+        "id": "K125-0202~K125-0211",
+        "a": "K125-0202",
+        "b": "K125-0211",
+        "question_score": 0,
+        "answer_score": 0.103,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？"
+        ]
+      },
+      {
+        "id": "K125-0203~K125-0210",
+        "a": "K125-0203",
+        "b": "K125-0210",
+        "question_score": 0.103,
+        "answer_score": 0.073,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？"
         ]
       },
       {
@@ -396301,6 +398447,34 @@
         "questions": [
           "如果航班改從羽田T3走，價目上的一天又從哪裡算？",
           "明早要回來的行程如果移到東京迪士尼樂園門口，小櫃的500日圓要乘二嗎？"
+        ]
+      },
+      {
+        "id": "K125-0201~K125-0208",
+        "a": "K125-0201",
+        "b": "K125-0208",
+        "question_score": 0,
+        "answer_score": 0.101,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？"
+        ]
+      },
+      {
+        "id": "K125-0203~K125-0209",
+        "a": "K125-0203",
+        "b": "K125-0209",
+        "question_score": 0.095,
+        "answer_score": 0.101,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？"
         ]
       },
       {
@@ -396511,6 +398685,62 @@
         "questions": [
           "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
           "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？"
+        ]
+      },
+      {
+        "id": "K125-0203~K125-0207",
+        "a": "K125-0203",
+        "b": "K125-0207",
+        "question_score": 0,
+        "answer_score": 0.099,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？"
+        ]
+      },
+      {
+        "id": "K125-0204~K125-0214",
+        "a": "K125-0204",
+        "b": "K125-0214",
+        "question_score": 0,
+        "answer_score": 0.099,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
+        ]
+      },
+      {
+        "id": "K125-0206~K125-0208",
+        "a": "K125-0206",
+        "b": "K125-0208",
+        "question_score": 0,
+        "answer_score": 0.099,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？",
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？"
+        ]
+      },
+      {
+        "id": "K125-0214~K125-0215",
+        "a": "K125-0214",
+        "b": "K125-0215",
+        "question_score": 0,
+        "answer_score": 0.099,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？",
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
         ]
       },
       {
@@ -396864,6 +399094,20 @@
         ]
       },
       {
+        "id": "K125-0207~K125-0214",
+        "a": "K125-0207",
+        "b": "K125-0214",
+        "question_score": 0.032,
+        "answer_score": 0.096,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？",
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
+        ]
+      },
+      {
         "id": "L66-008~L66-009",
         "a": "L66-008",
         "b": "L66-009",
@@ -396959,6 +399203,20 @@
         "questions": [
           "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？",
           "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
+        ]
+      },
+      {
+        "id": "K125-0215~K125-0217",
+        "a": "K125-0215",
+        "b": "K125-0217",
+        "question_score": 0.086,
+        "answer_score": 0.095,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
         ]
       },
       {
@@ -397141,6 +399399,20 @@
         "questions": [
           "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
           "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？"
+        ]
+      },
+      {
+        "id": "K125-0204~K125-0206",
+        "a": "K125-0204",
+        "b": "K125-0206",
+        "question_score": 0.035,
+        "answer_score": 0.094,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？"
         ]
       },
       {
@@ -397407,6 +399679,20 @@
         "questions": [
           "有押金的飲料罐照樣丟進新加坡藍色回收桶，那一角新幣會進到哪個帳戶？",
           "在愛爾蘭退兩只都有標記的飲料罐，剛好 500 毫升的和超過 500 毫升的可以拿回相同金額嗎？"
+        ]
+      },
+      {
+        "id": "K125-0206~K125-0214",
+        "a": "K125-0206",
+        "b": "K125-0214",
+        "question_score": 0.031,
+        "answer_score": 0.092,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？",
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
         ]
       },
       {
@@ -397718,6 +400004,20 @@
         ]
       },
       {
+        "id": "K125-0213~K125-0214",
+        "a": "K125-0213",
+        "b": "K125-0214",
+        "question_score": 0.09,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？",
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
+        ]
+      },
+      {
         "id": "E2022~E2023",
         "a": "E2022",
         "b": "E2023",
@@ -397813,6 +400113,20 @@
         "questions": [
           "為什麼成田計時小櫃凌晨三點整取要300，三點零一分卻是700？",
           "如果不想用機器，改在成田T2三樓找人寄包，深夜能下到一樓拿嗎？"
+        ]
+      },
+      {
+        "id": "K125-0203~K125-0214",
+        "a": "K125-0203",
+        "b": "K125-0214",
+        "question_score": 0,
+        "answer_score": 0.089,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
         ]
       },
       {
@@ -398320,6 +400634,34 @@
         ]
       },
       {
+        "id": "K125-0204~K125-0207",
+        "a": "K125-0204",
+        "b": "K125-0207",
+        "question_score": 0.036,
+        "answer_score": 0.086,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？"
+        ]
+      },
+      {
+        "id": "K125-0207~K125-0215",
+        "a": "K125-0207",
+        "b": "K125-0215",
+        "question_score": 0,
+        "answer_score": 0.086,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？",
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
+        ]
+      },
+      {
         "id": "P74-020~P74-024",
         "a": "P74-020",
         "b": "P74-024",
@@ -398681,6 +401023,20 @@
         "questions": [
           "如果航班改從羽田T3走，價目上的一天又從哪裡算？",
           "如果不想用機器，改在成田T2三樓找人寄包，深夜能下到一樓拿嗎？"
+        ]
+      },
+      {
+        "id": "K125-0211~K125-0215",
+        "a": "K125-0211",
+        "b": "K125-0215",
+        "question_score": 0.034,
+        "answer_score": 0.083,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？",
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
         ]
       },
       {
@@ -399076,6 +401432,20 @@
         ]
       },
       {
+        "id": "K125-0206~K125-0216",
+        "a": "K125-0206",
+        "b": "K125-0216",
+        "question_score": 0,
+        "answer_score": 0.081,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？",
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
+        ]
+      },
+      {
         "id": "K89-043~K89-046",
         "a": "K89-043",
         "b": "K89-046",
@@ -399398,6 +401768,34 @@
         ]
       },
       {
+        "id": "K125-0202~K125-0203",
+        "a": "K125-0202",
+        "b": "K125-0203",
+        "question_score": 0.042,
+        "answer_score": 0.079,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？"
+        ]
+      },
+      {
+        "id": "K125-0203~K125-0205",
+        "a": "K125-0203",
+        "b": "K125-0205",
+        "question_score": 0.036,
+        "answer_score": 0.079,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？"
+        ]
+      },
+      {
         "id": "H60-007~R44010",
         "a": "R44010",
         "b": "H60-007",
@@ -399535,6 +401933,20 @@
         "questions": [
           "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？",
           "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？"
+        ]
+      },
+      {
+        "id": "K125-0201~K125-0207",
+        "a": "K125-0201",
+        "b": "K125-0207",
+        "question_score": 0,
+        "answer_score": 0.078,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？"
         ]
       },
       {
@@ -399790,6 +402202,20 @@
         ]
       },
       {
+        "id": "K125-0205~K125-0209",
+        "a": "K125-0205",
+        "b": "K125-0209",
+        "question_score": 0,
+        "answer_score": 0.077,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？",
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？"
+        ]
+      },
+      {
         "id": "L135~N145",
         "a": "L135",
         "b": "N145",
@@ -399955,6 +402381,20 @@
         "questions": [
           "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？",
           "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
+        "id": "K125-0203~K125-0216",
+        "a": "K125-0203",
+        "b": "K125-0216",
+        "question_score": 0,
+        "answer_score": 0.076,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
         ]
       },
       {
@@ -400291,6 +402731,34 @@
         "questions": [
           "京阪寫特急的時刻表旁邊，怎麼會有一班只寫「急行」也明列 400 日圓？",
           "南海的 Southern 掛著「特急」，一列八節怎麼有一半不用買指定席券？"
+        ]
+      },
+      {
+        "id": "K125-0204~K125-0210",
+        "a": "K125-0204",
+        "b": "K125-0210",
+        "question_score": 0.036,
+        "answer_score": 0.074,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？"
+        ]
+      },
+      {
+        "id": "K125-0214~K125-0216",
+        "a": "K125-0214",
+        "b": "K125-0216",
+        "question_score": 0,
+        "answer_score": 0.074,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？",
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
         ]
       },
       {
@@ -400714,6 +403182,34 @@
         ]
       },
       {
+        "id": "K125-0207~K125-0217",
+        "a": "K125-0207",
+        "b": "K125-0217",
+        "question_score": 0,
+        "answer_score": 0.071,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
+        ]
+      },
+      {
+        "id": "K125-0212~K125-0216",
+        "a": "K125-0212",
+        "b": "K125-0216",
+        "question_score": 0.071,
+        "answer_score": 0.024,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？",
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
+        ]
+      },
+      {
         "id": "K90-050~K94-011",
         "a": "K90-050",
         "b": "K94-011",
@@ -400851,6 +403347,62 @@
         "questions": [
           "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？",
           "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？"
+        ]
+      },
+      {
+        "id": "K125-0204~K125-0205",
+        "a": "K125-0204",
+        "b": "K125-0205",
+        "question_score": 0,
+        "answer_score": 0.07,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？"
+        ]
+      },
+      {
+        "id": "K125-0204~K125-0215",
+        "a": "K125-0204",
+        "b": "K125-0215",
+        "question_score": 0,
+        "answer_score": 0.07,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
+        ]
+      },
+      {
+        "id": "K125-0208~K125-0216",
+        "a": "K125-0208",
+        "b": "K125-0216",
+        "question_score": 0,
+        "answer_score": 0.07,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？",
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
+        ]
+      },
+      {
+        "id": "K125-0211~K125-0212",
+        "a": "K125-0211",
+        "b": "K125-0212",
+        "question_score": 0.07,
+        "answer_score": 0.045,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？",
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？"
         ]
       },
       {
@@ -401019,6 +403571,20 @@
         "questions": [
           "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？",
           "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
+        ]
+      },
+      {
+        "id": "K125-0210~K125-0211",
+        "a": "K125-0210",
+        "b": "K125-0211",
+        "question_score": 0.069,
+        "answer_score": 0.066,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？",
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？"
         ]
       },
       {
@@ -401285,6 +403851,20 @@
         "questions": [
           "如果航班改從羽田T3走，價目上的一天又從哪裡算？",
           "寄物樓層關了，包留到隔天增加的費用還有人算嗎？"
+        ]
+      },
+      {
+        "id": "K125-0210~K125-0212",
+        "a": "K125-0210",
+        "b": "K125-0212",
+        "question_score": 0.068,
+        "answer_score": 0.035,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？",
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？"
         ]
       },
       {
@@ -401635,6 +404215,20 @@
         "questions": [
           "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？",
           "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
+        ]
+      },
+      {
+        "id": "K125-0204~K125-0209",
+        "a": "K125-0204",
+        "b": "K125-0209",
+        "question_score": 0.033,
+        "answer_score": 0.066,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？"
         ]
       },
       {
@@ -402212,6 +404806,20 @@
         ]
       },
       {
+        "id": "K125-0206~K125-0207",
+        "a": "K125-0206",
+        "b": "K125-0207",
+        "question_score": 0.063,
+        "answer_score": 0.034,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？",
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？"
+        ]
+      },
+      {
         "id": "K66-006~K66-013",
         "a": "K66-006",
         "b": "K66-013",
@@ -402492,6 +405100,34 @@
         ]
       },
       {
+        "id": "K125-0207~K125-0213",
+        "a": "K125-0207",
+        "b": "K125-0213",
+        "question_score": 0.061,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？",
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？"
+        ]
+      },
+      {
+        "id": "K125-0209~K125-0216",
+        "a": "K125-0209",
+        "b": "K125-0216",
+        "question_score": 0,
+        "answer_score": 0.061,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？",
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
+        ]
+      },
+      {
         "id": "L054~V3027",
         "a": "L054",
         "b": "V3027",
@@ -402688,6 +405324,20 @@
         ]
       },
       {
+        "id": "K125-0211~K125-0217",
+        "a": "K125-0211",
+        "b": "K125-0217",
+        "question_score": 0.06,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
+        ]
+      },
+      {
         "id": "I3024~I3029",
         "a": "I3024",
         "b": "I3029",
@@ -402769,6 +405419,34 @@
         "questions": [
           "晚上九點把小包放進成田一般日租小櫃，凌晨一點取，為什麼四小時要付800日圓？",
           "在成田已預約一整天的MULTIECUBE，能先開一次拿外套、晚上再回同一格拿包嗎？"
+        ]
+      },
+      {
+        "id": "K125-0210~K125-0216",
+        "a": "K125-0210",
+        "b": "K125-0216",
+        "question_score": 0.035,
+        "answer_score": 0.059,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？",
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
+        ]
+      },
+      {
+        "id": "K125-0212~K125-0217",
+        "a": "K125-0212",
+        "b": "K125-0217",
+        "question_score": 0.059,
+        "answer_score": 0.01,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
         ]
       },
       {
@@ -403259,6 +405937,48 @@
         "questions": [
           "在成田T2，安檢前的三樓和二樓都列一般櫃；凌晨一點該把取件路線畫在哪一層？",
           "在成田已預約一整天的MULTIECUBE，能先開一次拿外套、晚上再回同一格拿包嗎？"
+        ]
+      },
+      {
+        "id": "K125-0203~K125-0215",
+        "a": "K125-0203",
+        "b": "K125-0215",
+        "question_score": 0,
+        "answer_score": 0.057,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
+        ]
+      },
+      {
+        "id": "K125-0204~K125-0217",
+        "a": "K125-0204",
+        "b": "K125-0217",
+        "question_score": 0,
+        "answer_score": 0.057,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
+        ]
+      },
+      {
+        "id": "K125-0206~K125-0212",
+        "a": "K125-0206",
+        "b": "K125-0212",
+        "question_score": 0.033,
+        "answer_score": 0.057,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？",
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？"
         ]
       },
       {
@@ -404452,6 +407172,34 @@
         ]
       },
       {
+        "id": "K125-0202~K125-0206",
+        "a": "K125-0202",
+        "b": "K125-0206",
+        "question_score": 0,
+        "answer_score": 0.052,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？"
+        ]
+      },
+      {
+        "id": "K125-0204~K125-0211",
+        "a": "K125-0204",
+        "b": "K125-0211",
+        "question_score": 0,
+        "answer_score": 0.052,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？"
+        ]
+      },
+      {
         "id": "A26001~A26002",
         "a": "A26001",
         "b": "A26002",
@@ -404984,6 +407732,20 @@
         ]
       },
       {
+        "id": "K125-0206~K125-0217",
+        "a": "K125-0206",
+        "b": "K125-0217",
+        "question_score": 0,
+        "answer_score": 0.049,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
+        ]
+      },
+      {
         "id": "L085~L47-001",
         "a": "L085",
         "b": "L47-001",
@@ -405191,6 +407953,34 @@
         "questions": [
           "上野站的Metro Commerce一般櫃也在凌晨兩點多算一天，可以跟成田T2的多功能櫃一樣兩點前隨時回去嗎？",
           "回到成田，同一個小包改成上午九點到下午四點，原來最便宜的計時櫃還能贏嗎？"
+        ]
+      },
+      {
+        "id": "K125-0201~K125-0215",
+        "a": "K125-0201",
+        "b": "K125-0215",
+        "question_score": 0.032,
+        "answer_score": 0.048,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
+        ]
+      },
+      {
+        "id": "K125-0208~K125-0213",
+        "a": "K125-0208",
+        "b": "K125-0213",
+        "question_score": 0,
+        "answer_score": 0.048,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？",
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？"
         ]
       },
       {
@@ -405978,6 +408768,34 @@
         ]
       },
       {
+        "id": "K125-0202~K125-0216",
+        "a": "K125-0202",
+        "b": "K125-0216",
+        "question_score": 0,
+        "answer_score": 0.044,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
+        ]
+      },
+      {
+        "id": "K125-0204~K125-0216",
+        "a": "K125-0204",
+        "b": "K125-0216",
+        "question_score": 0,
+        "answer_score": 0.044,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
+        ]
+      },
+      {
         "id": "P076~P077",
         "a": "P076",
         "b": "P077",
@@ -406255,6 +409073,20 @@
         "questions": [
           "同一只背包改放在成田T2地下一樓，怎麼有一台只算300日圓？",
           "另一台寄物機同樣感應付款，為什麼面板沒吐出任何取件紙？"
+        ]
+      },
+      {
+        "id": "K125-0210~K125-0215",
+        "a": "K125-0210",
+        "b": "K125-0215",
+        "question_score": 0.033,
+        "answer_score": 0.043,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？",
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
         ]
       },
       {
@@ -406846,6 +409678,20 @@
         ]
       },
       {
+        "id": "K125-0205~K125-0211",
+        "a": "K125-0205",
+        "b": "K125-0211",
+        "question_score": 0.036,
+        "answer_score": 0.041,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？",
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？"
+        ]
+      },
+      {
         "id": "L62-002~R37007",
         "a": "R37007",
         "b": "L62-002",
@@ -407025,6 +409871,34 @@
         "questions": [
           "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
           "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
+        "id": "K125-0201~K125-0216",
+        "a": "K125-0201",
+        "b": "K125-0216",
+        "question_score": 0,
+        "answer_score": 0.04,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
+        ]
+      },
+      {
+        "id": "K125-0210~K125-0217",
+        "a": "K125-0210",
+        "b": "K125-0217",
+        "question_score": 0.029,
+        "answer_score": 0.04,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
         ]
       },
       {
@@ -407249,6 +410123,20 @@
         "questions": [
           "阪急有一班車把小石庭搬進車廂，為什麼看起來更像觀光專車，反而不必買座席券？",
           "改搭近鐵的特急去奈良，如果我願意站著，可以省下特急券嗎？"
+        ]
+      },
+      {
+        "id": "K125-0202~K125-0207",
+        "a": "K125-0202",
+        "b": "K125-0207",
+        "question_score": 0.039,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？"
         ]
       },
       {
@@ -407826,6 +410714,20 @@
         ]
       },
       {
+        "id": "K125-0205~K125-0216",
+        "a": "K125-0205",
+        "b": "K125-0216",
+        "question_score": 0.037,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？",
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
+        ]
+      },
+      {
         "id": "L74-079~L74-080",
         "a": "L74-079",
         "b": "L74-080",
@@ -408145,6 +411047,62 @@
         "questions": [
           "如果不想用機器，改在成田T2三樓找人寄包，深夜能下到一樓拿嗎？",
           "如果把留在上野的一天延長成一週，同一扇櫃門還會替你保留七天嗎？"
+        ]
+      },
+      {
+        "id": "K125-0203~K125-0211",
+        "a": "K125-0203",
+        "b": "K125-0211",
+        "question_score": 0.036,
+        "answer_score": 0.024,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？"
+        ]
+      },
+      {
+        "id": "K125-0205~K125-0212",
+        "a": "K125-0205",
+        "b": "K125-0212",
+        "question_score": 0.036,
+        "answer_score": 0.022,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？",
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？"
+        ]
+      },
+      {
+        "id": "K125-0208~K125-0209",
+        "a": "K125-0208",
+        "b": "K125-0209",
+        "question_score": 0.036,
+        "answer_score": 0.023,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？",
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？"
+        ]
+      },
+      {
+        "id": "K125-0211~K125-0216",
+        "a": "K125-0211",
+        "b": "K125-0216",
+        "question_score": 0.036,
+        "answer_score": 0.011,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？",
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
         ]
       },
       {
@@ -408652,6 +411610,48 @@
         ]
       },
       {
+        "id": "K125-0205~K125-0215",
+        "a": "K125-0205",
+        "b": "K125-0215",
+        "question_score": 0.034,
+        "answer_score": 0.01,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？",
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
+        ]
+      },
+      {
+        "id": "K125-0211~K125-0214",
+        "a": "K125-0211",
+        "b": "K125-0214",
+        "question_score": 0,
+        "answer_score": 0.034,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？",
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
+        ]
+      },
+      {
+        "id": "K125-0213~K125-0215",
+        "a": "K125-0213",
+        "b": "K125-0215",
+        "question_score": 0.03,
+        "answer_score": 0.034,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？",
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
+        ]
+      },
+      {
         "id": "K116-0202~K116-0216",
         "a": "K116-0202",
         "b": "K116-0216",
@@ -408915,6 +411915,62 @@
         "questions": [
           "如果把留在上野的一天延長成一週，同一扇櫃門還會替你保留七天嗎？",
           "回到成田，同一個小包改成上午九點到下午四點，原來最便宜的計時櫃還能贏嗎？"
+        ]
+      },
+      {
+        "id": "K125-0206~K125-0210",
+        "a": "K125-0206",
+        "b": "K125-0210",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？",
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？"
+        ]
+      },
+      {
+        "id": "K125-0209~K125-0215",
+        "a": "K125-0209",
+        "b": "K125-0215",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？",
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
+        ]
+      },
+      {
+        "id": "K125-0212~K125-0214",
+        "a": "K125-0212",
+        "b": "K125-0214",
+        "question_score": 0.033,
+        "answer_score": 0.024,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？",
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
+        ]
+      },
+      {
+        "id": "K125-0212~K125-0215",
+        "a": "K125-0212",
+        "b": "K125-0215",
+        "question_score": 0.033,
+        "answer_score": 0.022,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？",
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
         ]
       },
       {
@@ -409184,6 +412240,62 @@
         ]
       },
       {
+        "id": "K125-0205~K125-0207",
+        "a": "K125-0205",
+        "b": "K125-0207",
+        "question_score": 0,
+        "answer_score": 0.032,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？",
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？"
+        ]
+      },
+      {
+        "id": "K125-0205~K125-0213",
+        "a": "K125-0205",
+        "b": "K125-0213",
+        "question_score": 0.032,
+        "answer_score": 0.011,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？",
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？"
+        ]
+      },
+      {
+        "id": "K125-0211~K125-0213",
+        "a": "K125-0211",
+        "b": "K125-0213",
+        "question_score": 0.032,
+        "answer_score": 0.024,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？",
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？"
+        ]
+      },
+      {
+        "id": "K125-0213~K125-0216",
+        "a": "K125-0213",
+        "b": "K125-0216",
+        "question_score": 0.032,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？",
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
+        ]
+      },
+      {
         "id": "K90-036~T52-002",
         "a": "T52-002",
         "b": "K90-036",
@@ -409293,6 +412405,62 @@
         "questions": [
           "在新宿高速巴士總站用信用卡寄包，結帳後掉出的小紙條能先丟嗎？",
           "在成田已預約一整天的MULTIECUBE，能先開一次拿外套、晚上再回同一格拿包嗎？"
+        ]
+      },
+      {
+        "id": "K125-0202~K125-0208",
+        "a": "K125-0202",
+        "b": "K125-0208",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？"
+        ]
+      },
+      {
+        "id": "K125-0209~K125-0212",
+        "a": "K125-0209",
+        "b": "K125-0212",
+        "question_score": 0.031,
+        "answer_score": 0.012,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？",
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？"
+        ]
+      },
+      {
+        "id": "K125-0210~K125-0213",
+        "a": "K125-0210",
+        "b": "K125-0213",
+        "question_score": 0.031,
+        "answer_score": 0.025,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？",
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？"
+        ]
+      },
+      {
+        "id": "K125-0212~K125-0213",
+        "a": "K125-0212",
+        "b": "K125-0213",
+        "question_score": 0.031,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？",
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？"
         ]
       },
       {
@@ -409492,6 +412660,90 @@
         ]
       },
       {
+        "id": "K125-0201~K125-0209",
+        "a": "K125-0201",
+        "b": "K125-0209",
+        "question_score": 0.03,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？"
+        ]
+      },
+      {
+        "id": "K125-0202~K125-0215",
+        "a": "K125-0202",
+        "b": "K125-0215",
+        "question_score": 0,
+        "answer_score": 0.03,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+          "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
+        ]
+      },
+      {
+        "id": "K125-0205~K125-0217",
+        "a": "K125-0205",
+        "b": "K125-0217",
+        "question_score": 0.03,
+        "answer_score": 0.009,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
+        ]
+      },
+      {
+        "id": "K125-0206~K125-0209",
+        "a": "K125-0206",
+        "b": "K125-0209",
+        "question_score": 0.03,
+        "answer_score": 0.023,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？",
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？"
+        ]
+      },
+      {
+        "id": "K125-0206~K125-0213",
+        "a": "K125-0206",
+        "b": "K125-0213",
+        "question_score": 0.03,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？",
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？"
+        ]
+      },
+      {
+        "id": "K125-0209~K125-0214",
+        "a": "K125-0209",
+        "b": "K125-0214",
+        "question_score": 0.03,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？",
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
+        ]
+      },
+      {
         "id": "K100-012~P099",
         "a": "P099",
         "b": "K100-012",
@@ -409615,6 +412867,20 @@
         "questions": [
           "同樣在近鐵京都站等「急行」，為什麼早上六點這一班和十四分那一班不能只看車種選？",
           "南海 Rapi:t 的座位明明寫 Regular，為什麼不能照 Southern 自由席的方式上車？"
+        ]
+      },
+      {
+        "id": "K125-0209~K125-0213",
+        "a": "K125-0209",
+        "b": "K125-0213",
+        "question_score": 0.029,
+        "answer_score": 0.025,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？",
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？"
         ]
       },
       {
@@ -409814,6 +413080,20 @@
         ]
       },
       {
+        "id": "K125-0201~K125-0213",
+        "a": "K125-0201",
+        "b": "K125-0213",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？"
+        ]
+      },
+      {
         "id": "R36008~R36009",
         "a": "R36008",
         "b": "R36009",
@@ -409898,6 +413178,20 @@
         ]
       },
       {
+        "id": "K125-0213~K125-0217",
+        "a": "K125-0213",
+        "b": "K125-0217",
+        "question_score": 0.027,
+        "answer_score": 0.022,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
+        ]
+      },
+      {
         "id": "K92-053~P234",
         "a": "P234",
         "b": "K92-053",
@@ -409979,6 +413273,20 @@
         "questions": [
           "為什麼成田計時小櫃凌晨三點整取要300，三點零一分卻是700？",
           "在新宿高速巴士總站用信用卡寄包，結帳後掉出的小紙條能先丟嗎？"
+        ]
+      },
+      {
+        "id": "K125-0203~K125-0213",
+        "a": "K125-0203",
+        "b": "K125-0213",
+        "question_score": 0,
+        "answer_score": 0.026,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？"
         ]
       },
       {
@@ -410192,6 +413500,20 @@
         ]
       },
       {
+        "id": "K125-0201~K125-0206",
+        "a": "K125-0201",
+        "b": "K125-0206",
+        "question_score": 0,
+        "answer_score": 0.025,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？"
+        ]
+      },
+      {
         "id": "K91-001~K91-004",
         "a": "K91-001",
         "b": "K91-004",
@@ -410388,6 +413710,48 @@
         ]
       },
       {
+        "id": "K125-0201~K125-0202",
+        "a": "K125-0201",
+        "b": "K125-0202",
+        "question_score": 0,
+        "answer_score": 0.024,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？"
+        ]
+      },
+      {
+        "id": "K125-0203~K125-0206",
+        "a": "K125-0203",
+        "b": "K125-0206",
+        "question_score": 0,
+        "answer_score": 0.024,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？"
+        ]
+      },
+      {
+        "id": "K125-0207~K125-0216",
+        "a": "K125-0207",
+        "b": "K125-0216",
+        "question_score": 0,
+        "answer_score": 0.024,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？",
+          "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
+        ]
+      },
+      {
         "id": "K116-0201~K116-0210",
         "a": "K116-0201",
         "b": "K116-0210",
@@ -410525,6 +413889,48 @@
         "questions": [
           "還在同一座T2地下一樓，看見MULTIECUBE字樣，九點到一點又該付多少？",
           "寄物樓層關了，包留到隔天增加的費用還有人算嗎？"
+        ]
+      },
+      {
+        "id": "K125-0204~K125-0213",
+        "a": "K125-0204",
+        "b": "K125-0213",
+        "question_score": 0,
+        "answer_score": 0.023,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？"
+        ]
+      },
+      {
+        "id": "K125-0207~K125-0210",
+        "a": "K125-0207",
+        "b": "K125-0210",
+        "question_score": 0,
+        "answer_score": 0.023,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？",
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？"
+        ]
+      },
+      {
+        "id": "K125-0209~K125-0211",
+        "a": "K125-0209",
+        "b": "K125-0211",
+        "question_score": 0,
+        "answer_score": 0.023,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？",
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？"
         ]
       },
       {
@@ -410752,6 +414158,62 @@
         ]
       },
       {
+        "id": "K125-0202~K125-0214",
+        "a": "K125-0202",
+        "b": "K125-0214",
+        "question_score": 0,
+        "answer_score": 0.022,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
+        ]
+      },
+      {
+        "id": "K125-0207~K125-0211",
+        "a": "K125-0207",
+        "b": "K125-0211",
+        "question_score": 0,
+        "answer_score": 0.022,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？",
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？"
+        ]
+      },
+      {
+        "id": "K125-0208~K125-0210",
+        "a": "K125-0208",
+        "b": "K125-0210",
+        "question_score": 0,
+        "answer_score": 0.022,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？",
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？"
+        ]
+      },
+      {
+        "id": "K125-0208~K125-0211",
+        "a": "K125-0208",
+        "b": "K125-0211",
+        "question_score": 0,
+        "answer_score": 0.022,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？",
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？"
+        ]
+      },
+      {
         "id": "K120-0206~K120-0216",
         "a": "K120-0206",
         "b": "K120-0216",
@@ -410833,6 +414295,48 @@
         "questions": [
           "在新宿高速巴士總站用信用卡寄包，結帳後掉出的小紙條能先丟嗎？",
           "回到成田，同一個小包改成上午九點到下午四點，原來最便宜的計時櫃還能贏嗎？"
+        ]
+      },
+      {
+        "id": "K125-0205~K125-0206",
+        "a": "K125-0205",
+        "b": "K125-0206",
+        "question_score": 0,
+        "answer_score": 0.021,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？",
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？"
+        ]
+      },
+      {
+        "id": "K125-0205~K125-0208",
+        "a": "K125-0205",
+        "b": "K125-0208",
+        "question_score": 0,
+        "answer_score": 0.021,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？",
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？"
+        ]
+      },
+      {
+        "id": "K125-0209~K125-0217",
+        "a": "K125-0209",
+        "b": "K125-0217",
+        "question_score": 0,
+        "answer_score": 0.021,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
         ]
       },
       {
@@ -410931,6 +414435,20 @@
         "questions": [
           "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？",
           "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
+        ]
+      },
+      {
+        "id": "K125-0202~K125-0217",
+        "a": "K125-0202",
+        "b": "K125-0217",
+        "question_score": 0,
+        "answer_score": 0.019,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+          "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
         ]
       },
       {
@@ -411662,6 +415180,34 @@
         ]
       },
       {
+        "id": "K125-0201~K125-0210",
+        "a": "K125-0201",
+        "b": "K125-0210",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？"
+        ]
+      },
+      {
+        "id": "K125-0201~K125-0212",
+        "a": "K125-0201",
+        "b": "K125-0212",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？"
+        ]
+      },
+      {
         "id": "R43005~R43009",
         "a": "R43005",
         "b": "R43009",
@@ -412068,6 +415614,62 @@
         ]
       },
       {
+        "id": "K125-0201~K125-0205",
+        "a": "K125-0201",
+        "b": "K125-0205",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？"
+        ]
+      },
+      {
+        "id": "K125-0201~K125-0211",
+        "a": "K125-0201",
+        "b": "K125-0211",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？"
+        ]
+      },
+      {
+        "id": "K125-0207~K125-0209",
+        "a": "K125-0207",
+        "b": "K125-0209",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？",
+          "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？"
+        ]
+      },
+      {
+        "id": "K125-0208~K125-0212",
+        "a": "K125-0208",
+        "b": "K125-0212",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "相機設成L、相館也點L，難道就能保證合照不裁邊？",
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？"
+        ]
+      },
+      {
         "id": "P64-025~P64-028",
         "a": "P64-025",
         "b": "P64-028",
@@ -412317,6 +415919,48 @@
         "questions": [
           "如果把留在上野的一天延長成一週，同一扇櫃門還會替你保留七天嗎？",
           "同樣打算凌晨一點拿包，為了先留一格，成田多功能小櫃的400日圓為什麼會變成900？"
+        ]
+      },
+      {
+        "id": "K125-0202~K125-0212",
+        "a": "K125-0202",
+        "b": "K125-0212",
+        "question_score": 0,
+        "answer_score": 0.011,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？"
+        ]
+      },
+      {
+        "id": "K125-0202~K125-0213",
+        "a": "K125-0202",
+        "b": "K125-0213",
+        "question_score": 0,
+        "answer_score": 0.011,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
+          "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？"
+        ]
+      },
+      {
+        "id": "K125-0206~K125-0211",
+        "a": "K125-0206",
+        "b": "K125-0211",
+        "question_score": 0,
+        "answer_score": 0.011,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？",
+          "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？"
         ]
       },
       {
@@ -413717,6 +417361,48 @@
         "questions": [
           "在成田T2，安檢前的三樓和二樓都列一般櫃；凌晨一點該把取件路線畫在哪一層？",
           "在新宿高速巴士總站用信用卡寄包，結帳後掉出的小紙條能先丟嗎？"
+        ]
+      },
+      {
+        "id": "K125-0205~K125-0214",
+        "a": "K125-0205",
+        "b": "K125-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "L紙和相格都不能換，往下移動照片，能把剛被裁掉的帽尖救回來嗎？",
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
+        ]
+      },
+      {
+        "id": "K125-0207~K125-0212",
+        "a": "K125-0207",
+        "b": "K125-0212",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？",
+          "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？"
+        ]
+      },
+      {
+        "id": "K125-0210~K125-0214",
+        "a": "K125-0210",
+        "b": "K125-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？",
+          "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
         ]
       },
       {
@@ -415194,10 +418880,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-19-pool-7433",
-    "target_count": 7433,
+    "revision": "2026-11-19-pool-7469",
+    "target_count": 7469,
     "reviewed_on": "2026-11-19",
-    "reason": "第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -422631,7 +426317,43 @@
       "K124-0213",
       "K124-0214",
       "K124-0215",
-      "K124-0216"
+      "K124-0216",
+      "K125-0001",
+      "K125-0002",
+      "K125-0003",
+      "K125-0004",
+      "K125-0005",
+      "K125-0006",
+      "K125-0007",
+      "K125-0008",
+      "K125-0009",
+      "K125-0010",
+      "K125-0011",
+      "K125-0012",
+      "K125-0401",
+      "K125-0402",
+      "K125-0403",
+      "K125-0404",
+      "K125-0405",
+      "K125-0406",
+      "K125-0407",
+      "K125-0201",
+      "K125-0202",
+      "K125-0203",
+      "K125-0204",
+      "K125-0205",
+      "K125-0206",
+      "K125-0207",
+      "K125-0208",
+      "K125-0209",
+      "K125-0210",
+      "K125-0211",
+      "K125-0212",
+      "K125-0213",
+      "K125-0214",
+      "K125-0215",
+      "K125-0216",
+      "K125-0217"
     ],
     "overflow": [
       {
@@ -425740,6 +429462,76 @@
       ],
       "origin": "wave124-research-20261119",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+    },
+    {
+      "id": "X125E-NA001",
+      "question": "鋼琴中踏板在一台琴留下剛壓住的低音，另一台怎麼讓整段練習變小聲？",
+      "existing_ids": [
+        "K118-0007"
+      ],
+      "reason": "同樣是平台琴選擇延音與特定直立琴練習踏板的功能對照，換同類琴款也沒有改變答案。",
+      "origin": "wave125-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json"
+    },
+    {
+      "id": "X125E-NA002",
+      "question": "從包裝取出的縫紉機針，兩道色環能同時告訴我針種和針號嗎？",
+      "existing_ids": [
+        "K121-0003"
+      ],
+      "reason": "原題已解釋同品牌上下色環的分工，此次只保留另一個獨立的針尖與線圈機制。",
+      "origin": "wave125-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json"
+    },
+    {
+      "id": "X125E-NA003",
+      "question": "洗標畫有叉、點、底線，哪個決定可以怎麼洗？",
+      "existing_ids": [
+        "K108-0201"
+      ],
+      "reason": "前批已拆解基本圖形及叉、底線、點的標記意義，改換另一件衣服仍須覆述同一套符號。",
+      "origin": "wave125-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave125-everyday-20261119.json"
+    },
+    {
+      "id": "X125M-NA01",
+      "question": "走英國鄉間步道，同一地點的四位格網參考改成六位，怎麼把找路的方格縮小？",
+      "reason": "原來如此 K120-0402 已用 TL 6233 與 TL 625 333 解釋同一格網讀數的東距與北距多一位便縮小定位格。",
+      "existing_ids": [
+        "K120-0402"
+      ],
+      "origin": "wave125-maps-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave125-maps-20261119.json"
+    },
+    {
+      "id": "X125M-NA02",
+      "question": "在舊金山看見負的低潮高度，是水面真的低於海圖的零嗎？",
+      "reason": "原來如此 K120-0404 已用舊金山低潮預報與海圖基準說明零點，換成讀圖視角仍在問同一答案。",
+      "existing_ids": [
+        "K120-0404"
+      ],
+      "origin": "wave125-maps-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave125-maps-20261119.json"
+    },
+    {
+      "id": "X125D-NA01",
+      "question": "要把合照交給家人，移除拍攝地點一定要停用相機定位嗎？",
+      "reason": "查詢相簿的送出選項時遇到既有K115-0209；本批只研究畫面與紙邊。",
+      "existing_ids": [
+        "K115-0209"
+      ],
+      "origin": "wave125-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+    },
+    {
+      "id": "X125D-NA02",
+      "question": "要送印時翻相機記憶卡，DCIM底下的資料夾與檔名如何分類？",
+      "reason": "既有K108-0415已收影像資料夾和命名規則。",
+      "existing_ids": [
+        "K108-0415"
+      ],
+      "origin": "wave125-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
     },
     {
       "question": "只看恆星晃動，怎麼找看不見的行星？",
