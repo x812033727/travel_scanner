@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-19-pool-7182",
+  "revision": "2026-11-19-pool-7218",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,22 +12,22 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 7646,
-    "canonical_questions": 7486,
-    "eligible_candidates": 7293,
-    "selected_candidates": 7182,
+    "raw_records": 7682,
+    "canonical_questions": 7522,
+    "eligible_candidates": 7329,
+    "selected_candidates": 7218,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 8135,
-    "current_research_source_urls": 5200,
-    "selected_source_urls": 6150,
-    "new_suggestions_not_added": 3430,
+    "source_urls": 8175,
+    "current_research_source_urls": 5240,
+    "selected_source_urls": 6190,
+    "new_suggestions_not_added": 3435,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1710,
-        "selected": 1680
+        "canonical": 1718,
+        "selected": 1688
       },
       "生物動物與植物": {
         "canonical": 1506,
@@ -42,16 +42,16 @@
         "selected": 1295
       },
       "飲食與廚房科學": {
-        "canonical": 489,
-        "selected": 483
+        "canonical": 491,
+        "selected": 485
       },
       "人體感官與日常行為": {
         "canonical": 560,
         "selected": 548
       },
       "建築交通與商業制度": {
-        "canonical": 905,
-        "selected": 743
+        "canonical": 931,
+        "selected": 769
       }
     }
   },
@@ -1909,6 +1909,18 @@
       "sha256": "a68ea26387854d0e9823fc996a2245b9e5c9be89780db3ee628302ac4aa2bffc"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave118-books-20261119.json",
+      "sha256": "42c425c70f69d2c7c0dbedfc7a4bc65ed492fc9d16b4289e5a584f1fbaa0777f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json",
+      "sha256": "6e2f5c76e79fbb2df56048f52d90c615ce6182769abbd0329f088dc15b7ced55"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json",
+      "sha256": "ac1e17acfe1693f0fab9c3d2fa22ea5a38f15cbbcf2ebb76284330ce5d62d0e7"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json",
       "sha256": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70"
     },
@@ -3210,12 +3222,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "57dd7121db2e47cb9f36f604e2b1066c8c5f33ad613ba3cb72982d1ec682fbf0"
+      "sha256": "6a50a50b828e90bdb8febfe7179a26d4a242391e748069f9e043f481735da398"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 8135
+    "count": 8175
   },
   "candidates": [
     {
@@ -121395,6 +121407,1668 @@
       "question_variants": [],
       "provenance_ids": [
         "K117-0218"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0401",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "日本書店替一本沒改版的書調整定價，為什麼書號照舊，封底卻要重做兩排條碼？",
+      "mechanism_key": "x118.book.japanese_double_barcode_price",
+      "answer_target": "按日本書籍 JAN 的二段式規格，上面一排是 ISBN；下面以 192 開頭，後面帶日本圖書分類和未稅本體價。單改定價不換 ISBN，但出版方必須改價格標記並重做一整組條碼。於是同一版書的新舊兩本攤在一起，上排相同，下排可不同。",
+      "scope": "限採用日本書籍 JAN 的出版物和出版方改定價。店內特價與含稅結帳額另看。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "封底上排跟著書的版本走，下排裡還帶著定價。",
+        "visual": "並排兩張自製封底，把兩條掃描帶分上、下排，先遮住下排再比對改價前後。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X118P-S01 書籍JANコードの構成二段示意；X118P-S02 FAQ 111；X118P-S03 A change in price。",
+      "notes": "以自製版權頁、館藏畫面或卡片示意，不複製書影。",
+      "origin": "wave118-books-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4870cd4ffb493b21",
+          "origin": "wave118-books-20261119",
+          "locator": "X118P-S01 書籍JANコードの構成二段示意；X118P-S02 FAQ 111；X118P-S03 A change in price。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-7688d19c34515ba9",
+          "origin": "wave118-books-20261119",
+          "locator": "X118P-S01 書籍JANコードの構成二段示意；X118P-S02 FAQ 111；X118P-S03 A change in price。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3244ea5c04bd8f19",
+          "origin": "wave118-books-20261119",
+          "locator": "X118P-S01 書籍JANコードの構成二段示意；X118P-S02 FAQ 111；X118P-S03 A change in price。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-books-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0401"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0402",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "出版社把賣完的書再印一批，哪種情況會讓書店非得多開一個 ISBN？",
+      "mechanism_key": "x118.book.isbn_reprint_or_new_binding",
+      "answer_target": "在同一出版社，內文與裝訂都沒變的原樣重印要沿用原 ISBN。若把原來的精裝書另出平裝，客人可以指定不同裝訂訂購，兩種就要用不同 ISBN。看一排書號，不能只憑總共印了幾批猜有幾個號。",
+      "scope": "用同出版社、同語言的紙本案例隔開版式與印次兩個變因。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "ISBN 讓書店交付客人訂的那一種裝訂。",
+        "visual": "用同一張訂單先選第二刷的精裝，再換成平裝，畫出庫房應該拿哪個產品。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X118P-S03 A change of format 與 A reprint。",
+      "notes": "以自製版權頁、館藏畫面或卡片示意，不複製書影。",
+      "origin": "wave118-books-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-3244ea5c04bd8f19",
+          "origin": "wave118-books-20261119",
+          "locator": "X118P-S03 A change of format 與 A reprint。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-books-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0402"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0403",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "圖書館買了兩本 ISBN 完全相同的書，借走其中一本時，系統怎麼知道另一本還能借？",
+      "mechanism_key": "x118.book.library_item_vs_title",
+      "answer_target": "在 Koha 裡，同一筆書目可掛兩筆實體館藏。批次新增複本時能給每本不同的館藏條碼。借出時掃的是拿到櫃台那一本的館藏碼，借閱就記在該件上；同版的另一本有自己的紀錄。",
+      "scope": "以 Koha 的館藏條碼流程為例，假設另一本原本可借且沒有其他限制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "書號認同一版，借閱紀錄認手上這一本。",
+        "visual": "把印刷廠印的相同 ISBN 放一起，再翻到館方貼的不同條碼，掃一本時只翻轉它的狀態牌。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118P-S03 A reprint；X118P-S04 Item records／Add multiple copies of this item；X118P-S05 Checking items out。",
+      "notes": "以自製版權頁、館藏畫面或卡片示意，不複製書影。",
+      "origin": "wave118-books-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-3244ea5c04bd8f19",
+          "origin": "wave118-books-20261119",
+          "locator": "X118P-S03 A reprint；X118P-S04 Item records／Add multiple copies of this item；X118P-S05 Checking items out。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6464a3ddcca009f6",
+          "origin": "wave118-books-20261119",
+          "locator": "X118P-S03 A reprint；X118P-S04 Item records／Add multiple copies of this item；X118P-S05 Checking items out。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0945ffb33bbeb02e",
+          "origin": "wave118-books-20261119",
+          "locator": "X118P-S03 A reprint；X118P-S04 Item records／Add multiple copies of this item；X118P-S05 Checking items out。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-books-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0403"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0404",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "新書還在印，版權頁怎麼已經有「國家圖書館出版品預行編目」資料？",
+      "mechanism_key": "x118.book.cip_before_and_after_deposit",
+      "answer_target": "出版前，出版社先將清樣或書名頁、目次等資料送給國圖。編目人員可以先描述這本即將問世的書，讓出版方把紀錄印入書內。若定稿後書名、定價或裝訂等資料有變，國圖收下實際送存的書，會依實物更新系統；已經印好的那一頁仍呈現當時的紀錄。",
+      "scope": "依台灣國圖程序。用書中固定下來的資料與可更新的線上書目做對照，沒有假設每本書都須印 CIP。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一筆資料有兩個時刻：送印之前編，收到成書還能校正。",
+        "visual": "拿一張編目卡依序經過清樣、印刷機與送存櫃台，最後只修改螢幕上的欄位。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118P-S06 簡介；X118P-S07 ISBN Q&A 第 8 問。",
+      "notes": "以自製版權頁、館藏畫面或卡片示意，不複製書影。",
+      "origin": "wave118-books-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-998241dce9d4c973",
+          "origin": "wave118-books-20261119",
+          "locator": "X118P-S06 簡介；X118P-S07 ISBN Q&A 第 8 問。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-004c80aeda69562b",
+          "origin": "wave118-books-20261119",
+          "locator": "X118P-S06 簡介；X118P-S07 ISBN Q&A 第 8 問。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-books-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0404"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0405",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "舞蹈期刊 Dance Research 的紙本和線上版明明各有刊號，圖書館怎麼把兩種一起找出來？",
+      "mechanism_key": "x118.book.issnl_groups_media",
+      "answer_target": "國際 ISSN 中心以 Dance Research 示範：紙本號是 0264-2875，線上號是 1750-0095。紙本和線上的紀錄另可用同一個連結號 ISSN-L 歸在一起，本例是 0264-2875。資料庫能按個別 ISSN 分辨載體，也能按連結號把兩個版本一起找出來。",
+      "scope": "依 ISSN 中心的雙載體例子；不將紙本號等於連結號視為所有刊物的固定做法。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "指定讀哪一版和一次找出所有載體，是兩種查法。",
+        "visual": "將紙本與螢幕各自的號碼寫在兩張卡，再以共同的 ISSN-L 對齊兩張卡。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118P-S08 Publication on two media 的 Dance research 與 Why an ISSN-L?。",
+      "notes": "以自製版權頁、館藏畫面或卡片示意，不複製書影。",
+      "origin": "wave118-books-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-7f26e6e3eb3d8a43",
+          "origin": "wave118-books-20261119",
+          "locator": "X118P-S08 Publication on two media 的 Dance research 與 Why an ISSN-L?。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-books-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0405"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0406",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "你只缺一套書的下冊，為什麼拿整套的 ISBN 去訂，書店有可能把上下兩冊都送來？",
+      "mechanism_key": "x118.book.separate_volume_and_set_ordering",
+      "answer_target": "國際 ISBN 指引要求多冊作品的整套有一個 ISBN；若上下冊也分開出售，各冊還要各有自己的號。整套的號辨認整套商品，單冊的號讓書店在訂購、補貨或處理退換時指明哪一冊。",
+      "scope": "以整套和各冊都能單買的套書為例。只賣整套時，指引對單冊編號採建議措辭。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "訂一套和補一冊，訂單指向的是不同商品。",
+        "visual": "把成套盒裝和拆售的兩冊排成三個可訂購品，讓讀者選該抄哪一個號。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X118P-S03 Assigning ISBNs to multi-format/multi-volume works。",
+      "notes": "以自製版權頁、館藏畫面或卡片示意，不複製書影。",
+      "origin": "wave118-books-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-3244ea5c04bd8f19",
+          "origin": "wave118-books-20261119",
+          "locator": "X118P-S03 Assigning ISBNs to multi-format/multi-volume works。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-books-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0406"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0001",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "電鍋煮兩杯糙米，量完米後，水也要另外舀兩杯嗎？",
+      "mechanism_key": "x118.rice.measuring_cup_and_occupied_pan_line",
+      "answer_target": "先看食譜的杯。象印隨機量米杯約是美式量杯的四分之三，裝生米要刮平。以原廠短粒糙米做法為例，兩平杯米先入內鍋，淘洗瀝乾，再加水到 BROWN 的 2。看到這條線時米已經在鍋裡，所以它對應的是「這鍋有兩杯生米時加到哪裡」，不能把刻度直接讀成另倒兩杯水。",
+      "scope": "限附杯與 BROWN 水位對應的機種、米種。其他機種及穀物照各自說明。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "量杯量的是乾米，內鍋線標的是米已入鍋後的水面。",
+        "visual": "先拍空鍋和兩平杯米，米入鍋後再讓水面升到 BROWN 2，把旁邊另備的兩杯水移出畫面。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118L-S01 Q22；X118L-S02 Brown Rice 步驟 1–3。",
+      "notes": "不把不同機型的水米體積比合成通則。",
+      "origin": "wave118-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-bff051c9aefd91cb",
+          "origin": "wave118-everyday-20261119",
+          "locator": "X118L-S01 Q22；X118L-S02 Brown Rice 步驟 1–3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3ff91846ef737fe3",
+          "origin": "wave118-everyday-20261119",
+          "locator": "X118L-S01 Q22；X118L-S02 Brown Rice 步驟 1–3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0002",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "洗碗機洗到最後才放的漂洗助劑，怎麼讓透明杯乾了少幾個水點？",
+      "mechanism_key": "x118.dishwasher.rinse_aid_drainage",
+      "answer_target": "最後一輪沖洗時，機器才加入漂洗助劑。助劑降低水的表面張力，水較容易從杯壁流下，留在上面的水滴就少了；水乾後也比較少在原位留下礦物質的點痕。同一只玻璃杯上，看水怎麼退去，比只看剛洗完有沒有泡沫更能解開這題。",
+      "scope": "限洗碗機專用漂洗助劑與水點，水質、投放量、杯壁表面都會影響結果。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "杯子變乾前，先改變的是水留在杯壁上的方式。",
+        "visual": "用兩塊相同玻璃做斜面，顯示未加與加助劑的水向下退去的狀況，再標示殘滴乾燥的位置。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118L-S03 最後沖洗時投放以及 surface tension、mineral deposits 段。",
+      "notes": "勿當成可以去除玻璃刮傷或所有白霧的承諾。",
+      "origin": "wave118-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e991fa26b88bba8f",
+          "origin": "wave118-everyday-20261119",
+          "locator": "X118L-S03 最後沖洗時投放以及 surface tension、mineral deposits 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0003",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "瓶蓋明明已經旋緊，生產線怎麼隔著蓋子把那片鋁箔封到瓶口？",
+      "mechanism_key": "x118.induction.seal_inside_closed_cap",
+      "answer_target": "在這種包裝線，封膜先待在蓋內，瓶子帶著蓋子經過感應頭。電磁場使箔層發熱，熱再傳給貼近瓶唇的高分子封合層，使它熔融。旋緊的蓋提供接觸壓力，封合層便與瓶唇黏結。第一次打開時，蓋跟手轉開，箔膜留在瓶口。",
+      "scope": "限工廠感應封口，需匹配的墊片、瓶口材質與蓋壓。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不用再打開蓋子，藏在蓋裡的箔就是受熱那一層。",
+        "visual": "自繪沿輸送帶通過感應頭的透明剖面，依序標出箔發熱、封合層軟化、瓶唇接合三個位置。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X118L-S04 Induction Sealing 及示意；X118L-S05 PDF 第 2 頁墊片剖面。",
+      "notes": "圖示採一片式墊片，無須展示設備操作參數。",
+      "origin": "wave118-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2d4fc78002bccd74",
+          "origin": "wave118-everyday-20261119",
+          "locator": "X118L-S04 Induction Sealing 及示意；X118L-S05 PDF 第 2 頁墊片剖面。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6082c31d8e5cec9d",
+          "origin": "wave118-everyday-20261119",
+          "locator": "X118L-S04 Induction Sealing 及示意；X118L-S05 PDF 第 2 頁墊片剖面。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0004",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "縫紉機的針每次都從布上方下去，布底那條線是怎麼被扣住的？",
+      "mechanism_key": "x118.sewing.lockstitch_rotary_hook",
+      "answer_target": "先給針上的面線和梭芯的底線各上一個顏色。針到底後略微回升，面線在針旁鬆出一個圈。布下旋梭的尖端鑽入圈中，把它帶著繞過裝底線的梭殼。旋梭放開線圈，挑線桿向上收緊，面線就帶著底線的交結縮回布層。布前移後，下一針再做一次。",
+      "scope": "限旋梭鎖式線跡示例。鏈式線跡及包縫機的成圈方式另計。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩條線會相扣，靠的是針回升留下的線圈和布底的旋梭。",
+        "visual": "用一紅一藍兩條粗線重畫手冊圖 6–9，在針略微回升、鉤尖穿入的瞬間停格。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "source_locator": "X118L-S06 印刷頁 8–9，圖 6–9 四個成針步驟。",
+      "notes": "奇聞退案談 Howe 的夢境逸事。此卡只問可直接觀察的線跡構造。",
+      "origin": "wave118-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d1ea8a5056c16867",
+          "origin": "wave118-everyday-20261119",
+          "locator": "X118L-S06 印刷頁 8–9，圖 6–9 四個成針步驟。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0005",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "彩色鉛筆那條長長的芯，是怎麼塞進那麼細的一整根木頭裡的？",
+      "mechanism_key": "x118.pencil.milled_colored_core_sandwich",
+      "answer_target": "看 Crayola 的製程，要先把一塊長木片銑出好幾條半圓槽。乾燥過的彩芯一條條排進去，再蓋上另一塊有槽的木片、上膠壓緊。等膠乾時，一整排芯仍連在同一片木料裡。下一台機器才把木片切削成一支支圓形或六角形的筆桿。",
+      "scope": "限原廠所述的木殼彩色鉛筆製程。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "芯放進去的那一刻，工廠連單支筆桿都還沒做出來。",
+        "visual": "用上下兩塊帶槽的木板與多根彩條還原組裝，最後才畫出每支筆的外輪廓與分割線。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118L-S07 FAQ 木槽、assembly、milling 三段。",
+      "notes": "K113-0203 解答石墨、黏土與筆芯軟硬；這裡追切出筆桿之前的入芯順序。",
+      "origin": "wave118-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-0e74b85cd8c114ef",
+          "origin": "wave118-everyday-20261119",
+          "locator": "X118L-S07 FAQ 木槽、assembly、milling 三段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0006",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "回墨章一按就能再蓋一次，鬆手時字面到底朝著哪裡？",
+      "mechanism_key": "x118.stamp.self_inking_reversing_plate",
+      "answer_target": "以專利圖中這款翻轉式回墨章為例。手放開時，彈簧推起把手，字面貼在外殼裡的印台上。往下按，把手帶動轉向機構，字面離開印台，翻向殼底開口並接觸紙面。鬆手後機構回到原處，等下一張單據過來時，字面已經重新沾過墨。",
+      "scope": "限翻轉式回墨章。字模本身儲墨、字面一直朝下的其他印章不在此例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "下一次要用的墨，是上一回鬆手後沾上的。",
+        "visual": "以透明盒模型標出上方印台和紙張，慢速演示字面朝上停留、向下蓋印、再回到印台。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118L-S08 圖 1 與 rest position 段，turning mechanism 7、ink pad 11、spring 31。",
+      "notes": "只解釋翻轉與回位，不推算所有章的實際旋轉角度。",
+      "origin": "wave118-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-80fa0a2b8bccadc1",
+          "origin": "wave118-everyday-20261119",
+          "locator": "X118L-S08 圖 1 與 rest position 段，turning mechanism 7、ink pad 11、spring 31。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0007",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "都是鋼琴中間那顆踏板，為什麼一台能讓低音拖長，另一台卻讓整段練習變小聲？",
+      "mechanism_key": "x118.piano.middle_pedal_two_actions",
+      "answer_target": "先在配有選擇延音踏板的平台琴按住低音，再踩中踏板並放開手。剛才那些鍵的制音器仍抬著，低音可以繼續響，後彈的音不會因此全部延長。換到配置練習踏板的直立琴，踩中踏板時一條薄毛氈降到琴槌與弦之間，接下來每一槌隔著毛氈敲，聲音就小得多。",
+      "scope": "比較 Yamaha 指南所示兩種中踏板，個別原聲琴須看實際配置。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "踩的是同一個位置，牽動的卻分別是選定琴弦的制音器與一整條毛氈。",
+        "visual": "並排畫出兩琴剖面，左邊先按低音再踩下，右邊以亮色顯示毛氈落到琴槌之前。",
+        "seconds": [
+          30,
+          50
+        ]
+      },
+      "source_locator": "X118L-S09 Pedals：Grand piano 與 Upright piano 各自的 middle pedal 條目。",
+      "notes": "有些直立琴也具選擇延音，講解須點出配置。",
+      "origin": "wave118-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a2cc39ae8f8138dc",
+          "origin": "wave118-everyday-20261119",
+          "locator": "X118L-S09 Pedals：Grand piano 與 Upright piano 各自的 middle pedal 條目。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0008",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "鼓棒明明敲的是小鼓上面，撥一下側邊小桿，那串沙沙聲怎麼就跟著變了？",
+      "mechanism_key": "x118.snare.release_bottom_wires",
+      "answer_target": "翻過小鼓，可以看到較薄的下鼓皮外面有一排響弦。響弦貼上時，敲上鼓皮會讓下面的響弦跟著振動，打擊聲便帶著特有的沙響。小鼓側邊的釋放桿能讓響弦貼上或離開下鼓皮。比較撥桿前後，在相同敲點用同一根鼓棒，聲音仍有明顯差異。",
+      "scope": "限設有響弦離合桿的小鼓。同類響弦可用不同材質，不要求全是鋼絲。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "改變音色的是下鼓皮外面的響弦，鼓棒仍敲同一面。",
+        "visual": "一鏡由敲點繞到鼓底，近拍撥桿鬆開前後響弦的位置，錄下兩次同位置敲擊。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X118L-S10 Snares、Snare Head、Snare Strainer Release 三項說明。",
+      "notes": "不要把釋放桿與調鬆緊的螺絲畫成同一件。",
+      "origin": "wave118-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc7d4bae018f0885",
+          "origin": "wave118-everyday-20261119",
+          "locator": "X118L-S10 Snares、Snare Head、Snare Strainer Release 三項說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0009",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "羽球單打打到八比七，只看場邊的總分十五，能猜下一球要從哪一側發嗎？",
+      "mechanism_key": "x118.badminton.singles_service_score_parity",
+      "answer_target": "先在比分牌找出下一位發球的人，再讀他在這一局拿了幾分。依普通單打規則，自己得零分或偶數分，就從自己的右發球區發；自己的分數是奇數，就換到左區。八比七時，若是八分這位發就站右邊，若是七分這位發就站左邊，接球者各站斜對面。",
+      "scope": "限普通單打發球。雙打輪轉、半場帕拉羽球須另讀各自條文。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣八比七，還得知道球在誰手上，才畫得出發球區。",
+        "visual": "把「發球」小牌分別放在 8 和 7 旁邊，各畫一次兩位球員面向球網時的斜對角位置。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X118L-S11 §9.1.3、§10.1.1–10.1.3。",
+      "notes": "P30001、G297 已有羽球飛行翻正；此卡只問發球站位。",
+      "origin": "wave118-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e36c171485a2ad24",
+          "origin": "wave118-everyday-20261119",
+          "locator": "X118L-S11 §9.1.3、§10.1.1–10.1.3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0010",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "高爾夫果嶺換旗位時，舊洞那塊剛好同大小的草皮是從哪裡來的？",
+      "mechanism_key": "x118.golf.cup_cutter_transplants_plug",
+      "answer_target": "球場主管 Heath Wisdom 介紹的做法，是先取出舊洞內襯，再到新旗位用取洞器切下一整柱帶草皮的土。取洞器留著這個圓柱，帶回尺寸相同的舊洞放下去。填平前還要將草紋方向與周圍對好、調平高度，否則當初補過的位置可能重新顯出一圈。",
+      "scope": "以受訪球場主管講解的取塞法為例。不同草種與整備條件可能採別的方法。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "新洞取出的草土塞，正好就是用來補舊洞的那一塊。",
+        "visual": "以兩塊果嶺剖面標上新舊旗位，圓筒由新位提起一柱帶草面的土，再移到舊位填平。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118L-S12 Heath Wisdom 訪談的 Plug in、草紋方向與 Level it off 段。",
+      "notes": "不把訪談中的場務選擇當成競技規則。",
+      "origin": "wave118-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-3dad56911b8acb18",
+          "origin": "wave118-everyday-20261119",
+          "locator": "X118L-S12 Heath Wisdom 訪談的 Plug in、草紋方向與 Level it off 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0011",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "白底黑字的標籤從機器裡吐出來，手指摸到的那一面，真的就是墨所在的那一面嗎？",
+      "mechanism_key": "x118.labels.thermal_transfer_under_laminate",
+      "answer_target": "從側面拆開 Brother 的護貝式 P-touch 標籤。圖上的黑字是熱轉印留下的印字層，出帶時其上已覆透明保護膜；字介於兩層 PET 材料之間。手指沿標籤表面擦過，先接觸的是最外層的膜，和墨之間還隔著一層。",
+      "scope": "限原廠說明的護貝式標籤帶，同廠也有非護貝款。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看得見字，是因為上面那層透明；摸到的仍是膜。",
+        "visual": "用三張透明片演示外膜、印字與底材的疊序，手指在最上片擦過，側鏡標出文字位置。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X118L-S13 Why laminated labels? 以及 Prints under laminate 的分層圖說。",
+      "notes": "本題解釋墨的位置，不為所有標籤承諾相同耐磨年限。",
+      "origin": "wave118-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-3c2668c9b293705c",
+          "origin": "wave118-everyday-20261119",
+          "locator": "X118L-S13 Why laminated labels? 以及 Prints under laminate 的分層圖說。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0012",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "抽一張便利貼，下一張的角怎麼剛好冒出來，而且這回朝另一邊？",
+      "mechanism_key": "x118.notes.alternating_adhesive_edges_pop_up",
+      "answer_target": "取出適用抽取座的補充紙，把紙疊攤成手風琴狀，能看見相鄰兩張的膠邊分別在左右兩端。拉走露出的那一張時，兩張相黏的地方先把下一張的一端帶過出口；上張剝離後，下一張的自由端已留在出口外。接著再拉一次，出紙的方向就對調了。",
+      "scope": "限交替膠邊、與狹槽抽取座配合的便條紙；一般同側上膠的紙疊不保證會照樣接續出紙。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "紙邊之所以輪流探頭，是紙疊本來就左右換邊上膠。",
+        "visual": "用藍黃兩色紙、紅色膠邊和透明紙盒，分兩次慢拉，在相鄰兩張分離的瞬間停住。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118L-S14 Highlights 的 accordion-style；X118L-S15 Description 之 alternate parallel edges 與圖 4。",
+      "notes": "LEG-B46 在追可移除膠和產品史；這裡只看連續抽紙的疊法。",
+      "origin": "wave118-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-77dd7b4427f525d3",
+          "origin": "wave118-everyday-20261119",
+          "locator": "X118L-S14 Highlights 的 accordion-style；X118L-S15 Description 之 alternate parallel edges 與圖 4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2807044cdb39a7f7",
+          "origin": "wave118-everyday-20261119",
+          "locator": "X118L-S14 Highlights 的 accordion-style；X118L-S15 Description 之 alternate parallel edges 與圖 4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0201",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同一種成人普通悠遊卡，刷進北捷十分鐘後走回原站出口，為什麼在美麗島做同一件事只收零元？",
+      "mechanism_key": "x118.metro.two_cities_ten_minutes",
+      "answer_target": "先約定兩次都正常刷卡、沒搭車也沒申請特殊處理。北捷同站按公告最低單程票付費，目前是二十元。高雄美麗島在旅客須知裡被單獨列出，同站十五分鐘內免票。相同十分鐘，換了車站，適用的收費條款就變了。",
+      "scope": "兩筆均是依公告推算的示例。限普通儲值卡、無月票、優惠折抵、公司可歸責情形或人工調整。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把兩張假想紀錄的分鐘數遮住，只看站名也能分出二十元和零元。",
+        "visual": "同樣在12:00進、12:10出，畫出北捷與美麗島兩張明標「情境試算」的卡片。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118D-S01 第14點；X118D-S02 逾時費額一段的最低票價；X118D-S03 第13點第2款美麗島括註。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-add5fa9d4418be9b",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S01 第14點；X118D-S02 逾時費額一段的最低票價；X118D-S03 第13點第2款美麗島括註。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6a77daddee4f4cb1",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S01 第14點；X118D-S02 逾時費額一段的最低票價；X118D-S03 第13點第2款美麗島括註。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-228e421ab5768bde",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S01 第14點；X118D-S02 逾時費額一段的最低票價；X118D-S03 第13點第2款美麗島括註。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0201"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0202",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "進站和出站各有一個時間，研究人員為什麼還算不出你搭了哪一班車？",
+      "mechanism_key": "x118.metro.gates_vs_train",
+      "answer_target": "深圳地鐵的一組研究資料直接有進出站名及刷卡時刻，這四項沒有填進乘客搭的班車和走過的路。研究者另外對照時刻、可能的轉乘組合，以機率模型估計客流。光看相同站名和時間的兩筆資料，無法逐人證明誰去了月台。",
+      "scope": "深圳研究設計只用於說明直接紀錄與模型推斷的差別，不主張各地票卡欄位、監視系統或模型完全相同。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "閘門記錄能標出兩端，中間的路線仍需要證據。",
+        "visual": "在進出兩點間畫出不同候車與轉車線，時刻資料畫實線、推測路徑畫虛線。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118D-S06 摘要、引言不同班次組合與圖2。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c8fdb5a1db35db86",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S06 摘要、引言不同班次組合與圖2。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0202"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0203",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "北捷公告寫「同站十五分鐘」，為什麼第十分鐘已要付費，第十六分鐘又多出一筆？",
+      "mechanism_key": "x118.metro.taipei_max_not_free",
+      "answer_target": "北捷第14點先決定同站應付最低單程票價，第13點另給付費區一個十五分鐘時限。若無例外，從十分鐘改為十六分鐘，原本二十元仍在，還要加上相當於最低單程票價的二十元。留到正好十五分鐘仍未超過這條線。",
+      "scope": "使用全票普通儲值卡作示意，依公司公告且排除可歸責於業者的情形。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "票價與逾時是兩筆，第十五分鐘管的是第二筆。",
+        "visual": "在同一時鐘旁擺兩個格子，第一格先放20，指針經過十五分鐘後第二格才放20。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X118D-S01 第13與14點；X118D-S02 逾時收取金額。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-add5fa9d4418be9b",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S01 第13與14點；X118D-S02 逾時收取金額。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6a77daddee4f4cb1",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S01 第13與14點；X118D-S02 逾時收取金額。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0203"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0204",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "把「同站十五分鐘」抄到台中，換成不同站出閘，還能照台北的兩小時計時嗎？",
+      "mechanism_key": "x118.metro.taichung_other_station_clock",
+      "answer_target": "中捷的旅客須知也有同站十五分鐘，且一般同站要付最低單程票。把同一頁往下讀，不同站的最大時限卻是九十分鐘。北捷對不同站寫的是兩小時。兩份表上同站那一格相同，不能把另一格也照抄。",
+      "scope": "只比同站與異站時限，不將中捷其他優惠代入北捷案例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "站名是不是相同，會把這趟行程送往票表的另一欄。",
+        "visual": "兩張規則表只露出同站欄，先請觀眾猜，再揭開另一欄的90與120分鐘。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X118D-S07 第10與13條；X118D-S01 第13點。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-69981f7dcf2c5a31",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S07 第10與13條；X118D-S01 第13點。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-add5fa9d4418be9b",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S07 第10與13條；X118D-S01 第13點。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0204"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0205",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "北捷那張多扣二十元的紀錄，月底領常客回饋時，多付的這筆也算搭車金額嗎？",
+      "mechanism_key": "x118.metro.cashback_overtime",
+      "answer_target": "北捷常客優惠的計算說明把超過付費區時限所收的二十元排除在累計搭乘金額之外。卡片扣了費，回饋帳裡卻不需要多一筆二十元的搭乘金額。",
+      "scope": "只用符合該常客方案資格的普通儲值卡，不把它套到月票、所有信用卡或其他票證。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "退出口時的扣款金額與月底的回饋基數各有算法。",
+        "visual": "一邊畫卡片餘額扣款，另一邊畫當月搭乘金額，逾時二十元只落入左欄。",
+        "seconds": [
+          15,
+          30
+        ]
+      },
+      "source_locator": "X118D-S02 適用對象及逾時費不列搭乘金額段。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-6a77daddee4f4cb1",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S02 適用對象及逾時費不列搭乘金額段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0205"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0206",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "只想回美麗島取行李，沒要搭車，為什麼還得先弄清楚用的是哪一排櫃子？",
+      "mechanism_key": "x118.metro.locker_inside",
+      "answer_target": "高捷在置物櫃一覽表特別提示，美麗島有部分櫃子位於付費區。若要去的櫃子確在閘內，為取行李才再次過門，也會留下進出紀錄。清單並提醒B2橘線兩側月台不直通，可經B3紅線月台往返，看到同一站名不等於每處可直接走到。",
+      "scope": "只以確在閘內的櫃子示範。置物櫃自己的費率看現場公告，零元情況指捷運同站票價。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "回去拿行李的腳步確實跨過付費邊界，卻不曾踏上列車。",
+        "visual": "用自繪剖面把部分櫃子放在閘內，旁邊分開放寄物費與捷運票價兩張標籤。",
+        "seconds": [
+          25,
+          45
+        ]
+      },
+      "source_locator": "X118D-S05 特別提醒及B2/B3提示；X118D-S03 第2點付費區。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d10d59bd748987c1",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S05 特別提醒及B2/B3提示；X118D-S03 第2點付費區。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-228e421ab5768bde",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S05 特別提醒及B2/B3提示；X118D-S03 第2點付費區。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0206"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0207",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在美麗島同站正好停十五分鐘和停十六分鐘，想像的差價為什麼會大過一張最低票價？",
+      "mechanism_key": "x118.metro.formosa_boundary",
+      "answer_target": "高捷旅客須知給這站的十五分鐘內免票。超過時，最低單程票價和逾時費要分別計算；高捷把逾時費定為最低單程票相同金額。用公告二十元基本價示意，前一格是零元，後一格是二十加二十，未含寄物費。",
+      "scope": "推演限美麗島、高捷紅橘線、普通儲值卡無優惠及特殊處理。其他高捷車站同站另按公告票價。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "跨過界線同時失去免票條件又觸發逾時費，合計四十元。",
+        "visual": "左格15:00停在免票，右格16:00列兩筆20。標示兩個時間為停留分鐘與秒。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118D-S03 第2點第6款、第13點第2與3款；X118D-S04 基本里程及20元。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-228e421ab5768bde",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S03 第2點第6款、第13點第2與3款；X118D-S04 基本里程及20元。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-38a6d683894684ff",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S03 第2點第6款、第13點第2與3款；X118D-S04 基本里程及20元。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0207"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0208",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在日本送朋友上車，只逛一下站內商店，出閘時 Suica 扣的是到哪一站的車資？",
+      "mechanism_key": "x118.metro.suica_admission",
+      "answer_target": "JR東日本的指定在來線車站提供IC入場服務。在適用自動閘機用Suica進出同一站，兩小時內可按本站入場券價格由儲值額結算，用於送迎或站內設施。從另一個閘口穿出也可以。新幹線閘內不適用這項服務。",
+      "scope": "限官網所列車站與適用閘機，不引用2021年推出時的價格作現在票價。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這筆價錢買的是入場資格，不必先替它找一個目的站。",
+        "visual": "一張圖排入場券、Suica與兩個不同閘口；送行的人停在月台，朋友才上車。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118D-S08 利用条件與改札口說明；X118D-S09 頁1服務概要及開始日。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-14daed6d2808f2cf",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S08 利用条件與改札口說明；X118D-S09 頁1服務概要及開始日。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c4ce1951499821d1",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S08 利用条件與改札口說明；X118D-S09 頁1服務概要及開始日。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0208"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0209",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "兩人都在兩小時內回到原來的 JR 站，真的搭車繞回來的人也能只付入場費嗎？",
+      "mechanism_key": "x118.metro.suica_real_return",
+      "answer_target": "JR東日本說，乘車後未曾出閘就回到原站者不適用IC入場。乘客應到有人值守的閘口說明，依實際乘車區間付費。反過來，若只是留在站內但已超過兩小時，也要去窗口，按每超出一個兩小時區段增加入場費。",
+      "scope": "依指定JR東日本服務條件。兩個窗口案例處理的是不同事實。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同站進出不會把一趟列車旅程變成月台送行。",
+        "visual": "用同一對站名並排三條線：送人、真搭車、純入場逾時。輪到哪種窗口處理時才翻答案。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X118D-S08 利用条件，超過兩小時與列車繞回兩段。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-14daed6d2808f2cf",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S08 利用条件，超過兩小時與列車繞回兩段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0209"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0210",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果旅客就是想搭車遊一圈再回原站，世界上真的有專門給這種乘法的車資嗎？",
+      "mechanism_key": "x118.metro.bart_excursion",
+      "answer_target": "舊金山灣區BART把同站起訖的遊覽旅程稱為 excursion。營運者記載這項車資在1970年代就存在，車站相同、時間在三小時內的刷卡組合會被系統歸到這類。官方也另外列出用感應式銀行卡進站後改變主意、未搭車可適用的三十分鐘寬限。",
+      "scope": "只舉BART官方解釋的旅程分類與Tap and Ride例外。捨去轉換中的舊Clipper卡與公告價格。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同站回來可以是一種正規旅程，也可以是根本沒搭車。",
+        "visual": "同一張起訖卡依次疊上兩張情境圖：上車繞一圈、進閘後決定折返。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X118D-S10 官網 FAQ 第3問 excursion 及 Tap and Ride 段。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4afbab2b394613a1",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S10 官網 FAQ 第3問 excursion 及 Tap and Ride 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0210"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0211",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "首爾有一條十五分鐘規則，為什麼要在「刷出」的那一刻才開始計時？",
+      "mechanism_key": "x118.metro.seoul_clock_direction",
+      "answer_target": "首爾市在2023年公告擴大指定路段的再入站措施。符合條件的旅客先出閘，於指定時間內回同站同線，計一次轉乘，免再扣一次基本運價。這裡計的是閘外的時間。把它和台北同站的十五分鐘放在同一張圖上，兩支表跑在閘門兩側。",
+      "scope": "按該公告的歷史實施範圍與適用條件解釋，非所有韓國鐵路通用，亦非原來那趟全程免費。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣十五分鐘，首爾這支錶是出去後才啟動的。",
+        "visual": "把時鐘貼在閘門外，再把台北那顆放回閘門內。用進、出箭頭畫兩支錶跑的方向。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118D-S14 2023年10月7日實施公告及適用說明；X118D-S01 第13點。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5ddd73261f803c31",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S14 2023年10月7日實施公告及適用說明；X118D-S01 第13點。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-add5fa9d4418be9b",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S14 2023年10月7日實施公告及適用說明；X118D-S01 第13點。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0211"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0212",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "首爾把如廁再入站的時限從十分鐘延長到十五分鐘，五分鐘的差別在車站哪裡看得到？",
+      "mechanism_key": "x118.metro.seoul_distance_to_toilet",
+      "answer_target": "2023年首爾市公布評估資料，當時檢視的首爾交通公社一至八號線275個站裡，有51站的廁所距閘門至少一百公尺。市府也收到588人提出改善意見，其中464人希望延長時間。它列出的考量包括步行不便者所需時間及安全。",
+      "scope": "數字是公告當時的站點與主動提意見的人，不換算成所有地鐵乘客的支持比例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張平面圖上，刷出去以後還有一段路才真正走到廁所。",
+        "visual": "圖上量出閘門、廁所之間的一百公尺參考線，另在意見欄標明464的分母是588。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118D-S14 正文「275개역」「51개소」及「588명」「464명」。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5ddd73261f803c31",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S14 正文「275개역」「51개소」及「588명」「464명」。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0212"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0213",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "要從新埔換環狀線，為什麼得走出付費區，上到街上再刷一遍？",
+      "mechanism_key": "x118.metro.new_taipei_outside",
+      "answer_target": "新北市捷運工程局說明，既有車站預留空間、用地取得與軌道線形都是站外轉乘的背景。新埔與新埔民生、兩個不同路線的板橋站用步行指標銜接。北捷的計費規則允許用同張票卡、在二十分鐘內於相應站點重新進入，合計同一趟的里程。",
+      "scope": "限指定站對、相同適用票卡和時間，不把任何出站購物都視作轉乘。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "有時旅程還沒結束，換線的人卻一定會留下出閘記錄。",
+        "visual": "先畫兩條路線在地底的位置，再從新埔畫出站外步行線，箭頭終點寫新埔民生。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118D-S11 線形、用地與既有車站段；X118D-S12 站外轉乘的兩組車站和時間。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-92bf6cb69de1efaa",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S11 線形、用地與既有車站段；X118D-S12 站外轉乘的兩組車站和時間。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-7e214aea21335b09",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S11 線形、用地與既有車站段；X118D-S12 站外轉乘的兩組車站和時間。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0213"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0214",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "怎麼會有一趟捷運，第一次出閘付三十元，第二次出閘反而收到五元？",
+      "mechanism_key": "x118.metro.official_refund_example",
+      "answer_target": "北捷官方算例從中山搭到板南線板橋，先扣三十元；二十分鐘內以同張卡轉進環狀線板橋，到頭前庄出閘退五元。系統先結前段，再以實際起迄站規定的最短里程票價結算。另一個西門到幸福的範例先扣二十五元，末站反而要補五元。",
+      "scope": "限北捷公告的兩個儲值卡或多元支付算例。不把先退或補五元當作所有路線的固定優惠。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "頭前庄那個加號，結的是中山出發後的全程差額。",
+        "visual": "先畫中山→板橋→頭前庄兩張交易，一張－30、一張＋5，再翻到西門→幸福的－25、－5。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X118D-S12 例1中山至頭前庄、例2西門至幸福。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-7e214aea21335b09",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S12 例1中山至頭前庄、例2西門至幸福。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0214"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0215",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "出了上野站的閘門才去換東京地下鐵另一線，哪一刻會把一筆車資切成兩趟？",
+      "mechanism_key": "x118.metro.tokyo_break_transfer",
+      "answer_target": "東京地下鐵把上野的銀座線、日比谷線列為指定改札外轉乘組合。在這套規則內，超過六十分鐘，IC卡原行程的運價在轉乘站截止，後段重新計算；用相應的紙票超時則須另買票。這和JR站內送人的兩小時是兩種不同服務。",
+      "scope": "限表列組合與適用票種；不把東京其他鐵路一律視作可站外轉乘。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣走出閘門，開始倒數的時間取決於換哪家公司的哪兩條線。",
+        "visual": "把東京地下鐵的上野站對和JR站內送行用不同色框，切開六十分鐘和兩小時。",
+        "seconds": [
+          18,
+          32
+        ]
+      },
+      "source_locator": "X118D-S13 指定站表上野與六十分鐘超時段；X118D-S08 IC入場服務條件。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-732a62155f1dde9e",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S13 指定站表上野與六十分鐘超時段；X118D-S08 IC入場服務條件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-14daed6d2808f2cf",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S13 指定站表上野與六十分鐘超時段；X118D-S08 IC入場服務條件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0215"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0216",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "走回車站想核對剛剛那筆扣款，為什麼卡片查詢機能看見，網路明細卻可能還沒出現？",
+      "mechanism_key": "x118.metro.instant_card_record",
+      "answer_target": "悠遊卡公司說，詢問處附近的票卡查詢機可從實體卡查看最近六筆交易及最近一次加值，資料隨使用同步。網頁和綁卡App各列可查的歷史區間，沒有承諾呈現當下的交易。先分清是在讀卡片，還是在查歷史明細。",
+      "scope": "限悠遊卡公司列出的查詢方式。六筆是交易筆數，不保證等於六趟捷運。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "現在看不到線上資料，不代表剛才那次根本沒扣。",
+        "visual": "查詢機畫六格交易和一格加值，旁邊網頁只畫日期區間；不使用真實卡號。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X118D-S15 問答項目二、四、五。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e5740666d5ba3f60",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S15 問答項目二、四、五。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0216"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0217",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在桃捷拿出綁信用卡的手機，為什麼不能把當時的車資直接當作悠遊卡紀錄來查？",
+      "mechanism_key": "x118.metro.online_channel",
+      "answer_target": "桃捷交易紀錄頁把悠遊卡和行動支付信用卡分開。悠遊卡欄列日前三天至前三個月；若是用行動裝置綁信用卡，該頁請旅客到車站詢問處。先辨認自己進站時究竟用哪項支付工具，才能找對該筆資料。",
+      "scope": "限桃捷這份旅客服務說明；不推出使用者確切位置或到各家銀行對帳的時程。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一支手機在手上，先想起當時用哪一種票，才知道去哪裡找這筆。",
+        "visual": "自繪票卡與行動信用卡兩個入口，將同一個查詢問題分到相應欄位。",
+        "seconds": [
+          15,
+          30
+        ]
+      },
+      "source_locator": "X118D-S16 悠遊卡欄與行動支付信用卡欄註記。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-566bac09883c9566",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S16 悠遊卡欄與行動支付信用卡欄註記。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0217"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K118-0218",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "只進北捷借廁所、或手上兩張票想換用哪張，旅客應在什麼時候把這件事告訴站務人員？",
+      "mechanism_key": "x118.metro.ask_agent",
+      "answer_target": "北捷把借廁所列作可洽站務協助的特殊狀況。若已進站而想換成另一張票，旅客須在出站前說明。桃捷也把借付費區廁所、剛進去就折返且確無搭乘列作可洽站務的例子。回看閘門兩端的紀錄，這些個案情況得另由人說明。",
+      "scope": "列的是洽詢情境，不能把求助、免票及已核准退款畫上等號。只處理民眾自身的正常紀錄。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "原站紀錄回答何時進出，借廁所或誤刷哪張票則靠旅客補充。",
+        "visual": "收尾回到最初兩張示意，替「站名、時間、票種」畫實線，將「為什麼折返」留給站務對話。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X118D-S01 第14點兩個協助情境；X118D-S17 逾時出站補票規則問答第2段。",
+      "notes": "研究題卡，畫面用示意時間線或原創站圖。",
+      "origin": "wave118-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-add5fa9d4418be9b",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S01 第14點兩個協助情境；X118D-S17 逾時出站補票規則問答第2段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5c73ced3628b9e25",
+          "origin": "wave118-research-20261119",
+          "locator": "X118D-S01 第14點兩個協助情境；X118D-S17 逾時出站補票規則問答第2段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave118-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K118-0218"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -330619,7 +332293,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 7646
+    "count": 7682
   },
   "dedup": {
     "aliases": {
@@ -333153,6 +334827,42 @@
       "K117-0216": "K117-0216",
       "K117-0217": "K117-0217",
       "K117-0218": "K117-0218",
+      "K118-0401": "K118-0401",
+      "K118-0402": "K118-0402",
+      "K118-0403": "K118-0403",
+      "K118-0404": "K118-0404",
+      "K118-0405": "K118-0405",
+      "K118-0406": "K118-0406",
+      "K118-0001": "K118-0001",
+      "K118-0002": "K118-0002",
+      "K118-0003": "K118-0003",
+      "K118-0004": "K118-0004",
+      "K118-0005": "K118-0005",
+      "K118-0006": "K118-0006",
+      "K118-0007": "K118-0007",
+      "K118-0008": "K118-0008",
+      "K118-0009": "K118-0009",
+      "K118-0010": "K118-0010",
+      "K118-0011": "K118-0011",
+      "K118-0012": "K118-0012",
+      "K118-0201": "K118-0201",
+      "K118-0202": "K118-0202",
+      "K118-0203": "K118-0203",
+      "K118-0204": "K118-0204",
+      "K118-0205": "K118-0205",
+      "K118-0206": "K118-0206",
+      "K118-0207": "K118-0207",
+      "K118-0208": "K118-0208",
+      "K118-0209": "K118-0209",
+      "K118-0210": "K118-0210",
+      "K118-0211": "K118-0211",
+      "K118-0212": "K118-0212",
+      "K118-0213": "K118-0213",
+      "K118-0214": "K118-0214",
+      "K118-0215": "K118-0215",
+      "K118-0216": "K118-0216",
+      "K118-0217": "K118-0217",
+      "K118-0218": "K118-0218",
       "D12001": "D12001",
       "D12002": "D12002",
       "D12003": "D12003",
@@ -377858,6 +379568,20 @@
         ]
       },
       {
+        "id": "K118-0208~K118-0209",
+        "a": "K118-0208",
+        "b": "K118-0209",
+        "question_score": 0,
+        "answer_score": 0.169,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本送朋友上車，只逛一下站內商店，出閘時 Suica 扣的是到哪一站的車資？",
+          "兩人都在兩小時內回到原來的 JR 站，真的搭車繞回來的人也能只付入場費嗎？"
+        ]
+      },
+      {
         "id": "E2004~E2006",
         "a": "E2004",
         "b": "E2006",
@@ -378317,6 +380041,20 @@
         "questions": [
           "人走路時，地板的摩擦力到底朝前還是朝後？",
           "箱子還沒被推動，摩擦力會一直是最大值嗎？"
+        ]
+      },
+      {
+        "id": "K118-0204~K118-0211",
+        "a": "K118-0204",
+        "b": "K118-0211",
+        "question_score": 0.157,
+        "answer_score": 0.11,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把「同站十五分鐘」抄到台中，換成不同站出閘，還能照台北的兩小時計時嗎？",
+          "首爾有一條十五分鐘規則，為什麼要在「刷出」的那一刻才開始計時？"
         ]
       },
       {
@@ -378947,6 +380685,20 @@
         "questions": [
           "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？",
           "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？"
+        ]
+      },
+      {
+        "id": "K118-0211~K118-0212",
+        "a": "K118-0211",
+        "b": "K118-0212",
+        "question_score": 0.145,
+        "answer_score": 0.096,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "首爾有一條十五分鐘規則，為什麼要在「刷出」的那一刻才開始計時？",
+          "首爾把如廁再入站的時限從十分鐘延長到十五分鐘，五分鐘的差別在車站哪裡看得到？"
         ]
       },
       {
@@ -383514,6 +385266,20 @@
         ]
       },
       {
+        "id": "K118-0205~K118-0207",
+        "a": "K118-0205",
+        "b": "K118-0207",
+        "question_score": 0,
+        "answer_score": 0.08,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北捷那張多扣二十元的紀錄，月底領常客回饋時，多付的這筆也算搭車金額嗎？",
+          "在美麗島同站正好停十五分鐘和停十六分鐘，想像的差價為什麼會大過一張最低票價？"
+        ]
+      },
+      {
         "id": "L234~L235",
         "a": "L234",
         "b": "L235",
@@ -384116,6 +385882,20 @@
         ]
       },
       {
+        "id": "K118-0205~K118-0218",
+        "a": "K118-0205",
+        "b": "K118-0218",
+        "question_score": 0.03,
+        "answer_score": 0.074,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北捷那張多扣二十元的紀錄，月底領常客回饋時，多付的這筆也算搭車金額嗎？",
+          "只進北捷借廁所、或手上兩張票想換用哪張，旅客應在什麼時候把這件事告訴站務人員？"
+        ]
+      },
+      {
         "id": "K92-045~P62-006",
         "a": "P62-006",
         "b": "K92-045",
@@ -384351,6 +386131,20 @@
         "questions": [
           "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？",
           "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？"
+        ]
+      },
+      {
+        "id": "K118-0206~K118-0207",
+        "a": "K118-0206",
+        "b": "K118-0207",
+        "question_score": 0.071,
+        "answer_score": 0.012,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "只想回美麗島取行李，沒要搭車，為什麼還得先弄清楚用的是哪一排櫃子？",
+          "在美麗島同站正好停十五分鐘和停十六分鐘，想像的差價為什麼會大過一張最低票價？"
         ]
       },
       {
@@ -384634,6 +386428,20 @@
         ]
       },
       {
+        "id": "K118-0206~K118-0208",
+        "a": "K118-0206",
+        "b": "K118-0208",
+        "question_score": 0.068,
+        "answer_score": 0.045,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "只想回美麗島取行李，沒要搭車，為什麼還得先弄清楚用的是哪一排櫃子？",
+          "在日本送朋友上車，只逛一下站內商店，出閘時 Suica 扣的是到哪一站的車資？"
+        ]
+      },
+      {
         "id": "E2115~E2173",
         "a": "E2115",
         "b": "E2173",
@@ -384900,6 +386708,20 @@
         ]
       },
       {
+        "id": "K118-0210~K118-0217",
+        "a": "K118-0210",
+        "b": "K118-0217",
+        "question_score": 0.065,
+        "answer_score": 0.022,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果旅客就是想搭車遊一圈再回原站，世界上真的有專門給這種乘法的車資嗎？",
+          "在桃捷拿出綁信用卡的手機，為什麼不能把當時的車資直接當作悠遊卡紀錄來查？"
+        ]
+      },
+      {
         "id": "L004~V3004",
         "a": "L004",
         "b": "V3004",
@@ -385152,6 +386974,34 @@
         ]
       },
       {
+        "id": "K118-0202~K118-0210",
+        "a": "K118-0202",
+        "b": "K118-0210",
+        "question_score": 0,
+        "answer_score": 0.063,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "進站和出站各有一個時間，研究人員為什麼還算不出你搭了哪一班車？",
+          "如果旅客就是想搭車遊一圈再回原站，世界上真的有專門給這種乘法的車資嗎？"
+        ]
+      },
+      {
+        "id": "K118-0208~K118-0217",
+        "a": "K118-0208",
+        "b": "K118-0217",
+        "question_score": 0.063,
+        "answer_score": 0.013,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本送朋友上車，只逛一下站內商店，出閘時 Suica 扣的是到哪一站的車資？",
+          "在桃捷拿出綁信用卡的手機，為什麼不能把當時的車資直接當作悠遊卡紀錄來查？"
+        ]
+      },
+      {
         "id": "K66-006~K66-013",
         "a": "K66-006",
         "b": "K66-013",
@@ -385219,6 +387069,20 @@
         "questions": [
           "恆星的殘骸為什麼可能讓旁邊的星變瘦？",
           "星系外圍的星轉得太快，為什麼會變成缺少質量的線索？"
+        ]
+      },
+      {
+        "id": "K118-0208~K118-0210",
+        "a": "K118-0208",
+        "b": "K118-0210",
+        "question_score": 0.062,
+        "answer_score": 0.052,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本送朋友上車，只逛一下站內商店，出閘時 Suica 扣的是到哪一站的車資？",
+          "如果旅客就是想搭車遊一圈再回原站，世界上真的有專門給這種乘法的車資嗎？"
         ]
       },
       {
@@ -386510,6 +388374,20 @@
         ]
       },
       {
+        "id": "K118-0217~K118-0218",
+        "a": "K118-0217",
+        "b": "K118-0218",
+        "question_score": 0,
+        "answer_score": 0.051,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在桃捷拿出綁信用卡的手機，為什麼不能把當時的車資直接當作悠遊卡紀錄來查？",
+          "只進北捷借廁所、或手上兩張票想換用哪張，旅客應在什麼時候把這件事告訴站務人員？"
+        ]
+      },
+      {
         "id": "L049~L053",
         "a": "L049",
         "b": "L053",
@@ -386986,6 +388864,20 @@
         ]
       },
       {
+        "id": "K118-0203~K118-0213",
+        "a": "K118-0203",
+        "b": "K118-0213",
+        "question_score": 0.043,
+        "answer_score": 0.047,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北捷公告寫「同站十五分鐘」，為什麼第十分鐘已要付費，第十六分鐘又多出一筆？",
+          "要從新埔換環狀線，為什麼得走出付費區，上到街上再刷一遍？"
+        ]
+      },
+      {
         "id": "K6005~S60-005",
         "a": "K6005",
         "b": "S60-005",
@@ -387249,6 +389141,20 @@
         "questions": [
           "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？",
           "旅館房內電話要先取外線，那顆鍵要抄進朋友的號碼嗎？"
+        ]
+      },
+      {
+        "id": "K118-0202~K118-0206",
+        "a": "K118-0202",
+        "b": "K118-0206",
+        "question_score": 0.039,
+        "answer_score": 0.045,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "進站和出站各有一個時間，研究人員為什麼還算不出你搭了哪一班車？",
+          "只想回美麗島取行李，沒要搭車，為什麼還得先弄清楚用的是哪一排櫃子？"
         ]
       },
       {
@@ -388218,6 +390124,20 @@
         ]
       },
       {
+        "id": "K118-0207~K118-0218",
+        "a": "K118-0207",
+        "b": "K118-0218",
+        "question_score": 0,
+        "answer_score": 0.039,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在美麗島同站正好停十五分鐘和停十六分鐘，想像的差價為什麼會大過一張最低票價？",
+          "只進北捷借廁所、或手上兩張票想換用哪張，旅客應在什麼時候把這件事告訴站務人員？"
+        ]
+      },
+      {
         "id": "R40006~R40007",
         "a": "R40006",
         "b": "R40007",
@@ -388680,6 +390600,20 @@
         ]
       },
       {
+        "id": "K118-0205~K118-0206",
+        "a": "K118-0205",
+        "b": "K118-0206",
+        "question_score": 0.035,
+        "answer_score": 0.027,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北捷那張多扣二十元的紀錄，月底領常客回饋時，多付的這筆也算搭車金額嗎？",
+          "只想回美麗島取行李，沒要搭車，為什麼還得先弄清楚用的是哪一排櫃子？"
+        ]
+      },
+      {
         "id": "K116-0203~K116-0211",
         "a": "K116-0203",
         "b": "K116-0211",
@@ -388722,6 +390656,48 @@
         ]
       },
       {
+        "id": "K118-0202~K118-0208",
+        "a": "K118-0202",
+        "b": "K118-0208",
+        "question_score": 0.034,
+        "answer_score": 0.012,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "進站和出站各有一個時間，研究人員為什麼還算不出你搭了哪一班車？",
+          "在日本送朋友上車，只逛一下站內商店，出閘時 Suica 扣的是到哪一站的車資？"
+        ]
+      },
+      {
+        "id": "K118-0206~K118-0210",
+        "a": "K118-0206",
+        "b": "K118-0210",
+        "question_score": 0.034,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "只想回美麗島取行李，沒要搭車，為什麼還得先弄清楚用的是哪一排櫃子？",
+          "如果旅客就是想搭車遊一圈再回原站，世界上真的有專門給這種乘法的車資嗎？"
+        ]
+      },
+      {
+        "id": "K118-0206~K118-0218",
+        "a": "K118-0206",
+        "b": "K118-0218",
+        "question_score": 0,
+        "answer_score": 0.034,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "只想回美麗島取行李，沒要搭車，為什麼還得先弄清楚用的是哪一排櫃子？",
+          "只進北捷借廁所、或手上兩張票想換用哪張，旅客應在什麼時候把這件事告訴站務人員？"
+        ]
+      },
+      {
         "id": "K116-0202~K116-0216",
         "a": "K116-0202",
         "b": "K116-0216",
@@ -388747,6 +390723,34 @@
         "questions": [
           "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？",
           "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
+        ]
+      },
+      {
+        "id": "K118-0202~K118-0218",
+        "a": "K118-0202",
+        "b": "K118-0218",
+        "question_score": 0.033,
+        "answer_score": 0.012,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "進站和出站各有一個時間，研究人員為什麼還算不出你搭了哪一班車？",
+          "只進北捷借廁所、或手上兩張票想換用哪張，旅客應在什麼時候把這件事告訴站務人員？"
+        ]
+      },
+      {
+        "id": "K118-0205~K118-0217",
+        "a": "K118-0205",
+        "b": "K118-0217",
+        "question_score": 0.033,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北捷那張多扣二十元的紀錄，月底領常客回饋時，多付的這筆也算搭車金額嗎？",
+          "在桃捷拿出綁信用卡的手機，為什麼不能把當時的車資直接當作悠遊卡紀錄來查？"
         ]
       },
       {
@@ -388831,6 +390835,20 @@
         "questions": [
           "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？",
           "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
+        ]
+      },
+      {
+        "id": "K118-0205~K118-0210",
+        "a": "K118-0205",
+        "b": "K118-0210",
+        "question_score": 0.032,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北捷那張多扣二十元的紀錄，月底領常客回饋時，多付的這筆也算搭車金額嗎？",
+          "如果旅客就是想搭車遊一圈再回原站，世界上真的有專門給這種乘法的車資嗎？"
         ]
       },
       {
@@ -388971,6 +390989,20 @@
         "questions": [
           "蛋上的 I47045 該找哪一家？為什麼這六個字元要從正中間拆開？",
           "想追一批洗選蛋，只抄蛋殼就能知道廠裡收了幾顆、少了幾顆嗎？"
+        ]
+      },
+      {
+        "id": "K118-0210~K118-0218",
+        "a": "K118-0210",
+        "b": "K118-0218",
+        "question_score": 0.03,
+        "answer_score": 0.011,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果旅客就是想搭車遊一圈再回原站，世界上真的有專門給這種乘法的車資嗎？",
+          "只進北捷借廁所、或手上兩張票想換用哪張，旅客應在什麼時候把這件事告訴站務人員？"
         ]
       },
       {
@@ -389240,6 +391272,20 @@
         ]
       },
       {
+        "id": "K118-0202~K118-0217",
+        "a": "K118-0202",
+        "b": "K118-0217",
+        "question_score": 0,
+        "answer_score": 0.025,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "進站和出站各有一個時間，研究人員為什麼還算不出你搭了哪一班車？",
+          "在桃捷拿出綁信用卡的手機，為什麼不能把當時的車資直接當作悠遊卡紀錄來查？"
+        ]
+      },
+      {
         "id": "K91-001~K91-004",
         "a": "K91-001",
         "b": "K91-004",
@@ -389335,6 +391381,20 @@
         "questions": [
           "同一場地震，臺北市的預估偏低，隔海的與那國島也一定偏低嗎？",
           "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
+        ]
+      },
+      {
+        "id": "K118-0207~K118-0210",
+        "a": "K118-0207",
+        "b": "K118-0210",
+        "question_score": 0,
+        "answer_score": 0.023,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在美麗島同站正好停十五分鐘和停十六分鐘，想像的差價為什麼會大過一張最低票價？",
+          "如果旅客就是想搭車遊一圈再回原站，世界上真的有專門給這種乘法的車資嗎？"
         ]
       },
       {
@@ -389772,6 +391832,20 @@
         ]
       },
       {
+        "id": "K118-0207~K118-0217",
+        "a": "K118-0207",
+        "b": "K118-0217",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在美麗島同站正好停十五分鐘和停十六分鐘，想像的差價為什麼會大過一張最低票價？",
+          "在桃捷拿出綁信用卡的手機，為什麼不能把當時的車資直接當作悠遊卡紀錄來查？"
+        ]
+      },
+      {
         "id": "L287~T54-011",
         "a": "L287",
         "b": "T54-011",
@@ -389912,6 +391986,20 @@
         ]
       },
       {
+        "id": "K118-0202~K118-0207",
+        "a": "K118-0202",
+        "b": "K118-0207",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "進站和出站各有一個時間，研究人員為什麼還算不出你搭了哪一班車？",
+          "在美麗島同站正好停十五分鐘和停十六分鐘，想像的差價為什麼會大過一張最低票價？"
+        ]
+      },
+      {
         "id": "R43005~R43009",
         "a": "R43005",
         "b": "R43009",
@@ -390007,6 +392095,34 @@
         "questions": [
           "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？",
           "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
+        ]
+      },
+      {
+        "id": "K118-0206~K118-0217",
+        "a": "K118-0206",
+        "b": "K118-0217",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "只想回美麗島取行李，沒要搭車，為什麼還得先弄清楚用的是哪一排櫃子？",
+          "在桃捷拿出綁信用卡的手機，為什麼不能把當時的車資直接當作悠遊卡紀錄來查？"
+        ]
+      },
+      {
+        "id": "K118-0208~K118-0218",
+        "a": "K118-0208",
+        "b": "K118-0218",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本送朋友上車，只逛一下站內商店，出閘時 Suica 扣的是到哪一站的車資？",
+          "只進北捷借廁所、或手上兩張票想換用哪張，旅客應在什麼時候把這件事告訴站務人員？"
         ]
       },
       {
@@ -390903,6 +393019,48 @@
         "questions": [
           "歐盟蛋盒多印 extra fresh，為什麼還得在盒上多畫一道九天的線？",
           "台灣2025年的回收為什麼從一包洗選蛋，追到同一來源場的其他批號？"
+        ]
+      },
+      {
+        "id": "K118-0202~K118-0205",
+        "a": "K118-0202",
+        "b": "K118-0205",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "進站和出站各有一個時間，研究人員為什麼還算不出你搭了哪一班車？",
+          "北捷那張多扣二十元的紀錄，月底領常客回饋時，多付的這筆也算搭車金額嗎？"
+        ]
+      },
+      {
+        "id": "K118-0205~K118-0208",
+        "a": "K118-0205",
+        "b": "K118-0208",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北捷那張多扣二十元的紀錄，月底領常客回饋時，多付的這筆也算搭車金額嗎？",
+          "在日本送朋友上車，只逛一下站內商店，出閘時 Suica 扣的是到哪一站的車資？"
+        ]
+      },
+      {
+        "id": "K118-0207~K118-0208",
+        "a": "K118-0207",
+        "b": "K118-0208",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在美麗島同站正好停十五分鐘和停十六分鐘，想像的差價為什麼會大過一張最低票價？",
+          "在日本送朋友上車，只逛一下站內商店，出閘時 Suica 扣的是到哪一站的車資？"
         ]
       },
       {
@@ -392380,10 +394538,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-19-pool-7182",
-    "target_count": 7182,
+    "revision": "2026-11-19-pool-7218",
+    "target_count": 7218,
     "reviewed_on": "2026-11-19",
-    "reason": "第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -399566,7 +401724,43 @@
       "K117-0215",
       "K117-0216",
       "K117-0217",
-      "K117-0218"
+      "K117-0218",
+      "K118-0401",
+      "K118-0402",
+      "K118-0403",
+      "K118-0404",
+      "K118-0405",
+      "K118-0406",
+      "K118-0001",
+      "K118-0002",
+      "K118-0003",
+      "K118-0004",
+      "K118-0005",
+      "K118-0006",
+      "K118-0007",
+      "K118-0008",
+      "K118-0009",
+      "K118-0010",
+      "K118-0011",
+      "K118-0012",
+      "K118-0201",
+      "K118-0202",
+      "K118-0203",
+      "K118-0204",
+      "K118-0205",
+      "K118-0206",
+      "K118-0207",
+      "K118-0208",
+      "K118-0209",
+      "K118-0210",
+      "K118-0211",
+      "K118-0212",
+      "K118-0213",
+      "K118-0214",
+      "K118-0215",
+      "K118-0216",
+      "K118-0217",
+      "K118-0218"
     ],
     "overflow": [
       {
@@ -401779,6 +403973,58 @@
       ],
       "origin": "wave117-everyday-20261119",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave117-everyday-20261119.json"
+    },
+    {
+      "id": "X118P-NA01",
+      "question": "書號末碼怎麼驗算？",
+      "reason": "已由 K106-0109 比對 ISBN-13 與商品碼的檢查算法，這一批只處理配號單位與資訊用途。",
+      "existing_ids": [
+        "K106-0109"
+      ],
+      "origin": "wave118-books-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave118-books-20261119.json"
+    },
+    {
+      "id": "X118P-NA02",
+      "question": "雜誌條碼 977 後面放了什麼？",
+      "reason": "國際期刊號轉商品條碼與原檢查碼的處理，已見 K106-0111、K106-0112。",
+      "existing_ids": [
+        "K106-0111",
+        "K106-0112"
+      ],
+      "origin": "wave118-books-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave118-books-20261119.json"
+    },
+    {
+      "id": "X118L-NA001",
+      "question": "半開的棘輪扳手來回擺，螺帽怎麼只轉一個方向？",
+      "reason": "D2126 已經解釋棘輪把手來回與螺帽單向前進的機構，換一把扳手仍是同一答案。",
+      "existing_ids": [
+        "D2126"
+      ],
+      "origin": "wave118-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
+    },
+    {
+      "id": "X118L-NA002",
+      "question": "羽球被打回對面，為什麼羽毛朝前只是一瞬間？",
+      "reason": "P30001 與 G297 已追球頭翻回正前方以及之後的搖擺，本批另取發球位置的計分規則。",
+      "existing_ids": [
+        "P30001",
+        "G297"
+      ],
+      "origin": "wave118-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
+    },
+    {
+      "id": "X118L-NA003",
+      "question": "把石墨混入更多黏土，鉛筆芯怎麼會變硬？",
+      "reason": "K113-0203 已有黏土與石墨比例決定軟硬。彩色鉛筆卡改問木殼是在哪個組裝步驟成形。",
+      "existing_ids": [
+        "K113-0203"
+      ],
+      "origin": "wave118-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave118-everyday-20261119.json"
     },
     {
       "question": "網路斷掉後重送，怎麼不重複下單？",
