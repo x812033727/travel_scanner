@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-19-pool-7398",
+  "revision": "2026-11-19-pool-7433",
   "raw_records": [
     {
       "id": "LEG-B01",
@@ -103773,6 +103773,1310 @@
       "eligible": true,
       "local_references": [
         "docs/videos/so-thats-why/pool/batches/wave123-sky-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0001",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "朋友把雙筒望遠鏡的眼罩轉到最長，輪到戴眼鏡的你看鳥，怎麼視野邊緣反而缺了一圈？",
+      "mechanism_key": "x124.daily.binocular_eyecup_eyepoint",
+      "answer_target": "眼睛要放到目鏡後方的出瞳位置，才看得到完整視野。裸眼靠上伸出的眼罩，正好能留出一段距離；換成戴眼鏡的人，鏡片與鏡框已隔開一段。依 Nikon 這種旋升眼罩的指引把眼罩縮回，眼睛便能靠近所需的位置。",
+      "scope": "以 Nikon 中央調焦望遠鏡指南所示的旋升式眼罩為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "原來那圈可以旋動的眼罩，是讓眼睛停在看全視野的位置。",
+        "visual": "並排畫裸眼、隔著眼鏡兩個側面，固定目鏡和出瞳位置，移動眼罩。",
+        "seconds": [
+          25,
+          37
+        ]
+      },
+      "source_locator": "X124E-S01，Adjusting eyecup 第 (1) 節。X124E-S02，眼距定義與戴眼鏡示意。",
+      "notes": "本題是眼罩長短與眼距；K120-0005 是左右眼調焦，K121-0005 是出瞳直徑。",
+      "origin": "wave124-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5e86afb949fa87db",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S01，Adjusting eyecup 第 (1) 節。X124E-S02，眼距定義與戴眼鏡示意。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-010c161280cf5a13",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S01，Adjusting eyecup 第 (1) 節。X124E-S02，眼距定義與戴眼鏡示意。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0002",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "烏克麗麗四條空弦依序撥 G、C、E、A，調音器明明都對，怎麼第二聲反而往低處掉？",
+      "mechanism_key": "x124.daily.ukulele_high_g_pitch_order",
+      "answer_target": "常見的高 G 定弦把第四弦的 G 提高了一個八度。下一條第三弦是鋼琴中央 C，因此從第四弦撥向第三弦，音高會往下跳。若將四條空弦按實際音高排隊，順序是 C、E、G、A；最高的才是 A。",
+      "scope": "以採高 G 的 G–C–E–A 定弦為限。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "手指按照弦的位置一路撥，不保證音高也一路向上。",
+        "visual": "同時顯示四根弦的編號與鋼琴鍵，先聽四下，再把音名按高低排列。",
+        "seconds": [
+          22,
+          33
+        ]
+      },
+      "source_locator": "X124E-S03，Quick answer 後的 second-highest open-string pitch 與 middle C。",
+      "notes": "勿將本例套到低 G 或其他定弦。",
+      "origin": "wave124-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-90dc8b98fe5e648a",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S03，Quick answer 後的 second-highest open-string pitch 與 middle C。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0003",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "第一次出拉密牌，桌上紅色 9、10、11 排好了，手上的紅 12 正好能接。怎麼還過不了三十分這一關？",
+      "mechanism_key": "x124.daily.rummikub_initial_meld_rack_only",
+      "answer_target": "三十分算的是這位玩家第一次從自己牌架拿出來的完整牌組。桌上的 9、10、11 已經是別人打出的牌，不能借來湊三十分。若自己手上另有同色的 9、10、11，三張合計正好三十分，就能用自己的順子開局。完成首次出牌後，要到之後的回合才能接桌上的牌。",
+      "scope": "依 Rummikub 經典版英文規則，例子不用鬼牌。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣三個數字，放在牌架或桌上會改變它們能不能幫你破冰。",
+        "visual": "桌面放一組紅色 9、10、11；並排一個只有紅 12 的牌架，另一個牌架有藍色 9、10、11。",
+        "seconds": [
+          26,
+          39
+        ]
+      },
+      "source_locator": "X124E-S04 第 1 頁，Sets 與 Playing The Game 首段。",
+      "notes": "規則允許用多組自有牌湊總分，不限單一順子。",
+      "origin": "wave124-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2ef78d48a95ca496",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S04 第 1 頁，Sets 與 Playing The Game 首段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0004",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "黑白棋盤明明還有空格，黑方為什麼有時只能看白方連下兩手？",
+      "mechanism_key": "x124.daily.othello_forced_pass_no_legal_flip",
+      "answer_target": "落子除了要找空格，還要能在直線方向夾住並翻過至少一顆對手的棋子。輪到黑方卻沒有任何合法翻法時，這一手就讓過，白方若有合法走法便可再下。等到兩邊都無法走，才結束數子；因此終局時盤上仍可能有空格。",
+      "scope": "依世界黑白棋聯盟標準規則。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "判斷換手或終局，要分別檢查黑白兩方能不能翻子。",
+        "visual": "用三格局部橫列交代夾翻，再用同一盤的黑、白合法落點兩層標示演示讓手。",
+        "seconds": [
+          25,
+          37
+        ]
+      },
+      "source_locator": "X124E-S05，OTHELLO RULES 第 2、8 條及第 8 條下 Note。",
+      "notes": "有合法落點就不能主動跳過；示意圖須實際驗算全盤。",
+      "origin": "wave124-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-838b94ae79fd65dc",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S05，OTHELLO RULES 第 2、8 條及第 8 條下 Note。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0005",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "軟陶太軟，夾在兩張白紙之間壓一會兒，紙面怎麼冒出一片油印，土也比較挺了？",
+      "mechanism_key": "x124.daily.polymer_clay_paper_leaching",
+      "answer_target": "Sculpey 的未烤軟陶含有使材料柔軟的塑化劑。壓薄後夾在乾淨白紙裡，部分塑化劑會滲進紙面，留下看起來油油的痕跡。原廠利用這一點調整太軟的土，並指定用無印刷的紙，免得把印墨也轉印到作品上。",
+      "scope": "限 Sculpey 原廠所說的未固化烤箱軟陶。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "白紙上的痕跡正是手感改變的線索。",
+        "visual": "把同一批軟陶分兩片，一片夾白紙，並排比較紙上半透明油印與兩片邊緣的支撐性。",
+        "seconds": [
+          24,
+          36
+        ]
+      },
+      "source_locator": "X124E-S06，What if the clay I purchased is too soft? 兩段與 polymer clay 說明。",
+      "notes": "聚焦紙面抽出成分的現象；舊題 H3025 和 P56-008 談添加塑化劑後的材料性質。",
+      "origin": "wave124-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ca0bccf6818e9c9d",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S06，What if the clay I purchased is too soft? 兩段與 polymer clay 說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0006",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "胸圍量出 90 公分，毛衣圖樣卻建議織成 84 公分。少掉的六公分怎麼反而合乎圖樣？",
+      "mechanism_key": "x124.daily.sweater_finished_chest_negative_ease",
+      "answer_target": "先看 90 和 84 各是在量誰。90 是身體胸圍，84 是毛衣完成後的胸圍，兩數相差負六公分。若圖樣指定貼身的負鬆量，這個差值就是設計的一部分。Craft Yarn Council 的建議表把非常貼身列為小約 5 到 10 公分，經典版型則大約多 5 到 10 公分。",
+      "scope": "用針織毛衣圖樣說明，90 與 84 公分為自訂算例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個人用同一把皮尺，也可按兩種不同版型選出不同的成衣胸圍。",
+        "visual": "一張卡畫皮尺圈住身體，另一張畫皮尺圈住完成的毛衣，將 84 減 90 寫在圖樣旁。",
+        "seconds": [
+          24,
+          35
+        ]
+      },
+      "source_locator": "X124E-S07，Bust/Chest Fit and Ease Chart 的 Very close fitting、Classic fit。",
+      "notes": "與 K113-0353 的服飾標籤標準範圍不同；本題反推特定圖樣的成衣尺寸。",
+      "origin": "wave124-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9fe0cdee6fef1793",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S07，Bust/Chest Fit and Ease Chart 的 Very close fitting、Classic fit。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0007",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "蔓越莓採收照裡，整片紅果都浮在水上。它們原本就長在水裡，還是拍照前田裡做了什麼？",
+      "mechanism_key": "x124.daily.cranberry_flooding_wet_harvest",
+      "answer_target": "Ocean Spray 示範的濕採會先向田區灌水，再用機具攪動水面，讓成熟的果實脫離藤蔓。果內有小小的空氣腔，離開藤後便浮到水面，農人得以將果子圈攏。看到那片紅色水面，看到的是採收當下，並非它平時在藤上生長的模樣。",
+      "scope": "以該合作社介紹的濕採法為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "照片裡最壯觀的水面，是農人為了把莓果收起來才造出的工作環境。",
+        "visual": "同一個視角畫三次，先看藤上結果，再加水，最後讓脫藤的果子浮入圍欄。",
+        "seconds": [
+          24,
+          36
+        ]
+      },
+      "source_locator": "X124E-S08，Wet Harvest 全節；Fresh Cranberries 的鮮果兩種採法。",
+      "notes": "鮮售果也可溫和水採再乾燥，不以賣場包裝斷言採法。",
+      "origin": "wave124-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-821145cb56fdacb1",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S08，Wet Harvest 全節；Fresh Cranberries 的鮮果兩種採法。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0008",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "想吃到下一季的葡萄，冬天為什麼還要剪掉那麼多枝？整把剪光和一枝不剪又差在哪裡？",
+      "mechanism_key": "x124.daily.grape_fruiting_shoot_old_bud",
+      "answer_target": "下一季的葡萄串會長在那一季抽出的新梢上；新梢來自前一個生長季已形成的芽。修剪留下部分一年生枝上的芽，讓下一季有地方抽梢結果；留下太多則可能掛果過量、延遲成熟。看的是留下哪些芽，不是整架木頭總共留多長。",
+      "scope": "以明尼蘇達家用栽培與俄勒岡鮮食葡萄整枝例為限。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一串葡萄要對上兩個生長季：先在上一季長出芽，下一季再由新梢結果。",
+        "visual": "用兩種顏色疊畫休眠時留下的芽與春天由它抽出的新梢，在新梢上標出葡萄串。",
+        "seconds": [
+          26,
+          38
+        ]
+      },
+      "source_locator": "X124E-S09，Pruning。X124E-S10，How grape plants grow 的 1-year-old canes 及圖 5D 前內文。",
+      "notes": "不指定每株應留幾芽；不要與 K123-0010 的覆盆子枝條分段結果混用。",
+      "origin": "wave124-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5bc58d070b7ca4ff",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S09，Pruning。X124E-S10，How grape plants grow 的 1-year-old canes 及圖 5D 前內文。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-30a9aa3495bdb0a0",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S09，Pruning。X124E-S10，How grape plants grow 的 1-year-old canes 及圖 5D 前內文。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0009",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "硬頸蒜的花梗頂端擠出一團小顆粒，外形像迷你蒜瓣。這團真的是開花結出的種子嗎？",
+      "mechanism_key": "x124.daily.hardneck_garlic_aerial_bulbils",
+      "answer_target": "某些硬頸蒜抽出花梗後，頂端可長出一簇珠芽。明尼蘇達大學把它們形容成長在空中的小蒜瓣，並指出花通常未繼續發育。賓州州大的栽培資料記錄了用這些珠芽培育小蒜頭的做法。位置雖在花梗端，這團長得像蒜瓣的東西仍要和種子分開認。",
+      "scope": "辨認硬頸蒜花梗上已形成的一簇珠芽。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把整株蒜連同土面畫出來，地下大蒜頭和花梗端的小珠芽便不會指錯位置。",
+        "visual": "依序放大地下蒜頭、花梗和頂端珠芽，在鏡頭切換時保留土面作為參照。",
+        "seconds": [
+          24,
+          36
+        ]
+      },
+      "source_locator": "X124E-S11，Hardneck types。X124E-S12，With some hardneck varieties 段的 bulbils、topsets。",
+      "notes": "不宣稱蒜從不結真種子，也不說每株軟頸蒜都不抽梗。",
+      "origin": "wave124-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-49103c9ce8be3dc8",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S11，Hardneck types。X124E-S12，With some hardneck varieties 段的 bulbils、topsets。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0dcbd9c60a5733a0",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S11，Hardneck types。X124E-S12，With some hardneck varieties 段的 bulbils、topsets。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0010",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "河川水位站顯示 3 英尺，就代表把量尺從水面垂下去，3 英尺一定碰得到河床嗎？",
+      "mechanism_key": "x124.daily.stream_gage_local_zero_not_depth",
+      "answer_target": "水位站顯示的是水面高出測站設定零點多少。USGS 說，零點往往設在接近河床的高度，但它是選定的基準。假設水面高出基準 3 英尺，而同一位置的河床又低於基準 1 英尺，這裡的深度就是 4 英尺。要讀出水深，還要知道河床在哪裡。",
+      "scope": "限 USGS 的 stage／gage height；數字取作示意斷面。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張剖面上有兩條不同的起算線，一條是站方零點，另一條是當地河床。",
+        "visual": "在斷面圖疊加水面、測站基準與河床三條線；左右分別量出 3 英尺、4 英尺。",
+        "seconds": [
+          23,
+          35
+        ]
+      },
+      "source_locator": "X124E-S13，How Streamflow is Measured 開頭的 The zero level is arbitrary 一句與前文定義。",
+      "notes": "假設的河床高程不代表實際測站，亦不拿水位代替流量。",
+      "origin": "wave124-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-71b3062311694c85",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S13，How Streamflow is Measured 開頭的 The zero level is arbitrary 一句與前文定義。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0011",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "兩枚費城鑄的一美分，平常找不到廠記，怎麼偏偏 2017 年那枚會多出一個 P？",
+      "mechanism_key": "x124.daily.philadelphia_penny_2017_one_year_mark",
+      "answer_target": "P 是 Philadelphia 的廠記。美國鑄幣局為紀念成立 225 週年，在 2017 年費城製的流通一美分上第一次加了 P，這項更動只用於該年發行的一美分。拿別的面額來比較會混淆，其他面額早已用過費城的 P。",
+      "scope": "限美國 2017 年費城製的流通一美分。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一個小字母同時讓你認出鑄造地和那個只維持一年的紀念安排。",
+        "visual": "兩枚同為費城製的一美分依年份並排，放大 2017 年的 P，再用鑄幣局圖說核對。",
+        "seconds": [
+          22,
+          33
+        ]
+      },
+      "source_locator": "X124E-S14，In 2017 及 only for the 2017 issued cents。X124E-S15，2017 “P” Penny 圖說及週年段。",
+      "notes": "未聲稱 2017 是全美所有硬幣第一次出現 P，也不斷定收藏價值。",
+      "origin": "wave124-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-01d0388775cf0971",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S14，In 2017 及 only for the 2017 issued cents。X124E-S15，2017 “P” Penny 圖說及週年段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2121f3fb77679308",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S14，In 2017 及 only for the 2017 issued cents。X124E-S15，2017 “P” Penny 圖說及週年段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0012",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "同一牌子的乾酵母，一包直接拌進麵粉，另一包卻要先溶水。差別藏在哪些小顆粒裡？",
+      "mechanism_key": "x124.daily.yeast_fast_granules_direct_mix",
+      "answer_target": "Fleischmann’s 說它的 RapidRise 顆粒較細，拌麵的過程就能吸足水，原廠建議直接加入乾料。它的 Active Dry 顆粒較大，原廠指示先在水中溶開，讓它充分吸水後再加入。兩包看起來都是乾酵母，入料順序仍要跟著實際產品的說明。",
+      "scope": "只比較 Fleischmann’s 的 RapidRise 與 Active Dry。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "麵粉盆和水碗哪個先接到酵母，要先看拿的是哪一包。",
+        "visual": "兩包同牌酵母各放大一小撮顆粒，由包裝分別拉線到麵粉盆和水碗。",
+        "seconds": [
+          23,
+          34
+        ]
+      },
+      "source_locator": "X124E-S16，fast-rising yeast 和 Active Dry 的差異段，以及 Can RapidRise ... be used in Active Dry recipes?。",
+      "notes": "不把這家原廠的產品用法延伸成所有乾酵母的通則，也不替換配方的發酵次數。",
+      "origin": "wave124-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-8c6b9e3f4fa63fb6",
+          "origin": "wave124-everyday-20261119",
+          "locator": "X124E-S16，fast-rising yeast 和 Active Dry 的差異段，以及 Can RapidRise ... be used in Active Dry recipes?。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0401",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "七月才寄去申請的美國「馬」郵票首日封，為什麼蓋回來的郵戳會是六月十七日？",
+      "mechanism_key": "x124.postal.first_day_postmark_by_mail",
+      "answer_target": "2024 年這套郵票於 6 月 17 日在聖約瑟夫發行。照 USPS 公告，收藏者先在想保留的信封上貼票、寫地址，再裝進外封寄去申請。七月寄出仍在公告期限內；郵局在內封蓋的首日戳記錄郵票發行日，然後把它寄回。要查七月那次申請何時寄出，該看外封。",
+      "scope": "以 2024 Horses 的郵寄銷戳服務為例。七月是按公告舉的例子，公告明列申請件以 10 月 17 日郵戳為限。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "演示把貼了馬票的內封放進外封。在時間線分別標出 6/17 發行、七月寄申請及 10/17 申請截止。",
+        "payoff": "拿著首日封能讀出發行日；那天收藏者是否已把信投進信箱，要另找寄件證據。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "S01，Issue Date & City 與 How to Order the First-Day-of-Issue Postmark 的外封、蓋戳、寄回段。",
+      "notes": "七月為假設申請日。用公告明列截止日，不以通用天數重算。",
+      "origin": "wave124-postal-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c43467aee4399165",
+          "origin": "wave124-postal-20261119",
+          "locator": "S01，Issue Date & City 與 How to Order the First-Day-of-Issue Postmark 的外封、蓋戳、寄回段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-postal-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0402",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "一枚直剖成兩半的老郵票，為什麼集郵人要連信封和越過票邊的那道黑戳一起留？",
+      "mechanism_key": "x124.postal.bisect_tied_to_cover",
+      "answer_target": "看這封從 Ascoli 寄往 Macerata 的舊信：10 分票只剩直剖的一半，黑色銷戳從半張票延伸到旁邊的封紙。當時有人在缺合適面額時把票對剖抵半額。留著整封，才看得出半票貼在信上時已經蓋戳；單獨一片帶墨跡的票，也可能是整票用過之後才剪的。",
+      "scope": "館方列為 1860 年撒丁郵票實寄例，寄出日期只知是 12 月 30 或 31 日。這是歷史郵品的判讀，與現行郵資規則分開。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "先裁出半張直剖票的示意，再把原封範圍拉回來，讓觀眾沿黑戳從票紙一路描到封紙。",
+        "payoff": "少了原封，就少了能判讀「先對剖、後蓋戳」的那一段。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "S02，Bisect 定義段及 10c Victor Emmanuel II vertical bisect 對應的整封圖與圖說。",
+      "notes": "交界處的黑戳是重點，信封右側另有一枚圓戳。",
+      "origin": "wave124-postal-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-554df9d0d851513b",
+          "origin": "wave124-postal-20261119",
+          "locator": "S02，Bisect 定義段及 10c Victor Emmanuel II vertical bisect 對應的整封圖與圖說。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-postal-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0403",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "六枚鴨票都印一美元，最下面卻多一個「129202」。這串數字記的是什麼？",
+      "mechanism_key": "x124.postal.duck_stamp_plate_number",
+      "answer_target": "看 1934 年這組美國聯邦狩獵印花，兩排各有三枚鴨票，129202 落在最下面的邊紙。當年雕刻印刷局用過四塊版，編號從 129199 到 129202。留下有號碼的邊紙，就能把手上這組六連張對回其中一塊印版；一美元的面額另印在每枚票上。",
+      "scope": "這是 1934 年首期美國聯邦水禽狩獵印花，當年貼在狩獵執照或指定證明上。此處只解讀這件實物的印版號。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "照館藏的兩排三枚畫出六張票，只在下排中間的邊紙寫 129202，再指到每張票上的一美元。",
+        "payoff": "剪去邊紙，六張票的面額都還在，但指認這組六連張出自哪塊版的字樣就沒了。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "S03，Plate Block 129202, RW1 館藏照片下緣與末段列出的四個 plate numbers。",
+      "notes": "照館藏照片及正文確認是六枚；別將鴨票示意成寄信用的郵票。",
+      "origin": "wave124-postal-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-8290d21c9d1da505",
+          "origin": "wave124-postal-20261119",
+          "locator": "S03，Plate Block 129202, RW1 館藏照片下緣與末段列出的四個 plate numbers。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-postal-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0404",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "老美國郵票中央寫著大大的「2」，上面卻多了 POSTAGE DUE。這兩美分是誰付的？",
+      "mechanism_key": "x124.postal.postage_due_cash_accounting",
+      "answer_target": "把館藏這枚兩美分欠資票放回當年的收款流程：一封信若欠兩美分，郵務員向收件人收回這筆錢，並在郵件上貼欠資票留下記錄。郵局清點用掉多少欠資票，就有數字可跟收回的現金核對。寄信的人要預付郵資，用的是普通郵票。",
+      "scope": "以 1879 年美國施行的欠資票制度及館藏單枚作示例；這枚散票本身沒有附著可供追溯的原信封。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "圈出弧形的 POSTAGE DUE，再並排畫一封欠兩美分的信、兩美分現金和少掉一枚票的庫存。",
+        "payoff": "那個 2 讓郵局能核對收件端收了多少錢。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "S04，2-cent Postage Due stamp 及 1880 年郵政總長報告的現金核帳段；S06，604.1.3(a)。",
+      "notes": "兩美分來信是按規則還原的示例，別替散票設定寄件人。",
+      "origin": "wave124-postal-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-1c37f9be1d8f6295",
+          "origin": "wave124-postal-20261119",
+          "locator": "S04，2-cent Postage Due stamp 及 1880 年郵政總長報告的現金核帳段；S06，604.1.3(a)。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e0f4d2868cc919d8",
+          "origin": "wave124-postal-20261119",
+          "locator": "S04，2-cent Postage Due stamp 及 1880 年郵政總長報告的現金核帳段；S06，604.1.3(a)。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-postal-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0405",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "一枚瑪莎・華盛頓郵票正面蓋了「Kans.」，1929 年拿去堪薩斯州外寄信還算郵資嗎？",
+      "mechanism_key": "x124.postal.state_overprint_sale_area",
+      "answer_target": "算。館藏這枚四美分票在肖像下方加蓋 Kans.。當年郵政部試辦在堪薩斯與內布拉斯加發售各有州名縮寫的郵票，標出一般地方郵局獲配發售的州別；華府的集郵銷售處也曾開賣。票買到手後，仍可在普通美國郵票適用的地方寄信。曾有州外郵務員看見縮寫又要補收郵資，館方記錄這是誤判。",
+      "scope": "限定美國 1929 年 Kansas 與 Nebraska 試辦加蓋票。散票上的字樣無法單獨證明這枚票後來在哪一州投寄。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "重畫票面肖像下方的 Kans. 和兩側面額 4；用一張美國地圖先圈一般地方郵局的配售州，再標一處州外投郵點。",
+        "payoff": "在同一張地圖上，買得到這款票的地點與可以用它寄信的地點有不同範圍。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "S05，頁首四美分票、首三段 respective states／valid for postage throughout the United States，及 Learn more 的誤判記載、下方華府集郵銷售段落。",
+      "notes": "不要把票上的州名改寫為郵戳、收件州或使用期限。",
+      "origin": "wave124-postal-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c332f5cc2bb4fca4",
+          "origin": "wave124-postal-20261119",
+          "locator": "S05，頁首四美分票、首三段 respective states／valid for postage throughout the United States，及 Learn more 的誤判記載、下方華府集郵銷售段落。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-postal-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0406",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "美國郵資封還沒寄過，把右上角印好的郵資剪下來貼到大一點的信封，可以寄嗎？",
+      "mechanism_key": "x124.postal.postal_stationery_indicium",
+      "answer_target": "把兩個信封攤開看：USPS 賣的郵資封已把郵資直接印在原封上，原封本身就是預付郵資的用品。美國郵政手冊把「從郵資封剪下的郵資」明列為不能抵用。即使剪下的印花上沒有銷戳，貼到大信封上，也不能拿那一角付新信封的郵資。",
+      "scope": "只處理 USPS 預印郵資封移貼到另一件郵件的情境；封上直接印的郵資圖樣與另外買來的黏貼式郵票要分清。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫一個右上角有預印郵資的完整信封，沿著邊角示意剪線，把剪下的小塊移到第二封，再指回手冊的 cut from stamped envelopes。",
+        "payoff": "判斷能否移貼，先看圖樣是不是直接印在原來的郵資封上。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "S06，604.1.3(d) 的 cut from stamped envelopes 與 604.2.1.1 的 postage value preprinted on the envelope。",
+      "notes": "示意使用兩件不同大小的空信封，不涉及退換或寄失程序。",
+      "origin": "wave124-postal-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e0f4d2868cc919d8",
+          "origin": "wave124-postal-20261119",
+          "locator": "S06，604.1.3(d) 的 cut from stamped envelopes 與 604.2.1.1 的 postage value preprinted on the envelope。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-postal-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0407",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "抽屜裡兩枚英國舊票都寫 1st、都沒有條碼，怎麼一枚要換，另一枚還可以貼？",
+      "mechanism_key": "x124.postal.royal_mail_barcode_issue_type",
+      "answer_target": "對照 Royal Mail 的兩張範例圖。一枚是紅底、女王側像佔據票面的普通 Machin 票，沒有條碼的舊版已過寬限期，繼續拿來寄會按郵資不足處理。另一枚是聖母抱著孩子的聖誕圖票；Royal Mail 明列無條碼的聖誕票仍有效。「1st」指出服務等級，判斷這次要不要換，還要認出票種。",
+      "scope": "依英國 Royal Mail 的條碼轉換辦法。聖誕票及指定紀念圖票有例外，不能把紅底、女王頭像或無條碼單獨當成判斷依據。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "依 Royal Mail 換票範例畫紅底女王普通票與聖誕母子圖票，各自圈出相同的 1st，再把兩張分回適用的品項。",
+        "payoff": "票面都找不到條碼，仍然可以憑發行種類把兩枚票分到不同的處理方式。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "S07，可換範例第一枚與不需換範例第三枚；What happens if I use a non-barcoded stamp? 及 Christmas stamps 例外。",
+      "notes": "兩枚都取自換票範例，別用自行猜測的舊票圖片代替。",
+      "origin": "wave124-postal-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-45893ff997e99b52",
+          "origin": "wave124-postal-20261119",
+          "locator": "S07，可換範例第一枚與不需換範例第三枚；What happens if I use a non-barcoded stamp? 及 Christmas stamps 例外。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-postal-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0201",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "晚上九點把小包放進成田一般日租小櫃，凌晨一點取，為什麼四小時要付800日圓？",
+      "mechanism_key": "x124.luggage_lockers.midnight",
+      "answer_target": "成田自己舉的這組時刻跨過午夜。普通日租小櫃每天400日圓，星期五21:00到午夜算一天，星期六到01:00又算一天，總共800。若改成同一天17:00寄、21:00取，四小時都落在一天，只付400。",
+      "scope": "一般日租小櫃，假設尺寸合適、有空櫃且能接近。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鐘只走四小時，收費日卻畫了兩格。",
+        "visual": "把同一條四小時紙帶移過午夜。",
+        "seconds": [
+          20,
+          32
+        ]
+      },
+      "source_locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e341aac58c8df4c2",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0a1690e3ca1a78e7",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0202",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同一只背包改放在成田T2地下一樓，怎麼有一台只算300日圓？",
+      "mechanism_key": "x124.luggage_lockers.hourly",
+      "answer_target": "機場點名T2本館地下一樓、T3本館二樓的一般計時櫃。小格跟一般日租小格同樣高33、寬34、深66公分；四小時落在頭六小時的300日圓內。假設背包高28、寬26、深15公分，兩張帳的差額無須換背包就能出現。",
+      "scope": "只取一般計時機，排除同區另掛品牌的多功能機。尺寸是假設且小於三種小櫃。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "500日圓的差額來自時鐘，連格子的尺寸都相同。",
+        "visual": "標出 T2 B1 一般櫃，再把小包圖放進兩個等大的格子。",
+        "seconds": [
+          20,
+          34
+        ]
+      },
+      "source_locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e341aac58c8df4c2",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0a1690e3ca1a78e7",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0203",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "還在同一座T2地下一樓，看見MULTIECUBE字樣，九點到一點又該付多少？",
+      "mechanism_key": "x124.luggage_lockers.brand_clock",
+      "answer_target": "日文成田官網在同層列一般與多功能兩種機器。MULTIECUBE的S格每個收費日400日圓，而業者把換日點定在凌晨兩點。現場直接寄、未預約的背包在一點取出，仍在頭一個收費日，所以是400。",
+      "scope": "成田日文頁另有21:00至03:00跨兩個收費日的官方例；英文一般櫃的午夜規則不可套到此品牌。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一樓層中有兩種時鐘，連地圖也不能代替機身名稱。",
+        "visual": "並排 T2 B1 的兩筆設置項目，分別疊上300與400。",
+        "seconds": [
+          25,
+          37
+        ]
+      },
+      "source_locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e341aac58c8df4c2",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0efa3837a351b707",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0204",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "為什麼成田計時小櫃凌晨三點整取要300，三點零一分卻是700？",
+      "mechanism_key": "x124.luggage_lockers.six_hours",
+      "answer_target": "從21:00開始算，翌日03:00整剛好六小時，仍屬300日圓初段。03:01已進入下一個24小時收費區間，加400，合計700。把同一分鐘帶到一般日租櫃，前後都已跨午夜，都是800。",
+      "scope": "依公開費率逐分鐘試算，不涉及現場機器秒數、四捨五入或延時寬限。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這一分鐘影響的是從關櫃開始走的六小時線。",
+        "visual": "畫出00:00、02:00與03:00三個刻度，放大03:01。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e341aac58c8df4c2",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0a1690e3ca1a78e7",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0205",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果航班改從羽田T3走，價目上的一天又從哪裡算？",
+      "mechanism_key": "x124.luggage_lockers.rolling_day",
+      "answer_target": "羽田T3二樓小櫃公布500日圓／24小時，從旅客開始使用時起算。拿21:00寄的背包試，隔日01:00及上午09:00都還在同一個24小時區間。即使行程已經跨了兩個日曆日期，這個地點算的仍是第一段。",
+      "scope": "限羽田T3二樓安檢前小櫃。純比較計費，未主張旅客在同晚往返兩座機場。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看到「一天」，先找開始走鐘的那一刻。",
+        "visual": "摺起成田地圖，換羽田T3二樓價目，畫出21:00起的24小時。",
+        "seconds": [
+          25,
+          43
+        ]
+      },
+      "source_locator": "X124D-S05 T3 (Terminal 3) Coin Lockers (2F)，Fees、Storage Period 及 Size",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-21791a6e6db3d8bd",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S05 T3 (Terminal 3) Coin Lockers (2F)，Fees、Storage Period 及 Size",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0206",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在成田T2，安檢前的三樓和二樓都列一般櫃；凌晨一點該把取件路線畫在哪一層？",
+      "mechanism_key": "x124.luggage_lockers.floor_hours",
+      "answer_target": "機場把T2二樓、B1的入口列作全天開放，一般日租小櫃可選二樓，一般計時與多功能機可選B1。三樓雖然也列一般櫃，入口只開05:00–24:00。安檢前的標示能說明櫃子在哪側，不能把三樓入口延長到凌晨一點。",
+      "scope": "依機場的樓層入口公告。未確認當夜每一格的空位、故障或臨時管制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "算得出費用，還得走得到櫃門。",
+        "visual": "垂直畫T2的B1、2F、3F，01:00時把3F入口淡出。",
+        "seconds": [
+          23,
+          39
+        ]
+      },
+      "source_locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S04 Entrance Accessibility Hours，Terminal 2、Terminal 3",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e341aac58c8df4c2",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S04 Entrance Accessibility Hours，Terminal 2、Terminal 3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8de151d468fc380f",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S04 Entrance Accessibility Hours，Terminal 2、Terminal 3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0207",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果不想用機器，改在成田T2三樓找人寄包，深夜能下到一樓拿嗎？",
+      "mechanism_key": "x124.luggage_lockers.staffed_counter",
+      "answer_target": "JAL ABC的三樓出發櫃台07:00–21:00營業，一樓抵達櫃台從06:30到末班抵達航班之後一小時。假設20:30已把包交給三樓，條款指定帶著收據回原櫃領取。一樓即使有人，也不能替旅客交還三樓收下的這件行李。",
+      "scope": "只取JAL ABC人工寄存的收、取程序；不推定末班機實際時間。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "樓層可以換，保管行李的那個櫃檯換不了。",
+        "visual": "把寄物單上的3F夾回原櫃，另畫1F，兩者之間不畫取件箭頭。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "X124D-S07 Arrival Counter／Departure Counter 對照：Location、Business Hours、Service；X124D-S08 How to Use STEP1、STEP2，FAQ「Can I pick up my baggage at a different JAL ABC counter?」",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c566362b009821d8",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S07 Arrival Counter／Departure Counter 對照：Location、Business Hours、Service；X124D-S08 How to Use STEP1、STEP2，FAQ「Can I pick up my baggage at a different JAL ABC counter?」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-35aabfe8244f475f",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S07 Arrival Counter／Departure Counter 對照：Location、Business Hours、Service；X124D-S08 How to Use STEP1、STEP2，FAQ「Can I pick up my baggage at a different JAL ABC counter?」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0208",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "寄物樓層關了，包留到隔天增加的費用還有人算嗎？",
+      "mechanism_key": "x124.luggage_lockers.closed_floor",
+      "answer_target": "中部國際機場T1四樓06:00–22:30開放，Access Plaza及T1二樓則為24小時。官網寫明因任何理由未取件的延長費由旅客負擔，跨午夜按天另計；三、四樓關閉後請到Access Plaza找警衛協助。這是為什麼選櫃時應該看回程的那扇門。",
+      "scope": "取中部機場具名例，不能據此要求成田的警衛開門或免計費。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "建物停止讓人出入，價目的日界線仍可能繼續走。",
+        "visual": "以兩行排22:30樓層關門和00:00費用跨日。",
+        "seconds": [
+          21,
+          35
+        ]
+      },
+      "source_locator": "X124D-S06 Available hours 與 Please note",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-40949f5792b49749",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S06 Available hours 與 Please note",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0209",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "上野站的Metro Commerce一般櫃也在凌晨兩點多算一天，可以跟成田T2的多功能櫃一樣兩點前隨時回去嗎？",
+      "mechanism_key": "x124.luggage_lockers.station_access",
+      "answer_target": "上野在Metro Commerce的設置表內。一般寄物櫃約款第一項先把使用時間限在首班車到末班車，再說跨過末班而繼續寄放時，以凌晨兩點加一天。如果預計留到隔天首班以後取，費用會多一天；凌晨兩點是結帳界線，並非業者承諾車站當時開放。",
+      "scope": "限Metro Commerce一般櫃，不套用到京成上野站、JR上野站或東京所有車站。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "上野與成田可以同在兩點加費，開門時段卻是各看各的。",
+        "visual": "畫上下兩條線，一條標首末班，另一條標兩點加收。",
+        "seconds": [
+          24,
+          40
+        ]
+      },
+      "source_locator": "X124D-S10 2024年11月20日版，第1、3、5、6、7、8項；X124D-S09 銀座線 G16 上野駅、利用約款連結；X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-3dbc74a7df8d8c74",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S10 2024年11月20日版，第1、3、5、6、7、8項；X124D-S09 銀座線 G16 上野駅、利用約款連結；X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e549e1665de407fe",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S10 2024年11月20日版，第1、3、5、6、7、8項；X124D-S09 銀座線 G16 上野駅、利用約款連結；X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e341aac58c8df4c2",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S10 2024年11月20日版，第1、3、5、6、7、8項；X124D-S09 銀座線 G16 上野駅、利用約款連結；X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0210",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "明早要回來的行程如果移到東京迪士尼樂園門口，小櫃的500日圓要乘二嗎？",
+      "mechanism_key": "x124.luggage_lockers.day_use_only",
+      "answer_target": "東京迪士尼樂園把寄物櫃標在入口附近，園內外都有。小櫃標500日圓，條款要求寄物必須在同一天取走。拿來裝從早玩到傍晚才要背的外套合適；若排好隔日才取，把500乘二也不會多買到一晚。",
+      "scope": "只論東京迪士尼樂園官方列出的寄物櫃，不推論舞濱車站或飯店。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "有的門沒有「再付一天」這個選項。",
+        "visual": "把翌日取件的便條從樂園櫃移走，保留當晚取件那張。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X124D-S11 Information，Location、Locker Fees 與同日取件條款",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c6bf6362813073dd",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S11 Information，Location、Locker Fees 與同日取件條款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0211",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果把留在上野的一天延長成一週，同一扇櫃門還會替你保留七天嗎？",
+      "mechanism_key": "x124.luggage_lockers.retention",
+      "answer_target": "Metro Commerce約款第6、7項把原櫃的上限訂在含開始日在內四天。逾期未取，業者會開櫃檢視，把物品移到指定處另存，含寄入日在內保管30天。這時要依業者程序取回，費用、身分與原取件證明另有規定；四和三十兩個數字從同一次寄入開始算。",
+      "scope": "限一般可寄存物品。長期另存30日包含原先在櫃中的天數。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "下週拿著櫃號回來，包可能已換地方。",
+        "visual": "把背包從櫃號移到保管處，用一張日曆標出第4天和第30天。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "X124D-S10 2024年11月20日版，第1、3、5、6、7、8項；X124D-S09 銀座線 G16 上野駅、利用約款連結",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-3dbc74a7df8d8c74",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S10 2024年11月20日版，第1、3、5、6、7、8項；X124D-S09 銀座線 G16 上野駅、利用約款連結",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e549e1665de407fe",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S10 2024年11月20日版，第1、3、5、6、7、8項；X124D-S09 銀座線 G16 上野駅、利用約款連結",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0212",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在新宿高速巴士總站用信用卡寄包，結帳後掉出的小紙條能先丟嗎？",
+      "mechanism_key": "x124.luggage_lockers.paper_key",
+      "answer_target": "四樓觸控寄物櫃接受支援的信用卡與電子貨幣。營運方特別註明，解鎖需要收據印出的QR碼。回來時要找的是那張紙上的碼，用來付款的卡片排不到這個位置；寄物櫃的服務時段從首班巴士前30分鐘到末班。",
+      "scope": "只談巴士總站四樓，並非JR新宿站寄物櫃。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一筆交易，付款與開門用兩種東西。",
+        "visual": "讓卡片回錢包，把有QR的小紙條另夾進車票套。",
+        "seconds": [
+          20,
+          34
+        ]
+      },
+      "source_locator": "X124D-S12 Coin lockers：4th floor、Hours 及 QR code printed on the receipt",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-52a22da24bae50e3",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S12 Coin lockers：4th floor、Hours 及 QR code printed on the receipt",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0213",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "另一台寄物機同樣感應付款，為什麼面板沒吐出任何取件紙？",
+      "mechanism_key": "x124.luggage_lockers.device_key",
+      "answer_target": "SPACER列出支援卡片的觸控機種。走用卡流程時，寄放當下所碰的卡或感應裝置會成為鑰匙，本來就不印取件收據。取件時先用原卡找格位，再依畫面結帳開門。即使都寫可以用卡，也不能把新宿巴士總站要紙本碼的操作照搬過來。",
+      "scope": "限SPACER相應機型與用卡流程，另一套用App、可分享鑰匙的服務不在此例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "手上的紙可不可以丟，取決於剛才機器把鑰匙交給了誰。",
+        "visual": "畫一張卡先後感應兩次，面板分別顯示找格位與付款。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "X124D-S13 タッチパネル付き／交通系IC・クレジットカード・PiTaPa；FAQ「レシートは出ないですか？」；X124D-S12 Coin lockers：4th floor、Hours 及 QR code printed on the receipt",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-74a6fb3582d696c5",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S13 タッチパネル付き／交通系IC・クレジットカード・PiTaPa；FAQ「レシートは出ないですか？」；X124D-S12 Coin lockers：4th floor、Hours 及 QR code printed on the receipt",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-52a22da24bae50e3",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S13 タッチパネル付き／交通系IC・クレジットカード・PiTaPa；FAQ「レシートは出ないですか？」；X124D-S12 Coin lockers：4th floor、Hours 及 QR code printed on the receipt",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0214",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在成田已預約一整天的MULTIECUBE，能先開一次拿外套、晚上再回同一格拿包嗎？",
+      "mechanism_key": "x124.luggage_lockers.single_release",
+      "answer_target": "預約件回到原機台，輸入預約號碼或掃QR碼可取出。業者問答說一般預約只要完成取出操作，這次使用就結束，即使預約還有時間也無法再把包塞回同一筆預約。它另列的「一日自由開關」地點是GALA湯澤站，不能拿來解釋成田的預約。",
+      "scope": "限MULTIECUBE已預約的寄物，完整取出一次；不同於寄送件，也不推定一般機的取件介面。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先開門拿外套這個小動作，就會用完這次預約。",
+        "visual": "把外套放在關門前的手上，另示先按「取出」就會結束的路線。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」；X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-0efa3837a351b707",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」；X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e341aac58c8df4c2",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」；X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0215",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同樣打算凌晨一點拿包，為了先留一格，成田多功能小櫃的400日圓為什麼會變成900？",
+      "mechanism_key": "x124.luggage_lockers.reserve_cost",
+      "answer_target": "普通現場寄放按一天400日圓；標準預約依使用格數、每格每次另收500，再付該格原來的日租。21:00到01:00未跨兩點，預約一格S的小包合計900。不是多算一天，隔壁計時機的300也沒有因為跳過午夜而失效。",
+      "scope": "單格標準預約費，排除付費會員的折扣方案與配送費。並未替旅客預約。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "多出的500買的是先留櫃，時間軸上沒有多出一天。",
+        "visual": "把900拆成一張400的寄物費和一張500的預約費。",
+        "seconds": [
+          30,
+          48
+        ]
+      },
+      "source_locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e341aac58c8df4c2",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0efa3837a351b707",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K124-0216",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "回到成田，同一個小包改成上午九點到下午四點，原來最便宜的計時櫃還能贏嗎？",
+      "mechanism_key": "x124.luggage_lockers.daylight_flip",
+      "answer_target": "七個小時全在白天。一般日租小櫃未過午夜，是400；現場直接寄的MULTIECUBE未過凌晨兩點，也是400。一般計時小格已過六小時，要300加400等於700。想省錢的旅客可以改選400的日租，兩種日租在這次條件下並列。若隔天的固定需求改回21:00–01:00，則一般計時300、多功能現場400、一般日租800。",
+      "scope": "比較同一個放得進三種櫃的小包，只用現場公布基本費率，不含預約、配送、交通及空位承諾。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "原來贏了500的計時機，白天多放三小時反而輸300。",
+        "visual": "讓觀眾把紙鐘撥到09:00和16:00，再將三張價牌由低到高排列。",
+        "seconds": [
+          30,
+          49
+        ]
+      },
+      "source_locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List；X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。",
+      "origin": "wave124-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e341aac58c8df4c2",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List；X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0a1690e3ca1a78e7",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List；X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0efa3837a351b707",
+          "origin": "wave124-research-20261119",
+          "locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List；X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave124-research-20261119.json"
       ]
     },
     {
