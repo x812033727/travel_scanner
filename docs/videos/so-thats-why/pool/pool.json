@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-19-pool-7873",
+  "revision": "2026-11-19-pool-7909",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,46 +12,46 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 8337,
-    "canonical_questions": 8177,
-    "eligible_candidates": 7984,
-    "selected_candidates": 7873,
+    "raw_records": 8373,
+    "canonical_questions": 8213,
+    "eligible_candidates": 8020,
+    "selected_candidates": 7909,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 8850,
-    "current_research_source_urls": 5918,
-    "selected_source_urls": 6865,
-    "new_suggestions_not_added": 3562,
+    "source_urls": 8873,
+    "current_research_source_urls": 5941,
+    "selected_source_urls": 6888,
+    "new_suggestions_not_added": 3574,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1898,
-        "selected": 1868
+        "canonical": 1905,
+        "selected": 1875
       },
       "生物動物與植物": {
-        "canonical": 1530,
-        "selected": 1519
+        "canonical": 1531,
+        "selected": 1520
       },
       "地球天氣與太空": {
-        "canonical": 986,
-        "selected": 983
+        "canonical": 987,
+        "selected": 984
       },
       "數位科技與通訊工程": {
-        "canonical": 1496,
-        "selected": 1416
+        "canonical": 1499,
+        "selected": 1419
       },
       "飲食與廚房科學": {
-        "canonical": 537,
-        "selected": 531
+        "canonical": 538,
+        "selected": 532
       },
       "人體感官與日常行為": {
-        "canonical": 596,
-        "selected": 584
+        "canonical": 597,
+        "selected": 585
       },
       "建築交通與商業制度": {
-        "canonical": 1134,
-        "selected": 972
+        "canonical": 1156,
+        "selected": 994
       }
     }
   },
@@ -2161,6 +2161,18 @@
       "sha256": "785508a12f619a69f4899cbb6ab41d9c4fa9c3dcfcf43daa15e183ad6770a8c9"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave137-craft-20261119.json",
+      "sha256": "be4edbbc324e314c72062c402b8b5d4bc4d2d0b3ceef7c351492f3a02cf9e11d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json",
+      "sha256": "95213e6120e30a757736b85d2da1615369a761d47369903da118dc4e0c2d5cdb"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json",
+      "sha256": "72b521435ac1ddea3ac8a9332f86fe72f8ab8cd66dd9f30211ed0a5bb7e14ee3"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json",
       "sha256": "f44c3f03a6e74c79e53a27fe0ab4a4d809ca20d91a1d4976cafe59bb5f02a4ed"
     },
@@ -3438,12 +3450,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "0610f968cf6318e15f61408df01b555910001de48d64b637d8d963024dd5ea54"
+      "sha256": "8fdfa446fc1802add29204c74bd8afd570e57504ecc8141f208390dc2c2ccf74"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 8850
+    "count": 8873
   },
   "candidates": [
     {
@@ -156592,6 +156604,1632 @@
       "question_variants": [],
       "provenance_ids": [
         "K136-0217"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0101",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "美國鑄幣師才拿到一塊還沒捏出人像的泥模，硬幣上的字怎麼已經在上面了？",
+      "mechanism_key": "x137.workshop.inscribed_starter_model",
+      "answer_target": "雕刻部門先準備油性塑泥初模，把銘文和共通的圖案元素刻好，再交給藝術家。在這條製作路徑上，藝術家往同一個模型加泥，讓新圖案慢慢長出高低，之後還可翻成石膏修細節。",
+      "scope": "美國鑄幣局介紹的實體塑模流程；也有雕刻者全程數位製作。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用兩色紙黏土分開表示原來已有的字與後來加上的人像。",
+        "payoff": "第一道字比這張新面孔更早到雕刻師手上。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "自 initial model made of plastiline modeling clay 至 Each artist chooses the media。",
+      "notes": "發想自 K124-0011，採「桌面／口袋 30 公分掃描」。從一美分上的 P 看向一圈銘文。K124-0011 問 2017 年費城廠記為何出現；這題轉到不同階段的兩位製作者，問銘文與主圖如何分工。 對照 PR #2182：N9050 解三紅鑽商標的沿革；本題要查銘文已在初模的工序，無品牌歸屬之爭。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "只連結美國鑄幣局原件，另作無幣面原畫的工序示意。",
+      "origin": "wave137-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f71fc8426675fa72",
+          "origin": "wave137-craft-20261119",
+          "locator": "自 initial model made of plastiline modeling clay 至 Each artist chooses the media。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0101"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0102",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "美國鑄幣廠為什麼把一張臉的凹凸來回翻了好幾代，才肯拿最後那副模具去壓硬幣？",
+      "mechanism_key": "x137.workshop.working_die_generations",
+      "answer_target": "先在鋼製原始陽模刻好凸起的圖紋，壓出原始陰模，再轉出工作陽模，最後才複製出打幣用的工作陰模。工作陰模天天承受壓印，磨耗後可用工作陽模補做，最早的母模因此只須用很少次。",
+      "scope": "美國鑄幣局一般製模流程，三英吋幣章等直接銑刻陰模的做法另計。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用四塊黏土輪流翻出同一朵葉子，在工作陰模下方排出一列成品。",
+        "payoff": "換掉的是最後投入壓印的工作模，珍貴的母模可收起來。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "Step Two: Master Hub & Die；Step Three: Working Dies；末段 Proof Dies 的舊金山廠製程。",
+      "notes": "發想自 K120-0002，採「同賽道連打」。從乾刻銅版印久了會磨掉毛刺追到另一個承受壓印的工場。舊題解釋圖線怎麼變，這題解釋怎樣靠多代母模補做工具。 對照 PR #2182：N9059 的鑄鋼角件涉及貨櫃共通規格與授權，這裡追的是一套模具內部如何複製接班。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "只連結美國鑄幣局原件，另作無幣面原畫的工序示意。",
+      "origin": "wave137-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a9d73448ff4e9ff1",
+          "origin": "wave137-craft-20261119",
+          "locator": "Step Two: Master Hub & Die；Step Three: Working Dies；末段 Proof Dies 的舊金山廠製程。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0102"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0103",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "精製硬幣上的人像像撒了霜，旁邊卻亮得像鏡子。舊金山鑄幣廠是先在哪裡做出這兩種表面？",
+      "mechanism_key": "x137.workshop.proof_tool_surface",
+      "answer_target": "先看打幣用的模具。舊金山廠把暫時不拋光的區域遮好，露出的地方用鑽石膏拋亮；需要霧感的圖紋則由雷射做出微小凹點。壓到同一枚精製幣上，就能把霧面的人像和鏡面背景並排在一起。",
+      "scope": "舊金山廠的精製幣模與普通 proof 表面配置；reverse proof 的霧面、亮面位置可對調。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把一張自畫的模具截面放大，一側畫平整線，另一側畫小凹點，再對到成品的兩區。",
+        "payoff": "亮與霧先分區做在模具上，壓印時才一起轉到幣面。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "Step Two: Master Hub & Die；Step Three: Working Dies；末段 Proof Dies 的舊金山廠製程。；Coin Finishes 的 Proof & Reverse Proof Coins，並對照三張同系列照片。",
+      "notes": "發想自 K121-0001，採「同賽道連打」。同樣面對精製幣，K121-0001 察看為什麼要壓兩次；這題檢查模具在第一次壓下以前，兩種表面已如何做好。 對照 PR #2182：退案 A02 問各國護照封面顏色由誰選；這兩塊看起來不同的金屬面直接對到選區拋光與雷射打點。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "只連結美國鑄幣局原件，另作無幣面原畫的工序示意。",
+      "origin": "wave137-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a9d73448ff4e9ff1",
+          "origin": "wave137-craft-20261119",
+          "locator": "Step Two: Master Hub & Die；Step Three: Working Dies；末段 Proof Dies 的舊金山廠製程。；Coin Finishes 的 Proof & Reverse Proof Coins，並對照三張同系列照片。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-91df89d24b77599d",
+          "origin": "wave137-craft-20261119",
+          "locator": "Step Two: Master Hub & Die；Step Three: Working Dies；末段 Proof Dies 的舊金山廠製程。；Coin Finishes 的 Proof & Reverse Proof Coins，並對照三張同系列照片。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0103"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0104",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "這枚美國一美元的兩面已經壓出圖案，從壓機送出時邊緣還是光的，那一圈小字是哪時候加的？",
+      "mechanism_key": "x137.workshop.dollar_rolled_edge",
+      "answer_target": "壓機內的正反模負責兩面圖樣，外面還有一圈模具限制金屬往旁邊擠。在鑄幣局示範的這道一美元製程，圈模先留一個光邊。硬幣隨後進另一台機器，滾過去時才在直立的邊面壓入文字。",
+      "scope": "限美國鑄幣局 Coin Production 一美元後滾字的流程。其他幣種的圈模可以直接成形溝紋或文字。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用紙圓片標出正面、反面、邊面，依次在前兩面蓋章，最後讓圓片滾過一行字。",
+        "payoff": "錢幣送出第一台機器時已有兩面，邊文還差一站。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "Step Four: Upsetting；Step Five: Striking 下的 collar、additional machine、inspector 與 waffler。",
+      "notes": "發想自 K119-0008，採「同賽道連打」。K119-0008 找到壓圖前在幣面外圍隆起的凸緣。本題翻轉硬幣看垂直邊面，需追到壓圖之後另一台滾字機。 對照 PR #2182：N9050 是辨認鉛筆圖記的歸屬；本題由字的位置分辨是哪一站機械所加。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "只連結美國鑄幣局原件，另作無幣面原畫的工序示意。",
+      "origin": "wave137-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-46c9e1158a5de98e",
+          "origin": "wave137-craft-20261119",
+          "locator": "Step Four: Upsetting；Step Five: Striking 下的 collar、additional machine、inspector 與 waffler。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0104"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0105",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "美國棒球名人堂的紀念幣，為什麼把手套放在凹面、讓背後的棒球鼓起來，還能一路查到法國的天文幣？",
+      "mechanism_key": "x137.workshop.baseball_curved_surfaces",
+      "answer_target": "這枚球幣的弧度比設計徵選來得早。法案點名參考法國天文年紀念幣的凹凸形，鑄幣局也研究澳洲的南十字星曲面幣。背面主題已定為棒球，設計者 Cassie McFarland 覺得手套正合適擺進內凹的正面；整枚翻過來，凸面剛好托起球的輪廓。",
+      "scope": "2014 年美國棒球名人堂紀念幣計畫。天文幣提供的是曲面先例，棒球與手套的圖案來自美國計畫。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用一片彎曲厚紙的兩側分別畫球與手套；並排一片代表天文幣弧度的無圖卡片。",
+        "payoff": "從別國參考來的是整枚幣的弧度，接球的手套才是設計者替凹面找到的主角。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "Curved, Not Flat，及設計者 Cassie McFarland 介紹中的 glove 與 concave shape 段。",
+      "notes": "發想自 K136-0104，採「跨文化神轉折」。羽子板的衣袖靠棉絮與布拼出局部厚度；把同一個「從側面看到的立體感怎麼來」帶到跨國曲面幣，查的是整枚凹凸形先例和設計徵選。 對照 PR #2182：N9053 追海外飲食靈感與商品在地化；這一案有法案指名的法國曲面先例與美國設計者親述的選圖理由。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "只連結美國鑄幣局原件，另作無幣面原畫的工序示意。",
+      "origin": "wave137-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d0811790ae4fa085",
+          "origin": "wave137-craft-20261119",
+          "locator": "Curved, Not Flat，及設計者 Cassie McFarland 介紹中的 glove 與 concave shape 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0105"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0106",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "同一款籃球圖案，美國彩色紀念銀幣為什麼讓球面繼續閃銀光，旁邊的半美元卻把整顆球塗橘？",
+      "mechanism_key": "x137.workshop.basketball_selective_color",
+      "answer_target": "把 2020 年名人堂的兩款彩色幣翻到背面。銀幣只把籃球的縫線上色，讓球面還能看到銀的外觀與原有紋理。包覆合金半美元則讓球身呈橘色、縫線保留黑色，把向外隆起的曲面襯得更立體。",
+      "scope": "限定該計畫的彩色精製銀幣與彩色未流通版包覆合金半美元，兩者的籃網和籃框也有上色。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "準備兩張同樣的球紋圖，先一起勾縫線，再只把第二顆球塗滿，看背景金屬露出多少。",
+        "payoff": "兩顆球的縫線都有畫；一顆要讓銀面透出，另一顆要讓弧面更鼓。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "照片後的 The Basketball Hall of Fame Colorized Silver Coin 與 The clad colorized coin 兩段。",
+      "notes": "發想自 K136-0103，採「桌面／口袋 30 公分掃描」。浴衣舊題看兩種染液如何在布上交會；此處讓同圖的兩枚幣並排，問為何特意保留或遮蓋金屬本色，沒有沿用混色機制。 對照 PR #2182：退案 A02 在問護照封面顏色決策，並非比較同一鑄幣計畫的兩種上色範圍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "只連結美國鑄幣局原件，另作無幣面原畫的工序示意。",
+      "origin": "wave137-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-15be30494630c976",
+          "origin": "wave137-craft-20261119",
+          "locator": "照片後的 The Basketball Hall of Fame Colorized Silver Coin 與 The clad colorized coin 兩段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0106"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0107",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "美國鑄幣廠這批流通幣已經壓好圖案，工人怎麼又把整批送去壓成一條條波紋？",
+      "mechanism_key": "x137.workshop.waffler_rejected_coins",
+      "answer_target": "壓出幣面後還有抽樣檢查。若一批流通幣沒有達到檢驗標準，就改走另一台機器。它會把已壓印的硬幣彎出波紋，再送去回收。看到這一站的波紋，才能把它跟前面壓新圖案的步驟分開。",
+      "scope": "限鑄幣局描述的未通過檢查之流通幣批次。不能靠這段資料鑑定一枚來源不明的波紋幣。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫一條從同一台壓機開始的岔路，一側進包裝，另一側先變成波紋再進回收。",
+        "payoff": "最後壓下去的那道紋路，出現在沒有通過檢查的分流上。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "Step Four: Upsetting；Step Five: Striking 下的 collar、additional machine、inspector 與 waffler。",
+      "notes": "發想自 K119-0008，採「同賽道連打」。從合格幣的凸緣轉看檢驗失敗後離開產線的幣。凸緣保護幣面，這一批的整體波紋卻出現在壓完圖案、抽驗失格之後。 對照 PR #2182：退案 T08 追金門菜刀的回收鋼料從哪裡來；這張卡追造幣廠出廠前的報廢加工，原文沒有說回收後變成哪件工具。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "只連結美國鑄幣局原件，另作無幣面原畫的工序示意。",
+      "origin": "wave137-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-46c9e1158a5de98e",
+          "origin": "wave137-craft-20261119",
+          "locator": "Step Four: Upsetting；Step Five: Striking 下的 collar、additional machine、inspector 與 waffler。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0107"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0001",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "兩個同事都搭高鐵去出差，為什麼一個留著紙票就能作憑證，另一個卻要上網開證明？",
+      "mechanism_key": "x137.daily.thsr_ticket_receipt",
+      "answer_target": "一般實體高鐵車票本身就是財政部核准的憑證，高鐵不再另開購票證明。若用儲值卡感應搭車或手機票證等方式而沒有實體票，則可透過 T-EX 或高鐵網站開立一次電子車票證明。單純查詢交易紀錄另有下載管道。",
+      "scope": "限契約所列營利事業所得稅及營業稅憑證，不代替雇主的請款程序。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "並排一張虛構紙票和沒有紙票的感應進站圖，再標出可取得的兩種文件。",
+        "payoff": "找不找得到證明，先看當時領到的紙票是不是憑證本身。",
+        "seconds": [
+          24,
+          42
+        ]
+      },
+      "source_locator": "「貳、一般規定」第 4 條第 2、3 段。",
+      "notes": "發想取自 K136-0001，使用「桌面／口袋 30 公分掃描」。同一契約也供 K131-0001（兒童票）、K134-0004（遺失後退費）、K135-0002（設備故障賠償）及母題（中途退費）查核，本題只問行程結束後哪份文件可作憑證。 查對 #2182 的 wave86-w-heimao 正取與退案，N9001 處理 Suica 的通路與支付，本題的電子查詢與稅務憑證各有規定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪示意與虛構範例，保留原件連結供核。",
+      "origin": "wave137-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-3b5c9c384484f08d",
+          "origin": "wave137-everyday-20261119",
+          "locator": "「貳、一般規定」第 4 條第 2、3 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0002",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "日本郵局有一款明信片，還沒用，邊上就少了半圓形的一小塊。閉上眼怎麼靠它找出正面？",
+      "mechanism_key": "x137.daily.jpost_notched_postcard",
+      "answer_target": "把那個半圓的凹口摸到正面左下方，就同時知道哪邊朝上、哪面該寫地址。日本郵便的「くぼみ入りはがき」專為看不清版面的人保留這個線索，普通明信片和賀年明信片都有這種款式。",
+      "scope": "指日本郵便凹口葉書的指定方向。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "做一張有凹口的紙卡，翻面、上下掉轉後，逐次指出凹口位置。",
+        "payoff": "小缺口把原本要用眼睛讀的兩個方向，變成指腹就摸得到的標記。",
+        "seconds": [
+          24,
+          42
+        ]
+      },
+      "source_locator": "「くぼみ入りはがき」的対象與第一段。",
+      "notes": "發想取自 K129-0001，使用「桌面／口袋 30 公分掃描」。往復葉書的中線用於折寄與分拆；這個採購時就存在的半圓缺口用於辨向。 查對 #2182 的 wave86-w-heimao 正取與退案，N9047、N9050 也從文具外觀出發，核心分別是筆芯與品牌標誌，與觸讀標記不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪示意與虛構範例，保留原件連結供核。",
+      "origin": "wave137-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e47834a7f73b4df9",
+          "origin": "wave137-everyday-20261119",
+          "locator": "「くぼみ入りはがき」的対象與第一段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0003",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "一枚美國郵票中央被打了一排小孔，怎麼還可能拿來寄信？要量的是整排的範圍，還是每個洞？",
+      "mechanism_key": "x137.daily.usps_perforated_mark",
+      "answer_target": "兩個都要看。美國郵政容許在郵票上額外打孔作標記，但整個標記所占範圍不能超過四分之一平方英吋，單個孔的直徑也不能超過三十二分之一英吋。這裡量的是票面上的記號，和票邊用來撕開的齒孔不同。",
+      "scope": "限 USPS DMM 對郵票打孔的規定，並假設郵票及其他交寄條件有效。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫出方形標記範圍和其中一孔的放大圖，兩把尺分別標面積及直徑。",
+        "payoff": "一張印著票值的紙多了洞，還要分別量整個記號與一個孔。",
+        "seconds": [
+          24,
+          42
+        ]
+      },
+      "source_locator": "§1.7 Position 與 §1.9 Perforating Stamps。",
+      "notes": "發想取自 K124-0402，使用「桌面／口袋 30 公分掃描」。K124-0402 藉跨票郵戳辨認剖半票，K124-0404 看欠資誰付、K124-0406 看郵資封票印能否剪下另寄。本題檢查完整票面額外打孔的兩個尺寸上限。 查對 #2182 的 wave86-w-heimao 正取與退案，N9050 的三菱標記涉及商標身分，USPS 這一條只訂尺寸，不推測持有人動機。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪示意與虛構範例，保留原件連結供核。",
+      "origin": "wave137-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e0f4d2868cc919d8",
+          "origin": "wave137-everyday-20261119",
+          "locator": "§1.7 Position 與 §1.9 Perforating Stamps。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0004",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同一本臺灣電子書另賣 PDF 版要多一個 ISBN，裡面點開就能聽的錄音反而不用，書號是跟著什麼分的？",
+      "mechanism_key": "x137.daily.ebook_format_vs_device",
+      "answer_target": "國圖看的是各自發行的出版品。EPUB 與 PDF 以不同格式個別發行，要各用書號；書中連結的錄音若是這本書的一部分，無須另申請 ISBN。同一格式的電子書只換顯示裝置，也不因此成為新版。",
+      "scope": "假設出版者及內容相同，錄音隸屬該書；不談另行獨立發行的有聲書。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫兩張分別上架的封面，將同一個小喇叭留在其中一本書內。",
+        "payoff": "能自己打開播放的聲音，也可能只是一本書裡的一部分。",
+        "seconds": [
+          24,
+          42
+        ]
+      },
+      "source_locator": "第三項第（二）、（四）、（五）款。",
+      "notes": "發想取自 K118-0406，使用「同賽道連打」。K118-0406 辨整套與單冊；K118-0402 以重印、精裝和平裝判斷何時要另開產品號。這次反過來查點開的書內錄音是否算獨立出版品，再以個別發行的 PDF 對照。 查對 #2182 的 wave86-w-heimao 正取與退案，N9057 的開源字型跨語文覆蓋，與出版品以發行單位取號不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪示意與虛構範例，保留原件連結供核。",
+      "origin": "wave137-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-be4fac0ef02b67f6",
+          "origin": "wave137-everyday-20261119",
+          "locator": "第三項第（二）、（四）、（五）款。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0005",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "行事曆裡的爵士節在七月八日落幕，下載的檔案卻把結束日寫成七月九日。手機要多畫一天嗎？",
+      "mechanism_key": "x137.daily.ical_exclusive_event_end",
+      "answer_target": "不用。iCalendar 的全天事件從 DTSTART 那天算起，遇到 DTEND 那天就停，最後這個日期本身不包含在內。標準用蒙特婁爵士節示範，6 月 28 日開場、7 月 8 日最後一天，檔中記的結束日正是 7 月 9 日。",
+      "scope": "限以日期表示的全天 VEVENT，不是時區換算。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "在月曆格上畫一段色帶，九日格子的左緣正好是色帶終點。",
+        "payoff": "結束欄寫的是第一個不再上色的日期。",
+        "seconds": [
+          24,
+          42
+        ]
+      },
+      "source_locator": "§3.6.1 Event Component，印刷頁 54–55，蒙特婁爵士節範例。",
+      "notes": "發想取自 L254，使用「桌面／口袋 30 公分掃描」。L254–L259 分別問重複規則、單場取消或加場、固定時區、改期辨識與回撥時刻。本題用一個不重複的全天活動讀起訖邊界。 查對 #2182 的 wave86-w-heimao 正取與退案，N9007 的標準時區史與此無關，不必調動時鐘就會差一天。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪示意與虛構範例，保留原件連結供核。",
+      "origin": "wave137-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-fa334aea9ba16679",
+          "origin": "wave137-everyday-20261119",
+          "locator": "§3.6.1 Event Component，印刷頁 54–55，蒙特婁爵士節範例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0006",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同一個動畫 PNG，靜態開啟時是封面，一按播放卻連一瞬間都沒播那張封面。這兩張圖可以分開放嗎？",
+      "mechanism_key": "x137.daily.apng_poster_firstframe",
+      "answer_target": "可以。APNG 有供靜態讀取的圖像資料。第一個畫格控制區塊 fcTL 放在這段 IDAT 之前，靜態圖會兼作動畫第一幀；第一個畫格控制留到它之後，靜態圖就不屬於動畫，播放時才從另存的畫格開場。",
+      "scope": "限 APNG 資料順序，靜態開啟是指只顯示預設圖的讀取方式。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫同一個檔案內的封面圖與兩張動作格，交換控制卡位置比較兩次播放。",
+        "payoff": "同一檔案能同時保留一張靜態封面和一個不同的動畫開頭。",
+        "seconds": [
+          24,
+          42
+        ]
+      },
+      "source_locator": "§4.9.1 Structure，fcTL 與 IDAT 的相對順序，見「The static image may be included」。",
+      "notes": "發想取自 K135-0009，使用「桌面／口袋 30 公分掃描」。GIF 題放大看透明色的限制；這次固定像素與顏色，只換 APNG 控制區塊的位置。 查對 #2182 的 wave86-w-heimao 正取與退案，N9036 關乎 emoji 的起源與傳播史，沒有解答動畫檔預設圖如何加入播放。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪示意與虛構範例，保留原件連結供核。",
+      "origin": "wave137-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-65ac8a5a430c83eb",
+          "origin": "wave137-everyday-20261119",
+          "locator": "§4.9.1 Structure，fcTL 與 IDAT 的相對順序，見「The static image may be included」。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0007",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "電鋼琴的踏板明明插對了，踩下去卻把聲音截斷，抬腳才會延長。剛才開機時腳放在哪裡有差嗎？",
+      "mechanism_key": "x137.daily.yamaha_startup_pedal_polarity",
+      "answer_target": "在 Yamaha P-145、P-143 上有差。開機時一直壓著腳踏開關，琴可能把它辨認成相反極性；本該延音的動作就反過來。手冊針對這個症狀的處理是關機、放開踏板再重新開機。",
+      "scope": "假設踏板已接在正確插孔；只討論手冊列的這種反向症狀。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用兩次彈同一音的時間線標上開機、踩踏、抬腳三個時刻。",
+        "payoff": "同一顆踏板接在同一孔，開機那一刻的狀態就可能翻轉接下來的操作。",
+        "seconds": [
+          24,
+          42
+        ]
+      },
+      "source_locator": "印刷頁 9「Using a Footswitch or a Foot Pedal」、頁 13「Troubleshooting」的反向延音例。",
+      "notes": "發想取自 K118-0007，使用「同賽道連打」。母題比較兩種真鋼琴的中踏板結構；這張放到電鋼琴的外接踏板，問開機讀值怎麼改變結果。 查對 #2182 的 wave86-w-heimao 正取與退案，N9052 問音訊接頭為何能長期使用，踏板這一題固定插孔和線，只改變開機時腳的位置。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪示意與虛構範例，保留原件連結供核。",
+      "origin": "wave137-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-08435bdc13d6a797",
+          "origin": "wave137-everyday-20261119",
+          "locator": "印刷頁 9「Using a Footswitch or a Foot Pedal」、頁 13「Troubleshooting」的反向延音例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0008",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "球場果嶺上有兩個小凹洞，為什麼剛落下的球砸出來的那個可以補，球場保養留下的打孔卻不能照樣填？",
+      "mechanism_key": "x137.daily.golf_ball_mark_aeration_hole",
+      "answer_target": "規則 13.1c(2) 允許在不無理拖延比賽的前提下，用合適工具合理地把球痕修回原狀。例行養護為整片果嶺打出的透氣孔，不算這條規則所說的損傷，球員不能根據修球痕的許可逐孔抹平推球路線。",
+      "scope": "只比較球痕與整體養護打孔；不把插旗換洞留下的草塞誤當透氣孔。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫一個球落地的凹痕，再畫一排間距整齊的養護孔，請觀眾先選能動哪個。",
+        "payoff": "能不能修，先追問這個凹陷是怎樣留下來的。",
+        "seconds": [
+          24,
+          42
+        ]
+      },
+      "source_locator": "13.1c(2) Repair of Damage 中准許項目及正常整面養護的排除項目。",
+      "notes": "發想取自 K118-0010，使用「同賽道連打」。舊題看養護員取草補舊洞。共用 Rule 13 的 K119-0404／0405 查何時算進洞，K131-0007 查風移球；K125-0002 查球嵌在哪一個球痕才有補救。本題問球員可以修哪種地面凹痕。 查對 #2182 的 wave86-w-heimao 正取與退案，N9031 涉運動鞋品牌經營，這次依競賽規則比較果嶺的兩種痕跡。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪示意與虛構範例，保留原件連結供核。",
+      "origin": "wave137-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-519694be7cdaba9f",
+          "origin": "wave137-everyday-20261119",
+          "locator": "13.1c(2) Repair of Damage 中准許項目及正常整面養護的排除項目。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0009",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "登山看美國 US Topo 地圖，藍色水線忽然變成點點短短的一段，是製圖員漏畫了一截嗎？",
+      "mechanism_key": "x137.daily.us_topo_intermittent_stream_symbol",
+      "answer_target": "那是有意換的線型。這套圖的藍色實線標常流溪，藍色的劃線與點相間則標間歇溪。顏色告訴你它同屬水系，線型再把水流的持續性分開；光憑這張圖不能斷定走到那裡當天有多少水。",
+      "scope": "限 USGS 1:24,000 的 US Topo 標誌說明，不假設每個國家的虛線都是這個意思。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "自繪兩條同色水線與圖例，把顏色固定、只替換線型。",
+        "payoff": "沒變的是水系的藍色，變的是讀圖時要留意的流況。",
+        "seconds": [
+          24,
+          42
+        ]
+      },
+      "source_locator": "正文介紹線符號的段落，perennial stream 與 intermittent stream 範例。",
+      "notes": "發想取自 K125-0407，使用「桌面／口袋 30 公分掃描」。日本地圖沿岸小圓點題辨認海岸設施；從看線上小記號出發，US Topo 這例用線型描述溪流持續性。 查對 #2182 的 wave86-w-heimao 正取與退案，N9004 是機場代碼字母的來歷，這裡要辨認的是地形圖的水系圖例。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪示意與虛構範例，保留原件連結供核。",
+      "origin": "wave137-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-322ca325bb23b252",
+          "origin": "wave137-everyday-20261119",
+          "locator": "正文介紹線符號的段落，perennial stream 與 intermittent stream 範例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0010",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "鳥巢箱入口外常畫一根讓鳥站的短棍。康乃爾的圖卻省掉它，還要在入口內側刻出幾道橫紋，梯子是給誰爬？",
+      "mechanism_key": "x137.daily.nestbox_grooves_inside_no_perch",
+      "answer_target": "梯子給裡面的幼鳥。NestWatch 要入口下方的內壁保有抓點；燕子和北美藍鴝用的中型巢箱，可以刻一列淺橫槽讓雛鳥爬到洞口。外面的棲木對鳥並非必需，倒可能幫掠食者靠近。",
+      "scope": "限康乃爾 NestWatch 說明的洞巢箱，沒有比較各款箱的繁殖成功率。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把巢箱剖成側面，一條箭頭從內壁向上，一條從外面棲木靠近入口。",
+        "payoff": "外面的短棍與裡面的小梯子，解決的是兩種動物從相反方向靠近的問題。",
+        "seconds": [
+          24,
+          42
+        ]
+      },
+      "source_locator": "No Perches；It helps fledglings leave the nest more easily 下的 Rough Interior Walls 及 Interior Grooves。",
+      "notes": "發想取自 B2321，使用「同賽道連打」。母題跟著巢中雛鳥看牠如何得到食物；沿育雛進程往後問離巢時，木箱的哪個面需要足部抓點。 查對 #2182 的 wave86-w-heimao 正取與退案，N9016 涉平板家具的營運，不能拿板材拼裝來解釋燕雛如何離巢。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪示意與虛構範例，保留原件連結供核。",
+      "origin": "wave137-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f1940352adc87300",
+          "origin": "wave137-everyday-20261119",
+          "locator": "No Perches；It helps fledglings leave the nest more easily 下的 Rough Interior Walls 及 Interior Grooves。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0012",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "家裡收下的爆裂玉米試爆成功了，怎麼嚼起來韌、邊緣鋸齒狀，園藝指南卻說整批還不宜入罐？",
+      "mechanism_key": "x137.daily.popcorn_test_popping_before_storage",
+      "answer_target": "爆得開是一條線，乾到適合收藏是另一條。愛荷華州立大學建議先把採收後的果穗通風乾燥，每週一兩次取幾粒試爆；爆得又韌又帶鋸齒時表示仍太濕，需繼續乾燥。等試爆效果和口感都好，再把整批脫粒保存。",
+      "scope": "適用於自種爆裂玉米的採後乾燥；口感是樣本訊號，不能反算確切含水率。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "擺一袋仍掛著的玉米穗與兩撮不同邊緣的試爆樣，請觀眾決定先收還是再晾。",
+        "payoff": "已經能爆出來，仍有可能太濕而不宜把整批收起來。",
+        "seconds": [
+          24,
+          42
+        ]
+      },
+      "source_locator": "Harvesting and Storing Popcorn，從網袋乾燥、每週試爆到入庫的段落。",
+      "notes": "發想取自 LEG-S79，使用「同賽道連打」。同樣看到爆玉米，舊題追球為何跳及哪裡出聲；往爆之前追到農家入庫決策，改以試爆口感判斷乾燥。 查對 #2182 的 wave86-w-heimao 正取與退案，N9013 追電影院為何賣爆米花；本題保留食物，換成園圃採收的可觀察結果。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪示意與虛構範例，保留原件連結供核。",
+      "origin": "wave137-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-709914452a390eee",
+          "origin": "wave137-everyday-20261119",
+          "locator": "Harvesting and Storing Popcorn，從網袋乾燥、每週試爆到入庫的段落。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0201",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+      "mechanism_key": "x137.damaged_note.half_ten",
+      "answer_target": "澳洲央行的例子是五澳元。央行說，缺的那片也可能被人另行提出，所以在中段按留下的面積比例付。前提是意外殘損、真券與申請條件都成立。",
+      "scope": "這是官方估值例；未把同一張故意剪成碎片拿去領錢。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "澳洲央行的例子是五澳元。",
+        "visual": "用無票面圖樣的十格紙條，標示剩下與遺失的部分。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S01 Incomplete Banknotes，三檔規則、半張十元例與流水號段",
+      "notes": "這是官方估值例；未把同一張故意剪成碎片拿去領錢。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f591d5364a10f8f7",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S01 Incomplete Banknotes，三檔規則、半張十元例與流水號段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0201"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0202",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+      "mechanism_key": "x137.damaged_note.india_low",
+      "answer_target": "看印度的低面額規則。到二十盧比這一檔，單一最大連續片必須大於原券一半才付全額；剛好一半屬於不付的那邊。只送這一片，不能填原面額的一半。",
+      "scope": "面積依該面額和版型核算，不能把兩片完整同券也當成這個單片案例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看印度的低面額規則。",
+        "visual": "在數線 50% 畫空心圓，請觀眾把單片放在哪一邊。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S03 2025 年 4 月 15 日 PDF，收兌單元第 4 問及 Note Refund Rules – Amended 對照表；R137-S04 Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+      "notes": "面積依該面額和版型核算，不能把兩片完整同券也當成這個單片案例。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-08338ac6dd7bba66",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S03 2025 年 4 月 15 日 PDF，收兌單元第 4 問及 Note Refund Rules – Amended 對照表；R137-S04 Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-03c2d18acb8eede6",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S03 2025 年 4 月 15 日 PDF，收兌單元第 4 問及 Note Refund Rules – Amended 對照表；R137-S04 Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0202"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0203",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+      "mechanism_key": "x137.damaged_note.india_high",
+      "answer_target": "換面額就換到另一張表。五十盧比以上，最大單片落在四成到八成的半額檔；五十盧比新券剩整半片又滿足其餘條件，能按半額算二十五盧比。切勿用面額去乘前一張題卡的規則。",
+      "scope": "以新 MG 系列五十盧比說明，餘半片 44.55 平方公分，超過半額 36、未到全額 72；大小另有法定表。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "換面額就換到另一張表。",
+        "visual": "把同樣的 50% 紙片放到兩張印度價目欄。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S03 2025 年 4 月 15 日 PDF，收兌單元第 4 問及 Note Refund Rules – Amended 對照表；R137-S04 Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+      "notes": "以新 MG 系列五十盧比說明，餘半片 44.55 平方公分，超過半額 36、未到全額 72；大小另有法定表。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-03c2d18acb8eede6",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S03 2025 年 4 月 15 日 PDF，收兌單元第 4 問及 Note Refund Rules – Amended 對照表；R137-S04 Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-08338ac6dd7bba66",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S03 2025 年 4 月 15 日 PDF，收兌單元第 4 問及 Note Refund Rules – Amended 對照表；R137-S04 Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0203"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0204",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+      "mechanism_key": "x137.damaged_note.grid",
+      "answer_target": "照央行表，數完全或部分露出的格子，再把一百減去格數、除一百。表是分面額的；印出時要選實際尺寸，用尺或完整同面額券核對，才有相同比例可比。",
+      "scope": "這張格子用來估價，央行最後審定可能和估值不同。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "照央行表，數完全或部分露出的格子，再把一百減去格數、除一百。",
+        "visual": "先用縮小影印的空白格和標準格示範同張樣片會圈出不同範圍。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S02 Grids for Assessing Value of Australian Polymer Banknotes with Pieces Missing，首頁 Formula 與各面額圖尺",
+      "notes": "這張格子用來估價，央行最後審定可能和估值不同。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-7ea48ae98322e30f",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S02 Grids for Assessing Value of Australian Polymer Banknotes with Pieces Missing，首頁 Formula 與各面額圖尺",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0204"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0205",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？",
+      "mechanism_key": "x137.damaged_note.round",
+      "answer_target": "面額乘留存比例為 2.50 澳元。該估價表明列尾數五十分或以下向下、超過五十分才向上，因此這一格的估值是兩澳元。",
+      "scope": "只談估價表內的取整規則，不保證申請核定金額。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "面額乘留存比例為 2.50 澳元。",
+        "visual": "在格子旁寫 5 乘 0.50，分開填入計算值與整元估值。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S02 Grids for Assessing Value of Australian Polymer Banknotes with Pieces Missing，首頁 Formula 與各面額圖尺",
+      "notes": "只談估價表內的取整規則，不保證申請核定金額。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-7ea48ae98322e30f",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S02 Grids for Assessing Value of Australian Polymer Banknotes with Pieces Missing，首頁 Formula 與各面額圖尺",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0205"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0206",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？",
+      "mechanism_key": "x137.damaged_note.ends",
+      "answer_target": "澳洲政策分三段。少了不到兩成付全額，少了超過八成不付，中間才按餘下面積。假設同面額且其餘條件成立，剩 85% 與剩 15% 就分別落在全額與零。",
+      "scope": "兩個例子都避開界點；「剩下」與「缺了」加起來是百分之百。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "澳洲政策分三段。",
+        "visual": "讓觀眾在同一條數線的兩端先貼上全額與零，再填中段。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S01 Incomplete Banknotes，三檔規則、半張十元例與流水號段；R137-S02 Grids for Assessing Value of Australian Polymer Banknotes with Pieces Missing，首頁 Formula 與各面額圖尺",
+      "notes": "兩個例子都避開界點；「剩下」與「缺了」加起來是百分之百。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f591d5364a10f8f7",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S01 Incomplete Banknotes，三檔規則、半張十元例與流水號段；R137-S02 Grids for Assessing Value of Australian Polymer Banknotes with Pieces Missing，首頁 Formula 與各面額圖尺",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-7ea48ae98322e30f",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S01 Incomplete Banknotes，三檔規則、半張十元例與流水號段；R137-S02 Grids for Assessing Value of Australian Polymer Banknotes with Pieces Missing，首頁 Formula 與各面額圖尺",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0206"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0207",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？",
+      "mechanism_key": "x137.damaged_note.nz",
+      "answer_target": "紐西蘭央行指其意外損壞的第六或第七系列真鈔，一般高於三分之一、低於三分之二付半額。36% 落在中間，面額十紐元在這個例子裡可按五紐元估。",
+      "scope": "只談該頁適用系列和一般情況。用 36% 避開官網對恰好三分之一的不同措辭。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "紐西蘭央行指其意外損壞的第六或第七系列真鈔，一般高於三分之一、低於三分之二付半額。",
+        "visual": "把 36 格覆在一百格紙上，跟三分之一的虛線比。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S08 Damaged banknotes，Series 6 or 7；How to make a claim",
+      "notes": "只談該頁適用系列和一般情況。用 36% 避開官網對恰好三分之一的不同措辭。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-09ca30a029791856",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S08 Damaged banknotes，Series 6 or 7；How to make a claim",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0207"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0208",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？",
+      "mechanism_key": "x137.damaged_note.jp",
+      "answer_target": "日本銀行列三檔。未滿五分之二沒有價值；從五分之二到未滿三分之二付半額；達到三分之二付全額。36% 小於 40%，所以即使這是正反俱存的真券，也未達半額。",
+      "scope": "換的是日圓券；不能拿一張外幣實物去選對自己有利的央行。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "日本銀行列三檔。",
+        "visual": "在同一張 36 格上再疊一條 40 格線，留下四格空隙。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S06 正文資格文字與三張給付圖，2/3、2/5 兩處界點；R137-S08 Damaged banknotes，Series 6 or 7；How to make a claim",
+      "notes": "換的是日圓券；不能拿一張外幣實物去選對自己有利的央行。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ac853d153ba329a5",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S06 正文資格文字與三張給付圖，2/3、2/5 兩處界點；R137-S08 Damaged banknotes，Series 6 or 7；How to make a claim",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-09ca30a029791856",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S06 正文資格文字與三張給付圖，2/3、2/5 兩處界點；R137-S08 Damaged banknotes，Series 6 or 7；How to make a claim",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0208"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0209",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？",
+      "mechanism_key": "x137.damaged_note.nz_upper",
+      "answer_target": "依紐西蘭央行對第六、七系列意外殘損真券的說明，達三分之二時給全額。以半張和恰好三分之二張十紐元模擬，兩次留存比例只差六分之一張，給付卻從五元變十元。",
+      "scope": "算例沒有計算匯率，也沒有對低界恰三分之一作斷言。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "依紐西蘭央行對第六、七系列意外殘損真券的說明，達三分之二時給全額。",
+        "visual": "先遮住一張等分六格的紙上三格，再多露出一格。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S08 Damaged banknotes，Series 6 or 7；How to make a claim",
+      "notes": "算例沒有計算匯率，也沒有對低界恰三分之一作斷言。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-09ca30a029791856",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S08 Damaged banknotes，Series 6 or 7；How to make a claim",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0209"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0210",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？",
+      "mechanism_key": "x137.damaged_note.series",
+      "answer_target": "印度附表給同面額兩個版型不同門檻。舊五十盧比的全額至少 86 平方公分、半額 43；新 MG 系列分別是 72 和 36。75 平方公分一塊，在這組條件下舊券半額、新券全額。",
+      "scope": "75 平方公分是依原表設計的假想題，不是現場實際收兌的一張券。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "印度附表給同面額兩個版型不同門檻。",
+        "visual": "各用原尺寸長方形做外框，把同面積樣片覆在兩個框內。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S04 Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+      "notes": "75 平方公分是依原表設計的假想題，不是現場實際收兌的一張券。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-03c2d18acb8eede6",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S04 Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0210"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0211",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？",
+      "mechanism_key": "x137.damaged_note.two_pieces",
+      "answer_target": "還要看每一片。新 MG 五十盧比整張 89.10 平方公分。兩片各有 36 平方公分，均達四成，合資格時可適用兩片同券全額條款；37 加 35 有一片不到四成，最大單片 37 只達半額檔。",
+      "scope": "假設都是同一張原券的兩片，其他申請條件成立；規則對兩大塊使用 may，不把個案結果保證為全額。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "還要看每一片。",
+        "visual": "做兩對不同寬度的無圖樣紙片，總面積相同，逐片對照 36。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S04 Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+      "notes": "假設都是同一張原券的兩片，其他申請條件成立；規則對兩大塊使用 may，不把個案結果保證為全額。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-03c2d18acb8eede6",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S04 Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0211"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0212",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？",
+      "mechanism_key": "x137.damaged_note.intact_pair",
+      "answer_target": "印度央行指令把同一張鈔斷成兩片、貼合後整張齊全且重要特徵皆在的情形列入污損鈔。少掉一部分才是殘券的典型情況。確認是否缺紙，才知道應查哪一節。",
+      "scope": "以 2026 年指令中的 soiled note 定義為限，不適用分屬兩張紙鈔的拼片。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "印度央行指令把同一張鈔斷成兩片、貼合後整張齊全且重要特徵皆在的情形列入污損鈔。",
+        "visual": "在兩張對照卡上，先用空白紙拼全再抽走一塊。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S05 Soiled Note 與 Mutilated and Imperfect Notes 兩節，及其對修訂後 NRR 的引用",
+      "notes": "以 2026 年指令中的 soiled note 定義為限，不適用分屬兩張紙鈔的拼片。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-91a73332689e3648",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S05 Soiled Note 與 Mutilated and Imperfect Notes 兩節，及其對修訂後 NRR 的引用",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0212"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0213",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？",
+      "mechanism_key": "x137.damaged_note.serial",
+      "answer_target": "瑞士國家銀行的指引寫，一塊連續殘券大於原鈔一半，序號也要完整可辨，才符合這一項一般可立即交換的條件。澳洲殘券政策則明說，序號有無本身不影響殘片估值。",
+      "scope": "比較的是瑞士的立即交換條件與澳洲估值；未達瑞士這項條件不能直接改判沒收或零元。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "瑞士國家銀行的指引寫，一塊連續殘券大於原鈔一半，序號也要完整可辨，才符合這一項一般可立即交換的條件。",
+        "visual": "把近六成的空白樣片和一條假序號分開翻卡。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S01 Incomplete Banknotes，三檔規則、半張十元例與流水號段；R137-S09 2026-04-20，第 1 頁 Important information on exchanging banknotes",
+      "notes": "比較的是瑞士的立即交換條件與澳洲估值；未達瑞士這項條件不能直接改判沒收或零元。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f8040f9188237c5b",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S01 Incomplete Banknotes，三檔規則、半張十元例與流水號段；R137-S09 2026-04-20，第 1 頁 Important information on exchanging banknotes",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f591d5364a10f8f7",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S01 Incomplete Banknotes，三檔規則、半張十元例與流水號段；R137-S09 2026-04-20，第 1 頁 Important information on exchanging banknotes",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0213"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0214",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？",
+      "mechanism_key": "x137.damaged_note.sw_pair",
+      "answer_target": "瑞士指引還列了各自連續的兩片：合計必須大於一半，兩片要能辨出同一個序號。這比只有紙片總面積多問了一步，並把可立即交換與需要檢查的送件區分開。",
+      "scope": "限該指引所列立即交換例。對燒毀、腐朽等情形另需在表單交代受損原因。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "瑞士指引還列了各自連續的兩片：合計必須大於一半，兩片要能辨出同一個序號。",
+        "visual": "用兩組含相同或不同練習號碼的紙片示意，不使用真券號碼。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S09 2026-04-20，第 1 頁 Important information on exchanging banknotes",
+      "notes": "限該指引所列立即交換例。對燒毀、腐朽等情形另需在表單交代受損原因。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f8040f9188237c5b",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S09 2026-04-20，第 1 頁 Important information on exchanging banknotes",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0214"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0215",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？",
+      "mechanism_key": "x137.damaged_note.ash",
+      "answer_target": "日本銀行說仍可辨認是鈔票的灰，得依相同面積準則評估；鈔券要保有正反面。燒脆的殘券可放容器以免進一步碎裂，已崩成無法判明的碎屑可能毫無價值。",
+      "scope": "不能以灰重換面額，拿到灰也不保證給付。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "日本銀行說仍可辨認是鈔票的灰，得依相同面積準則評估；鈔券要保有正反面。",
+        "visual": "用褐色薄紙代替殘片，分開畫整塊輪廓與散開後不易辨讀的情形。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S06 正文資格文字與三張給付圖，2/3、2/5 兩處界點；R137-S07 §4(1)、§5(1)(a)、§5(2)，正反面、同券認定與脆片容器",
+      "notes": "不能以灰重換面額，拿到灰也不保證給付。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ac853d153ba329a5",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S06 正文資格文字與三張給付圖，2/3、2/5 兩處界點；R137-S07 §4(1)、§5(1)(a)、§5(2)，正反面、同券認定與脆片容器",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6cd89a72b3a75ff9",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S06 正文資格文字與三張給付圖，2/3、2/5 兩處界點；R137-S07 §4(1)、§5(1)(a)、§5(2)，正反面、同券認定與脆片容器",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0215"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0216",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？",
+      "mechanism_key": "x137.damaged_note.flood",
+      "answer_target": "德國聯邦銀行說，2021 年洪災中泡透的鈔票會損傷分揀機；沾泥的一束若黏著乾掉，又可能再也數不清。人員得及時乾燥、壓平、辨真偽再點數。",
+      "scope": "是美因茨國家分析中心的災後作業，不是一般個人在家應採的處理。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "德國聯邦銀行說，2021 年洪災中泡透的鈔票會損傷分揀機；沾泥的一束若黏著乾掉，又可能再也數不清。",
+        "visual": "先畫一束黏鈔的截面，問觀眾能辨出幾張；再拆開示意逐張清點。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S11 2022-02-10 原報告，Manual labour 及美因茨記者會的實收統計",
+      "notes": "是美因茨國家分析中心的災後作業，不是一般個人在家應採的處理。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5819abd5abb92c61",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S11 2022-02-10 原報告，Manual labour 及美因茨記者會的實收統計",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0216"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0217",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？",
+      "mechanism_key": "x137.damaged_note.tennis",
+      "answer_target": "該中心報告說，網球幫忙防止沾濕的券在烘乾時扭纏；攤平後再用鋪路石加重壓住。這些工具為的是讓鈔券能被逐張處理，並不靠重量讀出面額。",
+      "scope": "這是聯邦銀行對特定洪災的第一手示範，沒有說網球能驗真或算折價。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "該中心報告說，網球幫忙防止沾濕的券在烘乾時扭纏；攤平後再用鋪路石加重壓住。",
+        "visual": "做乾衣機示意動畫，轉到下一格再畫平紙上的重物。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S11 2022-02-10 原報告，Manual labour 及美因茨記者會的實收統計",
+      "notes": "這是聯邦銀行對特定洪災的第一手示範，沒有說網球能驗真或算折價。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5819abd5abb92c61",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S11 2022-02-10 原報告，Manual labour 及美因茨記者會的實收統計",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0217"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K137-0218",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？",
+      "mechanism_key": "x137.damaged_note.cyclone",
+      "answer_target": "Debbie 風災後澳洲央行收到 32 件洪災申請，共付約 330 萬澳元，處理約 9.2 萬張鈔票。受水浸泡的鈔會黏住，通常要多次清點，也能先用乾燥櫃。這些是整批統計，無法從總額回推某張缺角券的面積。",
+      "scope": "只對 2017 年風災這批案件；澳洲的乾燥櫃與德國的網球是分別記錄。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "Debbie 風災後澳洲央行收到 32 件洪災申請，共付約 330 萬澳元，處理約 9.2 萬張鈔票。",
+        "visual": "把「件、張、澳元」三個單位翻開，最後回到半張十澳元的單張題。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "R137-S10 Bulletin June 2022，Claims from Cyclone Debbie in 2017、Figure 5",
+      "notes": "只對 2017 年風災這批案件；澳洲的乾燥櫃與德國的網球是分別記錄。",
+      "origin": "wave137-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2987fd7fc35f8341",
+          "origin": "wave137-research-20261119",
+          "locator": "R137-S10 Bulletin June 2022，Claims from Cyclone Debbie in 2017、Figure 5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K137-0218"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -363186,7 +364824,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 8337
+    "count": 8373
   },
   "dedup": {
     "aliases": {
@@ -366472,6 +368110,42 @@
       "K136-0215": "K136-0215",
       "K136-0216": "K136-0216",
       "K136-0217": "K136-0217",
+      "K137-0101": "K137-0101",
+      "K137-0102": "K137-0102",
+      "K137-0103": "K137-0103",
+      "K137-0104": "K137-0104",
+      "K137-0105": "K137-0105",
+      "K137-0106": "K137-0106",
+      "K137-0107": "K137-0107",
+      "K137-0001": "K137-0001",
+      "K137-0002": "K137-0002",
+      "K137-0003": "K137-0003",
+      "K137-0004": "K137-0004",
+      "K137-0005": "K137-0005",
+      "K137-0006": "K137-0006",
+      "K137-0007": "K137-0007",
+      "K137-0008": "K137-0008",
+      "K137-0009": "K137-0009",
+      "K137-0010": "K137-0010",
+      "K137-0012": "K137-0012",
+      "K137-0201": "K137-0201",
+      "K137-0202": "K137-0202",
+      "K137-0203": "K137-0203",
+      "K137-0204": "K137-0204",
+      "K137-0205": "K137-0205",
+      "K137-0206": "K137-0206",
+      "K137-0207": "K137-0207",
+      "K137-0208": "K137-0208",
+      "K137-0209": "K137-0209",
+      "K137-0210": "K137-0210",
+      "K137-0211": "K137-0211",
+      "K137-0212": "K137-0212",
+      "K137-0213": "K137-0213",
+      "K137-0214": "K137-0214",
+      "K137-0215": "K137-0215",
+      "K137-0216": "K137-0216",
+      "K137-0217": "K137-0217",
+      "K137-0218": "K137-0218",
       "A14001": "A14001",
       "A14002": "A14002",
       "A14003": "A14003",
@@ -409898,6 +411572,20 @@
         ]
       },
       {
+        "id": "K137-0207~K137-0209",
+        "a": "K137-0207",
+        "b": "K137-0209",
+        "question_score": 0.08,
+        "answer_score": 0.235,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？",
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？"
+        ]
+      },
+      {
         "id": "P71-006~P73-001",
         "a": "P71-006",
         "b": "P73-001",
@@ -410962,6 +412650,20 @@
         ]
       },
       {
+        "id": "K137-0210~K137-0211",
+        "a": "K137-0210",
+        "b": "K137-0211",
+        "question_score": 0.194,
+        "answer_score": 0.197,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？",
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？"
+        ]
+      },
+      {
         "id": "E2283~K90-035",
         "a": "E2283",
         "b": "K90-035",
@@ -411813,6 +413515,20 @@
         "questions": [
           "寫樂 hocoro 明明有鋼筆筆尖，為什麼借它寫字時根本不用先找墨囊？",
           "卡片寫好要出門，hocoro 沒有筆蓋，洗好的筆尖該怎麼收？Kakimori 的筆座又要留意哪裡的水？"
+        ]
+      },
+      {
+        "id": "K137-0203~K137-0210",
+        "a": "K137-0203",
+        "b": "K137-0210",
+        "question_score": 0.179,
+        "answer_score": 0.108,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？"
         ]
       },
       {
@@ -413188,6 +414904,20 @@
         ]
       },
       {
+        "id": "K137-0213~K137-0214",
+        "a": "K137-0213",
+        "b": "K137-0214",
+        "question_score": 0.159,
+        "answer_score": 0.156,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？",
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？"
+        ]
+      },
+      {
         "id": "P71-007~P73-001",
         "a": "P71-007",
         "b": "P73-001",
@@ -413367,6 +415097,20 @@
         "questions": [
           "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
           "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？"
+        ]
+      },
+      {
+        "id": "K137-0201~K137-0202",
+        "a": "K137-0201",
+        "b": "K137-0202",
+        "question_score": 0.157,
+        "answer_score": 0.018,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？"
         ]
       },
       {
@@ -413661,6 +415405,20 @@
         "questions": [
           "鬩神星這個亮點假如和冥王星離我們一樣遠，較亮的那一顆就一定比較寬嗎？",
           "秤上還坐著鬩衛一，怎麼能說贏過冥王星的是鬩神星自己？"
+        ]
+      },
+      {
+        "id": "K137-0204~K137-0205",
+        "a": "K137-0204",
+        "b": "K137-0205",
+        "question_score": 0.154,
+        "answer_score": 0.039,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？"
         ]
       },
       {
@@ -414347,6 +416105,20 @@
         "questions": [
           "為什麼 2026 年夏天在新加坡買兩罐同款汽水，可以只替其中一罐付押金？",
           "在新加坡找不到押金標記的過渡期舊罐沒付押金，換作芬蘭一只沒標記的玻璃瓶，也能只靠瓶身下結論嗎？"
+        ]
+      },
+      {
+        "id": "K137-0207~K137-0208",
+        "a": "K137-0207",
+        "b": "K137-0208",
+        "question_score": 0.085,
+        "answer_score": 0.147,
+        "key_score": 1,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？",
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？"
         ]
       },
       {
@@ -415652,6 +417424,20 @@
         ]
       },
       {
+        "id": "K137-0203~K137-0211",
+        "a": "K137-0203",
+        "b": "K137-0211",
+        "question_score": 0.1,
+        "answer_score": 0.136,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？"
+        ]
+      },
+      {
         "id": "K95-003~R6017",
         "a": "R6017",
         "b": "K95-003",
@@ -416713,6 +418499,20 @@
         "questions": [
           "鬩神星掩住遠方的星，三臺望遠鏡都拍到了，論文怎麼只畫出兩條截線？",
           "鬩神星背後的恆星只重新亮起一次，觀測者為什麼得比較兩個相差 1.2 秒的時刻？"
+        ]
+      },
+      {
+        "id": "K137-0201~K137-0205",
+        "a": "K137-0201",
+        "b": "K137-0205",
+        "question_score": 0.128,
+        "answer_score": 0.04,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？"
         ]
       },
       {
@@ -418046,6 +419846,20 @@
         ]
       },
       {
+        "id": "K137-0201~K137-0209",
+        "a": "K137-0201",
+        "b": "K137-0209",
+        "question_score": 0.038,
+        "answer_score": 0.118,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？"
+        ]
+      },
+      {
         "id": "L002~L006",
         "a": "L002",
         "b": "L006",
@@ -419233,6 +421047,20 @@
         "questions": [
           "進球明明在門前，VAR 為什麼可以往前倒帶，查先前底線旁的傳中？",
           "同一場還有 VAR，究竟是規則禁止查，還是這次沒介入？"
+        ]
+      },
+      {
+        "id": "K137-0202~K137-0203",
+        "a": "K137-0202",
+        "b": "K137-0203",
+        "question_score": 0.111,
+        "answer_score": 0.099,
+        "key_score": 0.8,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？"
         ]
       },
       {
@@ -420748,6 +422576,20 @@
         ]
       },
       {
+        "id": "K137-0208~K137-0209",
+        "a": "K137-0208",
+        "b": "K137-0209",
+        "question_score": 0.075,
+        "answer_score": 0.103,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？",
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？"
+        ]
+      },
+      {
         "id": "M2016~P268",
         "a": "P268",
         "b": "M2016",
@@ -421196,6 +423038,34 @@
         ]
       },
       {
+        "id": "K137-0201~K137-0218",
+        "a": "K137-0201",
+        "b": "K137-0218",
+        "question_score": 0.041,
+        "answer_score": 0.1,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
+        ]
+      },
+      {
+        "id": "K137-0202~K137-0211",
+        "a": "K137-0202",
+        "b": "K137-0211",
+        "question_score": 0.1,
+        "answer_score": 0.098,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？"
+        ]
+      },
+      {
         "id": "K66-001~K66-009",
         "a": "K66-001",
         "b": "K66-009",
@@ -421599,6 +423469,20 @@
         "questions": [
           "鬩神星這個亮點假如和冥王星離我們一樣遠，較亮的那一顆就一定比較寬嗎？",
           "鬩神星背後的恆星只重新亮起一次，觀測者為什麼得比較兩個相差 1.2 秒的時刻？"
+        ]
+      },
+      {
+        "id": "K137-0203~K137-0206",
+        "a": "K137-0203",
+        "b": "K137-0206",
+        "question_score": 0,
+        "answer_score": 0.098,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？"
         ]
       },
       {
@@ -424234,6 +426118,20 @@
         ]
       },
       {
+        "id": "K137-0208~K137-0215",
+        "a": "K137-0208",
+        "b": "K137-0215",
+        "question_score": 0,
+        "answer_score": 0.086,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？",
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？"
+        ]
+      },
+      {
         "id": "P74-020~P74-024",
         "a": "P74-020",
         "b": "P74-024",
@@ -424413,6 +426311,20 @@
         "questions": [
           "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？",
           "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
+        ]
+      },
+      {
+        "id": "K137-0205~K137-0206",
+        "a": "K137-0205",
+        "b": "K137-0206",
+        "question_score": 0.085,
+        "answer_score": 0.039,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？",
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？"
         ]
       },
       {
@@ -424609,6 +426521,20 @@
         "questions": [
           "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？",
           "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
+        ]
+      },
+      {
+        "id": "K137-0202~K137-0214",
+        "a": "K137-0202",
+        "b": "K137-0214",
+        "question_score": 0.034,
+        "answer_score": 0.084,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？"
         ]
       },
       {
@@ -424861,6 +426787,48 @@
         "questions": [
           "西班牙半場還領先，和三笘薰同時從板凳站起來的隊友做了什麼？",
           "球場另一端也可能進球，美聯社攝影師為什麼半場還留在原地？"
+        ]
+      },
+      {
+        "id": "K137-0202~K137-0210",
+        "a": "K137-0202",
+        "b": "K137-0210",
+        "question_score": 0.071,
+        "answer_score": 0.083,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？"
+        ]
+      },
+      {
+        "id": "K137-0202~K137-0213",
+        "a": "K137-0202",
+        "b": "K137-0213",
+        "question_score": 0.034,
+        "answer_score": 0.083,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？"
+        ]
+      },
+      {
+        "id": "K137-0207~K137-0210",
+        "a": "K137-0207",
+        "b": "K137-0210",
+        "question_score": 0,
+        "answer_score": 0.083,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？",
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？"
         ]
       },
       {
@@ -425253,6 +427221,20 @@
         "questions": [
           "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？",
           "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
+        ]
+      },
+      {
+        "id": "K137-0206~K137-0210",
+        "a": "K137-0206",
+        "b": "K137-0210",
+        "question_score": 0,
+        "answer_score": 0.082,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？",
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？"
         ]
       },
       {
@@ -425883,6 +427865,20 @@
         "questions": [
           "哈伯想量鬩神星有多寬，為什麼先拍旁邊那個看似用不著的星點？",
           "鬩神星的直徑後來下修，能靠這一條測量把冥王星填回行星名單嗎？"
+        ]
+      },
+      {
+        "id": "K137-0202~K137-0205",
+        "a": "K137-0202",
+        "b": "K137-0205",
+        "question_score": 0.08,
+        "answer_score": 0.04,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？"
         ]
       },
       {
@@ -426726,6 +428722,20 @@
         ]
       },
       {
+        "id": "K137-0217~K137-0218",
+        "a": "K137-0217",
+        "b": "K137-0218",
+        "question_score": 0.077,
+        "answer_score": 0.028,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
+        ]
+      },
+      {
         "id": "L135~N145",
         "a": "L135",
         "b": "N145",
@@ -427269,6 +429279,34 @@
         "questions": [
           "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
           "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？"
+        ]
+      },
+      {
+        "id": "K137-0201~K137-0204",
+        "a": "K137-0201",
+        "b": "K137-0204",
+        "question_score": 0.075,
+        "answer_score": 0.035,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？"
+        ]
+      },
+      {
+        "id": "K137-0216~K137-0217",
+        "a": "K137-0216",
+        "b": "K137-0217",
+        "question_score": 0.075,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
         ]
       },
       {
@@ -428070,6 +430108,20 @@
         ]
       },
       {
+        "id": "K137-0202~K137-0209",
+        "a": "K137-0202",
+        "b": "K137-0209",
+        "question_score": 0.073,
+        "answer_score": 0.017,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？"
+        ]
+      },
+      {
         "id": "L58-001~R40009",
         "a": "R40009",
         "b": "L58-001",
@@ -428515,6 +430567,48 @@
         "questions": [
           "同一份冥王星掩星資料，為什麼一種解把可見邊緣放在地面，另一種卻放在霾層？",
           "如果「清除軌道鄰域」看的是本領，為什麼比較重的鬩神星在這張表還低於冥王星？"
+        ]
+      },
+      {
+        "id": "K137-0201~K137-0206",
+        "a": "K137-0201",
+        "b": "K137-0206",
+        "question_score": 0,
+        "answer_score": 0.071,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？"
+        ]
+      },
+      {
+        "id": "K137-0201~K137-0207",
+        "a": "K137-0201",
+        "b": "K137-0207",
+        "question_score": 0,
+        "answer_score": 0.071,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？"
+        ]
+      },
+      {
+        "id": "K137-0202~K137-0206",
+        "a": "K137-0202",
+        "b": "K137-0206",
+        "question_score": 0,
+        "answer_score": 0.071,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？"
         ]
       },
       {
@@ -429257,6 +431351,20 @@
         "questions": [
           "維拉門將抱著球向後跌，為什麼第 42 分鐘主裁沒有指向中圈？",
           "同一場還有 VAR，究竟是規則禁止查，還是這次沒介入？"
+        ]
+      },
+      {
+        "id": "K137-0208~K137-0211",
+        "a": "K137-0208",
+        "b": "K137-0211",
+        "question_score": 0.069,
+        "answer_score": 0.067,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？",
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？"
         ]
       },
       {
@@ -430391,6 +432499,20 @@
         "questions": [
           "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
           "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？"
+        ]
+      },
+      {
+        "id": "K137-0215~K137-0216",
+        "a": "K137-0215",
+        "b": "K137-0216",
+        "question_score": 0,
+        "answer_score": 0.066,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？",
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
         ]
       },
       {
@@ -433810,6 +435932,34 @@
         ]
       },
       {
+        "id": "K137-0205~K137-0209",
+        "a": "K137-0205",
+        "b": "K137-0209",
+        "question_score": 0.039,
+        "answer_score": 0.056,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？",
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？"
+        ]
+      },
+      {
+        "id": "K137-0216~K137-0218",
+        "a": "K137-0216",
+        "b": "K137-0218",
+        "question_score": 0.039,
+        "answer_score": 0.056,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
+        ]
+      },
+      {
         "id": "L001~L017",
         "a": "L001",
         "b": "L017",
@@ -434790,6 +436940,20 @@
         ]
       },
       {
+        "id": "K137-0206~K137-0207",
+        "a": "K137-0206",
+        "b": "K137-0207",
+        "question_score": 0,
+        "answer_score": 0.053,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？",
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？"
+        ]
+      },
+      {
         "id": "K90-019~K90-027",
         "a": "K90-019",
         "b": "K90-027",
@@ -435574,6 +437738,20 @@
         ]
       },
       {
+        "id": "K137-0208~K137-0210",
+        "a": "K137-0208",
+        "b": "K137-0210",
+        "question_score": 0,
+        "answer_score": 0.051,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？",
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？"
+        ]
+      },
+      {
         "id": "L049~L053",
         "a": "L049",
         "b": "L053",
@@ -435966,6 +438144,48 @@
         ]
       },
       {
+        "id": "K137-0201~K137-0213",
+        "a": "K137-0201",
+        "b": "K137-0213",
+        "question_score": 0.036,
+        "answer_score": 0.05,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？"
+        ]
+      },
+      {
+        "id": "K137-0201~K137-0215",
+        "a": "K137-0201",
+        "b": "K137-0215",
+        "question_score": 0,
+        "answer_score": 0.05,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？"
+        ]
+      },
+      {
+        "id": "K137-0203~K137-0207",
+        "a": "K137-0203",
+        "b": "K137-0207",
+        "question_score": 0,
+        "answer_score": 0.05,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？"
+        ]
+      },
+      {
         "id": "L159~L161",
         "a": "L159",
         "b": "L161",
@@ -436215,6 +438435,20 @@
         "questions": [
           "Stones 對利物浦為什麼得把「同一次險情」救兩回？",
           "同一場還有 VAR，究竟是規則禁止查，還是這次沒介入？"
+        ]
+      },
+      {
+        "id": "K137-0206~K137-0213",
+        "a": "K137-0206",
+        "b": "K137-0213",
+        "question_score": 0,
+        "answer_score": 0.049,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？",
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？"
         ]
       },
       {
@@ -437111,6 +439345,34 @@
         "questions": [
           "門將手邊沒有電視，球真的越過球門線時，誰先收到訊息？",
           "七台門線攝影機都裝著，竟然哪一台也沒看清那顆球？"
+        ]
+      },
+      {
+        "id": "K137-0209~K137-0212",
+        "a": "K137-0209",
+        "b": "K137-0212",
+        "question_score": 0,
+        "answer_score": 0.047,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？",
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？"
+        ]
+      },
+      {
+        "id": "K137-0213~K137-0215",
+        "a": "K137-0213",
+        "b": "K137-0215",
+        "question_score": 0.037,
+        "answer_score": 0.047,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？",
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？"
         ]
       },
       {
@@ -439340,6 +441602,48 @@
         ]
       },
       {
+        "id": "K137-0207~K137-0212",
+        "a": "K137-0207",
+        "b": "K137-0212",
+        "question_score": 0.042,
+        "answer_score": 0.033,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？",
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？"
+        ]
+      },
+      {
+        "id": "K137-0207~K137-0216",
+        "a": "K137-0207",
+        "b": "K137-0216",
+        "question_score": 0.042,
+        "answer_score": 0,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？",
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
+        ]
+      },
+      {
+        "id": "K137-0212~K137-0215",
+        "a": "K137-0212",
+        "b": "K137-0215",
+        "question_score": 0.042,
+        "answer_score": 0.031,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？",
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？"
+        ]
+      },
+      {
         "id": "R41001~R41005",
         "a": "R41001",
         "b": "R41005",
@@ -439771,6 +442075,48 @@
         "questions": [
           "底線這道白漆自己有寬度，球要離開的是靠草皮裡面那邊，還是外面那邊？",
           "同一場還有 VAR，究竟是規則禁止查，還是這次沒介入？"
+        ]
+      },
+      {
+        "id": "K137-0206~K137-0218",
+        "a": "K137-0206",
+        "b": "K137-0218",
+        "question_score": 0.041,
+        "answer_score": 0.028,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
+        ]
+      },
+      {
+        "id": "K137-0212~K137-0218",
+        "a": "K137-0212",
+        "b": "K137-0218",
+        "question_score": 0.039,
+        "answer_score": 0.041,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
+        ]
+      },
+      {
+        "id": "K137-0215~K137-0218",
+        "a": "K137-0215",
+        "b": "K137-0218",
+        "question_score": 0,
+        "answer_score": 0.041,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
         ]
       },
       {
@@ -440219,6 +442565,34 @@
         "questions": [
           "同一季曼城又遇到門線解圍，這次伯恩利把球踢走，怎麼還是判進？",
           "維拉門將抱著球向後跌，為什麼第 42 分鐘主裁沒有指向中圈？"
+        ]
+      },
+      {
+        "id": "K137-0203~K137-0205",
+        "a": "K137-0203",
+        "b": "K137-0205",
+        "question_score": 0.04,
+        "answer_score": 0.036,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？"
+        ]
+      },
+      {
+        "id": "K137-0206~K137-0212",
+        "a": "K137-0206",
+        "b": "K137-0212",
+        "question_score": 0.04,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？",
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？"
         ]
       },
       {
@@ -440709,6 +443083,34 @@
         "questions": [
           "底線這道白漆自己有寬度，球要離開的是靠草皮裡面那邊，還是外面那邊？",
           "同一季曼城又遇到門線解圍，這次伯恩利把球踢走，怎麼還是判進？"
+        ]
+      },
+      {
+        "id": "K137-0201~K137-0203",
+        "a": "K137-0201",
+        "b": "K137-0203",
+        "question_score": 0.039,
+        "answer_score": 0.017,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？"
+        ]
+      },
+      {
+        "id": "K137-0201~K137-0217",
+        "a": "K137-0201",
+        "b": "K137-0217",
+        "question_score": 0.039,
+        "answer_score": 0.018,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
         ]
       },
       {
@@ -441370,6 +443772,132 @@
         ]
       },
       {
+        "id": "K137-0003~K137-0008",
+        "a": "K137-0003",
+        "b": "K137-0008",
+        "question_score": 0,
+        "answer_score": 0.038,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一枚美國郵票中央被打了一排小孔，怎麼還可能拿來寄信？要量的是整排的範圍，還是每個洞？",
+          "球場果嶺上有兩個小凹洞，為什麼剛落下的球砸出來的那個可以補，球場保養留下的打孔卻不能照樣填？"
+        ]
+      },
+      {
+        "id": "K137-0201~K137-0210",
+        "a": "K137-0201",
+        "b": "K137-0210",
+        "question_score": 0.038,
+        "answer_score": 0.017,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？"
+        ]
+      },
+      {
+        "id": "K137-0202~K137-0212",
+        "a": "K137-0202",
+        "b": "K137-0212",
+        "question_score": 0.038,
+        "answer_score": 0.017,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？"
+        ]
+      },
+      {
+        "id": "K137-0203~K137-0212",
+        "a": "K137-0203",
+        "b": "K137-0212",
+        "question_score": 0.038,
+        "answer_score": 0.016,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？"
+        ]
+      },
+      {
+        "id": "K137-0204~K137-0206",
+        "a": "K137-0204",
+        "b": "K137-0206",
+        "question_score": 0.038,
+        "answer_score": 0.035,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？"
+        ]
+      },
+      {
+        "id": "K137-0205~K137-0210",
+        "a": "K137-0205",
+        "b": "K137-0210",
+        "question_score": 0.038,
+        "answer_score": 0.036,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？",
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？"
+        ]
+      },
+      {
+        "id": "K137-0212~K137-0216",
+        "a": "K137-0212",
+        "b": "K137-0216",
+        "question_score": 0.038,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？",
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
+        ]
+      },
+      {
+        "id": "K137-0212~K137-0217",
+        "a": "K137-0212",
+        "b": "K137-0217",
+        "question_score": 0.038,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
+        ]
+      },
+      {
+        "id": "K137-0214~K137-0215",
+        "a": "K137-0214",
+        "b": "K137-0215",
+        "question_score": 0.038,
+        "answer_score": 0.032,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？",
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？"
+        ]
+      },
+      {
         "id": "K92-017~K92-026",
         "a": "K92-017",
         "b": "K92-026",
@@ -441801,6 +444329,62 @@
         "questions": [
           "底線這道白漆自己有寬度，球要離開的是靠草皮裡面那邊，還是外面那邊？",
           "裁判一定要自己跑到場邊看螢幕，才有資格確認客觀的出界位置嗎？"
+        ]
+      },
+      {
+        "id": "K137-0201~K137-0208",
+        "a": "K137-0201",
+        "b": "K137-0208",
+        "question_score": 0,
+        "answer_score": 0.037,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？"
+        ]
+      },
+      {
+        "id": "K137-0202~K137-0208",
+        "a": "K137-0202",
+        "b": "K137-0208",
+        "question_score": 0,
+        "answer_score": 0.037,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？"
+        ]
+      },
+      {
+        "id": "K137-0204~K137-0218",
+        "a": "K137-0204",
+        "b": "K137-0218",
+        "question_score": 0.037,
+        "answer_score": 0.014,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
+        ]
+      },
+      {
+        "id": "K137-0205~K137-0214",
+        "a": "K137-0205",
+        "b": "K137-0214",
+        "question_score": 0.037,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？",
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？"
         ]
       },
       {
@@ -442378,6 +444962,132 @@
         ]
       },
       {
+        "id": "K137-0201~K137-0214",
+        "a": "K137-0201",
+        "b": "K137-0214",
+        "question_score": 0.036,
+        "answer_score": 0.017,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？"
+        ]
+      },
+      {
+        "id": "K137-0202~K137-0204",
+        "a": "K137-0202",
+        "b": "K137-0204",
+        "question_score": 0.036,
+        "answer_score": 0.035,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？"
+        ]
+      },
+      {
+        "id": "K137-0203~K137-0204",
+        "a": "K137-0203",
+        "b": "K137-0204",
+        "question_score": 0.036,
+        "answer_score": 0.016,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？"
+        ]
+      },
+      {
+        "id": "K137-0204~K137-0216",
+        "a": "K137-0204",
+        "b": "K137-0216",
+        "question_score": 0.036,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
+        ]
+      },
+      {
+        "id": "K137-0205~K137-0213",
+        "a": "K137-0205",
+        "b": "K137-0213",
+        "question_score": 0.036,
+        "answer_score": 0.036,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？",
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？"
+        ]
+      },
+      {
+        "id": "K137-0206~K137-0208",
+        "a": "K137-0206",
+        "b": "K137-0208",
+        "question_score": 0,
+        "answer_score": 0.036,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？",
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？"
+        ]
+      },
+      {
+        "id": "K137-0207~K137-0211",
+        "a": "K137-0207",
+        "b": "K137-0211",
+        "question_score": 0.036,
+        "answer_score": 0.033,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？",
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？"
+        ]
+      },
+      {
+        "id": "K137-0210~K137-0212",
+        "a": "K137-0210",
+        "b": "K137-0212",
+        "question_score": 0.036,
+        "answer_score": 0.016,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？",
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？"
+        ]
+      },
+      {
+        "id": "K137-0210~K137-0216",
+        "a": "K137-0210",
+        "b": "K137-0216",
+        "question_score": 0.036,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？",
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
+        ]
+      },
+      {
         "id": "L76-005~L76-006",
         "a": "L76-005",
         "b": "L76-006",
@@ -442795,6 +445505,76 @@
         "questions": [
           "同一季曼城又遇到門線解圍，這次伯恩利把球踢走，怎麼還是判進？",
           "既然 Hurtig 那顆球確定進了，瑞典對美國的正式賽後報告封面為什麼還是 0 比 0？"
+        ]
+      },
+      {
+        "id": "K137-0201~K137-0216",
+        "a": "K137-0201",
+        "b": "K137-0216",
+        "question_score": 0,
+        "answer_score": 0.035,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
+        ]
+      },
+      {
+        "id": "K137-0204~K137-0207",
+        "a": "K137-0204",
+        "b": "K137-0207",
+        "question_score": 0,
+        "answer_score": 0.035,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？"
+        ]
+      },
+      {
+        "id": "K137-0204~K137-0209",
+        "a": "K137-0204",
+        "b": "K137-0209",
+        "question_score": 0.035,
+        "answer_score": 0.033,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？"
+        ]
+      },
+      {
+        "id": "K137-0208~K137-0213",
+        "a": "K137-0208",
+        "b": "K137-0213",
+        "question_score": 0.035,
+        "answer_score": 0.017,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？",
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？"
+        ]
+      },
+      {
+        "id": "K137-0209~K137-0210",
+        "a": "K137-0209",
+        "b": "K137-0210",
+        "question_score": 0.035,
+        "answer_score": 0.031,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？",
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？"
         ]
       },
       {
@@ -443442,6 +446222,76 @@
         ]
       },
       {
+        "id": "K137-0204~K137-0210",
+        "a": "K137-0204",
+        "b": "K137-0210",
+        "question_score": 0.034,
+        "answer_score": 0.033,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？"
+        ]
+      },
+      {
+        "id": "K137-0209~K137-0214",
+        "a": "K137-0209",
+        "b": "K137-0214",
+        "question_score": 0.034,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？",
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？"
+        ]
+      },
+      {
+        "id": "K137-0211~K137-0212",
+        "a": "K137-0211",
+        "b": "K137-0212",
+        "question_score": 0.034,
+        "answer_score": 0.031,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？",
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？"
+        ]
+      },
+      {
+        "id": "K137-0212~K137-0213",
+        "a": "K137-0212",
+        "b": "K137-0213",
+        "question_score": 0.034,
+        "answer_score": 0.016,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？",
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？"
+        ]
+      },
+      {
+        "id": "K137-0213~K137-0217",
+        "a": "K137-0213",
+        "b": "K137-0217",
+        "question_score": 0.034,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
+        ]
+      },
+      {
         "id": "K116-0202~K116-0216",
         "a": "K116-0202",
         "b": "K116-0216",
@@ -444083,6 +446933,118 @@
         "questions": [
           "裁判一定要自己跑到場邊看螢幕，才有資格確認客觀的出界位置嗎？",
           "既然 Hurtig 那顆球確定進了，瑞典對美國的正式賽後報告封面為什麼還是 0 比 0？"
+        ]
+      },
+      {
+        "id": "K137-0204~K137-0212",
+        "a": "K137-0204",
+        "b": "K137-0212",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？"
+        ]
+      },
+      {
+        "id": "K137-0204~K137-0213",
+        "a": "K137-0204",
+        "b": "K137-0213",
+        "question_score": 0.033,
+        "answer_score": 0.016,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？"
+        ]
+      },
+      {
+        "id": "K137-0204~K137-0214",
+        "a": "K137-0204",
+        "b": "K137-0214",
+        "question_score": 0.033,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？"
+        ]
+      },
+      {
+        "id": "K137-0204~K137-0215",
+        "a": "K137-0204",
+        "b": "K137-0215",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？"
+        ]
+      },
+      {
+        "id": "K137-0206~K137-0215",
+        "a": "K137-0206",
+        "b": "K137-0215",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？",
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？"
+        ]
+      },
+      {
+        "id": "K137-0207~K137-0213",
+        "a": "K137-0207",
+        "b": "K137-0213",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？",
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？"
+        ]
+      },
+      {
+        "id": "K137-0209~K137-0213",
+        "a": "K137-0209",
+        "b": "K137-0213",
+        "question_score": 0.033,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？",
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？"
+        ]
+      },
+      {
+        "id": "K137-0210~K137-0213",
+        "a": "K137-0210",
+        "b": "K137-0213",
+        "question_score": 0.033,
+        "answer_score": 0.031,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？",
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？"
         ]
       },
       {
@@ -444758,6 +447720,20 @@
         ]
       },
       {
+        "id": "K137-0206~K137-0211",
+        "a": "K137-0206",
+        "b": "K137-0211",
+        "question_score": 0,
+        "answer_score": 0.032,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？",
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？"
+        ]
+      },
+      {
         "id": "K90-036~T52-002",
         "a": "T52-002",
         "b": "K90-036",
@@ -445357,6 +448333,20 @@
         "questions": [
           "進球明明在門前，VAR 為什麼可以往前倒帶，查先前底線旁的傳中？",
           "門將手邊沒有電視，球真的越過球門線時，誰先收到訊息？"
+        ]
+      },
+      {
+        "id": "K137-0212~K137-0214",
+        "a": "K137-0212",
+        "b": "K137-0214",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.889,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？",
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？"
         ]
       },
       {
@@ -447628,6 +450618,20 @@
         ]
       },
       {
+        "id": "K137-0209~K137-0218",
+        "a": "K137-0209",
+        "b": "K137-0218",
+        "question_score": 0,
+        "answer_score": 0.027,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
+        ]
+      },
+      {
         "id": "K92-053~P234",
         "a": "P234",
         "b": "K92-053",
@@ -449798,6 +452802,20 @@
         ]
       },
       {
+        "id": "K137-0205~K137-0207",
+        "a": "K137-0205",
+        "b": "K137-0207",
+        "question_score": 0,
+        "answer_score": 0.02,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？",
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？"
+        ]
+      },
+      {
         "id": "R41002~R41003",
         "a": "R41002",
         "b": "R41003",
@@ -449879,6 +452897,20 @@
         "questions": [
           "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？",
           "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？"
+        ]
+      },
+      {
+        "id": "K137-0205~K137-0217",
+        "a": "K137-0205",
+        "b": "K137-0217",
+        "question_score": 0,
+        "answer_score": 0.019,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
         ]
       },
       {
@@ -449977,6 +453009,104 @@
         "questions": [
           "西班牙半場還領先，和三笘薰同時從板凳站起來的隊友做了什麼？",
           "美國守門員手明明已經撲到 Hurtig 的十二碼，瑞典球員還在等誰點頭？"
+        ]
+      },
+      {
+        "id": "K137-0202~K137-0207",
+        "a": "K137-0202",
+        "b": "K137-0207",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？"
+        ]
+      },
+      {
+        "id": "K137-0202~K137-0216",
+        "a": "K137-0202",
+        "b": "K137-0216",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
+        ]
+      },
+      {
+        "id": "K137-0202~K137-0217",
+        "a": "K137-0202",
+        "b": "K137-0217",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
+        ]
+      },
+      {
+        "id": "K137-0205~K137-0211",
+        "a": "K137-0205",
+        "b": "K137-0211",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？",
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？"
+        ]
+      },
+      {
+        "id": "K137-0205~K137-0212",
+        "a": "K137-0205",
+        "b": "K137-0212",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？",
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？"
+        ]
+      },
+      {
+        "id": "K137-0207~K137-0217",
+        "a": "K137-0207",
+        "b": "K137-0217",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
+        ]
+      },
+      {
+        "id": "K137-0208~K137-0216",
+        "a": "K137-0208",
+        "b": "K137-0216",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？",
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
         ]
       },
       {
@@ -450257,6 +453387,104 @@
         "questions": [
           "進球明明在門前，VAR 為什麼可以往前倒帶，查先前底線旁的傳中？",
           "既然 Hurtig 那顆球確定進了，瑞典對美國的正式賽後報告封面為什麼還是 0 比 0？"
+        ]
+      },
+      {
+        "id": "K137-0201~K137-0212",
+        "a": "K137-0201",
+        "b": "K137-0212",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？"
+        ]
+      },
+      {
+        "id": "K137-0203~K137-0208",
+        "a": "K137-0203",
+        "b": "K137-0208",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？"
+        ]
+      },
+      {
+        "id": "K137-0204~K137-0217",
+        "a": "K137-0204",
+        "b": "K137-0217",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
+        ]
+      },
+      {
+        "id": "K137-0206~K137-0209",
+        "a": "K137-0206",
+        "b": "K137-0209",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？",
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？"
+        ]
+      },
+      {
+        "id": "K137-0206~K137-0214",
+        "a": "K137-0206",
+        "b": "K137-0214",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？",
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？"
+        ]
+      },
+      {
+        "id": "K137-0206~K137-0217",
+        "a": "K137-0206",
+        "b": "K137-0217",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
+        ]
+      },
+      {
+        "id": "K137-0215~K137-0217",
+        "a": "K137-0215",
+        "b": "K137-0217",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
         ]
       },
       {
@@ -450649,6 +453877,90 @@
         "questions": [
           "裁判一定要自己跑到場邊看螢幕，才有資格確認客觀的出界位置嗎？",
           "門將手邊沒有電視，球真的越過球門線時，誰先收到訊息？"
+        ]
+      },
+      {
+        "id": "K137-0203~K137-0209",
+        "a": "K137-0203",
+        "b": "K137-0209",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？"
+        ]
+      },
+      {
+        "id": "K137-0203~K137-0217",
+        "a": "K137-0203",
+        "b": "K137-0217",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
+        ]
+      },
+      {
+        "id": "K137-0205~K137-0218",
+        "a": "K137-0205",
+        "b": "K137-0218",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
+        ]
+      },
+      {
+        "id": "K137-0210~K137-0215",
+        "a": "K137-0210",
+        "b": "K137-0215",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？",
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？"
+        ]
+      },
+      {
+        "id": "K137-0210~K137-0217",
+        "a": "K137-0210",
+        "b": "K137-0217",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
+        ]
+      },
+      {
+        "id": "K137-0213~K137-0216",
+        "a": "K137-0213",
+        "b": "K137-0216",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？",
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
         ]
       },
       {
@@ -451251,6 +454563,48 @@
         "questions": [
           "同一場還有 VAR，究竟是規則禁止查，還是這次沒介入？",
           "美國守門員手明明已經撲到 Hurtig 的十二碼，瑞典球員還在等誰點頭？"
+        ]
+      },
+      {
+        "id": "K137-0203~K137-0213",
+        "a": "K137-0203",
+        "b": "K137-0213",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？"
+        ]
+      },
+      {
+        "id": "K137-0209~K137-0211",
+        "a": "K137-0209",
+        "b": "K137-0211",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？",
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？"
+        ]
+      },
+      {
+        "id": "K137-0211~K137-0214",
+        "a": "K137-0211",
+        "b": "K137-0214",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？",
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？"
         ]
       },
       {
@@ -451923,6 +455277,34 @@
         "questions": [
           "Stones 對利物浦為什麼得把「同一次險情」救兩回？",
           "美國守門員手明明已經撲到 Hurtig 的十二碼，瑞典球員還在等誰點頭？"
+        ]
+      },
+      {
+        "id": "K137-0207~K137-0218",
+        "a": "K137-0207",
+        "b": "K137-0218",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
+        ]
+      },
+      {
+        "id": "K137-0214~K137-0218",
+        "a": "K137-0214",
+        "b": "K137-0218",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
         ]
       },
       {
@@ -452777,6 +456159,20 @@
         "questions": [
           "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？",
           "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
+        ]
+      },
+      {
+        "id": "K137-0213~K137-0218",
+        "a": "K137-0213",
+        "b": "K137-0218",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
         ]
       },
       {
@@ -458282,6 +461678,440 @@
         ]
       },
       {
+        "id": "K137-0201~K137-0211",
+        "a": "K137-0201",
+        "b": "K137-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？"
+        ]
+      },
+      {
+        "id": "K137-0202~K137-0215",
+        "a": "K137-0202",
+        "b": "K137-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？"
+        ]
+      },
+      {
+        "id": "K137-0202~K137-0218",
+        "a": "K137-0202",
+        "b": "K137-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
+        ]
+      },
+      {
+        "id": "K137-0203~K137-0214",
+        "a": "K137-0203",
+        "b": "K137-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？"
+        ]
+      },
+      {
+        "id": "K137-0203~K137-0215",
+        "a": "K137-0203",
+        "b": "K137-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？"
+        ]
+      },
+      {
+        "id": "K137-0203~K137-0216",
+        "a": "K137-0203",
+        "b": "K137-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
+        ]
+      },
+      {
+        "id": "K137-0203~K137-0218",
+        "a": "K137-0203",
+        "b": "K137-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
+        ]
+      },
+      {
+        "id": "K137-0204~K137-0208",
+        "a": "K137-0204",
+        "b": "K137-0208",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？"
+        ]
+      },
+      {
+        "id": "K137-0204~K137-0211",
+        "a": "K137-0204",
+        "b": "K137-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？"
+        ]
+      },
+      {
+        "id": "K137-0205~K137-0208",
+        "a": "K137-0205",
+        "b": "K137-0208",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？",
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？"
+        ]
+      },
+      {
+        "id": "K137-0205~K137-0215",
+        "a": "K137-0205",
+        "b": "K137-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？",
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？"
+        ]
+      },
+      {
+        "id": "K137-0205~K137-0216",
+        "a": "K137-0205",
+        "b": "K137-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？",
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
+        ]
+      },
+      {
+        "id": "K137-0206~K137-0216",
+        "a": "K137-0206",
+        "b": "K137-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？",
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
+        ]
+      },
+      {
+        "id": "K137-0207~K137-0214",
+        "a": "K137-0207",
+        "b": "K137-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？",
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？"
+        ]
+      },
+      {
+        "id": "K137-0207~K137-0215",
+        "a": "K137-0207",
+        "b": "K137-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？",
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？"
+        ]
+      },
+      {
+        "id": "K137-0208~K137-0212",
+        "a": "K137-0208",
+        "b": "K137-0212",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？",
+          "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？"
+        ]
+      },
+      {
+        "id": "K137-0208~K137-0214",
+        "a": "K137-0208",
+        "b": "K137-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？",
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？"
+        ]
+      },
+      {
+        "id": "K137-0208~K137-0217",
+        "a": "K137-0208",
+        "b": "K137-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
+        ]
+      },
+      {
+        "id": "K137-0208~K137-0218",
+        "a": "K137-0208",
+        "b": "K137-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
+        ]
+      },
+      {
+        "id": "K137-0209~K137-0215",
+        "a": "K137-0209",
+        "b": "K137-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？",
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？"
+        ]
+      },
+      {
+        "id": "K137-0209~K137-0216",
+        "a": "K137-0209",
+        "b": "K137-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？",
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
+        ]
+      },
+      {
+        "id": "K137-0209~K137-0217",
+        "a": "K137-0209",
+        "b": "K137-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
+        ]
+      },
+      {
+        "id": "K137-0210~K137-0214",
+        "a": "K137-0210",
+        "b": "K137-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？",
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？"
+        ]
+      },
+      {
+        "id": "K137-0210~K137-0218",
+        "a": "K137-0210",
+        "b": "K137-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
+        ]
+      },
+      {
+        "id": "K137-0211~K137-0213",
+        "a": "K137-0211",
+        "b": "K137-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？",
+          "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？"
+        ]
+      },
+      {
+        "id": "K137-0211~K137-0215",
+        "a": "K137-0211",
+        "b": "K137-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？",
+          "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？"
+        ]
+      },
+      {
+        "id": "K137-0211~K137-0216",
+        "a": "K137-0211",
+        "b": "K137-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？",
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
+        ]
+      },
+      {
+        "id": "K137-0211~K137-0217",
+        "a": "K137-0211",
+        "b": "K137-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
+        ]
+      },
+      {
+        "id": "K137-0211~K137-0218",
+        "a": "K137-0211",
+        "b": "K137-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？",
+          "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
+        ]
+      },
+      {
+        "id": "K137-0214~K137-0216",
+        "a": "K137-0214",
+        "b": "K137-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？",
+          "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
+        ]
+      },
+      {
+        "id": "K137-0214~K137-0217",
+        "a": "K137-0214",
+        "b": "K137-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？",
+          "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
+        ]
+      },
+      {
         "id": "L011~L077",
         "a": "L011",
         "b": "L077",
@@ -459756,10 +463586,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-19-pool-7873",
-    "target_count": 7873,
+    "revision": "2026-11-19-pool-7909",
+    "target_count": 7909,
     "reviewed_on": "2026-11-19",
-    "reason": "第136批新增 36 張素材，入選 7837 → 7873。先前：第135批新增 36 張素材，入選 7801 → 7837。先前：第134批新增 37 張素材，入選 7764 → 7801。先前：第133批新增 36 張素材，入選 7728 → 7764。先前：第132批新增 37 張素材，入選 7691 → 7728。先前：第131批新增 37 張素材，入選 7654 → 7691。先前：第130批新增 37 張素材，入選 7617 → 7654。先前：第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "第137批新增 36 張素材，入選 7873 → 7909。先前：第136批新增 36 張素材，入選 7837 → 7873。先前：第135批新增 36 張素材，入選 7801 → 7837。先前：第134批新增 37 張素材，入選 7764 → 7801。先前：第133批新增 36 張素材，入選 7728 → 7764。先前：第132批新增 37 張素材，入選 7691 → 7728。先前：第131批新增 37 張素材，入選 7654 → 7691。先前：第130批新增 37 張素材，入選 7617 → 7654。先前：第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -467633,7 +471463,43 @@
       "K136-0214",
       "K136-0215",
       "K136-0216",
-      "K136-0217"
+      "K136-0217",
+      "K137-0101",
+      "K137-0102",
+      "K137-0103",
+      "K137-0104",
+      "K137-0105",
+      "K137-0106",
+      "K137-0107",
+      "K137-0001",
+      "K137-0002",
+      "K137-0003",
+      "K137-0004",
+      "K137-0005",
+      "K137-0006",
+      "K137-0007",
+      "K137-0008",
+      "K137-0009",
+      "K137-0010",
+      "K137-0012",
+      "K137-0201",
+      "K137-0202",
+      "K137-0203",
+      "K137-0204",
+      "K137-0205",
+      "K137-0206",
+      "K137-0207",
+      "K137-0208",
+      "K137-0209",
+      "K137-0210",
+      "K137-0211",
+      "K137-0212",
+      "K137-0213",
+      "K137-0214",
+      "K137-0215",
+      "K137-0216",
+      "K137-0217",
+      "K137-0218"
     ],
     "overflow": [
       {
@@ -472195,6 +476061,121 @@
       "existing_ids": [],
       "origin": "wave136-research-20261119",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave136-research-20261119.json"
+    },
+    {
+      "id": "X137C-NA01",
+      "question": "美國精製幣至少壓兩次，正面和反面的圖樣是各壓一次嗎？",
+      "reason": "重讀 Coin Production 的 Striking 段，正反模一開始就同時作用。K121-0001 已憑同一段資料完整回答，保留舊題。",
+      "existing_ids": [
+        "K121-0001"
+      ],
+      "origin": "wave137-craft-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave137-craft-20261119.json"
+    },
+    {
+      "id": "X137C-NA02",
+      "question": "美國一美元的那圈小字和幣坯上的凸緣，都是先把圓片邊緣擠窄做出來的嗎？",
+      "reason": "Coin Production 的 Upsetting 和 Striking 清楚分開了幣面凸緣與邊面刻字。前半與 K119-0008 重疊，後半已由本批 K137-0104 回答，拆不出第三個新答案。",
+      "existing_ids": [
+        "K119-0008",
+        "K137-0104"
+      ],
+      "origin": "wave137-craft-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave137-craft-20261119.json"
+    },
+    {
+      "id": "X137C-NA03",
+      "question": "美國名人堂的彩色籃球幣，是不是用了印貼紙的機器把整張橘色球皮貼上去？",
+      "reason": "鑄幣局列舉貼膜、印色、琺瑯等一般選項，只證實該案委託第三方用自動化製程；無法指認本批究竟用了哪一種技術。只收有依據的上色位置比較。",
+      "existing_ids": [],
+      "origin": "wave137-craft-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave137-craft-20261119.json"
+    },
+    {
+      "id": "X137E-NA001",
+      "question": "把 Excel 兩個活頁簿的日期序號照抄，為什麼會差一千四百多天？",
+      "existing_ids": [
+        "K132-0009"
+      ],
+      "reason": "從 #2182 N9039 的 1900 閏年相容性發想，但 Microsoft 的 Date systems in Excel 已讀到 1900 與 1904 兩系統相差 1,462 日；K132-0009 已用同一組序號教這項差值。",
+      "origin": "wave137-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+    },
+    {
+      "id": "X137E-NA002",
+      "question": "風吹走果嶺上的高爾夫球，什麼時候必須放回原位？",
+      "existing_ids": [
+        "K131-0007"
+      ],
+      "reason": "實讀 R&A Rule 13.1d(2)，仍須以是否抬起再放回來分流。只換比賽地點沒有新答案。",
+      "origin": "wave137-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+    },
+    {
+      "id": "X137E-NA003",
+      "question": "十頁小冊騎馬釘的預覽怎麼添了空白頁？",
+      "existing_ids": [
+        "K131-0011"
+      ],
+      "reason": "轉做桌上紙本，原池 K131-0011 已解釋摺紙後頁數須補到四的倍數。Acrobat 的小冊雙面列印說明也不足以另立新機制。",
+      "origin": "wave137-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+    },
+    {
+      "id": "X137E-NA004",
+      "question": "分別拿整套 ISBN 和下冊 ISBN 下單，為什麼可能收到不同數量？",
+      "existing_ids": [
+        "K118-0406"
+      ],
+      "reason": "國圖 ISBN 編號準則可核單本與套號。K118-0406 已用訂單對照整套和單冊，沿書號追下去應轉查電子書的獨立發行界線。",
+      "origin": "wave137-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+    },
+    {
+      "id": "X137E-NA005",
+      "question": "明尼蘇達種來儲藏的洋蔥已經有一把綠葉，底下卻還沒鼓成球。只算它種了幾天，怎麼猜不出什麼時候開始膨大？",
+      "existing_ids": [
+        "K122-0012"
+      ],
+      "reason": "原提案 K137-0011。明尼蘇達大學同一份洋蔥栽培指南已用於 K122-0012，均以日長至少 14 小時而非栽種天數解釋貯藏洋蔥形成鱗莖。複核退案。",
+      "origin": "wave137-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave137-everyday-20261119.json"
+    },
+    {
+      "id": "R137-NA01",
+      "question": "一張歐元紙鈔剛好剩下一半，證明另一半被毀還能兌換嗎？",
+      "reason": "這是種子 K117-0403 已交代的舉證與歐元面積門檻。新題從口袋裡同一種物件追不同的部分給付算法，不再把歐元補證重列一張。",
+      "existing_ids": [
+        "K117-0403"
+      ],
+      "origin": "wave137-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+    },
+    {
+      "id": "R137-NA02",
+      "question": "兩袋受損新臺幣面積一樣，怎麼只有能拼成同券的那袋能估價？",
+      "reason": "K133-0002 已用台灣規定拆過同券碎片可合算這個答案，換情境而規則不變。印度新題另外比最大單塊及兩片各達門檻，瑞士題限特定序號條件的立即交換。",
+      "existing_ids": [
+        "K133-0002"
+      ],
+      "origin": "wave137-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+    },
+    {
+      "id": "R137-NA03",
+      "question": "日本機場的扭蛋機，是不是特別適合旅客花掉口袋裡最後的硬幣？",
+      "reason": "參考 PR #2182 的 W 軸 N9022 已用出境旅客剩餘日圓解釋該通路的銷售。這是既有商業答案，不把「同樣在皮夾裡」當成新題。",
+      "existing_ids": [],
+      "origin": "wave137-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
+    },
+    {
+      "id": "R137-NA04",
+      "question": "不論哪一國、任何年份的鈔票，只要保住印著序號的那一角就能拿回全額嗎？",
+      "reason": "缺少跨地區共同規則。澳洲不看序號單獨決定估值，瑞士的一般立即交換同時看面積和序號，日本另有兩面俱存的要求，原命題失去前提。",
+      "existing_ids": [],
+      "origin": "wave137-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave137-research-20261119.json"
     },
     {
       "question": "螞蟻的氣味如何指向食物？",
