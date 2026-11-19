@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-19-pool-7288",
+  "revision": "2026-11-19-pool-7324",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,22 +12,22 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 7752,
-    "canonical_questions": 7592,
-    "eligible_candidates": 7399,
-    "selected_candidates": 7288,
+    "raw_records": 7788,
+    "canonical_questions": 7628,
+    "eligible_candidates": 7435,
+    "selected_candidates": 7324,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 8246,
-    "current_research_source_urls": 5311,
-    "selected_source_urls": 6261,
-    "new_suggestions_not_added": 3445,
+    "source_urls": 8283,
+    "current_research_source_urls": 5349,
+    "selected_source_urls": 6298,
+    "new_suggestions_not_added": 3451,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1732,
-        "selected": 1702
+        "canonical": 1757,
+        "selected": 1727
       },
       "生物動物與植物": {
         "canonical": 1506,
@@ -38,20 +38,20 @@
         "selected": 944
       },
       "數位科技與通訊工程": {
-        "canonical": 1377,
-        "selected": 1297
+        "canonical": 1384,
+        "selected": 1304
       },
       "飲食與廚房科學": {
-        "canonical": 496,
-        "selected": 490
+        "canonical": 499,
+        "selected": 493
       },
       "人體感官與日常行為": {
         "canonical": 561,
         "selected": 549
       },
       "建築交通與商業制度": {
-        "canonical": 973,
-        "selected": 811
+        "canonical": 974,
+        "selected": 812
       }
     }
   },
@@ -1957,6 +1957,18 @@
       "sha256": "ca08c06c5586f446a59b9c10389975871c2f262d3801175dcf8640722fc1576b"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json",
+      "sha256": "605b96c123ba31c9bf07ed1587e998f9fbdb1e1098cb84a6e5958a8ea887b208"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave121-music-20261119.json",
+      "sha256": "64c1e6a02eddd27936b7c179c2821d6c75872b176c898ca6edbe3c08a294edf9"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json",
+      "sha256": "94184382b36924f6aa719fcd6cf48901084ca649b524bec5556a827937317355"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json",
       "sha256": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de"
     },
@@ -3246,12 +3258,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "17e45571f2af9302199a081abc4a31554c57f384944b0902309cbfe525ba2a64"
+      "sha256": "93e14367cb36050b15bc144d19478422b273e81dd496ad0af55b528183a84d5f"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 8246
+    "count": 8283
   },
   "candidates": [
     {
@@ -127718,6 +127730,1674 @@
       "question_variants": [],
       "provenance_ids": [
         "K120-0218"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0001",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "美國精製硬幣要壓至少兩次，難道是因為第一次壓正面、第二次才輪到反面？",
+      "mechanism_key": "x121.daily.proof_multiple_strikes",
+      "answer_target": "想像把一片幣坯放進兩副相對的模具中間。每壓一次，正反模就一起把兩面的圖樣印進金屬。美國鑄幣局的普通流通幣通常這樣壓一次就完成，精製幣則至少再壓一次。既然第一下已包含兩面，第二下仍是在既有兩面的圖案上重複壓印。",
+      "scope": "以美國鑄幣局該頁比較的流通幣和精製幣為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "數壓機動了幾次，和數硬幣有幾面，是兩種計數。",
+        "visual": "自畫側面剖面，讓上下模同時在幣坯上留下正反圖樣，再把同一製程重播第二次。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X121E-S01，Striking 的 obverse and reverse dies 及 proof coins are struck at least twice。",
+      "notes": "既有 K119-0008 解釋如何先在幣坯做出凸邊，本卡看有圖模具的壓印次數。",
+      "origin": "wave121-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-46c9e1158a5de98e",
+          "origin": "wave121-everyday-20261119",
+          "locator": "X121E-S01，Striking 的 obverse and reverse dies 及 proof coins are struck at least twice。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0002",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "單刷版畫號稱每張獨一無二，為什麼在原版上不再上墨，有時卻還能印出第二張？",
+      "mechanism_key": "x121.daily.monotype_residual_ink",
+      "answer_target": "在光滑的玻璃或金屬板上用墨畫出形狀，把它轉印到紙上。第一次轉印已經取走相當一部分墨，但版上有時仍留著薄薄的墨跡。再壓一張乾淨的紙，就可能得到輪廓相似、色調卻淡得多的第二張。這兩張呈現的是同一次上墨先後兩次轉移的結果。",
+      "scope": "依 Tate 的 monotype 詞條，不替第二張指定固定濃度。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第二張能印出影子，恰好顯出第一張拿走了多少墨。",
+        "visual": "先畫有墨的平版，再並排第一張紙、版上餘墨、第二張紙，用相同位置的深淺串起來。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X121E-S02，末段 second, lighter impression。",
+      "notes": "與乾刻 K120-0002 的銅版毛刺受損不同；這裡不用靠版面磨耗解釋深淺。",
+      "origin": "wave121-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b44d849e6e89f7df",
+          "origin": "wave121-everyday-20261119",
+          "locator": "X121E-S02，末段 second, lighter impression。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0003",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "把縫紉機針從包裝裡拿出來，為什麼針肩上要畫上下兩圈顏色？",
+      "mechanism_key": "x121.daily.machine_needle_type_size_bands",
+      "answer_target": "對照 SCHMETZ 的家用機針圖例，有兩道色帶的針，上帶告訴你是哪種用途的針，例如做明線的 Topstitch；下帶告訴你粗細。公制尺寸 75 指針身直徑約 0.75 毫米。因此上帶相同、下帶不同的兩支針，可以做同一類工作卻有不同粗細。",
+      "scope": "限圖例所示品牌和有兩道色環的針。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先看針要做哪種事，再讀這一支有多粗，兩圈各答一題。",
+        "visual": "畫兩支上環同色、下環不同的示意針，另將一處針身直徑畫成橫截面。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X121E-S03，機針構造中 Upper color band、Lower color band 及 blade diameter 的對照。",
+      "notes": "圖只標欄位，若用真實針色需再對照該廠色碼表。",
+      "origin": "wave121-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ab4d3ab4f6e88f53",
+          "origin": "wave121-everyday-20261119",
+          "locator": "X121E-S03，機針構造中 Upper color band、Lower color band 及 blade diameter 的對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0004",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "單簧管手只壓住一個圓環，怎麼連兩指之間、根本沒有碰到的那個音孔也一起關上？",
+      "mechanism_key": "x121.daily.clarinet_ring_linked_pad",
+      "answer_target": "看原廠機構圖裡左手食指和中指之間的小圓蓋。旁邊的環形鍵連到這個蓋，手指壓下相連的圓環，連桿就同時帶動小蓋封住它的音孔。換到右手小指一側，按下較低的匙狀鍵也能連動上方的鍵。要看哪個孔關了，得沿著金屬件追到它帶動的另一端。",
+      "scope": "限 Yamaha 示範的單簧管鍵系。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一根手指能同時管到手下的環與指尖夠不到的孔。",
+        "visual": "畫左手兩環及其間小圓蓋，先只亮指下的環，再沿連桿亮起小圓蓋。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X121E-S04，Enabling the rings to work together 兩張連動圖。",
+      "notes": "演示鍵系動作，不談單簧管如何產生泛音。",
+      "origin": "wave121-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-8b8985873ad5b2a1",
+          "origin": "wave121-everyday-20261119",
+          "locator": "X121E-S04，Enabling the rings to work together 兩張連動圖。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0005",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "把標示 8×42 的雙筒望遠鏡拿離眼睛，目鏡裡那個小亮圓為什麼只有大約 5.3 毫米寬？",
+      "mechanism_key": "x121.daily.binocular_exit_pupil_circle",
+      "answer_target": "望遠鏡對向明亮的普通景物、從眼睛前方稍微移開，目鏡中央可見光束形成的小亮圓，稱為出瞳。出瞳直徑用物鏡有效直徑除以倍率估算，這款是 42 毫米除以 8，約等於 5.3 毫米。在暗處眼睛瞳孔放大時，較小的出瞳就可能限制進眼的光束；亮處眼睛的瞳孔本來較小，增大出瞳的差別就未必顯眼。",
+      "scope": "依 Nikon 幾何示例，實際亮度也受透光率等因素影響。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "用倍率和口徑兩個印在鏡身上的數字，就能預測目鏡後的亮圈。",
+        "visual": "自畫明亮室內牆面和一副鏡筒，從後方放大出瞳，疊上 42 ÷ 8 的尺寸線。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X121E-S05，8×42 算例與兩組日、夜示意。",
+      "notes": "K120-0005 看雙眼調焦環，這裡讀出射光束的口徑。",
+      "origin": "wave121-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-34059e6617d5bba1",
+          "origin": "wave121-everyday-20261119",
+          "locator": "X121E-S05，8×42 算例與兩組日、夜示意。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0006",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "用 instax mini 12 近拍一個杯子，明明在取景框正中央，為什麼還要把鏡頭多轉一格？",
+      "mechanism_key": "x121.daily.instant_camera_near_parallax",
+      "answer_target": "這台相機的光學取景窗和拍攝鏡頭分處兩個位置。杯子靠近時，從兩個位置望向杯沿，看到的中心會有偏差。原廠將 30 至 50 公分列為近拍模式的使用範圍；切到這一格時，取景器會啟用視差補正，讓瞄準標記對到的主體更接近成像中央。",
+      "scope": "限 mini 12 規格的近拍距離與構圖補正，未量測固定偏移量。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "近拍時要照顧的還有取景窗與拍攝鏡頭之間的距離。",
+        "visual": "自繪機身前方兩個觀察位置與杯子，連出兩條線，對照近拍模式開與關的中央標記。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X121E-S06，Point 02 的 Close-up mode ON/OFF；X121E-S07，Viewfinder 與 Shooting Range。",
+      "notes": "討論拍攝前的視線，不重述 K120-0006 的顯影膏缺區。",
+      "origin": "wave121-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d2f19592c484e66c",
+          "origin": "wave121-everyday-20261119",
+          "locator": "X121E-S06，Point 02 的 Close-up mode ON/OFF；X121E-S07，Viewfinder 與 Shooting Range。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-083831405c210adc",
+          "origin": "wave121-everyday-20261119",
+          "locator": "X121E-S06，Point 02 的 Close-up mode ON/OFF；X121E-S07，Viewfinder 與 Shooting Range。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0007",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "iPhone 原況照片裡有人正好眨眼，照片都拍完了，怎麼還能換成他上一刻睜眼的樣子？",
+      "mechanism_key": "x121.daily.live_photo_key_frame",
+      "answer_target": "在拍攝前就開啟原況照片時，iPhone 會保留按快門之前和之後各 1.5 秒的片段。若睜眼那刻剛好也在記錄裡，編輯時可以沿著影格拖動白框，將它設成主要照片。相簿呈現的代表畫面換了，能挑的範圍仍限於那段實際錄到的內容。",
+      "scope": "限原況照片已開啟且保留所錄片段的情況，普通靜態照片沒有這個選擇。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "被換上的表情，來自快門前後確實留下的另一個時刻。",
+        "visual": "畫一條時間帶，將快門點放中央，原主要畫面標為眨眼，再把白框移到睜眼影格。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X121E-S08，開頭記錄長度及 How to change the key photo。",
+      "notes": "不涉及模型合成或用另一張獨立照片替換臉部。",
+      "origin": "wave121-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b6a26a707d782c4d",
+          "origin": "wave121-everyday-20261119",
+          "locator": "X121E-S08，開頭記錄長度及 How to change the key photo。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0008",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "兩瓶美國楓糖漿都寫 Grade A，一瓶金黃、另一瓶卻深到幾乎透不過光，怎麼還能同級？",
+      "mechanism_key": "x121.daily.maple_grade_a_color_classes",
+      "answer_target": "Grade A 要求同一批顏色均勻、風味符合該色級，還有氣味、潔淨等品質條件。它並沒有指定所有 A 級糖漿都必須同一個色澤。佛蒙特業者列的色級從 Golden、Amber、Dark 到 Very Dark，對應的典型楓味從較柔和到較強。兩瓶各自在自己的色級達到要求，便可能同時標示 Grade A。",
+      "scope": "以美國 Grade A 與佛蒙特的四種色級為例；不用肉眼去推斷全部品質條件或精確採收日期。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "A 級管品質；標籤上另外那個表示深淺的詞，才幫你預期風味強度。",
+        "visual": "把同尺寸透明瓶排在白底前，各貼 Grade A，再替兩端加上 Golden 與 Very Dark 的色級小標。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X121E-S09，U.S. Grade A；X121E-S10，四類 color classes 及個別風味。",
+      "notes": "與其他國家或舊制的 A、B 分級分開。",
+      "origin": "wave121-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-45c3ce9be68fbfb0",
+          "origin": "wave121-everyday-20261119",
+          "locator": "X121E-S09，U.S. Grade A；X121E-S10，四類 color classes 及個別風味。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-98459b08e9db6f2a",
+          "origin": "wave121-everyday-20261119",
+          "locator": "X121E-S09，U.S. Grade A；X121E-S10，四類 color classes 及個別風味。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0009",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "兩袋都是壓片燕麥，為什麼一袋要慢慢煮，另一袋只需很短時間就軟了？",
+      "mechanism_key": "x121.daily.quick_rolled_oat_geometry",
+      "answer_target": "傳統壓片燕麥先把去殼燕麥粒蒸過，再壓成片，讓表面積增加。照全穀物協會的圖解，繼續把片壓得更薄，或延長蒸製，便能做出快熟或即食的種類。做對照時用兩碗原味燕麥、給相同時間，薄片或較充分預處理的一碗會較快變軟；不能只看外袋上都有「全穀」就用同一個煮法。",
+      "scope": "限無調味的 rolled oats，實際加水比例與時間依產品說明。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "快熟可以來自片的厚薄及蒸製程度，全穀標示仍然成立。",
+        "visual": "把一粒燕麥的蒸製與壓片畫成兩條支線，以側面比較兩種片厚。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X121E-S11，Rolled Oats – regular 及 Rolled Oats – quick or instant。",
+      "notes": "鋼切與石磨另有流程，不混進這次的壓片比較。",
+      "origin": "wave121-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-24e106be8edb6298",
+          "origin": "wave121-everyday-20261119",
+          "locator": "X121E-S11，Rolled Oats – regular 及 Rolled Oats – quick or instant。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0010",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "自行車內胎破了兩道左右相對的小裂口，真的剛好有兩根刺一起扎進去嗎？",
+      "mechanism_key": "x121.daily.inner_tube_paired_pinch",
+      "answer_target": "攤平損壞的內胎，先看孔洞的形狀與相對位置。Park Tool 的圖例裡，細小的單孔常見於尖物穿刺；兩道位置對稱的短裂口則常見於夾壓。輪子撞到路面突起時，內胎被輪圈與外側物體擠住，一次衝擊就能留下成對痕跡。形狀能指出值得檢查的方向，單看照片推不回當時的胎壓。",
+      "scope": "限裝有內胎的自行車輪，使用常見損傷圖例做辨認。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "成對裂口可以來自一次夾壓，孔數不用等於刺的數目。",
+        "visual": "畫內胎貼在輪圈兩側的截面，再把夾壓後的內胎攤開，對應兩處裂痕。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X121E-S12，Inner Tube Inspection 的小孔與 symmetrical slits 對照。",
+      "notes": "不以這兩道痕跡保證所有個案都由同一原因造成。",
+      "origin": "wave121-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-40d98e3f76f0b12d",
+          "origin": "wave121-everyday-20261119",
+          "locator": "X121E-S12，Inner Tube Inspection 的小孔與 symmetrical slits 對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0011",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "鑄鐵鍋倒掉油、擦乾之後，為什麼鍋面還留著一層滑順的黑色養鍋層？",
+      "mechanism_key": "x121.daily.cast_iron_seasoned_film",
+      "answer_target": "裸鑄鐵上的養鍋層來自油脂受熱後的聚合。原本能流動的油逐漸形成附著在鐵表面的硬層，所以倒去液態油時，這層已形成的表面仍會留下。新鍋各部位起初可能深淺不同，因為食物接觸處、爐面熱點及溫度會影響油層在哪裡累積。",
+      "scope": "以 Lodge 未上琺瑯的熟成鑄鐵鍋為例，不能只憑色澤認定任何黑色殘留物都是養鍋層。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣都來自油，能流走的那一層和已附著在鐵面的硬層有不同狀態。",
+        "visual": "畫出鍋面剖面，把可流動的油畫成液滴，把已形成的薄層保留在鍋面。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X121E-S13，What is seasoning? 的 polymerization 及新鍋覆層可能不均一段。",
+      "notes": "不延伸到噴塗不沾鍋或琺瑯鍋的表面。",
+      "origin": "wave121-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c6f6f9227929822c",
+          "origin": "wave121-everyday-20261119",
+          "locator": "X121E-S13，What is seasoning? 的 polymerization 及新鍋覆層可能不均一段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0012",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "高爾夫第一球可能出界，暫定球卻打得更漂亮。三分鐘內找回第一球，能自己選留下哪顆嗎？",
+      "mechanism_key": "x121.daily.golf_abandon_provisional_in_time",
+      "answer_target": "情境是球員已依規則宣告並打出暫定球，以免原球真的遺失或出界時才折返。搜尋開始後三分鐘內，原球在場內、處罰區以外被找到，而且暫定球還沒依其他規定成為比賽球。此時球員得放棄暫定球，依原球位置打下去；之前為那顆暫定球所打的桿數也不計入。球的位置漂不漂亮沒有選擇效力。",
+      "scope": "限規則 18.3c(3) 指定情形，且未從比原球估計位置更靠洞處打暫定球。不討論處罰區內找到或已確定出界。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "暫定球替你保留的是原球找不到時的下一步，找回原球後就不能拿它替換。",
+        "visual": "自畫兩色球與搜尋計時，找到原球時擦去計分表裡暫定球那幾格。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X121E-S14，18.2a(1) 及 18.3c(3) When Provisional Ball Must Be Abandoned。",
+      "notes": "用規則安排一個示意球局，不指稱真的有某場比賽如此判決。",
+      "origin": "wave121-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-80bbfbfb0cbd2b36",
+          "origin": "wave121-everyday-20261119",
+          "locator": "X121E-S14，18.2a(1) 及 18.3c(3) When Provisional Ball Must Be Abandoned。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0401",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "樂譜上兩個音符被弧線連起來，什麼時候第二個音要奏出來，什麼時候只要把第一個音留住？",
+      "mechanism_key": "x121.score.tie_slur",
+      "answer_target": "先看兩個四分音符都是 Do，中間畫延音線。它把後一個四分音符的長度接到第一個 Do，第二個位置不用再起音。另一小段從 Do 走到 Re，跨過兩音的圓滑線要求連奏，Re 依然要奏出來。讓聽者先數有幾個音高，再回到譜面辨認這條線。",
+      "scope": "限單旋律的延音線與圓滑線示例。圓滑線的具體演奏方式依樂器而異。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "第一格顯示同音的兩個音符，第二格把後一音移高；同步畫出持續一音與換音的時間軸。",
+        "payoff": "兩條線都能畫成弧形，但一條延長一個音，另一條要求相鄰音接得平順。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X121M-S01，Slurs and ties 的頭兩段。",
+      "notes": "用自編旋律和自畫分譜示意。以指定的記譜法或檔案格式為範圍。",
+      "origin": "wave121-music-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2e5540bcbcc9a260",
+          "origin": "wave121-music-20261119",
+          "locator": "X121M-S01，Slurs and ties 的頭兩段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-music-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0401"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0402",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "兩個結尾在樂譜上印成前後兩格，為什麼第一次回頭，第二次卻要跳過第一格？",
+      "mechanism_key": "x121.score.volta_pass_index",
+      "answer_target": "把反覆段記作 A，兩個結尾記作 B、C。若 B 的括線標 1.、C 標 2.，第一次走 A、B，遇反覆記號回頭。第二次走 A 後跳過 B，接 C。四段的順序是 A、B、A、C。MusicXML 可在結尾記錄適用的遍次，讓讀檔的一方知道該走哪一格。",
+      "scope": "例子已設好兩次反覆及兩個結尾，不含其他跳躍或返回記號。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "讓光點沿三格自畫短譜跑，先留下兩枚路徑箭頭，第二次回到 A 才亮出 C。",
+        "payoff": "括線上的數字指定第幾遍要用這個結尾。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X121M-S02 首段，X121M-S03 number 屬性。",
+      "notes": "用自編旋律和自畫分譜示意。以指定的記譜法或檔案格式為範圍。",
+      "origin": "wave121-music-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b70c33ec31348e78",
+          "origin": "wave121-music-20261119",
+          "locator": "X121M-S02 首段，X121M-S03 number 屬性。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-60dc276a59db772b",
+          "origin": "wave121-music-20261119",
+          "locator": "X121M-S02 首段，X121M-S03 number 屬性。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-music-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0402"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0403",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "一個看起來像全休止符的黑方塊，放進三拍子的空小節，為什麼等三拍就輪到下一個音？",
+      "mechanism_key": "x121.score.bar_rest_meter",
+      "answer_target": "在 3/4 拍的完整空小節中央放入整小節休止，吹奏這個聲部的人要等三個四分音符的時間。換成 4/4 拍的完整小節，同一個形狀就等四拍。數位譜還可以用 MusicXML 的 measure 屬性標出「整小節」。看清它佔的是哪一個小節，下一次進來的地方就不同了。",
+      "scope": "只比較完整的 3/4 與 4/4 小節和單一聲部；不將這種畫法推給所有拍號與不完全小節。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "寫兩行譜，空小節內的形狀和大小相同，底下分別亮三格與四格節拍。",
+        "payoff": "整小節休止要等滿這一小節；一小節有幾拍由拍號決定。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "X121M-S04，Measure rests；X121M-S05，measure=yes 的定義。",
+      "notes": "用自編旋律和自畫分譜示意。以指定的記譜法或檔案格式為範圍。",
+      "origin": "wave121-music-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d6c035df1243718b",
+          "origin": "wave121-music-20261119",
+          "locator": "X121M-S04，Measure rests；X121M-S05，measure=yes 的定義。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2894e8fcc3a75bb0",
+          "origin": "wave121-music-20261119",
+          "locator": "X121M-S04，Measure rests；X121M-S05，measure=yes 的定義。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-music-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0403"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0404",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把一串提示小音符放大到正常字級，為什麼 MusicXML 分譜播放時還是聽不見？",
+      "mechanism_key": "x121.score.cue_size_vs_sound",
+      "answer_target": "在 MusicXML 4.0 裡，標為 cue 的音符在播放時靜音，把印出的尺寸調成正常大小仍然如此。反方向也成立：一般會發聲的音符可以排成提示音符那樣小，仍保留聲音。讓兩份同樣大小的音符排在一起，就能看出「印多大」和「播放時要不要出聲」是兩筆不同的訊息。",
+      "scope": "限依 MusicXML 4.0 語義解讀的分譜；範例比較音符身分與顯示大小。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "螢幕兩欄放相同旋律。一欄把 cue 音符放大，另一欄將一般音符縮小，對照兩條聲音軌。",
+        "payoff": "提示身分決定是否播放，字級可以另外改。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "source_locator": "X121M-S06，<cue> 定義的 silent/full size 與 normal notes/cue size 對照。",
+      "notes": "用自編旋律和自畫分譜示意。以指定的記譜法或檔案格式為範圍。",
+      "origin": "wave121-music-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-7af903297fbf7286",
+          "origin": "wave121-music-20261119",
+          "locator": "X121M-S06，<cue> 定義的 silent/full size 與 normal notes/cue size 對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-music-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0404"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0405",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "第一個完整小節前明明唱了一拍，為什麼打開樂譜檔看得到「第 0 小節」，印出來卻沒這個號碼？",
+      "mechanism_key": "x121.score.pickup_zero_hidden_number",
+      "answer_target": "在自編的 3/4 曲子裡，開頭先唱一個四分音符，再進入完整的三拍。這一拍放在弱起小節，照樣有時值。MusicXML 的分譜常用 0 辨認這個小節，另設 implicit 為 yes，讓它的小節號不印出來。頁面看不到 0，歌唱進來的那一拍仍寫在譜裡。",
+      "scope": "採 MusicXML partwise 的典型標法；0 在這裡是小節編號，不指零拍，也不代表所有軟體都必須採這種編號。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "在譜下標一拍、三拍、三拍，切到檔案看最前面的編號，再回到印刷視圖。",
+        "payoff": "曲首的聲音、它持續多久，以及小節號是否可見，各自有紀錄。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X121M-S07，Upbeats；X121M-S08，number、implicit 屬性。",
+      "notes": "用自編旋律和自畫分譜示意。以指定的記譜法或檔案格式為範圍。",
+      "origin": "wave121-music-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b6d9940c9af18c4f",
+          "origin": "wave121-music-20261119",
+          "locator": "X121M-S07，Upbeats；X121M-S08，number、implicit 屬性。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-719560359e469b07",
+          "origin": "wave121-music-20261119",
+          "locator": "X121M-S07，Upbeats；X121M-S08，number、implicit 屬性。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-music-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0405"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0406",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "降 B 單簧管和鋼琴的分譜上都寫 Do，為什麼按各自的譜奏出來，卻聽見兩個音高？",
+      "mechanism_key": "x121.score.written_pitch_transposition",
+      "answer_target": "鋼琴譜寫中央 C，對應的實際音就是中央 C。降 B 單簧管的分譜寫同一個 C，實際聽到的是低一個全音的降 B。如果要兩者同奏鋼琴的中央 C，單簧管的分譜應寫高一個全音的 D。數位譜需要知道它記錄的是移調樂器的書寫音，才能在播放時把這兩種記法轉回對應的聲音。",
+      "scope": "例子是常見降 B 單簧管的移調分譜和鋼琴。若已用實際音高記譜，不能再套同一轉換。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "先讓鋼琴 C 與單簧管分譜 C 對上兩個不同的琴鍵，再將單簧管分譜升為 D，視聽兩軌才重合。",
+        "payoff": "要讓兩種樂器發出同一音高，印在分譜上的音有時得錯開一個全音。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X121M-S09，Instrument transpositions 的 written C 說明與 B-flat clarinet 範例；X121M-S10，chromatic。",
+      "notes": "用自編旋律和自畫分譜示意。以指定的記譜法或檔案格式為範圍。",
+      "origin": "wave121-music-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-58e8e9b631190f64",
+          "origin": "wave121-music-20261119",
+          "locator": "X121M-S09，Instrument transpositions 的 written C 說明與 B-flat clarinet 範例；X121M-S10，chromatic。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-379cf5f51df06aff",
+          "origin": "wave121-music-20261119",
+          "locator": "X121M-S09，Instrument transpositions 的 written C 說明與 B-flat clarinet 範例；X121M-S10，chromatic。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-music-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0406"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0201",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+      "mechanism_key": "x121.appliance_label.hotel_two_countries",
+      "answer_target": "大阪所在的西日本使用 60 赫茲，日本一般供電是交流 100 伏特。台灣一般用電也是 60 赫茲，電壓卻是 110 伏特。可以固定住同一個頻率，只換地點，看看原廠額定電壓有沒有涵蓋目的地。",
+      "scope": "依兩地旅遊機構的常見市電說明比較大阪與台灣，不將數字當作這間旅館或這棟房子實測。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "相同的 60 Hz 無法替你答出伏特數。",
+        "visual": "並排大阪、台灣兩張供電卡，先遮住伏特欄。",
+        "seconds": [
+          22,
+          35
+        ]
+      },
+      "source_locator": "X121D-S01 Electricity；S02 電壓與東西頻率。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5ecd6acbe832a5f0",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S01 Electricity；S02 電壓與東西頻率。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-36879501fafb2075",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S01 Electricity；S02 電壓與東西頻率。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0201"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0202",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+      "mechanism_key": "x121.appliance_label.home_outlet_exception",
+      "answer_target": "台灣觀光署在同一段列出一般 110 伏特與不少建築另設的 220 伏特冷氣插座。回到本例，表格只填已確認的一般 110 伏特、60 赫茲家用插座。不能用一個國名取代現場供電條件。",
+      "scope": "不建議將吹風機接入冷氣插座；不講改裝與實測。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一國可以有不同用途的供電。",
+        "visual": "把同一棟建築的普通家用和冷氣專用欄位分開標。",
+        "seconds": [
+          18,
+          30
+        ]
+      },
+      "source_locator": "X121D-S01 Electricity 同段兩種插座。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5ecd6acbe832a5f0",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S01 Electricity 同段兩種插座。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0202"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0203",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+      "mechanism_key": "x121.appliance_label.plug_geometry",
+      "answer_target": "A 型插頭有兩片平行扁腳，B 型還有圓形接地腳。只做形狀轉接的配件讓插腳與插座配合，既不改變交流電壓，也不改變頻率。在 110V 地點，換個接頭仍然要核對用品自己的額定輸入。",
+      "scope": "用台灣 A/B 型圖例辨認外形。沒有把特定插座、接地或所接電器推定為適用。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "扁腳答的是形狀，電壓要讀另一行。",
+        "visual": "同一張 110V 標籤留在配件前後，並排描出 A、B 插腳差別。",
+        "seconds": [
+          22,
+          34
+        ]
+      },
+      "source_locator": "X121D-S03 Taiwan travel adaptors 與 Taiwan plug types。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9c6bf748487eece1",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S03 Taiwan travel adaptors 與 Taiwan plug types。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0203"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0204",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
+      "mechanism_key": "x121.appliance_label.na0j_domestic",
+      "answer_target": "該型的生產國欄是泰國，電源欄只列 AC100V 50–60Hz。使用說明還明載日本國內專用、交流 100V。產地不是適用供電範圍；就這份手冊，台灣一般 110V 不在原廠額定之內。",
+      "scope": "限日本規格 EH-NA0J，沒有套用到別國販售的同系列產品。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "生產地與原廠指定使用條件各有一欄。",
+        "visual": "把泰國製和日本國內專用放到不同欄位，圈出 AC100V。",
+        "seconds": [
+          24,
+          38
+        ]
+      },
+      "source_locator": "X121D-S04 生産国／電源；S05 PDF 第7頁。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-979de19c61bf80db",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S04 生産国／電源；S05 PDF 第7頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-584560cafb1b6154",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S04 生産国／電源；S05 PDF 第7頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0204"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0205",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？",
+      "mechanism_key": "x121.appliance_label.selector_default",
+      "answer_target": "此日本機型寫明要依所在地選擇電壓檔位，配有手動切換開關。原廠說交貨時預設在較高的檔位。低檔額定 AC100–120V、50–60Hz，包含本例的 110V／60Hz；挑對型號還要依據它自己的使用說明確認設定。",
+      "scope": "不示範開關操作。高檔的完整適用條件不屬本題，僅比對一致的低檔標示。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "支援不同電壓與自動判斷是兩件事。",
+        "visual": "畫兩台機器的規格欄，只有 9F 旁邊再加一張出廠檔位卡。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X121D-S06 電源；S07 第5項；S08 PDF第7頁。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4b4b3bc3a6a35872",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S06 電源；S07 第5項；S08 PDF第7頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3675030e63a49350",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S06 電源；S07 第5項；S08 PDF第7頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2792682c25be6d81",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S06 電源；S07 第5項；S08 PDF第7頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0205"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0206",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？",
+      "mechanism_key": "x121.appliance_label.bagged_plug",
+      "answer_target": "EH-NA9F 的產品頁把兩項分開寫。機身開關選用額定電壓的檔位；隨盒 C-2 配件處理插腳外形，不替機身變壓。原廠另提醒，當地若不能用其 A-2 或 C-2 型，要另查相符插頭。",
+      "scope": "照原廠配件名稱與插頭轉接定義。未承諾某旅館的每個插座都相同。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一盒裡有兩種對應工作。",
+        "visual": "畫出兩個盒內物，分別配對「當地伏特」與「當地插座形狀」。",
+        "seconds": [
+          16,
+          27
+        ]
+      },
+      "source_locator": "X121D-S03 旅行轉接說明；S07 C-2プラグアダプター付；S08 PDF第13頁。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9c6bf748487eece1",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S03 旅行轉接說明；S07 C-2プラグアダプター付；S08 PDF第13頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3675030e63a49350",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S03 旅行轉接說明；S07 C-2プラグアダプター付；S08 PDF第13頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2792682c25be6d81",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S03 旅行轉接說明；S07 C-2プラグアダプター付；S08 PDF第13頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0206"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0207",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？",
+      "mechanism_key": "x121.appliance_label.endpoint_watts",
+      "answer_target": "原廠將 1000W 放在 AC100V 或 200V 的 TURBO/HOT 條件，1400W 放在 AC120V 或 240V 的同一模式。110V 雖落在低檔允許範圍，兩組列出的測點裡卻沒有 110V，不能把其中一個功耗直接抄成 110V 實測。",
+      "scope": "依該日本機型所列條件，不作線性內插或實測推定。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能用哪段電壓和表格量了哪些點要分別讀。",
+        "visual": "將額定範圍與四個測點分兩行，用空格留出 110V。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X121D-S06 消費電力；S08 PDF 第13頁定格。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4b4b3bc3a6a35872",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S06 消費電力；S08 PDF 第13頁定格。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2792682c25be6d81",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S06 消費電力；S08 PDF 第13頁定格。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0207"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0208",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？",
+      "mechanism_key": "x121.appliance_label.airflow_endpoints",
+      "answer_target": "第一個數字是日規 0J 在原廠規格中的消耗功率，另一個是 9F 指定電壓和模式的功耗。9F 另外在風量欄列出 TURBO 時的數值，100V 為每分鐘 1.1 立方公尺，120V 為 1.2。兩種數據的單位與條件不同，這些欄位都沒測出兩台在台灣 110V 的風量排名。",
+      "scope": "0J 為日本國內專用，不為比較而通電。只讀兩份日規表。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "耗電數字不是風量數字。",
+        "visual": "並排 W 和立方公尺／分鐘兩欄，在每一個測點下標電壓與模式。",
+        "seconds": [
+          23,
+          36
+        ]
+      },
+      "source_locator": "X121D-S04 消費電力；S05 国内専用；S06 風量及消費電力。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-979de19c61bf80db",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S04 消費電力；S05 国内専用；S06 風量及消費電力。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-584560cafb1b6154",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S04 消費電力；S05 国内専用；S06 風量及消費電力。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4b4b3bc3a6a35872",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S04 消費電力；S05 国内専用；S06 風量及消費電力。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0208"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0209",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？",
+      "mechanism_key": "x121.appliance_label.converter_own_rating",
+      "answer_target": "Electrical Safety First 說，帶電壓轉換功能的設備有自己的電流或功率上限，要核對所接設備會有的負載。這個數字描述轉換設備能承受多少，與單純改變插腳形狀的配件不同。即使找到一組數字對得上，也不能藉配件替 0J 解除日本國內專用的原廠條件。",
+      "scope": "僅辨認配件標示。沒有指定購買、接用或繞過日規機型限制的方法。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "配件額定值也是整套條件的一部分。",
+        "visual": "把一顆無變壓功能的轉接頭和一張轉換設備規格卡並排，後者圈出功率上限。",
+        "seconds": [
+          18,
+          31
+        ]
+      },
+      "source_locator": "X121D-S03 Voltage converters and transformers；S05 PDF第7頁。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9c6bf748487eece1",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S03 Voltage converters and transformers；S05 PDF第7頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-584560cafb1b6154",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S03 Voltage converters and transformers；S05 PDF第7頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0209"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0210",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？",
+      "mechanism_key": "x121.appliance_label.frequency_output",
+      "answer_target": "RE-TM18 的電源明列 AC100V、50Hz／60Hz 共用。但功率表的兩個對應輸出不同，50Hz 一欄為 520W，60Hz 一欄為 650W。原廠註腳也按供電頻率重列這兩個輸出值。兩種頻率都在用途範圍內，不表示每項輸出在兩地都相同。",
+      "scope": "日本 100V 供電條件，依這一型號核讀；不延伸為台灣適用。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "共用的是頻率範圍，輸出值仍可分開列。",
+        "visual": "把日本東、西兩處都貼 100V，再對上各地頻率的輸出值。",
+        "seconds": [
+          21,
+          33
+        ]
+      },
+      "source_locator": "X121D-S09 電源、レンジ出力及註2；S02 東／西日本頻率。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-36879501fafb2075",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S09 電源、レンジ出力及註2；S02 東／西日本頻率。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-01f88dda6464e13c",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S09 電源、レンジ出力及註2；S02 東／西日本頻率。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0210"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0211",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？",
+      "mechanism_key": "x121.appliance_label.input_vs_output_watts",
+      "answer_target": "Sharp RE-TM18 在 60Hz 的微波輸出表列 650W，額定消耗功率另列 1320W；50Hz 時分別是 520W 與 970W。抄給電源一側的資料要讀消耗欄，描述加熱設定則讀輸出欄。兩欄即使都用 W，也不能直接換位置。",
+      "scope": "依原廠表旁的欄名，不由表內兩數自行推論實際一餐的耗電。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣一個 W，先問寫在輸入側還是輸出側。",
+        "visual": "先遮住兩列標題讓觀眾選，再揭出レンジ出力與定格消費電力。",
+        "seconds": [
+          23,
+          34
+        ]
+      },
+      "source_locator": "X121D-S09 基本仕様兩欄及註2。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-01f88dda6464e13c",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S09 基本仕様兩欄及註2。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0211"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0212",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？",
+      "mechanism_key": "x121.appliance_label.limited_peak",
+      "answer_target": "東芝 ER-S17Y 說 900W 是短時間高輸出功能，最長 1 分 30 秒，之後自動轉成連續輸出的 600W。原廠並限定使用 900W 的自動選單是加熱項目。除了讀瓦數屬於哪一側，也得問這個數字能維持多久。",
+      "scope": "限日本東芝 ER-S17Y，沒有把它的計時套到上一台 Sharp。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "某個大字數字還可能有時間限制。",
+        "visual": "用兩段長度不同的色條標出 900W 上限與後續 600W。",
+        "seconds": [
+          20,
+          30
+        ]
+      },
+      "source_locator": "X121D-S10 自動でも手動でも900W 註記與規格註2。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-31c3953bb296785b",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S10 自動でも手動でも900W 註記與規格註2。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0212"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0213",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？",
+      "mechanism_key": "x121.appliance_label.charger_input_output",
+      "answer_target": "MH-32 的 Rated input 是交流 100–240V、50/60Hz；Rated output 是直流 8.4V，最大 1.12A。第一行和牆邊電源比，後一行描述送往電池的一側，手冊還另列支援的 EN-EL25a、EN-EL25 電池。單看見一個 8.4V 不能就說充電器接不上 110V。",
+      "scope": "依 Z 50 手冊列出的 MH-32 及指名電池；不推及任意器材。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "盒上不只一個伏特數，方向決定要拿哪個來比較。",
+        "visual": "在充電器兩側各畫一支箭頭，一端朝市電，另一端朝指定電池。",
+        "seconds": [
+          24,
+          38
+        ]
+      },
+      "source_locator": "X121D-S11 MH-32 Battery Charger 三個欄位。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b0ab98586a376a4b",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S11 MH-32 Battery Charger 三個欄位。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0213"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0214",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？",
+      "mechanism_key": "x121.appliance_label.travel_transformer_warning",
+      "answer_target": "Canon EOS R3 的電池充電器指南在同一條提醒中，先寫適用 AC100–240V、50/60Hz，當地插座形狀不同時可以用合適的插頭轉接器，接著卻明載不要接便攜式電壓變壓器，以免損傷。兩個外觀都像旅行配件的盒子，用途及原廠指示相反。",
+      "scope": "限 EOS R3 的配套電池充電器及該手冊中的提醒。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "多帶一個會改電壓的設備，未必符合手冊。",
+        "visual": "逐行揭露這段手冊，將形狀轉接與電壓變換分放兩側。",
+        "seconds": [
+          20,
+          33
+        ]
+      },
+      "source_locator": "X121D-S12 Tips for Using the Battery and Charger，100 V AC to 240 V AC。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f5c6d3258a77b5d2",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S12 Tips for Using the Battery and Charger，100 V AC to 240 V AC。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0214"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0215",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？",
+      "mechanism_key": "x121.appliance_label.apple_input_class",
+      "answer_target": "Apple 在 USB 轉接器安全規格中統一說明供電設計是 AC100–240V、50–60Hz，同頁卻分列 5W USB 和 20W USB-C 等不同產品。比較牆上來源時，可以得到相同的輸入範圍；比較充電器向裝置提供的能力和需搭的線材，則要回到各款規格。",
+      "scope": "限 Apple 在該頁介紹的轉接器，沒有據瓦數推算四倍實際充電速度。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "充電端的產品瓦數不會把牆端電壓範圍乘上四。",
+        "visual": "把 5W、20W 各貼在充電端，牆端都貼相同範圍。",
+        "seconds": [
+          18,
+          29
+        ]
+      },
+      "source_locator": "X121D-S13 認證與 5W／20W 產品段。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2115afabc3472dc8",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S13 認證與 5W／20W 產品段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0215"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0216",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？",
+      "mechanism_key": "x121.appliance_label.charge_vs_operate",
+      "answer_target": "Canon 的 EOS R3 指南把 PD-E1 列為可替機內 LP-E19 充電的配件，注意事項卻說不能用它替這台相機供電。外觀能接上、能充到電池、能讓相機持續運作，是要分別逐項查證的敘述。",
+      "scope": "只有 EOS R3 搭配 PD-E1 這個指定組合，原廠另有其他配件資料。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能充電不自動帶出能供機身運轉。",
+        "visual": "同一組裝置留在畫面，分別在「充電」和「持續供電」兩列顯示原廠結果。",
+        "seconds": [
+          20,
+          30
+        ]
+      },
+      "source_locator": "X121D-S14 Using an Optional USB Power Adapter to Charge the Camera，頁尾 PD-E1 限制。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9ee02ef140eb25cb",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S14 Using an Optional USB Power Adapter to Charge the Camera，頁尾 PD-E1 限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0216"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0217",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？",
+      "mechanism_key": "x121.appliance_label.support_region",
+      "answer_target": "Nintendo 的區域相容 FAQ 把電壓、無線通訊要求及保固範圍分開列。對能否在別國獲得主機保固服務，美洲支援頁回答，有限保固只適用於原定銷售的國家或地區。購買前還要確認該台的銷售地與條款。",
+      "scope": "用 Switch 主機的區域 FAQ 比對要查的項目，不承諾任何具體台日售後服務。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "電氣相容與服務區域是兩道各自要查的問題。",
+        "visual": "在一張售前檢查單上分開列出電源額定和保固適用地。",
+        "seconds": [
+          24,
+          38
+        ]
+      },
+      "source_locator": "X121D-S15 Can I use Nintendo Switch in another country/region? 及保固問答。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f83e57eb77a5f808",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S15 Can I use Nintendo Switch in another country/region? 及保固問答。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0217"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K121-0218",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？",
+      "mechanism_key": "x121.appliance_label.dryer_warranty_return",
+      "answer_target": "在同一份日本版手冊中，海外使用章交代插頭和電壓選擇，末頁保證書第 5 條卻限定日本國內有效。以台灣一般 110V／60Hz 的選購情境作結，0J 不在額定範圍；9F 的低檔涵蓋本例，但使用者須依手冊確認設定，而這張日本保證書不會因此變成台灣保證書。",
+      "scope": "只說這份書面免費保證範圍，不宣稱台灣無法付費維修，也不表示所有賣家條款一致。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能不能列進台灣家用清單，以及帶回後拿哪張保證書，各有自己的答案。",
+        "visual": "把兩台資料卡翻到最後一頁，對照電源欄及保證書地區。",
+        "seconds": [
+          28,
+          43
+        ]
+      },
+      "source_locator": "X121D-S08 PDF第7、13、18頁；S05日本國內專用；S01 Electricity。",
+      "notes": "依公開規格自繪銘板與收件情境，不以實際通電測試代替製造商規定。",
+      "origin": "wave121-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5ecd6acbe832a5f0",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S08 PDF第7、13、18頁；S05日本國內專用；S01 Electricity。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-584560cafb1b6154",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S08 PDF第7、13、18頁；S05日本國內專用；S01 Electricity。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4b4b3bc3a6a35872",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S08 PDF第7、13、18頁；S05日本國內專用；S01 Electricity。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2792682c25be6d81",
+          "origin": "wave121-research-20261119",
+          "locator": "X121D-S08 PDF第7、13、18頁；S05日本國內專用；S01 Electricity。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K121-0218"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -335501,7 +337181,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 7752
+    "count": 7788
   },
   "dedup": {
     "aliases": {
@@ -338175,6 +339855,42 @@
       "K120-0216": "K120-0216",
       "K120-0217": "K120-0217",
       "K120-0218": "K120-0218",
+      "K121-0001": "K121-0001",
+      "K121-0002": "K121-0002",
+      "K121-0003": "K121-0003",
+      "K121-0004": "K121-0004",
+      "K121-0005": "K121-0005",
+      "K121-0006": "K121-0006",
+      "K121-0007": "K121-0007",
+      "K121-0008": "K121-0008",
+      "K121-0009": "K121-0009",
+      "K121-0010": "K121-0010",
+      "K121-0011": "K121-0011",
+      "K121-0012": "K121-0012",
+      "K121-0401": "K121-0401",
+      "K121-0402": "K121-0402",
+      "K121-0403": "K121-0403",
+      "K121-0404": "K121-0404",
+      "K121-0405": "K121-0405",
+      "K121-0406": "K121-0406",
+      "K121-0201": "K121-0201",
+      "K121-0202": "K121-0202",
+      "K121-0203": "K121-0203",
+      "K121-0204": "K121-0204",
+      "K121-0205": "K121-0205",
+      "K121-0206": "K121-0206",
+      "K121-0207": "K121-0207",
+      "K121-0208": "K121-0208",
+      "K121-0209": "K121-0209",
+      "K121-0210": "K121-0210",
+      "K121-0211": "K121-0211",
+      "K121-0212": "K121-0212",
+      "K121-0213": "K121-0213",
+      "K121-0214": "K121-0214",
+      "K121-0215": "K121-0215",
+      "K121-0216": "K121-0216",
+      "K121-0217": "K121-0217",
+      "K121-0218": "K121-0218",
       "X13001": "X13001",
       "X13002": "X13002",
       "X13003": "X13003",
@@ -380970,6 +382686,20 @@
         ]
       },
       {
+        "id": "K121-0204~K121-0207",
+        "a": "K121-0204",
+        "b": "K121-0207",
+        "question_score": 0.273,
+        "answer_score": 0.124,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？"
+        ]
+      },
+      {
         "id": "L233~L234",
         "a": "L233",
         "b": "L234",
@@ -381208,6 +382938,20 @@
         ]
       },
       {
+        "id": "K121-0207~K121-0208",
+        "a": "K121-0207",
+        "b": "K121-0208",
+        "question_score": 0.257,
+        "answer_score": 0.194,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？",
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？"
+        ]
+      },
+      {
         "id": "K120-0204~K120-0211",
         "a": "K120-0204",
         "b": "K120-0211",
@@ -381317,6 +383061,20 @@
         "questions": [
           "超臨界乾燥技術如何利用流體氣液界面張力歸零的特性，避免凝膠納米骨架在烘乾時毛細管力坍塌？",
           "為什麼常規蒸發乾燥會將氣凝膠骨架瞬間壓碎坍塌，必須仰賴超臨界乾燥技術脫除溶劑？"
+        ]
+      },
+      {
+        "id": "K121-0213~K121-0214",
+        "a": "K121-0213",
+        "b": "K121-0214",
+        "question_score": 0.246,
+        "answer_score": 0.167,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？",
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
         ]
       },
       {
@@ -381443,6 +383201,20 @@
         "questions": [
           "逆滲透能擋下九成以上的 PFAS，那被擋下的去哪了？",
           "淨水廠拿掉 PFAS 後，留下的濾材和濃水分別送去哪？"
+        ]
+      },
+      {
+        "id": "K121-0204~K121-0205",
+        "a": "K121-0204",
+        "b": "K121-0205",
+        "question_score": 0.09,
+        "answer_score": 0.232,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？"
         ]
       },
       {
@@ -381670,6 +383442,20 @@
         ]
       },
       {
+        "id": "K121-0201~K121-0204",
+        "a": "K121-0201",
+        "b": "K121-0204",
+        "question_score": 0.062,
+        "answer_score": 0.214,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？"
+        ]
+      },
+      {
         "id": "L033~N267",
         "a": "L033",
         "b": "N267",
@@ -381695,6 +383481,20 @@
         "questions": [
           "把黃燈拉長一秒，闖紅燈的人真的會變少嗎？",
           "黃燈差 0.1 秒，真的會有差嗎？"
+        ]
+      },
+      {
+        "id": "K121-0204~K121-0218",
+        "a": "K121-0204",
+        "b": "K121-0218",
+        "question_score": 0.136,
+        "answer_score": 0.212,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
         ]
       },
       {
@@ -381821,6 +383621,34 @@
         "questions": [
           "用過的寶特瓶，回收時是誰付錢給誰？",
           "寶特瓶變得值錢後，那筆錢歸誰？還要付錢處理的部分又是誰出？"
+        ]
+      },
+      {
+        "id": "K121-0214~K121-0215",
+        "a": "K121-0214",
+        "b": "K121-0215",
+        "question_score": 0.065,
+        "answer_score": 0.204,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？",
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
+        ]
+      },
+      {
+        "id": "K121-0203~K121-0214",
+        "a": "K121-0203",
+        "b": "K121-0214",
+        "question_score": 0.203,
+        "answer_score": 0.09,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
         ]
       },
       {
@@ -381992,6 +383820,20 @@
         ]
       },
       {
+        "id": "K121-0207~K121-0218",
+        "a": "K121-0207",
+        "b": "K121-0218",
+        "question_score": 0.196,
+        "answer_score": 0.069,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
+        ]
+      },
+      {
         "id": "T55-004~T55-005",
         "a": "T55-004",
         "b": "T55-005",
@@ -382076,6 +383918,20 @@
         ]
       },
       {
+        "id": "K121-0205~K121-0218",
+        "a": "K121-0205",
+        "b": "K121-0218",
+        "question_score": 0.192,
+        "answer_score": 0.186,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
+        ]
+      },
+      {
         "id": "S55-001~S55-007",
         "a": "S55-001",
         "b": "S55-007",
@@ -382101,6 +383957,20 @@
         "questions": [
           "常壓乾燥技術（Ambient Pressure Drying）製備低成本氣凝膠時，如何利用『回彈效應（Spring-back）』抵抗毛細管力？",
           "常壓乾燥法製備疏水氣凝膠時，三甲基氯矽烷等表面改性劑如何誘發乾燥過程中的「彈簧彈回效應」？"
+        ]
+      },
+      {
+        "id": "K121-0204~K121-0210",
+        "a": "K121-0204",
+        "b": "K121-0210",
+        "question_score": 0.119,
+        "answer_score": 0.191,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？"
         ]
       },
       {
@@ -382185,6 +384055,20 @@
         "questions": [
           "缺少第一個搜尋條件，資料庫怎麼有時還能跳著查？",
           "資料庫索引為什麼有時故意漏掉大部分資料？"
+        ]
+      },
+      {
+        "id": "K121-0207~K121-0213",
+        "a": "K121-0207",
+        "b": "K121-0213",
+        "question_score": 0.188,
+        "answer_score": 0.116,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？",
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？"
         ]
       },
       {
@@ -382370,6 +384254,20 @@
         ]
       },
       {
+        "id": "K121-0210~K121-0211",
+        "a": "K121-0210",
+        "b": "K121-0211",
+        "question_score": 0.061,
+        "answer_score": 0.185,
+        "key_score": 0.727,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？",
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？"
+        ]
+      },
+      {
         "id": "B2167~B2271",
         "a": "B2167",
         "b": "B2271",
@@ -382496,6 +384394,20 @@
         ]
       },
       {
+        "id": "K121-0204~K121-0208",
+        "a": "K121-0204",
+        "b": "K121-0208",
+        "question_score": 0.179,
+        "answer_score": 0.081,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？"
+        ]
+      },
+      {
         "id": "E2004~E2023",
         "a": "E2004",
         "b": "E2023",
@@ -382619,6 +384531,34 @@
         "questions": [
           "旅館房內電話要先取外線，那顆鍵要抄進朋友的號碼嗎？",
           "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？"
+        ]
+      },
+      {
+        "id": "K121-0201~K121-0202",
+        "a": "K121-0201",
+        "b": "K121-0202",
+        "question_score": 0.073,
+        "answer_score": 0.176,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？"
+        ]
+      },
+      {
+        "id": "K121-0204~K121-0213",
+        "a": "K121-0204",
+        "b": "K121-0213",
+        "question_score": 0.167,
+        "answer_score": 0.176,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？"
         ]
       },
       {
@@ -382902,6 +384842,20 @@
         ]
       },
       {
+        "id": "K121-0210~K121-0215",
+        "a": "K121-0210",
+        "b": "K121-0215",
+        "question_score": 0,
+        "answer_score": 0.171,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？",
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
+        ]
+      },
+      {
         "id": "K98-005~V3034",
         "a": "V3034",
         "b": "K98-005",
@@ -382955,6 +384909,34 @@
         "questions": [
           "在日本送朋友上車，只逛一下站內商店，出閘時 Suica 扣的是到哪一站的車資？",
           "兩人都在兩小時內回到原來的 JR 站，真的搭車繞回來的人也能只付入場費嗎？"
+        ]
+      },
+      {
+        "id": "K121-0205~K121-0207",
+        "a": "K121-0205",
+        "b": "K121-0207",
+        "question_score": 0.169,
+        "answer_score": 0.127,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？",
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？"
+        ]
+      },
+      {
+        "id": "K121-0207~K121-0214",
+        "a": "K121-0207",
+        "b": "K121-0214",
+        "question_score": 0.169,
+        "answer_score": 0.101,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？",
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
         ]
       },
       {
@@ -383154,6 +385136,20 @@
         ]
       },
       {
+        "id": "K121-0204~K121-0215",
+        "a": "K121-0204",
+        "b": "K121-0215",
+        "question_score": 0,
+        "answer_score": 0.163,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
+        ]
+      },
+      {
         "id": "K105-0711~K105-0712",
         "a": "K105-0711",
         "b": "K105-0712",
@@ -383336,6 +385332,20 @@
         ]
       },
       {
+        "id": "K121-0204~K121-0214",
+        "a": "K121-0204",
+        "b": "K121-0214",
+        "question_score": 0.06,
+        "answer_score": 0.159,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
+        ]
+      },
+      {
         "id": "P71-007~P73-001",
         "a": "P71-007",
         "b": "P73-001",
@@ -383459,6 +385469,20 @@
         "questions": [
           "把「同站十五分鐘」抄到台中，換成不同站出閘，還能照台北的兩小時計時嗎？",
           "首爾有一條十五分鐘規則，為什麼要在「刷出」的那一刻才開始計時？"
+        ]
+      },
+      {
+        "id": "K121-0210~K121-0214",
+        "a": "K121-0210",
+        "b": "K121-0214",
+        "question_score": 0.1,
+        "answer_score": 0.157,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？",
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
         ]
       },
       {
@@ -383599,6 +385623,20 @@
         "questions": [
           "日本一部電話進入國際線要按 010，台灣朋友的名片也該加上這三碼嗎？",
           "旅館房內電話要先取外線，那顆鍵要抄進朋友的號碼嗎？"
+        ]
+      },
+      {
+        "id": "K121-0207~K121-0211",
+        "a": "K121-0207",
+        "b": "K121-0211",
+        "question_score": 0.154,
+        "answer_score": 0.05,
+        "key_score": 0.727,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？",
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？"
         ]
       },
       {
@@ -384246,6 +386284,48 @@
         ]
       },
       {
+        "id": "K121-0201~K121-0218",
+        "a": "K121-0201",
+        "b": "K121-0218",
+        "question_score": 0,
+        "answer_score": 0.143,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
+        ]
+      },
+      {
+        "id": "K121-0202~K121-0207",
+        "a": "K121-0202",
+        "b": "K121-0207",
+        "question_score": 0.143,
+        "answer_score": 0.113,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？"
+        ]
+      },
+      {
+        "id": "K121-0214~K121-0216",
+        "a": "K121-0214",
+        "b": "K121-0216",
+        "question_score": 0.1,
+        "answer_score": 0.143,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？",
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
+        ]
+      },
+      {
         "id": "K74-002~K74-009",
         "a": "K74-002",
         "b": "K74-009",
@@ -384313,6 +386393,34 @@
         "questions": [
           "磁北極會一直跑到西伯利亞去嗎？以前也這樣跑過嗎？",
           "科學家能預測北磁極下一步往哪跑嗎？"
+        ]
+      },
+      {
+        "id": "K121-0205~K121-0210",
+        "a": "K121-0205",
+        "b": "K121-0210",
+        "question_score": 0,
+        "answer_score": 0.141,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？",
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？"
+        ]
+      },
+      {
+        "id": "K121-0205~K121-0215",
+        "a": "K121-0205",
+        "b": "K121-0215",
+        "question_score": 0.032,
+        "answer_score": 0.141,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？",
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
         ]
       },
       {
@@ -384397,6 +386505,20 @@
         "questions": [
           "一組四罐 200 毫升的小可樂，外面只有一層包裝，FairPrice 結帳要收幾份押金？",
           "在愛爾蘭退兩只都有標記的飲料罐，剛好 500 毫升的和超過 500 毫升的可以拿回相同金額嗎？"
+        ]
+      },
+      {
+        "id": "K121-0213~K121-0215",
+        "a": "K121-0213",
+        "b": "K121-0215",
+        "question_score": 0.06,
+        "answer_score": 0.14,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？",
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
         ]
       },
       {
@@ -384509,6 +386631,20 @@
         "questions": [
           "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
           "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？"
+        ]
+      },
+      {
+        "id": "K121-0205~K121-0214",
+        "a": "K121-0205",
+        "b": "K121-0214",
+        "question_score": 0,
+        "answer_score": 0.138,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？",
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
         ]
       },
       {
@@ -384946,6 +387082,20 @@
         ]
       },
       {
+        "id": "K121-0201~K121-0205",
+        "a": "K121-0201",
+        "b": "K121-0205",
+        "question_score": 0,
+        "answer_score": 0.131,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？"
+        ]
+      },
+      {
         "id": "E2052~E2133",
         "a": "E2052",
         "b": "E2133",
@@ -385097,6 +387247,34 @@
         "questions": [
           "責任一轉移，商店真的開始賠比較多嗎？",
           "責任轉移之前，偽卡的損失本來是誰在賠？"
+        ]
+      },
+      {
+        "id": "K121-0202~K121-0213",
+        "a": "K121-0202",
+        "b": "K121-0213",
+        "question_score": 0.129,
+        "answer_score": 0.072,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？"
+        ]
+      },
+      {
+        "id": "K121-0210~K121-0212",
+        "a": "K121-0210",
+        "b": "K121-0212",
+        "question_score": 0.129,
+        "answer_score": 0.073,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？",
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？"
         ]
       },
       {
@@ -385324,6 +387502,34 @@
         ]
       },
       {
+        "id": "K121-0202~K121-0204",
+        "a": "K121-0202",
+        "b": "K121-0204",
+        "question_score": 0.125,
+        "answer_score": 0.101,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？"
+        ]
+      },
+      {
+        "id": "K121-0203~K121-0213",
+        "a": "K121-0203",
+        "b": "K121-0213",
+        "question_score": 0.125,
+        "answer_score": 0.047,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？"
+        ]
+      },
+      {
         "id": "L001~L006",
         "a": "L001",
         "b": "L006",
@@ -385548,6 +387754,20 @@
         ]
       },
       {
+        "id": "K121-0210~K121-0213",
+        "a": "K121-0210",
+        "b": "K121-0213",
+        "question_score": 0.123,
+        "answer_score": 0.097,
+        "key_score": 0.727,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？",
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？"
+        ]
+      },
+      {
         "id": "X5002~X5004",
         "a": "X5002",
         "b": "X5004",
@@ -385744,6 +387964,48 @@
         ]
       },
       {
+        "id": "K121-0202~K121-0218",
+        "a": "K121-0202",
+        "b": "K121-0218",
+        "question_score": 0,
+        "answer_score": 0.12,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
+        ]
+      },
+      {
+        "id": "K121-0203~K121-0209",
+        "a": "K121-0203",
+        "b": "K121-0209",
+        "question_score": 0.038,
+        "answer_score": 0.12,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？"
+        ]
+      },
+      {
+        "id": "K121-0205~K121-0213",
+        "a": "K121-0205",
+        "b": "K121-0213",
+        "question_score": 0,
+        "answer_score": 0.12,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？",
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？"
+        ]
+      },
+      {
         "id": "L70-025~L73-006",
         "a": "L70-025",
         "b": "L73-006",
@@ -385797,6 +388059,20 @@
         "questions": [
           "同一個街區裡，房子的號碼是看什麼決定的？",
           "在同一塊地上把房子重蓋，住址可能會變嗎？"
+        ]
+      },
+      {
+        "id": "K121-0211~K121-0212",
+        "a": "K121-0211",
+        "b": "K121-0212",
+        "question_score": 0.118,
+        "answer_score": 0.06,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？",
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？"
         ]
       },
       {
@@ -386094,6 +388370,20 @@
         ]
       },
       {
+        "id": "K121-0207~K121-0215",
+        "a": "K121-0207",
+        "b": "K121-0215",
+        "question_score": 0.033,
+        "answer_score": 0.114,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？",
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
+        ]
+      },
+      {
         "id": "L004~L005",
         "a": "L004",
         "b": "L005",
@@ -386217,6 +388507,20 @@
         "questions": [
           "同樣有押金標記的飲料罐，為什麼在參加新加坡內用回收方案的店裡，帳單可以不向客人收那一角？",
           "香港早期智能回收試驗也會給一角，把新加坡汽水罐的算法直接套過去會漏掉什麼？"
+        ]
+      },
+      {
+        "id": "K121-0207~K121-0210",
+        "a": "K121-0207",
+        "b": "K121-0210",
+        "question_score": 0.102,
+        "answer_score": 0.113,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？",
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？"
         ]
       },
       {
@@ -386388,6 +388692,20 @@
         ]
       },
       {
+        "id": "K121-0209~K121-0214",
+        "a": "K121-0209",
+        "b": "K121-0214",
+        "question_score": 0.111,
+        "answer_score": 0.065,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？",
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
+        ]
+      },
+      {
         "id": "L001~L002",
         "a": "L001",
         "b": "L002",
@@ -386525,6 +388843,20 @@
         "questions": [
           "黑洞旁明明是一個盤，影像裡怎麼像翹到上下兩邊？",
           "黑洞影像中央的黑圈，就是事件視界的尺寸嗎？"
+        ]
+      },
+      {
+        "id": "K121-0208~K121-0212",
+        "a": "K121-0208",
+        "b": "K121-0212",
+        "question_score": 0.11,
+        "answer_score": 0.044,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？",
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？"
         ]
       },
       {
@@ -386707,6 +389039,20 @@
         "questions": [
           "沒有喇叭的電路板，為什麼陶瓷電容也可能發出聲音？",
           "工程師要讓會唱歌的電容安靜下來，有哪幾條路？"
+        ]
+      },
+      {
+        "id": "K121-0211~K121-0213",
+        "a": "K121-0211",
+        "b": "K121-0213",
+        "question_score": 0.028,
+        "answer_score": 0.108,
+        "key_score": 0.833,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？",
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？"
         ]
       },
       {
@@ -387032,6 +389378,20 @@
         ]
       },
       {
+        "id": "K121-0203~K121-0207",
+        "a": "K121-0203",
+        "b": "K121-0207",
+        "question_score": 0.103,
+        "answer_score": 0.041,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？"
+        ]
+      },
+      {
         "id": "M2016~P268",
         "a": "P268",
         "b": "M2016",
@@ -387102,6 +389462,20 @@
         ]
       },
       {
+        "id": "K121-0203~K121-0210",
+        "a": "K121-0203",
+        "b": "K121-0210",
+        "question_score": 0.102,
+        "answer_score": 0.038,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？"
+        ]
+      },
+      {
         "id": "K100-018~K94-055",
         "a": "K100-018",
         "b": "K94-055",
@@ -387169,6 +389543,20 @@
         "questions": [
           "歐盟算耗電時，真的都用裝滿的那一桶來量嗎？",
           "其他國家寫進法規的「乾布」，也帶著水分嗎？"
+        ]
+      },
+      {
+        "id": "K121-0203~K121-0206",
+        "a": "K121-0203",
+        "b": "K121-0206",
+        "question_score": 0.1,
+        "answer_score": 0.07,
+        "key_score": 0.8,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？"
         ]
       },
       {
@@ -387284,6 +389672,20 @@
         ]
       },
       {
+        "id": "K121-0201~K121-0203",
+        "a": "K121-0201",
+        "b": "K121-0203",
+        "question_score": 0,
+        "answer_score": 0.099,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？"
+        ]
+      },
+      {
         "id": "L74-040~L74-041",
         "a": "L74-040",
         "b": "L74-041",
@@ -387368,6 +389770,20 @@
         ]
       },
       {
+        "id": "K121-0201~K121-0207",
+        "a": "K121-0201",
+        "b": "K121-0207",
+        "question_score": 0.035,
+        "answer_score": 0.098,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？"
+        ]
+      },
+      {
         "id": "K66-007~K66-011",
         "a": "K66-007",
         "b": "K66-011",
@@ -387449,6 +389865,20 @@
         "questions": [
           "為什麼 2026 年夏天在新加坡買兩罐同款汽水，可以只替其中一罐付押金？",
           "香港早期智能回收試驗也會給一角，把新加坡汽水罐的算法直接套過去會漏掉什麼？"
+        ]
+      },
+      {
+        "id": "K121-0215~K121-0216",
+        "a": "K121-0215",
+        "b": "K121-0216",
+        "question_score": 0.097,
+        "answer_score": 0.022,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？",
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
         ]
       },
       {
@@ -387547,6 +389977,48 @@
         "questions": [
           "一組四罐 200 毫升的小可樂，外面只有一層包裝，FairPrice 結帳要收幾份押金？",
           "含稅礦泉水標兩元，加押金後付兩元一角，新加坡的消費稅怎麼還是十七分？"
+        ]
+      },
+      {
+        "id": "K121-0201~K121-0213",
+        "a": "K121-0201",
+        "b": "K121-0213",
+        "question_score": 0.063,
+        "answer_score": 0.095,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？"
+        ]
+      },
+      {
+        "id": "K121-0202~K121-0211",
+        "a": "K121-0202",
+        "b": "K121-0211",
+        "question_score": 0.095,
+        "answer_score": 0.039,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？"
+        ]
+      },
+      {
+        "id": "K121-0208~K121-0218",
+        "a": "K121-0208",
+        "b": "K121-0218",
+        "question_score": 0.095,
+        "answer_score": 0.07,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
         ]
       },
       {
@@ -387673,6 +390145,20 @@
         "questions": [
           "星系團的重量，為什麼不能只把恆星加起來？",
           "看不見的物質，怎麼畫出它可能在哪裡？"
+        ]
+      },
+      {
+        "id": "K121-0201~K121-0208",
+        "a": "K121-0201",
+        "b": "K121-0208",
+        "question_score": 0.029,
+        "answer_score": 0.094,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？"
         ]
       },
       {
@@ -387998,6 +390484,20 @@
         ]
       },
       {
+        "id": "K121-0203~K121-0204",
+        "a": "K121-0203",
+        "b": "K121-0204",
+        "question_score": 0.091,
+        "answer_score": 0.069,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？"
+        ]
+      },
+      {
         "id": "K66-001~K66-005",
         "a": "K66-001",
         "b": "K66-005",
@@ -388208,6 +390708,20 @@
         ]
       },
       {
+        "id": "K121-0203~K121-0205",
+        "a": "K121-0203",
+        "b": "K121-0205",
+        "question_score": 0,
+        "answer_score": 0.089,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？"
+        ]
+      },
+      {
         "id": "L200~L201",
         "a": "L200",
         "b": "L201",
@@ -388289,6 +390803,20 @@
         "questions": [
           "鋁罐上條碼明明還能看，為什麼用手捏扁，退罐機反而可能把它推出來？",
           "在愛爾蘭退兩只都有標記的飲料罐，剛好 500 毫升的和超過 500 毫升的可以拿回相同金額嗎？"
+        ]
+      },
+      {
+        "id": "K121-0214~K121-0218",
+        "a": "K121-0214",
+        "b": "K121-0218",
+        "question_score": 0,
+        "answer_score": 0.088,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
         ]
       },
       {
@@ -388558,6 +391086,34 @@
         ]
       },
       {
+        "id": "K121-0205~K121-0208",
+        "a": "K121-0205",
+        "b": "K121-0208",
+        "question_score": 0.085,
+        "answer_score": 0.086,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？",
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？"
+        ]
+      },
+      {
+        "id": "K121-0208~K121-0210",
+        "a": "K121-0208",
+        "b": "K121-0210",
+        "question_score": 0.056,
+        "answer_score": 0.086,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？",
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？"
+        ]
+      },
+      {
         "id": "P74-020~P74-024",
         "a": "P74-020",
         "b": "P74-024",
@@ -388611,6 +391167,34 @@
         "questions": [
           "如果每家公司各自想辦法，不也一樣幫到人嗎？",
           "國際標準有規定刻痕要刻多深、刻在哪裡嗎？"
+        ]
+      },
+      {
+        "id": "K121-0208~K121-0209",
+        "a": "K121-0208",
+        "b": "K121-0209",
+        "question_score": 0.031,
+        "answer_score": 0.085,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？",
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？"
+        ]
+      },
+      {
+        "id": "K121-0208~K121-0214",
+        "a": "K121-0208",
+        "b": "K121-0214",
+        "question_score": 0.085,
+        "answer_score": 0.058,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？",
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
         ]
       },
       {
@@ -388737,6 +391321,20 @@
         "questions": [
           "把羅馬旅館號碼塞進一個整數欄位，那顆重要的 0 怎麼保存？",
           "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？"
+        ]
+      },
+      {
+        "id": "K121-0202~K121-0208",
+        "a": "K121-0202",
+        "b": "K121-0208",
+        "question_score": 0.029,
+        "answer_score": 0.083,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？"
         ]
       },
       {
@@ -388978,6 +391576,20 @@
         ]
       },
       {
+        "id": "K121-0205~K121-0211",
+        "a": "K121-0205",
+        "b": "K121-0211",
+        "question_score": 0,
+        "answer_score": 0.082,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？",
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？"
+        ]
+      },
+      {
         "id": "K89-036~K92-030",
         "a": "K89-036",
         "b": "K92-030",
@@ -389188,6 +391800,34 @@
         ]
       },
       {
+        "id": "K121-0201~K121-0214",
+        "a": "K121-0201",
+        "b": "K121-0214",
+        "question_score": 0,
+        "answer_score": 0.08,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
+        ]
+      },
+      {
+        "id": "K121-0206~K121-0214",
+        "a": "K121-0206",
+        "b": "K121-0214",
+        "question_score": 0,
+        "answer_score": 0.08,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？",
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
+        ]
+      },
+      {
         "id": "L234~L235",
         "a": "L234",
         "b": "L235",
@@ -389255,6 +391895,34 @@
         "questions": [
           "同一份通訊錄，換個語言排序為什麼就變了？",
           "日本姓名都已存成漢字，電腦為什麼還可能要另外存讀音？"
+        ]
+      },
+      {
+        "id": "K121-0202~K121-0205",
+        "a": "K121-0202",
+        "b": "K121-0205",
+        "question_score": 0,
+        "answer_score": 0.079,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？"
+        ]
+      },
+      {
+        "id": "K121-0208~K121-0213",
+        "a": "K121-0208",
+        "b": "K121-0213",
+        "question_score": 0.079,
+        "answer_score": 0.07,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？",
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？"
         ]
       },
       {
@@ -389339,6 +392007,20 @@
         "questions": [
           "FairPrice 的收據另列總押金，換一家店時能只憑飲料那張稅務收據找出押金嗎？",
           "有押金的飲料罐照樣丟進新加坡藍色回收桶，那一角新幣會進到哪個帳戶？"
+        ]
+      },
+      {
+        "id": "K121-0205~K121-0206",
+        "a": "K121-0205",
+        "b": "K121-0206",
+        "question_score": 0.066,
+        "answer_score": 0.078,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？",
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？"
         ]
       },
       {
@@ -389524,6 +392206,20 @@
         ]
       },
       {
+        "id": "K121-0201~K121-0210",
+        "a": "K121-0201",
+        "b": "K121-0210",
+        "question_score": 0,
+        "answer_score": 0.077,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？"
+        ]
+      },
+      {
         "id": "L135~N145",
         "a": "L135",
         "b": "N145",
@@ -389647,6 +392343,20 @@
         "questions": [
           "退罐機已吞下空罐，卻印了一張服務單，紙上列的金額算入帳了嗎？",
           "四入組先付了四角押金，機器只確認收進三罐，這次卡裡應該會出現多少？"
+        ]
+      },
+      {
+        "id": "K121-0204~K121-0211",
+        "a": "K121-0204",
+        "b": "K121-0211",
+        "question_score": 0.027,
+        "answer_score": 0.076,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？"
         ]
       },
       {
@@ -390168,6 +392878,34 @@
         ]
       },
       {
+        "id": "K121-0202~K121-0203",
+        "a": "K121-0202",
+        "b": "K121-0203",
+        "question_score": 0.071,
+        "answer_score": 0.043,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？"
+        ]
+      },
+      {
+        "id": "K121-0213~K121-0218",
+        "a": "K121-0213",
+        "b": "K121-0218",
+        "question_score": 0,
+        "answer_score": 0.071,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
+        ]
+      },
+      {
         "id": "K90-050~K94-011",
         "a": "K90-050",
         "b": "K94-011",
@@ -390235,6 +392973,34 @@
         "questions": [
           "有些螺桿能頂起重物，重物卻不容易反過來把螺桿轉動？",
           "螺桿每次都轉一圈，平台為什麼不一定每次前進一樣遠？"
+        ]
+      },
+      {
+        "id": "K121-0202~K121-0214",
+        "a": "K121-0202",
+        "b": "K121-0214",
+        "question_score": 0.07,
+        "answer_score": 0.058,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
+        ]
+      },
+      {
+        "id": "K121-0203~K121-0218",
+        "a": "K121-0203",
+        "b": "K121-0218",
+        "question_score": 0,
+        "answer_score": 0.07,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
         ]
       },
       {
@@ -390319,6 +393085,20 @@
         "questions": [
           "同樣兩個欄位建立索引，先排哪個為什麼有差？",
           "資料庫索引為什麼有時故意漏掉大部分資料？"
+        ]
+      },
+      {
+        "id": "K121-0208~K121-0215",
+        "a": "K121-0208",
+        "b": "K121-0215",
+        "question_score": 0.055,
+        "answer_score": 0.069,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？",
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
         ]
       },
       {
@@ -390476,6 +393256,20 @@
         ]
       },
       {
+        "id": "K121-0203~K121-0216",
+        "a": "K121-0203",
+        "b": "K121-0216",
+        "question_score": 0.068,
+        "answer_score": 0.027,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
+        ]
+      },
+      {
         "id": "E2115~E2173",
         "a": "E2115",
         "b": "E2173",
@@ -390543,6 +393337,20 @@
         "questions": [
           "含稅礦泉水標兩元，加押金後付兩元一角，新加坡的消費稅怎麼還是十七分？",
           "在新加坡用交通卡領走退罐款，回家打開 app，要找哪一行才知道這次真的入帳？"
+        ]
+      },
+      {
+        "id": "K121-0216~K121-0217",
+        "a": "K121-0216",
+        "b": "K121-0217",
+        "question_score": 0.067,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
         ]
       },
       {
@@ -390672,6 +393480,34 @@
         ]
       },
       {
+        "id": "K121-0204~K121-0209",
+        "a": "K121-0204",
+        "b": "K121-0209",
+        "question_score": 0,
+        "answer_score": 0.066,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？"
+        ]
+      },
+      {
+        "id": "K121-0207~K121-0212",
+        "a": "K121-0207",
+        "b": "K121-0212",
+        "question_score": 0.066,
+        "answer_score": 0.052,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？",
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？"
+        ]
+      },
+      {
         "id": "E2045~E2185",
         "a": "E2045",
         "b": "E2185",
@@ -390781,6 +393617,34 @@
         "questions": [
           "如果旅客就是想搭車遊一圈再回原站，世界上真的有專門給這種乘法的車資嗎？",
           "在桃捷拿出綁信用卡的手機，為什麼不能把當時的車資直接當作悠遊卡紀錄來查？"
+        ]
+      },
+      {
+        "id": "K121-0210~K121-0218",
+        "a": "K121-0210",
+        "b": "K121-0218",
+        "question_score": 0.038,
+        "answer_score": 0.065,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
+        ]
+      },
+      {
+        "id": "K121-0211~K121-0218",
+        "a": "K121-0211",
+        "b": "K121-0218",
+        "question_score": 0,
+        "answer_score": 0.065,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
         ]
       },
       {
@@ -390952,6 +393816,20 @@
         ]
       },
       {
+        "id": "K121-0211~K121-0215",
+        "a": "K121-0211",
+        "b": "K121-0215",
+        "question_score": 0.059,
+        "answer_score": 0.064,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？",
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
+        ]
+      },
+      {
         "id": "E2096~E2158",
         "a": "E2096",
         "b": "E2158",
@@ -391075,6 +393953,34 @@
         "questions": [
           "有押金的飲料罐照樣丟進新加坡藍色回收桶，那一角新幣會進到哪個帳戶？",
           "在新加坡用交通卡領走退罐款，回家打開 app，要找哪一行才知道這次真的入帳？"
+        ]
+      },
+      {
+        "id": "K121-0201~K121-0211",
+        "a": "K121-0201",
+        "b": "K121-0211",
+        "question_score": 0.063,
+        "answer_score": 0.026,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？"
+        ]
+      },
+      {
+        "id": "K121-0209~K121-0212",
+        "a": "K121-0209",
+        "b": "K121-0212",
+        "question_score": 0.036,
+        "answer_score": 0.063,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？",
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？"
         ]
       },
       {
@@ -391260,6 +394166,20 @@
         ]
       },
       {
+        "id": "K121-0209~K121-0211",
+        "a": "K121-0209",
+        "b": "K121-0211",
+        "question_score": 0.033,
+        "answer_score": 0.061,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？",
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？"
+        ]
+      },
+      {
         "id": "L054~V3027",
         "a": "L054",
         "b": "V3027",
@@ -391400,6 +394320,48 @@
         ]
       },
       {
+        "id": "K121-0202~K121-0215",
+        "a": "K121-0202",
+        "b": "K121-0215",
+        "question_score": 0.034,
+        "answer_score": 0.06,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
+        ]
+      },
+      {
+        "id": "K121-0206~K121-0218",
+        "a": "K121-0206",
+        "b": "K121-0218",
+        "question_score": 0,
+        "answer_score": 0.06,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
+        ]
+      },
+      {
+        "id": "K121-0215~K121-0218",
+        "a": "K121-0215",
+        "b": "K121-0218",
+        "question_score": 0,
+        "answer_score": 0.06,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
+        ]
+      },
+      {
         "id": "I3024~I3029",
         "a": "I3024",
         "b": "I3029",
@@ -391439,6 +394401,20 @@
         "questions": [
           "退罐前仔細找，為什麼有的罐子把圖案印在罐身，有的另貼一張帶小方碼的貼紙？",
           "香港早期智能回收試驗也會給一角，把新加坡汽水罐的算法直接套過去會漏掉什麼？"
+        ]
+      },
+      {
+        "id": "K121-0201~K121-0215",
+        "a": "K121-0201",
+        "b": "K121-0215",
+        "question_score": 0,
+        "answer_score": 0.059,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
         ]
       },
       {
@@ -391579,6 +394555,20 @@
         "questions": [
           "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？",
           "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
+        ]
+      },
+      {
+        "id": "K121-0201~K121-0206",
+        "a": "K121-0201",
+        "b": "K121-0206",
+        "question_score": 0.034,
+        "answer_score": 0.058,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？"
         ]
       },
       {
@@ -391792,6 +394782,20 @@
         ]
       },
       {
+        "id": "K121-0203~K121-0208",
+        "a": "K121-0203",
+        "b": "K121-0208",
+        "question_score": 0.057,
+        "answer_score": 0.046,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？"
+        ]
+      },
+      {
         "id": "L064~L067",
         "a": "L064",
         "b": "L067",
@@ -392002,6 +395006,20 @@
         ]
       },
       {
+        "id": "K121-0206~K121-0209",
+        "a": "K121-0206",
+        "b": "K121-0209",
+        "question_score": 0.036,
+        "answer_score": 0.056,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？",
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？"
+        ]
+      },
+      {
         "id": "L001~L017",
         "a": "L001",
         "b": "L017",
@@ -392111,6 +395129,34 @@
         "questions": [
           "退罐前仔細找，為什麼有的罐子把圖案印在罐身，有的另貼一張帶小方碼的貼紙？",
           "FairPrice 送到的罐裝飲料已壓壞，退商品和喝完退空罐，拿回的是同一筆錢嗎？"
+        ]
+      },
+      {
+        "id": "K121-0206~K121-0216",
+        "a": "K121-0206",
+        "b": "K121-0216",
+        "question_score": 0.033,
+        "answer_score": 0.055,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？",
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
+        ]
+      },
+      {
+        "id": "K121-0213~K121-0217",
+        "a": "K121-0213",
+        "b": "K121-0217",
+        "question_score": 0,
+        "answer_score": 0.055,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
         ]
       },
       {
@@ -392237,6 +395283,20 @@
         "questions": [
           "退罐機已吞下空罐，卻印了一張服務單，紙上列的金額算入帳了嗎？",
           "在愛爾蘭退兩只都有標記的飲料罐，剛好 500 毫升的和超過 500 毫升的可以拿回相同金額嗎？"
+        ]
+      },
+      {
+        "id": "K121-0201~K121-0212",
+        "a": "K121-0201",
+        "b": "K121-0212",
+        "question_score": 0,
+        "answer_score": 0.054,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？"
         ]
       },
       {
@@ -392419,6 +395479,34 @@
         "questions": [
           "退罐前仔細找，為什麼有的罐子把圖案印在罐身，有的另貼一張帶小方碼的貼紙？",
           "在愛爾蘭退兩只都有標記的飲料罐，剛好 500 毫升的和超過 500 毫升的可以拿回相同金額嗎？"
+        ]
+      },
+      {
+        "id": "K121-0204~K121-0212",
+        "a": "K121-0204",
+        "b": "K121-0212",
+        "question_score": 0,
+        "answer_score": 0.053,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？"
+        ]
+      },
+      {
+        "id": "K121-0208~K121-0211",
+        "a": "K121-0208",
+        "b": "K121-0211",
+        "question_score": 0.052,
+        "answer_score": 0.053,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？",
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？"
         ]
       },
       {
@@ -392660,6 +395748,20 @@
         ]
       },
       {
+        "id": "K121-0202~K121-0210",
+        "a": "K121-0202",
+        "b": "K121-0210",
+        "question_score": 0.035,
+        "answer_score": 0.052,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？"
+        ]
+      },
+      {
         "id": "A26001~A26002",
         "a": "A26001",
         "b": "A26002",
@@ -392783,6 +395885,34 @@
         "questions": [
           "鋁罐上條碼明明還能看，為什麼用手捏扁，退罐機反而可能把它推出來？",
           "香港早期智能回收試驗也會給一角，把新加坡汽水罐的算法直接套過去會漏掉什麼？"
+        ]
+      },
+      {
+        "id": "K121-0205~K121-0209",
+        "a": "K121-0205",
+        "b": "K121-0209",
+        "question_score": 0,
+        "answer_score": 0.051,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？",
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？"
+        ]
+      },
+      {
+        "id": "K121-0209~K121-0210",
+        "a": "K121-0209",
+        "b": "K121-0210",
+        "question_score": 0,
+        "answer_score": 0.051,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？",
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？"
         ]
       },
       {
@@ -393024,6 +396154,20 @@
         ]
       },
       {
+        "id": "K121-0205~K121-0212",
+        "a": "K121-0205",
+        "b": "K121-0212",
+        "question_score": 0,
+        "answer_score": 0.049,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？",
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？"
+        ]
+      },
+      {
         "id": "L085~L47-001",
         "a": "L085",
         "b": "L47-001",
@@ -393192,6 +396336,20 @@
         ]
       },
       {
+        "id": "K121-0209~K121-0218",
+        "a": "K121-0209",
+        "b": "K121-0218",
+        "question_score": 0,
+        "answer_score": 0.048,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
+        ]
+      },
+      {
         "id": "P53-001~P54-002",
         "a": "P53-001",
         "b": "P54-002",
@@ -393332,6 +396490,20 @@
         ]
       },
       {
+        "id": "K121-0206~K121-0208",
+        "a": "K121-0206",
+        "b": "K121-0208",
+        "question_score": 0,
+        "answer_score": 0.047,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？",
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？"
+        ]
+      },
+      {
         "id": "K6005~S60-005",
         "a": "K6005",
         "b": "S60-005",
@@ -393441,6 +396613,20 @@
         "questions": [
           "如果把人聲換成幾道沙沙聲，留住什麼才聽得出字？",
           "旁邊的人從英語改說聽不懂的外語，熟悉的聲音還有一樣大的優勢嗎？"
+        ]
+      },
+      {
+        "id": "K121-0203~K121-0215",
+        "a": "K121-0203",
+        "b": "K121-0215",
+        "question_score": 0.033,
+        "answer_score": 0.046,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
         ]
       },
       {
@@ -393609,6 +396795,20 @@
         "questions": [
           "進站和出站各有一個時間，研究人員為什麼還算不出你搭了哪一班車？",
           "只想回美麗島取行李，沒要搭車，為什麼還得先弄清楚用的是哪一排櫃子？"
+        ]
+      },
+      {
+        "id": "K121-0213~K121-0216",
+        "a": "K121-0213",
+        "b": "K121-0216",
+        "question_score": 0.031,
+        "answer_score": 0.045,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？",
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
         ]
       },
       {
@@ -393990,6 +397190,20 @@
         ]
       },
       {
+        "id": "K121-0209~K121-0216",
+        "a": "K121-0209",
+        "b": "K121-0216",
+        "question_score": 0.037,
+        "answer_score": 0.043,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？",
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
+        ]
+      },
+      {
         "id": "P020~P138",
         "a": "P020",
         "b": "P138",
@@ -394197,6 +397411,34 @@
         "questions": [
           "退罐口要你保住圓罐，為什麼同一款機器肚子裡偏偏有壓縮機？",
           "退罐機已吞下空罐，卻印了一張服務單，紙上列的金額算入帳了嗎？"
+        ]
+      },
+      {
+        "id": "K121-0202~K121-0216",
+        "a": "K121-0202",
+        "b": "K121-0216",
+        "question_score": 0,
+        "answer_score": 0.042,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
+        ]
+      },
+      {
+        "id": "K121-0211~K121-0214",
+        "a": "K121-0211",
+        "b": "K121-0214",
+        "question_score": 0.03,
+        "answer_score": 0.042,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？",
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
         ]
       },
       {
@@ -394732,6 +397974,20 @@
         ]
       },
       {
+        "id": "K121-0202~K121-0209",
+        "a": "K121-0202",
+        "b": "K121-0209",
+        "question_score": 0.039,
+        "answer_score": 0.022,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？"
+        ]
+      },
+      {
         "id": "R40006~R40007",
         "a": "R40006",
         "b": "R40007",
@@ -394939,6 +398195,48 @@
         "questions": [
           "為什麼 2026 年夏天在新加坡買兩罐同款汽水，可以只替其中一罐付押金？",
           "用手機領退罐押金時，到底是你去掃機器，還是機器來掃你的手機？"
+        ]
+      },
+      {
+        "id": "K121-0207~K121-0209",
+        "a": "K121-0207",
+        "b": "K121-0209",
+        "question_score": 0.038,
+        "answer_score": 0.032,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？",
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？"
+        ]
+      },
+      {
+        "id": "K121-0216~K121-0218",
+        "a": "K121-0216",
+        "b": "K121-0218",
+        "question_score": 0.038,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
+        ]
+      },
+      {
+        "id": "K121-0217~K121-0218",
+        "a": "K121-0217",
+        "b": "K121-0218",
+        "question_score": 0.038,
+        "answer_score": 0.033,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
         ]
       },
       {
@@ -395236,6 +398534,20 @@
         ]
       },
       {
+        "id": "K121-0205~K121-0217",
+        "a": "K121-0205",
+        "b": "K121-0217",
+        "question_score": 0,
+        "answer_score": 0.036,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
+        ]
+      },
+      {
         "id": "L76-005~L76-006",
         "a": "L76-005",
         "b": "L76-006",
@@ -395516,6 +398828,62 @@
         ]
       },
       {
+        "id": "K121-0203~K121-0217",
+        "a": "K121-0203",
+        "b": "K121-0217",
+        "question_score": 0.034,
+        "answer_score": 0.013,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
+        ]
+      },
+      {
+        "id": "K121-0207~K121-0216",
+        "a": "K121-0207",
+        "b": "K121-0216",
+        "question_score": 0.034,
+        "answer_score": 0.013,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？",
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
+        ]
+      },
+      {
+        "id": "K121-0212~K121-0213",
+        "a": "K121-0212",
+        "b": "K121-0213",
+        "question_score": 0.03,
+        "answer_score": 0.034,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？",
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？"
+        ]
+      },
+      {
+        "id": "K121-0212~K121-0218",
+        "a": "K121-0212",
+        "b": "K121-0218",
+        "question_score": 0,
+        "answer_score": 0.034,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？",
+          "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
+        ]
+      },
+      {
         "id": "K116-0202~K116-0216",
         "a": "K116-0202",
         "b": "K116-0216",
@@ -395597,6 +398965,90 @@
         "questions": [
           "同樣有押金標記的飲料罐，為什麼在參加新加坡內用回收方案的店裡，帳單可以不向客人收那一角？",
           "用手機領退罐押金時，到底是你去掃機器，還是機器來掃你的手機？"
+        ]
+      },
+      {
+        "id": "K121-0201~K121-0209",
+        "a": "K121-0201",
+        "b": "K121-0209",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？"
+        ]
+      },
+      {
+        "id": "K121-0203~K121-0212",
+        "a": "K121-0203",
+        "b": "K121-0212",
+        "question_score": 0.033,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？"
+        ]
+      },
+      {
+        "id": "K121-0206~K121-0217",
+        "a": "K121-0206",
+        "b": "K121-0217",
+        "question_score": 0.033,
+        "answer_score": 0.026,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
+        ]
+      },
+      {
+        "id": "K121-0210~K121-0217",
+        "a": "K121-0210",
+        "b": "K121-0217",
+        "question_score": 0.033,
+        "answer_score": 0.012,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
+        ]
+      },
+      {
+        "id": "K121-0212~K121-0214",
+        "a": "K121-0212",
+        "b": "K121-0214",
+        "question_score": 0.032,
+        "answer_score": 0.033,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？",
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
+        ]
+      },
+      {
+        "id": "K121-0212~K121-0215",
+        "a": "K121-0212",
+        "b": "K121-0215",
+        "question_score": 0.031,
+        "answer_score": 0.033,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？",
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
         ]
       },
       {
@@ -395709,6 +399161,34 @@
         "questions": [
           "用手機領退罐押金時，到底是你去掃機器，還是機器來掃你的手機？",
           "香港早期智能回收試驗也會給一角，把新加坡汽水罐的算法直接套過去會漏掉什麼？"
+        ]
+      },
+      {
+        "id": "K121-0206~K121-0212",
+        "a": "K121-0206",
+        "b": "K121-0212",
+        "question_score": 0.032,
+        "answer_score": 0.014,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？",
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？"
+        ]
+      },
+      {
+        "id": "K121-0206~K121-0215",
+        "a": "K121-0206",
+        "b": "K121-0215",
+        "question_score": 0.032,
+        "answer_score": 0.012,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？",
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
         ]
       },
       {
@@ -395936,6 +399416,34 @@
         ]
       },
       {
+        "id": "K121-0204~K121-0217",
+        "a": "K121-0204",
+        "b": "K121-0217",
+        "question_score": 0.03,
+        "answer_score": 0.026,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
+        ]
+      },
+      {
+        "id": "K121-0211~K121-0216",
+        "a": "K121-0211",
+        "b": "K121-0216",
+        "question_score": 0.03,
+        "answer_score": 0.024,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？",
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
+        ]
+      },
+      {
         "id": "K100-012~P099",
         "a": "P099",
         "b": "K100-012",
@@ -395989,6 +399497,48 @@
         "questions": [
           "FairPrice 的收據另列總押金，換一家店時能只憑飲料那張稅務收據找出押金嗎？",
           "在愛爾蘭退兩只都有標記的飲料罐，剛好 500 毫升的和超過 500 毫升的可以拿回相同金額嗎？"
+        ]
+      },
+      {
+        "id": "K121-0202~K121-0206",
+        "a": "K121-0202",
+        "b": "K121-0206",
+        "question_score": 0,
+        "answer_score": 0.029,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？"
+        ]
+      },
+      {
+        "id": "K121-0204~K121-0206",
+        "a": "K121-0204",
+        "b": "K121-0206",
+        "question_score": 0,
+        "answer_score": 0.029,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？"
+        ]
+      },
+      {
+        "id": "K121-0209~K121-0213",
+        "a": "K121-0209",
+        "b": "K121-0213",
+        "question_score": 0,
+        "answer_score": 0.029,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？",
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？"
         ]
       },
       {
@@ -396118,6 +399668,34 @@
         ]
       },
       {
+        "id": "K121-0206~K121-0207",
+        "a": "K121-0206",
+        "b": "K121-0207",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？",
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？"
+        ]
+      },
+      {
+        "id": "K121-0208~K121-0216",
+        "a": "K121-0208",
+        "b": "K121-0216",
+        "question_score": 0.028,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？",
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
+        ]
+      },
+      {
         "id": "R36008~R36009",
         "a": "R36008",
         "b": "R36009",
@@ -396230,6 +399808,20 @@
         ]
       },
       {
+        "id": "K121-0206~K121-0211",
+        "a": "K121-0206",
+        "b": "K121-0211",
+        "question_score": 0,
+        "answer_score": 0.026,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？",
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？"
+        ]
+      },
+      {
         "id": "K99-019~P102",
         "a": "P102",
         "b": "K99-019",
@@ -396339,6 +399931,20 @@
         "questions": [
           "退罐口要你保住圓罐，為什麼同一款機器肚子裡偏偏有壓縮機？",
           "同樣有押金標記的飲料罐，為什麼在參加新加坡內用回收方案的店裡，帳單可以不向客人收那一角？"
+        ]
+      },
+      {
+        "id": "K121-0203~K121-0211",
+        "a": "K121-0203",
+        "b": "K121-0211",
+        "question_score": 0,
+        "answer_score": 0.025,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？"
         ]
       },
       {
@@ -396664,6 +400270,20 @@
         ]
       },
       {
+        "id": "K121-0208~K121-0217",
+        "a": "K121-0208",
+        "b": "K121-0217",
+        "question_score": 0,
+        "answer_score": 0.022,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "買家看見 1200W 的 EH-NA0J 和另一台標 1400W，就能說後者在台灣的出風量一定比較大嗎？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
+        ]
+      },
+      {
         "id": "K120-0206~K120-0216",
         "a": "K120-0206",
         "b": "K120-0216",
@@ -396675,6 +400295,20 @@
         "questions": [
           "退罐前仔細找，為什麼有的罐子把圖案印在罐身，有的另貼一張帶小方碼的貼紙？",
           "香港早期智能回收試驗的回贈，有多少是進了八達通，又有多少是捐出去的？"
+        ]
+      },
+      {
+        "id": "K121-0214~K121-0217",
+        "a": "K121-0214",
+        "b": "K121-0217",
+        "question_score": 0,
+        "answer_score": 0.021,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
         ]
       },
       {
@@ -396745,6 +400379,20 @@
         "questions": [
           "還沒喝到蜜，天蛾怎麼會先把喙伸進比較潮濕的花？",
           "昨天喝過的糖水多一點咖啡因，為什麼蜜蜂隔天只聞花香就更常伸喙？"
+        ]
+      },
+      {
+        "id": "K121-0209~K121-0215",
+        "a": "K121-0209",
+        "b": "K121-0215",
+        "question_score": 0,
+        "answer_score": 0.019,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？",
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
         ]
       },
       {
@@ -397028,6 +400676,48 @@
         ]
       },
       {
+        "id": "K121-0201~K121-0216",
+        "a": "K121-0201",
+        "b": "K121-0216",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
+        ]
+      },
+      {
+        "id": "K121-0202~K121-0212",
+        "a": "K121-0202",
+        "b": "K121-0212",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？"
+        ]
+      },
+      {
+        "id": "K121-0204~K121-0216",
+        "a": "K121-0204",
+        "b": "K121-0216",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
+        ]
+      },
+      {
         "id": "L287~T54-011",
         "a": "L287",
         "b": "T54-011",
@@ -397207,6 +400897,62 @@
         "questions": [
           "FairPrice 的收據另列總押金，換一家店時能只憑飲料那張稅務收據找出押金嗎？",
           "退罐口要你保住圓罐，為什麼同一款機器肚子裡偏偏有壓縮機？"
+        ]
+      },
+      {
+        "id": "K121-0201~K121-0217",
+        "a": "K121-0201",
+        "b": "K121-0217",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在大阪插座旁記下 60 赫茲，回台灣家裡也是 60 赫茲，購物清單還漏了什麼？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
+        ]
+      },
+      {
+        "id": "K121-0202~K121-0217",
+        "a": "K121-0202",
+        "b": "K121-0217",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館資料說台灣用 110 伏特，為什麼還得問這件電器打算接哪一種插座？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
+        ]
+      },
+      {
+        "id": "K121-0206~K121-0210",
+        "a": "K121-0206",
+        "b": "K121-0210",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？",
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？"
+        ]
+      },
+      {
+        "id": "K121-0207~K121-0217",
+        "a": "K121-0207",
+        "b": "K121-0217",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
         ]
       },
       {
@@ -397434,6 +401180,34 @@
         ]
       },
       {
+        "id": "K121-0206~K121-0213",
+        "a": "K121-0206",
+        "b": "K121-0213",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？",
+          "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？"
+        ]
+      },
+      {
+        "id": "K121-0210~K121-0216",
+        "a": "K121-0210",
+        "b": "K121-0216",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？",
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
+        ]
+      },
+      {
         "id": "P64-025~P64-028",
         "a": "P64-025",
         "b": "P64-028",
@@ -397602,6 +401376,20 @@
         ]
       },
       {
+        "id": "K121-0215~K121-0217",
+        "a": "K121-0215",
+        "b": "K121-0217",
+        "question_score": 0,
+        "answer_score": 0.011,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
+        ]
+      },
+      {
         "id": "K120-0207~K120-0218",
         "a": "K120-0207",
         "b": "K120-0218",
@@ -397613,6 +401401,20 @@
         "questions": [
           "鋁罐上條碼明明還能看，為什麼用手捏扁，退罐機反而可能把它推出來？",
           "四入組先付了四角押金，機器只確認收進三罐，這次卡裡應該會出現多少？"
+        ]
+      },
+      {
+        "id": "K121-0209~K121-0217",
+        "a": "K121-0209",
+        "b": "K121-0217",
+        "question_score": 0,
+        "answer_score": 0.01,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
         ]
       },
       {
@@ -398635,6 +402437,62 @@
         "questions": [
           "在新加坡用交通卡領走退罐款，回家打開 app，要找哪一行才知道這次真的入帳？",
           "在愛爾蘭退兩只都有標記的飲料罐，剛好 500 毫升的和超過 500 毫升的可以拿回相同金額嗎？"
+        ]
+      },
+      {
+        "id": "K121-0205~K121-0216",
+        "a": "K121-0205",
+        "b": "K121-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？",
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
+        ]
+      },
+      {
+        "id": "K121-0211~K121-0217",
+        "a": "K121-0211",
+        "b": "K121-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
+        ]
+      },
+      {
+        "id": "K121-0212~K121-0216",
+        "a": "K121-0212",
+        "b": "K121-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？",
+          "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
+        ]
+      },
+      {
+        "id": "K121-0212~K121-0217",
+        "a": "K121-0212",
+        "b": "K121-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？",
+          "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
         ]
       },
       {
@@ -400112,10 +403970,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-19-pool-7288",
-    "target_count": 7288,
+    "revision": "2026-11-19-pool-7324",
+    "target_count": 7324,
     "reviewed_on": "2026-11-19",
-    "reason": "第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -407404,7 +411262,43 @@
       "K120-0215",
       "K120-0216",
       "K120-0217",
-      "K120-0218"
+      "K120-0218",
+      "K121-0001",
+      "K121-0002",
+      "K121-0003",
+      "K121-0004",
+      "K121-0005",
+      "K121-0006",
+      "K121-0007",
+      "K121-0008",
+      "K121-0009",
+      "K121-0010",
+      "K121-0011",
+      "K121-0012",
+      "K121-0401",
+      "K121-0402",
+      "K121-0403",
+      "K121-0404",
+      "K121-0405",
+      "K121-0406",
+      "K121-0201",
+      "K121-0202",
+      "K121-0203",
+      "K121-0204",
+      "K121-0205",
+      "K121-0206",
+      "K121-0207",
+      "K121-0208",
+      "K121-0209",
+      "K121-0210",
+      "K121-0211",
+      "K121-0212",
+      "K121-0213",
+      "K121-0214",
+      "K121-0215",
+      "K121-0216",
+      "K121-0217",
+      "K121-0218"
     ],
     "overflow": [
       {
@@ -410263,6 +414157,66 @@
       ],
       "origin": "wave120-maps-20261119",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave120-maps-20261119.json"
+    },
+    {
+      "id": "X121E-NA001",
+      "question": "樂高光滑平磚的頂面沒有凸點，拆磚器為什麼能掉轉一端從邊緣翹起？",
+      "reason": "查到 K117-0010 已用光滑平磚及拆磚器另一頭解釋，這一輪不再換色重收。",
+      "existing_ids": [
+        "K117-0010"
+      ],
+      "origin": "wave121-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json"
+    },
+    {
+      "id": "X121E-NA002",
+      "question": "硬幣人像還沒壓上，為什麼幣坯上已經有一圈凸邊？",
+      "reason": "本輪閱讀美國鑄幣局製程時，發現凸邊加工和 K119-0008 相同，另收精製幣壓印次數的問題。",
+      "existing_ids": [
+        "K119-0008"
+      ],
+      "origin": "wave121-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json"
+    },
+    {
+      "id": "X121E-NA003",
+      "question": "拍立得出片後上邊有一塊褐色缺口，是不是鏡頭把那裡拍暗了？",
+      "reason": "K120-0006 已用未被顯影膏鋪滿的上緣區域解釋，本批近拍題只談取景窗的視差。",
+      "existing_ids": [
+        "K120-0006"
+      ],
+      "origin": "wave121-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave121-everyday-20261119.json"
+    },
+    {
+      "id": "X121M-NA01",
+      "question": "貝多芬《英雄》樂譜的題頁，拿破崙的名字怎麼留下刮掉的痕跡？",
+      "reason": "奇聞 N7926 已用譜本、作曲家通信與初版題獻追查這個刮痕。",
+      "existing_ids": [
+        "N7926"
+      ],
+      "origin": "wave121-music-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave121-music-20261119.json"
+    },
+    {
+      "id": "X121D-NA01",
+      "question": "日本東西電網為什麼分成 50Hz 和 60Hz？",
+      "reason": "比對時找到原來如此長題 G723 及 K106-0701 已追查購置設備與兩網形成。本批只讀指定機型的雙頻規格。",
+      "existing_ids": [
+        "K106-0701"
+      ],
+      "origin": "wave121-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
+    },
+    {
+      "id": "X121D-NA02",
+      "question": "各國真有試過把出國要帶的插頭統一嗎？",
+      "reason": "奇聞 N7303 已收國際標準與南非採用過程，本批只談眼前配件能改變哪個條件。",
+      "existing_ids": [
+        "N7303"
+      ],
+      "origin": "wave121-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave121-research-20261119.json"
     },
     {
       "question": "只看恆星晃動，怎麼找看不見的行星？",
