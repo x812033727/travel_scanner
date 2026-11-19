@@ -1,13 +1,13 @@
 ---
 id: 2026-11-19-heimao-series-start-with-no-intro
 title: Heimao-style series start with no intro (sothatswhy, curio, story)
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-elegant-hypatia
 claimed_at: 2026-11-19T01:18:43Z
 created_at: 2026-11-19T01:10:00Z
-completed_at:
+completed_at: 2026-11-19T01:41:34Z
 branch: claude/elegant-hypatia-07i3yx
 depends_on: []
 scope:

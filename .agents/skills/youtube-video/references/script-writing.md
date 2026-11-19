@@ -179,7 +179,7 @@
 2026-11-05 站主再往前一步：**整集照黑猫研究院的十步架構**，取代五步開場與上面 30–60 秒的開場濃縮（只限這兩個系列；其他旁白影片照舊）。
 依據是 Seiko、HDMI、寶可夢起點、Casio 四支的時間軸（鉤子 26–49 秒、「今天我們就來聊聊」落在 0:43–1:06、承諾句之後立刻從時代講起）。
 它們的開場只講**終點多大 × 起點多小**，加一兩個高潮標籤，**不講過程、不先濃縮劇情**；先把 A→B→C→結局講一遍，觀眾就沒有理由等。
-**2026-11-19 站主再定三件事，三個系列（奇聞、品牌故事、原來如此）都適用**：①新寫的原來如此也照這十步（對白版的角色分工見 `docs/videos/so-thats-why/dialogue-pilot-20261103/README.md` §黑猫十步・對白版）；②**不放片頭**，`0:00` 就是第一句，工具預設 `intro_at: "none"`（`core/branding.mjs` `noIntroSeries`），只接片尾；③開場鉤子**只問一個問題，禁疊「問題菜單」**（`narrative.mjs` `questionMenuProblems`）。起因是原來如此 QR Code 那集前 15 秒流失約四成，正好是 11.9 秒片頭的位置。
+**2026-11-19 站主再定三件事，三個系列（奇聞、品牌故事、原來如此）都適用**：①新寫的原來如此也照這十步（對白版的角色分工見 `docs/videos/so-thats-why/dialogue-pilot-20261103/README.md` §黑猫十步・對白版）；②**不放片頭**，`0:00` 就是第一句，工具預設 `intro_at: "none"`（`core/branding.mjs` `noIntroSeries`），只接片尾；③開場鉤子**只問一個問題，禁疊「問題菜單」**（`narrative.mjs` `questionMenuProblems`）；④**開頭 15 秒要接上縮圖或標題**說的那件事（`thumbnailEchoProblems`），不先鋪一段無關的場景。起因是原來如此 QR Code 那集前 15 秒流失約四成，正好是 11.9 秒片頭的位置。
 撰稿提示是 `register.mjs` 的 `STORY_OPENING_RULE`（原來如此由 `explainer-series.mjs` 一併帶入），盲評題目是 `narrative.mjs` 的 `STORY_SERIES_PANEL_QUESTIONS`，lint 用 `STORY_OPENING_CHAPTER_SECONDS` 量第一章。
 
 | 步 | 名稱 | 怎麼寫 | 約占片長 |

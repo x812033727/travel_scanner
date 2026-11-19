@@ -704,3 +704,22 @@ test("the opening hook of curio-, story- and sothatswhy- asks one question, neve
   assert.deepEqual(questionMenuProblems(later, estimateTimeline(later)), [], "questions past the opening are the chapters' loops");
   assert.deepEqual(questionMenuProblems({ ...structuredClone(menu), slug: "daily-ai-20261119" }, estimateTimeline(menu)), [], "other series are untouched");
 });
+
+import { thumbnailEchoProblems } from "./narrative.mjs";
+
+test("the first 15 s of curio-, story- and sothatswhy- echo the thumbnail or the title (owner 2026-11-19)", () => {
+  const doc = stretched();
+  doc.slug = "curio-s27";
+  doc.thumbnail = { template: "thumb", data: { headline: "維京盔\n**沒有角**" } };
+  doc.youtube = { ...doc.youtube, title: "維京人的頭盔，為什麼沒有角？｜奇聞檔案局" };
+  doc.scenes[0].lines[0].text = "一九四三年春天，挪威林厄里克，一個農家兒子替父母蓋房子。";
+  const [warning] = thumbnailEchoProblems(doc, estimateTimeline(doc));
+  assert.equal(warning.path, "scenes[0]");
+  assert.match(warning.message, /barely echo the thumbnail or the title/);
+  assert.match(warning.message, /「維京盔 沒有角」 0\/4/);
+
+  const echoed = structuredClone(doc);
+  echoed.scenes[0].lines[0].text = "你印象中的維京人，頭盔上是不是有兩隻角？";
+  assert.deepEqual(thumbnailEchoProblems(echoed, estimateTimeline(echoed)), [], "the thumbnail's subject in the first line");
+  assert.deepEqual(thumbnailEchoProblems({ ...structuredClone(doc), slug: "daily-ai-20261119" }, estimateTimeline(doc)), [], "other series are untouched");
+});

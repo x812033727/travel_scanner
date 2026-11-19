@@ -6,7 +6,7 @@
 // check to stop them: the rules lived in look.md and in one agent's notes. These are that check, so
 // whichever model makes an episode, a slug that starts with "curio-" keeps the series look.
 import { isShot, resolveLook } from "./drama.mjs";
-import { isOpeningHookSeries, questionMenuProblems } from "./narrative.mjs";
+import { isOpeningHookSeries, questionMenuProblems, thumbnailEchoProblems } from "./narrative.mjs";
 import { estimateTimeline } from "./timeline.mjs";
 
 /** The series' look preset (drama.mjs PRESETS): the style sentence is written once, there. */
@@ -71,9 +71,11 @@ export function genericPropWarnings(doc) {
  * and the re-approval they cost.
  */
 export function pacingWarnings(doc) {
-  // The opening hook asks one question, never a menu (owner 2026-11-19); read here because lint.mjs
+  // The opening hook asks one question, never a menu, and echoes the thumbnail (owner 2026-11-19); read here because lint.mjs
   // is bound by the duration review (long-form/review.mjs REVIEW_FILES).
-  const menu = isOpeningHookSeries(doc) && Array.isArray(doc?.scenes) && doc.scenes.every((scene) => Array.isArray(scene.lines)) ? questionMenuProblems(doc, estimateTimeline(doc)) : [];
+  const readable = isOpeningHookSeries(doc) && Array.isArray(doc?.scenes) && doc.scenes.every((scene) => Array.isArray(scene.lines));
+  const timeline = readable ? estimateTimeline(doc) : null;
+  const menu = readable ? [...questionMenuProblems(doc, timeline), ...thumbnailEchoProblems(doc, timeline)] : [];
   if (doc?.format !== "drama") return menu;
   if (!isPacedSeries(doc)) return [...menu, ...genericPropWarnings(doc)];
   const warnings = [...menu];

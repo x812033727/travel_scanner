@@ -1,13 +1,13 @@
 ---
 id: 2026-11-19-sothatswhy-heimao-ten-steps-prompts
 title: Writer prompts - sothatswhy follows the Heimao ten steps; no intro; one-question hook
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-elegant-hypatia
 claimed_at: 2026-11-19T01:23:29Z
 created_at: 2026-11-19T02:00:00Z
-completed_at:
+completed_at: 2026-11-19T01:41:35Z
 branch: claude/elegant-hypatia-07i3yx
 depends_on: []
 scope:
@@ -30,10 +30,10 @@ prompts still say "the channel intro plays after it" (奇聞, 原來如此) and 
 
 ## Definition of done
 
-- [ ] STORY_OPENING_RULE: no intro bumper; the hook asks ONE question, never a menu.
-- [ ] 奇聞 profile: no intro in its shape and its tool-added-clips line.
-- [ ] 原來如此 profile: shape and bible follow the ten steps (hook + promise 40–60 s, no condensation, no intro).
-- [ ] SERIES_TEXT_PINS refreshed; script-writing.md and the sothatswhy template name the ten steps.
+- [x] STORY_OPENING_RULE: no intro bumper; the hook asks ONE question, never a menu.
+- [x] 奇聞 profile: no intro in its shape and its tool-added-clips line.
+- [x] 原來如此 profile: shape and bible follow the ten steps (hook + promise 40–60 s, no condensation, no intro).
+- [x] SERIES_TEXT_PINS refreshed; script-writing.md and the sothatswhy template name the ten steps.
 
 ## How to verify
 

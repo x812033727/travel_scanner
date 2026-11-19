@@ -9,6 +9,7 @@
 之前的教訓：`.agents/skills/curio-episode/references/w03-lessons.md`。
 
 ## 2026-11-19 · 站主定：開場鉤子禁疊「問題菜單」、開頭不放片頭
+- **開頭 15 秒接上縮圖**：觀眾是看了縮圖和標題才點進來的，開頭 15 秒沒聽到那件事，就會以為點錯（原來如此 QR Code 那集前 15 秒流失約四成）。lint：`narrative.mjs` `thumbnailEchoProblems`。現有 91 集裡有 38 集被抓到，例如 curio-s27 縮圖寫「維京盔沒有角」，開頭卻在講挪威農家挖地。
 - **開場只問一個問題**：鉤子是一個問句或觀眾熟悉的情境，接反差與承諾句；不准連丟三個以上問題把這集排成菜單（其他問題變成後面章節的 `loops`）。lint：`narrative.mjs` `questionMenuProblems`（`curio-`、`story-`、`sothatswhy-`），開場（第一章、最多 90 秒）扣掉承諾句的問句超過 2 句即警告。
 - **開頭不放片頭，第一句直接開始**：新集不再先播頻道片頭，`0:00` 就是鉤子；片尾照舊。工具已預設 `intro_at: "none"`（`core/branding.mjs` `noIntroSeries`），已 pin 的舊片不動。
 

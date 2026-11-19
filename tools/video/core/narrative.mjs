@@ -398,6 +398,51 @@ export function questionMenuProblems(doc, timeline, { series = null } = {}) {
   }];
 }
 
+/**
+ * The first seconds keep the thumbnail's promise (owner, 2026-11-19, after So That's Why's QR Code
+ * episode lost about 40% of its viewers in its first 15 s): a viewer who clicked a picture and a
+ * headline has to hear that headline's subject at once, or they think they clicked the wrong video.
+ * Read as overlap: the thumbnail headline's (or else the title's) two-character terms and Latin
+ * words against what is said in the first FIRST_SECONDS_WINDOW seconds.
+ */
+export const FIRST_SECONDS_WINDOW = 15;
+export const THUMBNAIL_ECHO_MIN = 0.3;
+/** Or this many of its terms, whatever the share: a long title is echoed by its subject alone. */
+export const THUMBNAIL_ECHO_TERMS = 3;
+const SERIES_SUFFIX = /[｜|].*$/;
+function promiseTerms(text) {
+  const clean = String(text ?? "").replace(SERIES_SUFFIX, "").replace(/\*\*/g, "").replace(/\\n|\n/g, " ");
+  const latin = (clean.match(/[A-Za-z0-9]{2,}/g) ?? []).map((word) => word.toLowerCase());
+  const han = clean.replace(/[^\p{Script=Han}]+/gu, " ").trim().split(/\s+/).filter(Boolean);
+  const pairs = han.flatMap((run) => Array.from({ length: Math.max(run.length - 1, 0) }, (_, i) => run.slice(i, i + 2)));
+  return [...new Set([...latin, ...pairs])];
+}
+
+export function thumbnailEchoProblems(doc, timeline, { series = null } = {}) {
+  if (!isOpeningHookSeries(doc, series) || !timeline) return [];
+  const promises = [doc.thumbnail?.data?.headline, doc.youtube?.title].filter((text) => promiseTerms(text).length >= 2);
+  if (!promises.length) return [];
+  const starts = lineStarts(timeline);
+  const opening = [];
+  for (const { line } of eachLine(doc)) {
+    const frame = starts.get(line.id);
+    if (frame !== undefined && frameToSeconds(frame) < FIRST_SECONDS_WINDOW) opening.push(String(line.text ?? ""));
+  }
+  const said = opening.join(" ").toLowerCase();
+  if (!said) return [];
+  // Either the thumbnail's headline or the title is enough: a headline is often a feeling (「他反而高興」)
+  // whose subject the title names.
+  const echoes = promises.map((text) => {
+    const terms = promiseTerms(text);
+    return { text: String(text).replace(SERIES_SUFFIX, "").replace(/\*\*/g, "").replace(/\n/g, " "), heard: terms.filter((term) => said.includes(term)).length, of: terms.length };
+  });
+  if (echoes.some(({ heard, of }) => heard >= THUMBNAIL_ECHO_TERMS || heard / of >= THUMBNAIL_ECHO_MIN)) return [];
+  return [{
+    path: "scenes[0]",
+    message: `the first ${FIRST_SECONDS_WINDOW} s barely echo the thumbnail or the title (${echoes.map(({ text, heard, of }) => `「${text}」 ${heard}/${of}`).join(", ")} terms said): a viewer who clicked them hears their subject in the first line, over the thumbnail's picture, or thinks they clicked the wrong video (owner 2026-11-19)`,
+  }];
+}
+
 /** Every storytelling problem of a narrated script, tagged "narrative" so the worker can hand the warnings to the writer. */
 export function narrativeProblems(doc, timeline, { minutes, cadence = DEFAULT_CADENCE } = {}) {
   const tag = (problems) => problems.map((problem) => ({ ...problem, kind: "narrative" }));

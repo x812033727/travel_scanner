@@ -1,13 +1,13 @@
 ---
 id: 2026-11-19-opening-hook-bans-a-question-menu
 title: Opening hook bans a question menu (curio, story, sothatswhy)
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-elegant-hypatia
 claimed_at: 2026-11-19T00:58:25Z
 created_at: 2026-11-19T00:57:58Z
-completed_at:
+completed_at: 2026-11-19T01:41:33Z
 branch: claude/elegant-hypatia-07i3yx
 depends_on: []
 scope:
@@ -35,6 +35,11 @@ sothatswhy template (dialogue-pilot README) and to change the tools.
 - [x] lint warns (kind "narrative") when a curio-, story- or sothatswhy- script asks more than two
       questions in its opening (first chapter, at most 90 s; first 60 s without chapters).
 - [x] The rule is written in the sothatswhy template, lessons (curio, sothatswhy) and script-writing.md.
+
+- [x] lint warns when the first 15 s echo neither the thumbnail headline nor the title
+      (`thumbnailEchoProblems`: at least 3 of their two-character terms or 30% of them). On the 91
+      committed curio-/story-/sothatswhy- episodes it flags 38, e.g. curio-s27 (thumbnail 維京盔沒有角,
+      first 15 s about a Norwegian farmer) and sothatswhy-p02 (laundry chat before the cloud).
 
 ## How to verify
 
