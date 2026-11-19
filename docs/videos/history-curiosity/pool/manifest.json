@@ -1,63 +1,63 @@
 {
   "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
-  "revision": "2026-11-18-curio-pool-1778",
+  "revision": "2026-11-19-curio-1793",
   "counts": {
-    "raw_records": 2621,
-    "canonical_cores": 2602,
+    "raw_records": 2679,
+    "canonical_cores": 2660,
     "alias_records": 19,
     "produced_cores": 48,
-    "selected_candidates": 1778,
-    "held_candidates": 238,
-    "reserve_candidates": 175,
+    "selected_candidates": 1793,
+    "held_candidates": 279,
+    "reserve_candidates": 167,
     "shorts_candidates": 89,
-    "excluded_cores": 274,
-    "new_batch_records": 2290,
-    "source_urls": 15127,
-    "current_research_source_urls": 10305,
-    "selected_source_urls": 12316,
-    "new_suggestions_not_added": 3285,
+    "excluded_cores": 284,
+    "new_batch_records": 2348,
+    "source_urls": 15413,
+    "current_research_source_urls": 10591,
+    "selected_source_urls": 12377,
+    "new_suggestions_not_added": 3307,
     "high_similarity_pending": 0,
     "cross_series_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "H-歷史懸案": {
-        "canonical": 314,
-        "selected": 245,
+        "canonical": 330,
+        "selected": 250,
         "produced": 1
       },
       "S-歷史人物與名場面": {
-        "canonical": 412,
-        "selected": 236,
+        "canonical": 426,
+        "selected": 239,
         "produced": 28
       },
       "M-奇異現象與自然": {
-        "canonical": 309,
-        "selected": 207,
+        "canonical": 314,
+        "selected": 209,
         "produced": 0
       },
       "F-童話神話與怪談原版": {
-        "canonical": 261,
-        "selected": 196,
+        "canonical": 264,
+        "selected": 197,
         "produced": 0
       },
       "L-都市傳說與消失地名": {
-        "canonical": 304,
-        "selected": 201,
+        "canonical": 308,
+        "selected": 202,
         "produced": 0
       },
       "G-靈異與超自然公案": {
-        "canonical": 284,
-        "selected": 205,
+        "canonical": 288,
+        "selected": 206,
         "produced": 0
       },
       "P-預言與末日": {
-        "canonical": 276,
+        "canonical": 282,
         "selected": 200,
         "produced": 0
       },
       "U-外星太空與未知訊號": {
-        "canonical": 292,
-        "selected": 201,
+        "canonical": 298,
+        "selected": 203,
         "produced": 0
       },
       "W-商業與品牌奇聞": {
@@ -1267,7 +1267,15 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave83-20261118.json",
-      "sha256": "a9cc5a079121a25b12bd7499f6c0a96fe4644adc8e5aec0156b5b52919cc92f6"
+      "sha256": "1c95d0b13574727e9d15b6046b19d5bc50d61380a26f2273a6e861855d123d1e"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave84-20261118.json",
+      "sha256": "f99eff28aa07f68f0b7c0dbf052bd68ad66b8e96b2c6a3a42ac0cfbb51d586d9"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave85-20261119.json",
+      "sha256": "1ca99552c6f5d8a637f76c8e2e003bae41be47f1255ac99a5518e8e219a7a2fc"
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave9-20261102.json",
@@ -1679,11 +1687,11 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/dedup-decisions.json",
-      "sha256": "afa45b2a369cedec79349e5e91fa7ce6e5f9506cb6b848048c26853000ce5684"
+      "sha256": "e39b2cd19278c647756764085aa56fff6b9bef9cf425558582817f52d5e80e9b"
     },
     {
       "file": "docs/videos/history-curiosity/pool/selection.json",
-      "sha256": "36b5f333615a001c1fed20d8bd97dee14d83ece95f200809d9746d1ccce4fb57"
+      "sha256": "d268b5ca6106cf55214877ab8d173151b3b202f2031bfd4f5c9f5022b01eb938"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/audience-20261114-r2.json",
@@ -1834,6 +1842,14 @@
       "sha256": "0a93b8e19dd979584d8ec64124fa87007cce93fa0754e44d65cef935712ff230"
     },
     {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261118-wave84.json",
+      "sha256": "efca7e6ca2011f9deb89466269a2c845019e2afadb73f4551a5d38ace3c8490e"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave85.json",
+      "sha256": "8afb23ac08ba9abb44265f25a01db469e46940f252cc1ec9d6e45030a0ea79f0"
+    },
+    {
       "file": "docs/videos/history-curiosity/pool/reviews/demand-20261117-cores.json",
       "sha256": "ad0885cce24c65eb540a9ab2ea45cbfc1af06aa0cc9f675a4d491a5569651add"
     },
@@ -1904,33 +1920,41 @@
     {
       "file": "docs/videos/history-curiosity/pool/reviews/demand-20261118-wave83.json",
       "sha256": "23ea31839b6436d46da0d6ef9b791c9204082d8d0e2200b7322c8e68c7ce3af2"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261118-wave84.json",
+      "sha256": "c7baa8fbc731313538d1374c54b60ac18c957e5be461cf2e6859634ad13fe72e"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave85.json",
+      "sha256": "1213477746b0b6995e0c1fa9409ad76bd177d3bff6d1ac13cc3ca61111d17ddc"
     }
   ],
   "theme_definition_sha256": "3794d2fd2e377a0871e4bbc22f41bca81a3b4245aa7373ff07908eaede57362c",
   "files": [
     {
       "file": "pool.json",
-      "sha256": "ea282a7a76eb9396c5ae2867ee5ad70d41fef00841bba85420f51cd46b2a8b70"
+      "sha256": "4f318594ccbf313fdc435bfa740b76abd813c68c8416cb93829f95b80b5d59c9"
     },
     {
       "file": "pool-sources.json",
-      "sha256": "147a65424d093f8f819fafeb93987c12fb2a5bbb3ce59fc4120339a5176ffb8d"
+      "sha256": "66c19e178015167121db95bc72739a3e8c335e5b4b7c67db78021be50e7329fc"
     },
     {
       "file": "pool-records.json",
-      "sha256": "4efbf400b6b91d5eaf86f77cb70f2c5584a6f9586e0289dabfe518a8b30a980b"
+      "sha256": "3ebcc69f5f1ae139874e56e7b1a558c692f3355694dffe679a39c30b8c90aea2"
     },
     {
       "file": "QUESTIONS.md",
-      "sha256": "f1e4935154484ae63f83d8030bf332147fd5868f82928c70e956886f5aeac229"
+      "sha256": "ff19c1074c5e7795a904b17ba9384c1e27f4c9b03d64e7e5086a936970f188c7"
     },
     {
       "file": "SOURCES.md",
-      "sha256": "685f9c32e2f2437bc3c4a030997bd268227b05c29a41486fc4e6e3d31f875c65"
+      "sha256": "2f77a3a559c44312a54fef7d82643e7e30df791b09bc30abc5cd15c980d0c2b1"
     },
     {
       "file": "DEDUP.md",
-      "sha256": "72856be0632da54b152aa016f4b058e3c19d2bba9896ff9d0bbe2834c4009256"
+      "sha256": "e28ee9a7fcdc61d5b11f6c2446844032637a4e6bf80d67339ede3d27761ef368"
     },
     {
       "file": "THEMES.md",
@@ -1938,11 +1962,11 @@
     },
     {
       "file": "index.html",
-      "sha256": "a4647527d3682d2fc46286b019370a198f86c66b48c980f90b5fa0799830b58c"
+      "sha256": "73a3ce33961457ea14a57cfdbc0a3a49eddad7f150f3310d138551958c91fdbb"
     },
     {
       "file": "PRODUCIBLE.html",
-      "sha256": "fc9910124a3a43a4bf901498c217d48ae2dd7120607d4e1e9a50d9c0daf5280b"
+      "sha256": "b7f4f68a065f3a0ee30fbd688ba20e39d3fb06c2fbcd35a9f8305ab4ca856cbc"
     }
   ]
 }

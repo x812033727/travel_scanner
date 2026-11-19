@@ -18,7 +18,7 @@ import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } fr
 import { DEFAULT_LOCALES, NARRATION_LOCALE, narrationLocale, TARGET_LOCALES } from "../core/schema.mjs";
 import { captionLocalesOf, dubLocalesOf, dubsForUpload, metadataLocalesOf, readLanguages, runCaptions } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, loadProject, recordStage } from "../core/state.mjs";
-import { speechHash, visualHash } from "../core/timeline.mjs";
+import { cutVisualBound, speechHash } from "../core/timeline.mjs";
 import { disclosureDecision } from "../qa/checks.mjs";
 import { readPackageReport, thumbnailVariants } from "./check.mjs";
 import { composeMetadata, uploadChecklist } from "./metadata.mjs";
@@ -96,7 +96,7 @@ export function linkOrCopy(source, target) {
  * pictures, and for a drama its look, clips, subtitles and music as well.
  */
 export function checksCurrent(doc, lexicon, checks, clips = null, keyframes = null) {
-  if (!checks?.ok || checks.speech_hash !== speechHash(doc, lexicon) || checks.visual_hash !== visualHash(doc)) return false;
+  if (!checks?.ok || checks.speech_hash !== speechHash(doc, lexicon) || !cutVisualBound(checks.visual_hash, doc)) return false;
   if (hasAnimePolicy(doc)) {
     try { if (checks.runtime_policy_hash !== runtimePolicyHash(doc)) return false; }
     catch { return false; }

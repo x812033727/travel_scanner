@@ -1022,7 +1022,9 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
       || Object.keys(provider.config).some((field) => settingsOwner(provider.provider, "config", field) === scope);
     if (scope === "system") return provider.provider === "runtime";
     if (scope === "layout") return provider.provider === "layout";
-    return provider.provider !== "runtime" && provider.provider !== "layout" && shownIn(categories, provider.provider, only);
+    // The review storage size has its own card on the video settings tab
+    // (admin-video-review-store.tsx), so it is not repeated on the generic page.
+    return provider.provider !== "runtime" && provider.provider !== "layout" && provider.provider !== "video_reviews" && shownIn(categories, provider.provider, only);
   });
   const visibleAudit = snapshot.audit.filter((item) => visibleProviders.some((provider) => provider.provider === item.target));
   const sharedDependencies = isDomainSettingsScope(scope)

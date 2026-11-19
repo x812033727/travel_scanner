@@ -15,7 +15,10 @@
    - **上 30%（`y = 0–220px`）乾淨高明度亮底**：晴空藍、明亮淺色背景或清爽光線留給置頂雙行字，**絕不壓暗黑底**，讓黑框亮黃白字在手機淺色與深色模式都一秒跳出。
    - **下 70% 第一優先畫「巨型題目代表物／機制反差 ＋ 戲劇衝突或 2.5 頭身小問／所長誇張反應」**（避開右下角 `x: 1060–1280, y: 620–720` 時間戳記）：優先放大題目最具辨識度的代表物、圖形或雙物強烈物理反差（如左邊鉛筆芯斷裂 vs 右邊鑽石切開玻璃板、巨型方框吹出七彩圓泡泡配小問驚呼、巨型掛鎖被駭客撬棍卡住），讓每集縮圖一眼認出主題且絕不撞臉。
    - **無代表物時才退回純角色表情**：**只有當題目確實沒有具體代表性物品、標誌或物理圖形時，才退回單純 2.5 頭身小問／所長誇張表情特寫**；嚴禁每集預設只放小問大頭照，亦禁止選闔上的空白書本或空房間。
-4. **九語渲染目視檢查與後台同步**：`i18n-merge` 後必跑 `render --slug <SLUG> --thumbnails-only`，逐張打開 `thumbnail.jpg`（含 A/B 變體）與 `thumbnails/{en,ja,ko,es,pt,id,vi,th}.jpg` 目視確認無擋臉與裁切，再執行 `package` 並同步更新至後台 `/admin/videos` 的上架包（`publish`）與多語包（`languages`）。
+4. **九語渲染目視檢查、已核准成片無損換縮圖與後台同步**：
+   - 修改 `video.json` 的 `thumbnail.data` 後必跑完整 `render --slug <SLUG>`（不能只跑 `--thumbnails-only`，因 `visualHash` 已隨新縮圖更新，需一併重繪 `thumbnail.jpg`、各語系 `thumbnails/{en,ja,ko,es,pt,id,vi,th}.jpg` 並更新 `frames/manifest.json`）；僅修改 `i18n/<locale>.json` 外語縮圖字而未改 `video.json` 時才可用 `--thumbnails-only`。
+   - 若集數的 `keyframes/manifest.json`、`clips/manifest.json` 與 `final.mp4` 已經站主核准、僅升級縮圖（例如補專繪滿版底圖 `thumbnail.data.asset: "docs/videos/<slug>/thumbnail-bg.jpg"` 並在 `assets[]` 標註 `{ path, source: "Mokaair 原來如此事務所", license: "Mokaair" }`），可在 `thumbnail.replaces` 保留原 `{ template, data }`：此時 `frames/manifest.json` 仍強制重跑 `render`，但未改動的分鏡與已核准的 `final.mp4` 雜湊維持有效、不需重組重審成片。
+   - 渲染後逐張打開九語縮圖目視確認無擋臉與裁切，再執行 `package` 並同步更新至後台 `/admin/videos` 的上架包（`publish`）與多語包（`languages`）。
 
 ```json
 "thumbnail": {
