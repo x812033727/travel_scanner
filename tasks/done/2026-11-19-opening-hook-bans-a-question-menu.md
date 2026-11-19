@@ -14,6 +14,11 @@ scope:
   - tools/video/core/narrative.mjs
   - tools/video/core/narrative.test.mjs
   - tools/video/core/curio.mjs
+  - tools/video/review/sync.mjs
+  - tools/video/review/sync.test.mjs
+  - tools/video/core/lint.mjs
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
   - docs/videos/so-thats-why/dialogue-pilot-20261103/README.md
   - docs/videos/lessons/sothatswhy.md
   - docs/videos/lessons/curio.md
@@ -40,6 +45,12 @@ sothatswhy template (dialogue-pilot README) and to change the tools.
       (`thumbnailEchoProblems`: at least 3 of their two-character terms or 30% of them). On the 91
       committed curio-/story-/sothatswhy- episodes it flags 38, e.g. curio-s27 (thumbnail 維京盔沒有角,
       first 15 s about a Norwegian farmer) and sothatswhy-p02 (laundry chat before the cloud).
+
+- [x] After an independent code review (2026-11-19): the checks moved into `narrativeProblems` (tagged
+      "narrative", so the host writer gets them, on lint's own timeline), filler pairs no longer
+      count as an echo, the story-series panel wording was left byte-identical (no re-opened
+      verdicts, no brand-story pilot hold), and `review-push --gate script` now refuses a script
+      of the three series with a question menu or an opening that misses the thumbnail.
 
 ## How to verify
 

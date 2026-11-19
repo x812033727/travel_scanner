@@ -716,12 +716,20 @@ test("the first 15 s of curio-, story- and sothatswhy- echo the thumbnail or the
   const [warning] = thumbnailEchoProblems(doc, estimateTimeline(doc));
   assert.equal(warning.path, "scenes[0]");
   assert.match(warning.message, /barely echo the thumbnail or the title/);
-  assert.match(warning.message, /「維京盔 沒有角」 0\/4/);
+  assert.match(warning.message, /「維京盔 沒有角」 0\/3/);
 
   const echoed = structuredClone(doc);
   echoed.scenes[0].lines[0].text = "你印象中的維京人，頭盔上是不是有兩隻角？";
   assert.deepEqual(thumbnailEchoProblems(echoed, estimateTimeline(echoed)), [], "the thumbnail's subject in the first line");
   assert.deepEqual(thumbnailEchoProblems({ ...structuredClone(doc), slug: "daily-ai-20261119" }, estimateTimeline(doc)), [], "other series are untouched");
+
+  const filler = structuredClone(doc);
+  filler.thumbnail = { template: "thumb", data: { headline: "飛機\n不會掉？" } };
+  filler.youtube = { ...filler.youtube, title: "為什麼飛機不會掉下來？｜原來如此事務所" };
+  filler.scenes[0].lines[0].text = "為什麼？到底為什麼它不會？真的不會嗎？";
+  assert.equal(thumbnailEchoProblems(filler, estimateTimeline(filler)).length, 1, "為什麼、不會、下來 never stand in for the subject");
+  filler.scenes[0].lines[0].text = "一架幾百噸的飛機，為什麼不會掉下來？";
+  assert.deepEqual(thumbnailEchoProblems(filler, estimateTimeline(filler)), [], "naming 飛機 echoes it");
 });
 
 import { readsTenStepPanel } from "./narrative.mjs";
@@ -731,7 +739,8 @@ test("原來如此 reads the ten-step panel too, and its opening question bans a
   assert.equal(readsTenStepPanel(sothatswhy), true);
   assert.equal(isStorySeries(sothatswhy), false, "look, cadence and branding rules stay apart");
   const questions = panelQuestions(sothatswhy);
-  assert.match(questions.find((question) => question.id === "opening_hooks").question, /問題菜單/);
+  // The question menu is held by lint and the writer prompts; the panel wording of the two story
+  // series stays byte-identical so their saved verdicts and brand-story pilots are not re-opened.
   assert.doesNotMatch(questions.find((question) => question.id === "opening_hooks").question, /至少三個後面才會揭曉的時刻/);
   assert.equal(panelRulesSha256(sothatswhy), panelRulesSha256({ ...fixture(), slug: "curio-s27" }), "the three series share one contract");
 });

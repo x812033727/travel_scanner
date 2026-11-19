@@ -8,7 +8,7 @@ import { craftProblems } from "./craft.mjs";
 import { curioProblems, curioWarnings, isCurio, pacingWarnings } from "./curio.mjs";
 import { cohostProblems, cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isNarratedExplainer, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
-import { DEFAULT_CADENCE, isNarrated, isStorySeries, MANGA_HOOK_GAP_SECONDS, narrativeProblems, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
+import { DEFAULT_CADENCE, isNarrated, isStorySeries, MANGA_HOOK_GAP_SECONDS, narrativeProblems, readsTenStepPanel, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
 import { isA01CompactStory, isC08ApprovedShortStory, isC20ApprovedShortStory } from "./duration.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
@@ -533,7 +533,8 @@ export function lintVideo(doc, context = {}) {
     if (opening > DRAMA_HOOK_SECONDS) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; the hook should land within ${DRAMA_HOOK_SECONDS} s`);
   } else if (opening !== undefined && !isCompilation(doc) && episodeLengthForNarrative) {
     // Read on an episode only, as episodeScriptProblems is: the examples run seconds.
-    if (isStorySeries(doc) || isStory(context.series)) {
+    // 原來如此 reads the same ten-step opening since 2026-11-19 (narrative.mjs readsTenStepPanel).
+    if (isStorySeries(doc) || isStory(context.series) || readsTenStepPanel(doc)) {
       const [shortest, longest] = STORY_OPENING_CHAPTER_SECONDS;
       if (opening < shortest || opening > longest) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; in this series it is the hook and the promise, ${shortest} to ${longest} s: a question or a situation the viewer knows, how big it ended up against how small it started, at most two climaxes named and never the plot, then 「今天我們就來聊聊…」 and the question the episode answers (script-writing.md §奇聞檔案局與品牌故事的架構)`);
     } else {

@@ -6,8 +6,6 @@
 // check to stop them: the rules lived in look.md and in one agent's notes. These are that check, so
 // whichever model makes an episode, a slug that starts with "curio-" keeps the series look.
 import { isShot, resolveLook } from "./drama.mjs";
-import { isOpeningHookSeries, questionMenuProblems, thumbnailEchoProblems } from "./narrative.mjs";
-import { estimateTimeline } from "./timeline.mjs";
 
 /** The series' look preset (drama.mjs PRESETS): the style sentence is written once, there. */
 export const CURIO_PRESET = "cute-mystery";
@@ -71,14 +69,9 @@ export function genericPropWarnings(doc) {
  * and the re-approval they cost.
  */
 export function pacingWarnings(doc) {
-  // The opening hook asks one question, never a menu, and echoes the thumbnail (owner 2026-11-19); read here because lint.mjs
-  // is bound by the duration review (long-form/review.mjs REVIEW_FILES).
-  const readable = isOpeningHookSeries(doc) && Array.isArray(doc?.scenes) && doc.scenes.every((scene) => Array.isArray(scene.lines));
-  const timeline = readable ? estimateTimeline(doc) : null;
-  const menu = readable ? [...questionMenuProblems(doc, timeline), ...thumbnailEchoProblems(doc, timeline)] : [];
-  if (doc?.format !== "drama") return menu;
-  if (!isPacedSeries(doc)) return [...menu, ...genericPropWarnings(doc)];
-  const warnings = [...menu];
+  if (doc?.format !== "drama") return [];
+  if (!isPacedSeries(doc)) return genericPropWarnings(doc);
+  const warnings = [];
   if (doc.pauses === undefined) warnings.push({ path: "pauses", message: `this series closes the gaps between sentences (owner, 2026-11-05): add "pauses": ${JSON.stringify(SERIES_PACING.pauses)}; the timeline moves, so the narration and storyboard go back to the owner (the voice is not re-recorded)` });
   if (doc.still_motion === undefined) warnings.push({ path: "still_motion", message: `this series' stills hold and then move instead of gliding (owner, 2026-11-05): add "still_motion": "${SERIES_PACING.still_motion}" (only the cut changes; no picture is redrawn)` });
   warnings.push(...genericPropWarnings(doc));

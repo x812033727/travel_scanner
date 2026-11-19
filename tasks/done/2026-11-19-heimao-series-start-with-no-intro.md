@@ -17,6 +17,8 @@ scope:
   - tools/video/assemble/branding.test.mjs
   - tools/video/assemble/cli.mjs
   - docs/videos/BRANDING.md
+  - tools/video/review/renewal.mjs
+  - tools/video/review/renewal-handoff.mjs
   - docs/videos/long-form/review.md
   - docs/videos/long-form/review.json
 ---

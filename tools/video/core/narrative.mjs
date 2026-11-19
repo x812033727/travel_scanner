@@ -410,11 +410,16 @@ export const THUMBNAIL_ECHO_MIN = 0.3;
 /** Or this many of its terms, whatever the share: a long title is echoed by its subject alone. */
 export const THUMBNAIL_ECHO_TERMS = 3;
 const SERIES_SUFFIX = /[｜|].*$/;
+/**
+ * Two-character pairs that carry no subject (為什麼, 不會, 真的, 到底…): a first line can say three of
+ * them without ever naming what the thumbnail promised, so they never count as an echo.
+ */
+const FILLER_PAIR = /^(?:為什|什麼|怎麼|為何|如何|不會|不是|沒有|下來|起來|出來|真的|到底|究竟|其實|可能|可以|還是|就是|這個|那個|一個|我們|你們|他們|自己|是誰|是什|哪裡|竟然|居然|原來|到了|會不|是不|了什|的是)$|[的了嗎呢吧啊？]/;
 function promiseTerms(text) {
   const clean = String(text ?? "").replace(SERIES_SUFFIX, "").replace(/\*\*/g, "").replace(/\\n|\n/g, " ");
   const latin = (clean.match(/[A-Za-z0-9]{2,}/g) ?? []).map((word) => word.toLowerCase());
   const han = clean.replace(/[^\p{Script=Han}]+/gu, " ").trim().split(/\s+/).filter(Boolean);
-  const pairs = han.flatMap((run) => Array.from({ length: Math.max(run.length - 1, 0) }, (_, i) => run.slice(i, i + 2)));
+  const pairs = han.flatMap((run) => Array.from({ length: Math.max(run.length - 1, 0) }, (_, i) => run.slice(i, i + 2))).filter((pair) => !FILLER_PAIR.test(pair));
   return [...new Set([...latin, ...pairs])];
 }
 
@@ -443,6 +448,16 @@ export function thumbnailEchoProblems(doc, timeline, { series = null } = {}) {
   }];
 }
 
+/**
+ * What holds a script of 奇聞檔案局, a brand story or 原來如此事務所 at the script gate (owner, 2026-11-19:
+ * these were only warnings, and a draft could reach the owner and paid audio and pictures with a
+ * question menu or an opening that does not keep the thumbnail's promise). review-push --gate script
+ * refuses while any is left.
+ */
+export function openingGateProblems(doc, timeline = estimateTimeline(doc), { series = null } = {}) {
+  return [...questionMenuProblems(doc, timeline, { series }), ...thumbnailEchoProblems(doc, timeline, { series })];
+}
+
 /** Every storytelling problem of a narrated script, tagged "narrative" so the worker can hand the warnings to the writer. */
 export function narrativeProblems(doc, timeline, { minutes, cadence = DEFAULT_CADENCE } = {}) {
   const tag = (problems) => problems.map((problem) => ({ ...problem, kind: "narrative" }));
@@ -451,7 +466,7 @@ export function narrativeProblems(doc, timeline, { minutes, cadence = DEFAULT_CA
   const told = cadence.gap <= TIGHT_CADENCE.gap ? viewerAddressProblems(doc) : [];
   return {
     errors: tag(outroNextVideoProblems(doc)),
-    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc), ...caveatRecitationProblems(doc), ...told]),
+    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc), ...caveatRecitationProblems(doc), ...questionMenuProblems(doc, timeline), ...thumbnailEchoProblems(doc, timeline), ...told]),
   };
 }
 
@@ -520,7 +535,7 @@ export const STORY_SERIES_PANEL_QUESTIONS = Object.freeze({
   one_line: "全片是否大致照時間順序講一個故事：承諾句之後從年代與處境講起、主角才登場，倒敘只是小段而且開頭有明確的時間提示（「其實早在 1969 年」），沒有回頭把同一段再講一次？",
   no_toc: "是否沒有任何一句只是在宣告這支片分幾段（「接下來分三段」「第一…第二…最後」「先講 A 再講 B」「這一章回答…」）或把後面的內容排成清單？開場可以有一句「今天我們就來聊聊…」的承諾句，說出這集要回答的問題，整支片只一次。",
   chapters_link: "故事是否從頭到尾連貫、沒有沒頭沒尾的地方：每個人物、公司、文件出現時都先交代是誰或是什麼；每一段、每一章第一句都用轉場接住上一段（「但就在這時候」「時間快轉到 1983 年」「問題來了」）或上一章留下的疑問？標籤、總結、重述剛問過的話不算銜接。",
-  opening_hooks: "開場是否在約 1 分 05 秒內做到：只用一個問句或情境（最多再追問一句，沒有連丟三個以上問題排成「問題菜單」）、終點多大和起點多小的反差（帶數字）、最多一兩個停在結果之前的高潮標籤，再用一句承諾句「今天我們就來聊聊…」說出這集要回答的問題？（「接下來我們會看到」這種空宣告不算；超過兩個預告、或把劇情照順序講一遍，也算沒做到。）",
+  opening_hooks: "開場是否在約 1 分 05 秒內做到：一個問句或情境、終點多大和起點多小的反差（帶數字）、最多一兩個停在結果之前的高潮標籤，再用一句承諾句「今天我們就來聊聊…」說出這集要回答的問題？（「接下來我們會看到」這種空宣告不算；超過兩個預告、或把劇情照順序講一遍，也算沒做到。）",
   no_detour: "是否沒有岔出去或變成年報與校勘朗讀的段落：每一段都透過人的困境與出招推進開場那個問題，沒有整段脫離主線，沒有連著念法條但書、年報揭露或「查不到／沒有公布」，也沒有逐條對照三個以上史料版本或產品清單？",
 });
 /** Whether a script belongs to one of the two story series the viewer wording reads. */
