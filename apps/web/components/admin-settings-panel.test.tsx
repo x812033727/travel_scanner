@@ -445,6 +445,16 @@ describe("AdminSettingsPanel", () => {
     expect([...aiProviders].sort()).toEqual([...AI_SETTINGS_PROVIDERS].sort());
   });
 
+  it("leaves the review storage size to its own card on the video settings tab", async () => {
+    sessionIdentity.user = { id: "review-store-admin", email: "admin@example.com" };
+    const reviewStore = { ...snapshot.providers[0], provider: "video_reviews", label: "審片空間", description: "後台審片用的預覽與成片檔案區", status_message: "", config: { video_review_max_total_bytes: 60_000_000_000 }, config_sources: { video_review_max_total_bytes: "environment" }, secrets: {}, usage: null };
+    stubAiFetch({ ...snapshot, providers: [...snapshot.providers, reviewStore] });
+    render(<AdminSettingsPanel />);
+    await screen.findByLabelText("伺服器 API Key");
+    expect(screen.queryByText("審片空間")).toBeNull();
+    expect(screen.queryByText("後台審片用的預覽與成片檔案區")).toBeNull();
+  });
+
   it("files the RunPod GPU card with the video pipeline's other sources", () => {
     expect(providerCategoryOf.runpod).toBe("video");
     expect(SETTINGS_PAGE_CATEGORIES).toContain("video");
