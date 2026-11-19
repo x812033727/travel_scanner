@@ -9,7 +9,7 @@
 
 ## 2026-11-19 · 站主定：開場鉤子禁疊「問題菜單」、開頭不放片頭
 - **開場只問一個問題**：開場連丟「為什麼…？為什麼…？那…呢？」三個以上問題，聽起來是在念這集的菜單，不是鉤子。照黑猫研究院，開場只拋一個觀眾熟悉的問題或情境（小問最多追問一句）→ 反差 → 承諾句；其他問題留給各章小問的錯誤直覺打開。lint：`narrative.mjs` `questionMenuProblems`，開場（第一章、最多 90 秒）扣掉承諾句的問句超過 2 句即警告。
-- **開頭不放片頭，第一句直接開始**：新集 `0:00` 就是第一句對白，片尾照舊；工具預設另開票 `2026-11-19-heimao-series-start-with-no-intro`。範本已改：`docs/videos/so-thats-why/dialogue-pilot-20261103/README.md`。
+- **開頭不放片頭，第一句直接開始**：新集 `0:00` 就是第一句對白，片尾照舊；工具已預設 `intro_at: "none"`（`core/branding.mjs` `noIntroSeries`）。範本已改：`docs/videos/so-thats-why/dialogue-pilot-20261103/README.md`。
 
 ## 2026-11-18 · sothatswhy-g05 · 對標黑猫研究院（`@qiqiqushi0`）補強對白去法條但書化、禁用萬用道具與 `beat-motion-v5` 停頓快推運鏡
 對比黑猫研究院日常標準／收費機制高點閱長片與本系列稿件（如 G05），同步落地三項完播率與視覺重音規則：

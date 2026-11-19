@@ -1,14 +1,14 @@
 ---
 id: 2026-11-19-heimao-series-start-with-no-intro
 title: Heimao-style series start with no intro (sothatswhy, curio, story)
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-elegant-hypatia
+claimed_at: 2026-11-19T01:18:43Z
 created_at: 2026-11-19T01:10:00Z
 completed_at:
-branch:
+branch: claude/elegant-hypatia-07i3yx
 depends_on: []
 scope:
   - tools/video/core/branding.mjs
@@ -17,6 +17,8 @@ scope:
   - tools/video/assemble/branding.test.mjs
   - tools/video/assemble/cli.mjs
   - docs/videos/BRANDING.md
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Heimao-style series start with no intro (sothatswhy, curio, story)
@@ -34,22 +36,27 @@ no remote branches). The owner must allow taking over those scopes (`claim --for
 
 ## Definition of done
 
-- [ ] A new placement `intro_at: "none"` (INTRO_NONE): the final is body + outro, `intro_frames: 0`
+- [x] A new placement `intro_at: "none"` (INTRO_NONE): the final is body + outro, `intro_frames: 0`
       in the applied record, its own branding hash (v2 tag carries the placement).
-- [ ] `defaultIntroAt` returns `none` for `sothatswhy-`, `curio-`, `story-` and `isStory(series)`.
+- [x] `defaultIntroAt` returns `none` for `sothatswhy-`, `curio-`, `story-` and `isStory(series)`.
       Pinned `branding.json` cuts keep their placement (nothing already built moves).
-- [ ] Dubs, captions, presentation timeline and QA accept a zero-length intro.
+- [x] Dubs, captions, presentation timeline and QA accept a zero-length intro.
 
 ## Steps (plan)
 
-- [ ] core/branding.mjs: `INTRO_NONE`, add to `INTRO_PLACEMENTS`; `introAtFrame` returns 0 for none;
+- [x] core/branding.mjs: `INTRO_NONE`, add to `INTRO_PLACEMENTS`; `introAtFrame` returns 0 for none;
       `presentationTimeline` offset = 0 for none (helper `introFrames(branding)`); `defaultIntroAt`.
-- [ ] assemble/branding.mjs: `checkedIntroAt` (none -> frame 0), `clipsOf` (none -> [body, outro]),
+- [x] assemble/branding.mjs: `checkedIntroAt` (none -> frame 0), `clipsOf` (none -> [body, outro]),
       `wrapVideo` join list [body, outro] without encoding the intro, `appliedRecord` intro_frames 0.
-- [ ] assemble/cli.mjs:316 only re-places `after_first_chapter` to start when there is no second chapter, never `none`.
-- [ ] renewal.mjs / renewal-handoff.mjs already refuse any pin with `intro_at`; leave them.
-- [ ] duration.mjs `bookendFrames` already accepts 0.
-- [ ] BRANDING.md §片頭位置 table; tests.
+- [x] assemble/cli.mjs:316 only re-places `after_first_chapter` to start when there is no second chapter, never `none`.
+- [x] renewal.mjs / renewal-handoff.mjs already refuse any pin with `intro_at`; leave them.
+- [x] duration.mjs `bookendFrames` already accepts 0.
+- [x] BRANDING.md §片頭位置 table; tests.
+
+## Notes
+
+- Owner allowed `--force` over the two stale October claims (2026-11-19).
+- Real ffmpeg check: a 300-frame body with a 90-frame outro and `intro_at: "none"` gives a 390-frame final.
 
 ## How to verify
 
