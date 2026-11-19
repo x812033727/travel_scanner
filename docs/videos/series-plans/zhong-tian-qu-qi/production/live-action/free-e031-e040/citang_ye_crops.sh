@@ -14,3 +14,5 @@ c set-citang-ye2-men-l1   512:288:60:180    # the doorway at night: the lattice 
 c set-citang-ye2-liang-l1 640:360:580:0     # the dark main beam across the top of the wall, the tablets' tops below
 c set-citang-ye2-tang-l1  832:468:480:268   # the altar side of the hall with its stone floor, no doorway
 c set-citang-ye2-zuo-l1   640:360:400:300   # the swung-back leaf and the dark post, the table's left end, a candle, tablets
+c set-citang-ye2-qiang-l1 400:225:895:92    # the plain candle-lit wall right of the beam and above the tablets, no beam in it (e033 review
+                                            # 必改 4: -huang-qiang has the beam in its top-left corner, so s07/s11 had two beams)

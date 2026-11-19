@@ -31,13 +31,18 @@ Run: python3 -I mkspec.py
   the refine text).
 - Every motion that opens a sentence after "never the mood. " is capitalised (e928 review 必改 1's fix); s20, s27, s34 (no person)
   open with r2.py's NOBODY sentence, so the separator is there once.
-- Sets (r2.py PLACES): the hall at dusk set-citang-huang (s01), -huang-zuo2 (s02), -huang-liang (s03), -huang-zuo (s04); at night
-  the free set-citang-ye2 (s05), -ye2-men (s06, s08, s10), -ye2-tang (s09), and the plain wall -huang-qiang (s07, s11); the deep
-  pool on the fourth day set-shentan-gongdi (s12), -gongdi-an (s14, s16, s22, s24, s26), -gongdi-mu (s13, s17, s18), -gongdi-tian
-  (s15, s23, s27), -gongdi-geng (s19, s20, s21, s25); the tenth dawn -chen (s28), -chen-an (s29), -chen-lun (s30); noon
-  set-shentan (s34, gen-dh's own pick, not swapped), -an (s31, s32, s33, s36, s37), -lun (s35, s38), -geng (s39), -tian (s40).
-  gen-dh's/pilot.py's set-citang-l1 is never sent, nor set-citang-ye-l1 (the beam still has its crack strokes). Every swap is
-  sent with an absolute path by prep933.sh.
+- Sets (r2.py PLACES; after the independent review, writer-tools/e033-r2/review-independent.md): the hall at dusk
+  set-citang-huang (s01), -huang-zuo2 (s02), -huang-liang (s03), -huang-zuo (s04); at night the free set-citang-ye2 (s05),
+  -ye2-men (s06, s08, s10), -ye2-tang (s09), and the beam-free wall -ye2-qiang (s07, s11; 必改 4); the deep pool on the fourth
+  day set-shentan-gongdi-l2 (s12) and its -l2 crops -gongdi-an (s14, s16, s22, s24, s26), -gongdi-mu (s13, s17, s18), -gongdi-tian
+  (s15, s23, s27), -gongdi-geng (s19, s20, s21, s25) (the pylon and horizon poles painted out); the tenth dawn -chen-l3 (s28),
+  -chen-an-l3 (s29), -chen-bian-l3 (s30); noon set-shentan-l3 (s34, gen-dh's own pick = pilot.py's newest, not swapped; the
+  paddled wheel of 必改 1 A), -an-l3 (s31, s32, s33, s36, s37; no rope, 必改 5), -bian-l3 (s35; the wheel at the right, 必改 2),
+  -lun-l3 (s38), -geng-l3 (s39), -tian-l3 (s40). gen-dh's/pilot.py's set-citang-l1 is never sent, nor set-citang-ye-l1 (the beam
+  still has its crack strokes), -huang-qiang (the beam in its corner), set-shentan-l1/-l2 (no paddles / the rope). Every swap
+  is sent with an absolute path by prep933.sh.
+- s34 (必改 6): the wides' shoes sentence is cut (nobody is in the wheel's wide; "every person" would invite one in). s25 (必改 3,
+  建議 1): the geomancer's sleeve is at the RIGHT edge now, so its 'only' sentence says right.
 - No seed of this episode has been run. Seeds 9331101/9331102.
 """
 import importlib.util
@@ -73,7 +78,7 @@ SHOES = "Every person in the frame wears dark cloth shoes on both feet."
 SHOES_QIN = "Qin Shuang wears her leather boots and every other person in the frame dark cloth shoes on both feet."
 STAFF = ", leaning on a polished old bamboo walking staff"
 CT = "set-citang-l1.png"     # pilot.py's newest set-citang for gen-dh's dh-set-citang-t1
-ST = "set-shentan-l1.png"    # pilot.py's newest set-shentan for dh-set-shentan-t1
+ST = "set-shentan-l3.png"    # pilot.py's newest set-shentan for dh-set-shentan-t1 (l2 = l1 + twelve paddles, l3 = l2 cleaned)
 INSERTS = ["s27"]
 NOPERSON = ["s20", "s27", "s34"]
 
@@ -112,7 +117,7 @@ for sid, edge in (("s09", "left"), ("s10", "right")):
                        f"the frame; no second copy of anyone appears."])
 add("s19", [ONLY_HE, f"Only Qian Yuanwai, the tall thin man in the yellow robe behind him and the young woman seen only from behind at the "
                      f"lower left edge of the frame are in the frame; {ONE_TANG}; no second copy of anyone appears."])
-for sid, edge in (("s21", "right"), ("s25", "left")):
+for sid, edge in (("s21", "right"), ("s25", "right")):
     add(sid, [ONLY_HE, f"Besides him, only the tall thin man cut by the {edge} edge of the frame the composition describes is in the frame; "
                        "no second copy of anyone appears."])
 SPECIAL_ONLY = {"s01", "s09", "s10", "s17", "s19", "s21", "s25"}
@@ -127,6 +132,8 @@ for sid in ids:
 # The wides with Qin Shuang: her boots.
 for sid in ("s12", "s31"):
     add(sid, [SHOES, SHOES_QIN])
+# e933 review 必改 6: the wheel's wide has nobody in it; the wides' shoes sentence would invite a person in.
+add("s34", [SHOES + " ", ""])
 # Elder Han kneels without his staff (s01, s04).
 for sid in ("s01", "s04"):
     add(sid, [STAFF, ""])
@@ -163,13 +170,14 @@ SWAP = {sid: {} for sid in ids}
 PLACE = {
     CT: {"set-citang-huang-l1.png": ["s01"], "set-citang-huang-zuo2-l1.png": ["s02"], "set-citang-huang-liang-l1.png": ["s03"],
          "set-citang-huang-zuo-l1.png": ["s04"], "set-citang-ye2-l1.png": ["s05"], "set-citang-ye2-men-l1.png": ["s06", "s08", "s10"],
-         "set-citang-ye2-tang-l1.png": ["s09"], "set-citang-huang-qiang-l1.png": ["s07", "s11"]},
-    ST: {"set-shentan-gongdi-l1.png": ["s12"], "set-shentan-gongdi-an-l1.png": ["s14", "s16", "s22", "s24", "s26"],
-         "set-shentan-gongdi-mu-l1.png": ["s13", "s17", "s18"], "set-shentan-gongdi-tian-l1.png": ["s15", "s23", "s27"],
-         "set-shentan-gongdi-geng-l1.png": ["s19", "s20", "s21", "s25"],
-         "set-shentan-chen-l1.png": ["s28"], "set-shentan-chen-an-l1.png": ["s29"], "set-shentan-chen-lun-l1.png": ["s30"],
-         "set-shentan-l1.png": ["s34"], "set-shentan-an-l1.png": ["s31", "s32", "s33", "s36", "s37"],
-         "set-shentan-lun-l1.png": ["s35", "s38"], "set-shentan-geng-l1.png": ["s39"], "set-shentan-tian-l1.png": ["s40"]},
+         "set-citang-ye2-tang-l1.png": ["s09"], "set-citang-ye2-qiang-l1.png": ["s07", "s11"]},
+    ST: {"set-shentan-gongdi-l2.png": ["s12"], "set-shentan-gongdi-an-l2.png": ["s14", "s16", "s22", "s24", "s26"],
+         "set-shentan-gongdi-mu-l2.png": ["s13", "s17", "s18"], "set-shentan-gongdi-tian-l2.png": ["s15", "s23", "s27"],
+         "set-shentan-gongdi-geng-l2.png": ["s19", "s20", "s21", "s25"],
+         "set-shentan-chen-l3.png": ["s28"], "set-shentan-chen-an-l3.png": ["s29"], "set-shentan-chen-bian-l3.png": ["s30"],
+         "set-shentan-l3.png": ["s34"], "set-shentan-an-l3.png": ["s31", "s32", "s33", "s36", "s37"],
+         "set-shentan-bian-l3.png": ["s35"], "set-shentan-lun-l3.png": ["s38"], "set-shentan-geng-l3.png": ["s39"],
+         "set-shentan-tian-l3.png": ["s40"]},
 }
 seen = set()
 for gen, pics in PLACE.items():
