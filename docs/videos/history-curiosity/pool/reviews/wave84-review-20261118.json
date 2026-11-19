@@ -14,7 +14,8 @@
     "R8401-S002": "ZW1-S020",
     "R8405-S001": "ZW5-S013",
     "R8407-S001": "ZW7-S019",
-    "R8407-S002": "ZW7-S020"
+    "R8407-S002": "ZW7-S020",
+    "R8412-S001": "ZV2-S005"
   },
   "verdicts": [
     {
@@ -157,7 +158,24 @@
         "1976 年 9 月底當年報紙（nytimes 403）",
         "網傳護照圖是合成：只有 Ancient Origins 轉述"
       ],
-      "note": "待查。年鑑與 AFP 撐得住抵達與治療經過、AFP 明說沒有護照，但問句真正的翻轉（引號裡的『護照』長成真護照）只有二手轉述；重開條件見題卡 notes：讀到 1985 報告原句或 AFP 原查核，再加一份 1976 年當年報紙。"
+      "note": "待查。年鑑與 AFP 撐得住抵達與治療經過、AFP 明說沒有護照，但問句真正的翻轉（引號裡的『護照』長成真護照）只有二手轉述；重開條件見題卡 notes：讀到 1985 報告原句或 AFP 原查核，再加一份 1976 年當年報紙。",
+      "recheck": {
+        "verdict": "REJECT",
+        "reviewer": "R8410",
+        "author": "ZV0",
+        "key_source_reopened": "https://revistas.uned.es/index.php/ETFII/article/download/1761/1640/4610（R8410 seq 2，200，6384348 bytes）：與 ZV0 seq 18 完全相同（sha256 前綴 5cd02f06e1fa7dd6）；pdftotext 核對名譽保證、Transall、9 月 26 日、在位君主軍禮、協和廣場、5 月 9 日滅菌、一天後返國、5 月 15 日開羅開箱與作者參與，皆屬實；全文無護照字樣。",
+        "changes": [
+          "premise_status 改 rejected；notes 加覆核紀錄；reopen_if 重寫為不收的重開條件。",
+          "answer_target 回程日一句改寫：寫明 Larousse 1977 明寫 5 月 10 日、ZV0-S001 是『5 月 9 日滅菌、運回巴黎、一天之後返國、15 日開羅開箱』，兩者相合；AFP 4 月 10 日不用。ZV0 說『回國日定為 1977-05-10』可接受，正片仍建議說『1977 年 5 月』。"
+        ],
+        "unverified": [
+          "1985 年報告的『passeport』原句（無開放掃描）",
+          "AFP 2020 查核原文（factcheck.afp.com 封鎖）",
+          "1976 年 9 月底當年報紙（nytimes 403，Gallica 封鎖）",
+          "網傳護照圖是合成：仍只有 Ancient Origins 轉述"
+        ],
+        "note": "ZV0-S001 確實存在、內容屬實、無護照字樣，但它補的是抵達禮儀與回程日，不是翻轉；兩輪都拿不到引號裡的『passport』原句與當年報紙，且路已被擋，判不收並寫重開條件。"
+      }
     },
     {
       "id": "N7833",
@@ -212,7 +230,26 @@
         "禁令故事最早出處與當年報紙",
         "「湯圓之名由禁令而來」的流傳樣本"
       ],
-      "note": "兩本古書文句相符，卡上也沒說禁令不存在；但關鍵字形不清、宋代那半翻轉已在樣本裡，翻轉偏弱，待補查。"
+      "note": "兩本古書文句相符，卡上也沒說禁令不存在；但關鍵字形不清、宋代那半翻轉已在樣本裡，翻轉偏弱，待補查。",
+      "recheck": {
+        "verdict": "ADOPT_WITH_CHANGES",
+        "reviewer": "R8411",
+        "author": "ZV1",
+        "key_source_reopened": "https://archive.org/metadata/nlc-892-411999019284-382429（R8411 seq 1，200，10979 bytes）：sha256 前綴 e2f3b172d50e84a6 與 ZV1 seq 1 相同；metadata 著錄抄本、清初[1644-1722]、十行二十五字無格、善本書號 11008、公有領域標記；PDF 檔名在 files 清單裡（網址出處成立）；https://archive.org/download/nlc-892-411999019284-382429/NLC892-411999019284-382429_%E9%85%8C%E4%B8%AD%E5%BF%97%E7%95%A5_%E4%BA%8C%E5%8D%81%E4%B8%89%E5%8D%B7_%E7%AC%AC6%E5%86%8A.pdf（R8411 seq 2，200，21326163 bytes）：sha256 前綴 16a2a8ea87e239f1 與 ZV1 seq 3 相同；自轉 PDF 第 1–3 頁，第 3 頁 200 dpi 裁切放大：「如核桃大即江南所稱湯圓者十五日曰上元亦曰元宵」，圓字口內為員，相符；https://xiaoxue.koolearn.com/20170310/175365_2.html（R8411 seq 3，200，67423 bytes）：sha256 前綴 c08ad534688d9297 相同；「这也被叫做汤圆。据说……他命令改名叫“汤圆”」確在正文，無更正；頁上時間 2017-03-10",
+        "changes": [
+          "湯圓一字依清初抄本、刻本作團，寫進 answer_target、payoff、scope、source_locator 與 ZW2-S014 limitations",
+          "「兩百多年」改「至少將近兩百年」（湯圓只見於 1644–1722 抄本，原稿用字不能斷定）",
+          "hook 去掉「最常被轉」；「不可能造出新名字」改「就算屬實也造不出新名字」；「唯一反面材料」限定為本輪讀到",
+          "scope 加：不說禁令不存在、不說最早出處、不說原稿就寫湯圓",
+          "ZV1-S002 標題與日期照頁面更正"
+        ],
+        "unverified": [
+          "禁令故事最早出處與 1913–1916 年報紙（卡上不承諾）",
+          "回憶錄原書沒讀到，只有書摘轉引",
+          "劉若愚原稿用的是圓還是團"
+        ],
+        "note": "抄本與流傳樣本都自己重抓轉圖核對無誤；卡上沒有說禁令不存在或最早出處，回憶錄作者未點名；改完可收為 chapter。"
+      }
     },
     {
       "id": "N7836",
@@ -358,7 +395,23 @@
         "1791 年開墓與遷葬的任何一手紀錄",
         "頭骨喝酒、中彈、護身符情節的出處"
       ],
-      "note": "只有一本 1840 年傳記的 OCR 關鍵字搜尋和一個無出處網頁，核心事件沒有一手；改寫問句後維持待查，role 維持 chapter。"
+      "note": "只有一本 1840 年傳記的 OCR 關鍵字搜尋和一個無出處網頁，核心事件沒有一手；改寫問句後維持待查，role 維持 chapter。",
+      "recheck": {
+        "verdict": "REJECT",
+        "reviewer": "R8410",
+        "author": "ZV0",
+        "key_source_reopened": "https://archive.org/download/bub_gb_WSdDAAAAcAAJ/bub_gb_WSdDAAAAcAAJ_jp2.zip/bub_gb_WSdDAAAAcAAJ_jp2%2Fbub_gb_WSdDAAAAcAAJ_1010.jp2（R8410 seq 1，200，571789 bytes）：與 ZV0 seq 13 完全相同（sha256 前綴 cb4c8f6cf97b09dd）；自己轉 PNG 目讀第 1004 頁，『On a transporté aussi à St-Laurent le tombeau du fameux Michel Nostradamus, qui était auparavant dans l'église des Franciscains, où il avait été enseveli.』屬實，同頁無年份、大革命、開墓。",
+        "changes": [
+          "premise_status 改 rejected；notes 加覆核紀錄；reopen_if 重寫為不收的重開條件與併題建議。",
+          "answer_target『本輪讀到最早記遷墓的書頁』改成『兩輪讀到的書頁裡年代最早寫到遷墓的一頁（不代表是最早的記載）』，避免無來源的『最早』。"
+        ],
+        "unverified": [
+          "大革命時開墓或遷葬的年份、人員、原因（任何一手或研究都沒有）",
+          "頭骨喝酒、中彈、刻 1700 護身符情節的出處",
+          "市府簡介『被大革命士兵弄散』的依據"
+        ],
+        "note": "1824 年省志第 1004 頁我自己轉圖核對屬實，但只證明 1824 年以前墓已遷聖羅蘭、沒有大革命與開墓；問句的核心兩輪都答不了，判不收單題，附可選的併題片尾建議（N5841 等）。"
+      }
     },
     {
       "id": "N7844",
@@ -407,7 +460,26 @@
         "柱子實際分擔多少荷載（《力學與實踐》論文回驗證頁）",
         "『三根馬尾』出處、柱子是否後加"
       ],
-      "note": "來源都真，但翻轉被樣本自己講掉、承重描述只是二手轉述；補到受力分析原文或更好的樣本再收。"
+      "note": "來源都真，但翻轉被樣本自己講掉、承重描述只是二手轉述；補到受力分析原文或更好的樣本再收。",
+      "recheck": {
+        "verdict": "REJECT",
+        "reviewer": "R8412",
+        "author": "ZV2",
+        "key_source_reopened": "https://global.chinadaily.com.cn/a/201806/18/WS5b27075fa310010f8f59d657.html（R8412 seq 1，200，42598 bytes）：『stanchions were only added relatively recently as a psychological comfort』等四句逐字相符；https://www.nature.com/articles/s40494-025-01608-y（R8412 seq 2，200，383859 bytes）：模型設定句、懸挑樑承擔大部分水平力、一樓中柱應力超標三句逐字相符；兩個圖檔網址在 HTML 內；https://media.springernature.com/lw1200/springer-static/image/art%3A10.1038%2Fs40494-025-01608-y/MediaObjects/40494_2025_1608_Fig9_HTML.png（R8412 seq 3，200，826510 bytes）：sha 與 ZV2 seq 8 相同；自看圖 9，無寺下細長支柱",
+        "changes": [
+          "自看論文圖 2（ZV2 cache seq 7）與圖 9（R8412 重抓 seq 3，sha 931d3429b675baaf 與 ZV2 seq 8 相同）：圖 2 剖面是一棟三層樓閣，底標高 90.0 的一樓直接坐在岩台上，各層懸挑樑伸入右側『Rock』；圖 9 模型一樓柱腳是一排高低不一、鉸接在岩石上的短柱，懸挑樑末端鉸接。兩圖都沒有從崖腳往上撐的細長支柱。ZV2 的讀法正確，原卡『底層柱反應最大所以柱子不是擺設』確實把樓閣一樓柱與寺下支柱混為一談，ZV2 的更正成立。",
+          "重抓論文 HTML（R8412 seq 2）核對 ZV2 引的三句：『columns, rock foundations, cantilever beams, and rock foundations are simulated through articulated』『The cantilever beams are fixed at the end and have a large stiffness, which bears most of the horizontal force』『The members subjected to large stresses include all the middle columns on the first floor』逐字在；論文另稱研究對象為『a Hanging Temple in northern China』，沒說是寺內哪一棟。",
+          "重抓中國日報 2018（R8412 seq 1，200，42,598 bytes；比 ZV2 少 24 bytes，動態頁，正文相同）：『the stanchions were only added relatively recently as a psychological comfort to visitors』『two thirds of the length of the beam』『hemlock … tung oil』『same layer of limestone』逐字在，沒有出處。",
+          "ZV2 cache 核對：《時代》2010（seq 5）寫『kept in place with wooden crossbeams fitted into holes chiseled into the stone』『75-metre-high cliff』『some 1,400 years』，沒提支柱，作者署名與 2010-06-09 相符；旅行社 2015（seq 1）寫『The stilts below the temple are actually just for show』。",
+          "判定由 ZV2 的 needs_check 改為 REJECT（轉 not_added）：原翻轉被樣本講掉；替代翻轉（支柱是不是後加的擺設）沒有任何紀錄，問句只能答『查不到』（第八十二批常見錯）。"
+        ],
+        "unverified": [
+          "寺下支柱何時出現、是否承重（無修繕紀錄或測繪報告）",
+          "《力學與實踐》論文全文（封鎖）",
+          "『三根馬尾空中吊』出處"
+        ],
+        "note": "ZV2 的更正正確、來源都真；但題目已無可講的翻轉，建議不收，重開條件見 not_added。"
+      }
     },
     {
       "id": "N7847",
@@ -716,7 +788,26 @@
         "戲曲〈水淹七軍〉的演法",
         "小說哪一版本最早加入堰水"
       ],
-      "note": "三傳轉圖核對無誤，但流傳樣本只有演義本身，通俗文章多已說是暴雨，加上池中關羽題已多；待查，補不到樣本就轉不收。"
+      "note": "三傳轉圖核對無誤，但流傳樣本只有演義本身，通俗文章多已說是暴雨，加上池中關羽題已多；待查，補不到樣本就轉不收。",
+      "recheck": {
+        "verdict": "ADOPT_WITH_CHANGES",
+        "reviewer": "R8411",
+        "author": "ZV1",
+        "key_source_reopened": "https://www.qulishi.com/news/201703/186710.html（R8411 seq 4，200，85390 bytes）：sha256 前綴 41e7a0c83edf7996 相同；「关羽挖开江堤，大水冲向赶来救援的于禁七路大军」以史事口吻寫在『经过』段，全文沒提史書或小說、沒講翻轉",
+        "changes": [
+          "只收為 chapter，不單獨成集；須併入關羽／三國『演義 vs 史書』合集，排程交選題編輯與 N7553、N7582、N7774、N7796、N7811、legacy S06 同組",
+          "question「都寫連下十幾天雨」改「秋天連日大雨」（十餘日只見於〈龐悳傳〉）",
+          "hook 刪「那一夜沒有人去挖堤」，改「找不到挖堤，也找不到堵水口」；「直沖魏營」改照樣本",
+          "answer_target、payoff、scope 改成『陳壽這幾處沒有記載』，不寫成史書否定；註明樣本與紀錄只差『挖开江堤』一句",
+          "question「常說」改「有文章說」（只讀到一篇樣本，不能說常見）"
+        ],
+        "unverified": [
+          "戲曲〈水淹七軍〉演法",
+          "小說哪一版本最早加入堰水",
+          "掘堤說的來歷"
+        ],
+        "note": "樣本確以史實口氣寫挖堤且沒講翻轉，來源條件已滿足；但翻轉在通俗層常見、池中三國演義題已多，只收為合集用的一章，不建議單獨成集。"
+      }
     },
     {
       "id": "N7864",
@@ -734,7 +825,27 @@
         "『一開始被當成人工冶鐵』",
         "鎳含量數字與接合工藝"
       ],
-      "note": "紀錄面有兩份學術轉述可用，但沒讀到流傳樣本與 1976 年原始分析；維持待查，寫明重開條件。"
+      "note": "紀錄面有兩份學術轉述可用，但沒讀到流傳樣本與 1976 年原始分析；維持待查，寫明重開條件。",
+      "recheck": {
+        "verdict": "REJECT",
+        "reviewer": "R8412",
+        "author": "ZV2",
+        "key_source_reopened": "https://donwagner.dk/EARFE/EARFE.html（R8412 seq 4，200，65845 bytes）：sha 與 ZW9 seq 38 相同；註 15 (2)(3) 與 cast-in meteoritic 句相符；http://www.360doc.com/content/24/0703/17/13020443_1127778407.shtml（R8412 seq 5，000，0 bytes）：連線失敗，未重試；https://blog.sina.com.cn/s/blog_50c10b940102uwd7.html（R8412 seq 6，200，34097 bytes）：新增弱樣本 R8412-S001",
+        "changes": [
+          "重抓 Wagner EARFE（R8412 seq 4，65,845 bytes，sha 27b805f5a1c8628e 與 ZW9 seq 38 相同）：註 15 (2)『A bronze-iron axehead from a late Shang city-site at Taixicun … Widmanstätten structure which has been severely distorted by hot forging (Li Chung, 1979)』與 (3) 平谷劉家河同類器、第 3 節『cast-in edges of meteoritic iron』都在；書目列 Tang Yunming & Liu Shishu 1973《考古》第 5 期簡報。注意 Wagner 稱器物為 axehead，中文稱鉞。",
+          "覆核另搜一次流傳樣本（WebSearch 一次），請求兩個結果頁：360doc（seq 5，連線失敗 000，未重試）；新浪部落格轉載（seq 6，200）讀到，新增為 R8412-S001。它稱鐵刃銅鉞為『世界上最早的鐵器』並說遺址『開始採礦冶鐵』，沒提隕鐵——比 ZV2 推測的更接近選題卡說法，但仍沒明說鐵刃是人工冶鐵。",
+          "搜尋摘要顯示河北博物院展覽說明已寫刃部是隕鐵（未請求、未讀原頁，只作新鮮度參考），加上 ZW9-S018，答案在中文網路並不新。",
+          "ZV2 的 access_log 與 cache 對得上（seq 9–14；seq 14 為 000 無 .bin）；archive.org 檢索確實沒有 1976 年《考古學報》或 1973 年《考古》。",
+          "判定由 needs_check 改為 REJECT（獨立成題不收），建議併入 N7637：見 merge_proposal。"
+        ],
+        "unverified": [
+          "《考古學報》1976.2 鑑定原文與 1973 年簡報",
+          "『一開始被當成人工冶鐵』",
+          "出土年份（1972／1973 說法不一）",
+          "鎳含量數字與接合工藝"
+        ],
+        "note": "紀錄面兩份學術轉述可靠，但流傳樣本弱、翻轉不新、原始分析沒讀到；獨立不收，併入 N7637 當一段旁證最合適。"
+      }
     }
   ],
   "process_notes": [
