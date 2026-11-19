@@ -1,6 +1,6 @@
 // 奇聞檔案局素材池的題案檢查與輸出頁；照原來如此事務所素材池的 render.mjs。
-// 題案（themes.json）照這個池的片長規則：長片 8–13 分鐘，看內容決定，不為了片長硬湊。
-import { LONG_MIN, LONG_MAX, CATEGORIES, CATEGORY_LIST, categoryForAxis, DEMAND_QUESTIONS, DEMAND_QUESTIONS_W, DEMAND_FLOOR, DEMAND_STEP, demandScore, blendedScore, demandQuestionsFor, demandQuestionsOf } from './core.mjs';
+// 題案（themes.json）照這個池的片長規則：長片至少 8 分鐘、沒有上限（站主 2026-11-19），看素材決定，不為了片長硬湊。
+import { LONG_MIN, CATEGORIES, CATEGORY_LIST, categoryForAxis, DEMAND_QUESTIONS, DEMAND_QUESTIONS_W, DEMAND_FLOOR, DEMAND_STEP, demandScore, blendedScore, demandQuestionsFor, demandQuestionsOf } from './core.mjs';
 
 const cell = (value) => String(value ?? '').replaceAll('|', '／').replaceAll('\n', ' ');
 const STATUS = { selected: '入選', held: '暫緩', reserve: '候補（待研究）', produced: '已製作／製作中', shorts: '轉 Shorts', excluded: '淘汰／轉出' };
@@ -97,7 +97,7 @@ export function validateThemes(themes, pool) {
       if (material.verdict === 'merge' && !material.merge_with?.length) throw new Error(`${episode.id}: a merge theme names what it merges with`);
     }
     const [lo, hi] = episode.range_minutes ?? [];
-    if (!Number.isFinite(episode.target_minutes) || !Number.isFinite(lo) || !Number.isFinite(hi) || lo < LONG_MIN || hi > LONG_MAX || lo > episode.target_minutes || hi < episode.target_minutes) throw new Error(`${episode.id}: a long episode is ${LONG_MIN}–${LONG_MAX} minutes and its range must contain the target; shorter material goes to a sibling theme or Shorts`);
+    if (!Number.isFinite(episode.target_minutes) || !Number.isFinite(lo) || !Number.isFinite(hi) || lo < LONG_MIN || lo > episode.target_minutes || hi < episode.target_minutes) throw new Error(`${episode.id}: a long episode is at least ${LONG_MIN} minutes (no upper bound: the material decides, never padded) and its range must contain the target; shorter material goes to a sibling theme or Shorts`);
     if (!episode.candidate_ids?.length || new Set(episode.candidate_ids).size !== episode.candidate_ids.length) throw new Error(`${episode.id}: theme needs unique candidate ids`);
     for (const id of episode.candidate_ids) {
       const row = byId.get(id);
@@ -179,7 +179,7 @@ export function renderDedup(pool) {
 
 export function renderThemes(themes, pool) {
   const byId = new Map(pool.candidates.map((row) => [row.id, row]));
-  const lines = ['# 從素材池排出的影片題案', '', `${themes.episodes.length} 組編輯候選。每一組都是同一個核心問題的兄弟題，接起來比各自單做更完整；不是點閱率預測，也不是已核准的影片。`, '', `**片長規則：** 長片 ${LONG_MIN}–${LONG_MAX} 分鐘，看素材決定。章節秒數是正文預估，還沒試讀；每章要再拆成 30–45 秒一個新資訊或懸念。撐不住就剪短、合併或撤案，不用重述、停頓或慢唸補時間。估不到 ${LONG_MIN} 分鐘的轉 Shorts 或留在後備。`, '', '「來源待補」的題案裡有還沒研究的候補題：要先查核、改成入選，才能寫企劃。', '', '**素材審視（2026-11-11）：** 「待合併」與「後備」的題案素材撐不起 8 分鐘不重複的旁白，先不成題；缺什麼寫在各題的審視欄（[reviews/material-20261111.md](reviews/material-20261111.md)）。結尾章 30–60 秒，只講答案與留言問題，不用回顧填時間。', '', '| ID | 分類 | 題案 | 正文估計 | 核心題數 | 來源 | 素材審視 |', '| --- | --- | --- | --- | --- | --- | --- |'];
+  const lines = ['# 從素材池排出的影片題案', '', `${themes.episodes.length} 組編輯候選。每一組都是同一個核心問題的兄弟題，接起來比各自單做更完整；不是點閱率預測，也不是已核准的影片。`, '', `**片長規則：** 長片至少 ${LONG_MIN} 分鐘，看素材決定，不硬湊。章節秒數是正文預估，還沒試讀；每章要再拆成 30–45 秒一個新資訊或懸念。撐不住就剪短、合併或撤案，不用重述、停頓或慢唸補時間。估不到 ${LONG_MIN} 分鐘的轉 Shorts 或留在後備。`, '', '「來源待補」的題案裡有還沒研究的候補題：要先查核、改成入選，才能寫企劃。', '', '**素材審視（2026-11-11）：** 「待合併」與「後備」的題案素材撐不起 8 分鐘不重複的旁白，先不成題；缺什麼寫在各題的審視欄（[reviews/material-20261111.md](reviews/material-20261111.md)）。結尾章 30–60 秒，只講答案與留言問題，不用回顧填時間。', '', '| ID | 分類 | 題案 | 正文估計 | 核心題數 | 來源 | 素材審視 |', '| --- | --- | --- | --- | --- | --- | --- |'];
   for (const episode of themes.episodes) {
     const readiness = themeReadiness(episode, pool);
     const cat = themeCategory(episode, byId);
@@ -309,7 +309,7 @@ footer a{color:var(--accent)}
     <p class="lede">每一題的核心前提都有兩個以上可讀來源，也經過非作者覆核。分兩種：幾題併成一集的題案，與單獨成一集的題；依 9 個系列分類篩選。寫企劃前仍要照系列流程逐條查核。</p>
   </header>
   <div class="strip" id="strip"></div>
-  <p class="note">由 <code>tools/video/curio/pool</code> 的 build 產生，素材池更新時跟著更新。片長規則：每集 8–13 分鐘，看素材決定。</p>
+  <p class="note">由 <code>tools/video/curio/pool</code> 的 build 產生，素材池更新時跟著更新。片長規則：每集至少 ${LONG_MIN} 分鐘，看素材決定，不硬湊。</p>
   <div class="controls">
     <div class="tabs" role="tablist" aria-label="清單">
       <button role="tab" id="tab-themes" aria-selected="true">多題一集</button>

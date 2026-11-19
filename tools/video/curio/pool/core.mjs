@@ -1,6 +1,6 @@
 // 奇聞檔案局素材池：把題庫、已製作的集數、分支上的草稿與新批次讀成同一份去重後的候選池。
 // 架構照原來如此事務所的素材池（PR x812033727/travel_scanner#1971 的 tools/video/so-thats-why/pool），
-// 輸入格式與規則改成奇聞檔案局的：一題一個 topic-check 檔、已製作的集鎖定、長片 8–13 分鐘。
+// 輸入格式與規則改成奇聞檔案局的：一題一個 topic-check 檔、已製作的集鎖定、長片至少 8 分鐘（沒有上限）。
 import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync, writeFileSync, mkdirSync, existsSync, statSync } from 'node:fs';
 import path from 'node:path';
@@ -10,8 +10,9 @@ export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 export const DIR = 'docs/videos/history-curiosity/pool';
 export const BANK = 'docs/videos/history-curiosity';
 export const TOOL_DIR = 'tools/video/curio/pool';
+// 長片只有下限，沒有上限。站主 2026-11-19：「我是 8 分鐘以上而已，沒有一定要限制在 13 分鐘內」。
+// 2026-11-01 到 11-19 這裡有 LONG_MAX = 13；片長看素材決定，不硬湊，也不為了壓進上限砍素材。
 export const LONG_MIN = 8;
-export const LONG_MAX = 13;
 export const hash = (value) => createHash('sha256').update(value).digest('hex');
 const parse = (root, file) => JSON.parse(readFileSync(path.join(root, file), 'utf8'));
 const exists = (root, file) => existsSync(path.join(root, file));
@@ -148,7 +149,7 @@ export function validateEditorial(row) {
   const value = row.editorial;
   if (!value || !['episode_core', 'chapter'].includes(value.role) || typeof value.payoff !== 'string' || !value.payoff.trim() || typeof value.visual !== 'string' || !value.visual.trim()) throw new Error(`${row.id}: invalid editorial role, payoff or visual`);
   const minutes = value.minutes;
-  if (!Array.isArray(minutes) || minutes.length !== 2 || minutes.some((n) => !Number.isFinite(n) || n <= 0 || n > LONG_MAX) || minutes[0] > minutes[1]) throw new Error(`${row.id}: editorial.minutes must be [lo, hi] within 0–${LONG_MAX}`);
+  if (!Array.isArray(minutes) || minutes.length !== 2 || minutes.some((n) => !Number.isFinite(n) || n <= 0) || minutes[0] > minutes[1]) throw new Error(`${row.id}: editorial.minutes must be [lo, hi], both above 0 and lo no larger than hi`);
   if (value.role === 'episode_core' && minutes[1] < LONG_MIN) throw new Error(`${row.id}: an episode core must be able to reach ${LONG_MIN} minutes; mark it a chapter instead of padding`);
 }
 
