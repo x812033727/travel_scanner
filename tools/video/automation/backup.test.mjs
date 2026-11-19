@@ -1,7 +1,7 @@
 // The backup round (backup.mjs) against a fake rclone that copies between real folders, and a
 // fake site: what is copied, when it is copied again, and when the tidy may clear a video.
 import assert from "node:assert/strict";
-import { cpSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -125,11 +125,20 @@ function fakeRclone(drive, { free = 100 * 1024 ** 3, fail = {}, corrupt = false 
       return { code: 0, stdout: "", stderr: "" };
     }
     if (command === "lsjson") {
-      // Drive's id of a file or folder: a stable stand-in made from its path.
-      const where = local(args.at(-1));
-      if (!existsSync(where)) return { code: 3, stdout: "", stderr: "ERROR : object not found" };
-      const id = `id_${Buffer.from(args.at(-1)).toString("hex").slice(-24)}`;
-      return { code: 0, stdout: JSON.stringify({ Path: path.basename(where), Name: path.basename(where), IsDir: !where.endsWith(".mp4"), ID: id }), stderr: "" };
+      // Drive's id of a file or folder: a stable stand-in made from its path. Like rclone 1.74,
+      // `--stat` on a folder answers as the root of its own listing, with no ID; a folder's id
+      // only shows in its parent's listing.
+      const remotePath = args.at(-1);
+      const where = local(remotePath);
+      if (!existsSync(where)) return { code: 3, stdout: "", stderr: "ERROR : directory not found" };
+      const idFor = (each) => `id_${Buffer.from(each).toString("hex").slice(-24)}`;
+      if (args[1] === "--dirs-only") {
+        const base = remotePath.endsWith(":") ? remotePath : `${remotePath}/`;
+        const dirs = readdirSync(where, { withFileTypes: true }).filter((entry) => entry.isDirectory());
+        return { code: 0, stdout: JSON.stringify(dirs.map((entry) => ({ Path: entry.name, Name: entry.name, IsDir: true, ID: idFor(`${base}${entry.name}`) }))), stderr: "" };
+      }
+      if (statSync(where).isDirectory()) return { code: 0, stdout: JSON.stringify({ Path: "", Name: "", Size: -1, IsDir: true }), stderr: "" };
+      return { code: 0, stdout: JSON.stringify({ Path: path.basename(where), Name: path.basename(where), IsDir: false, ID: idFor(remotePath) }), stderr: "" };
     }
     if (command === "deletefile") {
       rmSync(local(args[1]), { force: true });
@@ -718,7 +727,8 @@ test("a backed-up video the site has no Drive ids for gets its folder's and fina
   assert.notEqual(site.drive[0].folder_id, site.drive[0].final_file_id);
   assert.ok(lines.some((line) => /curio-gone: the id of its Drive folder could not be read/.test(line)));
   const looked = rclone.calls.filter(([command]) => command === "lsjson");
-  assert.ok(looked.every((args) => args[1] === "--stat"), "a lookup only reads");
+  assert.ok(looked.every((args) => ["--stat", "--dirs-only"].includes(args[1])), "a lookup only reads");
+  assert.ok(looked.some((args) => args[1] === "--dirs-only" && args.at(-1).endsWith(":奇聞檔案局")), "a folder's id comes from its parent's listing");
   assert.ok(!looked.some((args) => args.at(-1).includes("curio-known")), "a video the site has ids for is not read");
 
   // A round reads at most DRIVE_LOOKUPS_PER_ROUND.
