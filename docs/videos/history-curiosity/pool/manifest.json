@@ -1,20 +1,20 @@
 {
   "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
-  "revision": "2026-11-18-pool-1787",
+  "revision": "2026-11-19-pool-1792",
   "counts": {
     "raw_records": 2679,
     "canonical_cores": 2660,
     "alias_records": 19,
     "produced_cores": 48,
-    "selected_candidates": 1787,
-    "held_candidates": 278,
+    "selected_candidates": 1792,
+    "held_candidates": 273,
     "reserve_candidates": 177,
     "shorts_candidates": 89,
     "excluded_cores": 281,
     "new_batch_records": 2348,
     "source_urls": 15389,
     "current_research_source_urls": 10567,
-    "selected_source_urls": 12348,
+    "selected_source_urls": 12371,
     "new_suggestions_not_added": 3307,
     "high_similarity_pending": 0,
     "cross_series_pending": 0,
@@ -22,12 +22,12 @@
     "by_category": {
       "H-歷史懸案": {
         "canonical": 330,
-        "selected": 247,
+        "selected": 249,
         "produced": 1
       },
       "S-歷史人物與名場面": {
         "canonical": 426,
-        "selected": 237,
+        "selected": 239,
         "produced": 28
       },
       "M-奇異現象與自然": {
@@ -57,7 +57,7 @@
       },
       "U-外星太空與未知訊號": {
         "canonical": 298,
-        "selected": 202,
+        "selected": 203,
         "produced": 0
       },
       "W-商業與品牌奇聞": {
@@ -1691,7 +1691,7 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/selection.json",
-      "sha256": "2431ca5fc09ef450d4f2bf20620fee1edc7e5ac27852e4d986bcc2439279a537"
+      "sha256": "3d0e5a33a28ac9119badd7c6d3d075c38fe5cc5187a5c57a3828534b9b5a8460"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/audience-20261114-r2.json",
@@ -1846,6 +1846,10 @@
       "sha256": "efca7e6ca2011f9deb89466269a2c845019e2afadb73f4551a5d38ace3c8490e"
     },
     {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave85.json",
+      "sha256": "361e3562caef85f201bcb4be7ebfb4b65ff3d4033d2bc03b2c5ef38ee47778e2"
+    },
+    {
       "file": "docs/videos/history-curiosity/pool/reviews/demand-20261117-cores.json",
       "sha256": "ad0885cce24c65eb540a9ab2ea45cbfc1af06aa0cc9f675a4d491a5569651add"
     },
@@ -1920,33 +1924,37 @@
     {
       "file": "docs/videos/history-curiosity/pool/reviews/demand-20261118-wave84.json",
       "sha256": "c7baa8fbc731313538d1374c54b60ac18c957e5be461cf2e6859634ad13fe72e"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave85.json",
+      "sha256": "1e32a50294a9a95d18d179321bb87e9e1c04968a8744cbaedcaae1509edce9f0"
     }
   ],
   "theme_definition_sha256": "3794d2fd2e377a0871e4bbc22f41bca81a3b4245aa7373ff07908eaede57362c",
   "files": [
     {
       "file": "pool.json",
-      "sha256": "9acdedb7027324b42ab82e25462e4c58b8a456a4637e9e050cf692c4810919c4"
+      "sha256": "5f7b3077e0eaf29f6b1733cb87e24d5da2642d40fb1ecda1bb3ab4d6f9613c80"
     },
     {
       "file": "pool-sources.json",
-      "sha256": "a3ef4d83f073ccc8d8bf0d526136475869cbad990355161b82abda9d115be9b1"
+      "sha256": "d7276ff0735f64b4a55aadb54f4f0f2067458b97fddca59bd861e2f2596a1faf"
     },
     {
       "file": "pool-records.json",
-      "sha256": "6f8aa33905869f3723aeb8beead9eb43c7df6e26b2b8a9554bb253c8c6d419d1"
+      "sha256": "bbf05043bf5ce8ed5dfb82c28ca64ae53bed6a75ac28f4003cb10863799dfe05"
     },
     {
       "file": "QUESTIONS.md",
-      "sha256": "8b6c2740bcc8734fd9b19d6eccec8444787e6724bf20aaac68d988c8af1b8498"
+      "sha256": "f7846da02a585e5e55b28244d6e8dc269018b727a66dfe8fec5ebe8125d198f4"
     },
     {
       "file": "SOURCES.md",
-      "sha256": "eb517bb4f834f568ed346818da3485659775d003b6aaf86cd7f1814a4904f3c3"
+      "sha256": "1d73c8c410c707241d8fad54a1516af107b89b487aace29551de6267c11a30a8"
     },
     {
       "file": "DEDUP.md",
-      "sha256": "b417ebc7ff1ad5080e53352369c9cfd3811bc4758e50ff19339ce0c17d79244c"
+      "sha256": "6256abc9b588a2cca9b573b4c5e27d13013787f3d81d3b73d3380ea05ede14f5"
     },
     {
       "file": "THEMES.md",
@@ -1954,11 +1962,11 @@
     },
     {
       "file": "index.html",
-      "sha256": "95812a4725e4db7386080771ab48159057549d6ed4679afa3bca274b427ec8c5"
+      "sha256": "6164152e863a0d51e1ad32428f7be9cff418346ad04e9b7c6ed3e5e4e6b7fdc6"
     },
     {
       "file": "PRODUCIBLE.html",
-      "sha256": "4d6ea7e9a444d8f87c9aba66bec7ec92ff976f1257e3ff11f392b5b4aba48fdf"
+      "sha256": "557f7274914794ea1156872f7293118636c6d2028195dc6d9637226d1f53fe53"
     }
   ]
 }
